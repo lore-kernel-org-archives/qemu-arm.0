@@ -1,147 +1,178 @@
-Received: by 2002:a17:504:5965:b0:1be9:327d:8ee3 with SMTP id xe5csp1846293njb;
-        Mon, 29 Jul 2024 08:15:41 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCXm6aGrFXHC8t3v0cOrCfGo6U5QQddt0Jm7990oTlCSyOmO1bHumbLYC4OO6uA5MSNLwA+n1Wna9hLfeP8AG3h+OTbsfF7g
-X-Google-Smtp-Source: AGHT+IG24VH2EZYeSQx38HHfazoYlCN2123lY0fhF43bkQ3t0VbsBKJC7WzqJzG+kY0gWv1ufXu3
-X-Received: by 2002:a05:6512:3154:b0:52c:8342:6699 with SMTP id 2adb3069b0e04-5309b2d8a86mr6581253e87.55.1722266141352;
-        Mon, 29 Jul 2024 08:15:41 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1722266141; cv=pass;
+Received: by 2002:a17:504:5965:b0:1be9:327d:8ee3 with SMTP id xe5csp1850496njb;
+        Mon, 29 Jul 2024 08:23:51 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCX9+EAu6JR4E7nFCuFApvBFZezH4/SpRVF6R50ucR/URDtNoSCMrQAnZUcQ/OHyiEws4E1Xz5AozwxmVcGtiPGER7OJMGl6
+X-Google-Smtp-Source: AGHT+IHz+WoiwoJibEh+NrXaseKWO4tWPWCtK11Dp0SaCqpHW/RTxGt7Zc3lZMse2V5zd0JUgHci
+X-Received: by 2002:ac8:574a:0:b0:447:d963:ebbf with SMTP id d75a77b69052e-45005c21b00mr129749771cf.21.1722266630836;
+        Mon, 29 Jul 2024 08:23:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1722266630; cv=none;
         d=google.com; s=arc-20160816;
-        b=bErLXeNSnNQLgeN5f22ykYrvJQAVgH4Cd6Fy0w4zosd1sNBatjDmCQbjEyALLiYudH
-         2ys/6YuGufC72NytFlJr7ZVT+efDywwk/KSuso8RtFf/M2HRsj5a62ntshdT/ILTD5Z+
-         fI+v3KnGeu28a2Sb+ovg+wmBBUSpNupKH+k+epkWZ788rvQy0F9oPeIlyTy5IKBkIz/0
-         hck8fJz0ckh7XdkRoFnTH6tbdSTMIcD70N91PZO86jWeyyEOxADPWwmuVdCl6aji1rhX
-         jB3zdXp2oonVRjQFUfs1mo1X1oePQIdd4ufFUFXVr4EzyAaFHzBGZKzouffYHFZUh82k
-         yDGw==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:list-unsubscribe:list-subscribe:list-id:precedence
-         :dkim-signature;
-        bh=BKuqbZOXAboBHx1ox4X60UNfaU6nkT1ePbeK4FEBPyY=;
-        fh=YBRt69Cl3SgTD5xLEBBLYP5+T4u7Sk8VNE6GK7ZNwH0=;
-        b=1KPc8WuiNEBoupB359BHHwUhoFxdVttR5IQczdGyNCtIic9rRM3S7ZI/PMSWNl7238
-         aL1cqdRVw3X5rZiebxM0+0fIQ1pesQNZ+jSzIV+L39UsqZO2m2rAkroxXjDSFlz1z1uq
-         OlySMSVMLIGeaou1EtG3m4x1IeR7ov5cgUWfwzl0jWk6bC50Kn4P76F1Xp8XUTQbOmLI
-         QXtTNNo+c3/SSfxksOMD323/bkV0FTVpDqnrb8O9v5YBLMQZh+QzU1D6q8rDxjul9l6e
-         iBgvBsT5SDHXixLx9MZ1iJeqEgVMZVR9KLxHbycSEep0eLU+4pDZ2ASSTwBQeWD8FRNN
-         6esg==;
+        b=Ep7UmxEmcgAGIN6t0yiisk1GwUNSqeFyPxw2Jw2OfR61VMiyosX9E7jF4bTD/HY5D1
+         G5bUJFsSBnxgB6yElpOe3ssNrzjlrr5cQ1ciPNBq7yEzLW8H28LSJLOtTkmeapU9kP9F
+         NxJ8VtK6GGAlnAyOvNEQGVY443MDfioO8et/2Q02mzKbFsFDh+TvuUXeUovcZgy4Scu6
+         NEtCAYTzeqcKAuo+xje6YudBujJUuBDzNqvCbVJ6eJ/YQKn0kSnMRSXOOQWUejhI1WUh
+         /BUBCr7LU3HM3OLimw9T3a80mpUK4vvPddDbYgUq3BlUlKW+eGLwV/AkIeGZ+grpnmbX
+         ty6w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=qzM61U8fDoolnr+6t8nBL4raAeC7Mlar50RUt9YjfR8=;
+        fh=1zfuk4YrJvoe/T+P93Pe/cyBzz5qaHYvMNktYKvqHm4=;
+        b=u/wbmS2K7BX+bKWgTQtBsMa32vhwL+iQczWeH7hJzqIHc5ynwbmbRKem6Nof8JQLng
+         M4krUWMoO+GDlpYYLUA9REUR+8wo+fQIgavXyfgEYyenMbSe1SDW/3bCPg9ES5Lr8OFF
+         LONHpid/Kk0BRKEFvA7hZ4eJR830kd5aq9GNrXMxW0iXb45/or90dCmZvtWLXr1UTA+Z
+         Hjohsd9J6rAgyq8BWgU+s20HDKfvBy5UphqLDx0RE8qnlb977nRmn29GjS6SzIy8yvrC
+         3djP0frtamRDNdHSXID8Cpc+0sueqDVk4Zomk56/j9rDhT3xXe1wlnCRy4J5zNVkP2y4
+         MSkA==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=CFxDaIab;
-       arc=pass (i=1 spf=pass spfdomain=linaro.org dkim=pass dkdomain=linaro.org dmarc=pass fromdomain=linaro.org);
-       spf=pass (google.com: domain of kvm+bounces-22512-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) smtp.mailfrom="kvm+bounces-22512-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <kvm+bounces-22512-alex.bennee=linaro.org@vger.kernel.org>
-Received: from am.mirrors.kernel.org (am.mirrors.kernel.org. [2604:1380:4601:e00::3])
-        by mx.google.com with ESMTPS id a640c23a62f3a-a7acab3b836si653376866b.409.2024.07.29.08.15.41
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=uycKZzGB;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d75a77b69052e-44fe81376a7si101490491cf.1.2024.07.29.08.23.50
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 29 Jul 2024 08:15:41 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm+bounces-22512-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) client-ip=2604:1380:4601:e00::3;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 29 Jul 2024 08:23:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=CFxDaIab;
-       arc=pass (i=1 spf=pass spfdomain=linaro.org dkim=pass dkdomain=linaro.org dmarc=pass fromdomain=linaro.org);
-       spf=pass (google.com: domain of kvm+bounces-22512-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) smtp.mailfrom="kvm+bounces-22512-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by am.mirrors.kernel.org (Postfix) with ESMTPS id CBD8F1F22F9A
-	for <alex.bennee@linaro.org>; Mon, 29 Jul 2024 15:15:40 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 582B414EC71;
-	Mon, 29 Jul 2024 15:15:36 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="CFxDaIab"
-Received: from mail-lj1-f170.google.com (mail-lj1-f170.google.com [209.85.208.170])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 67EDB1E4A2
-	for <kvm@vger.kernel.org>; Mon, 29 Jul 2024 15:15:34 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.208.170
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1722266136; cv=none; b=IcqrwNewhueg40ehPLA5ln8Idr4BgnSJgqjci/LXM1TTWR3uN7m2jjqPr8PkwnL4trwikz+tjWOmqYybd0LALF2ohwKy8jLhnnTbq3cKfGVpdLZ2xa/Pb8On3tW6saM3cvWU1SyB1zYccOH6kWozxBQmCOKgu5cNB9RG7Vd8uWk=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1722266136; c=relaxed/simple;
-	bh=rOgmwIln/CNmyCh2hWKhzIw8YIxDDZtaydSHihaddhg=;
-	h=MIME-Version:References:In-Reply-To:From:Date:Message-ID:Subject:
-	 To:Cc:Content-Type; b=gZypawwmvQPP3tTBf+FsM8KHlozjCFhrjbNYwCBhTQkEmfab5Nl8H2vTUm1gp4l0cSDI3zSCenDc5R/LfZ46UZGddYoqhHs+Kfu8VbTFx76aVSyh4DQXOqOXXUOF/Ihjcy+dl+GZPrV3242npsZ3f9WQBJv1Dp7X5BoWOEztChA=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org; spf=pass smtp.mailfrom=linaro.org; dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b=CFxDaIab; arc=none smtp.client-ip=209.85.208.170
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=linaro.org
-Received: by mail-lj1-f170.google.com with SMTP id 38308e7fff4ca-2f029e9c9cfso56738451fa.2
-        for <kvm@vger.kernel.org>; Mon, 29 Jul 2024 08:15:34 -0700 (PDT)
+       dkim=pass header.i=@linaro.org header.s=google header.b=uycKZzGB;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sYSDs-0007Ji-0W; Mon, 29 Jul 2024 11:23:40 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1sYSDp-0007Iy-Ab
+ for qemu-arm@nongnu.org; Mon, 29 Jul 2024 11:23:37 -0400
+Received: from mail-lj1-x231.google.com ([2a00:1450:4864:20::231])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1sYSDk-0007Pl-NB
+ for qemu-arm@nongnu.org; Mon, 29 Jul 2024 11:23:36 -0400
+Received: by mail-lj1-x231.google.com with SMTP id
+ 38308e7fff4ca-2f035ae0fe0so42068551fa.3
+ for <qemu-arm@nongnu.org>; Mon, 29 Jul 2024 08:23:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1722266133; x=1722870933; darn=vger.kernel.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=BKuqbZOXAboBHx1ox4X60UNfaU6nkT1ePbeK4FEBPyY=;
-        b=CFxDaIabYolCHQeWnr3DwuWUQvIxFouo9WSBCXExvWRq+awt25+8fNIjHxoBtuq/qi
-         dJbubiXmdz/WRIRN4yXCnkGGTygLggwup5mhAoPMn9oenAsRD8NsxcVzm8Tv8x9NrcVn
-         GgLxLS311Z22rSQYokH0kj/FcazgMzgEr/GqJfXDUwPVrB7Ou8RqdgMvyswYM1k2lMqH
-         4bMyHLQ3QqYdoUarrUtwQa/b3PJo4e2JqTPi9+rs453Vcjshy7IDWq8brUsVcCLA6/xa
-         GZYwl/agXWZdK6QIpDjbP9MY+pW1FLpPg4hxd9tR/pVLvOKVKf+5ch8wxOBvJwk8zgwg
-         OCBA==
+ d=linaro.org; s=google; t=1722266611; x=1722871411; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=qzM61U8fDoolnr+6t8nBL4raAeC7Mlar50RUt9YjfR8=;
+ b=uycKZzGBtomJyMfCJvPtlAfyGVfyXgCPrpDJ9Zu3xmwNV5r0QWnYA3Ze4pZDDzegdJ
+ QWEXR7bF509d9485qV2VTEXzYUr6DAXe2bF3DkzNUcYgZfQ9EkKqhZobMKqwyaQYvNyY
+ rYwK3Yc7LIrzd6mvqd1SKDdMP4OW/bUroArEHWzPi3q/IuXP/Mlfu5O2LWc+2nkuShoA
+ VXvx2xapjA4JpZt1tT8bpIN0Xa9WRtXWO1r4JcbFVLm6xqR0tSsSSvdwNnhdg3g5xj1Q
+ 5Du0FYd+2T9yEduQP3ShOM1pBq2UVYCrkiVEvm0uNx5e7YapjGvkdFASP56avwKIGoFn
+ Hl9A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1722266133; x=1722870933;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=BKuqbZOXAboBHx1ox4X60UNfaU6nkT1ePbeK4FEBPyY=;
-        b=ATCryqGZFFwNr1mxVVatGAVF6Kjl5Ylr+oNiYtina8tMKkEJpNY2MbxE1J5y40K6zG
-         ix+Nqjvng6BOVLIS5+MioiV5csMf8edJoegw6VAKrDNwKp3cqGEGfJnR6U2PJX7felAc
-         1Eknc7nIITtx6jNQXl+ehsk6xLkIoCRTjFk81luxnHSpMCSK5AtMPj7j7PsHs31FBqJZ
-         o/PJVJIGKJjakKFfemb/v3l/QDAw2cm1F0g0S7/VkWTYsrrFFlGlUZldNQ21dxi4rPTY
-         l8SJPO2hzUa3uqfLYijx1hCJZ1dmTSBjfRdcmQpSZ8sbDGdMNbmPCYn/1n7bHxfRr+Lr
-         RXog==
-X-Forwarded-Encrypted: i=1; AJvYcCVvdAAXuNXiG8BWWJBw+VWhOjbQYemRmnh//6uRQiqwTR/Ltr+rioyr6hUjesvu1A60b5miZMGlLDOe2IB05Guns10j
-X-Gm-Message-State: AOJu0Yzrhw9SqXuwNROe/70XyFED6l63LwDUYtpFnzU/C50gGVg2Dlyz
-	muNRxJgzhy0XB+44QHLo016ea5uzYGvlZwjXFBooREQyH3aDdhkzQxVQDinCQQBk2C/3H4nwApO
-	nZ/8ElycqWeYPrTG8QSCaszvJevwFU57+as9jvA==
-X-Received: by 2002:a2e:3208:0:b0:2ef:2422:dc21 with SMTP id
- 38308e7fff4ca-2f12ee6322emr66771801fa.43.1722266132405; Mon, 29 Jul 2024
- 08:15:32 -0700 (PDT)
-Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
+ d=1e100.net; s=20230601; t=1722266611; x=1722871411;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=qzM61U8fDoolnr+6t8nBL4raAeC7Mlar50RUt9YjfR8=;
+ b=tz81t1zvBKOsNeLqkE5jRGMxHeaUfE/N34NhbHOFWwedWdTRVHc0uHwPdu1hpD4JEs
+ 4O3jZc+NiXuPstFZnbQdF1RaKwsGsgQZ4GNeg5+nv7oKb79mx0oIAngw6YD2Va1YyWXM
+ /JAOPBKQ8q5v7qtu9JbMuHA+Hjz+mBZSLoxftEyGT1rTCigGCZo7YP/hRM3xci52jR6A
+ phemWq4O699K4hx3+3QRSnqPpRekMyYVzk0v7IoV2Q983G3uP7zraXB6N7eTqATIjJQB
+ 1pbrd6iBq6CEG+WkWaxTBkEzYC9OEr6qPrlnhI8c9/O9i43TyS574zpKT8ItTUSuwXo/
+ SAGA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWB0HZmKyb4gGf3CgYufzN28cO7oqSD4Ur0Uii7wQ2Infog3qZWGqjao9Yz9gHDs/XY/AkLNImForfhdp7lANQ7aQVi
+X-Gm-Message-State: AOJu0YyLwAWSHEQKbHZs5ZpzmETcFPsnXVtn1BdVqfbaForxwavoCUkv
+ 8hKDkSCT3Iom/HZxBd4elIUwXJgISNkcPg6HQI8q9NpK6HUQLCDmnlhVROkQ2Uv2BiYErjyffdU
+ zit7pTznWLZr+pG9WuUSqmmTi7nqkI4TdvAVrg1xlOAO3h5PZ
+X-Received: by 2002:a2e:a495:0:b0:2ef:232c:6938 with SMTP id
+ 38308e7fff4ca-2f12ebcae5amr53080841fa.6.1722266610591; Mon, 29 Jul 2024
+ 08:23:30 -0700 (PDT)
 MIME-Version: 1.0
-References: <20240720-pmu-v4-0-2a2b28f6b08f@daynix.com>
-In-Reply-To: <20240720-pmu-v4-0-2a2b28f6b08f@daynix.com>
+References: <20240726055933.817-1-jim.shu@sifive.com>
+ <20240726055933.817-4-jim.shu@sifive.com>
+In-Reply-To: <20240726055933.817-4-jim.shu@sifive.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 29 Jul 2024 16:15:21 +0100
-Message-ID: <CAFEAcA-ReAnVnq3WCZGEvBhH03gmwANC8TaiwMx5K6y7wQGRZg@mail.gmail.com>
-Subject: Re: [PATCH v4 0/6] target/arm/kvm: Report PMU unavailability
-To: Akihiko Odaki <akihiko.odaki@daynix.com>
-Cc: Thomas Huth <thuth@redhat.com>, Laurent Vivier <lvivier@redhat.com>, 
-	Paolo Bonzini <pbonzini@redhat.com>, Cornelia Huck <cohuck@redhat.com>, qemu-arm@nongnu.org, 
-	qemu-devel@nongnu.org, kvm@vger.kernel.org
+Date: Mon, 29 Jul 2024 16:23:19 +0100
+Message-ID: <CAFEAcA-ZkcJvFkYyHGi9bXoPvqEzvV0b_z6xaQPLMK9qNHSdCA@mail.gmail.com>
+Subject: Re: [PATCH 3/4] hw/dma: xilinx_axidma: Reset qemu_irq when DMA/Stream
+ is reset
+To: Jim Shu <jim.shu@sifive.com>
+Cc: qemu-devel@nongnu.org, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
+ Alistair Francis <alistair@alistair23.me>, Jason Wang <jasowang@redhat.com>, 
+ "open list:Xilinx Zynq" <qemu-arm@nongnu.org>
 Content-Type: text/plain; charset="UTF-8"
-X-TUID: e5CBncLA2dTI
+Received-SPF: pass client-ip=2a00:1450:4864:20::231;
+ envelope-from=peter.maydell@linaro.org; helo=mail-lj1-x231.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: vDJ2yC3HcmGe
 
-On Sat, 20 Jul 2024 at 10:31, Akihiko Odaki <akihiko.odaki@daynix.com> wrote:
+On Fri, 26 Jul 2024 at 06:59, Jim Shu <jim.shu@sifive.com> wrote:
 >
-> target/arm/kvm.c checked PMU availability but claimed PMU is
-> available even if it is not. In fact, Asahi Linux supports KVM but lacks
-> PMU support. Only advertise PMU availability only when it is really
-> available.
+> Current DMA/Stream reset will clear interrupt pending bit of DMA device.
+> The qemu_irq of device should be updated at the same time.
 >
-> Fixes: dc40d45ebd8e ("target/arm/kvm: Move kvm_arm_get_host_cpu_features and unexport")
+> Signed-off-by: Jim Shu <jim.shu@sifive.com>
+> ---
+>  hw/dma/xilinx_axidma.c | 25 +++++++++++++------------
+>  1 file changed, 13 insertions(+), 12 deletions(-)
 >
-> Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
+> diff --git a/hw/dma/xilinx_axidma.c b/hw/dma/xilinx_axidma.c
+> index 728246f925..beb3fbf1d5 100644
+> --- a/hw/dma/xilinx_axidma.c
+> +++ b/hw/dma/xilinx_axidma.c
+> @@ -177,11 +177,24 @@ static inline int stream_halted(struct Stream *s)
+>      return !!(s->regs[R_DMASR] & DMASR_HALTED);
+>  }
+>
+> +static void stream_update_irq(struct Stream *s)
+> +{
+> +    unsigned int pending, mask, irq;
+> +
+> +    pending = s->regs[R_DMASR] & DMASR_IRQ_MASK;
+> +    mask = s->regs[R_DMACR] & DMASR_IRQ_MASK;
+> +
+> +    irq = pending & mask;
+> +
+> +    qemu_set_irq(s->irq, !!irq);
+> +}
+> +
+>  static void stream_reset(struct Stream *s)
+>  {
+>      s->regs[R_DMASR] = DMASR_HALTED;  /* starts up halted.  */
+>      s->regs[R_DMACR] = 1 << 16; /* Starts with one in compl threshold.  */
+>      s->sof = true;
+> +    stream_update_irq(s); /* Clear interrupt */
+>  }
 
-> Akihiko Odaki (6):
->       target/arm/kvm: Set PMU for host only when available
->       target/arm/kvm: Do not silently remove PMU
->       target/arm: Always add pmu property for Armv7-A/R+
->       hvf: arm: Raise an exception for sysreg by default
->       hvf: arm: Properly disable PMU
->       hvf: arm: Do not advance PC when raising an exception
+The general rule of thumb in QEMU is not to call
+qemu_set_irq() from a DeviceState::reset function,
+and xilinx_axidma_reset calls stream_reset. I think
+probably the best thing is to separate out whether
+this is a DeviceState::reset or a software-triggered
+reset, and only call qemu_set_irq() in the latter case.
 
-Thanks for this patchset; I've applied patches 1, 2, 4, 5 and 6
-to target-arm.next, but I had comments about patch 3.
-(Let me know if there's a dependency that 4-6 have on patch
-3 that I've missed: but they look to me like they're
-still OK to take without patch 3.)
-
+thanks
 -- PMM

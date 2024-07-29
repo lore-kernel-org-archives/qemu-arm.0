@@ -1,87 +1,87 @@
-Received: by 2002:a17:504:5965:b0:1be9:327d:8ee3 with SMTP id xe5csp1825967njb;
-        Mon, 29 Jul 2024 07:39:15 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVncUYmt/6RdtbaETfrgu7LUrb20D4UzzhTLRUxNLyUvm+LAp6bU4N9UU+VH0VpvpNbMR2RSmf/BuZvNCs5ux3Ox1b3eRex
-X-Received: by 2002:a5d:4685:0:b0:360:9500:9bbb with SMTP id ffacd0b85a97d-36b5d7c4d18mr4605078f8f.12.1722263955052;
-        Mon, 29 Jul 2024 07:39:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1722263955; cv=none;
+Received: by 2002:a17:504:5965:b0:1be9:327d:8ee3 with SMTP id xe5csp1826684njb;
+        Mon, 29 Jul 2024 07:40:41 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCV586U46y28rRj0pOVgRlYYOxHcKE80eMNUKYbwGGWxPmqOZmvwWFY7TOLm3Z2YmL6w6d7njvwtExrG+Qfv1x7y/G1qypyE
+X-Received: by 2002:adf:fa06:0:b0:368:4bc0:9210 with SMTP id ffacd0b85a97d-36b5d0237a8mr4684333f8f.25.1722264041533;
+        Mon, 29 Jul 2024 07:40:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1722264041; cv=none;
         d=google.com; s=arc-20160816;
-        b=tjS9t/vPC+j6Rye2NEmfUIz1W2lB4guXsZuWDps3SoVdSESLlK2/bWJ81FfjJ84hZW
-         33IIBYpVk5pujE3+/0CT1yXg0EeBJG7qnN9UBEdGiaBN3WGsj9uDY7eINcvMMTBQLQC7
-         6TqVHUQ3L8pgYwbeZ8zLisWUgtu+0v4RyRRMcAtTPP7aqbLmL+amypmxplZJ6kwF7Rb2
-         MggsDmpOUvZOLA8a8g8pnai3yb9ngKejt+Pno2/+eCdsw5Byw99baF+ZOU/NwhHjgoKt
-         5eu/nlsx0FjLvc5ArCpZzCXuLmTsg+PvaTf1eJ3MClUgUOYru/bSyD+dOlJi8upqGCqP
-         mo+w==
+        b=ar4PbktcVEJteWCcU3yzG/u6tGYhB7PsOboJfiIbFAHjVpQCf0vnXaregKq//o6GYh
+         UxVrABzxggTa3YDYOSI5jn2byuUtT3zfhr0CkFuLXobYgvRLkx9ecn3suIdEKYaa80zT
+         jsx703emMyMl7INaqvlALE2soYye83lLaTGGylnH1PXK4Z0wzuGB742EiJIhSATde/E5
+         /iBgScCM8mb12fwP4HpwnAKrpBRYPoktR8soApewnhG/VtuespKZNdPzDtY1rLPwsiFv
+         S/szduAKNF1VdAM3ECTtSkFZ2ZarSOZHpGHBEGT3aJApO8qhPvYMd5HBr0uNlO+YdXGT
+         fn7Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=qEnyOvA1X8TKi0lsodpQGCil95YO2hb3XDAGCjbudWY=;
-        fh=CkvI9CsG9ptrzJ2HGFVX4RYG2SPiIKrtOk7VQCxxd+c=;
-        b=MVqEm3gUfgGmRbPM+QZx8+YxdbKBmOjuqMIKXKPA8JjJ+gjHNTpKJWLgC4GBkWyZZ1
-         BWRbvPpVcYn7MvE7MOQULz6dw+bmkJkr6yE0KWt9JERxITntEGQw6ihc5C7Wiy9cFKEF
-         W0AypEd6Q7rWbqAsrAoMyRmeAkOs4lIwoSUpNADW8rxDPgi9SrNKyRjVLRcRGrnk/ciG
-         unGijYSguiFw0ZlcDM6t8s6n4uQxPaJRaTJXTtjzQLEmhR4YIQFtoxAhbptIzA0/RZzn
-         HIL9kEBM2PXE5cgwWDLk4seu5CT7YWLxmPi8WoUN5Lbm5RJsgP+ASr+2fRnMl53D56kb
-         hfbQ==;
+        bh=j3e9b1ZbsCUPjFEgRqJ+hwXbs28Kkpn08+Yw7FV+otA=;
+        fh=ceBK8SmtfnKm7QEIc7rodq9AvIhycUkXCL7GAVPat1Q=;
+        b=M9T/0GKtGsYUlmlRWyoRzeyMTuaOmPsl57biLGMBee6IhToflWUi/1Gla13sJL/pvX
+         QRZMctqoG7R+gBVQa5UTm5qoY9BIgeKWwCEVhISxg2YBh2DmeWfetAjrwwK3vFhwY5id
+         n28LDeYUbolZZzdQOfy+KXnYZbathm0BNg6LRPmeVz/T9of1tRHrcJ60tY7/F/sxqT33
+         B3FDCtPHyX24NSWny7UhBA3qHzjvQ24yNkoAtgpF0YPxaRkjhRJBKU+p3Nv4sgYkvdyZ
+         K+rDgC5C+Bgj5GCulKs42k0sUkk1m12JUNQ6Utp4GrRV6U5IUBmwfX4r/O5qq5HjSN1u
+         fVGA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=C4BYTgtF;
+       dkim=pass header.i=@linaro.org header.s=google header.b=A137PeAl;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id ffacd0b85a97d-36b3567ee9asor2124741f8f.2.2024.07.29.07.39.14
+        by mx.google.com with SMTPS id 5b1f17b1804b1-42808e85532sor22913285e9.3.2024.07.29.07.40.40
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 29 Jul 2024 07:39:15 -0700 (PDT)
+        Mon, 29 Jul 2024 07:40:41 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=C4BYTgtF;
+       dkim=pass header.i=@linaro.org header.s=google header.b=A137PeAl;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1722263954; x=1722868754; darn=linaro.org;
+        d=linaro.org; s=google; t=1722264040; x=1722868840; darn=linaro.org;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=qEnyOvA1X8TKi0lsodpQGCil95YO2hb3XDAGCjbudWY=;
-        b=C4BYTgtFawxyVMaXgUEpIpFXvAyJgY5WHvJYbXAV8zmsUWKO0NjhSzZCRhExUTp4e5
-         1JV+ej8HPa3bccneGPIkOLhp3j2T0kHgr4dVYsx6wNBRIdiZ/mFdSck9+sMVF1OMUnXy
-         SrB0Rzlap1U2T+ql5lygoeliLnqitPV3/ymdOUH+8J1F0BGlPpztMuaR7KEGkU8NAGES
-         tKB1/gbarsXdYS4jPU0xwzT5kE/DyhU86qfaIYUGSQug8YXTU/CwZTAb5YO6CjImXmkD
-         md/KgU6rDgDPX4cUKkHAai6MjopQIjFbFJw4MTYusAyFYjPorMxX4k/SvAU++usTW4aF
-         Un4g==
+        bh=j3e9b1ZbsCUPjFEgRqJ+hwXbs28Kkpn08+Yw7FV+otA=;
+        b=A137PeAl+tocJrWSnuxKr3d52YydI5KZldUhrsqv6Hw/Tbp0tb6NNs4T8RAzTCEgc4
+         S1SZmA6xUjdDehfjTSd3nuS89mv+LJ5AK24ODWbHF3YkQqLy5tvYGyWs+ADfgvQsExpH
+         kbtTD+Nv9m8EFwpSaPioUgRE/sxbqQx17cp78zz7QUQYp4F1Oebpg9uzq74fRa3KULsM
+         BOc9hcHLG6blXnmbWpZAWB6hr06aelALXY5TfjHh1oINrlMTYQyr8s4kNBBRj0IRI/UN
+         sws6b82MSTB5w20BPSMlffLkDeTNWsxyQLfHV3QiMRksLCKeY8odyyV4hfq12kO6KH/O
+         Scjw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1722263954; x=1722868754;
+        d=1e100.net; s=20230601; t=1722264040; x=1722868840;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=qEnyOvA1X8TKi0lsodpQGCil95YO2hb3XDAGCjbudWY=;
-        b=C14cEVCucJeOEUubLyar/jTdIRPGQLn9LQTZAODSw2B3znN25dwjRafnmaotcsO9vg
-         QV5pq3ObbLqkMUiCKCOkwmPNBPmKrE+j3SZs6mA+E3faUTXp9zN+SLSe+bR69irTgT8D
-         XtXJusPxwqGqE9FYdV/AHxos2LGEWtWokbCUY7gddtEjLxxdwioHs0ZjEGzQAIFnVN6z
-         C6tDaRXiLs56sLlYZblQNqNb6A3M7bY8MKHSLDJ0sMP55WVr11TAOIi005S95zKL6RUy
-         bozCNSxnY7TmOjPSK5udwbwZXC6ZoFi8t3/SayoyjBF/pj3UpQY09nq2PoOUxGh2iHg7
-         A0/A==
-X-Forwarded-Encrypted: i=1; AJvYcCUc8aPXn3AJImT4b5p2xvBYvqn3CEdh2DIL9aUKMaAVCuHmv3iZsnN5VGMoDKZXH63XsxIBG7ijtiDhmXOk6Of9OD8TVRv0
-X-Gm-Message-State: AOJu0Yx6q/CAuDmgfBHIkxhNjQWmmBSIarF5vtGY55sa6wv6QKBTDXXa
-	Jm7VV7V3RK9kO0NmUwea5nwoFM4KNBAqScJ2rWmMOEiePbkFmRCJABHFyIbNRCN4MA==
-X-Google-Smtp-Source: AGHT+IGhrXmQOvCwdmc/mrVWsNfUM8NWLaSEVksL1o/NLVYFClufq9VU4ziPQrR4Ung5I6UYQQ0o4Q==
-X-Received: by 2002:a5d:55d1:0:b0:363:ac4d:c44f with SMTP id ffacd0b85a97d-36b5d7cf02bmr4471297f8f.17.1722263954418;
-        Mon, 29 Jul 2024 07:39:14 -0700 (PDT)
+        bh=j3e9b1ZbsCUPjFEgRqJ+hwXbs28Kkpn08+Yw7FV+otA=;
+        b=u3xyCV4SQfJV63tfdUG7bUh20MIvEL9jU6TXMs+FpkEYoKI1YZ9WUXqVc7QUR3wB7B
+         L/4oK5NPmBinkHC8zHgE3peY30qalxxLQKsi+8fzWF4I3BRPPIqygLcSaSUrOMBaw//L
+         sNsjoG+Es/olH340hWahBFtrezKY8NVdsQs03W4iW/gH8QW5oPz6U7YnS0YKW8wwI3xg
+         k4NCKeb28MoASGK7cfhsEg0bgLdmfIL9UYFz9PqrR55aTQ66cRs9650JguOmFSeedO0M
+         5yK1MbpqPfEmVi37n0ZaWcsiRvLT0zPr/y+DHu0ZDcKS98zSFDa8oRMa+WfeBlHN7Zj8
+         W2Ag==
+X-Forwarded-Encrypted: i=1; AJvYcCXAilf69wlsQWqEp3QVqw58Ko23f1beiGqhG6jYMnDAPUSfu/BCSYaZD5alEKt25XTub9WQRMW6L3WjrDLA/sulstRU3ONr
+X-Gm-Message-State: AOJu0Yx+hGmlLYSzncPv2E4x5qcJwMkecJIxrRKurHunvF4j5b7NVhUq
+	LMd/Q0bkdO6k1PRYbRbfLWt2bb0L/5lz/Yi+karq/0YGa/UKLlBqetytldLtq7+6uA==
+X-Google-Smtp-Source: AGHT+IFHgcVZBSsqx+kJWyuBFGP6dDtPg8rYuEWdm5awfdO3TlQSRElWHr7IrKK+DGDGkjwxVHIITg==
+X-Received: by 2002:a05:600c:3ba6:b0:426:6667:bbbe with SMTP id 5b1f17b1804b1-42811d89a5bmr62687045e9.9.1722264039627;
+        Mon, 29 Jul 2024 07:40:39 -0700 (PDT)
 Return-Path: <philmd@linaro.org>
 Received: from [192.168.69.100] ([176.176.173.10])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-36b36857eb7sm12396324f8f.66.2024.07.29.07.39.11
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-428218a3934sm2651625e9.45.2024.07.29.07.40.37
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 29 Jul 2024 07:39:13 -0700 (PDT)
-Message-ID: <a7f2d78a-4de6-4bc6-9d54-ee646a9001fe@linaro.org>
-Date: Mon, 29 Jul 2024 16:39:10 +0200
+        Mon, 29 Jul 2024 07:40:39 -0700 (PDT)
+Message-ID: <0977da6d-53c9-4ea4-a099-531d76258dfd@linaro.org>
+Date: Mon, 29 Jul 2024 16:40:36 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 10/13] tests/avocado/tuxrun_baselines.py: use Avocado's
- zstd support
+Subject: Re: [PATCH 00/13] Bump Avocado to 103.0 LTS and update tests for
+ compatibility and new features
 To: Cleber Rosa <crosa@redhat.com>, qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
  Beraldo Leal <bleal@redhat.com>,
@@ -95,65 +95,29 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
  Radoslaw Biernacki <rad@semihalf.com>, Paul Durrant <paul@xen.org>,
  Paolo Bonzini <pbonzini@redhat.com>, Akihiko Odaki <akihiko.odaki@daynix.com>
 References: <20240726134438.14720-1-crosa@redhat.com>
- <20240726134438.14720-11-crosa@redhat.com>
 Content-Language: en-US
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20240726134438.14720-11-crosa@redhat.com>
+In-Reply-To: <20240726134438.14720-1-crosa@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-TUID: c59jIOgLnuCX
+X-TUID: 11KNoKw0BYk0
 
 On 26/7/24 15:44, Cleber Rosa wrote:
-> Signed-off-by: Cleber Rosa <crosa@redhat.com>
-> ---
->   tests/avocado/tuxrun_baselines.py | 16 ++++++----------
->   1 file changed, 6 insertions(+), 10 deletions(-)
-> 
-> diff --git a/tests/avocado/tuxrun_baselines.py b/tests/avocado/tuxrun_baselines.py
-> index 736e4aa289..bd02e88ed6 100644
-> --- a/tests/avocado/tuxrun_baselines.py
-> +++ b/tests/avocado/tuxrun_baselines.py
-> @@ -17,6 +17,7 @@
->   from avocado_qemu import QemuSystemTest
->   from avocado_qemu import exec_command, exec_command_and_wait_for_pattern
->   from avocado_qemu import wait_for_console_pattern
-> +from avocado.utils import archive
->   from avocado.utils import process
->   from avocado.utils.path import find_command
->   
-> @@ -40,17 +41,12 @@ def get_tag(self, tagname, default=None):
->   
->           return default
->   
-> +    @skipUnless(archive._probe_zstd_cmd(),
 
-_probe_zstd_cmd() isn't public AFAICT, but more importantly
-this doesn't work because this method has been added in v101.0.
+> Cleber Rosa (13):
+>    tests/avocado: mips: fallback to HTTP given certificate expiration
+>    tests/avocado: mips: add hint for fetchasset plugin
+>    tests/avocado/intel_iommu.py: increase timeout
+>    tests/avocado: add cdrom permission related tests
+>    tests/avocado: machine aarch64: standardize location and RO access
+>    tests/avocado: use more distinct names for assets
+>    tests/avocado/kvm_xen_guest.py: cope with asset RW requirements
+>    testa/avocado: test_arm_emcraft_sf2: handle RW requirements for asset
+>    tests/avocado/boot_xen.py: fetch kernel during test setUp()
+>    tests/avocado/tuxrun_baselines.py: use Avocado's zstd support
+>    tests/avocado/machine_aarch64_sbsaref.py: allow for rw usage of image
+>    Bump avocado to 103.0
+>    Avocado tests: allow for parallel execution of tests
 
-> +                'Could not find "zstd", or it is not able to properly '
-> +                'decompress decompress the rootfs')
->       def setUp(self):
->           super().setUp()
->   
-> -        # We need zstd for all the tuxrun tests
-> -        # See https://github.com/avocado-framework/avocado/issues/5609
-> -        zstd = find_command('zstd', False)
-> -        if zstd is False:
-> -            self.cancel('Could not find "zstd", which is required to '
-> -                        'decompress rootfs')
-> -        self.zstd = zstd
-> -
->           # Process the TuxRun specific tags, most machines work with
->           # reasonable defaults but we sometimes need to tweak the
->           # config. To avoid open coding everything we store all these
-> @@ -99,8 +95,8 @@ def fetch_tuxrun_assets(self, csums=None, dt=None):
->                                            asset_hash = isum,
->                                            algorithm = "sha256")
->   
-> -        cmd = f"{self.zstd} -d {disk_image_zst} -o {self.workdir}/rootfs.ext4"
-> -        process.run(cmd)
-> +        archive.extract(disk_image_zst, os.path.join(self.workdir,
-> +                                                     "rootfs.ext4"))
->   
->           if dt:
->               dsum = csums.get(dt, None)
+Queuing patches #1, #2 and #8. Unfortunately #10 depends on Avocado
+101.0 so can't be merged at this point.

@@ -1,121 +1,138 @@
-Received: by 2002:a17:504:5965:b0:1be9:327d:8ee3 with SMTP id xe5csp2228772njb;
-        Tue, 30 Jul 2024 01:30:32 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWEoivDzqy8iR/kEeoEppkKYkeSx0JuKTdbDwIrVqd9FmiqNScrjaeqzyAyfsP7N2GEl8GMrf/WajICtvo5yaOzng97oMjw
-X-Google-Smtp-Source: AGHT+IHStlunXONHCwotXBasMfvzxaVRABaI3MHtFnW5RykzXOuCNJSOHGrVQyfvD0vE/BZr8RGj
-X-Received: by 2002:a05:620a:414a:b0:7a1:d81a:d71f with SMTP id af79cd13be357-7a1e52568cemr1337614585a.27.1722328232425;
-        Tue, 30 Jul 2024 01:30:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1722328232; cv=none;
+Received: by 2002:a17:504:5965:b0:1be9:327d:8ee3 with SMTP id xe5csp2231016njb;
+        Tue, 30 Jul 2024 01:36:42 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUnecrtKiFalebAtElc034UGD4AzLkIRN2FynxeecM3v1hdkyi7UmIDSWKrr7Dq4B/sVEzRADOGpgS35VDxfhMI4I55J05u
+X-Google-Smtp-Source: AGHT+IFo/MrGjKTYz025YdYEd/Lh6nI6zZ7UhoptceL0jqFAFtKRcnAaDMTqurf0lZaO2kHqrGwG
+X-Received: by 2002:a05:6102:c8d:b0:493:bf96:99b5 with SMTP id ada2fe7eead31-493faceefbcmr9282454137.20.1722328601631;
+        Tue, 30 Jul 2024 01:36:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1722328601; cv=none;
         d=google.com; s=arc-20160816;
-        b=SMdSPVttgFp5fQenmwlZ07FYwniJAai21Pfp0TY1V+B3s00Kry3PISy17uEOG8eaQl
-         eAW58Rb7ohhIphNwTGsldr1sLFvaLMgTKe5gj2ozlOxPIZbDeNYdSxQLOwpZpJf2hd8B
-         8xRveEcH6+aiCalm+QScDvjjoaQhMZFqZnuARV/x4p/Aw8Lbtr2kWUoKKXB9wtQhz/ax
-         V50LO1kAKGC56kl65Pflze9zOAajrn+tsnM87wP8Wnni/HfvSVMy4CLqIktDgXNrTCZQ
-         vJcxKJ9Ehtyfycl5475SUnCjT6VX+bvYqGu/a+eC4a3zByVm29wI4eX8pH4b3atdpY8w
-         DT6A==
+        b=TzWtGeUwf8yMZr+zZaKcg/UuDXGJihvc82Z/dKMd9lEpuu4lpJJZmYmtUNRwjod8Ma
+         riJc339dB7FxqXRbfKmKwaYpuai6t9tHOJEZl1sHg8J6d9Daqy5wlv03Zj6C36SAExUm
+         APna0N63XnQkcnXshqD6J6ZGFuo9/LXfEnQioPRyPXxNMfbEOVq3YebjEuJ00P+WbaAq
+         x3V0W4DpocjKuBh8yqo5lz4AqHJGNphmAKNWNWw7somFVWlmXoY6LnL+9waC2yrTKPRR
+         jV1nsPOzbB31yZWqbuBHCBE3Zrh729z0UDgfvfNWpNil+N685Fy/jj9d1Li2pKEmMKl2
+         1hHw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=bvctSTCxXDG9vkXCPJRFSO2OwM56i0h+SX57avLe2Sg=;
-        fh=t1dD5ONzED16rtaf1zEQ9z4LU3s+Hzu4FFaP6lHHeJE=;
-        b=R4SqDV2M4nUIg094eynmlLOm8GqfihCHF5YOUSCEjcgDx+NdfgOkJ9FlaQy4goAiwF
-         PcCl+bbOG3kGAEFTLgZmH67pBF1CjJZipZDzKO2lAfdbxuDWdT2KVmMoqhpcIEoX/Egu
-         msU13jr89kH8NYcHPWeqUp+YZ+8HW1LbuSDm2bRIh9yxWIW5IGmCvVDop09rUGE/9IB9
-         uIN1DHYqzKPsRTO9rXtKT+51bM2ETKnPZVC44vhYs8e+b5GDuU5uPkwpSfzsPGQv2aj9
-         fWRfZApXRUq9qLaic3d5dY/UWJXosIdixd6SlEo1Vb1KEpEeS5JnCUYEeXXG6rf6GF3m
-         z5XA==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:subject:cc:to:from
+         :date:dkim-signature;
+        bh=jZvxrDQmClMXIYrFtS427ByaFNgahNTrWr4i/x1An7w=;
+        fh=Z9CMYFJ3Mmxkkop1PHOcxErYPee3QLQ5fNEff4CGNME=;
+        b=XdZYUI+fdKRuGmXkjqN9ii+digXpNd0Ji7v1TXKKsU+819bE7TbxjrWClbONENSXJ0
+         p3vC+2mC7TtpT5SkFC4k53ZruePSsrKiU5jOefwbNiiAcr7xA7MySOpeFwafpZNnIkbJ
+         6YGdMkiygdAlYE8AKgErPpCNsVv9Ugheh+tECfCnz8FXXbIsS8l4GIMtC+ckLpABRddA
+         kP3KP2DMBilZULQdYLjjKofhIRN+pw8WGTWjtdS4pJZ86XS/f5jur6CuX+ZBKcGvlXB5
+         FX7cw3f0dH5APOIIO7OHx6ZzfmADZQBcCHK/Y4NF/uVFtAY+fdWIvvKWkTrbU7UzKVPQ
+         Wpyg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="M/4mS9Iq";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FCwvXYI7;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7a1d73c6eadsi1236457785a.222.2024.07.30.01.30.32
+        by mx.google.com with ESMTPS id af79cd13be357-7a1d7470bd1si1244867985a.612.2024.07.30.01.36.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 30 Jul 2024 01:30:32 -0700 (PDT)
+        Tue, 30 Jul 2024 01:36:41 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="M/4mS9Iq";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FCwvXYI7;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sYiF0-0007Ap-57; Tue, 30 Jul 2024 04:29:54 -0400
+	id 1sYiLM-0007cH-6j; Tue, 30 Jul 2024 04:36:28 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1sYiEy-00073I-Dn
- for qemu-arm@nongnu.org; Tue, 30 Jul 2024 04:29:52 -0400
-Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1sYiEw-0004SI-LH
- for qemu-arm@nongnu.org; Tue, 30 Jul 2024 04:29:52 -0400
-Received: by mail-ed1-x52b.google.com with SMTP id
- 4fb4d7f45d1cf-58f9874aeb4so5737986a12.0
- for <qemu-arm@nongnu.org>; Tue, 30 Jul 2024 01:29:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1722328189; x=1722932989; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=bvctSTCxXDG9vkXCPJRFSO2OwM56i0h+SX57avLe2Sg=;
- b=M/4mS9IqJBN5Th0IgQzBCJ1+1LRDe6cN0zwPEmCSIPTbo2P946F3PGZhWAbJO/pXH0
- 2nDkd/iDUheQcmrcgNbKORpzqUUKgYyY6pXCZIGNqP7G9o/qPuNsOL1pRRe5nVSd7SoN
- 5+6yJHvqhV3DhLaZ/H7O9pK4Pgsla8jpUo6AUIw+G8oMBbqhW1IquE4yRxQT7U7alRa9
- rKLlL9Kn5sJwvsu+NL/MamZxxmivJ97pnyC504c09WAuMbFfze+DoVCPixTjEpdHHFhr
- 8qjdMuuGP32Q8XDQ9UL3tjvjcQzPYx2f6rAQjC9NNrLvUbbPI/uFhXjkA75rW+ek0bOZ
- sh2w==
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1sYiLL-0007Zp-MJ
+ for qemu-arm@nongnu.org; Tue, 30 Jul 2024 04:36:27 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1sYiLJ-0005ai-6K
+ for qemu-arm@nongnu.org; Tue, 30 Jul 2024 04:36:27 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1722328583;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=jZvxrDQmClMXIYrFtS427ByaFNgahNTrWr4i/x1An7w=;
+ b=FCwvXYI738oaROtq4AxIQcjcBGpGdJtMpjWXWm1vubV6WHkCTgASyMRiFJbrnkqpDd3+ms
+ e5p7Pj4GV8P3d+oRtdy7QJu+kdmQsX9BoWbts8iPkFE59GKkkMUv5F8fbI0cq85bqvWxAL
+ kUxKoF0oGvHoTTY6tzzmGYGe7Dchs7g=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-664-CAIdd2yONqym4qV3tqMlRA-1; Tue, 30 Jul 2024 04:36:19 -0400
+X-MC-Unique: CAIdd2yONqym4qV3tqMlRA-1
+Received: by mail-wr1-f70.google.com with SMTP id
+ ffacd0b85a97d-3687eca5980so1910737f8f.0
+ for <qemu-arm@nongnu.org>; Tue, 30 Jul 2024 01:36:19 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1722328189; x=1722932989;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=bvctSTCxXDG9vkXCPJRFSO2OwM56i0h+SX57avLe2Sg=;
- b=t4xm4Pgt0SyqBHbfse8BjhGTWnkEXDOCCCDsWXHKuqncjcXAVtNNI9fJ5FsEaFhDIl
- Vi0huvz3h2wy01RQQ8CGmo23jfEtGQoz3hMWTKaNaJ0aoE1iQ0TqjjpenijBDHc7ATDm
- HzJleO9j6KPe8/SKe8sRhDWHriMuAyu4YVokPTKoki8Iek4FvkXOlWh8qCihlpecT152
- 69zpdaUMRi3+K1Te2SSghnkelFBRNgaqEkEJLQabgzRo2/3dMsrsc102XRDhamzNp1Vy
- TJ9iHsDd/ZXgH4EWQAPLjg4iSDmsQKc/DpuBOY4BXimi3yHdklhaccOIYMqg1gPcauBC
- y1iw==
+ d=1e100.net; s=20230601; t=1722328578; x=1722933378;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=jZvxrDQmClMXIYrFtS427ByaFNgahNTrWr4i/x1An7w=;
+ b=P8dNmO7Kx8ldlC6HaVx329v8PtJqH93iqxpQRxW+7IAtU7AXrNTJdbH+8ohVLPWecE
+ Qq+mut51LD4jF1j9nU8mkRx1syMwSMoFB1QotwiPFJHPN0L5ywBaG1pm0+JVtmDRfz87
+ aH9PakZgMU4CqpWPDIal+KQi6ki4dirs3fL1M8YVFTVcL12IJh5QbcGM7qaUgAPAnHTu
+ n133NEagljHDQ6cReiBH88OhuY9myPRNyEoPBehYMZV/2c9iCrv9KDkNscWHywlTlZnY
+ NtKtsFCW4ww5LuKCeoLhtXzUtjGImu35w03jJoSnzRsuYaLO6YoE9RAHddQLZjP77/DQ
+ fC+g==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXJSd+gW1SbbKgRuZHkWxbgM5oVGxyGtiwZJ18KSzqmqSFMuFHz/pb4R/QUGc+aENtZU5gQ88W26uv6NBL6+wQpqtuw
-X-Gm-Message-State: AOJu0YwF/mWyRdqbxWAJD4LOjd5XaACj/oZ4jlp5kDkKuVXeG0LELIW3
- o+IOBNf3+mORwZd7fDKrzxb6FGbYlogQVrEnV1cExO0s9ednKLNOIymuHwKAdxriz+b57RJP77v
- EBrOrqP+1dC4f+TzkQYRTARBnB+YB41gftmFhAQ==
-X-Received: by 2002:a50:a411:0:b0:5a1:7d68:62d8 with SMTP id
- 4fb4d7f45d1cf-5b022c81f43mr5928071a12.38.1722328188753; Tue, 30 Jul 2024
- 01:29:48 -0700 (PDT)
-MIME-Version: 1.0
+ AJvYcCUHLSeU1JYTdI8H5oAUPJVrFHgvmxAvUpr6w7EF0IQHN7Zt3rWFHnXU0yolZJX2ngE266jkCh6/yfd40QlMUQIScxpE
+X-Gm-Message-State: AOJu0YyUOqv3he+88EVMHDTTABqkBR/PAr9hy3uMhVrgahaw5W/D6gZ2
+ mW3ZrzLbNZv6QL2BAm19Tn6WyIJaUOvRHWbQxX78WpaFMflWgkcYN64HmDw3mv+EGbcubjBUD42
+ e+8ieelk2HIZ4UHqR6hzqNiyFwDi6igC2Fcr7z4z6HxTjwbX4WQ==
+X-Received: by 2002:adf:e707:0:b0:367:9088:fecc with SMTP id
+ ffacd0b85a97d-36b5d0b04a6mr7637666f8f.7.1722328578270; 
+ Tue, 30 Jul 2024 01:36:18 -0700 (PDT)
+X-Received: by 2002:adf:e707:0:b0:367:9088:fecc with SMTP id
+ ffacd0b85a97d-36b5d0b04a6mr7637636f8f.7.1722328577802; 
+ Tue, 30 Jul 2024 01:36:17 -0700 (PDT)
+Received: from imammedo.users.ipa.redhat.com (nat-pool-brq-t.redhat.com.
+ [213.175.37.10]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-36b36861b11sm14072497f8f.96.2024.07.30.01.36.16
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 30 Jul 2024 01:36:17 -0700 (PDT)
+Date: Tue, 30 Jul 2024 10:36:15 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>, Shiju Jose
+ <shiju.jose@huawei.com>, "Michael S. Tsirkin" <mst@redhat.com>, Philippe
+ =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@linaro.org>, Ani Sinha
+ <anisinha@redhat.com>, Eduardo Habkost <eduardo@habkost.net>, Marcel
+ Apfelbaum <marcel.apfelbaum@gmail.com>, Peter Maydell
+ <peter.maydell@linaro.org>, Shannon Zhao <shannon.zhaosl@gmail.com>, Yanan
+ Wang <wangyanan55@huawei.com>, linux-kernel@vger.kernel.org,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ shameerali.kolothum.thodi@huawei.com
+Subject: Re: [PATCH v3 2/7] arm/virt: Wire up GPIO error source for ACPI / GHES
+Message-ID: <20240730103615.5bb7613a@imammedo.users.ipa.redhat.com>
+In-Reply-To: <034a7e86761e09996001394c98ffb8201ac52cd2.1721630625.git.mchehab+huawei@kernel.org>
 References: <cover.1721630625.git.mchehab+huawei@kernel.org>
- <bf8367bddfdc95e378b5725c732533c3ba20d388.1721630625.git.mchehab+huawei@kernel.org>
- <20240730092549.6898ff3c@imammedo.users.ipa.redhat.com>
-In-Reply-To: <20240730092549.6898ff3c@imammedo.users.ipa.redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 30 Jul 2024 09:29:37 +0100
-Message-ID: <CAFEAcA8VWc3eQZqfJP9k5LYF-9aLChHQ+uS9UBfGV6nvybDxqQ@mail.gmail.com>
-Subject: Re: [PATCH v3 1/7] arm/virt: place power button pin number on a define
-To: Igor Mammedov <imammedo@redhat.com>
-Cc: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>, 
- Jonathan Cameron <Jonathan.Cameron@huawei.com>,
- Shiju Jose <shiju.jose@huawei.com>, 
- "Michael S. Tsirkin" <mst@redhat.com>, Ani Sinha <anisinha@redhat.com>, 
- Shannon Zhao <shannon.zhaosl@gmail.com>, linux-kernel@vger.kernel.org, 
- qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::52b;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52b.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+ <034a7e86761e09996001394c98ffb8201ac52cd2.1721630625.git.mchehab+huawei@kernel.org>
+X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
+MIME-Version: 1.0
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=imammedo@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.125,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -130,44 +147,214 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: TnJ0W+Lt2MOk
+X-TUID: bBFSt55Y7Klt
 
-On Tue, 30 Jul 2024 at 08:26, Igor Mammedov <imammedo@redhat.com> wrote:
->
-> On Mon, 22 Jul 2024 08:45:53 +0200
-> Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
->
-> > Having magic numbers inside the code is not a good idea, as it
-> > is error-prone. So, instead, create a macro with the number
-> > definition.
-> >
-> > Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-> > Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+On Mon, 22 Jul 2024 08:45:54 +0200
+Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
 
-> > diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> > index b0c68d66a345..c99c8b1713c6 100644
-> > --- a/hw/arm/virt.c
-> > +++ b/hw/arm/virt.c
-> > @@ -1004,7 +1004,7 @@ static void virt_powerdown_req(Notifier *n, void *opaque)
-> >      if (s->acpi_dev) {
-> >          acpi_send_event(s->acpi_dev, ACPI_POWER_DOWN_STATUS);
-> >      } else {
-> > -        /* use gpio Pin 3 for power button event */
-> > +        /* use gpio Pin for power button event */
-> >          qemu_set_irq(qdev_get_gpio_in(gpio_key_dev, 0), 1);
->
-> /me confused, it was saying Pin 3 but is passing 0 as argument where as elsewhere
-> you are passing 3. Is this a bug?
+> From: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+> 
+> Creates a GED - Generic Event Device and set a GPIO to
+> be used or error injection.
 
-No. The gpio_key_dev is a gpio-key device which has one
-input (which you assert to "press the key") and one output,
-which goes high when the key is pressed and then falls
-100ms later. The virt board wires up the output of the
-gpio-key device to input 3 on the PL061 GPIO controller.
-(This happens in create_gpio_keys().) So the code is correct
-to assert input 0 on the gpio-key device and the comment
-isn't wrong that this results in GPIO pin 3 being asserted:
-the link is just indirect.
+QEMU already has GED device, so question is why it wasn't
+used for event delivery?
+I nutshell, I'd really prefer this series being rewritten
+to reuse exiting GED instead of adding ad hoc GPIO and ACPI
+plumbing.
 
-thanks
--- PMM
+PS:
+as side effect of that, error injection could be used no only for
+ARM but other machines that use GED (providing they implement GHES) 
+
+Also CCing Shameer wrt touched power button code
+
+> [mchehab: use a define for the generic event pin number and do some cleanups]
+> Signed-off-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+> Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+> ---
+>  hw/arm/virt-acpi-build.c | 30 ++++++++++++++++++++++++++----
+>  hw/arm/virt.c            | 14 ++++++++++++--
+>  include/hw/arm/virt.h    |  1 +
+>  include/hw/boards.h      |  1 +
+>  4 files changed, 40 insertions(+), 6 deletions(-)
+> 
+> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> index f76fb117adff..c502ccf40909 100644
+> --- a/hw/arm/virt-acpi-build.c
+> +++ b/hw/arm/virt-acpi-build.c
+> @@ -63,6 +63,7 @@
+>  
+>  #define ARM_SPI_BASE 32
+>  
+> +#define ACPI_GENERIC_EVENT_DEVICE "GEDD"
+>  #define ACPI_BUILD_TABLE_SIZE             0x20000
+>  
+>  static void acpi_dsdt_add_cpus(Aml *scope, VirtMachineState *vms)
+> @@ -142,6 +143,8 @@ static void acpi_dsdt_add_pci(Aml *scope, const MemMapEntry *memmap,
+>  static void acpi_dsdt_add_gpio(Aml *scope, const MemMapEntry *gpio_memmap,
+>                                             uint32_t gpio_irq)
+
+this function supposed to be called when acpi_dev is not present (exiting GED device)
+and run on old machines only, so it should not be called for recent machine types.
+I'd avoid adding anything to it.
+
+see more comment about it below
+
+>  {
+> +    uint32_t pin;
+> +
+>      Aml *dev = aml_device("GPO0");
+>      aml_append(dev, aml_name_decl("_HID", aml_string("ARMH0061")));
+>      aml_append(dev, aml_name_decl("_UID", aml_int(0)));
+> @@ -155,7 +158,12 @@ static void acpi_dsdt_add_gpio(Aml *scope, const MemMapEntry *gpio_memmap,
+>  
+>      Aml *aei = aml_resource_template();
+>  
+> -    const uint32_t pin = GPIO_PIN_POWER_BUTTON;
+> +    pin = GPIO_PIN_POWER_BUTTON;
+> +    aml_append(aei, aml_gpio_int(AML_CONSUMER, AML_EDGE, AML_ACTIVE_HIGH,
+> +                                 AML_EXCLUSIVE, AML_PULL_UP, 0, &pin, 1,
+> +                                 "GPO0", NULL, 0));
+> +    /* Pin for generic error */
+> +    pin = GPIO_PIN_GENERIC_ERROR;
+>      aml_append(aei, aml_gpio_int(AML_CONSUMER, AML_EDGE, AML_ACTIVE_HIGH,
+>                                   AML_EXCLUSIVE, AML_PULL_UP, 0, &pin, 1,
+>                                   "GPO0", NULL, 0));
+> @@ -166,6 +174,11 @@ static void acpi_dsdt_add_gpio(Aml *scope, const MemMapEntry *gpio_memmap,
+>      aml_append(method, aml_notify(aml_name(ACPI_POWER_BUTTON_DEVICE),
+>                                    aml_int(0x80)));
+>      aml_append(dev, method);
+> +    method = aml_method("_E06", 0, AML_NOTSERIALIZED);
+> +    aml_append(method, aml_notify(aml_name(ACPI_GENERIC_EVENT_DEVICE),
+> +                                  aml_int(0x80)));
+> +    aml_append(dev, method);
+> +
+>      aml_append(scope, dev);
+>  }
+>  
+> @@ -800,6 +813,15 @@ static void build_fadt_rev6(GArray *table_data, BIOSLinker *linker,
+>      build_fadt(table_data, linker, &fadt, vms->oem_id, vms->oem_table_id);
+>  }
+>  
+> +static void acpi_dsdt_add_generic_event_device(Aml *scope)
+> +{
+> +    Aml *dev = aml_device(ACPI_GENERIC_EVENT_DEVICE);
+> +    aml_append(dev, aml_name_decl("_HID", aml_string("PNP0C33")));
+this is not _event_ device, it's referred as _error_ device in spec.
+
+PS:
+please properly document new ACPI primitives/devices,
+see comment above aml_notify() for example.
+Use earliest APIC spec where the device was defined for the 1st time.
+
+> +    aml_append(dev, aml_name_decl("_UID", aml_int(0)));
+> +    aml_append(dev, aml_name_decl("_STA", aml_int(0xF)));
+> +    aml_append(scope, dev);
+> +}
+> +
+>  /* DSDT */
+>  static void
+>  build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+> @@ -841,10 +863,9 @@ build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>                        HOTPLUG_HANDLER(vms->acpi_dev),
+>                        irqmap[VIRT_ACPI_GED] + ARM_SPI_BASE, AML_SYSTEM_MEMORY,
+>                        memmap[VIRT_ACPI_GED].base);
+> -    } else {
+> -        acpi_dsdt_add_gpio(scope, &memmap[VIRT_GPIO],
+> -                           (irqmap[VIRT_GPIO] + ARM_SPI_BASE));
+>      }
+> +    acpi_dsdt_add_gpio(scope, &memmap[VIRT_GPIO],
+> +                       (irqmap[VIRT_GPIO] + ARM_SPI_BASE));
+
+wouldn't that create double/conflicting power button handlers
+(GPIO and GED one), on recent machine types GED should be used
+and power button in acpi_dsdt_add_gpio() is used only if
+machine doesn't have GED.
+
+>  
+>      if (vms->acpi_dev) {
+>          uint32_t event = object_property_get_uint(OBJECT(vms->acpi_dev),
+> @@ -858,6 +879,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>      }
+>  
+>      acpi_dsdt_add_power_button(scope);
+> +    acpi_dsdt_add_generic_event_device(scope);
+>  #ifdef CONFIG_TPM
+>      acpi_dsdt_add_tpm(scope, vms);
+>  #endif
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index c99c8b1713c6..f81cf3a69961 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -997,6 +997,13 @@ static void create_rtc(const VirtMachineState *vms)
+>  }
+>  
+>  static DeviceState *gpio_key_dev;
+> +
+> +static DeviceState *gpio_error_dev;
+> +static void virt_set_error(void)
+> +{
+> +    qemu_set_irq(qdev_get_gpio_in(gpio_error_dev, 0), 1);
+> +}
+> +
+>  static void virt_powerdown_req(Notifier *n, void *opaque)
+>  {
+>      VirtMachineState *s = container_of(n, VirtMachineState, powerdown_notifier);
+> @@ -1015,6 +1022,9 @@ static void create_gpio_keys(char *fdt, DeviceState *pl061_dev,
+>      gpio_key_dev = sysbus_create_simple("gpio-key", -1,
+>                                          qdev_get_gpio_in(pl061_dev,
+>                                                           GPIO_PIN_POWER_BUTTON));
+> +    gpio_error_dev = sysbus_create_simple("gpio-key", -1,
+> +                                          qdev_get_gpio_in(pl061_dev,
+> +                                                           GPIO_PIN_GENERIC_ERROR));
+>  
+>      qemu_fdt_add_subnode(fdt, "/gpio-keys");
+>      qemu_fdt_setprop_string(fdt, "/gpio-keys", "compatible", "gpio-keys");
+> @@ -2385,9 +2395,8 @@ static void machvirt_init(MachineState *machine)
+>  
+>      if (has_ged && aarch64 && firmware_loaded && virt_is_acpi_enabled(vms)) {
+>          vms->acpi_dev = create_acpi_ged(vms);
+> -    } else {
+> -        create_gpio_devices(vms, VIRT_GPIO, sysmem);
+>      }
+> +    create_gpio_devices(vms, VIRT_GPIO, sysmem);
+
+again, this create duplicate/conflicting power button source
+
+>  
+>      if (vms->secure && !vmc->no_secure_gpio) {
+>          create_gpio_devices(vms, VIRT_SECURE_GPIO, secure_sysmem);
+> @@ -3101,6 +3110,7 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
+>      mc->default_ram_id = "mach-virt.ram";
+>      mc->default_nic = "virtio-net-pci";
+>  
+> +    mc->set_error = virt_set_error;
+>      object_class_property_add(oc, "acpi", "OnOffAuto",
+>          virt_get_acpi, virt_set_acpi,
+>          NULL, NULL);
+> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+> index a4d937ed45ac..c9769d7d4d7f 100644
+> --- a/include/hw/arm/virt.h
+> +++ b/include/hw/arm/virt.h
+> @@ -49,6 +49,7 @@
+>  
+>  /* GPIO pins */
+>  #define GPIO_PIN_POWER_BUTTON  3
+> +#define GPIO_PIN_GENERIC_ERROR 6
+>  
+>  enum {
+>      VIRT_FLASH,
+> diff --git a/include/hw/boards.h b/include/hw/boards.h
+> index ef6f18f2c1a7..6cf01f3934ae 100644
+> --- a/include/hw/boards.h
+> +++ b/include/hw/boards.h
+> @@ -304,6 +304,7 @@ struct MachineClass {
+>      const CPUArchIdList *(*possible_cpu_arch_ids)(MachineState *machine);
+>      int64_t (*get_default_cpu_node_id)(const MachineState *ms, int idx);
+>      ram_addr_t (*fixup_ram_size)(ram_addr_t size);
+> +    void (*set_error)(void);
+>  };
+>  
+>  /**
+

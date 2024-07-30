@@ -1,100 +1,98 @@
-Received: by 2002:a17:504:5965:b0:1be9:327d:8ee3 with SMTP id xe5csp2221953njb;
-        Tue, 30 Jul 2024 01:11:23 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCWDqiiKZSADliFOkDKINOKi+c9hvbFQaqJAW5JdAdES7mgMwgKybd+wTiimn062zdpP38isPLxp1dhJpqmUettccUU17ZZQ
-X-Google-Smtp-Source: AGHT+IHrR7SEjO42cM3H88KX4FHZ6obDMRJ/AWLCLhBM7vATc+hjK+AuK14lpaJDsD+2F42tpaNr
-X-Received: by 2002:a05:6359:4c9e:b0:1a4:e539:26af with SMTP id e5c5f4694b2df-1adf1e5d17bmr1253231555d.27.1722327083685;
+Received: by 2002:a17:504:5965:b0:1be9:327d:8ee3 with SMTP id xe5csp2221956njb;
+        Tue, 30 Jul 2024 01:11:24 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCVUaV5iv0SeZzzg4IZDBGKM2bGJi45GJbqUN17kyMpwtUXiV/PHcBIf1qHDTG3+yWpn4Y3xF+yD1SenIUsWNsAhEL/JvCuV
+X-Google-Smtp-Source: AGHT+IG1lIZLm74f1vTctLsk/32owRuOrihMCL0xCSwaxnMuellsUzndUQvBtrNZpfUzxIni3vIn
+X-Received: by 2002:a50:8a94:0:b0:58b:bb69:763e with SMTP id 4fb4d7f45d1cf-5b46bd7e814mr1014567a12.7.1722327083854;
         Tue, 30 Jul 2024 01:11:23 -0700 (PDT)
 ARC-Seal: i=2; a=rsa-sha256; t=1722327083; cv=pass;
         d=google.com; s=arc-20160816;
-        b=pB9iBPV2bOqU2/VmXYLddZnb9q/o/8JXnwpxQ+xQKop5POfFwAcDvEJ7Q/P4EmtPZ9
-         pCInMTV4s5ZPeECsbieEwgXX/3bmrvINPxCuyTjbRv6z6iX9AcjoSTYkb7TENAzrltqZ
-         FhbQ4uxnooZV842UVZmd8vin6g9lEoiPukSOKr4k5wjxeoNveVjm4TYwq5tWGWOCLUL4
-         k1O3+5ZtwDCc6TXtZbEvU0qQahJRtj0V/bmLsgm0BFauLwELzb47fskvEUZKV4h8iLOk
-         bdkQR8nql5ifssj4VtNkc49A/KKH5wFXa8lzGj8OOZE5Q88EWSEODqWPbs3KcdZjaChD
-         Kjcw==
+        b=U3eFTFSwfXYAyWa/cqp5kpLBkjoMphuNgIQ8yL7FlrRg52ZMSeFYEKLVSy1gNrk/2l
+         4JByuyBNxKRjrbdgpZF1ICsMOlkWTwn9xgNnv19x1V2C+wdgbvogAnvREOE2CPK00y1w
+         2fL/Z/WDDSlEuhXy2uvpVyty9C/Jx6BMHU87+dw4PK0n5lnmj81LDhFX2ddxtXhcbbWS
+         HBaua6k2ZyUzqFWi50vDJQ3/5LpK1/ihaubMMfHRYadYNngeyIeePfVFmpvLqvKP1TWg
+         M+NuGIjVqUFvn+LxunjVLoeEl9ufhFK3jIBuPQfrk6mKF6cDztei5lCp+TQ8uMgweFFM
+         eOrQ==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
-         :date:subject:cc:to:from:dkim-signature;
-        bh=mG2jBgj04xk8zZTpAn2zlZbw7IxC1BxkgwSaG5MXnSU=;
+         :list-subscribe:list-id:precedence:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=mcwOr9AjizPUDyHe+rlQwWKQSKq+gmwmaPATtnSvnEg=;
         fh=K9hvV5Ipi0VSlYxX/fm25RHJYlx13FFj5pikD+TSDpg=;
-        b=fapQp7qgg7qEX/MJ+wLWC7fD/7cwCTzOpDQEsWTL5YvfV3Sp2DoNBK85QXiVzBn3dH
-         bH90ln2VPlItyPVT6fQnZYUeNHIA1/uxkfTQsp5hzCEZ23EazI6Xi044/3VuKrGjUjBo
-         yw850DhwQoa5iFX1GUfidUszJx2ReNS4/TffyjzqsbmJqotKrg9mm39IuDGvtycHLWe1
-         XIxqEjm9XGiKBTHlt3Qk2zOlJwT2yBclhqXLcHwypLa8Mq3cf/uY6JoUkJ3OaiMjLcmb
-         7N0O4j5JVd0sFsAK7X+flkiJZslB4YBgN5KFVwW+BrLDRlxGJp6JuFKgGAngJHwRrgnT
-         UfAA==;
+        b=uSaMs6TQzlSb0ecFwzBgpmsGtdfzqBYkS2sEZTFQMizXFnK0GAuM5cQPJb2keeEqlz
+         CuEMETX0Ljdi6OeRrDOjLfI8yndIegu2Q4NOv8wmEKUKl+04IHDld1SlONDihPsddbFn
+         kuged6lDZcvacbNSSZy3z0L1SYFJ3kCpqbBKa46UejUBzd03XkZ8pxMERl0QcPREsYGt
+         aabhix90qEGNu6vDJL9fsYWu5cnJWbeZtBckVlZ0ZoTF6WvgyWXs3cIm+dxoNE482U6z
+         ASd4B7Vw1xCAdpyvnWvbIUjf03bKeFecaBQGRdrTuYtjlftfHsY5NstBScbz9ZmfEggY
+         c5WA==;
         dara=google.com
 ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Yf4iMYPZ;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RPfCDG5s;
        arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-22616-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) smtp.mailfrom="kvm+bounces-22616-alex.bennee=linaro.org@vger.kernel.org";
+       spf=pass (google.com: domain of kvm+bounces-22617-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="kvm+bounces-22617-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm+bounces-22616-alex.bennee=linaro.org@vger.kernel.org>
-Received: from sy.mirrors.kernel.org (sy.mirrors.kernel.org. [147.75.48.161])
-        by mx.google.com with ESMTPS id 41be03b00d2f7-7a9f96e3b2dsi12338255a12.898.2024.07.30.01.11.23
+Return-Path: <kvm+bounces-22617-alex.bennee=linaro.org@vger.kernel.org>
+Received: from am.mirrors.kernel.org (am.mirrors.kernel.org. [147.75.80.249])
+        by mx.google.com with ESMTPS id 4fb4d7f45d1cf-5af507c6dc5si5716026a12.49.2024.07.30.01.11.23
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Tue, 30 Jul 2024 01:11:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm+bounces-22616-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) client-ip=147.75.48.161;
+Received-SPF: pass (google.com: domain of kvm+bounces-22617-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) client-ip=147.75.80.249;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Yf4iMYPZ;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RPfCDG5s;
        arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-22616-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) smtp.mailfrom="kvm+bounces-22616-alex.bennee=linaro.org@vger.kernel.org";
+       spf=pass (google.com: domain of kvm+bounces-22617-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="kvm+bounces-22617-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by sy.mirrors.kernel.org (Postfix) with ESMTPS id 68544B23650
-	for <alex.bennee@linaro.org>; Tue, 30 Jul 2024 08:11:21 +0000 (UTC)
+	by am.mirrors.kernel.org (Postfix) with ESMTPS id 49DFC1F228F6
+	for <alex.bennee@linaro.org>; Tue, 30 Jul 2024 08:11:23 +0000 (UTC)
 Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id EEF00192B77;
-	Tue, 30 Jul 2024 08:10:53 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 11938192B7E;
+	Tue, 30 Jul 2024 08:10:54 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="Yf4iMYPZ"
+	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="RPfCDG5s"
 Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B9AC5188CBD
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 12A9319007E
 	for <kvm@vger.kernel.org>; Tue, 30 Jul 2024 08:10:51 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.129.124
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1722327053; cv=none; b=f/iHwBD5rgIjByzItB9WZwMQMtphb2Yo5KU/6fmaXHLVWxbwoCNsAEnNbg4x2MIqC3NByKoIdjpNyy45zlpKzo9SOBEior7YBM6CpLyAFiDPTPKX5VTYTvYm/lL5IVfhIHC2y51KaDuMGHAv/4Ue9GFfZsAET2iRlwJ0xO3fXpc=
+	t=1722327053; cv=none; b=QwSAj/rvXje/vT4dmtuanOS3mWwcR3JzGxOhhNY20oH4vyRL0j6cvFKZD5D8Yp+nawssK3T8hBAr7+foxegxrctTn+myptV2ZvKzLCs3khQ4O8/bYsNj//cVDi58I1bxaDfJ68S81Q88Jnocv5gKrgJVV4C91WGJQFQIg/H6X7E=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
 	s=arc-20240116; t=1722327053; c=relaxed/simple;
-	bh=vc0AqLjuXQUOBGAQQBDa1FzAEdrK+BKbs60kwqaG9Gw=;
-	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:
-	 MIME-Version:Content-type; b=HTmQC5Zny8ahV7KG0SBtbHiiJ0p7fUlrfdYdIplASjVxa42MFiS5vh/l/rSsMp69LBNl7oAtNHL5HpUHgaMc6djlMGkma5Kv4riTr8sQ0ovX+rBRH7NYeVyffbeasDdUIitf0vaexAs7i/u83IQ7bqaJeFf2ofY9j1cJccsrYoE=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=Yf4iMYPZ; arc=none smtp.client-ip=170.10.129.124
+	bh=sD2G68XI7Iec8FgVS4/UdwjSznmyaaabdnEQvJxRC24=;
+	h=From:To:Cc:Subject:Date:Message-ID:MIME-Version:Content-type; b=inSKUBAh1uDJ0g5a/effIB6vyxPkTKxKrYzI9ur0H8BjPaI2Ikta3EcWCYmkN6gNh0hyJjZ8J5TEYBte+Mmo1HtwSBstDjYYSaeu7jCeLvKXMOTuIvrVFK52d/zRUg0Pea0rf1bGl/HtDSP9z9Y2WsRlLEoxE7djZHQKnPOR9U0=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=RPfCDG5s; arc=none smtp.client-ip=170.10.129.124
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1722327050;
+	s=mimecast20190719; t=1722327051;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=mG2jBgj04xk8zZTpAn2zlZbw7IxC1BxkgwSaG5MXnSU=;
-	b=Yf4iMYPZGcOilTavJj0doeglDvcTBv7ErXaozY8l0/KqFLfZ1RpTZzNrT2Uz8kDtk01BF2
-	jt+cVa6N0ioy4Y1PlToKMdw4BLg2wjKxR32C3bMF9rAmONmZv25FCycqMnXZfUqsmolQcX
-	5GXP+WN/BMisw/8xp7TRVw3qVhv18kE=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=mcwOr9AjizPUDyHe+rlQwWKQSKq+gmwmaPATtnSvnEg=;
+	b=RPfCDG5swdzteeywbNv1/9pC+Wmf+hp0MuzBkDVuJLi8/wskJJqCbEoK/H3u21dgFgUopJ
+	MRdh1vqV2/QnLW+SYlF89t9JBaA/xwG4mvdGyixU5hAu6l5WNYbKrejd9S4r0xOvkixibC
+	zw5Gjr3XmPNKN7uYBGEJeVeM92mUM0g=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-231-a9-VGcDbOEWUkAtlAAG-6Q-1; Tue,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-209-Xo4kVDoMMymXglKOGkDylQ-1; Tue,
  30 Jul 2024 04:10:47 -0400
-X-MC-Unique: a9-VGcDbOEWUkAtlAAG-6Q-1
-Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
+X-MC-Unique: Xo4kVDoMMymXglKOGkDylQ-1
+Received: from mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.15])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 223DA1955BF2;
+	by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id A19EA19560B1;
 	Tue, 30 Jul 2024 08:10:43 +0000 (UTC)
 Received: from blackfin.pond.sub.org (unknown [10.39.192.65])
-	by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 98D6019560AE;
-	Tue, 30 Jul 2024 08:10:41 +0000 (UTC)
+	by mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id E3E9F1955D42;
+	Tue, 30 Jul 2024 08:10:34 +0000 (UTC)
 Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id EB3AE21F4B96; Tue, 30 Jul 2024 10:10:32 +0200 (CEST)
+	id C512721E6693; Tue, 30 Jul 2024 10:10:32 +0200 (CEST)
 From: Markus Armbruster <armbru@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: alex.williamson@redhat.com,
@@ -145,11 +143,9 @@ Cc: alex.williamson@redhat.com,
 	qemu-arm@nongnu.org,
 	qemu-s390x@nongnu.org,
 	kvm@vger.kernel.org
-Subject: [PATCH 09/18] qapi/machine: Rename CpuS390* to S390Cpu, and drop 'prefix'
-Date: Tue, 30 Jul 2024 10:10:23 +0200
-Message-ID: <20240730081032.1246748-10-armbru@redhat.com>
-In-Reply-To: <20240730081032.1246748-1-armbru@redhat.com>
-References: <20240730081032.1246748-1-armbru@redhat.com>
+Subject: [PATCH 00/18] qapi: Reduce use of 'prefix'.
+Date: Tue, 30 Jul 2024 10:10:14 +0200
+Message-ID: <20240730081032.1246748-1-armbru@redhat.com>
 Precedence: bulk
 X-Mailing-List: kvm@vger.kernel.org
 List-Id: <kvm.vger.kernel.org>
@@ -158,243 +154,178 @@ List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
 Content-type: text/plain
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-TUID: 8ZRibvrlBGNn
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.15
+X-TUID: y1L/s8rkeBWr
 
 QAPI's 'prefix' feature can make the connection between enumeration
 type and its constants less than obvious.  It's best used with
 restraint.
 
-CpuS390Entitlement has a 'prefix' to change the generated enumeration
-constants' prefix from CPU_S390_POLARIZATION to S390_CPU_POLARIZATION.
-Rename the type to S390CpuEntitlement, so that 'prefix' is not needed.
+We use 'prefix' for a number of reasons:
 
-Likewise change CpuS390Polarization to S390CpuPolarization, and
-CpuS390State to S390CpuState.
+* To override an ugly default.
 
-Signed-off-by: Markus Armbruster <armbru@redhat.com>
----
- qapi/machine-common.json            |  5 ++---
- qapi/machine-target.json            | 11 +++++------
- qapi/machine.json                   |  9 ++++-----
- qapi/pragma.json                    |  6 +++---
- include/hw/qdev-properties-system.h |  2 +-
- include/hw/s390x/cpu-topology.h     |  2 +-
- target/s390x/cpu.h                  |  2 +-
- hw/core/qdev-properties-system.c    |  6 +++---
- hw/s390x/cpu-topology.c             |  6 +++---
- 9 files changed, 23 insertions(+), 26 deletions(-)
+* To shorten the prefix.
 
-diff --git a/qapi/machine-common.json b/qapi/machine-common.json
-index fa6bd71d12..b64e4895cf 100644
---- a/qapi/machine-common.json
-+++ b/qapi/machine-common.json
-@@ -9,13 +9,12 @@
- ##
- 
- ##
--# @CpuS390Entitlement:
-+# @S390CpuEntitlement:
- #
- # An enumeration of CPU entitlements that can be assumed by a virtual
- # S390 CPU
- #
- # Since: 8.2
- ##
--{ 'enum': 'CpuS390Entitlement',
--  'prefix': 'S390_CPU_ENTITLEMENT',
-+{ 'enum': 'S390CpuEntitlement',
-   'data': [ 'auto', 'low', 'medium', 'high' ] }
-diff --git a/qapi/machine-target.json b/qapi/machine-target.json
-index a552e2b0ce..6ee682adad 100644
---- a/qapi/machine-target.json
-+++ b/qapi/machine-target.json
-@@ -400,15 +400,14 @@
-                    'TARGET_RISCV' ] } }
- 
- ##
--# @CpuS390Polarization:
-+# @S390CpuPolarization:
- #
- # An enumeration of CPU polarization that can be assumed by a virtual
- # S390 CPU
- #
- # Since: 8.2
- ##
--{ 'enum': 'CpuS390Polarization',
--  'prefix': 'S390_CPU_POLARIZATION',
-+{ 'enum': 'S390CpuPolarization',
-   'data': [ 'horizontal', 'vertical' ],
-   'if': 'TARGET_S390X'
- }
-@@ -445,7 +444,7 @@
-       '*socket-id': 'uint16',
-       '*book-id': 'uint16',
-       '*drawer-id': 'uint16',
--      '*entitlement': 'CpuS390Entitlement',
-+      '*entitlement': 'S390CpuEntitlement',
-       '*dedicated': 'bool'
-   },
-   'features': [ 'unstable' ],
-@@ -483,7 +482,7 @@
- #          "timestamp": { "seconds": 1401385907, "microseconds": 422329 } }
- ##
- { 'event': 'CPU_POLARIZATION_CHANGE',
--  'data': { 'polarization': 'CpuS390Polarization' },
-+  'data': { 'polarization': 'S390CpuPolarization' },
-   'features': [ 'unstable' ],
-   'if': { 'all': [ 'TARGET_S390X', 'CONFIG_KVM' ] }
- }
-@@ -498,7 +497,7 @@
- # Since: 8.2
- ##
- { 'struct': 'CpuPolarizationInfo',
--  'data': { 'polarization': 'CpuS390Polarization' },
-+  'data': { 'polarization': 'S390CpuPolarization' },
-   'if': { 'all': [ 'TARGET_S390X', 'CONFIG_KVM' ] }
- }
- 
-diff --git a/qapi/machine.json b/qapi/machine.json
-index fcfd249e2d..bdb418696d 100644
---- a/qapi/machine.json
-+++ b/qapi/machine.json
-@@ -41,15 +41,14 @@
-              'x86_64', 'xtensa', 'xtensaeb' ] }
- 
- ##
--# @CpuS390State:
-+# @S390CpuState:
- #
- # An enumeration of cpu states that can be assumed by a virtual S390
- # CPU
- #
- # Since: 2.12
- ##
--{ 'enum': 'CpuS390State',
--  'prefix': 'S390_CPU_STATE',
-+{ 'enum': 'S390CpuState',
-   'data': [ 'uninitialized', 'stopped', 'check-stop', 'operating', 'load' ] }
- 
- ##
-@@ -66,9 +65,9 @@
- # Since: 2.12
- ##
- { 'struct': 'CpuInfoS390',
--  'data': { 'cpu-state': 'CpuS390State',
-+  'data': { 'cpu-state': 'S390CpuState',
-             '*dedicated': 'bool',
--            '*entitlement': 'CpuS390Entitlement' } }
-+            '*entitlement': 'S390CpuEntitlement' } }
- 
- ##
- # @CpuInfoFast:
-diff --git a/qapi/pragma.json b/qapi/pragma.json
-index 59fbe74b8c..beddea5ca4 100644
---- a/qapi/pragma.json
-+++ b/qapi/pragma.json
-@@ -47,9 +47,9 @@
-         'BlockdevSnapshotWrapper',
-         'BlockdevVmdkAdapterType',
-         'ChardevBackendKind',
--        'CpuS390Entitlement',
--        'CpuS390Polarization',
--        'CpuS390State',
-+        'S390CpuEntitlement',
-+        'S390CpuPolarization',
-+        'S390CpuState',
-         'CxlCorErrorType',
-         'DisplayProtocol',
-         'DriveBackupWrapper',
-diff --git a/include/hw/qdev-properties-system.h b/include/hw/qdev-properties-system.h
-index 438f65389f..cdcc63056e 100644
---- a/include/hw/qdev-properties-system.h
-+++ b/include/hw/qdev-properties-system.h
-@@ -88,7 +88,7 @@ extern const PropertyInfo qdev_prop_iothread_vq_mapping_list;
- 
- #define DEFINE_PROP_CPUS390ENTITLEMENT(_n, _s, _f, _d) \
-     DEFINE_PROP_SIGNED(_n, _s, _f, _d, qdev_prop_cpus390entitlement, \
--                       CpuS390Entitlement)
-+                       S390CpuEntitlement)
- 
- #define DEFINE_PROP_IOTHREAD_VQ_MAPPING_LIST(_name, _state, _field) \
-     DEFINE_PROP(_name, _state, _field, qdev_prop_iothread_vq_mapping_list, \
-diff --git a/include/hw/s390x/cpu-topology.h b/include/hw/s390x/cpu-topology.h
-index c064f427e9..a11b1baa77 100644
---- a/include/hw/s390x/cpu-topology.h
-+++ b/include/hw/s390x/cpu-topology.h
-@@ -37,7 +37,7 @@ typedef struct S390TopologyEntry {
- 
- typedef struct S390Topology {
-     uint8_t *cores_per_socket;
--    CpuS390Polarization polarization;
-+    S390CpuPolarization polarization;
- } S390Topology;
- 
- typedef QTAILQ_HEAD(, S390TopologyEntry) S390TopologyList;
-diff --git a/target/s390x/cpu.h b/target/s390x/cpu.h
-index d6b75ad0e0..6cbd77dfdf 100644
---- a/target/s390x/cpu.h
-+++ b/target/s390x/cpu.h
-@@ -133,7 +133,7 @@ typedef struct CPUArchState {
-     int32_t book_id;
-     int32_t drawer_id;
-     bool dedicated;
--    CpuS390Entitlement entitlement; /* Used only for vertical polarization */
-+    S390CpuEntitlement entitlement; /* Used only for vertical polarization */
-     uint64_t cpuid;
- #endif
- 
-diff --git a/hw/core/qdev-properties-system.c b/hw/core/qdev-properties-system.c
-index f13350b4fb..f2db20417a 100644
---- a/hw/core/qdev-properties-system.c
-+++ b/hw/core/qdev-properties-system.c
-@@ -1188,12 +1188,12 @@ const PropertyInfo qdev_prop_uuid = {
- 
- /* --- s390 cpu entitlement policy --- */
- 
--QEMU_BUILD_BUG_ON(sizeof(CpuS390Entitlement) != sizeof(int));
-+QEMU_BUILD_BUG_ON(sizeof(S390CpuEntitlement) != sizeof(int));
- 
- const PropertyInfo qdev_prop_cpus390entitlement = {
--    .name  = "CpuS390Entitlement",
-+    .name  = "S390CpuEntitlement",
-     .description = "low/medium (default)/high",
--    .enum_table  = &CpuS390Entitlement_lookup,
-+    .enum_table  = &S390CpuEntitlement_lookup,
-     .get   = qdev_propinfo_get_enum,
-     .set   = qdev_propinfo_set_enum,
-     .set_default_value = qdev_propinfo_set_default_value_enum,
-diff --git a/hw/s390x/cpu-topology.c b/hw/s390x/cpu-topology.c
-index f16bdf65fa..7d4e1f5472 100644
---- a/hw/s390x/cpu-topology.c
-+++ b/hw/s390x/cpu-topology.c
-@@ -105,7 +105,7 @@ static void s390_topology_init(MachineState *ms)
-  */
- void s390_handle_ptf(S390CPU *cpu, uint8_t r1, uintptr_t ra)
- {
--    CpuS390Polarization polarization;
-+    S390CpuPolarization polarization;
-     CPUS390XState *env = &cpu->env;
-     uint64_t reg = env->regs[r1];
-     int fc = reg & S390_TOPO_FC_MASK;
-@@ -357,7 +357,7 @@ static void s390_change_topology(uint16_t core_id,
-                                  bool has_book_id, uint16_t book_id,
-                                  bool has_drawer_id, uint16_t drawer_id,
-                                  bool has_entitlement,
--                                 CpuS390Entitlement entitlement,
-+                                 S390CpuEntitlement entitlement,
-                                  bool has_dedicated, bool dedicated,
-                                  Error **errp)
- {
-@@ -446,7 +446,7 @@ void qmp_set_cpu_topology(uint16_t core,
-                           bool has_socket, uint16_t socket,
-                           bool has_book, uint16_t book,
-                           bool has_drawer, uint16_t drawer,
--                          bool has_entitlement, CpuS390Entitlement entitlement,
-+                          bool has_entitlement, S390CpuEntitlement entitlement,
-                           bool has_dedicated, bool dedicated,
-                           Error **errp)
- {
+* To work around name clashes.
+
+This series attacks the first two.  It additionally improves a number
+of ugly prefixes we don't override.
+
+PATCH 01 improves the default prefix, and drops 'prefix' where it is
+now redundant.  The patch adds temporary 'prefix' to not change
+generated code.
+
+PATCH 02-08 revert the temporary 'prefix'.
+
+PATCH 10,17 drop 'prefix' where the default is now better.
+
+PATCH 09,11-15,18 rename QAPI types, and drop their 'prefix'.  I'm
+prepared to adjust the renames according to maintainers' preference.
+
+PATCH 16 renames a non-QAPI type for consistency.
+
+Markus Armbruster (18):
+  qapi: Smarter camel_to_upper() to reduce need for 'prefix'
+  tests/qapi-schema: Drop temporary 'prefix'
+  qapi/block-core: Drop temporary 'prefix'
+  qapi/common: Drop temporary 'prefix'
+  qapi/crypto: Drop temporary 'prefix'
+  qapi/ebpf: Drop temporary 'prefix'
+  qapi/machine: Drop temporary 'prefix'
+  qapi/ui: Drop temporary 'prefix'
+  qapi/machine: Rename CpuS390* to S390Cpu, and drop 'prefix'
+  qapi/crypto: Drop unwanted 'prefix'
+  qapi/crypto: Rename QCryptoHashAlgorithm to *Algo, and drop prefix
+  qapi/crypto: Rename QCryptoCipherAlgorithm to *Algo, and drop prefix
+  qapi/crypto: Rename QCryptoIVGenAlgorithm to *Algo, and drop prefix
+  qapi/crypto: Rename QCryptoAkCipherAlgorithm to *Algo, and drop prefix
+  qapi/crypto: Rename QCryptoRSAPaddingAlgorithm to *Algo, and drop
+    prefix
+  qapi/crypto: Rename QCryptoAFAlg to QCryptoAFAlgo
+  qapi/cryptodev: Drop unwanted 'prefix'
+  qapi/cryptodev: Rename QCryptodevBackendAlgType to *Algo, and drop
+    prefix
+
+ qapi/block-core.json                     |   4 +-
+ qapi/crypto.json                         |  56 ++++------
+ qapi/cryptodev.json                      |   7 +-
+ qapi/machine-common.json                 |   5 +-
+ qapi/machine-target.json                 |  11 +-
+ qapi/machine.json                        |   9 +-
+ qapi/migration.json                      |   1 +
+ qapi/pragma.json                         |   6 +-
+ qapi/ui.json                             |   1 +
+ crypto/afalgpriv.h                       |  14 +--
+ crypto/akcipherpriv.h                    |   2 +-
+ crypto/blockpriv.h                       |   6 +-
+ crypto/cipherpriv.h                      |   2 +-
+ crypto/hashpriv.h                        |   2 +-
+ crypto/hmacpriv.h                        |   4 +-
+ crypto/ivgenpriv.h                       |   6 +-
+ include/crypto/afsplit.h                 |   8 +-
+ include/crypto/block.h                   |   2 +-
+ include/crypto/cipher.h                  |  18 ++--
+ include/crypto/hash.h                    |  18 ++--
+ include/crypto/hmac.h                    |   6 +-
+ include/crypto/ivgen.h                   |  30 +++---
+ include/crypto/pbkdf.h                   |  14 +--
+ include/hw/qdev-properties-system.h      |   2 +-
+ include/hw/s390x/cpu-topology.h          |   2 +-
+ include/sysemu/cryptodev.h               |   2 +-
+ target/s390x/cpu.h                       |   2 +-
+ backends/cryptodev-builtin.c             |  52 ++++-----
+ backends/cryptodev-lkcf.c                |  36 +++----
+ backends/cryptodev-vhost-user.c          |   6 +-
+ backends/cryptodev.c                     |  12 +--
+ block.c                                  |   6 +-
+ block/crypto.c                           |  10 +-
+ block/parallels-ext.c                    |   2 +-
+ block/qcow.c                             |   2 +-
+ block/qcow2.c                            |  10 +-
+ block/quorum.c                           |   4 +-
+ block/rbd.c                              |   4 +-
+ crypto/afalg.c                           |   8 +-
+ crypto/afsplit.c                         |   6 +-
+ crypto/akcipher.c                        |   2 +-
+ crypto/block-luks.c                      | 128 +++++++++++------------
+ crypto/block-qcow.c                      |   6 +-
+ crypto/block.c                           |   8 +-
+ crypto/cipher-afalg.c                    |  36 +++----
+ crypto/cipher.c                          |  72 ++++++-------
+ crypto/hash-afalg.c                      |  40 +++----
+ crypto/hash-gcrypt.c                     |  20 ++--
+ crypto/hash-glib.c                       |  20 ++--
+ crypto/hash-gnutls.c                     |  20 ++--
+ crypto/hash-nettle.c                     |  18 ++--
+ crypto/hash.c                            |  30 +++---
+ crypto/hmac-gcrypt.c                     |  22 ++--
+ crypto/hmac-glib.c                       |  22 ++--
+ crypto/hmac-gnutls.c                     |  22 ++--
+ crypto/hmac-nettle.c                     |  22 ++--
+ crypto/hmac.c                            |   2 +-
+ crypto/ivgen.c                           |  18 ++--
+ crypto/pbkdf-gcrypt.c                    |  36 +++----
+ crypto/pbkdf-gnutls.c                    |  36 +++----
+ crypto/pbkdf-nettle.c                    |  32 +++---
+ crypto/pbkdf-stub.c                      |   4 +-
+ crypto/pbkdf.c                           |   2 +-
+ crypto/secret_common.c                   |   2 +-
+ ebpf/ebpf_rss.c                          |   2 +-
+ hw/core/numa.c                           |   4 +-
+ hw/core/qdev-properties-system.c         |   6 +-
+ hw/misc/aspeed_hace.c                    |  16 +--
+ hw/pci-bridge/cxl_upstream.c             |   4 +-
+ hw/s390x/cpu-topology.c                  |   6 +-
+ hw/vfio/pci.c                            |  10 +-
+ hw/virtio/virtio-crypto.c                |  24 ++---
+ io/channel-websock.c                     |   2 +-
+ system/vl.c                              |   2 +-
+ target/i386/sev.c                        |   6 +-
+ tests/bench/benchmark-crypto-akcipher.c  |  28 ++---
+ tests/bench/benchmark-crypto-cipher.c    |  22 ++--
+ tests/bench/benchmark-crypto-hash.c      |  10 +-
+ tests/bench/benchmark-crypto-hmac.c      |   6 +-
+ tests/unit/test-crypto-afsplit.c         |  10 +-
+ tests/unit/test-crypto-akcipher.c        |  54 +++++-----
+ tests/unit/test-crypto-block.c           |  58 +++++-----
+ tests/unit/test-crypto-cipher.c          |  66 ++++++------
+ tests/unit/test-crypto-hash.c            |  42 ++++----
+ tests/unit/test-crypto-hmac.c            |  16 +--
+ tests/unit/test-crypto-ivgen.c           |  38 +++----
+ tests/unit/test-crypto-pbkdf.c           |  44 ++++----
+ tests/unit/test-qobject-input-visitor.c  |   4 +-
+ tests/unit/test-qobject-output-visitor.c |   4 +-
+ ui/dbus.c                                |   8 +-
+ ui/egl-context.c                         |   2 +-
+ ui/egl-headless.c                        |   2 +-
+ ui/egl-helpers.c                         |  12 +--
+ ui/gtk.c                                 |   4 +-
+ ui/sdl2-gl.c                             |   8 +-
+ ui/sdl2.c                                |   2 +-
+ ui/spice-core.c                          |   2 +-
+ ui/vnc.c                                 |   6 +-
+ util/hbitmap.c                           |   2 +-
+ crypto/akcipher-gcrypt.c.inc             |  44 ++++----
+ crypto/akcipher-nettle.c.inc             |  56 +++++-----
+ crypto/cipher-builtin.c.inc              |  18 ++--
+ crypto/cipher-gcrypt.c.inc               |  56 +++++-----
+ crypto/cipher-gnutls.c.inc               |  38 +++----
+ crypto/cipher-nettle.c.inc               |  58 +++++-----
+ crypto/rsakey-builtin.c.inc              |   4 +-
+ crypto/rsakey-nettle.c.inc               |   4 +-
+ scripts/qapi/common.py                   |  42 ++++----
+ scripts/qapi/schema.py                   |   2 +-
+ tests/qapi-schema/alternate-array.out    |   1 -
+ tests/qapi-schema/comments.out           |   1 -
+ tests/qapi-schema/doc-good.out           |   1 -
+ tests/qapi-schema/empty.out              |   1 -
+ tests/qapi-schema/include-repetition.out |   1 -
+ tests/qapi-schema/include-simple.out     |   1 -
+ tests/qapi-schema/indented-expr.out      |   1 -
+ tests/qapi-schema/qapi-schema-test.out   |   1 -
+ 117 files changed, 932 insertions(+), 948 deletions(-)
+
 -- 
 2.45.0
 

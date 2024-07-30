@@ -1,160 +1,388 @@
-Received: by 2002:a05:7022:429:b0:85:21:bd5b with SMTP id 41csp765680dlf;
-        Tue, 30 Jul 2024 04:34:21 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUO/OzFjv4fGhP6iDnizk/dgHQgbDMtcujjZV/1ja9q1aNGjKQk/Yqfh88sf/jJfO4eH0p+C3G3Enl2HMDr2KpnOtI2etK4
-X-Google-Smtp-Source: AGHT+IGt8A8Dce5YcZq6rVHJZjoC16Ewzo27+/TnWo2wcP4JDIu9gS4GIBnA1k0A2fxMnbb0joAD
-X-Received: by 2002:ac8:57cb:0:b0:446:5538:40e1 with SMTP id d75a77b69052e-45004d8140amr137235571cf.17.1722339261402;
-        Tue, 30 Jul 2024 04:34:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1722339261; cv=none;
+Received: by 2002:a17:504:5965:b0:1be9:327d:8ee3 with SMTP id xe5csp2322965njb;
+        Tue, 30 Jul 2024 05:22:49 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCXKXEfRzEP4C8NuVCF5TurjWAkSVwr233PnDlbuVUZnWXt0kySHY6RSvYLxCS4W/znz5pyREZKF5W1A20nYdPIyvgdyudYZ
+X-Google-Smtp-Source: AGHT+IEPWlevUqohWVnT+25+0g4x9xgj0+fkKmhCzcrQRl5YHaCCh0jd+/kW7IU8hr3qWGXnSLla
+X-Received: by 2002:a05:6a21:3483:b0:1c2:92a1:9328 with SMTP id adf61e73a8af0-1c4a1179b3fmr9520833637.8.1722342168850;
+        Tue, 30 Jul 2024 05:22:48 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1722342168; cv=pass;
         d=google.com; s=arc-20160816;
-        b=qNTdBZUJChA1XkSxwJ1vXNW7gUrxvyWl0AEAqFOW0QMAN+vnZ7cHXO1zjpS/xBzFJ6
-         lFwScujUsrl+xlP6HwNc2sgGy6b+1IwNULUecH7Jn43ZvhaqqBXX0Kfdr7CDj1pm7KF5
-         PDRjN0KyU+b/ndqocLarIPbyyo6ltmeQ7mYbz0JC8WpLttkDXJJeZrT6sVtsvrwrHoDj
-         vwOAWLHYdqtkvE/XUKFanjHDq8V6sxww/wxCLJWJQDkGpSzTSfMGHppHtcpoapyT0j3i
-         GZ713HGPx6iUIgT4lYbheREDsawihLWKGFpYInWW/eC6n4bxjcTY6ttjvhdLSEuPH3tW
-         qq6g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=YNB0aAcuCiZi0xjooF9GaiE5hnT1Sw4aBSA8wLWdHYM=;
-        fh=VQUMc85x8ANizanga/Uk0eVpSOWbPwTPWK+d/C2OKHM=;
-        b=wFQM0VldC2IcCE07XxzusMeUOQwlfYIWM6cnVX7EhqAOLABSawj8BFJKDU0bK4NKcj
-         MqEQ1UqCimAP5XQd5Q3m6bqPBeEOZ6QsbXTQYoavj7Vn4JVKZBG/4Anxb9Qy8Vy3tMlH
-         u9XmtIcYcOKzHf42nmwC2EpK8J8SeY0rN+J5Qj0xNrlnOqxp/AvrrdPDo0wN7byaLjBB
-         iL+uvZBERHi21KUtroST5vgNXOg1IdeBEj4egL0TLmqmKvd3nalauOI5gGvkwjtzIkeB
-         2hvHdrp8TZVVDxu2WOyWYO9RWrelp3wp6+5qXAuJGRZgrMDI0mV0dIYgURp5R3ThLySm
-         mYqw==;
+        b=SMIrIAal+Bawo8650Va7bf7cY//ip6UCqseTmgKHfVk3DnLqp5F8f+zGFm2UmZK6lg
+         CtSEL/B/09gHwFD8MstJZ+414eK84qCbmY52zER55scTTvto8bLd11lu43ttWBLPmSPD
+         KN/gImUopPahMpt1aP8tPYpNJNLPYpYcDknZ9bgNavBMylLYaSEzLknDlkEKMa5Czs00
+         2B7bq65dx3r1jx4v1dZD9P9E2Gb7wjx2mQylQ/np2sXBpTIa17DWLowqXhpuNDUFLLdb
+         0UoWtd7TXYAA+fAhjQcbG/Tu+T+m8OzKguLch51K5z3eGnt254huJeL0+fkT9B3Ctsw5
+         cW7g==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:user-agent:message-id:date
+         :references:in-reply-to:subject:cc:to:from:dkim-signature;
+        bh=JRk+4VeVtW9bJfH/zMAgm0k34GZlfKGTGWDXXfmPzw0=;
+        fh=/fYDk42ESlj/acv+ejaDe9jDQ0Bgw/phDpf2ewvaNms=;
+        b=oVTpmUxG8WXSA0ivcreKsKvjmn5tuQOhZKcVTOOg0Qr4ADywMyUm14M25F6itGq26z
+         VaQvpABHtYD1B6wqHQOrUqH+LQvJ8cphHr/Gk8yc6DbzZntwB6+kDJkUij2xdFZP12+3
+         Y2nygj0FH/r01kaFKhnVhU5l3Zxr3mTgBtNnCOvnBrax/wXtrRhAwBknb2nbFwjOt+lh
+         RlV/q9JNOiNPvAU/V1opsjAnMRBwOrdfT3rhujlQ5o/3CfXBFA5EqNothX5U4Niq6D2R
+         t7M0+wWrkoaTGJohN4/OV5HTV/H9+5wK5FdMPoLkyi06aqGyZjY6zELMSEUU/bbclStW
+         LSlw==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=BzA0ARq0;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-44fe8423fd2si123730781cf.619.2024.07.30.04.34.21
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fbWoP+wF;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of kvm+bounces-22669-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="kvm+bounces-22669-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kvm+bounces-22669-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [139.178.88.99])
+        by mx.google.com with ESMTPS id 98e67ed59e1d1-2cdb75e239fsi14272521a91.102.2024.07.30.05.22.48
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 30 Jul 2024 04:34:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 30 Jul 2024 05:22:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm+bounces-22669-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) client-ip=139.178.88.99;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=BzA0ARq0;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sYl73-00032u-QF; Tue, 30 Jul 2024 07:33:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1sYl72-00031U-Pi
- for qemu-devel@nongnu.org; Tue, 30 Jul 2024 07:33:52 -0400
-Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1sYl71-0003Yv-2A
- for qemu-devel@nongnu.org; Tue, 30 Jul 2024 07:33:52 -0400
-Received: by mail-pl1-x62f.google.com with SMTP id
- d9443c01a7336-1fc52394c92so36209275ad.1
- for <qemu-devel@nongnu.org>; Tue, 30 Jul 2024 04:33:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1722339229; x=1722944029; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=YNB0aAcuCiZi0xjooF9GaiE5hnT1Sw4aBSA8wLWdHYM=;
- b=BzA0ARq0ID0SQ2/WYfUIWSObjvBbQu8zA8eiEycsy7YzoG3Nz3aNcUMXHHw9yQBT37
- J0+XIPJ0Pc4XNLjcU1s24zRgW1sOgaj4HtPQy+DketuldGOitgTxanCb7yYfvstI2Qvb
- gxUn+kX0LQRvPfDozapXQc3W1oAlzLKXbDizsBPS8sGHL2rwkB4T1kBeoaBDN5HIhqzO
- U89zfLGPFe7rvmH06dJta8xZvf4Ngyj1z7pIgX3iO2oQ+XJ0V9VaI5kFYlxK8PC9ls1Z
- ifKGTyRYpwTM9oDU0EU4p2GBpkP5qBKu4nv0THckYWc5KBgfiLFmKpvTWlzp4tHZLIg2
- GJyA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1722339229; x=1722944029;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=YNB0aAcuCiZi0xjooF9GaiE5hnT1Sw4aBSA8wLWdHYM=;
- b=KOAMOAQZC45FcY382rlGgY0x0/foGzIK976vDm1PxZYVIl1nRb8g0OJx2CLWBoAvHi
- VQ1RSRA85bhbXQb163xL0UC8Xw/qGHo+Zp23AmgbCMLiBKDHoCiSJRrsAjxWBayCSSqs
- kDVArtAwA6vc5bzB0+JKEKtkgQGusPVuDdzqKDsK18DTD4qBQodnNGOKMtTdZ6QMKLes
- rPmLIPGI2T4sB9bi8TT9FUJQvK2r8uavujpFxGIYs1exfRRLRRLlL4lld/mrBBTZZZ2k
- 9aNAyju3RGFPjsr2KwdgjkIpHwxAqV7Gv2upsTNE2EykAAgtJOu9+MvPmCw1J0/dQdSE
- QsPQ==
-X-Gm-Message-State: AOJu0YzsL7OmOVhta8ihxalJ0WmQcAoMigVpMQrW4oYnxur4UA3FXxv1
- DaZ+H+FlEtRMhEDAxirQ/TTmDRbQEckBpeKZFguXUnltZ+wENoRt/CZRSarPRe8=
-X-Received: by 2002:a17:902:e741:b0:1fd:acd1:b642 with SMTP id
- d9443c01a7336-1ff04926567mr130384925ad.64.1722339229143; 
- Tue, 30 Jul 2024 04:33:49 -0700 (PDT)
-Received: from [192.168.1.113] ([203.56.128.103])
- by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-1fed7ee1482sm100187485ad.155.2024.07.30.04.33.46
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 30 Jul 2024 04:33:48 -0700 (PDT)
-Message-ID: <a71e9e79-6f26-4cab-b39c-b5f2fdc4c206@linaro.org>
-Date: Tue, 30 Jul 2024 21:33:40 +1000
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fbWoP+wF;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of kvm+bounces-22669-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="kvm+bounces-22669-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by sv.mirrors.kernel.org (Postfix) with ESMTPS id 607CF281E78
+	for <alex.bennee@linaro.org>; Tue, 30 Jul 2024 12:22:48 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 4FE0019DFBB;
+	Tue, 30 Jul 2024 12:22:31 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="fbWoP+wF"
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8E0E91991DB
+	for <kvm@vger.kernel.org>; Tue, 30 Jul 2024 12:22:28 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.133.124
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1722342151; cv=none; b=IKCU+RLm63gCkMWnzVVGbZljNNDKzByTxz0MFuOQv9Sf/9EchWhtDyjSZpN42qJL9S5Qkqk3Fvb93JY4xAxcs6X4VdZzQ+IDQ1QBaaLQl5MR27O8zPfTG+ndV6aSY4RiqQ2kdNq2vTKe6odVshpA0S/ae+klv4MlB+Civ40GGs8=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1722342151; c=relaxed/simple;
+	bh=/ra8/zxjSbL5tHf9lFwv54oZ22wSEImovpSQKo9FeZ4=;
+	h=From:To:Cc:Subject:In-Reply-To:References:Date:Message-ID:
+	 MIME-Version:Content-Type; b=sjRVi9C/ryFWIrm0A0HDBEsnd5wlMo6gLwtB/4BUAbsa6u+Pz0G0p5IE13ahfjnDDkvu2+17klsJXDUwFckaDA2Q3NQFjqTaoPSC0+YeXMMG5/G74K5lI5xvRS0K7hQJNymL+m1FuF0kBg2OPZewXRHyHdGLyszzSs0wZEoogxY=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=fbWoP+wF; arc=none smtp.client-ip=170.10.133.124
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1722342147;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=JRk+4VeVtW9bJfH/zMAgm0k34GZlfKGTGWDXXfmPzw0=;
+	b=fbWoP+wFVZ8ZGs74wMvW450zZse4WsMU8lsjVAQ3yuUwgClJQyiutv5sUFIVnusCKQqkE3
+	pZVV3BeysNvyAJabJBKX3lxt4A6/6YPzVRy5yj7cK6cpED33t8qDdyYFqQPkSdZUCFXKG+
+	vOMowdG6ZsOgBdh6r1BcU4ZfSWxv3eU=
+Received: from mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-330-Yq6378-hPWec8Bk0LexGnA-1; Tue,
+ 30 Jul 2024 08:22:22 -0400
+X-MC-Unique: Yq6378-hPWec8Bk0LexGnA-1
+Received: from mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.40])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 3136F1955D56;
+	Tue, 30 Jul 2024 12:22:13 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.39.192.65])
+	by mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 2A88419560AA;
+	Tue, 30 Jul 2024 12:22:08 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id DAB4021E5E71; Tue, 30 Jul 2024 14:22:05 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Daniel P. =?utf-8?Q?Berrang=C3=A9?= <berrange@redhat.com>
+Cc: qemu-devel@nongnu.org,  alex.williamson@redhat.com,
+  andrew@codeconstruct.com.au,  andrew@daynix.com,
+  arei.gonglei@huawei.com,  berto@igalia.com,  borntraeger@linux.ibm.com,
+  clg@kaod.org,  david@redhat.com,  den@openvz.org,  eblake@redhat.com,
+  eduardo@habkost.net,  farman@linux.ibm.com,  farosas@suse.de,
+  hreitz@redhat.com,  idryomov@gmail.com,  iii@linux.ibm.com,
+  jamin_lin@aspeedtech.com,  jasowang@redhat.com,  joel@jms.id.au,
+  jsnow@redhat.com,  kwolf@redhat.com,  leetroy@gmail.com,
+  marcandre.lureau@redhat.com,  marcel.apfelbaum@gmail.com,
+  michael.roth@amd.com,  mst@redhat.com,  mtosatti@redhat.com,
+  nsg@linux.ibm.com,  pasic@linux.ibm.com,  pbonzini@redhat.com,
+  peter.maydell@linaro.org,  peterx@redhat.com,  philmd@linaro.org,
+  pizhenwei@bytedance.com,  pl@dlhnet.de,  richard.henderson@linaro.org,
+  stefanha@redhat.com,  steven_lee@aspeedtech.com,  thuth@redhat.com,
+  vsementsov@yandex-team.ru,  wangyanan55@huawei.com,
+  yuri.benditovich@daynix.com,  zhao1.liu@intel.com,
+  qemu-block@nongnu.org,  qemu-arm@nongnu.org,  qemu-s390x@nongnu.org,
+  kvm@vger.kernel.org, Avihai Horon <avihaih@nvidia.com>, =?utf-8?Q?C?=
+ =?utf-8?Q?=C3=A9dric?= Le Goater
+ <clg@redhat.com>
+Subject: Re: [PATCH 01/18] qapi: Smarter camel_to_upper() to reduce need for
+ 'prefix'
+In-Reply-To: <ZqiutRoQuAsrllfj@redhat.com> ("Daniel P. =?utf-8?Q?Berrang?=
+ =?utf-8?Q?=C3=A9=22's?= message of
+	"Tue, 30 Jul 2024 10:13:25 +0100")
+References: <20240730081032.1246748-1-armbru@redhat.com>
+	<20240730081032.1246748-2-armbru@redhat.com>
+	<ZqiutRoQuAsrllfj@redhat.com>
+Date: Tue, 30 Jul 2024 14:22:05 +0200
+Message-ID: <87mslzgjde.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13)
+Precedence: bulk
+X-Mailing-List: kvm@vger.kernel.org
+List-Id: <kvm.vger.kernel.org>
+List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] target/arm: Fix BTI versus CF_PCREL
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-References: <20240730013922.540523-1-richard.henderson@linaro.org>
- <CAFEAcA-yuy54nnuoa_B32UpKPtfhRmo9sd1N7eYKSz4O0PC7qg@mail.gmail.com>
-Content-Language: en-US
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <CAFEAcA-yuy54nnuoa_B32UpKPtfhRmo9sd1N7eYKSz4O0PC7qg@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62f;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62f.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: BslFcMOah3TA
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.40
+X-TUID: L+g/a79xwE3L
 
-On 7/30/24 19:30, Peter Maydell wrote:
->> +static bool is_guarded_page(CPUARMState *env, target_ulong addr)
->> +{
->> +#ifdef CONFIG_USER_ONLY
->> +    return page_get_flags(addr) & PAGE_BTI;
->> +#else
->> +    CPUTLBEntryFull *full;
->> +    void *host;
->> +    int mmu_idx = cpu_mmu_index(env_cpu(env), true);
->> +    int flags = probe_access_full(env, addr, 0, MMU_INST_FETCH, mmu_idx,
->> +                                  false, &host, &full, 0);
->> +
->> +    assert(!(flags & TLB_INVALID_MASK));
-> 
-> Is there a race condition here where some other vCPU
-> knocks this entry out of the TLB between the point when
-> we started executing the TB and when we made this helper
-> function call ?
+Avihai, there's a question for you on VfioMigrationState.
 
-I don't think so, because cross-cpu flushes use async_safe_run_on_cpu, which will wait 
-until this cpu returns to the main loop.  But it's just as easy to allow this probe to 
-fault and unwind, Just In Case.
+Daniel P. Berrang=C3=A9 <berrange@redhat.com> writes:
 
+> On Tue, Jul 30, 2024 at 10:10:15AM +0200, Markus Armbruster wrote:
+>> camel_to_upper() converts its argument from camel case to upper case
+>> with '_' between words.  Used for generated enumeration constant
+>> prefixes.
+>>=20
+>> When some of the words are spelled all caps, where exactly to insert
+>> '_' is guesswork.  camel_to_upper()'s guesses are bad enough in places
+>> to make people override them with a 'prefix' in the schema.
+>>=20
+>> Rewrite it to guess better:
+>>=20
+>> 1. Insert '_' after a non-upper case character followed by an upper
+>>    case character:
+>>=20
+>>        OneTwo -> ONE_TWO
+>>        One2Three -> ONE2_THREE
+>>=20
+>> 2. Insert '_' before the last upper case character followed by a
+>>    non-upper case character:
+>>=20
+>>        ACRONYMWord -> ACRONYM_Word
+>>=20
+>>    Except at the beginning (as in OneTwo above), or when there is
+>>    already one:
+>>=20
+>>        AbCd -> AB_CD
+>>=20
+>> This changes the default enumeration constant prefix for a number of
+>> enums.  Generated enumeration constants change only where the default
+>> is not overridden with 'prefix'.
+>>=20
+>> The following enumerations without a 'prefix' change:
+>>=20
+>>     enum       	     	 	    old camel_to_upper()
+>>     				    new camel_to_upper()
+>>     ------------------------------------------------------------------
+>>     DisplayGLMode                   DISPLAYGL_MODE
+>> 				    DISPLAY_GL_MODE
+>>     EbpfProgramID                   EBPF_PROGRAMID
+>> 				    EBPF_PROGRAM_ID
+>>     HmatLBDataType                  HMATLB_DATA_TYPE
+>> 				    HMAT_LB_DATA_TYPE
+>>     HmatLBMemoryHierarchy           HMATLB_MEMORY_HIERARCHY
+>> 				    HMAT_LB_MEMORY_HIERARCHY
+>>     MultiFDCompression              MULTIFD_COMPRESSION
+>> 				    MULTI_FD_COMPRESSION
+>>     OffAutoPCIBAR                   OFF_AUTOPCIBAR
+>> 				    OFF_AUTO_PCIBAR
+>>     QCryptoBlockFormat              Q_CRYPTO_BLOCK_FORMAT
+>> 				    QCRYPTO_BLOCK_FORMAT
+>>     QCryptoBlockLUKSKeyslotState    Q_CRYPTO_BLOCKLUKS_KEYSLOT_STATE
+>> 				    QCRYPTO_BLOCK_LUKS_KEYSLOT_STATE
+>>     QKeyCode                        Q_KEY_CODE
+>>     				    QKEY_CODE
+>>     XDbgBlockGraphNodeType          X_DBG_BLOCK_GRAPH_NODE_TYPE
+>> 				    XDBG_BLOCK_GRAPH_NODE_TYPE
+>>     TestUnionEnumA		    TEST_UNION_ENUMA
+>>     				    TEST_UNION_ENUM_A
+>>=20
+>> Add a 'prefix' so generated code doesn't change now.  Subsequent
+>> commits will remove most of them again.  Two will remain:
+>> MULTIFD_COMPRESSION, because migration code generally spells "multifd"
+>> that way, and Q_KEY_CODE, because that one is baked into
+>> subprojects/keycodemapdb/tools/keymap-gen.
+>>=20
+>> The following enumerations with a 'prefix' change so that the prefix
+>> is now superfluous:
+>>=20
+>>     enum       	     	 	    old camel_to_upper()
+>>     				    new camel_to_upper() [equal to prefix]
+>>     ------------------------------------------------------------------
+>>     BlkdebugIOType                  BLKDEBUGIO_TYPE
+>> 				    BLKDEBUG_IO_TYPE
+>>     QCryptoTLSCredsEndpoint         Q_CRYPTOTLS_CREDS_ENDPOINT
+>> 				    QCRYPTO_TLS_CREDS_ENDPOINT
+>>     QCryptoSecretFormat             Q_CRYPTO_SECRET_FORMAT
+>> 				    QCRYPTO_SECRET_FORMAT
+>>     QCryptoCipherMode               Q_CRYPTO_CIPHER_MODE
+>> 				    QCRYPTO_CIPHER_MODE
+>>     QCryptodevBackendType           Q_CRYPTODEV_BACKEND_TYPE
+>> 				    QCRYPTODEV_BACKEND_TYPE
+>>     QType [builtin]                 Q_TYPE
+>> 				    QTYPE
+>>=20
+>> Drop these prefixes.
+>>=20
+>> The following enumerations with a 'prefix' change without making the
+>> 'prefix' superfluous:
+>>=20
+>>     enum       	     	 	    old camel_to_upper()
+>>     				    new camel_to_upper() [equal to prefix]
+>> 				    prefix
+>>     ------------------------------------------------------------------
+>>     CpuS390Entitlement              CPUS390_ENTITLEMENT
+>> 				    CPU_S390_ENTITLEMENT
+>> 				    S390_CPU_ENTITLEMENT
+>>     CpuS390Polarization             CPUS390_POLARIZATION
+>> 				    CPU_S390_POLARIZATION
+>> 				    S390_CPU_POLARIZATION
+>>     CpuS390State                    CPUS390_STATE
+>> 				    CPU_S390_STATE
+>> 				    S390_CPU_STATE
+>>     QAuthZListFormat                Q_AUTHZ_LIST_FORMAT
+>> 				    QAUTH_Z_LIST_FORMAT
+>> 				    QAUTHZ_LIST_FORMAT
+>>     QAuthZListPolicy                Q_AUTHZ_LIST_POLICY
+>> 				    QAUTH_Z_LIST_POLICY
+>> 				    QAUTHZ_LIST_POLICY
+>>     QCryptoAkCipherAlgorithm        Q_CRYPTO_AK_CIPHER_ALGORITHM
+>> 				    QCRYPTO_AK_CIPHER_ALGORITHM
+>> 				    QCRYPTO_AKCIPHER_ALG
+>>     QCryptoAkCipherKeyType          Q_CRYPTO_AK_CIPHER_KEY_TYPE
+>> 				    QCRYPTO_AK_CIPHER_KEY_TYPE
+>> 				    QCRYPTO_AKCIPHER_KEY_TYPE
+>>     QCryptoCipherAlgorithm          Q_CRYPTO_CIPHER_ALGORITHM
+>> 				    QCRYPTO_CIPHER_ALGORITHM
+>> 				    QCRYPTO_CIPHER_ALG
+>>     QCryptoHashAlgorithm            Q_CRYPTO_HASH_ALGORITHM
+>> 				    QCRYPTO_HASH_ALGORITHM
+>> 				    QCRYPTO_HASH_ALG
+>>     QCryptoIVGenAlgorithm           Q_CRYPTOIV_GEN_ALGORITHM
+>> 				    QCRYPTO_IV_GEN_ALGORITHM
+>> 				    QCRYPTO_IVGEN_ALG
+>>     QCryptoRSAPaddingAlgorithm      Q_CRYPTORSA_PADDING_ALGORITHM
+>> 				    QCRYPTO_RSA_PADDING_ALGORITHM
+>> 				    QCRYPTO_RSA_PADDING_ALG
+>>     QCryptodevBackendAlgType        Q_CRYPTODEV_BACKEND_ALG_TYPE
+>> 				    QCRYPTODEV_BACKEND_ALG_TYPE
+>> 				    QCRYPTODEV_BACKEND_ALG
+>>     QCryptodevBackendServiceType    Q_CRYPTODEV_BACKEND_SERVICE_TYPE
+>> 				    QCRYPTODEV_BACKEND_SERVICE_TYPE
+>> 				    QCRYPTODEV_BACKEND_SERVICE
+>>=20
+>> Subsequent commits will tweak things to remove most of these prefixes.
+>> Only QAUTHZ_LIST_FORMAT and QAUTHZ_LIST_POLICY will remain.
+>
+> IIUC from above those two result in=20
+>
+> 			    QAUTH_Z_LIST_FORMAT
+> 			    QAUTH_Z_LIST_POLICY
+>
+> Is it possible to add a 3rd rule
+>
+>  *  Single uppercase letter folds into the previous word
 
-r~
+I guess we could.
+
+> or are there valid cases where we have a single uppercase
+> that we want to preserve ?
+
+Not now, but I'd prefer to leave predictions to economists.
+
+> It sure would be nice to eliminate the 'prefix' concept,
+> that we've clearly over-used, if we can kill the only 2
+> remaining examples.
+
+There are a few more, actually.  After this series and outside tests:
+
+    enum       	     	 	    default prefix camel_to_upper()
+				    prefix override
+    ------------------------------------------------------------------
+    BlkdebugEvent                   BLKDEBUG_EVENT
+                                    BLKDBG
+    IscsiHeaderDigest               ISCSI_HEADER_DIGEST
+                                    QAPI_ISCSI_HEADER_DIGEST
+    MultiFDCompression              MULTI_FD_COMPRESSION
+                                    MULTIFD_COMPRESSION
+    QAuthZListFormat                QAUTH_Z_LIST_FORMAT
+				    QAUTHZ_LIST_FORMAT
+    QAuthZListPolicy                QAUTH_Z_LIST_POLICY
+				    QAUTHZ_LIST_POLICY
+    QKeyCode                        QKEY_CODE
+                                    Q_KEY_CODE
+    VfioMigrationState              VFIO_MIGRATION_STATE
+                                    QAPI_VFIO_MIGRATION_STATE
+
+Reasons for 'prefix', and what could be done instead of 'prefix':
+
+* BlkdebugEvent: shorten the prefix.
+
+  Could live with the longer names instead.  Some 90 occurences...
+
+* IscsiHeaderDigest
+
+  QAPI version of enum iscsi_header_digest from libiscsi's
+  iscsi/iscsi.h.  We use 'prefix' to avoid name clashes.
+
+  Could rename the type to QapiIscsiHeaderDigest instead.
+
+* MultiFDCompression
+
+  Migration code consistently uses prefixes multifd_, MULTIFD_, and
+  MultiFD_.
+
+  Could rename the type to MultifdCompression instead, but that just
+  moves the inconsistency to the type name.
+
+* QAuthZListFormat and QAuthZListPolicy
+
+  The authz code consistently uses QAuthZ.
+
+  Could make camel_to_upper() avoid the lone Z instead (and hope that'll
+  remain what we want).
+
+* QKeyCode
+
+  Q_KEY_CODE is baked into subprojects/keycodemapdb/tools/keymap-gen.
+
+  Could adjust the subproject instead.
+
+* VfioMigrationState
+
+  Can't see why this one has a prefix.  Avihai, can you enlighten me?
+
+Daniel, thoughts?
+
+>> Signed-off-by: Markus Armbruster <armbru@redhat.com>
+>> ---
+>>  qapi/block-core.json                     |  3 +-
+>>  qapi/common.json                         |  1 +
+>>  qapi/crypto.json                         |  6 ++--
+>>  qapi/cryptodev.json                      |  1 -
+>>  qapi/ebpf.json                           |  1 +
+>>  qapi/machine.json                        |  1 +
+>>  qapi/migration.json                      |  1 +
+>>  qapi/ui.json                             |  2 ++
+>>  scripts/qapi/common.py                   | 42 ++++++++++++++----------
+>>  scripts/qapi/schema.py                   |  2 +-
+>>  tests/qapi-schema/alternate-array.out    |  1 -
+>>  tests/qapi-schema/comments.out           |  1 -
+>>  tests/qapi-schema/doc-good.out           |  1 -
+>>  tests/qapi-schema/empty.out              |  1 -
+>>  tests/qapi-schema/include-repetition.out |  1 -
+>>  tests/qapi-schema/include-simple.out     |  1 -
+>>  tests/qapi-schema/indented-expr.out      |  1 -
+>>  tests/qapi-schema/qapi-schema-test.json  |  1 +
+>>  tests/qapi-schema/qapi-schema-test.out   |  2 +-
+>>  19 files changed, 37 insertions(+), 33 deletions(-)
+>
+> Reviewed-by: Daniel P. Berrang=C3=A9 <berrange@redhat.com>
+
+Thanks!
+

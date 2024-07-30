@@ -1,119 +1,120 @@
-Received: by 2002:a17:504:5965:b0:1be9:327d:8ee3 with SMTP id xe5csp2442254njb;
-        Tue, 30 Jul 2024 09:04:13 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVFELFHSM8vaVLj5RTsXbLrqhMmMw3RccvtTRkKxuCbE4bs5lZ1Nf9e+O9uf1SCYAjOxK4meBzfcQnK1cA4H9aOUa50zjdS
-X-Google-Smtp-Source: AGHT+IHbyx96vxsrUxeeqBaKc4lJYjmsF2eKsWe5sHEFFZV/VRjoUenyQcj4+NqRX9x1duCC+ey5
-X-Received: by 2002:a25:ae5c:0:b0:e05:ebb2:dbf7 with SMTP id 3f1490d57ef6-e0b545b0d36mr12578325276.39.1722355453013;
-        Tue, 30 Jul 2024 09:04:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1722355452; cv=none;
+Received: by 2002:a17:504:5965:b0:1be9:327d:8ee3 with SMTP id xe5csp2442617njb;
+        Tue, 30 Jul 2024 09:04:40 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUMpVdHLLffHfgYLfDYM7TyKyNz36CqlJihoW8KzA7reqdLO7LL8pPuh3IDl4Ziv+tFeE0t65cQe6LVS8leYxQmczoPNIHD
+X-Google-Smtp-Source: AGHT+IGZ0T8EmIKfrgSrlUs3dBk45ZW/5ka9TXaYmpd49egRUy4GSKgqQbidWikvxTV0eTFQ7D5B
+X-Received: by 2002:a05:620a:4488:b0:79f:11a5:149b with SMTP id af79cd13be357-7a1e52cc56dmr1522661485a.47.1722355480294;
+        Tue, 30 Jul 2024 09:04:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1722355480; cv=none;
         d=google.com; s=arc-20160816;
-        b=Xtck0ALdFu2BRzNTstKnpfWlxAiHvjxjqlDNqQGWFjtbcYYiy6vBoC9drzXz8uP59X
-         igja0DJXScvifPKKJWMFtzJ0QRNnKs442fUjto1mRLTcTXoB5ymTOj6oe7cGTph+vVrL
-         3CMw7BJQFH+UndE61cuAoTZv8OqpQSr9CSwUK8o7TPVQKngA4p9umELiTI1RKSTL7SzD
-         9/Ax/hZFRhmd34lQQFgmBC5GMp1nT2GUAlycMxxP7beit85yoL5W1n5cJK07xAXnW34z
-         Zg/nh0C7ONIG8ue+yH6yA2VSyTbP/LoJWde3qy8r3wjNCq59wTEkbNfL3GhoMU69uKTo
-         8aqA==
+        b=HXNXfwlxpWhA5EWdK4uL+876FlZRLmTYjmNpfSUVV7EWXwm473kQBAEbV8pO8bGWKq
+         2CNlob2J9oRV/2teZ/6NFfie0n7kPGlYLXayHhOMpD6bAh+PZ00mNYBfArV2ApWXQnNu
+         BvWnuzac5GjFCSGAtEfOi3mgCnuynOsdHe5qfdSYfO77Y8SNG/+8U2fIhbYc1CJln4FZ
+         jbMvqnN5LD1FQYqJjSMJQ4XREONAYiaj2ITUdR0lx+GBUEnVLcc/8ZxaNN4w3RgFXYm5
+         hsOIG2vxw1IGOrxGKsM7+f8/IRUWEwtsbC7Ft81hhHB3NRPaDPn6uBf5tYJiDxJ2IDwG
+         /IVA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=Br6CkeiTIKRILq+hj11nYdiPNIHIQx79eIryvbnx584=;
+        bh=QvrVCRfMbrZEGuOW0qBR5GVSvdV1DpAOaaHu4y3CbnQ=;
         fh=H2AmuqulvQE+T5zu97MCEUC3z9wF9NssS7895NhR/+c=;
-        b=nxqXmwWOkSTCKRYejBKysDRYIi7OxQmyCXIHb2NVpaK/o8l4P+dG6jaoiIPAYIswWU
-         GEre0b7RESDrT+fG4Q4q1VLZM1nxPVBnlm/rk/u9O088YoENq6mNcC4ZsEenqDulf8AT
-         gWlYqgAOMYNvzTHc8Rc8Om5ag9d8d+tA2ozEFGsQCVGOFiSV/dblBpC0OSG9NvM8xzFI
-         bF/8R6srY4KzJhCds8zmUf7FGqNM2WNA/zVZOkZPWd5K/dTlLCYRmW4D71ZyO8u/hkDx
-         6Ll7kuG4tuHy0xfOJ/cF78HcJ57Iit54qQQLsUtR7fkgCGm4Y0ao+Zbm1YaNuD4abvso
-         8eDw==;
+        b=ySbh4cR/8Fz/8voI7eYrbZ57l+fxKboKWSnVmKluWmxMWt8zOv2FEvOXc9X3RACzMi
+         nYm3VsChayYnPscLQrnBDbWgEcXso0pt9HXjRB0KEtf6/cM5FV1Sv6SK6NfekDdtY4Lp
+         7jWgza/Hf668Y9rJF1eUW5iuo/GSrbH1iUBGzddVuYFTxFh7zUQNaZZgzL/3WN+8+bz+
+         nyM17nakHNag2xfA/ClKcF1pA8S4KZReHYGh9ZYsCwL/bFTAgppLiG/A2HtS25iS0XqY
+         iVKY6cgbzUWSZ0KrqDL9lMNf3nrjZwDZxiv5Tu+bTMXinXjD8dLc5ftyUrxy4Zu2gMPs
+         eunQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Zfkf2PWx;
+       dkim=pass header.i=@linaro.org header.s=google header.b=P8mj6Asf;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 3f1490d57ef6-e0b2a9364fdsi7098556276.220.2024.07.30.09.04.12
+        by mx.google.com with ESMTPS id af79cd13be357-7a1d749e9a5si1295572085a.712.2024.07.30.09.04.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 30 Jul 2024 09:04:12 -0700 (PDT)
+        Tue, 30 Jul 2024 09:04:40 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Zfkf2PWx;
+       dkim=pass header.i=@linaro.org header.s=google header.b=P8mj6Asf;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sYpJj-0003Dn-HV; Tue, 30 Jul 2024 12:03:15 -0400
+	id 1sYpJt-0003uL-5f; Tue, 30 Jul 2024 12:03:25 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1sYpJj-0003Bc-2Y
- for qemu-arm@nongnu.org; Tue, 30 Jul 2024 12:03:15 -0400
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+ id 1sYpJr-0003kZ-OG
+ for qemu-arm@nongnu.org; Tue, 30 Jul 2024 12:03:23 -0400
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1sYpJf-0000Fy-6H
- for qemu-arm@nongnu.org; Tue, 30 Jul 2024 12:03:14 -0400
-Received: by mail-wm1-x333.google.com with SMTP id
- 5b1f17b1804b1-427fc97a88cso29337525e9.0
- for <qemu-arm@nongnu.org>; Tue, 30 Jul 2024 09:03:10 -0700 (PDT)
+ id 1sYpJo-0000Hp-M9
+ for qemu-arm@nongnu.org; Tue, 30 Jul 2024 12:03:23 -0400
+Received: by mail-wm1-x32b.google.com with SMTP id
+ 5b1f17b1804b1-428243f928cso7833095e9.3
+ for <qemu-arm@nongnu.org>; Tue, 30 Jul 2024 09:03:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1722355390; x=1722960190; darn=nongnu.org;
+ d=linaro.org; s=google; t=1722355399; x=1722960199; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=Br6CkeiTIKRILq+hj11nYdiPNIHIQx79eIryvbnx584=;
- b=Zfkf2PWxBj5Zc5l8WSoGGBnm+gujF0xs7dADb/SiBN866sMfknKR3VjxSQSeoYqACm
- 6Apqndw1ZWsO/Y05UO0XmWw+vbpShC6Ru0g0NlHCnvjXW1KR0YKohLrUr/xz/7AtB3V8
- hoIJaIPS4uPXW5IRbJ7ENe184BnDj8p7Q5JrJ+QXI0HqkNEAVGkf9E7lH5/cj5sbksKq
- gDz+lKNoj8a2zHv1eRO4kQosgbKtn2IhQQ75Wlt5AV6Ioyq7jhKN1ayJib5Z+2nM2r7K
- CWGN795pszwNbVhgNyIJKSuUASNgBl9oFP9fFDIoMeo3XlaYiBMfzNNNM2zJP08yUaup
- V7uQ==
+ :reply-to; bh=QvrVCRfMbrZEGuOW0qBR5GVSvdV1DpAOaaHu4y3CbnQ=;
+ b=P8mj6AsfbcfFPnCOdFCEkJSptuWiJODlsjFF4wmL4k1XzeEecJ9+z0lZTSc/n/Ne8a
+ pPlkBD5LGNSoCIY5dXcr8Su6xQMABiKFMMKB3V2EOhcLfn6TjUdCmSAwukGh/nrnqXca
+ 3x3aPFZ/AT9kC/rE59OqMXPluPcYzwBO6xM5SoA4eug2TV+s9lGXLROHAD48yb4L+OCX
+ UfeXWSMW5ryzifFDM29ELrJKQyuvqojmyZvlRnkJnXePB6MDgevNGdBXkqyb/Y7JgLG1
+ SI+FZJEcVBk08WbjUxUXNNWGJiM0qqDNqma37RZErAiC5CbTYKK0+E1oGYCdvLKsauI2
+ j8Bw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1722355390; x=1722960190;
+ d=1e100.net; s=20230601; t=1722355399; x=1722960199;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=Br6CkeiTIKRILq+hj11nYdiPNIHIQx79eIryvbnx584=;
- b=l0IytrqC0g+fHEa+SbwfGyD72KOJNsfrvYwHbVkZ0Xi2LzOxVth6nXZFGH7nnnVUFU
- TbkGoTvZbKfBCh/bwV8KL35nwY8gdS1m5i8USRu5ABl9+pMX5ARXvp5+romxbhJf46k2
- UvwY+wCNQF+ZtvJa42jlbSLMh8fbI+/AbzYGfOxvGgykB0bbqgEXqo9zC8gwpp4I7L5m
- uceNhjUrMQ5WuCuVdpfpS7MHmS98yTj2oW91v/EpsKCVcdvLrItaBO7gR+KLgRiz/3FI
- KMFwTMfgRnDE069WzroP7bhtFkXDOPJUCvrfDB+o8n2oY0jCxRNjdc76jaLsUA++eadx
- 7cpQ==
-X-Gm-Message-State: AOJu0YwkvZoHYZEmwmZ4QLxGfHynWsq+okznDskkZUIQHdGqRfeUmVef
- NowEiOWDLWDF1VPx2QQZZE6ZP0dyOfsZYgJrC5n9qp7IUWOl0Q8/qM81LLKTkNYN9g5u8WrEK8w
- X
-X-Received: by 2002:a05:600c:5492:b0:427:b995:5bd0 with SMTP id
- 5b1f17b1804b1-42811dd08d3mr71927105e9.23.1722355389721; 
- Tue, 30 Jul 2024 09:03:09 -0700 (PDT)
+ bh=QvrVCRfMbrZEGuOW0qBR5GVSvdV1DpAOaaHu4y3CbnQ=;
+ b=jiuurKWsfiurZu1//sIX2sQYPmFT0xzz30OgqeWeKL3TYGaQ6FxWrPcvXa/Ns7vp+m
+ VPD1mmvNGVONiBkUQgn8Fvhx13bIc6RAHO7n23SbT7QctduX7Bl5uu5bjX+vCGUH36Rd
+ L2GFmXnmuOuTU+lV0/g0ZC8MPdzKABzw0+ZJhv0uaKY0gc2eOOMluIIs99+i9J0KsbgS
+ grD50TAYFfA4KpOK7TsmRmvC0O+NXS1PJBuiq2vMS6yTRhTZ4EdRWZ29HQxaChc2S7N8
+ zBD7QmwdHtWVx7BBX8NQhvCBlLtar+i/ZLsEImFwBzbWQJPUBsWRusvK0y4a+dLDW5Du
+ XFKg==
+X-Gm-Message-State: AOJu0Yzh+jEjWR8qCERaGM8su4nD0Izyf4Ce0yDdaYqIQJcDEK6R+R1g
+ 8urbKuzephMMwt3rgrofTX9Z5ywdLqKoTtiju1B1WUHdYx946YvMgrloF7xzhJBzHnErcY/I/DG
+ U
+X-Received: by 2002:a05:6000:110a:b0:367:98e6:362b with SMTP id
+ ffacd0b85a97d-36b5d353ad0mr6460218f8f.42.1722355398982; 
+ Tue, 30 Jul 2024 09:03:18 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-36b3685810csm15001676f8f.71.2024.07.30.09.03.09
+ ffacd0b85a97d-36b3685810csm15001676f8f.71.2024.07.30.09.03.18
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 30 Jul 2024 09:03:09 -0700 (PDT)
+ Tue, 30 Jul 2024 09:03:18 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 3/8] target/arm: Pass env pointer through to gvec_bfdot helper
-Date: Tue, 30 Jul 2024 17:03:01 +0100
-Message-Id: <20240730160306.2959745-4-peter.maydell@linaro.org>
+Subject: [PATCH 6/8] target/arm: Prepare bfdotadd() callers for FEAT_EBF
+ support
+Date: Tue, 30 Jul 2024 17:03:04 +0100
+Message-Id: <20240730160306.2959745-7-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240730160306.2959745-1-peter.maydell@linaro.org>
 References: <20240730160306.2959745-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::333;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x333.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -128,183 +129,398 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: qabx8gyAFqA+
+X-TUID: gCutWjxQql52
 
-Pass the env pointer through to the gvec_bfdot helper,
-so we can use it to add support for FEAT_EBF16.
+We use bfdotadd() in four callsites for various helper functions. Currently
+this all assumes that we have the FPCR.EBF=0 semantics. For FPCR.EBF=1
+we will need to:
+ * call a different routine to bfdotadd() because we need to do a
+   fused multiply-add rather than separate multiply and add steps
+ * use a different float_status that honours the FPCR rounding mode
+   and denormal-flushing fields
+ * pass in an extra float_status that has been set up to perform
+   round-to-odd rounding
+
+To prepare for this, refactor all the callsites so that instead of
+   for (...) {
+       x = bfdotadd(...);
+   }
+
+they are:
+   float_status fpst, fpst_odd;
+   if (is_ebf(env, &fpst, &fpst_odd)) {
+       for (...) {
+           x = bfdotadd_ebf(..., &fpst, &fpst_odd);
+       }
+   } else {
+       for (...) {
+           x = bfdotadd(..., &fpst);
+       }
+   }
+
+For the moment the is_ebf() function always returns false, sets up
+fpst for EBF=0 semantics and never sets up fpst_odd; bfdotadd_ebf()
+will assert if called. We'll fill in the handling for EBF=1 in the
+next commit.
+
+This change should be a zero-behaviour-change refactor.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/helper.h             |  4 ++--
- target/arm/tcg/translate-a64.c  | 27 ++++++++++++++++++++++++-
- target/arm/tcg/translate-neon.c | 35 +++++++++++++++++++++++++++++++--
- target/arm/tcg/translate-sve.c  | 15 +++++++++++++-
- target/arm/tcg/vec_helper.c     |  3 ++-
- 5 files changed, 77 insertions(+), 7 deletions(-)
+ target/arm/tcg/vec_internal.h |  37 ++++++++-
+ target/arm/tcg/sme_helper.c   |  74 ++++++++++++------
+ target/arm/tcg/vec_helper.c   | 141 +++++++++++++++++++++++++---------
+ 3 files changed, 192 insertions(+), 60 deletions(-)
 
-diff --git a/target/arm/helper.h b/target/arm/helper.h
-index 970d059dec5..aece9fd4aa7 100644
---- a/target/arm/helper.h
-+++ b/target/arm/helper.h
-@@ -1027,8 +1027,8 @@ DEF_HELPER_FLAGS_5(gvec_ummla_b, TCG_CALL_NO_RWG,
- DEF_HELPER_FLAGS_5(gvec_usmmla_b, TCG_CALL_NO_RWG,
-                    void, ptr, ptr, ptr, ptr, i32)
- 
--DEF_HELPER_FLAGS_5(gvec_bfdot, TCG_CALL_NO_RWG,
--                   void, ptr, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_6(gvec_bfdot, TCG_CALL_NO_RWG,
-+                   void, ptr, ptr, ptr, ptr, ptr, i32)
- DEF_HELPER_FLAGS_5(gvec_bfdot_idx, TCG_CALL_NO_RWG,
-                    void, ptr, ptr, ptr, ptr, i32)
- 
-diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
-index 148be2826ec..4aef8b9211a 100644
---- a/target/arm/tcg/translate-a64.c
-+++ b/target/arm/tcg/translate-a64.c
-@@ -735,6 +735,22 @@ static void gen_gvec_op4_ool(DisasContext *s, bool is_q, int rd, int rn,
-                        is_q ? 16 : 8, vec_full_reg_size(s), data, fn);
- }
- 
-+/*
-+ * Expand a 4-operand operation using an out-of-line helper that takes
-+ * a pointer to the CPU env.
+diff --git a/target/arm/tcg/vec_internal.h b/target/arm/tcg/vec_internal.h
+index 3ca1b94ccf9..094f5c169ca 100644
+--- a/target/arm/tcg/vec_internal.h
++++ b/target/arm/tcg/vec_internal.h
+@@ -223,13 +223,46 @@ int64_t do_sqrdmlah_d(int64_t, int64_t, int64_t, bool, bool);
+  * bfdotadd:
+  * @sum: addend
+  * @e1, @e2: multiplicand vectors
++ * @fpst: floating-point status to use
+  *
+  * BFloat16 2-way dot product of @e1 & @e2, accumulating with @sum.
+  * The @e1 and @e2 operands correspond to the 32-bit source vector
+  * slots and contain two Bfloat16 values each.
+  *
+- * Corresponds to the ARM pseudocode function BFDotAdd.
++ * Corresponds to the ARM pseudocode function BFDotAdd, specialized
++ * for the FPCR.EBF == 0 case.
+  */
+-float32 bfdotadd(float32 sum, uint32_t e1, uint32_t e2);
++float32 bfdotadd(float32 sum, uint32_t e1, uint32_t e2, float_status *fpst);
++/**
++ * bfdotadd_ebf:
++ * @sum: addend
++ * @e1, @e2: multiplicand vectors
++ * @fpst: floating-point status to use
++ * @fpst_odd: floating-point status to use for round-to-odd operations
++ *
++ * BFloat16 2-way dot product of @e1 & @e2, accumulating with @sum.
++ * The @e1 and @e2 operands correspond to the 32-bit source vector
++ * slots and contain two Bfloat16 values each.
++ *
++ * Corresponds to the ARM pseudocode function BFDotAdd, specialized
++ * for the FPCR.EBF == 1 case.
 + */
-+static void gen_gvec_op4_env(DisasContext *s, bool is_q, int rd, int rn,
-+                             int rm, int ra, int data,
-+                             gen_helper_gvec_4_ptr *fn)
-+{
-+    tcg_gen_gvec_4_ptr(vec_full_reg_offset(s, rd),
-+                       vec_full_reg_offset(s, rn),
-+                       vec_full_reg_offset(s, rm),
-+                       vec_full_reg_offset(s, ra),
-+                       tcg_env,
-+                       is_q ? 16 : 8, vec_full_reg_size(s), data, fn);
-+}
++float32 bfdotadd_ebf(float32 sum, uint32_t e1, uint32_t e2,
++                     float_status *fpst, float_status *fpst_odd);
 +
- /*
-  * Expand a 4-operand + fpstatus pointer + simd data value operation using
-  * an out-of-line helper.
-@@ -5601,10 +5617,19 @@ static bool do_dot_vector(DisasContext *s, arg_qrrr_e *a,
-     return true;
- }
++/**
++ * is_ebf:
++ * @env: CPU state
++ * @statusp: pointer to floating point status to fill in
++ * @oddstatusp: pointer to floating point status to fill in for round-to-odd
++ *
++ * Determine whether a BFDotAdd operation should use FPCR.EBF = 0
++ * or FPCR.EBF = 1 semantics. On return, has initialized *statusp
++ * and *oddstatusp to suitable float_status arguments to use with either
++ * bfdotadd() or bfdotadd_ebf().
++ * Returns true for EBF = 1, false for EBF = 0. (The caller should use this
++ * to decide whether to call bfdotadd() or bfdotadd_ebf().)
++ */
++bool is_ebf(CPUARMState *env, float_status *statusp, float_status *oddstatusp);
  
-+static bool do_dot_vector_env(DisasContext *s, arg_qrrr_e *a,
-+                              gen_helper_gvec_4_ptr *fn)
-+{
-+    if (fp_access_check(s)) {
-+        gen_gvec_op4_env(s, a->q, a->rd, a->rn, a->rm, a->rd, 0, fn);
-+    }
-+    return true;
-+}
-+
- TRANS_FEAT(SDOT_v, aa64_dp, do_dot_vector, a, gen_helper_gvec_sdot_b)
- TRANS_FEAT(UDOT_v, aa64_dp, do_dot_vector, a, gen_helper_gvec_udot_b)
- TRANS_FEAT(USDOT_v, aa64_i8mm, do_dot_vector, a, gen_helper_gvec_usdot_b)
--TRANS_FEAT(BFDOT_v, aa64_bf16, do_dot_vector, a, gen_helper_gvec_bfdot)
-+TRANS_FEAT(BFDOT_v, aa64_bf16, do_dot_vector_env, a, gen_helper_gvec_bfdot)
- TRANS_FEAT(BFMMLA, aa64_bf16, do_dot_vector, a, gen_helper_gvec_bfmmla)
- TRANS_FEAT(SMMLA, aa64_i8mm, do_dot_vector, a, gen_helper_gvec_smmla_b)
- TRANS_FEAT(UMMLA, aa64_i8mm, do_dot_vector, a, gen_helper_gvec_ummla_b)
-diff --git a/target/arm/tcg/translate-neon.c b/target/arm/tcg/translate-neon.c
-index 915c9e56db5..454380f01d7 100644
---- a/target/arm/tcg/translate-neon.c
-+++ b/target/arm/tcg/translate-neon.c
-@@ -148,6 +148,37 @@ static bool do_neon_ddda(DisasContext *s, int q, int vd, int vn, int vm,
-     return true;
- }
+ #endif /* TARGET_ARM_VEC_INTERNAL_H */
+diff --git a/target/arm/tcg/sme_helper.c b/target/arm/tcg/sme_helper.c
+index f172225b2f2..e3fbfa98fa5 100644
+--- a/target/arm/tcg/sme_helper.c
++++ b/target/arm/tcg/sme_helper.c
+@@ -1086,32 +1086,62 @@ void HELPER(sme_bfmopa)(CPUARMState *env, void *vza, void *vzn, void *vzm,
+     intptr_t row, col, oprsz = simd_maxsz(desc);
+     uint32_t neg = simd_data(desc) * 0x80008000u;
+     uint16_t *pn = vpn, *pm = vpm;
++    float_status fpst, fpst_odd;
  
-+static bool do_neon_ddda_env(DisasContext *s, int q, int vd, int vn, int vm,
-+                             int data, gen_helper_gvec_4_ptr *fn_gvec)
-+{
-+    /* UNDEF accesses to D16-D31 if they don't exist. */
-+    if (((vd | vn | vm) & 0x10) && !dc_isar_feature(aa32_simd_r32, s)) {
-+        return false;
-+    }
+-    for (row = 0; row < oprsz; ) {
+-        uint16_t prow = pn[H2(row >> 4)];
+-        do {
+-            void *vza_row = vza + tile_vslice_offset(row);
+-            uint32_t n = *(uint32_t *)(vzn + H1_4(row));
++    if (is_ebf(env, &fpst, &fpst_odd)) {
++        for (row = 0; row < oprsz; ) {
++            uint16_t prow = pn[H2(row >> 4)];
++            do {
++                void *vza_row = vza + tile_vslice_offset(row);
++                uint32_t n = *(uint32_t *)(vzn + H1_4(row));
+ 
+-            n = f16mop_adj_pair(n, prow, neg);
++                n = f16mop_adj_pair(n, prow, neg);
+ 
+-            for (col = 0; col < oprsz; ) {
+-                uint16_t pcol = pm[H2(col >> 4)];
+-                do {
+-                    if (prow & pcol & 0b0101) {
+-                        uint32_t *a = vza_row + H1_4(col);
+-                        uint32_t m = *(uint32_t *)(vzm + H1_4(col));
++                for (col = 0; col < oprsz; ) {
++                    uint16_t pcol = pm[H2(col >> 4)];
++                    do {
++                        if (prow & pcol & 0b0101) {
++                            uint32_t *a = vza_row + H1_4(col);
++                            uint32_t m = *(uint32_t *)(vzm + H1_4(col));
+ 
+-                        m = f16mop_adj_pair(m, pcol, 0);
+-                        *a = bfdotadd(*a, n, m);
+-                    }
+-                    col += 4;
+-                    pcol >>= 4;
+-                } while (col & 15);
+-            }
+-            row += 4;
+-            prow >>= 4;
+-        } while (row & 15);
++                            m = f16mop_adj_pair(m, pcol, 0);
++                            *a = bfdotadd_ebf(*a, n, m, &fpst, &fpst_odd);
++                        }
++                        col += 4;
++                        pcol >>= 4;
++                    } while (col & 15);
++                }
++                row += 4;
++                prow >>= 4;
++            } while (row & 15);
++        }
++    } else {
++        for (row = 0; row < oprsz; ) {
++            uint16_t prow = pn[H2(row >> 4)];
++            do {
++                void *vza_row = vza + tile_vslice_offset(row);
++                uint32_t n = *(uint32_t *)(vzn + H1_4(row));
 +
-+    /*
-+     * UNDEF accesses to odd registers for each bit of Q.
-+     * Q will be 0b111 for all Q-reg instructions, otherwise
-+     * when we have mixed Q- and D-reg inputs.
-+     */
-+    if (((vd & 1) * 4 | (vn & 1) * 2 | (vm & 1)) & q) {
-+        return false;
-+    }
++                n = f16mop_adj_pair(n, prow, neg);
 +
-+    if (!vfp_access_check(s)) {
-+        return true;
-+    }
++                for (col = 0; col < oprsz; ) {
++                    uint16_t pcol = pm[H2(col >> 4)];
++                    do {
++                        if (prow & pcol & 0b0101) {
++                            uint32_t *a = vza_row + H1_4(col);
++                            uint32_t m = *(uint32_t *)(vzm + H1_4(col));
 +
-+    int opr_sz = q ? 16 : 8;
-+    tcg_gen_gvec_4_ptr(vfp_reg_offset(1, vd),
-+                       vfp_reg_offset(1, vn),
-+                       vfp_reg_offset(1, vm),
-+                       vfp_reg_offset(1, vd),
-+                       tcg_env,
-+                       opr_sz, opr_sz, data, fn_gvec);
-+    return true;
-+}
-+
- static bool do_neon_ddda_fpst(DisasContext *s, int q, int vd, int vn, int vm,
-                               int data, ARMFPStatusFlavour fp_flavour,
-                               gen_helper_gvec_4_ptr *fn_gvec_ptr)
-@@ -266,8 +297,8 @@ static bool trans_VDOT_b16(DisasContext *s, arg_VDOT_b16 *a)
-     if (!dc_isar_feature(aa32_bf16, s)) {
-         return false;
++                            m = f16mop_adj_pair(m, pcol, 0);
++                            *a = bfdotadd(*a, n, m, &fpst);
++                        }
++                        col += 4;
++                        pcol >>= 4;
++                    } while (col & 15);
++                }
++                row += 4;
++                prow >>= 4;
++            } while (row & 15);
++        }
      }
--    return do_neon_ddda(s, a->q * 7, a->vd, a->vn, a->vm, 0,
--                        gen_helper_gvec_bfdot);
-+    return do_neon_ddda_env(s, a->q * 7, a->vd, a->vn, a->vm, 0,
-+                            gen_helper_gvec_bfdot);
  }
  
- static bool trans_VFML(DisasContext *s, arg_VFML *a)
-diff --git a/target/arm/tcg/translate-sve.c b/target/arm/tcg/translate-sve.c
-index 798ab2bfb13..4fb0bd077b4 100644
---- a/target/arm/tcg/translate-sve.c
-+++ b/target/arm/tcg/translate-sve.c
-@@ -238,6 +238,19 @@ static bool gen_gvec_fpst_zzzz(DisasContext *s, gen_helper_gvec_4_ptr *fn,
-     return ret;
- }
- 
-+static bool gen_gvec_env_zzzz(DisasContext *s, gen_helper_gvec_4_ptr *fn,
-+                              int rd, int rn, int rm, int ra,
-+                              int data)
-+{
-+    return gen_gvec_ptr_zzzz(s, fn, rd, rn, rm, ra, data, tcg_env);
-+}
-+
-+static bool gen_gvec_env_arg_zzzz(DisasContext *s, gen_helper_gvec_4_ptr *fn,
-+                                  arg_rrrr_esz *a, int data)
-+{
-+    return gen_gvec_env_zzzz(s, fn, a->rd, a->rn, a->rm, a->ra, data);
-+}
-+
- /* Invoke an out-of-line helper on 4 Zregs, 1 Preg, plus fpst. */
- static bool gen_gvec_fpst_zzzzp(DisasContext *s, gen_helper_gvec_5_ptr *fn,
-                                 int rd, int rn, int rm, int ra, int pg,
-@@ -7099,7 +7112,7 @@ TRANS_FEAT_NONSTREAMING(USMMLA, aa64_sve_i8mm, gen_gvec_ool_arg_zzzz,
- TRANS_FEAT_NONSTREAMING(UMMLA, aa64_sve_i8mm, gen_gvec_ool_arg_zzzz,
-                         gen_helper_gvec_ummla_b, a, 0)
- 
--TRANS_FEAT(BFDOT_zzzz, aa64_sve_bf16, gen_gvec_ool_arg_zzzz,
-+TRANS_FEAT(BFDOT_zzzz, aa64_sve_bf16, gen_gvec_env_arg_zzzz,
-            gen_helper_gvec_bfdot, a, 0)
- TRANS_FEAT(BFDOT_zzxz, aa64_sve_bf16, gen_gvec_ool_arg_zzxz,
-            gen_helper_gvec_bfdot_idx, a)
 diff --git a/target/arm/tcg/vec_helper.c b/target/arm/tcg/vec_helper.c
-index 98604d170fd..37aad4be4b0 100644
+index 77efb5f47d8..baf04a0561b 100644
 --- a/target/arm/tcg/vec_helper.c
 +++ b/target/arm/tcg/vec_helper.c
-@@ -2814,7 +2814,8 @@ float32 bfdotadd(float32 sum, uint32_t e1, uint32_t e2)
+@@ -2790,7 +2790,7 @@ DO_MMLA_B(gvec_usmmla_b, do_usmmla_b)
+  * BFloat16 Dot Product
+  */
+ 
+-float32 bfdotadd(float32 sum, uint32_t e1, uint32_t e2)
++bool is_ebf(CPUARMState *env, float_status *statusp, float_status *oddstatusp)
+ {
+     /* FPCR is ignored for BFDOT and BFMMLA. */
+     float_status bf_status = {
+@@ -2800,29 +2800,50 @@ float32 bfdotadd(float32 sum, uint32_t e1, uint32_t e2)
+         .flush_inputs_to_zero = true,
+         .default_nan_mode = true,
+     };
++
++    *statusp = bf_status;
++    return false;
++}
++
++float32 bfdotadd(float32 sum, uint32_t e1, uint32_t e2, float_status *fpst)
++{
+     float32 t1, t2;
+ 
+     /*
+      * Extract each BFloat16 from the element pair, and shift
+      * them such that they become float32.
+      */
+-    t1 = float32_mul(e1 << 16, e2 << 16, &bf_status);
+-    t2 = float32_mul(e1 & 0xffff0000u, e2 & 0xffff0000u, &bf_status);
+-    t1 = float32_add(t1, t2, &bf_status);
+-    t1 = float32_add(sum, t1, &bf_status);
++    t1 = float32_mul(e1 << 16, e2 << 16, fpst);
++    t2 = float32_mul(e1 & 0xffff0000u, e2 & 0xffff0000u, fpst);
++    t1 = float32_add(t1, t2, fpst);
++    t1 = float32_add(sum, t1, fpst);
+ 
      return t1;
  }
  
--void HELPER(gvec_bfdot)(void *vd, void *vn, void *vm, void *va, uint32_t desc)
-+void HELPER(gvec_bfdot)(void *vd, void *vn, void *vm, void *va,
-+                        void *envp, uint32_t desc)
++float32 bfdotadd_ebf(float32 sum, uint32_t e1, uint32_t e2,
++                     float_status *fpst, float_status *fpst_odd)
++{
++    g_assert_not_reached();
++}
++
+ void HELPER(gvec_bfdot)(void *vd, void *vn, void *vm, void *va,
+                         void *envp, uint32_t desc)
  {
++    CPUARMState *env = envp;
      intptr_t i, opr_sz = simd_oprsz(desc);
      float32 *d = vd, *a = va;
+     uint32_t *n = vn, *m = vm;
++    float_status fpst, fpst_odd;
+ 
+-    for (i = 0; i < opr_sz / 4; ++i) {
+-        d[i] = bfdotadd(a[i], n[i], m[i]);
++    if (is_ebf(env, &fpst, &fpst_odd)) {
++        for (i = 0; i < opr_sz / 4; ++i) {
++            d[i] = bfdotadd_ebf(a[i], n[i], m[i], &fpst, &fpst_odd);
++        }
++    } else {
++        for (i = 0; i < opr_sz / 4; ++i) {
++            d[i] = bfdotadd(a[i], n[i], m[i], &fpst);
++        }
+     }
+     clear_tail(d, opr_sz, simd_maxsz(desc));
+ }
+@@ -2830,18 +2851,30 @@ void HELPER(gvec_bfdot)(void *vd, void *vn, void *vm, void *va,
+ void HELPER(gvec_bfdot_idx)(void *vd, void *vn, void *vm,
+                             void *va, void *envp, uint32_t desc)
+ {
++    CPUARMState *env = envp;
+     intptr_t i, j, opr_sz = simd_oprsz(desc);
+     intptr_t index = simd_data(desc);
+     intptr_t elements = opr_sz / 4;
+     intptr_t eltspersegment = MIN(16 / 4, elements);
+     float32 *d = vd, *a = va;
+     uint32_t *n = vn, *m = vm;
++    float_status fpst, fpst_odd;
+ 
+-    for (i = 0; i < elements; i += eltspersegment) {
+-        uint32_t m_idx = m[i + H4(index)];
++    if (is_ebf(env, &fpst, &fpst_odd)) {
++        for (i = 0; i < elements; i += eltspersegment) {
++            uint32_t m_idx = m[i + H4(index)];
+ 
+-        for (j = i; j < i + eltspersegment; j++) {
+-            d[j] = bfdotadd(a[j], n[j], m_idx);
++            for (j = i; j < i + eltspersegment; j++) {
++                d[j] = bfdotadd_ebf(a[j], n[j], m_idx, &fpst, &fpst_odd);
++            }
++        }
++    } else {
++        for (i = 0; i < elements; i += eltspersegment) {
++            uint32_t m_idx = m[i + H4(index)];
++
++            for (j = i; j < i + eltspersegment; j++) {
++                d[j] = bfdotadd(a[j], n[j], m_idx, &fpst);
++            }
+         }
+     }
+     clear_tail(d, opr_sz, simd_maxsz(desc));
+@@ -2850,40 +2883,76 @@ void HELPER(gvec_bfdot_idx)(void *vd, void *vn, void *vm,
+ void HELPER(gvec_bfmmla)(void *vd, void *vn, void *vm, void *va,
+                          void *envp, uint32_t desc)
+ {
++    CPUARMState *env = envp;
+     intptr_t s, opr_sz = simd_oprsz(desc);
+     float32 *d = vd, *a = va;
+     uint32_t *n = vn, *m = vm;
++    float_status fpst, fpst_odd;
+ 
+-    for (s = 0; s < opr_sz / 4; s += 4) {
+-        float32 sum00, sum01, sum10, sum11;
++    if (is_ebf(env, &fpst, &fpst_odd)) {
++        for (s = 0; s < opr_sz / 4; s += 4) {
++            float32 sum00, sum01, sum10, sum11;
+ 
+-        /*
+-         * Process the entire segment at once, writing back the
+-         * results only after we've consumed all of the inputs.
+-         *
+-         * Key to indices by column:
+-         *               i   j           i   k             j   k
+-         */
+-        sum00 = a[s + H4(0 + 0)];
+-        sum00 = bfdotadd(sum00, n[s + H4(0 + 0)], m[s + H4(0 + 0)]);
+-        sum00 = bfdotadd(sum00, n[s + H4(0 + 1)], m[s + H4(0 + 1)]);
++            /*
++             * Process the entire segment at once, writing back the
++             * results only after we've consumed all of the inputs.
++             *
++             * Key to indices by column:
++             *               i   j               i   k             j   k
++             */
++            sum00 = a[s + H4(0 + 0)];
++            sum00 = bfdotadd_ebf(sum00, n[s + H4(0 + 0)], m[s + H4(0 + 0)], &fpst, &fpst_odd);
++            sum00 = bfdotadd_ebf(sum00, n[s + H4(0 + 1)], m[s + H4(0 + 1)], &fpst, &fpst_odd);
+ 
+-        sum01 = a[s + H4(0 + 1)];
+-        sum01 = bfdotadd(sum01, n[s + H4(0 + 0)], m[s + H4(2 + 0)]);
+-        sum01 = bfdotadd(sum01, n[s + H4(0 + 1)], m[s + H4(2 + 1)]);
++            sum01 = a[s + H4(0 + 1)];
++            sum01 = bfdotadd_ebf(sum01, n[s + H4(0 + 0)], m[s + H4(2 + 0)], &fpst, &fpst_odd);
++            sum01 = bfdotadd_ebf(sum01, n[s + H4(0 + 1)], m[s + H4(2 + 1)], &fpst, &fpst_odd);
+ 
+-        sum10 = a[s + H4(2 + 0)];
+-        sum10 = bfdotadd(sum10, n[s + H4(2 + 0)], m[s + H4(0 + 0)]);
+-        sum10 = bfdotadd(sum10, n[s + H4(2 + 1)], m[s + H4(0 + 1)]);
++            sum10 = a[s + H4(2 + 0)];
++            sum10 = bfdotadd_ebf(sum10, n[s + H4(2 + 0)], m[s + H4(0 + 0)], &fpst, &fpst_odd);
++            sum10 = bfdotadd_ebf(sum10, n[s + H4(2 + 1)], m[s + H4(0 + 1)], &fpst, &fpst_odd);
+ 
+-        sum11 = a[s + H4(2 + 1)];
+-        sum11 = bfdotadd(sum11, n[s + H4(2 + 0)], m[s + H4(2 + 0)]);
+-        sum11 = bfdotadd(sum11, n[s + H4(2 + 1)], m[s + H4(2 + 1)]);
++            sum11 = a[s + H4(2 + 1)];
++            sum11 = bfdotadd_ebf(sum11, n[s + H4(2 + 0)], m[s + H4(2 + 0)], &fpst, &fpst_odd);
++            sum11 = bfdotadd_ebf(sum11, n[s + H4(2 + 1)], m[s + H4(2 + 1)], &fpst, &fpst_odd);
+ 
+-        d[s + H4(0 + 0)] = sum00;
+-        d[s + H4(0 + 1)] = sum01;
+-        d[s + H4(2 + 0)] = sum10;
+-        d[s + H4(2 + 1)] = sum11;
++            d[s + H4(0 + 0)] = sum00;
++            d[s + H4(0 + 1)] = sum01;
++            d[s + H4(2 + 0)] = sum10;
++            d[s + H4(2 + 1)] = sum11;
++        }
++    } else {
++        for (s = 0; s < opr_sz / 4; s += 4) {
++            float32 sum00, sum01, sum10, sum11;
++
++            /*
++             * Process the entire segment at once, writing back the
++             * results only after we've consumed all of the inputs.
++             *
++             * Key to indices by column:
++             *               i   j           i   k             j   k
++             */
++            sum00 = a[s + H4(0 + 0)];
++            sum00 = bfdotadd(sum00, n[s + H4(0 + 0)], m[s + H4(0 + 0)], &fpst);
++            sum00 = bfdotadd(sum00, n[s + H4(0 + 1)], m[s + H4(0 + 1)], &fpst);
++
++            sum01 = a[s + H4(0 + 1)];
++            sum01 = bfdotadd(sum01, n[s + H4(0 + 0)], m[s + H4(2 + 0)], &fpst);
++            sum01 = bfdotadd(sum01, n[s + H4(0 + 1)], m[s + H4(2 + 1)], &fpst);
++
++            sum10 = a[s + H4(2 + 0)];
++            sum10 = bfdotadd(sum10, n[s + H4(2 + 0)], m[s + H4(0 + 0)], &fpst);
++            sum10 = bfdotadd(sum10, n[s + H4(2 + 1)], m[s + H4(0 + 1)], &fpst);
++
++            sum11 = a[s + H4(2 + 1)];
++            sum11 = bfdotadd(sum11, n[s + H4(2 + 0)], m[s + H4(2 + 0)], &fpst);
++            sum11 = bfdotadd(sum11, n[s + H4(2 + 1)], m[s + H4(2 + 1)], &fpst);
++
++            d[s + H4(0 + 0)] = sum00;
++            d[s + H4(0 + 1)] = sum01;
++            d[s + H4(2 + 0)] = sum10;
++            d[s + H4(2 + 1)] = sum11;
++        }
+     }
+     clear_tail(d, opr_sz, simd_maxsz(desc));
+ }
 -- 
 2.34.1
 

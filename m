@@ -1,119 +1,109 @@
-Received: by 2002:a17:504:5965:b0:1be9:327d:8ee3 with SMTP id xe5csp2442796njb;
-        Tue, 30 Jul 2024 09:04:54 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWUzdd0RpYtQipaWV8SHg52DknXXtqxRznqClP3d6nR0yEcxJhKElqCWStBfUR8Cb5gn3zzWRQKdRDuZA5TpIY/Y3mPUZBB
-X-Google-Smtp-Source: AGHT+IEBl8pmjg4/z6eAHj4iY+gX2SkSXBYmnazGRqlLGqHIatA7bEgnUnA149+8ItWWGVflFmAR
-X-Received: by 2002:a05:6214:4110:b0:6b9:6b09:f845 with SMTP id 6a1803df08f44-6bb55a0f510mr106748676d6.31.1722355494499;
-        Tue, 30 Jul 2024 09:04:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1722355494; cv=none;
+Received: by 2002:a17:504:5965:b0:1be9:327d:8ee3 with SMTP id xe5csp2455529njb;
+        Tue, 30 Jul 2024 09:26:39 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXWWVgPDH10TZkcxPIZ8TRaIjBMEGz0zXncFLfhHkpbF7D5v1MHqJXZIQ+WqcZ1+kN/qBN48MNajc+1q9su8RhjTBLbvWEJ
+X-Google-Smtp-Source: AGHT+IGALjdYqoyQgiA8A47J5hoOjX1C78SZnkaccw6KMZJrklLwlAZ+Mz3rjmqigIHcLrHvUTX8
+X-Received: by 2002:a05:620a:2983:b0:79f:13d1:4d25 with SMTP id af79cd13be357-7a1e522f864mr1144526685a.11.1722356799460;
+        Tue, 30 Jul 2024 09:26:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1722356799; cv=none;
         d=google.com; s=arc-20160816;
-        b=OynRPKYqg4JEBLOAF8zat8Hx4Rd3/oebJ4CStjxi4bX0ygmOI45p5u0wOvlITP/y5p
-         4yrANCa8UoYXvAH8JaKthfW9xurSAwj3Afvpo3C7y222rT4xfzbtgiFF78cj7R0ad52x
-         JjvRH8pCYrapwxTXlhp+7EdIGQqcx1+d7LOY9h9oRHB+wG3G/hrZ8m5Vg25Kr19C4sTw
-         pzHbZmfkvCRfI8XGU5vZn/BGS14sC4I+CBWt2aagcVbdXkoW3XuCf157OYlfW/xb39ct
-         AKQT/VVhtJq/2J03FO/bpeH33Y2SLQxTCRV94rYFANEJyaCMJlVIGktdzxx4M1hDmCNz
-         pkfQ==
+        b=sh2pouOA1iNE+5hgOaSyct8q1UQXIi7KkALT/EfHY8ahVL3NLQwkOcr0GmIU250zHv
+         D5n+EBBZgGjve3WdO2O5Ud9xtKPxFZaMD92yvLCYx3Df2veSvDZxw/SmwC+oBRpdWf9e
+         SQm7KqMydhDFJUetMveJEbHckPThBU1Sck0v32Bh7iYl+UYhpgJFXZtMGqCyFZfYOPdl
+         2unSWANnsgJD0L2WWlSxsG+Dag6qOEmdWXWv079aS02U2TZzQaEVvxRYr3dNNtNBlQD3
+         jyCLDzvm8MNh06MWIZRfEDshoxukVygXAllmGbjxok3B0QfON2houRpn9pU6g4lGM7Ba
+         iAgA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=YvH6WF9jz8JWZCJ6bAYBpoQtH4MHX55fT9yLfRYRxQ0=;
-        fh=H2AmuqulvQE+T5zu97MCEUC3z9wF9NssS7895NhR/+c=;
-        b=VBCaGxo7b5n8bmggrmn9gdedBxIYTmoSsTcKmoJ3k7OKLbei/YEfX4ThtN2aK5KPZ7
-         0DnAJGmUDesv2huyYFMjb6SewqQhsyrqSNouoeKCI63NU/bDXGoMwcWBRFY+EorLF2rv
-         EOOvVpJISuPSPmM5vMoh6aj9DU38ihR8MwazU54tpP6FRwuKRimpVlqZa+BOA8EZaCPO
-         IqcaUtCqNbZP5s7qwf2qzkF8ZKZWlIDUHfFzzBGHc8tJIRRGg16ik2R55q9K82SHa/25
-         GwVwF6yXmBBZq5ZUgzsMzQPyG/1VkXNtKyufFOrjtEDPvdIGH2YTgnxmFa1L7Vgf2+hB
-         O0xw==;
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:user-agent
+         :in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=wJjYVzvrtTYnNZwYb7O7HeA6MaQiVN2uJOKozifbdmA=;
+        fh=9eiXKnypPmAfWlNtNREvn3EzLW10aXzIbO2tl383YCc=;
+        b=dPPzi70w13Q6kL5aA63z5cTH/KMSyuTR7BeC1mwTW1kZC1KKm0lKu03g1lo9GolWz1
+         EJoVAd90sohyrdIoNXJD1Lseaihtn5x1UbIn2tQQ67OYnzrrBZe2gDqCIWCgNHaJJpbh
+         jVxLyUOh4AIYh40BwTzRgWEVNjGQHlo1dHNzuYQAtg3IOHULpvKoSjuEOjyl6+sVjGgL
+         MDewGSLgLA6fC/FuCxNBvgnTSXw7hSWIot2NGQ3XBjg9GAjxRfk0C0edRRhLbezUEcS2
+         l+ffGzRysdFOg6iulIMouVEGZY47txeaOyujkA5ppd+kdKCdfj3HvhyhMKRaPICPnyq0
+         3H7w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=tBoJxOSj;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=jVEmjakQ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6bb3f8cc22dsi122618716d6.105.2024.07.30.09.04.54
+        by mx.google.com with ESMTPS id af79cd13be357-7a1d749e442si1304435485a.733.2024.07.30.09.26.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 30 Jul 2024 09:04:54 -0700 (PDT)
+        Tue, 30 Jul 2024 09:26:39 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=tBoJxOSj;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=jVEmjakQ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sYpJu-000418-EV; Tue, 30 Jul 2024 12:03:26 -0400
+	id 1sYpgJ-0004QX-5g; Tue, 30 Jul 2024 12:26:35 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1sYpJt-0003t3-4C
- for qemu-arm@nongnu.org; Tue, 30 Jul 2024 12:03:25 -0400
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1sYpJp-0000IC-Gr
- for qemu-arm@nongnu.org; Tue, 30 Jul 2024 12:03:24 -0400
-Received: by mail-wm1-x32d.google.com with SMTP id
- 5b1f17b1804b1-42819654737so23451855e9.1
- for <qemu-arm@nongnu.org>; Tue, 30 Jul 2024 09:03:21 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1722355400; x=1722960200; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=YvH6WF9jz8JWZCJ6bAYBpoQtH4MHX55fT9yLfRYRxQ0=;
- b=tBoJxOSjlchtr6RiHaQrtYT5kCfBX190aoHaeTmTRf0jMySmOIBHiqZHXzaV93CYvc
- O0UpFSuVCaEQ4ZV3fLFDNx2Hmx1a+byyrUSSdqzuCUS8uIoxIDU2utEAAq7934qWDY24
- Uyi93+m4m4qhffoAvmjZWw96EFest6GuYFlSYVzfWxRfMHZXQ/D+zkCYSoFx6tSmEVyx
- VNuhnglhdlp6cBKjE8iwW36EL7K1WPs+/6XowHXr92MaxKtg8YEpCsQbQhnzVvS2P93e
- 99W4FQIKU8Yxf9ozBoy1ml7eKOIF37jImK0jWhD2eE+mVioKsRZH7xa4l1eYvBbmrxtA
- gjBw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1722355400; x=1722960200;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=YvH6WF9jz8JWZCJ6bAYBpoQtH4MHX55fT9yLfRYRxQ0=;
- b=P/ZwaDDd4G22XPyT/KQulOg8wjc+v1EnugH8YsaZvGB3NajA0RiNVRDIHEqVj0x0aa
- OZzESoWXFjwqJOOlnxPy5Jt1D1QOiYkwnsw9uYkXIXoSN++tpG7ysUTbFrm8FWL/RNeE
- Lw6V9TuJLMJ0FhegH4ziMA5bvdfGcsl3oq3HwVl3NGHtJKb2+KMho9JEwUzalNOMLhHS
- fLZg3JastJsfYkT3eWuZtQtfi2LCy7XYSYzUIuUAhL98rbwQOU9Kw+vXvjNyIwxxFE2W
- //dViGk2iX2TCXKiqEmWzyXSxU1yIgMkATxqj5ueT/Z6Zdyprd3aTAaM4aJh9KPu+z1i
- psdw==
-X-Gm-Message-State: AOJu0YwYgPLzFPb3sY6hVQ4Msd38h7cjqUDMWebqwDzzsohmBIEUEHkY
- d9Q49VtZzmrnYWXtXkGIXdciDV1XLbr6E63CY22NFxw0+hcv67wLYrvikb1eX/OB3DXKFQg5m8t
- 4
-X-Received: by 2002:a5d:45cb:0:b0:368:4634:c419 with SMTP id
- ffacd0b85a97d-36b5d09e40emr6824079f8f.58.1722355399934; 
- Tue, 30 Jul 2024 09:03:19 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-36b3685810csm15001676f8f.71.2024.07.30.09.03.19
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 30 Jul 2024 09:03:19 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH 8/8] target/arm: Enable FEAT_EBF16 in the "max" CPU
-Date: Tue, 30 Jul 2024 17:03:06 +0100
-Message-Id: <20240730160306.2959745-9-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20240730160306.2959745-1-peter.maydell@linaro.org>
-References: <20240730160306.2959745-1-peter.maydell@linaro.org>
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1sYpgH-0004Gn-Sn
+ for qemu-arm@nongnu.org; Tue, 30 Jul 2024 12:26:33 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1sYpgE-0004Lf-Ba
+ for qemu-arm@nongnu.org; Tue, 30 Jul 2024 12:26:33 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1722356788;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:in-reply-to:in-reply-to:  references:references;
+ bh=wJjYVzvrtTYnNZwYb7O7HeA6MaQiVN2uJOKozifbdmA=;
+ b=jVEmjakQ4RslExPjbYQaEkM5J5Pi4aX/MTzfNIzg5yBhel5X/qHT1l1B01UYN814jzWrSQ
+ yRxMZeMkcjz/WnFUqCc0RpXJ/acg5VcSIv8OjN3mZS48tQgZFpLhmInCI75Gu21uDewK/0
+ P+HR5wd5w8pr6/q8q4d8a32p1puarQc=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-351-BTWNgCaLPpy8sigfEiWgwQ-1; Tue,
+ 30 Jul 2024 12:26:24 -0400
+X-MC-Unique: BTWNgCaLPpy8sigfEiWgwQ-1
+Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 8C4121955D55; Tue, 30 Jul 2024 16:26:22 +0000 (UTC)
+Received: from redhat.com (unknown [10.42.28.108])
+ by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 3EC4919560AE; Tue, 30 Jul 2024 16:26:20 +0000 (UTC)
+Date: Tue, 30 Jul 2024 17:26:16 +0100
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Alejandro Zeise <alejandro.zeise@seagate.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, clg@kaod.org,
+ peter.maydell@linaro.org
+Subject: Re: [PATCH v2 1/2] crypto: add support for accumulative hashing
+Message-ID: <ZqkUKLtbCvfnrDWX@redhat.com>
+References: <20240729190035.3419649-1-alejandro.zeise@seagate.com>
+ <20240729190035.3419649-2-alejandro.zeise@seagate.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32d.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <20240729190035.3419649-2-alejandro.zeise@seagate.com>
+User-Agent: Mutt/2.2.12 (2023-09-09)
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.125,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -126,67 +116,506 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: sbEfynL4zErN
+X-TUID: UIZxt98Sz9ly
 
-Now that we've implemented the required behaviour for FEAT_EBF16, we
-can enable it for the "max" CPU type, list it in our documentation,
-and delete a TODO comment about it being missing.
+On Mon, Jul 29, 2024 at 07:00:34PM +0000, Alejandro Zeise wrote:
+> This change adds an accumulative hashing function
+> (qcrypto_hash_accumulate_bytesv) and implementation
+> for each of the crypto library backends that QEMU supports.
+> 
+> The QCrypto API did not support hashing in an accumulative mode.
+> As such, hardware hash modules (like the HACE from Aspeed's SoCs) are
+> unable to perform such operations correctly when the guest requires it.
+> 
+> The creation and freeing of each library's context is abstracted by
+> the qcrypto_hash_accumulate_new_ctx and qcrypto_hash_accumulate_free_ctx
+> functions.
+> 
+> Changes in V2:
+> * Fixed error checking bug in libgcrypt backend
+> 
+> Signed-off-by: Alejandro Zeise <alejandro.zeise@seagate.com>
+> ---
+>  crypto/hash-gcrypt.c  | 105 ++++++++++++++++++++++++++++++++++++++++++
+>  crypto/hash-glib.c    |  89 +++++++++++++++++++++++++++++++++++
+>  crypto/hash-gnutls.c  |  82 +++++++++++++++++++++++++++++++++
+>  crypto/hash-nettle.c  |  93 +++++++++++++++++++++++++++++++++++++
+>  crypto/hash.c         |  42 +++++++++++++++++
+>  crypto/hashpriv.h     |  11 +++++
+>  include/crypto/hash.h |  65 ++++++++++++++++++++++++++
+>  7 files changed, 487 insertions(+)
+> 
+> diff --git a/crypto/hash-gcrypt.c b/crypto/hash-gcrypt.c
+> index 829e48258d..6ef7e67711 100644
+> --- a/crypto/hash-gcrypt.c
+> +++ b/crypto/hash-gcrypt.c
+> @@ -1,6 +1,7 @@
+>  /*
+>   * QEMU Crypto hash algorithms
+>   *
+> + * Copyright (c) 2024 Seagate Technology LLC and/or its Affiliates
+>   * Copyright (c) 2016 Red Hat, Inc.
+>   *
+>   * This library is free software; you can redistribute it and/or
+> @@ -110,7 +111,111 @@ qcrypto_gcrypt_hash_bytesv(QCryptoHashAlgorithm alg,
+>      return -1;
+>  }
+>  
+> +static
+> +int qcrypto_gcrypt_hash_accumulate_new_ctx(QCryptoHashAlgorithm alg,
+> +                                           qcrypto_hash_accumulate_ctx_t **accumulate_ctx,
+> +                                           Error **errp)
+> +{
+> +    int ret;
+> +
+> +    if (!qcrypto_hash_supports(alg)) {
+> +        error_setg(errp,
+> +                   "Unknown hash algorithm %d",
+> +                   alg);
+> +        return -1;
+> +    }
+> +
+> +    ret = gcry_md_open((gcry_md_hd_t *) accumulate_ctx, qcrypto_hash_alg_map[alg], 0);
+> +
+> +    if (ret < 0) {
+> +        error_setg(errp,
+> +                   "Unable to initialize hash algorithm: %s",
+> +                   gcry_strerror(ret));
+> +        return -1;
+> +    }
+> +
+> +    return 0;
+> +}
+> +
+> +static
+> +int qcrypto_gcrypt_hash_accumulate_free_ctx(qcrypto_hash_accumulate_ctx_t *hash_ctx,
+> +                                            Error **errp)
+> +{
+> +    if (hash_ctx != NULL) {
+> +        gcry_md_close((gcry_md_hd_t) hash_ctx);
+> +    }
+> +
+> +    return 0;
+> +}
+> +
+> +static
+> +int qcrypto_gcrypt_hash_accumulate_bytesv(QCryptoHashAlgorithm alg,
+> +                                          qcrypto_hash_accumulate_ctx_t *accumulate_ctx,
+> +                                          const struct iovec *iov,
+> +                                          size_t niov,
+> +                                          uint8_t **result,
+> +                                          size_t *resultlen,
+> +                                          Error **errp)
+> +{
+> +    int i, ret;
+> +    gcry_md_hd_t ctx_copy;
+> +    unsigned char *digest;
+> +
+> +    if (!qcrypto_hash_supports(alg)) {
+> +        error_setg(errp,
+> +                   "Unknown hash algorithm %d",
+> +                   alg);
+> +        return -1;
+> +    }
+> +
+> +    for (i = 0; i < niov; i++) {
+> +        gcry_md_write((gcry_md_hd_t) accumulate_ctx, iov[i].iov_base, iov[i].iov_len);
+> +    }
+> +
+> +    ret = gcry_md_get_algo_dlen(qcrypto_hash_alg_map[alg]);
+> +    if (ret <= 0) {
+> +        error_setg(errp,
+> +                   "Unable to get hash length: %s",
+> +                   gcry_strerror(ret));
+> +        return -1;
+> +    }
+> +
+> +    if (*resultlen == 0) {
+> +        *resultlen = ret;
+> +        *result = g_new0(uint8_t, *resultlen);
+> +    } else if (*resultlen != ret) {
+> +        error_setg(errp,
+> +                   "Result buffer size %zu is smaller than hash %d",
+> +                   *resultlen, ret);
+> +        return -1;
+> +    }
+> +
+> +    /*
+> +     * Make a copy so we don't distort the main context
+> +     * by calculating the intermediate hash
+> +     */
+> +    ret = gcry_md_copy(&ctx_copy, (gcry_md_hd_t) accumulate_ctx);
+> +    if (ret) {
+> +        error_setg(errp, "Unable to make copy: %s", gcry_strerror(ret));
+> +        return -1;
+> +    }
+> +
+> +    digest = gcry_md_read(ctx_copy, 0);
+> +    if (!digest) {
+> +        error_setg(errp,
+> +                   "No digest produced");
+> +        return -1;
+> +    }
+> +    memcpy(*result, digest, *resultlen);
+> +    gcry_md_close(ctx_copy);
+> +
+> +    return 0;
+> +}
+> +
+>  
+>  QCryptoHashDriver qcrypto_hash_lib_driver = {
+>      .hash_bytesv = qcrypto_gcrypt_hash_bytesv,
+> +    .hash_accumulate_bytesv = qcrypto_gcrypt_hash_accumulate_bytesv,
+> +    .accumulate_new_ctx = qcrypto_gcrypt_hash_accumulate_new_ctx,
+> +    .accumulate_free_ctx = qcrypto_gcrypt_hash_accumulate_free_ctx,
+>  };
+> diff --git a/crypto/hash-glib.c b/crypto/hash-glib.c
+> index 82de9db705..c0d1d72c88 100644
+> --- a/crypto/hash-glib.c
+> +++ b/crypto/hash-glib.c
+> @@ -1,6 +1,7 @@
+>  /*
+>   * QEMU Crypto hash algorithms
+>   *
+> + * Copyright (c) 2024 Seagate Technology LLC and/or its Affiliates
+>   * Copyright (c) 2016 Red Hat, Inc.
+>   *
+>   * This library is free software; you can redistribute it and/or
+> @@ -95,6 +96,94 @@ qcrypto_glib_hash_bytesv(QCryptoHashAlgorithm alg,
+>  }
+>  
+>  
+> +static
+> +int qcrypto_glib_hash_accumulate_new_ctx(QCryptoHashAlgorithm alg,
+> +                                         qcrypto_hash_accumulate_ctx_t **accumulate_ctx,
+> +                                         Error **errp)
+> +{
+> +    if (!qcrypto_hash_supports(alg)) {
+> +        error_setg(errp,
+> +                   "Unknown hash algorithm %d",
+> +                   alg);
+> +        return -1;
+> +    }
+> +
+> +    *accumulate_ctx = g_checksum_new(qcrypto_hash_alg_map[alg]);
+> +
+> +    return 0;
+> +}
+> +
+> +static
+> +int qcrypto_glib_hash_accumulate_free_ctx(qcrypto_hash_accumulate_ctx_t *hash_ctx,
+> +                                          Error **errp)
+> +{
+> +    if (hash_ctx != NULL) {
+> +        g_checksum_free((GChecksum *) hash_ctx);
+> +    }
+> +
+> +    return 0;
+> +}
+> +
+> +
+> +static
+> +int qcrypto_glib_hash_accumulate_bytesv(QCryptoHashAlgorithm alg,
+> +                                        qcrypto_hash_accumulate_ctx_t *accumulate_ctx,
+> +                                        const struct iovec *iov,
+> +                                        size_t niov,
+> +                                        uint8_t **result,
+> +                                        size_t *resultlen,
+> +                                        Error **errp)
+> +{
+> +    int i, ret;
+> +    GChecksum *ctx_copy;
+> +
+> +    if (!qcrypto_hash_supports(alg)) {
+> +        error_setg(errp,
+> +                   "Unknown hash algorithm %d",
+> +                   alg);
+> +        return -1;
+> +    }
+> +
+> +    for (i = 0; i < niov; i++) {
+> +        g_checksum_update((GChecksum *) accumulate_ctx, iov[i].iov_base, iov[i].iov_len);
+> +    }
+> +
+> +    ret = g_checksum_type_get_length(qcrypto_hash_alg_map[alg]);
+> +    if (ret < 0) {
+> +        error_setg(errp, "%s",
+> +                   "Unable to get hash length");
+> +        return -1;
+> +    }
+> +    if (*resultlen == 0) {
+> +        *resultlen = ret;
+> +        *result = g_new0(uint8_t, *resultlen);
+> +    } else if (*resultlen != ret) {
+> +        error_setg(errp,
+> +                   "Result buffer size %zu is smaller than hash %d",
+> +                   *resultlen, ret);
+> +        return -1;
+> +    }
+> +
+> +    /*
+> +    Make a copy so we don't distort the main context
+> +    by calculating the intermediate hash.
+> +    */
+> +    ctx_copy = g_checksum_copy((GChecksum *) accumulate_ctx);
+> +    if (ctx_copy == NULL) {
+> +        error_setg(errp, "Unable to make copy: %s", __func__);
+> +        return -1;
+> +    }
+> +
+> +    g_checksum_get_digest((GChecksum *) ctx_copy, *result, resultlen);
+> +    g_checksum_free(ctx_copy);
+> +
+> +    return 0;
+> +}
+> +
+> +
+>  QCryptoHashDriver qcrypto_hash_lib_driver = {
+>      .hash_bytesv = qcrypto_glib_hash_bytesv,
+> +    .hash_accumulate_bytesv = qcrypto_glib_hash_accumulate_bytesv,
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- docs/system/arm/emulation.rst  | 1 +
- target/arm/tcg/cpu64.c         | 4 ++--
- target/arm/tcg/translate-sme.c | 1 -
- 3 files changed, 3 insertions(+), 3 deletions(-)
+These two methods are 99% copy+pate of each other which is
+highly undesirable. To address this we should get rid of
+the 'hash_bytesv' callback entirely. The existing single shot
+methods can be implemented entirely in terms of the new methods
+you are adding.
 
-diff --git a/docs/system/arm/emulation.rst b/docs/system/arm/emulation.rst
-index 3ab6e726679..35f52a54b1c 100644
---- a/docs/system/arm/emulation.rst
-+++ b/docs/system/arm/emulation.rst
-@@ -45,6 +45,7 @@ the following architecture extensions:
- - FEAT_DotProd (Advanced SIMD dot product instructions)
- - FEAT_DoubleFault (Double Fault Extension)
- - FEAT_E0PD (Preventing EL0 access to halves of address maps)
-+- FEAT_EBF16 (AArch64 Extended BFloat16 instructions)
- - FEAT_ECV (Enhanced Counter Virtualization)
- - FEAT_EL0 (Support for execution at EL0)
- - FEAT_EL1 (Support for execution at EL1)
-diff --git a/target/arm/tcg/cpu64.c b/target/arm/tcg/cpu64.c
-index fe232eb3069..79258a7c928 100644
---- a/target/arm/tcg/cpu64.c
-+++ b/target/arm/tcg/cpu64.c
-@@ -1160,7 +1160,7 @@ void aarch64_max_tcg_initfn(Object *obj)
-     t = FIELD_DP64(t, ID_AA64ISAR1, FRINTTS, 1);  /* FEAT_FRINTTS */
-     t = FIELD_DP64(t, ID_AA64ISAR1, SB, 1);       /* FEAT_SB */
-     t = FIELD_DP64(t, ID_AA64ISAR1, SPECRES, 1);  /* FEAT_SPECRES */
--    t = FIELD_DP64(t, ID_AA64ISAR1, BF16, 1);     /* FEAT_BF16 */
-+    t = FIELD_DP64(t, ID_AA64ISAR1, BF16, 2);     /* FEAT_BF16, FEAT_EBF16 */
-     t = FIELD_DP64(t, ID_AA64ISAR1, DGH, 1);      /* FEAT_DGH */
-     t = FIELD_DP64(t, ID_AA64ISAR1, I8MM, 1);     /* FEAT_I8MM */
-     cpu->isar.id_aa64isar1 = t;
-@@ -1244,7 +1244,7 @@ void aarch64_max_tcg_initfn(Object *obj)
-     t = FIELD_DP64(t, ID_AA64ZFR0, SVEVER, 1);
-     t = FIELD_DP64(t, ID_AA64ZFR0, AES, 2);       /* FEAT_SVE_PMULL128 */
-     t = FIELD_DP64(t, ID_AA64ZFR0, BITPERM, 1);   /* FEAT_SVE_BitPerm */
--    t = FIELD_DP64(t, ID_AA64ZFR0, BFLOAT16, 1);  /* FEAT_BF16 */
-+    t = FIELD_DP64(t, ID_AA64ZFR0, BFLOAT16, 2);  /* FEAT_BF16, FEAT_EBF16 */
-     t = FIELD_DP64(t, ID_AA64ZFR0, SHA3, 1);      /* FEAT_SVE_SHA3 */
-     t = FIELD_DP64(t, ID_AA64ZFR0, SM4, 1);       /* FEAT_SVE_SM4 */
-     t = FIELD_DP64(t, ID_AA64ZFR0, I8MM, 1);      /* FEAT_I8MM */
-diff --git a/target/arm/tcg/translate-sme.c b/target/arm/tcg/translate-sme.c
-index bcb502feb05..760c200e622 100644
---- a/target/arm/tcg/translate-sme.c
-+++ b/target/arm/tcg/translate-sme.c
-@@ -354,7 +354,6 @@ TRANS_FEAT(FMOPA_s, aa64_sme, do_outprod_fpst, a,
- TRANS_FEAT(FMOPA_d, aa64_sme_f64f64, do_outprod_fpst, a,
-            MO_64, FPST_FPCR, gen_helper_sme_fmopa_d)
- 
--/* TODO: FEAT_EBF16 */
- TRANS_FEAT(BFMOPA, aa64_sme, do_outprod_env, a, MO_32, gen_helper_sme_bfmopa)
- 
- TRANS_FEAT(SMOPA_s, aa64_sme, do_outprod, a, MO_32, gen_helper_sme_smopa_s)
+> +    .accumulate_new_ctx = qcrypto_glib_hash_accumulate_new_ctx,
+> +    .accumulate_free_ctx = qcrypto_glib_hash_accumulate_free_ctx,
+>  };
+
+> diff --git a/crypto/hash.c b/crypto/hash.c
+> index b0f8228bdc..0d45ce1e1b 100644
+> --- a/crypto/hash.c
+> +++ b/crypto/hash.c
+> @@ -1,6 +1,7 @@
+>  /*
+>   * QEMU Crypto hash algorithms
+>   *
+> + * Copyright (c) 2024 Seagate Technology LLC and/or its Affiliates
+>   * Copyright (c) 2015 Red Hat, Inc.
+>   *
+>   * This library is free software; you can redistribute it and/or
+> @@ -77,6 +78,47 @@ int qcrypto_hash_bytes(QCryptoHashAlgorithm alg,
+>      return qcrypto_hash_bytesv(alg, &iov, 1, result, resultlen, errp);
+>  }
+>  
+> +int qcrypto_hash_accumulate_bytesv(QCryptoHashAlgorithm alg,
+> +                                   qcrypto_hash_accumulate_ctx_t *accumulate_ctx,
+> +                                   const struct iovec *iov,
+> +                                   size_t niov,
+> +                                   uint8_t **result,
+> +                                   size_t *resultlen,
+> +                                   Error **errp)
+> +{
+> +#ifdef CONFIG_AF_ALG
+> +    qemu_log_mask(LOG_UNIMP, "%s: AF_ALG support unimplemented.\n", __func__);
+> +    return 1;
+> +#else
+
+This isn't ok - we need to have this new API design supported by the afalg
+implementation.
+
+
+
+> diff --git a/crypto/hashpriv.h b/crypto/hashpriv.h
+> index cee26ccb47..49b3927208 100644
+> --- a/crypto/hashpriv.h
+> +++ b/crypto/hashpriv.h
+> @@ -1,6 +1,7 @@
+>  /*
+>   * QEMU Crypto hash driver supports
+>   *
+> + * Copyright (c) 2024 Seagate Technology LLC and/or its Affiliates
+>   * Copyright (c) 2017 HUAWEI TECHNOLOGIES CO., LTD.
+>   *
+>   * Authors:
+> @@ -24,6 +25,16 @@ struct QCryptoHashDriver {
+>                         uint8_t **result,
+>                         size_t *resultlen,
+>                         Error **errp);
+> +    int (*hash_accumulate_bytesv)(QCryptoHashAlgorithm alg,
+> +                                  void *hash_ctx,
+> +                                  const struct iovec *iov,
+> +                                  size_t niov,
+> +                                  uint8_t **result,
+> +                                  size_t *resultlen,
+> +                                  Error **errp);
+> +    int (*accumulate_new_ctx)(QCryptoHashAlgorithm alg, void **hash_ctx,
+> +                              Error **errp);
+> +    int (*accumulate_free_ctx)(void *hash_ctx, Error **errp);
+>  };
+
+We should split updating from finalizing, and use QCryptoHash
+as the type name for the context object. ie we need 4 callbacks
+in total:
+
+   QCryptoHash *(*hash_new)(QCryptoHashAlgorithm alg, Error **errp);
+   int (*hash_update)(QCryptoHashAlgorithm alg,
+                      const struct iovec *iov,
+                      size_t niov,
+                      Error **errp);
+   int (*hash_finalize)(QCryptoHashAlgorithm alg,
+                        uint8_t **result,
+                        size_t *resultlen,
+                        Error **errp);
+   (*hash_free)(QCryptoHash *hash);
+
+> diff --git a/include/crypto/hash.h b/include/crypto/hash.h
+> index 54d87aa2a1..fb8ae2d099 100644
+> --- a/include/crypto/hash.h
+> +++ b/include/crypto/hash.h
+> @@ -1,6 +1,7 @@
+>  /*
+>   * QEMU Crypto hash algorithms
+>   *
+> + * Copyright (c) 2024 Seagate Technology LLC and/or its Affiliates
+>   * Copyright (c) 2015 Red Hat, Inc.
+>   *
+>   * This library is free software; you can redistribute it and/or
+> @@ -25,6 +26,8 @@
+>  
+>  /* See also "QCryptoHashAlgorithm" defined in qapi/crypto.json */
+>  
+> +typedef void qcrypto_hash_accumulate_ctx_t;
+> +
+
+Style convention for types is initial caps, rather snake case.
+Also this can be massively shortened. So we get just
+
+  typedef struct QCryptoHash QCryptoHash;
+
+>  /**
+>   * qcrypto_hash_supports:
+>   * @alg: the hash algorithm
+> @@ -120,6 +123,68 @@ int qcrypto_hash_digestv(QCryptoHashAlgorithm alg,
+>                           char **digest,
+>                           Error **errp);
+>  
+> +/**
+> + * qcrypto_hash_accumulate_bytesv:
+> + * @alg: the hash algorithm
+> + * @accumulate_ctx: pointer to the algorithm's context for further hash operations
+> + * @iov: the array of memory regions to hash
+> + * @niov: the length of @iov
+> + * @result: pointer to hold output hash
+> + * @resultlen: pointer to hold length of @result
+> + * @errp: pointer to a NULL-initialized error object
+> + *
+> + * Computes the hash across all the memory regions
+> + * present in @iov using the existing hash context
+> + * given in @accumulate_ctx. The @result pointer will be
+> + * filled with raw bytes representing the computed
+> + * hash, which will have length @resultlen. The
+> + * memory pointer in @result must be released
+> + * with a call to g_free() when no longer required.
+> + *
+> + * Returns: 0 on success, -1 on error
+> + */
+> +int qcrypto_hash_accumulate_bytesv(QCryptoHashAlgorithm alg,
+> +                                   qcrypto_hash_accumulate_ctx_t *accumulate_ctx,
+> +                                   const struct iovec *iov,
+> +                                   size_t niov,
+> +                                   uint8_t **result,
+> +                                   size_t *resultlen,
+> +                                   Error **errp);
+
+Again, separate updating from finalizing, but in the public
+API we'll need the three finalizing variants. 
+
+Passing in 'alg' every time is also redundant when we have a context.
+
+So this should result in the following
+
+  int qcrypto_hash_update(QCryptoHash *hash,
+                          const struct iovec *iov,
+                          size_t niov,
+                          Error **errp);
+  int qcrypto_hash_finalize_bytes(QCryptoHash *hash,
+                                  uint8_t **result,
+                                  size_t *resultlen,
+                                  Error **errp);
+  int qcrypto_hash_finalize_digest(QCryptoHash *hash,
+                                   char **result,
+                                   Error **errp);
+  int qcrypto_hash_finalize_base64(QCryptoHash *hash,
+                                   char **result,
+                                   Error **errp);
+
+
+
+> +
+> +/**
+> + * qcrypto_hash_accumulate_new_ctx:
+> + * @alg: the hash algorithm
+> + * @accumulate_ctx: pointer to the pointer holding the algorithm's
+> + *                  context for further hash operations. The pointer will
+> + *                  be modified to point to the memory this function
+> + *                  allocates to hold the context.
+> + * @errp: pointer to a NULL-initialized error object
+> + *
+> + * Creates a new hashing context for the chosen algorithm for
+> + * usage with qcrypto_hash_accumulate_bytesv().
+> + * This is useful for when one has multiple inputs to compute a hash, but
+> + * not all are available at a single point in time, making qcrypto_hash_bytesv()
+> + * inadequate. The @accumulate_ctx pointer must be released with a call to
+> + * qcrypto_hash_accumulate_free_ctx() once all hash operations are complete.
+> + *
+> + * Returns: 0 on success, -1 on error
+> + */
+> +int qcrypto_hash_accumulate_new_ctx(QCryptoHashAlgorithm alg,
+> +                                    qcrypto_hash_accumulate_ctx_t **accumulate_ctx,
+> +                                    Error **errp);
+
+Needs to be
+
+  QCryptoHash *qcrypto_hash_new(QCryptoHashAlgorithm alg,
+                                Error **errp);
+
+> +
+> +/**
+> + * qcrypto_hash_accumulate_free_ctx:
+> + * @accumulate_ctx: pointer to the algorithm's context for further hash operations
+> + * @errp: pointer to a NULL-initialized error object
+> + *
+> + * frees a hashing context for the chosen algorithm.
+> + *
+> + * Returns: 0 on success, -1 on error
+> + */
+> +int qcrypto_hash_accumulate_free_ctx(qcrypto_hash_accumulate_ctx_t *accumulate_ctx,
+> +                                     Error **errp);
+
+Needs to be
+
+  QCryptoHash *qcrypto_hash_free(QCryptoHash *hash)
+
+We shouldn't have an Error **errp for the destructor, as we need to be
+able to create an cleanup func for it:
+
+  G_DEFINE_AUTOPTR_CLEANUP_FUNC(QCryptoHash, qcrypto_hash_free)
+
+
+Basically this ends up with the hash code looking very like the
+cipher.c code in terms of both public API and the internal driver
+design.
+
+Finally, overall I'd like this patch to be split into multiple patches,
+since the changes are going to be quite large
+
+ * Define the new public API in hash.h & hash.c
+ * Provide the new impl for each backend (one patch per driver please)
+ * Add test cases to test-crypto-hash.c for the new APIs
+ * Re-implement the existing public APIs in terms of the new
+   public APIs
+ * Drop the old impl for each backend (one patch per driver please)
+
+With regards,
+Daniel
 -- 
-2.34.1
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
 

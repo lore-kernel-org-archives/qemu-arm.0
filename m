@@ -1,325 +1,291 @@
-Received: by 2002:a17:504:5965:b0:1be9:327d:8ee3 with SMTP id xe5csp2244207njb;
-        Tue, 30 Jul 2024 02:14:07 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCVslVmoOap/vxA8SClt4nc3WOfewI3sWvNsLSERWS+6JArNwmuA2Rngu2snEU4KvSg3SDwkTTBWPl8k7u6GQpjXTRJChomz
-X-Google-Smtp-Source: AGHT+IG8aOYnCzlUOV8YdNSJk7875RxhMrAUTXcPm+4zXSFVk1Td0BRUcDDF888bVCHvCdYj/djW
-X-Received: by 2002:a05:622a:1791:b0:447:f402:58a5 with SMTP id d75a77b69052e-45004ddfb42mr158289771cf.34.1722330846891;
-        Tue, 30 Jul 2024 02:14:06 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1722330846; cv=pass;
+Received: by 2002:a17:504:5965:b0:1be9:327d:8ee3 with SMTP id xe5csp2438310njb;
+        Tue, 30 Jul 2024 08:58:37 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUjGVes4ztaSyJzkoLyV1LoedR56ncEHyhp1bQO37SgWDrhn8/3+p8hb+ivF8iCcmW5Vy+gDNd4edYUC+Y+VW384ckWjhJL
+X-Google-Smtp-Source: AGHT+IHERU5tqXMGWtoxUZnZ1vVTlcWnCwd4aL4lUoiKs+fHBzcHDs92/Cwu1b7UlDgRwnO2k6ob
+X-Received: by 2002:a05:620a:4552:b0:79f:181c:3962 with SMTP id af79cd13be357-7a1e52e8c9bmr1408046485a.44.1722355117633;
+        Tue, 30 Jul 2024 08:58:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1722355117; cv=none;
         d=google.com; s=arc-20160816;
-        b=rzJUmVYX+PhHNz1HloVA/8X0DlnBit3T/RpZw4WxN5riOuBQJrqktkg2wCLGTOE3kX
-         Tubqjqyt79DaD3Ssa9Gmdy6jVtC4IqfL9RbPe81A61sHbJTQ/Kl+lxMbYtlvEbyv+ZnL
-         3gRsYrU/jANQdMAQictKdkNlnGY1WjdgG0VtZtaaqHzwH6dBXnqrMoOjsHRdIg3YQn7l
-         Vkkqr0AKV8JUYP8GDQ/xoKZOVYQ1sQnEC9+QoMuSeqX41KzkFoJoeg42ivCMtIqkD1Vs
-         kUig9i9kFhjIxrNMRNgGWg9IfBliWeF64caH+b2JZOw6XnrJ2S2cSKeIh1PS7q3HR8aw
-         n6Ig==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-transfer-encoding
-         :content-disposition:mime-version:list-unsubscribe:list-subscribe
-         :list-id:precedence:references:reply-to:message-id:subject:cc:to
-         :from:date:dkim-signature;
-        bh=oSLlIJR2ZPU1Tj2WbafVSnV32Cdn2vklNmUjcUUffwU=;
-        fh=9hFDqFluQ4K0nkG/6lzcBQr+AmQg/OxQWMC/bennKy0=;
-        b=sRRDcRgvn/FRQHXUl/p2dM3hwGJhyRBg5x8iNuS1eJEBDaDRmgK+g1PVdYvvj5VxWX
-         Q47RHW+G7uueIq7n4I/Ulwl3PXWvbIFQdmKRznQPg3ZmbjmKS5Xsmoj2XJCvmQMosaeW
-         lHmKXcMpBgd9MGFC+8eYBEdh/iRDGgnZ9iG4+6S+5Ph+rhuIQuvZNBAyhE40oRRAf986
-         YdLE/2nDhaZp1HMLlvKAJMuBuHMolm6VREnNsaiKKjai/aKpiSQNyIaU4oAsp2x8MHJ4
-         qOCyE87YbIsP+hm3GRvaNCxJ+RTKCVrQrBo4DhJnW376xOcapq+TSUxqDAlOkfd1Vco1
-         velg==;
+        b=NGAH0CPwnkH0EDFE9FRjN77wMGuKTXB8y1N182vc8j+UY8gAEGA6viphVci4rBgSWD
+         QscL6VjJqA9hRjG7rrnBdaSlOhvfaM/TaAkLPS0ztipEO0gGT0TCH2q8zIp9b5Z3Xd7n
+         N23TwOaqkJ/9HUQL4hrqUkfLZTgxavUM6Mcxt2dL/L3JfM1Lm8WlPLQXmiBL8HjdUpLi
+         wpSCNsdR4Ug5jujBFe6VwTIeVw9Yrvyp1Nk1+UrVslPqVV2nNHbPnKHTn573oM54Qopq
+         K3ipHJhofenWxJCJ2Bz8r7fbaHArPXSbtKznzoNRHsh5HqMYdEbyLoEPOyA0iTMRwEso
+         Suhg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=sh3bt0t5Dape32FkCCN2FKClc/tbQN4spe+p/+e4Yr4=;
+        fh=spbD1uAOw2hCQBb83uSlqZAKTOl6wvNX+k1rxl9UBCg=;
+        b=OUl71A4T04UnyQY2Ctsh3Hz68LhuH6HEoSSDANuP0nFhC6MT/U4jKEANefAzHUSQuo
+         ABbQ88R38+rInV2J1rEnRL8FJmyNReKfZovXiDz80X6QHNQ/xj+POsIDKLLglChNCz3D
+         QlaxXDIVz5zftvg1vR7Ze8M0CfmfnD7J/4QoUU+k0c7lnfGVTvyEXbnml34BAtcGi1eN
+         ccSlZvzVpqbgz6gxQncA8T+4B5HW9AbWJ0VdLhcuFwXmx23lG1PSaTv47K3UKKOkIXUb
+         9uyxb4/irlr2QKLCt5Kn8PZUrxboPAfkJMPI9rFBVhJdrnLiA1cNckVYQlZLonyrgP+y
+         xJLw==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=a2+7B9Yf;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-22653-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="kvm+bounces-22653-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm+bounces-22653-alex.bennee=linaro.org@vger.kernel.org>
-Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [2604:1380:45d1:ec00::1])
-        by mx.google.com with ESMTPS id d75a77b69052e-44fe84229dbsi120632121cf.584.2024.07.30.02.14.06
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=WDWPXHYI;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id af79cd13be357-7a1d7475089si1344017785a.615.2024.07.30.08.58.37
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 30 Jul 2024 02:14:06 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm+bounces-22653-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) client-ip=2604:1380:45d1:ec00::1;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 30 Jul 2024 08:58:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=a2+7B9Yf;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-22653-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="kvm+bounces-22653-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ny.mirrors.kernel.org (Postfix) with ESMTPS id 86B211C23FF4
-	for <alex.bennee@linaro.org>; Tue, 30 Jul 2024 09:14:06 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id A5F65194A58;
-	Tue, 30 Jul 2024 09:13:57 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="a2+7B9Yf"
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B7506194A56
-	for <kvm@vger.kernel.org>; Tue, 30 Jul 2024 09:13:55 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.129.124
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1722330837; cv=none; b=QRV84R+jOLsCWknbY5EjYiDkOiVpP46dvJ7rY7bjzh7vVbnqeiu6XlplA2rpHJK5ZTT7AiJPrCKD7tGhup5NgCo0WdeP+0BCehlxPTVxZH2ICK4AzyzpQ1cZURR68jgU5I4sh4CyLXyswr1XGIt5zmBt9jD/QpeRPrQ+n+c2dKE=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1722330837; c=relaxed/simple;
-	bh=0fAab6w8aA/2ybHIRHyjn5sqMbiIUBA20w3jkUPQBtQ=;
-	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
-	 Content-Type:Content-Disposition:In-Reply-To; b=M8voV/jap7EKBYqE1oxY4DgXlr4TkLtXwDr7Tm2bF+8klAhjeHE1Px0vNzv7oOdC+2ODJrAfPjMzv9fJlKql0vandwPCgCdj7HIs/XS41b2gy3V3SrG2xItIMnRb13S3zcp0twmFi7d2Wb0i88OAuhtnKSNDUOa0eFp0nMfuE7E=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=a2+7B9Yf; arc=none smtp.client-ip=170.10.129.124
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1722330834;
-	h=from:from:reply-to:reply-to:subject:subject:date:date:
-	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
-	 content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=oSLlIJR2ZPU1Tj2WbafVSnV32Cdn2vklNmUjcUUffwU=;
-	b=a2+7B9YfburTALjG3rqrdOHHZPfIHY2QIn8nxtM2G9TAC89cB9ByV1yEafDpMTGzasAku3
-	yQMgl1yhPyx/RWXDnIeZdtqI+gCxx05G+DIO79JirrPvyM49BPIp2mlvz7BMw9XRoLIgbT
-	cFTLU/3IQnha1XBsmy9c6f0DNPh7g+Y=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-121-C85vXwjOPM67FfiNoxbJfw-1; Tue,
- 30 Jul 2024 05:13:48 -0400
-X-MC-Unique: C85vXwjOPM67FfiNoxbJfw-1
-Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 571EC1955D4F;
-	Tue, 30 Jul 2024 09:13:43 +0000 (UTC)
-Received: from redhat.com (unknown [10.42.28.108])
-	by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id E423B1955E89;
-	Tue, 30 Jul 2024 09:13:28 +0000 (UTC)
-Date: Tue, 30 Jul 2024 10:13:25 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Markus Armbruster <armbru@redhat.com>
-Cc: qemu-devel@nongnu.org, alex.williamson@redhat.com,
-	andrew@codeconstruct.com.au, andrew@daynix.com,
-	arei.gonglei@huawei.com, berto@igalia.com,
-	borntraeger@linux.ibm.com, clg@kaod.org, david@redhat.com,
-	den@openvz.org, eblake@redhat.com, eduardo@habkost.net,
-	farman@linux.ibm.com, farosas@suse.de, hreitz@redhat.com,
-	idryomov@gmail.com, iii@linux.ibm.com, jamin_lin@aspeedtech.com,
-	jasowang@redhat.com, joel@jms.id.au, jsnow@redhat.com,
-	kwolf@redhat.com, leetroy@gmail.com, marcandre.lureau@redhat.com,
-	marcel.apfelbaum@gmail.com, michael.roth@amd.com, mst@redhat.com,
-	mtosatti@redhat.com, nsg@linux.ibm.com, pasic@linux.ibm.com,
-	pbonzini@redhat.com, peter.maydell@linaro.org, peterx@redhat.com,
-	philmd@linaro.org, pizhenwei@bytedance.com, pl@dlhnet.de,
-	richard.henderson@linaro.org, stefanha@redhat.com,
-	steven_lee@aspeedtech.com, thuth@redhat.com,
-	vsementsov@yandex-team.ru, wangyanan55@huawei.com,
-	yuri.benditovich@daynix.com, zhao1.liu@intel.com,
-	qemu-block@nongnu.org, qemu-arm@nongnu.org, qemu-s390x@nongnu.org,
-	kvm@vger.kernel.org
-Subject: Re: [PATCH 01/18] qapi: Smarter camel_to_upper() to reduce need for
- 'prefix'
-Message-ID: <ZqiutRoQuAsrllfj@redhat.com>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-References: <20240730081032.1246748-1-armbru@redhat.com>
- <20240730081032.1246748-2-armbru@redhat.com>
-Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=WDWPXHYI;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sYpF5-0001O6-K7; Tue, 30 Jul 2024 11:58:27 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1sYpF4-0001JL-D2
+ for qemu-arm@nongnu.org; Tue, 30 Jul 2024 11:58:26 -0400
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1sYpF0-0007bG-RM
+ for qemu-arm@nongnu.org; Tue, 30 Jul 2024 11:58:26 -0400
+Received: by mail-wm1-x332.google.com with SMTP id
+ 5b1f17b1804b1-4280b3a7efaso29437055e9.0
+ for <qemu-arm@nongnu.org>; Tue, 30 Jul 2024 08:58:22 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1722355101; x=1722959901; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=sh3bt0t5Dape32FkCCN2FKClc/tbQN4spe+p/+e4Yr4=;
+ b=WDWPXHYI9SY14UMkhUIuwDpzU9wexqItzEebgBbIkhOG+/7y5MqrRJvw61XG2Cetsp
+ Ld7uMNA1PMU5e13qyNTPg1RVaXeFrtOgtd15aUblC2Xyj3bEzWWbQmditcDAJ/tDdThu
+ rOcGV1h8dT38cdIxnb8JjD6FjjGfBub1Df9zCZofYK1zu+46KuXcPezSbew0GVOinCJe
+ iE5aFc7aH9/egBc+19FYuRGQfZYJFwk3FXJeesgXYY8yCn3dgnjtF14gquRpZO/yhb/q
+ 3yTIUa1f6lhbE9HV1ymso45IV7IJvz1nZpDEzcuwpbxVXXDpUw/m1OGsS2R0bfXynrM2
+ chng==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1722355101; x=1722959901;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=sh3bt0t5Dape32FkCCN2FKClc/tbQN4spe+p/+e4Yr4=;
+ b=udhRvgr/FQHOPja+wDt9wzVYTXvQUVX8aoeCLZ9468ljCuxxXavVULIDvbEKkG9AlB
+ aBIW0971b8qCJno1cKeM+Wm0w+0OWvfk74yroh9SzHIu2+hDrU2aJ29enb/wOpNTolej
+ k1BHYedwwMnWv8mek50FdM1quJELw8eaCRUrkiyNkuXcIUfL6xkHbzCPXM9RMb36GAJs
+ f8zsbIFYnljEImha0nagN4sQN+0ISX+LSojIw507fBWdLSh6WSycaxS6ggIGSVU9MWDn
+ eD70oO7Vwso9Jv2RwxicrYleCNKBE5iRaltWa9h/L1sVJU3W9xJErZcZ15wTU7bgccFi
+ DlzQ==
+X-Gm-Message-State: AOJu0YyGs7qRt0uVdPIgj4jx7db3Hi1q70N7ppPhXQWA0NpFdrwHB51S
+ o7YGO4hsDXk25cWJvY4//G/wciq4Kafbfjki0/ldsDBIg+HvXRRzGH/lVdFf+xODKAjCubh+yS5
+ N
+X-Received: by 2002:a05:600c:1c0a:b0:426:60d7:d299 with SMTP id
+ 5b1f17b1804b1-42811d83c0bmr72907415e9.7.1722355101024; 
+ Tue, 30 Jul 2024 08:58:21 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-42805730e68sm222304515e9.9.2024.07.30.08.58.20
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 30 Jul 2024 08:58:20 -0700 (PDT)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: qemu-stable@nongnu.org
+Subject: [PATCH] target/arm: Handle denormals correctly for FMOPA (widening)
+Date: Tue, 30 Jul 2024 16:58:19 +0100
+Message-Id: <20240730155819.2958924-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20240730081032.1246748-2-armbru@redhat.com>
-User-Agent: Mutt/2.2.12 (2023-09-09)
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-X-TUID: R8EY5L/46Qa3
+Received-SPF: pass client-ip=2a00:1450:4864:20::332;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x332.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: Q8pCJxdOQnD3
 
-On Tue, Jul 30, 2024 at 10:10:15AM +0200, Markus Armbruster wrote:
-> camel_to_upper() converts its argument from camel case to upper case
-> with '_' between words.  Used for generated enumeration constant
-> prefixes.
-> 
-> When some of the words are spelled all caps, where exactly to insert
-> '_' is guesswork.  camel_to_upper()'s guesses are bad enough in places
-> to make people override them with a 'prefix' in the schema.
-> 
-> Rewrite it to guess better:
-> 
-> 1. Insert '_' after a non-upper case character followed by an upper
->    case character:
-> 
->        OneTwo -> ONE_TWO
->        One2Three -> ONE2_THREE
-> 
-> 2. Insert '_' before the last upper case character followed by a
->    non-upper case character:
-> 
->        ACRONYMWord -> ACRONYM_Word
-> 
->    Except at the beginning (as in OneTwo above), or when there is
->    already one:
-> 
->        AbCd -> AB_CD
-> 
-> This changes the default enumeration constant prefix for a number of
-> enums.  Generated enumeration constants change only where the default
-> is not overridden with 'prefix'.
-> 
-> The following enumerations without a 'prefix' change:
-> 
->     enum       	     	 	    old camel_to_upper()
->     				    new camel_to_upper()
->     ------------------------------------------------------------------
->     DisplayGLMode                   DISPLAYGL_MODE
-> 				    DISPLAY_GL_MODE
->     EbpfProgramID                   EBPF_PROGRAMID
-> 				    EBPF_PROGRAM_ID
->     HmatLBDataType                  HMATLB_DATA_TYPE
-> 				    HMAT_LB_DATA_TYPE
->     HmatLBMemoryHierarchy           HMATLB_MEMORY_HIERARCHY
-> 				    HMAT_LB_MEMORY_HIERARCHY
->     MultiFDCompression              MULTIFD_COMPRESSION
-> 				    MULTI_FD_COMPRESSION
->     OffAutoPCIBAR                   OFF_AUTOPCIBAR
-> 				    OFF_AUTO_PCIBAR
->     QCryptoBlockFormat              Q_CRYPTO_BLOCK_FORMAT
-> 				    QCRYPTO_BLOCK_FORMAT
->     QCryptoBlockLUKSKeyslotState    Q_CRYPTO_BLOCKLUKS_KEYSLOT_STATE
-> 				    QCRYPTO_BLOCK_LUKS_KEYSLOT_STATE
->     QKeyCode                        Q_KEY_CODE
->     				    QKEY_CODE
->     XDbgBlockGraphNodeType          X_DBG_BLOCK_GRAPH_NODE_TYPE
-> 				    XDBG_BLOCK_GRAPH_NODE_TYPE
->     TestUnionEnumA		    TEST_UNION_ENUMA
->     				    TEST_UNION_ENUM_A
-> 
-> Add a 'prefix' so generated code doesn't change now.  Subsequent
-> commits will remove most of them again.  Two will remain:
-> MULTIFD_COMPRESSION, because migration code generally spells "multifd"
-> that way, and Q_KEY_CODE, because that one is baked into
-> subprojects/keycodemapdb/tools/keymap-gen.
-> 
-> The following enumerations with a 'prefix' change so that the prefix
-> is now superfluous:
-> 
->     enum       	     	 	    old camel_to_upper()
->     				    new camel_to_upper() [equal to prefix]
->     ------------------------------------------------------------------
->     BlkdebugIOType                  BLKDEBUGIO_TYPE
-> 				    BLKDEBUG_IO_TYPE
->     QCryptoTLSCredsEndpoint         Q_CRYPTOTLS_CREDS_ENDPOINT
-> 				    QCRYPTO_TLS_CREDS_ENDPOINT
->     QCryptoSecretFormat             Q_CRYPTO_SECRET_FORMAT
-> 				    QCRYPTO_SECRET_FORMAT
->     QCryptoCipherMode               Q_CRYPTO_CIPHER_MODE
-> 				    QCRYPTO_CIPHER_MODE
->     QCryptodevBackendType           Q_CRYPTODEV_BACKEND_TYPE
-> 				    QCRYPTODEV_BACKEND_TYPE
->     QType [builtin]                 Q_TYPE
-> 				    QTYPE
-> 
-> Drop these prefixes.
-> 
-> The following enumerations with a 'prefix' change without making the
-> 'prefix' superfluous:
-> 
->     enum       	     	 	    old camel_to_upper()
->     				    new camel_to_upper() [equal to prefix]
-> 				    prefix
->     ------------------------------------------------------------------
->     CpuS390Entitlement              CPUS390_ENTITLEMENT
-> 				    CPU_S390_ENTITLEMENT
-> 				    S390_CPU_ENTITLEMENT
->     CpuS390Polarization             CPUS390_POLARIZATION
-> 				    CPU_S390_POLARIZATION
-> 				    S390_CPU_POLARIZATION
->     CpuS390State                    CPUS390_STATE
-> 				    CPU_S390_STATE
-> 				    S390_CPU_STATE
->     QAuthZListFormat                Q_AUTHZ_LIST_FORMAT
-> 				    QAUTH_Z_LIST_FORMAT
-> 				    QAUTHZ_LIST_FORMAT
->     QAuthZListPolicy                Q_AUTHZ_LIST_POLICY
-> 				    QAUTH_Z_LIST_POLICY
-> 				    QAUTHZ_LIST_POLICY
->     QCryptoAkCipherAlgorithm        Q_CRYPTO_AK_CIPHER_ALGORITHM
-> 				    QCRYPTO_AK_CIPHER_ALGORITHM
-> 				    QCRYPTO_AKCIPHER_ALG
->     QCryptoAkCipherKeyType          Q_CRYPTO_AK_CIPHER_KEY_TYPE
-> 				    QCRYPTO_AK_CIPHER_KEY_TYPE
-> 				    QCRYPTO_AKCIPHER_KEY_TYPE
->     QCryptoCipherAlgorithm          Q_CRYPTO_CIPHER_ALGORITHM
-> 				    QCRYPTO_CIPHER_ALGORITHM
-> 				    QCRYPTO_CIPHER_ALG
->     QCryptoHashAlgorithm            Q_CRYPTO_HASH_ALGORITHM
-> 				    QCRYPTO_HASH_ALGORITHM
-> 				    QCRYPTO_HASH_ALG
->     QCryptoIVGenAlgorithm           Q_CRYPTOIV_GEN_ALGORITHM
-> 				    QCRYPTO_IV_GEN_ALGORITHM
-> 				    QCRYPTO_IVGEN_ALG
->     QCryptoRSAPaddingAlgorithm      Q_CRYPTORSA_PADDING_ALGORITHM
-> 				    QCRYPTO_RSA_PADDING_ALGORITHM
-> 				    QCRYPTO_RSA_PADDING_ALG
->     QCryptodevBackendAlgType        Q_CRYPTODEV_BACKEND_ALG_TYPE
-> 				    QCRYPTODEV_BACKEND_ALG_TYPE
-> 				    QCRYPTODEV_BACKEND_ALG
->     QCryptodevBackendServiceType    Q_CRYPTODEV_BACKEND_SERVICE_TYPE
-> 				    QCRYPTODEV_BACKEND_SERVICE_TYPE
-> 				    QCRYPTODEV_BACKEND_SERVICE
-> 
-> Subsequent commits will tweak things to remove most of these prefixes.
-> Only QAUTHZ_LIST_FORMAT and QAUTHZ_LIST_POLICY will remain.
+The FMOPA (widening) SME instruction takes pairs of half-precision
+floating point values, widens them to single-precision, does a
+two-way dot product and accumulates the results into a
+single-precision destination.  We don't quite correctly handle the
+FPCR bits FZ and FZ16 which control flushing of denormal inputs and
+outputs.  This is because at the moment we pass a single float_status
+value to the helper function, which then uses that configuration for
+all the fp operations it does.  However, because the inputs to this
+operation are float16 and the outputs are float32 we need to use the
+fp_status_f16 for the float16 input widening but the normal fp_status
+for everything else.  Otherwise we will apply the flushing control
+FPCR.FZ16 to the 32-bit output rather than the FPCR.FZ control, and
+incorrectly flush a denormal output to zero when we should not (or
+vice-versa).
 
-IIUC from above those two result in 
+Pass the CPU env to the sme_fmopa_h helper instead of an fp_status
+pointer, and have the helper pass an extra fp_status into the
+f16_dotadd() function so that we can use the right status for the
+right parts of this operation.
 
-			    QAUTH_Z_LIST_FORMAT
-			    QAUTH_Z_LIST_POLICY
+Cc: qemu-stable@nongnu.org
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+NB that there's only one user of do_outprod_env() right now,
+but we're going to want it also for implementing FEAT_EBF16,
+because that will mean that the sma_bfmopa helper also wants to
+be passed an env pointer.
+---
+ target/arm/tcg/helper-sme.h    |  2 +-
+ target/arm/tcg/sme_helper.c    | 42 +++++++++++++++++++++++-----------
+ target/arm/tcg/translate-sme.c | 25 ++++++++++++++++++--
+ 3 files changed, 53 insertions(+), 16 deletions(-)
 
-Is it possible to add a 3rd rule
-
- *  Single uppercase letter folds into the previous word
-
-or are there valid cases where we have a single uppercase
-that we want to preserve ?
-
-It sure would be nice to eliminate the 'prefix' concept,
-that we've clearly over-used, if we can kill the only 2
-remaining examples.
-
-> 
-> Signed-off-by: Markus Armbruster <armbru@redhat.com>
-> ---
->  qapi/block-core.json                     |  3 +-
->  qapi/common.json                         |  1 +
->  qapi/crypto.json                         |  6 ++--
->  qapi/cryptodev.json                      |  1 -
->  qapi/ebpf.json                           |  1 +
->  qapi/machine.json                        |  1 +
->  qapi/migration.json                      |  1 +
->  qapi/ui.json                             |  2 ++
->  scripts/qapi/common.py                   | 42 ++++++++++++++----------
->  scripts/qapi/schema.py                   |  2 +-
->  tests/qapi-schema/alternate-array.out    |  1 -
->  tests/qapi-schema/comments.out           |  1 -
->  tests/qapi-schema/doc-good.out           |  1 -
->  tests/qapi-schema/empty.out              |  1 -
->  tests/qapi-schema/include-repetition.out |  1 -
->  tests/qapi-schema/include-simple.out     |  1 -
->  tests/qapi-schema/indented-expr.out      |  1 -
->  tests/qapi-schema/qapi-schema-test.json  |  1 +
->  tests/qapi-schema/qapi-schema-test.out   |  2 +-
->  19 files changed, 37 insertions(+), 33 deletions(-)
-
-Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
-
-
-With regards,
-Daniel
+diff --git a/target/arm/tcg/helper-sme.h b/target/arm/tcg/helper-sme.h
+index 27eef49a11e..659867a1faf 100644
+--- a/target/arm/tcg/helper-sme.h
++++ b/target/arm/tcg/helper-sme.h
+@@ -121,7 +121,7 @@ DEF_HELPER_FLAGS_5(sme_addha_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_5(sme_addva_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
+ 
+ DEF_HELPER_FLAGS_7(sme_fmopa_h, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, ptr, ptr, i32)
++                   void, env, ptr, ptr, ptr, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_7(sme_fmopa_s, TCG_CALL_NO_RWG,
+                    void, ptr, ptr, ptr, ptr, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_7(sme_fmopa_d, TCG_CALL_NO_RWG,
+diff --git a/target/arm/tcg/sme_helper.c b/target/arm/tcg/sme_helper.c
+index 50bb088d048..2af2b957cb6 100644
+--- a/target/arm/tcg/sme_helper.c
++++ b/target/arm/tcg/sme_helper.c
+@@ -992,12 +992,23 @@ static inline uint32_t f16mop_adj_pair(uint32_t pair, uint32_t pg, uint32_t neg)
+ }
+ 
+ static float32 f16_dotadd(float32 sum, uint32_t e1, uint32_t e2,
+-                          float_status *s_std, float_status *s_odd)
++                          float_status *s_f16, float_status *s_std,
++                          float_status *s_odd)
+ {
+-    float64 e1r = float16_to_float64(e1 & 0xffff, true, s_std);
+-    float64 e1c = float16_to_float64(e1 >> 16, true, s_std);
+-    float64 e2r = float16_to_float64(e2 & 0xffff, true, s_std);
+-    float64 e2c = float16_to_float64(e2 >> 16, true, s_std);
++    /*
++     * We need three different float_status for different parts of this
++     * operation:
++     *  - the input conversion of the float16 values must use the
++     *    f16-specific float_status, so that the FPCR.FZ16 control is applied
++     *  - operations on float32 including the final accumulation must use
++     *    the normal float_status, so that FPCR.FZ is applied
++     *  - we have pre-set-up copy of s_std which is set to round-to-odd,
++     *    for the multiply (see below)
++     */
++    float64 e1r = float16_to_float64(e1 & 0xffff, true, s_f16);
++    float64 e1c = float16_to_float64(e1 >> 16, true, s_f16);
++    float64 e2r = float16_to_float64(e2 & 0xffff, true, s_f16);
++    float64 e2c = float16_to_float64(e2 >> 16, true, s_f16);
+     float64 t64;
+     float32 t32;
+ 
+@@ -1018,21 +1029,25 @@ static float32 f16_dotadd(float32 sum, uint32_t e1, uint32_t e2,
+     return float32_add(sum, t32, s_std);
+ }
+ 
+-void HELPER(sme_fmopa_h)(void *vza, void *vzn, void *vzm, void *vpn,
+-                         void *vpm, void *vst, uint32_t desc)
++void HELPER(sme_fmopa_h)(CPUARMState *env,
++                         void *vza, void *vzn, void *vzm, void *vpn,
++                         void *vpm, uint32_t desc)
+ {
+     intptr_t row, col, oprsz = simd_maxsz(desc);
+     uint32_t neg = simd_data(desc) * 0x80008000u;
+     uint16_t *pn = vpn, *pm = vpm;
+-    float_status fpst_odd, fpst_std;
++    float_status fpst_odd, fpst_std, fpst_f16;
+ 
+     /*
+-     * Make a copy of float_status because this operation does not
+-     * update the cumulative fp exception status.  It also produces
+-     * default nans.  Make a second copy with round-to-odd -- see above.
++     * Make copies of fp_status and fp_status_f16, because this operation
++     * does not update the cumulative fp exception status.  It also
++     * produces default NaNs. We also need a second copy of fp_status with
++     * round-to-odd -- see above.
+      */
+-    fpst_std = *(float_status *)vst;
++    fpst_f16 = env->vfp.fp_status_f16;
++    fpst_std = env->vfp.fp_status;
+     set_default_nan_mode(true, &fpst_std);
++    set_default_nan_mode(true, &fpst_f16);
+     fpst_odd = fpst_std;
+     set_float_rounding_mode(float_round_to_odd, &fpst_odd);
+ 
+@@ -1052,7 +1067,8 @@ void HELPER(sme_fmopa_h)(void *vza, void *vzn, void *vzm, void *vpn,
+                         uint32_t m = *(uint32_t *)(vzm + H1_4(col));
+ 
+                         m = f16mop_adj_pair(m, pcol, 0);
+-                        *a = f16_dotadd(*a, n, m, &fpst_std, &fpst_odd);
++                        *a = f16_dotadd(*a, n, m,
++                                        &fpst_f16, &fpst_std, &fpst_odd);
+                     }
+                     col += 4;
+                     pcol >>= 4;
+diff --git a/target/arm/tcg/translate-sme.c b/target/arm/tcg/translate-sme.c
+index 185a8a917b0..8e9332f1898 100644
+--- a/target/arm/tcg/translate-sme.c
++++ b/target/arm/tcg/translate-sme.c
+@@ -326,8 +326,29 @@ static bool do_outprod_fpst(DisasContext *s, arg_op *a, MemOp esz,
+     return true;
+ }
+ 
+-TRANS_FEAT(FMOPA_h, aa64_sme, do_outprod_fpst, a,
+-           MO_32, FPST_FPCR_F16, gen_helper_sme_fmopa_h)
++static bool do_outprod_env(DisasContext *s, arg_op *a, MemOp esz,
++                           gen_helper_gvec_5_ptr *fn)
++{
++    int svl = streaming_vec_reg_size(s);
++    uint32_t desc = simd_desc(svl, svl, a->sub);
++    TCGv_ptr za, zn, zm, pn, pm;
++
++    if (!sme_smza_enabled_check(s)) {
++        return true;
++    }
++
++    za = get_tile(s, esz, a->zad);
++    zn = vec_full_reg_ptr(s, a->zn);
++    zm = vec_full_reg_ptr(s, a->zm);
++    pn = pred_full_reg_ptr(s, a->pn);
++    pm = pred_full_reg_ptr(s, a->pm);
++
++    fn(tcg_env, za, zn, zm, pn, pm, tcg_constant_i32(desc));
++    return true;
++}
++
++TRANS_FEAT(FMOPA_h, aa64_sme, do_outprod_env, a,
++           MO_32, gen_helper_sme_fmopa_h)
+ TRANS_FEAT(FMOPA_s, aa64_sme, do_outprod_fpst, a,
+            MO_32, FPST_FPCR, gen_helper_sme_fmopa_s)
+ TRANS_FEAT(FMOPA_d, aa64_sme_f64f64, do_outprod_fpst, a,
 -- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+2.34.1
 

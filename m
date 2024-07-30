@@ -1,106 +1,106 @@
-Received: by 2002:a17:504:5965:b0:1be9:327d:8ee3 with SMTP id xe5csp2243905njb;
-        Tue, 30 Jul 2024 02:13:20 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCXmmQsZBaqmLdV/jDjapuvoFMRkoPYxhndl/Roqonpx41C2IyIW61aR9QN/xQOQFcPMRkcDKwIc3O6AFXqAD0SCrUsvuVRk
-X-Google-Smtp-Source: AGHT+IFieGFHDJ632tSd0sv5aKLH/E2kYleBGAdtHvjPErAQcuOQv/7sNPhu1YJGpdgon+Gg6O41
-X-Received: by 2002:a05:6402:51cd:b0:58b:585b:42a2 with SMTP id 4fb4d7f45d1cf-5b0224d01c2mr7321177a12.38.1722330800216;
-        Tue, 30 Jul 2024 02:13:20 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1722330800; cv=pass;
+Received: by 2002:a17:504:5965:b0:1be9:327d:8ee3 with SMTP id xe5csp2244207njb;
+        Tue, 30 Jul 2024 02:14:07 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCVslVmoOap/vxA8SClt4nc3WOfewI3sWvNsLSERWS+6JArNwmuA2Rngu2snEU4KvSg3SDwkTTBWPl8k7u6GQpjXTRJChomz
+X-Google-Smtp-Source: AGHT+IG8aOYnCzlUOV8YdNSJk7875RxhMrAUTXcPm+4zXSFVk1Td0BRUcDDF888bVCHvCdYj/djW
+X-Received: by 2002:a05:622a:1791:b0:447:f402:58a5 with SMTP id d75a77b69052e-45004ddfb42mr158289771cf.34.1722330846891;
+        Tue, 30 Jul 2024 02:14:06 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1722330846; cv=pass;
         d=google.com; s=arc-20160816;
-        b=QnWb5fT/9P2GPL8Q4yOoM7k8PRE5OiJXGDeQi1jqy0LtK4XWHfy0+Cf7DpZ4B3lsXd
-         6tDvW8vgOVy89VMUPPeSatQ5bAVY2Cd9EHrA0M39F/JydaEUppOHaNAMSKkGTDdUEPRE
-         jJQp36pMlfYBx+twmmkxeZ//wLjvHssG9G2bGgFy363284AptWySkTcdHlvxgJbWFWcG
-         xa8EraGLjau5DfLJu24lPNnCox0snO2/Zlkupk0mnLCLLL1vF9QdsSPuO21nVK++f12E
-         o8NBpXshkZFN6Rcd9YJyBf7n+C+mwa2s8stBqlb981u1wtx6TTbm1rFlbQLVyIvEVy1j
-         pfXA==
+        b=rzJUmVYX+PhHNz1HloVA/8X0DlnBit3T/RpZw4WxN5riOuBQJrqktkg2wCLGTOE3kX
+         Tubqjqyt79DaD3Ssa9Gmdy6jVtC4IqfL9RbPe81A61sHbJTQ/Kl+lxMbYtlvEbyv+ZnL
+         3gRsYrU/jANQdMAQictKdkNlnGY1WjdgG0VtZtaaqHzwH6dBXnqrMoOjsHRdIg3YQn7l
+         Vkkqr0AKV8JUYP8GDQ/xoKZOVYQ1sQnEC9+QoMuSeqX41KzkFoJoeg42ivCMtIqkD1Vs
+         kUig9i9kFhjIxrNMRNgGWg9IfBliWeF64caH+b2JZOw6XnrJ2S2cSKeIh1PS7q3HR8aw
+         n6Ig==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-disposition:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:references:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=LVjZSt3X1kIsiv8tWrKDRPoZ4EC5LMx7S5OM9Phak+k=;
-        fh=gL0kw3NDB8GfNjleNsPSQTywug7fi6SsYwHfjWZe0Uo=;
-        b=ltoUDOyGkYAUoae6epHnpi0UsJiYWNu+xQatkS4+1AXlT2JMDdbDZbt28pHrtYxF47
-         C1g36DIETQXSRNEZch+nRLE475UiJIxahyfT1ok1/rWlSwlXyDNmwY37/DLHv/8XBPoI
-         PigLN30i/0NEjRjtC0flPTi2CtkheSr5Dfsq/FTUpKuP4DI/R/MKiDrGw1k23qgH5NRO
-         xvZRPqbwS9obG3Xfd2lu55uX98inmczPbMqJMDHfuS+KdPBgZJjcLMkNXRnjOCJEGtnK
-         LQ6Xq55mPk9g8hpbFiCMpNGEEx4XlWJA5TSfj9+vCPYaMC0sXoQF65UHt7r8BjXOAr/F
-         gaFw==;
+        h=user-agent:in-reply-to:content-transfer-encoding
+         :content-disposition:mime-version:list-unsubscribe:list-subscribe
+         :list-id:precedence:references:reply-to:message-id:subject:cc:to
+         :from:date:dkim-signature;
+        bh=oSLlIJR2ZPU1Tj2WbafVSnV32Cdn2vklNmUjcUUffwU=;
+        fh=9hFDqFluQ4K0nkG/6lzcBQr+AmQg/OxQWMC/bennKy0=;
+        b=sRRDcRgvn/FRQHXUl/p2dM3hwGJhyRBg5x8iNuS1eJEBDaDRmgK+g1PVdYvvj5VxWX
+         Q47RHW+G7uueIq7n4I/Ulwl3PXWvbIFQdmKRznQPg3ZmbjmKS5Xsmoj2XJCvmQMosaeW
+         lHmKXcMpBgd9MGFC+8eYBEdh/iRDGgnZ9iG4+6S+5Ph+rhuIQuvZNBAyhE40oRRAf986
+         YdLE/2nDhaZp1HMLlvKAJMuBuHMolm6VREnNsaiKKjai/aKpiSQNyIaU4oAsp2x8MHJ4
+         qOCyE87YbIsP+hm3GRvaNCxJ+RTKCVrQrBo4DhJnW376xOcapq+TSUxqDAlOkfd1Vco1
+         velg==;
         dara=google.com
 ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=Kc0aqtMz;
-       arc=pass (i=1 spf=pass spfdomain=intel.com dkim=pass dkdomain=intel.com dmarc=pass fromdomain=intel.com);
-       spf=pass (google.com: domain of kvm+bounces-22652-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="kvm+bounces-22652-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Return-Path: <kvm+bounces-22652-alex.bennee=linaro.org@vger.kernel.org>
-Received: from am.mirrors.kernel.org (am.mirrors.kernel.org. [147.75.80.249])
-        by mx.google.com with ESMTPS id 4fb4d7f45d1cf-5ac6632e4c2si7995516a12.646.2024.07.30.02.13.20
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=a2+7B9Yf;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of kvm+bounces-22653-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="kvm+bounces-22653-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kvm+bounces-22653-alex.bennee=linaro.org@vger.kernel.org>
+Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [2604:1380:45d1:ec00::1])
+        by mx.google.com with ESMTPS id d75a77b69052e-44fe84229dbsi120632121cf.584.2024.07.30.02.14.06
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 30 Jul 2024 02:13:20 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm+bounces-22652-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) client-ip=147.75.80.249;
+        Tue, 30 Jul 2024 02:14:06 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm+bounces-22653-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) client-ip=2604:1380:45d1:ec00::1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=Kc0aqtMz;
-       arc=pass (i=1 spf=pass spfdomain=intel.com dkim=pass dkdomain=intel.com dmarc=pass fromdomain=intel.com);
-       spf=pass (google.com: domain of kvm+bounces-22652-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="kvm+bounces-22652-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=a2+7B9Yf;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of kvm+bounces-22653-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="kvm+bounces-22653-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by am.mirrors.kernel.org (Postfix) with ESMTPS id C623F1F21BBA
-	for <alex.bennee@linaro.org>; Tue, 30 Jul 2024 09:13:19 +0000 (UTC)
+	by ny.mirrors.kernel.org (Postfix) with ESMTPS id 86B211C23FF4
+	for <alex.bennee@linaro.org>; Tue, 30 Jul 2024 09:14:06 +0000 (UTC)
 Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 114F019415A;
-	Tue, 30 Jul 2024 09:13:17 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id A5F65194A58;
+	Tue, 30 Jul 2024 09:13:57 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b="Kc0aqtMz"
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.10])
+	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="a2+7B9Yf"
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3969219414D
-	for <kvm@vger.kernel.org>; Tue, 30 Jul 2024 09:13:14 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=192.198.163.10
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B7506194A56
+	for <kvm@vger.kernel.org>; Tue, 30 Jul 2024 09:13:55 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.129.124
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1722330796; cv=none; b=j3voK/2WAso94fa9f6deDgIZUNdBdTeCo83+L4zSZehXc6c2bH7spz8iGhVX0iECLjEjXi0kx6yhmRBmtc9aWXoUWGhzTARVxEMRbr3ZeOk7+RrHRE6vMfVxzX3gxzOO0vwjHJZxbD24ltKyEqOafKZ76UgKKkWcfoPYdPtKrg8=
+	t=1722330837; cv=none; b=QRV84R+jOLsCWknbY5EjYiDkOiVpP46dvJ7rY7bjzh7vVbnqeiu6XlplA2rpHJK5ZTT7AiJPrCKD7tGhup5NgCo0WdeP+0BCehlxPTVxZH2ICK4AzyzpQ1cZURR68jgU5I4sh4CyLXyswr1XGIt5zmBt9jD/QpeRPrQ+n+c2dKE=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1722330796; c=relaxed/simple;
-	bh=OJN+ESOf3j7WgRm7tp+5EaN6VLIEhB0GeZBgm8RyWZI=;
+	s=arc-20240116; t=1722330837; c=relaxed/simple;
+	bh=0fAab6w8aA/2ybHIRHyjn5sqMbiIUBA20w3jkUPQBtQ=;
 	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
-	 Content-Type:Content-Disposition:In-Reply-To; b=pdqoS718nxRZ9sHFBB4YkxvszHM/SRzzBpcUtq9q1aL3F6+S81aS/CII1cX9unRBVrHC8X/zi5ytCXHe7BwAjP9kVhvoH8xrgsODMHk2KAzQz7wq3ccmq3VqrnBj2EmPChVOI1dfxuAFJozGZVl8sUvz1InXWTk9wmO+UaABqm0=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com; spf=pass smtp.mailfrom=intel.com; dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b=Kc0aqtMz; arc=none smtp.client-ip=192.198.163.10
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=intel.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1722330795; x=1753866795;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=OJN+ESOf3j7WgRm7tp+5EaN6VLIEhB0GeZBgm8RyWZI=;
-  b=Kc0aqtMzfgJrddQVQ6IZxWlNrnQ+aeGwm/rkjiPyvRpMs9NjZWiMS5MR
-   Bl+y4OdJWy4rlM5EXasWXpDmJ8uiX4/KavgGQEmBSuoAMsDZ9qznasgQe
-   uFzxU9hTatuSvrGdPIMUPYWX3NvAVKU+ZT+uewH3LoDURuADwRBbbfsna
-   ZHfNdamFmQ4EJG1VSu5Loc05seHWfQ5taSWmYZxX69T4KM9kXwwWS0qjF
-   KuWXtCREhhRzszkYNFRRgbCvLrNYuQuXXj+C4+AsX0hQ5dSYm+zGug7dY
-   4D9Quh11GxM6e+yewVww5DMK2oj8emxqIM5BndXhvvdehR1JXT3lycJBs
-   g==;
-X-CSE-ConnectionGUID: q2PT25OPSGioo+yfBoBsOg==
-X-CSE-MsgGUID: yLKzVBCLQbS7WWdFHZldHw==
-X-IronPort-AV: E=McAfee;i="6700,10204,11148"; a="31542660"
-X-IronPort-AV: E=Sophos;i="6.09,248,1716274800"; 
-   d="scan'208";a="31542660"
-Received: from fmviesa002.fm.intel.com ([10.60.135.142])
-  by fmvoesa104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 30 Jul 2024 02:13:14 -0700
-X-CSE-ConnectionGUID: gswTXqQTRYekTBKloxnqDw==
-X-CSE-MsgGUID: gyJq+ddtRmOByRaoPYZs5w==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.09,248,1716274800"; 
-   d="scan'208";a="77507899"
-Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost) ([10.239.160.36])
-  by fmviesa002.fm.intel.com with ESMTP; 30 Jul 2024 02:13:04 -0700
-Date: Tue, 30 Jul 2024 17:28:50 +0800
-From: Zhao Liu <zhao1.liu@intel.com>
+	 Content-Type:Content-Disposition:In-Reply-To; b=M8voV/jap7EKBYqE1oxY4DgXlr4TkLtXwDr7Tm2bF+8klAhjeHE1Px0vNzv7oOdC+2ODJrAfPjMzv9fJlKql0vandwPCgCdj7HIs/XS41b2gy3V3SrG2xItIMnRb13S3zcp0twmFi7d2Wb0i88OAuhtnKSNDUOa0eFp0nMfuE7E=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=a2+7B9Yf; arc=none smtp.client-ip=170.10.129.124
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1722330834;
+	h=from:from:reply-to:reply-to:subject:subject:date:date:
+	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+	 content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=oSLlIJR2ZPU1Tj2WbafVSnV32Cdn2vklNmUjcUUffwU=;
+	b=a2+7B9YfburTALjG3rqrdOHHZPfIHY2QIn8nxtM2G9TAC89cB9ByV1yEafDpMTGzasAku3
+	yQMgl1yhPyx/RWXDnIeZdtqI+gCxx05G+DIO79JirrPvyM49BPIp2mlvz7BMw9XRoLIgbT
+	cFTLU/3IQnha1XBsmy9c6f0DNPh7g+Y=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-121-C85vXwjOPM67FfiNoxbJfw-1; Tue,
+ 30 Jul 2024 05:13:48 -0400
+X-MC-Unique: C85vXwjOPM67FfiNoxbJfw-1
+Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 571EC1955D4F;
+	Tue, 30 Jul 2024 09:13:43 +0000 (UTC)
+Received: from redhat.com (unknown [10.42.28.108])
+	by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id E423B1955E89;
+	Tue, 30 Jul 2024 09:13:28 +0000 (UTC)
+Date: Tue, 30 Jul 2024 10:13:25 +0100
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 To: Markus Armbruster <armbru@redhat.com>
 Cc: qemu-devel@nongnu.org, alex.williamson@redhat.com,
 	andrew@codeconstruct.com.au, andrew@daynix.com,
-	arei.gonglei@huawei.com, berrange@redhat.com, berto@igalia.com,
+	arei.gonglei@huawei.com, berto@igalia.com,
 	borntraeger@linux.ibm.com, clg@kaod.org, david@redhat.com,
 	den@openvz.org, eblake@redhat.com, eduardo@habkost.net,
 	farman@linux.ibm.com, farosas@suse.de, hreitz@redhat.com,
@@ -114,41 +114,212 @@ Cc: qemu-devel@nongnu.org, alex.williamson@redhat.com,
 	richard.henderson@linaro.org, stefanha@redhat.com,
 	steven_lee@aspeedtech.com, thuth@redhat.com,
 	vsementsov@yandex-team.ru, wangyanan55@huawei.com,
-	yuri.benditovich@daynix.com, qemu-block@nongnu.org,
-	qemu-arm@nongnu.org, qemu-s390x@nongnu.org, kvm@vger.kernel.org
-Subject: Re: [PATCH 07/18] qapi/machine: Drop temporary 'prefix'
-Message-ID: <ZqiyUjihMSD0ce4b@intel.com>
+	yuri.benditovich@daynix.com, zhao1.liu@intel.com,
+	qemu-block@nongnu.org, qemu-arm@nongnu.org, qemu-s390x@nongnu.org,
+	kvm@vger.kernel.org
+Subject: Re: [PATCH 01/18] qapi: Smarter camel_to_upper() to reduce need for
+ 'prefix'
+Message-ID: <ZqiutRoQuAsrllfj@redhat.com>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 References: <20240730081032.1246748-1-armbru@redhat.com>
- <20240730081032.1246748-8-armbru@redhat.com>
+ <20240730081032.1246748-2-armbru@redhat.com>
 Precedence: bulk
 X-Mailing-List: kvm@vger.kernel.org
 List-Id: <kvm.vger.kernel.org>
 List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
 List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20240730081032.1246748-8-armbru@redhat.com>
-X-TUID: h+lnzEox0Gey
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20240730081032.1246748-2-armbru@redhat.com>
+User-Agent: Mutt/2.2.12 (2023-09-09)
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
+X-TUID: R8EY5L/46Qa3
 
-On Tue, Jul 30, 2024 at 10:10:21AM +0200, Markus Armbruster wrote:
-> Date: Tue, 30 Jul 2024 10:10:21 +0200
-> From: Markus Armbruster <armbru@redhat.com>
-> Subject: [PATCH 07/18] qapi/machine: Drop temporary 'prefix'
+On Tue, Jul 30, 2024 at 10:10:15AM +0200, Markus Armbruster wrote:
+> camel_to_upper() converts its argument from camel case to upper case
+> with '_' between words.  Used for generated enumeration constant
+> prefixes.
 > 
-> Recent commit "qapi: Smarter camel_to_upper() to reduce need for
-> 'prefix'" added a temporary 'prefix' to delay changing the generated
-> code.
+> When some of the words are spelled all caps, where exactly to insert
+> '_' is guesswork.  camel_to_upper()'s guesses are bad enough in places
+> to make people override them with a 'prefix' in the schema.
 > 
-> Revert it.  This improves HmatLBDataType's generated enumeration
-> constant prefix from HMATLB_DATA_TYPE to HMAT_LB_DATA_TYPE.
+> Rewrite it to guess better:
+> 
+> 1. Insert '_' after a non-upper case character followed by an upper
+>    case character:
+> 
+>        OneTwo -> ONE_TWO
+>        One2Three -> ONE2_THREE
+> 
+> 2. Insert '_' before the last upper case character followed by a
+>    non-upper case character:
+> 
+>        ACRONYMWord -> ACRONYM_Word
+> 
+>    Except at the beginning (as in OneTwo above), or when there is
+>    already one:
+> 
+>        AbCd -> AB_CD
+> 
+> This changes the default enumeration constant prefix for a number of
+> enums.  Generated enumeration constants change only where the default
+> is not overridden with 'prefix'.
+> 
+> The following enumerations without a 'prefix' change:
+> 
+>     enum       	     	 	    old camel_to_upper()
+>     				    new camel_to_upper()
+>     ------------------------------------------------------------------
+>     DisplayGLMode                   DISPLAYGL_MODE
+> 				    DISPLAY_GL_MODE
+>     EbpfProgramID                   EBPF_PROGRAMID
+> 				    EBPF_PROGRAM_ID
+>     HmatLBDataType                  HMATLB_DATA_TYPE
+> 				    HMAT_LB_DATA_TYPE
+>     HmatLBMemoryHierarchy           HMATLB_MEMORY_HIERARCHY
+> 				    HMAT_LB_MEMORY_HIERARCHY
+>     MultiFDCompression              MULTIFD_COMPRESSION
+> 				    MULTI_FD_COMPRESSION
+>     OffAutoPCIBAR                   OFF_AUTOPCIBAR
+> 				    OFF_AUTO_PCIBAR
+>     QCryptoBlockFormat              Q_CRYPTO_BLOCK_FORMAT
+> 				    QCRYPTO_BLOCK_FORMAT
+>     QCryptoBlockLUKSKeyslotState    Q_CRYPTO_BLOCKLUKS_KEYSLOT_STATE
+> 				    QCRYPTO_BLOCK_LUKS_KEYSLOT_STATE
+>     QKeyCode                        Q_KEY_CODE
+>     				    QKEY_CODE
+>     XDbgBlockGraphNodeType          X_DBG_BLOCK_GRAPH_NODE_TYPE
+> 				    XDBG_BLOCK_GRAPH_NODE_TYPE
+>     TestUnionEnumA		    TEST_UNION_ENUMA
+>     				    TEST_UNION_ENUM_A
+> 
+> Add a 'prefix' so generated code doesn't change now.  Subsequent
+> commits will remove most of them again.  Two will remain:
+> MULTIFD_COMPRESSION, because migration code generally spells "multifd"
+> that way, and Q_KEY_CODE, because that one is baked into
+> subprojects/keycodemapdb/tools/keymap-gen.
+> 
+> The following enumerations with a 'prefix' change so that the prefix
+> is now superfluous:
+> 
+>     enum       	     	 	    old camel_to_upper()
+>     				    new camel_to_upper() [equal to prefix]
+>     ------------------------------------------------------------------
+>     BlkdebugIOType                  BLKDEBUGIO_TYPE
+> 				    BLKDEBUG_IO_TYPE
+>     QCryptoTLSCredsEndpoint         Q_CRYPTOTLS_CREDS_ENDPOINT
+> 				    QCRYPTO_TLS_CREDS_ENDPOINT
+>     QCryptoSecretFormat             Q_CRYPTO_SECRET_FORMAT
+> 				    QCRYPTO_SECRET_FORMAT
+>     QCryptoCipherMode               Q_CRYPTO_CIPHER_MODE
+> 				    QCRYPTO_CIPHER_MODE
+>     QCryptodevBackendType           Q_CRYPTODEV_BACKEND_TYPE
+> 				    QCRYPTODEV_BACKEND_TYPE
+>     QType [builtin]                 Q_TYPE
+> 				    QTYPE
+> 
+> Drop these prefixes.
+> 
+> The following enumerations with a 'prefix' change without making the
+> 'prefix' superfluous:
+> 
+>     enum       	     	 	    old camel_to_upper()
+>     				    new camel_to_upper() [equal to prefix]
+> 				    prefix
+>     ------------------------------------------------------------------
+>     CpuS390Entitlement              CPUS390_ENTITLEMENT
+> 				    CPU_S390_ENTITLEMENT
+> 				    S390_CPU_ENTITLEMENT
+>     CpuS390Polarization             CPUS390_POLARIZATION
+> 				    CPU_S390_POLARIZATION
+> 				    S390_CPU_POLARIZATION
+>     CpuS390State                    CPUS390_STATE
+> 				    CPU_S390_STATE
+> 				    S390_CPU_STATE
+>     QAuthZListFormat                Q_AUTHZ_LIST_FORMAT
+> 				    QAUTH_Z_LIST_FORMAT
+> 				    QAUTHZ_LIST_FORMAT
+>     QAuthZListPolicy                Q_AUTHZ_LIST_POLICY
+> 				    QAUTH_Z_LIST_POLICY
+> 				    QAUTHZ_LIST_POLICY
+>     QCryptoAkCipherAlgorithm        Q_CRYPTO_AK_CIPHER_ALGORITHM
+> 				    QCRYPTO_AK_CIPHER_ALGORITHM
+> 				    QCRYPTO_AKCIPHER_ALG
+>     QCryptoAkCipherKeyType          Q_CRYPTO_AK_CIPHER_KEY_TYPE
+> 				    QCRYPTO_AK_CIPHER_KEY_TYPE
+> 				    QCRYPTO_AKCIPHER_KEY_TYPE
+>     QCryptoCipherAlgorithm          Q_CRYPTO_CIPHER_ALGORITHM
+> 				    QCRYPTO_CIPHER_ALGORITHM
+> 				    QCRYPTO_CIPHER_ALG
+>     QCryptoHashAlgorithm            Q_CRYPTO_HASH_ALGORITHM
+> 				    QCRYPTO_HASH_ALGORITHM
+> 				    QCRYPTO_HASH_ALG
+>     QCryptoIVGenAlgorithm           Q_CRYPTOIV_GEN_ALGORITHM
+> 				    QCRYPTO_IV_GEN_ALGORITHM
+> 				    QCRYPTO_IVGEN_ALG
+>     QCryptoRSAPaddingAlgorithm      Q_CRYPTORSA_PADDING_ALGORITHM
+> 				    QCRYPTO_RSA_PADDING_ALGORITHM
+> 				    QCRYPTO_RSA_PADDING_ALG
+>     QCryptodevBackendAlgType        Q_CRYPTODEV_BACKEND_ALG_TYPE
+> 				    QCRYPTODEV_BACKEND_ALG_TYPE
+> 				    QCRYPTODEV_BACKEND_ALG
+>     QCryptodevBackendServiceType    Q_CRYPTODEV_BACKEND_SERVICE_TYPE
+> 				    QCRYPTODEV_BACKEND_SERVICE_TYPE
+> 				    QCRYPTODEV_BACKEND_SERVICE
+> 
+> Subsequent commits will tweak things to remove most of these prefixes.
+> Only QAUTHZ_LIST_FORMAT and QAUTHZ_LIST_POLICY will remain.
+
+IIUC from above those two result in 
+
+			    QAUTH_Z_LIST_FORMAT
+			    QAUTH_Z_LIST_POLICY
+
+Is it possible to add a 3rd rule
+
+ *  Single uppercase letter folds into the previous word
+
+or are there valid cases where we have a single uppercase
+that we want to preserve ?
+
+It sure would be nice to eliminate the 'prefix' concept,
+that we've clearly over-used, if we can kill the only 2
+remaining examples.
+
 > 
 > Signed-off-by: Markus Armbruster <armbru@redhat.com>
 > ---
->  qapi/machine.json            | 1 -
->  hw/core/numa.c               | 4 ++--
->  hw/pci-bridge/cxl_upstream.c | 4 ++--
->  3 files changed, 4 insertions(+), 5 deletions(-)
+>  qapi/block-core.json                     |  3 +-
+>  qapi/common.json                         |  1 +
+>  qapi/crypto.json                         |  6 ++--
+>  qapi/cryptodev.json                      |  1 -
+>  qapi/ebpf.json                           |  1 +
+>  qapi/machine.json                        |  1 +
+>  qapi/migration.json                      |  1 +
+>  qapi/ui.json                             |  2 ++
+>  scripts/qapi/common.py                   | 42 ++++++++++++++----------
+>  scripts/qapi/schema.py                   |  2 +-
+>  tests/qapi-schema/alternate-array.out    |  1 -
+>  tests/qapi-schema/comments.out           |  1 -
+>  tests/qapi-schema/doc-good.out           |  1 -
+>  tests/qapi-schema/empty.out              |  1 -
+>  tests/qapi-schema/include-repetition.out |  1 -
+>  tests/qapi-schema/include-simple.out     |  1 -
+>  tests/qapi-schema/indented-expr.out      |  1 -
+>  tests/qapi-schema/qapi-schema-test.json  |  1 +
+>  tests/qapi-schema/qapi-schema-test.out   |  2 +-
+>  19 files changed, 37 insertions(+), 33 deletions(-)
 
-Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
+Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
+
+
+With regards,
+Daniel
+-- 
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
 

@@ -1,194 +1,343 @@
-Received: by 2002:a17:504:5965:b0:1be9:327d:8ee3 with SMTP id xe5csp1886269njb;
-        Mon, 29 Jul 2024 09:32:47 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXQUNnDub/Q4qn+J8kU9Ad5wNHo/9Y7X0efLwCiQkauw4AOV6xX/6ZBJaQHCALP52lKEdH6Odbp8A3PK4lNo2OU2OoKurS6
-X-Google-Smtp-Source: AGHT+IEI4XPhQI3dHNaILB4/PQgjyERS6sL0Fg0gtrYgAfwRjNcZx4vzt+/cFh9WAWeawmpddPTZ
-X-Received: by 2002:a05:6214:260d:b0:6b5:d757:2824 with SMTP id 6a1803df08f44-6bb55a44a77mr122013266d6.28.1722270767305;
-        Mon, 29 Jul 2024 09:32:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1722270767; cv=none;
+Received: by 2002:a05:7022:429:b0:85:21:bd5b with SMTP id 41csp745654dlf;
+        Tue, 30 Jul 2024 03:55:58 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVOYv8kr17UDZLpwYI+ialzPKruay99lVHYJNJwycrJht8C3R7A/FVD+ymPeap7MSbLEBBDe40BKZIDZVJxV7R3/j2k/uNZ
+X-Google-Smtp-Source: AGHT+IGrr4zieYuHKqN8e4wDmVrvpPOaP4PxxEk233SNKSw17G7zTNToffyGZZKmyREKCUKL+VNz
+X-Received: by 2002:a05:620a:2983:b0:79f:18ee:a650 with SMTP id af79cd13be357-7a1e52545e7mr1328294385a.17.1722336958379;
+        Tue, 30 Jul 2024 03:55:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1722336958; cv=none;
         d=google.com; s=arc-20160816;
-        b=OVc+pTIsXwAH+DHKQCx6HAeMZ3HgeQlXHem9U7eenU+vMLsY5DDcIcEaEpoa90pRhN
-         2tYryc3W0B52FR+BAe08l/9Y3/bveZFkBWUjbVL1e2cNHlj2xHt8n+vKw9Q8sYEUug2r
-         IUBBiynbrXaXUJptfYxjdl2OWH8a1Yfwg8rd77/PGBkj6fyQ21oOl6/vLrmp/8KzvzNd
-         NSpLsnwNeqINaAHENd0F+/toz35XBhlDfivdqQhmgiT+v5HW4IWZfjGgUDVwpUHgLlAd
-         YeVK39Z5YA0xl/uUlRFTsebZHe1IOBqvnPyvyIl4d2pw2d/Zio0iaqbhMVumqxXWrWZO
-         GS/A==
+        b=SDUHs+EFacLgXWL2jT9ZjRL4/3ScKPQXdtYvdrP/hRwAtuxYjltri/x3ziwTFq4n/g
+         aTq7w0avz8UVRoGsjk9repPnJJSPj9zZe7ixIwEJ3u8boZxEkfqCklJZdFoI7RPI6+48
+         ilkV20Ns0y6mgBeC72nuknk9nfUE7Jy38WojB0PsBdBbJNFc+MpB4aIl7EYyRggSP57F
+         GAJMLoygB59tOga9uQEQzSpRy3e6c8ynb37q7b4zzWcbL+TUQWTJHu2ITgdXTak7VYFR
+         DjJzcbs+1wJen10Z3gsTCN0Sc/8+iH08HD3uxgTZ13kiPv4neds4kIX3NHrQ0yiNOq2+
+         qxaA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=NP0mnjphVBIb1VHUp9w1Gbv9MySDgOtzxAXgvoRoCWk=;
-        fh=V/lCQPZHsb5WLcm05KfvSeS8ANvDEyLN4ckOObbZgNE=;
-        b=Dc19W5ni/6nRwQdTywtO3UF5u/BTlyp6HY+/NeMQWLwFmZSezqiZMgp2+xTwb9JzN7
-         o3Um7vtnNHrBF0rQQCK+lneifN/QvjCrfLmwegBFJcM5WsEYeOwKwVr1raBn46uXstdA
-         9D02JeVD0CnNGAjaCuuexQZEIYX2UM/lqd5Y+0ZQIHZ/p3xqnwnuh0TtoR++aeWC6nls
-         HV/r1WpA/6Mt1ozcMtYnwfHgZg4mvMiuV7DlHDaKaTwuF0p6u1ctWCi4tzcRPzmgudNS
-         4X/gXyDmYq8qeLMhZjLtdOnNeOWEMRQdblpu4fR5SH3q1Fk0tMbbWK1L1m72ja8LUww7
-         Pnyw==;
+         :user-agent:mime-version:date:message-id;
+        bh=2kDiH7mavWhykz9Zly0b4GxEtrqrPIKAp0IecVuEYMY=;
+        fh=NLnuYjalS7T9L/cHElm2h5ip6QdqUhFUvEpnmpifBlw=;
+        b=M42pg2IgwnLSs4ADCKT0yqwHyt2v9nR4JnLqbRvN473ZoIh9qCtQK2byJ4r0F0cP3T
+         HJf0gav7nFMBMCdNd4y57aCCQkQBylx1q1DaGnTdZ+SYRyFPJr2zsmEJJmdmf88B5l3i
+         nfmxHrw4RbyrsFCD05jytg2GVjj4dvO8oD17purMzCmivHaAQuA/6xXuvR1luJW8m8Jj
+         RbDiQ7wndRjhYEr6aCkeKB6NrvesYMB6RsBvE70d3cUsg9ea+wSEX/ojXHUDPC8atPzJ
+         I9P/Ir4UcXjKGKVLLlTSrtATe5y1kpODUZyLA7G2w+lGALKVSh+/BwcdtY8A/8l+1eBL
+         Zupw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=kl3CesCe;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6bb3fa87275si107047556d6.241.2024.07.29.09.32.47
+        by mx.google.com with ESMTPS id af79cd13be357-7a1d749c3e5si1265749685a.690.2024.07.30.03.55.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 29 Jul 2024 09:32:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 30 Jul 2024 03:55:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=kl3CesCe;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dara=neutral header.i=@linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sYTIX-0006YW-TW; Mon, 29 Jul 2024 12:32:33 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sYkVj-0008Ny-HI; Tue, 30 Jul 2024 06:55:19 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <akihiko.odaki@daynix.com>)
- id 1sYTIS-0006Ac-1z
- for qemu-devel@nongnu.org; Mon, 29 Jul 2024 12:32:28 -0400
-Received: from mail-pf1-x431.google.com ([2607:f8b0:4864:20::431])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <akihiko.odaki@daynix.com>)
- id 1sYTIN-0005U9-Tt
- for qemu-devel@nongnu.org; Mon, 29 Jul 2024 12:32:27 -0400
-Received: by mail-pf1-x431.google.com with SMTP id
- d2e1a72fcca58-70d399da0b5so2975453b3a.3
- for <qemu-devel@nongnu.org>; Mon, 29 Jul 2024 09:32:20 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1722270739; x=1722875539;
- darn=nongnu.org; 
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=NP0mnjphVBIb1VHUp9w1Gbv9MySDgOtzxAXgvoRoCWk=;
- b=kl3CesCekBJDDxKvOYQz8Hl2iLD2rOxZu+bYHKTSjuPVm2/yHm4FlAmvDb77/pJsoV
- 54/T8JefZP+Twp1hiPWOwjl/LkzkbRlFSPCuAL+L2Q3onIaBdzl4YI5IA0LxR0v2/xSZ
- VMdR5I8eVpY1XVON8P5VZYJUUKv9Yt+oNurRu94/Hx/HUBM8eQtog/S6TUURffEG4Zpc
- RZryfq7v7AZPim28IHAAta5tq0g8WgMOp4HVLVPFnE9rdEkKrGvB+wHotqUV1lWmx0/2
- A5Q7beHkFlaHBMYez9vlrLg3CdBswcTd8G3MFEd0dQu6hDqZD6rMk6MlAgOUk8h15GBA
- hGZQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1722270739; x=1722875539;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=NP0mnjphVBIb1VHUp9w1Gbv9MySDgOtzxAXgvoRoCWk=;
- b=IfLifsWBd0Bx00j6MTMHA1OmufUc2v1Qf3/5jZPBJ3ylcH05/LQcYMGuUFWjAg70IM
- kn6tnWHvuN36vuKtFCGV9kRhAQtT7lGam9rRQ83mbWm9bR0XDCJThq978iDwMenqSJ3m
- 7D3fSCpQy0KW2CP2tywGAim+C8mjd29GdfoSEImejVfToAbsoDue1iEYhNph95uXGR9N
- QPr06wt7aLmHVW8rSM823xL2aAs9b1UNDSHOscWXxNXnKw+5gqvsdLoAI/CYu2GKEVFZ
- ud6JklM6EHDQiVKhx3AvaX3c5sysIeDv+9HcKOA3jsXfWfcVDALlNn9NIAUHUHmOQdKd
- +i1Q==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVy+nwuJ9Fehgs54J3CCzXD7wDONe2aAL4pkMLS4Xyt9jnZp32M81k9cD+Q4z6+hoy+VKCi4bPYHXEC63zosc80pMehfDY=
-X-Gm-Message-State: AOJu0YzNTewPOKBqb1E5IO71mEjD1+62nIJkUMcS7Kh+g6J9K1fjq6h0
- duVDbubIvq97dNV2i44KCE5yLqT09vvRS4bcXQT0gxN6Z75y0FjxkTLfYiTGhnQ=
-X-Received: by 2002:a05:6a21:3406:b0:1c3:18f9:16d8 with SMTP id
- adf61e73a8af0-1c4a1511038mr10516471637.52.1722270739318; 
- Mon, 29 Jul 2024 09:32:19 -0700 (PDT)
-Received: from ?IPV6:2400:4050:a840:1e00:32ed:25ae:21b1:72d6?
- ([2400:4050:a840:1e00:32ed:25ae:21b1:72d6])
- by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-70ead7120easm7010598b3a.55.2024.07.29.09.32.17
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 29 Jul 2024 09:32:18 -0700 (PDT)
-Message-ID: <361cec8b-cd35-416b-b3d2-9e6d87981edd@daynix.com>
-Date: Tue, 30 Jul 2024 01:32:15 +0900
+ (Exim 4.90_1) (envelope-from <SRS0=7GHu=O6=kaod.org=clg@ozlabs.org>)
+ id 1sYkVh-0008Md-Du; Tue, 30 Jul 2024 06:55:17 -0400
+Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=7GHu=O6=kaod.org=clg@ozlabs.org>)
+ id 1sYkVe-0005NY-6K; Tue, 30 Jul 2024 06:55:17 -0400
+Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4WYBvW75nqz4x3d;
+ Tue, 30 Jul 2024 20:55:03 +1000 (AEST)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (Client did not present a certificate)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4WYBvT6bTZz4wcK;
+ Tue, 30 Jul 2024 20:55:01 +1000 (AEST)
+Message-ID: <71d5b310-c2ba-49a3-8d95-5949f912dd76@kaod.org>
+Date: Tue, 30 Jul 2024 12:54:56 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 3/6] target/arm: Always add pmu property for Armv7-A/R+
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Thomas Huth <thuth@redhat.com>, Laurent Vivier <lvivier@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Cornelia Huck <cohuck@redhat.com>,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org, kvm@vger.kernel.org
-References: <20240720-pmu-v4-0-2a2b28f6b08f@daynix.com>
- <20240720-pmu-v4-3-2a2b28f6b08f@daynix.com>
- <CAFEAcA_HWfCU09NfZDf6EC=rpvHn148avySCztQ8PqPBMFx4_Q@mail.gmail.com>
-Content-Language: en-US
-From: Akihiko Odaki <akihiko.odaki@daynix.com>
-In-Reply-To: <CAFEAcA_HWfCU09NfZDf6EC=rpvHn148avySCztQ8PqPBMFx4_Q@mail.gmail.com>
+Subject: Re: [PATCH v2 2/2] hw/misc/aspeed_hace: Fix SG Accumulative hashing
+To: Alejandro Zeise <alejandro.zeise@seagate.com>, qemu-arm@nongnu.org
+Cc: qemu-devel@nongnu.org, peter.maydell@linaro.org, berrange@redhat.com
+References: <20240729190035.3419649-1-alejandro.zeise@seagate.com>
+ <20240729190035.3419649-3-alejandro.zeise@seagate.com>
+Content-Language: en-US, fr
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <20240729190035.3419649-3-alejandro.zeise@seagate.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: none client-ip=2607:f8b0:4864:20::431;
- envelope-from=akihiko.odaki@daynix.com; helo=mail-pf1-x431.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=150.107.74.76;
+ envelope-from=SRS0=7GHu=O6=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: hIZ0d1YQ1UGP
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: r/s1yzTkDpO/
 
-On 2024/07/30 0:13, Peter Maydell wrote:
-> On Sat, 20 Jul 2024 at 10:31, Akihiko Odaki <akihiko.odaki@daynix.com> wrote:
->>
->> kvm-steal-time and sve properties are added for KVM even if the
->> corresponding features are not available. Always add pmu property for
->> Armv8. Note that the property is added only for Armv7-A/R+ as QEMU
->> currently emulates PMU only for such versions, and a different
->> version may have a different definition of PMU or may not have one at
->> all.
->>
->> Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
->> ---
->>   target/arm/cpu.c | 5 ++++-
->>   1 file changed, 4 insertions(+), 1 deletion(-)
->>
->> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
->> index 19191c239181..c1955a82fb3c 100644
->> --- a/target/arm/cpu.c
->> +++ b/target/arm/cpu.c
->> @@ -1741,6 +1741,10 @@ void arm_cpu_post_init(Object *obj)
->>
->>       if (!arm_feature(&cpu->env, ARM_FEATURE_M)) {
->>           qdev_property_add_static(DEVICE(obj), &arm_cpu_reset_hivecs_property);
->> +
->> +        if (arm_feature(&cpu->env, ARM_FEATURE_V7)) {
->> +            object_property_add_bool(obj, "pmu", arm_get_pmu, arm_set_pmu);
->> +        }
+Hello Alejandro,
+
+On 7/29/24 21:00, Alejandro Zeise wrote:
+> Make the Aspeed HACE module use the new qcrypto accumulative hashing functions
+> when in scatter-gather accumulative mode. A hash context will maintain a
+> "running-hash" as each scatter-gather chunk is received.
 > 
-> Not every V7 CPU has a PMU[*]. Unfortunately for PMUv1 the
-> architecture did not define an ID register field for it,
-> so there's no ID field you can look at to distinguish
-> "has PMUv1" from "has no PMU". (For PMUv2 and later you
-> can look at ID_DFR0 bits [27:24]; or for AArch64
-> ID_AA64DFR0_EL1.PMUVer.) This is why we have the
-> ARM_FEATURE_PMU feature bit. So the correct way to determine
-> "does this CPU have a PMU and so it's OK to add the 'pmu'
-> property" is to look at ARM_FEATURE_PMU. Which is what
-> we already do.
+> Previously each scatter-gather "chunk" was cached
+> so the hash could be computed once the final chunk was received.
+> However, the cache was a shallow copy, so once the guest overwrote the
+> memory provided to HACE the final hash would not be correct.
 > 
-> Alternatively, if you want to make the property always
-> present even on CPUs where it can't be set, you need
-> to have some mechanism for having the user's attempt to
-> enable it fail. But mostly for Arm at the moment we
-> have properties which are only present when they're
-> meaningful. (I'm not opposed to changing this -- it would
-> arguably be cleaner to have properties be per-class,
-> not per-object, to aid in introspection. But it's a big
-> task and probably not easy.)
+> Possibly related to: https://gitlab.com/qemu-project/qemu/-/issues/1121
+> Buglink: https://github.com/openbmc/qemu/issues/36
 
-Why not disabling PMU fail for V7 then? If the guest cannot know the 
-presence or the lack of PMUv1, disabling PMUv1 for a V7 CPU that has one 
-is as wrong as enabling PMUv1 for a V7 CPU lacking PMUv1.
 
-Regards,
-Akihiko Odaki
+Thanks for these changes.
+
+However, this introduces a regression when compiling QEMU with
+--disable-gcrypt. It can be reproduced with :
+
+   make check-avocado AVOCADO_TAGS=machine:ast1030-evb
+
+or download :
+
+   https://github.com/AspeedTech-BMC/zephyr/releases/download/v00.01.07/ast1030-evb-demo.zip
+
+unzip and run :
+
+   path/to/qemu-system-arm -M ast1030-evb -kernel ./zephyr.bin -nographic
+
+then, on the console :
+
+   uart:~$ hash test
+   sha256_test
+   tv[0]:PASS
+   tv[1]:PASS
+   tv[2]:PASS
+   tv[3]:PASS
+   tv[4]:PASS
+   sha384_test
+   tv[0]:hash_final error
+   sha512_test
+   tv[0]:Segmentation fault (core dumped)
+
+I believe this is due to the change which now assigns s->total_req_len
+when accumulation mode is desired. If the crypto context fails to
+allocate (no gcrypt), states are not cleared in the model and previous
+values are used by the model when the OS runs the next test and QEMU
+segvs in has_padding().
+
+To fix, I think we could move :
+
+         if (s->qcrypto_hash_context == NULL &&
+             qcrypto_hash_accumulate_new_ctx(algo, &s->qcrypto_hash_context, NULL)) {
+             qemu_log_mask(LOG_GUEST_ERROR,
+                           "%s: qcrypto failed to create hash context\n",
+                           __func__);
+             return;
+         }
+
+at the beginning of do_hash_operation() ?
+
+C.
+
+
+> Signed-off-by: Alejandro Zeise <alejandro.zeise@seagate.com>
+> ---
+>   hw/misc/aspeed_hace.c         | 91 ++++++++++++++++++-----------------
+>   include/hw/misc/aspeed_hace.h |  4 ++
+>   2 files changed, 51 insertions(+), 44 deletions(-)
+> 
+> diff --git a/hw/misc/aspeed_hace.c b/hw/misc/aspeed_hace.c
+> index c06c04ddc6..8306d8986a 100644
+> --- a/hw/misc/aspeed_hace.c
+> +++ b/hw/misc/aspeed_hace.c
+> @@ -1,6 +1,7 @@
+>   /*
+>    * ASPEED Hash and Crypto Engine
+>    *
+> + * Copyright (c) 2024 Seagate Technology LLC and/or its Affiliates
+>    * Copyright (C) 2021 IBM Corp.
+>    *
+>    * Joel Stanley <joel@jms.id.au>
+> @@ -151,47 +152,15 @@ static int reconstruct_iov(AspeedHACEState *s, struct iovec *iov, int id,
+>       return iov_count;
+>   }
+>   
+> -/**
+> - * Generate iov for accumulative mode.
+> - *
+> - * @param s             aspeed hace state object
+> - * @param iov           iov of the current request
+> - * @param id            index of the current iov
+> - * @param req_len       length of the current request
+> - *
+> - * @return count of iov
+> - */
+> -static int gen_acc_mode_iov(AspeedHACEState *s, struct iovec *iov, int id,
+> -                            hwaddr *req_len)
+> -{
+> -    uint32_t pad_offset;
+> -    uint32_t total_msg_len;
+> -    s->total_req_len += *req_len;
+> -
+> -    if (has_padding(s, &iov[id], *req_len, &total_msg_len, &pad_offset)) {
+> -        if (s->iov_count) {
+> -            return reconstruct_iov(s, iov, id, &pad_offset);
+> -        }
+> -
+> -        *req_len -= s->total_req_len - total_msg_len;
+> -        s->total_req_len = 0;
+> -        iov[id].iov_len = *req_len;
+> -    } else {
+> -        s->iov_cache[s->iov_count].iov_base = iov->iov_base;
+> -        s->iov_cache[s->iov_count].iov_len = *req_len;
+> -        ++s->iov_count;
+> -    }
+> -
+> -    return id + 1;
+> -}
+> -
+>   static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode,
+>                                 bool acc_mode)
+>   {
+>       struct iovec iov[ASPEED_HACE_MAX_SG];
+> +    uint32_t total_msg_len;
+> +    uint32_t pad_offset;
+>       g_autofree uint8_t *digest_buf = NULL;
+>       size_t digest_len = 0;
+> -    int niov = 0;
+> +    bool sg_acc_mode_final_request = false;
+>       int i;
+>       void *haddr;
+>   
+> @@ -226,8 +195,15 @@ static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode,
+>               }
+>               iov[i].iov_base = haddr;
+>               if (acc_mode) {
+> -                niov = gen_acc_mode_iov(s, iov, i, &plen);
+> -
+> +                s->total_req_len += plen;
+> +
+> +                if (has_padding(s, &iov[i], plen, &total_msg_len, &pad_offset)) {
+> +                    /* Padding being present indicates the final request */
+> +                    sg_acc_mode_final_request = true;
+> +                    iov[i].iov_len = pad_offset;
+> +                } else {
+> +                    iov[i].iov_len = plen;
+> +                }
+>               } else {
+>                   iov[i].iov_len = plen;
+>               }
+> @@ -252,20 +228,42 @@ static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode,
+>                * required to check whether cache is empty. If no, we should
+>                * combine cached iov and the current iov.
+>                */
+> -            uint32_t total_msg_len;
+> -            uint32_t pad_offset;
+>               s->total_req_len += len;
+>               if (has_padding(s, iov, len, &total_msg_len, &pad_offset)) {
+> -                niov = reconstruct_iov(s, iov, 0, &pad_offset);
+> +                i = reconstruct_iov(s, iov, 0, &pad_offset);
+>               }
+>           }
+>       }
+>   
+> -    if (niov) {
+> -        i = niov;
+> -    }
+> +    if (acc_mode) {
+> +        if (s->qcrypto_hash_context == NULL &&
+> +            qcrypto_hash_accumulate_new_ctx(algo, &s->qcrypto_hash_context, NULL)) {
+> +            qemu_log_mask(LOG_GUEST_ERROR,
+> +                          "%s: qcrypto failed to create hash context\n",
+> +                          __func__);
+> +            return;
+> +        }
+> +
+> +        if (qcrypto_hash_accumulate_bytesv(algo,
+> +                                           s->qcrypto_hash_context, iov, i,
+> +                                           &digest_buf,
+> +                                           &digest_len, NULL) < 0) {
+> +
+> +            qemu_log_mask(LOG_GUEST_ERROR, "%s: qcrypto failed\n", __func__);
+> +            return;
+> +        }
+>   
+> -    if (qcrypto_hash_bytesv(algo, iov, i, &digest_buf, &digest_len, NULL) < 0) {
+> +        if (sg_acc_mode_final_request) {
+> +            if (qcrypto_hash_accumulate_free_ctx(s->qcrypto_hash_context, NULL) < 0) {
+> +                qemu_log_mask(LOG_GUEST_ERROR,
+> +                              "%s: qcrypto failed to free context\n", __func__);
+> +            }
+> +
+> +            s->qcrypto_hash_context = NULL;
+> +            s->iov_count = 0;
+> +            s->total_req_len = 0;
+> +        }
+> +    } else if (qcrypto_hash_bytesv(algo, iov, i, &digest_buf, &digest_len, NULL) < 0) {
+>           qemu_log_mask(LOG_GUEST_ERROR, "%s: qcrypto failed\n", __func__);
+>           return;
+>       }
+> @@ -397,6 +395,11 @@ static void aspeed_hace_reset(DeviceState *dev)
+>   {
+>       struct AspeedHACEState *s = ASPEED_HACE(dev);
+>   
+> +    if (s->qcrypto_hash_context != NULL) {
+> +        qcrypto_hash_accumulate_free_ctx(s->qcrypto_hash_context, NULL);
+> +        s->qcrypto_hash_context = NULL;
+> +    }
+> +
+>       memset(s->regs, 0, sizeof(s->regs));
+>       s->iov_count = 0;
+>       s->total_req_len = 0;
+> diff --git a/include/hw/misc/aspeed_hace.h b/include/hw/misc/aspeed_hace.h
+> index ecb1b67de8..b3c2eb17b7 100644
+> --- a/include/hw/misc/aspeed_hace.h
+> +++ b/include/hw/misc/aspeed_hace.h
+> @@ -1,6 +1,7 @@
+>   /*
+>    * ASPEED Hash and Crypto Engine
+>    *
+> + * Copyright (c) 2024 Seagate Technology LLC and/or its Affiliates
+>    * Copyright (C) 2021 IBM Corp.
+>    *
+>    * SPDX-License-Identifier: GPL-2.0-or-later
+> @@ -10,6 +11,7 @@
+>   #define ASPEED_HACE_H
+>   
+>   #include "hw/sysbus.h"
+> +#include "crypto/hash.h"
+>   
+>   #define TYPE_ASPEED_HACE "aspeed.hace"
+>   #define TYPE_ASPEED_AST2400_HACE TYPE_ASPEED_HACE "-ast2400"
+> @@ -35,6 +37,8 @@ struct AspeedHACEState {
+>   
+>       MemoryRegion *dram_mr;
+>       AddressSpace dram_as;
+> +
+> +    qcrypto_hash_accumulate_ctx_t *qcrypto_hash_context;
+>   };
+>   
+>   
+

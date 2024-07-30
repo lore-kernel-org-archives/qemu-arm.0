@@ -1,383 +1,378 @@
-Received: by 2002:a17:504:5965:b0:1be9:327d:8ee3 with SMTP id xe5csp2222343njb;
-        Tue, 30 Jul 2024 01:12:16 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCV6PhVLFVWgHQoY4H05GGtUCyltyOFzKhbqGv6vgpQKDTCDk4XDB1DkSMK6Zo9VOIczAEDP1Io3rsuYNbu9IeMGIv0Rj6i3
-X-Google-Smtp-Source: AGHT+IFIEqOhakHMg18cCSlWa/GVkUOxCZos40K/3amMsj/5imJE3Ib5ilBGvkgEqLaLWfPdMNVn
-X-Received: by 2002:a05:6512:36cd:b0:52e:9a91:bba3 with SMTP id 2adb3069b0e04-5309b2707bbmr5812483e87.15.1722327136663;
-        Tue, 30 Jul 2024 01:12:16 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1722327136; cv=pass;
+Received: by 2002:a17:504:5965:b0:1be9:327d:8ee3 with SMTP id xe5csp2222428njb;
+        Tue, 30 Jul 2024 01:12:32 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXMFxa8Uz5a04qh+EyN7HU4EbfVD/AoSx2EQSyx598ArJLChejp4CR8rCfMbIXhVxe8kWKy1XU4+jyycTSOzJopWT3B0a4H
+X-Google-Smtp-Source: AGHT+IHUEXDnPtuIPyOM7Ok5DoMkWVG1Q7qjKG9dpU6EB79/N58j+1iNwqpI2Dsngsr6FNENsfs1
+X-Received: by 2002:a05:620a:bc7:b0:79f:1985:b602 with SMTP id af79cd13be357-7a1e526b013mr908731085a.39.1722327152370;
+        Tue, 30 Jul 2024 01:12:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1722327152; cv=none;
         d=google.com; s=arc-20160816;
-        b=BcGxdTjw4nAztylSPIFPcOM2sfwCPYY/PRy6rPBKjGVsVmv4n2rZcRs9ZNjIa26Ywc
-         rKR6ksCIqQ3ZQxe1wXT2Miog3afLc8cNHsMSp6s8NiHOQ34G5QbNhnaRFW3Z6lr1gzFJ
-         bQxOt8vvv9iod0mN3o2nhwPefI7WW8QCF43hSEDvIBEn2uaVjeKerJXAQzRAXI/cz7RX
-         qghiB8juyvETky/ePXXAHpHgN3DZ+T7mO6PQItfeH9JsaEFn2LZzXeOoZPkfW8hAQ8Jv
-         1fAOtAndQRS6ZlVoL8voS8n20iIQKXTp8eTP+5DBG+hj+dkm7NIvguyPqEwMY/SC59h/
-         6S3g==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
-         :date:subject:cc:to:from:dkim-signature;
-        bh=CRXQh6ZY5UlqE0j16xgo50rsn3odB+RrAVuoTShGYJ0=;
+        b=thUZxgnQlSt4PgpRZ1XO/7cxcBTUYzJab7Oms2p2YzlrApV+BDPZ3hHETfsk8810+r
+         jZ2NwxNK5V3D52xe5BDIK9ZxMYl3MB7qfSBAwpgl4R2StGxF72mXmVu597hCoLx4jV8B
+         X8qE3FsoPwkAhY5Ps5RVKPAsX9xkVbxSeYRlTSPX3UL8d0QeOXWp5qq/7wyQlpg7KnsW
+         D4UaXmA+uLSqB1yXdTVoTdbZhCFmEiIpGS2mYvKnUNl1cUntnVDnA9S76xPzbJ+M44V+
+         UcrV5xXbw8xKMpZp6lzhQarUKrIg3EoJVEGxvBZyArvQZ2XZWLQKkYS/b0jI2Z0Pzf7V
+         FyeA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=brJc2oAfaZLJqfqPX7ASwndfauL2Y7LJXC4WeVTDHUM=;
         fh=K9hvV5Ipi0VSlYxX/fm25RHJYlx13FFj5pikD+TSDpg=;
-        b=jEqoL2zY67N979J59aEh8V4/lQnpuHLb91pGK55WBKEYOaODcQNdKjMkMVztFubi1U
-         Mo4yROUAGTvu9Xgg3IMm6y2+qvQluW1iSQh1LX2jf1RWe9CacT9kDBW3HcMpvqFoN72q
-         0gu0FWEUCO7yYrsgF8j1VxZzL1yMojvZF108vQNnAYnf2X7OD4uFd1g0cHdpr+P5gPmI
-         5W5Y7YgjtMiZAINRiT5FjSHm9RyCB1AGfgwq33X1rUUNDGvzxmS9+NUmTt4E0Ch3xddH
-         8cR4YBtsMyPPu8Pb7ijidunw52FZR9jGpTBwxbSnBho+JfJ1DzU9AsQage4oNLLQrdc/
-         oo1g==;
+        b=XTqUps8TlRmXfM8XlRFR0gRf0urp34oKEKeohdMZjrlpoJ2GnrRoLUuZ5AqvQeGR5F
+         Mb0lZYmeODVZrP98BgdpKqvSd3M9DjX3HonZQX7hDOJ3RIZUatxVmUytsMED6Fuv/Zen
+         pGxYaY+NyI/YYj87InzQqogzKXPaei0XxAvJDQkCoykpZU7yIkZmjnjAtUxn9OtUSZBi
+         BbE4ejLPl/4dPOx1EDttHc8ZHPpD5sN+0DwH4FcxftfpeGSZDUYCrGVcspWcbAOd/DZp
+         Ug1odrGY23inLdgS97chFwoEyBDywKcKJ8ocdYvLrQ4sZ95pZyyBTetgR0dyPbu2qZFs
+         7FfA==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=btLm+l7i;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-22623-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="kvm+bounces-22623-alex.bennee=linaro.org@vger.kernel.org";
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Nf2XcJzs;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm+bounces-22623-alex.bennee=linaro.org@vger.kernel.org>
-Received: from am.mirrors.kernel.org (am.mirrors.kernel.org. [147.75.80.249])
-        by mx.google.com with ESMTPS id a640c23a62f3a-a7acac8dab4si733756866b.710.2024.07.30.01.12.16
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id af79cd13be357-7a1d7445a34si1253033685a.289.2024.07.30.01.12.32
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 30 Jul 2024 01:12:16 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm+bounces-22623-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) client-ip=147.75.80.249;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 30 Jul 2024 01:12:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=btLm+l7i;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-22623-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="kvm+bounces-22623-alex.bennee=linaro.org@vger.kernel.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Nf2XcJzs;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by am.mirrors.kernel.org (Postfix) with ESMTPS id 148AA1F21B7A
-	for <alex.bennee@linaro.org>; Tue, 30 Jul 2024 08:12:16 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 702FB194132;
-	Tue, 30 Jul 2024 08:10:57 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="btLm+l7i"
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8F79019408E
-	for <kvm@vger.kernel.org>; Tue, 30 Jul 2024 08:10:55 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.133.124
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1722327057; cv=none; b=AcckK0Gtkz8IaGi2AhhkowqEC6ufj2dvxnVBynBpZflNoz08SnJJxoG5efQSYaZqlQ0vcXtzWvePlBXQIzAFb9EUKQYFry5LP3xvwZR8KKk/bNlKALBLiUq9PN+/ZsRI9GHJJwAnfI1tuDrPvj+oVdzfRblY5pZ/B4j5dnuVCwc=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1722327057; c=relaxed/simple;
-	bh=/3DjVxiLz9ySqvV1vTXd2pY/8AvQYvHMweV/mHexTbg=;
-	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:
-	 MIME-Version:Content-type; b=DytKJ4GaDNDIIH7ZSSGzf6dUkbf5XHlQTjjN18DeznTBiOkFbhhJwu54AWmJUFFHWPgzTpWI6vC6d8RBng69RIK55hLwDfuEhh0oHN1JyD75LQEjGVApKZcKEokI+AxGVizALOeyjqT7TtjSzvs3tx4wLxOXO8IAud1l2tUXTbs=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=btLm+l7i; arc=none smtp.client-ip=170.10.133.124
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1sYhxo-0001pG-AF; Tue, 30 Jul 2024 04:12:09 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1sYhwu-0006I8-Ss
+ for qemu-devel@nongnu.org; Tue, 30 Jul 2024 04:11:14 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1sYhwe-0001KA-73
+ for qemu-devel@nongnu.org; Tue, 30 Jul 2024 04:11:12 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1722327054;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=CRXQh6ZY5UlqE0j16xgo50rsn3odB+RrAVuoTShGYJ0=;
-	b=btLm+l7iE/aY2kScLt1SmtjW4s/6tTg4t3xYAp+sdSk9OKNdP10RmjpMOtUidy3rjj8VGh
-	Wol/NkWGlKn4iFZR9pDODw2xn69qPKokC7kVuGzmvsP18nQmk06XPAulEy7peZ18LOdWro
-	IojkGzVhKW44wT7z8NDrf3iF14Dc01g=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ s=mimecast20190719; t=1722327055;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=brJc2oAfaZLJqfqPX7ASwndfauL2Y7LJXC4WeVTDHUM=;
+ b=Nf2XcJzso1HPZYiO5xR1CLMyFifximO4PyoKGyCZqJvHdxEB7q9NBW2uU0u05MqkjTO+UY
+ 2xLsgh5AYn8iMuWLy9bxnti+ewErDXGMdbXig6ue6u7n5k48N/1bJqRkaD3jHKBMmMWslW
+ 3/uRO0pxSW5Iyu3LmL4w7EKIB//q0PI=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-18-dlZMvMOdMWqSaAyBipMpvg-1; Tue,
- 30 Jul 2024 04:10:52 -0400
-X-MC-Unique: dlZMvMOdMWqSaAyBipMpvg-1
-Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 808E21955BFE;
-	Tue, 30 Jul 2024 08:10:45 +0000 (UTC)
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-527-ur9IBFh7P6-4i3MrvpgpEg-1; Tue,
+ 30 Jul 2024 04:10:48 -0400
+X-MC-Unique: ur9IBFh7P6-4i3MrvpgpEg-1
+Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id B11FA1955F49; Tue, 30 Jul 2024 08:10:43 +0000 (UTC)
 Received: from blackfin.pond.sub.org (unknown [10.39.192.65])
-	by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id E25D61955F40;
-	Tue, 30 Jul 2024 08:10:44 +0000 (UTC)
+ by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 803481955F3B; Tue, 30 Jul 2024 08:10:41 +0000 (UTC)
 Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 1735F21F4B9F; Tue, 30 Jul 2024 10:10:33 +0200 (CEST)
+ id D9EA421F4B8F; Tue, 30 Jul 2024 10:10:32 +0200 (CEST)
 From: Markus Armbruster <armbru@redhat.com>
 To: qemu-devel@nongnu.org
-Cc: alex.williamson@redhat.com,
-	andrew@codeconstruct.com.au,
-	andrew@daynix.com,
-	arei.gonglei@huawei.com,
-	berrange@redhat.com,
-	berto@igalia.com,
-	borntraeger@linux.ibm.com,
-	clg@kaod.org,
-	david@redhat.com,
-	den@openvz.org,
-	eblake@redhat.com,
-	eduardo@habkost.net,
-	farman@linux.ibm.com,
-	farosas@suse.de,
-	hreitz@redhat.com,
-	idryomov@gmail.com,
-	iii@linux.ibm.com,
-	jamin_lin@aspeedtech.com,
-	jasowang@redhat.com,
-	joel@jms.id.au,
-	jsnow@redhat.com,
-	kwolf@redhat.com,
-	leetroy@gmail.com,
-	marcandre.lureau@redhat.com,
-	marcel.apfelbaum@gmail.com,
-	michael.roth@amd.com,
-	mst@redhat.com,
-	mtosatti@redhat.com,
-	nsg@linux.ibm.com,
-	pasic@linux.ibm.com,
-	pbonzini@redhat.com,
-	peter.maydell@linaro.org,
-	peterx@redhat.com,
-	philmd@linaro.org,
-	pizhenwei@bytedance.com,
-	pl@dlhnet.de,
-	richard.henderson@linaro.org,
-	stefanha@redhat.com,
-	steven_lee@aspeedtech.com,
-	thuth@redhat.com,
-	vsementsov@yandex-team.ru,
-	wangyanan55@huawei.com,
-	yuri.benditovich@daynix.com,
-	zhao1.liu@intel.com,
-	qemu-block@nongnu.org,
-	qemu-arm@nongnu.org,
-	qemu-s390x@nongnu.org,
-	kvm@vger.kernel.org
-Subject: [PATCH 16/18] qapi/crypto: Rename QCryptoAFAlg to QCryptoAFAlgo
-Date: Tue, 30 Jul 2024 10:10:30 +0200
-Message-ID: <20240730081032.1246748-17-armbru@redhat.com>
+Cc: alex.williamson@redhat.com, andrew@codeconstruct.com.au, andrew@daynix.com,
+ arei.gonglei@huawei.com, berrange@redhat.com, berto@igalia.com,
+ borntraeger@linux.ibm.com, clg@kaod.org, david@redhat.com, den@openvz.org,
+ eblake@redhat.com, eduardo@habkost.net, farman@linux.ibm.com,
+ farosas@suse.de, hreitz@redhat.com, idryomov@gmail.com, iii@linux.ibm.com,
+ jamin_lin@aspeedtech.com, jasowang@redhat.com, joel@jms.id.au,
+ jsnow@redhat.com, kwolf@redhat.com, leetroy@gmail.com,
+ marcandre.lureau@redhat.com, marcel.apfelbaum@gmail.com,
+ michael.roth@amd.com, mst@redhat.com, mtosatti@redhat.com,
+ nsg@linux.ibm.com, pasic@linux.ibm.com, pbonzini@redhat.com,
+ peter.maydell@linaro.org, peterx@redhat.com, philmd@linaro.org,
+ pizhenwei@bytedance.com, pl@dlhnet.de, richard.henderson@linaro.org,
+ stefanha@redhat.com, steven_lee@aspeedtech.com, thuth@redhat.com,
+ vsementsov@yandex-team.ru, wangyanan55@huawei.com,
+ yuri.benditovich@daynix.com, zhao1.liu@intel.com, qemu-block@nongnu.org,
+ qemu-arm@nongnu.org, qemu-s390x@nongnu.org, kvm@vger.kernel.org
+Subject: [PATCH 05/18] qapi/crypto: Drop temporary 'prefix'
+Date: Tue, 30 Jul 2024 10:10:19 +0200
+Message-ID: <20240730081032.1246748-6-armbru@redhat.com>
 In-Reply-To: <20240730081032.1246748-1-armbru@redhat.com>
 References: <20240730081032.1246748-1-armbru@redhat.com>
-Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
 Content-type: text/plain
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-X-TUID: grEqp23i1FSX
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.125,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: HFovAJ6V1xF3
 
-For consistency with other types names *Algo.
+Recent commit "qapi: Smarter camel_to_upper() to reduce need for
+'prefix'" added two temporary 'prefix' to delay changing the generated
+code.
+
+Revert them.  This improves QCryptoBlockFormat's generated enumeration
+constant prefix from Q_CRYPTO_BLOCK_FORMAT to QCRYPTO_BLOCK_FORMAT,
+and QCryptoBlockLUKSKeyslotState's from
+Q_CRYPTO_BLOCKLUKS_KEYSLOT_STATE to QCRYPTO_BLOCK_LUKS_KEYSLOT_STATE.
 
 Signed-off-by: Markus Armbruster <armbru@redhat.com>
 ---
- crypto/afalgpriv.h    | 14 +++++++-------
- crypto/hmacpriv.h     |  2 +-
- crypto/afalg.c        |  8 ++++----
- crypto/cipher-afalg.c | 12 ++++++------
- crypto/hash-afalg.c   | 14 +++++++-------
- 5 files changed, 25 insertions(+), 25 deletions(-)
+ qapi/crypto.json               |  2 --
+ block/crypto.c                 | 10 +++++-----
+ block/qcow.c                   |  2 +-
+ block/qcow2.c                  | 10 +++++-----
+ crypto/block-luks.c            |  4 ++--
+ crypto/block.c                 |  4 ++--
+ tests/unit/test-crypto-block.c | 14 +++++++-------
+ 7 files changed, 22 insertions(+), 24 deletions(-)
 
-diff --git a/crypto/afalgpriv.h b/crypto/afalgpriv.h
-index 5a2393f1b7..3fdcc0f831 100644
---- a/crypto/afalgpriv.h
-+++ b/crypto/afalgpriv.h
-@@ -30,9 +30,9 @@
- #define ALG_OPTYPE_LEN 4
- #define ALG_MSGIV_LEN(len) (sizeof(struct af_alg_iv) + (len))
+diff --git a/qapi/crypto.json b/qapi/crypto.json
+index e2d77c3fb3..42d321fdcb 100644
+--- a/qapi/crypto.json
++++ b/qapi/crypto.json
+@@ -157,7 +157,6 @@
+ # Since: 2.6
+ ##
+ { 'enum': 'QCryptoBlockFormat',
+-  'prefix': 'Q_CRYPTO_BLOCK_FORMAT', # TODO drop
+   'data': ['qcow', 'luks']}
  
--typedef struct QCryptoAFAlg QCryptoAFAlg;
-+typedef struct QCryptoAFAlgo QCryptoAFAlgo;
+ ##
+@@ -360,7 +359,6 @@
+ # Since: 5.1
+ ##
+ { 'enum': 'QCryptoBlockLUKSKeyslotState',
+-  'prefix': 'Q_CRYPTO_BLOCKLUKS_KEYSLOT_STATE', # TODO drop
+   'data': [ 'active', 'inactive' ] }
  
--struct QCryptoAFAlg {
-+struct QCryptoAFAlgo {
-     QCryptoCipher base;
+ ##
+diff --git a/block/crypto.c b/block/crypto.c
+index 4eed3ffa6a..80b2dba17a 100644
+--- a/block/crypto.c
++++ b/block/crypto.c
+@@ -682,7 +682,7 @@ err:
+ static int block_crypto_probe_luks(const uint8_t *buf,
+                                    int buf_size,
+                                    const char *filename) {
+-    return block_crypto_probe_generic(Q_CRYPTO_BLOCK_FORMAT_LUKS,
++    return block_crypto_probe_generic(QCRYPTO_BLOCK_FORMAT_LUKS,
+                                       buf, buf_size, filename);
+ }
  
-     int tfmfd;
-@@ -46,22 +46,22 @@ struct QCryptoAFAlg {
-  * @type: the type of crypto operation
-  * @name: the name of crypto operation
-  *
-- * Allocate a QCryptoAFAlg object and bind itself to
-+ * Allocate a QCryptoAFAlgo object and bind itself to
-  * a AF_ALG socket.
-  *
-  * Returns:
-- *  a new QCryptoAFAlg object, or NULL in error.
-+ *  a new QCryptoAFAlgo object, or NULL in error.
-  */
--QCryptoAFAlg *
-+QCryptoAFAlgo *
- qcrypto_afalg_comm_alloc(const char *type, const char *name,
-                          Error **errp);
+@@ -691,7 +691,7 @@ static int block_crypto_open_luks(BlockDriverState *bs,
+                                   int flags,
+                                   Error **errp)
+ {
+-    return block_crypto_open_generic(Q_CRYPTO_BLOCK_FORMAT_LUKS,
++    return block_crypto_open_generic(QCRYPTO_BLOCK_FORMAT_LUKS,
+                                      &block_crypto_runtime_opts_luks,
+                                      bs, options, flags, errp);
+ }
+@@ -724,7 +724,7 @@ block_crypto_co_create_luks(BlockdevCreateOptions *create_options, Error **errp)
+     }
  
- /**
-  * afalg_comm_free:
-- * @afalg: the QCryptoAFAlg object
-+ * @afalg: the QCryptoAFAlgo object
-  *
-  * Free the @afalg.
-  */
--void qcrypto_afalg_comm_free(QCryptoAFAlg *afalg);
-+void qcrypto_afalg_comm_free(QCryptoAFAlgo *afalg);
+     create_opts = (QCryptoBlockCreateOptions) {
+-        .format = Q_CRYPTO_BLOCK_FORMAT_LUKS,
++        .format = QCRYPTO_BLOCK_FORMAT_LUKS,
+         .u.luks = *qapi_BlockdevCreateOptionsLUKS_base(luks_opts),
+     };
  
+@@ -889,7 +889,7 @@ block_crypto_get_specific_info_luks(BlockDriverState *bs, Error **errp)
+     if (!info) {
+         return NULL;
+     }
+-    assert(info->format == Q_CRYPTO_BLOCK_FORMAT_LUKS);
++    assert(info->format == QCRYPTO_BLOCK_FORMAT_LUKS);
+ 
+     spec_info = g_new(ImageInfoSpecific, 1);
+     spec_info->type = IMAGE_INFO_SPECIFIC_KIND_LUKS;
+@@ -1002,7 +1002,7 @@ coroutine_fn block_crypto_co_amend_luks(BlockDriverState *bs,
+     QCryptoBlockAmendOptions amend_opts;
+ 
+     amend_opts = (QCryptoBlockAmendOptions) {
+-        .format = Q_CRYPTO_BLOCK_FORMAT_LUKS,
++        .format = QCRYPTO_BLOCK_FORMAT_LUKS,
+         .u.luks = *qapi_BlockdevAmendOptionsLUKS_base(&opts->u.luks),
+     };
+     return block_crypto_amend_options_generic_luks(bs, &amend_opts,
+diff --git a/block/qcow.c b/block/qcow.c
+index c2f89db055..84d1cca296 100644
+--- a/block/qcow.c
++++ b/block/qcow.c
+@@ -831,7 +831,7 @@ qcow_co_create(BlockdevCreateOptions *opts, Error **errp)
+     }
+ 
+     if (qcow_opts->encrypt &&
+-        qcow_opts->encrypt->format != Q_CRYPTO_BLOCK_FORMAT_QCOW)
++        qcow_opts->encrypt->format != QCRYPTO_BLOCK_FORMAT_QCOW)
+     {
+         error_setg(errp, "Unsupported encryption format");
+         return -EINVAL;
+diff --git a/block/qcow2.c b/block/qcow2.c
+index 70b19730a3..dd359d241b 100644
+--- a/block/qcow2.c
++++ b/block/qcow2.c
+@@ -3214,10 +3214,10 @@ qcow2_set_up_encryption(BlockDriverState *bs,
+     int fmt, ret;
+ 
+     switch (cryptoopts->format) {
+-    case Q_CRYPTO_BLOCK_FORMAT_LUKS:
++    case QCRYPTO_BLOCK_FORMAT_LUKS:
+         fmt = QCOW_CRYPT_LUKS;
+         break;
+-    case Q_CRYPTO_BLOCK_FORMAT_QCOW:
++    case QCRYPTO_BLOCK_FORMAT_QCOW:
+         fmt = QCOW_CRYPT_AES;
+         break;
+     default:
+@@ -5306,10 +5306,10 @@ qcow2_get_specific_info(BlockDriverState *bs, Error **errp)
+         ImageInfoSpecificQCow2Encryption *qencrypt =
+             g_new(ImageInfoSpecificQCow2Encryption, 1);
+         switch (encrypt_info->format) {
+-        case Q_CRYPTO_BLOCK_FORMAT_QCOW:
++        case QCRYPTO_BLOCK_FORMAT_QCOW:
+             qencrypt->format = BLOCKDEV_QCOW2_ENCRYPTION_FORMAT_AES;
+             break;
+-        case Q_CRYPTO_BLOCK_FORMAT_LUKS:
++        case QCRYPTO_BLOCK_FORMAT_LUKS:
+             qencrypt->format = BLOCKDEV_QCOW2_ENCRYPTION_FORMAT_LUKS;
+             qencrypt->u.luks = encrypt_info->u.luks;
+             break;
+@@ -5948,7 +5948,7 @@ static int coroutine_fn qcow2_co_amend(BlockDriverState *bs,
+             return -EOPNOTSUPP;
+         }
+ 
+-        if (qopts->encrypt->format != Q_CRYPTO_BLOCK_FORMAT_LUKS) {
++        if (qopts->encrypt->format != QCRYPTO_BLOCK_FORMAT_LUKS) {
+             error_setg(errp,
+                        "Amend can't be used to change the qcow2 encryption format");
+             return -EOPNOTSUPP;
+diff --git a/crypto/block-luks.c b/crypto/block-luks.c
+index 45347adeeb..7b9c7b292d 100644
+--- a/crypto/block-luks.c
++++ b/crypto/block-luks.c
+@@ -1861,11 +1861,11 @@ qcrypto_block_luks_amend_options(QCryptoBlock *block,
+     QCryptoBlockAmendOptionsLUKS *opts_luks = &options->u.luks;
+ 
+     switch (opts_luks->state) {
+-    case Q_CRYPTO_BLOCKLUKS_KEYSLOT_STATE_ACTIVE:
++    case QCRYPTO_BLOCK_LUKS_KEYSLOT_STATE_ACTIVE:
+         return qcrypto_block_luks_amend_add_keyslot(block, readfunc,
+                                                     writefunc, opaque,
+                                                     opts_luks, force, errp);
+-    case Q_CRYPTO_BLOCKLUKS_KEYSLOT_STATE_INACTIVE:
++    case QCRYPTO_BLOCK_LUKS_KEYSLOT_STATE_INACTIVE:
+         return qcrypto_block_luks_amend_erase_keyslots(block, readfunc,
+                                                        writefunc, opaque,
+                                                        opts_luks, force, errp);
+diff --git a/crypto/block.c b/crypto/block.c
+index 3bcc4270c3..899561a080 100644
+--- a/crypto/block.c
++++ b/crypto/block.c
+@@ -26,8 +26,8 @@
+ #include "block-luks.h"
+ 
+ static const QCryptoBlockDriver *qcrypto_block_drivers[] = {
+-    [Q_CRYPTO_BLOCK_FORMAT_QCOW] = &qcrypto_block_driver_qcow,
+-    [Q_CRYPTO_BLOCK_FORMAT_LUKS] = &qcrypto_block_driver_luks,
++    [QCRYPTO_BLOCK_FORMAT_QCOW] = &qcrypto_block_driver_qcow,
++    [QCRYPTO_BLOCK_FORMAT_LUKS] = &qcrypto_block_driver_luks,
+ };
+ 
+ 
+diff --git a/tests/unit/test-crypto-block.c b/tests/unit/test-crypto-block.c
+index 42cfab6067..2a6c6e99e5 100644
+--- a/tests/unit/test-crypto-block.c
++++ b/tests/unit/test-crypto-block.c
+@@ -39,14 +39,14 @@
  #endif
-diff --git a/crypto/hmacpriv.h b/crypto/hmacpriv.h
-index bd4c498c62..f339596bd9 100644
---- a/crypto/hmacpriv.h
-+++ b/crypto/hmacpriv.h
-@@ -37,7 +37,7 @@ extern QCryptoHmacDriver qcrypto_hmac_lib_driver;
  
- #include "afalgpriv.h"
+ static QCryptoBlockCreateOptions qcow_create_opts = {
+-    .format = Q_CRYPTO_BLOCK_FORMAT_QCOW,
++    .format = QCRYPTO_BLOCK_FORMAT_QCOW,
+     .u.qcow = {
+         .key_secret = (char *)"sec0",
+     },
+ };
  
--QCryptoAFAlg *qcrypto_afalg_hmac_ctx_new(QCryptoHashAlgo alg,
-+QCryptoAFAlgo *qcrypto_afalg_hmac_ctx_new(QCryptoHashAlgo alg,
-                                          const uint8_t *key, size_t nkey,
-                                          Error **errp);
- extern QCryptoHmacDriver qcrypto_hmac_afalg_driver;
-diff --git a/crypto/afalg.c b/crypto/afalg.c
-index 52a491dbb5..246d0679d4 100644
---- a/crypto/afalg.c
-+++ b/crypto/afalg.c
-@@ -66,13 +66,13 @@ qcrypto_afalg_socket_bind(const char *type, const char *name,
-     return sbind;
- }
+ static QCryptoBlockOpenOptions qcow_open_opts = {
+-    .format = Q_CRYPTO_BLOCK_FORMAT_QCOW,
++    .format = QCRYPTO_BLOCK_FORMAT_QCOW,
+     .u.qcow = {
+         .key_secret = (char *)"sec0",
+     },
+@@ -55,7 +55,7 @@ static QCryptoBlockOpenOptions qcow_open_opts = {
  
--QCryptoAFAlg *
-+QCryptoAFAlgo *
- qcrypto_afalg_comm_alloc(const char *type, const char *name,
-                          Error **errp)
- {
--    QCryptoAFAlg *afalg;
-+    QCryptoAFAlgo *afalg;
+ #ifdef TEST_LUKS
+ static QCryptoBlockOpenOptions luks_open_opts = {
+-    .format = Q_CRYPTO_BLOCK_FORMAT_LUKS,
++    .format = QCRYPTO_BLOCK_FORMAT_LUKS,
+     .u.luks = {
+         .key_secret = (char *)"sec0",
+     },
+@@ -64,7 +64,7 @@ static QCryptoBlockOpenOptions luks_open_opts = {
  
--    afalg = g_new0(QCryptoAFAlg, 1);
-+    afalg = g_new0(QCryptoAFAlgo, 1);
-     /* initialize crypto API socket */
-     afalg->opfd = -1;
-     afalg->tfmfd = qcrypto_afalg_socket_bind(type, name, errp);
-@@ -93,7 +93,7 @@ error:
-     return NULL;
- }
+ /* Creation with all default values */
+ static QCryptoBlockCreateOptions luks_create_opts_default = {
+-    .format = Q_CRYPTO_BLOCK_FORMAT_LUKS,
++    .format = QCRYPTO_BLOCK_FORMAT_LUKS,
+     .u.luks = {
+         .key_secret = (char *)"sec0",
+     },
+@@ -73,7 +73,7 @@ static QCryptoBlockCreateOptions luks_create_opts_default = {
  
--void qcrypto_afalg_comm_free(QCryptoAFAlg *afalg)
-+void qcrypto_afalg_comm_free(QCryptoAFAlgo *afalg)
- {
-     if (!afalg) {
-         return;
-diff --git a/crypto/cipher-afalg.c b/crypto/cipher-afalg.c
-index c08eb7a39b..4980d419c4 100644
---- a/crypto/cipher-afalg.c
-+++ b/crypto/cipher-afalg.c
-@@ -65,7 +65,7 @@ qcrypto_afalg_cipher_ctx_new(QCryptoCipherAlgo alg,
-                              const uint8_t *key,
-                              size_t nkey, Error **errp)
- {
--    QCryptoAFAlg *afalg;
-+    QCryptoAFAlgo *afalg;
-     size_t expect_niv;
-     char *name;
+ /* ...and with explicit values */
+ static QCryptoBlockCreateOptions luks_create_opts_aes256_cbc_plain64 = {
+-    .format = Q_CRYPTO_BLOCK_FORMAT_LUKS,
++    .format = QCRYPTO_BLOCK_FORMAT_LUKS,
+     .u.luks = {
+         .key_secret = (char *)"sec0",
+         .has_cipher_alg = true,
+@@ -87,7 +87,7 @@ static QCryptoBlockCreateOptions luks_create_opts_aes256_cbc_plain64 = {
  
-@@ -119,7 +119,7 @@ qcrypto_afalg_cipher_setiv(QCryptoCipher *cipher,
-                            const uint8_t *iv,
-                            size_t niv, Error **errp)
- {
--    QCryptoAFAlg *afalg = container_of(cipher, QCryptoAFAlg, base);
-+    QCryptoAFAlgo *afalg = container_of(cipher, QCryptoAFAlgo, base);
-     struct af_alg_iv *alg_iv;
-     size_t expect_niv;
  
-@@ -143,7 +143,7 @@ qcrypto_afalg_cipher_setiv(QCryptoCipher *cipher,
- }
+ static QCryptoBlockCreateOptions luks_create_opts_aes256_cbc_essiv = {
+-    .format = Q_CRYPTO_BLOCK_FORMAT_LUKS,
++    .format = QCRYPTO_BLOCK_FORMAT_LUKS,
+     .u.luks = {
+         .key_secret = (char *)"sec0",
+         .has_cipher_alg = true,
+@@ -572,7 +572,7 @@ int main(int argc, char **argv)
+     g_assert(qcrypto_init(NULL) == 0);
  
- static int
--qcrypto_afalg_cipher_op(QCryptoAFAlg *afalg,
-+qcrypto_afalg_cipher_op(QCryptoAFAlgo *afalg,
-                         const void *in, void *out,
-                         size_t len, bool do_encrypt,
-                         Error **errp)
-@@ -202,7 +202,7 @@ qcrypto_afalg_cipher_encrypt(QCryptoCipher *cipher,
-                              const void *in, void *out,
-                              size_t len, Error **errp)
- {
--    QCryptoAFAlg *afalg = container_of(cipher, QCryptoAFAlg, base);
-+    QCryptoAFAlgo *afalg = container_of(cipher, QCryptoAFAlgo, base);
- 
-     return qcrypto_afalg_cipher_op(afalg, in, out, len, true, errp);
- }
-@@ -212,14 +212,14 @@ qcrypto_afalg_cipher_decrypt(QCryptoCipher *cipher,
-                              const void *in, void *out,
-                              size_t len, Error **errp)
- {
--    QCryptoAFAlg *afalg = container_of(cipher, QCryptoAFAlg, base);
-+    QCryptoAFAlgo *afalg = container_of(cipher, QCryptoAFAlgo, base);
- 
-     return qcrypto_afalg_cipher_op(afalg, in, out, len, false, errp);
- }
- 
- static void qcrypto_afalg_comm_ctx_free(QCryptoCipher *cipher)
- {
--    QCryptoAFAlg *afalg = container_of(cipher, QCryptoAFAlg, base);
-+    QCryptoAFAlgo *afalg = container_of(cipher, QCryptoAFAlgo, base);
- 
-     qcrypto_afalg_comm_free(afalg);
- }
-diff --git a/crypto/hash-afalg.c b/crypto/hash-afalg.c
-index 8fc6bd0edf..28ab899b18 100644
---- a/crypto/hash-afalg.c
-+++ b/crypto/hash-afalg.c
-@@ -64,12 +64,12 @@ qcrypto_afalg_hash_format_name(QCryptoHashAlgo alg,
-     return name;
- }
- 
--static QCryptoAFAlg *
-+static QCryptoAFAlgo *
- qcrypto_afalg_hash_hmac_ctx_new(QCryptoHashAlgo alg,
-                                 const uint8_t *key, size_t nkey,
-                                 bool is_hmac, Error **errp)
- {
--    QCryptoAFAlg *afalg;
-+    QCryptoAFAlgo *afalg;
-     char *name;
- 
-     name = qcrypto_afalg_hash_format_name(alg, is_hmac, errp);
-@@ -98,14 +98,14 @@ qcrypto_afalg_hash_hmac_ctx_new(QCryptoHashAlgo alg,
-     return afalg;
- }
- 
--static QCryptoAFAlg *
-+static QCryptoAFAlgo *
- qcrypto_afalg_hash_ctx_new(QCryptoHashAlgo alg,
-                            Error **errp)
- {
-     return qcrypto_afalg_hash_hmac_ctx_new(alg, NULL, 0, false, errp);
- }
- 
--QCryptoAFAlg *
-+QCryptoAFAlgo *
- qcrypto_afalg_hmac_ctx_new(QCryptoHashAlgo alg,
-                            const uint8_t *key, size_t nkey,
-                            Error **errp)
-@@ -114,14 +114,14 @@ qcrypto_afalg_hmac_ctx_new(QCryptoHashAlgo alg,
- }
- 
- static int
--qcrypto_afalg_hash_hmac_bytesv(QCryptoAFAlg *hmac,
-+qcrypto_afalg_hash_hmac_bytesv(QCryptoAFAlgo *hmac,
-                                QCryptoHashAlgo alg,
-                                const struct iovec *iov,
-                                size_t niov, uint8_t **result,
-                                size_t *resultlen,
-                                Error **errp)
- {
--    QCryptoAFAlg *afalg;
-+    QCryptoAFAlgo *afalg;
-     struct iovec outv;
-     int ret = 0;
-     bool is_hmac = (hmac != NULL) ? true : false;
-@@ -197,7 +197,7 @@ qcrypto_afalg_hmac_bytesv(QCryptoHmac *hmac,
- 
- static void qcrypto_afalg_hmac_ctx_free(QCryptoHmac *hmac)
- {
--    QCryptoAFAlg *afalg;
-+    QCryptoAFAlgo *afalg;
- 
-     afalg = hmac->opaque;
-     qcrypto_afalg_comm_free(afalg);
+     for (i = 0; i < G_N_ELEMENTS(test_data); i++) {
+-        if (test_data[i].open_opts->format == Q_CRYPTO_BLOCK_FORMAT_LUKS &&
++        if (test_data[i].open_opts->format == QCRYPTO_BLOCK_FORMAT_LUKS &&
+             !qcrypto_hash_supports(test_data[i].hash_alg)) {
+             continue;
+         }
 -- 
 2.45.0
 

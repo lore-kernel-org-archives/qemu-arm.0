@@ -1,106 +1,106 @@
-Received: by 2002:a17:504:5965:b0:1be9:327d:8ee3 with SMTP id xe5csp2242011njb;
-        Tue, 30 Jul 2024 02:08:44 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCUTMVXq0qdOxKaizCeiYEenYuKL/o3jPAIHsKOWvnxqm/uxhWYIh6SJMhJ8Yt45AP35wUlBzpIrg0xEg3gcl7+KB5rSpgWl
-X-Google-Smtp-Source: AGHT+IEjUO0qEXckKFqVcomBkz7L7XV+2njq0/Pgt1lBuvwAoRqGWCWizlCJRkKAP37jrajBSz4w
-X-Received: by 2002:a05:620a:4452:b0:79e:f82a:a219 with SMTP id af79cd13be357-7a1e52f0461mr1289397285a.61.1722330524149;
-        Tue, 30 Jul 2024 02:08:44 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1722330524; cv=pass;
+Received: by 2002:a17:504:5965:b0:1be9:327d:8ee3 with SMTP id xe5csp2243199njb;
+        Tue, 30 Jul 2024 02:11:27 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCV6C6tV8G2l8st7FYN1BVWnPC/VLV/WKtB7a6nd1OtqCV7AT2rHGJQ97Oo3mLGNSKZPT9jnU1804bXhdDnyK5sVixStHC9I
+X-Google-Smtp-Source: AGHT+IE/HHkhJyBAgZecuIsGydT0bSE+mbF9mXvY4Rt+lSTLvN7L2JHulOVZceUQCCi+s8LSyM0n
+X-Received: by 2002:a05:6a20:9146:b0:1c4:9100:6a1b with SMTP id adf61e73a8af0-1c4a134322dmr8466721637.30.1722330687690;
+        Tue, 30 Jul 2024 02:11:27 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1722330687; cv=pass;
         d=google.com; s=arc-20160816;
-        b=fD68fnTUev9i92dzIEFMry9trrzz4o5Hdc4gVCKlMtzd82uaDjyNL6cixlmhHGpft/
-         gjiCHWcS4ea0riZ9CHizxt/mW7bynCvoRpHLGQSAJ6VG83ICIWGA8iieUryHZc/BCRtn
-         vIYWt6SQUPMfiLE3M3F5Mvxxc+7GVJohTUNh3FVO1Us30QK0TM9WP745tqoLDWhmAWcc
-         rWhl+e5Y0nsewBfce2o/KnUe4FfT1dL8iekjXdmonJyAZWhmH9w4PhO+SR2LVu3kiJ9J
-         FgYmfI9h3X7GBaENeIz8iVfeXwMEjLb5Td+yT6fEDTdOdIqM/o8D68UthoAh5NJ2Tyls
-         T8dg==
+        b=soHDs46pLWZ35PqTnVhY/qVdhWvfDG3Wf91sgx2ModVyWrSESpiH7o270FQhAmBIeY
+         O75eSdZtKueogAtpjfBE6/z3wY2PhnYgeMbo04rF9CmeMnOVJB2oJmYzDZYgPmWYQhdD
+         aeqin8ymC6H/dVqUvHSao0V2aEFm5YJFMVAfv4MU3As9XP7lezqYhoaIWmKbSoOf10/u
+         7Lzi0PJmDJauW1C/nWfkOy3Dk6g8WLRHYs/gc2XDc5smhaQX5P+pnpOtI4z3CHe5CXez
+         fc6xdkgF7TFTIWXfa8vgdmEjutkFjX5Cfs4E+TTsPGu8OCWPy3Zi1OcaOoFW0xqTImuL
+         O5yw==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-transfer-encoding
-         :content-disposition:mime-version:list-unsubscribe:list-subscribe
-         :list-id:precedence:references:reply-to:message-id:subject:cc:to
-         :from:date:dkim-signature;
-        bh=dz3WJ7004s0uw4V6jW5lI1b/Q0V305/i2liLNDAPEws=;
-        fh=9hFDqFluQ4K0nkG/6lzcBQr+AmQg/OxQWMC/bennKy0=;
-        b=djH+/Hv85z1fb6/3c9/U4QPHBLVM4HzT2iLSBS4Yyk3I28jBGwXfJW46c3BJ1ESn5u
-         +UrVyUviTZIqpxhG1aNzscZuCj19WfEWilqoL+UF84K8/3ffwGxAd3k0JyFPO+mf8aVg
-         nqQb/tSRB0F74ByRkhPYzyMZLVZY+G15vrtq+ELvWyFZ5iOtmLid1jyCLBMXm659vb1U
-         Zrha2Ulvy9e9hB7+RNgYaHpud0aKNeIAu2i62mPUtRdi/MYVCCVaa/XEPNKOI2M7D5MH
-         e+9SeH3uRv/NPSH10fVekthEyXeSI+aApOB5szLhni6/0CTmnoI2o/q3+k3k+nIRuQr8
-         2x3g==;
+        h=in-reply-to:content-disposition:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:references:message-id:subject:cc
+         :to:from:date:dkim-signature;
+        bh=87BHPbG+6hPVAZuMpI0Y1Gv+ZbRVLasRQRex7zDP4SM=;
+        fh=gL0kw3NDB8GfNjleNsPSQTywug7fi6SsYwHfjWZe0Uo=;
+        b=NliFrN05HXGbjMJxD8vJ+HrRzktp4TpzPE3HIXG71zqHxARo8bTsyrqVTdh88dz1gd
+         5UWqIVRowYinV4wAE2zkIVE4Qp/CORS+14RlgoMOz/OWZ2WXJUiVyKEJA52pXh/WnNYo
+         EO2zplrCvE16saF86r1bd1bYV+/ZRTnceemwOOfVaD3pwD1WJlf1R1zuKv94VwCLbLW/
+         80u1ZrS+uN1eWJqkw4NUPSDI4xs3HBVNv3/wK57QVzgPfmAzbM97EL4LzEvVwuqK2JyB
+         4MUoCItjHiqmmKwlz00I4GXuhfWuKww0atpSN8taaXL/xhmAcXZz9PRULCsNSVZaBr/Z
+         uSDQ==;
         dara=google.com
 ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=eLlOhcQI;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-22650-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="kvm+bounces-22650-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm+bounces-22650-alex.bennee=linaro.org@vger.kernel.org>
-Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [2604:1380:45d1:ec00::1])
-        by mx.google.com with ESMTPS id af79cd13be357-7a1e0edddc2si965776885a.551.2024.07.30.02.08.44
+       dkim=pass header.i=@intel.com header.s=Intel header.b=A2bRXVla;
+       arc=pass (i=1 spf=pass spfdomain=intel.com dkim=pass dkdomain=intel.com dmarc=pass fromdomain=intel.com);
+       spf=pass (google.com: domain of kvm+bounces-22651-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="kvm+bounces-22651-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Return-Path: <kvm+bounces-22651-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [139.178.88.99])
+        by mx.google.com with ESMTPS id d9443c01a7336-1fed7eec249si118614965ad.315.2024.07.30.02.11.27
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 30 Jul 2024 02:08:44 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm+bounces-22650-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) client-ip=2604:1380:45d1:ec00::1;
+        Tue, 30 Jul 2024 02:11:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm+bounces-22651-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) client-ip=139.178.88.99;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=eLlOhcQI;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-22650-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="kvm+bounces-22650-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=pass header.i=@intel.com header.s=Intel header.b=A2bRXVla;
+       arc=pass (i=1 spf=pass spfdomain=intel.com dkim=pass dkdomain=intel.com dmarc=pass fromdomain=intel.com);
+       spf=pass (google.com: domain of kvm+bounces-22651-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="kvm+bounces-22651-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ny.mirrors.kernel.org (Postfix) with ESMTPS id D61E41C23F6B
-	for <alex.bennee@linaro.org>; Tue, 30 Jul 2024 09:08:43 +0000 (UTC)
+	by sv.mirrors.kernel.org (Postfix) with ESMTPS id 40243282BD2
+	for <alex.bennee@linaro.org>; Tue, 30 Jul 2024 09:11:27 +0000 (UTC)
 Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 7410B194157;
-	Tue, 30 Jul 2024 09:08:39 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id C97D3194126;
+	Tue, 30 Jul 2024 09:11:23 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="eLlOhcQI"
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+	dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b="A2bRXVla"
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.21])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7E65E190053
-	for <kvm@vger.kernel.org>; Tue, 30 Jul 2024 09:08:37 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.133.124
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 81997190053
+	for <kvm@vger.kernel.org>; Tue, 30 Jul 2024 09:11:21 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=198.175.65.21
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1722330519; cv=none; b=uF75tNFJX60dOyCs7BTqyVev7uqG6xHhUlPPpqFm2i33EZ42LG4QWp8Ehe1nAl+D3BSrQKA14mClyAWRPYUI8bpGo3n2c8gbz7Ah8xr41HHt7RHlINp5Vjk71c+hfp6mnT86/epq/9Kv5RJLLAPNTyHfujcPJwRU6fVd8r8qOog=
+	t=1722330683; cv=none; b=kLHwHPGIdFIM4Trq0SSiP4afSc3egIw4jpDtUJH0kyTpRzIMb6ZMZfNjfKDwUVNvCboRFVJLgqgupxLzuCnJX+YI/fmiQI/X5W4+nNHBLfwdSmu6xQTxehfmzpV8ZY26+Wajv6Z2zInPFW/9GGT+2U505RY/8HPaYpeSTwjSPr4=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1722330519; c=relaxed/simple;
-	bh=ze7+C/5k+pR5Lk+lcfaT9umXLryM3NSJF5W+uYgRbCA=;
+	s=arc-20240116; t=1722330683; c=relaxed/simple;
+	bh=Jt/KW4ijgn/wS46aVdfpJ4SG7pm8ZRBktxlKrLmiT2Q=;
 	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
-	 Content-Type:Content-Disposition:In-Reply-To; b=P55r8bRsamt6WxAILe0W5vpffY09UUTNthgmtF8lrL7IJgFjEdETvjvFG/aAixUf7Upc++egejO2WfzTS+wpYxdQlmyjvGaDs3dMEb08BU6nHU+3NdHLMXEpA71kJUgdgCzqe4r2ELH4qGSwwZUKKoSBYfNy4NCyl78XoMWcziA=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=eLlOhcQI; arc=none smtp.client-ip=170.10.133.124
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1722330516;
-	h=from:from:reply-to:reply-to:subject:subject:date:date:
-	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
-	 content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=dz3WJ7004s0uw4V6jW5lI1b/Q0V305/i2liLNDAPEws=;
-	b=eLlOhcQI56avB5Tr62cdxVS9Pgnv7lp6G0oxSVS7xSUX6EhN6V/bkR032zBD7QSpthkUfh
-	kKdTNVG5tLum5NHDRis5YYCFUMpn4tVK8+KGMP0dHj7BM2qzOoDfvMQ1lrKrpGm+msQv/G
-	JZmhEdDCNBJNygepAx9QBW3FWZQTTW4=
-Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-510-3KCAA_zoPcCGMwGNl7XyAA-1; Tue,
- 30 Jul 2024 05:08:33 -0400
-X-MC-Unique: 3KCAA_zoPcCGMwGNl7XyAA-1
-Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 12B0719560AD;
-	Tue, 30 Jul 2024 09:08:29 +0000 (UTC)
-Received: from redhat.com (unknown [10.42.28.108])
-	by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id E20A319560AE;
-	Tue, 30 Jul 2024 09:08:12 +0000 (UTC)
-Date: Tue, 30 Jul 2024 10:08:09 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+	 Content-Type:Content-Disposition:In-Reply-To; b=Vjygu6qGAxCRgND4GL6RZ6JuFNGP8RxFnrKovhNA5GvnnWLiamN4+HYdPsLeVrkj4b1JX9vSaMngBn1Eyh+O+Kh3IZbzl67a3FTWfepvxkM+QMlA5rYdkMSIyan13GvQ41onLBQozUULKUskcjtF9KRsX5W7JH2jX36REXnQTe8=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com; spf=pass smtp.mailfrom=intel.com; dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b=A2bRXVla; arc=none smtp.client-ip=198.175.65.21
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=intel.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1722330682; x=1753866682;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=Jt/KW4ijgn/wS46aVdfpJ4SG7pm8ZRBktxlKrLmiT2Q=;
+  b=A2bRXVlaf8wXEgov8z/W7+HQYoD1n3aqtSA2qMUTzqMGfiv2kSXKb4ex
+   Ji89znSMUqWGYDz+OCir9bt+9ugOiL2Tab36Z3CuVcp2+e9ah4FSyWs7o
+   nZfzJ1sdCn/17+9o4Gox7uZtjruG+++9SDoRZ2jycw6Ytzj/K+p2bEZE2
+   s+c04HCaDRB3GfSoAPSmWDooMrYBRCuUVBCCk/pBBEx7F0TUVR+jdpK4I
+   GUwEYRaBEVxiQjI9bao3gQzMQWJxtXqpJ1osWozW4Px3CKjCKdwzn8FxN
+   tjUQPs/1i7L6mvq3clqbCTcvIXuCYBgI/wbKUIQwvvcWuQQO1Hiu+CFUG
+   Q==;
+X-CSE-ConnectionGUID: mMx8EHjZQa+NR9HJcj5MUg==
+X-CSE-MsgGUID: sTs2uE3dT+WQJuVhSStn7w==
+X-IronPort-AV: E=McAfee;i="6700,10204,11148"; a="20082663"
+X-IronPort-AV: E=Sophos;i="6.09,248,1716274800"; 
+   d="scan'208";a="20082663"
+Received: from fmviesa008.fm.intel.com ([10.60.135.148])
+  by orvoesa113.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 30 Jul 2024 02:11:21 -0700
+X-CSE-ConnectionGUID: yNTegJrdQRCBmSsq7OI9IQ==
+X-CSE-MsgGUID: thjTxyPDR4qq5CRxhP60Ng==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.09,248,1716274800"; 
+   d="scan'208";a="54182560"
+Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost) ([10.239.160.36])
+  by fmviesa008.fm.intel.com with ESMTP; 30 Jul 2024 02:11:11 -0700
+Date: Tue, 30 Jul 2024 17:26:57 +0800
+From: Zhao Liu <zhao1.liu@intel.com>
 To: Markus Armbruster <armbru@redhat.com>
 Cc: qemu-devel@nongnu.org, alex.williamson@redhat.com,
 	andrew@codeconstruct.com.au, andrew@daynix.com,
-	arei.gonglei@huawei.com, berto@igalia.com,
+	arei.gonglei@huawei.com, berrange@redhat.com, berto@igalia.com,
 	borntraeger@linux.ibm.com, clg@kaod.org, david@redhat.com,
 	den@openvz.org, eblake@redhat.com, eduardo@habkost.net,
 	farman@linux.ibm.com, farosas@suse.de, hreitz@redhat.com,
@@ -114,13 +114,11 @@ Cc: qemu-devel@nongnu.org, alex.williamson@redhat.com,
 	richard.henderson@linaro.org, stefanha@redhat.com,
 	steven_lee@aspeedtech.com, thuth@redhat.com,
 	vsementsov@yandex-team.ru, wangyanan55@huawei.com,
-	yuri.benditovich@daynix.com, zhao1.liu@intel.com,
-	qemu-block@nongnu.org, qemu-arm@nongnu.org, qemu-s390x@nongnu.org,
-	kvm@vger.kernel.org
+	yuri.benditovich@daynix.com, qemu-block@nongnu.org,
+	qemu-arm@nongnu.org, qemu-s390x@nongnu.org, kvm@vger.kernel.org
 Subject: Re: [PATCH 09/18] qapi/machine: Rename CpuS390* to S390Cpu, and drop
  'prefix'
-Message-ID: <ZqiteS-HiSV5PO4g@redhat.com>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+Message-ID: <Zqix4UGgy4adBVFG@intel.com>
 References: <20240730081032.1246748-1-armbru@redhat.com>
  <20240730081032.1246748-10-armbru@redhat.com>
 Precedence: bulk
@@ -129,21 +127,26 @@ List-Id: <kvm.vger.kernel.org>
 List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
 List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
 In-Reply-To: <20240730081032.1246748-10-armbru@redhat.com>
-User-Agent: Mutt/2.2.12 (2023-09-09)
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-TUID: y5rH7CBT1d+7
+X-TUID: AMwKC0nsrkz3
 
 On Tue, Jul 30, 2024 at 10:10:23AM +0200, Markus Armbruster wrote:
+> Date: Tue, 30 Jul 2024 10:10:23 +0200
+> From: Markus Armbruster <armbru@redhat.com>
+> Subject: [PATCH 09/18] qapi/machine: Rename CpuS390* to S390Cpu, and drop
+>  'prefix'
+> 
 > QAPI's 'prefix' feature can make the connection between enumeration
 > type and its constants less than obvious.  It's best used with
 > restraint.
 > 
 > CpuS390Entitlement has a 'prefix' to change the generated enumeration
 > constants' prefix from CPU_S390_POLARIZATION to S390_CPU_POLARIZATION.
+                         ^^^^^^^^^^^^^^^^^^^^^    ^^^^^^^^^^^^^^^^^^^^^
+			 CPU_S390_ENTITLEMENT     S390_CPU_ENTITLEMENT
+
 > Rename the type to S390CpuEntitlement, so that 'prefix' is not needed.
 > 
 > Likewise change CpuS390Polarization to S390CpuPolarization, and
@@ -162,12 +165,31 @@ On Tue, Jul 30, 2024 at 10:10:23AM +0200, Markus Armbruster wrote:
 >  hw/s390x/cpu-topology.c             |  6 +++---
 >  9 files changed, 23 insertions(+), 26 deletions(-)
 
-Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
+[snip]
 
-With regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+> diff --git a/qapi/pragma.json b/qapi/pragma.json
+> index 59fbe74b8c..beddea5ca4 100644
+> --- a/qapi/pragma.json
+> +++ b/qapi/pragma.json
+> @@ -47,9 +47,9 @@
+>          'BlockdevSnapshotWrapper',
+>          'BlockdevVmdkAdapterType',
+>          'ChardevBackendKind',
+> -        'CpuS390Entitlement',
+> -        'CpuS390Polarization',
+> -        'CpuS390State',
+> +        'S390CpuEntitlement',
+> +        'S390CpuPolarization',
+> +        'S390CpuState',
+>          'CxlCorErrorType',
+>          'DisplayProtocol',
+>          'DriveBackupWrapper',
+
+It seems to be in alphabetical order. The new names don't follow the
+original order.
+
+Just the above nits,
+
+Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
+
 

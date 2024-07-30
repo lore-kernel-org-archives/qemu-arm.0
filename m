@@ -1,71 +1,71 @@
-Received: by 2002:a17:504:5965:b0:1be9:327d:8ee3 with SMTP id xe5csp2221935njb;
-        Tue, 30 Jul 2024 01:11:20 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCX5qSYUQJfFKJqeFx+IBr9ixXgG7JWjVzrWdyN8TjArvrHM9x259qmlRWgv2zuv7ZAgRNpg4YeDYcyW2ndcgQg2XYkTwk1P
-X-Google-Smtp-Source: AGHT+IHpFdfwz8hQmfSe6HipkS/mfn6+B44UAYdEuTichcffmDN/Sj/LqwIbi8AoE/vL0v00GkM1
-X-Received: by 2002:a05:6512:251f:b0:52c:86de:cb61 with SMTP id 2adb3069b0e04-5309b25a2femr8118436e87.10.1722327080271;
-        Tue, 30 Jul 2024 01:11:20 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1722327080; cv=pass;
+Received: by 2002:a17:504:5965:b0:1be9:327d:8ee3 with SMTP id xe5csp2221953njb;
+        Tue, 30 Jul 2024 01:11:23 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCWDqiiKZSADliFOkDKINOKi+c9hvbFQaqJAW5JdAdES7mgMwgKybd+wTiimn062zdpP38isPLxp1dhJpqmUettccUU17ZZQ
+X-Google-Smtp-Source: AGHT+IHrR7SEjO42cM3H88KX4FHZ6obDMRJ/AWLCLhBM7vATc+hjK+AuK14lpaJDsD+2F42tpaNr
+X-Received: by 2002:a05:6359:4c9e:b0:1a4:e539:26af with SMTP id e5c5f4694b2df-1adf1e5d17bmr1253231555d.27.1722327083685;
+        Tue, 30 Jul 2024 01:11:23 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1722327083; cv=pass;
         d=google.com; s=arc-20160816;
-        b=zxk3tv3sB9Ju6BEIOP7o2ucmULgdi5qPYw5rYllHhpaTA5aBBR5ajXf28yDIk9sXbt
-         RinkuBqIRrAvj7ux2Xqpq16zmJSr8J302iu+zHY1aIPVWbhsCzFDt/jgWgBL0A4Otoam
-         ZwvKXM++kKuWCCCC0N30BGLWS8LiBi2c6SFbtv9WnMaBfyUKQxCgJL5taHkis/UIex8f
-         HtZ7IGP2meEsudeKGb+BtECV3TFAMen4E6Km+RQXkRZp31emmiipH3pv/0DoZWyvc0yk
-         77AcjOpnWzmSnRB1QWlpNC8Aa7H8vAVnty07WhSg4LUasJ0Q+E6AytTzYGVtpp5t7fPg
-         HGow==
+        b=pB9iBPV2bOqU2/VmXYLddZnb9q/o/8JXnwpxQ+xQKop5POfFwAcDvEJ7Q/P4EmtPZ9
+         pCInMTV4s5ZPeECsbieEwgXX/3bmrvINPxCuyTjbRv6z6iX9AcjoSTYkb7TENAzrltqZ
+         FhbQ4uxnooZV842UVZmd8vin6g9lEoiPukSOKr4k5wjxeoNveVjm4TYwq5tWGWOCLUL4
+         k1O3+5ZtwDCc6TXtZbEvU0qQahJRtj0V/bmLsgm0BFauLwELzb47fskvEUZKV4h8iLOk
+         bdkQR8nql5ifssj4VtNkc49A/KKH5wFXa8lzGj8OOZE5Q88EWSEODqWPbs3KcdZjaChD
+         Kjcw==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:list-unsubscribe
          :list-subscribe:list-id:precedence:references:in-reply-to:message-id
          :date:subject:cc:to:from:dkim-signature;
-        bh=DV7+EVWYFbrbaXV5c6Y9cFzbPTN8d8JAt36ne5Q5Nhc=;
+        bh=mG2jBgj04xk8zZTpAn2zlZbw7IxC1BxkgwSaG5MXnSU=;
         fh=K9hvV5Ipi0VSlYxX/fm25RHJYlx13FFj5pikD+TSDpg=;
-        b=O8nNESrWoLmQSNJvvv7tRuciChp33NmrfwCHD7OxGWTHcFslbvngdXeD3nNKxV5nCY
-         bnOK5aG4QNHwH4w40tUlCz8Ul5DdgvqBotriS115r+QzcjJEQKJ2BdkRTy/mzzLjxBAj
-         qBKAibIIs5LTizr/ub8w268kOz0XkTENhRNOlAWFzA/aDZPViA1NgHvu30shdQ4I7gqb
-         L6KJi79MBKVzjVEfK7Ka6E052CNXIcqIb1ckpfQKklQCvzRTXBsL0ocDGRkBFvlF8bu0
-         GWuRvYWPFzl4r4ggEdYoR7P0wtU8Hpo8Lupgzd46/WlvwdjLiUb69I8DN/ab1cSXgqi2
-         OgNA==;
+        b=fapQp7qgg7qEX/MJ+wLWC7fD/7cwCTzOpDQEsWTL5YvfV3Sp2DoNBK85QXiVzBn3dH
+         bH90ln2VPlItyPVT6fQnZYUeNHIA1/uxkfTQsp5hzCEZ23EazI6Xi044/3VuKrGjUjBo
+         yw850DhwQoa5iFX1GUfidUszJx2ReNS4/TffyjzqsbmJqotKrg9mm39IuDGvtycHLWe1
+         XIxqEjm9XGiKBTHlt3Qk2zOlJwT2yBclhqXLcHwypLa8Mq3cf/uY6JoUkJ3OaiMjLcmb
+         7N0O4j5JVd0sFsAK7X+flkiJZslB4YBgN5KFVwW+BrLDRlxGJp6JuFKgGAngJHwRrgnT
+         UfAA==;
         dara=google.com
 ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=N96xfFjv;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Yf4iMYPZ;
        arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-22615-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) smtp.mailfrom="kvm+bounces-22615-alex.bennee=linaro.org@vger.kernel.org";
+       spf=pass (google.com: domain of kvm+bounces-22616-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) smtp.mailfrom="kvm+bounces-22616-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm+bounces-22615-alex.bennee=linaro.org@vger.kernel.org>
-Received: from am.mirrors.kernel.org (am.mirrors.kernel.org. [2604:1380:4601:e00::3])
-        by mx.google.com with ESMTPS id a640c23a62f3a-a7aca7a56afsi764839366b.39.2024.07.30.01.11.19
+Return-Path: <kvm+bounces-22616-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sy.mirrors.kernel.org (sy.mirrors.kernel.org. [147.75.48.161])
+        by mx.google.com with ESMTPS id 41be03b00d2f7-7a9f96e3b2dsi12338255a12.898.2024.07.30.01.11.23
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 30 Jul 2024 01:11:20 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm+bounces-22615-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) client-ip=2604:1380:4601:e00::3;
+        Tue, 30 Jul 2024 01:11:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm+bounces-22616-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) client-ip=147.75.48.161;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=N96xfFjv;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Yf4iMYPZ;
        arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-22615-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) smtp.mailfrom="kvm+bounces-22615-alex.bennee=linaro.org@vger.kernel.org";
+       spf=pass (google.com: domain of kvm+bounces-22616-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) smtp.mailfrom="kvm+bounces-22616-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by am.mirrors.kernel.org (Postfix) with ESMTPS id 8265C1F228D2
-	for <alex.bennee@linaro.org>; Tue, 30 Jul 2024 08:11:19 +0000 (UTC)
+	by sy.mirrors.kernel.org (Postfix) with ESMTPS id 68544B23650
+	for <alex.bennee@linaro.org>; Tue, 30 Jul 2024 08:11:21 +0000 (UTC)
 Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id D95BF192B72;
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id EEF00192B77;
 	Tue, 30 Jul 2024 08:10:53 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="N96xfFjv"
+	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="Yf4iMYPZ"
 Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B9B0C19007A
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B9AC5188CBD
 	for <kvm@vger.kernel.org>; Tue, 30 Jul 2024 08:10:51 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.129.124
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1722327053; cv=none; b=BNAmFMvYshpVwycLf95zD/r92WPRbI0uUOO//+BKBSsPLN+2x+dOa6S89w1AOADIPYRe88zLG0rff1zwI6UAg5d/7ZxdZ2Mpcl6uTc3pNhjsvoKa/Vt5jnz74jbKMN3xxPPK4OEx4QTip126bpLh6/QWIqYPnSZ1be1xliz/zyc=
+	t=1722327053; cv=none; b=f/iHwBD5rgIjByzItB9WZwMQMtphb2Yo5KU/6fmaXHLVWxbwoCNsAEnNbg4x2MIqC3NByKoIdjpNyy45zlpKzo9SOBEior7YBM6CpLyAFiDPTPKX5VTYTvYm/lL5IVfhIHC2y51KaDuMGHAv/4Ue9GFfZsAET2iRlwJ0xO3fXpc=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
 	s=arc-20240116; t=1722327053; c=relaxed/simple;
-	bh=9P4BbPdQlnKg5IqXXwQAzjd6Sx2yWFsBZpGkWB1PANc=;
+	bh=vc0AqLjuXQUOBGAQQBDa1FzAEdrK+BKbs60kwqaG9Gw=;
 	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:
-	 MIME-Version:Content-type; b=U8TUxyrMMHCcRivVlrHLN/17koJ+LCY21s76uAMxgTkJrUI9URTY+MGH1eHPoXuhxKeAIZbxucb/TbZ7D9YDawnswa50pJ+/3S2HGs84qYeRXiDQLJkP7/9iYSKY7S0P68ijw9r1jgupt10iEGcU8ITO1Au44MtAl2wNrzyR7mo=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=N96xfFjv; arc=none smtp.client-ip=170.10.129.124
+	 MIME-Version:Content-type; b=HTmQC5Zny8ahV7KG0SBtbHiiJ0p7fUlrfdYdIplASjVxa42MFiS5vh/l/rSsMp69LBNl7oAtNHL5HpUHgaMc6djlMGkma5Kv4riTr8sQ0ovX+rBRH7NYeVyffbeasDdUIitf0vaexAs7i/u83IQ7bqaJeFf2ofY9j1cJccsrYoE=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=Yf4iMYPZ; arc=none smtp.client-ip=170.10.129.124
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
@@ -74,27 +74,27 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=DV7+EVWYFbrbaXV5c6Y9cFzbPTN8d8JAt36ne5Q5Nhc=;
-	b=N96xfFjv98ZgpE/dFrD6uH3ZGHCggiVR1LQBUr3Eo0Yesx2cvwgrPCxRE5V30Qgaa49L7z
-	oRjdcqcr7PXOGxAHpT2aVcMNxRgoJs269cdXp16piLPIETn+VFJ+atgrGqyvvM39xXW+BB
-	8iPMIgfs6EpVIFGu+YaOdgF1kXwDOnQ=
-Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
+	bh=mG2jBgj04xk8zZTpAn2zlZbw7IxC1BxkgwSaG5MXnSU=;
+	b=Yf4iMYPZGcOilTavJj0doeglDvcTBv7ErXaozY8l0/KqFLfZ1RpTZzNrT2Uz8kDtk01BF2
+	jt+cVa6N0ioy4Y1PlToKMdw4BLg2wjKxR32C3bMF9rAmONmZv25FCycqMnXZfUqsmolQcX
+	5GXP+WN/BMisw/8xp7TRVw3qVhv18kE=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-663-HO2voRrbNwuPaRTmjAxVvQ-1; Tue,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-231-a9-VGcDbOEWUkAtlAAG-6Q-1; Tue,
  30 Jul 2024 04:10:47 -0400
-X-MC-Unique: HO2voRrbNwuPaRTmjAxVvQ-1
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
+X-MC-Unique: a9-VGcDbOEWUkAtlAAG-6Q-1
+Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id AD9A819560B0;
-	Tue, 30 Jul 2024 08:10:42 +0000 (UTC)
+	by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 223DA1955BF2;
+	Tue, 30 Jul 2024 08:10:43 +0000 (UTC)
 Received: from blackfin.pond.sub.org (unknown [10.39.192.65])
-	by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 9168E300018D;
+	by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 98D6019560AE;
 	Tue, 30 Jul 2024 08:10:41 +0000 (UTC)
 Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id E265121F4B94; Tue, 30 Jul 2024 10:10:32 +0200 (CEST)
+	id EB3AE21F4B96; Tue, 30 Jul 2024 10:10:32 +0200 (CEST)
 From: Markus Armbruster <armbru@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: alex.williamson@redhat.com,
@@ -145,9 +145,9 @@ Cc: alex.williamson@redhat.com,
 	qemu-arm@nongnu.org,
 	qemu-s390x@nongnu.org,
 	kvm@vger.kernel.org
-Subject: [PATCH 07/18] qapi/machine: Drop temporary 'prefix'
-Date: Tue, 30 Jul 2024 10:10:21 +0200
-Message-ID: <20240730081032.1246748-8-armbru@redhat.com>
+Subject: [PATCH 09/18] qapi/machine: Rename CpuS390* to S390Cpu, and drop 'prefix'
+Date: Tue, 30 Jul 2024 10:10:23 +0200
+Message-ID: <20240730081032.1246748-10-armbru@redhat.com>
 In-Reply-To: <20240730081032.1246748-1-armbru@redhat.com>
 References: <20240730081032.1246748-1-armbru@redhat.com>
 Precedence: bulk
@@ -158,79 +158,243 @@ List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
 Content-type: text/plain
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-TUID: ufMBBdigJydr
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
+X-TUID: 8ZRibvrlBGNn
 
-Recent commit "qapi: Smarter camel_to_upper() to reduce need for
-'prefix'" added a temporary 'prefix' to delay changing the generated
-code.
+QAPI's 'prefix' feature can make the connection between enumeration
+type and its constants less than obvious.  It's best used with
+restraint.
 
-Revert it.  This improves HmatLBDataType's generated enumeration
-constant prefix from HMATLB_DATA_TYPE to HMAT_LB_DATA_TYPE.
+CpuS390Entitlement has a 'prefix' to change the generated enumeration
+constants' prefix from CPU_S390_POLARIZATION to S390_CPU_POLARIZATION.
+Rename the type to S390CpuEntitlement, so that 'prefix' is not needed.
+
+Likewise change CpuS390Polarization to S390CpuPolarization, and
+CpuS390State to S390CpuState.
 
 Signed-off-by: Markus Armbruster <armbru@redhat.com>
 ---
- qapi/machine.json            | 1 -
- hw/core/numa.c               | 4 ++--
- hw/pci-bridge/cxl_upstream.c | 4 ++--
- 3 files changed, 4 insertions(+), 5 deletions(-)
+ qapi/machine-common.json            |  5 ++---
+ qapi/machine-target.json            | 11 +++++------
+ qapi/machine.json                   |  9 ++++-----
+ qapi/pragma.json                    |  6 +++---
+ include/hw/qdev-properties-system.h |  2 +-
+ include/hw/s390x/cpu-topology.h     |  2 +-
+ target/s390x/cpu.h                  |  2 +-
+ hw/core/qdev-properties-system.c    |  6 +++---
+ hw/s390x/cpu-topology.c             |  6 +++---
+ 9 files changed, 23 insertions(+), 26 deletions(-)
 
+diff --git a/qapi/machine-common.json b/qapi/machine-common.json
+index fa6bd71d12..b64e4895cf 100644
+--- a/qapi/machine-common.json
++++ b/qapi/machine-common.json
+@@ -9,13 +9,12 @@
+ ##
+ 
+ ##
+-# @CpuS390Entitlement:
++# @S390CpuEntitlement:
+ #
+ # An enumeration of CPU entitlements that can be assumed by a virtual
+ # S390 CPU
+ #
+ # Since: 8.2
+ ##
+-{ 'enum': 'CpuS390Entitlement',
+-  'prefix': 'S390_CPU_ENTITLEMENT',
++{ 'enum': 'S390CpuEntitlement',
+   'data': [ 'auto', 'low', 'medium', 'high' ] }
+diff --git a/qapi/machine-target.json b/qapi/machine-target.json
+index a552e2b0ce..6ee682adad 100644
+--- a/qapi/machine-target.json
++++ b/qapi/machine-target.json
+@@ -400,15 +400,14 @@
+                    'TARGET_RISCV' ] } }
+ 
+ ##
+-# @CpuS390Polarization:
++# @S390CpuPolarization:
+ #
+ # An enumeration of CPU polarization that can be assumed by a virtual
+ # S390 CPU
+ #
+ # Since: 8.2
+ ##
+-{ 'enum': 'CpuS390Polarization',
+-  'prefix': 'S390_CPU_POLARIZATION',
++{ 'enum': 'S390CpuPolarization',
+   'data': [ 'horizontal', 'vertical' ],
+   'if': 'TARGET_S390X'
+ }
+@@ -445,7 +444,7 @@
+       '*socket-id': 'uint16',
+       '*book-id': 'uint16',
+       '*drawer-id': 'uint16',
+-      '*entitlement': 'CpuS390Entitlement',
++      '*entitlement': 'S390CpuEntitlement',
+       '*dedicated': 'bool'
+   },
+   'features': [ 'unstable' ],
+@@ -483,7 +482,7 @@
+ #          "timestamp": { "seconds": 1401385907, "microseconds": 422329 } }
+ ##
+ { 'event': 'CPU_POLARIZATION_CHANGE',
+-  'data': { 'polarization': 'CpuS390Polarization' },
++  'data': { 'polarization': 'S390CpuPolarization' },
+   'features': [ 'unstable' ],
+   'if': { 'all': [ 'TARGET_S390X', 'CONFIG_KVM' ] }
+ }
+@@ -498,7 +497,7 @@
+ # Since: 8.2
+ ##
+ { 'struct': 'CpuPolarizationInfo',
+-  'data': { 'polarization': 'CpuS390Polarization' },
++  'data': { 'polarization': 'S390CpuPolarization' },
+   'if': { 'all': [ 'TARGET_S390X', 'CONFIG_KVM' ] }
+ }
+ 
 diff --git a/qapi/machine.json b/qapi/machine.json
-index 5514450e12..fcfd249e2d 100644
+index fcfd249e2d..bdb418696d 100644
 --- a/qapi/machine.json
 +++ b/qapi/machine.json
-@@ -712,7 +712,6 @@
- # Since: 5.0
+@@ -41,15 +41,14 @@
+              'x86_64', 'xtensa', 'xtensaeb' ] }
+ 
  ##
- { 'enum': 'HmatLBDataType',
--  'prefix': 'HMATLB_DATA_TYPE', # TODO drop
-   'data': [ 'access-latency', 'read-latency', 'write-latency',
-             'access-bandwidth', 'read-bandwidth', 'write-bandwidth' ] }
+-# @CpuS390State:
++# @S390CpuState:
+ #
+ # An enumeration of cpu states that can be assumed by a virtual S390
+ # CPU
+ #
+ # Since: 2.12
+ ##
+-{ 'enum': 'CpuS390State',
+-  'prefix': 'S390_CPU_STATE',
++{ 'enum': 'S390CpuState',
+   'data': [ 'uninitialized', 'stopped', 'check-stop', 'operating', 'load' ] }
  
-diff --git a/hw/core/numa.c b/hw/core/numa.c
-index f8ce332cfe..fb81c1ed51 100644
---- a/hw/core/numa.c
-+++ b/hw/core/numa.c
-@@ -249,7 +249,7 @@ void parse_numa_hmat_lb(NumaState *numa_state, NumaHmatLBOptions *node,
-     lb_data.initiator = node->initiator;
-     lb_data.target = node->target;
+ ##
+@@ -66,9 +65,9 @@
+ # Since: 2.12
+ ##
+ { 'struct': 'CpuInfoS390',
+-  'data': { 'cpu-state': 'CpuS390State',
++  'data': { 'cpu-state': 'S390CpuState',
+             '*dedicated': 'bool',
+-            '*entitlement': 'CpuS390Entitlement' } }
++            '*entitlement': 'S390CpuEntitlement' } }
  
--    if (node->data_type <= HMATLB_DATA_TYPE_WRITE_LATENCY) {
-+    if (node->data_type <= HMAT_LB_DATA_TYPE_WRITE_LATENCY) {
-         /* Input latency data */
+ ##
+ # @CpuInfoFast:
+diff --git a/qapi/pragma.json b/qapi/pragma.json
+index 59fbe74b8c..beddea5ca4 100644
+--- a/qapi/pragma.json
++++ b/qapi/pragma.json
+@@ -47,9 +47,9 @@
+         'BlockdevSnapshotWrapper',
+         'BlockdevVmdkAdapterType',
+         'ChardevBackendKind',
+-        'CpuS390Entitlement',
+-        'CpuS390Polarization',
+-        'CpuS390State',
++        'S390CpuEntitlement',
++        'S390CpuPolarization',
++        'S390CpuState',
+         'CxlCorErrorType',
+         'DisplayProtocol',
+         'DriveBackupWrapper',
+diff --git a/include/hw/qdev-properties-system.h b/include/hw/qdev-properties-system.h
+index 438f65389f..cdcc63056e 100644
+--- a/include/hw/qdev-properties-system.h
++++ b/include/hw/qdev-properties-system.h
+@@ -88,7 +88,7 @@ extern const PropertyInfo qdev_prop_iothread_vq_mapping_list;
  
-         if (!node->has_latency) {
-@@ -313,7 +313,7 @@ void parse_numa_hmat_lb(NumaState *numa_state, NumaHmatLBOptions *node,
-             numa_info[node->target].lb_info_provided |= BIT(0);
-         }
-         lb_data.data = node->latency;
--    } else if (node->data_type >= HMATLB_DATA_TYPE_ACCESS_BANDWIDTH) {
-+    } else if (node->data_type >= HMAT_LB_DATA_TYPE_ACCESS_BANDWIDTH) {
-         /* Input bandwidth data */
-         if (!node->has_bandwidth) {
-             error_setg(errp, "Missing 'bandwidth' option");
-diff --git a/hw/pci-bridge/cxl_upstream.c b/hw/pci-bridge/cxl_upstream.c
-index e51221a5f3..f3e46f0651 100644
---- a/hw/pci-bridge/cxl_upstream.c
-+++ b/hw/pci-bridge/cxl_upstream.c
-@@ -234,7 +234,7 @@ static int build_cdat_table(CDATSubHeader ***cdat_table, void *priv)
-                 .type = CDAT_TYPE_SSLBIS,
-                 .length = sslbis_size,
-             },
--            .data_type = HMATLB_DATA_TYPE_ACCESS_LATENCY,
-+            .data_type = HMAT_LB_DATA_TYPE_ACCESS_LATENCY,
-             .entry_base_unit = 10000,
-         },
-     };
-@@ -254,7 +254,7 @@ static int build_cdat_table(CDATSubHeader ***cdat_table, void *priv)
-                 .type = CDAT_TYPE_SSLBIS,
-                 .length = sslbis_size,
-             },
--            .data_type = HMATLB_DATA_TYPE_ACCESS_BANDWIDTH,
-+            .data_type = HMAT_LB_DATA_TYPE_ACCESS_BANDWIDTH,
-             .entry_base_unit = 1024,
-         },
-     };
+ #define DEFINE_PROP_CPUS390ENTITLEMENT(_n, _s, _f, _d) \
+     DEFINE_PROP_SIGNED(_n, _s, _f, _d, qdev_prop_cpus390entitlement, \
+-                       CpuS390Entitlement)
++                       S390CpuEntitlement)
+ 
+ #define DEFINE_PROP_IOTHREAD_VQ_MAPPING_LIST(_name, _state, _field) \
+     DEFINE_PROP(_name, _state, _field, qdev_prop_iothread_vq_mapping_list, \
+diff --git a/include/hw/s390x/cpu-topology.h b/include/hw/s390x/cpu-topology.h
+index c064f427e9..a11b1baa77 100644
+--- a/include/hw/s390x/cpu-topology.h
++++ b/include/hw/s390x/cpu-topology.h
+@@ -37,7 +37,7 @@ typedef struct S390TopologyEntry {
+ 
+ typedef struct S390Topology {
+     uint8_t *cores_per_socket;
+-    CpuS390Polarization polarization;
++    S390CpuPolarization polarization;
+ } S390Topology;
+ 
+ typedef QTAILQ_HEAD(, S390TopologyEntry) S390TopologyList;
+diff --git a/target/s390x/cpu.h b/target/s390x/cpu.h
+index d6b75ad0e0..6cbd77dfdf 100644
+--- a/target/s390x/cpu.h
++++ b/target/s390x/cpu.h
+@@ -133,7 +133,7 @@ typedef struct CPUArchState {
+     int32_t book_id;
+     int32_t drawer_id;
+     bool dedicated;
+-    CpuS390Entitlement entitlement; /* Used only for vertical polarization */
++    S390CpuEntitlement entitlement; /* Used only for vertical polarization */
+     uint64_t cpuid;
+ #endif
+ 
+diff --git a/hw/core/qdev-properties-system.c b/hw/core/qdev-properties-system.c
+index f13350b4fb..f2db20417a 100644
+--- a/hw/core/qdev-properties-system.c
++++ b/hw/core/qdev-properties-system.c
+@@ -1188,12 +1188,12 @@ const PropertyInfo qdev_prop_uuid = {
+ 
+ /* --- s390 cpu entitlement policy --- */
+ 
+-QEMU_BUILD_BUG_ON(sizeof(CpuS390Entitlement) != sizeof(int));
++QEMU_BUILD_BUG_ON(sizeof(S390CpuEntitlement) != sizeof(int));
+ 
+ const PropertyInfo qdev_prop_cpus390entitlement = {
+-    .name  = "CpuS390Entitlement",
++    .name  = "S390CpuEntitlement",
+     .description = "low/medium (default)/high",
+-    .enum_table  = &CpuS390Entitlement_lookup,
++    .enum_table  = &S390CpuEntitlement_lookup,
+     .get   = qdev_propinfo_get_enum,
+     .set   = qdev_propinfo_set_enum,
+     .set_default_value = qdev_propinfo_set_default_value_enum,
+diff --git a/hw/s390x/cpu-topology.c b/hw/s390x/cpu-topology.c
+index f16bdf65fa..7d4e1f5472 100644
+--- a/hw/s390x/cpu-topology.c
++++ b/hw/s390x/cpu-topology.c
+@@ -105,7 +105,7 @@ static void s390_topology_init(MachineState *ms)
+  */
+ void s390_handle_ptf(S390CPU *cpu, uint8_t r1, uintptr_t ra)
+ {
+-    CpuS390Polarization polarization;
++    S390CpuPolarization polarization;
+     CPUS390XState *env = &cpu->env;
+     uint64_t reg = env->regs[r1];
+     int fc = reg & S390_TOPO_FC_MASK;
+@@ -357,7 +357,7 @@ static void s390_change_topology(uint16_t core_id,
+                                  bool has_book_id, uint16_t book_id,
+                                  bool has_drawer_id, uint16_t drawer_id,
+                                  bool has_entitlement,
+-                                 CpuS390Entitlement entitlement,
++                                 S390CpuEntitlement entitlement,
+                                  bool has_dedicated, bool dedicated,
+                                  Error **errp)
+ {
+@@ -446,7 +446,7 @@ void qmp_set_cpu_topology(uint16_t core,
+                           bool has_socket, uint16_t socket,
+                           bool has_book, uint16_t book,
+                           bool has_drawer, uint16_t drawer,
+-                          bool has_entitlement, CpuS390Entitlement entitlement,
++                          bool has_entitlement, S390CpuEntitlement entitlement,
+                           bool has_dedicated, bool dedicated,
+                           Error **errp)
+ {
 -- 
 2.45.0
 

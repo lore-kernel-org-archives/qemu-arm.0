@@ -1,313 +1,232 @@
-Received: by 2002:a05:7022:429:b0:85:21:bd5b with SMTP id 41csp766885dlf;
-        Tue, 30 Jul 2024 04:37:03 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXu/1MfjCjDedjckmV8vX963OCT/D927b/CxFVy8hbv+6OD+tZbVAYKAn1i/yosrYB6SUYJYXvKzwPxwSOl1me7/oWKfq6W
-X-Google-Smtp-Source: AGHT+IFUeAPwG7eKE3nvL3CPqtclw1qoniCcamm3Tpg9XZB18qn9PECVK3Cy4N4SZ+ACcXg+psS1
-X-Received: by 2002:a05:620a:4152:b0:79d:7ae0:ffd2 with SMTP id af79cd13be357-7a1e52cc703mr1478236485a.49.1722339423180;
-        Tue, 30 Jul 2024 04:37:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1722339423; cv=none;
+Received: by 2002:a17:504:5965:b0:1be9:327d:8ee3 with SMTP id xe5csp2410952njb;
+        Tue, 30 Jul 2024 08:07:30 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCXGw5ohzeEFccrQiXUehnxQhl3i55919WRfq8w6I3pHpQO94qeVNoJhw8+HYIdKao7+ZTgJFk0DYv+iUo0H600E3UaD0jm+
+X-Google-Smtp-Source: AGHT+IG/Wfu098r1uPaYjXcDO/drN48vO8U+1Jo/DF0MQgdvAXYSa+YW96b062nP6ZJJ95bzRK/Q
+X-Received: by 2002:a05:620a:468c:b0:79d:5b21:804a with SMTP id af79cd13be357-7a1e522a4e3mr1552335885a.14.1722352050141;
+        Tue, 30 Jul 2024 08:07:30 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1722352050; cv=pass;
         d=google.com; s=arc-20160816;
-        b=I+Hbq7Weii/xtS2vFuGSGh6BNxSaJYtGJ8vbA3kOAdRO1ZdaWYwC4IFcFiStpJsFpe
-         UgPv2qR2jhGRXebGoPPmPSBSZwNgGbLguRzd/tu0a2/Vu3ywfGpCkbrV1QwbzQqrdXpY
-         ymea+Hh93k0NusHMmHRYUmD0h7HMJRUfeojHJOAYtoMvEZo1M52hrSymCfnmnAZgtio4
-         n05hbK/sAk67gzvF1YSxcABZJsL3UNDraK7Pa7Y3MiPCPosjA2v2Pj+KDvTGaBrYtuSi
-         WJJT7G3/ILsslbGJFHdKcjV1IRqLwy+KAmlHU3oTuxBk95/hnH2VhLaZbSixetQK8DZ6
-         L8UQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=/MhlZfGAJ0otC0ssjOAlnO2L85Oh2aojhs/WkLFKmkY=;
-        fh=h+g+qZK+PYO31+n6nSspcV2yery8K2wggzmMyCl3FQc=;
-        b=R50yCPGjZ7NQtIjKKzzwIjaHQrBpVoJ9Kot411xFCw9jw4w+8U8Bc3YDjEv8okjdVj
-         ZrFS7R254rsEgJKrMCLfSnB+/+kdh+4cfCMz8O4uLD0vO7F5weD36DJoiYXXbFHrM7uL
-         gpCQcAL2FRmOVB6ZLnUi+uNYVCa5VM3T/8P60KNpozCUmYSpEBxIldHhbIAfEXEaIwSu
-         SDayazyWbBetoMbS3GsrJTQg1saaYgniQVuCv/3rI/KJg5IGvOPkhK0pYtw/Gsp/MVOS
-         akmnJGk04den5w3Bgr428OYUEHI0LPfwNJ4OnR/HE1Gk+7d0uhxLjWbE0SPimvE69WU3
-         ZddQ==;
+        b=PAHmiOM8V1uH2BW+Fe52wkJimo9ordhf8GwG3MGDGetNp9h/WWcO/e5D4Y9lX8ZztD
+         sSrObAdZq0wEuBgQFgDAaSiT2kCSOIidCYnTxlX+/7PxeZy30J9WylFFP7ThHGf51utB
+         TdbC1k0gpbrzJU5yFEwn13rMxgkpj6tKvwmyOTgWTdbcG7AzxUZQy6swLaKUCwL+j4Qg
+         CGS8hAQjK/ACdy3IVaMxJij0OST2H6QmS/4w4C1Ym24MulNZiOxoC8mybXNsA7P2DeOo
+         +EfPEJOFp/PcoeSQ0B083VBv7Q17+lWHZUZVetedckP9hhxiQv8GNspmglozzyS6Rj0B
+         cmeQ==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:date:message-id:dkim-signature;
+        bh=Ke8GKRqB2B+6FqIK+oRdAuIevXRCY/7RxOajgnb0gF4=;
+        fh=uEyjNqkH1zKSYIXbhkHOOBVLmk1BovfCkNeA7Uw/7nE=;
+        b=D4c1XPm0jM5t5akfaK3T6CXYTQnQMhfqvWwGWZkt8CGvLeIttrrnk0pJD0QwehDvG1
+         y9DdW+IACeWj94nls6jOU3Ptxr+9HKGEzFkQZ9frKCIPZCHDqD37Z1yvLdTn5bJ+Kl77
+         dsgJthk0bVIkN72Qkb/ucjg+UlMdk6edilDAhdhMdzAOjqFu4NTJpewo4oemUNQrEhmy
+         +Y+rLeaiCmKRBAHYc/lMrzRpc2v9mTZW9McgeSKCyOk3ZIcsDzESXQvk3xlfO722TXrb
+         Qn3SO7l2xIawfHQT04DfHQLZZXYoKhUcHUc7vP2ogN/Y98Jr9peY36Mt3JW1zT9HSpFN
+         tJSg==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YHKssXBF;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hTehNgBB;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of kvm+bounces-22680-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="kvm+bounces-22680-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7a1d739b8f4si1255811685a.108.2024.07.30.04.37.03
+Return-Path: <kvm+bounces-22680-alex.bennee=linaro.org@vger.kernel.org>
+Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [2604:1380:45d1:ec00::1])
+        by mx.google.com with ESMTPS id af79cd13be357-7a1d74a15f5si1320778285a.772.2024.07.30.08.07.30
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 30 Jul 2024 04:37:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 30 Jul 2024 08:07:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm+bounces-22680-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) client-ip=2604:1380:45d1:ec00::1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YHKssXBF;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hTehNgBB;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of kvm+bounces-22680-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="kvm+bounces-22680-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sYl9p-0000Nv-E3; Tue, 30 Jul 2024 07:36:45 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1sYl9o-0000Mv-Qd
- for qemu-arm@nongnu.org; Tue, 30 Jul 2024 07:36:44 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1sYl9m-000493-Lk
- for qemu-arm@nongnu.org; Tue, 30 Jul 2024 07:36:44 -0400
+Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ny.mirrors.kernel.org (Postfix) with ESMTPS id C5CD81C22E4F
+	for <alex.bennee@linaro.org>; Tue, 30 Jul 2024 15:07:29 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id C14AC1A2553;
+	Tue, 30 Jul 2024 15:07:25 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="hTehNgBB"
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5266B19E7D1
+	for <kvm@vger.kernel.org>; Tue, 30 Jul 2024 15:07:23 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.133.124
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1722352045; cv=none; b=s7YQJFPhLXElmvvVU9/0hBL1wcFP+QCze1TGXUQ3j41WmTOVw1H7ndC1bb+FGR7tdtx/biBsjFhKUKEz0ERBmY4U2ubTYTnu34v8AqvTmegPf5/1qSedSV+IpfErWuLfwhdHzrGrwrh3k4K3SannAm//kqy6ET3kd1DQ6ZT7cbA=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1722352045; c=relaxed/simple;
+	bh=62K2RbLh0WJqBpT8WDkhyO03yHqYE4DcGWLklbA0N4Q=;
+	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:
+	 In-Reply-To:Content-Type; b=mZy4h5Wt5TQZTKimYvmI5O26x22anekpz6UX53uDjax3oX3ioiLxQ2sE+Eb0fUVjLhjx0my2YYZZwF05RwJBQtWMWuKfy/D4j+NBLCfXhSQQbQty4aPJ7yhOSIpgmQmWwzY3ooPq4+/5Rk7s2tGJ5TowPwlYK/qYpwDys6i8VPs=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=hTehNgBB; arc=none smtp.client-ip=170.10.133.124
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1722339401;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=/MhlZfGAJ0otC0ssjOAlnO2L85Oh2aojhs/WkLFKmkY=;
- b=YHKssXBFtjxqkVkxrQl3GyjpAf157LucpYPiwME1MCKOUUZLju8ZUL9i+vIfcQkVjdHA7T
- 4sLG4cvqUv41d4tisOEj+aE/adkZ0RF0rIJF9mvcfSz6AdizGeiNuDsd5MBR8TD0M68c2K
- DMflVf7TCyrc51P5N5qjstv/99eZY7E=
-Received: from mail-ed1-f72.google.com (mail-ed1-f72.google.com
- [209.85.208.72]) by relay.mimecast.com with ESMTP with STARTTLS
+	s=mimecast20190719; t=1722352042;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=Ke8GKRqB2B+6FqIK+oRdAuIevXRCY/7RxOajgnb0gF4=;
+	b=hTehNgBB2kpxCl/dpbO22bgeiUXNRoONDnlXUCcxKs7oJvPEoUci+H0VVZikB+9SrqHx11
+	LtKBzDKBDClUpq7LH98ME2W9FyR+80GClLBDxfkkyQD+EqFcJrBASWH1FaLjHBFBiz1lbh
+	4ITY9Nv2EDxhqP3qk7ZCwimEUuPAikc=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-55-NGWg0CyPMD-tqlDYif58GQ-1; Tue, 30 Jul 2024 07:36:39 -0400
-X-MC-Unique: NGWg0CyPMD-tqlDYif58GQ-1
-Received: by mail-ed1-f72.google.com with SMTP id
- 4fb4d7f45d1cf-5a77d9b75a2so1878453a12.3
- for <qemu-arm@nongnu.org>; Tue, 30 Jul 2024 04:36:39 -0700 (PDT)
+ us-mta-160-oIfL0V5GO7ibpxSsl1HYGg-1; Tue, 30 Jul 2024 11:07:17 -0400
+X-MC-Unique: oIfL0V5GO7ibpxSsl1HYGg-1
+Received: by mail-wr1-f70.google.com with SMTP id ffacd0b85a97d-36873a449dfso1610408f8f.0
+        for <kvm@vger.kernel.org>; Tue, 30 Jul 2024 08:07:17 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1722339398; x=1722944198;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=/MhlZfGAJ0otC0ssjOAlnO2L85Oh2aojhs/WkLFKmkY=;
- b=L0V3aXfqOfoqxPfN2zKfzUAh/uD6DHJnmHbcTT5ea4o5dGt/YbR5a89lsSlFrcHD4b
- lTgEOVUdPqK1Sv9U9oLyx8xmeJXgtUmqoNHE6TJ21B8xvghlbScCylN0G4WZKRW9zeta
- GK/bcFlQV4UW0raA6YVqpUgbC5CLijpaD1YRKQRslaVicjdPiJ30Ubgj7HuxRAowmowb
- De5zcrWgKpTh9uy3E24KnoO4JR3hfPMuBXvseOfrvI8URO20Sk81LNP9+MJn/ZNEL16y
- 4sTBOPlIkxmZtP4qjyHJlUyxysKpPXzbxBaiI7tf85SWmgaHL5C+/cDX6dCj6bJheh+D
- B5Uw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVPJ5pMnRx+nZlcS3jjnz7Oe09kUANc/Q6HNWuDVSbanbpQtNvpUPl3pKYhLUh7J8SfQADcxO/eQV3Maiqe06UxpHLw
-X-Gm-Message-State: AOJu0YyGbSkWUafeQdV2yRBcNXZNXUMeo6H2UWrxa6nckaDjQz+uoQ2l
- cxOJT0zEm4v0puF16uo4VEvQRA6w4mGIVvtJ75qw+A0S3OrogK+eD8idvCTRRur6WB8Zs5P6ON1
- ELq+ZCNs8cFaKKhMARVR7CCGWV6mQcCcW39N/9bQSSeFgjWryKA==
-X-Received: by 2002:a50:935a:0:b0:595:71c7:39dd with SMTP id
- 4fb4d7f45d1cf-5b0223d9958mr7248112a12.34.1722339398278; 
- Tue, 30 Jul 2024 04:36:38 -0700 (PDT)
-X-Received: by 2002:a50:935a:0:b0:595:71c7:39dd with SMTP id
- 4fb4d7f45d1cf-5b0223d9958mr7248088a12.34.1722339397440; 
- Tue, 30 Jul 2024 04:36:37 -0700 (PDT)
-Received: from redhat.com ([2.55.35.236]) by smtp.gmail.com with ESMTPSA id
- 4fb4d7f45d1cf-5ac63590d1esm7155100a12.27.2024.07.30.04.36.35
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 30 Jul 2024 04:36:36 -0700 (PDT)
-Date: Tue, 30 Jul 2024 07:36:32 -0400
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Igor Mammedov <imammedo@redhat.com>
-Cc: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
- Jonathan Cameron <Jonathan.Cameron@huawei.com>,
- Shiju Jose <shiju.jose@huawei.com>, Ani Sinha <anisinha@redhat.com>,
- Dongjiu Geng <gengdongjiu1@gmail.com>, linux-kernel@vger.kernel.org,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [PATCH v3 6/7] acpi/ghes: update comments to point to newer ACPI
- specs
-Message-ID: <20240730073447-mutt-send-email-mst@kernel.org>
-References: <cover.1721630625.git.mchehab+huawei@kernel.org>
- <66c1ab4988589be99ae925c6361548f55fea58b0.1721630625.git.mchehab+huawei@kernel.org>
- <20240730132430.44d9e4ae@imammedo.users.ipa.redhat.com>
+        d=1e100.net; s=20230601; t=1722352036; x=1722956836;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=Ke8GKRqB2B+6FqIK+oRdAuIevXRCY/7RxOajgnb0gF4=;
+        b=tBB3fKtvh7Mk/D/DPcS2aukKj3uUX/Spww9d14RedmERy10O6bTZGf42ZkkgXCbYpx
+         bY/DMjKpas+0tUQGF8AJ8h0HifqjQQ5keUzBn9kS/SAGMC6685dLOxQy2+bms3p/iFVV
+         hHTHNdpSM/6tvLYbiFlfCT1PBdJTtTSLQPA8zyMHwIBKnZD25y3iKBUEdgF5bMEh4O2s
+         uBacAfoxpn0Im2HWmGjkaPhesgdaQA6t1+XSSs9+2xyaWYOMakGFaUpyLWAduS0TvFkm
+         Bb1h4vuDPUE51LzfOLARwZu+ZH0jtZP+rJAh0a6Kt/yXxFbYOb6W55MIwsY/MZ4aWBj8
+         Fwrg==
+X-Forwarded-Encrypted: i=1; AJvYcCWT+L0+MEUD+bPPHP7xsuOslBMUd7Go+n2DmskxMZxgTY1PslDzMDHfj47a9dOjYZmX8KnLqNV46bb2cTt7vDYKOriS
+X-Gm-Message-State: AOJu0Yzof6W4pwM0yLxhI//elXfNKMZUK8F95xeLfWfR4o6W2GfQkD4J
+	BtFMaKRWPvWWk0nt6INypPPvJ6lsjap9od7vi6MzNgDxyordPKV+EENl7Zk8C5xjKBIqFd5ZKuD
+	HuIvQNelXKaweTrSBYHHPSRCY1EpZdbUGxWqGS9iyk0O62HUsQA==
+X-Received: by 2002:adf:e3d1:0:b0:35f:fd7:6102 with SMTP id ffacd0b85a97d-36b8c8edd66mr1308666f8f.35.1722352036514;
+        Tue, 30 Jul 2024 08:07:16 -0700 (PDT)
+X-Received: by 2002:adf:e3d1:0:b0:35f:fd7:6102 with SMTP id ffacd0b85a97d-36b8c8edd66mr1308605f8f.35.1722352036026;
+        Tue, 30 Jul 2024 08:07:16 -0700 (PDT)
+Received: from [192.168.1.18] (lfbn-tou-1-3-122.w86-201.abo.wanadoo.fr. [86.201.10.122])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-36b36861b54sm14789956f8f.95.2024.07.30.08.07.14
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 30 Jul 2024 08:07:15 -0700 (PDT)
+Message-ID: <3e82436c-9bc7-4dfa-a048-fc1de6793c72@redhat.com>
+Date: Tue, 30 Jul 2024 17:07:12 +0200
+Precedence: bulk
+X-Mailing-List: kvm@vger.kernel.org
+List-Id: <kvm.vger.kernel.org>
+List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-In-Reply-To: <20240730132430.44d9e4ae@imammedo.users.ipa.redhat.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=mst@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
-X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.125,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: PFPj4euBrxDh
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 04/18] qapi/common: Drop temporary 'prefix'
+To: Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org
+Cc: alex.williamson@redhat.com, andrew@codeconstruct.com.au,
+ andrew@daynix.com, arei.gonglei@huawei.com, berrange@redhat.com,
+ berto@igalia.com, borntraeger@linux.ibm.com, clg@kaod.org, david@redhat.com,
+ den@openvz.org, eblake@redhat.com, eduardo@habkost.net,
+ farman@linux.ibm.com, farosas@suse.de, hreitz@redhat.com,
+ idryomov@gmail.com, iii@linux.ibm.com, jamin_lin@aspeedtech.com,
+ jasowang@redhat.com, joel@jms.id.au, jsnow@redhat.com, kwolf@redhat.com,
+ leetroy@gmail.com, marcandre.lureau@redhat.com, marcel.apfelbaum@gmail.com,
+ michael.roth@amd.com, mst@redhat.com, mtosatti@redhat.com,
+ nsg@linux.ibm.com, pasic@linux.ibm.com, pbonzini@redhat.com,
+ peter.maydell@linaro.org, peterx@redhat.com, philmd@linaro.org,
+ pizhenwei@bytedance.com, pl@dlhnet.de, richard.henderson@linaro.org,
+ stefanha@redhat.com, steven_lee@aspeedtech.com, thuth@redhat.com,
+ vsementsov@yandex-team.ru, wangyanan55@huawei.com,
+ yuri.benditovich@daynix.com, zhao1.liu@intel.com, qemu-block@nongnu.org,
+ qemu-arm@nongnu.org, qemu-s390x@nongnu.org, kvm@vger.kernel.org
+References: <20240730081032.1246748-1-armbru@redhat.com>
+ <20240730081032.1246748-5-armbru@redhat.com>
+Content-Language: en-US, fr
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clegoate@redhat.com>
+In-Reply-To: <20240730081032.1246748-5-armbru@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-TUID: nzWJQ9C/E6sf
 
-On Tue, Jul 30, 2024 at 01:24:30PM +0200, Igor Mammedov wrote:
-> On Mon, 22 Jul 2024 08:45:58 +0200
-> Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
+On 7/30/24 10:10, Markus Armbruster wrote:
+> Recent commit "qapi: Smarter camel_to_upper() to reduce need for
+> 'prefix'" added a temporary 'prefix' to delay changing the generated
+> code.
 > 
-> > There is one reference to ACPI 4.0 and several references
-> > to ACPI 6.x versions.
-> > 
-> > Update them to point to ACPI 6.5 whenever possible.
+> Revert it.  This improves OffAutoPCIBAR's generated enumeration
+> constant prefix from OFF_AUTOPCIBAR_OFF to OFF_AUTO_PCIBAR_OFF.
 > 
-> when it comes to APCI doc comments, they should point to
-> the 1st (earliest) revision that provides given feature/value/field/table.
+> Signed-off-by: Markus Armbruster <armbru@redhat.com>
 
-Yes. And the motivation is twofold.
-First, guests are built against
-old acpi versions. knowing in which version things appeared
-helps us know which guests support a feature.
-Second, acpi guys keep churning out new versions.
-It makes no sense to try and update to latest one,
-it will soon get out of date again.
 
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
+
+Thanks,
+
+C.
+
+
+> ---
+>   qapi/common.json |  1 -
+>   hw/vfio/pci.c    | 10 +++++-----
+>   2 files changed, 5 insertions(+), 6 deletions(-)
 > 
-> > There's one reference that was kept pointing to ACPI 6.4,
-> > though, with HEST revision 1.
-> > 
-> > ACPI 6.5 now defines HEST revision 2, and defined a new
-> > way to handle source types starting from 12. According
-> > with ACPI 6.5 revision history:
-> > 
-> > 	2312 Update to the HEST table and adding new error
-> > 	     source descriptor - Table 18.2.
-> > 
-> > Yet, the spec doesn't define yet any new source
-> > descriptors. It just defines a different behavior when
-> > source type is above 11.
-> > 
-> > I also double-checked GHES implementation on an open
-> > source project (Linux Kernel). Currently upstream
-> > doesn't currently handle HEST revision, ignoring such
-> > field.
-> > 
-> > In any case, revision 2 seems to be backward-compatible
-> > with revison 1 when type <= 11 and just one error is
-> > contained on a HEST record.
-> > 
-> > So, while it is probably safe to update it, there's no
-> > real need. So, let's keep the implementation using
-> > an ACPI 6.4 compatible table, e. g. HEST revision 1.
-> > 
-> > Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-> > ---
-> >  hw/acpi/ghes.c | 48 ++++++++++++++++++++++++++++--------------------
-> >  1 file changed, 28 insertions(+), 20 deletions(-)
-> > 
-> > diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
-> > index 6075ef5893ce..ebf1b812aaaa 100644
-> > --- a/hw/acpi/ghes.c
-> > +++ b/hw/acpi/ghes.c
-> > @@ -45,9 +45,9 @@
-> >  #define GAS_ADDR_OFFSET 4
-> >  
-> >  /*
-> > - * The total size of Generic Error Data Entry
-> > - * ACPI 6.1/6.2: 18.3.2.7.1 Generic Error Data,
-> > - * Table 18-343 Generic Error Data Entry
-> > + * The total size of Generic Error Data Entry before data field
-> > + * ACPI 6.5: 18.3.2.7.1 Generic Error Data,
-> > + * Table 18.12 Generic Error Data Entry
-> >   */
-> >  #define ACPI_GHES_DATA_LENGTH               72
-> >  
-> > @@ -65,8 +65,8 @@
-> >  
-> >  /*
-> >   * Total size for Generic Error Status Block except Generic Error Data Entries
-> > - * ACPI 6.2: 18.3.2.7.1 Generic Error Data,
-> > - * Table 18-380 Generic Error Status Block
-> > + * ACPI 6.5: 18.3.2.7.1 Generic Error Data,
-> > + * Table 18.11 Generic Error Status Block
-> >   */
-> >  #define ACPI_GHES_GESB_SIZE                 20
-> >  
-> > @@ -82,7 +82,8 @@ enum AcpiGenericErrorSeverity {
-> >  
-> >  /*
-> >   * Hardware Error Notification
-> > - * ACPI 4.0: 17.3.2.7 Hardware Error Notification
-> > + * ACPI 6.5: 18.3.2.9 Hardware Error Notification,
-> > + * Table 18.14 - Hardware Error Notification Structure
-> >   * Composes dummy Hardware Error Notification descriptor of specified type
-> >   */
-> >  static void build_ghes_hw_error_notification(GArray *table, const uint8_t type)
-> > @@ -112,7 +113,8 @@ static void build_ghes_hw_error_notification(GArray *table, const uint8_t type)
-> >  
-> >  /*
-> >   * Generic Error Data Entry
-> > - * ACPI 6.1: 18.3.2.7.1 Generic Error Data
-> > + * ACPI 6.5: 18.3.2.7.1 Generic Error Data,
-> > + * Table 18.12 - Generic Error Data Entry
-> >   */
-> >  static void acpi_ghes_generic_error_data(GArray *table,
-> >                  const uint8_t *section_type, uint32_t error_severity,
-> > @@ -148,7 +150,8 @@ static void acpi_ghes_generic_error_data(GArray *table,
-> >  
-> >  /*
-> >   * Generic Error Status Block
-> > - * ACPI 6.1: 18.3.2.7.1 Generic Error Data
-> > + * ACPI 6.5: 18.3.2.7.1 Generic Error Data,
-> > + * Table 18.11 - Generic Hardware Error Source Structure
-> >   */
-> >  static void acpi_ghes_generic_error_status(GArray *table, uint32_t block_status,
-> >                  uint32_t raw_data_offset, uint32_t raw_data_length,
-> > @@ -429,15 +432,18 @@ void build_ghes_error_table(GArray *hardware_errors, BIOSLinker *linker)
-> >          0, sizeof(uint64_t), ACPI_GHES_ERRORS_FW_CFG_FILE, 0);
-> >  }
-> >  
-> > -/* Build Generic Hardware Error Source version 2 (GHESv2) */
-> > +/*
-> > + * Build Generic Hardware Error Source version 2 (GHESv2)
-> > + * ACPI 6.5: 18.3.2.8 Generic Hardware Error Source version 2 (GHESv2 - Type 10),
-> > + * Table 18.13: Generic Hardware Error Source version 2 (GHESv2)
-> > + */
-> >  static void build_ghes_v2(GArray *table_data, int source_id, BIOSLinker *linker)
-> >  {
-> >      uint64_t address_offset;
-> > -    /*
-> > -     * Type:
-> > -     * Generic Hardware Error Source version 2(GHESv2 - Type 10)
-> > -     */
-> > +    /* Type: (GHESv2 - Type 10) */
-> >      build_append_int_noprefix(table_data, ACPI_GHES_SOURCE_GENERIC_ERROR_V2, 2);
-> > +
-> > +    /* ACPI 6.5: Table 18.10 - Generic Hardware Error Source Structure */
-> >      /* Source Id */
-> >      build_append_int_noprefix(table_data, source_id, 2);
-> >      /* Related Source Id */
-> > @@ -481,11 +487,8 @@ static void build_ghes_v2(GArray *table_data, int source_id, BIOSLinker *linker)
-> >      /* Error Status Block Length */
-> >      build_append_int_noprefix(table_data, ACPI_GHES_MAX_RAW_DATA_LENGTH, 4);
-> >  
-> > -    /*
-> > -     * Read Ack Register
-> > -     * ACPI 6.1: 18.3.2.8 Generic Hardware Error Source
-> > -     * version 2 (GHESv2 - Type 10)
-> > -     */
-> > +    /* ACPI 6.5: fields defined at GHESv2 table */
-> > +    /* Read Ack Register */
-> >      address_offset = table_data->len;
-> >      build_append_gas(table_data, AML_AS_SYSTEM_MEMORY, 0x40, 0,
-> >                       4 /* QWord access */, 0);
-> > @@ -504,11 +507,16 @@ static void build_ghes_v2(GArray *table_data, int source_id, BIOSLinker *linker)
-> >      build_append_int_noprefix(table_data, 0x1, 8);
-> >  }
-> >  
-> > -/* Build Hardware Error Source Table */
-> > +/*
-> > + * Build Hardware Error Source Table
-> > + * ACPI 6.4: 18.3.2 ACPI Error Source
-> > + * Table 18.2: Hardware Error Source Table (HEST)
-> > + */
-> >  void acpi_build_hest(GArray *table_data, BIOSLinker *linker,
-> >                       const char *oem_id, const char *oem_table_id)
-> >  {
-> > -    AcpiTable table = { .sig = "HEST", .rev = 1,
-> > +    AcpiTable table = { .sig = "HEST",
-> > +                        .rev = 1,                   /* ACPI 4.0 to 6.4 */
-> >                          .oem_id = oem_id, .oem_table_id = oem_table_id };
-> >  
-> >      acpi_table_begin(&table, table_data);
+> diff --git a/qapi/common.json b/qapi/common.json
+> index 25726d3113..7558ce5430 100644
+> --- a/qapi/common.json
+> +++ b/qapi/common.json
+> @@ -92,7 +92,6 @@
+>   # Since: 2.12
+>   ##
+>   { 'enum': 'OffAutoPCIBAR',
+> -  'prefix': 'OFF_AUTOPCIBAR',   # TODO drop
+>     'data': [ 'off', 'auto', 'bar0', 'bar1', 'bar2', 'bar3', 'bar4', 'bar5' ] }
+>   
+>   ##
+> diff --git a/hw/vfio/pci.c b/hw/vfio/pci.c
+> index 2407720c35..0a99e55247 100644
+> --- a/hw/vfio/pci.c
+> +++ b/hw/vfio/pci.c
+> @@ -1452,7 +1452,7 @@ static bool vfio_pci_relocate_msix(VFIOPCIDevice *vdev, Error **errp)
+>       int target_bar = -1;
+>       size_t msix_sz;
+>   
+> -    if (!vdev->msix || vdev->msix_relo == OFF_AUTOPCIBAR_OFF) {
+> +    if (!vdev->msix || vdev->msix_relo == OFF_AUTO_PCIBAR_OFF) {
+>           return true;
+>       }
+>   
+> @@ -1464,7 +1464,7 @@ static bool vfio_pci_relocate_msix(VFIOPCIDevice *vdev, Error **errp)
+>       /* PCI BARs must be a power of 2 */
+>       msix_sz = pow2ceil(msix_sz);
+>   
+> -    if (vdev->msix_relo == OFF_AUTOPCIBAR_AUTO) {
+> +    if (vdev->msix_relo == OFF_AUTO_PCIBAR_AUTO) {
+>           /*
+>            * TODO: Lookup table for known devices.
+>            *
+> @@ -1479,7 +1479,7 @@ static bool vfio_pci_relocate_msix(VFIOPCIDevice *vdev, Error **errp)
+>               return false;
+>           }
+>       } else {
+> -        target_bar = (int)(vdev->msix_relo - OFF_AUTOPCIBAR_BAR0);
+> +        target_bar = (int)(vdev->msix_relo - OFF_AUTO_PCIBAR_BAR0);
+>       }
+>   
+>       /* I/O port BARs cannot host MSI-X structures */
+> @@ -1624,7 +1624,7 @@ static bool vfio_msix_early_setup(VFIOPCIDevice *vdev, Error **errp)
+>           } else if (vfio_pci_is(vdev, PCI_VENDOR_ID_BAIDU,
+>                                  PCI_DEVICE_ID_KUNLUN_VF)) {
+>               msix->pba_offset = 0xb400;
+> -        } else if (vdev->msix_relo == OFF_AUTOPCIBAR_OFF) {
+> +        } else if (vdev->msix_relo == OFF_AUTO_PCIBAR_OFF) {
+>               error_setg(errp, "hardware reports invalid configuration, "
+>                          "MSIX PBA outside of specified BAR");
+>               g_free(msix);
+> @@ -3403,7 +3403,7 @@ static Property vfio_pci_dev_properties[] = {
+>                                      nv_gpudirect_clique,
+>                                      qdev_prop_nv_gpudirect_clique, uint8_t),
+>       DEFINE_PROP_OFF_AUTO_PCIBAR("x-msix-relocation", VFIOPCIDevice, msix_relo,
+> -                                OFF_AUTOPCIBAR_OFF),
+> +                                OFF_AUTO_PCIBAR_OFF),
+>   #ifdef CONFIG_IOMMUFD
+>       DEFINE_PROP_LINK("iommufd", VFIOPCIDevice, vbasedev.iommufd,
+>                        TYPE_IOMMUFD_BACKEND, IOMMUFDBackend *),
 

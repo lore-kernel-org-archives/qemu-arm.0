@@ -1,108 +1,107 @@
-Received: by 2002:a17:504:5965:b0:1be9:327d:8ee3 with SMTP id xe5csp2109853njb;
-        Mon, 29 Jul 2024 19:07:48 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXSIIEXY+s3glOLcQIItES+s5bSU8p31fmFeEXQKv5g8/PN4VSoZwyWlM1tXgOhcMfAPrigDPqOBvL6ZyyZNIyVXudipb7x
-X-Google-Smtp-Source: AGHT+IHssPrTlffGmvtoH/rxuWWLDOCmQZu/SgPOyOrkqZxf/ybVM+ObivCtE7RsL4bmVRbAQDU/
-X-Received: by 2002:a05:620a:2943:b0:79f:3f6:55d5 with SMTP id af79cd13be357-7a1e50532efmr1352756885a.0.1722305268742;
-        Mon, 29 Jul 2024 19:07:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1722305268; cv=none;
+Received: by 2002:a17:504:5965:b0:1be9:327d:8ee3 with SMTP id xe5csp2250024njb;
+        Tue, 30 Jul 2024 02:31:00 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWDG7iOMls1fpq5QNqpYzNm3yeqYhnvqJCpJt1SAnqotgY8+vkin8Ic8J0B6G6AjPgHYOzgNgb7r0yjgz7FPAnfchHgyFx8
+X-Google-Smtp-Source: AGHT+IErMXri49FjehRPBvciWKiTy6AhPn3v4YOHyqTW1yoD3f5cOlIDsmxntEC4WJzCubBptQBz
+X-Received: by 2002:a05:6358:2915:b0:199:2942:1b32 with SMTP id e5c5f4694b2df-1adc06b1e7dmr1342829055d.8.1722331860210;
+        Tue, 30 Jul 2024 02:31:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1722331860; cv=none;
         d=google.com; s=arc-20160816;
-        b=UfxKAUsanbYUdUQ89JNRcCCvpWHXRQYOWkVU4i9tArG0BbcNkKwhBTFX75NPYm2QZe
-         OO+5kyBhvrQQzyue5cKN6ErWSAY+zy44c5LD9RSZLPjLPrvf1MQ/MeYIK6PAd3J1WAj1
-         T68SDtYaPczT5howhIkCaDQtbGsr6OaIuORtmlv2t7irSF8rIs9QamOA/0MXTRdz1m67
-         RjHUZs2GqZeq6agKBeskAlw5fLNqjEGummLFilbtmfDOkOLDNjI+zlm3uzI368dMnjGi
-         jeTpOPTZ6pCR/HOrxk/eohho5MG7OK/1Biz8ny1x7WH0Idd/MgG7XvSzWKrycuxGxYTo
-         ICug==
+        b=ucGdp7tsZhFMBhdn0wkVhg71YAb7/JNLdOtTyRi4ScW3BCPJjhtFFZNtpuh/dKx1RA
+         SwKCytHVcBdtQbMFBRZM/RYc0f/OmNpnL/MOPNFnjSjFLnv4orKLLqR6GL6Oax0BmeVy
+         rKme3O7/MGaR2fmO4B3xz4oJh0dFnz2JEedZDMNzEtfdHhwoX4+m4gEadIYi3BcicIhg
+         eG+N5jJrJNoc/GWbmCRfJ36DnHvz8aSF2XI7o52fouBCzHeF+6FBUPyvC/34V7CQpMhD
+         ibCE8u+xkPoCmgYLduEfWhKCmbSvBkqNIUGFCYksaFSfbDEthAj6nm9OKLzwe5roLhwS
+         Zafg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=iw50ZFPoVTmf9Z7vf/Qo423LjrYXHgdPnKIyNjzrW30=;
-        fh=9Ev+QBUhk6P6vR3LT1wYeDLexozsz44nqjfoyPajZCc=;
-        b=ITmvDQy3brfSFPqg70lbm2mlvz099D5B+D8+CfCUOtRCHdXWKa/qwaTPuTLAZ3QLbv
-         fEwfnu/4G3D0GVtN320jFsttyVGNd5+Q2z4U3RgGSAM660rjl/fdwXsLS8AJiIT+I1V1
-         YKw0yWnAkMOA5ndWD9/HFLBMWkuRf4Ht7Alav5JDQ+eCgHGCpdUsZLs8hX2I8xzIf2GI
-         rieYswsH1+i0q7Bfv83eOFkts+01L5oUtxS2l0tkcwbTqdAxEK5zzJmFVKmwn6Irw65A
-         TOZu8M0V87JXUo17ZvYWZ75gx2ak89/ccWsIcOU7e2oMexLjQ49C7PbLarGdcF3PYkNg
-         2olg==;
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=uNsh7c3255rTpF65wyORY+h4ndviNnkJbAViEsxA+Y8=;
+        fh=fHg0aJkky26KjsZEYL1ZKsw02Lec4pFzdkgJc+nKs7w=;
+        b=R5MdU8XlJ10HBDOHvy6miW8l2FfDPriCIlL2QpK+3yGIycwMnSwVJPWAHHVpl/rnoj
+         WJpwXQjgmECkmcpGvoXwFzVBx3V+JGBF4yNYkMvCyRYgizIZyqIU11TrX/OhSlO72+4I
+         rT7FoLFEo2Ta3QtlYSRtYycRPjEy70ZxyPZDNNYh4CrehifxBwlaDlGrZ1MLhSRRHmbV
+         kcNfQHy+b2pBi4gQVQMmudwZcsQu0vJRt4nvEjMMf9V3Q/L4jxrdivwTMJpU7lN3Wa2s
+         vwbko6vsl1K/y5hHiZNkNxVfS8N36usyhl4RDbspGKu3O//NywARAeLxISpkLDpITz6t
+         FphQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=yb4rqdC9;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=oivESpYB;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7a1d7475d12si1192885385a.607.2024.07.29.19.07.48
+        by mx.google.com with ESMTPS id 6a1803df08f44-6bb3fb2bc20si124137966d6.614.2024.07.30.02.31.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 29 Jul 2024 19:07:48 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 30 Jul 2024 02:31:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=yb4rqdC9;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=oivESpYB;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sYcGn-0007K1-NM; Mon, 29 Jul 2024 22:07:21 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sYjBh-00042a-IV; Tue, 30 Jul 2024 05:30:33 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1sYcGm-0007JN-GM
- for qemu-devel@nongnu.org; Mon, 29 Jul 2024 22:07:20 -0400
-Received: from mail-qt1-x833.google.com ([2607:f8b0:4864:20::833])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1sYjBf-00041Y-JE
+ for qemu-arm@nongnu.org; Tue, 30 Jul 2024 05:30:31 -0400
+Received: from mail-lj1-x22f.google.com ([2a00:1450:4864:20::22f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1sYcGk-0002uU-JL
- for qemu-devel@nongnu.org; Mon, 29 Jul 2024 22:07:20 -0400
-Received: by mail-qt1-x833.google.com with SMTP id
- d75a77b69052e-44ff9281e93so22531701cf.2
- for <qemu-devel@nongnu.org>; Mon, 29 Jul 2024 19:07:17 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1sYjBd-0007GA-Vt
+ for qemu-arm@nongnu.org; Tue, 30 Jul 2024 05:30:31 -0400
+Received: by mail-lj1-x22f.google.com with SMTP id
+ 38308e7fff4ca-2ef2cce8c08so49400291fa.0
+ for <qemu-arm@nongnu.org>; Tue, 30 Jul 2024 02:30:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1722305237; x=1722910037; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=iw50ZFPoVTmf9Z7vf/Qo423LjrYXHgdPnKIyNjzrW30=;
- b=yb4rqdC9NoL5QM9Bjox/PvszVKkLfcZSGsmJc43EAUzDQ44kiD5v7RPbF8+utnkuMH
- hujuv55TLEnMjjPtftVSyUjLlAHsIVMydGJsTyzX8vMfSQyc5l0k8Givz1hLq1sV1100
- jf0Nye6ZWiOlcmx+/3TrOm2Hkp1bMLIDzRhi0LIcdKqII7656eLOt+vieilWi2nkG73h
- EvCLnTnNTomfKBn7c6HpUN4cfny2qjzCFARSW41cHCxe4bveo2QlsLeb5uBIxWf0+cF4
- 7+P0qiZ4CB1dzzN7ZuOxGaLxdrQSfweQp+wrzxiJGNJelJiqpFVIx7C1gQZsb0BrDj6C
- s5qw==
+ d=linaro.org; s=google; t=1722331827; x=1722936627; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=uNsh7c3255rTpF65wyORY+h4ndviNnkJbAViEsxA+Y8=;
+ b=oivESpYB5HHXJu2Zq/Y6rkDvFFWl7UjLayoXy4A1bTfj/5q+mn9qiUw+szSJK0w4fS
+ +GIxUDsz+G1uovQh0ULoRDOdR00hDdF8oXpyy4LAv4mc4d9GdHJt/HpfdfcjDClyvCDh
+ QsTBw4nHK8W/TCJrPCrSUIZL5/3eT9xQ4CBees5zZMDcaUCgbOTYnkSzy2Pb0BXvZ8JH
+ Q2vij/gk7P2edjwhrx8dNOeTozhe9YU0RdleUAGpGYsApG+87pHaad2icb8YWWC38GhM
+ HhHlKG9mJ3vh4j2Z7harXcu9a1y3AUwyuSdi+7/Jc8X02W8GGIlfabwN8n2Nx9TnM5GP
+ HCmg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1722305237; x=1722910037;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ d=1e100.net; s=20230601; t=1722331827; x=1722936627;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=iw50ZFPoVTmf9Z7vf/Qo423LjrYXHgdPnKIyNjzrW30=;
- b=RI/p1+2v7IesP8vKVgXCIDTyIpOcNw0mOvjUNn7/tC8/VSCHkPjCkOO3nobznZ9zBE
- 444SuEm29P3UoQ2XY664exGxf9E1beAFDxAPAwwIl3tVT4/iooDd+g1K1HIpjtEfvVl2
- FIIFsp3yHHG+lYJvtN47abjinAGzS6al/L/hxtl7vpQdERB7zcNgW0w+sXYNnzPxTTk2
- nV0SX47bLY9khQSLKrJSlZ4QeSyHwgmkXVTNQtrCj3DaukbzCzM1mlZa/8DlBVpVrBFx
- VdkFpGZR55f4HWse6PpGyvBv9Un38+fgBmIT+tMxn8XvR/pwC1A00hZKG8USsaqM/jGo
- lsNQ==
-X-Gm-Message-State: AOJu0YwD43EqQ4HzpjxL73rZVD8/G/91FBvLAt4m7fbiBmKxqF+NNQwc
- IkfgImrig/yuRIIcBNthUJLIM1uRvC5b/tF2fhw6APgr9yyh4tVo2huZDTXGUElDT4jH7w0DbKc
- 5oI8=
-X-Received: by 2002:a05:6a00:8592:b0:702:3e36:b7c4 with SMTP id
- d2e1a72fcca58-70ece9eb510mr7586616b3a.5.1722303575127; 
- Mon, 29 Jul 2024 18:39:35 -0700 (PDT)
-Received: from stoup.. ([203.56.128.103]) by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-70ead874619sm7428984b3a.164.2024.07.29.18.39.33
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 29 Jul 2024 18:39:34 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org
-Subject: [PATCH] target/arm: Fix BTI versus CF_PCREL
-Date: Tue, 30 Jul 2024 11:39:22 +1000
-Message-ID: <20240730013922.540523-1-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.43.0
+ bh=uNsh7c3255rTpF65wyORY+h4ndviNnkJbAViEsxA+Y8=;
+ b=DOYQm+36fkjpC9Us/2QnXE0BjrVHnUbN+N2Q4yBbZWGacrvfytVEeJQ+uGtquTo0do
+ 8+Odj1r952UCThSOb6i4R+Md9LQwMGTODI9cZ0f39Tr8bQ8EoKxqXVZ/LLpAkf0Ag9x6
+ vHghF1LpNL6dntJJuL/zkQsTjayBY5ZH+3lQYoc2BjzRskIVIyvg+nmnJHvRMKSb6HJo
+ gZmkgUfX8KPEAQ2AfrwAGxKXxFtAw8Thnd0sI0nuwBr66XysXOZ9W38xAObeTeb1hE3G
+ OXALEQqj4x1ZmwMdZ0Jf7LYF7c9SheLVQqmL0en+BFygmVQkjRQl8RTQbRC1ByjbkYcV
+ mrSQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVQFg04DKT1XALVWgDo2U3+BzbvNHhcUIgNUyQak25xzrVYSZBXWKgUNS9rGzvIFDP9y1R/0LVxuP73wJJADKkNI7W4
+X-Gm-Message-State: AOJu0YzJEdCZkrNq12Lpdn6J4NXzA1TRG2GTBA5f7O25cmG61r5l/B4b
+ X7//7NLOlSS6lvoBwddlQSrFl2/Mifv+ZBPVR6WnkBMDXfgb8D7dPD49kR+gDdng///k32bSB9p
+ Sh1mPUzHwiEU9q2xtpQ9Srvu8UBdL+6RlJqUuSw==
+X-Received: by 2002:a2e:a176:0:b0:2f0:1d51:a8fa with SMTP id
+ 38308e7fff4ca-2f12ee5bb0fmr70569201fa.30.1722331826805; Tue, 30 Jul 2024
+ 02:30:26 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::833;
- envelope-from=richard.henderson@linaro.org; helo=mail-qt1-x833.google.com
+References: <20240730013922.540523-1-richard.henderson@linaro.org>
+In-Reply-To: <20240730013922.540523-1-richard.henderson@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 30 Jul 2024 10:30:15 +0100
+Message-ID: <CAFEAcA-yuy54nnuoa_B32UpKPtfhRmo9sd1N7eYKSz4O0PC7qg@mail.gmail.com>
+Subject: Re: [PATCH] target/arm: Fix BTI versus CF_PCREL
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::22f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-lj1-x22f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -111,227 +110,99 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: XUG/B9BbikI3
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 1muAVACKQbNG
 
-With pcrel, we cannot check the guarded page bit at translation
-time, as different mappings of the same physical page may or may
-not have the GP bit set.
+On Tue, 30 Jul 2024 at 03:07, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> With pcrel, we cannot check the guarded page bit at translation
+> time, as different mappings of the same physical page may or may
+> not have the GP bit set.
+>
+> Instead, add a couple of helpers to check the page at runtime,
+> after all other filters that might obviate the need for the check.
+>
+> The set_btype_for_br call must be moved after the gen_a64_set_pc
+> call to ensure the current pc can still be computed.
+>
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+>  target/arm/tcg/helper-a64.h    |  3 ++
+>  target/arm/tcg/translate.h     |  2 --
+>  target/arm/tcg/helper-a64.c    | 38 ++++++++++++++++++++
+>  target/arm/tcg/translate-a64.c | 64 ++++++++--------------------------
+>  4 files changed, 55 insertions(+), 52 deletions(-)
+>
+> diff --git a/target/arm/tcg/helper-a64.h b/target/arm/tcg/helper-a64.h
+> index 371388f61b..481007bf39 100644
+> --- a/target/arm/tcg/helper-a64.h
+> +++ b/target/arm/tcg/helper-a64.h
+> @@ -133,6 +133,9 @@ DEF_HELPER_4(cpyfp, void, env, i32, i32, i32)
+>  DEF_HELPER_4(cpyfm, void, env, i32, i32, i32)
+>  DEF_HELPER_4(cpyfe, void, env, i32, i32, i32)
+>
+> +DEF_HELPER_FLAGS_1(guarded_page_check, TCG_CALL_NO_WG, void, env)
+> +DEF_HELPER_FLAGS_2(guarded_page_br, TCG_CALL_NO_RWG, void, env, tl)
+> +
+>  DEF_HELPER_FLAGS_5(gvec_fdiv_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
+>  DEF_HELPER_FLAGS_5(gvec_fdiv_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
+>  DEF_HELPER_FLAGS_5(gvec_fdiv_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
+> diff --git a/target/arm/tcg/translate.h b/target/arm/tcg/translate.h
+> index a8672c857c..01c217f4a4 100644
+> --- a/target/arm/tcg/translate.h
+> +++ b/target/arm/tcg/translate.h
+> @@ -163,8 +163,6 @@ typedef struct DisasContext {
+>      uint8_t dcz_blocksize;
+>      /* A copy of cpu->gm_blocksize. */
+>      uint8_t gm_blocksize;
+> -    /* True if this page is guarded.  */
+> -    bool guarded_page;
+>      /* True if the current insn_start has been updated. */
+>      bool insn_start_updated;
+>      /* Bottom two bits of XScale c15_cpar coprocessor access control reg */
+> diff --git a/target/arm/tcg/helper-a64.c b/target/arm/tcg/helper-a64.c
+> index c60d2a7ec9..424fe927b4 100644
+> --- a/target/arm/tcg/helper-a64.c
+> +++ b/target/arm/tcg/helper-a64.c
+> @@ -1877,3 +1877,41 @@ void HELPER(cpyfe)(CPUARMState *env, uint32_t syndrome, uint32_t wdesc,
+>  {
+>      do_cpye(env, syndrome, wdesc, rdesc, false, GETPC());
+>  }
+> +
+> +static bool is_guarded_page(CPUARMState *env, target_ulong addr)
+> +{
+> +#ifdef CONFIG_USER_ONLY
+> +    return page_get_flags(addr) & PAGE_BTI;
+> +#else
+> +    CPUTLBEntryFull *full;
+> +    void *host;
+> +    int mmu_idx = cpu_mmu_index(env_cpu(env), true);
+> +    int flags = probe_access_full(env, addr, 0, MMU_INST_FETCH, mmu_idx,
+> +                                  false, &host, &full, 0);
+> +
+> +    assert(!(flags & TLB_INVALID_MASK));
 
-Instead, add a couple of helpers to check the page at runtime,
-after all other filters that might obviate the need for the check.
+Is there a race condition here where some other vCPU
+knocks this entry out of the TLB between the point when
+we started executing the TB and when we made this helper
+function call ?
 
-The set_btype_for_br call must be moved after the gen_a64_set_pc
-call to ensure the current pc can still be computed.
+> +    return full->extra.arm.guarded;
+> +#endif
+> +}
 
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- target/arm/tcg/helper-a64.h    |  3 ++
- target/arm/tcg/translate.h     |  2 --
- target/arm/tcg/helper-a64.c    | 38 ++++++++++++++++++++
- target/arm/tcg/translate-a64.c | 64 ++++++++--------------------------
- 4 files changed, 55 insertions(+), 52 deletions(-)
-
-diff --git a/target/arm/tcg/helper-a64.h b/target/arm/tcg/helper-a64.h
-index 371388f61b..481007bf39 100644
---- a/target/arm/tcg/helper-a64.h
-+++ b/target/arm/tcg/helper-a64.h
-@@ -133,6 +133,9 @@ DEF_HELPER_4(cpyfp, void, env, i32, i32, i32)
- DEF_HELPER_4(cpyfm, void, env, i32, i32, i32)
- DEF_HELPER_4(cpyfe, void, env, i32, i32, i32)
- 
-+DEF_HELPER_FLAGS_1(guarded_page_check, TCG_CALL_NO_WG, void, env)
-+DEF_HELPER_FLAGS_2(guarded_page_br, TCG_CALL_NO_RWG, void, env, tl)
-+
- DEF_HELPER_FLAGS_5(gvec_fdiv_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
- DEF_HELPER_FLAGS_5(gvec_fdiv_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
- DEF_HELPER_FLAGS_5(gvec_fdiv_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
-diff --git a/target/arm/tcg/translate.h b/target/arm/tcg/translate.h
-index a8672c857c..01c217f4a4 100644
---- a/target/arm/tcg/translate.h
-+++ b/target/arm/tcg/translate.h
-@@ -163,8 +163,6 @@ typedef struct DisasContext {
-     uint8_t dcz_blocksize;
-     /* A copy of cpu->gm_blocksize. */
-     uint8_t gm_blocksize;
--    /* True if this page is guarded.  */
--    bool guarded_page;
-     /* True if the current insn_start has been updated. */
-     bool insn_start_updated;
-     /* Bottom two bits of XScale c15_cpar coprocessor access control reg */
-diff --git a/target/arm/tcg/helper-a64.c b/target/arm/tcg/helper-a64.c
-index c60d2a7ec9..424fe927b4 100644
---- a/target/arm/tcg/helper-a64.c
-+++ b/target/arm/tcg/helper-a64.c
-@@ -1877,3 +1877,41 @@ void HELPER(cpyfe)(CPUARMState *env, uint32_t syndrome, uint32_t wdesc,
- {
-     do_cpye(env, syndrome, wdesc, rdesc, false, GETPC());
- }
-+
-+static bool is_guarded_page(CPUARMState *env, target_ulong addr)
-+{
-+#ifdef CONFIG_USER_ONLY
-+    return page_get_flags(addr) & PAGE_BTI;
-+#else
-+    CPUTLBEntryFull *full;
-+    void *host;
-+    int mmu_idx = cpu_mmu_index(env_cpu(env), true);
-+    int flags = probe_access_full(env, addr, 0, MMU_INST_FETCH, mmu_idx,
-+                                  false, &host, &full, 0);
-+
-+    assert(!(flags & TLB_INVALID_MASK));
-+    return full->extra.arm.guarded;
-+#endif
-+}
-+
-+void HELPER(guarded_page_check)(CPUARMState *env)
-+{
-+    /*
-+     * We have already verified that bti is enabled, and that the
-+     * instruction at PC is not ok for BTYPE.  This is always at
-+     * the beginning of a block, so PC is always up-to-date.
-+     */
-+    if (is_guarded_page(env, env->pc)) {
-+        raise_exception(env, EXCP_UDEF, syn_btitrap(env->btype),
-+                        exception_target_el(env));
-+    }
-+}
-+
-+void HELPER(guarded_page_br)(CPUARMState *env, target_ulong pc)
-+{
-+    /*
-+     * We have already checked for branch via x16 and x17.
-+     * What remains for choosing BTYPE is checking for a guarded page.
-+     */
-+    env->btype = is_guarded_page(env, pc) ? 3 : 1;
-+}
-diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
-index 148be2826e..28a1013503 100644
---- a/target/arm/tcg/translate-a64.c
-+++ b/target/arm/tcg/translate-a64.c
-@@ -1507,7 +1507,14 @@ static void set_btype_for_br(DisasContext *s, int rn)
- {
-     if (dc_isar_feature(aa64_bti, s)) {
-         /* BR to {x16,x17} or !guard -> 1, else 3.  */
--        set_btype(s, rn == 16 || rn == 17 || !s->guarded_page ? 1 : 3);
-+        if (rn == 16 || rn == 17) {
-+            set_btype(s, 1);
-+        } else {
-+            TCGv_i64 pc = tcg_temp_new_i64();
-+            gen_pc_plus_diff(s, pc, 0);
-+            gen_helper_guarded_page_br(tcg_env, pc);
-+            s->btype = -1;
-+        }
-     }
- }
- 
-@@ -1521,8 +1528,8 @@ static void set_btype_for_blr(DisasContext *s)
- 
- static bool trans_BR(DisasContext *s, arg_r *a)
- {
--    gen_a64_set_pc(s, cpu_reg(s, a->rn));
-     set_btype_for_br(s, a->rn);
-+    gen_a64_set_pc(s, cpu_reg(s, a->rn));
-     s->base.is_jmp = DISAS_JUMP;
-     return true;
- }
-@@ -1581,8 +1588,8 @@ static bool trans_BRAZ(DisasContext *s, arg_braz *a)
-     }
- 
-     dst = auth_branch_target(s, cpu_reg(s, a->rn), tcg_constant_i64(0), !a->m);
--    gen_a64_set_pc(s, dst);
-     set_btype_for_br(s, a->rn);
-+    gen_a64_set_pc(s, dst);
-     s->base.is_jmp = DISAS_JUMP;
-     return true;
- }
-@@ -11878,37 +11885,6 @@ static bool trans_FAIL(DisasContext *s, arg_OK *a)
-     return true;
- }
- 
--/**
-- * is_guarded_page:
-- * @env: The cpu environment
-- * @s: The DisasContext
-- *
-- * Return true if the page is guarded.
-- */
--static bool is_guarded_page(CPUARMState *env, DisasContext *s)
--{
--    uint64_t addr = s->base.pc_first;
--#ifdef CONFIG_USER_ONLY
--    return page_get_flags(addr) & PAGE_BTI;
--#else
--    CPUTLBEntryFull *full;
--    void *host;
--    int mmu_idx = arm_to_core_mmu_idx(s->mmu_idx);
--    int flags;
--
--    /*
--     * We test this immediately after reading an insn, which means
--     * that the TLB entry must be present and valid, and thus this
--     * access will never raise an exception.
--     */
--    flags = probe_access_full(env, addr, 0, MMU_INST_FETCH, mmu_idx,
--                              false, &host, &full, 0);
--    assert(!(flags & TLB_INVALID_MASK));
--
--    return full->extra.arm.guarded;
--#endif
--}
--
- /**
-  * btype_destination_ok:
-  * @insn: The instruction at the branch destination
-@@ -12151,19 +12127,6 @@ static void aarch64_tr_translate_insn(DisasContextBase *dcbase, CPUState *cpu)
- 
-     if (dc_isar_feature(aa64_bti, s)) {
-         if (s->base.num_insns == 1) {
--            /*
--             * At the first insn of the TB, compute s->guarded_page.
--             * We delayed computing this until successfully reading
--             * the first insn of the TB, above.  This (mostly) ensures
--             * that the softmmu tlb entry has been populated, and the
--             * page table GP bit is available.
--             *
--             * Note that we need to compute this even if btype == 0,
--             * because this value is used for BR instructions later
--             * where ENV is not available.
--             */
--            s->guarded_page = is_guarded_page(env, s);
--
-             /* First insn can have btype set to non-zero.  */
-             tcg_debug_assert(s->btype >= 0);
- 
-@@ -12172,12 +12135,13 @@ static void aarch64_tr_translate_insn(DisasContextBase *dcbase, CPUState *cpu)
-              * priority -- below debugging exceptions but above most
-              * everything else.  This allows us to handle this now
-              * instead of waiting until the insn is otherwise decoded.
-+             *
-+             * We can check all but the guarded page check here;
-+             * defer the latter to a helper.
-              */
-             if (s->btype != 0
--                && s->guarded_page
-                 && !btype_destination_ok(insn, s->bt, s->btype)) {
--                gen_exception_insn(s, 0, EXCP_UDEF, syn_btitrap(s->btype));
--                return;
-+                gen_helper_guarded_page_check(tcg_env);
-             }
-         } else {
-             /* Not the first insn: btype must be 0.  */
--- 
-2.43.0
-
+thanks
+-- PMM

@@ -1,172 +1,340 @@
-Received: by 2002:a17:505:3f8c:b0:1be9:327d:8ee3 with SMTP id bm12csp162254njb;
-        Tue, 30 Jul 2024 22:13:05 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCUX5PgTBJrizJRxZLn2FADMG93H5zUo45Y4rAX8ZwbT/tawqcywwlUziDkHG3LfCJG2ifcW7I7ZvC9RY7sCF777plk+cZ9v
-X-Google-Smtp-Source: AGHT+IHZNYmt8JrUiqgMMCYGQQ4GhWutDmBCixiUs4fNBLW+/MkMo7dDHEGoAhhXQFFPxzS6BAdO
-X-Received: by 2002:a17:907:9718:b0:a77:e48d:bc8 with SMTP id a640c23a62f3a-a7d40006319mr964194866b.21.1722402785644;
-        Tue, 30 Jul 2024 22:13:05 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1722402785; cv=pass;
+Received: by 2002:a17:505:3f8c:b0:1be9:327d:8ee3 with SMTP id bm12csp163552njb;
+        Tue, 30 Jul 2024 22:18:00 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCX2+NpDJDoWG8315IVWBU0MsTAmlG3pxB4LEUcQxu5yIHgJCQWF9DlEyaaewvPqu+pgXwY3W7emg1IMtMUa6+X4NXdxj+Ns
+X-Google-Smtp-Source: AGHT+IFooIBezXAHFlVStq3U0egDp3KJRwdXRvRpzyvTwpTQ58v9lR/Dw19CzECbH9ay3/V9HfOV
+X-Received: by 2002:a05:6808:f06:b0:3da:a721:283 with SMTP id 5614622812f47-3db23585901mr13951095b6e.7.1722403080421;
+        Tue, 30 Jul 2024 22:18:00 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1722403080; cv=pass;
         d=google.com; s=arc-20160816;
-        b=L0DtUW1o8D7s4U/ceAYa022lmRHtR7YkSfqSb/6YAk24CoUKesE0d/Ch6ixQBAqI7F
-         QbnE/H3kROPSpsrJuz2e64Odjum3Z0oudlPeINS5su7NPvhOFI/z3HeXyjI/HwMgZW5Q
-         pGiR6hdR+ZyagnyWASAI8Z9ZudHNl5ZH9QeTFGF288GoK+4qFmknCPWWJhb1riEYrpYd
-         uYmKbj4H6T2qxjltJSWb9Lpk8W9qaRQUDrIp5rUUHa81B0ykn0QeEyeXzRBPc/hevIzo
-         OhNc76/OIEOX4QvWrj1ImVYJB9OMWA3HVcTnW9OLfhS7e35FKX8DWIBt5PwHCzHTg0Xj
-         hJGQ==
+        b=PBZ08zEoXEatf7QXI3W3TmiIoVdZCDEmVnVaJ0WEWloxi+GYSUtXLVqp9lEAD5bhZD
+         ShQPPFg+bgDwMhFjCoiTG6qh4VAr8jepM7jAvuP0V4BSM8LnbofTKAie/IL/dHgyPWud
+         CpKqoXQ+TP1t7Ykr8hgyWz9LI7aNh3uXZJ3PgpJhE0KGG+B5Uq5QPpmJmsm4v6MBVtHS
+         EmUQ+eBLQnmhbTLQAf3GL89AEa9TaP7mzIg5mLDAzYC/5eGfDK87IbLLlvZKnHAeKL3V
+         LwJHev2cJJ+arK43gsNM6fc5J0jb4UTEaNv6Jpc/Pk4IR0N70rWaEtsGC/u9I2AD3hFZ
+         usAw==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:user-agent:message-id:date
-         :references:in-reply-to:subject:cc:to:from:dkim-signature;
-        bh=iVHQrxNekcxtK1Yq7919QcmyccPj5czJKpkTBAdsp/s=;
-        fh=BFXneFjqdmejipxZONeQdOrAwPaPLkMKfOeOm8r0t5U=;
-        b=C5f9G2DfNZ2UEenoUCGHQ9bWrWO+dx5tij+rhX4JXgm6ChEV/sfkw8ePan/wotcolj
-         NZUs58l03LjKVYyWc6HvZW34UabkBBseZkMzFwndxxrCVt9xGee2v8OSD3S4FqBHM9hd
-         NHD2pOKdYX8cpdVTu+zP8o4/X9y5QsWpP1TVVH9vqe6xAJbrXT+4AAzKvmdcJ7IhQT8k
-         cRTA65OM8j+kIFS7PSNSp8vDkp1LJ+4vI/P0b2jzrJEsnyBVRFvaFCQOz+1giQuoRSWK
-         2eXe/Ob9dPiq43+9XBIZNerBCVTRZooUXIkvBdO7gh6tI6kt/uGuxLgWSol6lIi1DgMb
-         e+0A==;
+         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=5q07tV9EH6ShmwQkshylij4517rBTkTk2yQHujeQJzs=;
+        fh=tySbI4piHZgXZH6BOST7+s2KS7LlhblkZc2Gbmrso3w=;
+        b=poO/BOM5dPq5SJibaDlCspQvHAfz0pNcdDOCf4wy1LX5H63+aeypYwZLjfIARtRwGE
+         /P+6LP34/d52FtV0Xv+2p8R6mVkh4/PJ6Y6FnKlKSGvKvEEptfscaNMh0jNwGQ/I9mR/
+         6bLB+JkcjxTIvpr0SYhkeyL9BK+YFp2MKEhJ/MR5gO/xczmSQ508FQEgt5dM/wuyGHcz
+         H7XOmvJ0SsdGs36BIugmT+IxoaIOgiEXzk4qKD4KPCfK/MbDa4XqkAkZ5Bncj37bV3Yr
+         kUOYBGcBJMHL7WkSOPeDCrg29eQS5sJkjUPPSoZUV2DPrG0N7nkmOrNecjz3G1leQ5J6
+         ldrg==;
         dara=google.com
 ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=SGCTLWcQ;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-22719-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="kvm+bounces-22719-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm+bounces-22719-alex.bennee=linaro.org@vger.kernel.org>
-Received: from am.mirrors.kernel.org (am.mirrors.kernel.org. [147.75.80.249])
-        by mx.google.com with ESMTPS id a640c23a62f3a-a7acac9100dsi861725266b.786.2024.07.30.22.13.05
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=Pbuxocah;
+       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
+       spf=pass (google.com: domain of linux-kernel+bounces-268518-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="linux-kernel+bounces-268518-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+Return-Path: <linux-kernel+bounces-268518-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [139.178.88.99])
+        by mx.google.com with ESMTPS id 41be03b00d2f7-7a9f90fc672si13913325a12.678.2024.07.30.22.18.00
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 30 Jul 2024 22:13:05 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm+bounces-22719-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) client-ip=147.75.80.249;
+        Tue, 30 Jul 2024 22:18:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of linux-kernel+bounces-268518-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) client-ip=139.178.88.99;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=SGCTLWcQ;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-22719-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="kvm+bounces-22719-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=Pbuxocah;
+       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
+       spf=pass (google.com: domain of linux-kernel+bounces-268518-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="linux-kernel+bounces-268518-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
 Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by am.mirrors.kernel.org (Postfix) with ESMTPS id 269A51F24DB9
-	for <alex.bennee@linaro.org>; Wed, 31 Jul 2024 05:13:05 +0000 (UTC)
+	by sv.mirrors.kernel.org (Postfix) with ESMTPS id D2611285897
+	for <alex.bennee@linaro.org>; Wed, 31 Jul 2024 05:17:59 +0000 (UTC)
 Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id DEEC549627;
-	Wed, 31 Jul 2024 05:13:00 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id BAF3D2942A;
+	Wed, 31 Jul 2024 05:17:55 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="SGCTLWcQ"
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="Pbuxocah"
+Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 07EE4C8FF
-	for <kvm@vger.kernel.org>; Wed, 31 Jul 2024 05:12:58 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.133.124
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 627C717C79
+	for <linux-kernel@vger.kernel.org>; Wed, 31 Jul 2024 05:17:55 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=10.30.226.201
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1722402780; cv=none; b=RqWovbr8dFAyABxlvJ5By/gCLLEjoo0SsqHilAVHoPM7heggCJ4DbmsziPydUudIBbFr4/NRQQmZAIKEHYiiWW+wIum/bzM4elo1usxPHJ7x6+NTwyT286gqtmAwsEfW6v/FyqLT9L62H9LCGRVSHNToojb9TrcrX6vu+IAvte4=
+	t=1722403075; cv=none; b=HQbY0oMqt0hbleb7lCeCVnbKq9shtzijpS2DifPQ3Y1iAj8UYNkr1lyhyAURtYvXQxFIg8f3mlaYq0/CcYknzy0cuKz2YkULPp/eb09OSmu7c9esOoTDqmHLjEvyapWGLbac6qpNY9eN0jLTGUIwGKvyv/zJTB3Veodtsm4xdEY=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1722402780; c=relaxed/simple;
-	bh=QdL8QPjQBpoxUdeVn/xfeGx4ObRtlSfStgmedzKslxE=;
-	h=From:To:Cc:Subject:In-Reply-To:References:Date:Message-ID:
-	 MIME-Version:Content-Type; b=OK9WOC3f/XaFfUDiiSwLiuWUgqY5DP9XpSZhgf5bmvNOiL93yNFCphVLSLRlksHA61AEp0od7ZyNxtz/6LSCdhx1ZZvDyzWdZLktIXK+bHfKeH7yzV8lQuJsmqcjFDWPEw47P7q/TqzlJPGhBwDaKSKgCFaE0JHwYKR1HEh+hw8=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=SGCTLWcQ; arc=none smtp.client-ip=170.10.133.124
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1722402778;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=iVHQrxNekcxtK1Yq7919QcmyccPj5czJKpkTBAdsp/s=;
-	b=SGCTLWcQmX68LQE1FFqLhgoRCx3IVOCuW3cNJnGV3aiDkwOY1up3BJO12G7rpG+pjO0xrs
-	1IbVlVbtxIuvH7Z3RTxKSuozU6/N6oUi0lZZlCx79l1faf83CiOd5tUx29MJklNevSff/e
-	GXTZDuhS22QdtPIW+O3Uhtbc4Jl6oHo=
-Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-474-dAPmUXj7O6O0ulCe7pCW5A-1; Wed,
- 31 Jul 2024 01:12:52 -0400
-X-MC-Unique: dAPmUXj7O6O0ulCe7pCW5A-1
-Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 948711955BFC;
-	Wed, 31 Jul 2024 05:12:45 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.39.192.65])
-	by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 5BFAF1955F3B;
-	Wed, 31 Jul 2024 05:12:40 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 4BF7921E668A; Wed, 31 Jul 2024 07:12:38 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Avihai Horon <avihaih@nvidia.com>
-Cc: Daniel P. =?utf-8?Q?Berrang=C3=A9?= <berrange@redhat.com>,
-  qemu-devel@nongnu.org,
-  alex.williamson@redhat.com,  andrew@codeconstruct.com.au,
-  andrew@daynix.com,  arei.gonglei@huawei.com,  berto@igalia.com,
-  borntraeger@linux.ibm.com,  clg@kaod.org,  david@redhat.com,
-  den@openvz.org,  eblake@redhat.com,  eduardo@habkost.net,
-  farman@linux.ibm.com,  farosas@suse.de,  hreitz@redhat.com,
-  idryomov@gmail.com,  iii@linux.ibm.com,  jamin_lin@aspeedtech.com,
-  jasowang@redhat.com,  joel@jms.id.au,  jsnow@redhat.com,
-  kwolf@redhat.com,  leetroy@gmail.com,  marcandre.lureau@redhat.com,
-  marcel.apfelbaum@gmail.com,  michael.roth@amd.com,  mst@redhat.com,
-  mtosatti@redhat.com,  nsg@linux.ibm.com,  pasic@linux.ibm.com,
-  pbonzini@redhat.com,  peter.maydell@linaro.org,  peterx@redhat.com,
-  philmd@linaro.org,  pizhenwei@bytedance.com,  pl@dlhnet.de,
-  richard.henderson@linaro.org,  stefanha@redhat.com,
-  steven_lee@aspeedtech.com,  thuth@redhat.com,  vsementsov@yandex-team.ru,
-  wangyanan55@huawei.com,  yuri.benditovich@daynix.com,
-  zhao1.liu@intel.com,  qemu-block@nongnu.org,  qemu-arm@nongnu.org,
-  qemu-s390x@nongnu.org,  kvm@vger.kernel.org,  =?utf-8?Q?C=C3=A9dric?= Le
- Goater
- <clg@redhat.com>
-Subject: Re: [PATCH 01/18] qapi: Smarter camel_to_upper() to reduce need for
- 'prefix'
-In-Reply-To: <9b147a34-4641-4b4c-a050-51ceb3ea6a67@nvidia.com> (Avihai Horon's
-	message of "Tue, 30 Jul 2024 16:33:31 +0300")
-References: <20240730081032.1246748-1-armbru@redhat.com>
-	<20240730081032.1246748-2-armbru@redhat.com>
-	<ZqiutRoQuAsrllfj@redhat.com> <87mslzgjde.fsf@pond.sub.org>
-	<9b147a34-4641-4b4c-a050-51ceb3ea6a67@nvidia.com>
-Date: Wed, 31 Jul 2024 07:12:38 +0200
-Message-ID: <87jzh2kuux.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13)
+	s=arc-20240116; t=1722403075; c=relaxed/simple;
+	bh=9Y4w9xIXoFuDzhW/fp37ys+QuUZduJtuY6GNMvmsrwI=;
+	h=Date:From:To:Cc:Subject:Message-ID:In-Reply-To:References:
+	 MIME-Version:Content-Type; b=jZLvTYFcRAVhXR2eV+AIdKSjpktlRb8gZOTkMwphxBG5EamR9ecHRq8JFnnsq5sXmO0l76ieudoh8zQFzQv301fthMbyzRWxpFdKh46wCcrmu5k1CshkWvd6Rm/Xq3rYba6qSaLxQ5IsokHdQWzY+sOfzSANkx17SZ0DX7VRdm0=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=Pbuxocah; arc=none smtp.client-ip=10.30.226.201
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CED1CC116B1;
+	Wed, 31 Jul 2024 05:17:51 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1722403074;
+	bh=9Y4w9xIXoFuDzhW/fp37ys+QuUZduJtuY6GNMvmsrwI=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=PbuxocahwME8x+BwzZ7Vr0UvH16lwgmnuS3hAScJZr4QsHRBMsyQykiuNe8ixXrWa
+	 kOTAKkC69h6givDz3oP29uAimZCzTkMM5bowltATqSQrZwDaR1qfKQ1exXlOsiXQU6
+	 huUMYf1k9Q+Fd8j5+SZQ4Tt1tsvPEE5Z9DyBGSyoN8e2SC8yLZPZ6kTSg+1+clGxq5
+	 59N2JxU7FeawxeSUIAGtaZ5PJqWm8H5/9lv5+hxQA2SqGEejJja9NYbdWeZXtnKIIu
+	 pvVXvzV+CdYhH8tcKrTD7jn3qxBogRuhI2jRk+XJ7uFYEtXTbpEGulMht/syIuZRCH
+	 lCW4ylR3Kug1w==
+Date: Wed, 31 Jul 2024 07:17:48 +0200
+From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+To: Igor Mammedov <imammedo@redhat.com>
+Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>, Shiju Jose
+ <shiju.jose@huawei.com>, "Michael S. Tsirkin" <mst@redhat.com>, Philippe
+ =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@linaro.org>, Ani Sinha
+ <anisinha@redhat.com>, Eduardo Habkost <eduardo@habkost.net>, Marcel
+ Apfelbaum <marcel.apfelbaum@gmail.com>, Peter Maydell
+ <peter.maydell@linaro.org>, Shannon Zhao <shannon.zhaosl@gmail.com>, Yanan
+ Wang <wangyanan55@huawei.com>, linux-kernel@vger.kernel.org,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ shameerali.kolothum.thodi@huawei.com
+Subject: Re: [PATCH v3 2/7] arm/virt: Wire up GPIO error source for ACPI /
+ GHES
+Message-ID: <20240731071748.434b6b64@foz.lan>
+In-Reply-To: <20240730103615.5bb7613a@imammedo.users.ipa.redhat.com>
+References: <cover.1721630625.git.mchehab+huawei@kernel.org>
+	<034a7e86761e09996001394c98ffb8201ac52cd2.1721630625.git.mchehab+huawei@kernel.org>
+	<20240730103615.5bb7613a@imammedo.users.ipa.redhat.com>
+X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
 Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
+X-Mailing-List: linux-kernel@vger.kernel.org
+List-Id: <linux-kernel.vger.kernel.org>
+List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-X-TUID: EzW1AgDpE7pl
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-TUID: 9i9NjKoV1N4a
 
-Avihai Horon <avihaih@nvidia.com> writes:
+Em Tue, 30 Jul 2024 10:36:15 +0200
+Igor Mammedov <imammedo@redhat.com> escreveu:
 
-> On 30/07/2024 15:22, Markus Armbruster wrote:
->>
->> Avihai, there's a question for you on VfioMigrationState.
->>
->> Daniel P. Berrang=C3=A9 <berrange@redhat.com> writes:
->>
->>> On Tue, Jul 30, 2024 at 10:10:15AM +0200, Markus Armbruster wrote:
+> On Mon, 22 Jul 2024 08:45:54 +0200
+> Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
+> 
+> > From: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+> > 
+> > Creates a GED - Generic Event Device and set a GPIO to
+> > be used or error injection.  
+> 
+> QEMU already has GED device, so question is why it wasn't
+> used for event delivery?
+> I nutshell, I'd really prefer this series being rewritten
+> to reuse exiting GED instead of adding ad hoc GPIO and ACPI
+> plumbing.
 
-[...]
+Makes sense. I'll split this one on two patches, the first
+one adding the error device PNP to acpi/generic_event_device,
+and the second one with ghes and arm virt changes to support
+it, using a notifier list inside ghes to signalize the error
+events.
 
->> * VfioMigrationState
->>
->>    Can't see why this one has a prefix.  Avihai, can you enlighten me?
->
-> linux-headers/linux/vfio.h defines enum vfio_device_mig_state with values=
- VFIO_DEVICE_STATE_STOP etc.
+Jonathan,
 
-It does not define any VFIO_DEVICE_STATE_*, though.
+As the logic will be different, I'm placing you as co-author,
+and adding you as Cc on the patches. If you're ok with that,
+please reply with your SoB to them when I submit the next patch 
+series.
 
-> I used the QAPI prefix to emphasize this is a QAPI entity rather than a V=
-FIO entity.
+> PS:
+> as side effect of that, error injection could be used no only for
+> ARM but other machines that use GED (providing they implement GHES) 
+> 
+> Also CCing Shameer wrt touched power button code
+> 
+> > [mchehab: use a define for the generic event pin number and do some cleanups]
+> > Signed-off-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+> > Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+> > ---
+> >  hw/arm/virt-acpi-build.c | 30 ++++++++++++++++++++++++++----
+> >  hw/arm/virt.c            | 14 ++++++++++++--
+> >  include/hw/arm/virt.h    |  1 +
+> >  include/hw/boards.h      |  1 +
+> >  4 files changed, 40 insertions(+), 6 deletions(-)
+> > 
+> > diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> > index f76fb117adff..c502ccf40909 100644
+> > --- a/hw/arm/virt-acpi-build.c
+> > +++ b/hw/arm/virt-acpi-build.c
+> > @@ -63,6 +63,7 @@
+> >  
+> >  #define ARM_SPI_BASE 32
+> >  
+> > +#define ACPI_GENERIC_EVENT_DEVICE "GEDD"
+> >  #define ACPI_BUILD_TABLE_SIZE             0x20000
+> >  
+> >  static void acpi_dsdt_add_cpus(Aml *scope, VirtMachineState *vms)
+> > @@ -142,6 +143,8 @@ static void acpi_dsdt_add_pci(Aml *scope, const MemMapEntry *memmap,
+> >  static void acpi_dsdt_add_gpio(Aml *scope, const MemMapEntry *gpio_memmap,
+> >                                             uint32_t gpio_irq)  
+> 
+> this function supposed to be called when acpi_dev is not present (exiting GED device)
+> and run on old machines only, so it should not be called for recent machine types.
+> I'd avoid adding anything to it.
+> 
+> see more comment about it below
+> 
+> >  {
+> > +    uint32_t pin;
+> > +
+> >      Aml *dev = aml_device("GPO0");
+> >      aml_append(dev, aml_name_decl("_HID", aml_string("ARMH0061")));
+> >      aml_append(dev, aml_name_decl("_UID", aml_int(0)));
+> > @@ -155,7 +158,12 @@ static void acpi_dsdt_add_gpio(Aml *scope, const MemMapEntry *gpio_memmap,
+> >  
+> >      Aml *aei = aml_resource_template();
+> >  
+> > -    const uint32_t pin = GPIO_PIN_POWER_BUTTON;
+> > +    pin = GPIO_PIN_POWER_BUTTON;
+> > +    aml_append(aei, aml_gpio_int(AML_CONSUMER, AML_EDGE, AML_ACTIVE_HIGH,
+> > +                                 AML_EXCLUSIVE, AML_PULL_UP, 0, &pin, 1,
+> > +                                 "GPO0", NULL, 0));
+> > +    /* Pin for generic error */
+> > +    pin = GPIO_PIN_GENERIC_ERROR;
+> >      aml_append(aei, aml_gpio_int(AML_CONSUMER, AML_EDGE, AML_ACTIVE_HIGH,
+> >                                   AML_EXCLUSIVE, AML_PULL_UP, 0, &pin, 1,
+> >                                   "GPO0", NULL, 0));
+> > @@ -166,6 +174,11 @@ static void acpi_dsdt_add_gpio(Aml *scope, const MemMapEntry *gpio_memmap,
+> >      aml_append(method, aml_notify(aml_name(ACPI_POWER_BUTTON_DEVICE),
+> >                                    aml_int(0x80)));
+> >      aml_append(dev, method);
+> > +    method = aml_method("_E06", 0, AML_NOTSERIALIZED);
+> > +    aml_append(method, aml_notify(aml_name(ACPI_GENERIC_EVENT_DEVICE),
+> > +                                  aml_int(0x80)));
+> > +    aml_append(dev, method);
+> > +
+> >      aml_append(scope, dev);
+> >  }
+> >  
+> > @@ -800,6 +813,15 @@ static void build_fadt_rev6(GArray *table_data, BIOSLinker *linker,
+> >      build_fadt(table_data, linker, &fadt, vms->oem_id, vms->oem_table_id);
+> >  }
+> >  
+> > +static void acpi_dsdt_add_generic_event_device(Aml *scope)
+> > +{
+> > +    Aml *dev = aml_device(ACPI_GENERIC_EVENT_DEVICE);
+> > +    aml_append(dev, aml_name_decl("_HID", aml_string("PNP0C33")));  
+> this is not _event_ device, it's referred as _error_ device in spec.
+> 
+> PS:
+> please properly document new ACPI primitives/devices,
+> see comment above aml_notify() for example.
+> Use earliest APIC spec where the device was defined for the 1st time.
+> 
+> > +    aml_append(dev, aml_name_decl("_UID", aml_int(0)));
+> > +    aml_append(dev, aml_name_decl("_STA", aml_int(0xF)));
+> > +    aml_append(scope, dev);
+> > +}
+> > +
+> >  /* DSDT */
+> >  static void
+> >  build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+> > @@ -841,10 +863,9 @@ build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+> >                        HOTPLUG_HANDLER(vms->acpi_dev),
+> >                        irqmap[VIRT_ACPI_GED] + ARM_SPI_BASE, AML_SYSTEM_MEMORY,
+> >                        memmap[VIRT_ACPI_GED].base);
+> > -    } else {
+> > -        acpi_dsdt_add_gpio(scope, &memmap[VIRT_GPIO],
+> > -                           (irqmap[VIRT_GPIO] + ARM_SPI_BASE));
+> >      }
+> > +    acpi_dsdt_add_gpio(scope, &memmap[VIRT_GPIO],
+> > +                       (irqmap[VIRT_GPIO] + ARM_SPI_BASE));  
+> 
+> wouldn't that create double/conflicting power button handlers
+> (GPIO and GED one), on recent machine types GED should be used
+> and power button in acpi_dsdt_add_gpio() is used only if
+> machine doesn't have GED.
+> 
+> >  
+> >      if (vms->acpi_dev) {
+> >          uint32_t event = object_property_get_uint(OBJECT(vms->acpi_dev),
+> > @@ -858,6 +879,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+> >      }
+> >  
+> >      acpi_dsdt_add_power_button(scope);
+> > +    acpi_dsdt_add_generic_event_device(scope);
+> >  #ifdef CONFIG_TPM
+> >      acpi_dsdt_add_tpm(scope, vms);
+> >  #endif
+> > diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> > index c99c8b1713c6..f81cf3a69961 100644
+> > --- a/hw/arm/virt.c
+> > +++ b/hw/arm/virt.c
+> > @@ -997,6 +997,13 @@ static void create_rtc(const VirtMachineState *vms)
+> >  }
+> >  
+> >  static DeviceState *gpio_key_dev;
+> > +
+> > +static DeviceState *gpio_error_dev;
+> > +static void virt_set_error(void)
+> > +{
+> > +    qemu_set_irq(qdev_get_gpio_in(gpio_error_dev, 0), 1);
+> > +}
+> > +
+> >  static void virt_powerdown_req(Notifier *n, void *opaque)
+> >  {
+> >      VirtMachineState *s = container_of(n, VirtMachineState, powerdown_notifier);
+> > @@ -1015,6 +1022,9 @@ static void create_gpio_keys(char *fdt, DeviceState *pl061_dev,
+> >      gpio_key_dev = sysbus_create_simple("gpio-key", -1,
+> >                                          qdev_get_gpio_in(pl061_dev,
+> >                                                           GPIO_PIN_POWER_BUTTON));
+> > +    gpio_error_dev = sysbus_create_simple("gpio-key", -1,
+> > +                                          qdev_get_gpio_in(pl061_dev,
+> > +                                                           GPIO_PIN_GENERIC_ERROR));
+> >  
+> >      qemu_fdt_add_subnode(fdt, "/gpio-keys");
+> >      qemu_fdt_setprop_string(fdt, "/gpio-keys", "compatible", "gpio-keys");
+> > @@ -2385,9 +2395,8 @@ static void machvirt_init(MachineState *machine)
+> >  
+> >      if (has_ged && aarch64 && firmware_loaded && virt_is_acpi_enabled(vms)) {
+> >          vms->acpi_dev = create_acpi_ged(vms);
+> > -    } else {
+> > -        create_gpio_devices(vms, VIRT_GPIO, sysmem);
+> >      }
+> > +    create_gpio_devices(vms, VIRT_GPIO, sysmem);  
+> 
+> again, this create duplicate/conflicting power button source
+> 
+> >  
+> >      if (vms->secure && !vmc->no_secure_gpio) {
+> >          create_gpio_devices(vms, VIRT_SECURE_GPIO, secure_sysmem);
+> > @@ -3101,6 +3110,7 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
+> >      mc->default_ram_id = "mach-virt.ram";
+> >      mc->default_nic = "virtio-net-pci";
+> >  
+> > +    mc->set_error = virt_set_error;
+> >      object_class_property_add(oc, "acpi", "OnOffAuto",
+> >          virt_get_acpi, virt_set_acpi,
+> >          NULL, NULL);
+> > diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+> > index a4d937ed45ac..c9769d7d4d7f 100644
+> > --- a/include/hw/arm/virt.h
+> > +++ b/include/hw/arm/virt.h
+> > @@ -49,6 +49,7 @@
+> >  
+> >  /* GPIO pins */
+> >  #define GPIO_PIN_POWER_BUTTON  3
+> > +#define GPIO_PIN_GENERIC_ERROR 6
+> >  
+> >  enum {
+> >      VIRT_FLASH,
+> > diff --git a/include/hw/boards.h b/include/hw/boards.h
+> > index ef6f18f2c1a7..6cf01f3934ae 100644
+> > --- a/include/hw/boards.h
+> > +++ b/include/hw/boards.h
+> > @@ -304,6 +304,7 @@ struct MachineClass {
+> >      const CPUArchIdList *(*possible_cpu_arch_ids)(MachineState *machine);
+> >      int64_t (*get_default_cpu_node_id)(const MachineState *ms, int idx);
+> >      ram_addr_t (*fixup_ram_size)(ram_addr_t size);
+> > +    void (*set_error)(void);
+> >  };
+> >  
+> >  /**  
+> 
 
-We define about two dozen symbols starting with VFIO_, and several
-hundreds starting with vfio_.  What makes this enumeration type
-different so its members need emphasis?
 
-[...]
 
+Thanks,
+Mauro

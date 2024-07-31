@@ -1,120 +1,120 @@
-Received: by 2002:a17:505:3f8c:b0:1be9:327d:8ee3 with SMTP id bm12csp98543njb;
-        Tue, 30 Jul 2024 18:30:55 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCX+9NF/CACnecwnyApbAtPJ7RwyRNfHg431Etw4JaiuZk3KMTLBDyIeJ5nPTwhf3zb4VhBpqEnGxgMxQ9sEXuglMD+PCYfr
-X-Google-Smtp-Source: AGHT+IHIaikleLyNH+RfahuO3XTUcJSSwIQE2fqOAiCKeTJcJiWYNuZSUi/G9FiDQkpMCkwSxqAI
-X-Received: by 2002:a05:6359:281:b0:1ac:f854:b68 with SMTP id e5c5f4694b2df-1adce43dc8cmr1353767855d.29.1722389455029;
-        Tue, 30 Jul 2024 18:30:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1722389455; cv=none;
+Received: by 2002:a17:505:3f8c:b0:1be9:327d:8ee3 with SMTP id bm12csp99239njb;
+        Tue, 30 Jul 2024 18:33:10 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXNjKfdfpHVw8g0ItV6Py0adkDelPkJzs/G8M0LQgoph6wazFGWyT94U7S01PhtHewYmZbIkfI8nf5klK9nLWUNf5z1UgFG
+X-Google-Smtp-Source: AGHT+IEH+klvqW46kNVihxO7MR+lv2rvFfgtgTYUa2WklEoNJ6jFENelv2OzwVvGV72mtGEWnx+2
+X-Received: by 2002:a05:620a:25ca:b0:79e:f9f4:3e99 with SMTP id af79cd13be357-7a200c957demr625068385a.1.1722389590163;
+        Tue, 30 Jul 2024 18:33:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1722389590; cv=none;
         d=google.com; s=arc-20160816;
-        b=FMILQlGMyp0NrBgCJXswAsweSylXyPUJXzSyL3J3pjrgBRSYfAgxZi9jjNhP5ouFtA
-         GcsucO9/4y7BV+jCIvWy8Dt2UHazkS4DNzV+0f5mYkR9uskz8bXLwyfNvbx3X+6oxYaI
-         xyeFvVlus+q8vV/3HN7LD5/eEKnWNwnjUK6bXqhodvefO5rvvUXeAh/qSSV09FZRFgod
-         e6hDigbAn7L3pnLoZEit29NHwg1OjXygqFSdmSK+bGBnXDlNjD23ypmADLa69pQX0CxL
-         wI5rkwn8i+uPhd1u8kwf+lDEQyGngm3HpK8uNlkYKuHMl1+4Gc5n3WA82QVl7+KImsMg
-         ky+A==
+        b=HSE3PCc8rp9oHpL5TBZBJXnUPR0pjNtka6lul5Yiw1+8RKWza372SP0M0jJ2RrCeB2
+         36+k8bI5Ve4OvInSFgbHEkdIeMiN4ZlJUylBY1GVyntkuIKo/UchN5eZCjSQY6l9IE5U
+         NJClVbfKg0UOh9bYNUrZvBj9DQym9F2s12PlPFfKQ5VPPWBbX8RLQy0152lM6Vkl9OVt
+         PCAIYSZTeEcMzZRiI0i9/wfhZYxQ9M1p91xJYcPlh6Tj0FmdQQxVauU58xMSDCQvqQVH
+         ii18+mfocuSQvNADsw1XzgQ6WMMH31aH5t87RHoLXzM1Fxu19R9pg2M1OpIuj//eWLtE
+         OE2Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:content-language:references:to:subject:user-agent
          :mime-version:date:message-id:dkim-signature;
-        bh=9biiJL0mbDr1bvDdX9pp1KXU1e+FESJgSWe1rySFiE4=;
-        fh=SuS2+1TrhxI/naHgtjWpv+Nii/ZEqVUeInjWBTwIQcM=;
-        b=DUXIEPAjdC+qZQV42yqYFlvKB/UuYRTiJ2h+mtJ+QZ88ySGSsxtlQPwa4Dtneor2Eh
-         8mXG8gGeUA/lYkz9AVHPcyEEa/+JT4oWRICKadjjL4pyHh8335mY/V8ZLFC86EXJFeJE
-         IZWigI+LbkCl6IWxmOwi/TYDkyt1SBgXMqymvsoegbuP960BG84zyoJ5/4Jj6UOB32e/
-         F4RoAeu5P9zH/m/MYSX2eoJ1XDwy65lyE3eaeFmEqLEoKMv1pFsFdI5rrcvc8souttH1
-         BYFyDdTa/Rd9ypQG5pcZuZPs1kuJaXis5IYGPkpYpAWIq/qFJoPkBGuPm21+X2+DquCg
-         5x2g==;
+        bh=1oteILznRxVr7CPFVh2RmwhT/jBsMn+PiHmOwHDEC+k=;
+        fh=9bB4u0GwD4cxCOQ9ZuV/muR18HZpfrnIDeBNJDQene4=;
+        b=DLGDQompBA3uaeh3txtrMyO/fFg3ar+M0ntIgd6jZwLMrFfbNAjb3IA4b18/nLTA9N
+         Yz4E4SHZ4v9ZqjBHhPS50y4APe6MIsvwT/n0tx4L79OwfSEl5vbyczVfySgZcvpB9ti2
+         iz//b/q/qYarBt3Di+QeZSuxpN71/GVniXZq4ItIxbMCjVctCnkAVzesJCSj9VNTE7og
+         wFmro3ycE8jI1wAzhpb9oy/2rtb7UiX7xhP5X+4mTaBwHWbhKxREvkOpTGtQN7kreZFd
+         GIO0pe4DkSaJBsWUsStZKayDJMP/viP6lcON/4xZrSprs/CobjWF+6MIXn4pfyhL8lKJ
+         uvVQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=SaxsTTJA;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=phKotCfx;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6bb3fb0525asi150604016d6.518.2024.07.30.18.30.54
+        by mx.google.com with ESMTPS id af79cd13be357-7a1dc4dc775si1294940885a.460.2024.07.30.18.33.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 30 Jul 2024 18:30:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 30 Jul 2024 18:33:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=SaxsTTJA;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=phKotCfx;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sYyAO-0007M5-Dz; Tue, 30 Jul 2024 21:30:12 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1sYyCj-0003yh-UK; Tue, 30 Jul 2024 21:32:37 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1sYyAM-0007KP-Hq
- for qemu-arm@nongnu.org; Tue, 30 Jul 2024 21:30:10 -0400
-Received: from mail-pj1-x1035.google.com ([2607:f8b0:4864:20::1035])
+ id 1sYyCi-0003vK-IK
+ for qemu-devel@nongnu.org; Tue, 30 Jul 2024 21:32:36 -0400
+Received: from mail-pf1-x433.google.com ([2607:f8b0:4864:20::433])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1sYyAK-0005zo-6q
- for qemu-arm@nongnu.org; Tue, 30 Jul 2024 21:30:09 -0400
-Received: by mail-pj1-x1035.google.com with SMTP id
- 98e67ed59e1d1-2cb4b7fef4aso4013658a91.0
- for <qemu-arm@nongnu.org>; Tue, 30 Jul 2024 18:30:07 -0700 (PDT)
+ id 1sYyCg-0006Yy-TH
+ for qemu-devel@nongnu.org; Tue, 30 Jul 2024 21:32:36 -0400
+Received: by mail-pf1-x433.google.com with SMTP id
+ d2e1a72fcca58-70d18112b60so379572b3a.1
+ for <qemu-devel@nongnu.org>; Tue, 30 Jul 2024 18:32:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1722389406; x=1722994206; darn=nongnu.org;
+ d=linaro.org; s=google; t=1722389553; x=1722994353; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:to:subject:user-agent:mime-version:date:message-id:from
  :to:cc:subject:date:message-id:reply-to;
- bh=9biiJL0mbDr1bvDdX9pp1KXU1e+FESJgSWe1rySFiE4=;
- b=SaxsTTJAfrOCOaqj+ztyTj0mfXynI3A7fBy8s2Cep/VhaFJIGcDd9erjzrdMc1CLxP
- XAL6pT7hft2T74c/yJYuRTaCn1JKsfpn7kOIiG3U8KcJjASpKmeCznPC/uGDwzo8BGHd
- o9g8nkJ5dMgTLkE0xeR2wrPoDRrwYacuM0fo4cpdVR/i649wuqUy6Gx2I0N0bCD8/RW3
- NMyzqOrMExX0EAZ9WDQSP4Eq0d7q18E7j/xnkXEx4qvdLpY+volt0FsK+nSeMVwI60qr
- 7nu/YjYf4N3PNeT0GZeO84MN5nEoJEr7hsPvoDXctFKH0EGjQmveJoAuyReU45pCoYjf
- Tuwg==
+ bh=1oteILznRxVr7CPFVh2RmwhT/jBsMn+PiHmOwHDEC+k=;
+ b=phKotCfxFqeZ6FRt1VlahNmhaqAxCbJyRsKXfjDNda3pxDHC6mJs+9v5F9HeKCSf1L
+ GjLzJ109aNGW8AC8BotiCbrwuIxtFHwLlR101AfdsZvQjWgJmylUH8u6H7/03vngbC9W
+ XyyjnGrSm64BopRfLb+q+CvD5VVkewe79SZe4x01aYr6K4XuiARhXrsapwkLlgWVXaSL
+ SrelCRn60t670QnyGiuSU3gty0q3bgBWDj8FQoP+AIug/3AlNtlCdJ9rgtvZY2oJoPse
+ ad5WHeuBDTucxrqPFWjj7JdwkWroCfWieSnOu5CDvVFsK6TWZ+ApXNX5O+jkt32Ic88T
+ oJ+g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1722389406; x=1722994206;
+ d=1e100.net; s=20230601; t=1722389553; x=1722994353;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:to:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=9biiJL0mbDr1bvDdX9pp1KXU1e+FESJgSWe1rySFiE4=;
- b=E0KATvlTASq/RTFV6hHUJjkEEt1c8g4P1PyHmp1MTV6ltHQSiiM4EDSQ5+UpDMxEHX
- rSn+ek6raGmnlmFWzgo/OCz+sDoNd+tdN4OE4nWOFVsSqN/IzHac73FvTVIgnj8dYpaj
- QzP6Gv18UlT8U+sd3kz/CdxZU4pBNpXxqs3XERmNt6fXb2At9OeAykP9q9S7lOsCx0PL
- rLI2rqI0wVNLUjWB2RQdn+jV8V2Sc/426jaCUiOl4PBDJlH9krvz9tRbeLyrzrNAf8TC
- 2AwKB0xqsLaPEm3m1GMDRFcPPk9MwE4mnmdcxV8nPY4wv8xLNRInohpxLdO0BwAs/roV
- Essg==
+ bh=1oteILznRxVr7CPFVh2RmwhT/jBsMn+PiHmOwHDEC+k=;
+ b=LVvuhSn3vYk19NjsZOkurLGX5D63S4gnStyIfgDsgYwL9wiUEZ468XOGWi/72lMhqe
+ F0EPL6t9TfApBf3KiSznUTHtnCLKYGwlIP6Gma6inUUT61wysmS3yUFNawq66fe2bUHm
+ 6s5fGc8mwVOAa6NIQXPpATUc5j/vdF09yymwZbzK80P+5UwYBdX43sybX9rhXn/RVut7
+ vVw/WQBpR2BXuFUDPaDXr0cqINjKzRU8xoYbX8r2xzh6METmmcNHV7UQ5+hnHPLAVZY3
+ 43veetcGl4RvfDqRfXAxBJH6/xUNWjPe9GeiXA08q/FWxxnq+F9MDX8A3bCwjnZamLbQ
+ rIeQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWXYA+6desavSH950deZPJmQ81rVqe9EcJWc5Fj1pqjCvdr6GOOQ5CdFIiE+yhRQV3WJdBpRzt16LyWHsnFfCzLDTlY
-X-Gm-Message-State: AOJu0YyuAOEJ2kiojTdT+OpZG8PEktYC0npdBxKx2O/ehSHeo3mMEgCZ
- fUA3KfFqb+JOaenpJkEjB7+G9lfdD2X2Jn3Ji0sRPIfspaZs5LXA7BMMXJGdCLM=
-X-Received: by 2002:a17:90a:888:b0:2cb:55f9:b7c5 with SMTP id
- 98e67ed59e1d1-2cf7e1df02dmr14985782a91.12.1722389406278; 
- Tue, 30 Jul 2024 18:30:06 -0700 (PDT)
+ AJvYcCXNFEhAEO7IhtwbJO+n8pIIfUdRrAzMP1OxjS7MHL1Fy2IJHsS2pDb3KNIMZwXsWczBWsr3vRSFiEcAzrcj9c7VYpiSYWw=
+X-Gm-Message-State: AOJu0YxnUHuma3DVa73LzBBRBjeAhRtgjBaKU78Q23knTssjjFIjsOeJ
+ W9zdrEPPGmaw22MpA4DRtLeRSvEgu0wf5zgazsDqULw2TrsBcS0GZJroHfnyM8Q=
+X-Received: by 2002:aa7:888a:0:b0:70e:cee8:264a with SMTP id
+ d2e1a72fcca58-70efe400da0mr7110101b3a.1.1722389553101; 
+ Tue, 30 Jul 2024 18:32:33 -0700 (PDT)
 Received: from ?IPV6:2403:580a:f89b:0:7406:659b:9ac8:69bb?
  (2403-580a-f89b-0-7406-659b-9ac8-69bb.ip6.aussiebb.net.
  [2403:580a:f89b:0:7406:659b:9ac8:69bb])
  by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-2cfdc4bd11fsm72812a91.55.2024.07.30.18.30.04
+ 41be03b00d2f7-7a9f7d6b09dsm9460736a12.10.2024.07.30.18.32.30
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 30 Jul 2024 18:30:05 -0700 (PDT)
-Message-ID: <aa95043b-2192-417f-9c46-5d3b92f8dd92@linaro.org>
-Date: Wed, 31 Jul 2024 11:30:00 +1000
+ Tue, 30 Jul 2024 18:32:32 -0700 (PDT)
+Message-ID: <f02477f2-2851-433a-b8d8-0c2b3d1358f5@linaro.org>
+Date: Wed, 31 Jul 2024 11:32:27 +1000
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/8] target/arm: Allow setting the FPCR.EBF bit for
- FEAT_EBF16
+Subject: Re: [PATCH 2/8] target/arm: Pass env pointer through to sme_bfmopa
+ helper
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 References: <20240730160306.2959745-1-peter.maydell@linaro.org>
- <20240730160306.2959745-2-peter.maydell@linaro.org>
+ <20240730160306.2959745-3-peter.maydell@linaro.org>
 Content-Language: en-US
 From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20240730160306.2959745-2-peter.maydell@linaro.org>
+In-Reply-To: <20240730160306.2959745-3-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1035;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1035.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::433;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x433.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -123,36 +123,88 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: U1JAjeozsNyn
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: oDjaFw3iMn6h
 
-On 7/31/24 02:02, Peter Maydell wrote:
-> FEAT_EBF16 adds one new bit to the FPCR floating point control
-> register.  Allow this bit to be read and written when the ID
-> registers indicate the presence of the feature.
+On 7/31/24 02:03, Peter Maydell wrote:
+> To implement the FEAT_EBF16 semantics, we are going to need
+> the CPUARMState env pointer in every helper function which calls
+> bfdotadd().
 > 
-> Note that because this new bit is not in FPSCR_FPCR_MASK the bit is
-> not visible in the AArch32 FPSCR, and FPSCR writes do not affect it.
+> Pass the env pointer through from generated code to the sme_bfmopa
+> helper. (We'll add the code that uses it when we've adjusted
+> all the helpers to have access to the env pointer.)
 > 
-> Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->   target/arm/cpu-features.h | 5 +++++
->   target/arm/cpu.h          | 1 +
->   target/arm/vfp_helper.c   | 8 ++++++--
->   3 files changed, 12 insertions(+), 2 deletions(-)
+>   target/arm/tcg/helper-sme.h    | 4 ++--
+>   target/arm/tcg/sme_helper.c    | 4 ++--
+>   target/arm/tcg/translate-sme.c | 2 +-
+>   3 files changed, 5 insertions(+), 5 deletions(-)
+> 
+> diff --git a/target/arm/tcg/helper-sme.h b/target/arm/tcg/helper-sme.h
+> index 659867a1faf..f12d903aa44 100644
+> --- a/target/arm/tcg/helper-sme.h
+> +++ b/target/arm/tcg/helper-sme.h
+> @@ -126,8 +126,8 @@ DEF_HELPER_FLAGS_7(sme_fmopa_s, TCG_CALL_NO_RWG,
+>                      void, ptr, ptr, ptr, ptr, ptr, ptr, i32)
+>   DEF_HELPER_FLAGS_7(sme_fmopa_d, TCG_CALL_NO_RWG,
+>                      void, ptr, ptr, ptr, ptr, ptr, ptr, i32)
+> -DEF_HELPER_FLAGS_6(sme_bfmopa, TCG_CALL_NO_RWG,
+> -                   void, ptr, ptr, ptr, ptr, ptr, i32)
+> +DEF_HELPER_FLAGS_7(sme_bfmopa, TCG_CALL_NO_RWG,
+> +                   void, env, ptr, ptr, ptr, ptr, ptr, i32)
+>   DEF_HELPER_FLAGS_6(sme_smopa_s, TCG_CALL_NO_RWG,
+>                      void, ptr, ptr, ptr, ptr, ptr, i32)
+>   DEF_HELPER_FLAGS_6(sme_umopa_s, TCG_CALL_NO_RWG,
+> diff --git a/target/arm/tcg/sme_helper.c b/target/arm/tcg/sme_helper.c
+> index 2af2b957cb6..f172225b2f2 100644
+> --- a/target/arm/tcg/sme_helper.c
+> +++ b/target/arm/tcg/sme_helper.c
+> @@ -1080,8 +1080,8 @@ void HELPER(sme_fmopa_h)(CPUARMState *env,
+>       }
+>   }
+>   
+> -void HELPER(sme_bfmopa)(void *vza, void *vzn, void *vzm, void *vpn,
+> -                        void *vpm, uint32_t desc)
+> +void HELPER(sme_bfmopa)(CPUARMState *env, void *vza, void *vzn, void *vzm,
+> +                        void *vpn, void *vpm, uint32_t desc)
 
+Per this morning's review of do_outprod_env, I think env should be penultimate, as for 
+other gen_helper_gvec_5_ptr functions.
+
+Otherwise,
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
+
 r~
+
+>   {
+>       intptr_t row, col, oprsz = simd_maxsz(desc);
+>       uint32_t neg = simd_data(desc) * 0x80008000u;
+> diff --git a/target/arm/tcg/translate-sme.c b/target/arm/tcg/translate-sme.c
+> index 8e9332f1898..bcb502feb05 100644
+> --- a/target/arm/tcg/translate-sme.c
+> +++ b/target/arm/tcg/translate-sme.c
+> @@ -355,7 +355,7 @@ TRANS_FEAT(FMOPA_d, aa64_sme_f64f64, do_outprod_fpst, a,
+>              MO_64, FPST_FPCR, gen_helper_sme_fmopa_d)
+>   
+>   /* TODO: FEAT_EBF16 */
+> -TRANS_FEAT(BFMOPA, aa64_sme, do_outprod, a, MO_32, gen_helper_sme_bfmopa)
+> +TRANS_FEAT(BFMOPA, aa64_sme, do_outprod_env, a, MO_32, gen_helper_sme_bfmopa)
+>   
+>   TRANS_FEAT(SMOPA_s, aa64_sme, do_outprod, a, MO_32, gen_helper_sme_smopa_s)
+>   TRANS_FEAT(UMOPA_s, aa64_sme, do_outprod, a, MO_32, gen_helper_sme_umopa_s)
+

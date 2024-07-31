@@ -1,187 +1,223 @@
-Received: by 2002:a17:505:3f8c:b0:1be9:327d:8ee3 with SMTP id bm12csp187107njb;
-        Tue, 30 Jul 2024 23:37:59 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWZEbmdzZueTVaJcddHejzPoM5ei1a2OpmjXBYGTgoqDSVk82kfowK9Tq1bJeRmXUu7bJZQcq0yKWgtWuNs61FxGK+qI3LU
-X-Google-Smtp-Source: AGHT+IEqIuKJrpO0CYoWNYK2WWwefjJltKHZekfXCNgqiwsI/uq+ZZZxZf5ScWpl3hquFpinFdeg
-X-Received: by 2002:ad4:5f4b:0:b0:6b5:e6b3:72fd with SMTP id 6a1803df08f44-6bb55a4d287mr163518716d6.29.1722407879074;
-        Tue, 30 Jul 2024 23:37:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1722407879; cv=none;
+Received: by 2002:a17:505:3f8c:b0:1be9:327d:8ee3 with SMTP id bm12csp197971njb;
+        Wed, 31 Jul 2024 00:11:48 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCVZA/JnrYIm7Nu7WH55NLd/41rd/1/8WwHlnp8WOOkKE/KDq2mbjs8i8gIcLTiSAd6odscoHgznlFk/hEjf/9xIJv9xjX/0
+X-Google-Smtp-Source: AGHT+IHb8vMKSzsWq1kW5ToA5/4U3U+gHTz6kOwRgJ1eeHYxnpFcrqW8mbQwhQrMyZZlZI30xkkc
+X-Received: by 2002:a17:902:e810:b0:1f7:1655:825c with SMTP id d9443c01a7336-1ff04860a59mr128567565ad.36.1722409907994;
+        Wed, 31 Jul 2024 00:11:47 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1722409907; cv=pass;
         d=google.com; s=arc-20160816;
-        b=gt42+t3DsLO0N9eBJ18ucvK2oEv1NYcuvsqRVgKV4xoprvYp47hh26R595IFuSd2ut
-         0n720UgWZzTDLx2xcurlXuxoKD+lTbiDKTaciL45YLTVh8dEMW9Z6bPdqPYqaiXSrOtA
-         B9zl5s5sFW6eOHBNoTnxl1QqJlUl7bsEJEzaVHYblI0pSjiWpIUZpyQJc85JORDBpzBt
-         qtlFEvHkMP2tNBqSn5ZEI51qiYgokDcIlQeoqa5lx3N9AR9dw2eSZFbDniu2MR9fRfhA
-         S3Fe2w9VRg9LD+kda46ngP8zDWsBs80PnShCKgUZcOHdL/vx6liwEuMYPZ9Clxlfd2VO
-         1u3w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:user-agent:message-id:date:references:in-reply-to
-         :subject:cc:to:from:dkim-signature;
-        bh=wnUTEtS+No9S/JuqPITES1G3oDrohvDkWf9tXSxF6fE=;
-        fh=BFXneFjqdmejipxZONeQdOrAwPaPLkMKfOeOm8r0t5U=;
-        b=rdZ2dTJvyJxKf4SlPGkZlSSnbJ7eq2ZcIS8z9+6mC5aGP/KrO8jEmWHJJc39me3pTl
-         Fv9M6GFnYXEJi8UOmqti5CFcFA78ONHMwiyJzGLIptuJsueLAwN3tG9u3OVzpfqWLoh1
-         7n4fNR2YmhvgnG3bhWGMwRC5zI2zdAUE/kA9kHTFm/GuWKj3I0SVHqopQ0rBB+GnZk0V
-         qysz1/kUwHjWu7urfBb5aL1djRNHxKpB5BI43Dx/COhHqFufUxTywt0hWcQ6La2NDK+q
-         e99h7+7f9O5FkU70deCV9MsqADXhMzR8UjqIgi+LdhkNjuwU2dn87bMaze+IYUT4dT2E
-         Eu7A==;
+        b=zOB2jnqI65EXFfyEn/84nYvMm/o6UavcINppJ684BGGvmmpJyYwqUbhSo/YhdNaorx
+         1/mi/tZHYBjrZqWUslvoCaT/glXtdqUDvL00TvpG2S2pTJo2wjwBlpoGRHRA59IDOSzn
+         4LlcUgVi2Eua/oTyu39iMQ6TgUnOLqyPqW3VKaKC2sHAXZWtj0ixiV1rjEjmVagtpOil
+         atByffo02MfqnclFyE35vcGR8qt7FDyFr+mJvV2rzTR6s6bstEWW9f5LWxwTHd3DStCa
+         rNFKo1Q6TXPvWeHNnS3V3DHH0dRV/xaIqeuakVpY0dBsXDMWh9hTzEELujP7A6ypxhpw
+         u/CQ==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=HlW+ExTIKkZyHiDMZ70UeBNPz1aZgwFkbfWiFyAB3xM=;
+        fh=cuOXYuT2vxTrAxtAg0B1z7j6kE1f5xHaYl1HcUk8eew=;
+        b=MxbsskfZ2ZLW+8kEVo+n71r6pNrblx48GU/cMtS/4/D35nu2PLfGvh9BqDEX5Gkbhh
+         JqeWlz0FtqdDNl8JxrCTNMK4zD62OloBKBYW/DVWRcyvACtlTfKjtTrDwdoY7xMzTDvt
+         pZ2GVzlbjH+CPGmK4zqEwQOkti5DISbN8OUpr1VvXUksv/8JsdEU73fJZ0Jv9+KQ6bOH
+         k5ympXwA55EbRgg/oW38PCYxDegCZ79n3wosJRlh4yOCYKTXDXikrZMNSP/7oW2t4g2e
+         Hu5RwPOlZ8EHyoUg3vOY5lIxLeoeLDKLNPY2kVa02rt6xwvpsN/i0OOHXnYzyOaLfH9R
+         UAqg==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="FKx/PlCv";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6bb3fa867e4si144708686d6.258.2024.07.30.23.37.58
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=eReLRDpa;
+       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
+       spf=pass (google.com: domain of linux-kernel+bounces-268668-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-268668-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+Return-Path: <linux-kernel+bounces-268668-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sy.mirrors.kernel.org (sy.mirrors.kernel.org. [2604:1380:40f1:3f00::1])
+        by mx.google.com with ESMTPS id d9443c01a7336-1fed8021680si142695305ad.643.2024.07.31.00.11.47
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 30 Jul 2024 23:37:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 31 Jul 2024 00:11:47 -0700 (PDT)
+Received-SPF: pass (google.com: domain of linux-kernel+bounces-268668-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) client-ip=2604:1380:40f1:3f00::1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="FKx/PlCv";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sZ2xz-0002oE-VK; Wed, 31 Jul 2024 02:37:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1sZ2xy-0002hS-79
- for qemu-arm@nongnu.org; Wed, 31 Jul 2024 02:37:42 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1sZ2xv-0006cW-GG
- for qemu-arm@nongnu.org; Wed, 31 Jul 2024 02:37:41 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1722407858;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=wnUTEtS+No9S/JuqPITES1G3oDrohvDkWf9tXSxF6fE=;
- b=FKx/PlCvHa5bQctYF7tReIPWefKPZID4lH4DGVpLRYcpL8+B3xPDlli5meaOncXyhr/OFb
- y2HOY7uL4RtHURLjwdx4x2CjX8Wfw59Fk6U6XekPLhSjev+742x0xZ6be9ExkN35v7WMbo
- xcyarc7Qgh4icF0lWYE2LsgBEthEcAY=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-518-uE_kmhtRPSqnjMjlJ6wdWA-1; Wed,
- 31 Jul 2024 02:37:30 -0400
-X-MC-Unique: uE_kmhtRPSqnjMjlJ6wdWA-1
-Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id EF29B1955D52; Wed, 31 Jul 2024 06:37:16 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.39.192.65])
- by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 7061D19560B2; Wed, 31 Jul 2024 06:37:13 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 4172521E668B; Wed, 31 Jul 2024 08:37:11 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Avihai Horon <avihaih@nvidia.com>
-Cc: Daniel P. =?utf-8?Q?Berrang=C3=A9?= <berrange@redhat.com>,
- qemu-devel@nongnu.org,
- alex.williamson@redhat.com,  andrew@codeconstruct.com.au,
- andrew@daynix.com,  arei.gonglei@huawei.com,  berto@igalia.com,
- borntraeger@linux.ibm.com,  clg@kaod.org,  david@redhat.com,
- den@openvz.org,  eblake@redhat.com,  eduardo@habkost.net,
- farman@linux.ibm.com,  farosas@suse.de,  hreitz@redhat.com,
- idryomov@gmail.com,  iii@linux.ibm.com,  jamin_lin@aspeedtech.com,
- jasowang@redhat.com,  joel@jms.id.au,  jsnow@redhat.com,
- kwolf@redhat.com,  leetroy@gmail.com,  marcandre.lureau@redhat.com,
- marcel.apfelbaum@gmail.com,  michael.roth@amd.com,  mst@redhat.com,
- mtosatti@redhat.com,  nsg@linux.ibm.com,  pasic@linux.ibm.com,
- pbonzini@redhat.com,  peter.maydell@linaro.org,  peterx@redhat.com,
- philmd@linaro.org,  pizhenwei@bytedance.com,  pl@dlhnet.de,
- richard.henderson@linaro.org,  stefanha@redhat.com,
- steven_lee@aspeedtech.com,  thuth@redhat.com,  vsementsov@yandex-team.ru,
- wangyanan55@huawei.com,  yuri.benditovich@daynix.com,
- zhao1.liu@intel.com,  qemu-block@nongnu.org,  qemu-arm@nongnu.org,
- qemu-s390x@nongnu.org,  kvm@vger.kernel.org,  =?utf-8?Q?C=C3=A9dric?= Le
- Goater <clg@redhat.com>
-Subject: Re: [PATCH 01/18] qapi: Smarter camel_to_upper() to reduce need for
- 'prefix'
-In-Reply-To: <462d7540-f9ad-4380-8056-232e69f161e9@nvidia.com> (Avihai Horon's
- message of "Wed, 31 Jul 2024 08:59:28 +0300")
-References: <20240730081032.1246748-1-armbru@redhat.com>
- <20240730081032.1246748-2-armbru@redhat.com>
- <ZqiutRoQuAsrllfj@redhat.com> <87mslzgjde.fsf@pond.sub.org>
- <9b147a34-4641-4b4c-a050-51ceb3ea6a67@nvidia.com>
- <87jzh2kuux.fsf@pond.sub.org>
- <462d7540-f9ad-4380-8056-232e69f161e9@nvidia.com>
-Date: Wed, 31 Jul 2024 08:37:11 +0200
-Message-ID: <87wml2jcdk.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13)
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=eReLRDpa;
+       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
+       spf=pass (google.com: domain of linux-kernel+bounces-268668-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-268668-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by sy.mirrors.kernel.org (Postfix) with ESMTPS id B3797B22A24
+	for <alex.bennee@linaro.org>; Wed, 31 Jul 2024 07:11:45 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 1F9981A4F16;
+	Wed, 31 Jul 2024 07:11:40 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="eReLRDpa"
+Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D271133CFC
+	for <linux-kernel@vger.kernel.org>; Wed, 31 Jul 2024 07:11:39 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=10.30.226.201
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1722409899; cv=none; b=bA7btzHt8ZPCCZg33Bd0Wreg4mufhpMQGohpzFayaykXGY+6oQ4DaXyAQKuh83gTPER7baUIzpppaBCBzlDf/Mgba0Sx82keaaZb7zryAmxVyRZX9t/tdu6fcpW/yqO4lYgdyhRpmNEMxViLkwqPQcVhbISCOXkPqIknZB849+4=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1722409899; c=relaxed/simple;
+	bh=1mcVc1Ueop4K8tFmzU4UoOsc564uDrYB7DSVbqZjfng=;
+	h=Date:From:To:Cc:Subject:Message-ID:In-Reply-To:References:
+	 MIME-Version:Content-Type; b=h+P1E1By62gH/KoA9+tDlv0c2a6CR1/NW6ggZs127nOWx/N9nDVqZD0kFWUoWjOhi2W+gpERF5W2x5CCzITKOyYRqGLuCiTUmHFaXlPR7zGwIqkBVLtoHIQmZyy7SwHPECYiYnxsIAcaabhDGFFxEilFP2lpQFAwUuAeDj6Cbuc=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=eReLRDpa; arc=none smtp.client-ip=10.30.226.201
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6CED9C116B1;
+	Wed, 31 Jul 2024 07:11:36 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1722409899;
+	bh=1mcVc1Ueop4K8tFmzU4UoOsc564uDrYB7DSVbqZjfng=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=eReLRDpaXNlyUK6zTE3tj16Cpe8H1D8jaOFIwN4MAQPBkVNDqprZyGblRQD8YBzbF
+	 0LGb+x6QErM/2oWBBxcRhEzi/0aJpuzaSMhBjDAC8EqVlzBJyOe92/8DFFKweTYGU1
+	 CyF04Eekq/T86cSK/5+3i+sbN4+r66beuMnNMQ+MGhrO1lEFwWicmugeHCZN/Q9hwi
+	 RUQPD9Sw3+Fq56Tt9U8vJY2/TzrE/OJFyn+JSVVDc51jIKj6dPvA+ZEA2DCBZajf0V
+	 d+nFTdQz+shKAyz0X7CKV4DRPNHWy7gZhCedc8yGEHvkkR4khH+ukXURjuyAmTrFuF
+	 Fq/o7r/Nrtogw==
+Date: Wed, 31 Jul 2024 09:11:33 +0200
+From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+To: Igor Mammedov <imammedo@redhat.com>
+Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>, Shiju Jose
+ <shiju.jose@huawei.com>, "Michael S. Tsirkin" <mst@redhat.com>, Ani Sinha
+ <anisinha@redhat.com>, Dongjiu Geng <gengdongjiu1@gmail.com>, Eric Blake
+ <eblake@redhat.com>, Markus Armbruster <armbru@redhat.com>, Michael Roth
+ <michael.roth@amd.com>, Paolo Bonzini <pbonzini@redhat.com>, Peter Maydell
+ <peter.maydell@linaro.org>, linux-kernel@vger.kernel.org,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [PATCH v3 4/7] acpi/ghes: Add a logic to handle block addresses
+ and FW first ARM processor error injection
+Message-ID: <20240731091133.07ddd58c@foz.lan>
+In-Reply-To: <20240730131709.10e72c7d@imammedo.users.ipa.redhat.com>
+References: <cover.1721630625.git.mchehab+huawei@kernel.org>
+	<6a3542a7d8acfbf88c906ec6f6dc5a697257b461.1721630625.git.mchehab+huawei@kernel.org>
+	<20240730131709.10e72c7d@imammedo.users.ipa.redhat.com>
+X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
+Precedence: bulk
+X-Mailing-List: linux-kernel@vger.kernel.org
+List-Id: <linux-kernel.vger.kernel.org>
+List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
-X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.125,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 7F84HrzCakfc
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-TUID: 1keDNqz4Hjd1
 
-Avihai Horon <avihaih@nvidia.com> writes:
+Em Tue, 30 Jul 2024 13:17:09 +0200
+Igor Mammedov <imammedo@redhat.com> escreveu:
 
-> On 31/07/2024 8:12, Markus Armbruster wrote:
->> External email: Use caution opening links or attachments
->>
->>
->> Avihai Horon <avihaih@nvidia.com> writes:
->>
->>> On 30/07/2024 15:22, Markus Armbruster wrote:
->>>> Avihai, there's a question for you on VfioMigrationState.
->>>>
->>>> Daniel P. Berrang=C3=A9 <berrange@redhat.com> writes:
->>>>
->>>>> On Tue, Jul 30, 2024 at 10:10:15AM +0200, Markus Armbruster wrote:
->> [...]
->>
->>>> * VfioMigrationState
->>>>
->>>>     Can't see why this one has a prefix.  Avihai, can you enlighten me?
->>>
->>> linux-headers/linux/vfio.h defines enum vfio_device_mig_state with valu=
-es VFIO_DEVICE_STATE_STOP etc.
->>
->> It does not define any VFIO_DEVICE_STATE_*, though.
->>
->>> I used the QAPI prefix to emphasize this is a QAPI entity rather than a=
- VFIO entity.
->>
->> We define about two dozen symbols starting with VFIO_, and several
->> hundreds starting with vfio_.  What makes this enumeration type
->> different so its members need emphasis?
+> On Mon, 22 Jul 2024 08:45:56 +0200
+> Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
+> 
+> that's quite a bit of code that in 99% won't ever be used
+> (assuming error injection testing scenario),
+> not to mention it's a hw depended one and governed by different specs.
 >
-> Right. I thought it would be clearer with the QAPI prefix because VFIO_DE=
-VICE_STATE_* and VFIO_MIGRATION_STATE_* have similar values.
->
-> But it's not a must. If you want to reduce prefix usage, go ahead, I don'=
-t have a strong opinion about it.
+> Essentially we would need to create _whole_ lot of QAPI
+> commands to cover possible errors for no benefit to QEMU.
+> 
+> Let take for example very simple _OST status reporting,
+> QEMU of cause can decode values and present it to users in
+> more 'presentable' form. However instead of translating
+> numbers (aka. spec language) into a made up QEMU language,
+> QEMU just passes values up the stack and users can use
+> well defined spec to interpret its meaning.
+> 
+> benefits are: QEMU doesn't have to maintain translation
+> code and QAPI ABI is limited to passing raw values.
+> 
+> Can we do similar thing here as well?
+> i.e. simplify error injection commands to
+> a command that takes raw value and passes it
+> to guest (QEMU here acts as proxy, if I'm not
+> mistaken)?
+> 
+> Preferably make it generic enough to handle
+> not only ARM but other error formats HEST is
+> able to handle.
 
-Thanks!
+A too generic interface doesn't sound feasible to me, as the
+EINJ code needs to check QEMU implementation details before
+doing the error inject.
 
+See, processor is probably the simplest error injection
+source, as most of the fields there aren't related to how
+the hardware simulation is done.
+
+Yet, if you see patch 7 of this series, you'll notice that some
+fields should actually be filled based on the emulation.
+
+On ARM, we have some IDs that depend on the emulation
+(MIDR, MPIDR, power state). Doing that on userspace may require
+a QAPI to query them.
+
+The memory layout, however, is the most complex one. Even for
+an ARM processor CPER (which is the simplest scenario), the 
+physical/virtual address need to be checked against the emulation
+environment.
+
+Other error sources (like memory errors, CXL, etc) will require
+a deep knowledge about how QEMU mapped such devices.
+
+So, in practice, if we move this to an EINJ script, we'll need
+to add a probably more complex QAPI to allow querying the memory
+layout and other device and CPU specific bindings.
+
+Also, we don't know what newer versions of ACPI spec will reserve
+us. See, even the HEST table contents is dependent of the HEST 
+revision number, as made clear at the ACPI 6.5 notes:
+
+	https://uefi.org/specs/ACPI/6.5/18_Platform_Error_Interfaces.html#acpi-error-source
+
+and at:
+
+	https://uefi.org/specs/ACPI/6.5/18_Platform_Error_Interfaces.html#error-source-structure-header-type-12-onward
+
+So, if we're willing to add support for a more generic "raw data"
+QAPI, I would still do it per-type, and for the fields that won't
+require knowledge of the device-emulation details.
+
+Btw, my proposal on patch 7 of this series is to have raw data
+for:
+	- the error-info field;
+	- registers dump;
+	- micro-architecture specific data.
+
+I don't mind trying to have more raw data there as I see (marginal) 
+benefits of allowing to generate CPER invalid records [1], but some of
+those  fields need to be validated and/or filled internally at QEMU - if
+not forced to an specific value by the caller.
+
+[1] a raw data EINJ can be useful for fuzzy logic fault detection to 
+    check if badly formed packages won't cause a Kernel panic or be
+    an exploit. Yet, not really a concern for APEI, as if the hardware
+    is faulty, a Kernel panic is not out of the table. Also, if the
+    the BIOS is already compromised and has malicious code on it, 
+    the EINJ interface is not the main concern.
+
+> PS:
+> For user convenience, QEMU can carry a script that
+> could help generate this raw value in user friendly way
+> but at the same time it won't put maintenance
+> burden on QEMU itself.
+
+The script will still require reviews, and the same code will 
+be there. So, from maintenance burden, there won't be much
+difference.
+
+Btw, I'm actually using myself a script to test it, currently
+sitting together with rasdaemon - which is the Linux tool to detect
+and handle hardware errors:
+
+	https://github.com/mchehab/rasdaemon/blob/master/contrib/qemu_einj.py
+
+as it helps a lot when trying to simulate more complex errors.
+
+Once QEMU gains support to inject processor errors, I can prepare a 
+separate patch to move it to QEMU.
+
+Thanks,
+Mauro

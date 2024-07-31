@@ -1,163 +1,187 @@
-Received: by 2002:a17:505:3f8c:b0:1be9:327d:8ee3 with SMTP id bm12csp177211njb;
-        Tue, 30 Jul 2024 23:06:03 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCVYEIkSkrx29HdFf/NrhMBBRZobwcqOV7NpkaN4KaZiJP2MhYG9fnbFil9yQF733U/5YpFz274q3/H9KE/LpMC998zEfC71
-X-Google-Smtp-Source: AGHT+IEDNAEbDnSgRt5Uk5kHtsqrFTT3Hx9i04t567O2v8ASU6qw78pcNEkxefKF6hl24TtEA2V5
-X-Received: by 2002:a05:6902:1b05:b0:e03:4607:10ff with SMTP id 3f1490d57ef6-e0b5459dd6cmr13023274276.42.1722405963201;
-        Tue, 30 Jul 2024 23:06:03 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1722405963; cv=pass;
+Received: by 2002:a17:505:3f8c:b0:1be9:327d:8ee3 with SMTP id bm12csp187107njb;
+        Tue, 30 Jul 2024 23:37:59 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWZEbmdzZueTVaJcddHejzPoM5ei1a2OpmjXBYGTgoqDSVk82kfowK9Tq1bJeRmXUu7bJZQcq0yKWgtWuNs61FxGK+qI3LU
+X-Google-Smtp-Source: AGHT+IEqIuKJrpO0CYoWNYK2WWwefjJltKHZekfXCNgqiwsI/uq+ZZZxZf5ScWpl3hquFpinFdeg
+X-Received: by 2002:ad4:5f4b:0:b0:6b5:e6b3:72fd with SMTP id 6a1803df08f44-6bb55a4d287mr163518716d6.29.1722407879074;
+        Tue, 30 Jul 2024 23:37:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1722407879; cv=none;
         d=google.com; s=arc-20160816;
-        b=Nmt+jsf8YxJRQALp4ZLSvbZ3xTxf1ObCyv3C3N+QdvpIAelZXA82aBG2ofsor8MIsE
-         wLm5VlpmlS2s4b7IkjXpJ6PUZCrdgD2NYavKC2SrsCN4CKH0+RaVCaIBtRoyoev51jWP
-         wEz69tNiYRIaFfLGH5AycZXW9ZT/8D0j11gOJAHqoJ+CQKmwn9pXizrmoi98z1y2gpca
-         bEUwLolH6aP1iTGFLGmYwMngNVd8kfPccSzyqczHkv3DJngixQXe1C4Bp61UWMt+WQDN
-         9kpPjBmBL/pW6WK94Eqd846yUiOUbYKv1+HMTaFpg+oK/rFiMBFif1TJHJbXNMuBUmrv
-         hi6A==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=UOsrkUZYDX/m7dArxc9IOHfcxzXXgWdv9XCJU+WIglE=;
-        fh=xfAwclB+B79zCGqjg3pIlzEo8zAUHDwyxrCdbXa4sEY=;
-        b=VH0vf5QlzNBAQKtubr+d40YYg2D0ERa9lsPpKxYnaW6Gp9d5cyMpaoOHDLRCauLpbq
-         lzXZy+kZLIhKl7Myv5lGpxOk/FwOYyKUdu5ci7l6agT/Lvw+w4fb047kNpm7ngUKEPE0
-         eCB8vQ1bP2jkzfx/M3+wvyNU6ihVmDzBJBSdvtYiP3Lp/1i8oyFD6v5LqGFvcJYZU+Hq
-         7D68x+B5+Q+c502S+PA41MgtbYT/X96gSmZU01IssBmceqnliYyoaoH9cQU0ZbhcygNW
-         dyRv0pzlYTeISSgsvUDwPQkpmB56VVOmoEeyA9V5f0SNVr/y30qxA7uay2UYJrA/Bo1L
-         djlA==;
+        b=gt42+t3DsLO0N9eBJ18ucvK2oEv1NYcuvsqRVgKV4xoprvYp47hh26R595IFuSd2ut
+         0n720UgWZzTDLx2xcurlXuxoKD+lTbiDKTaciL45YLTVh8dEMW9Z6bPdqPYqaiXSrOtA
+         B9zl5s5sFW6eOHBNoTnxl1QqJlUl7bsEJEzaVHYblI0pSjiWpIUZpyQJc85JORDBpzBt
+         qtlFEvHkMP2tNBqSn5ZEI51qiYgokDcIlQeoqa5lx3N9AR9dw2eSZFbDniu2MR9fRfhA
+         S3Fe2w9VRg9LD+kda46ngP8zDWsBs80PnShCKgUZcOHdL/vx6liwEuMYPZ9Clxlfd2VO
+         1u3w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:user-agent:message-id:date:references:in-reply-to
+         :subject:cc:to:from:dkim-signature;
+        bh=wnUTEtS+No9S/JuqPITES1G3oDrohvDkWf9tXSxF6fE=;
+        fh=BFXneFjqdmejipxZONeQdOrAwPaPLkMKfOeOm8r0t5U=;
+        b=rdZ2dTJvyJxKf4SlPGkZlSSnbJ7eq2ZcIS8z9+6mC5aGP/KrO8jEmWHJJc39me3pTl
+         Fv9M6GFnYXEJi8UOmqti5CFcFA78ONHMwiyJzGLIptuJsueLAwN3tG9u3OVzpfqWLoh1
+         7n4fNR2YmhvgnG3bhWGMwRC5zI2zdAUE/kA9kHTFm/GuWKj3I0SVHqopQ0rBB+GnZk0V
+         qysz1/kUwHjWu7urfBb5aL1djRNHxKpB5BI43Dx/COhHqFufUxTywt0hWcQ6La2NDK+q
+         e99h7+7f9O5FkU70deCV9MsqADXhMzR8UjqIgi+LdhkNjuwU2dn87bMaze+IYUT4dT2E
+         Eu7A==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=H4afLWhJ;
-       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
-       spf=pass (google.com: domain of linux-kernel+bounces-268553-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="linux-kernel+bounces-268553-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
-Return-Path: <linux-kernel+bounces-268553-alex.bennee=linaro.org@vger.kernel.org>
-Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [147.75.199.223])
-        by mx.google.com with ESMTPS id af79cd13be357-7a1d7462490si1428888585a.528.2024.07.30.23.06.03
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="FKx/PlCv";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6bb3fa867e4si144708686d6.258.2024.07.30.23.37.58
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 30 Jul 2024 23:06:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of linux-kernel+bounces-268553-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) client-ip=147.75.199.223;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 30 Jul 2024 23:37:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=H4afLWhJ;
-       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
-       spf=pass (google.com: domain of linux-kernel+bounces-268553-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="linux-kernel+bounces-268553-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
-Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ny.mirrors.kernel.org (Postfix) with ESMTPS id D6FA71C217A6
-	for <alex.bennee@linaro.org>; Wed, 31 Jul 2024 06:06:02 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 19FDC12AAE2;
-	Wed, 31 Jul 2024 06:05:51 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="H4afLWhJ"
-Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CCCD982D94
-	for <linux-kernel@vger.kernel.org>; Wed, 31 Jul 2024 06:05:50 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=10.30.226.201
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1722405950; cv=none; b=TjrMLRvEXdy+NBf+ZxbJV4XbWdWHKaGYOtdOE6oNh+vLXmD6WJrmHf/LeeEsayNB0LR83gjz33OgJr3F3vPSrGg+EO/G+xhT5yk7mnRMUyHynH7bng/DBeQgHpSVB7IUU+Lwogo6gqkJiqudQlDqJ+r8jmrK8BoVhOqWXASfZWc=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1722405950; c=relaxed/simple;
-	bh=K4cH+7VCD6e3VyLaYkP+2c/JqPrRcmLYWXVHy/HV82U=;
-	h=Date:From:To:Cc:Subject:Message-ID:In-Reply-To:References:
-	 MIME-Version:Content-Type; b=fdBu3OougOLS1KYeuTwJG+zYbBuK6A1L6IakcL6r2TWHBo+u5fwOuH1HmJjCgyuEbz33mtpx/eKeWXqzfyqKlfpV0tBQIgTZauzw+Jd3VftqyNNpgrZz+wkAqedJVKqcQ8jmRVTy+n1n/znAvThaASWBhpDWK/EwuZWaLjyEZLA=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=H4afLWhJ; arc=none smtp.client-ip=10.30.226.201
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 59BF0C116B1;
-	Wed, 31 Jul 2024 06:05:48 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1722405950;
-	bh=K4cH+7VCD6e3VyLaYkP+2c/JqPrRcmLYWXVHy/HV82U=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=H4afLWhJS8R/dW6CabjXEeTVbKhhnxODQ7ygwxzyJzgnactWW7rkADN5YaX+/wtmY
-	 OoPJA8wapzWBgt7Oy3e/9yYxCaWhfwsgGOH2/WYR0pib6wrl2TIMMpuMij0ABMos7I
-	 r2ObwHJBQuSLTgA6MV+IuNyGY0j3frV2rYkmfIYMLKx2sR1ulIf/05b3Wiye1zZodO
-	 BE8eLipiHYRiJZxlHhqQpiOkTKukTs84ucYBmKmmgwQeHKyQIQ7UwMVO5ARg4g6lfr
-	 MYeytj/eRqToLRc0ikHlQR05k1KLYK6v5vRdHXmHZcizsIDKm+DOMQzyAuKzBKL10E
-	 VQXDVNUktaQjw==
-Date: Wed, 31 Jul 2024 08:05:45 +0200
-From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-To: "Michael S. Tsirkin" <mst@redhat.com>
-Cc: Igor Mammedov <imammedo@redhat.com>, Jonathan Cameron
- <Jonathan.Cameron@huawei.com>, Shiju Jose <shiju.jose@huawei.com>, Ani
- Sinha <anisinha@redhat.com>, Dongjiu Geng <gengdongjiu1@gmail.com>,
- linux-kernel@vger.kernel.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [PATCH v3 6/7] acpi/ghes: update comments to point to newer
- ACPI specs
-Message-ID: <20240731080545.7c0dbed7@foz.lan>
-In-Reply-To: <20240730073447-mutt-send-email-mst@kernel.org>
-References: <cover.1721630625.git.mchehab+huawei@kernel.org>
-	<66c1ab4988589be99ae925c6361548f55fea58b0.1721630625.git.mchehab+huawei@kernel.org>
-	<20240730132430.44d9e4ae@imammedo.users.ipa.redhat.com>
-	<20240730073447-mutt-send-email-mst@kernel.org>
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
-Precedence: bulk
-X-Mailing-List: linux-kernel@vger.kernel.org
-List-Id: <linux-kernel.vger.kernel.org>
-List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="FKx/PlCv";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sZ2xz-0002oE-VK; Wed, 31 Jul 2024 02:37:43 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1sZ2xy-0002hS-79
+ for qemu-arm@nongnu.org; Wed, 31 Jul 2024 02:37:42 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1sZ2xv-0006cW-GG
+ for qemu-arm@nongnu.org; Wed, 31 Jul 2024 02:37:41 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1722407858;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=wnUTEtS+No9S/JuqPITES1G3oDrohvDkWf9tXSxF6fE=;
+ b=FKx/PlCvHa5bQctYF7tReIPWefKPZID4lH4DGVpLRYcpL8+B3xPDlli5meaOncXyhr/OFb
+ y2HOY7uL4RtHURLjwdx4x2CjX8Wfw59Fk6U6XekPLhSjev+742x0xZ6be9ExkN35v7WMbo
+ xcyarc7Qgh4icF0lWYE2LsgBEthEcAY=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-518-uE_kmhtRPSqnjMjlJ6wdWA-1; Wed,
+ 31 Jul 2024 02:37:30 -0400
+X-MC-Unique: uE_kmhtRPSqnjMjlJ6wdWA-1
+Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id EF29B1955D52; Wed, 31 Jul 2024 06:37:16 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.39.192.65])
+ by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 7061D19560B2; Wed, 31 Jul 2024 06:37:13 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 4172521E668B; Wed, 31 Jul 2024 08:37:11 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Avihai Horon <avihaih@nvidia.com>
+Cc: Daniel P. =?utf-8?Q?Berrang=C3=A9?= <berrange@redhat.com>,
+ qemu-devel@nongnu.org,
+ alex.williamson@redhat.com,  andrew@codeconstruct.com.au,
+ andrew@daynix.com,  arei.gonglei@huawei.com,  berto@igalia.com,
+ borntraeger@linux.ibm.com,  clg@kaod.org,  david@redhat.com,
+ den@openvz.org,  eblake@redhat.com,  eduardo@habkost.net,
+ farman@linux.ibm.com,  farosas@suse.de,  hreitz@redhat.com,
+ idryomov@gmail.com,  iii@linux.ibm.com,  jamin_lin@aspeedtech.com,
+ jasowang@redhat.com,  joel@jms.id.au,  jsnow@redhat.com,
+ kwolf@redhat.com,  leetroy@gmail.com,  marcandre.lureau@redhat.com,
+ marcel.apfelbaum@gmail.com,  michael.roth@amd.com,  mst@redhat.com,
+ mtosatti@redhat.com,  nsg@linux.ibm.com,  pasic@linux.ibm.com,
+ pbonzini@redhat.com,  peter.maydell@linaro.org,  peterx@redhat.com,
+ philmd@linaro.org,  pizhenwei@bytedance.com,  pl@dlhnet.de,
+ richard.henderson@linaro.org,  stefanha@redhat.com,
+ steven_lee@aspeedtech.com,  thuth@redhat.com,  vsementsov@yandex-team.ru,
+ wangyanan55@huawei.com,  yuri.benditovich@daynix.com,
+ zhao1.liu@intel.com,  qemu-block@nongnu.org,  qemu-arm@nongnu.org,
+ qemu-s390x@nongnu.org,  kvm@vger.kernel.org,  =?utf-8?Q?C=C3=A9dric?= Le
+ Goater <clg@redhat.com>
+Subject: Re: [PATCH 01/18] qapi: Smarter camel_to_upper() to reduce need for
+ 'prefix'
+In-Reply-To: <462d7540-f9ad-4380-8056-232e69f161e9@nvidia.com> (Avihai Horon's
+ message of "Wed, 31 Jul 2024 08:59:28 +0300")
+References: <20240730081032.1246748-1-armbru@redhat.com>
+ <20240730081032.1246748-2-armbru@redhat.com>
+ <ZqiutRoQuAsrllfj@redhat.com> <87mslzgjde.fsf@pond.sub.org>
+ <9b147a34-4641-4b4c-a050-51ceb3ea6a67@nvidia.com>
+ <87jzh2kuux.fsf@pond.sub.org>
+ <462d7540-f9ad-4380-8056-232e69f161e9@nvidia.com>
+Date: Wed, 31 Jul 2024 08:37:11 +0200
+Message-ID: <87wml2jcdk.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-TUID: 0vAHz3WoVVcl
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.125,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 7F84HrzCakfc
 
-Em Tue, 30 Jul 2024 07:36:32 -0400
-"Michael S. Tsirkin" <mst@redhat.com> escreveu:
+Avihai Horon <avihaih@nvidia.com> writes:
 
-> On Tue, Jul 30, 2024 at 01:24:30PM +0200, Igor Mammedov wrote:
-> > On Mon, 22 Jul 2024 08:45:58 +0200
-> > Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
-> >   
-> > > There is one reference to ACPI 4.0 and several references
-> > > to ACPI 6.x versions.
-> > > 
-> > > Update them to point to ACPI 6.5 whenever possible.  
-> > 
-> > when it comes to APCI doc comments, they should point to
-> > the 1st (earliest) revision that provides given feature/value/field/table.  
-> 
-> Yes. And the motivation is twofold.
-> First, guests are built against
-> old acpi versions. knowing in which version things appeared
-> helps us know which guests support a feature.
+> On 31/07/2024 8:12, Markus Armbruster wrote:
+>> External email: Use caution opening links or attachments
+>>
+>>
+>> Avihai Horon <avihaih@nvidia.com> writes:
+>>
+>>> On 30/07/2024 15:22, Markus Armbruster wrote:
+>>>> Avihai, there's a question for you on VfioMigrationState.
+>>>>
+>>>> Daniel P. Berrang=C3=A9 <berrange@redhat.com> writes:
+>>>>
+>>>>> On Tue, Jul 30, 2024 at 10:10:15AM +0200, Markus Armbruster wrote:
+>> [...]
+>>
+>>>> * VfioMigrationState
+>>>>
+>>>>     Can't see why this one has a prefix.  Avihai, can you enlighten me?
+>>>
+>>> linux-headers/linux/vfio.h defines enum vfio_device_mig_state with valu=
+es VFIO_DEVICE_STATE_STOP etc.
+>>
+>> It does not define any VFIO_DEVICE_STATE_*, though.
+>>
+>>> I used the QAPI prefix to emphasize this is a QAPI entity rather than a=
+ VFIO entity.
+>>
+>> We define about two dozen symbols starting with VFIO_, and several
+>> hundreds starting with vfio_.  What makes this enumeration type
+>> different so its members need emphasis?
+>
+> Right. I thought it would be clearer with the QAPI prefix because VFIO_DE=
+VICE_STATE_* and VFIO_MIGRATION_STATE_* have similar values.
+>
+> But it's not a must. If you want to reduce prefix usage, go ahead, I don'=
+t have a strong opinion about it.
 
-Good point, but IMO, a comment like "since: ACPI 4.0" would
-be better, as the comment may not reflect the first version
-supporting such features, but, instead, when someone added
-support to a particular feature set.
+Thanks!
 
-> Second, acpi guys keep churning out new versions.
-> It makes no sense to try and update to latest one,
-> it will soon get out of date again.
-
-True, but having it updated helps people adding new code to
-get things right.
-
-Anyway, I got your point, I'll drop this patch.
-
-> > >  void acpi_build_hest(GArray *table_data, BIOSLinker *linker,
-> > >                       const char *oem_id, const char *oem_table_id)
-> > >  {
-> > > -    AcpiTable table = { .sig = "HEST", .rev = 1,
-> > > +    AcpiTable table = { .sig = "HEST",
-> > > +                        .rev = 1,                   /* ACPI 4.0 to 6.4 */
-> > >                          .oem_id = oem_id, .oem_table_id = oem_table_id };
-> > >  
-> > >      acpi_table_begin(&table, table_data);  
-
-This hunk might still make sense, though. When double-checking the links
-against ACPI 6.5, I noticed that HEST now requires .rev = 2.
-
-There are some future incompatibilities, but the current
-implementation of acpi/ghes satisfies both rev 1 and ref 2 of HEST.
-
-Also, this is not relevant on Linux, as the revision is not checked 
-there.
-
-So, currently this is not a problem.
-
-Thanks,
-Mauro

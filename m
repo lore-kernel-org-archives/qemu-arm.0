@@ -1,458 +1,150 @@
-Received: by 2002:a17:906:33ce:b0:9d0:bf65:29fa with SMTP id w14csp2816880eja;
-        Mon, 6 Nov 2023 06:59:11 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEj1SJtOR1SHdKJAuE6raJYuDhz9RCAvZDzstjie9Pv7W+woOA8vEOJouis8OfAUKp7NmJc
-X-Received: by 2002:ac8:7e96:0:b0:419:5309:20fd with SMTP id w22-20020ac87e96000000b00419530920fdmr34571780qtj.25.1699282750900;
-        Mon, 06 Nov 2023 06:59:10 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1699282750; cv=none;
+Received: by 2002:a17:505:3f8c:b0:1be9:327d:8ee3 with SMTP id bm12csp232264njb;
+        Wed, 31 Jul 2024 01:49:01 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXmPSxFi6/E05cDdhwdU0u04VORL6rNWWgHMzcPTljpe7Ey4V6F6IpGmOMT1s7MauiztF5+0XKENfECjM09KrWEkEDI8Tzw
+X-Google-Smtp-Source: AGHT+IE8IYVJzEn9eEckLe0aN24eXvuB1++L8jldZtZvhBYLQZG3dIQ9p+QaEOy9j+eSD1Qs334A
+X-Received: by 2002:a17:902:f68c:b0:1fd:8eaf:eaa0 with SMTP id d9443c01a7336-1ff048030c0mr123245565ad.38.1722415741537;
+        Wed, 31 Jul 2024 01:49:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1722415741; cv=none;
         d=google.com; s=arc-20160816;
-        b=fTWmeEmFY7Wasuu0xevzH1PuWmqsGu1/9KvHtgQ0ajFhf7O7zJfG3Z/CyQg6sBaMEA
-         +IfFVzEhQLWcuvge/3WEhaUIxVG6E2b+7gvUc75xWb9R+7T+HjwlumLAxWlPGKP70dMq
-         zUlqWEMzEvQLgJXrSu4b2ebzZURQ43Tv1aVcgtBOpF5U3qepLEPcOKWvzjV2qkKNrzIA
-         bruYUmVnNxhKK22AWIWzlrZuaOn2AbrCSdLNQlqRnB++m5kuzL6DoGhYXDtzvGMITJji
-         PrfX8A4ma8CbRGT95d0Rglwj6bugjnYHPXhBtfmYyhxHCASm+UrVSEikhM5Mbvsu9W8k
-         3law==
+        b=jxIDzbYN1kfQN/cU3Au/rUreaEutNS7itGJ1oCrg+QFbYoUPp3cFZu7UEYHp3cuvGa
+         BGYy2Gs/m84PNxPA9nWx2JKaOC2eINKHsaP3EragOk26CFetzktl1Ze+A9qjTK0qpMbz
+         f3ExY67FkOmJuiEgRaOopcMHCOBqHmIrIt0PerP4y56QY8TOSBClC41x0ZlfF6+95ikL
+         3w7nl9dg7LHu4jePbFR8ixIHVu4d5lvteIlH4mylkWCj9cViFa9BiANdruCMiyzcYaJ+
+         qJj3Zit5ZNxb7n45ghs/CyH3AwM5lqafXAW13rxo1cMhrimBUdyrIYP1wjQF8BkTeHN1
+         xzQQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=G7jeyfc1W8DSP9oWF4r1xDBFL58foM+AMjlNuNg9rZs=;
-        fh=D9Zy3Zo6Ngtij0ADD13U6lCyN9zlgWdxS2svbWoLGjE=;
-        b=uZEtvSDJX3b97C6Cac3wmlE2z2rYK7smnhI0AtKi3XDhIFLhclxRwaoWFyZAbxmcT8
-         sHSeAFs+A/nfZNBkl55J4BRoXMEllGw0NjbfrvINTvROZvC6J2Y457/o3Wy4tgRWWHrl
-         46wWMzct7NcuOYe+vytvpDxeL9J4j2kE7TX3YjouWvGIi0pVqitJcLo7pujRAXGa/h3S
-         uRQM6xU15v3F0Mvx120mqnj4r0QMl+HpLRpTajiwOtARKs/d988/U9guJoBE9ClYa8h6
-         zJNk0hwV4xsjlupbMvlFVdXfU+VG5I6uctJlD3b9IQ09xyvsI+abh7TU0wHYkU91BcRw
-         +oGQ==
+        h=mime-version:content-transfer-encoding:content-language
+         :accept-language:in-reply-to:references:message-id:date:thread-index
+         :thread-topic:subject:cc:to:from;
+        bh=ldM0kXNXSVTr7O4cy800WYy1TDbTcev7zfXrWu2A7bw=;
+        fh=46UCTVQGtiLYA8JIz/TqR/vE6h2QEQKwlXFBQZAYOgY=;
+        b=yuXtn5FtmNXgV1Wfp8MEu9t/jeS9o+SqViZ800d76ryCDyghvtDKCUJrg9nsdx/x5l
+         2gyD/q8FsQP0I7dEMPYZ+F5EegPrwi2kD4dhf79GwkbW+75fwRjnzKR6in3dD3EDX3AP
+         jDz8VoNhi119fQIPGLpj+/MVtFHY5s3wday/8Hmyk8GEng9FBQ8ZvyLIOucPYUpg87Lq
+         1V9X2QWGafzuPDyIBmqgZHPARLYQZkMud6urM6N6lasLl7hI+eo3KS3gWLlucdZHsGAn
+         v19Kr8mpSRH8znmxed6zEDN0pf13D9gCQ4Qv1OPjUYp89P/AjSL3e1UTyUZWf/2FZGGd
+         yhlg==;
+        dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=TVLUgD8K;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q5-20020a05622a030500b004181b5c82b9si5610389qtw.83.2023.11.06.06.59.10
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 06 Nov 2023 06:59:10 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Return-Path: <salil.mehta@huawei.com>
+Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
+        by mx.google.com with ESMTPS id d9443c01a7336-1fed7ee8240si149781795ad.216.2024.07.31.01.49.00
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 31 Jul 2024 01:49:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=TVLUgD8K;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1r0142-0003cG-Fh; Mon, 06 Nov 2023 09:58:54 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1r013m-0003GH-Du
- for qemu-devel@nongnu.org; Mon, 06 Nov 2023 09:58:39 -0500
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1r013h-0005Tp-FW
- for qemu-devel@nongnu.org; Mon, 06 Nov 2023 09:58:38 -0500
-Received: by mail-wm1-x32e.google.com with SMTP id
- 5b1f17b1804b1-40806e4106dso27846645e9.1
- for <qemu-devel@nongnu.org>; Mon, 06 Nov 2023 06:58:32 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1699282710; x=1699887510; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=G7jeyfc1W8DSP9oWF4r1xDBFL58foM+AMjlNuNg9rZs=;
- b=TVLUgD8KBLIcvheL+o/MUDTlCXk6ScYalG1407AphmLkszK4Ttk30xd6BMtiCg2q4w
- 2Wa801JeLqKcdgx9JbPynCZVIrLpIdxkuhPW2dF11pOVAOvK6I60Ox9r6tRxy5isEH+B
- atDPdGjmEvp5vo94tqlvGpgsmFvfXeJaveyoFj0OsaPVPv4r211JbhpGzmZXCEnpwPka
- +vWRKq4/JbeNE7GU6QOVGFGPZjHT8d89QTWIuuqW3rSzL0ve1XV6c9gqqstrZIE1A2l6
- U4Iu7C6x/0eju8Mxyx6ns3X+tE0e4pvBJ4acqGqdy7upP6FzbyPjnHA51DbG5INQVbio
- sSSQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1699282710; x=1699887510;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=G7jeyfc1W8DSP9oWF4r1xDBFL58foM+AMjlNuNg9rZs=;
- b=f6L5n9axkrWXelIq2vr+/BrwccTdZ6znYnhiOOGvSU9+kwXNLxOzrQGn1Y1EPAu+2j
- PCrpKC5p+2gjs44iUyiOepFlNqPaaSJbt92ETkH7H720DR8OZkdGyX6GCHkLSkyYcPob
- OuwMYoSBD1uf38dmGa8UwXNBUuMO1dUbQYRdpDrnlCcn7T/3Y5HF4oeoSfi6w0SzRw9C
- Y3DmbIoxnwK7Dvy706t6zLvOcoTwKequFxQDQaFCfAZpyfDmt2vlaQLDp8cHtht+pPo9
- PQIaaLbjtR/B7JHTesWYPuSxTpgEqfXu1cpO5I5eK0s/h4pg4ylPtkTvgRCaacOK8Koe
- J5Sw==
-X-Gm-Message-State: AOJu0YxePqAJIAdRiZQwGKxmKrEsSP7x+sd4rlEJ/vx1grdSf/TUwzzO
- Bs6klCGB4cY4wvztNuvq1iuqLQ==
-X-Received: by 2002:a7b:ce11:0:b0:405:3ab3:e640 with SMTP id
- m17-20020a7bce11000000b004053ab3e640mr9665940wmc.20.1699282710104; 
- Mon, 06 Nov 2023 06:58:30 -0800 (PST)
-Received: from [192.168.69.115] (176-131-220-199.abo.bbox.fr.
- [176.131.220.199]) by smtp.gmail.com with ESMTPSA id
- gy14-20020a05600c880e00b00403b63e87f2sm12169569wmb.32.2023.11.06.06.58.25
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 06 Nov 2023 06:58:29 -0800 (PST)
-Message-ID: <9b6eb677-1655-e452-2555-01eb01cf9072@linaro.org>
-Date: Mon, 6 Nov 2023 15:58:24 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.15.1
-Subject: Re: [PATCH v2 12/16] target: Move ArchCPUClass definition to 'cpu.h'
+       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Received: from mail.maildlp.com (unknown [172.18.186.216])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4WYm1G53Xwz6K8C8;
+	Wed, 31 Jul 2024 16:46:58 +0800 (CST)
+Received: from lhrpeml100003.china.huawei.com (unknown [7.191.160.210])
+	by mail.maildlp.com (Postfix) with ESMTPS id 61257140CF4;
+	Wed, 31 Jul 2024 16:48:56 +0800 (CST)
+Received: from lhrpeml500001.china.huawei.com (7.191.163.213) by
+ lhrpeml100003.china.huawei.com (7.191.160.210) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.39; Wed, 31 Jul 2024 09:48:56 +0100
+Received: from lhrpeml500001.china.huawei.com ([7.191.163.213]) by
+ lhrpeml500001.china.huawei.com ([7.191.163.213]) with mapi id 15.01.2507.039;
+ Wed, 31 Jul 2024 09:48:56 +0100
+From: Salil Mehta <salil.mehta@huawei.com>
+To: Igor Mammedov <imammedo@redhat.com>, "Michael S. Tsirkin"
+	<mtsirkin@redhat.com>, "peter.maydell@linaro.org" <peter.maydell@linaro.org>
+CC: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org"
+	<qemu-arm@nongnu.org>, "mst@redhat.com" <mst@redhat.com>,
+	"peter.maydell@linaro.org" <peter.maydell@linaro.org>, "maz@kernel.org"
+	<maz@kernel.org>, "jean-philippe@linaro.org" <jean-philippe@linaro.org>,
+	Jonathan Cameron <jonathan.cameron@huawei.com>, "lpieralisi@kernel.org"
+	<lpieralisi@kernel.org>, "richard.henderson@linaro.org"
+	<richard.henderson@linaro.org>, "andrew.jones@linux.dev"
+	<andrew.jones@linux.dev>, "david@redhat.com" <david@redhat.com>,
+	"philmd@linaro.org" <philmd@linaro.org>, "eric.auger@redhat.com"
+	<eric.auger@redhat.com>, "oliver.upton@linux.dev" <oliver.upton@linux.dev>,
+	"pbonzini@redhat.com" <pbonzini@redhat.com>, "will@kernel.org"
+	<will@kernel.org>, "gshan@redhat.com" <gshan@redhat.com>, "rafael@kernel.org"
+	<rafael@kernel.org>, "alex.bennee@linaro.org" <alex.bennee@linaro.org>,
+	"linux@armlinux.org.uk" <linux@armlinux.org.uk>,
+	"darren@os.amperecomputing.com" <darren@os.amperecomputing.com>,
+	"ilkka@os.amperecomputing.com" <ilkka@os.amperecomputing.com>,
+	"vishnu@os.amperecomputing.com" <vishnu@os.amperecomputing.com>,
+	"karl.heubaum@oracle.com" <karl.heubaum@oracle.com>, "miguel.luis@oracle.com"
+	<miguel.luis@oracle.com>, "salil.mehta@opnsrc.net" <salil.mehta@opnsrc.net>,
+	zhukeqian <zhukeqian1@huawei.com>, "wangxiongfeng (C)"
+	<wangxiongfeng2@huawei.com>, "wangyanan (Y)" <wangyanan55@huawei.com>,
+	"jiakernel2@gmail.com" <jiakernel2@gmail.com>, "maobibo@loongson.cn"
+	<maobibo@loongson.cn>, "lixianglai@loongson.cn" <lixianglai@loongson.cn>,
+	"npiggin@gmail.com" <npiggin@gmail.com>, "harshpb@linux.ibm.com"
+	<harshpb@linux.ibm.com>, Linuxarm <linuxarm@huawei.com>
+Subject: RE: [PATCH] accel/kvm/kvm-all: Fixes the missing break in vCPU unpark
+ logic
+Thread-Topic: [PATCH] accel/kvm/kvm-all: Fixes the missing break in vCPU
+ unpark logic
+Thread-Index: AQHa3qJBk0Exld31N0eXTFVI7pTjNrIIr9WAgAffXcA=
+Date: Wed, 31 Jul 2024 08:48:55 +0000
+Message-ID: <ae5fa879bb7d416b92face2dcf9045fd@huawei.com>
+References: <20240725145132.99355-1-salil.mehta@huawei.com>
+ <20240726113355.731e61fe@imammedo.users.ipa.redhat.com>
+In-Reply-To: <20240726113355.731e61fe@imammedo.users.ipa.redhat.com>
+Accept-Language: en-US
 Content-Language: en-US
-To: Zhao Liu <zhao1.liu@intel.com>
-Cc: qemu-devel@nongnu.org, Eduardo Habkost <eduardo@habkost.net>,
- Xiaojuan Yang <yangxiaojuan@loongson.cn>, "Michael S. Tsirkin"
- <mst@redhat.com>, qemu-ppc@nongnu.org,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- David Hildenbrand <david@redhat.com>, qemu-s390x@nongnu.org,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>, Song Gao <gaosong@loongson.cn>,
- Paolo Bonzini <pbonzini@redhat.com>, Stafford Horne <shorne@gmail.com>,
- Alistair Francis <alistair.francis@wdc.com>,
- Yanan Wang <wangyanan55@huawei.com>, Max Filippov <jcmvbkbc@gmail.com>,
- Artyom Tarasenko <atar4qemu@gmail.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
- Laurent Vivier <lvivier@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>,
- qemu-riscv@nongnu.org, Palmer Dabbelt <palmer@dabbelt.com>,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Bin Meng <bin.meng@windriver.com>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Weiwei Li <liweiwei@iscas.ac.cn>,
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
- Nicholas Piggin <npiggin@gmail.com>, qemu-arm@nongnu.org,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, Marek Vasut <marex@denx.de>,
- Laurent Vivier <laurent@vivier.eu>, Peter Maydell
- <peter.maydell@linaro.org>, Brian Cain <bcain@quicinc.com>,
- Thomas Huth <thuth@redhat.com>, Chris Wulff <crwulff@gmail.com>,
- Sergio Lopez <slp@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Ilya Leoshkevich <iii@linux.ibm.com>, Michael Rolnik <mrolnik@gmail.com>
-References: <20231013140116.255-1-philmd@linaro.org>
- <20231013140116.255-13-philmd@linaro.org> <ZTI0T98ruc3yWSsa@intel.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <ZTI0T98ruc3yWSsa@intel.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32e.google.com
-X-Spam_score_int: -51
-X-Spam_score: -5.2
-X-Spam_bar: -----
-X-Spam_report: (-5.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-3.085,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Q2rWGec6mtfO
+X-MS-Has-Attach:
+X-MS-TNEF-Correlator:
+x-originating-ip: [10.48.153.133]
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+X-TUID: ZSPk7gy/vtAj
 
-On 20/10/23 10:03, Zhao Liu wrote:
-> Hi Philippe,
-> 
-> On Fri, Oct 13, 2023 at 04:01:11PM +0200, Philippe Mathieu-Daudé wrote:
->> Date: Fri, 13 Oct 2023 16:01:11 +0200
->> From: Philippe Mathieu-Daudé <philmd@linaro.org>
->> Subject: [PATCH v2 12/16] target: Move ArchCPUClass definition to 'cpu.h'
->> X-Mailer: git-send-email 2.41.0
->>
->> The OBJECT_DECLARE_CPU_TYPE() macro forward-declares each
->> ArchCPUClass type. These forward declarations are sufficient
->> for code in hw/ to use the QOM definitions. No need to expose
->> these structure definitions. Keep each local to their target/
->> by moving them to the corresponding "cpu.h" header.
->>
->> Suggested-by: Richard Henderson <richard.henderson@linaro.org>
->> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->> ---
->>   target/alpha/cpu-qom.h      | 16 ---------------
->>   target/alpha/cpu.h          | 13 +++++++++++++
->>   target/arm/cpu-qom.h        | 27 -------------------------
->>   target/arm/cpu.h            | 25 ++++++++++++++++++++++++
->>   target/avr/cpu-qom.h        | 16 ---------------
->>   target/avr/cpu.h            | 14 +++++++++++++
->>   target/cris/cpu-qom.h       | 19 ------------------
->>   target/cris/cpu.h           | 16 +++++++++++++++
->>   target/hexagon/cpu-qom.h    |  1 -
->>   target/hppa/cpu-qom.h       | 16 ---------------
->>   target/hppa/cpu.h           | 14 +++++++++++++
->>   target/i386/cpu-qom.h       | 39 -------------------------------------
->>   target/i386/cpu.h           | 35 +++++++++++++++++++++++++++++++++
->>   target/loongarch/cpu-qom.h  |  1 -
->>   target/m68k/cpu-qom.h       | 16 ---------------
->>   target/m68k/cpu.h           | 13 +++++++++++++
->>   target/microblaze/cpu-qom.h | 16 ---------------
->>   target/microblaze/cpu.h     | 13 +++++++++++++
->>   target/mips/cpu-qom.h       | 20 -------------------
->>   target/mips/cpu.h           | 17 ++++++++++++++++
->>   target/nios2/cpu-qom.h      |  1 -
->>   target/openrisc/cpu-qom.h   |  1 -
->>   target/riscv/cpu-qom.h      | 16 +--------------
->>   target/riscv/cpu.h          | 14 +++++++++++++
->>   target/rx/cpu-qom.h         | 15 --------------
->>   target/rx/cpu.h             | 14 +++++++++++++
->>   target/s390x/cpu-qom.h      | 37 +----------------------------------
->>   target/s390x/cpu.h          | 30 ++++++++++++++++++++++++++++
->>   target/s390x/cpu_models.h   |  8 ++++----
->>   target/sh4/cpu-qom.h        | 23 ----------------------
->>   target/sh4/cpu.h            | 20 +++++++++++++++++++
->>   target/sparc/cpu-qom.h      | 18 -----------------
->>   target/sparc/cpu.h          | 18 +++++++++++++++--
->>   target/tricore/cpu-qom.h    | 10 ----------
->>   target/tricore/cpu.h        |  6 ++++++
->>   target/xtensa/cpu-qom.h     | 21 --------------------
->>   target/xtensa/cpu.h         | 20 +++++++++++++++++--
->>   37 files changed, 284 insertions(+), 335 deletions(-)
+Hello,
 
+A quick check and a gentle reminder, has this patch been accepted?
 
->> diff --git a/target/i386/cpu-qom.h b/target/i386/cpu-qom.h
->> index dffc74c1ce..d4e216d000 100644
->> --- a/target/i386/cpu-qom.h
->> +++ b/target/i386/cpu-qom.h
->> @@ -21,8 +21,6 @@
->>   #define QEMU_I386_CPU_QOM_H
->>   
->>   #include "hw/core/cpu.h"
->> -#include "qemu/notify.h"
->> -#include "qom/object.h"
->>   
->>   #ifdef TARGET_X86_64
->>   #define TYPE_X86_CPU "x86_64-cpu"
->> @@ -35,41 +33,4 @@ OBJECT_DECLARE_CPU_TYPE(X86CPU, X86CPUClass, X86_CPU)
->>   #define X86_CPU_TYPE_SUFFIX "-" TYPE_X86_CPU
->>   #define X86_CPU_TYPE_NAME(name) (name X86_CPU_TYPE_SUFFIX)
->>   
->> -typedef struct X86CPUModel X86CPUModel;
->> -
->> -/**
->> - * X86CPUClass:
->> - * @cpu_def: CPU model definition
->> - * @host_cpuid_required: Whether CPU model requires cpuid from host.
->> - * @ordering: Ordering on the "-cpu help" CPU model list.
->> - * @migration_safe: See CpuDefinitionInfo::migration_safe
->> - * @static_model: See CpuDefinitionInfo::static
->> - * @parent_realize: The parent class' realize handler.
->> - * @parent_phases: The parent class' reset phase handlers.
->> - *
->> - * An x86 CPU model or family.
->> - */
->> -struct X86CPUClass {
->> -    CPUClass parent_class;
->> -
->> -    /* CPU definition, automatically loaded by instance_init if not NULL.
->> -     * Should be eventually replaced by subclass-specific property defaults.
->> -     */
->> -    X86CPUModel *model;
->> -
->> -    bool host_cpuid_required;
->> -    int ordering;
->> -    bool migration_safe;
->> -    bool static_model;
->> -
->> -    /* Optional description of CPU model.
->> -     * If unavailable, cpu_def->model_id is used */
->> -    const char *model_description;
->> -
->> -    DeviceRealize parent_realize;
->> -    DeviceUnrealize parent_unrealize;
->> -    ResettablePhases parent_phases;
->> -};
->> -
->> -
->>   #endif
->> diff --git a/target/i386/cpu.h b/target/i386/cpu.h
->> index 2dea4df086..e21d293daa 100644
->> --- a/target/i386/cpu.h
->> +++ b/target/i386/cpu.h
->> @@ -2037,6 +2037,41 @@ struct ArchCPU {
->>       bool xen_vapic;
->>   };
->>   
->> +typedef struct X86CPUModel X86CPUModel;
-> 
-> Could we "typedef" this structure at its definition?
+Best regards
+Salil.
 
-No, because X86CPUClass uses the declaration in its 'model' field
-in [*], so we have to forward-declare it first.
-
-> Then this explicit "typedef" can also be omitted, just like you did
-> elsewhere.
-> 
->> +
->> +/**
->> + * X86CPUClass:
->> + * @cpu_def: CPU model definition
->> + * @host_cpuid_required: Whether CPU model requires cpuid from host.
->> + * @ordering: Ordering on the "-cpu help" CPU model list.
->> + * @migration_safe: See CpuDefinitionInfo::migration_safe
->> + * @static_model: See CpuDefinitionInfo::static
->> + * @parent_realize: The parent class' realize handler.
->> + * @parent_phases: The parent class' reset phase handlers.
->> + *
->> + * An x86 CPU model or family.
->> + */
->> +struct X86CPUClass {
->> +    CPUClass parent_class;
->> +
->> +    /* CPU definition, automatically loaded by instance_init if not NULL.
->> +     * Should be eventually replaced by subclass-specific property defaults.
->> +     */
->> +    X86CPUModel *model;
-
-[*]     ^^^^^^^^^^^
-
->> +    bool host_cpuid_required;
->> +    int ordering;
->> +    bool migration_safe;
->> +    bool static_model;
->> +
->> +    /* Optional description of CPU model.
->> +     * If unavailable, cpu_def->model_id is used */
->> +    const char *model_description;
->> +
->> +    DeviceRealize parent_realize;
->> +    DeviceUnrealize parent_unrealize;
->> +    ResettablePhases parent_phases;
->> +};
-
-
->> diff --git a/target/riscv/cpu-qom.h b/target/riscv/cpu-qom.h
->> index 76efb614a6..35ca5c4600 100644
->> --- a/target/riscv/cpu-qom.h
->> +++ b/target/riscv/cpu-qom.h
->> @@ -20,7 +20,6 @@
->>   #define RISCV_CPU_QOM_H
->>   
->>   #include "hw/core/cpu.h"
->> -#include "qom/object.h"
->>   
->>   #define TYPE_RISCV_CPU "riscv-cpu"
->>   #define TYPE_RISCV_DYNAMIC_CPU "riscv-dynamic-cpu"
->> @@ -44,21 +43,8 @@
->>   #define TYPE_RISCV_CPU_VEYRON_V1        RISCV_CPU_TYPE_NAME("veyron-v1")
->>   #define TYPE_RISCV_CPU_HOST             RISCV_CPU_TYPE_NAME("host")
->>   
->> -typedef struct CPUArchState CPURISCVState;
->> +typedef struct CPUArchState CPURISCVState; // XXX
-> 
-> Is "// XXX" redundant?
-
-Good catch, I forgot about this comment. I now simply moved that
-to "cpu.h".
-
-> 
->>   
->>   OBJECT_DECLARE_CPU_TYPE(RISCVCPU, RISCVCPUClass, RISCV_CPU)
->>   
->> -/**
->> - * RISCVCPUClass:
->> - * @parent_realize: The parent class' realize handler.
->> - * @parent_phases: The parent class' reset phase handlers.
->> - *
->> - * A RISCV CPU model.
->> - */
->> -struct RISCVCPUClass {
->> -    CPUClass parent_class;
->> -
->> -    DeviceRealize parent_realize;
->> -    ResettablePhases parent_phases;
->> -};
->>   #endif /* RISCV_CPU_QOM_H */
->> diff --git a/target/riscv/cpu.h b/target/riscv/cpu.h
->> index d832696418..a7edf95213 100644
->> --- a/target/riscv/cpu.h
->> +++ b/target/riscv/cpu.h
->> @@ -414,6 +414,20 @@ struct ArchCPU {
->>       GHashTable *pmu_event_ctr_map;
->>   };
->>   
->> +/**
->> + * RISCVCPUClass:
->> + * @parent_realize: The parent class' realize handler.
->> + * @parent_phases: The parent class' reset phase handlers.
->> + *
->> + * A RISCV CPU model.
->> + */
->> +struct RISCVCPUClass {
->> +    CPUClass parent_class;
->> +
->> +    DeviceRealize parent_realize;
->> +    ResettablePhases parent_phases;
->> +};
->> +
-
-
->> diff --git a/target/s390x/cpu-qom.h b/target/s390x/cpu-qom.h
->> index fcd70daddf..4037e31f79 100644
->> --- a/target/s390x/cpu-qom.h
->> +++ b/target/s390x/cpu-qom.h
->> @@ -21,7 +21,6 @@
->>   #define QEMU_S390_CPU_QOM_H
->>   
->>   #include "hw/core/cpu.h"
->> -#include "qom/object.h"
->>   
->>   #define TYPE_S390_CPU "s390x-cpu"
->>   
->> @@ -30,40 +29,6 @@ OBJECT_DECLARE_CPU_TYPE(S390CPU, S390CPUClass, S390_CPU)
->>   #define S390_CPU_TYPE_SUFFIX "-" TYPE_S390_CPU
->>   #define S390_CPU_TYPE_NAME(name) (name S390_CPU_TYPE_SUFFIX)
->>   
->> -typedef struct S390CPUModel S390CPUModel;
->> -typedef struct S390CPUDef S390CPUDef;
->> -
->> -typedef struct CPUArchState CPUS390XState;
->> -
->> -typedef enum cpu_reset_type {
->> -    S390_CPU_RESET_NORMAL,
->> -    S390_CPU_RESET_INITIAL,
->> -    S390_CPU_RESET_CLEAR,
->> -} cpu_reset_type;
->> -
->> -/**
->> - * S390CPUClass:
->> - * @parent_realize: The parent class' realize handler.
->> - * @parent_reset: The parent class' reset handler.
->> - * @load_normal: Performs a load normal.
->> - * @cpu_reset: Performs a CPU reset.
->> - * @initial_cpu_reset: Performs an initial CPU reset.
->> - *
->> - * An S/390 CPU model.
->> - */
->> -struct S390CPUClass {
->> -    CPUClass parent_class;
->> -
->> -    const S390CPUDef *cpu_def;
->> -    bool kvm_required;
->> -    bool is_static;
->> -    bool is_migration_safe;
->> -    const char *desc;
->> -
->> -    DeviceRealize parent_realize;
->> -    DeviceReset parent_reset;
->> -    void (*load_normal)(CPUState *cpu);
->> -    void (*reset)(CPUState *cpu, cpu_reset_type type);
->> -};
->> +typedef struct CPUArchState CPUS390XState; // XXX
-> 
-> same here.
-
-Oops, I forgot to send the preliminary series required to
-remove that comment, see:
-https://lore.kernel.org/qemu-devel/20231106114500.5269-1-philmd@linaro.org/
-
-> Just the above nits. Otherwise,
-> 
-> Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
-
-Thanks for your careful review!
+>  From: Igor Mammedov <imammedo@redhat.com>
+>  Sent: Friday, July 26, 2024 10:34 AM
+>  To: Salil Mehta <salil.mehta@huawei.com>
+> =20
+>  On Thu, 25 Jul 2024 15:51:32 +0100
+>  Salil Mehta <salil.mehta@huawei.com> wrote:
+> =20
+>  > Loop should exit prematurely on successfully finding out the parked
+>  > vCPU (struct
+>  > KVMParkedVcpu) in the 'struct KVMState' maintained
+>  'kvm_parked_vcpus'
+>  > list of parked vCPUs.
+>  >
+>  > Fixes: Coverity CID 1558552
+>  > Fixes: 08c3286822 ("accel/kvm: Extract common KVM vCPU
+>  > {creation,parking} code")
+>  > Reported-by: Peter Maydell <peter.maydell@linaro.org>
+>  > Suggested-by: Peter Maydell <peter.maydell@linaro.org>
+>  > Message-ID:
+>  > <CAFEAcA-3_d1c7XSXWkFubD-
+>  LsW5c5i95e6xxV09r2C9yGtzcdA@mail.gmail.com>
+>  > Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
+> =20
+>  Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+> =20
+>  > ---
+>  >  accel/kvm/kvm-all.c | 1 +
+>  >  1 file changed, 1 insertion(+)
+>  >
+>  > diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c index
+>  > 0aa4b4624a..c181297f00 100644
+>  > --- a/accel/kvm/kvm-all.c
+>  > +++ b/accel/kvm/kvm-all.c
+>  > @@ -362,6 +362,7 @@ int kvm_unpark_vcpu(KVMState *s, unsigned long
+>  vcpu_id)
+>  >              QLIST_REMOVE(cpu, node);
+>  >              kvm_fd =3D cpu->kvm_fd;
+>  >              g_free(cpu);
+>  > +            break;
+>  >          }
+>  >      }
+>  >
+> =20

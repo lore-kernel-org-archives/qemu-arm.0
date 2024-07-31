@@ -1,116 +1,150 @@
-Received: by 2002:a17:505:3f8c:b0:1be9:327d:8ee3 with SMTP id bm12csp297635njb;
-        Wed, 31 Jul 2024 04:39:28 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWryClInG/+NoPHPEw20NA58BApoFKPKPZzxzXfHwq6XMtJVZFsO81NaYmLt9lUNS/tjD9uVfRmNyxntKwNSDTQMVaKGHV+
-X-Received: by 2002:a17:906:f58d:b0:a77:eb34:3b4b with SMTP id a640c23a62f3a-a7d3ffad76cmr1047609966b.11.1722425967829;
-        Wed, 31 Jul 2024 04:39:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1722425967; cv=none;
+Received: by 2002:a17:505:3f8c:b0:1be9:327d:8ee3 with SMTP id bm12csp297655njb;
+        Wed, 31 Jul 2024 04:39:31 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCU/VYuVo8Uiyc7g6gizS4qiPWnCbb4Q2JQUE7mh7cuuuwHCnirVDIqy7U64hB7zYDRTt8/Xg56Jj9R2r7uKTujXLCT8CI2/
+X-Google-Smtp-Source: AGHT+IFqh9b8x4OOLVoyrh4SkOCtc519z2PUs9xr7k6Kv1DW9Vb/Mp2VKxqFxI1izvDY4t48y/Va
+X-Received: by 2002:a05:6358:2496:b0:1ab:f2b3:f018 with SMTP id e5c5f4694b2df-1ada1f0fc49mr1764314855d.0.1722425970944;
+        Wed, 31 Jul 2024 04:39:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1722425970; cv=none;
         d=google.com; s=arc-20160816;
-        b=Z0XdbstPDdbjeocINmU046Bua3qgeDzHKxzcjt8+c6ZuK1/fJGVSIxMhQf4apLY18h
-         bniL4iZ+XAprkJD0tEVVU0rkUD5l+JRARLkjc3NdWtyYW2LnOP9pAfdx0r3TrsW5DUQ4
-         GQnwDRLZRN5IrsXmusLTEMHFRCagglrUpSSLwmGN6rUBV+xrp0uFiwqGUQbVmvBMhj7l
-         Q5Gb1YyRo3AM+Jgl77mMw0uBaeEbMe6yuxydTEwcdKLLjWDHW7zPc/EZcC+rNTOb9hMX
-         VR74G4M7c47Ska/BLhALzwRaekEkJXJa9rFDzjGWbuTQCJ5BRTbUw1Y+UH6sr174jMyg
-         425Q==
+        b=x23pFlFbYUZ3hndYZ3ZJq7YlPQxeWRjGBoon4DbMb4PFVhirqdr6oVz2qV8alaBUl6
+         Rkvd4NrHf4rjxXTtXeZRnEMaLZtvn8yhKoV/dMdd4tQfrXi2YUoc8Te9uNSTGrYHAUwX
+         RMiBVOOpNhLhzRX2SUebEcZmQkYTc+AUjSmQB3P9Gtxi6l9Wmpx1f81N96Ez+9kN1c2N
+         lxJkh7c73peDxu2KB+kmTavP7DgS8+BrXMfFOCDD8YzfNYzJJdKCzFMkxl1Nxzge7dSM
+         IHWj5fkCZYfHGvL6oHq//nABcA1Y/9dsSwr29x3Zz2JQfd+0+PC44BqHIWavtCwWmObm
+         LK6A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=9aiq++bdNk44vu8pBxgjGzZR8HEkDbz3gF4BkYmxTlQ=;
-        fh=PB8LkC3abRRRR+v94NNQEFlQcz0ENVOinCoz3S10suw=;
-        b=icXXR50KW+lk+3HgaeAwLDGZ3REpAnpqpJpJb6fPNzUYwVBoWd8tWa/xhjGV2r3gec
-         DK+3T/JFrpIJiPTGkrqxCvj6eSSFq3Dfz33fzdLYCqsMWA/v4pNKHP3ycqM51ssUQ+KV
-         u+1fT5wPyFlmuou3auoPBvQupw7YwggC8Xk2Ty6176nLEhVoIF1PXUCJMoD7OPTAioif
-         HLV54IRSRjvvTv50yr7q+MeWVoN0a8rK6nogrI8WuBG5vAZ5uObIGDkhBsCgfymmHmy8
-         b0eEtE9UZweorpGqS0+lGs4Z4XBjVhIu2Ws1hsLrYjiwzHeDY6RqXEBl5hP30OKUrtzZ
-         4ubw==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=oK9aom/3jHdVS7ezZ8ZFE4bSdGSaDuLYvsraI038mHc=;
+        fh=zYcCFVzhTwt1SLXzcFtYkYMI7+OVWcko3Cg8dKbS2hc=;
+        b=WQziPvfotgw2i3DitsenAt1svu9ywhfaB7RrLIqgyiIW+5lVQug49eJR0WyxFYzW7R
+         E9rQyCfPv6qzXE2WYIGsKhxO2GIQpsh7px1t+41rgYzfqktDaQrbNS8AQXR6gPLQrZE+
+         JwjgWou6bs3eUD/PUFVhJ2PBDd3oY+dH/gwKU+KNryzXlngy/Yi1xSe6y+tYauyUyRTh
+         4yJxjj5h5h/QnstIQQCmZ0LDDGJmpZz3wDwjADL76wF+inUGKC8O22spyIcfvI4xNk7G
+         h5pFQxiguQhZ37KPQ1LFN7w2j/L9od97ABH9qe7YDVkk0F2BzPT00dvqjkNC+3Sv0Zfj
+         08sg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=pdlfdlLM;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=K4IHAwSN;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id a640c23a62f3a-a7acb3eebdesor291323466b.16.2024.07.31.04.39.27
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6bb3f8cbdcesi155508786d6.12.2024.07.31.04.39.30
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Wed, 31 Jul 2024 04:39:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 31 Jul 2024 04:39:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=pdlfdlLM;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=K4IHAwSN;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1sZ7fR-0003uB-0r; Wed, 31 Jul 2024 07:38:54 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1sZ7fA-0003pn-Dp
+ for qemu-devel@nongnu.org; Wed, 31 Jul 2024 07:38:37 -0400
+Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1sZ7f7-0002Gl-BZ
+ for qemu-devel@nongnu.org; Wed, 31 Jul 2024 07:38:35 -0400
+Received: by mail-ed1-x529.google.com with SMTP id
+ 4fb4d7f45d1cf-5af326eddb2so1500965a12.1
+ for <qemu-devel@nongnu.org>; Wed, 31 Jul 2024 04:38:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1722425967; x=1723030767; darn=linaro.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=9aiq++bdNk44vu8pBxgjGzZR8HEkDbz3gF4BkYmxTlQ=;
-        b=pdlfdlLMgiHEpZ63TBsSDSN6Y1+Xl1SkwZjbSHwFFoPOxJMDdrE1gIkyO9WLTko+4v
-         ryN7TadqZjjVDElXIMel28sb9TsiGFpWGEHCnZdLrSMItPXyIZgkPHxp5L0h/3+SneqA
-         T7dw9SLGbjEQzvYYwkAZVXAof4FuPQAHp9n7KEZqmBbCm2s+jEz72s3Qc29SuCz+Hf/y
-         V8/GCMDt6vTls2dsxvNjPfAj6SLJvboaJNUBKCx361zcTmo9BYVTrukuivFi0QxdZkYK
-         mbcsI2uDZavUH6b05c51fzRIPbbImZ+JgoWx5WI1srQXRKTxaoqkE64bsbnbR11OMEGI
-         W5Xg==
+ d=linaro.org; s=google; t=1722425911; x=1723030711; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=oK9aom/3jHdVS7ezZ8ZFE4bSdGSaDuLYvsraI038mHc=;
+ b=K4IHAwSNVllve9YZvr85I7Y8n7vlzs25uV7jG4a6a3y1PyeAASOdhfZXPnd+DcLCfS
+ xiGXh71fRlfGIYJIrzUs5tZtTwNtBc37fDxtU9V6a9W0Q0ELaIjWo82I7YJhRvY9pHyR
+ jeOLKMJLSOQ0AwMsweEnZhfHseuE3S8B7IlfFRvMF1ipFKJHJsfjs3SG/2dGeAEXKOJE
+ ZtmCrYQ72xmswKh0HlBg5BKPhq67VlNFGGvIuY7Sbx7veC9O6AFIlSxTKSVrnEbT8aPo
+ cg33MdzRNrKrKYbg9rolQCpywK5yo3gHDxB1TdsN7DiMQGRqSL+NKQ2p8agMhrneMHOB
+ yuCQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1722425967; x=1723030767;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=9aiq++bdNk44vu8pBxgjGzZR8HEkDbz3gF4BkYmxTlQ=;
-        b=QcH5MNOkanmvRkbKFbOcW7wPwd0qXduazdbag6qZCkrO7AGN4pzmeT3dWPwMdvimqi
-         a7xBTIHhy6Inrg2ZCznmSHgi4iD6z1eje/8ABOKsX0lLmutPWGzbY14nglktkCHU+ENB
-         wHHp2807N8Epwa+FG+UHQbIqmKuOWmA5+Wr/n0LhRKLbVGoiwl9cNdJzWQ1X1U96fmDj
-         idaawGlFm1P5n0RaKZFWL8nSrpQR1UOndtRWfrz07Q/I2CdHpHgyFHqlCBQxzEqgpAQA
-         7+gFFkr2B4jjxvGlA5kzlwwAYwVALSskuj25GX/cLGhIhKwjALBl6KZZCHjD/1ShmAbh
-         xW0Q==
-X-Forwarded-Encrypted: i=1; AJvYcCWsLbJ2Su8YJEfC5rApmDtDR5fGxOcTLs/2QYvMe1VKnGLo7ReGWXnUhdjNGbN1Ebpy/uOFnvltdvo84jYSylfPWktgkS1Q
-X-Gm-Message-State: AOJu0YyqSnqt6jc4hRScKcGCrNx2510s/kHhk1CpYYPfdauqvE5w5+Xc
-	YGeheTGXaprC9ZuFxjVX9StFo/a7p2e4uQKg1Sxh+HEGJnL5diIKkNl8UjG2h3f76GXQciNibGe
-	lSz4223ZKt6wyMaxsRJBKDqPsaK+gztBnrEi2GwZA
-X-Google-Smtp-Source: AGHT+IEhk2KY9TqI5RY6PcdaXLOZvwu1zuWW3/ZTj9B6nsvrnnlDIrMnFYwUw3MYrxvmYUzHFBSKil8jAhJhJ+c524c=
-X-Received: by 2002:a50:9e6b:0:b0:5a3:b866:eaef with SMTP id
- 4fb4d7f45d1cf-5b0223da231mr7630727a12.31.1722425967297; Wed, 31 Jul 2024
- 04:39:27 -0700 (PDT)
+ d=1e100.net; s=20230601; t=1722425911; x=1723030711;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=oK9aom/3jHdVS7ezZ8ZFE4bSdGSaDuLYvsraI038mHc=;
+ b=ZQ/1pcUONJDISxzMq3G5qds6sG/XXVe40vsQk82cpOwNIwUqr1nS4kPKMix7uZqYCi
+ eDHs0ZCiUrLnZ6qFcJfFvNJ+KuPyowBezapUi8/rSFWvGlytY0+rkRG6eQ4uDcZBS7IH
+ 2bomb28T23AmlGB4DLiTZ7EVzO88CW3l2halfjAa7SF+BPTffejtwkWQU+ijFGvvN+R/
+ SkNjcCc5pT3Y+zeeREUK46zUl0M77iKZ9u6wkCEwCo7ACP+CRqlLihuYjfFVFQf9NAEA
+ ihV9LbXS7ZdVslUAJ4qWlXfiB6+IIjAC11JyJYEOS9sjzRahE65vUaev3mejKpep5i5r
+ WPHw==
+X-Gm-Message-State: AOJu0YwiEdAkZ/ivF+Bb6aFUJ99erq8SuBkUh4V+psHryzTOCSgb5bwz
+ 8hfk7lFFaDtnzQyC8HV0Vf7vawbnXKeX0YwhyQBlwCp2KH2B8ZPcQB66yCFI7NW4rOosQDLYELA
+ HwOB996s/NL/FTNIIGkLByJDq26mvy5Hb+SmPIXKjtYlcL87l
+X-Received: by 2002:a50:d657:0:b0:58c:10fd:5082 with SMTP id
+ 4fb4d7f45d1cf-5b46bf6f88emr5013371a12.10.1722425910581; Wed, 31 Jul 2024
+ 04:38:30 -0700 (PDT)
 MIME-Version: 1.0
-References: <20240725145132.99355-1-salil.mehta@huawei.com>
- <20240726113355.731e61fe@imammedo.users.ipa.redhat.com> <ae5fa879bb7d416b92face2dcf9045fd@huawei.com>
-In-Reply-To: <ae5fa879bb7d416b92face2dcf9045fd@huawei.com>
+References: <20240730073123.72992-1-marco@palumbi.it>
+In-Reply-To: <20240730073123.72992-1-marco@palumbi.it>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 31 Jul 2024 12:39:16 +0100
-Message-ID: <CAFEAcA-MrfFiJcrKabz2MYiu6VHju6+yUAeeLB7MBrT-0tAWCw@mail.gmail.com>
-Subject: Re: [PATCH] accel/kvm/kvm-all: Fixes the missing break in vCPU unpark logic
-To: Salil Mehta <salil.mehta@huawei.com>
-Cc: Igor Mammedov <imammedo@redhat.com>, "Michael S. Tsirkin" <mtsirkin@redhat.com>, 
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, 
-	"mst@redhat.com" <mst@redhat.com>, "maz@kernel.org" <maz@kernel.org>, 
-	"jean-philippe@linaro.org" <jean-philippe@linaro.org>, Jonathan Cameron <jonathan.cameron@huawei.com>, 
-	"lpieralisi@kernel.org" <lpieralisi@kernel.org>, 
-	"richard.henderson@linaro.org" <richard.henderson@linaro.org>, 
-	"andrew.jones@linux.dev" <andrew.jones@linux.dev>, "david@redhat.com" <david@redhat.com>, 
-	"philmd@linaro.org" <philmd@linaro.org>, "eric.auger@redhat.com" <eric.auger@redhat.com>, 
-	"oliver.upton@linux.dev" <oliver.upton@linux.dev>, "pbonzini@redhat.com" <pbonzini@redhat.com>, 
-	"will@kernel.org" <will@kernel.org>, "gshan@redhat.com" <gshan@redhat.com>, 
-	"rafael@kernel.org" <rafael@kernel.org>, "alex.bennee@linaro.org" <alex.bennee@linaro.org>, 
-	"linux@armlinux.org.uk" <linux@armlinux.org.uk>, 
-	"darren@os.amperecomputing.com" <darren@os.amperecomputing.com>, 
-	"ilkka@os.amperecomputing.com" <ilkka@os.amperecomputing.com>, 
-	"vishnu@os.amperecomputing.com" <vishnu@os.amperecomputing.com>, 
-	"karl.heubaum@oracle.com" <karl.heubaum@oracle.com>, "miguel.luis@oracle.com" <miguel.luis@oracle.com>, 
-	"salil.mehta@opnsrc.net" <salil.mehta@opnsrc.net>, zhukeqian <zhukeqian1@huawei.com>, 
-	"wangxiongfeng (C)" <wangxiongfeng2@huawei.com>, "wangyanan (Y)" <wangyanan55@huawei.com>, 
-	"jiakernel2@gmail.com" <jiakernel2@gmail.com>, "maobibo@loongson.cn" <maobibo@loongson.cn>, 
-	"lixianglai@loongson.cn" <lixianglai@loongson.cn>, "npiggin@gmail.com" <npiggin@gmail.com>, 
-	"harshpb@linux.ibm.com" <harshpb@linux.ibm.com>, Linuxarm <linuxarm@huawei.com>
+Date: Wed, 31 Jul 2024 12:38:18 +0100
+Message-ID: <CAFEAcA_7QDUuQ-zs53Xp2zcO83rDzj0Smga49GZ8J9gg26VBdw@mail.gmail.com>
+Subject: Re: [PATCH] hw/arm/mps2-tz.c: fix RX/TX interrupts order
+To: marco@palumbi.it
+Cc: qemu-devel@nongnu.org, Marco Palumbi <Marco.Palumbi@tii.ae>,
+ qemu-arm@nongnu.org, qemu-stable@nongnu.org, qemu-trivial@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-X-TUID: 5cpVplWItT07
+Received-SPF: pass client-ip=2a00:1450:4864:20::529;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x529.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: MbD5Kvou9yom
 
-On Wed, 31 Jul 2024 at 09:49, Salil Mehta <salil.mehta@huawei.com> wrote:
+On Tue, 30 Jul 2024 at 08:32, <marco@palumbi.it> wrote:
 >
-> Hello,
+> From: Marco Palumbi <Marco.Palumbi@tii.ae>
 >
-> A quick check and a gentle reminder, has this patch been accepted?
+> The order of the RX and TX interrupts are swapped.
+> This commit fixes the order as per the following documents:
+>  * https://developer.arm.com/documentation/dai0505/latest/
+>  * https://developer.arm.com/documentation/dai0521/latest/
+>  * https://developer.arm.com/documentation/dai0524/latest/
+>  * https://developer.arm.com/documentation/dai0547/latest/
+>
+> Signed-off-by: Marco Palumbi <Marco.Palumbi@tii.ae>
 
-Thanks for the ping. I'm doing a target-arm pullreq tomorrow
-so I'll take it via my queue.
+Thanks for this patch, I've applied it to my target-arm.next
+queue.
 
+I checked the other boards that use the cmsdk UART, and they
+all get the tx/rx interrupt order right, so this is the
+only place that needed fixing. I suspect that the guest
+images I tested didn't care about the separate tx/rx
+interrupts and only used the combined irq.
+
+thanks
 -- PMM

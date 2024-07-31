@@ -1,411 +1,116 @@
-Received: by 2002:a17:505:3f8c:b0:1be9:327d:8ee3 with SMTP id bm12csp269832njb;
-        Wed, 31 Jul 2024 03:30:42 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCWbSqLIzjw6CG/R5I29NSYe0BLG8CqIRWoNf37bMCCCuwiDqSiI/QLKkNEm0cJqQ4YuADiiYFoktFvrbHLHxVfQyw2q1dL1
-X-Google-Smtp-Source: AGHT+IHAMhy5tkwxEjJVUqqrSBq1J0WxWLzMOyoSyOEL9DRqVcIVYqpdV6AcA37+AVCvHSmaRkjY
-X-Received: by 2002:a05:622a:19a0:b0:447:d7d8:1150 with SMTP id d75a77b69052e-45004f2dacfmr147941651cf.41.1722421841885;
-        Wed, 31 Jul 2024 03:30:41 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1722421841; cv=pass;
+Received: by 2002:a17:505:3f8c:b0:1be9:327d:8ee3 with SMTP id bm12csp297635njb;
+        Wed, 31 Jul 2024 04:39:28 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWryClInG/+NoPHPEw20NA58BApoFKPKPZzxzXfHwq6XMtJVZFsO81NaYmLt9lUNS/tjD9uVfRmNyxntKwNSDTQMVaKGHV+
+X-Received: by 2002:a17:906:f58d:b0:a77:eb34:3b4b with SMTP id a640c23a62f3a-a7d3ffad76cmr1047609966b.11.1722425967829;
+        Wed, 31 Jul 2024 04:39:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1722425967; cv=none;
         d=google.com; s=arc-20160816;
-        b=D+AEB6x4lT8EwC+7A1ewrpyMplR3RSgPpSiD7eZMbKIUvtkR26NOHrIE0NKEKjSfsx
-         w0RSFBbO+AfacW1Uzdt8bwsCQ65aivudbR+KfjcEC3ymiiXh/yRpeJA+sLdTreGxCedE
-         ryb78VIL/kN76IeHujA1jDqCJX4kGKvYoI3SNXI/a3f8tv9pwkPq4SUl9V7LOOz+Nrz5
-         zbmlFSUEwJsUa1WQJzJoMm2V+1HrKuTkhwq//h06zvWdOGbirURIGzpIX4bfW0HfjPi5
-         5WXtefjEnW0aivI/X19rtk1MidtAcaa1hknrtI0PB5GRE3LRvOFfWnw7MZBqlTnsVB/e
-         WSJw==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=pptApEy05gDa07OUJeiGk+tqf3COk3YBFK5XNpPgGbc=;
-        fh=dzo7SuzP7W+3TUjWzzBW2kO2fFigPcHpemfjSiOs7+c=;
-        b=ddwjNlhsycFQpEqXzOrOl02TmGF19j8H6sVxjjBo2qV5puZzj3VMaykx+MCDXY5M2U
-         is4hMIZb6+GMtycKtQDSbEFeL+36wVu5SNoK4PS1ln+ujmpLhu/1Nlp2N/ZOLFmPST6A
-         diIK43NmSBoKs98n2qFCyDz4qKNA1JDFTYZfQ6iJF5L7F+ZG+dtlOG8emXm8X5/I8bIf
-         CYCeiuiJWSHbWh9e+qpxDfGPZ8KNSHNBOPrPiGIQWne/Zf9W8YJ2DUEeL5EtTBMW4rmp
-         zrhu7zCyGJpp8g8GJVkXhO12NVddRX+Zira+Q+BWCbWvLqd6KGGNiOc5BH8lrGbGZ+XS
-         t1zg==;
+        b=Z0XdbstPDdbjeocINmU046Bua3qgeDzHKxzcjt8+c6ZuK1/fJGVSIxMhQf4apLY18h
+         bniL4iZ+XAprkJD0tEVVU0rkUD5l+JRARLkjc3NdWtyYW2LnOP9pAfdx0r3TrsW5DUQ4
+         GQnwDRLZRN5IrsXmusLTEMHFRCagglrUpSSLwmGN6rUBV+xrp0uFiwqGUQbVmvBMhj7l
+         Q5Gb1YyRo3AM+Jgl77mMw0uBaeEbMe6yuxydTEwcdKLLjWDHW7zPc/EZcC+rNTOb9hMX
+         VR74G4M7c47Ska/BLhALzwRaekEkJXJa9rFDzjGWbuTQCJ5BRTbUw1Y+UH6sr174jMyg
+         425Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=9aiq++bdNk44vu8pBxgjGzZR8HEkDbz3gF4BkYmxTlQ=;
+        fh=PB8LkC3abRRRR+v94NNQEFlQcz0ENVOinCoz3S10suw=;
+        b=icXXR50KW+lk+3HgaeAwLDGZ3REpAnpqpJpJb6fPNzUYwVBoWd8tWa/xhjGV2r3gec
+         DK+3T/JFrpIJiPTGkrqxCvj6eSSFq3Dfz33fzdLYCqsMWA/v4pNKHP3ycqM51ssUQ+KV
+         u+1fT5wPyFlmuou3auoPBvQupw7YwggC8Xk2Ty6176nLEhVoIF1PXUCJMoD7OPTAioif
+         HLV54IRSRjvvTv50yr7q+MeWVoN0a8rK6nogrI8WuBG5vAZ5uObIGDkhBsCgfymmHmy8
+         b0eEtE9UZweorpGqS0+lGs4Z4XBjVhIu2Ws1hsLrYjiwzHeDY6RqXEBl5hP30OKUrtzZ
+         4ubw==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=nfvSrJwd;
-       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
-       spf=pass (google.com: domain of linux-kernel+bounces-268990-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="linux-kernel+bounces-268990-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
-Return-Path: <linux-kernel+bounces-268990-alex.bennee=linaro.org@vger.kernel.org>
-Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [147.75.199.223])
-        by mx.google.com with ESMTPS id d75a77b69052e-44fe853a9f5si148276811cf.768.2024.07.31.03.30.41
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=pdlfdlLM;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id a640c23a62f3a-a7acb3eebdesor291323466b.16.2024.07.31.04.39.27
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 31 Jul 2024 03:30:41 -0700 (PDT)
-Received-SPF: pass (google.com: domain of linux-kernel+bounces-268990-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) client-ip=147.75.199.223;
+        (Google Transport Security);
+        Wed, 31 Jul 2024 04:39:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=nfvSrJwd;
-       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
-       spf=pass (google.com: domain of linux-kernel+bounces-268990-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="linux-kernel+bounces-268990-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
-Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ny.mirrors.kernel.org (Postfix) with ESMTPS id 87AC01C21CDD
-	for <alex.bennee@linaro.org>; Wed, 31 Jul 2024 10:30:41 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id A6DC818DF8F;
-	Wed, 31 Jul 2024 10:30:38 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="nfvSrJwd"
-Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 50C4518562A
-	for <linux-kernel@vger.kernel.org>; Wed, 31 Jul 2024 10:30:38 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=10.30.226.201
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1722421838; cv=none; b=UvfyMbXs+TqmEaoAuk56DLw0dGsJRqxgoCCrZpfD247esvklCvRut8Um8ZL51uLWczjsXZhCAnEW2YKNyNLpaRNfYTGTWF+0C8YpUv4W4mQOThkBJgYpfIRhDlMgdzPZvCzHWkaYS1a22xpB9UVV74c32EJ8hcneRVb16PKw6mM=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1722421838; c=relaxed/simple;
-	bh=oA/KJPRimoyaFLj/Zbtii0ZoV2tsjH6+qF9/B0/68+k=;
-	h=Date:From:To:Cc:Subject:Message-ID:In-Reply-To:References:
-	 MIME-Version:Content-Type; b=FJFB7RWvmLYlzcje1qioQHQPLxfc8E6bhQl3ZQ84AvSFwCPsrnfHoXbKMdCrgDdPzxu6EMPLN1ezdfURgDWZE4XssD/XBq/7Uy6BuJKTSCClrHTZ/TPh6twqZqwdlHb22cNklWquyPrABi6hmrgu9jbOI1LlHqsqjTeNW7q5Osw=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=nfvSrJwd; arc=none smtp.client-ip=10.30.226.201
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E00FEC116B1;
-	Wed, 31 Jul 2024 10:30:34 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1722421837;
-	bh=oA/KJPRimoyaFLj/Zbtii0ZoV2tsjH6+qF9/B0/68+k=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=nfvSrJwdLszRqfpL4rbrGEtaBdJgTB5+QcLHTcIHDIHp+qbaBBtYE4rgksUIAVgT/
-	 Ku3VEN0gHxmtYe7lNVEl+ZqUHykv6KGs0FfP1NZ2v5uYjtiJSWMzcx0PKgK1jaUYdy
-	 dLgCwV9m29WN+oC/IQEnYYLwnOCbxayVwuZkvHEYxxqLU29DZu0L3JiRfJ3FNdPerz
-	 psHqaRmWDCysTPcIRwu17sgkMhViOt/eH7ODffwxZ6bO1hbYPLKgA0vJMtszsafWd8
-	 ZR8wIoBAx5U6lCQWThCtL8aE2DO5XFZzVBeMMmMLgQfn2+CNVRbl1hWuFyCoNUPKRG
-	 +JGZUhvRRB37A==
-Date: Wed, 31 Jul 2024 12:30:31 +0200
-From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-To: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
-Cc: Igor Mammedov <imammedo@redhat.com>, Shiju Jose <shiju.jose@huawei.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Ani Sinha <anisinha@redhat.com>,
- Dongjiu Geng <gengdongjiu1@gmail.com>, Eric Blake <eblake@redhat.com>,
- Markus Armbruster <armbru@redhat.com>, Michael Roth <michael.roth@amd.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Peter Maydell
- <peter.maydell@linaro.org>, <linux-kernel@vger.kernel.org>,
- <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
-Subject: Re: [PATCH v3 4/7] acpi/ghes: Add a logic to handle block addresses
- and FW first ARM processor error injection
-Message-ID: <20240731122545.22b51457@foz.lan>
-In-Reply-To: <20240731095719.000004dc@Huawei.com>
-References: <cover.1721630625.git.mchehab+huawei@kernel.org>
-	<6a3542a7d8acfbf88c906ec6f6dc5a697257b461.1721630625.git.mchehab+huawei@kernel.org>
-	<20240730131709.10e72c7d@imammedo.users.ipa.redhat.com>
-	<20240731091133.07ddd58c@foz.lan>
-	<20240731095719.000004dc@Huawei.com>
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
-Precedence: bulk
-X-Mailing-List: linux-kernel@vger.kernel.org
-List-Id: <linux-kernel.vger.kernel.org>
-List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=pdlfdlLM;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1722425967; x=1723030767; darn=linaro.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=9aiq++bdNk44vu8pBxgjGzZR8HEkDbz3gF4BkYmxTlQ=;
+        b=pdlfdlLMgiHEpZ63TBsSDSN6Y1+Xl1SkwZjbSHwFFoPOxJMDdrE1gIkyO9WLTko+4v
+         ryN7TadqZjjVDElXIMel28sb9TsiGFpWGEHCnZdLrSMItPXyIZgkPHxp5L0h/3+SneqA
+         T7dw9SLGbjEQzvYYwkAZVXAof4FuPQAHp9n7KEZqmBbCm2s+jEz72s3Qc29SuCz+Hf/y
+         V8/GCMDt6vTls2dsxvNjPfAj6SLJvboaJNUBKCx361zcTmo9BYVTrukuivFi0QxdZkYK
+         mbcsI2uDZavUH6b05c51fzRIPbbImZ+JgoWx5WI1srQXRKTxaoqkE64bsbnbR11OMEGI
+         W5Xg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1722425967; x=1723030767;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=9aiq++bdNk44vu8pBxgjGzZR8HEkDbz3gF4BkYmxTlQ=;
+        b=QcH5MNOkanmvRkbKFbOcW7wPwd0qXduazdbag6qZCkrO7AGN4pzmeT3dWPwMdvimqi
+         a7xBTIHhy6Inrg2ZCznmSHgi4iD6z1eje/8ABOKsX0lLmutPWGzbY14nglktkCHU+ENB
+         wHHp2807N8Epwa+FG+UHQbIqmKuOWmA5+Wr/n0LhRKLbVGoiwl9cNdJzWQ1X1U96fmDj
+         idaawGlFm1P5n0RaKZFWL8nSrpQR1UOndtRWfrz07Q/I2CdHpHgyFHqlCBQxzEqgpAQA
+         7+gFFkr2B4jjxvGlA5kzlwwAYwVALSskuj25GX/cLGhIhKwjALBl6KZZCHjD/1ShmAbh
+         xW0Q==
+X-Forwarded-Encrypted: i=1; AJvYcCWsLbJ2Su8YJEfC5rApmDtDR5fGxOcTLs/2QYvMe1VKnGLo7ReGWXnUhdjNGbN1Ebpy/uOFnvltdvo84jYSylfPWktgkS1Q
+X-Gm-Message-State: AOJu0YyqSnqt6jc4hRScKcGCrNx2510s/kHhk1CpYYPfdauqvE5w5+Xc
+	YGeheTGXaprC9ZuFxjVX9StFo/a7p2e4uQKg1Sxh+HEGJnL5diIKkNl8UjG2h3f76GXQciNibGe
+	lSz4223ZKt6wyMaxsRJBKDqPsaK+gztBnrEi2GwZA
+X-Google-Smtp-Source: AGHT+IEhk2KY9TqI5RY6PcdaXLOZvwu1zuWW3/ZTj9B6nsvrnnlDIrMnFYwUw3MYrxvmYUzHFBSKil8jAhJhJ+c524c=
+X-Received: by 2002:a50:9e6b:0:b0:5a3:b866:eaef with SMTP id
+ 4fb4d7f45d1cf-5b0223da231mr7630727a12.31.1722425967297; Wed, 31 Jul 2024
+ 04:39:27 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-TUID: Q8/wHUZwOq8j
+References: <20240725145132.99355-1-salil.mehta@huawei.com>
+ <20240726113355.731e61fe@imammedo.users.ipa.redhat.com> <ae5fa879bb7d416b92face2dcf9045fd@huawei.com>
+In-Reply-To: <ae5fa879bb7d416b92face2dcf9045fd@huawei.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 31 Jul 2024 12:39:16 +0100
+Message-ID: <CAFEAcA-MrfFiJcrKabz2MYiu6VHju6+yUAeeLB7MBrT-0tAWCw@mail.gmail.com>
+Subject: Re: [PATCH] accel/kvm/kvm-all: Fixes the missing break in vCPU unpark logic
+To: Salil Mehta <salil.mehta@huawei.com>
+Cc: Igor Mammedov <imammedo@redhat.com>, "Michael S. Tsirkin" <mtsirkin@redhat.com>, 
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, 
+	"mst@redhat.com" <mst@redhat.com>, "maz@kernel.org" <maz@kernel.org>, 
+	"jean-philippe@linaro.org" <jean-philippe@linaro.org>, Jonathan Cameron <jonathan.cameron@huawei.com>, 
+	"lpieralisi@kernel.org" <lpieralisi@kernel.org>, 
+	"richard.henderson@linaro.org" <richard.henderson@linaro.org>, 
+	"andrew.jones@linux.dev" <andrew.jones@linux.dev>, "david@redhat.com" <david@redhat.com>, 
+	"philmd@linaro.org" <philmd@linaro.org>, "eric.auger@redhat.com" <eric.auger@redhat.com>, 
+	"oliver.upton@linux.dev" <oliver.upton@linux.dev>, "pbonzini@redhat.com" <pbonzini@redhat.com>, 
+	"will@kernel.org" <will@kernel.org>, "gshan@redhat.com" <gshan@redhat.com>, 
+	"rafael@kernel.org" <rafael@kernel.org>, "alex.bennee@linaro.org" <alex.bennee@linaro.org>, 
+	"linux@armlinux.org.uk" <linux@armlinux.org.uk>, 
+	"darren@os.amperecomputing.com" <darren@os.amperecomputing.com>, 
+	"ilkka@os.amperecomputing.com" <ilkka@os.amperecomputing.com>, 
+	"vishnu@os.amperecomputing.com" <vishnu@os.amperecomputing.com>, 
+	"karl.heubaum@oracle.com" <karl.heubaum@oracle.com>, "miguel.luis@oracle.com" <miguel.luis@oracle.com>, 
+	"salil.mehta@opnsrc.net" <salil.mehta@opnsrc.net>, zhukeqian <zhukeqian1@huawei.com>, 
+	"wangxiongfeng (C)" <wangxiongfeng2@huawei.com>, "wangyanan (Y)" <wangyanan55@huawei.com>, 
+	"jiakernel2@gmail.com" <jiakernel2@gmail.com>, "maobibo@loongson.cn" <maobibo@loongson.cn>, 
+	"lixianglai@loongson.cn" <lixianglai@loongson.cn>, "npiggin@gmail.com" <npiggin@gmail.com>, 
+	"harshpb@linux.ibm.com" <harshpb@linux.ibm.com>, Linuxarm <linuxarm@huawei.com>
+Content-Type: text/plain; charset="UTF-8"
+X-TUID: 5cpVplWItT07
 
-Em Wed, 31 Jul 2024 09:57:19 +0100
-Jonathan Cameron <Jonathan.Cameron@Huawei.com> escreveu:
+On Wed, 31 Jul 2024 at 09:49, Salil Mehta <salil.mehta@huawei.com> wrote:
+>
+> Hello,
+>
+> A quick check and a gentle reminder, has this patch been accepted?
 
-> On Wed, 31 Jul 2024 09:11:33 +0200
-> Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
-> 
-> > Em Tue, 30 Jul 2024 13:17:09 +0200
-> > Igor Mammedov <imammedo@redhat.com> escreveu:
-> >   
-> > > On Mon, 22 Jul 2024 08:45:56 +0200
-> > > Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
-> > > 
-> > > that's quite a bit of code that in 99% won't ever be used
-> > > (assuming error injection testing scenario),
-> > > not to mention it's a hw depended one and governed by different specs.
-> > >
-> > > Essentially we would need to create _whole_ lot of QAPI
-> > > commands to cover possible errors for no benefit to QEMU.  
-> 
-> Fair point.  A 'few' error types might be helpful to general
-> users like the original memory error injection this is built
-> on which is reduce blast radius of a real error (and used in
-> production VMM cases), but most are about testing the rest
-> of the stack, not really QEMU.
+Thanks for the ping. I'm doing a target-arm pullreq tomorrow
+so I'll take it via my queue.
 
-My concern is that we may end needing QAPI for querying stuff
-that will be used on such script.
-
-On a more concrete example, let's suppose we want to produce a
-HEST record for a CXL source, using the layout given by a QEMU
-command line like this:
-
-./qemu-system-aarch64 -M virt,nvdimm=on,gic-version=3,cxl=on -m 4g,maxmem=8G,slots=8 \
- -cpu max -smp 4 -kernel Image -drive if=none,file=debian.qcow2,format=qcow2,id=hd \
- -device pcie-root-port,id=root_port1 -device virtio-blk-pci,drive=hd \
- -netdev type=user,id=mynet,hostfwd=tcp::5555-:22 -qmp tcp:localhost:4445,server=on,wait=off \
- -device virtio-net-pci,netdev=mynet,id=bob -nographic -no-reboot \
- -append 'earlycon root=/dev/vda1 fsck.mode=skip tp_printk maxcpus=4' \
- -monitor telnet:127.0.0.1:1234,server,nowait -bios QEMU_EFI.fd \
- -object memory-backend-ram,size=4G,id=mem0 -numa node,nodeid=0,cpus=0-3,memdev=mem0 \
- -object memory-backend-file,id=cxl-mem1,share=on,mem-path=/tmp/cxltest.raw,size=256M,align=256M \
- -object memory-backend-file,id=cxl-mem2,share=on,mem-path=/tmp/cxltest2.raw,size=256M,align=256M \
- -object memory-backend-file,id=cxl-mem3,share=on,mem-path=/tmp/cxltest3.raw,size=256M,align=256M \
- -object memory-backend-file,id=cxl-mem4,share=on,mem-path=/tmp/cxltest4.raw,size=256M,align=256M \
- -object memory-backend-file,id=cxl-lsa1,share=on,mem-path=/tmp/lsa.raw,size=1M,align=1M \
- -object memory-backend-file,id=cxl-lsa2,share=on,mem-path=/tmp/lsa2.raw,size=1M,align=1M \
- -object memory-backend-file,id=cxl-lsa3,share=on,mem-path=/tmp/lsa3.raw,size=1M,align=1M \
- -object memory-backend-file,id=cxl-lsa4,share=on,mem-path=/tmp/lsa4.raw,size=1M,align=1M \
- -object memory-backend-file,id=cxl-mem5,share=on,mem-path=/tmp/cxltest5.raw,size=256M,align=256M \
- -object memory-backend-file,id=cxl-mem6,share=on,mem-path=/tmp/cxltest6.raw,size=256M,align=256M \
- -object memory-backend-file,id=cxl-mem7,share=on,mem-path=/tmp/cxltest7.raw,size=256M,align=256M \
- -object memory-backend-file,id=cxl-mem8,share=on,mem-path=/tmp/cxltest8.raw,size=256M,align=256M \
- -object memory-backend-file,id=cxl-lsa5,share=on,mem-path=/tmp/lsa5.raw,size=1M,align=1M \
- -object memory-backend-file,id=cxl-lsa6,share=on,mem-path=/tmp/lsa6.raw,size=1M,align=1M \
- -object memory-backend-file,id=cxl-lsa7,share=on,mem-path=/tmp/lsa7.raw,size=1M,align=1M \
- -object memory-backend-file,id=cxl-lsa8,share=on,mem-path=/tmp/lsa8.raw,size=1M,align=1M \
- -device pxb-cxl,bus_nr=12,bus=pcie.0,id=cxl.1 \
- -device cxl-rp,port=0,bus=cxl.1,id=root_port0,chassis=0,slot=2 \
- -device cxl-rp,port=1,bus=cxl.1,id=root_port2,chassis=0,slot=3 \
- -device virtio-rng-pci,bus=root_port2 \
- -device cxl-upstream,port=33,bus=root_port0,id=us0,multifunction=on,addr=0.0 \
- -device cxl-downstream,port=0,bus=us0,id=swport0,chassis=0,slot=4 \
- -device cxl-downstream,port=1,bus=us0,id=swport1,chassis=0,slot=5 \
- -device cxl-downstream,port=2,bus=us0,id=swport2,chassis=0,slot=6 \
- -device cxl-downstream,port=3,bus=us0,id=swport3,chassis=0,slot=7 \
- -device cxl-type3,bus=swport0,memdev=cxl-mem1,id=cxl-pmem0,lsa=cxl-lsa1,sn=3 \
- -device cxl-type3,bus=swport1,memdev=cxl-mem2,id=cxl-pmem1,lsa=cxl-lsa2,sn=4 \
- -device cxl-type3,bus=swport2,memdev=cxl-mem3,id=cxl-pmem2,lsa=cxl-lsa3,sn=5 \
- -device cxl-type3,bus=swport3,memdev=cxl-mem4,id=cxl-pmem3,lsa=cxl-lsa4,sn=6 \
- -machine cxl-fmw.0.targets.0=cxl.1,cxl-fmw.0.size=4G,cxl-fmw.0.interleave-granularity=1k \
- -machine ras=on
-
-There is a complex set of CXL devices there. Doing error injection
-will need to know exactly how such devices were created and the
-memory got allocated, as, when testing an userspace application
-running at the guest OS (like rasdaemon), we need an address that
-makes sense, otherwise the memory poison of rasdaemon won't be
-disabling the right address set.
-
-So, while a HEST QAPI raw interface will have a very trivial API,
-and the ghes code being also simpler, we'll need a QAPI interface
-good enough to describe all CXL specific details for the error
-injection script to produce a proper HEST record, if this ends
-being mapped using such QAPI.
-
-> 
-> So it's very helpful for a smallish group of users.
-> 
-
-My end goal is to be able to use QEMU to validate and identify 
-regressions at the Linux Kernel RAS subsystem and at the userspace 
-daemon responsible to receive, log and take actions based on the 
-error information (on other words, rasdaemon). Not only for
-ARM, but also for x86 (and maybe in the future for other archs,
-depending on how they end implementing RAS features).
-
-At the end of the day, I'd like to have a github action running QEMU
-to check  rasdaemon proposed patches against a docker container with
-the latest version of Linux and QEMU.
-
-> > > Let take for example very simple _OST status reporting,
-> > > QEMU of cause can decode values and present it to users in
-> > > more 'presentable' form. However instead of translating
-> > > numbers (aka. spec language) into a made up QEMU language,
-> > > QEMU just passes values up the stack and users can use
-> > > well defined spec to interpret its meaning.
-> > > 
-> > > benefits are: QEMU doesn't have to maintain translation
-> > > code and QAPI ABI is limited to passing raw values.
-> > > 
-> > > Can we do similar thing here as well?
-> > > i.e. simplify error injection commands to
-> > > a command that takes raw value and passes it
-> > > to guest (QEMU here acts as proxy, if I'm not
-> > > mistaken)?
-> > > 
-> > > Preferably make it generic enough to handle
-> > > not only ARM but other error formats HEST is
-> > > able to handle.    
-> > 
-> > A too generic interface doesn't sound feasible to me, as the
-> > EINJ code needs to check QEMU implementation details before
-> > doing the error inject.  
-> 
-> To be clear we are talking here about a script that
-> generates 'similar' stuff to ACPI EINJ does and injects
-> via qapi, not guest injection (which is almost always locked
-> down on production machines / distros because of the footgun
-> aspect).  + ACPI EINJ interface suffers exactly the same
-> problems with state discoverability we have with a raw interface here.
-> (I checked with Mauro offline that I'd interpreted this
-> comment correctly!)
-
-Yes, the end goal is to inject GHESv2 errors using a generic
-event device, e. g.:
-
-	https://uefi.org/specs/ACPI/6.5/18_Platform_Error_Interfaces.html#generic-hardware-error-source-version-2-ghesv2-type-10
-
-> > See, processor is probably the simplest error injection
-> > source, as most of the fields there aren't related to how
-> > the hardware simulation is done.
-> > 
-> > Yet, if you see patch 7 of this series, you'll notice that some
-> > fields should actually be filled based on the emulation.
-> > 
-> > On ARM, we have some IDs that depend on the emulation
-> > (MIDR, MPIDR, power state). Doing that on userspace may require
-> > a QAPI to query them.  
-> 
-> We could strip back the QAPI part to only the bits that are
-> not dependent on state. 
-
-Works for me.
-
-> However, the kicker to that is we'd
-> need to make sure all that state is available to an external
-> tool (or fully controllable from initial launch command line).
-> I'm not sure where the gaps are but, I'm fairly sure there
-> will be some.  Doesn't save much code other than documentation
-> of the QAPI.
-
-For CPU error injection, certainly the amount of code for the error
-injection won't change much. The code will be split into QEMU C code 
-and Python's code (inside a qemu-einj.py script). As raw data won't
-be validated, some code may actually be removed.
-
-On the other hand, some new query QAPI interfaces will be needed,
-specially when handling memory-related HEST data, as the memory 
-layout with enough details for the script to properly produce errors
-will be needed.
-
-So, we're talking on adding a couple of additional QAPIs. The
-advantage is that such QAPIs will be independent of the ghes
-driver, but some may be arch-specific, like the ones reporting fields
-like ARM mpidr, midr, power_state, for instance. On an initial
-implementation, we can live without those, but for the ARM processor
-error injection.
-
-I'll try to craft a proposal with a very minimal QAPI for GHESv2
-injection, implementing it for ARM processor (and maybe for some other
-type, to check if the interface will fit). Let's see how it goes.
-
-> > The memory layout, however, is the most complex one. Even for
-> > an ARM processor CPER (which is the simplest scenario), the 
-> > physical/virtual address need to be checked against the emulation
-> > environment.
-> > 
-> > Other error sources (like memory errors, CXL, etc) will require
-> > a deep knowledge about how QEMU mapped such devices.  
-> 
-> For CXL stuff we'll piggy back on native error injection interfaces
-> that are already there and couldn't be avoided because they
-> are writing a bunch of register state (that we elide in the FW
-> first path). 
-> https://lore.kernel.org/qemu-devel/20240205141940.31111-12-Jonathan.Cameron@huawei.com/
-> So we won't be adding new QAPI, but the error record generation logic
-> will be in QEMU.  For background, the CXL FW first error injection
-> has taken a back seat to the ARM errors because of the obvious
-> other factor that CXL isn't supported on ARM in upstream QEMU.
-
-Makes sense to me.
-
-> Once I escape a few near term deadlines I'll add the x86
-> support for GHESv2 / SCI interrupt signaling as you'd see on a
-> typical x86 server.
-
-Well, if we go to a generic GHESv2 QAPI interface, the arm/virt.c
-will have everything in place to generate GHESv2. It could be used
-to simulate a x86 processor event, as the changes will happen at
-the script side. We'll still need to add the needed bits at x86
-virt code, though, if we want the error injection to be tested
-against a guest doing x86 emulation.
-
-> > 
-> > So, in practice, if we move this to an EINJ script, we'll need
-> > to add a probably more complex QAPI to allow querying the memory
-> > layout and other device and CPU specific bindings.
-> > 
-> > Also, we don't know what newer versions of ACPI spec will reserve
-> > us. See, even the HEST table contents is dependent of the HEST 
-> > revision number, as made clear at the ACPI 6.5 notes:
-> > 
-> > 	https://uefi.org/specs/ACPI/6.5/18_Platform_Error_Interfaces.html#acpi-error-source
-> > 
-> > and at:
-> > 
-> > 	https://uefi.org/specs/ACPI/6.5/18_Platform_Error_Interfaces.html#error-source-structure-header-type-12-onward
-> > 
-> > So, if we're willing to add support for a more generic "raw data"
-> > QAPI, I would still do it per-type, and for the fields that won't
-> > require knowledge of the device-emulation details.  
-> 
-> Could blend the two options and provide no qapi for the bits
-> that are QEMU state dependent - if fuzzing, can inject
-> the full record raw as doesn't have to be valid state anyway.
-
-Not sure. I guess it will depend if we'll be using a simple raw data
-buffer for CPER record(s) or if we'll break it per CPER type.
-
-The GHES interface for generic CPER records would be simpler, but it
-may require some QEMU query QAPIs for the script to be able to get
-what it is needed..
-
-Let me try to code it and see how it goes.
-
-> > Btw, my proposal on patch 7 of this series is to have raw data
-> > for:
-> > 	- the error-info field;
-> > 	- registers dump;
-> > 	- micro-architecture specific data.
-> > 
-> > I don't mind trying to have more raw data there as I see (marginal) 
-> > benefits of allowing to generate CPER invalid records [1], but some of
-> > those  fields need to be validated and/or filled internally at QEMU - if
-> > not forced to an specific value by the caller.
-> > 
-> > [1] a raw data EINJ can be useful for fuzzy logic fault detection to 
-> >     check if badly formed packages won't cause a Kernel panic or be
-> >     an exploit. Yet, not really a concern for APEI, as if the hardware
-> >     is faulty, a Kernel panic is not out of the table. Also, if the
-> >     the BIOS is already compromised and has malicious code on it, 
-> >     the EINJ interface is not the main concern.
-> >   
-> > > PS:
-> > > For user convenience, QEMU can carry a script that
-> > > could help generate this raw value in user friendly way
-> > > but at the same time it won't put maintenance
-> > > burden on QEMU itself.    
-> > 
-> > The script will still require reviews, and the same code will 
-> > be there. So, from maintenance burden, there won't be much
-> > difference.  
-> 
-> Agreed. I'd also be very keen that the script is tightly coupled to
-> QEMU as doesn't make sense to carry with kernel or RAS daemon and
-> I'd want to ultimately get this stuff into all the appropriate
-> CI flows.
-
-Agreed: placing it together with QEMU is indeed the best location.
-
-> > 
-> > Btw, I'm actually using myself a script to test it, currently
-> > sitting together with rasdaemon - which is the Linux tool to detect
-> > and handle hardware errors:
-> > 
-> > 	https://github.com/mchehab/rasdaemon/blob/master/contrib/qemu_einj.py
-> > 
-> > as it helps a lot when trying to simulate more complex errors.
-> > 
-> > Once QEMU gains support to inject processor errors, I can prepare a 
-> > separate patch to move it to QEMU.
-> > 
-> > Thanks,
-> > Mauro  
-> 
-> So tricky questions. I'm not sure which way is the least painful!
-
-Agreed.
-
-Thanks,
-Mauro
+-- PMM

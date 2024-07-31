@@ -1,192 +1,167 @@
-Received: by 2002:a17:504:5965:b0:1be9:327d:8ee3 with SMTP id xe5csp2459823njb;
-        Tue, 30 Jul 2024 09:34:32 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXaQgzRD1Myt6PLg5nC9OY92HXsRd0f8T6PcX3t7EAVN8+dP+a4n38yaNVXH84o/O7EY+lsvbO18r+d2VBp1QlOhNdUz8LA
-X-Google-Smtp-Source: AGHT+IEBPsPoSzOlUlVv/0uVPgYRtSISt7qecVFKdOEFNQu/3thXobpihK26cvxu6lPoFqERg/aD
-X-Received: by 2002:a05:6122:3d06:b0:4f5:14c7:822f with SMTP id 71dfb90a1353d-4f6e68b27b5mr13332191e0c.3.1722357271802;
-        Tue, 30 Jul 2024 09:34:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1722357271; cv=none;
+Received: by 2002:a17:505:3f8c:b0:1be9:327d:8ee3 with SMTP id bm12csp209166njb;
+        Wed, 31 Jul 2024 00:44:40 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCVb+bmTqVg3MvhR01Xjv4HgY4si8XWptGSrHBjYM+eKeigXUFVJJf04vVK/4I/tsQqynwrDV3sW8mBewp3xQt69re8HwQX0
+X-Google-Smtp-Source: AGHT+IHnLagsDZRK9XMGTpcAFXmE01beXqLxtZGXWtbr19NNDL7yxZwaYgoItQ81c1GCm48OcLF3
+X-Received: by 2002:a17:907:1c85:b0:a7d:2429:dc16 with SMTP id a640c23a62f3a-a7d40150bb9mr879941366b.65.1722411880262;
+        Wed, 31 Jul 2024 00:44:40 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1722411880; cv=pass;
         d=google.com; s=arc-20160816;
-        b=pf1OkBpjl7VVLT/zfmd80eB8IIs+mPZujun2vg4zfRCgpSGOQR7atxfzwDxCF7WR1a
-         n8lvjze9Em2Rivzr5Qn79dG7/GfpScT/Mn88Xq4RJaw8gmz6O8hcYKrYSUiDc1Omb8Wx
-         cvGT+nm9LEFAXGEqKsdGEfEXsezMp8rV6g7r6tQ2ZQ9pEA89frMXkj3kRuUN1aiT1uT0
-         beavNRGAYNfDMSEEJ6R0Qy6QMy4EgbOQU96+rRioqfNMXF0gVb+AZ1rMhPShxHl//o9m
-         E+kZnVAGLdqsjv+/5Vs/9zdfXdR29khD479w7bxJDmj6u5E0VgDKPqyxWtpGEw8tqt5P
-         AwsA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:user-agent
-         :in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=7+f3k17eQadsbAgEbGJb1Y9DtYp+3wVinJe3pKCPgLo=;
-        fh=kvXg6+NHNGmy7Ne8I/dZ9HOjmQ4RL6C6C7Q97Pv2A1g=;
-        b=hwQpEAY8CV7pl5Jhs62xCz836SAQim5VsJxZt3sOd4iMqCh7baYmww7aPDy1+puZw5
-         xtsh40f0S69Nl8b0H+v6Afp28M7Ljax/T8gu82E+rMJpKRxVbT4i0s+7AbBB3fadmxsW
-         XAOnzJMCEtYTe8Pl3TemTLdirHn2QQjAiTkZOFha36ABjL7io64CURKRG0/pDZc+zf5w
-         buFqV/NhRYdFptoBXxxIXKkPZ5jMmWxzDmtmWsVL0Ab+zCQ5vvww+5rvaNFhSZpkVThf
-         7Uo7ON+2DnPjtcRrcFUbb4PUntDlj9JGY+ux6Q4PK1P7pwVGDPTlssaSnVpuIHxjUEYB
-         FVqA==;
+        b=Dw6IzzhxEwNhcX/c4bBlmq30wYPDMXkKWbjo49bwfs2W7UgfxvKsMkWLUGQAxhJuVT
+         gRylxgAwx7TywLq6IrCyvzUVLPj6tpKx8i43YlIAY1cKN9HnOFRanAN86yBO66tMgL/U
+         bsJHpCpxdpNxbLjAUyOsEptqVB0Bu1FTry+fbzSJEx2p2r47w1S1vOt9p/0lCFEzgoeF
+         vm2/nuy3Pyy0XWpQQNdRewtaPrK1hM0tveSJq1ZNYqJ859b405bonPcpwNEVwkcuKanX
+         ThIHnaQleyzBhygY4EMpYXG2uLdzjhS6f2/KWxtSCwRHYjZKJUTFqE2hklO3h0/hTi0O
+         iEnA==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:list-unsubscribe:list-subscribe:list-id:precedence
+         :references:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=v6wAAlcqmVLaLuwyXlcwM3EVRiSRxzVwDwzFvKbOhiw=;
+        fh=UscwW1rX8CGIPHOVTfAuMO5KZvEuwv5X6kPG3yD6D+s=;
+        b=U8gIt4SNaZBZXJlqII7bbwFlR5yDBO4U17/G39W/dEqyZ2EmWyu1t6ezS1F2Wgtjy1
+         PfhoEt/pZ/AaTLR373k/FZwrt1GfGt8JAajIRiWmaK78NqKgwRXETsK/wodd0JilFg53
+         7l7IypAwQ/XoLLW2n25ZlL4dIGprkCOtHQrDR7BoW+ZlTotAOVNdU87YV2MhAwtDepE7
+         XTBiXdzB0eMwkBCCC4wDTBPU0gJUSeUWXU+bMNIA1g5bhTDvd1d6vsN33fetQqeiJEl4
+         op0GjK+EfiZtIER7EOMsVCLx4XFn736q9fiaHhgTHURADZz3JE50llGzU0AqSEbJv/kK
+         GTew==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PnuPnptv;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4500b8f5688si76875461cf.18.2024.07.30.09.34.31
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@intel.com header.s=Intel header.b=l0laINnu;
+       arc=pass (i=1 spf=pass spfdomain=intel.com dkim=pass dkdomain=intel.com dmarc=pass fromdomain=intel.com);
+       spf=pass (google.com: domain of linux-kernel+bounces-268717-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="linux-kernel+bounces-268717-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Return-Path: <linux-kernel+bounces-268717-alex.bennee=linaro.org@vger.kernel.org>
+Received: from am.mirrors.kernel.org (am.mirrors.kernel.org. [147.75.80.249])
+        by mx.google.com with ESMTPS id 4fb4d7f45d1cf-5ac650a3d42si9081060a12.316.2024.07.31.00.44.40
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 30 Jul 2024 09:34:31 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 31 Jul 2024 00:44:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of linux-kernel+bounces-268717-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) client-ip=147.75.80.249;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PnuPnptv;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sYpnk-0001XS-UR; Tue, 30 Jul 2024 12:34:17 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1sYpni-0001NB-66
- for qemu-arm@nongnu.org; Tue, 30 Jul 2024 12:34:14 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1sYpng-0005Ql-DQ
- for qemu-arm@nongnu.org; Tue, 30 Jul 2024 12:34:13 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1722357251;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=7+f3k17eQadsbAgEbGJb1Y9DtYp+3wVinJe3pKCPgLo=;
- b=PnuPnptvOB8B0rQ3hv1Ug3VPKPLml798cbe3uEqOyTQhnd8rGOv/oKv2URABX0VoH1eMpW
- rqCjFkEBmBP7uF5VYshwxIjEgIQ/Wtsxzc573ehYfKsmzA4LXJVYTD3FEOB8oZ8FS+PexZ
- Tf26jcXahgazOAq6LD2huP3stzZ/Rx4=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-537-pJIY0PuKNsST1RVY7QzdJQ-1; Tue,
- 30 Jul 2024 12:34:07 -0400
-X-MC-Unique: pJIY0PuKNsST1RVY7QzdJQ-1
-Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 3098D195609E; Tue, 30 Jul 2024 16:34:06 +0000 (UTC)
-Received: from redhat.com (unknown [10.42.28.108])
- by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 2D6A41955F40; Tue, 30 Jul 2024 16:34:03 +0000 (UTC)
-Date: Tue, 30 Jul 2024 17:34:00 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>
-Cc: Alejandro Zeise <alejandro.zeise@seagate.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, peter.maydell@linaro.org
-Subject: Re: [PATCH v2 1/2] crypto: add support for accumulative hashing
-Message-ID: <ZqkV-OQizSWac5yo@redhat.com>
-References: <20240729190035.3419649-1-alejandro.zeise@seagate.com>
- <20240729190035.3419649-2-alejandro.zeise@seagate.com>
- <fdc53976-2000-46cd-a65a-c9976fc8c9d1@kaod.org>
+       dkim=pass header.i=@intel.com header.s=Intel header.b=l0laINnu;
+       arc=pass (i=1 spf=pass spfdomain=intel.com dkim=pass dkdomain=intel.com dmarc=pass fromdomain=intel.com);
+       spf=pass (google.com: domain of linux-kernel+bounces-268717-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="linux-kernel+bounces-268717-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by am.mirrors.kernel.org (Postfix) with ESMTPS id D1C491F22304
+	for <alex.bennee@linaro.org>; Wed, 31 Jul 2024 07:44:39 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id E97AA1A76C1;
+	Wed, 31 Jul 2024 07:44:34 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b="l0laINnu"
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.13])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CEBBD1A76C2
+	for <linux-kernel@vger.kernel.org>; Wed, 31 Jul 2024 07:44:32 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=198.175.65.13
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1722411874; cv=none; b=gVUvqLYZheRBVuUkZJCd3UpW9m8lf7aYCXNrfbVSlmFC1BXkPMhMy4L1RUzFqIgqHzOyIcW3ABgRCRHGVI9GH91hpQfQ8/fGr577izjIYg0EnZ+EeLSy9jHm0vVm8NJkz8jyIllBKG6MrZEGckvXyLVNQczn+ewhblht5lvlWrE=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1722411874; c=relaxed/simple;
+	bh=uI8ued3A1y+KABwhLnnHrEksiCAWTyppjF8eLSYsOcw=;
+	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
+	 Content-Type:Content-Disposition:In-Reply-To; b=tNN7oapW/zLacpGtPgHwzSEYBQULc5BFprzTnq6ezj0ur6/24HY3gFcWMOgggzh6hYb1vFt5OFt5yUMRtk7+/OJRo7b+yIF5Jq1qToWnTJqZKNWneH0IycCHsOqPzpBv21z+ELr+QZ9QDuXOzwKDnYeiHN1IdXtZkLIAVyxJ8to=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com; spf=pass smtp.mailfrom=intel.com; dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b=l0laINnu; arc=none smtp.client-ip=198.175.65.13
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=intel.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1722411873; x=1753947873;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:content-transfer-encoding:in-reply-to;
+  bh=uI8ued3A1y+KABwhLnnHrEksiCAWTyppjF8eLSYsOcw=;
+  b=l0laINnu+BHwe9Guc8BNYfCm4z6Bgv5F+saioXY3TXtRrJRFr5KkZMZa
+   3o+oLh4eDey8MDeOgVTNljlgAUl9j36Zfzi8YgN80iBQEkRVIqlwvDS+F
+   mdTNchTdXhiTk6zn+pXI2rqHdELSoAZZCHXVcP6T0hBsz1lsz6qEHZ+Br
+   0idyzvSwVW5B52thbF9YjYV9znOK2rBoBeiG9zAkoy0Lz5vNZMqbHG21n
+   jmXltJRL/J2mabJ/Kgs6RkPOmw4RVGdixePUkwiFJ8mMwSW8FtvA3cS6C
+   DmG3VT8QPpHmIVTCyhGVoSSVvMiYoMU9yvuinsRHwiRrEq8zD7qbSOmnQ
+   g==;
+X-CSE-ConnectionGUID: zKLcK9SbRCi04ORwBvbhRA==
+X-CSE-MsgGUID: eddvyOtLRAaITHFbOQQnaA==
+X-IronPort-AV: E=McAfee;i="6700,10204,11149"; a="31423135"
+X-IronPort-AV: E=Sophos;i="6.09,250,1716274800"; 
+   d="scan'208";a="31423135"
+Received: from orviesa003.jf.intel.com ([10.64.159.143])
+  by orvoesa105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 31 Jul 2024 00:44:33 -0700
+X-CSE-ConnectionGUID: AU/vUc6qTpOrr5lhfWTkQg==
+X-CSE-MsgGUID: cu7MWQ00QVmLseBL9zTmcQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.09,250,1716274800"; 
+   d="scan'208";a="59455163"
+Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost) ([10.239.160.36])
+  by orviesa003.jf.intel.com with ESMTP; 31 Jul 2024 00:44:28 -0700
+Date: Wed, 31 Jul 2024 16:00:15 +0800
+From: Zhao Liu <zhao1.liu@intel.com>
+To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>,
+	Shiju Jose <shiju.jose@huawei.com>,
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
+	Ani Sinha <anisinha@redhat.com>,
+	Eduardo Habkost <eduardo@habkost.net>,
+	Igor Mammedov <imammedo@redhat.com>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Shannon Zhao <shannon.zhaosl@gmail.com>,
+	Yanan Wang <wangyanan55@huawei.com>, linux-kernel@vger.kernel.org,
+	qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [PATCH v4 2/6] arm/virt: Wire up GPIO error source for ACPI /
+ GHES
+Message-ID: <ZqnvD8o+Fa4o/+Db@intel.com>
+References: <cover.1722259246.git.mchehab+huawei@kernel.org>
+ <e994c3944d31775d62bbd017dec3adff50ddf269.1722259246.git.mchehab+huawei@kernel.org>
+ <ZqigPgTl7quJ553J@intel.com>
+ <20240731072158.3aaf85ac@foz.lan>
+Precedence: bulk
+X-Mailing-List: linux-kernel@vger.kernel.org
+List-Id: <linux-kernel.vger.kernel.org>
+List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=gb2312
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <fdc53976-2000-46cd-a65a-c9976fc8c9d1@kaod.org>
-User-Agent: Mutt/2.2.12 (2023-09-09)
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
-X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.125,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 8UdcZcyIXJOS
+In-Reply-To: <20240731072158.3aaf85ac@foz.lan>
+X-TUID: znBj9zILRS8U
 
-On Tue, Jul 30, 2024 at 05:58:38PM +0200, CÃ©dric Le Goater wrote:
-> On 7/29/24 21:00, Alejandro Zeise wrote:
-> > This change adds an accumulative hashing function
-> > (qcrypto_hash_accumulate_bytesv) and implementation
-> > for each of the crypto library backends that QEMU supports.
-> > 
-> > The QCrypto API did not support hashing in an accumulative mode.
-> > As such, hardware hash modules (like the HACE from Aspeed's SoCs) are
-> > unable to perform such operations correctly when the guest requires it.
-> > 
-> > The creation and freeing of each library's context is abstracted by
-> > the qcrypto_hash_accumulate_new_ctx and qcrypto_hash_accumulate_free_ctx
-> > functions.
-> > 
-> > Changes in V2:
-> > * Fixed error checking bug in libgcrypt backend
-> > 
-> > Signed-off-by: Alejandro Zeise <alejandro.zeise@seagate.com>
-> > ---
-> >   crypto/hash-gcrypt.c  | 105 ++++++++++++++++++++++++++++++++++++++++++
-> >   crypto/hash-glib.c    |  89 +++++++++++++++++++++++++++++++++++
-> >   crypto/hash-gnutls.c  |  82 +++++++++++++++++++++++++++++++++
-> >   crypto/hash-nettle.c  |  93 +++++++++++++++++++++++++++++++++++++
-> >   crypto/hash.c         |  42 +++++++++++++++++
-> >   crypto/hashpriv.h     |  11 +++++
-> >   include/crypto/hash.h |  65 ++++++++++++++++++++++++++
-> >   7 files changed, 487 insertions(+)
+On Wed, Jul 31, 2024 at 07:21:58AM +0200, Mauro Carvalho Chehab wrote:
 
-> > diff --git a/include/crypto/hash.h b/include/crypto/hash.h
-> > index 54d87aa2a1..fb8ae2d099 100644
-> > --- a/include/crypto/hash.h
-> > +++ b/include/crypto/hash.h
-> > @@ -1,6 +1,7 @@
-> >   /*
-> >    * QEMU Crypto hash algorithms
-> >    *
-> > + * Copyright (c) 2024 Seagate Technology LLC and/or its Affiliates
-> >    * Copyright (c) 2015 Red Hat, Inc.
-> >    *
-> >    * This library is free software; you can redistribute it and/or
-> > @@ -25,6 +26,8 @@
-> >   /* See also "QCryptoHashAlgorithm" defined in qapi/crypto.json */
-> > +typedef void qcrypto_hash_accumulate_ctx_t;
+[snip]
+
+> > The name looks inconsistent with the style of other MachineClass virtual
+> > methods. What about the name like "notify_xxx"? And pls add the comment
+> > about this new method.
+> > 
+> > BTW, I found this method is called in generic_error_device_notify() of
+> > Patch 6. And the mc->generic_error_device_notify() - as the virtual
+> > metchod of MachineClass looks just to implement a hook, and it doesn't
+> > seem to have anything to do with MachineClass/MachineState, so my
+> > question is why do we need to add this method to MachineClass?
+> > 
+> > Could we maintain a notifier list in ghes.c and expose an interface
+> > to allow arm code register a notifier? This eliminates the need to add
+> > the ¡°notify¡± method to MachineClass.
 > 
+> Makes sense. I'll change the logic to use this notifier list code inside
+> ghes.c, and drop generic_error_device_notify():
 > 
-> QCryptoHmac defines a similar API. I would do the same for the hash
-> accumulative mode. See hmac files.
+> 	NotifierList generic_error_notifiers =
+> 	    NOTIFIER_LIST_INITIALIZER(error_device_notifiers);
+> 
+> 	/* Notify BIOS about an error via Generic Error Device - GED */
+> 	static void generic_error_device_notify(void)
+> 	{
+> 	    notifier_list_notify(&generic_error_notifiers, NULL);
+> 	}
 
-Yes, ideally the hmac APIs would match the hash APIs.
+Fine for me.
 
-That said, the changes I've just requested are already a
-large amount of work, so I'm not going to demand that
-the hmac.c code is also changed.
+Regards,
+Zhao
 
-Alejandro: if have you time to update hmac.c that would
-be awesome, but consider it optional.
-
-With regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
 

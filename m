@@ -1,111 +1,161 @@
-Received: by 2002:a17:505:3f8c:b0:1be9:327d:8ee3 with SMTP id bm12csp324070njb;
-        Wed, 31 Jul 2024 05:32:56 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVPazLlCncsVGZpiQvMYWbsZ6VvOGtO8uThbc5gCE7jG5p5rrzXBmE3xiWUFFlaFha0fPuWFAxMF6UBOH/xWrVIsbqGVbiT
-X-Google-Smtp-Source: AGHT+IHfhuBxTQl1WRtJdVczlnvTnUp/QZ3yiHbBraTGipGUo4bVHTt/EBoV4PBjhSoCE8UwZrAZ
-X-Received: by 2002:a2e:a4b8:0:b0:2ef:185d:e3e2 with SMTP id 38308e7fff4ca-2f12ee422b8mr88294881fa.36.1722429175941;
-        Wed, 31 Jul 2024 05:32:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1722429175; cv=none;
+Received: by 2002:a17:505:3f8c:b0:1be9:327d:8ee3 with SMTP id bm12csp324176njb;
+        Wed, 31 Jul 2024 05:33:09 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXnS+p/By41M6uMaqjqp8+s03z3+P+zTXm7ilMNATPvl+rKdda7yqoIWucXJH0rsokDfA8CMncvTOe9licglumCt2LyX5xW
+X-Google-Smtp-Source: AGHT+IGaHaKjeC+CgTph0CE5LTXHcL1RhSb+0Qz4RogrZ1yKUy+khKB8l5oCJz3mSc8AzE5wi/+h
+X-Received: by 2002:a05:6122:2215:b0:4ec:f8e4:e0bf with SMTP id 71dfb90a1353d-4f6e68b3189mr15769746e0c.2.1722429189280;
+        Wed, 31 Jul 2024 05:33:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1722429189; cv=none;
         d=google.com; s=arc-20160816;
-        b=uifMIuwPMRirCYgTNRoFGqOds4YBre1OJhvzZM7OYPVjc+SLCLnKsNHiWyG8E4Fwfj
-         jKTdJ+aghpnjfiKKM8K+7p0YIStR9N0LdO+spFuI3WLs6xA4Gykp2cbGaUrKIkQOvYIE
-         LG0WZCGzMb0netIA47cgfAnpuz1XqkuXAqWPNAeXfwMzZqW4oAhVZyKZMy6Nih+uNEtf
-         KpJzlJuixjGSPeLT+/wpxPSOIk1N/ya03KYgUlWsLv5OqGIkJtk+s4PnyI+V38/TB6lg
-         SM/9eiPFwmAnH4GE9/IPksYjn1lR4SVDtdYSdnuaLeunB8oI6s0a6cnQK6iRRjwnf0v+
-         31Xg==
+        b=iKmR5Rqhm8WTEh0wkXK1HWt2e+dn3Dj46Nbpfqz8alOgqG1MWQIwKCWZP/mh4Kw47I
+         IcCF4Lb2g8iwtJ9Ew1rwfnTQAYl6upDX+sDK+5rskDny5ryw2YZy8AxV3tjIbz3ljJ4O
+         Hfi5w0rU4Ln+/dQHabNLD4NA/HriwK/xOeJeROeSDfKXyku4H7WSdALtcZuCWs3iKWEy
+         gPZDyh/NAcQ4R/YMPzVdIzg3Ty8v7Be+6m5Rt6F5H3B5rbJ56NUfTftY/6tUuRkefFcp
+         A9YriG9I21bmVjZ3GQ+YKCCxvmjwn4eTx+gz1l8CsmX4YmkoRJwjninWFL12r9vZovdI
+         0YqQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:content-transfer-encoding:content-language
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:subject:cc:to:from;
-        bh=pgmQ1ZntfQOtDfboT/0UEpqjz+3LbKcSND8F7rFy9+Q=;
-        fh=zeSUOGPNFnVyw29Gjalp8NvGRfJuTqv813gxO1vXSeQ=;
-        b=pomu49py3Br9qct0rm5LKWL4M2Sv7aAkWAWbS6BVypTL/NPmvVEZIfmUene2dHt54X
-         ymavlxmlHJMuvm2KebjxXWiT/khDKDL/aPWT51yZynp6rwCgW58RQLHtuJ3OS2V/HfTV
-         dd/em7niYudX84J245FGzKBhU4csSHC0nNOmB/a8mMzOKctpcFTGRDpwKQP/+Eszgiz2
-         FwsCGGb/IK3Jboi/BnPjMqJY4OSycAPigFI4S8W6oLwm+UMnVycWaDOd3DvR7jJIEX5P
-         y1IY7JY2Y+bU8lTFwHXudH7xQu5dZdWWEN/ePydZw+UXIaHtBPXbtlA27KdtoCW2/rdh
-         aG5Q==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=wcUhUapOSPC/xpUeHp8ecRLUUNL4MA/ONK1NUCRXAdU=;
+        fh=FQDto/8vw6o8fFuCSR7QTPhqvaPiLCTH99ooJ2tIJOs=;
+        b=Pk0uoDc1UjyQbbe1aA/Mx66n+WUk0Dios7he8ukUEPzi4RPT3bGKhb08UHU1eoCOqa
+         hBJPoqOnzwl4f0Mrk9brxVTf832z85c7tj2Ko56q0eDtdVwJbJ0G/S7lkbqIeK06JrT2
+         sYjDFtkQz9uu/ZUYVhO0gFH8bk3DjP8Wnrv0p1Fgbjp08nepvYcpyCcjd30C/tkN+fB7
+         nlbox4WzpNJrA+HIm0J+YSmeiR5e0cgEs4ThXBEedDXTdjVYpa7Y7k3atmJyrfiexVv3
+         SNQXqFPaxhWfIX9/Q0rgFLWPWRE02kMlFZ1b9uhzCgp3YLbTKfeU+a07CZdn8ArVxrbF
+         zABQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Return-Path: <salil.mehta@huawei.com>
-Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id 5b1f17b1804b1-4282b89ec8fsi6987335e9.11.2024.07.31.05.32.55
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 31 Jul 2024 05:32:55 -0700 (PDT)
-Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
+       dkim=pass header.i=@linaro.org header.s=google header.b=GP2WVK7N;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 71dfb90a1353d-4f6c88d079dsi2171607e0c.276.2024.07.31.05.33.09
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 31 Jul 2024 05:33:09 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from mail.maildlp.com (unknown [172.18.186.231])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4WYrzh5BpZz6K5Xy;
-	Wed, 31 Jul 2024 20:30:56 +0800 (CST)
-Received: from lhrpeml500003.china.huawei.com (unknown [7.191.162.67])
-	by mail.maildlp.com (Postfix) with ESMTPS id CFA1714065C;
-	Wed, 31 Jul 2024 20:32:54 +0800 (CST)
-Received: from lhrpeml500001.china.huawei.com (7.191.163.213) by
- lhrpeml500003.china.huawei.com (7.191.162.67) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Wed, 31 Jul 2024 13:32:54 +0100
-Received: from lhrpeml500001.china.huawei.com ([7.191.163.213]) by
- lhrpeml500001.china.huawei.com ([7.191.163.213]) with mapi id 15.01.2507.039;
- Wed, 31 Jul 2024 13:32:54 +0100
-From: Salil Mehta <salil.mehta@huawei.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-CC: Igor Mammedov <imammedo@redhat.com>, "Michael S. Tsirkin"
-	<mtsirkin@redhat.com>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "mst@redhat.com"
-	<mst@redhat.com>, "maz@kernel.org" <maz@kernel.org>,
-	"jean-philippe@linaro.org" <jean-philippe@linaro.org>, Jonathan Cameron
-	<jonathan.cameron@huawei.com>, "lpieralisi@kernel.org"
-	<lpieralisi@kernel.org>, "richard.henderson@linaro.org"
-	<richard.henderson@linaro.org>, "andrew.jones@linux.dev"
-	<andrew.jones@linux.dev>, "david@redhat.com" <david@redhat.com>,
-	"philmd@linaro.org" <philmd@linaro.org>, "eric.auger@redhat.com"
-	<eric.auger@redhat.com>, "oliver.upton@linux.dev" <oliver.upton@linux.dev>,
-	"pbonzini@redhat.com" <pbonzini@redhat.com>, "will@kernel.org"
-	<will@kernel.org>, "gshan@redhat.com" <gshan@redhat.com>, "rafael@kernel.org"
-	<rafael@kernel.org>, "alex.bennee@linaro.org" <alex.bennee@linaro.org>,
-	"linux@armlinux.org.uk" <linux@armlinux.org.uk>,
-	"darren@os.amperecomputing.com" <darren@os.amperecomputing.com>,
-	"ilkka@os.amperecomputing.com" <ilkka@os.amperecomputing.com>,
-	"vishnu@os.amperecomputing.com" <vishnu@os.amperecomputing.com>,
-	"karl.heubaum@oracle.com" <karl.heubaum@oracle.com>, "miguel.luis@oracle.com"
-	<miguel.luis@oracle.com>, "salil.mehta@opnsrc.net" <salil.mehta@opnsrc.net>,
-	zhukeqian <zhukeqian1@huawei.com>, "wangxiongfeng (C)"
-	<wangxiongfeng2@huawei.com>, "wangyanan (Y)" <wangyanan55@huawei.com>,
-	"jiakernel2@gmail.com" <jiakernel2@gmail.com>, "maobibo@loongson.cn"
-	<maobibo@loongson.cn>, "lixianglai@loongson.cn" <lixianglai@loongson.cn>,
-	"npiggin@gmail.com" <npiggin@gmail.com>, "harshpb@linux.ibm.com"
-	<harshpb@linux.ibm.com>, Linuxarm <linuxarm@huawei.com>
-Subject: RE: [PATCH] accel/kvm/kvm-all: Fixes the missing break in vCPU unpark
- logic
-Thread-Topic: [PATCH] accel/kvm/kvm-all: Fixes the missing break in vCPU
- unpark logic
-Thread-Index: AQHa3qJBk0Exld31N0eXTFVI7pTjNrIIr9WAgAffXcCAAB9RAIAAH4Ig
-Date: Wed, 31 Jul 2024 12:32:54 +0000
-Message-ID: <b389af46566a4eb69f19dc9d81de43b3@huawei.com>
-References: <20240725145132.99355-1-salil.mehta@huawei.com>
- <20240726113355.731e61fe@imammedo.users.ipa.redhat.com>
- <ae5fa879bb7d416b92face2dcf9045fd@huawei.com>
- <CAFEAcA-MrfFiJcrKabz2MYiu6VHju6+yUAeeLB7MBrT-0tAWCw@mail.gmail.com>
-In-Reply-To: <CAFEAcA-MrfFiJcrKabz2MYiu6VHju6+yUAeeLB7MBrT-0tAWCw@mail.gmail.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach:
-X-MS-TNEF-Correlator:
-x-originating-ip: [10.195.35.90]
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+       dkim=pass header.i=@linaro.org header.s=google header.b=GP2WVK7N;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1sZ8VS-0002MV-DY; Wed, 31 Jul 2024 08:32:38 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1sZ8VQ-0002Hm-BO
+ for qemu-devel@nongnu.org; Wed, 31 Jul 2024 08:32:36 -0400
+Received: from mail-lj1-x229.google.com ([2a00:1450:4864:20::229])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1sZ8VN-00046r-AI
+ for qemu-devel@nongnu.org; Wed, 31 Jul 2024 08:32:35 -0400
+Received: by mail-lj1-x229.google.com with SMTP id
+ 38308e7fff4ca-2ef2c109eabso73343511fa.0
+ for <qemu-devel@nongnu.org>; Wed, 31 Jul 2024 05:32:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1722429151; x=1723033951; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=wcUhUapOSPC/xpUeHp8ecRLUUNL4MA/ONK1NUCRXAdU=;
+ b=GP2WVK7N1RLWhMEDxcdA5qvnY2k2m8YHz3C+0t4AQem+jB/0e3EdKmORA9Ls6NdFWU
+ NnX7qskaRji3ngkuBdp3b4pN281te6Shu+7nEsJCUgsTUV7n5aYv4Vz/yN89ijOyClog
+ M7SYUbNIui804UrmUndmNlwRwTu1I1eG6n54ll5uf8x9kLY6wup4AbS+d6Col54xjmdf
+ nuSx/db0O9EiJ+KZZcv9+Y9jjHyX9WmOsz04Zb4gnKiDzjnKwGRoQXEcYPYnNndtJVDM
+ 6p9rmtA1xYv1OwD9yFat2sWjiq5DHDj3P7PTZhEFbRiCDNj4c82xXHxDU9B4HIVo6G9+
+ P9XA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1722429151; x=1723033951;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=wcUhUapOSPC/xpUeHp8ecRLUUNL4MA/ONK1NUCRXAdU=;
+ b=EusjcL+MUWWz/CcPRHhKYcKCMoxyqKHCKIObsf1iqrvLw8zY7oPHcCd6vcu8QIIbWk
+ Qq9Q7frMwR3OxtKZ9ZLF3kC8zGbattWrQc/sEkTj5AqLnhfsTIttC2Lo43Hf0qJjo+oy
+ QYwthGTE1tPd9qxUd5nkkRBfO9OP/sKj/kz05gzheTqivy1RWG7ahaHQV8+obyLNuVlD
+ PhOYzfza3MRAzin2OfE7sXI1KCX9TZPicRbJQLiUTHeXQyBl1vSvm1OU1DCSB+QP2/5d
+ twFw3A1+UXEp7vz4aMzqd5YkMZPRJgFEbH1weWDTGUwBT9EHSWHygLe7BmTkgLn31Z+g
+ FTqA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWdeGqMETXtA7cdXo9yeyhlFJGLd5RuogtFkya1f9Xg4KqVVudx+9eh+gRWey3i2lEMiKt4wJtnEY42ODGTDocyyXoai1I=
+X-Gm-Message-State: AOJu0YyqspTovXConNXwLg01YgsWPckUdTdNID8Xm2KWe9/sNryM1MEV
+ iF692oCwt+uJB3HaxdqHvSEhLoqRYz1W/ZQueNGV1EqZCjvVTl7YXSrHrm4ZO03pLBB8I9vivyp
+ KSab6PGGWrnSsRDCEzalz0e5KWe0cxgUR2aHT/A==
+X-Received: by 2002:ac2:4ec8:0:b0:52e:a60e:3a0a with SMTP id
+ 2adb3069b0e04-5309b269c0fmr8926440e87.2.1722429151194; Wed, 31 Jul 2024
+ 05:32:31 -0700 (PDT)
 MIME-Version: 1.0
-X-TUID: W6VTtqRpknyX
+References: <20240730160306.2959745-1-peter.maydell@linaro.org>
+ <20240730160306.2959745-7-peter.maydell@linaro.org>
+ <e0b7d735-e54a-44cc-bcb0-ef6f4518da5b@linaro.org>
+In-Reply-To: <e0b7d735-e54a-44cc-bcb0-ef6f4518da5b@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 31 Jul 2024 13:32:20 +0100
+Message-ID: <CAFEAcA8Pj636YHVjCO5rBz49MwaSJW1Jnsv0UVF=g6UqiH7SjA@mail.gmail.com>
+Subject: Re: [PATCH 6/8] target/arm: Prepare bfdotadd() callers for FEAT_EBF
+ support
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::229;
+ envelope-from=peter.maydell@linaro.org; helo=mail-lj1-x229.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 2I+4BW85W7pt
 
-PiAgRnJvbTogUGV0ZXIgTWF5ZGVsbCA8cGV0ZXIubWF5ZGVsbEBsaW5hcm8ub3JnPg0KPiAgU2Vu
-dDogV2VkbmVzZGF5LCBKdWx5IDMxLCAyMDI0IDEyOjM5IFBNDQo+ICBUbzogU2FsaWwgTWVodGEg
-PHNhbGlsLm1laHRhQGh1YXdlaS5jb20+DQo+ICANCj4gIE9uIFdlZCwgMzEgSnVsIDIwMjQgYXQg
-MDk6NDksIFNhbGlsIE1laHRhIDxzYWxpbC5tZWh0YUBodWF3ZWkuY29tPiB3cm90ZToNCj4gID4N
-Cj4gID4gSGVsbG8sDQo+ICA+DQo+ICA+IEEgcXVpY2sgY2hlY2sgYW5kIGEgZ2VudGxlIHJlbWlu
-ZGVyLCBoYXMgdGhpcyBwYXRjaCBiZWVuIGFjY2VwdGVkPw0KPiAgDQo+ICBUaGFua3MgZm9yIHRo
-ZSBwaW5nLiBJJ20gZG9pbmcgYSB0YXJnZXQtYXJtIHB1bGxyZXEgdG9tb3Jyb3cgc28gSSdsbCB0
-YWtlIGl0IHZpYQ0KPiAgbXkgcXVldWUuDQoNCkdyZWF0LiBUaGFua3MhDQoNCkJlc3QgcmVnYXJk
-cw0KU2FsaWwuDQoNCj4gIA0KPiAgLS0gUE1NDQo=
+On Wed, 31 Jul 2024 at 02:48, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> On 7/31/24 02:03, Peter Maydell wrote:
+> > @@ -2790,7 +2790,7 @@ DO_MMLA_B(gvec_usmmla_b, do_usmmla_b)
+> >    * BFloat16 Dot Product
+> >    */
+> >
+> > -float32 bfdotadd(float32 sum, uint32_t e1, uint32_t e2)
+> > +bool is_ebf(CPUARMState *env, float_status *statusp, float_status *oddstatusp)
+> >   {
+> >       /* FPCR is ignored for BFDOT and BFMMLA. */
+> >       float_status bf_status = {
+> > @@ -2800,29 +2800,50 @@ float32 bfdotadd(float32 sum, uint32_t e1, uint32_t e2)
+> >           .flush_inputs_to_zero = true,
+> >           .default_nan_mode = true,
+> >       };
+> > +
+> > +    *statusp = bf_status;
+> > +    return false;
+> > +}
+>
+> Looking at the next patch, I think dropping the local variable is better.
+>
+>    *statusp = (float_status){
+>        ...
+>    };
+
+Yes, I agree; I've updated this patch and the next accordingly.
+
+-- PMM

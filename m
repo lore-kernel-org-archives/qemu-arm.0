@@ -1,163 +1,200 @@
-Received: by 2002:a17:505:3f8c:b0:1be9:327d:8ee3 with SMTP id bm12csp908971njb;
-        Thu, 1 Aug 2024 05:56:57 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCWtnySb44XvQgUS7xOMQk9HA7D6MCllmCtv2yfwsujCNwaHjKm9owAlSyWSRpGgeUIwC8wBFEwTC7MKD1QJ46mAxCRe1FCx
-X-Google-Smtp-Source: AGHT+IFrBTZf42Lo/Zu+oI+qr/fVOmwPce1BDEb1LmwYXIFlHIZ0RjOuZuUsn+J0y3j45Uxjwn5e
-X-Received: by 2002:a05:6512:b08:b0:52c:e012:efad with SMTP id 2adb3069b0e04-530b619a9f5mr1800109e87.12.1722517017576;
-        Thu, 01 Aug 2024 05:56:57 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1722517017; cv=pass;
+Received: by 2002:a17:505:3f8c:b0:1be9:327d:8ee3 with SMTP id bm12csp936215njb;
+        Thu, 1 Aug 2024 06:56:06 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUAYVaKBMb+QATpNd2266kb+kXBKUcDJpqcfK+OXxgMyaE1wO72v6NrF18+aPKSCRH7wzXoE28T4YeDnNEvnHZWpREfHogk
+X-Google-Smtp-Source: AGHT+IHusIx8dFigwCDcX9iE3FJZcSd4As0WRMf2ttgAdBesCSPA1Y+CbQwP1eRtmqwSz1wVs65W
+X-Received: by 2002:a05:6830:6dcf:b0:709:49c5:fd99 with SMTP id 46e09a7af769-709b31fc75cmr230877a34.4.1722520566181;
+        Thu, 01 Aug 2024 06:56:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1722520566; cv=none;
         d=google.com; s=arc-20160816;
-        b=DI1i0fz5v5I+CkQwTmwbEpoWxm4kV60yWYr666u3zAl6CQD8Nb60EXTqvV08Vl6ROF
-         fG1fkYVT8Fl9zi3sfMWbaEioIiM1oB15AtFhs2ZI+dIvlwA2dOZ9GmR9fy7tG54wXi1s
-         tW0XDiavcwgZtyC4QtuL71d81gYNHJx8nsbgnO3WsZC8TnPxtT6Qmd++9SWHxdpszOu/
-         2JoNfpQLYA9n38TPBZ9umpB6mhY6W4IrSx9R+OoIRgTdLLIHcZbeHSCUVDqBKjupKSuv
-         cevtxT4pqezbd4AJE51KYpX7rGreeWaIRDvOBrZ3g05A4H2+HsHVNTbE/a1JKMV8wLOU
-         sbWg==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=c5R6M9BBMSzUCqIeqsNrhxVMVdy69HvZXYuRAEzq7Yk=;
-        fh=gIr+A3V+p+o7D1Sb9NlmCO84TdQQVi9QUHHtAhbh7+I=;
-        b=jk5lmRqOT0k3VfvbjwMfc2Eu0Yx9QS16Cq8T1rUvNmOd7zQJtj/v7QrWqiAG/miB5+
-         TDdkTiN/lHOl0LQYCXYNkXbKsrRNDIClj6b/RfbWNm7jXs4dRtZOarIW/IZXritcvYSu
-         otny77ORkj8f2l/uBfllv5NDqF2eQLdfCvbHk+pfh2fgB2H2fiRM/KmdgdP0+HAPmc+6
-         gwnXfnGPHuTvOZSEiaOWvcFu2PG5ohXDp1NAbsYb/n3P1V11XehOXJs6pdW+sAtoZQ4J
-         GZlRIEUBKsgBKXYeoLjuGdbBRIpJpevamPiWXOn3Cnn4XVYIeDOzqM1ale5nC1zlWpil
-         Su+Q==;
+        b=Z6PwpI4pRnIIbuC/Bv61owC5qsnFA3gaQEA6ce4EtKvoj1fz5fJd8Goh8FyVQkWO/N
+         gaaZ7zigiT5UjQsEKriWOAr4vZWKpBALTnXeh+QhcVuwoN7BcOecsUWxw5ZcGNbMTLfp
+         0bXCHW0srL++FzLDPvIU++e2+DTC/YQvRBx3crsnFyeRN2y3Wlp1HyCh3KGOyr0+4oGX
+         UPx/nXVnxwrfIvmPJ131IV0xnPpjzRqeKsrEzswFpYlviu8qQGV5FqxX0/jPs9pV4tcm
+         8M24/mevQzAYx02qKPqSsmlfUf5SZGwqFJU4/FSSzorpOIguHTXxKSSkfeNb3eaKkCP4
+         XVsg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=0MZp10X+tqR0pGIQSfiNJKCWljR+FU4ph0z8rqaSaxI=;
+        fh=d6pdI99bZZb9WwhhEyP7AeqaOCkqRoIFC5XhhxSXzLY=;
+        b=tHb/vaHRotpBHUrPZFa3Rh24Q2dqxA4zZaYrzmBobeWENPyxPwvAM7+t5OA0QEFDqc
+         iHCjL+XUFrxEMxRshNJqxL5Lp0ZzrwqUODwwUzzUJVAFcFZ+mPyIg2hCwu/YPr8xnCqK
+         zlgBE+x2PORKvPLUR1KFbJWHWWD1LzUTskWgC8mywfISZ8FGw2KJXOZT6+AofUjVrDTc
+         y7ZhpEGgnUAKjl8mZrSyeqAo9z7RsHuIA3MhNmCY5/WonAccm9VUzo9WhysyI5Wbnlvd
+         aTuyDsG+LV2gUVDTYv4bQhvaHSmUKezVQ/DfO9q7c9qQyXJeNLmjd2cjjmBMGrg4UuNP
+         2nLQ==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=ZJmYrJzN;
-       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
-       spf=pass (google.com: domain of linux-kernel+bounces-271267-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="linux-kernel+bounces-271267-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
-Return-Path: <linux-kernel+bounces-271267-alex.bennee=linaro.org@vger.kernel.org>
-Received: from am.mirrors.kernel.org (am.mirrors.kernel.org. [147.75.80.249])
-        by mx.google.com with ESMTPS id 4fb4d7f45d1cf-5b4cf091973si3258279a12.453.2024.08.01.05.56.57
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@sifive.com header.s=google header.b=Sp5EDIRb;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=sifive.com;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d75a77b69052e-44fe851b9easi185784451cf.690.2024.08.01.06.56.06
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 01 Aug 2024 05:56:57 -0700 (PDT)
-Received-SPF: pass (google.com: domain of linux-kernel+bounces-271267-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) client-ip=147.75.80.249;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 01 Aug 2024 06:56:06 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=ZJmYrJzN;
-       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
-       spf=pass (google.com: domain of linux-kernel+bounces-271267-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="linux-kernel+bounces-271267-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
-Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by am.mirrors.kernel.org (Postfix) with ESMTPS id 27DF61F210CE
-	for <alex.bennee@linaro.org>; Thu,  1 Aug 2024 12:56:57 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id DE29B1A0730;
-	Thu,  1 Aug 2024 12:56:43 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="ZJmYrJzN"
-Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A002C208D1
-	for <linux-kernel@vger.kernel.org>; Thu,  1 Aug 2024 12:56:43 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=10.30.226.201
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1722517003; cv=none; b=uZUMeN8b9lRUlpR956hwsNNEtIksoNiwQhXljTUEWyGkmfv8sm5j95Ye3I04vghR4EDErNOrI2m4ZwCf3CyC1sryfKp4R640+4oMYiWT8xVmRzowBdt79kz1K3+y2msLS9gBFfUStyC7f7ewi5O2I0pn5zkgowzVBFYNh6K0SFI=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1722517003; c=relaxed/simple;
-	bh=yUOmIatsa2JxbuH+5SkDj8HGMvb+bCebLi05n30xnAk=;
-	h=Date:From:To:Cc:Subject:Message-ID:In-Reply-To:References:
-	 MIME-Version:Content-Type; b=dDMIKollwGkxN0bOTchJE1ub6cb65CL7acEW8X3TVOVUUB4CPvwCRv6yW9TgB5UxapTQC93vYbpw7TsZTcMfCDZG5zdkbGnBIST+gEXdBSo4gPVmaH71rTrq8THCTt7rxNoPtOOqYNNm5RMLs9kQpZWyMLmAIvW8YHLeRJuIDLU=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=ZJmYrJzN; arc=none smtp.client-ip=10.30.226.201
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2A953C4AF09;
-	Thu,  1 Aug 2024 12:56:40 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1722517003;
-	bh=yUOmIatsa2JxbuH+5SkDj8HGMvb+bCebLi05n30xnAk=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=ZJmYrJzN4tAnymj5rYqbuo7vESrmbmpWK93FqK7UY+T3aU26iBz1tMvEvtdWu7pKY
-	 4X/yWHt8lYHKWrsYo1KkRgrJdjgf8buhYSDnaQXlrKKo6zbugs3y5VigRBUHW51ebi
-	 mxRlWMz+PgMR1sXXNSPjEv+Y0GEznSW3qxvgA3BAehJ95JMwUaXTn6kW4Z9VG+4u1x
-	 2SMSbY2fRmUT7vAJUEwUqkG5avwLE4gRGo9iIgNC7CPysortKI2QHMxXEwQpIXcNVE
-	 pqDo2XyZSu7PbNzke8huMKfs2YIsmEGIdfj5JiHf0MhY+mvr88DR3g5j0WKtLLiikm
-	 X9E67YJQ5n8PQ==
-Date: Thu, 1 Aug 2024 14:56:37 +0200
-From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-To: Igor Mammedov <imammedo@redhat.com>, Jonathan Cameron
- <Jonathan.Cameron@huawei.com>
-Cc: Shiju Jose <shiju.jose@huawei.com>, "Michael S. Tsirkin"
- <mst@redhat.com>, Ani Sinha <anisinha@redhat.com>, Dongjiu Geng
- <gengdongjiu1@gmail.com>, linux-kernel@vger.kernel.org,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [PATCH v3 3/7] acpi/ghes: Support GPIO error source.
-Message-ID: <20240801145637.03c34fd3@foz.lan>
-In-Reply-To: <20240730104028.4f503d91@imammedo.users.ipa.redhat.com>
-References: <cover.1721630625.git.mchehab+huawei@kernel.org>
-	<64a31a09fe6b11bebad1c592ad20071a9d93fee5.1721630625.git.mchehab+huawei@kernel.org>
-	<20240730104028.4f503d91@imammedo.users.ipa.redhat.com>
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
-Precedence: bulk
-X-Mailing-List: linux-kernel@vger.kernel.org
-List-Id: <linux-kernel.vger.kernel.org>
-List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
+       dkim=pass header.i=@sifive.com header.s=google header.b=Sp5EDIRb;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=sifive.com;
+       dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sZWHM-0006k4-4J; Thu, 01 Aug 2024 09:55:41 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jim.shu@sifive.com>)
+ id 1sZWHK-0006im-6i
+ for qemu-arm@nongnu.org; Thu, 01 Aug 2024 09:55:38 -0400
+Received: from mail-lj1-x231.google.com ([2a00:1450:4864:20::231])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <jim.shu@sifive.com>)
+ id 1sZWH8-0002kb-PJ
+ for qemu-arm@nongnu.org; Thu, 01 Aug 2024 09:55:28 -0400
+Received: by mail-lj1-x231.google.com with SMTP id
+ 38308e7fff4ca-2ef23d04541so82904021fa.2
+ for <qemu-arm@nongnu.org>; Thu, 01 Aug 2024 06:55:25 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=sifive.com; s=google; t=1722520524; x=1723125324; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=0MZp10X+tqR0pGIQSfiNJKCWljR+FU4ph0z8rqaSaxI=;
+ b=Sp5EDIRbZgXOK2dlk+r6TibCqDtaP/H5cIhNOogu6nrgGeStrmnO0JnPL/o0KKXQoo
+ FCivTyt9Lb4WFzQkYzixHYqdcw6fUQ44st+67N6XkQ81BgFqQCTIsdMG3P+Z3qX7sMAB
+ tbvAbDtTA9OVOYtmD1ytMh3kvDkB7SwVdFfEfc3CsRyhn9SNjmTSC3q1pQYYrulDUjpi
+ PAgpdD1873gWfHVgF+/9EJUxwSHMer9oOTFPbVn414KbYq5QvcEMAFSXIAKzmmpC7vzH
+ IWU+7UwM8TCOiKCFfQtHWnx6PM9icoWqMEoiorjwrR06Fe+iH57iskCffmB/xJGrjRkD
+ JR+w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1722520524; x=1723125324;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=0MZp10X+tqR0pGIQSfiNJKCWljR+FU4ph0z8rqaSaxI=;
+ b=uTWsS9dpy/EBsmRQY0KClINltwpzgV4usl/uMBr3lE0ac4tHd4fSS0xB7paEhm98n+
+ GxsxI+gpqhHUhlPKP6INzhgxSCsvsSlpZhY7ju4UkqTyj58Oq9rNCr6Ng8K0VwImkGlT
+ qIQYFaDAV/xdeobVGeYctQLakkMUUMKGIFh+OU6CxKdl4tOu6vl3vtIVmvFTroDWrC9C
+ /2qmbkN0UbMc3Aw0cnkjOVWqlRmgpoAqt1P41Pj0hk09jqNZy/FZepxl8RvVHYHR34I8
+ V5L0A3KT7v+Sb8cX7+50ZiMSFD5bOY0SXgAlplcktZURHCBvXX3SZjr3LcxgCWJupYTu
+ GkTA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXRcsA+iSpPE6Dq6s5TaP2lnl5ZtGzKWmc88duDV+enDup8X567jAlUoTuH+AzB4g4GVygaTPb5kR4iy8H39/VSxtP5
+X-Gm-Message-State: AOJu0YzZ1Yzaf8kjABtis5l208yOy8I+SZLCEyKX8Va4a2kWnHmE1yGj
+ ah9OBvfjdl1vliQeVJ+ttdSOI0LkET6SbuBsEOjYkpqvP53ct6DLIX7JZ+mCXsHBzXsWHEqRh+k
+ Td6vU1acxpqOcvuPEXHEAteXNPuqGSBC49T5u+A==
+X-Received: by 2002:a05:6512:2c03:b0:52e:9ac6:a20f with SMTP id
+ 2adb3069b0e04-530b61ed13bmr1557976e87.37.1722520523597; Thu, 01 Aug 2024
+ 06:55:23 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-TUID: yOAuF59RaiFV
+References: <20240726055933.817-1-jim.shu@sifive.com>
+ <20240726055933.817-4-jim.shu@sifive.com>
+ <CAFEAcA-ZkcJvFkYyHGi9bXoPvqEzvV0b_z6xaQPLMK9qNHSdCA@mail.gmail.com>
+In-Reply-To: <CAFEAcA-ZkcJvFkYyHGi9bXoPvqEzvV0b_z6xaQPLMK9qNHSdCA@mail.gmail.com>
+From: Jim Shu <jim.shu@sifive.com>
+Date: Thu, 1 Aug 2024 21:55:12 +0800
+Message-ID: <CALw707rwo8w3kFaga_17H+7JPneA7kahqBiLqwo6KGohLV0_SA@mail.gmail.com>
+Subject: Re: [PATCH 3/4] hw/dma: xilinx_axidma: Reset qemu_irq when DMA/Stream
+ is reset
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
+ Alistair Francis <alistair@alistair23.me>, Jason Wang <jasowang@redhat.com>, 
+ "open list:Xilinx Zynq" <qemu-arm@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::231;
+ envelope-from=jim.shu@sifive.com; helo=mail-lj1-x231.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 2aMcG94wyXUF
 
-Em Tue, 30 Jul 2024 10:40:28 +0200
-Igor Mammedov <imammedo@redhat.com> escreveu:
+Hi Peter,
 
-> > diff --git a/include/hw/acpi/ghes.h b/include/hw/acpi/ghes.h
-> > index 674f6958e905..4f1ab1a73a06 100644
-> > --- a/include/hw/acpi/ghes.h
-> > +++ b/include/hw/acpi/ghes.h
-> > @@ -58,6 +58,7 @@ enum AcpiGhesNotifyType {
-> >  
-> >  enum {
-> >      ACPI_HEST_SRC_ID_SEA = 0,
-> > +    ACPI_HEST_SRC_ID_GPIO = 1,  
-> is it defined by some spec, or just a made up number?
+Except DeviceState::reset(), stream_reset() is only used in
+axidma_write() and axidma_write() has qemu_set_irq() at the end of
+function.
+I think this commit could be dropped. I will remove it in the v2 patchset.
 
-I don't know. Maybe Jonathan or Shiju knows better, as the original patch
-came from them, but I didn't find any parts of the ACPI spec defining the
-values for source ID.
-
-Checking at build_ghes_v2() implementation, this is used on two places:
-
-1. as GHESv2 source ID:
-    /*
-     * Type:
-     * Generic Hardware Error Source version 2(GHESv2 - Type 10)
-     */
-    build_append_int_noprefix(table_data, ACPI_GHES_SOURCE_GENERIC_ERROR_V2, 2);
-    /* Source Id */
-    build_append_int_noprefix(table_data, source_id, 2);
-    /* Related Source Id */
-    build_append_int_noprefix(table_data, 0xffff, 2);
-
-as an address offset:
-
-    address_offset = table_data->len;
-    /* Error Status Address */
-    build_append_gas(table_data, AML_AS_SYSTEM_MEMORY, 0x40, 0,
-                     4 /* QWord access */, 0);
-    bios_linker_loader_add_pointer(linker, ACPI_BUILD_TABLE_FILE,
-        address_offset + GAS_ADDR_OFFSET, sizeof(uint64_t),
-        ACPI_GHES_ERRORS_FW_CFG_FILE, source_id * sizeof(uint64_t));
-
-So, if I had to guess, I'd say that this was made up, in a way that
-the size of the table will fit just two sources, starting from zero.
-
-So, I'll change the code to just:
-
-	enum {
-            ACPI_HEST_SRC_ID_SEA = 0,
-            ACPI_HEST_SRC_ID_GPIO, 
-	    /* future ids go here */
-	    ACPI_HEST_SRC_ID_RESERVED,
-	};
-
-To remove the false impression that this could be originated from the
-spec.
 
 Thanks,
-Mauro
+Jim Shu
+
+
+
+On Mon, Jul 29, 2024 at 11:23=E2=80=AFPM Peter Maydell <peter.maydell@linar=
+o.org> wrote:
+>
+> On Fri, 26 Jul 2024 at 06:59, Jim Shu <jim.shu@sifive.com> wrote:
+> >
+> > Current DMA/Stream reset will clear interrupt pending bit of DMA device=
+.
+> > The qemu_irq of device should be updated at the same time.
+> >
+> > Signed-off-by: Jim Shu <jim.shu@sifive.com>
+> > ---
+> >  hw/dma/xilinx_axidma.c | 25 +++++++++++++------------
+> >  1 file changed, 13 insertions(+), 12 deletions(-)
+> >
+> > diff --git a/hw/dma/xilinx_axidma.c b/hw/dma/xilinx_axidma.c
+> > index 728246f925..beb3fbf1d5 100644
+> > --- a/hw/dma/xilinx_axidma.c
+> > +++ b/hw/dma/xilinx_axidma.c
+> > @@ -177,11 +177,24 @@ static inline int stream_halted(struct Stream *s)
+> >      return !!(s->regs[R_DMASR] & DMASR_HALTED);
+> >  }
+> >
+> > +static void stream_update_irq(struct Stream *s)
+> > +{
+> > +    unsigned int pending, mask, irq;
+> > +
+> > +    pending =3D s->regs[R_DMASR] & DMASR_IRQ_MASK;
+> > +    mask =3D s->regs[R_DMACR] & DMASR_IRQ_MASK;
+> > +
+> > +    irq =3D pending & mask;
+> > +
+> > +    qemu_set_irq(s->irq, !!irq);
+> > +}
+> > +
+> >  static void stream_reset(struct Stream *s)
+> >  {
+> >      s->regs[R_DMASR] =3D DMASR_HALTED;  /* starts up halted.  */
+> >      s->regs[R_DMACR] =3D 1 << 16; /* Starts with one in compl threshol=
+d.  */
+> >      s->sof =3D true;
+> > +    stream_update_irq(s); /* Clear interrupt */
+> >  }
+>
+> The general rule of thumb in QEMU is not to call
+> qemu_set_irq() from a DeviceState::reset function,
+> and xilinx_axidma_reset calls stream_reset. I think
+> probably the best thing is to separate out whether
+> this is a DeviceState::reset or a software-triggered
+> reset, and only call qemu_set_irq() in the latter case.
+>
+> thanks
+> -- PMM

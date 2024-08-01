@@ -1,177 +1,226 @@
-Received: by 2002:a05:7022:fe04:b0:85:21:bd5b with SMTP id vc4csp979014dlb;
-        Thu, 1 Aug 2024 07:33:14 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCXQJdOiVuwqcQvpZP+sqsRFdgiBOGC3QrcV2+xP9CDUq9NNSmgWdo60ZUnuasKe+c1FyxS4yCVMY+gSqATHeJHEiOtrAH3A
-X-Google-Smtp-Source: AGHT+IG7X5E1wG6WktXkOuCobHhH5k1bbyi2ttG/BuumGXLHPUIfyjU9UwxaudWeyZZBF4Eafcfh
-X-Received: by 2002:a05:6a21:3389:b0:1c4:a7a0:a7d4 with SMTP id adf61e73a8af0-1c699550dd5mr669059637.7.1722522794053;
-        Thu, 01 Aug 2024 07:33:14 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1722522794; cv=pass;
+Received: by 2002:a05:7022:fe04:b0:85:21:bd5b with SMTP id vc4csp979736dlb;
+        Thu, 1 Aug 2024 07:34:23 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCVqytoJXm6+n7lse958K/iOIeo3ouXrR0WmcQtKj0fl8w8m4itatP6aofpbMaWLvy5NcVrrfU7J1XPmAXuiAou9D/XzhiNF
+X-Google-Smtp-Source: AGHT+IGLP28aYUHo5BLwSq1Q0D0c/0gvHEBI4GycMpYbHXdaHRlYGO48AfI3cPWOvEKVJREJLcYk
+X-Received: by 2002:a17:903:228b:b0:1fa:2b89:f549 with SMTP id d9443c01a7336-1ff57250fbbmr4662425ad.10.1722522863658;
+        Thu, 01 Aug 2024 07:34:23 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1722522863; cv=pass;
         d=google.com; s=arc-20160816;
-        b=f+6/ibAcp6hFLjjUB/PVbsbsQGXadXnq+M6ccLxnHlSpGa3KGHcDThA3sIl5JJqR8m
-         4u/EiAXYF5ID1zSjrrUos0sqkrCGCAMdwSTF5s8G9zWSt5GfjjhmNb6+fc7tEdMJezIv
-         sqT118bfROnM1njGmKg6O+3TYFoXRk/J1HAevKkRY712n+ZqxZ1dVW7iSPEv3KyVLKPr
-         rMYEkA42RJ0bKdMk0ufTOtynBQ9b2QtPW0W+uKWyRo9S3uux+SGg+halpmeb+mD3361x
-         yv8OdF5YtiLwd+1wicxOPoyWc3SMqILxthYG+Ia6m2SFNra8WKY4haq4Fw8bvzvY89Lu
-         QOvw==
+        b=pfohRelDen2HFDmPlzItPmO9MaFrMsI2oEct2DNHDQGG9WwhpA9cgaYuXodqZoxato
+         0TbrPEJDnPtj4iuaauA4j9uuQsEa5X8xVAvMUCTW65J/5TZd5Vft0Ns32kzibZyuETud
+         7qicqwSm57NXSRTz4a8pvljCMkg16CCeGBfofO7iaQPC/9Tf/IukB1EGXFb2QGct4+PV
+         L34XDCFazC5FvGGbDnUinUpPSkJdm5Cgk+P/ZPqIirbfSK/eGmCtwMGLi5vRfA0TKM1e
+         FM1TYR6WmhJKhV0LjxxzrY1QA2mKKqdfRYpnhScM1eSQB84uVq20WIvmZslTQUXC97ma
+         X6Wg==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:organization:references
-         :in-reply-to:message-id:subject:cc:to:from:date;
-        bh=geSiqP2xkEpj6V/Q/1mwlsfXprzJWoIQ3ZlQrirQDPE=;
-        fh=sk20niJjP+LyGcAC6rY5I61AlgNCIPpR6UIhxIWLYTI=;
-        b=e4+KsB6a0r0iYgde920rzD0+10bH15GUig3z4KuHwJ8V4ZdbPfBm+yXLpvEFVahcYL
-         cKB01VpMr35d6mvG1c9hO4An0Giyqx6PjUMN5nc2eTphsxl/5Gw0LoUmSAyx/1oNc/EM
-         rXK/FuD7OKZUzN3HOC4i4To+exCXbPCn9cTtq96iaVYf+5hlhef3d6TOHmwpjaHr1CeN
-         D2L81Ui5wVADuXDXxDvQ8XeWwceUN5Gky7jpctVKcVtKp4q3GwKOnX+w4a8fSG3FyOtX
-         yM361wwmwSuw+SupIos30gxd03Dto/vyWx2AqAPQrb0a0dP/CuueP71lEPcNBjyYDAtx
-         TMDw==;
+         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=3bSmw71LH8431rfZkSviN5PmmfnqC8POnf5tWTKjpM0=;
+        fh=ztu+7y0Pc0MGlFkdBUqcRJ8TIWQg+rF9cUr9MoKbAk4=;
+        b=MlAhpK/ox7ckV8bsU6eFs1FAstunxR7ium5Si0qLOErZk7mV1WjkF4ZkUbMQvJgliz
+         HCKlch3KG/zuOltYBkoXukuH8JNVhfhMKg7T4T8OwCENRE8TXy/39aiG0+m9TqXqg4wu
+         S+sidREkUga6VyFie4YccvzblEVDdWllg8CM7rkRTVigZLDVindIexQulWgO6iJD1bw6
+         J8unZwkWdKi7GRPE0OLi5ujkJDV4CQcy4chb9yqEIEt4m9qBbLz3CwSOEKA+6AUByngc
+         N9hxjoh7Q0IlajthtBDHdnIW3f0dcWivO3KiBfWcB4zanDGLpvkQckM5VaSldHOKi5ar
+         xnfQ==;
         dara=google.com
 ARC-Authentication-Results: i=2; mx.google.com;
-       arc=pass (i=1 spf=pass spfdomain=huawei.com dmarc=pass fromdomain=huawei.com);
-       spf=pass (google.com: domain of linux-kernel+bounces-271428-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) smtp.mailfrom="linux-kernel+bounces-271428-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=fail (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Return-Path: <linux-kernel+bounces-271428-alex.bennee=linaro.org@vger.kernel.org>
-Received: from sy.mirrors.kernel.org (sy.mirrors.kernel.org. [147.75.48.161])
-        by mx.google.com with ESMTPS id 98e67ed59e1d1-2cfdc4df13fsi4032941a91.116.2024.08.01.07.33.13
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=n2AIQLJJ;
+       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
+       spf=pass (google.com: domain of linux-kernel+bounces-271430-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-271430-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+Return-Path: <linux-kernel+bounces-271430-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [2604:1380:45e3:2400::1])
+        by mx.google.com with ESMTPS id d9443c01a7336-1fed7fa4dd9si171489815ad.462.2024.08.01.07.34.23
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 01 Aug 2024 07:33:14 -0700 (PDT)
-Received-SPF: pass (google.com: domain of linux-kernel+bounces-271428-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) client-ip=147.75.48.161;
+        Thu, 01 Aug 2024 07:34:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of linux-kernel+bounces-271430-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) client-ip=2604:1380:45e3:2400::1;
 Authentication-Results: mx.google.com;
-       arc=pass (i=1 spf=pass spfdomain=huawei.com dmarc=pass fromdomain=huawei.com);
-       spf=pass (google.com: domain of linux-kernel+bounces-271428-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) smtp.mailfrom="linux-kernel+bounces-271428-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=fail (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=n2AIQLJJ;
+       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
+       spf=pass (google.com: domain of linux-kernel+bounces-271430-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-271430-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
 Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by sy.mirrors.kernel.org (Postfix) with ESMTPS id EB839B230B5
-	for <alex.bennee@linaro.org>; Thu,  1 Aug 2024 14:33:11 +0000 (UTC)
+	by sv.mirrors.kernel.org (Postfix) with ESMTPS id 2AC09285132
+	for <alex.bennee@linaro.org>; Thu,  1 Aug 2024 14:34:23 +0000 (UTC)
 Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 896131A4F16;
-	Thu,  1 Aug 2024 14:33:04 +0000 (UTC)
-Received: from frasgout.his.huawei.com (frasgout.his.huawei.com [185.176.79.56])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 0D3981A4F31;
+	Thu,  1 Aug 2024 14:34:19 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="n2AIQLJJ"
+Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A8F671E4AB
-	for <linux-kernel@vger.kernel.org>; Thu,  1 Aug 2024 14:33:01 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=185.176.79.56
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id BDFFF1A4887
+	for <linux-kernel@vger.kernel.org>; Thu,  1 Aug 2024 14:34:18 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=10.30.226.201
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1722522784; cv=none; b=aZ7U66Qfpjeni6KxHTm+UMSCUl2efpaoU2DtyZHj/mVe6BE2K8AAhcD/xRMA/liasZf4Beg7Yd3zz3rMgSUww7uYMBZTghq9+SyuMQ1bUg4utWkWjiWHTgs1NsO2+wPI+NMCby/ktynb2oC5+NgnJnRmR3PtcDA90vGiNERGimU=
+	t=1722522858; cv=none; b=MsZI5G9Cg0gNz6R2I4IcUoZhCBrKZ/V3XI2YX9mX2u1j+E8SgCWHUiT+K7XBZecHCbVe/fj9i/KmZpu6fs9zX5SePX/GiH+A5sGzbcSXQ5x7dsFp/fnNrysOLhL8WrgwPKdp6paFnYTfoMJS6EWQqxtvDog9FwD9bxE5KgaG5PA=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1722522784; c=relaxed/simple;
-	bh=Rd0BXWWYsLO4emq1r5gtrd7pXCh+Aat7hf2/5V1xsA8=;
-	h=Date:From:To:CC:Subject:Message-ID:In-Reply-To:References:
-	 MIME-Version:Content-Type; b=jYUZtTg4chyYXeI4xskpklo1LERopvzJJ1TvGDAe2JQVUPAbzqDC5iFkJv6XvQ9qU7O5SvzJUGEQBq1opLyWH9/qYmSWJpFaUQUe8NSIM9kKAxGJppwcF3MX9+UOM48jkhLZuy/gXvEWP+qTSOXs42x1PU6PtNb4rbDikRo1mOk=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=Huawei.com; spf=pass smtp.mailfrom=huawei.com; arc=none smtp.client-ip=185.176.79.56
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=Huawei.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=huawei.com
-Received: from mail.maildlp.com (unknown [172.18.186.31])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4WZWb307f0z687SH;
-	Thu,  1 Aug 2024 22:30:22 +0800 (CST)
-Received: from lhrpeml500005.china.huawei.com (unknown [7.191.163.240])
-	by mail.maildlp.com (Postfix) with ESMTPS id A2E931400F4;
-	Thu,  1 Aug 2024 22:32:58 +0800 (CST)
-Received: from localhost (10.203.177.66) by lhrpeml500005.china.huawei.com
- (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Thu, 1 Aug
- 2024 15:32:58 +0100
-Date: Thu, 1 Aug 2024 15:32:57 +0100
-From: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
-To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-CC: Igor Mammedov <imammedo@redhat.com>, Shiju Jose <shiju.jose@huawei.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>, Ani Sinha <anisinha@redhat.com>,
-	Dongjiu Geng <gengdongjiu1@gmail.com>, <linux-kernel@vger.kernel.org>,
-	<qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
-Subject: Re: [PATCH v3 3/7] acpi/ghes: Support GPIO error source.
-Message-ID: <20240801153257.00006e30@Huawei.com>
-In-Reply-To: <20240801145637.03c34fd3@foz.lan>
+	s=arc-20240116; t=1722522858; c=relaxed/simple;
+	bh=pCLks0KKkjWtBuTbXUEEAzmun/Ei05ls4gs/i/vnJkA=;
+	h=Date:From:To:Cc:Subject:Message-ID:In-Reply-To:References:
+	 MIME-Version:Content-Type; b=VlPuHrZXD/9prYkE904xjNPI/i1VMb6L6EEilXLrKSLstIfrEX1yc39fA/5J43FMCXzYxYYCgjggqJGMuA7JvCXpfEv/gXLeTFUvHPnYqO1CLXOA1C12R2qPPR505hD1CZnR7hd7yb/oUQ2C/QvfePII01u2NfaveguvAK9zbYY=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=n2AIQLJJ; arc=none smtp.client-ip=10.30.226.201
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 71F49C32786;
+	Thu,  1 Aug 2024 14:34:15 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1722522858;
+	bh=pCLks0KKkjWtBuTbXUEEAzmun/Ei05ls4gs/i/vnJkA=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=n2AIQLJJf5bEF80+we21wlGogYviVoZsrJTtML8CzYbHiFT+ORLqStGsFzUVHepmr
+	 bYejuNe5A81NwCH+QMWgFRKAVBHVZQjEMHxsVJTNb/zTnk0dmQrs1RWuGvNtKbzGBW
+	 BIPYND2tmJ2hnwU6vNQHUuYDIimSt8Q+eSq+5TPjfVlnfUOCM7287ln85SmfFDIV4C
+	 NvY2k4sBq/YgT3Sdmk0vNKggUFOo1iQIt+HxPw59mZ8bl2byN47cXVz1wl7yxlooeF
+	 LJennGKlTygqwvoHoaFkrbvK87Q7R1oem1ibFwkLF2nUAR0UkAHotbx32GMT845yeD
+	 YX8szBWN6mcHQ==
+Date: Thu, 1 Aug 2024 16:34:12 +0200
+From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+To: Markus Armbruster <armbru@redhat.com>
+Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>, Shiju Jose
+ <shiju.jose@huawei.com>, "Michael S. Tsirkin" <mst@redhat.com>, Ani Sinha
+ <anisinha@redhat.com>, Dongjiu Geng <gengdongjiu1@gmail.com>, Eric Blake
+ <eblake@redhat.com>, Igor Mammedov <imammedo@redhat.com>, Michael Roth
+ <michael.roth@amd.com>, Paolo Bonzini <pbonzini@redhat.com>, Peter Maydell
+ <peter.maydell@linaro.org>, linux-kernel@vger.kernel.org,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [PATCH v3 4/7] acpi/ghes: Add a logic to handle block addresses
+ and FW first ARM processor error injection
+Message-ID: <20240801163412.48740ddb@foz.lan>
+In-Reply-To: <87zfq0b75i.fsf@pond.sub.org>
 References: <cover.1721630625.git.mchehab+huawei@kernel.org>
-	<64a31a09fe6b11bebad1c592ad20071a9d93fee5.1721630625.git.mchehab+huawei@kernel.org>
-	<20240730104028.4f503d91@imammedo.users.ipa.redhat.com>
-	<20240801145637.03c34fd3@foz.lan>
-Organization: Huawei Technologies Research and Development (UK) Ltd.
-X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
+	<6a3542a7d8acfbf88c906ec6f6dc5a697257b461.1721630625.git.mchehab+huawei@kernel.org>
+	<87bk2lreeb.fsf@pond.sub.org>
+	<20240729142154.44d484c4@foz.lan>
+	<87zfq0b75i.fsf@pond.sub.org>
+X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
 Precedence: bulk
 X-Mailing-List: linux-kernel@vger.kernel.org
 List-Id: <linux-kernel.vger.kernel.org>
 List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
 List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-X-ClientProxiedBy: lhrpeml500006.china.huawei.com (7.191.161.198) To
- lhrpeml500005.china.huawei.com (7.191.163.240)
-X-TUID: o+esiA2PWm2t
+X-TUID: mIk8zYPSH4L2
 
-On Thu, 1 Aug 2024 14:56:37 +0200
-Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
+Em Mon, 29 Jul 2024 16:32:41 +0200
+Markus Armbruster <armbru@redhat.com> escreveu:
 
-> Em Tue, 30 Jul 2024 10:40:28 +0200
-> Igor Mammedov <imammedo@redhat.com> escreveu:
+>  Yes, as this CPER record is defined only for arm. There are three other
+> > processor error info:
+> > 	- for x86;
+> > 	- for ia32;
+> > 	- for "generic cpu".
+> >
+> > They have different structures, with different fields.  
 > 
-> > > diff --git a/include/hw/acpi/ghes.h b/include/hw/acpi/ghes.h
-> > > index 674f6958e905..4f1ab1a73a06 100644
-> > > --- a/include/hw/acpi/ghes.h
-> > > +++ b/include/hw/acpi/ghes.h
-> > > @@ -58,6 +58,7 @@ enum AcpiGhesNotifyType {
-> > >  
-> > >  enum {
-> > >      ACPI_HEST_SRC_ID_SEA = 0,
-> > > +    ACPI_HEST_SRC_ID_GPIO = 1,    
-> > is it defined by some spec, or just a made up number?  
+> A generic inject-error command feels nicer, but coding its arguments in
+> the schema could be more trouble than it's worth.  I'm not asking you to
+> try.
 > 
-> I don't know. Maybe Jonathan or Shiju knows better, as the original patch
-> came from them, but I didn't find any parts of the ACPI spec defining the
-> values for source ID.
+> A target-specific command like this one should be conditional.  Try
+> this:
+> 
+>     { 'command': 'arm-inject-error',
+>       'data': { 'errortypes': ['ArmProcessorErrorType'] },
+>       'features': [ 'unstable' ],
+>       'if': 'TARGET_ARM' }
+> 
+> No need to provide a qmp_arm_inject_error() stub then.
 
-> 
-> Checking at build_ghes_v2() implementation, this is used on two places:
-> 
-> 1. as GHESv2 source ID:
->     /*
->      * Type:
->      * Generic Hardware Error Source version 2(GHESv2 - Type 10)
->      */
->     build_append_int_noprefix(table_data, ACPI_GHES_SOURCE_GENERIC_ERROR_V2, 2);
->     /* Source Id */
->     build_append_int_noprefix(table_data, source_id, 2);
->     /* Related Source Id */
->     build_append_int_noprefix(table_data, 0xffff, 2);
-> 
-> as an address offset:
-> 
->     address_offset = table_data->len;
->     /* Error Status Address */
->     build_append_gas(table_data, AML_AS_SYSTEM_MEMORY, 0x40, 0,
->                      4 /* QWord access */, 0);
->     bios_linker_loader_add_pointer(linker, ACPI_BUILD_TABLE_FILE,
->         address_offset + GAS_ADDR_OFFSET, sizeof(uint64_t),
->         ACPI_GHES_ERRORS_FW_CFG_FILE, source_id * sizeof(uint64_t));
-> 
-> So, if I had to guess, I'd say that this was made up, in a way that
-> the size of the table will fit just two sources, starting from zero.
-> 
-> So, I'll change the code to just:
-> 
-> 	enum {
->             ACPI_HEST_SRC_ID_SEA = 0,
->             ACPI_HEST_SRC_ID_GPIO, 
+I tried it, but it generates lots of poison errors. Basically, QAPI
+generation includes poison.h, making it to complain about on
+non-ARM builds.
 
-LGTM.  The naming is perhaps not ideal but the scheme predates my
-involvement so I'm not sure of the reasoning.  Could change it
-to QEMU_ACPI...
-to make it really really clear these aren't an ACPI spec thing, but
-may not be worth it.
+Anyway, the new version I'm about to submit is not dependent on
+ARM anymore (as it is a generic GHES error injection that can be used
+by any arch).
 
-J
+Still, as I added a Kconfig symbol for it, I still needed a stub.
 
-> 	    /* future ids go here */
-> 	    ACPI_HEST_SRC_ID_RESERVED,
-> 	};
-> 
-> To remove the false impression that this could be originated from the
-> spec.
-> 
-> Thanks,
-> Mauro
-> 
+It would be cool not needing it, but on the other hand it doesn't
+hurt much.
 
+> >> If we encode the the error to inject as an enum value, adding more will
+> >> be hard.
+> >> 
+> >> If we wrap the enum in a struct
+> >> 
+> >>     { 'struct': 'ArmProcessorError',
+> >>       'data': { 'type': 'ArmProcessorErrorType' } }
+> >> 
+> >> we can later extend it like
+> >> 
+> >>     { 'union': 'ArmProcessorError',
+> >>       'base: { 'type': 'ArmProcessorErrorType' }
+> >>       'data': {
+> >>           'bus-error': 'ArmProcessorBusErrorData' } }
+> >> 
+> >>     { 'struct': 'ArmProcessorBusErrorData',
+> >>       'data': ... }  
+> >
+> > I don't see this working as one might expect. See, the ARM error
+> > information data can be repeated from 1 to 255 times. It is given 
+> > by this struct (see patch 7):
+> >
+> > 	{ 'struct': 'ArmProcessorErrorInformation',
+> > 	  'data': { '*validation': ['ArmPeiValidationBits'],
+> > 	            'type': ['ArmProcessorErrorType'],
+> > 	            '*multiple-error': 'uint16',
+> > 	            '*flags': ['ArmProcessorFlags'],
+> > 	            '*error-info': 'uint64',
+> > 	            '*virt-addr':  'uint64',
+> > 	            '*phy-addr': 'uint64'}
+> > 	}
+> >
+> > According with the UEFI spec, the type is always be present.
+> > The other fields are marked as valid or not via the field
+> > "validation". So, there's one bit indicating what is valid between
+> > the fields at the PEI structure, e. g.:
+> >
+> > 	- multiple-error: multiple occurrences of the error;
+> > 	- flags;
+> > 	- error-info: error information;
+> > 	- virt-addr: virtual address;
+> > 	- phy-addr: physical address.
+> >
+> > There are also other fields that are global for the entire record,
+> > also marked as valid or not via another bitmask.
+> >
+> > The contents of almost all those fields are independent of the error
+> > type. The only field which content is affected by the error type is
+> > "error-info", and the definition of such field is not fully specified.
+> >
+> > So, currently, UEFI spec only defines it when:
+> >
+> > 1. the error type has just one bit set;
+> > 2. the error type is either cache, TLB or bus error[1].
+> >    If type is micro-arch-specific error, the spec doesn't tell how this 
+> >    field if filled.
+> >
+> > To make the API simple (yet powerful), I opted to not enforce any encoding
+> > for error-info: let userspace fill it as required and use some default
+> > that would make sense, if this is not passed via QMP.
+> >
+> > [1] See https://uefi.org/specs/UEFI/2.10/Apx_N_Common_Platform_Error_Record.html#arm-processor-error-information  
+> 
+> I asked because designing for extensibility is good practice.
+> 
+> It's not a hard requirement here, because feature 'unstable' gives us
+> lincense to change the interface incompatibly.
+
+IMO keeping it as unstable makes sense, as this QAPI is specific for
+error injection, which is hardly a feature widely used. Also, with the
+script approach, the actual CPER record generation happens on a script.
+
+If we provide it together with QEMU, if the QAPI ever changes, the
+changes inside the script will happen altogether. So, IMO, no need to
+make it stable.
+
+Thanks,
+Mauro

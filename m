@@ -1,237 +1,300 @@
-Received: by 2002:a05:7022:1b17:b0:84:f013:bc5b with SMTP id ti23csp920492dlb;
-        Thu, 1 Aug 2024 02:21:23 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVZ+CLmmxH+HaNeAp5ege5XmRV96eL4emsDl2JwSO5Z0Ckuui2ALHSnJkaFXITvVD91Go1UeKMJsC1Uc+05Xm9aSMibStNx
-X-Google-Smtp-Source: AGHT+IE0HtQhqu8Eh3k8FfEtOScKfLQAHLLbQlrH8HXFHmwGazBVCpEJfHGDof3TFo+FcQd7VAbB
-X-Received: by 2002:a05:6214:4189:b0:6b7:9f1d:283a with SMTP id 6a1803df08f44-6bb8d78e66cmr19953966d6.38.1722504082879;
-        Thu, 01 Aug 2024 02:21:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1722504082; cv=none;
+Received: by 2002:a17:505:3f8c:b0:1be9:327d:8ee3 with SMTP id bm12csp788566njb;
+        Wed, 31 Jul 2024 23:42:56 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCX/4rO4IHClReEd8nFGE6bolXYOhpBFpDaVJYI+fHJbU99/pGWKluKycqZR4+wpoyQKRIQd9j2+xhXYkw==@linaro.org
+X-Google-Smtp-Source: AGHT+IFZEr8XUJK+Ci0SCXGeJxkO0Y4kY1Is+Vc3/3gd6s3hDYg8iYPB25VzYEu4K9/4gC2dInnr
+X-Received: by 2002:a05:6214:3a07:b0:6b7:b4b1:85ae with SMTP id 6a1803df08f44-6bb8d860203mr14040366d6.54.1722494575794;
+        Wed, 31 Jul 2024 23:42:55 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1722494575; cv=pass;
         d=google.com; s=arc-20160816;
-        b=BfxFA+5mhT6IqYuQguAXU01x0WKNJUqd4I+fTE2t0Xxr2ynr/nBSjndEL3C7WDwM3T
-         quw6GCUis0CRy1yqHBWadiwQkeufIlgBJRjE/+NuTOYEiVKBH6hpeivy1GlaEevfxsCe
-         x5K4tbfE0pAehvGSh8BzksqQ5CADa0/O5j6/4yI1N5zWFsrtc0rR6Ad1DkP4TKLHNkgX
-         4Hc+BZPz2qdFvUwlpDwFW12IHALvbu3BRkbc/fC5rQa0bMKDvW5ntsE5XAQCmMRdPzbV
-         e81Zx6KBQyMJczrVs9PmxQ8OgEoNkP8GTBeEJHiqA1FDFaulCi1Opaufn4KDFBgnGglQ
-         5xUQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=VhIU0H8zCkQcv5+ATX29zXYWBb/3ZffF8LHXN416OVw=;
-        fh=QsxuhUBNyq2F7/1UitCRN/j+l2ZGR7FJ1BwILMh3mGA=;
-        b=wiTuxHwF/vaRfBeV7iVUdikR32G5SjKtoPS2MxDI0vyhN4UNVnRtlUKehTZdTNH3uZ
-         7EP0mMFgpOVR6GXpOL7ZpsJTDuybQGz3IFrZa1cJ7Tk5ebwZ6RCko/NpOBV69ixlxnxW
-         GIkk/ADvzv/fK8qGy9EbOUqCfnceo2dY0aF++qfzoNtP49B56LrpW2246RJdNMyan1JD
-         ic0bEXV+oz4CAs8ijR0qAFxRnv6TzP5EV5cQHboaAGy+wfZA0JI3yl5W0m/qUg/+TZWs
-         JbPVpD9/cR6K8wWy0NSZi7zbpqZjf4mB5IIWuPIomP8GfbDocnI9SkuV5AchQXrltS51
-         Ai/Q==;
+        b=LyjqPLUec7tqIfW92vivCvk4HWEP6jKyYWLSraudumRZ1o+3+O83kslp1B/mkWwPjW
+         vdBHVcdMsf1OjpIDijWIvS7G26yKU+HsQa4nkayhZLtRWXTRbU44Uj1PG2hHOxFQyYR4
+         vwi+mUE8XChBTwb4ZmgqyMy5y0xGVowosaeIOpyr0Bq4fyI2aZbaUKdGtd54Io8Fj6gr
+         L5cj/aAdjdEG8FxKjgUhCzA9E/SxUi/n1Xa/UFjrVKeIW4mkmUBa7OQ61VPo+20AVSzs
+         DnfeDC9WuKvbzStIuArS8Ym61KM2+Tsoh1VQ4vE6cC/nJj7WnRH5xIniPY04ccQl7pWZ
+         QaPQ==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :in-reply-to:references:message-id:date:thread-index:thread-topic
+         :subject:cc:to:from:dkim-signature;
+        bh=zyTasB6JA70G0JvyWp1rZXgz/E10f+5aFS+B2lq2gQM=;
+        fh=+C710lyviPIXlX2umnycXFUr3At4aCuqVCG4mExzP9Y=;
+        b=GoOvX5JHosXJdJpMjQxhdDoz3Cc+Xl2IJHXgCtj4wid9nMsckMMe3KdSXeCX5/hB4Z
+         wxSp3/TofT+4gOdXxVZ+OT2HFrktWHDKHC0NU9huem2vLtg93WgksM+RcvY/UfRrdUyZ
+         aqZrJPJzDhz3B/tDZt9zidSnKY2fzDLljUdm9NBAtxIaCaDqvSqNQjOIAPNDujprmWmM
+         /heywijtNgHPpfvSHRuqpV880266/do820vnULA2QOSP+zmVw8s4fHfDeRKeovNxLCVv
+         s1+9JPO6Bdz1XxS0NgsrqTJbfWGSOwJ6zG7HQvQjAD8GRf5x5VgRvyFTdMUQ1g+LURyU
+         joLw==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=hh2iLbsg;
-       spf=pass (google.com: domain of zhao1.liu@intel.com designates 198.175.65.21 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Return-Path: <zhao1.liu@intel.com>
-Received: from mgamail.intel.com (mgamail.intel.com. [198.175.65.21])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6bb3faca26bsi177609126d6.435.2024.08.01.02.21.21
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@tii.ae header.s=selector1 header.b=XyPw6Ppz;
+       arc=pass (i=1 spf=pass spfdomain=tii.ae dkim=pass dkdomain=tii.ae dmarc=pass fromdomain=tii.ae);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=tii.ae
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6bb3faab760si169167256d6.330.2024.07.31.23.42.55
+        for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 01 Aug 2024 02:21:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of zhao1.liu@intel.com designates 198.175.65.21 as permitted sender) client-ip=198.175.65.21;
+        Wed, 31 Jul 2024 23:42:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=hh2iLbsg;
-       spf=pass (google.com: domain of zhao1.liu@intel.com designates 198.175.65.21 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1722504083; x=1754040083;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=Xmg/968fCVUCGZYT797Z9jjQKkMZwiEQFs2Df4qxxrw=;
-  b=hh2iLbsgRC+AXn5vUc9zVHi63dyBOpVq72j7e4+QreQ+Wv5iOlqY5PT+
-   lcu8igdjgU6AtQ/OPA2pSoZrHRJJC1Ztdmw1ch9Fruido9+EGplOvw5m+
-   IFdDUjDkZ1MSwf9jKDadCDNOBB9G0lnnKE6fpVeqRA0QvY04cB4M0fcDf
-   IrbeCAVOnjIX2bya6w0qIGG3N5eZT95DTS7c0OdNBj5PJUoMA6yyTlnOF
-   c6QR6AGqMyfdWrXUZ56HVWY6voamLLJ9ts7f1/RiH+9IBE2+ZsQ8OKcms
-   47h/cvPKDciSBxaNRSRXVGvvLa1E4as8w53MLTLXPeIKcTQWmcYTv92RY
-   A==;
-X-CSE-ConnectionGUID: YFwdBi4+SiScE8EIbCvw6g==
-X-CSE-MsgGUID: u9k7FL/ZRJmaZlfnuWUX6g==
-X-IronPort-AV: E=McAfee;i="6700,10204,11150"; a="20385177"
-X-IronPort-AV: E=Sophos;i="6.09,254,1716274800"; 
-   d="scan'208";a="20385177"
-Received: from orviesa005.jf.intel.com ([10.64.159.145])
-  by orvoesa113.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 01 Aug 2024 02:21:21 -0700
-X-CSE-ConnectionGUID: D84dmaN6SuK0K8x9jJDrlw==
-X-CSE-MsgGUID: YCFLQ0uPTG+Bm5RJ5hwSpA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.09,254,1716274800"; 
-   d="scan'208";a="59787927"
-Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost) ([10.239.160.36])
-  by orviesa005.jf.intel.com with ESMTP; 01 Aug 2024 02:21:16 -0700
-Date: Thu, 1 Aug 2024 17:37:03 +0800
-From: Zhao Liu <zhao1.liu@intel.com>
-To: Markus Armbruster <armbru@redhat.com>
-Cc: Daniel P =?iso-8859-1?Q?=2E_Berrang=E9?= <berrange@redhat.com>,
-	Eduardo Habkost <eduardo@habkost.net>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
-	Yanan Wang <wangyanan55@huawei.com>,
-	"Michael S . Tsirkin" <mst@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Eric Blake <eblake@redhat.com>,
-	Marcelo Tosatti <mtosatti@redhat.com>,
-	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Jonathan Cameron <Jonathan.Cameron@huawei.com>,
-	Sia Jee Heng <jeeheng.sia@starfivetech.com>, qemu-devel@nongnu.org,
-	kvm@vger.kernel.org, qemu-riscv@nongnu.org, qemu-arm@nongnu.org,
-	Zhenyu Wang <zhenyu.z.wang@intel.com>,
-	Dapeng Mi <dapeng1.mi@linux.intel.com>,
-	Yongwei Ma <yongwei.ma@intel.com>
-Subject: Re: [PATCH 8/8] qemu-options: Add the description of smp-cache object
-Message-ID: <ZqtXP9MViOlyhEsu@intel.com>
-References: <20240704031603.1744546-1-zhao1.liu@intel.com>
- <20240704031603.1744546-9-zhao1.liu@intel.com>
- <87r0bl35ug.fsf@pond.sub.org>
- <Zp5vxtXWDeHAdPok@intel.com>
- <87bk2nnev2.fsf@pond.sub.org>
- <ZqEN1kZaQcuY4UPG@intel.com>
- <87le1psuv3.fsf@pond.sub.org>
+       dkim=pass header.i=@tii.ae header.s=selector1 header.b=XyPw6Ppz;
+       arc=pass (i=1 spf=pass spfdomain=tii.ae dkim=pass dkdomain=tii.ae dmarc=pass fromdomain=tii.ae);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=tii.ae
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sZPWD-0006OL-Bp; Thu, 01 Aug 2024 02:42:34 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <Marco.Palumbi@tii.ae>)
+ id 1sZPWB-0006Mj-RV; Thu, 01 Aug 2024 02:42:32 -0400
+Received: from mail-dx2are01on20700.outbound.protection.outlook.com
+ ([2a01:111:f403:2026::700]
+ helo=ARE01-DX2-obe.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <Marco.Palumbi@tii.ae>)
+ id 1sZPW9-00006z-I3; Thu, 01 Aug 2024 02:42:31 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=tAin2oqNmbk8K+OT7K/FYKvo2lzJgwtLdwYg3NUGNeZramSTM6WCeOCjmX8Je7DcFAbre04xmh4hZhpIReAgPP7zNHXFxROoFMJJuG46gP/cmgt3rMflh+jY8QGKlvULr+xN6nM0aJFohYBbBioDGfw5tc1S/B5yXi1wegl+3Rl8GZzwvRxT5NBJouWXNe+FlnAPYipT+8DYQTrmdsboYMwacEXgMUt3EdO5hkSHm/8rcFkVuzD9FCCYrj8kBUHTwWsunLTLJR9cbOW3RStHlUjvvbOVUvCsgI7z3puqI6Z2uiZxmZ3X46XT2WqvcUSU4XL7dL3Ovu5TXhRAWkHgHw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=zyTasB6JA70G0JvyWp1rZXgz/E10f+5aFS+B2lq2gQM=;
+ b=p9zNVxnWnTD02C9Jr17aTOli1nZdeiTlVvY3frQlcxJvQxonQp1MmvmVuP7WMyqx5hsXE2kdxpd63VYyfp+MQIixs6EsOCaswQI7c53+cGMMO5J2Zc0AFYDV637MhYoObKvDA0UX8H3yI/f/UGCrG6GnVge2t0Vv2pAeDWpiJZQ8fpzCG6WyxUpTsN/HN8mfjtPsIKY+lTVS1fp11/mcq96WpC2yonNAkxpqB4Ji66Rct+yHOs0o0Dndh4B5dUtB9Cp0GFIn1EEwl1ndlsnJOozKWXMM74qzJvduQu933aJB8dLnwZ2TW9RvUplrhm58b4D+xWYEP4JFl2NitersoA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=tii.ae; dmarc=pass action=none header.from=tii.ae; dkim=pass
+ header.d=tii.ae; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=tii.ae; s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=zyTasB6JA70G0JvyWp1rZXgz/E10f+5aFS+B2lq2gQM=;
+ b=XyPw6Ppzw2ybrMxgsb4ET1DH1a7Wm6p4FV5OIidnvfhSQrlTXZYvyRiEj4+vLoAoi3skcWz0wNnqt/YyQnxBb634oQ0fh6mcwhUPrcFNkaM5orHxlZ5iZ4sd5BHXRHymrSKDoCzNAYkNmKLOnMBJUa7uzmVYxuykkD8BsvlXm66R4x2ByNLLcbGCA6JWfFX0BjgGwERbUlT5jhlYJjjnsUsqyCxLIPaOH4oSmoQCtXiwzkEKRrTEcBGHfBagkc9OUqyzM+ODd3Bpi2lVtS/+hamqmqfhLCSvMzyZcnJabl82di5kssM9ICg5ZnD4XK/pOvP9WXubIQwU69liggSmgA==
+Received: from DX1P273MB1304.AREP273.PROD.OUTLOOK.COM (2603:1086:300:65::7) by
+ AU2P273MB0308.AREP273.PROD.OUTLOOK.COM (2603:1086:200:2f::13) with
+ Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.7807.28; Thu, 1 Aug 2024 06:42:19 +0000
+Received: from DX1P273MB1304.AREP273.PROD.OUTLOOK.COM
+ ([fe80::15bb:cb8f:883c:e1e1]) by DX1P273MB1304.AREP273.PROD.OUTLOOK.COM
+ ([fe80::15bb:cb8f:883c:e1e1%4]) with mapi id 15.20.7828.016; Thu, 1 Aug 2024
+ 06:42:18 +0000
+From: Marco Palumbi <Marco.Palumbi@tii.ae>
+To: Peter Maydell <peter.maydell@linaro.org>
+CC: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org"
+ <qemu-arm@nongnu.org>, "qemu-stable@nongnu.org" <qemu-stable@nongnu.org>,
+ "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
+Subject: RE: [PATCH] hw/arm/mps2-tz.c: fix RX/TX interrupts order
+Thread-Topic: [PATCH] hw/arm/mps2-tz.c: fix RX/TX interrupts order
+Thread-Index: AQHa4lKe8XYFywo3GE2HZHp1T92H0bIQt6EAgAE/GjA=
+Date: Thu, 1 Aug 2024 06:42:18 +0000
+Message-ID: <DX1P273MB1304F6482821EF17109510FA96B22@DX1P273MB1304.AREP273.PROD.OUTLOOK.COM>
+References: <20240730073123.72992-1-marco@palumbi.it>
+ <CAFEAcA_7QDUuQ-zs53Xp2zcO83rDzj0Smga49GZ8J9gg26VBdw@mail.gmail.com>
+In-Reply-To: <CAFEAcA_7QDUuQ-zs53Xp2zcO83rDzj0Smga49GZ8J9gg26VBdw@mail.gmail.com>
+Accept-Language: it-IT, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=tii.ae;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: DX1P273MB1304:EE_|AU2P273MB0308:EE_
+x-ms-office365-filtering-correlation-id: 2022c4a3-04e4-4911-180a-08dcb1f516e5
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0; ARA:13230040|366016|1800799024|376014|38070700018;
+x-microsoft-antispam-message-info: =?iso-8859-1?Q?vtQAPZuaBQ3IodHgGcwfEmal8B9fNVl+bvyc5HhKQXsAOJr3TQ7a2juF1j?=
+ =?iso-8859-1?Q?XI+tTakIV0bfyE2bR0MSSJ55ZjAvBU5CVMfFEASqwppTxQxv/qMmU8/voX?=
+ =?iso-8859-1?Q?K/gKlz63MAZ18L0tGq6WtF70paKmy95aehZuVDZ3/yjOxFzsXufaAexnGx?=
+ =?iso-8859-1?Q?IIlcQlctJkNJwVcCPN/uPiXTuCj8a90SVAGZew3wdnbVg50urr4/oB/C11?=
+ =?iso-8859-1?Q?ZScl+kHaCT7J0q4kSalcXm6WkQbmyc0ZUfs3wQ9QFA33JZ9dHaTgaX7Ft8?=
+ =?iso-8859-1?Q?wWgWJ3Kq+fnfruHb6RxXpLpN4pn+Tp27E2gStoSib3/r2rQ41FtabR3wzV?=
+ =?iso-8859-1?Q?SZSBx38IDRrHM/mnCm8XNKcqG8uNEkpDPVGvNBqSZbTVT7prSSIvvc9tHS?=
+ =?iso-8859-1?Q?yrQGUAzaqeq9Aa7ob2vUVlUwbyIM1wXTJ4HqUrlu7w+70/FyofMeImGR4j?=
+ =?iso-8859-1?Q?s7leAvY2WhSPn5zDPXLb14s/5C0KaJtP4gmL/XHWW3k6gtd42NHm2Eyv45?=
+ =?iso-8859-1?Q?C4D1GlTJqpKuvlLyDZqrigyag4flFT8r/3jY9Oet6ARqSeQxtPnpnhmNHf?=
+ =?iso-8859-1?Q?BPscJVYwceFrqA8H0zcNFwvgkITmXOSrAGwslBPLO451L6Iwpr/jLRzN2P?=
+ =?iso-8859-1?Q?Q3JjdoRoQcEUHDDu23wd78NOXHyMMDsqmyL6yqKfsGpfs7SjoZYC+k+2g+?=
+ =?iso-8859-1?Q?hWBIvxianV2vbGgjs9HyB6R74bTjnkvyMbZBpm0TzlRu4BRkZ8IWfdGjsW?=
+ =?iso-8859-1?Q?msoD/JD284F7NkwrSwD+qbfUpfF+ypG07h2YCZm9bKGf850mZxLQKKsFDj?=
+ =?iso-8859-1?Q?mQjiyu7EyLadN3Xsxh6kkS1+TiBJMG8QPXGW5x/uGY23c+NkATMfJC4AZF?=
+ =?iso-8859-1?Q?zS7HhMyTkmTTj1yF0SsOixrtPMIBI4tvK07IS4OmHBspcxiKysZsP6+JTp?=
+ =?iso-8859-1?Q?b5HYVgYM69AYkCrO60sKMDAj8CoiCbYs9U6B/k8r5cjobtTsKFu3uc7lQH?=
+ =?iso-8859-1?Q?UNTzYJQlArR33Rzr9KYbD8CGzQMS6AzXxzBPW6+4JPuQKTz5erb9TZtXAU?=
+ =?iso-8859-1?Q?ZtK8p+h5unkRKGsbNJzBNwVWG8zoDXRJmw3xR4VmBjls5W6lB7XJVZwoAA?=
+ =?iso-8859-1?Q?jqD+D/UxhpxuOdeWe2CqmxoDH+OVB0uoTjyjAN5s7cq3p/u28M7A8VT1CC?=
+ =?iso-8859-1?Q?uxTyjN2J+3QHNGuGOSRIb1b+xi9rAJJUz8fgN/Ll5JIVRNeAjVSZy0zU00?=
+ =?iso-8859-1?Q?XA+kO6UNeKXkl6RXmJgBLjKVEwP6PYEDUip97T/nQkZkl9B6PYIcD/6iMz?=
+ =?iso-8859-1?Q?wZ0XcZ3c28YTqJB2WUMBLtc8eRMcs/d3M5Ul09i8AeHwT3ClTcvDWp+We3?=
+ =?iso-8859-1?Q?shnOh5AjaR/9/OVhVfOzTe7SIHT958AQtoFodwb72KAM3PPYd79dO5xnJd?=
+ =?iso-8859-1?Q?yFQa6UDQHVFdB0xz24U83sbYxCyUm8aXW9qk4g=3D=3D?=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:DX1P273MB1304.AREP273.PROD.OUTLOOK.COM; PTR:; CAT:NONE;
+ SFS:(13230040)(366016)(1800799024)(376014)(38070700018); DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?rrfdjWES8nraSF5e8BJIoDaLga6ZAz21BPrxBp+8zBB4M7tUqKzK6XX00i?=
+ =?iso-8859-1?Q?9/aDaJu2uqwN3O74+js3l3kHcfHSBupyLxJjBy9e+i6GUKyxvGWJrFez9F?=
+ =?iso-8859-1?Q?dSO7fnS+DoL4cik2NIbi5zmI+D1cIhKuim3hcPuiZFm3VUhE/deXQzG7sV?=
+ =?iso-8859-1?Q?o8c2oHaERs3k7Ain+u73MCyUs+tffRPQAey9qL2Dd63iG/EckjYCWZM5kc?=
+ =?iso-8859-1?Q?QOVxJgvJBlrCG23HMIBPRi+TkZpi+U4eh7Xz6+yTE60S0RhIz2e2o8x91q?=
+ =?iso-8859-1?Q?HDxpYSPiAZwrRwgytV03xUJi75WUB+75lDaeC/IV73HZzkLn6DoG3bzLSv?=
+ =?iso-8859-1?Q?IrZJVhj3oU9+/5Fyz2Aj/Ghll9En7TJDwY/GtqJ2NIOyBoVpa0pr9cilbp?=
+ =?iso-8859-1?Q?VfTh7AdFH76tA9lV6811AIVx+fJnuJqSpPNQHTV1z7HgI0Go9y/TC9j8G5?=
+ =?iso-8859-1?Q?QwQsaHoU8p6QdZ6Oah9vbLhdAVDncl2DKWVLRrO2VCPifY90ct+RjNRQbe?=
+ =?iso-8859-1?Q?aWeXrXh8SwpyFzXPAh8oQ/yg2vuGGMBWvIn70Pq+o/Y2VNw4YjgEZK7g3N?=
+ =?iso-8859-1?Q?Ymqcmdmml7weE35IoD+hvcppWG/NSZhJkToMWAQuvHgW/k8knpVHIljx5U?=
+ =?iso-8859-1?Q?lWii8sEjPDROHTdbBUMoy+ImcLbxmmnusQnu79s3xVWoxa17/ll/y9goSK?=
+ =?iso-8859-1?Q?clV9f2ixxJtepE5+egh9RQbvmGjCTQ0AeAdYIoRc3qAAm1Z1ogB3pJwg39?=
+ =?iso-8859-1?Q?vfyo8A17WUqpPFiyZhq+yYMYQyATopGBqYCCKmp/0QLsEBUa3uchjv3w9e?=
+ =?iso-8859-1?Q?SdvUrOuDZW8vhoS8kOKavZWvKrZ0h9g58f7ESw1AkxqhJ/KvcnHg8RHOME?=
+ =?iso-8859-1?Q?tZtOHzxGnmYXuVpnk6Wb6Ot9BPChnfIjL3dhC57jg75ATcO3+Uorx/duUR?=
+ =?iso-8859-1?Q?tX5Klbq+ZCOZRr5gc65Nd1h24OFQ6bL90AhCSY+q5as6EcEJ8rDVdO2Tdx?=
+ =?iso-8859-1?Q?8YYNbNbSlAP9MqxhSHa4DB8mMSE0bXgr1ax96BloN/75MkT1MzoE4jqMfH?=
+ =?iso-8859-1?Q?KpxuBeG+n2fH5yVfcOukmb73T7Df0nAQF1k94vz9pKomkbqtOMim2E4m4l?=
+ =?iso-8859-1?Q?aCAGooEYQyrLmhcJeZiJObaxlq1Rwqlu0Od/mGW5rWYwqWJvwWLUf7jVDR?=
+ =?iso-8859-1?Q?atIvhAW0AEoE8YKUU3N3GqLBq+YIzODXj5zl8aDJNyNhyH5mwYKUsVv6fM?=
+ =?iso-8859-1?Q?InUmDFXmWk53BwpnvYFB4Cir5UVOcWs8+5Ury/1fOJwnpwWwbPnE4Qd3p+?=
+ =?iso-8859-1?Q?btQtP0VyAkx2K5RjqNnCMrcteY2jWqbeNQTytHOyQ1hw5edel76w7OtWmC?=
+ =?iso-8859-1?Q?wZ+Cze1UBrhiawBwihNOsm7BXvkz3d4HHiJdm9yFc6HeggoiMfiHiOj3Hy?=
+ =?iso-8859-1?Q?sXisBIh2Y9si4yb7FN3aMav5iAqZ2b6O1NBcOm+zI8WjGqDPYuUOA/7Dwk?=
+ =?iso-8859-1?Q?Y3M5gb8mTcNmgpSC6Vu88I73HzlhuHTmxt9KAGrAJxG3jv3ReBSADJdRtf?=
+ =?iso-8859-1?Q?rElwxqKioOPprAUibiiV5oXWBNcBql+vYE9MJlfLJbHcaXUxuFt5bU1yGV?=
+ =?iso-8859-1?Q?/4wnV5BAb0MG8=3D?=
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <87le1psuv3.fsf@pond.sub.org>
-X-TUID: jqvEH3G4bOlE
+X-OriginatorOrg: tii.ae
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: DX1P273MB1304.AREP273.PROD.OUTLOOK.COM
+X-MS-Exchange-CrossTenant-Network-Message-Id: 2022c4a3-04e4-4911-180a-08dcb1f516e5
+X-MS-Exchange-CrossTenant-originalarrivaltime: 01 Aug 2024 06:42:18.8808 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: f0869253-be00-4a37-9c77-37742cb15c38
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: NExSArk7i8dBCyA04HAV+9J4uJRSgsYAcua+29jhZunNcdaRim/flw4juvwvM0BmVPE2/JpWfHXzfPi2m6lc5w==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AU2P273MB0308
+Received-SPF: pass client-ip=2a01:111:f403:2026::700;
+ envelope-from=Marco.Palumbi@tii.ae;
+ helo=ARE01-DX2-obe.outbound.protection.outlook.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: M2diTbpeMglx
 
-On Thu, Jul 25, 2024 at 11:07:12AM +0200, Markus Armbruster wrote:
-> Date: Thu, 25 Jul 2024 11:07:12 +0200
-> From: Markus Armbruster <armbru@redhat.com>
-> Subject: Re: [PATCH 8/8] qemu-options: Add the description of smp-cache
->  object
-> 
-> Zhao Liu <zhao1.liu@intel.com> writes:
-> 
-> > Hi Markus and Daniel,
-> >
-> > I have the questions about the -object per cache implementation:
-> >
-> > On Wed, Jul 24, 2024 at 02:39:29PM +0200, Markus Armbruster wrote:
-> >> Date: Wed, 24 Jul 2024 14:39:29 +0200
-> >> From: Markus Armbruster <armbru@redhat.com>
-> >> Subject: Re: [PATCH 8/8] qemu-options: Add the description of smp-cache
-> >>  object
-> >> 
-> >> Zhao Liu <zhao1.liu@intel.com> writes:
-> >> 
-> >> > Hi Markus,
-> >> >
-> >> > On Mon, Jul 22, 2024 at 03:37:43PM +0200, Markus Armbruster wrote:
-> >> >> Date: Mon, 22 Jul 2024 15:37:43 +0200
-> >> >> From: Markus Armbruster <armbru@redhat.com>
-> >> >> Subject: Re: [PATCH 8/8] qemu-options: Add the description of smp-cache
-> >> >>  object
-> >> >> 
-> >> >> Zhao Liu <zhao1.liu@intel.com> writes:
-> >> >> 
-> >> >> > Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
-> >> >> 
-> >> >> This patch is just documentation.  The code got added in some previous
-> >> >> patch.  Would it make sense to squash this patch into that previous
-> >> >> patch?
-> >> >
-> >> > OK, I'll merge them.
-> >> >
-> >> >> > ---
-> >> >> > Changes since RFC v2:
-> >> >> >  * Rewrote the document of smp-cache object.
-> >> >> >
-> >> >> > Changes since RFC v1:
-> >> >> >  * Use "*_cache=topo_level" as -smp example as the original "level"
-> >> >> >    term for a cache has a totally different meaning. (Jonathan)
-> >> >> > ---
-> >> >> >  qemu-options.hx | 58 +++++++++++++++++++++++++++++++++++++++++++++++++
-> >> >> >  1 file changed, 58 insertions(+)
-> >> >> >
-> >> >> > diff --git a/qemu-options.hx b/qemu-options.hx
-> >> >> > index 8ca7f34ef0c8..4b84f4508a6e 100644
-> >> >> > --- a/qemu-options.hx
-> >> >> > +++ b/qemu-options.hx
-> >> >> > @@ -159,6 +159,15 @@ SRST
-> >> >> >          ::
-> >> >> >  
-> >> >> >              -machine cxl-fmw.0.targets.0=cxl.0,cxl-fmw.0.targets.1=cxl.1,cxl-fmw.0.size=128G,cxl-fmw.0.interleave-granularity=512
-> >> >> > +
-> >> >> > +    ``smp-cache='id'``
-> >> >> > +        Allows to configure cache property (now only the cache topology level).
-> >> >> > +
-> >> >> > +        For example:
-> >> >> > +        ::
-> >> >> > +
-> >> >> > +            -object '{"qom-type":"smp-cache","id":"cache","caches":[{"name":"l1d","topo":"core"},{"name":"l1i","topo":"core"},{"name":"l2","topo":"module"},{"name":"l3","topo":"die"}]}'
-> >> >> > +            -machine smp-cache=cache
-> >> >> >  ERST
-> >> >> >  
-> >> >> >  DEF("M", HAS_ARG, QEMU_OPTION_M,
-> >> >> > @@ -5871,6 +5880,55 @@ SRST
-> >> >> >          ::
-> >> >> >  
-> >> >> >              (qemu) qom-set /objects/iothread1 poll-max-ns 100000
-> >> >> > +
-> >> >> > +    ``-object '{"qom-type":"smp-cache","id":id,"caches":[{"name":cache_name,"topo":cache_topo}]}'``
-> >> >> > +        Create an smp-cache object that configures machine's cache
-> >> >> > +        property. Currently, cache property only include cache topology
-> >> >> > +        level.
-> >> >> > +
-> >> >> > +        This option must be written in JSON format to support JSON list.
-> >> >> 
-> >> >> Why?
-> >> >
-> >> > I'm not familiar with this, so I hope you could educate me if I'm wrong.
-> >> >
-> >> > All I know so far is for -object that defining a list can only be done in
-> >> > JSON format and not with a numeric index like a keyval based option, like:
-> >> >
-> >> > -object smp-cache,id=cache0,caches.0.name=l1i,caches.0.topo=core: Parameter 'caches' is missing
-> >> >
-> >> > the above doesn't work.
-> >> >
-> >> > Is there any other way to specify a list in command line?
-> >> 
-> >> The command line is a big, sprawling mess :)
-> >> 
-> >> -object supports either a JSON or a QemuOpts argument.  *Not* keyval!
-> >> 
-> >> Both QemuOpts and keyval parse something like KEY=VALUE,...  Keyval
-> >> supports arrays and objects via dotted keys.  QemuOpts doesn't natively
-> >> support arrays and objects, but its users can hack around that
-> >> limitation in various ways.  -object doesn't.  So you're right, it's
-> >> JSON or bust here.
-> >> 
-> >> However, if we used one object per cache instead, we could get something
-> >> like
-> >> 
-> >>     -object smp-cache,name=l1d,...
-> >>     -object smp-cache,name=l1u,...
-> >>     -object smp-cache,name=l2,...
-> >>     ...
-> >
-> > Current, I use -object to create a smp_cache object, and link it to
-> > MachineState by -machine,smp-cache=obj_id.
-> >
-> > Then for the objects per cache, how could I link them to machine?
-> >
-> > Is it possible that I create something static in smp_cache.c and expose
-> > all the cache information to machine through some interface?
-> 
-> Good questions.  However, before we head deeper into the weeds here, I
-> feel we should discuss the things below.  And before we do that, I need
-> a clear understanding of the use case.  Elsewhere in this thread, I just
-> described the use case as I understand it.  Please reply there.  I'll
-> then come back to this message.
-> 
-> [...]
+Thanks Peter for your time!
 
-Jonathan and I provided different use cases for x86 and Arm. Could we
-come back here to continue the discussion? :)
 
-Thanks,
-Zhao
+Marco Palumbi
+Senior Cryptography Engineer
 
+PO=A0Box: 9639
+Masdar City, Abu Dhabi, UAE
+
+M: +39 349 786 0737
+E: marco.palumbi@tii.ae=A0
+
+tii.ae
+
+This email and any files transmitted with it are strictly confidential and =
+intended solely for the use of the individual or entity to whom they are ad=
+dressed. If you have received this email in error please notify the sender.=
+ This message contains confidential information and is intended only for th=
+e individual named. If you are not the named addressee you should not disse=
+minate, distribute or copy this e-mail. Please notify the sender immediatel=
+y by e-mail if you have received this e-mail by mistake and delete this e-m=
+ail from your system. If you are not the intended recipient you are notifie=
+d that disclosing, copying, distributing or taking any action in reliance o=
+n the contents of this information is strictly prohibited.
+
+
+-----Original Message-----
+From: Peter Maydell <peter.maydell@linaro.org>=20
+Sent: Wednesday, July 31, 2024 1:38 PM
+To: marco@palumbi.it
+Cc: qemu-devel@nongnu.org; Marco Palumbi <Marco.Palumbi@tii.ae>; qemu-arm@n=
+ongnu.org; qemu-stable@nongnu.org; qemu-trivial@nongnu.org
+Subject: Re: [PATCH] hw/arm/mps2-tz.c: fix RX/TX interrupts order
+
+On Tue, 30 Jul 2024 at 08:32, <marco@palumbi.it> wrote:
+>
+> From: Marco Palumbi <Marco.Palumbi@tii.ae>
+>
+> The order of the RX and TX interrupts are swapped.
+> This commit fixes the order as per the following documents:
+>  *=20
+> https://are01.safelinks.protection.outlook.com/?url=3Dhttps%3A%2F%2Fprot
+> ect.checkpoint.com%2Fv2%2F___https%3A%2F%2Fdeveloper.arm.com%2Fdocumen
+> tation%2Fdai0505%2Flatest%2F___.bWVjMTp0ZWNobm9sb2d5aW5ub3ZhdGlvbmluc3
+> RpdHV0ZTpjOm86YTlkNGRjMjcxZTBmMWJjNjlmMzc2NGE0OWY4ZmU5MWY6Njo0MzVhOjY3
+> NjVkOGIwNWJkMzgwMGJkMzdlMWJmYmE5MmFhY2E2MzhhOTQyZjQ4ZDA5MmI0ODg2NTc1Yj
+> QxYzM1MzY4N2Q6cDpUOk4&data=3D05%7C02%7CMarco.Palumbi%40tii.ae%7C063b7e0f
+> d4634265eb5808dcb155575b%7Cf0869253be004a379c7737742cb15c38%7C1%7C0%7C
+> 638580227306410621%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjo
+> iV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C0%7C%7C%7C&sdata=3DnW%2F6AR%2F
+> E2tlpQ%2FSNSvDJyQf71YIbk83KVcZzGnmP5Lk%3D&reserved=3D0
+>  *=20
+> https://are01.safelinks.protection.outlook.com/?url=3Dhttps%3A%2F%2Fprot
+> ect.checkpoint.com%2Fv2%2F___https%3A%2F%2Fdeveloper.arm.com%2Fdocumen
+> tation%2Fdai0521%2Flatest%2F___.bWVjMTp0ZWNobm9sb2d5aW5ub3ZhdGlvbmluc3
+> RpdHV0ZTpjOm86YTlkNGRjMjcxZTBmMWJjNjlmMzc2NGE0OWY4ZmU5MWY6NjoxM2NkOjY4
+> YTI5ZTFmNDU4YTg3NTQxZGJmMzE1ZjQ4MWU3MTk1ZWRiMWRiOTdmNTIwMWU1OGYyNThkZm
+> U4MzkzNWZkY2Y6cDpUOk4&data=3D05%7C02%7CMarco.Palumbi%40tii.ae%7C063b7e0f
+> d4634265eb5808dcb155575b%7Cf0869253be004a379c7737742cb15c38%7C1%7C0%7C
+> 638580227306419690%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjo
+> iV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C0%7C%7C%7C&sdata=3DYGw4NsxbW01
+> i46Gm%2BgBzQIOB6nOqL16P3Deblg3OcRw%3D&reserved=3D0
+>  *=20
+> https://are01.safelinks.protection.outlook.com/?url=3Dhttps%3A%2F%2Fprot
+> ect.checkpoint.com%2Fv2%2F___https%3A%2F%2Fdeveloper.arm.com%2Fdocumen
+> tation%2Fdai0524%2Flatest%2F___.bWVjMTp0ZWNobm9sb2d5aW5ub3ZhdGlvbmluc3
+> RpdHV0ZTpjOm86YTlkNGRjMjcxZTBmMWJjNjlmMzc2NGE0OWY4ZmU5MWY6Njo3N2NjOmQx
+> YmIyN2YxY2Q3YWJjMTBhM2I1Zjk1NGM4NTBjZDlhNTVhYjA2NDMwZDQwOTUzZjNkZmU4ZG
+> NjYmNkMmUxMTI6cDpUOk4&data=3D05%7C02%7CMarco.Palumbi%40tii.ae%7C063b7e0f
+> d4634265eb5808dcb155575b%7Cf0869253be004a379c7737742cb15c38%7C1%7C0%7C
+> 638580227306425926%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjo
+> iV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C0%7C%7C%7C&sdata=3D0poH91SU6NE
+> f4%2BD3%2BqH5WNDgTXXfZ4PA7buG0bwKQlE%3D&reserved=3D0
+>  *=20
+> https://are01.safelinks.protection.outlook.com/?url=3Dhttps%3A%2F%2Fprot
+> ect.checkpoint.com%2Fv2%2F___https%3A%2F%2Fdeveloper.arm.com%2Fdocumen
+> tation%2Fdai0547%2Flatest%2F___.bWVjMTp0ZWNobm9sb2d5aW5ub3ZhdGlvbmluc3
+> RpdHV0ZTpjOm86YTlkNGRjMjcxZTBmMWJjNjlmMzc2NGE0OWY4ZmU5MWY6NjplOTcyOmUy
+> MzEyNTdlYzlmOTRjOWY5NjY4YmExZDc3NGQ5NWNhYmY2NmEzNjI2ZGMwYjI3ZWZlZTU2YW
+> UyZjQ1NDFhMTI6cDpUOk4&data=3D05%7C02%7CMarco.Palumbi%40tii.ae%7C063b7e0f
+> d4634265eb5808dcb155575b%7Cf0869253be004a379c7737742cb15c38%7C1%7C0%7C
+> 638580227306430786%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjo
+> iV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C0%7C%7C%7C&sdata=3DLWgkq6rb9vQ
+> 0q4VhuPmflWyFLCtMTjg6DWe3j9h381w%3D&reserved=3D0
+>
+> Signed-off-by: Marco Palumbi <Marco.Palumbi@tii.ae>
+
+Thanks for this patch, I've applied it to my target-arm.next queue.
+
+I checked the other boards that use the cmsdk UART, and they all get the tx=
+/rx interrupt order right, so this is the only place that needed fixing. I =
+suspect that the guest images I tested didn't care about the separate tx/rx=
+ interrupts and only used the combined irq.
+
+thanks
+-- PMM

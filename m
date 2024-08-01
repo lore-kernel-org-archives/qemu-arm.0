@@ -1,101 +1,121 @@
-Received: by 2002:a17:505:3f8c:b0:1be9:327d:8ee3 with SMTP id bm12csp919657njb;
-        Thu, 1 Aug 2024 06:16:20 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVO2g2YhcOyhUlzGGnTvjIQvVhn1nEhn8iyKs30QMPBYSukE8v0neomDy5hyTIRTvonNoebf5PMsiyxaJ+E38WOXuLNZjYh
-X-Google-Smtp-Source: AGHT+IGl3ajAh5/KPY6DI1em/98E/JCv4zunuiy+6sEQUZYOucs+5TvOuevpyiOHlki128220xmC
-X-Received: by 2002:a05:6102:512a:b0:493:b9a0:8ee8 with SMTP id ada2fe7eead31-4945beff35emr306042137.22.1722518180370;
-        Thu, 01 Aug 2024 06:16:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1722518180; cv=none;
+Received: by 2002:a17:505:3f8c:b0:1be9:327d:8ee3 with SMTP id bm12csp928207njb;
+        Thu, 1 Aug 2024 06:35:19 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXUUaR6Tg2hxXpPa0i5vTXpCyW0bVsOFAtzVCFWLYFw2LqzY60EPay5BhM4OtjvCyPJZxQdkSBGkaEEw0DpRd+HbMRwvIw3
+X-Google-Smtp-Source: AGHT+IGvwaSTr/OPyj9aEf3Qqlbkqnlqj9OGpBMpPJBM8pDPI1mX4TXY7ic+APjlAkTAb9dqGc2E
+X-Received: by 2002:a05:622a:64a:b0:447:ecb5:3876 with SMTP id d75a77b69052e-451892af56fmr304921cf.52.1722519318736;
+        Thu, 01 Aug 2024 06:35:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1722519318; cv=none;
         d=google.com; s=arc-20160816;
-        b=xxcO2yxla/qvQ3zC8KDVXPxeYAioa4vapoTlvAYqmDIuFrc/+i0uYwcfLInM1qKjJH
-         GouvcXvS6CP0OZGDOu8iLlPKWWE33eih2LhErCFirYu/v3s15zM1VPVnD7KBK5DW4+h9
-         97ULO876jo8r5CYn6d5U78wv5HYwwbbPmIX85lyWr3Icg8LXThlM1QhYCJCPpzeiOTby
-         dCn3qt9BgHWeTzJFMRXzm1jVMGdopWf8pcqV0+blZVxAO07oFnZWGWp3bEqBCkZcjU9H
-         2gHuL8O8BNS2i7vw+9C/+tD1d4opgEbMy+7oeDRpQ+iHtbG2v8OFU7K+85SqXCSWCExc
-         3xCg==
+        b=tqMHlL6h7/Zq+4BEV3jnNmnL3MjbctcuN78iF5ROv9mrfsbYIaXyXu1PvJtjsPv+9z
+         GH2q11OabMVF1tjOww2KXBZRQx4hgrMjJT/yCatClHTIx230U6C/MQ0B3UgGbYG4Z8AQ
+         USgP+26nY3T2eFH+8kTnF70Yjb1yNfgpAFWpeIl7l+hhUeKlJzWnXaHu5qGX4kbELNPj
+         WpEFPB88wbU8o/o+jFiz0JacJ17CzPGTHilvaes0PU/G2HJjsaVDd6zXpYAlzyUGRw9Y
+         BYDaE4xrx7/LjE9Vv2vitx/6oc7okynAv/GX2MLhTY+fwIsP6ofSiVTJekBuVlfnUsEP
+         j/hQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:subject:cc:to:from
-         :date:dkim-signature;
-        bh=4O/KsVorwyhhiGSERaAncvldDsUoqDAGqnQbILgTTkE=;
-        fh=/9oVe4uvmdDCPbUU8nEUIeLKGN99HCB7oHgRKtCMQxY=;
-        b=k21ofqeUm3IBTIdMEe9JRBzCxB/UADzjtyADiCOwJnerXcQy8rO5eUfJT7i4xvlGqf
-         hFz7IqKCHkriNZggAA+yCtjPrzhrP9GIXecZ+KgRSiqBiqfy07kBXL3pje6i2F+P77Wg
-         5GlY3MJPmcO1Vb7FnkZ9qJHD/6br/QYXH46CoEub+q6LJYnIZVhrM7xYoqOvdsJg34AV
-         CL8KLKq/ANt2+BWeS5pZZbS1bf+OZ0VhgSvexZVxMKvInEJKHUcJmf/SmpXqjjTrSiMa
-         PzxL7tmfNGCi5kPD5atFaz4AzkuhOeh7GW5G62E52IyYk9a/DIi4Md9s73Fj/+CiE1vA
-         9a8A==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=O3r4St+ANSSVmc/HccXT4WRX1PGEnvGIq4Svs0tqE+0=;
+        fh=8+Qf6tFy29J8it1K00g6CwGkzy3d1U7iG+Lg1K13ETg=;
+        b=gyEn2o44EV6bjUTvhkw2YVumZJ1YFR2cJvAoJoO9sY62SewXW15PbLxhNpYiqDHz3M
+         /M0A8bjGtF9eZignfJR+Oy/Ykhdy5ofLimc5zwjUxhdPOH8aGBnXcselz/K2ojLsNLjJ
+         yZ5xGslPsKI/F/5JGb3nGyWRWTo60Fm5lS8FcRjVV6RPTUf/D+A8Y/cAzrawRto5S2o8
+         qnoNDtqL0wvKXbYHBNH7lEbyslAu3iqiOhp2dLeHzc3u3a/ZiFqcfNHUP0QTTlWi4hvK
+         39lNS12XHtcZwnV0pgXA1dx5NMuSlNQkjHrXCyFxaa8mOireHw0k4Z5KPUdBM8V2pzJw
+         khzw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=DzclRxhr;
+       dkim=pass header.i=@sifive.com header.s=google header.b=ZXPJIoZz;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=sifive.com;
+       dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ada2fe7eead31-493d95fce56si2661471137.121.2024.08.01.06.16.20
+        by mx.google.com with ESMTPS id d75a77b69052e-44fe851af98si181505941cf.671.2024.08.01.06.35.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 01 Aug 2024 06:16:20 -0700 (PDT)
+        Thu, 01 Aug 2024 06:35:18 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=DzclRxhr;
+       dkim=pass header.i=@sifive.com header.s=google header.b=ZXPJIoZz;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=sifive.com;
+       dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sZVeu-0003R0-M5; Thu, 01 Aug 2024 09:15:56 -0400
+	id 1sZVxD-0007ib-Gs; Thu, 01 Aug 2024 09:34:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mchehab+huawei@kernel.org>)
- id 1sZVes-0003Hp-Dr; Thu, 01 Aug 2024 09:15:54 -0400
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mchehab+huawei@kernel.org>)
- id 1sZVeq-0007ht-5M; Thu, 01 Aug 2024 09:15:54 -0400
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by dfw.source.kernel.org (Postfix) with ESMTP id A4959628B7;
- Thu,  1 Aug 2024 13:15:50 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1840EC32786;
- Thu,  1 Aug 2024 13:15:47 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1722518150;
- bh=/ynuOET3kqXPxIs7OTQjFHflicpksvorsX2OImbJQXQ=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=DzclRxhrP1lTsQq9QJqhnAOyyl1UR+j+M8xVPNUAwklNL+E/9AJ0EbloztWcn9oeg
- DTn5fUH1AaD/aFKaGtFvGgyPWrsN+tsbOm3ORrQVLrtNm9fXebQmhklGL/lqKrlvvX
- ZH+vE+8TBf591YEJ8xbjKY6EUfKgVKmGyqUrRlm4ctN5WyC1oZTF2ptyo4q0PkLtC0
- 5Wj8DCjn72GChw54Br/o+QcCSddlM/TKmrRIZThxH2n3dKU1OvZAxvzGR6lPve1Omr
- ltZneqv8/FzN/kXYFFCSGS8UVEyvVt2uaUhSaeHo3IHT3+m85yM27PjSsOthW9wmGE
- RGQjgHDUSPwtw==
-Date: Thu, 1 Aug 2024 15:15:44 +0200
-From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-To: Igor Mammedov <imammedo@redhat.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Jonathan Cameron
- <Jonathan.Cameron@huawei.com>, Shiju Jose <shiju.jose@huawei.com>, "Michael
- S. Tsirkin" <mst@redhat.com>, Ani Sinha <anisinha@redhat.com>, Shannon Zhao
- <shannon.zhaosl@gmail.com>, linux-kernel@vger.kernel.org,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [PATCH v3 1/7] arm/virt: place power button pin number on a define
-Message-ID: <20240801151544.2f315598@foz.lan>
-In-Reply-To: <20240730132620.46cca4ce@imammedo.users.ipa.redhat.com>
-References: <cover.1721630625.git.mchehab+huawei@kernel.org>
- <bf8367bddfdc95e378b5725c732533c3ba20d388.1721630625.git.mchehab+huawei@kernel.org>
- <20240730092549.6898ff3c@imammedo.users.ipa.redhat.com>
- <CAFEAcA8VWc3eQZqfJP9k5LYF-9aLChHQ+uS9UBfGV6nvybDxqQ@mail.gmail.com>
- <20240730132620.46cca4ce@imammedo.users.ipa.redhat.com>
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
+ (Exim 4.90_1) (envelope-from <jim.shu@sifive.com>)
+ id 1sZVxB-0007fD-0g
+ for qemu-arm@nongnu.org; Thu, 01 Aug 2024 09:34:49 -0400
+Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <jim.shu@sifive.com>)
+ id 1sZVx6-0003vt-3p
+ for qemu-arm@nongnu.org; Thu, 01 Aug 2024 09:34:45 -0400
+Received: by mail-ed1-x531.google.com with SMTP id
+ 4fb4d7f45d1cf-5a167b9df7eso10975501a12.3
+ for <qemu-arm@nongnu.org>; Thu, 01 Aug 2024 06:34:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=sifive.com; s=google; t=1722519282; x=1723124082; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=O3r4St+ANSSVmc/HccXT4WRX1PGEnvGIq4Svs0tqE+0=;
+ b=ZXPJIoZzipi97T45y+OsxxJa3sCmfFxAt8Og9VkwRKzvC70DXb6CUxLhsmr5b78XqL
+ zlJ45kZIplOCdacCsYgpdnXOOTr4tY9J2CgH+ilST7+eMgg7Ti3gCSCsdGepGkvhRbcr
+ nRcSGvuJaEESR2gQbCZHrTLGr8fBDmChtIcbc09UpyC0G9e+5z7SNIkCypLgccebKQVT
+ fSivEwfzWg1Ge1mDf+CeN1uUWZPFU6JhUKzM5u7jhhjbxVF+KvEvhfGms8vtWrykD7A1
+ urhuVSUVYitSjVeN/fM9QTg60ZTSdOIgwifBH5mHP3reihVXsWZkJCpaZWnkINXhO2Ne
+ jcPQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1722519282; x=1723124082;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=O3r4St+ANSSVmc/HccXT4WRX1PGEnvGIq4Svs0tqE+0=;
+ b=l7Izvd3fBqVrUzn1++wGzjhQlj/0OCLwT3szxet2CFjcKcKep90dP4lZSjS1Fxni2j
+ m8iCue6+qmhun43Frq9Ng9OuiEcQK6BSH2IVfNvt1A71AnFx0MUDfWnh29ckfPDgqFB3
+ ypWCKQr0ZWdf/5OQxc6WIFjptEsyChH1Up45blU94NdOb1QKegCpALka5r/y2iKCyxCX
+ eroNnFeX7QUcRgKwooHx7VZhnP4idrW2BTOkT6nJyJLVfHhq+iLJ5htPdw8AOFbmtS2+
+ nVjOx0W1e94+g72SVx6qVGrijLCdZsb4bzKdzgijvUIzWZgsxWMlgTX2D5o9J5LZhDyT
+ gb+g==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWDKzxVvCCSTBH7InYea+0gHTl5uCN+3nRMStfLhC9+kF964YDf5JPgnuwZ/poywYIYvlsW8/SUevCXlIG/nn4RFig+
+X-Gm-Message-State: AOJu0YyWj3ZVXGOlZW9f4+sIvc+kGCDxQvNXLHj/VbViL2VlEtn0/yTt
+ HXsVRgvpQYttFoA07oAIrJLVclhBDW9slgO8CDgDnr+XUH2ijurfbn9I7Gh5Ht2rOoViIlo8Zxv
+ C891GZDcBjTUhtSyrBPeMlG0Kk/ZMQ0RtyHwn0A==
+X-Received: by 2002:a05:6402:457:b0:59e:686b:1874 with SMTP id
+ 4fb4d7f45d1cf-5b7f36f5040mr239688a12.6.1722519281771; Thu, 01 Aug 2024
+ 06:34:41 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2604:1380:4641:c500::1;
- envelope-from=mchehab+huawei@kernel.org; helo=dfw.source.kernel.org
-X-Spam_score_int: -44
-X-Spam_score: -4.5
-X-Spam_bar: ----
-X-Spam_report: (-4.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.131,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
+References: <20240726055933.817-1-jim.shu@sifive.com>
+ <20240726055933.817-5-jim.shu@sifive.com>
+ <CAFEAcA_QmSdqTo4zmv=AKox2ZiJPt18vV4CwaLLp6VPLWBMcpA@mail.gmail.com>
+In-Reply-To: <CAFEAcA_QmSdqTo4zmv=AKox2ZiJPt18vV4CwaLLp6VPLWBMcpA@mail.gmail.com>
+From: Jim Shu <jim.shu@sifive.com>
+Date: Thu, 1 Aug 2024 21:34:31 +0800
+Message-ID: <CALw707pAUJWo8CytZ2ndK7fEQ9=rNVw1XVumLxX9y4VszWvVAg@mail.gmail.com>
+Subject: Re: [PATCH 4/4] hw/net: xilinx_axienet: Fix DMA RX IRQ if ethernet
+ disable RX
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
+ Alistair Francis <alistair@alistair23.me>, Jason Wang <jasowang@redhat.com>, 
+ "open list:Xilinx Zynq" <qemu-arm@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::531;
+ envelope-from=jim.shu@sifive.com; helo=mail-ed1-x531.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -111,78 +131,83 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: K+SUXeYj6kxD
+X-TUID: IXBmiF/gHRj7
 
-Em Tue, 30 Jul 2024 13:26:20 +0200
-Igor Mammedov <imammedo@redhat.com> escreveu:
+Hi Peter,
 
-> On Tue, 30 Jul 2024 09:29:37 +0100
-> Peter Maydell <peter.maydell@linaro.org> wrote:
-> 
-> > On Tue, 30 Jul 2024 at 08:26, Igor Mammedov <imammedo@redhat.com> wrote:  
-> > >
-> > > On Mon, 22 Jul 2024 08:45:53 +0200
-> > > Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
-> > >    
-> > > > Having magic numbers inside the code is not a good idea, as it
-> > > > is error-prone. So, instead, create a macro with the number
-> > > > definition.
-> > > >
-> > > > Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-> > > > Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>    
-> >   
-> > > > diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> > > > index b0c68d66a345..c99c8b1713c6 100644
-> > > > --- a/hw/arm/virt.c
-> > > > +++ b/hw/arm/virt.c
-> > > > @@ -1004,7 +1004,7 @@ static void virt_powerdown_req(Notifier *n, void *opaque)
-> > > >      if (s->acpi_dev) {
-> > > >          acpi_send_event(s->acpi_dev, ACPI_POWER_DOWN_STATUS);
-> > > >      } else {
-> > > > -        /* use gpio Pin 3 for power button event */
-> > > > +        /* use gpio Pin for power button event */
-> > > >          qemu_set_irq(qdev_get_gpio_in(gpio_key_dev, 0), 1);    
-> > >
-> > > /me confused, it was saying Pin 3 but is passing 0 as argument where as elsewhere
-> > > you are passing 3. Is this a bug?    
-> > 
-> > No. The gpio_key_dev is a gpio-key device which has one
-> > input (which you assert to "press the key") and one output,
-> > which goes high when the key is pressed and then falls
-> > 100ms later. The virt board wires up the output of the
-> > gpio-key device to input 3 on the PL061 GPIO controller.
-> > (This happens in create_gpio_keys().) So the code is correct
-> > to assert input 0 on the gpio-key device and the comment
-> > isn't wrong that this results in GPIO pin 3 being asserted:
-> > the link is just indirect.  
-> 
-> it's likely obvious to ARM folks, but maybe comment should
-> clarify above for unaware.
+Thanks for the suggestion.
 
-Not sure if a comment here with the pin number is a good idea.
-After all, this patch was originated because we were using
-Pin 6 for GPIO error, while the comment was outdated (stating
-that it was pin 8 instead) :-)
+axienet_eth_rx_notify() is also called by axidma_write() as a notify()
+callback, so we need to check RCW1_RX in the function.
+I think I could remove RCW1_RX checking in the enet_write() to avoid
+double checking.
+I will fix it in the v2 patchset.
 
-After this series, there will be two GPIO pins used inside arm/virt,
-both defined at arm/virt.h:
-
-	/* GPIO pins */
-	#define GPIO_PIN_POWER_BUTTON  3
-	#define GPIO_PIN_GENERIC_ERROR 6
-
-Those macros are used when GPIOs are created:
-
-	static void create_gpio_keys(char *fdt, DeviceState *pl061_dev,
-	                             uint32_t phandle)
-	{
-	    gpio_key_dev = sysbus_create_simple("gpio-key", -1,
-	                                        qdev_get_gpio_in(pl061_dev,
-                                                         GPIO_PIN_POWER_BUTTON));
-	    gpio_error_dev = sysbus_create_simple("gpio-key", -1,
-	                                          qdev_get_gpio_in(pl061_dev,
-	                                                           GPIO_PIN_GENERIC_ERROR));
-So, at least for me, it is clear that gpio_key_dev is using pin 3.
 
 Thanks,
-Mauro
+JIm Shu.
+
+On Mon, Jul 29, 2024 at 11:31=E2=80=AFPM Peter Maydell <peter.maydell@linar=
+o.org> wrote:
+>
+> On Fri, 26 Jul 2024 at 06:59, Jim Shu <jim.shu@sifive.com> wrote:
+> >
+> > When AXI ethernet RX is disabled, it shouldn't send packets to AXI DMA,
+> > which may let AXI DMA to send RX full IRQs. It is aligned with real AXI
+> > DMA/ethernet IP behavior in the FPGA.
+> >
+> > Also, now ethernet RX blocks the RX packets when it is disabled. It
+> > should send and clear the remaining RX packets when enabling it.
+> >
+> > Signed-off-by: Jim Shu <jim.shu@sifive.com>
+> > ---
+> >  hw/net/xilinx_axienet.c | 71 ++++++++++++++++++++++++-----------------
+> >  1 file changed, 42 insertions(+), 29 deletions(-)
+> >
+> > diff --git a/hw/net/xilinx_axienet.c b/hw/net/xilinx_axienet.c
+> > index 05d41bd548..8428f10946 100644
+> > --- a/hw/net/xilinx_axienet.c
+> > +++ b/hw/net/xilinx_axienet.c
+> > @@ -530,6 +530,40 @@ static uint64_t enet_read(void *opaque, hwaddr add=
+r, unsigned size)
+> >      return r;
+> >  }
+> >
+> > +static void axienet_eth_rx_notify(void *opaque)
+> > +{
+> > +    XilinxAXIEnet *s =3D XILINX_AXI_ENET(opaque);
+> > +
+> > +    /* If RX is disabled, don't trigger DMA to update RX desc and send=
+ IRQ */
+> > +    if (!axienet_rx_enabled(s)) {
+> > +        return;
+> > +    }
+>
+> This checks s->rcw[1] & RCW1_RX, and does nothing if it's not set...
+>
+> >  static void enet_write(void *opaque, hwaddr addr,
+> >                         uint64_t value, unsigned size)
+> >  {
+> > @@ -546,6 +580,14 @@ static void enet_write(void *opaque, hwaddr addr,
+> >              } else {
+> >                  qemu_flush_queued_packets(qemu_get_queue(s->nic));
+> >              }
+> > +
+> > +            /*
+> > +             * When RX is enabled, check if any remaining data in rxme=
+m
+> > +             * and send them.
+> > +             */
+> > +            if ((addr & 1) && s->rcw[addr & 1] & RCW1_RX) {
+> > +                axienet_eth_rx_notify(s);
+> > +            }
+>
+> ...but at this callsite we open-code a check on RCW1_RX and
+> skip the call if it's not set. We don't need to check twice.
+>
+> >              break;
+> >
+> >          case R_TC:
+>
+> thanks
+> -- PMM

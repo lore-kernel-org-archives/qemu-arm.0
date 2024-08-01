@@ -1,213 +1,314 @@
-Received: by 2002:a17:505:3f8c:b0:1be9:327d:8ee3 with SMTP id bm12csp928207njb;
-        Thu, 1 Aug 2024 06:35:19 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXUUaR6Tg2hxXpPa0i5vTXpCyW0bVsOFAtzVCFWLYFw2LqzY60EPay5BhM4OtjvCyPJZxQdkSBGkaEEw0DpRd+HbMRwvIw3
-X-Google-Smtp-Source: AGHT+IGvwaSTr/OPyj9aEf3Qqlbkqnlqj9OGpBMpPJBM8pDPI1mX4TXY7ic+APjlAkTAb9dqGc2E
-X-Received: by 2002:a05:622a:64a:b0:447:ecb5:3876 with SMTP id d75a77b69052e-451892af56fmr304921cf.52.1722519318736;
-        Thu, 01 Aug 2024 06:35:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1722519318; cv=none;
+Received: by 2002:a17:505:3f8c:b0:1be9:327d:8ee3 with SMTP id bm12csp952632njb;
+        Thu, 1 Aug 2024 07:27:04 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCWE/l5seC7PKX7xOv9h/kzqo0UCZcA/LsUEQi6OHFboR9cpo8GXpfMyOIAasdixE9U6fnLIhvUG34O1GpfPQDCgsXKdpzWf
+X-Google-Smtp-Source: AGHT+IEbnfjw3B9GWKl4887zcu55bgQIZIoNAueDEwFNDZhOH0DtKE/pqnmOAjhx7v81i3k+jFdz
+X-Received: by 2002:a05:6a00:4b11:b0:70d:2b95:d9c0 with SMTP id d2e1a72fcca58-7106cfd2249mr479663b3a.14.1722522424584;
+        Thu, 01 Aug 2024 07:27:04 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1722522424; cv=pass;
         d=google.com; s=arc-20160816;
-        b=tqMHlL6h7/Zq+4BEV3jnNmnL3MjbctcuN78iF5ROv9mrfsbYIaXyXu1PvJtjsPv+9z
-         GH2q11OabMVF1tjOww2KXBZRQx4hgrMjJT/yCatClHTIx230U6C/MQ0B3UgGbYG4Z8AQ
-         USgP+26nY3T2eFH+8kTnF70Yjb1yNfgpAFWpeIl7l+hhUeKlJzWnXaHu5qGX4kbELNPj
-         WpEFPB88wbU8o/o+jFiz0JacJ17CzPGTHilvaes0PU/G2HJjsaVDd6zXpYAlzyUGRw9Y
-         BYDaE4xrx7/LjE9Vv2vitx/6oc7okynAv/GX2MLhTY+fwIsP6ofSiVTJekBuVlfnUsEP
-         j/hQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=O3r4St+ANSSVmc/HccXT4WRX1PGEnvGIq4Svs0tqE+0=;
-        fh=8+Qf6tFy29J8it1K00g6CwGkzy3d1U7iG+Lg1K13ETg=;
-        b=gyEn2o44EV6bjUTvhkw2YVumZJ1YFR2cJvAoJoO9sY62SewXW15PbLxhNpYiqDHz3M
-         /M0A8bjGtF9eZignfJR+Oy/Ykhdy5ofLimc5zwjUxhdPOH8aGBnXcselz/K2ojLsNLjJ
-         yZ5xGslPsKI/F/5JGb3nGyWRWTo60Fm5lS8FcRjVV6RPTUf/D+A8Y/cAzrawRto5S2o8
-         qnoNDtqL0wvKXbYHBNH7lEbyslAu3iqiOhp2dLeHzc3u3a/ZiFqcfNHUP0QTTlWi4hvK
-         39lNS12XHtcZwnV0pgXA1dx5NMuSlNQkjHrXCyFxaa8mOireHw0k4Z5KPUdBM8V2pzJw
-         khzw==;
+        b=jE6Kr3rRriTmSmkpcHzotZpnVT4aDjeDjcv5F1q27WraBzB/ugH94Pfey9981faOoX
+         uzDiQ0DNk5sSrhuXJG490fA18BcxnvrNuEvUSstnJ7Y5n8Ip6+AOq21L4YRQgc6fYi6P
+         K6URIEtUuFYF93aAG6dHlwIUuqLI2qYgbCejK2nJ0Dsy7X9CIgd9kCDjT+qGqA8VCHDR
+         C97K4uQfuRQtuJe4HBdjKv/Y9+6V4WsD0EHC1TQO6XvpAAPBNzYk/yoGZVgHYaDeboGh
+         edLoXCK8TsDCV9sd2NrK7gA7ievnqGLepEfY8jD8F/Z6YtczevdleQXY/L0sr+DmHORu
+         A6LQ==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=0sPhrJA7hOd7Zw3oBCwn0yYf5YH53f6XYIYKAbRvAP4=;
+        fh=AQyeLkGACyFkOYfkALcZXBza9spfV+09E/nf+uTK7K8=;
+        b=UId15y3L7YZwHO98NqfJrWNLem14+mJG9GozdE7kX4dEgoO9iWHbk3kgZmOXJggO78
+         XQhbBM71OSKQPUiBREOkH2yi0nd4qd6vwsHftpz1yeDdH7IPSymTmWBynoniq/gzpZO5
+         cesyoeAesArT+rGaAgwW/Fal4QHXJMPdzvdwc6iXcA3sQLa3Sm7Fxh/nJ3iZD7dpu4Zv
+         dN1/ZxbxwZq9a4FhkXfghHfH9vyDKq6UwgJLJmnoB+R9bXoV/RldfePrh7dR9180W/dz
+         Ehm/6pXVQ58mQGxChS0b9PGJceRbd2Naf8PqvzqCyWZgJLp8T0KbUKB8h6+D98wIZIRn
+         MPKA==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@sifive.com header.s=google header.b=ZXPJIoZz;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=sifive.com;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-44fe851af98si181505941cf.671.2024.08.01.06.35.18
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=ld27awUm;
+       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
+       spf=pass (google.com: domain of linux-kernel+bounces-271418-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) smtp.mailfrom="linux-kernel+bounces-271418-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+Return-Path: <linux-kernel+bounces-271418-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sy.mirrors.kernel.org (sy.mirrors.kernel.org. [147.75.48.161])
+        by mx.google.com with ESMTPS id d2e1a72fcca58-70ead8384cesi17258815b3a.174.2024.08.01.07.27.03
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 01 Aug 2024 06:35:18 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 01 Aug 2024 07:27:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of linux-kernel+bounces-271418-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) client-ip=147.75.48.161;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@sifive.com header.s=google header.b=ZXPJIoZz;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=sifive.com;
-       dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sZVxD-0007ib-Gs; Thu, 01 Aug 2024 09:34:51 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jim.shu@sifive.com>)
- id 1sZVxB-0007fD-0g
- for qemu-arm@nongnu.org; Thu, 01 Aug 2024 09:34:49 -0400
-Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <jim.shu@sifive.com>)
- id 1sZVx6-0003vt-3p
- for qemu-arm@nongnu.org; Thu, 01 Aug 2024 09:34:45 -0400
-Received: by mail-ed1-x531.google.com with SMTP id
- 4fb4d7f45d1cf-5a167b9df7eso10975501a12.3
- for <qemu-arm@nongnu.org>; Thu, 01 Aug 2024 06:34:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=sifive.com; s=google; t=1722519282; x=1723124082; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=O3r4St+ANSSVmc/HccXT4WRX1PGEnvGIq4Svs0tqE+0=;
- b=ZXPJIoZzipi97T45y+OsxxJa3sCmfFxAt8Og9VkwRKzvC70DXb6CUxLhsmr5b78XqL
- zlJ45kZIplOCdacCsYgpdnXOOTr4tY9J2CgH+ilST7+eMgg7Ti3gCSCsdGepGkvhRbcr
- nRcSGvuJaEESR2gQbCZHrTLGr8fBDmChtIcbc09UpyC0G9e+5z7SNIkCypLgccebKQVT
- fSivEwfzWg1Ge1mDf+CeN1uUWZPFU6JhUKzM5u7jhhjbxVF+KvEvhfGms8vtWrykD7A1
- urhuVSUVYitSjVeN/fM9QTg60ZTSdOIgwifBH5mHP3reihVXsWZkJCpaZWnkINXhO2Ne
- jcPQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1722519282; x=1723124082;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=O3r4St+ANSSVmc/HccXT4WRX1PGEnvGIq4Svs0tqE+0=;
- b=l7Izvd3fBqVrUzn1++wGzjhQlj/0OCLwT3szxet2CFjcKcKep90dP4lZSjS1Fxni2j
- m8iCue6+qmhun43Frq9Ng9OuiEcQK6BSH2IVfNvt1A71AnFx0MUDfWnh29ckfPDgqFB3
- ypWCKQr0ZWdf/5OQxc6WIFjptEsyChH1Up45blU94NdOb1QKegCpALka5r/y2iKCyxCX
- eroNnFeX7QUcRgKwooHx7VZhnP4idrW2BTOkT6nJyJLVfHhq+iLJ5htPdw8AOFbmtS2+
- nVjOx0W1e94+g72SVx6qVGrijLCdZsb4bzKdzgijvUIzWZgsxWMlgTX2D5o9J5LZhDyT
- gb+g==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWDKzxVvCCSTBH7InYea+0gHTl5uCN+3nRMStfLhC9+kF964YDf5JPgnuwZ/poywYIYvlsW8/SUevCXlIG/nn4RFig+
-X-Gm-Message-State: AOJu0YyWj3ZVXGOlZW9f4+sIvc+kGCDxQvNXLHj/VbViL2VlEtn0/yTt
- HXsVRgvpQYttFoA07oAIrJLVclhBDW9slgO8CDgDnr+XUH2ijurfbn9I7Gh5Ht2rOoViIlo8Zxv
- C891GZDcBjTUhtSyrBPeMlG0Kk/ZMQ0RtyHwn0A==
-X-Received: by 2002:a05:6402:457:b0:59e:686b:1874 with SMTP id
- 4fb4d7f45d1cf-5b7f36f5040mr239688a12.6.1722519281771; Thu, 01 Aug 2024
- 06:34:41 -0700 (PDT)
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=ld27awUm;
+       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
+       spf=pass (google.com: domain of linux-kernel+bounces-271418-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) smtp.mailfrom="linux-kernel+bounces-271418-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by sy.mirrors.kernel.org (Postfix) with ESMTPS id F29B8B20E26
+	for <alex.bennee@linaro.org>; Thu,  1 Aug 2024 14:27:01 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 0148116DECD;
+	Thu,  1 Aug 2024 14:26:57 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="ld27awUm"
+Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id ABC8A1A2C2B
+	for <linux-kernel@vger.kernel.org>; Thu,  1 Aug 2024 14:26:56 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=10.30.226.201
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1722522416; cv=none; b=g80bG5psxG3ukOKQYA7O3N7vcFnZ0EeYn3c7lDeq3xEi30RCXxbhCxUlxLfdfOsxKw7xqZrLJWZiwpvKzKJmM5Y4Mw5iaGxH0AmTLwgdvQDwlBdzArUOk2beIilGFA+Q4oxRpLItTFFFoB60h96KExijhS+w07wkK3Cioj2mDq4=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1722522416; c=relaxed/simple;
+	bh=rDxYwbBlVpDK1JuWRuGnNLHkJWYCXiccTbJEbCBu9FM=;
+	h=Date:From:To:Cc:Subject:Message-ID:In-Reply-To:References:
+	 MIME-Version:Content-Type; b=CFHc4J24ujD71Pd+gIHmpIJciTGsVa3YbRBM75y/Cr+IrrTtigxyAUw9hst+p+WzeTlUEzu/j0ALzkV6UZ6rro0NYzxVFd+HKe9loDmpnzQNJwWBAoWyWX6oSDiUPyQdiLVslcs4PKw3zbD6Xcd73p5YKozhGZmBYgHOQ/nRIRE=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=ld27awUm; arc=none smtp.client-ip=10.30.226.201
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6FE43C32786;
+	Thu,  1 Aug 2024 14:26:53 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1722522416;
+	bh=rDxYwbBlVpDK1JuWRuGnNLHkJWYCXiccTbJEbCBu9FM=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=ld27awUm8k35yn4pUWyoXEhV7XNUBGGhIgrgocUuDgQ4aUOz3/4t4wgD76m3Et+rz
+	 Huar1PiuT4Vi8hzXnxX1Ty/HdehxFGZ+4ht80m7Fi0dI8RNDV7BrDIjmf9omJdTb/r
+	 GjhNEJ520ck/IX7papOAxQ4nSbS41mBtTelrCiG6GD0+7InBq7OeYjzNoE/CalEEt7
+	 7+u/cao34kgFabG+djoXCwODoe4AAlhVsZy8mi+6DeO+WW6R8PmW3yhYuYGasNUeB+
+	 WbeA64VlLN4MZp2KwNg/oI009cV67Dc7V7GuzxQcKnYo+je6f5iB+Btk8GdnUCwjwM
+	 CLsM/PNaSRPpA==
+Date: Thu, 1 Aug 2024 16:26:50 +0200
+From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+To: Igor Mammedov <imammedo@redhat.com>
+Cc: Jonathan Cameron <Jonathan.Cameron@Huawei.com>, Shiju Jose
+ <shiju.jose@huawei.com>, "Michael S. Tsirkin" <mst@redhat.com>, Ani Sinha
+ <anisinha@redhat.com>, Dongjiu Geng <gengdongjiu1@gmail.com>, Eric Blake
+ <eblake@redhat.com>, Markus Armbruster <armbru@redhat.com>, Michael Roth
+ <michael.roth@amd.com>, Paolo Bonzini <pbonzini@redhat.com>, Peter Maydell
+ <peter.maydell@linaro.org>, <linux-kernel@vger.kernel.org>,
+ <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
+Subject: Re: [PATCH v3 4/7] acpi/ghes: Add a logic to handle block addresses
+ and FW first ARM processor error injection
+Message-ID: <20240801162650.3dcbd24e@foz.lan>
+In-Reply-To: <20240801103623.2a74012e@imammedo.users.ipa.redhat.com>
+References: <cover.1721630625.git.mchehab+huawei@kernel.org>
+	<6a3542a7d8acfbf88c906ec6f6dc5a697257b461.1721630625.git.mchehab+huawei@kernel.org>
+	<20240730131709.10e72c7d@imammedo.users.ipa.redhat.com>
+	<20240731091133.07ddd58c@foz.lan>
+	<20240731095719.000004dc@Huawei.com>
+	<20240801103623.2a74012e@imammedo.users.ipa.redhat.com>
+X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
+Precedence: bulk
+X-Mailing-List: linux-kernel@vger.kernel.org
+List-Id: <linux-kernel.vger.kernel.org>
+List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-References: <20240726055933.817-1-jim.shu@sifive.com>
- <20240726055933.817-5-jim.shu@sifive.com>
- <CAFEAcA_QmSdqTo4zmv=AKox2ZiJPt18vV4CwaLLp6VPLWBMcpA@mail.gmail.com>
-In-Reply-To: <CAFEAcA_QmSdqTo4zmv=AKox2ZiJPt18vV4CwaLLp6VPLWBMcpA@mail.gmail.com>
-From: Jim Shu <jim.shu@sifive.com>
-Date: Thu, 1 Aug 2024 21:34:31 +0800
-Message-ID: <CALw707pAUJWo8CytZ2ndK7fEQ9=rNVw1XVumLxX9y4VszWvVAg@mail.gmail.com>
-Subject: Re: [PATCH 4/4] hw/net: xilinx_axienet: Fix DMA RX IRQ if ethernet
- disable RX
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
- Alistair Francis <alistair@alistair23.me>, Jason Wang <jasowang@redhat.com>, 
- "open list:Xilinx Zynq" <qemu-arm@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::531;
- envelope-from=jim.shu@sifive.com; helo=mail-ed1-x531.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: IXBmiF/gHRj7
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-TUID: yJwTzoTwlgpf
 
-Hi Peter,
+Em Thu, 1 Aug 2024 10:36:23 +0200
+Igor Mammedov <imammedo@redhat.com> escreveu:
 
-Thanks for the suggestion.
+> On Wed, 31 Jul 2024 09:57:19 +0100
+> Jonathan Cameron <Jonathan.Cameron@Huawei.com> wrote:
+> 
+> > On Wed, 31 Jul 2024 09:11:33 +0200
+> > Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
+> >   
+> > > Em Tue, 30 Jul 2024 13:17:09 +0200
+> > > Igor Mammedov <imammedo@redhat.com> escreveu:
+> > >     
+> > > > On Mon, 22 Jul 2024 08:45:56 +0200
+> > > > Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:  
+> [...]
+> > > > Preferably make it generic enough to handle
+> > > > not only ARM but other error formats HEST is
+> > > > able to handle.      
+> > > 
+> > > A too generic interface doesn't sound feasible to me, as the
+> > > EINJ code needs to check QEMU implementation details before
+> > > doing the error inject.    
+> > 
+> > To be clear we are talking here about a script that
+> > generates 'similar' stuff to ACPI EINJ does and injects
+> > via qapi, not guest injection (which is almost always locked
+> > down on production machines / distros because of the footgun
+> > aspect).  + ACPI EINJ interface suffers exactly the same
+> > problems with state discoverability we have with a raw interface here.
+> > (I checked with Mauro offline that I'd interpreted this
+> > comment correctly!)
+> >   
+> > > 
+> > > See, processor is probably the simplest error injection
+> > > source, as most of the fields there aren't related to how
+> > > the hardware simulation is done.
+> > > 
+> > > Yet, if you see patch 7 of this series, you'll notice that some
+> > > fields should actually be filled based on the emulation.
+> > > 
+> > > On ARM, we have some IDs that depend on the emulation
+> > > (MIDR, MPIDR, power state). Doing that on userspace may require
+> > > a QAPI to query them.    
+> 
+> QEMU has qmp commands to query QOM tree, device properties is
+> likely what you'd be interested with.
+> Adding new QAPI might be not necessary as long as needed
+> data point are exposed via device's properties.
+> 
+> And additional properties are relatively cheap, especially if their
+> names prefixed with 'x-' which by convention means
+> /internal use, not stable, not ABI/
+> 
+> Well whole qmp tree structure hasn't been declared as ABI (as far as I know),
+> but it's relatively stable and we try not to mess with it much
+> (especially for mainstream virt machines), as some external users
+> might (ab)use it anyway (no promises on QEMU side though).
+> 
+> On contrary QAPI is mostly considered as ABI QEMU provides
+> to its users with burden to maintain it stability.
+> 
+> If injection script is internal tool to QEMU, it should be fine
+> for it to use qom introspection to get data and limit QAPI
+> necessary minimum only.
 
-axienet_eth_rx_notify() is also called by axidma_write() as a notify()
-callback, so we need to check RCW1_RX in the function.
-I think I could remove RCW1_RX checking in the enet_write() to avoid
-double checking.
-I will fix it in the v2 patchset.
+OK, good. Anyway, after sleeping on it, I decided to not focus at
+the query for now, as my goal is to validate Linux Kernel and 
+rasdaemon. So, I'll just fill them when calling the error inject
+script.
 
+As a reference, for ARM Processor error injection, there are just 4
+fields that would benefit for a query to fill the default values:
+
+	- mpidr-el1
+	- midr-el1
+	- power_state
+	- ARM context registers and its type
+
+> To make sure it won't be broken silently by 'innocent' QEMU
+> contributors, have a CI job to make sure that it still works
+> as intended.
+> 
+> > We could strip back the QAPI part to only the bits that are
+> > not dependent on state.  However, the kicker to that is we'd
+> > need to make sure all that state is available to an external
+> > tool (or fully controllable from initial launch command line).
+> > I'm not sure where the gaps are but, I'm fairly sure there
+> > will be some.  Doesn't save much code other than documentation
+> > of the QAPI.
+> >   
+> > > 
+> > > The memory layout, however, is the most complex one. Even for
+> > > an ARM processor CPER (which is the simplest scenario), the 
+> > > physical/virtual address need to be checked against the emulation
+> > > environment.
+> > > 
+> > > Other error sources (like memory errors, CXL, etc) will require
+> > > a deep knowledge about how QEMU mapped such devices.    
+> > 
+> > For CXL stuff we'll piggy back on native error injection interfaces
+> > that are already there and couldn't be avoided because they
+> > are writing a bunch of register state (that we elide in the FW
+> > first path). 
+> > https://lore.kernel.org/qemu-devel/20240205141940.31111-12-Jonathan.Cameron@huawei.com/
+> > So we won't be adding new QAPI, but the error record generation logic
+> > will be in QEMU.  For background, the CXL FW first error injection
+> > has taken a back seat to the ARM errors because of the obvious
+> > other factor that CXL isn't supported on ARM in upstream QEMU.
+> > Once I escape a few near term deadlines I'll add the x86
+> > support for GHESv2 / SCI interrupt signaling as you'd see on a
+> > typical x86 server.
+> >   
+> > > 
+> > > So, in practice, if we move this to an EINJ script, we'll need
+> > > to add a probably more complex QAPI to allow querying the memory
+> > > layout and other device and CPU specific bindings.
+> > > 
+> > > Also, we don't know what newer versions of ACPI spec will reserve
+> > > us. See, even the HEST table contents is dependent of the HEST 
+> > > revision number, as made clear at the ACPI 6.5 notes:
+> > > 
+> > > 	https://uefi.org/specs/ACPI/6.5/18_Platform_Error_Interfaces.html#acpi-error-source
+> > > 
+> > > and at:
+> > > 
+> > > 	https://uefi.org/specs/ACPI/6.5/18_Platform_Error_Interfaces.html#error-source-structure-header-type-12-onward
+> > > 
+> > > So, if we're willing to add support for a more generic "raw data"
+> > > QAPI, I would still do it per-type, and for the fields that won't
+> > > require knowledge of the device-emulation details.    
+> > 
+> > Could blend the two options and provide no qapi for the bits
+> > that are QEMU state dependent - if fuzzing, can inject
+> > the full record raw as doesn't have to be valid state anyway.
+> >   
+> > > 
+> > > Btw, my proposal on patch 7 of this series is to have raw data
+> > > for:
+> > > 	- the error-info field;
+> > > 	- registers dump;
+> > > 	- micro-architecture specific data.
+> > > 
+> > > I don't mind trying to have more raw data there as I see (marginal) 
+> > > benefits of allowing to generate CPER invalid records [1], but some of
+> > > those  fields need to be validated and/or filled internally at QEMU - if
+> > > not forced to an specific value by the caller.
+> > > 
+> > > [1] a raw data EINJ can be useful for fuzzy logic fault detection to 
+> > >     check if badly formed packages won't cause a Kernel panic or be
+> > >     an exploit. Yet, not really a concern for APEI, as if the hardware
+> > >     is faulty, a Kernel panic is not out of the table. Also, if the
+> > >     the BIOS is already compromised and has malicious code on it, 
+> > >     the EINJ interface is not the main concern.
+> > >     
+> > > > PS:
+> > > > For user convenience, QEMU can carry a script that
+> > > > could help generate this raw value in user friendly way
+> > > > but at the same time it won't put maintenance
+> > > > burden on QEMU itself.      
+> > > 
+> > > The script will still require reviews, and the same code will 
+> > > be there. So, from maintenance burden, there won't be much
+> > > difference.    
+> 
+> it makes a lot of difference if code is integral part qemu binary,
+> (less people have to spend time on reviewing it, avoid increasing
+> attack surface, ... (other made up reasons)).
+
+I see.
+
+> Implementing shim/proxy in QEMU and putting all error composing logic
+> into a separate script (even if it's a part QEMU source), shifts
+> most of the burden to whomever (I'd assume you'd volunteer yourself)
+> would maintain the script.
+
+Yes, I'll maintain it.
+
+> If script breaks, it doesn't affect QEMU itself (nor I believe it
+> should affect release process), script's maintainer(s) can have their
+> own schedule/process on how to deal with it.
+
+That's good.
+
+> > Agreed. I'd also be very keen that the script is tightly coupled to
+> > QEMU as doesn't make sense to carry with kernel or RAS daemon and
+> > I'd want to ultimately get this stuff into all the appropriate
+> > CI flows.  
+> 
+> Agreed, it makes much more sense to carry such script as a part of QEMU.
+
+Ok, I'll be submitting a v4 using the CPER raw data plus script approach.
+I'll be placing the script at the final patch.
+
+I opted to make the simplest possible QAPI (keeping it marked as unstable),
+as we might need/want to improve it to support other features.
+
+Btw, as error injection is not trivial, and using the script is the best
+way to do it, I would prefer to keep such QAPI always marked as unstable,
+as it is preferred that QEMU users to use it (and submit patches improving
+it) instead of manually crafting CPER records with their own scripts.
 
 Thanks,
-JIm Shu.
-
-On Mon, Jul 29, 2024 at 11:31=E2=80=AFPM Peter Maydell <peter.maydell@linar=
-o.org> wrote:
->
-> On Fri, 26 Jul 2024 at 06:59, Jim Shu <jim.shu@sifive.com> wrote:
-> >
-> > When AXI ethernet RX is disabled, it shouldn't send packets to AXI DMA,
-> > which may let AXI DMA to send RX full IRQs. It is aligned with real AXI
-> > DMA/ethernet IP behavior in the FPGA.
-> >
-> > Also, now ethernet RX blocks the RX packets when it is disabled. It
-> > should send and clear the remaining RX packets when enabling it.
-> >
-> > Signed-off-by: Jim Shu <jim.shu@sifive.com>
-> > ---
-> >  hw/net/xilinx_axienet.c | 71 ++++++++++++++++++++++++-----------------
-> >  1 file changed, 42 insertions(+), 29 deletions(-)
-> >
-> > diff --git a/hw/net/xilinx_axienet.c b/hw/net/xilinx_axienet.c
-> > index 05d41bd548..8428f10946 100644
-> > --- a/hw/net/xilinx_axienet.c
-> > +++ b/hw/net/xilinx_axienet.c
-> > @@ -530,6 +530,40 @@ static uint64_t enet_read(void *opaque, hwaddr add=
-r, unsigned size)
-> >      return r;
-> >  }
-> >
-> > +static void axienet_eth_rx_notify(void *opaque)
-> > +{
-> > +    XilinxAXIEnet *s =3D XILINX_AXI_ENET(opaque);
-> > +
-> > +    /* If RX is disabled, don't trigger DMA to update RX desc and send=
- IRQ */
-> > +    if (!axienet_rx_enabled(s)) {
-> > +        return;
-> > +    }
->
-> This checks s->rcw[1] & RCW1_RX, and does nothing if it's not set...
->
-> >  static void enet_write(void *opaque, hwaddr addr,
-> >                         uint64_t value, unsigned size)
-> >  {
-> > @@ -546,6 +580,14 @@ static void enet_write(void *opaque, hwaddr addr,
-> >              } else {
-> >                  qemu_flush_queued_packets(qemu_get_queue(s->nic));
-> >              }
-> > +
-> > +            /*
-> > +             * When RX is enabled, check if any remaining data in rxme=
-m
-> > +             * and send them.
-> > +             */
-> > +            if ((addr & 1) && s->rcw[addr & 1] & RCW1_RX) {
-> > +                axienet_eth_rx_notify(s);
-> > +            }
->
-> ...but at this callsite we open-code a check on RCW1_RX and
-> skip the call if it's not set. We don't need to check twice.
->
-> >              break;
-> >
-> >          case R_TC:
->
-> thanks
-> -- PMM
+Mauro

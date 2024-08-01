@@ -1,191 +1,97 @@
-Received: by 2002:a17:505:3f8c:b0:1be9:327d:8ee3 with SMTP id bm12csp788566njb;
-        Wed, 31 Jul 2024 23:42:56 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCX/4rO4IHClReEd8nFGE6bolXYOhpBFpDaVJYI+fHJbU99/pGWKluKycqZR4+wpoyQKRIQd9j2+xhXYkw==@linaro.org
-X-Google-Smtp-Source: AGHT+IFZEr8XUJK+Ci0SCXGeJxkO0Y4kY1Is+Vc3/3gd6s3hDYg8iYPB25VzYEu4K9/4gC2dInnr
-X-Received: by 2002:a05:6214:3a07:b0:6b7:b4b1:85ae with SMTP id 6a1803df08f44-6bb8d860203mr14040366d6.54.1722494575794;
-        Wed, 31 Jul 2024 23:42:55 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1722494575; cv=pass;
+Received: by 2002:a17:505:3f8c:b0:1be9:327d:8ee3 with SMTP id bm12csp888397njb;
+        Thu, 1 Aug 2024 05:05:31 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWvG9I0wywcKFsKIKptTcFWEqbyWSgJL/9OE32gVE+Ieg9VvDMJJ/1XjtaMCItBEH8OTxHUL3xuep2ZKfcBuFJY+a37IzRw
+X-Google-Smtp-Source: AGHT+IFy/LTJalfC4NYaw1dtjTwsI5NAQUutUmleKJPppTfhGtPULxNcK/6eelFtEy8xm1uxA9t8
+X-Received: by 2002:a05:6358:998d:b0:1a8:c0fd:cf2d with SMTP id e5c5f4694b2df-1af2ed4f14amr126051355d.9.1722513930966;
+        Thu, 01 Aug 2024 05:05:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1722513930; cv=none;
         d=google.com; s=arc-20160816;
-        b=LyjqPLUec7tqIfW92vivCvk4HWEP6jKyYWLSraudumRZ1o+3+O83kslp1B/mkWwPjW
-         vdBHVcdMsf1OjpIDijWIvS7G26yKU+HsQa4nkayhZLtRWXTRbU44Uj1PG2hHOxFQyYR4
-         vwi+mUE8XChBTwb4ZmgqyMy5y0xGVowosaeIOpyr0Bq4fyI2aZbaUKdGtd54Io8Fj6gr
-         L5cj/aAdjdEG8FxKjgUhCzA9E/SxUi/n1Xa/UFjrVKeIW4mkmUBa7OQ61VPo+20AVSzs
-         DnfeDC9WuKvbzStIuArS8Ym61KM2+Tsoh1VQ4vE6cC/nJj7WnRH5xIniPY04ccQl7pWZ
-         QaPQ==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=zMqnmRP37g7WurzEau394Ym0EinGpCXAQQVqSZYQR/yKa752XHBB92V75Q+1qZpvYq
+         bVU3S7Sby7n+xj73euODLIl7GuTSUGZHn7TfD1WPbyWQpLWL6zfKJzYOpGxEgwQeaXpv
+         os/waVog3GLJqYI+fzFFl7UaNVbHogn3ilutZG4K86rP109FT9C5UWhRXNsw8i8/oLt5
+         S0oRcTiEyhOoq2TqO0j9BcQg0UrWTy/dQSKCo/fNbZ00vtEQKXR3z4De6272Sbl91shB
+         QgDK0JNtu3eq4XqBIJ4UFr/uqvin2D9JrJ+J7ubfDYsx5NKe7N+q1R/O/hBos2FQT6qP
+         zsag==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :in-reply-to:references:message-id:date:thread-index:thread-topic
-         :subject:cc:to:from:dkim-signature;
-        bh=zyTasB6JA70G0JvyWp1rZXgz/E10f+5aFS+B2lq2gQM=;
-        fh=+C710lyviPIXlX2umnycXFUr3At4aCuqVCG4mExzP9Y=;
-        b=GoOvX5JHosXJdJpMjQxhdDoz3Cc+Xl2IJHXgCtj4wid9nMsckMMe3KdSXeCX5/hB4Z
-         wxSp3/TofT+4gOdXxVZ+OT2HFrktWHDKHC0NU9huem2vLtg93WgksM+RcvY/UfRrdUyZ
-         aqZrJPJzDhz3B/tDZt9zidSnKY2fzDLljUdm9NBAtxIaCaDqvSqNQjOIAPNDujprmWmM
-         /heywijtNgHPpfvSHRuqpV880266/do820vnULA2QOSP+zmVw8s4fHfDeRKeovNxLCVv
-         s1+9JPO6Bdz1XxS0NgsrqTJbfWGSOwJ6zG7HQvQjAD8GRf5x5VgRvyFTdMUQ1g+LURyU
-         joLw==;
+         :list-unsubscribe:list-id:precedence:to:subject:from
+         :content-language:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=GEulAVszEy+67DY4K5qrndX4XxVofukQTlttO1gOKBE=;
+        fh=DBwo5oYV+Zl89FPcGyBzo6mnqwnGCoM6YpiQGc4/RNc=;
+        b=vWQ4Qz/qzD85GDlKyVxqFHp0MqvzNK/lvDbjVNgOT7ZQa68LSxfzcSy2ZD7D/+2XXU
+         Fgbp3bOa47pMy+8rRgJWbW9p+meToNpppS1o0H34YDfFaYcC9EdNPKquxio54d6JiMLl
+         PJDtqwcPFBeL6IwtnB9yTBsHpsBXzCpbFTisscGdbx6JI8ZpIAQ5JVst+KgSneXMAgEO
+         Wv0QQxdX+qkgU63hUdI5rrjFZPb4MJu+t2e8SHmwovMZiPoSIeS8JSmweFJY0V8Z3ngp
+         Oiy2TGu1oPvya8/RXq6hPBFEyHptuySI0YdTQO8qBB4rNZj1jL8+7yyeP94/EEFyPa1q
+         GPLw==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@tii.ae header.s=selector1 header.b=XyPw6Ppz;
-       arc=pass (i=1 spf=pass spfdomain=tii.ae dkim=pass dkdomain=tii.ae dmarc=pass fromdomain=tii.ae);
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@free.fr header.s=smtp-20201208 header.b=Vph3yFZo;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=tii.ae
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=free.fr
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6bb3faab760si169167256d6.330.2024.07.31.23.42.55
+        by mx.google.com with ESMTPS id a1e0cc1a2514c-831b0d93574si2292462241.77.2024.08.01.05.05.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 31 Jul 2024 23:42:55 -0700 (PDT)
+        Thu, 01 Aug 2024 05:05:30 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@tii.ae header.s=selector1 header.b=XyPw6Ppz;
-       arc=pass (i=1 spf=pass spfdomain=tii.ae dkim=pass dkdomain=tii.ae dmarc=pass fromdomain=tii.ae);
+       dkim=pass header.i=@free.fr header.s=smtp-20201208 header.b=Vph3yFZo;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=tii.ae
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=free.fr
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sZPWD-0006OL-Bp; Thu, 01 Aug 2024 02:42:34 -0400
+	id 1sZUYb-0000fl-Dv; Thu, 01 Aug 2024 08:05:21 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <Marco.Palumbi@tii.ae>)
- id 1sZPWB-0006Mj-RV; Thu, 01 Aug 2024 02:42:32 -0400
-Received: from mail-dx2are01on20700.outbound.protection.outlook.com
- ([2a01:111:f403:2026::700]
- helo=ARE01-DX2-obe.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <ludovic.delabre@free.fr>)
+ id 1sZUYX-0000er-Qc
+ for qemu-arm@nongnu.org; Thu, 01 Aug 2024 08:05:18 -0400
+Received: from smtp6-g21.free.fr ([2a01:e0c:1:1599::15])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <Marco.Palumbi@tii.ae>)
- id 1sZPW9-00006z-I3; Thu, 01 Aug 2024 02:42:31 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=tAin2oqNmbk8K+OT7K/FYKvo2lzJgwtLdwYg3NUGNeZramSTM6WCeOCjmX8Je7DcFAbre04xmh4hZhpIReAgPP7zNHXFxROoFMJJuG46gP/cmgt3rMflh+jY8QGKlvULr+xN6nM0aJFohYBbBioDGfw5tc1S/B5yXi1wegl+3Rl8GZzwvRxT5NBJouWXNe+FlnAPYipT+8DYQTrmdsboYMwacEXgMUt3EdO5hkSHm/8rcFkVuzD9FCCYrj8kBUHTwWsunLTLJR9cbOW3RStHlUjvvbOVUvCsgI7z3puqI6Z2uiZxmZ3X46XT2WqvcUSU4XL7dL3Ovu5TXhRAWkHgHw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=zyTasB6JA70G0JvyWp1rZXgz/E10f+5aFS+B2lq2gQM=;
- b=p9zNVxnWnTD02C9Jr17aTOli1nZdeiTlVvY3frQlcxJvQxonQp1MmvmVuP7WMyqx5hsXE2kdxpd63VYyfp+MQIixs6EsOCaswQI7c53+cGMMO5J2Zc0AFYDV637MhYoObKvDA0UX8H3yI/f/UGCrG6GnVge2t0Vv2pAeDWpiJZQ8fpzCG6WyxUpTsN/HN8mfjtPsIKY+lTVS1fp11/mcq96WpC2yonNAkxpqB4Ji66Rct+yHOs0o0Dndh4B5dUtB9Cp0GFIn1EEwl1ndlsnJOozKWXMM74qzJvduQu933aJB8dLnwZ2TW9RvUplrhm58b4D+xWYEP4JFl2NitersoA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=tii.ae; dmarc=pass action=none header.from=tii.ae; dkim=pass
- header.d=tii.ae; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=tii.ae; s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=zyTasB6JA70G0JvyWp1rZXgz/E10f+5aFS+B2lq2gQM=;
- b=XyPw6Ppzw2ybrMxgsb4ET1DH1a7Wm6p4FV5OIidnvfhSQrlTXZYvyRiEj4+vLoAoi3skcWz0wNnqt/YyQnxBb634oQ0fh6mcwhUPrcFNkaM5orHxlZ5iZ4sd5BHXRHymrSKDoCzNAYkNmKLOnMBJUa7uzmVYxuykkD8BsvlXm66R4x2ByNLLcbGCA6JWfFX0BjgGwERbUlT5jhlYJjjnsUsqyCxLIPaOH4oSmoQCtXiwzkEKRrTEcBGHfBagkc9OUqyzM+ODd3Bpi2lVtS/+hamqmqfhLCSvMzyZcnJabl82di5kssM9ICg5ZnD4XK/pOvP9WXubIQwU69liggSmgA==
-Received: from DX1P273MB1304.AREP273.PROD.OUTLOOK.COM (2603:1086:300:65::7) by
- AU2P273MB0308.AREP273.PROD.OUTLOOK.COM (2603:1086:200:2f::13) with
- Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.7807.28; Thu, 1 Aug 2024 06:42:19 +0000
-Received: from DX1P273MB1304.AREP273.PROD.OUTLOOK.COM
- ([fe80::15bb:cb8f:883c:e1e1]) by DX1P273MB1304.AREP273.PROD.OUTLOOK.COM
- ([fe80::15bb:cb8f:883c:e1e1%4]) with mapi id 15.20.7828.016; Thu, 1 Aug 2024
- 06:42:18 +0000
-From: Marco Palumbi <Marco.Palumbi@tii.ae>
-To: Peter Maydell <peter.maydell@linaro.org>
-CC: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org"
- <qemu-arm@nongnu.org>, "qemu-stable@nongnu.org" <qemu-stable@nongnu.org>,
- "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
-Subject: RE: [PATCH] hw/arm/mps2-tz.c: fix RX/TX interrupts order
-Thread-Topic: [PATCH] hw/arm/mps2-tz.c: fix RX/TX interrupts order
-Thread-Index: AQHa4lKe8XYFywo3GE2HZHp1T92H0bIQt6EAgAE/GjA=
-Date: Thu, 1 Aug 2024 06:42:18 +0000
-Message-ID: <DX1P273MB1304F6482821EF17109510FA96B22@DX1P273MB1304.AREP273.PROD.OUTLOOK.COM>
-References: <20240730073123.72992-1-marco@palumbi.it>
- <CAFEAcA_7QDUuQ-zs53Xp2zcO83rDzj0Smga49GZ8J9gg26VBdw@mail.gmail.com>
-In-Reply-To: <CAFEAcA_7QDUuQ-zs53Xp2zcO83rDzj0Smga49GZ8J9gg26VBdw@mail.gmail.com>
-Accept-Language: it-IT, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=tii.ae;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: DX1P273MB1304:EE_|AU2P273MB0308:EE_
-x-ms-office365-filtering-correlation-id: 2022c4a3-04e4-4911-180a-08dcb1f516e5
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0; ARA:13230040|366016|1800799024|376014|38070700018;
-x-microsoft-antispam-message-info: =?iso-8859-1?Q?vtQAPZuaBQ3IodHgGcwfEmal8B9fNVl+bvyc5HhKQXsAOJr3TQ7a2juF1j?=
- =?iso-8859-1?Q?XI+tTakIV0bfyE2bR0MSSJ55ZjAvBU5CVMfFEASqwppTxQxv/qMmU8/voX?=
- =?iso-8859-1?Q?K/gKlz63MAZ18L0tGq6WtF70paKmy95aehZuVDZ3/yjOxFzsXufaAexnGx?=
- =?iso-8859-1?Q?IIlcQlctJkNJwVcCPN/uPiXTuCj8a90SVAGZew3wdnbVg50urr4/oB/C11?=
- =?iso-8859-1?Q?ZScl+kHaCT7J0q4kSalcXm6WkQbmyc0ZUfs3wQ9QFA33JZ9dHaTgaX7Ft8?=
- =?iso-8859-1?Q?wWgWJ3Kq+fnfruHb6RxXpLpN4pn+Tp27E2gStoSib3/r2rQ41FtabR3wzV?=
- =?iso-8859-1?Q?SZSBx38IDRrHM/mnCm8XNKcqG8uNEkpDPVGvNBqSZbTVT7prSSIvvc9tHS?=
- =?iso-8859-1?Q?yrQGUAzaqeq9Aa7ob2vUVlUwbyIM1wXTJ4HqUrlu7w+70/FyofMeImGR4j?=
- =?iso-8859-1?Q?s7leAvY2WhSPn5zDPXLb14s/5C0KaJtP4gmL/XHWW3k6gtd42NHm2Eyv45?=
- =?iso-8859-1?Q?C4D1GlTJqpKuvlLyDZqrigyag4flFT8r/3jY9Oet6ARqSeQxtPnpnhmNHf?=
- =?iso-8859-1?Q?BPscJVYwceFrqA8H0zcNFwvgkITmXOSrAGwslBPLO451L6Iwpr/jLRzN2P?=
- =?iso-8859-1?Q?Q3JjdoRoQcEUHDDu23wd78NOXHyMMDsqmyL6yqKfsGpfs7SjoZYC+k+2g+?=
- =?iso-8859-1?Q?hWBIvxianV2vbGgjs9HyB6R74bTjnkvyMbZBpm0TzlRu4BRkZ8IWfdGjsW?=
- =?iso-8859-1?Q?msoD/JD284F7NkwrSwD+qbfUpfF+ypG07h2YCZm9bKGf850mZxLQKKsFDj?=
- =?iso-8859-1?Q?mQjiyu7EyLadN3Xsxh6kkS1+TiBJMG8QPXGW5x/uGY23c+NkATMfJC4AZF?=
- =?iso-8859-1?Q?zS7HhMyTkmTTj1yF0SsOixrtPMIBI4tvK07IS4OmHBspcxiKysZsP6+JTp?=
- =?iso-8859-1?Q?b5HYVgYM69AYkCrO60sKMDAj8CoiCbYs9U6B/k8r5cjobtTsKFu3uc7lQH?=
- =?iso-8859-1?Q?UNTzYJQlArR33Rzr9KYbD8CGzQMS6AzXxzBPW6+4JPuQKTz5erb9TZtXAU?=
- =?iso-8859-1?Q?ZtK8p+h5unkRKGsbNJzBNwVWG8zoDXRJmw3xR4VmBjls5W6lB7XJVZwoAA?=
- =?iso-8859-1?Q?jqD+D/UxhpxuOdeWe2CqmxoDH+OVB0uoTjyjAN5s7cq3p/u28M7A8VT1CC?=
- =?iso-8859-1?Q?uxTyjN2J+3QHNGuGOSRIb1b+xi9rAJJUz8fgN/Ll5JIVRNeAjVSZy0zU00?=
- =?iso-8859-1?Q?XA+kO6UNeKXkl6RXmJgBLjKVEwP6PYEDUip97T/nQkZkl9B6PYIcD/6iMz?=
- =?iso-8859-1?Q?wZ0XcZ3c28YTqJB2WUMBLtc8eRMcs/d3M5Ul09i8AeHwT3ClTcvDWp+We3?=
- =?iso-8859-1?Q?shnOh5AjaR/9/OVhVfOzTe7SIHT958AQtoFodwb72KAM3PPYd79dO5xnJd?=
- =?iso-8859-1?Q?yFQa6UDQHVFdB0xz24U83sbYxCyUm8aXW9qk4g=3D=3D?=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:DX1P273MB1304.AREP273.PROD.OUTLOOK.COM; PTR:; CAT:NONE;
- SFS:(13230040)(366016)(1800799024)(376014)(38070700018); DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?rrfdjWES8nraSF5e8BJIoDaLga6ZAz21BPrxBp+8zBB4M7tUqKzK6XX00i?=
- =?iso-8859-1?Q?9/aDaJu2uqwN3O74+js3l3kHcfHSBupyLxJjBy9e+i6GUKyxvGWJrFez9F?=
- =?iso-8859-1?Q?dSO7fnS+DoL4cik2NIbi5zmI+D1cIhKuim3hcPuiZFm3VUhE/deXQzG7sV?=
- =?iso-8859-1?Q?o8c2oHaERs3k7Ain+u73MCyUs+tffRPQAey9qL2Dd63iG/EckjYCWZM5kc?=
- =?iso-8859-1?Q?QOVxJgvJBlrCG23HMIBPRi+TkZpi+U4eh7Xz6+yTE60S0RhIz2e2o8x91q?=
- =?iso-8859-1?Q?HDxpYSPiAZwrRwgytV03xUJi75WUB+75lDaeC/IV73HZzkLn6DoG3bzLSv?=
- =?iso-8859-1?Q?IrZJVhj3oU9+/5Fyz2Aj/Ghll9En7TJDwY/GtqJ2NIOyBoVpa0pr9cilbp?=
- =?iso-8859-1?Q?VfTh7AdFH76tA9lV6811AIVx+fJnuJqSpPNQHTV1z7HgI0Go9y/TC9j8G5?=
- =?iso-8859-1?Q?QwQsaHoU8p6QdZ6Oah9vbLhdAVDncl2DKWVLRrO2VCPifY90ct+RjNRQbe?=
- =?iso-8859-1?Q?aWeXrXh8SwpyFzXPAh8oQ/yg2vuGGMBWvIn70Pq+o/Y2VNw4YjgEZK7g3N?=
- =?iso-8859-1?Q?Ymqcmdmml7weE35IoD+hvcppWG/NSZhJkToMWAQuvHgW/k8knpVHIljx5U?=
- =?iso-8859-1?Q?lWii8sEjPDROHTdbBUMoy+ImcLbxmmnusQnu79s3xVWoxa17/ll/y9goSK?=
- =?iso-8859-1?Q?clV9f2ixxJtepE5+egh9RQbvmGjCTQ0AeAdYIoRc3qAAm1Z1ogB3pJwg39?=
- =?iso-8859-1?Q?vfyo8A17WUqpPFiyZhq+yYMYQyATopGBqYCCKmp/0QLsEBUa3uchjv3w9e?=
- =?iso-8859-1?Q?SdvUrOuDZW8vhoS8kOKavZWvKrZ0h9g58f7ESw1AkxqhJ/KvcnHg8RHOME?=
- =?iso-8859-1?Q?tZtOHzxGnmYXuVpnk6Wb6Ot9BPChnfIjL3dhC57jg75ATcO3+Uorx/duUR?=
- =?iso-8859-1?Q?tX5Klbq+ZCOZRr5gc65Nd1h24OFQ6bL90AhCSY+q5as6EcEJ8rDVdO2Tdx?=
- =?iso-8859-1?Q?8YYNbNbSlAP9MqxhSHa4DB8mMSE0bXgr1ax96BloN/75MkT1MzoE4jqMfH?=
- =?iso-8859-1?Q?KpxuBeG+n2fH5yVfcOukmb73T7Df0nAQF1k94vz9pKomkbqtOMim2E4m4l?=
- =?iso-8859-1?Q?aCAGooEYQyrLmhcJeZiJObaxlq1Rwqlu0Od/mGW5rWYwqWJvwWLUf7jVDR?=
- =?iso-8859-1?Q?atIvhAW0AEoE8YKUU3N3GqLBq+YIzODXj5zl8aDJNyNhyH5mwYKUsVv6fM?=
- =?iso-8859-1?Q?InUmDFXmWk53BwpnvYFB4Cir5UVOcWs8+5Ury/1fOJwnpwWwbPnE4Qd3p+?=
- =?iso-8859-1?Q?btQtP0VyAkx2K5RjqNnCMrcteY2jWqbeNQTytHOyQ1hw5edel76w7OtWmC?=
- =?iso-8859-1?Q?wZ+Cze1UBrhiawBwihNOsm7BXvkz3d4HHiJdm9yFc6HeggoiMfiHiOj3Hy?=
- =?iso-8859-1?Q?sXisBIh2Y9si4yb7FN3aMav5iAqZ2b6O1NBcOm+zI8WjGqDPYuUOA/7Dwk?=
- =?iso-8859-1?Q?Y3M5gb8mTcNmgpSC6Vu88I73HzlhuHTmxt9KAGrAJxG3jv3ReBSADJdRtf?=
- =?iso-8859-1?Q?rElwxqKioOPprAUibiiV5oXWBNcBql+vYE9MJlfLJbHcaXUxuFt5bU1yGV?=
- =?iso-8859-1?Q?/4wnV5BAb0MG8=3D?=
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+ (Exim 4.90_1) (envelope-from <ludovic.delabre@free.fr>)
+ id 1sZUYV-00012q-DN
+ for qemu-arm@nongnu.org; Thu, 01 Aug 2024 08:05:17 -0400
+Received: from [IPV6:::1] (unknown
+ [IPv6:2a01:e0a:a48:7810:e5ea:2ff8:54c0:2d41])
+ (Authenticated sender: ludovic.delabre@free.fr)
+ by smtp6-g21.free.fr (Postfix) with ESMTPSA id CD8BC78034D
+ for <qemu-arm@nongnu.org>; Thu,  1 Aug 2024 14:05:06 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=free.fr;
+ s=smtp-20201208; t=1722513906;
+ bh=r9v8c3CrbrNrxGIbOIvCPJo6C140489oIKQl6G9GjgM=;
+ h=Date:From:Subject:To:From;
+ b=Vph3yFZov6nfxehiUaimpwnczWIlk8vC/3ABhWqnLCaR0dRVNSXFtEmTP6OxZ7BRh
+ lY8X6wfgzakUY5H1CxH6TXxpsfwIKqfVgOKlhXK+JkVs4EESVJGtFAcmaaFSGxJEmJ
+ cIeKaN/Zyt0q8TCfc3ZfRHuZsoL0pwu3a2athD5+Fxf0Ouz3N+I1BcbDaoa59jJk99
+ k/cRLNSuaZoTu4DDIsYzO4wfViGgEzJa6CC9gAPaS3BvdzH73pT5a87j+58NpDNeGN
+ DQYbmbA18Mfg4TzQLIM26kjcfFoysxxNUFMDr6vEXQy/Dfp+tzvtuZ4ND99YPdBQUL
+ 6iYLz4jky09WQ==
+Content-Type: multipart/alternative;
+ boundary="------------2MeWP35UsZpy0nU6mqfE6jSY"
+Message-ID: <7ef15cde-1d49-4f7f-81fd-5c81b6f564a9@free.fr>
+Date: Thu, 1 Aug 2024 14:05:09 +0200
 MIME-Version: 1.0
-X-OriginatorOrg: tii.ae
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: DX1P273MB1304.AREP273.PROD.OUTLOOK.COM
-X-MS-Exchange-CrossTenant-Network-Message-Id: 2022c4a3-04e4-4911-180a-08dcb1f516e5
-X-MS-Exchange-CrossTenant-originalarrivaltime: 01 Aug 2024 06:42:18.8808 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: f0869253-be00-4a37-9c77-37742cb15c38
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: NExSArk7i8dBCyA04HAV+9J4uJRSgsYAcua+29jhZunNcdaRim/flw4juvwvM0BmVPE2/JpWfHXzfPi2m6lc5w==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: AU2P273MB0308
-Received-SPF: pass client-ip=2a01:111:f403:2026::700;
- envelope-from=Marco.Palumbi@tii.ae;
- helo=ARE01-DX2-obe.outbound.protection.outlook.com
+User-Agent: Mozilla Thunderbird
+Content-Language: en-US
+From: Ludovic Delabre <ludovic.delabre@free.fr>
+Subject: Question about Raspberry Pi A+ entry point
+To: qemu-arm@nongnu.org
+X-Antivirus: Avast (VPS 240801-2, 1/8/2024), Outbound message
+X-Antivirus-Status: Clean
+Received-SPF: pass client-ip=2a01:e0c:1:1599::15;
+ envelope-from=ludovic.delabre@free.fr; helo=smtp6-g21.free.fr
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_IMAGE_ONLY_32=0.001, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_REMOTE_IMAGE=0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -200,101 +106,121 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: M2diTbpeMglx
+X-TUID: dB5Thw04eA44
 
-Thanks Peter for your time!
+This is a multi-part message in MIME format.
+--------------2MeWP35UsZpy0nU6mqfE6jSY
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+
+Hello everyone,
+
+I'm working as an a hobbyist OS developer on a multi-architecture 
+targets which includes a Raspberry Pi A+.
+
+Every examples of bare bones I could find out there, sets their kernel's 
+start address at 0x8000.
+
+But when I invoke QEMU using a flatten kernel image:
+|qemu-system-arm -s -S -m 512 -M raspi1ap -kernel kernel.img|
+
+After connecting to the GDB server, the CPU starts at @0x0.
+
+If I understood correctly, at that address a very small boolader was setup:
+
+|static const ARMInsnFixup bootloader[] = { { 0xe28fe004 }, /* add lr, 
+pc, #4 */ { 0xe51ff004 }, /* ldr pc, [pc, #-4] */ { 0, FIXUP_BOARD_SETUP 
+}, #define BOOTLOADER_NO_BOARD_SETUP_OFFSET 3 { 0xe3a00000 }, /* mov r0, 
+#0 */ { 0xe59f1004 }, /* ldr r1, [pc, #4] */ { 0xe59f2004 }, /* ldr r2, 
+[pc, #4] */ { 0xe59ff004 }, /* ldr pc, [pc, #4] */ { 0, FIXUP_BOARDID }, 
+{ 0, FIXUP_ARGPTR_LO }, { 0, FIXUP_ENTRYPOINT_LO },|
+
+  After returned from the board setup, both r1 & r2 are set respectively 
+at the board ID (FIXUP_BOARDID) and the address of the ATAGS structures 
+(FIXUP_ARGPTR_LO).
+
+|(gdb) x/4i $pc => 0xc: mov r0, #0 0x10: ldr r1, [pc, #4] @ 0x1c 0x14: 
+ldr r2, [pc, #4] @ 0x20 0x18: ldr pc, [pc, #4] @ 0x24 (gdb) x/8x $pc 
+0xc: 0xe3a00000 0xe59f1004 0xe59f2004 0xe59ff004 0x1c: *0x00000c42* 
+*0x00000100* _*0x00010000*_ 0x00000000 |
+
+My problem is that the entry point address (FIXUP_ENTRYPOINT_LO) is 
+0x10000 instead of the expected 0x8000.
+
+Am I missing something here or is this an expected behavior that differs 
+from the real hardware ?
+Note that I do not have any issue on AArch64, where the entry point is 
+set correctly set at 0x80000.
+
+Thanks,
+Best regards,
+Ludovic.
+
+||
 
 
-Marco Palumbi
-Senior Cryptography Engineer
+-- 
+Cet e-mail a été vérifié par le logiciel antivirus d'Avast.
+www.avast.com
+--------------2MeWP35UsZpy0nU6mqfE6jSY
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 
-PO=A0Box: 9639
-Masdar City, Abu Dhabi, UAE
+<!DOCTYPE html>
+<html>
+  <head>
 
-M: +39 349 786 0737
-E: marco.palumbi@tii.ae=A0
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  </head>
+  <body>
+    <p>Hello everyone,</p>
+    <p>I'm working as an a hobbyist OS developer on a multi-architecture
+      targets which includes a Raspberry Pi A+.</p>
+    <p>Every examples of bare bones I could find out there, sets their
+      kernel's start address at 0x8000.<br>
+    </p>
+    <p>But when I invoke QEMU using a flatten kernel image:<br>
+      <code>qemu-system-arm -s -S -m 512 -M raspi1ap -kernel kernel.img</code></p>
+    <p>After connecting to the GDB server, the CPU starts at @0x0.</p>
+    <p>If I understood correctly, at that address a very small boolader
+      was setup:</p>
+    <pre><code>static const ARMInsnFixup bootloader[] = {
+    { 0xe28fe004 }, /* add     lr, pc, #4 */
+    { 0xe51ff004 }, /* ldr     pc, [pc, #-4] */
+    { 0, FIXUP_BOARD_SETUP },
+#define BOOTLOADER_NO_BOARD_SETUP_OFFSET 3
+    { 0xe3a00000 }, /* mov     r0, #0 */
+    { 0xe59f1004 }, /* ldr     r1, [pc, #4] */
+    { 0xe59f2004 }, /* ldr     r2, [pc, #4] */
+    { 0xe59ff004 }, /* ldr     pc, [pc, #4] */
+    { 0, FIXUP_BOARDID },
+    { 0, FIXUP_ARGPTR_LO },
+    { 0, FIXUP_ENTRYPOINT_LO },</code></pre>
+    <p> After returned from the board setup, both r1 &amp; r2 are set
+      respectively at the board ID (FIXUP_BOARDID) and the address of
+      the ATAGS structures (FIXUP_ARGPTR_LO).<br>
+    </p>
+    <pre><code>(gdb) x/4i $pc
+=&gt; 0xc: mov     r0, #0
+   0x10:        ldr     r1, [pc, #4]    @ 0x1c
+   0x14:        ldr     r2, [pc, #4]    @ 0x20
+   0x18:        ldr     pc, [pc, #4]    @ 0x24
+(gdb) x/8x $pc
+0xc:    0xe3a00000      0xe59f1004      0xe59f2004     0xe59ff004
+0x1c:   <b>0x00000c42</b>      <b>0x00000100</b>      <u><b>0x00010000</b></u>     0x00000000
+</code></pre>
+    <p>My problem is that the entry point address (FIXUP_ENTRYPOINT_LO)
+      is 0x10000 instead of the expected 0x8000.</p>
+    <p>Am I missing something here or is this an expected behavior that
+      differs from the real hardware ?<br>
+      Note that I do not have any issue on AArch64, where the entry
+      point is set correctly set at 0x80000.</p>
+    <p>Thanks,<br>
+      Best regards,<br>
+      Ludovic.</p>
+    <code></code>
+    <p></p>
+  <div id="DAB4FAD8-2DD7-40BB-A1B8-4E2AA1F9FDF2"><br /><table style="border-top: 1px solid #D3D4DE;"><tr><td style="width: 55px; padding-top: 13px;"><a href="https://www.avast.com/sig-email?utm_medium=email&utm_source=link&utm_campaign=sig-email&utm_content=emailclient" target="_blank"><img src="https://s-install.avcdn.net/ipm/preview/icons/icon-envelope-tick-round-orange-animated-no-repeat-v1.gif" alt="" width="46" height="29" style="width: 46px; height: 29px;"/></a></td><td style="width: 470px; padding-top: 12px; color: #41424e; font-size: 13px; font-family: Arial, Helvetica, sans-serif; line-height: 18px;">Sans virus.<a href="https://www.avast.com/sig-email?utm_medium=email&utm_source=link&utm_campaign=sig-email&utm_content=emailclient" target="_blank" style="color: #4453ea;">www.avast.com</a></td></tr></table><a href="#DAB4FAD8-2DD7-40BB-A1B8-4E2AA1F9FDF2" width="1" height="1"> </a></div></body>
+</html>
 
-tii.ae
-
-This email and any files transmitted with it are strictly confidential and =
-intended solely for the use of the individual or entity to whom they are ad=
-dressed. If you have received this email in error please notify the sender.=
- This message contains confidential information and is intended only for th=
-e individual named. If you are not the named addressee you should not disse=
-minate, distribute or copy this e-mail. Please notify the sender immediatel=
-y by e-mail if you have received this e-mail by mistake and delete this e-m=
-ail from your system. If you are not the intended recipient you are notifie=
-d that disclosing, copying, distributing or taking any action in reliance o=
-n the contents of this information is strictly prohibited.
-
-
------Original Message-----
-From: Peter Maydell <peter.maydell@linaro.org>=20
-Sent: Wednesday, July 31, 2024 1:38 PM
-To: marco@palumbi.it
-Cc: qemu-devel@nongnu.org; Marco Palumbi <Marco.Palumbi@tii.ae>; qemu-arm@n=
-ongnu.org; qemu-stable@nongnu.org; qemu-trivial@nongnu.org
-Subject: Re: [PATCH] hw/arm/mps2-tz.c: fix RX/TX interrupts order
-
-On Tue, 30 Jul 2024 at 08:32, <marco@palumbi.it> wrote:
->
-> From: Marco Palumbi <Marco.Palumbi@tii.ae>
->
-> The order of the RX and TX interrupts are swapped.
-> This commit fixes the order as per the following documents:
->  *=20
-> https://are01.safelinks.protection.outlook.com/?url=3Dhttps%3A%2F%2Fprot
-> ect.checkpoint.com%2Fv2%2F___https%3A%2F%2Fdeveloper.arm.com%2Fdocumen
-> tation%2Fdai0505%2Flatest%2F___.bWVjMTp0ZWNobm9sb2d5aW5ub3ZhdGlvbmluc3
-> RpdHV0ZTpjOm86YTlkNGRjMjcxZTBmMWJjNjlmMzc2NGE0OWY4ZmU5MWY6Njo0MzVhOjY3
-> NjVkOGIwNWJkMzgwMGJkMzdlMWJmYmE5MmFhY2E2MzhhOTQyZjQ4ZDA5MmI0ODg2NTc1Yj
-> QxYzM1MzY4N2Q6cDpUOk4&data=3D05%7C02%7CMarco.Palumbi%40tii.ae%7C063b7e0f
-> d4634265eb5808dcb155575b%7Cf0869253be004a379c7737742cb15c38%7C1%7C0%7C
-> 638580227306410621%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjo
-> iV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C0%7C%7C%7C&sdata=3DnW%2F6AR%2F
-> E2tlpQ%2FSNSvDJyQf71YIbk83KVcZzGnmP5Lk%3D&reserved=3D0
->  *=20
-> https://are01.safelinks.protection.outlook.com/?url=3Dhttps%3A%2F%2Fprot
-> ect.checkpoint.com%2Fv2%2F___https%3A%2F%2Fdeveloper.arm.com%2Fdocumen
-> tation%2Fdai0521%2Flatest%2F___.bWVjMTp0ZWNobm9sb2d5aW5ub3ZhdGlvbmluc3
-> RpdHV0ZTpjOm86YTlkNGRjMjcxZTBmMWJjNjlmMzc2NGE0OWY4ZmU5MWY6NjoxM2NkOjY4
-> YTI5ZTFmNDU4YTg3NTQxZGJmMzE1ZjQ4MWU3MTk1ZWRiMWRiOTdmNTIwMWU1OGYyNThkZm
-> U4MzkzNWZkY2Y6cDpUOk4&data=3D05%7C02%7CMarco.Palumbi%40tii.ae%7C063b7e0f
-> d4634265eb5808dcb155575b%7Cf0869253be004a379c7737742cb15c38%7C1%7C0%7C
-> 638580227306419690%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjo
-> iV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C0%7C%7C%7C&sdata=3DYGw4NsxbW01
-> i46Gm%2BgBzQIOB6nOqL16P3Deblg3OcRw%3D&reserved=3D0
->  *=20
-> https://are01.safelinks.protection.outlook.com/?url=3Dhttps%3A%2F%2Fprot
-> ect.checkpoint.com%2Fv2%2F___https%3A%2F%2Fdeveloper.arm.com%2Fdocumen
-> tation%2Fdai0524%2Flatest%2F___.bWVjMTp0ZWNobm9sb2d5aW5ub3ZhdGlvbmluc3
-> RpdHV0ZTpjOm86YTlkNGRjMjcxZTBmMWJjNjlmMzc2NGE0OWY4ZmU5MWY6Njo3N2NjOmQx
-> YmIyN2YxY2Q3YWJjMTBhM2I1Zjk1NGM4NTBjZDlhNTVhYjA2NDMwZDQwOTUzZjNkZmU4ZG
-> NjYmNkMmUxMTI6cDpUOk4&data=3D05%7C02%7CMarco.Palumbi%40tii.ae%7C063b7e0f
-> d4634265eb5808dcb155575b%7Cf0869253be004a379c7737742cb15c38%7C1%7C0%7C
-> 638580227306425926%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjo
-> iV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C0%7C%7C%7C&sdata=3D0poH91SU6NE
-> f4%2BD3%2BqH5WNDgTXXfZ4PA7buG0bwKQlE%3D&reserved=3D0
->  *=20
-> https://are01.safelinks.protection.outlook.com/?url=3Dhttps%3A%2F%2Fprot
-> ect.checkpoint.com%2Fv2%2F___https%3A%2F%2Fdeveloper.arm.com%2Fdocumen
-> tation%2Fdai0547%2Flatest%2F___.bWVjMTp0ZWNobm9sb2d5aW5ub3ZhdGlvbmluc3
-> RpdHV0ZTpjOm86YTlkNGRjMjcxZTBmMWJjNjlmMzc2NGE0OWY4ZmU5MWY6NjplOTcyOmUy
-> MzEyNTdlYzlmOTRjOWY5NjY4YmExZDc3NGQ5NWNhYmY2NmEzNjI2ZGMwYjI3ZWZlZTU2YW
-> UyZjQ1NDFhMTI6cDpUOk4&data=3D05%7C02%7CMarco.Palumbi%40tii.ae%7C063b7e0f
-> d4634265eb5808dcb155575b%7Cf0869253be004a379c7737742cb15c38%7C1%7C0%7C
-> 638580227306430786%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjo
-> iV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C0%7C%7C%7C&sdata=3DLWgkq6rb9vQ
-> 0q4VhuPmflWyFLCtMTjg6DWe3j9h381w%3D&reserved=3D0
->
-> Signed-off-by: Marco Palumbi <Marco.Palumbi@tii.ae>
-
-Thanks for this patch, I've applied it to my target-arm.next queue.
-
-I checked the other boards that use the cmsdk UART, and they all get the tx=
-/rx interrupt order right, so this is the only place that needed fixing. I =
-suspect that the guest images I tested didn't care about the separate tx/rx=
- interrupts and only used the combined irq.
-
-thanks
--- PMM
+--------------2MeWP35UsZpy0nU6mqfE6jSY--

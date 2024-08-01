@@ -1,192 +1,144 @@
-Received: by 2002:a05:7022:fe04:b0:85:21:bd5b with SMTP id vc4csp987196dlb;
-        Thu, 1 Aug 2024 07:47:24 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCXSIFP63hFZIhfeOK3Ak5kNzBx64i89r3DgFbpGD6D4w2b+EskiqEDaGEnNsKQ7G42rMeqxIKVN4I++wtM0oAgqBkZQbDVJ
-X-Google-Smtp-Source: AGHT+IG5z1sCMm352uKkhScENzLIXJoaOB0132jvmyD7oVoWme5TLVqudnMgz1+IEADpdC/6p+JX
-X-Received: by 2002:a17:907:980f:b0:a7a:abd8:77dd with SMTP id a640c23a62f3a-a7dc509ff73mr31655066b.59.1722523644387;
-        Thu, 01 Aug 2024 07:47:24 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1722523644; cv=pass;
+Received: by 2002:a17:505:3f8c:b0:1be9:327d:8ee3 with SMTP id bm12csp976762njb;
+        Thu, 1 Aug 2024 08:17:35 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVw1x9LgrjUPjKaJMixXJezarkmFtop3mRtpiBmlbtEHi//gLE93aXNOQZDms+iJCz55TYyHDA9NSIpe1OEh8uYx1hY1C7N
+X-Google-Smtp-Source: AGHT+IHOYQsIF6gLCb31Cwy6lAauzDUGMr7cyelgIRDPQLR/9Gin+vFnFSHAhEoVlHsCSq7KJxcC
+X-Received: by 2002:a05:622a:255:b0:444:e9b9:709f with SMTP id d75a77b69052e-451892202afmr4688371cf.19.1722525455732;
+        Thu, 01 Aug 2024 08:17:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1722525455; cv=none;
         d=google.com; s=arc-20160816;
-        b=QhzK5XM4IFh0VHFTDrfRg7DrBytY8gna63Fo3Jzz1w+w/VycRQZIPz4y3L/wuIOf/R
-         Mh6vjWFqwzKTkTSEoPMvi2YIjuMdSgL8OPXGrmew14B9iCZOjwJzR0Ff3LmyjQcCkGHV
-         OycN9C+sDWVYwI5GB3ppzJSSDGpDg9cTB85KntKDFZq2PaV7T8Mar+1V0S523r/5FpRZ
-         7YAXbUHbRNgkBTuSwTxUU80c8jK6ARoVhc9WqXgns60EBr4redzeLG2Y9MdqYMlgBhXI
-         /tPAVYKoKx67S8ceuPZUEGby/l1nRlRC+CErkaA86ol5odMFrZP/g3FWH06uTDN5Coq4
-         mIDQ==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:content-transfer-encoding:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
-         :date:subject:cc:to:from:dkim-signature;
-        bh=b0xYBI4DsCivQUfmHtAqKAIG1qelGdEfRAozfVNuSF8=;
-        fh=1+GwgeeWHpUF7FYedvbaiDfvpf5TVKFs48cbY64gPd4=;
-        b=xGqY/vNxHD3zckOIVLXPtgT9NdIiWO6PMHLWEW3oQFUQpcrBT+lHW2/tRbti/alevM
-         TnHFn7VxBQM3Fie1H7KN52lXgBzMqU3lJNH0Mcv3EuS+xi039GFCJocJQ2+ytZK01hAW
-         57HyG96CbyUGi5p4sLRu5qmN5BPgh8XftnabuVgJ2Ptx1rL8gShSy+9rYuPEMje338Og
-         ZsAj9dSKJZxJqsM5/uhb+d+UOpEKriVWGRcLGFs8gTMeu6qmeNwQxJD0Wn1DSoInXRBw
-         7FMxo40+jt0l5RThJ2uob9e/2Ho54wCe0lVFerFPy9vOPx3Xk8Lwg2RbnDpInTFOtHZS
-         l8NA==;
+        b=HUOLF5Irltmqnil+G0t376cQSzpp6v+8h8MHuTP0iC6vnXp/p6Uezbc1N7SCuyyvc1
+         bpFc9+3fwnkLwGF/jugLeHv1h9iBJ054qmpRUVl27bEYtVExfJ+wg8OJMTBgtQHlYohg
+         1gNIuZ8Y5XHu5Cyk4dTuc2478XWccT7XnbQczVemGg0WV7EjjcvJntsmUwB8l77PD5Of
+         z1he7rNrGDWOJVK1npLmcS47C3I8Dal/eaau5qA8nRfJ664dFrgoBHMb2NCETU8A1wyZ
+         QuOmQdJyyKSz8URmyqHJF4Fl3oJOERlwDc8vr7U2txIIx4ocLbVHhKJ1LaLoUJQpV1iN
+         sVbg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=saWSM0dvG6oMWmS/XHDtmdkUhGSwyi8ohATfugSLLzE=;
+        fh=wU40h1YRy0XwnO1QvGBgzGP0CuBHemm55HQhhkCtE2w=;
+        b=fUHCmsxOg0x5+NmWIxQJdH0CnePv7F/ghMnoQ35pziws8tYZiFT5/L0E6kr4/A2pJk
+         CS+0sj3FjiGLA1qyycWVFhnswDUAhAcYgZnzuM8wpf5yqCh9gBflhF3gMQsUtHuVK4XB
+         VI+hZSmcfPHrtty+V2lK3O9W9zb0ooe645JgW5NGidm+687kY7Kz42p8d63EbyQgdtrX
+         F95BqlDE1RIrpB1lnC5fx1VtDZTH1AkKjRR9EB7JW3s9sxKNKQf/px/+266mDce7sCU6
+         3N9jcRyELjRH4FkL30lUV70Glgi3u8jDIzZBlCpGoXA1lmXr9jPSBsHaa5uSQ3N2EXgB
+         55Tw==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=XEiVgpxR;
-       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
-       spf=pass (google.com: domain of linux-kernel+bounces-271450-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) smtp.mailfrom="linux-kernel+bounces-271450-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
-Return-Path: <linux-kernel+bounces-271450-alex.bennee=linaro.org@vger.kernel.org>
-Received: from am.mirrors.kernel.org (am.mirrors.kernel.org. [2604:1380:4601:e00::3])
-        by mx.google.com with ESMTPS id a640c23a62f3a-a7acab3e007si1076819466b.293.2024.08.01.07.47.24
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RH6HkT77;
+       spf=pass (google.com: domain of crosa@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=crosa@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <crosa@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id d75a77b69052e-44fe851d021si185917511cf.668.2024.08.01.08.17.35
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 01 Aug 2024 07:47:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of linux-kernel+bounces-271450-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) client-ip=2604:1380:4601:e00::3;
+        Thu, 01 Aug 2024 08:17:35 -0700 (PDT)
+Received-SPF: pass (google.com: domain of crosa@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=XEiVgpxR;
-       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
-       spf=pass (google.com: domain of linux-kernel+bounces-271450-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) smtp.mailfrom="linux-kernel+bounces-271450-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
-Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by am.mirrors.kernel.org (Postfix) with ESMTPS id E9BB31F249FD
-	for <alex.bennee@linaro.org>; Thu,  1 Aug 2024 14:47:23 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 3A03D1A76A1;
-	Thu,  1 Aug 2024 14:47:18 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="XEiVgpxR"
-Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id ED8471EB4BF
-	for <linux-kernel@vger.kernel.org>; Thu,  1 Aug 2024 14:47:17 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=10.30.226.201
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1722523638; cv=none; b=RCEYHi7bUAY+yU1+Z3Rq8ecRI2nVd3L5N0MKs7EAFCPvJQsFyP9eCsvcprqV0GiDKaWmN6avHxWtVtOZ5r3Nh8o7GF8FAL858FWAKLha7KWM2qloMh3MhJnKz2539R9ygKfu67aI8FTI7bC3G/7WcllY4PoTV76gCfoe8gWOvD0=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1722523638; c=relaxed/simple;
-	bh=wmX5BOavDV5A0y4JGTIfwXXXDCYeYux2q4KKf6xw9vs=;
-	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:
-	 MIME-Version; b=U/x7bzM3WEkIO2IbEl21BDCICv4OD723fi4N2U+866K/o6tZDXMzmK3Ap/tqiAfw2T3kyfCAFBsz0RmYVoKu0qqma5DwP2eYhtdpVTfkCWbZme1ZdkuLfonnvDXNllJ2MKQzfBlsWRV8zX42H35874cfUuoBeP1OLt3aQ0S4WT0=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=XEiVgpxR; arc=none smtp.client-ip=10.30.226.201
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9E211C4AF0F;
-	Thu,  1 Aug 2024 14:47:17 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1722523637;
-	bh=wmX5BOavDV5A0y4JGTIfwXXXDCYeYux2q4KKf6xw9vs=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=XEiVgpxRD5QuvI2aa7eSeynvkq9I/k9VUg7fXPfxYcnSAT6CBRMyz3bNwuEATzv9Z
-	 cpdb/WkMG9CvS7af3RiJRP7aNAHw6i3TkOwS3LL9EboTKkOrg0j2qXq8uhzuw4qGWv
-	 uoVX1iW3cQckjEyjBOh5C5SvJIBuJK1nnj6pDzU3K0q0cH0Y+ltEcJmlNiQqhTdR2p
-	 G0CPpxya5vTC+9Cce0C9J9O4F2tyoSN1cIcAUEOCFCPFWUGDsYJXH/yrxB5Uz1wQlD
-	 fA1X/oAA9KC5284Eya4YzLoDvowI4ZKDW+ky3vnc/GmlkrkpfbOPAudbJjALTMTRfx
-	 sGXUdrNcI981A==
-Received: from mchehab by mail.kernel.org with local (Exim 4.98)
-	(envelope-from <mchehab+huawei@kernel.org>)
-	id 1sZX5H-00000001WCT-2os4;
-	Thu, 01 Aug 2024 16:47:15 +0200
-From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-To: 
-Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>,
-	Shiju Jose <shiju.jose@huawei.com>,
-	Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	Ani Sinha <anisinha@redhat.com>,
-	Igor Mammedov <imammedo@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Shannon Zhao <shannon.zhaosl@gmail.com>,
-	linux-kernel@vger.kernel.org,
-	qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH v4 1/7] arm/virt: place power button pin number on a define
-Date: Thu,  1 Aug 2024 16:47:04 +0200
-Message-ID: <e5afbbaf2836ebe22b48c455285eccef86db966b.1722523312.git.mchehab+huawei@kernel.org>
-X-Mailer: git-send-email 2.45.2
-In-Reply-To: <cover.1722523312.git.mchehab+huawei@kernel.org>
-References: <cover.1722523312.git.mchehab+huawei@kernel.org>
-Precedence: bulk
-X-Mailing-List: linux-kernel@vger.kernel.org
-List-Id: <linux-kernel.vger.kernel.org>
-List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RH6HkT77;
+       spf=pass (google.com: domain of crosa@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=crosa@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1722525455;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=saWSM0dvG6oMWmS/XHDtmdkUhGSwyi8ohATfugSLLzE=;
+	b=RH6HkT77DjJQa+wU0FPgk2e3ymnKCxw+Zg8OheyCaNgrcpfTk/eLJNUV8xHTnazJn4SbIl
+	Jd8bb0BkhAz7OZdKtcb2Iw9ykk8yq3i7Sq+RwuucAXdp5QHg3S4/bh8OQR8g5XVJ6w9JoE
+	jRBjcQLIiqK/oViWi0mx6d6UU3hKHlc=
+Received: from mail-yw1-f199.google.com (mail-yw1-f199.google.com
+ [209.85.128.199]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-659-iI2Z306ZOheU38fmnCkGhg-1; Thu, 01 Aug 2024 11:17:34 -0400
+X-MC-Unique: iI2Z306ZOheU38fmnCkGhg-1
+Received: by mail-yw1-f199.google.com with SMTP id 00721157ae682-66b3b4415c7so150208997b3.0
+        for <alex.bennee@linaro.org>; Thu, 01 Aug 2024 08:17:34 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1722525453; x=1723130253;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=saWSM0dvG6oMWmS/XHDtmdkUhGSwyi8ohATfugSLLzE=;
+        b=nuBP6yCjwzYH9sQZlLmZ+CY9tdNuI6qfs3ZGrHMhbz4osyM+KKaE6QbthkEm3hcxkA
+         04Z1dkA9RPlWNx/sKMGzioou/Y4gH7HUWfHukWVUe90Hy6SCAHBNA17XqM0rRdUVoxX7
+         /a0eSHA7Y9BlrtpZnHoW58HUisIAlg7AxJW1zYUlqfSjg9x3hnsIcE3bQ/wJAhLnkcYm
+         OgKHwTItoWwzJp+FxJDPSD/vrkzym63x5Osn2RYVoR7jnPbk9Y9gSZ2yg6etm5y435TZ
+         DMc0RHj/7kwCqXO3gRLFNXyBCZG+zBfJ1Kmot4dzz8v9xrsDgeWwqVyuhvzWUiQc136f
+         2l5g==
+X-Forwarded-Encrypted: i=1; AJvYcCWc6CFhhJKIqHljkFwGMBzxUY258uuMo0Qgvq+sxAzQqhr0sAL7Z7nS9fKnFtJpktVpG2PDTRYBvkeDWSDyVSTzUFd/1aE9
+X-Gm-Message-State: AOJu0Yy+sPJsaYWh9taRaj8Opy/bO85u8MJviuxmxP1huN/BiZsSGT2I
+	GBDGMSBfe5GiIGAI9/WZYrqkFrWHhe2cDfZ2TIW43tfcnsosXiC6QNf+QodziHVtVg+51ENUBhb
+	f2dRp5gwLUMC9ssWqoxiWPLa8h43HRsa2GLCM7ocbpfGV+LIzsI1+V6ABvw50NGjVFM18oXkycy
+	7c/oths+vYumBff7mJzsAqK7ff20zo
+X-Received: by 2002:a81:8a02:0:b0:627:88fc:61c5 with SMTP id 00721157ae682-689608712bemr3552237b3.14.1722525453629;
+        Thu, 01 Aug 2024 08:17:33 -0700 (PDT)
+X-Received: by 2002:a81:8a02:0:b0:627:88fc:61c5 with SMTP id
+ 00721157ae682-689608712bemr3551957b3.14.1722525453261; Thu, 01 Aug 2024
+ 08:17:33 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Sender: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-X-TUID: lzfQNMIgd8QB
+References: <20231208190911.102879-1-crosa@redhat.com> <20231208190911.102879-7-crosa@redhat.com>
+ <20efca0c-982c-4962-8e0c-ea4959557a5e@linaro.org> <CA+bd_6K5S9yrD6hsBsTmW4+eJpPsquE8Ud9eHZzptUwDrHcpeQ@mail.gmail.com>
+ <a3b0ebf6-47ca-4aad-9489-16458ffd6ff3@linaro.org>
+In-Reply-To: <a3b0ebf6-47ca-4aad-9489-16458ffd6ff3@linaro.org>
+From: Cleber Rosa <crosa@redhat.com>
+Date: Thu, 1 Aug 2024 11:17:21 -0400
+Message-ID: <CA+bd_6LmuOdQ8ZdLjwt+MCusjQ8ROv23d9PXoF-Ku3j4j73wsg@mail.gmail.com>
+Subject: Re: [PATCH 06/10] tests/avocado/kvm_xen_guest.py: cope with asset RW requirements
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, Jiaxun Yang <jiaxun.yang@flygoat.com>, 
+	Radoslaw Biernacki <rad@semihalf.com>, Paul Durrant <paul@xen.org>, 
+	Akihiko Odaki <akihiko.odaki@daynix.com>, Leif Lindholm <quic_llindhol@quicinc.com>, 
+	Peter Maydell <peter.maydell@linaro.org>, Paolo Bonzini <pbonzini@redhat.com>, 
+	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, kvm@vger.kernel.org, 
+	qemu-arm@nongnu.org, Beraldo Leal <bleal@redhat.com>, 
+	Wainer dos Santos Moschetta <wainersm@redhat.com>, Sriram Yagnaraman <sriram.yagnaraman@est.tech>, 
+	Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>, David Woodhouse <dwmw2@infradead.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-TUID: 9NZpIrGtntGB
 
-Having magic numbers inside the code is not a good idea, as it
-is error-prone. So, instead, create a macro with the number
-definition.
+On Thu, Aug 1, 2024 at 8:57=E2=80=AFAM Philippe Mathieu-Daud=C3=A9 <philmd@=
+linaro.org> wrote:
+> > I agree those files should not be modified, but I wonder if you
+> > thought about any solution to this? Given that the same user writes
+> > (downloads) those files, do you think setting file permissions between
+> > the download and the use of the files should be done?
+>
+> We want to share a cachedir on development hosts with multiple
+> developers. OK to alter a downloaded file before adding it to
+> the cache; but then once a file is added/hashed it shouldn't be
+> modified IMO.
+>
 
-Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
----
- hw/arm/virt-acpi-build.c | 6 +++---
- hw/arm/virt.c            | 7 ++++---
- include/hw/arm/virt.h    | 3 +++
- 3 files changed, 10 insertions(+), 6 deletions(-)
+I was asking more in terms of what to do before/after the test.  When
+it comes to this type of setup, Avocado's cache was designed to
+support this use case.  You can provide multiple cache dirs in the
+configuration, and some (the first ones, ideally) can be RO (life NFS
+mounts).
 
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index e10cad86dd73..f76fb117adff 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -154,10 +154,10 @@ static void acpi_dsdt_add_gpio(Aml *scope, const MemMapEntry *gpio_memmap,
-     aml_append(dev, aml_name_decl("_CRS", crs));
- 
-     Aml *aei = aml_resource_template();
--    /* Pin 3 for power button */
--    const uint32_t pin_list[1] = {3};
-+
-+    const uint32_t pin = GPIO_PIN_POWER_BUTTON;
-     aml_append(aei, aml_gpio_int(AML_CONSUMER, AML_EDGE, AML_ACTIVE_HIGH,
--                                 AML_EXCLUSIVE, AML_PULL_UP, 0, pin_list, 1,
-+                                 AML_EXCLUSIVE, AML_PULL_UP, 0, &pin, 1,
-                                  "GPO0", NULL, 0));
-     aml_append(dev, aml_name_decl("_AEI", aei));
- 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 719e83e6a1e7..687fe0bb8bc9 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -1004,7 +1004,7 @@ static void virt_powerdown_req(Notifier *n, void *opaque)
-     if (s->acpi_dev) {
-         acpi_send_event(s->acpi_dev, ACPI_POWER_DOWN_STATUS);
-     } else {
--        /* use gpio Pin 3 for power button event */
-+        /* use gpio Pin for power button event */
-         qemu_set_irq(qdev_get_gpio_in(gpio_key_dev, 0), 1);
-     }
- }
-@@ -1013,7 +1013,8 @@ static void create_gpio_keys(char *fdt, DeviceState *pl061_dev,
-                              uint32_t phandle)
- {
-     gpio_key_dev = sysbus_create_simple("gpio-key", -1,
--                                        qdev_get_gpio_in(pl061_dev, 3));
-+                                        qdev_get_gpio_in(pl061_dev,
-+                                                         GPIO_PIN_POWER_BUTTON));
- 
-     qemu_fdt_add_subnode(fdt, "/gpio-keys");
-     qemu_fdt_setprop_string(fdt, "/gpio-keys", "compatible", "gpio-keys");
-@@ -1024,7 +1025,7 @@ static void create_gpio_keys(char *fdt, DeviceState *pl061_dev,
-     qemu_fdt_setprop_cell(fdt, "/gpio-keys/poweroff", "linux,code",
-                           KEY_POWER);
-     qemu_fdt_setprop_cells(fdt, "/gpio-keys/poweroff",
--                           "gpios", phandle, 3, 0);
-+                           "gpios", phandle, GPIO_PIN_POWER_BUTTON, 0);
- }
- 
- #define SECURE_GPIO_POWEROFF 0
-diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-index ab961bb6a9b8..a4d937ed45ac 100644
---- a/include/hw/arm/virt.h
-+++ b/include/hw/arm/virt.h
-@@ -47,6 +47,9 @@
- /* See Linux kernel arch/arm64/include/asm/pvclock-abi.h */
- #define PVTIME_SIZE_PER_CPU 64
- 
-+/* GPIO pins */
-+#define GPIO_PIN_POWER_BUTTON  3
-+
- enum {
-     VIRT_FLASH,
-     VIRT_MEM,
--- 
-2.45.2
+But this is hardly something that can be configured without proper
+user input, so this is not present in the generic "make
+check-avocado".
 
+> So far this directory is group=3DRW but we like the ability to track
+> a read-only directory (like owned by a particular user) and adding
+> missing assets to current user cachedir, to avoid duplication of
+> files and waste of network transfer.
+>
+
+That can be done in avocado.conf, something like:
+
+[datadir.paths]
+cache_dirs =3D ['/path/that/is/ro/because/owned/by/someone/else',
+'/home/cleber/avocado/data/cache']
+
+The asset library will take care of trying to find assets in the RO
+directories, while writing to the RW ones.
+
+Hope this helps,
+- Cleber.

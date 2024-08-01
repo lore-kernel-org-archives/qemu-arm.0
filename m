@@ -1,330 +1,237 @@
-Received: by 2002:a17:505:3f8c:b0:1be9:327d:8ee3 with SMTP id bm12csp820756njb;
-        Thu, 1 Aug 2024 01:36:51 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCVjePvqCrgr1E9cSg6V1MRs/hN8SJz5UWDVvlTQdzio02AVmDBSu1ijFirsA7SCZ5y3VWrcuV5Mu1tE9sGtiqasyZ2ppp6T
-X-Google-Smtp-Source: AGHT+IGQqY8uT1DGzMzdNoUK39cMZFm4s1kSi6F9L0HPLBOUoPGLQN1/JwDeskfFEym6HeLXJ1mt
-X-Received: by 2002:a17:903:244a:b0:1f8:67e4:3985 with SMTP id d9443c01a7336-1ff4d103116mr26137055ad.49.1722501411231;
-        Thu, 01 Aug 2024 01:36:51 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1722501411; cv=pass;
+Received: by 2002:a05:7022:1b17:b0:84:f013:bc5b with SMTP id ti23csp920492dlb;
+        Thu, 1 Aug 2024 02:21:23 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVZ+CLmmxH+HaNeAp5ege5XmRV96eL4emsDl2JwSO5Z0Ckuui2ALHSnJkaFXITvVD91Go1UeKMJsC1Uc+05Xm9aSMibStNx
+X-Google-Smtp-Source: AGHT+IE0HtQhqu8Eh3k8FfEtOScKfLQAHLLbQlrH8HXFHmwGazBVCpEJfHGDof3TFo+FcQd7VAbB
+X-Received: by 2002:a05:6214:4189:b0:6b7:9f1d:283a with SMTP id 6a1803df08f44-6bb8d78e66cmr19953966d6.38.1722504082879;
+        Thu, 01 Aug 2024 02:21:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1722504082; cv=none;
         d=google.com; s=arc-20160816;
-        b=uLDsC71cNP1xhvt3YZh48HQ3wb8ZitC+hAIrhFl9VX2/CQ/awGqjssZui8I5hzjA8G
-         OTcIPcDYhviZtR/MYS35633z3lAHXpNTqIXyA8RIf+NNVjmvxEUFz9Fx8HuMGVijjxDg
-         AnWpw65zamNBfvH/m2qY1nmWVxrDSKtFYUoq1SW84EcE1npRd0V0ZifAb0t7nKU0TiCC
-         jd3uXJVxb/SgBkLsjl57wVDC3DSX9lI/GMHzPaGfGg7oey6MWSiQYiUq09QG/xLS/LXm
-         x3PJ+M/vG/K8SmVDu04r0zBm6nZ5+mlVkJHfrhyrFOBSbQPagVXvmwsVO8Ky6HzEU+KA
-         J5lw==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
+        b=BfxFA+5mhT6IqYuQguAXU01x0WKNJUqd4I+fTE2t0Xxr2ynr/nBSjndEL3C7WDwM3T
+         quw6GCUis0CRy1yqHBWadiwQkeufIlgBJRjE/+NuTOYEiVKBH6hpeivy1GlaEevfxsCe
+         x5K4tbfE0pAehvGSh8BzksqQ5CADa0/O5j6/4yI1N5zWFsrtc0rR6Ad1DkP4TKLHNkgX
+         4Hc+BZPz2qdFvUwlpDwFW12IHALvbu3BRkbc/fC5rQa0bMKDvW5ntsE5XAQCmMRdPzbV
+         e81Zx6KBQyMJczrVs9PmxQ8OgEoNkP8GTBeEJHiqA1FDFaulCi1Opaufn4KDFBgnGglQ
+         5xUQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:dkim-signature;
-        bh=MLE6KK5gFMf2XsogUqCDNWEoA2wLRWIKBwIRKG5g89I=;
-        fh=Y7gFrO/kxQjAipkG6gJY6fG4DKtWGYYdhT4uP/Dj9qc=;
-        b=yvFH8M9xGm517Hg1mVu19MZON8vkHSZR7z+noDWE4xLDiFSVkOLUifbej6AYvK5yn2
-         ZB4/fMrs8/lERDditNm0A44Yx1Eg1TWagCETPzWTMQ8QjUmTADMEMltTYU/2SXD5kkxY
-         9pVtOcjCqZ5mZeQauL7zKmSFoQ+eLbNsZdqQrm/Mp8wCFnfIhV8bp2sxQ3m0YB6/I3Ew
-         aTY8wUvKc8Xg8TmNqYs8bsDzJe3eSih8SWTrdICdTTb9/wxNghJp9qz+jWK51cVIKnG0
-         Gz1GScTaQsRdEAjzyIv2F4cy1qSPnZBifeOCbE8hPhbc2RjVqLNQqhRLPyzP85kdf9U7
-         26UQ==;
+        bh=VhIU0H8zCkQcv5+ATX29zXYWBb/3ZffF8LHXN416OVw=;
+        fh=QsxuhUBNyq2F7/1UitCRN/j+l2ZGR7FJ1BwILMh3mGA=;
+        b=wiTuxHwF/vaRfBeV7iVUdikR32G5SjKtoPS2MxDI0vyhN4UNVnRtlUKehTZdTNH3uZ
+         7EP0mMFgpOVR6GXpOL7ZpsJTDuybQGz3IFrZa1cJ7Tk5ebwZ6RCko/NpOBV69ixlxnxW
+         GIkk/ADvzv/fK8qGy9EbOUqCfnceo2dY0aF++qfzoNtP49B56LrpW2246RJdNMyan1JD
+         ic0bEXV+oz4CAs8ijR0qAFxRnv6TzP5EV5cQHboaAGy+wfZA0JI3yl5W0m/qUg/+TZWs
+         JbPVpD9/cR6K8wWy0NSZi7zbpqZjf4mB5IIWuPIomP8GfbDocnI9SkuV5AchQXrltS51
+         Ai/Q==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=E6yB6w6P;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of linux-kernel+bounces-270896-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-270896-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <linux-kernel+bounces-270896-alex.bennee=linaro.org@vger.kernel.org>
-Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [2604:1380:45e3:2400::1])
-        by mx.google.com with ESMTPS id d9443c01a7336-1fed7fcb585si168950635ad.519.2024.08.01.01.36.51
-        for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 01 Aug 2024 01:36:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of linux-kernel+bounces-270896-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) client-ip=2604:1380:45e3:2400::1;
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@intel.com header.s=Intel header.b=hh2iLbsg;
+       spf=pass (google.com: domain of zhao1.liu@intel.com designates 198.175.65.21 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Return-Path: <zhao1.liu@intel.com>
+Received: from mgamail.intel.com (mgamail.intel.com. [198.175.65.21])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6bb3faca26bsi177609126d6.435.2024.08.01.02.21.21
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 01 Aug 2024 02:21:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of zhao1.liu@intel.com designates 198.175.65.21 as permitted sender) client-ip=198.175.65.21;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=E6yB6w6P;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of linux-kernel+bounces-270896-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-270896-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by sv.mirrors.kernel.org (Postfix) with ESMTPS id BBCD52847C7
-	for <alex.bennee@linaro.org>; Thu,  1 Aug 2024 08:36:50 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id E387216EB5A;
-	Thu,  1 Aug 2024 08:36:38 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="E6yB6w6P"
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A2C4D16DC12
-	for <linux-kernel@vger.kernel.org>; Thu,  1 Aug 2024 08:36:36 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.133.124
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1722501398; cv=none; b=Qo7JSO3VjOUX59Rha14kRlP85E5InqcBJ4i3nJaEPXIBq/TnmqH9TITH+ykADtnu9HKGFJTtubdKAnxHtQpF2BHhIL/GoLQolHiXE+vAl8gcZ2/Qdzgw0piuBHnrerKDJURwTzDHswS4OTRyDaTfXXNQfbCFZqFOIIkEdzT4WRY=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1722501398; c=relaxed/simple;
-	bh=53Gol62HXI8ANgITIavk6nlOE1BZliLnA74q+AhXJoA=;
-	h=Date:From:To:Cc:Subject:Message-ID:In-Reply-To:References:
-	 MIME-Version:Content-Type; b=FXIPo7z0z/plXTku4o2C3ShSQUmoCW6PYJLtQ0NHvbpJXc9TCUrM05kXbVgIpajjroN4NDehuCMZk8h0qutLCIPE1iIn7h1k3Ky+VKfXLyosRhIXJ7VzEXUAwqB66fKTfJGLGKrqrFijiA9XH/Bgs1kfFnCUNeI4oPmtbkQgZF4=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=E6yB6w6P; arc=none smtp.client-ip=170.10.133.124
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1722501395;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=MLE6KK5gFMf2XsogUqCDNWEoA2wLRWIKBwIRKG5g89I=;
-	b=E6yB6w6PthGWFotrW9XGzK3xtj1f2kv2fIPZFSW2NBMzRxwNlAesbbytcpc3ibmAomf3v9
-	ylhicTyhjzbExvBK9E01T//he6Qave8TH7l4IHEpLv8htFy2JTS72g0JMerppIdPwJPQke
-	cB4h/mlvglxy0Y4hfk0SIJ5AmwGVfGs=
-Received: from mail-lj1-f197.google.com (mail-lj1-f197.google.com
- [209.85.208.197]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-208-7lyaByPMNxO8phBjFt29XQ-1; Thu, 01 Aug 2024 04:36:34 -0400
-X-MC-Unique: 7lyaByPMNxO8phBjFt29XQ-1
-Received: by mail-lj1-f197.google.com with SMTP id 38308e7fff4ca-2f01bd7ad5eso66975951fa.2
-        for <linux-kernel@vger.kernel.org>; Thu, 01 Aug 2024 01:36:34 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1722501393; x=1723106193;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=MLE6KK5gFMf2XsogUqCDNWEoA2wLRWIKBwIRKG5g89I=;
-        b=DcGB96NFYUXVnLm7JrP5e5vNzBaPMcd6V/jvRZO9RKuh/MkNyP70rrKhX0KD0P83BT
-         JpHUrMcPBGsPDGPNwTOP3WkL74n6AUZnxLc4b7odvlkyZzI+1JJpF11faiFpD8sVuQqZ
-         GjJQxveuL0Yi4HicLsZ8SWqef/nDK9ap/ndUCp8ko/Zr0UIAOWxHZHQlyx62/ains3Dv
-         JS1E/iG2i6XsUYMfQWe8dyDUFMnILYeHp9CexCRq4Qmew36zGRhwTMH7H2df3JRt4hLH
-         kdDlAjeVBqMODS6rnwjjE6CNe4xpMh9azQ4PQOreXCd0DHP+KQH8WzSmMikkkykjvo6s
-         JNpw==
-X-Forwarded-Encrypted: i=1; AJvYcCV3jbMJYD/9qzRX9kzRoTMAD+F6XL8S+g32cCXqFH0GEp46PSeiLAdeUoGE4Ga0sPrzXNiLoK2rdX9isuTeK4v5QrtP6unpWH0lxgXr
-X-Gm-Message-State: AOJu0YxEJJXuqccYt8blyPRVBi5AmYIjpBeCyiVIrPBfrksRQDXbLnp1
-	9igco1hUc/+98ZlIhUr03zk9KJdExNeX4EKT+85rU8bn6MMuqvmf+9SSfmDDiRPE2415PA7SCDm
-	hTSkPfoCh8qOMsN9L86Xuy2wj21HN8EiO113SOrOC9jQGCp5ZQ9wzhrwac2oGWw==
-X-Received: by 2002:a05:651c:2228:b0:2ef:2e1c:79ae with SMTP id 38308e7fff4ca-2f1530f24a1mr16821301fa.19.1722501392764;
-        Thu, 01 Aug 2024 01:36:32 -0700 (PDT)
-X-Received: by 2002:a05:651c:2228:b0:2ef:2e1c:79ae with SMTP id 38308e7fff4ca-2f1530f24a1mr16819291fa.19.1722501389463;
-        Thu, 01 Aug 2024 01:36:29 -0700 (PDT)
-Received: from imammedo.users.ipa.redhat.com (nat-pool-brq-t.redhat.com. [213.175.37.10])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4282bb232besm47864495e9.48.2024.08.01.01.36.27
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 01 Aug 2024 01:36:28 -0700 (PDT)
-Date: Thu, 1 Aug 2024 10:36:23 +0200
-From: Igor Mammedov <imammedo@redhat.com>
-To: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
-Cc: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>, Shiju Jose
- <shiju.jose@huawei.com>, "Michael S. Tsirkin" <mst@redhat.com>, Ani Sinha
- <anisinha@redhat.com>, Dongjiu Geng <gengdongjiu1@gmail.com>, Eric Blake
- <eblake@redhat.com>, Markus Armbruster <armbru@redhat.com>, Michael Roth
- <michael.roth@amd.com>, Paolo Bonzini <pbonzini@redhat.com>, Peter Maydell
- <peter.maydell@linaro.org>, <linux-kernel@vger.kernel.org>,
- <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
-Subject: Re: [PATCH v3 4/7] acpi/ghes: Add a logic to handle block addresses
- and FW first ARM processor error injection
-Message-ID: <20240801103623.2a74012e@imammedo.users.ipa.redhat.com>
-In-Reply-To: <20240731095719.000004dc@Huawei.com>
-References: <cover.1721630625.git.mchehab+huawei@kernel.org>
-	<6a3542a7d8acfbf88c906ec6f6dc5a697257b461.1721630625.git.mchehab+huawei@kernel.org>
-	<20240730131709.10e72c7d@imammedo.users.ipa.redhat.com>
-	<20240731091133.07ddd58c@foz.lan>
-	<20240731095719.000004dc@Huawei.com>
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
-Precedence: bulk
-X-Mailing-List: linux-kernel@vger.kernel.org
-List-Id: <linux-kernel.vger.kernel.org>
-List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
+       dkim=pass header.i=@intel.com header.s=Intel header.b=hh2iLbsg;
+       spf=pass (google.com: domain of zhao1.liu@intel.com designates 198.175.65.21 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1722504083; x=1754040083;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=Xmg/968fCVUCGZYT797Z9jjQKkMZwiEQFs2Df4qxxrw=;
+  b=hh2iLbsgRC+AXn5vUc9zVHi63dyBOpVq72j7e4+QreQ+Wv5iOlqY5PT+
+   lcu8igdjgU6AtQ/OPA2pSoZrHRJJC1Ztdmw1ch9Fruido9+EGplOvw5m+
+   IFdDUjDkZ1MSwf9jKDadCDNOBB9G0lnnKE6fpVeqRA0QvY04cB4M0fcDf
+   IrbeCAVOnjIX2bya6w0qIGG3N5eZT95DTS7c0OdNBj5PJUoMA6yyTlnOF
+   c6QR6AGqMyfdWrXUZ56HVWY6voamLLJ9ts7f1/RiH+9IBE2+ZsQ8OKcms
+   47h/cvPKDciSBxaNRSRXVGvvLa1E4as8w53MLTLXPeIKcTQWmcYTv92RY
+   A==;
+X-CSE-ConnectionGUID: YFwdBi4+SiScE8EIbCvw6g==
+X-CSE-MsgGUID: u9k7FL/ZRJmaZlfnuWUX6g==
+X-IronPort-AV: E=McAfee;i="6700,10204,11150"; a="20385177"
+X-IronPort-AV: E=Sophos;i="6.09,254,1716274800"; 
+   d="scan'208";a="20385177"
+Received: from orviesa005.jf.intel.com ([10.64.159.145])
+  by orvoesa113.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 01 Aug 2024 02:21:21 -0700
+X-CSE-ConnectionGUID: D84dmaN6SuK0K8x9jJDrlw==
+X-CSE-MsgGUID: YCFLQ0uPTG+Bm5RJ5hwSpA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.09,254,1716274800"; 
+   d="scan'208";a="59787927"
+Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost) ([10.239.160.36])
+  by orviesa005.jf.intel.com with ESMTP; 01 Aug 2024 02:21:16 -0700
+Date: Thu, 1 Aug 2024 17:37:03 +0800
+From: Zhao Liu <zhao1.liu@intel.com>
+To: Markus Armbruster <armbru@redhat.com>
+Cc: Daniel P =?iso-8859-1?Q?=2E_Berrang=E9?= <berrange@redhat.com>,
+	Eduardo Habkost <eduardo@habkost.net>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
+	Yanan Wang <wangyanan55@huawei.com>,
+	"Michael S . Tsirkin" <mst@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Eric Blake <eblake@redhat.com>,
+	Marcelo Tosatti <mtosatti@redhat.com>,
+	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Jonathan Cameron <Jonathan.Cameron@huawei.com>,
+	Sia Jee Heng <jeeheng.sia@starfivetech.com>, qemu-devel@nongnu.org,
+	kvm@vger.kernel.org, qemu-riscv@nongnu.org, qemu-arm@nongnu.org,
+	Zhenyu Wang <zhenyu.z.wang@intel.com>,
+	Dapeng Mi <dapeng1.mi@linux.intel.com>,
+	Yongwei Ma <yongwei.ma@intel.com>
+Subject: Re: [PATCH 8/8] qemu-options: Add the description of smp-cache object
+Message-ID: <ZqtXP9MViOlyhEsu@intel.com>
+References: <20240704031603.1744546-1-zhao1.liu@intel.com>
+ <20240704031603.1744546-9-zhao1.liu@intel.com>
+ <87r0bl35ug.fsf@pond.sub.org>
+ <Zp5vxtXWDeHAdPok@intel.com>
+ <87bk2nnev2.fsf@pond.sub.org>
+ <ZqEN1kZaQcuY4UPG@intel.com>
+ <87le1psuv3.fsf@pond.sub.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-TUID: n5e68XqRSfFf
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <87le1psuv3.fsf@pond.sub.org>
+X-TUID: jqvEH3G4bOlE
 
-On Wed, 31 Jul 2024 09:57:19 +0100
-Jonathan Cameron <Jonathan.Cameron@Huawei.com> wrote:
-
-> On Wed, 31 Jul 2024 09:11:33 +0200
-> Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
+On Thu, Jul 25, 2024 at 11:07:12AM +0200, Markus Armbruster wrote:
+> Date: Thu, 25 Jul 2024 11:07:12 +0200
+> From: Markus Armbruster <armbru@redhat.com>
+> Subject: Re: [PATCH 8/8] qemu-options: Add the description of smp-cache
+>  object
 > 
-> > Em Tue, 30 Jul 2024 13:17:09 +0200
-> > Igor Mammedov <imammedo@redhat.com> escreveu:
-> >   
-> > > On Mon, 22 Jul 2024 08:45:56 +0200
-> > > Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
-[...]
-> > > Preferably make it generic enough to handle
-> > > not only ARM but other error formats HEST is
-> > > able to handle.    
-> > 
-> > A too generic interface doesn't sound feasible to me, as the
-> > EINJ code needs to check QEMU implementation details before
-> > doing the error inject.  
+> Zhao Liu <zhao1.liu@intel.com> writes:
 > 
-> To be clear we are talking here about a script that
-> generates 'similar' stuff to ACPI EINJ does and injects
-> via qapi, not guest injection (which is almost always locked
-> down on production machines / distros because of the footgun
-> aspect).  + ACPI EINJ interface suffers exactly the same
-> problems with state discoverability we have with a raw interface here.
-> (I checked with Mauro offline that I'd interpreted this
-> comment correctly!)
+> > Hi Markus and Daniel,
+> >
+> > I have the questions about the -object per cache implementation:
+> >
+> > On Wed, Jul 24, 2024 at 02:39:29PM +0200, Markus Armbruster wrote:
+> >> Date: Wed, 24 Jul 2024 14:39:29 +0200
+> >> From: Markus Armbruster <armbru@redhat.com>
+> >> Subject: Re: [PATCH 8/8] qemu-options: Add the description of smp-cache
+> >>  object
+> >> 
+> >> Zhao Liu <zhao1.liu@intel.com> writes:
+> >> 
+> >> > Hi Markus,
+> >> >
+> >> > On Mon, Jul 22, 2024 at 03:37:43PM +0200, Markus Armbruster wrote:
+> >> >> Date: Mon, 22 Jul 2024 15:37:43 +0200
+> >> >> From: Markus Armbruster <armbru@redhat.com>
+> >> >> Subject: Re: [PATCH 8/8] qemu-options: Add the description of smp-cache
+> >> >>  object
+> >> >> 
+> >> >> Zhao Liu <zhao1.liu@intel.com> writes:
+> >> >> 
+> >> >> > Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
+> >> >> 
+> >> >> This patch is just documentation.  The code got added in some previous
+> >> >> patch.  Would it make sense to squash this patch into that previous
+> >> >> patch?
+> >> >
+> >> > OK, I'll merge them.
+> >> >
+> >> >> > ---
+> >> >> > Changes since RFC v2:
+> >> >> >  * Rewrote the document of smp-cache object.
+> >> >> >
+> >> >> > Changes since RFC v1:
+> >> >> >  * Use "*_cache=topo_level" as -smp example as the original "level"
+> >> >> >    term for a cache has a totally different meaning. (Jonathan)
+> >> >> > ---
+> >> >> >  qemu-options.hx | 58 +++++++++++++++++++++++++++++++++++++++++++++++++
+> >> >> >  1 file changed, 58 insertions(+)
+> >> >> >
+> >> >> > diff --git a/qemu-options.hx b/qemu-options.hx
+> >> >> > index 8ca7f34ef0c8..4b84f4508a6e 100644
+> >> >> > --- a/qemu-options.hx
+> >> >> > +++ b/qemu-options.hx
+> >> >> > @@ -159,6 +159,15 @@ SRST
+> >> >> >          ::
+> >> >> >  
+> >> >> >              -machine cxl-fmw.0.targets.0=cxl.0,cxl-fmw.0.targets.1=cxl.1,cxl-fmw.0.size=128G,cxl-fmw.0.interleave-granularity=512
+> >> >> > +
+> >> >> > +    ``smp-cache='id'``
+> >> >> > +        Allows to configure cache property (now only the cache topology level).
+> >> >> > +
+> >> >> > +        For example:
+> >> >> > +        ::
+> >> >> > +
+> >> >> > +            -object '{"qom-type":"smp-cache","id":"cache","caches":[{"name":"l1d","topo":"core"},{"name":"l1i","topo":"core"},{"name":"l2","topo":"module"},{"name":"l3","topo":"die"}]}'
+> >> >> > +            -machine smp-cache=cache
+> >> >> >  ERST
+> >> >> >  
+> >> >> >  DEF("M", HAS_ARG, QEMU_OPTION_M,
+> >> >> > @@ -5871,6 +5880,55 @@ SRST
+> >> >> >          ::
+> >> >> >  
+> >> >> >              (qemu) qom-set /objects/iothread1 poll-max-ns 100000
+> >> >> > +
+> >> >> > +    ``-object '{"qom-type":"smp-cache","id":id,"caches":[{"name":cache_name,"topo":cache_topo}]}'``
+> >> >> > +        Create an smp-cache object that configures machine's cache
+> >> >> > +        property. Currently, cache property only include cache topology
+> >> >> > +        level.
+> >> >> > +
+> >> >> > +        This option must be written in JSON format to support JSON list.
+> >> >> 
+> >> >> Why?
+> >> >
+> >> > I'm not familiar with this, so I hope you could educate me if I'm wrong.
+> >> >
+> >> > All I know so far is for -object that defining a list can only be done in
+> >> > JSON format and not with a numeric index like a keyval based option, like:
+> >> >
+> >> > -object smp-cache,id=cache0,caches.0.name=l1i,caches.0.topo=core: Parameter 'caches' is missing
+> >> >
+> >> > the above doesn't work.
+> >> >
+> >> > Is there any other way to specify a list in command line?
+> >> 
+> >> The command line is a big, sprawling mess :)
+> >> 
+> >> -object supports either a JSON or a QemuOpts argument.  *Not* keyval!
+> >> 
+> >> Both QemuOpts and keyval parse something like KEY=VALUE,...  Keyval
+> >> supports arrays and objects via dotted keys.  QemuOpts doesn't natively
+> >> support arrays and objects, but its users can hack around that
+> >> limitation in various ways.  -object doesn't.  So you're right, it's
+> >> JSON or bust here.
+> >> 
+> >> However, if we used one object per cache instead, we could get something
+> >> like
+> >> 
+> >>     -object smp-cache,name=l1d,...
+> >>     -object smp-cache,name=l1u,...
+> >>     -object smp-cache,name=l2,...
+> >>     ...
+> >
+> > Current, I use -object to create a smp_cache object, and link it to
+> > MachineState by -machine,smp-cache=obj_id.
+> >
+> > Then for the objects per cache, how could I link them to machine?
+> >
+> > Is it possible that I create something static in smp_cache.c and expose
+> > all the cache information to machine through some interface?
 > 
-> > 
-> > See, processor is probably the simplest error injection
-> > source, as most of the fields there aren't related to how
-> > the hardware simulation is done.
-> > 
-> > Yet, if you see patch 7 of this series, you'll notice that some
-> > fields should actually be filled based on the emulation.
-> > 
-> > On ARM, we have some IDs that depend on the emulation
-> > (MIDR, MPIDR, power state). Doing that on userspace may require
-> > a QAPI to query them.  
-
-QEMU has qmp commands to query QOM tree, device properties is
-likely what you'd be interested with.
-Adding new QAPI might be not necessary as long as needed
-data point are exposed via device's properties.
-
-And additional properties are relatively cheap, especially if their
-names prefixed with 'x-' which by convention means
-/internal use, not stable, not ABI/
-
-Well whole qmp tree structure hasn't been declared as ABI (as far as I know),
-but it's relatively stable and we try not to mess with it much
-(especially for mainstream virt machines), as some external users
-might (ab)use it anyway (no promises on QEMU side though).
-
-On contrary QAPI is mostly considered as ABI QEMU provides
-to its users with burden to maintain it stability.
-
-If injection script is internal tool to QEMU, it should be fine
-for it to use qom introspection to get data and limit QAPI
-necessary minimum only.
-To make sure it won't be broken silently by 'innocent' QEMU
-contributors, have a CI job to make sure that it still works
-as intended.
-
-> We could strip back the QAPI part to only the bits that are
-> not dependent on state.  However, the kicker to that is we'd
-> need to make sure all that state is available to an external
-> tool (or fully controllable from initial launch command line).
-> I'm not sure where the gaps are but, I'm fairly sure there
-> will be some.  Doesn't save much code other than documentation
-> of the QAPI.
+> Good questions.  However, before we head deeper into the weeds here, I
+> feel we should discuss the things below.  And before we do that, I need
+> a clear understanding of the use case.  Elsewhere in this thread, I just
+> described the use case as I understand it.  Please reply there.  I'll
+> then come back to this message.
 > 
-> > 
-> > The memory layout, however, is the most complex one. Even for
-> > an ARM processor CPER (which is the simplest scenario), the 
-> > physical/virtual address need to be checked against the emulation
-> > environment.
-> > 
-> > Other error sources (like memory errors, CXL, etc) will require
-> > a deep knowledge about how QEMU mapped such devices.  
-> 
-> For CXL stuff we'll piggy back on native error injection interfaces
-> that are already there and couldn't be avoided because they
-> are writing a bunch of register state (that we elide in the FW
-> first path). 
-> https://lore.kernel.org/qemu-devel/20240205141940.31111-12-Jonathan.Cameron@huawei.com/
-> So we won't be adding new QAPI, but the error record generation logic
-> will be in QEMU.  For background, the CXL FW first error injection
-> has taken a back seat to the ARM errors because of the obvious
-> other factor that CXL isn't supported on ARM in upstream QEMU.
-> Once I escape a few near term deadlines I'll add the x86
-> support for GHESv2 / SCI interrupt signaling as you'd see on a
-> typical x86 server.
-> 
-> > 
-> > So, in practice, if we move this to an EINJ script, we'll need
-> > to add a probably more complex QAPI to allow querying the memory
-> > layout and other device and CPU specific bindings.
-> > 
-> > Also, we don't know what newer versions of ACPI spec will reserve
-> > us. See, even the HEST table contents is dependent of the HEST 
-> > revision number, as made clear at the ACPI 6.5 notes:
-> > 
-> > 	https://uefi.org/specs/ACPI/6.5/18_Platform_Error_Interfaces.html#acpi-error-source
-> > 
-> > and at:
-> > 
-> > 	https://uefi.org/specs/ACPI/6.5/18_Platform_Error_Interfaces.html#error-source-structure-header-type-12-onward
-> > 
-> > So, if we're willing to add support for a more generic "raw data"
-> > QAPI, I would still do it per-type, and for the fields that won't
-> > require knowledge of the device-emulation details.  
-> 
-> Could blend the two options and provide no qapi for the bits
-> that are QEMU state dependent - if fuzzing, can inject
-> the full record raw as doesn't have to be valid state anyway.
-> 
-> > 
-> > Btw, my proposal on patch 7 of this series is to have raw data
-> > for:
-> > 	- the error-info field;
-> > 	- registers dump;
-> > 	- micro-architecture specific data.
-> > 
-> > I don't mind trying to have more raw data there as I see (marginal) 
-> > benefits of allowing to generate CPER invalid records [1], but some of
-> > those  fields need to be validated and/or filled internally at QEMU - if
-> > not forced to an specific value by the caller.
-> > 
-> > [1] a raw data EINJ can be useful for fuzzy logic fault detection to 
-> >     check if badly formed packages won't cause a Kernel panic or be
-> >     an exploit. Yet, not really a concern for APEI, as if the hardware
-> >     is faulty, a Kernel panic is not out of the table. Also, if the
-> >     the BIOS is already compromised and has malicious code on it, 
-> >     the EINJ interface is not the main concern.
-> >   
-> > > PS:
-> > > For user convenience, QEMU can carry a script that
-> > > could help generate this raw value in user friendly way
-> > > but at the same time it won't put maintenance
-> > > burden on QEMU itself.    
-> > 
-> > The script will still require reviews, and the same code will 
-> > be there. So, from maintenance burden, there won't be much
-> > difference.  
+> [...]
 
-it makes a lot of difference if code is integral part qemu binary,
-(less people have to spend time on reviewing it, avoid increasing
-attack surface, ... (other made up reasons)).
+Jonathan and I provided different use cases for x86 and Arm. Could we
+come back here to continue the discussion? :)
 
-Implementing shim/proxy in QEMU and putting all error composing logic
-into a separate script (even if it's a part QEMU source), shifts
-most of the burden to whomever (I'd assume you'd volunteer yourself)
-would maintain the script.
-
-If script breaks, it doesn't affect QEMU itself (nor I believe it
-should affect release process), script's maintainer(s) can have their
-own schedule/process on how to deal with it.
- 
-> Agreed. I'd also be very keen that the script is tightly coupled to
-> QEMU as doesn't make sense to carry with kernel or RAS daemon and
-> I'd want to ultimately get this stuff into all the appropriate
-> CI flows.
-
-Agreed, it makes much more sense to carry such script as a part of QEMU.
-
-
-> > 
-> > Btw, I'm actually using myself a script to test it, currently
-> > sitting together with rasdaemon - which is the Linux tool to detect
-> > and handle hardware errors:
-> > 
-> > 	https://github.com/mchehab/rasdaemon/blob/master/contrib/qemu_einj.py
-> > 
-> > as it helps a lot when trying to simulate more complex errors.
-> > 
-> > Once QEMU gains support to inject processor errors, I can prepare a 
-> > separate patch to move it to QEMU.
-> > 
-> > Thanks,
-> > Mauro  
-> 
-> So tricky questions. I'm not sure which way is the least painful!
-> 
-> Jonathan
-> 
-> 
+Thanks,
+Zhao
 

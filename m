@@ -1,121 +1,101 @@
-Received: by 2002:a17:505:3f8c:b0:1be9:327d:8ee3 with SMTP id bm12csp936215njb;
-        Thu, 1 Aug 2024 06:56:06 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUAYVaKBMb+QATpNd2266kb+kXBKUcDJpqcfK+OXxgMyaE1wO72v6NrF18+aPKSCRH7wzXoE28T4YeDnNEvnHZWpREfHogk
-X-Google-Smtp-Source: AGHT+IHusIx8dFigwCDcX9iE3FJZcSd4As0WRMf2ttgAdBesCSPA1Y+CbQwP1eRtmqwSz1wVs65W
-X-Received: by 2002:a05:6830:6dcf:b0:709:49c5:fd99 with SMTP id 46e09a7af769-709b31fc75cmr230877a34.4.1722520566181;
-        Thu, 01 Aug 2024 06:56:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1722520566; cv=none;
+Received: by 2002:a17:505:3f8c:b0:1be9:327d:8ee3 with SMTP id bm12csp919657njb;
+        Thu, 1 Aug 2024 06:16:20 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVO2g2YhcOyhUlzGGnTvjIQvVhn1nEhn8iyKs30QMPBYSukE8v0neomDy5hyTIRTvonNoebf5PMsiyxaJ+E38WOXuLNZjYh
+X-Google-Smtp-Source: AGHT+IGl3ajAh5/KPY6DI1em/98E/JCv4zunuiy+6sEQUZYOucs+5TvOuevpyiOHlki128220xmC
+X-Received: by 2002:a05:6102:512a:b0:493:b9a0:8ee8 with SMTP id ada2fe7eead31-4945beff35emr306042137.22.1722518180370;
+        Thu, 01 Aug 2024 06:16:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1722518180; cv=none;
         d=google.com; s=arc-20160816;
-        b=Z6PwpI4pRnIIbuC/Bv61owC5qsnFA3gaQEA6ce4EtKvoj1fz5fJd8Goh8FyVQkWO/N
-         gaaZ7zigiT5UjQsEKriWOAr4vZWKpBALTnXeh+QhcVuwoN7BcOecsUWxw5ZcGNbMTLfp
-         0bXCHW0srL++FzLDPvIU++e2+DTC/YQvRBx3crsnFyeRN2y3Wlp1HyCh3KGOyr0+4oGX
-         UPx/nXVnxwrfIvmPJ131IV0xnPpjzRqeKsrEzswFpYlviu8qQGV5FqxX0/jPs9pV4tcm
-         8M24/mevQzAYx02qKPqSsmlfUf5SZGwqFJU4/FSSzorpOIguHTXxKSSkfeNb3eaKkCP4
-         XVsg==
+        b=xxcO2yxla/qvQ3zC8KDVXPxeYAioa4vapoTlvAYqmDIuFrc/+i0uYwcfLInM1qKjJH
+         GouvcXvS6CP0OZGDOu8iLlPKWWE33eih2LhErCFirYu/v3s15zM1VPVnD7KBK5DW4+h9
+         97ULO876jo8r5CYn6d5U78wv5HYwwbbPmIX85lyWr3Icg8LXThlM1QhYCJCPpzeiOTby
+         dCn3qt9BgHWeTzJFMRXzm1jVMGdopWf8pcqV0+blZVxAO07oFnZWGWp3bEqBCkZcjU9H
+         2gHuL8O8BNS2i7vw+9C/+tD1d4opgEbMy+7oeDRpQ+iHtbG2v8OFU7K+85SqXCSWCExc
+         3xCg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=0MZp10X+tqR0pGIQSfiNJKCWljR+FU4ph0z8rqaSaxI=;
-        fh=d6pdI99bZZb9WwhhEyP7AeqaOCkqRoIFC5XhhxSXzLY=;
-        b=tHb/vaHRotpBHUrPZFa3Rh24Q2dqxA4zZaYrzmBobeWENPyxPwvAM7+t5OA0QEFDqc
-         iHCjL+XUFrxEMxRshNJqxL5Lp0ZzrwqUODwwUzzUJVAFcFZ+mPyIg2hCwu/YPr8xnCqK
-         zlgBE+x2PORKvPLUR1KFbJWHWWD1LzUTskWgC8mywfISZ8FGw2KJXOZT6+AofUjVrDTc
-         y7ZhpEGgnUAKjl8mZrSyeqAo9z7RsHuIA3MhNmCY5/WonAccm9VUzo9WhysyI5Wbnlvd
-         aTuyDsG+LV2gUVDTYv4bQhvaHSmUKezVQ/DfO9q7c9qQyXJeNLmjd2cjjmBMGrg4UuNP
-         2nLQ==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:subject:cc:to:from
+         :date:dkim-signature;
+        bh=4O/KsVorwyhhiGSERaAncvldDsUoqDAGqnQbILgTTkE=;
+        fh=/9oVe4uvmdDCPbUU8nEUIeLKGN99HCB7oHgRKtCMQxY=;
+        b=k21ofqeUm3IBTIdMEe9JRBzCxB/UADzjtyADiCOwJnerXcQy8rO5eUfJT7i4xvlGqf
+         hFz7IqKCHkriNZggAA+yCtjPrzhrP9GIXecZ+KgRSiqBiqfy07kBXL3pje6i2F+P77Wg
+         5GlY3MJPmcO1Vb7FnkZ9qJHD/6br/QYXH46CoEub+q6LJYnIZVhrM7xYoqOvdsJg34AV
+         CL8KLKq/ANt2+BWeS5pZZbS1bf+OZ0VhgSvexZVxMKvInEJKHUcJmf/SmpXqjjTrSiMa
+         PzxL7tmfNGCi5kPD5atFaz4AzkuhOeh7GW5G62E52IyYk9a/DIi4Md9s73Fj/+CiE1vA
+         9a8A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@sifive.com header.s=google header.b=Sp5EDIRb;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=DzclRxhr;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=sifive.com;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-44fe851b9easi185784451cf.690.2024.08.01.06.56.06
+        by mx.google.com with ESMTPS id ada2fe7eead31-493d95fce56si2661471137.121.2024.08.01.06.16.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 01 Aug 2024 06:56:06 -0700 (PDT)
+        Thu, 01 Aug 2024 06:16:20 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@sifive.com header.s=google header.b=Sp5EDIRb;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=DzclRxhr;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=sifive.com;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sZWHM-0006k4-4J; Thu, 01 Aug 2024 09:55:41 -0400
+	id 1sZVeu-0003R0-M5; Thu, 01 Aug 2024 09:15:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jim.shu@sifive.com>)
- id 1sZWHK-0006im-6i
- for qemu-arm@nongnu.org; Thu, 01 Aug 2024 09:55:38 -0400
-Received: from mail-lj1-x231.google.com ([2a00:1450:4864:20::231])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <jim.shu@sifive.com>)
- id 1sZWH8-0002kb-PJ
- for qemu-arm@nongnu.org; Thu, 01 Aug 2024 09:55:28 -0400
-Received: by mail-lj1-x231.google.com with SMTP id
- 38308e7fff4ca-2ef23d04541so82904021fa.2
- for <qemu-arm@nongnu.org>; Thu, 01 Aug 2024 06:55:25 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=sifive.com; s=google; t=1722520524; x=1723125324; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=0MZp10X+tqR0pGIQSfiNJKCWljR+FU4ph0z8rqaSaxI=;
- b=Sp5EDIRbZgXOK2dlk+r6TibCqDtaP/H5cIhNOogu6nrgGeStrmnO0JnPL/o0KKXQoo
- FCivTyt9Lb4WFzQkYzixHYqdcw6fUQ44st+67N6XkQ81BgFqQCTIsdMG3P+Z3qX7sMAB
- tbvAbDtTA9OVOYtmD1ytMh3kvDkB7SwVdFfEfc3CsRyhn9SNjmTSC3q1pQYYrulDUjpi
- PAgpdD1873gWfHVgF+/9EJUxwSHMer9oOTFPbVn414KbYq5QvcEMAFSXIAKzmmpC7vzH
- IWU+7UwM8TCOiKCFfQtHWnx6PM9icoWqMEoiorjwrR06Fe+iH57iskCffmB/xJGrjRkD
- JR+w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1722520524; x=1723125324;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=0MZp10X+tqR0pGIQSfiNJKCWljR+FU4ph0z8rqaSaxI=;
- b=uTWsS9dpy/EBsmRQY0KClINltwpzgV4usl/uMBr3lE0ac4tHd4fSS0xB7paEhm98n+
- GxsxI+gpqhHUhlPKP6INzhgxSCsvsSlpZhY7ju4UkqTyj58Oq9rNCr6Ng8K0VwImkGlT
- qIQYFaDAV/xdeobVGeYctQLakkMUUMKGIFh+OU6CxKdl4tOu6vl3vtIVmvFTroDWrC9C
- /2qmbkN0UbMc3Aw0cnkjOVWqlRmgpoAqt1P41Pj0hk09jqNZy/FZepxl8RvVHYHR34I8
- V5L0A3KT7v+Sb8cX7+50ZiMSFD5bOY0SXgAlplcktZURHCBvXX3SZjr3LcxgCWJupYTu
- GkTA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXRcsA+iSpPE6Dq6s5TaP2lnl5ZtGzKWmc88duDV+enDup8X567jAlUoTuH+AzB4g4GVygaTPb5kR4iy8H39/VSxtP5
-X-Gm-Message-State: AOJu0YzZ1Yzaf8kjABtis5l208yOy8I+SZLCEyKX8Va4a2kWnHmE1yGj
- ah9OBvfjdl1vliQeVJ+ttdSOI0LkET6SbuBsEOjYkpqvP53ct6DLIX7JZ+mCXsHBzXsWHEqRh+k
- Td6vU1acxpqOcvuPEXHEAteXNPuqGSBC49T5u+A==
-X-Received: by 2002:a05:6512:2c03:b0:52e:9ac6:a20f with SMTP id
- 2adb3069b0e04-530b61ed13bmr1557976e87.37.1722520523597; Thu, 01 Aug 2024
- 06:55:23 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <mchehab+huawei@kernel.org>)
+ id 1sZVes-0003Hp-Dr; Thu, 01 Aug 2024 09:15:54 -0400
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mchehab+huawei@kernel.org>)
+ id 1sZVeq-0007ht-5M; Thu, 01 Aug 2024 09:15:54 -0400
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by dfw.source.kernel.org (Postfix) with ESMTP id A4959628B7;
+ Thu,  1 Aug 2024 13:15:50 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1840EC32786;
+ Thu,  1 Aug 2024 13:15:47 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1722518150;
+ bh=/ynuOET3kqXPxIs7OTQjFHflicpksvorsX2OImbJQXQ=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=DzclRxhrP1lTsQq9QJqhnAOyyl1UR+j+M8xVPNUAwklNL+E/9AJ0EbloztWcn9oeg
+ DTn5fUH1AaD/aFKaGtFvGgyPWrsN+tsbOm3ORrQVLrtNm9fXebQmhklGL/lqKrlvvX
+ ZH+vE+8TBf591YEJ8xbjKY6EUfKgVKmGyqUrRlm4ctN5WyC1oZTF2ptyo4q0PkLtC0
+ 5Wj8DCjn72GChw54Br/o+QcCSddlM/TKmrRIZThxH2n3dKU1OvZAxvzGR6lPve1Omr
+ ltZneqv8/FzN/kXYFFCSGS8UVEyvVt2uaUhSaeHo3IHT3+m85yM27PjSsOthW9wmGE
+ RGQjgHDUSPwtw==
+Date: Thu, 1 Aug 2024 15:15:44 +0200
+From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+To: Igor Mammedov <imammedo@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Jonathan Cameron
+ <Jonathan.Cameron@huawei.com>, Shiju Jose <shiju.jose@huawei.com>, "Michael
+ S. Tsirkin" <mst@redhat.com>, Ani Sinha <anisinha@redhat.com>, Shannon Zhao
+ <shannon.zhaosl@gmail.com>, linux-kernel@vger.kernel.org,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [PATCH v3 1/7] arm/virt: place power button pin number on a define
+Message-ID: <20240801151544.2f315598@foz.lan>
+In-Reply-To: <20240730132620.46cca4ce@imammedo.users.ipa.redhat.com>
+References: <cover.1721630625.git.mchehab+huawei@kernel.org>
+ <bf8367bddfdc95e378b5725c732533c3ba20d388.1721630625.git.mchehab+huawei@kernel.org>
+ <20240730092549.6898ff3c@imammedo.users.ipa.redhat.com>
+ <CAFEAcA8VWc3eQZqfJP9k5LYF-9aLChHQ+uS9UBfGV6nvybDxqQ@mail.gmail.com>
+ <20240730132620.46cca4ce@imammedo.users.ipa.redhat.com>
+X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-References: <20240726055933.817-1-jim.shu@sifive.com>
- <20240726055933.817-4-jim.shu@sifive.com>
- <CAFEAcA-ZkcJvFkYyHGi9bXoPvqEzvV0b_z6xaQPLMK9qNHSdCA@mail.gmail.com>
-In-Reply-To: <CAFEAcA-ZkcJvFkYyHGi9bXoPvqEzvV0b_z6xaQPLMK9qNHSdCA@mail.gmail.com>
-From: Jim Shu <jim.shu@sifive.com>
-Date: Thu, 1 Aug 2024 21:55:12 +0800
-Message-ID: <CALw707rwo8w3kFaga_17H+7JPneA7kahqBiLqwo6KGohLV0_SA@mail.gmail.com>
-Subject: Re: [PATCH 3/4] hw/dma: xilinx_axidma: Reset qemu_irq when DMA/Stream
- is reset
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
- Alistair Francis <alistair@alistair23.me>, Jason Wang <jasowang@redhat.com>, 
- "open list:Xilinx Zynq" <qemu-arm@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::231;
- envelope-from=jim.shu@sifive.com; helo=mail-lj1-x231.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2604:1380:4641:c500::1;
+ envelope-from=mchehab+huawei@kernel.org; helo=dfw.source.kernel.org
+X-Spam_score_int: -44
+X-Spam_score: -4.5
+X-Spam_bar: ----
+X-Spam_report: (-4.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.131,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -131,70 +111,78 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 2aMcG94wyXUF
+X-TUID: K+SUXeYj6kxD
 
-Hi Peter,
+Em Tue, 30 Jul 2024 13:26:20 +0200
+Igor Mammedov <imammedo@redhat.com> escreveu:
 
-Except DeviceState::reset(), stream_reset() is only used in
-axidma_write() and axidma_write() has qemu_set_irq() at the end of
-function.
-I think this commit could be dropped. I will remove it in the v2 patchset.
+> On Tue, 30 Jul 2024 09:29:37 +0100
+> Peter Maydell <peter.maydell@linaro.org> wrote:
+> 
+> > On Tue, 30 Jul 2024 at 08:26, Igor Mammedov <imammedo@redhat.com> wrote:  
+> > >
+> > > On Mon, 22 Jul 2024 08:45:53 +0200
+> > > Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
+> > >    
+> > > > Having magic numbers inside the code is not a good idea, as it
+> > > > is error-prone. So, instead, create a macro with the number
+> > > > definition.
+> > > >
+> > > > Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+> > > > Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>    
+> >   
+> > > > diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> > > > index b0c68d66a345..c99c8b1713c6 100644
+> > > > --- a/hw/arm/virt.c
+> > > > +++ b/hw/arm/virt.c
+> > > > @@ -1004,7 +1004,7 @@ static void virt_powerdown_req(Notifier *n, void *opaque)
+> > > >      if (s->acpi_dev) {
+> > > >          acpi_send_event(s->acpi_dev, ACPI_POWER_DOWN_STATUS);
+> > > >      } else {
+> > > > -        /* use gpio Pin 3 for power button event */
+> > > > +        /* use gpio Pin for power button event */
+> > > >          qemu_set_irq(qdev_get_gpio_in(gpio_key_dev, 0), 1);    
+> > >
+> > > /me confused, it was saying Pin 3 but is passing 0 as argument where as elsewhere
+> > > you are passing 3. Is this a bug?    
+> > 
+> > No. The gpio_key_dev is a gpio-key device which has one
+> > input (which you assert to "press the key") and one output,
+> > which goes high when the key is pressed and then falls
+> > 100ms later. The virt board wires up the output of the
+> > gpio-key device to input 3 on the PL061 GPIO controller.
+> > (This happens in create_gpio_keys().) So the code is correct
+> > to assert input 0 on the gpio-key device and the comment
+> > isn't wrong that this results in GPIO pin 3 being asserted:
+> > the link is just indirect.  
+> 
+> it's likely obvious to ARM folks, but maybe comment should
+> clarify above for unaware.
 
+Not sure if a comment here with the pin number is a good idea.
+After all, this patch was originated because we were using
+Pin 6 for GPIO error, while the comment was outdated (stating
+that it was pin 8 instead) :-)
+
+After this series, there will be two GPIO pins used inside arm/virt,
+both defined at arm/virt.h:
+
+	/* GPIO pins */
+	#define GPIO_PIN_POWER_BUTTON  3
+	#define GPIO_PIN_GENERIC_ERROR 6
+
+Those macros are used when GPIOs are created:
+
+	static void create_gpio_keys(char *fdt, DeviceState *pl061_dev,
+	                             uint32_t phandle)
+	{
+	    gpio_key_dev = sysbus_create_simple("gpio-key", -1,
+	                                        qdev_get_gpio_in(pl061_dev,
+                                                         GPIO_PIN_POWER_BUTTON));
+	    gpio_error_dev = sysbus_create_simple("gpio-key", -1,
+	                                          qdev_get_gpio_in(pl061_dev,
+	                                                           GPIO_PIN_GENERIC_ERROR));
+So, at least for me, it is clear that gpio_key_dev is using pin 3.
 
 Thanks,
-Jim Shu
-
-
-
-On Mon, Jul 29, 2024 at 11:23=E2=80=AFPM Peter Maydell <peter.maydell@linar=
-o.org> wrote:
->
-> On Fri, 26 Jul 2024 at 06:59, Jim Shu <jim.shu@sifive.com> wrote:
-> >
-> > Current DMA/Stream reset will clear interrupt pending bit of DMA device=
-.
-> > The qemu_irq of device should be updated at the same time.
-> >
-> > Signed-off-by: Jim Shu <jim.shu@sifive.com>
-> > ---
-> >  hw/dma/xilinx_axidma.c | 25 +++++++++++++------------
-> >  1 file changed, 13 insertions(+), 12 deletions(-)
-> >
-> > diff --git a/hw/dma/xilinx_axidma.c b/hw/dma/xilinx_axidma.c
-> > index 728246f925..beb3fbf1d5 100644
-> > --- a/hw/dma/xilinx_axidma.c
-> > +++ b/hw/dma/xilinx_axidma.c
-> > @@ -177,11 +177,24 @@ static inline int stream_halted(struct Stream *s)
-> >      return !!(s->regs[R_DMASR] & DMASR_HALTED);
-> >  }
-> >
-> > +static void stream_update_irq(struct Stream *s)
-> > +{
-> > +    unsigned int pending, mask, irq;
-> > +
-> > +    pending =3D s->regs[R_DMASR] & DMASR_IRQ_MASK;
-> > +    mask =3D s->regs[R_DMACR] & DMASR_IRQ_MASK;
-> > +
-> > +    irq =3D pending & mask;
-> > +
-> > +    qemu_set_irq(s->irq, !!irq);
-> > +}
-> > +
-> >  static void stream_reset(struct Stream *s)
-> >  {
-> >      s->regs[R_DMASR] =3D DMASR_HALTED;  /* starts up halted.  */
-> >      s->regs[R_DMACR] =3D 1 << 16; /* Starts with one in compl threshol=
-d.  */
-> >      s->sof =3D true;
-> > +    stream_update_irq(s); /* Clear interrupt */
-> >  }
->
-> The general rule of thumb in QEMU is not to call
-> qemu_set_irq() from a DeviceState::reset function,
-> and xilinx_axidma_reset calls stream_reset. I think
-> probably the best thing is to separate out whether
-> this is a DeviceState::reset or a software-triggered
-> reset, and only call qemu_set_irq() in the latter case.
->
-> thanks
-> -- PMM
+Mauro

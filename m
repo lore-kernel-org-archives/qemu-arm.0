@@ -1,226 +1,132 @@
-Received: by 2002:a05:7022:fe04:b0:85:21:bd5b with SMTP id vc4csp979736dlb;
-        Thu, 1 Aug 2024 07:34:23 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCVqytoJXm6+n7lse958K/iOIeo3ouXrR0WmcQtKj0fl8w8m4itatP6aofpbMaWLvy5NcVrrfU7J1XPmAXuiAou9D/XzhiNF
-X-Google-Smtp-Source: AGHT+IGLP28aYUHo5BLwSq1Q0D0c/0gvHEBI4GycMpYbHXdaHRlYGO48AfI3cPWOvEKVJREJLcYk
-X-Received: by 2002:a17:903:228b:b0:1fa:2b89:f549 with SMTP id d9443c01a7336-1ff57250fbbmr4662425ad.10.1722522863658;
-        Thu, 01 Aug 2024 07:34:23 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1722522863; cv=pass;
+Received: by 2002:a17:505:3f8c:b0:1be9:327d:8ee3 with SMTP id bm12csp1123189njb;
+        Thu, 1 Aug 2024 14:50:41 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWEE6ll1rnFyBXWYpk2kqe2h50UWHK1fz9CnuJv6iI/7Ml7I2NwxQlNCNGyYVJ40AzHZSoLt+tE23FEtmXATI3d1nSMOgno
+X-Google-Smtp-Source: AGHT+IGwKoCIidFQ1Fg/ZZxoaVW2/GtGfROaaS8GuZws3nc1tlj8kNLxyfNfAx2MFLBZZ/Wr05b7
+X-Received: by 2002:a05:622a:e:b0:447:e58e:a881 with SMTP id d75a77b69052e-451892a617cmr17451351cf.30.1722549041481;
+        Thu, 01 Aug 2024 14:50:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1722549041; cv=none;
         d=google.com; s=arc-20160816;
-        b=pfohRelDen2HFDmPlzItPmO9MaFrMsI2oEct2DNHDQGG9WwhpA9cgaYuXodqZoxato
-         0TbrPEJDnPtj4iuaauA4j9uuQsEa5X8xVAvMUCTW65J/5TZd5Vft0Ns32kzibZyuETud
-         7qicqwSm57NXSRTz4a8pvljCMkg16CCeGBfofO7iaQPC/9Tf/IukB1EGXFb2QGct4+PV
-         L34XDCFazC5FvGGbDnUinUpPSkJdm5Cgk+P/ZPqIirbfSK/eGmCtwMGLi5vRfA0TKM1e
-         FM1TYR6WmhJKhV0LjxxzrY1QA2mKKqdfRYpnhScM1eSQB84uVq20WIvmZslTQUXC97ma
-         X6Wg==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=3bSmw71LH8431rfZkSviN5PmmfnqC8POnf5tWTKjpM0=;
-        fh=ztu+7y0Pc0MGlFkdBUqcRJ8TIWQg+rF9cUr9MoKbAk4=;
-        b=MlAhpK/ox7ckV8bsU6eFs1FAstunxR7ium5Si0qLOErZk7mV1WjkF4ZkUbMQvJgliz
-         HCKlch3KG/zuOltYBkoXukuH8JNVhfhMKg7T4T8OwCENRE8TXy/39aiG0+m9TqXqg4wu
-         S+sidREkUga6VyFie4YccvzblEVDdWllg8CM7rkRTVigZLDVindIexQulWgO6iJD1bw6
-         J8unZwkWdKi7GRPE0OLi5ujkJDV4CQcy4chb9yqEIEt4m9qBbLz3CwSOEKA+6AUByngc
-         N9hxjoh7Q0IlajthtBDHdnIW3f0dcWivO3KiBfWcB4zanDGLpvkQckM5VaSldHOKi5ar
-         xnfQ==;
+        b=TI02eesbdxCGXYO+O0Ui3b1hpF74o09wYxidT8TxDTdo9nPzX4ghNG50soOqsiffN+
+         Arn1eqxyPPoQwaJ4Bk1DbNHh4Ll4j2TVE0Th1sskmI06xD7laoKIATitL6INmM7/6soU
+         7UsIZ9AeHc7jbNge8KwFhdk20QZx5jpHRhOO11hA1n7SgIFfgadTf8zvwD70V4lIEMgW
+         Z1jwOASHAXwIeoJlX+cKva7b8Y64TPtIFEGl70L1haPRuLr5O8yzTvXXCLVZVcRCehXT
+         rtzg+XHCv85iCsz9uyu/qpYrXFJ1iSGYi4orexqpD7Ara1kTi1BTUvRbom5NOWqv2eVj
+         2c6A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:to:message-id:subject:date:from
+         :dkim-signature;
+        bh=/IGLPG6w2o0+TJsI/ncg6VmIPjh4f0DtiOfJsqgrVys=;
+        fh=H2AmuqulvQE+T5zu97MCEUC3z9wF9NssS7895NhR/+c=;
+        b=srBEZ52nDUeowY532e3RYHb8uQyJMmXp8f/UCn3MeGAid2lee7HjJsy2CvzkFvjcRh
+         sDDXUF6X60Y3T8AFiIvfFeXu0/lA4Jrr5IJBQvb2oGu5zpCGIB7qO/Tl4T6GIoSpZx2p
+         41yMNsqsyyJuPFqcltxafJ3kQVDOdkDW3G57SCpf2DqdLBdAEpCklvVnPpS5I0ym5PIz
+         u7Irf5sBnQoNyPO+V4laFL6aFmdNZC2m1PDoQdgkoRGWDMyEozZxXvl/ZFQLuZoO7xqx
+         bYRPKlAVGEgfxF35/JiI9nNJHYUXXZI0Xf3D62S50Z6OSHEjp7CZTNqFXpG8PqFd/Umm
+         EeHQ==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=n2AIQLJJ;
-       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
-       spf=pass (google.com: domain of linux-kernel+bounces-271430-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-271430-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
-Return-Path: <linux-kernel+bounces-271430-alex.bennee=linaro.org@vger.kernel.org>
-Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [2604:1380:45e3:2400::1])
-        by mx.google.com with ESMTPS id d9443c01a7336-1fed7fa4dd9si171489815ad.462.2024.08.01.07.34.23
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=temperror (no key for signature) header.i=@git.sr.ht header.s=20240113 header.b=A1T+o2bc;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=sr.ht
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d75a77b69052e-4518a7bc74dsi7257841cf.721.2024.08.01.14.50.41
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 01 Aug 2024 07:34:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of linux-kernel+bounces-271430-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) client-ip=2604:1380:45e3:2400::1;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 01 Aug 2024 14:50:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=n2AIQLJJ;
-       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
-       spf=pass (google.com: domain of linux-kernel+bounces-271430-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-271430-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
-Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by sv.mirrors.kernel.org (Postfix) with ESMTPS id 2AC09285132
-	for <alex.bennee@linaro.org>; Thu,  1 Aug 2024 14:34:23 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 0D3981A4F31;
-	Thu,  1 Aug 2024 14:34:19 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="n2AIQLJJ"
-Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id BDFFF1A4887
-	for <linux-kernel@vger.kernel.org>; Thu,  1 Aug 2024 14:34:18 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=10.30.226.201
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1722522858; cv=none; b=MsZI5G9Cg0gNz6R2I4IcUoZhCBrKZ/V3XI2YX9mX2u1j+E8SgCWHUiT+K7XBZecHCbVe/fj9i/KmZpu6fs9zX5SePX/GiH+A5sGzbcSXQ5x7dsFp/fnNrysOLhL8WrgwPKdp6paFnYTfoMJS6EWQqxtvDog9FwD9bxE5KgaG5PA=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1722522858; c=relaxed/simple;
-	bh=pCLks0KKkjWtBuTbXUEEAzmun/Ei05ls4gs/i/vnJkA=;
-	h=Date:From:To:Cc:Subject:Message-ID:In-Reply-To:References:
-	 MIME-Version:Content-Type; b=VlPuHrZXD/9prYkE904xjNPI/i1VMb6L6EEilXLrKSLstIfrEX1yc39fA/5J43FMCXzYxYYCgjggqJGMuA7JvCXpfEv/gXLeTFUvHPnYqO1CLXOA1C12R2qPPR505hD1CZnR7hd7yb/oUQ2C/QvfePII01u2NfaveguvAK9zbYY=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=n2AIQLJJ; arc=none smtp.client-ip=10.30.226.201
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 71F49C32786;
-	Thu,  1 Aug 2024 14:34:15 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1722522858;
-	bh=pCLks0KKkjWtBuTbXUEEAzmun/Ei05ls4gs/i/vnJkA=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=n2AIQLJJf5bEF80+we21wlGogYviVoZsrJTtML8CzYbHiFT+ORLqStGsFzUVHepmr
-	 bYejuNe5A81NwCH+QMWgFRKAVBHVZQjEMHxsVJTNb/zTnk0dmQrs1RWuGvNtKbzGBW
-	 BIPYND2tmJ2hnwU6vNQHUuYDIimSt8Q+eSq+5TPjfVlnfUOCM7287ln85SmfFDIV4C
-	 NvY2k4sBq/YgT3Sdmk0vNKggUFOo1iQIt+HxPw59mZ8bl2byN47cXVz1wl7yxlooeF
-	 LJennGKlTygqwvoHoaFkrbvK87Q7R1oem1ibFwkLF2nUAR0UkAHotbx32GMT845yeD
-	 YX8szBWN6mcHQ==
-Date: Thu, 1 Aug 2024 16:34:12 +0200
-From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-To: Markus Armbruster <armbru@redhat.com>
-Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>, Shiju Jose
- <shiju.jose@huawei.com>, "Michael S. Tsirkin" <mst@redhat.com>, Ani Sinha
- <anisinha@redhat.com>, Dongjiu Geng <gengdongjiu1@gmail.com>, Eric Blake
- <eblake@redhat.com>, Igor Mammedov <imammedo@redhat.com>, Michael Roth
- <michael.roth@amd.com>, Paolo Bonzini <pbonzini@redhat.com>, Peter Maydell
- <peter.maydell@linaro.org>, linux-kernel@vger.kernel.org,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [PATCH v3 4/7] acpi/ghes: Add a logic to handle block addresses
- and FW first ARM processor error injection
-Message-ID: <20240801163412.48740ddb@foz.lan>
-In-Reply-To: <87zfq0b75i.fsf@pond.sub.org>
-References: <cover.1721630625.git.mchehab+huawei@kernel.org>
-	<6a3542a7d8acfbf88c906ec6f6dc5a697257b461.1721630625.git.mchehab+huawei@kernel.org>
-	<87bk2lreeb.fsf@pond.sub.org>
-	<20240729142154.44d484c4@foz.lan>
-	<87zfq0b75i.fsf@pond.sub.org>
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
-Precedence: bulk
-X-Mailing-List: linux-kernel@vger.kernel.org
-List-Id: <linux-kernel.vger.kernel.org>
-List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
+       dkim=temperror (no key for signature) header.i=@git.sr.ht header.s=20240113 header.b=A1T+o2bc;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=sr.ht
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sZdgk-0002f9-55; Thu, 01 Aug 2024 17:50:22 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <outgoing@sr.ht>)
+ id 1sZdYn-0005c2-1T; Thu, 01 Aug 2024 17:42:09 -0400
+Received: from mail-a.sr.ht ([46.23.81.152])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <outgoing@sr.ht>)
+ id 1sZdYk-0001f4-5K; Thu, 01 Aug 2024 17:42:08 -0400
+DKIM-Signature: a=rsa-sha256; bh=UkruwxpzGN0nWml852+v7xpPKHyhVVIZCJ8N7KBWdEc=; 
+ c=simple/simple; d=git.sr.ht; h=From:Date:Subject:Reply-to:To;
+ q=dns/txt; s=20240113; t=1722548523; v=1;
+ b=A1T+o2bcUkLdcso2OAw/NNR3mcMWXAX6LJfoxjvFiAwmVhu7p7IhusWzH/doagoP3hQZXjKI
+ tJtyY4yVbbn2e8p9mEpKXpPCJjI83kQNKDgmTk46ceYoSHSQ1C0fcUQWOJQZwh0L3GlWtku2//A
+ 5LmIPRU371pUMlWGkXwdaxPn91+yiPOV5cD5vXwYvF8ungRLvNRW3UQyg86kszB2W/zpFmuKSqJ
+ 0urccIcMompil4BNjdZSSzMCqiCqPj7c3nyW6iHd01lVIC6E+X/iSavIBYm/wj19t+EtKOkV253
+ Vuo2k6zyDNUVTQzgH+HAzi8ElGsnU/KQJSvAvoHXnS0sA==
+Received: from git.sr.ht (unknown [46.23.81.155])
+ by mail-a.sr.ht (Postfix) with ESMTPSA id 1B1CE2026C;
+ Thu,  1 Aug 2024 21:42:03 +0000 (UTC)
+From: ~arichardson <arichardson@git.sr.ht>
+Date: Thu, 01 Aug 2024 13:22:57 -0700
+Subject: [PATCH qemu] target/arm: add support for 64-bit PMCCNTR in AArch32
+ mode
+Message-ID: <172254852305.13451.4513785887599072710-0@git.sr.ht>
+X-Mailer: git.sr.ht
+To: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-TUID: mIk8zYPSH4L2
+Received-SPF: pass client-ip=46.23.81.152; envelope-from=outgoing@sr.ht;
+ helo=mail-a.sr.ht
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
+ DKIM_SIGNED=0.1, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_action: no action
+X-Mailman-Approved-At: Thu, 01 Aug 2024 17:50:20 -0400
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: ~arichardson <mail@alexrichardson.me>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: n+vuHXY+5DxE
 
-Em Mon, 29 Jul 2024 16:32:41 +0200
-Markus Armbruster <armbru@redhat.com> escreveu:
+From: Alex Richardson <alexrichardson@google.com>
 
->  Yes, as this CPER record is defined only for arm. There are three other
-> > processor error info:
-> > 	- for x86;
-> > 	- for ia32;
-> > 	- for "generic cpu".
-> >
-> > They have different structures, with different fields.  
-> 
-> A generic inject-error command feels nicer, but coding its arguments in
-> the schema could be more trouble than it's worth.  I'm not asking you to
-> try.
-> 
-> A target-specific command like this one should be conditional.  Try
-> this:
-> 
->     { 'command': 'arm-inject-error',
->       'data': { 'errortypes': ['ArmProcessorErrorType'] },
->       'features': [ 'unstable' ],
->       'if': 'TARGET_ARM' }
-> 
-> No need to provide a qmp_arm_inject_error() stub then.
+See https://developer.arm.com/documentation/ddi0601/2024-06/AArch32-Registers=
+/PMCCNTR--Performance-Monitors-Cycle-Count-Register?lang=3Den
 
-I tried it, but it generates lots of poison errors. Basically, QAPI
-generation includes poison.h, making it to complain about on
-non-ARM builds.
+Signed-off-by: Alex Richardson <alexrichardson@google.com>
+---
+ target/arm/helper.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-Anyway, the new version I'm about to submit is not dependent on
-ARM anymore (as it is a generic GHES error injection that can be used
-by any arch).
-
-Still, as I added a Kconfig symbol for it, I still needed a stub.
-
-It would be cool not needing it, but on the other hand it doesn't
-hurt much.
-
-> >> If we encode the the error to inject as an enum value, adding more will
-> >> be hard.
-> >> 
-> >> If we wrap the enum in a struct
-> >> 
-> >>     { 'struct': 'ArmProcessorError',
-> >>       'data': { 'type': 'ArmProcessorErrorType' } }
-> >> 
-> >> we can later extend it like
-> >> 
-> >>     { 'union': 'ArmProcessorError',
-> >>       'base: { 'type': 'ArmProcessorErrorType' }
-> >>       'data': {
-> >>           'bus-error': 'ArmProcessorBusErrorData' } }
-> >> 
-> >>     { 'struct': 'ArmProcessorBusErrorData',
-> >>       'data': ... }  
-> >
-> > I don't see this working as one might expect. See, the ARM error
-> > information data can be repeated from 1 to 255 times. It is given 
-> > by this struct (see patch 7):
-> >
-> > 	{ 'struct': 'ArmProcessorErrorInformation',
-> > 	  'data': { '*validation': ['ArmPeiValidationBits'],
-> > 	            'type': ['ArmProcessorErrorType'],
-> > 	            '*multiple-error': 'uint16',
-> > 	            '*flags': ['ArmProcessorFlags'],
-> > 	            '*error-info': 'uint64',
-> > 	            '*virt-addr':  'uint64',
-> > 	            '*phy-addr': 'uint64'}
-> > 	}
-> >
-> > According with the UEFI spec, the type is always be present.
-> > The other fields are marked as valid or not via the field
-> > "validation". So, there's one bit indicating what is valid between
-> > the fields at the PEI structure, e. g.:
-> >
-> > 	- multiple-error: multiple occurrences of the error;
-> > 	- flags;
-> > 	- error-info: error information;
-> > 	- virt-addr: virtual address;
-> > 	- phy-addr: physical address.
-> >
-> > There are also other fields that are global for the entire record,
-> > also marked as valid or not via another bitmask.
-> >
-> > The contents of almost all those fields are independent of the error
-> > type. The only field which content is affected by the error type is
-> > "error-info", and the definition of such field is not fully specified.
-> >
-> > So, currently, UEFI spec only defines it when:
-> >
-> > 1. the error type has just one bit set;
-> > 2. the error type is either cache, TLB or bus error[1].
-> >    If type is micro-arch-specific error, the spec doesn't tell how this 
-> >    field if filled.
-> >
-> > To make the API simple (yet powerful), I opted to not enforce any encoding
-> > for error-info: let userspace fill it as required and use some default
-> > that would make sense, if this is not passed via QMP.
-> >
-> > [1] See https://uefi.org/specs/UEFI/2.10/Apx_N_Common_Platform_Error_Record.html#arm-processor-error-information  
-> 
-> I asked because designing for extensibility is good practice.
-> 
-> It's not a hard requirement here, because feature 'unstable' gives us
-> lincense to change the interface incompatibly.
-
-IMO keeping it as unstable makes sense, as this QAPI is specific for
-error injection, which is hardly a feature widely used. Also, with the
-script approach, the actual CPER record generation happens on a script.
-
-If we provide it together with QEMU, if the QAPI ever changes, the
-changes inside the script will happen altogether. So, IMO, no need to
-make it stable.
-
-Thanks,
-Mauro
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 8fb4b474e8..94900667c3 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -5952,6 +5952,12 @@ static const ARMCPRegInfo v8_cp_reginfo[] =3D {
+       .access =3D PL1_RW, .accessfn =3D access_trap_aa32s_el1,
+       .writefn =3D sdcr_write,
+       .fieldoffset =3D offsetoflow32(CPUARMState, cp15.mdcr_el3) },
++    { .name =3D "PMCCNTR", .state =3D ARM_CP_STATE_AA32,
++      .type =3D ARM_CP_ALIAS | ARM_CP_IO | ARM_CP_64BIT,
++      .cp =3D 15, .crm =3D 9, .opc1 =3D 0,
++      .access =3D PL0_RW, .resetvalue =3D 0, .fgt =3D FGT_PMCCNTR_EL0,
++      .readfn =3D pmccntr_read, .writefn =3D pmccntr_write,
++      .accessfn =3D pmreg_access_ccntr },
+ };
+=20
+ /* These are present only when EL1 supports AArch32 */
+--=20
+2.43.4

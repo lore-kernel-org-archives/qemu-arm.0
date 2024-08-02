@@ -1,154 +1,192 @@
-Received: by 2002:a17:505:1e8b:b0:1be9:327d:8ee3 with SMTP id mw11csp20922njb;
-        Fri, 2 Aug 2024 08:54:22 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVWUIf83NzRBCHxKQ3X60MLtc3sEdGdhv/aji7pVUrJut2LObkHHUMYv/D98q4Wn2kkr6LZ+a+2j0SQqEDa9XrfxizouuQ/
-X-Google-Smtp-Source: AGHT+IFKiCyI6pigzxNTl3bvpeCExz0k53NSl5gsvsTUqO2X2Cc1vNGI3c4xhtQ/DT3cCgoJbxAA
-X-Received: by 2002:a05:620a:370c:b0:79d:62c4:d636 with SMTP id af79cd13be357-7a34ef3c3a3mr505318685a.26.1722614062584;
-        Fri, 02 Aug 2024 08:54:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1722614062; cv=none;
+Received: by 2002:a17:505:1e8b:b0:1be9:327d:8ee3 with SMTP id mw11csp121874njb;
+        Fri, 2 Aug 2024 14:44:28 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCWxfXr9nN6T+Ba93rZdadj+vXwwjKJlzTHoDuwhWh9glSEwI5gfWgpQQjZZl2fNCd4EffXdxOBXPpPm77hmYcx3LH+IsupE
+X-Google-Smtp-Source: AGHT+IE6fbGVN0Y7Pi1U+5knOw92czUByd1+usORKXNyCyPvXeO8pZv1/eumPmky+/2smrA6AGjf
+X-Received: by 2002:a17:90a:714b:b0:2c9:74f2:3b24 with SMTP id 98e67ed59e1d1-2cff94142f7mr5830431a91.12.1722635068722;
+        Fri, 02 Aug 2024 14:44:28 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1722635068; cv=pass;
         d=google.com; s=arc-20160816;
-        b=RbyipHlpy3UdqIw+r64TBFNiTTc5WhWZoe5GahKspBXuSBA2PPqbA/u1/xjHA95xC3
-         di41qdBBFMnnqN8N8pxx4Q0wCXoIEfXoftWQ2AavHnEEj5JOQrtuMvUdtBxO/Jgr2BW/
-         wk5gRdoLQJT2+EIMCuToOlVF0K449upBWzauVOURu1fQjoMDseYgdHNBivzFLK6NzCnh
-         xeRP7aNDuqoablZ5OxJBp9HNHlpF2o0I3KPY5FjFEekgxhTCTpEthwqCcuZXwD+HYiya
-         6mTFXZulcGfBNsQIY9YcB3Cea6XeFB5jnTFr+cLwmbYs1KwdhpN0KLpibdyjLFz2rE5u
-         r4Lw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=Ulj0JdWeWhPf6NfSKyruNSZydbupVWd9hrcQc6mnthE=;
-        fh=ZW1KTbAftSURlyK97js+hsaWV0vkc/kK65f2+HnXo00=;
-        b=jOAmMM0TUk/KwOasejxblJl5shy2SXBPaxmNQ8ImhGHtGEyXfngQhc6k4W1QZwKktR
-         PvJoyUOmO3wZ83BzqPh2HqQxa+Yq2RqulWbBWAbixl5ctZig8QUKWXPlFRivMlDsdoUF
-         aTt+5yARA7jSfWisBsUTgmQCUyJJdB45GZq4dljg/68pgAdSGCEt6cOSvem6hUrD64e6
-         49+l4e77hBru1+wNQF39K3rAyWaZb+Nnma7Kyl+FJA7ozq1kwQC8oXU+uM/Q8VpKDhdL
-         UHRAVnwLBlFJcxVzrFzpoN62FMvJUkJeVeSfy1dgrWZMWxpNo05EZDr9P++BLMUnwXN1
-         5+YA==;
+        b=f8h2U45ooaeCHxJCLG7M1INPze420G31syHdte8+BGZH6wZRvp5J4zSqeiSQCY26ha
+         P/afGjO/qeh+SryxfjnucPPcKhv3Hhq0iPvVUJfHETDHK58unwQOtixBkdeDVqxwmVku
+         NDodFte2w04tRTy+1i2t3LfXJzAamddVy+IsWX8aW7LJojqZDCpBfCoyQJ5lk+3kY51T
+         3WyyK5haTXV1gHOQY4BDMFoNRFwOr7cPNPRnOD0EHaTmfwoagQsx54lt2/41RMGRU5TF
+         j/bCBKCtp5sycrty8ZT365Q7VVgebLxL/stgb2cQJDPXCibUgHSEYRHm8dZKGuaUlxkE
+         CgeQ==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:content-transfer-encoding:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
+         :date:subject:cc:to:from:dkim-signature;
+        bh=b0xYBI4DsCivQUfmHtAqKAIG1qelGdEfRAozfVNuSF8=;
+        fh=1+GwgeeWHpUF7FYedvbaiDfvpf5TVKFs48cbY64gPd4=;
+        b=AnF8JUuPOHfJIRIJI5FeO4p/Z/iXFQSCDYhgjj5NeunrOXOOQIjc/S9X7JzE2s0xMT
+         tdmKjCoE1COcAsdSx2dwnTvZOnVWl3kwZFmW8U4NY/HJxTKyhwDDVRWempl/qCeXhqnx
+         AZDol0OVZ4Nd1l5GPnFkDeJTZVRbU5bwa+hxAKmIk/xqi9gYuzdgdgMCxcYJznHUL5U7
+         v6jeLDpqlYJ3gzdsDFqDPNUOrDkozXs4UStT2wLGjQIyIqeEf38K/4+PEnE/0NuGNzsU
+         IhBCrPnEgJGsjOP9hr1plxTfOkP0uTUWmHiQB5KkKSbhGukDjqyU1uPbWcYG/28jzCM9
+         LDLA==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Nmf003rx;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7a34f6e1438si272066585a.183.2024.08.02.08.54.22
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=E34VGHam;
+       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
+       spf=pass (google.com: domain of linux-kernel+bounces-273171-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="linux-kernel+bounces-273171-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+Return-Path: <linux-kernel+bounces-273171-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [139.178.88.99])
+        by mx.google.com with ESMTPS id 98e67ed59e1d1-2cffb3bf1b1si2734200a91.176.2024.08.02.14.44.28
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 02 Aug 2024 08:54:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 02 Aug 2024 14:44:28 -0700 (PDT)
+Received-SPF: pass (google.com: domain of linux-kernel+bounces-273171-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) client-ip=139.178.88.99;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Nmf003rx;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sZubT-0007nO-2P; Fri, 02 Aug 2024 11:54:03 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sZubR-0007kz-7U
- for qemu-arm@nongnu.org; Fri, 02 Aug 2024 11:54:01 -0400
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sZubP-0001RQ-Mv
- for qemu-arm@nongnu.org; Fri, 02 Aug 2024 11:54:00 -0400
-Received: by mail-wm1-x335.google.com with SMTP id
- 5b1f17b1804b1-42819654737so50171615e9.1
- for <qemu-arm@nongnu.org>; Fri, 02 Aug 2024 08:53:59 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1722614038; x=1723218838; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=Ulj0JdWeWhPf6NfSKyruNSZydbupVWd9hrcQc6mnthE=;
- b=Nmf003rxwDCtrNFQt+l0qF65qPJkn75Af2VB2xvmdXoQbEPYaHTCiLFJVmdLmICtRv
- qk0n8sDvH2HB7F5oOeyxj3usTjTNFI7qRhINhv6f0Ib4+jsU9ZkJVHy3E9EA9saY3Qgr
- Qs9GuqdTVyXMdsA+xKDACzs6ra99Uq5o1+8OIqiNRdjQOVH+shqzt1niczDPsgIbOxjs
- y4jTu+0ZvWKPL4jgeuq50oJDIb74wgrl6CbmOrVWIRCzm6El4szZCxy0EaGvYtfK3TqX
- WRER40yQN6SnT3mNl4jf17cTCxsB6lGUhOje5nOrU19u2eJg1VAMqzsYCIhkCiZwIIqu
- F17A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1722614038; x=1723218838;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=Ulj0JdWeWhPf6NfSKyruNSZydbupVWd9hrcQc6mnthE=;
- b=KXJTrmGmitrhf7UFEnVWjd6WljVO4mzQwfM0vmLiAn266yIx62EM4QMqKO/GQfSY1+
- 3k8vrB3LuK3jI7jYs2EK64l5mZJUO4+9ayaSyBIcHeUnamXjTY1/pxWqM8x/u31iySEG
- BiAHziSCJYiLr+UGfQpf1yu5kVhEaZn3bNJEf2Y0TENwSpVq+CeJVEKo6GAqQrVZM3Su
- IEoplJW4HfBnpnthxxzr/jPcMDpHROXgx0kninP0AtmDaPQZq4ULu6gHMLBptfjFFXi0
- 6FKM2Hz+96MBozj2tueu6lh6eH7RX3Z26eUtI0sxLk42Fe+4aQJsCwYOu9nKvQeyKqfT
- adaA==
-X-Gm-Message-State: AOJu0YxKjO4rcORHN5Hl7MVObPZeM+cTpPVTljWLtAyxogtPSsZK5Cmf
- IkEwt6tOu3Hcl74VbY8VeeFjj3rCilFCfpnkqIl01LcCEfGHhkiyJ+8T16Epkio=
-X-Received: by 2002:a05:600c:3b27:b0:426:593c:935d with SMTP id
- 5b1f17b1804b1-428e6af7aeemr22364925e9.5.1722614037655; 
- Fri, 02 Aug 2024 08:53:57 -0700 (PDT)
-Received: from [192.168.69.100] ([176.187.211.94])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-428e6e03c4csm37967395e9.13.2024.08.02.08.53.56
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 02 Aug 2024 08:53:57 -0700 (PDT)
-Message-ID: <06c4aad6-8c1d-4474-b3b6-4cc9065edc33@linaro.org>
-Date: Fri, 2 Aug 2024 17:53:54 +0200
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=E34VGHam;
+       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
+       spf=pass (google.com: domain of linux-kernel+bounces-273171-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="linux-kernel+bounces-273171-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by sv.mirrors.kernel.org (Postfix) with ESMTPS id 3DFEB283888
+	for <alex.bennee@linaro.org>; Fri,  2 Aug 2024 21:44:28 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 589851311A1;
+	Fri,  2 Aug 2024 21:44:24 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="E34VGHam"
+Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 186271ABEB7
+	for <linux-kernel@vger.kernel.org>; Fri,  2 Aug 2024 21:44:23 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=10.30.226.201
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1722635064; cv=none; b=DGrOlJoo/hWz5bG2irtk1CE/Nt3N5D6BX6TJDG+DNHutic189ihtOU1otk6nInl5XvBbIznA2nMu+j4+5fmkt76c3eCS++rv2COeKB0mo/vbY07kanxOQuXXSqrt621sN6UbT7l0RlnIoVLdYtLvjUjuLJx7XghUoTCl2MCgtJY=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1722635064; c=relaxed/simple;
+	bh=wmX5BOavDV5A0y4JGTIfwXXXDCYeYux2q4KKf6xw9vs=;
+	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:
+	 MIME-Version; b=myUOAcJ3KG1yTXZzDGntP/j1gGbVUFVbFDayDVktX8EVRgIH4b5o1jIXoOHhCiBE2gUOMU6f9soYO6vCq1FaB6ElGcaVP2Sj75q/eVxnElCoPh/kDmZHAcfIPe9uPzYjWQmNmmmkpR64fHIyXQbu2LNzZ0i9ZHFhlXmCVl3I2hw=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=E34VGHam; arc=none smtp.client-ip=10.30.226.201
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C2175C4AF11;
+	Fri,  2 Aug 2024 21:44:23 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1722635063;
+	bh=wmX5BOavDV5A0y4JGTIfwXXXDCYeYux2q4KKf6xw9vs=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=E34VGHamkEFAsuv6m6ZKnXZVpDvel53+0WGEuomQDdXsiNOY7IlOGo+NEWMqfWSnV
+	 UIz2EsZ6/FjAg5o6/jOZ6+GMVI7QmQGuW9gR4odCeELqyWkE9nS4Zm1otbIE4q4N6A
+	 BpKIrZM4fUOApvdDrXdGhh4eSUnTpa66JbQxEKcVgVz88ebRWL1toHdCWj9VRajlQU
+	 SdCzqGu409bHWlNojB2k3TSUJF49smY2qxBx+r8IMQ8aoE0xQKUzg1oLAZ4oSVhh2B
+	 1pC/xuHFMyiJAS19E9a+2NmQ3+vONULZcqlloUdaTBW1yCng8jvrjIVm4eQRspdgEy
+	 eZQp0oz87Hlcw==
+Received: from mchehab by mail.kernel.org with local (Exim 4.98)
+	(envelope-from <mchehab+huawei@kernel.org>)
+	id 1sa04T-00000002naD-2eiE;
+	Fri, 02 Aug 2024 23:44:21 +0200
+From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+To: 
+Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>,
+	Shiju Jose <shiju.jose@huawei.com>,
+	Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	Ani Sinha <anisinha@redhat.com>,
+	Igor Mammedov <imammedo@redhat.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Shannon Zhao <shannon.zhaosl@gmail.com>,
+	linux-kernel@vger.kernel.org,
+	qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH v5 1/7] arm/virt: place power button pin number on a define
+Date: Fri,  2 Aug 2024 23:43:56 +0200
+Message-ID: <e5afbbaf2836ebe22b48c455285eccef86db966b.1722634602.git.mchehab+huawei@kernel.org>
+X-Mailer: git-send-email 2.45.2
+In-Reply-To: <cover.1722634602.git.mchehab+huawei@kernel.org>
+References: <cover.1722634602.git.mchehab+huawei@kernel.org>
+Precedence: bulk
+X-Mailing-List: linux-kernel@vger.kernel.org
+List-Id: <linux-kernel.vger.kernel.org>
+List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] hvf: arm: Fix hvf_sysreg_read_cp() call
-To: Akihiko Odaki <akihiko.odaki@daynix.com>, Alexander Graf
- <agraf@csgraf.de>, Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- Richard Henderson <richard.henderson@linaro.org>
-References: <20240802-hvf-v1-1-e2c0292037e5@daynix.com>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20240802-hvf-v1-1-e2c0292037e5@daynix.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::335;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x335.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: tnH1xRnv5Yie
+Sender: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+X-TUID: CENKTm5nWNhj
 
-On 2/8/24 10:37, Akihiko Odaki wrote:
-> Commit 05b8d7249109 ("hvf: arm: Do not advance PC when raising an
-> exception") changed val from uint64_t to a pointer to uint64_t in
-> hvf_sysreg_read(), but didn't change its hvf_sysreg_read_cp() call.
-> 
-> Fixes: 05b8d7249109 ("hvf: arm: Do not advance PC when raising an exception")
+Having magic numbers inside the code is not a good idea, as it
+is error-prone. So, instead, create a macro with the number
+definition.
 
-Not 05b8d7249109 but e9e640148c.
+Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+---
+ hw/arm/virt-acpi-build.c | 6 +++---
+ hw/arm/virt.c            | 7 ++++---
+ include/hw/arm/virt.h    | 3 +++
+ 3 files changed, 10 insertions(+), 6 deletions(-)
 
-Fixes: e9e640148c ("hvf: arm: Raise an exception for sysreg by default")
-
-Updating description:
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-
-> Reported-by: Richard Henderson <richard.henderson@linaro.org>
-> Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
-> ---
->   target/arm/hvf/hvf.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index e10cad86dd73..f76fb117adff 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -154,10 +154,10 @@ static void acpi_dsdt_add_gpio(Aml *scope, const MemMapEntry *gpio_memmap,
+     aml_append(dev, aml_name_decl("_CRS", crs));
+ 
+     Aml *aei = aml_resource_template();
+-    /* Pin 3 for power button */
+-    const uint32_t pin_list[1] = {3};
++
++    const uint32_t pin = GPIO_PIN_POWER_BUTTON;
+     aml_append(aei, aml_gpio_int(AML_CONSUMER, AML_EDGE, AML_ACTIVE_HIGH,
+-                                 AML_EXCLUSIVE, AML_PULL_UP, 0, pin_list, 1,
++                                 AML_EXCLUSIVE, AML_PULL_UP, 0, &pin, 1,
+                                  "GPO0", NULL, 0));
+     aml_append(dev, aml_name_decl("_AEI", aei));
+ 
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 719e83e6a1e7..687fe0bb8bc9 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -1004,7 +1004,7 @@ static void virt_powerdown_req(Notifier *n, void *opaque)
+     if (s->acpi_dev) {
+         acpi_send_event(s->acpi_dev, ACPI_POWER_DOWN_STATUS);
+     } else {
+-        /* use gpio Pin 3 for power button event */
++        /* use gpio Pin for power button event */
+         qemu_set_irq(qdev_get_gpio_in(gpio_key_dev, 0), 1);
+     }
+ }
+@@ -1013,7 +1013,8 @@ static void create_gpio_keys(char *fdt, DeviceState *pl061_dev,
+                              uint32_t phandle)
+ {
+     gpio_key_dev = sysbus_create_simple("gpio-key", -1,
+-                                        qdev_get_gpio_in(pl061_dev, 3));
++                                        qdev_get_gpio_in(pl061_dev,
++                                                         GPIO_PIN_POWER_BUTTON));
+ 
+     qemu_fdt_add_subnode(fdt, "/gpio-keys");
+     qemu_fdt_setprop_string(fdt, "/gpio-keys", "compatible", "gpio-keys");
+@@ -1024,7 +1025,7 @@ static void create_gpio_keys(char *fdt, DeviceState *pl061_dev,
+     qemu_fdt_setprop_cell(fdt, "/gpio-keys/poweroff", "linux,code",
+                           KEY_POWER);
+     qemu_fdt_setprop_cells(fdt, "/gpio-keys/poweroff",
+-                           "gpios", phandle, 3, 0);
++                           "gpios", phandle, GPIO_PIN_POWER_BUTTON, 0);
+ }
+ 
+ #define SECURE_GPIO_POWEROFF 0
+diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+index ab961bb6a9b8..a4d937ed45ac 100644
+--- a/include/hw/arm/virt.h
++++ b/include/hw/arm/virt.h
+@@ -47,6 +47,9 @@
+ /* See Linux kernel arch/arm64/include/asm/pvclock-abi.h */
+ #define PVTIME_SIZE_PER_CPU 64
+ 
++/* GPIO pins */
++#define GPIO_PIN_POWER_BUTTON  3
++
+ enum {
+     VIRT_FLASH,
+     VIRT_MEM,
+-- 
+2.45.2
 

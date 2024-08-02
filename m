@@ -1,287 +1,222 @@
-Received: by 2002:a17:505:3f8c:b0:1be9:327d:8ee3 with SMTP id bm12csp1271529njb;
-        Fri, 2 Aug 2024 02:44:52 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCW1h8Ij3Ifrg+j+IMFeqAyyFqyLelmlZg8mSfNra32Rjt+JJ0k5OIuj2PWyBmUIsZOQpAyqddajXix4FcE6hPIg9aGGCOf2
-X-Google-Smtp-Source: AGHT+IGfm6HOh9M4nZY22Kye5NPL6VKEZx15k0NVWVgoZJrWEUFgpD0H5GUVNpy2ocYVTx0deiSq
-X-Received: by 2002:a05:6830:621c:b0:704:b695:9557 with SMTP id 46e09a7af769-709b3231af1mr4152895a34.16.1722591892382;
-        Fri, 02 Aug 2024 02:44:52 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1722591892; cv=pass;
+Received: by 2002:a17:505:3f8c:b0:1be9:327d:8ee3 with SMTP id bm12csp1272225njb;
+        Fri, 2 Aug 2024 02:48:13 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCVBtrJ4YfwHkoSkA31gyRHOwl5cRKprcojoPq22oFfve74GgJxhwCCkyW+yLPS85XKmxeoJfaABzdXBVPU8DKmtL4klypX4
+X-Google-Smtp-Source: AGHT+IGxrAXHK60J24BQ34ebTfls7Iddgsqlm5tG8qoogCbUhy30sI3Q9JW9Hl4VtW5IzxmFrf1l
+X-Received: by 2002:a05:6820:2294:b0:5c4:396e:4217 with SMTP id 006d021491bc7-5d645608c6amr3911758eaf.0.1722592093531;
+        Fri, 02 Aug 2024 02:48:13 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1722592093; cv=pass;
         d=google.com; s=arc-20160816;
-        b=bx80Qk0TY1rCEp1rM9r4JgC12P5dh3XWoPUJ9nR5wJhLqI7Ov5W0U2iyviAiy+Lc32
-         N256tpMq1bNshpetaSuZopf2g3WvCdgu6YbzY4KTjXaX0q468SHH6119JOYf/XYPploi
-         Zp1/E6sOXkMKMO3Ftfi3sCUUnkF3h0EWx9fxj7lifBJF3EF0/2juT43554F21Q87IzZs
-         AfdQlwwVyLnPpusqqAeVET9krdHVzyxCrjCd2jzq/xIN0LyFnOZJoETPGjP7ZOl1OAAR
-         HPIoc9/GcwFlWumB066zEJe0U2UYk3GQX0dmONQu+XwkmHM2mms9p0Y1qyqwv9xiUo85
-         3XjQ==
+        b=yU2odHuYr73YaZstgr7O4Gl3XYMzo1apctPVz/iV9wsd/5xNp6DaXIbg+wXa/ny0sk
+         U/5WMTHVXw6YwYXXBeZRFYtQMrBtC1Ludq+QshYdNDf0Lj54IT8GDPE7QsbSZLA8c3oV
+         OlPCmhgO3ep2O36bHw+TKCmwhdMsLpRv9/njDP1rnDq0Mx/bfZ9Z6+hAJIIaajWy9doF
+         j/LEJMId/KLBeuWzqy3tpf+fyzsqDD2ysLSlmnrjpD1D57AgCm2R0si6+3uVaJOpNKBu
+         nOHp9HYBX/6KtbSh+zI0/lxiY3q0a6bodvlWhRvyCOFXyczM7Vn5EvkSk1oAk+yQp6/4
+         GrEA==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:list-unsubscribe:list-subscribe:list-id:precedence
-         :user-agent:message-id:date:references:in-reply-to:subject:cc:to
-         :from:dkim-signature;
-        bh=B9EaUStHADUXdsk6O1sblIXDnZ14YmoOn7I4PIz0ei0=;
-        fh=OUqmBig6VzsEN5C8sADN5kVx3iZh5BlPpVA4ByD8Vn0=;
-        b=t2oKfpm5humoPjpuLUGEZFLVbMupk0uK+PdxvxmDEKkOweEtcavDzSGBgzrc97mhPG
-         G+UAIon5LS2RUBeoFJSldxQR7kHYVEpCFYeFx6xgkvjgT1DjQzAw6hxcOV2lWp2hoc4G
-         Qvos2AG9UKJHIiqUPliKBpgADzXKmDpY3FkwdsRt9z/mdM8Oz2urueqW/+c6oeTCDtVw
-         Tuacj1TRViJAxOhCyDyVCOivlM8UJhUitW0C5MPOWmpJkaA7y8UDA3QH9TvMtrnfxXEH
-         RFf9KTjN02xkVUACNRZxVkO+h8me26EUxWpXfj8KiJ0VeIRe9NkSIaF0b2cetl0aC/qN
-         n1eg==;
+        h=in-reply-to:content-disposition:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:references:message-id:subject:cc
+         :to:from:date:dkim-signature;
+        bh=C1ACjMdA7pURv+XM906ioqRv0rl54iP1UMD14VbSbMQ=;
+        fh=Mudm2Y5PrfXrtgO66hKUMp00c15XOiKlDueYIwoEK/U=;
+        b=ngXQuzP73SE8kAAe0rJsoyygOVAbioIUW45HY3R8ziYeTJqVZ5x6aNQEWK4EffRjw5
+         MVKkL3UgerjZn6iuSWs0dqA7/QAUhcDwrBCZKwkNb6+6uGHovoWoIGpJlw6DhiE3tRnc
+         j+y/3siBoREOLVYOzxPuImtnj1rZLrhF+OKcV1NMbti1GSTPj9fYRiyy+ftpW5OIPoiW
+         vQJ2HWLRD3XsbGS67lDTbl+tc+5tj4l083xQRGOtX362nCCtkEM+dV+fbnddlSkRf/Et
+         RfUY0FvjJsv0xKNxirLT/uDIRZLdhRhM9W2WwRF2AgRgBTMMHS9X/IsfZKMVp3exvJE0
+         5l8w==;
         dara=google.com
 ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Wu8pFb3Z;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of linux-kernel+bounces-272404-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-272404-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <linux-kernel+bounces-272404-alex.bennee=linaro.org@vger.kernel.org>
+       dkim=pass header.i=@intel.com header.s=Intel header.b=ZiRCD6JJ;
+       arc=pass (i=1 spf=pass spfdomain=intel.com dkim=pass dkdomain=intel.com dmarc=pass fromdomain=intel.com);
+       spf=pass (google.com: domain of kvm+bounces-23021-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) smtp.mailfrom="kvm+bounces-23021-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Return-Path: <kvm+bounces-23021-alex.bennee=linaro.org@vger.kernel.org>
 Received: from sy.mirrors.kernel.org (sy.mirrors.kernel.org. [2604:1380:40f1:3f00::1])
-        by mx.google.com with ESMTPS id d2e1a72fcca58-7106ec2fdf7si1647740b3a.31.2024.08.02.02.44.51
+        by mx.google.com with ESMTPS id 41be03b00d2f7-7b830f2972bsi418499a12.415.2024.08.02.02.48.13
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 02 Aug 2024 02:44:52 -0700 (PDT)
-Received-SPF: pass (google.com: domain of linux-kernel+bounces-272404-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) client-ip=2604:1380:40f1:3f00::1;
+        Fri, 02 Aug 2024 02:48:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm+bounces-23021-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) client-ip=2604:1380:40f1:3f00::1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Wu8pFb3Z;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of linux-kernel+bounces-272404-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-272404-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=pass header.i=@intel.com header.s=Intel header.b=ZiRCD6JJ;
+       arc=pass (i=1 spf=pass spfdomain=intel.com dkim=pass dkdomain=intel.com dmarc=pass fromdomain=intel.com);
+       spf=pass (google.com: domain of kvm+bounces-23021-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) smtp.mailfrom="kvm+bounces-23021-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by sy.mirrors.kernel.org (Postfix) with ESMTPS id 0F633B21C55
-	for <alex.bennee@linaro.org>; Fri,  2 Aug 2024 09:44:50 +0000 (UTC)
+	by sy.mirrors.kernel.org (Postfix) with ESMTPS id 2B9F8B22518
+	for <alex.bennee@linaro.org>; Fri,  2 Aug 2024 09:48:11 +0000 (UTC)
 Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id B2F721DB422;
-	Fri,  2 Aug 2024 09:44:40 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id A1A061D0DF6;
+	Fri,  2 Aug 2024 09:48:05 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="Wu8pFb3Z"
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+	dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b="ZiRCD6JJ"
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.14])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8F2C01BF311
-	for <linux-kernel@vger.kernel.org>; Fri,  2 Aug 2024 09:44:38 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.133.124
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E63E73399F
+	for <kvm@vger.kernel.org>; Fri,  2 Aug 2024 09:48:03 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=192.198.163.14
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1722591880; cv=none; b=cd3WnjJc67FcekTKdcUzgjWP17dTFT6oRALsuCcEUDsnazCw343CgFM2u9Fnr5WTCVo+f8b7tShj1/hd7vcRFld/rxzOoSmffoQ8+M4Ac3mKW6DWzKd/zMinU8lYltWnaH4A0dAbH6X1yiQ5R1LTqNb6ERu5lE+lMvyT/6DeroQ=
+	t=1722592085; cv=none; b=IMWtWQfApiLb5ssrIsTJaLpzRqBpj3ocCIgqlqKsjPBtP8ApfIjaw/Pw1firLDm9sN20VdSFiYlgNoDutBLy/WEKH06aRtyE3L5DgUto7Sct+xmASH7xmMqFXCYKwrUKgQr5XQdElQuoZlxTxtVquJQxQVD7vibx6ANfIyd/jTQ=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1722591880; c=relaxed/simple;
-	bh=B3cNYUGHWWEFW36qy5kPzZhKXKcWW7s8utOBbeNtVGc=;
-	h=From:To:Cc:Subject:In-Reply-To:References:Date:Message-ID:
-	 MIME-Version:Content-Type; b=lmjzayjNjZ71EJwtpqgtiHvbJlbXWwWWlp4NJ+KaNeS1QRR57oDVIfSkEikIqg33MtseXhEJueNUb2qZUYa17lm+z2/tJNbxdMzXVRZ2Fy6nH2WmMu22E8W+DLo4SP93+uAOGEeIy7mgKCqhIjsiptRZJC7owX/ofY6GyqYUSMw=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=Wu8pFb3Z; arc=none smtp.client-ip=170.10.133.124
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1722591877;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=B9EaUStHADUXdsk6O1sblIXDnZ14YmoOn7I4PIz0ei0=;
-	b=Wu8pFb3Z4/DVu6y/UwsvBPGzeTQ+azBkIMTN3YmXx7mEI6YQOcvnKCN7+EcCVK2dlUxHXq
-	u/BZwLqkdTVXKkXmNoK9xG9q0UGXvC/gkl1qYM0isu2baRt4t3gzqSXZQ0CWijubtPubQx
-	ThC0ozjixUryxoEWxI+jE+ZmG+hafmg=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-216-Ed9lTl1vOnuX4x6-AEFjrg-1; Fri,
- 02 Aug 2024 05:44:33 -0400
-X-MC-Unique: Ed9lTl1vOnuX4x6-AEFjrg-1
-Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 4547A1955F40;
-	Fri,  2 Aug 2024 09:44:30 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.39.192.65])
-	by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 59D781955F6B;
-	Fri,  2 Aug 2024 09:44:28 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 4FA0621E668F; Fri,  2 Aug 2024 11:44:26 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>,  Shiju Jose
- <shiju.jose@huawei.com>,  "Michael S. Tsirkin" <mst@redhat.com>,  Ani
- Sinha <anisinha@redhat.com>,  Dongjiu Geng <gengdongjiu1@gmail.com>,  Eric
- Blake <eblake@redhat.com>,  Igor Mammedov <imammedo@redhat.com>,  Michael
- Roth <michael.roth@amd.com>,  Paolo Bonzini <pbonzini@redhat.com>,  Peter
- Maydell <peter.maydell@linaro.org>,  linux-kernel@vger.kernel.org,
-  qemu-arm@nongnu.org,  qemu-devel@nongnu.org
-Subject: Re: [PATCH v4 5/7] qapi/ghes-cper: add an interface to do generic
- CPER error injection
-In-Reply-To: <5a4da771f04beea4e7488eee8080c0ace372e9a0.1722523312.git.mchehab+huawei@kernel.org>
-	(Mauro Carvalho Chehab's message of "Thu, 1 Aug 2024 16:47:08 +0200")
-References: <cover.1722523312.git.mchehab+huawei@kernel.org>
-	<5a4da771f04beea4e7488eee8080c0ace372e9a0.1722523312.git.mchehab+huawei@kernel.org>
-Date: Fri, 02 Aug 2024 11:44:26 +0200
-Message-ID: <87plqr45tx.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13)
+	s=arc-20240116; t=1722592085; c=relaxed/simple;
+	bh=kqQcjt8ahHm0LUdDkgUTxKLsmqLB40UCsPTMULgSq+s=;
+	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
+	 Content-Type:Content-Disposition:In-Reply-To; b=kPQf75iFZgdLc1q56B6S18a8+TCdLRPS6DHJAo7AuhTP2kFjzV4vt5ZSvQa2QAxXNmepJQyKG/adcC5f6K10QdQVhQTmMqshcXh2ijubjfnMn9l/fc7GALu25ESDJpMcjkn8sA0K03CsuQTODJPOBJzX5WZNZUYpnwrE6nHmGVQ=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com; spf=pass smtp.mailfrom=intel.com; dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b=ZiRCD6JJ; arc=none smtp.client-ip=192.198.163.14
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=intel.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1722592084; x=1754128084;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=kqQcjt8ahHm0LUdDkgUTxKLsmqLB40UCsPTMULgSq+s=;
+  b=ZiRCD6JJiQMKr9Ls+S61sK2XJp8E2980KaCpjX7+0y28NhaMI/NVY4dh
+   nyKAfgyrzx5Hi6GzKv31At19uAf/dw38+Agg+FgRh/oKECWoibOQRjeCi
+   m8NTNdL9GnAhFQCT46Pxaq9QMYaNP6G9EHIIUtr/4Zgl6L2ulbOBdAn5/
+   PppNBz6R3BPeOOeom+1kiSQdchBbJeaHpbmsJ2cG7kkTOFqQ8fxXWxyMq
+   gbHFdtRzE1/40JGiU7zq/8OFyYU1Mf2q5g0238T8/oGstB79ByCBEYG+q
+   /TkgcBrTHsdgURyDoPsgEqplgQ4CN5azJcmNthC8wLymFCbNVJf/M9VfD
+   g==;
+X-CSE-ConnectionGUID: TJYyxOtEQQWZsB2IYl/d0g==
+X-CSE-MsgGUID: Wnae1djDT5yMXB+UR2S+6w==
+X-IronPort-AV: E=McAfee;i="6700,10204,11151"; a="20774534"
+X-IronPort-AV: E=Sophos;i="6.09,257,1716274800"; 
+   d="scan'208";a="20774534"
+Received: from orviesa009.jf.intel.com ([10.64.159.149])
+  by fmvoesa108.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 02 Aug 2024 02:48:03 -0700
+X-CSE-ConnectionGUID: Kgw64EYBRCWfML41yTcO+w==
+X-CSE-MsgGUID: BweuvkbuTiWba31HNNVsCQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.09,257,1716274800"; 
+   d="scan'208";a="55267892"
+Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost) ([10.239.160.36])
+  by orviesa009.jf.intel.com with ESMTP; 02 Aug 2024 02:47:58 -0700
+Date: Fri, 2 Aug 2024 18:03:45 +0800
+From: Zhao Liu <zhao1.liu@intel.com>
+To: Shaoqin Huang <shahuang@redhat.com>
+Cc: Paolo Bonzini <pbonzini@redhat.com>, Eric Blake <eblake@redhat.com>,
+	Markus Armbruster <armbru@redhat.com>,
+	Michael Roth <michael.roth@amd.com>,
+	Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>,
+	Eduardo Habkost <eduardo@habkost.net>,
+	Marcelo Tosatti <mtosatti@redhat.com>,
+	Eric Auger <eauger@redhat.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
+	Sebastian Ott <sebott@redhat.com>, Gavin Shan <gshan@redhat.com>,
+	qemu-devel@nongnu.org, kvm@vger.kernel.org, qemu-arm@nongnu.org,
+	Zhenyu Wang <zhenyu.z.wang@intel.com>,
+	Dapeng Mi <dapeng1.mi@intel.com>, Yuan Yao <yuan.yao@intel.com>,
+	Xiong Zhang <xiong.y.zhang@intel.com>,
+	Mingwei Zhang <mizhang@google.com>,
+	Jim Mattson <jmattson@google.com>
+Subject: Re: [RFC 0/5] accel/kvm: Support KVM PMU filter
+Message-ID: <ZqyvAWQdmW41D5H1@intel.com>
+References: <20240710045117.3164577-1-zhao1.liu@intel.com>
+ <b10545d1-8e81-44f0-8e13-eee393ea4d1b@redhat.com>
+ <ZqyovJZkOjm6HZFv@intel.com>
+ <45e9258c-b370-4b5c-884b-80a21f69cee8@redhat.com>
 Precedence: bulk
-X-Mailing-List: linux-kernel@vger.kernel.org
-List-Id: <linux-kernel.vger.kernel.org>
-List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+List-Id: <kvm.vger.kernel.org>
+List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-TUID: Rwow2VAguUJl
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <45e9258c-b370-4b5c-884b-80a21f69cee8@redhat.com>
+X-TUID: sDuTIE4yuJsv
 
-Mauro Carvalho Chehab <mchehab+huawei@kernel.org> writes:
+On Fri, Aug 02, 2024 at 05:41:57PM +0800, Shaoqin Huang wrote:
+> Date: Fri, 2 Aug 2024 17:41:57 +0800
+> From: Shaoqin Huang <shahuang@redhat.com>
+> Subject: Re: [RFC 0/5] accel/kvm: Support KVM PMU filter
+> 
+> Hi Zhao,
+> 
+> On 8/2/24 17:37, Zhao Liu wrote:
+> > Hello Shaoqin,
+> > 
+> > On Fri, Aug 02, 2024 at 05:01:47PM +0800, Shaoqin Huang wrote:
+> > > Date: Fri, 2 Aug 2024 17:01:47 +0800
+> > > From: Shaoqin Huang <shahuang@redhat.com>
+> > > Subject: Re: [RFC 0/5] accel/kvm: Support KVM PMU filter
+> > > 
+> > > Hi Zhao,
+> > > 
+> > > On 7/10/24 12:51, Zhao Liu wrote:
+> > > > Hi QEMU maintainers, arm and PMU folks,
+> > > > 
+> > > > I picked up Shaoqing's previous work [1] on the KVM PMU filter for arm,
+> > > > and now is trying to support this feature for x86 with a JSON-compatible
+> > > > API.
+> > > > 
+> > > > While arm and x86 use different KVM ioctls to configure the PMU filter,
+> > > > considering they all have similar inputs (PMU event + action), it is
+> > > > still possible to abstract a generic, cross-architecture kvm-pmu-filter
+> > > > object and provide users with a sufficiently generic or near-consistent
+> > > > QAPI interface.
+> > > > 
+> > > > That's what I did in this series, a new kvm-pmu-filter object, with the
+> > > > API like:
+> > > > 
+> > > > -object '{"qom-type":"kvm-pmu-filter","id":"f0","events":[{"action":"allow","format":"raw","code":"0xc4"}]}'
+> > > > 
+> > > > For i386, this object is inserted into kvm accelerator and is extended
+> > > > to support fixed-counter and more formats ("x86-default" and
+> > > > "x86-masked-entry"):
+> > > > 
+> > > > -accel kvm,pmu-filter=f0 \
+> > > > -object pmu='{"qom-type":"kvm-pmu-filter","id":"f0","x86-fixed-counter":{"action":"allow","bitmap":"0x0"},"events":[{"action":"allow","format":"x86-masked-entry","select":"0xc4","mask":"0xff","match":"0","exclude":true},{"action":"allow","format":"x86-masked-entry","select":"0xc5","mask":"0xff","match":"0","exclude":true}]}'
+> > > 
+> > > What if I want to create the PMU Filter on ARM to deny the event range
+> > > [0x5,0x10], and allow deny event 0x13, how should I write the json?
+> > > 
+> > 
+> > Cuurently this doesn't support the event range (since the raw format of
+> > x86 event cannot be said to be continuous).
+> > 
+> > So with the basic support, we need to configure events one by one:
+> > 
+> > -object pmu='{"qom-type":"kvm-pmu-filter","id":"f0","events":[{"action":"allow","format":"raw","code":"0x5"},{"action":"allow","format":"raw","select":"0x6"},{"action":"allow","format":"raw","code":"0x7"},{"action":"allow","format":"raw","code":"0x8"},{"action":"allow","format":"raw","code":"0x9"},{"action":"allow","format":"raw","code":"0x10"},{"action":"deny","format":"raw","code":"0x13"}]}'
+> > 
+> > This one looks a lot more complicated, but in the future, arm could
+> > further support event-range (maybe implement event-range via mask), but
+> > I think this could be arch-specific format since not all architectures'
+> > events are continuous.
+> > 
+> > Additional, I'm a bit confused by your example, and I hope you can help
+> > me understand that: when configuring 0x5~0x10 to be allow, isn't it true
+> > that all other events are denied by default, so denying 0x13 again is a
+> > redundant operation? What is the default action for all other events
+> > except 0x5~0x10 and 0x13?
+> > 
+> > If we specify action as allow for 0x5~0x10 and deny for the rest by
+> > default, then there is no need to set an action for each event but only
+> > a global one (as suggested by Dapeng), so the above command line can be
+> > simplified as:
+> > 
+> > -object pmu='{"qom-type":"kvm-pmu-filter","id":"f0","action":"allow","events":[{"format":"raw","code":"0x5"},{"format":"raw","select":"0x6"},{"format":"raw","code":"0x7"},{"format":"raw","code":"0x8"},{"format":"raw","code":"0x9"},{"format":"raw","code":"0x10"}]}'
+> > 
+> 
+> Yes you are right. On Arm when you first set the PMU Filter, if the first
+> filter is allow, then all other event will be denied by default. The reverse
+> is also the same, if the first filter is deny, then all other event will be
+> allowed by default.
+> 
+> On ARM the PMU Filter is much more simper than x86 I think. We only need to
+> care about the special event with allow or deny action.
+> 
+> If we don't support event range filter, I think that's fine. This can be
+> added in the future.
 
-> Creates a QAPI to be used for generic ACPI APEI hardware error
-> injection (HEST) via GHESv2.
+This is good news for me, I can implement global action in the next
+version and iterate further! Thank you for your confirmation!
 
-Creates a QMP command
-
-> The actual GHES code will be added at the followup patch.
->
-> Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-> ---
->  MAINTAINERS            |  7 ++++++
->  hw/acpi/Kconfig        |  5 ++++
->  hw/acpi/ghes_cper.c    | 53 +++++++++++++++++++++++++++++++++++++++++
->  hw/acpi/meson.build    |  2 ++
->  hw/arm/Kconfig         |  5 ++++
->  include/hw/acpi/ghes.h |  6 +++++
->  qapi/ghes-cper.json    | 54 ++++++++++++++++++++++++++++++++++++++++++
->  qapi/meson.build       |  1 +
->  qapi/qapi-schema.json  |  1 +
->  9 files changed, 134 insertions(+)
->  create mode 100644 hw/acpi/ghes_cper.c
->  create mode 100644 qapi/ghes-cper.json
->
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index 98eddf7ae155..655edcb6688c 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -2075,6 +2075,13 @@ F: hw/acpi/ghes.c
->  F: include/hw/acpi/ghes.h
->  F: docs/specs/acpi_hest_ghes.rst
->  
-> +ACPI/HEST/GHES/ARM processor CPER
-> +R: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-> +S: Maintained
-> +F: hw/arm/ghes_cper.c
-> +F: hw/acpi/ghes_cper_stub.c
-> +F: qapi/ghes-cper.json
-> +
->  ppc4xx
->  L: qemu-ppc@nongnu.org
->  S: Orphan
-
-[...]
-
-> diff --git a/hw/acpi/meson.build b/hw/acpi/meson.build
-> index fa5c07db9068..6cbf430eb66d 100644
-> --- a/hw/acpi/meson.build
-> +++ b/hw/acpi/meson.build
-> @@ -34,4 +34,6 @@ endif
->  system_ss.add(when: 'CONFIG_ACPI', if_false: files('acpi-stub.c', 'aml-build-stub.c', 'ghes-stub.c', 'acpi_interface.c'))
->  system_ss.add(when: 'CONFIG_ACPI_PCI_BRIDGE', if_false: files('pci-bridge-stub.c'))
->  system_ss.add_all(when: 'CONFIG_ACPI', if_true: acpi_ss)
-> +system_ss.add(when: 'CONFIG_GHES_CPER', if_true: files('ghes_cper.c'))
-> +system_ss.add(when: 'CONFIG_GHES_CPER', if_false: files('ghes_cper_stub.c'))
-
-../hw/acpi/meson.build:38:50: ERROR: File ghes_cper_stub.c does not exist.
-
->  system_ss.add(files('acpi-qmp-cmds.c'))
-
-[...]
-
-> diff --git a/qapi/ghes-cper.json b/qapi/ghes-cper.json
-> new file mode 100644
-> index 000000000000..2b0438431054
-> --- /dev/null
-> +++ b/qapi/ghes-cper.json
-
-Would this fit into acpi.json?
-
-If yes: would the maintainers of acpi.json be happy to take it?
-Michael, Igor?
-
-> @@ -0,0 +1,54 @@
-> +# -*- Mode: Python -*-
-> +# vim: filetype=python
-> +
-> +##
-> +# = GHESv2 CPER Error Injection
-> +#
-> +# These are defined at
-> +# ACPI 6.2: 18.3.2.8 Generic Hardware Error Source version 2
-> +# (GHESv2 - Type 10)
-> +##
-> +
-> +##
-> +# @CommonPlatformErrorRecord:
-> +#
-> +# Common Platform Error Record - CPER - as defined at the UEFI
-> +# specification. See
-
-Separate sentences with two spaces for consistency, please.
-
-> +# https://uefi.org/specs/UEFI/2.10/Apx_N_Common_Platform_Error_Record.html#record-header
-> +# for more details.
-> +#
-> +# @notification-type: pre-assigned GUID value indicating the record
-> +#   association with an error event notification type, as defined
-> +#   at https://uefi.org/specs/UEFI/2.10/Apx_N_Common_Platform_Error_Record.html#record-header
-> +#
-> +# @raw-data: Contains the payload of the CPER.
-> +#
-> +# Since: 9.2
-> +##
-> +{ 'struct': 'CommonPlatformErrorRecord',
-> +  'data': {
-> +      'notification-type': ['uint8'],
-> +      'raw-data': ['uint8']
-> +  }
-> +}
-
-You use ['uint8'] for binary.  We commonly represent binary as
-base64-encoded strings in QAPI.
-
-If @notification-type is a UUID, we should use the usual text
-representation.  qemu/uuid.h has functions to convert between binary and
-text.
-
-> +
-> +##
-> +# @ghes-cper:
-> +#
-> +# Inject ARM Processor error with data to be filled according with
-> +# ACPI 6.2 GHESv2 spec.
-> +#
-> +# @cper: a single CPER record to be sent to the guest OS.
-> +#
-> +# Features:
-> +#
-> +# @unstable: This command is experimental.
-> +#
-> +# Since: 9.2
-> +##
-> +{ 'command': 'ghes-cper',
-> +  'data': {
-> +    'cper': 'CommonPlatformErrorRecord'
-> +  },
-> +  'features': [ 'unstable' ]
-> +}
-> diff --git a/qapi/meson.build b/qapi/meson.build
-> index e7bc54e5d047..bd13cd7d40c9 100644
-> --- a/qapi/meson.build
-> +++ b/qapi/meson.build
-> @@ -35,6 +35,7 @@ qapi_all_modules = [
->    'dump',
->    'ebpf',
->    'error',
-> +  'ghes-cper',
->    'introspect',
->    'job',
->    'machine-common',
-> diff --git a/qapi/qapi-schema.json b/qapi/qapi-schema.json
-> index b1581988e4eb..54165c8d6655 100644
-> --- a/qapi/qapi-schema.json
-> +++ b/qapi/qapi-schema.json
-> @@ -81,3 +81,4 @@
->  { 'include': 'vfio.json' }
->  { 'include': 'cryptodev.json' }
->  { 'include': 'cxl.json' }
-> +{ 'include': 'ghes-cper.json' }
-
-Put it next to acpi.json, perhaps?
+Regards,
+Zhao
 

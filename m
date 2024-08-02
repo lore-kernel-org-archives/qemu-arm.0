@@ -1,80 +1,62 @@
-Received: by 2002:a17:505:3f8c:b0:1be9:327d:8ee3 with SMTP id bm12csp1242003njb;
-        Fri, 2 Aug 2024 00:32:50 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCX6lc/LvYifcl4NjB4EG5ipH3dXa5mHSm1rBt2y2+QK7gJyadVaQOERE8sQgZ7vEoW8Ue892Bmd+TFcwcouT1ffkQJFY9H+
-X-Google-Smtp-Source: AGHT+IG4KIZI6XckGAZn2Chd5us/SQ6UpJdIVPc+FA7wl9+iz3g0nKBcfb614rdV7LBywFiq8woZ
-X-Received: by 2002:a05:620a:28ce:b0:7a3:51ed:38b5 with SMTP id af79cd13be357-7a351ed3afdmr133897885a.0.1722583969892;
-        Fri, 02 Aug 2024 00:32:49 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1722583969; cv=pass;
+Received: by 2002:a17:505:3f8c:b0:1be9:327d:8ee3 with SMTP id bm12csp1231488njb;
+        Thu, 1 Aug 2024 23:41:55 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXq8uTqOffN6Dc/7h+CgUmkgZfTP4La5sQDYO8BCjThpH8dBtjG0fxCcgHEi1XIL23SLC3eRgkfQ/WN4EruytqAq1VfMY/D
+X-Google-Smtp-Source: AGHT+IGynUQ3MLR7zZAgCYMTUc3ImWPYJ6r3+Tjt2jpH0kDUA/iGhUsTY2V1DX6kIiPHnEm45JLL
+X-Received: by 2002:a0c:e6c9:0:b0:6bb:9a9d:c77e with SMTP id 6a1803df08f44-6bb9a9dcad5mr17841446d6.12.1722580914871;
+        Thu, 01 Aug 2024 23:41:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1722580914; cv=none;
         d=google.com; s=arc-20160816;
-        b=n1kIYpNPDaolBKhsbSebGZgVLffk7bwqAq+vxKCDSYsovDLfwl+ZH59/ejEVAoaHFa
-         5B2FiPGD2RxqroznQoRl576gmnjpvx68SI7fgdmEwpKfIp1E5ADebin6WM5aGxx+YCBE
-         1/6zhnxbdImms2UdN/Q5oakDKBiivE1yQNj5GVRnYZxbNCel2/hdvm66FRH+bPc8Ck2E
-         9roUWdQLdFMD7WTTPSjF3wnMkd2ikzsmh3pCZhnhUIMZarDaL8ribPi5I6zdF1Gv0D/w
-         MN3NtvWnCTrHO0CuEbgCkArocFFcuMomRlnE9UazYrNT9ukY0ICVzeSfv49BE5HwYJj0
-         zCkA==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :list-unsubscribe:list-subscribe:list-id:precedence:date:message-id;
-        bh=qkb5y+51myNmcQpMaPci/L0/DfnRVEzz7zxUtwu6TRE=;
+        b=rxajxXvA8B9GOmTEI2dN/ekSyPkfWLxlgB/3ZcCLZjc5TQK7oCI5aLXH/dg6vzzPdc
+         Wc+QCCtuW/1ZlASuc8bCp7aRH7PuEyUlTVVT0bibf91zA+93SPALGN32TnGV3rDomf19
+         bHO2e9znvpuyGOjCWRvHsnUPGr+nZpgvKlRCTrt+Tr6wvXi6qlb5p7mI+/Ubffmb4mXL
+         hnUpt/BgOqbdSwbYEBtCjD7TF4fCP0ZW4o3oRlvUr5x592JXTdaRnPC9wQVd+4LenHc8
+         6bL3rtD6ConOsu8Rciw1fF5qPo5pH+AF1+8hcmFrrDUTfV7eOQ4DUcSNWOFLOcoVPHII
+         psWw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:autocrypt:from:content-language:references:cc:to
+         :subject:user-agent:mime-version:date:message-id;
+        bh=S/9x1Xh0wBmo4derdqirR0ZQGy3VUaV8stajdJoEOHk=;
         fh=4GyWwCXC4txz5TyVD2NNBA4uBke5XabatV1Pa8s+jpA=;
-        b=j0eIynVSXd1skNxjpj20y/w3CH7YoLDwnuq7XN2GcNp+oBY7Gn8bsG0AYqCGi2Z9eF
-         c2YuX+JOWk/9YooEP1lClvvMTwWhzU51843XwP17HwER9AxewWkCALhu2L72zDKkTJ5e
-         wbosTGufTIMXtfjvZwYg0FVttWum00nDQO5ISsCnE+NBA2N5UYNhM+xOSkyuP0VF5psm
-         8TBZeWt7FqkroDUMBLe1qZOmVl2jIs0zWsDOadL1SX2tOch0DelTQM7FoDxnTSQzWSdi
-         sBweD47BPnJUx0B68Ga/dx7fjbB1FpfhDME6NqW8/X3W5nmGJQYqH6S6oApRi2VJ5sjz
-         S+iQ==;
+        b=qx15bKxnrEwvn4bqiWVv/N9Njakdb6L5E8abi8MmaZ3daYx4AsLyfHu8yJ4+MQBrI+
+         iQAc4XHEh+0//eX0fIMmPtzkKl1/zuOKJBcomznE8MupvBHSHibKW7OOLg7il/Grl4jw
+         gXbZkktk+hJTSSXEYdnlM0Z2OUDXYVnS7aGwiYugBJ1rBWrmJB5Wexx3RPBEH2ROtNks
+         r5FboZWBWJZv+nqUJw/+6PpnjA/HWK8LLAwxYuX3JT0FrGXHcNAOEDOhEIoEs7mB0SA1
+         d27GiNF3tLDnIrbiNN3KLamBaG+DBpz5avZ1Xtp57KO66jobyeJe+fiDRv1XEnXHJg49
+         5fHQ==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       arc=pass (i=1 spf=pass spfdomain=tls.msk.ru);
-       spf=pass (google.com: domain of kvm+bounces-23008-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="kvm+bounces-23008-alex.bennee=linaro.org@vger.kernel.org"
-Return-Path: <kvm+bounces-23008-alex.bennee=linaro.org@vger.kernel.org>
-Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [2604:1380:45d1:ec00::1])
-        by mx.google.com with ESMTPS id af79cd13be357-7a34f74ab4esi176981685a.291.2024.08.02.00.32.49
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6bb9c76f890si11562466d6.121.2024.08.01.23.41.54
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 02 Aug 2024 00:32:49 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm+bounces-23008-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) client-ip=2604:1380:45d1:ec00::1;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 01 Aug 2024 23:41:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       arc=pass (i=1 spf=pass spfdomain=tls.msk.ru);
-       spf=pass (google.com: domain of kvm+bounces-23008-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="kvm+bounces-23008-alex.bennee=linaro.org@vger.kernel.org"
-Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ny.mirrors.kernel.org (Postfix) with ESMTPS id 9A27B1C20DF6
-	for <alex.bennee@linaro.org>; Fri,  2 Aug 2024 07:32:49 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 9CE9615ADAF;
-	Fri,  2 Aug 2024 07:32:36 +0000 (UTC)
-Received: from isrv.corpit.ru (isrv.corpit.ru [86.62.121.231])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6B34D481CE
-	for <kvm@vger.kernel.org>; Fri,  2 Aug 2024 07:32:33 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=86.62.121.231
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1722583956; cv=none; b=a/LRnXRpCL/IBAh7n68bXtsaplvqwHGVBgGoa7MEI54ttqLzS6Oi7MwkG3bjwyR4TF4mU6pzpNX2Y1UN/soMC2qet75zEkoEQYk0FGgHhWIw0gJHJ0vPsPwUAHlqKww49sBk1tUzmfupWfRDQgRbFJRJsMUcR44Hvht95Sn6s2U=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1722583956; c=relaxed/simple;
-	bh=4aF3lpWvwtFvDyyxOsH+y5y8ygaRiiMH2gINFUPwqJM=;
-	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:
-	 In-Reply-To:Content-Type; b=Rm5RLWnK0gR0RAPzP1vVktKdzhTvCtSZlVmWZZvFytqXbVmnUjfZIyu6+0YQ+oCKi7CjyIzpp0PctCl3diuc/rmL9bdKzSyZZP8FvCee3dCtO9TECDIiIyqJRlVKQps2hlIiqIyVvIfr+jre+0gRaujwi7ZkhRKKe/oS9iWWwC4=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=tls.msk.ru; spf=pass smtp.mailfrom=tls.msk.ru; arc=none smtp.client-ip=86.62.121.231
-Authentication-Results: smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=tls.msk.ru
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=tls.msk.ru
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sZlyd-00061W-4i; Fri, 02 Aug 2024 02:41:23 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1sZlyb-00060Z-Lh; Fri, 02 Aug 2024 02:41:21 -0400
+Received: from isrv.corpit.ru ([86.62.121.231])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1sZlyY-0003Ts-QQ; Fri, 02 Aug 2024 02:41:20 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id CD75380415;
-	Fri,  2 Aug 2024 10:32:06 +0300 (MSK)
+ by isrv.corpit.ru (Postfix) with ESMTP id 8CCE080388;
+ Fri,  2 Aug 2024 09:40:42 +0300 (MSK)
 Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
-	by tsrv.corpit.ru (Postfix) with ESMTP id 66164119A1E;
-	Fri,  2 Aug 2024 10:32:31 +0300 (MSK)
-Message-ID: <9100425d-4584-4b35-9f29-bcd0109f6d78@tls.msk.ru>
-Date: Fri, 2 Aug 2024 10:32:31 +0300
-Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
+ by tsrv.corpit.ru (Postfix) with ESMTP id 001CF1199CB;
+ Fri,  2 Aug 2024 09:41:06 +0300 (MSK)
+Message-ID: <7bf379b7-eb51-4fe3-a93b-88849a8d1292@tls.msk.ru>
+Date: Fri, 2 Aug 2024 09:41:06 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v4 6/6] hvf: arm: Do not advance PC when raising an
@@ -86,8 +68,6 @@ To: Akihiko Odaki <akihiko.odaki@daynix.com>,
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, kvm@vger.kernel.org
 References: <20240720-pmu-v4-0-2a2b28f6b08f@daynix.com>
  <20240720-pmu-v4-6-2a2b28f6b08f@daynix.com>
- <7bf379b7-eb51-4fe3-a93b-88849a8d1292@tls.msk.ru>
- <1c98fcd4-0474-4c5f-8f83-ec6b2b6e6c8b@daynix.com>
 Content-Language: en-US, ru-RU
 From: Michael Tokarev <mjt@tls.msk.ru>
 Autocrypt: addr=mjt@tls.msk.ru; keydata=
@@ -114,29 +94,70 @@ Autocrypt: addr=mjt@tls.msk.ru; keydata=
  6LXtew4GPRrmplUT/Cre9QIUqR4pxYCQaMoOXQQw3Y0csBwoDYUQujn3slbDJRIweHoppBzT
  rM6ZG5ldWQN3n3d71pVuv80guylX8+TSB8Mvkqwb5I36/NAFKl0CbGbTuQli7SmNiTAKilXc
  Y5Uh9PIrmixt0JrmGVRzke6+11mTjVlio/J5dCM=
-In-Reply-To: <1c98fcd4-0474-4c5f-8f83-ec6b2b6e6c8b@daynix.com>
+In-Reply-To: <20240720-pmu-v4-6-2a2b28f6b08f@daynix.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-TUID: o5CHWnDis3l8
+Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
+ helo=isrv.corpit.ru
+X-Spam_score_int: -68
+X-Spam_score: -6.9
+X-Spam_bar: ------
+X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 4vMEE/O/KN7C
 
-02.08.2024 09:44, Akihiko Odaki wrote:
-> On 2024/08/02 15:41, Michael Tokarev wrote:
->> 20.07.2024 12:30, Akihiko Odaki wrote:
->>> This is identical with commit 30a1690f2402 ("hvf: arm: Do not advance
->>> PC when raising an exception") but for writes instead of reads.
->>>
->>> Fixes: a2260983c655 ("hvf: arm: Add support for GICv3")
->>> Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
->>
->> Is it -stable material (together with 30a1690f2402) ?
+20.07.2024 12:30, Akihiko Odaki wrote:
+> This is identical with commit 30a1690f2402 ("hvf: arm: Do not advance
+> PC when raising an exception") but for writes instead of reads.
 > 
-> The fixed bugs are trivial, and probably nobody is actually impacted by them.
+> Fixes: a2260983c655 ("hvf: arm: Add support for GICv3")
+> Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
 
-The famous last words.. But okay, I'm not picking these up :)
+Is it -stable material (together with 30a1690f2402) ?
 
 Thanks,
 
 /mjt
+
+> ---
+>   target/arm/hvf/hvf.c | 6 +++---
+>   1 file changed, 3 insertions(+), 3 deletions(-)
+> 
+> diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+> index adcdfae0b17f..c1496ad5be9b 100644
+> --- a/target/arm/hvf/hvf.c
+> +++ b/target/arm/hvf/hvf.c
+> @@ -1586,10 +1586,10 @@ static int hvf_sysreg_write(CPUState *cpu, uint32_t reg, uint64_t val)
+>       case SYSREG_ICC_SGI1R_EL1:
+>       case SYSREG_ICC_SRE_EL1:
+>           /* Call the TCG sysreg handler. This is only safe for GICv3 regs. */
+> -        if (!hvf_sysreg_write_cp(cpu, reg, val)) {
+> -            hvf_raise_exception(cpu, EXCP_UDEF, syn_uncategorized());
+> +        if (hvf_sysreg_write_cp(cpu, reg, val)) {
+> +            return 0;
+>           }
+> -        return 0;
+> +        break;
+>       case SYSREG_MDSCR_EL1:
+>           env->cp15.mdscr_el1 = val;
+>           return 0;
+> 
+
 -- 
 GPG Key transition (from rsa2048 to rsa4096) since 2024-04-24.
 New key: rsa4096/61AD3D98ECDF2C8E  9D8B E14E 3F2A 9DD7 9199  28F1 61AD 3D98 ECDF 2C8E

@@ -1,278 +1,186 @@
-Received: by 2002:a17:505:3f8c:b0:1be9:327d:8ee3 with SMTP id bm12csp1318731njb;
-        Fri, 2 Aug 2024 05:35:05 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCXG9EwNFno1A/JIElu2wH6kesxQtwR/4G1Pm1XO6fOoQbCIYoOiMjS8mCvCfU/3HCM/NE3gl/2n3BSTTaMTN2u4BvTwilTA
-X-Google-Smtp-Source: AGHT+IH1gh2SOY6H/EZ9Xuqg3h+CFApmfH4NgZivTx7Gk8ECwwZH/JmaRVVGCP9pVddOjv/tJQ9Z
-X-Received: by 2002:a17:902:d4c3:b0:1fd:73e6:83ce with SMTP id d9443c01a7336-1ff57113f17mr51128215ad.0.1722602105565;
-        Fri, 02 Aug 2024 05:35:05 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1722602105; cv=pass;
+Received: by 2002:a17:505:3f8c:b0:1be9:327d:8ee3 with SMTP id bm12csp1333268njb;
+        Fri, 2 Aug 2024 06:16:54 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCW6YUVeaTsHEDAOySDmtqYJzwF95HZwwtLi0vl3/376c2p21UkR58zxErJ2gBMHU2zoGOG/9kyVZDmwVyoPh36kWKaWX5TE
+X-Google-Smtp-Source: AGHT+IF75LVmunnxr2ODRA5CgdKNcrNt0PBeV97XVKOJ8mpMh7o2pdMCO3T6644u4gwZRoKlwva8
+X-Received: by 2002:ac8:5d03:0:b0:44f:eeb0:4c0b with SMTP id d75a77b69052e-451892477a9mr37000081cf.34.1722604614390;
+        Fri, 02 Aug 2024 06:16:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1722604614; cv=none;
         d=google.com; s=arc-20160816;
-        b=XcUNrv399he4xsJ91AfujDx0I6RRT31iD0OsFFBwzT96DaixGT5qRMyczPAMsrhtn7
-         T+Dgn8gUDn2F/BXhcWZ6RWQGEeLySAjFMLqEErxwue48rjzBPMRj4iAoHdfA9iRA89A7
-         Jmo0TrWbSvgodwUDk/USBAxZZU0YiH+sJsRLGNCCrlACSXg1ixEZUHWkXLms0fWdkpBC
-         pJ/DRUd1OaDMBeQDO3jhlVLrf2nspw4Kz1B3BPLG/vuaQGtpZSSj1lZMaEW6gNFztVbH
-         gXi6FGrDHsddzo4adKomqCpy/FrLMLU6dkT8CmXTW6Q/wgH6E2XK9JJVSvxpO2OTFUN5
-         Cn2w==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:content-transfer-encoding:in-reply-to:from
-         :content-language:references:cc:to:subject:user-agent:date
-         :message-id:dkim-signature;
-        bh=T4xyXg9phgAAwP7QR9pGexLREBQgg8oJlmwSuoLdV74=;
-        fh=8uPdaCsKOfj0DYFVz9JfPMUg5GV77tRTLAOWHc873po=;
-        b=zvnS5OJ+UKyGG4QM7C0//k+eqqpJCnQrYzhx/UjH4QEiCxoWcHajb84lmSrH6X+9RL
-         20xKDxCK4zrb0dxfdTJK/DbNbqLNz7ns857yAWTYwYQuTI4AeZnwS39Xn7D7Jd9vNrv8
-         /YciW/t4aEJb9Aq5FkMPh6fuE92FfLhxRFVCZ1aNm1fpoFfumN9pEWG00slNc+ZbAt5I
-         BW+nNb2M2+y8dWB8KnRfLRIdL5SNsHXTDOHNusWnv/6RJDtnOHyl4VLFecUpNRv7QexT
-         gCDxEYk1+fVmAcmj/a3rjTcbp+IEMs8EjEJrcyhHTOqpLmpXOu79vijLb81QetJQnkcX
-         L4ig==;
+        b=lJ8aBqYH+TtUDPHRuML+2kRHCCRX09Rvi+wv0XpJnmPXy23UrZPEt5E3zU+SAv5bj0
+         Et9pHfXZEuMkRd+AeexRGZpiMhpivCqHj8ob+PY2ds39SMJ+fU7cXH+XGKURgpQsSKI2
+         qpLmGVj3WVGf7ZLO+7VyRMiKZKoltVnVRdG6oekJBlHCQth1sxbH/SP2WOsK9QlIW1az
+         8F9PcYsfx5a8bLggIGy/mdx7A3O6LmjEQeyGM3CqukWqewGpiOIChA7oyPFvs8+o0Idg
+         R3TbpPCR4U7VXo2EF26L5xjI8sLr72mkS+w6zu6tVqAq3r6bdGo6tChiao+lCErqbziH
+         v3jA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:message-id:date:user-agent:references:organization
+         :in-reply-to:subject:cc:to:from:dkim-signature;
+        bh=1Rdk22TaS/iLiVvcnWLKLcnLzcA/PCehb6evie521EY=;
+        fh=2XeXudx3D7JJK3vPiUGn65+efgpgeRRseeqaFeYHs6A=;
+        b=cP5zCFyAjU6g+FOs9/XxSUvU4GnWH4J36tYxJbxl+pelPuUCo6G6Xc4cm1jZW5Yqfe
+         datI/dQxGy77Ypm9zWyb/dg/Hi4TB21x83ZX47dBQQzKaPSUFSSLDySrD/lQteXoXlO3
+         w5b7rQoFDEtifUaEiw8VlGjwd/+XjvKTLupoxcm35T+uEkMArbYc1kCxZpa5F14uLUx3
+         zz/Xr82wsLJ2ISRvtGt0PQAQtS/6k1RqZr0BqTPx7IKXE2h4b57B1pFEKouHnPVfvCpR
+         CH2ljaGGxWHi5Fe0dEBLegGE5EcLoAl2ubl9AvcOQOtLi8TrLRfqceHd8l1lDHBRS/wN
+         yFZA==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@os.amperecomputing.com header.s=selector2 header.b=UHzR29Rp;
-       arc=pass (i=1 spf=pass spfdomain=os.amperecomputing.com dkim=pass dkdomain=os.amperecomputing.com dmarc=pass fromdomain=os.amperecomputing.com);
-       spf=pass (google.com: domain of gankulkarni@os.amperecomputing.com designates 2a01:111:f403:c001::2 as permitted sender) smtp.mailfrom=gankulkarni@os.amperecomputing.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amperecomputing.com
-Return-Path: <gankulkarni@os.amperecomputing.com>
-Received: from SJ2PR03CU001.outbound.protection.outlook.com (mail-westusazlp170120002.outbound.protection.outlook.com. [2a01:111:f403:c001::2])
-        by mx.google.com with ESMTPS id d9443c01a7336-1ff59176932si18698195ad.422.2024.08.02.05.35.05
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 02 Aug 2024 05:35:05 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gankulkarni@os.amperecomputing.com designates 2a01:111:f403:c001::2 as permitted sender) client-ip=2a01:111:f403:c001::2;
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QacOeUEl;
+       spf=pass (google.com: domain of cohuck@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <cohuck@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id d75a77b69052e-4518a7646bcsi21761841cf.364.2024.08.02.06.16.54
+        for <alex.bennee@linaro.org>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 02 Aug 2024 06:16:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of cohuck@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@os.amperecomputing.com header.s=selector2 header.b=UHzR29Rp;
-       arc=pass (i=1 spf=pass spfdomain=os.amperecomputing.com dkim=pass dkdomain=os.amperecomputing.com dmarc=pass fromdomain=os.amperecomputing.com);
-       spf=pass (google.com: domain of gankulkarni@os.amperecomputing.com designates 2a01:111:f403:c001::2 as permitted sender) smtp.mailfrom=gankulkarni@os.amperecomputing.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amperecomputing.com
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=pUSI0sE4tA/d41OD9oQGj8VOV9kioHrRC0Pl2a/jdG1Lpxh9PDOjwZz72uswj+TfE3q/EhXthb1UjqnZLIl0KH66u/521s7hUP67zbNRv5MAitbA78VO1x8LylVzy/l6OYxZG9VBa73mTxlAtH9F034TL8yuOYEHPy95XFay2Z7LfLpZ2iguZgJVCW9sOH8CNi9jXrWA5gYY6DgCAaJnyiHigFqXkh1g6FN9rXi8EY74anDhyVNk2k/gMU+Kduay63DdZ/ssYkTDtH0yDVFnOcZRVmESuvRywHUEnJ5qDK+8F2idpAeKV4zdu+c+z1wPP7xr2bYc8CTbo7F7XlBjog==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=T4xyXg9phgAAwP7QR9pGexLREBQgg8oJlmwSuoLdV74=;
- b=sw5yio2sZADdi4FYXDg7Ur5X66OVW1vVcTCkqpDrggcfAmtLiI1kwOGhQ0S8qEpGI7jD7v6eOeFWX1RclG2Hbwsl56Q9ZwzERci89EZqt8jXk4IQ+ALbbXQWFSbmaQKbp4rR2YCjLVu8LwYVrB7atcWRy7/0mmJcHL4naos+vyIwL/qvdQJcTjfIiGSkhg3duJ6LG+Q8yqrLDXDVjx7o+T4ESlHo4NUO7boxOByNfWaF8j61jKU05dhJvi+h7aSC2obXnodgIg9iq4wzDEZBUoU+ntD7TJeS0rLpIykFBN6lXKux6APuzuXMa5vV5ZHVBRWv0d5qfZQR+iBmByYUrA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=os.amperecomputing.com; dmarc=pass action=none
- header.from=os.amperecomputing.com; dkim=pass
- header.d=os.amperecomputing.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=os.amperecomputing.com; s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=T4xyXg9phgAAwP7QR9pGexLREBQgg8oJlmwSuoLdV74=;
- b=UHzR29RpbmYk0y2/vguZ9psqfy8OjUdZwOKWK0T3t7Ft9LTkZnnkjLtOeQSCo+TCaf+y3pAmHoqbTbpe7Q0wboRQ6QtLQWTIOWmXGPkXcnfl1GALR3GtIrri+VB1Wuvnv5505I+YKj0LgMEpdPJzoFr9z7SEITQXrXkneio/vmQ=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=os.amperecomputing.com;
-Received: from SJ2PR01MB8101.prod.exchangelabs.com (2603:10b6:a03:4f6::10) by
- SJ2PR01MB8152.prod.exchangelabs.com (2603:10b6:a03:501::7) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.7828.23; Fri, 2 Aug 2024 12:35:00 +0000
-Received: from SJ2PR01MB8101.prod.exchangelabs.com
- ([fe80::292:6d9c:eb9a:95c9]) by SJ2PR01MB8101.prod.exchangelabs.com
- ([fe80::292:6d9c:eb9a:95c9%3]) with mapi id 15.20.7828.021; Fri, 2 Aug 2024
- 12:35:00 +0000
-Message-ID: <a622440f-9f39-4d30-bdb6-ed571a152793@os.amperecomputing.com>
-Date: Fri, 2 Aug 2024 18:04:50 +0530
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] arm/kvm: add support for MTE
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, richard.henderson@linaro.org,
- darren@os.amperecomputing.com, =?UTF-8?Q?Alex_Benn=C3=A9e?=
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QacOeUEl;
+       spf=pass (google.com: domain of cohuck@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1722604614;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=1Rdk22TaS/iLiVvcnWLKLcnLzcA/PCehb6evie521EY=;
+	b=QacOeUElNycKFtRFyu08akHAnWn+3Wvtytgmild413YqSeVfZUBQP0YSuTJoIgmZdbeYB3
+	AxLUFKqylAGzx0brjHK7LL8yhhcAAJC2TMz/ogXhs9ExFExz2FZW9SWabM+UvrUjJab1UY
+	Lq7fJKHs73a8vrVHPdc6LS8WOi/W+F4=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-304-MoMadAuFN_-RtowhBnGDYw-1; Fri,
+ 02 Aug 2024 09:16:50 -0400
+X-MC-Unique: MoMadAuFN_-RtowhBnGDYw-1
+Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 66EB61955F65;
+	Fri,  2 Aug 2024 13:16:48 +0000 (UTC)
+Received: from localhost (dhcp-192-176.str.redhat.com [10.33.192.176])
+	by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 68BD9300018D;
+	Fri,  2 Aug 2024 13:16:46 +0000 (UTC)
+From: Cornelia Huck <cohuck@redhat.com>
+To: Ganapatrao Kulkarni <gankulkarni@os.amperecomputing.com>, Peter Maydell
+ <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ richard.henderson@linaro.org, darren@os.amperecomputing.com, Alex
+ =?utf-8?Q?Benn=C3=A9e?=
  <alex.bennee@linaro.org>
+Subject: Re: [PATCH] arm/kvm: add support for MTE
+In-Reply-To: <a622440f-9f39-4d30-bdb6-ed571a152793@os.amperecomputing.com>
+Organization: "Red Hat GmbH, Sitz: Werner-von-Siemens-Ring 12, D-85630
+ Grasbrunn, Handelsregister: Amtsgericht =?utf-8?Q?M=C3=BCnchen=2C?= HRB
+ 153243,
+ =?utf-8?Q?Gesch=C3=A4ftsf=C3=BChrer=3A?= Ryan Barnhart, Charles Cachera,
+ Michael O'Neill, Amy
+ Ross"
 References: <20240709060448.251881-1-gankulkarni@os.amperecomputing.com>
  <CAFEAcA_7BOXSLXJ=VV0pWDvrN=2dWrM3bRTG+31ivPjeVbWGKQ@mail.gmail.com>
-Content-Language: en-US
-From: Ganapatrao Kulkarni <gankulkarni@os.amperecomputing.com>
-In-Reply-To: <CAFEAcA_7BOXSLXJ=VV0pWDvrN=2dWrM3bRTG+31ivPjeVbWGKQ@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-ClientProxiedBy: MA0PR01CA0113.INDPRD01.PROD.OUTLOOK.COM
- (2603:1096:a01:11d::14) To SJ2PR01MB8101.prod.exchangelabs.com
- (2603:10b6:a03:4f6::10)
-Return-Path: gankulkarni@os.amperecomputing.com
+ <a622440f-9f39-4d30-bdb6-ed571a152793@os.amperecomputing.com>
+User-Agent: Notmuch/0.38.3 (https://notmuchmail.org)
+Date: Fri, 02 Aug 2024 15:16:43 +0200
+Message-ID: <87y15f6p50.fsf@redhat.com>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: SJ2PR01MB8101:EE_|SJ2PR01MB8152:EE_
-X-MS-Office365-Filtering-Correlation-Id: 71d1b6ce-7d5e-490d-d612-08dcb2ef8543
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|376014|1800799024;
-X-Microsoft-Antispam-Message-Info:
-	=?utf-8?B?RmNwZXhyRE4rbTVXMEJIUi9rN0NnNHBsZmJ4RnM3RlFsQmZmOGp2OW1TTFJC?=
- =?utf-8?B?WEYxeDJFZjFicnN6eXNjck9xQ1M0YlNPaWJvOHlUbGJ4UUFIeXcvbS90NHF5?=
- =?utf-8?B?UlMvQTB0WkF4ZWJpMWgxNXdEWWROM0xwc21ibUJ2cVJBTmhVUFJqU2xZVm9k?=
- =?utf-8?B?YVZqTDYrZjJSMHhKKzJPOWhocEZPekdoNUZNOCtOTW0ydjUrVlZMOFlob0ZO?=
- =?utf-8?B?VTgzUjVqM2ZEQ2VlNno4TGV2ZWF4bVgyUXlzVCtldFYrOHo5cEROeDRQUXVn?=
- =?utf-8?B?cEN0RjBrcGMrOHgzaWFHSGd5V3dETVd5dWVhWkozYUZQSzhUYzdTYjF5Nldt?=
- =?utf-8?B?YVZMUzdibERVR3U2NGZDYW5wN1JNRjNPNE94NnNMelBSYmhCckZiZWdFRG5a?=
- =?utf-8?B?Rk90WXpIQnRsaVJxWmVRU1dCcTlhNEE2MXp1dnM1ZXh1aXlzSUpPS1lDaWdK?=
- =?utf-8?B?QWtDVCtmL0JOb3FIR2wxbHkwNEEyMm9zZFRjc2l3R0J3b3RLaWRkc1pSUWxC?=
- =?utf-8?B?WmJRc0lYZlRIMnVWR1Y3YkN4eDlPcTBySzZBVm03WTFZUFdVbFNkcXhHUW5C?=
- =?utf-8?B?aDNrY3JLeUZhME1mREVrRDIrcitoNm5HN1RkSDk5TSs5Z2c0UzBKYTJBd3JO?=
- =?utf-8?B?UXREeTc5UFhXNXNxMkZrak9BbnZmTjNUaFA2eGlCY2Noa0E1b2FxdVJXRytQ?=
- =?utf-8?B?UEJWS1RwUlJhbzRwWVM4QUx1V09MeldqUUlGQ05zN2pBc21MYlFsWE5BL2tk?=
- =?utf-8?B?Q21KQVRaMkJIUnpyeHpoMzdyM2tJaUkrczE0NnZwWUxxT3FyMURBQllKS1Vn?=
- =?utf-8?B?bVhEWU1IdWswRDFuMU01d2JUT3F0M3BJSnphc1NtNnhYMDRndHdxaC9rWHpt?=
- =?utf-8?B?aTMvRFBwV2djcTlIK1JKY0xtSFlTZHpObFpVUDgxQnd4R2xyWk5meDZaY2Vx?=
- =?utf-8?B?aEwybHVxbzZEaSs0bkVlYzkxL1pxOW1qZGVkYVFKUE95NUU5RFFFaXFxZ3Ju?=
- =?utf-8?B?SDc4ZVFoUlBFZXhSbTJGbmtaZmQwdldmZ3ZjSHVOMHhXME5iWXdzTURFZ0lB?=
- =?utf-8?B?dllOelJCbmdqVWN5Z0svbDN5Y0JVS0E5eGVjZ2pzRUVrUFpPbks3VVhEam5I?=
- =?utf-8?B?TGl3cU40cVNKYjRyNUwyUEVmMlZRSVNWbTNIaDBjSjVKVWhzTVpjSmlXV2I2?=
- =?utf-8?B?bFBZMU50eWUwNVhha1pnd0pVYkFybWZmTnRia2dqTHFGeC9mQmMwcGpYRlU3?=
- =?utf-8?B?aFhDc2ZXTUN6L0FucGFTWkJPb3lkbWtnbVc5V2N0ZlZqVTltMFg2ODkrMFJG?=
- =?utf-8?B?KzJBMWRJaERFT2lLTXV5YkE3RjVnNlZoNE1vT3hhM2dsOTIzZUV2Yi9URmFJ?=
- =?utf-8?B?L2tPS0NLZkUvVmVqYmJzR0hKTzBoSlcxSmlKV09lQjhHcDM0eUtXVlordVg0?=
- =?utf-8?B?ajBkbXVwNHA0Mnk5UGtkRHJlTjdZdjEzTVgvc2w0SnlOOHFnNzF6MzdCWU0z?=
- =?utf-8?B?Q2ZXQmd1VEFHNnRtWXRMdWxzSC82U2dodUZBNlpSS1hxLzZaaFZrR1VOWmRC?=
- =?utf-8?B?c2taWGR5SUM1N0N3Yjg4bXJ6SlNRcVZaSXVqRk1jS0pVQW5aSjYwcDhoSVl6?=
- =?utf-8?B?QzIvQXFuc1o2dXFXT0RCS0Y5U0NKWUVmNW1kazVsNjZtYzFUTDFiSjZ5Rjc2?=
- =?utf-8?B?TXVMZDZDVGVvVmhEN0RmRWFZeWphSzVzcVhha3hxSHRRQkFYSzh2Y042Vmdx?=
- =?utf-8?B?dC9XYjdJRjlhT2Jxa2RKZDBTLytqTnVpMFJVSy9kV2ZsYTFoSjFLS2V3cUQ2?=
- =?utf-8?B?ak1UQmcxK21uTHA0K25VQT09?=
-X-Forefront-Antispam-Report:
-	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SJ2PR01MB8101.prod.exchangelabs.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(376014)(1800799024);DIR:OUT;SFP:1102;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0:
-	=?utf-8?B?OTY4K09VcnAreXRjMzA0aDhtZmgvRFpFOUw4emxJcFhYd2NMai9pbFRCNlIx?=
- =?utf-8?B?OTNVSkJLTTFOMXpDWGVNYmVia0d4aXM1dndxclh2Yk5YbW1IM25ETkluMFM2?=
- =?utf-8?B?K2xoMFE1MVFtS2Z4aTluaUNERFUrSGt5VFFzT3hBbnM4S2tWZGc3clZITVZP?=
- =?utf-8?B?UTM5UFRaSDB0RkVnRllMeDJrbHhpMDhycFZrS0pMS1U5VXc4T3lSYy9IbXdT?=
- =?utf-8?B?b2pZZi9yOVFYdng3amd2K0kreXRuRlpuN1NLdk9Xam1RdDlpU0JOZ29jRUVt?=
- =?utf-8?B?L0RERW14YjI4Y2FqRGs3VEZzbUVjNjRxcWltZU9ycE1RU1VUV21nYmpKVjRB?=
- =?utf-8?B?S3RGT1NrcS9mZjVqa204SDFhMTFOMmFvVytTWHZkalBna1plV0MrOVJsbVNU?=
- =?utf-8?B?TC9Xc2tya09wS0g2d3JMWndIL1R4VnRYbm4zVEI1ZTV1cHJzV042VTd4WjM0?=
- =?utf-8?B?N3BidUdEeDU2YjNYcDd1U1VsMm05cDc3eDFINFFUYjBmWXpMd25vNTJsQ1dY?=
- =?utf-8?B?RVFyWlJtNTE5anphT0I3aGVUeVRnTk1DTzZiUTF0dmRvbks4L2FSck9kdU1a?=
- =?utf-8?B?SzVsYmo4Rzg2QndCZmhMaXcwcWdhcXRwaEZaeGd6cGtqUnpEbjczR3ZlNENz?=
- =?utf-8?B?YzMvTGd4QlJvZzNGTDJjMG9CeTZyNlFRbzI0RVRVOFdFcFUvYVFrSnJsQkpa?=
- =?utf-8?B?WHFqekVDQXBPYWJDMyt0TVdvVVY0VGxoR3dwbWVuL0VPREVPeFhHMnhMTXU1?=
- =?utf-8?B?ZFVjT0lkRDBaWjF3RHBUQjUzaXJPV1VkUTlpNE9RTjF1RGh5QzM3RGNZQVNs?=
- =?utf-8?B?SDRIZGswTmd5NXZ0UnpkM3BFaWNhYlJrUExrQWJpQWZtYWh3NUh4Z2dZU0dX?=
- =?utf-8?B?RlhrUzZpTmVNMjJjcWJLL3lvelUzWGxVdlRMY2hucHNiNkI3a1pHZHJGVWp1?=
- =?utf-8?B?c1QwMVFsYnUvSjA5cjNpR3RpcVFyL1NGRTZPa211TUo0S0dKN215Q3pHdTBk?=
- =?utf-8?B?a3BCclBxYXlXaE41QWZPaG05QnFYNlN2dEN3VGhVUmZ3TVlpZThoSkdxUWhq?=
- =?utf-8?B?MTVHcmZERENXNlBIV1pEN2w4M1kxbXV2ajFmbXFYY0FoMW1abHo3TkFvMlk4?=
- =?utf-8?B?dVpYRzBjK3R6UURsNzNWWG80RFh5c1BuQStxQ2xmN3VaNzkwSnZnWUw5MHd1?=
- =?utf-8?B?elI0SzlCaWJGY0lQbGJ0QkY1YWZzMDhLTlN2TURsVnludWl6a2lRZGhPYUZH?=
- =?utf-8?B?SENuNUJRWmFkVUlJQURWS0dTUkV3b0dwR2hYVXFiKzNsVzRQLytFRld6YXp1?=
- =?utf-8?B?dFAvREJEaUhWcWErN3FSSHNhOWNMWjlIaVBRR2lua2plVUF2TUwrSEFRTDVJ?=
- =?utf-8?B?WURmQlQ1ek16dGx0VjFIVnBSa3lRUzB2QjQvbmo1NlVqcHZZUVJiaitLVmVL?=
- =?utf-8?B?T0FHYTBma3FaNit1a0pISHhSd0wvNTR5eENPUnhVd0J2eVAwcit4SktyWVl5?=
- =?utf-8?B?RGNtOGNrR2NRQU5xc3hDeTd6NjAyUzByb3VjUnoxNG1wOWZhbFRmZGx5TFJp?=
- =?utf-8?B?OWVCQ2FFQWdjQ3h3U1h2SUF2eFFaVEZaZFkyRU4wVm5BanJJUkRGV2pSZCt2?=
- =?utf-8?B?WUREU2l3djU5U0g5Syt5NHpiSnNTcXdydW5UMFRXUHhTbWZuSXVhMFJjQmgv?=
- =?utf-8?B?Z0Ixc1hOQnUxbFN1cCtJSWlJbnFLREJVbllSQU1RbGVXSTlEWmpobVRON2t1?=
- =?utf-8?B?azVPbWVzMVRYQW5aNm1PTTFsYkowYjdUTGZqSGV3am5CUGVzVDhrNUx5UG1w?=
- =?utf-8?B?THQ5K1BEbWFEM203VFFYbmpNUWg2RERSTkNoY0crN0dscUw2dHNRK09LVjBM?=
- =?utf-8?B?SFFsVGFpMUlVb1pxVUVPS0ZGZnFqV3puZ2NZU0ZlaDlSZFBLYi90NGhXcWk1?=
- =?utf-8?B?RzNHbU1QM1I2M2RxVWhSZzM0ZHExbXdoRmY0V2xkRmsrclhEN3B3eERkSFZP?=
- =?utf-8?B?SnI3MGM1VmdGNWcyZ0JjYm5wR2xuOENQOTI5Rm8zcTlvRmRwdjFGWGdkTGZY?=
- =?utf-8?B?dStJQnkvUXlwOWFuV1JOWEZ1bHR6OGhHL1k3R25qWmovZnNnTEwxbWVTM3VE?=
- =?utf-8?B?UGNUMitqdWdZRXJudmZQVWhENFVGeE41ZTVvVHU2STNTTjNLSU83ZmxQZGtO?=
- =?utf-8?Q?P3VChTfaEzq9X4UpcTLZG6M=3D?=
-X-OriginatorOrg: os.amperecomputing.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 71d1b6ce-7d5e-490d-d612-08dcb2ef8543
-X-MS-Exchange-CrossTenant-AuthSource: SJ2PR01MB8101.prod.exchangelabs.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 02 Aug 2024 12:35:00.3607
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 3bc2b170-fd94-476d-b0ce-4229bdc904a7
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: YqyMjyNj2sQ0BJTdcz0pZ2AoHb7DZCHDNiqy40jSRNgyTSzllsgBkxPVmzbD4Gc1X4U0TIul3UBjxaD3wOWmgVhc2VwuNzY76i3J4uoDpJCg8IGbzP8l1alEIlsUV8pI
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ2PR01MB8152
-X-TUID: bN9FoxDU0kXz
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
+X-TUID: loH76+Kt0ZsB
 
+On Fri, Aug 02 2024, Ganapatrao Kulkarni <gankulkarni@os.amperecomputing.com> wrote:
 
-Hi Peter,
+> Hi Peter,
+>
+> On 16-07-2024 09:15 pm, Peter Maydell wrote:
+>> On Tue, 9 Jul 2024 at 07:05, Ganapatrao Kulkarni
+>> <gankulkarni@os.amperecomputing.com> wrote:
+>>>
+>>> Extend the 'mte' property for the virt machine to cover KVM as
+>>> well. For KVM, we don't allocate tag memory, but instead enable
+>>> the capability.
+>>>
+>>> If MTE has been enabled, we need to disable migration, as we do not
+>>> yet have a way to migrate the tags as well. Therefore, MTE will stay
+>>> off with KVM unless requested explicitly.
+>>>
+>>> This patch is rework of commit b320e21c48ce64853904bea6631c0158cc2ef227
+>>> which broke TCG since it made the TCG -cpu max
+>>> report the presence of MTE to the guest even if the board hadn't
+>>> enabled MTE by wiring up the tag RAM. This meant that if the guest
+>>> then tried to use MTE QEMU would segfault accessing the
+>>> non-existent tag RAM.
+>>>
+>>> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
+>>> Signed-off-by: Ganapatrao Kulkarni <gankulkarni@os.amperecomputing.com>
+>>> ---
+>> 
+>> In target/arm/cpu.c:arm_cpu_realizefn() there is this code:
+>> 
+>>      if (cpu_isar_feature(aa64_mte, cpu)) {
+>>          /*
+>>           * The architectural range of GM blocksize is 2-6, however qemu
+>>           * doesn't support blocksize of 2 (see HELPER(ldgm)).
+>>           */
+>>          if (tcg_enabled()) {
+>>              assert(cpu->gm_blocksize >= 3 && cpu->gm_blocksize <= 6);
+>>          }
+>> 
+>> #ifndef CONFIG_USER_ONLY
+>>          /*
+>>           * If we do not have tag-memory provided by the machine,
+>>           * reduce MTE support to instructions enabled at EL0.
+>>           * This matches Cortex-A710 BROADCASTMTE input being LOW.
+>>           */
+>>          if (cpu->tag_memory == NULL) {
+>>              cpu->isar.id_aa64pfr1 =
+>>                  FIELD_DP64(cpu->isar.id_aa64pfr1, ID_AA64PFR1, MTE, 1);
+>>          }
+>> #endif
+>>      }
+>> 
+>> With this patch, for KVM we will end up going through the
+>> "squash ID_AA64PFR1_EL1.MTE to 1" codepath, because KVM doesn't
+>> set cpu->tag_memory and this is still using that as its check.
+>> 
+>> More generally, how does the enabling of the MTE KVM cap
+>> interact with the ID_AA64PFR1_EL1 value that we read from
+>> the host in kvm_arm_get_host_cpu_features() ? We care that we
+>> have the right ID register values because we use ID field
+>> checks to determine whether the vcpu has a feature or not,
+>> even in the KVM case.
+>
+> Using ID_AA64PFR1_EL1.MTE bits seems to have issues with the Linux 
+> kernel implementation.
+> This register is sensitized to user space and value read differs time to 
+> time. ID_AA64PFR1_EL1 register read at the beginning of qemu code will 
+> have the MTE bits cleared/masked. However ID_AA64PFR1_EL1.MTE bits are 
+> unmasked and shows the real value of MTE after ioctl KVM_CAP_ARM_MTE is 
+> executed to enable MTE.
+> In QEMU,. isar.id_aa64pfr1 is read at the very beginning and cached, by 
+> creating dummy(kvm_arm_create_scratch_host_vcpu) interfaces(fds) for 
+> kvm, vm and vcpu. At later stages use of isar.id_aa64pfr1.mte at 
+> function like arm_cpu_realizefn does not show the right value and code 
+> never enters the "if (cpu_isar_feature(aa64_mte, cpu)" loop.
+>
+> Not sure about other feature bits, but for MTE, using isar.id_aa64pfr1 
+> may not be appropriate but I do see it is getting used already many 
+> places of the code. I am not sure how it is behaving on emulator/TCG mode?
+>
+> Having said that, I have tried to remove the sensitization of 
+> ID_AA64PFR1_EL1 for MTE bits in the kernel, but that will have bigger 
+> problem like the VM boot crashes with the default compiled qemu binary 
+> with normal VM boot itself, since VM detects as MTE present and starts 
+> init of it.
 
-On 16-07-2024 09:15 pm, Peter Maydell wrote:
-> On Tue, 9 Jul 2024 at 07:05, Ganapatrao Kulkarni
-> <gankulkarni@os.amperecomputing.com> wrote:
->>
->> Extend the 'mte' property for the virt machine to cover KVM as
->> well. For KVM, we don't allocate tag memory, but instead enable
->> the capability.
->>
->> If MTE has been enabled, we need to disable migration, as we do not
->> yet have a way to migrate the tags as well. Therefore, MTE will stay
->> off with KVM unless requested explicitly.
->>
->> This patch is rework of commit b320e21c48ce64853904bea6631c0158cc2ef227
->> which broke TCG since it made the TCG -cpu max
->> report the presence of MTE to the guest even if the board hadn't
->> enabled MTE by wiring up the tag RAM. This meant that if the guest
->> then tried to use MTE QEMU would segfault accessing the
->> non-existent tag RAM.
->>
->> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
->> Signed-off-by: Ganapatrao Kulkarni <gankulkarni@os.amperecomputing.com>
->> ---
-> 
-> In target/arm/cpu.c:arm_cpu_realizefn() there is this code:
-> 
->      if (cpu_isar_feature(aa64_mte, cpu)) {
->          /*
->           * The architectural range of GM blocksize is 2-6, however qemu
->           * doesn't support blocksize of 2 (see HELPER(ldgm)).
->           */
->          if (tcg_enabled()) {
->              assert(cpu->gm_blocksize >= 3 && cpu->gm_blocksize <= 6);
->          }
-> 
-> #ifndef CONFIG_USER_ONLY
->          /*
->           * If we do not have tag-memory provided by the machine,
->           * reduce MTE support to instructions enabled at EL0.
->           * This matches Cortex-A710 BROADCASTMTE input being LOW.
->           */
->          if (cpu->tag_memory == NULL) {
->              cpu->isar.id_aa64pfr1 =
->                  FIELD_DP64(cpu->isar.id_aa64pfr1, ID_AA64PFR1, MTE, 1);
->          }
-> #endif
->      }
-> 
-> With this patch, for KVM we will end up going through the
-> "squash ID_AA64PFR1_EL1.MTE to 1" codepath, because KVM doesn't
-> set cpu->tag_memory and this is still using that as its check.
-> 
-> More generally, how does the enabling of the MTE KVM cap
-> interact with the ID_AA64PFR1_EL1 value that we read from
-> the host in kvm_arm_get_host_cpu_features() ? We care that we
-> have the right ID register values because we use ID field
-> checks to determine whether the vcpu has a feature or not,
-> even in the KVM case.
+Not sure if you've seen
+https://lore.kernel.org/all/20240723072004.1470688-1-shahuang@redhat.com/,
+which aims to make aa64pfr1 writable by userspace -- but still needs
+special handling for MTE. (That series also masks out MTEX and MTE_frac
+because the Linux kernel does not yet handle them; might become relevant
+if we want to support it from QEMU at some time in the future, but then
+the command line would also need some thought.)
 
-Using ID_AA64PFR1_EL1.MTE bits seems to have issues with the Linux 
-kernel implementation.
-This register is sensitized to user space and value read differs time to 
-time. ID_AA64PFR1_EL1 register read at the beginning of qemu code will 
-have the MTE bits cleared/masked. However ID_AA64PFR1_EL1.MTE bits are 
-unmasked and shows the real value of MTE after ioctl KVM_CAP_ARM_MTE is 
-executed to enable MTE.
-In QEMU,. isar.id_aa64pfr1 is read at the very beginning and cached, by 
-creating dummy(kvm_arm_create_scratch_host_vcpu) interfaces(fds) for 
-kvm, vm and vcpu. At later stages use of isar.id_aa64pfr1.mte at 
-function like arm_cpu_realizefn does not show the right value and code 
-never enters the "if (cpu_isar_feature(aa64_mte, cpu)" loop.
-
-Not sure about other feature bits, but for MTE, using isar.id_aa64pfr1 
-may not be appropriate but I do see it is getting used already many 
-places of the code. I am not sure how it is behaving on emulator/TCG mode?
-
-Having said that, I have tried to remove the sensitization of 
-ID_AA64PFR1_EL1 for MTE bits in the kernel, but that will have bigger 
-problem like the VM boot crashes with the default compiled qemu binary 
-with normal VM boot itself, since VM detects as MTE present and starts 
-init of it.
-
-> 
-> Since Cornelia first wrote the patch this is based on, we've
-> landed gdbstub support for MTE (so gdb can find out which
-> addresses in the memory map have tags and read and write
-> those tags). So I think the KVM MTE support now also needs to
-> handle that. (See aarch64_cpu_register_gdb_commands() in
-> target/arm/gdbstub64.c.)
-> 
-> thanks
-> -- PMM
-
-Thanks,
-Ganapat
+I fear that we'll be stuck with special handling for the MTE bits in
+aa64pfr1 because the kernel will not want to break its userspace API.

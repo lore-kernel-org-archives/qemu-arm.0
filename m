@@ -1,121 +1,145 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a7acadbb910sm919959766b.225.2024.08.01.09.05.01
+Received: by 2002:a17:505:3f8c:b0:1be9:327d:8ee3 with SMTP id bm12csp1242003njb;
+        Fri, 2 Aug 2024 00:32:50 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCX6lc/LvYifcl4NjB4EG5ipH3dXa5mHSm1rBt2y2+QK7gJyadVaQOERE8sQgZ7vEoW8Ue892Bmd+TFcwcouT1ffkQJFY9H+
+X-Google-Smtp-Source: AGHT+IG4KIZI6XckGAZn2Chd5us/SQ6UpJdIVPc+FA7wl9+iz3g0nKBcfb614rdV7LBywFiq8woZ
+X-Received: by 2002:a05:620a:28ce:b0:7a3:51ed:38b5 with SMTP id af79cd13be357-7a351ed3afdmr133897885a.0.1722583969892;
+        Fri, 02 Aug 2024 00:32:49 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1722583969; cv=pass;
+        d=google.com; s=arc-20160816;
+        b=n1kIYpNPDaolBKhsbSebGZgVLffk7bwqAq+vxKCDSYsovDLfwl+ZH59/ejEVAoaHFa
+         5B2FiPGD2RxqroznQoRl576gmnjpvx68SI7fgdmEwpKfIp1E5ADebin6WM5aGxx+YCBE
+         1/6zhnxbdImms2UdN/Q5oakDKBiivE1yQNj5GVRnYZxbNCel2/hdvm66FRH+bPc8Ck2E
+         9roUWdQLdFMD7WTTPSjF3wnMkd2ikzsmh3pCZhnhUIMZarDaL8ribPi5I6zdF1Gv0D/w
+         MN3NtvWnCTrHO0CuEbgCkArocFFcuMomRlnE9UazYrNT9ukY0ICVzeSfv49BE5HwYJj0
+         zCkA==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from
+         :content-language:references:cc:to:subject:user-agent:mime-version
+         :list-unsubscribe:list-subscribe:list-id:precedence:date:message-id;
+        bh=qkb5y+51myNmcQpMaPci/L0/DfnRVEzz7zxUtwu6TRE=;
+        fh=4GyWwCXC4txz5TyVD2NNBA4uBke5XabatV1Pa8s+jpA=;
+        b=j0eIynVSXd1skNxjpj20y/w3CH7YoLDwnuq7XN2GcNp+oBY7Gn8bsG0AYqCGi2Z9eF
+         c2YuX+JOWk/9YooEP1lClvvMTwWhzU51843XwP17HwER9AxewWkCALhu2L72zDKkTJ5e
+         wbosTGufTIMXtfjvZwYg0FVttWum00nDQO5ISsCnE+NBA2N5UYNhM+xOSkyuP0VF5psm
+         8TBZeWt7FqkroDUMBLe1qZOmVl2jIs0zWsDOadL1SX2tOch0DelTQM7FoDxnTSQzWSdi
+         sBweD47BPnJUx0B68Ga/dx7fjbB1FpfhDME6NqW8/X3W5nmGJQYqH6S6oApRi2VJ5sjz
+         S+iQ==;
+        dara=google.com
+ARC-Authentication-Results: i=2; mx.google.com;
+       arc=pass (i=1 spf=pass spfdomain=tls.msk.ru);
+       spf=pass (google.com: domain of kvm+bounces-23008-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="kvm+bounces-23008-alex.bennee=linaro.org@vger.kernel.org"
+Return-Path: <kvm+bounces-23008-alex.bennee=linaro.org@vger.kernel.org>
+Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [2604:1380:45d1:ec00::1])
+        by mx.google.com with ESMTPS id af79cd13be357-7a34f74ab4esi176981685a.291.2024.08.02.00.32.49
+        for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 01 Aug 2024 09:05:01 -0700 (PDT)
-Received: from draig (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id AF1225F7AD;
-	Thu,  1 Aug 2024 17:05:00 +0100 (BST)
-From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Cleber Rosa <crosa@redhat.com>
-Cc: Daniel P. =?utf-8?Q?Berrang=C3=A9?= <berrange@redhat.com>,
-  qemu-devel@nongnu.org,  Peter
- Maydell <peter.maydell@linaro.org>,  Thomas Huth <thuth@redhat.com>,
-  Beraldo Leal <bleal@redhat.com>,  Sriram Yagnaraman
- <sriram.yagnaraman@ericsson.com>,  David Woodhouse <dwmw2@infradead.org>,
-  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,  Leif
- Lindholm
- <quic_llindhol@quicinc.com>,  Jiaxun Yang <jiaxun.yang@flygoat.com>,
-  kvm@vger.kernel.org,  Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
-  Wainer dos Santos Moschetta <wainersm@redhat.com>,  qemu-arm@nongnu.org,
-  Radoslaw Biernacki <rad@semihalf.com>,  Paul Durrant <paul@xen.org>,
-  Paolo Bonzini <pbonzini@redhat.com>,  Akihiko Odaki
- <akihiko.odaki@daynix.com>
-Subject: Re: [PATCH 06/13] tests/avocado: use more distinct names for assets
-In-Reply-To: <CA+bd_6JjpHe=DJZMJb7x-bu_-i8X2Z4LCuk-Mz-2_LbqtUKYNQ@mail.gmail.com>
-	(Cleber Rosa's message of "Wed, 31 Jul 2024 23:12:34 -0400")
-References: <20240726134438.14720-1-crosa@redhat.com>
-	<20240726134438.14720-7-crosa@redhat.com>
-	<ZqdzqnpKja7Xo-Yc@redhat.com>
-	<CA+bd_6JjpHe=DJZMJb7x-bu_-i8X2Z4LCuk-Mz-2_LbqtUKYNQ@mail.gmail.com>
-Date: Thu, 01 Aug 2024 17:05:00 +0100
-Message-ID: <87sevocjpv.fsf@draig.linaro.org>
+        Fri, 02 Aug 2024 00:32:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm+bounces-23008-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) client-ip=2604:1380:45d1:ec00::1;
+Authentication-Results: mx.google.com;
+       arc=pass (i=1 spf=pass spfdomain=tls.msk.ru);
+       spf=pass (google.com: domain of kvm+bounces-23008-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="kvm+bounces-23008-alex.bennee=linaro.org@vger.kernel.org"
+Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ny.mirrors.kernel.org (Postfix) with ESMTPS id 9A27B1C20DF6
+	for <alex.bennee@linaro.org>; Fri,  2 Aug 2024 07:32:49 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 9CE9615ADAF;
+	Fri,  2 Aug 2024 07:32:36 +0000 (UTC)
+Received: from isrv.corpit.ru (isrv.corpit.ru [86.62.121.231])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6B34D481CE
+	for <kvm@vger.kernel.org>; Fri,  2 Aug 2024 07:32:33 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=86.62.121.231
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1722583956; cv=none; b=a/LRnXRpCL/IBAh7n68bXtsaplvqwHGVBgGoa7MEI54ttqLzS6Oi7MwkG3bjwyR4TF4mU6pzpNX2Y1UN/soMC2qet75zEkoEQYk0FGgHhWIw0gJHJ0vPsPwUAHlqKww49sBk1tUzmfupWfRDQgRbFJRJsMUcR44Hvht95Sn6s2U=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1722583956; c=relaxed/simple;
+	bh=4aF3lpWvwtFvDyyxOsH+y5y8ygaRiiMH2gINFUPwqJM=;
+	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:
+	 In-Reply-To:Content-Type; b=Rm5RLWnK0gR0RAPzP1vVktKdzhTvCtSZlVmWZZvFytqXbVmnUjfZIyu6+0YQ+oCKi7CjyIzpp0PctCl3diuc/rmL9bdKzSyZZP8FvCee3dCtO9TECDIiIyqJRlVKQps2hlIiqIyVvIfr+jre+0gRaujwi7ZkhRKKe/oS9iWWwC4=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=tls.msk.ru; spf=pass smtp.mailfrom=tls.msk.ru; arc=none smtp.client-ip=86.62.121.231
+Authentication-Results: smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=tls.msk.ru
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=tls.msk.ru
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+	by isrv.corpit.ru (Postfix) with ESMTP id CD75380415;
+	Fri,  2 Aug 2024 10:32:06 +0300 (MSK)
+Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
+	by tsrv.corpit.ru (Postfix) with ESMTP id 66164119A1E;
+	Fri,  2 Aug 2024 10:32:31 +0300 (MSK)
+Message-ID: <9100425d-4584-4b35-9f29-bcd0109f6d78@tls.msk.ru>
+Date: Fri, 2 Aug 2024 10:32:31 +0300
+Precedence: bulk
+X-Mailing-List: kvm@vger.kernel.org
+List-Id: <kvm.vger.kernel.org>
+List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: g7LCRfHJrLxY
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 6/6] hvf: arm: Do not advance PC when raising an
+ exception
+To: Akihiko Odaki <akihiko.odaki@daynix.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+ Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Cornelia Huck <cohuck@redhat.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, kvm@vger.kernel.org
+References: <20240720-pmu-v4-0-2a2b28f6b08f@daynix.com>
+ <20240720-pmu-v4-6-2a2b28f6b08f@daynix.com>
+ <7bf379b7-eb51-4fe3-a93b-88849a8d1292@tls.msk.ru>
+ <1c98fcd4-0474-4c5f-8f83-ec6b2b6e6c8b@daynix.com>
+Content-Language: en-US, ru-RU
+From: Michael Tokarev <mjt@tls.msk.ru>
+Autocrypt: addr=mjt@tls.msk.ru; keydata=
+ xsBLBETIiwkBCADh3cFB56BQYPjtMZCfK6PSLR8lw8EB20rsrPeJtd91IoNZlnCjSoxd9Th1
+ bLUR8YlpRJ2rjc6O1Bc04VghqUOHgS/tYt8vLjcGWixzdhSLJgPDK3QQZPAvBjMbCt1B6euC
+ WuD87Pv5Udlpnzf4aMwxkgfTusx+ynae/o+T5r7tXD+isccbC3SiGhmAPxFyY3zGcFk4+Rxc
+ 0tP8YY2FWE/baHu+lBDTUN79efWAkHhex1XzVZsV7ZD16rzDbXFK5m6ApvGJWlr5YDEEydTF
+ WwmvwBfr4OINVxzEG/ujNiG4fpMf2NsnFGyB9aSbFjXZevB4qWkduYYW+xpK1EryszHtAAYp
+ zSBNaWNoYWVsIFRva2FyZXYgPG1qdEB0bHMubXNrLnJ1PsLAlgQTAQoAQAIbAwYLCQgHAwIE
+ FQIIAwQWAgMBAh4BAheAAhkBFiEEbuGV0Yhuj/uBDUMkRXzgoIBEZcUFAmBbcjwFCS5e6jMA
+ CgkQRXzgoIBEZcUTIQgA1hPsOF82pXxbcJXBMc4zB9OQu4AlnZvERoGyw7I2222QzaN3RFuj
+ Fia//mapXzpIQNF08l/AA6cx+CKPeGnXwyZfF9fLa4RfifmdNKME8C00XlqnoJDZBGzq8yMy
+ LAKDxl9OQWFcDwDxV+irg5U3fbtNVhvV0kLbS2TyQ0aU5w60ERS2NcyDWplOo7AOzZWChcA4
+ UFf78oVdZdCW8YDtU0uQFhA9moNnrePy1HSFqduxnlFHEI+fDj/TiOm2ci48b8SBBJOIJFjl
+ SBgH8+SfT9ZqkzhN9vh3YJ49831NwASVm0x1rDHcIwWD32VFZViZ3NjehogRNH9br0PSUYOC
+ 3s7ATQRX2BjLAQgAnak3m0imYOkv2tO/olULFa686tlwuvl5kL0NWCdGQeXv2uMxy36szcrh
+ K1uYhpiQv4r2qNd8BJtYlnYIK16N8GBdkplaDIHcBMbU4t+6bQzEIJIaWoq1hzakmHHngE2a
+ pNMnUf/01GFvCRPlv3imkujE/5ILbagjtdyJaHF0wGOSlTnNT4W8j+zPJ/XK0I5EVQwtbmoc
+ GY62LKxxz2pID6sPZV4zQVY4JdUQaFvOz1emnBxakkt0cq3Qnnqso1tjiy7vyH9CAwPR/48W
+ fpK6dew4Fk+STYtBeixOTfSUS8qRS/wfpUeNa5RnEdTtFQ9IcjpQ/nPrvJJsu9FqwlpjMwAR
+ AQABwsBlBBgBCAAPBQJX2BjLAhsMBQkSzAMAAAoJEEV84KCARGXFUKcH/jqKETECkbyPktdP
+ cWVqw2ZIsmGxMkIdnZTbPwhORseGXMHadQODayhU9GWfCDdSPkWDWzMamD+qStfl9MhlVT60
+ HTbo6wu1W/ogUS70qQPTY9IfsvAj6f8TlSlK0eLMa3s2UxL2oe5FkNs2CnVeRlr4Yqvp/ZQV
+ 6LXtew4GPRrmplUT/Cre9QIUqR4pxYCQaMoOXQQw3Y0csBwoDYUQujn3slbDJRIweHoppBzT
+ rM6ZG5ldWQN3n3d71pVuv80guylX8+TSB8Mvkqwb5I36/NAFKl0CbGbTuQli7SmNiTAKilXc
+ Y5Uh9PIrmixt0JrmGVRzke6+11mTjVlio/J5dCM=
+In-Reply-To: <1c98fcd4-0474-4c5f-8f83-ec6b2b6e6c8b@daynix.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-TUID: o5CHWnDis3l8
 
-Cleber Rosa <crosa@redhat.com> writes:
-
-> On Mon, Jul 29, 2024 at 6:49=E2=80=AFAM Daniel P. Berrang=C3=A9 <berrange=
-@redhat.com> wrote:
+02.08.2024 09:44, Akihiko Odaki wrote:
+> On 2024/08/02 15:41, Michael Tokarev wrote:
+>> 20.07.2024 12:30, Akihiko Odaki wrote:
+>>> This is identical with commit 30a1690f2402 ("hvf: arm: Do not advance
+>>> PC when raising an exception") but for writes instead of reads.
+>>>
+>>> Fixes: a2260983c655 ("hvf: arm: Add support for GICv3")
+>>> Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
 >>
->> On Fri, Jul 26, 2024 at 09:44:31AM -0400, Cleber Rosa wrote:
->> > Avocado's asset system will deposit files in a cache organized either
->> > by their original location (the URI) or by their names.  Because the
->> > cache (and the "by_name" sub directory) is common across tests, it's a
->> > good idea to make these names as distinct as possible.
->> >
->> > This avoid name clashes, which makes future Avocado runs to attempt to
->> > redownload the assets with the same name, but from the different
->> > locations they actually are from.  This causes cache misses, extra
->> > downloads, and possibly canceled tests.
->> >
->> > Signed-off-by: Cleber Rosa <crosa@redhat.com>
->> > ---
->> >  tests/avocado/kvm_xen_guest.py  | 3 ++-
->> >  tests/avocado/netdev-ethtool.py | 3 ++-
->> >  2 files changed, 4 insertions(+), 2 deletions(-)
->> >
->> > diff --git a/tests/avocado/kvm_xen_guest.py b/tests/avocado/kvm_xen_gu=
-est.py
->> > index f8cb458d5d..318fadebc3 100644
->> > --- a/tests/avocado/kvm_xen_guest.py
->> > +++ b/tests/avocado/kvm_xen_guest.py
->> > @@ -40,7 +40,8 @@ def get_asset(self, name, sha1):
->> >          url =3D base_url + name
->> >          # use explicit name rather than failing to neatly parse the
->> >          # URL into a unique one
->> > -        return self.fetch_asset(name=3Dname, locations=3D(url), asset=
-_hash=3Dsha1)
->> > +        return self.fetch_asset(name=3Df"qemu-kvm-xen-guest-{name}",
->> > +                                locations=3D(url), asset_hash=3Dsha1)
->>
->> Why do we need to pass a name here at all ? I see the comment here
->> but it isn't very clear about what the problem is. It just feels
->> wrong to be creating ourselves uniqueness naming problems, when we
->> have a nicely unique URL, and that cached URL can be shared across
->> tests, where as the custom names added by this patch are forcing
->> no-caching of the same URL between tests.
->>
->
-> Now with your comment, I do agree that this adds some unneeded
-> maintenance burden indeed.  Also, this was part of my pre-avocado bump
-> patches that would work around issues present in < 103.0.  But let me
-> give the complete answer.
->
-> Under 88.1 the "uniqueness" of the URL did not consider the query
-> parameters in the URL.  So, under 88.1:
->
->    avocado.utils.asset.Asset(name=3D'bzImage',
-> locations=3D['https://fileserver.linaro.org/s/kE4nCFLdQcoBF9t/download?pa=
-th=3D%2Fkvm-xen-guest&files=3DbzImage',
-> ...)
->    avocado.utils.asset.Asset(name=3D'bzImage',
-> locations=3D['https://fileserver.linaro.org/s/kE4nCFLdQcoBF9t/download?pa=
-th=3D%2Fnetdev-ethtool&files=3DbzImage',
-> ...)
+>> Is it -stable material (together with 30a1690f2402) ?
+> 
+> The fixed bugs are trivial, and probably nobody is actually impacted by them.
 
-This is mostly a hack to avoid having to tell NextCloud to generate a
-unique sharing URL for every file.
+The famous last words.. But okay, I'm not picking these up :)
 
->
-> Would save content to the same location:
-> /tmp/cache_old/by_location/2a8ecd750eb952504ad96b89576207afe1be6a8f/downl=
-oad.
->
-> This is no longer the case on 103.0 (actually since 92.0), the
-> contents of those exact assets would be saved to
-> '/by_location/415c998a0061347e5115da53d57ea92c908a2e7f/path=3D%2Fkvm-xen-=
-guest&files=3DbzImage'
-> and /by_location/415c998a0061347e5115da53d57ea92c908a2e7f/path=3D%2Fnetde=
-v-ethtool&files=3DbzImage'.
->
-> I personally don't like having the files named, although uniquely,
-> after the query parameters.  But, If this doesn't bother others more
-> than the maintenance burden, and Avocado version bump is applied, this
-> patch can be dropped.
+Thanks,
 
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro
+/mjt
+-- 
+GPG Key transition (from rsa2048 to rsa4096) since 2024-04-24.
+New key: rsa4096/61AD3D98ECDF2C8E  9D8B E14E 3F2A 9DD7 9199  28F1 61AD 3D98 ECDF 2C8E
+Old key: rsa2048/457CE0A0804465C5  6EE1 95D1 886E 8FFB 810D  4324 457C E0A0 8044 65C5
+Transition statement: http://www.corpit.ru/mjt/gpg-transition-2024.txt
+

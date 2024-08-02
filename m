@@ -1,161 +1,312 @@
-Received: by 2002:a17:505:3f8c:b0:1be9:327d:8ee3 with SMTP id bm12csp1238032njb;
-        Fri, 2 Aug 2024 00:13:47 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCU32ck8U/ctEZEl9qDOkpZyHSKhSG7TMjNuU4fYd/qeqKLCvjnnWgpas3X4VBOJ1tCQ5HFvfoFAloaxqlg+HQzfh5bmaOrU
-X-Google-Smtp-Source: AGHT+IHs7Nzm6uXIQ9ePjzzwWhEXmig6MfPsCxO4ZhmqHGO1zWZI6gP4xbPKHSaNgIPUBOur9EcO
-X-Received: by 2002:a05:6102:c8a:b0:493:f8e4:4382 with SMTP id ada2fe7eead31-4945bde6d3bmr2897401137.4.1722582826908;
-        Fri, 02 Aug 2024 00:13:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1722582826; cv=none;
+Received: by 2002:a17:505:3f8c:b0:1be9:327d:8ee3 with SMTP id bm12csp1243941njb;
+        Fri, 2 Aug 2024 00:42:29 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUxwLgCzCU8F1MB2aPWyVgNCuHuQrZHt1cvBO9MptpRiIcg2xASyzITsgJ49V6kOOCL81YBj7ytLAC/yy3rFZM8Em/nqVxa
+X-Google-Smtp-Source: AGHT+IFVJSvcLOrs3LrGPy5cK7L6kOjI+qf2SHC5DqAjI5I2Xs773uVkEKw0Lxv3Q1780da8dx34
+X-Received: by 2002:a05:620a:24d0:b0:79f:433:6e7f with SMTP id af79cd13be357-7a34ef0af5emr315916285a.21.1722584549236;
+        Fri, 02 Aug 2024 00:42:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1722584549; cv=none;
         d=google.com; s=arc-20160816;
-        b=aaiKGGxU2sVW0yJtdgGN6vv18P7Xez3rOw6lODl+exQIFzGgjAM/JVgJsS4U9qyCRj
-         7t4dJ1RrrUCk58FRS46BcYCzSj6ACMWERN4BUzLsrAp6f5buUX6tC/ly5zf8xve7ZIvu
-         5Hx9PiP8xliHsVQYm0I0izuXGyqIuMgK/kQ5lm5xqq7LRN0CWaIe/fBxrUFWM4MPIcQq
-         qqgi6sDskgQXnd6S67eXZmzMdkF4ScJa4L+abX3N2CHVwEqUY2CwLF/Di7Kz59XIeC41
-         T7ZXD1v294rCMGrKeJzg3liDRi6DxVNhBVDb3lfbFNRxTGOr3CBVyR0mGRENY9uD9TTB
-         PTCw==
+        b=msTProqrHl/K4VxEsvjJtEfeOn8h5ftnujkKuBqnnvzD5wRZYBbHRJppEA83OizcbU
+         qvBEJYe9fM11rXw01U391dOL5idXXDMDnDZ/LRdfjFwC3WkhjpjNwCUwiNiB8tNHqpf0
+         No48Dgkn3PPVjZiQAWRGcQ3RTDuk+SQmo8dm/0vvew5Wp0o77u5BeeWL7Qy5iJeCzyp0
+         q3ODQaqofEfzW2Jp+JwH6Wfg7fchSKM/SBLbvdzgmeLZ9qY6k6kkxCY9L9jQbjMuNeyq
+         ma0pNA3Nmm8doUU/jBhZPKgNB/pU664GkwOLVkAzST9tJYekz01RbU+6NucC8snxwwO7
+         eB/Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:autocrypt:content-language:references:cc:to:from
-         :subject:user-agent:mime-version:date:message-id;
-        bh=OEcMr4d+cQLCtgPKwvmv76zZ9rZuoC6JGGNQxuOSZIU=;
-        fh=xR6TAZJqLI5GuS/tQlwdo36AJDy/2ioyvS35DmzlX4k=;
-        b=lIIuNr13yLKO/m4vKiEieKWG90CR1v3LPqcw0s7lRjy3tdJwCaoXUsEklGAo0m05ea
-         08lPCeaopm25zHHJzbvzC2c0Lx9K4ScdJpfvf0xe+6KlPjtbWsGjQeF296bRW7JgggdM
-         tgf2u0YqhK8L9VSDre/+sxOwyvuuC0YIqr41Iw23TzFOM8Wzf0UZWE5a6RCuXw2JYs9c
-         9fYdOOHal79KEfogXPucny7EpbMZOwsxYOQz8JyiUl0ma4IZhG/KEVpGpgKApirB/Lai
-         PlkG25nOQFSCPooFpomFNMQQwSBJ+A2MpGF6OT3X7AFVOwHxUbFzjIr7gQjlKPyjJO+j
-         HU4A==;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=M2er7b3E0+IWWEwF91TskuCopD/+fdAx5n5eruwGCRY=;
+        fh=QsxuhUBNyq2F7/1UitCRN/j+l2ZGR7FJ1BwILMh3mGA=;
+        b=A/s02D29FC4Zl9/5SvkfZSRYi4yRgZqjVXWyI4HvO6SEDjoWDCQ/hqbcV1mGwEd+Vn
+         +JTalzqJCqFb2GOSO+CosFS9mXDj91NcIBP37X5yZxlRds95ZJmpIDWi7pXvdZHpljH8
+         bSELXcRt1FW+E4GBJvmy6qJBKmZZCWUxs0+MtkUe3XGPYmmRh6SsPvzlMUYTeIz+xf4k
+         QhHRQmpBhQ7/u6GJ9iIS4KDVRARc1wxsYO1IqsQhz+Qsrkk6qT8a6ltQVaL/0sH3uwgx
+         8b6HH2k5Ypoaq0iGfKn04QPp8aItlGoP5q/VU5UAp8xTLxjFClkiUhWUq5c2qXoDRs6f
+         GADw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7a34f6d177fsi176171385a.156.2024.08.02.00.13.46
-        for <alex.bennee@linaro.org>
+       dkim=pass header.i=@intel.com header.s=Intel header.b=Sdw0bN1Q;
+       spf=pass (google.com: domain of zhao1.liu@intel.com designates 192.198.163.18 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Return-Path: <zhao1.liu@intel.com>
+Received: from mgamail.intel.com (mgamail.intel.com. [192.198.163.18])
+        by mx.google.com with ESMTPS id d75a77b69052e-4518a7bc76fsi18273311cf.717.2024.08.02.00.42.28
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 02 Aug 2024 00:13:46 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 02 Aug 2024 00:42:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of zhao1.liu@intel.com designates 192.198.163.18 as permitted sender) client-ip=192.198.163.18;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sZmTO-0003y8-Hy; Fri, 02 Aug 2024 03:13:10 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1sZmTL-0003vz-6j; Fri, 02 Aug 2024 03:13:08 -0400
-Received: from isrv.corpit.ru ([86.62.121.231])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1sZmTI-00052f-Ss; Fri, 02 Aug 2024 03:13:06 -0400
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id F0539803F1;
- Fri,  2 Aug 2024 10:12:35 +0300 (MSK)
-Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with ESMTP id 7AA42119A04;
- Fri,  2 Aug 2024 10:13:00 +0300 (MSK)
-Message-ID: <0d398234-bd2a-4de4-a304-825f4912ca74@tls.msk.ru>
-Date: Fri, 2 Aug 2024 10:13:00 +0300
+       dkim=pass header.i=@intel.com header.s=Intel header.b=Sdw0bN1Q;
+       spf=pass (google.com: domain of zhao1.liu@intel.com designates 192.198.163.18 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1722584549; x=1754120549;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=98bICXwlLoB9PagSTdgthbA/jG/d2EhJwMrIVt9kYvE=;
+  b=Sdw0bN1QT/UyVyQuZwm7aPurftDkBsn+ojgW9BYqpXqVBooZqm+LHJ4o
+   y3FeJ2tHpobDuCntzdUc76Oyq1Oc3cRAzjIBDxSbsEM8NHLsv3spmAgL9
+   f272MHJO3dwM86TSeOCUQRIH2BKe8wjdpmPCRw/WPT1ge3+f+1whAaYKd
+   UOgjPYqP6FUdQJ9yjGrvSrJS+dMnik8yPdDuZJKNiqNc4qpqza8lHkd09
+   Sw79sGMRmWtR3mPlZdwWUuAVtUoSus3jS9nsU7zG+5V313vIOs2P30/cu
+   ghsMjDRjBY6mHwCuRMnQ8Wg2e0KXzDiZ8lhy9UI+9cR4F/YHYHwa6Pa5H
+   Q==;
+X-CSE-ConnectionGUID: 4gfnmsf8T1KD5UyjUxS3sQ==
+X-CSE-MsgGUID: ot8a5X8yRIWX57vdgDEVGw==
+X-IronPort-AV: E=McAfee;i="6700,10204,11151"; a="20172641"
+X-IronPort-AV: E=Sophos;i="6.09,257,1716274800"; 
+   d="scan'208";a="20172641"
+Received: from orviesa009.jf.intel.com ([10.64.159.149])
+  by fmvoesa112.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 02 Aug 2024 00:42:23 -0700
+X-CSE-ConnectionGUID: YxAOI0TlQYOZ2sHkI+xz/A==
+X-CSE-MsgGUID: LgIiHlT2SK2ZXV97TQKygQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.09,257,1716274800"; 
+   d="scan'208";a="55239962"
+Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost) ([10.239.160.36])
+  by orviesa009.jf.intel.com with ESMTP; 02 Aug 2024 00:42:15 -0700
+Date: Fri, 2 Aug 2024 15:58:02 +0800
+From: Zhao Liu <zhao1.liu@intel.com>
+To: Markus Armbruster <armbru@redhat.com>
+Cc: Daniel P =?iso-8859-1?Q?=2E_Berrang=E9?= <berrange@redhat.com>,
+	Eduardo Habkost <eduardo@habkost.net>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
+	Yanan Wang <wangyanan55@huawei.com>,
+	"Michael S . Tsirkin" <mst@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Eric Blake <eblake@redhat.com>,
+	Marcelo Tosatti <mtosatti@redhat.com>,
+	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Jonathan Cameron <Jonathan.Cameron@huawei.com>,
+	Sia Jee Heng <jeeheng.sia@starfivetech.com>, qemu-devel@nongnu.org,
+	kvm@vger.kernel.org, qemu-riscv@nongnu.org, qemu-arm@nongnu.org,
+	Zhenyu Wang <zhenyu.z.wang@intel.com>,
+	Dapeng Mi <dapeng1.mi@linux.intel.com>,
+	Yongwei Ma <yongwei.ma@intel.com>
+Subject: Re: [PATCH 8/8] qemu-options: Add the description of smp-cache object
+Message-ID: <ZqyRik4UHHz3xaKl@intel.com>
+References: <20240704031603.1744546-1-zhao1.liu@intel.com>
+ <20240704031603.1744546-9-zhao1.liu@intel.com>
+ <87r0bl35ug.fsf@pond.sub.org>
+ <Zp5vxtXWDeHAdPok@intel.com>
+ <87bk2nnev2.fsf@pond.sub.org>
+ <ZqEN1kZaQcuY4UPG@intel.com>
+ <87le1psuv3.fsf@pond.sub.org>
+ <ZqtXP9MViOlyhEsu@intel.com>
+ <87mslweb38.fsf@pond.sub.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/4] hw/misc/bcm2835_property: Avoid overflow in OTP
- access properties
-From: Michael Tokarev <mjt@tls.msk.ru>
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-stable@nongnu.org
-References: <20240723131029.1159908-1-peter.maydell@linaro.org>
- <20240723131029.1159908-3-peter.maydell@linaro.org>
- <513b95bf-bf72-4334-b9a5-4d38bce16660@tls.msk.ru>
-Content-Language: en-US, ru-RU
-Autocrypt: addr=mjt@tls.msk.ru; keydata=
- xsBLBETIiwkBCADh3cFB56BQYPjtMZCfK6PSLR8lw8EB20rsrPeJtd91IoNZlnCjSoxd9Th1
- bLUR8YlpRJ2rjc6O1Bc04VghqUOHgS/tYt8vLjcGWixzdhSLJgPDK3QQZPAvBjMbCt1B6euC
- WuD87Pv5Udlpnzf4aMwxkgfTusx+ynae/o+T5r7tXD+isccbC3SiGhmAPxFyY3zGcFk4+Rxc
- 0tP8YY2FWE/baHu+lBDTUN79efWAkHhex1XzVZsV7ZD16rzDbXFK5m6ApvGJWlr5YDEEydTF
- WwmvwBfr4OINVxzEG/ujNiG4fpMf2NsnFGyB9aSbFjXZevB4qWkduYYW+xpK1EryszHtAAYp
- zSBNaWNoYWVsIFRva2FyZXYgPG1qdEB0bHMubXNrLnJ1PsLAlgQTAQoAQAIbAwYLCQgHAwIE
- FQIIAwQWAgMBAh4BAheAAhkBFiEEbuGV0Yhuj/uBDUMkRXzgoIBEZcUFAmBbcjwFCS5e6jMA
- CgkQRXzgoIBEZcUTIQgA1hPsOF82pXxbcJXBMc4zB9OQu4AlnZvERoGyw7I2222QzaN3RFuj
- Fia//mapXzpIQNF08l/AA6cx+CKPeGnXwyZfF9fLa4RfifmdNKME8C00XlqnoJDZBGzq8yMy
- LAKDxl9OQWFcDwDxV+irg5U3fbtNVhvV0kLbS2TyQ0aU5w60ERS2NcyDWplOo7AOzZWChcA4
- UFf78oVdZdCW8YDtU0uQFhA9moNnrePy1HSFqduxnlFHEI+fDj/TiOm2ci48b8SBBJOIJFjl
- SBgH8+SfT9ZqkzhN9vh3YJ49831NwASVm0x1rDHcIwWD32VFZViZ3NjehogRNH9br0PSUYOC
- 3s7ATQRX2BjLAQgAnak3m0imYOkv2tO/olULFa686tlwuvl5kL0NWCdGQeXv2uMxy36szcrh
- K1uYhpiQv4r2qNd8BJtYlnYIK16N8GBdkplaDIHcBMbU4t+6bQzEIJIaWoq1hzakmHHngE2a
- pNMnUf/01GFvCRPlv3imkujE/5ILbagjtdyJaHF0wGOSlTnNT4W8j+zPJ/XK0I5EVQwtbmoc
- GY62LKxxz2pID6sPZV4zQVY4JdUQaFvOz1emnBxakkt0cq3Qnnqso1tjiy7vyH9CAwPR/48W
- fpK6dew4Fk+STYtBeixOTfSUS8qRS/wfpUeNa5RnEdTtFQ9IcjpQ/nPrvJJsu9FqwlpjMwAR
- AQABwsBlBBgBCAAPBQJX2BjLAhsMBQkSzAMAAAoJEEV84KCARGXFUKcH/jqKETECkbyPktdP
- cWVqw2ZIsmGxMkIdnZTbPwhORseGXMHadQODayhU9GWfCDdSPkWDWzMamD+qStfl9MhlVT60
- HTbo6wu1W/ogUS70qQPTY9IfsvAj6f8TlSlK0eLMa3s2UxL2oe5FkNs2CnVeRlr4Yqvp/ZQV
- 6LXtew4GPRrmplUT/Cre9QIUqR4pxYCQaMoOXQQw3Y0csBwoDYUQujn3slbDJRIweHoppBzT
- rM6ZG5ldWQN3n3d71pVuv80guylX8+TSB8Mvkqwb5I36/NAFKl0CbGbTuQli7SmNiTAKilXc
- Y5Uh9PIrmixt0JrmGVRzke6+11mTjVlio/J5dCM=
-In-Reply-To: <513b95bf-bf72-4334-b9a5-4d38bce16660@tls.msk.ru>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
- helo=isrv.corpit.ru
-X-Spam_score_int: -68
-X-Spam_score: -6.9
-X-Spam_bar: ------
-X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 0fGzhG6AO9dW
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <87mslweb38.fsf@pond.sub.org>
+X-TUID: Mfu5Lb8zT1xf
 
-02.08.2024 10:02, Michael Tokarev wrote:
-> 23.07.2024 16:10, Peter Maydell wrote:
->> Coverity points out that in our handling of the property
->> RPI_FWREQ_SET_CUSTOMER_OTP we have a potential overflow.  This
->> happens because we read start_num and number from the guest as
->> unsigned 32 bit integers, but then the variable 'n' we use as a loop
->> counter as we iterate from start_num to start_num + number is only an
->> "int".  That means that if the guest passes us a very large start_num
->> we will interpret it as negative.  This will result in an assertion
->> failure inside bcm2835_otp_set_row(), which checks that we didn't
->> pass it an invalid row number.
->>
->> A similar issue applies to all the properties for accessing OTP rows
->> where we are iterating through with a start and length read from the
->> guest.
+On Thu, Aug 01, 2024 at 01:28:27PM +0200, Markus Armbruster wrote:
+> Date: Thu, 01 Aug 2024 13:28:27 +0200
+> From: Markus Armbruster <armbru@redhat.com>
+> Subject: Re: [PATCH 8/8] qemu-options: Add the description of smp-cache
+>  object
 > 
-> This is a fun one wrt the -stable series.
+> Zhao Liu <zhao1.liu@intel.com> writes:
 > 
-> The code which is mentioned in the subject and above (OTP access
-> properties) is introduced in v9.0.0-1812-g5d5f1b60916a " hw/misc:Implement
-> mailbox properties for customer OTP and device specific private keys",
-> which is not in any released version of qemu.  However, the next comment
-> ("A similar issue..") tells us the same prob exists in all other
-> cases in the same function.  So the fix mentioned in subject does not
-> apply to -stable, while "all others" "side-fix" does :)
+> > On Thu, Jul 25, 2024 at 11:07:12AM +0200, Markus Armbruster wrote:
+> >> Date: Thu, 25 Jul 2024 11:07:12 +0200
+> >> From: Markus Armbruster <armbru@redhat.com>
+> >> Subject: Re: [PATCH 8/8] qemu-options: Add the description of smp-cache
+> >>  object
+> >> 
+> >> Zhao Liu <zhao1.liu@intel.com> writes:
+> >> 
+> >> > Hi Markus and Daniel,
+> >> >
+> >> > I have the questions about the -object per cache implementation:
+> >> >
+> >> > On Wed, Jul 24, 2024 at 02:39:29PM +0200, Markus Armbruster wrote:
+> >> >> Date: Wed, 24 Jul 2024 14:39:29 +0200
+> >> >> From: Markus Armbruster <armbru@redhat.com>
+> >> >> Subject: Re: [PATCH 8/8] qemu-options: Add the description of smp-cache
+> >> >>  object
+> >> >> 
+> >> >> Zhao Liu <zhao1.liu@intel.com> writes:
+> >> >> 
+> >> >> > Hi Markus,
+> >> >> >
+> >> >> > On Mon, Jul 22, 2024 at 03:37:43PM +0200, Markus Armbruster wrote:
+> >> >> >> Date: Mon, 22 Jul 2024 15:37:43 +0200
+> >> >> >> From: Markus Armbruster <armbru@redhat.com>
+> >> >> >> Subject: Re: [PATCH 8/8] qemu-options: Add the description of smp-cache
+> >> >> >>  object
+> >> >> >> 
+> >> >> >> Zhao Liu <zhao1.liu@intel.com> writes:
+> >> >> >> 
+> >> >> >> > Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
+> >> >> >> 
+> >> >> >> This patch is just documentation.  The code got added in some previous
+> >> >> >> patch.  Would it make sense to squash this patch into that previous
+> >> >> >> patch?
+> >> >> >
+> >> >> > OK, I'll merge them.
+> >> >> >
+> >> >> >> > ---
+> >> >> >> > Changes since RFC v2:
+> >> >> >> >  * Rewrote the document of smp-cache object.
+> >> >> >> >
+> >> >> >> > Changes since RFC v1:
+> >> >> >> >  * Use "*_cache=topo_level" as -smp example as the original "level"
+> >> >> >> >    term for a cache has a totally different meaning. (Jonathan)
+> >> >> >> > ---
+> >> >> >> >  qemu-options.hx | 58 +++++++++++++++++++++++++++++++++++++++++++++++++
+> >> >> >> >  1 file changed, 58 insertions(+)
+> >> >> >> >
+> >> >> >> > diff --git a/qemu-options.hx b/qemu-options.hx
+> >> >> >> > index 8ca7f34ef0c8..4b84f4508a6e 100644
+> >> >> >> > --- a/qemu-options.hx
+> >> >> >> > +++ b/qemu-options.hx
+> >> >> >> > @@ -159,6 +159,15 @@ SRST
+> >> >> >> >          ::
+> >> >> >> >  
+> >> >> >> >              -machine cxl-fmw.0.targets.0=cxl.0,cxl-fmw.0.targets.1=cxl.1,cxl-fmw.0.size=128G,cxl-fmw.0.interleave-granularity=512
+> >> >> >> > +
+> >> >> >> > +    ``smp-cache='id'``
+> >> >> >> > +        Allows to configure cache property (now only the cache topology level).
+> >> >> >> > +
+> >> >> >> > +        For example:
+> >> >> >> > +        ::
+> >> >> >> > +
+> >> >> >> > +            -object '{"qom-type":"smp-cache","id":"cache","caches":[{"name":"l1d","topo":"core"},{"name":"l1i","topo":"core"},{"name":"l2","topo":"module"},{"name":"l3","topo":"die"}]}'
+> >> >> >> > +            -machine smp-cache=cache
+> >> >> >> >  ERST
+> >> >> >> >  
+> >> >> >> >  DEF("M", HAS_ARG, QEMU_OPTION_M,
+> >> >> >> > @@ -5871,6 +5880,55 @@ SRST
+> >> >> >> >          ::
+> >> >> >> >  
+> >> >> >> >              (qemu) qom-set /objects/iothread1 poll-max-ns 100000
+> >> >> >> > +
+> >> >> >> > +    ``-object '{"qom-type":"smp-cache","id":id,"caches":[{"name":cache_name,"topo":cache_topo}]}'``
+> >> >> >> > +        Create an smp-cache object that configures machine's cache
+> >> >> >> > +        property. Currently, cache property only include cache topology
+> >> >> >> > +        level.
+> >> >> >> > +
+> >> >> >> > +        This option must be written in JSON format to support JSON list.
+> >> >> >> 
+> >> >> >> Why?
+> >> >> >
+> >> >> > I'm not familiar with this, so I hope you could educate me if I'm wrong.
+> >> >> >
+> >> >> > All I know so far is for -object that defining a list can only be done in
+> >> >> > JSON format and not with a numeric index like a keyval based option, like:
+> >> >> >
+> >> >> > -object smp-cache,id=cache0,caches.0.name=l1i,caches.0.topo=core: Parameter 'caches' is missing
+> >> >> >
+> >> >> > the above doesn't work.
+> >> >> >
+> >> >> > Is there any other way to specify a list in command line?
+> >> >> 
+> >> >> The command line is a big, sprawling mess :)
+> >> >> 
+> >> >> -object supports either a JSON or a QemuOpts argument.  *Not* keyval!
+> >> >> 
+> >> >> Both QemuOpts and keyval parse something like KEY=VALUE,...  Keyval
+> >> >> supports arrays and objects via dotted keys.  QemuOpts doesn't natively
+> >> >> support arrays and objects, but its users can hack around that
+> >> >> limitation in various ways.  -object doesn't.  So you're right, it's
+> >> >> JSON or bust here.
+> >> >> 
+> >> >> However, if we used one object per cache instead, we could get something
+> >> >> like
+> >> >> 
+> >> >>     -object smp-cache,name=l1d,...
+> >> >>     -object smp-cache,name=l1u,...
+> >> >>     -object smp-cache,name=l2,...
+> >> >>     ...
+> >> >
+> >> > Current, I use -object to create a smp_cache object, and link it to
+> >> > MachineState by -machine,smp-cache=obj_id.
+> >> >
+> >> > Then for the objects per cache, how could I link them to machine?
+> >> >
+> >> > Is it possible that I create something static in smp_cache.c and expose
+> >> > all the cache information to machine through some interface?
+> >> 
+> >> Good questions.  However, before we head deeper into the weeds here, I
+> >> feel we should discuss the things below.  And before we do that, I need
+> >> a clear understanding of the use case.  Elsewhere in this thread, I just
+> >> described the use case as I understand it.  Please reply there.  I'll
+> >> then come back to this message.
+> >> 
+> >> [...]
+> >
+> > Jonathan and I provided different use cases for x86 and Arm. Could we
+> > come back here to continue the discussion? :)
+> 
+> Can you provide a brief summary of the design alternatives that have
+> been proposed so far?  Because I've lost track.
 
-Okay, there's no "all other" case here, it is really all about OTP access.
-This change basically only removes the 'n' variable for stable-9.0, which
-isn't used since the previous patch anyway, and the build fails after the
-previous patch due to this.
+No problem!
 
-Still fun, but in a different way :)
+Currently, we have the following options:
 
-I'll add removal of this `n' variable to the previous patch for -stable.
+* 1st: The first one is just to configure cache topology with several
+  options in -smp:
 
-Thanks,
+  -smp l1i-cache-topo=core,l1d-cache-topo-core
 
-/mjt
+  This one lacks scalability to support the cache size that ARM will
+  need in the future.
+
+
+* 2nd: The cache list object in -smp.
+
+  The idea was to use JSON to configure the cache list. However, the
+  underlying implementation of -smp at the moment is keyval parsing,
+  which is not compatible with JSON.
+
+  If we can not insist on JSON format, then cache lists can also be
+  implemented in the following way:
+  
+  -smp caches.0.name=l1i,caches.0.topo=core,\
+       caches.1.name=l1d,caches.1.topo=core
+
+
+* 3rd: The cache list object linked in -machine.
+
+  Considering that -object is JSON-compatible so that defining lists via
+  JSON is more friendly, I implemented the caches list via -object and
+  linked it to MachineState:
+
+  -object '{"qom-type":"smp-cache","id":"obj","caches":[{"name":"l1d","topo":"core"},{"name":"l1i","topo":"core"}]}'
+  -machine smp-caches=obj
+
+
+* 4th: The per cache object without any list:
+
+  -object smp-cache,id=cache0,name=l1i,topo=core \
+  -object smp-cache,id=cache1,name=l1d,topo=core
+
+  This proposal is clearer, but there are a few opens:
+  - I plan to push qom-topo forward, which would abstract CPU related
+    topology levels and cache to "device" instead of object. Is there a
+    conflict here?
+
+  - Multiple cache objects can't be linked to the machine on the command
+    line, so I maintain a static cache list in smp_cache.c and expose
+    the cache information to the machine through some interface. is this
+    way acceptable?
+
+
+In summary, the 4th proposal was the most up in the air, as it looked to
+be conflict with the hybrid topology I wanted to do (and while hybrid
+topology may not be accepted by the community either, I thought it would
+be best for the two work to be in the same direction).
+
+The difference between 2nd and 3rd is about the JSON requirement, if JSON
+is mandatory for now then it's 3rd, if it's not mandatory (or accept to
+make -machine/-smp support JSON in the future), 2nd looks cleaner, which
+puts the caches list in -smp.
+
+Regards,
+Zhao
+

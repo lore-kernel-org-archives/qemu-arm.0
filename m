@@ -1,312 +1,149 @@
-Received: by 2002:a17:505:3f8c:b0:1be9:327d:8ee3 with SMTP id bm12csp1243941njb;
-        Fri, 2 Aug 2024 00:42:29 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUxwLgCzCU8F1MB2aPWyVgNCuHuQrZHt1cvBO9MptpRiIcg2xASyzITsgJ49V6kOOCL81YBj7ytLAC/yy3rFZM8Em/nqVxa
-X-Google-Smtp-Source: AGHT+IFVJSvcLOrs3LrGPy5cK7L6kOjI+qf2SHC5DqAjI5I2Xs773uVkEKw0Lxv3Q1780da8dx34
-X-Received: by 2002:a05:620a:24d0:b0:79f:433:6e7f with SMTP id af79cd13be357-7a34ef0af5emr315916285a.21.1722584549236;
-        Fri, 02 Aug 2024 00:42:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1722584549; cv=none;
+Received: by 2002:a17:505:3f8c:b0:1be9:327d:8ee3 with SMTP id bm12csp1332381njb;
+        Fri, 2 Aug 2024 06:14:43 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCV1JCxsS+ppRwmbc5dI9gVm5ZafezYgyaVIUMF/b6eE3UNKeylIW2avL6KCTMo2en5CmWkyHvN1LAKK9GB1rUh1P/6vNScg
+X-Received: by 2002:a05:600c:444e:b0:428:e866:3933 with SMTP id 5b1f17b1804b1-428e8663e2cmr17892095e9.22.1722604483516;
+        Fri, 02 Aug 2024 06:14:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1722604483; cv=none;
         d=google.com; s=arc-20160816;
-        b=msTProqrHl/K4VxEsvjJtEfeOn8h5ftnujkKuBqnnvzD5wRZYBbHRJppEA83OizcbU
-         qvBEJYe9fM11rXw01U391dOL5idXXDMDnDZ/LRdfjFwC3WkhjpjNwCUwiNiB8tNHqpf0
-         No48Dgkn3PPVjZiQAWRGcQ3RTDuk+SQmo8dm/0vvew5Wp0o77u5BeeWL7Qy5iJeCzyp0
-         q3ODQaqofEfzW2Jp+JwH6Wfg7fchSKM/SBLbvdzgmeLZ9qY6k6kkxCY9L9jQbjMuNeyq
-         ma0pNA3Nmm8doUU/jBhZPKgNB/pU664GkwOLVkAzST9tJYekz01RbU+6NucC8snxwwO7
-         eB/Q==
+        b=odjno+zd1npdykeUK4gux8pLJbvCSqPny5MM3WEFZRqAcrb7yOFaWLO5IDcY5+/diW
+         kv4NpveKUTRLp+mZ0KSzgAuym1rsBv5ryDibv3sIwT7X0+diHq9CGW16zYYZpUXLg9S7
+         pKVWt7Fn74ZEkqIo6teqU8uaLnBJ5ltERvF5ccHE+Y9JRtsvU1t3eeQWy2u+K3fIY+2X
+         d9dUT5VztBOhaOZi+Rc4xao6jHT2Wu4e5sfHMWoYfIDfSm9wUlzl8LYjX4XB5j/7o//B
+         4GAcQARGnHtGFLHw3A16J/o/j++OEF9bsZH1WfB75HABOdF6dFnmoQMrsdSqh+RCXcOB
+         aqJQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=M2er7b3E0+IWWEwF91TskuCopD/+fdAx5n5eruwGCRY=;
-        fh=QsxuhUBNyq2F7/1UitCRN/j+l2ZGR7FJ1BwILMh3mGA=;
-        b=A/s02D29FC4Zl9/5SvkfZSRYi4yRgZqjVXWyI4HvO6SEDjoWDCQ/hqbcV1mGwEd+Vn
-         +JTalzqJCqFb2GOSO+CosFS9mXDj91NcIBP37X5yZxlRds95ZJmpIDWi7pXvdZHpljH8
-         bSELXcRt1FW+E4GBJvmy6qJBKmZZCWUxs0+MtkUe3XGPYmmRh6SsPvzlMUYTeIz+xf4k
-         QhHRQmpBhQ7/u6GJ9iIS4KDVRARc1wxsYO1IqsQhz+Qsrkk6qT8a6ltQVaL/0sH3uwgx
-         8b6HH2k5Ypoaq0iGfKn04QPp8aItlGoP5q/VU5UAp8xTLxjFClkiUhWUq5c2qXoDRs6f
-         GADw==;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=f3Ig9qrNqS796eTen6yC/TdSkvMI/5+1PaGFCTS3GZw=;
+        fh=7b4fPmxBRgkobmMXvDRmFXyCgN88ziPAuqtIX//Sf6I=;
+        b=I3VKGVh0vNKSjitDcvkFYkMpXr/AVQCgepUFIOn/rrSbfvS54AGPt1W71NspWGdfKA
+         s9rAGvsAmc6kkOskcsVRqgaMw4SnFdVf3Fp1iz03TF1DDswPY/8EhOK7bhiESqR9Gnqp
+         0zTUJ6V5PC1ABNOUGluAyTqz5+Rzvii2qTcAup22wX6umReBzzBB3tVMG8Qb8fu33FmE
+         ei2syRkgx0RXiWkbxt6hmB+rxZY4dC3HU1xiHulY/+ApA38MR1nUO6Skid+f35pcCAGX
+         bSwCvUPSzRiKmVt/qQMaEfCIEEJXrWnfKMPrm0Jknuwi/i8fbKGBFJzXo1WOxMh81vd8
+         0r2g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=Sdw0bN1Q;
-       spf=pass (google.com: domain of zhao1.liu@intel.com designates 192.198.163.18 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Return-Path: <zhao1.liu@intel.com>
-Received: from mgamail.intel.com (mgamail.intel.com. [192.198.163.18])
-        by mx.google.com with ESMTPS id d75a77b69052e-4518a7bc76fsi18273311cf.717.2024.08.02.00.42.28
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 02 Aug 2024 00:42:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of zhao1.liu@intel.com designates 192.198.163.18 as permitted sender) client-ip=192.198.163.18;
+       dkim=pass header.i=@linaro.org header.s=google header.b=SZDwU70o;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <philmd@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 5b1f17b1804b1-428e7349c5fsor4649135e9.0.2024.08.02.06.14.43
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Fri, 02 Aug 2024 06:14:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=Sdw0bN1Q;
-       spf=pass (google.com: domain of zhao1.liu@intel.com designates 192.198.163.18 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1722584549; x=1754120549;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=98bICXwlLoB9PagSTdgthbA/jG/d2EhJwMrIVt9kYvE=;
-  b=Sdw0bN1QT/UyVyQuZwm7aPurftDkBsn+ojgW9BYqpXqVBooZqm+LHJ4o
-   y3FeJ2tHpobDuCntzdUc76Oyq1Oc3cRAzjIBDxSbsEM8NHLsv3spmAgL9
-   f272MHJO3dwM86TSeOCUQRIH2BKe8wjdpmPCRw/WPT1ge3+f+1whAaYKd
-   UOgjPYqP6FUdQJ9yjGrvSrJS+dMnik8yPdDuZJKNiqNc4qpqza8lHkd09
-   Sw79sGMRmWtR3mPlZdwWUuAVtUoSus3jS9nsU7zG+5V313vIOs2P30/cu
-   ghsMjDRjBY6mHwCuRMnQ8Wg2e0KXzDiZ8lhy9UI+9cR4F/YHYHwa6Pa5H
-   Q==;
-X-CSE-ConnectionGUID: 4gfnmsf8T1KD5UyjUxS3sQ==
-X-CSE-MsgGUID: ot8a5X8yRIWX57vdgDEVGw==
-X-IronPort-AV: E=McAfee;i="6700,10204,11151"; a="20172641"
-X-IronPort-AV: E=Sophos;i="6.09,257,1716274800"; 
-   d="scan'208";a="20172641"
-Received: from orviesa009.jf.intel.com ([10.64.159.149])
-  by fmvoesa112.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 02 Aug 2024 00:42:23 -0700
-X-CSE-ConnectionGUID: YxAOI0TlQYOZ2sHkI+xz/A==
-X-CSE-MsgGUID: LgIiHlT2SK2ZXV97TQKygQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.09,257,1716274800"; 
-   d="scan'208";a="55239962"
-Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost) ([10.239.160.36])
-  by orviesa009.jf.intel.com with ESMTP; 02 Aug 2024 00:42:15 -0700
-Date: Fri, 2 Aug 2024 15:58:02 +0800
-From: Zhao Liu <zhao1.liu@intel.com>
-To: Markus Armbruster <armbru@redhat.com>
-Cc: Daniel P =?iso-8859-1?Q?=2E_Berrang=E9?= <berrange@redhat.com>,
-	Eduardo Habkost <eduardo@habkost.net>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
-	Yanan Wang <wangyanan55@huawei.com>,
-	"Michael S . Tsirkin" <mst@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Eric Blake <eblake@redhat.com>,
-	Marcelo Tosatti <mtosatti@redhat.com>,
-	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Jonathan Cameron <Jonathan.Cameron@huawei.com>,
-	Sia Jee Heng <jeeheng.sia@starfivetech.com>, qemu-devel@nongnu.org,
-	kvm@vger.kernel.org, qemu-riscv@nongnu.org, qemu-arm@nongnu.org,
-	Zhenyu Wang <zhenyu.z.wang@intel.com>,
-	Dapeng Mi <dapeng1.mi@linux.intel.com>,
-	Yongwei Ma <yongwei.ma@intel.com>
-Subject: Re: [PATCH 8/8] qemu-options: Add the description of smp-cache object
-Message-ID: <ZqyRik4UHHz3xaKl@intel.com>
-References: <20240704031603.1744546-1-zhao1.liu@intel.com>
- <20240704031603.1744546-9-zhao1.liu@intel.com>
- <87r0bl35ug.fsf@pond.sub.org>
- <Zp5vxtXWDeHAdPok@intel.com>
- <87bk2nnev2.fsf@pond.sub.org>
- <ZqEN1kZaQcuY4UPG@intel.com>
- <87le1psuv3.fsf@pond.sub.org>
- <ZqtXP9MViOlyhEsu@intel.com>
- <87mslweb38.fsf@pond.sub.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=SZDwU70o;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1722604483; x=1723209283; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=f3Ig9qrNqS796eTen6yC/TdSkvMI/5+1PaGFCTS3GZw=;
+        b=SZDwU70o3WDW885gflkB4ZAlove/AAnbHdlQCq3pTDOdJ2kutK5j/AWDbF/OaQdc8b
+         fUBVI//DM7EwuA6QOGRpequ3FoJlCvXmoYPfyxW4zyV6hBWRu0LkbgL0XMDtxFZ+wLAG
+         8wPzlWqZ/P6hnzHrOos2gGmxT0xr2r7WIsMbtNmv+lvQIGLcT6qFjvHsPhe6XtpNbvcQ
+         bajp2YkTqXP11yF6VKFO5YrP036hljdFkUIaGOouyBdYfifocoJsCahZN4aocbS7/y+0
+         taEnoj4adXmFQERS8qVhZqBqHWePyg7PBum4oUSlKoIndH5lqRdFKuIPaRTh9slxCp9u
+         dLZQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1722604483; x=1723209283;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=f3Ig9qrNqS796eTen6yC/TdSkvMI/5+1PaGFCTS3GZw=;
+        b=ULKFDi+XiqjQt1BVM6oEnIpaQVZXQ/6pDC5WuvoZxvQik4jL27TwR4YqrK85OBsnRT
+         pPyNaRCoo4T+C8JLrLi4NryqJOCzBtTWAVCC9PGsMxc0j+ZJ5++IxC+zoeEtM5f2c9Ib
+         r0YYx9zPtR+6T1LrLlNvYG+wsR22qY9itwiAJCBlik0DGRfLPAGDO4cFZ8mZ85Ye76JO
+         7ASSgKfl4aT72vzoIcXmzEITuh7DtJ2zRzNhknYabsrsEL37UbRMDbMSsydXBCodh8K1
+         OR9Fkh76zFMSwC7XTTgkHs69uRuUHwpZZRhnjIkBH1ruYIuFLLmtKSBOF4tq8Sx0TgFA
+         CTPQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVbn7DlrnjWdeIMa1uDagLE3v4B27z+jf/EHrFzbQaVqMhINLbqDyXEy4YYkO3q9gcR5o0ELvu0ijvqiv0mbuLVCWpliquI
+X-Gm-Message-State: AOJu0YzCOhJB7cz6J3Rjyy1+FDsULtrtbK1QBlCJfrM5kA+nKMlho5pc
+	fOAaSK1bqnOaglqYFB2DDnaCkN+jBpl3O8a0nNQPe/wsjHE9XLHWOdVCThyYLmedQQ==
+X-Google-Smtp-Source: AGHT+IFJ5Jrfc3nemcN+4XkWnV3Ou5dWwp24s/GYXu+YmOcgrmVE6SAsu4lL4UQAOfp1KYf9z5Vqvw==
+X-Received: by 2002:a05:600c:4f8d:b0:427:b995:5bd0 with SMTP id 5b1f17b1804b1-428e6b7c5a4mr23302515e9.23.1722604482796;
+        Fri, 02 Aug 2024 06:14:42 -0700 (PDT)
+Return-Path: <philmd@linaro.org>
+Received: from [192.168.69.100] ([176.187.211.94])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-428e6e11356sm32059165e9.19.2024.08.02.06.14.40
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 02 Aug 2024 06:14:41 -0700 (PDT)
+Message-ID: <6874940a-8a89-476d-a8ac-b6622aafe7c6@linaro.org>
+Date: Fri, 2 Aug 2024 15:14:38 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <87mslweb38.fsf@pond.sub.org>
-X-TUID: Mfu5Lb8zT1xf
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 06/10] tests/avocado/kvm_xen_guest.py: cope with asset RW
+ requirements
+To: Cleber Rosa <crosa@redhat.com>
+Cc: qemu-devel@nongnu.org, Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Radoslaw Biernacki <rad@semihalf.com>, Paul Durrant <paul@xen.org>,
+ Akihiko Odaki <akihiko.odaki@daynix.com>,
+ Leif Lindholm <quic_llindhol@quicinc.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Paolo Bonzini
+ <pbonzini@redhat.com>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
+ <alex.bennee@linaro.org>, kvm@vger.kernel.org, qemu-arm@nongnu.org,
+ Beraldo Leal <bleal@redhat.com>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ Sriram Yagnaraman <sriram.yagnaraman@est.tech>,
+ Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
+ David Woodhouse <dwmw2@infradead.org>
+References: <20231208190911.102879-1-crosa@redhat.com>
+ <20231208190911.102879-7-crosa@redhat.com>
+ <20efca0c-982c-4962-8e0c-ea4959557a5e@linaro.org>
+ <CA+bd_6K5S9yrD6hsBsTmW4+eJpPsquE8Ud9eHZzptUwDrHcpeQ@mail.gmail.com>
+ <a3b0ebf6-47ca-4aad-9489-16458ffd6ff3@linaro.org>
+ <CA+bd_6LmuOdQ8ZdLjwt+MCusjQ8ROv23d9PXoF-Ku3j4j73wsg@mail.gmail.com>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <CA+bd_6LmuOdQ8ZdLjwt+MCusjQ8ROv23d9PXoF-Ku3j4j73wsg@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-TUID: EfwjVtfYK+Uc
 
-On Thu, Aug 01, 2024 at 01:28:27PM +0200, Markus Armbruster wrote:
-> Date: Thu, 01 Aug 2024 13:28:27 +0200
-> From: Markus Armbruster <armbru@redhat.com>
-> Subject: Re: [PATCH 8/8] qemu-options: Add the description of smp-cache
->  object
+On 1/8/24 17:17, Cleber Rosa wrote:
+> On Thu, Aug 1, 2024 at 8:57 AM Philippe Mathieu-Daudé <philmd@linaro.org> wrote:
+>>> I agree those files should not be modified, but I wonder if you
+>>> thought about any solution to this? Given that the same user writes
+>>> (downloads) those files, do you think setting file permissions between
+>>> the download and the use of the files should be done?
+>>
+>> We want to share a cachedir on development hosts with multiple
+>> developers. OK to alter a downloaded file before adding it to
+>> the cache; but then once a file is added/hashed it shouldn't be
+>> modified IMO.
+>>
 > 
-> Zhao Liu <zhao1.liu@intel.com> writes:
+> I was asking more in terms of what to do before/after the test.  When
+> it comes to this type of setup, Avocado's cache was designed to
+> support this use case.  You can provide multiple cache dirs in the
+> configuration, and some (the first ones, ideally) can be RO (life NFS
+> mounts).
 > 
-> > On Thu, Jul 25, 2024 at 11:07:12AM +0200, Markus Armbruster wrote:
-> >> Date: Thu, 25 Jul 2024 11:07:12 +0200
-> >> From: Markus Armbruster <armbru@redhat.com>
-> >> Subject: Re: [PATCH 8/8] qemu-options: Add the description of smp-cache
-> >>  object
-> >> 
-> >> Zhao Liu <zhao1.liu@intel.com> writes:
-> >> 
-> >> > Hi Markus and Daniel,
-> >> >
-> >> > I have the questions about the -object per cache implementation:
-> >> >
-> >> > On Wed, Jul 24, 2024 at 02:39:29PM +0200, Markus Armbruster wrote:
-> >> >> Date: Wed, 24 Jul 2024 14:39:29 +0200
-> >> >> From: Markus Armbruster <armbru@redhat.com>
-> >> >> Subject: Re: [PATCH 8/8] qemu-options: Add the description of smp-cache
-> >> >>  object
-> >> >> 
-> >> >> Zhao Liu <zhao1.liu@intel.com> writes:
-> >> >> 
-> >> >> > Hi Markus,
-> >> >> >
-> >> >> > On Mon, Jul 22, 2024 at 03:37:43PM +0200, Markus Armbruster wrote:
-> >> >> >> Date: Mon, 22 Jul 2024 15:37:43 +0200
-> >> >> >> From: Markus Armbruster <armbru@redhat.com>
-> >> >> >> Subject: Re: [PATCH 8/8] qemu-options: Add the description of smp-cache
-> >> >> >>  object
-> >> >> >> 
-> >> >> >> Zhao Liu <zhao1.liu@intel.com> writes:
-> >> >> >> 
-> >> >> >> > Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
-> >> >> >> 
-> >> >> >> This patch is just documentation.  The code got added in some previous
-> >> >> >> patch.  Would it make sense to squash this patch into that previous
-> >> >> >> patch?
-> >> >> >
-> >> >> > OK, I'll merge them.
-> >> >> >
-> >> >> >> > ---
-> >> >> >> > Changes since RFC v2:
-> >> >> >> >  * Rewrote the document of smp-cache object.
-> >> >> >> >
-> >> >> >> > Changes since RFC v1:
-> >> >> >> >  * Use "*_cache=topo_level" as -smp example as the original "level"
-> >> >> >> >    term for a cache has a totally different meaning. (Jonathan)
-> >> >> >> > ---
-> >> >> >> >  qemu-options.hx | 58 +++++++++++++++++++++++++++++++++++++++++++++++++
-> >> >> >> >  1 file changed, 58 insertions(+)
-> >> >> >> >
-> >> >> >> > diff --git a/qemu-options.hx b/qemu-options.hx
-> >> >> >> > index 8ca7f34ef0c8..4b84f4508a6e 100644
-> >> >> >> > --- a/qemu-options.hx
-> >> >> >> > +++ b/qemu-options.hx
-> >> >> >> > @@ -159,6 +159,15 @@ SRST
-> >> >> >> >          ::
-> >> >> >> >  
-> >> >> >> >              -machine cxl-fmw.0.targets.0=cxl.0,cxl-fmw.0.targets.1=cxl.1,cxl-fmw.0.size=128G,cxl-fmw.0.interleave-granularity=512
-> >> >> >> > +
-> >> >> >> > +    ``smp-cache='id'``
-> >> >> >> > +        Allows to configure cache property (now only the cache topology level).
-> >> >> >> > +
-> >> >> >> > +        For example:
-> >> >> >> > +        ::
-> >> >> >> > +
-> >> >> >> > +            -object '{"qom-type":"smp-cache","id":"cache","caches":[{"name":"l1d","topo":"core"},{"name":"l1i","topo":"core"},{"name":"l2","topo":"module"},{"name":"l3","topo":"die"}]}'
-> >> >> >> > +            -machine smp-cache=cache
-> >> >> >> >  ERST
-> >> >> >> >  
-> >> >> >> >  DEF("M", HAS_ARG, QEMU_OPTION_M,
-> >> >> >> > @@ -5871,6 +5880,55 @@ SRST
-> >> >> >> >          ::
-> >> >> >> >  
-> >> >> >> >              (qemu) qom-set /objects/iothread1 poll-max-ns 100000
-> >> >> >> > +
-> >> >> >> > +    ``-object '{"qom-type":"smp-cache","id":id,"caches":[{"name":cache_name,"topo":cache_topo}]}'``
-> >> >> >> > +        Create an smp-cache object that configures machine's cache
-> >> >> >> > +        property. Currently, cache property only include cache topology
-> >> >> >> > +        level.
-> >> >> >> > +
-> >> >> >> > +        This option must be written in JSON format to support JSON list.
-> >> >> >> 
-> >> >> >> Why?
-> >> >> >
-> >> >> > I'm not familiar with this, so I hope you could educate me if I'm wrong.
-> >> >> >
-> >> >> > All I know so far is for -object that defining a list can only be done in
-> >> >> > JSON format and not with a numeric index like a keyval based option, like:
-> >> >> >
-> >> >> > -object smp-cache,id=cache0,caches.0.name=l1i,caches.0.topo=core: Parameter 'caches' is missing
-> >> >> >
-> >> >> > the above doesn't work.
-> >> >> >
-> >> >> > Is there any other way to specify a list in command line?
-> >> >> 
-> >> >> The command line is a big, sprawling mess :)
-> >> >> 
-> >> >> -object supports either a JSON or a QemuOpts argument.  *Not* keyval!
-> >> >> 
-> >> >> Both QemuOpts and keyval parse something like KEY=VALUE,...  Keyval
-> >> >> supports arrays and objects via dotted keys.  QemuOpts doesn't natively
-> >> >> support arrays and objects, but its users can hack around that
-> >> >> limitation in various ways.  -object doesn't.  So you're right, it's
-> >> >> JSON or bust here.
-> >> >> 
-> >> >> However, if we used one object per cache instead, we could get something
-> >> >> like
-> >> >> 
-> >> >>     -object smp-cache,name=l1d,...
-> >> >>     -object smp-cache,name=l1u,...
-> >> >>     -object smp-cache,name=l2,...
-> >> >>     ...
-> >> >
-> >> > Current, I use -object to create a smp_cache object, and link it to
-> >> > MachineState by -machine,smp-cache=obj_id.
-> >> >
-> >> > Then for the objects per cache, how could I link them to machine?
-> >> >
-> >> > Is it possible that I create something static in smp_cache.c and expose
-> >> > all the cache information to machine through some interface?
-> >> 
-> >> Good questions.  However, before we head deeper into the weeds here, I
-> >> feel we should discuss the things below.  And before we do that, I need
-> >> a clear understanding of the use case.  Elsewhere in this thread, I just
-> >> described the use case as I understand it.  Please reply there.  I'll
-> >> then come back to this message.
-> >> 
-> >> [...]
-> >
-> > Jonathan and I provided different use cases for x86 and Arm. Could we
-> > come back here to continue the discussion? :)
+> But this is hardly something that can be configured without proper
+> user input, so this is not present in the generic "make
+> check-avocado".
 > 
-> Can you provide a brief summary of the design alternatives that have
-> been proposed so far?  Because I've lost track.
+>> So far this directory is group=RW but we like the ability to track
+>> a read-only directory (like owned by a particular user) and adding
+>> missing assets to current user cachedir, to avoid duplication of
+>> files and waste of network transfer.
+>>
+> 
+> That can be done in avocado.conf, something like:
+> 
+> [datadir.paths]
+> cache_dirs = ['/path/that/is/ro/because/owned/by/someone/else',
+> '/home/cleber/avocado/data/cache']
+> 
+> The asset library will take care of trying to find assets in the RO
+> directories, while writing to the RW ones.
 
-No problem!
-
-Currently, we have the following options:
-
-* 1st: The first one is just to configure cache topology with several
-  options in -smp:
-
-  -smp l1i-cache-topo=core,l1d-cache-topo-core
-
-  This one lacks scalability to support the cache size that ARM will
-  need in the future.
-
-
-* 2nd: The cache list object in -smp.
-
-  The idea was to use JSON to configure the cache list. However, the
-  underlying implementation of -smp at the moment is keyval parsing,
-  which is not compatible with JSON.
-
-  If we can not insist on JSON format, then cache lists can also be
-  implemented in the following way:
-  
-  -smp caches.0.name=l1i,caches.0.topo=core,\
-       caches.1.name=l1d,caches.1.topo=core
-
-
-* 3rd: The cache list object linked in -machine.
-
-  Considering that -object is JSON-compatible so that defining lists via
-  JSON is more friendly, I implemented the caches list via -object and
-  linked it to MachineState:
-
-  -object '{"qom-type":"smp-cache","id":"obj","caches":[{"name":"l1d","topo":"core"},{"name":"l1i","topo":"core"}]}'
-  -machine smp-caches=obj
-
-
-* 4th: The per cache object without any list:
-
-  -object smp-cache,id=cache0,name=l1i,topo=core \
-  -object smp-cache,id=cache1,name=l1d,topo=core
-
-  This proposal is clearer, but there are a few opens:
-  - I plan to push qom-topo forward, which would abstract CPU related
-    topology levels and cache to "device" instead of object. Is there a
-    conflict here?
-
-  - Multiple cache objects can't be linked to the machine on the command
-    line, so I maintain a static cache list in smp_cache.c and expose
-    the cache information to the machine through some interface. is this
-    way acceptable?
-
-
-In summary, the 4th proposal was the most up in the air, as it looked to
-be conflict with the hybrid topology I wanted to do (and while hybrid
-topology may not be accepted by the community either, I thought it would
-be best for the two work to be in the same direction).
-
-The difference between 2nd and 3rd is about the JSON requirement, if JSON
-is mandatory for now then it's 3rd, if it's not mandatory (or accept to
-make -machine/-smp support JSON in the future), 2nd looks cleaner, which
-puts the caches list in -smp.
-
-Regards,
-Zhao
-
+Great, thanks!

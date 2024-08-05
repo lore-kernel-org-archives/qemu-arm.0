@@ -1,205 +1,139 @@
-Received: by 2002:a17:505:1e8b:b0:1be9:327d:8ee3 with SMTP id mw11csp924457njb;
-        Mon, 5 Aug 2024 10:03:48 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCVAowKtfHLALFTX528APGwtrkr26aa1CgkqHQOo+Lht05Hixpxe6hbCVDR4K7Q1EaRLTG/y05E/3q1DRpazIyTmzT419UUZ
-X-Google-Smtp-Source: AGHT+IEckML6xh1Gc+fDgMM4mIHlJfEYU3HK/uvbcOH3zvTCOf616jrZK44kAVuYunIAVyQPFycQ
-X-Received: by 2002:a05:6102:c4b:b0:48f:df3b:9827 with SMTP id ada2fe7eead31-4945bf4bb72mr13606697137.31.1722877428446;
-        Mon, 05 Aug 2024 10:03:48 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1722877428; cv=pass;
+Received: by 2002:a17:505:1e8b:b0:1be9:327d:8ee3 with SMTP id mw11csp986320njb;
+        Mon, 5 Aug 2024 13:17:22 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUDQS9dUp2OH2DC6bDDSJK6t6wJYOfAXB5QqoMLb+tmJ11dtt2o3t5w52NRBW1oScXbPTZ5QRLPpX/3Kfrn8pAWUR5jiY/T
+X-Received: by 2002:a17:90b:4b05:b0:2c9:69cc:3a6f with SMTP id 98e67ed59e1d1-2cff952d009mr11610253a91.31.1722889042559;
+        Mon, 05 Aug 2024 13:17:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1722889042; cv=none;
         d=google.com; s=arc-20160816;
-        b=aKitBp2R1NAmItQ9ZobabW4R+93lgan4ugvMoazycyb4R+YoWAdzJN1JwjPc0Dm1cm
-         DGwRnShbT5600jWjwSVLxoIdGJrcF88V319WoB7SjMpDT7fWgfK5+/ISjgumClctlqT+
-         mr7Fq2WC9EgiIpFJadbYqhxAjfxBcKhRnS7ftD87TnTH8TEU4K0Q8IwTA4h4fCKmIyPP
-         Rk9plDTrigAV0gXajHdsgKszZoltPG844iwNlYGUc+/TB+DX0eByvKubAQc0beE+EGxC
-         owHUq2+zpFjcY9oK6YwvRnlVpVxJkO2Bt9sq2I1CoWYFOHO88YwCUmOE0zuhAOVXQD/S
-         9DRQ==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:organization:references
-         :in-reply-to:message-id:subject:cc:to:from:date;
-        bh=HTZh4E25zGpGZtYWuTZP4kvSau7wDKOqPThd9FQka3U=;
-        fh=c5SdJPmuZjLqL/yVd759G8+oVgaaCcPKba91GgsaS4c=;
-        b=Ga3or50LpY9cfiw20lzxSUo46FfwSc5p5JAuiCjlRVBMow7Sdu6x1u7FTgHq+yzfZR
-         O0/nWwWwIFWKP6Iz7swAukOFjaWHaBn5x/Oi1MGptgdGvKr68xvZJGMPv/FyZnWhVErz
-         gqQol0tgpVhjuW2VGqimULM0F/tjhTOCHDmI7W2Ih6K6CAjtlZJMGr+duGSN+C+6uyPg
-         v6bAcNuviwbCsahDy8ykLwsIRLokBQO0y5C/HS7tOad0aYg9YMYILbVpeuV96/ukrF7O
-         3d8l4bwFWaGBuTdRCwSzm31mwfpoV86LkKETeZ4dclITmB7cKIfIoCzI0D7lVVx1Otkn
-         hFAw==;
+        b=Vgyb/g7am9kb2x/CYFVLhZRqw3coK4O6HQc+ZeNwfPJBMMupDJmpTtRn/138kHw1nx
+         NzC0JBIIKBpeg/H5x7aPD2afYu5yAeLhOaPgOWauGuzJA6YlAYIiiX4yaLajLmPfA+Wi
+         aBvAiefX+Jk8GQ4fROEk4x34gE/hIy4q7i+dRZMcv68EkAr1eFZHosZyUD2HU5STMUAn
+         /tGC15HVg6B4TMuWj8O/1j/R540zhYcjmFMt2M6nHyrWBbWdCvcrV1Ynkm6v/LMNSpiG
+         SR3LV3Mh12ffjNKurubqx0yZMO00X97UqenGqeu8xuXf12gpCFwmzhBwx5Ovt7RmjizO
+         rHAg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
+         :date:dkim-signature;
+        bh=v+XZ2Rl5k5if0oOWfRcW5SGcn2wm2BUtZIoAAUrM80c=;
+        fh=cq5khj4SjeAdae0OYw6UW4YhEDVHBepmzNZalWLMKHw=;
+        b=jjDJXAwfbs0dH9FLQ/8FJFoFqKJzey0Ho3ii1U+yfDIXYQrAb78Hk+Vq09gm0EyhUV
+         NEKzrXwwlRmQNO3k3O7Rjstn3oIbNM4nnszpilJ7aR3sqKkbSyywpxLGMPxOmJ/Q4be/
+         UyZFqolYbTCO6VVRLWwtYzDfvS7PYNaAuI8yzHdQRcb+ThS+NCHsXWuARiZ1OL3uzMt0
+         t1UEZTgaXb1Mqe+z49EJHY4QYwsF/uY7w/BI/L6Xqszeq9vHh8VhLYZIjYBPSQhEhHPr
+         xD6O0xAwQdqeuFtHXXTAWIr36hOofMMTx/+W6b5pXm5HX1F2RwcABeRBbvXVAS+OAGhe
+         ovaA==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       arc=pass (i=1 spf=pass spfdomain=huawei.com dmarc=pass fromdomain=huawei.com);
-       spf=pass (google.com: domain of linux-kernel+bounces-275038-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-275038-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=fail (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Return-Path: <linux-kernel+bounces-275038-alex.bennee=linaro.org@vger.kernel.org>
-Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [2604:1380:45d1:ec00::1])
-        by mx.google.com with ESMTPS id ada2fe7eead31-4945da8154dsi1793723137.104.2024.08.05.10.03.48
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=4ju0HLeL;
+       spf=pass (google.com: domain of 3ujoxzgukc7kszuhofnnfkd.bnlzkdw.admmddkhmzqn.nqf@flex--tavip.bounces.google.com designates 209.85.220.73 as permitted sender) smtp.mailfrom=3UjOxZgUKC7ksZuhofnnfkd.bnlZkdw.admmddkhmZqn.nqf@flex--tavip.bounces.google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
+       dara=neutral header.i=@linaro.org
+Return-Path: <3UjOxZgUKC7ksZuhofnnfkd.bnlZkdw.admmddkhmZqn.nqf@flex--tavip.bounces.google.com>
+Received: from mail-sor-f73.google.com (mail-sor-f73.google.com. [209.85.220.73])
+        by mx.google.com with SMTPS id 98e67ed59e1d1-2cffbee5e8bsor6168513a91.8.2024.08.05.13.17.22
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 05 Aug 2024 10:03:48 -0700 (PDT)
-Received-SPF: pass (google.com: domain of linux-kernel+bounces-275038-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) client-ip=2604:1380:45d1:ec00::1;
+        (Google Transport Security);
+        Mon, 05 Aug 2024 13:17:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 3ujoxzgukc7kszuhofnnfkd.bnlzkdw.admmddkhmzqn.nqf@flex--tavip.bounces.google.com designates 209.85.220.73 as permitted sender) client-ip=209.85.220.73;
 Authentication-Results: mx.google.com;
-       arc=pass (i=1 spf=pass spfdomain=huawei.com dmarc=pass fromdomain=huawei.com);
-       spf=pass (google.com: domain of linux-kernel+bounces-275038-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-275038-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=fail (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ny.mirrors.kernel.org (Postfix) with ESMTPS id 270521C21DCA
-	for <alex.bennee@linaro.org>; Mon,  5 Aug 2024 17:03:48 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 0EA4515ECED;
-	Mon,  5 Aug 2024 17:03:36 +0000 (UTC)
-Received: from frasgout.his.huawei.com (frasgout.his.huawei.com [185.176.79.56])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6D2CE15ECCA
-	for <linux-kernel@vger.kernel.org>; Mon,  5 Aug 2024 17:03:32 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=185.176.79.56
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1722877415; cv=none; b=IFwJGokCPTjy19QJnyHsa8puWOmo3cq8FqOJmZkeh/R4gRG0LQ2zpVjI7eEMwbzSxlOWgB+staf7Q7dC75AFiFoCRWfzoPRcEd+h0YynrZk5ijyuPCIcipQqPLYrJpUY++ky0MumRCf4iKn3/j5OM03OLg36sDDasgnhOWEs3h0=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1722877415; c=relaxed/simple;
-	bh=Dn2k5qh3qBvNIHK1xSaAQ0OAAUVlMKuU+Zr79+pBPFI=;
-	h=Date:From:To:CC:Subject:Message-ID:In-Reply-To:References:
-	 MIME-Version:Content-Type; b=adIVmXQoG8IdcCfBeXRqNhVLaxs4zdRj2MuhMSS26jTyqEXDxh8O5Wk/BRwkJM1UI/D2czCxG3LQohnxrXyHgDveIjxDlM5kKLA/1lD5R7R0Y/GD6jzwaaYuLKMKK7wZLx6lstiVbuKDGT8PE64cZPJuJYhjggzyciIlhDueULI=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=Huawei.com; spf=pass smtp.mailfrom=huawei.com; arc=none smtp.client-ip=185.176.79.56
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=Huawei.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=huawei.com
-Received: from mail.maildlp.com (unknown [172.18.186.31])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4Wd2lJ1Jw9z6K5Tg;
-	Tue,  6 Aug 2024 01:01:16 +0800 (CST)
-Received: from lhrpeml500005.china.huawei.com (unknown [7.191.163.240])
-	by mail.maildlp.com (Postfix) with ESMTPS id 0C3DE140A87;
-	Tue,  6 Aug 2024 01:03:30 +0800 (CST)
-Received: from localhost (10.203.177.66) by lhrpeml500005.china.huawei.com
- (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Mon, 5 Aug
- 2024 18:03:29 +0100
-Date: Mon, 5 Aug 2024 18:03:28 +0100
-From: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
-To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-CC: Shiju Jose <shiju.jose@huawei.com>, "Michael S. Tsirkin" <mst@redhat.com>,
-	Ani Sinha <anisinha@redhat.com>, Dongjiu Geng <gengdongjiu1@gmail.com>, Igor
- Mammedov <imammedo@redhat.com>, <linux-kernel@vger.kernel.org>,
-	<qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
-Subject: Re: [PATCH v5 6/7] acpi/ghes: add support for generic error
- injection via QAPI
-Message-ID: <20240805180328.00003a82@Huawei.com>
-In-Reply-To: <20c491e357340e0062b6ff09867c1661ed4d2479.1722634602.git.mchehab+huawei@kernel.org>
-References: <cover.1722634602.git.mchehab+huawei@kernel.org>
-	<20c491e357340e0062b6ff09867c1661ed4d2479.1722634602.git.mchehab+huawei@kernel.org>
-Organization: Huawei Technologies Research and Development (UK) Ltd.
-X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
-Precedence: bulk
-X-Mailing-List: linux-kernel@vger.kernel.org
-List-Id: <linux-kernel.vger.kernel.org>
-List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
-Content-Transfer-Encoding: 7bit
-X-ClientProxiedBy: lhrpeml100002.china.huawei.com (7.191.160.241) To
- lhrpeml500005.china.huawei.com (7.191.163.240)
-X-TUID: IKCmO5uXmTLm
+       dkim=pass header.i=@google.com header.s=20230601 header.b=4ju0HLeL;
+       spf=pass (google.com: domain of 3ujoxzgukc7kszuhofnnfkd.bnlzkdw.admmddkhmzqn.nqf@flex--tavip.bounces.google.com designates 209.85.220.73 as permitted sender) smtp.mailfrom=3UjOxZgUKC7ksZuhofnnfkd.bnlZkdw.admmddkhmZqn.nqf@flex--tavip.bounces.google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20230601; t=1722889042; x=1723493842; darn=linaro.org;
+        h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
+         :date:from:to:cc:subject:date:message-id:reply-to;
+        bh=v+XZ2Rl5k5if0oOWfRcW5SGcn2wm2BUtZIoAAUrM80c=;
+        b=4ju0HLeLQN1kdqDCDBacaPH/Xh5hQeeXnkNGhhP9fWVAeo34ibDZYB2xbpMsD5p6nB
+         t6kF7MBxS3p/IJ7FiZQ5iEbmPyTTH0IXuSEC3Q5oa9eZgw8JXbl59+MFqAvohSTrVK8B
+         PdwEDKSJMAY+9r9qp/Ew8TWAEQ/yKIFxA2+G4Cgkz5T7ZJxlIVh6hSlX/LG+fcX+W1kx
+         yX/ulJCbYv2rMtcgYVy1V2R4Fgrt8vojk5tSLXCGjRymQLFV00rYNnAKuLYTMLCRYm35
+         lMaJIUl1sPS0cAuKp0pvNRDZEbcIONlPZqlKA9+aCaRYupJP/HzIUaxfOwV79qHtq1Al
+         +c9g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1722889042; x=1723493842;
+        h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
+         :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=v+XZ2Rl5k5if0oOWfRcW5SGcn2wm2BUtZIoAAUrM80c=;
+        b=Lt+nDQtZa+4X30UhscmjUiusX91yA7aysX+m2pglu+8atqfi+jWqhjusRpzvUN8btk
+         VruHjU2O+ZvsnS4jbbsypP2+S3eD+8JWo2gnaWDQKx6dKDIcmRleClfX4DXW1+m+7vIM
+         spsYmaTUfDjM9BMM/X4XwTogRHXBANF/vwpVbhmZGn5WTU2B2bCIgASgvg8vvZXtKwPu
+         rKTYsMFRhqMsOTn1rBY/1qI48T6ilaMLrqDX2Ax+/vhMMwLpbpRpp7RMncdI9Mwubuec
+         WD07CCytKhs676ODc6/Vf0tUU8pPiOeROj2hMZBRU793UM6rGBh7mOdwRDUJ0WjpX/L0
+         B+eg==
+X-Forwarded-Encrypted: i=1; AJvYcCUiGdcHCG8dPKPQ77wUywHSZggJ+a9NcAcS8Vs+LZm6ZmqBWSFMTviGt1c1tvn0c285fCmYr5VzT/0NDJsTh8Uy5dM/UgL+
+X-Gm-Message-State: AOJu0Yz1JPoCX4CaTyL3AlHccOMrBQd+Kk2utltazPEhKDNRk4wlX0r/
+	jb/mF3HVaBOws2h80IC8ykVQo6KbFwn5NaPD9dHkanFQ/stFKdT4/uVOm9QaU5faZWpSGrkyrA=
+	=
+X-Google-Smtp-Source: AGHT+IGSw77EguaF6TzFUl9hSn+D85XT29tsuj2jEdezd7+A3i+GB6qt6WaOoxbln6W2tkN/LgpP3KwjKQ==
+X-Received: from warp10.c.googlers.com ([fda3:e722:ac3:cc00:24:72f4:c0a8:750])
+ (user=tavip job=sendgmr) by 2002:a17:90b:3cc7:b0:2c9:81c6:b0ee with SMTP id
+ 98e67ed59e1d1-2cff9520a11mr181407a91.4.1722889042082; Mon, 05 Aug 2024
+ 13:17:22 -0700 (PDT)
+Date: Mon,  5 Aug 2024 13:16:56 -0700
+In-Reply-To: <20240805201719.2345596-1-tavip@google.com>
+Mime-Version: 1.0
+References: <20240805201719.2345596-1-tavip@google.com>
+X-Mailer: git-send-email 2.46.0.rc2.264.g509ed76dc8-goog
+Message-ID: <20240805201719.2345596-2-tavip@google.com>
+Subject: [RFC PATCH 01/23] fifo32: add peek function
+From: Octavian Purdila <tavip@google.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, stefanst@google.com, pbonzini@redhat.com, 
+	alex.bennee@linaro.org, thuth@redhat.com, peter.maydell@linaro.org, 
+	marcandre.lureau@redhat.com, alistair@alistair23.me, berrange@redhat.com, 
+	philmd@linaro.org, jsnow@redhat.com, crosa@redhat.com, bleal@redhat.com
+Content-Type: text/plain; charset="UTF-8"
+X-TUID: ErfSfdXAfO6g
 
-On Fri,  2 Aug 2024 23:44:01 +0200
-Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
+Add fifo32_peek() that returns the first element from the queue
+without popping it.
 
-> Provide a generic interface for error injection via GHESv2.
-> 
-> This patch is co-authored:
->     - original ghes logic to inject a simple ARM record by Shiju Jose;
->     - generic logic to handle block addresses by Jonathan Cameron;
->     - generic GHESv2 error inject by Mauro Carvalho Chehab;
-> 
-> Co-authored-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-> Co-authored-by: Shiju Jose <shiju.jose@huawei.com>
-> Co-authored-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-> Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-> Cc: Shiju Jose <shiju.jose@huawei.com>
-> Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-Looks fine to me.
-Feel free to put in my SoB on the resulting co-auth
-Signed-off-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-if appropriate?  Does this work same as kernel co-developed-by?
+Signed-off-by: Octavian Purdila <tavip@google.com>
+---
+ include/qemu/fifo32.h | 29 +++++++++++++++++++++++++++++
+ 1 file changed, 29 insertions(+)
 
-> +void ghes_record_cper_errors(AcpiGhesCper *cper, Error **errp,
-> +                             uint32_t notify)
-> +{
-> +    int read_ack = 0;
-> +    uint32_t i;
-> +    uint64_t read_ack_addr = 0;
-> +    uint64_t error_block_addr = 0;
-> +    uint32_t data_length;
-> +    GArray *block;
-> +
-> +    if (!ghes_get_addr(notify, &error_block_addr, &read_ack_addr)) {
-> +        error_setg(errp, "GHES: Invalid error block/ack address(es)");
-> +        return;
-> +    }
-> +
-> +    cpu_physical_memory_read(read_ack_addr,
-> +                             &read_ack, sizeof(uint64_t));
-> +
-> +    /* zero means OSPM does not acknowledge the error */
-> +    if (!read_ack) {
-> +        error_setg(errp,
-> +                   "Last CPER record was not acknowledged yet");
-> +        read_ack = 1;
-> +        cpu_physical_memory_write(read_ack_addr,
-> +                                  &read_ack, sizeof(uint64_t));
-> +        return;
-> +    }
-> +
-> +    read_ack = cpu_to_le64(0);
-> +    cpu_physical_memory_write(read_ack_addr,
-> +                              &read_ack, sizeof(uint64_t));
-> +
-> +    /* Build CPER record */
-> +
-> +    /*
-> +     * Invalid fru id: ACPI 4.0: 17.3.2.6.1 Generic Error Data,
-> +     * Table 17-13 Generic Error Data Entry
-> +     */
-> +    QemuUUID fru_id = {};
-> +
-> +    block = g_array_new(false, true /* clear */, 1);
-> +    data_length = ACPI_GHES_DATA_LENGTH + cper->data_len;
-> +
-> +    /*
-
-Odd formatting.
-
-> +        * It should not run out of the preallocated memory if
-> +        * adding a new generic error data entry
-> +        */
-> +    assert((data_length + ACPI_GHES_GESB_SIZE) <=
-> +            ACPI_GHES_MAX_RAW_DATA_LENGTH);
-> +
-> +    /* Build the new generic error status block header */
-> +    acpi_ghes_generic_error_status(block, ACPI_GEBS_UNCORRECTABLE,
-> +                                    0, 0, data_length,
-> +                                    ACPI_CPER_SEV_RECOVERABLE);
-> +
-> +    /* Build this new generic error data entry header */
-> +    acpi_ghes_generic_error_data(block, cper->guid,
-> +                                ACPI_CPER_SEV_RECOVERABLE, 0, 0,
-> +                                cper->data_len, fru_id, 0);
-> +
-> +    /* Add CPER data */
-> +    for (i = 0; i < cper->data_len; i++) {
-> +        build_append_int_noprefix(block, cper->data[i], 1);
-> +    }
-> +
-> +    /* Write the generic error data entry into guest memory */
-> +    cpu_physical_memory_write(error_block_addr, block->data, block->len);
-> +
-> +    g_array_free(block, true);
-> +
-> +    notifier_list_notify(&generic_error_notifiers, NULL);
-> +}
-> +
->  bool acpi_ghes_present(void)
->  {
->      AcpiGedState *acpi_ged_state;
-
-
+diff --git a/include/qemu/fifo32.h b/include/qemu/fifo32.h
+index 4e9fd1b5ef..c9befc47c8 100644
+--- a/include/qemu/fifo32.h
++++ b/include/qemu/fifo32.h
+@@ -140,6 +140,35 @@ static inline uint32_t fifo32_pop(Fifo32 *fifo)
+     return ret;
+ }
+ 
++/**
++ * fifo32_peek:
++ * @fifo: fifo to peek at
++ *
++ * Returns the value from the FIFO's head without poping it. Behaviour
++ * is undefined if the FIFO is empty. Clients are responsible for
++ * checking for emptiness using fifo32_is_empty().
++ *
++ * Returns: the value from the FIFO's head
++ */
++
++static inline uint32_t fifo32_peek(Fifo32 *fifo)
++{
++    uint32_t ret = 0, num;
++    const uint8_t *buf;
++    int i;
++
++    buf = fifo8_peek_buf(&fifo->fifo, 4, &num);
++    if (num != 4) {
++        return ret;
++    }
++
++    for (i = 0; i < sizeof(uint32_t); i++) {
++        ret |= buf[i] << (i * 8);
++    }
++
++    return ret;
++}
++
+ /**
+  * There is no fifo32_pop_buf() because the data is not stored in the buffer
+  * as a set of native-order words.
+-- 
+2.46.0.rc2.264.g509ed76dc8-goog

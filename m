@@ -1,83 +1,83 @@
-Received: by 2002:a17:505:1e8b:b0:1be9:327d:8ee3 with SMTP id mw11csp986442njb;
-        Mon, 5 Aug 2024 13:17:41 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWxlGRtzhFFlhK3RyYY45lRRH/nV0t35pymgykkC03qxYrYtjNeMXNy1Q3nEX+ZYCt2+26l/NEpP/Q66ovsvqJCP/t/jYrq
-X-Received: by 2002:a05:6358:5f1d:b0:1aa:b887:2386 with SMTP id e5c5f4694b2df-1af3ba5e2e3mr1649705655d.10.1722889060613;
-        Mon, 05 Aug 2024 13:17:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1722889060; cv=none;
+Received: by 2002:a17:505:1e8b:b0:1be9:327d:8ee3 with SMTP id mw11csp986450njb;
+        Mon, 5 Aug 2024 13:17:42 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVRuxq8i/XmZ9jP9b+BYWBLZExzCcxrUqWo+9lsca2f6Nv82mLxHQWAPv+S+L+GYhmo65wQW3x9vnAy5H2R7vPx9tzy5IUs
+X-Received: by 2002:a17:90a:ca15:b0:2cf:28c1:4cc2 with SMTP id 98e67ed59e1d1-2cff93c6196mr15428688a91.3.1722889062721;
+        Mon, 05 Aug 2024 13:17:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1722889062; cv=none;
         d=google.com; s=arc-20160816;
-        b=jy9jhTr5fXDjlHaCPyzxkgmxWU4HiJn3EWBLilx9z5AtCbRVYIeXflmoIivetOHr8A
-         X2ZzcP92MwOvzb9y6mkPwp5fy8wzxhQDIQ1mH96yVivmvWXqGRgbKlQ/wzavCrk0vMsR
-         fOxqQAkTmTUsYdTfaOVKJgsObmfzA4LqYu4Pqt0+M2TlXjZaWhBhR4WZERV7pCQlAFFw
-         um8UFVLxmhr2rZoPDqDJsfzQ6ZDWqqIfXmemc4YvNj1mWoGCgU/snNm/I/+MKQnKevVx
-         H8fnQS4Xpm5+lesOkiZnHJwoFtIDq3ixzzvyJ3LOHuaFKrysfo77M4iBdKOaKlxep52t
-         uwQw==
+        b=otQSUv7JEbuMNz317UWemA92LG1IeS1t6urtZUDE8IPwceztpgXz6f21K1WqF9Qu0c
+         BDr35GMr9xLbGv5zqdPqtHph/VEV15iNndkN9OXBvJi40j6adQ89lmSzorqibSyEPZ6X
+         /DEXblm4yTto8x6W31BINRzJjCh3nPfgxZBlW0esGFIsqGv/CHHXaHQfK2GzQ3w4LRgP
+         NcwaIza0wRt7uxPOqmMDBoBdXzZS8h37BPGHSOZUy8bQz7/w0/OWNBZERTPdn4XCg+fy
+         WkWv/hoQaqGG6B0XJhGKQhO4UbE4wkBMFQ8uEOBRFABLhhsC/eTf3sJ4l5OeTwWtxUv2
+         RM2w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
          :date:dkim-signature;
-        bh=4nDAaRYoPQUybXMrCeQ4yM0etvHUlZuu5xJy/FcdLbg=;
-        fh=tF/dx7lFebat0B7sZE3VxaqqKa7sXqNNp0lx28x1mxI=;
-        b=ZItLB7w85tqp69GN9c6YdFb1iSATF69HLkRSwiTFLVlQ4lu7//R0uBLZKHSsxK0qJo
-         9til+jMqsswBJL2bAFA46VISL9MIuQaNu4pfGQxgGjhmNa0WzuYWV67U/ypMOI3lJWhA
-         nGSa0t1J2g94o7A4XLzKtilSMGqE5uiaMYvDElG7sfXUPscdH5fFAykJLJpQrlpqmawJ
-         P2xXL96Y3sPKO4wCbzCzpnkJ8vjF9VVGvsvohKCDAxSN5P7PvzJJBvcTFIkohHExTB7S
-         ZYIro3EOvWPYg+UZGaeoTWRvYwJzY1TkXnFzc5K1AILscuFVACY9+yoUryUfdVyicbpY
-         SglA==;
+        bh=JJx2zYTysuPPGq4jl/CUtBvGg4dYG4R93ytcuWg1fhs=;
+        fh=5IB5qhPhXEne0JZY95es6WPAJCmzMEe/NwCNauS7uCc=;
+        b=scdJnVNHxNL8ASZJD+FWsAvmhJbFkQu5ZGwuET6E8fXt9Ttv2m/hd2UhYPKQxSUXiu
+         MUIqicYbCEYIOFJ7ye2qnJi4OSxFVaWcqFJb+yJ5/oezIITpLSESWNYXC6TrZA+vHKp0
+         +Vmd8WIQrp9+MYnbrQhdsS63j7hSfn6KvkTnCyadqKNdI1FG06SXVU+FCU6Nyk3iKuXZ
+         5C+Vj5HEakKpTvQqH/m3TMlyTsKXqk473ebmNcL78pQnIkDWHYKwKhcDrDHsxmi1Jhvo
+         yiaIymM2a33ml6Ux84vEiuh4+ykDSfC+i1XdEXNHZp0kLmfkzh23tawrQM5K9ZmdjnaW
+         XDyQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=3NWMhCsY;
-       spf=pass (google.com: domain of 3zdoxzgukc8sarcz6x55x2v.t53r2ve.sv44vv2z4r85.58x@flex--tavip.bounces.google.com designates 209.85.220.73 as permitted sender) smtp.mailfrom=3ZDOxZgUKC8sArCz6x55x2v.t53r2vE.sv44vv2z4r85.58x@flex--tavip.bounces.google.com;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=lQPWCqUZ;
+       spf=pass (google.com: domain of 3ztoxzgukc8wbsd07y66y3w.u64s3wf.tw55ww305s96.69y@flex--tavip.bounces.google.com designates 209.85.220.73 as permitted sender) smtp.mailfrom=3ZTOxZgUKC8wBsD07y66y3w.u64s3wF.tw55ww305s96.69y@flex--tavip.bounces.google.com;
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
        dara=neutral header.i=@linaro.org
-Return-Path: <3ZDOxZgUKC8sArCz6x55x2v.t53r2vE.sv44vv2z4r85.58x@flex--tavip.bounces.google.com>
+Return-Path: <3ZTOxZgUKC8wBsD07y66y3w.u64s3wF.tw55ww305s96.69y@flex--tavip.bounces.google.com>
 Received: from mail-sor-f73.google.com (mail-sor-f73.google.com. [209.85.220.73])
-        by mx.google.com with SMTPS id 00721157ae682-68a0f6fb908sor37559807b3.1.2024.08.05.13.17.40
+        by mx.google.com with SMTPS id 98e67ed59e1d1-2cffbcb9dd1sor6621526a91.6.2024.08.05.13.17.42
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 05 Aug 2024 13:17:40 -0700 (PDT)
-Received-SPF: pass (google.com: domain of 3zdoxzgukc8sarcz6x55x2v.t53r2ve.sv44vv2z4r85.58x@flex--tavip.bounces.google.com designates 209.85.220.73 as permitted sender) client-ip=209.85.220.73;
+        Mon, 05 Aug 2024 13:17:42 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 3ztoxzgukc8wbsd07y66y3w.u64s3wf.tw55ww305s96.69y@flex--tavip.bounces.google.com designates 209.85.220.73 as permitted sender) client-ip=209.85.220.73;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=3NWMhCsY;
-       spf=pass (google.com: domain of 3zdoxzgukc8sarcz6x55x2v.t53r2ve.sv44vv2z4r85.58x@flex--tavip.bounces.google.com designates 209.85.220.73 as permitted sender) smtp.mailfrom=3ZDOxZgUKC8sArCz6x55x2v.t53r2vE.sv44vv2z4r85.58x@flex--tavip.bounces.google.com;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=lQPWCqUZ;
+       spf=pass (google.com: domain of 3ztoxzgukc8wbsd07y66y3w.u64s3wf.tw55ww305s96.69y@flex--tavip.bounces.google.com designates 209.85.220.73 as permitted sender) smtp.mailfrom=3ZTOxZgUKC8wBsD07y66y3w.u64s3wF.tw55ww305s96.69y@flex--tavip.bounces.google.com;
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20230601; t=1722889060; x=1723493860; darn=linaro.org;
+        d=google.com; s=20230601; t=1722889062; x=1723493862; darn=linaro.org;
         h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
          :date:from:to:cc:subject:date:message-id:reply-to;
-        bh=4nDAaRYoPQUybXMrCeQ4yM0etvHUlZuu5xJy/FcdLbg=;
-        b=3NWMhCsYGMv3uAapl/bfUE2JoDwd8pozOhbxejawg+Zo+fe/rbcaPw/weRjk0MX2j/
-         HXiUuVljpDAX4XAoy6FJf2o94GAW7pUACniYL9fqdok1uypbxw7P4uA2Kn0qO8Pb6Fio
-         Qoe9suD1dssBVMoRT/I5ofU4eUSiRl5MgccGWMZBfZKTn7gf/h1S8PpB69Ji5jn9c9Qk
-         Sh62PoxAGBbpivjm+miXFjbJp10NVHB3cRO9LiTA7lqewCiSGXQHTaM+CwXjQCYstqeU
-         DIbIeF+BRvL2dtg870fEyxRXq9KLV+VcrZycP/PXKiMjqHxFZYSqIQzZrv7FuY7QX5Mj
-         UEtA==
+        bh=JJx2zYTysuPPGq4jl/CUtBvGg4dYG4R93ytcuWg1fhs=;
+        b=lQPWCqUZc9E8cWQ4CuUiAho741wFuzrAwc3uIEJ09hxbEZz9dKEUEgOzR9Ywp5etLM
+         sZc0sIvzn+yHrb9eFijG9yPz5TkApFKEkc/OcqEKFu2rJSt00/Uwusmw2c5omkaASmoE
+         ZO9H62WsmPilmCjDMV2uayacDWTlt4NA/YIb4DtAoEQ+WF+X+9oUzlFtfvm7TZknFies
+         7IMEnNrxPlAbn6RP+7kwnpPBZF6Bjb814o5sFFW7br7lOEpE6AemRyKuv53zzsvxg8g0
+         hY1WdW1IbKUGXKYX1C57ZXX2CXZKcjTVkbqbTGLxMm5v7iLWIrmpclAGBbKURKh06SYV
+         ZXQw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1722889060; x=1723493860;
+        d=1e100.net; s=20230601; t=1722889062; x=1723493862;
         h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
          :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=4nDAaRYoPQUybXMrCeQ4yM0etvHUlZuu5xJy/FcdLbg=;
-        b=Xp+/yg4qFHOuhm6613nhPPedZCUSZXo+cVhjy6cNEnrVQtkUgwNwd2TZd/yRT2KEGN
-         VLajC5GQDJ6iEm05n/CkhGivTLgwd7ewGM+QPfwE4+RgrxfAefKiDrvCVQi10JkL107l
-         p0y98yqbD0pQkkVMrLL/nbse4/ZysdS7Md1eqnClZCtsvJNe8lEvJy4mf8GHpICHWZQE
-         YjGo8b7kJ8k8jVF9+YBQQhpzQncAVotQKfD8CzOIkqeoJlt+XZdqVmKTpXMgzfHg6Y7z
-         GUPHm3CqgmvWDqeznJ/zIPEAdWqA47J9zoY7ewXDxzzfgLOWlUpWYaw3Q9eLme1A3+Jv
-         IkfQ==
-X-Forwarded-Encrypted: i=1; AJvYcCUot6W4rUHmeHppAq7iEghqfHXdWHGlPEd71jYsuBNIPKOBk1AnTtjcAswuvz2IbKPFgYZRHe1dDvzO4Gv3P81l0hG8PrnU
-X-Gm-Message-State: AOJu0YzCjZospLTmDZnOIymHM2TCogywQtvNUVJdpvfIAFVMK6fL3fv2
-	a7WPoC0EmQCz70HWQfTUgJPCkf6a04SbPPUi4Uo3MJOEdIm/12OhIUhyRuJQn7CNdLyEt3WbYg=
+        bh=JJx2zYTysuPPGq4jl/CUtBvGg4dYG4R93ytcuWg1fhs=;
+        b=H3HxO+unFa7PzZjv2j4pmncYU/+TLmfi7ZkXu0pyCK/ZU/kFbUZZABR5H3s+JbvVBh
+         soxyKLi6fFGsnk5vxHfE+OwYJNS3E40/FXhFrm7MLShvOgdXp0RnOrg7+ZzkuZljdF/R
+         oRT1sRFBRRrLWX8PWXkfdZw5EHYNIB9lWsRgCqXcxLjnkedh20k5sVXENz9187uxK/w6
+         y61Ms+JZIvDcPZxvYerkN479D1TmWLdbEf5iLvBaRXkMb0EC9cPEu2bYla5MqKCpBwOl
+         J8qaDwhEjJkzqKdvlbBYhWYO6Pmlo00szlNM0gMe1Z8+fvkei/mTg6YwY3nf7kiGFxG+
+         IDRw==
+X-Forwarded-Encrypted: i=1; AJvYcCUcS6IDzgduH83Mxrg7JoHk2M9ehryJDwciFUlOrxR2zFLVAPNSINkMr1SlRb+IOvyqxX9j29FF+xaKTNfhRLnsAfLjNser
+X-Gm-Message-State: AOJu0Yzk81SFtuOhz15EFtv4u6Ardn6P9711U7Muf3C62hMkK5IP95wB
+	iAqVbksYH7fo9h5IKVZGul2Px6kDWir8c9aoUj8sGEh+klwvci8Q2maZdvrSFLGF/8O+I4jD6w=
 	=
-X-Google-Smtp-Source: AGHT+IEbUnH+6fvsnahVEKUA+AUBoPinsmnz1TNDh7dXnwnN24dOVdyWczd/BAVBFAEQ1m9fDZI+fItK6w==
+X-Google-Smtp-Source: AGHT+IFJ6HmLYx+llIq607FEkRA2hqMCqRAGPVf+vAAKgX7jthaVgxS/Ia/9f+16jdToHqdzT0ceAn1c4g==
 X-Received: from warp10.c.googlers.com ([fda3:e722:ac3:cc00:24:72f4:c0a8:750])
- (user=tavip job=sendgmr) by 2002:a0d:c843:0:b0:665:7b0d:ed27 with SMTP id
- 00721157ae682-688b7457a53mr986987b3.2.1722889060159; Mon, 05 Aug 2024
- 13:17:40 -0700 (PDT)
-Date: Mon,  5 Aug 2024 13:17:06 -0700
+ (user=tavip job=sendgmr) by 2002:a17:90b:3e8c:b0:2c9:9208:ee66 with SMTP id
+ 98e67ed59e1d1-2cff956d6f7mr34756a91.7.1722889061818; Mon, 05 Aug 2024
+ 13:17:41 -0700 (PDT)
+Date: Mon,  5 Aug 2024 13:17:07 -0700
 In-Reply-To: <20240805201719.2345596-1-tavip@google.com>
 Mime-Version: 1.0
 References: <20240805201719.2345596-1-tavip@google.com>
 X-Mailer: git-send-email 2.46.0.rc2.264.g509ed76dc8-goog
-Message-ID: <20240805201719.2345596-12-tavip@google.com>
-Subject: [RFC PATCH 11/23] test/unit: add flexcomm usart unit test
+Message-ID: <20240805201719.2345596-13-tavip@google.com>
+Subject: [RFC PATCH 12/23] hw/i2c: add support for flexcomm i2c
 From: Octavian Purdila <tavip@google.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, stefanst@google.com, pbonzini@redhat.com, 
@@ -85,43 +85,47 @@ Cc: qemu-arm@nongnu.org, stefanst@google.com, pbonzini@redhat.com,
 	marcandre.lureau@redhat.com, alistair@alistair23.me, berrange@redhat.com, 
 	philmd@linaro.org, jsnow@redhat.com, crosa@redhat.com, bleal@redhat.com
 Content-Type: text/plain; charset="UTF-8"
-X-TUID: F867X5+sBVFj
+X-TUID: mGp0LgojUPkH
 
-Add polling and irq unit tests for the flexcomm usart device model.
+Add support for NXP's flexcomm i2c. It does not support slave mode or
+DMA.
 
 Signed-off-by: Octavian Purdila <tavip@google.com>
 ---
- tests/unit/meson.build           |   7 +
- tests/unit/test-flexcomm-usart.c | 321 +++++++++++++++++++++++++++++++
- 2 files changed, 328 insertions(+)
- create mode 100644 tests/unit/test-flexcomm-usart.c
+ hw/arm/svd/meson.build        |   4 +
+ hw/i2c/flexcomm_i2c.c         | 224 ++++++++++++++++++++++++++++++++++
+ hw/i2c/meson.build            |   1 +
+ hw/i2c/trace-events           |  10 ++
+ hw/misc/flexcomm.c            |   6 +
+ include/hw/i2c/flexcomm_i2c.h |  27 ++++
+ include/hw/misc/flexcomm.h    |   4 +
+ tests/unit/meson.build        |   4 +
+ 8 files changed, 280 insertions(+)
+ create mode 100644 hw/i2c/flexcomm_i2c.c
+ create mode 100644 include/hw/i2c/flexcomm_i2c.h
 
-diff --git a/tests/unit/meson.build b/tests/unit/meson.build
-index 70e816c034..dcfd2e661c 100644
---- a/tests/unit/meson.build
-+++ b/tests/unit/meson.build
-@@ -149,6 +149,13 @@ if have_system
-       meson.project_source_root() / 'hw/misc/flexcomm.c',
-       meson.project_source_root() / 'hw/char/flexcomm_usart.c',
-      ],
-+    'test-flexcomm-usart': [
-+      hwcore, chardev, qom, migration,
-+      meson.project_source_root() / 'hw/core/gpio.c',
-+      meson.project_source_root() / 'tests/unit/sysbus-mock.c',
-+      meson.project_source_root() / 'hw/misc/flexcomm.c',
-+      meson.project_source_root() / 'hw/char/flexcomm_usart.c',
-+    ],
-   }
-   if config_host_data.get('CONFIG_INOTIFY1')
-     tests += {'test-util-filemonitor': []}
-diff --git a/tests/unit/test-flexcomm-usart.c b/tests/unit/test-flexcomm-usart.c
+diff --git a/hw/arm/svd/meson.build b/hw/arm/svd/meson.build
+index ed0f69f437..fa0d3da829 100644
+--- a/hw/arm/svd/meson.build
++++ b/hw/arm/svd/meson.build
+@@ -6,3 +6,7 @@ genh += custom_target('flexcomm_usart.h',
+                       output: 'flexcomm_usart.h',
+                       input: 'MIMXRT595S_cm33.xml',
+                       command: [ svd_gen_header, '-i', '@INPUT@', '-o', '@OUTPUT@', '-p', 'USART0', '-t', 'FLEXCOMM_USART'])
++genh += custom_target('flexcomm_i2c_regs.h',
++                      output: 'flexcomm_i2c.h',
++                      input: 'MIMXRT595S_cm33.xml',
++                      command: [ svd_gen_header, '-i', '@INPUT@', '-o', '@OUTPUT@', '-p', 'I2C0', '-t', 'FLEXCOMM_I2C'])
+diff --git a/hw/i2c/flexcomm_i2c.c b/hw/i2c/flexcomm_i2c.c
 new file mode 100644
-index 0000000000..645f3b4c26
+index 0000000000..7e74f858ce
 --- /dev/null
-+++ b/tests/unit/test-flexcomm-usart.c
-@@ -0,0 +1,321 @@
++++ b/hw/i2c/flexcomm_i2c.c
+@@ -0,0 +1,224 @@
 +/*
-+ * Copyright (C) 2024 Google LLC
++ * QEMU model for NXP's FLEXCOMM I2C
++ *
++ * Copyright (c) 2024 Google LLC
 + *
 + * SPDX-License-Identifier: GPL-2.0-or-later
 + *
@@ -130,316 +134,362 @@ index 0000000000..645f3b4c26
 + */
 +
 +#include "qemu/osdep.h"
-+
-+#include "qemu/config-file.h"
-+#include "qemu/log.h"
-+#include "qemu/module.h"
-+#include "qapi/error.h"
-+#include "qemu/sockets.h"
-+#include "sysemu/sysemu.h"
-+#include "qemu/main-loop.h"
-+#include "qemu/option.h"
-+#include "exec/memory.h"
++#include "qemu/cutils.h"
 +#include "hw/irq.h"
 +#include "hw/qdev-properties.h"
++#include "qemu/log.h"
++#include "qemu/module.h"
++#include "exec/address-spaces.h"
++#include "qapi/error.h"
++#include "trace.h"
++#include "hw/regs.h"
++#include "hw/i2c/flexcomm_i2c.h"
++
++#define reg(field) offsetof(FLEXCOMM_I2C_Type, field)
++#define regi(x) (reg(x) / sizeof(uint32_t))
++#define REG_NO (sizeof(FLEXCOMM_I2C_Type) / sizeof(uint32_t))
++
++static FLEXCOMM_I2C_REGISTER_NAMES_ARRAY(reg_names);
++
++static void flexcomm_i2c_reset(FlexcommState *s)
++{
++    flexcomm_i2c_reset_registers(&s->regs.i2c);
++}
++
++static void flexcomm_i2c_irq_update(FlexcommState *s)
++{
++    bool enabled = s->regs.i2c.CFG_b.MSTEN;
++    bool irq, per_irqs;
++
++    s->regs.i2c.INTSTAT = s->regs.i2c.STAT & s->regs.i2c.INTENSET;
++    per_irqs = s->regs.i2c.INTSTAT != 0;
++
++    irq = enabled && per_irqs;
++
++    trace_flexcomm_i2c_irq(DEVICE(s)->id, irq, per_irqs, enabled);
++    flexcomm_irq(s, irq);
++}
++
++static MemTxResult flexcomm_i2c_reg_read(void *opaque, FlexcommState *s,
++                                          int f, hwaddr addr, uint64_t *data,
++                                          unsigned size)
++{
++    MemTxResult ret = MEMTX_OK;
++
++    if (!reg32_aligned_access(addr, size)) {
++        ret = MEMTX_ERROR;
++        goto out;
++    }
++
++    *data = reg32_read(&s->regs, addr);
++
++    flexcomm_i2c_irq_update(s);
++
++out:
++    trace_flexcomm_i2c_reg_read(DEVICE(s)->id, reg_names[addr], addr, *data);
++    return ret;
++}
++
++static MemTxResult flexcomm_i2c_reg_write(void *opaque, FlexcommState *s,
++                                           int f, hwaddr addr, uint64_t value,
++                                           unsigned size)
++{
++    MemTxResult ret = MEMTX_OK;
++    static uint32_t mask[REG_NO] = {
++        [regi(CFG)] = BITS(5, 0),
++        [regi(STAT)] = BITS(25, 24) | BIT(19) | BIT(17) | BIT(15) | BIT(6),
++        [regi(INTENSET)] = BITS(25, 24) | BIT(19) | BITS(17, 15) | BIT(11) |
++                           BIT(8) |  BIT(6) | BIT(4) | BIT(0),
++        [regi(INTENCLR)] = BITS(25, 24) | BIT(19) | BITS(17, 15) | BIT(11) |
++                           BIT(8) |  BIT(6) | BIT(4) | BIT(0),
++        [regi(TIMEOUT)] = BITS(15, 0),
++        [regi(CLKDIV)] = BITS(15, 0),
++        [regi(MSTCTL)] = BITS(3, 0),
++        [regi(MSTTIME)] = BITS(6, 4) | BITS(2, 0),
++        [regi(MSTDAT)] = BITS(7, 0),
++        [regi(SLVCTL)] = BITS(9, 8) | BIT(3) | BITS(1, 0),
++        [regi(SLVDAT)] = BITS(7, 0),
++        [regi(SLVADR0)] = BIT(15) | BITS(7, 0),
++        [regi(SLVADR1)] = BIT(15) | BITS(7, 0),
++        [regi(SLVADR2)] = BIT(15) | BITS(7, 0),
++        [regi(SLVADR3)] = BIT(15) | BITS(7, 0),
++        [regi(SLVQUAL0)] = BITS(7, 0),
++    };
++
++    if (!reg32_aligned_access(addr, size)) {
++        ret = MEMTX_ERROR;
++        goto out;
++    }
++
++    switch (addr) {
++    case reg(CFG):
++    {
++        reg32_write(&s->regs, addr, value, mask);
++        if (s->regs.i2c.CFG_b.SLVEN) {
++            qemu_log_mask(LOG_GUEST_ERROR, "I2C slave not supported");
++        }
++        if (s->regs.i2c.CFG_b.MONEN) {
++            qemu_log_mask(LOG_GUEST_ERROR, "I2C monitoring not supported");
++        }
++        break;
++    }
++    case reg(INTENCLR):
++    {
++        s->regs.i2c.INTENSET &= ~(value & mask[addr / 4]);
++        break;
++    }
++    case reg(TIMEOUT):
++    {
++        reg32_write(&s->regs, addr, value, mask);
++        /* The bottom 4 bits are hard-wired to 0xF */
++        s->regs.i2c.TIMEOUT_b.TOMIN = 0xf;
++        break;
++    }
++    case reg(MSTCTL):
++    {
++        reg32_write(&s->regs, addr, value, mask);
++        if (s->regs.i2c.MSTCTL_b.MSTSTART) {
++            uint8_t i2c_addr = s->regs.i2c.MSTDAT_b.DATA;
++            bool recv = i2c_addr & 1;
++
++            trace_flexcomm_i2c_start(DEVICE(s)->id, i2c_addr, recv);
++            if (i2c_start_transfer(s->i2c, i2c_addr, recv)) {
++                s->regs.i2c.STAT_b.MSTSTATE = MSTSTATE_NAKADR;
++                trace_flexcomm_i2c_nak(DEVICE(s)->id);
++            } else {
++                if (recv) {
++                    uint8_t data = i2c_recv(s->i2c);
++
++                    s->regs.i2c.MSTDAT_b.DATA = data;
++                    trace_flexcomm_i2c_rx(DEVICE(s)->id, data);
++                    s->regs.i2c.STAT_b.MSTSTATE = MSTSTATE_RXRDY;
++                } else {
++                    s->regs.i2c.STAT_b.MSTSTATE = MSTSTATE_TXRDY;
++                }
++            }
++        }
++        if (s->regs.i2c.MSTCTL_b.MSTSTOP) {
++            s->regs.i2c.STAT_b.MSTSTATE = MSTSTATE_IDLE;
++            i2c_end_transfer(s->i2c);
++        }
++        if (s->regs.i2c.MSTCTL_b.MSTCONTINUE) {
++            if (s->regs.i2c.STAT_b.MSTSTATE == MSTSTATE_TXRDY) {
++                uint8_t data = s->regs.i2c.MSTDAT_b.DATA;
++
++                trace_flexcomm_i2c_tx(DEVICE(s)->id, data);
++                if (i2c_send(s->i2c, data)) {
++                    s->regs.i2c.STAT_b.MSTSTATE = MSTSTATE_NAKDAT;
++                }
++            } else if (s->regs.i2c.STAT_b.MSTSTATE == MSTSTATE_RXRDY) {
++                uint8_t data = i2c_recv(s->i2c);
++
++                s->regs.i2c.MSTDAT_b.DATA = data;
++                trace_flexcomm_i2c_rx(DEVICE(s)->id, data);
++            }
++        }
++        break;
++    }
++    case reg(STAT):
++    {
++        /* write 1 to clear bits */
++        s->regs.i2c.STAT &= ~(value & mask[addr / 4]);
++        break;
++    }
++    case reg(SLVCTL):
++    case reg(SLVDAT):
++    case reg(SLVADR0):
++    case reg(SLVADR1):
++    case reg(SLVADR2):
++    case reg(SLVADR3):
++    case reg(SLVQUAL0):
++    {
++        qemu_log_mask(LOG_GUEST_ERROR, "I2C slave not supported\n");
++        break;
++    }
++    default:
++        reg32_write(&s->regs, addr, value, mask);
++        break;
++    }
++
++    flexcomm_i2c_irq_update(s);
++
++out:
++    trace_flexcomm_i2c_reg_write(DEVICE(s)->id, reg_names[addr], addr, value);
++    return ret;
++}
++
++static void flexcomm_i2c_select(void *opaque, FlexcommState *s, int f,
++                                 bool set)
++{
++    if (set) {
++        flexcomm_i2c_reset(s);
++    }
++}
++
++static const FlexcommFunctionOps flexcomm_i2c_ops = {
++    .select = flexcomm_i2c_select,
++    .reg_read = flexcomm_i2c_reg_read,
++    .reg_write = flexcomm_i2c_reg_write,
++};
++
++void flexcomm_i2c_init(FlexcommState *s)
++{
++    s->i2c = i2c_init_bus(DEVICE(s), "i2c");
++}
++
++void flexcomm_i2c_register(void)
++{
++    Error *err = NULL;
++
++    if (!flexcomm_register_ops(FLEXCOMM_FUNC_I2C, NULL,
++                               &flexcomm_i2c_ops, &err)) {
++        error_report_err(err);
++    }
++}
+diff --git a/hw/i2c/meson.build b/hw/i2c/meson.build
+index c459adcb59..e7d79e6938 100644
+--- a/hw/i2c/meson.build
++++ b/hw/i2c/meson.build
+@@ -18,4 +18,5 @@ i2c_ss.add(when: 'CONFIG_PPC4XX', if_true: files('ppc4xx_i2c.c'))
+ i2c_ss.add(when: 'CONFIG_PCA954X', if_true: files('i2c_mux_pca954x.c'))
+ i2c_ss.add(when: 'CONFIG_PMBUS', if_true: files('pmbus_device.c'))
+ i2c_ss.add(when: 'CONFIG_BCM2835_I2C', if_true: files('bcm2835_i2c.c'))
++i2c_ss.add(when: 'CONFIG_FLEXCOMM', if_true: files('flexcomm_i2c.c'))
+ system_ss.add_all(when: 'CONFIG_I2C', if_true: i2c_ss)
+diff --git a/hw/i2c/trace-events b/hw/i2c/trace-events
+index 6900e06eda..9f0175fab7 100644
+--- a/hw/i2c/trace-events
++++ b/hw/i2c/trace-events
+@@ -51,3 +51,13 @@ npcm7xx_smbus_recv_fifo(const char *id, uint8_t received, uint8_t expected) "%s
+ 
+ pca954x_write_bytes(uint8_t value) "PCA954X write data: 0x%02x"
+ pca954x_read_data(uint8_t value) "PCA954X read data: 0x%02x"
++
++# flexcomm_i2c.c
++
++flexcomm_i2c_reg_read(const char *id, const char *reg_name, uint32_t addr, uint32_t val) " %s: %s[0x%04x] -> 0x%08x"
++flexcomm_i2c_reg_write(const char *id, const char *reg_name, uint32_t addr, uint32_t val) "%s: %s[0x%04x] <- 0x%08x"
++flexcomm_i2c_start(const char *id, uint8_t addr, uint8_t recv) "%s: 0x%02x %d"
++flexcomm_i2c_rx(const char *id, uint8_t data) "%s: <- 0x%02x"
++flexcomm_i2c_tx(const char *id, uint8_t data) "%s: -> 0x%02x"
++flexcomm_i2c_nak(const char *id) "%s: <- nak"
++flexcomm_i2c_irq(const char *id, bool irq, bool perirqs, bool enabled) "%s: %d %d %d"
+diff --git a/hw/misc/flexcomm.c b/hw/misc/flexcomm.c
+index 0c94928aa2..2722c1d6a9 100644
+--- a/hw/misc/flexcomm.c
++++ b/hw/misc/flexcomm.c
+@@ -23,6 +23,7 @@
+ #include "hw/regs.h"
+ #include "hw/misc/flexcomm.h"
+ #include "hw/char/flexcomm_usart.h"
++#include "hw/i2c/flexcomm_i2c.h"
+ 
+ #define reg(field) offsetof(FLEXCOMM_Type, field)
+ #define regi(x) (reg(x) / sizeof(uint32_t))
+@@ -228,6 +229,10 @@ static void flexcomm_realize(DeviceState *dev, Error **errp)
+     if (has_function(s, FLEXCOMM_FUNC_USART)) {
+         flexcomm_usart_init(s);
+     }
++
++    if (has_function(s, FLEXCOMM_FUNC_I2C)) {
++        flexcomm_i2c_init(s);
++    }
+ }
+ 
+ static void flexcomm_class_init(ObjectClass *klass, void *data)
+@@ -239,6 +244,7 @@ static void flexcomm_class_init(ObjectClass *klass, void *data)
+     dc->realize = flexcomm_realize;
+ 
+     flexcomm_usart_register();
++    flexcomm_i2c_register();
+ }
+ 
+ static const TypeInfo flexcomm_info = {
+diff --git a/include/hw/i2c/flexcomm_i2c.h b/include/hw/i2c/flexcomm_i2c.h
+new file mode 100644
+index 0000000000..aea01f13bd
+--- /dev/null
++++ b/include/hw/i2c/flexcomm_i2c.h
+@@ -0,0 +1,27 @@
++/*
++ * QEMU model for NXP's FLEXCOMM I2C
++ *
++ * Copyright (c) 2024 Google LLC
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ *
++ * This work is licensed under the terms of the GNU GPL, version 2 or later.
++ * See the COPYING file in the top-level directory.
++ */
++
++#ifndef HW_CHAR_FLEXCOMM_I2C_H
++#define HW_CHAR_FLEXCOMM_I2C_H
 +
 +#include "hw/misc/flexcomm.h"
-+#include "sysbus-mock.h"
-+#include "reg-utils.h"
 +
-+typedef struct {
-+    DeviceState *dev;
-+    int sock;
-+    Chardev *chr;
-+    bool irq;
-+} TestFixture;
++void flexcomm_i2c_init(FlexcommState *s);
++void flexcomm_i2c_register(void);
 +
-+#define FLEXCOMM_BASE 0x40106000UL
-+#define FLEXCOMM_USART_BASE FLEXCOMM_BASE
++#define MSTSTATE_IDLE 0
++#define MSTSTATE_RXRDY 1
++#define MSTSTATE_TXRDY 2
++#define MSTSTATE_NAKADR 3
++#define MSTSTATE_NAKDAT 4
 +
-+/* Callback for the interrupt line. */
-+static void usart_irq_set(void *opaque, int line, int level)
-+{
-+    TestFixture *f = (TestFixture *)opaque;
 +
-+    f->irq = level;
-+}
-+
-+/*
-+ * Test fixture initialization.
-+ */
-+static void set_up(TestFixture *f, gconstpointer data)
-+{
-+    struct sockaddr_in sockaddr = {
-+        .sin_family = AF_INET,
-+    };
-+    socklen_t sockaddr_len = sizeof(sockaddr);
-+    char chr_opts[] = "udp:127.0.0.1:xxxxx";
-+    FlexcommState *s;
-+    char buf[] = "xxx";
-+    int port;
-+
-+    /* create "server" socket and bind to a random port */
-+    f->sock = socket(AF_INET, SOCK_DGRAM, 0);
-+    g_assert(f->sock >= 0);
-+    g_assert(bind(f->sock, &sockaddr, sizeof(sockaddr)) == 0);
-+    g_assert(getsockname(f->sock, &sockaddr, &sockaddr_len) == 0);
-+
-+    /* create the an UDP char device and connect it to the sever */
-+    port = ntohs(sockaddr.sin_port);
-+    g_assert(port != 0);
-+    snprintf(chr_opts, sizeof(chr_opts), "udp:127.0.0.1:%d", port);
-+    f->chr = qemu_chr_new("udp", chr_opts, NULL);
-+    g_assert_nonnull(f->chr);
-+
-+    /* test connectivity and connect server to UDP char device  */
-+    qemu_chr_write_all(f->chr, (const uint8_t *)"210", sizeof("210"));
-+    recvfrom(f->sock, buf, sizeof(buf), 0, &sockaddr, &sockaddr_len);
-+    g_assert(strcmp(buf, "210") == 0);
-+    g_assert(sockaddr_len == sizeof(sockaddr));
-+    g_assert(connect(f->sock, &sockaddr, sockaddr_len) == 0);
-+
-+    f->dev = qdev_new(TYPE_FLEXCOMM);
-+    g_assert(f->dev);
-+
-+    s = FLEXCOMM(f->dev);
-+    s->irq = qemu_allocate_irq(usart_irq_set, f, 0);
-+    g_assert(qemu_chr_fe_init(&s->chr, f->chr, &error_abort));
-+
-+    if (data != NULL) {
-+        qdev_prop_set_int32(DEVICE(f->dev), "functions", (uintptr_t)data);
-+    }
-+
-+    qdev_realize_and_unref(f->dev, NULL, &error_abort);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(f->dev), 0, FLEXCOMM_BASE);
-+
-+    qemu_chr_be_update_read_handlers(f->chr, NULL);
-+
-+    device_cold_reset(f->dev);
-+}
-+
-+static void tear_down(TestFixture *f, gconstpointer user_data)
-+{
-+    qdev_unrealize(f->dev);
-+    object_unparent(OBJECT(f->chr));
-+    close(f->sock);
-+    g_free(f->dev);
-+}
-+
-+static void polling_test(TestFixture *f, gconstpointer user_data)
-+{
-+    int i;
-+    uint32_t tmp;
-+    unsigned char byte;
-+    int fifo_size;
-+
-+    /* select and lock USART */
-+    tmp = FLEXCOMM_PSELID_LOCK_Msk | FLEXCOMM_PERSEL_USART;
-+    REG32_WRITE(f->dev, FLEXCOMM, PSELID, tmp);
-+
-+    fifo_size = REG32_READ_FIELD(f->dev, FLEXCOMM_USART, FIFOSIZE, FIFOSIZE);
-+
-+    /* enable USART */
-+    REG32_WRITE_FIELD(f->dev, FLEXCOMM_USART, CFG, ENABLE, 1);
-+    g_assert(REG32_READ_FIELD(f->dev, FLEXCOMM_USART, CFG, ENABLE) == 1);
-+
-+    /* enable TX and RX FIFO */
-+    REG32_WRITE_FIELD(f->dev, FLEXCOMM_USART, FIFOCFG, ENABLETX, 1);
-+    g_assert(REG32_READ_FIELD(f->dev, FLEXCOMM_USART, FIFOCFG, ENABLETX) == 1);
-+    REG32_WRITE_FIELD(f->dev, FLEXCOMM_USART, FIFOCFG, ENABLERX, 1);
-+    g_assert(REG32_READ_FIELD(f->dev, FLEXCOMM_USART, FIFOCFG, ENABLERX) == 1);
-+
-+    /* test writes and fifo counters wrap */
-+    for (i = 0; i < fifo_size / 2; i++) {
-+        /* check fifostat */
-+        g_assert(REG32_READ_FIELD(f->dev, FLEXCOMM_USART, FIFOSTAT, RXFULL) ==
-+                 0);
-+        g_assert(REG32_READ_FIELD(f->dev, FLEXCOMM_USART, FIFOSTAT, RXNOTEMPTY)
-+                 == 0);
-+        g_assert(REG32_READ_FIELD(f->dev, FLEXCOMM_USART, FIFOSTAT, TXNOTFULL)
-+                 == 1);
-+        g_assert(REG32_READ_FIELD(f->dev, FLEXCOMM_USART, FIFOSTAT, TXEMPTY) ==
-+                 1);
-+
-+        REG32_WRITE(f->dev, FLEXCOMM_USART, FIFOWR, 'a' + i);
-+        recv(f->sock, &byte, 1, 0);
-+        g_assert_cmpuint(byte, ==, 'a' + i);
-+    }
-+
-+    /* test reads and fifo level */
-+
-+    for (i = 0; i < fifo_size / 2; i++) {
-+        byte = 'A' + i;
-+        g_assert(send(f->sock, &byte, 1, 0) == 1);
-+    }
-+
-+    /* wait for the RXLVL to update */
-+    WAIT_REG32_FIELD(1000, f->dev, FLEXCOMM_USART, FIFOSTAT, RXLVL,
-+                     fifo_size / 2);
-+
-+    /* check fifo stat */
-+    g_assert(REG32_READ_FIELD(f->dev, FLEXCOMM_USART, FIFOSTAT, RXFULL) == 0);
-+    g_assert(REG32_READ_FIELD(f->dev, FLEXCOMM_USART, FIFOSTAT, RXNOTEMPTY)
-+             == 1);
-+    g_assert(REG32_READ_FIELD(f->dev, FLEXCOMM_USART, FIFOSTAT, TXNOTFULL)
-+             == 1);
-+    g_assert(REG32_READ_FIELD(f->dev, FLEXCOMM_USART, FIFOSTAT, TXEMPTY)
-+             == 1);
-+
-+    /* send until FIFO is full */
-+    for (i = fifo_size / 2; i < fifo_size; i++) {
-+        byte = 'A' + i;
-+        g_assert(send(f->sock, &byte, 1, 0) == 1);
-+    }
-+
-+    /* wait for the RXLVL to update */
-+    WAIT_REG32_FIELD(1000, f->dev, FLEXCOMM_USART, FIFOSTAT, RXLVL, fifo_size);
-+
-+    /* check fifo stat */
-+    g_assert(REG32_READ_FIELD(f->dev, FLEXCOMM_USART, FIFOSTAT, RXFULL) == 1);
-+    g_assert(REG32_READ_FIELD(f->dev, FLEXCOMM_USART, FIFOSTAT, RXNOTEMPTY) ==
-+             1);
-+    g_assert(REG32_READ_FIELD(f->dev, FLEXCOMM_USART, FIFOSTAT, TXNOTFULL) ==
-+             1);
-+    g_assert(REG32_READ_FIELD(f->dev, FLEXCOMM_USART, FIFOSTAT, TXEMPTY) ==
-+             1);
-+
-+    /* check read no pop */
-+    g_assert(REG32_READ_FIELD(f->dev, FLEXCOMM_USART, FIFORDNOPOP, RXDATA) ==
-+             'A');
-+
-+    /* now read from the fifo  */
-+    for (i = 0; i < fifo_size; i++) {
-+        g_assert(REG32_READ_FIELD(f->dev, FLEXCOMM_USART, FIFORD, RXDATA) ==
-+                 'A' + i);
-+    }
-+
-+    /* check fifostat */
-+    g_assert(REG32_READ_FIELD(f->dev, FLEXCOMM_USART, FIFOSTAT, RXFULL) == 0);
-+    g_assert(REG32_READ_FIELD(f->dev, FLEXCOMM_USART, FIFOSTAT, RXNOTEMPTY) ==
-+             0);
-+    g_assert(REG32_READ_FIELD(f->dev, FLEXCOMM_USART, FIFOSTAT, TXNOTFULL) ==
-+             1);
-+    g_assert(REG32_READ_FIELD(f->dev, FLEXCOMM_USART, FIFOSTAT, TXEMPTY) == 1);
-+}
-+
-+static void irq_test(TestFixture *f, gconstpointer user_data)
-+{
-+    char buf[256] = { 0, };
-+    uint32_t tmp;
-+
-+    /* select and lock FLEXCOMM_USART */
-+    tmp = FLEXCOMM_PSELID_LOCK_Msk | FLEXCOMM_PERSEL_USART;
-+    REG32_WRITE(f->dev, FLEXCOMM, PSELID, tmp);
-+
-+    /*
-+     * set RX IRQ/DMA trigger level to 4 bytes - value 3 in FIFOTRIG
-+     *
-+     * 0000 - Trigger when the RX FIFO has received 1 entry (is no longer empty)
-+     * 0001 - Trigger when the RX FIFO has received 2 entries
-+     * 1111 - Trigger when the RX FIFO has received 16 entries (has become full)
-+     */
-+    REG32_WRITE_FIELD(f->dev, FLEXCOMM_USART, FIFOTRIG, RXLVL, 3);
-+    g_assert(REG32_READ_FIELD(f->dev, FLEXCOMM_USART, FIFOTRIG, RXLVL) == 3);
-+
-+    /* enable RX trigger for IRQ/DMA  */
-+    REG32_WRITE_FIELD(f->dev, FLEXCOMM_USART, FIFOTRIG, RXLVLENA, 1);
-+    g_assert(REG32_READ_FIELD(f->dev, FLEXCOMM_USART, FIFOTRIG, RXLVLENA) == 1);
-+
-+    /* enable RXLVL interrupt */
-+    REG32_WRITE_FIELD(f->dev, FLEXCOMM_USART, FIFOINTENSET, RXLVL, 1);
-+    g_assert(REG32_READ_FIELD(f->dev, FLEXCOMM_USART, FIFOINTENSET, RXLVL)
-+             == 1);
-+
-+    /* enable FLEXCOMM_USART */
-+    REG32_WRITE_FIELD(f->dev, FLEXCOMM_USART, CFG, ENABLE, 1);
-+    g_assert(REG32_READ_FIELD(f->dev, FLEXCOMM_USART, CFG, ENABLE) == 1);
-+
-+    /* enable TX and RX FIFO */
-+    REG32_WRITE_FIELD(f->dev, FLEXCOMM_USART, FIFOCFG, ENABLETX, 1);
-+    g_assert(REG32_READ_FIELD(f->dev, FLEXCOMM_USART, FIFOCFG, ENABLETX) == 1);
-+    REG32_WRITE_FIELD(f->dev, FLEXCOMM_USART, FIFOCFG, ENABLERX, 1);
-+    g_assert(REG32_READ_FIELD(f->dev, FLEXCOMM_USART, FIFOCFG, ENABLERX) == 1);
-+
-+    /* check interrupt status */
-+    g_assert(REG32_READ_FIELD(f->dev, FLEXCOMM_USART, FIFOINTSTAT, RXLVL) == 0);
-+    g_assert(REG32_READ_FIELD(f->dev, FLEXCOMM_USART, FIFOINTSTAT, TXLVL) == 0);
-+    g_assert(f->irq == false);
-+
-+    /* enable TX trigger for IRQ/DMA  */
-+    REG32_WRITE_FIELD(f->dev, FLEXCOMM_USART, FIFOTRIG, TXLVLENA, 1);
-+    g_assert(REG32_READ_FIELD(f->dev, FLEXCOMM_USART, FIFOTRIG, TXLVLENA) == 1);
-+
-+    /* enable irq for TX */
-+    REG32_WRITE_FIELD(f->dev, FLEXCOMM_USART, FIFOINTENSET, TXLVL, 1);
-+    g_assert(REG32_READ_FIELD(f->dev, FLEXCOMM_USART, FIFOINTENSET, TXLVL) ==
-+             1);
-+
-+    /* check TX irq */
-+    g_assert(REG32_READ_FIELD(f->dev, FLEXCOMM_USART, FIFOINTSTAT, TXLVL) == 1);
-+    g_assert(f->irq == true);
-+
-+    /* disable irq for TX */
-+    REG32_WRITE_FIELD(f->dev, FLEXCOMM_USART, FIFOTRIG, TXLVLENA, 0);
-+    g_assert(REG32_READ_FIELD(f->dev, FLEXCOMM_USART, FIFOTRIG, TXLVLENA) == 0);
-+    g_assert(REG32_READ_FIELD(f->dev, FLEXCOMM_USART, FIFOINTSTAT, TXLVL) == 0);
-+    g_assert(f->irq == false);
-+
-+    /* send 3 bytes */
-+    g_assert(send(f->sock, buf, 3, 0) == 3);
-+
-+    /* check that we have 3 bytes in the fifo */
-+    WAIT_REG32_FIELD(1000, f->dev, FLEXCOMM_USART, FIFOSTAT, RXLVL, 3);
-+
-+    /* and no interrupt has been triggered yet */
-+    g_assert(REG32_READ_FIELD(f->dev, FLEXCOMM_USART, FIFOINTSTAT, RXLVL) == 0);
-+    g_assert(f->irq == false);
-+
-+    /* push it over the edge */
-+    g_assert(send(f->sock, buf, 1, 0) == 1);
-+
-+    /* check that we have 4 bytes in the fifo */
-+    WAIT_REG32_FIELD(1000, f->dev, FLEXCOMM_USART, FIFOSTAT, RXLVL, 4);
-+
-+    /* and the interrupt has been triggered */
-+    g_assert(REG32_READ_FIELD(f->dev, FLEXCOMM_USART, FIFOINTSTAT, RXLVL) == 1);
-+    g_assert(f->irq == true);
-+
-+    /* read one byte from the fifo */
-+    g_assert(REG32_READ_FIELD(f->dev, FLEXCOMM_USART, FIFORD, RXDATA) == 0);
-+
-+    /* we should have 3 bytes in the FIFO */
-+    g_assert(REG32_READ_FIELD(f->dev, FLEXCOMM_USART, FIFOSTAT, RXLVL) == 3);
-+
-+    /* and no interrupts active */
-+    g_assert(REG32_READ_FIELD(f->dev, FLEXCOMM_USART, FIFOINTSTAT, RXLVL) == 0);
-+    g_assert(f->irq == false);
-+}
-+
-+/* mock-up */
-+const PropertyInfo qdev_prop_chr;
-+
-+int main(int argc, char **argv)
-+{
-+    qemu_init_main_loop(&error_abort);
-+    socket_init();
-+
-+    g_test_init(&argc, &argv, NULL);
-+
-+    /* Initialize object types. */
-+    sysbus_mock_init();
-+    module_call_init(MODULE_INIT_QOM);
-+    qemu_add_opts(&qemu_chardev_opts);
-+
-+    g_test_add("/flexcomm-usart/polling", TestFixture,
-+               (gconstpointer)(1 << FLEXCOMM_FUNC_USART),
-+               set_up, polling_test, tear_down);
-+
-+    g_test_add("/flexcomm-usart/irq", TestFixture,
-+               (gconstpointer)(1 << FLEXCOMM_FUNC_USART),
-+               set_up, irq_test, tear_down);
-+
-+    return g_test_run();
-+}
++#endif /* HW_CHAR_FLEXCOMM_I2C_H */
+diff --git a/include/hw/misc/flexcomm.h b/include/hw/misc/flexcomm.h
+index db76e32c6d..3d042a3511 100644
+--- a/include/hw/misc/flexcomm.h
++++ b/include/hw/misc/flexcomm.h
+@@ -14,8 +14,10 @@
+ 
+ #include "hw/sysbus.h"
+ #include "chardev/char-fe.h"
++#include "hw/i2c/i2c.h"
+ #include "hw/arm/svd/flexcomm.h"
+ #include "hw/arm/svd/flexcomm_usart.h"
++#include "hw/arm/svd/flexcomm_i2c.h"
+ #include "qemu/fifo32.h"
+ 
+ #define TYPE_FLEXCOMM "flexcomm"
+@@ -46,6 +48,7 @@ typedef struct {
+     union {
+         FLEXCOMM_Type flex;
+         FLEXCOMM_USART_Type usart;
++        FLEXCOMM_I2C_Type i2c;
+     } regs;
+     uint32_t functions;
+     qemu_irq irq;
+@@ -53,6 +56,7 @@ typedef struct {
+     CharBackend chr;
+     Fifo32 tx_fifo;
+     Fifo32 rx_fifo;
++    I2CBus *i2c;
+ } FlexcommState;
+ 
+ typedef struct {
+diff --git a/tests/unit/meson.build b/tests/unit/meson.build
+index dcfd2e661c..4c22cb3ccc 100644
+--- a/tests/unit/meson.build
++++ b/tests/unit/meson.build
+@@ -148,6 +148,8 @@ if have_system
+       meson.project_source_root() / 'tests/unit/sysbus-mock.c',
+       meson.project_source_root() / 'hw/misc/flexcomm.c',
+       meson.project_source_root() / 'hw/char/flexcomm_usart.c',
++      meson.project_source_root() / 'hw/i2c/flexcomm_i2c.c',
++      meson.project_source_root() / 'hw/i2c/core.c',
+      ],
+     'test-flexcomm-usart': [
+       hwcore, chardev, qom, migration,
+@@ -155,6 +157,8 @@ if have_system
+       meson.project_source_root() / 'tests/unit/sysbus-mock.c',
+       meson.project_source_root() / 'hw/misc/flexcomm.c',
+       meson.project_source_root() / 'hw/char/flexcomm_usart.c',
++      meson.project_source_root() / 'hw/i2c/flexcomm_i2c.c',
++      meson.project_source_root() / 'hw/i2c/core.c',
+     ],
+   }
+   if config_host_data.get('CONFIG_INOTIFY1')
 -- 
 2.46.0.rc2.264.g509ed76dc8-goog

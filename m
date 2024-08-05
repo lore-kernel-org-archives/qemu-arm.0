@@ -1,83 +1,83 @@
-Received: by 2002:a17:505:1e8b:b0:1be9:327d:8ee3 with SMTP id mw11csp986341njb;
-        Mon, 5 Aug 2024 13:17:24 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXaiNJLepPPk7hvf9ml/KpIoBro+UZnFGNctFXbos33AyICE3A8x+w3vsy5MmLL9Pk0tK92kymhoOqkKFz91ZdFMsHwKfdU
-X-Received: by 2002:a17:903:22c6:b0:1fa:b7ea:9f0f with SMTP id d9443c01a7336-1ff5722de89mr179228185ad.7.1722889044446;
-        Mon, 05 Aug 2024 13:17:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1722889044; cv=none;
+Received: by 2002:a17:505:1e8b:b0:1be9:327d:8ee3 with SMTP id mw11csp986371njb;
+        Mon, 5 Aug 2024 13:17:30 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWIMJfDSzsoGlqtCW4sOsy8DHMXV9ltfJNB1xtLnTnD3gj78zpyhCspncw/CJsRgDvX6kCqT65jluCWWndt6VrVtDpPwYVz
+X-Received: by 2002:a05:6a20:9f86:b0:1c4:c879:b77f with SMTP id adf61e73a8af0-1c6995ab1c0mr12454743637.27.1722889050352;
+        Mon, 05 Aug 2024 13:17:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1722889050; cv=none;
         d=google.com; s=arc-20160816;
-        b=q70QFFsUWJLfsJM39uBmUx/EvzQrvWuRtz6MqYzapXOjGs1Bndv4nFHZDtOF9NrqMc
-         l3lHTWVU/NgHxgkANgHRBVlt+hRauZdXiY+3hhajgiaVNpa4iUmcZLFVinvVBlQFq81Q
-         CutCi9RSQY0PddNlyopw6E4EZ4LCxCtyc4rizKwMv+g4459GvjK30xs1RlhRVtSTUXts
-         gt19n8/S1kDloedVYFf+2X8iGgnwZWfYRKJvvLOo3X7jUHGS4hEIvU+x/o6/vHRS/PZr
-         5vdH/E9qYmnDtIFlMLlgmh3B+1ac8z/+yPnWrVAXm+OIvrdRvv96OlTao+MF1rFBPg49
-         M9sg==
+        b=w6YQCLdaIuNDWLIfP1MviM8U0M0T+cTq+4MBD+JTv/p6KoUDxU1ikrwB0pue2JvWhW
+         w61e4xfHQMgHts/ZMbZszlCEAVdeuPBqWEL5Q9b2i3/PiBOCil/e7b0XXi8XVAxuTue9
+         Nhvga9tRGyExkJgCqY/3RK34D8/hwiJODhspu/p33NPrQarkpQefdbTptFzRTezImcp/
+         5fAB0B7AvMuKyjpY1zFNJjhhvkKUNXMjWbazsYrVy2elDOQqsFsWRYB0g8QUf8ypGVnM
+         P3ffseF27M3S89Au9BwN25CDBhotPds/9yIFaNzIjzKPt4NiRJUDlDMLLOl4yPSQWIpu
+         0WGg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
          :date:dkim-signature;
-        bh=JASjBppiABUPjVgHvBEg2ThgRlH+bgfpU7wO5e+NaYE=;
-        fh=Fc9DIKtzui1GJw1U9ByT7Xn/i8pCd1rPkG/qAOYJuks=;
-        b=SRD+sz61RFY8tYumAYRQeH5QRweXoV7u9IiL6+1nWdnVdu33Y98IrROOZ2AxdyEPaf
-         43ovT5By/jqV46XeSIuJ761H9Z8K/MjNI72rcPY1+M4J0uOc03hk3HxTyGLrJcsg6QmW
-         v7D5Al+w0XjkR/JJpi8AzHm5oeKv0nMvHRB8VMETJeNgygbW5FA3I8oBAT18vfmUSJu6
-         LDxXECKtsdmyKlXtXM8DVjCOQvuhm7o2VBzO7mktwwlLtaH2AXQXo7WPEWdd79gubsPy
-         m1l3w5l23l7x/3iXSPkRInIadzmah75s5/yjBK9ce/GfTzbzBJ+DlmgB1oojqso4LgQu
-         SRTA==;
+        bh=SynE1NM0itYAW6y78a0dTYINIivdU1VNZIPOm/FZTSQ=;
+        fh=lyuBHWRuy/u8Yekx5G15svYHm5IifVn7Ph3i0w7uIJk=;
+        b=iqqb7GUGGcfd9u0tN2HsFnQjvegVnSOlykjj+sCC5T6EpMllVpGXaE8dxloY6eQy9H
+         y8vPZoauHQjFB22fYWMiiFT2CGQAJFX+RSIukKCDlxZ3Qxpi5Mt65MtjVF6mJ2mCLSb3
+         xOpqp9rxp2hlO99kwjSoWwwowm+3EOG/Cg704/MvZfOe/+NYxRjxXNeykUymsUQ1MgB+
+         YLqHUY8oY9LUvcBoN6f1D8Eys6erxCrbTCsuUt1hpXaDpfYzxZkos9i1MqaGtZDRHb+o
+         81pvTCN7moul+jZPO8Qk0onfgHW1qbT/BAIUjPTlOSwU/CE7WJPQVL0TH//qaSyW3uko
+         2xUQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=PkMQ5YWV;
-       spf=pass (google.com: domain of 3uzoxzgukc7oyf0nulttlqj.htrfqj2.gjssjjqnsfwt.twl@flex--tavip.bounces.google.com designates 209.85.220.73 as permitted sender) smtp.mailfrom=3UzOxZgUKC7oyf0nulttlqj.htrfqj2.gjssjjqnsfwt.twl@flex--tavip.bounces.google.com;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=C2s1XXw1;
+       spf=pass (google.com: domain of 3wtoxzgukc8azg1ovmuumrk.iusgrk3.hkttkkrotgxu.uxm@flex--tavip.bounces.google.com designates 209.85.220.73 as permitted sender) smtp.mailfrom=3WTOxZgUKC8Azg1ovmuumrk.iusgrk3.hkttkkrotgxu.uxm@flex--tavip.bounces.google.com;
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
        dara=neutral header.i=@linaro.org
-Return-Path: <3UzOxZgUKC7oyf0nulttlqj.htrfqj2.gjssjjqnsfwt.twl@flex--tavip.bounces.google.com>
+Return-Path: <3WTOxZgUKC8Azg1ovmuumrk.iusgrk3.hkttkkrotgxu.uxm@flex--tavip.bounces.google.com>
 Received: from mail-sor-f73.google.com (mail-sor-f73.google.com. [209.85.220.73])
-        by mx.google.com with SMTPS id d9443c01a7336-1ff58faf3f4sor83861035ad.11.2024.08.05.13.17.24
+        by mx.google.com with SMTPS id 41be03b00d2f7-7b5297d3219sor9980132a12.1.2024.08.05.13.17.30
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 05 Aug 2024 13:17:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of 3uzoxzgukc7oyf0nulttlqj.htrfqj2.gjssjjqnsfwt.twl@flex--tavip.bounces.google.com designates 209.85.220.73 as permitted sender) client-ip=209.85.220.73;
+        Mon, 05 Aug 2024 13:17:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 3wtoxzgukc8azg1ovmuumrk.iusgrk3.hkttkkrotgxu.uxm@flex--tavip.bounces.google.com designates 209.85.220.73 as permitted sender) client-ip=209.85.220.73;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=PkMQ5YWV;
-       spf=pass (google.com: domain of 3uzoxzgukc7oyf0nulttlqj.htrfqj2.gjssjjqnsfwt.twl@flex--tavip.bounces.google.com designates 209.85.220.73 as permitted sender) smtp.mailfrom=3UzOxZgUKC7oyf0nulttlqj.htrfqj2.gjssjjqnsfwt.twl@flex--tavip.bounces.google.com;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=C2s1XXw1;
+       spf=pass (google.com: domain of 3wtoxzgukc8azg1ovmuumrk.iusgrk3.hkttkkrotgxu.uxm@flex--tavip.bounces.google.com designates 209.85.220.73 as permitted sender) smtp.mailfrom=3WTOxZgUKC8Azg1ovmuumrk.iusgrk3.hkttkkrotgxu.uxm@flex--tavip.bounces.google.com;
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20230601; t=1722889044; x=1723493844; darn=linaro.org;
+        d=google.com; s=20230601; t=1722889050; x=1723493850; darn=linaro.org;
         h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
          :date:from:to:cc:subject:date:message-id:reply-to;
-        bh=JASjBppiABUPjVgHvBEg2ThgRlH+bgfpU7wO5e+NaYE=;
-        b=PkMQ5YWVIlih2vxqtnBVcuvOD+MpUPfVspMjh5cvjDZRT3hwJ5gTJ9Oh7cwn8oll9F
-         /y/6ysSUll2fprOPjfegnAPMRC/K8FzpOhxHlPGVfVNubwoAL0y78pMEzPvyBQ/yXnzH
-         83A7LMnINcBnxBHnKsdwyvAtclrN9AtazFBnvUyiwtAIgjfGF2n8fUtYIZyeScnvqGX8
-         NABeDYuqOUvLkWX9Hzi3p2zXkSDzE/x3KnsagylOwHoHnMCOIOKNY5jP/g5EPOQ8opNV
-         xZCxZ0ac2YJy+yOqRmYDyIx68Ntm/WFXSYiUkg9QUYv22GjlOw/KKGXBwNwy68w9OIqU
-         42Ag==
+        bh=SynE1NM0itYAW6y78a0dTYINIivdU1VNZIPOm/FZTSQ=;
+        b=C2s1XXw1v/ch/vXOKk4sJLoJZPIDCj+yn9KRaxQOxhVx9iBDfkhRNYjfruwjLGGEmc
+         1cbdAb8JMdo10CPcNIbGXEsc8LKTiK0ar0dbNLPGwd4FYPTwcYkctHyinXgIA3DoPGYU
+         5BrPh4HT6WHWdX/tRCf7yimq1zEv+0JSIm4rSKS0cy6EILFdOYIs+Cqtp/hmOvhxVb/W
+         piCwgiU92warhh+gCO8KjmykmZZLGyqDhqxRs709OMT8AlP0ePVwDiOI46vscWsfeck5
+         RWYVUCf4YXfCFwxYvP1dhCrX4Ou488TrnOXQZhm5m/t7k2BB0i8YL/XF+JJ6EtGpHo3K
+         owEw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1722889044; x=1723493844;
+        d=1e100.net; s=20230601; t=1722889050; x=1723493850;
         h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
          :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=JASjBppiABUPjVgHvBEg2ThgRlH+bgfpU7wO5e+NaYE=;
-        b=lterZtIZnLAS7khr+fFcjmFc6ahzob+r1Dq175hwJ6qLKNp3IeyqVDB6eA/QxtNTFp
-         n0D3Tju2VPtRmdXZNjhEQYTpgoGfAvaNAqo3lMj45Bz0KrortpOL9fWazR0hQ/5OH+pN
-         Nq6FtHRRee3vGdUIzBhqqpI3whRQV1e9HzUzQFg55pxqC97Fzf4XCOHv7YCA40ljO7Af
-         1L5D7KONqFDzyzed0qae11nog8zWkG1nDbuKIXOP4YyT+QX1pYCfjqRkuhH7oEBEyZqP
-         yysRZrWpBTzweZIMxm9kcOHshVVkmUd6JHVg/TgWCvE4p+2lga/nC0VjexKLSKfjDhxe
-         N/Uw==
-X-Forwarded-Encrypted: i=1; AJvYcCVKifmcGgyomWetciekZxl0Si5yi7V+NxRptXY2v4Izv1DSZlsTKhjmUADvSMw0z+rADiZc8dB4pg8Jt1+sXQ4j4dZ/JMR2
-X-Gm-Message-State: AOJu0Yz7TOJYbgfpJeg5mCLVfG4syweQYd90E4GHgAzHjLBhWoj2AQ30
-	wEGjslVMCo6QzdLO3+Vj0R8RI8BktxTqpdHm6f+LjBZ6nO8QGOyALkmGRorx+754FcFPejrKIw=
+        bh=SynE1NM0itYAW6y78a0dTYINIivdU1VNZIPOm/FZTSQ=;
+        b=dA1fIPl02XxQF1KgEJjEFYbb23Khc6MphXK5XlOMcZejjsrA32/I+z1Qnw8jf6JWH4
+         zow4R6bweduDdWvr41RlDcHOO3WZN1YEQ0si9JqWLGEkiOjHIXulL1yv2QY9LQRkw6Vp
+         R1dQVSv9a7BJLGXhyXKhusPenTB5B2oW1wTzuu6NQcfFzsxgctWCD7fZIHPu281+b+C8
+         q70PBunZ5mxukARLaVMfhbnaFwDT5lseogjFnovRDaZ6PcsW8prE5t6W9EqH6SLAGR7/
+         jSNK/pvW+yJ+gwKFaBXG8/ntg+QWC+vIb8iCUBZ2zqGUGgSRawaAhbsHrfXizlNlLkAr
+         p2sg==
+X-Forwarded-Encrypted: i=1; AJvYcCWw7olxwmvfXtihbUB8KHjrv68Ly1EJaL1BzKZR1N+xp55cgPJh1oHqXjZaV7gYpMM9u1AI6POpWGLhbvulHZKU461R+stY
+X-Gm-Message-State: AOJu0Yy7BItIpPJNQQE2uHqq215uUUDNDdF7usVTG6yCgxS2ChXrs9Sb
+	P9N2/O9cGgok1fgTvqU97dg/3U8WTCQ8GJphCAMk+mLfuFQU3ti7Shi5Qk2/wSiv1L4CWz6EYA=
 	=
-X-Google-Smtp-Source: AGHT+IGyyrIk3asawWetry+p/a5ZrU/dzfAfbZwm1JHiJ5mZUxhVOeR9NEDFuaROBsMRxBz+palCTk5KCA==
+X-Google-Smtp-Source: AGHT+IFfBSsEqahvMxIS6/LupdiNY3e6rJCtmeO4bkS0j6KTqHR7pmRUWlSDt8ZH4z2nOAzbSbhP6de15w==
 X-Received: from warp10.c.googlers.com ([fda3:e722:ac3:cc00:24:72f4:c0a8:750])
- (user=tavip job=sendgmr) by 2002:a17:902:c38c:b0:1fb:7f2c:5642 with SMTP id
- d9443c01a7336-1ff5730306cmr8797235ad.4.1722889043889; Mon, 05 Aug 2024
- 13:17:23 -0700 (PDT)
-Date: Mon,  5 Aug 2024 13:16:57 -0700
+ (user=tavip job=sendgmr) by 2002:a17:90a:1fc9:b0:2c8:632:7efe with SMTP id
+ 98e67ed59e1d1-2cff0c5c916mr186752a91.4.1722889049713; Mon, 05 Aug 2024
+ 13:17:29 -0700 (PDT)
+Date: Mon,  5 Aug 2024 13:17:00 -0700
 In-Reply-To: <20240805201719.2345596-1-tavip@google.com>
 Mime-Version: 1.0
 References: <20240805201719.2345596-1-tavip@google.com>
 X-Mailer: git-send-email 2.46.0.rc2.264.g509ed76dc8-goog
-Message-ID: <20240805201719.2345596-3-tavip@google.com>
-Subject: [RFC PATCH 02/23] tests/unit: add fifo test
+Message-ID: <20240805201719.2345596-6-tavip@google.com>
+Subject: [RFC PATCH 05/23] hw: add register access utility functions
 From: Octavian Purdila <tavip@google.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, stefanst@google.com, pbonzini@redhat.com, 
@@ -85,40 +85,27 @@ Cc: qemu-arm@nongnu.org, stefanst@google.com, pbonzini@redhat.com,
 	marcandre.lureau@redhat.com, alistair@alistair23.me, berrange@redhat.com, 
 	philmd@linaro.org, jsnow@redhat.com, crosa@redhat.com, bleal@redhat.com
 Content-Type: text/plain; charset="UTF-8"
-X-TUID: 9IlP9hqDtdgA
+X-TUID: 4vp9mv4ILLiI
 
-Add a simple FIFO unit test that test wrap around and push, pop and
-peek for both fifo8 and fifo32.
+Add register access utility functions for device models, like checking
+aligned access and reading and writing to a register backstore.
 
 Signed-off-by: Octavian Purdila <tavip@google.com>
 ---
- tests/unit/meson.build |  1 +
- tests/unit/test-fifo.c | 98 ++++++++++++++++++++++++++++++++++++++++++
- 2 files changed, 99 insertions(+)
- create mode 100644 tests/unit/test-fifo.c
+ include/hw/regs.h | 89 +++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 89 insertions(+)
+ create mode 100644 include/hw/regs.h
 
-diff --git a/tests/unit/meson.build b/tests/unit/meson.build
-index 26c109c968..397f2503f8 100644
---- a/tests/unit/meson.build
-+++ b/tests/unit/meson.build
-@@ -47,6 +47,7 @@ tests = {
-   'test-logging': [],
-   'test-qapi-util': [],
-   'test-interval-tree': [],
-+  'test-fifo': [],
- }
- 
- if have_system or have_tools
-diff --git a/tests/unit/test-fifo.c b/tests/unit/test-fifo.c
+diff --git a/include/hw/regs.h b/include/hw/regs.h
 new file mode 100644
-index 0000000000..1686f8bd59
+index 0000000000..8d0da0629d
 --- /dev/null
-+++ b/tests/unit/test-fifo.c
-@@ -0,0 +1,98 @@
++++ b/include/hw/regs.h
+@@ -0,0 +1,89 @@
 +/*
-+ * QEMU FIFO testing
++ * Useful macros/functions for register handling.
 + *
-+ * Copyright (C) 2024 Google LLC
++ * Copyright (c) 2021 Google LLC
 + *
 + * SPDX-License-Identifier: GPL-2.0-or-later
 + *
@@ -126,92 +113,83 @@ index 0000000000..1686f8bd59
 + * See the COPYING file in the top-level directory.
 + */
 +
-+#include "qemu/osdep.h"
++#ifndef HW_REGS_H
++#define HW_REGS_H
 +
-+#include "qemu/fifo8.h"
-+#include "qemu/fifo32.h"
++#include "exec/hwaddr.h"
++#include "exec/memattrs.h"
 +
-+typedef struct {
-+    Fifo8 fifo8;
-+    Fifo32 fifo32;
-+} TestFixture;
-+
-+#define FIFO_SIZE 13
++#define BITS(hi, lo)       (BIT(hi + 1) - BIT(lo))
++#define BIT_IS_SET(v, b)   (((v) & BIT(b)) != 0)
 +
 +/*
-+ * Test fixture initialization.
++ * reg32_aligned_access
++ * @addr: address to check
++ * @size: size of access
++ *
++ * Check if access to a hardware address is 32bit aligned.
++ *
++ * Returns: true if access is 32bit aligned, false otherwise
 + */
-+static void set_up(TestFixture *f, gconstpointer data)
++static inline bool reg32_aligned_access(hwaddr addr, unsigned size)
 +{
-+    int n = (uintptr_t) data;
-+
-+    fifo8_create(&f->fifo8, n);
-+    fifo32_create(&f->fifo32, n);
-+}
-+
-+static void tear_down(TestFixture *f, gconstpointer user_data)
-+{
-+    fifo8_destroy(&f->fifo8);
-+    fifo32_destroy(&f->fifo32);
-+}
-+
-+static void test_push_pop_batch(TestFixture *f, int n)
-+{
-+    uint8_t i;
-+
-+    /* push and check peek */
-+    for (i = 0; i < n; i++) {
-+        uint8_t val8 = i;
-+        uint32_t val32 = i | ((i + 1) << 8) | ((i + 2) << 16) | ((i + 3) << 24);
-+
-+        fifo8_push(&f->fifo8, val8);
-+        if (i == 0) {
-+            g_assert(*fifo8_peek_buf(&f->fifo8, 1, NULL) == val8);
-+        }
-+
-+        fifo32_push(&f->fifo32, val32);
-+        if (i == 0) {
-+            g_assert(fifo32_peek(&f->fifo32) == val32);
-+        }
++    if (size != 4 || addr % 4 != 0) {
++        return false;
 +    }
-+
-+    /* check peek and pop */
-+    for (i = 0; i < n; i++) {
-+        uint8_t val8 = i;
-+        uint32_t val32 = i | ((i + 1) << 8) | ((i + 2) << 16) | ((i + 3) << 24);
-+
-+        g_assert(*fifo8_peek_buf(&f->fifo8, 1, NULL) == val8);
-+        g_assert(fifo8_pop(&f->fifo8) == val8);
-+
-+        g_assert(fifo32_peek(&f->fifo32) == val32);
-+        g_assert(fifo32_pop(&f->fifo32) == val32);
-+    }
++    return true;
 +}
 +
-+/* max n should be less then 256 - 3 */
-+static void wrap_around_test(TestFixture *f, gconstpointer user_data)
++/*
++ * reg32_write
++ * @base: base address
++ * @addr: register offset in bytes
++ * @val: value to write
++ * @wr_bits_array: RW bitmask array
++ *
++ * Update the RW/WO bits of a 32bit register backstore with a given value
++ * (discarding updats to the RO bits). The RW/WO bits are encoded in the
++ * @wr_bits_array with bits set being RW and bits unset being RO.
++ *
++ * Usage example:
++ *
++ * wr_bits_array[] = {
++ *    [REG1_ADDR/4] = 0xFF000000, // MSB byte writable
++ *    [REG2_ADDR/4] = 0xFF,       // LSB byte writable
++ *    // all other registers are read-only
++ * };
++ *
++ * // backstore is updated to 0x12000000
++ * reg32_write(&backstore, REG1_ADDR, 0x12345678, wr_bits_array);
++ * // backstore is updated to 0x78
++ * reg32_write(&backstore, REG2_ADDR, 0x12345678, wr_bits_array);
++ */
++static inline uint32_t reg32_write(void *base, uint32_t off, uint32_t val,
++                                   const uint32_t *rw_bits_array)
 +{
-+    int n = (uintptr_t) user_data;
-+    const int cycles = 3;
-+    int i;
++    uint32_t *ptr = base + addr;
++    uint32_t old_value = *ptr;
++    uint32_t mask = rw_bits_array ? rw_bits_array[addr / 4] : 0xFFFFFFFF;
 +
-+    for (i = 0; i < cycles; i++) {
-+        test_push_pop_batch(f, n / 2 + 1);
-+    }
++    /* set WO/RW bits */
++    *ptr |= val & mask;
++    /* clear RO bits */
++    *ptr &= val | ~mask;
++
++    return old_value;
 +}
 +
-+/* mock-ups */
-+void *vmstate_info_buffer;
-+uint32_t vmstate_info_uint32;
-+
-+int main(int argc, char **argv)
++/*
++ * reg32_read
++ * @base: base address
++ * @addr: register offset in bytes
++ *
++ * Returns: 32bit value from register backstore
++ */
++static inline uint32_t reg32_read(void *base, uint32_t addr)
 +{
-+    g_test_init(&argc, &argv, NULL);
-+
-+    g_test_add("/fifo/wrap-around", TestFixture, (gconstpointer)FIFO_SIZE,
-+               set_up, wrap_around_test, tear_down);
-+
-+    return g_test_run();
++    return *(uint32_t *)(base + addr);
 +}
++
++#endif /* HW_REGS_H */
 -- 
 2.46.0.rc2.264.g509ed76dc8-goog

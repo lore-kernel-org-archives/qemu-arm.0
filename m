@@ -1,223 +1,211 @@
-Received: by 2002:a17:505:1e8b:b0:1be9:327d:8ee3 with SMTP id mw11csp861556njb;
-        Mon, 5 Aug 2024 07:04:55 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCXBWqvHT6LRVDUrZ+jsWaRFOKNuG+qgpfk1tADku2lF/VAm2TucO0Hi0ljTfvRAqf0N8ZoPg+6GH+dNBw==@linaro.org
-X-Google-Smtp-Source: AGHT+IE5QYPnlaq7zyyxvJGhmawVCIC4H8sdlxsYiznpEl7wc/juVZ7pGN7EnrBB2TNAR0G+4gEi
-X-Received: by 2002:a05:6a00:2e2a:b0:70d:2b23:a714 with SMTP id d2e1a72fcca58-7106cfa2fb5mr11819301b3a.4.1722866695064;
-        Mon, 05 Aug 2024 07:04:55 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1722866695; cv=pass;
+Received: by 2002:a17:505:1e8b:b0:1be9:327d:8ee3 with SMTP id mw11csp888960njb;
+        Mon, 5 Aug 2024 08:23:15 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWhgBL2/yGeqmkdm5sOkb3Zj2DA3ttNNgDCTW6JC/AmHOXTyf5KqigbI5IM4Mk2mQ3H2ZLs0vodghGd5eWFo3kv1IPpfqfF
+X-Google-Smtp-Source: AGHT+IFi3WJtDWpciRNxmTlDbT3QqQZZouRZrvRpNnOMdz4DoKbpg+v2UDhV0Xczt5caBOIYc+HI
+X-Received: by 2002:ac8:7e8b:0:b0:447:e6f9:f61c with SMTP id d75a77b69052e-451845ea327mr263857091cf.22.1722871395425;
+        Mon, 05 Aug 2024 08:23:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1722871395; cv=none;
         d=google.com; s=arc-20160816;
-        b=qCDIAMv54sUrTYhBIpuJHy/xIwce5gzvZnlFzTIC1eQmTXoeaMYr4wtU0QFXMW1iBQ
-         HZyOi+/oPaYfeyNn004zz3d16p94/tvEOOgX7WN2Z4rmEeII7QnGpK8Xw5UqM8AvmGft
-         nji1UcU0hlGT2nmOzjQ1F1P/FW8IdA5HtW+N62FKtVbDDcaY4n4IRuMN8lVZjKl8/a5I
-         gd87cu9C90cYGwkYUxXyvvThQPWyY6k3ArO/eN9G7RqY6485Wj0939O2tQqr+WamqkDY
-         J1EfYiaBwQisq7BMxVa5Q85wp0bsq6Dz/lyqswyIhNLkwkoBgTtuguQTQi8uzaBgWDxI
-         H8iQ==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=R+AVzWWReouMoN7zruePSuW9jT4ReN30A6YfedCpgFI=;
-        fh=e5/LuG4gObVXglDGALb08hgj3y/mMc2ZsytpdBANrD8=;
-        b=LHc1y6xm5oILQsB2WbZrKwhxyxjr0N+7qOXjR7/CZjixJQnjoRl2mfWtm+jfXsOhQv
-         5NEbGjpz23K6gzbrRgbL0h7WNLp89jCGfMLRsxN4xXs2holQMij9PEzsjyogzz8xtgUN
-         DT7AoVB9swFPtu3OltUDYVR8GsEAeCqMc36bNQQEybrqFQ25ZGxI4Z4M07D4Qpm/R+9s
-         I7WUuRoTSgq6ohzsZWqKxeMj6T7g1NXLba/c1MaX1oStRQ+CuAkaql2C1Vw5AAUPqiw2
-         Z854eVEoyxVDk/nO29jIrwj4wJEwKKJSt1+GDbkBH7wgKo9SvV2/L74YYx8szIcjukT6
-         9uRw==;
+        b=CQLDkijZJOHtJErFh+AmKADZz5Q8mE/JPgB85Z2UDB3jv90dB5n8ppVoVfwqRdxtVt
+         F6Ws7mDGhk34i2yNDZcAbqSSzr2YUv/dT8BRPct5uq0KsOlFbDRdX+DM9VYwinkn5wzk
+         ybqW8Lkg3SLYBDNWqodp2tAM0Q7l7xYmvu95xhE6IzWe/efqRUP9VFDMjTYe8gVuOJK1
+         wMftCAhEHe+hwjlRV1w9NrSyynxJferiu6SGnopWQe+KiUlv+aBG+p/mNevIWXpDKwVT
+         rO7YCX7ZNdLVzg0+7fq3saNQ10Vh0ZibOUJp24ZvLVJ2ou1TxrZb8XfYQg06yjKH0TTd
+         gvow==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:subject:cc:to:from
+         :date:dkim-signature;
+        bh=c4xph3cVeab4LVbARBUkbShdb3dGRyeYi9WqkR5mH9I=;
+        fh=/9oVe4uvmdDCPbUU8nEUIeLKGN99HCB7oHgRKtCMQxY=;
+        b=OAQLn/FZQv5/swl7qtooxQxcIrH4kB6gAhZH6LU5oNQcu4b5+38ws97BUybGh9uEy5
+         V0qFyjwDV8l/jAueHRbR8zYqfhlujlg+ZlMabAfPa8Sy9c6q5Jmp7kOcuqs8FMkmgsOb
+         +DNLdZPqex38Gi65JYM6GYyk7G/LSXfDQz7udxgv2DcPzf33SAcXeeo/EfHitU6j2akP
+         CYUHMLMc9/g81WQ12CNQtxymSJ3qVSSJhke4xoqXx99k0KiBW38si5Fzae+7RTSLjBvk
+         /qHEjlLcoZzYZjVY++KTkX1U7kPRRBNIcKskAECuLqr+CpV2ay29u6XM/1daEBqpJ5bT
+         R+ag==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DU07lIZr;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of linux-kernel+bounces-274769-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="linux-kernel+bounces-274769-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <linux-kernel+bounces-274769-alex.bennee=linaro.org@vger.kernel.org>
-Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [139.178.88.99])
-        by mx.google.com with ESMTPS id 41be03b00d2f7-7b765aa8928si7372444a12.610.2024.08.05.07.04.54
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=J+EcWmFr;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d75a77b69052e-4518a7645a1si96886731cf.230.2024.08.05.08.23.15
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 05 Aug 2024 07:04:55 -0700 (PDT)
-Received-SPF: pass (google.com: domain of linux-kernel+bounces-274769-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) client-ip=139.178.88.99;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 05 Aug 2024 08:23:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DU07lIZr;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of linux-kernel+bounces-274769-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="linux-kernel+bounces-274769-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by sv.mirrors.kernel.org (Postfix) with ESMTPS id 922AD286C52
-	for <alex.bennee@linaro.org>; Mon,  5 Aug 2024 14:04:54 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 8921955894;
-	Mon,  5 Aug 2024 14:04:51 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="DU07lIZr"
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B56A117C64
-	for <linux-kernel@vger.kernel.org>; Mon,  5 Aug 2024 14:04:49 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.133.124
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1722866691; cv=none; b=dbR4CQNWlhqn+xO6YNH6z+tU4nhS52+wtnKurxIOPgjPz9nKyQ9JEWrbPFwELKYNc+Qqxt3tMt5lkEmnY6HUg7NyIBFzPfZbWX2khKNWzGdpjtanR3qU8NeTpf2QTtMRyMtCcxLfANIM0/6bBI/NXiW3dfSKF7BJ9Ymg2pyytL0=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1722866691; c=relaxed/simple;
-	bh=tQf3ZqrOfXNjtoysOKnt8hMz1BI520/ZU+KVrWZx4Mc=;
-	h=Date:From:To:Cc:Subject:Message-ID:In-Reply-To:References:
-	 MIME-Version:Content-Type; b=iFfyfScbvwKDj0ty6X93BraEU3D8cAZO4IXv6fiOSM4LFR17zN1XZMuPm2sdCw2IMM3d7BdqPIPo6IkG8L3mJQqh/DXck2QEsox19jnmHL3lklrrGGU/zZ+RY782eqQuC5nSBUBxwpa+34yNe1sP0xlIWlcJ8sFH1MaHjPv+wdE=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=DU07lIZr; arc=none smtp.client-ip=170.10.133.124
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1722866687;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=R+AVzWWReouMoN7zruePSuW9jT4ReN30A6YfedCpgFI=;
-	b=DU07lIZrxgj07jiAJ2oOwK3dj1AuNQR66AtyfpVXAKZc2yCta0TE3FkUdMIjbNUHzNT6RM
-	73nc4eFD4ySNveoztccgJqpjZtSutNhJKU00vOrfta6rgrFfXmoolhGmkbempdCXCBid4/
-	zTANVohbPhJoLm4sJURqnSGdz6lIV24=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-438-t68oSQXMP9yC28beHzzCSg-1; Mon, 05 Aug 2024 10:04:45 -0400
-X-MC-Unique: t68oSQXMP9yC28beHzzCSg-1
-Received: by mail-wr1-f70.google.com with SMTP id ffacd0b85a97d-367990b4beeso5421119f8f.2
-        for <linux-kernel@vger.kernel.org>; Mon, 05 Aug 2024 07:04:44 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1722866684; x=1723471484;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=R+AVzWWReouMoN7zruePSuW9jT4ReN30A6YfedCpgFI=;
-        b=RRLPLHOiFZ3/BKyTFb7mSQvJNf3VAgos1JF+9YPISpYURcsKH0fPFioD7qP+eTDLkq
-         YZ/CeCZKY4VbOjxitWZi5gmdvJ/Ikt/Qpqo8HxRWa2HygzTQoVHr6jwzY87bJ2RQzH4s
-         30SK3es9swafiWPxI3gn51+akkqOwZAEzEo8BzEE3QRLi2NVfXZqZLZbQKPSPYBO9hjx
-         9UHU0ndwwO9hmheq+GN2of4tXcA1k+9wfncqWZac9dRguGlszXcS8myrih/j+RxzfuiT
-         7ILawbAwhAo3SwgFz2qzFHTbGvNhXL7GNTOL7nanNCECxPsQoIiDouPzo/TsvFCxJhNj
-         xaEg==
-X-Forwarded-Encrypted: i=1; AJvYcCXnZZacPy22iuwyvuloV1Osz/m+7a92/wi2WKqn9XcnbWvI2optPKH+5FAmrvXMr/VQ8shzdh/86+AyB8A=@vger.kernel.org
-X-Gm-Message-State: AOJu0YzO2be2GOfGhI2KmJ89aOodTv9j/orhBoGoxCaG1Cqswb2y7wNF
-	qPa4a6koB+9UkhOTTC+uwGG1tI5VKpHCrWGLolmm7m4VCBF5chwre4DO7aTqcxts9KaVFH50KPl
-	JhAcSDfYB4aR7L+fe0uNYKD3ZotGT+88HOrGuK1/9xDcbngrOnbH6RVyrqjqm5A==
-X-Received: by 2002:adf:e84b:0:b0:368:48b1:803 with SMTP id ffacd0b85a97d-36bbc0a7516mr7666474f8f.12.1722866683804;
-        Mon, 05 Aug 2024 07:04:43 -0700 (PDT)
-X-Received: by 2002:adf:e84b:0:b0:368:48b1:803 with SMTP id ffacd0b85a97d-36bbc0a7516mr7666448f8f.12.1722866683267;
-        Mon, 05 Aug 2024 07:04:43 -0700 (PDT)
-Received: from imammedo.users.ipa.redhat.com (nat-pool-brq-t.redhat.com. [213.175.37.10])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-36bbd01b5c4sm9894503f8f.42.2024.08.05.07.04.42
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 05 Aug 2024 07:04:42 -0700 (PDT)
-Date: Mon, 5 Aug 2024 16:04:39 +0200
-From: Igor Mammedov <imammedo@redhat.com>
-To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=J+EcWmFr;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sazXj-00033c-J1; Mon, 05 Aug 2024 11:22:39 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mchehab+huawei@kernel.org>)
+ id 1sazXg-00030V-0A; Mon, 05 Aug 2024 11:22:36 -0400
+Received: from dfw.source.kernel.org ([139.178.84.217])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mchehab+huawei@kernel.org>)
+ id 1sazXb-0005AT-5e; Mon, 05 Aug 2024 11:22:34 -0400
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by dfw.source.kernel.org (Postfix) with ESMTP id A432B60C55;
+ Mon,  5 Aug 2024 15:22:20 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 21125C4AF0E;
+ Mon,  5 Aug 2024 15:22:17 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1722871340;
+ bh=8abpcgimZ8zhWhHlWs9YVGQE18wAOSsWG48ZhjBiE8Y=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=J+EcWmFrHfavILP+4wyerdS0sBKsXIKEo3qbw9viOT6Bs+G+kubhy4Fl8O/dMnFtG
+ WqjI/2UQgkmzntO+dtXM5QNqfz3EtVaZ8v4pyFUvFr43pWlZDPVUCNP3zT3Kxsc4E/
+ ZT9omEnyzxHC0mJhbzLQ9e91Y78JaRqIHwC8eTT2oHKML+gCszAlkAbrbM55Ml605u
+ jb5bACG5+6otD/RqFVCU3pzBXI1Lbqf8wLej5cEnVgs/XlOCD27LlcLCVxmxqGL8Ll
+ +9wNpzgXZWENUSsa08mq4Zap2rDloxyKIShZGl+XRvVQjzJZadd23YlO5qv0x2yRUJ
+ 9qDfaS9A2Hjzw==
+Date: Mon, 5 Aug 2024 17:22:15 +0200
+From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+To: Igor Mammedov <imammedo@redhat.com>
 Cc: Peter Maydell <peter.maydell@linaro.org>, Jonathan Cameron
  <Jonathan.Cameron@huawei.com>, Shiju Jose <shiju.jose@huawei.com>, "Michael
  S. Tsirkin" <mst@redhat.com>, Ani Sinha <anisinha@redhat.com>, Shannon Zhao
  <shannon.zhaosl@gmail.com>, linux-kernel@vger.kernel.org,
  qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [PATCH v3 1/7] arm/virt: place power button pin number on a
- define
-Message-ID: <20240805160439.0bafb58d@imammedo.users.ipa.redhat.com>
-In-Reply-To: <20240801151544.2f315598@foz.lan>
+Subject: Re: [PATCH v3 1/7] arm/virt: place power button pin number on a define
+Message-ID: <20240805172215.0c8c2597@foz.lan>
+In-Reply-To: <20240805160439.0bafb58d@imammedo.users.ipa.redhat.com>
 References: <cover.1721630625.git.mchehab+huawei@kernel.org>
-	<bf8367bddfdc95e378b5725c732533c3ba20d388.1721630625.git.mchehab+huawei@kernel.org>
-	<20240730092549.6898ff3c@imammedo.users.ipa.redhat.com>
-	<CAFEAcA8VWc3eQZqfJP9k5LYF-9aLChHQ+uS9UBfGV6nvybDxqQ@mail.gmail.com>
-	<20240730132620.46cca4ce@imammedo.users.ipa.redhat.com>
-	<20240801151544.2f315598@foz.lan>
+ <bf8367bddfdc95e378b5725c732533c3ba20d388.1721630625.git.mchehab+huawei@kernel.org>
+ <20240730092549.6898ff3c@imammedo.users.ipa.redhat.com>
+ <CAFEAcA8VWc3eQZqfJP9k5LYF-9aLChHQ+uS9UBfGV6nvybDxqQ@mail.gmail.com>
+ <20240730132620.46cca4ce@imammedo.users.ipa.redhat.com>
+ <20240801151544.2f315598@foz.lan>
+ <20240805160439.0bafb58d@imammedo.users.ipa.redhat.com>
 X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
-Precedence: bulk
-X-Mailing-List: linux-kernel@vger.kernel.org
-List-Id: <linux-kernel.vger.kernel.org>
-List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-X-TUID: 3Dz28WR8HevE
+Received-SPF: pass client-ip=139.178.84.217;
+ envelope-from=mchehab+huawei@kernel.org; helo=dfw.source.kernel.org
+X-Spam_score_int: -71
+X-Spam_score: -7.2
+X-Spam_bar: -------
+X-Spam_report: (-7.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.143,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_HI=-5, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: tkIbTjYzS5ot
 
-On Thu, 1 Aug 2024 15:15:44 +0200
-Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
+Em Mon, 5 Aug 2024 16:04:39 +0200
+Igor Mammedov <imammedo@redhat.com> escreveu:
 
-> Em Tue, 30 Jul 2024 13:26:20 +0200
-> Igor Mammedov <imammedo@redhat.com> escreveu:
+> On Thu, 1 Aug 2024 15:15:44 +0200
+> Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
 > 
-> > On Tue, 30 Jul 2024 09:29:37 +0100
-> > Peter Maydell <peter.maydell@linaro.org> wrote:
+> > Em Tue, 30 Jul 2024 13:26:20 +0200
+> > Igor Mammedov <imammedo@redhat.com> escreveu:
 > >   
-> > > On Tue, 30 Jul 2024 at 08:26, Igor Mammedov <imammedo@redhat.com> wrote:    
-> > > >
-> > > > On Mon, 22 Jul 2024 08:45:53 +0200
-> > > > Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
-> > > >      
-> > > > > Having magic numbers inside the code is not a good idea, as it
-> > > > > is error-prone. So, instead, create a macro with the number
-> > > > > definition.
-> > > > >
-> > > > > Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-> > > > > Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>      
+> > > On Tue, 30 Jul 2024 09:29:37 +0100
+> > > Peter Maydell <peter.maydell@linaro.org> wrote:
 > > >     
-> > > > > diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> > > > > index b0c68d66a345..c99c8b1713c6 100644
-> > > > > --- a/hw/arm/virt.c
-> > > > > +++ b/hw/arm/virt.c
-> > > > > @@ -1004,7 +1004,7 @@ static void virt_powerdown_req(Notifier *n, void *opaque)
-> > > > >      if (s->acpi_dev) {
-> > > > >          acpi_send_event(s->acpi_dev, ACPI_POWER_DOWN_STATUS);
-> > > > >      } else {
-> > > > > -        /* use gpio Pin 3 for power button event */
-> > > > > +        /* use gpio Pin for power button event */
-> > > > >          qemu_set_irq(qdev_get_gpio_in(gpio_key_dev, 0), 1);      
-> > > >
-> > > > /me confused, it was saying Pin 3 but is passing 0 as argument where as elsewhere
-> > > > you are passing 3. Is this a bug?      
+> > > > On Tue, 30 Jul 2024 at 08:26, Igor Mammedov <imammedo@redhat.com> wrote:      
+> > > > >
+> > > > > On Mon, 22 Jul 2024 08:45:53 +0200
+> > > > > Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
+> > > > >        
+> > > > > > Having magic numbers inside the code is not a good idea, as it
+> > > > > > is error-prone. So, instead, create a macro with the number
+> > > > > > definition.
+> > > > > >
+> > > > > > Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+> > > > > > Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>        
+> > > >       
+> > > > > > diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> > > > > > index b0c68d66a345..c99c8b1713c6 100644
+> > > > > > --- a/hw/arm/virt.c
+> > > > > > +++ b/hw/arm/virt.c
+> > > > > > @@ -1004,7 +1004,7 @@ static void virt_powerdown_req(Notifier *n, void *opaque)
+> > > > > >      if (s->acpi_dev) {
+> > > > > >          acpi_send_event(s->acpi_dev, ACPI_POWER_DOWN_STATUS);
+> > > > > >      } else {
+> > > > > > -        /* use gpio Pin 3 for power button event */
+> > > > > > +        /* use gpio Pin for power button event */
+> > > > > >          qemu_set_irq(qdev_get_gpio_in(gpio_key_dev, 0), 1);        
+> > > > >
+> > > > > /me confused, it was saying Pin 3 but is passing 0 as argument where as elsewhere
+> > > > > you are passing 3. Is this a bug?        
+> > > > 
+> > > > No. The gpio_key_dev is a gpio-key device which has one
+> > > > input (which you assert to "press the key") and one output,
+> > > > which goes high when the key is pressed and then falls
+> > > > 100ms later. The virt board wires up the output of the
+> > > > gpio-key device to input 3 on the PL061 GPIO controller.
+> > > > (This happens in create_gpio_keys().) So the code is correct
+> > > > to assert input 0 on the gpio-key device and the comment
+> > > > isn't wrong that this results in GPIO pin 3 being asserted:
+> > > > the link is just indirect.      
 > > > 
-> > > No. The gpio_key_dev is a gpio-key device which has one
-> > > input (which you assert to "press the key") and one output,
-> > > which goes high when the key is pressed and then falls
-> > > 100ms later. The virt board wires up the output of the
-> > > gpio-key device to input 3 on the PL061 GPIO controller.
-> > > (This happens in create_gpio_keys().) So the code is correct
-> > > to assert input 0 on the gpio-key device and the comment
-> > > isn't wrong that this results in GPIO pin 3 being asserted:
-> > > the link is just indirect.    
+> > > it's likely obvious to ARM folks, but maybe comment should
+> > > clarify above for unaware.    
 > > 
-> > it's likely obvious to ARM folks, but maybe comment should
-> > clarify above for unaware.  
+> > Not sure if a comment here with the pin number is a good idea.
+> > After all, this patch was originated because we were using
+> > Pin 6 for GPIO error, while the comment was outdated (stating
+> > that it was pin 8 instead) :-)
+> > 
+> > After this series, there will be two GPIO pins used inside arm/virt,
+> > both defined at arm/virt.h:
+> > 
+> > 	/* GPIO pins */
+> > 	#define GPIO_PIN_POWER_BUTTON  3
+> > 	#define GPIO_PIN_GENERIC_ERROR 6
+> > 
+> > Those macros are used when GPIOs are created:
+> > 
+> > 	static void create_gpio_keys(char *fdt, DeviceState *pl061_dev,
+> > 	                             uint32_t phandle)
+> > 	{
+> > 	    gpio_key_dev = sysbus_create_simple("gpio-key", -1,
+> > 	                                        qdev_get_gpio_in(pl061_dev,
+> >                                                          GPIO_PIN_POWER_BUTTON));
+> > 	    gpio_error_dev = sysbus_create_simple("gpio-key", -1,
+> > 	                                          qdev_get_gpio_in(pl061_dev,
+> > 	                                                           GPIO_PIN_GENERIC_ERROR));
+> > So, at least for me, it is clear that gpio_key_dev is using pin 3.  
 > 
-> Not sure if a comment here with the pin number is a good idea.
-> After all, this patch was originated because we were using
-> Pin 6 for GPIO error, while the comment was outdated (stating
-> that it was pin 8 instead) :-)
-> 
-> After this series, there will be two GPIO pins used inside arm/virt,
-> both defined at arm/virt.h:
-> 
-> 	/* GPIO pins */
-> 	#define GPIO_PIN_POWER_BUTTON  3
-> 	#define GPIO_PIN_GENERIC_ERROR 6
-> 
-> Those macros are used when GPIOs are created:
-> 
-> 	static void create_gpio_keys(char *fdt, DeviceState *pl061_dev,
-> 	                             uint32_t phandle)
-> 	{
-> 	    gpio_key_dev = sysbus_create_simple("gpio-key", -1,
-> 	                                        qdev_get_gpio_in(pl061_dev,
->                                                          GPIO_PIN_POWER_BUTTON));
-> 	    gpio_error_dev = sysbus_create_simple("gpio-key", -1,
-> 	                                          qdev_get_gpio_in(pl061_dev,
-> 	                                                           GPIO_PIN_GENERIC_ERROR));
-> So, at least for me, it is clear that gpio_key_dev is using pin 3.
+> if you switch to using already existing GED device,
+> then this patch will go away since event will be delivered by GED
+> instead of GPIO + _AEI.
 
-if you switch to using already existing GED device,
-then this patch will go away since event will be delivered by GED
-instead of GPIO + _AEI.
+This patch is actually independent from the rest. It is related to a power
+down event, and not related at all with error inject.
 
-> 
-> Thanks,
-> Mauro
-> 
+The rationale for keeping it on this series was due to the original
+patch 2 (as otherwise merge conflicts would rise). It can now be merged
+in separate.
 
+Btw, this is doing a cleanup requested by Michael and Peter:
+
+	https://lore.kernel.org/qemu-devel/CAFEAcA-PYnZ-32MRX+PgvzhnoAV80zBKMYg61j2f=oHaGfwSsg@mail.gmail.com/
+
+Thanks,
+Mauro

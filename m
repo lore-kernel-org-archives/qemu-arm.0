@@ -1,83 +1,83 @@
-Received: by 2002:a17:505:1e8b:b0:1be9:327d:8ee3 with SMTP id mw11csp986487njb;
-        Mon, 5 Aug 2024 13:17:49 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWEMRZjzLcGwh6Yimh1HfY/Ib/50HUbx/54+jgfDvM5Fn1CCS8AqM6Suy6nE81MmyGFTUl3TE/z7QaxGpvB4D9aWbaww8jg
-X-Received: by 2002:a05:6902:228f:b0:e0b:f894:ac9a with SMTP id 3f1490d57ef6-e0bf894b001mr8562165276.18.1722889069774;
-        Mon, 05 Aug 2024 13:17:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1722889069; cv=none;
+Received: by 2002:a17:505:1e8b:b0:1be9:327d:8ee3 with SMTP id mw11csp986592njb;
+        Mon, 5 Aug 2024 13:18:03 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCU0AIiU7QaULl3GEzgHZGOrRVjAR9NQYy1UIK+wiA/nyz+88Vbw2Sg+Yba4jRZgXDhiXC9nYlf7fZBaADLL9FJPLvD3r7pd
+X-Received: by 2002:a05:6a00:4f8b:b0:705:951e:ed84 with SMTP id d2e1a72fcca58-7106cfcf0c3mr16481659b3a.15.1722889082740;
+        Mon, 05 Aug 2024 13:18:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1722889082; cv=none;
         d=google.com; s=arc-20160816;
-        b=1IAfPvCN9ko/3ZS2F6UVOTLOoJQgs/uJzjjMtTNxnGmZoHWm/7uvroF9Q8kRb2PhFy
-         FZ+sGNk0Hy5BaUvJSSD/8Sesz/8ikss4KEGtDKC+o/FFVqAzC58oNqav7wHm055Q9JdF
-         I93iA176aPVRpr9gq1IDfJZk6A9qrcukMX98rnlWR/yL1zkAKLMJ77kRNfsKRf5Wh8bs
-         mR2oglapIAlbhNqZFyRgcDwK7VeOI1bnzF7B023lceXvCnpt00lSCqNdkN36b8qJ57+l
-         dcOzcMVqVrvRxL0M3FudiW6f+s1wpYfaqJgYTpCh0RFPTJEqHjB9/2LYHfwz02jsA4nD
-         rspw==
+        b=r3rdsPJzR2zD/7ZZeWs13zinPOkefV0IjKs/CdXQHaPZArTePfJwJhXrzqH/VOmvpq
+         D9AyPzh2qlRyJnkRBtAICEo0HfqKofcl35ZXI8kt/kbFTUK4JLb1cqZKEla8XQLrRSpJ
+         OjkFpMkY+V/iAjlB8Zz3WfiIRQob0XlbITUGVGcOI5EIddGDBtKe7rlk5K2CCEOl4iEq
+         hzSu+orjzBcZ6ay+LR/JQy1gxPnN4WjrscyXeGsnQuzAblVJlu6tYixQs3Bv7HOWu5IF
+         WDCYzZbKbvAB1fiB2xyCLULF7Y/xkN8uU05Ey3QRH+SErzziyRHimyjyWLPcR++cMH/3
+         UKxw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
          :date:dkim-signature;
-        bh=HolQ6M2QNUE2ejhU+N0utPdQeOsLaCbhpFMvlfrSt68=;
-        fh=ifO4kvvDk8nC7MbCIVmONTtnS/QY3pp6ElQu/oJwc7s=;
-        b=x/Tg3/NPll9zm1vWipvz2cdRJTTGgXxlNu1hqBwOHkkTZYfGv89hXHHQfkekMA0+ej
-         r92FmLJdtdhIp7RWCbr/VtCntLCa6Y3GH4J+tN/C7766Fqw6Nk5ZQhApdFeQyXOnkKnx
-         ST97i29ZsoVJxW+OZH5aC7eNdtwr6sSYw+Q3FGTcimyVMB7lCVPWHS3nWYRYKOys4jC5
-         ZxrYF0X3K+QxXi7Bp5XEiTwuhrKVhXMhLYZSFa2q7Gg69h6wMk1zCjCq4ZCpihgu3F1N
-         xJX1NhTmr0wh2toqvmN0dTWVgSKHSDv0SecD9F2lLMgggsuLSjI3WJNPrxNHORS5oww8
-         FCzw==;
+        bh=3GjBap7FxZdPpDdgQeaY7XNjHE33uQ9g7r73DwU0Kyw=;
+        fh=3dUjK19Nd4vZ4QsUHucfmtQEhxoVdRHdtZrNmw9aH6s=;
+        b=yzixkCCo36pXYZY0vUNkxeiNL0/Y4AsXwD7GyyZlYsL4NM806fnmC+9JGzKUJD7iah
+         wHHuskr0fLQkxPQJ0KMNB8hv40eemxFbqU5iF8zpp6pFm2TivFi5driwTBo12iIjTr+P
+         7aj3Av94SuxvPeJlMKtlgFyrTb84dHqWM9pAOrZ75W9yjjMHFTube/F8kgU1ZmWZAHrT
+         c1oD04nzN2KkeZzjOHs/FjRMjS3A4iyXncqimo7SwQqaZuJvXDGjejpHa3e5j6mmIkyw
+         XCJDeQmbbJciD+AAYWXfVD/Ksn7v4nzq1c3iU9/Dsiqh6bZS9cWR/scJI0IpMBX4kNN5
+         8/0w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=Uh4WUy57;
-       spf=pass (google.com: domain of 3btoxzgukc9qj0l8f6ee6b4.2ec0b4n.14dd44b8d0he.eh6@flex--tavip.bounces.google.com designates 209.85.220.73 as permitted sender) smtp.mailfrom=3bTOxZgUKC9QJ0L8F6EE6B4.2EC0B4N.14DD44B8D0HE.EH6@flex--tavip.bounces.google.com;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=Vati2FYF;
+       spf=pass (google.com: domain of 3ejoxzgukc-ewdylsjrrjoh.frpdoha.ehqqhholqdur.ruj@flex--tavip.bounces.google.com designates 209.85.220.73 as permitted sender) smtp.mailfrom=3ejOxZgUKC-EWDYLSJRRJOH.FRPDOHa.EHQQHHOLQDUR.RUJ@flex--tavip.bounces.google.com;
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
        dara=neutral header.i=@linaro.org
-Return-Path: <3bTOxZgUKC9QJ0L8F6EE6B4.2EC0B4N.14DD44B8D0HE.EH6@flex--tavip.bounces.google.com>
+Return-Path: <3ejOxZgUKC-EWDYLSJRRJOH.FRPDOHa.EHQQHHOLQDUR.RUJ@flex--tavip.bounces.google.com>
 Received: from mail-sor-f73.google.com (mail-sor-f73.google.com. [209.85.220.73])
-        by mx.google.com with SMTPS id 3f1490d57ef6-e0be536d70esor5659309276.6.2024.08.05.13.17.49
+        by mx.google.com with SMTPS id d2e1a72fcca58-7106ed27066sor8275357b3a.12.2024.08.05.13.18.02
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 05 Aug 2024 13:17:49 -0700 (PDT)
-Received-SPF: pass (google.com: domain of 3btoxzgukc9qj0l8f6ee6b4.2ec0b4n.14dd44b8d0he.eh6@flex--tavip.bounces.google.com designates 209.85.220.73 as permitted sender) client-ip=209.85.220.73;
+        Mon, 05 Aug 2024 13:18:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 3ejoxzgukc-ewdylsjrrjoh.frpdoha.ehqqhholqdur.ruj@flex--tavip.bounces.google.com designates 209.85.220.73 as permitted sender) client-ip=209.85.220.73;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=Uh4WUy57;
-       spf=pass (google.com: domain of 3btoxzgukc9qj0l8f6ee6b4.2ec0b4n.14dd44b8d0he.eh6@flex--tavip.bounces.google.com designates 209.85.220.73 as permitted sender) smtp.mailfrom=3bTOxZgUKC9QJ0L8F6EE6B4.2EC0B4N.14DD44B8D0HE.EH6@flex--tavip.bounces.google.com;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=Vati2FYF;
+       spf=pass (google.com: domain of 3ejoxzgukc-ewdylsjrrjoh.frpdoha.ehqqhholqdur.ruj@flex--tavip.bounces.google.com designates 209.85.220.73 as permitted sender) smtp.mailfrom=3ejOxZgUKC-EWDYLSJRRJOH.FRPDOHa.EHQQHHOLQDUR.RUJ@flex--tavip.bounces.google.com;
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20230601; t=1722889069; x=1723493869; darn=linaro.org;
+        d=google.com; s=20230601; t=1722889082; x=1723493882; darn=linaro.org;
         h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
          :date:from:to:cc:subject:date:message-id:reply-to;
-        bh=HolQ6M2QNUE2ejhU+N0utPdQeOsLaCbhpFMvlfrSt68=;
-        b=Uh4WUy57wfAkZJbg8Inqi7NRUWlZZCpDeDuHZl0U+DbgwtZ6LugdYVK9X80GI9Het/
-         v9Vz8pnLuB69Hs6LhXKFvWU9AWYhmmixEYIv3tOsQtdPeuFdtGzvZqx/bBzPrCQN02FA
-         /Ef53kY9lFRSFM6tv7VYa6WMS1xWyOeYcjAYpM4WlXTc5Z683q59QsRVMU+xy+KbNAxm
-         WFVaEiNKOS5c3k5JsL4qbyfQMkc74TVniEWVS4mG+fRV5NOqZafCC7xEojTnO3KXiZv0
-         Xcxq17mV/AbYh/amkK2xxvSi82GT+V92/Sjpwt1EG1+DVCrtWR/TDtbxN0OSlMrzEH3x
-         ulQg==
+        bh=3GjBap7FxZdPpDdgQeaY7XNjHE33uQ9g7r73DwU0Kyw=;
+        b=Vati2FYFGW7oO/8trXtjFXB8Rz3XcK+WonN1qWKIYEvv6GmTF2qExSL6zWwtzb9Ls1
+         6meSepmi+cIrMP1RqjRnNN9OHgIJAzC07rozbTgo3/Qs3G0pD/o5x0s/oywkrW6AwoIE
+         CwEIWzsC8b0op2O2s/ho+feBYT9SQOoqVKI4EongGMPZwF4Oe4rdH+7gCZmZdKEHf7ss
+         QH9mRon2IK/Yr0ne7Z9gVv7ETBZYM9wz94wfIaWcdKjsKqnDsR2SxWbySnkbsmskvOoP
+         eSLl1H7b2CqA06B6OJzRsGb8ATKh8ZQvnxIu3S9WxQi3iPCZcjUVoiSCGUMVuPHBT+ow
+         oJqw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1722889069; x=1723493869;
+        d=1e100.net; s=20230601; t=1722889082; x=1723493882;
         h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
          :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=HolQ6M2QNUE2ejhU+N0utPdQeOsLaCbhpFMvlfrSt68=;
-        b=e5l9udXeBF7AkLTMSXcxC/Zgpoaf1H2yje+S1CsWA4NpiQlcqsnfSodJoQYXHuyABV
-         t5kCCy5xsmOu1WWcr43ux+55w0vMJhaVNgNb2+qQW3BG48XVIBPeHoDMprWP4lMrrZrF
-         r0JMUwPIhrtLQWZTdsE+bQHrQhZNmw5L91S8kZL2kY8DDIObByyKU7t+pYqDFYacDWPH
-         QnCow6Fl6NMzbhQ1YmdlIUfRrs4AQH91tStLfYsoI0fFVHa0ObP0zCgrAiMC1BNdgOpo
-         jGBaehafsfkJHdNeXqN1QPoeirC2n9o7Pe0/a0+t/eR3DzaIBM2YnroVyFyADuhF0jUV
-         veIg==
-X-Forwarded-Encrypted: i=1; AJvYcCViEX4NefyRIq8etvP2krQnoiwy9tfdA1WxRkvFzpvX7jVdLfCMLfDcSGvD+iDbRnb0YLHT5oFve+QPP/OomV3tah9510Gy
-X-Gm-Message-State: AOJu0YzFDzS6YnNfNKjVHNxDLPHTBkbaD9MQ3L0p2mZCO6RD7+5Q1i32
-	WZLKCdaPn/vVxBPCu4kMOZWtH8JMOuZxs9uA/sDcMP4f4If4MDmNO9K3xf782EtTqZOQabajBg=
+        bh=3GjBap7FxZdPpDdgQeaY7XNjHE33uQ9g7r73DwU0Kyw=;
+        b=YK6/RG1iiBdMz0ToFp9VAu3rDZgv7qDDy8M5aqSe7fD+sMtCLGxthl0Q/UHxpexfsb
+         nEbnVwYwEDjj/L16UH693Q3AdniUbiWL4B3SCa7+L5qLGvPJE/v0sK5ecP5b40sTpGzG
+         jKHZk12r2XEDgE55taDgSWUb+KSIMuIcA2xL650Bdo9uKVgOdGT3NYb3cLoNcQeDWg6L
+         fQHFXQgeFCkAOlIPGkHulS3QvcIDtPLrGIpuc80YJy74/domXZMkUTFodcGZgN3YGIpi
+         IJCER8vDl+hKcsrct8gUWJOPPOe8urGbHFFeG5uEqOuMjcAaXBz3Upz0oYINrBswkS1T
+         cp6A==
+X-Forwarded-Encrypted: i=1; AJvYcCVkDEY6986nXbgLlgUKHjaTqYzv0k5s14HjzZw4nAiARk3NeG1Xp6t2F3yIyTDk5GNp38CEvAG18BsHQjvIfLlx+CtQWpsm
+X-Gm-Message-State: AOJu0YzZtj1b/KlvLKnNen7LrMigASEK85bxLC12t2gljPd8TCmR6xnV
+	xauawtHYJrmrQVB0h6iH+Rn3Smp4uBbqWts+bYcm2Yo5nZrLgWbXqblWOHKEwmQkSQD+4CcxUw=
 	=
-X-Google-Smtp-Source: AGHT+IHJ2yivBPbFmiyhK3hrpQuvMsngp9pP9WhL1UClne9zJKqUNbF4+KVclnzUr+aIx/QWIhVmtv/sfw==
+X-Google-Smtp-Source: AGHT+IEXkrqOE/XzNbGuVKsM0VKvpvoMdnNt3Ub2rtyWCRwYu7a+ohGR2cw4S360MRHtx60w8KRKA+NVSw==
 X-Received: from warp10.c.googlers.com ([fda3:e722:ac3:cc00:24:72f4:c0a8:750])
- (user=tavip job=sendgmr) by 2002:a05:6902:100c:b0:e0b:c18c:ebfb with SMTP id
- 3f1490d57ef6-e0bde1eca27mr94734276.2.1722889069374; Mon, 05 Aug 2024 13:17:49
- -0700 (PDT)
-Date: Mon,  5 Aug 2024 13:17:11 -0700
+ (user=tavip job=sendgmr) by 2002:a05:6a00:9153:b0:710:5798:44de with SMTP id
+ d2e1a72fcca58-7106cf97a92mr55487b3a.2.1722889082012; Mon, 05 Aug 2024
+ 13:18:02 -0700 (PDT)
+Date: Mon,  5 Aug 2024 13:17:18 -0700
 In-Reply-To: <20240805201719.2345596-1-tavip@google.com>
 Mime-Version: 1.0
 References: <20240805201719.2345596-1-tavip@google.com>
 X-Mailer: git-send-email 2.46.0.rc2.264.g509ed76dc8-goog
-Message-ID: <20240805201719.2345596-17-tavip@google.com>
-Subject: [RFC PATCH 16/23] test/unit: add spi-tester
+Message-ID: <20240805201719.2345596-24-tavip@google.com>
+Subject: [RFC PATCH 23/23] hw/arm: add RT595-EVK board
 From: Octavian Purdila <tavip@google.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, stefanst@google.com, pbonzini@redhat.com, 
@@ -85,122 +85,113 @@ Cc: qemu-arm@nongnu.org, stefanst@google.com, pbonzini@redhat.com,
 	marcandre.lureau@redhat.com, alistair@alistair23.me, berrange@redhat.com, 
 	philmd@linaro.org, jsnow@redhat.com, crosa@redhat.com, bleal@redhat.com
 Content-Type: text/plain; charset="UTF-8"
-X-TUID: TvTXqCneQ6YX
+X-TUID: TxRyrMzd/hMt
 
-Add a simple SPI peripheral that echoes back received data. Useful for
-testing SPI controllers.
+Add basic support for the RT595-EVK board, enough to be able to run
+the NXP's microXpresso SDK hello world example.
 
 Signed-off-by: Octavian Purdila <tavip@google.com>
 ---
- tests/unit/spi_tester.c | 60 +++++++++++++++++++++++++++++++++++++++++
- tests/unit/spi_tester.h | 32 ++++++++++++++++++++++
- 2 files changed, 92 insertions(+)
- create mode 100644 tests/unit/spi_tester.c
- create mode 100644 tests/unit/spi_tester.h
+ hw/arm/Kconfig     |  5 ++++
+ hw/arm/meson.build |  1 +
+ hw/arm/rt595-evk.c | 64 ++++++++++++++++++++++++++++++++++++++++++++++
+ 3 files changed, 70 insertions(+)
+ create mode 100644 hw/arm/rt595-evk.c
 
-diff --git a/tests/unit/spi_tester.c b/tests/unit/spi_tester.c
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index 7ffece3dec..26ec3d391a 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -720,3 +720,8 @@ config RT500
+     select RT500_CLKCTL1
+     select FLEXSPI
+     select RT500_RSTCTL
++
++config RT595_EVK
++    bool
++    default y
++    select RT500
+diff --git a/hw/arm/meson.build b/hw/arm/meson.build
+index 7d827d512c..9792c93142 100644
+--- a/hw/arm/meson.build
++++ b/hw/arm/meson.build
+@@ -60,6 +60,7 @@ arm_ss.add(when: 'CONFIG_FSL_IMX6UL', if_true: files('fsl-imx6ul.c', 'mcimx6ul-e
+ arm_ss.add(when: 'CONFIG_NRF51_SOC', if_true: files('nrf51_soc.c'))
+ arm_ss.add(when: 'CONFIG_XEN', if_true: files('xen_arm.c'))
+ arm_ss.add(when: 'CONFIG_RT500', if_true: files('rt500.c'))
++arm_ss.add(when: 'CONFIG_RT595_EVK', if_true: files('rt595-evk.c'))
+ 
+ system_ss.add(when: 'CONFIG_ARM_SMMUV3', if_true: files('smmu-common.c'))
+ system_ss.add(when: 'CONFIG_CHEETAH', if_true: files('palm.c'))
+diff --git a/hw/arm/rt595-evk.c b/hw/arm/rt595-evk.c
 new file mode 100644
-index 0000000000..7bccc680cc
+index 0000000000..fff3004195
 --- /dev/null
-+++ b/tests/unit/spi_tester.c
-@@ -0,0 +1,60 @@
++++ b/hw/arm/rt595-evk.c
+@@ -0,0 +1,64 @@
 +/*
-+ * Simple SPI peripheral echo device used for SPI controller testing.
++ * i.MX RT595 EVK
 + *
-+ * Copyright (c) 2024 Google LLC.
++ * Copyright (c) 2024 Google LLC
 + *
 + * SPDX-License-Identifier: GPL-2.0-or-later
 + *
 + * This work is licensed under the terms of the GNU GPL, version 2 or later.
 + * See the COPYING file in the top-level directory.
 + */
-+
-+#include "spi_tester.h"
-+
-+static uint32_t spi_tester_transfer(SSIPeripheral *dev, uint32_t value)
-+{
-+    SpiTesterState *s = SPI_TESTER(dev);
-+
-+    if (s->cs) {
-+        return 0;
-+    }
-+
-+    return value;
-+}
-+
-+static void spi_tester_realize(SSIPeripheral *d, Error **errp)
-+{
-+}
-+
-+static int spi_tester_set_cs(SSIPeripheral *dev, bool select)
-+{
-+    SpiTesterState *s = SPI_TESTER(dev);
-+
-+    s->cs = select;
-+
-+    return 0;
-+}
-+
-+static void spi_tester_class_init(ObjectClass *klass, void *data)
-+{
-+    SSIPeripheralClass *k = SSI_PERIPHERAL_CLASS(klass);
-+
-+    k->realize     = spi_tester_realize;
-+    k->transfer    = spi_tester_transfer;
-+    k->set_cs      = spi_tester_set_cs;
-+    k->cs_polarity = SSI_CS_LOW;
-+}
-+
-+static const TypeInfo spi_tester_info = {
-+    .name          = TYPE_SPI_TESTER,
-+    .parent        = TYPE_SSI_PERIPHERAL,
-+    .instance_size = sizeof(SpiTesterState),
-+    .class_init    = spi_tester_class_init,
-+};
-+
-+static void spi_tester_register_types(void)
-+{
-+    type_register_static(&spi_tester_info);
-+}
-+
-+type_init(spi_tester_register_types)
-diff --git a/tests/unit/spi_tester.h b/tests/unit/spi_tester.h
-new file mode 100644
-index 0000000000..16e08d2b5c
---- /dev/null
-+++ b/tests/unit/spi_tester.h
-@@ -0,0 +1,32 @@
-+/*
-+ * Simple SPI peripheral device used for SPI controller testing.
-+ *
-+ * Copyright (c) 2024 Google LLC.
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or later.
-+ * See the COPYING file in the top-level directory.
-+ */
-+
-+#ifndef TESTS_UNIT_SPI_TESTER_H
-+#define TESTS_UNIT_SPI_TESTER_H
 +
 +#include "qemu/osdep.h"
++#include "elf.h"
++#include "exec/address-spaces.h"
++#include "hw/loader.h"
++#include "hw/sysbus.h"
++#include "hw/boards.h"
 +#include "qemu/log.h"
-+#include "qemu/module.h"
-+#include "qemu/bswap.h"
-+#include "hw/irq.h"
-+#include "hw/ssi/ssi.h"
-+#include "qemu/timer.h"
-+#include "hw/qdev-properties.h"
++#include "hw/arm/armv7m.h"
++#include "hw/misc/unimp.h"
++#include "hw/arm/rt500.h"
++#include "hw/qdev-clock.h"
++#include "sysemu/reset.h"
 +
-+#define TYPE_SPI_TESTER "spi-tester"
-+#define SPI_TESTER(obj) OBJECT_CHECK(SpiTesterState, (obj), TYPE_SPI_TESTER)
++static void rt595_evk_reset(MachineState *ms, ShutdownCause reason)
++{
++    /*
++     * CPU reset is not done by default, we need to do it manually when the
++     * machine is reset.
++     */
++    cpu_reset(first_cpu);
 +
-+typedef struct {
-+    SSIPeripheral ssidev;
-+    bool cs;
-+} SpiTesterState;
++    qemu_devices_reset(reason);
++}
 +
-+#endif /* TESTS_UNIT_SPI_TESTER_H */
++static void rt595_evk_init(MachineState *ms)
++{
++    RT500State *s;
++    Clock *sysclk;
++
++    sysclk = clock_new(OBJECT(ms), "SYSCLK");
++    clock_set_hz(sysclk, 200000000);
++
++    s = RT500(object_new(TYPE_RT500));
++    qdev_connect_clock_in(DEVICE(s), "sysclk", sysclk);
++    object_property_add_child(OBJECT(ms), "soc", OBJECT(s));
++    sysbus_realize_and_unref(SYS_BUS_DEVICE(s), &error_fatal);
++
++    if (ms->kernel_filename) {
++        armv7m_load_kernel(ARM_CPU(first_cpu), ms->kernel_filename, 0, 0);
++    }
++}
++
++static void rt595_evk_machine_init(MachineClass *mc)
++{
++    mc->desc  = "RT595 EVK Machine (ARM Cortex-M33)";
++    mc->init  = rt595_evk_init;
++    mc->reset = rt595_evk_reset;
++
++    mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-m33");
++    mc->ignore_memory_transaction_failures = true;
++}
++
++DEFINE_MACHINE("rt595-evk", rt595_evk_machine_init);
 -- 
 2.46.0.rc2.264.g509ed76dc8-goog

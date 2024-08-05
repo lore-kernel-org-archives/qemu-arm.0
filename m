@@ -1,83 +1,83 @@
-Received: by 2002:a17:505:1e8b:b0:1be9:327d:8ee3 with SMTP id mw11csp986388njb;
-        Mon, 5 Aug 2024 13:17:33 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVxCHAqX+64sw0GvF/O/eUrbODFE+9S3rQwYGif2Sb2aW0q0UBpCMvdLDC2GdDc5jncdSwUHPTk5yXHzfozAKklvmkLpETl
-X-Received: by 2002:a17:902:ecc7:b0:1fd:6c5b:afbc with SMTP id d9443c01a7336-1ff573cc1fdmr152095745ad.49.1722889053611;
-        Mon, 05 Aug 2024 13:17:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1722889053; cv=none;
+Received: by 2002:a17:505:1e8b:b0:1be9:327d:8ee3 with SMTP id mw11csp986406njb;
+        Mon, 5 Aug 2024 13:17:35 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCU80u0LH4HB8wkewRXiN9oq/vStdxPppnHSKxUaDUgbmNPGSEi+1lZa2IuYQgMRiuDQm1MddfAkKD9ZvPOJtxIGEwEFuaBA
+X-Received: by 2002:a05:6902:c0c:b0:e08:6ac2:21f6 with SMTP id 3f1490d57ef6-e0bde50c57fmr15823821276.49.1722889055362;
+        Mon, 05 Aug 2024 13:17:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1722889055; cv=none;
         d=google.com; s=arc-20160816;
-        b=dU232AwCUmFsV3VPoSLbe7Yq5IbDl+K5sxjhYd2fQ95sWIWdIB075n9Gqb+lYsG/NS
-         3v6Iiql2RDR09zOM/MHXZ+q0RB4thtO1TOAw3P/4/ubivCw5n9dPKRWE91E+q/C9SIQs
-         wqdqKHdNUPjuOfFSjyZAZda4hvtnVLtUISZtRmm7j3ajjw9BONwdaxpBJHdU/lUusXZC
-         EV+zEQrftReYe0V0TC3c1DajcZoSAhFEy3cFwVBmCk/RtX6b/QeVrfwfp0CvXfZxITyS
-         K8dHkTVvGRLLqQvarziW/W/w0Zeu5fGU+7y2eVhuMKL5djdkmCIRkUFEph84UFRMTjBl
-         acjQ==
+        b=YQEc00zjaC2bx8Bhr0Hj/2pz9kRCT+qu5C2BJaWF5Y1ebLLyO6DqLV/jqOPJbpLai5
+         gJbMoQtAD1B2MKOwzv0z9PGYyd+Le5G/sIl2IouIfwh3drAEbmqLMQ2aptEWNRQh19hO
+         pNyk+y8oQKf/ztBvfutcaO5PUeDK7ANJJBNp+PMYZt2Xg1/SkP9XMLqr8W5CDcQ6Sg8k
+         pG5em+C5JfsQZ8khu84MRoppkeSU1P86es/n8qqEQKq0xv+YxG+MFrTny2PLDwVfxAF0
+         aTtaXhwsRBPiH/r57R9/U7IYuu8/Fl543bQAuJdv75EPpKjUfNtiaTVn6x8tVXSTJLvx
+         SaZg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
          :date:dkim-signature;
-        bh=fPOF8tPVCB5RUT1vLWhA1MQiOoDtDv85xjMES2IhNfM=;
-        fh=fmpxaiEjn3EKEyEp4gOqWx4AtftCp92hb+VXFOnSOFc=;
-        b=zAoVj5IY65V5f3gaggEI8/e3x6Cl5RqmR43WbhH11MEEVfcl/Vw48haNzHbGnGwb/6
-         /h4xucD1nakJ6Z2j6i+Sq44k0exePoPVzVYtXrwADkVKQB1CjkZVj6dV1+cIWLjvotZm
-         mK4oBgtci5SajAYBm20rNyGMa+RVk5SpS+FbRXaNidDJtdzkiovf3e5kuaQ+hJwk2DDx
-         rEmt54gouzjfEN0wsXGhSfIaDidcMt15gXUT1DjfKnJEwPOtY7Mz6rsKiHDislkBI2yd
-         mtSc7SHdOqOxw5/QFSNEp7lbZukSM5xXtjnQIJn4QG5Xk0ct/SLHk9KcPK80Xle1HGgn
-         94sA==;
+        bh=nk3wy3iOlV41EdYWg2ADHBcnClsgP1AAs+CwqJBw/xU=;
+        fh=zFJnihbieFrMciEIzA6GTFLQwTAK4d8YjROUKr3ZuZw=;
+        b=ulUcd3/yz/K41PRFcDQF3Ma4AlqGyYr8fkFpqgOYROJNN9AW9WSZbcZpe/lVh2JEAq
+         K9gES8OqTl1HyjMJbbech4x+8/rr0TfZJ22Hy8Mmed7UGcqwN14RpqL3qshFC4mLAg5k
+         zjizwPiU+nte4Nc+SrEASIIE3SF9vwwyk+6pb3A3YHpMQr4UNcOeZty6MMHOtym4dlAX
+         KTLwUcm2yuyKrru8CJ5k8ne+VqbTyQNIrlYDbFTjLKA49zOJc4N/xDg/DDH13JJBueWY
+         qvMMCz6QxkFT/Akp6FG1uXrifE0a9L3VrjA8UsLYilGI8WZjaFSB9WAr6hcLgBbM5uzN
+         oQRA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=GhT9ceQY;
-       spf=pass (google.com: domain of 3xtoxzgukc8q3k5szqyyqvo.mywkvo7.loxxoovsxk1y.y1q@flex--tavip.bounces.google.com designates 209.85.220.73 as permitted sender) smtp.mailfrom=3XTOxZgUKC8Q3k5szqyyqvo.mywkvo7.loxxoovsxk1y.y1q@flex--tavip.bounces.google.com;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=t5oxsPkl;
+       spf=pass (google.com: domain of 3xjoxzgukc8u4l6t0rzzrwp.nzxlwp8.mpyyppwtyl2z.z2r@flex--tavip.bounces.google.com designates 209.85.220.73 as permitted sender) smtp.mailfrom=3XjOxZgUKC8U4l6t0rzzrwp.nzxlwp8.mpyyppwtyl2z.z2r@flex--tavip.bounces.google.com;
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
        dara=neutral header.i=@linaro.org
-Return-Path: <3XTOxZgUKC8Q3k5szqyyqvo.mywkvo7.loxxoovsxk1y.y1q@flex--tavip.bounces.google.com>
+Return-Path: <3XjOxZgUKC8U4l6t0rzzrwp.nzxlwp8.mpyyppwtyl2z.z2r@flex--tavip.bounces.google.com>
 Received: from mail-sor-f73.google.com (mail-sor-f73.google.com. [209.85.220.73])
-        by mx.google.com with SMTPS id d9443c01a7336-1ff5917a5e9sor64867315ad.19.2024.08.05.13.17.33
+        by mx.google.com with SMTPS id 3f1490d57ef6-e0be547cfa7sor3571445276.11.2024.08.05.13.17.35
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 05 Aug 2024 13:17:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of 3xtoxzgukc8q3k5szqyyqvo.mywkvo7.loxxoovsxk1y.y1q@flex--tavip.bounces.google.com designates 209.85.220.73 as permitted sender) client-ip=209.85.220.73;
+        Mon, 05 Aug 2024 13:17:35 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 3xjoxzgukc8u4l6t0rzzrwp.nzxlwp8.mpyyppwtyl2z.z2r@flex--tavip.bounces.google.com designates 209.85.220.73 as permitted sender) client-ip=209.85.220.73;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=GhT9ceQY;
-       spf=pass (google.com: domain of 3xtoxzgukc8q3k5szqyyqvo.mywkvo7.loxxoovsxk1y.y1q@flex--tavip.bounces.google.com designates 209.85.220.73 as permitted sender) smtp.mailfrom=3XTOxZgUKC8Q3k5szqyyqvo.mywkvo7.loxxoovsxk1y.y1q@flex--tavip.bounces.google.com;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=t5oxsPkl;
+       spf=pass (google.com: domain of 3xjoxzgukc8u4l6t0rzzrwp.nzxlwp8.mpyyppwtyl2z.z2r@flex--tavip.bounces.google.com designates 209.85.220.73 as permitted sender) smtp.mailfrom=3XjOxZgUKC8U4l6t0rzzrwp.nzxlwp8.mpyyppwtyl2z.z2r@flex--tavip.bounces.google.com;
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20230601; t=1722889053; x=1723493853; darn=linaro.org;
+        d=google.com; s=20230601; t=1722889055; x=1723493855; darn=linaro.org;
         h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
          :date:from:to:cc:subject:date:message-id:reply-to;
-        bh=fPOF8tPVCB5RUT1vLWhA1MQiOoDtDv85xjMES2IhNfM=;
-        b=GhT9ceQYNDGM6r76DrTOeU4BLDNQKIo4n4Tlz3Y0ORLFOEHtFHpm1dht8Xvzy5TVZw
-         N/gk36bJgQZcoMno/DVC66wwPPB96SYSp065R71+NGD1fm0x2aFfIsBN0yP8Bva/prDT
-         eSj9mjcC81obk7XX7exhvvEmD3yn3vur/Q+6+lSfm+lhNWjyyJgRhuCErwSgaPbl2quF
-         uYBM1h7T/iVF/485dguQyG7XOKQhniJZ/XF1kwloxBhfvezwAP3vKgRsG0BtZ7mPGE1L
-         8/atOotlNumZtI1nIDvNsHCsLiptQerFvgVOfpRoJfKlvW11Km182NCWvzSNzBVVqiea
-         bjkw==
+        bh=nk3wy3iOlV41EdYWg2ADHBcnClsgP1AAs+CwqJBw/xU=;
+        b=t5oxsPkl9gwwOIAC0AxkilT9czheSqO5ZovYEiMTdlxXEJu2DndWjAKsO9B7moDwbk
+         j5Xp+57gbWD2dTwoD80hksy++mJ23NEZGxi0mab83awirGxg7nz/XZDENzrsvIdbJs9s
+         eAqcGKzjZSe66qGedbwO1nn6mbAUhFSwZYMpGZFhQqD23ddKZoJIQnCeXLG0zVZtI5n7
+         F46vAVBmCT+77/sXxmJDzi1yiOzvAIm5oZEiN7qGGWkM3/BPXrw5VXGUjWxzKWwYqRXj
+         WvK0R4o7NURc9Hm1BWM0YtjR/44+i+oD6Xv9t5o4vgEFtsj5E0iZZuWuYBrY67nD0J3/
+         bYXw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1722889053; x=1723493853;
+        d=1e100.net; s=20230601; t=1722889055; x=1723493855;
         h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
          :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=fPOF8tPVCB5RUT1vLWhA1MQiOoDtDv85xjMES2IhNfM=;
-        b=QtEEDclAUoCGYdIVKsrsyPsH1rGihBXY/rRkLd3nwk4dSKqxGVT/QaEkGXg9JWE5+j
-         U4Zl87AuKg++CmZDk4g6ZGJj7rnvKXebtwiINwoOTaDq/mmGQ9E9+aoonZF42NFrSplO
-         w09C5b3mKF7V9EQRZFbYIFjKppwm8Ek9kMHvzvjZUJ/NmdXZ4pCAphczFOetiQe+OBUM
-         l8kVjDDyY5tqLWwFlsd+biCAyxog4OmdH37HTFcLQTXREHFwCm/Z0dyW9JgnFJRWIVr5
-         Y0nhz1jcHxEVZl5FiIFBJ1r3q+qqBJe2E6qoUpIauX8zMNODPeEeYnH2i0sF7Aaw/tHH
-         MEaA==
-X-Forwarded-Encrypted: i=1; AJvYcCVmcpi4KqbYTcQalu3F+eXqa2J+EB29Wn73+EdRNvlRdtyA9HBWZIdEkdTcDkgtlNxJUXMmLd48EQWOEreAxgf+O8ym03l7
-X-Gm-Message-State: AOJu0Yy4cYilLlea2hdAnho7BpgskD681VvYipmq8WOg/10nPxRn0xVW
-	gM82CUlIzufE5UckJbWZpL7eAVcxAmvQUcxOJX3nDDAQLSckKlVNElYJJD/kphAaCKyAOGLmZg=
+        bh=nk3wy3iOlV41EdYWg2ADHBcnClsgP1AAs+CwqJBw/xU=;
+        b=YZI2olrGREivGSDHJliiP0CK8YtyKdFIC4a1VaSYq7jYXuur+4rF8/4fickZpure9B
+         /zu+wbOfLatujiARFB2MmA9iRnlE8Pwgocziq4Pt82ADqqikhHls15ucnAI0bbWPuwk0
+         2dtZ32T0PGY6wL6ZQjkNCz+urS2AX9P2etxsdDk3xYr8YKIisgaCKb7S4I9MCzdbQQvJ
+         7S8hvdD85nkpzLV4L8lpRpLDxmv2qdj5vLRoimoeOwoLRcXIP0CR4fF7Xlc8Q0zBRQjD
+         HQ+Rd8XsgwFdAWCL1sn4CiSgxVBZH1aBgOGTfRbQ+GfzUNiajdijGdQKjCZsvrwOEuiy
+         jNjA==
+X-Forwarded-Encrypted: i=1; AJvYcCVSwbdtC7qXNgV1dIZMnhlgSSdbc/Nibhv9bAAcNDAjrzwUZBRzoRSiix7RQpv40fsiQSiQj42arvJWFiWCIW+MvdzyGnvB
+X-Gm-Message-State: AOJu0YySFG4U5Af6OJgCtCzL/FpgHPNNsQgxsRs8YsqQWqeuzDXRro7m
+	SZFiCkm5gOzossLbEYS9RLnhZyHnt9MOxsECJkJBSyOfUlfDM4XCHOMPqgJo9bkvgQaliRxVhQ=
 	=
-X-Google-Smtp-Source: AGHT+IGa+UzwdbIld7JsQhx6EPRnqA/aNMmojNYxLGBdvPzBROaZTGG7602qUJgCnMz1HGkefTTNEeUCUg==
+X-Google-Smtp-Source: AGHT+IEii4/yzMfSp7LOsX7bSvtcsSwu3YPG0OH9OJP+3Z7rDF983ZAsDWCas7p00n2RRZm2FOn48nbu7Q==
 X-Received: from warp10.c.googlers.com ([fda3:e722:ac3:cc00:24:72f4:c0a8:750])
- (user=tavip job=sendgmr) by 2002:a17:902:e742:b0:1f9:cbe5:e422 with SMTP id
- d9443c01a7336-1ff5748d438mr4976885ad.8.1722889053049; Mon, 05 Aug 2024
- 13:17:33 -0700 (PDT)
-Date: Mon,  5 Aug 2024 13:17:02 -0700
+ (user=tavip job=sendgmr) by 2002:a5b:404:0:b0:e0b:eb06:58b2 with SMTP id
+ 3f1490d57ef6-e0beb068624mr15190276.8.1722889054883; Mon, 05 Aug 2024 13:17:34
+ -0700 (PDT)
+Date: Mon,  5 Aug 2024 13:17:03 -0700
 In-Reply-To: <20240805201719.2345596-1-tavip@google.com>
 Mime-Version: 1.0
 References: <20240805201719.2345596-1-tavip@google.com>
 X-Mailer: git-send-email 2.46.0.rc2.264.g509ed76dc8-goog
-Message-ID: <20240805201719.2345596-8-tavip@google.com>
-Subject: [RFC PATCH 07/23] tests/unit: add system bus mock
+Message-ID: <20240805201719.2345596-9-tavip@google.com>
+Subject: [RFC PATCH 08/23] test/unit: add register access macros and functions
 From: Octavian Purdila <tavip@google.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, stefanst@google.com, pbonzini@redhat.com, 
@@ -85,32 +85,49 @@ Cc: qemu-arm@nongnu.org, stefanst@google.com, pbonzini@redhat.com,
 	marcandre.lureau@redhat.com, alistair@alistair23.me, berrange@redhat.com, 
 	philmd@linaro.org, jsnow@redhat.com, crosa@redhat.com, bleal@redhat.com
 Content-Type: text/plain; charset="UTF-8"
-X-TUID: 5DE35A/WYJZr
+X-TUID: BZSolH6SI7Rs
 
-From: Valentin Ghita <valentinghita@google.com>
+Add register access macros for devices models that use SVD generated
+registers. This allows accessing register or register bit fields in
+unit tests, e.g.:
 
-From: Valentin Ghita <valentinghita@google.com>
+  REG32_WRITE(f->dev, FLEXCOMM, PSELID, persel);
+  g_assert(REG32_READ_FIELD(f->dev, FLEXCOMM, PSELID, PERSEL) == persel);
 
-Add a system bus mock and the necessary memory access functions to be
-able to create unit tests for device models.
+Also add support for accessing 32bit registers with memory transaction
+state, e.g.:
 
-Signed-off-by: Valentin Ghita <valentinghita@google.com>
+  /* no register access until a function is selected  */
+  g_assert(reg32_addr_read_raw(f->dev, FLEXCOMM_BASE, &tmp, 4) == MEMTX_ERROR);
+
 Signed-off-by: Octavian Purdila <tavip@google.com>
 ---
- tests/unit/sysbus-mock.c | 314 +++++++++++++++++++++++++++++++++++++++
- tests/unit/sysbus-mock.h |  82 ++++++++++
- 2 files changed, 396 insertions(+)
- create mode 100644 tests/unit/sysbus-mock.c
- create mode 100644 tests/unit/sysbus-mock.h
+ include/hw/regs.h      |   2 +-
+ tests/unit/reg-utils.h | 103 +++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 104 insertions(+), 1 deletion(-)
+ create mode 100644 tests/unit/reg-utils.h
 
-diff --git a/tests/unit/sysbus-mock.c b/tests/unit/sysbus-mock.c
+diff --git a/include/hw/regs.h b/include/hw/regs.h
+index 8d0da0629d..fd6576ba2b 100644
+--- a/include/hw/regs.h
++++ b/include/hw/regs.h
+@@ -59,7 +59,7 @@ static inline bool reg32_aligned_access(hwaddr addr, unsigned size)
+  * // backstore is updated to 0x78
+  * reg32_write(&backstore, REG2_ADDR, 0x12345678, wr_bits_array);
+  */
+-static inline uint32_t reg32_write(void *base, uint32_t off, uint32_t val,
++static inline uint32_t reg32_write(void *base, uint32_t addr, uint32_t val,
+                                    const uint32_t *rw_bits_array)
+ {
+     uint32_t *ptr = base + addr;
+diff --git a/tests/unit/reg-utils.h b/tests/unit/reg-utils.h
 new file mode 100644
-index 0000000000..c6c654eabc
+index 0000000000..f18ee07d20
 --- /dev/null
-+++ b/tests/unit/sysbus-mock.c
-@@ -0,0 +1,314 @@
++++ b/tests/unit/reg-utils.h
+@@ -0,0 +1,103 @@
 +/*
-+ * System Bus Mock
++ * Register access utilities for peripheral device tests.
 + *
 + * Copyright (C) 2024 Google LLC
 + *
@@ -119,397 +136,98 @@ index 0000000000..c6c654eabc
 + * This work is licensed under the terms of the GNU GPL, version 2 or later.
 + * See the COPYING file in the top-level directory.
 + */
++#ifndef _REG_UTILS_H
++#define _REG_UTILS_H
 +
-+#include "qemu/osdep.h"
-+#include "qemu/log.h"
-+#include "qemu/module.h"
-+#include "qemu/main-loop.h"
-+#include "exec/memory.h"
-+#include "hw/irq.h"
-+#include "hw/qdev-properties.h"
-+#include "hw/sysbus.h"
-+#include "hw/qdev-core.h"
++#ifdef DEBUG_REG
++#define debug(fmt, args...) fprintf(stderr, fmt, ## args)
++#else
++#define debug(fmt, args...)
++#endif
 +
-+#include "sysbus-mock.h"
++#define _REG_OFF(mod, field) (offsetof(mod##_Type, field))
 +
-+AddressSpace address_space_memory;
++#define REG32_READ(dev, mod, reg)                                       \
++    ({                                                                  \
++        uint32_t value;                                                 \
++        value = sysbus_mmio_read_addr(dev, mod##_BASE + _REG_OFF(mod, reg), \
++                                      sizeof(uint32_t));                \
++        debug("[%s] -> %08x\n", #reg, value);                           \
++        value;                                                          \
++    })
 +
-+/* Simulates guest memory space. */
-+static uint8_t *guest_mem;
-+static size_t guest_mem_size;
++#define REG32_WRITE(dev, mod, reg, value)                               \
++    do {                                                                \
++        debug("[%s] <- %08x\n", #reg, value);                           \
++        sysbus_mmio_write_addr(dev, mod##_BASE + _REG_OFF(mod, reg), value, \
++                               sizeof(uint32_t));                       \
++    } while (0)
 +
-+static uint64_t memory_region_ram_device_read(void *opaque,
-+                                              hwaddr addr, unsigned size)
-+{
-+    uint64_t data = (uint64_t)~0;
-+    uint8_t *buf = opaque;
++#define REG_FIELD_VAL(v, mod, reg, field)                               \
++    ((v & mod##_##reg##_##field##_Msk) >> mod##_##reg##_##field##_Pos)
 +
-+    switch (size) {
-+    case 1:
-+        data = *(uint8_t *)(buf + addr);
-+        break;
-+    case 2:
-+        data = *(uint16_t *)(buf + addr);
-+        break;
-+    case 4:
-+        data = *(uint32_t *)(buf + addr);
-+        break;
-+    case 8:
-+        data = *(uint64_t *)(buf + addr);
-+        break;
++#define REG32_READ_FIELD(dev, mod, reg, field)                  \
++    REG_FIELD_VAL(REG32_READ(dev, mod, reg), mod, reg, field)
++
++#define REG32_WRITE_FIELD(dev, mod, reg, field, val)                    \
++    do {                                                                \
++        uint32_t _tmp = REG32_READ(dev, mod, reg);                      \
++                                                                        \
++        _tmp &= ~mod##_##reg##_##field##_Msk;                           \
++        _tmp |= (val << mod##_##reg##_##field##_Pos) &                  \
++            mod##_##reg##_##field##_Msk;                                \
++        REG32_WRITE(dev, mod, reg, _tmp);                               \
++    } while (0)
++
++#define REG32_WRITE_FIELD_NOUPDATE(dev, mod, reg, field, val)           \
++    do {                                                                \
++        uint32_t _tmp;                                                  \
++                                                                        \
++        _tmp = (val << mod##_##reg##_##field##_Pos) &                   \
++            mod##_##reg##_##field##_Msk;                                \
++        REG32_WRITE(dev, mod, reg, _tmp);                               \
++    } while (0)
++
++#define WAIT_REG32_FIELD(ms, dev, mod, reg, field, val)         \
++    {                                                           \
++        int remaining = ms;                                     \
++                                                                \
++        while (remaining) {                                     \
++            if (REG32_READ_FIELD(dev, mod, reg, field) == val) {    \
++                break;                                          \
++            }                                                   \
++            main_loop_wait(false);                              \
++            usleep(1000);                                       \
++            remaining--;                                        \
++        }                                                       \
++                                                                \
++        g_assert(remaining);                                    \
 +    }
 +
-+    return data;
-+}
-+
-+static void memory_region_ram_device_write(void *opaque, hwaddr addr,
-+                                           uint64_t data, unsigned size)
++static inline MemTxResult reg32_addr_read_raw(DeviceState *dev, uint32_t addr,
++                                              uint32_t *value, uint32_t size)
 +{
-+    uint8_t *buf = opaque;
-+
-+    switch (size) {
-+    case 1:
-+        *(uint8_t *)(buf + addr) = (uint8_t)data;
-+        break;
-+    case 2:
-+        *(uint16_t *)(buf + addr) = (uint16_t)data;
-+        break;
-+    case 4:
-+        *(uint32_t *)(buf + addr) = (uint32_t)data;
-+        break;
-+    case 8:
-+        *(uint64_t *)(buf + addr) = data;
-+        break;
-+    }
-+}
-+
-+static const MemoryRegionOps ram_device_mem_ops = {
-+    .read = memory_region_ram_device_read,
-+    .write = memory_region_ram_device_write,
-+    .endianness = DEVICE_HOST_ENDIAN,
-+    .valid = {
-+        .min_access_size = 1,
-+        .max_access_size = 8,
-+        .unaligned = true,
-+    },
-+    .impl = {
-+        .min_access_size = 1,
-+        .max_access_size = 8,
-+        .unaligned = true,
-+    },
-+};
-+
-+void *cpu_physical_memory_map(hwaddr addr, hwaddr *plen, bool is_write)
-+{
-+    /* Mock implementation. Return a pointer inside the guest_mem buffer. */
-+    g_assert(guest_mem != NULL);
-+    g_assert(guest_mem_size <= addr + (size_t)plen);
-+
-+    return guest_mem + addr;
-+}
-+
-+void cpu_physical_memory_unmap(void *buffer, hwaddr len,
-+                               bool is_write, hwaddr access_len)
-+{
-+    /* Mock implementation. */
-+}
-+
-+MemTxResult address_space_read_full(AddressSpace *as, hwaddr addr,
-+                                    MemTxAttrs attrs, void *buf, hwaddr len)
-+{
-+    /* Mock implementation */
-+    g_assert(guest_mem != NULL);
-+
-+    if (guest_mem_size < addr + (size_t)len) {
-+        return MEMTX_ERROR;
-+    }
-+
-+    memcpy(buf, guest_mem + addr, len);
-+
-+    return MEMTX_OK;
-+}
-+
-+MemTxResult address_space_write(AddressSpace *as, hwaddr addr,
-+                                MemTxAttrs attrs,
-+                                const void *buf, hwaddr len)
-+{
-+    /* Mock implementation */
-+    g_assert(guest_mem != NULL);
-+
-+    if (guest_mem_size < addr + (size_t)len) {
-+        return MEMTX_ERROR;
-+    }
-+
-+    memcpy(guest_mem + addr, buf, len);
-+
-+    return MEMTX_OK;
-+}
-+
-+MemTxResult address_space_rw(AddressSpace *as, hwaddr addr, MemTxAttrs attrs,
-+                             void *buf, hwaddr len, bool is_write)
-+{
-+    if (is_write) {
-+        return address_space_write(as, addr, attrs, buf, len);
-+    } else {
-+        return address_space_read_full(as, addr, attrs, buf, len);
-+    }
-+}
-+
-+void cpu_physical_memory_rw(hwaddr addr, void *buf,
-+                            hwaddr len, bool is_write)
-+{
-+    address_space_rw(&address_space_memory, addr, MEMTXATTRS_UNSPECIFIED,
-+                     buf, len, is_write);
-+}
-+
-+void memory_region_init_io(MemoryRegion *mr, Object *owner,
-+                           const MemoryRegionOps *ops, void *opaque,
-+                           const char *name, uint64_t size)
-+{
-+    /* Mock implementation. */
-+    mr->size = size;
-+    mr->ops = ops;
-+    mr->opaque = opaque;
-+}
-+
-+void memory_region_init_ram_device_ptr(MemoryRegion *mr, Object *owner,
-+                                       const char *name, uint64_t size,
-+                                       void *ptr)
-+{
-+    mr->size = size;
-+    mr->ops = &ram_device_mem_ops;
-+    mr->opaque = ptr;
-+}
-+
-+void memory_region_set_readonly(MemoryRegion *mr, bool readonly)
-+{
-+    if (mr->readonly != readonly) {
-+        mr->readonly = readonly;
-+    }
-+}
-+
-+void sysbus_mmio_map(SysBusDevice *dev, int n, hwaddr addr)
-+{
-+    assert(n >= 0 && n < dev->num_mmio);
-+    dev->mmio[n].addr = addr;
-+    dev->mmio[n].memory->addr = addr;
-+}
-+
-+void sysbus_init_mmio(SysBusDevice *dev, MemoryRegion *memory)
-+{
-+    /* Mock implementation. */
-+    assert(dev->num_mmio < QDEV_MAX_MMIO);
-+    int n = dev->num_mmio++;
-+    dev->mmio[n].addr = -1;
-+    dev->mmio[n].memory = memory;
-+}
-+
-+static void sysbus_device_class_init(ObjectClass *klass, void *data)
-+{
-+    /* Mock implementation. */
-+}
-+
-+void sysbus_init_irq(SysBusDevice *dev, qemu_irq *p)
-+{
-+    qdev_init_gpio_out_named(DEVICE(dev), p, SYSBUS_DEVICE_GPIO_IRQ, 1);
-+}
-+
-+/*
-+ * Mock implementation of the sysbus device class.
-+ * Including the sysbus source code is difficult because of the dependencies,
-+ * so it is easier to define the type here.
-+ */
-+static const TypeInfo sysbus_device_type_info = {
-+    .name = TYPE_SYS_BUS_DEVICE,
-+    .parent = TYPE_DEVICE,
-+    .instance_size = sizeof(SysBusDevice),
-+    .abstract = true,
-+    .class_size = sizeof(SysBusDeviceClass),
-+    .class_init = sysbus_device_class_init,
-+};
-+
-+void sysbus_mock_init(void)
-+{
-+    type_register_static(&sysbus_device_type_info);
-+}
-+
-+/* Find the mmio region containing an address. */
-+static MemoryRegion *find_region(SysBusDevice *dev, hwaddr addr)
-+{
-+    int i;
-+
-+    for (i = 0; i < dev->num_mmio; i++) {
-+        if (dev->mmio[i].addr <= addr &&
-+            (addr - dev->mmio[i].addr) < dev->mmio[i].memory->size) {
-+
-+            return dev->mmio[i].memory;
-+        }
-+    }
-+
-+    return NULL;
-+}
-+
-+uint32_t sysbus_mmio_read_addr(DeviceState *dev, hwaddr addr, unsigned size)
-+{
-+    uint64_t value;
-+    MemTxResult result;
-+    MemoryRegion *mem = find_region(SYS_BUS_DEVICE(dev), addr);
-+
-+    assert(mem != NULL);
-+    assert(mem->ops->read_with_attrs != NULL || mem->ops->read != NULL);
-+
-+    if (mem->ops->read_with_attrs != NULL) {
-+        result = mem->ops->read_with_attrs(mem->opaque, addr - mem->addr,
-+                                           &value, size,
-+                                           MEMTXATTRS_UNSPECIFIED);
-+        assert(result == MEMTX_OK);
-+    } else {
-+        value = mem->ops->read(mem->opaque, addr - mem->addr, size);
-+    }
-+
-+    return (uint32_t)value;
-+}
-+
-+void sysbus_mmio_write_addr(DeviceState *dev, hwaddr addr, uint64_t value,
-+                            unsigned size)
-+{
-+    MemTxResult result;
-+    MemoryRegion *mem = find_region(SYS_BUS_DEVICE(dev), addr);
-+
-+    assert(mem != NULL);
-+    assert(mem->ops->write_with_attrs != NULL || mem->ops->write != NULL);
-+    assert(!mem->readonly);
-+
-+    if (mem->ops->write_with_attrs != NULL) {
-+        result = mem->ops->write_with_attrs(mem->opaque, addr - mem->addr,
-+                                            value, size,
-+                                            MEMTXATTRS_UNSPECIFIED);
-+        g_assert(result == MEMTX_OK);
-+    } else {
-+        mem->ops->write(mem->opaque, addr - mem->addr, value, size);
-+    }
-+}
-+
-+void sysbus_dev_set_guest_mem(void *mem, size_t size)
-+{
-+    guest_mem = mem;
-+    guest_mem_size = size;
-+}
-+
-+MemTxResult sysbus_mmio_read_addr_raw(DeviceState *dev, hwaddr addr,
-+                                      uint64_t *value, unsigned size)
-+{
++    MemTxResult res;
 +    uint64_t tmp;
-+    MemTxResult result;
-+    MemoryRegion *mem = find_region(SYS_BUS_DEVICE(dev), addr);
 +
-+    assert(mem != NULL);
-+
-+    result = mem->ops->read_with_attrs(dev, addr - mem->addr, &tmp,
-+                                       size,
-+                                       MEMTXATTRS_UNSPECIFIED);
-+    *value = tmp;
-+    return result;
++    res = sysbus_mmio_read_addr_raw(dev, addr, &tmp, size);
++    if (res == MEMTX_OK) {
++        *value = tmp;
++    }
++    debug("%d: [%x] -[%d]-> %08x\n", res, addr, size, *value);
++    return res;
 +}
 +
-+MemTxResult sysbus_mmio_write_addr_raw(DeviceState *dev, hwaddr addr,
-+                                       uint64_t value, unsigned size)
++static inline MemTxResult reg32_addr_write_raw(DeviceState *dev, uint32_t addr,
++                                               uint32_t value, uint32_t size)
 +{
-+    MemoryRegion *mem = find_region(SYS_BUS_DEVICE(dev), addr);
-+    assert(mem != NULL);
-+    assert(!mem->readonly);
++    MemTxResult res;
 +
-+    return mem->ops->write_with_attrs(dev, addr - mem->addr, value,
-+                                      size,
-+                                      MEMTXATTRS_UNSPECIFIED);
++    res = sysbus_mmio_write_addr_raw(dev, addr, value, size);
++    debug("%d: [%x] <-[%d]- %08x\n", res, addr, size, value);
++    return res;
 +}
-diff --git a/tests/unit/sysbus-mock.h b/tests/unit/sysbus-mock.h
-new file mode 100644
-index 0000000000..7a4c2e7b9a
---- /dev/null
-+++ b/tests/unit/sysbus-mock.h
-@@ -0,0 +1,82 @@
-+/*
-+ * System Bus Mock
-+ *
-+ * Copyright (C) 2024 Google LLC
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or later.
-+ * See the COPYING file in the top-level directory.
-+ */
 +
-+#ifndef SYSBUS_MOCK_H
-+#define SYSBUS_MOCK_H
-+
-+#include "qemu/osdep.h"
-+#include "qemu/log.h"
-+#include "qemu/module.h"
-+#include "hw/sysbus.h"
-+
-+/*
-+ * sysbus_mock_init
-+ *
-+ * Initialize the sysbus mock implementation.
-+ */
-+void sysbus_mock_init(void);
-+
-+/*
-+ * sysbus_mmio_read_addr
-+ * @dev: device structure
-+ * @addr: address to read from
-+ *
-+ * Read from an address in a mmio region and assert on errors.
-+ */
-+uint32_t sysbus_mmio_read_addr(DeviceState *dev, hwaddr addr, unsigned size);
-+
-+/*
-+ * sysbus_mmio_write_addr
-+ * @dev: device structure
-+ * @addr: address to write to
-+ * @value: value to write
-+ *
-+ * Write to an address in a mmio region and assert on errors.
-+ */
-+void sysbus_mmio_write_addr(DeviceState *dev, hwaddr addr, uint64_t value,
-+                            unsigned size);
-+
-+/*
-+ * sysbus_dev_set_guest_mem
-+ *
-+ * Set guest generic memory space.
-+ */
-+void sysbus_dev_set_guest_mem(void *mem, size_t size);
-+
-+
-+/*
-+ * sysbus_mmio_read_addr_raw
-+ * @dev: device structure
-+ * @addr: address to write to
-+ * @size: access size
-+ *
-+ * Read from an address in a mmio region and return errors.
-+ *
-+ * Returns: MEMTX_OK if the access was successful, MEMTX_ERROR otherwise
-+ */
-+MemTxResult sysbus_mmio_read_addr_raw(DeviceState *dev, hwaddr addr,
-+                                      uint64_t *value, unsigned size);
-+
-+/*
-+ * sysbus_mmio_write_addr_raw
-+ * @dev: device structure
-+ * @addr: address to write to
-+ * @value: value to write
-+ * @size: access size
-+ *
-+ * Write to an address in a mmio region and return errors.
-+ *
-+ * Returns: MEMTX_OK if the access was successful, MEMTX_ERROR otherwise
-+ */
-+MemTxResult sysbus_mmio_write_addr_raw(DeviceState *dev, hwaddr addr,
-+                                       uint64_t value, unsigned size);
-+
-+#endif /* SYSBUS_MOCK_H */
++#endif /* _REG_UTILS_H */
 -- 
 2.46.0.rc2.264.g509ed76dc8-goog

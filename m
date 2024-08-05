@@ -1,83 +1,83 @@
-Received: by 2002:a17:505:1e8b:b0:1be9:327d:8ee3 with SMTP id mw11csp986566njb;
-        Mon, 5 Aug 2024 13:17:59 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVmISiHWs1Osbj0W6ULrzuMrLfBr9tTPY8cVWbV1Um9Q7W7W9CbKnnBzLXhCkZC0A75JIG4F5PX+TQQHhWg/XUrXCDRBzxc
-X-Received: by 2002:a17:90a:c38a:b0:2cd:b938:770b with SMTP id 98e67ed59e1d1-2cff93c8c07mr10867855a91.5.1722889079082;
-        Mon, 05 Aug 2024 13:17:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1722889079; cv=none;
+Received: by 2002:a17:505:1e8b:b0:1be9:327d:8ee3 with SMTP id mw11csp986569njb;
+        Mon, 5 Aug 2024 13:18:00 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVvh62UYkQNF2FpY9prTJaLsO7fnNxhVz6JAFOmlSmdHKXo5ZMeFCjZInMKaL+vlh6j80DHRkaSolaQxmwcDdB8kaCEgSLG
+X-Received: by 2002:a0d:c5c3:0:b0:646:4057:a7c2 with SMTP id 00721157ae682-6895f9ec5d1mr131971367b3.15.1722889080573;
+        Mon, 05 Aug 2024 13:18:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1722889080; cv=none;
         d=google.com; s=arc-20160816;
-        b=RBW0+nTJu4d0UsXjf6JufA83ozCKhd55l8qyeI6e8jg1BjXrF1KyPrX38fxCqIOKyI
-         Gm0NaPg0yW/0rXlT2hLrqRfd6VFQIY1VB41z++jGGkl6CbKjZC6FBW+lxeE1/WUhiOWV
-         DC/fzgsGn8HC4KLtSNgmUH15g9zoYZEJZGRG9+iqZanDP3I1ImQ2JZGTSox1dM02Mff9
-         H0eiClthaYBgHbv6/7e94qRqMgmNZl0dRvlT39ULV1Hyokb2wZdMUYjS0vPujiN6wKrn
-         MfsSaMBrFVsAFYbxRLUY1Dav/B+1CsKT976C8KdD57TZnov9OIH+5L3TfCcxrcXLia25
-         XI3Q==
+        b=xkIKG1e8w5BGLw4rWmmklhZ2pco8lrrx8DDagrXUY+E2nWYmikXLzSSCuFHVnd1O0e
+         vybHXMd8caSxJkrvlTlwBFukHdiQ1moVFEkBVm+wAI+OhK0XXTPcsqOLAFd/02AiAe8K
+         OYXuheRD0YNV48vjBiTIBb/jg+SzjXB4s6uBDmxhnNcoN+Mb3ndd9I1bWQ+yz9Y+RjgK
+         xbgK9HoG53aDu5KFs19fGe1KmBq5YW4/+c58hjyZ7+QJsW7qB1Rqkd139WPh9lqL8JYr
+         DrVzJpSRZsZIpXwoiR8fo0IB0WFBKtl4/tR1/XzU3rz7jGOBgqwnn/J9baGdl0S+gfBJ
+         gJ9g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
          :date:dkim-signature;
-        bh=u4G3+QfEQuPGYkcQf8AOgE2UDxpBxkJrxB1kWGdX9cU=;
-        fh=zXZxe0qi4Tqd5K8gnXwQ6mmIQYKIZuxTYOpe6aNif0w=;
-        b=NI+XQOoy1Udo6jKCxbAeVzW72ttXK5gO2qp1DlQFudJRFMbZXUzPB+EWSmVkFYTUVq
-         ZjOzNo4cWXJovjheza8R+mG+sMa9mQywDj8BM9/3WNjU+SmsM/5uVgXR2RZYuUcA+gQQ
-         /VDPbnkyNnQgeabvCMNyDU80K89hsAN3aScCvm7WWElBwtPz+Dgc0aKsgYcQVAAkuaWy
-         MqviCAmzqDU6XzrGtj7NvWyXoRR/yekVq5JCH/sC9O2I8CkQmV4a/WC1+ajvxXe6b0sf
-         FD4LG8oIGQhRHO7spQGbYrKrnBQkHVzb03lvWiT3E+EBmnrGNqUPukycW/P9L2ciTMiI
-         pmag==;
+        bh=4u1P5SIla3BTMDBQNng926h7zNREK6etGIfsOHcMKR0=;
+        fh=Bio7xxthyemmgraPEtZk3BNF7O1RGPzsRY/ODXlrBUE=;
+        b=ftKpmgXvbPlH4CYb3rSbvkLoLQEmoNfJ/V13v2TU6Xi/wjqdg5PcQ50yoQ6Djz4kyH
+         zvad8d0GOFaNcfHlIcwaIf19eEr8euu7gmr3Sr8Im5wm12GwpzuAJ5qns++RTV9DyAg9
+         RozJ3CDVRZ/OucBaSA5jRr4WNfb8P1LIVZyPsGSwvRD7ulTf4pbbevraP4Qdi12lIAx3
+         zZryozVcCOJ4ohDxWToSfSzQZws5rUVov76+5xyJTqNvfUKOvGzQPhYL7v6aWe4wT6yq
+         xbG6B4zN2OvL2qNuEOjsWluRk+zJNCzv7L7eQ3zBITy7RVzMY3vJtJgA3CBxqducWb1E
+         sFcg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b="MkvC+/QF";
-       spf=pass (google.com: domain of 3djoxzgukc90s9uhofnnfkd.bnl9kdw.admmddkhm9qn.nqf@flex--tavip.bounces.google.com designates 209.85.220.73 as permitted sender) smtp.mailfrom=3djOxZgUKC90S9UHOFNNFKD.BNL9KDW.ADMMDDKHM9QN.NQF@flex--tavip.bounces.google.com;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=UTvqQENk;
+       spf=pass (google.com: domain of 3edoxzgukc98ubwjqhpphmf.dpnbmfy.cfooffmjobsp.psh@flex--tavip.bounces.google.com designates 209.85.220.73 as permitted sender) smtp.mailfrom=3eDOxZgUKC98UBWJQHPPHMF.DPNBMFY.CFOOFFMJOBSP.PSH@flex--tavip.bounces.google.com;
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
        dara=neutral header.i=@linaro.org
-Return-Path: <3djOxZgUKC90S9UHOFNNFKD.BNL9KDW.ADMMDDKHM9QN.NQF@flex--tavip.bounces.google.com>
+Return-Path: <3eDOxZgUKC98UBWJQHPPHMF.DPNBMFY.CFOOFFMJOBSP.PSH@flex--tavip.bounces.google.com>
 Received: from mail-sor-f73.google.com (mail-sor-f73.google.com. [209.85.220.73])
-        by mx.google.com with SMTPS id 98e67ed59e1d1-2cffbc8adafsor6626040a91.3.2024.08.05.13.17.58
+        by mx.google.com with SMTPS id 00721157ae682-68a1046fed2sor60361417b3.6.2024.08.05.13.18.00
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 05 Aug 2024 13:17:59 -0700 (PDT)
-Received-SPF: pass (google.com: domain of 3djoxzgukc90s9uhofnnfkd.bnl9kdw.admmddkhm9qn.nqf@flex--tavip.bounces.google.com designates 209.85.220.73 as permitted sender) client-ip=209.85.220.73;
+        Mon, 05 Aug 2024 13:18:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 3edoxzgukc98ubwjqhpphmf.dpnbmfy.cfooffmjobsp.psh@flex--tavip.bounces.google.com designates 209.85.220.73 as permitted sender) client-ip=209.85.220.73;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b="MkvC+/QF";
-       spf=pass (google.com: domain of 3djoxzgukc90s9uhofnnfkd.bnl9kdw.admmddkhm9qn.nqf@flex--tavip.bounces.google.com designates 209.85.220.73 as permitted sender) smtp.mailfrom=3djOxZgUKC90S9UHOFNNFKD.BNL9KDW.ADMMDDKHM9QN.NQF@flex--tavip.bounces.google.com;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=UTvqQENk;
+       spf=pass (google.com: domain of 3edoxzgukc98ubwjqhpphmf.dpnbmfy.cfooffmjobsp.psh@flex--tavip.bounces.google.com designates 209.85.220.73 as permitted sender) smtp.mailfrom=3eDOxZgUKC98UBWJQHPPHMF.DPNBMFY.CFOOFFMJOBSP.PSH@flex--tavip.bounces.google.com;
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20230601; t=1722889078; x=1723493878; darn=linaro.org;
+        d=google.com; s=20230601; t=1722889080; x=1723493880; darn=linaro.org;
         h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
          :date:from:to:cc:subject:date:message-id:reply-to;
-        bh=u4G3+QfEQuPGYkcQf8AOgE2UDxpBxkJrxB1kWGdX9cU=;
-        b=MkvC+/QFhURt1i/Kg5Rp3Wkr5mRb0URdOrDqnM7HEcaKCxXSS7Qap2DEcmAXMTAm7S
-         ax3m3Bx+wfR8ML4sYVAexruIYYFmF+CTmI1Xr8X4/Q2fHPa4BItQSyD9cM0TXOhaNr4l
-         isPcZuAxLozVLPr1Qx9f85RC99HvimJ6ZymGkmI4a9Q/Z/yZGiHG24eXYbML0OL7qb4+
-         wtztf47zv2DGL9JGj+6mOrcEiIdYp0ixm2ixlNmUSCmdKHuSNKTX+z3F3NvBCnHcSXQ7
-         +Fra9HtslEGAXwb7tMrLlQPUXL9BYHCicEYXYTQNHInyOQxf7uuxgPshDjaoKZagZeCg
-         RsNg==
+        bh=4u1P5SIla3BTMDBQNng926h7zNREK6etGIfsOHcMKR0=;
+        b=UTvqQENklDYRFpwxp4QuMjwtW97cCsp0GcebnC0h1M7I02A8fc3S8XhMOiC7jA+LyU
+         XqPg/9UVaZdl+Nco1375m5LwJf5+AHn9JK7p1qhWUYICKiKY5nrG7LqXx6HT1db+AnkT
+         ZCQIPZo/pKUtImwpIwOrrQ32o1jfDVlJ1g8T93stDbaVF7Pnwgyjx56aBNBda9ndeH06
+         40kiglepyH6kKJ4+TxQntzzufgIurZHEns4x5CjyRixSAkNsCCkHSSorZiYIMZK4F2/B
+         AQDWKNR6k4T+Ie7IHEfzQpKifz5WbLB+2zXhxFfMW1tTxjWiUjF+a4+QCU/MGZYAgrND
+         hX0Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1722889078; x=1723493878;
+        d=1e100.net; s=20230601; t=1722889080; x=1723493880;
         h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
          :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=u4G3+QfEQuPGYkcQf8AOgE2UDxpBxkJrxB1kWGdX9cU=;
-        b=sVNyRHQhWt39x7XQyms/hEkyPbleNJ66W7S/Qr7y2rfnS1GknCrwzd3gjAhcztLUt5
-         8Sh5VYGYNR8ZIiW0YGaJ2Ip7+/lRVniv9yC5g0jcQ3jVL0VPnrwul8qwR9vJFUwebJhd
-         lxq5nSi8m5MisGYuK/omqztzJo0LLi47IP/mFoMI8zK6HMOVv3BOqqnw7XYozHY/Xj3Y
-         85CQNKmgouvdz8phSpKUgKJJJSV/AuX76a52XCn3b/qrLXiACQ+Pc1MOY24DKHCJYZB0
-         CR4/v629K/0y6ZdJODf/TlnEpm5jj5iZyRbD81jBdEgyAzgMBkiTDPxOZBgIKFtkXstd
-         s5tA==
-X-Forwarded-Encrypted: i=1; AJvYcCVDCL3egmwaCjUDS92QRFz0ndGG40TaVl61DuH+cWWv/vxYdz1yRkrTIUPtw8fbvCkEl1osiLNq+oqnA7rLpJDXcGeUT0N/
-X-Gm-Message-State: AOJu0YySzYG9UJiVVQ5e0IgO/ATdELZi1glEtJ2kBQVbeAIujliARMGS
-	iWICinXXSDYjWq6I4ZW75q0TMdVB/6C0NHs4IYU+wrXDUq+Fs/v1c2GmvO3lBwghI5riEUZHdA=
+        bh=4u1P5SIla3BTMDBQNng926h7zNREK6etGIfsOHcMKR0=;
+        b=cDHzdvNfGWnuwg46iW8hZ+9jzUb8+JbpsdEE/kOXKkIoKTtAlOz8aJFHYBSF4iC3aH
+         opvtiIxUEYYKDoJt2mJcOM/ZQp9UfwYlBSXyg5NG+IhN/TxyDGrUrNtNg92lUkyIsqPB
+         wwY5+RUea9PQgUKKfreP8b7SKK4R/AUCfSJIiTKNR3J4b2JiYLibkii1+/bpCaLtTsge
+         uYwA3nnVjGoBRuaSukiYDNu89gVDyPU8bJI6z6nlDku4hmZRRgf56LyqGmImWFTmismz
+         KR/Y86xNZMmuDnsIMT2hHA1MOSVMLY38MfU16IAFkkyluCLegUBjCd68P6OAj4GePvBH
+         7Uhw==
+X-Forwarded-Encrypted: i=1; AJvYcCWJ/dGlccYHdmudBsIFrcS45QEQyXqwBG7zdmeudexSRUdxkJer7xBznbkwP/aTyHBGE6iOlO0UzoL+2cOaGGzM4SSdGsFd
+X-Gm-Message-State: AOJu0YwDrx+jWTTN/FSDdRuPkUs7jRfXWcLu5C7CzqpCMTxIYJnoW3Uk
+	Qjeq8jkHTqkyqXNlxgHPqgbHxqDQ1ZA7/aR7TbFebDcLLnF9MKhbiohTkQna6PLxFTPke6jpCQ=
 	=
-X-Google-Smtp-Source: AGHT+IFou9H80QB90t2SGEHQlrSm6cRFXg4Q/BYZGtoq36SYjaPwpS566HoPuRH/kcQrZnxxlae98b/Ryw==
+X-Google-Smtp-Source: AGHT+IETKmxMUfzjPk4qDciUlfp9GgJp/XDZSs4LIyahMhe5QVAt6LybinSSK4kDNRuQBJAnL26S8NRD1Q==
 X-Received: from warp10.c.googlers.com ([fda3:e722:ac3:cc00:24:72f4:c0a8:750])
- (user=tavip job=sendgmr) by 2002:a17:90a:6042:b0:2c3:1985:e9c3 with SMTP id
- 98e67ed59e1d1-2cff95243c6mr34825a91.3.1722889078446; Mon, 05 Aug 2024
- 13:17:58 -0700 (PDT)
-Date: Mon,  5 Aug 2024 13:17:16 -0700
+ (user=tavip job=sendgmr) by 2002:a05:690c:660d:b0:691:2f66:4af9 with SMTP id
+ 00721157ae682-6912f664f8amr3358477b3.4.1722889080107; Mon, 05 Aug 2024
+ 13:18:00 -0700 (PDT)
+Date: Mon,  5 Aug 2024 13:17:17 -0700
 In-Reply-To: <20240805201719.2345596-1-tavip@google.com>
 Mime-Version: 1.0
 References: <20240805201719.2345596-1-tavip@google.com>
 X-Mailer: git-send-email 2.46.0.rc2.264.g509ed76dc8-goog
-Message-ID: <20240805201719.2345596-22-tavip@google.com>
-Subject: [RFC PATCH 21/23] hw/misc: add support for RT500 reset controller
+Message-ID: <20240805201719.2345596-23-tavip@google.com>
+Subject: [RFC PATCH 22/23] hw/arm: add basic support for the RT500 SoC
 From: Octavian Purdila <tavip@google.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, stefanst@google.com, pbonzini@redhat.com, 
@@ -85,72 +85,58 @@ Cc: qemu-arm@nongnu.org, stefanst@google.com, pbonzini@redhat.com,
 	marcandre.lureau@redhat.com, alistair@alistair23.me, berrange@redhat.com, 
 	philmd@linaro.org, jsnow@redhat.com, crosa@redhat.com, bleal@redhat.com
 Content-Type: text/plain; charset="UTF-8"
-X-TUID: MOTwRFTsnpyZ
+X-TUID: YhJEIKiHQKSJ
 
-The RT500 reset controller has two instances that have the same
-register layout but with different fields for some registers.
-
-The model only provides set and clear functionality for the various
-reset lines which is common for both instances. Because of that only
-one type is implemented for both controllers.
+Add basic support for the RT500 SoC. It supports enough peripherals to
+run the NXP's microXpresso SDK hello world example.
 
 Signed-off-by: Octavian Purdila <tavip@google.com>
 ---
- hw/arm/svd/meson.build         |   8 ++
- hw/misc/Kconfig                |   3 +
- hw/misc/meson.build            |   1 +
- hw/misc/rt500_rstctl.c         | 219 +++++++++++++++++++++++++++++++++
- hw/misc/trace-events           |   4 +
- include/hw/misc/rt500_rstctl.h |  38 ++++++
- 6 files changed, 273 insertions(+)
- create mode 100644 hw/misc/rt500_rstctl.c
- create mode 100644 include/hw/misc/rt500_rstctl.h
+ hw/arm/Kconfig         |   8 +
+ hw/arm/meson.build     |   1 +
+ hw/arm/rt500.c         | 348 +++++++++++++++++++++++++++++++++++++++++
+ hw/arm/svd/meson.build |   6 +
+ include/hw/arm/rt500.h |  49 ++++++
+ 5 files changed, 412 insertions(+)
+ create mode 100644 hw/arm/rt500.c
+ create mode 100644 include/hw/arm/rt500.h
 
-diff --git a/hw/arm/svd/meson.build b/hw/arm/svd/meson.build
-index 22f75880f5..72a7421c6f 100644
---- a/hw/arm/svd/meson.build
-+++ b/hw/arm/svd/meson.build
-@@ -26,3 +26,11 @@ genh += custom_target('flexspi.h',
-                       output: 'flexspi.h',
-                       input: 'MIMXRT595S_cm33.xml',
-                       command: [ svd_gen_header, '-i', '@INPUT@', '-o', '@OUTPUT@', '-p', 'FLEXSPI0', '-t', 'FLEXSPI'])
-+genh += custom_target('rt500_rstctl0.h',
-+                      output: 'rt500_rstctl0.h',
-+                      input: 'MIMXRT595S_cm33.xml',
-+                      command: [ svd_gen_header, '-i', '@INPUT@', '-o', '@OUTPUT@', '-p', 'RSTCTL0', '-t', 'RT500_RSTCTL0'])
-+genh += custom_target('rt500_rstctl1.h',
-+                      output: 'rt500_rstctl1.h',
-+                      input: 'MIMXRT595S_cm33.xml',
-+                      command: [ svd_gen_header, '-i', '@INPUT@', '-o', '@OUTPUT@', '-p', 'RSTCTL1', '-t', 'RT500_RSTCTL1'])
-diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
-index 392ae9e84f..70a2a269ac 100644
---- a/hw/misc/Kconfig
-+++ b/hw/misc/Kconfig
-@@ -222,4 +222,7 @@ config RT500_CLKCTL0
- config RT500_CLKCTL1
-     bool
- 
-+config RT500_RSTCTL
-+    bool
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index 1ad60da7aa..7ffece3dec 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -712,3 +712,11 @@ config ARMSSE
+     select UNIMP
+     select SSE_COUNTER
+     select SSE_TIMER
 +
- source macio/Kconfig
-diff --git a/hw/misc/meson.build b/hw/misc/meson.build
-index 68929949a6..5e2728e982 100644
---- a/hw/misc/meson.build
-+++ b/hw/misc/meson.build
-@@ -160,3 +160,4 @@ system_ss.add(when: 'CONFIG_LASI', if_true: files('lasi.c'))
- system_ss.add(when: 'CONFIG_FLEXCOMM', if_true: files('flexcomm.c'))
- system_ss.add(when: 'CONFIG_RT500_CLKCTL0', if_true: files('rt500_clkctl0.c'))
- system_ss.add(when: 'CONFIG_RT500_CLKCTL1', if_true: files('rt500_clkctl1.c'))
-+system_ss.add(when: 'CONFIG_RT500_RSTCTL', if_true: files('rt500_rstctl.c'))
-diff --git a/hw/misc/rt500_rstctl.c b/hw/misc/rt500_rstctl.c
++config RT500
++    bool
++    select FLEXCOMM
++    select RT500_CLKCTL0
++    select RT500_CLKCTL1
++    select FLEXSPI
++    select RT500_RSTCTL
+diff --git a/hw/arm/meson.build b/hw/arm/meson.build
+index eb604d00cf..7d827d512c 100644
+--- a/hw/arm/meson.build
++++ b/hw/arm/meson.build
+@@ -59,6 +59,7 @@ arm_ss.add(when: 'CONFIG_ARM_SMMUV3', if_true: files('smmuv3.c'))
+ arm_ss.add(when: 'CONFIG_FSL_IMX6UL', if_true: files('fsl-imx6ul.c', 'mcimx6ul-evk.c'))
+ arm_ss.add(when: 'CONFIG_NRF51_SOC', if_true: files('nrf51_soc.c'))
+ arm_ss.add(when: 'CONFIG_XEN', if_true: files('xen_arm.c'))
++arm_ss.add(when: 'CONFIG_RT500', if_true: files('rt500.c'))
+ 
+ system_ss.add(when: 'CONFIG_ARM_SMMUV3', if_true: files('smmu-common.c'))
+ system_ss.add(when: 'CONFIG_CHEETAH', if_true: files('palm.c'))
+diff --git a/hw/arm/rt500.c b/hw/arm/rt500.c
 new file mode 100644
-index 0000000000..2806a94150
+index 0000000000..0866ef3ef6
 --- /dev/null
-+++ b/hw/misc/rt500_rstctl.c
-@@ -0,0 +1,219 @@
++++ b/hw/arm/rt500.c
+@@ -0,0 +1,348 @@
 +/*
-+ * QEMU model for RT500 Reset Controller
++ * i.MX RT500 platforms.
 + *
 + * Copyright (c) 2024 Google LLC
 + *
@@ -161,268 +147,410 @@ index 0000000000..2806a94150
 + */
 +
 +#include "qemu/osdep.h"
++#include "qapi/error.h"
++#include "hw/sysbus.h"
++#include "hw/arm/boot.h"
++#include "hw/boards.h"
 +#include "hw/irq.h"
-+#include "hw/qdev-properties.h"
 +#include "qemu/log.h"
-+#include "qemu/module.h"
++#include "qemu/datadir.h"
 +#include "exec/address-spaces.h"
-+#include "hw/regs.h"
-+#include "hw/misc/rt500_rstctl.h"
++#include "sysemu/reset.h"
++#include "sysemu/runstate.h"
++#include "sysemu/sysemu.h"
++#include "hw/arm/armv7m.h"
++#include "hw/loader.h"
++#include "hw/qdev-clock.h"
++#include "hw/misc/unimp.h"
++#include "hw/arm/rt500.h"
++#include "hw/arm/svd/rt500.h"
 +
-+#include "trace.h"
++#define MMAP_SRAM_CODE_BASE   (0x0)
++#define MMAP_SRAM_DATA_BASE   (0x20000000)
++#define MMAP_SRAM_SIZE        (5 * MiB)
++#define MMAP_BOOT_ROM_BASE    (0x03000000)
++#define MMAP_BOOT_ROM_SIZE    (192 * KiB)
++#define MMAP_SDMA_RAM_BASE    (0x24100000)
++#define MMAP_SDMA_RAM_SIZE    (32 * KiB)
++#define MMAP_FLEXSPI0_BASE    (0x08000000)
++#define MMAP_FLEXSPI0_SIZE    (128 * MiB)
++#define MMAP_FLEXSPI1_BASE    (0x28000000)
++#define MMAP_FLEXSPI1_SIZE    (128 * MiB)
 +
-+/*
-+ * There are two intances for RSTCTL with the same register names but
-+ * with different fields.
-+ */
-+#define reg(field) offsetof(RT500_RSTCTL0_Type, field)
-+#define regi(x) (reg(x) / sizeof(uint32_t))
-+#define REG_NO (sizeof(RT500_RSTCTL0_Type) / sizeof(uint32_t))
++#define SECURE_OFFSET    (0x10000000)
 +
-+#define RSTCTL_SYSRSTSTAT_WMASK (BITS(7, 4) | BIT(0))
-+#define RSTCL0_PRSCTL0_WMASK (BITS(30, 26) | BITS(24, 20) | BIT(18) | \
-+                              BIT(16) | BITS(12, 8) | BIT(3) | BIT(1))
-+#define RSTCL0_PRSCTL1_WMASK (BIT(24) | BITS(16, 15) | BITS(3, 2))
-+#define RSTCL0_PRSCTL2_WMASK (BITS(1, 0))
-+#define RSTCL1_PRSCTL0_WMASK (BIT(29) | BIT(27) |  BITS(25, 8))
-+#define RSTCL1_PRSCTL1_WMASK (BIT(31) | BITS(29, 28) | BITS(24, 23) | \
-+                              BIT(16) | BITS(7, 0))
-+#define RSTCL1_PRSCTL2_WMASK (BITS(31, 30) | BITS(17, 16) | BIT(10) | \
-+                              BIT(8) | BITS(4, 0))
++typedef enum MemInfoType {
++    MEM_RAM,
++    MEM_ROM,
++    MEM_ALIAS
++} MemInfoType;
 +
-+static RT500_RSTCTL0_REGISTER_NAMES_ARRAY(reg_names);
-+
-+static MemTxResult rt500_rstctl_read(void *opaque, hwaddr addr,
-+                                     uint64_t *data, unsigned size,
-+                                     MemTxAttrs attrs)
++static void do_sys_reset(void *opaque, int n, int level)
 +{
-+    RT500RstCtlState *s = opaque;
-+    MemTxResult ret = MEMTX_OK;
-+
-+    if (s->num > 1 || !reg32_aligned_access(addr, size)) {
-+        ret = MEMTX_ERROR;
-+        goto out;
++    if (level) {
++        qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
 +    }
-+
-+    switch (addr) {
-+    case reg(SYSRSTSTAT):
-+    case reg(PRSTCTL0):
-+    case reg(PRSTCTL1):
-+    case reg(PRSTCTL2):
-+        *data = reg32_read(&s->regs.ctl0, addr);
-+        break;
-+    default:
-+        ret = MEMTX_ERROR;
-+    }
-+
-+out:
-+    trace_rt500_rstctl_reg_read(DEVICE(s)->id, reg_names[addr], addr, *data);
-+    return ret;
 +}
 +
-+static MemTxResult rt500_rstctl_write(void *opaque, hwaddr addr,
-+                                      uint64_t value, unsigned size,
-+                                      MemTxAttrs attrs)
++static void rt500_init(Object *obj)
 +{
-+    RT500RstCtlState *s = opaque;
-+    static uint32_t mask0[REG_NO] = {
-+        [regi(SYSRSTSTAT)] = RSTCTL_SYSRSTSTAT_WMASK,
-+        [regi(PRSTCTL0)] = RSTCL0_PRSCTL0_WMASK,
-+        [regi(PRSTCTL1)] = RSTCL0_PRSCTL1_WMASK,
-+        [regi(PRSTCTL2)] = RSTCL0_PRSCTL2_WMASK,
-+        [regi(PRSTCTL0_SET)] = RSTCL0_PRSCTL0_WMASK,
-+        [regi(PRSTCTL1_SET)] = RSTCL0_PRSCTL1_WMASK,
-+        [regi(PRSTCTL2_SET)] = RSTCL0_PRSCTL2_WMASK,
-+        [regi(PRSTCTL0_CLR)] = RSTCL0_PRSCTL0_WMASK,
-+        [regi(PRSTCTL1_CLR)] = RSTCL0_PRSCTL1_WMASK,
-+        [regi(PRSTCTL2_CLR)] = RSTCL0_PRSCTL2_WMASK,
-+    };
-+    static uint32_t mask1[REG_NO] = {
-+        [regi(SYSRSTSTAT)] = RSTCTL_SYSRSTSTAT_WMASK,
-+        [regi(PRSTCTL0)] = RSTCL1_PRSCTL0_WMASK,
-+        [regi(PRSTCTL1)] = RSTCL1_PRSCTL1_WMASK,
-+        [regi(PRSTCTL2)] = RSTCL1_PRSCTL2_WMASK,
-+        [regi(PRSTCTL0_SET)] = RSTCL1_PRSCTL0_WMASK,
-+        [regi(PRSTCTL1_SET)] = RSTCL1_PRSCTL1_WMASK,
-+        [regi(PRSTCTL2_SET)] = RSTCL1_PRSCTL2_WMASK,
-+        [regi(PRSTCTL0_CLR)] = RSTCL1_PRSCTL0_WMASK,
-+        [regi(PRSTCTL1_CLR)] = RSTCL1_PRSCTL1_WMASK,
-+        [regi(PRSTCTL2_CLR)] = RSTCL1_PRSCTL2_WMASK,
-+    };
-+    uint32_t mask;
++    RT500State *s = RT500(obj);
++    int i;
 +
-+    trace_rt500_rstctl_reg_write(DEVICE(s)->id, reg_names[addr], addr, value);
++    /* Add ARMv7-M device */
++    object_initialize_child(obj, "armv7m", &s->armv7m, TYPE_ARMV7M);
 +
-+    if (s->num > 1 || !reg32_aligned_access(addr, size)) {
-+        return MEMTX_ERROR;
++    for (i = 0; i < RT500_FLEXCOMM_NUM; i++) {
++        char id[] = "flexcommXX";
++
++        snprintf(id, sizeof(id), "flexcomm%d", i);
++        object_initialize_child(obj, id, &s->flexcomm[i], TYPE_FLEXCOMM);
++        DEVICE(&s->flexcomm[i])->id = g_strdup(id);
 +    }
 +
-+    if (s->num == 0) {
-+        mask = mask0[addr / sizeof(uint32_t)];
-+    } else {
-+        mask = mask1[addr / sizeof(uint32_t)];
++    object_initialize_child(obj, "clkctl0", &s->clkctl0, TYPE_RT500_CLKCTL0);
++    object_initialize_child(obj, "clkctl1", &s->clkctl1, TYPE_RT500_CLKCTL1);
++
++    /* Initialize clocks */
++    s->sysclk = qdev_init_clock_in(DEVICE(s), "sysclk", NULL, NULL, 0);
++    s->refclk = qdev_init_clock_in(DEVICE(s), "refclk", NULL, NULL, 0);
++
++    for (i = 0; i < RT500_FLEXSPI_NUM; i++) {
++        char id[] = "flexspiXX";
++
++        snprintf(id, sizeof(id), "flexspi%d", i);
++        object_initialize_child(obj, id, &s->flexspi[i], TYPE_FLEXSPI);
++        DEVICE(&s->flexspi[i])->id = g_strdup(id);
 +    }
 +
-+    switch (addr) {
-+    case reg(SYSRSTSTAT):
-+    {
-+        /* write 1 to clear bits */
-+        s->regs.ctl0.SYSRSTSTAT &= ~(value & mask);
-+        break;
-+    }
-+    case reg(PRSTCTL0):
-+    case reg(PRSTCTL1):
-+    case reg(PRSTCTL2):
-+    {
-+        uint32_t idx = addr / sizeof(uint32_t);
++    for (i = 0; i < RT500_RSTCTL_NUM; i++) {
++        char id[] = "rstctlX";
 +
-+        s->regs.raw[idx] = (value & mask);
-+        break;
++        snprintf(id, sizeof(id), "rstctl%d", i);
++        object_initialize_child(obj, id, &s->rstctl[i],
++                                TYPE_RT500_RSTCTL);
++        DEVICE(&s->rstctl[i])->id = g_strdup(id);
 +    }
-+    case reg(PRSTCTL0_SET):
-+    case reg(PRSTCTL1_SET):
-+    case reg(PRSTCTL2_SET):
-+    {
-+        uint32_t idx;
-+
-+        idx = (reg(PRSTCTL0) + (addr - reg(PRSTCTL0_SET))) / sizeof(uint32_t);
-+        s->regs.raw[idx] |= (value & mask);
-+        break;
-+    }
-+    case reg(PRSTCTL0_CLR):
-+    case reg(PRSTCTL1_CLR):
-+    case reg(PRSTCTL2_CLR):
-+    {
-+        uint32_t idx;
-+
-+        idx = (reg(PRSTCTL0) + (addr - reg(PRSTCTL0_CLR))) / sizeof(uint32_t);
-+        s->regs.raw[idx] &= ~(value & mask);
-+        break;
-+    }
-+    }
-+
-+    return MEMTX_OK;
 +}
 +
++static void rt500_realize_memory(RT500State *s, Error **errp)
++{
++    const struct {
++        const char *name;
++        hwaddr base;
++        size_t size;
++        MemInfoType type;
++        int alias_for;
++    } mem_info[] = {
++        {
++            .name = "SRAM (code bus)",
++            .base = MMAP_SRAM_CODE_BASE,
++            .size = MMAP_SRAM_SIZE,
++            .type = MEM_RAM,
++        },
++        {
++            .name = "BOOT-ROM",
++            .base = MMAP_BOOT_ROM_BASE,
++            .size = MMAP_BOOT_ROM_SIZE,
++            .type = MEM_ROM,
++        },
++        {
++            .name = "Smart DMA RAM",
++            .base = MMAP_SDMA_RAM_BASE,
++            .size = MMAP_SDMA_RAM_SIZE,
++            .type = MEM_RAM,
++        },
++        {
++            .name = "SRAM (data bus)",
++            .base = MMAP_SRAM_DATA_BASE,
++            .size = MMAP_SRAM_SIZE,
++            .type = MEM_ALIAS,
++            .alias_for = 0
++        },
++    };
++    int i;
 +
-+static const MemoryRegionOps rt500_rstctl_ops = {
-+    .read_with_attrs = rt500_rstctl_read,
-+    .write_with_attrs = rt500_rstctl_write,
-+    .endianness = DEVICE_NATIVE_ENDIAN,
-+};
++    s->mem = g_malloc_n(2 * ARRAY_SIZE(mem_info), sizeof(MemoryRegion));
++    for (i = 0; i < ARRAY_SIZE(mem_info); i++) {
++        const char *name = mem_info[i].name;
++        int size = mem_info[i].size;
++        int type = mem_info[i].type;
++        int alias_for = mem_info[i].alias_for;
++        MemoryRegion *mem = &s->mem[i];
++        uint32_t base = mem_info[i].base;
++        MemoryRegion *sec_mem;
++        char sec_name[256];
 +
-+static Property rt500_rstctl_properties[] = {
-+    DEFINE_PROP_UINT32("num", RT500RstCtlState, num, 0),
++        switch (type) {
++        case MEM_RAM:
++            memory_region_init_ram(mem, OBJECT(s), name, size, errp);
++            break;
++        case MEM_ROM:
++            memory_region_init_rom(mem, OBJECT(s), name, size, errp);
++            break;
++        case MEM_ALIAS:
++        {
++            MemoryRegion *orig = &s->mem[alias_for];
++
++            memory_region_init_alias(mem, OBJECT(s), name, orig, 0, size);
++            break;
++        }
++        default:
++            g_assert_not_reached();
++        }
++
++        memory_region_add_subregion(get_system_memory(), base, mem);
++
++        /* create secure alias */
++        snprintf(sec_name, sizeof(sec_name), "SECURE %s", name);
++        sec_mem = &s->mem[ARRAY_SIZE(mem_info) + i];
++        if (type == MEM_ALIAS) {
++            mem = &s->mem[alias_for];
++        }
++        memory_region_init_alias(sec_mem, OBJECT(s), sec_name, mem, 0, size);
++        memory_region_add_subregion(get_system_memory(), base + SECURE_OFFSET,
++                                    sec_mem);
++
++        if (mem_info[i].type == MEM_ROM) {
++            char *fname = qemu_find_file(QEMU_FILE_TYPE_BIOS, "rt500.rom");
++
++            if (fname) {
++                int fsize = get_image_size(fname);
++                int ret;
++
++                if (fsize > size) {
++                    error_setg(errp, "rom file too big: %d > %d", fsize, size);
++                } else {
++                    ret = load_image_targphys(fname, base, size);
++                    if (ret < 0) {
++                        error_setg(errp, "could not load rom: %s", fname);
++                    }
++                }
++            }
++            g_free(fname);
++        }
++    }
++}
++
++static void rt500_realize(DeviceState *dev, Error **errp)
++{
++    MachineState *ms = MACHINE(qdev_get_machine());
++    RT500State *s = RT500(dev);
++    int i;
++
++    rt500_realize_memory(s, errp);
++
++    /* Setup ARMv7M CPU */
++    qdev_prop_set_uint32(DEVICE(&s->armv7m), "num-irq",
++                         RT500_FLEXCOMM16_IRQn + 1);
++    qdev_prop_set_uint8(DEVICE(&s->armv7m), "num-prio-bits", 3);
++    qdev_prop_set_string(DEVICE(&s->armv7m), "cpu-type", ms->cpu_type);
++    object_property_set_link(OBJECT(&s->armv7m), "memory",
++                             OBJECT(get_system_memory()), &error_abort);
++    if (!ms->kernel_filename) {
++        qdev_prop_set_uint32(DEVICE(&s->armv7m), "init-nsvtor",
++                             MMAP_BOOT_ROM_BASE);
++        qdev_prop_set_uint32(DEVICE(&s->armv7m), "init-svtor",
++                             MMAP_BOOT_ROM_BASE + SECURE_OFFSET);
++    }
++
++    qdev_connect_clock_in(DEVICE(&s->armv7m), "cpuclk", s->sysclk);
++    qdev_connect_clock_in(DEVICE(&s->armv7m), "refclk",
++                     qdev_get_clock_out(DEVICE(&s->clkctl0), "systick_clk"));
++
++    sysbus_realize_and_unref(SYS_BUS_DEVICE(&s->armv7m), errp);
++    qdev_connect_gpio_out_named(DEVICE(&s->armv7m), "SYSRESETREQ", 0,
++                                qemu_allocate_irq(&do_sys_reset, NULL, 0));
++
++    /* Setup FLEXCOMM */
++    for (i = 0; i < RT500_FLEXCOMM_NUM; i++) {
++        const uint32_t addr[] = {
++            RT500_FLEXCOMM0_BASE, RT500_FLEXCOMM1_BASE, RT500_FLEXCOMM2_BASE,
++            RT500_FLEXCOMM3_BASE, RT500_FLEXCOMM4_BASE, RT500_FLEXCOMM5_BASE,
++            RT500_FLEXCOMM6_BASE, RT500_FLEXCOMM7_BASE, RT500_FLEXCOMM8_BASE,
++            RT500_FLEXCOMM8_BASE, RT500_FLEXCOMM10_BASE, RT500_FLEXCOMM11_BASE,
++            RT500_FLEXCOMM12_BASE, RT500_FLEXCOMM13_BASE, RT500_FLEXCOMM14_BASE,
++            RT500_FLEXCOMM15_BASE, RT500_FLEXCOMM16_BASE
++        };
++        const int irq[] = {
++            RT500_FLEXCOMM0_IRQn, RT500_FLEXCOMM1_IRQn, RT500_FLEXCOMM2_IRQn,
++            RT500_FLEXCOMM3_IRQn, RT500_FLEXCOMM4_IRQn, RT500_FLEXCOMM5_IRQn,
++            RT500_FLEXCOMM6_IRQn, RT500_FLEXCOMM7_IRQn, RT500_FLEXCOMM8_IRQn,
++            RT500_FLEXCOMM9_IRQn, RT500_FLEXCOMM10_IRQn, RT500_FLEXCOMM11_IRQn,
++            RT500_FLEXCOMM12_IRQn, RT500_FLEXCOMM13_IRQn, RT500_FLEXCOMM14_IRQn,
++            RT500_FLEXCOMM15_IRQn, RT500_FLEXCOMM16_IRQn
++        };
++        const int functions[] = {
++            FLEXCOMM_FULL, FLEXCOMM_FULL, FLEXCOMM_FULL,
++            FLEXCOMM_FULL, FLEXCOMM_FULL, FLEXCOMM_FULL,
++            FLEXCOMM_FULL, FLEXCOMM_FULL, FLEXCOMM_FULL,
++            FLEXCOMM_FULL, FLEXCOMM_FULL, FLEXCOMM_FULL,
++            FLEXCOMM_FULL, FLEXCOMM_FULL, FLEXCOMM_HSSPI,
++            FLEXCOMM_PMICI2C, FLEXCOMM_HSSPI
++        };
++        DeviceState *ds = DEVICE(&s->flexcomm[i]);
++        char id[] = "flexcommXX";
++
++        snprintf(id, sizeof(id), "flexcomm%d", i);
++        qdev_prop_set_uint32(ds, "functions", functions[i]);
++        qdev_prop_set_chr(ds, "chardev", qemu_chr_find(id));
++        sysbus_realize_and_unref(SYS_BUS_DEVICE(ds), errp);
++        sysbus_mmio_map(SYS_BUS_DEVICE(ds), 0, addr[i]);
++        sysbus_connect_irq(SYS_BUS_DEVICE(ds), 0,
++                           qdev_get_gpio_in(DEVICE(&s->armv7m), irq[i]));
++    }
++
++    /* Setup CTLCTL0 */
++    qdev_connect_clock_in(DEVICE(&s->clkctl0), "sysclk", s->sysclk);
++    sysbus_realize_and_unref(SYS_BUS_DEVICE(DEVICE(&s->clkctl0)), errp);
++    sysbus_mmio_map(SYS_BUS_DEVICE(DEVICE(&s->clkctl0)), 0, RT500_CLKCTL0_BASE);
++
++    /* Setup CTLCTL1 */
++    qdev_connect_clock_in(DEVICE(&s->clkctl1), "sysclk", s->sysclk);
++    sysbus_realize_and_unref(SYS_BUS_DEVICE(DEVICE(&s->clkctl1)), errp);
++    sysbus_mmio_map(SYS_BUS_DEVICE(DEVICE(&s->clkctl1)), 0, RT500_CLKCTL1_BASE);
++
++    /* Setup FlexSPI */
++    for (i = 0; i < RT500_FLEXSPI_NUM; i++) {
++        const uint32_t addr[] = {
++            RT500_FLEXSPI0_BASE, RT500_FLEXSPI1_BASE
++        };
++        const uint32_t mmap_base[] = {
++            MMAP_FLEXSPI0_BASE, MMAP_FLEXSPI1_BASE
++        };
++        const uint32_t mmap_size[] = {
++            MMAP_FLEXSPI0_SIZE, MMAP_FLEXSPI1_SIZE,
++        };
++        DeviceState *ds = DEVICE(&s->flexspi[i]);
++
++        qdev_prop_set_uint32(ds, "mmap_base", mmap_base[i]);
++        qdev_prop_set_uint32(ds, "mmap_size", mmap_size[i]);
++        sysbus_realize_and_unref(SYS_BUS_DEVICE(ds), errp);
++        sysbus_mmio_map(SYS_BUS_DEVICE(ds), 0, addr[i]);
++    }
++
++    /* Setup reset controllers */
++    for (i = 0; i < RT500_RSTCTL_NUM; i++) {
++        DeviceState *ds = DEVICE(&s->rstctl[i]);
++
++        const uint32_t addr[] = {
++            RT500_RSTCTL0_BASE, RT500_RSTCTL1_BASE
++        };
++
++        qdev_prop_set_uint32(ds, "num", i);
++        sysbus_realize_and_unref(SYS_BUS_DEVICE(ds), errp);
++        sysbus_mmio_map(SYS_BUS_DEVICE(ds), 0, addr[i]);
++    }
++}
++
++static void rt500_finalize(Object *obj)
++{
++    RT500State *s = RT500(obj);
++
++    g_free(s->mem);
++}
++
++static void rt500_reset(DeviceState *ds)
++{
++}
++
++static Property rt500_properties[] = {
 +    DEFINE_PROP_END_OF_LIST(),
 +};
 +
-+static void rt500_rstctl_reset(DeviceState *dev)
++static void rt500_class_init(ObjectClass *oc, void *data)
 +{
-+    RT500RstCtlState *s = RT500_RSTCTL(dev);
++    DeviceClass *dc = DEVICE_CLASS(oc);
 +
-+    memset(&s->regs, 0, sizeof(s->regs));
-+
-+    switch (s->num) {
-+    case 0:
-+        rt500_rstctl0_reset_registers(&s->regs.ctl0);
-+        break;
-+    case 1:
-+        rt500_rstctl1_reset_registers(&s->regs.ctl1);
-+        break;
-+    }
++    device_class_set_props(dc, rt500_properties);
++    dc->realize = rt500_realize;
++    dc->desc = "RT500 (ARM Cortex-M33)";
++    dc->reset = rt500_reset;
 +}
 +
-+static void rt500_rstctl_init(Object *obj)
-+{
-+    RT500RstCtlState *s = RT500_RSTCTL(obj);
-+
-+    memory_region_init_io(&s->mmio, obj, &rt500_rstctl_ops, s,
-+                          TYPE_RT500_RSTCTL, sizeof(s->regs));
-+    sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->mmio);
-+}
-+
-+static void rt500_rstctl_realize(DeviceState *dev, Error **errp)
-+{
-+}
-+
-+static void rt500_rstctl_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+
-+    dc->reset = rt500_rstctl_reset;
-+    device_class_set_props(dc, rt500_rstctl_properties);
-+    dc->realize = rt500_rstctl_realize;
-+}
-+
-+static const TypeInfo rt500_rstctl_info = {
-+    .name          = TYPE_RT500_RSTCTL,
-+    .parent        = TYPE_SYS_BUS_DEVICE,
-+    .instance_size = sizeof(RT500RstCtlState),
-+    .instance_init = rt500_rstctl_init,
-+    .class_init    = rt500_rstctl_class_init,
++static const TypeInfo rt500_type_info = {
++    .name = TYPE_RT500,
++    .parent = TYPE_SYS_BUS_DEVICE,
++    .instance_size = sizeof(RT500State),
++    .instance_init = rt500_init,
++    .instance_finalize = rt500_finalize,
++    .class_init = rt500_class_init,
 +};
 +
-+static void rt500_rstctl_register_types(void)
++static void rt500_register_types(void)
 +{
-+    type_register_static(&rt500_rstctl_info);
++    type_register_static(&rt500_type_info);
 +}
 +
-+type_init(rt500_rstctl_register_types)
-diff --git a/hw/misc/trace-events b/hw/misc/trace-events
-index e65fcfa613..41a94d5ef6 100644
---- a/hw/misc/trace-events
-+++ b/hw/misc/trace-events
-@@ -365,3 +365,7 @@ rt500_clkctl0_reg_write(const char *regname, uint32_t addr, uint32_t val) "%s[0x
- # rt500_clkctl1.c
- rt500_clkctl1_reg_read(const char *regname, uint32_t addr, uint32_t val) "%s[0x%04x] -> 0x%08x"
- rt500_clkctl1_reg_write(const char *regname, uint32_t addr, uint32_t val) "%s[0x%04x] <- 0x%08x"
-+
-+# rt500_rstctl.c
-+rt500_rstctl_reg_read(const char *id, const char *regname, uint32_t addr, uint32_t val) "%s: %s[0x%04x] -> 0x%08x"
-+rt500_rstctl_reg_write(const char *id, const char *regname, uint32_t addr, uint32_t val) "%s: %s[0x%04x] <- 0x%08x"
-diff --git a/include/hw/misc/rt500_rstctl.h b/include/hw/misc/rt500_rstctl.h
++type_init(rt500_register_types)
+diff --git a/hw/arm/svd/meson.build b/hw/arm/svd/meson.build
+index 72a7421c6f..930a8b7343 100644
+--- a/hw/arm/svd/meson.build
++++ b/hw/arm/svd/meson.build
+@@ -34,3 +34,9 @@ genh += custom_target('rt500_rstctl1.h',
+                       output: 'rt500_rstctl1.h',
+                       input: 'MIMXRT595S_cm33.xml',
+                       command: [ svd_gen_header, '-i', '@INPUT@', '-o', '@OUTPUT@', '-p', 'RSTCTL1', '-t', 'RT500_RSTCTL1'])
++genh += custom_target('rt500.h',
++                      output: 'rt500.h',
++                      input: 'MIMXRT595S_cm33.xml',
++                      command: [ svd_gen_header,'-i', '@INPUT@', '-o', '@OUTPUT@', '-s', 'RT500',
++		                 '-p', 'FLEXCOMM0', '-p', 'CLKCTL0', '-p', 'CLKCTL1',
++				 '-p', 'FLEXSPI0', '-p', 'FLEXSPI1', '-p', 'RSTCTL0', '-p', 'RSTCTL1'])
+diff --git a/include/hw/arm/rt500.h b/include/hw/arm/rt500.h
 new file mode 100644
-index 0000000000..d9726df5f6
+index 0000000000..8ca7972f8a
 --- /dev/null
-+++ b/include/hw/misc/rt500_rstctl.h
-@@ -0,0 +1,38 @@
++++ b/include/hw/arm/rt500.h
+@@ -0,0 +1,49 @@
 +/*
-+ * QEMU model for RT500 Reset Controller
++ * i.MX RT500 platforms.
 + *
 + * Copyright (c) 2024 Google LLC
 + *
 + * SPDX-License-Identifier: GPL-2.0-or-later
 + *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or later.
-+ * See the COPYING file in the top-level directory.
++ * Contributions after 2012-01-13 are licensed under the terms of the
++ * GNU GPL, version 2 or (at your option) any later version.
 + */
 +
-+#ifndef HW_MISC_RT500_RSTCTL_H
-+#define HW_MISC_RT500_RSTCTL_H
++#ifndef HW_ARM_RT500_H
++#define HW_ARM_RT500_H
 +
-+#include "hw/arm/svd/rt500_rstctl0.h"
-+#include "hw/arm/svd/rt500_rstctl1.h"
-+#include "hw/sysbus.h"
++#include "qemu/osdep.h"
++#include "qemu/units.h"
++#include "hw/arm/boot.h"
++#include "hw/arm/armv7m.h"
++#include "hw/misc/flexcomm.h"
++#include "hw/misc/rt500_clkctl0.h"
++#include "hw/misc/rt500_clkctl1.h"
++#include "hw/ssi/flexspi.h"
++#include "hw/misc/rt500_rstctl.h"
 +
-+#define RSTCTL_Type RSTCTL0_Type
++#define TYPE_RT500 "rt500"
++#define RT500(obj) OBJECT_CHECK(RT500State, (obj), TYPE_RT500)
 +
-+#define TYPE_RT500_RSTCTL "rt500-rstctl"
-+#define RT500_RSTCTL(o) OBJECT_CHECK(RT500RstCtlState, o, TYPE_RT500_RSTCTL)
++#define RT500_FLEXCOMM_NUM (17)
++#define RT500_FLEXSPI_NUM (2)
++#define RT500_RSTCTL_NUM (2)
 +
-+typedef struct {
-+    /* <private> */
++typedef struct RT500State {
++    /*< private >*/
 +    SysBusDevice parent_obj;
 +
-+    /* <public> */
-+    MemoryRegion mmio;
-+    uint32_t num;
-+    union {
-+        RT500_RSTCTL0_Type ctl0;
-+        RT500_RSTCTL1_Type ctl1;
-+        uint32_t raw[sizeof(RT500_RSTCTL0_Type) / sizeof(uint32_t)];
-+    } regs;
-+} RT500RstCtlState;
++    /*< public >*/
++    ARMv7MState armv7m;
++    MemoryRegion *mem;
++    FlexcommState flexcomm[RT500_FLEXCOMM_NUM];
++    RT500ClkCtl0State clkctl0;
++    RT500ClkCtl1State clkctl1;
++    FlexSpiState flexspi[RT500_FLEXSPI_NUM];
++    RT500RstCtlState rstctl[RT500_RSTCTL_NUM];
 +
-+#endif /* HW_MISC_RT500_RSTCTL_H */
++    Clock *sysclk;
++    Clock *refclk;
++} RT500State;
++
++#endif /* HW_ARM_RT500_H */
 -- 
 2.46.0.rc2.264.g509ed76dc8-goog

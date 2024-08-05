@@ -1,103 +1,191 @@
-Received: by 2002:a17:505:1e8b:b0:1be9:327d:8ee3 with SMTP id mw11csp888960njb;
-        Mon, 5 Aug 2024 08:23:15 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWhgBL2/yGeqmkdm5sOkb3Zj2DA3ttNNgDCTW6JC/AmHOXTyf5KqigbI5IM4Mk2mQ3H2ZLs0vodghGd5eWFo3kv1IPpfqfF
-X-Google-Smtp-Source: AGHT+IFi3WJtDWpciRNxmTlDbT3QqQZZouRZrvRpNnOMdz4DoKbpg+v2UDhV0Xczt5caBOIYc+HI
-X-Received: by 2002:ac8:7e8b:0:b0:447:e6f9:f61c with SMTP id d75a77b69052e-451845ea327mr263857091cf.22.1722871395425;
-        Mon, 05 Aug 2024 08:23:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1722871395; cv=none;
+Received: by 2002:a17:505:1e8b:b0:1be9:327d:8ee3 with SMTP id mw11csp899497njb;
+        Mon, 5 Aug 2024 08:53:39 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCW25Lc4DhanbQbDMypSKg61Zhh7AUMKSE+8VfoIwwiRAuAE8429URSDcMawm/QPP3Un7v0paJziJm2ADLe1siPnQqbnkZgD
+X-Google-Smtp-Source: AGHT+IGeIQTXKXy9NY+ztuIa3UicD3SfLmXiiUfvWBthUy3qdANQDO2Uvuc57zNQBrblUiH6kqX1
+X-Received: by 2002:ac8:5a8c:0:b0:44f:fe8d:1b6d with SMTP id d75a77b69052e-45184550cf4mr247600221cf.15.1722873219539;
+        Mon, 05 Aug 2024 08:53:39 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1722873219; cv=pass;
         d=google.com; s=arc-20160816;
-        b=CQLDkijZJOHtJErFh+AmKADZz5Q8mE/JPgB85Z2UDB3jv90dB5n8ppVoVfwqRdxtVt
-         F6Ws7mDGhk34i2yNDZcAbqSSzr2YUv/dT8BRPct5uq0KsOlFbDRdX+DM9VYwinkn5wzk
-         ybqW8Lkg3SLYBDNWqodp2tAM0Q7l7xYmvu95xhE6IzWe/efqRUP9VFDMjTYe8gVuOJK1
-         wMftCAhEHe+hwjlRV1w9NrSyynxJferiu6SGnopWQe+KiUlv+aBG+p/mNevIWXpDKwVT
-         rO7YCX7ZNdLVzg0+7fq3saNQ10Vh0ZibOUJp24ZvLVJ2ou1TxrZb8XfYQg06yjKH0TTd
-         gvow==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=zirLVa3s4ZiQ/xRCGMjuzzo2lAmO9GDyw/Ox4jFyvufAKwhazevO1PthVptOLX8y9O
+         MY2ODKc0EYsxUWAxZR58TgOahJH+84Et36fe4YWW/xMgMT1HB8P+eZWIahnBJioAN40R
+         mBnjV+U/d8Y/ZFpvzehnCNJXxe1ouQH5dcIPAPZHGc6A5qYJgOn0ETC3Rj03/kk+lsY2
+         9j35DCCjuLlqzt7GbTnzYISDLjFujBHLBU7LhXBPTyi6OyKJTEzh04wrt7r++zPeZJm7
+         R2jQlcbolvqbl4zh7dB6K4w1IKileJNNV1V4MYAkojOEx/EjPEwb7QWensb1l+hlp1uI
+         dV2g==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:subject:cc:to:from
-         :date:dkim-signature;
-        bh=c4xph3cVeab4LVbARBUkbShdb3dGRyeYi9WqkR5mH9I=;
-        fh=/9oVe4uvmdDCPbUU8nEUIeLKGN99HCB7oHgRKtCMQxY=;
-        b=OAQLn/FZQv5/swl7qtooxQxcIrH4kB6gAhZH6LU5oNQcu4b5+38ws97BUybGh9uEy5
-         V0qFyjwDV8l/jAueHRbR8zYqfhlujlg+ZlMabAfPa8Sy9c6q5Jmp7kOcuqs8FMkmgsOb
-         +DNLdZPqex38Gi65JYM6GYyk7G/LSXfDQz7udxgv2DcPzf33SAcXeeo/EfHitU6j2akP
-         CYUHMLMc9/g81WQ12CNQtxymSJ3qVSSJhke4xoqXx99k0KiBW38si5Fzae+7RTSLjBvk
-         /qHEjlLcoZzYZjVY++KTkX1U7kPRRBNIcKskAECuLqr+CpV2ay29u6XM/1daEBqpJ5bT
-         R+ag==;
+         :list-unsubscribe:list-id:precedence:stx-hosted-ironport-oubound
+         :content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:stx-internal-mailhost:dkim-signature:dkim-signature;
+        bh=1XCh4uxi4wGlzYHF6iM0FBG3aLPFpO8KFJJeiddiVqI=;
+        fh=dS3w8vDwfKBN2Vq6GqWGLTptD5N4AIqdQvGcpQjs9Io=;
+        b=DZL+m+6pirzlFol194kXTGXX3TU4/jGmEyK/W/nwtJ7gBvbyF4fqr9UNKXco61d5hW
+         bURi946gOXPDiBsPyLWy0KDw6OQS+RYxJRw+A/p4pLmorHUepU4MoZbC+gvwmM3kFo2m
+         TZDASZComem8qI/CjJxYeulVh6N4ww/7sEztuVP3eM5hxvOEthbblmmvby6xrCLswmha
+         NaIMcOqLMtOLDAsRswyISVYlPJX65dRZSrMaoOjGiEqRU8yiqckvWYuYW+HEWpLIz/qs
+         AAH2RXJA3Ie9mA2N2DS1IEYMpCJazFQH60kO9YTvXAoRE47ZlMZ5Q9q7DICid72ORf0P
+         lyyQ==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=J+EcWmFr;
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=fail header.i=@seagate.com header.s=stxiport header.b=H91XTrAT;
+       dkim=pass header.i=@seagate.com header.s=selector1 header.b=djYgjk7l;
+       arc=pass (i=1);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=seagate.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4518a7645a1si96886731cf.230.2024.08.05.08.23.15
+        by mx.google.com with ESMTPS id d75a77b69052e-4518a77eef8si98563751cf.479.2024.08.05.08.53.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 05 Aug 2024 08:23:15 -0700 (PDT)
+        Mon, 05 Aug 2024 08:53:39 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=J+EcWmFr;
+       dkim=fail header.i=@seagate.com header.s=stxiport header.b=H91XTrAT;
+       dkim=pass header.i=@seagate.com header.s=selector1 header.b=djYgjk7l;
+       arc=pass (i=1);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=seagate.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sazXj-00033c-J1; Mon, 05 Aug 2024 11:22:39 -0400
+	id 1sb011-0007UD-Qa; Mon, 05 Aug 2024 11:52:55 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mchehab+huawei@kernel.org>)
- id 1sazXg-00030V-0A; Mon, 05 Aug 2024 11:22:36 -0400
-Received: from dfw.source.kernel.org ([139.178.84.217])
+ (Exim 4.90_1) (envelope-from <alejandro.zeise@seagate.com>)
+ id 1sb010-0007TF-3h; Mon, 05 Aug 2024 11:52:54 -0400
+Received: from esa.hc4959-67.iphmx.com ([139.138.35.140])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mchehab+huawei@kernel.org>)
- id 1sazXb-0005AT-5e; Mon, 05 Aug 2024 11:22:34 -0400
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by dfw.source.kernel.org (Postfix) with ESMTP id A432B60C55;
- Mon,  5 Aug 2024 15:22:20 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 21125C4AF0E;
- Mon,  5 Aug 2024 15:22:17 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1722871340;
- bh=8abpcgimZ8zhWhHlWs9YVGQE18wAOSsWG48ZhjBiE8Y=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=J+EcWmFrHfavILP+4wyerdS0sBKsXIKEo3qbw9viOT6Bs+G+kubhy4Fl8O/dMnFtG
- WqjI/2UQgkmzntO+dtXM5QNqfz3EtVaZ8v4pyFUvFr43pWlZDPVUCNP3zT3Kxsc4E/
- ZT9omEnyzxHC0mJhbzLQ9e91Y78JaRqIHwC8eTT2oHKML+gCszAlkAbrbM55Ml605u
- jb5bACG5+6otD/RqFVCU3pzBXI1Lbqf8wLej5cEnVgs/XlOCD27LlcLCVxmxqGL8Ll
- +9wNpzgXZWENUSsa08mq4Zap2rDloxyKIShZGl+XRvVQjzJZadd23YlO5qv0x2yRUJ
- 9qDfaS9A2Hjzw==
-Date: Mon, 5 Aug 2024 17:22:15 +0200
-From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-To: Igor Mammedov <imammedo@redhat.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Jonathan Cameron
- <Jonathan.Cameron@huawei.com>, Shiju Jose <shiju.jose@huawei.com>, "Michael
- S. Tsirkin" <mst@redhat.com>, Ani Sinha <anisinha@redhat.com>, Shannon Zhao
- <shannon.zhaosl@gmail.com>, linux-kernel@vger.kernel.org,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [PATCH v3 1/7] arm/virt: place power button pin number on a define
-Message-ID: <20240805172215.0c8c2597@foz.lan>
-In-Reply-To: <20240805160439.0bafb58d@imammedo.users.ipa.redhat.com>
-References: <cover.1721630625.git.mchehab+huawei@kernel.org>
- <bf8367bddfdc95e378b5725c732533c3ba20d388.1721630625.git.mchehab+huawei@kernel.org>
- <20240730092549.6898ff3c@imammedo.users.ipa.redhat.com>
- <CAFEAcA8VWc3eQZqfJP9k5LYF-9aLChHQ+uS9UBfGV6nvybDxqQ@mail.gmail.com>
- <20240730132620.46cca4ce@imammedo.users.ipa.redhat.com>
- <20240801151544.2f315598@foz.lan>
- <20240805160439.0bafb58d@imammedo.users.ipa.redhat.com>
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
+ (Exim 4.90_1) (envelope-from <alejandro.zeise@seagate.com>)
+ id 1sb00x-0003mM-Sg; Mon, 05 Aug 2024 11:52:53 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+ d=seagate.com; i=@seagate.com; q=dns/txt; s=stxiport;
+ t=1722873172; x=1754409172;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=09RX23Wtzq+fv5ZYsbMviGBMA+4n/QejKP21Iqo8EeY=;
+ b=H91XTrATGxhJ/R3W5JhY1iQ96z4t5hF3BzellSJU+HZekEOyiMvRQlwy
+ g0Gs95onoP1ACZprEkBjLOHn+NKFYLPEGMZCFVSRu18bxYR62OmLYZGi4
+ ri3dqmM17fgkM0qJ3vW9eYlLdGJMV+97YoBe/dlB0I6/D0cgW1G+Ziryo 8=;
+X-CSE-ConnectionGUID: JAJh/Q38TfCBxx6dmDy+7A==
+X-CSE-MsgGUID: JvjVCvsJSRuMLKhvmQD0yA==
+Received: from mail-dm6nam10lp2101.outbound.protection.outlook.com (HELO
+ NAM10-DM6-obe.outbound.protection.outlook.com) ([104.47.58.101])
+ by ob1.hc4959-67.iphmx.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 05 Aug 2024 08:52:46 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=Gmbxz7zOZfkoDDH+ooEq5Jrp0jo8v788G4Wh9+zOCDSmY88hZyx+dDF6bojUCpGBiLsHR+NMZt5VesYr1bcs9EKVC9nlVopB87kTmntXbc2huqIYINfctEFd6+8wapWadffqLTeobo+rKI+C4Rzf30Hm+gkq+62rICf+T2cmGHKv+oDOgWxEne6V5X1T5YfG0AefGh0QKHpn6Xzi2XDLOWA4iwUyLVMX6xNcaYdMrAQm88H/ohVX+NI9Urb4wr3JC3tn8udlbSPvL8E749Kp7BovzZ4RhnT4qEllw0kBmjowP4oO3Y/zOC682zFNxiNo5DtV+jLUzNVkJDPCMfdfzA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=1XCh4uxi4wGlzYHF6iM0FBG3aLPFpO8KFJJeiddiVqI=;
+ b=wUlarkV14k8mqP5qBTF8gPzdmxAbrdlsQR+V31Ivta0d/cOhrhJmnG49ELahC216DOY8j6e++UVI0TTJO0xA5CmLMEX2jTeGBwakuskkS3sm+GXqNj4AKIhaf5s0pWFMJrijp6IZQTzTwRhOEBJAktM3gA9xSG/e2NTuNOauIbIp2svn6FbPRTpD5o4R66ykTTvxuZ4QUcntUjKMuTy7VtPRIyXhrgMMUlti6GYVQMkzF1jLUtDwdz9gXhWofN3Ih9ks7p38TdznqJkwbvVlaVXQ11fkDtrCmEdlIejeC5MHeIj1JqLGsGHqJFNPnI31HNv23MCvEbzl8d5bU/k/jw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=softfail (sender ip
+ is 134.204.222.53) smtp.rcpttodomain=nongnu.org smtp.mailfrom=seagate.com;
+ dmarc=fail (p=reject sp=reject pct=100) action=oreject
+ header.from=seagate.com; dkim=none (message not signed); arc=none (0)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=seagate.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=1XCh4uxi4wGlzYHF6iM0FBG3aLPFpO8KFJJeiddiVqI=;
+ b=djYgjk7lpv4H/SzuKVb/rubKab0F80Z2oYvurun0Py2ltSsXXq9iGxFRkxCTjMtMgwjg71TH9ASbG8emEr6d0tPpIF527xDMkA5w4BvF8N2rCjWZZaufq/MczDNSjHrrhVVTw2RgNov0vTLMmd/8F6yP8II302SNVDEae4G0RY4=
+Received: from MW4PR04CA0377.namprd04.prod.outlook.com (2603:10b6:303:81::22)
+ by DS0PR20MB5906.namprd20.prod.outlook.com (2603:10b6:8:141::7) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7828.23; Mon, 5 Aug
+ 2024 15:52:43 +0000
+Received: from CO1PEPF000044F2.namprd05.prod.outlook.com
+ (2603:10b6:303:81:cafe::a4) by MW4PR04CA0377.outlook.office365.com
+ (2603:10b6:303:81::22) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7828.26 via Frontend
+ Transport; Mon, 5 Aug 2024 15:52:42 +0000
+X-MS-Exchange-Authentication-Results: spf=softfail (sender IP is
+ 134.204.222.53) smtp.mailfrom=seagate.com; dkim=none (message not signed)
+ header.d=none;dmarc=fail action=oreject header.from=seagate.com;
+Received: from lcopzesaa002.seagate.com (134.204.222.53) by
+ CO1PEPF000044F2.mail.protection.outlook.com (10.167.241.72) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.7849.8 via Frontend Transport; Mon, 5 Aug 2024 15:52:42 +0000
+X-CSE-ConnectionGUID: HW0PO65NSiOEZMt4OIx1kg==
+X-CSE-MsgGUID: k6a/LyrCTOSGgYNxBUiVzg==
+Received: from lcopiesaa001.seagate.com ([10.230.120.52])
+ by lcopzesaa002.seagate.com with ESMTP; 05 Aug 2024 08:57:33 -0700
+X-CSE-ConnectionGUID: tYOfS65rTTqpEKM3RIotQQ==
+X-CSE-MsgGUID: lJ6gDgAPRfacefceJcmFng==
+X-IronPort-AV: E=Sophos;i="6.09,265,1716274800"; d="scan'208";a="106920677"
+STX-Internal-Mailhost: TRUE
+Received: from unknown (HELO cortana..) ([10.4.50.14])
+ by lcopiesaa001.seagate.com with ESMTP; 05 Aug 2024 08:52:33 -0700
+From: Alejandro Zeise <alejandro.zeise@seagate.com>
+To: qemu-arm@nongnu.org
+Cc: alejandro.zeise@seagate.com, kris.conklin@seagate.com,
+ jonathan.henze@seagate.com, evan.burgess@seagate.com, clg@kaod.org,
+ peter.maydell@linaro.org, berrange@redhat.com, qemu-devel@nongnu.org
+Subject: [PATCH v3 00/12] hw/misc/aspeed_hace: Fix SG Accumulative Hash
+ Calculations
+Date: Mon,  5 Aug 2024 15:50:35 +0000
+Message-Id: <20240805155047.3151540-1-alejandro.zeise@seagate.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=139.178.84.217;
- envelope-from=mchehab+huawei@kernel.org; helo=dfw.source.kernel.org
-X-Spam_score_int: -71
-X-Spam_score: -7.2
-X-Spam_bar: -------
-X-Spam_report: (-7.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.143,
+Content-Transfer-Encoding: 8bit
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: CO1PEPF000044F2:EE_|DS0PR20MB5906:EE_
+Content-Type: text/plain
+X-MS-Office365-Filtering-Correlation-Id: 32503e5a-e0fb-42f3-5d1c-08dcb566a426
+STX-Hosted-IronPort-Oubound: True
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+ ARA:13230040|1800799024|36860700013|82310400026|376014; 
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?pehL7GzPi/IX5gQ5Y+8PRuMtIXW+ObmD0MoGJfEZir88jEt/s8YTUy0W5PQr?=
+ =?us-ascii?Q?h2J4yFA3EB/ogIIEjNL4dw3b/PyWTVz2pTz2iF71U7gFB7N55Sz1B/RkITOI?=
+ =?us-ascii?Q?nrbGAqYdnQerj6n+idFeUsM3Ihfpg2X5lKzH65yFsRWmhXC5c8OZgct4Fb1Y?=
+ =?us-ascii?Q?LS9PWdu8MnBV/jl9yhKVDMvVYHN58jcqOxFI39bIM0XYuOAvxDCRI7blPcgA?=
+ =?us-ascii?Q?IO189AWzcqCO2K9xqCU3FGYKg18QzNE0gScE6tvK6Le93Zhb8PIyNyGLy+O1?=
+ =?us-ascii?Q?7PV+51srpFyZLcZZdqli15ZeBUOfUm0XWaDJO0f/yIdI0JrHyXIPBVf1liuO?=
+ =?us-ascii?Q?Nt9SxfLa3XWDyuRfh8gSQvTZ044OR0ooNgh94c+9uNU4lCYdUdnA6Pv0lBJu?=
+ =?us-ascii?Q?mQPRY/aoEY0NfDX1WXFpvJ2m9DSGVBtS8aisryx9Ifv5D2j5DzqsF4P/5CoC?=
+ =?us-ascii?Q?vXkogKSEGH5qdnwJ8FVcBOv4kJ08ct56jn8WZv7u+UalI2OOufBS8Ban1dZ/?=
+ =?us-ascii?Q?9bLhRRmf6Yhp8VicCqXq+zXFhiWDanFvW1pbW7Anlg/zXXlXRRC03qVJvidM?=
+ =?us-ascii?Q?icSB8yX/pHsTX2FQheqIFllyIuOus9eIaq84YR4eRFfiI4IIEuGjhlxoUcR9?=
+ =?us-ascii?Q?/d1uj2LC3LV4fWwga46OnXPKcY8qc5njqcdTIBB5jzZG9GA45YPNeWSTxiUk?=
+ =?us-ascii?Q?/bh1DoEp3lPZfrWqbdC6p0vLW7Id+Wwp5spKBvnSLYUWCuAou1XZpeyCwGa+?=
+ =?us-ascii?Q?VtZYCLVGrWICroQkinTSHl5gw5du0ekzOHcf/CRpkatbn+nCmy+WyBqg7aUN?=
+ =?us-ascii?Q?Bj7pFSb9G+9VsR93rhtP8Zx9stcwDyL65/CdBFbLGhCCrlOBeKLRrurAt4rS?=
+ =?us-ascii?Q?jxa573LfnuQhzfjlWYdVP7AmtqIzCZv72WF1cWvgsvzMwg/f7jyDCCKch9OI?=
+ =?us-ascii?Q?E7OYxoMerfb4QQ/nV2oeODIWxfh4AnXFj7n1K7NpJolQg6vNUBhskG8rHCLv?=
+ =?us-ascii?Q?CYnrfJy92Qz5lgQ9I7l2pVc8VersvKv25gzS2mGkgq8eri+bjERGyrJzNIU6?=
+ =?us-ascii?Q?Sb+L2sENzpHZvaPcq78Te/6yMDDqcfOVG3GWhwBwE0xKTAhJZYgSBzcxfiJy?=
+ =?us-ascii?Q?kA7etX/r5PHy0SSpltE+4v2oYRTmulXYsIRr53fkDrnxIsJwhOWGeQOmpbYR?=
+ =?us-ascii?Q?+D/xYnvt1At14QRuwI5oIoWZ2a9a8C1q7sneK8SanafAvYhLQNt9bNSoDQs8?=
+ =?us-ascii?Q?anoiMLigT0J0s5ir74Fx+0AANn2pmJO35faH+afVhofxO5Q+5uYS2173y31/?=
+ =?us-ascii?Q?XHwRKP+Qsgc8aj+zYbPna3Xmx7KaOebPWJCwOkDV9V+H18PV5Ndfdl5TTGyd?=
+ =?us-ascii?Q?Sdsz8vRHt98+Yq3qFEAMOv4V4AMA+t7kPjiSwOrVuJG8C/YC1C/DLcz5+Cg/?=
+ =?us-ascii?Q?JAKUr+BypuWJYDpOlNoyj0LntJACzmM9?=
+X-Forefront-Antispam-Report: CIP:134.204.222.53; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:CAL; SFV:NSPM; H:lcopzesaa002.seagate.com; PTR:InfoDomainNonexistent;
+ CAT:NONE; SFS:(13230040)(1800799024)(36860700013)(82310400026)(376014);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-ExternalHop-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-ExternalHop-MessageData-0: ihQtGplpOPYyuebKX95/B2ZNq+0CfbTorXDA92r4GDAbjdv3m2OGaKd8fmI9QSB/szowRdhEbxDWJHOnVZl4muviV0EfkB/M7jjiJNZ1oQ9fsQy3loT8rLtyRPmskd0bMBwKzZZ6igtI9KLAo0i4bH3LADKs237Yvnopov4v4i/o1jsJ02QmWPY0PRCpyA4FciVkTfuRA3sxcHaFoJE98GEf+g288hwWT9Qm4Y9JWk93RjD6dHe4hg+mnpTDlV2HFN47mMgep3m7g00itUWlfoPdl8CwmAYI7pzoptSP8GOIIwn8PGOM9K9wz/Njt3tk4hX/Ns614+joEI3FXwpcxHxHCqwmmcHjSwtCFHGnxPGXGx9RgLPVOkK9MN+eZJMO8urts9U5hnyandVj9liAqfp01MLOFJeE30hlk1jcKvJfZLMFO3EJL6CZrfzDovD4tRxmFUJVqQzsfG1kVVP/TwgtjR7wkxPbRTxBny++3DqIhLnR/BYRkvLkVOsmNPvR7EzIznDeQerR5AaopXPIActrkm9Ll9VGHTSPfJh63j2swvWQS7YotQuQf+IvJINlAKtxCofJjeWUXxuPtiNWS4D1RdLyUQjkJ9V5Dx5470YCANUCHRsJ4s2WONzLUnF2
+X-OriginatorOrg: seagate.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 05 Aug 2024 15:52:42.0818 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 32503e5a-e0fb-42f3-5d1c-08dcb566a426
+X-MS-Exchange-CrossTenant-Id: d466216a-c643-434a-9c2e-057448c17cbe
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=d466216a-c643-434a-9c2e-057448c17cbe; Ip=[134.204.222.53];
+ Helo=[lcopzesaa002.seagate.com]
+X-MS-Exchange-CrossTenant-AuthSource: CO1PEPF000044F2.namprd05.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS0PR20MB5906
+Received-SPF: pass client-ip=139.138.35.140;
+ envelope-from=alejandro.zeise@seagate.com; helo=esa.hc4959-67.iphmx.com
+X-Spam_score_int: -44
+X-Spam_score: -4.5
+X-Spam_bar: ----
+X-Spam_report: (-4.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.143,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_HI=-5, SPF_HELO_NONE=0.001,
+ RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -113,99 +201,68 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: tkIbTjYzS5ot
+X-TUID: z9hr4cS2QpCa
 
-Em Mon, 5 Aug 2024 16:04:39 +0200
-Igor Mammedov <imammedo@redhat.com> escreveu:
+The goal of this patch series is to fix accumulative hashing support in the 
+Aspeed HACE module. The issue that stemmed this patch was a failure to boot an
+OpenBMC image using the "ast2600-evb" machine. The U-boot
+2019.04 loader failed to verify image hashes.
 
-> On Thu, 1 Aug 2024 15:15:44 +0200
-> Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
-> 
-> > Em Tue, 30 Jul 2024 13:26:20 +0200
-> > Igor Mammedov <imammedo@redhat.com> escreveu:
-> >   
-> > > On Tue, 30 Jul 2024 09:29:37 +0100
-> > > Peter Maydell <peter.maydell@linaro.org> wrote:
-> > >     
-> > > > On Tue, 30 Jul 2024 at 08:26, Igor Mammedov <imammedo@redhat.com> wrote:      
-> > > > >
-> > > > > On Mon, 22 Jul 2024 08:45:53 +0200
-> > > > > Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
-> > > > >        
-> > > > > > Having magic numbers inside the code is not a good idea, as it
-> > > > > > is error-prone. So, instead, create a macro with the number
-> > > > > > definition.
-> > > > > >
-> > > > > > Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-> > > > > > Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>        
-> > > >       
-> > > > > > diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> > > > > > index b0c68d66a345..c99c8b1713c6 100644
-> > > > > > --- a/hw/arm/virt.c
-> > > > > > +++ b/hw/arm/virt.c
-> > > > > > @@ -1004,7 +1004,7 @@ static void virt_powerdown_req(Notifier *n, void *opaque)
-> > > > > >      if (s->acpi_dev) {
-> > > > > >          acpi_send_event(s->acpi_dev, ACPI_POWER_DOWN_STATUS);
-> > > > > >      } else {
-> > > > > > -        /* use gpio Pin 3 for power button event */
-> > > > > > +        /* use gpio Pin for power button event */
-> > > > > >          qemu_set_irq(qdev_get_gpio_in(gpio_key_dev, 0), 1);        
-> > > > >
-> > > > > /me confused, it was saying Pin 3 but is passing 0 as argument where as elsewhere
-> > > > > you are passing 3. Is this a bug?        
-> > > > 
-> > > > No. The gpio_key_dev is a gpio-key device which has one
-> > > > input (which you assert to "press the key") and one output,
-> > > > which goes high when the key is pressed and then falls
-> > > > 100ms later. The virt board wires up the output of the
-> > > > gpio-key device to input 3 on the PL061 GPIO controller.
-> > > > (This happens in create_gpio_keys().) So the code is correct
-> > > > to assert input 0 on the gpio-key device and the comment
-> > > > isn't wrong that this results in GPIO pin 3 being asserted:
-> > > > the link is just indirect.      
-> > > 
-> > > it's likely obvious to ARM folks, but maybe comment should
-> > > clarify above for unaware.    
-> > 
-> > Not sure if a comment here with the pin number is a good idea.
-> > After all, this patch was originated because we were using
-> > Pin 6 for GPIO error, while the comment was outdated (stating
-> > that it was pin 8 instead) :-)
-> > 
-> > After this series, there will be two GPIO pins used inside arm/virt,
-> > both defined at arm/virt.h:
-> > 
-> > 	/* GPIO pins */
-> > 	#define GPIO_PIN_POWER_BUTTON  3
-> > 	#define GPIO_PIN_GENERIC_ERROR 6
-> > 
-> > Those macros are used when GPIOs are created:
-> > 
-> > 	static void create_gpio_keys(char *fdt, DeviceState *pl061_dev,
-> > 	                             uint32_t phandle)
-> > 	{
-> > 	    gpio_key_dev = sysbus_create_simple("gpio-key", -1,
-> > 	                                        qdev_get_gpio_in(pl061_dev,
-> >                                                          GPIO_PIN_POWER_BUTTON));
-> > 	    gpio_error_dev = sysbus_create_simple("gpio-key", -1,
-> > 	                                          qdev_get_gpio_in(pl061_dev,
-> > 	                                                           GPIO_PIN_GENERIC_ERROR));
-> > So, at least for me, it is clear that gpio_key_dev is using pin 3.  
-> 
-> if you switch to using already existing GED device,
-> then this patch will go away since event will be delivered by GED
-> instead of GPIO + _AEI.
+These incorrect image hashes given by the HACE to the U-boot guest are due to 
+an oversight in the HACE module. Previously when operating in 
+scatter-gather accumulative mode, the HACE would cache the address provided by 
+the guest which contained the source data. However, there was no deep copy, 
+so when HACE generated the digest upon the reception of the final accumulative chunk 
+the digest was incorrect, as the addresses provided had their regions overwritten
+by that time.
 
-This patch is actually independent from the rest. It is related to a power
-down event, and not related at all with error inject.
+This fix consists of two main steps:
+* Add an accumulative hashing function to the qcrypto library
+* Modify the HACE module to use the accumulative hashing functions
 
-The rationale for keeping it on this series was due to the original
-patch 2 (as otherwise merge conflicts would rise). It can now be merged
-in separate.
+All the crypto library backends (nettle, gnutls, etc.) support accumulative hashing,
+so it was trivial to create wrappers for those functions.
 
-Btw, this is doing a cleanup requested by Michael and Peter:
+Changes in V3:
+* Reworked crypto hash API with comments from Daniel
+  * Creation/Deletion of contexts, updating, and finalizing
+  * Modified existing API functions to use the new 4 main core functions
+  * Added test for accumulative hashing
+  * Added afalg driver implementation
+* Fixed bug in HACE module where hash context fails to allocate,
+  causing the HACE internal state to be incorrect and segfault.
 
-	https://lore.kernel.org/qemu-devel/CAFEAcA-PYnZ-32MRX+PgvzhnoAV80zBKMYg61j2f=oHaGfwSsg@mail.gmail.com/
+Changes in V2:
+* Fixed error checking bug in libgcrypt crypto backend of
+  accumulate_bytesv
 
-Thanks,
-Mauro
+Alejandro Zeise (12):
+  crypto: accumulative hashing API
+  crypto/hash-glib: Remove old hash API implementation
+  crypto/hash-glib: Implement new hash API
+  crypto/hash-gcrypt: Remove old hash API implementation
+  crypto/hash-gcrypt: Implement new hash API
+  crypto/hash-gnutls: Remove old hash API
+  crypto/hash-gnutls: Implement new hash API
+  crypto/hash-nettle: Remove old hash API
+  crypto/hash-nettle: Implement new hash API
+  crypto/hash-afalg: Update to new API
+  tests/unit/test-crypto-hash: accumulative hashing
+  hw/misc/aspeed_hace: Fix SG Accumulative hashing
+
+ crypto/hash-afalg.c           | 154 +++++++++++++++++++++++-----------
+ crypto/hash-gcrypt.c          | 112 ++++++++++++++-----------
+ crypto/hash-glib.c            |  96 +++++++++++++--------
+ crypto/hash-gnutls.c          |  94 ++++++++++++++-------
+ crypto/hash-nettle.c          |  79 +++++++++++------
+ crypto/hash.c                 | 136 ++++++++++++++++++++++--------
+ crypto/hashpriv.h             |  19 +++--
+ hw/misc/aspeed_hace.c         |  92 ++++++++++----------
+ include/crypto/hash.h         | 106 +++++++++++++++++++++++
+ include/hw/misc/aspeed_hace.h |   4 +
+ tests/unit/test-crypto-hash.c |  50 +++++++++++
+ 11 files changed, 667 insertions(+), 275 deletions(-)
+
+-- 
+2.34.1
+

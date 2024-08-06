@@ -1,69 +1,69 @@
-Received: by 2002:a17:505:1e8b:b0:1be9:327d:8ee3 with SMTP id mw11csp1303012njb;
-        Tue, 6 Aug 2024 10:33:03 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCW9c+78azD2kCwOFpotR0IdiQt0HDamctomoVVbnMccJVfno96a+QTh9SOXfDtsDo1QpqAXRTJB+7V7Ndw1nTl27qnDF5cN
-X-Google-Smtp-Source: AGHT+IEWbP3pyYTENvMW2NRSaqDzMH08xrW+vZ3dYAmXnbjPeI3y8KSXcktmWuwR4Lvc7FsUJLZG
-X-Received: by 2002:a05:622a:1823:b0:447:e796:26bf with SMTP id d75a77b69052e-451892c551cmr199285821cf.62.1722965583232;
-        Tue, 06 Aug 2024 10:33:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1722965583; cv=none;
+Received: by 2002:a17:505:1e8b:b0:1be9:327d:8ee3 with SMTP id mw11csp1303140njb;
+        Tue, 6 Aug 2024 10:33:28 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUcXg/w3JYq0trMpdT1zP571Fh0bvuFS90zpASOjfXszfwYSM5ORUAIMXFK6e0O8/6+eqWlu1fQyDS3Tf3dGpz3mQ5LKaV2
+X-Google-Smtp-Source: AGHT+IELCQhjsGN0amLFQUV959uSzkWVNkfUWNdETBY5vDCvo4L1J/EFKdLcvLtBvPyIX5Ywx/e/
+X-Received: by 2002:a05:6808:1904:b0:3d6:2b42:82ff with SMTP id 5614622812f47-3db558327f3mr21935268b6e.37.1722965608254;
+        Tue, 06 Aug 2024 10:33:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1722965608; cv=none;
         d=google.com; s=arc-20160816;
-        b=aDDJIIL2bVh14bVlcUmOVNwGnGPuHOD7rayurjjcrlSe4Fw6tvn0qY3xQwT8L3BVi0
-         u0ye8/28lpmubz38XKm9CnsTEEV1DZlaMEiZRKs4pSF3PNkl4Bmxe+wI7BiZV2aVSXcw
-         8o9JHuohLXszb/NvvyCvgafAhtqpG/63rJNK82eQE960/H4Di/YxC6pem1yQ5aOxz3U1
-         xxRCjoIbMPW28+xc9yT15emGsoO0C8UDE5uDeW8htKTRrrdbUIylStulaI4KfMJ9bEoT
-         +b+xAwb23YM0pU6fikjqF7mEBDj5OJTuzlYqxGgtN1rf3yna0EG4xysLrikl5/PLs/EO
-         LITw==
+        b=iHi0clP1262FCnIXzaF7h5lbVj7J0LKejUvFXrxmdSfjszjWw8YLKuk1A3Q7YMCAG5
+         TFNYb4q1/WMKUXpStyg/8B0rBjrGKgS0snbiuk4BDNCSJa2qd5zpKi7zd3VFIGX63FvY
+         QxtKL6t2eomLJA2deyZNUX+Q/WWtodrIYI0FVUa7ivgFAOpls/8D1nqv+hepNAOuSoYJ
+         q6Hb58anLUMGQk4hNxpFjQ64rZj5bQZOvBW9MngEbW6GFDELcg8yF0oHFH5aoCkryJkh
+         VSTj3MtsnR5aJenCqc7zaLKAU8Z2/8MB6Px6Ay7PpjZo7V+MJz5vf4dIlIY2hrxDxyLQ
+         jSsw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=/43rvxiHluDKPSD2ULvPBKTQ4qhQty2OCaQvduh/gz8=;
+        bh=nf0S6+2UWAoiK8QJhCNo+DMvi4LJgeUAgWrNmgWlrjc=;
         fh=pOdCxWa9rQJU0vaikvZDwOcgRIEwREE3jBY9GdQlMoI=;
-        b=SKxfw7mpxMOMJUgzgyvu8SWjRme5lzHkJlOIFNNxF2+PBscBGyivsniK7G5AXCMQQ6
-         28jGmy+ZXMV+TLTbQDqOwmMYPl/eAld2/4nzZHLaFljCjF9wi1aSX2JbOCNTUGV3tiEW
-         RVEWqB5d73xMF+sP+7MSUfmGE/s0gjXTiUvMxtQgwWux9nyRfEK3eeZ1nQnyDmnZanIX
-         bDy7cRkPSto50qeg7TR02p4wxElBZzPJdZZwFa9ns6WvruqdUHnbSvDGRiTyvkoULPHJ
-         tjKg0K+8zhveKoHMEO7XEnN9+vUmi3IkuQhwG3uI/98U+7PCFqJlq4GvhIIsuLI8z3jc
-         gc6Q==;
+        b=feY/QBUkxg23cwzVqaX9KsgLcpzi4Fmnb6nXfmJwAfUzkJg3xZxagywbCotp+Q/Xc2
+         MHIonnLw/J8yiNUyNn6+zxy//rCuXJSWtc1qKwsfLm8cOhY9aU4yyETYM6/hyO+1Z5Ak
+         LKYOC04h5V8ul0nHPvkWHxnT3qpbMGmsRAsKQAK95vQTZmfWLLfGQZ7A6ZFer7hBp/cH
+         QXQTr8gS+3I5A6ClcL/RG12McMjSSU6hEDWOCPMpl+/ah4EjPIUjCBet3H7v95Re+pYQ
+         6vFe2pIZHAl8TRGwQX7oUSuAxgzZUqX70QggQQLPT45DK9n2UI51KZ/tIJJG7Hv+D1pO
+         Vfeg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BkiH922e;
-       spf=pass (google.com: domain of crosa@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=crosa@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=TdHNX1PE;
+       spf=pass (google.com: domain of crosa@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=crosa@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <crosa@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id d75a77b69052e-4518a77a85fsi123538371cf.427.2024.08.06.10.33.03
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id af79cd13be357-7a34f78b6aesi1274948085a.645.2024.08.06.10.33.28
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 06 Aug 2024 10:33:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of crosa@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        Tue, 06 Aug 2024 10:33:28 -0700 (PDT)
+Received-SPF: pass (google.com: domain of crosa@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BkiH922e;
-       spf=pass (google.com: domain of crosa@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=crosa@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=TdHNX1PE;
+       spf=pass (google.com: domain of crosa@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=crosa@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1722965582;
+	s=mimecast20190719; t=1722965607;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=/43rvxiHluDKPSD2ULvPBKTQ4qhQty2OCaQvduh/gz8=;
-	b=BkiH922eGaWFwZ4kTYO2cLw556lHlTuQw0Rm9HposltInCgsBLAv+NbZ0gAra8QsqPto7I
-	SBsceTOWIUUEQMVAiA4hkj8m4RP4BxDAiFTBFKJ5dgWTD12RX4JOMgOqiAuWR/NnHpW4Br
-	F/WyowjiCGds30jrnyTvog7DifQ96uI=
-Received: from mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com
+	bh=nf0S6+2UWAoiK8QJhCNo+DMvi4LJgeUAgWrNmgWlrjc=;
+	b=TdHNX1PEAVq0gxeOzr7g/JzB+uhrkp0i7LnUFNcy8nkMxut0MQCBhl4CeXs+Eb38UGFLrW
+	1y/Rl5CK6wAv1htku+WRmTVoX3ewVYIbfY1aob5UTEznyHj1Wqjfshfu8JVfV85lHoPsr1
+	K0c1fZDOAQ65ueQTAqQpE0dLdHayM1g=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-615-PKl5JxhrOmm8bMkomHdUyg-1; Tue,
- 06 Aug 2024 13:32:59 -0400
-X-MC-Unique: PKl5JxhrOmm8bMkomHdUyg-1
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-678-z6V6pmDHM0m4MjOMBls8sg-1; Tue,
+ 06 Aug 2024 13:33:22 -0400
+X-MC-Unique: z6V6pmDHM0m4MjOMBls8sg-1
 Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 0E0DA1955F0D;
-	Tue,  6 Aug 2024 17:32:56 +0000 (UTC)
+	by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id A773F1955D42;
+	Tue,  6 Aug 2024 17:33:15 +0000 (UTC)
 Received: from p1.localdomain.com (unknown [10.39.192.15])
-	by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id C7EB91956046;
-	Tue,  6 Aug 2024 17:32:46 +0000 (UTC)
+	by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 809E819560AE;
+	Tue,  6 Aug 2024 17:33:06 +0000 (UTC)
 From: Cleber Rosa <crosa@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
@@ -93,72 +93,86 @@ Cc: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
 	Thomas Huth <thuth@redhat.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Leif Lindholm <quic_llindhol@quicinc.com>
-Subject: [PATCH v2 7/9] tests/avocado/tuxrun_baselines.py: use Avocado's zstd support
-Date: Tue,  6 Aug 2024 13:31:17 -0400
-Message-ID: <20240806173119.582857-8-crosa@redhat.com>
+Subject: [PATCH v2 9/9] Avocado tests: allow for parallel execution of tests
+Date: Tue,  6 Aug 2024 13:31:19 -0400
+Message-ID: <20240806173119.582857-10-crosa@redhat.com>
 In-Reply-To: <20240806173119.582857-1-crosa@redhat.com>
 References: <20240806173119.582857-1-crosa@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-TUID: hrwuqcgG+zSl
+X-TUID: dkXWuxoo0aXW
 
-This makes use of the avocado.utils.archive support for zstd.
+The updated Avocado version allows for the execution of tests in
+parallel.
 
-In order to not duplicate code, the skip condition uses a private
-utility from the module which is going to become public in Avocado
-versions 103.1 LTS (and also in versions >= 107.0).
+While on a CI environment it may not be a good idea to increase the
+parallelization level in a single runner, developers may leverage that
+on specific CI runners or on their development environments.
 
-Reference: https://github.com/avocado-framework/avocado/pull/5996
-Reference: https://github.com/avocado-framework/avocado/pull/5953
+This also multiplies the timeout for each test accordingly.  The
+reason is that more concurrency can lead to less resources, and less
+resources can lead to some specific tests taking longer to complete
+and then time out.  The timeout factor being used here is very
+conservative (being equal to the amount of parallel tasks).  The worst
+this possibly oversized timeout value can do is making users wait a
+bit longer for the job to finish if a test hangs.
+
+Overall, users can expect a much quicker turnaround on most systems
+with a value such as 8 on a 12 core machine.
+
 Signed-off-by: Cleber Rosa <crosa@redhat.com>
 ---
- tests/avocado/tuxrun_baselines.py | 16 ++++++----------
- 1 file changed, 6 insertions(+), 10 deletions(-)
+ docs/devel/testing.rst | 12 ++++++++++++
+ tests/Makefile.include |  6 +++++-
+ 2 files changed, 17 insertions(+), 1 deletion(-)
 
-diff --git a/tests/avocado/tuxrun_baselines.py b/tests/avocado/tuxrun_baselines.py
-index 736e4aa289..bd02e88ed6 100644
---- a/tests/avocado/tuxrun_baselines.py
-+++ b/tests/avocado/tuxrun_baselines.py
-@@ -17,6 +17,7 @@
- from avocado_qemu import QemuSystemTest
- from avocado_qemu import exec_command, exec_command_and_wait_for_pattern
- from avocado_qemu import wait_for_console_pattern
-+from avocado.utils import archive
- from avocado.utils import process
- from avocado.utils.path import find_command
+diff --git a/docs/devel/testing.rst b/docs/devel/testing.rst
+index af73d3d64f..97ebc8211f 100644
+--- a/docs/devel/testing.rst
++++ b/docs/devel/testing.rst
+@@ -998,6 +998,18 @@ of Avocado or ``make check-avocado``, and can also be queried using:
  
-@@ -40,17 +41,12 @@ def get_tag(self, tagname, default=None):
+   pyvenv/bin/avocado list tests/avocado
  
-         return default
++To run tests in parallel, the ``AVOCADO_PARALLEL`` environment
++variable can be defined with a value different than ``1`` (its default
++value).  Example:
++
++ .. code::
++
++  make check-avocado AVOCADO_PARALLEL=4
++
++Please exercise care when using parallel execution with the QEMU
++Avocado tests as a higher system load can cause time sensitive tests
++to timeout and be interrupted.
++
+ Manual Installation
+ ~~~~~~~~~~~~~~~~~~~
  
-+    @skipUnless(archive._probe_zstd_cmd(),
-+                'Could not find "zstd", or it is not able to properly '
-+                'decompress decompress the rootfs')
-     def setUp(self):
-         super().setUp()
+diff --git a/tests/Makefile.include b/tests/Makefile.include
+index 537804d101..545b5155f9 100644
+--- a/tests/Makefile.include
++++ b/tests/Makefile.include
+@@ -94,6 +94,9 @@ TESTS_RESULTS_DIR=$(BUILD_DIR)/tests/results
+ ifndef AVOCADO_TESTS
+ 	AVOCADO_TESTS=tests/avocado
+ endif
++ifndef AVOCADO_PARALLEL
++	AVOCADO_PARALLEL=1
++endif
+ # Controls the output generated by Avocado when running tests.
+ # Any number of command separated loggers are accepted.  For more
+ # information please refer to "avocado --help".
+@@ -141,7 +144,8 @@ check-avocado: check-venv $(TESTS_RESULTS_DIR) get-vm-images
+             --show=$(AVOCADO_SHOW) run --job-results-dir=$(TESTS_RESULTS_DIR) \
+             $(if $(AVOCADO_TAGS),, --filter-by-tags-include-empty \
+ 			--filter-by-tags-include-empty-key) \
+-            $(AVOCADO_CMDLINE_TAGS) --max-parallel-tasks=1 \
++            $(AVOCADO_CMDLINE_TAGS) --max-parallel-tasks=$(AVOCADO_PARALLEL) \
++			-p timeout_factor=$(AVOCADO_PARALLEL) \
+             $(if $(GITLAB_CI),,--failfast) $(AVOCADO_TESTS), \
+             "AVOCADO", "tests/avocado")
  
--        # We need zstd for all the tuxrun tests
--        # See https://github.com/avocado-framework/avocado/issues/5609
--        zstd = find_command('zstd', False)
--        if zstd is False:
--            self.cancel('Could not find "zstd", which is required to '
--                        'decompress rootfs')
--        self.zstd = zstd
--
-         # Process the TuxRun specific tags, most machines work with
-         # reasonable defaults but we sometimes need to tweak the
-         # config. To avoid open coding everything we store all these
-@@ -99,8 +95,8 @@ def fetch_tuxrun_assets(self, csums=None, dt=None):
-                                          asset_hash = isum,
-                                          algorithm = "sha256")
- 
--        cmd = f"{self.zstd} -d {disk_image_zst} -o {self.workdir}/rootfs.ext4"
--        process.run(cmd)
-+        archive.extract(disk_image_zst, os.path.join(self.workdir,
-+                                                     "rootfs.ext4"))
- 
-         if dt:
-             dsum = csums.get(dt, None)
 -- 
 2.45.2

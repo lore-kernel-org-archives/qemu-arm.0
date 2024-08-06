@@ -1,129 +1,128 @@
-Received: by 2002:a05:7022:e994:b0:85:21:bd5b with SMTP id py20csp1887992dlb;
-        Tue, 6 Aug 2024 02:18:26 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCV5sic76pYSpu7NoPL98Ti5b3zXmD367vJjQTN2IT7xoaC76KuY+DFd5Irn27xfKbdWrcUNrIQJAKW7gCIEpJdYwzNse6Ed
-X-Google-Smtp-Source: AGHT+IGXN8++h003hSOxdVWYMgdAwZYltSBCOY3rT70u5pe4GbtaITKnq1dHKI13BxXd2meKHzd/
-X-Received: by 2002:a05:6402:549:b0:5a1:5dce:3427 with SMTP id 4fb4d7f45d1cf-5b7f56fe9d4mr11403096a12.23.1722935906144;
-        Tue, 06 Aug 2024 02:18:26 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1722935906; cv=pass;
+Received: by 2002:a05:7022:e994:b0:85:21:bd5b with SMTP id py20csp1886739dlb;
+        Tue, 6 Aug 2024 02:15:26 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCXd4s6QUzToRq05k9P7l+9fS2zHARQ9Yrt0amJIWwGy8bg1MX+0e1i9CMQitlJ6n+Cyz2W0g9FJ3uDJuSFc+s+/Lfr4CiPS
+X-Google-Smtp-Source: AGHT+IH1joRXvZrcdlj0rE66maNRV7pjfsrGOS6xQf0zFQ49a5OluPUREUj/8gIszy/7niDjODd2
+X-Received: by 2002:a05:622a:508:b0:44f:ee6b:b838 with SMTP id d75a77b69052e-4518932d8d1mr211645271cf.41.1722935726334;
+        Tue, 06 Aug 2024 02:15:26 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1722935726; cv=pass;
         d=google.com; s=arc-20160816;
-        b=T/qR8Q6iri+7MhXvFXXtl0vaLqWa0dfzmn/223Wqac4YR3EYY9FY8ESU1xZuNXLWZG
-         6lc9e3kPvWUfnpsDfndCTc0lGAC+kYAw/c7dfVMEzXq0/LMfSuCqP6kbeoJAqfpnrngB
-         gjmDURfjzo+FgxszlIZfgFS+a2ReyFnfxLLbG5yJ/EybmCtBYOXWlPdcAwrDydRKQhuI
-         Ok41vcLHOTTPyILMf8AvCykVfOOpzgyKwwkrH498QGIjU0Yv4CgzyZmbJj79eBfVyDhb
-         F2XZNkPZBmdIquZeoclWf4SH/0P+mznp2OkZwd6ky6gl4eATL5OWomSyElb0Ci4Su/0G
-         Nm5Q==
+        b=GjzZaCSr0MIrG7LaEEBSgK1b/MW8z3dC1gfDa9RiHHZO0mMziKWAZ65U5rJ83CvNzH
+         7vMrSbkswCDrE23zSE4ohK0+gQwlTYj+w28PbYlgNCN0fkDWZVDwb1RUkXAFg0NlGoMo
+         79Fl3isFDF2mtIErigOKR90evup+jAniiw8F/UnInJVqINyEPGuqcBQ6w9kxMf/PQfaj
+         Ax16b5jzkND+l75QmD3Ndy4AEYEJWhk81e7vVkgMjPEaJ3qDz4ZRdEuNPduc7OpZ91Wn
+         TSI1FqYVo+zsscOyJBBKpiRTnzoR8BCzpXSbET77rvPnXkVGk0SbeQWMRETmAP6/DjNy
+         sfNA==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:list-unsubscribe
          :list-subscribe:list-id:precedence:references:in-reply-to:message-id
          :subject:cc:to:from:date:dkim-signature;
-        bh=y59hN2s/MNY6Pe91xmrj92ENgow4G095yCJtbOBOOcs=;
-        fh=V2JpyeTV8wSIhP2TNzGETNK1rXHpn9yMGQRCBqKH/sY=;
-        b=OYrdaFzARYACsXEQR6c5N74p98qf70msK5jySzJDKFZ4Si+H1X7nyPFfr8KMoNsf2z
-         vjl1OqY10klIdsGZIb/O1l4uy//OBEVvraPYiyWjaPf54C2RJOILmrI/8T8iiB5IO2vF
-         uesCCbbZuMQjx4acOX9EknjSex7rCuddFsikzpnLCHqq9D4LnEb9sgzriOwWV9yp9y6A
-         OYojqX93YeqAp50gP2Nhsyvo9xPITTB8da6l0z+mNCOvihE2POAALF65SE7kzuFxvYSG
-         44hJZCVx8PH+PlMguQJLkPKDzPfj7zW/pFoVMzW4mvajVfPVQJ3sVLGGaGRPll3etY6f
-         78Fw==;
+        bh=5XhwKW5c4U1g4cZzHAN5oWzywBtrKv0PzNTnHbR+SW4=;
+        fh=3wFjytZrFvAvTz5AX57gTFnLwhXofXyZ3FzAydhhU5A=;
+        b=VG3B6hQBI//+kx3VvKfzAQy0JHBs6NzU9e6zb/5njAIac4dEVqniOuB9KUs5cz3znD
+         E226YGzPfBaX59qHBrCGC1WzAm+YAtCq4uh40/aA4Bf+TINfzGkuNedG4qcfh34R3pe6
+         bl11FIlsO62GTm6EwZaCf3OYFe0T5RM/bNkENhYQQ2rwTgRH0A4ebvs/xQvhhBqpJ2W2
+         iuJ5ELTq7Q8N3kTjEE9Or8pQiNj2iysOoMVqqLKqt2WZu++gejPsUZmSyszay6ZppWgy
+         ls7rADUYvLX4Ct442w3QRomkgmakKUH5MElMcQBHBXxMHb9xZO6+9ZzqNGFHO4Uu2MyA
+         VFnw==;
         dara=google.com
 ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=aKx82Bmj;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UX860yU1;
        arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of linux-kernel+bounces-275927-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="linux-kernel+bounces-275927-alex.bennee=linaro.org@vger.kernel.org";
+       spf=pass (google.com: domain of linux-kernel+bounces-275924-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-275924-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <linux-kernel+bounces-275927-alex.bennee=linaro.org@vger.kernel.org>
-Received: from am.mirrors.kernel.org (am.mirrors.kernel.org. [147.75.80.249])
-        by mx.google.com with ESMTPS id 4fb4d7f45d1cf-5b83c61e359si5647213a12.551.2024.08.06.02.18.25
+Return-Path: <linux-kernel+bounces-275924-alex.bennee=linaro.org@vger.kernel.org>
+Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [2604:1380:45d1:ec00::1])
+        by mx.google.com with ESMTPS id d75a77b69052e-4518a765b34si114582931cf.309.2024.08.06.02.15.26
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 06 Aug 2024 02:18:26 -0700 (PDT)
-Received-SPF: pass (google.com: domain of linux-kernel+bounces-275927-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) client-ip=147.75.80.249;
+        Tue, 06 Aug 2024 02:15:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of linux-kernel+bounces-275924-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) client-ip=2604:1380:45d1:ec00::1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=aKx82Bmj;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UX860yU1;
        arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of linux-kernel+bounces-275927-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="linux-kernel+bounces-275927-alex.bennee=linaro.org@vger.kernel.org";
+       spf=pass (google.com: domain of linux-kernel+bounces-275924-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-275924-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by am.mirrors.kernel.org (Postfix) with ESMTPS id A8BCA1F2247F
-	for <alex.bennee@linaro.org>; Tue,  6 Aug 2024 09:18:25 +0000 (UTC)
+	by ny.mirrors.kernel.org (Postfix) with ESMTPS id ECBEE1C230E7
+	for <alex.bennee@linaro.org>; Tue,  6 Aug 2024 09:15:25 +0000 (UTC)
 Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id E4F141BD4EB;
-	Tue,  6 Aug 2024 09:18:21 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 42E771BC9E8;
+	Tue,  6 Aug 2024 09:15:22 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="aKx82Bmj"
+	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="UX860yU1"
 Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 32C975464E
-	for <linux-kernel@vger.kernel.org>; Tue,  6 Aug 2024 09:18:20 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1C12D1607BD
+	for <linux-kernel@vger.kernel.org>; Tue,  6 Aug 2024 09:15:19 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.129.124
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1722935901; cv=none; b=RcCUZxQs5GNav2xC6g81wmyp6JhaxIp6pVle0JEImbs29a0Kk4f7EoAP9FmmXdgkCRNzMtvLjwzJCNBfhhT2lO8Wfx+U+UstODG1OTEXZP05KKw7dRFTh/dbIfedN4Lqc8otvog53IvAV42ApeHiBns9jUAWdrHdPXXGizVRJCI=
+	t=1722935722; cv=none; b=ZrwFk6u5MIRjTsvAkdUUJXOgKhyV3zM7u9NqhYTJRiz5s/HUNGuZLIq7DU1nmHoIh4YBrC3TBCxc4isYlmZbIjKFBdTIobkS3qO/2PsmgkSP8yaA5fpN2jbvLCyStW8N/O+wDUyzsmJO/P+qZtps82d7Mk9/eh49uQMySc94tYI=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1722935901; c=relaxed/simple;
-	bh=xQdSI9C7Qu+kqgTBevD0hD13tRvt7O8vyHl2hu1aq2k=;
+	s=arc-20240116; t=1722935722; c=relaxed/simple;
+	bh=qOjNWZTYfnD2JorrZj+LoPfVSS4w/wPVk7NTfIpDCT8=;
 	h=Date:From:To:Cc:Subject:Message-ID:In-Reply-To:References:
-	 MIME-Version:Content-Type; b=kPay+TbxqbO7QCVyRp7eaUr9zXRXrsApf9B+Af5vX0F69mM2Z3F52wjzuzLHBdn4s5CCr5n4uVmEgoXyhaPTfK/r8GWDUDixqPqVndFENMd+AsyB0eaEuPQY0cefr/qeelV5HyfQz4ILRy5OXPIVviM1qe8qbuZWNzEtAXpCzoQ=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=aKx82Bmj; arc=none smtp.client-ip=170.10.129.124
+	 MIME-Version:Content-Type; b=jl4sAfi2FPOWFtjv7ApZKvHui1r6kN6JCIQE7M+gYJo65Y1gBt5l6wXYKQYBYNwxJyUSYAiW8WE5W7jXGpuXIOTC0ZYWMXFD1MT05xnD/S2p/56QSvgx4EKa/7HUQW+jimOAIW8lGTLFNLYGic0uL2C7vNVxJWIc2XqnC+W1M7Q=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=UX860yU1; arc=none smtp.client-ip=170.10.129.124
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1722935899;
+	s=mimecast20190719; t=1722935719;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=y59hN2s/MNY6Pe91xmrj92ENgow4G095yCJtbOBOOcs=;
-	b=aKx82BmjvI2+FvASV7MX9tRhoTDFCMqWgPwC1JqQNYmIMEBux8dM50cGiF2P9ZijlCTsbE
-	NO83rnOrViseNOtdO253rbmF175Z0ZXC+kGg4j6+dXL0JLM/HxXUf3hbPuyWtmrqPGI4+b
-	hiEu5vqdpzvmpsQTIG826mEdeHGhd40=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+	bh=5XhwKW5c4U1g4cZzHAN5oWzywBtrKv0PzNTnHbR+SW4=;
+	b=UX860yU1KInc1UDkqRtmtSmAc7dQbov4kkvYpo7f46s15063wOaeK/lfgxJLFP3vTNxCug
+	WW+3AxxQJZgSUhLaVIWt5h9EL3glYeTBkEfIcCZQWa+lA8Hj28w+gmJJcUwuGVJpio5MSI
+	izbtv1JnrQsCibvnaT4YkoWlg/JWTxE=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-251-qW5OfVn5Pa6fyPqbrUf6Pg-1; Tue, 06 Aug 2024 05:18:14 -0400
-X-MC-Unique: qW5OfVn5Pa6fyPqbrUf6Pg-1
-Received: by mail-wm1-f71.google.com with SMTP id 5b1f17b1804b1-4281b7196bbso3859455e9.0
-        for <linux-kernel@vger.kernel.org>; Tue, 06 Aug 2024 02:18:14 -0700 (PDT)
+ us-mta-691-Vh2VK8MmNDS2VxFILspmMw-1; Tue, 06 Aug 2024 05:15:17 -0400
+X-MC-Unique: Vh2VK8MmNDS2VxFILspmMw-1
+Received: by mail-wm1-f70.google.com with SMTP id 5b1f17b1804b1-4281f8994adso3112955e9.0
+        for <linux-kernel@vger.kernel.org>; Tue, 06 Aug 2024 02:15:17 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1722935893; x=1723540693;
+        d=1e100.net; s=20230601; t=1722935716; x=1723540516;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=y59hN2s/MNY6Pe91xmrj92ENgow4G095yCJtbOBOOcs=;
-        b=OuYPeFycNqmin8CtRLgbwJsVNhn9nuqiga4IpT29O78029lUBbONixfas/7MCHlskM
-         /lFvOMiJkXiykuvqfm5r6T9JgEtug6p66LxsIkU2ld2PFtgQfAE5ReEX9doNhxjwxe/W
-         2Nx9q1bTYQxT0losO/eGjuXm46j8XhyTtPQyPApw8Vak4NpdeQ5zeYf2U4mYl1ws//3r
-         g3fNVwCBXvxWz5Cr1yzyn6UCNONail19DJZIw+oycOf7VgYyTtw+FJV1CayN5GNzDn64
-         Q41GZyeRNQWtEVJ/it3+I/TrO4b3xh8qWIG6Pu9YEvJ5+2R6mrvzhooMHB2tNHYiuNqd
-         i2rg==
-X-Forwarded-Encrypted: i=1; AJvYcCVYrnx0n0CMXHP2lba2sF0/ko5TfKzyzeTknze1lJm+ZsAyDrr8t7TReQWYdhHD0xhmt2KUWnz8ypRKOhKk5DnTGuouXFD0XewcILS3
-X-Gm-Message-State: AOJu0Yylqoi7KcTFMO8T88Eds7uI0N53RJw4a2IRD1vKAQpNvovpDdCL
-	hG1m1vM1BIF+AjD48BLppuyS/0g91b/3T6XTpau0VixlP+Eyx/lYrB1RNmk4m2WWHedAa12EVok
-	HqCeElaFtMyoX/LSCYtXcKzhYvYWMwccWDESE0qXhtfBNrW/d2lDk5Ug/UQhSMg==
-X-Received: by 2002:a05:600c:3caa:b0:426:622d:9e6b with SMTP id 5b1f17b1804b1-428e6b7e5ddmr108736235e9.23.1722935893261;
-        Tue, 06 Aug 2024 02:18:13 -0700 (PDT)
-X-Received: by 2002:a05:600c:3caa:b0:426:622d:9e6b with SMTP id 5b1f17b1804b1-428e6b7e5ddmr108735955e9.23.1722935892704;
-        Tue, 06 Aug 2024 02:18:12 -0700 (PDT)
+        bh=5XhwKW5c4U1g4cZzHAN5oWzywBtrKv0PzNTnHbR+SW4=;
+        b=OgSih0w58pN/ynESOjTaqEgr/I/Q98g6BiD6F52vdMUojiiO42iX4WC3uTzmgFoyD4
+         cTK4nDhOR3cFmMU4fgFBWQeq4zZ/2tYDHZX2hNU123FhPo1/TFjhVt/id481tg7xbBdH
+         BfaUGxaxfEMT/jpLBRWnFbyHp5Uyp+hpv8drlMGDB7xn9P8M1Wn/xcl3bbel02lQbBUQ
+         y4uk82f3rYTs5j84rWSHeKuDVxSz9WSDNqsF42m5Srdd/M9kUUUWXVy6jR/FhzhF8kro
+         T2II41SyV25fh2ZqRZQhKOjpg0Uf3UXlLMEfQHEc9e113GadiQ+YV7VyT0YP5sdl8a/N
+         BqcA==
+X-Forwarded-Encrypted: i=1; AJvYcCUXK+dADl+/gx9SevzUfIAzo8R69QnSHXqX6CU2ZvK1+D9rf/PrPvLUVUH/4aXhCjttGxyOrvYcp+S5VCQ+kBpATZWl3rjuLIhBUcaa
+X-Gm-Message-State: AOJu0YyZereuIuszKtckhi5Nn6g+cOSRkwKlaC6VhMEA2T+LcR3rezXm
+	gSO3c8EJK0yqhSprDXxzR1RzO0jCsuPrC6CZeFZaHfREkDutpNs/Gfyk5jmfw67uuxVE5expQXx
+	qpEAV0wxzvWnIeFESV2fDnPzgjRit+nveiXW07R3Sdgx8OehulRTyjjt64gZkxw==
+X-Received: by 2002:a05:600c:4fcb:b0:427:9a8f:9717 with SMTP id 5b1f17b1804b1-428e6a5afc3mr120542125e9.0.1722935716171;
+        Tue, 06 Aug 2024 02:15:16 -0700 (PDT)
+X-Received: by 2002:a05:600c:4fcb:b0:427:9a8f:9717 with SMTP id 5b1f17b1804b1-428e6a5afc3mr120541765e9.0.1722935715567;
+        Tue, 06 Aug 2024 02:15:15 -0700 (PDT)
 Received: from imammedo.users.ipa.redhat.com (nat-pool-brq-t.redhat.com. [213.175.37.10])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4282bb64b84sm231279505e9.32.2024.08.06.02.18.10
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-428e6e03c4csm173915565e9.13.2024.08.06.02.15.14
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 06 Aug 2024 02:18:11 -0700 (PDT)
-Date: Tue, 6 Aug 2024 11:18:09 +0200
+        Tue, 06 Aug 2024 02:15:15 -0700 (PDT)
+Date: Tue, 6 Aug 2024 11:15:14 +0200
 From: Igor Mammedov <imammedo@redhat.com>
 To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-Cc: Jonathan Cameron <Jonathan.Cameron@Huawei.com>, Shiju Jose
+Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>, Shiju Jose
  <shiju.jose@huawei.com>, "Michael S. Tsirkin" <mst@redhat.com>, Ani Sinha
- <anisinha@redhat.com>, Dongjiu Geng <gengdongjiu1@gmail.com>,
- <linux-kernel@vger.kernel.org>, <qemu-arm@nongnu.org>,
- <qemu-devel@nongnu.org>
-Subject: Re: [PATCH v5 4/7] acpi/ghes: Support GPIO error source
-Message-ID: <20240806111809.10bc2406@imammedo.users.ipa.redhat.com>
-In-Reply-To: <20240806080928.5a04c550@foz.lan>
+ <anisinha@redhat.com>, Dongjiu Geng <gengdongjiu1@gmail.com>, Peter Maydell
+ <peter.maydell@linaro.org>, Shannon Zhao <shannon.zhaosl@gmail.com>,
+ linux-kernel@vger.kernel.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [PATCH v5 3/7] arm/virt: Wire up GPIO error source for ACPI /
+ GHES
+Message-ID: <20240806111514.680ba61e@imammedo.users.ipa.redhat.com>
+In-Reply-To: <d0607d8f6116ff841b6c6a17d20f6d7077063045.1722634602.git.mchehab+huawei@kernel.org>
 References: <cover.1722634602.git.mchehab+huawei@kernel.org>
-	<5d53042ebc5bc73bbc71f600e1ec1dea41f346b9.1722634602.git.mchehab+huawei@kernel.org>
-	<20240805175617.000036ce@Huawei.com>
-	<20240806080928.5a04c550@foz.lan>
+	<d0607d8f6116ff841b6c6a17d20f6d7077063045.1722634602.git.mchehab+huawei@kernel.org>
 X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
 Precedence: bulk
 X-Mailing-List: linux-kernel@vger.kernel.org
@@ -133,57 +132,143 @@ List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-X-TUID: YmfWF6sJZ3qE
+X-TUID: MAJQJcNqmi3K
 
-On Tue, 6 Aug 2024 08:09:28 +0200
+On Fri,  2 Aug 2024 23:43:58 +0200
 Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
 
-> Em Mon, 5 Aug 2024 17:56:17 +0100
-> Jonathan Cameron <Jonathan.Cameron@Huawei.com> escreveu:
+subj: s/GPIO/GED signaled/
+
+> Adds support to ARM virtualization to allow handling
+> a General Purpose Event (GPE) via GED error device.
+s/General Purpose Event (GPE).../
+  generic error ACPI Event via GED & error source device
+
+
+> It is aligned with Linux Kernel patch:
+> https://lore.kernel.org/lkml/1272350481-27951-8-git-send-email-ying.huang@intel.com/
 > 
-> > On Fri,  2 Aug 2024 23:43:59 +0200
-> > Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
-> >   
-> > > From: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-> > > 
-> > > Add error notification to GHES v2 using the GPIO source.    
-> > 
-> > The gpio / external interrupt follows through.  
+> Co-authored-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+> Co-authored-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+> Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+> Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+> ---
+>  hw/acpi/ghes.c           |  3 +++
+>  hw/arm/virt-acpi-build.c |  1 +
+>  hw/arm/virt.c            | 16 +++++++++++++++-
+>  include/hw/acpi/ghes.h   |  3 +++
+>  include/hw/arm/virt.h    |  1 +
+>  5 files changed, 23 insertions(+), 1 deletion(-)
 > 
-> True. As session 18.3.2.7 of the spec says:
-> 
-> 	The OSPM evaluates the control method associated with this event 
-> 	as indicated in The Event Method for Handling GPIO Signaled Events 
-> 	and The Event Method for Handling Interrupt Signaled Events.
-> 
-> E. g. defining two methods:
-> 	- GED GPIO;
-> 	- GED interrupt
-> 
-> I'm doing this rename:
-> 
-> 	ACPI_HEST_SRC_ID_GPIO -> ACPI_HEST_SRC_ID_GED_INT
-> 
-> To clearly state what it is implemented there.
-> 
-> I'm also changing patch description to:
-> 
->     acpi/ghes: Add support for General Purpose Event
->     
->     As a GED error device is now defined, add another type
->     of notification.
->     
->     Add error notification to GHES v2 using the GPIO source.
-                                                  ^^^^
-did you mean: GED?
->     
->     [mchehab: do some cleanups at ACPI_HEST_SRC_ID_* checks and
->      rename HEST event to better identify GED interrupt OSPM]
-> 
->     Signed-off-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
->     Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-> 
-> Regards,
-> Mauro
-> 
+> diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
+> index e9511d9b8f71..8d0262e6c1aa 100644
+> --- a/hw/acpi/ghes.c
+> +++ b/hw/acpi/ghes.c
+> @@ -444,6 +444,9 @@ int acpi_ghes_record_errors(uint8_t source_id, uint64_t physical_address)
+>      return ret;
+>  }
+>  
+> +NotifierList generic_error_notifiers =
+> +    NOTIFIER_LIST_INITIALIZER(error_device_notifiers);
+
+s/generic_error_notifiers/acpi_generic_error_notifiers/
+
+>  bool acpi_ghes_present(void)
+>  {
+>      AcpiGedState *acpi_ged_state;
+> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> index f76fb117adff..f8bbe3e7a0b8 100644
+> --- a/hw/arm/virt-acpi-build.c
+> +++ b/hw/arm/virt-acpi-build.c
+> @@ -858,6 +858,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>      }
+>  
+>      acpi_dsdt_add_power_button(scope);
+> +    acpi_dsdt_add_error_device(scope);
+
+with suggested change in 2/7, this will look like
+aml_append(scope, aml_foo_device());
+
+
+>  #ifdef CONFIG_TPM
+>      acpi_dsdt_add_tpm(scope, vms);
+>  #endif
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index 687fe0bb8bc9..8b315328154f 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -73,6 +73,7 @@
+>  #include "standard-headers/linux/input.h"
+>  #include "hw/arm/smmuv3.h"
+>  #include "hw/acpi/acpi.h"
+> +#include "hw/acpi/ghes.h"
+>  #include "target/arm/cpu-qom.h"
+>  #include "target/arm/internals.h"
+>  #include "target/arm/multiprocessing.h"
+> @@ -677,7 +678,7 @@ static inline DeviceState *create_acpi_ged(VirtMachineState *vms)
+>      DeviceState *dev;
+>      MachineState *ms = MACHINE(vms);
+>      int irq = vms->irqmap[VIRT_ACPI_GED];
+> -    uint32_t event = ACPI_GED_PWR_DOWN_EVT;
+> +    uint32_t event = ACPI_GED_PWR_DOWN_EVT | ACPI_GED_ERROR_EVT;
+>  
+>      if (ms->ram_slots) {
+>          event |= ACPI_GED_MEM_HOTPLUG_EVT;
+> @@ -1009,6 +1010,15 @@ static void virt_powerdown_req(Notifier *n, void *opaque)
+>      }
+>  }
+>  
+> +static void virt_generic_error_req(Notifier *n, void *opaque)
+> +{
+> +    VirtMachineState *s = container_of(n, VirtMachineState, generic_error_notifier);
+> +
+> +    if (s->acpi_dev) {
+
+I'd assert her, and move check to caller so it won't even add
+a notifier if acpi_dev is not present
+
+> +        acpi_send_event(s->acpi_dev, ACPI_GENERIC_ERROR);
+> +    }
+> +}
+> +
+>  static void create_gpio_keys(char *fdt, DeviceState *pl061_dev,
+>                               uint32_t phandle)
+>  {
+> @@ -2397,6 +2407,10 @@ static void machvirt_init(MachineState *machine)
+>       vms->powerdown_notifier.notify = virt_powerdown_req;
+>       qemu_register_powerdown_notifier(&vms->powerdown_notifier);
+>  
+> +     vms->generic_error_notifier.notify = virt_generic_error_req;
+> +     notifier_list_add(&generic_error_notifiers,
+> +                       &vms->generic_error_notifier);
+> +
+>      /* Create mmio transports, so the user can create virtio backends
+>       * (which will be automatically plugged in to the transports). If
+>       * no backend is created the transport will just sit harmlessly idle.
+> diff --git a/include/hw/acpi/ghes.h b/include/hw/acpi/ghes.h
+> index 674f6958e905..6891eafff5ab 100644
+> --- a/include/hw/acpi/ghes.h
+> +++ b/include/hw/acpi/ghes.h
+> @@ -23,6 +23,9 @@
+>  #define ACPI_GHES_H
+>  
+>  #include "hw/acpi/bios-linker-loader.h"
+> +#include "qemu/notify.h"
+> +
+> +extern NotifierList generic_error_notifiers;
+>  
+>  /*
+>   * Values for Hardware Error Notification Type field
+> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+> index a4d937ed45ac..ad9f6e94dcc5 100644
+> --- a/include/hw/arm/virt.h
+> +++ b/include/hw/arm/virt.h
+> @@ -175,6 +175,7 @@ struct VirtMachineState {
+>      DeviceState *gic;
+>      DeviceState *acpi_dev;
+>      Notifier powerdown_notifier;
+> +    Notifier generic_error_notifier;
+>      PCIBus *bus;
+>      char *oem_id;
+>      char *oem_table_id;
 

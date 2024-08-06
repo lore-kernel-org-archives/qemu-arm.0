@@ -1,299 +1,200 @@
-Received: by 2002:a17:505:1e8b:b0:1be9:327d:8ee3 with SMTP id mw11csp1234964njb;
-        Tue, 6 Aug 2024 07:20:54 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXdgCW/ysDm0vMqcjWcOI31E4i5n5EyX3ivG2A3UbTY5WNKGQWwwtMiQYVRsSPzqsHEm3zqqdVunSfVkGNZXJCcG1oRT2jU
-X-Google-Smtp-Source: AGHT+IFdUUXxUdkJHZuupaIN41+SK4jgLSxKoNO8fMmQkdHCrZyZOL4qULOVljSJ0YKyjA2w7zRw
-X-Received: by 2002:a05:6359:224:b0:1a5:bbe2:504f with SMTP id e5c5f4694b2df-1af3bb8e426mr1450363955d.25.1722954054059;
-        Tue, 06 Aug 2024 07:20:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1722954054; cv=none;
+Received: by 2002:a17:505:1e8b:b0:1be9:327d:8ee3 with SMTP id mw11csp1268695njb;
+        Tue, 6 Aug 2024 08:53:18 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWqN63BWB76BzKnAmdlqGINY6ZCivREvj/CAXrCbeEoBfzKzvVtvAhbguv4TucoQL5AqdNg4Y8suI4lOVbFcdScBkkE6cZB
+X-Google-Smtp-Source: AGHT+IEsPB4kfMTRib/1ZPn+e5u5UP18Gt4DFCd6pKDaEC40vBCt9VxpK2BpMbKBeXaqYKdsA35L
+X-Received: by 2002:ac8:5f87:0:b0:447:e636:9ea4 with SMTP id d75a77b69052e-451893b5ac4mr309110131cf.8.1722959597778;
+        Tue, 06 Aug 2024 08:53:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1722959597; cv=none;
         d=google.com; s=arc-20160816;
-        b=Mvx1qcGD6rbT6zyCETlOjmcwaMfWf8cwRbi5jd6O6CEB4TVg19hzR0t6me9iAUg+e4
-         jvKer5nkOozeGmEXukxv7BMn8FvdCux8RmYSrVNKlvnCYrzGtoRN4u+gIAjqJLD6PAyN
-         dM9aGFIyaB/1dgsZAxzB/BTyuwedy5xTlWTOBimHwsK5u3vhZdx4yWOtIP5qXL0SuoiO
-         tV/YroIbhZUlYEQs9hIupQUpm0J+4mHkMedg0uC+8wgm0bDY0CRkks5I4s1DH+OGeQea
-         dWeTxLmnA+XMGa1VObIInXUsTlX/c4GjTTRJilM5ZZQfVP6wMWfTGJ3P+77thSUgNjOI
-         IE0Q==
+        b=uwlaznMWCvd/phnJ03CeI6in0HgONyiDo/WCleC1viSq928wIlR3oilLnEaZuERl8k
+         jg1pT/YD/h2ODR95D7xpXVCRjWlkgjYfM5qh+nEG4OTuilaJy/V3bMe7wQywmW6zzhos
+         JOF+tM6oOQh8xdk8FrS6TAXpLePV8LginNHqsSYkhEk8NyZ6zFES9xxI31BjpaTVtbob
+         f8+nS3SwmuU3/mcH1/wFRoI4JKCQTRsDr5pvb8/BFL76HPC2gIzAgo8QmrLtr+50yfIM
+         D/Uo5aD6wQiW2yXJsVHdEoQ+H9+DxcgJNOz293apO4BEK7XaC8wkudmp5gGv3/1e6k5C
+         z5wQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=70dZ265UG/nvEVWlFD0BHxq9nX6raHr8FzG2unqteF0=;
-        fh=YLtZBfgPyB1tOW5chyq71/J3turkDZ1FOJiP0fTpMew=;
-        b=GIxzu/VsekMWtrXeixLpEgnySBiWVxfSjDEl0Vd6wQ9D79EgZCIigz/sOjqJSL3qB4
-         4rU35uG7p6JMSKZ+VEJAWMzHka+XKVmgnNqo2omNw+ibRvS3Lp6AypPpzho7h2+oIP09
-         NZjJ/VoVqYwkw17waYyjg20dkE0kF52TW+x9hDbUn+n+vLe4/GXJVcipLHtatNhhrcQ8
-         JSsWZhzgDEKa6d+b79aPshz24h8Xqs+Qu2Gt6ZS/cgcNnkT3JXenDYRMBoo5xNFIv9+4
-         d/awKG8s5D7K5SgnJ81A5mNNGRuw5ufWGlOe2i+oDSP+XWX3pQNnnYjr08m9UybWsUo9
-         yTrw==;
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:user-agent
+         :in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=qEHp2W5QQn8DE8globFe/hgSSgkSD/3gt/u+fJ4Ohks=;
+        fh=N5HxHITUWSLOkULx7ITQ8OrnC9xUUIL/vatdVN0Rh8s=;
+        b=1DBtqmWPK7l4clW18cDkSh0QW8X6LemOeQMzrUAxoUmTejrbvXpSf2tszkdPmI7mwS
+         bpNhUUgDtyWYJ/8tXH34na3Uah0sXBETlvhQZZZT22QD2uURst7qkog9S2mVxzf4y8VT
+         1blLWigyBKP6Tam6u7OjgFf0nBiVvWDE5JWJIBgfO2+5Hw0RgkGCFjXZFLVLuvjJKfFG
+         /P2zpKmQsOYqucC5Ky+qymX7/zFbYO2GE8NMWBKfIF5p8zCY7FZiRvmGzHFC6buQ+6MX
+         odNf/YW8+pQe4JuhWzw41KFYbrIVNeuL0Qj++wj6Hxio9Kn1hgD6wd0BhC5gO3YsEgho
+         V3Tw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=cNvD9IKa;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="G5lmxL/f";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a1e0cc1a2514c-83c082cc4a3si1670099241.54.2024.08.06.07.20.53
+        by mx.google.com with ESMTPS id d75a77b69052e-4518a79c065si130253401cf.577.2024.08.06.08.53.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 06 Aug 2024 07:20:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 06 Aug 2024 08:53:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=cNvD9IKa;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="G5lmxL/f";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sbL2d-0001Kq-6J; Tue, 06 Aug 2024 10:20:00 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sbMUk-0006EI-R4; Tue, 06 Aug 2024 11:53:06 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sbL2Z-00019e-Ef
- for qemu-devel@nongnu.org; Tue, 06 Aug 2024 10:19:55 -0400
-Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sbL2W-0004TF-Bg
- for qemu-devel@nongnu.org; Tue, 06 Aug 2024 10:19:54 -0400
-Received: by mail-ed1-x52b.google.com with SMTP id
- 4fb4d7f45d1cf-5b5b67d0024so1062422a12.0
- for <qemu-devel@nongnu.org>; Tue, 06 Aug 2024 07:19:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1722953990; x=1723558790; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=70dZ265UG/nvEVWlFD0BHxq9nX6raHr8FzG2unqteF0=;
- b=cNvD9IKaCHUFmgZrniHWHPt9EH8xIzoA9Db1dFf6ebHxUQlpTXyP0XgFfRjWihp7Qh
- J7oLkBlsShWFW88Or7QjAa6Tz1oDJ29wCo5KUThzZ1/4F9viJIROuKvb2QbazncKz8MG
- x2hH4NAMrjRV1HEUxBDTHEKe1SjzFnWi/jTNE/nKTVg2GnfZXhrPEtp6z8ZDMhSBdF6P
- Qj50nWLoZn+0W8IDg76wWgmtmEGtv3qFWXxQR4t3kGtGB6iVs2d670rWcUgogIjaJwCm
- zQJYydDU6hLjRf4Ub5T0i6bJrkFNGSCp9RASMkIig50I4+LfLKrCbPho2QdLECB7954M
- d+yw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1722953990; x=1723558790;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=70dZ265UG/nvEVWlFD0BHxq9nX6raHr8FzG2unqteF0=;
- b=eBToE6O9irZfnkDqt4szOQyenrmcvfUPi/eyMvXskP0zbt5FnyprMVTCipAfwGF/Vm
- 1D6MTM+XEDW23xvswAbI8EH+qcMF7hcwo+IfaK/DHM1l4g2/RQpxGNFghBzWsGt1U1tG
- aMpBHWrKTb8r2uCzpSkkxptmCPuhePSBK/AnELNHTjesSs6i19QAVfRkSYLbA0qoGWNU
- 0Wu3Tv890D0mzfncTEdZrhr6pb81pjznQAK203YenGXitrsY+YD2raeRG5uq2f4z/zKH
- A6xlSuT5CiRH8I2F7tsNO5+oJlNwshRpqbgbETyLPdDbGgbbKZ6sHXxyfQV01B4xmRdp
- LUSg==
-X-Gm-Message-State: AOJu0YzeVnGfnFFJSnxLiGEfj0/TlUBwxA5CW8bA/Y6g31grWUtVUst2
- MgmTSF+a+VtYKQmE94QWOefZhXBX+TCXMDM/KnJ8UVxYh5ya0Hosd3m9m4j8gY+ZjjSz8Aik1g9
- J
-X-Received: by 2002:a17:907:2d91:b0:a71:ddb8:9394 with SMTP id
- a640c23a62f3a-a7dc4ff1ad2mr1102470266b.40.1722953989744; 
- Tue, 06 Aug 2024 07:19:49 -0700 (PDT)
-Received: from m1x-phil.lan (cor91-h02-176-184-30-206.dsl.sta.abo.bbox.fr.
- [176.184.30.206]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-a7dc9c12ad3sm552622066b.88.2024.08.06.07.19.48
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 06 Aug 2024 07:19:49 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Markus Armbruster <armbru@redhat.com>, Eric Blake <eblake@redhat.com>,
- qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- Thomas Huth <thuth@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [RFC PATCH-for-9.1? 1/2] target/arm: Move
- qmp_query_gic_capabilities() to hw/intc/
-Date: Tue,  6 Aug 2024 16:19:39 +0200
-Message-ID: <20240806141940.22095-2-philmd@linaro.org>
-X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20240806141940.22095-1-philmd@linaro.org>
-References: <20240806141940.22095-1-philmd@linaro.org>
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1sbMUj-0006Ab-8I
+ for qemu-arm@nongnu.org; Tue, 06 Aug 2024 11:53:05 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1sbMUg-0000xO-1y
+ for qemu-arm@nongnu.org; Tue, 06 Aug 2024 11:53:04 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1722959580;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:in-reply-to:in-reply-to:  references:references;
+ bh=qEHp2W5QQn8DE8globFe/hgSSgkSD/3gt/u+fJ4Ohks=;
+ b=G5lmxL/frR/Gpy/v8lKO207oRMCvMpKH7JneoTOhxnf8TuUskrJe8U/ikGSgeWSOPenfoE
+ ie9KMqznGoJqJyYe6zC9NrscdGb/oaMaYkTKP1NWTCY24kmw2+TP/d3AGN63k4jgSE3aXD
+ LKutMMmXXviLMGA2RXyOBmMM4EXa510=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-286-ZdVkTfDlPQKQOcHwIt9cXg-1; Tue,
+ 06 Aug 2024 11:52:56 -0400
+X-MC-Unique: ZdVkTfDlPQKQOcHwIt9cXg-1
+Received: from mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.15])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 63EAC1955D45; Tue,  6 Aug 2024 15:52:54 +0000 (UTC)
+Received: from redhat.com (unknown [10.42.28.106])
+ by mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 630AA1955D42; Tue,  6 Aug 2024 15:52:51 +0000 (UTC)
+Date: Tue, 6 Aug 2024 16:52:47 +0100
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Alejandro Zeise <alejandro.zeise@seagate.com>
+Cc: qemu-arm@nongnu.org, kris.conklin@seagate.com,
+ jonathan.henze@seagate.com, evan.burgess@seagate.com, clg@kaod.org,
+ peter.maydell@linaro.org, qemu-devel@nongnu.org
+Subject: Re: [PATCH v3 00/12] hw/misc/aspeed_hace: Fix SG Accumulative Hash
+ Calculations
+Message-ID: <ZrJGzxtvzJ49aGln@redhat.com>
+References: <20240805155047.3151540-1-alejandro.zeise@seagate.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::52b;
- envelope-from=philmd@linaro.org; helo=mail-ed1-x52b.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <20240805155047.3151540-1-alejandro.zeise@seagate.com>
+User-Agent: Mutt/2.2.12 (2023-09-09)
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.15
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.144,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 8gTk4qn5C8r5
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: PVF9C4yhZCvO
 
-qmp_query_gic_capabilities() is not specific to the ARM
-architecture but to the GIC device which is modelled in
-hw/intc/, so move the code there for clarity. No logical
-change intended.
+On Mon, Aug 05, 2024 at 03:50:35PM +0000, Alejandro Zeise wrote:
+> The goal of this patch series is to fix accumulative hashing support in the 
+> Aspeed HACE module. The issue that stemmed this patch was a failure to boot an
+> OpenBMC image using the "ast2600-evb" machine. The U-boot
+> 2019.04 loader failed to verify image hashes.
+> 
+> These incorrect image hashes given by the HACE to the U-boot guest are due to 
+> an oversight in the HACE module. Previously when operating in 
+> scatter-gather accumulative mode, the HACE would cache the address provided by 
+> the guest which contained the source data. However, there was no deep copy, 
+> so when HACE generated the digest upon the reception of the final accumulative chunk 
+> the digest was incorrect, as the addresses provided had their regions overwritten
+> by that time.
+> 
+> This fix consists of two main steps:
+> * Add an accumulative hashing function to the qcrypto library
+> * Modify the HACE module to use the accumulative hashing functions
+> 
+> All the crypto library backends (nettle, gnutls, etc.) support accumulative hashing,
+> so it was trivial to create wrappers for those functions.
+> 
+> Changes in V3:
+> * Reworked crypto hash API with comments from Daniel
+>   * Creation/Deletion of contexts, updating, and finalizing
+>   * Modified existing API functions to use the new 4 main core functions
+>   * Added test for accumulative hashing
+>   * Added afalg driver implementation
+> * Fixed bug in HACE module where hash context fails to allocate,
+>   causing the HACE internal state to be incorrect and segfault.
+> 
+> Changes in V2:
+> * Fixed error checking bug in libgcrypt crypto backend of
+>   accumulate_bytesv
+> 
+> Alejandro Zeise (12):
+>   crypto: accumulative hashing API
+>   crypto/hash-glib: Remove old hash API implementation
+>   crypto/hash-glib: Implement new hash API
+>   crypto/hash-gcrypt: Remove old hash API implementation
+>   crypto/hash-gcrypt: Implement new hash API
+>   crypto/hash-gnutls: Remove old hash API
+>   crypto/hash-gnutls: Implement new hash API
+>   crypto/hash-nettle: Remove old hash API
+>   crypto/hash-nettle: Implement new hash API
+>   crypto/hash-afalg: Update to new API
+>   tests/unit/test-crypto-hash: accumulative hashing
+>   hw/misc/aspeed_hace: Fix SG Accumulative hashing
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
- hw/intc/arm_gic_qmp.c     | 59 +++++++++++++++++++++++++++++++++++++++
- target/arm/arm-qmp-cmds.c | 52 +---------------------------------
- hw/intc/meson.build       |  1 +
- 3 files changed, 61 insertions(+), 51 deletions(-)
- create mode 100644 hw/intc/arm_gic_qmp.c
+To allow 'make check' to succeed at every individual patch, you'll need to
+re-order these, and split a couple of patches, to be more or less like this:
 
-diff --git a/hw/intc/arm_gic_qmp.c b/hw/intc/arm_gic_qmp.c
-new file mode 100644
-index 0000000000..71056a0c10
---- /dev/null
-+++ b/hw/intc/arm_gic_qmp.c
-@@ -0,0 +1,59 @@
-+/*
-+ * QEMU ARM GIC QMP command
-+ *
-+ * SPDX-License-Identifier: MIT
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qapi/util.h"
-+#include "qapi/qapi-commands-misc-target.h"
-+#include "kvm_arm.h"
-+
-+static GICCapability *gic_cap_new(int version)
-+{
-+    GICCapability *cap = g_new0(GICCapability, 1);
-+    cap->version = version;
-+    /* by default, support none */
-+    cap->emulated = false;
-+    cap->kernel = false;
-+    return cap;
-+}
-+
-+static inline void gic_cap_kvm_probe(GICCapability *v2, GICCapability *v3)
-+{
-+#ifdef CONFIG_KVM
-+    int fdarray[3];
-+
-+    if (!kvm_arm_create_scratch_host_vcpu(NULL, fdarray, NULL)) {
-+        return;
-+    }
-+
-+    /* Test KVM GICv2 */
-+    if (kvm_device_supported(fdarray[1], KVM_DEV_TYPE_ARM_VGIC_V2)) {
-+        v2->kernel = true;
-+    }
-+
-+    /* Test KVM GICv3 */
-+    if (kvm_device_supported(fdarray[1], KVM_DEV_TYPE_ARM_VGIC_V3)) {
-+        v3->kernel = true;
-+    }
-+
-+    kvm_arm_destroy_scratch_host_vcpu(fdarray);
-+#endif
-+}
-+
-+GICCapabilityList *qmp_query_gic_capabilities(Error **errp)
-+{
-+    GICCapabilityList *head = NULL;
-+    GICCapability *v2 = gic_cap_new(2), *v3 = gic_cap_new(3);
-+
-+    v2->emulated = true;
-+    v3->emulated = true;
-+
-+    gic_cap_kvm_probe(v2, v3);
-+
-+    QAPI_LIST_PREPEND(head, v2);
-+    QAPI_LIST_PREPEND(head, v3);
-+
-+    return head;
-+}
-diff --git a/target/arm/arm-qmp-cmds.c b/target/arm/arm-qmp-cmds.c
-index 3cc8cc738b..3303c71b21 100644
---- a/target/arm/arm-qmp-cmds.c
-+++ b/target/arm/arm-qmp-cmds.c
-@@ -22,64 +22,14 @@
- 
- #include "qemu/osdep.h"
- #include "hw/boards.h"
--#include "kvm_arm.h"
-+#include "sysemu/kvm.h"
- #include "qapi/error.h"
- #include "qapi/visitor.h"
- #include "qapi/qobject-input-visitor.h"
- #include "qapi/qapi-commands-machine-target.h"
--#include "qapi/qapi-commands-misc-target.h"
- #include "qapi/qmp/qdict.h"
- #include "qom/qom-qobject.h"
- 
--static GICCapability *gic_cap_new(int version)
--{
--    GICCapability *cap = g_new0(GICCapability, 1);
--    cap->version = version;
--    /* by default, support none */
--    cap->emulated = false;
--    cap->kernel = false;
--    return cap;
--}
--
--static inline void gic_cap_kvm_probe(GICCapability *v2, GICCapability *v3)
--{
--#ifdef CONFIG_KVM
--    int fdarray[3];
--
--    if (!kvm_arm_create_scratch_host_vcpu(NULL, fdarray, NULL)) {
--        return;
--    }
--
--    /* Test KVM GICv2 */
--    if (kvm_device_supported(fdarray[1], KVM_DEV_TYPE_ARM_VGIC_V2)) {
--        v2->kernel = true;
--    }
--
--    /* Test KVM GICv3 */
--    if (kvm_device_supported(fdarray[1], KVM_DEV_TYPE_ARM_VGIC_V3)) {
--        v3->kernel = true;
--    }
--
--    kvm_arm_destroy_scratch_host_vcpu(fdarray);
--#endif
--}
--
--GICCapabilityList *qmp_query_gic_capabilities(Error **errp)
--{
--    GICCapabilityList *head = NULL;
--    GICCapability *v2 = gic_cap_new(2), *v3 = gic_cap_new(3);
--
--    v2->emulated = true;
--    v3->emulated = true;
--
--    gic_cap_kvm_probe(v2, v3);
--
--    QAPI_LIST_PREPEND(head, v2);
--    QAPI_LIST_PREPEND(head, v3);
--
--    return head;
--}
--
- QEMU_BUILD_BUG_ON(ARM_MAX_VQ > 16);
- 
- /*
-diff --git a/hw/intc/meson.build b/hw/intc/meson.build
-index afd1aa51ee..45d3503d49 100644
---- a/hw/intc/meson.build
-+++ b/hw/intc/meson.build
-@@ -39,6 +39,7 @@ if config_all_devices.has_key('CONFIG_APIC') or \
- endif
- 
- specific_ss.add(when: 'CONFIG_APIC', if_true: files('apic.c', 'apic_common.c'))
-+specific_ss.add(when: 'CONFIG_ARM', if_true: files('arm_gic_qmp.c'))
- specific_ss.add(when: 'CONFIG_ARM_GIC', if_true: files('arm_gicv3_cpuif_common.c'))
- specific_ss.add(when: 'CONFIG_ARM_GICV3_TCG', if_true: files('arm_gicv3_cpuif.c'))
- specific_ss.add(when: 'CONFIG_ARM_GIC_KVM', if_true: files('arm_gic_kvm.c'))
+   crypto: accumulative hashing API   (only define new driver APIs & new public APIs here)
+   crypto/hash-glib: Implement new hash API
+   crypto/hash-gcrypt: Implement new hash API
+   crypto/hash-gnutls: Implement new hash API
+   crypto/hash-nettle: Implement new hash API
+   crypto/hash-afalg: Update to new API  (only add new APIs here )
+   < convert old public APIs to call the new driver APIs here>
+   tests/unit/test-crypto-hash: accumulative hashing
+   crypto/hash-glib: Remove old hash API implementation
+   crypto/hash-gcrypt: Remove old hash API implementation
+   crypto/hash-gnutls: Remove old hash API
+   crypto/hash-nettle: Remove old hash API
+   < remove old afalg support here >
+   < remove old driver APIs here >
+   hw/misc/aspeed_hace: Fix SG Accumulative hashing
+
+
+With regards,
+Daniel
 -- 
-2.45.2
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
 

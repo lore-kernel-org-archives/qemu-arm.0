@@ -1,140 +1,159 @@
-Received: by 2002:a17:505:1e8b:b0:1be9:327d:8ee3 with SMTP id mw11csp1336137njb;
-        Tue, 6 Aug 2024 12:30:29 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVHnNlX90m5Xxkb3U9JM7GeXNCxbGFnlOtKuV6XJcECtpTI8IECf61rB7BXKy+fnz1VZXDN8v1lEM3qMMwFvyAK1FrxoLQ5
-X-Received: by 2002:a2e:91d0:0:b0:2ef:1c0f:d490 with SMTP id 38308e7fff4ca-2f15ab0c2a1mr115196821fa.39.1722972629159;
-        Tue, 06 Aug 2024 12:30:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1722972629; cv=none;
+Received: by 2002:a17:505:1e8b:b0:1be9:327d:8ee3 with SMTP id mw11csp1351590njb;
+        Tue, 6 Aug 2024 13:32:03 -0700 (PDT)
+X-Received: by 2002:ac2:4e0b:0:b0:52c:db76:2a7a with SMTP id 2adb3069b0e04-530bb393e72mr14608891e87.34.1722976323402;
+        Tue, 06 Aug 2024 13:32:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1722976323; cv=none;
         d=google.com; s=arc-20160816;
-        b=IpibCk2l7Aka9+yEhI9wV93xu3FZ7qR2OFeZV8E6ZvnDlq0TDUbg+VFEgrJikPovGR
-         JJ/bi+VMevJj0PTZdE2m6vmmtlTnA83SLtWOBn64wXUQc4ME/iAyORSBfiTe6XYqohpc
-         Ceo4HQ+t7/Vp0zioJ9m3rUFiMDTdt8bL6ddVdZmvfouMkK/t2a7G/MlilLtSaHCGgikd
-         WSXIZKYvSsw/5pxnFJ7bmGiNF4H9x1dn0TnsKlGxAGu2BnEG18WQYlRyyh2tkYFFZU/0
-         lNkHWg0Rd7uVZUNuCR74ei5RR757QiQqhi0JOoJL1kj8vT+g2FdSe5mAtBEd9W5IQyIy
-         zklw==
+        b=FI2lkeT+6fisipgnVeva8T483Se8HXHPYm1I1lDGIP7/SJUZHMAOlzDadWC7v6E/b4
+         0BDAW+Obajvgl1FZQODJTvhU4jeIb8n7/bUd0WW7OkMvvL7ucX2q8In/1TqPqlirwkXq
+         i02STXfu2VjJiT9oujAP3OJ6D1GIWx2vJl9JxDDgIinbw3SPUl+/jrW/rxDO+d8YB32F
+         kOQ5rws4aAZhTFqdYjz4mbBgQi5fNaqvd8eTPwypU2HnIm3/i5HCBZ1jpCpOtYSB6Jzt
+         VXFxhHleXQ7FH0LR+9m2CHKDmH23VGJNJXNkybyLwERe5cpB0HNHP98HVmyQbbfwPsyx
+         rA8w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=P76gTOzFzXU4EN8b7uHbluQmlo5oYvuNAX6IWkFa11Q=;
-        fh=SWMa2F3lBw8R/N6gKTrqbQn7RFuTHPFdpLZlZqW32zA=;
-        b=Agr3CJhzKWJbJ6Nu3pW20vl6h9CYQS1LPZ2v897b45ZN2tzSO6qQ/gyRpjUjJRipQp
-         Ex+T6VAvwO9rkuBWHkvKU27jY+P7rcmyM/UiXDvanFt6QAJVtWbsSZqpBTlYUxRvYs4q
-         qUg2XiNMeUKjQlR2rajf9yw35gSGr3UOLM+bWzZASS8X8USli5NdgngA2EpyXTkPJndB
-         xANNyw5iYryTM8aFLf8VGr2ZJUB7CjzAjOIsy3lNUQeZ850lwPU2eKLZMFPX0nwqxCgC
-         PjiYEskz1CJ+6A0tpahy4nPUwabBEueNUJF1yzltRiF0AxgOWe9u1BflxHMzgQe/n5Hs
-         /mqQ==;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=4cVX+vdtRbjKRnJ8k+xGFwZU4CJUyuoBcJvY/3P8diM=;
+        fh=z+da3h1dS3QDx14SI/zDnhCLoh8iY5ZS9gw+UGaZiKI=;
+        b=zkn6RLrgs7C2J4JFxwClx+k0dpi2+Ohs0RVRuvPlrOCDDGv265cKjAPgFAl3X5wVoJ
+         VhFwnk28LwK8zWT18KIRGMyrPoqJNCs3Fu1pkS+vyHs2BBfj8n2/AhAuWscMbUkQjCFJ
+         N3D2Efxs5eN1BVfJvNJoEqitScP3GKQ0Ip9lKYYVlHQYH0RaIXVaa8Cskeny3Z9ktXVk
+         IGWxt+qud+zBhZrqyfC9Pvv081XXoAwArP+QnoIPOu985r0Kcbe6Er+YXWbEl+eHPUH0
+         Ragcc7mL8wAqFzxf+FC8ot27yLXUvfhR+HPX6S3ApuUjL7YdV7PykmDMPzF443a9WYdv
+         6aEA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=V6n3QYK5;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dkim=pass header.i=@google.com header.s=20230601 header.b="17NC/Nwv";
+       spf=pass (google.com: domain of tavip@google.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=tavip@google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
        dara=neutral header.i=@linaro.org
-Return-Path: <philmd@linaro.org>
+Return-Path: <tavip@google.com>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 38308e7fff4ca-2f15e212bb9sor24419671fa.13.2024.08.06.12.30.28
+        by mx.google.com with SMTPS id 2adb3069b0e04-530bba28868sor3108868e87.23.2024.08.06.13.32.03
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Tue, 06 Aug 2024 12:30:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        Tue, 06 Aug 2024 13:32:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of tavip@google.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=V6n3QYK5;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dkim=pass header.i=@google.com header.s=20230601 header.b="17NC/Nwv";
+       spf=pass (google.com: domain of tavip@google.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=tavip@google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1722972628; x=1723577428; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=P76gTOzFzXU4EN8b7uHbluQmlo5oYvuNAX6IWkFa11Q=;
-        b=V6n3QYK5SKR2WIep4HWm4mEhZ+cx0/T4ifSWkAdgSov0Dc//QUNiL8vMwcYW7d8jty
-         3b7oMjikSRRmkBaqL3i3FFfXJXrzaupIlA/jCWRUyArj0U4UHRMn9LzE+aTSB10NNY/7
-         TBr9cjkz3U3hMHPwaVzU8Fv+PdPLlZhX1WL8pfHZ0ihwY1PAGCvtHr9Els6Tod+J6QEI
-         ynCEvywa4u59gZsYlTv6fRkZDp74zPdDUWSY+yITk4M56U2SzYNAqweqw/+ETT1TfJeW
-         +vh1OZDgBQ6gRATZRbrkzcANanxGc/qkma1/1laPxv4sNPUCF/r88CikouvTtEUBO3N3
-         ve8A==
+        d=google.com; s=20230601; t=1722976323; x=1723581123; darn=linaro.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=4cVX+vdtRbjKRnJ8k+xGFwZU4CJUyuoBcJvY/3P8diM=;
+        b=17NC/Nwv2fR3G+EMBylKIT4XgXwCLVo9BCn0DGKUp8jFYY5urgBkgvudbtYzyNyBDM
+         UflHk7bYq/zXy2JvFD1EnFA9VpP8jiT61I9Sn7QpqZOKaw+8XURsDbcROo88gh0cY0Ha
+         yZ3ezcv/VNzyTppDk26DVKwB5IPEjm8BEwOAA1NO0dVzrQaaWZB3RWYMGTD37onkQ58p
+         yqpIRkkzxivK/6Q+qHcuf2MbxLjyv2EUaNryUTm0JvT/LNVl82poLqs99rOTkZv5Mdmk
+         tX0bt/71kgtRO6aBZwa1uwwfPdTIJT+AeVlisRYlXurqCotnCzJkd7wzfpT2dDqyYrN9
+         fg3A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1722972628; x=1723577428;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=P76gTOzFzXU4EN8b7uHbluQmlo5oYvuNAX6IWkFa11Q=;
-        b=vhF1dGjb+zuj1bj/Kk5je+/hC3tMHt3qyVp8XegcCNfjnbEAxGLUj5jz0d3FDVulf8
-         jCkMgnnMnyzvBJgaMDAZOsj47Tx43XYCD2Zc2TpQy8N/QOficEb24jN5gNUvMmp665Sx
-         YBc96YidF+eH10xT4GgPrNmsy/imVrwVyUsCMHQVarChR2uAaLy4WUvSmRXXrkq1W7hd
-         jzuUuIObtB2u9//eWGs6wWvFAljP0Ta5NzpOplyD7JCKx7pyVedIRCdyrqX2V0Dll6gU
-         tbfUr4e1a550mbs+75lQV6YwSSQdJsYZgr9gLIXq+Ce7wM3AvUAIIMki99B4MXLLGxYi
-         bEKQ==
-X-Forwarded-Encrypted: i=1; AJvYcCV0Sxq8N1arw7lUdml5II04UlodxKM9IkXaYfmBCcjteoboouL8ggp1RS+I3s629zZvrmvwU85pFzu5p5sH9sxN2ZN/FB2y
-X-Gm-Message-State: AOJu0YxiyM8Twyu4LmG4xYCwxw2AxRdUO3zGZKqVPiJx/RGltTPaOUJV
-	dYH5GfRFmQFxPkjV3JBAWer4zOqQ5TpPmaPXiL0Ji4/CrPX5ab6OZrIPv0s5OnZxOQ==
-X-Google-Smtp-Source: AGHT+IEr8TsGyQqAdDFzXKk6b+H4wmROdXIZsZxEzGySz0nVAFbPsUXyNA9aBvNixrGUipAd/jr1vQ==
-X-Received: by 2002:a2e:96d1:0:b0:2ef:208f:9ec0 with SMTP id 38308e7fff4ca-2f15aa92e12mr116284951fa.14.1722972628189;
-        Tue, 06 Aug 2024 12:30:28 -0700 (PDT)
-Return-Path: <philmd@linaro.org>
-Received: from [192.168.69.100] (vau06-h02-176-184-43-141.dsl.sta.abo.bbox.fr. [176.184.43.141])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-428e6e01d0asm188941585e9.16.2024.08.06.12.30.25
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 06 Aug 2024 12:30:27 -0700 (PDT)
-Message-ID: <fff8c0f4-881a-4317-857a-0d20a72484eb@linaro.org>
-Date: Tue, 6 Aug 2024 21:30:24 +0200
+        d=1e100.net; s=20230601; t=1722976323; x=1723581123;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=4cVX+vdtRbjKRnJ8k+xGFwZU4CJUyuoBcJvY/3P8diM=;
+        b=s06Ui3ZZzNQX1KzMzg3hoOOBNjpi0/3EDyr2pprGDF9VCu0xC2Exl1s0pq04lNUrsK
+         sUoNi54IuRDj3TltjPgWF8lXet+OKG2wEaMALqSUW0h24IM+ZQRAtvc8YVSiyJ2WI5i1
+         WlARu8QR5jJRJJKRJlyU89bDo1wkys74aKyEXlxu1kjB9YEe51igOlM3GZatGsaQwSNt
+         OqHayMz/iCIn6WJkC4Fq0N121nKpG/7o8oL0dEa31ETm3kw1M6d9l2mcv+K//6oOw1i7
+         kSZ1/hQFNcRTJLyzQ1AMw73XApUQBczxDfqcP5u53lFrcf6BgTdbji9ka4rje2nvGXGc
+         JlRA==
+X-Gm-Message-State: AOJu0YzDwKBAnkNS+elNgy6EU+EOKgmEoYB499XLYhrHBEZXvx9JsZLa
+	e/KJy8ndlXCrqkJtOwi3bgX24FeZdEWTiW/G2kTgje0fncTkbMGw5jjqIG3N+GgZjWrUde5VndF
+	AbkT5V3SKEkqNXlBq9n4NTa5oHDBCfkEc53UhpIYjAUBEpXTROg==
+X-Google-Smtp-Source: AGHT+IGnaA2iJo21TLuQQMRpw/lGKh4VDKXnI1LoFE9yLK0XuGW7Sg5g1oyL4c4KmcXrnnQfkU3+DiiAw2g09qKmb34=
+X-Received: by 2002:a2e:b790:0:b0:2ef:2c3c:512a with SMTP id
+ 38308e7fff4ca-2f15ab5cce3mr134231271fa.42.1722976322307; Tue, 06 Aug 2024
+ 13:32:02 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 8/9] tests/avocado/machine_aarch64_sbsaref.py: allow
- for rw usage of image
-To: Cleber Rosa <crosa@redhat.com>, qemu-devel@nongnu.org
-Cc: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
- Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
- Radoslaw Biernacki <rad@semihalf.com>, Troy Lee <leetroy@gmail.com>,
- Akihiko Odaki <akihiko.odaki@daynix.com>, Beraldo Leal <bleal@redhat.com>,
- kvm@vger.kernel.org, Joel Stanley <joel@jms.id.au>,
- Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>,
- Sriram Yagnaraman <sriram.yagnaraman@ericsson.com>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, Paul Durrant
- <paul@xen.org>, Eric Auger <eric.auger@redhat.com>,
- David Woodhouse <dwmw2@infradead.org>, qemu-arm@nongnu.org,
- Andrew Jeffery <andrew@codeconstruct.com.au>,
- Jamin Lin <jamin_lin@aspeedtech.com>, Steven Lee
- <steven_lee@aspeedtech.com>, Peter Maydell <peter.maydell@linaro.org>,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
- Wainer dos Santos Moschetta <wainersm@redhat.com>,
- Thomas Huth <thuth@redhat.com>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
- <alex.bennee@linaro.org>, Leif Lindholm <quic_llindhol@quicinc.com>
-References: <20240806173119.582857-1-crosa@redhat.com>
- <20240806173119.582857-9-crosa@redhat.com>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20240806173119.582857-9-crosa@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: 7wEZKJLdaeGH
+References: <20240805201719.2345596-1-tavip@google.com> <20240805201719.2345596-5-tavip@google.com>
+ <87sevhrbjm.fsf@draig.linaro.org>
+In-Reply-To: <87sevhrbjm.fsf@draig.linaro.org>
+From: Octavian Purdila <tavip@google.com>
+Date: Tue, 6 Aug 2024 13:31:51 -0700
+Message-ID: <CAGWr4cTPqtzEvbd5s7xfMOzid90Gje6NSTGw1qR7r=Ao0xeAcw@mail.gmail.com>
+Subject: Re: [RFC PATCH 04/23] hw/arm: add SVD file for NXP i.MX RT595
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, stefanst@google.com, 
+	pbonzini@redhat.com, thuth@redhat.com, peter.maydell@linaro.org, 
+	marcandre.lureau@redhat.com, alistair@alistair23.me, berrange@redhat.com, 
+	philmd@linaro.org, jsnow@redhat.com, crosa@redhat.com, bleal@redhat.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-TUID: Rh/czRdOLxcM
 
-On 6/8/24 19:31, Cleber Rosa wrote:
-> When the OpenBSD based tests are run in parallel, the previously
-> single instance of the image would become corrupt.  Let's give each
-> test its own snapshot.
+On Tue, Aug 6, 2024 at 7:06=E2=80=AFAM Alex Benn=C3=A9e <alex.bennee@linaro=
+.org> wrote:
+>
+> Octavian Purdila <tavip@google.com> writes:
+>
+> > Picked from:
+> >
+> > https://github.com/nxp-mcuxpresso/mcux-soc-svd/blob/main/MIMXRT595S/MIM=
+XRT595S_cm33.xml
+> >
+> > NOTE: the file is truncated to keep the email size reasonable. Please
+> > use the link above and download the full file if you want to try out
+> > the patch.
+> >
+> > Signed-off-by: Octavian Purdila <tavip@google.com>
+> > ---
+> >  hw/arm/svd/MIMXRT595S_cm33.xml | 224052
+> > ++++++++++++++++++++++++++++++
+>
+> I guess one thing we need to decide is if the source XML should live in
+> the repository as the preferred method of making changes or just the
+> translations generated by the tool.
 >
 
-Suggested-by: Alex Bennée <alex.bennee@linaro.org>
-?
+I think we might want to store the XML in the qemu repo, even if we
+don't use it to generate the header files at compile time. This avoids
+issues with the original XML moving, going away, changed in
+incompatible ways, etc.
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+As for generating the headers at compile time, I don't have a strong
+preference. I like it because there is slightly less work to do and it
+avoids dealing with resolving changes on both the SVD and the
+generated headers. For example, the initial headers are committed,
+then some changes are done directly to the headers and then we want to
+pick up a new SVD from the vendor to support a new hardware revision.
 
-> Signed-off-by: Cleber Rosa <crosa@redhat.com>
-> ---
->   tests/avocado/machine_aarch64_sbsaref.py | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/tests/avocado/machine_aarch64_sbsaref.py b/tests/avocado/machine_aarch64_sbsaref.py
-> index 756f316ac9..f8bf40c192 100644
-> --- a/tests/avocado/machine_aarch64_sbsaref.py
-> +++ b/tests/avocado/machine_aarch64_sbsaref.py
-> @@ -190,7 +190,7 @@ def boot_openbsd73(self, cpu):
->               "-cpu",
->               cpu,
->               "-drive",
-> -            f"file={img_path},format=raw",
-> +            f"file={img_path},format=raw,snapshot=on",
->           )
->   
->           self.vm.launch()
+There are disadvantages as well: pysvd dependency for building qemu,
+hard to review if the vendor dumps a new version with lots of changes
+and we want to update to it for a new hardware revision, slight
+increase in build time.
+
+> >  1 file changed, 224052 insertions(+)
+> >  create mode 100644 hw/arm/svd/MIMXRT595S_cm33.xml
+> >
+> > diff --git a/hw/arm/svd/MIMXRT595S_cm33.xml b/hw/arm/svd/MIMXRT595S_cm3=
+3.xml
+> > new file mode 100644
+> > index 0000000000..8943aa3555
+> > --- /dev/null
+> > +++ b/hw/arm/svd/MIMXRT595S_cm33.xml
+> > @@ -0,0 +1,1725 @@
+> > +<?xml version=3D"1.0" encoding=3D"UTF-8"?>
+> > +<device schemaVersion=3D"1.3" xmlns:xs=3D"http://www.w3.org/2001/XMLSc=
+hema-instance" xs:noNamespaceSchemaLocation=3D"CMSIS-SVD.xsd">
+> > +  <vendor>nxp.com</vendor>
+> > +  <name>MIMXRT595S_cm33</name>
+> > +  <version>1.0</version>
+> > +  <description>MIMXRT595SFAWC,MIMXRT595SFFOC</description>
+> > +  <licenseText>
+> > +Copyright 2016-2023 NXP
+> > +SPDX-License-Identifier: BSD-3-Clause
+> > +  </licenseText>
+>
+> This certainly seems compatible. XML is not the medium I personally
+> would have chosen as a register specification language but I guess there
+> are no other alternatives?
+>
+
+I agree that the choice of XML is unfortunate but I am not aware of
+alternatives, this is what vendors will provide.

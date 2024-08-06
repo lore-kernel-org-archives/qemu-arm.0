@@ -1,164 +1,149 @@
-Received: by 2002:a17:505:1e8b:b0:1be9:327d:8ee3 with SMTP id mw11csp1303126njb;
-        Tue, 6 Aug 2024 10:33:25 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCWTtaQpdAsFFw16o/BBeVzfXYXAzo1fH+g0ebF1jU9rKsvuC3ymCgMGPgDoc4/NSKUkemFGL3M75qbGNplpuqqlC7ZCumzB
-X-Google-Smtp-Source: AGHT+IHOw2BJiUm5sj0K6InUoPq/wnb6Z2q4UN3ZgNyq57jvGgP1qYD+1OKfs4/i1Qe7YYDWIAeJ
-X-Received: by 2002:a05:6a21:6d85:b0:1c3:fc87:3770 with SMTP id adf61e73a8af0-1c699659108mr22887840637.36.1722965605043;
-        Tue, 06 Aug 2024 10:33:25 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1722965605; cv=pass;
+Received: by 2002:a17:505:1e8b:b0:1be9:327d:8ee3 with SMTP id mw11csp1316779njb;
+        Tue, 6 Aug 2024 11:20:04 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXWSB5mStSDNyHVoxSLsgiXQsLy6zlCx0j4In1gPHyYTdqyKb4RpWjst7Qwa7xrZr3WYYtLTbeNdHwKpL0ggmCHArv60LCK
+X-Received: by 2002:a17:907:7e9b:b0:a7a:8378:625e with SMTP id a640c23a62f3a-a7dc4fa1673mr1071989266b.26.1722968404445;
+        Tue, 06 Aug 2024 11:20:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1722968404; cv=none;
         d=google.com; s=arc-20160816;
-        b=rzL2pNRDcDhd29b8Lk/7aihK9MRXV2mRJdyd7pNCa7XB3uXf0e9fJzOK3Lf/wuh4Kz
-         RmE3v+MRY0bSe2u1Obm7a2QpGWFcYbe5Urn10KnIdAxCaVR9wIoew5gfsSG4A7i8pOER
-         u0P2mS3XM3yg4tMNjKRaxDJrf6YuNBoySAm0wQJiJkHVdVuA4S2PAZIujwKb4hcY0PVG
-         N6hY6D7iAAfbdm2DrMh9gvLUq6rrrlx28r6xeUiIKl257Os99m53UfQUkyRCCBU7DR5m
-         H27RZ8P3C7K89Xe0ltXfu5sugvaXHn5+1UR4+FdUtFrLAp7hIRr7pz08t5tlSi08cHWD
-         zD+A==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
-         :date:subject:cc:to:from:dkim-signature;
-        bh=AJ8MtrhXTfXLVW/4fRGaR/9OyloXeKfWbGmEuGEPmm8=;
-        fh=pOdCxWa9rQJU0vaikvZDwOcgRIEwREE3jBY9GdQlMoI=;
-        b=F0GXa6fY/uM0mfXiCI4uuJ92YA3/7v2D2A4K+tn5ljrkZMM83UXQe7flwTRlpl99rq
-         1501Sbt5Au8Cs7+dHZ72ljHHP1ibDv+DIIwKArtnuUnN29S/a+eFdz42WoiwV9LJI73R
-         yqzAHyNkxBtdD/o9vkLetqtJMZHiw/2HQpS4Y2VTxTsWIs6JeL9ap0DDR9+Ag3q10Ez2
-         U0EiRREemPBtYrYFdtKmOn5elXFcnATppX943SwiLruojIBaKOA+pSNG8niy+90JVrQp
-         681iJzOIR+kWlLpu8Udvil3xjpmv1mbr+PuP0MYpix5A/sBkJQ7xakVqzWGnrGuZAq/d
-         S0QQ==;
+        b=uO8+Aiz2IpmVoPFijTQjVncaruIIR6dp2Ajr53d7tM+AABp5dy7wQbl9lV8/QMF1ts
+         MluwL64vrCH4MYpn5xJuo7egTXrFnq4g3IPqmHIEV5iHfPf+cQlqq99O0i9Y8j66NvHi
+         S9mynJvjPLwslcyUpLNE6yKolHdUC5f68uw4UT0ZAHasTSG5EySHxZmb3ifEer21fV43
+         Q6SkU++GrL6U8vygSWNIPDBI1CSjYKhTZWwh0VHjFJT7eB2c62iwmW7Sj5GNbZhHldnr
+         4gkojeBUXTK+hkJ6XgwpEtWIMaK8HxpVrxJQQUZ7f60Xm/lGRbMnub5QMGEdaGLWAGJw
+         al1g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:in-reply-to:organization:content-language
+         :from:references:cc:to:subject:user-agent:mime-version:date
+         :message-id:dkim-signature;
+        bh=UZxCd+zIg8/fTwlkeH78ozUnzNFrJo/odIzAXVX7Upw=;
+        fh=/DhNB66WHscaYRd0kDVJA8wB00HqAQdahixTW099ryc=;
+        b=O2IY6NnmmqvBlAhOnOj0CTxbRboznIJZ3ms59epmrLKKC09Ovdy6MJUr2LxG9TgsxD
+         Q2kzeogHprPvD0z6w424YCQRBf1EYkD62X8TD0fxzjgmsadLcuIlHCixZ+TR0rARszDR
+         5ldZiWDvWNBcEdPC+aEtsvRL8iPAGBLTGxPeJkSfukrB7CjLEQmqmQz6fFRzdvObFeAs
+         2D0SqtC3lFQTF/XerRzzoZVJ3Eb10CeZCKVltnECfqVo02EHG9uk7MZd7f32o/3Z9lfX
+         LbeLsQiHhrOutjGF4Mhxw2oUeS1sCMx/+xmPyiDDzB9Wuh4fTaE93V+XBTRO5dd2yWRD
+         2kyA==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=D7htS79C;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-23420-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="kvm+bounces-23420-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm+bounces-23420-alex.bennee=linaro.org@vger.kernel.org>
-Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [2604:1380:45e3:2400::1])
-        by mx.google.com with ESMTPS id d2e1a72fcca58-7106ec7f317si9627865b3a.137.2024.08.06.10.33.24
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=eJRQ6fmu;
+       spf=pass (google.com: domain of marcin.juszkiewicz@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=marcin.juszkiewicz@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <marcin.juszkiewicz@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id a640c23a62f3a-a7dc9d00a1fsor220566166b.7.2024.08.06.11.20.04
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 06 Aug 2024 10:33:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm+bounces-23420-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) client-ip=2604:1380:45e3:2400::1;
+        (Google Transport Security);
+        Tue, 06 Aug 2024 11:20:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of marcin.juszkiewicz@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=D7htS79C;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-23420-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="kvm+bounces-23420-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by sv.mirrors.kernel.org (Postfix) with ESMTPS id 8B87D28711E
-	for <alex.bennee@linaro.org>; Tue,  6 Aug 2024 17:33:24 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 789B354FAD;
-	Tue,  6 Aug 2024 17:33:14 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="D7htS79C"
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CCFF24D9FE
-	for <kvm@vger.kernel.org>; Tue,  6 Aug 2024 17:33:12 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.133.124
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1722965594; cv=none; b=d5A5xDUpAoh8ieFLICBNHTM1yQZ6Y/QDODbHMwJE9IqyRkHHjffOdhMaKtCOY2fquebcp301MvxZDjLu5Om9A9DCIhO+vo3Ri7WK6HnWO8OW0lX7pgZvvUeguepJDA3v81rmFodhMfLfZaxs0N3pXHUoE1HxrXAs9L6GgGiw+jU=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1722965594; c=relaxed/simple;
-	bh=oAVm9bnQV/3odujBQge14xXDV8alMWTy2bW+6t9o4og=;
-	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:
-	 MIME-Version; b=XYxJdQcD4Um8oFB/9TOrJEyPePeAn5cHbMx1mBiFDsNux97a3/wSsn8HO+vtfGsp43HjRLyDZQeJt7hNGGTWEHuQOKUAC9Lv0DSJoWIItvUOqiE5FglN7oEizUI09BxoPYqQo0m9nVVuvra0x015OVW1sP5gvftJ4+/cpMy9qn8=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=D7htS79C; arc=none smtp.client-ip=170.10.133.124
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1722965592;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=AJ8MtrhXTfXLVW/4fRGaR/9OyloXeKfWbGmEuGEPmm8=;
-	b=D7htS79C4jfD+PxO5wH3v91H3jOhHRqgndCp43T/udmykeqHQDY11DgfCrY+57jQhqbX7D
-	KZwjMEemGX9bcFhIq5Rn0qFzz/W2J4Z6OXH84obfi9PUBbxOX1DXI6akhxM2qsRTHPl8AE
-	hGT9Oi4gcV3sMlpkPKuqtuePpTcYOYg=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-364-jlnfk0gfN_Os1NWJgBe8QQ-1; Tue,
- 06 Aug 2024 13:33:08 -0400
-X-MC-Unique: jlnfk0gfN_Os1NWJgBe8QQ-1
-Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id CD25F1955BF4;
-	Tue,  6 Aug 2024 17:33:05 +0000 (UTC)
-Received: from p1.localdomain.com (unknown [10.39.192.15])
-	by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 8527A19560AE;
-	Tue,  6 Aug 2024 17:32:56 +0000 (UTC)
-From: Cleber Rosa <crosa@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
-	Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
-	Radoslaw Biernacki <rad@semihalf.com>,
-	Troy Lee <leetroy@gmail.com>,
-	Akihiko Odaki <akihiko.odaki@daynix.com>,
-	Beraldo Leal <bleal@redhat.com>,
-	kvm@vger.kernel.org,
-	Joel Stanley <joel@jms.id.au>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Aurelien Jarno <aurelien@aurel32.net>,
-	Sriram Yagnaraman <sriram.yagnaraman@ericsson.com>,
-	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
-	Paul Durrant <paul@xen.org>,
-	Eric Auger <eric.auger@redhat.com>,
-	David Woodhouse <dwmw2@infradead.org>,
-	qemu-arm@nongnu.org,
-	Cleber Rosa <crosa@redhat.com>,
-	Andrew Jeffery <andrew@codeconstruct.com.au>,
-	Jamin Lin <jamin_lin@aspeedtech.com>,
-	Steven Lee <steven_lee@aspeedtech.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Yoshinori Sato <ysato@users.sourceforge.jp>,
-	Wainer dos Santos Moschetta <wainersm@redhat.com>,
-	Thomas Huth <thuth@redhat.com>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Leif Lindholm <quic_llindhol@quicinc.com>
-Subject: [PATCH v2 8/9] tests/avocado/machine_aarch64_sbsaref.py: allow for rw usage of image
-Date: Tue,  6 Aug 2024 13:31:18 -0400
-Message-ID: <20240806173119.582857-9-crosa@redhat.com>
-In-Reply-To: <20240806173119.582857-1-crosa@redhat.com>
-References: <20240806173119.582857-1-crosa@redhat.com>
-Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=eJRQ6fmu;
+       spf=pass (google.com: domain of marcin.juszkiewicz@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=marcin.juszkiewicz@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1722968404; x=1723573204; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:organization:content-language
+         :from:references:cc:to:subject:user-agent:mime-version:date
+         :message-id:from:to:cc:subject:date:message-id:reply-to;
+        bh=UZxCd+zIg8/fTwlkeH78ozUnzNFrJo/odIzAXVX7Upw=;
+        b=eJRQ6fmu6rkQKVcByEXu1NmfTyH+a8TsTMExsbPuesxjyjZaGdk3QD2y3XWLo140g7
+         XEWeBuaFAIY8mCCqrfMIMuTy5mPKv/6SC7Mfc8xwQSLLCALHGn3YYWrLomb+hNRa2fkk
+         +IweV1Rmg15Y9FHdIu20tMgYIavqk6aZc7CBmiy+RpcXt0Vg9q6jsNygk6WSYab1sG2Z
+         T+JF5FGP8h08WqNtqeJIf/xyr8Op6DU+n6zLrwr+/SLUb1nCrcVI9a6Eil7U6PjqCjkr
+         fHv4m8WnrVnbKocN4f0817p4/Syv+wanWYE9xcVRZps3oWYety2U3L3Ch7rvbmpScv/w
+         q5Pg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1722968404; x=1723573204;
+        h=content-transfer-encoding:in-reply-to:organization:content-language
+         :from:references:cc:to:subject:user-agent:mime-version:date
+         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=UZxCd+zIg8/fTwlkeH78ozUnzNFrJo/odIzAXVX7Upw=;
+        b=LLNIBw3r1/uDJ42QkJq6I0yCOJ6mlKK6/eVon/g8lLAcwt1TL6wiAlTAkrDx/f70IH
+         9uKZLJv9KCdzsRd8+/y5a8Z4aLHbT7GyYkX99bfo/h0XE57b8HjMjyM+ef3hByb3Da8L
+         slh4N3vM0DHPzQnIiNt2mdkSYlFXbTnSiX/iVjavPnP+XTTNa0AlU0dDJLxKW402jnIb
+         5GSUAYHoCSMlCIVh8BPJLEtGrvKiL5nwLlZ04UMksxSNBffzmE0SI43g+Aq7h+0Jh9x/
+         1V7LSTOEArX9O5ba19S/cZDPPTGl+QMlguXiWwE2B1R55XrlvsdgaKm8E6B206p/GMMe
+         9PDg==
+X-Forwarded-Encrypted: i=1; AJvYcCVBYwfVN8EmlWhf825KkUdydVzbc+c4I6mURAbh7EBEyfqLKIkfbrU55eUrxuUbZclA8IHO7AgDBGrdHsGCdvQAs3sbZk3n
+X-Gm-Message-State: AOJu0YxlDAwlaZ/xFQFnkCAi0t8OFIF5HtEJxpS+iJssTg5N4aFdz0cr
+	IBBi/Sr3O5R5zM3nGRKUZvfO2c3mHSjoTrmC4b+PBI6a2zmx73UTPSxTyz8vG/yL3Q==
+X-Google-Smtp-Source: AGHT+IE8dgDyUbnsAjnj8P7IFi+pXso4GIXfTKr8ZQP6PSSV6i5OvK9bz5C2uRKcB1d1teqJ/9q12A==
+X-Received: by 2002:a17:907:846:b0:a7d:340e:43a4 with SMTP id a640c23a62f3a-a7dc4fae19bmr1087323266b.31.1722968403412;
+        Tue, 06 Aug 2024 11:20:03 -0700 (PDT)
+Return-Path: <marcin.juszkiewicz@linaro.org>
+Received: from [192.168.200.25] (83.8.56.232.ipv4.supernova.orange.pl. [83.8.56.232])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a7dc9d89a9fsm563924066b.156.2024.08.06.11.20.01
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 06 Aug 2024 11:20:03 -0700 (PDT)
+Message-ID: <540fafc7-9044-4e9a-b2c8-2f2f04412b88@linaro.org>
+Date: Tue, 6 Aug 2024 20:20:00 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-TUID: 1RSAQca94F2H
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 7/9] tests/avocado/tuxrun_baselines.py: use Avocado's
+ zstd support
+To: Cleber Rosa <crosa@redhat.com>, qemu-devel@nongnu.org
+Cc: Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
+ Radoslaw Biernacki <rad@semihalf.com>, Troy Lee <leetroy@gmail.com>,
+ Akihiko Odaki <akihiko.odaki@daynix.com>, Beraldo Leal <bleal@redhat.com>,
+ kvm@vger.kernel.org, Joel Stanley <joel@jms.id.au>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Aurelien Jarno <aurelien@aurel32.net>,
+ Sriram Yagnaraman <sriram.yagnaraman@ericsson.com>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, Paul Durrant
+ <paul@xen.org>, Eric Auger <eric.auger@redhat.com>,
+ David Woodhouse <dwmw2@infradead.org>, qemu-arm@nongnu.org,
+ Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Jamin Lin <jamin_lin@aspeedtech.com>, Steven Lee
+ <steven_lee@aspeedtech.com>, Peter Maydell <peter.maydell@linaro.org>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ Thomas Huth <thuth@redhat.com>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
+ <alex.bennee@linaro.org>, Leif Lindholm <quic_llindhol@quicinc.com>
+References: <20240806173119.582857-1-crosa@redhat.com>
+ <20240806173119.582857-8-crosa@redhat.com>
+From: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+Content-Language: pl-PL, en-GB, en-HK
+Organization: Linaro
+In-Reply-To: <20240806173119.582857-8-crosa@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-TUID: o4W4E0n1sfAj
 
-When the OpenBSD based tests are run in parallel, the previously
-single instance of the image would become corrupt.  Let's give each
-test its own snapshot.
+On 6.08.2024 19:31, Cleber Rosa wrote:
+> This makes use of the avocado.utils.archive support for zstd.
+> 
+> In order to not duplicate code, the skip condition uses a private
+> utility from the module which is going to become public in Avocado
+> versions 103.1 LTS (and also in versions >= 107.0).
+> 
+> Reference: https://github.com/avocado-framework/avocado/pull/5996
+> Reference: https://github.com/avocado-framework/avocado/pull/5953
+> Signed-off-by: Cleber Rosa <crosa@redhat.com>
+> ---
+>   tests/avocado/tuxrun_baselines.py | 16 ++++++----------
+>   1 file changed, 6 insertions(+), 10 deletions(-)
+> 
+> diff --git a/tests/avocado/tuxrun_baselines.py b/tests/avocado/tuxrun_baselines.py
+> index 736e4aa289..bd02e88ed6 100644
+> --- a/tests/avocado/tuxrun_baselines.py
+> +++ b/tests/avocado/tuxrun_baselines.py
+> @@ -17,6 +17,7 @@
+>   from avocado_qemu import QemuSystemTest
+>   from avocado_qemu import exec_command, exec_command_and_wait_for_pattern
+>   from avocado_qemu import wait_for_console_pattern
+> +from avocado.utils import archive
+>   from avocado.utils import process
+>   from avocado.utils.path import find_command
+>   
+> @@ -40,17 +41,12 @@ def get_tag(self, tagname, default=None):
+>   
+>           return default
+>   
+> +    @skipUnless(archive._probe_zstd_cmd(),
+> +                'Could not find "zstd", or it is not able to properly '
+> +                'decompress decompress the rootfs')
 
-Signed-off-by: Cleber Rosa <crosa@redhat.com>
----
- tests/avocado/machine_aarch64_sbsaref.py | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/tests/avocado/machine_aarch64_sbsaref.py b/tests/avocado/machine_aarch64_sbsaref.py
-index 756f316ac9..f8bf40c192 100644
---- a/tests/avocado/machine_aarch64_sbsaref.py
-+++ b/tests/avocado/machine_aarch64_sbsaref.py
-@@ -190,7 +190,7 @@ def boot_openbsd73(self, cpu):
-             "-cpu",
-             cpu,
-             "-drive",
--            f"file={img_path},format=raw",
-+            f"file={img_path},format=raw,snapshot=on",
-         )
- 
-         self.vm.launch()
--- 
-2.45.2
-
+One "decompress" would be enough.

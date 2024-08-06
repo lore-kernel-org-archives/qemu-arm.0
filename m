@@ -1,69 +1,69 @@
-Received: by 2002:a17:505:1e8b:b0:1be9:327d:8ee3 with SMTP id mw11csp1302913njb;
-        Tue, 6 Aug 2024 10:32:44 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUeg817+hQUs0Nr5Ugym/qfYXzgNtOJ3Z/Sy59eBEoo4JuS1dQS7djSVEk+fgasycYMaKAI0zQRFRlUb2lUZEm0xJ/hY4o4
-X-Google-Smtp-Source: AGHT+IHzGTWTyEOr495YI0J2UpSKr0gB78pQOWQRCv/vOx/tUv4eZSuPRHtG1uzPm9FwaXNXSDtZ
-X-Received: by 2002:ac8:58cc:0:b0:44c:2c6b:9a5b with SMTP id d75a77b69052e-4518943f38cmr274922691cf.25.1722965564007;
-        Tue, 06 Aug 2024 10:32:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1722965563; cv=none;
+Received: by 2002:a17:505:1e8b:b0:1be9:327d:8ee3 with SMTP id mw11csp1302987njb;
+        Tue, 6 Aug 2024 10:32:59 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUG+fxfVkx0mWziurwLhzgitxUSI9dNZn3jOdYMfTwpyagsH0sPOjZ22A/VrHUJtkGzyPH/ow/rPYKiX3IStgjZe6lIjS8s
+X-Google-Smtp-Source: AGHT+IG+MFT32W2mcdoqonlkFQB7mcApx0FqQgneRp5NLqFS7O5OLXZoLMYH0PQT0RO+IfSk2y8q
+X-Received: by 2002:a05:6808:2212:b0:3d5:60b3:d9ca with SMTP id 5614622812f47-3db5583b506mr19546742b6e.43.1722965579598;
+        Tue, 06 Aug 2024 10:32:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1722965579; cv=none;
         d=google.com; s=arc-20160816;
-        b=oVklnvuX9m+G9o6KJNHGr60vP6kaRHX1MnsjMZZiRP7YeN4VsybNTcnUBGmya+CWdh
-         lxuI3fGBFX4j1fhIjsPrPhUr80bxdAlwjD1Id8ZRnWuMuQdblD3Y69qvSu+YdVkqz/jJ
-         uivF3HdqfhRyNlU9AcWvda+2FWgh+mMy8/77GQamJSt1Cxyr5jKRWbeVMXRPF15m16s+
-         oBuC+arZrWPtkCZ7I+cCdFl7fIOxlm6jyxRu2wGh3sItTzv5LhKQM+I2isonN3BLgBHl
-         1ehFvWWqq6cimZY0+wllk13CwPvB2AyikEVpXsFJlN9yP7Pxm111pnk+4h+6knqNqcQj
-         g2/Q==
+        b=XskO+B+Y25N7qbRe/9N/oaVcl4BtcBUFYOgWxq4UEstomT1re8vKlCnI7nNS3atTOm
+         08YD9UpMjYNNSwcg3FxZXP3K0+AF+s6qYSFICJxaq6EBlFgz3HO+FtUIqox/ypwa6zaM
+         YMKU5KY3eQZISxcJGcNsI6bJuTU+Tg5ksW+PrfPGH4bo9PKi/hvHL7Q8zTfaZH5Mwg/5
+         dAVa7oJwc2ZaeZ2MNlGaTR0O0RHcPnRQl1M8vY6rmWxrTj0g3Dtvexkqz/K5rVVsFA6A
+         ge3Kd6aBKTH+2KdOXlWXYSfYEbpRcXYuu3PkWvvGKY+gkGIpvnojWVNQWlgnJGz+itq3
+         hRAg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=01Mezu2vBS7e/Bbaib7lIYgCl8rkcleLFRElcDYTArc=;
+        bh=SjcpbA2sD6CYVWhEq7nq8PpqkGiIsiq71NF+s5HMhDo=;
         fh=pOdCxWa9rQJU0vaikvZDwOcgRIEwREE3jBY9GdQlMoI=;
-        b=h7VnEfN5ifVSNiwt1UESQ4MOXCADtlL2fzC3OCLbZ5d0iUoOU01+QVYk1U1of7lpSA
-         vGKhIXC0KYqqZLKzRIhoRZ8y9xcN6u5n+eKz31D3VpdPeY4qKhrMQ4ORXL+cjDoS4NH4
-         qD0Jkk3UF6p7OT12Ppvkq+xoajlV4Ra+fM5CPWvGGBcF17321iIIl2x0Afe2Z+cvJo6P
-         a73PH5DUdx99vjRg4nnJiT3ofAqNQvyScpTfD3nmnDMi0U2jmYLKla9mU+ZWsfj23/yq
-         XZbVnqot0usqFMM2Ld2UmfpWa2rBNNIYywEBXC1wwyxe4n7f0KeBUoxmwdEoJarHkYcm
-         +NoQ==;
+        b=TJ7l/FUrmvgGOoFYc3VX9Hxx1AL12SugNxVs5IgvXK8yCZePjcTTxfD5dKiMg48lE/
+         jl+9zUuc4Wx+gyRaNsyxPlBiOOp3T8lGYh5IfmaZjoaRqBFwMCzp1ij/xFi7zovtA1d4
+         ATbdEmh+qsVum3eZVghjupufE2ualvofjzaMACIrQBlw4w8bmH3sQTOj8YjRzSXOLLUt
+         ryN891woZFZQvSSgB6zaxFKCU+xyVoT0l/qKLpO5spzvoqzAfdrEVMERqCmRyn2tSjPF
+         cbHBG2OuiAYK9CllbLA+qhiBiLCc463BmJBXE7ZGNrplK8FXl0tWoBRd+M09kAgS7cvO
+         IDbg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=XATz4wQL;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BBjSPEsE;
        spf=pass (google.com: domain of crosa@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=crosa@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <crosa@redhat.com>
 Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id d75a77b69052e-4518a7814a8si137148031cf.505.2024.08.06.10.32.43
+        by mx.google.com with ESMTPS id af79cd13be357-7a34f775d3csi1296817685a.482.2024.08.06.10.32.59
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 06 Aug 2024 10:32:43 -0700 (PDT)
+        Tue, 06 Aug 2024 10:32:59 -0700 (PDT)
 Received-SPF: pass (google.com: domain of crosa@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=XATz4wQL;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BBjSPEsE;
        spf=pass (google.com: domain of crosa@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=crosa@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1722965563;
+	s=mimecast20190719; t=1722965579;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=01Mezu2vBS7e/Bbaib7lIYgCl8rkcleLFRElcDYTArc=;
-	b=XATz4wQLgQ8ICgGPDf+/zGd7zuIWWesdIdw1S81ovTCm0ecweuBEYxlOp6AYlBBxsOzCOa
-	d9VGUj+bHqSHTa2OHDPyVebRtffJu+nNMtt/IuKdlw2z21MZqE+lFVsTcAl1rxI8B+T5IO
-	ChRXb2yY73tNOmMcDz3iX2Ykt/YkWn8=
+	bh=SjcpbA2sD6CYVWhEq7nq8PpqkGiIsiq71NF+s5HMhDo=;
+	b=BBjSPEsEp5W/wmu/sQ3+mREGl0C9S3r45dxWPKI72jUnWA499pjqGkQQBPGEslMdUi6Pxt
+	WWOqSNxbTcWOOeZ5b5Ew8fsrXcOhDU/TMX4oACFim7Rv9HtLV14labUYVh6uImRlgIFLgQ
+	TsyS+ypQGkEQyvVabeRbAfygwkxzTDA=
 Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-294-zxumTil8PJCidnFK9zrJIg-1; Tue,
- 06 Aug 2024 13:32:40 -0400
-X-MC-Unique: zxumTil8PJCidnFK9zrJIg-1
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-682-jdUwjjb2PYOdaJpWsbZVsg-1; Tue,
+ 06 Aug 2024 13:32:56 -0400
+X-MC-Unique: jdUwjjb2PYOdaJpWsbZVsg-1
 Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 4F6CD1955D45;
-	Tue,  6 Aug 2024 17:32:36 +0000 (UTC)
+	by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 9BE3B1955D48;
+	Tue,  6 Aug 2024 17:32:46 +0000 (UTC)
 Received: from p1.localdomain.com (unknown [10.39.192.15])
-	by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id C21A419560AE;
-	Tue,  6 Aug 2024 17:32:26 +0000 (UTC)
+	by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id CA23019560AE;
+	Tue,  6 Aug 2024 17:32:36 +0000 (UTC)
 From: Cleber Rosa <crosa@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
@@ -93,53 +93,66 @@ Cc: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
 	Thomas Huth <thuth@redhat.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Leif Lindholm <quic_llindhol@quicinc.com>
-Subject: [PATCH v2 5/9] tests/avocado: simplify parameters on fetch_asset with name only
-Date: Tue,  6 Aug 2024 13:31:15 -0400
-Message-ID: <20240806173119.582857-6-crosa@redhat.com>
+Subject: [PATCH v2 6/9] tests/avocado/boot_xen.py: fetch kernel during test setUp()
+Date: Tue,  6 Aug 2024 13:31:16 -0400
+Message-ID: <20240806173119.582857-7-crosa@redhat.com>
 In-Reply-To: <20240806173119.582857-1-crosa@redhat.com>
 References: <20240806173119.582857-1-crosa@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-TUID: NfgD997y9VYW
+X-TUID: 8bAbsDmSUV4s
 
-When an asset has a single location, it's possible to use that
-URI as the name of the asset.
-
-Reference: https://avocado-framework.readthedocs.io/en/103.0/api/utils/avocado.utils.html#avocado.utils.asset.Asset
-Reference: https://avocado-framework.readthedocs.io/en/103.0/api/test/avocado.html#avocado.Test.fetch_asset
+The kernel is a common blob used in all tests.  By moving it to the
+setUp() method, the "fetch asset" plugin will recognize the kernel and
+attempt to fetch it and cache it before the tests are started.
 
 Signed-off-by: Cleber Rosa <crosa@redhat.com>
 ---
- tests/avocado/kvm_xen_guest.py  | 2 +-
- tests/avocado/netdev-ethtool.py | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+ tests/avocado/boot_xen.py | 13 ++++++-------
+ 1 file changed, 6 insertions(+), 7 deletions(-)
 
-diff --git a/tests/avocado/kvm_xen_guest.py b/tests/avocado/kvm_xen_guest.py
-index f8cb458d5d..b6ee1ff752 100644
---- a/tests/avocado/kvm_xen_guest.py
-+++ b/tests/avocado/kvm_xen_guest.py
-@@ -40,7 +40,7 @@ def get_asset(self, name, sha1):
-         url = base_url + name
-         # use explicit name rather than failing to neatly parse the
-         # URL into a unique one
--        return self.fetch_asset(name=name, locations=(url), asset_hash=sha1)
-+        return self.fetch_asset(name=url, asset_hash=sha1)
+diff --git a/tests/avocado/boot_xen.py b/tests/avocado/boot_xen.py
+index f29bc58b9e..490a127a3e 100644
+--- a/tests/avocado/boot_xen.py
++++ b/tests/avocado/boot_xen.py
+@@ -30,23 +30,22 @@ class BootXen(LinuxKernelTest):
+     timeout = 90
+     XEN_COMMON_COMMAND_LINE = 'dom0_mem=128M loglvl=all guest_loglvl=all'
  
-     def common_vm_setup(self):
-         # We also catch lack of KVM_XEN support if we fail to launch
-diff --git a/tests/avocado/netdev-ethtool.py b/tests/avocado/netdev-ethtool.py
-index 5f33288f81..7345ded28c 100644
---- a/tests/avocado/netdev-ethtool.py
-+++ b/tests/avocado/netdev-ethtool.py
-@@ -27,7 +27,7 @@ def get_asset(self, name, sha1):
-         url = base_url + name
-         # use explicit name rather than failing to neatly parse the
-         # URL into a unique one
--        return self.fetch_asset(name=name, locations=(url), asset_hash=sha1)
-+        return self.fetch_asset(name=url, asset_hash=sha1)
+-    def fetch_guest_kernel(self):
++    def setUp(self):
++        super(BootXen, self).setUp()
++
+         # Using my own built kernel - which works
+         kernel_url = ('https://fileserver.linaro.org/'
+                       's/JSsewXGZ6mqxPr5/download?path=%2F&files='
+                       'linux-5.9.9-arm64-ajb')
+         kernel_sha1 = '4f92bc4b9f88d5ab792fa7a43a68555d344e1b83'
+-        kernel_path = self.fetch_asset(kernel_url,
+-                                       asset_hash=kernel_sha1)
+-
+-        return kernel_path
++        self.kernel_path = self.fetch_asset(kernel_url,
++                                            asset_hash=kernel_sha1)
  
-     def common_test_code(self, netdev, extra_args=None):
+     def launch_xen(self, xen_path):
+         """
+         Launch Xen with a dom0 guest kernel
+         """
+         self.log.info("launch with xen_path: %s", xen_path)
+-        kernel_path = self.fetch_guest_kernel()
+ 
+         self.vm.set_console()
+ 
+@@ -56,7 +55,7 @@ def launch_xen(self, xen_path):
+                          '-append', self.XEN_COMMON_COMMAND_LINE,
+                          '-device',
+                          'guest-loader,addr=0x47000000,kernel=%s,bootargs=console=hvc0'
+-                         % (kernel_path))
++                         % (self.kernel_path))
+ 
+         self.vm.launch()
  
 -- 
 2.45.2

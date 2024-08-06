@@ -1,556 +1,162 @@
-Received: by 2002:a17:505:1e8b:b0:1be9:327d:8ee3 with SMTP id mw11csp986569njb;
-        Mon, 5 Aug 2024 13:18:00 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVvh62UYkQNF2FpY9prTJaLsO7fnNxhVz6JAFOmlSmdHKXo5ZMeFCjZInMKaL+vlh6j80DHRkaSolaQxmwcDdB8kaCEgSLG
-X-Received: by 2002:a0d:c5c3:0:b0:646:4057:a7c2 with SMTP id 00721157ae682-6895f9ec5d1mr131971367b3.15.1722889080573;
-        Mon, 05 Aug 2024 13:18:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1722889080; cv=none;
+Received: by 2002:a17:505:1e8b:b0:1be9:327d:8ee3 with SMTP id mw11csp1101601njb;
+        Mon, 5 Aug 2024 22:57:08 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCXCH/oMTFww0iqHsCSbIaVzMfX4q5CMPySH4XioOkZ3kH6pWVCzL8EttQC+aWgdLiquGThPSSOzOLlMJTMxJTop6I+Fv+8N
+X-Google-Smtp-Source: AGHT+IFIrFjB8HVOPnQfQA99p3qtgkDf+5gmmv+fT8SpdcVLMsiNCNL9Ki2NPCJKHHLiNbKKwNjC
+X-Received: by 2002:a05:620a:4548:b0:79f:b34:9edc with SMTP id af79cd13be357-7a34f00b23fmr1801432785a.66.1722923827972;
+        Mon, 05 Aug 2024 22:57:07 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1722923827; cv=pass;
         d=google.com; s=arc-20160816;
-        b=xkIKG1e8w5BGLw4rWmmklhZ2pco8lrrx8DDagrXUY+E2nWYmikXLzSSCuFHVnd1O0e
-         vybHXMd8caSxJkrvlTlwBFukHdiQ1moVFEkBVm+wAI+OhK0XXTPcsqOLAFd/02AiAe8K
-         OYXuheRD0YNV48vjBiTIBb/jg+SzjXB4s6uBDmxhnNcoN+Mb3ndd9I1bWQ+yz9Y+RjgK
-         xbgK9HoG53aDu5KFs19fGe1KmBq5YW4/+c58hjyZ7+QJsW7qB1Rqkd139WPh9lqL8JYr
-         DrVzJpSRZsZIpXwoiR8fo0IB0WFBKtl4/tR1/XzU3rz7jGOBgqwnn/J9baGdl0S+gfBJ
-         gJ9g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
-         :date:dkim-signature;
-        bh=4u1P5SIla3BTMDBQNng926h7zNREK6etGIfsOHcMKR0=;
-        fh=Bio7xxthyemmgraPEtZk3BNF7O1RGPzsRY/ODXlrBUE=;
-        b=ftKpmgXvbPlH4CYb3rSbvkLoLQEmoNfJ/V13v2TU6Xi/wjqdg5PcQ50yoQ6Djz4kyH
-         zvad8d0GOFaNcfHlIcwaIf19eEr8euu7gmr3Sr8Im5wm12GwpzuAJ5qns++RTV9DyAg9
-         RozJ3CDVRZ/OucBaSA5jRr4WNfb8P1LIVZyPsGSwvRD7ulTf4pbbevraP4Qdi12lIAx3
-         zZryozVcCOJ4ohDxWToSfSzQZws5rUVov76+5xyJTqNvfUKOvGzQPhYL7v6aWe4wT6yq
-         xbG6B4zN2OvL2qNuEOjsWluRk+zJNCzv7L7eQ3zBITy7RVzMY3vJtJgA3CBxqducWb1E
-         sFcg==;
+        b=gTaxvdV7dZfaTDtqkTq/cqEuEUlJNxGOC7tDXJU7TE8iHGnGIcoVSgp77005Oc3Nkf
+         J3wCiFKWDn3eo83lqpKmo1FLjlAGrPHobxZouqVKx4YijhwtF82NUChDT5jUgmuI7qPv
+         Tcoo8LeWCMJPpDI36HZFuFqDvgk+K2WxAh0MjOTnQhMX+SK2wVoH+3qDLX8Z89z4EtJE
+         YLkWLMB7lRPPQfIDLVbZtiGnMAq4Ineh0YWa4rR2VGpLMrEHfJV70x14LX+SNXaBBRWK
+         qaBObg/cMBzIRoSJMvFQ/NnvqGAHDYU0aXJ0bZglycJO+Y383UeduoA/jlah9iJzS5Mk
+         c5xg==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=SE08XV/nGsWyzVPkvAuoLR3ZZQTx/lTU2CJ8WLNY6+Q=;
+        fh=mgzvW8ALJBA6MyNP2oSYGffBUHo0fZ7g8+ndKcl78ng=;
+        b=KiyYjN+etX0hTNA5A4+M6ulqm0+dIk9MPhAdYnyDtF1GjhlOZ2Fa9Rd+WySKxxmOop
+         gUCPr2uGAE9mfBwiEgKbUWpxy2zckA8S1z89+wGNDPcD07TLyoWjNEPohXoacVQd2Qqs
+         mG1rLWSpu5Ha4do+d20iob1Zl7axwgBBOecP2p9pnXzzhYvUD1w92lH8dbqrvX4HBwmj
+         HjDCcGOBYpe1kGAUDq4Q4g1J0208CXnrdVof5Mj3UmNgJLyFLHFrmLENexo3HqLNN/Jh
+         c8FBtrfR2rqcj2mMds8HjbyaydrwZxj8mKcnE3HBXppRvsf1EZc6N3ymIjoh7n4D3P3J
+         adzw==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=UTvqQENk;
-       spf=pass (google.com: domain of 3edoxzgukc98ubwjqhpphmf.dpnbmfy.cfooffmjobsp.psh@flex--tavip.bounces.google.com designates 209.85.220.73 as permitted sender) smtp.mailfrom=3eDOxZgUKC98UBWJQHPPHMF.DPNBMFY.CFOOFFMJOBSP.PSH@flex--tavip.bounces.google.com;
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
-       dara=neutral header.i=@linaro.org
-Return-Path: <3eDOxZgUKC98UBWJQHPPHMF.DPNBMFY.CFOOFFMJOBSP.PSH@flex--tavip.bounces.google.com>
-Received: from mail-sor-f73.google.com (mail-sor-f73.google.com. [209.85.220.73])
-        by mx.google.com with SMTPS id 00721157ae682-68a1046fed2sor60361417b3.6.2024.08.05.13.18.00
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b="Z0b/J6Fp";
+       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
+       spf=pass (google.com: domain of linux-kernel+bounces-275727-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-275727-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+Return-Path: <linux-kernel+bounces-275727-alex.bennee=linaro.org@vger.kernel.org>
+Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [2604:1380:45d1:ec00::1])
+        by mx.google.com with ESMTPS id af79cd13be357-7a34f74ab7asi1201749685a.306.2024.08.05.22.57.07
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 05 Aug 2024 13:18:00 -0700 (PDT)
-Received-SPF: pass (google.com: domain of 3edoxzgukc98ubwjqhpphmf.dpnbmfy.cfooffmjobsp.psh@flex--tavip.bounces.google.com designates 209.85.220.73 as permitted sender) client-ip=209.85.220.73;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 05 Aug 2024 22:57:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of linux-kernel+bounces-275727-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) client-ip=2604:1380:45d1:ec00::1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=UTvqQENk;
-       spf=pass (google.com: domain of 3edoxzgukc98ubwjqhpphmf.dpnbmfy.cfooffmjobsp.psh@flex--tavip.bounces.google.com designates 209.85.220.73 as permitted sender) smtp.mailfrom=3eDOxZgUKC98UBWJQHPPHMF.DPNBMFY.CFOOFFMJOBSP.PSH@flex--tavip.bounces.google.com;
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20230601; t=1722889080; x=1723493880; darn=linaro.org;
-        h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
-         :date:from:to:cc:subject:date:message-id:reply-to;
-        bh=4u1P5SIla3BTMDBQNng926h7zNREK6etGIfsOHcMKR0=;
-        b=UTvqQENklDYRFpwxp4QuMjwtW97cCsp0GcebnC0h1M7I02A8fc3S8XhMOiC7jA+LyU
-         XqPg/9UVaZdl+Nco1375m5LwJf5+AHn9JK7p1qhWUYICKiKY5nrG7LqXx6HT1db+AnkT
-         ZCQIPZo/pKUtImwpIwOrrQ32o1jfDVlJ1g8T93stDbaVF7Pnwgyjx56aBNBda9ndeH06
-         40kiglepyH6kKJ4+TxQntzzufgIurZHEns4x5CjyRixSAkNsCCkHSSorZiYIMZK4F2/B
-         AQDWKNR6k4T+Ie7IHEfzQpKifz5WbLB+2zXhxFfMW1tTxjWiUjF+a4+QCU/MGZYAgrND
-         hX0Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1722889080; x=1723493880;
-        h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
-         :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=4u1P5SIla3BTMDBQNng926h7zNREK6etGIfsOHcMKR0=;
-        b=cDHzdvNfGWnuwg46iW8hZ+9jzUb8+JbpsdEE/kOXKkIoKTtAlOz8aJFHYBSF4iC3aH
-         opvtiIxUEYYKDoJt2mJcOM/ZQp9UfwYlBSXyg5NG+IhN/TxyDGrUrNtNg92lUkyIsqPB
-         wwY5+RUea9PQgUKKfreP8b7SKK4R/AUCfSJIiTKNR3J4b2JiYLibkii1+/bpCaLtTsge
-         uYwA3nnVjGoBRuaSukiYDNu89gVDyPU8bJI6z6nlDku4hmZRRgf56LyqGmImWFTmismz
-         KR/Y86xNZMmuDnsIMT2hHA1MOSVMLY38MfU16IAFkkyluCLegUBjCd68P6OAj4GePvBH
-         7Uhw==
-X-Forwarded-Encrypted: i=1; AJvYcCWJ/dGlccYHdmudBsIFrcS45QEQyXqwBG7zdmeudexSRUdxkJer7xBznbkwP/aTyHBGE6iOlO0UzoL+2cOaGGzM4SSdGsFd
-X-Gm-Message-State: AOJu0YwDrx+jWTTN/FSDdRuPkUs7jRfXWcLu5C7CzqpCMTxIYJnoW3Uk
-	Qjeq8jkHTqkyqXNlxgHPqgbHxqDQ1ZA7/aR7TbFebDcLLnF9MKhbiohTkQna6PLxFTPke6jpCQ=
-	=
-X-Google-Smtp-Source: AGHT+IETKmxMUfzjPk4qDciUlfp9GgJp/XDZSs4LIyahMhe5QVAt6LybinSSK4kDNRuQBJAnL26S8NRD1Q==
-X-Received: from warp10.c.googlers.com ([fda3:e722:ac3:cc00:24:72f4:c0a8:750])
- (user=tavip job=sendgmr) by 2002:a05:690c:660d:b0:691:2f66:4af9 with SMTP id
- 00721157ae682-6912f664f8amr3358477b3.4.1722889080107; Mon, 05 Aug 2024
- 13:18:00 -0700 (PDT)
-Date: Mon,  5 Aug 2024 13:17:17 -0700
-In-Reply-To: <20240805201719.2345596-1-tavip@google.com>
-Mime-Version: 1.0
-References: <20240805201719.2345596-1-tavip@google.com>
-X-Mailer: git-send-email 2.46.0.rc2.264.g509ed76dc8-goog
-Message-ID: <20240805201719.2345596-23-tavip@google.com>
-Subject: [RFC PATCH 22/23] hw/arm: add basic support for the RT500 SoC
-From: Octavian Purdila <tavip@google.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, stefanst@google.com, pbonzini@redhat.com, 
-	alex.bennee@linaro.org, thuth@redhat.com, peter.maydell@linaro.org, 
-	marcandre.lureau@redhat.com, alistair@alistair23.me, berrange@redhat.com, 
-	philmd@linaro.org, jsnow@redhat.com, crosa@redhat.com, bleal@redhat.com
-Content-Type: text/plain; charset="UTF-8"
-X-TUID: YhJEIKiHQKSJ
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b="Z0b/J6Fp";
+       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
+       spf=pass (google.com: domain of linux-kernel+bounces-275727-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-275727-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ny.mirrors.kernel.org (Postfix) with ESMTPS id AC4471C224EF
+	for <alex.bennee@linaro.org>; Tue,  6 Aug 2024 05:57:07 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 0BF4D1BB6AF;
+	Tue,  6 Aug 2024 05:57:04 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="Z0b/J6Fp"
+Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C14EF15D1
+	for <linux-kernel@vger.kernel.org>; Tue,  6 Aug 2024 05:57:03 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=10.30.226.201
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1722923823; cv=none; b=gxoujVhhv0S+SbDylR8yif+2QM36R882gY4RZAGI5FFTxO/Vq9S4LrcYzzMjjEl60cAYwtNscvu+dQ13hvUUNhuUajrPSgZl8pR6iKU+0gokfzv2CsboaRdKj3B2YRbkkE1EAAtRtbxrVxV3cS6fn6xZWAwYJXk9UM8Fhq0E6k8=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1722923823; c=relaxed/simple;
+	bh=0Hejww234DES1PvMhUh245HUseCRhbD8DLK4u6Op7/4=;
+	h=Date:From:To:Cc:Subject:Message-ID:In-Reply-To:References:
+	 MIME-Version:Content-Type; b=C6vu8VDOt4TlZiKHlMjFpd5oPTNULPTZEeN2mnnyAWFw6KSS/Z0CfvxCp0cdCkWtZalNRqO3Dlnc/R5zgQ5PkuKm2skR2r3DU2rZhn4OLpuepGxZ7KeHnxm2s1JVKMmJs0qAE8NQOhN/6/sDwLVibLB2S25eXqPHJAEHzjKv3L4=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=Z0b/J6Fp; arc=none smtp.client-ip=10.30.226.201
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id ECCD4C32786;
+	Tue,  6 Aug 2024 05:57:00 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1722923823;
+	bh=0Hejww234DES1PvMhUh245HUseCRhbD8DLK4u6Op7/4=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=Z0b/J6Fp6towTBV4MzPGVYXKwddZrXbmJN3lrvlGMnmT5NF0RCvtzDN67nqqbIF8X
+	 tpaSL0Zm08Hq1vivs7cp+OMsnhs+0c3ChowrbHZGreE4Ce4Z092Wx2N/cN6dTa27ff
+	 BzNSP/nif+rL2JojCCAnE56QfXbcGBeExIh8NfekQkBijJBHTLYjrFYoeFg0X7X3O3
+	 O8879yvWMCzc4bPWSU6pcBpC1Siy48WKGo/0Z+E2C75VTTG11+5Ccnaa9dHTFex+8a
+	 69CzrO6CN93hRJwnzGZVP1ttwxUheroeQOrYUyIEkm6Y39lhAp6ufzKSC79HdaYi9J
+	 eEK1wk7L7gpBQ==
+Date: Tue, 6 Aug 2024 07:56:57 +0200
+From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+To: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
+Cc: Shiju Jose <shiju.jose@huawei.com>, "Michael S. Tsirkin"
+ <mst@redhat.com>, Ani Sinha <anisinha@redhat.com>, Dongjiu Geng
+ <gengdongjiu1@gmail.com>, Igor Mammedov <imammedo@redhat.com>, "Peter
+ Maydell" <peter.maydell@linaro.org>, Shannon Zhao
+ <shannon.zhaosl@gmail.com>, <linux-kernel@vger.kernel.org>,
+ <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
+Subject: Re: [PATCH v5 3/7] arm/virt: Wire up GPIO error source for ACPI /
+ GHES
+Message-ID: <20240806075657.2a43abcc@foz.lan>
+In-Reply-To: <20240805175400.000028ad@Huawei.com>
+References: <cover.1722634602.git.mchehab+huawei@kernel.org>
+	<d0607d8f6116ff841b6c6a17d20f6d7077063045.1722634602.git.mchehab+huawei@kernel.org>
+	<20240805175400.000028ad@Huawei.com>
+X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
+Precedence: bulk
+X-Mailing-List: linux-kernel@vger.kernel.org
+List-Id: <linux-kernel.vger.kernel.org>
+List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-TUID: 6y/s9Nl+/xu9
 
-Add basic support for the RT500 SoC. It supports enough peripherals to
-run the NXP's microXpresso SDK hello world example.
+Em Mon, 5 Aug 2024 17:54:00 +0100
+Jonathan Cameron <Jonathan.Cameron@Huawei.com> escreveu:
 
-Signed-off-by: Octavian Purdila <tavip@google.com>
----
- hw/arm/Kconfig         |   8 +
- hw/arm/meson.build     |   1 +
- hw/arm/rt500.c         | 348 +++++++++++++++++++++++++++++++++++++++++
- hw/arm/svd/meson.build |   6 +
- include/hw/arm/rt500.h |  49 ++++++
- 5 files changed, 412 insertions(+)
- create mode 100644 hw/arm/rt500.c
- create mode 100644 include/hw/arm/rt500.h
+> On Fri,  2 Aug 2024 23:43:58 +0200
+> Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
+> 
+> Do we need to rename this now there is a GED involved?
+> Is it even technically a GPIO any more?
+> Spec says in 18.3.2.7 
+> HW-reduced ACPI platforms signal the error using a GPIO
+> interrupt or another interrupt declared under
+> a generic event device (Interrupt-signaled ACPI events)
+> and goes on to say that a _CRS entry is used to
+> list the interrupt.
+> 
+> Give the Generic Event Device has a _CRS
+> with aml_interrupt() as the type I think we should
+> even have the hest entry say it's an interrupt (external?)
+> rather than a gpio.
 
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index 1ad60da7aa..7ffece3dec 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -712,3 +712,11 @@ config ARMSSE
-     select UNIMP
-     select SSE_COUNTER
-     select SSE_TIMER
-+
-+config RT500
-+    bool
-+    select FLEXCOMM
-+    select RT500_CLKCTL0
-+    select RT500_CLKCTL1
-+    select FLEXSPI
-+    select RT500_RSTCTL
-diff --git a/hw/arm/meson.build b/hw/arm/meson.build
-index eb604d00cf..7d827d512c 100644
---- a/hw/arm/meson.build
-+++ b/hw/arm/meson.build
-@@ -59,6 +59,7 @@ arm_ss.add(when: 'CONFIG_ARM_SMMUV3', if_true: files('smmuv3.c'))
- arm_ss.add(when: 'CONFIG_FSL_IMX6UL', if_true: files('fsl-imx6ul.c', 'mcimx6ul-evk.c'))
- arm_ss.add(when: 'CONFIG_NRF51_SOC', if_true: files('nrf51_soc.c'))
- arm_ss.add(when: 'CONFIG_XEN', if_true: files('xen_arm.c'))
-+arm_ss.add(when: 'CONFIG_RT500', if_true: files('rt500.c'))
- 
- system_ss.add(when: 'CONFIG_ARM_SMMUV3', if_true: files('smmu-common.c'))
- system_ss.add(when: 'CONFIG_CHEETAH', if_true: files('palm.c'))
-diff --git a/hw/arm/rt500.c b/hw/arm/rt500.c
-new file mode 100644
-index 0000000000..0866ef3ef6
---- /dev/null
-+++ b/hw/arm/rt500.c
-@@ -0,0 +1,348 @@
-+/*
-+ * i.MX RT500 platforms.
-+ *
-+ * Copyright (c) 2024 Google LLC
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or later.
-+ * See the COPYING file in the top-level directory.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qapi/error.h"
-+#include "hw/sysbus.h"
-+#include "hw/arm/boot.h"
-+#include "hw/boards.h"
-+#include "hw/irq.h"
-+#include "qemu/log.h"
-+#include "qemu/datadir.h"
-+#include "exec/address-spaces.h"
-+#include "sysemu/reset.h"
-+#include "sysemu/runstate.h"
-+#include "sysemu/sysemu.h"
-+#include "hw/arm/armv7m.h"
-+#include "hw/loader.h"
-+#include "hw/qdev-clock.h"
-+#include "hw/misc/unimp.h"
-+#include "hw/arm/rt500.h"
-+#include "hw/arm/svd/rt500.h"
-+
-+#define MMAP_SRAM_CODE_BASE   (0x0)
-+#define MMAP_SRAM_DATA_BASE   (0x20000000)
-+#define MMAP_SRAM_SIZE        (5 * MiB)
-+#define MMAP_BOOT_ROM_BASE    (0x03000000)
-+#define MMAP_BOOT_ROM_SIZE    (192 * KiB)
-+#define MMAP_SDMA_RAM_BASE    (0x24100000)
-+#define MMAP_SDMA_RAM_SIZE    (32 * KiB)
-+#define MMAP_FLEXSPI0_BASE    (0x08000000)
-+#define MMAP_FLEXSPI0_SIZE    (128 * MiB)
-+#define MMAP_FLEXSPI1_BASE    (0x28000000)
-+#define MMAP_FLEXSPI1_SIZE    (128 * MiB)
-+
-+#define SECURE_OFFSET    (0x10000000)
-+
-+typedef enum MemInfoType {
-+    MEM_RAM,
-+    MEM_ROM,
-+    MEM_ALIAS
-+} MemInfoType;
-+
-+static void do_sys_reset(void *opaque, int n, int level)
-+{
-+    if (level) {
-+        qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
-+    }
-+}
-+
-+static void rt500_init(Object *obj)
-+{
-+    RT500State *s = RT500(obj);
-+    int i;
-+
-+    /* Add ARMv7-M device */
-+    object_initialize_child(obj, "armv7m", &s->armv7m, TYPE_ARMV7M);
-+
-+    for (i = 0; i < RT500_FLEXCOMM_NUM; i++) {
-+        char id[] = "flexcommXX";
-+
-+        snprintf(id, sizeof(id), "flexcomm%d", i);
-+        object_initialize_child(obj, id, &s->flexcomm[i], TYPE_FLEXCOMM);
-+        DEVICE(&s->flexcomm[i])->id = g_strdup(id);
-+    }
-+
-+    object_initialize_child(obj, "clkctl0", &s->clkctl0, TYPE_RT500_CLKCTL0);
-+    object_initialize_child(obj, "clkctl1", &s->clkctl1, TYPE_RT500_CLKCTL1);
-+
-+    /* Initialize clocks */
-+    s->sysclk = qdev_init_clock_in(DEVICE(s), "sysclk", NULL, NULL, 0);
-+    s->refclk = qdev_init_clock_in(DEVICE(s), "refclk", NULL, NULL, 0);
-+
-+    for (i = 0; i < RT500_FLEXSPI_NUM; i++) {
-+        char id[] = "flexspiXX";
-+
-+        snprintf(id, sizeof(id), "flexspi%d", i);
-+        object_initialize_child(obj, id, &s->flexspi[i], TYPE_FLEXSPI);
-+        DEVICE(&s->flexspi[i])->id = g_strdup(id);
-+    }
-+
-+    for (i = 0; i < RT500_RSTCTL_NUM; i++) {
-+        char id[] = "rstctlX";
-+
-+        snprintf(id, sizeof(id), "rstctl%d", i);
-+        object_initialize_child(obj, id, &s->rstctl[i],
-+                                TYPE_RT500_RSTCTL);
-+        DEVICE(&s->rstctl[i])->id = g_strdup(id);
-+    }
-+}
-+
-+static void rt500_realize_memory(RT500State *s, Error **errp)
-+{
-+    const struct {
-+        const char *name;
-+        hwaddr base;
-+        size_t size;
-+        MemInfoType type;
-+        int alias_for;
-+    } mem_info[] = {
-+        {
-+            .name = "SRAM (code bus)",
-+            .base = MMAP_SRAM_CODE_BASE,
-+            .size = MMAP_SRAM_SIZE,
-+            .type = MEM_RAM,
-+        },
-+        {
-+            .name = "BOOT-ROM",
-+            .base = MMAP_BOOT_ROM_BASE,
-+            .size = MMAP_BOOT_ROM_SIZE,
-+            .type = MEM_ROM,
-+        },
-+        {
-+            .name = "Smart DMA RAM",
-+            .base = MMAP_SDMA_RAM_BASE,
-+            .size = MMAP_SDMA_RAM_SIZE,
-+            .type = MEM_RAM,
-+        },
-+        {
-+            .name = "SRAM (data bus)",
-+            .base = MMAP_SRAM_DATA_BASE,
-+            .size = MMAP_SRAM_SIZE,
-+            .type = MEM_ALIAS,
-+            .alias_for = 0
-+        },
-+    };
-+    int i;
-+
-+    s->mem = g_malloc_n(2 * ARRAY_SIZE(mem_info), sizeof(MemoryRegion));
-+    for (i = 0; i < ARRAY_SIZE(mem_info); i++) {
-+        const char *name = mem_info[i].name;
-+        int size = mem_info[i].size;
-+        int type = mem_info[i].type;
-+        int alias_for = mem_info[i].alias_for;
-+        MemoryRegion *mem = &s->mem[i];
-+        uint32_t base = mem_info[i].base;
-+        MemoryRegion *sec_mem;
-+        char sec_name[256];
-+
-+        switch (type) {
-+        case MEM_RAM:
-+            memory_region_init_ram(mem, OBJECT(s), name, size, errp);
-+            break;
-+        case MEM_ROM:
-+            memory_region_init_rom(mem, OBJECT(s), name, size, errp);
-+            break;
-+        case MEM_ALIAS:
-+        {
-+            MemoryRegion *orig = &s->mem[alias_for];
-+
-+            memory_region_init_alias(mem, OBJECT(s), name, orig, 0, size);
-+            break;
-+        }
-+        default:
-+            g_assert_not_reached();
-+        }
-+
-+        memory_region_add_subregion(get_system_memory(), base, mem);
-+
-+        /* create secure alias */
-+        snprintf(sec_name, sizeof(sec_name), "SECURE %s", name);
-+        sec_mem = &s->mem[ARRAY_SIZE(mem_info) + i];
-+        if (type == MEM_ALIAS) {
-+            mem = &s->mem[alias_for];
-+        }
-+        memory_region_init_alias(sec_mem, OBJECT(s), sec_name, mem, 0, size);
-+        memory_region_add_subregion(get_system_memory(), base + SECURE_OFFSET,
-+                                    sec_mem);
-+
-+        if (mem_info[i].type == MEM_ROM) {
-+            char *fname = qemu_find_file(QEMU_FILE_TYPE_BIOS, "rt500.rom");
-+
-+            if (fname) {
-+                int fsize = get_image_size(fname);
-+                int ret;
-+
-+                if (fsize > size) {
-+                    error_setg(errp, "rom file too big: %d > %d", fsize, size);
-+                } else {
-+                    ret = load_image_targphys(fname, base, size);
-+                    if (ret < 0) {
-+                        error_setg(errp, "could not load rom: %s", fname);
-+                    }
-+                }
-+            }
-+            g_free(fname);
-+        }
-+    }
-+}
-+
-+static void rt500_realize(DeviceState *dev, Error **errp)
-+{
-+    MachineState *ms = MACHINE(qdev_get_machine());
-+    RT500State *s = RT500(dev);
-+    int i;
-+
-+    rt500_realize_memory(s, errp);
-+
-+    /* Setup ARMv7M CPU */
-+    qdev_prop_set_uint32(DEVICE(&s->armv7m), "num-irq",
-+                         RT500_FLEXCOMM16_IRQn + 1);
-+    qdev_prop_set_uint8(DEVICE(&s->armv7m), "num-prio-bits", 3);
-+    qdev_prop_set_string(DEVICE(&s->armv7m), "cpu-type", ms->cpu_type);
-+    object_property_set_link(OBJECT(&s->armv7m), "memory",
-+                             OBJECT(get_system_memory()), &error_abort);
-+    if (!ms->kernel_filename) {
-+        qdev_prop_set_uint32(DEVICE(&s->armv7m), "init-nsvtor",
-+                             MMAP_BOOT_ROM_BASE);
-+        qdev_prop_set_uint32(DEVICE(&s->armv7m), "init-svtor",
-+                             MMAP_BOOT_ROM_BASE + SECURE_OFFSET);
-+    }
-+
-+    qdev_connect_clock_in(DEVICE(&s->armv7m), "cpuclk", s->sysclk);
-+    qdev_connect_clock_in(DEVICE(&s->armv7m), "refclk",
-+                     qdev_get_clock_out(DEVICE(&s->clkctl0), "systick_clk"));
-+
-+    sysbus_realize_and_unref(SYS_BUS_DEVICE(&s->armv7m), errp);
-+    qdev_connect_gpio_out_named(DEVICE(&s->armv7m), "SYSRESETREQ", 0,
-+                                qemu_allocate_irq(&do_sys_reset, NULL, 0));
-+
-+    /* Setup FLEXCOMM */
-+    for (i = 0; i < RT500_FLEXCOMM_NUM; i++) {
-+        const uint32_t addr[] = {
-+            RT500_FLEXCOMM0_BASE, RT500_FLEXCOMM1_BASE, RT500_FLEXCOMM2_BASE,
-+            RT500_FLEXCOMM3_BASE, RT500_FLEXCOMM4_BASE, RT500_FLEXCOMM5_BASE,
-+            RT500_FLEXCOMM6_BASE, RT500_FLEXCOMM7_BASE, RT500_FLEXCOMM8_BASE,
-+            RT500_FLEXCOMM8_BASE, RT500_FLEXCOMM10_BASE, RT500_FLEXCOMM11_BASE,
-+            RT500_FLEXCOMM12_BASE, RT500_FLEXCOMM13_BASE, RT500_FLEXCOMM14_BASE,
-+            RT500_FLEXCOMM15_BASE, RT500_FLEXCOMM16_BASE
-+        };
-+        const int irq[] = {
-+            RT500_FLEXCOMM0_IRQn, RT500_FLEXCOMM1_IRQn, RT500_FLEXCOMM2_IRQn,
-+            RT500_FLEXCOMM3_IRQn, RT500_FLEXCOMM4_IRQn, RT500_FLEXCOMM5_IRQn,
-+            RT500_FLEXCOMM6_IRQn, RT500_FLEXCOMM7_IRQn, RT500_FLEXCOMM8_IRQn,
-+            RT500_FLEXCOMM9_IRQn, RT500_FLEXCOMM10_IRQn, RT500_FLEXCOMM11_IRQn,
-+            RT500_FLEXCOMM12_IRQn, RT500_FLEXCOMM13_IRQn, RT500_FLEXCOMM14_IRQn,
-+            RT500_FLEXCOMM15_IRQn, RT500_FLEXCOMM16_IRQn
-+        };
-+        const int functions[] = {
-+            FLEXCOMM_FULL, FLEXCOMM_FULL, FLEXCOMM_FULL,
-+            FLEXCOMM_FULL, FLEXCOMM_FULL, FLEXCOMM_FULL,
-+            FLEXCOMM_FULL, FLEXCOMM_FULL, FLEXCOMM_FULL,
-+            FLEXCOMM_FULL, FLEXCOMM_FULL, FLEXCOMM_FULL,
-+            FLEXCOMM_FULL, FLEXCOMM_FULL, FLEXCOMM_HSSPI,
-+            FLEXCOMM_PMICI2C, FLEXCOMM_HSSPI
-+        };
-+        DeviceState *ds = DEVICE(&s->flexcomm[i]);
-+        char id[] = "flexcommXX";
-+
-+        snprintf(id, sizeof(id), "flexcomm%d", i);
-+        qdev_prop_set_uint32(ds, "functions", functions[i]);
-+        qdev_prop_set_chr(ds, "chardev", qemu_chr_find(id));
-+        sysbus_realize_and_unref(SYS_BUS_DEVICE(ds), errp);
-+        sysbus_mmio_map(SYS_BUS_DEVICE(ds), 0, addr[i]);
-+        sysbus_connect_irq(SYS_BUS_DEVICE(ds), 0,
-+                           qdev_get_gpio_in(DEVICE(&s->armv7m), irq[i]));
-+    }
-+
-+    /* Setup CTLCTL0 */
-+    qdev_connect_clock_in(DEVICE(&s->clkctl0), "sysclk", s->sysclk);
-+    sysbus_realize_and_unref(SYS_BUS_DEVICE(DEVICE(&s->clkctl0)), errp);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(DEVICE(&s->clkctl0)), 0, RT500_CLKCTL0_BASE);
-+
-+    /* Setup CTLCTL1 */
-+    qdev_connect_clock_in(DEVICE(&s->clkctl1), "sysclk", s->sysclk);
-+    sysbus_realize_and_unref(SYS_BUS_DEVICE(DEVICE(&s->clkctl1)), errp);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(DEVICE(&s->clkctl1)), 0, RT500_CLKCTL1_BASE);
-+
-+    /* Setup FlexSPI */
-+    for (i = 0; i < RT500_FLEXSPI_NUM; i++) {
-+        const uint32_t addr[] = {
-+            RT500_FLEXSPI0_BASE, RT500_FLEXSPI1_BASE
-+        };
-+        const uint32_t mmap_base[] = {
-+            MMAP_FLEXSPI0_BASE, MMAP_FLEXSPI1_BASE
-+        };
-+        const uint32_t mmap_size[] = {
-+            MMAP_FLEXSPI0_SIZE, MMAP_FLEXSPI1_SIZE,
-+        };
-+        DeviceState *ds = DEVICE(&s->flexspi[i]);
-+
-+        qdev_prop_set_uint32(ds, "mmap_base", mmap_base[i]);
-+        qdev_prop_set_uint32(ds, "mmap_size", mmap_size[i]);
-+        sysbus_realize_and_unref(SYS_BUS_DEVICE(ds), errp);
-+        sysbus_mmio_map(SYS_BUS_DEVICE(ds), 0, addr[i]);
-+    }
-+
-+    /* Setup reset controllers */
-+    for (i = 0; i < RT500_RSTCTL_NUM; i++) {
-+        DeviceState *ds = DEVICE(&s->rstctl[i]);
-+
-+        const uint32_t addr[] = {
-+            RT500_RSTCTL0_BASE, RT500_RSTCTL1_BASE
-+        };
-+
-+        qdev_prop_set_uint32(ds, "num", i);
-+        sysbus_realize_and_unref(SYS_BUS_DEVICE(ds), errp);
-+        sysbus_mmio_map(SYS_BUS_DEVICE(ds), 0, addr[i]);
-+    }
-+}
-+
-+static void rt500_finalize(Object *obj)
-+{
-+    RT500State *s = RT500(obj);
-+
-+    g_free(s->mem);
-+}
-+
-+static void rt500_reset(DeviceState *ds)
-+{
-+}
-+
-+static Property rt500_properties[] = {
-+    DEFINE_PROP_END_OF_LIST(),
-+};
-+
-+static void rt500_class_init(ObjectClass *oc, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(oc);
-+
-+    device_class_set_props(dc, rt500_properties);
-+    dc->realize = rt500_realize;
-+    dc->desc = "RT500 (ARM Cortex-M33)";
-+    dc->reset = rt500_reset;
-+}
-+
-+static const TypeInfo rt500_type_info = {
-+    .name = TYPE_RT500,
-+    .parent = TYPE_SYS_BUS_DEVICE,
-+    .instance_size = sizeof(RT500State),
-+    .instance_init = rt500_init,
-+    .instance_finalize = rt500_finalize,
-+    .class_init = rt500_class_init,
-+};
-+
-+static void rt500_register_types(void)
-+{
-+    type_register_static(&rt500_type_info);
-+}
-+
-+type_init(rt500_register_types)
-diff --git a/hw/arm/svd/meson.build b/hw/arm/svd/meson.build
-index 72a7421c6f..930a8b7343 100644
---- a/hw/arm/svd/meson.build
-+++ b/hw/arm/svd/meson.build
-@@ -34,3 +34,9 @@ genh += custom_target('rt500_rstctl1.h',
-                       output: 'rt500_rstctl1.h',
-                       input: 'MIMXRT595S_cm33.xml',
-                       command: [ svd_gen_header, '-i', '@INPUT@', '-o', '@OUTPUT@', '-p', 'RSTCTL1', '-t', 'RT500_RSTCTL1'])
-+genh += custom_target('rt500.h',
-+                      output: 'rt500.h',
-+                      input: 'MIMXRT595S_cm33.xml',
-+                      command: [ svd_gen_header,'-i', '@INPUT@', '-o', '@OUTPUT@', '-s', 'RT500',
-+		                 '-p', 'FLEXCOMM0', '-p', 'CLKCTL0', '-p', 'CLKCTL1',
-+				 '-p', 'FLEXSPI0', '-p', 'FLEXSPI1', '-p', 'RSTCTL0', '-p', 'RSTCTL1'])
-diff --git a/include/hw/arm/rt500.h b/include/hw/arm/rt500.h
-new file mode 100644
-index 0000000000..8ca7972f8a
---- /dev/null
-+++ b/include/hw/arm/rt500.h
-@@ -0,0 +1,49 @@
-+/*
-+ * i.MX RT500 platforms.
-+ *
-+ * Copyright (c) 2024 Google LLC
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ *
-+ * Contributions after 2012-01-13 are licensed under the terms of the
-+ * GNU GPL, version 2 or (at your option) any later version.
-+ */
-+
-+#ifndef HW_ARM_RT500_H
-+#define HW_ARM_RT500_H
-+
-+#include "qemu/osdep.h"
-+#include "qemu/units.h"
-+#include "hw/arm/boot.h"
-+#include "hw/arm/armv7m.h"
-+#include "hw/misc/flexcomm.h"
-+#include "hw/misc/rt500_clkctl0.h"
-+#include "hw/misc/rt500_clkctl1.h"
-+#include "hw/ssi/flexspi.h"
-+#include "hw/misc/rt500_rstctl.h"
-+
-+#define TYPE_RT500 "rt500"
-+#define RT500(obj) OBJECT_CHECK(RT500State, (obj), TYPE_RT500)
-+
-+#define RT500_FLEXCOMM_NUM (17)
-+#define RT500_FLEXSPI_NUM (2)
-+#define RT500_RSTCTL_NUM (2)
-+
-+typedef struct RT500State {
-+    /*< private >*/
-+    SysBusDevice parent_obj;
-+
-+    /*< public >*/
-+    ARMv7MState armv7m;
-+    MemoryRegion *mem;
-+    FlexcommState flexcomm[RT500_FLEXCOMM_NUM];
-+    RT500ClkCtl0State clkctl0;
-+    RT500ClkCtl1State clkctl1;
-+    FlexSpiState flexspi[RT500_FLEXSPI_NUM];
-+    RT500RstCtlState rstctl[RT500_RSTCTL_NUM];
-+
-+    Clock *sysclk;
-+    Clock *refclk;
-+} RT500State;
-+
-+#endif /* HW_ARM_RT500_H */
--- 
-2.46.0.rc2.264.g509ed76dc8-goog
+True. I'll change patch description to:
+
+    arm/virt: Wire up a GED error device for ACPI / GHES
+    
+    Adds support to ARM virtualization to allow handling
+    a General Purpose Event (GPE) via GED error device.
+    
+    It is aligned with Linux Kernel patch:
+    https://lore.kernel.org/lkml/1272350481-27951-8-git-send-email-ying.huang@intel.com/
+
+As the spec at
+https://uefi.org/specs/ACPI/6.5/18_Platform_Error_Interfaces.html#event-notification-for-generic-error-sources
+revers to it as:
+
+	"The implementation of Event notification requires the platform
+	 to define a device with PNP ID PNP0C33 in the ACPI namespace, 
+	 referred to as the error device."
+
+> > Adds support to ARM virtualization to allow handling
+> > a General Purpose Event (GPE) via GED error device.
+> > 
+> > It is aligned with Linux Kernel patch:
+> > https://lore.kernel.org/lkml/1272350481-27951-8-git-send-email-ying.huang@intel.com/
+> > 
+> > Co-authored-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+> > Co-authored-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+> > Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>  
+> 
+> Again, more or less fine with this
+> Signed-off-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+> to go with that co-auth
+
+Thanks!
+
+Mauro

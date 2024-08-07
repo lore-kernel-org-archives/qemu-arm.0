@@ -1,235 +1,277 @@
-Received: by 2002:a05:7022:d82:b0:85:21:bd5b with SMTP id ec2csp321437dlb;
-        Wed, 7 Aug 2024 06:44:04 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCXNjiTgcCczDf4M022rseh8fJApXj+pD7phCOT50pMuge/TgVyWVc2rwUE7Gg9kUk5Fwv+MLTPZtfZKCn+DNhNEDqajdVgY
-X-Google-Smtp-Source: AGHT+IFnk6dm25i7k/YXZzlYPrdgWOaI71Z9lGeYcEp97/JanMXvyBszn+01ddsAg7UKSyruG8km
-X-Received: by 2002:a17:906:fe0e:b0:a72:66d5:892c with SMTP id a640c23a62f3a-a807905937bmr178597566b.18.1723038244397;
-        Wed, 07 Aug 2024 06:44:04 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1723038244; cv=pass;
+Received: by 2002:a05:7022:d82:b0:85:21:bd5b with SMTP id ec2csp350248dlb;
+        Wed, 7 Aug 2024 07:26:03 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCVYRUdmdQlv2aDbL1dHuuN08tMMVJmVBSBw0SUC2tD1C5kXcC7GjT2gJOHn2kUjUbFWaP3P1dX6K5eSIHYMrAiz1B3pn1DN
+X-Google-Smtp-Source: AGHT+IEwIeEk776GagFjNrY8bmn+k11CvVaiqCce7c1GNmftb9KEW2uua6LKgg3rzZ9K6uoHoKAe
+X-Received: by 2002:a05:6512:1243:b0:52c:df6f:a66 with SMTP id 2adb3069b0e04-530bb3b189cmr10071601e87.58.1723040762832;
+        Wed, 07 Aug 2024 07:26:02 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1723040762; cv=pass;
         d=google.com; s=arc-20160816;
-        b=sOOjWCvwlLmSj7twfZU3+5q2DDlsD14hZJ7eNUSVSfIYILAUmQpRe+BWgNDJuSenqu
-         5Ncv0RfHpmJ6+VHH0MueFc6FZcAwMdQ0hqdhgPFW812HK+uPivWvQPjKfdx0sM2BN7ha
-         M27rHXaLdK4/jlUlnb3wSgc3L+/O9sDs0HbeY//Iu1CL4Mdz47dEjzGc2bQ9H2khp5L6
-         6ZO+BNz9RBEPzmLHkmKZMTNwZZ34Is3Jvqur4hV9Jo4Q2ZwOVk6FqEYaQ6jdVNm9OKd2
-         O/u1OSodKAwDAzCjEqWEaGvgQDjsL0OtFSdgzpGEU0EjK3g29x/HmtFapqxuZJ4dewAQ
-         lufw==
+        b=Mk9HAcomtrk7vuzx9h22GhC+tsd93QW1cUKRmq4El8lhwpFL6wf6kST9tCxOnbBKhi
+         of0uzVnxyg8mJPJet//XuYaWz6uZP+BMICQ0NEJ2cNN4SlEJ8Z3LAv70EFQJOq3X3sVg
+         P/J/K7OBlMiBCwOqkEB2kHnvv1fGvAo1fQO34qRtiCxZYOVaaq+1pcxScoWBAO+jReUA
+         zyQ7tqYG7nRjVW0sQXBtHYinSi5+PMCCq+yHWlf4KRp7j6lMZk3SlR9K4TTvbNWYkmKG
+         UxLek75KUZo4tn970b3+wwX5n9EFvrCj17C7mpYUWFTkgGNjzNyd0QVCa8WuiwwCwq7U
+         rKFg==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=fYwB9PhaxROTttP1ClR+qhim39o3hwwUvgAALYgcWMw=;
-        fh=CTHUc2YyqsWIzszdnxRCbeIG7f5J9E4fE2AM26VVRGY=;
-        b=ez3ORjHIita4D10bcB2v8ajo/LwXGZbT4O26uaG5FD7WB+slN+mWQpb9Af4rGP4TFW
-         q4s2Npu8cjgSWC6xDhEjw6AJHU2m8YpSWbXGn7DOhvPeYMv1/QdMOmNBmbbNiVBwQagJ
-         mqotR9Z90l3rePsRqO2vIJSVeqSPRqyQePd056007Yso5+DTM+iu7Wam2t+hO97S2cAR
-         +TODuU9bOZDg4lGHRMHfDT34AfwF0ZKQmfmtiGuUZHJ0YtDIO8BmFPqa7xzVKkYe12RE
-         PHbrt/Gg2To0Hrz20qxr+m45J4ftscA+A3V8NEVmxZoa54hJnWH/SsH4j4pL0HkFzUoM
-         9hEA==;
+         :list-subscribe:list-id:precedence:organization:references
+         :in-reply-to:message-id:subject:cc:to:from:date;
+        bh=HVSPuqSsNJa7R+uOtKbLe0lD4YKHxwLmDV/ClpoVeXg=;
+        fh=D9C6Fi9/7hj7lBAsCHWNuHQ9wJ4bXwCyR67eaqZtF88=;
+        b=WU7Cl3o12wmaT5TMM8g6IlgiPDN/hT8i3qS/y1OwI3Zdd+IdekUu2XrxWPf65dBg51
+         Gp0LZBbCJvw4rRrm90t3c33mokjR0hmI2Ata+xrd1iBTK7eqEgM9WS3DNU+BCLGHdoDb
+         FwNVTMHYmQJt+VJzpodbbVvwLD7i2QSXApyrDTfkPOumulvMj1rVSsrc8O1pBSx14PX0
+         8lDFtsrm1zAUhIxb4LuERTOshGfplUsCZNXryxoJQYcLnlX8uVlVmUMwYzcb3KLf/Oia
+         VOukSc5KdnX+47YHvadxfHUFhGEKD5msHlJtgHWBw92UULuOCxm7cEVSV+xnS773VUdj
+         ng2Q==;
         dara=google.com
 ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=chegYxU5;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of linux-kernel+bounces-277969-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) smtp.mailfrom="linux-kernel+bounces-277969-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <linux-kernel+bounces-277969-alex.bennee=linaro.org@vger.kernel.org>
+       arc=pass (i=1 spf=pass spfdomain=huawei.com dmarc=pass fromdomain=huawei.com);
+       spf=pass (google.com: domain of linux-kernel+bounces-278045-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) smtp.mailfrom="linux-kernel+bounces-278045-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=fail (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Return-Path: <linux-kernel+bounces-278045-alex.bennee=linaro.org@vger.kernel.org>
 Received: from am.mirrors.kernel.org (am.mirrors.kernel.org. [2604:1380:4601:e00::3])
-        by mx.google.com with ESMTPS id a640c23a62f3a-a7dc9d6fb21si703370066b.378.2024.08.07.06.44.04
+        by mx.google.com with ESMTPS id 4fb4d7f45d1cf-5ba482281absi5360843a12.110.2024.08.07.07.26.02
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 07 Aug 2024 06:44:04 -0700 (PDT)
-Received-SPF: pass (google.com: domain of linux-kernel+bounces-277969-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) client-ip=2604:1380:4601:e00::3;
+        Wed, 07 Aug 2024 07:26:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of linux-kernel+bounces-278045-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) client-ip=2604:1380:4601:e00::3;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=chegYxU5;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of linux-kernel+bounces-277969-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) smtp.mailfrom="linux-kernel+bounces-277969-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       arc=pass (i=1 spf=pass spfdomain=huawei.com dmarc=pass fromdomain=huawei.com);
+       spf=pass (google.com: domain of linux-kernel+bounces-278045-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) smtp.mailfrom="linux-kernel+bounces-278045-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=fail (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
 Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by am.mirrors.kernel.org (Postfix) with ESMTPS id C00261F22D74
-	for <alex.bennee@linaro.org>; Wed,  7 Aug 2024 13:44:03 +0000 (UTC)
+	by am.mirrors.kernel.org (Postfix) with ESMTPS id 145D81F2520F
+	for <alex.bennee@linaro.org>; Wed,  7 Aug 2024 14:26:02 +0000 (UTC)
 Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 4195E1EA0BD;
-	Wed,  7 Aug 2024 13:43:58 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="chegYxU5"
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id A1F746F2F0;
+	Wed,  7 Aug 2024 14:25:56 +0000 (UTC)
+Received: from frasgout.his.huawei.com (frasgout.his.huawei.com [185.176.79.56])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 726D71B8EAD
-	for <linux-kernel@vger.kernel.org>; Wed,  7 Aug 2024 13:43:56 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.133.124
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4925456458
+	for <linux-kernel@vger.kernel.org>; Wed,  7 Aug 2024 14:25:52 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=185.176.79.56
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1723038238; cv=none; b=fZS4l2OuNWwBlrfjQWONfCb89F4G5mTdN+bQ+D4ed/QljxSD4F0tW73YSTJ9lzn8lYgUOfYiRqKwrT/lUj1G5yFwRGYI3YHp/2Ljwymv9ETAA7FRhrVCYjXgPR3t/PKfa/quwTCc2q6QpMWvJFl0DpcH1hDR5D4C3e1w3xaevqw=
+	t=1723040756; cv=none; b=r/eaICdEvgfw7uYLVqYNWTcLnuVKvXkWxgXpWaKuGpvRUUDP1vbugRjSwFV4x2fpOcy7O1UmtJWNy60dv6lrF4rb5FD2JQWqBdb5xZYWjwTU7xhyhhkhIokIeiHmjuRW/xFvllmYVLKDGcl+7j3vA0WYv3gnfkkChOehhpCbBd8=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1723038238; c=relaxed/simple;
-	bh=hZWOghC9twLYStZL6Ext5Irw7Otnqc8jOQRKuMsRbNM=;
-	h=Date:From:To:Cc:Subject:Message-ID:In-Reply-To:References:
-	 MIME-Version:Content-Type; b=o7WcNgYwscnCNziG9uacvXvsK/vHNezjUIQymRe6LjSSGYsYxc4nZDXq6WAeALBFRg0/PdPltwNYo1CYQLCNwQNMrc2St62KxFZfdZQvRHDG7gI2fhTV1+1kVDOx4GohdyyxLgxD7xcKygxvqCuMEnHPxSkAS0j1BnZ31Vf6ldc=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=chegYxU5; arc=none smtp.client-ip=170.10.133.124
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1723038235;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=fYwB9PhaxROTttP1ClR+qhim39o3hwwUvgAALYgcWMw=;
-	b=chegYxU5K6WekukNk7koyw5X0zhJpDepjCDTMtJXgy6qNXHNf54DbmDNEvjB5llmAQXIxW
-	dLKAu0YQE7uUieJ20+SVnVfGb8JUp/tRZ9o3wW6EJsTLWejNldldY+8HGOjqMd6xGKAesE
-	QwFYTzAyN3SbO2jpQYnaeWmwiPgT6Ic=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-520-SvGbNN07P36Jo8fyXGNMGg-1; Wed, 07 Aug 2024 09:43:53 -0400
-X-MC-Unique: SvGbNN07P36Jo8fyXGNMGg-1
-Received: by mail-wr1-f71.google.com with SMTP id ffacd0b85a97d-368448dfe12so460520f8f.1
-        for <linux-kernel@vger.kernel.org>; Wed, 07 Aug 2024 06:43:52 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1723038232; x=1723643032;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=fYwB9PhaxROTttP1ClR+qhim39o3hwwUvgAALYgcWMw=;
-        b=j5ffFU0M7+0TI8nj7sEFRRHtNcntxClCZfMru6UrRh5q83maqop43oE3msxxL9Wfbi
-         MsmanlwHSX1LhJY3im9RbRR8Rl0fv6n8AdjA/Y6K5pkZ81r1SpNZFaO0qasSy2YzxpJ1
-         QEIUXTQ97xID6gZsrZ3X7sRSE6oxanL6l43irf5dL294IuoQH2KuxixmGo8Ee7w0Ttb6
-         3dWZFEXoYZAmEQXpCAv8Qrp35jpuOANKTiRk3cCtstaiq1gKPyalds49+4/6awPkeiSI
-         DVGWYPk0omwTwHeWiBM3GYi46iqdsF9ZNNyb2Z8gobh0ijTZRpSPhNgy5zP5TE+2O7ih
-         MDjg==
-X-Forwarded-Encrypted: i=1; AJvYcCXACizgR6glO9MY9+Rm65+W9R/7ptVe1VTwT5jWYqoSGKR/YuKd0pxpnV7u79mhk3Lh6k9BOCnW2u2K/AYe538dubMK0YK5ykqvt0zJ
-X-Gm-Message-State: AOJu0YyDHrqEbQ1DgObVtNdluPtJd+SJqIa5NEWJ3DnGsDhah06Yo66g
-	XjufqxwY5bG0RuS7LTufyEHccJqDWNULTRIh4OZCjQ1MgUg/FRNno423hnqJxyxsl0DkAgwUOtv
-	d8Gxlw2SIc9eK3DaXyDqDkUU4vMnkNjkVm4D4mqsur8K/ocKeazM/Nt/ZGTtqbA==
-X-Received: by 2002:adf:feca:0:b0:363:ac4d:c44f with SMTP id ffacd0b85a97d-36bf0dd08famr1912028f8f.17.1723038231891;
-        Wed, 07 Aug 2024 06:43:51 -0700 (PDT)
-X-Received: by 2002:adf:feca:0:b0:363:ac4d:c44f with SMTP id ffacd0b85a97d-36bf0dd08famr1911997f8f.17.1723038231299;
-        Wed, 07 Aug 2024 06:43:51 -0700 (PDT)
-Received: from imammedo.users.ipa.redhat.com (nat-pool-brq-t.redhat.com. [213.175.37.10])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-36bbd06e0f5sm16009224f8f.104.2024.08.07.06.43.50
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 07 Aug 2024 06:43:50 -0700 (PDT)
-Date: Wed, 7 Aug 2024 15:43:50 +0200
-From: Igor Mammedov <imammedo@redhat.com>
-To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-Cc: Jonathan Cameron <Jonathan.Cameron@Huawei.com>, Shiju Jose
- <shiju.jose@huawei.com>, "Michael S. Tsirkin" <mst@redhat.com>, Ani Sinha
- <anisinha@redhat.com>, Dongjiu Geng <gengdongjiu1@gmail.com>,
- <linux-kernel@vger.kernel.org>, <qemu-arm@nongnu.org>,
- <qemu-devel@nongnu.org>
+	s=arc-20240116; t=1723040756; c=relaxed/simple;
+	bh=jW4eBRDjiyEBvtx2/oCOXrGyM+xYe7d8BQZcdpmDHME=;
+	h=Date:From:To:CC:Subject:Message-ID:In-Reply-To:References:
+	 MIME-Version:Content-Type; b=eZuPZak9Lx8jnXdLatVDCrQK+YHubELB+rSXHrC2oxPrVDo0zKfrR6AH1+tNEtA7y36JSnn8Chr2bm53teVDbNhxSnjxdRDPg2yzeT2uGq78jEPswa1p3/hs9kLNWTUSnCOCJcdvMyIqsNsnLpu3cmcWV0DHf8TYVX7dTpSWwVs=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=Huawei.com; spf=pass smtp.mailfrom=huawei.com; arc=none smtp.client-ip=185.176.79.56
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=Huawei.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=huawei.com
+Received: from mail.maildlp.com (unknown [172.18.186.216])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4WfC8K6R0Vz6K5nm;
+	Wed,  7 Aug 2024 22:23:29 +0800 (CST)
+Received: from lhrpeml500005.china.huawei.com (unknown [7.191.163.240])
+	by mail.maildlp.com (Postfix) with ESMTPS id 242E6140B35;
+	Wed,  7 Aug 2024 22:25:49 +0800 (CST)
+Received: from localhost (10.203.177.66) by lhrpeml500005.china.huawei.com
+ (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Wed, 7 Aug
+ 2024 15:25:48 +0100
+Date: Wed, 7 Aug 2024 15:25:47 +0100
+From: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
+To: Igor Mammedov <imammedo@redhat.com>
+CC: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>, Shiju Jose
+	<shiju.jose@huawei.com>, "Michael S. Tsirkin" <mst@redhat.com>, Ani Sinha
+	<anisinha@redhat.com>, Dongjiu Geng <gengdongjiu1@gmail.com>,
+	<linux-kernel@vger.kernel.org>, <qemu-arm@nongnu.org>,
+	<qemu-devel@nongnu.org>
 Subject: Re: [PATCH v5 6/7] acpi/ghes: add support for generic error
  injection via QAPI
-Message-ID: <20240807154350.5907e4ed@imammedo.users.ipa.redhat.com>
-In-Reply-To: <20240807152357.0d2dc466@foz.lan>
+Message-ID: <20240807152547.000058fd@Huawei.com>
+In-Reply-To: <20240806163113.3bdc260a@imammedo.users.ipa.redhat.com>
 References: <cover.1722634602.git.mchehab+huawei@kernel.org>
 	<20c491e357340e0062b6ff09867c1661ed4d2479.1722634602.git.mchehab+huawei@kernel.org>
 	<20240806163113.3bdc260a@imammedo.users.ipa.redhat.com>
-	<20240807094750.6414fb2f@foz.lan>
-	<20240807103436.000013fc@Huawei.com>
-	<20240807152357.0d2dc466@foz.lan>
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
+Organization: Huawei Technologies Research and Development (UK) Ltd.
+X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
 Precedence: bulk
 X-Mailing-List: linux-kernel@vger.kernel.org
 List-Id: <linux-kernel.vger.kernel.org>
 List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
 List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset="US-ASCII"
 Content-Transfer-Encoding: 7bit
-X-TUID: A3Vmt/LGFKK3
+X-ClientProxiedBy: lhrpeml100003.china.huawei.com (7.191.160.210) To
+ lhrpeml500005.china.huawei.com (7.191.163.240)
+X-TUID: Do2r4XdUtFFy
 
-On Wed, 7 Aug 2024 15:23:57 +0200
-Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
+On Tue, 6 Aug 2024 16:31:13 +0200
+Igor Mammedov <imammedo@redhat.com> wrote:
 
-> Em Wed, 7 Aug 2024 10:34:36 +0100
-> Jonathan Cameron <Jonathan.Cameron@Huawei.com> escreveu:
+> On Fri,  2 Aug 2024 23:44:01 +0200
+> Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
 > 
-> > On Wed, 7 Aug 2024 09:47:50 +0200
-> > Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
-> >   
-> > > Em Tue, 6 Aug 2024 16:31:13 +0200
-> > > Igor Mammedov <imammedo@redhat.com> escreveu:
-> > >     
-> > > > PS:
-> > > > looking at the code, ACPI_GHES_MAX_RAW_DATA_LENGTH is 1K
-> > > > and it is the total size of a error block for a error source.
-> > > > 
-> > > > However acpi_hest_ghes.rst (3) says it should be 4K,
-> > > > am I mistaken?      
-> > > 
-> > > Maybe Jonathan knows better, but I guess the 1K was just some
-> > > arbitrary limit to prevent a too big CPER. The 4K limit described
-> > > at acpi_hest_ghes.rst could be just some limit to cope with
-> > > the current bios implementation, but I didn't check myself how
-> > > this is implemented there. 
-> > > 
-> > > I was unable to find any limit at the specs. Yet, if you look at:
-> > > 
-> > > https://uefi.org/specs/UEFI/2.10/Apx_N_Common_Platform_Error_Record.html#arm-processor-error-section    
+> > Provide a generic interface for error injection via GHESv2.
 > > 
-> > I think both limits are just made up.  You can in theory log huge
-> > error records.  Just not one does.  
+> > This patch is co-authored:
+> >     - original ghes logic to inject a simple ARM record by Shiju Jose;
+> >     - generic logic to handle block addresses by Jonathan Cameron;
+> >     - generic GHESv2 error inject by Mauro Carvalho Chehab;
+> > 
+> > Co-authored-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+> > Co-authored-by: Shiju Jose <shiju.jose@huawei.com>
+> > Co-authored-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+> > Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+> > Cc: Shiju Jose <shiju.jose@huawei.com>
+> > Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+> > ---
+> >  hw/acpi/ghes.c         | 159 ++++++++++++++++++++++++++++++++++++++---
+> >  hw/acpi/ghes_cper.c    |   2 +-
+> >  include/hw/acpi/ghes.h |   3 +
+> >  3 files changed, 152 insertions(+), 12 deletions(-)
+> > 
+> > diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
+> > index a745dcc7be5e..e125c9475773 100644
+> > --- a/hw/acpi/ghes.c
+> > +++ b/hw/acpi/ghes.c
+> > @@ -395,23 +395,22 @@ void acpi_ghes_add_fw_cfg(AcpiGhesState *ags, FWCfgState *s,
+> >      ags->present = true;
+> >  }
+> >  
+> > +static uint64_t ghes_get_state_start_address(void)  
 > 
-> If both are made up, I would sync them, either patching the
-> documentation or the ghes driver.
+> ghes_get_hardware_errors_address() might better reflect what address it will return
 > 
-> >   
-> > > 
-> > > The processor Error Information Structure, starting at offset
-> > > 40, can go up to 255*32, meaning an offset of 8200, which is
-> > > bigger than 4K.
-> > > 
-> > > Going further, processor context can have up to 65535 (spec
-> > > actually says 65536, but that sounds a typo, as the size is
-> > > stored on an uint16_t), containing multiple register values
-> > > there (the spec calls its length as "P").
-> > > 
-> > > So, the CPER record could, in theory, have:
-> > > 	8200 + (65535 * P) + sizeof(vendor-specicific-info)
-> > > 
-> > > The CPER length is stored in Section Length record, which is
-> > > uint32_t.
-> > > 
-> > > So, I'd say that the GHES record can theoretically be a lot
-> > > bigger than 4K.	    
-> > Agreed - but I don't think we care for testing as long as it's
-> > big enough for plausible records.   Unless you really want
-> > to fuzz the limits?  
+> > +{
+> > +    AcpiGedState *acpi_ged_state =
+> > +        ACPI_GED(object_resolve_path_type("", TYPE_ACPI_GED, NULL));
+> > +    AcpiGhesState *ags = &acpi_ged_state->ghes_state;
+> > +
+> > +    return le64_to_cpu(ags->ghes_addr_le);
+> > +}
+> > +
+> >  int acpi_ghes_record_errors(uint8_t source_id, uint64_t physical_address)
+> >  {
+> >      uint64_t error_block_addr, read_ack_register_addr, read_ack_register = 0;
+> > -    uint64_t start_addr;
+> > +    uint64_t start_addr = ghes_get_state_start_address();
+> >      bool ret = -1;
+> > -    AcpiGedState *acpi_ged_state;
+> > -    AcpiGhesState *ags;
+> > -
+> >      assert(source_id < ACPI_HEST_SRC_ID_RESERVED);
+> >  
+> > -    acpi_ged_state = ACPI_GED(object_resolve_path_type("", TYPE_ACPI_GED,
+> > -                                                       NULL));
+> > -    g_assert(acpi_ged_state);
+> > -    ags = &acpi_ged_state->ghes_state;
+> > -
+> > -    start_addr = le64_to_cpu(ags->ghes_addr_le);
+> > -
+> >      if (physical_address) {
+> >          start_addr += source_id * sizeof(uint64_t);  
 > 
-> Fuzz the limits could be interesting, but it is not on my
-> current plans.
+> above should be a separate patch
 > 
-> Yet, 1K could be a little bit short for ARM CPER.
+> >  
+> > @@ -448,9 +447,147 @@ int acpi_ghes_record_errors(uint8_t source_id, uint64_t physical_address)
+> >      return ret;
+> >  }
+> >  
+> > +/*
+> > + * Error register block data layout
+> > + *
+> > + * | +---------------------+ ges.ghes_addr_le
+> > + * | |error_block_address0 |
+> > + * | +---------------------+
+> > + * | |error_block_address1 |
+> > + * | +---------------------+ --+--
+> > + * | |    .............    | GHES_ADDRESS_SIZE
+> > + * | +---------------------+ --+--
+> > + * | |error_block_addressN |
+> > + * | +---------------------+
+> > + * | | read_ack0           |
+> > + * | +---------------------+ --+--
+> > + * | | read_ack1           | GHES_ADDRESS_SIZE
+> > + * | +---------------------+ --+--
+> > + * | |   .............     |
+> > + * | +---------------------+
+> > + * | | read_ackN           |
+> > + * | +---------------------+ --+--
+> > + * | |      CPER           |   |
+> > + * | |      ....           | GHES_MAX_RAW_DATA_LENGT
+> > + * | |      CPER           |   |
+> > + * | +---------------------+ --+--
+> > + * | |    ..........       |
+> > + * | +---------------------+
+> > + * | |      CPER           |
+> > + * | |      ....           |
+> > + * | |      CPER           |
+> > + * | +---------------------+
+> > + */  
 > 
-> See: N.26 ARMv8 AArch64 GPRs (Type 4) has 256 bytes for
-> registers, plus 8 bytes for the header. So, a total size of
-> 264 bytes, for a single context register dump. I would expect
-> that, in real life, type 4 to always be reported on aarch64,
-> on BIOS with context register support. Maybe other types could
-> also be dumped altogether (like context registers for EL1, 
-> EL2 and/or EL3).
+> no need to duplicate docs/specs/acpi_hest_ghes.rst,
+> I'd just reffer to it and maybe add short comment as to why it's mentioned.
 > 
-> If just one type 4 context is encoded, it means that, 1K has 
-> space for 23 errors (of a max limit of 255).
+> > +/* Map from uint32_t notify to entry offset in GHES */
+> > +static const uint8_t error_source_to_index[] = { 0xff, 0xff, 0xff, 0xff,
+> > +                                                 0xff, 0xff, 0xff, 1, 0};
+> > +
+> > +static bool ghes_get_addr(uint32_t notify, uint64_t *error_block_addr,
+> > +                          uint64_t *read_ack_addr)
+> > +{
+> > +    uint64_t base;
+> > +
+> > +    if (notify >= ACPI_GHES_NOTIFY_RESERVED) {
+> > +        return false;
+> > +    }
+> > +
+> > +    /* Find and check the source id for this new CPER */
+> > +    if (error_source_to_index[notify] == 0xff) {
+> > +        return false;
+> > +    }
+> > +
+> > +    base = ghes_get_state_start_address();
+> > +
+> > +    *read_ack_addr = base +
+> > +        ACPI_GHES_ERROR_SOURCE_COUNT * sizeof(uint64_t) +
+> > +        error_source_to_index[notify] * sizeof(uint64_t);
+> > +
+> > +    /* Could also be read back from the error_block_address register */
+> > +    *error_block_addr = base +
+> > +        ACPI_GHES_ERROR_SOURCE_COUNT * sizeof(uint64_t) +
+> > +        ACPI_GHES_ERROR_SOURCE_COUNT * sizeof(uint64_t) +
+> > +        error_source_to_index[notify] * ACPI_GHES_MAX_RAW_DATA_LENGTH;
+> > +
+> > +    return true;
+> > +}  
 > 
-> Just looking at the maximum number, my feeling is that 1K
-> might be too short to simulate some real life reports,
-> but that depends on how firmware is actually grouping
-> such events.
+> I don't like all this pointer math, which is basically a reverse engineered
+> QEMU actions on startup + guest provided etc/hardware_errors address.
+> 
+> For once, it assumes error_source_to_index[] matches order in which HEST
+> error sources were described, which is fragile.
+> 
+> 2nd: migration-wive it's disaster, since old/new HEST/hardware_errors tables
+> in RAM migrated from older version might not match above assumptions
+> of target QEMU. 
+> 
+> I see 2 ways to rectify it:
+>   1st: preferred/cleanest would be to tell QEMU (via fw_cfg) address of HEST table
+>        in guest RAM, like we do with etc/hardware_errors, see
+>             build_ghes_error_table()
+>                ...
+>                tell firmware to write hardware_errors GPA into
+>        and then fetch from HEST table in RAM, the guest patched error/ack addresses
+>        for given source_id
+> 
+>        code-wise: relatively simple once one wraps their own head over
+>                  how this whole APEI thing works in QEMU
+>                  workflow  is described in docs/specs/acpi_hest_ghes.rst
+>                  look to me as sufficient to grasp it.
+>                  (but my view is very biased given my prior knowledge,
+>                   aka: docs/comments/examples wrt acpi patching are good enough)
+>                  (if it's not clear how to do it, ask me for pointers)
 
-per my knowledge firmware is out of picture here, since all
-it does in HEST case is allocate continuous space for
-'etc/hardware_errors' blob as QEMU told it.
-
-> 
-> So, maybe this could be expanded to, let's say, 4K, thus
-> aligning with the ReST documentation.
-maybe to get moving, 1st get your series in with docs fixed
-to today limit.
-And then increase error_block size to desired value on top of that
-as it's really not relevant to what you are doing here.
-
-> Regards,
-> Mauro
-> 
-
+Hi Igor, I think I follow what you mean but maybe this question will reveal
+otherwise.  HEST is currently in ACPI_BUILD_TABLE_FILE.
+Would you suggest splitting it to it's own file, or using table_offsets
+to get the offset in ACPI_BUILD_TABLE_FILE GPA?

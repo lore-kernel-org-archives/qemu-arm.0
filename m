@@ -1,130 +1,115 @@
-Received: by 2002:a17:504:7fd7:b0:1be9:327d:8ee3 with SMTP id hj23csp13874njc;
-        Tue, 6 Aug 2024 20:47:35 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXuA4rGC2kpCuNXfEPnrVY6kVRsxu61aU4PhRpThqkwczR3tDOI7vEKR4PnTzgTBnqqD3wyz1ohWJ1x9Y3F9pqpPYmGw9Jp
-X-Google-Smtp-Source: AGHT+IEq6qrKO7Cco/Z8eOUuIGBHivaVIADdGIUnHVyIkETky3ES7EYPeUh+6LD0lu05tixs57Rj
-X-Received: by 2002:a05:6214:5687:b0:6b5:4e5d:7cfd with SMTP id 6a1803df08f44-6bb983e9314mr196760736d6.23.1723002455169;
-        Tue, 06 Aug 2024 20:47:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1723002455; cv=none;
+Received: by 2002:a17:504:7fd7:b0:1be9:327d:8ee3 with SMTP id hj23csp27521njc;
+        Tue, 6 Aug 2024 22:13:08 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXycLQbJVS5vJQ3GP1/eB5sk4NqcwGWcUX2AacmEOt9vN9bQY0sCLzzh9sRZ7ynPxhq/x9VW5rAubSAlUmzlyTesvTe9iTf
+X-Google-Smtp-Source: AGHT+IEoZf3CUb/iDSj4Rskzu+VhMTfMUVC0ivhueJ8pDwC5v7dJkWZp8gIwUnEUYzQyxBxaoCNS
+X-Received: by 2002:a05:6214:5505:b0:6b2:b4d2:984d with SMTP id 6a1803df08f44-6bb9836e234mr211059396d6.15.1723007588619;
+        Tue, 06 Aug 2024 22:13:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1723007588; cv=none;
         d=google.com; s=arc-20160816;
-        b=VeKU9nY+5AgBOJc8INnIs6hqdh4ARIV6uMptUzrwnA9IzKWPf/TF2jd9RLNOnwPKTJ
-         NepXIdC8kPzh9ylHEkBBInJ5oEhkV/hrSuPc9LIBZYfaojGR+y4qnh34bKBV984bAAXx
-         2TwIKMc92guweJecCf2RrigBV/ThsmCtgP5wPdPUoYlvZn+roLyxcppb4dm9KL62aybo
-         G3TN3di1xYzli+aDq+Yf9fU2K/7uRxjF8/sGIyTOn8luo/CkXDX70Rqb2MhobRRgnmJC
-         YEK8KKuqpf6g1v5pSmc116Zz/5E8LJ4jbUjebjV/9ilun40jXxExwFf2aipSNm725pMw
-         tzYg==
+        b=WG1/mvUESvnkzDC6n1TXRpl3kZNlhz9thG/F3cQb56IznztiNIzVtgycH5W+tm74R9
+         nDgZk/RXcSqSE3f+QNzmnUxyVri9wTlwRYyY2WcieV8KYjGCW4GFG9tSwhFmJi+zJhY8
+         AESWfQ9O4WVvzI1nTVS9nLnKcLdhrCoixvPz5O2BuWmzDyNTlx3Y9zaVuN5mMLoscEzP
+         sPDPoEf6OeHdd05VvFC65sBEXBND3LF+eSUAxcEZVl/EpChtLAEurlkOhf3GozMCM8Bz
+         +I8JtaOL6puZuJ/BeJismRdbUxlHLusKiulJf1/cntbus7THtdeywk/lMWaEFrcAwniQ
+         AZBw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=rMePUQ3LpHJEeKd6TGojMj79dN1NpaAlqdu9z4L6pMg=;
-        fh=4QyFpQu1XCHJQdIKLRcfvl9O8H27d26UsVKqio23ZP0=;
-        b=GA9wi9nMIVu6/H/c5V5MVTJE+Puqf7J0Q/y5FYuDvjmsErmeCCozcwc28eV3+ptYhA
-         Dp4tq8tsmucu1Z62zVNPxmFesZHi6gQnxxDbMSiXLGoClWUEU8F3EYm9/0VZjVJWMDPz
-         XthKcV1vp3nfgKHwe6ms83zbTDI8mEtLwLgmC9vUDCv82cZc3JJgOJb/ETYXfg9Nb+qJ
-         2CEP1lmlFIEd2W9qk71yZFlopMnP8LHHnb7zq5W8keoA8UshCP6DMYmVtmYFhHlpa3gY
-         wycdiG5a/tTEEuadt1e0lE6jMRLy1XbnU/luN0M9wumj2rqWaAFRIDnsr/tutD/L4GOt
-         G96Q==;
+         :mime-version:user-agent:message-id:date:references:in-reply-to
+         :subject:cc:to:from:dkim-signature;
+        bh=nHi6Z8qHdWWZa4x1RapBqelewvshZ/hVrZ44qd9hjwA=;
+        fh=U57P0pt2cofzXA62nysASYKyy/Z4NZvRf6QjqRRvzfA=;
+        b=nXJAdy0W33rtVZJzM6OcYeR3255ViGPVe2Y1YiwRDxH5N7v8V/brkT3vkMDK8zibVP
+         k/JwkjGNvTwqU5GzwF5MtaHivXylBsfvYVv+R70uv1rA9vXV45rYywOdHSNIcv/XPbjz
+         rk1jN8mebmLhENT9lDqadYH0qjnKxhx/l+aKPk/WHx+IINrq+2smiQ0KWhah19oxyEuC
+         Fti/sW/sSmWsxwcEx1v2K3aT//bez7Nu4VVPnw+qIZp1+D5aplsUP/9drceY0UglYvHn
+         tLX6Xq37nXwF/ZgWEJRJ0qvidXd4GzbZqZBZ+ZsnBFcua9gUyrfr1sW7DP9Co1Hs0ItE
+         I9tg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=rawmSzKx;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="ZzEMi/4X";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6bbbb8ee31bsi8813626d6.348.2024.08.06.20.47.35
+        by mx.google.com with ESMTPS id 6a1803df08f44-6bbbb929ea8si9799906d6.528.2024.08.06.22.13.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 06 Aug 2024 20:47:35 -0700 (PDT)
+        Tue, 06 Aug 2024 22:13:08 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=rawmSzKx;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="ZzEMi/4X";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sbXe2-0000UE-Eu; Tue, 06 Aug 2024 23:47:26 -0400
+	id 1sbYyb-0000Hn-Dt; Wed, 07 Aug 2024 01:12:45 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1sbXe0-0000Mj-Ph
- for qemu-arm@nongnu.org; Tue, 06 Aug 2024 23:47:24 -0400
-Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1sbXdy-0003Pt-WD
- for qemu-arm@nongnu.org; Tue, 06 Aug 2024 23:47:24 -0400
-Received: by mail-pl1-x62f.google.com with SMTP id
- d9443c01a7336-1fda7fa60a9so11735195ad.3
- for <qemu-arm@nongnu.org>; Tue, 06 Aug 2024 20:47:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1723002441; x=1723607241; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=rMePUQ3LpHJEeKd6TGojMj79dN1NpaAlqdu9z4L6pMg=;
- b=rawmSzKxD8heNbO5l2Tg++Y/Ll+gBB8wrFolyD4fvmAsWobTzD2pIi85WfVKFQbTMj
- uXcwwBlamgMRIQNG9bprF2qOxpW5scaqbgVRmTAGuFhvTeiq4QaNKJeQtErG9D68AC7k
- fDnJFiryvsXdatzCmJKCwi8qIlhrwnKBdgb7MRzgJiLH8jjHmSccB+gUpTYFJ/GVmzIq
- DAhPdIH/ZJZULOB95/CkvJJIDbWs3tJUODqrvJ3J9vpkgvyatW19XFY6u/lHGBWwWk+G
- f862P66eEkHB9IN8UduPy2z2j1C6RsWPvADZErd7ASN2LoahTAo7DZiFxwMi08B9MTMw
- qChA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1723002441; x=1723607241;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=rMePUQ3LpHJEeKd6TGojMj79dN1NpaAlqdu9z4L6pMg=;
- b=NzkHA6+5nU5I8WxkdFRVZa6nEEUERGmRX89a0pjYYzKZr9eS8fIaakJ/L5ahSl5f5k
- zZVH6ycgJo9nB/2lS3SWGbePE9Yu6xpdw/jnKOUZgLq8bRiFSBzT2nIoGi7EY4LL4RxG
- fZ7Axx48FCtGaTdjL8xKGLycu+pr5a7xl1QSJxAlsVo9UMGKrJw8naPZ+0zy5MFCLEO5
- zV8v4JaT6qRRijbgNN93/wpXi36OX0o49fb99Qo/ppoDosZX96tSyl7b/RKzQcvYB79k
- SOmUNXd5fKmZYdS/LQx/kp9tQdU73hVm+PSsku9o38CuHfp9ljXXXUUJGlnyuLdOyzD9
- kEHA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVGI8VEZKG2yPus821Ws3pe8cWzv5QWdMTX4bi7kvhJR71OL8fq+mePqei8qEDwhaYEdWRa/S7VPncl/ij0JOdd+iqv
-X-Gm-Message-State: AOJu0YzsJ4ziaHi0po0jaxUgE3uC+Ad9i/7C+NR5YI3/QQmmfc+Qcabz
- B+GlYNT2km/1Wqde8oQVgS78ipOvoRRkv8gzMbd4uQEGqtL2AAdRKR1dFHwZFHU=
-X-Received: by 2002:a17:902:db02:b0:1fb:779e:4fd0 with SMTP id
- d9443c01a7336-1ff57294d1bmr199322375ad.24.1723002441253; 
- Tue, 06 Aug 2024 20:47:21 -0700 (PDT)
-Received: from ?IPV6:2403:580a:f89b:0:e01b:92e5:d779:1bc0?
- (2403-580a-f89b-0-e01b-92e5-d779-1bc0.ip6.aussiebb.net.
- [2403:580a:f89b:0:e01b:92e5:d779:1bc0])
- by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-1ff58f19bd5sm95288145ad.50.2024.08.06.20.47.17
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 06 Aug 2024 20:47:20 -0700 (PDT)
-Message-ID: <4e45c886-cb93-4906-8559-65205703f52c@linaro.org>
-Date: Wed, 7 Aug 2024 13:47:15 +1000
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH-for-9.1? 2/2] hw/intc/arm_gic: Only provide
- query-gic-capabilities when GIC built-in
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: Markus Armbruster <armbru@redhat.com>, Eric Blake <eblake@redhat.com>,
- qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- Thomas Huth <thuth@redhat.com>
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1sbYyW-0000GW-KK
+ for qemu-arm@nongnu.org; Wed, 07 Aug 2024 01:12:41 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1sbYyT-00060b-Ha
+ for qemu-arm@nongnu.org; Wed, 07 Aug 2024 01:12:39 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1723007555;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=nHi6Z8qHdWWZa4x1RapBqelewvshZ/hVrZ44qd9hjwA=;
+ b=ZzEMi/4XHY4LrW+4BR64NVh841z4xs987NMyYSw4SO6ngpw9kzKH6r/rb3fKH1XLYUcAhl
+ 3JMYWNq27cXS+CV4cUvE4prPd0+8jKIacBpITeL0VwE+a2CSYpLLbiPAu5k1eg8z/b4Gd6
+ g2O1wYjDiFMnXsoF9ZZqqTAO+/OlHI0=
+Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-94-e9dhINX6M5qZR8lxwOdZWg-1; Wed,
+ 07 Aug 2024 01:12:31 -0400
+X-MC-Unique: e9dhINX6M5qZR8lxwOdZWg-1
+Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 8F1DF1955D44; Wed,  7 Aug 2024 05:12:29 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.39.193.245])
+ by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id B2101300018D; Wed,  7 Aug 2024 05:12:28 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 6DB3621E668F; Wed,  7 Aug 2024 07:12:26 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org,  Eric Blake <eblake@redhat.com>,
+ qemu-arm@nongnu.org,  Peter Maydell <peter.maydell@linaro.org>,  Thomas
+ Huth <thuth@redhat.com>
+Subject: Re: [RFC PATCH-for-9.1? 1/2] target/arm: Move
+ qmp_query_gic_capabilities() to hw/intc/
+In-Reply-To: <20240806141940.22095-2-philmd@linaro.org> ("Philippe
+ =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Tue, 6 Aug 2024 16:19:39
+ +0200")
 References: <20240806141940.22095-1-philmd@linaro.org>
- <20240806141940.22095-3-philmd@linaro.org>
-Content-Language: en-US
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20240806141940.22095-3-philmd@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62f;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62f.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+ <20240806141940.22095-2-philmd@linaro.org>
+Date: Wed, 07 Aug 2024 07:12:26 +0200
+Message-ID: <877ccs29xh.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.144,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -139,34 +124,48 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: jj4XpcgKskIb
+X-TUID: KYe1uYaBcBxe
 
-On 8/7/24 00:19, Philippe Mathieu-Daudé wrote:
-> When configuring QEMU with --without-default-devices and
-> not including machines using a GIC, the GIC model is not
-> built in but the 'query-gic-capabilities' command still
-> returns false hopes about GIC:
-> 
->    {"execute": "query-gic-capabilities"}
->    {"return": [{"emulated": true, "version": 3, "kernel": false}, {"emulated": true, "version": 2, "kernel": false}]}
-> 
-> Restrict the command to when the GIC is available. If it
-> isn't we'll get:
-> 
->    { "execute": "query-gic-capabilities" }
->    {"error": {"class": "CommandNotFound", "desc": "The command query-gic-capabilities has not been found"}}
-> 
-> Resolves:https://gitlab.com/qemu-project/qemu/-/issues/2484
-> Signed-off-by: Philippe Mathieu-Daudé<philmd@linaro.org>
+Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> writes:
+
+> qmp_query_gic_capabilities() is not specific to the ARM
+> architecture but to the GIC device which is modelled in
+> hw/intc/, so move the code there for clarity. No logical
+> change intended.
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
 > ---
->   qapi/misc-target.json | 4 ++--
->   hw/intc/arm_gic_qmp.c | 2 ++
->   hw/intc/meson.build   | 2 +-
->   3 files changed, 5 insertions(+), 3 deletions(-)
+>  hw/intc/arm_gic_qmp.c     | 59 +++++++++++++++++++++++++++++++++++++++
+>  target/arm/arm-qmp-cmds.c | 52 +---------------------------------
+>  hw/intc/meson.build       |  1 +
+>  3 files changed, 61 insertions(+), 51 deletions(-)
+>  create mode 100644 hw/intc/arm_gic_qmp.c
 
-Ah, nevermind my final question for patch 1.
+[...]
 
-Entire series:
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+> diff --git a/hw/intc/meson.build b/hw/intc/meson.build
+> index afd1aa51ee..45d3503d49 100644
+> --- a/hw/intc/meson.build
+> +++ b/hw/intc/meson.build
+> @@ -39,6 +39,7 @@ if config_all_devices.has_key('CONFIG_APIC') or \
+>  endif
+>=20=20
+>  specific_ss.add(when: 'CONFIG_APIC', if_true: files('apic.c', 'apic_comm=
+on.c'))
+> +specific_ss.add(when: 'CONFIG_ARM', if_true: files('arm_gic_qmp.c'))
+>  specific_ss.add(when: 'CONFIG_ARM_GIC', if_true: files('arm_gicv3_cpuif_=
+common.c'))
+>  specific_ss.add(when: 'CONFIG_ARM_GICV3_TCG', if_true: files('arm_gicv3_=
+cpuif.c'))
+>  specific_ss.add(when: 'CONFIG_ARM_GIC_KVM', if_true: files('arm_gic_kvm.=
+c'))
 
-r~
+You move qmp_query_gic_capabilities() from target/arm/arm-qmp-cmds.c (in
+arm_system_ss) to hw/intc/arm_gic_qmp.c (in specific_ss when
+CONFIG_ARM).
+
+Both _ss are target-dependent.  In my testing, both get only compiled
+for target arm and aarch64.  Obvious for arm-qmp-cmds.c in
+arm_system_ss.  Less so for arm_gic_qmp.c in specific_ss; I guess the
+CONFIG_ARM does the trick there.  Correct?
+

@@ -1,118 +1,119 @@
-Received: by 2002:a17:504:7fd7:b0:1be9:327d:8ee3 with SMTP id hj23csp53065njc;
-        Wed, 7 Aug 2024 00:29:01 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXzR5HO97rcn5pfRu3hZ9yIwKHrXC1v5uPMR1sfYzueyD90aw8L/V6EIyJd2dKYF5uCpsqhQtA8v5Ltpl3qYNHgB2uo/IyP
-X-Google-Smtp-Source: AGHT+IG7YAyu8dPiS42ks59jj9Xyh3pLuwDALh1HADgGVG1isC+uYRtMQKLwIAfJX3IEDmnLRctZ
-X-Received: by 2002:a05:6214:5b82:b0:6b7:a36e:294c with SMTP id 6a1803df08f44-6bb984c549cmr186411116d6.57.1723015741007;
-        Wed, 07 Aug 2024 00:29:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1723015740; cv=none;
+Received: by 2002:a17:504:7fd7:b0:1be9:327d:8ee3 with SMTP id hj23csp53905njc;
+        Wed, 7 Aug 2024 00:32:33 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUrzQoaLb9N/DcqnjBkax1l3ouCs19NcyoBW/LLGlxVzgX/XZhjrSBVPN22Q+X1XajRsfX+DPPIv+g6FWnphBd59lkcwJCd
+X-Google-Smtp-Source: AGHT+IFo0cSwag5fKMG6FvsaiIJDBm7CRIT3utrCVqnE9/UDWV/Jxt0goVbbUOFbRKfNZfBWbyyv
+X-Received: by 2002:a05:6102:3593:b0:493:bf9b:166 with SMTP id ada2fe7eead31-4945bdca458mr19807591137.3.1723015952999;
+        Wed, 07 Aug 2024 00:32:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1723015952; cv=none;
         d=google.com; s=arc-20160816;
-        b=lToYD4ixP7mLzpV9zntlfYOZn7js3HGi41meoF1VymXIYGjNhRIrWKadFoJp3EnVlH
-         qwm91CiVqiVeCWspaWDizuKf2IvcWoBRyeMGXff3QFQ8g+2aBYunQXDPTOcK7pQOL7Wb
-         xV2fXMbwVJd4LjHqfXiCmBdSHjDwWMJ+xYL3+4kOHYzgQtD1nalekteXP2bTBPiA4nlG
-         095gU7dJhOSkvWCB1q98r+rWIBy/z6zND5JSEfVenB+JmrBXdmUmCaYXQW+hy0POtsVg
-         yE24jGxHlNwduan9QLDhc4JKgYVTwQSqK3SPzxWznwmiAot9Xj4vO6x9jYg+t+2SzeWv
-         30Mw==
+        b=O17VRWOvLLwk4rVIaP+Ts51MT1lrF4zUl4ivQKL4ICHbn0lskBKaw+XSAto7MnO2Te
+         ypPceZlX0AFn+t5tLoxcrOYLOYGjg5FlUaiLkl1ZJA8yxBUHfuTTXzKSz69rL9W/MgjA
+         jl7K2+KZ7y+l4wt39Se60C8nIO3TYOxyVNMbCfXAHtfZEp/bbDDL8MpBHzalXEMhaWPm
+         TQx+f4kf2zAc4MHJiIpPLaogHR2h+FieBTR/XeZVFec+WQSQ02MGceJTQGGedhNS7l4o
+         VK9VXRSdrcqRUG98P4lMcPcP4b53MDTUOB5tQAh/loxPDH2jQlJ+d0zF+k6uSNZBGB0o
+         quwA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:content-language:references:cc:to:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=zroGU1+lvxost8RNVnnE3lD/cZpLIsMV4fTQMfmZmnM=;
-        fh=8vKRyPt3gkz2WMJVRTwO0fkwdglYshHh868p5vk/ow4=;
-        b=rLkKApVNaOIkawf+ubKF5ZGD0TEtSaENdQ96s881oNGkZ/xHHG1JW41k4PG8GVGXG3
-         j80JbJaHK8pIYQXA01/tFUcYEIY/bWZIMqhSWIAuvNbRRehVFPq2+aO2qoh3PE9cxoDE
-         Y4xTUF9xxWzrwl2zu1LuXSBk/p/umpGu5gtF7QLUOhijwloD6iICPEip0WtnAy2BvqVD
-         DB51bKzlEdOCvjLtW5l7zsgG/RMZc+DXu4RNT1glkaGVT0P2C1rH9fxbFzySBfNP2RNs
-         /yyJex5Lbw7ZShv1i6A7gU4w9kT1EZZeg1JSL8JhqmKMG5dagONInz/wB5FusJVktaax
-         02/A==;
+        bh=9U8WkO1kK/7k7XuzE7kO1kaVhMx9sxV/6/7scjLh188=;
+        fh=11xo1TKng3e4Fs78LAowbtDQvYGaeSEIRTjQMMLXGRY=;
+        b=o8icHDkugy/uvgxmgGFR4JjU2YxCHZ0vMno1UOncf6sDJLT0AVvRJ/a9OEYEW4C0ND
+         2MJSzII5XFLlQPVZ9tCEbxyeg73RgIf9dQxShT96/vj5pA1flnfcl5X0Hn7WPP6ANiL/
+         sN0D6nor8A0EA0ieoF/v0Y5RFa96YTZ4dgsuyJDgcY7iAPa9IzvbmDz2smtGLdOI65dc
+         5TfKLVjBosHkeSp1CLgve2Mo2jOxEyd8tHcj+zIJD0tsY9XTeRjQmbnBtxWMRGzK1/fU
+         XPVWhFwTdKlc6tMHMHLlrxLNnNy4U6hETbLR5B7B249qil46SpIGVcVZ9+eI07oQbdfe
+         hpLQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ElAwyBIT;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=eDbRhMIy;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6bbbb90f2f8si11863686d6.495.2024.08.07.00.29.00
+        by mx.google.com with ESMTPS id 6a1803df08f44-6bbbb90ef46si11731366d6.464.2024.08.07.00.32.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 07 Aug 2024 00:29:00 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 07 Aug 2024 00:32:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ElAwyBIT;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=eDbRhMIy;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sbb6A-00022l-JK; Wed, 07 Aug 2024 03:28:42 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1sbb9Y-00035D-OD; Wed, 07 Aug 2024 03:32:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sbb68-00020V-NI
- for qemu-arm@nongnu.org; Wed, 07 Aug 2024 03:28:40 -0400
-Received: from mail-lf1-x132.google.com ([2a00:1450:4864:20::132])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sbb9U-00033N-3U
+ for qemu-devel@nongnu.org; Wed, 07 Aug 2024 03:32:09 -0400
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sbb66-0008L6-4j
- for qemu-arm@nongnu.org; Wed, 07 Aug 2024 03:28:40 -0400
-Received: by mail-lf1-x132.google.com with SMTP id
- 2adb3069b0e04-52efd530a4eso2148383e87.0
- for <qemu-arm@nongnu.org>; Wed, 07 Aug 2024 00:28:37 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sbb9Q-0000Mf-Q4
+ for qemu-devel@nongnu.org; Wed, 07 Aug 2024 03:32:06 -0400
+Received: by mail-wr1-x42b.google.com with SMTP id
+ ffacd0b85a97d-3684407b2deso748702f8f.1
+ for <qemu-devel@nongnu.org>; Wed, 07 Aug 2024 00:32:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1723015716; x=1723620516; darn=nongnu.org;
+ d=linaro.org; s=google; t=1723015922; x=1723620722; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=zroGU1+lvxost8RNVnnE3lD/cZpLIsMV4fTQMfmZmnM=;
- b=ElAwyBITQO20GKSm9pt4GqOGvt7lz2cjIvIgReyYDnoQaQmbidGKEX5DyrjV8Ola7m
- Ph0ymu7H+xnrG2G0lSwmtDmAjCfkl6jlhUeFAath3fN3F+HmP8M/PYT7SOeEPecQOzWJ
- WNv9HJR392E0H6z486ZpzSiabECZO3H3lH9yc0jV38Ovf13jSfDvgEF7blMpgGCbxshA
- +TgSLo8Prqt6u6gCPs2doOv4zke6eTctPtrZNjq/pnLAdJMWaGWCtHZ5rzvUaCUhmLbv
- cbKQsny+3DmAFnh9O/1jiHOjR803Ib332cQAlZrSUT3bOT2lMB6riQ5iTW3w0+cfGEp1
- i2pQ==
+ bh=9U8WkO1kK/7k7XuzE7kO1kaVhMx9sxV/6/7scjLh188=;
+ b=eDbRhMIydLGogr2C7ba8qcCfcL8NKokrLaRnzuRqTdbLpR+Hny1fmfI27nxwZUXd5l
+ 9eHZdbqi9KzLQgiH0cbt62Kb6Cy1YcL1iwfc6FJ7kcKYNMjznzBMpgBvo2ONIoO/utaN
+ br5hyiJUw54I6c9NltxWUEusUFYD2Jrt/AUQPgk6e508QcD4ogC3GovRAViM7VVY4b/j
+ dvtGM2ySEP8bkcXXGTUyxJ5UeaBLVU+Zb0kQOqEpH3Cdf7Ws4PLUei3iI3XmrlOcJhPF
+ d4WyCo0Oadgw+vhHZt/jchmpEeZIWWZ0u0UPV/oUfE+cpYiCJzh5ew3AE+NLFAnNmQ9k
+ kJbw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1723015716; x=1723620516;
+ d=1e100.net; s=20230601; t=1723015922; x=1723620722;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=zroGU1+lvxost8RNVnnE3lD/cZpLIsMV4fTQMfmZmnM=;
- b=F/walIsE4ByMMVRaRWw2HFFGERwyM5mibTudfp0xFHwRLbF3jIqRAIk00IMS3x4KAD
- mvkcNV+mTzmtcI1z7p+Bj+lK8B776qZl1kvQX33IBxGF46hHdDouckljnUrFfmw4c6QX
- Erb/ibuEgug7+7GBqXRolQnHniEU+MTUPPimzpuEZtLJNZWw9iRDifPZh6nOeCjLonWi
- otTEGY9NcHlX5x1UyMHIa1fb8XFPiorl95COtQVS8ZULuEsA8ZZFHmm3mkrVkpu8m7DL
- Rka+LYPKT3EytGxBlB3Cl/lgBdXWep+1HnMapUWGnQZBS4ELAnUZbNpa3j6Xw+uq8fxF
- knkg==
+ bh=9U8WkO1kK/7k7XuzE7kO1kaVhMx9sxV/6/7scjLh188=;
+ b=VmCiB6By8X3UUTsQWUPmrf2/PwOwkQj0r61rzPbzIZiu27yG8qcb3xlHRhdsbgzUI2
+ NKnWkgM2hcuwHyGqTFLMWhHto7fuuVkXM3sqNGYU24Xo7ybnSD2Q+AghObv6KXgzAhgd
+ M3ULVSQJqsXKel1WaNFQcIzkHhS7SNaBKtcGNDTSg6ity0F1A7VJQb1Qawn3KHglJtVH
+ qZp499oWkJ2/UxNYYmTUxZOsAE/0teUc/MS5fTeLrYi5ctNp+fBP5jciadmR/nqALrxQ
+ Bi0Vjj+dS6vwAvi7RSZOAbHnIGpcQr1+Ttx8aDhnq5dSqbByYUEiNz9mAg6ZKlgPK+NB
+ RR0Q==
 X-Forwarded-Encrypted: i=1;
- AJvYcCX5Ii8GjeXCEeLo6oVK/+1OoceJ3KonOp/dk43xZ74wZUbQuoPopmJg0XdjC0Raac6ER3pV/MX6gp745+pws5V1vzl9
-X-Gm-Message-State: AOJu0YxFNfE/73EqgPR54dlEmq94MGsK8nvVBCG1axqnzAztMkWrkFo1
- niEMHRUpbjDD/1jmSWkXW4gsSjmBdvnxa7q8NQpS2SxdFJVRfr+fmwGLTaZ+hN8=
-X-Received: by 2002:a05:6512:3dab:b0:530:ad9f:8757 with SMTP id
- 2adb3069b0e04-530bb39b897mr12710716e87.45.1723015715573; 
- Wed, 07 Aug 2024 00:28:35 -0700 (PDT)
+ AJvYcCVMF9VuIAAKmuYMjrpMOe6AQiXQO4yn2dwA6YpfjNjoBeq4CHGtQQTSK0007Z6mGcAZi6xjlgOuQtp7IdxD8a0GkoGG4tU=
+X-Gm-Message-State: AOJu0Yz5J0yiIarc4oXqjWbUqHw7kiPKcgpU20pk50ccg1cns4BynDkq
+ 89gxtqtL2n9CVkkmuOaa0p7aKcIlz26gYDTre6tHclyYub5P4PF5GETmnpOQJJE=
+X-Received: by 2002:adf:e7c5:0:b0:368:12ef:92cf with SMTP id
+ ffacd0b85a97d-36bbc153c80mr13269772f8f.48.1723015922209; 
+ Wed, 07 Aug 2024 00:32:02 -0700 (PDT)
 Received: from [192.168.69.100] ([176.187.212.120])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-36bbcf0cc8esm14972839f8f.19.2024.08.07.00.28.34
+ ffacd0b85a97d-36bbd06d314sm15086266f8f.95.2024.08.07.00.32.00
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 07 Aug 2024 00:28:35 -0700 (PDT)
-Message-ID: <df628091-6d6a-4fdc-b048-3dd91a8060a1@linaro.org>
-Date: Wed, 7 Aug 2024 09:28:32 +0200
+ Wed, 07 Aug 2024 00:32:01 -0700 (PDT)
+Message-ID: <86393cd8-a34e-4b28-8f89-dc965f04b1b6@linaro.org>
+Date: Wed, 7 Aug 2024 09:31:59 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [RFC PATCH-for-9.1? 1/2] target/arm: Move
  qmp_query_gic_capabilities() to hw/intc/
-To: Markus Armbruster <armbru@redhat.com>
-Cc: qemu-devel@nongnu.org, Eric Blake <eblake@redhat.com>,
+To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
+Cc: Markus Armbruster <armbru@redhat.com>, Eric Blake <eblake@redhat.com>,
  qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  Thomas Huth <thuth@redhat.com>
 References: <20240806141940.22095-1-philmd@linaro.org>
- <20240806141940.22095-2-philmd@linaro.org> <877ccs29xh.fsf@pond.sub.org>
+ <20240806141940.22095-2-philmd@linaro.org>
+ <f82397e9-3be4-49be-b291-5598acdaf39b@linaro.org>
 Content-Language: en-US
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <877ccs29xh.fsf@pond.sub.org>
+In-Reply-To: <f82397e9-3be4-49be-b291-5598acdaf39b@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::132;
- envelope-from=philmd@linaro.org; helo=mail-lf1-x132.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x42b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -121,63 +122,47 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: uCiQ1PZz97/4
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 4m1AEfeyY4iE
 
-On 7/8/24 07:12, Markus Armbruster wrote:
-> Philippe Mathieu-Daudé <philmd@linaro.org> writes:
-> 
+On 7/8/24 05:46, Richard Henderson wrote:
+> On 8/7/24 00:19, Philippe Mathieu-Daudé wrote:
 >> qmp_query_gic_capabilities() is not specific to the ARM
 >> architecture but to the GIC device which is modelled in
->> hw/intc/, so move the code there for clarity. No logical
->> change intended.
->>
->> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->> ---
->>   hw/intc/arm_gic_qmp.c     | 59 +++++++++++++++++++++++++++++++++++++++
->>   target/arm/arm-qmp-cmds.c | 52 +---------------------------------
->>   hw/intc/meson.build       |  1 +
->>   3 files changed, 61 insertions(+), 51 deletions(-)
->>   create mode 100644 hw/intc/arm_gic_qmp.c
+>> hw/intc/, so move the code there for clarity.
 > 
-> [...]
+> But the GIC is certainly arm architecture specific.
+> It's built into the CPU, and shares state.
+
+Yes... but there are also SoC with ARM cores, GIC and non-ARM cores ;)
+Example: ZynqMP with MicroBlaze cores.
+
+> The fact that it's modeled in hw/intc/ and not in target/arm/ has always 
+> been a needle in the side, though it seems there are no good options.
 > 
->> diff --git a/hw/intc/meson.build b/hw/intc/meson.build
->> index afd1aa51ee..45d3503d49 100644
->> --- a/hw/intc/meson.build
->> +++ b/hw/intc/meson.build
 >> @@ -39,6 +39,7 @@ if config_all_devices.has_key('CONFIG_APIC') or \
->>   endif
->>   
->>   specific_ss.add(when: 'CONFIG_APIC', if_true: files('apic.c', 'apic_common.c'))
+>>   endif
+>>   specific_ss.add(when: 'CONFIG_APIC', if_true: files('apic.c', 
+>> 'apic_common.c'))
 >> +specific_ss.add(when: 'CONFIG_ARM', if_true: files('arm_gic_qmp.c'))
->>   specific_ss.add(when: 'CONFIG_ARM_GIC', if_true: files('arm_gicv3_cpuif_common.c'))
->>   specific_ss.add(when: 'CONFIG_ARM_GICV3_TCG', if_true: files('arm_gicv3_cpuif.c'))
->>   specific_ss.add(when: 'CONFIG_ARM_GIC_KVM', if_true: files('arm_gic_kvm.c'))
+>>   specific_ss.add(when: 'CONFIG_ARM_GIC', if_true: 
+>> files('arm_gicv3_cpuif_common.c'))
 > 
-> You move qmp_query_gic_capabilities() from target/arm/arm-qmp-cmds.c (in
-> arm_system_ss) to hw/intc/arm_gic_qmp.c (in specific_ss when
-> CONFIG_ARM).
-> 
-> Both _ss are target-dependent.  In my testing, both get only compiled
-> for target arm and aarch64.  Obvious for arm-qmp-cmds.c in
-> arm_system_ss.  Less so for arm_gic_qmp.c in specific_ss; I guess the
-> CONFIG_ARM does the trick there.  Correct?
+> Is it more or less confusing that you're not using CONFIG_ARM_GIC, for 
+> something that is GIC related?
 
-Correct, Kconfig CONFIG_ARM_GIC depends on Kconfig CONFIG_ARM,
-itself defined for configure TARGET_ARM (see target/arm/Kconfig).
-(Also CONFIG_AARCH64 selects CONFIG_ARM).
+(You figured in the next patch) this commit aims to be "no logical
+change" to indeed use CONFIG_ARM_GIC in the next (simpler) patch.
 
-I can clarify that in the patch description if necessary.

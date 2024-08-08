@@ -1,228 +1,141 @@
-Received: by 2002:a17:504:7fd7:b0:1be9:327d:8ee3 with SMTP id hj23csp537295njc;
-        Thu, 8 Aug 2024 07:46:32 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVX0GYdifkZHgO/PKNeo2TPFr/pPT5IbjJA7L44GnskpFpf84fqF9ZfSRzVyEaH2cE7g2gpzRy9LRApzjR70ybi8Ye+x1xJ
-X-Google-Smtp-Source: AGHT+IFiaCjx+qCTKjsKg9Q+kFjGwuFpJHaC3G2jkSbk7UzLQ5YU7FwDjrmFgywSy21AAsbu0KIv
-X-Received: by 2002:a05:6214:3288:b0:6b0:77da:3ab6 with SMTP id 6a1803df08f44-6bd6bcbb451mr18221016d6.12.1723128391830;
-        Thu, 08 Aug 2024 07:46:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1723128391; cv=none;
+Received: by 2002:a17:504:7fd7:b0:1be9:327d:8ee3 with SMTP id hj23csp545254njc;
+        Thu, 8 Aug 2024 08:06:35 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCUDke3oLbTfCa254M6SgQS3h5+xSMmM7h5v9PMND/BkG2G2u+kZGjUdrP7ZQZT3C+h1GVtD+hhvCMf6vQWH4xUilD7xdzez
+X-Google-Smtp-Source: AGHT+IGtu6ndUjFYaoFNb9LbQlkenU3xI9nBocviqbHRh7n58T2J+Q14KDo9Cz0mBO5yJOekQPR0
+X-Received: by 2002:a17:90b:80a:b0:2c9:6d8:d823 with SMTP id 98e67ed59e1d1-2d1c3363e6dmr2696439a91.1.1723129594830;
+        Thu, 08 Aug 2024 08:06:34 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1723129594; cv=pass;
         d=google.com; s=arc-20160816;
-        b=llpfAyEzLLEGo07AyLUErZxSjRIocUTocsehBbY1V/+v9v87kA+XnyTvfg7f/hqzj7
-         uK5jMNZOVhJWsRirNWFYS6xyuxS2ibsnUDMC4fusJl6XCq3a/NyY2oSbthQGjj74TNn2
-         3xRGIvDFmYmXQOfamgRUIPdgEpJ70CwLTVPbGvQJ5M9suAIr9glLZvFdyUCI7xi+ZtMD
-         v8fquyyUM5KaS9e6ykjeWQMOex2+hhS0DrJIjzjaO19lwrnb/N1dCkKPlfqmIMyQ/34i
-         TtHc+LRZHmYPgsK2nQx6r81DW0WljbWnTbUUyEc5KTCBUp3oUueVQChBKsapMh6WBZVK
-         sPuA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:user-agent
-         :message-id:date:references:in-reply-to:subject:cc:to:from
+        b=SLbS7hsa63XRu/qevSOYaK/cw6l8a9OgkxfS/xmoznlgQZe8gG4ILi+O7Bwv42/T7y
+         z8vdcXw0OrOnqM4d51KwaNYRkhjYr7db1zVmyoxT9BVl9xLWJmb2qIbq/SUxqG5PYH/p
+         Rmyj/Sw1ygLLZCAy0l8B0h4W1BS0dhg3TjkyAGyWOoGSm5V6GJSx5ps4nH/rBfzrx5Zy
+         ynIiRPOmnOi2AOITKcobYISv6Bv2dFVfeKkEYvvla5GBmRaNCeW0fUzzcFkG8oMvalmf
+         s3HtZINx7UGp+2Y3cgXbyUJYUh1Cgp2X7PGBY0rwdBQZDeEHYU5iXgBPtFLOPlTOY4Gd
+         ralg==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:list-unsubscribe:list-subscribe:list-id:precedence
          :dkim-signature;
-        bh=Vsy+kQPvnenW2/13lHMrZ1NDZEbx4ggdcgIqJP+YPxc=;
-        fh=YO8bIUAmTt8lmYAcei6KP2TClaERN8c2OQ+rseJcZRk=;
-        b=IB7r2mTQCx+0g31smlFOgKDSPSMT4ApV9TR4YahoGJAcVFJ1vQSUcjR5FnZQaYKtWv
-         cury+dhtbqAMD+VxzVLJRZuXJiziS5P5J8OnmgcPvCE1ce0OUKw2UFOTI8bMGHHfYIPP
-         u62JdTRZDS2XER2yAECgPZI4yZlEnbA0Pq9UKuyL3RJCtNKhn4iybmIdO+aH/jwIwUvX
-         tAmeUrgSEtBLuhmoo7fdqlIMOAoyiVLJ7/LpiohXrlKbF71typNlCiFn7UA8H8J4fSCl
-         8spaQx2t7fA2fFM2Lmn9su1ewkZTjXoLUZCHLetNBw5Zmess5z+J8FHTVVZy9BtMQMRJ
-         fluA==;
+        bh=pKbSP4Qie7SKDPVYTOOt5vthjkc2KCL/iSENWLQZl8E=;
+        fh=RVxYdEqTt61/btUiQZxCwF4Fjx/v38D7ymGOgpxSgkQ=;
+        b=S4w/qDqbnqgVVhYUbARL53R0TJ2Ti+jFDarKghdNLsFzfQmifWej5muhMYQmslNvzF
+         HGIOz9qUz/KYb/sbsBGD2ygZHy/tIBU9mpkayjU9hd3yn0BDpHo+f8+6SAuw1Pho2Z/K
+         49gXp2Q4eteQAUMGjTOUgmHOtXZBbBmjcyN6UaQwq3dF6Frk90CieUDM28nJNZB7tzO8
+         8oVhd43rQecHXev87rCrFT5pXBugjnsC12n1IwRD6pRJI/7m/JFdOHXVvr20ov/dEU0Q
+         ZKmxY44uipfQnkRFFqQGlCf6Y0drQT5ILusTnG3U9jkfOL0viOB816ljLDcQ21JV1trt
+         4xHQ==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Km7uZpIu;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-451c87da6e5si43475021cf.284.2024.08.08.07.46.31
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b="ZawYHzt/";
+       arc=pass (i=1 spf=pass spfdomain=linaro.org dkim=pass dkdomain=linaro.org dmarc=pass fromdomain=linaro.org);
+       spf=pass (google.com: domain of linux-kernel+bounces-279691-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) smtp.mailfrom="linux-kernel+bounces-279691-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <linux-kernel+bounces-279691-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sy.mirrors.kernel.org (sy.mirrors.kernel.org. [147.75.48.161])
+        by mx.google.com with ESMTPS id 98e67ed59e1d1-2d1c9dbd12dsi1115164a91.142.2024.08.08.08.06.34
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 08 Aug 2024 07:46:31 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 08 Aug 2024 08:06:34 -0700 (PDT)
+Received-SPF: pass (google.com: domain of linux-kernel+bounces-279691-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) client-ip=147.75.48.161;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Km7uZpIu;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sc4PE-0006Ag-Tb; Thu, 08 Aug 2024 10:46:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1sc4P8-0005x9-V4
- for qemu-devel@nongnu.org; Thu, 08 Aug 2024 10:46:15 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1sc4P5-00087X-DW
- for qemu-devel@nongnu.org; Thu, 08 Aug 2024 10:46:14 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1723128360;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=Vsy+kQPvnenW2/13lHMrZ1NDZEbx4ggdcgIqJP+YPxc=;
- b=Km7uZpIuvGpjK1h5hKMGMo+BaoO8yxDs5ZDmFWE6qU6KEtmVykE0wjW96QfMpzvl2KvkOB
- EWNuNAVoJZfKAw6V5kjITBhr/84gZB5NWVA5K4vzLL2mWBTMaed1UUOAIgjNpc2LjEYpDI
- w7sh54ipncV1lFAYREriWViGYOOtv7I=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-630-qmltV5FpPnSUeIh-n7Lpfw-1; Thu,
- 08 Aug 2024 10:45:57 -0400
-X-MC-Unique: qmltV5FpPnSUeIh-n7Lpfw-1
-Received: from mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.15])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 22A8F1955BC1; Thu,  8 Aug 2024 14:45:55 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.39.193.245])
- by mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id DC8431959164; Thu,  8 Aug 2024 14:45:53 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 8C41421E6682; Thu,  8 Aug 2024 16:45:51 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Igor Mammedov <imammedo@redhat.com>
-Cc: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,  Jonathan Cameron
- <Jonathan.Cameron@huawei.com>,  Shiju Jose <shiju.jose@huawei.com>,
- "Michael S. Tsirkin" <mst@redhat.com>,  Ani Sinha <anisinha@redhat.com>,
- Dongjiu Geng <gengdongjiu1@gmail.com>,  Eric Blake <eblake@redhat.com>,
- Michael Roth <michael.roth@amd.com>,  Paolo Bonzini
- <pbonzini@redhat.com>,  Peter Maydell <peter.maydell@linaro.org>,
- linux-kernel@vger.kernel.org,  qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [PATCH v5 5/7] qapi/ghes-cper: add an interface to do generic
- CPER error injection
-In-Reply-To: <20240808162205.3a85efb6@imammedo.users.ipa.redhat.com> (Igor
- Mammedov's message of "Thu, 8 Aug 2024 16:22:05 +0200")
-References: <cover.1722634602.git.mchehab+huawei@kernel.org>
- <51cbdc8a53e58c69ee17b15c398feeeeeeb64f34.1722634602.git.mchehab+huawei@kernel.org>
- <87v80b1jqe.fsf@pond.sub.org> <20240808161141.5ffe730e@foz.lan>
- <20240808162205.3a85efb6@imammedo.users.ipa.redhat.com>
-Date: Thu, 08 Aug 2024 16:45:51 +0200
-Message-ID: <87ikwbrs2o.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13)
+       dkim=pass header.i=@linaro.org header.s=google header.b="ZawYHzt/";
+       arc=pass (i=1 spf=pass spfdomain=linaro.org dkim=pass dkdomain=linaro.org dmarc=pass fromdomain=linaro.org);
+       spf=pass (google.com: domain of linux-kernel+bounces-279691-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) smtp.mailfrom="linux-kernel+bounces-279691-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by sy.mirrors.kernel.org (Postfix) with ESMTPS id B237DB24855
+	for <alex.bennee@linaro.org>; Thu,  8 Aug 2024 15:06:32 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id AE9AF18CBE5;
+	Thu,  8 Aug 2024 15:06:28 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="ZawYHzt/"
+Received: from mail-ed1-f54.google.com (mail-ed1-f54.google.com [209.85.208.54])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C25A44A33
+	for <linux-kernel@vger.kernel.org>; Thu,  8 Aug 2024 15:06:26 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.208.54
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1723129588; cv=none; b=g/cjq7p8rXXTjeIhdC6A767YBqg8BgpwBgQedNonbpMOjr4B0fIKDWgWj9rYIhuJtm8bL8CPCz1i7NmGqa7NmKeYRZlzuKQMFvfYaiQEzqMTBfpMjkI/a9w74mGK51vkVV+CQ29lmBBRasjbdjwRN8kx33zInVFAXCWzpPVqWBY=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1723129588; c=relaxed/simple;
+	bh=pKbSP4Qie7SKDPVYTOOt5vthjkc2KCL/iSENWLQZl8E=;
+	h=MIME-Version:References:In-Reply-To:From:Date:Message-ID:Subject:
+	 To:Cc:Content-Type; b=t0MccSaJOLfxNAVLjOgDBPrHmxvPTayCsPQjUXQgKblKmWkMc68yDDChv8RAn00rfnql7D7SqFz6qlaZq8EieSh2YPcF43ukZUGht3m+IAuf/Mcw54wYh3/IOhgL1zJzN/qctcO0GbdC3aJsDmp0NjEOfdOHci7tEbUfIiQ8BfQ=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org; spf=pass smtp.mailfrom=linaro.org; dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b=ZawYHzt/; arc=none smtp.client-ip=209.85.208.54
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=linaro.org
+Received: by mail-ed1-f54.google.com with SMTP id 4fb4d7f45d1cf-5b8c2a6135eso1615799a12.0
+        for <linux-kernel@vger.kernel.org>; Thu, 08 Aug 2024 08:06:26 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1723129585; x=1723734385; darn=vger.kernel.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=pKbSP4Qie7SKDPVYTOOt5vthjkc2KCL/iSENWLQZl8E=;
+        b=ZawYHzt/YL0qUQOzv63Q1ec3r/1s3lZaKNlGyLJu8W+AFkSVhBTTepREd0WbVEEPTe
+         QTEcGeduJWF+Vk7pT4gfcBl9JrMms4lSl2Q5rmcu5T9HmCe39Pbx0/94nNIfBteKc+Sx
+         NiyMe3WdRj3ciTkc50SrO8rdN/zH5DzKEN+ZaJEdxg+PxLHt61qsgCWUN+KIxCY2afQz
+         9bpirkDA9jpdJBwczEvtEgB10dAwuBZIMF3fliI13lG8NY3Wljq4XUdWu0/Z/y9LiHNc
+         o+xCdxqyJc2ps38rHUgC8I7S3gM6kMakjBuoK4oy4/wgYiSNxr0BzFa26BIrFpIhawUN
+         DcHw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1723129585; x=1723734385;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=pKbSP4Qie7SKDPVYTOOt5vthjkc2KCL/iSENWLQZl8E=;
+        b=qM/795LkYlSKDlbsfWioqQ0evGshxPlotHkpw5LUTOo7A2xhCfLrZtva5R7SgDyvhs
+         ewetFaZg5k9lkn5GeyTvXQGmLFfw6G3xSnqcQxHs8oqnHKn9hEPbu2fFVIvWSoVY6P4P
+         hj8beAjSJmtYbRrHKx7HAJgpkvHObyy5Z22PH9Eu8BsD3zxIriMawChdWmw0SIhwaEuD
+         ZGGjcsyItxN8yk9LoaOh3ofjedf5ZbXcYzuXbV9cNo1QH8DSFWyQ7fn+LTNNS34l/RnE
+         mNBt0Blf7Wqr0aL2adVV36/8l4Y5NYhbVsQI2+nMjoFerpXZZHdmeysyUSMmo7ohqBhm
+         9aTA==
+X-Forwarded-Encrypted: i=1; AJvYcCXgRX9kpnbNHxx/UZn2uKfI9UhRUBn3kLFTduKPjkLQdJSm51c6SR+7qmJgUQZx2G+nxvgiePxvd5rnhp7xlRRwMp4f0HXYCzCg/lS0
+X-Gm-Message-State: AOJu0YxGvhkEbsRmDbk6q/JXNZ9zi8l6c4qD0PsTPJfioNuBhP1oaMTN
+	j1xE3I/Ehi35/9LRw3XbYb7hr5SbH/g4QfClwNBO48f0HM8h0YKP7aefYXE9Y+zor2vz1hcNRAi
+	LV+E4/fCiY9eEmcxtQrfI1thTFzf6DpA/kYjezg==
+X-Received: by 2002:a05:6402:1d54:b0:58c:b2b8:31b2 with SMTP id
+ 4fb4d7f45d1cf-5bbb3d1d1f0mr1760801a12.17.1723129584983; Thu, 08 Aug 2024
+ 08:06:24 -0700 (PDT)
+Precedence: bulk
+X-Mailing-List: linux-kernel@vger.kernel.org
+List-Id: <linux-kernel.vger.kernel.org>
+List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.15
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
-X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.141,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 4cdag/8ku0wu
+References: <ef0e7f5fca6cd94eda415ecee670c3028c671b74.1723121692.git.mchehab+huawei@kernel.org>
+In-Reply-To: <ef0e7f5fca6cd94eda415ecee670c3028c671b74.1723121692.git.mchehab+huawei@kernel.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 8 Aug 2024 16:06:13 +0100
+Message-ID: <CAFEAcA-rvu-X49cw8SHpqnmuLO_yqcaLHnF=9v0Oqz4WVQom-Q@mail.gmail.com>
+Subject: Re: [PATCH] arm/virt: place power button pin number on a define
+To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>, Shiju Jose <shiju.jose@huawei.com>, 
+	"Michael S. Tsirkin" <mst@redhat.com>, Ani Sinha <anisinha@redhat.com>, 
+	Igor Mammedov <imammedo@redhat.com>, Shannon Zhao <shannon.zhaosl@gmail.com>, 
+	linux-kernel@vger.kernel.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+X-TUID: pRhF7BnHYc72
 
-Igor Mammedov <imammedo@redhat.com> writes:
-
-> On Thu, 8 Aug 2024 16:11:41 +0200
-> Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
+On Thu, 8 Aug 2024 at 13:55, Mauro Carvalho Chehab
+<mchehab+huawei@kernel.org> wrote:
 >
->> Em Thu, 08 Aug 2024 10:50:33 +0200
->> Markus Armbruster <armbru@redhat.com> escreveu:
->> 
->> > Mauro Carvalho Chehab <mchehab+huawei@kernel.org> writes:  
->> 
->> > > diff --git a/MAINTAINERS b/MAINTAINERS
->> > > index 98eddf7ae155..655edcb6688c 100644
->> > > --- a/MAINTAINERS
->> > > +++ b/MAINTAINERS
->> > > @@ -2075,6 +2075,13 @@ F: hw/acpi/ghes.c
->> > >  F: include/hw/acpi/ghes.h
->> > >  F: docs/specs/acpi_hest_ghes.rst
->> > >  
->> > > +ACPI/HEST/GHES/ARM processor CPER
->> > > +R: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
->> > > +S: Maintained
->> > > +F: hw/arm/ghes_cper.c
->> > > +F: hw/acpi/ghes_cper_stub.c
->> > > +F: qapi/ghes-cper.json
->> > > +    
->> > 
->> > Here's the reason for creating a new QAPI module instead of adding to
->> > existing module acpi.json: different maintainers.
->> > 
->> > Hypothetical question: if we didn't care for that, would this go into
->> > qapi/acpi.json?  
->> 
->> Independently of maintainers, GHES is part of ACPI APEI HEST, meaning
->> to report hardware errors. Such hardware errors are typically handled by 
->> the host OS, so quest doesn't need to be aware of that[1].
->> 
->> So, IMO the best would be to keep APEI/HEST/GHES in a separate file.
->> 
->> [1] still, I can foresee some scenarios were passing some errors to the
->>     guest could make sense.
->> 
->> > 
->> > If yes, then should we call it acpi-ghes-cper.json or acpi-ghes.json
->> > instead?  
->> 
->> Naming it as acpi-ghes,acpi-hest or acpi-ghes-cper would equally work
->> from my side.
+> Having magic numbers inside the code is not a good idea, as it
+> is error-prone. So, instead, create a macro with the number
+> definition.
 >
-> if we going to keep it generic, acpi-hest would do
-
-Works for me.
-
->> > >  ppc4xx
->> > >  L: qemu-ppc@nongnu.org
->> > >  S: Orphan    
->> > 
->> > [...]
->> >   
->> > > diff --git a/qapi/ghes-cper.json b/qapi/ghes-cper.json
->> > > new file mode 100644
->> > > index 000000000000..3cc4f9f2aaa9
->> > > --- /dev/null
->> > > +++ b/qapi/ghes-cper.json
->> > > @@ -0,0 +1,55 @@
->> > > +# -*- Mode: Python -*-
->> > > +# vim: filetype=python
->> > > +
->> > > +##
->> > > +# = GHESv2 CPER Error Injection
->> > > +#
->> > > +# These are defined at
->> > > +# ACPI 6.2: 18.3.2.8 Generic Hardware Error Source version 2
->> > > +# (GHESv2 - Type 10)
->> > > +##    
->> > 
->> > Feels a bit terse.  These what?
->> > 
->> > The reference could be clearer: "defined in the ACPI Specification 6.2,
->> > section 18.3.2.8 Generic Hardware Error Source version 2".  A link would
->> > be nice, if it's stable.  
->> 
->> I can add a link, but only newer ACPI versions are hosted in html format
->> (e. g. only versions 6.4 and 6.5 are available as html at uefi.org).
+> Link: https://lore.kernel.org/qemu-devel/CAFEAcA-PYnZ-32MRX+PgvzhnoAV80zBKMYg61j2f=oHaGfwSsg@mail.gmail.com/
 >
-> some years earlier it could be said 'stable link' about acpi spec hosted
-> elsewhere. Not the case anymore after umbrella change.
->
-> spec name, rev, chapter worked fine for acpi code (it's easy to find wherever spec is hosted).
-> Probably the same would work for QAPI, I'm not QAPI maintainer though,
-> so preffered approach here is absolutely up to you.
+> Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+> Suggested-by: Peter Maydell <peter.maydell@linaro.org>
+> Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+> Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 
-A link is strictly optional.  Stable links are nice, stale links are
-annoying.  Mauro, you decide :)
 
-Thanks!
 
-[...]
+Applied to target-arm.next, thanks.
 
+-- PMM

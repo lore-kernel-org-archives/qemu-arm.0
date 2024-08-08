@@ -1,362 +1,207 @@
-Received: by 2002:a17:504:7fd7:b0:1be9:327d:8ee3 with SMTP id hj23csp379880njc;
-        Wed, 7 Aug 2024 22:00:40 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWA11MvMTmocFVHD8hKZuPStLwBnVZndq1si6PARfdou6f08gozZXCRrlikHutVhOK/0I6VntjBFCHhxiTgMRIiF35F7VcE
-X-Received: by 2002:a05:600c:1f93:b0:426:647b:1bf7 with SMTP id 5b1f17b1804b1-4290af18b73mr6033305e9.32.1723093240038;
-        Wed, 07 Aug 2024 22:00:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1723093240; cv=none;
+Received: by 2002:a17:504:7fd7:b0:1be9:327d:8ee3 with SMTP id hj23csp421397njc;
+        Thu, 8 Aug 2024 01:31:55 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWKSJ6NeWLcdYSqhQyhnGRlDl9UaHly0l85rpbCrXAWy1qkT2AzTTT3iY3DrZ8+6ZFM33om9p4E9INTLPErQLx1zqczGCK3
+X-Google-Smtp-Source: AGHT+IFcNCPMJvNelftEGhR5TwrBvgXOw5P8eXDvE1YS8y75rvUMiuZBp1MXeBCp2rGQ2bh56KQB
+X-Received: by 2002:a05:622a:6209:b0:447:d4ce:dd26 with SMTP id d75a77b69052e-451d42f5935mr11103701cf.56.1723105915081;
+        Thu, 08 Aug 2024 01:31:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1723105915; cv=none;
         d=google.com; s=arc-20160816;
-        b=gHdvopPd3ch8QOb0EYRyrUU5J935l/i8ICsV5sVQa8cK/wEVP0aoCLqJaO+Iu4mwds
-         LcXLXCq8PNTsNQHoGqVOm1bAdXlnv4GQ9tGYYfJmv3WrnxK1FGR/1b4ar/wSW0xAQuYM
-         ReU9wJKrnK5psY4RMSN+BEaPt21kVx/jtPuxkxa5g8Gu9nnZ6QFGzq44fUDEYpTSNN7E
-         o8myo6oi7OJoogVlsuFjvDvLdka6jbZLsJAUtReglLIx48c+mZVlxlEYI5KTtPEhlXqi
-         cK+qmB6TWsqIoChASRBH4HHlWgNALqnwcw6wU45B4qLRjwMAWeMsuoyjwiNpqJ52wBIq
-         g50Q==
+        b=lIi/eWn4E3SYYCOS+iZ8vEyUdRGFYYIbkpIlHdBjlDbbTdq7IjaC4kTNL+AuGtUfGZ
+         THWuYe1fux0aEqb/SK8Qzaz/sBsDjMg19xLxIABHlL4/fVajlmlF2KnYAeSkbR9eJ7fp
+         1IdXkUbRIgvMtjdy1haOTm4G7FW2YJ7RbqyDOMjqcLEoJB1BaubbJIvADp5Ai0cf6J6g
+         kILWJnzaExoVk8bkMqubsx/eNGiYWYZlKMTeJysMC8GuQJR50TNKDPHdYXTWs8aPmTo+
+         bqwE5HcUUqciQS3KJHmwBNZ7ETnFO4eDWprN/MAluL3sebTMMZTesy1O8TkLptrDcuDz
+         whsg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=Pcdi8R26zt657R9UpVDv8pTBgxJ5QG4D4fumGY+HeUs=;
-        fh=MNKYq+FmmkkVy0vmCpf6J9affwdIpdmvsAbAoql//nM=;
-        b=ihMcfNyHyDHFinB98c19S1TMfT6PDBTP7Jau9KsHtCtiWa0Bf/p8PN3I8fbmAbFIvd
-         q4Pnok38ZWYqnsnk1nQ1mMkyi4X9hICwIbFrC2LHFT6X13vdGEDDThxHMSYV8KLxJHtK
-         QT9CS7CGsB+n7zw6C138hN57SKeYOC6K1jIYc1nf43g6ldEFJGP9KGVV43dj1p80yK8O
-         5yhhXryPENOk3ekCJyzftNSjMRUb8n/C70go3gqylhOio9Pu487+8I4iTywDdOk9uLK8
-         UgJrORhxyWWR/pB5i1RF/gSjDfuCmD0PzvDHy+vEeu+rxRMPRIMzOBa5A5oDQ0QmZwpU
-         nLVA==;
+        h=content-transfer-encoding:content-language:in-reply-to:autocrypt
+         :from:references:cc:to:subject:user-agent:mime-version:date
+         :message-id:dkim-signature;
+        bh=6l0Gy8dFEgUlxYu0trH+/uJ82XK8LXdOH/uUXeKp2PY=;
+        fh=0G2XxG0FJJU2g88GjlI46GipVJoQnXKdEREDO0S1mbg=;
+        b=BzAR0zvpfW+SmPkKaJIZT0QIBbfqAU/OUtJYMucl4Z1fBJT/NBVAa50WhCByUtA6y7
+         LRAUJ3uH53N4W0RSzW8NIh9nvx22dFrT8So+QYP0/gNSPSweaxbb/SCY0Lu8UnTXyPik
+         7CBy6/yZZVcwC2uPkmw4YsQ259vMkzOxotdtTXske7naeMH+ZUYwTDlXaV2HPUyfmVsI
+         DIJNIH82Wg6iPMsybzuVPlDoc/EtNM5GPxHc/pEKzpIK4C/hhsXDc/nTeo05u3nl2uL6
+         6QPE+AkUwfAv+69ZUiAIyLW1BN9gGSyIbSAMQxdLpOCVgv05mxzblu9rqDrZjzmJuH+1
+         bLaw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Gy+hH1RI;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <philmd@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 5b1f17b1804b1-429058085a9sor6328735e9.13.2024.08.07.22.00.39
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Tik9HMIp;
+       spf=pass (google.com: domain of pbonzini@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=pbonzini@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <pbonzini@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id d75a77b69052e-451c87d71e0si36800621cf.317.2024.08.08.01.31.54
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Wed, 07 Aug 2024 22:00:40 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 08 Aug 2024 01:31:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of pbonzini@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Gy+hH1RI;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1723093239; x=1723698039; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=Pcdi8R26zt657R9UpVDv8pTBgxJ5QG4D4fumGY+HeUs=;
-        b=Gy+hH1RI9XdlrXHpXk7k/ymPI+xb6M4Rs5/Elm2EeYkpjbe3cXXQPp0aKA2O1MOUPK
-         sGo5uAIAgrTd1qmvmpBw7wO2oB7YNI/hAXHooZjR/GySp/mzXnFzqQQIVSfVkE+zu9HF
-         DNF0Ugnvlprx1yViKeAtxn98SRbkTZSUwQ9vLICfiGd11iEvFJiEDCEPmwRu+fi7QuSl
-         SwL47o393u35LIq90YH5pXxvhO9UoF8thMB5sVF17nASvOi61WR5PgvDZ0ciGXGV1dN4
-         0dXmR4qX8V4WZqQdOhSKc+eRmEnezSYEMviFYG44Kg4BG/g8mYKaRtqTQ6sJGR8iHzon
-         vPfw==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Tik9HMIp;
+       spf=pass (google.com: domain of pbonzini@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=pbonzini@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1723105914;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+	bh=6l0Gy8dFEgUlxYu0trH+/uJ82XK8LXdOH/uUXeKp2PY=;
+	b=Tik9HMIpe2TCjKnxJLJe16cJa2ed/adW66u5y3MI2Aw5Gq06frvRUpU9IdDfTnZtWUOLr5
+	jehcUlOz793vcS751bsrKSbGYL3pJGWNeHXr0jGHZ2Le9bxEM28BF1ERb/Sb70gab2Sn39
+	FjIq+1mahkV5VswDGLypqL4hNwXOuks=
+Received: from mail-ej1-f70.google.com (mail-ej1-f70.google.com
+ [209.85.218.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-359-JP1dxlk4OTWQ3c9Ibu75Hw-1; Thu, 08 Aug 2024 04:31:53 -0400
+X-MC-Unique: JP1dxlk4OTWQ3c9Ibu75Hw-1
+Received: by mail-ej1-f70.google.com with SMTP id a640c23a62f3a-a7a8281dba5so62661166b.3
+        for <alex.bennee@linaro.org>; Thu, 08 Aug 2024 01:31:53 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1723093239; x=1723698039;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=Pcdi8R26zt657R9UpVDv8pTBgxJ5QG4D4fumGY+HeUs=;
-        b=c0s9ZToa3tw9EyE3FAUqA/xLixKRBBwb9LQPS2spJD4c/1lEWp3qY71jdWjjWDN8AO
-         aLiTVhar3pJHQ8bPW2AkUJ7mmiQNdas9Nps4Jd+SWoUabxxOMG2Py9iOBHZ2EvygRTLW
-         vri6Mjp2t6gi30K2rqmsXtp1+Y1blHKHOmGfRqlZRx3uIWQvT5j0GkBj0tvaLR5p+HQc
-         qIFCv5iv/O+s8oTz0qSgR/H5ZL08UxhvsHc/6u2/i7lj7pNlWJhvHNs0oZwINkjVgZLB
-         iWPHHpXZC+gWoSvg/s/c6V5rbUqh72nZKgPEt30cVSdjnM/S0kYdpf1IHWz0NcH+XeQn
-         6HpQ==
-X-Forwarded-Encrypted: i=1; AJvYcCXMOgyAGHwL4r9IKTgkdOiNeqGjBHMBZehsYQuXAIEaB35wyO+mcl4h4uFhS4VZ/90mfJrqtLQUKBUXED/cCNpwMpEIE4G/
-X-Gm-Message-State: AOJu0Yz9MXmCke+a5A8huEoGRKetbGrqyYneL7BzD+NjEQQoUt0kBJgS
-	dYBdOPAo8KNrIReDKAh65eqNXxkyVQ/TgwsglJdD6APFqO7jfFrjXN/RY2noNvNN2Q==
-X-Google-Smtp-Source: AGHT+IG+7Zfz1plga8zUj4Gkl4DC2F/IoY7CRHshz2XWZs7PjnkPVd0u5KNwhnxDdyg6fjTCJpT4+A==
-X-Received: by 2002:a05:600c:1c27:b0:426:6f5f:9da6 with SMTP id 5b1f17b1804b1-4290af0a023mr4845555e9.27.1723093239101;
-        Wed, 07 Aug 2024 22:00:39 -0700 (PDT)
-Return-Path: <philmd@linaro.org>
-Received: from [192.168.69.100] ([176.187.212.120])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-36d272290d4sm589085f8f.106.2024.08.07.22.00.36
+        d=1e100.net; s=20230601; t=1723105912; x=1723710712;
+        h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+         :from:references:cc:to:subject:user-agent:mime-version:date
+         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=6l0Gy8dFEgUlxYu0trH+/uJ82XK8LXdOH/uUXeKp2PY=;
+        b=rN1XTE4SAIV0jERi81cxadYOoN+BlTpWcolHbT3WSjX6HB+d7zS/IDF6FV51ryvOw9
+         xoFRYUveKcJ8BO0t8O4mjaENGp5q/iHvMSxqqZKl3HcdG1m9bfPgZp+01+awaPGwH2hH
+         xXCC91yPdsE5CgMCEgXFaBKB1lVQf9dJ2j5CCL6kRywH6cVMyCKsT9A81WismwqvuFZK
+         WDt0fCr7IC5pLaMQBqs/paCdwnCh9SMt/xh39b2ptLjHZpZckCMMlWk18Fq+lUiWKCCB
+         h03IZGS5PipJP2eWFzkk+Mb/PEqM01p9EnWvZeVxSVI9h5z6h8onWFWxQ4ScVO/ML32e
+         RN8A==
+X-Forwarded-Encrypted: i=1; AJvYcCWu+1LQx1mjJNRW8RXoCuVs1yRs9TPZevFAqV75yKPJueW0OlMCgk40++GPw/Qruqh66SSWaVdvfiozpqQ66gCaiyrcMchJ
+X-Gm-Message-State: AOJu0YzDD4BFwWKpeWfJvwnvFHQsRN2UG3xQkzR+29lqSMnw9qVEAx/+
+	dOc/J4NaoSk2WhksdKqrNWFGQE8++ffE2TeCiYAzFyia3Ee7VdSkKJ65YvkSfKeiK5e6hI4rTqA
+	9FkQtsqoAj1oIattCZE2AXDrzVO9nOHlm+5MU50/62WG6UfntN86Rhg==
+X-Received: by 2002:a17:906:bc18:b0:a7a:83f8:cfcf with SMTP id a640c23a62f3a-a8090dae6f9mr75520566b.35.1723105911948;
+        Thu, 08 Aug 2024 01:31:51 -0700 (PDT)
+X-Received: by 2002:a17:906:bc18:b0:a7a:83f8:cfcf with SMTP id a640c23a62f3a-a8090dae6f9mr75518666b.35.1723105911402;
+        Thu, 08 Aug 2024 01:31:51 -0700 (PDT)
+Return-Path: <pbonzini@redhat.com>
+Received: from [10.168.67.37] ([131.175.147.29])
+        by smtp.googlemail.com with ESMTPSA id a640c23a62f3a-a7dc9c0ca17sm717473766b.84.2024.08.08.01.31.49
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 07 Aug 2024 22:00:38 -0700 (PDT)
-Message-ID: <92a31c3d-f9f7-42ae-a008-667945b3561a@linaro.org>
-Date: Thu, 8 Aug 2024 07:00:35 +0200
+        Thu, 08 Aug 2024 01:31:50 -0700 (PDT)
+Message-ID: <9a83a260-4f4c-477b-a6e1-c8d78d1f3039@redhat.com>
+Date: Thu, 8 Aug 2024 10:31:48 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH 21/23] hw/misc: add support for RT500 reset controller
-To: Octavian Purdila <tavip@google.com>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, stefanst@google.com, pbonzini@redhat.com,
- alex.bennee@linaro.org, thuth@redhat.com, peter.maydell@linaro.org,
- marcandre.lureau@redhat.com, alistair@alistair23.me, berrange@redhat.com,
- jsnow@redhat.com, crosa@redhat.com, bleal@redhat.com
-References: <20240805201719.2345596-1-tavip@google.com>
- <20240805201719.2345596-22-tavip@google.com>
+Subject: Re: [RFC PATCH v6 5/5] rust: add PL011 device model
+To: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Stefan Hajnoczi <stefanha@redhat.com>, Mads Ynddal <mads@ynddal.dk>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ Thomas Huth <thuth@redhat.com>, Markus Armbruster <armbru@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Zhao Liu <zhao1.liu@intel.com>, Gustavo Romero <gustavo.romero@linaro.org>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>, rowan.hart@intel.com,
+ Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org
+References: <rust-pl011-rfc-v6.git.manos.pitsidianakis@linaro.org>
+ <rust-pl011-rfc-v6-5.git.manos.pitsidianakis@linaro.org>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Autocrypt: addr=pbonzini@redhat.com; keydata=
+ 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
+In-Reply-To: <rust-pl011-rfc-v6-5.git.manos.pitsidianakis@linaro.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20240805201719.2345596-22-tavip@google.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-TUID: 3KH1Z9s4oRBx
+X-TUID: O2wyufdR4zHe
 
-Hi Octavian,
-
-On 5/8/24 22:17, Octavian Purdila wrote:
-> The RT500 reset controller has two instances that have the same
-> register layout but with different fields for some registers.
-> 
-> The model only provides set and clear functionality for the various
-> reset lines which is common for both instances. Because of that only
-> one type is implemented for both controllers.
-> 
-> Signed-off-by: Octavian Purdila <tavip@google.com>
-> ---
->   hw/arm/svd/meson.build         |   8 ++
->   hw/misc/Kconfig                |   3 +
->   hw/misc/meson.build            |   1 +
->   hw/misc/rt500_rstctl.c         | 219 +++++++++++++++++++++++++++++++++
->   hw/misc/trace-events           |   4 +
->   include/hw/misc/rt500_rstctl.h |  38 ++++++
->   6 files changed, 273 insertions(+)
->   create mode 100644 hw/misc/rt500_rstctl.c
->   create mode 100644 include/hw/misc/rt500_rstctl.h
-
-
-> diff --git a/hw/misc/meson.build b/hw/misc/meson.build
-> index 68929949a6..5e2728e982 100644
-> --- a/hw/misc/meson.build
-> +++ b/hw/misc/meson.build
-> @@ -160,3 +160,4 @@ system_ss.add(when: 'CONFIG_LASI', if_true: files('lasi.c'))
->   system_ss.add(when: 'CONFIG_FLEXCOMM', if_true: files('flexcomm.c'))
->   system_ss.add(when: 'CONFIG_RT500_CLKCTL0', if_true: files('rt500_clkctl0.c'))
->   system_ss.add(when: 'CONFIG_RT500_CLKCTL1', if_true: files('rt500_clkctl1.c'))
-> +system_ss.add(when: 'CONFIG_RT500_RSTCTL', if_true: files('rt500_rstctl.c'))
-> diff --git a/hw/misc/rt500_rstctl.c b/hw/misc/rt500_rstctl.c
+On 8/4/24 23:04, Manos Pitsidianakis wrote:
+> diff --git a/rust/hw/char/pl011/meson.build b/rust/hw/char/pl011/meson.build
 > new file mode 100644
-> index 0000000000..2806a94150
+> index 0000000000..a17a823cf5
 > --- /dev/null
-> +++ b/hw/misc/rt500_rstctl.c
-> @@ -0,0 +1,219 @@
-> +/*
-> + * QEMU model for RT500 Reset Controller
-> + *
-> + * Copyright (c) 2024 Google LLC
-> + *
-> + * SPDX-License-Identifier: GPL-2.0-or-later
-> + *
-> + * This work is licensed under the terms of the GNU GPL, version 2 or later.
-> + * See the COPYING file in the top-level directory.
-> + */
+> +++ b/rust/hw/char/pl011/meson.build
+> @@ -0,0 +1,28 @@
+> +if not config_host_data.get('CONFIG_HAVE_RUST')
+> +  subdir_done()
+> +endif
 > +
-> +#include "qemu/osdep.h"
-> +#include "hw/irq.h"
-> +#include "hw/qdev-properties.h"
-> +#include "qemu/log.h"
-> +#include "qemu/module.h"
-> +#include "exec/address-spaces.h"
-> +#include "hw/regs.h"
-> +#include "hw/misc/rt500_rstctl.h"
-> +
-> +#include "trace.h"
-> +
-> +/*
-> + * There are two intances for RSTCTL with the same register names but
-> + * with different fields.
-> + */
-> +#define reg(field) offsetof(RT500_RSTCTL0_Type, field)
-> +#define regi(x) (reg(x) / sizeof(uint32_t))
-> +#define REG_NO (sizeof(RT500_RSTCTL0_Type) / sizeof(uint32_t))
-> +
-> +#define RSTCTL_SYSRSTSTAT_WMASK (BITS(7, 4) | BIT(0))
-> +#define RSTCL0_PRSCTL0_WMASK (BITS(30, 26) | BITS(24, 20) | BIT(18) | \
-> +                              BIT(16) | BITS(12, 8) | BIT(3) | BIT(1))
-> +#define RSTCL0_PRSCTL1_WMASK (BIT(24) | BITS(16, 15) | BITS(3, 2))
-> +#define RSTCL0_PRSCTL2_WMASK (BITS(1, 0))
-> +#define RSTCL1_PRSCTL0_WMASK (BIT(29) | BIT(27) |  BITS(25, 8))
-> +#define RSTCL1_PRSCTL1_WMASK (BIT(31) | BITS(29, 28) | BITS(24, 23) | \
-> +                              BIT(16) | BITS(7, 0))
-> +#define RSTCL1_PRSCTL2_WMASK (BITS(31, 30) | BITS(17, 16) | BIT(10) | \
-> +                              BIT(8) | BITS(4, 0))
-> +
-> +static RT500_RSTCTL0_REGISTER_NAMES_ARRAY(reg_names);
-> +
-> +static MemTxResult rt500_rstctl_read(void *opaque, hwaddr addr,
-> +                                     uint64_t *data, unsigned size,
-> +                                     MemTxAttrs attrs)
-> +{
-> +    RT500RstCtlState *s = opaque;
-> +    MemTxResult ret = MEMTX_OK;
-> +
-> +    if (s->num > 1 || !reg32_aligned_access(addr, size)) {
+> +add_languages('rust', required: true)
 
-IIUC s->num is a model property set when the device is created,
-and can not be changed by the guest. We want to check it
-in rt500_rstctl_realize() so we can return an error when out
-of range.
+These five lines are not necessary.
 
-> +        ret = MEMTX_ERROR;
-> +        goto out;
-> +    }
-> +
-> +    switch (addr) {
-> +    case reg(SYSRSTSTAT):
-> +    case reg(PRSTCTL0):
-> +    case reg(PRSTCTL1):
-> +    case reg(PRSTCTL2):
-> +        *data = reg32_read(&s->regs.ctl0, addr);
-> +        break;
-> +    default:
-> +        ret = MEMTX_ERROR;
-> +    }
-> +
-> +out:
-> +    trace_rt500_rstctl_reg_read(DEVICE(s)->id, reg_names[addr], addr, *data);
-> +    return ret;
-> +}
-> +
-> +static MemTxResult rt500_rstctl_write(void *opaque, hwaddr addr,
-> +                                      uint64_t value, unsigned size,
-> +                                      MemTxAttrs attrs)
-> +{
-> +    RT500RstCtlState *s = opaque;
-> +    static uint32_t mask0[REG_NO] = {
+> +arbitrary_int_dep = subproject('arbitrary-int').get_variable('arbitrary_int_dep')
+> +bilge_dep = subproject('bilge').get_variable('bilge_dep')
+> +bilge_impl_dep = subproject('bilge-impl').get_variable('bilge_impl_dep')
 
-const
+The subprojects also need to be added to scripts/archive-source.sh and 
+scripts/make-release.
 
-> +        [regi(SYSRSTSTAT)] = RSTCTL_SYSRSTSTAT_WMASK,
-> +        [regi(PRSTCTL0)] = RSTCL0_PRSCTL0_WMASK,
-> +        [regi(PRSTCTL1)] = RSTCL0_PRSCTL1_WMASK,
-> +        [regi(PRSTCTL2)] = RSTCL0_PRSCTL2_WMASK,
-> +        [regi(PRSTCTL0_SET)] = RSTCL0_PRSCTL0_WMASK,
-> +        [regi(PRSTCTL1_SET)] = RSTCL0_PRSCTL1_WMASK,
-> +        [regi(PRSTCTL2_SET)] = RSTCL0_PRSCTL2_WMASK,
-> +        [regi(PRSTCTL0_CLR)] = RSTCL0_PRSCTL0_WMASK,
-> +        [regi(PRSTCTL1_CLR)] = RSTCL0_PRSCTL1_WMASK,
-> +        [regi(PRSTCTL2_CLR)] = RSTCL0_PRSCTL2_WMASK,
-> +    };
-> +    static uint32_t mask1[REG_NO] = {
-> +        [regi(SYSRSTSTAT)] = RSTCTL_SYSRSTSTAT_WMASK,
-> +        [regi(PRSTCTL0)] = RSTCL1_PRSCTL0_WMASK,
-> +        [regi(PRSTCTL1)] = RSTCL1_PRSCTL1_WMASK,
-> +        [regi(PRSTCTL2)] = RSTCL1_PRSCTL2_WMASK,
-> +        [regi(PRSTCTL0_SET)] = RSTCL1_PRSCTL0_WMASK,
-> +        [regi(PRSTCTL1_SET)] = RSTCL1_PRSCTL1_WMASK,
-> +        [regi(PRSTCTL2_SET)] = RSTCL1_PRSCTL2_WMASK,
-> +        [regi(PRSTCTL0_CLR)] = RSTCL1_PRSCTL0_WMASK,
-> +        [regi(PRSTCTL1_CLR)] = RSTCL1_PRSCTL1_WMASK,
-> +        [regi(PRSTCTL2_CLR)] = RSTCL1_PRSCTL2_WMASK,
-> +    };
+In order to simplify a future switch to Cargo projects, this should be 
+something like:
 
-Possibly better, have a common abstract TYPE_RT500_RSTCTL class
-and 2 TYPE_RT500_RSTCTL[01] concrete classes, wmask being set for
-each rt500_rstctl[01]_class_init(). Then you don't need the "num"
-property. See how hw/arm/raspi.c is modelled.
+subproject('bilge-0.2-rs', required: true)
+subproject('bilge-impl-0.2-rs', required: true)
 
-> +    uint32_t mask;
+bilge_dep = dependency('bilge-0.2-rs')
+bilge_impl_dep = dependency('bilge-impl-0.2-rs')
+
+with a corresponding
+
+meson.override_dependency('bilge-0.2-rs', bilge_dep)
+
+in subprojects/packagefiles/bilge-0.2-rs/meson.build.
+
+Also in bilge's meson.build:
+
+> +arbitrary_int_dep = subproject('arbitrary-int').get_variable('arbitrary_int_dep')
+> +bilge_impl_dep = subproject('bilge-impl').get_variable('bilge_impl_dep')
 > +
-> +    trace_rt500_rstctl_reg_write(DEVICE(s)->id, reg_names[addr], addr, value);
-> +
-> +    if (s->num > 1 || !reg32_aligned_access(addr, size)) {
-> +        return MEMTX_ERROR;
-> +    }
-> +
-> +    if (s->num == 0) {
-> +        mask = mask0[addr / sizeof(uint32_t)];
-> +    } else {
-> +        mask = mask1[addr / sizeof(uint32_t)];
-> +    }
-> +
-> +    switch (addr) {
-> +    case reg(SYSRSTSTAT):
-> +    {
-> +        /* write 1 to clear bits */
-> +        s->regs.ctl0.SYSRSTSTAT &= ~(value & mask);
-> +        break;
-> +    }
-> +    case reg(PRSTCTL0):
-> +    case reg(PRSTCTL1):
-> +    case reg(PRSTCTL2):
-> +    {
-> +        uint32_t idx = addr / sizeof(uint32_t);
-> +
-> +        s->regs.raw[idx] = (value & mask);
-> +        break;
-> +    }
-> +    case reg(PRSTCTL0_SET):
-> +    case reg(PRSTCTL1_SET):
-> +    case reg(PRSTCTL2_SET):
-> +    {
-> +        uint32_t idx;
-> +
-> +        idx = (reg(PRSTCTL0) + (addr - reg(PRSTCTL0_SET))) / sizeof(uint32_t);
-> +        s->regs.raw[idx] |= (value & mask);
-> +        break;
-> +    }
-> +    case reg(PRSTCTL0_CLR):
-> +    case reg(PRSTCTL1_CLR):
-> +    case reg(PRSTCTL2_CLR):
-> +    {
-> +        uint32_t idx;
-> +
-> +        idx = (reg(PRSTCTL0) + (addr - reg(PRSTCTL0_CLR))) / sizeof(uint32_t);
-> +        s->regs.raw[idx] &= ~(value & mask);
-> +        break;
-> +    }
-> +    }
-> +
-> +    return MEMTX_OK;
-> +}
-> +
-> +
-> +static const MemoryRegionOps rt500_rstctl_ops = {
-> +    .read_with_attrs = rt500_rstctl_read,
-> +    .write_with_attrs = rt500_rstctl_write,
-> +    .endianness = DEVICE_NATIVE_ENDIAN,
-> +};
-> +
-> +static Property rt500_rstctl_properties[] = {
-> +    DEFINE_PROP_UINT32("num", RT500RstCtlState, num, 0),
-> +    DEFINE_PROP_END_OF_LIST(),
-> +};
-> +
-> +static void rt500_rstctl_reset(DeviceState *dev)
-> +{
-> +    RT500RstCtlState *s = RT500_RSTCTL(dev);
-> +
-> +    memset(&s->regs, 0, sizeof(s->regs));
-> +
-> +    switch (s->num) {
-> +    case 0:
-> +        rt500_rstctl0_reset_registers(&s->regs.ctl0);
-> +        break;
-> +    case 1:
-> +        rt500_rstctl1_reset_registers(&s->regs.ctl1);
-> +        break;
-> +    }
-> +}
-> +
-> +static void rt500_rstctl_init(Object *obj)
-> +{
-> +    RT500RstCtlState *s = RT500_RSTCTL(obj);
-> +
-> +    memory_region_init_io(&s->mmio, obj, &rt500_rstctl_ops, s,
-> +                          TYPE_RT500_RSTCTL, sizeof(s->regs));
-> +    sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->mmio);
-> +}
-> +
-> +static void rt500_rstctl_realize(DeviceState *dev, Error **errp)
-> +{
-> +}
-> +
-> +static void rt500_rstctl_class_init(ObjectClass *klass, void *data)
-> +{
-> +    DeviceClass *dc = DEVICE_CLASS(klass);
-> +
-> +    dc->reset = rt500_rstctl_reset;
-> +    device_class_set_props(dc, rt500_rstctl_properties);
-> +    dc->realize = rt500_rstctl_realize;
-> +}
-> +
-> +static const TypeInfo rt500_rstctl_info = {
-> +    .name          = TYPE_RT500_RSTCTL,
-> +    .parent        = TYPE_SYS_BUS_DEVICE,
-> +    .instance_size = sizeof(RT500RstCtlState),
-> +    .instance_init = rt500_rstctl_init,
-> +    .class_init    = rt500_rstctl_class_init,
-> +};
+> +lib = static_library(
+> +  'bilge',
+> +  'src/lib.rs',
+> +  override_options : ['rust_std=2021', 'build.rust_std=2021'],
+> +  rust_abi : 'rust',
+> +  native : true,
+> +  dependencies: [
+
+native should not be true here (but it should be true for the 
+dependencies of bilge-impl: either, itertools, proc-macro-error, 
+proc-macro-error-attr, proc-macro2, quote, syn, unicode-ident).
+
+I've placed my updates at a branch "rust-for-manos" of 
+https://gitlab.com/bonzini/qemu/.  I left the fixes unsquashed for your 
+review, but feel free to merge them and post the result as part of v7.
+
+Paolo

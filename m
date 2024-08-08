@@ -1,99 +1,99 @@
-Received: by 2002:a17:504:7fd7:b0:1be9:327d:8ee3 with SMTP id hj23csp593375njc;
-        Thu, 8 Aug 2024 10:17:07 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVNns4GDEaKQr9sdPaJO9sKO1fCSWM4ph3aAwNVVWQ4uvis3SDhUQQeclDMv5b7fYxVb//PzLfmJ1a3IQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IEmUNsISJWGN5MIzrsXvV8Lo1i86M//hqecdCGEXNGOfvtaj6odNE2YGhNV82ZwHw9t+x+K
-X-Received: by 2002:a05:6358:54a6:b0:1ac:1492:8d5a with SMTP id e5c5f4694b2df-1b15cf93192mr323132055d.14.1723137427574;
-        Thu, 08 Aug 2024 10:17:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1723137427; cv=none;
+Received: by 2002:a17:504:7fd7:b0:1be9:327d:8ee3 with SMTP id hj23csp594234njc;
+        Thu, 8 Aug 2024 10:19:40 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUaHdny0oWBanoYpARMpiLUAQhTFXGMAQlaMDPM4SnsTE6JYVuFZS3pum6IOZmLEUPjRNtbQ2chvedymFgbAqvTsii47yEl
+X-Google-Smtp-Source: AGHT+IFrouKXnCQ7jhikGIgK/psoyH6Vp1OBdJAQZ1hWlOTXMp7qMwiHSyOXPBJPoKEQMJaeni3R
+X-Received: by 2002:ac5:c54f:0:b0:4f2:ffa6:dbd5 with SMTP id 71dfb90a1353d-4f90431169fmr1821728e0c.6.1723137579752;
+        Thu, 08 Aug 2024 10:19:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1723137579; cv=none;
         d=google.com; s=arc-20160816;
-        b=kVFXobzWyeYyOnV650829P0crp5z2I7sI5bQXLGscQQbBYIen4zOGYNTxeSPvzEGl6
-         ZZFeqS60TRg57dsZvqQ52L3XqfEFuTv0lEIwLmPAYDWvMmlKLPK4wwQYVuy3V1bhWyqT
-         RYEjyuAFAlNRXa/X0JkMMA/n9rjeTykWw6jKuqCiRgtXM1VRWi4w3L9rmmxFFmM2rrYk
-         QSgiPsfcEaJseBtF6m6ijqCp86dDDoIe0f/rO8xr099pylqqTT/mgJRrMs3VYbuDo6/I
-         jrsbxZ54FMJNtCRPBUvQTMtbeYCBhTmyqSmDb9sfHqAnJ2NVCQf5KtRl/Q+3XP1tvzEx
-         nkBg==
+        b=NUlkDzSmJ4LFoDdB0SAKKzcUmmkb7xMap63HyzqOrtdJyL91DKVclP6ePvxCb+sD27
+         17eGVJM2QQLfEEfGnbUpIhGBUCsK5+nkuRn6ozUv/enenH8tFSSXBwHxxT8GL8MW9eqG
+         IcseYXbsZzC69CbCFB0JsXp9dW12GSh/+hqtUBgcyr6WNXW5RzFFpt0DB7enrEv5kmk2
+         DAWnQp4+eJmZgq4LdEG01uFGqKXMX35XUH7xwRQjJv4tc25yLobkxtPRnzS3sW/JUuys
+         I8CBx5tuUkE30y+ZAFaRPHCniHsrvvEjaTxBybumejv5vn+ypOlA42+QD9WuL7+GLzdp
+         hHpQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence:user-agent
          :in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:dkim-signature;
-        bh=qATsfQvZRQpEus1b6elonCSh37yd0/FzBbxfPDhrYB4=;
+        bh=KyLcyHSKZEiNL+6JBjA5g0ip0FsPMv0vlE8ZzEyToFE=;
         fh=N5HxHITUWSLOkULx7ITQ8OrnC9xUUIL/vatdVN0Rh8s=;
-        b=j0kw44iFq8sR+MDXsje9GeHwwxwvWSqWe45etckbay2cr/5VagUzdcvsr3NERnAbZ/
-         czQhu2NuwXdkMUvN9r49NavOLi8F+TlcV0FCI7CEwYN2nfI5AYIlP1ra78oEoyGPxtw7
-         xDmFdBev3gdQODtmv7s1GFrBolEgD+hvXoGKSN/fFV8aJyMGBAHqHzVTSMRwlImEv/vI
-         qOme5189bwQIxeJVyGob2DeDF/YJeRUxnIkuTa38Q6y00DhcqBf40HXBKKug9ufBW9eU
-         4tfm3F+lTkG0cuvcZ07LQxaKyycV3DJDr0UH5eMq+hivYjQv/mcNkpsvvooVfJnu9THC
-         H3tQ==;
+        b=iL+z4gG5u8XiowoaU2dDnwCY5Jj7SgGDvqdMFbPTcBUAE6mgtfbzzBqWXaihDQ5TEv
+         jnvO9U+KUabPvSpiMuzACDtCngVzEwDt18XpMwMyp5Jtrklh9G6XhwcdZY8XgaLy6h2p
+         nxV8va1ZMxJUtnFmDXGR6tbnPvYyzOx8Yrsq1u4jAHRlY1dLWF2nVAFqGlkyReRYYA1P
+         Q8LQEU8/Xm1MIWuFYlVhsaSLTxGQlLE80aYrPxXTSJrFeZB+T3bHZRIEYH+dk0i/tNqO
+         oG1VOhzgHkiPfQeiZ+beF+pTQQJ3nW1Wf3Vu+qeSrzieQyZhzBBfia6Dcni1ygmTPt/L
+         NxbQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MNjM8oKQ;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="Iq/zT3m6";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ada2fe7eead31-4945dbee887si2950679137.548.2024.08.08.10.17.07
+        by mx.google.com with ESMTPS id 71dfb90a1353d-4f8a1a44667si3265451e0c.65.2024.08.08.10.19.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 08 Aug 2024 10:17:07 -0700 (PDT)
+        Thu, 08 Aug 2024 10:19:39 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MNjM8oKQ;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="Iq/zT3m6";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sc6kc-0002Vl-G6; Thu, 08 Aug 2024 13:16:34 -0400
+	id 1sc6mt-0007Jt-Vq; Thu, 08 Aug 2024 13:18:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1sc6ka-0002KE-4S
- for qemu-arm@nongnu.org; Thu, 08 Aug 2024 13:16:32 -0400
+ id 1sc6mt-0007HE-Bv
+ for qemu-arm@nongnu.org; Thu, 08 Aug 2024 13:18:55 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1sc6kY-0006ND-A1
- for qemu-arm@nongnu.org; Thu, 08 Aug 2024 13:16:31 -0400
+ id 1sc6mr-0006bC-JT
+ for qemu-arm@nongnu.org; Thu, 08 Aug 2024 13:18:55 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1723137389;
+ s=mimecast20190719; t=1723137533;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:in-reply-to:in-reply-to:  references:references;
- bh=qATsfQvZRQpEus1b6elonCSh37yd0/FzBbxfPDhrYB4=;
- b=MNjM8oKQiQgIvePBD3O0h0rRgFiDG6/ei6zqQ1XeLsaug2NUDS7j21KXSNikMboKzHIunB
- 2JeRiATF9kMvWgMmrg7sEtokavx8gIc3rD5/EcWTmYenvTJl5manzJbIXDWn4yyunXvDMe
- pZIDaOWAkZ2JQE4EL/IcgG8U2JEJBI4=
-Received: from mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com
+ bh=KyLcyHSKZEiNL+6JBjA5g0ip0FsPMv0vlE8ZzEyToFE=;
+ b=Iq/zT3m6IGRKl9bZNcCGh5pekydJjulnkrNQ9EQ5zbDyxszCr+8zeW8T5ZPuckIL3y77pr
+ 9gi3YgiVghOfDrfMyFaWs7YvpplY25Gng91lFsXTNgcnCG5QQkX8QyFmBnqo0zagtjdSbe
+ bIzNAtVkdopnRgwc8sQx/c788hBfkhk=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-635-avCQWeqiMH-u-Idyc4aVhw-1; Thu,
- 08 Aug 2024 13:16:23 -0400
-X-MC-Unique: avCQWeqiMH-u-Idyc4aVhw-1
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-447-2vvKD27oOGmaUVNTpQZSFQ-1; Thu,
+ 08 Aug 2024 13:18:47 -0400
+X-MC-Unique: 2vvKD27oOGmaUVNTpQZSFQ-1
 Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id A4AD61955D5D; Thu,  8 Aug 2024 17:16:22 +0000 (UTC)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 505DF1955F69; Thu,  8 Aug 2024 17:18:46 +0000 (UTC)
 Received: from redhat.com (unknown [10.42.28.163])
  by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 81B5B300018D; Thu,  8 Aug 2024 17:16:19 +0000 (UTC)
-Date: Thu, 8 Aug 2024 18:16:15 +0100
+ id 1CDBE300018D; Thu,  8 Aug 2024 17:18:42 +0000 (UTC)
+Date: Thu, 8 Aug 2024 18:18:39 +0100
 From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 To: Alejandro Zeise <alejandro.zeise@seagate.com>
 Cc: qemu-arm@nongnu.org, kris.conklin@seagate.com,
  jonathan.henze@seagate.com, evan.burgess@seagate.com, clg@kaod.org,
  peter.maydell@linaro.org, qemu-devel@nongnu.org
-Subject: Re: [PATCH v4 06/15] crypto/hash-afalg: Implement new hash API
-Message-ID: <ZrT9X6N51gE_IX3W@redhat.com>
+Subject: Re: [PATCH v4 08/15] tests/unit/test-crypto-hash: accumulative hashing
+Message-ID: <ZrT972O-HcxMkT9L@redhat.com>
 References: <20240807195122.2827364-1-alejandro.zeise@seagate.com>
- <20240807195122.2827364-7-alejandro.zeise@seagate.com>
+ <20240807195122.2827364-9-alejandro.zeise@seagate.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20240807195122.2827364-7-alejandro.zeise@seagate.com>
+In-Reply-To: <20240807195122.2827364-9-alejandro.zeise@seagate.com>
 User-Agent: Mutt/2.2.12 (2023-09-09)
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
 Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
@@ -120,208 +120,107 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: RVJ6bAY2FUD/
+X-TUID: 2o1W8z6te/SL
 
-On Wed, Aug 07, 2024 at 07:51:13PM +0000, Alejandro Zeise wrote:
-> Updates the afalg hash driver to support the new accumulative
-> hashing changes as part of the patch series.
-> 
-> Implements opening/closing of contexts, updating hash data
-> and finalizing the hash digest.
-> 
-> In order to support the update function, a flag needs to be passed
-> to the kernel via the socket send call (MSG_MORE) to notify it that more
-> data is to be expected to calculate the hash correctly.
-> As a result, a new function was added to the iov helper utils to allow
-> passing a flag to the socket send call.
+On Wed, Aug 07, 2024 at 07:51:15PM +0000, Alejandro Zeise wrote:
+> Added an accumulative hashing test. Checks for functionality of
+> the new hash create, update, finalize and free functions.
 > 
 > Signed-off-by: Alejandro Zeise <alejandro.zeise@seagate.com>
 > ---
->  crypto/hash-afalg.c | 126 ++++++++++++++++++++++++++++++++++++++++++++
->  include/qemu/iov.h  |  26 +++++++++
->  util/iov.c          |  22 +++++---
->  3 files changed, 167 insertions(+), 7 deletions(-)
+>  tests/unit/test-crypto-hash.c | 48 +++++++++++++++++++++++++++++++++++
+>  1 file changed, 48 insertions(+)
 > 
-> diff --git a/crypto/hash-afalg.c b/crypto/hash-afalg.c
-> index 3ebea39292..9548c04933 100644
-> --- a/crypto/hash-afalg.c
-> +++ b/crypto/hash-afalg.c
+> diff --git a/tests/unit/test-crypto-hash.c b/tests/unit/test-crypto-hash.c
+> index 1f4abb822b..2bf9bcb6a0 100644
+> --- a/tests/unit/test-crypto-hash.c
+> +++ b/tests/unit/test-crypto-hash.c
 > @@ -1,6 +1,7 @@
 >  /*
->   * QEMU Crypto af_alg-backend hash/hmac support
+>   * QEMU Crypto hash algorithms
 >   *
 > + * Copyright (c) 2024 Seagate Technology LLC and/or its Affiliates
->   * Copyright (c) 2017 HUAWEI TECHNOLOGIES CO., LTD.
+>   * Copyright (c) 2015 Red Hat, Inc.
 >   *
->   * Authors:
-> @@ -113,6 +114,127 @@ qcrypto_afalg_hmac_ctx_new(QCryptoHashAlgorithm alg,
->      return qcrypto_afalg_hash_hmac_ctx_new(alg, key, nkey, true, errp);
+>   * This library is free software; you can redistribute it and/or
+> @@ -241,6 +242,52 @@ static void test_hash_base64(void)
+>      }
 >  }
 >  
-> +static
-> +QCryptoHash *qcrypto_afalg_hash_new(QCryptoHashAlgorithm alg, Error **errp)
+> +static void test_hash_accumulate(void)
 > +{
-> +    /* Check if hash algorithm is supported */
-> +    char *alg_name = qcrypto_afalg_hash_format_name(alg, false, NULL);
-> +    QCryptoHash *hash = NULL;
-> +
-> +    if (alg_name == NULL) {
-> +        error_setg(errp,
-> +                   "Unknown hash algorithm %d",
-> +                   alg);
-> +    } else {
-> +        hash = g_new(QCryptoHash, 1);
-> +        hash->alg = alg;
-> +        hash->opaque = qcrypto_afalg_hash_ctx_new(alg, errp);
+> +    QCryptoHash *hash;
 
-This can return NULL, in which case we need to 'free(hash)' and
-return NULL from this method.
+Move this inside the for() and use 'g_autoptr(QCryptoHash) hash = NULL'
 
-> +    }
+> +    size_t i;
 > +
-> +    return hash;
-> +}
-> +
-> +static
-> +void qcrypto_afalg_hash_free(QCryptoHash *hash)
-> +{
-> +    QCryptoAFAlg *ctx = hash->opaque;
-> +
-> +    if (ctx) {
-> +        qcrypto_afalg_comm_free(ctx);
-> +    }
-> +
-> +    g_free(hash);
-> +}
-> +
-> +/**
-> + * Send data to the kernel's crypto core.
-> + *
-> + * The more_data parameter is used to notify the crypto engine
-> + * that this is an "update" operation, and that more data will
-> + * be provided to calculate the final hash.
-> + */
-> +static
-> +int qcrypto_afalg_send_to_kernel(QCryptoAFAlg *afalg,
-> +                                 const struct iovec *iov,
-> +                                 size_t niov,
-> +                                 bool more_data,
-> +                                 Error **errp)
-> +{
-> +    int ret = 0;
-> +    int flags = (more_data ? MSG_MORE : 0);
-> +
-> +    /* send data to kernel's crypto core */
-> +    ret = iov_send_recv_with_flags(afalg->opfd, flags, iov, niov,
-> +                                   0, iov_size(iov, niov), true);
-> +    if (ret < 0) {
-> +        error_setg_errno(errp, errno, "Send data to afalg-core failed");
-> +        ret = -1;
-> +    } else {
-> +        /* No error, so return 0 */
-> +        ret = 0;
-> +    }
-> +
-> +    return ret;
-> +}
-> +
-> +static
-> +int qcrypto_afalg_recv_from_kernel(QCryptoAFAlg *afalg,
-> +                                   QCryptoHashAlgorithm alg,
-> +                                   uint8_t **result,
-> +                                   size_t *result_len,
-> +                                   Error **errp)
-> +{
-> +    struct iovec outv;
-> +    int ret = 0;
-> +    const int expected_len = qcrypto_hash_digest_len(alg);
-> +
-> +    if (*result_len == 0) {
-> +        *result_len = expected_len;
-> +        *result = g_new0(uint8_t, *result_len);
-> +    } else if (*result_len != expected_len) {
-> +        error_setg(errp,
-> +                   "Result buffer size %zu is not match hash %d",
-> +                   *result_len, expected_len);
-> +        ret = -1;
-> +    }
+> +    for (i = 0; i < G_N_ELEMENTS(expected_outputs) ; i++) {
+> +        struct iovec iov[3] = {
 
-Check the error condition first, and do an immediate
-'return -1', avoiding the following conditional
+Don't need to declare it '[3]' just '[]' as, then....
 
+> +            { .iov_base = (char *)INPUT_TEXT1, .iov_len = strlen(INPUT_TEXT1) },
+> +            { .iov_base = (char *)INPUT_TEXT2, .iov_len = strlen(INPUT_TEXT2) },
+> +            { .iov_base = (char *)INPUT_TEXT3, .iov_len = strlen(INPUT_TEXT3) },
+> +        };
+> +        uint8_t *result = NULL;
+
+g_autofree uint8_t *result = NULL;
+
+> +        size_t resultlen = 0;
+> +        int ret;
+> +        size_t j;
 > +
-> +    if (ret == 0) {
-> +        /* hash && get result */
-> +        outv.iov_base = *result;
-> +        outv.iov_len = *result_len;
-> +        ret = iov_send_recv(afalg->opfd, &outv, 1,
-> +                            0, iov_size(&outv, 1), false);
-> +        if (ret < 0) {
-> +            error_setg_errno(errp, errno, "Recv result from afalg-core failed");
-> +            ret = -1;
-
-Again do an imediate 'return -1'.
-
-> +        } else {
-> +            ret = 0;
+> +        if (!qcrypto_hash_supports(i)) {
+> +            continue;
 > +        }
+> +
+> +        hash = qcrypto_hash_new(i, &error_fatal);
+> +        g_assert(hash != NULL);
+> +
+> +        /* Add each iovec to the hash context separately */
+> +        for (j = 0; j < 3; j++) {
+
+...instead of 'j < 3' use  'j < G_N_ELEMENTS(iov)'
+
+> +            ret = qcrypto_hash_updatev(hash,
+> +                                      &iov[j], 1,
+> +                                      &error_fatal);
+> +
+> +            g_assert(ret == 0);
+> +        }
+> +
+> +        ret = qcrypto_hash_finalize_bytes(hash, &result, &resultlen,
+> +                                          &error_fatal);
+> +
+> +        g_assert(ret == 0);
+> +        g_assert(resultlen == expected_lens[i]);
+> +        for (j = 0; j < resultlen; j++) {
+> +            g_assert(expected_outputs[i][j * 2] == hex[(result[j] >> 4) & 0xf]);
+> +            g_assert(expected_outputs[i][j * 2 + 1] == hex[result[j] & 0xf]);
+> +        }
+> +        g_free(result);
+> +        qcrypto_hash_free(hash);
+
+Drop these two frees.
+
 > +    }
-> +
-> +    return ret;
 > +}
 > +
-> +static
-> +int qcrypto_afalg_hash_update(QCryptoHash *hash,
-> +                              const struct iovec *iov,
-> +                              size_t niov,
-> +                              Error **errp)
-> +{
-> +    return qcrypto_afalg_send_to_kernel((QCryptoAFAlg *) hash->opaque,
-> +                                        iov, niov, true, errp);
-> +}
-> +
-> +static
-> +int qcrypto_afalg_hash_finalize(QCryptoHash *hash,
-> +                                 uint8_t **result,
-> +                                 size_t *result_len,
-> +                                 Error **errp)
-> +{
-> +    return qcrypto_afalg_recv_from_kernel((QCryptoAFAlg *) hash->opaque,
-> +                                          hash->alg, result, result_len, errp);
-> +}
-> +
->  static int
->  qcrypto_afalg_hash_hmac_bytesv(QCryptoAFAlg *hmac,
->                                 QCryptoHashAlgorithm alg,
-> @@ -205,6 +327,10 @@ static void qcrypto_afalg_hmac_ctx_free(QCryptoHmac *hmac)
->  
->  QCryptoHashDriver qcrypto_hash_afalg_driver = {
->      .hash_bytesv = qcrypto_afalg_hash_bytesv,
-> +    .hash_new      = qcrypto_afalg_hash_new,
-> +    .hash_free     = qcrypto_afalg_hash_free,
-> +    .hash_update   = qcrypto_afalg_hash_update,
-> +    .hash_finalize = qcrypto_afalg_hash_finalize
->  };
->  
->  QCryptoHmacDriver qcrypto_hmac_afalg_driver = {
-> diff --git a/include/qemu/iov.h b/include/qemu/iov.h
-> index 63a1c01965..43884cdd64 100644
-> --- a/include/qemu/iov.h
-> +++ b/include/qemu/iov.h
-
-snip
-
-> diff --git a/util/iov.c b/util/iov.c
-> index 7e73948f5e..5644e0b73c 100644
-> --- a/util/iov.c
-> +++ b/util/iov.c
-
-snip
-
-Could you split the iov.h/.c changes into  a separate patch that comes
-before this one, since they're under a separate maintainer, and thus
-desirable to split out for visibility.
-
+>  int main(int argc, char **argv)
+>  {
+>      int ret = qcrypto_init(&error_fatal);
+> @@ -252,5 +299,6 @@ int main(int argc, char **argv)
+>      g_test_add_func("/crypto/hash/prealloc", test_hash_prealloc);
+>      g_test_add_func("/crypto/hash/digest", test_hash_digest);
+>      g_test_add_func("/crypto/hash/base64", test_hash_base64);
+> +    g_test_add_func("/crypto/hash/accumulate", test_hash_accumulate);
+>      return g_test_run();
+>  }
+> -- 
+> 2.34.1
+> 
 
 With regards,
 Daniel

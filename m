@@ -1,99 +1,100 @@
-Received: by 2002:a05:7022:d82:b0:85:21:bd5b with SMTP id ec2csp906959dlb;
-        Thu, 8 Aug 2024 05:11:55 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCU6MfyzScG8OHsMtlyNT2Qe9HfA/fkIVK2oOL0enTxElJ0SUlBem11R2d9CmeSbo/rIxw2tegpMk9Szqp177gr+NL86+cb5
-X-Google-Smtp-Source: AGHT+IHBqRT7SEnx7JwdjpI41MPokni7m4u9bc0Jvm/fhDmoMwbSAazAO5XhWp0pFUn8AtY+HRLl
-X-Received: by 2002:a05:620a:2699:b0:7a1:d73f:53d2 with SMTP id af79cd13be357-7a3817d6589mr200234785a.20.1723119115549;
-        Thu, 08 Aug 2024 05:11:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1723119115; cv=none;
+Received: by 2002:a17:504:7fd7:b0:1be9:327d:8ee3 with SMTP id hj23csp485399njc;
+        Thu, 8 Aug 2024 05:26:56 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWMnJ8pbHqrpC3l3xijeFM/oVVFJnvP0lPw8bqeGAHPfG43XCGEHRM3uht5bAqWyUqJK/MYhW3qU6g2Q+vn1sTq2vH/MDUJ
+X-Google-Smtp-Source: AGHT+IG2TirU8qkbin431ry6r0RqwYtdsYbiVRBKCSTn7xo1xrbrZ10u/IxLnRxB0K8yaDD8soxU
+X-Received: by 2002:a05:622a:a0a:b0:44f:f1c2:7fe9 with SMTP id d75a77b69052e-451d41fe30bmr22316971cf.10.1723120016592;
+        Thu, 08 Aug 2024 05:26:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1723120016; cv=none;
         d=google.com; s=arc-20160816;
-        b=0cvWzNM30jXDCtvU3zr9DiKHfLpvHEAaG8SwV1QkE7gMfa3ru2h9oYisAayLLDCebX
-         8WQ8eXGtHdzPQHkML/aLRqKG2IzWQQF8daphVWhMstjZTTJZmqEQeu08kMSy9Cucbo7/
-         MBI+cL/N8XPCaEemnGb68sWnGtPAjFvpOx0xg9+gHMIs2I57k6j2LVVEb7c2VhWZUcLR
-         6TDaprsnQSpiE4Gaz85te80s9NCwI15+4wvH4LrittUscLjnV22aakG35/+IcX8l7wNV
-         P96PiwdTH8Pza2QW0kLrMhiTgOeCDxzKOj689xt4aLZqhpvx3Ooy4IaP/hDAR0w5sS8D
-         +27Q==
+        b=xsG3qXoXg8jJ0f4FWhZEFeOjNUX/0JhYc/UNO+G4UoOcVCQM3XSzq522KSiVMczUAe
+         yctKIXttujwg0hyTltSdwyq4FN1WiflW/m1rInyeZ2tPUuKYsG8EYv4UadM4x8Pq6tS6
+         MKCYptAF/u/VGcY4wizIL/oA822qg0Ccknoa6ed2SlUKazG7KmongVdz2oMlIDFL5RNM
+         To78+4EumlmITRej5r3I9F4s+Vymn8vyoId9lg9r2IdaTIFc+oW1q060vqzjRvz61mUZ
+         bsrLM1LyJPvAgaF62S4moHyUHEVjT3JaCykrEVFlVavyTrZAtrw1iN9yLC9bffaHrWTG
+         +7nQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:subject:cc:to:from
-         :date:dkim-signature;
-        bh=m6OGs15EtRrLmdVL0z/trYpZrWDGc1oT/PflQBdBvxo=;
-        fh=AJ8hn4ioKJA5lsG3NCMNx8yhntdFUmRi9f6dN5eYbeg=;
-        b=of6EH3vDRNvlmDrrtYUwgJdbqX7U5xznnqtTMFM8f2U55tnY8FeAebYDtux+nU3B9y
-         /ab3+QpoS6GvnS8S1X2oO2UIK+edhalbMt2JA6TUtFmvLSES9eYr42fC4+X1ZyFwka99
-         aIBb3JNn2mT56WSjRgBQSPj6wYfUHQHJUEhVMDaaYWS4yprmW3cNF2a5amiplYrdylzJ
-         maB6lvcvvx8VdhVDozIGtyicI3LY8qP4wSP0CzQIoD0Mtpg1NGq3s8elxtrSw7zlgLZK
-         RnRdV187KEDiDv+t/hutVT7/nkcrZElapA8CKGTYGSUt3BycaGC1B+Xasr/bkdFC/RMU
-         GaMw==;
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=/BexaSvF3UULPHIlOCXrv1RkX8U40VLXpcnBaiUEbvM=;
+        fh=/A1Jk9ewZ81/NwMlhJJbmsFJMBNnZp0hdN4unxYVqf0=;
+        b=ceumQy5qkPyfdi6DrBT5y+lA80luhO2ti4yzAWsHgwxfOkXCTasSWbZEK44bdXGVQK
+         iJccqq1DQJt5JYZxSoYZd6pLfllpa+bb6fBJ9wg6TEbFLu3uCGO0MH3wgGN2TV2TP1wM
+         VR6csPH5PxqRce98gH6IrTvvYbbynfnjiOkUDzwV/XnR/dtNrDVtTSgOTWrxAjhSwzAu
+         xfKIpXjmzLJmofM2Q1rctAr0/w/3RgU7feJd6mQhYWtsZAWAXoJ9PUJR5kAEbjDgjSxV
+         rZUeIxkHbxDysaSAfHtjNcvBUG+gDw3eROTYCvGERwdEuCAfF7jTW0hDjF1JCJs4hbqd
+         TeSA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=eY5IkJAR;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=tmZcSBn2;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7a378619a5fsi387611985a.195.2024.08.08.05.11.55
+        by mx.google.com with ESMTPS id d75a77b69052e-451c87fc9d4si39992381cf.447.2024.08.08.05.26.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 08 Aug 2024 05:11:55 -0700 (PDT)
+        Thu, 08 Aug 2024 05:26:56 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=eY5IkJAR;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=tmZcSBn2;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sc1zc-0001HO-GZ; Thu, 08 Aug 2024 08:11:45 -0400
+	id 1sc2EE-0000Av-IM; Thu, 08 Aug 2024 08:26:50 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mchehab+huawei@kernel.org>)
- id 1sc1zX-0001Bn-FJ; Thu, 08 Aug 2024 08:11:40 -0400
-Received: from sin.source.kernel.org ([145.40.73.55])
+ id 1sc2EB-0008Pg-Gy; Thu, 08 Aug 2024 08:26:47 -0400
+Received: from dfw.source.kernel.org ([139.178.84.217])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mchehab+huawei@kernel.org>)
- id 1sc1zU-0003S3-Qo; Thu, 08 Aug 2024 08:11:39 -0400
+ id 1sc2E9-0005xQ-9N; Thu, 08 Aug 2024 08:26:47 -0400
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by sin.source.kernel.org (Postfix) with ESMTP id 85D2ECE13B5;
- Thu,  8 Aug 2024 12:11:21 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 76B0DC4AF10;
- Thu,  8 Aug 2024 12:11:18 +0000 (UTC)
+ by dfw.source.kernel.org (Postfix) with ESMTP id D09B3615F0;
+ Thu,  8 Aug 2024 12:26:43 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CDA95C4AF10;
+ Thu,  8 Aug 2024 12:26:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1723119080;
- bh=okDt0GF8kFCoft7LCpimb0DlLgYHkqdTo2/807i2Izk=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=eY5IkJARG4aA/YFX2VkVMgRviMYbTYcnncqt4Al0e87J3bJPWSZCs+elDKgmYOAIC
- cdUXuDTislz46dDFhM4mOzRm74/CWxkVsuMLrTX9v1gTKXTDgMOonjjPaETlrooKK+
- E7Did2Cxy4wAQa9MaGwCujgwPVc8OugUizkFvZ8j3pRGF388GDiPGsiY0nk2a7vib5
- 1H8DL2+zY1Iajvup3N+uT0GyQDDoASreEpRit4UrQt1l6QuDRbU046SXyg4D8oPC0k
- krIP9LyhZZu5PwpUcl9ECVpbieBU+iJZltj6ilOoSY0nbT+3CBRTNuLcXI6KSKhC66
- aYup7vo7S0EeA==
-Date: Thu, 8 Aug 2024 14:11:14 +0200
+ s=k20201202; t=1723120003;
+ bh=GnvQcv8WtDyKfoMbqt9an3y4QcokslO3EGVw2j3GXwE=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=tmZcSBn2QCmG7nrANuBEmQrOSVQmp9Hw/CZX7FQzrNlVTSszu1UySX/E0mS6dqs9h
+ R/Q4R2Nfv/RcOwL8MLp/oEQiIGJct/5Vi3JZKpFJ32c76N9JLhlCHtDqI7BBg2jWJ+
+ e2/utlIPWCITyvc5cgZO7dhLI54YKZN2qO0wBRm3xzdjwhDnaxs/SE7b722x03MeYB
+ kX7xtFblA2025QyhK1GLrMQ3GGPjfUTr4BNsFohqgHZa82ZQgRrOUTggI/wH80AeLC
+ kHcjOgTE5tmJpZVXdvU1jUKVWqbDKS+pBUyS6AHxKqHGR5ga9MXm13g0uDbLRSOVAc
+ 5qlFI5d3I6h4A==
+Received: from mchehab by mail.kernel.org with local (Exim 4.98)
+ (envelope-from <mchehab+huawei@kernel.org>)
+ id 1sc2E4-00000000oDS-3wyD; Thu, 08 Aug 2024 14:26:40 +0200
 From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-To: Igor Mammedov <imammedo@redhat.com>
-Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>, Shiju Jose
- <shiju.jose@huawei.com>, "Michael S. Tsirkin" <mst@redhat.com>, Ani Sinha
- <anisinha@redhat.com>, Dongjiu Geng <gengdongjiu1@gmail.com>,
+To: 
+Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>,
+ Shiju Jose <shiju.jose@huawei.com>,
+ Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Ani Sinha <anisinha@redhat.com>,
+ Dongjiu Geng <gengdongjiu1@gmail.com>, Igor Mammedov <imammedo@redhat.com>,
  linux-kernel@vger.kernel.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [PATCH v5 6/7] acpi/ghes: add support for generic error
- injection via QAPI
-Message-ID: <20240808141114.3b021f80@foz.lan>
-In-Reply-To: <20240806163113.3bdc260a@imammedo.users.ipa.redhat.com>
-References: <cover.1722634602.git.mchehab+huawei@kernel.org>
- <20c491e357340e0062b6ff09867c1661ed4d2479.1722634602.git.mchehab+huawei@kernel.org>
- <20240806163113.3bdc260a@imammedo.users.ipa.redhat.com>
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
+Subject: [PATCH v6 05/10] acpi/ghes: rework the logic to handle HEST source ID
+Date: Thu,  8 Aug 2024 14:26:31 +0200
+Message-ID: <5710c364d7ef6cdab6b2f1e127ef191bdf84e8c2.1723119423.git.mchehab+huawei@kernel.org>
+X-Mailer: git-send-email 2.45.2
+In-Reply-To: <cover.1723119423.git.mchehab+huawei@kernel.org>
+References: <cover.1723119423.git.mchehab+huawei@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=145.40.73.55;
- envelope-from=mchehab+huawei@kernel.org; helo=sin.source.kernel.org
-X-Spam_score_int: -44
-X-Spam_score: -4.5
-X-Spam_bar: ----
-X-Spam_report: (-4.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.141,
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=139.178.84.217;
+ envelope-from=mchehab+huawei@kernel.org; helo=dfw.source.kernel.org
+X-Spam_score_int: -71
+X-Spam_score: -7.2
+X-Spam_bar: -------
+X-Spam_report: (-7.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.141,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
+ RCVD_IN_DNSWL_HI=-5, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -109,149 +110,385 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: MxSES50zGQrG
+X-TUID: 7XnzvJUguNvJ
 
-Em Tue, 6 Aug 2024 16:31:13 +0200
-Igor Mammedov <imammedo@redhat.com> escreveu:
+The current logic is based on a lot of duct tape, with
+offsets calculated based on one define with the number of
+source IDs and an enum.
 
-> > +    /* Could also be read back from the error_block_address register */
-> > +    *error_block_addr = base +
-> > +        ACPI_GHES_ERROR_SOURCE_COUNT * sizeof(uint64_t) +
-> > +        ACPI_GHES_ERROR_SOURCE_COUNT * sizeof(uint64_t) +
-> > +        error_source_to_index[notify] * ACPI_GHES_MAX_RAW_DATA_LENGTH;
-> > +
-> > +    return true;
-> > +}  
-> 
-> I don't like all this pointer math, which is basically a reverse engineered
-> QEMU actions on startup + guest provided etc/hardware_errors address.
-> 
-> For once, it assumes error_source_to_index[] matches order in which HEST
-> error sources were described, which is fragile.
-> 
-> 2nd: migration-wive it's disaster, since old/new HEST/hardware_errors tables
-> in RAM migrated from older version might not match above assumptions
-> of target QEMU. 
-> 
-> I see 2 ways to rectify it:
->   1st: preferred/cleanest would be to tell QEMU (via fw_cfg) address of HEST table
->        in guest RAM, like we do with etc/hardware_errors, see
->             build_ghes_error_table()
->                ...
->                tell firmware to write hardware_errors GPA into
->        and then fetch from HEST table in RAM, the guest patched error/ack addresses
->        for given source_id
-> 
->        code-wise: relatively simple once one wraps their own head over
->                  how this whole APEI thing works in QEMU
->                  workflow  is described in docs/specs/acpi_hest_ghes.rst
->                  look to me as sufficient to grasp it.
->                  (but my view is very biased given my prior knowledge,
->                   aka: docs/comments/examples wrt acpi patching are good enough)
->                  (if it's not clear how to do it, ask me for pointers)
+Rewrite the logic in a way that it would be more resilient
+of code changes, by moving the source ID count to an enum
+and make the offset calculus more explicit.
 
-That sounds a better approach, however...
+Such change was inspired on a patch from Jonathan Cameron
+splitting the logic to get the CPER address on a separate
+function, as this will be needed to support generic error
+injection.
 
->   2nd:  sort of hack based on build_ghes_v2() Error Status Address/Read Ack Register
->         patching instructions
->                bios_linker_loader_add_pointer(linker, ACPI_BUILD_TABLE_FILE,                
->                    address_offset + GAS_ADDR_OFFSET, sizeof(uint64_t),                      
->                    ACPI_GHES_ERRORS_FW_CFG_FILE, source_id * sizeof(uint64_t));
->                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^
->         during build_ghes_v2() also store on a side mapping
->              source_id -> error address offset : read ack address
-> 
->         so when you are injecting error, you'd at least use offsets
->         used at start time, to get rid of risk where injection code
->         diverge from HEST:etc/hardware_errors layout at start time.
-> 
->         However to make migration safe, one would need to add a fat
->         comment not to change order ghest error sources in HEST _and_
->         a dedicated unit test to make sure we catch it when that happens.
->         bios_tables_test should be able to catch the change, but it won't
->         say what's wrong, hence a test case that explicitly checks order
->         and loudly & clear complains when we will break order assumptions.
-> 
->         downside:
->            * we are are limiting ways HEST could be composed/reshuffled in future
->            * consumption of extra CI resources
->            * and well, it relies on above duct tape holding all pieces together
+Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+---
+ hw/acpi/ghes-stub.c    |   3 +-
+ hw/acpi/ghes.c         | 225 ++++++++++++++++++++++++++++-------------
+ include/hw/acpi/ghes.h |  12 +--
+ 3 files changed, 158 insertions(+), 82 deletions(-)
 
-I ended opting to do approach (2) on this changeset, as the current code
-is already using bios_linker_loader_add_pointer() for ghes, being deeply 
-relying on the block address/ack and cper calculus.
+diff --git a/hw/acpi/ghes-stub.c b/hw/acpi/ghes-stub.c
+index c315de1802d6..8762449870b5 100644
+--- a/hw/acpi/ghes-stub.c
++++ b/hw/acpi/ghes-stub.c
+@@ -11,7 +11,8 @@
+ #include "qemu/osdep.h"
+ #include "hw/acpi/ghes.h"
+ 
+-int acpi_ghes_record_errors(uint8_t source_id, uint64_t physical_address)
++int acpi_ghes_record_errors(enum AcpiGhesNotifyType notify,
++                            uint64_t physical_address)
+ {
+     return -1;
+ }
+diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
+index d6cbeed6e3d5..26e93dd0f6e2 100644
+--- a/hw/acpi/ghes.c
++++ b/hw/acpi/ghes.c
+@@ -34,8 +34,16 @@
+ /* The max size in bytes for one error block */
+ #define ACPI_GHES_MAX_RAW_DATA_LENGTH   (1 * KiB)
+ 
+-/* Support ARMv8 SEA notification type error source and GPIO interrupt. */
+-#define ACPI_GHES_ERROR_SOURCE_COUNT        2
++/*
++ * ID numbers used to fill HEST source ID field
++ */
++enum AcpiHestSourceId {
++    ACPI_HEST_SRC_ID_SEA,
++    ACPI_HEST_SRC_ID_GED,
++
++    /* Shall be the last one */
++    ACPI_HEST_SRC_ID_COUNT
++} AcpiHestSourceId;
+ 
+ /* Generic Hardware Error Source version 2 */
+ #define ACPI_GHES_SOURCE_GENERIC_ERROR_V2   10
+@@ -241,12 +249,12 @@ void build_ghes_error_table(GArray *hardware_errors, BIOSLinker *linker)
+     int i, error_status_block_offset;
+ 
+     /* Build error_block_address */
+-    for (i = 0; i < ACPI_GHES_ERROR_SOURCE_COUNT; i++) {
++    for (i = 0; i < ACPI_HEST_SRC_ID_COUNT; i++) {
+         build_append_int_noprefix(hardware_errors, 0, sizeof(uint64_t));
+     }
+ 
+     /* Build read_ack_register */
+-    for (i = 0; i < ACPI_GHES_ERROR_SOURCE_COUNT; i++) {
++    for (i = 0; i < ACPI_HEST_SRC_ID_COUNT; i++) {
+         /*
+          * Initialize the value of read_ack_register to 1, so GHES can be
+          * writable after (re)boot.
+@@ -261,13 +269,13 @@ void build_ghes_error_table(GArray *hardware_errors, BIOSLinker *linker)
+ 
+     /* Reserve space for Error Status Data Block */
+     acpi_data_push(hardware_errors,
+-        ACPI_GHES_MAX_RAW_DATA_LENGTH * ACPI_GHES_ERROR_SOURCE_COUNT);
++        ACPI_GHES_MAX_RAW_DATA_LENGTH * ACPI_HEST_SRC_ID_COUNT);
+ 
+     /* Tell guest firmware to place hardware_errors blob into RAM */
+     bios_linker_loader_alloc(linker, ACPI_GHES_ERRORS_FW_CFG_FILE,
+                              hardware_errors, sizeof(uint64_t), false);
+ 
+-    for (i = 0; i < ACPI_GHES_ERROR_SOURCE_COUNT; i++) {
++    for (i = 0; i < ACPI_HEST_SRC_ID_COUNT; i++) {
+         /*
+          * Tell firmware to patch error_block_address entries to point to
+          * corresponding "Generic Error Status Block"
+@@ -286,12 +294,95 @@ void build_ghes_error_table(GArray *hardware_errors, BIOSLinker *linker)
+         0, sizeof(uint64_t), ACPI_GHES_ERRORS_FW_CFG_FILE, 0);
+ }
+ 
++static bool acpi_hest_address_offset(enum AcpiGhesNotifyType notify,
++                                     uint64_t *error_block_offset,
++                                     uint64_t *ack_offset,
++                                     uint64_t *cper_offset,
++                                     enum AcpiHestSourceId *source_id)
++{
++    enum AcpiHestSourceId source;
++    uint64_t offset;
++
++    switch (notify) {
++    case ACPI_GHES_NOTIFY_SEA:      /* Only on ARMv8 */
++        source = ACPI_HEST_SRC_ID_SEA;
++        break;
++    case ACPI_GHES_NOTIFY_GPIO:
++        source = ACPI_HEST_SRC_ID_GED;
++        break;
++    default:
++        return true;
++    }
++
++    if (source_id) {
++        *source_id = source;
++    }
++
++    /*
++     * Please see docs/specs/acpi_hest_ghes.rst for the memory layout.
++     * In summary, memory starts with error addresses, then acks and
++     * finally CPER blocks.
++     */
++
++    offset = source * sizeof(uint64_t);
++
++    if (error_block_offset) {
++        *error_block_offset = offset;
++    }
++    if (ack_offset) {
++        *ack_offset = offset + ACPI_HEST_SRC_ID_COUNT * sizeof(uint64_t);
++    }
++    if (cper_offset) {
++        *cper_offset = 2 * ACPI_HEST_SRC_ID_COUNT * sizeof(uint64_t) +
++                       source * ACPI_GHES_MAX_RAW_DATA_LENGTH;
++    }
++
++    return false;
++}
++
++static int ghes_get_hardware_errors_address(enum AcpiGhesNotifyType notify,
++                                            uint64_t *error_block_addr,
++                                            uint64_t *read_ack_addr,
++                                            uint64_t *cper_addr,
++                                            enum AcpiHestSourceId *source_id)
++{
++    AcpiGedState *acpi_ged_state =
++        ACPI_GED(object_resolve_path_type("", TYPE_ACPI_GED, NULL));
++    AcpiGhesState *ags = &acpi_ged_state->ghes_state;
++
++    if (acpi_hest_address_offset(notify, error_block_addr, read_ack_addr,
++                                 cper_addr, source_id)) {
++        return -1;
++    }
++
++    if (error_block_addr) {
++        *error_block_addr += le64_to_cpu(ags->ghes_addr_le);
++    }
++
++    if (read_ack_addr) {
++        *read_ack_addr += le64_to_cpu(ags->ghes_addr_le);
++    }
++
++    if (cper_addr) {
++        *cper_addr += le64_to_cpu(ags->ghes_addr_le);
++    }
++
++    return 0;
++}
++
+ /* Build Generic Hardware Error Source version 2 (GHESv2) */
+-static void build_ghes_v2(GArray *table_data, int source_id, BIOSLinker *linker)
++static void build_ghes_v2(GArray *table_data,
++                          enum AcpiGhesNotifyType notify,
++                          BIOSLinker *linker)
+ {
+-    uint64_t address_offset;
++    uint64_t address_offset, ack_offset, block_addr_offset;
++    enum AcpiHestSourceId source_id;
+ 
+-    assert(source_id < ACPI_HEST_SRC_ID_RESERVED);
++    if (acpi_hest_address_offset(notify, &block_addr_offset, &ack_offset,
++                                 NULL, &source_id)) {
++        error_report("Error: notify %d not supported", notify);
++        abort();
++    }
+ 
+     /*
+      * Type:
+@@ -319,22 +410,21 @@ static void build_ghes_v2(GArray *table_data, int source_id, BIOSLinker *linker)
+     build_append_gas(table_data, AML_AS_SYSTEM_MEMORY, 0x40, 0,
+                      4 /* QWord access */, 0);
+     bios_linker_loader_add_pointer(linker, ACPI_BUILD_TABLE_FILE,
+-        address_offset + GAS_ADDR_OFFSET, sizeof(uint64_t),
+-        ACPI_GHES_ERRORS_FW_CFG_FILE, source_id * sizeof(uint64_t));
++                                   address_offset + GAS_ADDR_OFFSET,
++                                   sizeof(uint64_t),
++                                   ACPI_GHES_ERRORS_FW_CFG_FILE,
++                                   block_addr_offset);
+ 
++    /* Notification Structure */
+     switch (source_id) {
+     case ACPI_HEST_SRC_ID_SEA:
+-        /*
+-         * Notification Structure
+-         * Now only enable ARMv8 SEA notification type
+-         */
+         build_ghes_hw_error_notification(table_data, ACPI_GHES_NOTIFY_SEA);
+         break;
+-    case ACPI_HEST_NOTIFY_EXTERNAL:
++    case ACPI_HEST_SRC_ID_GED:
+         build_ghes_hw_error_notification(table_data, ACPI_GHES_NOTIFY_GPIO);
+         break;
+     default:
+-        error_report("Not support this error source");
++        error_report("Error: Source ID %d not supported", source_id);
+         abort();
+     }
+ 
+@@ -350,9 +440,10 @@ static void build_ghes_v2(GArray *table_data, int source_id, BIOSLinker *linker)
+     build_append_gas(table_data, AML_AS_SYSTEM_MEMORY, 0x40, 0,
+                      4 /* QWord access */, 0);
+     bios_linker_loader_add_pointer(linker, ACPI_BUILD_TABLE_FILE,
+-        address_offset + GAS_ADDR_OFFSET,
+-        sizeof(uint64_t), ACPI_GHES_ERRORS_FW_CFG_FILE,
+-        (ACPI_GHES_ERROR_SOURCE_COUNT + source_id) * sizeof(uint64_t));
++                                   address_offset + GAS_ADDR_OFFSET,
++                                   sizeof(uint64_t),
++                                   ACPI_GHES_ERRORS_FW_CFG_FILE,
++                                   ack_offset);
+ 
+     /*
+      * Read Ack Preserve field
+@@ -374,9 +465,9 @@ void acpi_build_hest(GArray *table_data, BIOSLinker *linker,
+     acpi_table_begin(&table, table_data);
+ 
+     /* Error Source Count */
+-    build_append_int_noprefix(table_data, ACPI_GHES_ERROR_SOURCE_COUNT, 4);
+-    build_ghes_v2(table_data, ACPI_HEST_SRC_ID_SEA, linker);
+-    build_ghes_v2(table_data, ACPI_HEST_NOTIFY_EXTERNAL, linker);
++    build_append_int_noprefix(table_data, ACPI_HEST_SRC_ID_COUNT, 4);
++    build_ghes_v2(table_data, ACPI_GHES_NOTIFY_SEA, linker);
++    build_ghes_v2(table_data, ACPI_GHES_NOTIFY_GPIO, linker);
+ 
+     acpi_table_end(linker, &table);
+ }
+@@ -395,56 +486,46 @@ void acpi_ghes_add_fw_cfg(AcpiGhesState *ags, FWCfgState *s,
+     ags->present = true;
+ }
+ 
+-int acpi_ghes_record_errors(uint8_t source_id, uint64_t physical_address)
++int acpi_ghes_record_errors(enum AcpiGhesNotifyType notify,
++                            uint64_t physical_address)
+ {
+-    uint64_t error_block_addr, read_ack_register_addr, read_ack_register = 0;
+-    uint64_t start_addr;
+-    bool ret = -1;
+-    AcpiGedState *acpi_ged_state;
+-    AcpiGhesState *ags;
+-
+-    assert(source_id < ACPI_HEST_SRC_ID_RESERVED);
+-
+-    acpi_ged_state = ACPI_GED(object_resolve_path_type("", TYPE_ACPI_GED,
+-                                                       NULL));
+-    g_assert(acpi_ged_state);
+-    ags = &acpi_ged_state->ghes_state;
+-
+-    start_addr = le64_to_cpu(ags->ghes_addr_le);
+-
+-    if (physical_address) {
+-        if (source_id < ACPI_HEST_SRC_ID_RESERVED) {
+-            start_addr += source_id * sizeof(uint64_t);
+-        }
+-
+-        cpu_physical_memory_read(start_addr, &error_block_addr,
+-                                 sizeof(error_block_addr));
+-
+-        error_block_addr = le64_to_cpu(error_block_addr);
+-
+-        read_ack_register_addr = start_addr +
+-            ACPI_GHES_ERROR_SOURCE_COUNT * sizeof(uint64_t);
+-
+-        cpu_physical_memory_read(read_ack_register_addr,
+-                                 &read_ack_register, sizeof(read_ack_register));
+-
+-        /* zero means OSPM does not acknowledge the error */
+-        if (!read_ack_register) {
+-            error_report("OSPM does not acknowledge previous error,"
+-                " so can not record CPER for current error anymore");
+-        } else if (error_block_addr) {
+-            read_ack_register = cpu_to_le64(0);
+-            /*
+-             * Clear the Read Ack Register, OSPM will write it to 1 when
+-             * it acknowledges this error.
+-             */
+-            cpu_physical_memory_write(read_ack_register_addr,
+-                &read_ack_register, sizeof(uint64_t));
+-
+-            ret = acpi_ghes_record_mem_error(error_block_addr,
+-                                             physical_address);
+-        } else
+-            error_report("can not find Generic Error Status Block");
++    uint64_t error_block_addr, read_ack_register = 0;
++    uint64_t cper_addr, read_ack_start_addr;
++    int ret;
++
++    ret = ghes_get_hardware_errors_address(notify, NULL,
++                                           &read_ack_start_addr,
++                                           &cper_addr, NULL);
++
++    if (ret || !physical_address) {
++        error_report("can not find Generic Error Status Block for notify %d",
++                     notify);
++        return ret;
++    }
++
++    cpu_physical_memory_read(cper_addr, &error_block_addr,
++                             sizeof(error_block_addr));
++
++    error_block_addr = le64_to_cpu(error_block_addr);
++
++    cpu_physical_memory_read(read_ack_start_addr,
++                             &read_ack_register, sizeof(read_ack_register));
++
++    /* zero means OSPM does not acknowledge the error */
++    if (!read_ack_register) {
++        error_report("OSPM does not acknowledge previous error,"
++                     " so can not record CPER for current error anymore");
++    } else if (error_block_addr) {
++        read_ack_register = cpu_to_le64(0);
++        /*
++            * Clear the Read Ack Register, OSPM will write it to 1 when
++            * it acknowledges this error.
++            */
++        cpu_physical_memory_write(read_ack_start_addr,
++            &read_ack_register, sizeof(uint64_t));
++
++        ret = acpi_ghes_record_mem_error(error_block_addr,
++                                         physical_address);
+     }
+ 
+     return ret;
+diff --git a/include/hw/acpi/ghes.h b/include/hw/acpi/ghes.h
+index a7a18c7b50cf..2fcfa1cc8090 100644
+--- a/include/hw/acpi/ghes.h
++++ b/include/hw/acpi/ghes.h
+@@ -29,7 +29,7 @@
+ extern NotifierList acpi_generic_error_notifiers;
+ 
+ /*
+- * Values for Hardware Error Notification Type field
++ * ACPI spec values for Hardware Error Notification Type field
+  */
+ enum AcpiGhesNotifyType {
+     /* Polled */
+@@ -60,13 +60,6 @@ enum AcpiGhesNotifyType {
+     ACPI_GHES_NOTIFY_RESERVED = 12
+ };
+ 
+-/* Those are used as table indexes when building GHES tables */
+-enum {
+-    ACPI_HEST_SRC_ID_SEA = 0,
+-    ACPI_HEST_NOTIFY_EXTERNAL,
+-    ACPI_HEST_SRC_ID_RESERVED,
+-};
+-
+ typedef struct AcpiGhesState {
+     uint64_t ghes_addr_le;
+     bool present; /* True if GHES is present at all on this board */
+@@ -77,7 +70,8 @@ void acpi_build_hest(GArray *table_data, BIOSLinker *linker,
+                      const char *oem_id, const char *oem_table_id);
+ void acpi_ghes_add_fw_cfg(AcpiGhesState *vms, FWCfgState *s,
+                           GArray *hardware_errors);
+-int acpi_ghes_record_errors(uint8_t notify, uint64_t error_physical_addr);
++int acpi_ghes_record_errors(enum AcpiGhesNotifyType notify,
++                            uint64_t error_physical_addr);
+ 
+ typedef struct AcpiGhesCper {
+     uint8_t *guid;
+-- 
+2.45.2
 
-To avoid troubles on this duct tape, I opted to move all offset math
-to a single function at ghes.c:
-
-	/*
-	 * ID numbers used to fill HEST source ID field
-	 */
-	enum AcpiHestSourceId {
-	    ACPI_HEST_SRC_ID_SEA,
-	    ACPI_HEST_SRC_ID_GED,
-	
-	    /* Shall be the last one */
-	    ACPI_HEST_SRC_ID_COUNT
-	} AcpiHestSourceId;
-
-	...
-
-	static bool acpi_hest_address_offset(enum AcpiGhesNotifyType notify,
-        	                             uint64_t *error_block_offset,
-                	                     uint64_t *ack_offset,
-                        	             uint64_t *cper_offset,
-                                	     enum AcpiHestSourceId *source_id)
-	{
-	    enum AcpiHestSourceId source;
-	    uint64_t offset;
-
-	    switch (notify) {
-	    case ACPI_GHES_NOTIFY_SEA:      /* Only on ARMv8 */
-	        source = ACPI_HEST_SRC_ID_SEA;
-	        break;
-	    case ACPI_GHES_NOTIFY_GPIO:
-	        source = ACPI_HEST_SRC_ID_GED;
-	        break;
-	    default:
-	        return true;
-	    }
-
-	    if (source_id) {
-	        *source_id = source;
-	    }
-
-	    /*
-	     * Please see docs/specs/acpi_hest_ghes.rst for the memory layout.
-	     * In summary, memory starts with error addresses, then acks and
-	     * finally CPER blocks.
-	     */
-
-	    offset = source * sizeof(uint64_t);
-
-	    if (error_block_offset) {
-	        *error_block_offset = offset;
-	    }
-	    if (ack_offset) {
-	        *ack_offset = offset + ACPI_HEST_SRC_ID_COUNT * sizeof(uint64_t);
-	    }
-	    if (cper_offset) {
-	        *cper_offset = 2 * ACPI_HEST_SRC_ID_COUNT * sizeof(uint64_t) +
-	                       source * ACPI_GHES_MAX_RAW_DATA_LENGTH;
-	    }
-
-	    return false;
-	}
-
-I also removed the anonymous enum with SEA/GPIO source IDs, using
-only the ACPI notify type as arguments at the function calls.
-
-As there's now a single point where the offsets from
-docs/specs/acpi_hest_ghes.rst are enforced, this should be error
-prone.
-
-The code could later be changed to use approach (2), on a separate
-cleanup.
-
-Thanks,
-Mauro

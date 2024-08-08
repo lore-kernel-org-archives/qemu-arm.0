@@ -1,470 +1,1331 @@
-Received: by 2002:a17:504:7fd7:b0:1be9:327d:8ee3 with SMTP id hj23csp665530njc;
-        Thu, 8 Aug 2024 14:31:29 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXAl1zbMoP4jUbBKGlaS9gFZbDFix7aoB7+thFGRmYax/tAVTd/N1slzrpbjx3xddCJNn7diExc9PgbyDye0gsgkiLthXhA
-X-Received: by 2002:a05:600c:4f0d:b0:426:61af:e1d3 with SMTP id 5b1f17b1804b1-4290af1a583mr23578675e9.31.1723152689119;
-        Thu, 08 Aug 2024 14:31:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1723152689; cv=none;
+Received: by 2002:a17:504:7fd7:b0:1be9:327d:8ee3 with SMTP id hj23csp671226njc;
+        Thu, 8 Aug 2024 14:56:55 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCX6ZZqfe1/JSMVQXLkaoRxS0ilO8PAWNYZOGFWRzg9zsJOqpiqzWYbzO0niG4J+b5Xp3XXB0fTsC+wtphvE64RE2Ir7qv7P
+X-Google-Smtp-Source: AGHT+IHe0HSNzgSIpLWVZnqbDdBufivNP2CtoiUKa9PstAOZuVwkuUmvcFQq4+1nlUp/O2/DxMKP
+X-Received: by 2002:a05:6122:3682:b0:4f6:b094:80aa with SMTP id 71dfb90a1353d-4f9027bbbf3mr4306408e0c.9.1723154214968;
+        Thu, 08 Aug 2024 14:56:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1723154214; cv=none;
         d=google.com; s=arc-20160816;
-        b=DXnBepGl63J1OCbO0mMpbt7Y9D5iZh0nD/bPSsfOw6XoUtGNfx7pACRTV2FC2TWtTh
-         6zKibZIMMMn5VbGCBpItZ0kCANzGEdFHDYCDxtr+awqLI/1urGBXByJGdzj04GwEPlFg
-         1XcMSkUHdRDHn5c/dm+LKArGJJGY5awILNwU1Io4RDTylrpCHuSYfWKbFHPRwisjoJuf
-         iIZo3qyTJa40aWbNNK0oJ5ieTvrIagMrC1sjtx2js32+Dhg3CFxPiIxS4sgaYaS5bb41
-         zZsIdOoF7CTJqQKjByTYbXbtScaoFZ/QdWCrpUxJSbapEg2QGY9+bniK42HbFqYgGy3x
-         OGQg==
+        b=BI0wHwjhbMbn2oB8TzseO93acXecW8v3LOxeUuCm15wuWT3LmJaArtUkAA+9Vsz22Q
+         zKbsfFLmbo77oqk0Pz5G/n/hFDsWciEU6YMzMSaFbfBkJeXtjEH5JYyy9+QuOfy+D5i+
+         3/Nvti+bvzSYsYHrLLkAONyvI2qOhUbs6fRDObdXtvd9/g9+AD5l1heKlLT4szAlvSSL
+         1vEFIIVsyFUSy2lGtuavVG8hzyYm6iTEgQwmPFCYLKuhBQdJAb4DpHloufm9IgBMlZZc
+         WLLEyo0Cw4J+Kw2n2xuxGdmwY94Z4ZEEGz7a4zcgIYZCv31YljA0COfbc3gJsjkZF/Eu
+         x3sw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=9nrlELFiylQQuaLhTjTy3FG7+PcbPPj5pusZyzUY4Zk=;
-        fh=fiSGIIOqeeY420mrUK4kz843a4ibLWlWzKkn5pYzlXs=;
-        b=rxrIxyFnZnyMX1oYsU1XV7i1zmy43TtEZU9is63WsoyOn+qmJZM4J8otulwLwyMoX9
-         ntx/lZWQLZqSS7hGs/SDBaTsWgq0cKhPCts2h//ROVw4+sf83Rfudo01pycRNtmd0oWK
-         kCop0/MFVVQQEqCtgoPNZgK5uUYf4s0CWQSEy2CwxEyBYD8DrD68eUXloM2l/AA7XNmq
-         dTSlzsQ3wUewJFHqelg9rY02aOkjyA23F1QNr6tA0XHjkEwrdP8Lbw7ZLMH/FTtrVd4R
-         IafydM21qPj5FThl4kUji19PVG4fbXVooMBZEC+eovCsHhT1hbcPtR7jRHNoAUBU1KyH
-         9bog==;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=JKSkilWUIC+jCq6c4SorERinI9rQXtTtfoHMqRlGGy8=;
+        fh=qbAfheFy+h2pkdQXzU7yZM5jfPp0YhY4xROwBCuFl0k=;
+        b=SxHqdPDqTAr9ezCDj9mzLqyXOalQ2FJYkJajKa0tnz5ljgF/o3yFjy1PSHYxLunHsF
+         3rBhS8SP8uCDEu59hwhyFOdOnN1g4jeCSelfYkPes1kgE53Y9wOAZf2jxAfV1pfY2LjR
+         Mdfy3ZiIdLO2XBq9ftsf2jYr9gr9NBxZ7X7HE7wT/iRFDKo/b96KptBxynuAMRtSDXQZ
+         7F2KqQ1e8Hca4esQX390mr8xsO7148Y1KJ7vX2QWFG5c0ZqfRt89N9LfbAJrbDUMj9D+
+         C9M15MknkmQmVI2wu/V+ZNn8VUhwEQYcUYMOde/2NdbG6YgFioV6eycfT2IvplIRPxfH
+         AsWw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b="Odl/J1o9";
-       spf=pass (google.com: domain of tavip@google.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=tavip@google.com;
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
-       dara=neutral header.i=@linaro.org
-Return-Path: <tavip@google.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 5b1f17b1804b1-4290c0dd7f3sor4925685e9.5.2024.08.08.14.31.28
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NnU2Q5vw;
+       spf=pass (google.com: domain of jsnow@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=jsnow@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <jsnow@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id af79cd13be357-7a378873c3csi521305685a.758.2024.08.08.14.56.54
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Thu, 08 Aug 2024 14:31:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of tavip@google.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 08 Aug 2024 14:56:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jsnow@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b="Odl/J1o9";
-       spf=pass (google.com: domain of tavip@google.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=tavip@google.com;
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20230601; t=1723152688; x=1723757488; darn=linaro.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=9nrlELFiylQQuaLhTjTy3FG7+PcbPPj5pusZyzUY4Zk=;
-        b=Odl/J1o96XCLGEnkkWPmWSUcuWHxOgb/2xM/aZMqgVS6QvAIMT5oHupImqvfebiRJ/
-         hUCR1YdmKZWnxgFEmZi0vUnK8zs8ScFdPh3dpwVRwUwQchkf/Ohu6eyY3Zwi952aGIOk
-         9PzAhge4t6GtfIuuZzGSG2Oklo04BHBEFdhV1MLUU6PeEpcDbl727gc1YGoT/4JJ2OfQ
-         ercCFa6nSDwriUvcVR6Fp1WPdpE2e5Zm0LPesdalrzERwit0ME8XzJPWgHpsOW8hphi8
-         A/izxdFR/VQIsuph6FBK4d4GuqUC9jkd23pIBg1d86ZSRHGwYnDH/uZLSh5gsv1Ki7af
-         WrzA==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NnU2Q5vw;
+       spf=pass (google.com: domain of jsnow@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=jsnow@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1723154214;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=JKSkilWUIC+jCq6c4SorERinI9rQXtTtfoHMqRlGGy8=;
+	b=NnU2Q5vwf6vIRrczS/EiOjzDwoSdXcXNabnid+WgBsa3PrajHBZ3SjwwwGKTOw1rB44/eN
+	vOLHc3h0dQmF6xiKY8VHrebAziiuPW9hWBQwDxvZdKCYCLkgm7Q/C0uMITVM59dHBpf2bG
+	rcJH9K2S5eNuN5m4HgVB0YYk8LIs0bc=
+Received: from mail-pj1-f72.google.com (mail-pj1-f72.google.com
+ [209.85.216.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-25-noD9W8VGM4avuPIXQGPfog-1; Thu, 08 Aug 2024 17:56:52 -0400
+X-MC-Unique: noD9W8VGM4avuPIXQGPfog-1
+Received: by mail-pj1-f72.google.com with SMTP id 98e67ed59e1d1-2d1989d103eso1888503a91.2
+        for <alex.bennee@linaro.org>; Thu, 08 Aug 2024 14:56:52 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1723152688; x=1723757488;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=9nrlELFiylQQuaLhTjTy3FG7+PcbPPj5pusZyzUY4Zk=;
-        b=WPRbRRgLgnREBSF0FfDCw0D89KSPyMMaV/WNDUBYSOpKiN5jgRCUgePdwHpUBAGqI8
-         UjQVLm/lGUbHjuM3oZXDhFBMNk/BP2HeGaOdRxfzvOKkNqMdG7V/GNQrIhghvfp4hQwh
-         pbL2WWgDUJ1OG5MOj6lhIzO50bL8XFhMqxciez2Jow2bznH+JehqeSBG+3OP9H9kpMMP
-         2JZpXd1zl9SnPxM1qOaixRisdBW6gAN7iV83INze+IuGceMHCav0AosZQawesHI+h5k6
-         mLR3GaFE0Y892tD46O5Wvjkeq0XZp59MsrTIvUGJ83pf4V9MDZBCQjt6nz0nLPGig+KR
-         lHSA==
-X-Forwarded-Encrypted: i=1; AJvYcCUvAJB7TM+Gb71GPieCx+RbBJ2KwnXYUsgfIu3Vo65kl1oSOhWupd2kCU1KEAg6QjqxHu69dOmTgTyeQVZ1yBAqs49sGmwy
-X-Gm-Message-State: AOJu0YyL3mMhzShCKXXjeo8qUf50vr7X27wWE6qX9pUcUetC5JMiq3lP
-	vfs/JmdADMY/rR/NAMGd6O7/9+uJhbxmKodzI0k8/ln9aAvebBlMRnB+xR3bg4IjVRTCbe68Vao
-	DrUq6xOoD6eRqQNm/snhfGna4ajtoqEaS19xbamVUjKvJ6f4DiG/bAtk=
-X-Google-Smtp-Source: AGHT+IEergXdvEAtIYUeR2yoMvnlh0ogme+ju6n8zd1aWrRUsjOopXCxQ6Ms11E9ElnDxCDLuGhlICrJSX2CJ+oeE3Q=
-X-Received: by 2002:a05:600c:5117:b0:426:6220:cb57 with SMTP id
- 5b1f17b1804b1-4290af0b1f2mr22805025e9.25.1723152688243; Thu, 08 Aug 2024
- 14:31:28 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1723154211; x=1723759011;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=JKSkilWUIC+jCq6c4SorERinI9rQXtTtfoHMqRlGGy8=;
+        b=tsAUJKTrE5Lqr82E55bMJuaY8hvHceYeSZbkEX+wZxX4SoxnkaoPy22t2ZRJuYvkyj
+         k+MQOGoTzCRzQ786yvDxo6poE1sn7h5iM0QiEYuKmDe6s8o3PimcSv2iIgk4xKFa7Hff
+         G+xaBMPLif8S7l8BVNMyq2Y2tnXvYNTnp4QlZTAnSOL9tKGR5xteBmzmxUsM7RM76O8N
+         m128Jwm6Be9Y1t00YZFYMi3Tif6N7gdiGKIwRa29Sz+AbjxOJa8QXljCgtT5rkQfJwk3
+         B5Kp3jWBfFv2gtRJserF3uH2cWXRXwsScF+Y3sgPjRXSSOKzEbimVpYHHX9Agpgv+3Cn
+         0WEA==
+X-Forwarded-Encrypted: i=1; AJvYcCXj4Nl8DEzVzE2QQnLuTE8vhYpqa0DcJyQ/fIVTIv51QlnW5DIZYGJLdpzrA2Cah2UzJn1p3uoUHOYaJaTjeEEWqy45q1ct
+X-Gm-Message-State: AOJu0Yz6Eutkhx3Gl1doZGVN/gycJLKLv+0E6RuTzR2lz/ESZ0CT+w7Z
+	zDB1KzuQ6i2Svl9obz6vYFCExJsGMpe4bwKoMxgy7R2kQG0Ry55BYIn5s9VYfRXrt9g42k5StIh
+	HX8jWGt1HsjUNIV4x/Ly1iKcIXqr6uMiif//XDTrPcQPm+FQNXCNWRl+4Ko8qxf/R4Bf2/YnfdC
+	+7D9AyW0+BjsamnxwSF3rDQYfV7Eml
+X-Received: by 2002:a17:90a:ba8a:b0:2c9:63ef:95b9 with SMTP id 98e67ed59e1d1-2d1c33b632emr3985263a91.14.1723154211235;
+        Thu, 08 Aug 2024 14:56:51 -0700 (PDT)
+X-Received: by 2002:a17:90a:ba8a:b0:2c9:63ef:95b9 with SMTP id
+ 98e67ed59e1d1-2d1c33b632emr3985228a91.14.1723154210551; Thu, 08 Aug 2024
+ 14:56:50 -0700 (PDT)
 MIME-Version: 1.0
-References: <20240805201719.2345596-1-tavip@google.com> <20240805201719.2345596-21-tavip@google.com>
- <d31e1020-ce8d-40d9-ac8c-1dd8a0294073@linaro.org>
-In-Reply-To: <d31e1020-ce8d-40d9-ac8c-1dd8a0294073@linaro.org>
-From: Octavian Purdila <tavip@google.com>
-Date: Thu, 8 Aug 2024 14:31:15 -0700
-Message-ID: <CAGWr4cQ0rv=83srF4NdJQ3ppP8mUu4qoCxU+nPtrBEL+TbgwqQ@mail.gmail.com>
-Subject: Re: [RFC PATCH 20/23] hw/ssi: add support for flexspi
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+References: <20240805201719.2345596-1-tavip@google.com> <20240805201719.2345596-4-tavip@google.com>
+In-Reply-To: <20240805201719.2345596-4-tavip@google.com>
+From: John Snow <jsnow@redhat.com>
+Date: Thu, 8 Aug 2024 17:56:38 -0400
+Message-ID: <CAFn=p-abeXP+dUtp_gwH3dcD5DT-sTAFg=udVugrzcU1r8fXpA@mail.gmail.com>
+Subject: Re: [RFC PATCH 03/23] scripts: add script to generate C header files
+ from SVD XML files
+To: Octavian Purdila <tavip@google.com>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, stefanst@google.com, 
 	pbonzini@redhat.com, alex.bennee@linaro.org, thuth@redhat.com, 
 	peter.maydell@linaro.org, marcandre.lureau@redhat.com, alistair@alistair23.me, 
-	berrange@redhat.com, jsnow@redhat.com, crosa@redhat.com, bleal@redhat.com
+	berrange@redhat.com, philmd@linaro.org, crosa@redhat.com, bleal@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: multipart/alternative; boundary="0000000000009d12d6061f331ae1"
+X-TUID: TgiIAxjJxCxE
+
+--0000000000009d12d6061f331ae1
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-TUID: e7y3+cpLrovH
 
-On Wed, Aug 7, 2024 at 10:11=E2=80=AFPM Philippe Mathieu-Daud=C3=A9
-<philmd@linaro.org> wrote:
->
-> Hi Octavian,
->
+On Mon, Aug 5, 2024 at 4:17=E2=80=AFPM Octavian Purdila <tavip@google.com> =
+wrote:
 
-Hi Philippe,
-
-Thanks for the review!
-
-> On 5/8/24 22:17, Octavian Purdila wrote:
-> > This is mostly a stub which completes SPI transactions as noops
-> > by masking out the error interrupts and never clearing the IPCMDDONE
-> > interrupt.
-> >
-> > Although incomplete, this allows software that uses NXP's mcuxpresso
-> > SDK to run the SDK board initialization functions.
-> >
-> > It also supports AHB memory access, aka XIP, for now as simple RAM
-> > memory regions.
-> >
-> > Signed-off-by: Octavian Purdila <tavip@google.com>
-> > ---
-> >   hw/arm/svd/meson.build   |   4 +
-> >   hw/ssi/Kconfig           |   4 +
-> >   hw/ssi/flexspi.c         | 216 ++++++++++++++++++++++++++++++++++++++=
-+
-> >   hw/ssi/meson.build       |   1 +
-> >   hw/ssi/trace-events      |   4 +
-> >   include/hw/ssi/flexspi.h |  34 ++++++
-> >   6 files changed, 263 insertions(+)
-> >   create mode 100644 hw/ssi/flexspi.c
-> >   create mode 100644 include/hw/ssi/flexspi.h
+> From: Stefan Stanacar <stefanst@google.com>
 >
+> From: Stefan Stanacar <stefanst@google.com>
 >
-> > diff --git a/hw/ssi/flexspi.c b/hw/ssi/flexspi.c
-> > new file mode 100644
-> > index 0000000000..305d1a5bac
-> > --- /dev/null
-> > +++ b/hw/ssi/flexspi.c
-> > @@ -0,0 +1,216 @@
-> > +/*
-> > + * QEMU model for FLEXSPI
-> > + *
-> > + * Copyright (c) 2024 Google LLC
-> > + *
-> > + * SPDX-License-Identifier: GPL-2.0-or-later
-> > + *
-> > + * This work is licensed under the terms of the GNU GPL, version 2 or =
-later.
-> > + * See the COPYING file in the top-level directory.
-> > + */
-> > +
-> > +#include "qemu/osdep.h"
-> > +#include "qemu/mmap-alloc.h"
-> > +#include "qemu/log.h"
-> > +#include "qemu/module.h"
-> > +#include "qemu/units.h"
-> > +#include "hw/irq.h"
-> > +#include "hw/qdev-properties.h"
-> > +#include "hw/qdev-properties-system.h"
-> > +#include "migration/vmstate.h"
-> > +#include "exec/address-spaces.h"
-> > +#include "hw/regs.h"
-> > +#include "hw/ssi/flexspi.h"
-> > +#include "hw/arm/svd/flexspi.h"
-> > +
-> > +#include "trace.h"
-> > +
-> > +#define reg(field) offsetof(FLEXSPI_Type, field)
-> > +#define regi(x) (reg(x) / sizeof(uint32_t))
-> > +#define REG_NO (sizeof(FLEXSPI_Type) / sizeof(uint32_t))
-> > +
-> > +static FLEXSPI_REGISTER_NAMES_ARRAY(reg_names);
-> > +
-> > +static void flexspi_reset(DeviceState *dev)
-> > +{
-> > +    FlexSpiState *s =3D FLEXSPI(dev);
-> > +
-> > +    memset(&s->regs, 0, sizeof(s->regs));
-> > +
-> > +    flexspi_reset_registers(&s->regs);
-> > +
-> > +    /* idle immediately after reset */
-> > +    s->regs.STS0_b.SEQIDLE =3D 1;
-> > +}
-> > +
-> > +static MemTxResult flexspi_read(void *opaque, hwaddr addr,
-> > +                                     uint64_t *data, unsigned size,
-> > +                                     MemTxAttrs attrs)
-> > +{
-> > +    FlexSpiState *s =3D opaque;
-> > +    MemTxResult ret =3D MEMTX_OK;
-> > +
-> > +    if (!reg32_aligned_access(addr, size)) {
-> > +        ret =3D MEMTX_ERROR;
-> > +        goto out;
-> > +    }
-> > +
-> > +    switch (addr) {
-> > +    default:
-> > +        *data =3D reg32_read(&s->regs, addr);
-> > +        break;
-> > +    }
-> > +
-> > +out:
-> > +    trace_flexspi_reg_read(DEVICE(s)->id, reg_names[addr], addr, *data=
-);
-> > +    return ret;
-> > +}
-> > +
-> > +static uint32_t wr_mask[REG_NO] =3D {
-> > +    [regi(MCR0)] =3D BITS(31, 14) | BITS(12, 8) | BITS(5, 4) | BITS(1,=
- 0),
-> > +    [regi(MCR1)] =3D BITS(31, 0),
-> > +    [regi(MCR2)] =3D BITS(31, 24) | BIT(11),
-> > +    [regi(AHBCR)] =3D BIT(10) | BITS(7, 2) | BIT(0),
-> > +    [regi(INTEN)] =3D BITS(13, 0),
-> > +    /*
-> > +     * TODO: once SPI transfers are implemented restore mask to:
-> > +     *
-> > +     * [regi(INTR)] =3D BIT(16) | BITS(12, 0).
-> > +     *
-> > +     * In the meantime this INTR mask allows for fake SPI transfers.
-> > +     */
-> > +    [regi(INTR)] =3D BIT(0),
-> > +    [regi(LUTKEY)] =3D BITS(31, 0),
-> > +    [regi(LUTCR)] =3D BITS(1, 0),
-> > +    [regi(AHBRXBUF0CR0)] =3D BIT(31) | BITS(26, 24) | BITS(19, 16) | B=
-ITS(7, 0),
-> > +    [regi(AHBRXBUF1CR0)] =3D BIT(31) | BITS(26, 24) | BITS(19, 16) | B=
-ITS(7, 0),
-> > +    [regi(AHBRXBUF2CR0)] =3D BIT(31) | BITS(26, 24) | BITS(19, 16) | B=
-ITS(7, 0),
-> > +    [regi(AHBRXBUF3CR0)] =3D BIT(31) | BITS(26, 24) | BITS(19, 16) | B=
-ITS(7, 0),
-> > +    [regi(AHBRXBUF4CR0)] =3D BIT(31) | BITS(26, 24) | BITS(19, 16) | B=
-ITS(7, 0),
-> > +    [regi(AHBRXBUF5CR0)] =3D BIT(31) | BITS(26, 24) | BITS(19, 16) | B=
-ITS(7, 0),
-> > +    [regi(AHBRXBUF6CR0)] =3D BIT(31) | BITS(26, 24) | BITS(19, 16) | B=
-ITS(7, 0),
-> > +    [regi(AHBRXBUF7CR0)] =3D BIT(31) | BITS(26, 24) | BITS(19, 16) | B=
-ITS(7, 0),
-> > +    [regi(FLSHA1CR0)] =3D BITS(22, 0),
-> > +    [regi(FLSHA2CR0)] =3D BITS(22, 0),
-> > +    [regi(FLSHB1CR0)] =3D BITS(22, 0),
-> > +    [regi(FLSHB2CR0)] =3D BITS(22, 0),
-> > +    [regi(FLSHCR1A1)] =3D BITS(31, 0),
-> > +    [regi(FLSHCR1A2)] =3D BITS(31, 0),
-> > +    [regi(FLSHCR1B1)] =3D BITS(31, 0),
-> > +    [regi(FLSHCR1B2)] =3D BITS(31, 0),
-> > +    [regi(FLSHCR2A1)] =3D BITS(30, 13) | BITS(11, 5) | BITS(3, 0),
-> > +    [regi(FLSHCR2A2)] =3D BITS(30, 13) | BITS(11, 5) | BITS(3, 0),
-> > +    [regi(FLSHCR2B1)] =3D BITS(30, 13) | BITS(11, 5) | BITS(3, 0),
-> > +    [regi(FLSHCR2B2)] =3D BITS(30, 13) | BITS(11, 5) | BITS(3, 0),
-> > +    [regi(FLSHCR4)] =3D BITS(3, 2) | BIT(0),
-> > +    [regi(IPCR0)] =3D BITS(31, 0),
-> > +    [regi(IPCR1)] =3D BIT(31) | BITS(26, 24) | BITS(19, 0),
-> > +    [regi(IPCMD)] =3D BIT(1),
-> > +    [regi(DLPR)] =3D BITS(31, 0),
-> > +    [regi(IPRXFCR)] =3D BITS(8, 0),
-> > +    [regi(IPTXFCR)] =3D BITS(8, 0),
-> > +    [regi(DLLCRA)] =3D BITS(14, 8) | BITS(6, 3) | BITS(1, 0),
-> > +    [regi(DLLCRB)] =3D BITS(14, 8) | BITS(6, 3) | BITS(1, 0),
-> > +    [regi(HADDRSTART)] =3D BITS(31, 12) | BIT(0),
-> > +    [regi(HADDREND)] =3D BITS(31, 12),
-> > +    [regi(HADDROFFSET)] =3D BITS(31, 12),
-> > +};
-> > +
-> > +static MemTxResult flexspi_write(void *opaque, hwaddr addr,
-> > +                                      uint64_t value, unsigned size,
-> > +                                      MemTxAttrs attrs)
-> > +{
-> > +    FlexSpiState *s =3D opaque;
-> > +    MemTxResult ret =3D MEMTX_OK;
-> > +
-> > +    trace_flexspi_reg_write(DEVICE(s)->id, reg_names[addr], addr, valu=
-e);
-> > +
-> > +    if (!reg32_aligned_access(addr, size)) {
-> > +        ret =3D MEMTX_ERROR;
-> > +        goto out;
-> > +    }
-> > +
-> > +    switch (addr) {
-> > +    case reg(MCR0):
-> > +    {
-> > +        reg32_write(&s->regs, addr, value, wr_mask);
-> > +
-> > +        if (s->regs.MCR0_b.SWRESET) {
-> > +            s->regs.MCR0_b.SWRESET =3D 0;
-> > +        }
-> > +        break;
-> > +    }
-> > +
-> > +    default:
-> > +        reg32_write(&s->regs, addr, value, wr_mask);
-> > +        break;
-> > +    }
-> > +
-> > +out:
-> > +    return ret;
-> > +}
-> > +
-> > +static const MemoryRegionOps flexspi_ops =3D {
-> > +    .read_with_attrs =3D flexspi_read,
-> > +    .write_with_attrs =3D flexspi_write,
-> > +    .endianness =3D DEVICE_NATIVE_ENDIAN,
+> The CMSIS System View Description format(CMSIS-SVD) is an XML based
+> description of Arm Cortex-M microcontrollers provided and maintained
+> by sillicon vendors. It includes details such as peripherals registers
+> (down to bitfields), peripheral register block addresses, reset
+> values, etc.
 >
-> I'm not a fan of your reg32_aligned_access() method, I'd rather
-> use the generic path with:
+> This script uses this information to create header files that makes it
+> easier to emulate peripherals.
 >
->      .valid =3D {
->          .max_access_size =3D 4,
->          .min_access_size =3D 4,
->          .unaligned =3D false
->      },
+> The script can be used to create either peripheral specific headers or
+> board / system specific information. The script generated headers are
+> similar to the SVDConv utility.
+>
+> Peripheral specific headers contains information such as register
+> layout, register names and reset values for registers:
+>
+>   typedef struct {
+>     ...
+>     union {
+>       uint32_t PSELID;              /* 0x00000FF8 Peripheral Select and
+>                                      * Flexcomm module ID */
+>       struct {
+>         uint32_t PERSEL : 3;        /* [2..0] Peripheral Select */
+>         uint32_t LOCK : 1;          /* [3..3] Lock the peripheral select =
+*/
+>         uint32_t USARTPRESENT : 1;  /* [4..4] USART present indicator */
+>         uint32_t SPIPRESENT : 1;    /* [5..5] SPI present indicator */
+>         uint32_t I2CPRESENT : 1;    /* [6..6] I2C present indicator */
+>         uint32_t I2SPRESENT : 1;    /* [7..7] I2S Present */
+>         uint32_t : 4;
+>         uint32_t ID : 20;           /* [31..12] Flexcomm ID */
+>       } PSELID_b;
+>     };
+>     ...
+>   } FLEXCOMM_Type;                  /* Size =3D 4096 (0x1000) */
+>
+>   #define FLEXCOMM_PSELID_PERSEL_Pos (0UL)
+>   #define FLEXCOMM_PSELID_PERSEL_Msk (0x7UL)
+>   #define FLEXCOMM_PSELID_LOCK_Pos (3UL)
+>   #define FLEXCOMM_PSELID_LOCK_Msk (0x8UL)
+>   ...
+>
+>   typedef enum {                /* FLEXCOMM_PSELID_LOCK */
+>     /* Peripheral select can be changed by software. */
+>     FLEXCOMM_PSELID_LOCK_UNLOCKED =3D 0,
+>     /* Peripheral select is locked and cannot be changed until this
+>      * Flexcomm module or the entire device is reset. */
+>     FLEXCOMM_PSELID_LOCK_LOCKED =3D 1,
+>   } FLEXCOMM_PSELID_LOCK_Enum;
+>   ...
+>
+>   #define FLEXCOMM_REGISTER_NAMES_ARRAY(_name) \
+>     const char *_name[sizeof(FLEXCOMM_Type)] =3D { \
+>         [4088 ... 4091] =3D "PSELID", \
+>         [4092 ... 4095] =3D "PID", \
+>     }
+>
+> Board specific headers contains information about peripheral base
+> register addresses.
+>
+> Signed-off-by: Stefan Stanacar <stefanst@google.com>
+> Signed-off-by: Octavian Purdila <tavip@google.com>
+> ---
+>  configure                 |   2 +-
+>  meson.build               |   4 +
+>  python/setup.cfg          |   1 +
+>  python/tests/minreqs.txt  |   3 +
+>  pythondeps.toml           |   3 +
+>  scripts/svd-gen-header.py | 342 ++++++++++++++++++++++++++++++++++++++
+>  6 files changed, 354 insertions(+), 1 deletion(-)
+>  create mode 100755 scripts/svd-gen-header.py
+>
+> diff --git a/configure b/configure
+> index 5ad1674ca5..811bfa5d54 100755
+> --- a/configure
+> +++ b/configure
+> @@ -956,7 +956,7 @@ mkvenv=3D"$python
+> ${source_path}/python/scripts/mkvenv.py"
+>  # Finish preparing the virtual environment using vendored .whl files
+>
+>  $mkvenv ensuregroup --dir "${source_path}/python/wheels" \
+> -     ${source_path}/pythondeps.toml meson || exit 1
+> +     ${source_path}/pythondeps.toml meson svd-gen-header || exit 1
 >
 
-Noted. I will switch to use this approach where possible.
+I haven't read the rest of this series; I'm chiming in solely from the
+build/python maintainer angle. Do we *always* need pysvd, no matter how
+QEMU was configured? Adding it to the meson line here is a very big hammer.
 
-Note that flexcom_spi allows 8/16/32 bit access on some registers, so
-I would still like to keep the reg32_aligned_access() method for that
-case, unless there is a better option.
+If not, consider looking at how sphinx (the "docs" group) is only
+conditionally installed into the configure venv and mimic that using the
+appropriate configure flags that necessitate the availability of pyvsd for
+the QEMU build.
 
-> > +};
-> > +
-> > +static Property flexspi_properties[] =3D {
-> > +    DEFINE_PROP_UINT32("mmap_base", FlexSpiState, mmap_base, 0),
-> > +    DEFINE_PROP_UINT32("mmap_size", FlexSpiState, mmap_size, 0),
-> > +    DEFINE_PROP_END_OF_LIST(),
-> > +};
-> > +
-> > +static void flexspi_init(Object *obj)
-> > +{
-> > +    FlexSpiState *s =3D FLEXSPI(obj);
-> > +
-> > +    memory_region_init_io(&s->mmio, obj, &flexspi_ops, s, TYPE_FLEXSPI=
-,
-> > +                          sizeof(FLEXSPI_Type));
-> > +    sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->mmio);
-> > +}
-> > +
-> > +static void flexspi_realize(DeviceState *dev, Error **errp)
-> > +{
-> > +    FlexSpiState *s =3D FLEXSPI(dev);
-> > +
-> > +    if (s->mmap_size) {
-> > +        memory_region_init_ram(&s->mem, OBJECT(s), DEVICE(s)->id, s->m=
-map_size,
-> > +                               NULL);
-> > +        memory_region_add_subregion(get_system_memory(), s->mmap_base,=
- &s->mem);
+We also need to provide a way for pysvd to be available offline; some
+packages are available via distro libs and if this package is available for
+every distro we officially support, that's sufficient (but requires updates
+to our various docker and VM test configuration files to add the new
+dependency). Otherwise, like we do for meson, we need to vendor the wheel
+in the tree so offline tarball builds will continue to work.
+
+It looks like pysvd is a pure python package with no dependencies, so it
+should be OK to vendor it in qemu.git/python/wheels/ - look at
+qemu.git/python/scripts/vendor.py and consider updating and running this
+script.
+
+(The real blocker here is that RPM builds are performed offline and
+dependencies that cannot be satisfied via rpm can't be added through pip.
+We need any one of these to be true: (A) pyvsd is available (of a
+sufficient version) in all distro repositories we target; (B) This build
+feature is conditional and nobody minds if it never gets enabled for RPM
+builds; (C) The package can be vendored.)
+
+~~js
+
+That said, you might be the first person I've seen outside of Paolo and I
+to brave mucking around with the python build venv. You deserve a bravery
+sticker :)
+
+
+>  # At this point, we expect Meson to be installed and available.
+>  # We expect mkvenv or pip to have created pyvenv/bin/meson for us.
+> diff --git a/meson.build b/meson.build
+> index ec59effca2..dee587483b 100644
+> --- a/meson.build
+> +++ b/meson.build
+> @@ -3235,6 +3235,10 @@ tracetool_depends =3D files(
+>    'scripts/tracetool/vcpu.py'
+>  )
 >
-> Where is this region used?
+> +svd_gen_header =3D [
+> +  python, files('scripts/svd-gen-header.py')
+> +]
+> +
+>  qemu_version_cmd =3D [find_program('scripts/qemu-version.sh'),
+>                      meson.current_source_dir(),
+>                      get_option('pkgversion'), meson.project_version()]
+> diff --git a/python/setup.cfg b/python/setup.cfg
+> index 48668609d3..bc830c541a 100644
+> --- a/python/setup.cfg
+> +++ b/python/setup.cfg
+> @@ -45,6 +45,7 @@ devel =3D
+>      urwid >=3D 2.1.2
+>      urwid-readline >=3D 0.13
+>      Pygments >=3D 2.9.0
+> +    pysvd >=3D 0.2.3
+>
+>  # Provides qom-fuse functionality
+>  fuse =3D
+> diff --git a/python/tests/minreqs.txt b/python/tests/minreqs.txt
+> index a3f423efd8..7993fcd23c 100644
+> --- a/python/tests/minreqs.txt
+> +++ b/python/tests/minreqs.txt
+> @@ -22,6 +22,9 @@ distlib=3D=3D0.3.6
+>  # Dependencies for FUSE support for qom-fuse
+>  fusepy=3D=3D2.0.4
+>
+> +# Dependencies for svd-gen-regs
+> +pysvd=3D=3D0.2.3
+> +
+>  # Test-runners, utilities, etc.
+>  avocado-framework=3D=3D90.0
+>
+> diff --git a/pythondeps.toml b/pythondeps.toml
+> index 9c16602d30..8416b17650 100644
+> --- a/pythondeps.toml
+> +++ b/pythondeps.toml
+> @@ -32,3 +32,6 @@ sphinx_rtd_theme =3D { accepted =3D ">=3D0.5", installe=
+d =3D
+> "1.1.1" }
+>  # avocado-framework, for example right now the limit is 92.x.
+>  avocado-framework =3D { accepted =3D "(>=3D88.1, <93.0)", installed =3D =
+"88.1",
+> canary =3D "avocado" }
+>  pycdlib =3D { accepted =3D ">=3D1.11.0" }
+> +
+> +[svd-gen-header]
+> +pysvd =3D { accepted =3D ">=3D0.2.3.", installed =3D "0.2.3" }
+> diff --git a/scripts/svd-gen-header.py b/scripts/svd-gen-header.py
+> new file mode 100755
+> index 0000000000..ab8cb4b665
+> --- /dev/null
+> +++ b/scripts/svd-gen-header.py
+> @@ -0,0 +1,342 @@
+> +#!/usr/bin/env python3
+> +
+> +# Copyright 2024 Google LLC
+> +#
+> +# This work is licensed under the terms of the GNU GPL, version 2 or
+> later.
+> +# See the COPYING file in the top-level directory.
+> +#
+> +# Use this script to generate a C header file from an SVD xml
+> +#
+> +# Two mode of operations are supported: peripheral and system.
+> +#
+> +# When running in peripheral mode a header for a specific peripheral
+> +# is going to be generated. It will define a type and structure with
+> +# all of the available registers at the bitfield level. An array that
+> +# contains the reigster names indexed by address is also going to be
+> +# generated as well as a function to initialize registers to their
+> +# reset values.
+> +#
+> +# Invocation example:
+> +#
+> +# svd_gen_header -i MIMXRT595S_cm33.xml -o flexcomm.h -p FLEXCOMM0 -t
+> FLEXCOMM
+> +#
+> +# When running in system mode a header for a specific system /
+> +# platform will be generated. It will define register base addresses
+> +# and interrupt numbers for selected peripherals.
+> +#
+> +# Invocation example:
+> +#
+> +# svd_gen_header -i MIMXRT595S_cm33.xml -o rt500.h -s RT500 -p FLEXCOMM0=
+ \
+> +#                -p CLKCTL0 -p CLKCTL1
+> +#
+> +
+> +import argparse
+> +import datetime
+> +import re
+> +import os
+> +import sys
+> +import xml.etree.ElementTree
+> +import pysvd
+> +
+> +data_type_by_bits =3D {
+> +    8: "uint8_t",
+> +    16: "uint16_t",
+> +    32: "uint32_t",
+> +}
+> +
+> +
+> +def get_register_array_name_and_size(register):
+> +    """Return register name and register array size.
+> +
+> +    The SVD can define register arrays and pysvd encodes the whole set
+> +    as as regular register with their name prepended by [<array size>].
+> +
+> +    Returns a tuple with the register name and the size of the array or
+> +    zero if this is not a register set.
+> +
+> +    """
+> +
+> +    split =3D re.split(r"[\[\]]", register.name)
+> +    return (split[0], int(split[1]) if len(split) > 1 else 0)
+> +
+> +
+> +def generate_register(register):
+> +    """Generate register data.
+> +
+> +    This include a field for accessing the full 32bits as we as
+> +    bitfield based register fields.
+> +
+> +    """
+> +
+> +    data_type =3D data_type_by_bits[register.size]
+> +
+> +    out =3D f"    /* 0x{register.addressOffset:08X} {register.descriptio=
+n}
+> */\n"
+> +    out +=3D "    union {\n"
+> +    out +=3D f"        {data_type} {register.name};\n"
+> +    out +=3D "        struct {\n"
+> +
+> +    fields =3D sorted(register.fields, key=3Dlambda field: field.bitOffs=
+et)
+> +    last_msb =3D -1
+> +    for field in fields:
+> +        reserve_bits =3D 0
+> +        lsb =3D field.bitOffset
+> +        msb =3D field.bitWidth + lsb - 1
+> +
+> +        if last_msb =3D=3D -1 and lsb > 0:
+> +            reserve_bits =3D lsb
+> +
+> +        if last_msb !=3D -1 and (lsb - last_msb) > 1:
+> +            reserve_bits =3D lsb - last_msb - 1
+> +
+> +        if reserve_bits > 0:
+> +            out +=3D f"            {data_type}:{reserve_bits};\n"
+> +
+> +        out +=3D f"            /* [{msb}..{lsb}] {field.description} */\=
+n"
+> +        out +=3D f"            {data_type} {field.name} :
+> {field.bitWidth};\n"
+> +
+> +        last_msb =3D msb
+> +
+> +    if register.size - last_msb > 1:
+> +        out +=3D f"            {data_type}:{register.size - last_msb -
+> 1};\n"
+> +
+> +    reg_name, reg_array_size =3D get_register_array_name_and_size(regist=
+er)
+> +    if reg_array_size > 0:
+> +        out +=3D f"        }} {reg_name}_b[{reg_array_size}];\n"
+> +    else:
+> +        out +=3D f"        }} {reg_name}_b;\n"
+> +    out +=3D "    };\n\n"
+> +
+> +    return out
+> +
+> +
+> +def generate_pos_and_msk_defines(name, periph):
+> +    """Generate Pos and Msk defines"""
+> +
+> +    out =3D "\n"
+> +    for reg in periph.registers:
+> +        for field in reg.fields:
+> +            reg_name, _ =3D get_register_array_name_and_size(reg)
+> +            field_name =3D f"{name}_{reg_name}_{field.name}"
+> +            out +=3D f"#define {field_name}_Pos ({field.bitOffset}UL)\n"
+> +            mask =3D ((1 << field.bitWidth) - 1) << field.bitOffset
+> +            out +=3D f"#define {field_name}_Msk (0x{mask:x}UL)\n"
+> +
+> +    return out
+> +
+> +
+> +def generate_enum_values(name, periph):
+> +    """Generate enum values"""
+> +
+> +    out =3D "\n"
+> +    for reg in periph.registers:
+> +        reg_name, _ =3D get_register_array_name_and_size(reg)
+> +        for field in reg.fields:
+> +            if hasattr(field, "enumeratedValues"):
+> +                out +=3D "\n"
+> +                out +=3D "typedef enum {\n"
+> +                for enum in field.enumeratedValues.enumeratedValues:
+> +                    enum_name =3D f"{name}_{reg_name}_{field.name}_{
+> enum.name}"
+> +                    out +=3D f"    /* {enum.description} */\n"
+> +                    out +=3D f"    {enum_name} =3D {enum.value},\n"
+> +                out +=3D f"}} {name}_{reg_name}_{field.name}_Enum;\n"
+> +
+> +    return out
+> +
+> +
+> +def generate_register_names_array_macro(name, periph):
+> +    """Generate register names array macro"""
+> +
+> +    out =3D f"#define {name}_REGISTER_NAMES_ARRAY(_name) \\\n"
+> +    out +=3D f"    const char *_name[sizeof({name}_Type)] =3D {{ \\\n"
+> +    for reg in periph.registers:
+> +        reg_name, reg_array_size =3D get_register_array_name_and_size(re=
+g)
+> +        if reg_array_size > 0:
+> +            for i in range(0, reg_array_size):
+> +                start =3D reg.addressOffset + i * reg.size // 8
+> +                stop =3D reg.addressOffset + (i + 1) * reg.size // 8 - 1
+> +                out +=3D f'        [{start} ... {stop}] =3D "{reg_name}{=
+i}",
+> \\\n'
+> +        else:
+> +            start =3D reg.addressOffset
+> +            stop =3D reg.addressOffset + reg.size // 8 - 1
+> +            out +=3D f'        [{start} ... {stop}] =3D "{reg.name}", \\=
+\n'
+> +    out +=3D "    }\n"
+> +
+> +    return out
+> +
+> +
+> +def generate_reset_registers_function(name, periph):
+> +    """Generate reset registers function"""
+> +
+> +    out =3D "\n"
+> +    fname =3D f"{name.lower()}_reset_registers"
+> +    out +=3D f"static inline void {fname}({name}_Type *regs)\n"
+> +    out +=3D "{\n"
+> +    for reg in periph.registers:
+> +        reg_name, reg_array_size =3D get_register_array_name_and_size(re=
+g)
+> +        if reg_array_size > 0:
+> +            for i in range(0, int(reg_array_size)):
+> +                out +=3D f"    regs->{reg_name}[{i}] =3D
+> {hex(reg.resetValue)};\n"
+> +        else:
+> +            out +=3D f"    regs->{reg_name} =3D {hex(reg.resetValue)};\n=
+"
+> +    out +=3D "}\n"
+> +
+> +    return out
+> +
+> +
+> +def generate_peripheral_header(periph, name):
+> +    """Generate peripheral header
+> +
+> +    The following information is generated:
+> +
+> +    * typedef with all of the available registers and register fields,
+> +    position and mask defines for register fields.
+> +
+> +    * enum values that encode register fields options.
+> +
+> +    * a macro that defines the register names indexed by the relative
+> +    address of the register.
+> +
+> +    * a function that sets the registers to their reset values
+> +
+> +    """
+> +
+> +    out =3D f"/* {name} - {periph.description} */\n\n"
+> +    out +=3D "typedef struct {\n"
+> +
+> +    last_reg_offset =3D 0
+> +    cnt =3D 0
+> +    for reg in periph.registers:
+> +        reserved_words =3D 0
+> +        if (reg.addressOffset - last_reg_offset) > 0:
+> +            reserved_words =3D int((reg.addressOffset - last_reg_offset)=
+ //
+> 4)
+> +            cnt +=3D 1
+> +
+> +        if cnt:
+> +            show_count =3D cnt
+> +        else:
+> +            show_count =3D ""
+> +
+> +        if reserved_words =3D=3D 1:
+> +            out +=3D f"    uint32_t RESERVED{show_count};\n\n"
+> +        elif reserved_words > 1:
+> +            out +=3D f"    uint32_t
+> RESERVED{show_count}[{reserved_words}];\n\n"
+> +
+> +        out +=3D generate_register(reg)
+> +        last_reg_offset =3D reg.addressOffset + reg.size // 8
+> +
+> +    size =3D periph.addressBlocks[0].size
+> +    out +=3D f"}} {name}_Type; /* Size =3D {size} (0x{size:X}) */\n"
+> +
+> +    out +=3D "\n\n"
+> +
+> +    out +=3D generate_pos_and_msk_defines(name, periph)
+> +
+> +    out +=3D generate_enum_values(name, periph)
+> +
+> +    out +=3D generate_register_names_array_macro(name, periph)
+> +
+> +    out +=3D generate_reset_registers_function(name, periph)
+> +
+> +    return out
+> +
+> +
+> +def get_same_class_peripherals(svd, periph):
+> +    """Get a list of peripherals that are instances of the same class.""=
+"
+> +
+> +    return [periph] + [
+> +        p
+> +        for p in svd.peripherals
+> +        if p.derivedFrom and p.derivedFrom.name =3D=3D periph.name
+> +    ]
+> +
+> +
+> +def generate_system_header(system, svd, periph):
+> +    """Generate base and irq defines for given list of peripherals"""
+> +
+> +    out =3D ""
+> +
+> +    for p in get_same_class_peripherals(svd, periph):
+> +        out +=3D f"#define {system}_{p.name}_BASE 0x{p.baseAddress:X}UL\=
+n"
+> +    out +=3D "\n"
+> +
+> +    for p in get_same_class_peripherals(svd, periph):
+> +        for irq in p.interrupts:
+> +            out +=3D f"#define {system}_{irq.name}_IRQn 0x{irq.value}UL\=
+n"
+> +    out +=3D "\n"
+> +
+> +    return out
+> +
+> +
+> +def main():
+> +    """Script to generate C header file from an SVD file"""
+> +
+> +    parser =3D argparse.ArgumentParser()
+> +    parser.add_argument(
+> +        "-i", "--input", type=3Dstr, help=3D"Input SVD file", required=
+=3DTrue
+> +    )
+> +    parser.add_argument(
+> +        "-o", "--output", type=3Dstr, help=3D"Output .h file", required=
+=3DTrue
+> +    )
+> +    parser.add_argument(
+> +        "-p",
+> +        "--peripheral",
+> +        action=3D"append",
+> +        help=3D"peripheral name from the SVD file",
+> +        required=3DTrue,
+> +    )
+> +    parser.add_argument(
+> +        "-t",
+> +        "--type-name",
+> +        type=3Dstr,
+> +        help=3D"name to be used for peripheral definitions",
+> +        required=3DFalse,
+> +    )
+> +    parser.add_argument(
+> +        "-s",
+> +        "--system",
+> +        type=3Dstr,
+> +        help=3D"name to be used for the system definitions",
+> +        required=3DFalse,
+> +    )
+> +
+> +    args =3D parser.parse_args()
+> +
+> +    node =3D xml.etree.ElementTree.parse(args.input).getroot()
+> +    svd =3D pysvd.element.Device(node)
+> +
+> +    # Write license header
+> +    out =3D "/*\n"
+> +    license_text =3D svd.licenseText.split("\\n")
+> +    for line in license_text:
+> +        sline =3D f" * {line.strip()}"
+> +        out +=3D f"{sline.rstrip()}\n"
+> +
+> +    now =3D datetime.datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S")
+> +    out +=3D f" * @note Automatically generated by
+> {os.path.basename(__file__)}"
+> +    out +=3D f" on {now} UTC from {os.path.basename(args.input)}.\n"
+> +    out +=3D " *\n */\n\n"
+> +
+> +    # Write some generic defines
+> +    out +=3D "#pragma once\n\n"
+> +
+> +    for name in args.peripheral:
+> +        periph =3D svd.find(name)
+> +        if periph:
+> +            if args.system:
+> +                out +=3D generate_system_header(args.system, svd, periph=
+)
+> +            else:
+> +                out +=3D generate_peripheral_header(
+> +                    periph, args.type_name if args.type_name else
+> periph.name
+> +                )
+> +        else:
+> +            print(f"No such peripheral: {name}")
+> +            return 1
+> +
+> +    with open(args.output, "w", encoding=3D"ascii") as output:
+> +        output.write(out)
+> +
+> +    return 0
+> +
+> +
+> +if __name__ =3D=3D "__main__":
+> +    sys.exit(main())
+> --
+> 2.46.0.rc2.264.g509ed76dc8-goog
+>
 >
 
-These regions are enabled in rt500.c when instantiating the flexspi
-peripherals. As implemented now they are backed by RAM, the full
-implementation should translate accesses to spi commands to FLASH or
-PSRAM devices.
+--0000000000009d12d6061f331ae1
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-We need the memory regions because even the simplest NXP SDK examples
-are using the memory mapped flexspi0 region.
-
-> > +    }
-> > +}
-> > +
-> > +static void flexspi_class_init(ObjectClass *klass, void *data)
-> > +{
-> > +    DeviceClass *dc =3D DEVICE_CLASS(klass);
-> > +
-> > +    dc->reset =3D flexspi_reset;
-> > +    dc->realize =3D flexspi_realize;
-> > +    device_class_set_props(dc, flexspi_properties);
-> > +}
-> > +
-> > +static const TypeInfo flexspi_info =3D {
-> > +    .name          =3D TYPE_FLEXSPI,
-> > +    .parent        =3D TYPE_SYS_BUS_DEVICE,
-> > +    .instance_size =3D sizeof(FlexSpiState),
-> > +    .instance_init =3D flexspi_init,
-> > +    .class_init    =3D flexspi_class_init,
-> > +};
-> > +
-> > +static void flexspi_register_types(void)
-> > +{
-> > +    int i;
-> > +
-> > +    for (i =3D 0; i < 32; i++) {
-> > +        wr_mask[regi(TFDR[i])] =3D BITS(31, 0);
-> > +    }
-> > +    for (i =3D 0; i < 64; i++) {
-> > +        wr_mask[regi(LUT[i])] =3D BITS(31, 0);
-> > +    }
-> > +
-> > +    type_register_static(&flexspi_info);
-> > +}
-> > +
-> > +type_init(flexspi_register_types)
-> > diff --git a/hw/ssi/meson.build b/hw/ssi/meson.build
-> > index 57d3e14727..c5b7e0a6e2 100644
-> > --- a/hw/ssi/meson.build
-> > +++ b/hw/ssi/meson.build
-> > @@ -13,3 +13,4 @@ system_ss.add(when: 'CONFIG_OMAP', if_true: files('om=
-ap_spi.c'))
-> >   system_ss.add(when: 'CONFIG_IBEX', if_true: files('ibex_spi_host.c'))
-> >   system_ss.add(when: 'CONFIG_BCM2835_SPI', if_true: files('bcm2835_spi=
-.c'))
-> >   system_ss.add(when: 'CONFIG_FLEXCOMM', if_true: files('flexcomm_spi.c=
-'))
-> > +system_ss.add(when: 'CONFIG_FLEXSPI', if_true: files('flexspi.c'))
-> > diff --git a/hw/ssi/trace-events b/hw/ssi/trace-events
-> > index 5caa1c17ac..d623022a79 100644
-> > --- a/hw/ssi/trace-events
-> > +++ b/hw/ssi/trace-events
-> > @@ -40,3 +40,7 @@ flexcomm_spi_fifostat(const char *id, uint32_t fifost=
-at, uint32_t fifoinstat) "%
-> >   flexcomm_spi_irq(const char *id, bool irq, bool fifoirqs, bool perirq=
-s, bool enabled) "%s: %d %d %d %d"
-> >   flexcomm_spi_chr_rx_space(const char *id, uint32_t rx) "%s: %d"
-> >   flexcomm_spi_chr_rx(const char *id) "%s"
-> > +
-> > +# flexspi.c
-> > +flexspi_reg_read(const char *id, const char *reg_name, uint32_t addr, =
-uint32_t val) " %s: %s[0x%04x] -> 0x%08x"
-> > +flexspi_reg_write(const char *id, const char *reg_name, uint32_t addr,=
- uint32_t val) "%s: %s[0x%04x] <- 0x%08x"
-> > diff --git a/include/hw/ssi/flexspi.h b/include/hw/ssi/flexspi.h
-> > new file mode 100644
-> > index 0000000000..f5fea9dee9
-> > --- /dev/null
-> > +++ b/include/hw/ssi/flexspi.h
-> > @@ -0,0 +1,34 @@
-> > +/*
-> > + * QEMU model for FLEXSPI
-> > + *
-> > + * Copyright (c) 2024 Google LLC
-> > + *
-> > + * SPDX-License-Identifier: GPL-2.0-or-later
-> > + *
-> > + * This work is licensed under the terms of the GNU GPL, version 2 or =
-later.
-> > + * See the COPYING file in the top-level directory.
-> > + */
-> > +
-> > +#ifndef HW_RT500_FLEXSPI_H
-> > +#define HW_RT500_FLEXSPI_H
-> > +
-> > +#include "hw/sysbus.h"
-> > +#include "hw/ssi/ssi.h"
-> > +#include "hw/arm/svd/flexspi.h"
-> > +
-> > +#define TYPE_FLEXSPI "flexspi"
-> > +#define FLEXSPI(obj) OBJECT_CHECK(FlexSpiState, (obj), TYPE_FLEXSPI)
-> > +
-> > +typedef struct {
-> > +    /* <private> */
-> > +    SysBusDevice parent_obj;
-> > +
-> > +    /* <public> */
-> > +    MemoryRegion mmio;
-> > +    FLEXSPI_Type regs;
-> > +    MemoryRegion mem;
-> > +    uint32_t mmap_base;
-> > +    uint32_t mmap_size;
+<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
+<div dir=3D"ltr" class=3D"gmail_attr">On Mon, Aug 5, 2024 at 4:17=E2=80=AFP=
+M Octavian Purdila &lt;<a href=3D"mailto:tavip@google.com">tavip@google.com=
+</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:=
+0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">=
+From: Stefan Stanacar &lt;<a href=3D"mailto:stefanst@google.com" target=3D"=
+_blank">stefanst@google.com</a>&gt;<br>
+<br>
+From: Stefan Stanacar &lt;<a href=3D"mailto:stefanst@google.com" target=3D"=
+_blank">stefanst@google.com</a>&gt;<br>
+<br>
+The CMSIS System View Description format(CMSIS-SVD) is an XML based<br>
+description of Arm Cortex-M microcontrollers provided and maintained<br>
+by sillicon vendors. It includes details such as peripherals registers<br>
+(down to bitfields), peripheral register block addresses, reset<br>
+values, etc.<br>
+<br>
+This script uses this information to create header files that makes it<br>
+easier to emulate peripherals.<br>
+<br>
+The script can be used to create either peripheral specific headers or<br>
+board / system specific information. The script generated headers are<br>
+similar to the SVDConv utility.<br>
+<br>
+Peripheral specific headers contains information such as register<br>
+layout, register names and reset values for registers:<br>
+<br>
+=C2=A0 typedef struct {<br>
+=C2=A0 =C2=A0 ...<br>
+=C2=A0 =C2=A0 union {<br>
+=C2=A0 =C2=A0 =C2=A0 uint32_t PSELID;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 /* 0x00000FF8 Peripheral Select and<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0* Flexcomm modul=
+e ID */<br>
+=C2=A0 =C2=A0 =C2=A0 struct {<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 uint32_t PERSEL : 3;=C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ /* [2..0] Peripheral Select */<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 uint32_t LOCK : 1;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 /* [3..3] Lock the peripheral select */<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 uint32_t USARTPRESENT : 1;=C2=A0 /* [4..4] USAR=
+T present indicator */<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 uint32_t SPIPRESENT : 1;=C2=A0 =C2=A0 /* [5..5]=
+ SPI present indicator */<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 uint32_t I2CPRESENT : 1;=C2=A0 =C2=A0 /* [6..6]=
+ I2C present indicator */<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 uint32_t I2SPRESENT : 1;=C2=A0 =C2=A0 /* [7..7]=
+ I2S Present */<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 uint32_t : 4;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 uint32_t ID : 20;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0/* [31..12] Flexcomm ID */<br>
+=C2=A0 =C2=A0 =C2=A0 } PSELID_b;<br>
+=C2=A0 =C2=A0 };<br>
+=C2=A0 =C2=A0 ...<br>
+=C2=A0 } FLEXCOMM_Type;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 /* Size =3D 4096 (0x1000) */<br>
+<br>
+=C2=A0 #define FLEXCOMM_PSELID_PERSEL_Pos (0UL)<br>
+=C2=A0 #define FLEXCOMM_PSELID_PERSEL_Msk (0x7UL)<br>
+=C2=A0 #define FLEXCOMM_PSELID_LOCK_Pos (3UL)<br>
+=C2=A0 #define FLEXCOMM_PSELID_LOCK_Msk (0x8UL)<br>
+=C2=A0 ...<br>
+<br>
+=C2=A0 typedef enum {=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 /* FLEXCOMM_PSELID_LOCK */<br>
+=C2=A0 =C2=A0 /* Peripheral select can be changed by software. */<br>
+=C2=A0 =C2=A0 FLEXCOMM_PSELID_LOCK_UNLOCKED =3D 0,<br>
+=C2=A0 =C2=A0 /* Peripheral select is locked and cannot be changed until th=
+is<br>
+=C2=A0 =C2=A0 =C2=A0* Flexcomm module or the entire device is reset. */<br>
+=C2=A0 =C2=A0 FLEXCOMM_PSELID_LOCK_LOCKED =3D 1,<br>
+=C2=A0 } FLEXCOMM_PSELID_LOCK_Enum;<br>
+=C2=A0 ...<br>
+<br>
+=C2=A0 #define FLEXCOMM_REGISTER_NAMES_ARRAY(_name) \<br>
+=C2=A0 =C2=A0 const char *_name[sizeof(FLEXCOMM_Type)] =3D { \<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 [4088 ... 4091] =3D &quot;PSELID&quot;, \<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 [4092 ... 4095] =3D &quot;PID&quot;, \<br>
+=C2=A0 =C2=A0 }<br>
+<br>
+Board specific headers contains information about peripheral base<br>
+register addresses.<br>
+<br>
+Signed-off-by: Stefan Stanacar &lt;<a href=3D"mailto:stefanst@google.com" t=
+arget=3D"_blank">stefanst@google.com</a>&gt;<br>
+Signed-off-by: Octavian Purdila &lt;<a href=3D"mailto:tavip@google.com" tar=
+get=3D"_blank">tavip@google.com</a>&gt;<br>
+---<br>
+=C2=A0configure=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0|=C2=A0 =C2=A02 +-<br>
+=C2=A0meson.build=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=
+=C2=A0 =C2=A04 +<br>
+=C2=A0python/setup.cfg=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 =C2=A01 +<=
+br>
+=C2=A0python/tests/minreqs.txt=C2=A0 |=C2=A0 =C2=A03 +<br>
+=C2=A0pythondeps.toml=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 =C2=
+=A03 +<br>
+=C2=A0scripts/svd-gen-header.py | 342 +++++++++++++++++++++++++++++++++++++=
++<br>
+=C2=A06 files changed, 354 insertions(+), 1 deletion(-)<br>
+=C2=A0create mode 100755 scripts/svd-gen-header.py<br>
+<br>
+diff --git a/configure b/configure<br>
+index 5ad1674ca5..811bfa5d54 100755<br>
+--- a/configure<br>
++++ b/configure<br>
+@@ -956,7 +956,7 @@ mkvenv=3D&quot;$python ${source_path}/python/scripts/mk=
+venv.py&quot;<br>
+=C2=A0# Finish preparing the virtual environment using vendored .whl files<=
+br>
+<br>
+=C2=A0$mkvenv ensuregroup --dir &quot;${source_path}/python/wheels&quot; \<=
+br>
+-=C2=A0 =C2=A0 =C2=A0${source_path}/pythondeps.toml meson || exit 1<br>
++=C2=A0 =C2=A0 =C2=A0${source_path}/pythondeps.toml meson svd-gen-header ||=
+ exit 1<br></blockquote><div><br></div><div>I haven&#39;t read the rest of =
+this series; I&#39;m chiming in solely from the build/python maintainer ang=
+le. Do we *always* need pysvd, no matter how QEMU was configured? Adding it=
+ to the meson line here is a very big hammer.</div><div><br></div><div>If n=
+ot, consider looking at how sphinx (the &quot;docs&quot; group) is only con=
+ditionally installed into the configure venv and mimic that using the appro=
+priate configure flags that necessitate the availability of pyvsd for the Q=
+EMU build.<br></div><div><br></div><div>We also need to provide a way for p=
+ysvd to be available offline; some packages are available via distro libs a=
+nd if this package is available for every distro we officially support, tha=
+t&#39;s sufficient (but requires updates to our various docker and VM test =
+configuration files to add the new dependency). Otherwise, like we do for m=
+eson, we need to vendor the wheel in the tree so offline tarball builds wil=
+l continue to work.</div><div><br></div></div><div class=3D"gmail_quote">It=
+ looks like pysvd is a pure python package with no dependencies, so it
+ should be OK to vendor it in qemu.git/python/wheels/ - look at=20
+qemu.git/python/scripts/vendor.py and consider updating and running this sc=
+ript.<br></div><div class=3D"gmail_quote"><br><div>(The real blocker here i=
+s that RPM builds are performed offline and dependencies that cannot be sat=
+isfied via rpm can&#39;t be added through pip. We need any one of these to =
+be true: (A) pyvsd is available (of a sufficient version) in all distro rep=
+ositories we target; (B) This build feature is conditional and nobody minds=
+ if it never gets enabled for RPM builds; (C) The package can be vendored.)=
+</div><div><br></div><div>~~js</div><div><br></div><div>That said, you migh=
+t be the first person I&#39;ve seen outside of Paolo and I to brave mucking=
+ around with the python build venv. You deserve a bravery sticker :)<br></d=
+iv><div><br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px=
+ 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">
+<br>
+=C2=A0# At this point, we expect Meson to be installed and available.<br>
+=C2=A0# We expect mkvenv or pip to have created pyvenv/bin/meson for us.<br=
 >
-> We usually use uint64_t for MR base/size. I.e., althought your SoC
-> address space is 32-bit, this model could be use in another one,
-> mapped at a 64-bit base.
->
+diff --git a/meson.build b/meson.build<br>
+index ec59effca2..dee587483b 100644<br>
+--- a/meson.build<br>
++++ b/meson.build<br>
+@@ -3235,6 +3235,10 @@ tracetool_depends =3D files(<br>
+=C2=A0 =C2=A0&#39;scripts/tracetool/vcpu.py&#39;<br>
+=C2=A0)<br>
+<br>
++svd_gen_header =3D [<br>
++=C2=A0 python, files(&#39;scripts/svd-gen-header.py&#39;)<br>
++]<br>
++<br>
+=C2=A0qemu_version_cmd =3D [find_program(&#39;scripts/qemu-version.sh&#39;)=
+,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0meson.current_source_dir(),<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0get_option(&#39;pkgversion&#39;), meson.project_version()]<br>
+diff --git a/python/setup.cfg b/python/setup.cfg<br>
+index 48668609d3..bc830c541a 100644<br>
+--- a/python/setup.cfg<br>
++++ b/python/setup.cfg<br>
+@@ -45,6 +45,7 @@ devel =3D<br>
+=C2=A0 =C2=A0 =C2=A0urwid &gt;=3D 2.1.2<br>
+=C2=A0 =C2=A0 =C2=A0urwid-readline &gt;=3D 0.13<br>
+=C2=A0 =C2=A0 =C2=A0Pygments &gt;=3D 2.9.0<br>
++=C2=A0 =C2=A0 pysvd &gt;=3D 0.2.3<br>
+<br>
+=C2=A0# Provides qom-fuse functionality<br>
+=C2=A0fuse =3D<br>
+diff --git a/python/tests/minreqs.txt b/python/tests/minreqs.txt<br>
+index a3f423efd8..7993fcd23c 100644<br>
+--- a/python/tests/minreqs.txt<br>
++++ b/python/tests/minreqs.txt<br>
+@@ -22,6 +22,9 @@ distlib=3D=3D0.3.6<br>
+=C2=A0# Dependencies for FUSE support for qom-fuse<br>
+=C2=A0fusepy=3D=3D2.0.4<br>
+<br>
++# Dependencies for svd-gen-regs<br>
++pysvd=3D=3D0.2.3<br>
++<br>
+=C2=A0# Test-runners, utilities, etc.<br>
+=C2=A0avocado-framework=3D=3D90.0<br>
+<br>
+diff --git a/pythondeps.toml b/pythondeps.toml<br>
+index 9c16602d30..8416b17650 100644<br>
+--- a/pythondeps.toml<br>
++++ b/pythondeps.toml<br>
+@@ -32,3 +32,6 @@ sphinx_rtd_theme =3D { accepted =3D &quot;&gt;=3D0.5&quot=
+;, installed =3D &quot;1.1.1&quot; }<br>
+=C2=A0# avocado-framework, for example right now the limit is 92.x.<br>
+=C2=A0avocado-framework =3D { accepted =3D &quot;(&gt;=3D88.1, &lt;93.0)&qu=
+ot;, installed =3D &quot;88.1&quot;, canary =3D &quot;avocado&quot; }<br>
+=C2=A0pycdlib =3D { accepted =3D &quot;&gt;=3D1.11.0&quot; }<br>
++<br>
++[svd-gen-header]<br>
++pysvd =3D { accepted =3D &quot;&gt;=3D0.2.3.&quot;, installed =3D &quot;0.=
+2.3&quot; }<br>
+diff --git a/scripts/svd-gen-header.py b/scripts/svd-gen-header.py<br>
+new file mode 100755<br>
+index 0000000000..ab8cb4b665<br>
+--- /dev/null<br>
++++ b/scripts/svd-gen-header.py<br>
+@@ -0,0 +1,342 @@<br>
++#!/usr/bin/env python3<br>
++<br>
++# Copyright 2024 Google LLC<br>
++#<br>
++# This work is licensed under the terms of the GNU GPL, version 2 or later=
+.<br>
++# See the COPYING file in the top-level directory.<br>
++#<br>
++# Use this script to generate a C header file from an SVD xml<br>
++#<br>
++# Two mode of operations are supported: peripheral and system.<br>
++#<br>
++# When running in peripheral mode a header for a specific peripheral<br>
++# is going to be generated. It will define a type and structure with<br>
++# all of the available registers at the bitfield level. An array that<br>
++# contains the reigster names indexed by address is also going to be<br>
++# generated as well as a function to initialize registers to their<br>
++# reset values.<br>
++#<br>
++# Invocation example:<br>
++#<br>
++# svd_gen_header -i MIMXRT595S_cm33.xml -o flexcomm.h -p FLEXCOMM0 -t FLEX=
+COMM<br>
++#<br>
++# When running in system mode a header for a specific system /<br>
++# platform will be generated. It will define register base addresses<br>
++# and interrupt numbers for selected peripherals.<br>
++#<br>
++# Invocation example:<br>
++#<br>
++# svd_gen_header -i MIMXRT595S_cm33.xml -o rt500.h -s RT500 -p FLEXCOMM0 \=
+<br>
++#=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 -p CLKCTL0 -p CLK=
+CTL1<br>
++#<br>
++<br>
++import argparse<br>
++import datetime<br>
++import re<br>
++import os<br>
++import sys<br>
++import xml.etree.ElementTree<br>
++import pysvd<br>
++<br>
++data_type_by_bits =3D {<br>
++=C2=A0 =C2=A0 8: &quot;uint8_t&quot;,<br>
++=C2=A0 =C2=A0 16: &quot;uint16_t&quot;,<br>
++=C2=A0 =C2=A0 32: &quot;uint32_t&quot;,<br>
++}<br>
++<br>
++<br>
++def get_register_array_name_and_size(register):<br>
++=C2=A0 =C2=A0 &quot;&quot;&quot;Return register name and register array si=
+ze.<br>
++<br>
++=C2=A0 =C2=A0 The SVD can define register arrays and pysvd encodes the who=
+le set<br>
++=C2=A0 =C2=A0 as as regular register with their name prepended by [&lt;arr=
+ay size&gt;].<br>
++<br>
++=C2=A0 =C2=A0 Returns a tuple with the register name and the size of the a=
+rray or<br>
++=C2=A0 =C2=A0 zero if this is not a register set.<br>
++<br>
++=C2=A0 =C2=A0 &quot;&quot;&quot;<br>
++<br>
++=C2=A0 =C2=A0 split =3D re.split(r&quot;[\[\]]&quot;, <a href=3D"http://re=
+gister.name" rel=3D"noreferrer" target=3D"_blank">register.name</a>)<br>
++=C2=A0 =C2=A0 return (split[0], int(split[1]) if len(split) &gt; 1 else 0)=
+<br>
++<br>
++<br>
++def generate_register(register):<br>
++=C2=A0 =C2=A0 &quot;&quot;&quot;Generate register data.<br>
++<br>
++=C2=A0 =C2=A0 This include a field for accessing the full 32bits as we as<=
+br>
++=C2=A0 =C2=A0 bitfield based register fields.<br>
++<br>
++=C2=A0 =C2=A0 &quot;&quot;&quot;<br>
++<br>
++=C2=A0 =C2=A0 data_type =3D data_type_by_bits[register.size]<br>
++<br>
++=C2=A0 =C2=A0 out =3D f&quot;=C2=A0 =C2=A0 /* 0x{register.addressOffset:08=
+X} {register.description} */\n&quot;<br>
++=C2=A0 =C2=A0 out +=3D &quot;=C2=A0 =C2=A0 union {\n&quot;<br>
++=C2=A0 =C2=A0 out +=3D f&quot;=C2=A0 =C2=A0 =C2=A0 =C2=A0 {data_type} {<a =
+href=3D"http://register.name" rel=3D"noreferrer" target=3D"_blank">register=
+.name</a>};\n&quot;<br>
++=C2=A0 =C2=A0 out +=3D &quot;=C2=A0 =C2=A0 =C2=A0 =C2=A0 struct {\n&quot;<=
+br>
++<br>
++=C2=A0 =C2=A0 fields =3D sorted(register.fields, key=3Dlambda field: field=
+.bitOffset)<br>
++=C2=A0 =C2=A0 last_msb =3D -1<br>
++=C2=A0 =C2=A0 for field in fields:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 reserve_bits =3D 0<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 lsb =3D field.bitOffset<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 msb =3D field.bitWidth + lsb - 1<br>
++<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 if last_msb =3D=3D -1 and lsb &gt; 0:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 reserve_bits =3D lsb<br>
++<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 if last_msb !=3D -1 and (lsb - last_msb) &gt; =
+1:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 reserve_bits =3D lsb - last_msb =
+- 1<br>
++<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 if reserve_bits &gt; 0:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 out +=3D f&quot;=C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 {data_type}:{reserve_bits};\n&quot;<br>
++<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 out +=3D f&quot;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 /* [{msb}..{lsb}] {field.description} */\n&quot;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 out +=3D f&quot;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 {data_type} {<a href=3D"http://field.name" rel=3D"noreferrer"=
+ target=3D"_blank">field.name</a>} : {field.bitWidth};\n&quot;<br>
++<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 last_msb =3D msb<br>
++<br>
++=C2=A0 =C2=A0 if register.size - last_msb &gt; 1:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 out +=3D f&quot;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 {data_type}:{register.size - last_msb - 1};\n&quot;<br>
++<br>
++=C2=A0 =C2=A0 reg_name, reg_array_size =3D get_register_array_name_and_siz=
+e(register)<br>
++=C2=A0 =C2=A0 if reg_array_size &gt; 0:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 out +=3D f&quot;=C2=A0 =C2=A0 =C2=A0 =C2=A0 }}=
+ {reg_name}_b[{reg_array_size}];\n&quot;<br>
++=C2=A0 =C2=A0 else:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 out +=3D f&quot;=C2=A0 =C2=A0 =C2=A0 =C2=A0 }}=
+ {reg_name}_b;\n&quot;<br>
++=C2=A0 =C2=A0 out +=3D &quot;=C2=A0 =C2=A0 };\n\n&quot;<br>
++<br>
++=C2=A0 =C2=A0 return out<br>
++<br>
++<br>
++def generate_pos_and_msk_defines(name, periph):<br>
++=C2=A0 =C2=A0 &quot;&quot;&quot;Generate Pos and Msk defines&quot;&quot;&q=
+uot;<br>
++<br>
++=C2=A0 =C2=A0 out =3D &quot;\n&quot;<br>
++=C2=A0 =C2=A0 for reg in periph.registers:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 for field in reg.fields:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 reg_name, _ =3D get_register_arr=
+ay_name_and_size(reg)<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 field_name =3D f&quot;{name}_{re=
+g_name}_{<a href=3D"http://field.name" rel=3D"noreferrer" target=3D"_blank"=
+>field.name</a>}&quot;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 out +=3D f&quot;#define {field_n=
+ame}_Pos ({field.bitOffset}UL)\n&quot;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 mask =3D ((1 &lt;&lt; field.bitW=
+idth) - 1) &lt;&lt; field.bitOffset<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 out +=3D f&quot;#define {field_n=
+ame}_Msk (0x{mask:x}UL)\n&quot;<br>
++<br>
++=C2=A0 =C2=A0 return out<br>
++<br>
++<br>
++def generate_enum_values(name, periph):<br>
++=C2=A0 =C2=A0 &quot;&quot;&quot;Generate enum values&quot;&quot;&quot;<br>
++<br>
++=C2=A0 =C2=A0 out =3D &quot;\n&quot;<br>
++=C2=A0 =C2=A0 for reg in periph.registers:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 reg_name, _ =3D get_register_array_name_and_si=
+ze(reg)<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 for field in reg.fields:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 if hasattr(field, &quot;enumerat=
+edValues&quot;):<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 out +=3D &quot;\n&=
+quot;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 out +=3D &quot;typ=
+edef enum {\n&quot;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 for enum in field.=
+enumeratedValues.enumeratedValues:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 enum=
+_name =3D f&quot;{name}_{reg_name}_{<a href=3D"http://field.name" rel=3D"no=
+referrer" target=3D"_blank">field.name</a>}_{<a href=3D"http://enum.name" r=
+el=3D"noreferrer" target=3D"_blank">enum.name</a>}&quot;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 out =
++=3D f&quot;=C2=A0 =C2=A0 /* {enum.description} */\n&quot;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 out =
++=3D f&quot;=C2=A0 =C2=A0 {enum_name} =3D {enum.value},\n&quot;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 out +=3D f&quot;}}=
+ {name}_{reg_name}_{<a href=3D"http://field.name" rel=3D"noreferrer" target=
+=3D"_blank">field.name</a>}_Enum;\n&quot;<br>
++<br>
++=C2=A0 =C2=A0 return out<br>
++<br>
++<br>
++def generate_register_names_array_macro(name, periph):<br>
++=C2=A0 =C2=A0 &quot;&quot;&quot;Generate register names array macro&quot;&=
+quot;&quot;<br>
++<br>
++=C2=A0 =C2=A0 out =3D f&quot;#define {name}_REGISTER_NAMES_ARRAY(_name) \\=
+\n&quot;<br>
++=C2=A0 =C2=A0 out +=3D f&quot;=C2=A0 =C2=A0 const char *_name[sizeof({name=
+}_Type)] =3D {{ \\\n&quot;<br>
++=C2=A0 =C2=A0 for reg in periph.registers:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 reg_name, reg_array_size =3D get_register_arra=
+y_name_and_size(reg)<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 if reg_array_size &gt; 0:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 for i in range(0, reg_array_size=
+):<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 start =3D reg.addr=
+essOffset + i * reg.size // 8<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 stop =3D reg.addre=
+ssOffset + (i + 1) * reg.size // 8 - 1<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 out +=3D f&#39;=C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 [{start} ... {stop}] =3D &quot;{reg_name}{i}&quot;=
+, \\\n&#39;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 else:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 start =3D reg.addressOffset<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 stop =3D reg.addressOffset + reg=
+.size // 8 - 1<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 out +=3D f&#39;=C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 [{start} ... {stop}] =3D &quot;{<a href=3D"http://reg.name" rel=
+=3D"noreferrer" target=3D"_blank">reg.name</a>}&quot;, \\\n&#39;<br>
++=C2=A0 =C2=A0 out +=3D &quot;=C2=A0 =C2=A0 }\n&quot;<br>
++<br>
++=C2=A0 =C2=A0 return out<br>
++<br>
++<br>
++def generate_reset_registers_function(name, periph):<br>
++=C2=A0 =C2=A0 &quot;&quot;&quot;Generate reset registers function&quot;&qu=
+ot;&quot;<br>
++<br>
++=C2=A0 =C2=A0 out =3D &quot;\n&quot;<br>
++=C2=A0 =C2=A0 fname =3D f&quot;{name.lower()}_reset_registers&quot;<br>
++=C2=A0 =C2=A0 out +=3D f&quot;static inline void {fname}({name}_Type *regs=
+)\n&quot;<br>
++=C2=A0 =C2=A0 out +=3D &quot;{\n&quot;<br>
++=C2=A0 =C2=A0 for reg in periph.registers:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 reg_name, reg_array_size =3D get_register_arra=
+y_name_and_size(reg)<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 if reg_array_size &gt; 0:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 for i in range(0, int(reg_array_=
+size)):<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 out +=3D f&quot;=
+=C2=A0 =C2=A0 regs-&gt;{reg_name}[{i}] =3D {hex(reg.resetValue)};\n&quot;<b=
+r>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 else:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 out +=3D f&quot;=C2=A0 =C2=A0 re=
+gs-&gt;{reg_name} =3D {hex(reg.resetValue)};\n&quot;<br>
++=C2=A0 =C2=A0 out +=3D &quot;}\n&quot;<br>
++<br>
++=C2=A0 =C2=A0 return out<br>
++<br>
++<br>
++def generate_peripheral_header(periph, name):<br>
++=C2=A0 =C2=A0 &quot;&quot;&quot;Generate peripheral header<br>
++<br>
++=C2=A0 =C2=A0 The following information is generated:<br>
++<br>
++=C2=A0 =C2=A0 * typedef with all of the available registers and register f=
+ields,<br>
++=C2=A0 =C2=A0 position and mask defines for register fields.<br>
++<br>
++=C2=A0 =C2=A0 * enum values that encode register fields options.<br>
++<br>
++=C2=A0 =C2=A0 * a macro that defines the register names indexed by the rel=
+ative<br>
++=C2=A0 =C2=A0 address of the register.<br>
++<br>
++=C2=A0 =C2=A0 * a function that sets the registers to their reset values<b=
+r>
++<br>
++=C2=A0 =C2=A0 &quot;&quot;&quot;<br>
++<br>
++=C2=A0 =C2=A0 out =3D f&quot;/* {name} - {periph.description} */\n\n&quot;=
+<br>
++=C2=A0 =C2=A0 out +=3D &quot;typedef struct {\n&quot;<br>
++<br>
++=C2=A0 =C2=A0 last_reg_offset =3D 0<br>
++=C2=A0 =C2=A0 cnt =3D 0<br>
++=C2=A0 =C2=A0 for reg in periph.registers:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 reserved_words =3D 0<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 if (reg.addressOffset - last_reg_offset) &gt; =
+0:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 reserved_words =3D int((reg.addr=
+essOffset - last_reg_offset) // 4)<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 cnt +=3D 1<br>
++<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 if cnt:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 show_count =3D cnt<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 else:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 show_count =3D &quot;&quot;<br>
++<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 if reserved_words =3D=3D 1:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 out +=3D f&quot;=C2=A0 =C2=A0 ui=
+nt32_t RESERVED{show_count};\n\n&quot;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 elif reserved_words &gt; 1:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 out +=3D f&quot;=C2=A0 =C2=A0 ui=
+nt32_t RESERVED{show_count}[{reserved_words}];\n\n&quot;<br>
++<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 out +=3D generate_register(reg)<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 last_reg_offset =3D reg.addressOffset + reg.si=
+ze // 8<br>
++<br>
++=C2=A0 =C2=A0 size =3D periph.addressBlocks[0].size<br>
++=C2=A0 =C2=A0 out +=3D f&quot;}} {name}_Type; /* Size =3D {size} (0x{size:=
+X}) */\n&quot;<br>
++<br>
++=C2=A0 =C2=A0 out +=3D &quot;\n\n&quot;<br>
++<br>
++=C2=A0 =C2=A0 out +=3D generate_pos_and_msk_defines(name, periph)<br>
++<br>
++=C2=A0 =C2=A0 out +=3D generate_enum_values(name, periph)<br>
++<br>
++=C2=A0 =C2=A0 out +=3D generate_register_names_array_macro(name, periph)<b=
+r>
++<br>
++=C2=A0 =C2=A0 out +=3D generate_reset_registers_function(name, periph)<br>
++<br>
++=C2=A0 =C2=A0 return out<br>
++<br>
++<br>
++def get_same_class_peripherals(svd, periph):<br>
++=C2=A0 =C2=A0 &quot;&quot;&quot;Get a list of peripherals that are instanc=
+es of the same class.&quot;&quot;&quot;<br>
++<br>
++=C2=A0 =C2=A0 return [periph] + [<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 p<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 for p in svd.peripherals<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 if p.derivedFrom and <a href=3D"http://p.deriv=
+edFrom.name" rel=3D"noreferrer" target=3D"_blank">p.derivedFrom.name</a> =
+=3D=3D <a href=3D"http://periph.name" rel=3D"noreferrer" target=3D"_blank">=
+periph.name</a><br>
++=C2=A0 =C2=A0 ]<br>
++<br>
++<br>
++def generate_system_header(system, svd, periph):<br>
++=C2=A0 =C2=A0 &quot;&quot;&quot;Generate base and irq defines for given li=
+st of peripherals&quot;&quot;&quot;<br>
++<br>
++=C2=A0 =C2=A0 out =3D &quot;&quot;<br>
++<br>
++=C2=A0 =C2=A0 for p in get_same_class_peripherals(svd, periph):<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 out +=3D f&quot;#define {system}_{<a href=3D"h=
+ttp://p.name" rel=3D"noreferrer" target=3D"_blank">p.name</a>}_BASE 0x{p.ba=
+seAddress:X}UL\n&quot;<br>
++=C2=A0 =C2=A0 out +=3D &quot;\n&quot;<br>
++<br>
++=C2=A0 =C2=A0 for p in get_same_class_peripherals(svd, periph):<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 for irq in p.interrupts:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 out +=3D f&quot;#define {system}=
+_{<a href=3D"http://irq.name" rel=3D"noreferrer" target=3D"_blank">irq.name=
+</a>}_IRQn 0x{irq.value}UL\n&quot;<br>
++=C2=A0 =C2=A0 out +=3D &quot;\n&quot;<br>
++<br>
++=C2=A0 =C2=A0 return out<br>
++<br>
++<br>
++def main():<br>
++=C2=A0 =C2=A0 &quot;&quot;&quot;Script to generate C header file from an S=
+VD file&quot;&quot;&quot;<br>
++<br>
++=C2=A0 =C2=A0 parser =3D argparse.ArgumentParser()<br>
++=C2=A0 =C2=A0 parser.add_argument(<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 &quot;-i&quot;, &quot;--input&quot;, type=3Dst=
+r, help=3D&quot;Input SVD file&quot;, required=3DTrue<br>
++=C2=A0 =C2=A0 )<br>
++=C2=A0 =C2=A0 parser.add_argument(<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 &quot;-o&quot;, &quot;--output&quot;, type=3Ds=
+tr, help=3D&quot;Output .h file&quot;, required=3DTrue<br>
++=C2=A0 =C2=A0 )<br>
++=C2=A0 =C2=A0 parser.add_argument(<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 &quot;-p&quot;,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 &quot;--peripheral&quot;,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 action=3D&quot;append&quot;,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 help=3D&quot;peripheral name from the SVD file=
+&quot;,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 required=3DTrue,<br>
++=C2=A0 =C2=A0 )<br>
++=C2=A0 =C2=A0 parser.add_argument(<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 &quot;-t&quot;,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 &quot;--type-name&quot;,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 type=3Dstr,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 help=3D&quot;name to be used for peripheral de=
+finitions&quot;,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 required=3DFalse,<br>
++=C2=A0 =C2=A0 )<br>
++=C2=A0 =C2=A0 parser.add_argument(<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 &quot;-s&quot;,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 &quot;--system&quot;,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 type=3Dstr,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 help=3D&quot;name to be used for the system de=
+finitions&quot;,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 required=3DFalse,<br>
++=C2=A0 =C2=A0 )<br>
++<br>
++=C2=A0 =C2=A0 args =3D parser.parse_args()<br>
++<br>
++=C2=A0 =C2=A0 node =3D xml.etree.ElementTree.parse(args.input).getroot()<b=
+r>
++=C2=A0 =C2=A0 svd =3D pysvd.element.Device(node)<br>
++<br>
++=C2=A0 =C2=A0 # Write license header<br>
++=C2=A0 =C2=A0 out =3D &quot;/*\n&quot;<br>
++=C2=A0 =C2=A0 license_text =3D svd.licenseText.split(&quot;\\n&quot;)<br>
++=C2=A0 =C2=A0 for line in license_text:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 sline =3D f&quot; * {line.strip()}&quot;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 out +=3D f&quot;{sline.rstrip()}\n&quot;<br>
++<br>
++=C2=A0 =C2=A0 now =3D datetime.datetime.utcnow().strftime(&quot;%Y-%m-%d %=
+H:%M:%S&quot;)<br>
++=C2=A0 =C2=A0 out +=3D f&quot; * @note Automatically generated by {os.path=
+.basename(__file__)}&quot;<br>
++=C2=A0 =C2=A0 out +=3D f&quot; on {now} UTC from {os.path.basename(args.in=
+put)}.\n&quot;<br>
++=C2=A0 =C2=A0 out +=3D &quot; *\n */\n\n&quot;<br>
++<br>
++=C2=A0 =C2=A0 # Write some generic defines<br>
++=C2=A0 =C2=A0 out +=3D &quot;#pragma once\n\n&quot;<br>
++<br>
++=C2=A0 =C2=A0 for name in args.peripheral:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 periph =3D svd.find(name)<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 if periph:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 if args.system:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 out +=3D generate_=
+system_header(args.system, svd, periph)<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 else:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 out +=3D generate_=
+peripheral_header(<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 peri=
+ph, args.type_name if args.type_name else <a href=3D"http://periph.name" re=
+l=3D"noreferrer" target=3D"_blank">periph.name</a><br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 )<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 else:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 print(f&quot;No such peripheral:=
+ {name}&quot;)<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 return 1<br>
++<br>
++=C2=A0 =C2=A0 with open(args.output, &quot;w&quot;, encoding=3D&quot;ascii=
+&quot;) as output:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 output.write(out)<br>
++<br>
++=C2=A0 =C2=A0 return 0<br>
++<br>
++<br>
++if __name__ =3D=3D &quot;__main__&quot;:<br>
++=C2=A0 =C2=A0 sys.exit(main())<br>
+-- <br>
+2.46.0.rc2.264.g509ed76dc8-goog<br>
+<br>
+</blockquote></div></div>
 
-I will fix it, thanks.
-
-> > +} FlexSpiState;
-> > +
-> > +#endif /* HW_RT500_FLEXSPI_H */
->
+--0000000000009d12d6061f331ae1--

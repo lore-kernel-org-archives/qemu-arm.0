@@ -1,105 +1,110 @@
-Received: by 2002:a17:504:6454:b0:1be9:327d:8ee3 with SMTP id g20csp543514njh;
-        Sun, 11 Aug 2024 10:41:08 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWgeATj+kGpIGnLLQXPQO5BwlYkW2RIxaSoIjyQ5seaf27COusuWBgaQvlE4l+OiROq8kADP4p+DVWhRJul/+momPb0TBrJ
-X-Google-Smtp-Source: AGHT+IGS4IRQv3aRlCblYu8xwHg5XZR0qfiO7Eu9RcibddzrzRx9eU6iVFRicBd0T9dQ/iqh/2Wu
-X-Received: by 2002:a0c:f413:0:b0:6b4:e21c:d46f with SMTP id 6a1803df08f44-6bd79c3d61cmr114652966d6.27.1723398067932;
-        Sun, 11 Aug 2024 10:41:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1723398067; cv=none;
+Received: by 2002:a05:7022:d82:b0:85:21:bd5b with SMTP id ec2csp1069656dlb;
+        Thu, 8 Aug 2024 09:22:34 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVWxLL67mqgGmahjnJ44Q/gpF8u2DLaHjH/9s/QfX9j4hIb+J1CKsFQmAgTj+j2WTAT7/2DPUgbm6Ca8r5MEGGZoO5mB7Lk
+X-Google-Smtp-Source: AGHT+IHmwNBjBB4wRgGPxCS4VQxiG64kf3OmoG5aQADcX4+6F7pcx7QXlAtKGoIPSnVM37jg8mTE
+X-Received: by 2002:a05:622a:1f98:b0:450:9:a434 with SMTP id d75a77b69052e-451d421cfc1mr30283491cf.19.1723134154324;
+        Thu, 08 Aug 2024 09:22:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1723134154; cv=none;
         d=google.com; s=arc-20160816;
-        b=YXRYHDY2COnnF9+NsGKOzS4lX5GYIQMAm9oct+CAl46t2dRmE101yZhSW6jzlWw8Mx
-         0z/xkeZJY9EXoMK6Q9S36oJLmPzhQCocRNm/Pj6gICHHBTfLOcD7E+S/suZ+RvN2Z8En
-         aKuu1/KZp3TdkdRDNE2sUfw+zWjafkSDMindP9y1dMBBc0t0WlCE9L4qNcMl1C7sjqHn
-         GMf7WMUc4nd8FTK8aqVpXDM/M1K3Enh3aQybviZTYMhaOfk6AEDqbIMxHsQvvac/eco2
-         aSiLPtoIClG8hgDLKqJ+OzbkOMGezXcFXrk121n7tW41rbQsKlTU03WLfXSPa0Tfb7wF
-         5aGQ==
+        b=CEE+9mMQTvMofseGq5gQwoYCKo94Ml8AmTovip2TlVYE+52OlDD6xjeiGKZr/RlaJ4
+         kw2lVuTILJOnxGC3s71RDm7Kctn54cBJUzQm2ONtYvCvnUzVgvUuEu2ZA5tRywBJLbtT
+         TZB4zY4vWNTYKTZ7yKy1NHKRbOCfIW8MrNtrnFPsSh5iBlcY1dUjgmcmGlSFidp52tV3
+         p4oLcYvT1mM87RsAlq5/anaDV99kPKVvTjl8NswCXxLF8Z6WQiH3x7rlKBtFOGJs3Bqi
+         fljCf8j2j+/e7liHknGnazkAq7P++nF2qnQg959I+HK38KQWOImhL3fUvvF9kpZ6Nos2
+         HPiA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:autocrypt:from:content-language:references:cc:to
-         :subject:user-agent:mime-version:date:message-id;
-        bh=0OT6ZFFk8jYAhYA+fKh45z0v0h1lOFK3973dpELr7aE=;
-        fh=UMlouvVl3Ph4Ne7UvGTvosqVcNxKyKMHDiGsZppDwks=;
-        b=q59rsKuBajJsdXpOZ+KRajrF0YxJnfD02buYxd4QtRl255DccnBZfG14cd9fYtbHHL
-         kIe70TgbB29+K5nQ1jQ+OvpWss7po3rCno17yShDyBAdw4lPTJFcnXHOTO6KaAiw8WDU
-         u50SuvahIbA2Fb3Y4IlB6YS5DKENW2oaCVuydHnRi+vgBpKQGIanXx/6aOQf93OUqzeR
-         OCvEyGuq6gCsCuFxrH9dBan58Dp+mjQccK/wfaeUVWcR3SxtBnVnPQAjqvUVvgO39i0j
-         ItOHqfj1NWvhScsczsgMM0n0KCf1wu6z7sRhhHSVtmgHwMZ457LAy6NJQiA75BIFUlSz
-         htOA==;
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:user-agent
+         :in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=7ZNi2oTApSCJG/gNtlnFTLs8ETuTCgIq/g7wjQBDvLo=;
+        fh=N5HxHITUWSLOkULx7ITQ8OrnC9xUUIL/vatdVN0Rh8s=;
+        b=k/uQNJ/OphuwVUNv05oYQZJ2+jEGNjfhaT2vlWvIoLr3ABCr7cUYccrCDHHp6KNIcl
+         kuWyKajqRPSY19Bv0JNfD+fB6bQ257kk0nMnXfeowSddE7KDwHcB9abmYi+TGuZNub0C
+         f2F7ItsYRwYxvZAeO3Rs7jwNirquw/8NBa5k1Bvu++Rl8L1Oo1HBTM/J/czihY6bZWSr
+         oy9ipxpUP5rteO9BbsNKTXFdhl+wpHbjUZl2OhMCel55hgoNcgwK26wC31QXW4m5T4jh
+         hLr096OJjy4/wxmksscvqQ3l0UtbidlP3+HBpumocv+iYWVfTSKNxZUH5CxNQ8zJWo09
+         2Idw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=VLNBxPJU;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6bd82e8cbd4si43013296d6.538.2024.08.11.10.41.07
+        by mx.google.com with ESMTPS id d75a77b69052e-451c871b0aesi44094541cf.203.2024.08.08.09.22.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 11 Aug 2024 10:41:07 -0700 (PDT)
+        Thu, 08 Aug 2024 09:22:34 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=VLNBxPJU;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sdCYi-0003L1-GG; Sun, 11 Aug 2024 13:40:51 -0400
+	id 1sc5u4-0005Ze-BT; Thu, 08 Aug 2024 12:22:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1sdCYe-0003K5-DA; Sun, 11 Aug 2024 13:40:46 -0400
-Received: from isrv.corpit.ru ([86.62.121.231])
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1sc5u1-0005Xf-Vp
+ for qemu-arm@nongnu.org; Thu, 08 Aug 2024 12:22:14 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1sdCYb-0008Tt-SG; Sun, 11 Aug 2024 13:40:43 -0400
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 5930983D0B;
- Sun, 11 Aug 2024 20:39:56 +0300 (MSK)
-Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with ESMTP id 2ADB4123998;
- Sun, 11 Aug 2024 20:40:35 +0300 (MSK)
-Message-ID: <51b8f685-2ffc-4021-9d7c-bdabdc4ba177@tls.msk.ru>
-Date: Sun, 11 Aug 2024 20:40:35 +0300
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1sc5ty-0005Gc-UB
+ for qemu-arm@nongnu.org; Thu, 08 Aug 2024 12:22:12 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1723134129;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:in-reply-to:in-reply-to:  references:references;
+ bh=7ZNi2oTApSCJG/gNtlnFTLs8ETuTCgIq/g7wjQBDvLo=;
+ b=VLNBxPJUhQ+GMSVpCRh+jhwspgTPodxFfRHsWGrtIihTLq8eDx7H7Oy9bZeMmFLIecwx57
+ F5xUDbLX3FrjdgjMroYsXsGt6FyWBi1OttOgEwPUAsNhBFJQJlX+Y0r09XZWCFBcdzRpGb
+ O+mWdRnAfy2kHOhw85sON5UJJutx+Zs=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-597-tC2tNrEfOnarrCjnxKuwSw-1; Thu,
+ 08 Aug 2024 12:22:06 -0400
+X-MC-Unique: tC2tNrEfOnarrCjnxKuwSw-1
+Received: from mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.15])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 6936C1944B2A; Thu,  8 Aug 2024 16:22:05 +0000 (UTC)
+Received: from redhat.com (unknown [10.42.28.163])
+ by mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 6C74A1959166; Thu,  8 Aug 2024 16:22:02 +0000 (UTC)
+Date: Thu, 8 Aug 2024 17:21:58 +0100
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Alejandro Zeise <alejandro.zeise@seagate.com>
+Cc: qemu-arm@nongnu.org, kris.conklin@seagate.com,
+ jonathan.henze@seagate.com, evan.burgess@seagate.com, clg@kaod.org,
+ peter.maydell@linaro.org, qemu-devel@nongnu.org
+Subject: Re: [PATCH v4 07/15] crypto/hash: Implement and use new hash API
+Message-ID: <ZrTwphQDG20aGtsP@redhat.com>
+References: <20240807195122.2827364-1-alejandro.zeise@seagate.com>
+ <20240807195122.2827364-8-alejandro.zeise@seagate.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 00/17] target/arm: AdvSIMD decodetree conversion, part 4
-To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org
-References: <20240717060903.205098-1-richard.henderson@linaro.org>
-Content-Language: en-US, ru-RU
-From: Michael Tokarev <mjt@tls.msk.ru>
-Autocrypt: addr=mjt@tls.msk.ru; keydata=
- xsBLBETIiwkBCADh3cFB56BQYPjtMZCfK6PSLR8lw8EB20rsrPeJtd91IoNZlnCjSoxd9Th1
- bLUR8YlpRJ2rjc6O1Bc04VghqUOHgS/tYt8vLjcGWixzdhSLJgPDK3QQZPAvBjMbCt1B6euC
- WuD87Pv5Udlpnzf4aMwxkgfTusx+ynae/o+T5r7tXD+isccbC3SiGhmAPxFyY3zGcFk4+Rxc
- 0tP8YY2FWE/baHu+lBDTUN79efWAkHhex1XzVZsV7ZD16rzDbXFK5m6ApvGJWlr5YDEEydTF
- WwmvwBfr4OINVxzEG/ujNiG4fpMf2NsnFGyB9aSbFjXZevB4qWkduYYW+xpK1EryszHtAAYp
- zSBNaWNoYWVsIFRva2FyZXYgPG1qdEB0bHMubXNrLnJ1PsLAlgQTAQoAQAIbAwYLCQgHAwIE
- FQIIAwQWAgMBAh4BAheAAhkBFiEEbuGV0Yhuj/uBDUMkRXzgoIBEZcUFAmBbcjwFCS5e6jMA
- CgkQRXzgoIBEZcUTIQgA1hPsOF82pXxbcJXBMc4zB9OQu4AlnZvERoGyw7I2222QzaN3RFuj
- Fia//mapXzpIQNF08l/AA6cx+CKPeGnXwyZfF9fLa4RfifmdNKME8C00XlqnoJDZBGzq8yMy
- LAKDxl9OQWFcDwDxV+irg5U3fbtNVhvV0kLbS2TyQ0aU5w60ERS2NcyDWplOo7AOzZWChcA4
- UFf78oVdZdCW8YDtU0uQFhA9moNnrePy1HSFqduxnlFHEI+fDj/TiOm2ci48b8SBBJOIJFjl
- SBgH8+SfT9ZqkzhN9vh3YJ49831NwASVm0x1rDHcIwWD32VFZViZ3NjehogRNH9br0PSUYOC
- 3s7ATQRX2BjLAQgAnak3m0imYOkv2tO/olULFa686tlwuvl5kL0NWCdGQeXv2uMxy36szcrh
- K1uYhpiQv4r2qNd8BJtYlnYIK16N8GBdkplaDIHcBMbU4t+6bQzEIJIaWoq1hzakmHHngE2a
- pNMnUf/01GFvCRPlv3imkujE/5ILbagjtdyJaHF0wGOSlTnNT4W8j+zPJ/XK0I5EVQwtbmoc
- GY62LKxxz2pID6sPZV4zQVY4JdUQaFvOz1emnBxakkt0cq3Qnnqso1tjiy7vyH9CAwPR/48W
- fpK6dew4Fk+STYtBeixOTfSUS8qRS/wfpUeNa5RnEdTtFQ9IcjpQ/nPrvJJsu9FqwlpjMwAR
- AQABwsBlBBgBCAAPBQJX2BjLAhsMBQkSzAMAAAoJEEV84KCARGXFUKcH/jqKETECkbyPktdP
- cWVqw2ZIsmGxMkIdnZTbPwhORseGXMHadQODayhU9GWfCDdSPkWDWzMamD+qStfl9MhlVT60
- HTbo6wu1W/ogUS70qQPTY9IfsvAj6f8TlSlK0eLMa3s2UxL2oe5FkNs2CnVeRlr4Yqvp/ZQV
- 6LXtew4GPRrmplUT/Cre9QIUqR4pxYCQaMoOXQQw3Y0csBwoDYUQujn3slbDJRIweHoppBzT
- rM6ZG5ldWQN3n3d71pVuv80guylX8+TSB8Mvkqwb5I36/NAFKl0CbGbTuQli7SmNiTAKilXc
- Y5Uh9PIrmixt0JrmGVRzke6+11mTjVlio/J5dCM=
-In-Reply-To: <20240717060903.205098-1-richard.henderson@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
- helo=isrv.corpit.ru
-X-Spam_score_int: -68
-X-Spam_score: -6.9
-X-Spam_bar: ------
-X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <20240807195122.2827364-8-alejandro.zeise@seagate.com>
+User-Agent: Mutt/2.2.12 (2023-09-09)
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.15
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.141,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -112,56 +117,295 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: iDJ32mt/LCdR
+X-TUID: UucpG1wNIXmB
 
-17.07.2024 09:08, Richard Henderson wrote:
-> Flush before the queue gets too big.
-> Also, there's a bug fix in patch 14.
-
-Hi!
-
-Has this patchset (together with the bugfix) been forgotten?
-Maybe we should include at least the bug fix for 9.1?
-
-Thanks,
-
-/mjt
-
-> r~
+On Wed, Aug 07, 2024 at 07:51:14PM +0000, Alejandro Zeise wrote:
+> Changes the public hash API implementation to support accumulative hashing.
 > 
-> Richard Henderson (17):
->    target/arm: Use tcg_gen_extract2_i64 for EXT
->    target/arm: Convert EXT to decodetree
->    target/arm: Convert TBL, TBX to decodetree
->    target/arm: Convert UZP, TRN, ZIP to decodetree
->    target/arm: Simplify do_reduction_op
->    target/arm: Convert ADDV, *ADDLV, *MAXV, *MINV to decodetree
->    target/arm: Convert FMAXNMV, FMINNMV, FMAXV, FMINV to decodetree
->    target/arm: Convert FMOVI (scalar, immediate) to decodetree
->    target/arm: Convert MOVI, FMOV, ORR, BIC (vector immediate) to
->      decodetree
->    target/arm: Introduce gen_gvec_sshr, gen_gvec_ushr
->    target/arm: Fix whitespace near gen_srshr64_i64
->    target/arm: Convert handle_vec_simd_shri to decodetree
->    target/arm: Convet handle_vec_simd_shli to decodetree
->    target/arm: Clear high SVE elements in handle_vec_simd_wshli
->    target/arm: Use {,s}extract in handle_vec_simd_wshli
->    target/arm: Convert SSHLL, USHLL to decodetree
->    target/arm: Push tcg_rnd into handle_shri_with_rndacc
+> Implementations for the public functions are added to call the new
+> driver functions that implement context creation, updating,
+> finalization, and destruction.
 > 
->   target/arm/tcg/translate.h      |    5 +
->   target/arm/tcg/gengvec.c        |   21 +-
->   target/arm/tcg/translate-a64.c  | 1123 +++++++++++--------------------
->   target/arm/tcg/translate-neon.c |   25 +-
->   target/arm/tcg/a64.decode       |   87 +++
->   5 files changed, 520 insertions(+), 741 deletions(-)
+> Additionally changes the "shortcut" functions to use these 4 new core
+> functions.
+> 
+> Signed-off-by: Alejandro Zeise <alejandro.zeise@seagate.com>
+> ---
+>  crypto/hash.c | 163 +++++++++++++++++++++++++++++++++++++++-----------
+>  1 file changed, 128 insertions(+), 35 deletions(-)
+> 
+> diff --git a/crypto/hash.c b/crypto/hash.c
+> index b0f8228bdc..f3c18cdd74 100644
+> --- a/crypto/hash.c
+> +++ b/crypto/hash.c
+> @@ -1,6 +1,7 @@
+>  /*
+>   * QEMU Crypto hash algorithms
+>   *
+> + * Copyright (c) 2024 Seagate Technology LLC and/or its Affiliates
+>   * Copyright (c) 2015 Red Hat, Inc.
+>   *
+>   * This library is free software; you can redistribute it and/or
+> @@ -45,23 +46,20 @@ int qcrypto_hash_bytesv(QCryptoHashAlgorithm alg,
+>                          size_t *resultlen,
+>                          Error **errp)
+>  {
+> -#ifdef CONFIG_AF_ALG
+> -    int ret;
+> -    /*
+> -     * TODO:
+> -     * Maybe we should treat some afalg errors as fatal
+> -     */
+> -    ret = qcrypto_hash_afalg_driver.hash_bytesv(alg, iov, niov,
+> -                                                result, resultlen,
+> -                                                NULL);
+> -    if (ret == 0) {
+> -        return ret;
+> +    int fail;
+> +    QCryptoHash *ctx = qcrypto_hash_new(alg, errp);
+> +
+> +    if (ctx) {
+> +        fail = qcrypto_hash_updatev(ctx, iov, niov, errp) ||
+> +               qcrypto_hash_finalize_bytes(ctx, result, resultlen, errp);
+> +
+> +        /* Ensure context is always freed regardless of error */
+> +        qcrypto_hash_free(ctx);
+> +    } else {
+> +        fail = -1;
+>      }
+> -#endif
+
+Generally I'd prefer immediate return on error, and you can
+use g_autoptr to free the object too. With that you'll end
+up without the extra 'fail' variable:
+
+    g_autoptr(QCryptoHash) ctx = qcrypto_hash_new(alg, errp);
+
+    if (!ctx) {
+        return -1;
+    }
+
+    if (qcrypto_hash_updatev(ctx, iov, niov, errp) < 0 ||
+        qcrypto_hash_finalize_bytes(ctx, result, resultlen, errp) < 0) {
+	return -1;
+    }
+
+    return 0;
+
+> @@ -77,30 +75,121 @@ int qcrypto_hash_bytes(QCryptoHashAlgorithm alg,
+>      return qcrypto_hash_bytesv(alg, &iov, 1, result, resultlen, errp);
+>  }
+>  
+> -static const char hex[] = "0123456789abcdef";
+> -
+> -int qcrypto_hash_digestv(QCryptoHashAlgorithm alg,
+> +int qcrypto_hash_updatev(QCryptoHash *hash,
+>                           const struct iovec *iov,
+>                           size_t niov,
+> -                         char **digest,
+>                           Error **errp)
+>  {
+> +#ifdef CONFIG_AF_ALG
+> +    return qcrypto_hash_afalg_driver.hash_update(hash, iov, niov, errp);
+> +#else
+> +    return qcrypto_hash_lib_driver.hash_update(hash, iov, niov, errp);
+> +#endif /* CONFIG_AF_ALG */
+> +}
+
+This isn't quite the same as the old code. That would try afalg, and then
+dynamically fallback to the userspace driver.
+
+I think we need to deal with this all in the qcrypto_hash_new() method.
+Attempt to create an AF_ALG driver instance via its 'hash_new' method,
+and if that fails create the normal driver 'hash_new' method. We need
+to record which we created in QCryptoHash struct, and then in the
+update, finalize & free methods we need to call the corresponding
+driver.
+
+> +
+> +int qcrypto_hash_update(QCryptoHash *hash,
+> +                        const char *buf,
+> +                        size_t len,
+> +                        Error **errp)
+> +{
+> +    struct iovec iov = { .iov_base = (char *)buf, .iov_len = len };
+> +
+> +    return qcrypto_hash_updatev(hash, &iov, 1, errp);
+> +}
+> +
+> +QCryptoHash *qcrypto_hash_new(QCryptoHashAlgorithm alg, Error **errp)
+> +{
+
+Here we should call
+
+   if (!qcrypto_hash_supports(alg)) {
+      error_setg(errp, "Unsupported hash algorithm %s",
+                 QCryptoHashAlgorithm_lookup[alg]);
+      return NULL;
+   }
+
+That way, we avoid repeating this check in every single
+'hash_new' method impl
+
+> +#ifdef CONFIG_AF_ALG
+> +    return qcrypto_hash_afalg_driver.hash_new(alg, errp);
+> +#else
+> +    return qcrypto_hash_lib_driver.hash_new(alg, errp);
+> +#endif /* CONFIG_AF_ALG */
+> +}
+> +
+> +void qcrypto_hash_free(QCryptoHash *hash)
+> +{
+> +#ifdef CONFIG_AF_ALG
+> +    qcrypto_hash_afalg_driver.hash_free(hash);
+> +#else
+> +    qcrypto_hash_lib_driver.hash_free(hash);
+> +#endif /* CONFIG_AF_ALG */
+> +}
+> +
+> +int qcrypto_hash_finalize_bytes(QCryptoHash *hash,
+> +                                uint8_t **result,
+> +                                size_t *result_len,
+> +                                Error **errp)
+> +{
+> +#ifdef CONFIG_AF_ALG
+> +    return qcrypto_hash_afalg_driver.hash_finalize(hash, result, result_len,
+> +                                                   errp);
+> +#else
+> +    return qcrypto_hash_lib_driver.hash_finalize(hash, result, result_len, errp);
+> +#endif /* CONFIG_AF_ALG */
+> +}
+> +
+> +static const char hex[] = "0123456789abcdef";
+> +
+> +int qcrypto_hash_finalize_digest(QCryptoHash *hash,
+> +                                 char **digest,
+> +                                 Error **errp)
+> +{
+> +    int ret;
+>      uint8_t *result = NULL;
+
+declare this
+
+  g_autofree uint8_t *result = NULL;
+
+then you can drop the later g_free(result)
+
+>      size_t resultlen = 0;
+>      size_t i;
+>  
+> -    if (qcrypto_hash_bytesv(alg, iov, niov, &result, &resultlen, errp) < 0) {
+> -        return -1;
+> +    ret = qcrypto_hash_finalize_bytes(hash, &result, &resultlen, errp);
+> +    if (ret == 0) {
+> +        *digest = g_new0(char, (resultlen * 2) + 1);
+> +        for (i = 0 ; i < resultlen ; i++) {
+> +            (*digest)[(i * 2)] = hex[(result[i] >> 4) & 0xf];
+> +            (*digest)[(i * 2) + 1] = hex[result[i] & 0xf];
+> +        }
+> +        (*digest)[resultlen * 2] = '\0';
+> +        g_free(result);
+> +    }
+> +
+> +    return ret;
+> +}
+> +
+> +int qcrypto_hash_finalize_base64(QCryptoHash *hash,
+> +                                 char **base64,
+> +                                 Error **errp)
+> +{
+> +    int ret;
+> +    uint8_t *result = NULL;
+
+g_autofree for this too
+
+> +    size_t resultlen = 0;
+> +
+> +    ret = qcrypto_hash_finalize_bytes(hash, &result, &resultlen, errp);
+> +    if (ret == 0) {
+> +        *base64 = g_base64_encode(result, resultlen);
+> +        g_free(result);
+>      }
+>  
+> -    *digest = g_new0(char, (resultlen * 2) + 1);
+> -    for (i = 0 ; i < resultlen ; i++) {
+> -        (*digest)[(i * 2)] = hex[(result[i] >> 4) & 0xf];
+> -        (*digest)[(i * 2) + 1] = hex[result[i] & 0xf];
+> +    return ret;
+> +}
+> +
+> +int qcrypto_hash_digestv(QCryptoHashAlgorithm alg,
+> +                         const struct iovec *iov,
+> +                         size_t niov,
+> +                         char **digest,
+> +                         Error **errp)
+> +{
+> +    bool fail;
+> +    QCryptoHash *ctx = qcrypto_hash_new(alg, errp);
+> +
+> +    if (ctx) {
+> +        fail = qcrypto_hash_updatev(ctx, iov, niov, errp) ||
+> +               qcrypto_hash_finalize_digest(ctx, digest, errp);
+> +
+> +        /* Ensure context is always freed regardless of error */
+> +        qcrypto_hash_free(ctx);
+> +    } else {
+> +        fail = false;
+>      }
+> -    (*digest)[resultlen * 2] = '\0';
+> -    g_free(result);
+> -    return 0;
+> +
+> +    return fail;
+>  }
+
+Same comment about re-arranging the code that I mentioned higher
+up against qcrypto_hash_bytesv
+
+>  
+>  int qcrypto_hash_digest(QCryptoHashAlgorithm alg,
+> @@ -120,16 +209,20 @@ int qcrypto_hash_base64v(QCryptoHashAlgorithm alg,
+>                           char **base64,
+>                           Error **errp)
+>  {
+> -    uint8_t *result = NULL;
+> -    size_t resultlen = 0;
+> +    bool fail;
+> +    QCryptoHash *ctx = qcrypto_hash_new(alg, errp);
+> +
+> +    if (ctx) {
+> +        fail = qcrypto_hash_updatev(ctx, iov, niov, errp) ||
+> +               qcrypto_hash_finalize_base64(ctx, base64, errp);
+>  
+> -    if (qcrypto_hash_bytesv(alg, iov, niov, &result, &resultlen, errp) < 0) {
+> -        return -1;
+> +        /* Ensure context is always freed regardless of error */
+> +        qcrypto_hash_free(ctx);
+> +    } else {
+> +        fail = 1;
+>      }
+>  
+> -    *base64 = g_base64_encode(result, resultlen);
+> -    g_free(result);
+> -    return 0;
+> +    return fail;
+>  }
+
+And same comment again.
+
+>  
+>  int qcrypto_hash_base64(QCryptoHashAlgorithm alg,
+> -- 
+> 2.34.1
 > 
 
+With regards,
+Daniel
 -- 
-GPG Key transition (from rsa2048 to rsa4096) since 2024-04-24.
-New key: rsa4096/61AD3D98ECDF2C8E  9D8B E14E 3F2A 9DD7 9199  28F1 61AD 3D98 ECDF 2C8E
-Old key: rsa2048/457CE0A0804465C5  6EE1 95D1 886E 8FFB 810D  4324 457C E0A0 8044 65C5
-Transition statement: http://www.corpit.ru/mjt/gpg-transition-2024.txt
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
 

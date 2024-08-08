@@ -1,178 +1,137 @@
-Received: by 2002:a17:504:7fd7:b0:1be9:327d:8ee3 with SMTP id hj23csp496958njc;
-        Thu, 8 Aug 2024 06:03:58 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVJGO2om65BLBFkPA7yroI+dLTrHN8Aj5bAZaNLATwMgkINCt8bhF3y0otTFkma01KgBziBZtwhe1aSzA==@linaro.org
-X-Google-Smtp-Source: AGHT+IExXepVV1RqY8mOzbEsgiZk7u2FYAQgTNhJ/170zTxNPmI2lWcZz9q6lspWQ6Xa6b+uxBLE
-X-Received: by 2002:a05:600c:3c91:b0:426:62c5:473e with SMTP id 5b1f17b1804b1-4290af19256mr15502095e9.26.1723122238344;
-        Thu, 08 Aug 2024 06:03:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1723122238; cv=none;
+Received: by 2002:a17:504:7fd7:b0:1be9:327d:8ee3 with SMTP id hj23csp504842njc;
+        Thu, 8 Aug 2024 06:23:21 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCU3dMi9+VXKARokvcfjVzRqx7tClrMX9Z2ZfW7BSXvcN1QMxgwwuXiNoWvNlt7BB49CHpxk2ptDc2ko4rpo4eeroj0k5qqw
+X-Google-Smtp-Source: AGHT+IGC92The/0pBwwM6sM29AOLNRkbaRgjQJBLJn7bX58mWOOVERgk6v6CixRzsBV2eWmrwyQP
+X-Received: by 2002:a05:6a21:601:b0:1c4:985a:acc4 with SMTP id adf61e73a8af0-1c6fcf72ebdmr1759908637.46.1723123401354;
+        Thu, 08 Aug 2024 06:23:21 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1723123401; cv=pass;
         d=google.com; s=arc-20160816;
-        b=o8uMEJT/JBGIsoIzKpTGY0wYk6yTmrSO8M/b+YTNk7lkVw1PkbBd9bm7wnXFhR+6NB
-         AcjAUE6YVOyneWlyC4aKJLJoZPcLu1WYAaXD00R/IFbeO9Ged4BCLDTzu66tQcFT7aDJ
-         yCmJKN/5AkN9WtCDq3hwNXgt4jDqdsBaGAkF5scgWvkL0QYn3QsTkK+scMGhjJQN0gj0
-         iMO1kAWU7Ub03OFt+pKmvX7q6iC1D4NAprRa26V9Axzbqtl9pI9EgnNv5PHjt9Wz1pfQ
-         3eAuYYQhC9siovbc0cuOSW8U+q7QkCDfJeO3F5SxlSmWp4fFxCNrlBM9nezJo/MN84Rj
-         4Pog==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=2x+upV4aKqH/ReQCdsxjfOCLOWnfSZw1DbO3TJVHrTc=;
-        fh=456VxxF5cH/kn6ZGczEAPquU3F5BBxQr+EFbS/Iixlo=;
-        b=yenzrzdr+J/0G0T/NN9uDoxIV/7TigK+fX8T5kzB0k7AIlSL6OBi01RBMu+DrNAjuV
-         h8inov1UeLKB23Hjs4rcxM3qwh6LISQeunykMZ42RXI+dN02WjNmGbV9DTwgFehtPm2l
-         z/QfirOegduvQYpCuKv2TwZFcjeaeWGi2WRGC6XHaJreaGTWYtPKQQ/SeP6frxV9L+WI
-         pjUNaK7TfpF1UbJTMNiKFhdXXZRUPSbF/JK0n5991cQ8i6PMO2TsaOgzivmSkxQSfCNo
-         mSQaiIAELuSOYoMJy5wdAWis9KgA10Tm4MivXIuodGkK95rUQEH+BCZ8JoUcoKWudb2B
-         1Ubg==;
+        b=oc12HeFZPNn3JXNeVfslo5Lv3Xpr1LFuiih4DaqLmDVfdHuZAp6/2AFMG4x91D5bWj
+         VG4EWcqRGW5UvZYRRjiUS2stmKK2bw1sMgIdrvd+NythpjwZ7m+P5FxUpb45Z1Su/SDg
+         +Y5np6E2yvuH2F9kd4AZqFXmvsieHpjSTb1vcD0t+hnC7EfbGhtE4WLXw3Sf8ez52Lck
+         teWjEojU+EFdGtT6rX8TJSiYBEoBMbpMAPewLEqLKG1ygR+wisSaFNSvjZF6Vx79WguJ
+         1z5cB0oFFuIALRXzD1r9L84yrNWEbFzbCaNYKevZIDCCLbt5zinTWN3H3xv2mMmCDS7y
+         Mxsg==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:list-unsubscribe:list-subscribe:list-id:precedence
+         :user-agent:message-id:date:references:in-reply-to:subject:cc:to
+         :from:dkim-signature;
+        bh=PgOyHGQ4CrwHKV+wYDltQrPczjgYpAzB626tRdkvhBI=;
+        fh=OUqmBig6VzsEN5C8sADN5kVx3iZh5BlPpVA4ByD8Vn0=;
+        b=GfcfOh+az/x4098OUKMqLKeNGRo13vGPdoEcoqK4kSg45UXRVX53scDJui8Qb2H2DF
+         iCa9m4La024ShduoIxLhfgOBqMYHBDv/Dnd9fI1MLtMOg+Hnt/NPSZoWUVn+7Njey5t9
+         GqTjA8onA4LtgHn6H0+1bb6ew27yyPmqsOnAl0Kb8D3nINMjROQCjC6GXhu0rfpAk9Wk
+         oFrmoOKqh66fy7RZKtCiF7O+vR0ZjrbM3jDQRvDfVeQfHundzlle9oWU6jmZan9DAWQu
+         TTHaEXaiNSx534ldWzzqw3hh4QrKb8s2thiyHkzXi063kbod3W5gVhuufA30wXiYLUUj
+         RQfA==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Eeb4IMP7;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ffacd0b85a97d-36d2727e63asi793231f8f.724.2024.08.08.06.03.58
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RL8y9pW0;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of linux-kernel+bounces-279524-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) smtp.mailfrom="linux-kernel+bounces-279524-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <linux-kernel+bounces-279524-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sy.mirrors.kernel.org (sy.mirrors.kernel.org. [147.75.48.161])
+        by mx.google.com with ESMTPS id 41be03b00d2f7-7c109f9b474si3528068a12.584.2024.08.08.06.23.20
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 08 Aug 2024 06:03:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 08 Aug 2024 06:23:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of linux-kernel+bounces-279524-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) client-ip=147.75.48.161;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Eeb4IMP7;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sc2nq-00038T-Qb; Thu, 08 Aug 2024 09:03:38 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1sc2np-000377-E8
- for qemu-arm@nongnu.org; Thu, 08 Aug 2024 09:03:37 -0400
-Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1sc2nn-0002jD-Ee
- for qemu-arm@nongnu.org; Thu, 08 Aug 2024 09:03:37 -0400
-Received: by mail-ed1-x536.google.com with SMTP id
- 4fb4d7f45d1cf-5b391c8abd7so1083713a12.2
- for <qemu-arm@nongnu.org>; Thu, 08 Aug 2024 06:03:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1723122213; x=1723727013; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=2x+upV4aKqH/ReQCdsxjfOCLOWnfSZw1DbO3TJVHrTc=;
- b=Eeb4IMP7nIyRGos1q3M2E5sdjKUcAcZl2L3vv0/EGAfG/eRyVWf+ZAgavKiPrFH9q6
- qwI2hXty+PMqIqRaFdA7XV3B+AtDkIW1nSW6u+UuMBYPCxGo6kE9W5/PC+PdZzXX4VLb
- b3fVN6i3gsMpyP37vvm7q2gBTWZDXu9DSsnf6RjtKzE+kiVmjsZY7ego8GPloidsn5YD
- b8w4kZYELt41Wnu416EW4VuDv3gMWMfOvWPgt/ZBvsQOJQ0JcVOvoPlWZtmYDfdcYU2b
- td9HBqEBTLLGObNwMfoYiqkL3DVfTHW76/fEylSEXFcEO6Ghvp1WiyftHkMKrJjcGmOZ
- qhWg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1723122213; x=1723727013;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=2x+upV4aKqH/ReQCdsxjfOCLOWnfSZw1DbO3TJVHrTc=;
- b=W1zCv+/biQlFFkPxFMrWtjd176xN8Hp4alDNxPSMCnHSe17V9LUvJTNOFjW9l1Fi38
- fGtW4vUMAaZX2yhSDBuXXu1D4nkPVnw+yoDF0QyAF0g4x9U3s8zrHVT86IDP+y6KAybx
- WwvzLphSpEif7U3h4BN5lN1RaosuAA965mfqyON6d+tG1gDNxUuKPOeN99lGpBxq2FEM
- Ruzph8ME37ErCskNf7DSmpfpvCs4+iYMSDG7MZVu9Sh2oJz+EmJGFubzp/BW0+ZLvgnL
- LZUQvqwi5bHUT5kZ0uUo+x7w/MBclJfnc72KKn+YcUyAHzrv0fW4LG+UyezRr4K6g9rX
- SyXQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXiToI4yKfJfz8BhdRvAnK2T3LVleBiS0pd25q7JbdGj6Fqmegf1MBvDEuvzqYwmZzUfVS4no8jiw==@nongnu.org
-X-Gm-Message-State: AOJu0Yy3cM9O1cTg2kI+Pde0oS7jGJjobJEoA9ounE4Z5gGlC4ldztjR
- r5SPFUf+Satx0/z7RYQRD/AkRA8y+ut5jjzSi6l9Ty7e3kK6LpnaJHNfztzMhw1km2FyHKBOCKZ
- Q6AAGAsbXXoPCzrTCPxp5FRCkWebRXf7392jbKA==
-X-Received: by 2002:a05:6402:42c2:b0:5a1:faf:e5ac with SMTP id
- 4fb4d7f45d1cf-5bbb23c6440mr1615459a12.26.1723122212996; Thu, 08 Aug 2024
- 06:03:32 -0700 (PDT)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RL8y9pW0;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of linux-kernel+bounces-279524-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) smtp.mailfrom="linux-kernel+bounces-279524-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by sy.mirrors.kernel.org (Postfix) with ESMTPS id 2F72EB22586
+	for <alex.bennee@linaro.org>; Thu,  8 Aug 2024 13:23:19 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 3297118C341;
+	Thu,  8 Aug 2024 13:23:15 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="RL8y9pW0"
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 837184A33
+	for <linux-kernel@vger.kernel.org>; Thu,  8 Aug 2024 13:23:13 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.133.124
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1723123395; cv=none; b=CuG1ORd7paALJD8HB/YfWLh7xdCYgldwlfOuQ6NXNs7yFGD2FIy/Ag/PNSmDPe7QfuJibYMQb0Ab/8NREkmnBFW75npBbMHPnHVRzQil0qq5JGRTjXfXaKf8yvhBdNSsRNN1/NHegoOKkxFTSyzx1B+QIXtbaSCtUC6E+lJfnEE=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1723123395; c=relaxed/simple;
+	bh=Ga/j1peT2iZzkdrMHAG94s/1f8x1frt+OvK0hcQXDkU=;
+	h=From:To:Cc:Subject:In-Reply-To:References:Date:Message-ID:
+	 MIME-Version:Content-Type; b=Y6SAGDcjywpqJBGsRyyFgTVK2jm/sn5lLCPWwCi2ZLRGoQAi5KzzXf4AdU7s4tPZTMhb8MXUAFwabLqUvAGhgMe66fi53HvzMhuon6G54lGtnaj04HYpOiu0g1CJ+X2j8DSkHpLnSDVR/f9vyOzUdG7JvX0VFef5XnXbsGWAYeM=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=RL8y9pW0; arc=none smtp.client-ip=170.10.133.124
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1723123392;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=PgOyHGQ4CrwHKV+wYDltQrPczjgYpAzB626tRdkvhBI=;
+	b=RL8y9pW0PDO0b2CLaGrVY0UHEhAJQlU221iREXxN5QpO0+kuqsyTnCsZlBK3n34i7O80lh
+	CXhiig8WveKQZxwVIsXuXY4GXSKbdjwXrFZv47kyLI4PUXlU1Re6mMPanydvh8pHp1+RCW
+	rqdZml6dm63xTK7s4WCsaCdVvIAni/k=
+Received: from mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-8-pePM0XxiO06RCsVLH9Hw2A-1; Thu,
+ 08 Aug 2024 09:23:09 -0400
+X-MC-Unique: pePM0XxiO06RCsVLH9Hw2A-1
+Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id D7484194510F;
+	Thu,  8 Aug 2024 13:23:07 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.39.193.245])
+	by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 370FB300018D;
+	Thu,  8 Aug 2024 13:23:07 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id D4FDD21E6682; Thu,  8 Aug 2024 15:23:04 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>,  Shiju Jose
+ <shiju.jose@huawei.com>,  "Michael S. Tsirkin" <mst@redhat.com>,  Ani
+ Sinha <anisinha@redhat.com>,  Dongjiu Geng <gengdongjiu1@gmail.com>,  Eric
+ Blake <eblake@redhat.com>,  Igor Mammedov <imammedo@redhat.com>,  Michael
+ Roth <michael.roth@amd.com>,  Paolo Bonzini <pbonzini@redhat.com>,  Peter
+ Maydell <peter.maydell@linaro.org>,  linux-kernel@vger.kernel.org,
+  qemu-arm@nongnu.org,  qemu-devel@nongnu.org
+Subject: Re: [PATCH v6 04/10] qapi/ghes-cper: add an interface to do generic
+ CPER error injection
+In-Reply-To: <87799362699e4349ce4a44f3d25698d5764735c6.1723119423.git.mchehab+huawei@kernel.org>
+	(Mauro Carvalho Chehab's message of "Thu, 8 Aug 2024 14:26:30 +0200")
+References: <cover.1723119423.git.mchehab+huawei@kernel.org>
+	<87799362699e4349ce4a44f3d25698d5764735c6.1723119423.git.mchehab+huawei@kernel.org>
+Date: Thu, 08 Aug 2024 15:23:04 +0200
+Message-ID: <87a5hnup1j.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13)
+Precedence: bulk
+X-Mailing-List: linux-kernel@vger.kernel.org
+List-Id: <linux-kernel.vger.kernel.org>
+List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-References: <20240801220328.941866-1-alexrichardson@google.com>
-In-Reply-To: <20240801220328.941866-1-alexrichardson@google.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 8 Aug 2024 14:03:21 +0100
-Message-ID: <CAFEAcA88Y=VXcTAGyZ396L2VDQp77E5KaStjpKrT5AS1aouC9w@mail.gmail.com>
-Subject: Re: [PATCH] target/arm: add support for 64-bit PMCCNTR in AArch32 mode
-To: Alex Richardson <alexrichardson@google.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::536;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x536.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 5Mr4q29XrhYZ
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
+X-TUID: z1U+fuKflXUF
 
-On Fri, 2 Aug 2024 at 02:00, Alex Richardson <alexrichardson@google.com> wrote:
+Mauro Carvalho Chehab <mchehab+huawei@kernel.org> writes:
+
+> Creates a QMP command to be used for generic ACPI APEI hardware error
+> injection (HEST) via GHESv2.
 >
-> See https://developer.arm.com/documentation/ddi0601/2024-06/AArch32-Registers/PMCCNTR--Performance-Monitors-Cycle-Count-Register?lang=en
+> The actual GHES code will be added at the followup patch.
 >
-> Signed-off-by: Alex Richardson <alexrichardson@google.com>
-> ---
->  target/arm/helper.c | 6 ++++++
->  1 file changed, 6 insertions(+)
->
-> diff --git a/target/arm/helper.c b/target/arm/helper.c
-> index 8fb4b474e8..94900667c3 100644
-> --- a/target/arm/helper.c
-> +++ b/target/arm/helper.c
-> @@ -5952,6 +5952,12 @@ static const ARMCPRegInfo v8_cp_reginfo[] = {
->        .access = PL1_RW, .accessfn = access_trap_aa32s_el1,
->        .writefn = sdcr_write,
->        .fieldoffset = offsetoflow32(CPUARMState, cp15.mdcr_el3) },
-> +    { .name = "PMCCNTR", .state = ARM_CP_STATE_AA32,
-> +      .type = ARM_CP_ALIAS | ARM_CP_IO | ARM_CP_64BIT,
-> +      .cp = 15, .crm = 9, .opc1 = 0,
-> +      .access = PL0_RW, .resetvalue = 0, .fgt = FGT_PMCCNTR_EL0,
-> +      .readfn = pmccntr_read, .writefn = pmccntr_write,
-> +      .accessfn = pmreg_access_ccntr },
->  };
->
->  /* These are present only when EL1 supports AArch32 */
-> --
-> 2.46.0.rc2.264.g509ed76dc8-goog
+> Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+> Signed-off-by: Shiju Jose <shiju.jose@huawei.com>
+> Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
 
-Coincidentally I'd also noticed recently that we don't implement
-the 64-bit accessor for PMCCNTR, but I hadn't got round to
-writing a patch, so thanks for doing this.
+My review of v5 still applies.  Messages crossed, I suppose.
 
-The 64-bit AArch32 PMCCNTR was added in v8 with the PMUv3, and
-presumably most guests which use the PMU in AArch32 code want
-to retain the ability to work with PMUv1 or v2 (or were simply
-written for PMUv1/v2 and never updated), so they stick to the
-32-bit sysreg, which is why we haven't noticed this bug before.
-
-There is an argument that we should gate this on
-ARM_FEATURE_PMU being set (or on an ID register test
-for the PMU version field being at least 3), but we don't
-currently do that for the existing PMU registers, which we
-just add regardless for v7 CPUs. So I think we should
-consider that a separate cleanup, and this is OK.
-
-I've applied this to target-arm.next (with an expansion
-of the commit message to note some of the above).
-
-thanks
--- PMM

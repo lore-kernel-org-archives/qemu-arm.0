@@ -1,135 +1,178 @@
-Received: by 2002:a17:504:7fd7:b0:1be9:327d:8ee3 with SMTP id hj23csp494414njc;
-        Thu, 8 Aug 2024 05:58:02 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXEZQ8Xgi9s3I5BFQEBrYlNodxMrHCMx/JTCGtHr3+Seh51WX2vuxvsEcqz9vh0swi31kiZtFITeeKZbpHieAhtIRYR0fA6
-X-Google-Smtp-Source: AGHT+IF7OLTDkGpjMLu6nzVujQq5VKjeehy7S1lybYTEYdKsOSKHFEdJLNpL5aT/j2V3YK5cQtVp
-X-Received: by 2002:a05:6902:1023:b0:e0b:a34f:9793 with SMTP id 3f1490d57ef6-e0e9daafe76mr2043302276.21.1723121881793;
-        Thu, 08 Aug 2024 05:58:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1723121881; cv=none;
+Received: by 2002:a17:504:7fd7:b0:1be9:327d:8ee3 with SMTP id hj23csp496958njc;
+        Thu, 8 Aug 2024 06:03:58 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVJGO2om65BLBFkPA7yroI+dLTrHN8Aj5bAZaNLATwMgkINCt8bhF3y0otTFkma01KgBziBZtwhe1aSzA==@linaro.org
+X-Google-Smtp-Source: AGHT+IExXepVV1RqY8mOzbEsgiZk7u2FYAQgTNhJ/170zTxNPmI2lWcZz9q6lspWQ6Xa6b+uxBLE
+X-Received: by 2002:a05:600c:3c91:b0:426:62c5:473e with SMTP id 5b1f17b1804b1-4290af19256mr15502095e9.26.1723122238344;
+        Thu, 08 Aug 2024 06:03:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1723122238; cv=none;
         d=google.com; s=arc-20160816;
-        b=lyVZ1W0alaYgnrtPL2d8nUwqVWhpL5b9odY2LsXf9MKT+X1dRTPk92McymHbzGLnVF
-         cdoErCft9uRW+vm7Tn6SFwHonzRTER2ApfSdHQasaYL1m4XORAOmnBB/EF2dUGhjeFeg
-         USlBXi0ml2g88T25IejvIP6MKpPCrAPEhKZV/73HbDi/HGO7rPqfnMMyRz721CkfzkjG
-         7SaIc73E96BTRUZx+FZb/tHyugeSktH23zeDQNCBtMbjHNUF3yJCfTPNlnJVckzjYow0
-         ll2ERDFjQGlFidBnpPcy2tOauBSfMRvW/YN0YMSEf3CDmp/Eovg9RukyeIiYVmsxiRB5
-         HmwQ==
+        b=o8uMEJT/JBGIsoIzKpTGY0wYk6yTmrSO8M/b+YTNk7lkVw1PkbBd9bm7wnXFhR+6NB
+         AcjAUE6YVOyneWlyC4aKJLJoZPcLu1WYAaXD00R/IFbeO9Ged4BCLDTzu66tQcFT7aDJ
+         yCmJKN/5AkN9WtCDq3hwNXgt4jDqdsBaGAkF5scgWvkL0QYn3QsTkK+scMGhjJQN0gj0
+         iMO1kAWU7Ub03OFt+pKmvX7q6iC1D4NAprRa26V9Axzbqtl9pI9EgnNv5PHjt9Wz1pfQ
+         3eAuYYQhC9siovbc0cuOSW8U+q7QkCDfJeO3F5SxlSmWp4fFxCNrlBM9nezJo/MN84Rj
+         4Pog==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:subject:cc:from:date
-         :dkim-signature;
-        bh=n0dg4VZfsfwi1vaB6XtEii1EzfQUDvruZlW3sNjRZDg=;
-        fh=FztTI5qMvVbE0NQvwTnwFqXh2/iK6kULt8SaRfQ01v8=;
-        b=hlTXXigsyd7xbDu0pmdcpVfs1H4EgEZjL6WFjaXjcD/qPKxrdrOsh5yTrH0zlEGWxf
-         4GXvIm5whCPx7blfyijIHFaGnms4TvJCrjNNLIaxYY7oVQXa9Q+YFuF7H7qlkmU9lUPh
-         tx8zb0rOdKOyWRfWDO9U/wWEkRw2R41K+D1chW70O9ybly/L1gkUpA7S9lyhTlK8N6Wd
-         JuGxEdG+LlPzAqxTAYdYbLK51wdgt5fEu6X7E1Svhp6P9bsOMYmNz/xQ6KG24AFyvR2U
-         20ioUMcgLz/CNwLoo5n2K0S56ceEgMQVD//Wqm4LzY2hzrG4s51NffVL7co6NB6L0gMR
-         2z5A==;
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=2x+upV4aKqH/ReQCdsxjfOCLOWnfSZw1DbO3TJVHrTc=;
+        fh=456VxxF5cH/kn6ZGczEAPquU3F5BBxQr+EFbS/Iixlo=;
+        b=yenzrzdr+J/0G0T/NN9uDoxIV/7TigK+fX8T5kzB0k7AIlSL6OBi01RBMu+DrNAjuV
+         h8inov1UeLKB23Hjs4rcxM3qwh6LISQeunykMZ42RXI+dN02WjNmGbV9DTwgFehtPm2l
+         z/QfirOegduvQYpCuKv2TwZFcjeaeWGi2WRGC6XHaJreaGTWYtPKQQ/SeP6frxV9L+WI
+         pjUNaK7TfpF1UbJTMNiKFhdXXZRUPSbF/JK0n5991cQ8i6PMO2TsaOgzivmSkxQSfCNo
+         mSQaiIAELuSOYoMJy5wdAWis9KgA10Tm4MivXIuodGkK95rUQEH+BCZ8JoUcoKWudb2B
+         1Ubg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=jL7xCT1B;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=Eeb4IMP7;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7a3785f8d5asi414210685a.55.2024.08.08.05.58.01
+        by mx.google.com with ESMTPS id ffacd0b85a97d-36d2727e63asi793231f8f.724.2024.08.08.06.03.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 08 Aug 2024 05:58:01 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 08 Aug 2024 06:03:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=jL7xCT1B;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+       dkim=pass header.i=@linaro.org header.s=google header.b=Eeb4IMP7;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sc2iD-0006FO-U7; Thu, 08 Aug 2024 08:57:49 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sc2nq-00038T-Qb; Thu, 08 Aug 2024 09:03:38 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mchehab+huawei@kernel.org>)
- id 1sc2i8-0006Dk-KS; Thu, 08 Aug 2024 08:57:45 -0400
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mchehab+huawei@kernel.org>)
- id 1sc2i6-0001qj-PP; Thu, 08 Aug 2024 08:57:44 -0400
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by dfw.source.kernel.org (Postfix) with ESMTP id 68DA861653;
- Thu,  8 Aug 2024 12:57:40 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1EBF9C32782;
- Thu,  8 Aug 2024 12:57:37 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1723121860;
- bh=Iktp01tK2DrO7g0ygEnpzyl+ejX/bXOo+4ZZZfl+E4k=;
- h=Date:From:Cc:Subject:In-Reply-To:References:From;
- b=jL7xCT1B8q7RbQQW3OONnhAcTRkSRqvyC5YB5ObWzYkYd6L5XR5GengkzYhIpRhaJ
- FdCQE0jfyjnGZ2AFjZ2UFaz7zHJbOlRB41xl9BgqvMwD3AwQx8ssplaGmpsY48GISB
- dmj17vxv8evvsvoCGbho72fb9+dZU7e9vmKevXD0vX4oMrvk939pk1APCwCAn2oRX0
- ELWffz5j60nuvSZQ+Oh6FBSOXF+FTW57YqbwdX90mtSQMQr9CAk8wzFtUo3L0ll6jt
- BJO7SwWcin1nUVjzRyedOm5SahZzpx/SIlNaObVG5C8j3y6NebrT5dzyC/MOvVTNpd
- A9N8g5hx1h6xw==
-Date: Thu, 8 Aug 2024 14:57:35 +0200
-From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>, Shiju Jose
- <shiju.jose@huawei.com>, Ani Sinha <anisinha@redhat.com>, Dongjiu Geng
- <gengdongjiu1@gmail.com>, Paolo Bonzini <pbonzini@redhat.com>, Peter
- Maydell <peter.maydell@linaro.org>, Shannon Zhao
- <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [PATCH v6 00/10] Add ACPI CPER firmware first error injection
- on ARM emulation
-Message-ID: <20240808145735.70f81f76@foz.lan>
-In-Reply-To: <cover.1723119423.git.mchehab+huawei@kernel.org>
-References: <cover.1723119423.git.mchehab+huawei@kernel.org>
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1sc2np-000377-E8
+ for qemu-arm@nongnu.org; Thu, 08 Aug 2024 09:03:37 -0400
+Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1sc2nn-0002jD-Ee
+ for qemu-arm@nongnu.org; Thu, 08 Aug 2024 09:03:37 -0400
+Received: by mail-ed1-x536.google.com with SMTP id
+ 4fb4d7f45d1cf-5b391c8abd7so1083713a12.2
+ for <qemu-arm@nongnu.org>; Thu, 08 Aug 2024 06:03:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1723122213; x=1723727013; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=2x+upV4aKqH/ReQCdsxjfOCLOWnfSZw1DbO3TJVHrTc=;
+ b=Eeb4IMP7nIyRGos1q3M2E5sdjKUcAcZl2L3vv0/EGAfG/eRyVWf+ZAgavKiPrFH9q6
+ qwI2hXty+PMqIqRaFdA7XV3B+AtDkIW1nSW6u+UuMBYPCxGo6kE9W5/PC+PdZzXX4VLb
+ b3fVN6i3gsMpyP37vvm7q2gBTWZDXu9DSsnf6RjtKzE+kiVmjsZY7ego8GPloidsn5YD
+ b8w4kZYELt41Wnu416EW4VuDv3gMWMfOvWPgt/ZBvsQOJQ0JcVOvoPlWZtmYDfdcYU2b
+ td9HBqEBTLLGObNwMfoYiqkL3DVfTHW76/fEylSEXFcEO6Ghvp1WiyftHkMKrJjcGmOZ
+ qhWg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1723122213; x=1723727013;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=2x+upV4aKqH/ReQCdsxjfOCLOWnfSZw1DbO3TJVHrTc=;
+ b=W1zCv+/biQlFFkPxFMrWtjd176xN8Hp4alDNxPSMCnHSe17V9LUvJTNOFjW9l1Fi38
+ fGtW4vUMAaZX2yhSDBuXXu1D4nkPVnw+yoDF0QyAF0g4x9U3s8zrHVT86IDP+y6KAybx
+ WwvzLphSpEif7U3h4BN5lN1RaosuAA965mfqyON6d+tG1gDNxUuKPOeN99lGpBxq2FEM
+ Ruzph8ME37ErCskNf7DSmpfpvCs4+iYMSDG7MZVu9Sh2oJz+EmJGFubzp/BW0+ZLvgnL
+ LZUQvqwi5bHUT5kZ0uUo+x7w/MBclJfnc72KKn+YcUyAHzrv0fW4LG+UyezRr4K6g9rX
+ SyXQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXiToI4yKfJfz8BhdRvAnK2T3LVleBiS0pd25q7JbdGj6Fqmegf1MBvDEuvzqYwmZzUfVS4no8jiw==@nongnu.org
+X-Gm-Message-State: AOJu0Yy3cM9O1cTg2kI+Pde0oS7jGJjobJEoA9ounE4Z5gGlC4ldztjR
+ r5SPFUf+Satx0/z7RYQRD/AkRA8y+ut5jjzSi6l9Ty7e3kK6LpnaJHNfztzMhw1km2FyHKBOCKZ
+ Q6AAGAsbXXoPCzrTCPxp5FRCkWebRXf7392jbKA==
+X-Received: by 2002:a05:6402:42c2:b0:5a1:faf:e5ac with SMTP id
+ 4fb4d7f45d1cf-5bbb23c6440mr1615459a12.26.1723122212996; Thu, 08 Aug 2024
+ 06:03:32 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2604:1380:4641:c500::1;
- envelope-from=mchehab+huawei@kernel.org; helo=dfw.source.kernel.org
-X-Spam_score_int: -34
-X-Spam_score: -3.5
-X-Spam_bar: ---
-X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.141,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- MISSING_HEADERS=1.021, RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
+References: <20240801220328.941866-1-alexrichardson@google.com>
+In-Reply-To: <20240801220328.941866-1-alexrichardson@google.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 8 Aug 2024 14:03:21 +0100
+Message-ID: <CAFEAcA88Y=VXcTAGyZ396L2VDQp77E5KaStjpKrT5AS1aouC9w@mail.gmail.com>
+Subject: Re: [PATCH] target/arm: add support for 64-bit PMCCNTR in AArch32 mode
+To: Alex Richardson <alexrichardson@google.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::536;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x536.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: j42R8cscFc5n
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 5Mr4q29XrhYZ
 
-Em Thu,  8 Aug 2024 14:26:26 +0200
-Mauro Carvalho Chehab <mchehab+huawei@kernel.org> escreveu:
+On Fri, 2 Aug 2024 at 02:00, Alex Richardson <alexrichardson@google.com> wrote:
+>
+> See https://developer.arm.com/documentation/ddi0601/2024-06/AArch32-Registers/PMCCNTR--Performance-Monitors-Cycle-Count-Register?lang=en
+>
+> Signed-off-by: Alex Richardson <alexrichardson@google.com>
+> ---
+>  target/arm/helper.c | 6 ++++++
+>  1 file changed, 6 insertions(+)
+>
+> diff --git a/target/arm/helper.c b/target/arm/helper.c
+> index 8fb4b474e8..94900667c3 100644
+> --- a/target/arm/helper.c
+> +++ b/target/arm/helper.c
+> @@ -5952,6 +5952,12 @@ static const ARMCPRegInfo v8_cp_reginfo[] = {
+>        .access = PL1_RW, .accessfn = access_trap_aa32s_el1,
+>        .writefn = sdcr_write,
+>        .fieldoffset = offsetoflow32(CPUARMState, cp15.mdcr_el3) },
+> +    { .name = "PMCCNTR", .state = ARM_CP_STATE_AA32,
+> +      .type = ARM_CP_ALIAS | ARM_CP_IO | ARM_CP_64BIT,
+> +      .cp = 15, .crm = 9, .opc1 = 0,
+> +      .access = PL0_RW, .resetvalue = 0, .fgt = FGT_PMCCNTR_EL0,
+> +      .readfn = pmccntr_read, .writefn = pmccntr_write,
+> +      .accessfn = pmreg_access_ccntr },
+>  };
+>
+>  /* These are present only when EL1 supports AArch32 */
+> --
+> 2.46.0.rc2.264.g509ed76dc8-goog
 
-> v6:
-> - PNP0C33 device creation moved to aml-build.c;
-> - acpi_ghes record functions now use ACPI notify parameter,
->   instead of source ID;
-> - the number of source IDs is now automatically calculated;
-> - some code cleanups and function/var renames;
-> - some fixes and cleanups at the error injection script;
-> - ghes cper stub now produces an error if cper JSON is not compiled;
-> - Offset calculation logic for GHES was refactored;
-> - Updated documentation to reflect the GHES allocated size;
-> - Added a x-mpidr object for QOM usage;
-> - Added a patch making usage of x-mpidr field at ARM injection
->   script;
+Coincidentally I'd also noticed recently that we don't implement
+the 64-bit accessor for PMCCNTR, but I hadn't got round to
+writing a patch, so thanks for doing this.
 
-Forgot to mention: I dropped the PIN cleanup from this series, submitting 
-it in separate - and it is not related anymore with this changeset:
+The 64-bit AArch32 PMCCNTR was added in v8 with the PMUv3, and
+presumably most guests which use the PMU in AArch32 code want
+to retain the ability to work with PMUv1 or v2 (or were simply
+written for PMUv1/v2 and never updated), so they stick to the
+32-bit sysreg, which is why we haven't noticed this bug before.
 
-https://lore.kernel.org/qemu-devel/ef0e7f5fca6cd94eda415ecee670c3028c671b74.1723121692.git.mchehab+huawei@kernel.org/T/#u
+There is an argument that we should gate this on
+ARM_FEATURE_PMU being set (or on an ID register test
+for the PMU version field being at least 3), but we don't
+currently do that for the existing PMU registers, which we
+just add regardless for v7 CPUs. So I think we should
+consider that a separate cleanup, and this is OK.
 
-Thanks,
-Mauro
+I've applied this to target-arm.next (with an expansion
+of the commit message to note some of the above).
+
+thanks
+-- PMM

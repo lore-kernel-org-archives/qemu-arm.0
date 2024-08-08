@@ -1,113 +1,113 @@
-Received: by 2002:a17:504:7fd7:b0:1be9:327d:8ee3 with SMTP id hj23csp595213njc;
-        Thu, 8 Aug 2024 10:22:54 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXaB+123Z82Zag0UgnE+BpAN3gjj87CoAqFFQBQyrx9/soYabQlWdjHHWkW8RNuKnwBxtFS6VGlqxVlJL0yY8TP+Qu4UqU5
-X-Google-Smtp-Source: AGHT+IHIgrflS5t3uXnzwjhnyhQII108NMBGAwGGnFQ9DqocLCyuv017ZGOpr5U16OLGDf3vSWfN
-X-Received: by 2002:a05:620a:40c1:b0:79f:10e6:2ec with SMTP id af79cd13be357-7a3818145bemr272469785a.35.1723137774558;
-        Thu, 08 Aug 2024 10:22:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1723137774; cv=none;
+Received: by 2002:a17:504:7fd7:b0:1be9:327d:8ee3 with SMTP id hj23csp595561njc;
+        Thu, 8 Aug 2024 10:24:17 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVl6FA0JwGXnGHIHguq+aCq/wc/Uul9vpGrceDxwnG0SIPtrJhcfpD3OaW8i/0jsKRc/gK4TtOJ1h2eLHbxYmlVcNDz7hxE
+X-Google-Smtp-Source: AGHT+IEbrv8A2DQKLEXIJ1KW0PSKMwwY64FXp43D2C2arHywFCKQIORK8eJGmDgY8/f+zv2UUnCX
+X-Received: by 2002:a05:622a:6183:b0:447:e713:c942 with SMTP id d75a77b69052e-451d427fec4mr23396461cf.23.1723137857480;
+        Thu, 08 Aug 2024 10:24:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1723137857; cv=none;
         d=google.com; s=arc-20160816;
-        b=R7UJ019aeHFO83RiD9TBYC08tYn4aaZn3XHJmcR9dm4Aj/zTIFZDUjW7if4LWlUMc+
-         LwPosKlREFIpVXbdqWKEDS5bGJBBTrBYRiQ3Cj/jh42Jz3PAOcW1NEgk/0Bfgyb/JUgT
-         ZQCwJmq45n0whuX6/IMCv9ZlnjQnZPLu53cmGv0tQ7XGvyB5ZhL4osfA30edtNZBB1Fr
-         Slig0XIAj0YRFMglaFJKzARuTO/JiGtHe1t/CzCEowAL7TYiunCCreumD698M2x+ATkN
-         QdAJ/13rxIIwT6vr5Gc9+w4gFb/gPT10euiqeUGTpXb6miDvOtdbO7f+ydinD1DW1q+4
-         4vxA==
+        b=PkrL2ss6e4UznapqDqOxkKKNTp1Vjt/EZxZfskzpQMW7O0Vr3tfZcvvkQi2D2Kem0v
+         CS1ZZUgeDUkKwSakrDj/8oZ+dl+JytXvhsIQmuO2GbtY9aOoSR7lGH+NkZCWO6IAvD0P
+         ajHozjYG0pjSNndCMjd8VHDs2n5SMzG8bGl5Cd2Fju9zQWyGajSxWh4HdZuSTTHlADer
+         np3cGlc9aVgYI7cJ+jDo2hH0XRzfNTNCNPc/ybc21oo6FqmL2HruJrbUEYuJAQoYaDAg
+         axACr4nv6M6LY7wqZbTlkKiM8W2l+BVZWVBs1X86cgQ7CMrJ9xyj+EK/BZ0DmhjLelYz
+         Tktg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence:user-agent
          :in-reply-to:content-transfer-encoding:content-disposition
          :mime-version:references:message-id:subject:cc:to:from:date
          :dkim-signature;
-        bh=QaYyVHB+mxSzA1ftHlJTWZJ4MWnm5chCEnkVXEtMXpQ=;
+        bh=jxHzMH4m8XCdk7TwL5WGYLiCXUnUazVoRzIrRnoBfMQ=;
         fh=N5HxHITUWSLOkULx7ITQ8OrnC9xUUIL/vatdVN0Rh8s=;
-        b=wlBcMeIpTyMMCZm+0bgrwhbJlb8GidgfS35W2gZfuUlB4t7nIqn/MtCsxtpH+hUEQS
-         BB1f7m1acMC8cZHKbY1Yw/1QJDlo9dWDyJ1w4MGCQfOBFoH9C2BrZBqzO9ogAje+Q5C/
-         QdXkxwaq5oJtIdxfyOv6E44SuGaKnNiHjX/4u7k3e6EeFo+Zrx+SJpiNclzNfk3K45fq
-         FjDVHCuLRU5X7QgxSuVORL80L8KbMAu8oLOAPgBSD0ftkXM/xUD34iLGl+FC/ALypKjH
-         6LtRF0frxLLfifTSOuGiQ4m23srtV+oj/fHPBHMd6AF87Bq4fTQHQUvIQrIn2sA3k1JH
-         wktw==;
+        b=JDSvUOaGTrbM6F3SUaXxgLVXr6l6mQldFHOfmJjxgh0wqFHlINAHUyry314toiarss
+         X3VTt3VTGiP0sy8B8hX8bN+buIDkqnhxN9o5SP7Eolx/KKnHyzIfqfb56RPipGrTNj4b
+         3elZ49aEUndDE5+c7gf29mHgNaWyVugBB49LgubQwrNdubrwSHo7u887hSeVzMeNRcHG
+         1Xkj76DwvdkmSXc1xuc16yV1O/cM5eT16RKZW3/yh+HeomAN9wdm+NKtFTSrDLJbLcx0
+         R+CJvL0wXqTHJFsVEnYzUZlcm2VKZxNFFaRx++olQhBXdvbJ6/IwXJCdn9nyEZLlVgZV
+         SK8A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="hVahE/CK";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GxOGuZz3;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7a37870f7e6si460545985a.349.2024.08.08.10.22.54
+        by mx.google.com with ESMTPS id d75a77b69052e-451c87d8f8dsi45566181cf.310.2024.08.08.10.24.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 08 Aug 2024 10:22:54 -0700 (PDT)
+        Thu, 08 Aug 2024 10:24:17 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="hVahE/CK";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GxOGuZz3;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sc6qe-0006VI-KW; Thu, 08 Aug 2024 13:22:48 -0400
+	id 1sc6s4-0004LO-1N; Thu, 08 Aug 2024 13:24:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1sc6qb-0006IM-E6
- for qemu-arm@nongnu.org; Thu, 08 Aug 2024 13:22:46 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ id 1sc6s3-0004IB-AP
+ for qemu-arm@nongnu.org; Thu, 08 Aug 2024 13:24:15 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1sc6qZ-0007M3-SW
- for qemu-arm@nongnu.org; Thu, 08 Aug 2024 13:22:45 -0400
+ id 1sc6s1-0007Zs-Mq
+ for qemu-arm@nongnu.org; Thu, 08 Aug 2024 13:24:15 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1723137763;
+ s=mimecast20190719; t=1723137853;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=QaYyVHB+mxSzA1ftHlJTWZJ4MWnm5chCEnkVXEtMXpQ=;
- b=hVahE/CKqmj5bUOQ5E7AMuJ/LzhtwnJ7Xrok6WX9BnmYSs8p+7SLeJqEaVHNwS3pvQtVnZ
- /gZuoq9csDXkh2YMP8gDAfT1XDyJ6FX6HZI6bh9FwRVWKU6+NWC6uJIRPkchcZwOcZa3xL
- fsI6o82esDR2OIhBnJWSErkuwxYOKlQ=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ bh=jxHzMH4m8XCdk7TwL5WGYLiCXUnUazVoRzIrRnoBfMQ=;
+ b=GxOGuZz35puF2k9RMrjAW2ktfEWW4QFvSkHbL5ulVTBxRlCb/iQhsJzUj+pEQ6BfPNLAlA
+ sCT5izhceluNXcKOI2kuyVSBBUhG/P04Psic29ArolXXfTQ3TdMqIJGyp5RXrIpWrIr8BC
+ YSNOYWAy7XTeLT9kWyNZ16fBQ2qcM9M=
+Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-588-m_qH7z-8OX-QPQIAz0-WfA-1; Thu,
- 08 Aug 2024 13:22:40 -0400
-X-MC-Unique: m_qH7z-8OX-QPQIAz0-WfA-1
-Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-459-RprgvvtZN_ewkcvB-PWc4g-1; Thu,
+ 08 Aug 2024 13:24:10 -0400
+X-MC-Unique: RprgvvtZN_ewkcvB-PWc4g-1
+Received: from mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.40])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 535431944B2D; Thu,  8 Aug 2024 17:22:39 +0000 (UTC)
+ by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 435381944D38; Thu,  8 Aug 2024 17:24:09 +0000 (UTC)
 Received: from redhat.com (unknown [10.42.28.163])
- by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 0DCC81955E93; Thu,  8 Aug 2024 17:22:35 +0000 (UTC)
-Date: Thu, 8 Aug 2024 18:22:32 +0100
+ by mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 8DF5819560A3; Thu,  8 Aug 2024 17:24:06 +0000 (UTC)
+Date: Thu, 8 Aug 2024 18:24:03 +0100
 From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 To: Alejandro Zeise <alejandro.zeise@seagate.com>
 Cc: qemu-arm@nongnu.org, kris.conklin@seagate.com,
  jonathan.henze@seagate.com, evan.burgess@seagate.com, clg@kaod.org,
  peter.maydell@linaro.org, qemu-devel@nongnu.org
-Subject: Re: [PATCH v4 12/15] crypto/hash-nettle: Remove old hash API functions
-Message-ID: <ZrT-2MAv3K8irj54@redhat.com>
+Subject: Re: [PATCH v4 14/15] crypto/hashpriv: Remove old hash API function
+Message-ID: <ZrT_My5f7WlsMAMI@redhat.com>
 References: <20240807195122.2827364-1-alejandro.zeise@seagate.com>
- <20240807195122.2827364-13-alejandro.zeise@seagate.com>
+ <20240807195122.2827364-15-alejandro.zeise@seagate.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20240807195122.2827364-13-alejandro.zeise@seagate.com>
+In-Reply-To: <20240807195122.2827364-15-alejandro.zeise@seagate.com>
 User-Agent: Mutt/2.2.12 (2023-09-09)
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.40
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -21
 X-Spam_score: -2.2
 X-Spam_bar: --
 X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.141,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -124,15 +124,16 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: P+oXr2xJhhlC
+X-TUID: s3JBKntetSSS
 
-On Wed, Aug 07, 2024 at 07:51:19PM +0000, Alejandro Zeise wrote:
-> Removes old hash implemention in the nettle hash driver.
+On Wed, Aug 07, 2024 at 07:51:21PM +0000, Alejandro Zeise wrote:
+> Remove old hash_bytesv function, as it was replaced by the 4
+> new functions.
 > 
 > Signed-off-by: Alejandro Zeise <alejandro.zeise@seagate.com>
 > ---
->  crypto/hash-nettle.c | 53 --------------------------------------------
->  1 file changed, 53 deletions(-)
+>  crypto/hashpriv.h | 6 ------
+>  1 file changed, 6 deletions(-)
 
 Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
 

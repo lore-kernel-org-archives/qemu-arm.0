@@ -1,230 +1,228 @@
-Received: by 2002:a17:504:7fd7:b0:1be9:327d:8ee3 with SMTP id hj23csp536767njc;
-        Thu, 8 Aug 2024 07:44:57 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWcYiRu0CDSKJoIaDdWM6yg6U7m1VaVkicn/9DIcvwx6fn3D3PcGmIlXQJkDI8lqQQMWT/D8m8Gy1lwGQgs9D4oocsEpxwL
-X-Google-Smtp-Source: AGHT+IFSw5E4Mrzo2tVIlNCMf3sGt/+f9ZeK36tYDOaV8MU+juUD+rUbiXiF9w9lzKl6x9WHpKuz
-X-Received: by 2002:a05:6830:2aac:b0:703:6003:11f4 with SMTP id 46e09a7af769-70b4fc4432dmr2113141a34.14.1723128297463;
-        Thu, 08 Aug 2024 07:44:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1723128297; cv=none;
+Received: by 2002:a17:504:7fd7:b0:1be9:327d:8ee3 with SMTP id hj23csp537295njc;
+        Thu, 8 Aug 2024 07:46:32 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVX0GYdifkZHgO/PKNeo2TPFr/pPT5IbjJA7L44GnskpFpf84fqF9ZfSRzVyEaH2cE7g2gpzRy9LRApzjR70ybi8Ye+x1xJ
+X-Google-Smtp-Source: AGHT+IFiaCjx+qCTKjsKg9Q+kFjGwuFpJHaC3G2jkSbk7UzLQ5YU7FwDjrmFgywSy21AAsbu0KIv
+X-Received: by 2002:a05:6214:3288:b0:6b0:77da:3ab6 with SMTP id 6a1803df08f44-6bd6bcbb451mr18221016d6.12.1723128391830;
+        Thu, 08 Aug 2024 07:46:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1723128391; cv=none;
         d=google.com; s=arc-20160816;
-        b=ts60ypg8C14q28J3KbGrEURDtCs2GtxXmjcnlou2OGXhlh+7l5WDCSSGR26VGgtsLo
-         FFCj/7w3o3D1R+NQ6WRK/cUdWCAh4XEOZQ0F3ADfNf3PN6jhaFKzXJOkddTuILQRnlky
-         W45+u80iF/EAOd6/MmJ8BeSUlpmRm2wtHLrJGsoJndhbdrZOKw8hw8zhrKGe10lUA6V9
-         t/KqgLNvB79ocQTgvN5tI4VXCgtKhyXF+eGM4+8OBLwsKiryHhhS2D2welQpbl/HgL2r
-         CXpGBoUqKKmsgDRwKFazMqKihg2uxtgw8I2ipMgIj4pyxEXcPum4ASTsDIMW3L77n7o/
-         n5jA==
+        b=llpfAyEzLLEGo07AyLUErZxSjRIocUTocsehBbY1V/+v9v87kA+XnyTvfg7f/hqzj7
+         uK5jMNZOVhJWsRirNWFYS6xyuxS2ibsnUDMC4fusJl6XCq3a/NyY2oSbthQGjj74TNn2
+         3xRGIvDFmYmXQOfamgRUIPdgEpJ70CwLTVPbGvQJ5M9suAIr9glLZvFdyUCI7xi+ZtMD
+         v8fquyyUM5KaS9e6ykjeWQMOex2+hhS0DrJIjzjaO19lwrnb/N1dCkKPlfqmIMyQ/34i
+         TtHc+LRZHmYPgsK2nQx6r81DW0WljbWnTbUUyEc5KTCBUp3oUueVQChBKsapMh6WBZVK
+         sPuA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:cc:to:from:date
+         :list-unsubscribe:list-id:precedence:mime-version:user-agent
+         :message-id:date:references:in-reply-to:subject:cc:to:from
          :dkim-signature;
-        bh=2yHWhOGhXoiaID94xq0Obn8IF6l9bmHYEIpGRlWg4Yk=;
-        fh=0JuY6I8kTmbS6TJH4zuYrgDSarVwqEu+6tWZVnpRiD0=;
-        b=QDuR8PD6mdInzX+/uZZPugeVJoJP5y4Vb1cWxX5twb7wF4oD49gSEVlsQH5izL14Uo
-         +0MJ6VxD8F1qyjhmadrE6W3uOUPIFml6Jt+0JNj9LfsM2premeiITtip8JMMyPfkJvP4
-         MDhxaOr/Rz4lshTp10OxEd15Od5oFR0JWBXeQsQ/vIwa7c5tPqfIyybLhmR9c8ldPM2B
-         Hh6VSav7NwZrPKsu/S+tRHgziCx3OdkZ7YkfYWlVVrSMqsthsyIfgDL7AOlaviROBWSF
-         tDE9Ipl4J9ODKrpjwl5gh7Tuwk0njJilSRtnqzTZpplsp45+LyYqTrPJ/KeiVxYIGsE3
-         qD3w==;
+        bh=Vsy+kQPvnenW2/13lHMrZ1NDZEbx4ggdcgIqJP+YPxc=;
+        fh=YO8bIUAmTt8lmYAcei6KP2TClaERN8c2OQ+rseJcZRk=;
+        b=IB7r2mTQCx+0g31smlFOgKDSPSMT4ApV9TR4YahoGJAcVFJ1vQSUcjR5FnZQaYKtWv
+         cury+dhtbqAMD+VxzVLJRZuXJiziS5P5J8OnmgcPvCE1ce0OUKw2UFOTI8bMGHHfYIPP
+         u62JdTRZDS2XER2yAECgPZI4yZlEnbA0Pq9UKuyL3RJCtNKhn4iybmIdO+aH/jwIwUvX
+         tAmeUrgSEtBLuhmoo7fdqlIMOAoyiVLJ7/LpiohXrlKbF71typNlCiFn7UA8H8J4fSCl
+         8spaQx2t7fA2fFM2Lmn9su1ewkZTjXoLUZCHLetNBw5Zmess5z+J8FHTVVZy9BtMQMRJ
+         fluA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZjllRycL;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Km7uZpIu;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6bbbb5f7d5asi47008016d6.112.2024.08.08.07.44.57
+        by mx.google.com with ESMTPS id d75a77b69052e-451c87da6e5si43475021cf.284.2024.08.08.07.46.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 08 Aug 2024 07:44:57 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 08 Aug 2024 07:46:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZjllRycL;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Km7uZpIu;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sc4NS-0002Pz-MK; Thu, 08 Aug 2024 10:44:30 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1sc4PE-0006Ag-Tb; Thu, 08 Aug 2024 10:46:20 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1sc4NM-0002Kp-4j
- for qemu-arm@nongnu.org; Thu, 08 Aug 2024 10:44:24 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1sc4P8-0005x9-V4
+ for qemu-devel@nongnu.org; Thu, 08 Aug 2024 10:46:15 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1sc4NK-0007nz-Fx
- for qemu-arm@nongnu.org; Thu, 08 Aug 2024 10:44:23 -0400
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1sc4P5-00087X-DW
+ for qemu-devel@nongnu.org; Thu, 08 Aug 2024 10:46:14 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1723128261;
+ s=mimecast20190719; t=1723128360;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=2yHWhOGhXoiaID94xq0Obn8IF6l9bmHYEIpGRlWg4Yk=;
- b=ZjllRycLy/clzm5sIkB3BuG7Ccj4KlFMyNtcRj32QPOlNX1lXyfjYlZr12+Q1MF9dy1i8D
- roMt6BRsnOQaQAfT5oYkLUgiuWM0pMLuYA99mtos7tPsDpskkpIDxZgrCQvFaCMsKGPqwC
- moy/Csu1TlpGXd6SE+ndSqRddq736f0=
-Received: from mail-lf1-f72.google.com (mail-lf1-f72.google.com
- [209.85.167.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-19-XO-2E5kKOaSeAKJEInY09g-1; Thu, 08 Aug 2024 10:44:19 -0400
-X-MC-Unique: XO-2E5kKOaSeAKJEInY09g-1
-Received: by mail-lf1-f72.google.com with SMTP id
- 2adb3069b0e04-530c299a480so1044237e87.0
- for <qemu-arm@nongnu.org>; Thu, 08 Aug 2024 07:44:19 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1723128258; x=1723733058;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=2yHWhOGhXoiaID94xq0Obn8IF6l9bmHYEIpGRlWg4Yk=;
- b=UVhJSML67d/ztvpC0ZzSx1Xtmdung7GL99UdsERF2gJXZp9Sq0zBQzHTrapfVZLC+h
- DIOxOV6dCZ99bwBtfbzWQG75K9lHydukUOK3RS64iWdYZEsJmMaDmk1B59Pg3l2z9ksx
- 0yGyxG3Puwu3RUlo490Ytx3Bkl1eL4ab1OdC4H8Inpq3HKjkqjVfeMQ/0Rr2D+dqp8Mb
- qioynbPXGSHxHgY43GX4XgO+iUr8QeX6ZiNgFZGlrvd+IG+PXTV1Gh0+7beWLbhUreXS
- YcKx33NuhEo4yOs3umhtOmCokQ11lalbdyqj2SlndT1M+8RbQ6NwOFxJUvBXMh4xX64u
- M1uw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCV64jDy2aqPbAVR19x4pTxfrYmVGowaqX5TUXmKVEuRNgxmJ/w/ONSgb6PgCf6fEqgtOrijZ2yC9tLsBsDlZyBjatLm
-X-Gm-Message-State: AOJu0YxUho2lfrbi/9wpYdXd92QX3ez6OjOg3ugiYy/jagSNKDbNEcuH
- mNzabhN+ayT+8vr74/MWkTZvxyBT3bnpN2ltvglzcJcRCKB75CVJE9T1oYyqN7u5gWPDeGln7eN
- hrztxqBoKhD4aoOT2KEGHMwVRYZYGK7/J97KFuhLp94T/uUUTB9AkRNnwfw==
-X-Received: by 2002:a05:6512:3f2a:b0:52c:deba:7e6e with SMTP id
- 2adb3069b0e04-530e583dbd1mr1838865e87.29.1723128257876; 
- Thu, 08 Aug 2024 07:44:17 -0700 (PDT)
-X-Received: by 2002:a05:6512:3f2a:b0:52c:deba:7e6e with SMTP id
- 2adb3069b0e04-530e583dbd1mr1838822e87.29.1723128256896; 
- Thu, 08 Aug 2024 07:44:16 -0700 (PDT)
-Received: from redhat.com ([2.55.34.111]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-a7dc9e8676fsm742332666b.164.2024.08.08.07.44.04
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 08 Aug 2024 07:44:16 -0700 (PDT)
-Date: Thu, 8 Aug 2024 10:43:58 -0400
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Jonathan Cameron <Jonathan.Cameron@huawei.com>,
- Shiju Jose <shiju.jose@huawei.com>, Ani Sinha <anisinha@redhat.com>,
- Igor Mammedov <imammedo@redhat.com>,
- Shannon Zhao <shannon.zhaosl@gmail.com>,
- linux-kernel@vger.kernel.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [PATCH] arm/virt: place power button pin number on a define
-Message-ID: <20240808104308-mutt-send-email-mst@kernel.org>
-References: <ef0e7f5fca6cd94eda415ecee670c3028c671b74.1723121692.git.mchehab+huawei@kernel.org>
+ bh=Vsy+kQPvnenW2/13lHMrZ1NDZEbx4ggdcgIqJP+YPxc=;
+ b=Km7uZpIuvGpjK1h5hKMGMo+BaoO8yxDs5ZDmFWE6qU6KEtmVykE0wjW96QfMpzvl2KvkOB
+ EWNuNAVoJZfKAw6V5kjITBhr/84gZB5NWVA5K4vzLL2mWBTMaed1UUOAIgjNpc2LjEYpDI
+ w7sh54ipncV1lFAYREriWViGYOOtv7I=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-630-qmltV5FpPnSUeIh-n7Lpfw-1; Thu,
+ 08 Aug 2024 10:45:57 -0400
+X-MC-Unique: qmltV5FpPnSUeIh-n7Lpfw-1
+Received: from mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.15])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 22A8F1955BC1; Thu,  8 Aug 2024 14:45:55 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.39.193.245])
+ by mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id DC8431959164; Thu,  8 Aug 2024 14:45:53 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 8C41421E6682; Thu,  8 Aug 2024 16:45:51 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Igor Mammedov <imammedo@redhat.com>
+Cc: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,  Jonathan Cameron
+ <Jonathan.Cameron@huawei.com>,  Shiju Jose <shiju.jose@huawei.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>,  Ani Sinha <anisinha@redhat.com>,
+ Dongjiu Geng <gengdongjiu1@gmail.com>,  Eric Blake <eblake@redhat.com>,
+ Michael Roth <michael.roth@amd.com>,  Paolo Bonzini
+ <pbonzini@redhat.com>,  Peter Maydell <peter.maydell@linaro.org>,
+ linux-kernel@vger.kernel.org,  qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [PATCH v5 5/7] qapi/ghes-cper: add an interface to do generic
+ CPER error injection
+In-Reply-To: <20240808162205.3a85efb6@imammedo.users.ipa.redhat.com> (Igor
+ Mammedov's message of "Thu, 8 Aug 2024 16:22:05 +0200")
+References: <cover.1722634602.git.mchehab+huawei@kernel.org>
+ <51cbdc8a53e58c69ee17b15c398feeeeeeb64f34.1722634602.git.mchehab+huawei@kernel.org>
+ <87v80b1jqe.fsf@pond.sub.org> <20240808161141.5ffe730e@foz.lan>
+ <20240808162205.3a85efb6@imammedo.users.ipa.redhat.com>
+Date: Thu, 08 Aug 2024 16:45:51 +0200
+Message-ID: <87ikwbrs2o.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13)
 MIME-Version: 1.0
-In-Reply-To: <ef0e7f5fca6cd94eda415ecee670c3028c671b74.1723121692.git.mchehab+huawei@kernel.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=mst@redhat.com;
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.15
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -21
 X-Spam_score: -2.2
 X-Spam_bar: --
 X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.141,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: sMwL1ryup6uP
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 4cdag/8ku0wu
 
-On Thu, Aug 08, 2024 at 02:54:52PM +0200, Mauro Carvalho Chehab wrote:
-> Having magic numbers inside the code is not a good idea, as it
-> is error-prone. So, instead, create a macro with the number
-> definition.
-> 
-> Link: https://lore.kernel.org/qemu-devel/CAFEAcA-PYnZ-32MRX+PgvzhnoAV80zBKMYg61j2f=oHaGfwSsg@mail.gmail.com/
-> 
-> Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-> Suggested-by: Peter Maydell <peter.maydell@linaro.org>
-> Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-> Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+Igor Mammedov <imammedo@redhat.com> writes:
 
-ack, but note we do things like that only if something
-is repeated.
+> On Thu, 8 Aug 2024 16:11:41 +0200
+> Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
+>
+>> Em Thu, 08 Aug 2024 10:50:33 +0200
+>> Markus Armbruster <armbru@redhat.com> escreveu:
+>> 
+>> > Mauro Carvalho Chehab <mchehab+huawei@kernel.org> writes:  
+>> 
+>> > > diff --git a/MAINTAINERS b/MAINTAINERS
+>> > > index 98eddf7ae155..655edcb6688c 100644
+>> > > --- a/MAINTAINERS
+>> > > +++ b/MAINTAINERS
+>> > > @@ -2075,6 +2075,13 @@ F: hw/acpi/ghes.c
+>> > >  F: include/hw/acpi/ghes.h
+>> > >  F: docs/specs/acpi_hest_ghes.rst
+>> > >  
+>> > > +ACPI/HEST/GHES/ARM processor CPER
+>> > > +R: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+>> > > +S: Maintained
+>> > > +F: hw/arm/ghes_cper.c
+>> > > +F: hw/acpi/ghes_cper_stub.c
+>> > > +F: qapi/ghes-cper.json
+>> > > +    
+>> > 
+>> > Here's the reason for creating a new QAPI module instead of adding to
+>> > existing module acpi.json: different maintainers.
+>> > 
+>> > Hypothetical question: if we didn't care for that, would this go into
+>> > qapi/acpi.json?  
+>> 
+>> Independently of maintainers, GHES is part of ACPI APEI HEST, meaning
+>> to report hardware errors. Such hardware errors are typically handled by 
+>> the host OS, so quest doesn't need to be aware of that[1].
+>> 
+>> So, IMO the best would be to keep APEI/HEST/GHES in a separate file.
+>> 
+>> [1] still, I can foresee some scenarios were passing some errors to the
+>>     guest could make sense.
+>> 
+>> > 
+>> > If yes, then should we call it acpi-ghes-cper.json or acpi-ghes.json
+>> > instead?  
+>> 
+>> Naming it as acpi-ghes,acpi-hest or acpi-ghes-cper would equally work
+>> from my side.
+>
+> if we going to keep it generic, acpi-hest would do
 
-> ---
->  hw/arm/virt-acpi-build.c | 6 +++---
->  hw/arm/virt.c            | 7 ++++---
->  include/hw/arm/virt.h    | 3 +++
->  3 files changed, 10 insertions(+), 6 deletions(-)
-> 
-> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> index e10cad86dd73..f76fb117adff 100644
-> --- a/hw/arm/virt-acpi-build.c
-> +++ b/hw/arm/virt-acpi-build.c
-> @@ -154,10 +154,10 @@ static void acpi_dsdt_add_gpio(Aml *scope, const MemMapEntry *gpio_memmap,
->      aml_append(dev, aml_name_decl("_CRS", crs));
->  
->      Aml *aei = aml_resource_template();
-> -    /* Pin 3 for power button */
-> -    const uint32_t pin_list[1] = {3};
-> +
-> +    const uint32_t pin = GPIO_PIN_POWER_BUTTON;
->      aml_append(aei, aml_gpio_int(AML_CONSUMER, AML_EDGE, AML_ACTIVE_HIGH,
-> -                                 AML_EXCLUSIVE, AML_PULL_UP, 0, pin_list, 1,
-> +                                 AML_EXCLUSIVE, AML_PULL_UP, 0, &pin, 1,
->                                   "GPO0", NULL, 0));
->      aml_append(dev, aml_name_decl("_AEI", aei));
->  
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 719e83e6a1e7..687fe0bb8bc9 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -1004,7 +1004,7 @@ static void virt_powerdown_req(Notifier *n, void *opaque)
->      if (s->acpi_dev) {
->          acpi_send_event(s->acpi_dev, ACPI_POWER_DOWN_STATUS);
->      } else {
-> -        /* use gpio Pin 3 for power button event */
-> +        /* use gpio Pin for power button event */
->          qemu_set_irq(qdev_get_gpio_in(gpio_key_dev, 0), 1);
->      }
->  }
-> @@ -1013,7 +1013,8 @@ static void create_gpio_keys(char *fdt, DeviceState *pl061_dev,
->                               uint32_t phandle)
->  {
->      gpio_key_dev = sysbus_create_simple("gpio-key", -1,
-> -                                        qdev_get_gpio_in(pl061_dev, 3));
-> +                                        qdev_get_gpio_in(pl061_dev,
-> +                                                         GPIO_PIN_POWER_BUTTON));
->  
->      qemu_fdt_add_subnode(fdt, "/gpio-keys");
->      qemu_fdt_setprop_string(fdt, "/gpio-keys", "compatible", "gpio-keys");
-> @@ -1024,7 +1025,7 @@ static void create_gpio_keys(char *fdt, DeviceState *pl061_dev,
->      qemu_fdt_setprop_cell(fdt, "/gpio-keys/poweroff", "linux,code",
->                            KEY_POWER);
->      qemu_fdt_setprop_cells(fdt, "/gpio-keys/poweroff",
-> -                           "gpios", phandle, 3, 0);
-> +                           "gpios", phandle, GPIO_PIN_POWER_BUTTON, 0);
->  }
->  
->  #define SECURE_GPIO_POWEROFF 0
-> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-> index ab961bb6a9b8..a4d937ed45ac 100644
-> --- a/include/hw/arm/virt.h
-> +++ b/include/hw/arm/virt.h
-> @@ -47,6 +47,9 @@
->  /* See Linux kernel arch/arm64/include/asm/pvclock-abi.h */
->  #define PVTIME_SIZE_PER_CPU 64
->  
-> +/* GPIO pins */
-> +#define GPIO_PIN_POWER_BUTTON  3
-> +
->  enum {
->      VIRT_FLASH,
->      VIRT_MEM,
-> -- 
-> 2.45.2
+Works for me.
+
+>> > >  ppc4xx
+>> > >  L: qemu-ppc@nongnu.org
+>> > >  S: Orphan    
+>> > 
+>> > [...]
+>> >   
+>> > > diff --git a/qapi/ghes-cper.json b/qapi/ghes-cper.json
+>> > > new file mode 100644
+>> > > index 000000000000..3cc4f9f2aaa9
+>> > > --- /dev/null
+>> > > +++ b/qapi/ghes-cper.json
+>> > > @@ -0,0 +1,55 @@
+>> > > +# -*- Mode: Python -*-
+>> > > +# vim: filetype=python
+>> > > +
+>> > > +##
+>> > > +# = GHESv2 CPER Error Injection
+>> > > +#
+>> > > +# These are defined at
+>> > > +# ACPI 6.2: 18.3.2.8 Generic Hardware Error Source version 2
+>> > > +# (GHESv2 - Type 10)
+>> > > +##    
+>> > 
+>> > Feels a bit terse.  These what?
+>> > 
+>> > The reference could be clearer: "defined in the ACPI Specification 6.2,
+>> > section 18.3.2.8 Generic Hardware Error Source version 2".  A link would
+>> > be nice, if it's stable.  
+>> 
+>> I can add a link, but only newer ACPI versions are hosted in html format
+>> (e. g. only versions 6.4 and 6.5 are available as html at uefi.org).
+>
+> some years earlier it could be said 'stable link' about acpi spec hosted
+> elsewhere. Not the case anymore after umbrella change.
+>
+> spec name, rev, chapter worked fine for acpi code (it's easy to find wherever spec is hosted).
+> Probably the same would work for QAPI, I'm not QAPI maintainer though,
+> so preffered approach here is absolutely up to you.
+
+A link is strictly optional.  Stable links are nice, stale links are
+annoying.  Mauro, you decide :)
+
+Thanks!
+
+[...]
 

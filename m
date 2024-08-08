@@ -1,90 +1,91 @@
-Received: by 2002:a17:504:7fd7:b0:1be9:327d:8ee3 with SMTP id hj23csp485526njc;
-        Thu, 8 Aug 2024 05:27:30 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXSXUrecgVaaYM9fp0R+x2eyYb9BqtYN1nvsWfrhNil+kpzhDxTSn8LnbM82DDvnnw1Azg9vOPTtSIqzn3JgAWH8+FIwFMI
-X-Google-Smtp-Source: AGHT+IEY7PyC2fKZzmLL6I6GGtt2FmNmHFcxtD8G0ou7DxPAVZ/qk74mEtWp8H+Qu1jGTcRlLxEr
-X-Received: by 2002:a05:6122:907:b0:4eb:5ea8:5135 with SMTP id 71dfb90a1353d-4f9027623fbmr2050515e0c.1.1723120050255;
-        Thu, 08 Aug 2024 05:27:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1723120050; cv=none;
+Received: by 2002:a17:504:7fd7:b0:1be9:327d:8ee3 with SMTP id hj23csp485535njc;
+        Thu, 8 Aug 2024 05:27:33 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCX9eNxLk/cwB99Zs0h4UfziHJt0tgVb6QufqCTMCVk/5v+kutx2LPcT60+lrtTZseau6aNc/Sxv1zcdBTFQ1XYWnrd3uwNz
+X-Google-Smtp-Source: AGHT+IG3EuvoYepwENvwlHHd3KKF6bfA5N6QqCOKm1NJq9W9g7IXy+67yBWLWWvUiU2g9k1XstVZ
+X-Received: by 2002:a05:6808:f8a:b0:3db:2afc:ad6 with SMTP id 5614622812f47-3dc3b44c9f6mr1961788b6e.38.1723120053668;
+        Thu, 08 Aug 2024 05:27:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1723120053; cv=none;
         d=google.com; s=arc-20160816;
-        b=RVlGs295nIGPLXXKXmu9SdiZxwtBlMyeCJ07pw5QCx7S507Ej7cgN5ZdffFZUwXU5Q
-         ae18sR36G3SA4+Rs4gCZeNBeGepb91GMms/P/XDw8TIGYlTSPvh6bwzauPGKPawhO9bn
-         oKTBqkCqhPPltHzuPZzXPh/HEhgpXFZukkoyO/Wo79bK6kLlg/zxB7SyNTe6Nm7EnPHm
-         wV7smY0qgRsLEOaxQl0yASG+imvd9YXhVmNN07g3Wn/DJgOGBZirHtH+cqiCUc9bc4bQ
-         kI05X9E8cqEiKgpATyVZ1fZ0shk0Soruwe3LSNZfa1cVzd3eN4VhmEIP2KqugX8n9TZx
-         rQqw==
+        b=qwCCF9Sy0pO+ZAX+Z850hR6kkHZEyuz2pMudvodetv240yRkdpQ71ciVsOSyFTeyu/
+         LZYEOjmqBITYeTTas3LBsdYD1ngAad0JCirFUOW4SODZUcIY/8gQ+6rzmbhxfsahGqLz
+         pLmga1EhRNj8FeN1alKCYXif9TNV/S8RvAoavvVxL6h8qBgd+pXBJSaAS0zpYxcS9fJo
+         0UtXmJOGrETms/K2A2B8AG4iwxWKylWNPY+SYuWU3zQcZWzQmKehb15NS9+XjCyKnLPM
+         ap10TQ5Oyb67b1zkKweJ3BLgyU0wbTMTXsk2lATfWvTp5GNAhF0NDNLQ9A3/L6nmEkbp
+         63CQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=UOGaVCAJKji2sKoM3eBCStBvd3EdxO6tTnCmnuezmTY=;
-        fh=bKZ9nLVw4i+k+x0BpQlo0C0pDAcu3N4VZ22FQFZf9lc=;
-        b=GFwMrUWuYM/X1kSHq9WSPeB2Iu7cvgcQtZlYSPOSpFEtLcL6YOfZ8AV1S9GNa8mCNd
-         G99/YnkCeWZlY9PwkOs+L7GfIGreoLKoiI3Mb6DMC9o2S8fFMNr6I7j43CjCr55bH09H
-         iSQN+tWxw2RLIxFF9giaDPVSKu1fKdT+lVZsSO7FLXUGcKuqGWLRVpbfGMTaFf0vD1AN
-         h4DHOkbgWIUnsieH4AGZpG+5khJTm8kIBwn9SwG+th5j9Fw5UFTshyaH98qOWhbXe3+K
-         9rdyVpGUxqCxYxzYVrIGQeICO8+hArYZHBB2W9KaYplP/WlOYQTzEYnQps7F7OE0ux1k
-         gv6g==;
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=4oY6tZz00FakJJ9epPtE9QC/s9591/eGTjIevkevTdI=;
+        fh=/A1Jk9ewZ81/NwMlhJJbmsFJMBNnZp0hdN4unxYVqf0=;
+        b=nOq3MI7HShWKOui/fOy5lPF8Js0o8TV0AYfZzeXqFdVh8Enmg7zu3hTr19AxYLkcac
+         TtQYuGBK+w+7rbzByjO0BK2IkpOaSEsEZSOWEXRD9yNgNamSlcDRdhiPCIeMgFSbqkuZ
+         qyZ99b+pikfR28dgmAub7ngYhxcMLdHQ2pIT6oGb/gsxNsTChTYdWxx4IFOtpvwOe5xE
+         YXQmB/wQFr3YRKPjhH8anzwFSxhVSyOa062crmjuc1SGGbzNuP1zaxxhCj44pCd5clx7
+         FkuugFzpjMaRFFbLYwLDI87+Dc2z/GKLEizCCHvsLF70hwGXBpd0xrtkgPcZd1EIUL//
+         T6lw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=SGNpItAx;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b="NSbMU3s/";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7a3788725b4si407100285a.709.2024.08.08.05.27.30
+        by mx.google.com with ESMTPS id d75a77b69052e-451c87024e4si40532211cf.156.2024.08.08.05.27.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 08 Aug 2024 05:27:30 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 08 Aug 2024 05:27:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=SGNpItAx;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b="NSbMU3s/";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sc2EJ-0000al-6p; Thu, 08 Aug 2024 08:26:55 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1sc2EG-0000BQ-58; Thu, 08 Aug 2024 08:26:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mchehab+huawei@kernel.org>)
- id 1sc2EE-0000Bf-Qw; Thu, 08 Aug 2024 08:26:52 -0400
+ id 1sc2EB-0008PE-DE; Thu, 08 Aug 2024 08:26:47 -0400
 Received: from dfw.source.kernel.org ([139.178.84.217])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mchehab+huawei@kernel.org>)
- id 1sc2E9-0005xO-Bt; Thu, 08 Aug 2024 08:26:48 -0400
+ id 1sc2E9-0005xM-7q; Thu, 08 Aug 2024 08:26:46 -0400
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by dfw.source.kernel.org (Postfix) with ESMTP id 9EA1E615DD;
+ by dfw.source.kernel.org (Postfix) with ESMTP id 7270F615E1;
  Thu,  8 Aug 2024 12:26:43 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C6C10C4AF0C;
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D25FAC4AF0D;
  Thu,  8 Aug 2024 12:26:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1723120003;
- bh=ZOxDxxTAY5bHcgYcs4XI5591I7f113rMY6ajTI12ouQ=;
- h=From:To:Cc:Subject:Date:From;
- b=SGNpItAxANKAuE/4pD2apfR93PB7VqLsQj5gyXyF3Rl5YafQcROTkK3O9ZVD4LJm5
- MI1CaDmxNU2XIKh1xo6H96LQFy2EBzLOXeJfOQCNnbOPtAXKskyAT+XkSjWVD7LC54
- vlNkow+Vrd7OEkEDVI0PtN9qw+503jjymolAPSX2FgRSXleyzQTEdUUkpJg3FEinm5
- IjP6v7zIKlsCA7eG23wPyeF/9QrK8mKJjx5tY0MlGJoEZphrwrOVJh2grn/HH0yN+I
- 5lrKTw5IkKBP0f+rRw09BgHRBiTEj8ymCDMiUfEt6k4+Xr3BXcHkRzYguvZc9IDiWp
- VFf4+71ILO8/g==
+ s=k20201202; t=1723120002;
+ bh=6/P38/7rRzxEe+1VVilVCabjUis4nPl0EUCTfasTwqg=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=NSbMU3s/OpMWBkLfM5zDOw4cy59etPtjJ2dOSt0soGSsXPtQrHyLnKkSL+wQ2v31M
+ r9MyazEC6q6Brqylp1n15hrHR/wd0YgUO3YztLdENrb9dRAuyi+hPl+jZ6HH+++ggF
+ iKJMkP+iS0oKx74sPK3U9e4elk7JoxvLLBBC813gdfvPRLen6eceMzCnWZYk4+Dg/f
+ vv4XgpwqQvkkq7hFdWwGqLAWYsNVLJehNvxxtd4T3qVEVNVxd4+Juy4BNaAd2JB5GD
+ Nn8e4wl4iUFvVudsYA8ou4upGfHT+NN0d9wCaC7qIb1fwKYxx9QDjAeHDkzIPFOros
+ QJL7scZJH6VSw==
 Received: from mchehab by mail.kernel.org with local (Exim 4.98)
  (envelope-from <mchehab+huawei@kernel.org>)
- id 1sc2E4-00000000oD9-3O1z; Thu, 08 Aug 2024 14:26:40 +0200
+ id 1sc2E4-00000000oDW-43xD; Thu, 08 Aug 2024 14:26:40 +0200
 From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 To: 
 Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>,
  Shiju Jose <shiju.jose@huawei.com>,
  Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
- Ani Sinha <anisinha@redhat.com>, Dongjiu Geng <gengdongjiu1@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Subject: [PATCH v6 00/10] Add ACPI CPER firmware first error injection on ARM
- emulation
-Date: Thu,  8 Aug 2024 14:26:26 +0200
-Message-ID: <cover.1723119423.git.mchehab+huawei@kernel.org>
+ "Michael S. Tsirkin" <mst@redhat.com>, Ani Sinha <anisinha@redhat.com>,
+ Dongjiu Geng <gengdongjiu1@gmail.com>, Igor Mammedov <imammedo@redhat.com>,
+ linux-kernel@vger.kernel.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Subject: [PATCH v6 06/10] acpi/ghes: add support for generic error injection
+ via QAPI
+Date: Thu,  8 Aug 2024 14:26:32 +0200
+Message-ID: <ab419c5dda274a94eefb6eaf9fecab3197f87fe1.1723119423.git.mchehab+huawei@kernel.org>
 X-Mailer: git-send-email 2.45.2
+In-Reply-To: <cover.1723119423.git.mchehab+huawei@kernel.org>
+References: <cover.1723119423.git.mchehab+huawei@kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=139.178.84.217;
@@ -97,217 +98,156 @@ X-Spam_report: (-7.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.141,
  RCVD_IN_DNSWL_HI=-5, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: MiYQoTAmg7Ix
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: dkRISbwC6bzu
 
-Testing OS kernel ACPI APEI CPER support is tricky, as one depends on
-having hardware with special-purpose BIOS and/or hardware.
+Provide a generic interface for error injection via GHESv2.
 
-With QEMU, it becomes a lot easier, as it can be done via QMP.
+This patch is co-authored:
+    - original ghes logic to inject a simple ARM record by Shiju Jose;
+    - generic logic to handle block addresses by Jonathan Cameron;
+    - generic GHESv2 error inject by Mauro Carvalho Chehab;
 
-This series add support for injecting CPER records on ARM emulation.
-
-The QEMU side changes add a QAPI able to do CPER error injection
-on ARM, with a raw data parameter, making it very flexible.
-
-A script is provided at the final patch implementing support for
-ARM Processor CPER error injection according with ACPI 6.x and 
-UEFI 2.9A/2.10 specs, via QMP.
-
-Injecting such errors can be done using the provided script:
-
-	$ ./scripts/ghes_inject.py arm 
-	Error injected.
-
-Produces a simple CPER register, properly handled by the Linux
-Kernel:
-
-[  794.983753] {4}[Hardware Error]: Hardware error from APEI Generic Hardware Error Source: 1
-[  794.984150] {4}[Hardware Error]: event severity: recoverable
-[  794.984391] {4}[Hardware Error]:  Error 0, type: recoverable
-[  794.984652] {4}[Hardware Error]:   section_type: ARM processor error
-[  794.984926] {4}[Hardware Error]:   MIDR: 0x0000000000000000
-[  794.985184] {4}[Hardware Error]:   running state: 0x0
-[  794.985411] {4}[Hardware Error]:   Power State Coordination Interface state: 0
-[  794.985720] {4}[Hardware Error]:   Error info structure 0:
-[  794.985960] {4}[Hardware Error]:   num errors: 2
-[  794.986175] {4}[Hardware Error]:    error_type: 0x02: cache error
-[  794.986442] {4}[Hardware Error]:    error_info: 0x000000000091000f
-[  794.986755] {4}[Hardware Error]:     transaction type: Data Access
-[  794.987027] {4}[Hardware Error]:     cache error, operation type: Data write
-[  794.987310] {4}[Hardware Error]:     cache level: 2
-[  794.987529] {4}[Hardware Error]:     processor context not corrupted
-[  794.987867] [Firmware Warn]: GHES: Unhandled processor error type 0x02: cache error
-
-More complex use cases can be done, like:
-
-	$ ./scripts/ghes_inject.py arm --mpidr 0x444 --running --affinity 1 \
-	  --error-info 12345678 --vendor 0x13,123,4,5,1 --ctx-array 0,1,2,3,4,5 \
-	  -t cache tlb bus micro-arch tlb,micro-arch
-	Error injected.
-
-[  899.181246] {5}[Hardware Error]: Hardware error from APEI Generic Hardware Error Source: 1
-[  899.181769] {5}[Hardware Error]: event severity: recoverable
-[  899.182069] {5}[Hardware Error]:  Error 0, type: recoverable
-[  899.182370] {5}[Hardware Error]:   section_type: ARM processor error
-[  899.182689] {5}[Hardware Error]:   MIDR: 0x0000000000000000
-[  899.182980] {5}[Hardware Error]:   Multiprocessor Affinity Register (MPIDR): 0x0000000000000000
-[  899.183395] {5}[Hardware Error]:   error affinity level: 0
-[  899.183683] {5}[Hardware Error]:   running state: 0x1
-[  899.183962] {5}[Hardware Error]:   Power State Coordination Interface state: 0
-[  899.184332] {5}[Hardware Error]:   Error info structure 0:
-[  899.184610] {5}[Hardware Error]:   num errors: 2
-[  899.184864] {5}[Hardware Error]:    error_type: 0x02: cache error
-[  899.185181] {5}[Hardware Error]:    error_info: 0x0000000000bc614e
-[  899.185504] {5}[Hardware Error]:     cache level: 2
-[  899.185771] {5}[Hardware Error]:     processor context not corrupted
-[  899.186082] {5}[Hardware Error]:   Error info structure 1:
-[  899.186366] {5}[Hardware Error]:   num errors: 2
-[  899.186613] {5}[Hardware Error]:    error_type: 0x04: TLB error
-[  899.186929] {5}[Hardware Error]:    error_info: 0x000000000054007f
-[  899.187236] {5}[Hardware Error]:     transaction type: Instruction
-[  899.187588] {5}[Hardware Error]:     TLB error, operation type: Instruction fetch
-[  899.187962] {5}[Hardware Error]:     TLB level: 1
-[  899.188209] {5}[Hardware Error]:     processor context not corrupted
-[  899.188535] {5}[Hardware Error]:     the error has not been corrected
-[  899.188853] {5}[Hardware Error]:     PC is imprecise
-[  899.189114] {5}[Hardware Error]:   Error info structure 2:
-[  899.189404] {5}[Hardware Error]:   num errors: 2
-[  899.189653] {5}[Hardware Error]:    error_type: 0x08: bus error
-[  899.189967] {5}[Hardware Error]:    error_info: 0x00000080d6460fff
-[  899.190293] {5}[Hardware Error]:     transaction type: Generic
-[  899.190611] {5}[Hardware Error]:     bus error, operation type: Generic read (type of instruction or data request cannot be determined)
-[  899.191174] {5}[Hardware Error]:     affinity level at which the bus error occurred: 1
-[  899.191563] {5}[Hardware Error]:     processor context corrupted
-[  899.191872] {5}[Hardware Error]:     the error has been corrected
-[  899.192185] {5}[Hardware Error]:     PC is imprecise
-[  899.192445] {5}[Hardware Error]:     Program execution can be restarted reliably at the PC associated with the error.
-[  899.192939] {5}[Hardware Error]:     participation type: Local processor observed
-[  899.193324] {5}[Hardware Error]:     request timed out
-[  899.193596] {5}[Hardware Error]:     address space: External Memory Access
-[  899.193945] {5}[Hardware Error]:     memory access attributes:0x20
-[  899.194273] {5}[Hardware Error]:     access mode: secure
-[  899.194544] {5}[Hardware Error]:   Error info structure 3:
-[  899.194838] {5}[Hardware Error]:   num errors: 2
-[  899.195088] {5}[Hardware Error]:    error_type: 0x10: micro-architectural error
-[  899.195456] {5}[Hardware Error]:    error_info: 0x0000000078da03ff
-[  899.195782] {5}[Hardware Error]:   Error info structure 4:
-[  899.196070] {5}[Hardware Error]:   num errors: 2
-[  899.196331] {5}[Hardware Error]:    error_type: 0x14: TLB error|micro-architectural error
-[  899.196733] {5}[Hardware Error]:   Context info structure 0:
-[  899.197024] {5}[Hardware Error]:    register context type: AArch64 EL1 context registers
-[  899.197427] {5}[Hardware Error]:    00000000: 00000000 00000000
-[  899.197741] {5}[Hardware Error]:   Vendor specific error info has 5 bytes:
-[  899.198096] {5}[Hardware Error]:    00000000: 13 7b 04 05 01                                   .{...
-[  899.198610] [Firmware Warn]: GHES: Unhandled processor error type 0x02: cache error
-[  899.199000] [Firmware Warn]: GHES: Unhandled processor error type 0x04: TLB error
-[  899.199388] [Firmware Warn]: GHES: Unhandled processor error type 0x08: bus error
-[  899.199767] [Firmware Warn]: GHES: Unhandled processor error type 0x10: micro-architectural error
-[  899.200194] [Firmware Warn]: GHES: Unhandled processor error type 0x14: TLB error|micro-architectural error
-
+Co-authored-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Co-authored-by: Shiju Jose <shiju.jose@huawei.com>
+Co-authored-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+Signed-off-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Signed-off-by: Shiju Jose <shiju.jose@huawei.com>
+Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 ---
+ hw/acpi/ghes.c         | 78 ++++++++++++++++++++++++++++++++++++++++++
+ hw/acpi/ghes_cper.c    |  2 +-
+ include/hw/acpi/ghes.h |  3 ++
+ 3 files changed, 82 insertions(+), 1 deletion(-)
 
-v6:
-- PNP0C33 device creation moved to aml-build.c;
-- acpi_ghes record functions now use ACPI notify parameter,
-  instead of source ID;
-- the number of source IDs is now automatically calculated;
-- some code cleanups and function/var renames;
-- some fixes and cleanups at the error injection script;
-- ghes cper stub now produces an error if cper JSON is not compiled;
-- Offset calculation logic for GHES was refactored;
-- Updated documentation to reflect the GHES allocated size;
-- Added a x-mpidr object for QOM usage;
-- Added a patch making usage of x-mpidr field at ARM injection
-  script;
-
-v5:
-- CPER guid is now passing as string;
-- raw-data is now passed with base64 encode;
-- Removed several GPIO left-overs from arm/virt.c changes;
-- Lots of cleanups and improvements at the error injection script.
-  It now better handles QMP dialog and doesn't print debug messages.
-  Also, code was split on two modules, to make easier to add more
-  error injection commands.
-
-v4:
-- CPER generation moved to happen outside QEMU;
-- One patch adding support for mpidr query was removed.
-
-v3:
-- patch 1 cleanups with some comment changes and adding another place where
-  the poweroff GPIO define should be used. No changes on other patches (except
-  due to conflict resolution).
-
-v2:
-- added a new patch using a define for GPIO power pin;
-- patch 2 changed to also use a define for generic error GPIO pin;
-- a couple cleanups at patch 2 removing uneeded else clauses.
-
-
-
-Jonathan Cameron (1):
-  acpi/ghes: Add support for GED error device
-
-Mauro Carvalho Chehab (9):
-  acpi/generic_event_device: add an APEI error device
-  arm/virt: Wire up a GED error device for ACPI / GHES
-  qapi/ghes-cper: add an interface to do generic CPER error injection
-  acpi/ghes: rework the logic to handle HEST source ID
-  acpi/ghes: add support for generic error injection via QAPI
-  docs: acpi_hest_ghes: fix documentation for CPER size
-  scripts/ghes_inject: add a script to generate GHES error inject
-  target/arm: add an experimental mpidr arm cpu property object
-  scripts/arm_processor_error.py: retrieve mpidr if not filled
-
- MAINTAINERS                            |  10 +
- docs/specs/acpi_hest_ghes.rst          |   6 +-
- hw/acpi/Kconfig                        |   5 +
- hw/acpi/aml-build.c                    |  10 +
- hw/acpi/generic_event_device.c         |   8 +
- hw/acpi/ghes-stub.c                    |   3 +-
- hw/acpi/ghes.c                         | 308 ++++++++++++++----
- hw/acpi/ghes_cper.c                    |  45 +++
- hw/acpi/ghes_cper_stub.c               |  19 ++
- hw/acpi/meson.build                    |   2 +
- hw/arm/Kconfig                         |   5 +
- hw/arm/virt-acpi-build.c               |   1 +
- hw/arm/virt.c                          |  12 +-
- include/hw/acpi/acpi_dev_interface.h   |   1 +
- include/hw/acpi/aml-build.h            |   2 +
- include/hw/acpi/generic_event_device.h |   1 +
- include/hw/acpi/ghes.h                 |  24 +-
- include/hw/arm/virt.h                  |   1 +
- qapi/ghes-cper.json                    |  55 ++++
- qapi/meson.build                       |   1 +
- qapi/qapi-schema.json                  |   1 +
- scripts/arm_processor_error.py         | 389 ++++++++++++++++++++++
- scripts/ghes_inject.py                 |  48 +++
- scripts/qmp_helper.py                  | 431 +++++++++++++++++++++++++
- target/arm/cpu.c                       |   1 +
- target/arm/cpu.h                       |   1 +
- target/arm/helper.c                    |  10 +-
- 27 files changed, 1316 insertions(+), 84 deletions(-)
- create mode 100644 hw/acpi/ghes_cper.c
- create mode 100644 hw/acpi/ghes_cper_stub.c
- create mode 100644 qapi/ghes-cper.json
- create mode 100644 scripts/arm_processor_error.py
- create mode 100755 scripts/ghes_inject.py
- create mode 100644 scripts/qmp_helper.py
-
+diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
+index 26e93dd0f6e2..8525481bb828 100644
+--- a/hw/acpi/ghes.c
++++ b/hw/acpi/ghes.c
+@@ -534,6 +534,84 @@ int acpi_ghes_record_errors(enum AcpiGhesNotifyType notify,
+ NotifierList acpi_generic_error_notifiers =
+     NOTIFIER_LIST_INITIALIZER(error_device_notifiers);
+ 
++void ghes_record_cper_errors(AcpiGhesCper *cper, Error **errp,
++                             enum AcpiGhesNotifyType notify)
++{
++    uint64_t cper_addr, read_ack_start_addr;
++    uint64_t read_ack = 0;
++    uint32_t data_length;
++    GArray *block;
++    uint32_t i;
++
++    if (ghes_get_hardware_errors_address(notify, NULL, &read_ack_start_addr,
++                                         &cper_addr, NULL)) {
++        error_setg(errp,
++                   "GHES: Invalid error block/ack address(es) for notify %d",
++                   notify);
++        return;
++    }
++
++    cpu_physical_memory_read(read_ack_start_addr,
++                             &read_ack, sizeof(uint64_t));
++
++    /* zero means OSPM does not acknowledge the error */
++    if (!read_ack) {
++        error_setg(errp,
++                   "Last CPER record was not acknowledged yet");
++        read_ack = 1;
++        cpu_physical_memory_write(read_ack_start_addr,
++                                  &read_ack, sizeof(uint64_t));
++        return;
++    }
++
++    read_ack = cpu_to_le64(0);
++    cpu_physical_memory_write(read_ack_start_addr,
++                              &read_ack, sizeof(uint64_t));
++
++    /* Build CPER record */
++
++    /*
++     * Invalid fru id: ACPI 4.0: 17.3.2.6.1 Generic Error Data,
++     * Table 17-13 Generic Error Data Entry
++     */
++    QemuUUID fru_id = {};
++
++    block = g_array_new(false, true /* clear */, 1);
++    data_length = ACPI_GHES_DATA_LENGTH + cper->data_len;
++
++    /*
++     * It should not run out of the preallocated memory if
++     * adding a new generic error data entry
++     */
++    if ((data_length + ACPI_GHES_GESB_SIZE) >
++        ACPI_GHES_MAX_RAW_DATA_LENGTH) {
++        error_setg(errp, "GHES CPER record is too big: %d",
++                   data_length);
++    }
++
++    /* Build the new generic error status block header */
++    acpi_ghes_generic_error_status(block, ACPI_GEBS_UNCORRECTABLE,
++                                    0, 0, data_length,
++                                    ACPI_CPER_SEV_RECOVERABLE);
++
++    /* Build this new generic error data entry header */
++    acpi_ghes_generic_error_data(block, cper->guid,
++                                ACPI_CPER_SEV_RECOVERABLE, 0, 0,
++                                cper->data_len, fru_id, 0);
++
++    /* Add CPER data */
++    for (i = 0; i < cper->data_len; i++) {
++        build_append_int_noprefix(block, cper->data[i], 1);
++    }
++
++    /* Write the generic error data entry into guest memory */
++    cpu_physical_memory_write(cper_addr, block->data, block->len);
++
++    g_array_free(block, true);
++
++    notifier_list_notify(&acpi_generic_error_notifiers, NULL);
++}
++
+ bool acpi_ghes_present(void)
+ {
+     AcpiGedState *acpi_ged_state;
+diff --git a/hw/acpi/ghes_cper.c b/hw/acpi/ghes_cper.c
+index 7aa7e71e90dc..d7ff7debee74 100644
+--- a/hw/acpi/ghes_cper.c
++++ b/hw/acpi/ghes_cper.c
+@@ -39,7 +39,7 @@ void qmp_ghes_cper(CommonPlatformErrorRecord *qmp_cper,
+         return;
+     }
+ 
+-    /* TODO: call a function at ghes */
++    ghes_record_cper_errors(&cper, errp, ACPI_GHES_NOTIFY_GPIO);
+ 
+     g_free(cper.data);
+ }
+diff --git a/include/hw/acpi/ghes.h b/include/hw/acpi/ghes.h
+index 2fcfa1cc8090..5a7bdb08f8e2 100644
+--- a/include/hw/acpi/ghes.h
++++ b/include/hw/acpi/ghes.h
+@@ -79,6 +79,9 @@ typedef struct AcpiGhesCper {
+     size_t data_len;
+ } AcpiGhesCper;
+ 
++void ghes_record_cper_errors(AcpiGhesCper *cper, Error **errp,
++                             enum AcpiGhesNotifyType notify);
++
+ /**
+  * acpi_ghes_present: Report whether ACPI GHES table is present
+  *
 -- 
 2.45.2
-
 

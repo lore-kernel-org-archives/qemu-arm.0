@@ -1,93 +1,94 @@
-Received: by 2002:a17:504:7fd7:b0:1be9:327d:8ee3 with SMTP id hj23csp485657njc;
-        Thu, 8 Aug 2024 05:28:00 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWmA/hGIP9EwVZkZDyDEySTWAoG5paF7p7SHmpI0lx8dkwZlZ2DacQ+yaokJjq+z018/O7sC3YcsqRB3ce9OVz3J48tFB+L
-X-Google-Smtp-Source: AGHT+IEr8F6RTNP48hWMlTnYQEkDZ7XTLBIjsT3jd/ucwdZmsYh5DWV8oVR3tHoQqn9CaWCgu86w
-X-Received: by 2002:a05:6830:6b0b:b0:704:4563:b66a with SMTP id 46e09a7af769-70b4fc3006emr2250860a34.4.1723120080402;
-        Thu, 08 Aug 2024 05:28:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1723120080; cv=none;
+Received: by 2002:a17:504:7fd7:b0:1be9:327d:8ee3 with SMTP id hj23csp485699njc;
+        Thu, 8 Aug 2024 05:28:07 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWl2BlnwpKU8MSmICbOrlOtcyEJ955xU2NAmEqmqluP/iNRFuWGYROAUVm/wmkGniQosjoQid+cDdkc2dDlwopyVWzhZMeE
+X-Google-Smtp-Source: AGHT+IHoaWe5EML9YlsZKHErEvcfieiAnAn9sdTbJnA4taYHqvp3EjUeWLwJnytkgc+Jw2bBUkmK
+X-Received: by 2002:a05:6808:1303:b0:3dc:14dd:c455 with SMTP id 5614622812f47-3dc3b4207b0mr1859124b6e.19.1723120087080;
+        Thu, 08 Aug 2024 05:28:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1723120087; cv=none;
         d=google.com; s=arc-20160816;
-        b=SRmFWq8yOal//WIYAZWMF6qY77tEKRZdXimEccsii8UKAh+6ej6bf3ALudnEcOYT2g
-         qC38/+yqiYKbv9CjYjVJPSgrxLj5m7TyDe+hQy7patUhZ7jy4p1CqIBqK1Fl9QXaztIw
-         fafyU8uEJUbzKPHLiIw3r65t0MizRkaWOBMaU2+V6pdFipZR9Hz2vDg7A6emTuW2unys
-         Ece53WDjxnEiffdLOrCI7LJGJGmQdyMra/lqewNjFe3fyY7hl2u6jFFPUKyLSbhxeWQQ
-         DGjoQLk1PtHwDuMKVfr05rwk6uWOjl4N8veknYVyeO/9rRVQu8cQQyjEvmErmIFfTaQ/
-         ULRg==
+        b=J12up+BwP/l1yrRUC72+ZHE9dT7cCI26bDJizYrlqSCt5Est3eUgUDErpit8CTz8WM
+         bQWlmtT1YNwlRxrEXlLDC5B2aYRf0NB4+SMeixDhKp+1pF9tjCkK0cTk4MNNlvCRruHA
+         YUVp/i7C9oVeSTtE7si8m21dUuqWL9v6urnGjWIyoAHrfJ8Oii1OVexyKo7vlDTZkIpp
+         6ynyNxVGhpD70gGnR9XCtnaZhQ74W7UrjvfDEwLveY8RP9f4SlnaQhdK40OL6GQt44/m
+         HWuWCVv0QbDywBKX3n4Vsfveg+OcfLtP1XGYTlODaygqTLsqSGiVhsoVIX1JIHlbaeNo
+         soNg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=Po30n7VH0ZE2I+bK3oZoCRnQoFud/i6cfVqRsnuziXI=;
-        fh=gqudsHnZg0ZDHHy1LzB0UiSg6Nrf/2Xtvvf+ciJMjcM=;
-        b=RS9AYjnlMhmoMsmU68xGqoqoFxMo16GWsQ9jzzGrd2AscLpYdY67KavfTzxLgljbWE
-         tkagqek8Tal9vZ0/en0AzJuckW5tFuyNrqXWFUM5azc5xmbSG8WlyXBaDOZdcJ+bQMNq
-         ew+fxrx/Wm0FwZApAAqvU8UkI96urELKdBgQXCo3Pm2g+rp2pe6jGzuOkeMv+r764rG9
-         i/saboO9zYE9wjBrDUdo3Rnt+4olNXsaAhdgZSPoLwzIQpWdywYL5eJQe4eURNcuOlqS
-         jLgdivGIp4JTtfsY68IrPP57CMIn7ut4B9zIQ4CYvRAu5tNaMAlxuEux8BYbhCwg9tGm
-         6kpA==;
+        bh=nV/m2jtMwFZw8r5VzGztD1Rv/cCLtiK5u0dInMtp6ws=;
+        fh=5gvMMhD2S7UP3QzB201JMOyteTDVwhvTYOpwAATLSYI=;
+        b=ZnwIQ5VkvjYpl+w3JrZw2KrU1sVbJCjnXUOE1ZEioVlUvoKNBdRc9ep0nOQ9ECqM7L
+         R2pRf9H4mLPBLspaFkrQ1nPAMWc76XRgGCyoaWkLPBpUnxw1iZ6cPTCNqPnIH/z17fy8
+         /CT2+l7+0QDe9+iWCh6kxPgUvnFtA8rFg1rO3yyQRoBJKGr+/Nyx+U4AJA5oNl09jJ8r
+         yfZRBKLFUS4DnuKOg9a9/qaK46KEd2cfevLxPTFY+6cnASvbXyJJaaSODcsEu+pWjkzG
+         j1XU3i5EoTdVHJ5+LCgF8y4MHMzw9Z5WUUOIs++lYkGOnfoXImJE2ftZ0MNS3bTpx57j
+         UScA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=UOVb1vRm;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=os+imooc;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6bbbb90a0b2si43572886d6.431.2024.08.08.05.28.00
+        by mx.google.com with ESMTPS id d75a77b69052e-451c87ffcebsi41228831cf.504.2024.08.08.05.28.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 08 Aug 2024 05:28:00 -0700 (PDT)
+        Thu, 08 Aug 2024 05:28:07 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=UOVb1vRm;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=os+imooc;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sc2EI-0000V4-8D; Thu, 08 Aug 2024 08:26:54 -0400
+	id 1sc2EN-0000yt-Gc; Thu, 08 Aug 2024 08:26:59 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mchehab+huawei@kernel.org>)
- id 1sc2EC-0008VD-SA; Thu, 08 Aug 2024 08:26:48 -0400
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+ id 1sc2EG-0000NR-Un; Thu, 08 Aug 2024 08:26:53 -0400
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mchehab+huawei@kernel.org>)
- id 1sc2E9-0005xN-B0; Thu, 08 Aug 2024 08:26:48 -0400
+ id 1sc2EC-0005xs-82; Thu, 08 Aug 2024 08:26:51 -0400
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by dfw.source.kernel.org (Postfix) with ESMTP id 231B5615CF;
- Thu,  8 Aug 2024 12:26:43 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C2C7EC32782;
+ by sin.source.kernel.org (Postfix) with ESMTP id AA4BBCE13D2;
+ Thu,  8 Aug 2024 12:26:44 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D0069C4AF11;
  Thu,  8 Aug 2024 12:26:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
  s=k20201202; t=1723120002;
- bh=u+gtNcYPnwzIRNiBgtrexQw/P62CjJ4KAOxlXUYS31Y=;
+ bh=gdozRKZ3iyoRuHgiHJ0lImhnTPME+Bh4aN1C+ET0Tko=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=UOVb1vRmy7xP4czfIIFhRtb08tspyh+2pJJCOZDcRycIvlJbpzco+8m9UoEo35M6A
- cQDpbp6gCbhXFGdTMBLCBkdrLZBT+PDHGwwOTwB4IR6XCrrS5AY0L9W81HySxrwFVW
- DerW1OdriegC2dLOnugF+f9d3XCXbqF1BsRg8ScAcYKgUH2Ppb+P/Z9KeNk1EOXfdV
- /a7FEiDa20f+nfLE2aJcPVSIDNGEIxo/rcmx9owHZENZHBL1XCclDLHldiAuWtx0lG
- g684BeDwcXMn1qeUGz6djBFlMP3O7XaCMoiWfoQ2B6oCtdQvCIFUOMoYPkT7etUDEM
- joSGivAYiCEcA==
+ b=os+imoocozit9CG5uoPjSaDohlz2hzibbsGjWrf3aYILopPlZ3qeFBmYuunrcBgSk
+ hIWmvhmHkBWWqp0V+k8sIXza9SdJf1gtttyFtYEZNGCAhF+GabkmbvxCSkG6CzGbaq
+ JDj+AHquh4hNckUWolMH4jj5JTWkv6jCx0gFQXcMGVtNa2Hoy2fvE4jlpPMMqIafrm
+ BKxJ6+6rhiFbrr3I1iGCCLPN0HbQIXC3IBBy44JiL9RmYvbPsfVC8obyPYIaVh7ndK
+ Xp8bXmL8uDz0IkzyraktZAkbad0lvgphxP5f8nw6s5Qi7ZOZVTLB/ceyVmo2er5DJe
+ IYy6UXq8GosVA==
 Received: from mchehab by mail.kernel.org with local (Exim 4.98)
  (envelope-from <mchehab+huawei@kernel.org>)
- id 1sc2E4-00000000oDa-4AWQ; Thu, 08 Aug 2024 14:26:40 +0200
+ id 1sc2E4-00000000oDI-3j4n; Thu, 08 Aug 2024 14:26:40 +0200
 From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 To: 
 Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>,
- Shiju Jose <shiju.jose@huawei.com>,
- Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
- Dongjiu Geng <gengdongjiu1@gmail.com>, linux-kernel@vger.kernel.org,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Subject: [PATCH v6 07/10] docs: acpi_hest_ghes: fix documentation for CPER size
-Date: Thu,  8 Aug 2024 14:26:33 +0200
-Message-ID: <93ae03bd89b47731f6703dab5925ed2f7a9fd426.1723119423.git.mchehab+huawei@kernel.org>
+ Shiju Jose <shiju.jose@huawei.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Ani Sinha <anisinha@redhat.com>, Dongjiu Geng <gengdongjiu1@gmail.com>,
+ Igor Mammedov <imammedo@redhat.com>, linux-kernel@vger.kernel.org,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+Subject: [PATCH v6 03/10] acpi/ghes: Add support for GED error device
+Date: Thu,  8 Aug 2024 14:26:29 +0200
+Message-ID: <909c4b6c1b90be284f1e5b653e075db7156b00cd.1723119423.git.mchehab+huawei@kernel.org>
 X-Mailer: git-send-email 2.45.2
 In-Reply-To: <cover.1723119423.git.mchehab+huawei@kernel.org>
 References: <cover.1723119423.git.mchehab+huawei@kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2604:1380:4641:c500::1;
- envelope-from=mchehab+huawei@kernel.org; helo=dfw.source.kernel.org
+Received-SPF: pass client-ip=2604:1380:40e1:4800::1;
+ envelope-from=mchehab+huawei@kernel.org; helo=sin.source.kernel.org
 X-Spam_score_int: -44
 X-Spam_score: -4.5
 X-Spam_bar: ----
@@ -109,35 +110,93 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: suRy1R/i9rxe
+X-TUID: CE+hRP/Sb5Km
 
-While the spec defines a CPER size of 4KiB for each record,
-currently it is set to 1KiB. Fix the documentation and add
-a pointer to the macro name there, as this may help to keep
-it updated.
+From: Jonathan Cameron <Jonathan.Cameron@huawei.com>
 
+As a GED error device is now defined, add another type
+of notification.
+
+Add error notification to GHES v2 using a GED error device GED
+triggered via interrupt.
+
+[mchehab: do some cleanups at ACPI_HEST_SRC_ID_* checks and
+ rename HEST event to better identify GED interrupt OSPM]
+
+Signed-off-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
 Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 ---
- docs/specs/acpi_hest_ghes.rst | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+ hw/acpi/ghes.c         | 12 +++++++++---
+ include/hw/acpi/ghes.h |  3 ++-
+ 2 files changed, 11 insertions(+), 4 deletions(-)
 
-diff --git a/docs/specs/acpi_hest_ghes.rst b/docs/specs/acpi_hest_ghes.rst
-index 68f1fbe0a4af..c3e9f8d9a702 100644
---- a/docs/specs/acpi_hest_ghes.rst
-+++ b/docs/specs/acpi_hest_ghes.rst
-@@ -67,8 +67,10 @@ Design Details
- (3) The address registers table contains N Error Block Address entries
-     and N Read Ack Register entries. The size for each entry is 8-byte.
-     The Error Status Data Block table contains N Error Status Data Block
--    entries. The size for each entry is 4096(0x1000) bytes. The total size
--    for the "etc/hardware_errors" fw_cfg blob is (N * 8 * 2 + N * 4096) bytes.
-+    entries. The size for each entry is defined at the source code as
-+    ACPI_GHES_MAX_RAW_DATA_LENGTH (currently 1024 bytes). The total size
-+    for the "etc/hardware_errors" fw_cfg blob is
-+    (N * 8 * 2 + N * ACPI_GHES_MAX_RAW_DATA_LENGTH) bytes.
-     N is the number of the kinds of hardware error sources.
+diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
+index 13b105c5d02d..d6cbeed6e3d5 100644
+--- a/hw/acpi/ghes.c
++++ b/hw/acpi/ghes.c
+@@ -34,8 +34,8 @@
+ /* The max size in bytes for one error block */
+ #define ACPI_GHES_MAX_RAW_DATA_LENGTH   (1 * KiB)
  
- (4) QEMU generates the ACPI linker/loader script for the firmware. The
+-/* Now only support ARMv8 SEA notification type error source */
+-#define ACPI_GHES_ERROR_SOURCE_COUNT        1
++/* Support ARMv8 SEA notification type error source and GPIO interrupt. */
++#define ACPI_GHES_ERROR_SOURCE_COUNT        2
+ 
+ /* Generic Hardware Error Source version 2 */
+ #define ACPI_GHES_SOURCE_GENERIC_ERROR_V2   10
+@@ -290,6 +290,9 @@ void build_ghes_error_table(GArray *hardware_errors, BIOSLinker *linker)
+ static void build_ghes_v2(GArray *table_data, int source_id, BIOSLinker *linker)
+ {
+     uint64_t address_offset;
++
++    assert(source_id < ACPI_HEST_SRC_ID_RESERVED);
++
+     /*
+      * Type:
+      * Generic Hardware Error Source version 2(GHESv2 - Type 10)
+@@ -327,6 +330,9 @@ static void build_ghes_v2(GArray *table_data, int source_id, BIOSLinker *linker)
+          */
+         build_ghes_hw_error_notification(table_data, ACPI_GHES_NOTIFY_SEA);
+         break;
++    case ACPI_HEST_NOTIFY_EXTERNAL:
++        build_ghes_hw_error_notification(table_data, ACPI_GHES_NOTIFY_GPIO);
++        break;
+     default:
+         error_report("Not support this error source");
+         abort();
+@@ -370,6 +376,7 @@ void acpi_build_hest(GArray *table_data, BIOSLinker *linker,
+     /* Error Source Count */
+     build_append_int_noprefix(table_data, ACPI_GHES_ERROR_SOURCE_COUNT, 4);
+     build_ghes_v2(table_data, ACPI_HEST_SRC_ID_SEA, linker);
++    build_ghes_v2(table_data, ACPI_HEST_NOTIFY_EXTERNAL, linker);
+ 
+     acpi_table_end(linker, &table);
+ }
+@@ -406,7 +413,6 @@ int acpi_ghes_record_errors(uint8_t source_id, uint64_t physical_address)
+     start_addr = le64_to_cpu(ags->ghes_addr_le);
+ 
+     if (physical_address) {
+-
+         if (source_id < ACPI_HEST_SRC_ID_RESERVED) {
+             start_addr += source_id * sizeof(uint64_t);
+         }
+diff --git a/include/hw/acpi/ghes.h b/include/hw/acpi/ghes.h
+index fb80897e7eac..ce6f82a1155a 100644
+--- a/include/hw/acpi/ghes.h
++++ b/include/hw/acpi/ghes.h
+@@ -59,9 +59,10 @@ enum AcpiGhesNotifyType {
+     ACPI_GHES_NOTIFY_RESERVED = 12
+ };
+ 
++/* Those are used as table indexes when building GHES tables */
+ enum {
+     ACPI_HEST_SRC_ID_SEA = 0,
+-    /* future ids go here */
++    ACPI_HEST_NOTIFY_EXTERNAL,
+     ACPI_HEST_SRC_ID_RESERVED,
+ };
+ 
 -- 
 2.45.2
 

@@ -1,106 +1,140 @@
-Received: by 2002:a05:7022:d82:b0:85:21:bd5b with SMTP id ec2csp632268dlb;
-        Wed, 7 Aug 2024 16:57:23 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXwH/t4VIi4pI2sebSEiniJVZT3DE9C3whNnB064yX7tvdAPzzqwWuT6YZ//XNYLhImvapzM7ent20hBb2MbBrUZoFK2NAB
-X-Received: by 2002:a05:600c:1394:b0:426:67f0:b4fa with SMTP id 5b1f17b1804b1-4290aee06c1mr1816245e9.1.1723075043442;
-        Wed, 07 Aug 2024 16:57:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1723075043; cv=none;
+Received: by 2002:a17:504:7fd7:b0:1be9:327d:8ee3 with SMTP id hj23csp358012njc;
+        Wed, 7 Aug 2024 19:49:38 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVet2TNq++UPg+cKPntYFXZTOiIlmy6uloZDnvG1jo/PUJQNf3fB+LrZEYKmARa4i0weY1MVCqk617Hk3jlO15Qi3QLwddx
+X-Google-Smtp-Source: AGHT+IHXh1CPcrdfcF5mCJrCcmbCPze43ZGuw+Nx4hTDpUQ/12/Ce6F+SBmqT4WzRUtMNnbQQbui
+X-Received: by 2002:a05:620a:1a10:b0:7a1:d08d:e2fa with SMTP id af79cd13be357-7a3817ac0e4mr69500685a.1.1723085378724;
+        Wed, 07 Aug 2024 19:49:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1723085378; cv=none;
         d=google.com; s=arc-20160816;
-        b=PWIi0W2RkzjGWjnL+foAU6gWvWJliF0qtns/ckEGQE3RBEoTA53nuZ1+r7d8PBtcJu
-         zarxtXFsWYTE0mpndhmFWfLQktWckC2nd0AQg/ZMODMHBXaiS4w701IMBgykXdXSCNDr
-         uu+O15iHlQfzDVPaWtn1PUj41NbCDILrwaQBFR254rjeNlBW4lNVP3A+GRXnWbH/gSJS
-         O8jU+B6MCLqKPsK4PyXFRelhyBJCPMZOgQb4zcKz8vzOt0GgJ51WQvzgDByaYpH5k9SV
-         WFR0HEhmhsy6FnKWtrZmBxOrAYF+hh4jgbzXtzAR1t0l70YGFqVi+wM8GMI2n+mxUgEC
-         n1UQ==
+        b=vjc8eGEQuFjey1BoByuQJNboNJsVpV7v8f0tYFGL4gkGXXfKLDaglFqsxoJKbceJtK
+         Bz/NLIBsDa4UTAAjIrERBRsPcW5u/ehYmY0PjsyxfbJIuoaVxgfUlWr5//jXmJKv0w8n
+         8XYK3IuhU2UijzL2zKfyEaW5iWkjpN91vMU/CcBKBoWHXAcEg9mdaN3GdaOuzETA55zT
+         UCzEpng3KaFVde/37d/bOrI2hJGwoGKQjriij6mLWDsGS6/Z8wM2ZTxS+efQhe8ZfwIV
+         FtJ2o9IfJwfXQy7UbA/6vMzoXCJlwxNLwFkIwmbnONZ/8Afbq4jL20+8n8wuc1RmaH+q
+         d6SQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=xjmFqe72YdvfqIFt4uaBezk9cBCdMQ8uK+a6z9kJlDY=;
-        fh=ge5GpUEk3ewdjYtWZwS/jAhybjK8sV2EGIVMmSIzT/g=;
-        b=hWGx1umrnFsAXpP4mck43WBNyMp+zYaPhMG7fR4o8UW53LxTzgZ+knDGJKq2XS5oYy
-         PCEioBtaGt7sJXjxSTHzc+QuS1GCXbckRS2dr/bi/ws60WxiJjyPuO8pjou24HXp0DsX
-         ljCict5GDIf4Z/GY1ziSyIOYeTNjwFkqdm2gJD5vtbG4/7Mxou/f8JTPa8HOPz8kaR0u
-         cZ8cPg8cw7VsL7XKuHaktqSozYbPVFIFcpM6lM4Y/wO2DSWqbfCVZmbb/DYg0qxH7UVJ
-         dT313bnhr33Cmr8/+G9Xa7Qyy9U5pTvqmq0xzjtz91RD57xpexl3MIQ6q9gixFocGVTe
-         +aGg==;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to;
+        bh=eVzxm13pJI21icmv5tRlrfZKbxaT2FilAbIy3LbiTrw=;
+        fh=FCtYWwOtEgMeIuI7wG7f687kK1NW14MjWu/nT+chD9o=;
+        b=LD2e92WjdKAn9yzEFF4SK2QMqvlO91OHRV4T7ozRzG/n3fOTfik1s54QBKSe1V0b/G
+         zXnENJSwSsWluKTphtm/tV18voAcn9ZaBsDc8C9w8jONDHuiKXo0DJhD1ghf0SVq2Kef
+         EvCf2o3IkiJH7gbaF3FdXwHBJ3H1a2vQ2YTHxXyhWODPjS8jiECVY4D+rAEeflHLjOBb
+         nJtPkDEs0cSybH2Ti9N24jZZfbWQy/owkKbflPRpXlSuku3EP2yysmpPkomrb1kjduV6
+         kdxITmA9W7MTzqIlr3A7Q/c/RGOo9wULu7zjN+p1baW1i6GAsWpsOQQTyaacoG5zPyBa
+         8gVQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=o4t1ChK1;
-       spf=pass (google.com: domain of tavip@google.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=tavip@google.com;
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
-       dara=neutral header.i=@linaro.org
-Return-Path: <tavip@google.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 5b1f17b1804b1-429056318d7sor5988815e9.0.2024.08.07.16.57.23
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d75a77b69052e-451c871d601si31576871cf.210.2024.08.07.19.49.38
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Wed, 07 Aug 2024 16:57:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of tavip@google.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 07 Aug 2024 19:49:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=o4t1ChK1;
-       spf=pass (google.com: domain of tavip@google.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=tavip@google.com;
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20230601; t=1723075043; x=1723679843; darn=linaro.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=xjmFqe72YdvfqIFt4uaBezk9cBCdMQ8uK+a6z9kJlDY=;
-        b=o4t1ChK1ylqBAMsvGrUSW4B9c2Vf2IQc0s+8gELzyxhDida8NDSVZAGLtcy2FmNF7W
-         V0Htshkb7syS8Wd6iS8XmNijJtLO3zksVIm/Z3kB+Bj6BiBzm5D/2gRWW3N/N7xzqvQs
-         ot36mHXdwasbqNdzRXlR/V8+5AcuLxvNMXtrJfjHVOPnT/vnb3K104/N9lFEgfqYlQB6
-         KSTqrri9gVCbLsv0dFWIJLXZJfXvRqnakBElsqiYUyFEnqQA1hi3z4+1R4rcIfqxS97z
-         BNFUXy/oSj6s27ZLFhl2eKxIT0Uc5B84lMJH7+smo5CuLTNwfHx7yEdzmBVzOzPpCgVK
-         4BBw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1723075043; x=1723679843;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=xjmFqe72YdvfqIFt4uaBezk9cBCdMQ8uK+a6z9kJlDY=;
-        b=GEA/Jyp2hnwrJDw5fphBMTde+VPJeSxdywyZ12W2tTalucl6h+ciM/EtE8DqRO8Jnp
-         K++aE12TFxHxLstry+AvHYrzTx0szuEMUp+wbn9j3h/TOEfwrqJ9tcTNlj+dIsEnWElN
-         NePTg7+fxTIyNYqP+lsxFN8BTWRqAdM4qXsEHaPVODZVO2KwDX+X4aGgWTPxxnmAibSU
-         RXvFxGBUSn4yXDLZZsZbJl3Zc+T3Q6tho0S4rJ8hNqGw0l1wdozNpIca2CPl2KyMEUTK
-         LrHjvS1ZSVwCN+k2SsxxEldZIc0JA4s7y6yTkuH9zuQOk97H59D7TcHdsKgi3ptD8GSK
-         p8DA==
-X-Forwarded-Encrypted: i=1; AJvYcCUxmgEspRcIBLwgNpVEao6/fgjlLonxBhttc4Fpy+VLw1izkKq9OWiHdYi/fNTiQLZYWFr0o/v8WC9eCsz+yZdSpvMUrVRG
-X-Gm-Message-State: AOJu0YwE+deKg+PsNK/nj8ZpvPNkT0XuqdWYQTiDpOnyY0MqqZCce6sO
-	4zkpS40OaGR/3RtQlpSspJ8FCtXHpnzhO+CAToy6caQd+d5gXVJWeTDa1z6N5o/tzc2kBfH/5OJ
-	QUuPzaZGVY+456VUIkgvd0g5HwZDhbJUyg6nG
-X-Google-Smtp-Source: AGHT+IFv2cxTvpXCT+49NkRd97zHBHted2CkY5x40KNi6RQ0dDUdJEnI2MaMNyE+sAvAT7rdeUDrltASTg+VIbso40I=
-X-Received: by 2002:a5d:4649:0:b0:368:557a:c64d with SMTP id
- ffacd0b85a97d-36d273c5c0emr96170f8f.9.1723075042625; Wed, 07 Aug 2024
- 16:57:22 -0700 (PDT)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sbtDW-0006ef-95; Wed, 07 Aug 2024 22:49:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1sbtDV-0006dx-Qd; Wed, 07 Aug 2024 22:49:29 -0400
+Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1sbtDT-0008AE-9y; Wed, 07 Aug 2024 22:49:29 -0400
+Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
+ (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.12; Thu, 8 Aug
+ 2024 10:49:16 +0800
+Received: from localhost.localdomain (192.168.10.10) by TWMBX01.aspeed.com
+ (192.168.0.62) with Microsoft SMTP Server id 15.2.1258.12 via Frontend
+ Transport; Thu, 8 Aug 2024 10:49:16 +0800
+To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
+ <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
+ <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
+ Stanley" <joel@jms.id.au>, Cleber Rosa <crosa@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>, "Wainer dos
+ Santos Moschetta" <wainersm@redhat.com>, Beraldo Leal <bleal@redhat.com>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC
+ here" <qemu-devel@nongnu.org>
+CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
+ <yunlin.tang@aspeedtech.com>
+Subject: [PATCH v2 00/11] support I2C for AST2700
+Date: Thu, 8 Aug 2024 10:49:05 +0800
+Message-ID: <20240808024916.1262715-1-jamin_lin@aspeedtech.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-References: <20240805201719.2345596-1-tavip@google.com> <20240805201719.2345596-23-tavip@google.com>
- <a37a5291-5917-45e6-8697-08defb97ac29@linaro.org>
-In-Reply-To: <a37a5291-5917-45e6-8697-08defb97ac29@linaro.org>
-From: Octavian Purdila <tavip@google.com>
-Date: Wed, 7 Aug 2024 16:57:11 -0700
-Message-ID: <CAGWr4cRcQhQw-5QFga3-KDbBby_3mW-p2wKSd4iy7xHzw3-boQ@mail.gmail.com>
-Subject: Re: [RFC PATCH 22/23] hw/arm: add basic support for the RT500 SoC
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, stefanst@google.com, 
-	pbonzini@redhat.com, alex.bennee@linaro.org, thuth@redhat.com, 
-	peter.maydell@linaro.org, marcandre.lureau@redhat.com, alistair@alistair23.me, 
-	berrange@redhat.com, jsnow@redhat.com, crosa@redhat.com, bleal@redhat.com
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: 9ahGOMFOkJUI
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=211.20.114.72;
+ envelope-from=jamin_lin@aspeedtech.com; helo=TWMBX01.aspeed.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_FAIL=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
+From:  Jamin Lin via <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: r+B9iH2dRopV
 
-On Tue, Aug 6, 2024 at 7:51=E2=80=AFAM Philippe Mathieu-Daud=C3=A9 <philmd@=
-linaro.org> wrote:
->
-> Hi Octavian,
->
-> Few comments inlined.
->
+v1:
+- support I2C for AST2700
 
-Hi Philippe,
+v2:
+- fix review issues and add reviewer suggestion
+- update avocado test case for AST2700 I2C
+- support i2c bus pool
 
-Thank you for the review!
+A. pool_gap_size and reg_gap_size need to be discussion.
+B. aspeed_soc_ast2700_get_irq, aspeed_soc_ast2700_get_intc_orgate
+ and sc->get_irq function pointer need to be discussion.
 
-I have queued fixes for all of the patches in the set where
-applicable, I'll wait for more feedback on the rest of the patches
-before sending v2.
+Jamin Lin (11):
+  hw/i2c/aspeed: support discontinuous register memory region of I2C bus
+  hw/i2c/aspeed: introduce a new bus pool buffer attribute in
+    AspeedI2Cbus
+  hw/i2c/aspeed: support discontinuous poll buffer memory region of I2C
+    bus
+  hw/i2c/aspeed: introduce a new dma_dram_offset attribute in
+    AspeedI2Cbus
+  hw/i2c/aspeed: Add AST2700 support
+  hw/i2c/aspeed: support Tx/Rx buffer 64 bits address
+  hw/i2c/aspeed: support high part dram offset for DMA 64 bits
+  aspeed/soc: introduce a new API to get the INTC orgate information
+  aspeed/soc: support I2C for AST2700
+  aspeed: add tmp105 in i2c bus 0 for AST2700
+  machine_aspeed.py: update to test I2C for AST2700
+
+ hw/arm/aspeed.c                 |  10 ++
+ hw/arm/aspeed_ast27x0.c         |  53 ++++++
+ hw/i2c/aspeed_i2c.c             | 310 ++++++++++++++++++++++++++++----
+ include/hw/i2c/aspeed_i2c.h     |  28 ++-
+ tests/avocado/machine_aspeed.py |  16 ++
+ 5 files changed, 370 insertions(+), 47 deletions(-)
+
+-- 
+2.34.1
+

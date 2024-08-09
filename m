@@ -1,228 +1,219 @@
-Received: by 2002:a17:504:7fd7:b0:1be9:327d:8ee3 with SMTP id hj23csp793957njc;
-        Fri, 9 Aug 2024 01:42:45 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCVHviEg7bV/9ziNDNWNKkJk7hdqPDiIkkKDynNkgUtPCDFt3B+eWekNsc2x3iSoZep7pKziy78+2qZIdWGTU8cIbVMjwfEs
-X-Google-Smtp-Source: AGHT+IHrNASflkF29scdf0s8/vQwGv9Ze1apX8Q+XGfL21oyFxjW4g5N2God6VWUNEdk4foj+chp
-X-Received: by 2002:a05:6a21:9211:b0:1c6:b0cc:c448 with SMTP id adf61e73a8af0-1c8a011f902mr1140856637.43.1723192965308;
-        Fri, 09 Aug 2024 01:42:45 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1723192965; cv=pass;
+Received: by 2002:a17:504:7fd7:b0:1be9:327d:8ee3 with SMTP id hj23csp798812njc;
+        Fri, 9 Aug 2024 02:04:13 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCXzlxHDNAPqu1wmnMRj59V8znrcudenkjizFWqV+m3r1QIajvk7IeZTpdTNjr/4XAC2TQaSxxyX1KMQ7zix/IvyTTg6Y71T
+X-Google-Smtp-Source: AGHT+IHMaEm9me/2/OaRyXgORdAX7NsHCSnL3tIpVD4WeGPlNDIxWGLOFie3Q+qKPeYuvfDLVd3C
+X-Received: by 2002:a05:6214:4604:b0:6b7:a182:4130 with SMTP id 6a1803df08f44-6bd78e7f61cmr11416556d6.49.1723194253047;
+        Fri, 09 Aug 2024 02:04:13 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1723194253; cv=pass;
         d=google.com; s=arc-20160816;
-        b=lkePBukxmJWUq/EGHU4KMvS3Md2G4IMXekw7raKJ01TIU4QDNLjs5Ld6vej1+XwfeV
-         LtF4W7UNYaLafreyKpUMXrHwYO1h0pC0YBVtTUty10DaT8C8GsZ3YXhZuZzXtwsmed4c
-         DBPf9HCla5kzrlfi8nD0ckOuEvf/cfbXdhS2mawR6UBxVeltLW8DQTT+MEwV7+oi97+L
-         nsf4QxODsQYTIqMbK69frZtwXXrtLMEZr4xGEWQ/6tgewOWu2BECttKby/cQ1e8XUFuk
-         LNKdxoTL4A9SYWdB4a/9ZF5PmtKNCyYMyjLPvvP52/FvmWyvsWtFKJMNfrIS6ccP2I1f
-         81mg==
+        b=0nNoFjL4NvOCSkFYhUrjCKJf9IqyMBl0bWolJLS/e/SvkBiIxHw26mZ/zlvigHEaoH
+         2xBf2sIJgE6N9fgzhZza9HeD7t3gBG+K1GeP9ToNDA/dfKoSKVwaKxp/wfhmoRd1BOWn
+         E9JpLu1SSqIIwd+EzO3v6KYTHmMRFXiPUoL6TQZw2/2edG7URyS5n3Qzr1LrtUx9bvqo
+         A/eg6rGHVe3rx4KndzFKHRBAXxdYO+nLmbf3WtTbH7C/w6mB76OyHVqf1s2ui968tSAx
+         XT0rveeK/FjTZttxwdy1Su9uTBoEnpbBp7B8lcvymo/2jJQA4Rm4jPfbynWL8PpztVaB
+         SwOg==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=bp05H5iSfHSnfKL4gF4heH/TzB9AzkNMWtaOqX9lqNc=;
-        fh=w7RhJmNBrNW7T/802fVRhgJ7eRKnYvAIZ8P5gwEiwy0=;
-        b=Ce6SdL5zgUclzFPpolgaMETB8TCqo0AM1i/r8+yEAuNS8lzY7bTyQsGjru1ltIxUR3
-         rmCnWlvOqwCCNlC+Vz9NG6z8EUD5T4HCEayAwpjgV6RXmOo1fUv8Uit2iqGzaE8fqg+b
-         pXsqfYRjnRnQ5NKZqpibdHmTWznbBnIlw+2yw1MJaK1gqkfcbW+63w3Qj0uwePQHW+Le
-         EH8HdRTdkQiYpmZ4QHtaU3zHVPY8XlalLsVRMWSJMhmrAl754SbYlSbFZfqwiEkQ2lTa
-         W/5Ye/sPhEvKwDOCyAOCi+ogb6qcBFqJXxEYkSwLJ3DlkfoNRHsqK6yAwnLFyCmWShpB
-         0GSg==;
+        h=mime-version:list-unsubscribe:list-subscribe:list-id:precedence
+         :user-agent:message-id:date:references:in-reply-to:subject:cc:to
+         :from:dkim-signature;
+        bh=XET1oSFvQl4264GUGqTzYsP7+4ofJLFq0ARdUYsJBcI=;
+        fh=9d9LUHUzamZYFYq8p6kugTwVQZUR/+Tl4v7ouymNtkE=;
+        b=cmIzJ3QFHewaKk4rm6ua02VRLFsaQi46TxI5Wln0VJEekprm4FluqO+ZcH1eOMHex2
+         h9ix70nIt6ePKcaVpQyEgBvPpeuw60lA0LlOIx0qI1c+OTyPuNiUdYp7NSXfp1Nqjd3G
+         QDcfPq2sp807EM2TWIzKZqTW3J4OP5rF3gdIO+jSPULpn5dBXxwGXliOIxH3FVoaCiTq
+         FvXXJWh94rSmpt8pb/jVDyW29STB9LeokIXx9BKNqd1hsiP3QmTiAuMraR45IGjKDufv
+         NHr4Y75EwRhMrk/QX8WUOKGDZrbbjdmCrgYgcvpszoYRti4/zoBbrWT2eCU9BqQuoUoH
+         OMvA==;
         dara=google.com
 ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=pjt10ljt;
-       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
-       spf=pass (google.com: domain of linux-kernel+bounces-280589-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-280589-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
-Return-Path: <linux-kernel+bounces-280589-alex.bennee=linaro.org@vger.kernel.org>
-Received: from sy.mirrors.kernel.org (sy.mirrors.kernel.org. [2604:1380:40f1:3f00::1])
-        by mx.google.com with ESMTPS id 41be03b00d2f7-7c109c9ab7csi3433029a12.459.2024.08.09.01.42.44
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="DdND/p2k";
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of kvm+bounces-23685-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="kvm+bounces-23685-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kvm+bounces-23685-alex.bennee=linaro.org@vger.kernel.org>
+Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [2604:1380:45d1:ec00::1])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6bbbb8ed798si66343616d6.329.2024.08.09.02.04.12
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 09 Aug 2024 01:42:45 -0700 (PDT)
-Received-SPF: pass (google.com: domain of linux-kernel+bounces-280589-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) client-ip=2604:1380:40f1:3f00::1;
+        Fri, 09 Aug 2024 02:04:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm+bounces-23685-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) client-ip=2604:1380:45d1:ec00::1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=pjt10ljt;
-       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
-       spf=pass (google.com: domain of linux-kernel+bounces-280589-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-280589-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="DdND/p2k";
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of kvm+bounces-23685-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="kvm+bounces-23685-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by sy.mirrors.kernel.org (Postfix) with ESMTPS id 3143DB22B03
-	for <alex.bennee@linaro.org>; Fri,  9 Aug 2024 08:42:43 +0000 (UTC)
+	by ny.mirrors.kernel.org (Postfix) with ESMTPS id AF58A1C211EA
+	for <alex.bennee@linaro.org>; Fri,  9 Aug 2024 09:04:12 +0000 (UTC)
 Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 1459B18E028;
-	Fri,  9 Aug 2024 08:42:32 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 83F5818E056;
+	Fri,  9 Aug 2024 09:04:09 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="pjt10ljt"
-Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
+	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="DdND/p2k"
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C4C5012FB34
-	for <linux-kernel@vger.kernel.org>; Fri,  9 Aug 2024 08:42:31 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=10.30.226.201
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4FC87BA41
+	for <kvm@vger.kernel.org>; Fri,  9 Aug 2024 09:04:07 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.133.124
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1723192951; cv=none; b=Z1rRGEO5Egiend6xaHecbmAS1UohtYFEPZY/8CH/ztX2EuySyrkzHSftWZe01A7miRwhtAlkwNFaX2Lkal6AQMdlXdzPbXObdkHkxHrhHUDFpa8/itfJQD6xolXmdCzJlJzkdT0nnr2jRv79jx5DqR54LuZ/+XRzGtPY3VTcVRc=
+	t=1723194249; cv=none; b=AgxNYPt0T7QKNc8OjR9NLmYTZBtVysfhdR9TWr9AKqdZGhH5TTnp9IiFqe3xp/MHzoi/UWWxquPBKNfttwf4/2hcyBuIGANMzhM/o6Wn4GV+DZDeI+0lnggL0y3gJxh2F1L+zzFbKWQRY2MLkVuSsvEC6dbcqX2LJIustWvm9YI=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1723192951; c=relaxed/simple;
-	bh=1tsZLQjJ+/fNUeon+ajhVtnb6LzjfZ7DnmB0JqRBQpU=;
-	h=Date:From:To:Cc:Subject:Message-ID:In-Reply-To:References:
-	 MIME-Version:Content-Type; b=cV+6N5API1qQxFP/ljMMA+YgkQTRBQFaH90pI1jY0rvVbehmb9CBA73edeQ6iS7FG/CopgRW/b8vWpAaBH19iwMH2+AvhjFxi8XgXIzw/Yb3IxpBHvVNzKP+pzoIArrK2v66wMGHR/iJ2y96Vomh7KHPyVqPsiARcDGhOM1TE1w=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=pjt10ljt; arc=none smtp.client-ip=10.30.226.201
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 017D0C32782;
-	Fri,  9 Aug 2024 08:42:27 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1723192951;
-	bh=1tsZLQjJ+/fNUeon+ajhVtnb6LzjfZ7DnmB0JqRBQpU=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=pjt10ljtMIzBL7WTMVTf2vq2wQt+XFouPEJhyGzCaGZmvMTgvNLlCwP++mF4jzniH
-	 m3r7rrfDwwFAY2tZfHktrdq4ITz94BPcNtZi9woWL0wTF7L4HPeb88ZYuIDt7vbEyr
-	 kQYd52ZSS5vqP6CN8PXovowChsiX5a12HbI7aoL5RaYH8M5xwIXYJKEcrvqxVhqw9X
-	 42bYb1HU58IFS2UXtTcauaIkVEXrvoi/zChzPKa+CX74809NmkkCTiEce0KnxDWeHo
-	 tw6RXc+3hKmKdOuRulvhXkt59tj4jkxNM+X9Le1pG5N0wjEUHEp3MkPc6O5ZFg4mHP
-	 /a/x7T038y7GQ==
-Date: Fri, 9 Aug 2024 10:42:22 +0200
-From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-To: Markus Armbruster <armbru@redhat.com>
-Cc: Igor Mammedov <imammedo@redhat.com>, Jonathan Cameron
- <Jonathan.Cameron@huawei.com>, Shiju Jose <shiju.jose@huawei.com>, "Michael
- S. Tsirkin" <mst@redhat.com>, Ani Sinha <anisinha@redhat.com>, Dongjiu Geng
- <gengdongjiu1@gmail.com>, Eric Blake <eblake@redhat.com>, Michael Roth
- <michael.roth@amd.com>, Paolo Bonzini <pbonzini@redhat.com>, Peter Maydell
- <peter.maydell@linaro.org>, linux-kernel@vger.kernel.org,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [PATCH v5 5/7] qapi/ghes-cper: add an interface to do generic
- CPER error injection
-Message-ID: <20240809104222.08d197cb@foz.lan>
-In-Reply-To: <87ikwbrs2o.fsf@pond.sub.org>
-References: <cover.1722634602.git.mchehab+huawei@kernel.org>
-	<51cbdc8a53e58c69ee17b15c398feeeeeeb64f34.1722634602.git.mchehab+huawei@kernel.org>
-	<87v80b1jqe.fsf@pond.sub.org>
-	<20240808161141.5ffe730e@foz.lan>
-	<20240808162205.3a85efb6@imammedo.users.ipa.redhat.com>
-	<87ikwbrs2o.fsf@pond.sub.org>
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
+	s=arc-20240116; t=1723194249; c=relaxed/simple;
+	bh=1lYBxYmj0yP3L5nl4vsLslkpwynKSXWgXkQxvcQasvg=;
+	h=From:To:Cc:Subject:In-Reply-To:References:Date:Message-ID:
+	 MIME-Version:Content-Type; b=d+HxLeSgGuPw1GtwWc3gKWfDR5XqKHeJM28H9eib5Lox52VVEUxoOueNeus9c0sKtywn7wiNX+84UW6xys5v/lvOwrVo2vKlex4qLFiHI2yZYg1SyykzKNclFm61h1RIDOUv0zaIDLM96ALSU/MAQnlSeIl4MUp6n1Q+y0v1h+Y=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=DdND/p2k; arc=none smtp.client-ip=170.10.133.124
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1723194246;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=XET1oSFvQl4264GUGqTzYsP7+4ofJLFq0ARdUYsJBcI=;
+	b=DdND/p2khwVJ+jHP4mTphFpBNzhnzaqsFSil98yb79y8lYaYc3ZXEPpGNaM3lmFNo6f+Td
+	6OstYnAzOYuyDhYlWGYYckIostJE3awUUKzYxiLcUHTl4zPEQEEuyw3F1gq21qouhaBu6K
+	/g0cSiGwDOyXrJelO8oRVaQALEttCKc=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-266-kkpEvW6XP1K4uU7bnbTbkg-1; Fri,
+ 09 Aug 2024 05:04:04 -0400
+X-MC-Unique: kkpEvW6XP1K4uU7bnbTbkg-1
+Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 842DF19772EE;
+	Fri,  9 Aug 2024 09:03:56 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.39.193.245])
+	by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 21FCD300019F;
+	Fri,  9 Aug 2024 09:03:47 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id D3A9F21E668B; Fri,  9 Aug 2024 11:03:44 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Kevin Wolf <kwolf@redhat.com>
+Cc: qemu-devel@nongnu.org,  alex.williamson@redhat.com,
+  andrew@codeconstruct.com.au,  andrew@daynix.com,
+  arei.gonglei@huawei.com,  berrange@redhat.com,  berto@igalia.com,
+  borntraeger@linux.ibm.com,  clg@kaod.org,  david@redhat.com,
+  den@openvz.org,  eblake@redhat.com,  eduardo@habkost.net,
+  farman@linux.ibm.com,  farosas@suse.de,  hreitz@redhat.com,
+  idryomov@gmail.com,  iii@linux.ibm.com,  jamin_lin@aspeedtech.com,
+  jasowang@redhat.com,  joel@jms.id.au,  jsnow@redhat.com,
+  leetroy@gmail.com,  marcandre.lureau@redhat.com,
+  marcel.apfelbaum@gmail.com,  michael.roth@amd.com,  mst@redhat.com,
+  mtosatti@redhat.com,  nsg@linux.ibm.com,  pasic@linux.ibm.com,
+  pbonzini@redhat.com,  peter.maydell@linaro.org,  peterx@redhat.com,
+  philmd@linaro.org,  pizhenwei@bytedance.com,  pl@dlhnet.de,
+  richard.henderson@linaro.org,  stefanha@redhat.com,
+  steven_lee@aspeedtech.com,  thuth@redhat.com,  vsementsov@yandex-team.ru,
+  wangyanan55@huawei.com,  yuri.benditovich@daynix.com,
+  zhao1.liu@intel.com,  qemu-block@nongnu.org,  qemu-arm@nongnu.org,
+  qemu-s390x@nongnu.org,  kvm@vger.kernel.org
+Subject: Re: [PATCH 01/18] qapi: Smarter camel_to_upper() to reduce need for
+ 'prefix'
+In-Reply-To: <ZqoHWPOeqF7uGncx@redhat.com> (Kevin Wolf's message of "Wed, 31
+	Jul 2024 11:43:52 +0200")
+References: <20240730081032.1246748-1-armbru@redhat.com>
+	<20240730081032.1246748-2-armbru@redhat.com>
+	<ZqoHWPOeqF7uGncx@redhat.com>
+Date: Fri, 09 Aug 2024 11:03:44 +0200
+Message-ID: <87y156kqz3.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13)
 Precedence: bulk
-X-Mailing-List: linux-kernel@vger.kernel.org
-List-Id: <linux-kernel.vger.kernel.org>
-List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+List-Id: <kvm.vger.kernel.org>
+List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-TUID: s0LN0LRH6kEr
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
+X-TUID: INJqD43JKZxY
 
-Em Thu, 08 Aug 2024 16:45:51 +0200
-Markus Armbruster <armbru@redhat.com> escreveu:
+Kevin Wolf <kwolf@redhat.com> writes:
 
-> Igor Mammedov <imammedo@redhat.com> writes:
-> 
-> > On Thu, 8 Aug 2024 16:11:41 +0200
-> > Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
-> >  
-> >> Em Thu, 08 Aug 2024 10:50:33 +0200
-> >> Markus Armbruster <armbru@redhat.com> escreveu:
-> >>   
-> >> > Mauro Carvalho Chehab <mchehab+huawei@kernel.org> writes:    
-> >>   
-> >> > > diff --git a/MAINTAINERS b/MAINTAINERS
-> >> > > index 98eddf7ae155..655edcb6688c 100644
-> >> > > --- a/MAINTAINERS
-> >> > > +++ b/MAINTAINERS
-> >> > > @@ -2075,6 +2075,13 @@ F: hw/acpi/ghes.c
-> >> > >  F: include/hw/acpi/ghes.h
-> >> > >  F: docs/specs/acpi_hest_ghes.rst
-> >> > >  
-> >> > > +ACPI/HEST/GHES/ARM processor CPER
-> >> > > +R: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-> >> > > +S: Maintained
-> >> > > +F: hw/arm/ghes_cper.c
-> >> > > +F: hw/acpi/ghes_cper_stub.c
-> >> > > +F: qapi/ghes-cper.json
-> >> > > +      
-> >> > 
-> >> > Here's the reason for creating a new QAPI module instead of adding to
-> >> > existing module acpi.json: different maintainers.
-> >> > 
-> >> > Hypothetical question: if we didn't care for that, would this go into
-> >> > qapi/acpi.json?    
-> >> 
-> >> Independently of maintainers, GHES is part of ACPI APEI HEST, meaning
-> >> to report hardware errors. Such hardware errors are typically handled by 
-> >> the host OS, so quest doesn't need to be aware of that[1].
-> >> 
-> >> So, IMO the best would be to keep APEI/HEST/GHES in a separate file.
-> >> 
-> >> [1] still, I can foresee some scenarios were passing some errors to the
-> >>     guest could make sense.
-> >>   
-> >> > 
-> >> > If yes, then should we call it acpi-ghes-cper.json or acpi-ghes.json
-> >> > instead?    
-> >> 
-> >> Naming it as acpi-ghes,acpi-hest or acpi-ghes-cper would equally work
-> >> from my side.  
-> >
-> > if we going to keep it generic, acpi-hest would do  
-> 
-> Works for me.
+> Am 30.07.2024 um 10:10 hat Markus Armbruster geschrieben:
+>> camel_to_upper() converts its argument from camel case to upper case
+>> with '_' between words.  Used for generated enumeration constant
+>> prefixes.
+>> 
+>> When some of the words are spelled all caps, where exactly to insert
+>> '_' is guesswork.  camel_to_upper()'s guesses are bad enough in places
+>> to make people override them with a 'prefix' in the schema.
+>> 
+>> Rewrite it to guess better:
+>> 
+>> 1. Insert '_' after a non-upper case character followed by an upper
+>>    case character:
+>> 
+>>        OneTwo -> ONE_TWO
+>>        One2Three -> ONE2_THREE
+>> 
+>> 2. Insert '_' before the last upper case character followed by a
+>>    non-upper case character:
+>> 
+>>        ACRONYMWord -> ACRONYM_Word
+>> 
+>>    Except at the beginning (as in OneTwo above), or when there is
+>>    already one:
+>> 
+>>        AbCd -> AB_CD
+>
+> Maybe it's just me, but the exception "at the beginning" (in the sense
+> of "after the first character") seems to be exactly where I thought
+> "that looks strange" while going through your list below.
 
-Ok, I'll do the rename. With regards to the files implementing
-support for it: 
+By "except at the beginning", I mean don't map "One" to "_ONE".
 
-	hw/acpi/ghes_cper.c
-	hw/acpi/ghes_cper_stub.c
+>                                                           In particular,
+> I'd expect X_DBG_* instead of XDBG_*.
 
-I guess there's no need to rename them, right? IMO such names
-are better than acpi/hest.c, specially since the actual implementation
-for HEST is inside acpi/ghes.c.
+What's the intent of the X in the XDbgFOO types?  Signify unstable?
 
-> 
-> >> > >  ppc4xx
-> >> > >  L: qemu-ppc@nongnu.org
-> >> > >  S: Orphan      
-> >> > 
-> >> > [...]
-> >> >     
-> >> > > diff --git a/qapi/ghes-cper.json b/qapi/ghes-cper.json
-> >> > > new file mode 100644
-> >> > > index 000000000000..3cc4f9f2aaa9
-> >> > > --- /dev/null
-> >> > > +++ b/qapi/ghes-cper.json
-> >> > > @@ -0,0 +1,55 @@
-> >> > > +# -*- Mode: Python -*-
-> >> > > +# vim: filetype=python
-> >> > > +
-> >> > > +##
-> >> > > +# = GHESv2 CPER Error Injection
-> >> > > +#
-> >> > > +# These are defined at
-> >> > > +# ACPI 6.2: 18.3.2.8 Generic Hardware Error Source version 2
-> >> > > +# (GHESv2 - Type 10)
-> >> > > +##      
-> >> > 
-> >> > Feels a bit terse.  These what?
-> >> > 
-> >> > The reference could be clearer: "defined in the ACPI Specification 6.2,
-> >> > section 18.3.2.8 Generic Hardware Error Source version 2".  A link would
-> >> > be nice, if it's stable.    
-> >> 
-> >> I can add a link, but only newer ACPI versions are hosted in html format
-> >> (e. g. only versions 6.4 and 6.5 are available as html at uefi.org).  
-> >
-> > some years earlier it could be said 'stable link' about acpi spec hosted
-> > elsewhere. Not the case anymore after umbrella change.
-> >
-> > spec name, rev, chapter worked fine for acpi code (it's easy to find wherever spec is hosted).
-> > Probably the same would work for QAPI, I'm not QAPI maintainer though,
-> > so preffered approach here is absolutely up to you.  
-> 
-> A link is strictly optional.  Stable links are nice, stale links are
-> annoying.  Mauro, you decide :)
+If yes: we don't do that elsewhere.  Type names are not part of the
+external interface.  We never used an X prefix for names of unstable
+types.  We use an x- prefix for names of unstable commands, arguments
+and members, but even that is optional today.  Feature flag @unstable is
+the source of truth.
 
-Well, I guess I'll add a link then, keeping it in text mode as well.
+The XDbgFOO appear to be used just by x-debug-query-block-graph, which
+has feature @unstable.
 
-Changing umbrella is something that doesn't happen too often. Hopefully 
-those will stay for a long time, if not forever, under uefi.org. 
+If the XDBG name bothers you, we can strip the X prefix from the type
+names.  Happy to do that in this series.
 
-If not, we can always drop the link.
+>                                       I also thought that the Q_*
+> spelling made more sense, though this might be less clear.
 
-Thanks,
-Mauro
+The crypto subsystem spells its prefix qcrypto_, QCRYPTO_, and QCrypto.
+Before this series, it forces QAPI to generate QCRYPTO_ with 'prefix'
+with two exceptions, probably oversights.
+
+>                                                            But in case
+> of doubt, less exceptions seems like a good choice.
+
+Agree.  I want to be able to predict generated names :)
+
+>> +    # Copy remainder of ``value`` to ``ret`` with '_' inserted
+>> +    for ch in value[1:]:
+>> +        if ch.isupper() == upc:
+>> +            pass
+>> +        elif upc:
+>> +            # ``ret`` ends in upper case, next char isn't: insert '_'
+>> +            # before the last upper case char unless there is one
+>> +            # already, or it's at the beginning
+>> +            if len(ret) > 2 and ret[-2] != '_':
+>> +                ret = ret[:-1] + '_' + ret[-1]
+>
+> I think in the code this means I would have expected len(ret) >= 2.
+
+I'm not sure I understand what you mean.
+
+With len(ret) > 2, we map "QType" to "QTYPE".
+
+With len(ret) >= 2, we'd map it to "Q_TYPE".
+

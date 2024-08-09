@@ -1,248 +1,229 @@
-Received: by 2002:a17:504:7fd7:b0:1be9:327d:8ee3 with SMTP id hj23csp811764njc;
-        Fri, 9 Aug 2024 03:02:08 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVTyTJFs1ZsQm7ohwGwYDz/IIzoHbMdy8Ju+N0wlVLMIXRnHPPPRRubTpXw4JC16ZEWvrVEP2GbANK0Xpt25OEfr11foCai
-X-Google-Smtp-Source: AGHT+IFOXymGPqmtNVLku3RlJS44lFxheQzmZSFCeqmKKc45TXaqLdWTZesHuC7yPhVzFqYLbcxO
-X-Received: by 2002:a05:620a:288c:b0:7a2:a1d:c0f7 with SMTP id af79cd13be357-7a4c17b6b86mr101299685a.16.1723197728669;
-        Fri, 09 Aug 2024 03:02:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1723197728; cv=none;
+Received: by 2002:a17:504:7fd7:b0:1be9:327d:8ee3 with SMTP id hj23csp852515njc;
+        Fri, 9 Aug 2024 05:24:59 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWmDzPRKGltIIi+szpv29ulyO7G/x7+xmM1oZiT5Vlw9iuv8oxrIE+nr/YOfyuhQOfoul2meuhe91rUCwUwBfu8iqecCjZA
+X-Google-Smtp-Source: AGHT+IG7NGz4FdHxdxomyLhfE9kuMjujf1SgoogMeqGYtniP5Hceo66DfkR4vtrZ3zey8Pbd18Ii
+X-Received: by 2002:a05:6214:4b01:b0:6b0:774b:38c2 with SMTP id 6a1803df08f44-6bd78d84bd2mr18143016d6.6.1723206299454;
+        Fri, 09 Aug 2024 05:24:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1723206299; cv=none;
         d=google.com; s=arc-20160816;
-        b=C9dzZKnvs8Cv2FJeraJryaJFZqtZWqJBk+rPVWtdoXsIgIBf09wEeFTN4N8lobd3BW
-         jDsOZABJRcGXmCjj9H13sYVwziUoJRmmSvYr+aHfrRmzoCugy18dealHuhndmccA3Ygp
-         dOcvzbViO8n75BBfhdHieYezqsdmYoVacv05NZ4wSRTupNf35VqlwLCV8vYvjladn+yG
-         1B1A8Qv5jLWxSr/GQqujMDijbVqlMR8SPWvU/GQyufBJQ72cu7hlWVGuAdcGLO1zdHVz
-         ZKa7DiUIpWgCj+GdUBOE3oodUjyaIE0ioKeUI5jZPgIbUK3T0+2LmH/eWU6NKxZnZQTJ
-         pj4w==
+        b=BPgfA6GMECSVNgx6gjzul2dJM7rxYFmlQl5uGoiQtA7IYcCyDP7hiumzIaGEtm5/FU
+         nfPs1jvXKv3eYOndNCmqKO3vaChAO8JgvpaAEFxM3Pf1xh4tud7jPdeSUOXO1CHNtoBD
+         6FCE6dC/kys9yxHf1HdgWxfMLBnxbgJS9h6HqYI6UYJKY0uW+BXNSGkVWK/s46klCFXZ
+         mfVqsvsr80DsrOZM5aFaYpmGcyDevhz8L54u9vsDR8SobSkStuBXfsRjGr7CO5ZisVwN
+         JJx/ga4l6xhlnpS+hanleX1xlgRsNq/B/KzcCuKLeTI2lOZfavTFuQczme8iTwS7I3oq
+         YovA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:references:cc:to:from:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=bqTlc/7r7TFzilI+jp6vUYVKeFD/MTyOpFCRYa4eILk=;
-        fh=XX+dgkgF1NhCVN+iBAG+rOLypjsAs0LmRKXD2YPrEGE=;
-        b=fgNpq8SP1XMfSgcWDTYrZX6UdB8ODcryo/qebOOMAnyHtoqg4DazoslJG6QjhAlduu
-         UI33p0DOLxlHDg16IPSQD8OiN0vsW4sUVUc/zSyGb5DW7L8Cr51jsIjywsnVVjKN2Av1
-         vZSKjCTdLyrG9P1t3iNAwbXv5fXzdxdXVsaQt7Jz6W/49uSQqyEzBRAwK0YFpUjYjT9r
-         B7XrPh4gPdU6AH0/aIaf83cp9GCmRv8pBV1okPS3uDztHURBjy4LFaan3sjgK3jAlA8q
-         +FdPLRsCeUZbl9Fw+WiY4XC1T7dPBgvg/H1C3Ves65uQ20RR4GEcA7GLkBzeG9a8a+en
-         WHTg==;
+        h=mime-version:user-agent:message-id:date:references:in-reply-to
+         :subject:cc:to:from:dkim-signature;
+        bh=UOwA4QbVkDmvqf7etn9t7Ds166wZBQN7pf+VdSr6FkM=;
+        fh=YtMdrrrL4AdjARoXd5Fxw8LjXJzXSJRO9dQYlO5BjO8=;
+        b=x5tKnxA73CPQ9s0IZItUXjoYe59k4Rayde6lRL/Z4fZ5igjjU9y1Fuw9sxZNwcvXvp
+         GCG8IAo98QHuB18KR+NTqAkaWyixyZ8jOH5bduoXTzCnFRTTHaGzM1ZRdOG4kXnnfX3s
+         S3ibIKj3IOZnsI4i/qMD9bd38aw3Q7rZfP36ZGQf9fuiOnXt5CBEyRCWUnyTrBOYIEeC
+         2ZINb1Hm7e42TfvA+NhY/nPgDs0OdQDDPpIUAIMzsDrKEffL083g1Kemig9i0Hb2b3GA
+         sHLkgHqq0Qj8TTkpV0s34X/hHFjUq85iOK+HBaDG2DEikhYAWbpR6mYBY3zjeRnb2lOU
+         CYEw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=KSrAf8BJ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RpkMOJiq;
+       spf=pass (google.com: domain of armbru@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=armbru@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7a378805fefsi644068385a.244.2024.08.09.03.02.08
+Return-Path: <armbru@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6bbbb8f46bbsi70702486d6.412.2024.08.09.05.24.59
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 09 Aug 2024 03:02:08 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 09 Aug 2024 05:24:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of armbru@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=KSrAf8BJ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RpkMOJiq;
+       spf=pass (google.com: domain of armbru@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=armbru@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1scMRQ-0005v6-8g; Fri, 09 Aug 2024 06:01:48 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1scMRN-0005k3-Do
- for qemu-arm@nongnu.org; Fri, 09 Aug 2024 06:01:45 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1scMRL-0004CA-ON
- for qemu-arm@nongnu.org; Fri, 09 Aug 2024 06:01:45 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1723197702;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=bqTlc/7r7TFzilI+jp6vUYVKeFD/MTyOpFCRYa4eILk=;
- b=KSrAf8BJNyZxIZMRDc6w1RVH+3XkkDxtFokwcynNT3uypjf+bb/BCA/JNVv9OlhDCDAVRY
- g5yVpcXVPm9Yqvw5TqwsNWKFkqbuOlA48PU9vfpLMl1S/Qe5j/i4JCK3cJMcvr8IYTs1Zq
- jBylB2t982Bgd80XgK9/GRg4OCL15Ww=
-Received: from mail-pl1-f199.google.com (mail-pl1-f199.google.com
- [209.85.214.199]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-682-bExV4k5oMdGW1anWl7xFkg-1; Fri, 09 Aug 2024 06:01:41 -0400
-X-MC-Unique: bExV4k5oMdGW1anWl7xFkg-1
-Received: by mail-pl1-f199.google.com with SMTP id
- d9443c01a7336-1fc6f3ac7beso19262495ad.1
- for <qemu-arm@nongnu.org>; Fri, 09 Aug 2024 03:01:41 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1723197700; x=1723802500;
- h=content-transfer-encoding:in-reply-to:content-language:references
- :cc:to:from:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=bqTlc/7r7TFzilI+jp6vUYVKeFD/MTyOpFCRYa4eILk=;
- b=MXuiEsTAfDIy2ZgOB0Onm9gyAn7ZJCtJOJkg36J+jfBrEUWCs45yA/1o4WbSetwJuV
- ybDDxS7Vl+Vvw+Y+0h9FyU7Lw73HwBNFiampwHzIzZUODPXvYlxwrvHfNCKqwx3YTllg
- UxRrUoHTbZyOdHKmqa866blA/lLTFRxcdvpE80NI8O5VxcB83sw5uTU2M5XbgOCejkUo
- Uk8Qs2ZbMy+f2fw0kkrYpdGL/aAGkYIqblgxee15iCb+WqKOqUKsCCGP2QXpPPOdvPtr
- HJQ9uImQ66retIry2QBWLTwpPXOAWxFLXb2N8onMzfmB3boM/I4rado7LjQGlDenn3PJ
- fxgw==
-X-Gm-Message-State: AOJu0Yw1H7NpggB+GedH5qGTHIf/RkmOsT4QwuTrunAzMxucBQ7Em9Sh
- nh7qUJkAY9DZtHcMhvXLw/jUKVLofdWCB0ZNx2ZrPg3bzaR6z5W/M8xklyoZelLRkhxBzJACWY9
- NaSCEasH+0ric5brW/y6EejW6dVgDxOC/gxj1zVAzEen3buLXPgFeSR0B9Kf9zRlkin1AVkC58t
- FBwLJrLU0hCk8rSXNIlfD9rux0AHQS5g==
-X-Received: by 2002:a17:902:f54b:b0:1fd:9e6e:7c10 with SMTP id
- d9443c01a7336-200ae5e68e8mr7184005ad.41.1723197699554; 
- Fri, 09 Aug 2024 03:01:39 -0700 (PDT)
-X-Received: by 2002:a17:902:f54b:b0:1fd:9e6e:7c10 with SMTP id
- d9443c01a7336-200ae5e68e8mr7183435ad.41.1723197698254; 
- Fri, 09 Aug 2024 03:01:38 -0700 (PDT)
-Received: from [192.168.68.54] ([43.252.112.201])
- by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-1ff58f21723sm138749415ad.15.2024.08.09.03.01.35
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 09 Aug 2024 03:01:37 -0700 (PDT)
-Message-ID: <d75a3435-6ab4-47c2-aee5-71dc4f877639@redhat.com>
-Date: Fri, 9 Aug 2024 20:01:32 +1000
+	s=mimecast20190719; t=1723206299;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=UOwA4QbVkDmvqf7etn9t7Ds166wZBQN7pf+VdSr6FkM=;
+	b=RpkMOJiqvMmyWYgbk9jyTh2NbVlJAmJ0GAXNLv+I4sPJ9qNJ1Golgndxj8+4sktE9xLllV
+	9K1/RNFXpI7gLTeG+xA3P50HZQOfFWO0nqk+DkqfrzYul4xZ6MU1gNJ/MrMwsiljuxxR1Q
+	Dqo7YZZmeLiUaD15mxf6M216ib1AKkk=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-33--7dfJdlSNg-Vn4YmIjJ4nw-1; Fri,
+ 09 Aug 2024 08:24:56 -0400
+X-MC-Unique: -7dfJdlSNg-Vn4YmIjJ4nw-1
+Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 0AEC91956058;
+	Fri,  9 Aug 2024 12:24:53 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.39.193.245])
+	by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id DAA9019560AE;
+	Fri,  9 Aug 2024 12:24:50 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id AFCA821E668B; Fri,  9 Aug 2024 14:24:48 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Zhao Liu <zhao1.liu@intel.com>
+Cc: Daniel P . =?utf-8?Q?Berrang=C3=A9?= <berrange@redhat.com>,  Eduardo
+ Habkost
+ <eduardo@habkost.net>,  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,  Yanan Wang
+ <wangyanan55@huawei.com>,  "Michael S . Tsirkin" <mst@redhat.com>,  Paolo
+ Bonzini <pbonzini@redhat.com>,  Richard Henderson
+ <richard.henderson@linaro.org>,  Eric Blake <eblake@redhat.com>,  Marcelo
+ Tosatti <mtosatti@redhat.com>,  Alex =?utf-8?Q?Benn=C3=A9e?=
+ <alex.bennee@linaro.org>,
+  Peter Maydell <peter.maydell@linaro.org>,  Jonathan Cameron
+ <Jonathan.Cameron@huawei.com>,  Sia Jee Heng
+ <jeeheng.sia@starfivetech.com>,  qemu-devel@nongnu.org,
+  kvm@vger.kernel.org,  qemu-riscv@nongnu.org,  qemu-arm@nongnu.org,
+  Zhenyu Wang <zhenyu.z.wang@intel.com>,  Dapeng Mi
+ <dapeng1.mi@linux.intel.com>,  Yongwei Ma <yongwei.ma@intel.com>
+Subject: Re: [PATCH 8/8] qemu-options: Add the description of smp-cache object
+In-Reply-To: <ZqyRik4UHHz3xaKl@intel.com> (Zhao Liu's message of "Fri, 2 Aug
+	2024 15:58:02 +0800")
+References: <20240704031603.1744546-1-zhao1.liu@intel.com>
+	<20240704031603.1744546-9-zhao1.liu@intel.com>
+	<87r0bl35ug.fsf@pond.sub.org> <Zp5vxtXWDeHAdPok@intel.com>
+	<87bk2nnev2.fsf@pond.sub.org> <ZqEN1kZaQcuY4UPG@intel.com>
+	<87le1psuv3.fsf@pond.sub.org> <ZqtXP9MViOlyhEsu@intel.com>
+	<87mslweb38.fsf@pond.sub.org> <ZqyRik4UHHz3xaKl@intel.com>
+Date: Fri, 09 Aug 2024 14:24:48 +0200
+Message-ID: <8734ndj33j.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 3/4] hw/arm/virt: Use kvm_arch_get_default_type()
-From: Gavin Shan <gshan@redhat.com>
-To: qemu-arm@nongnu.org
-Cc: qemu-devel@nongnu.org, peter.maydell@linaro.org, pbonzini@redhat.com,
- philmd@linaro.org, richard.henderson@linaro.org, shan.gavin@gmail.com
-References: <20240809035134.699830-1-gshan@redhat.com>
- <20240809035134.699830-4-gshan@redhat.com>
-In-Reply-To: <20240809035134.699830-4-gshan@redhat.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=gshan@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
-X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.141,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: fy9fyVz407u9
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
+X-TUID: cPzaY3VeKLAC
 
-On 8/9/24 1:51 PM, Gavin Shan wrote:
-> kvm_arch_get_default_type() and kvm_arm_get_max_vm_ipa_size() are
-> interchangeable since the type is equivalent to IPA size (bits)
-> with one exception that IPA size (bits) is 40 when the type is zero.
-> 
-> Replace kvm_arm_get_max_vm_ipa_size() with kvm_arch_get_default_type().
-> After this, kvm_arm_get_max_vm_ipa_size() needn't to be a public API
-> any more.
-> 
-> Signed-off-by: Gavin Shan <gshan@redhat.com>
-> ---
->   hw/arm/virt.c        | 14 ++++++--------
->   target/arm/kvm.c     |  2 +-
->   target/arm/kvm_arm.h | 15 ---------------
->   3 files changed, 7 insertions(+), 24 deletions(-)
-> 
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 09b7a158a9..f35857aa95 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -2995,10 +2995,12 @@ static HotplugHandler *virt_machine_get_hotplug_handler(MachineState *machine,
->   static int virt_kvm_type(MachineState *ms, const char *type_str)
->   {
->       VirtMachineState *vms = VIRT_MACHINE(ms);
-> -    int max_vm_pa_size, requested_pa_size;
-> +    int type, max_vm_pa_size, requested_pa_size;
->       bool fixed_ipa;
->   
-> -    max_vm_pa_size = kvm_arm_get_max_vm_ipa_size(ms, &fixed_ipa);
-> +    /* The IPA size is 40 bits when the type is zero */
-> +    type = kvm_arch_get_default_type(ms);
-> +    max_vm_pa_size = (type == 0) ? 40 : type;
->   
->       /* we freeze the memory map to compute the highest gpa */
->       virt_set_memmap(vms, max_vm_pa_size);
-> @@ -3017,12 +3019,8 @@ static int virt_kvm_type(MachineState *ms, const char *type_str)
->                        requested_pa_size, max_vm_pa_size);
->           return -1;
->       }
-> -    /*
-> -     * We return the requested PA log size, unless KVM only supports
-> -     * the implicit legacy 40b IPA setting, in which case the kvm_type
-> -     * must be 0.
-> -     */
-> -    return fixed_ipa ? 0 : requested_pa_size;
-> +
-> +    return type;
->   }
->   #endif /* CONFIG_KVM */
->   
+I apologize for the delay.
 
-This actually needs to be something like below. It's incorrect to ignore
-@requested_pa_size here.
+Zhao Liu <zhao1.liu@intel.com> writes:
 
-         return (type == 0) ? 0 : requested_pa_size;
+> On Thu, Aug 01, 2024 at 01:28:27PM +0200, Markus Armbruster wrote:
 
-> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-> index 849e2e21b3..65893c9c12 100644
-> --- a/target/arm/kvm.c
-> +++ b/target/arm/kvm.c
-> @@ -526,7 +526,7 @@ bool kvm_arm_pmu_supported(void)
->       return kvm_check_extension(kvm_state, KVM_CAP_ARM_PMU_V3);
->   }
->   
-> -int kvm_arm_get_max_vm_ipa_size(MachineState *ms, bool *fixed_ipa)
-> +static int kvm_arm_get_max_vm_ipa_size(MachineState *ms, bool *fixed_ipa)
->   {
->       KVMState *s = KVM_STATE(ms->accelerator);
->       int ret;
-> diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
-> index cfaa0d9bc7..fd919d4738 100644
-> --- a/target/arm/kvm_arm.h
-> +++ b/target/arm/kvm_arm.h
-> @@ -188,16 +188,6 @@ bool kvm_arm_pmu_supported(void);
->    */
->   bool kvm_arm_sve_supported(void);
->   
-> -/**
-> - * kvm_arm_get_max_vm_ipa_size:
-> - * @ms: Machine state handle
-> - * @fixed_ipa: True when the IPA limit is fixed at 40. This is the case
-> - * for legacy KVM.
-> - *
-> - * Returns the number of bits in the IPA address space supported by KVM
-> - */
-> -int kvm_arm_get_max_vm_ipa_size(MachineState *ms, bool *fixed_ipa);
-> -
->   int kvm_arm_vgic_probe(void);
->   
->   void kvm_arm_pmu_init(ARMCPU *cpu);
-> @@ -248,11 +238,6 @@ static inline void kvm_arm_add_vcpu_properties(ARMCPU *cpu)
->       g_assert_not_reached();
->   }
->   
-> -static inline int kvm_arm_get_max_vm_ipa_size(MachineState *ms, bool *fixed_ipa)
-> -{
-> -    g_assert_not_reached();
-> -}
-> -
->   static inline int kvm_arm_vgic_probe(void)
->   {
->       g_assert_not_reached();
+[...]
 
-Thanks,
-Gavin
+>> Can you provide a brief summary of the design alternatives that have
+>> been proposed so far?  Because I've lost track.
+>
+> No problem!
+>
+> Currently, we have the following options:
+>
+> * 1st: The first one is just to configure cache topology with several
+>   options in -smp:
+>
+>   -smp l1i-cache-topo=core,l1d-cache-topo-core
+>
+>   This one lacks scalability to support the cache size that ARM will
+>   need in the future.
 
+-smp sets machine property "smp" of QAPI type SMPConfiguration.
+
+So this one adds members l1i-cache-topo, l1d-cache-topo, ... to
+SMPConfiguration.
+
+> * 2nd: The cache list object in -smp.
+>
+>   The idea was to use JSON to configure the cache list. However, the
+>   underlying implementation of -smp at the moment is keyval parsing,
+>   which is not compatible with JSON.
+
+Keyval is a variation of the QEMU's traditional KEY=VALUE,... syntax
+that can serve as an alternative to JSON, with certain restrictions.
+Ideally, we provide both JSON and keyval syntax on the command line.
+
+Example: -blockdev supports both JSON and keyval.
+    JSON:   -blockdev '{"driver": "null-co", "node-name": "node0"}'
+    keyval: -blockdev null-co,node-name=node0
+
+Unfortunately, we have many old interfaces that still lack JSON support.
+
+>   If we can not insist on JSON format, then cache lists can also be
+>   implemented in the following way:
+>   
+>   -smp caches.0.name=l1i,caches.0.topo=core,\
+>        caches.1.name=l1d,caches.1.topo=core
+
+This one adds a single member caches to SMPConfiguration.  It is an
+array of objects.
+
+> * 3rd: The cache list object linked in -machine.
+>
+>   Considering that -object is JSON-compatible so that defining lists via
+>   JSON is more friendly, I implemented the caches list via -object and
+>   linked it to MachineState:
+>
+>   -object '{"qom-type":"smp-cache","id":"obj","caches":[{"name":"l1d","topo":"core"},{"name":"l1i","topo":"core"}]}'
+>   -machine smp-caches=obj
+
+This one wraps the same array of objects in a new user-creatable object,
+then sets machine property "smp-caches" to that object.
+
+We can set machine properties directly with -machine.  But -machine
+doesn't support JSON, yet.
+
+Wrapping in an object moves the configuration to -object, which does
+support JSON.
+
+Half way between 2nd and 3rd:
+
+  * Cache list object in machine
+
+    -machine caches.0.name=l1i,caches.0.topo=core,\
+             caches.1.name=l1d,caches.1.topo=core
+
+> * 4th: The per cache object without any list:
+>
+>   -object smp-cache,id=cache0,name=l1i,topo=core \
+>   -object smp-cache,id=cache1,name=l1d,topo=core
+>
+>   This proposal is clearer, but there are a few opens:
+>   - I plan to push qom-topo forward, which would abstract CPU related
+>     topology levels and cache to "device" instead of object. Is there a
+>     conflict here?
+
+Can't say, since I don't understand where you want to go.
+
+Looks like your trying to design an interface for what you want to do
+now, and are wondering whether it could evolve to accomodate what you
+want to do later.
+
+It's often better to design the interface for everything you already
+know you want to do, then take out the parts you want to do later.
+
+>   - Multiple cache objects can't be linked to the machine on the command
+>     line, so I maintain a static cache list in smp_cache.c and expose
+>     the cache information to the machine through some interface. is this
+>     way acceptable?
+>
+>
+> In summary, the 4th proposal was the most up in the air, as it looked to
+> be conflict with the hybrid topology I wanted to do (and while hybrid
+> topology may not be accepted by the community either, I thought it would
+> be best for the two work to be in the same direction).
+>
+> The difference between 2nd and 3rd is about the JSON requirement, if JSON
+> is mandatory for now then it's 3rd, if it's not mandatory (or accept to
+> make -machine/-smp support JSON in the future), 2nd looks cleaner, which
+> puts the caches list in -smp.
+
+I'd rather not let syntactic limitations of our CLI dictate the
+structure of our configuration data.  Design the structure *first*.
+Only then start to think about CLI.  Our CLI is an unholy mess, and
+thinking about it too early risks getting lost in the weeds.  I fear
+this is what happened to you.
+
+If I forcibly ignore all the considerations related to concrete syntax
+in your message, a structure seems to emerge: there's a set of caches
+identified by name (l1i, l1d, ...), and for each cache, we have a number
+of configurable properties (topology level, ...).  Makes sense?
+
+What else will you need to configure in the future?
+
+By the way, extending -machine to support JSON looks feasible to me at a
+glance.

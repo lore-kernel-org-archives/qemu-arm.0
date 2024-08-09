@@ -1,219 +1,198 @@
-Received: by 2002:a17:504:7fd7:b0:1be9:327d:8ee3 with SMTP id hj23csp801444njc;
-        Fri, 9 Aug 2024 02:13:56 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGUb1PLqB+G0iK5DzA6GSfVdetY4f323EVmUbOwbeqXf4ajYB0bXV6NPs+vyEUFf23tHCju
-X-Received: by 2002:a05:620a:24cb:b0:7a1:e214:34df with SMTP id af79cd13be357-7a4c18c5c36mr97338685a.65.1723194836321;
-        Fri, 09 Aug 2024 02:13:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1723194836; cv=none;
+Received: by 2002:a17:504:7fd7:b0:1be9:327d:8ee3 with SMTP id hj23csp807151njc;
+        Fri, 9 Aug 2024 02:39:52 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVUQ3j04xEfWwEBVQhUzPJ7S8y/PrRSYOBBAFS0CCZtTs65YwMDqXuy0ONEca4aKzjQy6m2nA7BpdD3Vg==@linaro.org
+X-Google-Smtp-Source: AGHT+IHKPr66pE8UsOQMJNXqc+CqD9DLZlzvfPQiDBoh3oHMTDP4gDJx1SLR1e8veNKCc+7qBNVo
+X-Received: by 2002:a05:690c:17:b0:63b:d711:e722 with SMTP id 00721157ae682-69ec4b0e35cmr10544117b3.1.1723196392144;
+        Fri, 09 Aug 2024 02:39:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1723196392; cv=none;
         d=google.com; s=arc-20160816;
-        b=Q0AWbRSV2qw+guXhmS/PrQcTjmSorKoxIK5J44VUhKRqYF2olke8MXycisEfe1O7Hb
-         vOYUWfX9Vr+gZzDOoCm3n7w7oBFB8PuexQf82s+j7Z8rlzuLtp18L7nfAughTOZ7gyMM
-         mhFDMtwPP8Ocj2YvaH/G0P/docdVFB6is/o2Ubb7oERIoxf3THyugLQMNdPIWfZW4lUe
-         XXxRfeZLm3ur2KULcY0EAiH53gJJ1oCYZeNTckrbK+6SbP48KitpEyH/H/xnyJMuWmLd
-         pryi9MRuM3rNscdOB+MK3YdLyEBQ+bv+NIcmA1HRWHn56iP6eu3XccIemVXHH/GDvS9I
-         RyFg==
+        b=o7GfbCJbafWFhxsQs1mz2VY26MrzFSzaNA2kdiTnWqeQOj78J3w9lb+Gr+mReuiF8M
+         SZmc96xcCo49VLJtOHju7ryXtdGz9STmEo+tLWT0n1R1ssDjuIXHZfDVXp+1g9z36L5U
+         +n1CFUnhFv9J6HxS6bn0+k7gUWaGAdIoL5zU5fMUHzxIBCgUmY3GP0lSuwHJ0dnQqtJt
+         hwcN1kTBDX74V/mQiQ2gxdewO4kdhkA4vuKVGo5uxeoTqQfDiH7p2tk7AslXcn0tGwcg
+         OaTuXIAzU57xTctQvUsVFUK3DA5EAfbrSeLyzwoK1VdHQ6UgeB0tcAdtkzTqN5DBnDWB
+         bP6Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-transfer-encoding
-         :content-disposition:mime-version:references:reply-to:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=uFrra4R8yOLqWRrGK3eT9VFxFEpTpBMMZdWcI907WFU=;
-        fh=vYu/CVw3OCyE4oNOYoiqzmSJgldE3mgCLtGO3u/JDNc=;
-        b=HIBYOmNciK4bPHTmdNFeSpF70t6aGeJyFDIl9FyM18sr8HcbGpMH+33+BvtQqe5+un
-         kEiYc0FO42vUGurXPYm2LTV6DOPqFYthtsVeWNX51uzA/A58kOO1o+jeHUOEjFDG9+8K
-         wDdc7YyW4OpL1H9K1uJ1C0FJ0Q9aENJbqGNsaszFQ8TJdswlWCZGgAC7YHv9PyKAjCOY
-         g2sTGybO481gmN0ADwLpuc0F+VN8RplZIFzxL5WRPqtuMlWYixmVEPPE4y2ubwdq0ufS
-         houfQXChcYOYNc9yrx/z1NSu0l/yw2mRBDiiptJVAqLMfXNRx4Ba7wbdvN5lE6XxjuXb
-         lYUA==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:from:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=saM/xkfKcVoXunhXuQeDRUAo9xzzmY9xbqpMgYaXrVY=;
+        fh=RlG/M+sxXJiPgVNN8Sx76WPoY6SyjFnkjv01G5ARAEY=;
+        b=HIX5OUW0GbseCkU2oZuZSTmdJTki0m9Sf7xbKFXM3EtarSj072DvLL0DD5iefx7Uh4
+         wylUmIEA74vL0ast1EvBbZ7nUALcXg4n2kf7xWm7wUj/KScsTAPRWbm7uNviA6uChXrw
+         dD5xU+eAz4MxGtGRAmG2dauvMsOCUjQtjQPIJn8/7JeRSNP1oORU499IP7awq03mrnn1
+         RyKJY/PpAWHsmyCPV4Vs0a4BqhKK/Lk7yyMlAr7m4dYi1QPHmTTIUduNYlS3TboqfXMf
+         dKtjfXJWggQD8fUl71UtzlLC1gg2OH1rUeFb0QuI1FlHAjmMt+HxqfdRZ5hL6wrin2H3
+         nLUQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="du/novCZ";
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Wyc1LexV;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <berrange@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id af79cd13be357-7a378805c9asi630035285a.292.2024.08.09.02.13.56
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id af79cd13be357-7a37882993dsi632326585a.400.2024.08.09.02.39.52
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 09 Aug 2024 02:13:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 09 Aug 2024 02:39:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="du/novCZ";
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Wyc1LexV;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1scM5j-00027L-2C; Fri, 09 Aug 2024 05:39:23 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1scM5h-00023Y-KP
+ for qemu-arm@nongnu.org; Fri, 09 Aug 2024 05:39:21 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1scM5g-0001Ax-5D
+ for qemu-arm@nongnu.org; Fri, 09 Aug 2024 05:39:21 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1723194836;
-	h=from:from:reply-to:reply-to:subject:subject:date:date:
-	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
-	 content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=uFrra4R8yOLqWRrGK3eT9VFxFEpTpBMMZdWcI907WFU=;
-	b=du/novCZjgKnYns2ACDAePdeDRoV194i+HquqlOR5Kfmuk9+87+2Y0WWXbd/5Rsr5ID2nZ
-	opX6JtgaMoPzKolRL/6zcPUl5dzJYHZKRzy5sQcRmRr1Dj62ZXV2iX2SUByhkNziQAtT76
-	boRFCFgIS5SdDLAghqtBRSAnd/UMDms=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-557-9d2e-TY0PSmn2hkXj1ZTKA-1; Fri,
- 09 Aug 2024 05:13:54 -0400
-X-MC-Unique: 9d2e-TY0PSmn2hkXj1ZTKA-1
-Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 287F719560B6;
-	Fri,  9 Aug 2024 09:13:53 +0000 (UTC)
-Received: from redhat.com (unknown [10.42.28.27])
-	by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 9F51519560AE;
-	Fri,  9 Aug 2024 09:13:47 +0000 (UTC)
-Date: Fri, 9 Aug 2024 10:13:44 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Octavian Purdila <tavip@google.com>
-Cc: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	qemu-devel@nongnu.org, qemu-arm@nongnu.org, stefanst@google.com,
-	pbonzini@redhat.com, thuth@redhat.com, peter.maydell@linaro.org,
-	marcandre.lureau@redhat.com, alistair@alistair23.me,
-	philmd@linaro.org, jsnow@redhat.com, crosa@redhat.com,
-	bleal@redhat.com
-Subject: Re: [RFC PATCH 04/23] hw/arm: add SVD file for NXP i.MX RT595
-Message-ID: <ZrXdyEIFLulMN-gE@redhat.com>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-References: <20240805201719.2345596-1-tavip@google.com>
- <20240805201719.2345596-5-tavip@google.com>
- <87sevhrbjm.fsf@draig.linaro.org>
- <CAGWr4cTPqtzEvbd5s7xfMOzid90Gje6NSTGw1qR7r=Ao0xeAcw@mail.gmail.com>
+ s=mimecast20190719; t=1723196359;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=saM/xkfKcVoXunhXuQeDRUAo9xzzmY9xbqpMgYaXrVY=;
+ b=Wyc1LexVrBcQl6Vgrr3AmFHNzq7FFpID/ePG3cYnAf/zBctqwchYAr3M6sTzwjDIn3RZys
+ TFBymbNjsN65vyHm3D9o7KpzY9My0EFxbWxvtkbOx0elDhy6/jBUEKMK68HuDVAzjQ/rlT
+ tVIMXQFaptd2Fk5N00OQ6qRGtikLhPE=
+Received: from mail-pg1-f197.google.com (mail-pg1-f197.google.com
+ [209.85.215.197]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-637-f8lgORadNDyC3y3npJTwwA-1; Fri, 09 Aug 2024 05:39:17 -0400
+X-MC-Unique: f8lgORadNDyC3y3npJTwwA-1
+Received: by mail-pg1-f197.google.com with SMTP id
+ 41be03b00d2f7-7a3c6dd559aso2211221a12.1
+ for <qemu-arm@nongnu.org>; Fri, 09 Aug 2024 02:39:17 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1723196356; x=1723801156;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=saM/xkfKcVoXunhXuQeDRUAo9xzzmY9xbqpMgYaXrVY=;
+ b=A0odbMZulQKkcFlcpZ0bvRaT44bfsd44LYMc7IXWX2chI9W1/9YyjpDuRL2iphOS3N
+ +WcKIs6bXROUuXLy4Ha6gXfGuQU1CIKfxJ14zzTQY42BqYQ3YJf2zRLtwURVksmtBXoO
+ pLMPwF/dFM915pxsSRS3UUPWxpbgmugdI8lHZ65g1GnGzVc2Y8XD/yT9kOrYKShE8BZ4
+ VTxTC+b+EF3KtfUuG2SEOkKkaHcPbbEBGLLCXKYdfgDIFTECFfPgWiIQN0Ce9ZDRXpJE
+ /qRpeyulm7P6CP35mt4hqcGDcDXfAZa+rMbobY50tIS8OBq9c3bNq9iS7ooSy7rkwKkK
+ OP0Q==
+X-Gm-Message-State: AOJu0YzNagtMWPBGX7EOHqkVtKgQJJurwxN2yMAMNA3s9d1Tm5XvQbL4
+ jxm2DUacqQfEgafSPxZs3XuuwW7W1abCVLTEI72k6h4rJA4ZwFqvxKpuGGBaFMqDtlz5NyEbOOo
+ 9FmVE8h2tfYtiL5xjBYdwugVPqw/yZewe62zxkjn3Jh+HAsgPIx1u+O8qVg==
+X-Received: by 2002:a17:902:d48d:b0:1f9:f3c6:ed37 with SMTP id
+ d9443c01a7336-200ae4f98a5mr9660905ad.14.1723196355669; 
+ Fri, 09 Aug 2024 02:39:15 -0700 (PDT)
+X-Received: by 2002:a17:902:d48d:b0:1f9:f3c6:ed37 with SMTP id
+ d9443c01a7336-200ae4f98a5mr9660735ad.14.1723196355262; 
+ Fri, 09 Aug 2024 02:39:15 -0700 (PDT)
+Received: from [192.168.68.54] ([43.252.112.201])
+ by smtp.gmail.com with ESMTPSA id
+ d9443c01a7336-1ff58f5346csm138690485ad.66.2024.08.09.02.39.11
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 09 Aug 2024 02:39:14 -0700 (PDT)
+Message-ID: <eea906ac-0a46-4ce9-b81a-813e9f730548@redhat.com>
+Date: Fri, 9 Aug 2024 19:39:08 +1000
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <CAGWr4cTPqtzEvbd5s7xfMOzid90Gje6NSTGw1qR7r=Ao0xeAcw@mail.gmail.com>
-User-Agent: Mutt/2.2.12 (2023-09-09)
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-TUID: uG3GPZGfnEWk
-
-On Tue, Aug 06, 2024 at 01:31:51PM -0700, Octavian Purdila wrote:
-> On Tue, Aug 6, 2024 at 7:06 AM Alex Bennée <alex.bennee@linaro.org> wrote:
-> >
-> > Octavian Purdila <tavip@google.com> writes:
-> >
-> > > Picked from:
-> > >
-> > > https://github.com/nxp-mcuxpresso/mcux-soc-svd/blob/main/MIMXRT595S/MIMXRT595S_cm33.xml
-> > >
-> > > NOTE: the file is truncated to keep the email size reasonable. Please
-> > > use the link above and download the full file if you want to try out
-> > > the patch.
-
-"the file is truncated" wins understatement of the week.
-
-The full XML file that would need to be in QEMU git for this is 8.6 MB in
-size.
-
-The overall generated headers that we get from it are ~16k lines,
-or ~0.5 MB
-
-$ wc -l build/hw/arm/svd/*.h
-   135 build/hw/arm/svd/flexcomm.h
-  1227 build/hw/arm/svd/flexcomm_i2c.h
-  1161 build/hw/arm/svd/flexcomm_spi.h
-  1231 build/hw/arm/svd/flexcomm_usart.h
-  2243 build/hw/arm/svd/flexspi.h
-  3100 build/hw/arm/svd/rt500_clkctl0.h
-  4022 build/hw/arm/svd/rt500_clkctl1.h
-    64 build/hw/arm/svd/rt500.h
-  1073 build/hw/arm/svd/rt500_rstctl0.h
-  1697 build/hw/arm/svd/rt500_rstctl1.h
- 15953 total
-
-$ wc -c build/hw/arm/svd/*.h
-  4349 build/hw/arm/svd/flexcomm.h
- 51135 build/hw/arm/svd/flexcomm_i2c.h
- 43822 build/hw/arm/svd/flexcomm_spi.h
- 46331 build/hw/arm/svd/flexcomm_usart.h
- 89224 build/hw/arm/svd/flexspi.h
-113952 build/hw/arm/svd/rt500_clkctl0.h
-141885 build/hw/arm/svd/rt500_clkctl1.h
-  1881 build/hw/arm/svd/rt500.h
- 38881 build/hw/arm/svd/rt500_rstctl0.h
- 61449 build/hw/arm/svd/rt500_rstctl1.h
-592909 total
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/4] hw/arm/virt: hide virt_kvm_type() on !CONFIG_KVM
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, pbonzini@redhat.com,
+ philmd@linaro.org, richard.henderson@linaro.org, shan.gavin@gmail.com
+References: <20240809035134.699830-1-gshan@redhat.com>
+ <20240809035134.699830-2-gshan@redhat.com>
+ <CAFEAcA_KWo2fkiFJ4CrznNkti7bdp_QTXWEdc2nJtd-a6=SPpw@mail.gmail.com>
+From: Gavin Shan <gshan@redhat.com>
+In-Reply-To: <CAFEAcA_KWo2fkiFJ4CrznNkti7bdp_QTXWEdc2nJtd-a6=SPpw@mail.gmail.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=gshan@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.141,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: b7osUopOe7Cd
 
 
-
-> > >
-> > > Signed-off-by: Octavian Purdila <tavip@google.com>
-> > > ---
-> > >  hw/arm/svd/MIMXRT595S_cm33.xml | 224052
-> > > ++++++++++++++++++++++++++++++
-> >
-> > I guess one thing we need to decide is if the source XML should live in
-> > the repository as the preferred method of making changes or just the
-> > translations generated by the tool.
-> >
+On 8/9/24 7:00 PM, Peter Maydell wrote:
+> On Fri, 9 Aug 2024 at 04:52, Gavin Shan <gshan@redhat.com> wrote:
+>>
+>> virt_kvm_type() and mc->kvm_type() are only needed when CONFIG_KVM
+>> is enabled. It's reasonable to hide them when CONFIG_KVM is disabled.
+>>
+>> Signed-off-by: Gavin Shan <gshan@redhat.com>
+>> ---
+>>   hw/arm/virt.c | 4 ++++
+>>   1 file changed, 4 insertions(+)
+>>
+>> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+>> index 719e83e6a1..83be57db37 100644
+>> --- a/hw/arm/virt.c
+>> +++ b/hw/arm/virt.c
+>> @@ -2991,6 +2991,7 @@ static HotplugHandler *virt_machine_get_hotplug_handler(MachineState *machine,
+>>    * for arm64 kvm_type [7-0] encodes the requested number of bits
+>>    * in the IPA address space
+>>    */
+>> +#ifdef CONFIG_KVM
+>>   static int virt_kvm_type(MachineState *ms, const char *type_str)
+>>   {
+>>       VirtMachineState *vms = VIRT_MACHINE(ms);
+>> @@ -3025,6 +3026,7 @@ static int virt_kvm_type(MachineState *ms, const char *type_str)
+>>        */
+>>       return fixed_ipa ? 0 : requested_pa_size;
+>>   }
+>> +#endif /* CONFIG_KVM */
+>>
+>>   static void virt_machine_class_init(ObjectClass *oc, void *data)
+>>   {
+>> @@ -3084,7 +3086,9 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
+>>   #endif
+>>       mc->valid_cpu_types = valid_cpu_types;
+>>       mc->get_default_cpu_node_id = virt_get_default_cpu_node_id;
+>> +#ifdef CONFIG_KVM
+>>       mc->kvm_type = virt_kvm_type;
+>> +#endif
+>>       assert(!mc->get_hotplug_handler);
+>>       mc->get_hotplug_handler = virt_machine_get_hotplug_handler;
+>>       hc->pre_plug = virt_machine_device_pre_plug_cb;
 > 
-> I think we might want to store the XML in the qemu repo, even if we
-> don't use it to generate the header files at compile time. This avoids
-> issues with the original XML moving, going away, changed in
-> incompatible ways, etc.
->
-> As for generating the headers at compile time, I don't have a strong
-> preference. I like it because there is slightly less work to do and it
-> avoids dealing with resolving changes on both the SVD and the
-> generated headers. For example, the initial headers are committed,
-> then some changes are done directly to the headers and then we want to
-> pick up a new SVD from the vendor to support a new hardware revision.
-
-IIUC the structs/enums/etc are defining guest ABI. So if we want to
-preserve guest ABI for these devices across QEMU releases, we don't
-want the generated output to be arbitrarily changing. If there are
-different revisions of a device, we might need separate structs for
-each maintained in parallel.
-
-
-
+> This adds extra ifdefs to the source code -- is there any
+> reason why we need them? If nothing goes wrong, I'd
+> prefer not to clutter the source with thme.
 > 
-> There are disadvantages as well: pysvd dependency for building qemu,
-> hard to review if the vendor dumps a new version with lots of changes
-> and we want to update to it for a new hardware revision, slight
-> increase in build time.
-> 
-> > >  1 file changed, 224052 insertions(+)
-> > >  create mode 100644 hw/arm/svd/MIMXRT595S_cm33.xml
-> > >
-> > > diff --git a/hw/arm/svd/MIMXRT595S_cm33.xml b/hw/arm/svd/MIMXRT595S_cm33.xml
-> > > new file mode 100644
-> > > index 0000000000..8943aa3555
-> > > --- /dev/null
-> > > +++ b/hw/arm/svd/MIMXRT595S_cm33.xml
-> > > @@ -0,0 +1,1725 @@
-> > > +<?xml version="1.0" encoding="UTF-8"?>
-> > > +<device schemaVersion="1.3" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="CMSIS-SVD.xsd">
-> > > +  <vendor>nxp.com</vendor>
-> > > +  <name>MIMXRT595S_cm33</name>
-> > > +  <version>1.0</version>
-> > > +  <description>MIMXRT595SFAWC,MIMXRT595SFFOC</description>
-> > > +  <licenseText>
-> > > +Copyright 2016-2023 NXP
-> > > +SPDX-License-Identifier: BSD-3-Clause
-> > > +  </licenseText>
-> >
-> > This certainly seems compatible. XML is not the medium I personally
-> > would have chosen as a register specification language but I guess there
-> > are no other alternatives?
-> >
-> 
-> I agree that the choice of XML is unfortunate but I am not aware of
-> alternatives, this is what vendors will provide.
 
-Given the size of the XML I'm inclined to say that we should just be
-committing the generated header files to qemu.git
+There is nothing wrong in current code. Actually, it's preparatory work
+to replace kvm_arm_get_max_vm_ipa_size() with kvm_arch_get_default_type()
+in mc->kvm_type() in PATCH[3/4]. kvm_arch_get_default_type() is visible
+only when CONFIG_KVM is enabled.
 
-Then add https://github.com/nxp-mcuxpresso/mcux-soc-svd as a git
-submodule, and provide some meson rules for triggering re-generation
-that are off-by-default.
+Thanks,
+Gavin
 
-With regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|

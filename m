@@ -1,219 +1,177 @@
-Received: by 2002:a17:504:7fd7:b0:1be9:327d:8ee3 with SMTP id hj23csp798812njc;
-        Fri, 9 Aug 2024 02:04:13 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCXzlxHDNAPqu1wmnMRj59V8znrcudenkjizFWqV+m3r1QIajvk7IeZTpdTNjr/4XAC2TQaSxxyX1KMQ7zix/IvyTTg6Y71T
-X-Google-Smtp-Source: AGHT+IHMaEm9me/2/OaRyXgORdAX7NsHCSnL3tIpVD4WeGPlNDIxWGLOFie3Q+qKPeYuvfDLVd3C
-X-Received: by 2002:a05:6214:4604:b0:6b7:a182:4130 with SMTP id 6a1803df08f44-6bd78e7f61cmr11416556d6.49.1723194253047;
-        Fri, 09 Aug 2024 02:04:13 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1723194253; cv=pass;
+Received: by 2002:a17:504:7fd7:b0:1be9:327d:8ee3 with SMTP id hj23csp810851njc;
+        Fri, 9 Aug 2024 02:58:57 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVnCEhs9QJJ7s/pDUWOUHAshlvIZuaZRGqWhk6FfKWAgFmOtZtpAF207G1cvCRbXxphQ91jL9nhpwe8Tmd+lZr8RVdif11y
+X-Google-Smtp-Source: AGHT+IEThgNOIs0Eg5ez1TMibLf21Uu8rfacxrHE2xdP2VX+RBGsegJTBCmVSPwrf5w3sUYtyShS
+X-Received: by 2002:a05:622a:1b19:b0:447:ed76:259f with SMTP id d75a77b69052e-453125ed841mr10605101cf.35.1723197536723;
+        Fri, 09 Aug 2024 02:58:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1723197536; cv=none;
         d=google.com; s=arc-20160816;
-        b=0nNoFjL4NvOCSkFYhUrjCKJf9IqyMBl0bWolJLS/e/SvkBiIxHw26mZ/zlvigHEaoH
-         2xBf2sIJgE6N9fgzhZza9HeD7t3gBG+K1GeP9ToNDA/dfKoSKVwaKxp/wfhmoRd1BOWn
-         E9JpLu1SSqIIwd+EzO3v6KYTHmMRFXiPUoL6TQZw2/2edG7URyS5n3Qzr1LrtUx9bvqo
-         A/eg6rGHVe3rx4KndzFKHRBAXxdYO+nLmbf3WtTbH7C/w6mB76OyHVqf1s2ui968tSAx
-         XT0rveeK/FjTZttxwdy1Su9uTBoEnpbBp7B8lcvymo/2jJQA4Rm4jPfbynWL8PpztVaB
-         SwOg==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:list-unsubscribe:list-subscribe:list-id:precedence
-         :user-agent:message-id:date:references:in-reply-to:subject:cc:to
-         :from:dkim-signature;
-        bh=XET1oSFvQl4264GUGqTzYsP7+4ofJLFq0ARdUYsJBcI=;
-        fh=9d9LUHUzamZYFYq8p6kugTwVQZUR/+Tl4v7ouymNtkE=;
-        b=cmIzJ3QFHewaKk4rm6ua02VRLFsaQi46TxI5Wln0VJEekprm4FluqO+ZcH1eOMHex2
-         h9ix70nIt6ePKcaVpQyEgBvPpeuw60lA0LlOIx0qI1c+OTyPuNiUdYp7NSXfp1Nqjd3G
-         QDcfPq2sp807EM2TWIzKZqTW3J4OP5rF3gdIO+jSPULpn5dBXxwGXliOIxH3FVoaCiTq
-         FvXXJWh94rSmpt8pb/jVDyW29STB9LeokIXx9BKNqd1hsiP3QmTiAuMraR45IGjKDufv
-         NHr4Y75EwRhMrk/QX8WUOKGDZrbbjdmCrgYgcvpszoYRti4/zoBbrWT2eCU9BqQuoUoH
-         OMvA==;
+        b=UAieK0VCkzzenvlAhBmpk1SNJJm140bWMfYXeX8fDAdVpKqm8oz3Wcs/r1FMvUk4sB
+         RJYhoaytzW0lhPl6v2mjMwYe7v9H6YwadH5hrbHGx/0v4I+csETEPdkGRbgYiAGK9QjO
+         3pSoYvrYC5nqbBBocRbhO0bSZDCL2PlAuhABzQUcm87XUvcDzteD930+OWXv7EeVl3r+
+         yzuHkDvpvvPZICAJt2o7rX/ejihzjAVS/o+Y4s4+U+p4/p+MeU5Fxw2hRno63REAKpgU
+         RbDbHTFq0eUNEiLUbiGt0tmoyi64J5Vc9YT1bcpQMkG06OlDZDw0svQy/qRmCMJ5N1UC
+         +czg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=f2du+44zhqbEY5/rAg1knZ+d6wjdhRASpwEG8HbK3Fs=;
+        fh=KxisG6hKvBVi2z0KpXzLx2pIaiRasimWT3T48XrLSag=;
+        b=qmidPfIc1qB4ZGExawxxvGrxHuz62F7dlO7Dwt8OTBP97S7LMKJ7g5Vq7OskPH2NaF
+         q0qTNs2H8X6lmb+C8/cKhcVBgCQkJ8KINLJecsMQdRWyTd/o6KX8hZ7b2igf2X/Jz56y
+         2Oaeu6EpS/D6qSN2eHeXLde0Km+4MtYyvm57UfKMGOERKZkgsFX6lPCP+1RFVnmikDxw
+         TrKvNptITMzvErXFAFuTQnr3/VcNhTxsgxeWzaZnzuPxTpO+qOMfip8OvpcJtfqi20m+
+         9aAzTwWvI0avj4SW46yk8qOZIHQYQO24gGjs05Mw/SalbXY6KY6ZIwABGU2NE4k1k7O5
+         iw8A==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="DdND/p2k";
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-23685-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="kvm+bounces-23685-alex.bennee=linaro.org@vger.kernel.org";
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=IBl8cXYR;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm+bounces-23685-alex.bennee=linaro.org@vger.kernel.org>
-Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [2604:1380:45d1:ec00::1])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6bbbb8ed798si66343616d6.329.2024.08.09.02.04.12
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d75a77b69052e-451c8837391si61449531cf.673.2024.08.09.02.58.56
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 09 Aug 2024 02:04:13 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm+bounces-23685-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) client-ip=2604:1380:45d1:ec00::1;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 09 Aug 2024 02:58:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="DdND/p2k";
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-23685-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="kvm+bounces-23685-alex.bennee=linaro.org@vger.kernel.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=IBl8cXYR;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ny.mirrors.kernel.org (Postfix) with ESMTPS id AF58A1C211EA
-	for <alex.bennee@linaro.org>; Fri,  9 Aug 2024 09:04:12 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 83F5818E056;
-	Fri,  9 Aug 2024 09:04:09 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="DdND/p2k"
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4FC87BA41
-	for <kvm@vger.kernel.org>; Fri,  9 Aug 2024 09:04:07 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.133.124
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1723194249; cv=none; b=AgxNYPt0T7QKNc8OjR9NLmYTZBtVysfhdR9TWr9AKqdZGhH5TTnp9IiFqe3xp/MHzoi/UWWxquPBKNfttwf4/2hcyBuIGANMzhM/o6Wn4GV+DZDeI+0lnggL0y3gJxh2F1L+zzFbKWQRY2MLkVuSsvEC6dbcqX2LJIustWvm9YI=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1723194249; c=relaxed/simple;
-	bh=1lYBxYmj0yP3L5nl4vsLslkpwynKSXWgXkQxvcQasvg=;
-	h=From:To:Cc:Subject:In-Reply-To:References:Date:Message-ID:
-	 MIME-Version:Content-Type; b=d+HxLeSgGuPw1GtwWc3gKWfDR5XqKHeJM28H9eib5Lox52VVEUxoOueNeus9c0sKtywn7wiNX+84UW6xys5v/lvOwrVo2vKlex4qLFiHI2yZYg1SyykzKNclFm61h1RIDOUv0zaIDLM96ALSU/MAQnlSeIl4MUp6n1Q+y0v1h+Y=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=DdND/p2k; arc=none smtp.client-ip=170.10.133.124
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1scMOZ-0002yP-6B; Fri, 09 Aug 2024 05:58:51 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1scMOX-0002xu-HH
+ for qemu-devel@nongnu.org; Fri, 09 Aug 2024 05:58:49 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1scMOV-0003mR-RZ
+ for qemu-devel@nongnu.org; Fri, 09 Aug 2024 05:58:49 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1723194246;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=XET1oSFvQl4264GUGqTzYsP7+4ofJLFq0ARdUYsJBcI=;
-	b=DdND/p2khwVJ+jHP4mTphFpBNzhnzaqsFSil98yb79y8lYaYc3ZXEPpGNaM3lmFNo6f+Td
-	6OstYnAzOYuyDhYlWGYYckIostJE3awUUKzYxiLcUHTl4zPEQEEuyw3F1gq21qouhaBu6K
-	/g0cSiGwDOyXrJelO8oRVaQALEttCKc=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-266-kkpEvW6XP1K4uU7bnbTbkg-1; Fri,
- 09 Aug 2024 05:04:04 -0400
-X-MC-Unique: kkpEvW6XP1K4uU7bnbTbkg-1
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 842DF19772EE;
-	Fri,  9 Aug 2024 09:03:56 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.39.193.245])
-	by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 21FCD300019F;
-	Fri,  9 Aug 2024 09:03:47 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id D3A9F21E668B; Fri,  9 Aug 2024 11:03:44 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Kevin Wolf <kwolf@redhat.com>
-Cc: qemu-devel@nongnu.org,  alex.williamson@redhat.com,
-  andrew@codeconstruct.com.au,  andrew@daynix.com,
-  arei.gonglei@huawei.com,  berrange@redhat.com,  berto@igalia.com,
-  borntraeger@linux.ibm.com,  clg@kaod.org,  david@redhat.com,
-  den@openvz.org,  eblake@redhat.com,  eduardo@habkost.net,
-  farman@linux.ibm.com,  farosas@suse.de,  hreitz@redhat.com,
-  idryomov@gmail.com,  iii@linux.ibm.com,  jamin_lin@aspeedtech.com,
-  jasowang@redhat.com,  joel@jms.id.au,  jsnow@redhat.com,
-  leetroy@gmail.com,  marcandre.lureau@redhat.com,
-  marcel.apfelbaum@gmail.com,  michael.roth@amd.com,  mst@redhat.com,
-  mtosatti@redhat.com,  nsg@linux.ibm.com,  pasic@linux.ibm.com,
-  pbonzini@redhat.com,  peter.maydell@linaro.org,  peterx@redhat.com,
-  philmd@linaro.org,  pizhenwei@bytedance.com,  pl@dlhnet.de,
-  richard.henderson@linaro.org,  stefanha@redhat.com,
-  steven_lee@aspeedtech.com,  thuth@redhat.com,  vsementsov@yandex-team.ru,
-  wangyanan55@huawei.com,  yuri.benditovich@daynix.com,
-  zhao1.liu@intel.com,  qemu-block@nongnu.org,  qemu-arm@nongnu.org,
-  qemu-s390x@nongnu.org,  kvm@vger.kernel.org
-Subject: Re: [PATCH 01/18] qapi: Smarter camel_to_upper() to reduce need for
- 'prefix'
-In-Reply-To: <ZqoHWPOeqF7uGncx@redhat.com> (Kevin Wolf's message of "Wed, 31
-	Jul 2024 11:43:52 +0200")
-References: <20240730081032.1246748-1-armbru@redhat.com>
-	<20240730081032.1246748-2-armbru@redhat.com>
-	<ZqoHWPOeqF7uGncx@redhat.com>
-Date: Fri, 09 Aug 2024 11:03:44 +0200
-Message-ID: <87y156kqz3.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13)
-Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
+ s=mimecast20190719; t=1723197525;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=f2du+44zhqbEY5/rAg1knZ+d6wjdhRASpwEG8HbK3Fs=;
+ b=IBl8cXYRSvS6JYgob9l0mHx2GHH4mm4yU8hefjfomORb82CdX5IaNYkf8OT6FXHk+AK4fT
+ JhT+Rx+VFhPaWpV86njQrc2INUosA+7KXx8eAvUB58no69e+105ySlP+6qUHT7znVqZ4kr
+ c4Kt8FjfvYr+6aN4kagug8BDeKXFlOo=
+Received: from mail-oa1-f72.google.com (mail-oa1-f72.google.com
+ [209.85.160.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-39-f1FNMdcIOvG8ACc-vxnh1Q-1; Fri, 09 Aug 2024 05:58:43 -0400
+X-MC-Unique: f1FNMdcIOvG8ACc-vxnh1Q-1
+Received: by mail-oa1-f72.google.com with SMTP id
+ 586e51a60fabf-26106c817baso2606209fac.1
+ for <qemu-devel@nongnu.org>; Fri, 09 Aug 2024 02:58:43 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1723197523; x=1723802323;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=f2du+44zhqbEY5/rAg1knZ+d6wjdhRASpwEG8HbK3Fs=;
+ b=G3ecW3uZ64qqqCx+Wgpog7/KQFX6l/MRHgIsSresaKttCsm/XwdvGycLBfjW27/mgB
+ brbOljJVURk2aSqE2z4CF8QA0Qb5ga6d8/NGEhfDIiRmRdlQR+tr0mBMjQ5+z8a1UWjK
+ cHIH0NDpvsZwu8qusJkk/Ti+0nv0Rj/DICvJHsrefacpAjwtwFibciPV2RC98vRvLvKW
+ WY1dWKPFITryksi958OlvFmQQ4v1oUw17CcPvGDyZzYZOS9ttMG0hBCOVj7fxl6fdt99
+ kOeJ1Yjr7UxpUpGnnIHRpMaoWnlT63h3ZhEV3cmC4wYWU/7bJxdjUzbHogKAxR5H7qRn
+ wyKQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWGqLCvGvw/Ye8Bqb/jBmT+52sr8sCMeD80vB9s4ZhT1OjdziKoLPpNNn2KLK7uXovs63QFyXvuv62Gyt0R8UJ0M5SYQgI=
+X-Gm-Message-State: AOJu0YyvpPrpXNyZechtSyR8BA8aZdjwR8sN/HrnT6kaZglniNegmAGt
+ 9WFsbbu0rTfQoIUevP+SBvDTcj+jT2HMpmix4fX3EbrU2WXXNq8PKPpxUh/kI1q5rzrG8FCiVA4
+ I+47wyrgDmtFONca7L54F0rzPFYUkVnBy1OaglQ2yulYn6ezGv5Ms
+X-Received: by 2002:a05:6870:d146:b0:260:f054:7774 with SMTP id
+ 586e51a60fabf-26c62f08840mr1104823fac.13.1723197523169; 
+ Fri, 09 Aug 2024 02:58:43 -0700 (PDT)
+X-Received: by 2002:a05:6870:d146:b0:260:f054:7774 with SMTP id
+ 586e51a60fabf-26c62f08840mr1104812fac.13.1723197522921; 
+ Fri, 09 Aug 2024 02:58:42 -0700 (PDT)
+Received: from [192.168.68.54] ([43.252.112.201])
+ by smtp.gmail.com with ESMTPSA id
+ d2e1a72fcca58-710cb2e569dsm2381264b3a.146.2024.08.09.02.58.39
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 09 Aug 2024 02:58:42 -0700 (PDT)
+Message-ID: <bc15d4c3-65f6-45cf-8069-71eabcb97fc5@redhat.com>
+Date: Fri, 9 Aug 2024 19:58:37 +1000
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-TUID: INJqD43JKZxY
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 3/4] hw/arm/virt: Use kvm_arch_get_default_type()
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, pbonzini@redhat.com,
+ philmd@linaro.org, richard.henderson@linaro.org, shan.gavin@gmail.com
+References: <20240809035134.699830-1-gshan@redhat.com>
+ <20240809035134.699830-4-gshan@redhat.com>
+ <CAFEAcA_bfBNFBeJ-cMS+KACaC6Sw2VAAdg_gb5xn6-TE5C-7nA@mail.gmail.com>
+Content-Language: en-US
+From: Gavin Shan <gshan@redhat.com>
+In-Reply-To: <CAFEAcA_bfBNFBeJ-cMS+KACaC6Sw2VAAdg_gb5xn6-TE5C-7nA@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=gshan@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.141,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: HphxVnT8E/0t
 
-Kevin Wolf <kwolf@redhat.com> writes:
+On 8/9/24 6:59 PM, Peter Maydell wrote:
+> On Fri, 9 Aug 2024 at 04:52, Gavin Shan <gshan@redhat.com> wrote:
+>>
+>> kvm_arch_get_default_type() and kvm_arm_get_max_vm_ipa_size() are
+>> interchangeable since the type is equivalent to IPA size (bits)
+>> with one exception that IPA size (bits) is 40 when the type is zero.
+> 
+> Well, sort of, but they're conceptually different.
+> 
+> kvm_arch_get_default_type() is the API for "give me the value
+> I need to pass to kvm_ioctl(s, KVM_CREATE_VM, type)"; it's
+> architecture independent and different architectures do
+> different things. In the future Arm might need to do something
+> other than "just pass in the IPA size".
+> 
+> kvm_arm_get_max_vm_ipa_size() does exactly what it says on the
+> tin: it is an Arm specific function that returns the maximum
+> supported IPA size.
+> 
+> I would prefer not to conflate the two.
+> 
 
-> Am 30.07.2024 um 10:10 hat Markus Armbruster geschrieben:
->> camel_to_upper() converts its argument from camel case to upper case
->> with '_' between words.  Used for generated enumeration constant
->> prefixes.
->> 
->> When some of the words are spelled all caps, where exactly to insert
->> '_' is guesswork.  camel_to_upper()'s guesses are bad enough in places
->> to make people override them with a 'prefix' in the schema.
->> 
->> Rewrite it to guess better:
->> 
->> 1. Insert '_' after a non-upper case character followed by an upper
->>    case character:
->> 
->>        OneTwo -> ONE_TWO
->>        One2Three -> ONE2_THREE
->> 
->> 2. Insert '_' before the last upper case character followed by a
->>    non-upper case character:
->> 
->>        ACRONYMWord -> ACRONYM_Word
->> 
->>    Except at the beginning (as in OneTwo above), or when there is
->>    already one:
->> 
->>        AbCd -> AB_CD
->
-> Maybe it's just me, but the exception "at the beginning" (in the sense
-> of "after the first character") seems to be exactly where I thought
-> "that looks strange" while going through your list below.
+Agreed. Thanks for the explanation. Lets keep them separate and ignore
+this series.
 
-By "except at the beginning", I mean don't map "One" to "_ONE".
+By the way, mc->kvm_type() can be used if one machine (platform) needs
+to do more things than kvm_arch_get_default_type(), similar to what we're
+doing on 'virt' machine currently.
 
->                                                           In particular,
-> I'd expect X_DBG_* instead of XDBG_*.
+Thanks,
+Gavin
 
-What's the intent of the X in the XDbgFOO types?  Signify unstable?
 
-If yes: we don't do that elsewhere.  Type names are not part of the
-external interface.  We never used an X prefix for names of unstable
-types.  We use an x- prefix for names of unstable commands, arguments
-and members, but even that is optional today.  Feature flag @unstable is
-the source of truth.
 
-The XDbgFOO appear to be used just by x-debug-query-block-graph, which
-has feature @unstable.
-
-If the XDBG name bothers you, we can strip the X prefix from the type
-names.  Happy to do that in this series.
-
->                                       I also thought that the Q_*
-> spelling made more sense, though this might be less clear.
-
-The crypto subsystem spells its prefix qcrypto_, QCRYPTO_, and QCrypto.
-Before this series, it forces QAPI to generate QCRYPTO_ with 'prefix'
-with two exceptions, probably oversights.
-
->                                                            But in case
-> of doubt, less exceptions seems like a good choice.
-
-Agree.  I want to be able to predict generated names :)
-
->> +    # Copy remainder of ``value`` to ``ret`` with '_' inserted
->> +    for ch in value[1:]:
->> +        if ch.isupper() == upc:
->> +            pass
->> +        elif upc:
->> +            # ``ret`` ends in upper case, next char isn't: insert '_'
->> +            # before the last upper case char unless there is one
->> +            # already, or it's at the beginning
->> +            if len(ret) > 2 and ret[-2] != '_':
->> +                ret = ret[:-1] + '_' + ret[-1]
->
-> I think in the code this means I would have expected len(ret) >= 2.
-
-I'm not sure I understand what you mean.
-
-With len(ret) > 2, we map "QType" to "QTYPE".
-
-With len(ret) >= 2, we'd map it to "Q_TYPE".
 

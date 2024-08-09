@@ -1,155 +1,173 @@
-Received: by 2002:a17:504:7fd7:b0:1be9:327d:8ee3 with SMTP id hj23csp811054njc;
-        Fri, 9 Aug 2024 02:59:59 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWPrgjRA0oCv6ywqT2d0bZEu4g7uRdOgv24quiIaAFbmVOFch/jbUaCGKLz+P9nDz5F4Qvm0iOPCSAQzgnXTEkfZgrcbxZg
-X-Google-Smtp-Source: AGHT+IGsgq5iF3IJtWgb9t18jEjeZCdmomLJR7EkmBPniGAPgG8nPH/m9fnlemTm3eKujN3Ui3FF
-X-Received: by 2002:a05:6214:4a82:b0:6b5:fa20:9b3d with SMTP id 6a1803df08f44-6bd78e58db9mr12689586d6.46.1723197599547;
-        Fri, 09 Aug 2024 02:59:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1723197599; cv=none;
+Received: by 2002:a17:504:6454:b0:1be9:327d:8ee3 with SMTP id g20csp19928njh;
+        Fri, 9 Aug 2024 12:28:51 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVvPYb81mxizftq5VbHRneL8uezT6Amfw5ag5vE1Z8Xn4cJtdNVS/VUvXfugjnf7yRloKDEgxWYCrdmRDRQ5P07lt7LTE/t
+X-Received: by 2002:a05:600c:3b98:b0:427:ab29:30cf with SMTP id 5b1f17b1804b1-429c3a17143mr19402075e9.4.1723231731586;
+        Fri, 09 Aug 2024 12:28:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1723231731; cv=none;
         d=google.com; s=arc-20160816;
-        b=WCulGRebvubb7BUnpT4zHPSNdioVvgdzLRv7WwPKP3LXwp2uKEX3ACQ2Zv9BvRmsBZ
-         WNuv1O/w2waeT1dLnASTgFkde+ZssXfWXwhy/JEUidXzbxXvsoZVHYp6C5ZznwZpLhqE
-         JuwqOLHO7JcWclthjsjkDc9fmozYoWrZpbkZMp2IPoq6i1Wp5c1ghJhC545spqm3TyOB
-         cJYatdEEGYTD7y166jb9at89fy41WPlf5VqWHgJ8VjRcrhG2dnLwWx+y7CO+hqraNBaJ
-         viM/DvyrKfyEuI7IQB+ANS5SLsJKh/taqe/QcIjYdVete8arlBFIKvWvyIReAtaWtPJk
-         1xzQ==
+        b=E5jWsgYROEePXzRpWFQQAt1kfgMSis3LvGqotCp7wc+VBVuf0o5dDyGIS98ISZKVGw
+         SGHGLRQG0fksUB8awGdOyPpGm0X4RCA758ALg6Ymtn+rHTA7rRaW2whcupc56Bp9vVPS
+         ghIHrFb2SalpxU8P6JZAAfzrUyZOlHRUHBzI+VDwO4udF1O7zuJBu2lkX18RiDGlYbrc
+         XB0SNPw8b5ZCbNkAZ4eAsVOJCvKlTGMB5DNt1psXacpz7o7bwcabqCfnE04nYOEskgdh
+         IG11jH3V7WCspcYnTto+mXB+E0CXWYviP8O6CIIJ3Hlt94+KfMKMwRm8x8g5aKurLQik
+         clAA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-transfer-encoding
-         :content-disposition:mime-version:references:reply-to:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=408B7Rgl2doHbjup/9Fd6YOYEhE0YB1FzGa1vPpC/UQ=;
-        fh=b560sH9blYEj47xotWOuKCmgnyeLLSwipw30AIgNP9Q=;
-        b=A6asLYV2dY8FsK8zgHcoqMDxQ9PbSmDYKvv5QzbsxNtJzObCnunv377Iw6fXSHzMIR
-         Zb4IIFkCCwPh4Asg8hlPPSw6Jkc1x/18xAtXdBj5p8swoUyyep8lkfte2BGUEWCc6Dzn
-         DUZmmmo1GguGd3AMSbOHDIWAUhxLteZ2bCZZ4QhjLCpP/VX+vUSdgaQ2iny2tceaZGyr
-         S03i9j5kHiC0Oywoe9darTr/os+Hg5Y1Ga44aXzuHA3l4Qair4lg3i57eltUCXX4BDQc
-         c3iuMFxBBQ9mMwOBbfpozpU4dV/yak4UADTMqV9sd9XawkJWgCjs2C8mlxoL8rc37p01
-         MQtA==;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=CfqI07Mq5XGJm324B949qGeZKcnG6wqL+yz7+BuRvb0=;
+        fh=eCRVdmrW3gP5fVx7x2PTNnelMvW5zgfZsgHNHx/foIs=;
+        b=pHWjYgXu61mOWE+eJ1951JtZ/u+hRlgLDcnMSyUn/CcD/ZgJ/LPAruiRQ7LrZpP543
+         DH5wP+v6ykuYI9X0pqKYNILFnhs3XweFCShN+8pB0PUSZmiKJTYrsnTAL9ftHQpo4laW
+         aKlFXGmgxL7QXB/TIPu7c9md4goF6SFhel6vTF587Y5uDF2XiU01MedaUfWhosZNgn39
+         klcd1Wlet36SvS9EOLrVyMwbKfz0G+HdyKJtR331KHPj4Sn/sN9sAzw0OaRBElYttxzc
+         gU4lT1FAWj5Y3iZ8IoH0mDQCXmgHNQ+AzjER29ZcbYeGSpga9AoIEeDbAcdVRjFx2Fn+
+         l0zg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="WdTTPUw/";
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <berrange@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6bbbb8edab2si66095636d6.326.2024.08.09.02.59.59
+       dkim=pass header.i=@google.com header.s=20230601 header.b=QM0NEL4j;
+       spf=pass (google.com: domain of tavip@google.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=tavip@google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
+       dara=neutral header.i=@linaro.org
+Return-Path: <tavip@google.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id ffacd0b85a97d-36e4c8414a8sor49065f8f.4.2024.08.09.12.28.51
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 09 Aug 2024 02:59:59 -0700 (PDT)
-Received-SPF: pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        (Google Transport Security);
+        Fri, 09 Aug 2024 12:28:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of tavip@google.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="WdTTPUw/";
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1723197599;
-	h=from:from:reply-to:reply-to:subject:subject:date:date:
-	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
-	 content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=408B7Rgl2doHbjup/9Fd6YOYEhE0YB1FzGa1vPpC/UQ=;
-	b=WdTTPUw/kBvQM3g21J8rVSCPkTWAoD5gPAr/EedoWzECpsJEvkntxInnkA3YyFqWOgAyTN
-	swzlrKqwtGra8b0q/BaZCkIcw2vvO6JqLGbAac5d75Lvp5FObylgDAbbmxx/1M4iOZZAkf
-	0aHG3FE28oYz/GahxCkh+dBF5T5/BOk=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-265-wa1lcUNjMRGQUSYK-MkcKw-1; Fri,
- 09 Aug 2024 05:59:56 -0400
-X-MC-Unique: wa1lcUNjMRGQUSYK-MkcKw-1
-Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 424381944B29;
-	Fri,  9 Aug 2024 09:59:54 +0000 (UTC)
-Received: from redhat.com (unknown [10.42.28.27])
-	by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 3332419560A3;
-	Fri,  9 Aug 2024 09:59:48 +0000 (UTC)
-Date: Fri, 9 Aug 2024 10:59:46 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Paolo Bonzini <pbonzini@redhat.com>
-Cc: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Octavian Purdila <tavip@google.com>, John Snow <jsnow@redhat.com>,
-	qemu-devel@nongnu.org, qemu-arm@nongnu.org, stefanst@google.com,
-	alex.bennee@linaro.org, thuth@redhat.com, peter.maydell@linaro.org,
-	marcandre.lureau@redhat.com, alistair@alistair23.me,
-	crosa@redhat.com, bleal@redhat.com
+       dkim=pass header.i=@google.com header.s=20230601 header.b=QM0NEL4j;
+       spf=pass (google.com: domain of tavip@google.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=tavip@google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20230601; t=1723231731; x=1723836531; darn=linaro.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=CfqI07Mq5XGJm324B949qGeZKcnG6wqL+yz7+BuRvb0=;
+        b=QM0NEL4jaU39I6mFwX8zs3H9pUMWjmr+F8VnAlIbpymYdKq9B4EZFJ3jv/nU2uQc1I
+         VzTAQTNfEf9OjzpEsQecPS0JV+DoCVjy+UIGi2FCuPEZ3EZnS1qGtewlDm5XeYUvLGt/
+         BatpGbdWlcI1+GBD+w3BnE38Y4G70xmQn9sak/b3PPAZd8mdyTbFE4eNHFZRMW5p/FI0
+         bG+IIExBEihaz9gsBuL7Hpc3nKf0a5xx/WzukNGMXPtSR3AxmrlCLaTtRkw5139+BLZH
+         nreyeKXqAblqnciaIUl1ZnVVc63vdoeDk9erGWhHF4YSnMBgEAIz6OmDZAGp6w2izKDq
+         oGaQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1723231731; x=1723836531;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=CfqI07Mq5XGJm324B949qGeZKcnG6wqL+yz7+BuRvb0=;
+        b=MtglDGBjlKYrUfCE9XGLlIDZFsysXI7AVDseuelErxLc33B79feTQ2S53JUY45foAs
+         LYurF+jPy8tUnJzE0cj7KPDqESInBKhOz9IPPArxCEmh8nPtCeGBtwKc5aP2QwRM8NCO
+         LwubCjzenNe77rcN4HbacbF3fzJAX4MJ84nfszJ3OXCqS9MZe3+73JJX+4dy8VHYLkUg
+         Pn34oOq1ZMc0Ph2z6eWtK+qgSBFCGhOkjLh7QotbdFOLS+HxTrTUFPxspz+Ajc34+4Md
+         rrh8abxLjuVfPvVd7vos5GKL3Yh9D+WvpfaN2/4dTpF/pHA5JnuysQ8ySyABr9QHTSTn
+         M2jw==
+X-Forwarded-Encrypted: i=1; AJvYcCUWBCn5o3EqCgbJTjLxGQcsn/bfBvqM9urCPD9Ul3Te8xmZJGIlAJMkitPijc3JNmtDfoPNOBPRj2GGpPq6qcuhF7vT/Zgq
+X-Gm-Message-State: AOJu0YyjYGQxAzHaumL1RlGfFk0azod9wjTgSwDfR3aw6iLBs0kS6GmW
+	zerYJbBZXcGIiodmgwRuHJ9vw+YDF5xasgCzUX2V6Eb+ytbd+W10OzQB6pqt4Dp/6OS58fzlCQH
+	3AbJ4HAXfW6x5ER9Nbpa1+bg5x/6IKl7QvkU8hbKoySG4DUbyjS7A
+X-Google-Smtp-Source: AGHT+IGw6E/Puw/l6sN8kmtdImn36GWYnoUi1j8CyNpJvJwjGTwHh6vnHHHz5g0qbwsHnfNDui5LAE3BSjkFNBnZ11s=
+X-Received: by 2002:a05:6000:b02:b0:367:89b0:f58a with SMTP id
+ ffacd0b85a97d-36d6053e7e8mr1629737f8f.58.1723231730731; Fri, 09 Aug 2024
+ 12:28:50 -0700 (PDT)
+MIME-Version: 1.0
+References: <20240805201719.2345596-1-tavip@google.com> <20240805201719.2345596-4-tavip@google.com>
+ <CAFn=p-abeXP+dUtp_gwH3dcD5DT-sTAFg=udVugrzcU1r8fXpA@mail.gmail.com> <96cc6b27-751c-4420-b661-871a09aaf316@redhat.com>
+In-Reply-To: <96cc6b27-751c-4420-b661-871a09aaf316@redhat.com>
+From: Octavian Purdila <tavip@google.com>
+Date: Fri, 9 Aug 2024 12:28:39 -0700
+Message-ID: <CAGWr4cThLpkCA-hC2gf_cViX5dRGe7F-KFcFGepHsYZf0QVuOg@mail.gmail.com>
 Subject: Re: [RFC PATCH 03/23] scripts: add script to generate C header files
  from SVD XML files
-Message-ID: <ZrXokj7du0YgRHpz@redhat.com>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-References: <20240805201719.2345596-1-tavip@google.com>
- <20240805201719.2345596-4-tavip@google.com>
- <CAFn=p-abeXP+dUtp_gwH3dcD5DT-sTAFg=udVugrzcU1r8fXpA@mail.gmail.com>
- <CAGWr4cQL_LMWmEUdoPprRSp2k=CkQ0UJp5Q45qbAtUvvE6fDHg@mail.gmail.com>
- <9080f7e5-a40d-4cbd-a734-74578dd27894@linaro.org>
- <CABgObfY1hGKhBjwjDeKSSd5uxbe8Lc5=hVL6psB0NLbnX1bJ0g@mail.gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <CABgObfY1hGKhBjwjDeKSSd5uxbe8Lc5=hVL6psB0NLbnX1bJ0g@mail.gmail.com>
-User-Agent: Mutt/2.2.12 (2023-09-09)
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-X-TUID: YSgo08xPPKod
+To: Paolo Bonzini <pbonzini@redhat.com>
+Cc: John Snow <jsnow@redhat.com>, qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
+	stefanst@google.com, alex.bennee@linaro.org, thuth@redhat.com, 
+	peter.maydell@linaro.org, marcandre.lureau@redhat.com, alistair@alistair23.me, 
+	berrange@redhat.com, philmd@linaro.org, crosa@redhat.com, bleal@redhat.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-TUID: FQ2Z3CI4Rgrd
 
-On Fri, Aug 09, 2024 at 11:42:38AM +0200, Paolo Bonzini wrote:
-> On Fri, Aug 9, 2024 at 11:30 AM Philippe Mathieu-Daudé
-> <philmd@linaro.org> wrote:
+On Thu, Aug 8, 2024 at 11:34=E2=80=AFPM Paolo Bonzini <pbonzini@redhat.com>=
+ wrote:
+>
+> On 8/8/24 23:56, John Snow wrote:
+> > I haven't read the rest of this series; I'm chiming in solely from the
+> > build/python maintainer angle. Do we *always* need pysvd, no matter how
+> > QEMU was configured? Adding it to the meson line here is a very big ham=
+mer.
+>
+> In general I'd agree, though for a 7.5 kB package with no other
+> dependencies I'm willing to make an exception.
+>
+> The alternative would be pretty complex:
+>
+> - check if pysvd is installed in the host
+>
+> - check if a machine type that needs pysvd is enabled, defaulting to y
+> or n depending on the previous step and --enable-download
+>
+> - use that to decide between doing nothing, installing pysvd or erroring =
+out
+>
+> - pass the availability of pysvd to Kconfig
+>
+> - use that to make the final determination on whether to enable those
+> machine types that use pysvd
+>
+> This is quite obviously overengineered compared to the alternative.
+>
+> Another possibility is to ship the generated file, skip regeneration if
+> pysvd is not installed (on the host), and not touch pythondeps.toml at
+> all.  Whether shipping a generated file is acceptable should be decided
+> by Peter as ARM maintainer, personally I would go the way that Octavian
+> is going already and I'm mentioning the rest only for completeness and
+> education.
+>
+> However...
+>
+> > We also need to provide a way for pysvd to be available offline; some
+> > packages are available via distro libs and if this package is available
+> > for every distro we officially support, that's sufficient (but requires
+> > updates to our various docker and VM test configuration files to add th=
+e
+> > new dependency). Otherwise, like we do for meson, we need to vendor the
+> > wheel in the tree so offline tarball builds will continue to work.
 > >
-> > On 9/8/24 00:30, Octavian Purdila wrote:
-> > > On Thu, Aug 8, 2024 at 2:56 PM John Snow <jsnow@redhat.com> wrote:
-> >
-> >
-> > >>> diff --git a/configure b/configure
-> > >>> index 5ad1674ca5..811bfa5d54 100755
-> > >>> --- a/configure
-> > >>> +++ b/configure
-> > >>> @@ -956,7 +956,7 @@ mkvenv="$python ${source_path}/python/scripts/mkvenv.py"
-> > >>>   # Finish preparing the virtual environment using vendored .whl files
-> > >>>
-> > >>>   $mkvenv ensuregroup --dir "${source_path}/python/wheels" \
-> > >>> -     ${source_path}/pythondeps.toml meson || exit 1
-> > >>> +     ${source_path}/pythondeps.toml meson svd-gen-header || exit 1
-> > >>
-> > >
-> > > Hi John,
-> > >
-> > > Thanks for reviewing!
-> > >
-> > >>
-> > >> I haven't read the rest of this series; I'm chiming in solely from the build/python maintainer angle. Do we *always* need pysvd, no matter how QEMU was configured? Adding it to the meson line here is a very big hammer.
-> > >>
-> > >
-> > > I think the minimum we can do is to install it only if CONFIG_ARM is
-> > > enabled. That might change in the future if the models we create with
-> > > pysvd are enabled for other architectures.
-> >
-> > Similarly on how we manage libfdt, you can have meson defines
-> > SVDGEN as:
-> >
-> >    config_host_data.set('CONFIG_SVDGEN', svd_gen_header.found())
-> >
-> > Then declare SVDGEN in Kconfig.host, and finally use in the Kconfigs:
-> 
-> That would force people to install pysvd on the host, which is a pity
-> for such a small and little-known library.  We have used submodules
-> in the past for much larger and common dependencies, for example
-> capstone.
+> > It looks like pysvd is a pure python package with no dependencies, so i=
+t
+> > should be OK to vendor it in qemu.git/python/wheels/ - look at
+> > qemu.git/python/scripts/vendor.py and consider updating and running thi=
+s
+> > script.
+>
+> ... this is indeed correct.  It's not hard and it helps building on
+> older distros.  Future versions of Debian or Fedora might package pysvd,
+> but right now it's not included anywhere
+> (https://repology.org/project/python:pysvd/history).
+>
+> > That said, you might be the first person I've seen outside of Paolo and
+> > I to brave mucking around with the python build venv. You deserve a
+> > bravery sticker :)
+>
+> It's not that bad, come on. :)  But yeah, I'm positively surprised by
+> the effort to include pysvd in the virtual environment, and any
+> suggestions to improve the documentation and discoverability of the venv
+> setup are welcome.  I'm curious whether you figured it out yourself or
+> found https://www.qemu.org/docs/master/devel/build-system.html.
+>
 
-As mentioned elsewhere in thsi threads, IMHO we shoud not be running
-this generator during the build at all. It should be run once to
-create the headers needed for a particular device & the output committed
-to QEMU. There after any changes to the header (if any) need reviewing
-to ensure they don't imply an impact on guest ABI. This avoids having
-the 8.6 MB XML file in QEMU git too, as well as the pysvd dep on the
-host. Only the very rare times when we create a new device would need
-to have the pysvd code & XML.
+A combination of reading the docs above and looking at how things are
+done for other packages (meson, sphinx). It really was
+straightforward.
 
-With regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+> One thing I heard from others is that pythondeps.toml looks "too much
+> like" a fringe standard Python feature that no one has heard about.  In
+> some sense that's a great compliment, but I can see how it can be a bit
+> disconcerting.
+>
+
+Now that you mentioned it I can see how people might think that :) But
+the build system docs are pretty clear IMO.

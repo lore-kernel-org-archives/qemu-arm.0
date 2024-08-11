@@ -1,230 +1,167 @@
-Received: by 2002:a05:7022:d82:b0:85:21:bd5b with SMTP id ec2csp1057209dlb;
-        Thu, 8 Aug 2024 09:05:25 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWMKFADkoTDmMICuwXn0zKBXq/Cw4wxl2daHcKK/ZTjZyWZ5qFZkXZyApxha3PPJs+p56ZANltok9xKAO510EH45c6QwzZz
-X-Google-Smtp-Source: AGHT+IFWE2bczBXEiSuFqEE+VkzEznpbXqYfZD+tbComoP/GwNeU3PK6Pv2tLFCj0MEa4geJRXMF
-X-Received: by 2002:a05:6808:1815:b0:3da:adc3:4a5c with SMTP id 5614622812f47-3dc3b468d6amr2948094b6e.39.1723133125211;
-        Thu, 08 Aug 2024 09:05:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1723133125; cv=none;
+Received: by 2002:a17:504:6454:b0:1be9:327d:8ee3 with SMTP id g20csp543514njh;
+        Sun, 11 Aug 2024 10:41:08 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWgeATj+kGpIGnLLQXPQO5BwlYkW2RIxaSoIjyQ5seaf27COusuWBgaQvlE4l+OiROq8kADP4p+DVWhRJul/+momPb0TBrJ
+X-Google-Smtp-Source: AGHT+IGS4IRQv3aRlCblYu8xwHg5XZR0qfiO7Eu9RcibddzrzRx9eU6iVFRicBd0T9dQ/iqh/2Wu
+X-Received: by 2002:a0c:f413:0:b0:6b4:e21c:d46f with SMTP id 6a1803df08f44-6bd79c3d61cmr114652966d6.27.1723398067932;
+        Sun, 11 Aug 2024 10:41:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1723398067; cv=none;
         d=google.com; s=arc-20160816;
-        b=Sx7MGEh2iwDNDO+iGnsVq1CLWgfo+qGbGc6HLBb+mDEIZvadXWXV8WsKemAzbQ2ixz
-         Q+7LgYz5oBZpS72FDhGtC1RoWdoqQJP0Xy98MfAg9y/7vwhXXOv5fgEPP87a7SfKySjt
-         VoCUpxiNxsBJYo2UmqFJfjLHIXAlxRO94Na9oiuahNxWTLpTCbQxacY5bH4Y8MDN6c1u
-         CXr+0QfmIiKPwsM9CiZsVpIXcdABphFQ1R/t/eICmColvLeptu+cUvrCtzvB8bRUcHyY
-         xhLvJf9P7/7Pzd9SGmWAZE5eT9ZGhqh5XLXa0eYesgZQbGYHsvQ+7W/v0VSZ0LqkeJth
-         AwuQ==
+        b=YXRYHDY2COnnF9+NsGKOzS4lX5GYIQMAm9oct+CAl46t2dRmE101yZhSW6jzlWw8Mx
+         0z/xkeZJY9EXoMK6Q9S36oJLmPzhQCocRNm/Pj6gICHHBTfLOcD7E+S/suZ+RvN2Z8En
+         aKuu1/KZp3TdkdRDNE2sUfw+zWjafkSDMindP9y1dMBBc0t0WlCE9L4qNcMl1C7sjqHn
+         GMf7WMUc4nd8FTK8aqVpXDM/M1K3Enh3aQybviZTYMhaOfk6AEDqbIMxHsQvvac/eco2
+         aSiLPtoIClG8hgDLKqJ+OzbkOMGezXcFXrk121n7tW41rbQsKlTU03WLfXSPa0Tfb7wF
+         5aGQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:user-agent
-         :in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=+9sL8w5QsojHmEMAyRA5Dd5G7XNuy64k2XrWFYyv56c=;
-        fh=N5HxHITUWSLOkULx7ITQ8OrnC9xUUIL/vatdVN0Rh8s=;
-        b=EEY/NSa/UN8oKW3oe3yMeVuGoPTu3Q1B3SixVFnjRBh6DjttqwFWqIG39213FGMODo
-         YYPkyoirTSIS74dB2CHt4h1fJ0ZLD6RP+ZCeDPuU+Y/JIZ6waRJyq1W0PDUwWRIaAxq9
-         wqcx4fofgBAqXY1q0CeioyBvoMbImET8MIMiOTp6p1qlfMOAvTNZFC8f4igjUKzez5S8
-         yboRx+pCjgyhHuuZVUUhG6Se+PrJ577gtHqwwkdp3WTH41G4qlv+LJtNdfsauX9ELuDi
-         lBd4Tzo08WT/BV/aDLMG2RPplQ0aO5AlKeayfWwF4JYCIOnCM1sfQg/u8cCg7ikxRKb2
-         YT6w==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:autocrypt:from:content-language:references:cc:to
+         :subject:user-agent:mime-version:date:message-id;
+        bh=0OT6ZFFk8jYAhYA+fKh45z0v0h1lOFK3973dpELr7aE=;
+        fh=UMlouvVl3Ph4Ne7UvGTvosqVcNxKyKMHDiGsZppDwks=;
+        b=q59rsKuBajJsdXpOZ+KRajrF0YxJnfD02buYxd4QtRl255DccnBZfG14cd9fYtbHHL
+         kIe70TgbB29+K5nQ1jQ+OvpWss7po3rCno17yShDyBAdw4lPTJFcnXHOTO6KaAiw8WDU
+         u50SuvahIbA2Fb3Y4IlB6YS5DKENW2oaCVuydHnRi+vgBpKQGIanXx/6aOQf93OUqzeR
+         OCvEyGuq6gCsCuFxrH9dBan58Dp+mjQccK/wfaeUVWcR3SxtBnVnPQAjqvUVvgO39i0j
+         ItOHqfj1NWvhScsczsgMM0n0KCf1wu6z7sRhhHSVtmgHwMZ457LAy6NJQiA75BIFUlSz
+         htOA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=I+dOKbok;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a1e0cc1a2514c-83c07eefc50si2616669241.38.2024.08.08.09.05.25
+        by mx.google.com with ESMTPS id 6a1803df08f44-6bd82e8cbd4si43013296d6.538.2024.08.11.10.41.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 08 Aug 2024 09:05:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 11 Aug 2024 10:41:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=I+dOKbok;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sc5dV-0006s1-Am; Thu, 08 Aug 2024 12:05:09 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sdCYi-0003L1-GG; Sun, 11 Aug 2024 13:40:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1sc5dC-0006mi-En
- for qemu-devel@nongnu.org; Thu, 08 Aug 2024 12:04:52 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1sdCYe-0003K5-DA; Sun, 11 Aug 2024 13:40:46 -0400
+Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1sc5dA-0002eh-IA
- for qemu-devel@nongnu.org; Thu, 08 Aug 2024 12:04:50 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1723133087;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:in-reply-to:in-reply-to:  references:references;
- bh=+9sL8w5QsojHmEMAyRA5Dd5G7XNuy64k2XrWFYyv56c=;
- b=I+dOKbokBnw++a6ANiFUGeJHNbfXssCF0yKxissFqpih7R5q5j1axFaiRLoYssbnawyrBa
- xHk9kn3xTE/dyM+sxDT9iCZeMM+UysiGghRwdUR842n0xlcb7V6hpAh9hEWzwYF/7V0N8M
- sRAqhAza1d8yaXSFkgelzSbFBt+IU9Y=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-138-4k9LryapMFyJFgihj67nbQ-1; Thu,
- 08 Aug 2024 12:04:43 -0400
-X-MC-Unique: 4k9LryapMFyJFgihj67nbQ-1
-Received: from mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.40])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id AA25D196CDFE; Thu,  8 Aug 2024 16:04:41 +0000 (UTC)
-Received: from redhat.com (unknown [10.42.28.163])
- by mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 99ECF19560AA; Thu,  8 Aug 2024 16:04:38 +0000 (UTC)
-Date: Thu, 8 Aug 2024 17:04:34 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Alejandro Zeise <alejandro.zeise@seagate.com>
-Cc: qemu-arm@nongnu.org, kris.conklin@seagate.com,
- jonathan.henze@seagate.com, evan.burgess@seagate.com, clg@kaod.org,
- peter.maydell@linaro.org, qemu-devel@nongnu.org
-Subject: Re: [PATCH v4 01/15] crypto: accumulative hashing API
-Message-ID: <ZrTskk2UCzWbmupd@redhat.com>
-References: <20240807195122.2827364-1-alejandro.zeise@seagate.com>
- <20240807195122.2827364-2-alejandro.zeise@seagate.com>
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1sdCYb-0008Tt-SG; Sun, 11 Aug 2024 13:40:43 -0400
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+ by isrv.corpit.ru (Postfix) with ESMTP id 5930983D0B;
+ Sun, 11 Aug 2024 20:39:56 +0300 (MSK)
+Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
+ by tsrv.corpit.ru (Postfix) with ESMTP id 2ADB4123998;
+ Sun, 11 Aug 2024 20:40:35 +0300 (MSK)
+Message-ID: <51b8f685-2ffc-4021-9d7c-bdabdc4ba177@tls.msk.ru>
+Date: Sun, 11 Aug 2024 20:40:35 +0300
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <20240807195122.2827364-2-alejandro.zeise@seagate.com>
-User-Agent: Mutt/2.2.12 (2023-09-09)
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.40
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
-X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.141,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 00/17] target/arm: AdvSIMD decodetree conversion, part 4
+To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org
+References: <20240717060903.205098-1-richard.henderson@linaro.org>
+Content-Language: en-US, ru-RU
+From: Michael Tokarev <mjt@tls.msk.ru>
+Autocrypt: addr=mjt@tls.msk.ru; keydata=
+ xsBLBETIiwkBCADh3cFB56BQYPjtMZCfK6PSLR8lw8EB20rsrPeJtd91IoNZlnCjSoxd9Th1
+ bLUR8YlpRJ2rjc6O1Bc04VghqUOHgS/tYt8vLjcGWixzdhSLJgPDK3QQZPAvBjMbCt1B6euC
+ WuD87Pv5Udlpnzf4aMwxkgfTusx+ynae/o+T5r7tXD+isccbC3SiGhmAPxFyY3zGcFk4+Rxc
+ 0tP8YY2FWE/baHu+lBDTUN79efWAkHhex1XzVZsV7ZD16rzDbXFK5m6ApvGJWlr5YDEEydTF
+ WwmvwBfr4OINVxzEG/ujNiG4fpMf2NsnFGyB9aSbFjXZevB4qWkduYYW+xpK1EryszHtAAYp
+ zSBNaWNoYWVsIFRva2FyZXYgPG1qdEB0bHMubXNrLnJ1PsLAlgQTAQoAQAIbAwYLCQgHAwIE
+ FQIIAwQWAgMBAh4BAheAAhkBFiEEbuGV0Yhuj/uBDUMkRXzgoIBEZcUFAmBbcjwFCS5e6jMA
+ CgkQRXzgoIBEZcUTIQgA1hPsOF82pXxbcJXBMc4zB9OQu4AlnZvERoGyw7I2222QzaN3RFuj
+ Fia//mapXzpIQNF08l/AA6cx+CKPeGnXwyZfF9fLa4RfifmdNKME8C00XlqnoJDZBGzq8yMy
+ LAKDxl9OQWFcDwDxV+irg5U3fbtNVhvV0kLbS2TyQ0aU5w60ERS2NcyDWplOo7AOzZWChcA4
+ UFf78oVdZdCW8YDtU0uQFhA9moNnrePy1HSFqduxnlFHEI+fDj/TiOm2ci48b8SBBJOIJFjl
+ SBgH8+SfT9ZqkzhN9vh3YJ49831NwASVm0x1rDHcIwWD32VFZViZ3NjehogRNH9br0PSUYOC
+ 3s7ATQRX2BjLAQgAnak3m0imYOkv2tO/olULFa686tlwuvl5kL0NWCdGQeXv2uMxy36szcrh
+ K1uYhpiQv4r2qNd8BJtYlnYIK16N8GBdkplaDIHcBMbU4t+6bQzEIJIaWoq1hzakmHHngE2a
+ pNMnUf/01GFvCRPlv3imkujE/5ILbagjtdyJaHF0wGOSlTnNT4W8j+zPJ/XK0I5EVQwtbmoc
+ GY62LKxxz2pID6sPZV4zQVY4JdUQaFvOz1emnBxakkt0cq3Qnnqso1tjiy7vyH9CAwPR/48W
+ fpK6dew4Fk+STYtBeixOTfSUS8qRS/wfpUeNa5RnEdTtFQ9IcjpQ/nPrvJJsu9FqwlpjMwAR
+ AQABwsBlBBgBCAAPBQJX2BjLAhsMBQkSzAMAAAoJEEV84KCARGXFUKcH/jqKETECkbyPktdP
+ cWVqw2ZIsmGxMkIdnZTbPwhORseGXMHadQODayhU9GWfCDdSPkWDWzMamD+qStfl9MhlVT60
+ HTbo6wu1W/ogUS70qQPTY9IfsvAj6f8TlSlK0eLMa3s2UxL2oe5FkNs2CnVeRlr4Yqvp/ZQV
+ 6LXtew4GPRrmplUT/Cre9QIUqR4pxYCQaMoOXQQw3Y0csBwoDYUQujn3slbDJRIweHoppBzT
+ rM6ZG5ldWQN3n3d71pVuv80guylX8+TSB8Mvkqwb5I36/NAFKl0CbGbTuQli7SmNiTAKilXc
+ Y5Uh9PIrmixt0JrmGVRzke6+11mTjVlio/J5dCM=
+In-Reply-To: <20240717060903.205098-1-richard.henderson@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
+ helo=isrv.corpit.ru
+X-Spam_score_int: -68
+X-Spam_score: -6.9
+X-Spam_bar: ------
+X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: bBC7Zgw0K42O
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: iDJ32mt/LCdR
 
-On Wed, Aug 07, 2024 at 07:51:08PM +0000, Alejandro Zeise wrote:
-> Changes the hash API to support accumulative hashing.
-> Hash objects are created with "qcrypto_hash_new",
-> updated with data with "qcrypto_hash_update", and
-> the hash obtained with "qcrypto_hash_finalize".
+17.07.2024 09:08, Richard Henderson wrote:
+> Flush before the queue gets too big.
+> Also, there's a bug fix in patch 14.
+
+Hi!
+
+Has this patchset (together with the bugfix) been forgotten?
+Maybe we should include at least the bug fix for 9.1?
+
+Thanks,
+
+/mjt
+
+> r~
 > 
-> These changes bring the hashing API more in line with the
-> hmac API.
+> Richard Henderson (17):
+>    target/arm: Use tcg_gen_extract2_i64 for EXT
+>    target/arm: Convert EXT to decodetree
+>    target/arm: Convert TBL, TBX to decodetree
+>    target/arm: Convert UZP, TRN, ZIP to decodetree
+>    target/arm: Simplify do_reduction_op
+>    target/arm: Convert ADDV, *ADDLV, *MAXV, *MINV to decodetree
+>    target/arm: Convert FMAXNMV, FMINNMV, FMAXV, FMINV to decodetree
+>    target/arm: Convert FMOVI (scalar, immediate) to decodetree
+>    target/arm: Convert MOVI, FMOV, ORR, BIC (vector immediate) to
+>      decodetree
+>    target/arm: Introduce gen_gvec_sshr, gen_gvec_ushr
+>    target/arm: Fix whitespace near gen_srshr64_i64
+>    target/arm: Convert handle_vec_simd_shri to decodetree
+>    target/arm: Convet handle_vec_simd_shli to decodetree
+>    target/arm: Clear high SVE elements in handle_vec_simd_wshli
+>    target/arm: Use {,s}extract in handle_vec_simd_wshli
+>    target/arm: Convert SSHLL, USHLL to decodetree
+>    target/arm: Push tcg_rnd into handle_shri_with_rndacc
 > 
-> Signed-off-by: Alejandro Zeise <alejandro.zeise@seagate.com>
-> ---
->  crypto/hashpriv.h     |  13 +++++
->  include/crypto/hash.h | 119 ++++++++++++++++++++++++++++++++++++++++++
->  2 files changed, 132 insertions(+)
+>   target/arm/tcg/translate.h      |    5 +
+>   target/arm/tcg/gengvec.c        |   21 +-
+>   target/arm/tcg/translate-a64.c  | 1123 +++++++++++--------------------
+>   target/arm/tcg/translate-neon.c |   25 +-
+>   target/arm/tcg/a64.decode       |   87 +++
+>   5 files changed, 520 insertions(+), 741 deletions(-)
 > 
-> diff --git a/crypto/hashpriv.h b/crypto/hashpriv.h
-> index cee26ccb47..02f17ee99f 100644
-> --- a/crypto/hashpriv.h
-> +++ b/crypto/hashpriv.h
-> @@ -1,6 +1,7 @@
->  /*
->   * QEMU Crypto hash driver supports
->   *
-> + * Copyright (c) 2024 Seagate Technology LLC and/or its Affiliates
->   * Copyright (c) 2017 HUAWEI TECHNOLOGIES CO., LTD.
->   *
->   * Authors:
-> @@ -15,6 +16,8 @@
->  #ifndef QCRYPTO_HASHPRIV_H
->  #define QCRYPTO_HASHPRIV_H
->  
-> +#include "crypto/hash.h"
-> +
->  typedef struct QCryptoHashDriver QCryptoHashDriver;
->  
->  struct QCryptoHashDriver {
-> @@ -24,6 +27,16 @@ struct QCryptoHashDriver {
->                         uint8_t **result,
->                         size_t *resultlen,
->                         Error **errp);
-> +    QCryptoHash *(*hash_new)(QCryptoHashAlgorithm alg, Error **errp);
-> +    int (*hash_update)(QCryptoHash *hash,
-> +                       const struct iovec *iov,
-> +                       size_t niov,
-> +                       Error **errp);
-> +    int (*hash_finalize)(QCryptoHash *hash,
-> +                         uint8_t **result,
-> +                         size_t *resultlen,
-> +                         Error **errp);
-> +    void (*hash_free)(QCryptoHash *hash);
->  };
->  
->  extern QCryptoHashDriver qcrypto_hash_lib_driver;
-> diff --git a/include/crypto/hash.h b/include/crypto/hash.h
-> index 54d87aa2a1..6d7222867e 100644
-> --- a/include/crypto/hash.h
-> +++ b/include/crypto/hash.h
-> @@ -1,6 +1,7 @@
->  /*
->   * QEMU Crypto hash algorithms
->   *
-> + * Copyright (c) 2024 Seagate Technology LLC and/or its Affiliates
->   * Copyright (c) 2015 Red Hat, Inc.
->   *
->   * This library is free software; you can redistribute it and/or
-> @@ -25,6 +26,13 @@
->  
->  /* See also "QCryptoHashAlgorithm" defined in qapi/crypto.json */
->  
-> +typedef struct QCryptoHash QCryptoHash;
-> +struct QCryptoHash {
-> +    QCryptoHashAlgorithm alg;
-> +    void *opaque;
-> +    void *driver;
-> +};
-> +
->  /**
->   * qcrypto_hash_supports:
->   * @alg: the hash algorithm
-> @@ -120,6 +128,117 @@ int qcrypto_hash_digestv(QCryptoHashAlgorithm alg,
->                           char **digest,
->                           Error **errp);
->  
-> +/**
-> + * qcrypto_hash_updatev:
-> + * @hash: hash object from qcrypto_hash_new
-> + * @iov: the array of memory regions to hash
-> + * @niov: the length of @iov
-> + * @errp: pointer to a NULL-initialized error object
-> + *
-> + * Updates the given hash object with all the memory regions
-> + * present in @iov.
-> + *
-> + * Returns: 0 on success, non-zero on error
 
-Minor point, this and all the other APIs should be saying
-'or -1 on error' to follow QEMU's error reporting standards.
-
-
-With regards,
-Daniel
 -- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+GPG Key transition (from rsa2048 to rsa4096) since 2024-04-24.
+New key: rsa4096/61AD3D98ECDF2C8E  9D8B E14E 3F2A 9DD7 9199  28F1 61AD 3D98 ECDF 2C8E
+Old key: rsa2048/457CE0A0804465C5  6EE1 95D1 886E 8FFB 810D  4324 457C E0A0 8044 65C5
+Transition statement: http://www.corpit.ru/mjt/gpg-transition-2024.txt
 

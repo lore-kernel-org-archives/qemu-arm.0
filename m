@@ -1,127 +1,118 @@
-Received: by 2002:a17:504:6454:b0:1be9:327d:8ee3 with SMTP id g20csp209233njh;
-        Sat, 10 Aug 2024 04:39:19 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCU6t+fQVOO2Sp4hmCR3vWDqifc7ONQJ3Eo+IqKlx4kfk6AFciogQEvfe5neXKBdJVyxPLRzclawKIepGA==@linaro.org
-X-Google-Smtp-Source: AGHT+IHidalu9KwbvKHPEOSGnicgQNoiGQ0SfmMvazZo/Uc+kMSHeEt0RaRyS8N4NiA37tYGJ3tT
-X-Received: by 2002:a05:6214:2c0d:b0:6b5:8d15:d139 with SMTP id 6a1803df08f44-6bd79c4ff19mr68315756d6.28.1723289959224;
-        Sat, 10 Aug 2024 04:39:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1723289959; cv=none;
+Received: by 2002:a17:504:6454:b0:1be9:327d:8ee3 with SMTP id g20csp498169njh;
+        Sun, 11 Aug 2024 07:13:55 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCV1/IjWvtZzf+h5Dj1HyM3SZXbKbYwAsqsL7sSIRdbREz+BskZxmPTOYsepFV9xKksDgmv0dPbNnRRNfw==@linaro.org
+X-Google-Smtp-Source: AGHT+IH5p0MMpcnDUER9wDJE+1c3v68QyC8ELoF0RhdaaTES6e74CHhbHnqT4y1Gi+iVDj7TTz/W
+X-Received: by 2002:a05:6808:2228:b0:3d9:3f51:f351 with SMTP id 5614622812f47-3dc4167b9d8mr9766604b6e.11.1723385635137;
+        Sun, 11 Aug 2024 07:13:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1723385635; cv=none;
         d=google.com; s=arc-20160816;
-        b=A+ns4YHk9DCFakfUftdXt2BX4lP3JfpR5hBRzkcTBl4DKgMhW3jGqbQa2lO0ZwBgK+
-         LqmJ39yDI+CGbWIIeMJ8o9+Gr8+WUsQ117vf4a60J0v0iYDuc4/zrb83DSAQLY/LarzN
-         oiMIVMqaAiJlAEAeliORML6aP+aw/08kSJvle4MKc88BhddPPN2HfMAkUCmVrwn88Iwu
-         twEZXtEF1tOlaYS3ui5TL6wah5wyryREoB5k5socxe5D0GtgCtmIXihh2EZuf4XRl6eu
-         pGGaDRD/9qivWhEfd37osvrgzbBzgDRsQ//Abi/0SWdW9Gj4Wc3WvCuhtgbQlrxGj9N3
-         lK/w==
+        b=gmaXmC0gPtpX8tcgLhEQs7GC8umj3VmpD0YwZKEEErw4wPFo/g3sPpdEKdJHLf7uEZ
+         tTSXlbleHUbmbZu8geTSSUfV9y1xWqrkeMspVRT7CM6wzKLkh8t0LGoz1TTPdccZ91nu
+         seRCk3ghooKxWN50c/JKPNlzg216PD01cKI2nIn7+1/IIZcMMG091OT9rzD3IYz1oEBl
+         lGlCyHSBp9Frj8zMOTc4foGOybuCCymTClBQd5snbowubGQY16i5JGIVnaO/cfLSPAe7
+         EKnY+PzsAjWHpkeu47YB1Qy2VRzD0D9OtuTE/b1NXqcDZFs/2Uq6kn2cOFQQ6EVDi15G
+         74yg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=uFc8Sxs1W/r5mzfQK+iP1Okx2ROhixQYGlB++ayF+KA=;
-        fh=Q0YRcBZ0LxxX4sYraJSV670JDyMKITdgGLzt8RLoqVM=;
-        b=sdl/BZ9MaTSE5Q20bmcS+QT+5QlJFEZBTYcZKjDYSkcQTwLX7DLq5eNZWFhvteAviA
-         UbEzKfbusWdDsJRAz60u/J+KTF4utc0EoJ1AHBbU/k6Y5y7Q0Zt07fjiZdAYPZavDZsx
-         8CiwdKu27HYtaxr5ufiS3jUsLasHpmEihUQvjFaH1JyOSggbaVJne3rR9htseWaBAV4r
-         d29L0XOTeYHftUoLmyAbvr02hiLn2ndc1l1vFoSWQH1rF2JX6ZH5deGmTLAVUYd3s8LS
-         AI4r+T5mVMgaSjy+vmvOMG/3lnyvnvmo5K/+iJcMfvNuCQXlhnx6GOUKhegLiSrT1q73
-         qHQQ==;
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=b3ni80TmcfFPDDy+2o1RhH8opiDXCpzTFuSue7Ko/ys=;
+        fh=0ffFkGPj2+PriXw1Nhod/6X1pKVWl446VZRpuZNu8mk=;
+        b=i/6cBVuJDZ6MPD1QCq1H8s1NW1BJ5Pbc54mMUeFhUHdy11gAtV4Q+AqB41NLS4rU03
+         fqQXkexsiiOkK+40HxNoHJyB0DV7QEwT3HdBXp/stR1KIZ8aJY5ud7MOcMBm4Jlkav8o
+         wqVEzxGa5TL6lwzklwGLHjGDfgqcf1AVXIIrG5hCo3GW3QLaF914UeEyDxdfdqa7ZFNs
+         9E1CQYZu3Yy12mG6tNN/hv28rKoc/G6OJUGk2civvtqNASzowqpmZ7/1Ili3VUi5WuM4
+         JO0IT7gNGPLr4c5SOyDZCV/WYfzEoUpa4cel2bLSR9BpMlEV7jN2bSa35iF14wG6PWaN
+         Lj8w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ZfeRtLQb;
+       dkim=pass header.i=@pf-is-s-u-tokyo-ac-jp.20230601.gappssmtp.com header.s=20230601 header.b=tdHeBWHM;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dmarc=fail (p=REJECT sp=NONE dis=NONE) header.from=u-tokyo.ac.jp;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6bd82e71b38si17281486d6.425.2024.08.10.04.39.19
+        by mx.google.com with ESMTPS id d75a77b69052e-4531c2a980asi39225071cf.571.2024.08.11.07.13.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 10 Aug 2024 04:39:19 -0700 (PDT)
+        Sun, 11 Aug 2024 07:13:53 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ZfeRtLQb;
+       dkim=pass header.i=@pf-is-s-u-tokyo-ac-jp.20230601.gappssmtp.com header.s=20230601 header.b=tdHeBWHM;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dmarc=fail (p=REJECT sp=NONE dis=NONE) header.from=u-tokyo.ac.jp;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sckQZ-0002gA-26; Sat, 10 Aug 2024 07:38:31 -0400
+	id 1sd9KH-0005Tx-5G; Sun, 11 Aug 2024 10:13:43 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1sckQX-0002cO-6n
- for qemu-arm@nongnu.org; Sat, 10 Aug 2024 07:38:29 -0400
-Received: from mail-pl1-x62c.google.com ([2607:f8b0:4864:20::62c])
+ (Exim 4.90_1) (envelope-from <joe@pf.is.s.u-tokyo.ac.jp>)
+ id 1sd1N9-0007SY-E4
+ for qemu-arm@nongnu.org; Sun, 11 Aug 2024 01:44:07 -0400
+Received: from mail-il1-x130.google.com ([2607:f8b0:4864:20::130])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1sckQV-0006I9-0t
- for qemu-arm@nongnu.org; Sat, 10 Aug 2024 07:38:28 -0400
-Received: by mail-pl1-x62c.google.com with SMTP id
- d9443c01a7336-1fd69e44596so20467425ad.1
- for <qemu-arm@nongnu.org>; Sat, 10 Aug 2024 04:38:26 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <joe@pf.is.s.u-tokyo.ac.jp>)
+ id 1sd1N7-0000k6-3T
+ for qemu-arm@nongnu.org; Sun, 11 Aug 2024 01:44:07 -0400
+Received: by mail-il1-x130.google.com with SMTP id
+ e9e14a558f8ab-39834949e42so12727895ab.1
+ for <qemu-arm@nongnu.org>; Sat, 10 Aug 2024 22:44:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1723289905; x=1723894705; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=uFc8Sxs1W/r5mzfQK+iP1Okx2ROhixQYGlB++ayF+KA=;
- b=ZfeRtLQbQljo5ESj+MlFTEj+8tBgNkFhfoPvD52PS++ij9oEtzMpEMzWP3rEt5mClK
- VBz+yd572NvNAvIVqmfs2QqQgkdqpE+mfM8g5B/ftfO+xSRXYcT4FSopUUN1lbB35zxo
- 7ShjpMVSCaMSATEFP6Ibio7s0WbPg39Nl4FyZZTGiAEVQ+CB00bWmy07R+YmhzYoKv8I
- GmHo0HT0QjEs4TDn5Li6M0bkXm4zoZpIkfAKBrb6YUsDKhlmCwAuDkEFyRporQFndDbo
- ndKEQG0oRO4GUujcZiijh/6IgXtO2vAin2csSjQy1gZ07AD+NUjiabCmPqMVaqvwpSRE
- u9jA==
+ d=pf-is-s-u-tokyo-ac-jp.20230601.gappssmtp.com; s=20230601; t=1723355042;
+ x=1723959842; darn=nongnu.org; 
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=b3ni80TmcfFPDDy+2o1RhH8opiDXCpzTFuSue7Ko/ys=;
+ b=tdHeBWHMzYvEtvyKOeUx17tgUZSXCyxX2rvFPlxBJMMzo1R5wIXhaHsaNp1h5RLEf6
+ /Mupu42WSgcssgo5YAaIStFDTHityNfGj7r5rKSFZYv/AtiV6zZUCnHxtUFRgJUzDvI2
+ LDFfnH9BN+g2+sRbnjKP9pmDxgTlSlRPG27NqzWPMCX9c1N4bmeooVA9C3qiccZWJc4m
+ OdmveWWEwe8gkOJ21g7R22rEle3+0U85e1g+K/J1cwgG1ENPdHNkuxkFHR9ZpSLfutNI
+ OhCvTQP6r2IJS+DY5VUJ7qleW6LHw/6+gMaTsCv1NfUKORlOakPSgrf1f5w6cvI/qQCo
+ lSGQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1723289905; x=1723894705;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=uFc8Sxs1W/r5mzfQK+iP1Okx2ROhixQYGlB++ayF+KA=;
- b=s/FrFxq/hbboLhyLz+qUzRKO0bY2Wwj1cpFz7j1CC2C4N465UxNTmdb2JvGpOCXHSa
- cZ0S+eKPeRDgb3oyVe/lg0blgB+XFw+k/sTAx9OeWdpjF/hahD8zJxdPbJqpqsV91ahi
- c3ywpDYeLN6AAENh1R9mVamk69Du6l3fj08jGZq3DQ91/znyiQtBUHOQcF9sJbFam9b6
- bdjSlaToDLsx4aazSb/dLaLQRK+jc4xUcFWYOauBlpOZnG1vKEIXy/l9wvWhuZ+mEOUT
- WjiNZhtKn57QnbX2V6j6b8g6qWjjgmP4x+rI60dwLSUCYPqQXmglItfHH2jELG/+RA0V
- BRqQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVhnEm6FxrWjRvx3SBuuklgikM4sZn6nUrW2m1ghJDRpDhuVxKmlcqqt0cwf3AGahZuq96NEtB69Q==@nongnu.org
-X-Gm-Message-State: AOJu0Yyrl4J37cakPzgsPd4t/Yp88UCzPSbVT6JI8FC3v9sJtFsuzceJ
- tcir1HKqbfvIikdG0+N8Wi/XbKwMfsfbx6nNaHuVW1g5WFJaOZM4CrYJ/VxAUMc=
-X-Received: by 2002:a17:902:e54f:b0:1ff:5135:131f with SMTP id
- d9443c01a7336-200ae5ee46emr80933685ad.25.1723289904677; 
- Sat, 10 Aug 2024 04:38:24 -0700 (PDT)
-Received: from [192.168.1.113] ([203.30.4.111])
+ d=1e100.net; s=20230601; t=1723355042; x=1723959842;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=b3ni80TmcfFPDDy+2o1RhH8opiDXCpzTFuSue7Ko/ys=;
+ b=AO3BlSmAw3rsQ/Io4Joe7LvYW4J0D+MMBJeU0LKRraTiThsC90/34cAAQ+dZ5apD49
+ quJG7HaaP7JBOSDMACAMd5CxGfsp+3D5N4g1bKTHmLjM6cj91yesQIzH9Z/OyySK/9c3
+ n24p3p7Pu10AGbyl6055e2IQEVIHf0knfoNxCNyF0kZIW/YfJ8rcupZ92bcS+pzJ/FZ0
+ Exg/aQpmG220zfmEnnGf3SArlTdia0H4hvGpF6pOI0PqYkZEZY4rOss63a9ahj2z/+ui
+ l1nnLeaslIWR2DzQD2wsWE5Y84YxaPEGA0L/cvTYZMaYpDfqj3Nw8FpSHbI0smkiDWpF
+ jMtA==
+X-Gm-Message-State: AOJu0YyuSwTau4KaP2e6agPJWWdsWXFC5iZDWhQHBleii0VDGV8UB2Za
+ xvQCPaqELfFuyU6o3Wgltlnsb2BUsmZ8/5TIfSVfv2mdepWqf6UTXZ1nTCccHWI=
+X-Received: by 2002:a92:ca4e:0:b0:39b:324a:d381 with SMTP id
+ e9e14a558f8ab-39b748538fdmr87605725ab.2.1723355041948; 
+ Sat, 10 Aug 2024 22:44:01 -0700 (PDT)
+Received: from localhost.localdomain ([2001:f70:2520:9500:9236:bb5d:265b:266a])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-200bb9b16a2sm10391955ad.172.2024.08.10.04.38.21
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 10 Aug 2024 04:38:24 -0700 (PDT)
-Message-ID: <f0838b3c-8cc8-4333-a240-ecc8395555f9@linaro.org>
-Date: Sat, 10 Aug 2024 21:38:17 +1000
+ d9443c01a7336-200bb9b210asm18385035ad.134.2024.08.10.22.44.00
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 10 Aug 2024 22:44:01 -0700 (PDT)
+From: Joe Hattori <joe@pf.is.s.u-tokyo.ac.jp>
+To: peter.maydell@linaro.org
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ Joe Hattori <joe@pf.is.s.u-tokyo.ac.jp>
+Subject: [PATCH] target/arm/tcg: Fix overflow in matrix-multiply accumulate
+Date: Sun, 11 Aug 2024 14:43:41 +0900
+Message-Id: <20240811054341.745674-1-joe@pf.is.s.u-tokyo.ac.jp>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/2] target/arm: Fix usage of MMU indexes when EL3 is
- AArch32
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: qemu-stable@nongnu.org, Bernhard Beschow <shentey@gmail.com>
-References: <20240809160430.1144805-1-peter.maydell@linaro.org>
- <20240809160430.1144805-3-peter.maydell@linaro.org>
-Content-Language: en-US
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20240809160430.1144805-3-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62c;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62c.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: none client-ip=2607:f8b0:4864:20::130;
+ envelope-from=joe@pf.is.s.u-tokyo.ac.jp; helo=mail-il1-x130.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Sun, 11 Aug 2024 10:13:39 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -135,75 +126,50 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: LItL954zqxpC
+X-TUID: cSozNTx6cMmT
 
-On 8/10/24 02:04, Peter Maydell wrote:
-> Our current usage of MMU indexes when EL3 is AArch32 is confused.
-> Architecturally, when EL3 is AArch32, all Secure code runs under the
-> Secure PL1&0 translation regime:
->   * code at EL3, which might be Mon, or SVC, or any of the
->     other privileged modes (PL1)
->   * code at EL0 (Secure PL0)
-> 
-> This is different from when EL3 is AArch64, in which case EL3 is its
-> own translation regime, and EL1 and EL0 (whether AArch32 or AArch64)
-> have their own regime.
-> 
-> We claimed to be mapping Secure PL1 to our ARMMMUIdx_EL3, but didn't
-> do anything special about Secure PL0, which meant it used the same
-> ARMMMUIdx_EL10_0 that NonSecure PL0 does.  This resulted in a bug
-> where arm_sctlr() incorrectly picked the NonSecure SCTLR as the
-> controlling register when in Secure PL0, which meant we were
-> spuriously generating alignment faults because we were looking at the
-> wrong SCTLR control bits.
-> 
-> The use of ARMMMUIdx_EL3 for Secure PL1 also resulted in the bug that
-> we wouldn't honour the PAN bit for Secure PL1, because there's no
-> equivalent _PAN mmu index for it.
-> 
-> We could fix this in one of two ways:
->   * The most straightforward is to add new MMU indexes EL30_0,
->     EL30_3, EL30_3_PAN to correspond to "Secure PL1&0 at PL0",
->     "Secure PL1&0 at PL1", and "Secure PL1&0 at PL1 with PAN".
->     This matches how we use indexes for the AArch64 regimes, and
->     preserves propirties like being able to determine the privilege
->     level from an MMU index without any other information. However
->     it would add two MMU indexes (we can share one with ARMMMUIdx_EL3),
->     and we are already using 14 of the 16 the core TLB code permits.
-> 
->   * The more complicated approach is the one we take here. We use
->     the same MMU indexes (E10_0, E10_1, E10_1_PAN) for Secure PL1&0
->     than we do for NonSecure PL1&0. This saves on MMU indexes, but
->     means we need to check in some places whether we're in the
->     Secure PL1&0 regime or not before we interpret an MMU index.
-> 
-> The changes in this commit were created by auditing all the places
-> where we use specific ARMMMUIdx_ values, and checking whether they
-> needed to be changed to handle the new index value usage.
-> 
-> Note for potential stable backports: taking also the previous
-> (comment-change-only) commit might make the backport easier.
-> 
-> Cc:qemu-stable@nongnu.org
-> Resolves:https://gitlab.com/qemu-project/qemu/-/issues/2326
-> Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
-> ---
-> This fixes the bug with the repro case in the bug report, and it
-> also passes "make check", but I don't have a huge range of
-> Secure AArch32 test images to test with. I guess it ought to go
-> into 9.1 as a bugfix, but the nature of the patch means it's
-> not very easy to be confident it doesn't introduce any new bugs...
-> ---
->   target/arm/cpu.h               | 31 ++++++++++++++++++-------------
->   target/arm/internals.h         | 27 +++++++++++++++++++++++----
->   target/arm/tcg/translate.h     |  2 ++
->   target/arm/helper.c            | 34 +++++++++++++++++++++++-----------
->   target/arm/ptw.c               |  6 +++++-
->   target/arm/tcg/hflags.c        |  4 ++++
->   target/arm/tcg/translate-a64.c |  2 +-
->   target/arm/tcg/translate.c     |  9 +++++----
->   8 files changed, 81 insertions(+), 34 deletions(-)
+Arm's intrinsic matrix multiply accumulate instructions take two 8-bit
+vector and add up a 32-bit vector. Current emulation causes overflow
+when large 8-bit integers are used. This commit fixes the issue by
+casting the 8-bit integers to 32-bit integers before multiplication.
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Fixes: 2323c5ffd4b5 ("target/arm: Implement integer matrix multiply accumulate")
+Signed-off-by: Joe Hattori <joe@pf.is.s.u-tokyo.ac.jp>
+---
+ target/arm/tcg/vec_helper.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-r~
+diff --git a/target/arm/tcg/vec_helper.c b/target/arm/tcg/vec_helper.c
+index 98604d170fd3..e9c33520232a 100644
+--- a/target/arm/tcg/vec_helper.c
++++ b/target/arm/tcg/vec_helper.c
+@@ -2718,7 +2718,7 @@ static uint32_t do_smmla_b(uint32_t sum, void *vn, void *vm)
+     int8_t *n = vn, *m = vm;
+ 
+     for (intptr_t k = 0; k < 8; ++k) {
+-        sum += n[H1(k)] * m[H1(k)];
++        sum += (uint32_t)n[H1(k)] * (uint32_t)m[H1(k)];
+     }
+     return sum;
+ }
+@@ -2728,7 +2728,7 @@ static uint32_t do_ummla_b(uint32_t sum, void *vn, void *vm)
+     uint8_t *n = vn, *m = vm;
+ 
+     for (intptr_t k = 0; k < 8; ++k) {
+-        sum += n[H1(k)] * m[H1(k)];
++        sum += (uint32_t)n[H1(k)] * (uint32_t)m[H1(k)];
+     }
+     return sum;
+ }
+@@ -2739,7 +2739,7 @@ static uint32_t do_usmmla_b(uint32_t sum, void *vn, void *vm)
+     int8_t *m = vm;
+ 
+     for (intptr_t k = 0; k < 8; ++k) {
+-        sum += n[H1(k)] * m[H1(k)];
++        sum += (uint32_t)n[H1(k)] * (uint32_t)m[H1(k)];
+     }
+     return sum;
+ }
+-- 
+2.34.1
+

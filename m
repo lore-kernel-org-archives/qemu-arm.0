@@ -1,163 +1,214 @@
-Received: by 2002:a17:504:6454:b0:1be9:327d:8ee3 with SMTP id g20csp821463njh;
-        Mon, 12 Aug 2024 08:27:16 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCW2IBvViVq1iVOwNu1q37DeaHj5wB2aEwdvia96XHJZpHZDNr6etX4WjKMR6Wc1wEpwen3WzloJrbzqRZS3JsAeQFJF1/0N
-X-Received: by 2002:a05:6512:b29:b0:530:c1fb:51a1 with SMTP id 2adb3069b0e04-53213657cafmr342099e87.17.1723476436538;
-        Mon, 12 Aug 2024 08:27:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1723476436; cv=none;
+Received: by 2002:a17:504:6454:b0:1be9:327d:8ee3 with SMTP id g20csp823426njh;
+        Mon, 12 Aug 2024 08:32:58 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWLyzfRmyJk78dPYwYAq/MW6SNBoQOMcHqaBiLszMAHgxrabQWyyu9hkv9utxTqelEnKgfT1mBNHqs5V7ghcUJLxrCIswlT
+X-Received: by 2002:a05:6402:51ca:b0:5b4:ec9d:d66a with SMTP id 4fb4d7f45d1cf-5bd461c9a9dmr17689a12.15.1723476778397;
+        Mon, 12 Aug 2024 08:32:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1723476778; cv=none;
         d=google.com; s=arc-20160816;
-        b=cWHOGx06FpjPQxNgT3tIItDqXkBkAIKgai1QYBr9DGJFJtlrI0i55T6ES/CE+mf/u0
-         fIlOGzOdlbolQMA4e9Gh1pWhrXlMuyYspNyE55aEMfHjKOO6HljVAk4oZnENVDXyeC2x
-         xPO0ClaOrbBUPaLVTDTBTVa8tJIPdo7Yb7Ex19Ir93rqZgwSHmUHhjYrQjyeS8DAR6rQ
-         s8NtjTNoHjq/BLnDNY2cLfY/ETjeLv9lwSDbR1oHvAdZfPD3gHHng8VaAq/yIhx1hHWC
-         s4QSUkPC8h3jyFBwzdrq8ijFohweadRr5MHLPvWA6noyYdqcs1+ui0SL9OZTyFXQrSgZ
-         UZUQ==
+        b=Y8NetQ+K3ejxhFvVGqNhTuW0/d8p43Tz4Lo8DkbnLTFKCvWpNm1EBUXw4Ml678hPWM
+         QZQxGi/EOYAxYNWW9ghe6uPVtFTe96EKFN7gond0NSpjOGwj1FwrwnHALU5f83IDIBed
+         z41D9BXBbaoZNaIXWDFD1LVcDga81cTmLdHiaHSPIbq5n6tEzbbrKwx5fSo1vLx/Wgxr
+         FtCeGY8Ll+WMtCWaUkLvNJBKbfWdWLMLUxA7B6TgcPqFhvxfAn6W+DxrhNdklcYSFdGd
+         MfFGOpEJhs0yyA7XG6PxggoSypH3AO67rr9jTqRYJB42CGZUb48EbR/Ze2n+y2NX/PMy
+         lBBA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:dkim-signature;
-        bh=rXybKHARfQDWEWFNdraxZRcs71tPfZSQTZtSXdxb60Y=;
-        fh=i7pWgdAverThNYOKkWS9xqiJQIjSyncr0inPpsZVwOI=;
-        b=i6u8LE6iLjDmi3ord7VPqB4rI8P0AGW8Uv7rrd0GrO/3DzJIUWsatuk6NW7ZOSoyTZ
-         w2P03H+ejLVwabkGuCqtAdvA2ZpAjGy5wGqenmBHX5w+U9XwJ5LE8BtgSeDXNCqqW49N
-         sOp4Mw3fESl8K3xft44xr1YcwXThG9d+k6a8AIB8OAgTwIi6QBpJApD12AmYf8Azka+V
-         Ee59Q/ntHxcIv6w6CSm4OqR3E1+jfA+PmQ5Hy0GI9gMJSLvimU0FdxbuKe6RkLoalRym
-         AyGUUqAb44dmCKVjAcc59GDoaDfL1CEELnQL2IimyzwiDrY8AXnRr3OS5fIUdgCWL69k
-         truQ==;
+        bh=zh+tcHdNJStvkyZi7SCX0p4WIPRkVyIGm6MjrcYoKk0=;
+        fh=iEkHGeWN81YdYjNJvHEZ8MkOyk2PGE3m038IKQFOlH8=;
+        b=dS4DFKhrinEA79rLgdc+Wdh4IPm87b08hgsqzB0GTs4/W2F3G78EwHYR9Z56XQrwF6
+         ESktjFFtqqxPZDmZqnQKKRbiedwx7Rx3vaweB8RizPbp/KmjFhJFmGSLfSuOZ+13FM91
+         ydHQk5mKdbolJcbFlfieVW/+y5Ijp5dw2LG/q/V3gMde7/iwnw+2UmEpzxFxYJw9BAkC
+         VhBpzc6s64Q+9A43mW55vbCpWUQ8skLvVW4EInCk4SoEiXS52+4SpwpoqduO1CzP2dvB
+         QHjHSIdWg0UCTn6BXpKwojP6M8ryx/eXoUsZAQjHsnogUurYGRMqQDIsU+a7yIV7cMsi
+         smHg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=zKjOkXLB;
+       dkim=pass header.i=@linaro.org header.s=google header.b=aSNXjsT8;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <peter.maydell@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 4fb4d7f45d1cf-5bd18bdba67sor780858a12.5.2024.08.12.08.27.16
+        by mx.google.com with SMTPS id 4fb4d7f45d1cf-5bd1452b123sor1749740a12.0.2024.08.12.08.32.58
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 12 Aug 2024 08:27:16 -0700 (PDT)
+        Mon, 12 Aug 2024 08:32:58 -0700 (PDT)
 Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=zKjOkXLB;
+       dkim=pass header.i=@linaro.org header.s=google header.b=aSNXjsT8;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1723476436; x=1724081236; darn=linaro.org;
+        d=linaro.org; s=google; t=1723476778; x=1724081578; darn=linaro.org;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=rXybKHARfQDWEWFNdraxZRcs71tPfZSQTZtSXdxb60Y=;
-        b=zKjOkXLB1MthKE+andNrdXe2yYbAEP6whUh/yGyvabVmcU9NDbraQpBzg6pq0Yc0gi
-         YloJAozIT0pdZgtE+H+Aoar3BpHNQQQLrhTqnHwChNE7jA0yQYQZ5IGgYA6Zws7qJWbF
-         A6DQ4flQLBb1WHI0fWmhpA6QbxTyDvs9hzPCjfMVgxH/6V1Mi1WbENri1UOeFamHfMP6
-         V9iOxNKYZ4kJy5TY9R7eFXks3JCi8ZxFJuRvfGThXEhTG29aFvAD8lKjXjCK8s4tq8y1
-         uOPa+hoDIkOu6z+71FC68dxUUa+r9z4i09LZSBX0EyUqN4FtC07UBmgmGlhOvfEpPM9X
-         0a7g==
+        bh=zh+tcHdNJStvkyZi7SCX0p4WIPRkVyIGm6MjrcYoKk0=;
+        b=aSNXjsT8xalxrSnUTJvGtiILrbuuDmu7DnQXlQ6EdSJPoehNa5OzU5bANhDTnin2zx
+         hrhju2vaRpa5P0q3an+shwiP0elz1nJ0ZLlCONxHADnwSUL5yiaDwCzsHSfG2Owv5WFz
+         T+p/IKtxURUGXjjGmHA6OG85Dh/E2+6gwaO7710UOOhN/CzMy5vjPtob8KzakSkeq1ib
+         nZSa/aCNQUl2anuwiXzEQ74WNZ/V/5IcNFmMc3MrL6JpNg6OgrGN1QFwZe4ciUZlfkNN
+         4NoandyqQ5Hejoj+vICkA6xN3EamgugbYyvwVrgsfDrFYv3ZiWzeIKEz7WcoW8aZyZ5W
+         aWvQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1723476436; x=1724081236;
+        d=1e100.net; s=20230601; t=1723476778; x=1724081578;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=rXybKHARfQDWEWFNdraxZRcs71tPfZSQTZtSXdxb60Y=;
-        b=ZwMcMEKBnbBZ4CDzJnK2WDdob5L27OyEr9NroCIMkcNfDi4xMlN7f4e4UlFUgNpruI
-         n1FNQ33kAQvbAh0MjhTpevnIMVOcPnEpp7PW8/mX6GMGV88xuE+53H2cw7aAakIlXBxJ
-         Vcy7Nh6MwuPZCFmAPxJ4Shs2Cox85NATSww9VYATuacZtnN+LW6APVPpGupOaILZtq3P
-         ybybJum1DTQKnvICQiQ59xnEmwY15Zol2jb2eE/ZhPa9Hr5Q4R+X4XtXyKC/YWfJn937
-         3AfqofpjAL56UPCqSA6WZS06d7Lb7Q71WsRTEYG2EU5DQMTqOHNCk6I6hzvH+O29A1Xu
-         7lkQ==
-X-Forwarded-Encrypted: i=1; AJvYcCXmABbiGmsYRngfMO2JfO2SEBHWaDn4xss9/Gyqg7qlqGRh6qCJeDdyBSTbX7PYz8BHTg9xEyn8twtj6XUPVG/FraqBqayl
-X-Gm-Message-State: AOJu0Yy3bb18KE1Hf8ey8EDG39RM3k5LWnpnsKaTKtmsez1Fsss3iNQs
-	e7Pd020EPGhyHNPsMQiwNVk/yNG6IOz6mltoFLpgC8iMdu04ipdCjWIzAc4gYrG907Z7wRHs4Pp
-	z+0zFs+fIIcFssH0VIx8k7HUe+Rr3YX55WYnlevFN
-X-Google-Smtp-Source: AGHT+IEeVe5yhkoJJz3nU3VAeKWOdOhMHqBxuZRyy5yobEKnlXsreTjzSBYW80uQd548cXGqNogyUAGIe3FuaGJTldg=
-X-Received: by 2002:a05:6402:26c7:b0:5a3:3062:36c7 with SMTP id
- 4fb4d7f45d1cf-5bd44c0e442mr559593a12.7.1723476435835; Mon, 12 Aug 2024
- 08:27:15 -0700 (PDT)
+        bh=zh+tcHdNJStvkyZi7SCX0p4WIPRkVyIGm6MjrcYoKk0=;
+        b=INn9BQYTZrgNERzPs/S0HZtZAFGehsvan+erISknCueQCH5MiUc2hq9sVmYsDGVLnL
+         nLWfw+PlzGUHMt+Oh/3lBjL5zARpvCPE1yjl5UBGll01V53WUATZNnzFyaAEdZquoK5l
+         KG9nMPwFDhUPTlfwjjihf3xiSxjBC5RD64W6cJU7KCK8tETeHyxKl6nLlJrJFRX+75D/
+         I7q7XAJGWDXwjxlKOderSpMpEirBuvW0PGbfPyPYTyOOXnwQT6Z5aqxv2APQJrdaLpsh
+         jyt5RITGoN2md/OeeBmqXLjU7Rh2c2Hq27Wnp68JltXvHw7O9qQNhdOAwlNNE7ayiaW5
+         CDdw==
+X-Forwarded-Encrypted: i=1; AJvYcCV96WTgHA5w21IsKYbvd1r76vwMpe+19ymR9LOtEnQuqGgsTxuuTvgp63yVOgda4czwxxKX5b5hJcfm3ZrJWTTMq7ksAuiQ
+X-Gm-Message-State: AOJu0YyHEfRk1eTY8etf7tHFpuotcDBKRuPYFoTfMQm2uGmQf11YfcGp
+	CbsTp2mPVbNsflv/K2HJDK8+zekXJyYL9Mi5g1NFk3WsFHqwi1jGoo++NzDJh3KkLkMlbkqrvFs
+	rcSBupQFJq8CetlB46dJGryIyjK7YBRGlD3hfcb+s
+X-Google-Smtp-Source: AGHT+IEdX+pzzAuuzCSkxd4huzXwbL3Jd14+XATfxnuAQOBhZagp/wcphaR16mQ9LmjE/yEzIelzvsilJCnN5ehsGX0=
+X-Received: by 2002:a05:6402:5246:b0:5b8:4a95:2fe7 with SMTP id
+ 4fb4d7f45d1cf-5bd46176b0bmr34501a12.1.1723476777666; Mon, 12 Aug 2024
+ 08:32:57 -0700 (PDT)
 MIME-Version: 1.0
-References: <20240805201719.2345596-1-tavip@google.com> <20240805201719.2345596-4-tavip@google.com>
-In-Reply-To: <20240805201719.2345596-4-tavip@google.com>
+References: <20240805201719.2345596-1-tavip@google.com> <20240805201719.2345596-6-tavip@google.com>
+In-Reply-To: <20240805201719.2345596-6-tavip@google.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 12 Aug 2024 16:27:04 +0100
-Message-ID: <CAFEAcA82c_RZ6512dB1OxpAtinRctkZK7ZyjpxX16Wk7DYZDPg@mail.gmail.com>
-Subject: Re: [RFC PATCH 03/23] scripts: add script to generate C header files
- from SVD XML files
+Date: Mon, 12 Aug 2024 16:32:46 +0100
+Message-ID: <CAFEAcA8w47gZYV8GBQa3fNf1cBWNtm_k4DAdnOVt4RWBdSrghg@mail.gmail.com>
+Subject: Re: [RFC PATCH 05/23] hw: add register access utility functions
 To: Octavian Purdila <tavip@google.com>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, stefanst@google.com, 
 	pbonzini@redhat.com, alex.bennee@linaro.org, thuth@redhat.com, 
 	marcandre.lureau@redhat.com, alistair@alistair23.me, berrange@redhat.com, 
 	philmd@linaro.org, jsnow@redhat.com, crosa@redhat.com, bleal@redhat.com
 Content-Type: text/plain; charset="UTF-8"
-X-TUID: Zh1yqIVHhnY0
+X-TUID: kLnh+mjd8sU+
 
 On Mon, 5 Aug 2024 at 21:17, Octavian Purdila <tavip@google.com> wrote:
 >
-> From: Stefan Stanacar <stefanst@google.com>
->
-> From: Stefan Stanacar <stefanst@google.com>
->
-> The CMSIS System View Description format(CMSIS-SVD) is an XML based
-> description of Arm Cortex-M microcontrollers provided and maintained
-> by sillicon vendors. It includes details such as peripherals registers
-> (down to bitfields), peripheral register block addresses, reset
-> values, etc.
->
-> This script uses this information to create header files that makes it
-> easier to emulate peripherals.
->
-> The script can be used to create either peripheral specific headers or
-> board / system specific information. The script generated headers are
-> similar to the SVDConv utility.
->
-> Peripheral specific headers contains information such as register
-> layout, register names and reset values for registers:
->
->   typedef struct {
->     ...
->     union {
->       uint32_t PSELID;              /* 0x00000FF8 Peripheral Select and
->                                      * Flexcomm module ID */
->       struct {
->         uint32_t PERSEL : 3;        /* [2..0] Peripheral Select */
->         uint32_t LOCK : 1;          /* [3..3] Lock the peripheral select */
->         uint32_t USARTPRESENT : 1;  /* [4..4] USART present indicator */
->         uint32_t SPIPRESENT : 1;    /* [5..5] SPI present indicator */
->         uint32_t I2CPRESENT : 1;    /* [6..6] I2C present indicator */
->         uint32_t I2SPRESENT : 1;    /* [7..7] I2S Present */
->         uint32_t : 4;
->         uint32_t ID : 20;           /* [31..12] Flexcomm ID */
->       } PSELID_b;
->     };
+> Add register access utility functions for device models, like checking
+> aligned access and reading and writing to a register backstore.
 
-Bitfield layout in C isn't portable, so don't generate this kind
-of union-of-a-integer-and-some-bitfields, please. You can
-generate FIELD() macro invocations (see include/hw/registerfields.h)
-which define shift/mask/length macros that can be used with
-FIELD_EX*/FIELD_DP* to do extract/deposit operations.
 
->     ...
->   } FLEXCOMM_Type;                  /* Size = 4096 (0x1000) */
+> Signed-off-by: Octavian Purdila <tavip@google.com>
+> ---
+>  include/hw/regs.h | 89 +++++++++++++++++++++++++++++++++++++++++++++++
+>  1 file changed, 89 insertions(+)
+>  create mode 100644 include/hw/regs.h
 >
->   #define FLEXCOMM_PSELID_PERSEL_Pos (0UL)
->   #define FLEXCOMM_PSELID_PERSEL_Msk (0x7UL)
->   #define FLEXCOMM_PSELID_LOCK_Pos (3UL)
->   #define FLEXCOMM_PSELID_LOCK_Msk (0x8UL)
->   ...
->
->   typedef enum {                /* FLEXCOMM_PSELID_LOCK */
->     /* Peripheral select can be changed by software. */
->     FLEXCOMM_PSELID_LOCK_UNLOCKED = 0,
->     /* Peripheral select is locked and cannot be changed until this
->      * Flexcomm module or the entire device is reset. */
->     FLEXCOMM_PSELID_LOCK_LOCKED = 1,
->   } FLEXCOMM_PSELID_LOCK_Enum;
->   ...
->
->   #define FLEXCOMM_REGISTER_NAMES_ARRAY(_name) \
->     const char *_name[sizeof(FLEXCOMM_Type)] = { \
->         [4088 ... 4091] = "PSELID", \
->         [4092 ... 4095] = "PID", \
->     }
->
-> Board specific headers contains information about peripheral base
-> register addresses.
+> diff --git a/include/hw/regs.h b/include/hw/regs.h
+> new file mode 100644
+> index 0000000000..8d0da0629d
+> --- /dev/null
+> +++ b/include/hw/regs.h
+> @@ -0,0 +1,89 @@
+> +/*
+> + * Useful macros/functions for register handling.
+> + *
+> + * Copyright (c) 2021 Google LLC
+> + *
+> + * SPDX-License-Identifier: GPL-2.0-or-later
+> + *
+> + * This work is licensed under the terms of the GNU GPL, version 2 or later.
+> + * See the COPYING file in the top-level directory.
+> + */
+> +
+> +#ifndef HW_REGS_H
+> +#define HW_REGS_H
+> +
+> +#include "exec/hwaddr.h"
+> +#include "exec/memattrs.h"
+> +
+> +#define BITS(hi, lo)       (BIT(hi + 1) - BIT(lo))
+> +#define BIT_IS_SET(v, b)   (((v) & BIT(b)) != 0)
+
+To the extent we need these we should be putting them in
+bits.h with the other bit-related operations. (But
+prefer the existing MAKE_64BIT_MASK over adding a
+second macro that evaluates to a mask with a given
+run of bits set).
+
+> +
+> +/*
+> + * reg32_aligned_access
+> + * @addr: address to check
+> + * @size: size of access
+> + *
+> + * Check if access to a hardware address is 32bit aligned.
+> + *
+> + * Returns: true if access is 32bit aligned, false otherwise
+> + */
+> +static inline bool reg32_aligned_access(hwaddr addr, unsigned size)
+> +{
+> +    if (size != 4 || addr % 4 != 0) {
+> +        return false;
+> +    }
+> +    return true;
+> +}
+> +
+> +/*
+> + * reg32_write
+> + * @base: base address
+> + * @addr: register offset in bytes
+> + * @val: value to write
+> + * @wr_bits_array: RW bitmask array
+> + *
+> + * Update the RW/WO bits of a 32bit register backstore with a given value
+> + * (discarding updats to the RO bits). The RW/WO bits are encoded in the
+> + * @wr_bits_array with bits set being RW and bits unset being RO.
+> + *
+> + * Usage example:
+> + *
+> + * wr_bits_array[] = {
+> + *    [REG1_ADDR/4] = 0xFF000000, // MSB byte writable
+> + *    [REG2_ADDR/4] = 0xFF,       // LSB byte writable
+> + *    // all other registers are read-only
+> + * };
+> + *
+> + * // backstore is updated to 0x12000000
+> + * reg32_write(&backstore, REG1_ADDR, 0x12345678, wr_bits_array);
+> + * // backstore is updated to 0x78
+> + * reg32_write(&backstore, REG2_ADDR, 0x12345678, wr_bits_array);
+> + */
+
+This seems like it's reimplementing include/hw/register.h
+functionality. I'm not personally a super-fan of that API,
+but I definitely would prefer it if we didn't have more than
+one way to do this.
+
+> +static inline uint32_t reg32_write(void *base, uint32_t off, uint32_t val,
+> +                                   const uint32_t *rw_bits_array)
+> +{
+> +    uint32_t *ptr = base + addr;
+> +    uint32_t old_value = *ptr;
+> +    uint32_t mask = rw_bits_array ? rw_bits_array[addr / 4] : 0xFFFFFFFF;
+> +
+> +    /* set WO/RW bits */
+> +    *ptr |= val & mask;
+> +    /* clear RO bits */
+> +    *ptr &= val | ~mask;
+> +
+> +    return old_value;
+> +}
+> +
+> +/*
+> + * reg32_read
+> + * @base: base address
+> + * @addr: register offset in bytes
+> + *
+> + * Returns: 32bit value from register backstore
+> + */
+> +static inline uint32_t reg32_read(void *base, uint32_t addr)
+> +{
+> +    return *(uint32_t *)(base + addr);
+> +}
+
+Pointer type handling looks suspicious here -- if
+the thing we're accessing is really a uint32_t* then
+we should take that; if it isn't then casting it to
+one and dereferencing might be reading unaligned memory.
 
 thanks
 -- PMM

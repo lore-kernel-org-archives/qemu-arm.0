@@ -1,272 +1,473 @@
-Received: by 2002:a17:504:6454:b0:1be9:327d:8ee3 with SMTP id g20csp691636njh;
-        Mon, 12 Aug 2024 01:16:03 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUZehWjdTSXyMPdXuw0Snyke1rPGeBNVrMwcj8Oga8y8PUgnCtOLAHUuXGwqizjmTykhLxVGb2O+MuvvA==@linaro.org
-X-Google-Smtp-Source: AGHT+IHSpWsMRtCfFrsH3RpCT8a5vzg/YA63V8VcbrUfvSNE/NymDtsv6hdrXcfkXZnFUtTADBTk
-X-Received: by 2002:a05:6214:4383:b0:6bb:b1d4:6b38 with SMTP id 6a1803df08f44-6bd78d03bb8mr82304766d6.11.1723450563416;
-        Mon, 12 Aug 2024 01:16:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1723450563; cv=none;
+Received: by 2002:a17:504:6454:b0:1be9:327d:8ee3 with SMTP id g20csp709492njh;
+        Mon, 12 Aug 2024 02:39:26 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVPNy6CDmQvjDTUFmbq8LVhb0sZFo91RYc1G2IyK5+av2LD65mJMDywfRE6w3aFsQD0zYd9xwsBxfQ7luq1LUg0FacH/ZRO
+X-Google-Smtp-Source: AGHT+IFNwz2HnQcBIBeY7odFDcS4Au8sh3bYSo329GAYCLuYry0ZTAEPQ313Gz0k5QtvZzUKa5Dl
+X-Received: by 2002:a05:6902:2482:b0:e0b:f69b:da19 with SMTP id 3f1490d57ef6-e0eb9a7c3dbmr9408462276.40.1723455566183;
+        Mon, 12 Aug 2024 02:39:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1723455566; cv=none;
         d=google.com; s=arc-20160816;
-        b=v82+EYVxbwDCshfQx7T/FmMMqcA++rD+xzx/jzE3X514DnyUiKDMLV1ukIXP4Eja/J
-         cL5F7EZRnHrARqmLkt+a7sGzQuCKQ6VKrLBqspugBN6lxzj0Ptlz+xEa4TZkj31y3aHb
-         S0lc7Tq066PZHTEAR46yFaN837SOkVvh/OoF//oC7TF1bKcmrxD0nkwTLJUff9dTQiVT
-         CnQu08sS1y0TKsNbjohClY7j74aVTfBEyv+ZpZ+S44hwzyaumxXmK2t6e6Mwhu7CQTDR
-         VEFZbaj6xDSksa/NkYsUK0r3l6jTpyXiVIVzQ+uCOfnuBA4+qjpGIKG9RM+FVOmkz4sE
-         f0qg==
+        b=KxUoav93wUtV056uUdO0+MMQXQWrRRoeCEpS9xuPIYH26hhyXEKCteP6ZNcAS3WzuJ
+         6iMPaXJGIWm9RByTXINhOS9W3RwX3Ias5Z0igcnxo8p/qyURuGAg4ZRP1hy9qtfrpKvZ
+         igTAQVW6mDl8NbMTTAFKRaDQF80Juwy2qeHUBCIgl8kfiAUtpYC2SSZJNTTmjhzwn2rg
+         VOkf/ptb0YvXP3zUh46XN5kLKFZP3DSJL3LRJqbjOvfPe83lvCu7p005jlIllQxvHym0
+         WyQ+9Eubo8y/rQipcGVpAQWj5EsGs7eYxd/51ynrTkFz2IazOAlPJd9PkDLfYdT+uyup
+         1fXQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=xoL7wwtFd86vAPLugXd+UlC7FcHiJVd/NyfCXHrp6VI=;
-        fh=cYtcJUdnAaJvE6rPCmxMJ1/9fd5r4xxmyA/3RTrSAz0=;
-        b=bqENyiAoNGzCdITy7nrgLH7/Gahz7VmrX1q2h9Hxk/mjN0dujsv6gZ6zG8anAC9vK5
-         2/LrCRmLmeX3xQIDIdFWTyBoA/fMskNQVR3kN2z5NCnZ3xUwHIlHG75EtYRE6lm044rP
-         iYvj578J99R1R5VzcMx8qDYVtT5n65UL3PX8AyJP7I+vElNzNVYigTMM3atHySvPAaan
-         KcpWn+W4mmJAhQxpYBvo3+PGXsML308CNdpH9tf7bMNfSMHD8rIo9s+ssL4CC4aS0UaI
-         qSfzIjlJdrvMdagXzmTgXtWprkm9CDE5B3ENs1UpRZKCMshdDgNUCQOhjMEI0TLTVCSN
-         K/7g==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:subject:cc:to:from
+         :date:dkim-signature;
+        bh=7NWGtZUJo6pEYJDKSLc4v/k6z5SFqu6cDFxa/E9GPvU=;
+        fh=2plyQzII8wbR6GIWL73jELbtlitv0jCr0wPLJTyRfzk=;
+        b=xKdzpAjaao1s8ghkWEr99t/qKSa2xPrDUjfEsm0pa9WMyrQbH8s/4mnbiDt86phzjy
+         lke/pKaoV1ofinJKVyk7TUkf4RnFsMslsPgm4uQRapMHPwQC68uCdBVUfSjt8ks4+c3g
+         zGo6eK8MCNVlQcL07TPtIIGK7TT3NFo7sff5HmavBiks6KD2s1W3jtsntlhZ/CKuvZxt
+         JPzsZm+vXDpHtxXylVxqolQSXe08xzwNIgv/zvPGtJMRuGbUukSEnBlJnIOOamR/OtfQ
+         XW22KwEj/eHSBkseMR5xquf8JN+L2C29/1AB+XriVc7BkYoT87mEqUIR3uxOVrSeBtre
+         KVpg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hsWjPlfS;
-       spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=XJiw5Mzp;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <imammedo@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6bd82c8ba4esi55162596d6.164.2024.08.12.01.16.03
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d75a77b69052e-4531c28a64fsi55608351cf.496.2024.08.12.02.39.26
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 12 Aug 2024 01:16:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of imammedo@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 12 Aug 2024 02:39:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hsWjPlfS;
-       spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=XJiw5Mzp;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sdRWB-00079y-Ip; Mon, 12 Aug 2024 05:39:11 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1sdRWA-00078y-3K
+ for qemu-arm@nongnu.org; Mon, 12 Aug 2024 05:39:10 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1sdRW7-0004ff-N8
+ for qemu-arm@nongnu.org; Mon, 12 Aug 2024 05:39:09 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1723450563;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=xoL7wwtFd86vAPLugXd+UlC7FcHiJVd/NyfCXHrp6VI=;
-	b=hsWjPlfSgNzZEk5nsJAiWooCOW/P83f6q/yftjOD+ToKDU7rKt1U++Vb6x6sFfYffvbIRh
-	BkAtgLEpy2m2P0h/Qy/jtkfK3lN7FMZw9Yl6s+lpPGilL0iPcQPhlL5V8HF6juNf1X4N0x
-	3ZdHiggf1z7D9G8unOZ1iW8sI1qceso=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ s=mimecast20190719; t=1723455546;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=7NWGtZUJo6pEYJDKSLc4v/k6z5SFqu6cDFxa/E9GPvU=;
+ b=XJiw5Mzpey9vVupfpRLDh9CDoqWsyVIk4wavDbeX4MXgupaIp0+HkgtN1fluv6EexqGbEa
+ rHYysigkriE9EDoDLEzSTRbU7Jdgx1C9MTc02zZRqLpPaq/0kAcbwt3LSHsCkS5FlNMN06
+ rJrQje+I2zHCuUfeWcebhDlPeZ3I6Ss=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-149-HqrEfDeDN3ylABMTw3shLw-1; Mon, 12 Aug 2024 04:16:00 -0400
-X-MC-Unique: HqrEfDeDN3ylABMTw3shLw-1
-Received: by mail-wm1-f69.google.com with SMTP id 5b1f17b1804b1-42820c29a76so33830585e9.2
-        for <alex.bennee@linaro.org>; Mon, 12 Aug 2024 01:16:00 -0700 (PDT)
+ us-mta-499-1gZjm-qYMROuZFVNOvSXhA-1; Mon, 12 Aug 2024 05:39:04 -0400
+X-MC-Unique: 1gZjm-qYMROuZFVNOvSXhA-1
+Received: by mail-wr1-f72.google.com with SMTP id
+ ffacd0b85a97d-3685bbd6dfbso2422505f8f.0
+ for <qemu-arm@nongnu.org>; Mon, 12 Aug 2024 02:39:04 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1723450559; x=1724055359;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=xoL7wwtFd86vAPLugXd+UlC7FcHiJVd/NyfCXHrp6VI=;
-        b=TUtuKLVYB9BhcKHaa1Z5i4Fj8lSF2dsd1eClUdDrYobBFYElbe8xcuLRK60j7FQC+P
-         7yUR5EV2j1Gq24YuoV7rsgsFuJ7suraCqPywSEbR0v4AWQHnl9RHaIZaRCzkNDdsHRMW
-         xPyQje92YZLs+lpTEY/P75w+ToCld8g9cKlv3fcjXcn6JPYvjKOOn2/j1YfBuD3bDMMM
-         ROqjO1W8K4rJMe06T8f2dbVtHJqTDTrldFmj8R5S7U5qfxXTb1dxMcJxLpUwO4oOgNUT
-         VYTkhXU6vR8kj1xPcmUpX8h8hY3QY3zDEh2bbsu6RkUlnpD83AjgXiVr0QcFGY12SqTJ
-         CXmg==
-X-Forwarded-Encrypted: i=1; AJvYcCWxtnIih4A8kEbzN2E6v2D9KAQ9TIKmSmlyLbZdxCcYi+hcrhAdY9hMkaZSdglpe9clbJrdp5kMzI0GnQ==@linaro.org
-X-Gm-Message-State: AOJu0Yxj7e4HMgCqgulCFOR5n6PT0pIKBTZLl7wJsKnIkigzgj30dtEf
-	9jt/ReMiyXs5n8FHEqyHOI9+qz9SxW2BO8sfxr++Uqvt+GKQYvmpYOX/VYEbnJtih7i06pmeM4Y
-	BtgXIKz2NdHctPe6mJBJCS+f/tIRF2btdmiCzNcXneR3Nxy9e6p6LbQ==
-X-Received: by 2002:a05:600c:548b:b0:428:c0a:27ea with SMTP id 5b1f17b1804b1-429c3a1bc92mr51096525e9.12.1723450559277;
-        Mon, 12 Aug 2024 01:15:59 -0700 (PDT)
-X-Received: by 2002:a05:600c:548b:b0:428:c0a:27ea with SMTP id 5b1f17b1804b1-429c3a1bc92mr51096225e9.12.1723450558634;
-        Mon, 12 Aug 2024 01:15:58 -0700 (PDT)
-Return-Path: <imammedo@redhat.com>
-Received: from imammedo.users.ipa.redhat.com (nat-pool-brq-t.redhat.com. [213.175.37.10])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-429c77370b0sm94098375e9.32.2024.08.12.01.15.57
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 12 Aug 2024 01:15:57 -0700 (PDT)
-Date: Mon, 12 Aug 2024 10:15:56 +0200
+ d=1e100.net; s=20230601; t=1723455543; x=1724060343;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=7NWGtZUJo6pEYJDKSLc4v/k6z5SFqu6cDFxa/E9GPvU=;
+ b=gfWCD6t3Wd3jg3VAoobNOpEuBxcGM459cusv6iVa3LeZGrXWn2yPcw5el6OZkr480p
+ L+1CDaTJ4AdWyZdsDxB5phhjyE/qSZEODj/bcc32hWdM8DIG3whyUSs7MDRKPtpuuW1v
+ ljCYoX2uh5a/HW60ngB07debU6zqJ2FgaC7mf+V2BXtWx8dxayFRBBPqey5uwx8kqaWC
+ DJ15wESL+mID54mE2S4P5Q4PO037ZqcycA7R+S+z5L+orEZpJsPZzu3Qb9/+ALVa10pD
+ gFp5YTx2Fxut0nNwtCAlII25fz51EvBtiJjxvRNvQVc4ZS7KCfvujrnvfBHuBQtDLQFz
+ x7zA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUcHX7iXkF3QKzVlesIbYZMcqvk4da4UlBqz82W26MK9lrsBQRExyIfegmcmv53ZDTlffFSFQQzjob5QC95x6I0uyW/
+X-Gm-Message-State: AOJu0Yza9GxZc0hyjIEAnAedjk6H9dilubG4Z1XTd8X9Cnzl+dXkq6fy
+ hAso6vaiIyhk54Uxk0yAYrwkdQg/W4HQC115FXHH68V+62Tg2SrNd08PtDkp+HUjc7qej86Dabp
+ asbPr73YJJGPIO5GhN6/5s0XqlWg07Gg6DaQh0JIpsY76eRxH7w==
+X-Received: by 2002:adf:f54f:0:b0:368:557a:c64d with SMTP id
+ ffacd0b85a97d-36d5f2d103cmr5094113f8f.9.1723455543155; 
+ Mon, 12 Aug 2024 02:39:03 -0700 (PDT)
+X-Received: by 2002:adf:f54f:0:b0:368:557a:c64d with SMTP id
+ ffacd0b85a97d-36d5f2d103cmr5094094f8f.9.1723455542514; 
+ Mon, 12 Aug 2024 02:39:02 -0700 (PDT)
+Received: from imammedo.users.ipa.redhat.com (nat-pool-brq-t.redhat.com.
+ [213.175.37.10]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-36e4c36be6dsm7003011f8f.20.2024.08.12.02.39.01
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 12 Aug 2024 02:39:02 -0700 (PDT)
+Date: Mon, 12 Aug 2024 11:39:00 +0200
 From: Igor Mammedov <imammedo@redhat.com>
-To: Gavin Shan <gshan@redhat.com>
-Cc: Salil Mehta <salil.mehta@huawei.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, mst@redhat.com, maz@kernel.org,
- jean-philippe@linaro.org, jonathan.cameron@huawei.com,
- lpieralisi@kernel.org, peter.maydell@linaro.org,
- richard.henderson@linaro.org, andrew.jones@linux.dev, david@redhat.com,
- philmd@linaro.org, eric.auger@redhat.com, will@kernel.org, ardb@kernel.org,
- oliver.upton@linux.dev, pbonzini@redhat.com, rafael@kernel.org,
- borntraeger@linux.ibm.com, alex.bennee@linaro.org, npiggin@gmail.com,
- harshpb@linux.ibm.com, linux@armlinux.org.uk,
- darren@os.amperecomputing.com, ilkka@os.amperecomputing.com,
- vishnu@os.amperecomputing.com, karl.heubaum@oracle.com,
- miguel.luis@oracle.com, salil.mehta@opnsrc.net, zhukeqian1@huawei.com,
- wangxiongfeng2@huawei.com, wangyanan55@huawei.com, jiakernel2@gmail.com,
- maobibo@loongson.cn, lixianglai@loongson.cn, shahuang@redhat.com,
- zhao1.liu@intel.com, linuxarm@huawei.com
-Subject: Re: [PATCH RFC V3 01/29] arm/virt,target/arm: Add new ARMCPU
- {socket,cluster,core,thread}-id property
-Message-ID: <20240812101556.1a395712@imammedo.users.ipa.redhat.com>
-In-Reply-To: <11e627ef-d75e-4114-9b93-14d80ec0526b@redhat.com>
-References: <20240613233639.202896-1-salil.mehta@huawei.com>
-	<20240613233639.202896-2-salil.mehta@huawei.com>
-	<11e627ef-d75e-4114-9b93-14d80ec0526b@redhat.com>
+To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+Cc: Jonathan Cameron <Jonathan.Cameron@Huawei.com>, Shiju Jose
+ <shiju.jose@huawei.com>, "Michael S. Tsirkin" <mst@redhat.com>, Ani Sinha
+ <anisinha@redhat.com>, Dongjiu Geng <gengdongjiu1@gmail.com>,
+ <linux-kernel@vger.kernel.org>, <qemu-arm@nongnu.org>,
+ <qemu-devel@nongnu.org>
+Subject: Re: [PATCH v5 6/7] acpi/ghes: add support for generic error
+ injection via QAPI
+Message-ID: <20240812113900.25078ccc@imammedo.users.ipa.redhat.com>
+In-Reply-To: <20240808201903.077093ca@foz.lan>
+References: <cover.1722634602.git.mchehab+huawei@kernel.org>
+ <20c491e357340e0062b6ff09867c1661ed4d2479.1722634602.git.mchehab+huawei@kernel.org>
+ <20240806163113.3bdc260a@imammedo.users.ipa.redhat.com>
+ <20240807152547.000058fd@Huawei.com>
+ <20240808101107.105a124f@imammedo.users.ipa.redhat.com>
+ <20240808201903.077093ca@foz.lan>
 X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-X-TUID: 1V290QSz2GS/
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=imammedo@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -22
+X-Spam_score: -2.3
+X-Spam_bar: --
+X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.125,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: HwFUfYwOdi+N
 
-On Mon, 12 Aug 2024 14:35:56 +1000
-Gavin Shan <gshan@redhat.com> wrote:
+On Thu, 8 Aug 2024 20:19:03 +0200
+Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
 
-> On 6/14/24 9:36 AM, Salil Mehta wrote:
-> > This shall be used to store user specified topology{socket,cluster,core,thread}
-> > and shall be converted to a unique 'vcpu-id' which is used as slot-index during
-> > hot(un)plug of vCPU.
+> Em Thu, 8 Aug 2024 10:11:07 +0200
+> Igor Mammedov <imammedo@redhat.com> escreveu:
+> 
+> > On Wed, 7 Aug 2024 15:25:47 +0100
+> > Jonathan Cameron <Jonathan.Cameron@Huawei.com> wrote:
+> >   
+> > > On Tue, 6 Aug 2024 16:31:13 +0200
+> > > Igor Mammedov <imammedo@redhat.com> wrote:
+> > >     
+> > > > On Fri,  2 Aug 2024 23:44:01 +0200
+> > > > Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
+> > > >       
+> > > > > Provide a generic interface for error injection via GHESv2.
+> > > > > 
+> > > > > This patch is co-authored:
+> > > > >     - original ghes logic to inject a simple ARM record by Shiju Jose;
+> > > > >     - generic logic to handle block addresses by Jonathan Cameron;
+> > > > >     - generic GHESv2 error inject by Mauro Carvalho Chehab;
+> > > > > 
+> > > > > Co-authored-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+> > > > > Co-authored-by: Shiju Jose <shiju.jose@huawei.com>
+> > > > > Co-authored-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+> > > > > Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+> > > > > Cc: Shiju Jose <shiju.jose@huawei.com>
+> > > > > Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+> > > > > ---
+> > > > >  hw/acpi/ghes.c         | 159 ++++++++++++++++++++++++++++++++++++++---
+> > > > >  hw/acpi/ghes_cper.c    |   2 +-
+> > > > >  include/hw/acpi/ghes.h |   3 +
+> > > > >  3 files changed, 152 insertions(+), 12 deletions(-)
+> > > > > 
+> > > > > diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
+> > > > > index a745dcc7be5e..e125c9475773 100644
+> > > > > --- a/hw/acpi/ghes.c
+> > > > > +++ b/hw/acpi/ghes.c
+> > > > > @@ -395,23 +395,22 @@ void acpi_ghes_add_fw_cfg(AcpiGhesState *ags, FWCfgState *s,
+> > > > >      ags->present = true;
+> > > > >  }
+> > > > >  
+> > > > > +static uint64_t ghes_get_state_start_address(void)        
+> > > > 
+> > > > ghes_get_hardware_errors_address() might better reflect what address it will return
+> > > >       
+> > > > > +{
+> > > > > +    AcpiGedState *acpi_ged_state =
+> > > > > +        ACPI_GED(object_resolve_path_type("", TYPE_ACPI_GED, NULL));
+> > > > > +    AcpiGhesState *ags = &acpi_ged_state->ghes_state;
+> > > > > +
+> > > > > +    return le64_to_cpu(ags->ghes_addr_le);
+> > > > > +}
+> > > > > +
+> > > > >  int acpi_ghes_record_errors(uint8_t source_id, uint64_t physical_address)
+> > > > >  {
+> > > > >      uint64_t error_block_addr, read_ack_register_addr, read_ack_register = 0;
+> > > > > -    uint64_t start_addr;
+> > > > > +    uint64_t start_addr = ghes_get_state_start_address();
+> > > > >      bool ret = -1;
+> > > > > -    AcpiGedState *acpi_ged_state;
+> > > > > -    AcpiGhesState *ags;
+> > > > > -
+> > > > >      assert(source_id < ACPI_HEST_SRC_ID_RESERVED);
+> > > > >  
+> > > > > -    acpi_ged_state = ACPI_GED(object_resolve_path_type("", TYPE_ACPI_GED,
+> > > > > -                                                       NULL));
+> > > > > -    g_assert(acpi_ged_state);
+> > > > > -    ags = &acpi_ged_state->ghes_state;
+> > > > > -
+> > > > > -    start_addr = le64_to_cpu(ags->ghes_addr_le);
+> > > > > -
+> > > > >      if (physical_address) {
+> > > > >          start_addr += source_id * sizeof(uint64_t);        
+> > > > 
+> > > > above should be a separate patch
+> > > >       
+> > > > >  
+> > > > > @@ -448,9 +447,147 @@ int acpi_ghes_record_errors(uint8_t source_id, uint64_t physical_address)
+> > > > >      return ret;
+> > > > >  }
+> > > > >  
+> > > > > +/*
+> > > > > + * Error register block data layout
+> > > > > + *
+> > > > > + * | +---------------------+ ges.ghes_addr_le
+> > > > > + * | |error_block_address0 |
+> > > > > + * | +---------------------+
+> > > > > + * | |error_block_address1 |
+> > > > > + * | +---------------------+ --+--
+> > > > > + * | |    .............    | GHES_ADDRESS_SIZE
+> > > > > + * | +---------------------+ --+--
+> > > > > + * | |error_block_addressN |
+> > > > > + * | +---------------------+
+> > > > > + * | | read_ack0           |
+> > > > > + * | +---------------------+ --+--
+> > > > > + * | | read_ack1           | GHES_ADDRESS_SIZE
+> > > > > + * | +---------------------+ --+--
+> > > > > + * | |   .............     |
+> > > > > + * | +---------------------+
+> > > > > + * | | read_ackN           |
+> > > > > + * | +---------------------+ --+--
+> > > > > + * | |      CPER           |   |
+> > > > > + * | |      ....           | GHES_MAX_RAW_DATA_LENGT
+> > > > > + * | |      CPER           |   |
+> > > > > + * | +---------------------+ --+--
+> > > > > + * | |    ..........       |
+> > > > > + * | +---------------------+
+> > > > > + * | |      CPER           |
+> > > > > + * | |      ....           |
+> > > > > + * | |      CPER           |
+> > > > > + * | +---------------------+
+> > > > > + */        
+> > > > 
+> > > > no need to duplicate docs/specs/acpi_hest_ghes.rst,
+> > > > I'd just reffer to it and maybe add short comment as to why it's mentioned.
+> > > >       
+> > > > > +/* Map from uint32_t notify to entry offset in GHES */
+> > > > > +static const uint8_t error_source_to_index[] = { 0xff, 0xff, 0xff, 0xff,
+> > > > > +                                                 0xff, 0xff, 0xff, 1, 0};
+> > > > > +
+> > > > > +static bool ghes_get_addr(uint32_t notify, uint64_t *error_block_addr,
+> > > > > +                          uint64_t *read_ack_addr)
+> > > > > +{
+> > > > > +    uint64_t base;
+> > > > > +
+> > > > > +    if (notify >= ACPI_GHES_NOTIFY_RESERVED) {
+> > > > > +        return false;
+> > > > > +    }
+> > > > > +
+> > > > > +    /* Find and check the source id for this new CPER */
+> > > > > +    if (error_source_to_index[notify] == 0xff) {
+> > > > > +        return false;
+> > > > > +    }
+> > > > > +
+> > > > > +    base = ghes_get_state_start_address();
+> > > > > +
+> > > > > +    *read_ack_addr = base +
+> > > > > +        ACPI_GHES_ERROR_SOURCE_COUNT * sizeof(uint64_t) +
+> > > > > +        error_source_to_index[notify] * sizeof(uint64_t);
+> > > > > +
+> > > > > +    /* Could also be read back from the error_block_address register */
+> > > > > +    *error_block_addr = base +
+> > > > > +        ACPI_GHES_ERROR_SOURCE_COUNT * sizeof(uint64_t) +
+> > > > > +        ACPI_GHES_ERROR_SOURCE_COUNT * sizeof(uint64_t) +
+> > > > > +        error_source_to_index[notify] * ACPI_GHES_MAX_RAW_DATA_LENGTH;
+> > > > > +
+> > > > > +    return true;
+> > > > > +}        
+> > > > 
+> > > > I don't like all this pointer math, which is basically a reverse engineered
+> > > > QEMU actions on startup + guest provided etc/hardware_errors address.
+> > > > 
+> > > > For once, it assumes error_source_to_index[] matches order in which HEST
+> > > > error sources were described, which is fragile.
+> > > > 
+> > > > 2nd: migration-wive it's disaster, since old/new HEST/hardware_errors tables
+> > > > in RAM migrated from older version might not match above assumptions
+> > > > of target QEMU. 
+> > > > 
+> > > > I see 2 ways to rectify it:
+> > > >   1st: preferred/cleanest would be to tell QEMU (via fw_cfg) address of HEST table
+> > > >        in guest RAM, like we do with etc/hardware_errors, see
+> > > >             build_ghes_error_table()
+> > > >                ...
+> > > >                tell firmware to write hardware_errors GPA into
+> > > >        and then fetch from HEST table in RAM, the guest patched error/ack addresses
+> > > >        for given source_id
+> > > > 
+> > > >        code-wise: relatively simple once one wraps their own head over
+> > > >                  how this whole APEI thing works in QEMU
+> > > >                  workflow  is described in docs/specs/acpi_hest_ghes.rst
+> > > >                  look to me as sufficient to grasp it.
+> > > >                  (but my view is very biased given my prior knowledge,
+> > > >                   aka: docs/comments/examples wrt acpi patching are good enough)
+> > > >                  (if it's not clear how to do it, ask me for pointers)      
+> > > 
+> > > Hi Igor, I think I follow what you mean but maybe this question will reveal
+> > > otherwise.  HEST is currently in ACPI_BUILD_TABLE_FILE.
+> > > Would you suggest splitting it to it's own file, or using table_offsets
+> > > to get the offset in ACPI_BUILD_TABLE_FILE GPA?    
+> > yep, offset taken right before HEST is to be created
+> > doc comment for bios_linker_loader_write_pointer() explains how it works
 > > 
-> > Co-developed-by: Keqian Zhu <zhukeqian1@huawei.com>
-> > Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
-> > Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
-> > ---
-> >   hw/arm/virt.c         | 10 ++++++++++
-> >   include/hw/arm/virt.h | 28 ++++++++++++++++++++++++++++
-> >   target/arm/cpu.c      |  4 ++++
-> >   target/arm/cpu.h      |  4 ++++
-> >   4 files changed, 46 insertions(+)
-> >   
+> > we need something like:
+> >        bios_linker_loader_write_pointer(linker,
+> >            ACPI_HEST_TABLE_ADDR_FW_CFG_FILE, 0, sizeof(uint64_t),
+> >            ACPI_BUILD_TABLE_FILE, hest_offset_within_ACPI_BUILD_TABLE_FILE); 
+> > 
+> > to register new file see:
+> >    a08a64627 ACPI: Record the Generic Error Status Block address
+> >    and to avoid copy past error maybe
+> >    136fc6aa2 ACPI: Avoid infinite recursion when dump-vmstat
+> > for this needs to be limited to new machine types and keep
+> > old ones without this new feature. (I'd use hw_compat_ machinery for that)  
 > 
-> Those 4 properties are introduced to determine the vCPU's slot, which is the index
-> to MachineState::possible_cpus::cpus[]. From there, the CPU object or instance is
-> referenced and then the CPU's state can be further determined. It sounds reasonable
-> to use the CPU's topology to determine the index. However, I'm wandering if this can
-> be simplified to use 'cpu-index' or 'index' for a couple of facts: (1) 'cpu-index'
-
-Please, don't. We've spent a bunch of time to get rid of cpu-index in user
-visible interface (well, old NUMA CLI is still there along with 'new' topology
-based one, but that's the last one).
-
-> or 'index' is simplified. Users have to provide 4 parameters in order to determine
-> its index in the extreme case, for example "device_add host-arm-cpu, id=cpu7,socket-id=1,
-> cluster-id=1,core-id=1,thread-id=1". With 'cpu-index' or 'index', it can be simplified
-> to 'index=7'. (2) The cold-booted and hotpluggable CPUs are determined by their index
-> instead of their topology. For example, CPU0/1/2/3 are cold-booted CPUs while CPU4/5/6/7
-> are hotpluggable CPUs with command lines '-smp maxcpus=8,cpus=4'. So 'index' makes
-> more sense to identify a vCPU's slot.
-cpu-index have been used for hotplug with x86 machines as a starting point
-to implement hotplug as it was easy to hack and it has already existed in QEMU.
-
-But that didn't scale as was desired and had its own issues.
-Hence the current interface that majority agreed upon.
-I don't remember exact arguments anymore (they could be found qemu-devel if needed)
-Here is a link to the talk that tried to explain why topo based was introduced.
-  http://events17.linuxfoundation.org/sites/events/files/slides/CPU%20Hot-plug%20support%20in%20QEMU.pdf
-
-
-> > diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> > index 3c93c0c0a6..11fc7fc318 100644
-> > --- a/hw/arm/virt.c
-> > +++ b/hw/arm/virt.c
-> > @@ -2215,6 +2215,14 @@ static void machvirt_init(MachineState *machine)
-> >                             &error_fatal);
-> >   
-> >           aarch64 &= object_property_get_bool(cpuobj, "aarch64", NULL);
-> > +        object_property_set_int(cpuobj, "socket-id",
-> > +                                virt_get_socket_id(machine, n), NULL);
-> > +        object_property_set_int(cpuobj, "cluster-id",
-> > +                                virt_get_cluster_id(machine, n), NULL);
-> > +        object_property_set_int(cpuobj, "core-id",
-> > +                                virt_get_core_id(machine, n), NULL);
-> > +        object_property_set_int(cpuobj, "thread-id",
-> > +                                virt_get_thread_id(machine, n), NULL);
-> >   
-> >           if (!vms->secure) {
-> >               object_property_set_bool(cpuobj, "has_el3", false, NULL);
-> > @@ -2708,6 +2716,7 @@ static const CPUArchIdList *virt_possible_cpu_arch_ids(MachineState *ms)
-> >   {
-> >       int n;
-> >       unsigned int max_cpus = ms->smp.max_cpus;
-> > +    unsigned int smp_threads = ms->smp.threads;
-> >       VirtMachineState *vms = VIRT_MACHINE(ms);
-> >       MachineClass *mc = MACHINE_GET_CLASS(vms);
-> >   
-> > @@ -2721,6 +2730,7 @@ static const CPUArchIdList *virt_possible_cpu_arch_ids(MachineState *ms)
-> >       ms->possible_cpus->len = max_cpus;
-> >       for (n = 0; n < ms->possible_cpus->len; n++) {
-> >           ms->possible_cpus->cpus[n].type = ms->cpu_type;
-> > +        ms->possible_cpus->cpus[n].vcpus_count = smp_threads;
-> >           ms->possible_cpus->cpus[n].arch_id =
-> >               virt_cpu_mp_affinity(vms, n);
-> >     
+> Not sure if I got it. The code, after this patch from my v6:
 > 
-> Why @vcpus_count is initialized to @smp_threads? it needs to be documented in
-> the commit log.
+> 	https://lore.kernel.org/qemu-devel/5710c364d7ef6cdab6b2f1e127ef191bdf84e8c2.1723119423.git.mchehab+huawei@kernel.org/T/#u
 > 
-> > diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-> > index bb486d36b1..6f9a7bb60b 100644
-> > --- a/include/hw/arm/virt.h
-> > +++ b/include/hw/arm/virt.h
-> > @@ -209,4 +209,32 @@ static inline int virt_gicv3_redist_region_count(VirtMachineState *vms)
-> >               vms->highmem_redists) ? 2 : 1;
-> >   }
-> >   
-> > +static inline int virt_get_socket_id(const MachineState *ms, int cpu_index)
-> > +{
-> > +    assert(cpu_index >= 0 && cpu_index < ms->possible_cpus->len);
-> > +
-> > +    return ms->possible_cpus->cpus[cpu_index].props.socket_id;
-> > +}
-> > +
-> > +static inline int virt_get_cluster_id(const MachineState *ms, int cpu_index)
-> > +{
-> > +    assert(cpu_index >= 0 && cpu_index < ms->possible_cpus->len);
-> > +
-> > +    return ms->possible_cpus->cpus[cpu_index].props.cluster_id;
-> > +}
-> > +
-> > +static inline int virt_get_core_id(const MachineState *ms, int cpu_index)
-> > +{
-> > +    assert(cpu_index >= 0 && cpu_index < ms->possible_cpus->len);
-> > +
-> > +    return ms->possible_cpus->cpus[cpu_index].props.core_id;
-> > +}
-> > +
-> > +static inline int virt_get_thread_id(const MachineState *ms, int cpu_index)
-> > +{
-> > +    assert(cpu_index >= 0 && cpu_index < ms->possible_cpus->len);
-> > +
-> > +    return ms->possible_cpus->cpus[cpu_index].props.thread_id;
-> > +}
-> > +
-> >   #endif /* QEMU_ARM_VIRT_H */
-> > diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-> > index 77f8c9c748..abc4ed0842 100644
-> > --- a/target/arm/cpu.c
-> > +++ b/target/arm/cpu.c
-> > @@ -2582,6 +2582,10 @@ static Property arm_cpu_properties[] = {
-> >       DEFINE_PROP_UINT64("mp-affinity", ARMCPU,
-> >                           mp_affinity, ARM64_AFFINITY_INVALID),
-> >       DEFINE_PROP_INT32("node-id", ARMCPU, node_id, CPU_UNSET_NUMA_NODE_ID),
-> > +    DEFINE_PROP_INT32("socket-id", ARMCPU, socket_id, 0),
-> > +    DEFINE_PROP_INT32("cluster-id", ARMCPU, cluster_id, 0),
-> > +    DEFINE_PROP_INT32("core-id", ARMCPU, core_id, 0),
-> > +    DEFINE_PROP_INT32("thread-id", ARMCPU, thread_id, 0),
-> >       DEFINE_PROP_INT32("core-count", ARMCPU, core_count, -1),
-> >       /* True to default to the backward-compat old CNTFRQ rather than 1Ghz */
-> >       DEFINE_PROP_BOOL("backcompat-cntfrq", ARMCPU, backcompat_cntfrq, false),
-> > diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-> > index c17264c239..208c719db3 100644
-> > --- a/target/arm/cpu.h
-> > +++ b/target/arm/cpu.h
-> > @@ -1076,6 +1076,10 @@ struct ArchCPU {
-> >       QLIST_HEAD(, ARMELChangeHook) el_change_hooks;
-> >   
-> >       int32_t node_id; /* NUMA node this CPU belongs to */
-> > +    int32_t socket_id;
-> > +    int32_t cluster_id;
-> > +    int32_t core_id;
-> > +    int32_t thread_id;
-> >   
-> >       /* Used to synchronize KVM and QEMU in-kernel device levels */
-> >       uint8_t device_irq_level;  
+> Already stores two of the three address offsets via 
+> bios_linker_loader_add_pointer(), e. g. it is similar to the
+> code below (I simplified the code to make the example clearer):
 > 
+> <snip>
+> /* From hw/arm/virt-acpi-build.c */
+> static
+> void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
+> {
+>     ...
+>     if (vms->ras) {
+>         build_ghes_error_table(tables->hardware_errors, tables->linker);
+>         acpi_add_table(table_offsets, tables_blob);
+> 	/* internally, call build_ghes_v2() for SEA and GED notification sources */
+>         acpi_build_hest(tables_blob, tables->linker, vms->oem_id,
+>                         vms->oem_table_id);
+>     }
+>     ...
+> }
+> 
+> /* From hw/acpi/ghes.c */
+> static void build_ghes_v2(GArray *table_data,
+>                           enum AcpiGhesNotifyType notify,
+>                           BIOSLinker *linker)
+> {
+>     uint64_t address_offset, ack_offset, block_addr_offset, cper_offset;
+>     enum AcpiHestSourceId source_id;
+> 
+>     /* 
+>      * Get offsets for either SEA or GED notification - easy to extend
+>      * to all mechanisms like MCE and SCI to better support x86
+>      */
+>     assert(!acpi_hest_address_offset(notify, &block_addr_offset, &ack_offset,
+>                                      &cper_offset, &source_id));
+> 
+>     bios_linker_loader_add_pointer(linker, ACPI_BUILD_TABLE_FILE,
+>                                    address_offset + GAS_ADDR_OFFSET,
+>                                    sizeof(uint64_t),
+>                                    ACPI_GHES_ERRORS_FW_CFG_FILE,
+>                                    block_addr_offset);
+> 
+>     bios_linker_loader_add_pointer(linker, ACPI_BUILD_TABLE_FILE,
+>                                    address_offset + GAS_ADDR_OFFSET,
+>                                    sizeof(uint64_t),
+>                                    ACPI_GHES_ERRORS_FW_CFG_FILE,
+>                                    ack_offset);
+> 
+>     /* Current code ignores &cper_offset when creating HEST */
+> }
+> 
+> void ghes_record_cper_errors(AcpiGhesCper *cper, Error **errp,
+>                              enum AcpiGhesNotifyType notify)
+> {
+>     uint64_t cper_addr, read_ack_start_addr;
+> 
+>     assert(!ghes_get_hardware_errors_address(notify, NULL, &read_ack_start_addr,
+>                                          &cper_addr, NULL));
+> 
+>     /*
+>      * Use cpu_physical_memory_read/write() to
+>      *  - read/store at read_ack_start_addr 
+>      *  - Write cper block GArray at cper_addr
+>      */
+> }
+> </snip>
+> 
+> We may also store cper_offset there via bios_linker_loader_add_pointer()
+> and/or use bios_linker_loader_write_pointer(), but I can't see how the
+> data stored there can be retrieved, nor any advantage of using it instead
+> of the current code, as, in the end, we'll have 3 addresses that will be
+> used:
+> 
+> 	- an address where a pointer to CPER record will be stored;
+> 	- an address where the ack will be stored;
+> 	- an address where the actual CPER record will be stored.
+> 
+> And those are calculated on a single function and are all stored at the
+> ACPI table files.
+>
+> What am I missing?
+
+That's basically (2) approach and it works to some degree,
+unfortunately it's fragile when we start talking about migration
+and changing layout in the future.
+
+Lets take as example increasing size of 1) 'Generic Error Status Block',
+we are considering. Old QEMU will, tell firmware to allocate 1K buffer
+for it and calculated offsets to [1] (that you've stored/calculated) will
+include this assumption.
+Then in newer we QEMU increase size of [1] and all hardcoded offsets will
+account for new size, but if we migrate guest from old QEMU to this newer
+one all HEST tables layout within guest will match old QEMU assumptions,
+and as result newer QEMU with larger block size will write CPERs at wrong
+address considering we are still running guest from old QEMU.
+That's just one example.
+
+To make it work there a number of ways, but the ultimate goal is to pick
+one that's the least fragile and won't snowball in maintenance nightmare
+as number of GHES sources increases over time.
+
+This series tries to solve problem of mapping GHES source to
+a corresponding 'Generic Error Status Block' and related registers.
+However we are missing access to this mapping since it only
+exists in guest patched HEST (i.e in guest RAM only).
+
+The robust way to make it work would be for QEMU to get a pointer
+to whole HEST table and then enumerate GHES sources and related
+error/ack registers directly from guest RAM (sidestepping layout
+change issues this way).
+
+what I'm proposing is to use bios_linker_loader_write_pointer()
+(only once) so that firmware could tell QEMU address of HEST table,
+in which one can find a GHES source and always correct error/ack
+pointers (regardless of table[s] layout changes).
+
+
 > Thanks,
-> Gavin
+> Mauro
 > 
+

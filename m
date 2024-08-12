@@ -1,168 +1,162 @@
-Received: by 2002:a17:504:6454:b0:1be9:327d:8ee3 with SMTP id g20csp744371njh;
-        Mon, 12 Aug 2024 04:59:41 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCXiRPW6aO0vfMUvg6MOxJx5Zjv7kBjkMY1C6E/ANoYR8ypFOwt46CJqSBMmNS26TcuKM6JFOADxVLNTSfddnPWmUVLEAOuU
-X-Google-Smtp-Source: AGHT+IFOlSMGDrXIUQL0kl4XjJ3bMzaUn9uXH4g4idi3xVZDMXVInK38ZBk2yDAoxqpjscjMzxKz
-X-Received: by 2002:a17:902:e744:b0:1fb:81ec:26e5 with SMTP id d9443c01a7336-201ca1726d0mr714895ad.28.1723463981212;
-        Mon, 12 Aug 2024 04:59:41 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1723463981; cv=pass;
+Received: by 2002:a17:504:6454:b0:1be9:327d:8ee3 with SMTP id g20csp817382njh;
+        Mon, 12 Aug 2024 08:15:32 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXMrqp5Ug7IQg0MFEPThTlVkapsTqovfBBbdC6TTf++40wcxJ8pG2Exd+Ta5TwqPVDh90syceRT5yKFL3qRgpDwtliOuDoj
+X-Google-Smtp-Source: AGHT+IE9iE40NQqgv4GwLPEmgQITvLbbFRdniSF0lopZK80JjSBcyi1UV4sqVN05yD2Kdllys+E+
+X-Received: by 2002:a05:6214:568c:b0:6b5:a8b9:e8ab with SMTP id 6a1803df08f44-6bf4f872ffamr5787776d6.49.1723475732461;
+        Mon, 12 Aug 2024 08:15:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1723475732; cv=none;
         d=google.com; s=arc-20160816;
-        b=Kh5pjJBju3OBSTAeuWtGh6jpl73j5XvETAjo4oPcASaqO29P7wNKkHbt5XReTTQe6n
-         pQ6nmwI1cmmG1yECEHguyTU4lULYHM2HdxkPykaN3ha2qfj1mL2AUjas8tFKuKSBx+Tt
-         KuE6q62xw2tW5rChiCa8vD69So8iUHTFxZVgmpymjixfeKsVt5ZN0LCkwdhXfG5JHwTd
-         Qfb7CsGybR1pxmJfXvskbn1VUiiZYi4kZ1PAALIYqfFixk4t2UWfEjoy90AatSH4q6TX
-         l//J0Vj6fmlSAE8R8KSpmgI+RvlXvlIvo4APqCH7z9dTRTsfw/889Wio9Fw+MhHuGl9X
-         VyWw==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=IcRpMkf8d+V3G73B4j7uXCdRLIvu4hkKMDZaqMcRk10=;
-        fh=8hhPWDaLECDR00t3pT/7HfeDK+ErVKY51w8y6LeZ92w=;
-        b=jkkZbm2bi9h270f1VCmM5lzsX9n9O6pQYK+RUZk/11cunc3dW2yQegMOVzA38FdJh9
-         o6vOqtlmo6xxTnWt8SIvVDWd2OJ7Tsj8mIE80aW+g9K6lfel8C63dFkfcfD9xGSSa+JZ
-         RTrea30IdRh/GV99578NeM02c0OE8wZ+zEVXFY0Ix/w+GvDjYaerm53+Efx9wVQHx+aT
-         2Ev/ecEpB1nlm6lc1Ouk7zJeETmyooFoWZ4hHco7FP1xAaj0V+xJwd8evgCvE5FF1ZwK
-         iFtBK6lW6SD8Tg7Cmj6WsnKldwgqCpVAjKwIFcYH/wGuriq187dX8RrGpcwUozSQIOxP
-         RrkA==;
+        b=NIiVMP22WLC/BjjN93qP5ZlLNpwY2HDxrSYRStwtMcl64uO2puyh9nMpyKFbb25fS1
+         slxYmeqJCm8Vzb5j61ADirkz9uzvCA5Zg8W829yG8TbnfcByoRPyVXR7fQtBFykyx1Pi
+         jHNXK9dq4ULBsuAhBSSAtf+2abl4IAlGfUYWNpdbjDIDcaSMhZ6Jg+WenZaaPsQgmcY1
+         IlJAr0e7hQlmmadzUhl3bP+me7aBkUtDNM29ItK2+Q79j+sXqzPlqZcdn462NiBbb+wi
+         WWkj30uGjP9Aiz+zh+MxxzOqu0fsNcaBPBVImMed4ttfhnyJ+yNEJ1MZQmzrUJYPHUvU
+         lVfw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=Nn9J60puewudqRteyMm2kWG4TdMdGZoLctn107c2Iqg=;
+        fh=Q0+8XOUuT7z9Z89uiS9UET2mAb8zpbkZiPtoq/jHMFM=;
+        b=iqNo7n82vZF/H7CumoTteg7yRpwl3EthGuF9fY8N0HIQVHjNi0AcFMWZ5rT2hvmWdD
+         zRLkNZjJxpaxVaQ+pXwQfdIgmZh7f/vmSITFL24gUIUqyBbHpL5jK35QsG6CNTP+DVWj
+         K+IbCRWnxhojWOunKq8Mc8i+oY5t/+oAkNJ9fIDFLONqJvZZX/MpUfx+9/llBa9RtoyO
+         KbTs0A10NsC2C32QRh/jeinCXSYHqGcJzhGqZUPDO73zbRqFnokdM2epzWXslQjM673/
+         BH3sSlWsr3T1eIvFAKSVEzE9Xey+olPcUyi7SZQjlN1NED45ehekGFDQiUysYrN/Tvsl
+         g7Tg==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=L28D7MxH;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of linux-kernel+bounces-283033-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="linux-kernel+bounces-283033-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <linux-kernel+bounces-283033-alex.bennee=linaro.org@vger.kernel.org>
-Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [139.178.88.99])
-        by mx.google.com with ESMTPS id d9443c01a7336-200bbb586c3si53015145ad.264.2024.08.12.04.59.41
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=bYtdmhqh;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6bd82e79cc0si62202716d6.469.2024.08.12.08.15.32
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 12 Aug 2024 04:59:41 -0700 (PDT)
-Received-SPF: pass (google.com: domain of linux-kernel+bounces-283033-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) client-ip=139.178.88.99;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 12 Aug 2024 08:15:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=L28D7MxH;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of linux-kernel+bounces-283033-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="linux-kernel+bounces-283033-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by sv.mirrors.kernel.org (Postfix) with ESMTPS id B6D042822CC
-	for <alex.bennee@linaro.org>; Mon, 12 Aug 2024 11:59:40 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id C7312178375;
-	Mon, 12 Aug 2024 11:59:27 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="L28D7MxH"
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CA61B178378
-	for <linux-kernel@vger.kernel.org>; Mon, 12 Aug 2024 11:59:25 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.129.124
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1723463967; cv=none; b=ScI7PDsr8BqJgqMFY9GUSmhDmg+/j2i7vJ6+/7R/ipZf6MzAewKpCsDh1ObdUJQUTY83Cw2gfmzlb7e6wWxc/jSKa1Av8V0/svGbynH6Hfz+Eii7aa0Zu4jnS3FbYKwiSGPhlsq9D128oS+WU7WBbNJIIC35DhM0nulTXnF/z1A=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1723463967; c=relaxed/simple;
-	bh=ZTQKVNT5llOMOqIkBUTETMPYhC9nAw9VreBXFn+pYfU=;
-	h=Date:From:To:Cc:Subject:Message-ID:In-Reply-To:References:
-	 MIME-Version:Content-Type; b=eCWnxgMCW+aSaAwkwDFmcJPXOIb1rsiPTFab7UTRFG76yIE79OjNOh5u8zZ6HSIpAg5QE8fFthVFO0zYxDb0/dz9YjgHrA3pPaTtzFBqTtkjJJDyladvIGgX5VxpDjdHYjWDxFZqMPCqtITZmmpAnWOPirFdK3m2cMQjYJZxR+o=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=L28D7MxH; arc=none smtp.client-ip=170.10.129.124
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1723463964;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=IcRpMkf8d+V3G73B4j7uXCdRLIvu4hkKMDZaqMcRk10=;
-	b=L28D7MxHV/Vx78nTFr6R4+4kdh67WNyu07Q8TRCDZcnK4MFLyX13Bq5zsAKIVoB7eV2JsF
-	GJpV3Y2Zh5Kx/zbamRxNlFw8WZeKCK+TugY1J5ptd8N1fRl/Mae/uY9CFUMn6Q+tn+2N9S
-	phLdvD7aKMyHdpvnYc34ELk62Qc21tQ=
-Received: from mail-lj1-f197.google.com (mail-lj1-f197.google.com
- [209.85.208.197]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-91-Z17j8rw0NgqtzWzJDZZg7Q-1; Mon, 12 Aug 2024 07:59:23 -0400
-X-MC-Unique: Z17j8rw0NgqtzWzJDZZg7Q-1
-Received: by mail-lj1-f197.google.com with SMTP id 38308e7fff4ca-2f0276170f9so39387331fa.2
-        for <linux-kernel@vger.kernel.org>; Mon, 12 Aug 2024 04:59:22 -0700 (PDT)
+       dkim=pass header.i=@linaro.org header.s=google header.b=bYtdmhqh;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sdWkt-0006wl-4U; Mon, 12 Aug 2024 11:14:43 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1sdWkr-0006qp-PT
+ for qemu-arm@nongnu.org; Mon, 12 Aug 2024 11:14:41 -0400
+Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1sdWkm-0006aA-QZ
+ for qemu-arm@nongnu.org; Mon, 12 Aug 2024 11:14:41 -0400
+Received: by mail-ed1-x52a.google.com with SMTP id
+ 4fb4d7f45d1cf-5af6a1afa7bso5307937a12.1
+ for <qemu-arm@nongnu.org>; Mon, 12 Aug 2024 08:14:35 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1723475673; x=1724080473; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=Nn9J60puewudqRteyMm2kWG4TdMdGZoLctn107c2Iqg=;
+ b=bYtdmhqhxOttTuesY7+jhQYhTF8EVxc7sWRFt5OGl/OklG1PzUsZcQP9oCifTgqnwX
+ zO2bP51lQ+BRs8lncBKPLiE2+fvoHhEJoNuOMCoGgQftFa1oyMjpEscZn9kpLsLq/ZuG
+ zAzV7VX26ke7BVHxwz0pS0SpyJTpqGyuoeZfA7XMHnxfok8GskkCDA/sfg34VuSjCsDO
+ kGYZLAVnj9uh1PFIADBGD8f+HYVNqKwR+L1qqgePve1PMPFI1Tz5kbsW+tiQapXjmwMm
+ queiLiVuxQyreoi0fgKT8KVAjSlPgWwm9BZM8k4M+diw7qlKkoLFu5Bf7U+VLsRQqQO4
+ QMzQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1723463961; x=1724068761;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=IcRpMkf8d+V3G73B4j7uXCdRLIvu4hkKMDZaqMcRk10=;
-        b=WG5wMxk6art3VcH2/Z0DRKTxEVPOHOV4SWLXGQlJkMLTJqbJ88nqzf/83TeZfFpG6b
-         qRP8b2WYM1EPtEh9qtJAxwxYQIhinjG/VOUVa7iYkJZxO7OWQQsIXKdK+Uwd2DGSXizg
-         86vhR8DsJTzpesNHaI9BxQkaKU5+yvQ1I5m1zcQHj0gCCzAEHwVQdreUopg6T379cR8U
-         mKzPO2rs3R2ZVvdKHABsTIFU1M99+UqSWRWBZWUHNA1NPZUr93JdI7TQJJRwBSFjQ/tL
-         O4oCqXylbBuDtGYrwSfPdcag7CWUHgXruoUSOweuxlCJMFZNJCoa7J+0HlEQpoR03pPH
-         v3AA==
-X-Forwarded-Encrypted: i=1; AJvYcCX88pvqL4o2G6WCIyauuO7lFgFPcVzQ0646ZthqjRipKOkCEPZztJzGfG/JKS4zc4ky56v8VRXZTuGReCqku5WYxFQ2o6x9a59CS9NJ
-X-Gm-Message-State: AOJu0YyOf8fqNHkqfRIRq68c7b6JyZY3WT1hjg+qzzOahPgPCa4pZIny
-	PUDbY6qORNftiBCuMXeBjoK0Vayqrw/jyB/Suor5LigjN06SNviPFTmT035S98mJoNhut5C5+YC
-	DaW6YSdtF9QsATxNKOhLoq7NUmewOnm5mrKkBVgxscR1wvNsa9AdzMKTCyKavWQ==
-X-Received: by 2002:a2e:b992:0:b0:2ee:7a3e:4721 with SMTP id 38308e7fff4ca-2f1a6cf8bb1mr59401541fa.39.1723463961371;
-        Mon, 12 Aug 2024 04:59:21 -0700 (PDT)
-X-Received: by 2002:a2e:b992:0:b0:2ee:7a3e:4721 with SMTP id 38308e7fff4ca-2f1a6cf8bb1mr59401391fa.39.1723463960789;
-        Mon, 12 Aug 2024 04:59:20 -0700 (PDT)
-Received: from imammedo.users.ipa.redhat.com (nat-pool-brq-t.redhat.com. [213.175.37.10])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-429c775fc9csm98520995e9.47.2024.08.12.04.59.20
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 12 Aug 2024 04:59:20 -0700 (PDT)
-Date: Mon, 12 Aug 2024 13:59:19 +0200
-From: Igor Mammedov <imammedo@redhat.com>
-To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>, Shiju Jose
- <shiju.jose@huawei.com>, Dongjiu Geng <gengdongjiu1@gmail.com>,
- linux-kernel@vger.kernel.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [PATCH v6 07/10] docs: acpi_hest_ghes: fix documentation for
- CPER size
-Message-ID: <20240812135919.1b4865c6@imammedo.users.ipa.redhat.com>
-In-Reply-To: <93ae03bd89b47731f6703dab5925ed2f7a9fd426.1723119423.git.mchehab+huawei@kernel.org>
-References: <cover.1723119423.git.mchehab+huawei@kernel.org>
-	<93ae03bd89b47731f6703dab5925ed2f7a9fd426.1723119423.git.mchehab+huawei@kernel.org>
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
-Precedence: bulk
-X-Mailing-List: linux-kernel@vger.kernel.org
-List-Id: <linux-kernel.vger.kernel.org>
-List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
+ d=1e100.net; s=20230601; t=1723475673; x=1724080473;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=Nn9J60puewudqRteyMm2kWG4TdMdGZoLctn107c2Iqg=;
+ b=CDUAxFoxOTSR0YbbzoCTq0F/8KSedqblxUgart3dOXYgXEVMBwngxu5aiXJdDlSFOn
+ q6A8RNDbI9wn1TezP4ffJNeObPC1h26Vqm9hVwQoSNn59kiG4Cq6CJqixK9lJCyfKnPF
+ rqnW3+YRSZLGbq7QhLgnRT44wvQiGLgwsKlXwiPo3Oqlz5pozzdUeBwl+MMmB21+HaTh
+ bl2K2V4hsU8SPFH/JOiep1dOrhWmjwlwKxKuuxzeS6XVaPBOiBkK7s1ow9fuVJgzgL2L
+ dIeXhOAIz+cR5KCv5ovfH2LoIzrJXvbmK1Y6HbbqQ0sVL2Utly342h8gjtQpjbUBUvOS
+ kHIQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXtRw1DZikv8zBnWgCdbY28xUHd946lFDC3yDr3TcxB7OWIdQ7TElhsJL9lNOV935NS/Q9EHcCatE+1BqMsGvqWM7Ad
+X-Gm-Message-State: AOJu0YxRcUdPGhRbXgCn7Y5+rHinw9SxUzbxTvyVwsyt/DJR8Z3fDNPs
+ ryYz4XWSQO8pxIJHWulSTJAVLKQS4Phl5KbNBlC24SgRqTixUKdvO7wKayhi9LZFqzwVjNzIZBi
+ +CftAyT6ReDCQKBV9p6v+uHRzfM1rFF6D+rQKUQ==
+X-Received: by 2002:a05:6402:354a:b0:5a3:b866:eae0 with SMTP id
+ 4fb4d7f45d1cf-5bd44c7c314mr487154a12.32.1723475673220; Mon, 12 Aug 2024
+ 08:14:33 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-TUID: iniq8VzTvHNk
+References: <20240717060903.205098-1-richard.henderson@linaro.org>
+In-Reply-To: <20240717060903.205098-1-richard.henderson@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 12 Aug 2024 16:14:21 +0100
+Message-ID: <CAFEAcA8vJxUUHWA_nUF-810fDhYyPggtc=HGFdp0QUa5segB=A@mail.gmail.com>
+Subject: Re: [PATCH 00/17] target/arm: AdvSIMD decodetree conversion, part 4
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::52a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52a.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: iUrMoTJ9xSia
 
-On Thu,  8 Aug 2024 14:26:33 +0200
-Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
+On Wed, 17 Jul 2024 at 07:09, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> Flush before the queue gets too big.
+> Also, there's a bug fix in patch 14.
+>
+> r~
+>
+> Richard Henderson (17):
+>   target/arm: Use tcg_gen_extract2_i64 for EXT
+>   target/arm: Convert EXT to decodetree
+>   target/arm: Convert TBL, TBX to decodetree
+>   target/arm: Convert UZP, TRN, ZIP to decodetree
+>   target/arm: Simplify do_reduction_op
+>   target/arm: Convert ADDV, *ADDLV, *MAXV, *MINV to decodetree
+>   target/arm: Convert FMAXNMV, FMINNMV, FMAXV, FMINV to decodetree
+>   target/arm: Convert FMOVI (scalar, immediate) to decodetree
+>   target/arm: Convert MOVI, FMOV, ORR, BIC (vector immediate) to
+>     decodetree
+>   target/arm: Introduce gen_gvec_sshr, gen_gvec_ushr
+>   target/arm: Fix whitespace near gen_srshr64_i64
+>   target/arm: Convert handle_vec_simd_shri to decodetree
+>   target/arm: Convet handle_vec_simd_shli to decodetree
+>   target/arm: Clear high SVE elements in handle_vec_simd_wshli
+>   target/arm: Use {,s}extract in handle_vec_simd_wshli
+>   target/arm: Convert SSHLL, USHLL to decodetree
+>   target/arm: Push tcg_rnd into handle_shri_with_rndacc
 
-> While the spec defines a CPER size of 4KiB for each record,
-> currently it is set to 1KiB. Fix the documentation and add
-> a pointer to the macro name there, as this may help to keep
-> it updated.
-> 
-> Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+Other than the need-to-avoid-shift-by-negative nits in
+patches 12 and 13, whole series
 
-Acked-by: Igor Mammedov <imammedo@redhat.com>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-> ---
->  docs/specs/acpi_hest_ghes.rst | 6 ++++--
->  1 file changed, 4 insertions(+), 2 deletions(-)
-> 
-> diff --git a/docs/specs/acpi_hest_ghes.rst b/docs/specs/acpi_hest_ghes.rst
-> index 68f1fbe0a4af..c3e9f8d9a702 100644
-> --- a/docs/specs/acpi_hest_ghes.rst
-> +++ b/docs/specs/acpi_hest_ghes.rst
-> @@ -67,8 +67,10 @@ Design Details
->  (3) The address registers table contains N Error Block Address entries
->      and N Read Ack Register entries. The size for each entry is 8-byte.
->      The Error Status Data Block table contains N Error Status Data Block
-> -    entries. The size for each entry is 4096(0x1000) bytes. The total size
-> -    for the "etc/hardware_errors" fw_cfg blob is (N * 8 * 2 + N * 4096) bytes.
-> +    entries. The size for each entry is defined at the source code as
-> +    ACPI_GHES_MAX_RAW_DATA_LENGTH (currently 1024 bytes). The total size
-> +    for the "etc/hardware_errors" fw_cfg blob is
-> +    (N * 8 * 2 + N * ACPI_GHES_MAX_RAW_DATA_LENGTH) bytes.
->      N is the number of the kinds of hardware error sources.
->  
->  (4) QEMU generates the ACPI linker/loader script for the firmware. The
-
+thanks
+-- PMM

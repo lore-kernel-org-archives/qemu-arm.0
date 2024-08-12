@@ -1,116 +1,127 @@
-Received: by 2002:a17:504:6454:b0:1be9:327d:8ee3 with SMTP id g20csp808233njh;
-        Mon, 12 Aug 2024 07:53:03 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWGN0gfTSdm0XrLJH8+IrvqasuZgRzdg+2+KaSn+KGSkjzzFwENGh5vB0cHKAaqOY2JVhkV21CxF4X8g1cPXeCoOjReNnqn
-X-Google-Smtp-Source: AGHT+IHCvO7UzOIrbPVt05uMomCnX6ZMAYeYCdiK0jLp1GtD4akZsECHESVKeIaBRvlrkBeJlZ2J
-X-Received: by 2002:a05:620a:17a9:b0:7a3:56dc:d419 with SMTP id af79cd13be357-7a4e19f5940mr66547285a.6.1723474383494;
-        Mon, 12 Aug 2024 07:53:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1723474383; cv=none;
+Received: by 2002:a17:504:6454:b0:1be9:327d:8ee3 with SMTP id g20csp939250njh;
+        Mon, 12 Aug 2024 15:07:47 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVh1fXkEEmf53XrHIB4jU17cW41rih6oqzu9kaVTIyw5bywLq6nl3G3x5/IRI0JhGAVyLawYqcmOulC+aZBecRtRB9ZiZ0q
+X-Google-Smtp-Source: AGHT+IGDkNemdeXmo7+UiD1yhyefe5/8LJcxUtBO5aulSa/yUfX9Ecj316WXSwGgvUp/W9u5Lohw
+X-Received: by 2002:a05:6808:bc1:b0:3d9:3649:906f with SMTP id 5614622812f47-3dd1eed2b88mr2284684b6e.37.1723500467863;
+        Mon, 12 Aug 2024 15:07:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1723500467; cv=none;
         d=google.com; s=arc-20160816;
-        b=EvyB+vA1sDRStxPDReCvlEmif5yhwoZmJkI4qYmC7NMF88jiyjIWgI4bPE/Vi3XDM6
-         GgHNn1V0kwd287GervSA8d+5RrXCnnWI5We9K/AZ7vDdtbSMNJL+OMRNZ7y6RAwFGnBa
-         bkE0dcdgBDuRp4zhiGN/Gjbg1nbWtZurmZvvkijmj+PvMO04jkFh3eCsCyzxP/UfH6Q7
-         MDS164flZlYKkJhiPIq4E1aLowKp+BS3xpq8HdFwmQrzAkpoxefedPOqNFjcwY5a6dhK
-         iKIkADpApvylIvXqj3pCAtr/wPSy//qL21gutz9Ppa9pTjK3YOaFVb3z2oeznt54njpH
-         WN9w==
+        b=Q6drue4zEJI5xFR4SGjfP/9j1PPHyn5GJsycx9Ecp09k8nJ3ba+YjounpFZ9H2IAn8
+         t4umAZ1T+uHKChG3p00gx7LNvZBplmlhV2e3rFkFV613mnZ1RrJ4F9G2u1+ohRQ+GgsK
+         eskIx12hCnoZP5mqWhS/FA0hTvSz3/5hd+4fld4C4+VdRzLONauCXIn0eDsj5h7h+xVz
+         Zq+QGsVisVijtlU3gsLLAtW/1vT0DHCSvti3gN8hKuIe8xxnniD62OiKHeRFb/Okb9wP
+         VY5mDff3upthVz0gYfULZyBreAl0ev8V/4r74huWIRBEk4fThn1Tvw9Du+1I8ZjVncu7
+         WTmg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=BvKfA4dq24MnUXUUHJj74n+1dW1G21oBcWQ49sONrZ8=;
-        fh=1qyegHeJFNM1Izz9HJ8CALsmnpnGUdsdiAUT60Bo1qk=;
-        b=sxQTPw4nviJZN9use0BM6ANIrDTeAQznZ7u520Pn1b+bQDwnOHdLBasU3zOtJLTqyF
-         ncjxRGjFchkNjaVUXCHrBdrLHBBcK8lkOXtBNnoZzmTmJL6VxpuR+GfSRs16eB5XkB4o
-         l1tM9Zhzz8EbsBexPQrGAW8919fgHz4huBM6kggTlRtdkPqXBpO1W1IJXVw8egTnYD49
-         tYDK1Ae4hXbkzHL73dSPI0QlKkWGQlHJUnEobwTbxsQdYH/six/2IXVnX9azNWMo1IWj
-         9koRmUKhPa+IzBkJ8cOd6OiBdV6FDn9HGqFTRAzI6I/vc/95hG8fD436LhAttUrhrQ89
-         0OWA==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=OBboSqU+szwUEzyZRoEDmY+PcSklSTLDfjw1jqmoXEo=;
+        fh=OC8ZZvt7g9MZQcPYRidbn2TV+8cw8jzgingWt3Y1nxU=;
+        b=EPo0tpfp88f9mLW+dVIwIpYrZvBc4C9eJL9AdyBSdh9KLfpFHpakHDTfeshohW15co
+         yXKUTEGlvCqCZeb5Qsmk2IQen7kkX1gw8QuPMenDHOd2BhlemRqak1VtDTJIeHZZotqH
+         QJ481GC3C7RovaOD5073+0xMGRXL4m3Fgjn9auVQM2QmHBybkApn8ZthbizxhBSbW1af
+         jyHQZIE3G4QS61iWzBgSx/4gEFt2H1ooDKgIWcxHBLLVM8F1Yej6RFYn9bjk9b7JJ8xR
+         CvpswujUAHDvKvZ8/fJRqhvxmE4u4fpPdwK21ny6EDLrFYIlNWVQ3X11r1CwNm/yY2nn
+         suJw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=tgiuXSrS;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Z4Axuw5b;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7a4c7d660dbsi650192385a.89.2024.08.12.07.53.03
+        by mx.google.com with ESMTPS id d75a77b69052e-4531c2c8b99si69107631cf.738.2024.08.12.15.07.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 12 Aug 2024 07:53:03 -0700 (PDT)
+        Mon, 12 Aug 2024 15:07:47 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=tgiuXSrS;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Z4Axuw5b;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sdWPL-0003jI-Lt; Mon, 12 Aug 2024 10:52:27 -0400
+	id 1sddCW-0007Z4-Qe; Mon, 12 Aug 2024 18:07:40 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1sdWPE-0003Zq-0c
- for qemu-arm@nongnu.org; Mon, 12 Aug 2024 10:52:20 -0400
-Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1sddCU-0007R4-QY
+ for qemu-arm@nongnu.org; Mon, 12 Aug 2024 18:07:38 -0400
+Received: from mail-pj1-x1029.google.com ([2607:f8b0:4864:20::1029])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1sdWPA-00031w-OL
- for qemu-arm@nongnu.org; Mon, 12 Aug 2024 10:52:19 -0400
-Received: by mail-ed1-x52f.google.com with SMTP id
- 4fb4d7f45d1cf-5ba43b433beso4627827a12.1
- for <qemu-arm@nongnu.org>; Mon, 12 Aug 2024 07:52:16 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1sddCS-0002ZT-Gn
+ for qemu-arm@nongnu.org; Mon, 12 Aug 2024 18:07:38 -0400
+Received: by mail-pj1-x1029.google.com with SMTP id
+ 98e67ed59e1d1-2d396fde759so65054a91.3
+ for <qemu-arm@nongnu.org>; Mon, 12 Aug 2024 15:07:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1723474335; x=1724079135; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=BvKfA4dq24MnUXUUHJj74n+1dW1G21oBcWQ49sONrZ8=;
- b=tgiuXSrSC8ygXiRS6gXXFNBzpkzwunaepP3DCPJ7ZGXvDRphdSKcCJtA2M48VybNlV
- 2ZzXNWqSkBnJGnZYgzAa3YJ1i+I8SHBe/ooOdnaUxvODLpF3aCLtowLpKF6iw/yuHAky
- kYpyOT58wp3gYWy3Q5Qu1rhJ7PDL22jQdm4oE8aM7+ZSt/+MN5QSNF077c2iBzKuqvay
- lwnZnB7FqJldBZjIAmKXILuqnpKM2JRVElkam0p9cs+XE5DJcMlgaTPy60lqya7y30z3
- tVt1d66gcsX8F25J7CfyIKD4R93ah5aHqlt11RWmDyoKo/03fL7jpq3TCjpF7zqwJSg+
- LX/w==
+ d=linaro.org; s=google; t=1723500455; x=1724105255; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=OBboSqU+szwUEzyZRoEDmY+PcSklSTLDfjw1jqmoXEo=;
+ b=Z4Axuw5bAn3pLqOHZ2p8KYI0wn1Hia8LYbwsWohww1kY2oUE7frU8SGkxLQMCg14lq
+ KAv6oDxAx8xxVBvUAaLavFq3m0U3YNZu5TT1nWnHIaYF9wMPxpvQAA2y9XHP2dMswwIO
+ xgoLmGARxaYVWQJpFIcrni70OkmO2VTgwuKOAKHpy1+eQj2yRgwVhQJdckXrSeu+5CAi
+ vnikdcnpSLAzaEEXQ9ugYfpGj2nYlQg7svDa4BmtkBYaRP+UIwaQz6pxod+EOiyv121n
+ RKhyOk7X06YhLi6EidRNQi4cIMIHt7TQmnfLUV4U8P+WfeGwrjGcxhwiATuNHW2ilYjJ
+ ebjg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1723474335; x=1724079135;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=BvKfA4dq24MnUXUUHJj74n+1dW1G21oBcWQ49sONrZ8=;
- b=AyYvcZS2KdhppBdtA7Jx8xDrKxqjqp1a9B9xIFlzXZ52e9ajqUXG4z2In1F+yhmo0V
- uvPa5ctTdIR8jtp7hut+SEJHWa3XbfLeDmIXwq4ulbN7LoeLI7/4lx5J9CTRGVk6f23F
- vh5C5enY0zeTBM0VufpMJB2Jj0A1XMQgotChuhukVEsqPIKcWV5B+saLZ3idd57yR1Xm
- wGnmZyCmIRDaPerg/SlvZ6J0J+HG4zSzjDLd7dj7vTXZHDyxhRBWexclqsHVCr+yCe60
- cWOuVPKvNKaNoKga8OHcXzAENJsYcVjSbjNVem5R7VYMZu6c5W354u7lptvZh14MqM8w
- Rdrw==
+ d=1e100.net; s=20230601; t=1723500455; x=1724105255;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=OBboSqU+szwUEzyZRoEDmY+PcSklSTLDfjw1jqmoXEo=;
+ b=RMoXWzC0tKL+n5Iyx7QprOo+UDXQE4zSBOshqNx60Yjeai8vMhljlyMq7ZLMoV+EJe
+ B9lkoPvbYFsKCjeMS71SK3jpn+/3iwJ6RY3qXlgL3Iv/+kurXGLp/nQchNUZO5xLQoGK
+ sQBEaZJHHMaBtoSti6y3buXxseckFj9K/DtzI6ismkyhkjs43Nam15taDr2yntCo+7py
+ 5uWESgWBP43HSgk+/789WSFa+9VKxRGB701h0/TRYuLm3vkRI/i2hbhNn/21VJ/J4TPt
+ npQEbGgtBb7mivSDcdJe6rm1kimVBUpLGDjBNAfIoLfO8dzIJQ5ZtD8y4K2gTla9otKd
+ pARg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCW59vVDCMHgkQGhLAoImZZvTjqlySBvGd5T4pwipE7FZklWISLdFjhmDVJXtZ2Q2OhCMQybqlPmpbkAJOSc4EtMcmQ8
-X-Gm-Message-State: AOJu0YzzoqMqwrFSXhjWFKTLjxXy7lkmQQBvCW6sgMR9Ok+WEw421E4m
- LeKS+sFHvxFSw2VdWU8keueQu3yxJni3+qd+LMiexzS3LnTmHx8J7NpmeE4ZYHEiWRlwdm9sdiE
- vWusLAenDd3o7/T+/j1lJJFdI1jQaLcR9jnMsYi23EJ1ASDqj
-X-Received: by 2002:a50:858a:0:b0:5b4:cd20:f13f with SMTP id
- 4fb4d7f45d1cf-5bd44c6a293mr357680a12.24.1723474334567; Mon, 12 Aug 2024
- 07:52:14 -0700 (PDT)
+ AJvYcCW6BOv+wgqtoAq7uVEnP4gH9j7K2gDp70dHmMZONgqkk47nRNwPnihGcT1Fwslxo2rth/PdhXY9ZGEy8HxAPUBCOy3E
+X-Gm-Message-State: AOJu0YzLZJylDRp+ikdJzurKfaA0ZJKr+QTCWE2L9mQ9/HS9pAuUiSYT
+ 69Rd3CIyRc+QVGrasBBk5fs7RLwVbB3pFp0p9JBYh1FZnPqYdaHJfbu8F081sQWG9HI2xdINPMF
+ n9/I=
+X-Received: by 2002:a17:90a:d357:b0:2c9:80fd:a111 with SMTP id
+ 98e67ed59e1d1-2d392513090mr1877526a91.18.1723500454588; 
+ Mon, 12 Aug 2024 15:07:34 -0700 (PDT)
+Received: from [192.168.1.113] ([203.30.4.111])
+ by smtp.gmail.com with ESMTPSA id
+ 98e67ed59e1d1-2d1fcf275aesm5664304a91.32.2024.08.12.15.07.32
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 12 Aug 2024 15:07:34 -0700 (PDT)
+Message-ID: <8e0bf252-bc74-4086-872b-a11eb3b0b9ad@linaro.org>
+Date: Tue, 13 Aug 2024 08:07:28 +1000
 MIME-Version: 1.0
-References: <20240718230031.69641-1-danny_canter@apple.com>
-In-Reply-To: <20240718230031.69641-1-danny_canter@apple.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 12 Aug 2024 15:52:03 +0100
-Message-ID: <CAFEAcA__WZ=uw0VLcP0fLbUTwmctsZ1y=FRf9bXMT9WJC2sRFA@mail.gmail.com>
-Subject: Re: [PATCH] hvf: arm: Allow creating VMs with > 63GB of RAM on macOS
- 15+
-To: Danny Canter <danny_canter@apple.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, dirty@apple.com, 
- rbolshakov@ddn.com, agraf@csgraf.de
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::52f;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52f.google.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 12/17] target/arm: Convert handle_vec_simd_shri to
+ decodetree
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+References: <20240717060903.205098-1-richard.henderson@linaro.org>
+ <20240717060903.205098-13-richard.henderson@linaro.org>
+ <CAFEAcA_yikLcv2gSc6FVbue+HSFuk4w6oUg8H37jCaRJhtPD=w@mail.gmail.com>
+Content-Language: en-US
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <CAFEAcA_yikLcv2gSc6FVbue+HSFuk4w6oUg8H37jCaRJhtPD=w@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1029;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1029.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -125,177 +136,48 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: jWhFlo2UU1Vc
+X-TUID: 786EYsDPcqP6
 
-On Fri, 19 Jul 2024 at 00:03, Danny Canter <danny_canter@apple.com> wrote:
->
-> This patch's main focus is to enable creating VMs with > 63GB
-> of RAM on Apple Silicon machines by using some new HVF APIs. In
-> pursuit of this a couple of things related to how we handle the
-> physical address range we expose to guests were altered:
->
-> The default IPA size on all Apple Silicon machines for HVF is
-> currently 36 bits. This bars making a VM with > 63GB (as RAM
-> starts at 1GB in the memory map) of RAM. Currently, to get the
-> IPA size we were reading id_aa64mmfr0_el1's PARange field
-> from a newly made vcpu. Unfortunately HVF just returns the
-> hosts PARange directly for the initial value and not the IPA
-> size that will actually back the VM, so we believe we have much
-> more address space than we actually do today it seems.
+On 8/12/24 23:14, Peter Maydell wrote:
+> On Wed, 17 Jul 2024 at 07:11, Richard Henderson
+> <richard.henderson@linaro.org> wrote:
+>>
+>> This includes SSHR, USHR, SSRA, USRA, SRSHR, URSHR, SRSRA, URSRA, SRI.
+>>
+>> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+>> ---
+>>   target/arm/tcg/translate-a64.c | 109 +++++++++++++++------------------
+>>   target/arm/tcg/a64.decode      |  27 +++++++-
+>>   2 files changed, 74 insertions(+), 62 deletions(-)
+>>
+>> diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
+>> index d0a3450d75..1e482477c5 100644
+>> --- a/target/arm/tcg/translate-a64.c
+>> +++ b/target/arm/tcg/translate-a64.c
+>> @@ -68,6 +68,22 @@ static int scale_by_log2_tag_granule(DisasContext *s, int x)
+>>       return x << LOG2_TAG_GRANULE;
+>>   }
+>>
+>> +/*
+>> + * For Advanced SIMD shift by immediate, extract esz from immh.
+>> + * The result must be validated by the translator: MO_8 <= x <= MO_64.
+>> + */
+>> +static int esz_immh(DisasContext *s, int x)
+>> +{
+>> +    return 32 - clz32(x) - 1;
+>> +}
+>> +
+>> +/* For Advanced SIMD shift by immediate, right shift count. */
+>> +static int rcount_immhb(DisasContext *s, int x)
+>> +{
+>> +    int size = esz_immh(s, x >> 3);
+>> +    return (16 << size) - x;
+> 
+> We need to avoid shift-by-negative-value if esz_immh()
+> returns < 0 here, right? (like commit 76916dfa8 did
+> for tszimm_esz())
 
-So just to check my understanding, this means that with current
-QEMU, on all Apple hardware, attempting to create a VM with
-more than 63 GB of RAM will always fail in the same way,
-regardless of whether that CPU's hardware has a 36 bit IPA
-or a larger IPA? That is, we don't change the default IPA for the
-VM, so it's 36 bits, and then the hvf command to map in the RAM
-to the guest address space fails with HV_BAD_ARGUMENT, per
-https://gitlab.com/qemu-project/qemu/-/issues/1816 .
+In the interim, I have rewritten this to be more like neon-dp.decode, to decode each 
+element size separately.
 
-> Starting in macOS 13.0 some APIs were introduced to be able to
-> query the maximum IPA size the kernel supports, and to set the IPA
-> size for a given VM. However, this still has a couple of issues
-> on < macOS 15. Up until macOS 15 (and if the hardware supported
-> it) the max IPA size was 39 bits which is not a valid PARange
-> value, so we can't clamp down what we advertise in the vcpu's
-> id_aa64mmfr0_el1 to our IPA size. Starting in macOS 15 however,
-> the maximum IPA size is 40 bits (if it's supported in the hardware
-> as well) which is also a valid PARange value, so we can set our IPA
-> size to the maximum as well as clamp down the PARange we advertise
-> to the guest. This allows VMs with 63+ GB of ram and should fix the
-> oddness of the PARange situation as well.
-
-So (again to clarify that I understand what's happening here)
-for macos 13-14 we'll effectively continue to use a 36-bit
-IPA range because we clamp the "39" value down to the next
-lowest actually-valid value of 36 ? And so if you want >63GB
-of memory you'll need all of:
- * a host CPU which supports at least a 40 bit IPA
-   (is there a definition somewhere of which these are?)
- * macos 15
- * a QEMU with these changes
-
-?
-
-(That seems fine to me: I'm happy to say "get macos 15 if you
-want this" rather than trying to cope with the non-standard
-39 bit IPA in QEMU. We should make sure the error message in
-the IPA-too-small case is comprehensible -- I think at the
-moment we somewhat unhelpfully assert()...)
-
-> For the implementation of this I've decided to only bump the IPA
-> size if the amount of RAM requested is encroaching on the default IPA
-> size of 36 bits, as at 40 bits of IPA space we have to have one extra
-> level of stage2 page tables.
->
-> Signed-off-by: Danny Canter <danny_canter@apple.com>
-> Reviewed-by: Cameron Esfahani <dirty@apple.com>
-
-> @@ -929,6 +977,66 @@ void hvf_arch_vcpu_destroy(CPUState *cpu)
->  {
->  }
->
-> +hv_return_t hvf_arch_vm_create(MachineState *ms)
-> +{
-> +    uint32_t default_ipa_size = hvf_get_default_ipa_bit_size();
-> +    uint32_t max_ipa_size = hvf_get_max_ipa_bit_size();
-> +    hv_return_t ret;
-> +
-> +    chosen_ipa_bit_size = default_ipa_size;
-> +
-> +    /*
-> +     * Set the IPA size for the VM:
-> +     *
-> +     * Starting from macOS 13 a new set of APIs were introduced that allow you
-> +     * to query for the maximum IPA size that is supported on your system. macOS
-> +     * 13 and 14's kernel both return a value less than 40 bits (typically 39,
-> +     * but depends on hardware), however starting in macOS 15 and up the IPA
-> +     * size supported (in the kernel at least) is up to 40 bits. A common scheme
-> +     * for attempting to get the IPA size prior to the introduction of these new
-> +     * APIs was to read ID_AA64MMFR0.PARange from a vcpu in the hopes that HVF
-> +     * was returning the maximum IPA size in that. However, this was not the
-> +     * case. HVF would return the host's PARange value directly which is
-> +     * generally larger than 40 bits.
-> +     *
-> +     * Using that value we could set up our memory map with regions much outside
-> +     * the actually supported IPA size, and also advertise a much larger
-> +     * physical address space to the guest. On the hardware+OS combos where
-> +     * the IPA size is less than 40 bits, but greater than 36, we also don't
-> +     * have a valid PARange value to round down to before 36 bits which is
-> +     * already the default.
-> +     *
-> +     * With that in mind, before we make the VM lets grab the maximum supported
-> +     * IPA size and clamp it down to the first valid PARange value so we can
-> +     * advertise the correct address size for the guest later on. Then if it's
-> +     * >= 40 set this as the IPA size for the VM using the new APIs. There's a
-> +     * small heuristic for actually altering the IPA size for the VM which is
-> +     * if our requested RAM is encroaching on the top of our default IPA size.
-> +     * This is just an optimization, as at 40 bits we need to create one more
-> +     * level of stage2 page tables.
-> +     */
-> +#if defined(MAC_OS_VERSION_13_0) && \
-> +    MAC_OS_X_VERSION_MIN_REQUIRED >= MAC_OS_VERSION_13_0
-> +    hv_vm_config_t config = hv_vm_config_create();
-> +
-> +    /* In our memory map RAM starts at 1GB. */
-
-This is not board-specific code, so you can't assume that.
-The board gets to pick the memory map and where RAM starts in it.
-
-You probably need to do something similar to what we do
-in hw/arm/virt.c:virt_kvm_type() where we find out what
-the best IPA the hypervisor supports is, set the board memory
-map to respect that, diagnose an error if the user asked for
-more RAM than fits into that IPA range, and then arrange for
-the actual VM/vcpu creation to be done with the required IPA.
-
-This is unfortunately probably going to imply a bit of extra
-plumbing to be implemented for hvf -- that MachineClass::kvm_type
-method is (as the name suggests) KVM specific. (Multi-patch
-patchset for that, where we add the plumbing in as its own
-separate patch (and/or whatever other split of functionality
-into coherent chunks makes sense), rather than one-big-patch, please.)
-
-> +    uint64_t threshold = (1ull << default_ipa_size) - (1 * GiB);
-> +    if (ms->ram_size >= threshold && max_ipa_size >= FIRST_HIGHMEM_PARANGE) {
-> +        ret = hv_vm_config_set_ipa_size(config, max_ipa_size);
-> +        assert_hvf_ok(ret);
-> +
-> +        chosen_ipa_bit_size = max_ipa_size;
-> +    }
-> +
-> +    ret = hv_vm_create(config);
-> +    os_release(config);
-> +#else
-> +    ret = hv_vm_create(NULL);
-> +#endif
-> +
-> +    return ret;
-> +}
-
-> +uint8_t round_down_to_parange_index(uint8_t bit_size)
-> +{
-> +    for (int i = ARRAY_SIZE(pamax_map) - 1; i >= 0; i--) {
-> +        if (pamax_map[i] <= bit_size) {
-> +            return i;
-> +        }
-> +    }
-> +    g_assert_not_reached();
-> +}
-> +
-> +uint8_t round_down_to_parange_bit_size(uint8_t bit_size)
-> +{
-> +    for (int i = ARRAY_SIZE(pamax_map) - 1; i >= 0; i--) {
-> +        if (pamax_map[i] <= bit_size) {
-> +            return pamax_map[i];
-> +        }
-> +    }
-> +    g_assert_not_reached();
-
-We could implement this as
-       return pamax_map[round_down_to_parange_index(bit_size)];
-
-and avoid having to code the loop twice, right?
-
-thanks
--- PMM
+r~

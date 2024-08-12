@@ -1,214 +1,134 @@
-Received: by 2002:a17:504:6454:b0:1be9:327d:8ee3 with SMTP id g20csp823426njh;
-        Mon, 12 Aug 2024 08:32:58 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWLyzfRmyJk78dPYwYAq/MW6SNBoQOMcHqaBiLszMAHgxrabQWyyu9hkv9utxTqelEnKgfT1mBNHqs5V7ghcUJLxrCIswlT
-X-Received: by 2002:a05:6402:51ca:b0:5b4:ec9d:d66a with SMTP id 4fb4d7f45d1cf-5bd461c9a9dmr17689a12.15.1723476778397;
-        Mon, 12 Aug 2024 08:32:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1723476778; cv=none;
+Received: by 2002:a17:504:6454:b0:1be9:327d:8ee3 with SMTP id g20csp840872njh;
+        Mon, 12 Aug 2024 09:22:57 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWKCs0GRPvKd0pmjmLlgulixeUmzXR7ECSEOSco+Z/wNUhCvZfrFHzkl5OFDQgOjgR9BAnGMweZzi/dA0YeMZfsjXoWItH5
+X-Google-Smtp-Source: AGHT+IGp6gh5j2ZDI2f7b4hY8Zzv58JnLStgvhx09r3rL/C3hdEOvzL0XPxPjLTgMlx/Mcz/DrGr
+X-Received: by 2002:a05:622a:316:b0:453:4aaa:d585 with SMTP id d75a77b69052e-4534aaad5f5mr7068611cf.4.1723479776784;
+        Mon, 12 Aug 2024 09:22:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1723479776; cv=none;
         d=google.com; s=arc-20160816;
-        b=Y8NetQ+K3ejxhFvVGqNhTuW0/d8p43Tz4Lo8DkbnLTFKCvWpNm1EBUXw4Ml678hPWM
-         QZQxGi/EOYAxYNWW9ghe6uPVtFTe96EKFN7gond0NSpjOGwj1FwrwnHALU5f83IDIBed
-         z41D9BXBbaoZNaIXWDFD1LVcDga81cTmLdHiaHSPIbq5n6tEzbbrKwx5fSo1vLx/Wgxr
-         FtCeGY8Ll+WMtCWaUkLvNJBKbfWdWLMLUxA7B6TgcPqFhvxfAn6W+DxrhNdklcYSFdGd
-         MfFGOpEJhs0yyA7XG6PxggoSypH3AO67rr9jTqRYJB42CGZUb48EbR/Ze2n+y2NX/PMy
-         lBBA==
+        b=RrI9Dnrr3xcabE5POgrytJVuSPYJZkXCgQIyEn3rvM59eQ8Us98PM9hl/33X0ePgDu
+         Ys9El8iZSbt98dOGALvinSHF7bHQ2EMB3pIqK1pOA+9I36K8Zs4yGTNm8xTz+Xjyulnq
+         q3BZ8wRt9fDh+XdhxKHMDk3jkVGLCM/YZT1r1UmT6CCvIcaki7hyDaCVETB50SmI6Us4
+         RBka/06c+QVwmZydN+bEyEbTOGxL6WmteFgnmImyJambOavG97UvOK1Wbolpaq92U95Q
+         a7IK+gCBHAN/nccdEy/Xg7ywXAjW7BCldVcQTr61jDb7dCHM/kYAgBUbz5MKUhsc56Rh
+         Pvfw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=zh+tcHdNJStvkyZi7SCX0p4WIPRkVyIGm6MjrcYoKk0=;
-        fh=iEkHGeWN81YdYjNJvHEZ8MkOyk2PGE3m038IKQFOlH8=;
-        b=dS4DFKhrinEA79rLgdc+Wdh4IPm87b08hgsqzB0GTs4/W2F3G78EwHYR9Z56XQrwF6
-         ESktjFFtqqxPZDmZqnQKKRbiedwx7Rx3vaweB8RizPbp/KmjFhJFmGSLfSuOZ+13FM91
-         ydHQk5mKdbolJcbFlfieVW/+y5Ijp5dw2LG/q/V3gMde7/iwnw+2UmEpzxFxYJw9BAkC
-         VhBpzc6s64Q+9A43mW55vbCpWUQ8skLvVW4EInCk4SoEiXS52+4SpwpoqduO1CzP2dvB
-         QHjHSIdWg0UCTn6BXpKwojP6M8ryx/eXoUsZAQjHsnogUurYGRMqQDIsU+a7yIV7cMsi
-         smHg==;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :reply-to:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=iL77nnSBH9gZ96JVImMJmmmZbAJ/u3cCB2omLv9Yg/4=;
+        fh=iIm85KRF86tQoOUSYdajY/9G0GgRo3XUwL8vdJZ12Jc=;
+        b=v5G5XKfUipEPj14kDX7cV3fwMAAQUmcZKGz8JwtAWWv1lLQywhJ0kkGeA5AxkdCrQT
+         +NNEVKb3NzSk0wGg/7Hpn81ETTBvjcWwbgrmbAQL6rRJyIs5at+qwdxfRHXIAKe5VhW1
+         nm6U4oCnswGRfOoFeNIFG9EXYtyQCUAKBpLBZGyTe/ATU/xY3GTN1JnwfoQKHU2JPTEH
+         iwYgEA0pBPiB5IcLJXTbD9oTB22xmwXn/Sfi6aHUNfRS8nU2gWXVV/7ZP9jhkyLLlA1p
+         OlUaN3+SUgOsAlRcBkl9BUD0l0cKrXmKbL9EK1juGmdnCjMgHyn9LzGYAkMI8d9Thd93
+         uvcQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=aSNXjsT8;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 4fb4d7f45d1cf-5bd1452b123sor1749740a12.0.2024.08.12.08.32.58
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QLVHvh4K;
+       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <berrange@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id d75a77b69052e-4531c2b3aaesi62696451cf.687.2024.08.12.09.22.56
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 12 Aug 2024 08:32:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 12 Aug 2024 09:22:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=aSNXjsT8;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1723476778; x=1724081578; darn=linaro.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=zh+tcHdNJStvkyZi7SCX0p4WIPRkVyIGm6MjrcYoKk0=;
-        b=aSNXjsT8xalxrSnUTJvGtiILrbuuDmu7DnQXlQ6EdSJPoehNa5OzU5bANhDTnin2zx
-         hrhju2vaRpa5P0q3an+shwiP0elz1nJ0ZLlCONxHADnwSUL5yiaDwCzsHSfG2Owv5WFz
-         T+p/IKtxURUGXjjGmHA6OG85Dh/E2+6gwaO7710UOOhN/CzMy5vjPtob8KzakSkeq1ib
-         nZSa/aCNQUl2anuwiXzEQ74WNZ/V/5IcNFmMc3MrL6JpNg6OgrGN1QFwZe4ciUZlfkNN
-         4NoandyqQ5Hejoj+vICkA6xN3EamgugbYyvwVrgsfDrFYv3ZiWzeIKEz7WcoW8aZyZ5W
-         aWvQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1723476778; x=1724081578;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=zh+tcHdNJStvkyZi7SCX0p4WIPRkVyIGm6MjrcYoKk0=;
-        b=INn9BQYTZrgNERzPs/S0HZtZAFGehsvan+erISknCueQCH5MiUc2hq9sVmYsDGVLnL
-         nLWfw+PlzGUHMt+Oh/3lBjL5zARpvCPE1yjl5UBGll01V53WUATZNnzFyaAEdZquoK5l
-         KG9nMPwFDhUPTlfwjjihf3xiSxjBC5RD64W6cJU7KCK8tETeHyxKl6nLlJrJFRX+75D/
-         I7q7XAJGWDXwjxlKOderSpMpEirBuvW0PGbfPyPYTyOOXnwQT6Z5aqxv2APQJrdaLpsh
-         jyt5RITGoN2md/OeeBmqXLjU7Rh2c2Hq27Wnp68JltXvHw7O9qQNhdOAwlNNE7ayiaW5
-         CDdw==
-X-Forwarded-Encrypted: i=1; AJvYcCV96WTgHA5w21IsKYbvd1r76vwMpe+19ymR9LOtEnQuqGgsTxuuTvgp63yVOgda4czwxxKX5b5hJcfm3ZrJWTTMq7ksAuiQ
-X-Gm-Message-State: AOJu0YyHEfRk1eTY8etf7tHFpuotcDBKRuPYFoTfMQm2uGmQf11YfcGp
-	CbsTp2mPVbNsflv/K2HJDK8+zekXJyYL9Mi5g1NFk3WsFHqwi1jGoo++NzDJh3KkLkMlbkqrvFs
-	rcSBupQFJq8CetlB46dJGryIyjK7YBRGlD3hfcb+s
-X-Google-Smtp-Source: AGHT+IEdX+pzzAuuzCSkxd4huzXwbL3Jd14+XATfxnuAQOBhZagp/wcphaR16mQ9LmjE/yEzIelzvsilJCnN5ehsGX0=
-X-Received: by 2002:a05:6402:5246:b0:5b8:4a95:2fe7 with SMTP id
- 4fb4d7f45d1cf-5bd46176b0bmr34501a12.1.1723476777666; Mon, 12 Aug 2024
- 08:32:57 -0700 (PDT)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QLVHvh4K;
+       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1723479776;
+	h=from:from:reply-to:reply-to:subject:subject:date:date:
+	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+	 content-type:content-type:in-reply-to:in-reply-to:  references:references;
+	bh=iL77nnSBH9gZ96JVImMJmmmZbAJ/u3cCB2omLv9Yg/4=;
+	b=QLVHvh4KN0/1GoaLIwTEwv0LKMPba88mSLjlUPESaj+1DxuXXe0hni28qlZtQaxTL774+u
+	sZVZD7WQt7oSnluYteutzQY+Yx3ZMsImyy+a0Q2UTseshiNKEjP4y9j6s97mR91b9wklbG
+	FHbwCDnSqzoZJcGsG9GvVjbSypvdPQE=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-467-R34gMxh1MI-CvurNTT2kOQ-1; Mon,
+ 12 Aug 2024 12:22:54 -0400
+X-MC-Unique: R34gMxh1MI-CvurNTT2kOQ-1
+Received: from mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.15])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id E0B9019776C9;
+	Mon, 12 Aug 2024 16:22:52 +0000 (UTC)
+Received: from redhat.com (unknown [10.42.28.211])
+	by mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 40F7E19373D7;
+	Mon, 12 Aug 2024 16:22:47 +0000 (UTC)
+Date: Mon, 12 Aug 2024 17:22:43 +0100
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: Octavian Purdila <tavip@google.com>, qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org, stefanst@google.com, pbonzini@redhat.com,
+	alex.bennee@linaro.org, thuth@redhat.com,
+	marcandre.lureau@redhat.com, alistair@alistair23.me,
+	philmd@linaro.org, jsnow@redhat.com, crosa@redhat.com,
+	bleal@redhat.com
+Subject: Re: [RFC PATCH 00/23] NXP i.MX RT595, ARM SVD and device model unit
+ tests
+Message-ID: <Zro207XTHFILvRoe@redhat.com>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+References: <20240805201719.2345596-1-tavip@google.com>
+ <CAFEAcA9tUW0DHHOuGJ4sUxu12JMLUMxqW=_9oUHKiiRTenZwKw@mail.gmail.com>
 MIME-Version: 1.0
-References: <20240805201719.2345596-1-tavip@google.com> <20240805201719.2345596-6-tavip@google.com>
-In-Reply-To: <20240805201719.2345596-6-tavip@google.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 12 Aug 2024 16:32:46 +0100
-Message-ID: <CAFEAcA8w47gZYV8GBQa3fNf1cBWNtm_k4DAdnOVt4RWBdSrghg@mail.gmail.com>
-Subject: Re: [RFC PATCH 05/23] hw: add register access utility functions
-To: Octavian Purdila <tavip@google.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, stefanst@google.com, 
-	pbonzini@redhat.com, alex.bennee@linaro.org, thuth@redhat.com, 
-	marcandre.lureau@redhat.com, alistair@alistair23.me, berrange@redhat.com, 
-	philmd@linaro.org, jsnow@redhat.com, crosa@redhat.com, bleal@redhat.com
-Content-Type: text/plain; charset="UTF-8"
-X-TUID: kLnh+mjd8sU+
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <CAFEAcA9tUW0DHHOuGJ4sUxu12JMLUMxqW=_9oUHKiiRTenZwKw@mail.gmail.com>
+User-Agent: Mutt/2.2.12 (2023-09-09)
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.15
+X-TUID: hkTTU1BIn9My
 
-On Mon, 5 Aug 2024 at 21:17, Octavian Purdila <tavip@google.com> wrote:
->
-> Add register access utility functions for device models, like checking
-> aligned access and reading and writing to a register backstore.
+On Mon, Aug 12, 2024 at 05:10:52PM +0100, Peter Maydell wrote:
+> On Mon, 5 Aug 2024 at 21:17, Octavian Purdila <tavip@google.com> wrote:
+> > It also introduces unit tests for device models. To allow accessing
+> > registers from unit tests a system bus mock is created. The main
+> > advantage of unit tests for device models over QTest is that device
+> > models can be tested in isolation and do not require a full qemu
+> > machine.
+> 
+> On the other hand the disadvantage is that you need to add a
+> bunch of extra code to mock the interfaces that the device
+> connects to, and then you compile into the test binary a
+> subset of C files which weren't written with the expectation
+> that they got compiled into tests like that, so it feels a
+> bit brittle. The nice thing about qtest is that it doesn't
+> need you to do any of that -- you just run the QEMU machine
+> model and prod the devices it already has.
+
+Yep, mocking often ends up being rather a double-edged sword.
+You can do some really powerful things with it, and in particular
+it can enable you test scenarios / code paths that are hard or
+impractical to exercise with regular functional tests where fault
+injection is difficult/impossible.
+
+The cost of this though is that the mocks can pose a significant
+ongoing maint burden on anyone who refactors code in future, as
+the mocks need to evolve in lockstep with the code refactoring.
+
+12 months down the line, it can be hard for another maintainer
+to understand the full purpose of the mocks & thus even harder
+to know what todo as they refactor the code. The future burden
+of mocks rarely falls on the person who creates them in the
+first place.
+
+> Do you have examples in this series of tests which you
+> were able to write with this unit test setup that you
+> wouldn't have been able to write equivalents of with the
+> qtest framework ?
 
 
-> Signed-off-by: Octavian Purdila <tavip@google.com>
-> ---
->  include/hw/regs.h | 89 +++++++++++++++++++++++++++++++++++++++++++++++
->  1 file changed, 89 insertions(+)
->  create mode 100644 include/hw/regs.h
->
-> diff --git a/include/hw/regs.h b/include/hw/regs.h
-> new file mode 100644
-> index 0000000000..8d0da0629d
-> --- /dev/null
-> +++ b/include/hw/regs.h
-> @@ -0,0 +1,89 @@
-> +/*
-> + * Useful macros/functions for register handling.
-> + *
-> + * Copyright (c) 2021 Google LLC
-> + *
-> + * SPDX-License-Identifier: GPL-2.0-or-later
-> + *
-> + * This work is licensed under the terms of the GNU GPL, version 2 or later.
-> + * See the COPYING file in the top-level directory.
-> + */
-> +
-> +#ifndef HW_REGS_H
-> +#define HW_REGS_H
-> +
-> +#include "exec/hwaddr.h"
-> +#include "exec/memattrs.h"
-> +
-> +#define BITS(hi, lo)       (BIT(hi + 1) - BIT(lo))
-> +#define BIT_IS_SET(v, b)   (((v) & BIT(b)) != 0)
 
-To the extent we need these we should be putting them in
-bits.h with the other bit-related operations. (But
-prefer the existing MAKE_64BIT_MASK over adding a
-second macro that evaluates to a mask with a given
-run of bits set).
-
-> +
-> +/*
-> + * reg32_aligned_access
-> + * @addr: address to check
-> + * @size: size of access
-> + *
-> + * Check if access to a hardware address is 32bit aligned.
-> + *
-> + * Returns: true if access is 32bit aligned, false otherwise
-> + */
-> +static inline bool reg32_aligned_access(hwaddr addr, unsigned size)
-> +{
-> +    if (size != 4 || addr % 4 != 0) {
-> +        return false;
-> +    }
-> +    return true;
-> +}
-> +
-> +/*
-> + * reg32_write
-> + * @base: base address
-> + * @addr: register offset in bytes
-> + * @val: value to write
-> + * @wr_bits_array: RW bitmask array
-> + *
-> + * Update the RW/WO bits of a 32bit register backstore with a given value
-> + * (discarding updats to the RO bits). The RW/WO bits are encoded in the
-> + * @wr_bits_array with bits set being RW and bits unset being RO.
-> + *
-> + * Usage example:
-> + *
-> + * wr_bits_array[] = {
-> + *    [REG1_ADDR/4] = 0xFF000000, // MSB byte writable
-> + *    [REG2_ADDR/4] = 0xFF,       // LSB byte writable
-> + *    // all other registers are read-only
-> + * };
-> + *
-> + * // backstore is updated to 0x12000000
-> + * reg32_write(&backstore, REG1_ADDR, 0x12345678, wr_bits_array);
-> + * // backstore is updated to 0x78
-> + * reg32_write(&backstore, REG2_ADDR, 0x12345678, wr_bits_array);
-> + */
-
-This seems like it's reimplementing include/hw/register.h
-functionality. I'm not personally a super-fan of that API,
-but I definitely would prefer it if we didn't have more than
-one way to do this.
-
-> +static inline uint32_t reg32_write(void *base, uint32_t off, uint32_t val,
-> +                                   const uint32_t *rw_bits_array)
-> +{
-> +    uint32_t *ptr = base + addr;
-> +    uint32_t old_value = *ptr;
-> +    uint32_t mask = rw_bits_array ? rw_bits_array[addr / 4] : 0xFFFFFFFF;
-> +
-> +    /* set WO/RW bits */
-> +    *ptr |= val & mask;
-> +    /* clear RO bits */
-> +    *ptr &= val | ~mask;
-> +
-> +    return old_value;
-> +}
-> +
-> +/*
-> + * reg32_read
-> + * @base: base address
-> + * @addr: register offset in bytes
-> + *
-> + * Returns: 32bit value from register backstore
-> + */
-> +static inline uint32_t reg32_read(void *base, uint32_t addr)
-> +{
-> +    return *(uint32_t *)(base + addr);
-> +}
-
-Pointer type handling looks suspicious here -- if
-the thing we're accessing is really a uint32_t* then
-we should take that; if it isn't then casting it to
-one and dereferencing might be reading unaligned memory.
-
-thanks
--- PMM
+With regards,
+Daniel
+-- 
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|

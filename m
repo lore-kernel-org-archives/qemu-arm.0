@@ -1,185 +1,111 @@
-Received: by 2002:a17:504:6454:b0:1be9:327d:8ee3 with SMTP id g20csp719197njh;
-        Mon, 12 Aug 2024 03:21:30 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXtCa+FmlUVQfKTOOOxriZ5oqeZlMsBzbPOaS0pagx22qW92bQ8EW7JDWPI1xMAD/hsaZnS4B1oZxuGiKXFH98AXuFCBRX1
-X-Google-Smtp-Source: AGHT+IGrSTvFwzhNv4oc0Kwi0h0Eiz+OaxYHpSdNxGgc0nnPdLKlXazjyyeP4miITOyxY7+q62+b
-X-Received: by 2002:a05:620a:17a5:b0:79f:12e9:1e51 with SMTP id af79cd13be357-7a4c216cd1emr1648961685a.5.1723458090739;
-        Mon, 12 Aug 2024 03:21:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1723458090; cv=none;
+Received: by 2002:a17:504:6454:b0:1be9:327d:8ee3 with SMTP id g20csp836768njh;
+        Mon, 12 Aug 2024 09:11:04 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXMRFAY0axpdS6ktNHMQa3KNaHzCz47PGhK89AmXPYi5HMBZFq43zb3JpI9hOcT/oiluqYY7K30b8j0fqMiWl5R83OQd+50
+X-Received: by 2002:a05:6402:430b:b0:5a1:1740:33cc with SMTP id 4fb4d7f45d1cf-5bd44c0e074mr678696a12.3.1723479064683;
+        Mon, 12 Aug 2024 09:11:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1723479064; cv=none;
         d=google.com; s=arc-20160816;
-        b=vBaF2dsgTqZ9Jc+ndzh0PQnIZId21GSU+e9w9BbQaK7/VoUPCSzPryxuwX3JIWhd/X
-         yTBmnWVb1wJ6LTMDjdHBMcJu2zlSYF8qeg1HYfK5Hb01mHmEVXxap0Qf2C62qJD7hXbA
-         BEVWmyqi5VnvZkDzZtrYA7qLMh7/exFLbLBjsF0Sii0i+mpJ6FYEQNyEPjUMTrUzrpfB
-         nQLN1Idu40tW5a5f1FiKlhHfxQ/LHDTRauMz5TPygMAmw2ERNEu5fIjpAsl4Yzs2r1C+
-         DO1fBQJEv9qWaskq/Z2NVLu3XrZCrpW0CR0Emb9KrWFwoRZV+OS4b506Gx9ZnE3O2KUZ
-         BglA==
+        b=hgXQqBKYPV+qeR/7Oss+Fr83gB6L5554ft6RYUtAAgfeXFjK5xFhJWl0movHLaAgcn
+         xDFpOvGP3nUzC3tPW6tMPA5+I413Jpe3bG7dllCk467sxzyZ9z6qFVFqKel50B3cZZNU
+         V1KpmgVugfhWPyNMWxSXK7tKR0PuZuHkoCxm5t1MX08rBI48jw74mY0RUcrZgG29nPPC
+         fq1iPK1RgVKhx0RTbQ695PkUkF5N6DpsefrKqNxu7/0aZbUN1SAfmz1NMLA9GVdKlgUS
+         eznzKILqTXQNtPYSMlOic+UQC7hm59bp2htx/hkz4fbLS1DhXt0J9a2k6MWnqq3E42X7
+         XSNg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:autocrypt
-         :from:references:cc:to:subject:user-agent:mime-version:date
-         :message-id:dkim-signature;
-        bh=gyJDd+GXnuxBnd4cSdoB2aJ+H6UcavMzMJL5XfuHTfc=;
-        fh=4tirad6SJFwGfkrh3M8JKG6kgYKE6KnRSgpH6kkhKgQ=;
-        b=KeNM5Oe0wGJMaza1sEoFWbU5VibLUQWRRxfVmYnjCwPiPRT6Mis/9S8cDrb28rWCJC
-         5nmjkoSrhOMIIQS4mGfpM1RQ1ZBhuIW5cFBus5lYmMXuxtVh3hWUuryiA/ehqYh6XTsL
-         rH7pzmEWc3rT06M12N9jBeBI/poS3uB2mD422Gfs6xMV6ksFzBWzTV4aui0HdwGv6jvE
-         Mlg5MxDLHR/zsmJ46L5xG5jwq0i4NsQBhDWz71UpsdJbWtPBbU6nFLKN2OhJRpdCtUr1
-         3K8r9uWLg6r7i8jBtV5O+x1dr8vEx8wKsuBhyPheasGEVyIdkoZGt/eV7UpwD9gj0hH+
-         soPQ==;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=Hc2w2iG3UkYhVLoPpMdoBTiz2g2dRwmzU8ANaYcF6Xk=;
+        fh=Obuyz2V4TH1loAPocJY8d75VMiWgym8k6sBMrcvrnaA=;
+        b=0cI2xYAPHiF4von/ecDhm1sMvEQtqpw3usw/seBNg13JS+sUm2D4kCmnUvdYifeo3h
+         W1Ch/J0H9wDDb9Nv8KyN0DgHwCJyAqt48FnRuIQkqcNbGOEb+d/pUPxjH4/2lzck42pt
+         Xmx2hcc2l2L2up3eIyFSKM1lCvUqQd5t8bBsVfrJTmmP5b+OgXUXv5gqJgwR+U3h8TEr
+         AZfqVWVnu8XiuWsoWHlZMtmOA8bmB6nLZkBFGpjiylZ6AEHoevUg39FT4ibLe5KMK0NJ
+         qX3X/HALbEBOGt2hV328qqZeSfNEl91ItuJhIDtwAQ6mzxJKl20JbRTNpk53R7iKSvkr
+         sQEQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NQV2lLT8;
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <thuth@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id af79cd13be357-7a4c7dfabfbsi552484985a.360.2024.08.12.03.21.30
+       dkim=pass header.i=@linaro.org header.s=google header.b=yvEeSIw3;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 4fb4d7f45d1cf-5bd1a5e039dsor940924a12.11.2024.08.12.09.11.04
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 12 Aug 2024 03:21:30 -0700 (PDT)
-Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        (Google Transport Security);
+        Mon, 12 Aug 2024 09:11:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NQV2lLT8;
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1723458090;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=gyJDd+GXnuxBnd4cSdoB2aJ+H6UcavMzMJL5XfuHTfc=;
-	b=NQV2lLT8t8GpnWdKrog+BHI08g2S1zTTU0vy1YTUW72uo9ETAq2dgy8ikIymeFTkYo6ZUG
-	m1QSKrnlXWEX+MOg1/1XGjoCJVA6WnwdS4cMxgOIGalq+FsGPChpXCXQv0IZFE8I6tgyIK
-	AR5gmSilVaed9lnTNLnk3fIVRXslCas=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-41-_aZeP7OyMTCm7zeNR28jFg-1; Mon, 12 Aug 2024 06:21:29 -0400
-X-MC-Unique: _aZeP7OyMTCm7zeNR28jFg-1
-Received: by mail-wm1-f70.google.com with SMTP id 5b1f17b1804b1-4281b7196bbso32807825e9.0
-        for <alex.bennee@linaro.org>; Mon, 12 Aug 2024 03:21:29 -0700 (PDT)
+       dkim=pass header.i=@linaro.org header.s=google header.b=yvEeSIw3;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1723479064; x=1724083864; darn=linaro.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=Hc2w2iG3UkYhVLoPpMdoBTiz2g2dRwmzU8ANaYcF6Xk=;
+        b=yvEeSIw36y3kKjNJ9d7YjAHIabzRZsMWvA5e3yEn8MAsc04wL26ttDWJAUufRulXAV
+         FE2eHTGmxYG6is6Ueu2xYgj1aWBMMIIwY0hBqfMsoO7TxLGNmQpQtr5FAj+eEp1qa7+I
+         ntvrbSwgknexsK6I5lc2k/IUAJwmVFH4FiqmdtFAleSau+pajxEyZYYpAon2RvnkerGB
+         BjI+WGKJUTgjvaIDtU2bG1tKiaS5DcHi5zbShlrMVhisNb4MGrRxIJkOsLoLFcUNYPBi
+         5mS1SNuj0AvY5ItYhTMFnlNDUaYOEG0almbHY3+heLxMqLQoKJAedx8Xz8QJJX6szaAh
+         ElEA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1723458088; x=1724062888;
-        h=content-transfer-encoding:in-reply-to:autocrypt:content-language
-         :from:references:cc:to:subject:user-agent:mime-version:date
-         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+        d=1e100.net; s=20230601; t=1723479064; x=1724083864;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=gyJDd+GXnuxBnd4cSdoB2aJ+H6UcavMzMJL5XfuHTfc=;
-        b=HQfyh6Xk6c7+Z61Kq8WZWxBlirQMgq/umb4N9bQ5huKiOBzJnikZqumvYFxGRUUjuO
-         iyczQca+TCgZsRD/uOC4HCR2xlRbkoMh2lzNeINk5239geuGLceHnGDDacMIuRzP/n+9
-         x/rvpn2jsfnJP97U3gMQ/fFS7O6GUixcah3fE5YTd29cT91EhQ5qYW05+W8swlrojnqP
-         +fNAzjy4+PGUXFAwSQKjFThRK8ZprHWkVty3lWfZmLtsbZ9EWIoWUqCc07Xqp5nKwfir
-         THg+5xv0E/4sa3f6/7IgTw7Jg0/VMX5/tMKo1QEJLnzZiSaOzsBYyhfjOVT86jQveLw5
-         QTig==
-X-Forwarded-Encrypted: i=1; AJvYcCU0z83BnUDZ8tshnhzn6t3jP56HPTZNPeYRGI7ycH458E7n3fyJwny3JXApkHLdq7VYvAAliirdKqPDSNeeAcfxVzpGYb3I
-X-Gm-Message-State: AOJu0Yy1Kqi4cJurEcICWHSLWQ6NB2SzxXUKVakifFWnoTmaNsPyaGwi
-	T1djnnWYwVc16e4xtjWxcplnHkxKbCR8jyuEPBbt4wybJacNDKH/0LEBBBRz6XrFuPk45P4Y2QQ
-	z9zZuA7ftboszS9U9kcVF9R0y/Mhph5+Zl6E/xvUAokl+Qh8oVBFsvg==
-X-Received: by 2002:a5d:5225:0:b0:367:8875:dd4c with SMTP id ffacd0b85a97d-36d5fb92e41mr5613112f8f.23.1723458088046;
-        Mon, 12 Aug 2024 03:21:28 -0700 (PDT)
-X-Received: by 2002:a5d:5225:0:b0:367:8875:dd4c with SMTP id ffacd0b85a97d-36d5fb92e41mr5613093f8f.23.1723458087581;
-        Mon, 12 Aug 2024 03:21:27 -0700 (PDT)
-Return-Path: <thuth@redhat.com>
-Received: from [192.168.0.6] (ip-109-43-178-125.web.vodafone.de. [109.43.178.125])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-36e48c784basm7153521f8f.0.2024.08.12.03.21.25
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 12 Aug 2024 03:21:27 -0700 (PDT)
-Message-ID: <0658b06b-024e-484c-861d-1b1ef3ce7888@redhat.com>
-Date: Mon, 12 Aug 2024 12:21:24 +0200
+        bh=Hc2w2iG3UkYhVLoPpMdoBTiz2g2dRwmzU8ANaYcF6Xk=;
+        b=EXxC+e7CJbs6d0LxpoyLDGFTtVv9Yuy8MX4/zg2dBAX8n5OUZbED1D61Wxwx6/HgWn
+         rGu0OHvv4gqarOFTcRQwWib4L4QcK04qEWDEX9LxMKE1Axs9aZFL5AKUofT3O8lyAALM
+         KOJTKDq3a3T2AFD+lW+hh472GPFo6kmkAn/tSNOtYnprSoXeU1D4IMpdvZw5Z3jyeOky
+         xUm1ISViwD+lqSuethzuAGJ/e8wvpZk/8tFAs1adUjjGerlqBMqkE+pvPqnikhcqqoKE
+         Lvw+RolxZ9VtGJjOhi181zyx1rbgLp+s0YzkB6swoYZoBXkeXSev+wHwuwNt5aycTvUl
+         Q6Hw==
+X-Forwarded-Encrypted: i=1; AJvYcCXnfzD0dh3HFceLdjF+7kQRdK1L2KmRvoDH7JVazqN2qAEcoK4GF2uxlNWt8gUHxCOECoZou21SAV3tH8yxoFhlpyyH+rdK
+X-Gm-Message-State: AOJu0YxvRhVZYKwT4ueiJbbj9Qm/k1CInnODTlu81mIhwW/lhfhFJuPq
+	cU7OWZlut9RafNneAFSlCTNS2j3nFUX3HohloFAP/ezrJ0TCFYxlxxqq79Q1E7zB0PVQOwimqAk
+	0FEvdpDcrP57iAky00Lg7Uz7a7OCPDEmVJ3wlo+M+
+X-Google-Smtp-Source: AGHT+IHeat9FGu2yrOpeIJKQ2r/Iw6e1bIiFXGUhMt4NvKuKKf4PUsiYouEZk1AV8p5Euo3QiRIHOushkEDwroMtTRM=
+X-Received: by 2002:a05:6402:51cd:b0:5af:37c0:b5bc with SMTP id
+ 4fb4d7f45d1cf-5bd44c6a631mr509650a12.28.1723479063876; Mon, 12 Aug 2024
+ 09:11:03 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 2/9] tests/avocado: apply proper skipUnless decorator
-To: Cleber Rosa <crosa@redhat.com>, qemu-devel@nongnu.org
-Cc: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
- Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
- Radoslaw Biernacki <rad@semihalf.com>, Troy Lee <leetroy@gmail.com>,
- Akihiko Odaki <akihiko.odaki@daynix.com>, Beraldo Leal <bleal@redhat.com>,
- kvm@vger.kernel.org, Joel Stanley <joel@jms.id.au>,
- Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Aurelien Jarno <aurelien@aurel32.net>,
- Sriram Yagnaraman <sriram.yagnaraman@ericsson.com>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, Paul Durrant
- <paul@xen.org>, Eric Auger <eric.auger@redhat.com>,
- David Woodhouse <dwmw2@infradead.org>, qemu-arm@nongnu.org,
- Andrew Jeffery <andrew@codeconstruct.com.au>,
- Jamin Lin <jamin_lin@aspeedtech.com>, Steven Lee
- <steven_lee@aspeedtech.com>, Peter Maydell <peter.maydell@linaro.org>,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
- Wainer dos Santos Moschetta <wainersm@redhat.com>,
- =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Leif Lindholm <quic_llindhol@quicinc.com>
-References: <20240806173119.582857-1-crosa@redhat.com>
- <20240806173119.582857-3-crosa@redhat.com>
-From: Thomas Huth <thuth@redhat.com>
-Autocrypt: addr=thuth@redhat.com; keydata=
- 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
-In-Reply-To: <20240806173119.582857-3-crosa@redhat.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-TUID: X2CZHBDsJSX2
+References: <20240805201719.2345596-1-tavip@google.com>
+In-Reply-To: <20240805201719.2345596-1-tavip@google.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 12 Aug 2024 17:10:52 +0100
+Message-ID: <CAFEAcA9tUW0DHHOuGJ4sUxu12JMLUMxqW=_9oUHKiiRTenZwKw@mail.gmail.com>
+Subject: Re: [RFC PATCH 00/23] NXP i.MX RT595, ARM SVD and device model unit tests
+To: Octavian Purdila <tavip@google.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, stefanst@google.com, 
+	pbonzini@redhat.com, alex.bennee@linaro.org, thuth@redhat.com, 
+	marcandre.lureau@redhat.com, alistair@alistair23.me, berrange@redhat.com, 
+	philmd@linaro.org, jsnow@redhat.com, crosa@redhat.com, bleal@redhat.com
+Content-Type: text/plain; charset="UTF-8"
+X-TUID: Oc2MjF2kgNNv
 
-On 06/08/2024 19.31, Cleber Rosa wrote:
-> Commit 9b45cc993 added many cases of skipUnless for the sake of
-> organizing flaky tests.  But, Python decorators *must* follow what
+On Mon, 5 Aug 2024 at 21:17, Octavian Purdila <tavip@google.com> wrote:
+> It also introduces unit tests for device models. To allow accessing
+> registers from unit tests a system bus mock is created. The main
+> advantage of unit tests for device models over QTest is that device
+> models can be tested in isolation and do not require a full qemu
+> machine.
 
-s/follow/directly precede/ ?
+On the other hand the disadvantage is that you need to add a
+bunch of extra code to mock the interfaces that the device
+connects to, and then you compile into the test binary a
+subset of C files which weren't written with the expectation
+that they got compiled into tests like that, so it feels a
+bit brittle. The nice thing about qtest is that it doesn't
+need you to do any of that -- you just run the QEMU machine
+model and prod the devices it already has.
 
-Apart from that:
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+Do you have examples in this series of tests which you
+were able to write with this unit test setup that you
+wouldn't have been able to write equivalents of with the
+qtest framework ?
 
-> they decorate, so the newlines added should *not* exist there.
-> 
-> Signed-off-by: Cleber Rosa <crosa@redhat.com>
-> ---
->   tests/avocado/boot_linux_console.py | 1 -
->   tests/avocado/intel_iommu.py        | 1 -
->   tests/avocado/linux_initrd.py       | 1 -
->   tests/avocado/machine_aspeed.py     | 2 --
->   tests/avocado/machine_mips_malta.py | 2 --
->   tests/avocado/machine_rx_gdbsim.py  | 2 --
->   tests/avocado/reverse_debugging.py  | 4 ----
->   tests/avocado/smmu.py               | 1 -
->   8 files changed, 14 deletions(-)
+thanks
+-- PMM

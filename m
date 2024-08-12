@@ -1,148 +1,117 @@
-Received: by 2002:a17:504:6454:b0:1be9:327d:8ee3 with SMTP id g20csp716306njh;
-        Mon, 12 Aug 2024 03:10:03 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCU17Ip/ICI/34+jALGfr0gZ/2eWBpkrfdtWqUNMC2Yzlo7GtvKQaUhwDBEzUGWDtJngankQptsC1pM1O8eymbZMIUMY4gmc
-X-Google-Smtp-Source: AGHT+IGkxrmZMKRRerpLv/0PWIUpXKzxLwAmpb6Ak2FZGIl9eiDi4AfrJMfv4gXe1QuZ4VRl7eLa
-X-Received: by 2002:a05:6214:4699:b0:6b5:34b:8c02 with SMTP id 6a1803df08f44-6bd78db4981mr111306016d6.27.1723457403208;
-        Mon, 12 Aug 2024 03:10:03 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1723457403; cv=pass;
+Received: by 2002:a17:504:6454:b0:1be9:327d:8ee3 with SMTP id g20csp718209njh;
+        Mon, 12 Aug 2024 03:17:33 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWJYpi0NYRs6pZnapM4aemybjJ/XzgexSIAiEj9OOT/8z9FTIiP+UpacruVAxWZ85HRdoydC/75VFaK0ZDwURDxekx1vyh5
+X-Google-Smtp-Source: AGHT+IEt/Xu1rOtFhgL5opj8UDVYGT2FBomKitoKGfdf88S1g/62KYjja9pQdYh2ZXD68wL7tGIT
+X-Received: by 2002:a05:6830:628c:b0:709:41ab:453e with SMTP id 46e09a7af769-70b7cc26fcdmr12322830a34.31.1723457852949;
+        Mon, 12 Aug 2024 03:17:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1723457852; cv=none;
         d=google.com; s=arc-20160816;
-        b=cAb/m9t5+ubWkLR+K8fpxTJU/ncHhrOagSnTsSIC4rf76QsGYOIvQMGFi95ABZLXct
-         kMh5UXFdJgQS5UYNhCMWDMUdevNTqefeiFkfuA2cF9MZz22h65jOAhnKZ5Ol57C0S7Je
-         TInKrJyRgJlrG3yGLjQNXcgqj4b7meVMUvoB9uE7yp/TYSG5KTDzcr37Q2kHAJ4b6/m8
-         3Wva92yTWfnntxj8Yul5xjuYG5dwnVMKDnpyYEfeC5kuJIAoBPKU10UfD34YDkH5h+WK
-         JLUZ7ue0dpJFa55uxTHjjyxj8J0A7WzVwjw75oEjPlW/KeWyfYiqL9xEiYd1ce7/mQ71
-         fr2Q==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:autocrypt:content-language
-         :from:references:cc:to:subject:user-agent:mime-version
-         :list-unsubscribe:list-subscribe:list-id:precedence:date:message-id
-         :dkim-signature;
-        bh=hcxDp9vgKIuFFaU8kQG0ynaI4kr+dfXA6004gRSj6ZI=;
-        fh=PK7OJvVEArg+D9ZhVFsk5HSKy++ay10PRuolROmNSUE=;
-        b=uT6lMaHA2UCb4OCrvJlAD6pCdFBitU8U0UulLDBzu+OhSvqC510/YxqqhoUHZoeBjF
-         ttC2KNVIU3/nBoWhfMI7Ik68N0ZHV4vMXfJtceNfG2CTuS6zia35AQy4Fo1n3mpb632K
-         q9PIPuJwqvw9atxLGMN8Sd1Yqoa1AbmGi+3/5sz1Q4uTtZdUyPswUO5ExBo+9tP7vW+N
-         xmYYQ+BCtlnUVk9Xu7zkngBG/YEJuc9NfmxGT4PgwuWL4G3UKNyR9TdiQxiy4DNMwHD6
-         KqNV4afMTq9P9kqAaHbFp70SOhJc89A26tissfgi1VO3h9GFAHNQM46V+b/hMmSqXlcb
-         lDJw==;
+        b=P4i7WbbtudxCrPlRF/1ated6iQzCspVhIAqz++/qCeDcVdmxcWdbJ43smB9ESpKYkr
+         vIGVnnxFOEvSykb8OI92p92Ya+wH43Q5k6b0IP83WGIGcs9MhK0ebbZD+HJI45H4F4rb
+         NMYivgGrPk9b2eHmpP3PRfmFVhQkzvDXcGeNqLKGXWsQAkk8Vremf8Fhdvaq5CZ6x8dQ
+         vYIARR/O16SqqAJNCLOR6XfPFDffgkAbEkPcE+VZhB0VbLIoqxml4Ru0QOX3TA3sm/U4
+         9P+NzZjz52jZXzSXf+Dn/rksi+2xFKlLURKMsQKeiw3hYP+VKkmpSQu093wF3mlmzRG4
+         pOUg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:content-language:in-reply-to:autocrypt
+         :from:references:cc:to:subject:user-agent:mime-version:date
+         :message-id:dkim-signature;
+        bh=lVcqCYPpo9W+fFj+K5rl8msH5Np6HFRkYMqj7Uwzb6g=;
+        fh=6OF/j0dZ9hXYzxEqaeTTI1ForGc8+ZfuB5DOO57GBmI=;
+        b=lZYAM4Kn4q+MEY1A+0vXzkUIgWmLp7EmRY69FGgnBAVJq78uL1doqFMKgX+BkVNpi2
+         mtboa2uFUtmykeFE+iv3xOEEYnl2uSsL/IVG+TI3cD9JKImO1Wt48YtqMZEgOTgazV9f
+         Vehi150hgQfNIs9SB1/Az79iWKrmcq1Pp/98PQ1d33l4krzhjsxPYD9lGgAqTplfWZbH
+         XQ6iJ11y1eF17aVKGQes/aw8IP6SBwrRQBulvoNT2RLKhYUo8lrrDNXtnTxPAMLI7Hcl
+         ljNa6L5mLuKCHLNDGWiDYE+r1D/JE47Y1nVzEsrOzi2R9wUjgmwchB+/+X1Qnoe9ksOz
+         fT/w==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DQlkzKos;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-23835-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="kvm+bounces-23835-alex.bennee=linaro.org@vger.kernel.org";
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ds6UHAtd;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm+bounces-23835-alex.bennee=linaro.org@vger.kernel.org>
-Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [147.75.199.223])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6bd82c8a043si56241406d6.166.2024.08.12.03.10.03
+Return-Path: <thuth@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id d75a77b69052e-4531c1c8c85si56157521cf.184.2024.08.12.03.17.32
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 12 Aug 2024 03:10:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm+bounces-23835-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) client-ip=147.75.199.223;
+        Mon, 12 Aug 2024 03:17:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DQlkzKos;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-23835-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="kvm+bounces-23835-alex.bennee=linaro.org@vger.kernel.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ds6UHAtd;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ny.mirrors.kernel.org (Postfix) with ESMTPS id D97E81C21461
-	for <alex.bennee@linaro.org>; Mon, 12 Aug 2024 10:10:02 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 121D115099B;
-	Mon, 12 Aug 2024 10:09:58 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="DQlkzKos"
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 46DA81876
-	for <kvm@vger.kernel.org>; Mon, 12 Aug 2024 10:09:56 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.129.124
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1723457397; cv=none; b=lVwKIt0idp+vRIJPaGvW0+v+RNIi1gRzpNmnBQvWjoAzWZ/HnohPhGIP246u4rCpaw50cM3AJLF/k9B0eBhzxO79IuRztCZCoplkF7luMyT5mtfDroGIKyf/rMj1nmqwZlvtOaGqTa92VQiM+V5zPjWsA5IGoI5nHlqgvDdw3D8=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1723457397; c=relaxed/simple;
-	bh=sYe+fdI+F4aX+n0KfxR1e5aaeSvUe2gRPi4FpYKbViY=;
-	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:
-	 In-Reply-To:Content-Type; b=ROlFfHXMaLWXcIBdjD7T8IRsRPHylKNaxzA0V7B3pjnAHstijToJuV1CMrGveyiPP7+M9OeOQkqRGPHo8y/LQHAZvGliyiY13dHiCdXT2nFvhRZeJxHzyCe0dMsTIyGjM0mekLxIWqCLZAWSK1JQsuPNRnCL2u+2EtHqwrq2/Fw=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=DQlkzKos; arc=none smtp.client-ip=170.10.129.124
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1723457395;
+	s=mimecast20190719; t=1723457852;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=hcxDp9vgKIuFFaU8kQG0ynaI4kr+dfXA6004gRSj6ZI=;
-	b=DQlkzKosCJUL77d6osQDi0SI4NITyF7RBk/OXQ9XlEyvd59VnBwzMr8d1aa93LHHzBwTm4
-	jT1mWiqlXaH+W8vXQA/uBObF/h0LecfVTczs6vzrIRrNOffAtesjKAAzgW9BZi1/YqsZ57
-	urR0irsGaqpXnjMkryD01JitvnlSjCs=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
+	bh=lVcqCYPpo9W+fFj+K5rl8msH5Np6HFRkYMqj7Uwzb6g=;
+	b=ds6UHAtdZrE0VV7fg14DJX5X7aWYbwlXfzsdPFDlVJA8lYQRqukkY3CsVmtxj7D4gBA846
+	rTI+yi/mkKxbjjuY5xO7x4JQ2MeKK5tu1nV+UIWd8pYQ4NdW7KU/8VVPU3c1ZYHl0u83ez
+	r6tpfbAxxmzM/zwjMWhYQD97fHw377I=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-407-uhasZvD2MK-5ggpnasJkXQ-1; Mon, 12 Aug 2024 06:09:54 -0400
-X-MC-Unique: uhasZvD2MK-5ggpnasJkXQ-1
-Received: by mail-wm1-f72.google.com with SMTP id 5b1f17b1804b1-4282164fcbcso32578595e9.2
-        for <kvm@vger.kernel.org>; Mon, 12 Aug 2024 03:09:53 -0700 (PDT)
+ us-mta-682-XJOTq0CTNgeXcPZydMJvEA-1; Mon, 12 Aug 2024 06:17:31 -0400
+X-MC-Unique: XJOTq0CTNgeXcPZydMJvEA-1
+Received: by mail-wm1-f71.google.com with SMTP id 5b1f17b1804b1-427ffa0c9c7so49486735e9.1
+        for <alex.bennee@linaro.org>; Mon, 12 Aug 2024 03:17:31 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1723457393; x=1724062193;
+        d=1e100.net; s=20230601; t=1723457850; x=1724062650;
         h=content-transfer-encoding:in-reply-to:autocrypt:content-language
          :from:references:cc:to:subject:user-agent:mime-version:date
          :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=hcxDp9vgKIuFFaU8kQG0ynaI4kr+dfXA6004gRSj6ZI=;
-        b=sw92fxO9SEoRNp7/D3rxpEM/wBLKbYYPCRwGyPAlu989jzGsC/JwX96ZPoB+5ssxfS
-         TjefxS0B9547l37pzhPQtE5Xbkx51nFtfCBNQM2FkKHPLBlUANrDoQqGanyri7UrkRzj
-         qyzSJxatJ804eMdrfO9BU1HdM5lHQPuRYGDm35VYxBiTgi9a+1yKnfz4cVG40DMohOc5
-         meSTy4LB/iFQq5GE6RV8LjHAgAvzKnpnXSZkOfXB03vbdNQS5X9wfSpKKaTYTr7ZTmgI
-         xixKDFZsAm5gJu7KfJzR8zyMXZaP1CNUseaKlGh4EUa1eJGANXva9mmvIZRyiHSSJHK5
-         E/6g==
-X-Forwarded-Encrypted: i=1; AJvYcCXLAuX2C3MsNUGjjFGM0lTw4isWh0TPND1zwTXgxJZSl7WBre7JNn0HZTkC42q8HDcqjtAju4PWfINZdpVF/c0U0uV+
-X-Gm-Message-State: AOJu0YzXtSblpBE+72fEfXZtfltSSBn315y+ExtFZktD78dLgvNEv0sY
-	9S3akL9UY0/9WJ2Zh+XvZjF0uaXm62XsPQf51tk0cxFDOisDDqVEPNr57GUAbs+mOnLbbmhE3Em
-	eLDo/tBFFhwWtvnsqTCqP9EOYi9NW+CmFVPlpeh9GckHcUGCO2w==
-X-Received: by 2002:a05:600c:4e92:b0:428:17b6:bcf1 with SMTP id 5b1f17b1804b1-429c3a291f9mr64468855e9.22.1723457392852;
-        Mon, 12 Aug 2024 03:09:52 -0700 (PDT)
-X-Received: by 2002:a05:600c:4e92:b0:428:17b6:bcf1 with SMTP id 5b1f17b1804b1-429c3a291f9mr64468225e9.22.1723457392384;
-        Mon, 12 Aug 2024 03:09:52 -0700 (PDT)
+        bh=lVcqCYPpo9W+fFj+K5rl8msH5Np6HFRkYMqj7Uwzb6g=;
+        b=uDuM6FWntfu4nGktb3WyOZ6mywuYch/UJFY9vwyskYvdHcXzN9NSxhPB46gKTAlN0z
+         Cq5/1ytQyUmPyL/UqSFum/zU5mEXNAAK+XgkQlewiJyRG0voMnXp2vFkcbCBnw25oGmJ
+         Hw62Zk2oDlVNcLw0a8jDS2/UGnTL5Tr2TOFzXagaHFgUsOJZkGXna5SFNGvH1zfpvjBC
+         TCdUPRv6TcJYvXJEtPOF151YpW2kj4rmtge+6Wn9hoxFS942wd5Jawd/14edwBz6b77F
+         Z/8pJbuUbCSv5lvvDxVq8fx5da5n1VHa5CUUfSKf3rvreiFxfsUOm4RE5T+2eDqsJCaB
+         M0Qg==
+X-Forwarded-Encrypted: i=1; AJvYcCUTvLIRx7a0b47TWlqY94HgnpHVeyBVf8wWXwRfA0LhLmZgQ8rZgOmcTegJD2wNSbDIsfWz7XJfr3feS3lFpCy0KyQWSzgr
+X-Gm-Message-State: AOJu0Yy14lmpXUYYK/72/SkiWCGIGQCA2F7YncV34vf8mHm5JMjldWXn
+	Kye+QFCTVRyioomBybD0ZRJHo0fUkF3iwe4DZ4zDUAwlYmAG4uuQZiZFrIgyApPqTeGQiGLodz8
+	GltMlu3iB/F+CNY+q8/p+k6UqfXgM3SDd1B1GQPHDxD8JlgXQFRLwhQ==
+X-Received: by 2002:a05:600c:a48:b0:428:fcb:962 with SMTP id 5b1f17b1804b1-429c3a5c30fmr69153655e9.36.1723457850113;
+        Mon, 12 Aug 2024 03:17:30 -0700 (PDT)
+X-Received: by 2002:a05:600c:a48:b0:428:fcb:962 with SMTP id 5b1f17b1804b1-429c3a5c30fmr69153255e9.36.1723457849535;
+        Mon, 12 Aug 2024 03:17:29 -0700 (PDT)
+Return-Path: <thuth@redhat.com>
 Received: from [192.168.0.6] (ip-109-43-178-125.web.vodafone.de. [109.43.178.125])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-429c75042e9sm95625855e9.8.2024.08.12.03.09.49
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-429c751b021sm97414005e9.21.2024.08.12.03.17.27
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 12 Aug 2024 03:09:51 -0700 (PDT)
-Message-ID: <e01dc474-905a-4096-ad76-3bc4d04b23ed@redhat.com>
-Date: Mon, 12 Aug 2024 12:09:48 +0200
-Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
+        Mon, 12 Aug 2024 03:17:29 -0700 (PDT)
+Message-ID: <1f645137-c621-4fa3-ace0-415087267a7b@redhat.com>
+Date: Mon, 12 Aug 2024 12:17:27 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 09/18] qapi/machine: Rename CpuS390* to S390Cpu, and drop
- 'prefix'
-To: Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org
-Cc: alex.williamson@redhat.com, andrew@codeconstruct.com.au,
- andrew@daynix.com, arei.gonglei@huawei.com, berrange@redhat.com,
- berto@igalia.com, borntraeger@linux.ibm.com, clg@kaod.org, david@redhat.com,
- den@openvz.org, eblake@redhat.com, eduardo@habkost.net,
- farman@linux.ibm.com, farosas@suse.de, hreitz@redhat.com,
- idryomov@gmail.com, iii@linux.ibm.com, jamin_lin@aspeedtech.com,
- jasowang@redhat.com, joel@jms.id.au, jsnow@redhat.com, kwolf@redhat.com,
- leetroy@gmail.com, marcandre.lureau@redhat.com, marcel.apfelbaum@gmail.com,
- michael.roth@amd.com, mst@redhat.com, mtosatti@redhat.com,
- nsg@linux.ibm.com, pasic@linux.ibm.com, pbonzini@redhat.com,
- peter.maydell@linaro.org, peterx@redhat.com, philmd@linaro.org,
- pizhenwei@bytedance.com, pl@dlhnet.de, richard.henderson@linaro.org,
- stefanha@redhat.com, steven_lee@aspeedtech.com, vsementsov@yandex-team.ru,
- wangyanan55@huawei.com, yuri.benditovich@daynix.com, zhao1.liu@intel.com,
- qemu-block@nongnu.org, qemu-arm@nongnu.org, qemu-s390x@nongnu.org,
- kvm@vger.kernel.org
-References: <20240730081032.1246748-1-armbru@redhat.com>
- <20240730081032.1246748-10-armbru@redhat.com>
+Subject: Re: [PATCH v2 9/9] Avocado tests: allow for parallel execution of
+ tests
+To: Cleber Rosa <crosa@redhat.com>, qemu-devel@nongnu.org
+Cc: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
+ Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
+ Radoslaw Biernacki <rad@semihalf.com>, Troy Lee <leetroy@gmail.com>,
+ Akihiko Odaki <akihiko.odaki@daynix.com>, Beraldo Leal <bleal@redhat.com>,
+ kvm@vger.kernel.org, Joel Stanley <joel@jms.id.au>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Aurelien Jarno <aurelien@aurel32.net>,
+ Sriram Yagnaraman <sriram.yagnaraman@ericsson.com>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, Paul Durrant
+ <paul@xen.org>, Eric Auger <eric.auger@redhat.com>,
+ David Woodhouse <dwmw2@infradead.org>, qemu-arm@nongnu.org,
+ Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Jamin Lin <jamin_lin@aspeedtech.com>, Steven Lee
+ <steven_lee@aspeedtech.com>, Peter Maydell <peter.maydell@linaro.org>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Leif Lindholm <quic_llindhol@quicinc.com>
+References: <20240806173119.582857-1-crosa@redhat.com>
+ <20240806173119.582857-10-crosa@redhat.com>
 From: Thomas Huth <thuth@redhat.com>
-Content-Language: en-US
 Autocrypt: addr=thuth@redhat.com; keydata=
  xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
  yYkTm9+7zBUc0sW5AuPGR/dp3pSLX/yFWsA/UB4nJsHqgDvDU7BImSeiTrnpMOTXb7Arw2a2
@@ -185,26 +154,65 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <20240730081032.1246748-10-armbru@redhat.com>
+In-Reply-To: <20240806173119.582857-10-crosa@redhat.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-TUID: h+T3zm5LIj54
+X-TUID: r7uxIV6yhOxe
 
-On 30/07/2024 10.10, Markus Armbruster wrote:
-> QAPI's 'prefix' feature can make the connection between enumeration
-> type and its constants less than obvious.  It's best used with
-> restraint.
+On 06/08/2024 19.31, Cleber Rosa wrote:
+> The updated Avocado version allows for the execution of tests in
+> parallel.
 > 
-> CpuS390Entitlement has a 'prefix' to change the generated enumeration
-> constants' prefix from CPU_S390_POLARIZATION to S390_CPU_POLARIZATION.
-> Rename the type to S390CpuEntitlement, so that 'prefix' is not needed.
+> While on a CI environment it may not be a good idea to increase the
+> parallelization level in a single runner, developers may leverage that
+> on specific CI runners or on their development environments.
 > 
-> Likewise change CpuS390Polarization to S390CpuPolarization, and
-> CpuS390State to S390CpuState.
+> This also multiplies the timeout for each test accordingly.  The
+> reason is that more concurrency can lead to less resources, and less
+> resources can lead to some specific tests taking longer to complete
+> and then time out.  The timeout factor being used here is very
+> conservative (being equal to the amount of parallel tasks).  The worst
+> this possibly oversized timeout value can do is making users wait a
+> bit longer for the job to finish if a test hangs.
 > 
-> Signed-off-by: Markus Armbruster <armbru@redhat.com>
+> Overall, users can expect a much quicker turnaround on most systems
+> with a value such as 8 on a 12 core machine.
+> 
+> Signed-off-by: Cleber Rosa <crosa@redhat.com>
 > ---
+...
+> diff --git a/tests/Makefile.include b/tests/Makefile.include
+> index 537804d101..545b5155f9 100644
+> --- a/tests/Makefile.include
+> +++ b/tests/Makefile.include
+> @@ -94,6 +94,9 @@ TESTS_RESULTS_DIR=$(BUILD_DIR)/tests/results
+>   ifndef AVOCADO_TESTS
+>   	AVOCADO_TESTS=tests/avocado
+>   endif
+> +ifndef AVOCADO_PARALLEL
+> +	AVOCADO_PARALLEL=1
+> +endif
+>   # Controls the output generated by Avocado when running tests.
+>   # Any number of command separated loggers are accepted.  For more
+>   # information please refer to "avocado --help".
+> @@ -141,7 +144,8 @@ check-avocado: check-venv $(TESTS_RESULTS_DIR) get-vm-images
+>               --show=$(AVOCADO_SHOW) run --job-results-dir=$(TESTS_RESULTS_DIR) \
+>               $(if $(AVOCADO_TAGS),, --filter-by-tags-include-empty \
+>   			--filter-by-tags-include-empty-key) \
+> -            $(AVOCADO_CMDLINE_TAGS) --max-parallel-tasks=1 \
+> +            $(AVOCADO_CMDLINE_TAGS) --max-parallel-tasks=$(AVOCADO_PARALLEL) \
+> +			-p timeout_factor=$(AVOCADO_PARALLEL) \
+>               $(if $(GITLAB_CI),,--failfast) $(AVOCADO_TESTS), \
+>               "AVOCADO", "tests/avocado")
 
+I think it was nicer in the previous attempt to bump the avocado version:
 
-Acked-by: Thomas Huth <thuth@redhat.com>
+https://gitlab.com/qemu-project/qemu/-/commit/ec5ffa0056389c3c10ea2de1e783
 
+This re-used the "-j" option from "make", so you could do "make -j$(nproc) 
+check-avocado" just like with the other "check" targets.
+
+  Thomas

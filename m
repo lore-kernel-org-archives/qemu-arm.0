@@ -1,473 +1,275 @@
-Received: by 2002:a17:504:6454:b0:1be9:327d:8ee3 with SMTP id g20csp709492njh;
-        Mon, 12 Aug 2024 02:39:26 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVPNy6CDmQvjDTUFmbq8LVhb0sZFo91RYc1G2IyK5+av2LD65mJMDywfRE6w3aFsQD0zYd9xwsBxfQ7luq1LUg0FacH/ZRO
-X-Google-Smtp-Source: AGHT+IFNwz2HnQcBIBeY7odFDcS4Au8sh3bYSo329GAYCLuYry0ZTAEPQ313Gz0k5QtvZzUKa5Dl
-X-Received: by 2002:a05:6902:2482:b0:e0b:f69b:da19 with SMTP id 3f1490d57ef6-e0eb9a7c3dbmr9408462276.40.1723455566183;
-        Mon, 12 Aug 2024 02:39:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1723455566; cv=none;
+Received: by 2002:a17:504:6454:b0:1be9:327d:8ee3 with SMTP id g20csp702895njh;
+        Mon, 12 Aug 2024 02:08:59 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWNZ3CmQlk+l1VqWx7wmoWR1XE8ga7njZXrXMxNhsgHiysVQ75sEXB0ZK/Anf+rWUiyMlgwoRvi3SVL4BaoAvY7d6wPSbwg
+X-Google-Smtp-Source: AGHT+IHai1uNL6JKqHYnA8MzAIZJhy/YjhS1HxLK5RrHwYxVeH+zH5GKqQggQUocL7G5NZCi7KdA
+X-Received: by 2002:a05:620a:2944:b0:79d:6d7d:e5b3 with SMTP id af79cd13be357-7a4c183a14bmr1000209085a.42.1723453739502;
+        Mon, 12 Aug 2024 02:08:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1723453739; cv=none;
         d=google.com; s=arc-20160816;
-        b=KxUoav93wUtV056uUdO0+MMQXQWrRRoeCEpS9xuPIYH26hhyXEKCteP6ZNcAS3WzuJ
-         6iMPaXJGIWm9RByTXINhOS9W3RwX3Ias5Z0igcnxo8p/qyURuGAg4ZRP1hy9qtfrpKvZ
-         igTAQVW6mDl8NbMTTAFKRaDQF80Juwy2qeHUBCIgl8kfiAUtpYC2SSZJNTTmjhzwn2rg
-         VOkf/ptb0YvXP3zUh46XN5kLKFZP3DSJL3LRJqbjOvfPe83lvCu7p005jlIllQxvHym0
-         WyQ+9Eubo8y/rQipcGVpAQWj5EsGs7eYxd/51ynrTkFz2IazOAlPJd9PkDLfYdT+uyup
-         1fXQ==
+        b=oQJKI36qG+VSbei5C9auNZx1OVHvM6uNvwGTuxvz12HBxaLaK5cZ3ZteN4SBveO3n1
+         dshgOLt9rpZMRgRv+wkc/V0tb6ci0Z/mwx17i2OMRYydqJNUYhKdzzIES3HmtikIgE6Q
+         08y2ngQGcSF0sTn6CMBk/WAlvX5xneOpKx7n4sfi4WVFdYNSoTrMxTapUXYcTYaoUTAj
+         1k9bvNIXNiJ6EPLPR/7oTEI3DGYhinvAYLxgyGMkscNpqtajWQgZ6UubWqM8bGbnsrDe
+         YJcr9VNc1ApVqxAzAye6xnzR5UpE9YY/Sig6jB3fDFgG8qEVyFYHARCf9prWe7XQjkO/
+         Lgww==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:subject:cc:to:from
-         :date:dkim-signature;
-        bh=7NWGtZUJo6pEYJDKSLc4v/k6z5SFqu6cDFxa/E9GPvU=;
-        fh=2plyQzII8wbR6GIWL73jELbtlitv0jCr0wPLJTyRfzk=;
-        b=xKdzpAjaao1s8ghkWEr99t/qKSa2xPrDUjfEsm0pa9WMyrQbH8s/4mnbiDt86phzjy
-         lke/pKaoV1ofinJKVyk7TUkf4RnFsMslsPgm4uQRapMHPwQC68uCdBVUfSjt8ks4+c3g
-         zGo6eK8MCNVlQcL07TPtIIGK7TT3NFo7sff5HmavBiks6KD2s1W3jtsntlhZ/CKuvZxt
-         JPzsZm+vXDpHtxXylVxqolQSXe08xzwNIgv/zvPGtJMRuGbUukSEnBlJnIOOamR/OtfQ
-         XW22KwEj/eHSBkseMR5xquf8JN+L2C29/1AB+XriVc7BkYoT87mEqUIR3uxOVrSeBtre
-         KVpg==;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=f2ertgu17KLAzXsge2sVkru6VENZJ++94vnoaubUREM=;
+        fh=QsxuhUBNyq2F7/1UitCRN/j+l2ZGR7FJ1BwILMh3mGA=;
+        b=GL+T8+fxUa/po6Wdu5KXRLf11QSSodFwSKaS7lno84PLPpOiAMzELEbNvFcyuU27DU
+         vb5PrYfHuSG6aARoO9NEOL5kMByXFGBpMYmE0m69/B2QcFHi/r+x7UpyugTN/r/J7X40
+         ZHigGOP9oAlroDtnE1SkKRjlm4y/C1RjaqTU4D66NmfdFqXI/sTWahLuegZcuFB7Ow6l
+         hQ7TXVV0bD9au5nVtTUlkVfHKDpEsyOjOvQskRaDx4e3/hvBZII451v4tyRh6Zmpg3HQ
+         yqOUct7lDiZBA9G/r6kzsoc0xfhWWVSHz7jf63tXz+CgbxmEjBHYsQLumwtyqyJaMGLR
+         QQxg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=XJiw5Mzp;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4531c28a64fsi55608351cf.496.2024.08.12.02.39.26
-        for <alex.bennee@linaro.org>
+       dkim=pass header.i=@intel.com header.s=Intel header.b=Qle5DdZL;
+       spf=pass (google.com: domain of zhao1.liu@intel.com designates 192.198.163.16 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Return-Path: <zhao1.liu@intel.com>
+Received: from mgamail.intel.com (mgamail.intel.com. [192.198.163.16])
+        by mx.google.com with ESMTPS id af79cd13be357-7a4c7e25157si563683285a.756.2024.08.12.02.08.58
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 12 Aug 2024 02:39:26 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 12 Aug 2024 02:08:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of zhao1.liu@intel.com designates 192.198.163.16 as permitted sender) client-ip=192.198.163.16;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=XJiw5Mzp;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sdRWB-00079y-Ip; Mon, 12 Aug 2024 05:39:11 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1sdRWA-00078y-3K
- for qemu-arm@nongnu.org; Mon, 12 Aug 2024 05:39:10 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1sdRW7-0004ff-N8
- for qemu-arm@nongnu.org; Mon, 12 Aug 2024 05:39:09 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1723455546;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=7NWGtZUJo6pEYJDKSLc4v/k6z5SFqu6cDFxa/E9GPvU=;
- b=XJiw5Mzpey9vVupfpRLDh9CDoqWsyVIk4wavDbeX4MXgupaIp0+HkgtN1fluv6EexqGbEa
- rHYysigkriE9EDoDLEzSTRbU7Jdgx1C9MTc02zZRqLpPaq/0kAcbwt3LSHsCkS5FlNMN06
- rJrQje+I2zHCuUfeWcebhDlPeZ3I6Ss=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-499-1gZjm-qYMROuZFVNOvSXhA-1; Mon, 12 Aug 2024 05:39:04 -0400
-X-MC-Unique: 1gZjm-qYMROuZFVNOvSXhA-1
-Received: by mail-wr1-f72.google.com with SMTP id
- ffacd0b85a97d-3685bbd6dfbso2422505f8f.0
- for <qemu-arm@nongnu.org>; Mon, 12 Aug 2024 02:39:04 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1723455543; x=1724060343;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=7NWGtZUJo6pEYJDKSLc4v/k6z5SFqu6cDFxa/E9GPvU=;
- b=gfWCD6t3Wd3jg3VAoobNOpEuBxcGM459cusv6iVa3LeZGrXWn2yPcw5el6OZkr480p
- L+1CDaTJ4AdWyZdsDxB5phhjyE/qSZEODj/bcc32hWdM8DIG3whyUSs7MDRKPtpuuW1v
- ljCYoX2uh5a/HW60ngB07debU6zqJ2FgaC7mf+V2BXtWx8dxayFRBBPqey5uwx8kqaWC
- DJ15wESL+mID54mE2S4P5Q4PO037ZqcycA7R+S+z5L+orEZpJsPZzu3Qb9/+ALVa10pD
- gFp5YTx2Fxut0nNwtCAlII25fz51EvBtiJjxvRNvQVc4ZS7KCfvujrnvfBHuBQtDLQFz
- x7zA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUcHX7iXkF3QKzVlesIbYZMcqvk4da4UlBqz82W26MK9lrsBQRExyIfegmcmv53ZDTlffFSFQQzjob5QC95x6I0uyW/
-X-Gm-Message-State: AOJu0Yza9GxZc0hyjIEAnAedjk6H9dilubG4Z1XTd8X9Cnzl+dXkq6fy
- hAso6vaiIyhk54Uxk0yAYrwkdQg/W4HQC115FXHH68V+62Tg2SrNd08PtDkp+HUjc7qej86Dabp
- asbPr73YJJGPIO5GhN6/5s0XqlWg07Gg6DaQh0JIpsY76eRxH7w==
-X-Received: by 2002:adf:f54f:0:b0:368:557a:c64d with SMTP id
- ffacd0b85a97d-36d5f2d103cmr5094113f8f.9.1723455543155; 
- Mon, 12 Aug 2024 02:39:03 -0700 (PDT)
-X-Received: by 2002:adf:f54f:0:b0:368:557a:c64d with SMTP id
- ffacd0b85a97d-36d5f2d103cmr5094094f8f.9.1723455542514; 
- Mon, 12 Aug 2024 02:39:02 -0700 (PDT)
-Received: from imammedo.users.ipa.redhat.com (nat-pool-brq-t.redhat.com.
- [213.175.37.10]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-36e4c36be6dsm7003011f8f.20.2024.08.12.02.39.01
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 12 Aug 2024 02:39:02 -0700 (PDT)
-Date: Mon, 12 Aug 2024 11:39:00 +0200
-From: Igor Mammedov <imammedo@redhat.com>
-To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-Cc: Jonathan Cameron <Jonathan.Cameron@Huawei.com>, Shiju Jose
- <shiju.jose@huawei.com>, "Michael S. Tsirkin" <mst@redhat.com>, Ani Sinha
- <anisinha@redhat.com>, Dongjiu Geng <gengdongjiu1@gmail.com>,
- <linux-kernel@vger.kernel.org>, <qemu-arm@nongnu.org>,
- <qemu-devel@nongnu.org>
-Subject: Re: [PATCH v5 6/7] acpi/ghes: add support for generic error
- injection via QAPI
-Message-ID: <20240812113900.25078ccc@imammedo.users.ipa.redhat.com>
-In-Reply-To: <20240808201903.077093ca@foz.lan>
-References: <cover.1722634602.git.mchehab+huawei@kernel.org>
- <20c491e357340e0062b6ff09867c1661ed4d2479.1722634602.git.mchehab+huawei@kernel.org>
- <20240806163113.3bdc260a@imammedo.users.ipa.redhat.com>
- <20240807152547.000058fd@Huawei.com>
- <20240808101107.105a124f@imammedo.users.ipa.redhat.com>
- <20240808201903.077093ca@foz.lan>
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
+       dkim=pass header.i=@intel.com header.s=Intel header.b=Qle5DdZL;
+       spf=pass (google.com: domain of zhao1.liu@intel.com designates 192.198.163.16 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1723453740; x=1754989740;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=9upHtUme4hJXCWHnm4fE6plmVolSyA9aoEU22vIwsLA=;
+  b=Qle5DdZLbGDc/yY5Q2Zq/w95t8xK3srCsoksBbUx2iWaNV5sris77YJl
+   bl/NgGfZCZI6sBNqtsXH8HGD9/tPIjEFZCUcXZ/3rQRhfW7umZKlAisoo
+   bJl/PtGf+55XbagK/dgu9ERdKLa3bHis1cbTV/Ff8uCPdmVZPANBlJe97
+   obDIEE/cVQ9NAv1eQyAAKK1/d5at4JOCbs6eG6vElNsPAnB6Tj1utnl74
+   3V1g20YNggHQ6QSF9j7ylVLF5cLBHrOM7aKxJoA3K3WRIdhgdEJokoFop
+   1iVQzQlMwgKKu/eLZlCwBWZMp0AtPwXITBhtaeTBevFrLbtlFuqeVwOqa
+   g==;
+X-CSE-ConnectionGUID: KtAwR7vETOO3WUOrZOhCzw==
+X-CSE-MsgGUID: qAm4cilvSgiVxASzrzBpHg==
+X-IronPort-AV: E=McAfee;i="6700,10204,11161"; a="12961295"
+X-IronPort-AV: E=Sophos;i="6.09,282,1716274800"; 
+   d="scan'208";a="12961295"
+Received: from orviesa002.jf.intel.com ([10.64.159.142])
+  by fmvoesa110.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 Aug 2024 02:08:58 -0700
+X-CSE-ConnectionGUID: WVglJYQSR/u4QsfjIWt7qA==
+X-CSE-MsgGUID: z5WsMxXFRmm+3kttHZfn7A==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.09,282,1716274800"; 
+   d="scan'208";a="88855982"
+Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost) ([10.239.160.36])
+  by orviesa002.jf.intel.com with ESMTP; 12 Aug 2024 02:08:53 -0700
+Date: Mon, 12 Aug 2024 17:24:43 +0800
+From: Zhao Liu <zhao1.liu@intel.com>
+To: Markus Armbruster <armbru@redhat.com>
+Cc: Daniel P =?iso-8859-1?Q?=2E_Berrang=E9?= <berrange@redhat.com>,
+	Eduardo Habkost <eduardo@habkost.net>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
+	Yanan Wang <wangyanan55@huawei.com>,
+	"Michael S . Tsirkin" <mst@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Eric Blake <eblake@redhat.com>,
+	Marcelo Tosatti <mtosatti@redhat.com>,
+	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Jonathan Cameron <Jonathan.Cameron@huawei.com>,
+	Sia Jee Heng <jeeheng.sia@starfivetech.com>, qemu-devel@nongnu.org,
+	kvm@vger.kernel.org, qemu-riscv@nongnu.org, qemu-arm@nongnu.org,
+	Zhenyu Wang <zhenyu.z.wang@intel.com>,
+	Dapeng Mi <dapeng1.mi@linux.intel.com>,
+	Yongwei Ma <yongwei.ma@intel.com>
+Subject: Re: [PATCH 8/8] qemu-options: Add the description of smp-cache object
+Message-ID: <ZrnU25wxuqgST7x1@intel.com>
+References: <20240704031603.1744546-9-zhao1.liu@intel.com>
+ <87r0bl35ug.fsf@pond.sub.org>
+ <Zp5vxtXWDeHAdPok@intel.com>
+ <87bk2nnev2.fsf@pond.sub.org>
+ <ZqEN1kZaQcuY4UPG@intel.com>
+ <87le1psuv3.fsf@pond.sub.org>
+ <ZqtXP9MViOlyhEsu@intel.com>
+ <87mslweb38.fsf@pond.sub.org>
+ <ZqyRik4UHHz3xaKl@intel.com>
+ <8734ndj33j.fsf@pond.sub.org>
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=imammedo@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -22
-X-Spam_score: -2.3
-X-Spam_bar: --
-X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.125,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: HwFUfYwOdi+N
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <8734ndj33j.fsf@pond.sub.org>
+X-TUID: 3wFKXskGdBHb
 
-On Thu, 8 Aug 2024 20:19:03 +0200
-Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
+Hi Markus,
 
-> Em Thu, 8 Aug 2024 10:11:07 +0200
-> Igor Mammedov <imammedo@redhat.com> escreveu:
+On Fri, Aug 09, 2024 at 02:24:48PM +0200, Markus Armbruster wrote:
+> Date: Fri, 09 Aug 2024 14:24:48 +0200
+> From: Markus Armbruster <armbru@redhat.com>
+> Subject: Re: [PATCH 8/8] qemu-options: Add the description of smp-cache
+>  object
 > 
-> > On Wed, 7 Aug 2024 15:25:47 +0100
-> > Jonathan Cameron <Jonathan.Cameron@Huawei.com> wrote:
+> I apologize for the delay.
+
+You're welcome! I appreciate your time, guidance and feedback.
+
+> Zhao Liu <zhao1.liu@intel.com> writes:
+> 
+> > On Thu, Aug 01, 2024 at 01:28:27PM +0200, Markus Armbruster wrote:
+> 
+> [...]
+> 
+> >> Can you provide a brief summary of the design alternatives that have
+> >> been proposed so far?  Because I've lost track.
+> >
+> > No problem!
+> >
+> > Currently, we have the following options:
+> >
+> > * 1st: The first one is just to configure cache topology with several
+> >   options in -smp:
+> >
+> >   -smp l1i-cache-topo=core,l1d-cache-topo-core
+> >
+> >   This one lacks scalability to support the cache size that ARM will
+> >   need in the future.
+> 
+> -smp sets machine property "smp" of QAPI type SMPConfiguration.
+> 
+> So this one adds members l1i-cache-topo, l1d-cache-topo, ... to
+> SMPConfiguration.
+
+Yes.
+
+> > * 2nd: The cache list object in -smp.
+> >
+> >   The idea was to use JSON to configure the cache list. However, the
+> >   underlying implementation of -smp at the moment is keyval parsing,
+> >   which is not compatible with JSON.
+> 
+> Keyval is a variation of the QEMU's traditional KEY=VALUE,... syntax
+> that can serve as an alternative to JSON, with certain restrictions.
+> Ideally, we provide both JSON and keyval syntax on the command line.
+
+I see. It's the ideal state of the CLI, and -machine and -smp haven't
+arrived here yet.
+
+> Example: -blockdev supports both JSON and keyval.
+>     JSON:   -blockdev '{"driver": "null-co", "node-name": "node0"}'
+>     keyval: -blockdev null-co,node-name=node0
+> 
+> Unfortunately, we have many old interfaces that still lack JSON support.
+> 
+> >   If we can not insist on JSON format, then cache lists can also be
+> >   implemented in the following way:
 > >   
-> > > On Tue, 6 Aug 2024 16:31:13 +0200
-> > > Igor Mammedov <imammedo@redhat.com> wrote:
-> > >     
-> > > > On Fri,  2 Aug 2024 23:44:01 +0200
-> > > > Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
-> > > >       
-> > > > > Provide a generic interface for error injection via GHESv2.
-> > > > > 
-> > > > > This patch is co-authored:
-> > > > >     - original ghes logic to inject a simple ARM record by Shiju Jose;
-> > > > >     - generic logic to handle block addresses by Jonathan Cameron;
-> > > > >     - generic GHESv2 error inject by Mauro Carvalho Chehab;
-> > > > > 
-> > > > > Co-authored-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-> > > > > Co-authored-by: Shiju Jose <shiju.jose@huawei.com>
-> > > > > Co-authored-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-> > > > > Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-> > > > > Cc: Shiju Jose <shiju.jose@huawei.com>
-> > > > > Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-> > > > > ---
-> > > > >  hw/acpi/ghes.c         | 159 ++++++++++++++++++++++++++++++++++++++---
-> > > > >  hw/acpi/ghes_cper.c    |   2 +-
-> > > > >  include/hw/acpi/ghes.h |   3 +
-> > > > >  3 files changed, 152 insertions(+), 12 deletions(-)
-> > > > > 
-> > > > > diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
-> > > > > index a745dcc7be5e..e125c9475773 100644
-> > > > > --- a/hw/acpi/ghes.c
-> > > > > +++ b/hw/acpi/ghes.c
-> > > > > @@ -395,23 +395,22 @@ void acpi_ghes_add_fw_cfg(AcpiGhesState *ags, FWCfgState *s,
-> > > > >      ags->present = true;
-> > > > >  }
-> > > > >  
-> > > > > +static uint64_t ghes_get_state_start_address(void)        
-> > > > 
-> > > > ghes_get_hardware_errors_address() might better reflect what address it will return
-> > > >       
-> > > > > +{
-> > > > > +    AcpiGedState *acpi_ged_state =
-> > > > > +        ACPI_GED(object_resolve_path_type("", TYPE_ACPI_GED, NULL));
-> > > > > +    AcpiGhesState *ags = &acpi_ged_state->ghes_state;
-> > > > > +
-> > > > > +    return le64_to_cpu(ags->ghes_addr_le);
-> > > > > +}
-> > > > > +
-> > > > >  int acpi_ghes_record_errors(uint8_t source_id, uint64_t physical_address)
-> > > > >  {
-> > > > >      uint64_t error_block_addr, read_ack_register_addr, read_ack_register = 0;
-> > > > > -    uint64_t start_addr;
-> > > > > +    uint64_t start_addr = ghes_get_state_start_address();
-> > > > >      bool ret = -1;
-> > > > > -    AcpiGedState *acpi_ged_state;
-> > > > > -    AcpiGhesState *ags;
-> > > > > -
-> > > > >      assert(source_id < ACPI_HEST_SRC_ID_RESERVED);
-> > > > >  
-> > > > > -    acpi_ged_state = ACPI_GED(object_resolve_path_type("", TYPE_ACPI_GED,
-> > > > > -                                                       NULL));
-> > > > > -    g_assert(acpi_ged_state);
-> > > > > -    ags = &acpi_ged_state->ghes_state;
-> > > > > -
-> > > > > -    start_addr = le64_to_cpu(ags->ghes_addr_le);
-> > > > > -
-> > > > >      if (physical_address) {
-> > > > >          start_addr += source_id * sizeof(uint64_t);        
-> > > > 
-> > > > above should be a separate patch
-> > > >       
-> > > > >  
-> > > > > @@ -448,9 +447,147 @@ int acpi_ghes_record_errors(uint8_t source_id, uint64_t physical_address)
-> > > > >      return ret;
-> > > > >  }
-> > > > >  
-> > > > > +/*
-> > > > > + * Error register block data layout
-> > > > > + *
-> > > > > + * | +---------------------+ ges.ghes_addr_le
-> > > > > + * | |error_block_address0 |
-> > > > > + * | +---------------------+
-> > > > > + * | |error_block_address1 |
-> > > > > + * | +---------------------+ --+--
-> > > > > + * | |    .............    | GHES_ADDRESS_SIZE
-> > > > > + * | +---------------------+ --+--
-> > > > > + * | |error_block_addressN |
-> > > > > + * | +---------------------+
-> > > > > + * | | read_ack0           |
-> > > > > + * | +---------------------+ --+--
-> > > > > + * | | read_ack1           | GHES_ADDRESS_SIZE
-> > > > > + * | +---------------------+ --+--
-> > > > > + * | |   .............     |
-> > > > > + * | +---------------------+
-> > > > > + * | | read_ackN           |
-> > > > > + * | +---------------------+ --+--
-> > > > > + * | |      CPER           |   |
-> > > > > + * | |      ....           | GHES_MAX_RAW_DATA_LENGT
-> > > > > + * | |      CPER           |   |
-> > > > > + * | +---------------------+ --+--
-> > > > > + * | |    ..........       |
-> > > > > + * | +---------------------+
-> > > > > + * | |      CPER           |
-> > > > > + * | |      ....           |
-> > > > > + * | |      CPER           |
-> > > > > + * | +---------------------+
-> > > > > + */        
-> > > > 
-> > > > no need to duplicate docs/specs/acpi_hest_ghes.rst,
-> > > > I'd just reffer to it and maybe add short comment as to why it's mentioned.
-> > > >       
-> > > > > +/* Map from uint32_t notify to entry offset in GHES */
-> > > > > +static const uint8_t error_source_to_index[] = { 0xff, 0xff, 0xff, 0xff,
-> > > > > +                                                 0xff, 0xff, 0xff, 1, 0};
-> > > > > +
-> > > > > +static bool ghes_get_addr(uint32_t notify, uint64_t *error_block_addr,
-> > > > > +                          uint64_t *read_ack_addr)
-> > > > > +{
-> > > > > +    uint64_t base;
-> > > > > +
-> > > > > +    if (notify >= ACPI_GHES_NOTIFY_RESERVED) {
-> > > > > +        return false;
-> > > > > +    }
-> > > > > +
-> > > > > +    /* Find and check the source id for this new CPER */
-> > > > > +    if (error_source_to_index[notify] == 0xff) {
-> > > > > +        return false;
-> > > > > +    }
-> > > > > +
-> > > > > +    base = ghes_get_state_start_address();
-> > > > > +
-> > > > > +    *read_ack_addr = base +
-> > > > > +        ACPI_GHES_ERROR_SOURCE_COUNT * sizeof(uint64_t) +
-> > > > > +        error_source_to_index[notify] * sizeof(uint64_t);
-> > > > > +
-> > > > > +    /* Could also be read back from the error_block_address register */
-> > > > > +    *error_block_addr = base +
-> > > > > +        ACPI_GHES_ERROR_SOURCE_COUNT * sizeof(uint64_t) +
-> > > > > +        ACPI_GHES_ERROR_SOURCE_COUNT * sizeof(uint64_t) +
-> > > > > +        error_source_to_index[notify] * ACPI_GHES_MAX_RAW_DATA_LENGTH;
-> > > > > +
-> > > > > +    return true;
-> > > > > +}        
-> > > > 
-> > > > I don't like all this pointer math, which is basically a reverse engineered
-> > > > QEMU actions on startup + guest provided etc/hardware_errors address.
-> > > > 
-> > > > For once, it assumes error_source_to_index[] matches order in which HEST
-> > > > error sources were described, which is fragile.
-> > > > 
-> > > > 2nd: migration-wive it's disaster, since old/new HEST/hardware_errors tables
-> > > > in RAM migrated from older version might not match above assumptions
-> > > > of target QEMU. 
-> > > > 
-> > > > I see 2 ways to rectify it:
-> > > >   1st: preferred/cleanest would be to tell QEMU (via fw_cfg) address of HEST table
-> > > >        in guest RAM, like we do with etc/hardware_errors, see
-> > > >             build_ghes_error_table()
-> > > >                ...
-> > > >                tell firmware to write hardware_errors GPA into
-> > > >        and then fetch from HEST table in RAM, the guest patched error/ack addresses
-> > > >        for given source_id
-> > > > 
-> > > >        code-wise: relatively simple once one wraps their own head over
-> > > >                  how this whole APEI thing works in QEMU
-> > > >                  workflow  is described in docs/specs/acpi_hest_ghes.rst
-> > > >                  look to me as sufficient to grasp it.
-> > > >                  (but my view is very biased given my prior knowledge,
-> > > >                   aka: docs/comments/examples wrt acpi patching are good enough)
-> > > >                  (if it's not clear how to do it, ask me for pointers)      
-> > > 
-> > > Hi Igor, I think I follow what you mean but maybe this question will reveal
-> > > otherwise.  HEST is currently in ACPI_BUILD_TABLE_FILE.
-> > > Would you suggest splitting it to it's own file, or using table_offsets
-> > > to get the offset in ACPI_BUILD_TABLE_FILE GPA?    
-> > yep, offset taken right before HEST is to be created
-> > doc comment for bios_linker_loader_write_pointer() explains how it works
-> > 
-> > we need something like:
-> >        bios_linker_loader_write_pointer(linker,
-> >            ACPI_HEST_TABLE_ADDR_FW_CFG_FILE, 0, sizeof(uint64_t),
-> >            ACPI_BUILD_TABLE_FILE, hest_offset_within_ACPI_BUILD_TABLE_FILE); 
-> > 
-> > to register new file see:
-> >    a08a64627 ACPI: Record the Generic Error Status Block address
-> >    and to avoid copy past error maybe
-> >    136fc6aa2 ACPI: Avoid infinite recursion when dump-vmstat
-> > for this needs to be limited to new machine types and keep
-> > old ones without this new feature. (I'd use hw_compat_ machinery for that)  
+> >   -smp caches.0.name=l1i,caches.0.topo=core,\
+> >        caches.1.name=l1d,caches.1.topo=core
 > 
-> Not sure if I got it. The code, after this patch from my v6:
-> 
-> 	https://lore.kernel.org/qemu-devel/5710c364d7ef6cdab6b2f1e127ef191bdf84e8c2.1723119423.git.mchehab+huawei@kernel.org/T/#u
-> 
-> Already stores two of the three address offsets via 
-> bios_linker_loader_add_pointer(), e. g. it is similar to the
-> code below (I simplified the code to make the example clearer):
-> 
-> <snip>
-> /* From hw/arm/virt-acpi-build.c */
-> static
-> void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
-> {
->     ...
->     if (vms->ras) {
->         build_ghes_error_table(tables->hardware_errors, tables->linker);
->         acpi_add_table(table_offsets, tables_blob);
-> 	/* internally, call build_ghes_v2() for SEA and GED notification sources */
->         acpi_build_hest(tables_blob, tables->linker, vms->oem_id,
->                         vms->oem_table_id);
->     }
->     ...
-> }
-> 
-> /* From hw/acpi/ghes.c */
-> static void build_ghes_v2(GArray *table_data,
->                           enum AcpiGhesNotifyType notify,
->                           BIOSLinker *linker)
-> {
->     uint64_t address_offset, ack_offset, block_addr_offset, cper_offset;
->     enum AcpiHestSourceId source_id;
-> 
->     /* 
->      * Get offsets for either SEA or GED notification - easy to extend
->      * to all mechanisms like MCE and SCI to better support x86
->      */
->     assert(!acpi_hest_address_offset(notify, &block_addr_offset, &ack_offset,
->                                      &cper_offset, &source_id));
-> 
->     bios_linker_loader_add_pointer(linker, ACPI_BUILD_TABLE_FILE,
->                                    address_offset + GAS_ADDR_OFFSET,
->                                    sizeof(uint64_t),
->                                    ACPI_GHES_ERRORS_FW_CFG_FILE,
->                                    block_addr_offset);
-> 
->     bios_linker_loader_add_pointer(linker, ACPI_BUILD_TABLE_FILE,
->                                    address_offset + GAS_ADDR_OFFSET,
->                                    sizeof(uint64_t),
->                                    ACPI_GHES_ERRORS_FW_CFG_FILE,
->                                    ack_offset);
-> 
->     /* Current code ignores &cper_offset when creating HEST */
-> }
-> 
-> void ghes_record_cper_errors(AcpiGhesCper *cper, Error **errp,
->                              enum AcpiGhesNotifyType notify)
-> {
->     uint64_t cper_addr, read_ack_start_addr;
-> 
->     assert(!ghes_get_hardware_errors_address(notify, NULL, &read_ack_start_addr,
->                                          &cper_addr, NULL));
-> 
->     /*
->      * Use cpu_physical_memory_read/write() to
->      *  - read/store at read_ack_start_addr 
->      *  - Write cper block GArray at cper_addr
->      */
-> }
-> </snip>
-> 
-> We may also store cper_offset there via bios_linker_loader_add_pointer()
-> and/or use bios_linker_loader_write_pointer(), but I can't see how the
-> data stored there can be retrieved, nor any advantage of using it instead
-> of the current code, as, in the end, we'll have 3 addresses that will be
-> used:
-> 
-> 	- an address where a pointer to CPER record will be stored;
-> 	- an address where the ack will be stored;
-> 	- an address where the actual CPER record will be stored.
-> 
-> And those are calculated on a single function and are all stored at the
-> ACPI table files.
->
-> What am I missing?
+> This one adds a single member caches to SMPConfiguration.  It is an
+> array of objects.
 
-That's basically (2) approach and it works to some degree,
-unfortunately it's fragile when we start talking about migration
-and changing layout in the future.
+Yes.
 
-Lets take as example increasing size of 1) 'Generic Error Status Block',
-we are considering. Old QEMU will, tell firmware to allocate 1K buffer
-for it and calculated offsets to [1] (that you've stored/calculated) will
-include this assumption.
-Then in newer we QEMU increase size of [1] and all hardcoded offsets will
-account for new size, but if we migrate guest from old QEMU to this newer
-one all HEST tables layout within guest will match old QEMU assumptions,
-and as result newer QEMU with larger block size will write CPERs at wrong
-address considering we are still running guest from old QEMU.
-That's just one example.
-
-To make it work there a number of ways, but the ultimate goal is to pick
-one that's the least fragile and won't snowball in maintenance nightmare
-as number of GHES sources increases over time.
-
-This series tries to solve problem of mapping GHES source to
-a corresponding 'Generic Error Status Block' and related registers.
-However we are missing access to this mapping since it only
-exists in guest patched HEST (i.e in guest RAM only).
-
-The robust way to make it work would be for QEMU to get a pointer
-to whole HEST table and then enumerate GHES sources and related
-error/ack registers directly from guest RAM (sidestepping layout
-change issues this way).
-
-what I'm proposing is to use bios_linker_loader_write_pointer()
-(only once) so that firmware could tell QEMU address of HEST table,
-in which one can find a GHES source and always correct error/ack
-pointers (regardless of table[s] layout changes).
-
-
-> Thanks,
-> Mauro
+> > * 3rd: The cache list object linked in -machine.
+> >
+> >   Considering that -object is JSON-compatible so that defining lists via
+> >   JSON is more friendly, I implemented the caches list via -object and
+> >   linked it to MachineState:
+> >
+> >   -object '{"qom-type":"smp-cache","id":"obj","caches":[{"name":"l1d","topo":"core"},{"name":"l1i","topo":"core"}]}'
+> >   -machine smp-caches=obj
 > 
+> This one wraps the same array of objects in a new user-creatable object,
+> then sets machine property "smp-caches" to that object.
+> 
+> We can set machine properties directly with -machine.  But -machine
+> doesn't support JSON, yet.
+> 
+> Wrapping in an object moves the configuration to -object, which does
+> support JSON.
+> 
+> Half way between 2nd and 3rd:
+> 
+>   * Cache list object in machine
+> 
+>     -machine caches.0.name=l1i,caches.0.topo=core,\
+>              caches.1.name=l1d,caches.1.topo=core
 
+I got your point, and putting the array in -machine does align with the
+design of the other machine options nowadays.
+
+> > * 4th: The per cache object without any list:
+> >
+> >   -object smp-cache,id=cache0,name=l1i,topo=core \
+> >   -object smp-cache,id=cache1,name=l1d,topo=core
+> >
+> >   This proposal is clearer, but there are a few opens:
+> >   - I plan to push qom-topo forward, which would abstract CPU related
+> >     topology levels and cache to "device" instead of object. Is there a
+> >     conflict here?
+> 
+> Can't say, since I don't understand where you want to go.
+> 
+> Looks like your trying to design an interface for what you want to do
+> now, and are wondering whether it could evolve to accomodate what you
+> want to do later.
+> 
+> It's often better to design the interface for everything you already
+> know you want to do, then take out the parts you want to do later.
+
+Thanks! From this point of view, then per cache of objects does not meet
+my needs.
+
+> >   - Multiple cache objects can't be linked to the machine on the command
+> >     line, so I maintain a static cache list in smp_cache.c and expose
+> >     the cache information to the machine through some interface. is this
+> >     way acceptable?
+> >
+> >
+> > In summary, the 4th proposal was the most up in the air, as it looked to
+> > be conflict with the hybrid topology I wanted to do (and while hybrid
+> > topology may not be accepted by the community either, I thought it would
+> > be best for the two work to be in the same direction).
+> >
+> > The difference between 2nd and 3rd is about the JSON requirement, if JSON
+> > is mandatory for now then it's 3rd, if it's not mandatory (or accept to
+> > make -machine/-smp support JSON in the future), 2nd looks cleaner, which
+> > puts the caches list in -smp.
+> 
+> I'd rather not let syntactic limitations of our CLI dictate the
+> structure of our configuration data.  Design the structure *first*.
+> Only then start to think about CLI.  Our CLI is an unholy mess, and
+> thinking about it too early risks getting lost in the weeds.  I fear
+> this is what happened to you.
+
+Indeed, that's my dilemma, lost in the world of CLIs.
+
+> If I forcibly ignore all the considerations related to concrete syntax
+> in your message, a structure seems to emerge: there's a set of caches
+> identified by name (l1i, l1d, ...), and for each cache, we have a number
+> of configurable properties (topology level, ...).  Makes sense?
+
+Yes, you're right!
+
+> What else will you need to configure in the future?
+
+Maybe cache size, as Jonathan mentioned for Arm side.
+
+> By the way, extending -machine to support JSON looks feasible to me at a
+> glance.
+ 
+Thanks again! Then I made it clear that it would be most appropriate to
+place the cache array in -machine, i.e., it's extensible and consistent
+with the design of the rest of the machine's properties, as well as
+consistent with my long-term needs.
+
+Later on, if -machine is able to support JSON, it will also benefit from
+it. If I have time, I will also think about how -machine can support
+JSON.
+
+Regards,
+Zhao

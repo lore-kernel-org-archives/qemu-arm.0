@@ -1,218 +1,485 @@
-Received: by 2002:a17:504:6454:b0:1be9:327d:8ee3 with SMTP id g20csp700031njh;
-        Mon, 12 Aug 2024 01:57:13 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWxaSEYMmTgLhKFmi04VFoWO1jQ4TIpplx3OCr+SM6uLA00tJS9leGg6GtTUyodBRgmw9EHjD0IVub/4iInrHPSDan93OGr
-X-Google-Smtp-Source: AGHT+IE0y3hysOHyoWV/QN2PcqQtMBclu+EoJiSEj0zrSTo85Su2VT2NTLFsnYJPLaFPCT6808Ny
-X-Received: by 2002:a05:622a:580c:b0:447:ef7c:edb7 with SMTP id d75a77b69052e-453125c4bbcmr97126961cf.26.1723453033247;
-        Mon, 12 Aug 2024 01:57:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1723453033; cv=none;
+Received: by 2002:a17:504:6454:b0:1be9:327d:8ee3 with SMTP id g20csp658152njh;
+        Sun, 11 Aug 2024 22:19:50 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWmcT0C13mVXuErSz8p9ajW1948BuoJzXyQ8Aiy3KmfJPZYkiYGaBUNJyqanT+EGL3JMqeoGF6UqjrmorTY94UfUwQ53vWr
+X-Google-Smtp-Source: AGHT+IFWBLIKot8cWdnnUmQ3dULMlyWphzGeI3PCN1h3ga/jHDhGvOVuc+aiDgspqgv9czZVJCL7
+X-Received: by 2002:a05:6102:304a:b0:48f:48c0:4335 with SMTP id ada2fe7eead31-495d854230bmr4928185137.18.1723439990090;
+        Sun, 11 Aug 2024 22:19:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1723439990; cv=none;
         d=google.com; s=arc-20160816;
-        b=sxign2BnOHx17/sw3JIQTJHlQJ01Ix8bWFwnEyXNr6iOMBg+zHuSMkyLQe1u6g2W3P
-         KyshYW8NX/dauzyicOCFz02Ba/tHekj9uHXakY7I6/LU7Pe2YL7Goz2p6TE1eNy/FsXu
-         BZA7dte7raQylNOCDkc2WEGQgYJEcaZ0oIMEq+uc4VEckWz+lUmGy7l0Y7IRdIZOLDkh
-         p4ZNBVGd58VhLFg2/UTZX5j5K1bXcRRVLsf4QTIC0lu7JWUyd8NmuAc153PiUhQX85AF
-         KpClaNYTkEZcqCp71EgNraWUyAOGeI127PuLzYummJyiElRMODvU3hwoZu0vbwRt2Nae
-         jDDw==
+        b=d8cWUxEMF0Q2PJc0Vz6QEFaB/L2w/2TZfztbY0rKgmy/9AjxzID+hRlXHUn8TW743T
+         kQjld14XOh9maTh0FpnzP6iKnoPrhcZKs2xQ1F+2zIH88UNWg9ygOgqQwDJ7YTXZzeaR
+         ndPYkh+RjltakRKpjPvzc2GToQ9ZYAb2fPL9/2aQt7+MlJVzytHZ+6UqllosBWuAjudD
+         EXAq8GqEcCTsqRbWrgatP1jCX1CDUnFyyPT2TpkVZsLOntl6+/PPdb5Ees3lpeoSJxQG
+         usufKNHyjI0QIt/PiKl46Bhjr8ePaPeWUH+ykpkmyGGxDXI86bAi44KewSLx/d6/h70O
+         vaJw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:references:in-reply-to:subject:cc:to:from
-         :date:dkim-signature;
-        bh=Pwj1l/v8vmo0WVQsRXxiPvKgQwT9EeGJS92n+uiDDlU=;
-        fh=kAH3wRI93frFYlaMap04sSSSMNtLz+PLB/iQgzRx44Y=;
-        b=rGJJyKo4lVH/SkYPNNbsZeTlm9x7GB2SkLNChbZ+rDzbr69MpJF51sc9S0nQ/OFEle
-         7E3ieDysw6vWy3VKTW7TpYOdhm5a0ZZ3aN/D/NzB7AHq5/RIWmlMVvNoJJAoi2Cs+X/0
-         oq8zDywFBgSGSbmhu1cStl14DIorvN8mFd2YwRbZIztBl4HhvKCbsxM1sudGnhdModoh
-         IrSz1GNuzy+bB8fJP24TQButJfUVzgD0m9fyxJEKs8QcrZUKh9WI9ZzwrzdWj0r3h8u1
-         Hj4HqkLFiRc9aiIOAn0JfWYbon+T3lCC/by0wVjqwR6/g5vJJcLmsO1Wvzccxr0elIF3
-         adhw==;
+        h=content-transfer-encoding:content-language:in-reply-to:from
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=uiPl5qz+TiUuTbWQp5G1cpe9SAgLQOutn6xibbuWscY=;
+        fh=PtP1SDTEf1FxxxT/D57mllqaqNCtTzp+mDa3l+UBdjk=;
+        b=OHk+LF3pgzKpf5XGUqIxS+UUY+0zVTpiKhnRG7CfGVnTZpLgvqfKo2xuzrxDFdEPzd
+         7Rtt/GPUpaHl+FNa3n/rrTFoMpFuCm7ySaPhwG6nHuBMqCHkNDICWR2fxkK9b4ji96yJ
+         DmgH8CKx+lbjmH0YscsoQbsGLWTLbn/GVIHR4xA5vtA8vTa1dkbQ7v50jWpur8ghHPpu
+         D+6mSakn5ZtaxOExYsau/9WsNIsjwLnzbxJe7H/i28hr0UHqS+dCepwWFgMoRk06iwZa
+         aMwhEpzvaHliTPJIUP7Y8zhMhhawUW7isSwBGICpdFpEBa7c5Iy/acdDK9vA/EV/DnS1
+         Z0vQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=GUbCQ87x;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4531c1ae5fbsi55537651cf.3.2024.08.12.01.57.13
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DxkCT0nS;
+       spf=pass (google.com: domain of gshan@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=gshan@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <gshan@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6bd82e36706si55129776d6.211.2024.08.11.22.19.49
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 12 Aug 2024 01:57:13 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 11 Aug 2024 22:19:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gshan@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=GUbCQ87x;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sdQrF-00012w-W6; Mon, 12 Aug 2024 04:56:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1sdQrE-0000zW-Dx; Mon, 12 Aug 2024 04:56:52 -0400
-Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1sdQrC-0007fb-D1; Mon, 12 Aug 2024 04:56:52 -0400
-Received: by mail-ed1-x52c.google.com with SMTP id
- 4fb4d7f45d1cf-5a108354819so5257345a12.0; 
- Mon, 12 Aug 2024 01:56:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1723453008; x=1724057808; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
- :message-id:reply-to;
- bh=Pwj1l/v8vmo0WVQsRXxiPvKgQwT9EeGJS92n+uiDDlU=;
- b=GUbCQ87xKGbL15m/o6OkV0vkXLnIIOb7vzy8lt2IES/YMC0/uP8nTHedsIbbMcjnUC
- R473727uu4plAY03bKf1oXLb2YPS5W9XOE2CaLLgflEdOsO1xHiYIhfFLJof9/SwzgzG
- VF52ps1tmJ0cjt4s3dLn/DAbLgMcpOSjG1UFhfAyTJe55LBJymfUmxkbmr0kpk2lZ7Jr
- yKU84xncCSoUuwioxPvzypeSaXP5EXUwu1vEvrtq3pkat3GVDmAkQEHXIcmSVl8zutRt
- 01tyKQCeoYWLxM+YtYnrSuaiQljYDSyQAKTPPxLPFrcHkDt2iwUlaQ8/9dny4W1EHvxf
- AQWg==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DxkCT0nS;
+       spf=pass (google.com: domain of gshan@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=gshan@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1723439989;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=uiPl5qz+TiUuTbWQp5G1cpe9SAgLQOutn6xibbuWscY=;
+	b=DxkCT0nS2b4wWOjwHqThOOkRYMuvLC+8hb9dcSiDRiybVNiZXXSO7Beg1Xujyqysfp8odN
+	7aX7TSfDsQwVUCLum1hWLnQAQPac+yIF6ZSrlF0GS/3ACQzq7hncaMiIjyMVdW/OVXjREQ
+	X1r069H/W/FwQhmaBmSwdt4dfY5+/oU=
+Received: from mail-pj1-f71.google.com (mail-pj1-f71.google.com
+ [209.85.216.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-410-VsFmwCmFMF-y5zFOjCuaIQ-1; Mon, 12 Aug 2024 01:19:46 -0400
+X-MC-Unique: VsFmwCmFMF-y5zFOjCuaIQ-1
+Received: by mail-pj1-f71.google.com with SMTP id 98e67ed59e1d1-2cfe9270d82so5451986a91.3
+        for <alex.bennee@linaro.org>; Sun, 11 Aug 2024 22:19:45 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1723453008; x=1724057808;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=Pwj1l/v8vmo0WVQsRXxiPvKgQwT9EeGJS92n+uiDDlU=;
- b=f7wTrAloe/dEsH1hlZaiFRXTWbA49oiISRh8PtRqy+YBehMPxj511+uUud/covOAAi
- fdw6P2bf5tJzkLZ543bg3T2EKifVPV0JQqpKteAmOIytpnDi0IsgNaNuFOAmkvdYJyHh
- TlkKIK4Dx0sqQdoez6ON12uD9fK1b5JFBhK9F2YeUc4RKzf3sPFU4TJmH6eNDJ05shZt
- EGq1Wo479MwKQOJEgA+EZ/+ryQ66Tu+Qzf1JNAXdTOS7xbydmNC80YY6NGYMn0q16RX3
- 8P1VXdB3EtIRFWahfExO6vO7r0RnKmb/YCLhnmQ2gYhEsK32jYpzSRVFraTwpbSR/rnB
- V5Dw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCX8NbedVqjnGNqJs/QwOpuWjoq0Lxiev99GbtzlyHvNoUSYzDuQK6HCJNzSHn9SyUyam+l+T8d+3dFW8tPzSWl9LhSTKG2wCdfFhpbNN5f0hlGN+k/TAoEyGKU=
-X-Gm-Message-State: AOJu0YybQOkg27y3/21GPpg4tEyrfdD0p/1V7BLsLod8PCO+HlBdq47+
- 0OLXYmrFsoKeECRQNG0R8sobp1KVM2T37347KnlR/k+Jkr1rX7ZY
-X-Received: by 2002:a05:6402:358a:b0:5a4:2c8:abda with SMTP id
- 4fb4d7f45d1cf-5bd0a50a533mr6107529a12.3.1723453007410; 
- Mon, 12 Aug 2024 01:56:47 -0700 (PDT)
-Received: from [127.0.0.1] (dynamic-077-183-028-074.77.183.pool.telefonica.de.
- [77.183.28.74]) by smtp.gmail.com with ESMTPSA id
- 4fb4d7f45d1cf-5bd1a602e67sm1914053a12.97.2024.08.12.01.56.46
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 12 Aug 2024 01:56:47 -0700 (PDT)
-Date: Mon, 12 Aug 2024 08:56:42 +0000
-From: Bernhard Beschow <shentey@gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-CC: qemu-stable@nongnu.org
-Subject: Re: [PATCH 0/2] target/arm: Fix EL3-is-AArch32 mmu indexes
-In-Reply-To: <20240809160430.1144805-1-peter.maydell@linaro.org>
-References: <20240809160430.1144805-1-peter.maydell@linaro.org>
-Message-ID: <607DEC48-4E7B-4985-97C4-8F80785BA83D@gmail.com>
+        d=1e100.net; s=20230601; t=1723439985; x=1724044785;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=uiPl5qz+TiUuTbWQp5G1cpe9SAgLQOutn6xibbuWscY=;
+        b=OddFoWsayThQjrmZqUFoEDsysU4bB/MEYLCdBEhEk11CVuyBgRfB7dA5H7GI9+vbeO
+         KA9iyK31UE0wdDfidx3SpapWBVrKrQo7cons4gRsLQlB8Sq733Qi4+v2BbHHq68XgZ0s
+         hqxI0MOpHZ/IF9zJG7+J0Ow+efKzEx8jijgBN034j3SVrWemD/1euVtgRMJH1KFY5NnU
+         g/JohQc1DkHDmegj8vGDBlpfjAlva/9DuzpfKj+pNH+w69Qs7Bdjx1GcrCQwwX+7i5/d
+         22FWB5gciqEDo8bG+caAwbVpEAcvJVEP2Lg/HXci3DS7RcC0oLnTnjAumK5LF1zaBodV
+         nSHg==
+X-Forwarded-Encrypted: i=1; AJvYcCW6WjDQ9Rzav+PH9DMgP+SNg2Gskt9CjP7XorIzpwXZ5mnNr9x9Peb2FyQmHSufspJ3X4oZ8VQidGaFIrri3L2561zRbqbu
+X-Gm-Message-State: AOJu0YyFpL1LH3llxcMhSVemYRgxi/OHYYxjE1LjgT5GPAmaBxec9lCx
+	gEqNTOAWHgw+qdSO3uVUBvL6ul+PpqVy+BtmlpYEkwX/Use3HTuiSrqhgELgno/0N8MSBufjZbs
+	dNU+d+6M05S+E6iZv1n8hI3Nw/4f28jh7rBCuSaXqF/R5pEbcJGyz1g==
+X-Received: by 2002:a17:90a:1117:b0:2c9:7219:1db0 with SMTP id 98e67ed59e1d1-2d1e7f9514amr9288937a91.3.1723439984811;
+        Sun, 11 Aug 2024 22:19:44 -0700 (PDT)
+X-Received: by 2002:a17:90a:1117:b0:2c9:7219:1db0 with SMTP id 98e67ed59e1d1-2d1e7f9514amr9288892a91.3.1723439984380;
+        Sun, 11 Aug 2024 22:19:44 -0700 (PDT)
+Return-Path: <gshan@redhat.com>
+Received: from [192.168.68.54] ([43.252.112.201])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-2d1fce2ad36sm3989060a91.10.2024.08.11.22.19.31
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 11 Aug 2024 22:19:43 -0700 (PDT)
+Message-ID: <e5446234-c832-4487-b9cc-1b6261150ca8@redhat.com>
+Date: Mon, 12 Aug 2024 15:19:29 +1000
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::52c;
- envelope-from=shentey@gmail.com; helo=mail-ed1-x52c.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: i9beTa+IX+pI
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH RFC V3 04/29] hw/arm/virt: Move setting of common CPU
+ properties in a function
+To: Salil Mehta <salil.mehta@huawei.com>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, mst@redhat.com
+Cc: maz@kernel.org, jean-philippe@linaro.org, jonathan.cameron@huawei.com,
+ lpieralisi@kernel.org, peter.maydell@linaro.org,
+ richard.henderson@linaro.org, imammedo@redhat.com, andrew.jones@linux.dev,
+ david@redhat.com, philmd@linaro.org, eric.auger@redhat.com, will@kernel.org,
+ ardb@kernel.org, oliver.upton@linux.dev, pbonzini@redhat.com,
+ rafael@kernel.org, borntraeger@linux.ibm.com, alex.bennee@linaro.org,
+ npiggin@gmail.com, harshpb@linux.ibm.com, linux@armlinux.org.uk,
+ darren@os.amperecomputing.com, ilkka@os.amperecomputing.com,
+ vishnu@os.amperecomputing.com, karl.heubaum@oracle.com,
+ miguel.luis@oracle.com, salil.mehta@opnsrc.net, zhukeqian1@huawei.com,
+ wangxiongfeng2@huawei.com, wangyanan55@huawei.com, jiakernel2@gmail.com,
+ maobibo@loongson.cn, lixianglai@loongson.cn, shahuang@redhat.com,
+ zhao1.liu@intel.com, linuxarm@huawei.com
+References: <20240613233639.202896-1-salil.mehta@huawei.com>
+ <20240613233639.202896-5-salil.mehta@huawei.com>
+From: Gavin Shan <gshan@redhat.com>
+In-Reply-To: <20240613233639.202896-5-salil.mehta@huawei.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-TUID: o0kWPzGD8O2G
 
+On 6/14/24 9:36 AM, Salil Mehta wrote:
+> Factor out CPU properties code common for {hot,cold}-plugged CPUs. This allows
+> code reuse.
+> 
+> Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
+> ---
+>   hw/arm/virt.c         | 261 ++++++++++++++++++++++++++++--------------
+>   include/hw/arm/virt.h |   4 +
+>   2 files changed, 182 insertions(+), 83 deletions(-)
+> 
 
+If this series are going to be split for easier review, this is an candidate
+for a prepatory patch.
 
-Am 9=2E August 2024 16:04:28 UTC schrieb Peter Maydell <peter=2Emaydell@li=
-naro=2Eorg>:
->Our current usage of MMU indexes when EL3 is AArch32 is confused=2E
->Architecturally, when EL3 is AArch32, all Secure code runs under the
->Secure PL1&0 translation regime:
-> * code at EL3, which might be Mon, or SVC, or any of the
->   other privileged modes (PL1)
-> * code at EL0 (Secure PL0)
->
->This is different from when EL3 is AArch64, in which case EL3 is its
->own translation regime, and EL1 and EL0 (whether AArch32 or AArch64)
->have their own regime=2E
->
->We claimed to be mapping Secure PL1 to our ARMMMUIdx_EL3, but didn't
->do anything special about Secure PL0, which meant it used the same
->ARMMMUIdx_EL10_0 that NonSecure PL0 does=2E  This resulted in a bug
->where arm_sctlr() incorrectly picked the NonSecure SCTLR as the
->controlling register when in Secure PL0, which meant we were
->spuriously generating alignment faults because we were looking at the
->wrong SCTLR control bits=2E
->
->The use of ARMMMUIdx_EL3 for Secure PL1 also resulted in the bug that
->we wouldn't honour the PAN bit for Secure PL1, because there's no
->equivalent _PAN mmu index for it=2E
->
->We could fix this in one of two ways:
-> * The most straightforward is to add new MMU indexes EL30_0,
->   EL30_3, EL30_3_PAN to correspond to "Secure PL1&0 at PL0",
->   "Secure PL1&0 at PL1", and "Secure PL1&0 at PL1 with PAN"=2E
->   This matches how we use indexes for the AArch64 regimes, and
->   preserves propirties like being able to determine the privilege
->   level from an MMU index without any other information=2E However
->   it would add two MMU indexes (we can share one with ARMMMUIdx_EL3),
->   and we are already using 14 of the 16 the core TLB code permits=2E
->
-> * The more complicated approach is the one we take here=2E We use
->   the same MMU indexes (E10_0, E10_1, E10_1_PAN) for Secure PL1&0
->   than we do for NonSecure PL1&0=2E This saves on MMU indexes, but
->   means we need to check in some places whether we're in the
->   Secure PL1&0 regime or not before we interpret an MMU index=2E
->
->Patch 1 cleans up an out of date comment about MMU index
->usage; patch 2 is the actual bug fix=2E
->
->This fixes the bug with the repro case in the bug report, and it
->also passes "make check", but I don't have a huge range of
->Secure AArch32 test images to test with=2E I guess it ought to go
->into 9=2E1 as a bugfix, but the nature of the patch means it's
->not very easy to be confident it doesn't introduce any new bugs=2E=2E=2E
->
->Bernhard: I suspect this is the same bug you reported a few months
->back in this thread:
->https://lore=2Ekernel=2Eorg/qemu-devel/C875173E-4B5B-4F71-8CF4-4325F7AB76=
-29@gmail=2Ecom/
-> -- if you're able to test that this patchset fixes your test
->case as well, that would be great=2E
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index 3e1c4d2d2f..2e0ec7d869 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -1753,6 +1753,46 @@ static uint64_t virt_cpu_mp_affinity(VirtMachineState *vms, int idx)
+>       return arm_build_mp_affinity(idx, clustersz);
+>   }
+>   
+> +static CPUArchId *virt_find_cpu_slot(MachineState *ms, int vcpuid)
+> +{
+> +    VirtMachineState *vms = VIRT_MACHINE(ms);
+> +    CPUArchId *found_cpu;
+> +    uint64_t mp_affinity;
+> +
+> +    assert(vcpuid >= 0 && vcpuid < ms->possible_cpus->len);
+> +
+> +    mp_affinity = virt_cpu_mp_affinity(vms, vcpuid);
+> +    found_cpu = &ms->possible_cpus->cpus[vcpuid];
+> +
+> +    assert(found_cpu->arch_id == mp_affinity);
+> +
+> +    /*
+> +     * RFC: Question:
+> +     * Slot-id is the index where vCPU with certain arch-id(=mpidr/ap-affinity)
+> +     * is plugged. For Host KVM, MPIDR for vCPU is derived using vcpu-id.
+> +     * As I understand, MPIDR and vcpu-id are property of vCPU but slot-id is
+> +     * more related to machine? Current code assumes slot-id and vcpu-id are
+> +     * same i.e. meaning of slot is bit vague.
+> +     *
+> +     * Q1: Is there any requirement to clearly represent slot and dissociate it
+> +     *     from vcpu-id?
+> +     * Q2: Should we make MPIDR within host KVM user configurable?
+> +     *
+> +     *          +----+----+----+----+----+----+----+----+
+> +     * MPIDR    |||  Res  |   Aff2  |   Aff1  |  Aff0   |
+> +     *          +----+----+----+----+----+----+----+----+
+> +     *                     \         \         \   |    |
+> +     *                      \   8bit  \   8bit  \  |4bit|
+> +     *                       \<------->\<------->\ |<-->|
+> +     *                        \         \         \|    |
+> +     *          +----+----+----+----+----+----+----+----+
+> +     * VCPU-ID  |  Byte4  |  Byte2  |  Byte1  |  Byte0  |
+> +     *          +----+----+----+----+----+----+----+----+
+> +     */
+> +
+> +    return found_cpu;
+> +}
+> +
 
-Hi Peter,
+I don't see why virt_find_cpu_slot() is needed. Apart from the sanity check, it
+basically returns ms->possible_cpus->cpus[]. The caller can dereference
+ms->possible_cpus->cpus[] directly. About the sanity check, the mp_affinity
+has been properly populated in virt_possible_cpu_arch_ids(). I don't see why
+we it needs to be checked again.
 
-indeed this fixes my guest, too! Thanks for keeping me updated=2E
+>   static inline bool *virt_get_high_memmap_enabled(VirtMachineState *vms,
+>                                                    int index)
+>   {
+> @@ -2065,16 +2105,129 @@ static void virt_cpu_post_init(VirtMachineState *vms, MemoryRegion *sysmem)
+>       }
+>   }
+>   
+> +static void virt_cpu_set_properties(Object *cpuobj, const CPUArchId *cpu_slot,
+> +                                    Error **errp)
+> +{
+> +    MachineState *ms = MACHINE(qdev_get_machine());
+> +    VirtMachineState *vms = VIRT_MACHINE(ms);
+> +    Error *local_err = NULL;
+> +    VirtMachineClass *vmc;
+> +
+> +    vmc = VIRT_MACHINE_GET_CLASS(ms);
+> +
+> +    /* now, set the cpu object property values */
+> +    numa_cpu_pre_plug(cpu_slot, DEVICE(cpuobj), &local_err);
+> +    if (local_err) {
+> +        goto out;
+> +    }
+> +
+> +    object_property_set_int(cpuobj, "mp-affinity", cpu_slot->arch_id, NULL);
+> +
+> +    if (!vms->secure) {
+> +        object_property_set_bool(cpuobj, "has_el3", false, NULL);
+> +    }
+> +
+> +    if (!vms->virt && object_property_find(cpuobj, "has_el2")) {
+> +        object_property_set_bool(cpuobj, "has_el2", false, NULL);
+> +    }
+> +
+> +    if (vmc->kvm_no_adjvtime &&
+> +        object_property_find(cpuobj, "kvm-no-adjvtime")) {
+> +        object_property_set_bool(cpuobj, "kvm-no-adjvtime", true, NULL);
+> +    }
+> +
+> +    if (vmc->no_kvm_steal_time &&
+> +        object_property_find(cpuobj, "kvm-steal-time")) {
+> +        object_property_set_bool(cpuobj, "kvm-steal-time", false, NULL);
+> +    }
+> +
+> +    if (vmc->no_pmu && object_property_find(cpuobj, "pmu")) {
+> +        object_property_set_bool(cpuobj, "pmu", false, NULL);
+> +    }
+> +
+> +    if (vmc->no_tcg_lpa2 && object_property_find(cpuobj, "lpa2")) {
+> +        object_property_set_bool(cpuobj, "lpa2", false, NULL);
+> +    }
+> +
+> +    if (object_property_find(cpuobj, "reset-cbar")) {
+> +        object_property_set_int(cpuobj, "reset-cbar",
+> +                                vms->memmap[VIRT_CPUPERIPHS].base,
+> +                                &local_err);
+> +        if (local_err) {
+> +            goto out;
+> +        }
+> +    }
+> +
+> +    /* link already initialized {secure,tag}-memory regions to this cpu */
+> +    object_property_set_link(cpuobj, "memory", OBJECT(vms->sysmem), &local_err);
+> +    if (local_err) {
+> +        goto out;
+> +    }
+> +
+> +    if (vms->secure) {
+> +        object_property_set_link(cpuobj, "secure-memory",
+> +                                 OBJECT(vms->secure_sysmem), &local_err);
+> +        if (local_err) {
+> +            goto out;
+> +        }
+> +    }
+> +
+> +    if (vms->mte) {
+> +        if (!object_property_find(cpuobj, "tag-memory")) {
+> +            error_setg(&local_err, "MTE requested, but not supported "
+> +                       "by the guest CPU");
+> +            if (local_err) {
+> +                goto out;
+> +            }
+> +        }
+> +
+> +        object_property_set_link(cpuobj, "tag-memory", OBJECT(vms->tag_sysmem),
+> +                                 &local_err);
+> +        if (local_err) {
+> +            goto out;
+> +        }
+> +
+> +        if (vms->secure) {
+> +            object_property_set_link(cpuobj, "secure-tag-memory",
+> +                                     OBJECT(vms->secure_tag_sysmem),
+> +                                     &local_err);
+> +            if (local_err) {
+> +                goto out;
+> +            }
+> +        }
+> +    }
+> +
+> +    /*
+> +     * RFC: Question: this must only be called for the hotplugged cpus. For the
+> +     * cold booted secondary cpus this is being taken care in arm_load_kernel()
+> +     * in boot.c. Perhaps we should remove that code now?
+> +     */
+> +    if (vms->psci_conduit != QEMU_PSCI_CONDUIT_DISABLED) {
+> +        object_property_set_int(cpuobj, "psci-conduit", vms->psci_conduit,
+> +                                NULL);
+> +
+> +        /* Secondary CPUs start in PSCI powered-down state */
+> +        if (CPU(cpuobj)->cpu_index > 0) {
+> +            object_property_set_bool(cpuobj, "start-powered-off", true, NULL);
+> +        }
+> +    }
+> +
+> +out:
+> +    if (local_err) {
+> +        error_propagate(errp, local_err);
+> +    }
+> +}
+> +
+>   static void machvirt_init(MachineState *machine)
+>   {
+>       VirtMachineState *vms = VIRT_MACHINE(machine);
+>       VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(machine);
+>       MachineClass *mc = MACHINE_GET_CLASS(machine);
+>       const CPUArchIdList *possible_cpus;
+> -    MemoryRegion *sysmem = get_system_memory();
+> +    MemoryRegion *secure_tag_sysmem = NULL;
+>       MemoryRegion *secure_sysmem = NULL;
+>       MemoryRegion *tag_sysmem = NULL;
+> -    MemoryRegion *secure_tag_sysmem = NULL;
+> +    MemoryRegion *sysmem;
+>       int n, virt_max_cpus;
+>       bool firmware_loaded;
+>       bool aarch64 = true;
+> @@ -2148,6 +2301,8 @@ static void machvirt_init(MachineState *machine)
+>       /* uses smp.max_cpus to initialize all possible vCPUs */
+>       possible_cpus = mc->possible_cpu_arch_ids(machine);
+>   
+> +    sysmem = vms->sysmem = get_system_memory();
+> +
+>       if (vms->secure) {
+>           /*
+>            * The Secure view of the world is the same as the NonSecure,
+> @@ -2155,7 +2310,7 @@ static void machvirt_init(MachineState *machine)
+>            * containing the system memory at low priority; any secure-only
+>            * devices go in at higher priority and take precedence.
+>            */
+> -        secure_sysmem = g_new(MemoryRegion, 1);
+> +        secure_sysmem = vms->secure_sysmem = g_new(MemoryRegion, 1);
+>           memory_region_init(secure_sysmem, OBJECT(machine), "secure-memory",
+>                              UINT64_MAX);
+>           memory_region_add_subregion_overlap(secure_sysmem, 0, sysmem, -1);
+> @@ -2203,10 +2358,28 @@ static void machvirt_init(MachineState *machine)
+>           exit(1);
+>       }
+>   
+> +    if (vms->mte) {
+> +        /* Create the memory region only once, but link to all cpus later */
+> +        tag_sysmem = vms->tag_sysmem = g_new(MemoryRegion, 1);
+> +        memory_region_init(tag_sysmem, OBJECT(machine),
+> +                           "tag-memory", UINT64_MAX / 32);
+> +
+> +        if (vms->secure) {
+> +            secure_tag_sysmem = vms->secure_tag_sysmem = g_new(MemoryRegion, 1);
+> +            memory_region_init(secure_tag_sysmem, OBJECT(machine),
+> +                               "secure-tag-memory", UINT64_MAX / 32);
+> +
+> +            /* As with ram, secure-tag takes precedence over tag.  */
+> +            memory_region_add_subregion_overlap(secure_tag_sysmem, 0,
+> +                                                tag_sysmem, -1);
+> +        }
+> +    }
+> +
+>       create_fdt(vms);
+>   
+>       assert(possible_cpus->len == max_cpus);
+>       for (n = 0; n < possible_cpus->len; n++) {
+> +        CPUArchId *cpu_slot;
+>           Object *cpuobj;
+>           CPUState *cs;
+>   
+> @@ -2215,15 +2388,10 @@ static void machvirt_init(MachineState *machine)
+>           }
+>   
+>           cpuobj = object_new(possible_cpus->cpus[n].type);
+> -        object_property_set_int(cpuobj, "mp-affinity",
+> -                                possible_cpus->cpus[n].arch_id, NULL);
+>   
+>           cs = CPU(cpuobj);
+>           cs->cpu_index = n;
+>   
+> -        numa_cpu_pre_plug(&possible_cpus->cpus[cs->cpu_index], DEVICE(cpuobj),
+> -                          &error_fatal);
+> -
+>           aarch64 &= object_property_get_bool(cpuobj, "aarch64", NULL);
+>           object_property_set_int(cpuobj, "socket-id",
+>                                   virt_get_socket_id(machine, n), NULL);
+> @@ -2234,81 +2402,8 @@ static void machvirt_init(MachineState *machine)
+>           object_property_set_int(cpuobj, "thread-id",
+>                                   virt_get_thread_id(machine, n), NULL);
+>   
+> -        if (!vms->secure) {
+> -            object_property_set_bool(cpuobj, "has_el3", false, NULL);
+> -        }
+> -
+> -        if (!vms->virt && object_property_find(cpuobj, "has_el2")) {
+> -            object_property_set_bool(cpuobj, "has_el2", false, NULL);
+> -        }
+> -
+> -        if (vmc->kvm_no_adjvtime &&
+> -            object_property_find(cpuobj, "kvm-no-adjvtime")) {
+> -            object_property_set_bool(cpuobj, "kvm-no-adjvtime", true, NULL);
+> -        }
+> -
+> -        if (vmc->no_kvm_steal_time &&
+> -            object_property_find(cpuobj, "kvm-steal-time")) {
+> -            object_property_set_bool(cpuobj, "kvm-steal-time", false, NULL);
+> -        }
+> -
+> -        if (vmc->no_pmu && object_property_find(cpuobj, "pmu")) {
+> -            object_property_set_bool(cpuobj, "pmu", false, NULL);
+> -        }
+> -
+> -        if (vmc->no_tcg_lpa2 && object_property_find(cpuobj, "lpa2")) {
+> -            object_property_set_bool(cpuobj, "lpa2", false, NULL);
+> -        }
+> -
+> -        if (object_property_find(cpuobj, "reset-cbar")) {
+> -            object_property_set_int(cpuobj, "reset-cbar",
+> -                                    vms->memmap[VIRT_CPUPERIPHS].base,
+> -                                    &error_abort);
+> -        }
+> -
+> -        object_property_set_link(cpuobj, "memory", OBJECT(sysmem),
+> -                                 &error_abort);
+> -        if (vms->secure) {
+> -            object_property_set_link(cpuobj, "secure-memory",
+> -                                     OBJECT(secure_sysmem), &error_abort);
+> -        }
+> -
+> -        if (vms->mte) {
+> -            /* Create the memory region only once, but link to all cpus. */
+> -            if (!tag_sysmem) {
+> -                /*
+> -                 * The property exists only if MemTag is supported.
+> -                 * If it is, we must allocate the ram to back that up.
+> -                 */
+> -                if (!object_property_find(cpuobj, "tag-memory")) {
+> -                    error_report("MTE requested, but not supported "
+> -                                 "by the guest CPU");
+> -                    exit(1);
+> -                }
+> -
+> -                tag_sysmem = g_new(MemoryRegion, 1);
+> -                memory_region_init(tag_sysmem, OBJECT(machine),
+> -                                   "tag-memory", UINT64_MAX / 32);
+> -
+> -                if (vms->secure) {
+> -                    secure_tag_sysmem = g_new(MemoryRegion, 1);
+> -                    memory_region_init(secure_tag_sysmem, OBJECT(machine),
+> -                                       "secure-tag-memory", UINT64_MAX / 32);
+> -
+> -                    /* As with ram, secure-tag takes precedence over tag.  */
+> -                    memory_region_add_subregion_overlap(secure_tag_sysmem, 0,
+> -                                                        tag_sysmem, -1);
+> -                }
+> -            }
+> -
+> -            object_property_set_link(cpuobj, "tag-memory", OBJECT(tag_sysmem),
+> -                                     &error_abort);
+> -            if (vms->secure) {
+> -                object_property_set_link(cpuobj, "secure-tag-memory",
+> -                                         OBJECT(secure_tag_sysmem),
+> -                                         &error_abort);
+> -            }
+> -        }
+> +        cpu_slot = virt_find_cpu_slot(machine, cs->cpu_index);
+> +        virt_cpu_set_properties(cpuobj, cpu_slot, &error_fatal);
+>   
+>           qdev_realize(DEVICE(cpuobj), NULL, &error_fatal);
+>           object_unref(cpuobj);
+> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+> index 6f9a7bb60b..780bd53ceb 100644
+> --- a/include/hw/arm/virt.h
+> +++ b/include/hw/arm/virt.h
+> @@ -139,6 +139,10 @@ struct VirtMachineState {
+>       DeviceState *platform_bus_dev;
+>       FWCfgState *fw_cfg;
+>       PFlashCFI01 *flash[2];
+> +    MemoryRegion *sysmem;
+> +    MemoryRegion *secure_sysmem;
+> +    MemoryRegion *tag_sysmem;
+> +    MemoryRegion *secure_tag_sysmem;
+>       bool secure;
+>       bool highmem;
+>       bool highmem_compact;
 
-Series:
-Tested-by: Bernhard Beschow <shentey@gmail=2Ecom>
-
->
->thanks
->-- PMM
->
->Peter Maydell (2):
->  target/arm: Update translation regime comment for new features
->  target/arm: Fix usage of MMU indexes when EL3 is AArch32
->
-> target/arm/cpu=2Eh               | 50 ++++++++++++++++++++++------------
-> target/arm/internals=2Eh         | 27 +++++++++++++++---
-> target/arm/tcg/translate=2Eh     |  2 ++
-> target/arm/helper=2Ec            | 34 +++++++++++++++--------
-> target/arm/ptw=2Ec               |  6 +++-
-> target/arm/tcg/hflags=2Ec        |  4 +++
-> target/arm/tcg/translate-a64=2Ec |  2 +-
-> target/arm/tcg/translate=2Ec     |  9 +++---
-> 8 files changed, 95 insertions(+), 39 deletions(-)
->
+Thanks,
+Gavin

@@ -1,181 +1,140 @@
-Received: by 2002:a17:504:6454:b0:1be9:327d:8ee3 with SMTP id g20csp870708njh;
-        Mon, 12 Aug 2024 10:56:22 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVy/vSvRGPI2SxisQFfrQNLBw/TPpnxr+6y6tm1b7pqDUenZkeXshBanbLeg4bQ07sRxDFRh+4fOs9QcqN0Zcpv/wXTxylC
-X-Received: by 2002:a05:600c:5127:b0:426:6f17:531 with SMTP id 5b1f17b1804b1-429d4809581mr8925145e9.13.1723485381914;
-        Mon, 12 Aug 2024 10:56:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1723485381; cv=none;
+Received: by 2002:a17:504:6454:b0:1be9:327d:8ee3 with SMTP id g20csp884161njh;
+        Mon, 12 Aug 2024 11:40:07 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWJD8hqloKqr9PsLdxRnhNuh4d3nK8Gut/+uJ2oWS3f3Ct/Tb3rknCl+WVGxh3jMzTk5wSRf6nBUT2pODdlN7FlpD2ON4be
+X-Received: by 2002:adf:f48d:0:b0:367:89b0:f584 with SMTP id ffacd0b85a97d-3716e43cabdmr352211f8f.11.1723488007554;
+        Mon, 12 Aug 2024 11:40:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1723488007; cv=none;
         d=google.com; s=arc-20160816;
-        b=P+FMrOlTSdjVi2qMJbjyHQ8cIDSJqQwBr4dy4FjAPnfQhhyyoBWEwFxjH1npSvN05P
-         /u507k5KjfR3T/fJWMP4/D5SV2fUrkbHwPYOOvxW/wSkWEyuAwwY2d7FhNMoxX3O0KwU
-         xjHszX7d+SuC0k7AwLPmWs7u8qYFnpB6VEJjX6DlJMxAAfegGb370wDoEfQB/XOUYNOn
-         yuHvhuucToax6wiQKF057EMoDXfp1XnYf+svrhivPMjgqeECpdobtp8n27kb+LZ0Ccts
-         Exi0xxODPE1wB4H1s8SC+L6AWepdwWTFEgH3z3A9oRcTZYK+5SH5NwVRGo/y5SgGKSsp
-         GJLQ==
+        b=nhXM951JKkJQ5pPe1XQ3S+vlX24hfGHDOxWaHKB27h4PMuv99I+OHNzKPEl76jmZTl
+         /EplwjMuB2cEYPE/NhZURFUAbWfTO+GufdPO9sBAP4HBPSAjl6qWg1Q0xaeAxzSNzppf
+         81/C4/0lKws3wYouyLiMwaFbu2faQJm9ZsxQARSAWOD9LkfJqTgd10THD0pk4fnEE9/4
+         /Qd67Y2CcFIdEL/jfN2+J3CN81XndvYm5IKRrBKCU8QgiGOPPhFzbgG7kmSFsvqOCL36
+         UUvOK/r/GgGLRt7wGFZXHIE6xqqtRlHkX2Qdv1Wjca/2lS629H6V+gdHJ4jK2tZkMLUn
+         /h5w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=9ucpR89SN6ep8advprvDEEg8bvmnOO1GXRGaE0X67Mo=;
-        fh=DYyirPUOV/Pr1mUh4cgaNJ0dVAaR7VW+KiFYddIeNLo=;
-        b=XSOfL3Ut38Nb/bdQZ6vhpn1/4D6q34pwOsRE8AXJf7udyNjBKUDJ2SEfzRwvkiKury
-         HYY6n2XZaK2/llGTRHFONwj0BcUzyfEYg31jTStTvA/tTAF3bE2qZSAYvGXvERQBpCM7
-         uB75F5s6Ncg1LcoVxdjr9APt3MGuApgAp1t2twgqv4CnKLsMVAfULc41JG6dUF8yw01E
-         7fN9dHZBeNPuJvkaReYFCjGRmcUoApLjX7PuWaX3qu11ABsDzpyyOGsjUOWTcHXB8o98
-         eawmS6JXhfz9IB2Jquy1bTmbN+cvP7lLCUpap0ixUixOMXktUMn3L+QabpKUwkGJQSCH
-         YWiw==;
+        bh=rF418gmjx4SjooVpfdgVEelVbtXR1QDkywT9usen5X4=;
+        fh=xyPjVqEyCGAxZWp+qaXLQcKS75gQ7fLeuEflotTSb5E=;
+        b=PcDplY1cqKmi9lDbkLr/1+6wdizkjlghccyYNH5diMcoSldQsgLntXVdFhFk2ZprJC
+         yhZE3SI2XF6iqVioOQwwe+XVAQT7/fpDv9A9BI6DoJ8zFUqq/7NPW9u3k18UctFgSeQ7
+         25Q1adMpaG718K10zYSxQSexphirrS45j7uBxrtgqCXGrws9rubii26yoLD811LyVYem
+         AgEvlF/nLcs0qo3v4QSblVxojwJDwSpXiXCGD5MrNtuxJB33Kp/30yoAsuPxQzMQjSl3
+         ABofYWUnJsXeAhjFwXvSGTa0LV/YC7kiSRaMrhKYn1Vjy2oiirxz+AhdCulTILpDUPim
+         uk4Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=Ue2hCfi1;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=lhtsEHrR;
        spf=pass (google.com: domain of tavip@google.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=tavip@google.com;
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
        dara=neutral header.i=@linaro.org
 Return-Path: <tavip@google.com>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 5b1f17b1804b1-429c7ddaaeesor14278415e9.13.2024.08.12.10.56.21
+        by mx.google.com with SMTPS id ffacd0b85a97d-36e4c93716asor1410467f8f.2.2024.08.12.11.40.07
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 12 Aug 2024 10:56:21 -0700 (PDT)
+        Mon, 12 Aug 2024 11:40:07 -0700 (PDT)
 Received-SPF: pass (google.com: domain of tavip@google.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=Ue2hCfi1;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=lhtsEHrR;
        spf=pass (google.com: domain of tavip@google.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=tavip@google.com;
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20230601; t=1723485381; x=1724090181; darn=linaro.org;
+        d=google.com; s=20230601; t=1723488007; x=1724092807; darn=linaro.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=9ucpR89SN6ep8advprvDEEg8bvmnOO1GXRGaE0X67Mo=;
-        b=Ue2hCfi1EFI+k/2f+PggAHO8rwQD8m0k5fbcIXOXIQfXVtNbXWDiuQ5uJlXbchT5nz
-         tzwEHTCRQsGEw0JGLeIqfTPd+XHxKAS1qFLlj3tY0sVQE45VCzoQvLn8lxZ6R9Jn1Lg0
-         v43EruHpj1AGQyjWM1S6sskFii0t+1YhfONDhLugv80hfM2df6eIFmksyYlX9D0EwVpd
-         Jfp3vBWA4kOINckgPvYLnbNvf0jLCflhp2hxgDR/RmXnFcY3+O6Y+SwirzU2v55bxkh1
-         3/3yJO9dISlgm7c2e+VbGNeOWfarLNDDV+ejC+k3NrBJFQwFCpwh/ydYiteIt9EDijTy
-         cjAw==
+        bh=rF418gmjx4SjooVpfdgVEelVbtXR1QDkywT9usen5X4=;
+        b=lhtsEHrRDJpa/k3cnvQsCJH7C5Lz+ZOzfPooqO3zgC8E5BgBt8JwoW96nxhR1yhKa1
+         y8UAmCKpXiWmwq7kWHpam4r3A5G17He1EkeF4tL2JAy43pi3Wk2xYvaz8U51Dzr0bZua
+         GNqV0M1gGKKeZW+Sg+xWFbRIodXdR9AfjKpbaEBAzqbe25uWUmkp55Gz8ixGLMndPTKL
+         qc9VdG+vIg90jeanGuXrTUT1TcHVDURuqDhMGwfeokmT87asQt4B6J2HvTWaceGmSL+Z
+         UKlrJr8uHpVXRRBbkAgJZxuyflyss0FrLup9TyxkC9soen+ShenShgLhM05dfiOgkNE9
+         hIUw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1723485381; x=1724090181;
+        d=1e100.net; s=20230601; t=1723488007; x=1724092807;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=9ucpR89SN6ep8advprvDEEg8bvmnOO1GXRGaE0X67Mo=;
-        b=cD07ulsbyfs3/0B95b6T/I+m4z4tfcjZ9tWzW0tCWNHdtm/PnM4Ln6UvP2Xzf3UlYQ
-         AZMqEiINDIUndxc5WAYg3kZ7+ryjFtfZLdZ/BTTFVqhPGOmbMHEOJTEoHrx9L8L2usRw
-         D393dshhwLTgSHN1CSTF6cw7Rza1xvWkhv3GFMXLI40fe3Iel0LT1znok1Nh3BUc2Ojn
-         +91rzudr7llAyP7X51D+DQdDZ+MSIjVg0aytBOfwpqHzjfryqzKcPRwnG6qKAYWcDUeH
-         eF8eUhXT9Z+dLrMhxoJtG7GCFHXieyP1bVIatXRWEE0L4qb674zLc156wvyY0IalTyt9
-         PbZg==
-X-Forwarded-Encrypted: i=1; AJvYcCWMR0Nnt/cRES7GgoQyOaQ3jAOOmBaClbjVN12rqcJfaBmceQ2CT9a8HEOr6firkssc7aLgd1qmdSEK9YN28GXURpHXr6X0
-X-Gm-Message-State: AOJu0YzCfPi3thCqbiTvC3ihFat1qHIgwKPHH7Wb6Ym3x2KxfTVojsmK
-	v34jFjV1TPXsjSS63w7mtUdI68AupXKPKwNQDKoCQ5WSzo97pupSwPbAxbGpAa7scF+tlXeczP9
-	7qkSybQfwkS0iNXNHwMnxPkOq4Q3xhPLOeXde
-X-Google-Smtp-Source: AGHT+IGy5gO53UM0oJAlohh+4At+0i0l/Vi8pIR52RUwf7WZ6I/jyEACa11eGpb3JDTApRUeJH2/9xzeV7TAt+hsG4U=
-X-Received: by 2002:a05:6000:1bc1:b0:367:926a:7413 with SMTP id
- ffacd0b85a97d-3716cd2c07bmr713273f8f.63.1723485381094; Mon, 12 Aug 2024
- 10:56:21 -0700 (PDT)
+        bh=rF418gmjx4SjooVpfdgVEelVbtXR1QDkywT9usen5X4=;
+        b=UCffdi6f8OY/FAskMxHOHyl8cdsYhMn8gk/SxBXVSxCtsuARjUUUEhFv4nCXfReeYY
+         2LHPb+EMlENyo8SvajAPxRuw1CVXXR5+CAuvU2sJuHEyILYV0XOt5yw6qHg21zPiaZUj
+         rCpKZvkG4RRCSMEGdstddRdCCXBHtsDza+3x3xUk1CEqeo2NvuI9nfQbE6HHeKMz9EsC
+         NC86EGq0KogkbUT7umQbZcviUKyYBOA0ipTqnP6yURgNA+RSrSxCgNfxtGurjS1mmeX8
+         Xl678SO2dArjlcOxQfBMYqnuDkW8b/L8+BQob/+bGlvDykV+EHeTyD4cx2BvMWUkPP/Q
+         W4Og==
+X-Forwarded-Encrypted: i=1; AJvYcCWXw8kyOtdFOr5yItUxolPK7ERQYZ2sP4GMvv3QFYJkC/655JpgEFcoLscy8kh/Adel9Y8Bq2EM6q3iJzQdGszaedr4eE1K
+X-Gm-Message-State: AOJu0Yxu9+ccEG6KxfEczfz+BKh/18xKAVatvyQG54+yPkyLWDoVqhcN
+	vlueXWjYiTI6uEa+vDwIj4Zrmv4m3cGZbtknVjRJ9JhVjuwf50RScR9+/L78qiitWByyRTjjVtY
+	yxxkFo5P38fG62cUE9EpTshPl0g1hLfk70ogX
+X-Google-Smtp-Source: AGHT+IHT2yYHFMAIKDS2jK6y/5ndIwLr6HSXC8D7VCqXXv1C6p42RpeONg5iOr7ZHiRSAXlBYgT+RAYnxHNsgG+S9Cs=
+X-Received: by 2002:adf:ef0f:0:b0:368:3562:7c76 with SMTP id
+ ffacd0b85a97d-3716e42c619mr397781f8f.3.1723488006702; Mon, 12 Aug 2024
+ 11:40:06 -0700 (PDT)
 MIME-Version: 1.0
-References: <20240805201719.2345596-1-tavip@google.com> <20240805201719.2345596-4-tavip@google.com>
- <CAFEAcA82c_RZ6512dB1OxpAtinRctkZK7ZyjpxX16Wk7DYZDPg@mail.gmail.com>
-In-Reply-To: <CAFEAcA82c_RZ6512dB1OxpAtinRctkZK7ZyjpxX16Wk7DYZDPg@mail.gmail.com>
+References: <20240805201719.2345596-1-tavip@google.com> <CAFEAcA9tUW0DHHOuGJ4sUxu12JMLUMxqW=_9oUHKiiRTenZwKw@mail.gmail.com>
+ <Zro207XTHFILvRoe@redhat.com>
+In-Reply-To: <Zro207XTHFILvRoe@redhat.com>
 From: Octavian Purdila <tavip@google.com>
-Date: Mon, 12 Aug 2024 10:56:09 -0700
-Message-ID: <CAGWr4cSiNOm1mL6ZC+Dr8bFHz9Dx2R78_we9wL=W6f3FExb-kQ@mail.gmail.com>
-Subject: Re: [RFC PATCH 03/23] scripts: add script to generate C header files
- from SVD XML files
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, stefanst@google.com, 
-	pbonzini@redhat.com, alex.bennee@linaro.org, thuth@redhat.com, 
-	marcandre.lureau@redhat.com, alistair@alistair23.me, berrange@redhat.com, 
+Date: Mon, 12 Aug 2024 11:39:55 -0700
+Message-ID: <CAGWr4cSndr-mQ34cp5-AJiqFQxq522J2K-7W3jAGyUdLARLg8Q@mail.gmail.com>
+Subject: Re: [RFC PATCH 00/23] NXP i.MX RT595, ARM SVD and device model unit tests
+To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
+	stefanst@google.com, pbonzini@redhat.com, alex.bennee@linaro.org, 
+	thuth@redhat.com, marcandre.lureau@redhat.com, alistair@alistair23.me, 
 	philmd@linaro.org, jsnow@redhat.com, crosa@redhat.com, bleal@redhat.com
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-TUID: VO4AQlcCA5qH
+X-TUID: ePOoZK2U2IVQ
 
-On Mon, Aug 12, 2024 at 8:27=E2=80=AFAM Peter Maydell <peter.maydell@linaro=
-.org> wrote:
+On Mon, Aug 12, 2024 at 9:22=E2=80=AFAM Daniel P. Berrang=C3=A9 <berrange@r=
+edhat.com> wrote:
+>
+> On Mon, Aug 12, 2024 at 05:10:52PM +0100, Peter Maydell wrote:
+> > On Mon, 5 Aug 2024 at 21:17, Octavian Purdila <tavip@google.com> wrote:
+> > > It also introduces unit tests for device models. To allow accessing
+> > > registers from unit tests a system bus mock is created. The main
+> > > advantage of unit tests for device models over QTest is that device
+> > > models can be tested in isolation and do not require a full qemu
+> > > machine.
+> >
+> > On the other hand the disadvantage is that you need to add a
+> > bunch of extra code to mock the interfaces that the device
+> > connects to, and then you compile into the test binary a
+> > subset of C files which weren't written with the expectation
+> > that they got compiled into tests like that, so it feels a
+> > bit brittle. The nice thing about qtest is that it doesn't
+> > need you to do any of that -- you just run the QEMU machine
+> > model and prod the devices it already has.
+>
+> Yep, mocking often ends up being rather a double-edged sword.
+> You can do some really powerful things with it, and in particular
+> it can enable you test scenarios / code paths that are hard or
+> impractical to exercise with regular functional tests where fault
+> injection is difficult/impossible.
+>
+> The cost of this though is that the mocks can pose a significant
+> ongoing maint burden on anyone who refactors code in future, as
+> the mocks need to evolve in lockstep with the code refactoring.
+>
+> 12 months down the line, it can be hard for another maintainer
+> to understand the full purpose of the mocks & thus even harder
+> to know what todo as they refactor the code. The future burden
+> of mocks rarely falls on the person who creates them in the
+> first place.
 >
 
-Hi Peter,
+I agree that there are potentially maintenance issues. For what is
+worth, AFAIR, we only ran into one breaking change in about 3 years
+for which we used this approach which was also simple to fix (gpio was
+removed from hwcore so we had to pull in gpio.c directly).
 
-Thanks for the review!
-
-
-> On Mon, 5 Aug 2024 at 21:17, Octavian Purdila <tavip@google.com> wrote:
-> >
-> > From: Stefan Stanacar <stefanst@google.com>
-> >
-> > From: Stefan Stanacar <stefanst@google.com>
-> >
-> > The CMSIS System View Description format(CMSIS-SVD) is an XML based
-> > description of Arm Cortex-M microcontrollers provided and maintained
-> > by sillicon vendors. It includes details such as peripherals registers
-> > (down to bitfields), peripheral register block addresses, reset
-> > values, etc.
-> >
-> > This script uses this information to create header files that makes it
-> > easier to emulate peripherals.
-> >
-> > The script can be used to create either peripheral specific headers or
-> > board / system specific information. The script generated headers are
-> > similar to the SVDConv utility.
-> >
-> > Peripheral specific headers contains information such as register
-> > layout, register names and reset values for registers:
-> >
-> >   typedef struct {
-> >     ...
-> >     union {
-> >       uint32_t PSELID;              /* 0x00000FF8 Peripheral Select and
-> >                                      * Flexcomm module ID */
-> >       struct {
-> >         uint32_t PERSEL : 3;        /* [2..0] Peripheral Select */
-> >         uint32_t LOCK : 1;          /* [3..3] Lock the peripheral selec=
-t */
-> >         uint32_t USARTPRESENT : 1;  /* [4..4] USART present indicator *=
-/
-> >         uint32_t SPIPRESENT : 1;    /* [5..5] SPI present indicator */
-> >         uint32_t I2CPRESENT : 1;    /* [6..6] I2C present indicator */
-> >         uint32_t I2SPRESENT : 1;    /* [7..7] I2S Present */
-> >         uint32_t : 4;
-> >         uint32_t ID : 20;           /* [31..12] Flexcomm ID */
-> >       } PSELID_b;
-> >     };
->
-> Bitfield layout in C isn't portable, so don't generate this kind
-> of union-of-a-integer-and-some-bitfields, please. You can
-> generate FIELD() macro invocations (see include/hw/registerfields.h)
-> which define shift/mask/length macros that can be used with
-> FIELD_EX*/FIELD_DP* to do extract/deposit operations.
+> > Do you have examples in this series of tests which you
+> > were able to write with this unit test setup that you
+> > wouldn't have been able to write equivalents of with the
+> > qtest framework ?
 >
 
-I see that C bitfields are already used in a few places in qemu. Could
-you please elaborate on the portability issue?
-
-> >     ...
-> >   } FLEXCOMM_Type;                  /* Size =3D 4096 (0x1000) */
-> >
-> >   #define FLEXCOMM_PSELID_PERSEL_Pos (0UL)
-> >   #define FLEXCOMM_PSELID_PERSEL_Msk (0x7UL)
-> >   #define FLEXCOMM_PSELID_LOCK_Pos (3UL)
-> >   #define FLEXCOMM_PSELID_LOCK_Msk (0x8UL)
-> >   ...
-> >
-> >   typedef enum {                /* FLEXCOMM_PSELID_LOCK */
-> >     /* Peripheral select can be changed by software. */
-> >     FLEXCOMM_PSELID_LOCK_UNLOCKED =3D 0,
-> >     /* Peripheral select is locked and cannot be changed until this
-> >      * Flexcomm module or the entire device is reset. */
-> >     FLEXCOMM_PSELID_LOCK_LOCKED =3D 1,
-> >   } FLEXCOMM_PSELID_LOCK_Enum;
-> >   ...
-> >
-> >   #define FLEXCOMM_REGISTER_NAMES_ARRAY(_name) \
-> >     const char *_name[sizeof(FLEXCOMM_Type)] =3D { \
-> >         [4088 ... 4091] =3D "PSELID", \
-> >         [4092 ... 4095] =3D "PID", \
-> >     }
-> >
-> > Board specific headers contains information about peripheral base
-> > register addresses.
->
-> thanks
-> -- PMM
+No, I think all of the tests in the patch set could be written in qtest.

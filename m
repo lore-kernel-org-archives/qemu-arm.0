@@ -1,162 +1,223 @@
-Received: by 2002:a17:504:6454:b0:1be9:327d:8ee3 with SMTP id g20csp817382njh;
-        Mon, 12 Aug 2024 08:15:32 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXMrqp5Ug7IQg0MFEPThTlVkapsTqovfBBbdC6TTf++40wcxJ8pG2Exd+Ta5TwqPVDh90syceRT5yKFL3qRgpDwtliOuDoj
-X-Google-Smtp-Source: AGHT+IE9iE40NQqgv4GwLPEmgQITvLbbFRdniSF0lopZK80JjSBcyi1UV4sqVN05yD2Kdllys+E+
-X-Received: by 2002:a05:6214:568c:b0:6b5:a8b9:e8ab with SMTP id 6a1803df08f44-6bf4f872ffamr5787776d6.49.1723475732461;
-        Mon, 12 Aug 2024 08:15:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1723475732; cv=none;
+Received: by 2002:a17:504:6454:b0:1be9:327d:8ee3 with SMTP id g20csp745700njh;
+        Mon, 12 Aug 2024 05:02:29 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCUs5Gw4S36+7QFEYuTUIkpSFepPeCslGRca5atooM+IZnughlGXeO5MCGl5Ocbn7YY3EQkfUKCAbv6mDA==@linaro.org
+X-Google-Smtp-Source: AGHT+IFexl7GrddleVxhz7PKkpPpzoJz7IlviT1u1bUD2pkSaNKt8+T4katYXBQXb/5B/ngjCMjO
+X-Received: by 2002:a17:907:3d89:b0:a7a:bc34:a4c0 with SMTP id a640c23a62f3a-a80ed2cc7femr1525466b.45.1723464148987;
+        Mon, 12 Aug 2024 05:02:28 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1723464148; cv=pass;
         d=google.com; s=arc-20160816;
-        b=NIiVMP22WLC/BjjN93qP5ZlLNpwY2HDxrSYRStwtMcl64uO2puyh9nMpyKFbb25fS1
-         slxYmeqJCm8Vzb5j61ADirkz9uzvCA5Zg8W829yG8TbnfcByoRPyVXR7fQtBFykyx1Pi
-         jHNXK9dq4ULBsuAhBSSAtf+2abl4IAlGfUYWNpdbjDIDcaSMhZ6Jg+WenZaaPsQgmcY1
-         IlJAr0e7hQlmmadzUhl3bP+me7aBkUtDNM29ItK2+Q79j+sXqzPlqZcdn462NiBbb+wi
-         WWkj30uGjP9Aiz+zh+MxxzOqu0fsNcaBPBVImMed4ttfhnyJ+yNEJ1MZQmzrUJYPHUvU
-         lVfw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=Nn9J60puewudqRteyMm2kWG4TdMdGZoLctn107c2Iqg=;
-        fh=Q0+8XOUuT7z9Z89uiS9UET2mAb8zpbkZiPtoq/jHMFM=;
-        b=iqNo7n82vZF/H7CumoTteg7yRpwl3EthGuF9fY8N0HIQVHjNi0AcFMWZ5rT2hvmWdD
-         zRLkNZjJxpaxVaQ+pXwQfdIgmZh7f/vmSITFL24gUIUqyBbHpL5jK35QsG6CNTP+DVWj
-         K+IbCRWnxhojWOunKq8Mc8i+oY5t/+oAkNJ9fIDFLONqJvZZX/MpUfx+9/llBa9RtoyO
-         KbTs0A10NsC2C32QRh/jeinCXSYHqGcJzhGqZUPDO73zbRqFnokdM2epzWXslQjM673/
-         BH3sSlWsr3T1eIvFAKSVEzE9Xey+olPcUyi7SZQjlN1NED45ehekGFDQiUysYrN/Tvsl
-         g7Tg==;
+        b=OBOEiH5yLverq5y9crmRVhLmjpJkQaZgRV6+7vhMWA375bJSlOZWHDhgGIEoN1g9cm
+         tu9Mephqhd5P/14SGQpxJ3jz+KiIXN88sIpXJOOnnNh5Lqibod2j+wjmV8hLdOgzghDO
+         rCOksxrrAanzCdC47oB//SQ+Xw1bYCdbHcOdNWhLAAAMC3pQ+SgkK4r/YWUVlM7ChL7c
+         zKwngEI4BT6yCVXcASrmI+8r6vRzrEwdNpB+JBiGXPZ6iqiZj4ve89u4p5t2qfgACy9f
+         CB8GPMwqjVi6CfM9noRer4kLVwyZduKQU9uLEZSeq6h+3Jmtys8SXLyKC3e/v2JszBPi
+         EKMA==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=R+65iu01NPIv7uWIeGGoac4SWkRO5zqtd9iaInoLAGw=;
+        fh=5LVpWpDA+hQwAq1x3tp7nBfmK5fshhiaIqkxWevNybU=;
+        b=SGOTJYF9/9gTUTsNSlh8VK+KYz87/W+4VCmZdxmZnk+YLyGTpmLkQHIOZ4skc5RTyL
+         pEB24UipBYUknNlVSDdB/etD+w+0QP+Zb9oUotQY+VmWBWkN9GTJmTqYniOk/OfywmgK
+         PvPwM8bTALlcmN+KQrnHo+AqtJtJiAKZlcbXnv6mxJOJBX7CMf46niY97AQmvi4BXflj
+         iPdVckXHdVsVYxPsPTiN8Rk93bI+2GQm2WJzSrbf0JoHnXOtOL8xvKSnwq6JL/FEpOse
+         QSc7dsp2Csp1A+yozktzDIZ/D+/ZnlSGSvkY26oF3v8qkYqW/6uoBBosWkNKAW9AiDT3
+         l3SA==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=bYtdmhqh;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6bd82e79cc0si62202716d6.469.2024.08.12.08.15.32
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Y+9XbGfT;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of linux-kernel+bounces-283044-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="linux-kernel+bounces-283044-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <linux-kernel+bounces-283044-alex.bennee=linaro.org@vger.kernel.org>
+Received: from am.mirrors.kernel.org (am.mirrors.kernel.org. [147.75.80.249])
+        by mx.google.com with ESMTPS id a640c23a62f3a-a80bb37b110si293797166b.1028.2024.08.12.05.02.28
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 12 Aug 2024 08:15:32 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 12 Aug 2024 05:02:28 -0700 (PDT)
+Received-SPF: pass (google.com: domain of linux-kernel+bounces-283044-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) client-ip=147.75.80.249;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=bYtdmhqh;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sdWkt-0006wl-4U; Mon, 12 Aug 2024 11:14:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1sdWkr-0006qp-PT
- for qemu-arm@nongnu.org; Mon, 12 Aug 2024 11:14:41 -0400
-Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1sdWkm-0006aA-QZ
- for qemu-arm@nongnu.org; Mon, 12 Aug 2024 11:14:41 -0400
-Received: by mail-ed1-x52a.google.com with SMTP id
- 4fb4d7f45d1cf-5af6a1afa7bso5307937a12.1
- for <qemu-arm@nongnu.org>; Mon, 12 Aug 2024 08:14:35 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1723475673; x=1724080473; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=Nn9J60puewudqRteyMm2kWG4TdMdGZoLctn107c2Iqg=;
- b=bYtdmhqhxOttTuesY7+jhQYhTF8EVxc7sWRFt5OGl/OklG1PzUsZcQP9oCifTgqnwX
- zO2bP51lQ+BRs8lncBKPLiE2+fvoHhEJoNuOMCoGgQftFa1oyMjpEscZn9kpLsLq/ZuG
- zAzV7VX26ke7BVHxwz0pS0SpyJTpqGyuoeZfA7XMHnxfok8GskkCDA/sfg34VuSjCsDO
- kGYZLAVnj9uh1PFIADBGD8f+HYVNqKwR+L1qqgePve1PMPFI1Tz5kbsW+tiQapXjmwMm
- queiLiVuxQyreoi0fgKT8KVAjSlPgWwm9BZM8k4M+diw7qlKkoLFu5Bf7U+VLsRQqQO4
- QMzQ==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Y+9XbGfT;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of linux-kernel+bounces-283044-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="linux-kernel+bounces-283044-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by am.mirrors.kernel.org (Postfix) with ESMTPS id 376951F228E2
+	for <alex.bennee@linaro.org>; Mon, 12 Aug 2024 12:02:28 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 2EC3B14B95B;
+	Mon, 12 Aug 2024 12:02:23 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="Y+9XbGfT"
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0E86F178365
+	for <linux-kernel@vger.kernel.org>; Mon, 12 Aug 2024 12:02:20 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.133.124
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1723464143; cv=none; b=PST2XbehiKlkaln3QAOcSjbFql+PaAWOYuJPZwsmKgqeFziktUkvIHmd4lKcsnQCdf8RydI4PmRofBlAorG2HLj4LZUTr/tyV/jGASolhvJGC2fgjqWIKYtOHmKpLWD/QSKRGTnhJmTwhwlaUszaHWkC0rViXyZs20341sgKttA=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1723464143; c=relaxed/simple;
+	bh=8H4HAPFbq/32ABjpdJmGYlbmMPVl2XZE/fhNuFn6Pac=;
+	h=Date:From:To:Cc:Subject:Message-ID:In-Reply-To:References:
+	 MIME-Version:Content-Type; b=niNH+YUU5ixvkae/sfpfYv2Gos99WgIJysonI1zC55fws1/SHE+65a7lIgUpE6h8qfd46krGpbtOUXpKp3D7ZmIcwevTyLM7C/5ADZWhGIJGA6nKsLLxwno/fk6Jx0knNBRMvfWdyJ6Zchfry+Kl80SlAoc+8Qf3qehfyct3m6A=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=Y+9XbGfT; arc=none smtp.client-ip=170.10.133.124
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1723464140;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=R+65iu01NPIv7uWIeGGoac4SWkRO5zqtd9iaInoLAGw=;
+	b=Y+9XbGfTniB1N/G1DqYtxrdBY9oE2+6a0hc+rpcECpDngUVkCyVsLwzpLvpTcErKjCvRSA
+	X9DITCYrJblcAIhx9W4wSa/ykVxS2YdiIY9kWxBYIPiwAvzmak0eO/C9xMuKqHcS8yf7ZG
+	d2ZyVMadPNwOBJql/sYh4Dfqos0F7Cc=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-328-UP4YKnsDO-2dExx32TmH8w-1; Mon, 12 Aug 2024 08:02:17 -0400
+X-MC-Unique: UP4YKnsDO-2dExx32TmH8w-1
+Received: by mail-wm1-f70.google.com with SMTP id 5b1f17b1804b1-4281ca9f4dbso35276995e9.0
+        for <linux-kernel@vger.kernel.org>; Mon, 12 Aug 2024 05:02:17 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1723475673; x=1724080473;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=Nn9J60puewudqRteyMm2kWG4TdMdGZoLctn107c2Iqg=;
- b=CDUAxFoxOTSR0YbbzoCTq0F/8KSedqblxUgart3dOXYgXEVMBwngxu5aiXJdDlSFOn
- q6A8RNDbI9wn1TezP4ffJNeObPC1h26Vqm9hVwQoSNn59kiG4Cq6CJqixK9lJCyfKnPF
- rqnW3+YRSZLGbq7QhLgnRT44wvQiGLgwsKlXwiPo3Oqlz5pozzdUeBwl+MMmB21+HaTh
- bl2K2V4hsU8SPFH/JOiep1dOrhWmjwlwKxKuuxzeS6XVaPBOiBkK7s1ow9fuVJgzgL2L
- dIeXhOAIz+cR5KCv5ovfH2LoIzrJXvbmK1Y6HbbqQ0sVL2Utly342h8gjtQpjbUBUvOS
- kHIQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXtRw1DZikv8zBnWgCdbY28xUHd946lFDC3yDr3TcxB7OWIdQ7TElhsJL9lNOV935NS/Q9EHcCatE+1BqMsGvqWM7Ad
-X-Gm-Message-State: AOJu0YxRcUdPGhRbXgCn7Y5+rHinw9SxUzbxTvyVwsyt/DJR8Z3fDNPs
- ryYz4XWSQO8pxIJHWulSTJAVLKQS4Phl5KbNBlC24SgRqTixUKdvO7wKayhi9LZFqzwVjNzIZBi
- +CftAyT6ReDCQKBV9p6v+uHRzfM1rFF6D+rQKUQ==
-X-Received: by 2002:a05:6402:354a:b0:5a3:b866:eae0 with SMTP id
- 4fb4d7f45d1cf-5bd44c7c314mr487154a12.32.1723475673220; Mon, 12 Aug 2024
- 08:14:33 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1723464136; x=1724068936;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=R+65iu01NPIv7uWIeGGoac4SWkRO5zqtd9iaInoLAGw=;
+        b=uH16rVdFTYOSI6naZvqNwbijfHfH9auCO6PLBvykc4ySB1/kLiL3LdgqjwW+Gjn61t
+         cydZMdYDw5Dma2ELkydZ9ui4mhkkSqLb3IxTB28RHTh/fpJGFLSkA+YunmC6dwKFeDlL
+         YICCTj372EOXWqTWjl0eiG/YbkcS4Q/wAR5osrRlBIyyCP2x4lj3VcDcIfmHKE7f1QXp
+         VVSoyXG5PhikVSEF1usgzJUAgkQJIqYoPUsgXLSB7wDYg2pWONIBx8AkmYAxEinALCnz
+         J13oeBHNFyq403uwPTLGZADHuHjWHEk4tmyITv9a2XeW8PSStgRLj7K8DabOCJr9JkMs
+         hTJg==
+X-Forwarded-Encrypted: i=1; AJvYcCW/+6eJpTER4+0TcUQJTLrDnR+zpI546ymwZO0GApPqBv8anPwjb9CCJNCCC/s89I9wRS3fr4gcviJLlnA=@vger.kernel.org
+X-Gm-Message-State: AOJu0YygvFaize+tYhFRGWV5WzXMbsgcs0s07esqwxSJwbm2kdWrsvwl
+	rYuZ7icutyg0/mGvCqH6L9eQBZs0gZq2xSrXMFMAHRwZF4dLTpIxLjGayW6uQf9imA5j6DRxa/y
+	fXyo/hquGd3CJs1rVR4HcDflvQu9DRj+MlcLVFcZsn3NBz5i/CnR5cF9giRwpug==
+X-Received: by 2002:a05:600c:354b:b0:426:6eb9:db07 with SMTP id 5b1f17b1804b1-429d4806c91mr1293385e9.13.1723464136429;
+        Mon, 12 Aug 2024 05:02:16 -0700 (PDT)
+X-Received: by 2002:a05:600c:354b:b0:426:6eb9:db07 with SMTP id 5b1f17b1804b1-429d4806c91mr1293155e9.13.1723464135879;
+        Mon, 12 Aug 2024 05:02:15 -0700 (PDT)
+Received: from imammedo.users.ipa.redhat.com (nat-pool-brq-t.redhat.com. [213.175.37.10])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-429c750e57fsm99660975e9.12.2024.08.12.05.02.15
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 12 Aug 2024 05:02:15 -0700 (PDT)
+Date: Mon, 12 Aug 2024 14:02:14 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>, Shiju Jose
+ <shiju.jose@huawei.com>, Peter Maydell <peter.maydell@linaro.org>,
+ linux-kernel@vger.kernel.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [PATCH v6 09/10] target/arm: add an experimental mpidr arm cpu
+ property object
+Message-ID: <20240812140214.408158b9@imammedo.users.ipa.redhat.com>
+In-Reply-To: <a60316927a84748517209a741bf904a802827b8e.1723119423.git.mchehab+huawei@kernel.org>
+References: <cover.1723119423.git.mchehab+huawei@kernel.org>
+	<a60316927a84748517209a741bf904a802827b8e.1723119423.git.mchehab+huawei@kernel.org>
+X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
+Precedence: bulk
+X-Mailing-List: linux-kernel@vger.kernel.org
+List-Id: <linux-kernel.vger.kernel.org>
+List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-References: <20240717060903.205098-1-richard.henderson@linaro.org>
-In-Reply-To: <20240717060903.205098-1-richard.henderson@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 12 Aug 2024 16:14:21 +0100
-Message-ID: <CAFEAcA8vJxUUHWA_nUF-810fDhYyPggtc=HGFdp0QUa5segB=A@mail.gmail.com>
-Subject: Re: [PATCH 00/17] target/arm: AdvSIMD decodetree conversion, part 4
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::52a;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52a.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: iUrMoTJ9xSia
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-TUID: RKDjIZGotx66
 
-On Wed, 17 Jul 2024 at 07:09, Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> Flush before the queue gets too big.
-> Also, there's a bug fix in patch 14.
->
-> r~
->
-> Richard Henderson (17):
->   target/arm: Use tcg_gen_extract2_i64 for EXT
->   target/arm: Convert EXT to decodetree
->   target/arm: Convert TBL, TBX to decodetree
->   target/arm: Convert UZP, TRN, ZIP to decodetree
->   target/arm: Simplify do_reduction_op
->   target/arm: Convert ADDV, *ADDLV, *MAXV, *MINV to decodetree
->   target/arm: Convert FMAXNMV, FMINNMV, FMAXV, FMINV to decodetree
->   target/arm: Convert FMOVI (scalar, immediate) to decodetree
->   target/arm: Convert MOVI, FMOV, ORR, BIC (vector immediate) to
->     decodetree
->   target/arm: Introduce gen_gvec_sshr, gen_gvec_ushr
->   target/arm: Fix whitespace near gen_srshr64_i64
->   target/arm: Convert handle_vec_simd_shri to decodetree
->   target/arm: Convet handle_vec_simd_shli to decodetree
->   target/arm: Clear high SVE elements in handle_vec_simd_wshli
->   target/arm: Use {,s}extract in handle_vec_simd_wshli
->   target/arm: Convert SSHLL, USHLL to decodetree
->   target/arm: Push tcg_rnd into handle_shri_with_rndacc
+On Thu,  8 Aug 2024 14:26:35 +0200
+Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
 
-Other than the need-to-avoid-shift-by-negative nits in
-patches 12 and 13, whole series
+> Accurately injecting an ARM Processor error ACPI/APEI GHES
+> error record requires the value of the ARM Multiprocessor
+> Affinity Register (mpidr).
+> 
+> While ARM implements it, this is currently not visible.
+> 
+> Add a field at CPU storing it, and place it at arm_cpu_properties
+> as experimental, thus allowing it to be queried via QMP using
+> qom-get function.
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+looks fine to me, but it's upto ARM folk to ack this
 
-thanks
--- PMM
+> Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+> ---
+>  target/arm/cpu.c    |  1 +
+>  target/arm/cpu.h    |  1 +
+>  target/arm/helper.c | 10 ++++++++--
+>  3 files changed, 10 insertions(+), 2 deletions(-)
+> 
+> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+> index 19191c239181..30fcf0a10f46 100644
+> --- a/target/arm/cpu.c
+> +++ b/target/arm/cpu.c
+> @@ -2619,6 +2619,7 @@ static ObjectClass *arm_cpu_class_by_name(const char *cpu_model)
+>  
+>  static Property arm_cpu_properties[] = {
+>      DEFINE_PROP_UINT64("midr", ARMCPU, midr, 0),
+> +    DEFINE_PROP_UINT64("x-mpidr", ARMCPU, mpidr, 0),
+>      DEFINE_PROP_UINT64("mp-affinity", ARMCPU,
+>                          mp_affinity, ARM64_AFFINITY_INVALID),
+>      DEFINE_PROP_INT32("node-id", ARMCPU, node_id, CPU_UNSET_NUMA_NODE_ID),
+> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> index a12859fc5335..d2e86f0877cc 100644
+> --- a/target/arm/cpu.h
+> +++ b/target/arm/cpu.h
+> @@ -1033,6 +1033,7 @@ struct ArchCPU {
+>          uint64_t reset_pmcr_el0;
+>      } isar;
+>      uint64_t midr;
+> +    uint64_t mpidr;
+>      uint32_t revidr;
+>      uint32_t reset_fpsid;
+>      uint64_t ctr;
+> diff --git a/target/arm/helper.c b/target/arm/helper.c
+> index 8fb4b474e83f..16e75b7c5ed9 100644
+> --- a/target/arm/helper.c
+> +++ b/target/arm/helper.c
+> @@ -4692,7 +4692,7 @@ static uint64_t mpidr_read_val(CPUARMState *env)
+>      return mpidr;
+>  }
+>  
+> -static uint64_t mpidr_read(CPUARMState *env, const ARMCPRegInfo *ri)
+> +static uint64_t mpidr_read(CPUARMState *env)
+>  {
+>      unsigned int cur_el = arm_current_el(env);
+>  
+> @@ -4702,6 +4702,11 @@ static uint64_t mpidr_read(CPUARMState *env, const ARMCPRegInfo *ri)
+>      return mpidr_read_val(env);
+>  }
+>  
+> +static uint64_t mpidr_read_ri(CPUARMState *env, const ARMCPRegInfo *ri)
+> +{
+> +    return mpidr_read(env);
+> +}
+> +
+>  static const ARMCPRegInfo lpae_cp_reginfo[] = {
+>      /* NOP AMAIR0/1 */
+>      { .name = "AMAIR0", .state = ARM_CP_STATE_BOTH,
+> @@ -9723,7 +9728,7 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+>              { .name = "MPIDR_EL1", .state = ARM_CP_STATE_BOTH,
+>                .opc0 = 3, .crn = 0, .crm = 0, .opc1 = 0, .opc2 = 5,
+>                .fgt = FGT_MPIDR_EL1,
+> -              .access = PL1_R, .readfn = mpidr_read, .type = ARM_CP_NO_RAW },
+> +              .access = PL1_R, .readfn = mpidr_read_ri, .type = ARM_CP_NO_RAW },
+>          };
+>  #ifdef CONFIG_USER_ONLY
+>          static const ARMCPRegUserSpaceInfo mpidr_user_cp_reginfo[] = {
+> @@ -9733,6 +9738,7 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+>          modify_arm_cp_regs(mpidr_cp_reginfo, mpidr_user_cp_reginfo);
+>  #endif
+>          define_arm_cp_regs(cpu, mpidr_cp_reginfo);
+> +        cpu->mpidr = mpidr_read(env);
+>      }
+>  
+>      if (arm_feature(env, ARM_FEATURE_AUXCR)) {
+

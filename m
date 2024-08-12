@@ -1,123 +1,185 @@
-Received: by 2002:a17:504:6454:b0:1be9:327d:8ee3 with SMTP id g20csp707526njh;
-        Mon, 12 Aug 2024 02:29:57 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVtCaNw8wh5bSMMH3X9KPPXphJDauPAQKUO9ib8emMzX0BdkminPnCMlI6J6I1SH+acvwwtnquA33lC9A==@linaro.org
-X-Google-Smtp-Source: AGHT+IH9U6N/rE5CtODq29cgOw8hQiO19KZGvr+ETc5Tboa4HX51i5UTmLprQY7oF2aC2NO8AX51
-X-Received: by 2002:a05:622a:6105:b0:447:e636:9ea4 with SMTP id d75a77b69052e-4531296cf12mr115961871cf.8.1723454997790;
-        Mon, 12 Aug 2024 02:29:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1723454997; cv=none;
+Received: by 2002:a17:504:6454:b0:1be9:327d:8ee3 with SMTP id g20csp719197njh;
+        Mon, 12 Aug 2024 03:21:30 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXtCa+FmlUVQfKTOOOxriZ5oqeZlMsBzbPOaS0pagx22qW92bQ8EW7JDWPI1xMAD/hsaZnS4B1oZxuGiKXFH98AXuFCBRX1
+X-Google-Smtp-Source: AGHT+IGrSTvFwzhNv4oc0Kwi0h0Eiz+OaxYHpSdNxGgc0nnPdLKlXazjyyeP4miITOyxY7+q62+b
+X-Received: by 2002:a05:620a:17a5:b0:79f:12e9:1e51 with SMTP id af79cd13be357-7a4c216cd1emr1648961685a.5.1723458090739;
+        Mon, 12 Aug 2024 03:21:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1723458090; cv=none;
         d=google.com; s=arc-20160816;
-        b=Q8mh7Wqv9KmPw1yyFHMwgF8xyl3VNLfDCEdC+K5MCYvFSrbJCuvI5mHxJv2y+qjSJi
-         /yBY9PlbXlm4TjHtNSK06CvBM9VaEx5K2PzbzKt6mz/6U2JmQntouC6ZmfTzf8xYQk9y
-         vIcAOwg69jvJyaBTpi8yivjLJxruCwQGqXFSiB5ng2T5TLgfC5E2+R1i1+/EO5QxqbPS
-         fcQXJK1/pk1Uy3ae7bmSIG7AMKkuOx0LKFNphNYijb9ca1+QQxda51sZQs8VyDTp4ouo
-         2Y0GT7LkSuFpeGvnZuMnMst1IH25XsPZN0KTeWXxFegdS1lr3R5WqFj7Rh1KfX3HkOjk
-         ftYQ==
+        b=vBaF2dsgTqZ9Jc+ndzh0PQnIZId21GSU+e9w9BbQaK7/VoUPCSzPryxuwX3JIWhd/X
+         yTBmnWVb1wJ6LTMDjdHBMcJu2zlSYF8qeg1HYfK5Hb01mHmEVXxap0Qf2C62qJD7hXbA
+         BEVWmyqi5VnvZkDzZtrYA7qLMh7/exFLbLBjsF0Sii0i+mpJ6FYEQNyEPjUMTrUzrpfB
+         nQLN1Idu40tW5a5f1FiKlhHfxQ/LHDTRauMz5TPygMAmw2ERNEu5fIjpAsl4Yzs2r1C+
+         DO1fBQJEv9qWaskq/Z2NVLu3XrZCrpW0CR0Emb9KrWFwoRZV+OS4b506Gx9ZnE3O2KUZ
+         BglA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=ZatMmrClv0aTLwZezj5tD8JVw5xv2o3tcbRjXncUC30=;
-        fh=WPiK5Cchx0HZ3OAbFyl3XkTLT95liZTQRuYSREqJb8k=;
-        b=c6Co4NK1ab/Kib2+QK4zRqMFTbiVfRPW6wdHiPkw/AwyIedoh8l9aj5W1b8lHpzIRJ
-         6Da8rR4wZ4RG/miwg3L/gFzx8ddCrvwNZ79AZsasi8/4DoClvhFqRzM2vI7QumO9CzHi
-         eG7TMm8Hwmf7WWWIs6LF9+iAaurHCKEUPIwhTdLMhz2NtcNP+wODYeNjWUbj5ACyMaBX
-         aoca5D5nAY0rGdg29x5M64wkZOOrlGfhYzikl36YPWJmFA6GToWsWPK1RbMUJVBVrQZR
-         CQwRUGZlIkaJQ0xR0h1GVu0NnPFjMWOCWy34uEN3Cng//zScucWSAUtz1Axv6D0ZKoJV
-         bW0A==;
+        h=content-transfer-encoding:content-language:in-reply-to:autocrypt
+         :from:references:cc:to:subject:user-agent:mime-version:date
+         :message-id:dkim-signature;
+        bh=gyJDd+GXnuxBnd4cSdoB2aJ+H6UcavMzMJL5XfuHTfc=;
+        fh=4tirad6SJFwGfkrh3M8JKG6kgYKE6KnRSgpH6kkhKgQ=;
+        b=KeNM5Oe0wGJMaza1sEoFWbU5VibLUQWRRxfVmYnjCwPiPRT6Mis/9S8cDrb28rWCJC
+         5nmjkoSrhOMIIQS4mGfpM1RQ1ZBhuIW5cFBus5lYmMXuxtVh3hWUuryiA/ehqYh6XTsL
+         rH7pzmEWc3rT06M12N9jBeBI/poS3uB2mD422Gfs6xMV6ksFzBWzTV4aui0HdwGv6jvE
+         Mlg5MxDLHR/zsmJ46L5xG5jwq0i4NsQBhDWz71UpsdJbWtPBbU6nFLKN2OhJRpdCtUr1
+         3K8r9uWLg6r7i8jBtV5O+x1dr8vEx8wKsuBhyPheasGEVyIdkoZGt/eV7UpwD9gj0hH+
+         soPQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZXNSSIKX;
-       spf=pass (google.com: domain of pbonzini@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=pbonzini@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NQV2lLT8;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <pbonzini@redhat.com>
+Return-Path: <thuth@redhat.com>
 Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id d75a77b69052e-4531c2ca8e4si55174051cf.803.2024.08.12.02.29.57
+        by mx.google.com with ESMTPS id af79cd13be357-7a4c7dfabfbsi552484985a.360.2024.08.12.03.21.30
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 12 Aug 2024 02:29:57 -0700 (PDT)
-Received-SPF: pass (google.com: domain of pbonzini@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        Mon, 12 Aug 2024 03:21:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZXNSSIKX;
-       spf=pass (google.com: domain of pbonzini@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=pbonzini@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NQV2lLT8;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1723454997;
+	s=mimecast20190719; t=1723458090;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=ZatMmrClv0aTLwZezj5tD8JVw5xv2o3tcbRjXncUC30=;
-	b=ZXNSSIKXISHrDl18eoWZUSsJCWhRgYIDtDCMXHlz/fFSo7Gygpmwpinbxkhmkhr1STr3j+
-	Mf4mxfsRWo0PHjt3M4RzrPcvPGZF6Y637zLrIqbz2Cv9/i4MbJbOG8cX4za/+N4WuTO3X7
-	3A5V9dDjgGb0x5FlNs9DZ42LS1GmX4w=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
+	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+	bh=gyJDd+GXnuxBnd4cSdoB2aJ+H6UcavMzMJL5XfuHTfc=;
+	b=NQV2lLT8t8GpnWdKrog+BHI08g2S1zTTU0vy1YTUW72uo9ETAq2dgy8ikIymeFTkYo6ZUG
+	m1QSKrnlXWEX+MOg1/1XGjoCJVA6WnwdS4cMxgOIGalq+FsGPChpXCXQv0IZFE8I6tgyIK
+	AR5gmSilVaed9lnTNLnk3fIVRXslCas=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-41-Wy2WvK0NMCuVLCaiecvBZA-1; Mon, 12 Aug 2024 05:29:56 -0400
-X-MC-Unique: Wy2WvK0NMCuVLCaiecvBZA-1
-Received: by mail-wr1-f69.google.com with SMTP id ffacd0b85a97d-3685a5a765fso2504600f8f.1
-        for <alex.bennee@linaro.org>; Mon, 12 Aug 2024 02:29:54 -0700 (PDT)
+ us-mta-41-_aZeP7OyMTCm7zeNR28jFg-1; Mon, 12 Aug 2024 06:21:29 -0400
+X-MC-Unique: _aZeP7OyMTCm7zeNR28jFg-1
+Received: by mail-wm1-f70.google.com with SMTP id 5b1f17b1804b1-4281b7196bbso32807825e9.0
+        for <alex.bennee@linaro.org>; Mon, 12 Aug 2024 03:21:29 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1723454994; x=1724059794;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=ZatMmrClv0aTLwZezj5tD8JVw5xv2o3tcbRjXncUC30=;
-        b=iyS6gIga/3ISGLtzndLc81jjmZ34oVHgIVNbzk/IwUKIe+rt1dJgOmy9oiWbM3U5+Y
-         JpWRl8o6llbUCywLo5Y+rUv02IX7p2VLg7Xq3epbVufIdXVK7iRTz9lZZq6O/rVAl9fH
-         XlF4Iw+AuOBF+aUfXtAt25zjOgCcWHXALtclQ0I/bkAOInte9LOGB+ZNSaY0suVO3cg1
-         lvygQRd8FhlLoGRlGG7xbFypAh/jvgav+lOIsCqDd+DtWweCqQGTcoETMc6HbQTkWByp
-         bd49EGcdrgb8vBQ/oFXXkpXEO5O+ZpgKguvUt6DvvF5L7qP7Z5Rae2i1oBB00BRs4NrL
-         YDOA==
-X-Forwarded-Encrypted: i=1; AJvYcCUcM6n3FTWUDAc2BBaNLPqBYVhtyYuwoSRlReHbL4m5qqW9O/cdk86LIPpVi0BrTUj1Lf3PW4r+idGTRg==@linaro.org
-X-Gm-Message-State: AOJu0YwHJ/CVOROaUL+dkRKBN26TIlUshzZ61lm9O2ZLC+MxrEqTnY1Z
-	Vbmui8/0s8WJd+qVIZ/exJRKL+GiFwuSmurDloAVyW7bqVziivnYqmJgXutla0EuGz7R4qcyj5a
-	k9m7K+Splns6PUP0to0JTWN11PDJkGfDEvaywjLo6Mr1KAEXmfvcIkH1Ff2DLNiycyESSTSTk/1
-	Q1Ul+q/j9cpqhPvt1cw6STiyE2VhdZ
-X-Received: by 2002:a5d:6845:0:b0:367:9624:f369 with SMTP id ffacd0b85a97d-36d5fa9e7a4mr4852465f8f.16.1723454993888;
-        Mon, 12 Aug 2024 02:29:53 -0700 (PDT)
-X-Received: by 2002:a5d:6845:0:b0:367:9624:f369 with SMTP id
- ffacd0b85a97d-36d5fa9e7a4mr4852440f8f.16.1723454993450; Mon, 12 Aug 2024
- 02:29:53 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1723458088; x=1724062888;
+        h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+         :from:references:cc:to:subject:user-agent:mime-version:date
+         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=gyJDd+GXnuxBnd4cSdoB2aJ+H6UcavMzMJL5XfuHTfc=;
+        b=HQfyh6Xk6c7+Z61Kq8WZWxBlirQMgq/umb4N9bQ5huKiOBzJnikZqumvYFxGRUUjuO
+         iyczQca+TCgZsRD/uOC4HCR2xlRbkoMh2lzNeINk5239geuGLceHnGDDacMIuRzP/n+9
+         x/rvpn2jsfnJP97U3gMQ/fFS7O6GUixcah3fE5YTd29cT91EhQ5qYW05+W8swlrojnqP
+         +fNAzjy4+PGUXFAwSQKjFThRK8ZprHWkVty3lWfZmLtsbZ9EWIoWUqCc07Xqp5nKwfir
+         THg+5xv0E/4sa3f6/7IgTw7Jg0/VMX5/tMKo1QEJLnzZiSaOzsBYyhfjOVT86jQveLw5
+         QTig==
+X-Forwarded-Encrypted: i=1; AJvYcCU0z83BnUDZ8tshnhzn6t3jP56HPTZNPeYRGI7ycH458E7n3fyJwny3JXApkHLdq7VYvAAliirdKqPDSNeeAcfxVzpGYb3I
+X-Gm-Message-State: AOJu0Yy1Kqi4cJurEcICWHSLWQ6NB2SzxXUKVakifFWnoTmaNsPyaGwi
+	T1djnnWYwVc16e4xtjWxcplnHkxKbCR8jyuEPBbt4wybJacNDKH/0LEBBBRz6XrFuPk45P4Y2QQ
+	z9zZuA7ftboszS9U9kcVF9R0y/Mhph5+Zl6E/xvUAokl+Qh8oVBFsvg==
+X-Received: by 2002:a5d:5225:0:b0:367:8875:dd4c with SMTP id ffacd0b85a97d-36d5fb92e41mr5613112f8f.23.1723458088046;
+        Mon, 12 Aug 2024 03:21:28 -0700 (PDT)
+X-Received: by 2002:a5d:5225:0:b0:367:8875:dd4c with SMTP id ffacd0b85a97d-36d5fb92e41mr5613093f8f.23.1723458087581;
+        Mon, 12 Aug 2024 03:21:27 -0700 (PDT)
+Return-Path: <thuth@redhat.com>
+Received: from [192.168.0.6] (ip-109-43-178-125.web.vodafone.de. [109.43.178.125])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-36e48c784basm7153521f8f.0.2024.08.12.03.21.25
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 12 Aug 2024 03:21:27 -0700 (PDT)
+Message-ID: <0658b06b-024e-484c-861d-1b1ef3ce7888@redhat.com>
+Date: Mon, 12 Aug 2024 12:21:24 +0200
 MIME-Version: 1.0
-References: <rust-pl011-rfc-v6.git.manos.pitsidianakis@linaro.org>
- <rust-pl011-rfc-v6-5.git.manos.pitsidianakis@linaro.org> <9a83a260-4f4c-477b-a6e1-c8d78d1f3039@redhat.com>
- <3891718f-2f15-435d-a7de-cc40492374f0@intel.com>
-In-Reply-To: <3891718f-2f15-435d-a7de-cc40492374f0@intel.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Date: Mon, 12 Aug 2024 11:29:41 +0200
-Message-ID: <CABgObfaKcMy8Y_HXL+s_8Bpz_UoV3Md+rYvbHdJHEGDiDd1sQA@mail.gmail.com>
-Subject: Re: [RFC PATCH v6 5/5] rust: add PL011 device model
-To: Junjie Mao <junjie.mao@intel.com>
-Cc: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>, qemu-devel@nongnu.org, 
-	Stefan Hajnoczi <stefanha@redhat.com>, Mads Ynddal <mads@ynddal.dk>, 
-	Peter Maydell <peter.maydell@linaro.org>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	=?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
-	=?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
-	Thomas Huth <thuth@redhat.com>, Markus Armbruster <armbru@redhat.com>, 
-	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
-	Zhao Liu <zhao1.liu@intel.com>, Gustavo Romero <gustavo.romero@linaro.org>, 
-	Pierrick Bouvier <pierrick.bouvier@linaro.org>, rowan.hart@intel.com, 
-	Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 2/9] tests/avocado: apply proper skipUnless decorator
+To: Cleber Rosa <crosa@redhat.com>, qemu-devel@nongnu.org
+Cc: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
+ Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
+ Radoslaw Biernacki <rad@semihalf.com>, Troy Lee <leetroy@gmail.com>,
+ Akihiko Odaki <akihiko.odaki@daynix.com>, Beraldo Leal <bleal@redhat.com>,
+ kvm@vger.kernel.org, Joel Stanley <joel@jms.id.au>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Aurelien Jarno <aurelien@aurel32.net>,
+ Sriram Yagnaraman <sriram.yagnaraman@ericsson.com>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, Paul Durrant
+ <paul@xen.org>, Eric Auger <eric.auger@redhat.com>,
+ David Woodhouse <dwmw2@infradead.org>, qemu-arm@nongnu.org,
+ Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Jamin Lin <jamin_lin@aspeedtech.com>, Steven Lee
+ <steven_lee@aspeedtech.com>, Peter Maydell <peter.maydell@linaro.org>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Leif Lindholm <quic_llindhol@quicinc.com>
+References: <20240806173119.582857-1-crosa@redhat.com>
+ <20240806173119.582857-3-crosa@redhat.com>
+From: Thomas Huth <thuth@redhat.com>
+Autocrypt: addr=thuth@redhat.com; keydata=
+ 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
+In-Reply-To: <20240806173119.582857-3-crosa@redhat.com>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: uoqddz+Kq4Fd
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-TUID: X2CZHBDsJSX2
 
-On Mon, Aug 12, 2024 at 10:51=E2=80=AFAM Junjie Mao <junjie.mao@intel.com> =
-wrote:
-> I tested that branch by a cross-build to aarch64 on an x86_64 machine (wi=
-th
-> "./configure --cross-prefix=3Daarch64-linux-gnu-
-> --rust-target-triple=3Daarch64-unknown-linux-gnu"). To configure successf=
-ully, I
-> need to add "native: true" to every "dependency()" that refers to those
-> dependencies. Also their "override_dependency" needs a "native: true" as =
-well.
-> Here are my detailed changes:
+On 06/08/2024 19.31, Cleber Rosa wrote:
+> Commit 9b45cc993 added many cases of skipUnless for the sake of
+> organizing flaky tests.  But, Python decorators *must* follow what
 
-Great, thanks for the testing.  I applied your changes and also
-removed "-native" according to your suggestion.
+s/follow/directly precede/ ?
 
+Apart from that:
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 
-Paolo
+> they decorate, so the newlines added should *not* exist there.
+> 
+> Signed-off-by: Cleber Rosa <crosa@redhat.com>
+> ---
+>   tests/avocado/boot_linux_console.py | 1 -
+>   tests/avocado/intel_iommu.py        | 1 -
+>   tests/avocado/linux_initrd.py       | 1 -
+>   tests/avocado/machine_aspeed.py     | 2 --
+>   tests/avocado/machine_mips_malta.py | 2 --
+>   tests/avocado/machine_rx_gdbsim.py  | 2 --
+>   tests/avocado/reverse_debugging.py  | 4 ----
+>   tests/avocado/smmu.py               | 1 -
+>   8 files changed, 14 deletions(-)

@@ -1,254 +1,210 @@
-Received: by 2002:a17:504:6454:b0:1be9:327d:8ee3 with SMTP id g20csp651117njh;
-        Sun, 11 Aug 2024 21:36:16 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVNgXgSaXd0nBCba3Pc68TIAvBy39uUHzhcHxll+eHBuRvdOhXCVkK//dOR+T3qhLqbE7MxaWtN7SSA0K3IBhnr8Em7+CE/
-X-Google-Smtp-Source: AGHT+IGEaWzqsyHjvF1XCTXibI4/TUj0mxLFzPwBQSuKMMSnPI1BE/Qk3qfRgzfezpfcoFyfBnxt
-X-Received: by 2002:a05:6214:3389:b0:6bb:b1c5:fabc with SMTP id 6a1803df08f44-6bd79c0b0f2mr143980116d6.17.1723437376152;
-        Sun, 11 Aug 2024 21:36:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1723437376; cv=none;
+Received: by 2002:a17:504:6454:b0:1be9:327d:8ee3 with SMTP id g20csp714733njh;
+        Mon, 12 Aug 2024 03:04:31 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCU1u/aNrHRdaM9g2gUD6WOfnBpn5IBy2oFRARwQj17GMMJCqEpu7Usi6d7aUr9s3UVLvmuK/+sz4L43jKuFVnilXPKD46pz
+X-Google-Smtp-Source: AGHT+IHrkfrZk0fBWWSiW7SbVuOpfUK2L5t3qMofVKNtF6njW2HSbRbuGx/HS6UuIYRs4MlkPKaz
+X-Received: by 2002:a05:6e02:12ec:b0:39a:ea86:12ec with SMTP id e9e14a558f8ab-39b81347b17mr97247635ab.13.1723457071460;
+        Mon, 12 Aug 2024 03:04:31 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1723457071; cv=pass;
         d=google.com; s=arc-20160816;
-        b=d1FXWRqkXjPQ71eg0VZPiTxFSdtO70Jx3hb0jzgyod2nEbWCVxwjRtawlSn5An1mZI
-         OnugqofXJGTgZ6JhqpXdzemyFg8PWK5HamxiOJcgwWwgYCbtdJNfofx4jRMJQIpPZcKi
-         QCZb9rG+mZJ2ty/kLRaQIBisZ4yAMQULKobjChWo7REJ0jf8JF0ffesO7xzDxtwdzcgM
-         w5hpMbfeaRqVO2EpNZdo6/JVzEcgZJT2XGx7vuAMg0pbEHX2Jsinnwg6KpWAfaZrmLlw
-         tXtb8e1Xz8i8PTjZ6Y7dMJQUF97EECBOg32PN3g4jwpKpkraEzTnjjZq7JydZBFXODNu
-         9khw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:from
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
+        b=dQv3ZTsEW+RUQy55uARl+2Ls6Pi09iI2SWsaxCz1eZ7+IGAGFXcTYOw4JWxLqjQX+g
+         SQ0xPnAPtebCR4aLHh0nce8nb866mnf81BhWljTHECfQf8HlDoS8l+FadvSPOxxs9mhP
+         FeeCzkdgqChr6aWvoSHXU/9LMOdiuC/0l3VBQ4HIbS7DjaB9c9Jyy/eJ//4S7K+VLqcb
+         By0Zy7/xqlQbTeyzlwq8fJND2zo9+uyRxqgO+ZFx9/zwFEsMBnzJYvo/kcRA6loOfrnH
+         C/8TZuXuxtQhCCkJVHu913KLgPGNz1dXiDLEaZpOpSM3eo8MxmaTagzTfHJr8ob/TiGs
+         Mo2g==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+         :from:references:cc:to:subject:user-agent:mime-version
+         :list-unsubscribe:list-subscribe:list-id:precedence:date:message-id
          :dkim-signature;
-        bh=Q5izUBUrMImrPzCzal12oBWLe66u8QPEjABbCsms9R4=;
-        fh=oVfxI+/mVS7tYWhylelrz3KF1TTk83DoUdDcoXaihi4=;
-        b=KpJcNPvbRBGs6vPtRXM2V3LYMcgTxx/v/tV/yLB6BwIOhFJklXfDyIu15MQF8Oc4yF
-         E/aapqXI5J8bAVM7Xn5QYpCftgcqLnjcWy2dg7Y7SBGR/AuFRZME1kh4RIWhWv2Va1cl
-         LaguaJZw30n5+oenR/Z0URU4v6j8apvni/dnSDxydQ4bPIXhMkCKIBRVn695kxz1+Kmm
-         NqTT5p2+RKsYFnH+NMzcG6D4sJV/B15hiE3uLOa+YkQCLHsFEOacyec4eJMnQQ6hufwY
-         eALgr9P6m5zRpZSZBrIqHLNGAwCvfL0PE9+wePNuvcNn2f/Z471W/HAhF2R5u/jkdrc8
-         Y9Rg==;
+        bh=WH+34UDAHX79Po2Yq7ExNVjTPxlkArwIEowUs+SryDk=;
+        fh=luHOZ9BVXa4+SHQQdgJYn22N8del2kUF30VGR7aE0Tk=;
+        b=umFkGD9W3JxI9SxvrbI8zbaLS36ZkCpi6ibyxcCHqgNrrY6bkG6RZ2le4s1SbMZurP
+         poKjvSJFMaJz48CuqZv10UuthWvt00iSTzIiSUd+8xMU1CKgC5qkAO8srTDnyrRGqGJT
+         1xTButvIr/Zulmes6M56CHKv8GVq4UWQUE37RIHy+JD/fw5+xrEewOwRAYEoq5GJ1lJR
+         E7PpGlZQQtNdREawpagwE1cxnDp7zqdS+tN8eWgqvO8gkgHP7Lukf/Lr9mFgnf07KSEJ
+         7pOQ4MCrSOYHR1ZYzXZ3Vf80/iaJ3kKiyaenXcknP7xs0qs0gDSxLHgNu2Xo9SO2Kh63
+         PWjA==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NmKhRFai;
-       spf=pass (google.com: domain of gshan@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=gshan@redhat.com;
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="YUWzAy/b";
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of kvm+bounces-23834-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) smtp.mailfrom="kvm+bounces-23834-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <gshan@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6bd82e36706si54674636d6.211.2024.08.11.21.36.15
+Return-Path: <kvm+bounces-23834-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sy.mirrors.kernel.org (sy.mirrors.kernel.org. [2604:1380:40f1:3f00::1])
+        by mx.google.com with ESMTPS id d2e1a72fcca58-710e5a4aaedsi4408297b3a.143.2024.08.12.03.04.30
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 11 Aug 2024 21:36:16 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gshan@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        Mon, 12 Aug 2024 03:04:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm+bounces-23834-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) client-ip=2604:1380:40f1:3f00::1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NmKhRFai;
-       spf=pass (google.com: domain of gshan@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=gshan@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="YUWzAy/b";
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of kvm+bounces-23834-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) smtp.mailfrom="kvm+bounces-23834-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by sy.mirrors.kernel.org (Postfix) with ESMTPS id 5E38BB21A2B
+	for <alex.bennee@linaro.org>; Mon, 12 Aug 2024 10:04:29 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 4315B16DC05;
+	Mon, 12 Aug 2024 10:04:23 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="YUWzAy/b"
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8298B16EB4B
+	for <kvm@vger.kernel.org>; Mon, 12 Aug 2024 10:04:21 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.129.124
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1723457063; cv=none; b=D3iZlGZ63qcYhgaTpTbZHi9P1YKr5DSZnljhn51OyAJaioCIViPbLqTt8fok3WrLRW4IVYOCYcXqIPR1VAwa/YI1szIQ1dpSDFQq5pOiBlzCM80lei0R1gAFGnBW5jI7/oN7g4Gyn+C5Xc0EMyncAQlIVK0ES3OJ7SaxcsVxqCs=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1723457063; c=relaxed/simple;
+	bh=FMhv9gR//hL+oW5Y92Px+f0x2+KYZGuRYJkizZjcMzQ=;
+	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:
+	 In-Reply-To:Content-Type; b=Q4tXajqKqD6CR4iTY6DeZsvdqqrRfwzohyfK3R2aCRmZ8A9sJFw8wskJvgX1G3/ZY0YwidSDe/4Rokln5FbWZFX+G4mPW6rmxeW0kOx4JEjhrbQJPdYqzcnjBJdejOkf8X+b4TdZl/dWYYy7bWio0HW2zP2wWzmo1WaqoP0S2fs=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=YUWzAy/b; arc=none smtp.client-ip=170.10.129.124
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1723437375;
+	s=mimecast20190719; t=1723457060;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=Q5izUBUrMImrPzCzal12oBWLe66u8QPEjABbCsms9R4=;
-	b=NmKhRFai59UzmE28fLctvOOJYUVMN2qTTeGx2R0rEar/pa4zqhBNFOPY+d6CHNl8qFBA6T
-	HatpIyHfub9JxmwZzWJJcXteDpwfUbGNyi7oqLqrtGnRwL90uTo7QUXFdz8+DwetIOF9Pi
-	h5WNPb5EqQaTEjFJr2GXTiU4GUuJiDg=
-Received: from mail-pf1-f200.google.com (mail-pf1-f200.google.com
- [209.85.210.200]) by relay.mimecast.com with ESMTP with STARTTLS
+	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+	bh=WH+34UDAHX79Po2Yq7ExNVjTPxlkArwIEowUs+SryDk=;
+	b=YUWzAy/bsLiJCql5oggu3PSSp6BgO2kilFrka9T7o+0z7Ph2fsKKf56Rh5SykcGHhTZCu9
+	jBY63U8PeLz5GFCfsBHdg6W95kXssc5to9I2CibflglYtN3LiV6cqHEdb0C18c/UOw48WM
+	WI0vWFzk401OZnVp4BLJBH6Iy7y+Gn8=
+Received: from mail-lf1-f70.google.com (mail-lf1-f70.google.com
+ [209.85.167.70]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-211-e6xWbeMlMo6paa5LLDwO_A-1; Mon, 12 Aug 2024 00:36:14 -0400
-X-MC-Unique: e6xWbeMlMo6paa5LLDwO_A-1
-Received: by mail-pf1-f200.google.com with SMTP id d2e1a72fcca58-70d2ab42082so4304974b3a.0
-        for <alex.bennee@linaro.org>; Sun, 11 Aug 2024 21:36:14 -0700 (PDT)
+ us-mta-501-5WZRAee_OLC3iOhV_bBt8A-1; Mon, 12 Aug 2024 06:04:19 -0400
+X-MC-Unique: 5WZRAee_OLC3iOhV_bBt8A-1
+Received: by mail-lf1-f70.google.com with SMTP id 2adb3069b0e04-52e9557e312so3286636e87.0
+        for <kvm@vger.kernel.org>; Mon, 12 Aug 2024 03:04:19 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1723437373; x=1724042173;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=Q5izUBUrMImrPzCzal12oBWLe66u8QPEjABbCsms9R4=;
-        b=A1zt2LZ+IhBoav5gUeiC4gDT/eyAnqHOg3Qu9xvyOogVSO6LGoHIug9KGMpwyvfb3b
-         PfCQ62eUX+CWfn3qii7VQEgMpbXAHXRGUzr5PVtkdAUYsP1qENXbaoHWr3lkCq4tS3D+
-         RyrYXxOm1bH+S9QC+W1ZqSRK0vK63IBt5OMX6BhuFNzVm2shTDAqhzPYBFjfNTcSjgAu
-         wjqKpd6qSj6oOKKYNiYElY08CCvB5zUomJbEFpT52a6qxZPf0Za60VmfQ+FGERpvSSE/
-         /oQ8GC37o/C2GvQwMdYMj3o3lLDYoeZCEnDEISFDUu0L6oMIOtY+5c9QXpS1Cni+PEJ9
-         kZTA==
-X-Forwarded-Encrypted: i=1; AJvYcCU1dYI2GHh/6U4+/ViP4GYmH+bfgkY2oBzFcXarDNEsus2HZDncT6jQRxBn2UHOuQgvwroFXHFmXtJkCs6aHrDKN29K4KlA
-X-Gm-Message-State: AOJu0Yz0l8zQufRlVaZm16Cc7OI2mNvl93MYxDZkSc+lr1ymWJlNjHy4
-	PT054ZXIDme5DHUaB+6Zorh4Vz5/9gUyqJ1ASQvyjtO3zu2az0gD08up0q64SXbuEhir+H8yYyL
-	mLhLNUQZ4v4sCrTTGjOwly12C1N3t+oC1x/qaHa/SU16LVQKlCUgDJw==
-X-Received: by 2002:a05:6a20:a891:b0:1c8:c411:d556 with SMTP id adf61e73a8af0-1c8c411d6edmr3734138637.1.1723437373179;
-        Sun, 11 Aug 2024 21:36:13 -0700 (PDT)
-X-Received: by 2002:a05:6a20:a891:b0:1c8:c411:d556 with SMTP id adf61e73a8af0-1c8c411d6edmr3734093637.1.1723437372618;
-        Sun, 11 Aug 2024 21:36:12 -0700 (PDT)
-Return-Path: <gshan@redhat.com>
-Received: from [192.168.68.54] ([43.252.112.201])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-710e58728eesm3102813b3a.41.2024.08.11.21.35.59
+        d=1e100.net; s=20230601; t=1723457058; x=1724061858;
+        h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+         :from:references:cc:to:subject:user-agent:mime-version:date
+         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=WH+34UDAHX79Po2Yq7ExNVjTPxlkArwIEowUs+SryDk=;
+        b=uK8ateWEalq+Kf0756/PMAAu4lkkvKUOTFb570L2cFMQrdXyWpgI4LIUYzMIcEPmPw
+         vk0EVjBAmDnoHsoLNcKA1M9/O9PY2wtHXnS9IVC1ZuB0MV0b2bpGIAKRyWcaoXOqS901
+         dhVFqfn2JJN45D6fJCBdOwoH3uZKSzTzH1uyloFqb4zX2p341VhJ049quVObho6tDPDL
+         No1E7KwJdNaCA0YdYlJNsIeFfF9Xfhpp8HkOn5KUsAwHOsy/qFaVRKAlCtiQCinuhGSy
+         wHfarHB+3C5Q6mDlSEnher2uSlfEK4b4mr3mmDmyiYmiDwt4BJHhBafcN8JQKYEdfomz
+         fsaA==
+X-Forwarded-Encrypted: i=1; AJvYcCVAZeFssZxy4zscYmPdOg1nAk7LAEmyjqrwjrXFn9ZWEZbP7p/2rJ/XJiIn484Bixc3jZKmexnGwAFCZa2+rIefMFu3
+X-Gm-Message-State: AOJu0YzIEvYpEKnqiV7E336N2fYEUVhARj/IB3asASCB/oX2MjAmg985
+	cr7qq0p0g5dBWx9EkiYz+y3EE59GraxLtOxFA9mwCGhyt63mYfBgn7eJck4WsV3dZgvrPK6DVuZ
+	IA7V9cDvA7IDxb+VsgrUkUhNX9GVzxOkMSBTuezUUdhQ5EhimBw==
+X-Received: by 2002:a05:6512:31c3:b0:52e:9ebe:7325 with SMTP id 2adb3069b0e04-530ee9958f5mr6282344e87.31.1723457057821;
+        Mon, 12 Aug 2024 03:04:17 -0700 (PDT)
+X-Received: by 2002:a05:6512:31c3:b0:52e:9ebe:7325 with SMTP id 2adb3069b0e04-530ee9958f5mr6282294e87.31.1723457057213;
+        Mon, 12 Aug 2024 03:04:17 -0700 (PDT)
+Received: from [192.168.0.6] (ip-109-43-178-125.web.vodafone.de. [109.43.178.125])
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5bd187f5671sm2009223a12.3.2024.08.12.03.04.14
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 11 Aug 2024 21:36:12 -0700 (PDT)
-Message-ID: <11e627ef-d75e-4114-9b93-14d80ec0526b@redhat.com>
-Date: Mon, 12 Aug 2024 14:35:56 +1000
+        Mon, 12 Aug 2024 03:04:16 -0700 (PDT)
+Message-ID: <ae5f3a65-4cee-466b-aac4-ddd83c8fd1e5@redhat.com>
+Date: Mon, 12 Aug 2024 12:04:13 +0200
+Precedence: bulk
+X-Mailing-List: kvm@vger.kernel.org
+List-Id: <kvm.vger.kernel.org>
+List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH RFC V3 01/29] arm/virt,target/arm: Add new ARMCPU
- {socket,cluster,core,thread}-id property
-To: Salil Mehta <salil.mehta@huawei.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, mst@redhat.com
-Cc: maz@kernel.org, jean-philippe@linaro.org, jonathan.cameron@huawei.com,
- lpieralisi@kernel.org, peter.maydell@linaro.org,
- richard.henderson@linaro.org, imammedo@redhat.com, andrew.jones@linux.dev,
- david@redhat.com, philmd@linaro.org, eric.auger@redhat.com, will@kernel.org,
- ardb@kernel.org, oliver.upton@linux.dev, pbonzini@redhat.com,
- rafael@kernel.org, borntraeger@linux.ibm.com, alex.bennee@linaro.org,
- npiggin@gmail.com, harshpb@linux.ibm.com, linux@armlinux.org.uk,
- darren@os.amperecomputing.com, ilkka@os.amperecomputing.com,
- vishnu@os.amperecomputing.com, karl.heubaum@oracle.com,
- miguel.luis@oracle.com, salil.mehta@opnsrc.net, zhukeqian1@huawei.com,
- wangxiongfeng2@huawei.com, wangyanan55@huawei.com, jiakernel2@gmail.com,
- maobibo@loongson.cn, lixianglai@loongson.cn, shahuang@redhat.com,
- zhao1.liu@intel.com, linuxarm@huawei.com
-References: <20240613233639.202896-1-salil.mehta@huawei.com>
- <20240613233639.202896-2-salil.mehta@huawei.com>
-From: Gavin Shan <gshan@redhat.com>
-In-Reply-To: <20240613233639.202896-2-salil.mehta@huawei.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+Subject: Re: [PATCH 02/18] tests/qapi-schema: Drop temporary 'prefix'
+To: Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org
+Cc: alex.williamson@redhat.com, andrew@codeconstruct.com.au,
+ andrew@daynix.com, arei.gonglei@huawei.com, berrange@redhat.com,
+ berto@igalia.com, borntraeger@linux.ibm.com, clg@kaod.org, david@redhat.com,
+ den@openvz.org, eblake@redhat.com, eduardo@habkost.net,
+ farman@linux.ibm.com, farosas@suse.de, hreitz@redhat.com,
+ idryomov@gmail.com, iii@linux.ibm.com, jamin_lin@aspeedtech.com,
+ jasowang@redhat.com, joel@jms.id.au, jsnow@redhat.com, kwolf@redhat.com,
+ leetroy@gmail.com, marcandre.lureau@redhat.com, marcel.apfelbaum@gmail.com,
+ michael.roth@amd.com, mst@redhat.com, mtosatti@redhat.com,
+ nsg@linux.ibm.com, pasic@linux.ibm.com, pbonzini@redhat.com,
+ peter.maydell@linaro.org, peterx@redhat.com, philmd@linaro.org,
+ pizhenwei@bytedance.com, pl@dlhnet.de, richard.henderson@linaro.org,
+ stefanha@redhat.com, steven_lee@aspeedtech.com, vsementsov@yandex-team.ru,
+ wangyanan55@huawei.com, yuri.benditovich@daynix.com, zhao1.liu@intel.com,
+ qemu-block@nongnu.org, qemu-arm@nongnu.org, qemu-s390x@nongnu.org,
+ kvm@vger.kernel.org
+References: <20240730081032.1246748-1-armbru@redhat.com>
+ <20240730081032.1246748-3-armbru@redhat.com>
+From: Thomas Huth <thuth@redhat.com>
 Content-Language: en-US
+Autocrypt: addr=thuth@redhat.com; keydata=
+ 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
+In-Reply-To: <20240730081032.1246748-3-armbru@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-TUID: FYQhtMH7JTC+
+X-TUID: LjqxgyhkV0qW
 
-On 6/14/24 9:36 AM, Salil Mehta wrote:
-> This shall be used to store user specified topology{socket,cluster,core,thread}
-> and shall be converted to a unique 'vcpu-id' which is used as slot-index during
-> hot(un)plug of vCPU.
+On 30/07/2024 10.10, Markus Armbruster wrote:
+> Recent commit "qapi: Smarter camel_to_upper() to reduce need for
+> 'prefix'" added a temporary 'prefix' to delay changing the generated
+> code.
 > 
-> Co-developed-by: Keqian Zhu <zhukeqian1@huawei.com>
-> Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
-> Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
+> Revert it.  This changes TestUnionEnumA's generated enumeration
+> constant prefix from TEST_UNION_ENUMA to TEST_UNION_ENUM_A.
+> 
+> Signed-off-by: Markus Armbruster <armbru@redhat.com>
 > ---
->   hw/arm/virt.c         | 10 ++++++++++
->   include/hw/arm/virt.h | 28 ++++++++++++++++++++++++++++
->   target/arm/cpu.c      |  4 ++++
->   target/arm/cpu.h      |  4 ++++
->   4 files changed, 46 insertions(+)
-> 
+>   tests/unit/test-qobject-input-visitor.c  | 4 ++--
+>   tests/unit/test-qobject-output-visitor.c | 4 ++--
+>   tests/qapi-schema/qapi-schema-test.json  | 1 -
+>   tests/qapi-schema/qapi-schema-test.out   | 1 -
+>   4 files changed, 4 insertions(+), 6 deletions(-)
 
-Those 4 properties are introduced to determine the vCPU's slot, which is the index
-to MachineState::possible_cpus::cpus[]. From there, the CPU object or instance is
-referenced and then the CPU's state can be further determined. It sounds reasonable
-to use the CPU's topology to determine the index. However, I'm wandering if this can
-be simplified to use 'cpu-index' or 'index' for a couple of facts: (1) 'cpu-index'
-or 'index' is simplified. Users have to provide 4 parameters in order to determine
-its index in the extreme case, for example "device_add host-arm-cpu, id=cpu7,socket-id=1,
-cluster-id=1,core-id=1,thread-id=1". With 'cpu-index' or 'index', it can be simplified
-to 'index=7'. (2) The cold-booted and hotpluggable CPUs are determined by their index
-instead of their topology. For example, CPU0/1/2/3 are cold-booted CPUs while CPU4/5/6/7
-are hotpluggable CPUs with command lines '-smp maxcpus=8,cpus=4'. So 'index' makes
-more sense to identify a vCPU's slot.
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 3c93c0c0a6..11fc7fc318 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -2215,6 +2215,14 @@ static void machvirt_init(MachineState *machine)
->                             &error_fatal);
->   
->           aarch64 &= object_property_get_bool(cpuobj, "aarch64", NULL);
-> +        object_property_set_int(cpuobj, "socket-id",
-> +                                virt_get_socket_id(machine, n), NULL);
-> +        object_property_set_int(cpuobj, "cluster-id",
-> +                                virt_get_cluster_id(machine, n), NULL);
-> +        object_property_set_int(cpuobj, "core-id",
-> +                                virt_get_core_id(machine, n), NULL);
-> +        object_property_set_int(cpuobj, "thread-id",
-> +                                virt_get_thread_id(machine, n), NULL);
->   
->           if (!vms->secure) {
->               object_property_set_bool(cpuobj, "has_el3", false, NULL);
-> @@ -2708,6 +2716,7 @@ static const CPUArchIdList *virt_possible_cpu_arch_ids(MachineState *ms)
->   {
->       int n;
->       unsigned int max_cpus = ms->smp.max_cpus;
-> +    unsigned int smp_threads = ms->smp.threads;
->       VirtMachineState *vms = VIRT_MACHINE(ms);
->       MachineClass *mc = MACHINE_GET_CLASS(vms);
->   
-> @@ -2721,6 +2730,7 @@ static const CPUArchIdList *virt_possible_cpu_arch_ids(MachineState *ms)
->       ms->possible_cpus->len = max_cpus;
->       for (n = 0; n < ms->possible_cpus->len; n++) {
->           ms->possible_cpus->cpus[n].type = ms->cpu_type;
-> +        ms->possible_cpus->cpus[n].vcpus_count = smp_threads;
->           ms->possible_cpus->cpus[n].arch_id =
->               virt_cpu_mp_affinity(vms, n);
->   
 
-Why @vcpus_count is initialized to @smp_threads? it needs to be documented in
-the commit log.
-
-> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-> index bb486d36b1..6f9a7bb60b 100644
-> --- a/include/hw/arm/virt.h
-> +++ b/include/hw/arm/virt.h
-> @@ -209,4 +209,32 @@ static inline int virt_gicv3_redist_region_count(VirtMachineState *vms)
->               vms->highmem_redists) ? 2 : 1;
->   }
->   
-> +static inline int virt_get_socket_id(const MachineState *ms, int cpu_index)
-> +{
-> +    assert(cpu_index >= 0 && cpu_index < ms->possible_cpus->len);
-> +
-> +    return ms->possible_cpus->cpus[cpu_index].props.socket_id;
-> +}
-> +
-> +static inline int virt_get_cluster_id(const MachineState *ms, int cpu_index)
-> +{
-> +    assert(cpu_index >= 0 && cpu_index < ms->possible_cpus->len);
-> +
-> +    return ms->possible_cpus->cpus[cpu_index].props.cluster_id;
-> +}
-> +
-> +static inline int virt_get_core_id(const MachineState *ms, int cpu_index)
-> +{
-> +    assert(cpu_index >= 0 && cpu_index < ms->possible_cpus->len);
-> +
-> +    return ms->possible_cpus->cpus[cpu_index].props.core_id;
-> +}
-> +
-> +static inline int virt_get_thread_id(const MachineState *ms, int cpu_index)
-> +{
-> +    assert(cpu_index >= 0 && cpu_index < ms->possible_cpus->len);
-> +
-> +    return ms->possible_cpus->cpus[cpu_index].props.thread_id;
-> +}
-> +
->   #endif /* QEMU_ARM_VIRT_H */
-> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-> index 77f8c9c748..abc4ed0842 100644
-> --- a/target/arm/cpu.c
-> +++ b/target/arm/cpu.c
-> @@ -2582,6 +2582,10 @@ static Property arm_cpu_properties[] = {
->       DEFINE_PROP_UINT64("mp-affinity", ARMCPU,
->                           mp_affinity, ARM64_AFFINITY_INVALID),
->       DEFINE_PROP_INT32("node-id", ARMCPU, node_id, CPU_UNSET_NUMA_NODE_ID),
-> +    DEFINE_PROP_INT32("socket-id", ARMCPU, socket_id, 0),
-> +    DEFINE_PROP_INT32("cluster-id", ARMCPU, cluster_id, 0),
-> +    DEFINE_PROP_INT32("core-id", ARMCPU, core_id, 0),
-> +    DEFINE_PROP_INT32("thread-id", ARMCPU, thread_id, 0),
->       DEFINE_PROP_INT32("core-count", ARMCPU, core_count, -1),
->       /* True to default to the backward-compat old CNTFRQ rather than 1Ghz */
->       DEFINE_PROP_BOOL("backcompat-cntfrq", ARMCPU, backcompat_cntfrq, false),
-> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-> index c17264c239..208c719db3 100644
-> --- a/target/arm/cpu.h
-> +++ b/target/arm/cpu.h
-> @@ -1076,6 +1076,10 @@ struct ArchCPU {
->       QLIST_HEAD(, ARMELChangeHook) el_change_hooks;
->   
->       int32_t node_id; /* NUMA node this CPU belongs to */
-> +    int32_t socket_id;
-> +    int32_t cluster_id;
-> +    int32_t core_id;
-> +    int32_t thread_id;
->   
->       /* Used to synchronize KVM and QEMU in-kernel device levels */
->       uint8_t device_irq_level;
-
-Thanks,
-Gavin

@@ -1,232 +1,218 @@
-Received: by 2002:a17:504:6454:b0:1be9:327d:8ee3 with SMTP id g20csp656581njh;
-        Sun, 11 Aug 2024 22:09:55 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUN3p1baK70u/KfeJnxqVkARa6X3BEHwvXzhCGLjeizfCWUgQ8Aoumfj31o82v7xVI9WNx6sQJ/OQzWkF3srUrxtAYU84jI
-X-Google-Smtp-Source: AGHT+IHPY0YvbM42ihc/QUAzSqVfeATz8ZHtjhkriF53BJwZjeMmz9DAU17Lag5eSmdKGa8kEfby
-X-Received: by 2002:a05:6214:5246:b0:6b5:e3b7:46f5 with SMTP id 6a1803df08f44-6bd78e08b06mr102449886d6.20.1723439395663;
-        Sun, 11 Aug 2024 22:09:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1723439395; cv=none;
+Received: by 2002:a17:504:6454:b0:1be9:327d:8ee3 with SMTP id g20csp700031njh;
+        Mon, 12 Aug 2024 01:57:13 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWxaSEYMmTgLhKFmi04VFoWO1jQ4TIpplx3OCr+SM6uLA00tJS9leGg6GtTUyodBRgmw9EHjD0IVub/4iInrHPSDan93OGr
+X-Google-Smtp-Source: AGHT+IE0y3hysOHyoWV/QN2PcqQtMBclu+EoJiSEj0zrSTo85Su2VT2NTLFsnYJPLaFPCT6808Ny
+X-Received: by 2002:a05:622a:580c:b0:447:ef7c:edb7 with SMTP id d75a77b69052e-453125c4bbcmr97126961cf.26.1723453033247;
+        Mon, 12 Aug 2024 01:57:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1723453033; cv=none;
         d=google.com; s=arc-20160816;
-        b=RqipEcacrEJeCHy9w5VDaQMWexBXT7E1LW8Qqb2jKa3f7E0DNdVK8vtUku788ubpA4
-         Ldu3agf4fDsaYQaVCkud59vfv2+kwLut4mn+LImd6Q/ZUiq9QLjoATlhWfOK6nYe39Nm
-         OChfU1H89kFmD9PZfDHYsHDg/8FgDP+EIgtxhZtwKbTHIBSgmy5sDvUbA9aOKQn4gmTz
-         EjjXduGUQI3igtXTisjllcz2H3feQdcFfVEI3a3rqezO2oE5g+NTPoKcAZJsF0tzuTHE
-         UCvxRwFeBzehvMjSNFfAuiSh5IX/ddd/0PXBEXsor2hSkuH306cTUlQGD6tr1nkBe3FO
-         1acg==
+        b=sxign2BnOHx17/sw3JIQTJHlQJ01Ix8bWFwnEyXNr6iOMBg+zHuSMkyLQe1u6g2W3P
+         KyshYW8NX/dauzyicOCFz02Ba/tHekj9uHXakY7I6/LU7Pe2YL7Goz2p6TE1eNy/FsXu
+         BZA7dte7raQylNOCDkc2WEGQgYJEcaZ0oIMEq+uc4VEckWz+lUmGy7l0Y7IRdIZOLDkh
+         p4ZNBVGd58VhLFg2/UTZX5j5K1bXcRRVLsf4QTIC0lu7JWUyd8NmuAc153PiUhQX85AF
+         KpClaNYTkEZcqCp71EgNraWUyAOGeI127PuLzYummJyiElRMODvU3hwoZu0vbwRt2Nae
+         jDDw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:from
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=H1ivEWNhs1z53BitTen3mlLbhlu/8FPyYX1oRe5evH4=;
-        fh=JSqbFqe+DW6/Hy50OXdNYG53/rj5XRrY3mxmRRWn1GY=;
-        b=oEdkEeLP9ptIDjxQ38YQSYg0esHUzivPZ6WJ8AW1X2AElUy9wcf4cBCjm6RWAnQVEC
-         kvPkPm5CFdNqOtgp32EjDSPT9M6yh6LhfRI2y8kVgWm+CNo5UuHzuQJ/CFbxhqi4nh2i
-         cq/NjpCndGnLuX2eZFiNRIvNTQxuH9Qwvkko2ZJD9WRvIDPl/HDxPRoT2fbDxepwX98z
-         9u0Ug8jboWn0vHolk0a+wkEu2alwD307t6RxvNaISKa83ZWddJyd4L9vErYBfAffSYeC
-         sdfdujvJ7K4xL80a74/0MLqJNupGQBeZDj8pBvLSaA0W9fQ3zl/IPF1Dt+pkPBeYJAc4
-         qT0A==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:references:in-reply-to:subject:cc:to:from
+         :date:dkim-signature;
+        bh=Pwj1l/v8vmo0WVQsRXxiPvKgQwT9EeGJS92n+uiDDlU=;
+        fh=kAH3wRI93frFYlaMap04sSSSMNtLz+PLB/iQgzRx44Y=;
+        b=rGJJyKo4lVH/SkYPNNbsZeTlm9x7GB2SkLNChbZ+rDzbr69MpJF51sc9S0nQ/OFEle
+         7E3ieDysw6vWy3VKTW7TpYOdhm5a0ZZ3aN/D/NzB7AHq5/RIWmlMVvNoJJAoi2Cs+X/0
+         oq8zDywFBgSGSbmhu1cStl14DIorvN8mFd2YwRbZIztBl4HhvKCbsxM1sudGnhdModoh
+         IrSz1GNuzy+bB8fJP24TQButJfUVzgD0m9fyxJEKs8QcrZUKh9WI9ZzwrzdWj0r3h8u1
+         Hj4HqkLFiRc9aiIOAn0JfWYbon+T3lCC/by0wVjqwR6/g5vJJcLmsO1Wvzccxr0elIF3
+         adhw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=gQ4nAF5B;
-       spf=pass (google.com: domain of gshan@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=gshan@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <gshan@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id d75a77b69052e-4531c265f4csi51875321cf.359.2024.08.11.22.09.55
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=GUbCQ87x;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d75a77b69052e-4531c1ae5fbsi55537651cf.3.2024.08.12.01.57.13
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 11 Aug 2024 22:09:55 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gshan@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 12 Aug 2024 01:57:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=gQ4nAF5B;
-       spf=pass (google.com: domain of gshan@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=gshan@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1723439395;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=H1ivEWNhs1z53BitTen3mlLbhlu/8FPyYX1oRe5evH4=;
-	b=gQ4nAF5BJ/FpoAq+cRZlrVMRvvGMz3jLEGHOfaUgyXrL1j4em5gwEyE+qDs9qhy5dHsYk9
-	/RO/io1Pu82ejZ+R7o9INQWyH6QipUYpfLcbiv57uymuOCK84ZFwumj8C3/etlYuQEXTJ1
-	WdtCufQzy3LOvuuHKRQfG9Zjv/KGuqs=
-Received: from mail-pj1-f71.google.com (mail-pj1-f71.google.com
- [209.85.216.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-494-Wksrb7HYNAq1tKVznj8gJA-1; Mon, 12 Aug 2024 01:09:52 -0400
-X-MC-Unique: Wksrb7HYNAq1tKVznj8gJA-1
-Received: by mail-pj1-f71.google.com with SMTP id 98e67ed59e1d1-2cfe41af75eso5448412a91.2
-        for <alex.bennee@linaro.org>; Sun, 11 Aug 2024 22:09:52 -0700 (PDT)
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=GUbCQ87x;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1sdQrF-00012w-W6; Mon, 12 Aug 2024 04:56:54 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1sdQrE-0000zW-Dx; Mon, 12 Aug 2024 04:56:52 -0400
+Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1sdQrC-0007fb-D1; Mon, 12 Aug 2024 04:56:52 -0400
+Received: by mail-ed1-x52c.google.com with SMTP id
+ 4fb4d7f45d1cf-5a108354819so5257345a12.0; 
+ Mon, 12 Aug 2024 01:56:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1723453008; x=1724057808; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=Pwj1l/v8vmo0WVQsRXxiPvKgQwT9EeGJS92n+uiDDlU=;
+ b=GUbCQ87xKGbL15m/o6OkV0vkXLnIIOb7vzy8lt2IES/YMC0/uP8nTHedsIbbMcjnUC
+ R473727uu4plAY03bKf1oXLb2YPS5W9XOE2CaLLgflEdOsO1xHiYIhfFLJof9/SwzgzG
+ VF52ps1tmJ0cjt4s3dLn/DAbLgMcpOSjG1UFhfAyTJe55LBJymfUmxkbmr0kpk2lZ7Jr
+ yKU84xncCSoUuwioxPvzypeSaXP5EXUwu1vEvrtq3pkat3GVDmAkQEHXIcmSVl8zutRt
+ 01tyKQCeoYWLxM+YtYnrSuaiQljYDSyQAKTPPxLPFrcHkDt2iwUlaQ8/9dny4W1EHvxf
+ AQWg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1723439391; x=1724044191;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=H1ivEWNhs1z53BitTen3mlLbhlu/8FPyYX1oRe5evH4=;
-        b=bHTmT7tzcyRKEjGIGdbuOO6hlJjzfUrfYPNvW2hyzlNy0imCY908qiaYAMlIJptg5e
-         LNCmh54N8zFiEg9E0ADpEESEfLUYOzYXTdGB3UBiVegzrVC9jVCvCnusQn1R641cwxFD
-         fxZukgfcQGww2JTjB3xouJc/TNFn6gktEqiyRy9PCmfkqHqxwiT35H1Gw6WSggGbxFfP
-         uqNW0j/zAbXIK5hNULgy1t740f151/ykdtYAnu64CMy9AXpSKvH145MgCdAlAJj/Lu4w
-         KWpWNAnQBLUtQg9/C5xzAJr9qTQsfhRpiid7Brg0ikr5+J8TAYBiufWROAzR5bU3tEUw
-         qLWA==
-X-Forwarded-Encrypted: i=1; AJvYcCUA+e8gDoZ90LkkuTSSDlclUfNFVp8qy+abCXtFjq0uSjD4hIMyLmqUHJr1n/P1fSVBm7NRAj7vCe0gM2oHzw47/cZhyGTK
-X-Gm-Message-State: AOJu0YyAOYADp7l1uqxOuoU9KINWu3Jy5Kl8CbLusa1CIkY4FZWc6Ex4
-	YLL6rI0lzHi3b7mUgpQFurRKTMjEXEiF1pS21lM9rCfHgaLpy0AZ6UtsU3p+e3zV8PW9GjKzssC
-	mf7IMRinsIH5/HtZzWlE2h6esOHevmRmItbtwwzOm2VVmy6YNsVl8hQ==
-X-Received: by 2002:a17:90b:e83:b0:2cb:5aaf:c12e with SMTP id 98e67ed59e1d1-2d1e80671d1mr9642347a91.37.1723439391648;
-        Sun, 11 Aug 2024 22:09:51 -0700 (PDT)
-X-Received: by 2002:a17:90b:e83:b0:2cb:5aaf:c12e with SMTP id 98e67ed59e1d1-2d1e80671d1mr9642316a91.37.1723439391266;
-        Sun, 11 Aug 2024 22:09:51 -0700 (PDT)
-Return-Path: <gshan@redhat.com>
-Received: from [192.168.68.54] ([43.252.112.201])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-2d1fd0217dcsm3942433a91.54.2024.08.11.22.09.38
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 11 Aug 2024 22:09:50 -0700 (PDT)
-Message-ID: <a7fa47aa-c960-4897-bcb4-41ec74b72804@redhat.com>
-Date: Mon, 12 Aug 2024 15:09:36 +1000
+ d=1e100.net; s=20230601; t=1723453008; x=1724057808;
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=Pwj1l/v8vmo0WVQsRXxiPvKgQwT9EeGJS92n+uiDDlU=;
+ b=f7wTrAloe/dEsH1hlZaiFRXTWbA49oiISRh8PtRqy+YBehMPxj511+uUud/covOAAi
+ fdw6P2bf5tJzkLZ543bg3T2EKifVPV0JQqpKteAmOIytpnDi0IsgNaNuFOAmkvdYJyHh
+ TlkKIK4Dx0sqQdoez6ON12uD9fK1b5JFBhK9F2YeUc4RKzf3sPFU4TJmH6eNDJ05shZt
+ EGq1Wo479MwKQOJEgA+EZ/+ryQ66Tu+Qzf1JNAXdTOS7xbydmNC80YY6NGYMn0q16RX3
+ 8P1VXdB3EtIRFWahfExO6vO7r0RnKmb/YCLhnmQ2gYhEsK32jYpzSRVFraTwpbSR/rnB
+ V5Dw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCX8NbedVqjnGNqJs/QwOpuWjoq0Lxiev99GbtzlyHvNoUSYzDuQK6HCJNzSHn9SyUyam+l+T8d+3dFW8tPzSWl9LhSTKG2wCdfFhpbNN5f0hlGN+k/TAoEyGKU=
+X-Gm-Message-State: AOJu0YybQOkg27y3/21GPpg4tEyrfdD0p/1V7BLsLod8PCO+HlBdq47+
+ 0OLXYmrFsoKeECRQNG0R8sobp1KVM2T37347KnlR/k+Jkr1rX7ZY
+X-Received: by 2002:a05:6402:358a:b0:5a4:2c8:abda with SMTP id
+ 4fb4d7f45d1cf-5bd0a50a533mr6107529a12.3.1723453007410; 
+ Mon, 12 Aug 2024 01:56:47 -0700 (PDT)
+Received: from [127.0.0.1] (dynamic-077-183-028-074.77.183.pool.telefonica.de.
+ [77.183.28.74]) by smtp.gmail.com with ESMTPSA id
+ 4fb4d7f45d1cf-5bd1a602e67sm1914053a12.97.2024.08.12.01.56.46
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 12 Aug 2024 01:56:47 -0700 (PDT)
+Date: Mon, 12 Aug 2024 08:56:42 +0000
+From: Bernhard Beschow <shentey@gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+CC: qemu-stable@nongnu.org
+Subject: Re: [PATCH 0/2] target/arm: Fix EL3-is-AArch32 mmu indexes
+In-Reply-To: <20240809160430.1144805-1-peter.maydell@linaro.org>
+References: <20240809160430.1144805-1-peter.maydell@linaro.org>
+Message-ID: <607DEC48-4E7B-4985-97C4-8F80785BA83D@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH RFC V3 03/29] hw/arm/virt: Limit number of possible vCPUs
- for unsupported Accel or GIC Type
-To: Salil Mehta <salil.mehta@huawei.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, mst@redhat.com
-Cc: maz@kernel.org, jean-philippe@linaro.org, jonathan.cameron@huawei.com,
- lpieralisi@kernel.org, peter.maydell@linaro.org,
- richard.henderson@linaro.org, imammedo@redhat.com, andrew.jones@linux.dev,
- david@redhat.com, philmd@linaro.org, eric.auger@redhat.com, will@kernel.org,
- ardb@kernel.org, oliver.upton@linux.dev, pbonzini@redhat.com,
- rafael@kernel.org, borntraeger@linux.ibm.com, alex.bennee@linaro.org,
- npiggin@gmail.com, harshpb@linux.ibm.com, linux@armlinux.org.uk,
- darren@os.amperecomputing.com, ilkka@os.amperecomputing.com,
- vishnu@os.amperecomputing.com, karl.heubaum@oracle.com,
- miguel.luis@oracle.com, salil.mehta@opnsrc.net, zhukeqian1@huawei.com,
- wangxiongfeng2@huawei.com, wangyanan55@huawei.com, jiakernel2@gmail.com,
- maobibo@loongson.cn, lixianglai@loongson.cn, shahuang@redhat.com,
- zhao1.liu@intel.com, linuxarm@huawei.com
-References: <20240613233639.202896-1-salil.mehta@huawei.com>
- <20240613233639.202896-4-salil.mehta@huawei.com>
-From: Gavin Shan <gshan@redhat.com>
-In-Reply-To: <20240613233639.202896-4-salil.mehta@huawei.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-TUID: ew1s8f4k8fUg
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::52c;
+ envelope-from=shentey@gmail.com; helo=mail-ed1-x52c.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: i9beTa+IX+pI
 
-On 6/14/24 9:36 AM, Salil Mehta wrote:
-> If Virtual CPU Hotplug support does not exist on a particular Accel platform or
-> ARM GIC version, we should limit the possible vCPUs to those available during
-> boot time (i.e SMP CPUs) and explicitly disable Virtual CPU Hotplug support.
-> 
-> Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
-> ---
->   hw/arm/virt.c | 66 +++++++++++++++++++++++++++++----------------------
->   1 file changed, 38 insertions(+), 28 deletions(-)
-> 
 
-Most of the code changes are moving the check between @max_cpus and @max_supported_cpus.
-It would make the review easier if the code movement can be put into a preparatory patch
-if you agree.
 
-Thanks,
-Gavin
+Am 9=2E August 2024 16:04:28 UTC schrieb Peter Maydell <peter=2Emaydell@li=
+naro=2Eorg>:
+>Our current usage of MMU indexes when EL3 is AArch32 is confused=2E
+>Architecturally, when EL3 is AArch32, all Secure code runs under the
+>Secure PL1&0 translation regime:
+> * code at EL3, which might be Mon, or SVC, or any of the
+>   other privileged modes (PL1)
+> * code at EL0 (Secure PL0)
+>
+>This is different from when EL3 is AArch64, in which case EL3 is its
+>own translation regime, and EL1 and EL0 (whether AArch32 or AArch64)
+>have their own regime=2E
+>
+>We claimed to be mapping Secure PL1 to our ARMMMUIdx_EL3, but didn't
+>do anything special about Secure PL0, which meant it used the same
+>ARMMMUIdx_EL10_0 that NonSecure PL0 does=2E  This resulted in a bug
+>where arm_sctlr() incorrectly picked the NonSecure SCTLR as the
+>controlling register when in Secure PL0, which meant we were
+>spuriously generating alignment faults because we were looking at the
+>wrong SCTLR control bits=2E
+>
+>The use of ARMMMUIdx_EL3 for Secure PL1 also resulted in the bug that
+>we wouldn't honour the PAN bit for Secure PL1, because there's no
+>equivalent _PAN mmu index for it=2E
+>
+>We could fix this in one of two ways:
+> * The most straightforward is to add new MMU indexes EL30_0,
+>   EL30_3, EL30_3_PAN to correspond to "Secure PL1&0 at PL0",
+>   "Secure PL1&0 at PL1", and "Secure PL1&0 at PL1 with PAN"=2E
+>   This matches how we use indexes for the AArch64 regimes, and
+>   preserves propirties like being able to determine the privilege
+>   level from an MMU index without any other information=2E However
+>   it would add two MMU indexes (we can share one with ARMMMUIdx_EL3),
+>   and we are already using 14 of the 16 the core TLB code permits=2E
+>
+> * The more complicated approach is the one we take here=2E We use
+>   the same MMU indexes (E10_0, E10_1, E10_1_PAN) for Secure PL1&0
+>   than we do for NonSecure PL1&0=2E This saves on MMU indexes, but
+>   means we need to check in some places whether we're in the
+>   Secure PL1&0 regime or not before we interpret an MMU index=2E
+>
+>Patch 1 cleans up an out of date comment about MMU index
+>usage; patch 2 is the actual bug fix=2E
+>
+>This fixes the bug with the repro case in the bug report, and it
+>also passes "make check", but I don't have a huge range of
+>Secure AArch32 test images to test with=2E I guess it ought to go
+>into 9=2E1 as a bugfix, but the nature of the patch means it's
+>not very easy to be confident it doesn't introduce any new bugs=2E=2E=2E
+>
+>Bernhard: I suspect this is the same bug you reported a few months
+>back in this thread:
+>https://lore=2Ekernel=2Eorg/qemu-devel/C875173E-4B5B-4F71-8CF4-4325F7AB76=
+29@gmail=2Ecom/
+> -- if you're able to test that this patchset fixes your test
+>case as well, that would be great=2E
 
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 11fc7fc318..3e1c4d2d2f 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -2082,8 +2082,6 @@ static void machvirt_init(MachineState *machine)
->       unsigned int smp_cpus = machine->smp.cpus;
->       unsigned int max_cpus = machine->smp.max_cpus;
->   
-> -    possible_cpus = mc->possible_cpu_arch_ids(machine);
-> -
->       /*
->        * In accelerated mode, the memory map is computed earlier in kvm_type()
->        * to create a VM with the right number of IPA bits.
-> @@ -2098,7 +2096,7 @@ static void machvirt_init(MachineState *machine)
->            * we are about to deal with. Once this is done, get rid of
->            * the object.
->            */
-> -        cpuobj = object_new(possible_cpus->cpus[0].type);
-> +        cpuobj = object_new(machine->cpu_type);
->           armcpu = ARM_CPU(cpuobj);
->   
->           pa_bits = arm_pamax(armcpu);
-> @@ -2113,6 +2111,43 @@ static void machvirt_init(MachineState *machine)
->        */
->       finalize_gic_version(vms);
->   
-> +    /*
-> +     * The maximum number of CPUs depends on the GIC version, or on how
-> +     * many redistributors we can fit into the memory map (which in turn
-> +     * depends on whether this is a GICv3 or v4).
-> +     */
-> +    if (vms->gic_version == VIRT_GIC_VERSION_2) {
-> +        virt_max_cpus = GIC_NCPU;
-> +    } else {
-> +        virt_max_cpus = virt_redist_capacity(vms, VIRT_GIC_REDIST);
-> +        if (vms->highmem_redists) {
-> +            virt_max_cpus += virt_redist_capacity(vms, VIRT_HIGH_GIC_REDIST2);
-> +        }
-> +    }
-> +
-> +    if (tcg_enabled() || hvf_enabled() || qtest_enabled() ||
-> +        (vms->gic_version < VIRT_GIC_VERSION_3)) {
-> +        max_cpus = machine->smp.max_cpus = smp_cpus;
-> +        mc->has_hotpluggable_cpus = false;
-> +        if (vms->gic_version >= VIRT_GIC_VERSION_3) {
-> +            warn_report("cpu hotplug feature has been disabled");
-> +        }
-> +    }
-> +
-> +    if (max_cpus > virt_max_cpus) {
-> +        error_report("Number of SMP CPUs requested (%d) exceeds max CPUs "
-> +                     "supported by machine 'mach-virt' (%d)",
-> +                     max_cpus, virt_max_cpus);
-> +        if (vms->gic_version != VIRT_GIC_VERSION_2 && !vms->highmem_redists) {
-> +            error_printf("Try 'highmem-redists=on' for more CPUs\n");
-> +        }
-> +
-> +        exit(1);
-> +    }
-> +
-> +    /* uses smp.max_cpus to initialize all possible vCPUs */
-> +    possible_cpus = mc->possible_cpu_arch_ids(machine);
-> +
->       if (vms->secure) {
->           /*
->            * The Secure view of the world is the same as the NonSecure,
-> @@ -2147,31 +2182,6 @@ static void machvirt_init(MachineState *machine)
->           vms->psci_conduit = QEMU_PSCI_CONDUIT_HVC;
->       }
->   
-> -    /*
-> -     * The maximum number of CPUs depends on the GIC version, or on how
-> -     * many redistributors we can fit into the memory map (which in turn
-> -     * depends on whether this is a GICv3 or v4).
-> -     */
-> -    if (vms->gic_version == VIRT_GIC_VERSION_2) {
-> -        virt_max_cpus = GIC_NCPU;
-> -    } else {
-> -        virt_max_cpus = virt_redist_capacity(vms, VIRT_GIC_REDIST);
-> -        if (vms->highmem_redists) {
-> -            virt_max_cpus += virt_redist_capacity(vms, VIRT_HIGH_GIC_REDIST2);
-> -        }
-> -    }
-> -
-> -    if (max_cpus > virt_max_cpus) {
-> -        error_report("Number of SMP CPUs requested (%d) exceeds max CPUs "
-> -                     "supported by machine 'mach-virt' (%d)",
-> -                     max_cpus, virt_max_cpus);
-> -        if (vms->gic_version != VIRT_GIC_VERSION_2 && !vms->highmem_redists) {
-> -            error_printf("Try 'highmem-redists=on' for more CPUs\n");
-> -        }
-> -
-> -        exit(1);
-> -    }
-> -
->       if (vms->secure && (kvm_enabled() || hvf_enabled())) {
->           error_report("mach-virt: %s does not support providing "
->                        "Security extensions (TrustZone) to the guest CPU",
+Hi Peter,
+
+indeed this fixes my guest, too! Thanks for keeping me updated=2E
+
+Series:
+Tested-by: Bernhard Beschow <shentey@gmail=2Ecom>
+
+>
+>thanks
+>-- PMM
+>
+>Peter Maydell (2):
+>  target/arm: Update translation regime comment for new features
+>  target/arm: Fix usage of MMU indexes when EL3 is AArch32
+>
+> target/arm/cpu=2Eh               | 50 ++++++++++++++++++++++------------
+> target/arm/internals=2Eh         | 27 +++++++++++++++---
+> target/arm/tcg/translate=2Eh     |  2 ++
+> target/arm/helper=2Ec            | 34 +++++++++++++++--------
+> target/arm/ptw=2Ec               |  6 +++-
+> target/arm/tcg/hflags=2Ec        |  4 +++
+> target/arm/tcg/translate-a64=2Ec |  2 +-
+> target/arm/tcg/translate=2Ec     |  9 +++---
+> 8 files changed, 95 insertions(+), 39 deletions(-)
+>

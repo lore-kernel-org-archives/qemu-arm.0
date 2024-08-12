@@ -1,218 +1,442 @@
-Received: by 2002:a17:504:6454:b0:1be9:327d:8ee3 with SMTP id g20csp718209njh;
-        Mon, 12 Aug 2024 03:17:33 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWJYpi0NYRs6pZnapM4aemybjJ/XzgexSIAiEj9OOT/8z9FTIiP+UpacruVAxWZ85HRdoydC/75VFaK0ZDwURDxekx1vyh5
-X-Google-Smtp-Source: AGHT+IEt/Xu1rOtFhgL5opj8UDVYGT2FBomKitoKGfdf88S1g/62KYjja9pQdYh2ZXD68wL7tGIT
-X-Received: by 2002:a05:6830:628c:b0:709:41ab:453e with SMTP id 46e09a7af769-70b7cc26fcdmr12322830a34.31.1723457852949;
-        Mon, 12 Aug 2024 03:17:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1723457852; cv=none;
+Received: by 2002:a17:504:6454:b0:1be9:327d:8ee3 with SMTP id g20csp743906njh;
+        Mon, 12 Aug 2024 04:57:57 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCWXBBOLfb4OK3Oc2sKa/UPbM/CKubi14E7EebOLVnqu8mrBYpMAjr77Xty/MkWGtxJlHHtgc+u8E31toQxajyw3v22ao4E7
+X-Google-Smtp-Source: AGHT+IFIaevwjmDT9qPlbhmu9OrwO576RgxQuRhxB+BS8KfV56vGejMiLFJqf4ze42GWy7xZqAGT
+X-Received: by 2002:a05:622a:514c:b0:44f:feb5:b2fe with SMTP id d75a77b69052e-453499a5b41mr783361cf.19.1723463877019;
+        Mon, 12 Aug 2024 04:57:57 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1723463877; cv=pass;
         d=google.com; s=arc-20160816;
-        b=P4i7WbbtudxCrPlRF/1ated6iQzCspVhIAqz++/qCeDcVdmxcWdbJ43smB9ESpKYkr
-         vIGVnnxFOEvSykb8OI92p92Ya+wH43Q5k6b0IP83WGIGcs9MhK0ebbZD+HJI45H4F4rb
-         NMYivgGrPk9b2eHmpP3PRfmFVhQkzvDXcGeNqLKGXWsQAkk8Vremf8Fhdvaq5CZ6x8dQ
-         vYIARR/O16SqqAJNCLOR6XfPFDffgkAbEkPcE+VZhB0VbLIoqxml4Ru0QOX3TA3sm/U4
-         9P+NzZjz52jZXzSXf+Dn/rksi+2xFKlLURKMsQKeiw3hYP+VKkmpSQu093wF3mlmzRG4
-         pOUg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:autocrypt
-         :from:references:cc:to:subject:user-agent:mime-version:date
-         :message-id:dkim-signature;
-        bh=lVcqCYPpo9W+fFj+K5rl8msH5Np6HFRkYMqj7Uwzb6g=;
-        fh=6OF/j0dZ9hXYzxEqaeTTI1ForGc8+ZfuB5DOO57GBmI=;
-        b=lZYAM4Kn4q+MEY1A+0vXzkUIgWmLp7EmRY69FGgnBAVJq78uL1doqFMKgX+BkVNpi2
-         mtboa2uFUtmykeFE+iv3xOEEYnl2uSsL/IVG+TI3cD9JKImO1Wt48YtqMZEgOTgazV9f
-         Vehi150hgQfNIs9SB1/Az79iWKrmcq1Pp/98PQ1d33l4krzhjsxPYD9lGgAqTplfWZbH
-         XQ6iJ11y1eF17aVKGQes/aw8IP6SBwrRQBulvoNT2RLKhYUo8lrrDNXtnTxPAMLI7Hcl
-         ljNa6L5mLuKCHLNDGWiDYE+r1D/JE47Y1nVzEsrOzi2R9wUjgmwchB+/+X1Qnoe9ksOz
-         fT/w==;
+        b=tAjZ9NC1opf8EKZmJjpX4vUKyG3PmCfiQFzCkF2zYZbcyc8dMJ9mOv0dTSfZxGbCjS
+         /Ub6b6/AT+yo3wi3mD2/JOnZtO/kVgcRfM5EvDIVEEoBhh1+9QZZAc0Ae+foW1JfT+Tp
+         +/4ADmcV3P9zSkl1OPvUDM2btbHdV1w36u+JsHwlMSZ3i9D0qilCMbWEwP4o7vd+/kmw
+         EmfomF74xEcBIy3WDvUGgPwD8T20ljCGVfZtVzySYzz4X9VA637BIIQ3aH7KXQJet6Rd
+         pt97ZE+0IeASKZUyFxlbm5sKccsk3r7jnnKcs6kBj1ylM7Fqg8S77kY2azmbuY7LhWUP
+         5Tew==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=SpJndEgom61tK7M4GAuqbEtbuGe7It7d4qf5OxcAq8U=;
+        fh=YZlNDAySYjOs7Th1YQ5nuwab5KhfVGJqpTnux18U6V8=;
+        b=NGBg5LDpfFPmtRSvtuy+lns0H1b7mcrq2aTV0mIzWDqG/4m+QI/NHwPEI7XLYTUcf2
+         xYyeHxPtasUAUBGHbbVCkni86SIyzHjXg9ZoJwlJqbkPmCFjWPomdUl8KP9NlJLpAAUc
+         nHn9SO2oVA24HlLnW2r/cFLZZwygPgZUCNfWExiFUAXZnd/9ecw9h1czYsaTSgpT3Eba
+         q8WVC13EzzZjpmHuB0+jgi2GsqfXZn2ZwCssSY8OMofJkMn/bEcocV071f7z7g8vBEwH
+         dB0jUGTuBnYkkqsuGsvd3pznTXuPqgs3yr8NjOYRZ+LYHQAIF6c/rhM8xf+c+7dMN0lL
+         VV+Q==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ds6UHAtd;
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=f9v3pRrq;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of linux-kernel+bounces-283030-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="linux-kernel+bounces-283030-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <thuth@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id d75a77b69052e-4531c1c8c85si56157521cf.184.2024.08.12.03.17.32
+Return-Path: <linux-kernel+bounces-283030-alex.bennee=linaro.org@vger.kernel.org>
+Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [147.75.199.223])
+        by mx.google.com with ESMTPS id d75a77b69052e-4531c2692ddsi58052401cf.380.2024.08.12.04.57.56
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 12 Aug 2024 03:17:32 -0700 (PDT)
-Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        Mon, 12 Aug 2024 04:57:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of linux-kernel+bounces-283030-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) client-ip=147.75.199.223;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ds6UHAtd;
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=f9v3pRrq;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of linux-kernel+bounces-283030-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="linux-kernel+bounces-283030-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ny.mirrors.kernel.org (Postfix) with ESMTPS id A47EC1C20BE0
+	for <alex.bennee@linaro.org>; Mon, 12 Aug 2024 11:57:56 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 1B512176FB8;
+	Mon, 12 Aug 2024 11:57:53 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="f9v3pRrq"
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id BB63114EC53
+	for <linux-kernel@vger.kernel.org>; Mon, 12 Aug 2024 11:57:50 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.129.124
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1723463872; cv=none; b=BD1DTZm0xZiR3YoT4kw+2V8bMDSsCoKW/knRM1r6ofqDqWVxi/Ld2fpZmNUcu6NsJPDJ8hdSaihO8stw2rP6PnDQo1FcP7PmrWpTfMT8WGZPke29esbjJeO2qLfRT6N9rXZCMEnJ+C69tVrUxiFCqIbhYBKC/J6rbqf5JAPyLc8=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1723463872; c=relaxed/simple;
+	bh=D7QbvmiEPoFstypzdIaQh9RC3kieLO+YfCjReE5a9IM=;
+	h=Date:From:To:Cc:Subject:Message-ID:In-Reply-To:References:
+	 MIME-Version:Content-Type; b=EWWH8IfVJEOmg29kuXUkNyMwFnIbWBOWAuKrvVudd+nbfvGmAT743FtgVjSgRuB7HOAOVguYP7w81arFg/Hba/f30T40ryozKu7NiIypLsM8olhyyqByGt4r10OTXwRXsxn9TOM3MMcdbYttBu4kjDDrkTXCdmYERLyWDD7W0n0=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=f9v3pRrq; arc=none smtp.client-ip=170.10.129.124
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1723457852;
+	s=mimecast20190719; t=1723463869;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=lVcqCYPpo9W+fFj+K5rl8msH5Np6HFRkYMqj7Uwzb6g=;
-	b=ds6UHAtdZrE0VV7fg14DJX5X7aWYbwlXfzsdPFDlVJA8lYQRqukkY3CsVmtxj7D4gBA846
-	rTI+yi/mkKxbjjuY5xO7x4JQ2MeKK5tu1nV+UIWd8pYQ4NdW7KU/8VVPU3c1ZYHl0u83ez
-	r6tpfbAxxmzM/zwjMWhYQD97fHw377I=
+	 in-reply-to:in-reply-to:references:references;
+	bh=SpJndEgom61tK7M4GAuqbEtbuGe7It7d4qf5OxcAq8U=;
+	b=f9v3pRrqvxIaeu0d9wK3dW90zcev6TChQjH1VW/LA+8qy4nrJALg9DBOHFZwyYHpBYzRoL
+	bH9xytv1BxEfal/Zav4VYrBT7SaGVy45ViEC5KfB3x6UWrtKONJjQ4BUI0RIyKP0nAb4sm
+	R7xW3NJFl5GNk2PBhdNp6zhANms/OQs=
 Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
  [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-682-XJOTq0CTNgeXcPZydMJvEA-1; Mon, 12 Aug 2024 06:17:31 -0400
-X-MC-Unique: XJOTq0CTNgeXcPZydMJvEA-1
-Received: by mail-wm1-f71.google.com with SMTP id 5b1f17b1804b1-427ffa0c9c7so49486735e9.1
-        for <alex.bennee@linaro.org>; Mon, 12 Aug 2024 03:17:31 -0700 (PDT)
+ us-mta-635-e7ZKGvK7MvCqRZPhIz-J3A-1; Mon, 12 Aug 2024 07:57:48 -0400
+X-MC-Unique: e7ZKGvK7MvCqRZPhIz-J3A-1
+Received: by mail-wm1-f71.google.com with SMTP id 5b1f17b1804b1-4280f233115so29186965e9.2
+        for <linux-kernel@vger.kernel.org>; Mon, 12 Aug 2024 04:57:47 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1723457850; x=1724062650;
-        h=content-transfer-encoding:in-reply-to:autocrypt:content-language
-         :from:references:cc:to:subject:user-agent:mime-version:date
-         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=lVcqCYPpo9W+fFj+K5rl8msH5Np6HFRkYMqj7Uwzb6g=;
-        b=uDuM6FWntfu4nGktb3WyOZ6mywuYch/UJFY9vwyskYvdHcXzN9NSxhPB46gKTAlN0z
-         Cq5/1ytQyUmPyL/UqSFum/zU5mEXNAAK+XgkQlewiJyRG0voMnXp2vFkcbCBnw25oGmJ
-         Hw62Zk2oDlVNcLw0a8jDS2/UGnTL5Tr2TOFzXagaHFgUsOJZkGXna5SFNGvH1zfpvjBC
-         TCdUPRv6TcJYvXJEtPOF151YpW2kj4rmtge+6Wn9hoxFS942wd5Jawd/14edwBz6b77F
-         Z/8pJbuUbCSv5lvvDxVq8fx5da5n1VHa5CUUfSKf3rvreiFxfsUOm4RE5T+2eDqsJCaB
-         M0Qg==
-X-Forwarded-Encrypted: i=1; AJvYcCUTvLIRx7a0b47TWlqY94HgnpHVeyBVf8wWXwRfA0LhLmZgQ8rZgOmcTegJD2wNSbDIsfWz7XJfr3feS3lFpCy0KyQWSzgr
-X-Gm-Message-State: AOJu0Yy14lmpXUYYK/72/SkiWCGIGQCA2F7YncV34vf8mHm5JMjldWXn
-	Kye+QFCTVRyioomBybD0ZRJHo0fUkF3iwe4DZ4zDUAwlYmAG4uuQZiZFrIgyApPqTeGQiGLodz8
-	GltMlu3iB/F+CNY+q8/p+k6UqfXgM3SDd1B1GQPHDxD8JlgXQFRLwhQ==
-X-Received: by 2002:a05:600c:a48:b0:428:fcb:962 with SMTP id 5b1f17b1804b1-429c3a5c30fmr69153655e9.36.1723457850113;
-        Mon, 12 Aug 2024 03:17:30 -0700 (PDT)
-X-Received: by 2002:a05:600c:a48:b0:428:fcb:962 with SMTP id 5b1f17b1804b1-429c3a5c30fmr69153255e9.36.1723457849535;
-        Mon, 12 Aug 2024 03:17:29 -0700 (PDT)
-Return-Path: <thuth@redhat.com>
-Received: from [192.168.0.6] (ip-109-43-178-125.web.vodafone.de. [109.43.178.125])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-429c751b021sm97414005e9.21.2024.08.12.03.17.27
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 12 Aug 2024 03:17:29 -0700 (PDT)
-Message-ID: <1f645137-c621-4fa3-ace0-415087267a7b@redhat.com>
-Date: Mon, 12 Aug 2024 12:17:27 +0200
+        d=1e100.net; s=20230601; t=1723463867; x=1724068667;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=SpJndEgom61tK7M4GAuqbEtbuGe7It7d4qf5OxcAq8U=;
+        b=LUvAMnAn9yfLMuWWQOmd4cDhrgPhaMbbvoTgiSW5kxHAtKeIpe9mhGGmMOsoiMxPS5
+         qy1s83zN7kfJQ7eAOvrd6kgih8e+dADYNziEROfkuHJu20/+IMT4bZDUE3JPQDjZZZHm
+         0d4I26Be2o15AWs5FwUGzRgAVmggp17ryf+Qggx1xa5R0S2IDTtyGnEqVs75V2PbL8y6
+         6z3CuI4HVdg3j6qJG8sIMpmrLsbYN0mZdx3I8mCv2om09FPgYkKmCD68SItzzgvCM1aF
+         eH5AFEuCiTpkltN8im3XMfM4PJNshHrTbjwhhz5FQENlxlL3DXUev59IbNyr/uQi5iTm
+         lh6w==
+X-Forwarded-Encrypted: i=1; AJvYcCVKnzh7SSRW/ryG2oZNKsnYM3cC3aMab9zkGgoPZmCvFakYq+6d8snfdPkQcX0F2Q1AGiC7utP8ANF+e4I+L/8gI+o8wjlEaoUD83EX
+X-Gm-Message-State: AOJu0YxXlAshQkxuCWmxjEFkVD+BBVZxlmMRZv8HnPjkiWCMPcYHlDNz
+	oLaRkx56Ly73xyRIrr++Tw6zcK8VaUYmLcfGl2jp/sBwgozKXMKVkAJTm1JbGvsMCLXnEeadxBp
+	B8m6ec2kNNNlWtRqTErzSEl2YmeuuJ0+GNd/BE4AAzl9fa1hIUbQvyzL4LBg8Cg==
+X-Received: by 2002:a05:600c:1e2a:b0:426:593c:9351 with SMTP id 5b1f17b1804b1-429d47f7044mr1143155e9.6.1723463866809;
+        Mon, 12 Aug 2024 04:57:46 -0700 (PDT)
+X-Received: by 2002:a05:600c:1e2a:b0:426:593c:9351 with SMTP id 5b1f17b1804b1-429d47f7044mr1142955e9.6.1723463866312;
+        Mon, 12 Aug 2024 04:57:46 -0700 (PDT)
+Received: from imammedo.users.ipa.redhat.com (nat-pool-brq-t.redhat.com. [213.175.37.10])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-429c751a554sm102720295e9.22.2024.08.12.04.57.45
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 12 Aug 2024 04:57:45 -0700 (PDT)
+Date: Mon, 12 Aug 2024 13:57:44 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>, Shiju Jose
+ <shiju.jose@huawei.com>, "Michael S. Tsirkin" <mst@redhat.com>, Ani Sinha
+ <anisinha@redhat.com>, Dongjiu Geng <gengdongjiu1@gmail.com>, Eric Blake
+ <eblake@redhat.com>, Markus Armbruster <armbru@redhat.com>, Michael Roth
+ <michael.roth@amd.com>, Paolo Bonzini <pbonzini@redhat.com>, Peter Maydell
+ <peter.maydell@linaro.org>, linux-kernel@vger.kernel.org,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [PATCH v6 04/10] qapi/ghes-cper: add an interface to do generic
+ CPER error injection
+Message-ID: <20240812135744.644deaa9@imammedo.users.ipa.redhat.com>
+In-Reply-To: <87799362699e4349ce4a44f3d25698d5764735c6.1723119423.git.mchehab+huawei@kernel.org>
+References: <cover.1723119423.git.mchehab+huawei@kernel.org>
+	<87799362699e4349ce4a44f3d25698d5764735c6.1723119423.git.mchehab+huawei@kernel.org>
+X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
+Precedence: bulk
+X-Mailing-List: linux-kernel@vger.kernel.org
+List-Id: <linux-kernel.vger.kernel.org>
+List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 9/9] Avocado tests: allow for parallel execution of
- tests
-To: Cleber Rosa <crosa@redhat.com>, qemu-devel@nongnu.org
-Cc: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
- Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
- Radoslaw Biernacki <rad@semihalf.com>, Troy Lee <leetroy@gmail.com>,
- Akihiko Odaki <akihiko.odaki@daynix.com>, Beraldo Leal <bleal@redhat.com>,
- kvm@vger.kernel.org, Joel Stanley <joel@jms.id.au>,
- Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Aurelien Jarno <aurelien@aurel32.net>,
- Sriram Yagnaraman <sriram.yagnaraman@ericsson.com>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, Paul Durrant
- <paul@xen.org>, Eric Auger <eric.auger@redhat.com>,
- David Woodhouse <dwmw2@infradead.org>, qemu-arm@nongnu.org,
- Andrew Jeffery <andrew@codeconstruct.com.au>,
- Jamin Lin <jamin_lin@aspeedtech.com>, Steven Lee
- <steven_lee@aspeedtech.com>, Peter Maydell <peter.maydell@linaro.org>,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
- Wainer dos Santos Moschetta <wainersm@redhat.com>,
- =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Leif Lindholm <quic_llindhol@quicinc.com>
-References: <20240806173119.582857-1-crosa@redhat.com>
- <20240806173119.582857-10-crosa@redhat.com>
-From: Thomas Huth <thuth@redhat.com>
-Autocrypt: addr=thuth@redhat.com; keydata=
- xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
- yYkTm9+7zBUc0sW5AuPGR/dp3pSLX/yFWsA/UB4nJsHqgDvDU7BImSeiTrnpMOTXb7Arw2a2
- 4CflIyFqjCpfDM4MuTmzTjXq4Uov1giGE9X6viNo1pxyEpd7PanlKNnf4PqEQp06X4IgUacW
- tSGj6Gcns1bCuHV8OPWLkf4hkRnu8hdL6i60Yxz4E6TqlrpxsfYwLXgEeswPHOA6Mn4Cso9O
- 0lewVYfFfsmokfAVMKWzOl1Sr0KGI5T9CpmRfAiSHpthhHWnECcJFwl72NTi6kUcUzG4se81
- O6n9d/kTj7pzTmBdfwuOZ0YUSqcqs0W+l1NcASSYZQaDoD3/SLk+nqVeCBB4OnYOGhgmIHNW
- 0CwMRO/GK+20alxzk//V9GmIM2ACElbfF8+Uug3pqiHkVnKqM7W9/S1NH2qmxB6zMiJUHlTH
- gnVeZX0dgH27mzstcF786uPcdEqS0KJuxh2kk5IvUSL3Qn3ZgmgdxBMyCPciD/1cb7/Ahazr
- 3ThHQXSHXkH/aDXdfLsKVuwDzHLVSkdSnZdt5HHh75/NFHxwaTlydgfHmFFwodK8y/TjyiGZ
- zg2Kje38xnz8zKn9iesFBCcONXS7txENTzX0z80WKBhK+XSFJwARAQABzR5UaG9tYXMgSHV0
- aCA8dGh1dGhAcmVkaGF0LmNvbT7CwXgEEwECACIFAlVgX6oCGwMGCwkIBwMCBhUIAgkKCwQW
- AgMBAh4BAheAAAoJEC7Z13T+cC21EbIP/ii9cvT2HHGbFRl8HqGT6+7Wkb+XLMqJBMAIGiQK
- QIP3xk1HPTsLfVG0ao4hy/oYkGNOP8+ubLnZen6Yq3zAFiMhQ44lvgigDYJo3Ve59gfe99KX
- EbtB+X95ODARkq0McR6OAsPNJ7gpEUzfkQUUJTXRDQXfG/FX303Gvk+YU0spm2tsIKPl6AmV
- 1CegDljzjycyfJbk418MQmMu2T82kjrkEofUO2a24ed3VGC0/Uz//XCR2ZTo+vBoBUQl41BD
- eFFtoCSrzo3yPFS+w5fkH9NT8ChdpSlbNS32NhYQhJtr9zjWyFRf0Zk+T/1P7ECn6gTEkp5k
- ofFIA4MFBc/fXbaDRtBmPB0N9pqTFApIUI4vuFPPO0JDrII9dLwZ6lO9EKiwuVlvr1wwzsgq
- zJTPBU3qHaUO4d/8G+gD7AL/6T4zi8Jo/GmjBsnYaTzbm94lf0CjXjsOX3seMhaE6WAZOQQG
- tZHAO1kAPWpaxne+wtgMKthyPLNwelLf+xzGvrIKvLX6QuLoWMnWldu22z2ICVnLQChlR9d6
- WW8QFEpo/FK7omuS8KvvopFcOOdlbFMM8Y/8vBgVMSsK6fsYUhruny/PahprPbYGiNIhKqz7
- UvgyZVl4pBFjTaz/SbimTk210vIlkDyy1WuS8Zsn0htv4+jQPgo9rqFE4mipJjy/iboDzsFN
- BFH7eUwBEAC2nzfUeeI8dv0C4qrfCPze6NkryUflEut9WwHhfXCLjtvCjnoGqFelH/PE9NF4
- 4VPSCdvD1SSmFVzu6T9qWdcwMSaC+e7G/z0/AhBfqTeosAF5XvKQlAb9ZPkdDr7YN0a1XDfa
- +NgA+JZB4ROyBZFFAwNHT+HCnyzy0v9Sh3BgJJwfpXHH2l3LfncvV8rgFv0bvdr70U+On2XH
- 5bApOyW1WpIG5KPJlDdzcQTyptOJ1dnEHfwnABEfzI3dNf63rlxsGouX/NFRRRNqkdClQR3K
- gCwciaXfZ7ir7fF0u1N2UuLsWA8Ei1JrNypk+MRxhbvdQC4tyZCZ8mVDk+QOK6pyK2f4rMf/
- WmqxNTtAVmNuZIwnJdjRMMSs4W4w6N/bRvpqtykSqx7VXcgqtv6eqoDZrNuhGbekQA0sAnCJ
- VPArerAZGArm63o39me/bRUQeQVSxEBmg66yshF9HkcUPGVeC4B0TPwz+HFcVhheo6hoJjLq
- knFOPLRj+0h+ZL+D0GenyqD3CyuyeTT5dGcNU9qT74bdSr20k/CklvI7S9yoQje8BeQAHtdV
- cvO8XCLrpGuw9SgOS7OP5oI26a0548M4KldAY+kqX6XVphEw3/6U1KTf7WxW5zYLTtadjISB
- X9xsRWSU+Yqs3C7oN5TIPSoj9tXMoxZkCIHWvnqGwZ7JhwARAQABwsFfBBgBAgAJBQJR+3lM
- AhsMAAoJEC7Z13T+cC21hPAQAIsBL9MdGpdEpvXs9CYrBkd6tS9mbaSWj6XBDfA1AEdQkBOn
- ZH1Qt7HJesk+qNSnLv6+jP4VwqK5AFMrKJ6IjE7jqgzGxtcZnvSjeDGPF1h2CKZQPpTw890k
- fy18AvgFHkVk2Oylyexw3aOBsXg6ukN44vIFqPoc+YSU0+0QIdYJp/XFsgWxnFIMYwDpxSHS
- 5fdDxUjsk3UBHZx+IhFjs2siVZi5wnHIqM7eK9abr2cK2weInTBwXwqVWjsXZ4tq5+jQrwDK
- cvxIcwXdUTLGxc4/Z/VRH1PZSvfQxdxMGmNTGaXVNfdFZjm4fz0mz+OUi6AHC4CZpwnsliGV
- ODqwX8Y1zic9viSTbKS01ZNp175POyWViUk9qisPZB7ypfSIVSEULrL347qY/hm9ahhqmn17
- Ng255syASv3ehvX7iwWDfzXbA0/TVaqwa1YIkec+/8miicV0zMP9siRcYQkyTqSzaTFBBmqD
- oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
- IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
- yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <20240806173119.582857-10-crosa@redhat.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-TUID: r7uxIV6yhOxe
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: quoted-printable
+X-TUID: lYN+yGuUqmHN
 
-On 06/08/2024 19.31, Cleber Rosa wrote:
-> The updated Avocado version allows for the execution of tests in
-> parallel.
-> 
-> While on a CI environment it may not be a good idea to increase the
-> parallelization level in a single runner, developers may leverage that
-> on specific CI runners or on their development environments.
-> 
-> This also multiplies the timeout for each test accordingly.  The
-> reason is that more concurrency can lead to less resources, and less
-> resources can lead to some specific tests taking longer to complete
-> and then time out.  The timeout factor being used here is very
-> conservative (being equal to the amount of parallel tasks).  The worst
-> this possibly oversized timeout value can do is making users wait a
-> bit longer for the job to finish if a test hangs.
-> 
-> Overall, users can expect a much quicker turnaround on most systems
-> with a value such as 8 on a 12 core machine.
-> 
-> Signed-off-by: Cleber Rosa <crosa@redhat.com>
+On Thu,  8 Aug 2024 14:26:30 +0200
+Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
+
+> Creates a QMP command to be used for generic ACPI APEI hardware error
+> injection (HEST) via GHESv2.
+>=20
+> The actual GHES code will be added at the followup patch.
+>=20
+> Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+> Signed-off-by: Shiju Jose <shiju.jose@huawei.com>
+> Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
 > ---
-...
-> diff --git a/tests/Makefile.include b/tests/Makefile.include
-> index 537804d101..545b5155f9 100644
-> --- a/tests/Makefile.include
-> +++ b/tests/Makefile.include
-> @@ -94,6 +94,9 @@ TESTS_RESULTS_DIR=$(BUILD_DIR)/tests/results
->   ifndef AVOCADO_TESTS
->   	AVOCADO_TESTS=tests/avocado
->   endif
-> +ifndef AVOCADO_PARALLEL
-> +	AVOCADO_PARALLEL=1
-> +endif
->   # Controls the output generated by Avocado when running tests.
->   # Any number of command separated loggers are accepted.  For more
->   # information please refer to "avocado --help".
-> @@ -141,7 +144,8 @@ check-avocado: check-venv $(TESTS_RESULTS_DIR) get-vm-images
->               --show=$(AVOCADO_SHOW) run --job-results-dir=$(TESTS_RESULTS_DIR) \
->               $(if $(AVOCADO_TAGS),, --filter-by-tags-include-empty \
->   			--filter-by-tags-include-empty-key) \
-> -            $(AVOCADO_CMDLINE_TAGS) --max-parallel-tasks=1 \
-> +            $(AVOCADO_CMDLINE_TAGS) --max-parallel-tasks=$(AVOCADO_PARALLEL) \
-> +			-p timeout_factor=$(AVOCADO_PARALLEL) \
->               $(if $(GITLAB_CI),,--failfast) $(AVOCADO_TESTS), \
->               "AVOCADO", "tests/avocado")
+>  MAINTAINERS              |  7 +++++
+>  hw/acpi/Kconfig          |  5 ++++
+>  hw/acpi/ghes_cper.c      | 45 ++++++++++++++++++++++++++++++++
+>  hw/acpi/ghes_cper_stub.c | 19 ++++++++++++++
+>  hw/acpi/meson.build      |  2 ++
+>  hw/arm/Kconfig           |  5 ++++
+>  include/hw/acpi/ghes.h   |  7 +++++
+>  qapi/ghes-cper.json      | 55 ++++++++++++++++++++++++++++++++++++++++
+>  qapi/meson.build         |  1 +
+>  qapi/qapi-schema.json    |  1 +
+>  10 files changed, 147 insertions(+)
+>  create mode 100644 hw/acpi/ghes_cper.c
+>  create mode 100644 hw/acpi/ghes_cper_stub.c
+>  create mode 100644 qapi/ghes-cper.json
+>=20
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 10af21263293..a0c36f9b5d0c 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -2077,6 +2077,13 @@ F: hw/acpi/ghes.c
+>  F: include/hw/acpi/ghes.h
+>  F: docs/specs/acpi_hest_ghes.rst
+> =20
+> +ACPI/HEST/GHES/ARM processor CPER
+> +R: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+> +S: Maintained
+> +F: hw/arm/ghes_cper.c
+> +F: hw/acpi/ghes_cper_stub.c
+> +F: qapi/ghes-cper.json
+> +
+>  ppc4xx
+>  L: qemu-ppc@nongnu.org
+>  S: Orphan
+> diff --git a/hw/acpi/Kconfig b/hw/acpi/Kconfig
+> index e07d3204eb36..73ffbb82c150 100644
+> --- a/hw/acpi/Kconfig
+> +++ b/hw/acpi/Kconfig
+> @@ -51,6 +51,11 @@ config ACPI_APEI
+>      bool
+>      depends on ACPI
+> =20
+> +config GHES_CPER
+> +    bool
+> +    depends on ACPI_APEI
+> +    default y
+> +
+>  config ACPI_PCI
+>      bool
+>      depends on ACPI && PCI
+> diff --git a/hw/acpi/ghes_cper.c b/hw/acpi/ghes_cper.c
+> new file mode 100644
+> index 000000000000..7aa7e71e90dc
+> --- /dev/null
+> +++ b/hw/acpi/ghes_cper.c
+> @@ -0,0 +1,45 @@
+> +/*
+> + * ARM Processor error injection
+> + *
+> + * Copyright(C) 2024 Huawei LTD.
+> + *
+> + * This code is licensed under the GPL version 2 or later. See the
+> + * COPYING file in the top-level directory.
+> + *
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +
+> +#include "qemu/base64.h"
+> +#include "qemu/error-report.h"
+> +#include "qemu/uuid.h"
+> +#include "qapi/qapi-commands-ghes-cper.h"
+> +#include "hw/acpi/ghes.h"
+> +
+> +void qmp_ghes_cper(CommonPlatformErrorRecord *qmp_cper,
+> +                   Error **errp)
+> +{
+> +    int rc;
+> +    AcpiGhesCper cper;
+> +    QemuUUID be_uuid, le_uuid;
+> +
+> +    rc =3D qemu_uuid_parse(qmp_cper->notification_type, &be_uuid);
+> +    if (rc) {
+> +        error_setg(errp, "GHES: Invalid UUID: %s",
+> +                   qmp_cper->notification_type);
+> +        return;
+> +    }
+> +
+> +    le_uuid =3D qemu_uuid_bswap(be_uuid);
+> +    cper.guid =3D le_uuid.data;
+> +
+> +    cper.data =3D qbase64_decode(qmp_cper->raw_data, -1,
+> +                               &cper.data_len, errp);
+> +    if (!cper.data) {
+> +        return;
+> +    }
+> +
+> +    /* TODO: call a function at ghes */
+> +
+> +    g_free(cper.data);
+> +}
+> diff --git a/hw/acpi/ghes_cper_stub.c b/hw/acpi/ghes_cper_stub.c
+> new file mode 100644
+> index 000000000000..2358e039b181
+> --- /dev/null
+> +++ b/hw/acpi/ghes_cper_stub.c
+> @@ -0,0 +1,19 @@
+> +/*
+> + * ARM Processor error injection
+> + *
+> + * Copyright(C) 2024 Huawei LTD.
+> + *
+> + * This code is licensed under the GPL version 2 or later. See the
+> + * COPYING file in the top-level directory.
+> + *
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "qapi/error.h"
+> +#include "qapi/qapi-commands-ghes-cper.h"
+> +#include "hw/acpi/ghes.h"
+> +
+> +void qmp_ghes_cper(CommonPlatformErrorRecord *cper, Error **errp)
+> +{
+> +    error_setg(errp, "GHES QMP error inject is not compiled in");
+> +}
+> diff --git a/hw/acpi/meson.build b/hw/acpi/meson.build
+> index fa5c07db9068..6cbf430eb66d 100644
+> --- a/hw/acpi/meson.build
+> +++ b/hw/acpi/meson.build
+> @@ -34,4 +34,6 @@ endif
+>  system_ss.add(when: 'CONFIG_ACPI', if_false: files('acpi-stub.c', 'aml-b=
+uild-stub.c', 'ghes-stub.c', 'acpi_interface.c'))
+>  system_ss.add(when: 'CONFIG_ACPI_PCI_BRIDGE', if_false: files('pci-bridg=
+e-stub.c'))
+>  system_ss.add_all(when: 'CONFIG_ACPI', if_true: acpi_ss)
+> +system_ss.add(when: 'CONFIG_GHES_CPER', if_true: files('ghes_cper.c'))
+> +system_ss.add(when: 'CONFIG_GHES_CPER', if_false: files('ghes_cper_stub.=
+c'))
+>  system_ss.add(files('acpi-qmp-cmds.c'))
+> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+> index 1ad60da7aa2d..bed6ba27d715 100644
+> --- a/hw/arm/Kconfig
+> +++ b/hw/arm/Kconfig
+> @@ -712,3 +712,8 @@ config ARMSSE
+>      select UNIMP
+>      select SSE_COUNTER
+>      select SSE_TIMER
+> +
+> +config GHES_CPER
+> +    bool
+> +    depends on ARM
+> +    default y if AARCH64
+> diff --git a/include/hw/acpi/ghes.h b/include/hw/acpi/ghes.h
+> index ce6f82a1155a..a7a18c7b50cf 100644
+> --- a/include/hw/acpi/ghes.h
+> +++ b/include/hw/acpi/ghes.h
+> @@ -23,6 +23,7 @@
+>  #define ACPI_GHES_H
+> =20
+>  #include "hw/acpi/bios-linker-loader.h"
+> +#include "qapi/error.h"
+>  #include "qemu/notify.h"
+> =20
+>  extern NotifierList acpi_generic_error_notifiers;
+> @@ -78,6 +79,12 @@ void acpi_ghes_add_fw_cfg(AcpiGhesState *vms, FWCfgSta=
+te *s,
+>                            GArray *hardware_errors);
+>  int acpi_ghes_record_errors(uint8_t notify, uint64_t error_physical_addr=
+);
+> =20
+> +typedef struct AcpiGhesCper {
+> +    uint8_t *guid;
+> +    uint8_t *data;
+> +    size_t data_len;
+> +} AcpiGhesCper;
+> +
+>  /**
+>   * acpi_ghes_present: Report whether ACPI GHES table is present
+>   *
+> diff --git a/qapi/ghes-cper.json b/qapi/ghes-cper.json
+> new file mode 100644
+> index 000000000000..3cc4f9f2aaa9
+> --- /dev/null
+> +++ b/qapi/ghes-cper.json
+> @@ -0,0 +1,55 @@
+> +# -*- Mode: Python -*-
+> +# vim: filetype=3Dpython
+> +
+> +##
+> +# =3D GHESv2 CPER Error Injection
+> +#
+> +# These are defined at
+> +# ACPI 6.2: 18.3.2.8 Generic Hardware Error Source version 2
+> +# (GHESv2 - Type 10)
+> +##
+> +
+> +##
+> +# @CommonPlatformErrorRecord:
+> +#
+> +# Common Platform Error Record - CPER - as defined at the UEFI
+> +# specification.  See
+> +# https://uefi.org/specs/UEFI/2.10/Apx_N_Common_Platform_Error_Record.ht=
+ml#record-header
+> +# for more details.
+> +#
+> +# @notification-type: pre-assigned GUID string indicating the record
+> +#   association with an error event notification type, as defined
+> +#   at https://uefi.org/specs/UEFI/2.10/Apx_N_Common_Platform_Error_Reco=
+rd.html#record-header
+> +#
+> +# @raw-data: Contains a base64 encoded string with the payload of
+> +#   the CPER.
+> +#
+> +# Since: 9.2
+> +##
+> +{ 'struct': 'CommonPlatformErrorRecord',
+> +  'data': {
+> +      'notification-type': 'str',
 
-I think it was nicer in the previous attempt to bump the avocado version:
+like was mentioned at v5 review,
+you only need this for setting cper notification type if you are (re)using
 
-https://gitlab.com/qemu-project/qemu/-/commit/ec5ffa0056389c3c10ea2de1e783
+  acpi_ghes_generic_error_status() && acpi_ghes_generic_error_data()
 
-This re-used the "-j" option from "make", so you could do "make -j$(nproc) 
-check-avocado" just like with the other "check" targets.
+however while doing this in (6/10), you are also limiting what
+could be encoded in headers to some hardcoded values.
 
-  Thomas
+Given QEMU doesn't need to know anything about notification type,
+modulo putting it data block header, it would be beneficial
+to drop 'notification type' from QAPI interface, and include
+error status block and error data headers in raw-data.
+
+This way it should be possible to change headers within python script
+without affecting QEMU and QAPI interface. On top of that
+ghes_record_cper_errors() could be simplified by dropping (in 6/10)
+   acpi_ghes_generic_error_status() && acpi_ghes_generic_error_data()
+and just copying raw-data as is directly into error buffer (assuming
+script put needed headers cper data).
+
+=46rom fusing pov it's also beneficial to try generate junk error status
+block headers, for which python script looks like ideal place to put
+it in.
+
+> +      'raw-data': 'str'
+> +  }
+> +}
+> +
+> +##
+> +# @ghes-cper:
+> +#
+> +# Inject ARM Processor error with data to be filled according with
+> +# ACPI 6.2 GHESv2 spec.
+> +#
+> +# @cper: a single CPER record to be sent to the guest OS.
+> +#
+> +# Features:
+> +#
+> +# @unstable: This command is experimental.
+> +#
+> +# Since: 9.2
+> +##
+> +{ 'command': 'ghes-cper',
+> +  'data': {
+> +    'cper': 'CommonPlatformErrorRecord'
+> +  },
+> +  'features': [ 'unstable' ]
+> +}
+> diff --git a/qapi/meson.build b/qapi/meson.build
+> index e7bc54e5d047..bd13cd7d40c9 100644
+> --- a/qapi/meson.build
+> +++ b/qapi/meson.build
+> @@ -35,6 +35,7 @@ qapi_all_modules =3D [
+>    'dump',
+>    'ebpf',
+>    'error',
+> +  'ghes-cper',
+>    'introspect',
+>    'job',
+>    'machine-common',
+> diff --git a/qapi/qapi-schema.json b/qapi/qapi-schema.json
+> index b1581988e4eb..c1a267399fe5 100644
+> --- a/qapi/qapi-schema.json
+> +++ b/qapi/qapi-schema.json
+> @@ -75,6 +75,7 @@
+>  { 'include': 'misc-target.json' }
+>  { 'include': 'audio.json' }
+>  { 'include': 'acpi.json' }
+> +{ 'include': 'ghes-cper.json' }
+>  { 'include': 'pci.json' }
+>  { 'include': 'stats.json' }
+>  { 'include': 'virtio.json' }
+

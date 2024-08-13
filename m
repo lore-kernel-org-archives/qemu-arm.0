@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-36e4cfeef61sm11263938f8f.57.2024.08.13.13.23.35
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-429c750ef58sm151364125e9.16.2024.08.13.13.23.34
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Tue, 13 Aug 2024 13:23:38 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id A48BE5FD6E;
+	by draig.lan (Postfix) with ESMTP id 707085FCE1;
 	Tue, 13 Aug 2024 21:23:30 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -47,104 +47,152 @@ Cc: Alistair Francis <alistair.francis@wdc.com>,
 	Bin Meng <bmeng.cn@gmail.com>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
 	Wainer dos Santos Moschetta <wainersm@redhat.com>,
-	Nicholas Piggin <npiggin@gmail.com>
-Subject: [PATCH v2 13/21] Revert "replay: stop us hanging in rr_wait_io_event"
-Date: Tue, 13 Aug 2024 21:23:21 +0100
-Message-Id: <20240813202329.1237572-14-alex.bennee@linaro.org>
+	Nicholas Piggin <npiggin@gmail.com>,
+	Pavel Dovgalyuk <Pavel.Dovgalyuk@ispras.ru>
+Subject: [PATCH v2 11/21] tests/avocado: excercise scripts/replay-dump.py in replay tests
+Date: Tue, 13 Aug 2024 21:23:19 +0100
+Message-Id: <20240813202329.1237572-12-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240813202329.1237572-1-alex.bennee@linaro.org>
 References: <20240813202329.1237572-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 09s3crpdAr0D
+X-TUID: hdMKRmqHEY/U
 
 From: Nicholas Piggin <npiggin@gmail.com>
 
-This reverts commit 1f881ea4a444ef36a8b6907b0b82be4b3af253a2.
+This runs replay-dump.py after recording a trace, and fails the test if
+the script fails.
 
-That commit causes reverse_debugging.py test failures, and does
-not seem to solve the root cause of the problem x86-64 still
-hangs in record/replay tests.
+replay-dump.py is modified to exit with non-zero if an error is
+encountered while parsing, to support this.
 
-The problem with short-cutting the iowait that was taken during
-record phase is that related events will not get consumed at the
-same points (e.g., reading the clock).
-
-A hang with zero icount always seems to be a symptom of an earlier
-problem that has caused the recording to become out of synch with
-the execution and consumption of events by replay.
-
-Acked-by: Alex Bennée <alex.bennee@linaro.org>
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+Reviewed-by: Pavel Dovgalyuk <Pavel.Dovgalyuk@ispras.ru>
 Signed-off-by: Nicholas Piggin <npiggin@gmail.com>
-Message-Id: <20240813050638.446172-6-npiggin@gmail.com>
+
+gitlab with this change
+
+v5: Update timeout to 180s because x86 was just exceeding 120s in
+Message-Id: <20240813050638.446172-4-npiggin@gmail.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- include/sysemu/replay.h      |  5 -----
- accel/tcg/tcg-accel-ops-rr.c |  2 +-
- replay/replay.c              | 21 ---------------------
- 3 files changed, 1 insertion(+), 27 deletions(-)
+ scripts/replay-dump.py         |  6 ++++--
+ tests/avocado/replay_kernel.py | 13 ++++++++++++-
+ tests/avocado/replay_linux.py  | 10 ++++++++++
+ 3 files changed, 26 insertions(+), 3 deletions(-)
 
-diff --git a/include/sysemu/replay.h b/include/sysemu/replay.h
-index f229b2109c..8102fa54f0 100644
---- a/include/sysemu/replay.h
-+++ b/include/sysemu/replay.h
-@@ -73,11 +73,6 @@ int replay_get_instructions(void);
- /*! Updates instructions counter in replay mode. */
- void replay_account_executed_instructions(void);
+diff --git a/scripts/replay-dump.py b/scripts/replay-dump.py
+index b82659cfb6..4ce7ff51cc 100755
+--- a/scripts/replay-dump.py
++++ b/scripts/replay-dump.py
+@@ -21,6 +21,7 @@
+ import argparse
+ import struct
+ import os
++import sys
+ from collections import namedtuple
+ from os import path
  
--/**
-- * replay_can_wait: check if we should pause for wait-io
-- */
--bool replay_can_wait(void);
--
- /* Processing clocks and other time sources */
+@@ -100,7 +101,7 @@ def call_decode(table, index, dumpfile):
+         print("Could not decode index: %d" % (index))
+         print("Entry is: %s" % (decoder))
+         print("Decode Table is:\n%s" % (table))
+-        return False
++        raise(Exception("unknown event"))
+     else:
+         return decoder.fn(decoder.eid, decoder.name, dumpfile)
  
- /*! Save the specified clock */
-diff --git a/accel/tcg/tcg-accel-ops-rr.c b/accel/tcg/tcg-accel-ops-rr.c
-index 48c38714bd..c59c77da4b 100644
---- a/accel/tcg/tcg-accel-ops-rr.c
-+++ b/accel/tcg/tcg-accel-ops-rr.c
-@@ -109,7 +109,7 @@ static void rr_wait_io_event(void)
- {
-     CPUState *cpu;
+@@ -121,7 +122,7 @@ def print_event(eid, name, string=None, event_count=None):
+ def decode_unimp(eid, name, _unused_dumpfile):
+     "Unimplemented decoder, will trigger exit"
+     print("%s not handled - will now stop" % (name))
+-    return False
++    raise(Exception("unhandled event"))
  
--    while (all_cpu_threads_idle() && replay_can_wait()) {
-+    while (all_cpu_threads_idle()) {
-         rr_stop_kick_timer();
-         qemu_cond_wait_bql(first_cpu->halt_cond);
-     }
-diff --git a/replay/replay.c b/replay/replay.c
-index b8564a4813..895fa6b67a 100644
---- a/replay/replay.c
-+++ b/replay/replay.c
-@@ -451,27 +451,6 @@ void replay_start(void)
-     replay_enable_events();
- }
+ def decode_plain(eid, name, _unused_dumpfile):
+     "Plain events without additional data"
+@@ -434,6 +435,7 @@ def decode_file(filename):
+                                     dumpfile)
+     except Exception as inst:
+         print(f"error {inst}")
++        sys.exit(1)
  
--/*
-- * For none/record the answer is yes.
-- */
--bool replay_can_wait(void)
--{
--    if (replay_mode == REPLAY_MODE_PLAY) {
--        /*
--         * For playback we shouldn't ever be at a point we wait. If
--         * the instruction count has reached zero and we have an
--         * unconsumed event we should go around again and consume it.
--         */
--        if (replay_state.instruction_count == 0 && replay_state.has_unread_data) {
--            return false;
--        } else {
--            replay_sync_error("Playback shouldn't have to iowait");
--        }
--    }
--    return true;
--}
--
--
- void replay_finish(void)
- {
-     if (replay_mode == REPLAY_MODE_NONE) {
+     finally:
+         print(f"Reached {dumpfile.tell()} of {dumpsize} bytes")
+diff --git a/tests/avocado/replay_kernel.py b/tests/avocado/replay_kernel.py
+index 232d287c27..a668af9d36 100644
+--- a/tests/avocado/replay_kernel.py
++++ b/tests/avocado/replay_kernel.py
+@@ -13,6 +13,7 @@
+ import shutil
+ import logging
+ import time
++import subprocess
+ 
+ from avocado import skip
+ from avocado import skipUnless
+@@ -31,7 +32,7 @@ class ReplayKernelBase(LinuxKernelTest):
+     terminates.
+     """
+ 
+-    timeout = 120
++    timeout = 180
+     KERNEL_COMMON_COMMAND_LINE = 'printk.time=1 panic=-1 '
+ 
+     def run_vm(self, kernel_path, kernel_command_line, console_pattern,
+@@ -63,6 +64,8 @@ def run_vm(self, kernel_path, kernel_command_line, console_pattern,
+             vm.shutdown()
+             logger.info('finished the recording with log size %s bytes'
+                         % os.path.getsize(replay_path))
++            self.run_replay_dump(replay_path)
++            logger.info('successfully tested replay-dump.py')
+         else:
+             vm.wait()
+             logger.info('successfully finished the replay')
+@@ -70,6 +73,14 @@ def run_vm(self, kernel_path, kernel_command_line, console_pattern,
+         logger.info('elapsed time %.2f sec' % elapsed)
+         return elapsed
+ 
++    def run_replay_dump(self, replay_path):
++        try:
++            subprocess.check_call(["./scripts/replay-dump.py",
++                                   "-f", replay_path],
++                                  stdout=subprocess.DEVNULL)
++        except subprocess.CalledProcessError:
++            self.fail('replay-dump.py failed')
++
+     def run_rr(self, kernel_path, kernel_command_line, console_pattern,
+                shift=7, args=None):
+         replay_path = os.path.join(self.workdir, 'replay.bin')
+diff --git a/tests/avocado/replay_linux.py b/tests/avocado/replay_linux.py
+index b4673261ce..5916922435 100644
+--- a/tests/avocado/replay_linux.py
++++ b/tests/avocado/replay_linux.py
+@@ -94,6 +94,8 @@ def launch_and_wait(self, record, args, shift):
+             vm.shutdown()
+             logger.info('finished the recording with log size %s bytes'
+                 % os.path.getsize(replay_path))
++            self.run_replay_dump(replay_path)
++            logger.info('successfully tested replay-dump.py')
+         else:
+             vm.event_wait('SHUTDOWN', self.timeout)
+             vm.wait()
+@@ -108,6 +110,14 @@ def run_rr(self, args=None, shift=7):
+         logger = logging.getLogger('replay')
+         logger.info('replay overhead {:.2%}'.format(t2 / t1 - 1))
+ 
++    def run_replay_dump(self, replay_path):
++        try:
++            subprocess.check_call(["./scripts/replay-dump.py",
++                                   "-f", replay_path],
++                                  stdout=subprocess.DEVNULL)
++        except subprocess.CalledProcessError:
++            self.fail('replay-dump.py failed')
++
+ @skipUnless(os.getenv('AVOCADO_TIMEOUT_EXPECTED'), 'Test might timeout')
+ class ReplayLinuxX8664(ReplayLinux):
+     """
 -- 
 2.39.2

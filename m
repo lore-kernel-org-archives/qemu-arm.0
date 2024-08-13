@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-429c750ef58sm151364125e9.16.2024.08.13.13.23.34
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-429deb51794sm849865e9.22.2024.08.13.13.23.35
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Tue, 13 Aug 2024 13:23:38 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 707085FCE1;
+	by draig.lan (Postfix) with ESMTP id EC265601E0;
 	Tue, 13 Aug 2024 21:23:30 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -49,150 +49,87 @@ Cc: Alistair Francis <alistair.francis@wdc.com>,
 	Wainer dos Santos Moschetta <wainersm@redhat.com>,
 	Nicholas Piggin <npiggin@gmail.com>,
 	Pavel Dovgalyuk <Pavel.Dovgalyuk@ispras.ru>
-Subject: [PATCH v2 11/21] tests/avocado: excercise scripts/replay-dump.py in replay tests
-Date: Tue, 13 Aug 2024 21:23:19 +0100
-Message-Id: <20240813202329.1237572-12-alex.bennee@linaro.org>
+Subject: [PATCH v2 16/21] virtio-net: Use replay_schedule_bh_event for bhs that affect machine state
+Date: Tue, 13 Aug 2024 21:23:24 +0100
+Message-Id: <20240813202329.1237572-17-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240813202329.1237572-1-alex.bennee@linaro.org>
 References: <20240813202329.1237572-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: hdMKRmqHEY/U
+X-TUID: wHmE4zTHwbuM
 
 From: Nicholas Piggin <npiggin@gmail.com>
 
-This runs replay-dump.py after recording a trace, and fails the test if
-the script fails.
-
-replay-dump.py is modified to exit with non-zero if an error is
-encountered while parsing, to support this.
+The regular qemu_bh_schedule() calls result in non-deterministic
+execution of the bh in record-replay mode, which causes replay failure.
 
 Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
 Reviewed-by: Pavel Dovgalyuk <Pavel.Dovgalyuk@ispras.ru>
 Signed-off-by: Nicholas Piggin <npiggin@gmail.com>
-
-gitlab with this change
-
-v5: Update timeout to 180s because x86 was just exceeding 120s in
-Message-Id: <20240813050638.446172-4-npiggin@gmail.com>
+Message-Id: <20240813050638.446172-9-npiggin@gmail.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- scripts/replay-dump.py         |  6 ++++--
- tests/avocado/replay_kernel.py | 13 ++++++++++++-
- tests/avocado/replay_linux.py  | 10 ++++++++++
- 3 files changed, 26 insertions(+), 3 deletions(-)
+ hw/net/virtio-net.c | 11 ++++++-----
+ 1 file changed, 6 insertions(+), 5 deletions(-)
 
-diff --git a/scripts/replay-dump.py b/scripts/replay-dump.py
-index b82659cfb6..4ce7ff51cc 100755
---- a/scripts/replay-dump.py
-+++ b/scripts/replay-dump.py
-@@ -21,6 +21,7 @@
- import argparse
- import struct
- import os
-+import sys
- from collections import namedtuple
- from os import path
+diff --git a/hw/net/virtio-net.c b/hw/net/virtio-net.c
+index 08aa0b65e3..10ebaae5e2 100644
+--- a/hw/net/virtio-net.c
++++ b/hw/net/virtio-net.c
+@@ -40,6 +40,7 @@
+ #include "migration/misc.h"
+ #include "standard-headers/linux/ethtool.h"
+ #include "sysemu/sysemu.h"
++#include "sysemu/replay.h"
+ #include "trace.h"
+ #include "monitor/qdev.h"
+ #include "monitor/monitor.h"
+@@ -417,7 +418,7 @@ static void virtio_net_set_status(struct VirtIODevice *vdev, uint8_t status)
+                 timer_mod(q->tx_timer,
+                                qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) + n->tx_timeout);
+             } else {
+-                qemu_bh_schedule(q->tx_bh);
++                replay_bh_schedule_event(q->tx_bh);
+             }
+         } else {
+             if (q->tx_timer) {
+@@ -2672,7 +2673,7 @@ static void virtio_net_tx_complete(NetClientState *nc, ssize_t len)
+          */
+         virtio_queue_set_notification(q->tx_vq, 0);
+         if (q->tx_bh) {
+-            qemu_bh_schedule(q->tx_bh);
++            replay_bh_schedule_event(q->tx_bh);
+         } else {
+             timer_mod(q->tx_timer,
+                       qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) + n->tx_timeout);
+@@ -2838,7 +2839,7 @@ static void virtio_net_handle_tx_bh(VirtIODevice *vdev, VirtQueue *vq)
+         return;
+     }
+     virtio_queue_set_notification(vq, 0);
+-    qemu_bh_schedule(q->tx_bh);
++    replay_bh_schedule_event(q->tx_bh);
+ }
  
-@@ -100,7 +101,7 @@ def call_decode(table, index, dumpfile):
-         print("Could not decode index: %d" % (index))
-         print("Entry is: %s" % (decoder))
-         print("Decode Table is:\n%s" % (table))
--        return False
-+        raise(Exception("unknown event"))
-     else:
-         return decoder.fn(decoder.eid, decoder.name, dumpfile)
- 
-@@ -121,7 +122,7 @@ def print_event(eid, name, string=None, event_count=None):
- def decode_unimp(eid, name, _unused_dumpfile):
-     "Unimplemented decoder, will trigger exit"
-     print("%s not handled - will now stop" % (name))
--    return False
-+    raise(Exception("unhandled event"))
- 
- def decode_plain(eid, name, _unused_dumpfile):
-     "Plain events without additional data"
-@@ -434,6 +435,7 @@ def decode_file(filename):
-                                     dumpfile)
-     except Exception as inst:
-         print(f"error {inst}")
-+        sys.exit(1)
- 
-     finally:
-         print(f"Reached {dumpfile.tell()} of {dumpsize} bytes")
-diff --git a/tests/avocado/replay_kernel.py b/tests/avocado/replay_kernel.py
-index 232d287c27..a668af9d36 100644
---- a/tests/avocado/replay_kernel.py
-+++ b/tests/avocado/replay_kernel.py
-@@ -13,6 +13,7 @@
- import shutil
- import logging
- import time
-+import subprocess
- 
- from avocado import skip
- from avocado import skipUnless
-@@ -31,7 +32,7 @@ class ReplayKernelBase(LinuxKernelTest):
-     terminates.
-     """
- 
--    timeout = 120
-+    timeout = 180
-     KERNEL_COMMON_COMMAND_LINE = 'printk.time=1 panic=-1 '
- 
-     def run_vm(self, kernel_path, kernel_command_line, console_pattern,
-@@ -63,6 +64,8 @@ def run_vm(self, kernel_path, kernel_command_line, console_pattern,
-             vm.shutdown()
-             logger.info('finished the recording with log size %s bytes'
-                         % os.path.getsize(replay_path))
-+            self.run_replay_dump(replay_path)
-+            logger.info('successfully tested replay-dump.py')
-         else:
-             vm.wait()
-             logger.info('successfully finished the replay')
-@@ -70,6 +73,14 @@ def run_vm(self, kernel_path, kernel_command_line, console_pattern,
-         logger.info('elapsed time %.2f sec' % elapsed)
-         return elapsed
- 
-+    def run_replay_dump(self, replay_path):
-+        try:
-+            subprocess.check_call(["./scripts/replay-dump.py",
-+                                   "-f", replay_path],
-+                                  stdout=subprocess.DEVNULL)
-+        except subprocess.CalledProcessError:
-+            self.fail('replay-dump.py failed')
-+
-     def run_rr(self, kernel_path, kernel_command_line, console_pattern,
-                shift=7, args=None):
-         replay_path = os.path.join(self.workdir, 'replay.bin')
-diff --git a/tests/avocado/replay_linux.py b/tests/avocado/replay_linux.py
-index b4673261ce..5916922435 100644
---- a/tests/avocado/replay_linux.py
-+++ b/tests/avocado/replay_linux.py
-@@ -94,6 +94,8 @@ def launch_and_wait(self, record, args, shift):
-             vm.shutdown()
-             logger.info('finished the recording with log size %s bytes'
-                 % os.path.getsize(replay_path))
-+            self.run_replay_dump(replay_path)
-+            logger.info('successfully tested replay-dump.py')
-         else:
-             vm.event_wait('SHUTDOWN', self.timeout)
-             vm.wait()
-@@ -108,6 +110,14 @@ def run_rr(self, args=None, shift=7):
-         logger = logging.getLogger('replay')
-         logger.info('replay overhead {:.2%}'.format(t2 / t1 - 1))
- 
-+    def run_replay_dump(self, replay_path):
-+        try:
-+            subprocess.check_call(["./scripts/replay-dump.py",
-+                                   "-f", replay_path],
-+                                  stdout=subprocess.DEVNULL)
-+        except subprocess.CalledProcessError:
-+            self.fail('replay-dump.py failed')
-+
- @skipUnless(os.getenv('AVOCADO_TIMEOUT_EXPECTED'), 'Test might timeout')
- class ReplayLinuxX8664(ReplayLinux):
-     """
+ static void virtio_net_tx_timer(void *opaque)
+@@ -2921,7 +2922,7 @@ static void virtio_net_tx_bh(void *opaque)
+     /* If we flush a full burst of packets, assume there are
+      * more coming and immediately reschedule */
+     if (ret >= n->tx_burst) {
+-        qemu_bh_schedule(q->tx_bh);
++        replay_bh_schedule_event(q->tx_bh);
+         q->tx_waiting = 1;
+         return;
+     }
+@@ -2935,7 +2936,7 @@ static void virtio_net_tx_bh(void *opaque)
+         return;
+     } else if (ret > 0) {
+         virtio_queue_set_notification(q->tx_vq, 0);
+-        qemu_bh_schedule(q->tx_bh);
++        replay_bh_schedule_event(q->tx_bh);
+         q->tx_waiting = 1;
+     }
+ }
 -- 
 2.39.2

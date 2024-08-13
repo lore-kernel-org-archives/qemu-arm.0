@@ -1,246 +1,355 @@
-Received: by 2002:a17:504:6454:b0:1be9:327d:8ee3 with SMTP id g20csp926448njh;
-        Mon, 12 Aug 2024 14:14:37 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVXotBxHWQu8Zwu3H4JQRTuhfv9IcDPnw892uX1+KP2qf+S7mgsc43I/gsBk+2HquURea++FMQviLuPIw==@linaro.org
-X-Received: by 2002:a2e:7a1a:0:b0:2f2:9f39:3e58 with SMTP id 38308e7fff4ca-2f2b717f104mr9272191fa.48.1723497277171;
-        Mon, 12 Aug 2024 14:14:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1723497277; cv=none;
+Received: by 2002:a17:504:6454:b0:1be9:327d:8ee3 with SMTP id g20csp976995njh;
+        Mon, 12 Aug 2024 17:59:03 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXt/2FNAA8G/6NGBGoneTovcnL86aOrDtSdkfEJ5+LST6gqEPxl+jN8IROHnfDGbvzb59hxO3bL31d2eMgwtcQMAQ7oUIwB
+X-Google-Smtp-Source: AGHT+IGIHntcLHKoGknqMJsUUb/6DjT7kIW79yEWAkvWqditWLWs12DV2zdJAMg1JtWluB+eMEUV
+X-Received: by 2002:a05:6214:3990:b0:6bb:841c:ec72 with SMTP id 6a1803df08f44-6bf4f64437amr19156866d6.10.1723510743353;
+        Mon, 12 Aug 2024 17:59:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1723510743; cv=none;
         d=google.com; s=arc-20160816;
-        b=o7msOlAppssYGKFktJ4q0XSvSqjgHZluaVGNlO08gIILMjbxmr12KaScSy6J5hU9Qd
-         W87rjtKALUR9O0gzsPCARdune9iVkgq3XRavbkOcACTymkdVn13c9wW85k0MSxWoE8lh
-         SWv5X+CCzVADYiI64saWneiIJpT8usdsshlgSDX+YByOTFqW0lcTDmj81xmyFoZFkFpn
-         sUKzxB3u8R42nnstRS2WGsRH/tKJn3Joay6VlMgHAJ2K/HCZoUvgrDNmziwLTOSXGQfC
-         oqWSV5uQkDwH4Zi6ekbMbon3PO1jbVo1xX35vcMc4A2R/LTd0UfRp7n1yUJOpg1hqBdj
-         TabQ==
+        b=UR4VVgzUiQExYThmOwxRb+tmc6CxtDJnyLLoh1uKN2ogjnlVYp3ruNa83NIpF9PNRG
+         XyNdtes6NEppagudOFQpoiXCqWwOiv9pKSt802sC/io39HE8fw2zZ2qSeMiVPwCVATpr
+         S5Sy5V//89S0dlcy9P9G76v7MY7B81oyoYbtJuIihitRiZwAqYHHlL704uGEZ2vq1YUM
+         Np16MdyQgcXiuRxQH0/KKaKM5MLDq9dCPPgZVlbtPjgDgnnzktLkpakXP2pU4IG8kPu3
+         8w6nOSaDN4NabVL2wXgmdPxa2tz254VPicJkLOqrKv5MrKQ8vb70QwEoHq/87JrYrG4m
+         m69Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=mMvb+UqDsd/Tku1WIghTxYcMI1Pxj9JCY1dloGvUNN4=;
-        fh=X57SQT6hxYhvuXBb53M9i4duCzoCGLa0paiZxDdf95Q=;
-        b=yPDe6v603T5fnobm0p0h7WIxtmSYCRvXL21XlCoJqqLT5+CW51pREsTt9qdcvniumM
-         Lh4DMIojL5VRJstExpWCRH0AfOYmPoUCXCk01wDlef3SuhaSxc4OCcmwwgu5T4CI0A9u
-         Iq0tmQaUdTwf1fG5MubwEIrvmUEH/7tqN+ObOFIrkKRheK+aBGWwqaY6Uu/X0e7A7Eox
-         vPX+Gzwhl28414bErjdS9XYebKStfXk8Wmqqg3LaJY1dF33AoeI1PDbljM7ebaF1XVkI
-         K4Bz0hCqeSiGXcUAWdOpCcuZSy06lFviTqCrKYM4KLL092vCGlapXZXtnGEIY3vJEF0O
-         0MYg==;
+        h=content-transfer-encoding:content-language:in-reply-to:from
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=nV8Xc8YlKV+JuEIM5/YPpDaqb0wYvN4enutlkVVh7kw=;
+        fh=j7+n5jpihrZ/DBzyYKbP7vZQBPhVM4s5vitgXhNKGVk=;
+        b=fzWM7ymDOkw1uLulUeuiZ4PgEDq/AvpETNv22z9Z+kXwgPt0elA749vFkBVvsZfaqm
+         TYYlpkSC1iAAhphEWHnHJIx/+8CGQq29HSWqTXsYt67bunpmsJSr6DWZrsr+vIBcEL5c
+         Ht8oTNXOIuJDb0H1zTUgz6olF7iD65zTFdALpIoslcavq/kEX7Kw5+6WrhbpCoZHaNEG
+         ifWlM1TVH3JoQfdfOkUWTOWqNz5PhFt/PooqusFQAj1kuUQNvDWbWaBoHH/LGvy30INP
+         9jcUbosX5E3j3O86BLmdFsTrEjqOHwBhRwAsXY4maxKcyJVNmPGkbksfdthDbmWlG0sv
+         faYA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=Pfa5kDpJ;
-       spf=pass (google.com: domain of tavip@google.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=tavip@google.com;
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
-       dara=neutral header.i=@linaro.org
-Return-Path: <tavip@google.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 5b1f17b1804b1-429c7d7bd01sor15563035e9.5.2024.08.12.14.14.36
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZLMzfsxU;
+       spf=pass (google.com: domain of gshan@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=gshan@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <gshan@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6bd82c60893si73415956d6.23.2024.08.12.17.59.03
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 12 Aug 2024 14:14:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of tavip@google.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 12 Aug 2024 17:59:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gshan@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=Pfa5kDpJ;
-       spf=pass (google.com: domain of tavip@google.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=tavip@google.com;
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20230601; t=1723497276; x=1724102076; darn=linaro.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=mMvb+UqDsd/Tku1WIghTxYcMI1Pxj9JCY1dloGvUNN4=;
-        b=Pfa5kDpJxECm1hM4KCTpuRdIjXHd4kig/+WrKm7vuJw95xFJ5+UYQZucY+LLcarq0G
-         ptdv83upUnG+qIITDBWiGznVAMiwTlIJWbEaQe9gBDp43zMbuVGtDQE82D0hUAafMjz2
-         vwd6uFlbZVHQmca8CeGx3JktuhqTorxDoXtwoNFmitOBqqQt34xWXy7DTP2DBSbHZiTl
-         wZJXwN9K67ec0Z4ddLkoxXWtvFIQrrqHShUone+8DCtjEqq943DIPjtQMKUbXwUg3pFi
-         tEeex6p8gM2OC/U1CP1EcKZKnNOSCwbja2V+1w6Ujh80CCTa/p3soa314xhFewotJSiK
-         h7YA==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZLMzfsxU;
+       spf=pass (google.com: domain of gshan@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=gshan@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1723510743;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=nV8Xc8YlKV+JuEIM5/YPpDaqb0wYvN4enutlkVVh7kw=;
+	b=ZLMzfsxUieoBm3wltXQNLRpecx7fM2BNqXFiytTatwMzNy3v0MlifBU1lvVn4pNNitZcf7
+	DdaCnbGDFB95HiKzih6p4XCfHcHo8uhL3uD6+hsouJV8ZNYzPmClUX4MnCwvG9ViaBGMmd
+	Ixaj4nJ5Ui8vueJ2engGoxpP6iuopwk=
+Received: from mail-pl1-f197.google.com (mail-pl1-f197.google.com
+ [209.85.214.197]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-695-2HJPXxd6MRC6D_sZMyQRDg-1; Mon, 12 Aug 2024 20:59:01 -0400
+X-MC-Unique: 2HJPXxd6MRC6D_sZMyQRDg-1
+Received: by mail-pl1-f197.google.com with SMTP id d9443c01a7336-1fc58790766so51171785ad.3
+        for <alex.bennee@linaro.org>; Mon, 12 Aug 2024 17:59:01 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1723497276; x=1724102076;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=mMvb+UqDsd/Tku1WIghTxYcMI1Pxj9JCY1dloGvUNN4=;
-        b=bWX5OwA4+rhKXlvJ6kHoXqrvsmV8wBdiD2VVKR7VjApmY2F59CBcvbfVdBVwaXqOMS
-         F23kM42L7N1QqAXBPsGtn24n23tEeONsh/uHceGXJUjBUFQU3FwOxu7kHe5WzHjeaBN6
-         18z7acivRv5Q2q/HNNPkdF7zYqT07+yg/P7w/SA+ZjgX+H/El7wUyBzd9VF3oJME1nEs
-         9wOspbxxNXfNvSCOueOeoz+4+0hxsM4fQSsJDtVpXv1rEniburnxScTdpih3Fozmohm1
-         idUuVM0Ehupizb8Ud8PDBiYvMApqrHbYqF9vXqH+Mgtvgv4PA+lTKF1whWQGT7Q5CX7k
-         9+Hg==
-X-Forwarded-Encrypted: i=1; AJvYcCXWwm9zwFBkfPj0+l8baol7WDIX+H7MGEoJsXjXj8hMNtowfhT7xeH/yBaIFgQqWGirKemfvT7PGY0AIw==@linaro.org
-X-Gm-Message-State: AOJu0YzBCZRgNNFugVWGGrBy/c1E4dOBPIf7iHIUSlX99rwGvYkNoOLW
-	YdPd3J8+7S2k5+NmG/FRpdWvOJADH4gdEZK9OwLsLLforcwJgjhMsDtEry2Kqmn6OX4LcCiNxSI
-	PrdiiOsYv7lVmR67dTni/h/RS8lUcJDcHkdZp
-X-Google-Smtp-Source: AGHT+IEI/lb3441nKg8VrlmQXZ7GlntoNFJyPGTMbczV9Khc1nhlnD+RGCJQxF9Ns6orFxbnzfY1Y37Ki02HqQmRNBE=
-X-Received: by 2002:a05:6000:1803:b0:368:6620:20ec with SMTP id
- ffacd0b85a97d-3716cd23cc6mr1128697f8f.43.1723497276284; Mon, 12 Aug 2024
- 14:14:36 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1723510740; x=1724115540;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=nV8Xc8YlKV+JuEIM5/YPpDaqb0wYvN4enutlkVVh7kw=;
+        b=a9MhqAiUf8UVfdh4FcBOp+vTI2lbt/g/apuyLENke1A64wO8vUSSib6XpZRgavrkUA
+         zXSLlCiUE/w7jNa4w9K8DbZ3T4bqtj14HewZGS/tUEGZ1sGr+BAk/4HmV55EDAGq5QXP
+         IgeKSTIuUWo5M+Zgkiaf/G6qDcZ4vYy9n+zO0AQYwRTZb+DXCDB1rs3YqYa1dx847PxL
+         GhKlAKaiymIW61xxF6hE05zoYS8GbMMnVwaRqFbypxovfK5mvo6CVOPyjo7dG1U0rS2n
+         HsNpQFqYg0scYTXMIyaJG+qfz1zY/LH1TZq8njrUvGuXSwpJM+KA+nbD6YHirXFhjQqk
+         er7g==
+X-Forwarded-Encrypted: i=1; AJvYcCU8PISi2gRrqp+JmZX784J8GvZYzbCB5hb+jrh+ukWPwTZLk77udhshkEmo8M3J+BAuREicSX1f/YgB4sZYiJL1JekZbFn6
+X-Gm-Message-State: AOJu0YynCJz1xd7onnxdGLLvXEoTm1rD38AM5GD03t0TL9FFll59V+iA
+	Vq7YhEJ7VvTC4kDAsHmS1ZwZZkidVWLZHsaQZYpGGaFRlroaxRlSjEzCNKTWpkmL6SdTsUqCw32
+	jSvY2+6YyzCvPnjk2CvWLJ036fboNhw83l9edHVUqW4ep3tvP8BXB5A==
+X-Received: by 2002:a17:902:ecc3:b0:1ff:393d:5e56 with SMTP id d9443c01a7336-201ca1743aamr27020825ad.36.1723510740334;
+        Mon, 12 Aug 2024 17:59:00 -0700 (PDT)
+X-Received: by 2002:a17:902:ecc3:b0:1ff:393d:5e56 with SMTP id d9443c01a7336-201ca1743aamr27020365ad.36.1723510739863;
+        Mon, 12 Aug 2024 17:58:59 -0700 (PDT)
+Return-Path: <gshan@redhat.com>
+Received: from [192.168.68.54] ([103.210.27.48])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-201cd14b098sm2710835ad.115.2024.08.12.17.58.46
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 12 Aug 2024 17:58:59 -0700 (PDT)
+Message-ID: <4082d244-3102-48d8-99b2-3f6a2182e379@redhat.com>
+Date: Tue, 13 Aug 2024 10:58:44 +1000
 MIME-Version: 1.0
-References: <20240805201719.2345596-1-tavip@google.com> <20240805201719.2345596-6-tavip@google.com>
- <CAFEAcA8w47gZYV8GBQa3fNf1cBWNtm_k4DAdnOVt4RWBdSrghg@mail.gmail.com>
-In-Reply-To: <CAFEAcA8w47gZYV8GBQa3fNf1cBWNtm_k4DAdnOVt4RWBdSrghg@mail.gmail.com>
-From: Octavian Purdila <tavip@google.com>
-Date: Mon, 12 Aug 2024 14:14:24 -0700
-Message-ID: <CAGWr4cSwJPMngzA7DAHRHu7eJkWGhzxuAMB2fbGRnNAx-7AR7g@mail.gmail.com>
-Subject: Re: [RFC PATCH 05/23] hw: add register access utility functions
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, stefanst@google.com, 
-	pbonzini@redhat.com, alex.bennee@linaro.org, thuth@redhat.com, 
-	marcandre.lureau@redhat.com, alistair@alistair23.me, berrange@redhat.com, 
-	philmd@linaro.org, jsnow@redhat.com, crosa@redhat.com, bleal@redhat.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: V1kowULgq0Bv
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH RFC V3 06/29] arm/virt,kvm: Pre-create disabled possible
+ vCPUs @machine init
+To: Salil Mehta <salil.mehta@huawei.com>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, mst@redhat.com
+Cc: maz@kernel.org, jean-philippe@linaro.org, jonathan.cameron@huawei.com,
+ lpieralisi@kernel.org, peter.maydell@linaro.org,
+ richard.henderson@linaro.org, imammedo@redhat.com, andrew.jones@linux.dev,
+ david@redhat.com, philmd@linaro.org, eric.auger@redhat.com, will@kernel.org,
+ ardb@kernel.org, oliver.upton@linux.dev, pbonzini@redhat.com,
+ rafael@kernel.org, borntraeger@linux.ibm.com, alex.bennee@linaro.org,
+ npiggin@gmail.com, harshpb@linux.ibm.com, linux@armlinux.org.uk,
+ darren@os.amperecomputing.com, ilkka@os.amperecomputing.com,
+ vishnu@os.amperecomputing.com, karl.heubaum@oracle.com,
+ miguel.luis@oracle.com, salil.mehta@opnsrc.net, zhukeqian1@huawei.com,
+ wangxiongfeng2@huawei.com, wangyanan55@huawei.com, jiakernel2@gmail.com,
+ maobibo@loongson.cn, lixianglai@loongson.cn, shahuang@redhat.com,
+ zhao1.liu@intel.com, linuxarm@huawei.com
+References: <20240613233639.202896-1-salil.mehta@huawei.com>
+ <20240613233639.202896-7-salil.mehta@huawei.com>
+From: Gavin Shan <gshan@redhat.com>
+In-Reply-To: <20240613233639.202896-7-salil.mehta@huawei.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-TUID: DJSkL7c39p36
 
-On Mon, Aug 12, 2024 at 8:33=E2=80=AFAM Peter Maydell <peter.maydell@linaro=
-.org> wrote:
->
-> On Mon, 5 Aug 2024 at 21:17, Octavian Purdila <tavip@google.com> wrote:
-> >
-> > Add register access utility functions for device models, like checking
-> > aligned access and reading and writing to a register backstore.
->
->
-> > Signed-off-by: Octavian Purdila <tavip@google.com>
-> > ---
-> >  include/hw/regs.h | 89 +++++++++++++++++++++++++++++++++++++++++++++++
-> >  1 file changed, 89 insertions(+)
-> >  create mode 100644 include/hw/regs.h
-> >
-> > diff --git a/include/hw/regs.h b/include/hw/regs.h
-> > new file mode 100644
-> > index 0000000000..8d0da0629d
-> > --- /dev/null
-> > +++ b/include/hw/regs.h
-> > @@ -0,0 +1,89 @@
-> > +/*
-> > + * Useful macros/functions for register handling.
-> > + *
-> > + * Copyright (c) 2021 Google LLC
-> > + *
-> > + * SPDX-License-Identifier: GPL-2.0-or-later
-> > + *
-> > + * This work is licensed under the terms of the GNU GPL, version 2 or =
-later.
-> > + * See the COPYING file in the top-level directory.
-> > + */
-> > +
-> > +#ifndef HW_REGS_H
-> > +#define HW_REGS_H
-> > +
-> > +#include "exec/hwaddr.h"
-> > +#include "exec/memattrs.h"
-> > +
-> > +#define BITS(hi, lo)       (BIT(hi + 1) - BIT(lo))
-> > +#define BIT_IS_SET(v, b)   (((v) & BIT(b)) !=3D 0)
->
-> To the extent we need these we should be putting them in
-> bits.h with the other bit-related operations. (But
-> prefer the existing MAKE_64BIT_MASK over adding a
-> second macro that evaluates to a mask with a given
-> run of bits set).
->
+On 6/14/24 9:36 AM, Salil Mehta wrote:
+> In the ARMv8 architecture, the GIC must know all the CPUs it is connected to
+> during its initialization, and this cannot change afterward. This must be
+> ensured during the initialization of the VGIC as well in KVM, which requires all
+> vCPUs to be created and present during its initialization. This is necessary
+> because:
+> 
+> 1. The association between GICC and MPIDR must be fixed at VM initialization
+>     time. This is represented by the register `GIC_TYPER(mp_affinity, proc_num)`.
+> 2. GICC (CPU interfaces), GICR (redistributors), etc., must all be initialized
+>     at boot time.
+> 3. Memory regions associated with GICR, etc., cannot be changed (added, deleted,
+>     or modified) after the VM has been initialized.
+> 
+> This patch adds support to pre-create all possible vCPUs within the host using
+> the KVM interface as part of the virtual machine initialization. These vCPUs can
+> later be attached to QOM/ACPI when they are actually hot-plugged and made
+> present.
+> 
+> Co-developed-by: Keqian Zhu <zhukeqian1@huawei.com>
+> Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
+> Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
+> Reported-by: Vishnu Pajjuri <vishnu@os.amperecomputing.com>
+> [VP: Identified CPU stall issue & suggested probable fix]
+> ---
+>   hw/arm/virt.c         | 56 +++++++++++++++++++++++++++++++++++--------
+>   include/hw/core/cpu.h |  1 +
+>   target/arm/cpu64.c    |  1 +
+>   target/arm/kvm.c      | 41 ++++++++++++++++++++++++++++++-
+>   target/arm/kvm_arm.h  | 11 +++++++++
+>   5 files changed, 99 insertions(+), 11 deletions(-)
+> 
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index a285139165..81e7a27786 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -2383,14 +2383,8 @@ static void machvirt_init(MachineState *machine)
+>           Object *cpuobj;
+>           CPUState *cs;
+>   
+> -        if (n >= smp_cpus) {
+> -            break;
+> -        }
+> -
+>           cpuobj = object_new(possible_cpus->cpus[n].type);
+> -
+>           cs = CPU(cpuobj);
+> -        cs->cpu_index = n;
+>   
 
-BITS is useful when defining masks from datasheets. Specifically, in
-this patch set they are used to define writable bits. While it is
-possible to use MAKE_64BIT_MASK, I find it less error prone to use
-BITS.
+Fixed @cpu_index assignment is removed here...
 
-However, it just occurred to me that we might be able to use the SVD
-information to derive this. If possible I'll just remove it in v2
-(otherwise I will move it to include/qemu/bitops.h).
+>           aarch64 &= object_property_get_bool(cpuobj, "aarch64", NULL);
+>           object_property_set_int(cpuobj, "socket-id",
+> @@ -2402,11 +2396,53 @@ static void machvirt_init(MachineState *machine)
+>           object_property_set_int(cpuobj, "thread-id",
+>                                   virt_get_thread_id(machine, n), NULL);
+>   
+> -        cpu_slot = virt_find_cpu_slot(machine, cs->cpu_index);
+> -        virt_cpu_set_properties(cpuobj, cpu_slot, &error_fatal);
+> +        if (n < smp_cpus) {
+> +            qdev_realize(DEVICE(cpuobj), NULL, &error_fatal);
+> +            object_unref(cpuobj);
+> +        } else {
+> +            /* handling for vcpus which are yet to be hot-plugged */
+> +            cs->cpu_index = n;
+> +            cpu_slot = virt_find_cpu_slot(machine, cs->cpu_index);
+>   
 
-> > +
-> > +/*
-> > + * reg32_aligned_access
-> > + * @addr: address to check
-> > + * @size: size of access
-> > + *
-> > + * Check if access to a hardware address is 32bit aligned.
-> > + *
-> > + * Returns: true if access is 32bit aligned, false otherwise
-> > + */
-> > +static inline bool reg32_aligned_access(hwaddr addr, unsigned size)
-> > +{
-> > +    if (size !=3D 4 || addr % 4 !=3D 0) {
-> > +        return false;
-> > +    }
-> > +    return true;
-> > +}
-> > +
-> > +/*
-> > + * reg32_write
-> > + * @base: base address
-> > + * @addr: register offset in bytes
-> > + * @val: value to write
-> > + * @wr_bits_array: RW bitmask array
-> > + *
-> > + * Update the RW/WO bits of a 32bit register backstore with a given va=
-lue
-> > + * (discarding updats to the RO bits). The RW/WO bits are encoded in t=
-he
-> > + * @wr_bits_array with bits set being RW and bits unset being RO.
-> > + *
-> > + * Usage example:
-> > + *
-> > + * wr_bits_array[] =3D {
-> > + *    [REG1_ADDR/4] =3D 0xFF000000, // MSB byte writable
-> > + *    [REG2_ADDR/4] =3D 0xFF,       // LSB byte writable
-> > + *    // all other registers are read-only
-> > + * };
-> > + *
-> > + * // backstore is updated to 0x12000000
-> > + * reg32_write(&backstore, REG1_ADDR, 0x12345678, wr_bits_array);
-> > + * // backstore is updated to 0x78
-> > + * reg32_write(&backstore, REG2_ADDR, 0x12345678, wr_bits_array);
-> > + */
->
-> This seems like it's reimplementing include/hw/register.h
-> functionality. I'm not personally a super-fan of that API,
-> but I definitely would prefer it if we didn't have more than
-> one way to do this.
->
+For hotpluggable vCPUs, we have the fixed @cpu_index assignment here and virt_cpu_pre_plug().
+However, @cpu_index for non-hotpluggable vCPUs will be automatically assigned in the following
+path. It causes inconsistent behaviour to hotpluggable and non-hotpluggable vCPUs. We need to
+fix @cpu_index for non-hotpluggable vCPUs as well.
 
-Interesting, I was not aware of this thanks for pointing it out!
+   qdev_realize
+     arm_cpu_realizefn
+       cpu_exec_realizefn
+         cpu_list_add
 
-It seems a bit heavy to be used just for the write masking part, but
-I'll take a closer look at it.
+> -        qdev_realize(DEVICE(cpuobj), NULL, &error_fatal);
+> -        object_unref(cpuobj);
+> +            /*
+> +             * ARM host vCPU features need to be fixed at the boot time. But as
+> +             * per current approach this CPU object will be destroyed during
+> +             * cpu_post_init(). During hotplug of vCPUs these properties are
+> +             * initialized again.
+> +             */
+> +            virt_cpu_set_properties(cpuobj, cpu_slot, &error_fatal);
+> +
+> +            /*
+> +             * For KVM, we shall be pre-creating the now disabled/un-plugged
+> +             * possbile host vcpus and park them till the time they are
+> +             * actually hot plugged. This is required to pre-size the host
+> +             * GICC and GICR with the all possible vcpus for this VM.
+> +             */
+> +            if (kvm_enabled()) {
+> +                kvm_arm_create_host_vcpu(ARM_CPU(cs));
+> +            }
+> +            /*
+> +             * Add disabled vCPU to CPU slot during the init phase of the virt
+> +             * machine
+> +             * 1. We need this ARMCPU object during the GIC init. This object
+> +             *    will facilitate in pre-realizing the GIC. Any info like
+> +             *    mp-affinity(required to derive gicr_type) etc. could still be
+> +             *    fetched while preserving QOM abstraction akin to realized
+> +             *    vCPUs.
+> +             * 2. Now, after initialization of the virt machine is complete we
+> +             *    could use two approaches to deal with this ARMCPU object:
+> +             *    (i) re-use this ARMCPU object during hotplug of this vCPU.
+> +             *                             OR
+> +             *    (ii) defer release this ARMCPU object after gic has been
+> +             *         initialized or during pre-plug phase when a vCPU is
+> +             *         hotplugged.
+> +             *
+> +             *    We will use the (ii) approach and release the ARMCPU objects
+> +             *    after GIC and machine has been fully initialized during
+> +             *    machine_init_done() phase.
+> +             */
 
-> > +static inline uint32_t reg32_write(void *base, uint32_t off, uint32_t =
-val,
-> > +                                   const uint32_t *rw_bits_array)
-> > +{
-> > +    uint32_t *ptr =3D base + addr;
-> > +    uint32_t old_value =3D *ptr;
-> > +    uint32_t mask =3D rw_bits_array ? rw_bits_array[addr / 4] : 0xFFFF=
-FFFF;
-> > +
-> > +    /* set WO/RW bits */
-> > +    *ptr |=3D val & mask;
-> > +    /* clear RO bits */
-> > +    *ptr &=3D val | ~mask;
-> > +
-> > +    return old_value;
-> > +}
-> > +
-> > +/*
-> > + * reg32_read
-> > + * @base: base address
-> > + * @addr: register offset in bytes
-> > + *
-> > + * Returns: 32bit value from register backstore
-> > + */
-> > +static inline uint32_t reg32_read(void *base, uint32_t addr)
-> > +{
-> > +    return *(uint32_t *)(base + addr);
-> > +}
->
-> Pointer type handling looks suspicious here -- if
-> the thing we're accessing is really a uint32_t* then
-> we should take that; if it isn't then casting it to
-> one and dereferencing might be reading unaligned memory.
->
+For those hotpluggable vCPUs, ARMCPU objects are instanciated, providing information
+for GIC's initialization and then destroyed. ARMCPU objects are a bit heavy for that.
+The question is if ms->possible_cpus->cpus[] can be reused to provide information for
+GIC's initialization? If it can be used for that, the left question is how to avoid
+instanciating ARMCPU objects when vCPU fds are created and parked.
 
-It is used for performing generic accesses to generated structs (patch
-3/23) which should be aligned in the way that are used in the patch
-set. If we decide to keep it, I'll add a note regarding alignment.
 
-> thanks
-> -- PMM
+> +             cpu_slot->cpu = cs;
+> +        }
+>       }
+>   
+>       /* Now we've created the CPUs we can see if they have the hypvirt timer */
+> diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
+> index 60b4778da9..62e68611c0 100644
+> --- a/include/hw/core/cpu.h
+> +++ b/include/hw/core/cpu.h
+> @@ -520,6 +520,7 @@ struct CPUState {
+>       uint64_t dirty_pages;
+>       int kvm_vcpu_stats_fd;
+>       bool vcpu_dirty;
+> +    VMChangeStateEntry *vmcse;
+>   
+>       /* Use by accel-block: CPU is executing an ioctl() */
+>       QemuLockCnt in_ioctl_lock;
+> diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+> index d6b48b3424..9b7e8b032c 100644
+> --- a/target/arm/cpu64.c
+> +++ b/target/arm/cpu64.c
+> @@ -789,6 +789,7 @@ static void aarch64_cpu_initfn(Object *obj)
+>        * enabled explicitly
+>        */
+>       cs->disabled = true;
+> +    cs->thread_id = 0;
+>   }
+>   
+>   static void aarch64_cpu_finalizefn(Object *obj)
+> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+> index 7cf5cf31de..01c83c1994 100644
+> --- a/target/arm/kvm.c
+> +++ b/target/arm/kvm.c
+> @@ -1003,6 +1003,38 @@ void kvm_arm_reset_vcpu(ARMCPU *cpu)
+>       write_list_to_cpustate(cpu);
+>   }
+>   
+> +void kvm_arm_create_host_vcpu(ARMCPU *cpu)
+> +{
+> +    CPUState *cs = CPU(cpu);
+> +    unsigned long vcpu_id = cs->cpu_index;
+> +    int ret;
+> +
+> +    ret = kvm_create_vcpu(cs);
+> +    if (ret < 0) {
+> +        error_report("Failed to create host vcpu %ld", vcpu_id);
+> +        abort();
+> +    }
+> +
+> +    /*
+> +     * Initialize the vCPU in the host. This will reset the sys regs
+> +     * for this vCPU and related registers like MPIDR_EL1 etc. also
+> +     * gets programmed during this call to host. These are referred
+> +     * later while setting device attributes of the GICR during GICv3
+> +     * reset
+> +     */
+> +    ret = kvm_arch_init_vcpu(cs);
+> +    if (ret < 0) {
+> +        error_report("Failed to initialize host vcpu %ld", vcpu_id);
+> +        abort();
+> +    }
+> +
+> +    /*
+> +     * park the created vCPU. shall be used during kvm_get_vcpu() when
+> +     * threads are created during realization of ARM vCPUs.
+> +     */
+> +    kvm_park_vcpu(cs);
+> +}
+> +
+>   /*
+>    * Update KVM's MP_STATE based on what QEMU thinks it is
+>    */
+> @@ -1874,7 +1906,14 @@ int kvm_arch_init_vcpu(CPUState *cs)
+>           return -EINVAL;
+>       }
+>   
+> -    qemu_add_vm_change_state_handler(kvm_arm_vm_state_change, cpu);
+> +    /*
+> +     * Install VM change handler only when vCPU thread has been spawned
+> +     * i.e. vCPU is being realized
+> +     */
+> +    if (cs->thread_id) {
+> +        cs->vmcse = qemu_add_vm_change_state_handler(kvm_arm_vm_state_change,
+> +                                                     cpu);
+> +    }
+>   
+>       /* Determine init features for this CPU */
+>       memset(cpu->kvm_init_features, 0, sizeof(cpu->kvm_init_features));
+> diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
+> index cfaa0d9bc7..0be7e896d2 100644
+> --- a/target/arm/kvm_arm.h
+> +++ b/target/arm/kvm_arm.h
+> @@ -96,6 +96,17 @@ void kvm_arm_cpu_post_load(ARMCPU *cpu);
+>    */
+>   void kvm_arm_reset_vcpu(ARMCPU *cpu);
+>   
+> +/**
+> + * kvm_arm_create_host_vcpu:
+> + * @cpu: ARMCPU
+> + *
+> + * Called at to pre create all possible kvm vCPUs within the the host at the
+> + * virt machine init time. This will also init this pre-created vCPU and
+> + * hence result in vCPU reset at host. These pre created and inited vCPUs
+> + * shall be parked for use when ARM vCPUs are actually realized.
+> + */
+> +void kvm_arm_create_host_vcpu(ARMCPU *cpu);
+> +
+>   #ifdef CONFIG_KVM
+>   /**
+>    * kvm_arm_create_scratch_host_vcpu:
+
+Thanks,
+Gavin

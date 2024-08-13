@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-37172483bd9sm2664164f8f.0.2024.08.13.13.23.30
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-429d877e066sm32268685e9.1.2024.08.13.13.23.30
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Tue, 13 Aug 2024 13:23:30 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 778BC5F8BB;
+	by draig.lan (Postfix) with ESMTP id BB7655F930;
 	Tue, 13 Aug 2024 21:23:29 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -46,48 +46,59 @@ Cc: Alistair Francis <alistair.francis@wdc.com>,
 	Jason Wang <jasowang@redhat.com>,
 	Bin Meng <bmeng.cn@gmail.com>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Wainer dos Santos Moschetta <wainersm@redhat.com>
-Subject: [PATCH v2 01/21] tests/avocado: Re-enable gdbsim-r5f562n8 testing U-Boot
-Date: Tue, 13 Aug 2024 21:23:09 +0100
-Message-Id: <20240813202329.1237572-2-alex.bennee@linaro.org>
+	Wainer dos Santos Moschetta <wainersm@redhat.com>,
+	Gustavo Romero <gustavo.romero@linaro.org>
+Subject: [PATCH v2 04/21] configure: Avoid use of param. expansion when using gdb_version
+Date: Tue, 13 Aug 2024 21:23:12 +0100
+Message-Id: <20240813202329.1237572-5-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240813202329.1237572-1-alex.bennee@linaro.org>
 References: <20240813202329.1237572-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: YV07cXSgMmEM
+X-TUID: nnjCow6GabBR
 
-From: Philippe Mathieu-Daudé <philmd@linaro.org>
+From: Gustavo Romero <gustavo.romero@linaro.org>
 
-We disabled all RX tests on commit 9b45cc9931 ("docs/devel:
-rationalise unstable gitlab tests under FLAKY_TESTS") for
-being flaky. However I don't recall the U-Boot test to fail
-(the problematic line checking the 'version' string is already
-commented out), and I'm running this test reliably, so re-enable
-it.
+$gdb_version is now used in more than one conditional case and its usage
+in such cases may increase in the future. Therefore, avoid using shell
+parameter expansion when using it by setting gdb_version to its final
+form.
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Yoshinori Sato <ysato@users.sourceforge.jp>
-Message-Id: <20240801172332.65701-1-philmd@linaro.org>
+Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
+Message-Id: <20240804161850.2646299-3-gustavo.romero@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Message-Id: <20240807114059.2339021-2-alex.bennee@linaro.org>
+Message-Id: <20240807114059.2339021-5-alex.bennee@linaro.org>
 ---
- tests/avocado/machine_rx_gdbsim.py | 2 --
- 1 file changed, 2 deletions(-)
+ configure | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
 
-diff --git a/tests/avocado/machine_rx_gdbsim.py b/tests/avocado/machine_rx_gdbsim.py
-index 412a7a5089..a83873b738 100644
---- a/tests/avocado/machine_rx_gdbsim.py
-+++ b/tests/avocado/machine_rx_gdbsim.py
-@@ -22,8 +22,6 @@ class RxGdbSimMachine(QemuSystemTest):
-     timeout = 30
-     KERNEL_COMMON_COMMAND_LINE = 'printk.time=0 '
+diff --git a/configure b/configure
+index a3aa257fd3..97de85d710 100755
+--- a/configure
++++ b/configure
+@@ -1103,8 +1103,10 @@ fi
+ # gdb test
  
--    @skipUnless(os.getenv('QEMU_TEST_FLAKY_TESTS'), 'Test is unstable on GitLab')
--
-     def test_uboot(self):
-         """
-         U-Boot and checks that the console is operational.
+ if test -n "$gdb_bin"; then
+-    gdb_version=$($gdb_bin --version | head -n 1)
+-    if version_ge ${gdb_version##* } 9.1; then
++    gdb_version_string=$($gdb_bin --version | head -n 1)
++    # Extract last field in the version string
++    gdb_version=${gdb_version_string##* }
++    if version_ge $gdb_version 9.1; then
+         gdb_arches=$($python "$source_path/scripts/probe-gdb-support.py" $gdb_bin)
+     else
+         gdb_bin=""
+@@ -1673,7 +1675,7 @@ for target in $target_list; do
+           echo "GDB=$gdb_bin" >> $config_target_mak
+       fi
+ 
+-      if test "${gdb_arches#*aarch64}" != "$gdb_arches" && version_ge ${gdb_version##* } 15.0; then
++      if test "${gdb_arches#*aarch64}" != "$gdb_arches" && version_ge $gdb_version 15.0; then
+           echo "GDB_HAS_MTE=y" >> $config_target_mak
+       fi
+ 
 -- 
 2.39.2

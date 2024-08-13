@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-36e4cfee676sm11229207f8f.49.2024.08.13.13.23.30
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-36e4c9385d3sm11271592f8f.42.2024.08.13.13.23.30
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Tue, 13 Aug 2024 13:23:30 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 5F5195F7A3;
+	by draig.lan (Postfix) with ESMTP id 8CE945F8C5;
 	Tue, 13 Aug 2024 21:23:29 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -47,86 +47,42 @@ Cc: Alistair Francis <alistair.francis@wdc.com>,
 	Bin Meng <bmeng.cn@gmail.com>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
 	Wainer dos Santos Moschetta <wainersm@redhat.com>
-Subject: [PATCH v2 00/21] Various fixes and tweaks for 9.1-rc2/3
-Date: Tue, 13 Aug 2024 21:23:08 +0100
-Message-Id: <20240813202329.1237572-1-alex.bennee@linaro.org>
+Subject: [PATCH v2 02/21] Makefile: trigger re-configure on updated pythondeps
+Date: Tue, 13 Aug 2024 21:23:10 +0100
+Message-Id: <20240813202329.1237572-3-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20240813202329.1237572-1-alex.bennee@linaro.org>
+References: <20240813202329.1237572-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 09Bepiizq6At
+X-TUID: ftwGNsgPFcDj
 
-As usual during soft freeze I switch to cleaning up the various
-niggles and bugs which have accumulated over the years.
+If we add additional deps for meson we need to ensure we trigger a
+reconfigure to make sure everything is set up.
 
-New for this iteration are some late breaking plugin updates, fixes
-for record/replay and a few documentation updates. Everything is
-reviewed so I will roll a pull request later this week.
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Message-Id: <20240731140232.22193-1-alex.bennee@linaro.org>
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Message-Id: <20240807114059.2339021-3-alex.bennee@linaro.org>
+---
+ Makefile | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-Alex Bennée (2):
-  Makefile: trigger re-configure on updated pythondeps
-  target/i386: allow access_ptr to force slow path on failed probe
-
-Gustavo Romero (3):
-  configure: Fix arch detection for GDB_HAS_MTE
-  configure: Avoid use of param. expansion when using gdb_version
-  configure: Fix GDB version detection for GDB_HAS_MTE
-
-Nicholas Piggin (10):
-  scripts/replay-dump.py: Update to current rr record format
-  scripts/replay-dump.py: rejig decoders in event number order
-  tests/avocado: excercise scripts/replay-dump.py in replay tests
-  replay: allow runstate shutdown->running when replaying trace
-  Revert "replay: stop us hanging in rr_wait_io_event"
-  tests/avocado: replay_kernel.py add x86-64 q35 machine test
-  chardev: set record/replay on the base device of a muxed device
-  virtio-net: Use replay_schedule_bh_event for bhs that affect machine
-    state
-  virtio-net: Use virtual time for RSC timers
-  savevm: Fix load_snapshot error path crash
-
-Philippe Mathieu-Daudé (2):
-  tests/avocado: Re-enable gdbsim-r5f562n8 testing U-Boot
-  buildsys: Fix building without plugins on Darwin
-
-Pierrick Bouvier (2):
-  docs/devel: update tcg-plugins page
-  plugins: fix race condition with scoreboards
-
-Stefan Weil (1):
-  docs: Fix some typos (found by typos) and grammar issues
-
-Stefano Garzarella (1):
-  scripts/checkpatch: more checks on files imported from Linux
-
- docs/about/emulation.rst                  |  49 ++++++-
- docs/devel/migration/uadk-compression.rst |   4 +-
- docs/devel/tcg-plugins.rst                |  13 +-
- docs/interop/qemu-ga.rst                  |   2 +-
- docs/tools/qemu-vmsr-helper.rst           |   4 +-
- configure                                 |   8 +-
- Makefile                                  |   3 +-
- qapi/rocker.json                          |   4 +-
- include/exec/memory.h                     |   2 +-
- include/sysemu/replay.h                   |   5 -
- include/sysemu/runstate.h                 |   1 +
- accel/tcg/tcg-accel-ops-rr.c              |   2 +-
- chardev/char.c                            |  71 ++++++---
- hw/arm/smmu-common.c                      |   2 +-
- hw/net/virtio-net.c                       |  17 +--
- migration/savevm.c                        |   1 +
- plugins/core.c                            |  43 ++++--
- qga/main.c                                |   2 +-
- replay/replay.c                           |  23 +--
- system/runstate.c                         |  31 +++-
- target/i386/tcg/access.c                  |  27 ++--
- plugins/meson.build                       |  50 +++----
- scripts/checkpatch.pl                     |  24 ++++
- scripts/replay-dump.py                    | 167 +++++++++++++++-------
- tests/avocado/machine_rx_gdbsim.py        |   2 -
- tests/avocado/replay_kernel.py            |  31 +++-
- tests/avocado/replay_linux.py             |  10 ++
- 27 files changed, 406 insertions(+), 192 deletions(-)
-
+diff --git a/Makefile b/Makefile
+index 02a257584b..917c9a34d1 100644
+--- a/Makefile
++++ b/Makefile
+@@ -78,7 +78,8 @@ x := $(shell rm -rf meson-private meson-info meson-logs)
+ endif
+ 
+ # 1. ensure config-host.mak is up-to-date
+-config-host.mak: $(SRC_PATH)/configure $(SRC_PATH)/scripts/meson-buildoptions.sh $(SRC_PATH)/VERSION
++config-host.mak: $(SRC_PATH)/configure $(SRC_PATH)/scripts/meson-buildoptions.sh \
++		$(SRC_PATH)/pythondeps.toml $(SRC_PATH)/VERSION
+ 	@echo config-host.mak is out-of-date, running configure
+ 	@if test -f meson-private/coredata.dat; then \
+ 	  ./config.status --skip-meson; \
 -- 
 2.39.2

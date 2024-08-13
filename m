@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-429c750ec0bsm151656175e9.15.2024.08.13.13.23.31
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-36e4e51ed16sm11208371f8f.66.2024.08.13.13.23.31
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Tue, 13 Aug 2024 13:23:34 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id D18D85F959;
-	Tue, 13 Aug 2024 21:23:29 +0100 (BST)
+	by draig.lan (Postfix) with ESMTP id 0CFC95F9DA;
+	Tue, 13 Aug 2024 21:23:30 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Alistair Francis <alistair.francis@wdc.com>,
@@ -46,49 +46,139 @@ Cc: Alistair Francis <alistair.francis@wdc.com>,
 	Jason Wang <jasowang@redhat.com>,
 	Bin Meng <bmeng.cn@gmail.com>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Wainer dos Santos Moschetta <wainersm@redhat.com>,
-	Gustavo Romero <gustavo.romero@linaro.org>
-Subject: [PATCH v2 05/21] configure: Fix GDB version detection for GDB_HAS_MTE
-Date: Tue, 13 Aug 2024 21:23:13 +0100
-Message-Id: <20240813202329.1237572-6-alex.bennee@linaro.org>
+	Wainer dos Santos Moschetta <wainersm@redhat.com>
+Subject: [PATCH v2 07/21] target/i386: allow access_ptr to force slow path on failed probe
+Date: Tue, 13 Aug 2024 21:23:15 +0100
+Message-Id: <20240813202329.1237572-8-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240813202329.1237572-1-alex.bennee@linaro.org>
 References: <20240813202329.1237572-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: MBPXFrQe6ONO
+X-TUID: 3FH4WSEIxx0Z
 
-From: Gustavo Romero <gustavo.romero@linaro.org>
+When we are using TCG plugin memory callbacks probe_access_internal
+will return TLB_MMIO to force the slow path for memory access. This
+results in probe_access returning NULL but the x86 access_ptr function
+happily accepts an empty haddr resulting in segfault hilarity.
 
-The test gdbstub/test-mte.py requires a GDB version that supports the
-qIsAddressTagged packet. According to GDB NEWS [0], this packet was
-first made available in the GDB 15.1 release, not in 15.0, so this
-commit fixes it in configure.
+Check for an empty haddr to prevent the segfault and enable plugins to
+track all the memory operations for the x86 save/restore helpers. As
+we also want to run the slow path when instrumenting *-user we should
+also not have the short cutting test_ptr macro.
 
-[0] https://www.sourceware.org/gdb/news/
-
-Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
-Resolves: https://gitlab.com/qemu-project/qemu/-/issues/2477
-Message-Id: <20240804161850.2646299-4-gustavo.romero@linaro.org>
+Resolves: https://gitlab.com/qemu-project/qemu/-/issues/2489
+Fixes: 6d03226b42 (plugins: force slow path when plugins instrument memory ops)
+Reviewed-by: Alexandre Iooss <erdnaxe@crans.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Message-Id: <20240807114059.2339021-6-alex.bennee@linaro.org>
----
- configure | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Message-Id: <20240807160236.2478459-1-alex.bennee@linaro.org>
 
-diff --git a/configure b/configure
-index 97de85d710..d08b71f14b 100755
---- a/configure
-+++ b/configure
-@@ -1675,7 +1675,7 @@ for target in $target_list; do
-           echo "GDB=$gdb_bin" >> $config_target_mak
-       fi
+---
+v2
+  - add comment around haddr1 test
+  - drop test_ptr macro
+---
+ target/i386/tcg/access.c | 27 +++++++++++++--------------
+ 1 file changed, 13 insertions(+), 14 deletions(-)
+
+diff --git a/target/i386/tcg/access.c b/target/i386/tcg/access.c
+index 56a1181ea5..e68b73a24b 100644
+--- a/target/i386/tcg/access.c
++++ b/target/i386/tcg/access.c
+@@ -58,6 +58,11 @@ static void *access_ptr(X86Access *ac, vaddr addr, unsigned len)
  
--      if test "${gdb_arches#*aarch64}" != "$gdb_arches" && version_ge $gdb_version 15.0; then
-+      if test "${gdb_arches#*aarch64}" != "$gdb_arches" && version_ge $gdb_version 15.1; then
-           echo "GDB_HAS_MTE=y" >> $config_target_mak
-       fi
+     assert(addr >= ac->vaddr);
  
++    /* No haddr means probe_access wants to force slow path */
++    if (!ac->haddr1) {
++        return NULL;
++    }
++
+ #ifdef CONFIG_USER_ONLY
+     assert(offset <= ac->size1 - len);
+     return ac->haddr1 + offset;
+@@ -78,17 +83,11 @@ static void *access_ptr(X86Access *ac, vaddr addr, unsigned len)
+ #endif
+ }
+ 
+-#ifdef CONFIG_USER_ONLY
+-# define test_ptr(p)  true
+-#else
+-# define test_ptr(p)  likely(p)
+-#endif
+-
+ uint8_t access_ldb(X86Access *ac, vaddr addr)
+ {
+     void *p = access_ptr(ac, addr, sizeof(uint8_t));
+ 
+-    if (test_ptr(p)) {
++    if (likely(p)) {
+         return ldub_p(p);
+     }
+     return cpu_ldub_mmuidx_ra(ac->env, addr, ac->mmu_idx, ac->ra);
+@@ -98,7 +97,7 @@ uint16_t access_ldw(X86Access *ac, vaddr addr)
+ {
+     void *p = access_ptr(ac, addr, sizeof(uint16_t));
+ 
+-    if (test_ptr(p)) {
++    if (likely(p)) {
+         return lduw_le_p(p);
+     }
+     return cpu_lduw_le_mmuidx_ra(ac->env, addr, ac->mmu_idx, ac->ra);
+@@ -108,7 +107,7 @@ uint32_t access_ldl(X86Access *ac, vaddr addr)
+ {
+     void *p = access_ptr(ac, addr, sizeof(uint32_t));
+ 
+-    if (test_ptr(p)) {
++    if (likely(p)) {
+         return ldl_le_p(p);
+     }
+     return cpu_ldl_le_mmuidx_ra(ac->env, addr, ac->mmu_idx, ac->ra);
+@@ -118,7 +117,7 @@ uint64_t access_ldq(X86Access *ac, vaddr addr)
+ {
+     void *p = access_ptr(ac, addr, sizeof(uint64_t));
+ 
+-    if (test_ptr(p)) {
++    if (likely(p)) {
+         return ldq_le_p(p);
+     }
+     return cpu_ldq_le_mmuidx_ra(ac->env, addr, ac->mmu_idx, ac->ra);
+@@ -128,7 +127,7 @@ void access_stb(X86Access *ac, vaddr addr, uint8_t val)
+ {
+     void *p = access_ptr(ac, addr, sizeof(uint8_t));
+ 
+-    if (test_ptr(p)) {
++    if (likely(p)) {
+         stb_p(p, val);
+     } else {
+         cpu_stb_mmuidx_ra(ac->env, addr, val, ac->mmu_idx, ac->ra);
+@@ -139,7 +138,7 @@ void access_stw(X86Access *ac, vaddr addr, uint16_t val)
+ {
+     void *p = access_ptr(ac, addr, sizeof(uint16_t));
+ 
+-    if (test_ptr(p)) {
++    if (likely(p)) {
+         stw_le_p(p, val);
+     } else {
+         cpu_stw_le_mmuidx_ra(ac->env, addr, val, ac->mmu_idx, ac->ra);
+@@ -150,7 +149,7 @@ void access_stl(X86Access *ac, vaddr addr, uint32_t val)
+ {
+     void *p = access_ptr(ac, addr, sizeof(uint32_t));
+ 
+-    if (test_ptr(p)) {
++    if (likely(p)) {
+         stl_le_p(p, val);
+     } else {
+         cpu_stl_le_mmuidx_ra(ac->env, addr, val, ac->mmu_idx, ac->ra);
+@@ -161,7 +160,7 @@ void access_stq(X86Access *ac, vaddr addr, uint64_t val)
+ {
+     void *p = access_ptr(ac, addr, sizeof(uint64_t));
+ 
+-    if (test_ptr(p)) {
++    if (likely(p)) {
+         stq_le_p(p, val);
+     } else {
+         cpu_stq_le_mmuidx_ra(ac->env, addr, val, ac->mmu_idx, ac->ra);
 -- 
 2.39.2

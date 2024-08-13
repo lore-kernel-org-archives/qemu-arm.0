@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-36e4c937b6esm11248588f8f.32.2024.08.13.13.23.32
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-429deb4a4aesm893215e9.14.2024.08.13.13.23.34
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 13 Aug 2024 13:23:34 -0700 (PDT)
+        Tue, 13 Aug 2024 13:23:38 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 57C3D5FA49;
+	by draig.lan (Postfix) with ESMTP id 8B99B5FCF1;
 	Tue, 13 Aug 2024 21:23:30 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -47,118 +47,122 @@ Cc: Alistair Francis <alistair.francis@wdc.com>,
 	Bin Meng <bmeng.cn@gmail.com>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
 	Wainer dos Santos Moschetta <wainersm@redhat.com>,
-	Nicholas Piggin <npiggin@gmail.com>
-Subject: [PATCH v2 10/21] scripts/replay-dump.py: rejig decoders in event number order
-Date: Tue, 13 Aug 2024 21:23:18 +0100
-Message-Id: <20240813202329.1237572-11-alex.bennee@linaro.org>
+	Nicholas Piggin <npiggin@gmail.com>,
+	Pavel Dovgalyuk <Pavel.Dovgalyuk@ispras.ru>
+Subject: [PATCH v2 12/21] replay: allow runstate shutdown->running when replaying trace
+Date: Tue, 13 Aug 2024 21:23:20 +0100
+Message-Id: <20240813202329.1237572-13-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240813202329.1237572-1-alex.bennee@linaro.org>
 References: <20240813202329.1237572-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: rnGVM5/8ZYKG
+X-TUID: oW9iU9v+V3Qj
 
 From: Nicholas Piggin <npiggin@gmail.com>
 
-Sort decoder functions to be ascending in order of event number,
-same as the decoder tables.
+When replaying a trace, it is possible to go from shutdown to running
+with a reverse-debugging step. This can be useful if the problem being
+debugged triggers a reset or shutdown.
+
+This can be tested by making a recording of a machine that shuts down,
+then using -action shutdown=pause when replaying it. Continuing to the
+end of the trace then reverse-stepping in gdb crashes due to invalid
+runstate transition.
+
+Just permitting the transition seems to be all that's necessary for
+reverse-debugging to work well in such a state.
 
 Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+Reviewed-by: Pavel Dovgalyuk <Pavel.Dovgalyuk@ispras.ru>
 Signed-off-by: Nicholas Piggin <npiggin@gmail.com>
-Message-Id: <20240813050638.446172-3-npiggin@gmail.com>
+Message-Id: <20240813050638.446172-5-npiggin@gmail.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- scripts/replay-dump.py | 56 +++++++++++++++++++++---------------------
- 1 file changed, 28 insertions(+), 28 deletions(-)
+ include/sysemu/runstate.h |  1 +
+ replay/replay.c           |  2 ++
+ system/runstate.c         | 31 ++++++++++++++++++++++++++++---
+ 3 files changed, 31 insertions(+), 3 deletions(-)
 
-diff --git a/scripts/replay-dump.py b/scripts/replay-dump.py
-index 419ee3257b..b82659cfb6 100755
---- a/scripts/replay-dump.py
-+++ b/scripts/replay-dump.py
-@@ -139,6 +139,19 @@ def swallow_bytes(eid, name, dumpfile, nr):
-     """Swallow nr bytes of data without looking at it"""
-     dumpfile.seek(nr, os.SEEK_CUR)
+diff --git a/include/sysemu/runstate.h b/include/sysemu/runstate.h
+index e210a37abf..11c7ff3ffb 100644
+--- a/include/sysemu/runstate.h
++++ b/include/sysemu/runstate.h
+@@ -9,6 +9,7 @@ void runstate_set(RunState new_state);
+ RunState runstate_get(void);
+ bool runstate_is_running(void);
+ bool runstate_needs_reset(void);
++void runstate_replay_enable(void);
  
-+total_insns = 0
-+
-+def decode_instruction(eid, name, dumpfile):
-+    global total_insns
-+    ins_diff = read_dword(dumpfile)
-+    total_insns += ins_diff
-+    print_event(eid, name, "+ %d -> %d" % (ins_diff, total_insns))
-+    return True
-+
-+def decode_interrupt(eid, name, dumpfile):
-+    print_event(eid, name)
-+    return True
-+
- def decode_exception(eid, name, dumpfile):
-     print_event(eid, name)
-     return True
-@@ -198,15 +211,6 @@ def decode_async_net(eid, name, dumpfile):
-     print_event(eid, name, "net:%x flags:%x bytes:%d" % (net_id, flags, size))
-     return True
+ typedef void VMChangeStateHandler(void *opaque, bool running, RunState state);
  
--total_insns = 0
--
--def decode_instruction(eid, name, dumpfile):
--    global total_insns
--    ins_diff = read_dword(dumpfile)
--    total_insns += ins_diff
--    print_event(eid, name, "+ %d -> %d" % (ins_diff, total_insns))
--    return True
--
- def decode_shutdown(eid, name, dumpfile):
-     print_event(eid, name)
-     return True
-@@ -222,6 +226,21 @@ def decode_audio_out(eid, name, dumpfile):
-     print_event(eid, name, "%d" % (audio_data))
-     return True
+diff --git a/replay/replay.c b/replay/replay.c
+index a2c576c16e..b8564a4813 100644
+--- a/replay/replay.c
++++ b/replay/replay.c
+@@ -385,6 +385,8 @@ static void replay_enable(const char *fname, int mode)
+         replay_fetch_data_kind();
+     }
  
-+def decode_random(eid, name, dumpfile):
-+    ret = read_dword(dumpfile)
-+    size = read_dword(dumpfile)
-+    swallow_bytes(eid, name, dumpfile, size)
-+    if (ret):
-+        print_event(eid, name, "%d bytes (getrandom failed)" % (size))
-+    else:
-+        print_event(eid, name, "%d bytes" % (size))
-+    return True
++    runstate_replay_enable();
 +
-+def decode_clock(eid, name, dumpfile):
-+    clock_data = read_qword(dumpfile)
-+    print_event(eid, name, "0x%x" % (clock_data))
-+    return True
+     replay_init_events();
+ }
+ 
+diff --git a/system/runstate.c b/system/runstate.c
+index c833316f6d..a0e2a5fd22 100644
+--- a/system/runstate.c
++++ b/system/runstate.c
+@@ -181,6 +181,12 @@ static const RunStateTransition runstate_transitions_def[] = {
+     { RUN_STATE__MAX, RUN_STATE__MAX },
+ };
+ 
++static const RunStateTransition replay_play_runstate_transitions_def[] = {
++    { RUN_STATE_SHUTDOWN, RUN_STATE_RUNNING},
 +
- def __decode_checkpoint(eid, name, dumpfile, old):
-     """Decode a checkpoint.
++    { RUN_STATE__MAX, RUN_STATE__MAX },
++};
++
+ static bool runstate_valid_transitions[RUN_STATE__MAX][RUN_STATE__MAX];
  
-@@ -252,25 +271,6 @@ def decode_checkpoint_init(eid, name, dumpfile):
-     print_event(eid, name)
-     return True
+ bool runstate_check(RunState state)
+@@ -188,14 +194,33 @@ bool runstate_check(RunState state)
+     return current_run_state == state;
+ }
  
--def decode_interrupt(eid, name, dumpfile):
--    print_event(eid, name)
--    return True
--
--def decode_clock(eid, name, dumpfile):
--    clock_data = read_qword(dumpfile)
--    print_event(eid, name, "0x%x" % (clock_data))
--    return True
--
--def decode_random(eid, name, dumpfile):
--    ret = read_dword(dumpfile)
--    size = read_dword(dumpfile)
--    swallow_bytes(eid, name, dumpfile, size)
--    if (ret):
--        print_event(eid, name, "%d bytes (getrandom failed)" % (size))
--    else:
--        print_event(eid, name, "%d bytes" % (size))
--    return True
--
- def decode_end(eid, name, dumpfile):
-     print_event(eid, name)
-     return False
+-static void runstate_init(void)
++static void transitions_set_valid(const RunStateTransition *rst)
+ {
+     const RunStateTransition *p;
+ 
+-    memset(&runstate_valid_transitions, 0, sizeof(runstate_valid_transitions));
+-    for (p = &runstate_transitions_def[0]; p->from != RUN_STATE__MAX; p++) {
++    for (p = rst; p->from != RUN_STATE__MAX; p++) {
+         runstate_valid_transitions[p->from][p->to] = true;
+     }
++}
++
++void runstate_replay_enable(void)
++{
++    assert(replay_mode != REPLAY_MODE_NONE);
++
++    if (replay_mode == REPLAY_MODE_PLAY) {
++        /*
++         * When reverse-debugging, it is possible to move state from
++         * shutdown to running.
++         */
++        transitions_set_valid(&replay_play_runstate_transitions_def[0]);
++    }
++}
++
++static void runstate_init(void)
++{
++    memset(&runstate_valid_transitions, 0, sizeof(runstate_valid_transitions));
++
++    transitions_set_valid(&runstate_transitions_def[0]);
+ 
+     qemu_mutex_init(&vmstop_lock);
+ }
 -- 
 2.39.2

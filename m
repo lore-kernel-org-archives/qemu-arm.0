@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-429deb4a4aesm893215e9.14.2024.08.13.13.23.34
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-36e4cfeef61sm11263938f8f.57.2024.08.13.13.23.35
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Tue, 13 Aug 2024 13:23:38 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 8B99B5FCF1;
+	by draig.lan (Postfix) with ESMTP id A48BE5FD6E;
 	Tue, 13 Aug 2024 21:23:30 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -47,122 +47,104 @@ Cc: Alistair Francis <alistair.francis@wdc.com>,
 	Bin Meng <bmeng.cn@gmail.com>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
 	Wainer dos Santos Moschetta <wainersm@redhat.com>,
-	Nicholas Piggin <npiggin@gmail.com>,
-	Pavel Dovgalyuk <Pavel.Dovgalyuk@ispras.ru>
-Subject: [PATCH v2 12/21] replay: allow runstate shutdown->running when replaying trace
-Date: Tue, 13 Aug 2024 21:23:20 +0100
-Message-Id: <20240813202329.1237572-13-alex.bennee@linaro.org>
+	Nicholas Piggin <npiggin@gmail.com>
+Subject: [PATCH v2 13/21] Revert "replay: stop us hanging in rr_wait_io_event"
+Date: Tue, 13 Aug 2024 21:23:21 +0100
+Message-Id: <20240813202329.1237572-14-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240813202329.1237572-1-alex.bennee@linaro.org>
 References: <20240813202329.1237572-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: oW9iU9v+V3Qj
+X-TUID: 09s3crpdAr0D
 
 From: Nicholas Piggin <npiggin@gmail.com>
 
-When replaying a trace, it is possible to go from shutdown to running
-with a reverse-debugging step. This can be useful if the problem being
-debugged triggers a reset or shutdown.
+This reverts commit 1f881ea4a444ef36a8b6907b0b82be4b3af253a2.
 
-This can be tested by making a recording of a machine that shuts down,
-then using -action shutdown=pause when replaying it. Continuing to the
-end of the trace then reverse-stepping in gdb crashes due to invalid
-runstate transition.
+That commit causes reverse_debugging.py test failures, and does
+not seem to solve the root cause of the problem x86-64 still
+hangs in record/replay tests.
 
-Just permitting the transition seems to be all that's necessary for
-reverse-debugging to work well in such a state.
+The problem with short-cutting the iowait that was taken during
+record phase is that related events will not get consumed at the
+same points (e.g., reading the clock).
 
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
-Reviewed-by: Pavel Dovgalyuk <Pavel.Dovgalyuk@ispras.ru>
+A hang with zero icount always seems to be a symptom of an earlier
+problem that has caused the recording to become out of synch with
+the execution and consumption of events by replay.
+
+Acked-by: Alex Bennée <alex.bennee@linaro.org>
 Signed-off-by: Nicholas Piggin <npiggin@gmail.com>
-Message-Id: <20240813050638.446172-5-npiggin@gmail.com>
+Message-Id: <20240813050638.446172-6-npiggin@gmail.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- include/sysemu/runstate.h |  1 +
- replay/replay.c           |  2 ++
- system/runstate.c         | 31 ++++++++++++++++++++++++++++---
- 3 files changed, 31 insertions(+), 3 deletions(-)
+ include/sysemu/replay.h      |  5 -----
+ accel/tcg/tcg-accel-ops-rr.c |  2 +-
+ replay/replay.c              | 21 ---------------------
+ 3 files changed, 1 insertion(+), 27 deletions(-)
 
-diff --git a/include/sysemu/runstate.h b/include/sysemu/runstate.h
-index e210a37abf..11c7ff3ffb 100644
---- a/include/sysemu/runstate.h
-+++ b/include/sysemu/runstate.h
-@@ -9,6 +9,7 @@ void runstate_set(RunState new_state);
- RunState runstate_get(void);
- bool runstate_is_running(void);
- bool runstate_needs_reset(void);
-+void runstate_replay_enable(void);
+diff --git a/include/sysemu/replay.h b/include/sysemu/replay.h
+index f229b2109c..8102fa54f0 100644
+--- a/include/sysemu/replay.h
++++ b/include/sysemu/replay.h
+@@ -73,11 +73,6 @@ int replay_get_instructions(void);
+ /*! Updates instructions counter in replay mode. */
+ void replay_account_executed_instructions(void);
  
- typedef void VMChangeStateHandler(void *opaque, bool running, RunState state);
+-/**
+- * replay_can_wait: check if we should pause for wait-io
+- */
+-bool replay_can_wait(void);
+-
+ /* Processing clocks and other time sources */
  
+ /*! Save the specified clock */
+diff --git a/accel/tcg/tcg-accel-ops-rr.c b/accel/tcg/tcg-accel-ops-rr.c
+index 48c38714bd..c59c77da4b 100644
+--- a/accel/tcg/tcg-accel-ops-rr.c
++++ b/accel/tcg/tcg-accel-ops-rr.c
+@@ -109,7 +109,7 @@ static void rr_wait_io_event(void)
+ {
+     CPUState *cpu;
+ 
+-    while (all_cpu_threads_idle() && replay_can_wait()) {
++    while (all_cpu_threads_idle()) {
+         rr_stop_kick_timer();
+         qemu_cond_wait_bql(first_cpu->halt_cond);
+     }
 diff --git a/replay/replay.c b/replay/replay.c
-index a2c576c16e..b8564a4813 100644
+index b8564a4813..895fa6b67a 100644
 --- a/replay/replay.c
 +++ b/replay/replay.c
-@@ -385,6 +385,8 @@ static void replay_enable(const char *fname, int mode)
-         replay_fetch_data_kind();
-     }
- 
-+    runstate_replay_enable();
-+
-     replay_init_events();
+@@ -451,27 +451,6 @@ void replay_start(void)
+     replay_enable_events();
  }
  
-diff --git a/system/runstate.c b/system/runstate.c
-index c833316f6d..a0e2a5fd22 100644
---- a/system/runstate.c
-+++ b/system/runstate.c
-@@ -181,6 +181,12 @@ static const RunStateTransition runstate_transitions_def[] = {
-     { RUN_STATE__MAX, RUN_STATE__MAX },
- };
- 
-+static const RunStateTransition replay_play_runstate_transitions_def[] = {
-+    { RUN_STATE_SHUTDOWN, RUN_STATE_RUNNING},
-+
-+    { RUN_STATE__MAX, RUN_STATE__MAX },
-+};
-+
- static bool runstate_valid_transitions[RUN_STATE__MAX][RUN_STATE__MAX];
- 
- bool runstate_check(RunState state)
-@@ -188,14 +194,33 @@ bool runstate_check(RunState state)
-     return current_run_state == state;
- }
- 
--static void runstate_init(void)
-+static void transitions_set_valid(const RunStateTransition *rst)
+-/*
+- * For none/record the answer is yes.
+- */
+-bool replay_can_wait(void)
+-{
+-    if (replay_mode == REPLAY_MODE_PLAY) {
+-        /*
+-         * For playback we shouldn't ever be at a point we wait. If
+-         * the instruction count has reached zero and we have an
+-         * unconsumed event we should go around again and consume it.
+-         */
+-        if (replay_state.instruction_count == 0 && replay_state.has_unread_data) {
+-            return false;
+-        } else {
+-            replay_sync_error("Playback shouldn't have to iowait");
+-        }
+-    }
+-    return true;
+-}
+-
+-
+ void replay_finish(void)
  {
-     const RunStateTransition *p;
- 
--    memset(&runstate_valid_transitions, 0, sizeof(runstate_valid_transitions));
--    for (p = &runstate_transitions_def[0]; p->from != RUN_STATE__MAX; p++) {
-+    for (p = rst; p->from != RUN_STATE__MAX; p++) {
-         runstate_valid_transitions[p->from][p->to] = true;
-     }
-+}
-+
-+void runstate_replay_enable(void)
-+{
-+    assert(replay_mode != REPLAY_MODE_NONE);
-+
-+    if (replay_mode == REPLAY_MODE_PLAY) {
-+        /*
-+         * When reverse-debugging, it is possible to move state from
-+         * shutdown to running.
-+         */
-+        transitions_set_valid(&replay_play_runstate_transitions_def[0]);
-+    }
-+}
-+
-+static void runstate_init(void)
-+{
-+    memset(&runstate_valid_transitions, 0, sizeof(runstate_valid_transitions));
-+
-+    transitions_set_valid(&runstate_transitions_def[0]);
- 
-     qemu_mutex_init(&vmstop_lock);
- }
+     if (replay_mode == REPLAY_MODE_NONE) {
 -- 
 2.39.2

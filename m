@@ -1,183 +1,182 @@
-Received: by 2002:a17:504:9188:b0:1be9:327d:8ee3 with SMTP id i8csp209049njf;
-        Tue, 13 Aug 2024 10:20:09 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUZG/kZ2amPOzDU+dUapfgnMrzs7sOjf/ybL6NGV55SMq6Lm6lJcL9m5dcnL1gcqxEfhjsfytTZjPiF29CoCduTXqBgRtpu
-X-Received: by 2002:a05:6000:2112:b0:371:6fb8:8fe3 with SMTP id ffacd0b85a97d-3716fb890e9mr3503300f8f.12.1723569609695;
-        Tue, 13 Aug 2024 10:20:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1723569609; cv=none;
+Received: by 2002:a17:504:9188:b0:1be9:327d:8ee3 with SMTP id i8csp237779njf;
+        Tue, 13 Aug 2024 12:00:00 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCW6vaZPXM47f3f3b2K21j0yqYMMCusuB3++4kKgsi/1DxAkk5RpwuImZbIdxrXBjbZiopymBcZpatCUBA59r0QBmhjuAItB
+X-Google-Smtp-Source: AGHT+IHZ4eu6UCLn+LbycWrWpOnLolKO6UB9zdNAxDC6eKyqmb/J+X+RwrF6hZddNrnqCwQauD9O
+X-Received: by 2002:a05:6214:3f8b:b0:6b5:40d:c2d9 with SMTP id 6a1803df08f44-6bf5d1809bemr6227676d6.19.1723575600073;
+        Tue, 13 Aug 2024 12:00:00 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1723575600; cv=pass;
         d=google.com; s=arc-20160816;
-        b=mFHndaXXIPSRqKX2T1hmAfwnUvtbVsKVIwK3E51ewHS0UUxf4BDXgiZXhajjzXPrG2
-         QcoZE15Pyd70AgBCnMMJZw0VR+xc/Hvmn2UcirtnHYatmexlwqQj0TcN12+avhnP7zdm
-         JRSCvlrpTDvAnxTXe0mfHXRj+Ebs6dJDaULXDQWC7WhRoQY9dfF3OLhNNH3k+GyLncoV
-         NE+GjiypgaFs7p9Ggm8JRZCrSc5kVoLcv6tdqKZwpKbDMI8c6TC8x1Uw+dkGTJxPEf1y
-         uJ3Uvf92bHLgdTIhZWJCyQFh6y//WtBkPpmynFWHk+QTcvaxudJG/BlW0MboispSiC1a
-         SNsQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:dkim-signature;
-        bh=84sx66JI+FulYoVmyiqu6uT4YzhJNSXXhPlav9Qus3U=;
-        fh=Zv5DfkxM4yOH8PcXwRvlDE+zBSXHXdm69ZEWL1uKgO8=;
-        b=LTykv0dgdSh8FprtdSOKjFz6W2Vsd55Pr+wQiaTrrQTZLFM2Baq/rWwATIOePLK+RN
-         vrNZMNTwwmBYfZYXUj39zthexpEYC472ySMxy5lXsGmGB7nn+d9+E7/+XgVQpZZyH45F
-         WvtwTuDa7Gj/nJGGQaUpFFLt3UoT1imLpay3w/EuK7HSz+BJ2y9JlmE9Ge2T2DTp2+JH
-         q88bD5RbDdqfjSmLngsldwDKBOQLUAjzmfe3EeInWoh/QAF1HRUHfz6FfBB12M6il35K
-         qfHNPxaVrEot3tbWqhcABZaJGD0IlFWYC8FHjvhM/Z4H3bEc387QMfv1cWkOQUJiZF9N
-         uCiw==;
+        b=O4kEFbzcdxwg5JVSeLpCLeNAUyLzbJ9e1ep8NJSF/tynOHuEk1ECL7L/P3306AXlyf
+         vT00YXO+C9e3inVCMISUd0XxanrImpdjeonrsayxlQq+ydmmiTN1oYJo3PfkTocOWqzA
+         5armOTqVpA6zFlHME5MrCS6I92VtNmYRdDoPJ2xty7EV0KssvlSecdIGiH0xAATngYYV
+         BOPCryEd5uBZlNNWUDWowM0Fqfa/CVs1jsmpdMI+ktsqZyVoaCCKUsFTp8dBwtngkvKX
+         LVjGHlLWRoZ6zCJV/VKpW/HusuEPSDpaFICVWSL6vy61g53rF5MHoF7kHP016rrB43ap
+         K0nA==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=SsT6KY69sTSQqjRzEq4eaqhUfeYC5jcxWmN7X4r/TW4=;
+        fh=33lchV9jbo6F1fNnffP4idbdCIaYCrmc6nnq6V4oNZ0=;
+        b=ZceR/S54LlbwX5spLEA4xAftFgLIK2ngq5wNBS4kadhwsy46Mz7gaqYBjPKId/Pq9c
+         UgOxVXCk3th2gXZYEAqqYHb1Bj/07+GhkVlhK1pisVUunQR+MfYSWBOiD0DNZ9SlxPwz
+         6cyDEuqhvC61Q64XcJD//wIaSsC6Gsn4r5euAB60vdnimchjHClnqaxJy6qXV7Nm67I0
+         BfZsnrBeNxxGC0dz+s6/xQe+cgMKz8fG531czAcCIoUXOhhpD0KO+l9tK3zqN8y9JgOR
+         JzmJyRRKHE0O3Ftcf1nDmczB+kCwIS5mVzuEZNC/YRKE80n5l2Rs3Sv7hpNfXruMJfRz
+         a56g==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@citrix.com header.s=google header.b=wRtIVKds;
-       spf=pass (google.com: domain of andrew.cooper@cloud.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=andrew.cooper@cloud.com;
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=citrix.com;
-       dara=neutral header.i=@linaro.org
-Return-Path: <andrew.cooper@cloud.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 5b1f17b1804b1-429d7177a7csor6293865e9.1.2024.08.13.10.20.09
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=Mbf0Bgex;
+       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
+       spf=pass (google.com: domain of linux-kernel+bounces-285374-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-285374-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+Return-Path: <linux-kernel+bounces-285374-alex.bennee=linaro.org@vger.kernel.org>
+Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [2604:1380:45d1:ec00::1])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6bd82e34eb1si6057596d6.246.2024.08.13.11.59.59
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 13 Aug 2024 10:20:09 -0700 (PDT)
-Received-SPF: pass (google.com: domain of andrew.cooper@cloud.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 13 Aug 2024 12:00:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of linux-kernel+bounces-285374-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) client-ip=2604:1380:45d1:ec00::1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@citrix.com header.s=google header.b=wRtIVKds;
-       spf=pass (google.com: domain of andrew.cooper@cloud.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=andrew.cooper@cloud.com;
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=citrix.com;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=citrix.com; s=google; t=1723569609; x=1724174409; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=84sx66JI+FulYoVmyiqu6uT4YzhJNSXXhPlav9Qus3U=;
-        b=wRtIVKdshWcJHfDmiNs/zAqzPvNrWMayxu3kUVAaP2c+bVSPK2lBhR1jnEI2u2xukV
-         OkZ8pbKxKqhiIE4PaTg8rbY7sfFtk3h942sy5fSzLw28NWJSMZQ4RxLnDtgKhf9W91zZ
-         pDV18qrJVd9cx9TtFAolsWit2qHsJoo3KTBJQ=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1723569609; x=1724174409;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=84sx66JI+FulYoVmyiqu6uT4YzhJNSXXhPlav9Qus3U=;
-        b=BzKvOL5vBshsfHf3MobbQJ9zRDg3oAsq2GZmOnKwEYcLTLZXxh/mjdlhqEsmEJ8DG1
-         RfR+VlQjTPrp6nGd9vN/eG6PxJI/FJepCYjJjASyWK+/t1h5KxhlPvfboylp4TSn0T+N
-         8j/J6xaN9j4rAd06FPdlp3w5RGYyKNycQbnphJ+DX8bT7F28rIe2OmkdqTR0qdi78ahq
-         Vmk40WG6SjgxBagStCANuFq3ewBJMQ/gSqV3Zlbd2IzOmxbUBYgS0sLIqmRe9/EbyDWC
-         ImmKlh5KX3ZWp55wHYw9s8f117GQKGGIfinAi0gCrv7R2EQQK0T2D4OjWNpu67DJxy/V
-         puAQ==
-X-Forwarded-Encrypted: i=1; AJvYcCWEhpb0imnL6emKsZZETYI4FFO8pefiAoKyQ0Mkq9jRcIsGOuZVeJnAHGnGqJVwXClkogDLmQLYNm7TeV/C6tZgHiztjdw0
-X-Gm-Message-State: AOJu0YycXiEYRB80tO06RX/crlkL05ycguIk8uRv+CCo9DW5ObkxsM3N
-	CKIRYn8AsRnQv/mPuvB7Qd5f8sqqajOj6m0VLJlTdj2t+jKzSXrEfxyc/rBl65I=
-X-Google-Smtp-Source: AGHT+IFTGC62jSGYkGCBeBoI9MiD8GQfXOo+KENKk3RMxfPXu/2PblHRt3RsejLkmmxd/OqMpwzjUw==
-X-Received: by 2002:adf:ebca:0:b0:362:ad01:5435 with SMTP id ffacd0b85a97d-371775c6b2bmr355964f8f.29.1723569608962;
-        Tue, 13 Aug 2024 10:20:08 -0700 (PDT)
-Return-Path: <andrew.cooper@cloud.com>
-Received: from [192.168.1.10] (host-92-26-98-202.as13285.net. [92.26.98.202])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-36e4e51e876sm10981474f8f.73.2024.08.13.10.20.08
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 13 Aug 2024 10:20:08 -0700 (PDT)
-Message-ID: <a93b9398-9cc3-48ed-9570-47204ab80d5f@citrix.com>
-Date: Tue, 13 Aug 2024 18:20:07 +0100
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=Mbf0Bgex;
+       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
+       spf=pass (google.com: domain of linux-kernel+bounces-285374-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-285374-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ny.mirrors.kernel.org (Postfix) with ESMTPS id C7AC91C221A1
+	for <alex.bennee@linaro.org>; Tue, 13 Aug 2024 18:59:59 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 0A4121A3BC7;
+	Tue, 13 Aug 2024 18:59:17 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="Mbf0Bgex"
+Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C0BA61A38EC
+	for <linux-kernel@vger.kernel.org>; Tue, 13 Aug 2024 18:59:16 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=10.30.226.201
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1723575556; cv=none; b=HwVvrQET+hRC252DpGQyoZJ9muB5/GJYcfas/6MG3/e7+hiA7eRAYaWxhIW965Dc75HkErL1N5nZgWUbiP0c413LBVgRCFzOOrEmXZxHGST+HlMKkCFkw7KA13UjeUVAXGZ8vFFteNV5JSJ3O0yJy9lhdmO8uDi5XB7oLsdLGKw=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1723575556; c=relaxed/simple;
+	bh=WO40j49FkGu+Q8lTsHl/pcFtXmA+HQMmF+nDSE40RQk=;
+	h=Date:From:To:Cc:Subject:Message-ID:In-Reply-To:References:
+	 MIME-Version:Content-Type; b=NHRJiezF3S542DmJjFqPtU6hncL0asMS6DuQQn+jhDvKRTCKIcZzUp5JPqBtoRuWxxMVx8HQkpb5teT06HvUMgiIhCU6SsqxO8gtxoGbEvx8nzX3kjQAN0XGjeviISabX4+DmbD8sH/04yNfkahYeCHg4PnxzlZSuugXl2GmIFM=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=Mbf0Bgex; arc=none smtp.client-ip=10.30.226.201
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 52F37C32782;
+	Tue, 13 Aug 2024 18:59:14 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1723575556;
+	bh=WO40j49FkGu+Q8lTsHl/pcFtXmA+HQMmF+nDSE40RQk=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=Mbf0Bgex0kjUzIdIRt26tVfsngq7XSfxksXF7oPIKuIoucAo3QrY1RZhxbrMkATsE
+	 HGxj4AtZyiv9bqJ/CG+caeC8WZ9BtPBT8PzS3P77EVlR3hgwtcOSm5lBvdmdVYM3dj
+	 BXMkHP3wXC5QYvkopT0JhXtKKEuRYbyEqqSmg95z7edaG7HNGJsJOR+DnKMDscbGI2
+	 92J6OP4ghGUoH58MoBCEU1oX6aGn4J0omchSqdZ47Bti23cOVjQSgou9G/rYkNV9OU
+	 kk/Fgt7TJSTmI7Dwkk1MCyKbeb2jM6Vcg2nW1hyqK1alv4Ae5kRaswmmHWB5lKbbH5
+	 5Q6t3XsMuBviQ==
+Date: Tue, 13 Aug 2024 20:59:11 +0200
+From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+To: Igor Mammedov <imammedo@redhat.com>
+Cc: Jonathan Cameron <Jonathan.Cameron@Huawei.com>, Shiju Jose
+ <shiju.jose@huawei.com>, "Michael S. Tsirkin" <mst@redhat.com>, Ani Sinha
+ <anisinha@redhat.com>, Dongjiu Geng <gengdongjiu1@gmail.com>,
+ <linux-kernel@vger.kernel.org>, <qemu-arm@nongnu.org>,
+ <qemu-devel@nongnu.org>
+Subject: Re: [PATCH v5 6/7] acpi/ghes: add support for generic error
+ injection via QAPI
+Message-ID: <20240813205911.1719db56@foz.lan>
+In-Reply-To: <20240812113900.25078ccc@imammedo.users.ipa.redhat.com>
+References: <cover.1722634602.git.mchehab+huawei@kernel.org>
+	<20c491e357340e0062b6ff09867c1661ed4d2479.1722634602.git.mchehab+huawei@kernel.org>
+	<20240806163113.3bdc260a@imammedo.users.ipa.redhat.com>
+	<20240807152547.000058fd@Huawei.com>
+	<20240808101107.105a124f@imammedo.users.ipa.redhat.com>
+	<20240808201903.077093ca@foz.lan>
+	<20240812113900.25078ccc@imammedo.users.ipa.redhat.com>
+X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
+Precedence: bulk
+X-Mailing-List: linux-kernel@vger.kernel.org
+List-Id: <linux-kernel.vger.kernel.org>
+List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 04/10] hw/arm: xenpvh: Add support for SMP guests
-To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Stefano Stabellini <sstabellini@kernel.org>
-Cc: qemu-devel@nongnu.org, anthony@xenproject.org, paul@xen.org,
- peter.maydell@linaro.org, alex.bennee@linaro.org, xenia.ragiadakou@amd.com,
- jason.andryuk@amd.com, edgar.iglesias@amd.com,
- xen-devel@lists.xenproject.org, qemu-arm@nongnu.org
-References: <20240812130606.90410-1-edgar.iglesias@gmail.com>
- <20240812130606.90410-5-edgar.iglesias@gmail.com>
- <alpine.DEB.2.22.394.2408121650590.298534@ubuntu-linux-20-04-desktop>
- <ZruRm34zIMtUm7oH@zapote>
-Content-Language: en-GB
-From: Andrew Cooper <andrew.cooper3@citrix.com>
-Autocrypt: addr=andrew.cooper3@citrix.com; keydata=
- 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
- 6+ahAA==
-In-Reply-To: <ZruRm34zIMtUm7oH@zapote>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: 8z3cnIwK6B1t
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-TUID: gbhymOeKnAXK
 
-On 13/08/2024 6:02 pm, Edgar E. Iglesias wrote:
-> On Mon, Aug 12, 2024 at 06:47:17PM -0700, Stefano Stabellini wrote:
->> On Mon, 12 Aug 2024, Edgar E. Iglesias wrote:
->>> From: "Edgar E. Iglesias" <edgar.iglesias@amd.com>
->>>
->>> Add SMP support for Xen PVH ARM guests. Create max_cpus ioreq
->>> servers to handle hotplug.
->>>
->>> Signed-off-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
->>> ---
->>>  hw/arm/xen_arm.c | 5 +++--
->>>  1 file changed, 3 insertions(+), 2 deletions(-)
->>>
->>> diff --git a/hw/arm/xen_arm.c b/hw/arm/xen_arm.c
->>> index 5f75cc3779..ef8315969c 100644
->>> --- a/hw/arm/xen_arm.c
->>> +++ b/hw/arm/xen_arm.c
->>> @@ -173,7 +173,7 @@ static void xen_arm_init(MachineState *machine)
->>>  
->>>      xen_init_ram(machine);
->>>  
->>> -    xen_register_ioreq(xam->state, machine->smp.cpus, &xen_memory_listener);
->>> +    xen_register_ioreq(xam->state, machine->smp.max_cpus, &xen_memory_listener);
->>>  
->>>      xen_create_virtio_mmio_devices(xam);
->>>  
->>> @@ -218,7 +218,8 @@ static void xen_arm_machine_class_init(ObjectClass *oc, void *data)
->>>      MachineClass *mc = MACHINE_CLASS(oc);
->>>      mc->desc = "Xen PVH ARM machine";
->>>      mc->init = xen_arm_init;
->>> -    mc->max_cpus = 1;
->>> +    /* MAX number of vcpus supported by Xen.  */
->>> +    mc->max_cpus = GUEST_MAX_VCPUS;
+Em Mon, 12 Aug 2024 11:39:00 +0200
+Igor Mammedov <imammedo@redhat.com> escreveu:
 
-The only suitable number here is the one you get back from XEN_DMOP_nr_vcpus
+> > We may also store cper_offset there via bios_linker_loader_add_pointer()
+> > and/or use bios_linker_loader_write_pointer(), but I can't see how the
+> > data stored there can be retrieved, nor any advantage of using it instead
+> > of the current code, as, in the end, we'll have 3 addresses that will be
+> > used:
+> > 
+> > 	- an address where a pointer to CPER record will be stored;
+> > 	- an address where the ack will be stored;
+> > 	- an address where the actual CPER record will be stored.
+> > 
+> > And those are calculated on a single function and are all stored at the
+> > ACPI table files.
+> >
+> > What am I missing?  
+> 
+> That's basically (2) approach and it works to some degree,
+> unfortunately it's fragile when we start talking about migration
+> and changing layout in the future.
+> 
+> Lets take as example increasing size of 1) 'Generic Error Status Block',
+> we are considering. Old QEMU will, tell firmware to allocate 1K buffer
+> for it and calculated offsets to [1] (that you've stored/calculated) will
+> include this assumption.
+> Then in newer we QEMU increase size of [1] and all hardcoded offsets will
+> account for new size, but if we migrate guest from old QEMU to this newer
+> one all HEST tables layout within guest will match old QEMU assumptions,
+> and as result newer QEMU with larger block size will write CPERs at wrong
+> address considering we are still running guest from old QEMU.
+> That's just one example.
+> 
+> To make it work there a number of ways, but the ultimate goal is to pick
+> one that's the least fragile and won't snowball in maintenance nightmare
+> as number of GHES sources increases over time.
+> 
+> This series tries to solve problem of mapping GHES source to
+> a corresponding 'Generic Error Status Block' and related registers.
+> However we are missing access to this mapping since it only
+> exists in guest patched HEST (i.e in guest RAM only).
+> 
+> The robust way to make it work would be for QEMU to get a pointer
+> to whole HEST table and then enumerate GHES sources and related
+> error/ack registers directly from guest RAM (sidestepping layout
+> change issues this way).
+> 
+> what I'm proposing is to use bios_linker_loader_write_pointer()
+> (only once) so that firmware could tell QEMU address of HEST table,
+> in which one can find a GHES source and always correct error/ack
+> pointers (regardless of table[s] layout changes).
 
-GUEST_MAX_VCPUS is and has always been bogus as a compile time constant
-in the Xen public headers (yes, ARM inherited it from x86, but it should
-have never been copied to start with).  Please do not introduce any
-further uses of it.
+Ok, got it. Such change was not easy, but I finally figured out how
+to make it actually work.
 
-~Andrew
+I'll address tomorrow your comment on patch 5/10 about using raw data also 
+for the other parts of CPER (generic error status and generic error data).
+
+If you want to do a sneak peak, I'm keeping the latest development
+version here:
+
+	https://gitlab.com/mchehab_kernel/qemu/-/commits/qemu_submission?ref_type=heads
+
+In particular, the patch changing from /etc/hardware_errors offset to
+a HEST offset is at:
+
+	https://gitlab.com/mchehab_kernel/qemu/-/commit/9197d22de09df97ce3d6725cb21bd2114c2eb43c
+
+It contains several cleanups to make the logic clearer and more robust.
+
+Thanks,
+Mauro

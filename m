@@ -1,211 +1,126 @@
-Received: by 2002:a17:504:9188:b0:1be9:327d:8ee3 with SMTP id i8csp2036290njf;
-        Mon, 19 Aug 2024 04:43:26 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCX7oIgu7a6IKyZZ5316kEPlz0Hp3qUhSdvIrazTkB5afo7YKxE1RNO+s0vGtmbZFBv6L39lHEyMEIEoWQAg0pk3BxawkO5d
-X-Google-Smtp-Source: AGHT+IEz6p7pHhPRYRnx4H3wCbyWpWKk0NHMPOCsCyUn/xNvNOYwWXwDgmiuGIBc6KZ8oaUElQp0
-X-Received: by 2002:a05:6902:1692:b0:e0e:499f:3d88 with SMTP id 3f1490d57ef6-e1180ef62b5mr12288290276.26.1724067806472;
-        Mon, 19 Aug 2024 04:43:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1724067806; cv=none;
+Received: by 2002:a17:504:9188:b0:1be9:327d:8ee3 with SMTP id i8csp454461njf;
+        Wed, 14 Aug 2024 05:12:34 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVOIWrq2+bRYZlxeM+7Q8BP6gNix2MYucO4mOgOsqdJfG+tPmLNBDEUlKgi3g3y/xlGuDHvJn0+Zz+J2FTUfAVDHMgVSeO9
+X-Google-Smtp-Source: AGHT+IG0nfOquV9BOV6CIVCwGgx2d/v4T2g0TActzxzc15ISTQAkrcfLTCkViCBQcg8XirqviLLO
+X-Received: by 2002:a5d:440f:0:b0:368:5a86:c1b7 with SMTP id ffacd0b85a97d-3717780ef7bmr1838043f8f.55.1723637554668;
+        Wed, 14 Aug 2024 05:12:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1723637554; cv=none;
         d=google.com; s=arc-20160816;
-        b=Dt3Y/EI7G2x90XljaYij0jQeQHD2qr/1IJZCuBFAM5aBiNdN8fwfN0taXVJfIy8Nh4
-         RstDGnC9mg/KA6+6gl/kptYDsEEHqrs5K6Zu6BaZtZazpGqxTQM3qAiCRuwjFj193nSk
-         5yinX7cM6eEy9lV1auLQ+Pa62xLQSRdIQ8lBISPkS3qw29iI+1xSb6JQteYMm7u+dfho
-         6UbLdth4IlJB7gIn16MvVxpQt6LoS4nuW+V1bLnrx5wFLTYrT5IyseOkH4LVLI6zNRLR
-         +kMJhekfiUSTtdSHaA6qBlHiTX2wxOvBCRC6llbX+/2weMPPp2Si4UlqMqkjNhwenMbQ
-         3CWQ==
+        b=HALqYzwgxX1KMDt6EYvBMp1rdXpj841e113YEUZy9UZKwFq5jjlEIjTMnxrLufFIWZ
+         Zna/33QWe0Rcb1fjmYNqvZPvcPGU+ayYQe/IsTdZT1u/9C8A3FE9Vjdzo8SyYPd42xCo
+         r1cVmdzeADeQIbPndENyCt1/ktAmRahWkFPfChWAnu/Nclxcd/worXakd91N3z+F9sCW
+         lfrDjPngHfBYz9suxsQjVQRDHQfBtdP0IjO06/eyaUqFmX8NVf5bjx4m7/2QohWiPS2U
+         HsI9rBemq4RiSNzyneic7FwdTWKcFEtLsRV/s6f15qHu7/PQepso5mSVmV8IM6MRBFKv
+         Mpmw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:subject:cc:to:from
-         :date:dkim-signature;
-        bh=17jyWeoONpjyGGI56CQoEQmnYqkX6odmOILY01oA+ic=;
-        fh=7lMeEb4Rz3C6ZEtf++nQZz5qAvbO02MfS7KSnL9BNZo=;
-        b=hu/fRE61AY73iLocrQOUCji/G0yhMGzsUdm1x/v/5FlP068lLGcC+WahPJEq9/GjG5
-         cpbwxvc5N0zlTL3jzbV/4eM96dmrZBdq6kMbHIE39Ftjvpyn4nPJYp1NcBlebUAlKWBT
-         JHv/OcTCIa4nqQtTEz04FSrH5jWM7eOqMIEe4ldFH7JUAJgJHmwmo0wAkeNlAr2a0ELt
-         otmEgW55lT10mnuqDECy+TuS66fP1UzWuljJc+mHvHlcjf+bOCBVq9/cDL62rh37Z1Pq
-         85vuZFWtJDwd1fZhOMcBjahhH+ucy7oBllzzz54QuiU8B3q/6MRJVe1MX+IuCcFXABem
-         bLDQ==;
+        h=content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:subject:cc:to:from:date;
+        bh=t9vC7Npj2qyu/YibizvlfcaoY4yRDcIZRxvg03M/5rY=;
+        fh=G6lv2zw0FMzs9nCFwmwZ3t1fu0414dKNs7dRRXSqle4=;
+        b=QcSzmA6dWkp/ULEUbETp0pK5fGXk96HVAIA13QHPYea3V2/Agb5dsXW5HFC2p0rRVH
+         6mwUohDfT/2XhTC9aAAstAmKSsMf3hmdZfAxMJ+5u0BpZ1wPleV0ldrkFswMzk5H2lHG
+         ofi3UZfLA7oe4j9I3Gk/chdP9UbvXaXag3ncctEUFXYwX6gVb2PdpRk/vqUyuYGTOgfV
+         XeBX8jt17vgX9lwPuSjsUfvw3lqoCOOuPwJn5zvnyZEUoDgntUDhnlj0qDW7AY5n1S+f
+         zVzua8iSZxR0C3GkwhykICgeswcUHTxklL0OcCFYB6AiKF+obDLDDA8zW/UzTmphy7/E
+         fDYw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="GZl4Ck/i";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6bf6fee752bsi105436876d6.324.2024.08.19.04.43.26
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 19 Aug 2024 04:43:26 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=jonathan.cameron@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Return-Path: <jonathan.cameron@huawei.com>
+Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
+        by mx.google.com with ESMTPS id ffacd0b85a97d-36e4ecc8dd3si4940635f8f.844.2024.08.14.05.12.34
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 14 Aug 2024 05:12:34 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="GZl4Ck/i";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sg0n5-0003Bs-FT; Mon, 19 Aug 2024 07:43:16 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1sg0n4-0003Av-6a
- for qemu-arm@nongnu.org; Mon, 19 Aug 2024 07:43:14 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1sg0n2-0001F1-93
- for qemu-arm@nongnu.org; Mon, 19 Aug 2024 07:43:13 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1724067790;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=17jyWeoONpjyGGI56CQoEQmnYqkX6odmOILY01oA+ic=;
- b=GZl4Ck/iZlZYOIbDKpnqRLp/rhRCB2sLRRFJLK+DTVeN0oYcBJ0HjWRKSlPYE6x8LR9w/P
- Yqi+uwbtgBZpG2ZwsmPFVm11sBaU87xU3duevj4oKW24SPkgxMKnGdfDh8vVejYQFiGeZ/
- ynMzyuGK0Qi/Lb8FO/RYV66eoV8c7/E=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-479-hVvTKh7KPD2tp9B2voPQMg-1; Mon, 19 Aug 2024 07:43:07 -0400
-X-MC-Unique: hVvTKh7KPD2tp9B2voPQMg-1
-Received: by mail-wr1-f69.google.com with SMTP id
- ffacd0b85a97d-3717cc80ce1so2602339f8f.0
- for <qemu-arm@nongnu.org>; Mon, 19 Aug 2024 04:43:07 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1724067786; x=1724672586;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=17jyWeoONpjyGGI56CQoEQmnYqkX6odmOILY01oA+ic=;
- b=Y+7qUAN0bvfGxIxaY0XRr+UV8tylSwCYL47VKw9H1Ff9PzS5kCFrrxT15txcbsbrLT
- lLzOmk8trHwhqYMHUlPapI6ZqCkeFwC5IBv0FE8939pPQ0SyaJke73fN79cwiqRHTxX/
- EfJ8vd6BJc83W6HfwD9vyMCvDwZD+fvyhqrLym3VN53P0QuWBcVyhM03Oe5FEVDNDA2c
- LrchNs0AFhrW0xg8O6Ekh5hsgY+DN6ZOs6RyOiecd/zYLozPFWP9kN+yfNXCs/0XO/Eh
- Q/Xy5FypNTlNeUFCG3Sj4i5/5KBpdbm+TsRGeBc6X3Eo0WLiZdZb5IV/c69l4FZfWTvE
- 1tgA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWwkOtBYV6KBbD8cB5BK+bVsUeH1gEt+W0gnxM3/T6qIqt2j7JgYhBp9l4OgHKPk6n1pOx52xcCzUU/+UxEHbDsrs2J
-X-Gm-Message-State: AOJu0YxRFHTgdKXSqLJooCmqDGmH2ZTHnB1Hn56ginmlYBXF0L+/9U8K
- QGDd9JPWTjl2vAahvMz7RW9Uk0RbkfDMchI9wAZCozeBdTHXIxlYC8QT5DgQXmXII2PJsf4bHz0
- JBypoCYTULCiBHbAWdu7+E5rlGtytG3Yrr1/XC9b9I9LP5OugSw==
-X-Received: by 2002:a5d:670d:0:b0:367:9903:a81 with SMTP id
- ffacd0b85a97d-3719469fac2mr6086916f8f.43.1724067786437; 
- Mon, 19 Aug 2024 04:43:06 -0700 (PDT)
-X-Received: by 2002:a5d:670d:0:b0:367:9903:a81 with SMTP id
- ffacd0b85a97d-3719469fac2mr6086901f8f.43.1724067785934; 
- Mon, 19 Aug 2024 04:43:05 -0700 (PDT)
-Received: from imammedo.users.ipa.redhat.com (nat-pool-brq-t.redhat.com.
- [213.175.37.10]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3718983a2eesm10352516f8f.19.2024.08.19.04.43.05
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 19 Aug 2024 04:43:05 -0700 (PDT)
-Date: Mon, 19 Aug 2024 13:43:04 +0200
-From: Igor Mammedov <imammedo@redhat.com>
-To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>, Shiju Jose
- <shiju.jose@huawei.com>, "Michael S. Tsirkin" <mst@redhat.com>, Ani Sinha
- <anisinha@redhat.com>, Dongjiu Geng <gengdongjiu1@gmail.com>,
- linux-kernel@vger.kernel.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [PATCH v8 03/13] acpi/ghes: Add support for GED error device
-Message-ID: <20240819134304.68c54eae@imammedo.users.ipa.redhat.com>
-In-Reply-To: <ba1864f1aa7073abe090eec0c31915f187967140.1723793768.git.mchehab+huawei@kernel.org>
-References: <cover.1723793768.git.mchehab+huawei@kernel.org>
- <ba1864f1aa7073abe090eec0c31915f187967140.1723793768.git.mchehab+huawei@kernel.org>
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
+       spf=pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=jonathan.cameron@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Received: from mail.maildlp.com (unknown [172.18.186.31])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4WkRrz2Z6Hz6K9Fx;
+	Wed, 14 Aug 2024 20:09:55 +0800 (CST)
+Received: from lhrpeml500005.china.huawei.com (unknown [7.191.163.240])
+	by mail.maildlp.com (Postfix) with ESMTPS id 719EE140B2F;
+	Wed, 14 Aug 2024 20:12:33 +0800 (CST)
+Received: from localhost (10.203.177.66) by lhrpeml500005.china.huawei.com
+ (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Wed, 14 Aug
+ 2024 13:12:32 +0100
+Date: Wed, 14 Aug 2024 13:12:31 +0100
+From: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
+To: Zhao Liu <zhao1.liu@intel.com>
+CC: Markus Armbruster <armbru@redhat.com>,
+	"Daniel P .\" =?ISO-8859-1?Q?Be?=  =?ISO-8859-1?Q?rrang=E9?= <berrange@redhat.com>, Eduardo Habkost  <eduardo@habkost.net>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,  Philippe =?ISO-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>, Yanan Wang  <wangyanan55@huawei.com>,  Michael S.Tsirkin  <mst@redhat.com>, Paolo Bonzini  <pbonzini@redhat.com>, Richard Henderson <richard.henderson@linaro.org>, Eric  Blake <eblake@redhat.com>, Marcelo Tosatti <mtosatti@redhat.com>, Alex  =?ISO-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>, Peter Maydell  <peter.maydell@linaro.org>, Sia Jee Heng <jeeheng.sia@starfivetech.com>,  qemu-devel@nongnu.org, kvm@vger.kernel.org, qemu-riscv@nongnu.org,  qemu-arm@nongnu.org, Zhenyu Wang <zhenyu.z.wang@intel.com>, Dapeng Mi  <dapeng1.mi@linux.intel.com>, Yongwei Ma <yongwei.ma@intel.com>"@domain.invalid
+Subject: Re: [PATCH 8/8] qemu-options: Add the description of smp-cache
+ object
+Message-ID: <20240814131231.00007f49@Huawei.com>
+In-Reply-To: <ZrnU25wxuqgST7x1@intel.com>
+References: <20240704031603.1744546-9-zhao1.liu@intel.com>
+	<87r0bl35ug.fsf@pond.sub.org>
+	<Zp5vxtXWDeHAdPok@intel.com>
+	<87bk2nnev2.fsf@pond.sub.org>
+	<ZqEN1kZaQcuY4UPG@intel.com>
+	<87le1psuv3.fsf@pond.sub.org>
+	<ZqtXP9MViOlyhEsu@intel.com>
+	<87mslweb38.fsf@pond.sub.org>
+	<ZqyRik4UHHz3xaKl@intel.com>
+	<8734ndj33j.fsf@pond.sub.org>
+	<ZrnU25wxuqgST7x1@intel.com>
+Organization: Huawei Technologies Research and Development (UK) Ltd.
+X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset="US-ASCII"
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=imammedo@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
-X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.134,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: HJNr2ykdqZPK
+X-Originating-IP: [10.203.177.66]
+X-ClientProxiedBy: lhrpeml100004.china.huawei.com (7.191.162.219) To
+ lhrpeml500005.china.huawei.com (7.191.163.240)
+X-TUID: 0/lq0c1NFK2o
 
-On Fri, 16 Aug 2024 09:37:35 +0200
-Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
 
-> From: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-> 
-> As a GED error device is now defined, add another type
-> of notification.
-> 
-> Add error notification to GHES v2 using
->a GED error device GED triggered via interrupt.
- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-This is hard to parse, perhaps update so it would be
-more clear what does what
+Just picking out one element.
 
 > 
-> [mchehab: do some cleanups at ACPI_HEST_SRC_ID_* checks and
->  rename HEST event to better identify GED interrupt OSPM]
+> > If I forcibly ignore all the considerations related to concrete syntax
+> > in your message, a structure seems to emerge: there's a set of caches
+> > identified by name (l1i, l1d, ...), and for each cache, we have a number
+> > of configurable properties (topology level, ...).  Makes sense?  
 > 
-> Signed-off-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-> Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-> Reviewed-by: Igor Mammedov <imammedo@redhat.com>
-> ---
+> Yes, you're right!
+> 
+> > What else will you need to configure in the future?  
+> 
+> Maybe cache size, as Jonathan mentioned for Arm side.
 
-in addition to change log in cover letter,
-I'd suggest to keep per patch change log as well (after ---),
-it helps reviewer to notice intended changes.
+Everything that ends up in ACPI PPTT either via the relationships between
+the various structures, or as data in the cache entries.
+(some of this also goes in system registers, but this is a superset of
+what is needed to generate PPTT for a guest on a KVM system by
+reading a bunch of sysfs files on the host).
 
+The topology stuff is about relationships (pointers effectively) in that table
+the other is probably all the fields in "Cache Type Structure - Type 1"
+- Size
+- Number of sets
+- Associativity
+- Line size
+- Allocation type (read allocate; write allocate; read and write alloc)
+- (cache type - already encoded via l1i, l1d etc)
+- Write Policy - (write back, write through)
 
-[...]
-> +    case ACPI_HEST_SRC_ID_GED:
-> +        build_ghes_hw_error_notification(table_data, ACPI_GHES_NOTIFY_GPIO);
-While GPIO works for arm, it's not the case for other machines.
-I recall a suggestion to use ACPI_GHES_NOTIFY_EXTERNAL instead of GPIO one,
-but that got lost somewhere...
-
-> +        break;
->      default:
->          error_report("Not support this error source");
->          abort();
-> @@ -370,6 +376,7 @@ void acpi_build_hest(GArray *table_data, BIOSLinker *linker,
->      /* Error Source Count */
->      build_append_int_noprefix(table_data, ACPI_GHES_ERROR_SOURCE_COUNT, 4);
->      build_ghes_v2(table_data, ACPI_HEST_SRC_ID_SEA, linker);
-> +    build_ghes_v2(table_data, ACPI_HEST_SRC_ID_GED, linker);
+> 
+> > By the way, extending -machine to support JSON looks feasible to me at a
+> > glance.  
 >  
->      acpi_table_end(linker, &table);
->  }
-> diff --git a/include/hw/acpi/ghes.h b/include/hw/acpi/ghes.h
-> index fb80897e7eac..419a97d5cbd9 100644
-> --- a/include/hw/acpi/ghes.h
-> +++ b/include/hw/acpi/ghes.h
-> @@ -59,9 +59,10 @@ enum AcpiGhesNotifyType {
->      ACPI_GHES_NOTIFY_RESERVED = 12
->  };
->  
-> +/* Those are used as table indexes when building GHES tables */
->  enum {
->      ACPI_HEST_SRC_ID_SEA = 0,
-> -    /* future ids go here */
-> +    ACPI_HEST_SRC_ID_GED,
->      ACPI_HEST_SRC_ID_RESERVED,
->  };
->  
-
+> Thanks again! Then I made it clear that it would be most appropriate to
+> place the cache array in -machine, i.e., it's extensible and consistent
+> with the design of the rest of the machine's properties, as well as
+> consistent with my long-term needs.
+> 
+> Later on, if -machine is able to support JSON, it will also benefit from
+> it. If I have time, I will also think about how -machine can support
+> JSON.
+> 
+> Regards,
+> Zhao
+> 
+> 

@@ -1,98 +1,100 @@
-Received: by 2002:a17:504:9188:b0:1be9:327d:8ee3 with SMTP id i8csp587270njf;
-        Wed, 14 Aug 2024 11:17:10 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWX5IvHMDGfDM+ckMurldCCImVdQeDoyIbJkf9kg/Sd0uBJZeNOOqeR4vx5hGgugRP2Gx3SOwbcQyL52hS6C0q4giF4DOMs
-X-Google-Smtp-Source: AGHT+IHN07k0n8ayaqOZad1cnmiLUON+wLmGtA2t+eQXSrjiSCeaZciblaPamF1foi4YE6mSC9s4
-X-Received: by 2002:ac8:74cf:0:b0:447:e4df:1865 with SMTP id d75a77b69052e-45367896b60mr7907551cf.13.1723659430410;
-        Wed, 14 Aug 2024 11:17:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1723659430; cv=none;
+Received: by 2002:a17:504:9188:b0:1be9:327d:8ee3 with SMTP id i8csp587403njf;
+        Wed, 14 Aug 2024 11:17:39 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUJRJbpHXsBXvJo1+VtyH243aDBTdYHVRzrdxp7faNE6ktx/xZtEDwrIesOmLwWXsFiafcVHBlOVVrEs9Dbp7UzbkVxj4TR
+X-Google-Smtp-Source: AGHT+IEvAnqmaJ2C0/D/5BeOAHrSwGUJ06YzZ9yPZAOzkAOLJ8JP51llH3nG4ve5OyFzq6Imm60n
+X-Received: by 2002:a05:622a:588f:b0:453:1afe:c711 with SMTP id d75a77b69052e-4535baeed58mr48504621cf.28.1723659458849;
+        Wed, 14 Aug 2024 11:17:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1723659458; cv=none;
         d=google.com; s=arc-20160816;
-        b=dLfEfFFdYPLIeTY21lwAK4m1e9B/BkuCS2dyXYc+2Tl4XwPnvHRox98p8K7kF//7uL
-         g/yyUTach/TcC39kvSTbz+oZEsTt9D7ba+FFUOznQZdbDXyFDc2qRTVH4b8ZbYHf1E+5
-         uxOkzu9tD1bkOB1ONqNrnmYafgr1IxMSyainirr42aXZXi3BNyBgWHOD/tEK0MvcdBFz
-         QdLiya6cCxKFqp/1nXD0kXnkVKQzx9Kl5CEBCU89U65R8sS9qHPZBhJT2O05PQZBFECP
-         dAUPOJjHT7O2myTzgOVExkYwV/jLhjUUe5k7W46dKMUKCZ5/FXEiaUfqGKmrCcg44C/4
-         QNCA==
+        b=M8i/FFLBI2UD+VCsOilfAQJltBNs8xChQex59+F8bUvetPw3Y27v7qxKlvU1ZWAsqu
+         YxnogkFsxKgdgFrLvMRtIPi+dfu/QNjXFHXi8o7g2vUy7kuE63vh6PlUtPJW2h2p3R2Q
+         1YarHQXndG3M4uK9esm7SMaBAhWInzOqh8fjxV5eQDwEg+OU3QGLdNmHqBecot9Eu4bU
+         GsZQKlguKgK32OeVSvuNSrSlU3M7AT7odZCdz7xm3BApE8LCMNJ+yGdfUZNzDH5g3Esu
+         mBgMJdinKDu0ssYh90EXjdV1NqRldKMq8aAsrVUcEcrkUMJwaU5AbyGQt4wHQGUhQreo
+         wYQA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=iahjTri8KuVoj9s2LrgEu/hqpsziuAhYqC7/VHumG6g=;
-        fh=QnpjFMEOflRf498XuafR6WU4QJSl3j1JDhS+efI8jPA=;
-        b=DcUcX9DlAZG3cDvZ+NRzGkHJynptONYty0qS6N59j463IEt7VwMtzikRkKdReNXd6+
-         /5R5QLNMFrAR2Jmd0EMoCXc2guEWpRc77DQTehEFRoT7y2uushVj+y7BWzGSkgmip0gz
-         STB6p1//BxBJQfR+2g/+a6Phans7Y/FDbWarO758Yh/kfmY5UFlJ2zlN1DTV6wya31Fl
-         t6RostblzyjgRulpDI4JdQsVtlXE776Y5z5dB7daAsoGvr3HLOgyhSd8xh9A7RQqa95C
-         3X54RfY5vK+9UtGej7o/Z4RwPjtoM1ZJMcgE60vVJ6eU/snV6WDvu0t+fGK6zcwxPSy/
-         G9xw==;
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=pgBwQcTsY5kig6ob6QbX8yg1wENWhX6GNFsHsRJ5hkg=;
+        fh=38SOxYp0fwweI/MOXAR41iq3UQz6BscvgNdRp+3DkCc=;
+        b=vh72jGGMH8UTPxBa5LKYKlJS+39erX2FJsql5NJl7FLKK6OaM0Fo7o5fwjfWv7IdR3
+         uH8cOIFDJG6/nZ1qhh9c3aQYydNhISc84Slb6Xs8j+sfTFmRPlYBahf3BhLTikGkqiP8
+         otLArtT4TKxT83qfIEXtA/RsTd7ZnJtJScma7gLVGg+NB9NNmWzDhlADQc5k+F1ayaVk
+         QujU01eEVaJJpOX41h02GaObiYNykh8mhJbuJmgzM9h9BoLxUgxZjhFq2gIBBxKh3zoT
+         xdh9//SXzeKktMnG/a9pjSXZLhH8mWGYO7DLykH2yt26NjP5NBrA4dqxkSFyxBK2wZ/z
+         8EwQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=ksaPoK3I;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=geKisHJU;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4531c268d4csi110029661cf.299.2024.08.14.11.17.10
+        by mx.google.com with ESMTPS id d75a77b69052e-4531c2a9fd6si116555081cf.581.2024.08.14.11.17.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 14 Aug 2024 11:17:10 -0700 (PDT)
+        Wed, 14 Aug 2024 11:17:38 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=ksaPoK3I;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=geKisHJU;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1seIXP-0005LG-UJ; Wed, 14 Aug 2024 14:15:59 -0400
+	id 1seIXQ-0005PP-SJ; Wed, 14 Aug 2024 14:16:00 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1seIXI-0005Ad-36; Wed, 14 Aug 2024 14:15:52 -0400
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
+ id 1seIXL-0005CF-Iu; Wed, 14 Aug 2024 14:15:55 -0400
+Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1seIXG-0000B5-Ad; Wed, 14 Aug 2024 14:15:51 -0400
-Received: by mail-wr1-x42f.google.com with SMTP id
- ffacd0b85a97d-37186c2278bso95498f8f.1; 
- Wed, 14 Aug 2024 11:15:48 -0700 (PDT)
+ id 1seIXJ-0000Bq-Lj; Wed, 14 Aug 2024 14:15:55 -0400
+Received: by mail-wr1-x42e.google.com with SMTP id
+ ffacd0b85a97d-367963ea053so123367f8f.2; 
+ Wed, 14 Aug 2024 11:15:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1723659347; x=1724264147; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=iahjTri8KuVoj9s2LrgEu/hqpsziuAhYqC7/VHumG6g=;
- b=ksaPoK3IWT1RguytuYCX70CLgaIoMkAhLo8nfnQBu6Hb46T5eQ6aYH0i7pwwcesrXC
- R6f2ppT0NoLuCODor2kPjQoOJVKqiyHXZ4rOve3ylHWjWmppn3v0qxJYdHZGCfF98Mhc
- 1d9DF+LYnb3b+8Pz+eTvdNoumI2YqMe+g5/yG2hKCDSblrdxDVeFu5ByqsH7nYLAOlP6
- m8Dq7P8rKJiUdOE2DYMyzs4+ZpfLmXU8OGJMbUfdU5OM6JB9g1hUl7EC9DpD1JdzoAjn
- nVHcAMCQlWQAf7ciFaQhsDo0KKs17nUoQv2iXHP9mbcP19SV1jqJPlmBg6ootAWc6v45
- jqhw==
+ d=gmail.com; s=20230601; t=1723659351; x=1724264151; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=pgBwQcTsY5kig6ob6QbX8yg1wENWhX6GNFsHsRJ5hkg=;
+ b=geKisHJU+JXMwAG6C4BTlrnuawxFB9ezTbXMCKR1WUz4aKGrOuR4wwPGvTsIYolqAP
+ yK097NWXc6fdGzZN4/N+/v1z5gdGcafhURNVAaFwVz73X6wlv3QEX8IMhuI9Ta/EfAUU
+ Rh07XJOOgGYNyRKvCUHwNgED2wF8yPRf08jCQVKSYF/Yk6FUqLV8CtGRufT3JVZnOz9r
+ JzUCIEIWsECq+jEEoOKW8IvBO3Y/+2/LUqaBFRvtmf8zp4/Aj1PeLBdyyT0G5D7eCdF0
+ Rmst1Qc4/yLGLoxFsmpGnEAAw7zN0RgwNypH5u/09JTipwCpGsnnr6ZlUBS05DINfm2m
+ hpUw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1723659347; x=1724264147;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=iahjTri8KuVoj9s2LrgEu/hqpsziuAhYqC7/VHumG6g=;
- b=N6r80uhqu7ryZECuuYg2VMdfwD27YS+6shAmDQ9habSiREAqG3AvB34D60Sd/Kxnvy
- AdTllRRjK3+wDcad9PC291GSAJM9Kp6gmsBfQESPhVZE9nIJ1twHdLcehkyIaiJAPjtR
- BnWqCJz0cNawjeYqT6yhmaWRyZ+W+ilTVszA5cZRomGSGLXmicts1z3XACDmz4Z3qaC6
- e9vmCN4ua7X5eCgd/sat2OGChVoa1mfFyuWr+obI3JCBaUKcJE8D0tirPqJIiAaP8Sp+
- sqWy+qAcMgGpZXWCLu2w16Y51cNn4IcdhqoEIlxgvNAqwFTqpQss+AycRcySm6f93djc
- ZALQ==
+ d=1e100.net; s=20230601; t=1723659351; x=1724264151;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=pgBwQcTsY5kig6ob6QbX8yg1wENWhX6GNFsHsRJ5hkg=;
+ b=VoRQgn9nrFWIbiOctRkoP0Lqw5d8C14WC52fmAweW4w/hrfi4SCJj0PEjjP8zkUuxF
+ tLFnWEggtLZKwbNYvKN+qO7xkms3x4ueFWc49bYfxqAzsns6yeg29BhIPwFAbi3igPkr
+ J7mPkvacrhWzxi/ElWB74i3BDRjVRUVNsXH9XyXT11QI6nE65yr2xqxkGNU/5rBQrR5o
+ MYp5qzx/W0+z58qSZkFo0tb5eXIdMKYahqHfN2dU6/naT+L5GtLoAAahC2z1J4H5ri9u
+ gnhLHmWYXNSmulYNwlOV1qjscK95WcPG+qv2Up+45PSM60w3Z3n5oQN4c2pnyLO41g0x
+ MAfQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUMR4o7y7jMjaHwWTwr/pI/4EVWuhl+64TiBvKm8sBOCSfaqgeWPQaDbpxlBbzx5fWjdRwLA8lOrV0DxJjTgzhCH5Z6obpi4EAm3KIcQv21xsMDpDXCWoye0MaC7LerRUgHkYhqLT0GzNEHMgFAX8I=
-X-Gm-Message-State: AOJu0Yyi5DXAB15InPtNkpWcbTyDY4Oyk+sw1cClL4FZP8yThokCn02y
- U6XzgD6b4F/Cbflo5N00Zea2JkyxunNO4n11sWP2E0WzH/hvp/K6vnfe2Q==
-X-Received: by 2002:adf:f648:0:b0:366:ee84:6a77 with SMTP id
- ffacd0b85a97d-37186bbd203mr469786f8f.3.1723659346425; 
- Wed, 14 Aug 2024 11:15:46 -0700 (PDT)
+ AJvYcCWHFUsAoeSgS89RMqKyHIk2q6H+WCeoTpUog+hMfJzJHUrDK0kRuQQuCztxzwuDnl77V1dGYKUgxAgJpTA7u2n4+G7Ol1xgK4Fu1DsbI2fyNboHIB9VEyGrF93WIkHXY2n+FA3X7aDOW4yhxMEG3h8=
+X-Gm-Message-State: AOJu0YysjUwqvfj5R2yiEdxTnq/sU0eoTZSmugCYZLZbb/V6HB+xmKDr
+ yQhhZWANcTzQaz8u7BqsXkAS1hElbVgShSJKUBDu7R/r/DzPv6SrBuQrUA==
+X-Received: by 2002:adf:f4cf:0:b0:371:869b:4e5e with SMTP id
+ ffacd0b85a97d-371869b4f83mr478621f8f.1.1723659350403; 
+ Wed, 14 Aug 2024 11:15:50 -0700 (PDT)
 Received: from Provence.localdomain
  (dynamic-078-055-049-243.78.55.pool.telefonica.de. [78.55.49.243])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-36e4c937bb9sm13557625f8f.34.2024.08.14.11.15.44
+ ffacd0b85a97d-36e4c937bb9sm13557625f8f.34.2024.08.14.11.15.48
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 14 Aug 2024 11:15:45 -0700 (PDT)
+ Wed, 14 Aug 2024 11:15:50 -0700 (PDT)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Jiaxun Yang <jiaxun.yang@flygoat.com>,
@@ -132,15 +134,16 @@ Cc: Jiaxun Yang <jiaxun.yang@flygoat.com>,
  =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
  qemu-riscv@nongnu.org, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Song Gao <gaosong@loongson.cn>, Bernhard Beschow <shentey@gmail.com>
-Subject: [PATCH 0/5] Serial device cleanup
-Date: Wed, 14 Aug 2024 20:15:29 +0200
-Message-ID: <20240814181534.218964-1-shentey@gmail.com>
+Subject: [PATCH 2/5] hw/char/serial: Remove unused funtion
+Date: Wed, 14 Aug 2024 20:15:31 +0200
+Message-ID: <20240814181534.218964-3-shentey@gmail.com>
 X-Mailer: git-send-email 2.46.0
-Content-Type: text/plain; charset="utf-8"
+In-Reply-To: <20240814181534.218964-1-shentey@gmail.com>
+References: <20240814181534.218964-1-shentey@gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
- envelope-from=shentey@gmail.com; helo=mail-wr1-x42f.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
+ envelope-from=shentey@gmail.com; helo=mail-wr1-x42e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -162,87 +165,47 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: RKdF3t1ILKX+
+X-TUID: 4CoFynLV6/8N
 
-This series extracts TYPE_SERIAL_MM into its own module and introduces a=0D
-dedicated header for TYPE_SERIAL_ISA. The result is that no board directly=
-=0D
-depends on CONFIG_SERIAL or includes hw/char/serial.h any more.=0D
-=0D
-Bernhard Beschow (5):=0D
-  hw: Remove unused inclusion of hw/char/serial.h=0D
-  hw/char/serial: Remove unused funtion=0D
-  hw/ppc/Kconfig: Add missing SERIAL_ISA dependency to POWERNV machine=0D
-  hw/char/serial.h: Extract serial-isa.h=0D
-  hw/char: Extract serial-mm=0D
-=0D
- include/hw/arm/aspeed_soc.h         |   2 +-=0D
- include/hw/char/mchp_pfsoc_mmuart.h |   2 +-=0D
- include/hw/char/serial-isa.h        |  38 +++++++=0D
- include/hw/char/serial-mm.h         |  52 +++++++++=0D
- include/hw/char/serial.h            |  30 ------=0D
- hw/arm/allwinner-a10.c              |   2 +-=0D
- hw/arm/allwinner-h3.c               |   2 +-=0D
- hw/arm/allwinner-r40.c              |   2 +-=0D
- hw/arm/aspeed_ast2400.c             |   2 +-=0D
- hw/arm/aspeed_soc_common.c          |   2 +-=0D
- hw/arm/kzm.c                        |   2 +-=0D
- hw/arm/msf2-soc.c                   |   2 +-=0D
- hw/arm/musicpal.c                   |   2 +-=0D
- hw/arm/npcm7xx.c                    |   2 +-=0D
- hw/arm/pxa2xx.c                     |   2 +-=0D
- hw/char/omap_uart.c                 |   2 +-=0D
- hw/char/riscv_htif.c                |   1 -=0D
- hw/char/serial-isa.c                |   1 +=0D
- hw/char/serial-mm.c                 | 157 ++++++++++++++++++++++++++++=0D
- hw/char/serial.c                    | 133 -----------------------=0D
- hw/display/sm501.c                  |   2 +-=0D
- hw/hppa/machine.c                   |   2 +-=0D
- hw/i386/microvm-dt.c                |   2 +-=0D
- hw/i386/microvm.c                   |   2 +-=0D
- hw/i386/pc.c                        |   2 +-=0D
- hw/isa/isa-superio.c                |   2 +-=0D
- hw/isa/vt82c686.c                   |   2 +-=0D
- hw/loongarch/virt.c                 |   2 +-=0D
- hw/microblaze/petalogix_ml605_mmu.c |   2 +-=0D
- hw/mips/boston.c                    |   2 +-=0D
- hw/mips/jazz.c                      |   2 +-=0D
- hw/mips/loongson3_virt.c            |   2 +-=0D
- hw/mips/malta.c                     |   2 +-=0D
- hw/mips/mipssim.c                   |   2 +-=0D
- hw/openrisc/openrisc_sim.c          |   2 +-=0D
- hw/openrisc/virt.c                  |   2 +-=0D
- hw/ppc/e500.c                       |   2 +-=0D
- hw/ppc/pnv.c                        |   2 +-=0D
- hw/ppc/ppc405_uc.c                  |   2 +-=0D
- hw/ppc/ppc440_bamboo.c              |   2 +-=0D
- hw/ppc/prep.c                       |   1 -=0D
- hw/ppc/sam460ex.c                   |   2 +-=0D
- hw/ppc/virtex_ml507.c               |   2 +-=0D
- hw/riscv/sifive_e.c                 |   1 -=0D
- hw/riscv/sifive_u.c                 |   1 -=0D
- hw/riscv/virt.c                     |   2 +-=0D
- hw/sparc64/niagara.c                |   2 +-=0D
- hw/sparc64/sun4u.c                  |   3 +-=0D
- hw/xtensa/xtfpga.c                  |   2 +-=0D
- hw/arm/Kconfig                      |  20 ++--=0D
- hw/char/Kconfig                     |   4 +=0D
- hw/char/meson.build                 |   1 +=0D
- hw/display/Kconfig                  |   2 +-=0D
- hw/hppa/Kconfig                     |   2 +-=0D
- hw/loongarch/Kconfig                |   2 +-=0D
- hw/microblaze/Kconfig               |   2 +-=0D
- hw/mips/Kconfig                     |  10 +-=0D
- hw/openrisc/Kconfig                 |   4 +-=0D
- hw/ppc/Kconfig                      |  11 +-=0D
- hw/riscv/Kconfig                    |   2 +-=0D
- hw/sparc64/Kconfig                  |   1 +=0D
- hw/xtensa/Kconfig                   |   2 +-=0D
- 62 files changed, 323 insertions(+), 234 deletions(-)=0D
- create mode 100644 include/hw/char/serial-isa.h=0D
- create mode 100644 include/hw/char/serial-mm.h=0D
- create mode 100644 hw/char/serial-mm.c=0D
-=0D
--- =0D
-2.46.0=0D
-=0D
+The serial port's frequency is set via the "baudbase" property nowadays.
+
+Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+---
+ include/hw/char/serial.h | 2 --
+ hw/char/serial.c         | 7 -------
+ 2 files changed, 9 deletions(-)
+
+diff --git a/include/hw/char/serial.h b/include/hw/char/serial.h
+index 6e14099ee7..40aad21df3 100644
+--- a/include/hw/char/serial.h
++++ b/include/hw/char/serial.h
+@@ -93,8 +93,6 @@ struct SerialMM {
+ extern const VMStateDescription vmstate_serial;
+ extern const MemoryRegionOps serial_io_ops;
+ 
+-void serial_set_frequency(SerialState *s, uint32_t frequency);
+-
+ #define TYPE_SERIAL "serial"
+ OBJECT_DECLARE_SIMPLE_TYPE(SerialState, SERIAL)
+ 
+diff --git a/hw/char/serial.c b/hw/char/serial.c
+index d8b2db5082..6c5c4a23c7 100644
+--- a/hw/char/serial.c
++++ b/hw/char/serial.c
+@@ -951,13 +951,6 @@ static void serial_unrealize(DeviceState *dev)
+     qemu_unregister_reset(serial_reset, s);
+ }
+ 
+-/* Change the main reference oscillator frequency. */
+-void serial_set_frequency(SerialState *s, uint32_t frequency)
+-{
+-    s->baudbase = frequency;
+-    serial_update_parameters(s);
+-}
+-
+ const MemoryRegionOps serial_io_ops = {
+     .read = serial_ioport_read,
+     .write = serial_ioport_write,
+-- 
+2.46.0
+

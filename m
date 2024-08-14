@@ -1,172 +1,181 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a80f3fb155asm194746566b.81.2024.08.14.10.25.08
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 14 Aug 2024 10:25:08 -0700 (PDT)
-Received: from draig (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 186F95F713;
-	Wed, 14 Aug 2024 18:25:07 +0100 (BST)
-From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: "Michael S. Tsirkin" <mst@redhat.com>
-Cc: Nicholas Piggin <npiggin@gmail.com>,  qemu-devel@nongnu.org,  Alistair
- Francis <alistair.francis@wdc.com>,  Michael Roth <michael.roth@amd.com>,
-  Palmer Dabbelt <palmer@dabbelt.com>,  Mahmoud Mandour
- <ma.mandourr@gmail.com>,  Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
-  Yoshinori Sato <ysato@users.sourceforge.jp>,  Weiwei Li
- <liwei1518@gmail.com>,  Eduardo Habkost <eduardo@habkost.net>,
-  =?utf-8?Q?Marc-Andr=C3=A9?=
- Lureau <marcandre.lureau@redhat.com>,  Markus Armbruster
- <armbru@redhat.com>,  David Hildenbrand <david@redhat.com>,  Beraldo Leal
- <bleal@redhat.com>,  Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,  Eric
- Auger <eric.auger@redhat.com>,  Song Gao <gaosong@loongson.cn>,
-  qemu-arm@nongnu.org,  Peter Xu <peterx@redhat.com>,  Jiri Pirko
- <jiri@resnulli.us>,  Eric Blake <eblake@redhat.com>,  Fabiano Rosas
- <farosas@suse.de>,  qemu-s390x@nongnu.org,  Peter Maydell
- <peter.maydell@linaro.org>,  Daniel Henrique Barboza
- <dbarboza@ventanamicro.com>,  John Snow <jsnow@redhat.com>,  Alexandre
- Iooss <erdnaxe@crans.org>,  Konstantin Kostiuk <kkostiuk@redhat.com>,
-  Pierrick Bouvier <pierrick.bouvier@linaro.org>,  Cleber Rosa
- <crosa@redhat.com>,  Ilya Leoshkevich <iii@linux.ibm.com>,
-  qemu-riscv@nongnu.org,  Thomas Huth <thuth@redhat.com>,  Paolo Bonzini
- <pbonzini@redhat.com>,  Richard Henderson <richard.henderson@linaro.org>,
-  Jason Wang <jasowang@redhat.com>,  Bin Meng <bmeng.cn@gmail.com>,
-  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,  Wainer dos
- Santos Moschetta
- <wainersm@redhat.com>,  Pavel Dovgalyuk <Pavel.Dovgalyuk@ispras.ru>
-Subject: Re: [PATCH v2 16/21] virtio-net: Use replay_schedule_bh_event for
- bhs that affect machine state
-In-Reply-To: <20240814030308-mutt-send-email-mst@kernel.org> (Michael S.
-	Tsirkin's message of "Wed, 14 Aug 2024 03:06:54 -0400")
-References: <20240813202329.1237572-1-alex.bennee@linaro.org>
-	<20240813202329.1237572-17-alex.bennee@linaro.org>
-	<20240813164631-mutt-send-email-mst@kernel.org>
-	<D3FEPPLH78YW.3BYA9B4HYGN1U@gmail.com>
-	<20240814030308-mutt-send-email-mst@kernel.org>
-Date: Wed, 14 Aug 2024 18:25:07 +0100
-Message-ID: <87y14z81ak.fsf@draig.linaro.org>
+Received: by 2002:a17:504:9188:b0:1be9:327d:8ee3 with SMTP id i8csp641929njf;
+        Wed, 14 Aug 2024 14:39:31 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCV4BjnUGPNHtcqqP8eUkvR9BgsTMiBRFXK53QfHzX5p/A6A9MUPEGxGzSDQGQT73gtRyH8wUHbTsPR4T2hpOFa/bJeVFuUL
+X-Google-Smtp-Source: AGHT+IFaszW6thRdldHl+FOp7aRcka9O7AATk3uCBoiZZPKoZz+Fo/YDmuFIEAna5jv9mIZx5v0u
+X-Received: by 2002:a05:6808:3196:b0:3d9:28d0:fcd4 with SMTP id 5614622812f47-3dd298d5a6cmr4092033b6e.5.1723671571680;
+        Wed, 14 Aug 2024 14:39:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1723671571; cv=none;
+        d=google.com; s=arc-20160816;
+        b=kucafZe10JmhRVMMFZ33iuIVIcTdlS7LcDruysPd3+LfmkX+mF8i/9l3BVI9+9NdLc
+         di/cF9GkcqKanphYCbu4BzUv4UyCOJNax+EwKCxnhZg/40GT8eWCOILXiXbJ8o3RT+B1
+         xazjM2GE+gqnhFh/8WmdgkL4pqfrrlfT4KRxqPFVPlZAk66ct2qPTRnigiibUnUIiB/n
+         9BDstkXKg5ynQMGWBH3EHjXh1imCi3SJ9tk9fXkwRIn08owdJZjT89kj//Bqb8c+WUdH
+         dBMM8GtCUPh7bU5VnHTMbAm64ENiAEx3ZtJ24aQ8vRO6gqtIM2MeBSHYPRDCK+TiOBoo
+         PqWw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version:references
+         :message-id:in-reply-to:subject:cc:to:from:date;
+        bh=dMOl9WGfD+jnC+rFtZxWkt1o9423IuQCs6U+pqR6Rmk=;
+        fh=qJpuUQrf4VWTRGRxfzRJWgXPu5b0LxnJsVMsIYGSCTo=;
+        b=z+5ENhKv065tg9Eznk76PSLZBbuBeRboclKqjujeHJblR2LT/jh2mBScqWntBSICE3
+         4XmHMsFEVmQMDNBOng2+GdrQFQhpIuYiZZPbG1owyy1QGjkBCsZq68GrnFdzb8hoD4MY
+         2+rGinnGf4nsGfLRpqWf6OHGaRMHn5s/MtZ4Zoo1n1FyAfGu5gfqRmbrCJj+mqyDue8W
+         qWomlzFwfts7g5K4fNvLg1DIpOL387cBOo3f7smr5CUTltok2oS0qZDUqfzw+k3b++45
+         sDyHASAoOPWaFwCcLVzckcYZ0ylvI9JjQWNKAu7mGOgutTctcAdLZnY1Zn2UtBtrAcbo
+         6lOw==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d75a77b69052e-45369fe6d28si1738991cf.64.2024.08.14.14.39.31
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 14 Aug 2024 14:39:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1seLhx-0002zv-Ku; Wed, 14 Aug 2024 17:39:05 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1seLhw-0002yH-1N; Wed, 14 Aug 2024 17:39:04 -0400
+Received: from zero.eik.bme.hu ([2001:738:2001:2001::2001])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1seLhu-00061s-5w; Wed, 14 Aug 2024 17:39:03 -0400
+Received: from zero.eik.bme.hu (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id 58B8F4E601B;
+ Wed, 14 Aug 2024 23:38:54 +0200 (CEST)
+X-Virus-Scanned: amavisd-new at eik.bme.hu
+Received: from zero.eik.bme.hu ([127.0.0.1])
+ by zero.eik.bme.hu (zero.eik.bme.hu [127.0.0.1]) (amavisd-new, port 10028)
+ with ESMTP id qopeG03LmtOG; Wed, 14 Aug 2024 23:38:52 +0200 (CEST)
+Received: by zero.eik.bme.hu (Postfix, from userid 432)
+ id 4D95E4E600F; Wed, 14 Aug 2024 23:38:52 +0200 (CEST)
+Received: from localhost (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id 466F874577C;
+ Wed, 14 Aug 2024 23:38:52 +0200 (CEST)
+Date: Wed, 14 Aug 2024 23:38:52 +0200 (CEST)
+From: BALATON Zoltan <balaton@eik.bme.hu>
+To: Bernhard Beschow <shentey@gmail.com>
+cc: qemu-devel@nongnu.org, Jiaxun Yang <jiaxun.yang@flygoat.com>, 
+ Niek Linnenbank <nieklinnenbank@gmail.com>, Bin Meng <bmeng.cn@gmail.com>, 
+ Paul Burton <paulburton@kernel.org>, Stafford Horne <shorne@gmail.com>, 
+ qemu-ppc@nongnu.org, Tyrone Ting <kfting@nuvoton.com>, 
+ Joel Stanley <joel@jms.id.au>, Eduardo Habkost <eduardo@habkost.net>, 
+ Sergio Lopez <slp@redhat.com>, 
+ Andrew Jeffery <andrew@codeconstruct.com.au>, 
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
+ Paolo Bonzini <pbonzini@redhat.com>, Hao Wu <wuhaotsh@google.com>, 
+ Alistair Francis <Alistair.Francis@wdc.com>, 
+ Jan Kiszka <jan.kiszka@web.de>, Beniamino Galvani <b.galvani@gmail.com>, 
+ Peter Maydell <peter.maydell@linaro.org>, 
+ "Michael S. Tsirkin" <mst@redhat.com>, 
+ Aurelien Jarno <aurelien@aurel32.net>, Palmer Dabbelt <palmer@dabbelt.com>, 
+ Alistair Francis <alistair.francis@wdc.com>, 
+ Artyom Tarasenko <atar4qemu@gmail.com>, Jia Liu <proljc@gmail.com>, 
+ Helge Deller <deller@gmx.de>, Max Filippov <jcmvbkbc@gmail.com>, 
+ Subbaraya Sundeep <sundeep.lkml@gmail.com>, 
+ Weiwei Li <liwei1518@gmail.com>, 
+ =?ISO-8859-15?Q?Marc-Andr=E9_Lureau?= <marcandre.lureau@redhat.com>, 
+ Nicholas Piggin <npiggin@gmail.com>, 
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, 
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>, 
+ Steven Lee <steven_lee@aspeedtech.com>, 
+ =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>, 
+ Huacai Chen <chenhuacai@kernel.org>, 
+ Richard Henderson <richard.henderson@linaro.org>, 
+ Strahinja Jankovic <strahinja.p.jankovic@gmail.com>, qemu-arm@nongnu.org, 
+ Aleksandar Rikalo <arikalo@gmail.com>, Troy Lee <leetroy@gmail.com>, 
+ Jamin Lin <jamin_lin@aspeedtech.com>, 
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, 
+ =?ISO-8859-15?Q?Fr=E9d=E9ric_Barrat?= <fbarrat@linux.ibm.com>, 
+ =?ISO-8859-15?Q?C=E9dric_Le_Goater?= <clg@kaod.org>, 
+ =?ISO-8859-15?Q?Herv=E9_Poussineau?= <hpoussin@reactos.org>, 
+ qemu-riscv@nongnu.org, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, 
+ Song Gao <gaosong@loongson.cn>
+Subject: Re: [PATCH 2/5] hw/char/serial: Remove unused funtion
+In-Reply-To: <20240814181534.218964-3-shentey@gmail.com>
+Message-ID: <22fa9014-2923-b501-e38d-f5dd1e53d15a@eik.bme.hu>
+References: <20240814181534.218964-1-shentey@gmail.com>
+ <20240814181534.218964-3-shentey@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: AIKQ0ejtfLq9
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Received-SPF: pass client-ip=2001:738:2001:2001::2001;
+ envelope-from=balaton@eik.bme.hu; helo=zero.eik.bme.hu
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: kVVdMykRcVMd
 
-"Michael S. Tsirkin" <mst@redhat.com> writes:
+On Wed, 14 Aug 2024, Bernhard Beschow wrote:
+> The serial port's frequency is set via the "baudbase" property nowadays.
 
-> On Wed, Aug 14, 2024 at 04:05:34PM +1000, Nicholas Piggin wrote:
->> On Wed Aug 14, 2024 at 6:48 AM AEST, Michael S. Tsirkin wrote:
->> > On Tue, Aug 13, 2024 at 09:23:24PM +0100, Alex Benn=C3=A9e wrote:
->> > > From: Nicholas Piggin <npiggin@gmail.com>
->> > >=20
->> > > The regular qemu_bh_schedule() calls result in non-deterministic
->> > > execution of the bh in record-replay mode, which causes replay failu=
-re.
->> > >=20
->> > > Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
->> > > Reviewed-by: Pavel Dovgalyuk <Pavel.Dovgalyuk@ispras.ru>
->> > > Signed-off-by: Nicholas Piggin <npiggin@gmail.com>
->> > > Message-Id: <20240813050638.446172-9-npiggin@gmail.com>
->> > > Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
->> > > ---
->> > >  hw/net/virtio-net.c | 11 ++++++-----
->> > >  1 file changed, 6 insertions(+), 5 deletions(-)
->> > >=20
->> > > diff --git a/hw/net/virtio-net.c b/hw/net/virtio-net.c
->> > > index 08aa0b65e3..10ebaae5e2 100644
->> > > --- a/hw/net/virtio-net.c
->> > > +++ b/hw/net/virtio-net.c
->> > > @@ -40,6 +40,7 @@
->> > >  #include "migration/misc.h"
->> > >  #include "standard-headers/linux/ethtool.h"
->> > >  #include "sysemu/sysemu.h"
->> > > +#include "sysemu/replay.h"
->> > >  #include "trace.h"
->> > >  #include "monitor/qdev.h"
->> > >  #include "monitor/monitor.h"
->> > > @@ -417,7 +418,7 @@ static void virtio_net_set_status(struct VirtIOD=
-evice *vdev, uint8_t status)
->> > >                  timer_mod(q->tx_timer,
->> > >                                 qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL=
-) + n->tx_timeout);
->> > >              } else {
->> > > -                qemu_bh_schedule(q->tx_bh);
->> > > +                replay_bh_schedule_event(q->tx_bh);
->> > >              }
->> > >          } else {
->> > >              if (q->tx_timer) {
->> > > @@ -2672,7 +2673,7 @@ static void virtio_net_tx_complete(NetClientSt=
-ate *nc, ssize_t len)
->> > >           */
->> > >          virtio_queue_set_notification(q->tx_vq, 0);
->> > >          if (q->tx_bh) {
->> > > -            qemu_bh_schedule(q->tx_bh);
->> > > +            replay_bh_schedule_event(q->tx_bh);
->> > >          } else {
->> > >              timer_mod(q->tx_timer,
->> > >                        qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) + n->tx=
-_timeout);
->> > > @@ -2838,7 +2839,7 @@ static void virtio_net_handle_tx_bh(VirtIODevi=
-ce *vdev, VirtQueue *vq)
->> > >          return;
->> > >      }
->> > >      virtio_queue_set_notification(vq, 0);
->> > > -    qemu_bh_schedule(q->tx_bh);
->> > > +    replay_bh_schedule_event(q->tx_bh);
->> > >  }
->> > >=20=20
->> > >  static void virtio_net_tx_timer(void *opaque)
->> > > @@ -2921,7 +2922,7 @@ static void virtio_net_tx_bh(void *opaque)
->> > >      /* If we flush a full burst of packets, assume there are
->> > >       * more coming and immediately reschedule */
->> > >      if (ret >=3D n->tx_burst) {
->> > > -        qemu_bh_schedule(q->tx_bh);
->> > > +        replay_bh_schedule_event(q->tx_bh);
->> > >          q->tx_waiting =3D 1;
->> > >          return;
->> > >      }
->> > > @@ -2935,7 +2936,7 @@ static void virtio_net_tx_bh(void *opaque)
->> > >          return;
->> > >      } else if (ret > 0) {
->> > >          virtio_queue_set_notification(q->tx_vq, 0);
->> > > -        qemu_bh_schedule(q->tx_bh);
->> > > +        replay_bh_schedule_event(q->tx_bh);
->> > >          q->tx_waiting =3D 1;
->> > >      }
->> > >  }
->> > > --=20
->> > > 2.39.2
->> >
->> >
->> > Is this really the only way to fix this? I do not think
->> > virtio has any business knowing about replay.
->> > What does this API do, even? BH but not broken with replay?
->> > Do we ever want replay broken? Why not fix qemu_bh_schedule?
->> > And when we add another feature which we do not want to break
->> > will we do foo_bar_replay_bh_schedule_event or what?
->>=20
->> I agree with you. We need to do this (a couple of other hw
->> subsystems already do and likely some are still broken vs
->> replay and would need to be converted), but I think it's
->> mostly a case of bad naming. You're right the caller should
->> not know about replay at all, what it should be is whether
->> the event is for the target machine or the host harness,
->> same as timers are VIRTUAL / HOST.
->> So I think we just need to make a qemu_bh_schedule_<type>,
->> or qemu_bh_scheudle_event(... QEMU_EVENT_VIRTUAL/HOST/etc).
+Please keep it as some devices might have registers that set this freq and 
+this function will be needed for emulating that even if it's not emulated 
+currently.
+
+Regards,
+BALATON Zoltan
+
+> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+> ---
+> include/hw/char/serial.h | 2 --
+> hw/char/serial.c         | 7 -------
+> 2 files changed, 9 deletions(-)
 >
-> Or just pass QEMUClockType?
-
-Is this wider re-factoring something that can wait for the next
-developer cycle?
-
->> I had started on a conversion once but not completed it.
->> I could resurrect if there is agreement on the API?
-
-I would certainly welcome it being cleaned up. The supported replay
-devices are very piecemeal at the moment.
-
->>=20
->> Thanks,
->> Nick
-
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro
+> diff --git a/include/hw/char/serial.h b/include/hw/char/serial.h
+> index 6e14099ee7..40aad21df3 100644
+> --- a/include/hw/char/serial.h
+> +++ b/include/hw/char/serial.h
+> @@ -93,8 +93,6 @@ struct SerialMM {
+> extern const VMStateDescription vmstate_serial;
+> extern const MemoryRegionOps serial_io_ops;
+>
+> -void serial_set_frequency(SerialState *s, uint32_t frequency);
+> -
+> #define TYPE_SERIAL "serial"
+> OBJECT_DECLARE_SIMPLE_TYPE(SerialState, SERIAL)
+>
+> diff --git a/hw/char/serial.c b/hw/char/serial.c
+> index d8b2db5082..6c5c4a23c7 100644
+> --- a/hw/char/serial.c
+> +++ b/hw/char/serial.c
+> @@ -951,13 +951,6 @@ static void serial_unrealize(DeviceState *dev)
+>     qemu_unregister_reset(serial_reset, s);
+> }
+>
+> -/* Change the main reference oscillator frequency. */
+> -void serial_set_frequency(SerialState *s, uint32_t frequency)
+> -{
+> -    s->baudbase = frequency;
+> -    serial_update_parameters(s);
+> -}
+> -
+> const MemoryRegionOps serial_io_ops = {
+>     .read = serial_ioport_read,
+>     .write = serial_ioport_write,
+>

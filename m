@@ -1,157 +1,205 @@
-Received: by 2002:a17:504:9188:b0:1be9:327d:8ee3 with SMTP id i8csp478449njf;
-        Wed, 14 Aug 2024 06:22:25 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUypY1K9owQtwtaLNZ4nRKFgatgHsuFRApwac1COKT1znpeE5KkshyIIf0OYcCKeuKz1/xsYxevj4vgZaI3kFoWhtzttVXd
-X-Google-Smtp-Source: AGHT+IGV+06fe0LIywOvVV9rQmznNbTtB0EnCavcV1bFYMXge0iLNR4y0S5OPq92TgWfA0GAZKu/
-X-Received: by 2002:a05:6102:508b:b0:492:9dbe:1741 with SMTP id ada2fe7eead31-497599c6c4bmr3392122137.27.1723641744769;
-        Wed, 14 Aug 2024 06:22:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1723641744; cv=none;
+Received: by 2002:a17:504:9188:b0:1be9:327d:8ee3 with SMTP id i8csp488231njf;
+        Wed, 14 Aug 2024 06:51:03 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUPsKR8orD44QMrJ4ORI5Rjo1oc7/nhn1NGhKkeaNJRwU/YD1Iv4ETE83LIRcruVnB9rzIAjrFJ4kDsv5BWag4UIrNGvIHT
+X-Google-Smtp-Source: AGHT+IFYALuyTWsRGUgYSOKALGXC58n3GqpRAqgpZ5YnAJun7txuunEG0zMU3YvDG3FZh0GgrlJb
+X-Received: by 2002:a05:622a:994:b0:453:5668:4453 with SMTP id d75a77b69052e-4535ba9b321mr26925021cf.11.1723643463643;
+        Wed, 14 Aug 2024 06:51:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1723643463; cv=none;
         d=google.com; s=arc-20160816;
-        b=uX3N+7btC1RRxkLiaL31ZOnZBqTJzzjH9BzFVRNKLYbLvmjuyIVRAFrcrVsO/kCYTK
-         mUK2OHTwbXNLJfYoCd1hx2vrBci+izaHEODvNUnVHGI03y9uOoRVIDKHHbShqnrumLdA
-         /VBSzDhkCF9ldYDZsHMcLlmDQ7yAOg9nX4HDANOx9s64Pr1mpL4zpKVD6LBPFD+tzdDZ
-         qoz8tWO17sZIB0UZr/CaKrQpmg32VssTyVEj5sw2QNaHqKuXa+AKnsFPxjvTCwMvzWnS
-         60Z53TuuCgsL5R/ISr8IFf40fhYVnsz6Cdh/wKtUv3LTm3ohkrYRtlLTQ96IAJSfm6Lv
-         AsMQ==
+        b=Av+uTKVt6lrvvLVLyxMf91eZtZnBiMFDXqLhj4Z/WSNEqmWtRNgYTGITsiMuckWiQx
+         0fVbOgFX5Xo54Kz9IcV3sLuAFvWIZoUihjyXsWKWqQS5cLaKqIvEC0KOl/jJ0JOYgpCC
+         DRuMJmQUNc/qsmyF+EFg9zFoosPkMsumN0M8AL3e6l9AwAqY6EUAi3zr30TZNKodufb7
+         75dffwtZtIOIhzjtX7cLTmXdqr2fs6J8oeIXdO0UM1g/GWTYIQJxL/wWIzdKwvz9YYj3
+         k3b6yxWb3WkFes/geN2MIuQJz0dOzPG9JmwPBM518lMdfqB+gnSSewYnfLs4VE3hO9mz
+         JZxw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=GJ+Iuc+bftzG3jaPUVciqdxI8fDatMJevUO9DZjOZDM=;
-        fh=6Gs+MX/E07glRUsFTttMEkNBSfqO1N/kmMFe/O4bKhc=;
-        b=1Aagy7ezHyG0aQFvcjL5uOawKKG5VvtpPtq5LL3/JbtMpVM1jXRV/nUQwuohH9PD59
-         u+MhlS9i9RT4H8IaO5H1FmypMZQvKHBPtzMBvt3va1oNJmvQvWDT+A98WSfvIIpXbSMi
-         e9mAv8mRFNYk0YG4dMY/LAFSrgCsodhwJjA+TbqRyHojvYYmfriG7BwgJz+v6W7m6TYV
-         xan9UoUYJPbeY90p+iaEKi5GMvun7+Kilr35PGih4T2IrnjD7WfT3G+7ZAxpYIeDX6vu
-         jXgZ3U3sfygrVaWoPEuspBOdcwyTBJ8izNGB9CIYvie932hHO2UOTfRy421qTy/IV7gk
-         RO8w==;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:subject:cc:to:date;
+        bh=QF3f/aHngNdvcVvRsumOtxtxMWVsvnYtKLnI2WuieA8=;
+        fh=c5SdJPmuZjLqL/yVd759G8+oVgaaCcPKba91GgsaS4c=;
+        b=euCMe+E5NEjmilJhfmztX8TW/9jar7r7O6dM89MD0nfMFjiDcVDIEHEWbUlg21GmKc
+         9OpfFC2jUOfboO8w910Ejbx8u0aAYusuRKNFCiueNy6kciToie+INZckxsJzhM63QGAh
+         YZKjzdMnBehjtLPZ5DRrL/zwsSWIfqVjHK1yR6a0qFm++ewUkM0uGPwZ5akDg5TNkb8U
+         sEILBvSOyP6og8YXyTYGxzR1MbqGkIbPVrNk1ACfcE+Ii7QsvFz9OduZOQLCzSZJddWK
+         Q8c6G6wXk4DorQNwXJPrDDkRQDCsAN7LzV5MtNd8Kk6jYB/V5rgZ1JAVuyt50YAUpnQT
+         u7pg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=KprRmy2o;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ada2fe7eead31-4970a1b6cc3si1476486137.771.2024.08.14.06.22.24
+        by mx.google.com with ESMTPS id d75a77b69052e-4531c2aea70si108695171cf.677.2024.08.14.06.51.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 14 Aug 2024 06:22:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 14 Aug 2024 06:51:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=KprRmy2o;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1seDx1-0003Ry-HH; Wed, 14 Aug 2024 09:22:10 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1seEOs-0005q2-6f; Wed, 14 Aug 2024 09:50:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1seDws-00034G-Py
- for qemu-devel@nongnu.org; Wed, 14 Aug 2024 09:21:59 -0400
-Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1seDwp-0001u7-OP
- for qemu-devel@nongnu.org; Wed, 14 Aug 2024 09:21:58 -0400
-Received: by mail-ed1-x52b.google.com with SMTP id
- 4fb4d7f45d1cf-5bb8e62575eso2671031a12.3
- for <qemu-devel@nongnu.org>; Wed, 14 Aug 2024 06:21:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1723641714; x=1724246514; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=GJ+Iuc+bftzG3jaPUVciqdxI8fDatMJevUO9DZjOZDM=;
- b=KprRmy2oa28D0q/YrHIIW+7o64k5/QAPt1627Jg1tA8WC6tA8hHbMTv6A7HGjes97x
- +bREf6cIXblEv9xXNZUagcJFee3k/wACohu5ofQDO61T/UTKtp2BW+phE0DVe0efQXup
- coan6gnat6Sat3wVC/KQnjWiaS0dYnib2jOhIQpPwHcU+WC4ptnDeo6C6hVHdAEKeX1e
- oMhjPviYLzU9KHDK7x1xrLcPVqCiilrSm2JnGqpnadPE0NiNW2wPCl3oLCxL/kvuZB6D
- aJeduh2cYfAFGyj1QawNdlBgMShfJ+H8R+Fs+RZM7cQh+x4IJ8sH6RCrL+x+gJ+hOx0Y
- Q4OQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1723641714; x=1724246514;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=GJ+Iuc+bftzG3jaPUVciqdxI8fDatMJevUO9DZjOZDM=;
- b=RXLJdf+Y3v4iCl801/xcqOnYCf8SAN1+rmu/zOdtJBD6jt2BpHxKmMaVAPHE07dtbk
- HlhirRI8Bg7LuJEKE7F+MzegR3tFBhQw2HRwmMOMljddS2aufBq+hTtASvfJBW78p5nj
- bT8tiZxjn4vrD+t1+G3clJOqD+v0jegqJTEzkzWtMH8/bdSPxdFLdNw83z7dMy9J36yB
- 523wsa6d6+l+kYqsrhatBYIyDhOz6xSR8s6EzSWjDnwTqXzovPLwL6L7GepcaVL5TbmO
- GKZzOplkej8pBR1Go2haM+b9Geq0eVkkyjoaTGgteqdXtgk92GldHgBvslAtd/lGSzec
- SJ0w==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUJ+buRBN37C4ahZlO6JSnX6m2ZgR2CXCobZhkeJftkbNnKCfNWjHhMgIEll6gp9bu9QYgliDyKVRbKBDE2xLUTuSlwPQ8=
-X-Gm-Message-State: AOJu0Yyy3kACn/+DmDGvFjLKk0hibS4ceIBwExLC2kEybbUMRVieXRpw
- HC9EoXNEZfmQ+R1w6/VHNVrO0xrbkgebUmtn7aHaR92EYt+xxLu5F+iS/xqRcNF+RT7U+uvtwtl
- DmTNA2FAWK+mM97PR80E+sHSbPnNB4nuGWrjdHA==
-X-Received: by 2002:a05:6402:354b:b0:58e:2f7c:a9c with SMTP id
- 4fb4d7f45d1cf-5bea1cad16dmr2519600a12.26.1723641713567; Wed, 14 Aug 2024
- 06:21:53 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1seEOr-0005iN-2V; Wed, 14 Aug 2024 09:50:53 -0400
+Received: from frasgout.his.huawei.com ([185.176.79.56])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1seEOo-0006GD-I6; Wed, 14 Aug 2024 09:50:52 -0400
+Received: from mail.maildlp.com (unknown [172.18.186.216])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4WkV1Z3c6Fz67hQc;
+ Wed, 14 Aug 2024 21:47:30 +0800 (CST)
+Received: from lhrpeml500005.china.huawei.com (unknown [7.191.163.240])
+ by mail.maildlp.com (Postfix) with ESMTPS id AE049140119;
+ Wed, 14 Aug 2024 21:50:46 +0800 (CST)
+Received: from localhost (10.203.177.66) by lhrpeml500005.china.huawei.com
+ (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Wed, 14 Aug
+ 2024 14:50:46 +0100
+Date: Wed, 14 Aug 2024 14:50:44 +0100
+To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+CC: Shiju Jose <shiju.jose@huawei.com>, "Michael S. Tsirkin" <mst@redhat.com>, 
+ Ani Sinha <anisinha@redhat.com>, Dongjiu Geng <gengdongjiu1@gmail.com>,
+ Igor Mammedov <imammedo@redhat.com>, <linux-kernel@vger.kernel.org>,
+ <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
+Subject: Re: [PATCH v7 03/10] acpi/ghes: Add support for GED error device
+Message-ID: <20240814145044.00004d59@Huawei.com>
+In-Reply-To: <f813113e8e7645c2fb654747ecd0726f330af29f.1723591201.git.mchehab+huawei@kernel.org>
+References: <cover.1723591201.git.mchehab+huawei@kernel.org>
+ <f813113e8e7645c2fb654747ecd0726f330af29f.1723591201.git.mchehab+huawei@kernel.org>
+Organization: Huawei Technologies Research and Development (UK) Ltd.
+X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
 MIME-Version: 1.0
-References: <20240618135550.3108739-1-zheyuma97@gmail.com>
- <369e356e-4882-4290-bd7d-f37ad0058529@tls.msk.ru>
-In-Reply-To: <369e356e-4882-4290-bd7d-f37ad0058529@tls.msk.ru>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 14 Aug 2024 14:21:42 +0100
-Message-ID: <CAFEAcA99vDSOgO7rDacV=Y8LfWoO9Ef_xcyatd4X8B86C2S35g@mail.gmail.com>
-Subject: Re: [PATCH] hw/misc/stm32l4x5_rcc: Add validation for MCOPRE and
- MCOSEL values
-To: Michael Tokarev <mjt@tls.msk.ru>
-Cc: Zheyu Ma <zheyuma97@gmail.com>,
- Arnaud Minier <arnaud.minier@telecom-paris.fr>, 
- =?UTF-8?B?SW7DqHMgVmFyaG9s?= <ines.varhol@telecom-paris.fr>, 
- qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
- qemu-stable <qemu-stable@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::52b;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52b.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+Content-Type: text/plain; charset="US-ASCII"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.203.177.66]
+X-ClientProxiedBy: lhrpeml100001.china.huawei.com (7.191.160.183) To
+ lhrpeml500005.china.huawei.com (7.191.163.240)
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 6KPqC7KTnHQo
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Jonathan Cameron <Jonathan.Cameron@Huawei.com>
+From:  Jonathan Cameron via <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: DvCAHrXHBIJ1
 
-On Wed, 14 Aug 2024 at 05:35, Michael Tokarev <mjt@tls.msk.ru> wrote:
->
-> 18.06.2024 16:55, Zheyu Ma wrote:
-> > This commit adds validation checks for the MCOPRE and MCOSEL values in
-> > the rcc_update_cfgr_register function. If the MCOPRE value exceeds
-> > 0b100 or the MCOSEL value exceeds 0b111, an error is logged and the
-> > corresponding clock mux is disabled. This helps in identifying and
-> > handling invalid configurations in the RCC registers.
-> >
-> > Reproducer:
-> > cat << EOF | qemu-system-aarch64 -display \
-> > none -machine accel=qtest, -m 512M -machine b-l475e-iot01a -qtest \
-> > stdio
-> > writeq 0x40021008 0xffffffff
-> > EOF
->
-> Is it a -stable material?
+On Wed, 14 Aug 2024 01:23:25 +0200
+Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
 
-No, it's not worthwhile. It turns a case where the guest
-misprograms the register from an assert to a log-the-error.
-No real guest code is going to do this.
+> From: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+> 
+> As a GED error device is now defined, add another type
+> of notification.
+> 
+> Add error notification to GHES v2 using a GED error device GED
+> triggered via interrupt.
+> 
+> [mchehab: do some cleanups at ACPI_HEST_SRC_ID_* checks and
+>  rename HEST event to better identify GED interrupt OSPM]
+> 
+> Signed-off-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+> Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+> Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+One trivial thing inline (probably my mistake ;)
 
-thanks
--- PMM
+Jonathan
+
+> ---
+>  hw/acpi/ghes.c         | 12 +++++++++---
+>  include/hw/acpi/ghes.h |  3 ++-
+>  2 files changed, 11 insertions(+), 4 deletions(-)
+> 
+> diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
+> index 13b105c5d02d..280674452a60 100644
+> --- a/hw/acpi/ghes.c
+> +++ b/hw/acpi/ghes.c
+> @@ -34,8 +34,8 @@
+>  /* The max size in bytes for one error block */
+>  #define ACPI_GHES_MAX_RAW_DATA_LENGTH   (1 * KiB)
+>  
+> -/* Now only support ARMv8 SEA notification type error source */
+> -#define ACPI_GHES_ERROR_SOURCE_COUNT        1
+> +/* Support ARMv8 SEA notification type error source and GPIO interrupt. */
+> +#define ACPI_GHES_ERROR_SOURCE_COUNT        2
+>  
+>  /* Generic Hardware Error Source version 2 */
+>  #define ACPI_GHES_SOURCE_GENERIC_ERROR_V2   10
+> @@ -290,6 +290,9 @@ void build_ghes_error_table(GArray *hardware_errors, BIOSLinker *linker)
+>  static void build_ghes_v2(GArray *table_data, int source_id, BIOSLinker *linker)
+>  {
+>      uint64_t address_offset;
+> +
+> +    assert(source_id < ACPI_HEST_SRC_ID_RESERVED);
+> +
+>      /*
+>       * Type:
+>       * Generic Hardware Error Source version 2(GHESv2 - Type 10)
+> @@ -327,6 +330,9 @@ static void build_ghes_v2(GArray *table_data, int source_id, BIOSLinker *linker)
+>           */
+>          build_ghes_hw_error_notification(table_data, ACPI_GHES_NOTIFY_SEA);
+>          break;
+> +    case ACPI_HEST_SRC_ID_GED:
+> +        build_ghes_hw_error_notification(table_data, ACPI_GHES_NOTIFY_GPIO);
+> +        break;
+>      default:
+>          error_report("Not support this error source");
+>          abort();
+> @@ -370,6 +376,7 @@ void acpi_build_hest(GArray *table_data, BIOSLinker *linker,
+>      /* Error Source Count */
+>      build_append_int_noprefix(table_data, ACPI_GHES_ERROR_SOURCE_COUNT, 4);
+>      build_ghes_v2(table_data, ACPI_HEST_SRC_ID_SEA, linker);
+> +    build_ghes_v2(table_data, ACPI_HEST_SRC_ID_GED, linker);
+>  
+>      acpi_table_end(linker, &table);
+>  }
+> @@ -406,7 +413,6 @@ int acpi_ghes_record_errors(uint8_t source_id, uint64_t physical_address)
+>      start_addr = le64_to_cpu(ags->ghes_addr_le);
+>  
+>      if (physical_address) {
+> -
+
+Clean this accidental change out.
+
+>          if (source_id < ACPI_HEST_SRC_ID_RESERVED) {
+>              start_addr += source_id * sizeof(uint64_t);
+>          }
+> diff --git a/include/hw/acpi/ghes.h b/include/hw/acpi/ghes.h
+> index fb80897e7eac..419a97d5cbd9 100644
+> --- a/include/hw/acpi/ghes.h
+> +++ b/include/hw/acpi/ghes.h
+> @@ -59,9 +59,10 @@ enum AcpiGhesNotifyType {
+>      ACPI_GHES_NOTIFY_RESERVED = 12
+>  };
+>  
+> +/* Those are used as table indexes when building GHES tables */
+>  enum {
+>      ACPI_HEST_SRC_ID_SEA = 0,
+> -    /* future ids go here */
+> +    ACPI_HEST_SRC_ID_GED,
+>      ACPI_HEST_SRC_ID_RESERVED,
+>  };
+>  
+

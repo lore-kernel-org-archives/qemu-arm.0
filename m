@@ -1,211 +1,172 @@
-Received: by 2002:a17:504:9188:b0:1be9:327d:8ee3 with SMTP id i8csp397885njf;
-        Wed, 14 Aug 2024 01:29:22 -0700 (PDT)
-X-Received: by 2002:a17:907:d3d2:b0:a7d:a00a:aa02 with SMTP id a640c23a62f3a-a8366c106aamr127878966b.1.1723624162656;
-        Wed, 14 Aug 2024 01:29:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1723624162; cv=none;
-        d=google.com; s=arc-20160816;
-        b=YbyOJvdnNU29r+ApvoW+UGBp4t5lLBa+kyPloxA+/6spbFiIM48h/iVr+tiRgAwrKn
-         N9dbuX9gudJtnj4WvI2MzHI+ZudOe5fnVQr/2ovX5EAGrPfNURnm2+jDaCLT0saGE3bX
-         rhhkiNRZkm4x2CLwX7iEF3NAzLYqkuEYaLVd2a/Wa/yy2YaLsPUEOILCXp9mlPKj1x3Z
-         BXKJB+XiMl90MkeuPIX2ximVAjvxBoxG/YYjgPh0RlCW4A9HapSTMpTNqLFgS/gneC9M
-         z5uT7zspXnKlCtnzJlAYtZFHGSpyyVr2+Y7geVAHf1wyRQFtDWZwJhejGjgOQYF5sEAc
-         e9gg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=pLikub/S5it/yNkS3p4Lua3X0XSWS5vsfui2YgVGLHs=;
-        fh=jZo24YJmzra3pub9zTi1dY5NrYAU8lXKq94b5tS8TGI=;
-        b=dNjc97kKsncn0pnZ6Z5nkOZ7PsUAbJzdcqnL8yYeIJ7u+2QhAvrKnfBUkqsJUUuBRa
-         pQzagObbdx5cM4lnIbq0nszGutFOJjVeit0WVKIA9y+BAtpQJQfi5970/W3VmvWMD8iQ
-         37yvUMApKcplKrfEC2YcFjQbiiFiPnlfceE6oJ3z6ne81VutER8mCIC0uMfEmUYgBCOA
-         NuwzKFEQ3soU9NWpakW3hw0lgdMX+DAlRnOezbnhRrPuBAjL6DFA7kzHmPh9tOoVYA7a
-         qKwdknypX2elGhvv8dOMPGe+Tmw+sn+R4C1GiSl3BgQgbrAnptYVL9mUo/Pjzl7hMX8f
-         uc3Q==;
-        dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=lL7Rbl+w;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <philmd@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id a640c23a62f3a-a80f40d1182sor101026166b.15.2024.08.14.01.29.22
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Wed, 14 Aug 2024 01:29:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=lL7Rbl+w;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1723624161; x=1724228961; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=pLikub/S5it/yNkS3p4Lua3X0XSWS5vsfui2YgVGLHs=;
-        b=lL7Rbl+wJBM7iUpdSZClEWvaKy1vq/YOi3AkN3sDzJgZk4wT1RI5EJPoffFYVbu0Ma
-         DByR3ziVQqh4YrbUiyDNybLCxY4Lmt59/w9OC0Z7Oxtwjlnj4eKkzTX0vEZNF/VIbMms
-         5M4xB+CVnLIAc7biPSYuqBuJoHCKe2brGVGyxsP9YQYt9zhhVcF6iaTcWVYzoV7ISNsd
-         wooRWJb73v3XKbLHqIN65MNjdJDMOt/uL24jXg7SYy833NPoCEDGsWvWaEGFmjfvGMkt
-         xSl2lvPkD7KL+UvjDA6B+aOVecUmwD4vNNc3cKyl/5zTR913E0vfmrs3rbIPmeMv10yZ
-         MSYQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1723624161; x=1724228961;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=pLikub/S5it/yNkS3p4Lua3X0XSWS5vsfui2YgVGLHs=;
-        b=A7wsUM1SK6uYe8G8UTVbUyq2E6s3KxB8BENbdoE6CCCK/NsUDsAebSHgj3Z8nigBaG
-         zF0U8R1idlNec/0u4b6DAfdc12ab+2rCkDFfmvcl4S2OXy8DHrttWrobfV0VmXhTzTm8
-         smPaEW8dWUn6No8P4i3kAIcF3msjeAuV+ZHtEpC17pXGb1JHt0YCkT3suuxbHgUAOZ79
-         ih+XFFW76kSQB6y9ne8Twtc3A6au63FOrcaJXcuznIJV+D4s/WRnz5IGHIjqFK9RCr1z
-         +UG/Ad9FW0OwlWaIFIBYj0Ik3ttBAf3Xk/rtryOrYWdWIIjQT5ibKVp5Yy0hCJEEeeYi
-         OYRA==
-X-Gm-Message-State: AOJu0YwhDpVHshKqHuRuASq1atDN++p3xHPG1yoMXtR3LdMP5c53jQvM
-	uNe/QMOwxWQedyQIKI4VzeNs8YfaeT1+vyU4eJbV6dYBI7Vk563u6tZFWeAzVUiEb178BRXEQx7
-	33XTG1g==
-X-Google-Smtp-Source: AGHT+IGV1oNc8DiVrgtanEUXhh4oVOC5PGoYr7xIhYv82H3zWBsfv7B9ux9RTz4prrnu2K/Acac3jQ==
-X-Received: by 2002:a17:907:7e9b:b0:a7d:2f42:db54 with SMTP id a640c23a62f3a-a8367086687mr143154266b.65.1723624161308;
-        Wed, 14 Aug 2024 01:29:21 -0700 (PDT)
-Return-Path: <philmd@linaro.org>
-Received: from [192.168.69.100] (rsa59-h02-176-184-32-161.dsl.sta.abo.bbox.fr. [176.184.32.161])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a80f411aef3sm145561266b.106.2024.08.14.01.29.11
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 14 Aug 2024 01:29:20 -0700 (PDT)
-Message-ID: <3d03ecff-ab9b-422f-8b4b-6b3b1a20e810@linaro.org>
-Date: Wed, 14 Aug 2024 10:29:08 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 08/21] buildsys: Fix building without plugins on Darwin
-To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org
-Cc: Alistair Francis <alistair.francis@wdc.com>,
- Michael Roth <michael.roth@amd.com>, Palmer Dabbelt <palmer@dabbelt.com>,
- Mahmoud Mandour <ma.mandourr@gmail.com>,
- Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
- Yoshinori Sato <ysato@users.sourceforge.jp>, Weiwei Li
- <liwei1518@gmail.com>, Eduardo Habkost <eduardo@habkost.net>,
- =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- Markus Armbruster <armbru@redhat.com>, David Hildenbrand <david@redhat.com>,
- Beraldo Leal <bleal@redhat.com>, Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Eric Auger <eric.auger@redhat.com>, Song Gao <gaosong@loongson.cn>,
- qemu-arm@nongnu.org, Peter Xu <peterx@redhat.com>,
- Jiri Pirko <jiri@resnulli.us>, Eric Blake <eblake@redhat.com>,
- Fabiano Rosas <farosas@suse.de>, qemu-s390x@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>, "Michael S. Tsirkin"
- <mst@redhat.com>, Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
- John Snow <jsnow@redhat.com>, Alexandre Iooss <erdnaxe@crans.org>,
- Konstantin Kostiuk <kkostiuk@redhat.com>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- Cleber Rosa <crosa@redhat.com>, Ilya Leoshkevich <iii@linux.ibm.com>,
- qemu-riscv@nongnu.org, Thomas Huth <thuth@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Jason Wang <jasowang@redhat.com>, Bin Meng <bmeng.cn@gmail.com>,
- Wainer dos Santos Moschetta <wainersm@redhat.com>,
- Helge Konetzka <hk@zapateado.de>
+Return-Path: <alex.bennee@linaro.org>
+Received: from draig.lan ([85.9.250.243])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a80f3fb155asm194746566b.81.2024.08.14.10.25.08
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 14 Aug 2024 10:25:08 -0700 (PDT)
+Received: from draig (localhost [IPv6:::1])
+	by draig.lan (Postfix) with ESMTP id 186F95F713;
+	Wed, 14 Aug 2024 18:25:07 +0100 (BST)
+From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: "Michael S. Tsirkin" <mst@redhat.com>
+Cc: Nicholas Piggin <npiggin@gmail.com>,  qemu-devel@nongnu.org,  Alistair
+ Francis <alistair.francis@wdc.com>,  Michael Roth <michael.roth@amd.com>,
+  Palmer Dabbelt <palmer@dabbelt.com>,  Mahmoud Mandour
+ <ma.mandourr@gmail.com>,  Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
+  Yoshinori Sato <ysato@users.sourceforge.jp>,  Weiwei Li
+ <liwei1518@gmail.com>,  Eduardo Habkost <eduardo@habkost.net>,
+  =?utf-8?Q?Marc-Andr=C3=A9?=
+ Lureau <marcandre.lureau@redhat.com>,  Markus Armbruster
+ <armbru@redhat.com>,  David Hildenbrand <david@redhat.com>,  Beraldo Leal
+ <bleal@redhat.com>,  Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,  Eric
+ Auger <eric.auger@redhat.com>,  Song Gao <gaosong@loongson.cn>,
+  qemu-arm@nongnu.org,  Peter Xu <peterx@redhat.com>,  Jiri Pirko
+ <jiri@resnulli.us>,  Eric Blake <eblake@redhat.com>,  Fabiano Rosas
+ <farosas@suse.de>,  qemu-s390x@nongnu.org,  Peter Maydell
+ <peter.maydell@linaro.org>,  Daniel Henrique Barboza
+ <dbarboza@ventanamicro.com>,  John Snow <jsnow@redhat.com>,  Alexandre
+ Iooss <erdnaxe@crans.org>,  Konstantin Kostiuk <kkostiuk@redhat.com>,
+  Pierrick Bouvier <pierrick.bouvier@linaro.org>,  Cleber Rosa
+ <crosa@redhat.com>,  Ilya Leoshkevich <iii@linux.ibm.com>,
+  qemu-riscv@nongnu.org,  Thomas Huth <thuth@redhat.com>,  Paolo Bonzini
+ <pbonzini@redhat.com>,  Richard Henderson <richard.henderson@linaro.org>,
+  Jason Wang <jasowang@redhat.com>,  Bin Meng <bmeng.cn@gmail.com>,
+  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,  Wainer dos
+ Santos Moschetta
+ <wainersm@redhat.com>,  Pavel Dovgalyuk <Pavel.Dovgalyuk@ispras.ru>
+Subject: Re: [PATCH v2 16/21] virtio-net: Use replay_schedule_bh_event for
+ bhs that affect machine state
+In-Reply-To: <20240814030308-mutt-send-email-mst@kernel.org> (Michael S.
+	Tsirkin's message of "Wed, 14 Aug 2024 03:06:54 -0400")
 References: <20240813202329.1237572-1-alex.bennee@linaro.org>
- <20240813202329.1237572-9-alex.bennee@linaro.org>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20240813202329.1237572-9-alex.bennee@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: 4dc14N88CeY7
+	<20240813202329.1237572-17-alex.bennee@linaro.org>
+	<20240813164631-mutt-send-email-mst@kernel.org>
+	<D3FEPPLH78YW.3BYA9B4HYGN1U@gmail.com>
+	<20240814030308-mutt-send-email-mst@kernel.org>
+Date: Wed, 14 Aug 2024 18:25:07 +0100
+Message-ID: <87y14z81ak.fsf@draig.linaro.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: AIKQ0ejtfLq9
 
-On 13/8/24 22:23, Alex Bennée wrote:
-> From: Philippe Mathieu-Daudé <philmd@linaro.org>
-> 
-> Since commit 0082475e26 the plugin symbol list is unconditionally
-> added to the linker flags, leading to a build failure:
-> 
->    Undefined symbols for architecture arm64:
->      "_qemu_plugin_entry_code", referenced from:
->          <initial-undefines>
->    ...
->    ld: symbol(s) not found for architecture arm64
->    clang: error: linker command failed with exit code 1 (use -v to see invocation)
->    ninja: build stopped: subcommand failed.
-> 
-> Fix by restricting the whole meson file to the --enable-plugins
-> configure argument.
-> 
-> Fixes: 0082475e26 ("meson: merge plugin_ldflags into emulator_link_args")
+"Michael S. Tsirkin" <mst@redhat.com> writes:
 
-Resolves: https://gitlab.com/qemu-project/qemu/-/issues/2476
+> On Wed, Aug 14, 2024 at 04:05:34PM +1000, Nicholas Piggin wrote:
+>> On Wed Aug 14, 2024 at 6:48 AM AEST, Michael S. Tsirkin wrote:
+>> > On Tue, Aug 13, 2024 at 09:23:24PM +0100, Alex Benn=C3=A9e wrote:
+>> > > From: Nicholas Piggin <npiggin@gmail.com>
+>> > >=20
+>> > > The regular qemu_bh_schedule() calls result in non-deterministic
+>> > > execution of the bh in record-replay mode, which causes replay failu=
+re.
+>> > >=20
+>> > > Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+>> > > Reviewed-by: Pavel Dovgalyuk <Pavel.Dovgalyuk@ispras.ru>
+>> > > Signed-off-by: Nicholas Piggin <npiggin@gmail.com>
+>> > > Message-Id: <20240813050638.446172-9-npiggin@gmail.com>
+>> > > Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+>> > > ---
+>> > >  hw/net/virtio-net.c | 11 ++++++-----
+>> > >  1 file changed, 6 insertions(+), 5 deletions(-)
+>> > >=20
+>> > > diff --git a/hw/net/virtio-net.c b/hw/net/virtio-net.c
+>> > > index 08aa0b65e3..10ebaae5e2 100644
+>> > > --- a/hw/net/virtio-net.c
+>> > > +++ b/hw/net/virtio-net.c
+>> > > @@ -40,6 +40,7 @@
+>> > >  #include "migration/misc.h"
+>> > >  #include "standard-headers/linux/ethtool.h"
+>> > >  #include "sysemu/sysemu.h"
+>> > > +#include "sysemu/replay.h"
+>> > >  #include "trace.h"
+>> > >  #include "monitor/qdev.h"
+>> > >  #include "monitor/monitor.h"
+>> > > @@ -417,7 +418,7 @@ static void virtio_net_set_status(struct VirtIOD=
+evice *vdev, uint8_t status)
+>> > >                  timer_mod(q->tx_timer,
+>> > >                                 qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL=
+) + n->tx_timeout);
+>> > >              } else {
+>> > > -                qemu_bh_schedule(q->tx_bh);
+>> > > +                replay_bh_schedule_event(q->tx_bh);
+>> > >              }
+>> > >          } else {
+>> > >              if (q->tx_timer) {
+>> > > @@ -2672,7 +2673,7 @@ static void virtio_net_tx_complete(NetClientSt=
+ate *nc, ssize_t len)
+>> > >           */
+>> > >          virtio_queue_set_notification(q->tx_vq, 0);
+>> > >          if (q->tx_bh) {
+>> > > -            qemu_bh_schedule(q->tx_bh);
+>> > > +            replay_bh_schedule_event(q->tx_bh);
+>> > >          } else {
+>> > >              timer_mod(q->tx_timer,
+>> > >                        qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) + n->tx=
+_timeout);
+>> > > @@ -2838,7 +2839,7 @@ static void virtio_net_handle_tx_bh(VirtIODevi=
+ce *vdev, VirtQueue *vq)
+>> > >          return;
+>> > >      }
+>> > >      virtio_queue_set_notification(vq, 0);
+>> > > -    qemu_bh_schedule(q->tx_bh);
+>> > > +    replay_bh_schedule_event(q->tx_bh);
+>> > >  }
+>> > >=20=20
+>> > >  static void virtio_net_tx_timer(void *opaque)
+>> > > @@ -2921,7 +2922,7 @@ static void virtio_net_tx_bh(void *opaque)
+>> > >      /* If we flush a full burst of packets, assume there are
+>> > >       * more coming and immediately reschedule */
+>> > >      if (ret >=3D n->tx_burst) {
+>> > > -        qemu_bh_schedule(q->tx_bh);
+>> > > +        replay_bh_schedule_event(q->tx_bh);
+>> > >          q->tx_waiting =3D 1;
+>> > >          return;
+>> > >      }
+>> > > @@ -2935,7 +2936,7 @@ static void virtio_net_tx_bh(void *opaque)
+>> > >          return;
+>> > >      } else if (ret > 0) {
+>> > >          virtio_queue_set_notification(q->tx_vq, 0);
+>> > > -        qemu_bh_schedule(q->tx_bh);
+>> > > +        replay_bh_schedule_event(q->tx_bh);
+>> > >          q->tx_waiting =3D 1;
+>> > >      }
+>> > >  }
+>> > > --=20
+>> > > 2.39.2
+>> >
+>> >
+>> > Is this really the only way to fix this? I do not think
+>> > virtio has any business knowing about replay.
+>> > What does this API do, even? BH but not broken with replay?
+>> > Do we ever want replay broken? Why not fix qemu_bh_schedule?
+>> > And when we add another feature which we do not want to break
+>> > will we do foo_bar_replay_bh_schedule_event or what?
+>>=20
+>> I agree with you. We need to do this (a couple of other hw
+>> subsystems already do and likely some are still broken vs
+>> replay and would need to be converted), but I think it's
+>> mostly a case of bad naming. You're right the caller should
+>> not know about replay at all, what it should be is whether
+>> the event is for the target machine or the host harness,
+>> same as timers are VIRTUAL / HOST.
+>> So I think we just need to make a qemu_bh_schedule_<type>,
+>> or qemu_bh_scheudle_event(... QEMU_EVENT_VIRTUAL/HOST/etc).
+>
+> Or just pass QEMUClockType?
 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> Acked-by: Richard Henderson <richard.henderson@linaro.org>
-> Message-Id: <20240813112457.92560-1-philmd@linaro.org>
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-> ---
->   plugins/meson.build | 50 +++++++++++++++++++++++----------------------
->   1 file changed, 26 insertions(+), 24 deletions(-)
-> 
-> diff --git a/plugins/meson.build b/plugins/meson.build
-> index 18a0303bff..1cc039d29b 100644
-> --- a/plugins/meson.build
-> +++ b/plugins/meson.build
-> @@ -1,3 +1,7 @@
-> +if not get_option('plugins')
-> +  subdir_done()
-> +endif
-> +
->   # Modules need more symbols than just those in plugins/qemu-plugins.symbols
->   if not enable_modules
->     if host_os == 'darwin'
-> @@ -12,29 +16,27 @@ if not enable_modules
->     endif
->   endif
->   
-> -if get_option('plugins')
-> -  if host_os == 'windows'
-> -    dlltool = find_program('dlltool', required: true)
-> +if host_os == 'windows'
-> +  dlltool = find_program('dlltool', required: true)
->   
-> -    # Generate a .lib file for plugins to link against.
-> -    # First, create a .def file listing all the symbols a plugin should expect to have
-> -    # available in qemu
-> -    win32_plugin_def = configure_file(
-> -      input: files('qemu-plugins.symbols'),
-> -      output: 'qemu_plugin_api.def',
-> -      capture: true,
-> -      command: ['sed', '-e', '0,/^/s//EXPORTS/; s/[{};]//g', '@INPUT@'])
-> -    # then use dlltool to assemble a delaylib.
-> -    win32_qemu_plugin_api_lib = configure_file(
-> -      input: win32_plugin_def,
-> -      output: 'libqemu_plugin_api.a',
-> -      command: [dlltool, '--input-def', '@INPUT@',
-> -                '--output-delaylib', '@OUTPUT@', '--dllname', 'qemu.exe']
-> -    )
-> -  endif
-> -  specific_ss.add(files(
-> -    'loader.c',
-> -    'core.c',
-> -    'api.c',
-> -  ))
-> +  # Generate a .lib file for plugins to link against.
-> +  # First, create a .def file listing all the symbols a plugin should expect to have
-> +  # available in qemu
-> +  win32_plugin_def = configure_file(
-> +    input: files('qemu-plugins.symbols'),
-> +    output: 'qemu_plugin_api.def',
-> +    capture: true,
-> +    command: ['sed', '-e', '0,/^/s//EXPORTS/; s/[{};]//g', '@INPUT@'])
-> +  # then use dlltool to assemble a delaylib.
-> +  win32_qemu_plugin_api_lib = configure_file(
-> +    input: win32_plugin_def,
-> +    output: 'libqemu_plugin_api.a',
-> +    command: [dlltool, '--input-def', '@INPUT@',
-> +              '--output-delaylib', '@OUTPUT@', '--dllname', 'qemu.exe']
-> +  )
->   endif
-> +specific_ss.add(files(
-> +  'loader.c',
-> +  'core.c',
-> +  'api.c',
-> +))
+Is this wider re-factoring something that can wait for the next
+developer cycle?
+
+>> I had started on a conversion once but not completed it.
+>> I could resurrect if there is agreement on the API?
+
+I would certainly welcome it being cleaned up. The supported replay
+devices are very piecemeal at the moment.
+
+>>=20
+>> Thanks,
+>> Nick
+
+--=20
+Alex Benn=C3=A9e
+Virtualisation Tech Lead @ Linaro

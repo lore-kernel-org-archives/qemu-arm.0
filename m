@@ -1,228 +1,173 @@
-Received: by 2002:a17:504:9188:b0:1be9:327d:8ee3 with SMTP id i8csp587543njf;
-        Wed, 14 Aug 2024 11:18:06 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVKPg6Ja8SoRduT8tXB0kD/pcxa6+ZcHKaLWvfICdD0QQ3BfVnx9lk3g2l2muYOryIYkKGJP8Q+Jxdw91WOCbxj3REqYOri
-X-Google-Smtp-Source: AGHT+IFV6SCYETUt1qOAKMC5VVOW9sJawAcBZ8bznpsz3e05G9Hdkcfv6NNQF7sUZY9kX/oHIfYr
-X-Received: by 2002:a05:622a:5b03:b0:453:5cb8:e078 with SMTP id d75a77b69052e-4535cb8e0camr29326281cf.15.1723659486362;
-        Wed, 14 Aug 2024 11:18:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1723659486; cv=none;
+Received: by 2002:a05:7022:227:b0:85:21:bd5b with SMTP id 39csp1221095dll;
+        Wed, 14 Aug 2024 17:30:58 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXQrbVRYSrGigbgFchPk9SEJVw6kYRT9CBYjzlJn8ZCnPXg0HqBM8ygb3HE0zIbKikFPfR9h6ZDy58cSw==@linaro.org
+X-Google-Smtp-Source: AGHT+IG5pNnNV+3w/xfkS4i/C5ekh+9VBgCCzGBemGhhhjx/F9NR5GtzR8j/smWo3qk773JaCmfD
+X-Received: by 2002:a05:6870:972b:b0:25e:24d5:4d54 with SMTP id 586e51a60fabf-26fe5bb98afmr5113726fac.35.1723681857929;
+        Wed, 14 Aug 2024 17:30:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1723681857; cv=none;
         d=google.com; s=arc-20160816;
-        b=cMpaRLHoHufqZlGRpMI5Zh2YaAKqFnuoPihFSIuz1OuPcxe3iKODG2jr51qb2RSiIH
-         M/KE+UuNwgC0PLdcmmN7Iws2MkCv6fjbATNjH18mThx0itlycH0I7aC8b8NrYnldw7rh
-         W+FUzYKC+GseFKnPbBhvuAVprfnkTVoICY95PSsg3knO56Hoq9Y7jIn/eyKanwQl9VcI
-         qKntlW9eLSQxLaPl/pi/lzDDnws6OWmBY6PcuTaz8ismkMkDEk+p5Otzg+aWgo3/WC8G
-         oceW3G88i9+cfgX/WPUcaEdH9Tsj5JuvKTrP7tHs4Fg9R4x/AGgv/HB+Gf/uDDSlndSs
-         yXSw==
+        b=iarDdXDFBUZse5+5Jd1Iw55RSpkYs1cLESqk2Vbu8XLu1XPuDmVhwIkcV4QueOym6N
+         Uz/VdsQmz+oSusbhCamqBFnYgNVOYfXrHZVq8i9kP0hIeGw48IcEeSUVAN3xUHITrDAm
+         2cP8R+IUsQhmFL5/Y1kZVR203HiyVBbqEp+MWDcQWoNT+a/g3yKCthBPXLuOygU7lcYR
+         vBgHysvs4dECkpF1v/DY9dBk+3sSP0K+R9PtkMXVm2DkMuySdEUfy7bFxT1M2fuTZR/s
+         zEijUNl1DWmUTKzXeDO/BVrbYAOfTCV+nz/uvF+HPPxl5trPKLuEz5lWT24LHw+Li+7+
+         h6pg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=PSWabqmMSPNuyrCef/bxoDt40mO7++0ig/XfeMli7rs=;
-        fh=NotkscBqKuqpSIplJ4AFC5aJPser9k61jucHGw9ccrE=;
-        b=yqtVkChdX7YBEiiGPdy0p6LaU7qHa/Ck+Xoek5kUNFfcrYjvyMEo1VlJQCQvnOvI2D
-         xbfOXHEObu1MFtTlOJUvJifnSQr12R8yP0xguFpbWjTvIfTHTT39YMvilIKemA82j0ru
-         1CL9eARKuYaMnJguaJzfs40sT97uT0NXeL7BuNvzbe33UqaxnqcDVpfheNS9vyYpZ1qb
-         A7zUKCuvTReRTSoJT6kj77895Mp0OEjIAD6v0giOlH5kFX+/gKIUK/Z1P2dE0m6ubXV7
-         HC+SiCZ+MWKST9DOP2Ks/sfkL2vWXSN6Dz30CXV7WecrIiIgl2mbiAfd7HUCivHcby4w
-         Rmwg==;
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date:dkim-signature;
+        bh=7B5faAUzlkkLGpEygLa31KgH+XYhzJTsdNp42brEcSk=;
+        fh=X2hxAmW+prxDFqlKxtwqx/eBa1AAwc3Aj4NLmPGNjx4=;
+        b=wRigP9XSGyf2jevigfrmTd1CgoQJlwcAyLArYLmtzAqro7lq47lSqWTwqRz+27Qk4u
+         wwcR+CXt+R0yItMFRhHUU2nMeq2uvPXhK+Tl2C/jU5KM5NQOEpTpLB3FgL+P6l5RrmdZ
+         /nNumBHZZThT6S/Jgi/kspJicMXKrVlZVoiwgt8QSxZ9aU/1EyrV6OOIRojVSjjeQa3S
+         pq8jULpJtvMc1g32/oT4+LQLwn1F3KfGW9UXufi95vLGhvUGKsDMiClxPXsTxe1REVm2
+         vfGrMGyIuLnhJuWliHT7+trG48Sx5A/bpOWuPJ+KfqxglAzhyL57WarG0xsRfxUFR7FV
+         yS0A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b="K/RIqLPP";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4531c2b384asi109959431cf.693.2024.08.14.11.18.06
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 14 Aug 2024 11:18:06 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=ovhf8xU5;
+       spf=pass (google.com: domain of sstabellini@kernel.org designates 2604:1380:4641:c500::1 as permitted sender) smtp.mailfrom=sstabellini@kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+Return-Path: <sstabellini@kernel.org>
+Received: from dfw.source.kernel.org (dfw.source.kernel.org. [2604:1380:4641:c500::1])
+        by mx.google.com with ESMTPS id 586e51a60fabf-270046babdbsi179906fac.78.2024.08.14.17.30.57
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 14 Aug 2024 17:30:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sstabellini@kernel.org designates 2604:1380:4641:c500::1 as permitted sender) client-ip=2604:1380:4641:c500::1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b="K/RIqLPP";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1seIXQ-0005Mn-81; Wed, 14 Aug 2024 14:16:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1seIXK-0005Bd-Gd; Wed, 14 Aug 2024 14:15:55 -0400
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1seIXI-0000BN-97; Wed, 14 Aug 2024 14:15:53 -0400
-Received: by mail-wr1-x434.google.com with SMTP id
- ffacd0b85a97d-3684eb5be64so103093f8f.3; 
- Wed, 14 Aug 2024 11:15:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1723659348; x=1724264148; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=PSWabqmMSPNuyrCef/bxoDt40mO7++0ig/XfeMli7rs=;
- b=K/RIqLPPVRaeXy2AXy+bvt8DVp4vVI5W8VMc76b15oqN1Ir4QvN5JjbWaZBkflghXM
- wGFaNikDCrd+p7AMQ+t0w1NrX4PRanFhwWgVBZ7GoYglgaIozJtFqMi50n6g6Kx+v4wH
- novMUncD3Opy8Suj2ciWg9F/q4RNhZyteZk32NUAXgNNNe5tjAU643gImCUfHMNvQel4
- HITct7IYjKKsweG4hk9FIoTUr842EcYR0RRauiPgzkAY+RyL79ui3+La2e0ZbV++a4GN
- sYsmU/pbQKekjuOTQINups2BR6dx7nef2bNQuIH4hpnx7vAbJhrzw/pk/ixN0gU1MwmK
- X7Mg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1723659348; x=1724264148;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=PSWabqmMSPNuyrCef/bxoDt40mO7++0ig/XfeMli7rs=;
- b=Zel5S9nkOnSeGwUyBnegPGBldBCpAmMm+xOzrkmY85HVI9GGKLO6UpJ677dCb4AFeW
- l3Ax8CEmLi1N7OvcxB21sWPOuJ+2XNyPUXqlFG0DlFLDr1WVcHjI1TRMflk4NIWg/ghq
- 98K2M7E42VcAbuGJmeL3aAmlMsPvxt3p4eRpchkTV+tB53rjaMIlTd41Nw+ym0/QgHVE
- Kw7pqw68QcTnmlxWHzWLEPuyNI3ubc8oz6sEz5OlX3qnI292LDVM/r4H7wQhnMh+AvwU
- YISf5uOxPb40oj13ZYXxBjY9KUifYBsS7lUd6VrO6uomHaouc+JL3KgIxPdRK1/PbOdX
- +29A==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUdcEW+yQFFUyNFp0JnsD+4e1o9fHmbCNOVt73rTFy2DP8ZhbAa6WUqY/BJMlR0ZpNwnh643tiC5l4UJkDnL9gFRQHOyAbec4qalb5MT1HWcqlcNpRGKNXXblifLE6kP8Y3gXzmKiW4dfrrSyU3dZI=
-X-Gm-Message-State: AOJu0YxqyNoJVpOuYZZRlZ//Fzyiy0EtImoR4RD3ekd/mQHesOGr8+jN
- K0KK/VUMKwbw18o2tvdfaIeZdr8cgbuR4nUwkHGa/ZpS+MUji9FSLVtbpA==
-X-Received: by 2002:a05:6000:1a48:b0:367:96a8:d94b with SMTP id
- ffacd0b85a97d-37177820468mr2101517f8f.57.1723659348381; 
- Wed, 14 Aug 2024 11:15:48 -0700 (PDT)
-Received: from Provence.localdomain
- (dynamic-078-055-049-243.78.55.pool.telefonica.de. [78.55.49.243])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-36e4c937bb9sm13557625f8f.34.2024.08.14.11.15.46
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 14 Aug 2024 11:15:48 -0700 (PDT)
-From: Bernhard Beschow <shentey@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Niek Linnenbank <nieklinnenbank@gmail.com>, Bin Meng <bmeng.cn@gmail.com>,
- Paul Burton <paulburton@kernel.org>, Stafford Horne <shorne@gmail.com>,
- qemu-ppc@nongnu.org, Tyrone Ting <kfting@nuvoton.com>,
- Joel Stanley <joel@jms.id.au>, Eduardo Habkost <eduardo@habkost.net>,
- Sergio Lopez <slp@redhat.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Hao Wu <wuhaotsh@google.com>,
- Alistair Francis <Alistair.Francis@wdc.com>,
- BALATON Zoltan <balaton@eik.bme.hu>, Jan Kiszka <jan.kiszka@web.de>,
- Beniamino Galvani <b.galvani@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Aurelien Jarno <aurelien@aurel32.net>, Palmer Dabbelt <palmer@dabbelt.com>,
- Alistair Francis <alistair.francis@wdc.com>,
- Artyom Tarasenko <atar4qemu@gmail.com>, Jia Liu <proljc@gmail.com>,
- Helge Deller <deller@gmx.de>, Max Filippov <jcmvbkbc@gmail.com>,
- Subbaraya Sundeep <sundeep.lkml@gmail.com>,
- Weiwei Li <liwei1518@gmail.com>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- Nicholas Piggin <npiggin@gmail.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
- Steven Lee <steven_lee@aspeedtech.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Huacai Chen <chenhuacai@kernel.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- Strahinja Jankovic <strahinja.p.jankovic@gmail.com>, qemu-arm@nongnu.org,
- Aleksandar Rikalo <arikalo@gmail.com>, Troy Lee <leetroy@gmail.com>,
- Jamin Lin <jamin_lin@aspeedtech.com>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- =?UTF-8?q?Fr=C3=A9d=C3=A9ric=20Barrat?= <fbarrat@linux.ibm.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
- qemu-riscv@nongnu.org, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Song Gao <gaosong@loongson.cn>, Bernhard Beschow <shentey@gmail.com>
-Subject: [PATCH 1/5] hw: Remove unused inclusion of hw/char/serial.h
-Date: Wed, 14 Aug 2024 20:15:30 +0200
-Message-ID: <20240814181534.218964-2-shentey@gmail.com>
-X-Mailer: git-send-email 2.46.0
-In-Reply-To: <20240814181534.218964-1-shentey@gmail.com>
-References: <20240814181534.218964-1-shentey@gmail.com>
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=ovhf8xU5;
+       spf=pass (google.com: domain of sstabellini@kernel.org designates 2604:1380:4641:c500::1 as permitted sender) smtp.mailfrom=sstabellini@kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 6493061D28;
+	Thu, 15 Aug 2024 00:30:57 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 95437C116B1;
+	Thu, 15 Aug 2024 00:30:55 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1723681857;
+	bh=ecw7tX4Vobo53DUaAja97qvW/PTv+6irWz+Rprva9Ck=;
+	h=Date:From:To:cc:Subject:In-Reply-To:References:From;
+	b=ovhf8xU5CW4LqYFoLqv7te1xkr4Li2A0iIF/GEO9jwbT4ymYQvUkx9471wi+YWjEo
+	 mmcJ02kD4yDxS1fgDQ3SA2a41v19c9PmrT6qOWEPy+jnay54HH9RzsrM550e0G709P
+	 A1P0I4AlaJfmxTkDqL1ARYo2ABdicA0ABHEyvG459RuiPpD0u4mnWCkB8u6LxJ7zv0
+	 grn2J4V4W9uQzFsH5oEzqQJru5fV2GsLyLhZlG8NP1J6efvB2jAG35/78AZSGWZn1t
+	 lVFf3+QVpDPcf14aZXOEKcbmwK59xr3laKGVzh/0p73YWGfUgwBu4L1skzkTVw0jS+
+	 YucdMaN6N7oiQ==
+Date: Wed, 14 Aug 2024 17:30:54 -0700 (PDT)
+From: Stefano Stabellini <sstabellini@kernel.org>
+X-X-Sender: sstabellini@ubuntu-linux-20-04-desktop
+To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+cc: Stefano Stabellini <sstabellini@kernel.org>, qemu-devel@nongnu.org, 
+    anthony@xenproject.org, paul@xen.org, peter.maydell@linaro.org, 
+    alex.bennee@linaro.org, xenia.ragiadakou@amd.com, jason.andryuk@amd.com, 
+    edgar.iglesias@amd.com, xen-devel@lists.xenproject.org, 
+    qemu-arm@nongnu.org, andrew.cooper3@citrix.com
+Subject: Re: [PATCH v1 04/10] hw/arm: xenpvh: Add support for SMP guests
+In-Reply-To: <ZryZwOoadeb1UWK8@zapote>
+Message-ID: <alpine.DEB.2.22.394.2408141719400.298534@ubuntu-linux-20-04-desktop>
+References: <20240812130606.90410-1-edgar.iglesias@gmail.com> <20240812130606.90410-5-edgar.iglesias@gmail.com> <alpine.DEB.2.22.394.2408121650590.298534@ubuntu-linux-20-04-desktop> <ZruRm34zIMtUm7oH@zapote> <alpine.DEB.2.22.394.2408131550080.298534@ubuntu-linux-20-04-desktop>
+ <ZryZwOoadeb1UWK8@zapote>
+User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::434;
- envelope-from=shentey@gmail.com; helo=mail-wr1-x434.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 87Y34t+U5QXU
+Content-Type: text/plain; charset=US-ASCII
+X-TUID: Q4Zx+WihxxbE
 
-Signed-off-by: Bernhard Beschow <shentey@gmail.com>
----
- hw/char/riscv_htif.c | 1 -
- hw/ppc/prep.c        | 1 -
- hw/riscv/sifive_e.c  | 1 -
- hw/riscv/sifive_u.c  | 1 -
- 4 files changed, 4 deletions(-)
-
-diff --git a/hw/char/riscv_htif.c b/hw/char/riscv_htif.c
-index 9bef60def1..54fd55c3e6 100644
---- a/hw/char/riscv_htif.c
-+++ b/hw/char/riscv_htif.c
-@@ -24,7 +24,6 @@
- #include "qapi/error.h"
- #include "qemu/log.h"
- #include "hw/char/riscv_htif.h"
--#include "hw/char/serial.h"
- #include "chardev/char.h"
- #include "chardev/char-fe.h"
- #include "qemu/timer.h"
-diff --git a/hw/ppc/prep.c b/hw/ppc/prep.c
-index 4eb5477069..fb58c312ac 100644
---- a/hw/ppc/prep.c
-+++ b/hw/ppc/prep.c
-@@ -25,7 +25,6 @@
+On Wed, 14 Aug 2024, Edgar E. Iglesias wrote:
+> On Tue, Aug 13, 2024 at 03:52:32PM -0700, Stefano Stabellini wrote:
+> > On Tue, 13 Aug 2024, Edgar E. Iglesias wrote:
+> > > On Mon, Aug 12, 2024 at 06:47:17PM -0700, Stefano Stabellini wrote:
+> > > > On Mon, 12 Aug 2024, Edgar E. Iglesias wrote:
+> > > > > From: "Edgar E. Iglesias" <edgar.iglesias@amd.com>
+> > > > > 
+> > > > > Add SMP support for Xen PVH ARM guests. Create max_cpus ioreq
+> > > > > servers to handle hotplug.
+> > > > > 
+> > > > > Signed-off-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
+> > > > > ---
+> > > > >  hw/arm/xen_arm.c | 5 +++--
+> > > > >  1 file changed, 3 insertions(+), 2 deletions(-)
+> > > > > 
+> > > > > diff --git a/hw/arm/xen_arm.c b/hw/arm/xen_arm.c
+> > > > > index 5f75cc3779..ef8315969c 100644
+> > > > > --- a/hw/arm/xen_arm.c
+> > > > > +++ b/hw/arm/xen_arm.c
+> > > > > @@ -173,7 +173,7 @@ static void xen_arm_init(MachineState *machine)
+> > > > >  
+> > > > >      xen_init_ram(machine);
+> > > > >  
+> > > > > -    xen_register_ioreq(xam->state, machine->smp.cpus, &xen_memory_listener);
+> > > > > +    xen_register_ioreq(xam->state, machine->smp.max_cpus, &xen_memory_listener);
+> > > > >  
+> > > > >      xen_create_virtio_mmio_devices(xam);
+> > > > >  
+> > > > > @@ -218,7 +218,8 @@ static void xen_arm_machine_class_init(ObjectClass *oc, void *data)
+> > > > >      MachineClass *mc = MACHINE_CLASS(oc);
+> > > > >      mc->desc = "Xen PVH ARM machine";
+> > > > >      mc->init = xen_arm_init;
+> > > > > -    mc->max_cpus = 1;
+> > > > > +    /* MAX number of vcpus supported by Xen.  */
+> > > > > +    mc->max_cpus = GUEST_MAX_VCPUS;
+> > > > 
+> > > > Will this cause allocations of data structures with 128 elements?
+> > > > Looking at hw/xen/xen-hvm-common.c:xen_do_ioreq_register it seems
+> > > > possible? Or hw/xen/xen-hvm-common.c:xen_do_ioreq_register is called
+> > > 
+> > > Yes, in theory there's probably overhead with this but as you correctly
+> > > noted below, a PVH aware xl will set the max_cpus option to a lower value.
+> > > 
+> > > With a non-pvh aware xl, I was a little worried about the overhead
+> > > but I couldn't see any visible slow-down on ARM neither in boot or in network
+> > > performance (I didn't run very sophisticated benchmarks).
+> >  
+> > What do you mean by "non-pvh aware xl"? All useful versions of xl
+> > support pvh?
+> 
+> 
+> I mean an xl without our PVH patches merged.
+> xl in upstream doesn't know much about PVH yet.
+> Even for ARM, we're still carrying significant patches in our tree.
  
- #include "qemu/osdep.h"
- #include "hw/rtc/m48t59.h"
--#include "hw/char/serial.h"
- #include "hw/block/fdc.h"
- #include "net/net.h"
- #include "hw/isa/isa.h"
-diff --git a/hw/riscv/sifive_e.c b/hw/riscv/sifive_e.c
-index 87d9602383..5a1959f2a9 100644
---- a/hw/riscv/sifive_e.c
-+++ b/hw/riscv/sifive_e.c
-@@ -35,7 +35,6 @@
- #include "hw/boards.h"
- #include "hw/loader.h"
- #include "hw/sysbus.h"
--#include "hw/char/serial.h"
- #include "hw/misc/unimp.h"
- #include "target/riscv/cpu.h"
- #include "hw/riscv/riscv_hart.h"
-diff --git a/hw/riscv/sifive_u.c b/hw/riscv/sifive_u.c
-index af5f923f54..efc8443c84 100644
---- a/hw/riscv/sifive_u.c
-+++ b/hw/riscv/sifive_u.c
-@@ -43,7 +43,6 @@
- #include "hw/irq.h"
- #include "hw/loader.h"
- #include "hw/sysbus.h"
--#include "hw/char/serial.h"
- #include "hw/cpu/cluster.h"
- #include "hw/misc/unimp.h"
- #include "hw/sd/sd.h"
--- 
-2.46.0
+Oh I see. In that case, I don't think we need to support "non-pvh aware xl".
 
+ 
+> > > > later on with the precise vCPU value which should be provided to QEMU
+> > > > via the -smp command line option
+> > > > (tools/libs/light/libxl_dm.c:libxl__build_device_model_args_new)?
+> > > 
+> > > Yes, a pvh aware xl will for example pass -smp 2,maxcpus=4 based on
+> > > values from the xl.cfg. If the user doesn't set maxvcpus in xl.cfg, xl
+> > > will set maxvcpus to the same value as vcpus.
+> > 
+> > OK good. In that case if this is just an initial value meant to be
+> > overwritten, I think it is best to keep it as 1.
+> 
+> Sorry but that won't work. I think the confusion here may be that
+> it's easy to mix up mc->max_cpus and machine->smp.max_cpus, these are
+> not the same. They have different purposes.
+> 
+> I'll try to clarify the 3 values in play.
+> 
+> machine-smp.cpus:
+> Number of guest vcpus active at boot.
+> Passed to QEMU via the -smp command-line option.
+> We don't use this value in QEMU's ARM PVH machines.
+> 
+> machine->smp.max_cpus:
+> Max number of vcpus that the guest can use (equal or larger than machine-smp.cpus).
+> Will be set by xl via the "-smp X,maxcpus=Y" command-line option to QEMU.
+> Taken from maxvcpus from xl.cfg, same as XEN_DMOP_nr_vcpus.
+> This is what we use for xen_register_ioreq().
+> 
+> mc->max_cpus:
+> Absolute MAX in QEMU used to cap the -smp command-line options.
+> If xl tries to set -smp (machine->smp.max_cpus) larger than this, QEMU will bail out.
+> Used to setup xen_register_ioreq() ONLY if -smp maxcpus was NOT set (i.e by a non PVH aware xl).
+> Cannot be 1 because that would limit QEMU to MAX 1 vcpu.
+> 
+> I guess we could set mc->max_cpus to what XEN_DMOP_nr_vcpus returns but I'll
+> have to check if we can even issue that hypercall this early in QEMU since
+> mc->max_cpus is setup before we even parse the machine options. We may
+> not yet know what domid we're attaching to yet.
+ 
+If mc->max_cpus is the absolute max and it will not be used if -smp is
+passed to QEMU, then I think it is OK to use GUEST_MAX_VCPUS

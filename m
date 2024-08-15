@@ -1,244 +1,192 @@
-Received: by 2002:a17:504:9188:b0:1be9:327d:8ee3 with SMTP id i8csp756278njf;
-        Thu, 15 Aug 2024 00:12:51 -0700 (PDT)
-X-Received: by 2002:a62:e818:0:b0:710:9d5e:1154 with SMTP id d2e1a72fcca58-71276e871b1mr3029617b3a.2.1723705970808;
-        Thu, 15 Aug 2024 00:12:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1723705970; cv=none;
+Received: by 2002:a17:504:9188:b0:1be9:327d:8ee3 with SMTP id i8csp772277njf;
+        Thu, 15 Aug 2024 01:25:42 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUvE+7d1L9vJ/h6t8fKlWT0/EkJSMK0bIOPhIEBnK8VYvn6mwTMH3wxQ5aBwNx4mk8Drci3EzSUjLXB/11d9AOgmiuXU2Xr
+X-Google-Smtp-Source: AGHT+IFV1SE7DxmiZmk5lBJRhzlHg0sZ2EWMyPZIEfjFRiTQJDWgxUfG80ZBJR+6KEFX6/ljqPX2
+X-Received: by 2002:a05:622a:1e8e:b0:447:f361:e2e0 with SMTP id d75a77b69052e-4535bbd982bmr65820111cf.59.1723710342113;
+        Thu, 15 Aug 2024 01:25:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1723710342; cv=none;
         d=google.com; s=arc-20160816;
-        b=qKfZzYV6Oc4fOZB6xzyvk7X8oOXCuXxLtDZ5gKDJmCHfaeTBQVBvPCrH9mQzAoNFQl
-         caPjthJwu17dqPk246OKF6PhOLef/lBXgunFpa3IBbxJ8DYbCTRNon2HKTTG8pQGLVfs
-         uPyQPvmzfhbND1GOjSKpICqt8O/9EyQcP0din+rLr1y8PG0ym90IOLTGM61R21Bujnyc
-         EEB5ckD3NpQhThnrvfImk58kLKJoFGbfH+521/jTY0BjBdLmWRwFBhDLoE1XTCQADe1t
-         hG4BpDxbox6LsGzc/ijntIJ8nYq2YGs/uUEIMSMtekeafSZ/VHP9pDR/6J5ECJBA5EHC
-         dEMQ==
+        b=gzvm/IfBdxb0vIh/mDK/uyx8NxIgMnzBBGSfV89Sb374cOAdeFxsQIJHZJE8z8hBC+
+         yGmaT+BmifnrgLvJpXhTAGJ/iUeNZ5+RMeILjvYnyqYUT2xn8K7318aZPUDsV44buN0V
+         NjhOdNbgmHshKHvyCmeah/7XP/o3G1duSjl8KeQ69u9tnrAfXnnuv642B7MS4XQmzDX6
+         EJR8cCU8RuIlybz9Wa2vq18ywj0o2FCFtUqUB/CwGBvsse0cPU8yqpJfDwwSjXKd/rS4
+         vxv0qzX/OpQNYJmgsDlk2u0DnkDgWh7X4jpnKZRRRVcK1ARdHsSvUJ3GHiZrZvv5J2Ec
+         7WCw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:references:subject:cc:to:from:message-id:date
-         :content-transfer-encoding:mime-version:dkim-signature;
-        bh=p44C8fERsSRYQkkQyzymFn1pVVaUH+QWqY2k98VCWpA=;
-        fh=2p4y3HaoJ69K6ANt8dstZjC1VazwY0h+GrcHgma6j1o=;
-        b=bmONeQQqjPhZf5oAoCyikm1nmnQlLIzRixlgUCjnkSk6jZdTBP+XK2jIxywQbIT1Hg
-         demxX9nFPFHw1NKq7ekEihQvlyFWGYWMypUZzajlZrbpu3SE6RsYwYFD/M7EXdKIGsMx
-         gh+jsX8EhpCns9AYC6wHJL5IquNFjvTZRAgGxXVYUYwIH4qF1g51/Vay9zuEhfjMvWei
-         LMLqpp7QVE44NkRjmsiJjvoX9uyzuM6e+Kr2FhpBOZ/M4TlNsrgSXxDvsECt8FK+kXYD
-         3EeEGUTPXY2e3m0pfvJvMV2GCooaMuEE7IJFHshl0RlXPFKFN/IunCTSRka9+TNNhUi5
-         w45g==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:in-reply-to:autocrypt:from
+         :content-language:references:cc:to:user-agent:mime-version:date
+         :message-id:dkim-signature;
+        bh=e8x9yi8SHcvnBt3pDIbSrzZYuvEmVG8mRmmGsFuDMwM=;
+        fh=fI4WTUBLko8e5ZS9dr2nbUq6y2JHkEpsBRYJ6keXh4g=;
+        b=BKuT55aSWW7eYdj1YeSZVfnHTsHxF0RoVv0pIbgv7jHxfvilvmvDJ5oRC35i0X7DWx
+         vPI2RNVdwkpId+E895wswhOCFLSd8i8o6/OgEzJ7QrTHLwyh0t+te80+/HDH05Gz4EIL
+         gdnGUvIGH4axeqvwkvjs/wly1iVqr1txqjVDNDS4BPAq38cGI1VuqqXLRsiIAXmjUsF+
+         W/njHAvSH8GBBeEDVkf49gXhIsOKwK+5LJpryiyKhGYvZegmxgh2BLYE+Mu0GwM0BH+8
+         qLiEtEMF+xDhS1PBWRy2RWVNYbR8mDQcTfu8daDid0pbVDWA5oe9LeqODyDB3msFb/s7
+         QPng==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=ZrRym96O;
-       spf=pass (google.com: domain of npiggin@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=npiggin@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
-Return-Path: <npiggin@gmail.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d2e1a72fcca58-7127a14246esor909714b3a.2.2024.08.15.00.12.50
-        (Google Transport Security);
-        Thu, 15 Aug 2024 00:12:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of npiggin@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b="yp5Y2/fL";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d75a77b69052e-45369fe6ed0si12389211cf.22.2024.08.15.01.25.42
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 15 Aug 2024 01:25:42 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=ZrRym96O;
-       spf=pass (google.com: domain of npiggin@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=npiggin@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1723705969; x=1724310769; darn=linaro.org;
-        h=in-reply-to:references:subject:cc:to:from:message-id:date
-         :content-transfer-encoding:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=p44C8fERsSRYQkkQyzymFn1pVVaUH+QWqY2k98VCWpA=;
-        b=ZrRym96OFVXWsddWcomxLPLwqTRbM5CxjV+ys8dKR1w9FjWswCQ5rIU4jaMB7M/UpO
-         57LEgDBuIt6ojeit3VPD8moeo8FRjrJyC+HIQBFanwDOag0vez8IuaaEfZQ8Yajoq9dZ
-         XGAtqGDNcUEQTjGMx1b5ENmz7J3DdfLp9FV+mYT53DUsnfxUITGYfXG4f3Ko6/WEsXv/
-         xQ60AR8GRw4iLuZcEiyMApV2lbShN8smUZzE9OyJVZRJxJOCIAuD2u2rU20HdtFqT6l+
-         tMcFG2AmydJSjvPO2SeSC0KmAjqsjuSmabA6EwqsmUSHqkIku1+PzpoG27zj2Djzs78a
-         3Bgw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1723705969; x=1724310769;
-        h=in-reply-to:references:subject:cc:to:from:message-id:date
-         :content-transfer-encoding:mime-version:x-gm-message-state:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=p44C8fERsSRYQkkQyzymFn1pVVaUH+QWqY2k98VCWpA=;
-        b=Z6mhxwF5D5mt6ZK+JnudA87vbDTmoh80EFVUze8IFSXMzPytyqHooYfF8FOxFs8tGo
-         qCT8Mcn1S5ubQeJPoFlafIvv6v2JrFzCg1xK8BUyoB1j9Io5FCqiV1awjF2kTDLe8Hk/
-         wFZx6Vz2Rr9EVIClVdWyamzqpbL+jt2gHwHWtVzXcA4QxUTR6uU31HR9QuuSbVHe1Ecl
-         qT4KZwgzckQipWoD/s9YcMhy3E8c8N1NuNWQ/e/+Xy7evtd/3S7cxHo5CQa7R8Zaq4nO
-         J/ktOk/NjU7Ea9Zdx2BDbrJZ75zqwUjHAC8d519UHZw8sq86/Ahu7gP3fI91fHTZ2wDI
-         HCcg==
-X-Forwarded-Encrypted: i=1; AJvYcCVxNPiG1QvuPOXahDRQvhi79It0yxlyYakMXfsYyk7MCZQauN9dJ3FgrUhmre8hyFI30wdd3oX+O68xoXLqCXJGkJOMFFRIjjhVBj9thySWfNolG+iPqW3nRG47vqNpcvK172z+7Aa2Rk4K/lte8YMXdiAo6cL2g+g1C8Z4X+l9LotDfSKXvOqji2RseCX9VBoHzJgAXM0=
-X-Gm-Message-State: AOJu0YzpaMIuxQ1oEwr2w7BN+MdAcQ8me9TYg2F5YUfhd/xbppauEvs+
-	OcFVmvPxkAz7fQBC7xmNRMSHD6aQdyRq0XjObwrv0zgihzVmxNb6O25dl3EM
-X-Google-Smtp-Source: AGHT+IE7rhqF7AoUY4l8ZHu5L54QNuP56/MeZb/fUoS7zwo8PbyG03bMmxV/Akc8UpDL2PaAff/3lg==
-X-Received: by 2002:a05:6a00:816:b0:70d:26cd:9741 with SMTP id d2e1a72fcca58-71276fbd507mr3022597b3a.12.1723705969120;
-        Thu, 15 Aug 2024 00:12:49 -0700 (PDT)
-Return-Path: <npiggin@gmail.com>
-Received: from localhost ([1.145.66.109])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-7127af3aeaasm535479b3a.191.2024.08.15.00.12.35
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 15 Aug 2024 00:12:48 -0700 (PDT)
-Mime-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset=UTF-8
-Date: Thu, 15 Aug 2024 17:12:32 +1000
-Message-Id: <D3GARIYVC16C.20SXVKSIMLED4@gmail.com>
-From: "Nicholas Piggin" <npiggin@gmail.com>
-To: =?utf-8?q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>, "Michael S.
- Tsirkin" <mst@redhat.com>
-Cc: <qemu-devel@nongnu.org>, "Alistair Francis" <alistair.francis@wdc.com>,
- "Michael Roth" <michael.roth@amd.com>, "Palmer Dabbelt"
- <palmer@dabbelt.com>, "Mahmoud Mandour" <ma.mandourr@gmail.com>, "Pavel
- Dovgalyuk" <pavel.dovgaluk@ispras.ru>, "Yoshinori Sato"
- <ysato@users.sourceforge.jp>, "Weiwei Li" <liwei1518@gmail.com>, "Eduardo
- Habkost" <eduardo@habkost.net>, =?utf-8?q?Marc-Andr=C3=A9_Lureau?=
- <marcandre.lureau@redhat.com>, "Markus Armbruster" <armbru@redhat.com>,
- "David Hildenbrand" <david@redhat.com>, "Beraldo Leal" <bleal@redhat.com>,
- "Liu Zhiwei" <zhiwei_liu@linux.alibaba.com>, "Eric Auger"
- <eric.auger@redhat.com>, "Song Gao" <gaosong@loongson.cn>,
- <qemu-arm@nongnu.org>, "Peter Xu" <peterx@redhat.com>, "Jiri Pirko"
- <jiri@resnulli.us>, "Eric Blake" <eblake@redhat.com>, "Fabiano Rosas"
- <farosas@suse.de>, <qemu-s390x@nongnu.org>, "Peter Maydell"
- <peter.maydell@linaro.org>, "Daniel Henrique Barboza"
- <dbarboza@ventanamicro.com>, "John Snow" <jsnow@redhat.com>, "Alexandre
- Iooss" <erdnaxe@crans.org>, "Konstantin Kostiuk" <kkostiuk@redhat.com>,
- "Pierrick Bouvier" <pierrick.bouvier@linaro.org>, "Cleber Rosa"
- <crosa@redhat.com>, "Ilya Leoshkevich" <iii@linux.ibm.com>,
- <qemu-riscv@nongnu.org>, "Thomas Huth" <thuth@redhat.com>, "Paolo Bonzini"
- <pbonzini@redhat.com>, "Richard Henderson" <richard.henderson@linaro.org>,
- "Jason Wang" <jasowang@redhat.com>, "Bin Meng" <bmeng.cn@gmail.com>,
- =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>, "Wainer dos
- Santos Moschetta" <wainersm@redhat.com>, "Pavel Dovgalyuk"
- <Pavel.Dovgalyuk@ispras.ru>
-Subject: Re: [PATCH v2 16/21] virtio-net: Use replay_schedule_bh_event for
- bhs that affect machine state
-X-Mailer: aerc 0.18.2
-References: <20240813202329.1237572-1-alex.bennee@linaro.org>
- <20240813202329.1237572-17-alex.bennee@linaro.org>
- <20240813164631-mutt-send-email-mst@kernel.org>
- <D3FEPPLH78YW.3BYA9B4HYGN1U@gmail.com>
- <20240814030308-mutt-send-email-mst@kernel.org>
- <87y14z81ak.fsf@draig.linaro.org>
-In-Reply-To: <87y14z81ak.fsf@draig.linaro.org>
-X-TUID: dYe7JLLoCVN3
+       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b="yp5Y2/fL";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1seVnK-0002Eq-9Q; Thu, 15 Aug 2024 04:25:18 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1seVnG-00027s-N5; Thu, 15 Aug 2024 04:25:14 -0400
+Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1seVnF-0004V5-3p; Thu, 15 Aug 2024 04:25:14 -0400
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=ilande.co.uk; s=20220518; h=Subject:Content-Transfer-Encoding:Content-Type:
+ In-Reply-To:From:References:Cc:To:MIME-Version:Date:Message-ID:Sender:
+ Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+ :Resent-To:Resent-Cc:Resent-Message-ID;
+ bh=e8x9yi8SHcvnBt3pDIbSrzZYuvEmVG8mRmmGsFuDMwM=; b=yp5Y2/fLLyY6icOqzlOgZ2lxu7
+ loCBuM5UOQh2yRxnzAs0iBR80Vw3w0NVHKPVjXA0OS2p2T4cHQl4JhTzuNEwykNPxGXmCNeUSSJyc
+ 3PrKsBtrr7/x4Pad0X1vu2/gdScFpavrkGr+C1TTpg+EmVB2M/1kl3rwQJsdzDm+oJDPduDLzecN7
+ TqAB5x4ncHkIcK9bbojVzkHXxtuAYYijYOEg4e5Mp345dE67Ia1Gu1macRkmaVmrEv9LNR9gBNAUu
+ 4+cCF8IWrpf+eoBhJU8KtzfEYUs9NR5SK5wEwW+NxjGZdbJpsf/1g3FjokJD5I/Odm0mixfpLaQHT
+ zDZSHec6s9vEe6FjfVb6FkPsa1D/PQ5TG8lETLVUD1Kk05G58wvKiwpiL5zJv8wYTMu6zBKAQDf6n
+ Vm8TumtHgDH1IB+A5/Y6wRlQsGaO8YdSHozQlYGnR9MDhqYOEqWBmnl9Huux1jFYjJUpCHakO+2+3
+ I8QEk+gw4WeeefrF27Xmg9Ipn2FYbTEXqHl2jyE9gY7sZNLcRE2pbah+b1DwOlc8pvJmC/pDtc5TZ
+ Nolc2AUgYHM/mOu/+8njPXjhqUSBzJ7mOU/kdbthAL9ARX5Hhj7DWVXLVR7xuwjhSnOvzy3qIun/3
+ XqxH7G8z+huDpFZnjCz66eFJidw+huAhykGdkswxI=;
+Received: from [2a02:8012:c93d:0:260e:bf57:a4e9:8142]
+ by mail.ilande.co.uk with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.92) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1seVm5-0000qs-Jj; Thu, 15 Aug 2024 09:24:01 +0100
+Message-ID: <11aeac5f-1985-494e-941a-5115d5e679bc@ilande.co.uk>
+Date: Thu, 15 Aug 2024 09:24:02 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+To: BALATON Zoltan <balaton@eik.bme.hu>, Bernhard Beschow <shentey@gmail.com>
+Cc: qemu-devel@nongnu.org, Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Niek Linnenbank <nieklinnenbank@gmail.com>, Bin Meng <bmeng.cn@gmail.com>,
+ Paul Burton <paulburton@kernel.org>, Stafford Horne <shorne@gmail.com>,
+ qemu-ppc@nongnu.org, Tyrone Ting <kfting@nuvoton.com>,
+ Joel Stanley <joel@jms.id.au>, Eduardo Habkost <eduardo@habkost.net>,
+ Sergio Lopez <slp@redhat.com>, Andrew Jeffery <andrew@codeconstruct.com.au>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Hao Wu <wuhaotsh@google.com>,
+ Alistair Francis <Alistair.Francis@wdc.com>, Jan Kiszka <jan.kiszka@web.de>,
+ Beniamino Galvani <b.galvani@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>, "Michael S. Tsirkin"
+ <mst@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
+ Jia Liu <proljc@gmail.com>, Helge Deller <deller@gmx.de>,
+ Max Filippov <jcmvbkbc@gmail.com>, Subbaraya Sundeep
+ <sundeep.lkml@gmail.com>, Weiwei Li <liwei1518@gmail.com>,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ Nicholas Piggin <npiggin@gmail.com>,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Steven Lee <steven_lee@aspeedtech.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Huacai Chen <chenhuacai@kernel.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Strahinja Jankovic <strahinja.p.jankovic@gmail.com>, qemu-arm@nongnu.org,
+ Aleksandar Rikalo <arikalo@gmail.com>, Troy Lee <leetroy@gmail.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ =?UTF-8?B?RnLDqWTDqXJpYyBCYXJyYXQ=?= <fbarrat@linux.ibm.com>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+ =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>,
+ qemu-riscv@nongnu.org, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Song Gao <gaosong@loongson.cn>
+References: <20240814181534.218964-1-shentey@gmail.com>
+ <20240814181534.218964-3-shentey@gmail.com>
+ <22fa9014-2923-b501-e38d-f5dd1e53d15a@eik.bme.hu>
+Content-Language: en-US
+From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Autocrypt: addr=mark.cave-ayland@ilande.co.uk; keydata=
+ xsBNBFQJuzwBCADAYvxrwUh1p/PvUlNFwKosVtVHHplgWi5p29t58QlOUkceZG0DBYSNqk93
+ 3JzBTbtd4JfFcSupo6MNNOrCzdCbCjZ64ik8ycaUOSzK2tKbeQLEXzXoaDL1Y7vuVO7nL9bG
+ E5Ru3wkhCFc7SkoypIoAUqz8EtiB6T89/D9TDEyjdXUacc53R5gu8wEWiMg5MQQuGwzbQy9n
+ PFI+mXC7AaEUqBVc2lBQVpAYXkN0EyqNNT12UfDLdxaxaFpUAE2pCa2LTyo5vn5hEW+i3VdN
+ PkmjyPvL6DdY03fvC01PyY8zaw+UI94QqjlrDisHpUH40IUPpC/NB0LwzL2aQOMkzT2NABEB
+ AAHNME1hcmsgQ2F2ZS1BeWxhbmQgPG1hcmsuY2F2ZS1heWxhbmRAaWxhbmRlLmNvLnVrPsLA
+ eAQTAQIAIgUCVAm7PAIbAwYLCQgHAwIGFQgCCQoLBBYCAwECHgECF4AACgkQW8LFb64PMh9f
+ NAgAuc3ObOEY8NbZko72AGrg2tWKdybcMVITxmcor4hb9155o/OWcA4IDbeATR6cfiDL/oxU
+ mcmtXVgPqOwtW3NYAKr5g/FrZZ3uluQ2mtNYAyTFeALy8YF7N3yhs7LOcpbFP7tEbkSzoXNG
+ z8iYMiYtKwttt40WaheWuRs0ZOLbs6yoczZBDhna3Nj0LA3GpeJKlaV03O4umjKJgACP1c/q
+ T2Pkg+FCBHHFP454+waqojHp4OCBo6HyK+8I4wJRa9Z0EFqXIu8lTDYoggeX0Xd6bWeCFHK3
+ DhD0/Xi/kegSW33unsp8oVcM4kcFxTkpBgj39dB4KwAUznhTJR0zUHf63M7ATQRUCbs8AQgA
+ y7kyevA4bpetM/EjtuqQX4U05MBhEz/2SFkX6IaGtTG2NNw5wbcAfhOIuNNBYbw6ExuaJ3um
+ 2uLseHnudmvN4VSJ5Hfbd8rhqoMmmO71szgT/ZD9MEe2KHzBdmhmhxJdp+zQNivy215j6H27
+ 14mbC2dia7ktwP1rxPIX1OOfQwPuqlkmYPuVwZP19S4EYnCELOrnJ0m56tZLn5Zj+1jZX9Co
+ YbNLMa28qsktYJ4oU4jtn6V79H+/zpERZAHmH40IRXdR3hA+Ye7iC/ZpWzT2VSDlPbGY9Yja
+ Sp7w2347L5G+LLbAfaVoejHlfy/msPeehUcuKjAdBLoEhSPYzzdvEQARAQABwsBfBBgBAgAJ
+ BQJUCbs8AhsMAAoJEFvCxW+uDzIfabYIAJXmBepHJpvCPiMNEQJNJ2ZSzSjhic84LTMWMbJ+
+ opQgr5cb8SPQyyb508fc8b4uD8ejlF/cdbbBNktp3BXsHlO5BrmcABgxSP8HYYNsX0n9kERv
+ NMToU0oiBuAaX7O/0K9+BW+3+PGMwiu5ml0cwDqljxfVN0dUBZnQ8kZpLsY+WDrIHmQWjtH+
+ Ir6VauZs5Gp25XLrL6bh/SL8aK0BX6y79m5nhfKI1/6qtzHAjtMAjqy8ChPvOqVVVqmGUzFg
+ KPsrrIoklWcYHXPyMLj9afispPVR8e0tMKvxzFBWzrWX1mzljbBlnV2n8BIwVXWNbgwpHSsj
+ imgcU9TTGC5qd9g=
+In-Reply-To: <22fa9014-2923-b501-e38d-f5dd1e53d15a@eik.bme.hu>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-SA-Exim-Connect-IP: 2a02:8012:c93d:0:260e:bf57:a4e9:8142
+X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
+Subject: Re: [PATCH 2/5] hw/char/serial: Remove unused funtion
+X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
+X-SA-Exim-Scanned: Yes (on mail.ilande.co.uk)
+Received-SPF: pass client-ip=2001:41c9:1:41f::167;
+ envelope-from=mark.cave-ayland@ilande.co.uk; helo=mail.ilande.co.uk
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 0C3WILc5rz2S
 
-On Thu Aug 15, 2024 at 3:25 AM AEST, Alex Benn=C3=A9e wrote:
-> "Michael S. Tsirkin" <mst@redhat.com> writes:
->
-> > On Wed, Aug 14, 2024 at 04:05:34PM +1000, Nicholas Piggin wrote:
-> >> On Wed Aug 14, 2024 at 6:48 AM AEST, Michael S. Tsirkin wrote:
-> >> > On Tue, Aug 13, 2024 at 09:23:24PM +0100, Alex Benn=C3=A9e wrote:
-> >> > > From: Nicholas Piggin <npiggin@gmail.com>
-> >> > >=20
-> >> > > The regular qemu_bh_schedule() calls result in non-deterministic
-> >> > > execution of the bh in record-replay mode, which causes replay fai=
-lure.
-> >> > >=20
-> >> > > Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-> >> > > Reviewed-by: Pavel Dovgalyuk <Pavel.Dovgalyuk@ispras.ru>
-> >> > > Signed-off-by: Nicholas Piggin <npiggin@gmail.com>
-> >> > > Message-Id: <20240813050638.446172-9-npiggin@gmail.com>
-> >> > > Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-> >> > > ---
-> >> > >  hw/net/virtio-net.c | 11 ++++++-----
-> >> > >  1 file changed, 6 insertions(+), 5 deletions(-)
-> >> > >=20
-> >> > > diff --git a/hw/net/virtio-net.c b/hw/net/virtio-net.c
-> >> > > index 08aa0b65e3..10ebaae5e2 100644
-> >> > > --- a/hw/net/virtio-net.c
-> >> > > +++ b/hw/net/virtio-net.c
-> >> > > @@ -40,6 +40,7 @@
-> >> > >  #include "migration/misc.h"
-> >> > >  #include "standard-headers/linux/ethtool.h"
-> >> > >  #include "sysemu/sysemu.h"
-> >> > > +#include "sysemu/replay.h"
-> >> > >  #include "trace.h"
-> >> > >  #include "monitor/qdev.h"
-> >> > >  #include "monitor/monitor.h"
-> >> > > @@ -417,7 +418,7 @@ static void virtio_net_set_status(struct VirtI=
-ODevice *vdev, uint8_t status)
-> >> > >                  timer_mod(q->tx_timer,
-> >> > >                                 qemu_clock_get_ns(QEMU_CLOCK_VIRTU=
-AL) + n->tx_timeout);
-> >> > >              } else {
-> >> > > -                qemu_bh_schedule(q->tx_bh);
-> >> > > +                replay_bh_schedule_event(q->tx_bh);
-> >> > >              }
-> >> > >          } else {
-> >> > >              if (q->tx_timer) {
-> >> > > @@ -2672,7 +2673,7 @@ static void virtio_net_tx_complete(NetClient=
-State *nc, ssize_t len)
-> >> > >           */
-> >> > >          virtio_queue_set_notification(q->tx_vq, 0);
-> >> > >          if (q->tx_bh) {
-> >> > > -            qemu_bh_schedule(q->tx_bh);
-> >> > > +            replay_bh_schedule_event(q->tx_bh);
-> >> > >          } else {
-> >> > >              timer_mod(q->tx_timer,
-> >> > >                        qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) + n->=
-tx_timeout);
-> >> > > @@ -2838,7 +2839,7 @@ static void virtio_net_handle_tx_bh(VirtIODe=
-vice *vdev, VirtQueue *vq)
-> >> > >          return;
-> >> > >      }
-> >> > >      virtio_queue_set_notification(vq, 0);
-> >> > > -    qemu_bh_schedule(q->tx_bh);
-> >> > > +    replay_bh_schedule_event(q->tx_bh);
-> >> > >  }
-> >> > > =20
-> >> > >  static void virtio_net_tx_timer(void *opaque)
-> >> > > @@ -2921,7 +2922,7 @@ static void virtio_net_tx_bh(void *opaque)
-> >> > >      /* If we flush a full burst of packets, assume there are
-> >> > >       * more coming and immediately reschedule */
-> >> > >      if (ret >=3D n->tx_burst) {
-> >> > > -        qemu_bh_schedule(q->tx_bh);
-> >> > > +        replay_bh_schedule_event(q->tx_bh);
-> >> > >          q->tx_waiting =3D 1;
-> >> > >          return;
-> >> > >      }
-> >> > > @@ -2935,7 +2936,7 @@ static void virtio_net_tx_bh(void *opaque)
-> >> > >          return;
-> >> > >      } else if (ret > 0) {
-> >> > >          virtio_queue_set_notification(q->tx_vq, 0);
-> >> > > -        qemu_bh_schedule(q->tx_bh);
-> >> > > +        replay_bh_schedule_event(q->tx_bh);
-> >> > >          q->tx_waiting =3D 1;
-> >> > >      }
-> >> > >  }
-> >> > > --=20
-> >> > > 2.39.2
-> >> >
-> >> >
-> >> > Is this really the only way to fix this? I do not think
-> >> > virtio has any business knowing about replay.
-> >> > What does this API do, even? BH but not broken with replay?
-> >> > Do we ever want replay broken? Why not fix qemu_bh_schedule?
-> >> > And when we add another feature which we do not want to break
-> >> > will we do foo_bar_replay_bh_schedule_event or what?
-> >>=20
-> >> I agree with you. We need to do this (a couple of other hw
-> >> subsystems already do and likely some are still broken vs
-> >> replay and would need to be converted), but I think it's
-> >> mostly a case of bad naming. You're right the caller should
-> >> not know about replay at all, what it should be is whether
-> >> the event is for the target machine or the host harness,
-> >> same as timers are VIRTUAL / HOST.
-> >> So I think we just need to make a qemu_bh_schedule_<type>,
-> >> or qemu_bh_scheudle_event(... QEMU_EVENT_VIRTUAL/HOST/etc).
-> >
-> > Or just pass QEMUClockType?
+On 14/08/2024 22:38, BALATON Zoltan wrote:
 
-Could be a good idea. Although I'm not sure what to do with
-all types, maybe we can restrict what is supported.
+> On Wed, 14 Aug 2024, Bernhard Beschow wrote:
+>> The serial port's frequency is set via the "baudbase" property nowadays.
+> 
+> Please keep it as some devices might have registers that set this freq and this 
+> function will be needed for emulating that even if it's not emulated currently.
 
-> Is this wider re-factoring something that can wait for the next
-> developer cycle?
+Why not remove the function if it isn't being used? In general having unused code 
+lying around is bad as it tends to bitrot.
 
-I would say so. It's not quite trivial to do nicely since
-things are a bit tangled between util/async and replay.
+If someone did want to re-add this functionality then you would likely want to do it 
+with clock API rather than using a separate function.
 
-> >> I had started on a conversion once but not completed it.
-> >> I could resurrect if there is agreement on the API?
->
-> I would certainly welcome it being cleaned up. The supported replay
-> devices are very piecemeal at the moment.
 
-I'll tidy up and post an RFC for how the new API might look.
+ATB,
 
-Thanks,
-Nick
+Mark.
+

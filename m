@@ -1,229 +1,200 @@
-Received: by 2002:a17:504:9188:b0:1be9:327d:8ee3 with SMTP id i8csp909001njf;
-        Thu, 15 Aug 2024 09:02:48 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUA6rvGyfEFOCW4U+rtell0rIuQHK3bfx2UwYt88xGwWmVO9V3urCQF3B3wOAI211vZAEhKpBhTZ/THdGOvTFVISR04lfeq
-X-Google-Smtp-Source: AGHT+IGdWsEZ5BgFHlwECNN5LmbrpdK8NVqf1b62yGcM6JKY3OMK8kd2eORm6CNwvHC9lym6+7Vb
-X-Received: by 2002:a05:6214:4598:b0:6b5:e488:61f5 with SMTP id 6a1803df08f44-6bf5d23f2femr62715026d6.40.1723737768021;
-        Thu, 15 Aug 2024 09:02:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1723737768; cv=none;
+Received: by 2002:a17:504:9188:b0:1be9:327d:8ee3 with SMTP id i8csp947964njf;
+        Thu, 15 Aug 2024 11:01:15 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVE4RugPCRvpUjACU3dObdJ6tf1iFfN6P0LLI8uE2M5x2j/dFrdQK9NHRlMdPwQb9jVIOdx8PKSgRaGowLGqo9l9Z2Q6K99
+X-Google-Smtp-Source: AGHT+IGWEa/6EtPFdUJ8lJdF4lqrSaBrK3XAfJpEh7BHkFMeIzxZ9KX7U42/oI+w6exGHmtJfeBO
+X-Received: by 2002:a05:620a:2699:b0:79b:a8df:7829 with SMTP id af79cd13be357-7a4fd153f4bmr759694985a.14.1723744874944;
+        Thu, 15 Aug 2024 11:01:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1723744874; cv=none;
         d=google.com; s=arc-20160816;
-        b=AaPqgcR7anQ46yQMUiRG1kaKfwcKvvYATkBEogSR9ykll3kZ9OHyBTv1S5APOcgRwv
-         H7RGXs/Jl6aO+wIgxJ7mAggaBhPL+NQ9Z4d0kCMpw4xs5bGmyXw5zM84RIreNKGgqQQN
-         ntDmR2nF9/vEgamEnlLrtaELqTXzh0ssDRemM6fqPGs76lQXsX1nMd+p+oqxgwGJsjwZ
-         oOHCj9fMMkSl8tGWtCLsinneOgu0b2QlLez9AZPRHfpwiTy1raIiHiAkwbL+5UGO01IS
-         tU4mL8vYvpQQQUZs71iv+liqKdsX5lmruspdn3nGQYMI3ffNrRIKgrO+Sphaw7J9CFvu
-         RIFA==
+        b=WeNNgrvSZFJ0B9i7at0VHp24FxThesJ1mzO5Q1E8Tsd50fL6CS1/5gvx8UBVWjUYwW
+         S6olnnaXjXUX8blzEqsRiaY+eLXk242K7lqgnQNVdqoczNYURkwCqqASlLA3C7E0MjNT
+         FkcCyzYFltLZHucNKrA9OZzQ/slbysDSQcKHNGFSbnYxd9xUuocNsH9efXP3KdXZCHq2
+         cMxPXaae5BY4AdksPhqJaQUFiR+5kDZDBAdPna7rJFnjx95zNaoQzKCWK5PR3iZPmth7
+         fctsS0MXOpMLX9Ujw/HWgH2DxP3RASL+PPCa5Flj6vVbo3QFf5r8/vWr0aW9wriLS8qN
+         J7Gg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:autocrypt
-         :from:references:cc:to:subject:user-agent:mime-version:date
-         :message-id:dkim-signature;
-        bh=d25gAAZTwx5HFLBSQIC4ypWKDudPB+ue+R/jvwM+ipU=;
-        fh=/kuGymLmQoLaR+MY5v1vyNUx2ktm8m8RI+HcUtDYoMI=;
-        b=cs757jHWhBKivoJS+BQRdpGV8Mx/39/In2xN2VMER4CwVIvxO8ZJEh6iuPNr/nLuHm
-         uyAodJIi2KsFTuD7qNW52uQbMAW6uh0U+teUG4yoXIgWIceWc4G1qPXw7V38dPE3M6np
-         7VuoAUT2GY+CaR6ftxz8pAZ+Q8brImktaDDBFavGEDLBzsCjQwftncXvMI4MLW4OzXi8
-         hazJCiioB+XbKlIOIxrFtZaWPaJZUG4cK8szFfk3FgQEPu6WJOU7uIW9/txPa8P2PWQe
-         Zb20vgPGHi07IEe8cBE1kXYrjeema6Vr8UljsPlNn2tzWKQrPSaQh4RXlfWQRw96S/3R
-         u/gA==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:references:in-reply-to:subject:cc:to:from
+         :date:dkim-signature;
+        bh=NOQc+5zO7CSq/GtXLID48S0mhlJ2bEPY+p0uacqItBQ=;
+        fh=+Tzr8JSAnvTJZFUMg5bRe1Gn2D6Q905Vx3HKmEWxavk=;
+        b=viBrizHRwihutktDssfsA4M2B4VZ/fLtNI/YmVe2hAtY8adW6+e3XSpEXTF6aTue03
+         rW4mvRTZohVYBB7KceLJWhPNmjcWGt82VU+uybadR0VzRL/054CIZIqEuQAEOe6JiBxL
+         /lxPTMqp8OAr8JCMlHm/m+rP/3w5HUT2BVmyfFPWX5a35veGT67Uy74+QA3IUWa1dvk1
+         MPhsy1rE1HiArhNgsDltKCEBTbfRSwEWuFCuYxpFM9DHMtqwBLSNM12mA8a+4Xe6MQO4
+         b6buhkJp02P+peW6nHtzsjTOQIzrxMOEQ2l2c8x20hXcTyBN4LkAB/cSPH6LlYpURLkR
+         kX/A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OpigzLF8;
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <thuth@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6bf6fee624dsi20756636d6.322.2024.08.15.09.02.46
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b="aqKPW/tP";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id af79cd13be357-7a4ff127999si227319285a.725.2024.08.15.11.01.14
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 15 Aug 2024 09:02:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 15 Aug 2024 11:01:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OpigzLF8;
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1723737766;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=d25gAAZTwx5HFLBSQIC4ypWKDudPB+ue+R/jvwM+ipU=;
-	b=OpigzLF8KLaI3PY2KP+q2B4rwqO7x+C+1OR1OSSCMfTQzYGN0noGAYv2EcFDssw7mZE43x
-	mbuk3XfRpAVDjpLLpK6d1y6ESFRESTtcE62EnPftAcRBOeLFOvNlmnlyz3Y7SG2zuKhHIa
-	GLhSZf+vIPJhbaKss0dFpXdE3XlyjkI=
-Received: from mail-qv1-f69.google.com (mail-qv1-f69.google.com
- [209.85.219.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-576-qQH3evdWPC-53SDILVFH-A-1; Thu, 15 Aug 2024 12:02:43 -0400
-X-MC-Unique: qQH3evdWPC-53SDILVFH-A-1
-Received: by mail-qv1-f69.google.com with SMTP id 6a1803df08f44-6bf6a0c2f1eso11989916d6.3
-        for <alex.bennee@linaro.org>; Thu, 15 Aug 2024 09:02:43 -0700 (PDT)
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b="aqKPW/tP";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1seemR-0005zy-5g; Thu, 15 Aug 2024 14:00:59 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1seemO-0005uR-HJ; Thu, 15 Aug 2024 14:00:56 -0400
+Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1seemM-000572-PM; Thu, 15 Aug 2024 14:00:56 -0400
+Received: by mail-ej1-x629.google.com with SMTP id
+ a640c23a62f3a-a7d89bb07e7so145119866b.3; 
+ Thu, 15 Aug 2024 11:00:53 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1723744852; x=1724349652; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=NOQc+5zO7CSq/GtXLID48S0mhlJ2bEPY+p0uacqItBQ=;
+ b=aqKPW/tPoJ8UsllFmtjlpC/uFj02/tP1qhp9imelK6Y2lWvHWTehbuvF76RnsYdLkM
+ NRemKGtYf8Y6RMeWT7kYHTSa9JbrTbyc+lu0M7lIpYrjqyCIaQcJRkMH6wJ/ACn37ram
+ W6MhUyZghxtMiRGzLnSewwfXzEweZzveArU/mVeRa1M8IL02jtOv+xByaGwMJkWQmmpG
+ Qu4JaJlpjKeW/h+ERo7oU2JsXLrdt6RGI37U6sRrtTB4KK5hv9HMS7/113IiLDIGESGC
+ G2IQ8V3xuuFisKwcEOPuepaHKFYVZj5LN1X8wVGLPfgFWCIoDTF4jIKHCRCd8uaWDNOX
+ 6DSw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1723737763; x=1724342563;
-        h=content-transfer-encoding:in-reply-to:autocrypt:content-language
-         :from:references:cc:to:subject:user-agent:mime-version:date
-         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=d25gAAZTwx5HFLBSQIC4ypWKDudPB+ue+R/jvwM+ipU=;
-        b=QQNaoxNNKlZB4t0uHRPKbLRmEkNR9PRYLnNgT7vulNABvoCTwKJIQnqOoTb+bIeASO
-         h/WLPYa9L0KHynjBE1xOy3CdhDj+PgZ8PMCUtNavURHbpRD8AOh2zr4MAURI7aYUTtnz
-         FUoRyJfK4wzUC2Wnaq4PEy12DUd4hblMDblrupi5wAhNchYcvK7KXx2ztebdfv7OLqJJ
-         p6L+UT89xTCXSbiSPiM+1qWeYuBbRPPYMFs4DS/PVdQp0tr1YHKzOCtvDnP/KISDb4ot
-         iLCC9li6zHbCPIM9/iC15FGjVrPSgPu7IEnX8T8iRHz0Y1ZJPLtCOP8z+00Rt1tx2qhv
-         5CHg==
-X-Forwarded-Encrypted: i=1; AJvYcCVIVnH67v8jL5eFxCSGjgIDwScZCL5A4nzARS2o4ncVF7axwsP75fdclsdJAuWrvqZL+0ALq3wthMqmJ1FzH91ngbq6lrcs
-X-Gm-Message-State: AOJu0Yx59qu5b/aymRyVZ6Jzt7ROEhP0g2/s9RaSS8VFxBaGW7n3Ux1z
-	bTuOMKPAmmXaFjgTxeJ8dVCJ7mbFv8y4hGO9uXE8iM+VGxb5V36tuP5iomFQg4pDvxYeZ78E+tF
-	dCWnnc+A0Y1fcXbjgNFQL81fvUDeGy3BIy+pzb0zsOkWpAyWmPUJe1w==
-X-Received: by 2002:a05:6214:2f0b:b0:6bf:6da7:6113 with SMTP id 6a1803df08f44-6bf6da76357mr54616286d6.12.1723737762693;
-        Thu, 15 Aug 2024 09:02:42 -0700 (PDT)
-X-Received: by 2002:a05:6214:2f0b:b0:6bf:6da7:6113 with SMTP id 6a1803df08f44-6bf6da76357mr54615636d6.12.1723737762070;
-        Thu, 15 Aug 2024 09:02:42 -0700 (PDT)
-Return-Path: <thuth@redhat.com>
-Received: from [192.168.0.6] (ip-109-43-177-15.web.vodafone.de. [109.43.177.15])
-        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-6bf6fe10ddbsm7483086d6.49.2024.08.15.09.02.37
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 15 Aug 2024 09:02:41 -0700 (PDT)
-Message-ID: <6ecd8981-f5d5-42d0-9769-82fbde55df23@redhat.com>
-Date: Thu, 15 Aug 2024 18:02:34 +0200
+ d=1e100.net; s=20230601; t=1723744852; x=1724349652;
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=NOQc+5zO7CSq/GtXLID48S0mhlJ2bEPY+p0uacqItBQ=;
+ b=U4k6XPTy/MKF/tGzZBjkHCUITjhiiWmqJJhORJK4l9OXPqFHCvHf78mE6AkZ3Q/ypO
+ SpCdwgCkXKPsN1CEfY/9p8PdoP8WS4szTF8egrLpl/Q+MB3Mqi/P14m07ksGku/qqlbu
+ NvGD356qqAsUJHXZk+SKVyA/vPYfozQVQwXYyVDeNuzXw2d3nhE/BS6bS1Lj35cbSPWn
+ +02+hLSs5hoVKzFQUeRnur5LrJQ0ycz5pJwkbdM2u1OxpFv3Q3HFZKtPM5hOkH2W7w4z
+ hlZJoxROtF4TwIq8t91GBGntevp7JlPeQM+bCzF9W/bjE4Ufo2KRvd1G7tpnSrFjqmVt
+ weLQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUvTr8tB5+5ifuigLH1ffkRtV1h5ngN9VPRapgwC+GIH3+aFD04fYLumcepZFR+Jb5+UJFa9xfJ36HuPS4rrgr/uuc/aR2whvpZawJ+M2mK4CoTA9kzyKBy5Bcg9qpZtdQXs6ZAtWIEVGZJOKnlf0s=
+X-Gm-Message-State: AOJu0Yx+XxqzlX2mEJHyMECuFskND53BJJitWhRYJ9OmY9RYoWee6rmM
+ ++e+O2DyudqW5g6pBlER85eEpDC3+vJWVB2gBNqgYImkacy3PigU
+X-Received: by 2002:a17:907:f7a4:b0:a7a:8e98:890d with SMTP id
+ a640c23a62f3a-a83929300d4mr30503966b.16.1723744851636; 
+ Thu, 15 Aug 2024 11:00:51 -0700 (PDT)
+Received: from [127.0.0.1] (dynamic-077-188-051-121.77.188.pool.telefonica.de.
+ [77.188.51.121]) by smtp.gmail.com with ESMTPSA id
+ a640c23a62f3a-a83838c6639sm132090266b.7.2024.08.15.11.00.51
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 15 Aug 2024 11:00:51 -0700 (PDT)
+Date: Thu, 15 Aug 2024 18:00:47 +0000
+From: Bernhard Beschow <shentey@gmail.com>
+To: =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ BALATON Zoltan <balaton@eik.bme.hu>
+CC: qemu-devel@nongnu.org, Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Niek Linnenbank <nieklinnenbank@gmail.com>, Bin Meng <bmeng.cn@gmail.com>,
+ Paul Burton <paulburton@kernel.org>, Stafford Horne <shorne@gmail.com>,
+ qemu-ppc@nongnu.org, Tyrone Ting <kfting@nuvoton.com>,
+ Joel Stanley <joel@jms.id.au>, Eduardo Habkost <eduardo@habkost.net>,
+ Sergio Lopez <slp@redhat.com>, Andrew Jeffery <andrew@codeconstruct.com.au>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Hao Wu <wuhaotsh@google.com>,
+ Alistair Francis <Alistair.Francis@wdc.com>, Jan Kiszka <jan.kiszka@web.de>,
+ Beniamino Galvani <b.galvani@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>, 
+ Palmer Dabbelt <palmer@dabbelt.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
+ Jia Liu <proljc@gmail.com>, Helge Deller <deller@gmx.de>,
+ Max Filippov <jcmvbkbc@gmail.com>,
+ Subbaraya Sundeep <sundeep.lkml@gmail.com>, Weiwei Li <liwei1518@gmail.com>,
+ =?ISO-8859-1?Q?Marc-Andr=E9_Lureau?= <marcandre.lureau@redhat.com>,
+ Nicholas Piggin <npiggin@gmail.com>,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Steven Lee <steven_lee@aspeedtech.com>, Huacai Chen <chenhuacai@kernel.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Strahinja Jankovic <strahinja.p.jankovic@gmail.com>, qemu-arm@nongnu.org,
+ Aleksandar Rikalo <arikalo@gmail.com>, Troy Lee <leetroy@gmail.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ =?ISO-8859-1?Q?Fr=E9d=E9ric_Barrat?= <fbarrat@linux.ibm.com>,
+ =?ISO-8859-1?Q?C=E9dric_Le_Goater?= <clg@kaod.org>,
+ =?ISO-8859-1?Q?Herv=E9_Poussineau?= <hpoussin@reactos.org>,
+ qemu-riscv@nongnu.org, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Song Gao <gaosong@loongson.cn>
+Subject: Re: [PATCH 2/5] hw/char/serial: Remove unused funtion
+In-Reply-To: <d8ffe38c-756d-4187-875e-e6697631b7fa@linaro.org>
+References: <20240814181534.218964-1-shentey@gmail.com>
+ <20240814181534.218964-3-shentey@gmail.com>
+ <22fa9014-2923-b501-e38d-f5dd1e53d15a@eik.bme.hu>
+ <11aeac5f-1985-494e-941a-5115d5e679bc@ilande.co.uk>
+ <d8ffe38c-756d-4187-875e-e6697631b7fa@linaro.org>
+Message-ID: <907C7F7F-924E-4051-895D-7D61B2485CC0@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 9/9] Avocado tests: allow for parallel execution of
- tests
-To: Cleber Rosa <crosa@redhat.com>
-Cc: qemu-devel@nongnu.org, Marcin Juszkiewicz
- <marcin.juszkiewicz@linaro.org>, Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
- Radoslaw Biernacki <rad@semihalf.com>, Troy Lee <leetroy@gmail.com>,
- Akihiko Odaki <akihiko.odaki@daynix.com>, Beraldo Leal <bleal@redhat.com>,
- kvm@vger.kernel.org, Joel Stanley <joel@jms.id.au>,
- Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Aurelien Jarno <aurelien@aurel32.net>,
- Sriram Yagnaraman <sriram.yagnaraman@ericsson.com>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, Paul Durrant
- <paul@xen.org>, Eric Auger <eric.auger@redhat.com>,
- David Woodhouse <dwmw2@infradead.org>, qemu-arm@nongnu.org,
- Andrew Jeffery <andrew@codeconstruct.com.au>,
- Jamin Lin <jamin_lin@aspeedtech.com>, Steven Lee
- <steven_lee@aspeedtech.com>, Peter Maydell <peter.maydell@linaro.org>,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
- Wainer dos Santos Moschetta <wainersm@redhat.com>,
- =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Leif Lindholm <quic_llindhol@quicinc.com>
-References: <20240806173119.582857-1-crosa@redhat.com>
- <20240806173119.582857-10-crosa@redhat.com>
- <1f645137-c621-4fa3-ace0-415087267a7b@redhat.com>
- <CA+bd_6LTqGbx2+GOyYHyJ4d5gpg4v8Ddx5apjghiB0vjt8Abhg@mail.gmail.com>
-From: Thomas Huth <thuth@redhat.com>
-Autocrypt: addr=thuth@redhat.com; keydata=
- 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
-In-Reply-To: <CA+bd_6LTqGbx2+GOyYHyJ4d5gpg4v8Ddx5apjghiB0vjt8Abhg@mail.gmail.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: XtC6yMb/Sqx7
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::629;
+ envelope-from=shentey@gmail.com; helo=mail-ej1-x629.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: w7h85CKcLmgG
 
-On 15/08/2024 16.08, Cleber Rosa wrote:
-> On Mon, Aug 12, 2024 at 6:17 AM Thomas Huth <thuth@redhat.com> wrote:
->> ...
->>> diff --git a/tests/Makefile.include b/tests/Makefile.include
->>> index 537804d101..545b5155f9 100644
->>> --- a/tests/Makefile.include
->>> +++ b/tests/Makefile.include
->>> @@ -94,6 +94,9 @@ TESTS_RESULTS_DIR=$(BUILD_DIR)/tests/results
->>>    ifndef AVOCADO_TESTS
->>>        AVOCADO_TESTS=tests/avocado
->>>    endif
->>> +ifndef AVOCADO_PARALLEL
->>> +     AVOCADO_PARALLEL=1
->>> +endif
->>>    # Controls the output generated by Avocado when running tests.
->>>    # Any number of command separated loggers are accepted.  For more
->>>    # information please refer to "avocado --help".
->>> @@ -141,7 +144,8 @@ check-avocado: check-venv $(TESTS_RESULTS_DIR) get-vm-images
->>>                --show=$(AVOCADO_SHOW) run --job-results-dir=$(TESTS_RESULTS_DIR) \
->>>                $(if $(AVOCADO_TAGS),, --filter-by-tags-include-empty \
->>>                        --filter-by-tags-include-empty-key) \
->>> -            $(AVOCADO_CMDLINE_TAGS) --max-parallel-tasks=1 \
->>> +            $(AVOCADO_CMDLINE_TAGS) --max-parallel-tasks=$(AVOCADO_PARALLEL) \
->>> +                     -p timeout_factor=$(AVOCADO_PARALLEL) \
->>>                $(if $(GITLAB_CI),,--failfast) $(AVOCADO_TESTS), \
->>>                "AVOCADO", "tests/avocado")
->>
->> I think it was nicer in the previous attempt to bump the avocado version:
->>
->> https://gitlab.com/qemu-project/qemu/-/commit/ec5ffa0056389c3c10ea2de1e783
->>
->> This re-used the "-j" option from "make", so you could do "make -j$(nproc)
->> check-avocado" just like with the other "check" targets.
->>
-> 
-> Hi Thomas,
-> 
-> I can see why it looks better, but in practice, I'm not getting the
-> best behavior with such a change.
-> 
-> First, the fact that it enables the parallelization by default, while
-> there still seems to be issues with test timeout issues, and even
-> existing races between tests (which this series tried to address as
-> much as possible) will not result in the best experience IMO.  On my
-> 12 core machine, and also on GitLab CI, having 4 tests running in
-> parallel gets a nice speed up (as others have reported) while still
-> being very stable.
-> 
-> I'd say making the number of parallel tests equal to `nproc` is best
-> kept for a future round.
-> 
-> Let me know if this sounds reasonable to you.
 
-  Hi Cleber,
 
-that patch that I linked did not set the default number of parallel tests to 
-$(nproc), it just used the value of the "-j" option of make. So if you just 
-run "make check-avocado" there, you only get single threaded execution as 
-before. You explicitely have to run "make -jX check-avocado" to get X 
-parallel threads. IMHO using "-j" is more intuitive than using yet another 
-environment variable.
+Am 15=2E August 2024 09:26:38 UTC schrieb "Philippe Mathieu-Daud=C3=A9" <p=
+hilmd@linaro=2Eorg>:
+>On 15/8/24 10:24, Mark Cave-Ayland wrote:
+>> On 14/08/2024 22:38, BALATON Zoltan wrote:
+>>=20
+>>> On Wed, 14 Aug 2024, Bernhard Beschow wrote:
+>>>> The serial port's frequency is set via the "baudbase" property nowada=
+ys=2E
+>>>=20
+>>> Please keep it as some devices might have registers that set this freq=
+ and this function will be needed for emulating that even if it's not emula=
+ted currently=2E
+>>=20
+>> Why not remove the function if it isn't being used? In general having u=
+nused code lying around is bad as it tends to bitrot=2E
+>>=20
+>> If someone did want to re-add this functionality then you would likely =
+want to do it with clock API rather than using a separate function=2E
+>
+>I also ended using it in a branch including this old series:
+>https://lore=2Ekernel=2Eorg/qemu-devel/20200806130340=2E17316-1-f4bug@ams=
+at=2Eorg/
+>
+>Not my priority anymore, so I don't mind re-adding it=2E
+>
 
-  Thomas
+This removal seems debatable=2E I'd err on the safe side and drop the patc=
+h in v2=2E
+
+Any further comments?

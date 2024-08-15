@@ -1,176 +1,244 @@
-Received: by 2002:a05:7022:227:b0:85:21:bd5b with SMTP id 39csp1223095dll;
-        Wed, 14 Aug 2024 17:36:13 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWwza/TlaDRq846VlRIaVPaNzvBLEgdxW2/wXHK4ubU+eW1FBgQCrc/KgyREd3dVHYOeSlfm5bLxakmMw==@linaro.org
-X-Google-Smtp-Source: AGHT+IGE0y9jBn97u5UrztVJjMjYJ1sLqYtAPZJB8rjKOf1pX9elXqHfvtPn75KWzymkWNFvaTps
-X-Received: by 2002:a05:6214:5d04:b0:6bd:7559:ab83 with SMTP id 6a1803df08f44-6bf5d2736a3mr49907076d6.47.1723682172366;
-        Wed, 14 Aug 2024 17:36:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1723682172; cv=none;
+Received: by 2002:a17:504:9188:b0:1be9:327d:8ee3 with SMTP id i8csp756278njf;
+        Thu, 15 Aug 2024 00:12:51 -0700 (PDT)
+X-Received: by 2002:a62:e818:0:b0:710:9d5e:1154 with SMTP id d2e1a72fcca58-71276e871b1mr3029617b3a.2.1723705970808;
+        Thu, 15 Aug 2024 00:12:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1723705970; cv=none;
         d=google.com; s=arc-20160816;
-        b=W1ireXDuixgs4/o3F+UmORdpw1NDwUQPtxqM75tGYT6e3h/lM42yiIwwv59zrJk4pb
-         N8xKzQBtZpLamWoR7zKO6OTj54yc8U/8CQvYh3yoV5MVt8JzLHVpU8GvvIrigwZLkzVg
-         VnSixeHBiwnGvcq+In8uF/R1uCMyQ4Cdxmc3V18QnAunDEHyV3Qs/9fRioiqJTjpQdTZ
-         emOMMn/i2XV9mip9e4U2MS0yYDwJWFQLhTZ6BKysz06pIQI/WRYvooNI1YrJBenCYV7I
-         MBW1yCpYu/OE2i5y/ktQOGoIPzoy9SzvHZos7s11lzxoTiPYTLdPy8uqGpawFwgKw2/K
-         f9bA==
+        b=qKfZzYV6Oc4fOZB6xzyvk7X8oOXCuXxLtDZ5gKDJmCHfaeTBQVBvPCrH9mQzAoNFQl
+         caPjthJwu17dqPk246OKF6PhOLef/lBXgunFpa3IBbxJ8DYbCTRNon2HKTTG8pQGLVfs
+         uPyQPvmzfhbND1GOjSKpICqt8O/9EyQcP0din+rLr1y8PG0ym90IOLTGM61R21Bujnyc
+         EEB5ckD3NpQhThnrvfImk58kLKJoFGbfH+521/jTY0BjBdLmWRwFBhDLoE1XTCQADe1t
+         hG4BpDxbox6LsGzc/ijntIJ8nYq2YGs/uUEIMSMtekeafSZ/VHP9pDR/6J5ECJBA5EHC
+         dEMQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:user-agent
-         :content-transfer-encoding:references:in-reply-to:date:cc:to:from
-         :subject:message-id:dkim-signature;
-        bh=zxYdA6kLcVsZr6AK0FSC3cRNk37DunjX/5eQvUQxYmw=;
-        fh=25SH/+Ok57GKrAGnCLApiuvyMDCjD5FFHmaiTWwV1iE=;
-        b=CHKAVA+vC5kQC/+XUB9jEhtgtMNXaHBTWLVmMBRB4mmIaDLTXVOrpy5agi04/oaAXt
-         YZ7afHEBTyrhF01/oYGBEnaotnCfVYdVThgpAn1nEy5bY4rhV4HnFT9JsF9IPlr9hrR2
-         bg40fv9AtRjaHZv7AtKgd144ZErK4bDKPTGDRs2F1DQ56nfkFln1tpOAK1TjikpjWMhb
-         ZDNUWPAZPI2MxGI6uf/FvI3kZdx9LDAyzB41byHrVp8tBAyFvSYelCQk2ABIKM8Qh9mA
-         FKQxc9MP1mK0y3hVecJ/mgeJXgUweNXTJXgZXiohYhWTyjcK7Pz+qoEMGkm9KmkEFGoj
-         R8lw==;
+        h=in-reply-to:references:subject:cc:to:from:message-id:date
+         :content-transfer-encoding:mime-version:dkim-signature;
+        bh=p44C8fERsSRYQkkQyzymFn1pVVaUH+QWqY2k98VCWpA=;
+        fh=2p4y3HaoJ69K6ANt8dstZjC1VazwY0h+GrcHgma6j1o=;
+        b=bmONeQQqjPhZf5oAoCyikm1nmnQlLIzRixlgUCjnkSk6jZdTBP+XK2jIxywQbIT1Hg
+         demxX9nFPFHw1NKq7ekEihQvlyFWGYWMypUZzajlZrbpu3SE6RsYwYFD/M7EXdKIGsMx
+         gh+jsX8EhpCns9AYC6wHJL5IquNFjvTZRAgGxXVYUYwIH4qF1g51/Vay9zuEhfjMvWei
+         LMLqpp7QVE44NkRjmsiJjvoX9uyzuM6e+Kr2FhpBOZ/M4TlNsrgSXxDvsECt8FK+kXYD
+         3EeEGUTPXY2e3m0pfvJvMV2GCooaMuEE7IJFHshl0RlXPFKFN/IunCTSRka9+TNNhUi5
+         w45g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@codeconstruct.com.au header.s=2022a header.b=MR7hC6ge;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=codeconstruct.com.au
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6bf6fdc8a0asi4959566d6.30.2024.08.14.17.36.11
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 14 Aug 2024 17:36:12 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=ZrRym96O;
+       spf=pass (google.com: domain of npiggin@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=npiggin@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=neutral header.i=@linaro.org
+Return-Path: <npiggin@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d2e1a72fcca58-7127a14246esor909714b3a.2.2024.08.15.00.12.50
+        (Google Transport Security);
+        Thu, 15 Aug 2024 00:12:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of npiggin@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@codeconstruct.com.au header.s=2022a header.b=MR7hC6ge;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=codeconstruct.com.au
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1seOTB-0006bC-Kv; Wed, 14 Aug 2024 20:36:03 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <andrew@codeconstruct.com.au>)
- id 1seOT9-0006Ze-7m; Wed, 14 Aug 2024 20:36:00 -0400
-Received: from pi.codeconstruct.com.au ([203.29.241.158]
- helo=codeconstruct.com.au)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <andrew@codeconstruct.com.au>)
- id 1seOT4-0006Vt-QF; Wed, 14 Aug 2024 20:35:57 -0400
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=ZrRym96O;
+       spf=pass (google.com: domain of npiggin@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=npiggin@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=codeconstruct.com.au; s=2022a; t=1723682144;
- bh=zxYdA6kLcVsZr6AK0FSC3cRNk37DunjX/5eQvUQxYmw=;
- h=Subject:From:To:Cc:Date:In-Reply-To:References;
- b=MR7hC6ge9K8X6PS4PH/2PqQsOVFB2lGd23Sd9YSf5JqeQQT4Yl3H9yxKkjAdZTe5d
- mrReOsszo1619Kev6QUUin65iF+6jXbDcpp+RL+nyZLdF92JILbq0Y8X+QZtzwP4cc
- Ov/70RYBB+Pm7T+XGnaZ7mACmnMTbAh54+hMEmqk/c+V94GwrDWtb7VwR7ik1fovpp
- rSNEtxg3eUEDDDE4ER6DgIX+ML/jiF2RH+BrLxTqbeY2WXheZK72A3X6JcPuCasS7I
- BJFo1vxjUUJFXWjKL41K6HTpCGO77CzcJwfnWtv+QQam3PGTH2geaLqg8XfoaCrbJF
- j3C3PcljhlE5A==
-Received: from [192.168.68.112]
- (ppp118-210-65-51.adl-adc-lon-bras32.tpg.internode.on.net [118.210.65.51])
- by mail.codeconstruct.com.au (Postfix) with ESMTPSA id 190D464C85;
- Thu, 15 Aug 2024 08:35:35 +0800 (AWST)
-Message-ID: <ba5ba799e27f2eb03e703b4741ad3b4e9e06eb11.camel@codeconstruct.com.au>
-Subject: Re: [PATCH 5/5] hw/char: Extract serial-mm
-From: Andrew Jeffery <andrew@codeconstruct.com.au>
-To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
-Cc: Jiaxun Yang <jiaxun.yang@flygoat.com>, Niek Linnenbank
- <nieklinnenbank@gmail.com>, Bin Meng <bmeng.cn@gmail.com>, Paul Burton
- <paulburton@kernel.org>, Stafford Horne <shorne@gmail.com>,
- qemu-ppc@nongnu.org,  Tyrone Ting <kfting@nuvoton.com>, Joel Stanley
- <joel@jms.id.au>, Eduardo Habkost <eduardo@habkost.net>,  Sergio Lopez
- <slp@redhat.com>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, Paolo
- Bonzini <pbonzini@redhat.com>, Hao Wu <wuhaotsh@google.com>, Alistair
- Francis <Alistair.Francis@wdc.com>, BALATON Zoltan <balaton@eik.bme.hu>,
- Jan Kiszka <jan.kiszka@web.de>, Beniamino Galvani <b.galvani@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>, "Michael S. Tsirkin"
- <mst@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>, Palmer Dabbelt
- <palmer@dabbelt.com>, Artyom Tarasenko <atar4qemu@gmail.com>, Jia Liu
- <proljc@gmail.com>, Helge Deller <deller@gmx.de>,  Max Filippov
- <jcmvbkbc@gmail.com>, Subbaraya Sundeep <sundeep.lkml@gmail.com>, Weiwei Li
- <liwei1518@gmail.com>,  =?ISO-8859-1?Q?Marc-Andr=E9?= Lureau
- <marcandre.lureau@redhat.com>, Nicholas Piggin <npiggin@gmail.com>, Mark
- Cave-Ayland <mark.cave-ayland@ilande.co.uk>, Daniel Henrique Barboza
- <dbarboza@ventanamicro.com>,  Steven Lee <steven_lee@aspeedtech.com>,
- Philippe =?ISO-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,  Huacai Chen
- <chenhuacai@kernel.org>, Richard Henderson <richard.henderson@linaro.org>,
- Strahinja Jankovic <strahinja.p.jankovic@gmail.com>, qemu-arm@nongnu.org,
- Aleksandar Rikalo <arikalo@gmail.com>, Troy Lee <leetroy@gmail.com>, Jamin
- Lin <jamin_lin@aspeedtech.com>, Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, 
- =?ISO-8859-1?Q?Fr=E9d=E9ric?= Barrat <fbarrat@linux.ibm.com>,
- =?ISO-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>, 
- =?ISO-8859-1?Q?Herv=E9?= Poussineau <hpoussin@reactos.org>,
- qemu-riscv@nongnu.org, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, Song
- Gao <gaosong@loongson.cn>
-Date: Thu, 15 Aug 2024 10:05:34 +0930
-In-Reply-To: <20240814181534.218964-6-shentey@gmail.com>
-References: <20240814181534.218964-1-shentey@gmail.com>
- <20240814181534.218964-6-shentey@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
+        d=gmail.com; s=20230601; t=1723705969; x=1724310769; darn=linaro.org;
+        h=in-reply-to:references:subject:cc:to:from:message-id:date
+         :content-transfer-encoding:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=p44C8fERsSRYQkkQyzymFn1pVVaUH+QWqY2k98VCWpA=;
+        b=ZrRym96OFVXWsddWcomxLPLwqTRbM5CxjV+ys8dKR1w9FjWswCQ5rIU4jaMB7M/UpO
+         57LEgDBuIt6ojeit3VPD8moeo8FRjrJyC+HIQBFanwDOag0vez8IuaaEfZQ8Yajoq9dZ
+         XGAtqGDNcUEQTjGMx1b5ENmz7J3DdfLp9FV+mYT53DUsnfxUITGYfXG4f3Ko6/WEsXv/
+         xQ60AR8GRw4iLuZcEiyMApV2lbShN8smUZzE9OyJVZRJxJOCIAuD2u2rU20HdtFqT6l+
+         tMcFG2AmydJSjvPO2SeSC0KmAjqsjuSmabA6EwqsmUSHqkIku1+PzpoG27zj2Djzs78a
+         3Bgw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1723705969; x=1724310769;
+        h=in-reply-to:references:subject:cc:to:from:message-id:date
+         :content-transfer-encoding:mime-version:x-gm-message-state:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=p44C8fERsSRYQkkQyzymFn1pVVaUH+QWqY2k98VCWpA=;
+        b=Z6mhxwF5D5mt6ZK+JnudA87vbDTmoh80EFVUze8IFSXMzPytyqHooYfF8FOxFs8tGo
+         qCT8Mcn1S5ubQeJPoFlafIvv6v2JrFzCg1xK8BUyoB1j9Io5FCqiV1awjF2kTDLe8Hk/
+         wFZx6Vz2Rr9EVIClVdWyamzqpbL+jt2gHwHWtVzXcA4QxUTR6uU31HR9QuuSbVHe1Ecl
+         qT4KZwgzckQipWoD/s9YcMhy3E8c8N1NuNWQ/e/+Xy7evtd/3S7cxHo5CQa7R8Zaq4nO
+         J/ktOk/NjU7Ea9Zdx2BDbrJZ75zqwUjHAC8d519UHZw8sq86/Ahu7gP3fI91fHTZ2wDI
+         HCcg==
+X-Forwarded-Encrypted: i=1; AJvYcCVxNPiG1QvuPOXahDRQvhi79It0yxlyYakMXfsYyk7MCZQauN9dJ3FgrUhmre8hyFI30wdd3oX+O68xoXLqCXJGkJOMFFRIjjhVBj9thySWfNolG+iPqW3nRG47vqNpcvK172z+7Aa2Rk4K/lte8YMXdiAo6cL2g+g1C8Z4X+l9LotDfSKXvOqji2RseCX9VBoHzJgAXM0=
+X-Gm-Message-State: AOJu0YzpaMIuxQ1oEwr2w7BN+MdAcQ8me9TYg2F5YUfhd/xbppauEvs+
+	OcFVmvPxkAz7fQBC7xmNRMSHD6aQdyRq0XjObwrv0zgihzVmxNb6O25dl3EM
+X-Google-Smtp-Source: AGHT+IE7rhqF7AoUY4l8ZHu5L54QNuP56/MeZb/fUoS7zwo8PbyG03bMmxV/Akc8UpDL2PaAff/3lg==
+X-Received: by 2002:a05:6a00:816:b0:70d:26cd:9741 with SMTP id d2e1a72fcca58-71276fbd507mr3022597b3a.12.1723705969120;
+        Thu, 15 Aug 2024 00:12:49 -0700 (PDT)
+Return-Path: <npiggin@gmail.com>
+Received: from localhost ([1.145.66.109])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-7127af3aeaasm535479b3a.191.2024.08.15.00.12.35
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 15 Aug 2024 00:12:48 -0700 (PDT)
+Mime-Version: 1.0
 Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.46.4-2 
-MIME-Version: 1.0
-Received-SPF: pass client-ip=203.29.241.158;
- envelope-from=andrew@codeconstruct.com.au; helo=codeconstruct.com.au
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: lI9mngTSP58i
+Content-Type: text/plain; charset=UTF-8
+Date: Thu, 15 Aug 2024 17:12:32 +1000
+Message-Id: <D3GARIYVC16C.20SXVKSIMLED4@gmail.com>
+From: "Nicholas Piggin" <npiggin@gmail.com>
+To: =?utf-8?q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>, "Michael S.
+ Tsirkin" <mst@redhat.com>
+Cc: <qemu-devel@nongnu.org>, "Alistair Francis" <alistair.francis@wdc.com>,
+ "Michael Roth" <michael.roth@amd.com>, "Palmer Dabbelt"
+ <palmer@dabbelt.com>, "Mahmoud Mandour" <ma.mandourr@gmail.com>, "Pavel
+ Dovgalyuk" <pavel.dovgaluk@ispras.ru>, "Yoshinori Sato"
+ <ysato@users.sourceforge.jp>, "Weiwei Li" <liwei1518@gmail.com>, "Eduardo
+ Habkost" <eduardo@habkost.net>, =?utf-8?q?Marc-Andr=C3=A9_Lureau?=
+ <marcandre.lureau@redhat.com>, "Markus Armbruster" <armbru@redhat.com>,
+ "David Hildenbrand" <david@redhat.com>, "Beraldo Leal" <bleal@redhat.com>,
+ "Liu Zhiwei" <zhiwei_liu@linux.alibaba.com>, "Eric Auger"
+ <eric.auger@redhat.com>, "Song Gao" <gaosong@loongson.cn>,
+ <qemu-arm@nongnu.org>, "Peter Xu" <peterx@redhat.com>, "Jiri Pirko"
+ <jiri@resnulli.us>, "Eric Blake" <eblake@redhat.com>, "Fabiano Rosas"
+ <farosas@suse.de>, <qemu-s390x@nongnu.org>, "Peter Maydell"
+ <peter.maydell@linaro.org>, "Daniel Henrique Barboza"
+ <dbarboza@ventanamicro.com>, "John Snow" <jsnow@redhat.com>, "Alexandre
+ Iooss" <erdnaxe@crans.org>, "Konstantin Kostiuk" <kkostiuk@redhat.com>,
+ "Pierrick Bouvier" <pierrick.bouvier@linaro.org>, "Cleber Rosa"
+ <crosa@redhat.com>, "Ilya Leoshkevich" <iii@linux.ibm.com>,
+ <qemu-riscv@nongnu.org>, "Thomas Huth" <thuth@redhat.com>, "Paolo Bonzini"
+ <pbonzini@redhat.com>, "Richard Henderson" <richard.henderson@linaro.org>,
+ "Jason Wang" <jasowang@redhat.com>, "Bin Meng" <bmeng.cn@gmail.com>,
+ =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>, "Wainer dos
+ Santos Moschetta" <wainersm@redhat.com>, "Pavel Dovgalyuk"
+ <Pavel.Dovgalyuk@ispras.ru>
+Subject: Re: [PATCH v2 16/21] virtio-net: Use replay_schedule_bh_event for
+ bhs that affect machine state
+X-Mailer: aerc 0.18.2
+References: <20240813202329.1237572-1-alex.bennee@linaro.org>
+ <20240813202329.1237572-17-alex.bennee@linaro.org>
+ <20240813164631-mutt-send-email-mst@kernel.org>
+ <D3FEPPLH78YW.3BYA9B4HYGN1U@gmail.com>
+ <20240814030308-mutt-send-email-mst@kernel.org>
+ <87y14z81ak.fsf@draig.linaro.org>
+In-Reply-To: <87y14z81ak.fsf@draig.linaro.org>
+X-TUID: dYe7JLLoCVN3
 
-On Wed, 2024-08-14 at 20:15 +0200, Bernhard Beschow wrote:
-> hw/char/serial currently contains the implementation of both TYPE_SERIAL =
-and
-> TYPE_SERIAL_MM. According to serial_class_init(), TYPE_SERIAL is an inter=
-nal
-> class while TYPE_SERIAL_MM is used by numerous machine types directly. Le=
-t's
-> move the latter into its own module which makes the dependencies more obv=
-ious
-> and the code more tidy.
->=20
-> The includes and the dependencies have been converted mechanically except=
- in the
-> hw/char directories which were updated manually. The result was compile-t=
-ested.
-> Now, only hw/char makes direct use of TYPE_SERIAL:
->=20
->   # grep -r -e "select SERIAL" | grep -v SERIAL_
->   hw/char/Kconfig:    select SERIAL
->   hw/char/Kconfig:    select SERIAL
->   hw/char/Kconfig:    select SERIAL
->   hw/char/Kconfig:    select SERIAL
->   hw/char/Kconfig:    select SERIAL
->=20
->   # grep -r -e "/serial\\.h"
->   include/hw/char/serial-mm.h:#include "hw/char/serial.h"
->   hw/char/serial-pci-multi.c:#include "hw/char/serial.h"
->   hw/char/serial.c:#include "hw/char/serial.h"
->   hw/char/serial-isa.c:#include "hw/char/serial.h"
->   hw/char/serial-pci.c:#include "hw/char/serial.h"
->=20
-> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
-> ---
->  include/hw/arm/aspeed_soc.h         |   2 +-
-...
+On Thu Aug 15, 2024 at 3:25 AM AEST, Alex Benn=C3=A9e wrote:
+> "Michael S. Tsirkin" <mst@redhat.com> writes:
+>
+> > On Wed, Aug 14, 2024 at 04:05:34PM +1000, Nicholas Piggin wrote:
+> >> On Wed Aug 14, 2024 at 6:48 AM AEST, Michael S. Tsirkin wrote:
+> >> > On Tue, Aug 13, 2024 at 09:23:24PM +0100, Alex Benn=C3=A9e wrote:
+> >> > > From: Nicholas Piggin <npiggin@gmail.com>
+> >> > >=20
+> >> > > The regular qemu_bh_schedule() calls result in non-deterministic
+> >> > > execution of the bh in record-replay mode, which causes replay fai=
+lure.
+> >> > >=20
+> >> > > Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+> >> > > Reviewed-by: Pavel Dovgalyuk <Pavel.Dovgalyuk@ispras.ru>
+> >> > > Signed-off-by: Nicholas Piggin <npiggin@gmail.com>
+> >> > > Message-Id: <20240813050638.446172-9-npiggin@gmail.com>
+> >> > > Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+> >> > > ---
+> >> > >  hw/net/virtio-net.c | 11 ++++++-----
+> >> > >  1 file changed, 6 insertions(+), 5 deletions(-)
+> >> > >=20
+> >> > > diff --git a/hw/net/virtio-net.c b/hw/net/virtio-net.c
+> >> > > index 08aa0b65e3..10ebaae5e2 100644
+> >> > > --- a/hw/net/virtio-net.c
+> >> > > +++ b/hw/net/virtio-net.c
+> >> > > @@ -40,6 +40,7 @@
+> >> > >  #include "migration/misc.h"
+> >> > >  #include "standard-headers/linux/ethtool.h"
+> >> > >  #include "sysemu/sysemu.h"
+> >> > > +#include "sysemu/replay.h"
+> >> > >  #include "trace.h"
+> >> > >  #include "monitor/qdev.h"
+> >> > >  #include "monitor/monitor.h"
+> >> > > @@ -417,7 +418,7 @@ static void virtio_net_set_status(struct VirtI=
+ODevice *vdev, uint8_t status)
+> >> > >                  timer_mod(q->tx_timer,
+> >> > >                                 qemu_clock_get_ns(QEMU_CLOCK_VIRTU=
+AL) + n->tx_timeout);
+> >> > >              } else {
+> >> > > -                qemu_bh_schedule(q->tx_bh);
+> >> > > +                replay_bh_schedule_event(q->tx_bh);
+> >> > >              }
+> >> > >          } else {
+> >> > >              if (q->tx_timer) {
+> >> > > @@ -2672,7 +2673,7 @@ static void virtio_net_tx_complete(NetClient=
+State *nc, ssize_t len)
+> >> > >           */
+> >> > >          virtio_queue_set_notification(q->tx_vq, 0);
+> >> > >          if (q->tx_bh) {
+> >> > > -            qemu_bh_schedule(q->tx_bh);
+> >> > > +            replay_bh_schedule_event(q->tx_bh);
+> >> > >          } else {
+> >> > >              timer_mod(q->tx_timer,
+> >> > >                        qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) + n->=
+tx_timeout);
+> >> > > @@ -2838,7 +2839,7 @@ static void virtio_net_handle_tx_bh(VirtIODe=
+vice *vdev, VirtQueue *vq)
+> >> > >          return;
+> >> > >      }
+> >> > >      virtio_queue_set_notification(vq, 0);
+> >> > > -    qemu_bh_schedule(q->tx_bh);
+> >> > > +    replay_bh_schedule_event(q->tx_bh);
+> >> > >  }
+> >> > > =20
+> >> > >  static void virtio_net_tx_timer(void *opaque)
+> >> > > @@ -2921,7 +2922,7 @@ static void virtio_net_tx_bh(void *opaque)
+> >> > >      /* If we flush a full burst of packets, assume there are
+> >> > >       * more coming and immediately reschedule */
+> >> > >      if (ret >=3D n->tx_burst) {
+> >> > > -        qemu_bh_schedule(q->tx_bh);
+> >> > > +        replay_bh_schedule_event(q->tx_bh);
+> >> > >          q->tx_waiting =3D 1;
+> >> > >          return;
+> >> > >      }
+> >> > > @@ -2935,7 +2936,7 @@ static void virtio_net_tx_bh(void *opaque)
+> >> > >          return;
+> >> > >      } else if (ret > 0) {
+> >> > >          virtio_queue_set_notification(q->tx_vq, 0);
+> >> > > -        qemu_bh_schedule(q->tx_bh);
+> >> > > +        replay_bh_schedule_event(q->tx_bh);
+> >> > >          q->tx_waiting =3D 1;
+> >> > >      }
+> >> > >  }
+> >> > > --=20
+> >> > > 2.39.2
+> >> >
+> >> >
+> >> > Is this really the only way to fix this? I do not think
+> >> > virtio has any business knowing about replay.
+> >> > What does this API do, even? BH but not broken with replay?
+> >> > Do we ever want replay broken? Why not fix qemu_bh_schedule?
+> >> > And when we add another feature which we do not want to break
+> >> > will we do foo_bar_replay_bh_schedule_event or what?
+> >>=20
+> >> I agree with you. We need to do this (a couple of other hw
+> >> subsystems already do and likely some are still broken vs
+> >> replay and would need to be converted), but I think it's
+> >> mostly a case of bad naming. You're right the caller should
+> >> not know about replay at all, what it should be is whether
+> >> the event is for the target machine or the host harness,
+> >> same as timers are VIRTUAL / HOST.
+> >> So I think we just need to make a qemu_bh_schedule_<type>,
+> >> or qemu_bh_scheudle_event(... QEMU_EVENT_VIRTUAL/HOST/etc).
+> >
+> > Or just pass QEMUClockType?
 
->  hw/arm/aspeed_ast2400.c             |   2 +-
->  hw/arm/aspeed_soc_common.c          |   2 +-
+Could be a good idea. Although I'm not sure what to do with
+all types, maybe we can restrict what is supported.
 
-For the Aspeed bits:
+> Is this wider re-factoring something that can wait for the next
+> developer cycle?
 
-Tested-by: Andrew Jeffery <andrew@codeconstruct.com.au>
+I would say so. It's not quite trivial to do nicely since
+things are a bit tangled between util/async and replay.
+
+> >> I had started on a conversion once but not completed it.
+> >> I could resurrect if there is agreement on the API?
+>
+> I would certainly welcome it being cleaned up. The supported replay
+> devices are very piecemeal at the moment.
+
+I'll tidy up and post an RFC for how the new API might look.
+
+Thanks,
+Nick

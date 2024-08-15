@@ -1,188 +1,174 @@
-Received: by 2002:a17:504:9188:b0:1be9:327d:8ee3 with SMTP id i8csp786713njf;
-        Thu, 15 Aug 2024 02:28:16 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCU1rg0wpmgjmDye9/+I6RWqPQj6cKhZQOFjoI2/vUb8klUi5//CdL0hLB8mg32mqTJC68K21Nlh6sDO8yCpWK8VYjILqqdx
-X-Google-Smtp-Source: AGHT+IFQ4ajOmjP8JnAOO5uqPK1gXPMVj1rIhJQauljVt8VrXkzBAGL7Hxfci67zS+UZ60wyWiKU
-X-Received: by 2002:a05:6358:2908:b0:1b1:a7fc:1119 with SMTP id e5c5f4694b2df-1b1aab85a1bmr719699655d.17.1723714096230;
-        Thu, 15 Aug 2024 02:28:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1723714096; cv=none;
+Received: by 2002:a17:504:9188:b0:1be9:327d:8ee3 with SMTP id i8csp863989njf;
+        Thu, 15 Aug 2024 07:01:27 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXiCuXfx8r5nZDNrpGdKIkEIG1gDQoH8Y8CRzaJjRXceQDJfFVgaNIzgzvzqfwp3JQPQYPiQd8dO/c8MvAcdsLY4Aw7D0NR
+X-Received: by 2002:a17:907:e64b:b0:a7a:a7b8:adb1 with SMTP id a640c23a62f3a-a8366d49526mr400709466b.36.1723730487602;
+        Thu, 15 Aug 2024 07:01:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1723730487; cv=none;
         d=google.com; s=arc-20160816;
-        b=RSKvQrj9oIKv0JeYGYAC6HPElJLBkMkM6pqgioA5OCcxJRYDSCixgsR8ppYh7hAVdb
-         LPSKRArASNeImv9w114LlwubD8dSCMU0Va3AXGimUH6pZnUx4/xevaB+Y750ez3evLGp
-         1Rbm3swJUjInhp9R+Mzfx/mHuhl5J9HAm18Z4u1D+VfrRthJNWRuWTPluENSt/uvebmr
-         Q/L3TnZ3KCVpJNACiZlP5U34dZUsNLR0REpZsKvjMKA+mvlVSQHCjejqcfSgmXvBw3T0
-         1OyQvAj++yCPOQZU8VQwxK4UsN5Tr+MSac0n92ELkIeZDh1YHB+jQ2A7xOc/MBK3b2vw
-         vLmw==
+        b=PAqu+3sXwIcKwJah0m3hyalrgtJY8x2L0mILB25kaiVnAaBYGqYKPWzlQFSdTjbbWU
+         pnGCDSrs/V+PfC8OHSVpwc0L/BM2mWo4wsODux1uZ1NbW8MT3J+4VscpdP4/6LM0s3Bs
+         vNpqfybLo4HpLZWtDRtDB6aMM3C8xYo98eYeBL1rBf+L5voCuQ92fVWt6v8jwAwQfDZk
+         NaEBVNUOZn7sPpkTefijNpG7HIElwDTHxTrL/XhuQx/ghOKEUOn1n05JXegefBP6u3Vl
+         EwBLijGhsT+VItCDauUn6apC3Ui3kqcZIaqRD1396+Md7PsXD3AzkXcR9ooPyOjvdzKQ
+         g4zw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=Bpyz4uA4VLTLT6Q2iCunXp01ueOc6QiK3D70B3lOBqo=;
-        fh=9sccWmlJcJQ4lfaLTCDVX/XCrXVej5GtQzOBhER8w3E=;
-        b=hTpVKICqZ85XMbcx5FGMXHWcmZgDP96Bqn7XA+1F6qQN/8iBSN6BOAnEAgjVtPNobw
-         8xIoFP3s2jKa50K/ScSkHVOeBp5ijWtR0LiXR7PtCftZvmdw1W171/VIY5NTRdJ7/ge0
-         GcZjMf9I1/4L0SRqaiDyLsEMXxlpVlZYG7Ddsge6WqIXuu5X5lghbHoUx0QKxq8Yo+XC
-         A7CSgBvnrB1X76maxd+1Yxl82gEefizM9+IOKTUT+BvcbLSywrDZk+JaQOABLVKICd2n
-         co4bx1N/LwwNQSSYdVnvMsdqYeGqxbGNYOmVWw2grpRGIzi4BoIZYjuPotvxqH3bUvyK
-         71rw==;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=8DxCdAIn5y4gTzTjhyb9YR7k4aqTjKY2yApmrude/dg=;
+        fh=l72h+ohq3qcQWw+e2dYKZ+NOCp5K3o2doywQk/Kzq9c=;
+        b=Ihuq7r6H9lB/WfZzoV4YHIEU0GLgP4rMcpRV5VfP1jQT+/veLPHXhOxb9nP21P/DsX
+         CYU9Dd8YNa0MblXCTyT7TmBKi/8+pts/yPaJETyt8ve+GMEwuo4zyTAZakybTYil37ls
+         D8RFrNKLNniJhHSVossfAesCjDEtQ2zJxjSry48ZvtkTlOEBgeZwuz6FtvqIFGSEJpsz
+         fiEolgocGiHJKTob+n3zp8OltvY4RfGtBp/MeT17k9k+/U5ysPjOkP6nC0lsDVDbCTyW
+         0KVv1JGejxcOg8qutrb4Kgt2JbOC6Muc8fDCheMpe+ZK3KH12WpnZVAvanNvPYCiMgjU
+         dRnQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=zS9UwOO2;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=OcIelBSg;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6bf6fdcaa04si13367546d6.56.2024.08.15.02.28.16
+Return-Path: <philmd@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id a640c23a62f3a-a838b5ff44asor12958366b.15.2024.08.15.07.01.27
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 15 Aug 2024 02:28:16 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Thu, 15 Aug 2024 07:01:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=zS9UwOO2;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=OcIelBSg;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1seWlm-0000OX-1X; Thu, 15 Aug 2024 05:27:46 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1seWlU-0008Vq-RR
- for qemu-arm@nongnu.org; Thu, 15 Aug 2024 05:27:30 -0400
-Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1seWlR-00059y-KI
- for qemu-arm@nongnu.org; Thu, 15 Aug 2024 05:27:27 -0400
-Received: by mail-ed1-x52f.google.com with SMTP id
- 4fb4d7f45d1cf-5b7b6a30454so1089063a12.2
- for <qemu-arm@nongnu.org>; Thu, 15 Aug 2024 02:27:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1723714043; x=1724318843; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=Bpyz4uA4VLTLT6Q2iCunXp01ueOc6QiK3D70B3lOBqo=;
- b=zS9UwOO2E8EbG6zF2GchORxcM7kP6TdXvK6vE9S2vQU7GoP5r0j0S+V3iTeCU86NYI
- n/Dp3nrVtOKDm6j9wGaZgg7MZ8V+XTrBofhmZ6PGh4SLRjrRssJk1Fy2KTD7GjXH9BxA
- vuj8mXnAS5Cm/pKTRIu8OYHmOE5Wn+HyxFgmMf6CJu7jrW4uEi/r30vORDxbBG1cfDT5
- ree/DVKo3TUApCvztxSxriKVMELca08wpxMcOJBHyCX6xEssP2r/rtKi66COLXYEaWD0
- 0EMsFqGbVHvAAvG0/bP1ezE3WFFUbQK6rcHVW1XCzCFpPCwJ7SeGrrFDZC2R8G2UiH0u
- 4VvQ==
+        d=linaro.org; s=google; t=1723730487; x=1724335287; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=8DxCdAIn5y4gTzTjhyb9YR7k4aqTjKY2yApmrude/dg=;
+        b=OcIelBSgcxsvlU5z4tMI9KRr9RsVLzsIwNCZuVmo4jUQGIi5FXu0QEL/9rAe08RlQI
+         8L7DAqN24gDfeNczL+s/NKpHH/QLKJGd4du9mGqOLCIfCLyytOAeSTdcRkrSV+wbALcK
+         CHJK8voBkD0QmSa20G5RqU87MsKcN92HzYbxshEOTjF2aUCKSlEFknBi/YeoRgA35T73
+         TjsOmIN0M684lrQZLQMemWyVKOldSmabvJk1xXUr/mySeQw/IqCZTK8srUtuMbGyelnp
+         dcSxzOOTRLxxxlYFMCXiWcOMbCBUhLAEntEPL1/yhGHkw8dq/nPDUZaOcnZ8fksiXrwV
+         eyJQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1723714043; x=1724318843;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=Bpyz4uA4VLTLT6Q2iCunXp01ueOc6QiK3D70B3lOBqo=;
- b=HmGFS+7TdVInBN4P34ETIVM1kppz6/Kv6qz5dAskA9moH8YHdbdPlpdQwlK8b4lnZg
- jgjWq8lgyLJMB/0srx68qB8ND7GfJCXfC2VJbThmyEiGgiDF2dk5cTvX/dGNya2x5wD5
- +k8GD0rjBuu7y6nPDS/DxRruEbYJYk0p25Xw2OP6F5irKlWDyJclwy8dWujRwyw72HEG
- 1gCbMNUJgpfbl3dFLKkol9vI6KuUflWzCvBXWeWeusSNWO3wYLPMrFxQH9PqQCfEeMic
- snOG8ORlZPrHL/+OfdsFJAMHZYxtBARqhgYJQwaGN8F2Q6ZBidR2ptPthaBuoVsY99Ra
- owcA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVMTIM8l43sulEwaXNDFMYHrBCL1X0WcusmQjgDurFmtr3yJiO+/QE5HAC2wdA/8QRQw7l4mCQZxC3K0GWSy83Puz05
-X-Gm-Message-State: AOJu0Yy+ht43VyqHTpY5xubfcyyMjCl54P0VSLytWFfmcil8X+MNadE6
- fq99OrrDrHjcY1E2nf4FWd5ywWOVhH2FIFjwy7RmqHkfKk6wTHV+Z2XzkEBwwL8=
-X-Received: by 2002:a17:907:c881:b0:a77:e55a:9e91 with SMTP id
- a640c23a62f3a-a8366d3ffabmr370495966b.19.1723714043144; 
- Thu, 15 Aug 2024 02:27:23 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1723730487; x=1724335287;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=8DxCdAIn5y4gTzTjhyb9YR7k4aqTjKY2yApmrude/dg=;
+        b=OguhjoCtBQmkH1IQT1XEis7A7NsAgUWWf+Tehs+PXRGmQKWDWbBlPW6rgd0UfU3//L
+         4qy65snYqtBRSpYXlGgcmIApo6QIhU481mU01U/Hk/X12pjIC/DVkP6JYqYd7+0H069Q
+         b97yARqPk/6NbH5382psLZXzgZoC8o4dOwAqDAkKp5fTge2MShbLUTcLpHlrdGZtV9uE
+         Epj9AgIpaCXKTlwnaOIih7Xipp4URY3f6VrgQawxDjZhzCskGD+yBqT4YYe8ZZXzv6I3
+         KMwdTOQYKII0YSzn1nUd/NejHx5AZdy/nmHm1/DhdT7Ku9pM6SbL6kQalNRRRe4o1u7s
+         Mm6w==
+X-Forwarded-Encrypted: i=1; AJvYcCXuNLesY16JRtPIdYWegfT/f6grT9s2WL7QYvMWQg+qVO3G8BMgYze1NusResTaiQvIonOV7ZNZgWIYAcx7bCHKF6xj5TtR
+X-Gm-Message-State: AOJu0YwW8Isr1YSUsvQHZzIgxqv7eu/Qf4yFhRZ8c8WehunWJvBwHZ7R
+	46iw9Zxbt8uOs/buwsDnNb8T3fIdAh8koLFVF7BcHeX2kNfM1iY4wGVnfUhvCeudQw==
+X-Google-Smtp-Source: AGHT+IG+VRgNNZ0HwlyxiqMHy9WFgWzm7ORf95ag1U2KeV1i6XvltyF075I/Y4XWGWZ5tkxdq4pdzA==
+X-Received: by 2002:a17:907:f769:b0:a7d:340e:43a4 with SMTP id a640c23a62f3a-a8366d474c1mr444370466b.31.1723730486912;
+        Thu, 15 Aug 2024 07:01:26 -0700 (PDT)
+Return-Path: <philmd@linaro.org>
 Received: from [192.168.69.100] ([176.187.202.43])
- by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-a83839356besm72638466b.99.2024.08.15.02.26.56
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 15 Aug 2024 02:27:22 -0700 (PDT)
-Message-ID: <d8ffe38c-756d-4187-875e-e6697631b7fa@linaro.org>
-Date: Thu, 15 Aug 2024 11:26:38 +0200
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a83838cf2b7sm107233066b.55.2024.08.15.07.01.20
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 15 Aug 2024 07:01:26 -0700 (PDT)
+Message-ID: <9f6c96fd-bb0c-4014-bba1-70986f4bb384@linaro.org>
+Date: Thu, 15 Aug 2024 16:01:17 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/5] hw/char/serial: Remove unused funtion
-To: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- BALATON Zoltan <balaton@eik.bme.hu>, Bernhard Beschow <shentey@gmail.com>
-Cc: qemu-devel@nongnu.org, Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Niek Linnenbank <nieklinnenbank@gmail.com>, Bin Meng <bmeng.cn@gmail.com>,
- Paul Burton <paulburton@kernel.org>, Stafford Horne <shorne@gmail.com>,
- qemu-ppc@nongnu.org, Tyrone Ting <kfting@nuvoton.com>,
- Joel Stanley <joel@jms.id.au>, Eduardo Habkost <eduardo@habkost.net>,
- Sergio Lopez <slp@redhat.com>, Andrew Jeffery <andrew@codeconstruct.com.au>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Hao Wu <wuhaotsh@google.com>,
- Alistair Francis <Alistair.Francis@wdc.com>, Jan Kiszka <jan.kiszka@web.de>,
- Beniamino Galvani <b.galvani@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>, "Michael S. Tsirkin"
- <mst@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>,
- Palmer Dabbelt <palmer@dabbelt.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
- Jia Liu <proljc@gmail.com>, Helge Deller <deller@gmx.de>,
- Max Filippov <jcmvbkbc@gmail.com>, Subbaraya Sundeep
- <sundeep.lkml@gmail.com>, Weiwei Li <liwei1518@gmail.com>,
+Subject: Re: [PATCH v7 6/7] rust: add crate to expose bindings and interfaces
+To: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>,
  =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- Nicholas Piggin <npiggin@gmail.com>,
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
- Steven Lee <steven_lee@aspeedtech.com>, Huacai Chen <chenhuacai@kernel.org>,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ Thomas Huth <thuth@redhat.com>, John Snow <jsnow@redhat.com>,
+ Cleber Rosa <crosa@redhat.com>, Beraldo Leal <bleal@redhat.com>,
+ =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ Zhao Liu <zhao1.liu@intel.com>, Peter Maydell <peter.maydell@linaro.org>,
+ ARM TCG CPUs <qemu-arm@nongnu.org>, Stefan Hajnoczi <stefanha@redhat.com>,
+ Junjie Mao <junjie.mao@intel.com>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>,
  Richard Henderson <richard.henderson@linaro.org>,
- Strahinja Jankovic <strahinja.p.jankovic@gmail.com>, qemu-arm@nongnu.org,
- Aleksandar Rikalo <arikalo@gmail.com>, Troy Lee <leetroy@gmail.com>,
- Jamin Lin <jamin_lin@aspeedtech.com>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- =?UTF-8?B?RnLDqWTDqXJpYyBCYXJyYXQ=?= <fbarrat@linux.ibm.com>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
- =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>,
- qemu-riscv@nongnu.org, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Song Gao <gaosong@loongson.cn>
-References: <20240814181534.218964-1-shentey@gmail.com>
- <20240814181534.218964-3-shentey@gmail.com>
- <22fa9014-2923-b501-e38d-f5dd1e53d15a@eik.bme.hu>
- <11aeac5f-1985-494e-941a-5115d5e679bc@ilande.co.uk>
+ Gustavo Romero <gustavo.romero@linaro.org>, rowan.hart@intel.com,
+ Mads Ynddal <mads@ynddal.dk>, Markus Armbruster <armbru@redhat.com>
+References: <20240815-rust-pl011-v7-0-975135e98831@linaro.org>
+ <20240815-rust-pl011-v7-6-975135e98831@linaro.org>
 Content-Language: en-US
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <11aeac5f-1985-494e-941a-5115d5e679bc@ilande.co.uk>
+In-Reply-To: <20240815-rust-pl011-v7-6-975135e98831@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::52f;
- envelope-from=philmd@linaro.org; helo=mail-ed1-x52f.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: aPPRU8vxIqvd
+X-TUID: zMfcLwgfVGw6
 
-On 15/8/24 10:24, Mark Cave-Ayland wrote:
-> On 14/08/2024 22:38, BALATON Zoltan wrote:
+Hi Manos,
+
+On 15/8/24 13:42, Manos Pitsidianakis wrote:
+> Add rust/qemu-api, which exposes rust-bindgen generated FFI bindings and
+> provides some declaration macros for symbols visible to the rest of
+> QEMU.
 > 
->> On Wed, 14 Aug 2024, Bernhard Beschow wrote:
->>> The serial port's frequency is set via the "baudbase" property nowadays.
->>
->> Please keep it as some devices might have registers that set this freq 
->> and this function will be needed for emulating that even if it's not 
->> emulated currently.
+> Co-authored-by: Junjie Mao <junjie.mao@intel.com>
+> Co-authored-by: Paolo Bonzini <pbonzini@redhat.com>
+> Signed-off-by: Junjie Mao <junjie.mao@intel.com>
+> Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+> Signed-off-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+> ---
+>   MAINTAINERS                       |   6 ++
+>   rust/meson.build                  |   9 +++
+>   rust/qemu-api/.gitignore          |   2 +
+>   rust/qemu-api/Cargo.lock          |   7 +++
+>   rust/qemu-api/Cargo.toml          |  23 +++++++
+>   rust/qemu-api/README.md           |  17 +++++
+>   rust/qemu-api/build.rs            |  13 ++++
+>   rust/qemu-api/meson.build         |  17 +++++
+>   rust/qemu-api/rustfmt.toml        |   1 +
+>   rust/qemu-api/src/bindings.rs     |   7 +++
+>   rust/qemu-api/src/definitions.rs  | 108 ++++++++++++++++++++++++++++++++
+>   rust/qemu-api/src/device_class.rs | 128 ++++++++++++++++++++++++++++++++++++++
+>   rust/qemu-api/src/lib.rs          | 100 +++++++++++++++++++++++++++++
+>   rust/qemu-api/src/tests.rs        |  48 ++++++++++++++
+>   rust/rustfmt.toml                 |   7 +++
+>   15 files changed, 493 insertions(+)
 > 
-> Why not remove the function if it isn't being used? In general having 
-> unused code lying around is bad as it tends to bitrot.
-> 
-> If someone did want to re-add this functionality then you would likely 
-> want to do it with clock API rather than using a separate function.
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 5464cb2b03..56a88048d2 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -3348,6 +3348,12 @@ F: hw/core/register.c
+>   F: include/hw/register.h
+>   F: include/hw/registerfields.h
+>   
+> +Rust
+> +M: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+> +S: Maintained
+> +F: rust/qemu-api
+> +F: rust/rustfmt.toml
 
-I also ended using it in a branch including this old series:
-https://lore.kernel.org/qemu-devel/20200806130340.17316-1-f4bug@amsat.org/
+Few lines in docs/devel/rust.rst would be welcomed,
 
-Not my priority anymore, so I don't mind re-adding it.
+> diff --git a/rust/qemu-api/Cargo.toml b/rust/qemu-api/Cargo.toml
+> new file mode 100644
+> index 0000000000..51260cbe42
+> --- /dev/null
+> +++ b/rust/qemu-api/Cargo.toml
+> @@ -0,0 +1,23 @@
+> +[package]
+> +name = "qemu_api"
+> +version = "0.1.0"
+> +edition = "2021"
 
+> +license = "GPL-2.0 OR GPL-3.0-or-later"
+
+in particular explaining the license choice.
+
+Should all rust code use it?
+
+Thanks,
+
+Phil.

@@ -1,119 +1,120 @@
-Received: by 2002:a17:504:9188:b0:1be9:327d:8ee3 with SMTP id i8csp641929njf;
-        Wed, 14 Aug 2024 14:39:31 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCV4BjnUGPNHtcqqP8eUkvR9BgsTMiBRFXK53QfHzX5p/A6A9MUPEGxGzSDQGQT73gtRyH8wUHbTsPR4T2hpOFa/bJeVFuUL
-X-Google-Smtp-Source: AGHT+IFaszW6thRdldHl+FOp7aRcka9O7AATk3uCBoiZZPKoZz+Fo/YDmuFIEAna5jv9mIZx5v0u
-X-Received: by 2002:a05:6808:3196:b0:3d9:28d0:fcd4 with SMTP id 5614622812f47-3dd298d5a6cmr4092033b6e.5.1723671571680;
-        Wed, 14 Aug 2024 14:39:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1723671571; cv=none;
+Received: by 2002:a05:7022:227:b0:85:21:bd5b with SMTP id 39csp1223095dll;
+        Wed, 14 Aug 2024 17:36:13 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWwza/TlaDRq846VlRIaVPaNzvBLEgdxW2/wXHK4ubU+eW1FBgQCrc/KgyREd3dVHYOeSlfm5bLxakmMw==@linaro.org
+X-Google-Smtp-Source: AGHT+IGE0y9jBn97u5UrztVJjMjYJ1sLqYtAPZJB8rjKOf1pX9elXqHfvtPn75KWzymkWNFvaTps
+X-Received: by 2002:a05:6214:5d04:b0:6bd:7559:ab83 with SMTP id 6a1803df08f44-6bf5d2736a3mr49907076d6.47.1723682172366;
+        Wed, 14 Aug 2024 17:36:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1723682172; cv=none;
         d=google.com; s=arc-20160816;
-        b=kucafZe10JmhRVMMFZ33iuIVIcTdlS7LcDruysPd3+LfmkX+mF8i/9l3BVI9+9NdLc
-         di/cF9GkcqKanphYCbu4BzUv4UyCOJNax+EwKCxnhZg/40GT8eWCOILXiXbJ8o3RT+B1
-         xazjM2GE+gqnhFh/8WmdgkL4pqfrrlfT4KRxqPFVPlZAk66ct2qPTRnigiibUnUIiB/n
-         9BDstkXKg5ynQMGWBH3EHjXh1imCi3SJ9tk9fXkwRIn08owdJZjT89kj//Bqb8c+WUdH
-         dBMM8GtCUPh7bU5VnHTMbAm64ENiAEx3ZtJ24aQ8vRO6gqtIM2MeBSHYPRDCK+TiOBoo
-         PqWw==
+        b=W1ireXDuixgs4/o3F+UmORdpw1NDwUQPtxqM75tGYT6e3h/lM42yiIwwv59zrJk4pb
+         N8xKzQBtZpLamWoR7zKO6OTj54yc8U/8CQvYh3yoV5MVt8JzLHVpU8GvvIrigwZLkzVg
+         VnSixeHBiwnGvcq+In8uF/R1uCMyQ4Cdxmc3V18QnAunDEHyV3Qs/9fRioiqJTjpQdTZ
+         emOMMn/i2XV9mip9e4U2MS0yYDwJWFQLhTZ6BKysz06pIQI/WRYvooNI1YrJBenCYV7I
+         MBW1yCpYu/OE2i5y/ktQOGoIPzoy9SzvHZos7s11lzxoTiPYTLdPy8uqGpawFwgKw2/K
+         f9bA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:references
-         :message-id:in-reply-to:subject:cc:to:from:date;
-        bh=dMOl9WGfD+jnC+rFtZxWkt1o9423IuQCs6U+pqR6Rmk=;
-        fh=qJpuUQrf4VWTRGRxfzRJWgXPu5b0LxnJsVMsIYGSCTo=;
-        b=z+5ENhKv065tg9Eznk76PSLZBbuBeRboclKqjujeHJblR2LT/jh2mBScqWntBSICE3
-         4XmHMsFEVmQMDNBOng2+GdrQFQhpIuYiZZPbG1owyy1QGjkBCsZq68GrnFdzb8hoD4MY
-         2+rGinnGf4nsGfLRpqWf6OHGaRMHn5s/MtZ4Zoo1n1FyAfGu5gfqRmbrCJj+mqyDue8W
-         qWomlzFwfts7g5K4fNvLg1DIpOL387cBOo3f7smr5CUTltok2oS0qZDUqfzw+k3b++45
-         sDyHASAoOPWaFwCcLVzckcYZ0ylvI9JjQWNKAu7mGOgutTctcAdLZnY1Zn2UtBtrAcbo
-         6lOw==;
+         :list-unsubscribe:list-id:precedence:mime-version:user-agent
+         :content-transfer-encoding:references:in-reply-to:date:cc:to:from
+         :subject:message-id:dkim-signature;
+        bh=zxYdA6kLcVsZr6AK0FSC3cRNk37DunjX/5eQvUQxYmw=;
+        fh=25SH/+Ok57GKrAGnCLApiuvyMDCjD5FFHmaiTWwV1iE=;
+        b=CHKAVA+vC5kQC/+XUB9jEhtgtMNXaHBTWLVmMBRB4mmIaDLTXVOrpy5agi04/oaAXt
+         YZ7afHEBTyrhF01/oYGBEnaotnCfVYdVThgpAn1nEy5bY4rhV4HnFT9JsF9IPlr9hrR2
+         bg40fv9AtRjaHZv7AtKgd144ZErK4bDKPTGDRs2F1DQ56nfkFln1tpOAK1TjikpjWMhb
+         ZDNUWPAZPI2MxGI6uf/FvI3kZdx9LDAyzB41byHrVp8tBAyFvSYelCQk2ABIKM8Qh9mA
+         FKQxc9MP1mK0y3hVecJ/mgeJXgUweNXTJXgZXiohYhWTyjcK7Pz+qoEMGkm9KmkEFGoj
+         R8lw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@codeconstruct.com.au header.s=2022a header.b=MR7hC6ge;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=codeconstruct.com.au
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-45369fe6d28si1738991cf.64.2024.08.14.14.39.31
+        by mx.google.com with ESMTPS id 6a1803df08f44-6bf6fdc8a0asi4959566d6.30.2024.08.14.17.36.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 14 Aug 2024 14:39:31 -0700 (PDT)
+        Wed, 14 Aug 2024 17:36:12 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=pass header.i=@codeconstruct.com.au header.s=2022a header.b=MR7hC6ge;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=codeconstruct.com.au
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1seLhx-0002zv-Ku; Wed, 14 Aug 2024 17:39:05 -0400
+	id 1seOTB-0006bC-Kv; Wed, 14 Aug 2024 20:36:03 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1seLhw-0002yH-1N; Wed, 14 Aug 2024 17:39:04 -0400
-Received: from zero.eik.bme.hu ([2001:738:2001:2001::2001])
+ (Exim 4.90_1) (envelope-from <andrew@codeconstruct.com.au>)
+ id 1seOT9-0006Ze-7m; Wed, 14 Aug 2024 20:36:00 -0400
+Received: from pi.codeconstruct.com.au ([203.29.241.158]
+ helo=codeconstruct.com.au)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1seLhu-00061s-5w; Wed, 14 Aug 2024 17:39:03 -0400
-Received: from zero.eik.bme.hu (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id 58B8F4E601B;
- Wed, 14 Aug 2024 23:38:54 +0200 (CEST)
-X-Virus-Scanned: amavisd-new at eik.bme.hu
-Received: from zero.eik.bme.hu ([127.0.0.1])
- by zero.eik.bme.hu (zero.eik.bme.hu [127.0.0.1]) (amavisd-new, port 10028)
- with ESMTP id qopeG03LmtOG; Wed, 14 Aug 2024 23:38:52 +0200 (CEST)
-Received: by zero.eik.bme.hu (Postfix, from userid 432)
- id 4D95E4E600F; Wed, 14 Aug 2024 23:38:52 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id 466F874577C;
- Wed, 14 Aug 2024 23:38:52 +0200 (CEST)
-Date: Wed, 14 Aug 2024 23:38:52 +0200 (CEST)
-From: BALATON Zoltan <balaton@eik.bme.hu>
-To: Bernhard Beschow <shentey@gmail.com>
-cc: qemu-devel@nongnu.org, Jiaxun Yang <jiaxun.yang@flygoat.com>, 
- Niek Linnenbank <nieklinnenbank@gmail.com>, Bin Meng <bmeng.cn@gmail.com>, 
- Paul Burton <paulburton@kernel.org>, Stafford Horne <shorne@gmail.com>, 
- qemu-ppc@nongnu.org, Tyrone Ting <kfting@nuvoton.com>, 
- Joel Stanley <joel@jms.id.au>, Eduardo Habkost <eduardo@habkost.net>, 
- Sergio Lopez <slp@redhat.com>, 
- Andrew Jeffery <andrew@codeconstruct.com.au>, 
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
- Paolo Bonzini <pbonzini@redhat.com>, Hao Wu <wuhaotsh@google.com>, 
- Alistair Francis <Alistair.Francis@wdc.com>, 
- Jan Kiszka <jan.kiszka@web.de>, Beniamino Galvani <b.galvani@gmail.com>, 
- Peter Maydell <peter.maydell@linaro.org>, 
- "Michael S. Tsirkin" <mst@redhat.com>, 
- Aurelien Jarno <aurelien@aurel32.net>, Palmer Dabbelt <palmer@dabbelt.com>, 
- Alistair Francis <alistair.francis@wdc.com>, 
- Artyom Tarasenko <atar4qemu@gmail.com>, Jia Liu <proljc@gmail.com>, 
- Helge Deller <deller@gmx.de>, Max Filippov <jcmvbkbc@gmail.com>, 
- Subbaraya Sundeep <sundeep.lkml@gmail.com>, 
- Weiwei Li <liwei1518@gmail.com>, 
- =?ISO-8859-15?Q?Marc-Andr=E9_Lureau?= <marcandre.lureau@redhat.com>, 
- Nicholas Piggin <npiggin@gmail.com>, 
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, 
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>, 
- Steven Lee <steven_lee@aspeedtech.com>, 
- =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>, 
- Huacai Chen <chenhuacai@kernel.org>, 
- Richard Henderson <richard.henderson@linaro.org>, 
- Strahinja Jankovic <strahinja.p.jankovic@gmail.com>, qemu-arm@nongnu.org, 
- Aleksandar Rikalo <arikalo@gmail.com>, Troy Lee <leetroy@gmail.com>, 
- Jamin Lin <jamin_lin@aspeedtech.com>, 
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, 
- =?ISO-8859-15?Q?Fr=E9d=E9ric_Barrat?= <fbarrat@linux.ibm.com>, 
- =?ISO-8859-15?Q?C=E9dric_Le_Goater?= <clg@kaod.org>, 
- =?ISO-8859-15?Q?Herv=E9_Poussineau?= <hpoussin@reactos.org>, 
- qemu-riscv@nongnu.org, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, 
- Song Gao <gaosong@loongson.cn>
-Subject: Re: [PATCH 2/5] hw/char/serial: Remove unused funtion
-In-Reply-To: <20240814181534.218964-3-shentey@gmail.com>
-Message-ID: <22fa9014-2923-b501-e38d-f5dd1e53d15a@eik.bme.hu>
+ (Exim 4.90_1) (envelope-from <andrew@codeconstruct.com.au>)
+ id 1seOT4-0006Vt-QF; Wed, 14 Aug 2024 20:35:57 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=codeconstruct.com.au; s=2022a; t=1723682144;
+ bh=zxYdA6kLcVsZr6AK0FSC3cRNk37DunjX/5eQvUQxYmw=;
+ h=Subject:From:To:Cc:Date:In-Reply-To:References;
+ b=MR7hC6ge9K8X6PS4PH/2PqQsOVFB2lGd23Sd9YSf5JqeQQT4Yl3H9yxKkjAdZTe5d
+ mrReOsszo1619Kev6QUUin65iF+6jXbDcpp+RL+nyZLdF92JILbq0Y8X+QZtzwP4cc
+ Ov/70RYBB+Pm7T+XGnaZ7mACmnMTbAh54+hMEmqk/c+V94GwrDWtb7VwR7ik1fovpp
+ rSNEtxg3eUEDDDE4ER6DgIX+ML/jiF2RH+BrLxTqbeY2WXheZK72A3X6JcPuCasS7I
+ BJFo1vxjUUJFXWjKL41K6HTpCGO77CzcJwfnWtv+QQam3PGTH2geaLqg8XfoaCrbJF
+ j3C3PcljhlE5A==
+Received: from [192.168.68.112]
+ (ppp118-210-65-51.adl-adc-lon-bras32.tpg.internode.on.net [118.210.65.51])
+ by mail.codeconstruct.com.au (Postfix) with ESMTPSA id 190D464C85;
+ Thu, 15 Aug 2024 08:35:35 +0800 (AWST)
+Message-ID: <ba5ba799e27f2eb03e703b4741ad3b4e9e06eb11.camel@codeconstruct.com.au>
+Subject: Re: [PATCH 5/5] hw/char: Extract serial-mm
+From: Andrew Jeffery <andrew@codeconstruct.com.au>
+To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
+Cc: Jiaxun Yang <jiaxun.yang@flygoat.com>, Niek Linnenbank
+ <nieklinnenbank@gmail.com>, Bin Meng <bmeng.cn@gmail.com>, Paul Burton
+ <paulburton@kernel.org>, Stafford Horne <shorne@gmail.com>,
+ qemu-ppc@nongnu.org,  Tyrone Ting <kfting@nuvoton.com>, Joel Stanley
+ <joel@jms.id.au>, Eduardo Habkost <eduardo@habkost.net>,  Sergio Lopez
+ <slp@redhat.com>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, Paolo
+ Bonzini <pbonzini@redhat.com>, Hao Wu <wuhaotsh@google.com>, Alistair
+ Francis <Alistair.Francis@wdc.com>, BALATON Zoltan <balaton@eik.bme.hu>,
+ Jan Kiszka <jan.kiszka@web.de>, Beniamino Galvani <b.galvani@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>, "Michael S. Tsirkin"
+ <mst@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>, Palmer Dabbelt
+ <palmer@dabbelt.com>, Artyom Tarasenko <atar4qemu@gmail.com>, Jia Liu
+ <proljc@gmail.com>, Helge Deller <deller@gmx.de>,  Max Filippov
+ <jcmvbkbc@gmail.com>, Subbaraya Sundeep <sundeep.lkml@gmail.com>, Weiwei Li
+ <liwei1518@gmail.com>,  =?ISO-8859-1?Q?Marc-Andr=E9?= Lureau
+ <marcandre.lureau@redhat.com>, Nicholas Piggin <npiggin@gmail.com>, Mark
+ Cave-Ayland <mark.cave-ayland@ilande.co.uk>, Daniel Henrique Barboza
+ <dbarboza@ventanamicro.com>,  Steven Lee <steven_lee@aspeedtech.com>,
+ Philippe =?ISO-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,  Huacai Chen
+ <chenhuacai@kernel.org>, Richard Henderson <richard.henderson@linaro.org>,
+ Strahinja Jankovic <strahinja.p.jankovic@gmail.com>, qemu-arm@nongnu.org,
+ Aleksandar Rikalo <arikalo@gmail.com>, Troy Lee <leetroy@gmail.com>, Jamin
+ Lin <jamin_lin@aspeedtech.com>, Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, 
+ =?ISO-8859-1?Q?Fr=E9d=E9ric?= Barrat <fbarrat@linux.ibm.com>,
+ =?ISO-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>, 
+ =?ISO-8859-1?Q?Herv=E9?= Poussineau <hpoussin@reactos.org>,
+ qemu-riscv@nongnu.org, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, Song
+ Gao <gaosong@loongson.cn>
+Date: Thu, 15 Aug 2024 10:05:34 +0930
+In-Reply-To: <20240814181534.218964-6-shentey@gmail.com>
 References: <20240814181534.218964-1-shentey@gmail.com>
- <20240814181534.218964-3-shentey@gmail.com>
+ <20240814181534.218964-6-shentey@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.46.4-2 
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII; format=flowed
-Received-SPF: pass client-ip=2001:738:2001:2001::2001;
- envelope-from=balaton@eik.bme.hu; helo=zero.eik.bme.hu
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+Received-SPF: pass client-ip=203.29.241.158;
+ envelope-from=andrew@codeconstruct.com.au; helo=codeconstruct.com.au
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -129,53 +130,47 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: kVVdMykRcVMd
+X-TUID: lI9mngTSP58i
 
-On Wed, 14 Aug 2024, Bernhard Beschow wrote:
-> The serial port's frequency is set via the "baudbase" property nowadays.
-
-Please keep it as some devices might have registers that set this freq and 
-this function will be needed for emulating that even if it's not emulated 
-currently.
-
-Regards,
-BALATON Zoltan
-
+On Wed, 2024-08-14 at 20:15 +0200, Bernhard Beschow wrote:
+> hw/char/serial currently contains the implementation of both TYPE_SERIAL =
+and
+> TYPE_SERIAL_MM. According to serial_class_init(), TYPE_SERIAL is an inter=
+nal
+> class while TYPE_SERIAL_MM is used by numerous machine types directly. Le=
+t's
+> move the latter into its own module which makes the dependencies more obv=
+ious
+> and the code more tidy.
+>=20
+> The includes and the dependencies have been converted mechanically except=
+ in the
+> hw/char directories which were updated manually. The result was compile-t=
+ested.
+> Now, only hw/char makes direct use of TYPE_SERIAL:
+>=20
+>   # grep -r -e "select SERIAL" | grep -v SERIAL_
+>   hw/char/Kconfig:    select SERIAL
+>   hw/char/Kconfig:    select SERIAL
+>   hw/char/Kconfig:    select SERIAL
+>   hw/char/Kconfig:    select SERIAL
+>   hw/char/Kconfig:    select SERIAL
+>=20
+>   # grep -r -e "/serial\\.h"
+>   include/hw/char/serial-mm.h:#include "hw/char/serial.h"
+>   hw/char/serial-pci-multi.c:#include "hw/char/serial.h"
+>   hw/char/serial.c:#include "hw/char/serial.h"
+>   hw/char/serial-isa.c:#include "hw/char/serial.h"
+>   hw/char/serial-pci.c:#include "hw/char/serial.h"
+>=20
 > Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 > ---
-> include/hw/char/serial.h | 2 --
-> hw/char/serial.c         | 7 -------
-> 2 files changed, 9 deletions(-)
->
-> diff --git a/include/hw/char/serial.h b/include/hw/char/serial.h
-> index 6e14099ee7..40aad21df3 100644
-> --- a/include/hw/char/serial.h
-> +++ b/include/hw/char/serial.h
-> @@ -93,8 +93,6 @@ struct SerialMM {
-> extern const VMStateDescription vmstate_serial;
-> extern const MemoryRegionOps serial_io_ops;
->
-> -void serial_set_frequency(SerialState *s, uint32_t frequency);
-> -
-> #define TYPE_SERIAL "serial"
-> OBJECT_DECLARE_SIMPLE_TYPE(SerialState, SERIAL)
->
-> diff --git a/hw/char/serial.c b/hw/char/serial.c
-> index d8b2db5082..6c5c4a23c7 100644
-> --- a/hw/char/serial.c
-> +++ b/hw/char/serial.c
-> @@ -951,13 +951,6 @@ static void serial_unrealize(DeviceState *dev)
->     qemu_unregister_reset(serial_reset, s);
-> }
->
-> -/* Change the main reference oscillator frequency. */
-> -void serial_set_frequency(SerialState *s, uint32_t frequency)
-> -{
-> -    s->baudbase = frequency;
-> -    serial_update_parameters(s);
-> -}
-> -
-> const MemoryRegionOps serial_io_ops = {
->     .read = serial_ioport_read,
->     .write = serial_ioport_write,
->
+>  include/hw/arm/aspeed_soc.h         |   2 +-
+...
+
+>  hw/arm/aspeed_ast2400.c             |   2 +-
+>  hw/arm/aspeed_soc_common.c          |   2 +-
+
+For the Aspeed bits:
+
+Tested-by: Andrew Jeffery <andrew@codeconstruct.com.au>

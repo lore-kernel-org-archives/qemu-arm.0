@@ -1,165 +1,112 @@
-Received: by 2002:a17:504:9188:b0:1be9:327d:8ee3 with SMTP id i8csp889191njf;
-        Thu, 15 Aug 2024 08:06:43 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWdCmA0HU66KUYroSGuwBh97jTMbb5Poo/YuyoUyLiov7YxyDjl4jownp+pAeStCkLjDLvNLa6VGRI63enEmmAm70JnysUC
-X-Google-Smtp-Source: AGHT+IEyesrU5oLK+BViMVELCFIlcHa92VUhcp5dsOOT+bXehgDcZjqtAupnQQEoemjhlsoBUoOV
-X-Received: by 2002:a05:622a:418c:b0:451:b7b6:3573 with SMTP id d75a77b69052e-4535bbaccb7mr81400021cf.50.1723734403424;
-        Thu, 15 Aug 2024 08:06:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1723734403; cv=none;
+Received: by 2002:a17:504:9188:b0:1be9:327d:8ee3 with SMTP id i8csp932993njf;
+        Thu, 15 Aug 2024 10:11:01 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCU0YczsA3pAPQA2OzcnNWmaHJuHeZKkO2clBZqNVmx2dbLHm+vvyVkWheHfANZntOG+H+5jPGBloB4OYAnml0bq4+ssdB0C
+X-Received: by 2002:a17:907:72ca:b0:a80:f6f1:b7f1 with SMTP id a640c23a62f3a-a83929558d3mr16743666b.36.1723741861711;
+        Thu, 15 Aug 2024 10:11:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1723741861; cv=none;
         d=google.com; s=arc-20160816;
-        b=YBOyXr8mAVh5wjRXpUK37IasSimt+XUaU9Rxp7HzNQyeH/bdEQntCycdC/p0TXVhig
-         vPvfTboCC6viMKVu6MMIyyylL/3KCnZSXpy9kKg042+Ap2m74O0/Sr5uA+e7h13MLKfo
-         VCPLz4+0M9PnpsS2ZoemunEW0sYEuDvmg2kfK/Ok9uPmddpmZwIdAvNjk9tU43f1eCMG
-         3IYACqrX90/rpn3Ax7sWFJwRw9rTCpgRIrIbW9om8kxh4H9YShGIgOiK7GZo1zbOFt2M
-         xE8WAyp7F7CjiwS5g3RYrN8AlZxT0dzG2f1yxtkIlrSjYFfbB06ePx+s059/XG+LzTLC
-         ayzg==
+        b=DBptFyZwumCre4b8DPCa4RZHHGgxo17EByxMnky1icr3pmpSBIsp7wuaNmpMye7Dxr
+         wntj22R+9XQYOE0xYCPDAiA/kup0oNwuREgJW3GJaRx9lqftfRJYws3zT/YoQZfcJf6l
+         5IrzjYQ3I20Se10EqFLQGBf3Vzuvd3ATrSo0heZVkOmSDRsgVoOJn1HSOKX5eRkVE+tL
+         iuI+RQUSXDuwg4HTQvF6kUka/vtRyaks1aWBJ6/CmxHivWbC9iAqAqKuo3yEiaEY7fsb
+         8S+l37RbttVmm2QGIUfVMypbF9imz1LOFejZoqIFOcvimYBGnaTgllnMYRp56ClaFcoI
+         IESA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-transfer-encoding
-         :content-disposition:mime-version:references:reply-to:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=jqHpAnMw0F+Vhqu50n7PycRT6hCvYh6HVrX37OXsHUc=;
-        fh=MlE3tNe6Ef904LazAnUbK4NLRjGFWP6P1cjAv+Ol67Q=;
-        b=t1XgHg7H/thqaWgl5wtuxndRzHpSUaL1YBX4TM88UsJdK4jp/nWFU726plQeZYXqX2
-         40HTVoMCVlNhKTup4cHHwJ+w6PT8nObdCe9+36J9R8xN1zBW7jGxSEqRjsAICUr441h1
-         qx9c4I4H98rCJ5G5oF+OdY4O9V3dgSM7Jjfawc806WFlTcUrbIxzgedoK21n66WR59/R
-         8b4GOQdIy+n27staDFCB82v1LqxDB8VL/v+vkJkWGz1vqNpKJYDt3V9JW2yHh9AeEZkO
-         +2Vok20wThGajI0tsh685boxqBEbIL7Aaw6KIEr9HjnH+T6rEdhq+hc45ksC22bGsNDE
-         GDkw==;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=OHpC/wISg7fXHkMWSZi8PZo82atmWJMxlsoGxe09h4Y=;
+        fh=6Ggsx9f3WWeqRO27CGcoido9Felbc72SIR1qLRyo0eI=;
+        b=UdkFXCv6UVSfKu1fE1r0xfqIUp4LUZ9gKzxLA950Egjl74aL6Xa1tZb60fIafH7IwE
+         yaeuRnBh2165UNfnJ/zyUzOAiy+aDeTbP93dcXP64ZQP0sv/vIKwmyoblYrVv3ear5lG
+         +1vWXmEKI+83BoO9Dj5+sB/SOx4CzB/iu7tgcz9IGuM98AjmloudpMMJ25ephf7rVlhA
+         aFdNptSZnJrEsD+sQKSdx2fQCZvwDl5A7VC4Ufr8QNZhtAZoFpLrr7hjGTzURiWRugSo
+         Mkp+mp3zNKs0pkkKYUH3arzKwtEzOOU/X76WtPrGwkN7dylwmVprgmSqAwBm7+I2YYcL
+         zW8g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=boJyXsuL;
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <berrange@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id d75a77b69052e-4536a08fb19si18464931cf.453.2024.08.15.08.06.43
+       dkim=pass header.i=@linaro.org header.s=google header.b=eYytzFZS;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id a640c23a62f3a-a83838cf145sor51002466b.8.2024.08.15.10.11.01
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 15 Aug 2024 08:06:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        (Google Transport Security);
+        Thu, 15 Aug 2024 10:11:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=boJyXsuL;
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1723734402;
-	h=from:from:reply-to:reply-to:subject:subject:date:date:
-	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
-	 content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=jqHpAnMw0F+Vhqu50n7PycRT6hCvYh6HVrX37OXsHUc=;
-	b=boJyXsuLydaQLqKok/cGb6f1qrtbALobjOZFTPuloBtAp4cm/wfabU0CJMTLAmVFR+jHBD
-	UMlY3xuAl1naPJDvikbeFhTD1oR40wXe45+CTU6S1khKOZYZN9MbN7BTLTGQIAowrpuVAY
-	XhP0zaymPmzH1NieL+rOPew4L3wPnmg=
-Received: from mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-260-9Y3gDyCrMCe6y9L-jMAKbg-1; Thu,
- 15 Aug 2024 11:06:38 -0400
-X-MC-Unique: 9Y3gDyCrMCe6y9L-jMAKbg-1
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id E180C18EA8AF;
-	Thu, 15 Aug 2024 15:06:31 +0000 (UTC)
-Received: from redhat.com (unknown [10.42.28.137])
-	by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 97EE1300070A;
-	Thu, 15 Aug 2024 15:06:23 +0000 (UTC)
-Date: Thu, 15 Aug 2024 16:06:20 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Cc: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
-	qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
-	=?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
-	Thomas Huth <thuth@redhat.com>, John Snow <jsnow@redhat.com>,
-	Cleber Rosa <crosa@redhat.com>, Beraldo Leal <bleal@redhat.com>,
-	Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Wainer dos Santos Moschetta <wainersm@redhat.com>,
-	Zhao Liu <zhao1.liu@intel.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	ARM TCG CPUs <qemu-arm@nongnu.org>,
-	Stefan Hajnoczi <stefanha@redhat.com>,
-	Junjie Mao <junjie.mao@intel.com>,
-	Pierrick Bouvier <pierrick.bouvier@linaro.org>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Gustavo Romero <gustavo.romero@linaro.org>, rowan.hart@intel.com,
-	Mads Ynddal <mads@ynddal.dk>, Markus Armbruster <armbru@redhat.com>
-Subject: Re: [PATCH v7 6/7] rust: add crate to expose bindings and interfaces
-Message-ID: <Zr4ZbOHR9Sc10YSX@redhat.com>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-References: <20240815-rust-pl011-v7-0-975135e98831@linaro.org>
- <20240815-rust-pl011-v7-6-975135e98831@linaro.org>
- <9f6c96fd-bb0c-4014-bba1-70986f4bb384@linaro.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=eYytzFZS;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1723741861; x=1724346661; darn=linaro.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=OHpC/wISg7fXHkMWSZi8PZo82atmWJMxlsoGxe09h4Y=;
+        b=eYytzFZSkYglvtlmhr5nmCRZABO9RXOdz7SuuhJDrHoVhL1mzqVSlwIVUuAZp/2UxW
+         EJgsT8o0CrNAbqE18zXZ4YickEJjw0Igc4pegO+58esdt/Z0boZTNrLntDTd49a2r2eK
+         tNJFlN4ZXABk4QoJYoB6mtAXsftjmIgQM4m8d9MkBrKJfXmst2PLiHmyoTyFkziKvZ3W
+         s4gLVyci4J7h+RqzkkiJOaAZ1UBP2VzPpqmmaR2/fUfE15ZVTGYqp1ZT6broaiSU6C1z
+         iKdX7xtGv8op0lU6DSY3ugZEuWMbZMsW55SyWi/iiCKt5hl6XHsDykpBO2MYuv7ua/+f
+         EzIw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1723741861; x=1724346661;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=OHpC/wISg7fXHkMWSZi8PZo82atmWJMxlsoGxe09h4Y=;
+        b=fu9F34XgZB4slpUIkEMjAhn4C8dzXP+S9eSvZZ1iF2vlcBC6ipmQ2Wxsyu18yiKxrj
+         zHSMoJZOy4deN4lXXLzvGRiZ5VJFRy6XU/fx0KJS/0mNOt86FDG1uBPrK559afd/3JWF
+         k29wVhrFhvfXAhF1XXJ/M1xO85erL9kCek13rjQvz/CVQiXvIWpzRk8S3AlKOXCSFeJG
+         vv+f2HDMZl6fU+LUjNPJvcUe0c0xorUQ8wDDtV9bfodj2toU4Ksihf6OWwwQ6tErp5lF
+         AQUrTj45jCW3HACiPYEGwXZjm0tsf90tDPBJ+3krzgORqnZF3wdE6Ub9jsm7hbJVEYzE
+         95Qw==
+X-Forwarded-Encrypted: i=1; AJvYcCUNHQWj47amRkWgpVGk6SwytUkRrbTD9rTTgwRBjkKImnbs+d39l7vpqT9p494Biz04iiV9lxQ2Tk1V47I+NUTPIkZcvzuK
+X-Gm-Message-State: AOJu0YyDJiEtyBNMerccQa7YYdPvgtQyt/4ftHss47dzjfCHJ/F8Nqgz
+	PTdpyxIjBlkJU/SLhRjsLggb3LQk7KTkvOpDCiHtV8EkOofDFeSRz4JyVHO1hYE2PgbBcLYBOhM
+	a8JAqiR/ZzrcLEBPzexcHSI+i2stDmnh3csf+sY7M
+X-Google-Smtp-Source: AGHT+IE41STyMRSD0RB62mfL0YGV9Zc8KuY9gIiuBsK0/W1rnyGZQ3t2Rqd/73X4D1+0fmjyioax0pQsGs6+Ps8xpOQ=
+X-Received: by 2002:a05:6402:51c9:b0:5a2:ec88:de7a with SMTP id
+ 4fb4d7f45d1cf-5beca7a93f8mr60524a12.33.1723741861012; Thu, 15 Aug 2024
+ 10:11:01 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <9f6c96fd-bb0c-4014-bba1-70986f4bb384@linaro.org>
-User-Agent: Mutt/2.2.12 (2023-09-09)
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-TUID: goA4h/cy/EkP
+References: <20240815-rust-pl011-v7-0-975135e98831@linaro.org>
+In-Reply-To: <20240815-rust-pl011-v7-0-975135e98831@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 15 Aug 2024 18:10:49 +0100
+Message-ID: <CAFEAcA9qfNRuuDJbwwGZVzkBeW04Q6Wk5w5ySraQBkxvV9=Fbw@mail.gmail.com>
+Subject: Re: [PATCH v7 0/7] Add Rust build support, ARM PL011 device impl
+To: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>, 
+	=?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
+	=?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
+	Thomas Huth <thuth@redhat.com>, =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+	John Snow <jsnow@redhat.com>, Cleber Rosa <crosa@redhat.com>, Beraldo Leal <bleal@redhat.com>, 
+	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	Wainer dos Santos Moschetta <wainersm@redhat.com>, Zhao Liu <zhao1.liu@intel.com>, 
+	ARM TCG CPUs <qemu-arm@nongnu.org>, Stefan Hajnoczi <stefanha@redhat.com>, 
+	Junjie Mao <junjie.mao@intel.com>, Pierrick Bouvier <pierrick.bouvier@linaro.org>, 
+	Richard Henderson <richard.henderson@linaro.org>, Gustavo Romero <gustavo.romero@linaro.org>, 
+	rowan.hart@intel.com, Mads Ynddal <mads@ynddal.dk>, 
+	Markus Armbruster <armbru@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+X-TUID: iy0S4oe8lhs2
 
-On Thu, Aug 15, 2024 at 04:01:17PM +0200, Philippe Mathieu-Daudé wrote:
-> Hi Manos,
-> 
-> On 15/8/24 13:42, Manos Pitsidianakis wrote:
-> > Add rust/qemu-api, which exposes rust-bindgen generated FFI bindings and
-> > provides some declaration macros for symbols visible to the rest of
-> > QEMU.
-> > 
-> > Co-authored-by: Junjie Mao <junjie.mao@intel.com>
-> > Co-authored-by: Paolo Bonzini <pbonzini@redhat.com>
-> > Signed-off-by: Junjie Mao <junjie.mao@intel.com>
-> > Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
-> > Signed-off-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-> > ---
-> >   MAINTAINERS                       |   6 ++
-> >   rust/meson.build                  |   9 +++
-> >   rust/qemu-api/.gitignore          |   2 +
-> >   rust/qemu-api/Cargo.lock          |   7 +++
-> >   rust/qemu-api/Cargo.toml          |  23 +++++++
-> >   rust/qemu-api/README.md           |  17 +++++
-> >   rust/qemu-api/build.rs            |  13 ++++
-> >   rust/qemu-api/meson.build         |  17 +++++
-> >   rust/qemu-api/rustfmt.toml        |   1 +
-> >   rust/qemu-api/src/bindings.rs     |   7 +++
-> >   rust/qemu-api/src/definitions.rs  | 108 ++++++++++++++++++++++++++++++++
-> >   rust/qemu-api/src/device_class.rs | 128 ++++++++++++++++++++++++++++++++++++++
-> >   rust/qemu-api/src/lib.rs          | 100 +++++++++++++++++++++++++++++
-> >   rust/qemu-api/src/tests.rs        |  48 ++++++++++++++
-> >   rust/rustfmt.toml                 |   7 +++
-> >   15 files changed, 493 insertions(+)
+On Thu, 15 Aug 2024 at 12:42, Manos Pitsidianakis
+<manos.pitsidianakis@linaro.org> wrote:
+> Outstanding issues that are not blocking for merge are:
+>
+> - Cross-compilation for aarch64 is not possible out-of-the-box because of this bug:
+>   <https://github.com/rust-lang/rust/issues/125619> in llvm which when
+>   fixed, must be ported to upstream rust's llvm fork. Since the problem
+>   is an extraneous symbol we could strip it with objcopy -N|--strip-symbol
 
-> > diff --git a/rust/qemu-api/Cargo.toml b/rust/qemu-api/Cargo.toml
-> > new file mode 100644
-> > index 0000000000..51260cbe42
-> > --- /dev/null
-> > +++ b/rust/qemu-api/Cargo.toml
-> > @@ -0,0 +1,23 @@
-> > +[package]
-> > +name = "qemu_api"
-> > +version = "0.1.0"
-> > +edition = "2021"
-> 
-> > +license = "GPL-2.0 OR GPL-3.0-or-later"
-> 
-> in particular explaining the license choice.
+I asked around internally and found somebody willing to do
+code review on the proposed LLVM compiler-rt pullreq that fixes
+the root of this bug, so hopefully we can get that fixed (though
+presumably we might want the workaround anyway given it'll take a
+while to percolate through to a rust release).
 
-Semantically this is an overly verbose way of saying
-"GPL-2.0-or-later", so just simplify this.
-
-> Should all rust code use it?
-
-GPL-2.0-or-later is what we expect all new QEMU contributions to be
-licensed as, regardless of language[1], so this looks desirable.
-
-With regards,
-Daniel
-
-[1] unless they're derived from one of the few pieces of code under
-    different terms
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+-- PMM

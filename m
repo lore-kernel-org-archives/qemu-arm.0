@@ -1,202 +1,200 @@
-Received: by 2002:a17:504:9188:b0:1be9:327d:8ee3 with SMTP id i8csp1272372njf;
-        Fri, 16 Aug 2024 09:15:23 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXHgDD2WqWbrob20yM5KZeFe8tF0E9XFWTLxsjhTLyUz9qne+QVvbObizWNw4L/WLUgeT3tqC6U7xLkW3ahVF5cY2M2tWv2
-X-Google-Smtp-Source: AGHT+IHXU5fHwSPm508muEPKXhayx/HGICY7mSDx5bP0FWLcGqx+sMTjlX9dRY767MQzc/xGANuC
-X-Received: by 2002:a05:622a:618a:b0:44f:f814:38b7 with SMTP id d75a77b69052e-453744042f1mr32441841cf.58.1723824923473;
-        Fri, 16 Aug 2024 09:15:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1723824923; cv=none;
+Received: by 2002:a17:504:9188:b0:1be9:327d:8ee3 with SMTP id i8csp1284926njf;
+        Fri, 16 Aug 2024 09:53:37 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUCC6LzBEAJzJUZfDVpqSzqIZhgMjdN05KykWvqxLbspphav0iMcKKui56Ky2f5Zi7bs6fLg/WaykQzX8OT0eDmkwH73qfk
+X-Google-Smtp-Source: AGHT+IGVqK/WRtXzVSZ6Zl2AZY5NWf0WcTrZlF37LW7nKuzsU+4qSW77asTM0Z0dFySGD0AY9v9j
+X-Received: by 2002:a05:6870:418c:b0:260:26a2:68e8 with SMTP id 586e51a60fabf-2701db20e7dmr1223988fac.4.1723827217762;
+        Fri, 16 Aug 2024 09:53:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1723827217; cv=none;
         d=google.com; s=arc-20160816;
-        b=wj84/vAwHXs2ryWEJ3x1NV3RsWRviXJnwn5sWNhc98KC9ydCGJFNkR9bjgg3mR2Nw/
-         5Wu0T96Ivf36gFT4GEGnuwZZQ/Ufqi/XtcjK9wk0os/58KDO6Um0uQM8iCy/aYaouP26
-         tj6SwZIJ/5Cy2Socqw1TMyuXrMNwtk/sfYc1EWiueU3TYOKZFaNXvYxcXwqv3npjdcIu
-         dYMU1HgVzvnFniwarMl1roWYQSwd6wgdPrEuoLP+DkTaPgwbKcCOZtGBmDUEbQRwyzzm
-         0dt4kYaN9W+6hZPHXIrOap6psoVEpLjwtsLhT4vP7TcTV5oQaR40j0scn0D31O2A8h7b
-         8X4A==
+        b=Sf4VAWFd+Y2H7lO/+0G1/WxYRdwnZ/N9roLIbBLsm3fE5naL8labiB9a8Ka7xnKxjD
+         CCC523GnlMPQ6IPP/e4mizIyONJAh8S+NIKZdejR5c6G12NEaNZNP1qPpaorM5uZmm0V
+         Hp9RlyxD4642cIvDtH2TE7KvXkbMUFk5I03y2lRhfeH2PZ46srfv0zECn2PKKjV0vUAN
+         f025YlDLCLYy2KYmShLSHerDq3RedvehNWte7RALg8B2CqxeFaxv7BpW698E+OP+/rPF
+         QUtUDsFLed9ZZIejY0c8ApKlOS01D1j9Rk4q0LnrY7dv150k4Hywvq6JDpjiWVo/GqKg
+         MUbg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=RhHY2mwb1dwmyJC3ZOyMGrBB8Z2DIi78BFy4b8vQ1Pg=;
-        fh=8716YcvxZZxTMNcQZ0eLGoLGp1r7TadekkZAFKW2f4M=;
-        b=pr366Oqyj/6T0pyOIrhR0WH4EwMvkidYIrmHdBcERH3uR8xL+53ThwlTnpIFnQwUbL
-         KXYg7PQ+LPW0lo17pKjEx/ZKcHiMU+fDQtALn5WJnhWQf5NpjmQlOT+jCXlgcrqZ4mWm
-         3VLpKf+JG8zKJoxceLi74LgOBqCgj9FIi8Qyz4jV3BXLZWZ4dPvBJNqFfjXtIlfbfflK
-         ICB1/cMZIu1bljsUfpRzhweiEygbdDh7Ok19M/4ZZDAq8EAWpH1k7l9JJUPTfZAOj52s
-         4U6RFtVf+2dAn2BPihnzXuL8+YYsbb8dLs52SoC+eN/CG2eQc6kxDf3urEBA+M7YuKTv
-         PS0w==;
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date:dkim-signature;
+        bh=zdp7YPAtbLhZgDK0Dc4uwOUPnUM2kURmGY6TwMzkQOk=;
+        fh=X2hxAmW+prxDFqlKxtwqx/eBa1AAwc3Aj4NLmPGNjx4=;
+        b=YqAxy/3jrwKjkllrDs6OIWvcxIOtQ+mOleOld4HXKr/c0/pgejZTlyCahy+Ku+mHIB
+         q86nCta2x+PWqUwTbL7sb89P8GOYq5H3hPpLdKbUOExJU3VY5EIIRk4AVeWSesoexK/O
+         y8YgOigq6yXZPAOilnze/kz03nt5pz2zURkmWl0fXlEothEXVKCBPSiyp/2rxhzWgD6i
+         YEphxCX2KT4MLEqmB65UYieeZ2pP6wG4J2iViqLvau5BmoyK/B/wQ9qopaTyUwArIUSe
+         iNjEEmkRFd4gqPutpMEyriXY2YqM6yMv8Rt6IzldX7ctknFmfJ/cwxKsJe/B90oJAO2N
+         oJ8A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="eXWdA4c/";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4536a0b7b1asi43269401cf.559.2024.08.16.09.15.23
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 16 Aug 2024 09:15:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b="k/LHvJhp";
+       spf=pass (google.com: domain of sstabellini@kernel.org designates 139.178.84.217 as permitted sender) smtp.mailfrom=sstabellini@kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+Return-Path: <sstabellini@kernel.org>
+Received: from dfw.source.kernel.org (dfw.source.kernel.org. [139.178.84.217])
+        by mx.google.com with ESMTPS id 586e51a60fabf-2702d8f30aesi344530fac.28.2024.08.16.09.53.37
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 16 Aug 2024 09:53:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sstabellini@kernel.org designates 139.178.84.217 as permitted sender) client-ip=139.178.84.217;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="eXWdA4c/";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sezaS-0008Oh-EX; Fri, 16 Aug 2024 12:14:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1sezaQ-0008Dy-0l
- for qemu-arm@nongnu.org; Fri, 16 Aug 2024 12:13:58 -0400
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1sezaN-0007dr-4c
- for qemu-arm@nongnu.org; Fri, 16 Aug 2024 12:13:57 -0400
-Received: by mail-wm1-x330.google.com with SMTP id
- 5b1f17b1804b1-4281ca54fd3so15683005e9.2
- for <qemu-arm@nongnu.org>; Fri, 16 Aug 2024 09:13:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1723824833; x=1724429633; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=RhHY2mwb1dwmyJC3ZOyMGrBB8Z2DIi78BFy4b8vQ1Pg=;
- b=eXWdA4c/ewN9lCK7I0lr1HAAcsNc9+bNK+hu4TBPHHktOPuIgX9sFsMxKZVYgPqZEa
- GlgX76b1pyXeqElpq3sgnTP13TvHPxuHLE7OrLHCfvQ4yEzH+GUqEZQjqgzn2w2v5+gz
- J8xt0xSTYojn2HD9F4zwr1gcDgGIy1tdqArrAw10TTbcSeMdV1c5nuISwb9APT3rImBC
- ohZ3PuXjEUIKAxQCtEPnjBZzAycB5opO3WIPFeZOBL/xriq+S9ewDvlnzdh/Bwq907v7
- Qq1W+8OXRG5kmTkFrfOOQL8FAcRbB01aXU1OHwpAmAVH8hlcMAdZFzBHopK4BF1fFCPR
- BnSQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1723824833; x=1724429633;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=RhHY2mwb1dwmyJC3ZOyMGrBB8Z2DIi78BFy4b8vQ1Pg=;
- b=khZ2HDcnaxmBQTEFSG5uexbSImQn889VvQe/ZxXQC2mj/ihiWqhzqJuQiFIbpFnVgQ
- JeIEY57J/3tlXc7aNzUbb2hcb2WlWWvaQeVawa2yaIzShcuTHq6+buijtxzYVjrm5zZ1
- IhA6VCPok9SZyh4ljRTd3cIA7AxTY+W3RD+I9Rxxz4Nn4y0PPLCG8L+O4VNncUIiMN89
- iAroTt6eD70mjdmguEDw6iqg0xRXbEq3OggJ/PMFoidchLESfqdx6eh+0qFymEn7yzNX
- EHBdNKXjs0d/rBUw52KGirKCVOKnbzxiu2w+ZI9cKcD9w5FpqBdzeXtbgqM6pfEmM5Zq
- 9ofw==
-X-Gm-Message-State: AOJu0YxtVvsXOT8N1p9RwG0POvHKWGqlh1WlUd+nSe2Jpqk+Nj2OUJBU
- w3jinjZWwqhCh38dbyy7E39tfKk/6JoWu/D932TiTKy8S3IAIwRzZsZc/pJaonHQJtXG5KhHhdy
- Y
-X-Received: by 2002:adf:fc44:0:b0:371:7e73:de6e with SMTP id
- ffacd0b85a97d-371946897d8mr2727433f8f.52.1723824833475; 
- Fri, 16 Aug 2024 09:13:53 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-371898bb588sm3912269f8f.115.2024.08.16.09.13.53
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 16 Aug 2024 09:13:53 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: Leif Lindholm <quic_llindhol@quicinc.com>,
- Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
- Eric Auger <eric.auger@redhat.com>, Radoslaw Biernacki <rad@semihalf.com>
-Subject: [PATCH 3/4] hw/arm/virt: Default to two-stage SMMU from virt-9.2
-Date: Fri, 16 Aug 2024 17:13:49 +0100
-Message-Id: <20240816161350.3706332-4-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20240816161350.3706332-1-peter.maydell@linaro.org>
-References: <20240816161350.3706332-1-peter.maydell@linaro.org>
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b="k/LHvJhp";
+       spf=pass (google.com: domain of sstabellini@kernel.org designates 139.178.84.217 as permitted sender) smtp.mailfrom=sstabellini@kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 6258462117;
+	Fri, 16 Aug 2024 16:53:37 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6DDCFC32782;
+	Fri, 16 Aug 2024 16:53:35 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1723827217;
+	bh=05FqKFiDp1obCU8IVAX68BZqgenFk4qV0Beo1Yu69iI=;
+	h=Date:From:To:cc:Subject:In-Reply-To:References:From;
+	b=k/LHvJhpaspNwG/e3/BBfVQljbSO8JQivzWeF4Uxz45RMPAEC9E3KvFr+YNcCfmZ5
+	 WryYmXyz3cN3Lp4NW/tJjAK2W45HAYHTN5ayPNkXp56F9Lgs/1CJFoxOlgupGgU8q2
+	 7tL+jGtoY8p/CHy36L5B7d3FgExilUr587zCy8j2sXeAtD+3rvRXve4M+M81TiZCbp
+	 lr7ZNXO6JzvYELT2B4q5HHnKocwAxiER/oo8IT/VwD+Phl5/XdnUAXI0AeuDgMxO/2
+	 1gzKn2T8HN/HMU4MB/rRNbcba14q1TCcxZJ801HM6NLlYy+3N7KRMCOnS/2pMdXJrs
+	 9citVOSJqzZuA==
+Date: Fri, 16 Aug 2024 09:53:34 -0700 (PDT)
+From: Stefano Stabellini <sstabellini@kernel.org>
+X-X-Sender: sstabellini@ubuntu-linux-20-04-desktop
+To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+cc: Stefano Stabellini <sstabellini@kernel.org>, qemu-devel@nongnu.org, 
+    anthony@xenproject.org, paul@xen.org, peter.maydell@linaro.org, 
+    alex.bennee@linaro.org, xenia.ragiadakou@amd.com, jason.andryuk@amd.com, 
+    edgar.iglesias@amd.com, xen-devel@lists.xenproject.org, 
+    qemu-arm@nongnu.org, andrew.cooper3@citrix.com
+Subject: Re: [PATCH v1 04/10] hw/arm: xenpvh: Add support for SMP guests
+In-Reply-To: <CAJy5ezrUbGZCaF=HiYhyLCoXRL3d=t-QbmLeKvu7ByWksV888g@mail.gmail.com>
+Message-ID: <alpine.DEB.2.22.394.2408160949320.298534@ubuntu-linux-20-04-desktop>
+References: <20240812130606.90410-1-edgar.iglesias@gmail.com> <20240812130606.90410-5-edgar.iglesias@gmail.com> <alpine.DEB.2.22.394.2408121650590.298534@ubuntu-linux-20-04-desktop> <ZruRm34zIMtUm7oH@zapote> <alpine.DEB.2.22.394.2408131550080.298534@ubuntu-linux-20-04-desktop>
+ <ZryZwOoadeb1UWK8@zapote> <alpine.DEB.2.22.394.2408141719400.298534@ubuntu-linux-20-04-desktop> <CAJy5ezrUbGZCaF=HiYhyLCoXRL3d=t-QbmLeKvu7ByWksV888g@mail.gmail.com>
+User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::330;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x330.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: m+Ep1vXxlADv
+Content-Type: multipart/mixed; boundary="8323329-1147340740-1723827217=:298534"
+X-TUID: h4E2hmtzBn2o
 
-Now that our SMMU model supports enabling both stages of translation
-at once, we can enable this in the virt board.  This is no change in
-behaviour for guests, because if they simply ignore stage 2 and never
-configure it then it has no effect.  For the usual backwards
-compatibility reasons we enable this only for machine types starting
-with 9.2.
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-(Note that the SMMU is disabled by default on the virt board and is
-only created if the user passes the 'iommu=smmuv3' machine option.)
+--8323329-1147340740-1723827217=:298534
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8BIT
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- include/hw/arm/virt.h | 1 +
- hw/arm/virt.c         | 8 ++++++++
- 2 files changed, 9 insertions(+)
+On Fri, 16 Aug 2024, Edgar E. Iglesias wrote:
+> On Thu, Aug 15, 2024 at 2:30 AM Stefano Stabellini <sstabellini@kernel.org> wrote:
+>       On Wed, 14 Aug 2024, Edgar E. Iglesias wrote:
+>       > On Tue, Aug 13, 2024 at 03:52:32PM -0700, Stefano Stabellini wrote:
+>       > > On Tue, 13 Aug 2024, Edgar E. Iglesias wrote:
+>       > > > On Mon, Aug 12, 2024 at 06:47:17PM -0700, Stefano Stabellini wrote:
+>       > > > > On Mon, 12 Aug 2024, Edgar E. Iglesias wrote:
+>       > > > > > From: "Edgar E. Iglesias" <edgar.iglesias@amd.com>
+>       > > > > >
+>       > > > > > Add SMP support for Xen PVH ARM guests. Create max_cpus ioreq
+>       > > > > > servers to handle hotplug.
+>       > > > > >
+>       > > > > > Signed-off-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
+>       > > > > > ---
+>       > > > > >  hw/arm/xen_arm.c | 5 +++--
+>       > > > > >  1 file changed, 3 insertions(+), 2 deletions(-)
+>       > > > > >
+>       > > > > > diff --git a/hw/arm/xen_arm.c b/hw/arm/xen_arm.c
+>       > > > > > index 5f75cc3779..ef8315969c 100644
+>       > > > > > --- a/hw/arm/xen_arm.c
+>       > > > > > +++ b/hw/arm/xen_arm.c
+>       > > > > > @@ -173,7 +173,7 @@ static void xen_arm_init(MachineState *machine)
+>       > > > > > 
+>       > > > > >      xen_init_ram(machine);
+>       > > > > > 
+>       > > > > > -    xen_register_ioreq(xam->state, machine->smp.cpus, &xen_memory_listener);
+>       > > > > > +    xen_register_ioreq(xam->state, machine->smp.max_cpus, &xen_memory_listener);
+>       > > > > > 
+>       > > > > >      xen_create_virtio_mmio_devices(xam);
+>       > > > > > 
+>       > > > > > @@ -218,7 +218,8 @@ static void xen_arm_machine_class_init(ObjectClass *oc, void *data)
+>       > > > > >      MachineClass *mc = MACHINE_CLASS(oc);
+>       > > > > >      mc->desc = "Xen PVH ARM machine";
+>       > > > > >      mc->init = xen_arm_init;
+>       > > > > > -    mc->max_cpus = 1;
+>       > > > > > +    /* MAX number of vcpus supported by Xen.  */
+>       > > > > > +    mc->max_cpus = GUEST_MAX_VCPUS;
+>       > > > >
+>       > > > > Will this cause allocations of data structures with 128 elements?
+>       > > > > Looking at hw/xen/xen-hvm-common.c:xen_do_ioreq_register it seems
+>       > > > > possible? Or hw/xen/xen-hvm-common.c:xen_do_ioreq_register is called
+>       > > >
+>       > > > Yes, in theory there's probably overhead with this but as you correctly
+>       > > > noted below, a PVH aware xl will set the max_cpus option to a lower value.
+>       > > >
+>       > > > With a non-pvh aware xl, I was a little worried about the overhead
+>       > > > but I couldn't see any visible slow-down on ARM neither in boot or in network
+>       > > > performance (I didn't run very sophisticated benchmarks).
+>       > > 
+>       > > What do you mean by "non-pvh aware xl"? All useful versions of xl
+>       > > support pvh?
+>       >
+>       >
+>       > I mean an xl without our PVH patches merged.
+>       > xl in upstream doesn't know much about PVH yet.
+>       > Even for ARM, we're still carrying significant patches in our tree.
+> 
+>       Oh I see. In that case, I don't think we need to support "non-pvh aware xl".
+> 
+> 
+>       > > > > later on with the precise vCPU value which should be provided to QEMU
+>       > > > > via the -smp command line option
+>       > > > > (tools/libs/light/libxl_dm.c:libxl__build_device_model_args_new)?
+>       > > >
+>       > > > Yes, a pvh aware xl will for example pass -smp 2,maxcpus=4 based on
+>       > > > values from the xl.cfg. If the user doesn't set maxvcpus in xl.cfg, xl
+>       > > > will set maxvcpus to the same value as vcpus.
+>       > >
+>       > > OK good. In that case if this is just an initial value meant to be
+>       > > overwritten, I think it is best to keep it as 1.
+>       >
+>       > Sorry but that won't work. I think the confusion here may be that
+>       > it's easy to mix up mc->max_cpus and machine->smp.max_cpus, these are
+>       > not the same. They have different purposes.
+>       >
+>       > I'll try to clarify the 3 values in play.
+>       >
+>       > machine-smp.cpus:
+>       > Number of guest vcpus active at boot.
+>       > Passed to QEMU via the -smp command-line option.
+>       > We don't use this value in QEMU's ARM PVH machines.
+>       >
+>       > machine->smp.max_cpus:
+>       > Max number of vcpus that the guest can use (equal or larger than machine-smp.cpus).
+>       > Will be set by xl via the "-smp X,maxcpus=Y" command-line option to QEMU.
+>       > Taken from maxvcpus from xl.cfg, same as XEN_DMOP_nr_vcpus.
+>       > This is what we use for xen_register_ioreq().
+>       >
+>       > mc->max_cpus:
+>       > Absolute MAX in QEMU used to cap the -smp command-line options.
+>       > If xl tries to set -smp (machine->smp.max_cpus) larger than this, QEMU will bail out.
+>       > Used to setup xen_register_ioreq() ONLY if -smp maxcpus was NOT set (i.e by a non PVH aware xl).
+>       > Cannot be 1 because that would limit QEMU to MAX 1 vcpu.
+>       >
+>       > I guess we could set mc->max_cpus to what XEN_DMOP_nr_vcpus returns but I'll
+>       > have to check if we can even issue that hypercall this early in QEMU since
+>       > mc->max_cpus is setup before we even parse the machine options. We may
+>       > not yet know what domid we're attaching to yet.
+> 
+>       If mc->max_cpus is the absolute max and it will not be used if -smp is
+>       passed to QEMU, then I think it is OK to use GUEST_MAX_VCPUS
+> 
+> Looking at this a little more. If users (xl) don't pass an -smp option we actually default to smp.max_cpus=1.
+> So, another option is to simply remove the upper limit in QEMU (e.g we can set mc->max_cpus to something very large like UINT32_MAX).
+> That would avoid early hypercalls, avoid using GUEST_MAX_VCPUS and always let xl dictate the max_cpus value using the -smp cmdline option. 
 
-diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-index a4d937ed45a..aca4f8061b1 100644
---- a/include/hw/arm/virt.h
-+++ b/include/hw/arm/virt.h
-@@ -134,6 +134,7 @@ struct VirtMachineClass {
-     bool no_cpu_topology;
-     bool no_tcg_lpa2;
-     bool no_ns_el2_virt_timer_irq;
-+    bool no_nested_smmu;
- };
- 
- struct VirtMachineState {
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index a5d3ad9bf9e..7934b236516 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -1408,6 +1408,7 @@ static void create_pcie_irq_map(const MachineState *ms,
- static void create_smmu(const VirtMachineState *vms,
-                         PCIBus *bus)
- {
-+    VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
-     char *node;
-     const char compat[] = "arm,smmu-v3";
-     int irq =  vms->irqmap[VIRT_SMMU];
-@@ -1424,6 +1425,9 @@ static void create_smmu(const VirtMachineState *vms,
- 
-     dev = qdev_new(TYPE_ARM_SMMUV3);
- 
-+    if (!vmc->no_nested_smmu) {
-+        object_property_set_str(OBJECT(dev), "stage", "nested", &error_fatal);
-+    }
-     object_property_set_link(OBJECT(dev), "primary-bus", OBJECT(bus),
-                              &error_abort);
-     sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
-@@ -3308,8 +3312,12 @@ DEFINE_VIRT_MACHINE_AS_LATEST(9, 2)
- 
- static void virt_machine_9_1_options(MachineClass *mc)
- {
-+    VirtMachineClass *vmc = VIRT_MACHINE_CLASS(OBJECT_CLASS(mc));
-+
-     virt_machine_9_2_options(mc);
-     compat_props_add(mc->compat_props, hw_compat_9_1, hw_compat_9_1_len);
-+    /* 9.1 and earlier have only a stage-1 SMMU, not a nested s1+2 one */
-+    vmc->no_nested_smmu = true;
- }
- DEFINE_VIRT_MACHINE(9, 1)
- 
--- 
-2.34.1
+As the expectation is that there will be always a smp.max_cpus option
+passed to QEMU, I would avoid an extra early hypercall.
 
+For the initial value, I would use something static and large, but not
+unreasonably large as UINT32_MAX to be more resilient in (erroneous)
+cases where smp.max_cpus is not passed.
+
+So I would initialize it to GUEST_MAX_VCPUS, or if we don't want to use
+GUEST_MAX_VCPUS, something equivalent in the 64-256 range.
+
+Alternative we can have a runtime check and exit with a warning if
+smp.max_cpus is not set.
+--8323329-1147340740-1723827217=:298534--

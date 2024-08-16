@@ -1,108 +1,142 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3718983a0eesm3645536f8f.1.2024.08.16.05.58.49
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5bebc0817a8sm2381867a12.84.2024.08.16.08.37.23
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 16 Aug 2024 05:58:49 -0700 (PDT)
+        Fri, 16 Aug 2024 08:37:23 -0700 (PDT)
 Received: from draig (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id CBF135F867;
-	Fri, 16 Aug 2024 13:58:48 +0100 (BST)
+	by draig.lan (Postfix) with ESMTP id B0C555F92F;
+	Fri, 16 Aug 2024 16:37:22 +0100 (BST)
 From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Jason Wang <jasowang@redhat.com>
-Cc: "Michael S. Tsirkin" <mst@redhat.com>,  Nicholas Piggin
- <npiggin@gmail.com>,  qemu-devel@nongnu.org,  Alistair Francis
- <alistair.francis@wdc.com>,  Michael Roth <michael.roth@amd.com>,  Palmer
- Dabbelt <palmer@dabbelt.com>,  Mahmoud Mandour <ma.mandourr@gmail.com>,
-  Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,  Yoshinori Sato
- <ysato@users.sourceforge.jp>,  Weiwei Li <liwei1518@gmail.com>,  Eduardo
- Habkost <eduardo@habkost.net>,  =?utf-8?Q?Marc-Andr=C3=A9?= Lureau
- <marcandre.lureau@redhat.com>,  Markus Armbruster <armbru@redhat.com>,
-  David Hildenbrand <david@redhat.com>,  Beraldo Leal <bleal@redhat.com>,
-  Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,  Eric Auger
- <eric.auger@redhat.com>,  Song Gao <gaosong@loongson.cn>,
-  qemu-arm@nongnu.org,  Peter Xu <peterx@redhat.com>,  Jiri Pirko
- <jiri@resnulli.us>,  Eric Blake <eblake@redhat.com>,  Fabiano Rosas
- <farosas@suse.de>,  qemu-s390x@nongnu.org,  Peter Maydell
- <peter.maydell@linaro.org>,  Daniel Henrique Barboza
- <dbarboza@ventanamicro.com>,  John Snow <jsnow@redhat.com>,  Alexandre
- Iooss <erdnaxe@crans.org>,  Konstantin Kostiuk <kkostiuk@redhat.com>,
-  Pierrick Bouvier <pierrick.bouvier@linaro.org>,  Cleber Rosa
- <crosa@redhat.com>,  Ilya Leoshkevich <iii@linux.ibm.com>,
-  qemu-riscv@nongnu.org,  Thomas Huth <thuth@redhat.com>,  Paolo Bonzini
- <pbonzini@redhat.com>,  Richard Henderson <richard.henderson@linaro.org>,
-  Bin Meng <bmeng.cn@gmail.com>,  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
- <philmd@linaro.org>,  Wainer dos Santos Moschetta <wainersm@redhat.com>,
-  Pavel Dovgalyuk <Pavel.Dovgalyuk@ispras.ru>
-Subject: Re: [PATCH v2 16/21] virtio-net: Use replay_schedule_bh_event for
- bhs that affect machine state
-In-Reply-To: <CACGkMEtS6kges+_hOum2QnpTWotT_ohkJv8PaFHsycjR10QY5w@mail.gmail.com>
-	(Jason Wang's message of "Fri, 16 Aug 2024 10:31:41 +0800")
-References: <20240813202329.1237572-1-alex.bennee@linaro.org>
-	<20240813202329.1237572-17-alex.bennee@linaro.org>
-	<20240813164631-mutt-send-email-mst@kernel.org>
-	<D3FEPPLH78YW.3BYA9B4HYGN1U@gmail.com>
-	<20240814030308-mutt-send-email-mst@kernel.org>
-	<87y14z81ak.fsf@draig.linaro.org>
-	<D3GARIYVC16C.20SXVKSIMLED4@gmail.com>
-	<20240815102754-mutt-send-email-mst@kernel.org>
-	<CACGkMEtS6kges+_hOum2QnpTWotT_ohkJv8PaFHsycjR10QY5w@mail.gmail.com>
-Date: Fri, 16 Aug 2024 13:58:48 +0100
-Message-ID: <874j7k39pz.fsf@draig.linaro.org>
+To: Salil Mehta <salil.mehta@huawei.com>
+Cc: <qemu-devel@nongnu.org>,  <qemu-arm@nongnu.org>,  <mst@redhat.com>,
+  <maz@kernel.org>,  <jean-philippe@linaro.org>,
+  <jonathan.cameron@huawei.com>,  <lpieralisi@kernel.org>,
+  <peter.maydell@linaro.org>,  <richard.henderson@linaro.org>,
+  <imammedo@redhat.com>,  <andrew.jones@linux.dev>,  <david@redhat.com>,
+  <philmd@linaro.org>,  <eric.auger@redhat.com>,  <will@kernel.org>,
+  <ardb@kernel.org>,  <oliver.upton@linux.dev>,  <pbonzini@redhat.com>,
+  <gshan@redhat.com>,  <rafael@kernel.org>,  <borntraeger@linux.ibm.com>,
+  <npiggin@gmail.com>,  <harshpb@linux.ibm.com>,  <linux@armlinux.org.uk>,
+  <darren@os.amperecomputing.com>,  <ilkka@os.amperecomputing.com>,
+  <vishnu@os.amperecomputing.com>,  <karl.heubaum@oracle.com>,
+  <miguel.luis@oracle.com>,  <salil.mehta@opnsrc.net>,
+  <zhukeqian1@huawei.com>,  <wangxiongfeng2@huawei.com>,
+  <wangyanan55@huawei.com>,  <jiakernel2@gmail.com>,
+  <maobibo@loongson.cn>,  <lixianglai@loongson.cn>,  <shahuang@redhat.com>,
+  <zhao1.liu@intel.com>,  <linuxarm@huawei.com>
+Subject: Re: [PATCH RFC V3 24/29] target/arm: Add support of *unrealize*
+ ARMCPU during vCPU Hot-unplug
+In-Reply-To: <20240613233639.202896-25-salil.mehta@huawei.com> (Salil Mehta's
+	message of "Fri, 14 Jun 2024 00:36:34 +0100")
+References: <20240613233639.202896-1-salil.mehta@huawei.com>
+	<20240613233639.202896-25-salil.mehta@huawei.com>
+Date: Fri, 16 Aug 2024 16:37:22 +0100
+Message-ID: <87v800wkb1.fsf@draig.linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-TUID: a+8MZKLiMcng
+X-TUID: t6oLkLnDKMRX
 
-Jason Wang <jasowang@redhat.com> writes:
+Salil Mehta <salil.mehta@huawei.com> writes:
 
-> On Thu, Aug 15, 2024 at 10:29=E2=80=AFPM Michael S. Tsirkin <mst@redhat.c=
-om> wrote:
->>
->> On Thu, Aug 15, 2024 at 05:12:32PM +1000, Nicholas Piggin wrote:
->> > Could be a good idea. Although I'm not sure what to do with
->> > all types, maybe we can restrict what is supported.
->> >
->> > > Is this wider re-factoring something that can wait for the next
->> > > developer cycle?
->> >
->> > I would say so. It's not quite trivial to do nicely since
->> > things are a bit tangled between util/async and replay.
->> >
->> > > >> I had started on a conversion once but not completed it.
->> > > >> I could resurrect if there is agreement on the API?
->> > >
->> > > I would certainly welcome it being cleaned up. The supported replay
->> > > devices are very piecemeal at the moment.
->> >
->> > I'll tidy up and post an RFC for how the new API might look.
->> >
->> > Thanks,
->> > Nick
->>
->> Fundamentally it's virtio net, up to Jason.
+> vCPU Hot-unplug will result in QOM CPU object unrealization which will do=
+ away
+> with all the vCPU thread creations, allocations, registrations that happe=
+ned
+> as part of the realization process. This change introduces the ARM CPU un=
+realize
+> function taking care of exactly that.
 >
-> It seems it has been in the pull request from Alex Benn=C3=A9e.
+> Note, initialized KVM vCPUs are not destroyed in host KVM but their Qemu =
+context
+> is parked at the QEMU KVM layer.
+>
+> Co-developed-by: Keqian Zhu <zhukeqian1@huawei.com>
+> Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
+> Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
+> Reported-by: Vishnu Pajjuri <vishnu@os.amperecomputing.com>
+> [VP: Identified CPU stall issue & suggested probable fix]
+> Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
+> ---
+>  target/arm/cpu.c       | 101 +++++++++++++++++++++++++++++++++++++++++
+>  target/arm/cpu.h       |  14 ++++++
+>  target/arm/gdbstub.c   |   6 +++
+>  target/arm/helper.c    |  25 ++++++++++
+>  target/arm/internals.h |   3 ++
+>  target/arm/kvm.c       |   5 ++
+>  6 files changed, 154 insertions(+)
+>
+> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+> index c92162fa97..a3dc669309 100644
+> --- a/target/arm/cpu.c
+> +++ b/target/arm/cpu.c
+> @@ -157,6 +157,16 @@ void arm_register_pre_el_change_hook(ARMCPU *cpu, AR=
+MELChangeHookFn *hook,
+>      QLIST_INSERT_HEAD(&cpu->pre_el_change_hooks, entry, node);
+>  }
+>=20=20
+> +void arm_unregister_pre_el_change_hooks(ARMCPU *cpu)
+> +{
+> +    ARMELChangeHook *entry, *next;
+> +
+> +    QLIST_FOREACH_SAFE(entry, &cpu->pre_el_change_hooks, node, next) {
+> +        QLIST_REMOVE(entry, node);
+> +        g_free(entry);
+> +    }
+> +}
+> +
+>  void arm_register_el_change_hook(ARMCPU *cpu, ARMELChangeHookFn *hook,
+>                                   void *opaque)
+>  {
+> @@ -168,6 +178,16 @@ void arm_register_el_change_hook(ARMCPU *cpu, ARMELC=
+hangeHookFn *hook,
+>      QLIST_INSERT_HEAD(&cpu->el_change_hooks, entry, node);
+>  }
+>=20=20
+> +void arm_unregister_el_change_hooks(ARMCPU *cpu)
+> +{
+> +    ARMELChangeHook *entry, *next;
+> +
+> +    QLIST_FOREACH_SAFE(entry, &cpu->el_change_hooks, node, next) {
+> +        QLIST_REMOVE(entry, node);
+> +        g_free(entry);
+> +    }
+> +}
+> +
+>  static void cp_reg_reset(gpointer key, gpointer value, gpointer opaque)
+>  {
+>      /* Reset a single ARMCPRegInfo register */
+> @@ -2552,6 +2572,85 @@ static void arm_cpu_realizefn(DeviceState *dev, Er=
+ror **errp)
+>      acc->parent_realize(dev, errp);
+>  }
+>=20=20
+> +static void arm_cpu_unrealizefn(DeviceState *dev)
+> +{
+> +    ARMCPUClass *acc =3D ARM_CPU_GET_CLASS(dev);
+> +    ARMCPU *cpu =3D ARM_CPU(dev);
+> +    CPUARMState *env =3D &cpu->env;
+> +    CPUState *cs =3D CPU(dev);
+> +    bool has_secure;
+> +
+> +    has_secure =3D cpu->has_el3 || arm_feature(env, ARM_FEATURE_M_SECURI=
+TY);
+> +
+> +    /* rock 'n' un-roll, whatever happened in the arm_cpu_realizefn clea=
+nly */
+> +    cpu_address_space_destroy(cs, ARMASIdx_NS);
 
-Sorry I'd suibmitted the PR before I saw mst's update.
+On current master this will fail:
 
->
->> I don't like messy
->> APIs and people tend to get distracted and not fix them up
->> if one does not make this a blocker.
->
-> +1
-
-do you want me to drop the series for 9.1 and leave it in its current
-(broken) state? Nick has already posted a suggestion for the API update
-but it seems a bit late in the cycle to include it in the release.
-
->
->>
->> --
->> MST
->
-> Thanks
->
->>
+../../target/arm/cpu.c: In function =E2=80=98arm_cpu_unrealizefn=E2=80=99:
+../../target/arm/cpu.c:2626:5: error: implicit declaration of function =E2=
+=80=98cpu_address_space_destroy=E2=80=99 [-Werror=3Dimplicit-function-decla=
+ration]
+ 2626 |     cpu_address_space_destroy(cs, ARMASIdx_NS);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~
+../../target/arm/cpu.c:2626:5: error: nested extern declaration of =E2=80=
+=98cpu_address_space_destroy=E2=80=99 [-Werror=3Dnested-externs]
+cc1: all warnings being treated as errors
 
 --=20
 Alex Benn=C3=A9e

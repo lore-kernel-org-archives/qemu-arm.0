@@ -1,124 +1,123 @@
-Received: by 2002:a17:504:9188:b0:1be9:327d:8ee3 with SMTP id i8csp1271879njf;
-        Fri, 16 Aug 2024 09:14:15 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCU9eRHJAxboT2PRQuS5d2Z7umK6znDlWNORPj2c7njnNUP0NnwzhdOjR0b3g8EAvNNi1KXT+4fmufKBuvEqcHbDs9gIRDWc
-X-Google-Smtp-Source: AGHT+IHGLwveT+jpr94FK2VU9llzLxVXbQIaHpz3Y9H+1c3BLFsygdjRfivj0Oy2jMhJ1vJsVZGQ
-X-Received: by 2002:a05:6830:641b:b0:709:5cac:91f1 with SMTP id 46e09a7af769-70cac867f7emr4237748a34.18.1723824855487;
-        Fri, 16 Aug 2024 09:14:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1723824855; cv=none;
+Received: by 2002:a17:504:9188:b0:1be9:327d:8ee3 with SMTP id i8csp1271912njf;
+        Fri, 16 Aug 2024 09:14:20 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVjdY24FjmMPh/wp/mFzpSmruiLQdNX9EGnO046Hulii3fPH5IFjvt9HUr9hBUwtRdVs4AxAJuuILdkGSixzL0nB7xAA3aS
+X-Google-Smtp-Source: AGHT+IGlXHTzwsBrupGQ2D+Fjfh5YQOm4o6nAxHtDD5cVqNTyjMR9R1Z6UReT1EePZFQjP7P3p3e
+X-Received: by 2002:ac8:6f0b:0:b0:446:5c35:d9d6 with SMTP id d75a77b69052e-4537427e701mr43988211cf.23.1723824860067;
+        Fri, 16 Aug 2024 09:14:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1723824860; cv=none;
         d=google.com; s=arc-20160816;
-        b=W3ZZ4faRWi3SQgNBf5VVvy6hlS+zGRr8gsXkrItQnkSNg9/FyN849G9shogAyO0FCN
-         QMb1tBaMDytkrpBTipw4d3DOcNnM1GvzaYerqymAbLBZce8EsVBgvWqunrbbipj/o6xE
-         vOsTEzgXPQmJ+hOu7PeX84973bVYliF+VE0bz1js2hlDK1iaWiF881Au/jNqaKcIqqi2
-         p0hb4tlBhN+BQjzrGXKgriTv2BIVWlkt9qvqu+MAAK9oW7Fa31GUxS9V9EDm4yRzA83w
-         gvTIo+p7MJwJ5E8NVf8LRROueaMYaKbARj+szwVnUhiz5KYPE96RBNkO+rQ+GgNpb1mH
-         R7/Q==
+        b=kI17jU27kv4SZVLTnlpHr2TsXzGlOXWecvHbWb43PgOi/qYnw4AIjq3c4XKL4CZ+Gm
+         WDHEOkXSZGi+UxHRK2n3HF4TLTDh4Qne5c4Us9HvtyN4U4itRu4GCPtUZBAY6w3SDX9m
+         vHi08Pi/ivJLCQWYdbkLAg4TVrMuBKHlB/O+ZfFFyxyTJKUeGVZ2JYZsip8daxWiNf4/
+         ZLOQa7LVlHLLCpCItXCQBLdDU//GI77xO0frtCYTpDYbl9OwAsb9JnZGlXnCJbXVch8Y
+         TS8REOR5lrcfIMUZwKcKegouX+r2crfOGZFpckWCbKOJTaWyBQJNJvYWlblpcvIJ3JVH
+         GoAg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=LBv9iR1AT6FebtlCaxkUn6qnNvMTch8Z6TJ0HRA2r3E=;
+        bh=GjWmXs7UD5GkRyRxaGCKBrnzIsbM5XteQpuL4ObGWgY=;
         fh=8716YcvxZZxTMNcQZ0eLGoLGp1r7TadekkZAFKW2f4M=;
-        b=g6Mmd8WGOFmirbtlCbUkpcikKPGkQ1xJW+csrY9EQoJOgLSP/a3EzQaPK+Ik7nN+0Z
-         mMx22NOuw4pkUWXhJ9UOZh4MHBhe9A3PQND+DJ74klH0hlBfOHscO0wKwBLizkFx9Bz9
-         8gdAPHmbzfGjN6AApLEU/5nVfgF49UAALKGtiCCUetya9A4LvoQ0xUTOYD5dtJXdQdKh
-         3NbqeKzRpYfPxA1m9g3DdIgsePlcc/XTS6MHmH3iaiNLv7MUewr7z8cV1tvuz9JlwYW+
-         5CzQ6kzl5W0FANJ1As6UwGsGuboB3IHruCk4KddTjImwp/+NXB7i6tT0wrszFPGe9nYy
-         WApA==;
+        b=mdstsMPePIAhIcFD5XalTAlLCr8EANwEC1K/y9Y0ROg6zM2Ro8fuVqGfD150zhP1aM
+         C+jcR7THiubejkGVNr2B2nELeKoZ2kdcvba3T4OxwmQAr6+e+4ghGBneXqsBIcbz3dxy
+         IS6ldGsVxj21WpLfSzJfKLmr1ocxrEeOjKy+qNl6I1nmUT9eHWSOwDp7t+a+/EZ+XLG8
+         +wtnZBTeghRW/2gyKb6gijNepk1OYJ5jJnQJH7rePfEVNK3jU1V6PvAZmVssgMeDUuau
+         FlW4uC8j/SXC4O14YTLE8aK9XXte0gdXMJH38+/i/MpWNEgPKCEusqMKKAA5zjwo6QFD
+         XMvA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=IHKrwCqD;
+       dkim=pass header.i=@linaro.org header.s=google header.b=S6jsYj8g;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7a4ff030368si434767285a.172.2024.08.16.09.14.15
+        by mx.google.com with ESMTPS id d75a77b69052e-45369fe702asi45033111cf.15.2024.08.16.09.14.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 16 Aug 2024 09:14:15 -0700 (PDT)
+        Fri, 16 Aug 2024 09:14:20 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=IHKrwCqD;
+       dkim=pass header.i=@linaro.org header.s=google header.b=S6jsYj8g;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sezaP-0008AA-1N; Fri, 16 Aug 2024 12:13:57 -0400
+	id 1sezaS-0008OL-Bq; Fri, 16 Aug 2024 12:14:00 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1sezaN-00088R-VZ
- for qemu-arm@nongnu.org; Fri, 16 Aug 2024 12:13:55 -0400
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+ id 1sezaQ-0008E1-1S
+ for qemu-arm@nongnu.org; Fri, 16 Aug 2024 12:13:58 -0400
+Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1sezaL-0007dV-Va
- for qemu-arm@nongnu.org; Fri, 16 Aug 2024 12:13:55 -0400
-Received: by mail-wm1-x334.google.com with SMTP id
- 5b1f17b1804b1-428119da952so15839485e9.0
- for <qemu-arm@nongnu.org>; Fri, 16 Aug 2024 09:13:53 -0700 (PDT)
+ id 1sezaN-0007e0-Hq
+ for qemu-arm@nongnu.org; Fri, 16 Aug 2024 12:13:57 -0400
+Received: by mail-wr1-x429.google.com with SMTP id
+ ffacd0b85a97d-37172a83a4bso1060319f8f.0
+ for <qemu-arm@nongnu.org>; Fri, 16 Aug 2024 09:13:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1723824832; x=1724429632; darn=nongnu.org;
+ d=linaro.org; s=google; t=1723824834; x=1724429634; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=LBv9iR1AT6FebtlCaxkUn6qnNvMTch8Z6TJ0HRA2r3E=;
- b=IHKrwCqDvhJkgDXry4aHitIRxlVTNCqGHikq6DY07njQX5ZRT3PIH4CgDLHORrlKmv
- MBlRchVK4Mx3PIjje02f3hRUPlycTCPm/IZ2qaZGqiv6B6EggdMZLHqrc+/cGrI8ZULq
- XK0hSMVBzaMlsBFQFisjC1rva7UHNUZ6cRAFqdmmVQnDC8NB0Fe6ybwzt631KxNuR9S7
- SB5gctS6sIeKZIXzKuS3/wqeZB3ODelJBefievgNrxuYNRiOVZ/43FqIJAB5Se7N7FOc
- KZRcHf5VqYSXr1tJFKL0SkMFdcXDpjw9Rc/JaEIeSPciBO/MhNP+qHZ25K3k1S7TBcLy
- uXNw==
+ bh=GjWmXs7UD5GkRyRxaGCKBrnzIsbM5XteQpuL4ObGWgY=;
+ b=S6jsYj8gPgHJAzOPftR/QOtNunJIGW49g6/2mc6qL2U5WK7oE8LwW+upqiLDayKvIP
+ uH+bw9R2kKjNNcWwQdR9JH8XK+Znrd1mkczN8WQ/1FovdawKfohdP4yZPEEcm2cYBv15
+ 0L7apPjT+GORivv6rtacSWNAECFcOW/jot6AW2I0pT8aUcPIHdvkBD8cUD3JiAlgandP
+ Q9lGbt/d7x3+h7ffXPe1Vp4ZsMGL0ewRu/A4IZR0EVz8JqsEV3YV4n/OkvVL5pocssYF
+ CqTOjkuatFs1i7YwFJAoEn2GKP3SW/uAI9New8eWRnEBPVSYBAvQ/aas7QbEXcWDJm2/
+ vMrA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1723824832; x=1724429632;
+ d=1e100.net; s=20230601; t=1723824834; x=1724429634;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=LBv9iR1AT6FebtlCaxkUn6qnNvMTch8Z6TJ0HRA2r3E=;
- b=cHbrl5eX0aP4Maq1jWonK4qEQfomk8QAcfKcql4VA4e33EIfWawpWq6IbMjRXoKs7k
- ShYsOhWvlmnEcseLgFQofAODQFNIst+QZQxjJKZCiu8YQXbu6DV1LEt8fq1GEqYdL86k
- U67PTZTUY+V36mosu8Licy2sVd8Aw1hypftpjgi23Cb4+0rZabj4zUWVCLec45N1wnsu
- HpXKqKurvlC9nrK3zNmLvhpH7X/An7sxRI6J9116LvderFQpq/4jioye59oyInQ15dDM
- HzB9LKXKnjLptW2OQP7JDXiUcrdsMsyTwrlVdwEWTMd/n9a8G6CnVi5zyvyaXg5QsUpI
- 0EZQ==
-X-Gm-Message-State: AOJu0YxvAoomGY+4jdZknCn1jhkVfswCO38Wn56bkNxcosZDvJ6I41uD
- ZSTL/2aZi4RKSNsUfag3nMLcQVdT9GILeuCEXU0ueOLt600IxsMv8MhIt36sDa9XLStrVAhzk/b
- H
-X-Received: by 2002:a5d:5a15:0:b0:36b:a3c7:b9fd with SMTP id
- ffacd0b85a97d-371946bd27emr3451930f8f.56.1723824832356; 
- Fri, 16 Aug 2024 09:13:52 -0700 (PDT)
+ bh=GjWmXs7UD5GkRyRxaGCKBrnzIsbM5XteQpuL4ObGWgY=;
+ b=OMGQImM7wyEppWiBmE/uHa+jGIbxKUMsOEGdYYGjchpN73nuyojZ9vG6ua6UvhVDYw
+ UEGtE2Tm4LYHIY0t1XvYjQyGxqvApQY5zMivyOKLAPYuuEXChlHM0BQiqMJadbeSrAuf
+ +0c+zpmSQUafFzXGLVxCU6vUnQYTfP6bdp0zZ0SKERGu83ckH0LExaYTSZ9KhGacpTEn
+ 564uWwbgrSXnu1hnCU97CB4ExSpFuzBjKlbBfyozO+SH9RIJVtSZyrCiV2H7gnPfvoUs
+ 1jWgjIbf2IkovrS5otisnayQwM2SPyat9h7XwRGm3O9SS3l+mLxqnt4kJf4horlt3RMj
+ ncIw==
+X-Gm-Message-State: AOJu0YxGObMV/ZaaU4LRdIFkrnsx3GvZEnd5q/zWTmVJzJQszB0eZwEj
+ syP7i3IzqrUYB9Ljc3t3KXF16ZGnBx7ALaRQjEdtYBiXErRyFIhczNtuWjw2zC2x9ig2N6/txAM
+ S
+X-Received: by 2002:a05:6000:141:b0:371:8845:b850 with SMTP id
+ ffacd0b85a97d-371946c2b36mr2406984f8f.54.1723824833988; 
+ Fri, 16 Aug 2024 09:13:53 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-371898bb588sm3912269f8f.115.2024.08.16.09.13.51
+ ffacd0b85a97d-371898bb588sm3912269f8f.115.2024.08.16.09.13.53
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 16 Aug 2024 09:13:52 -0700 (PDT)
+ Fri, 16 Aug 2024 09:13:53 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Leif Lindholm <quic_llindhol@quicinc.com>,
  Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
  Eric Auger <eric.auger@redhat.com>, Radoslaw Biernacki <rad@semihalf.com>
-Subject: [PATCH 1/4] hw: add compat machines for 9.2
-Date: Fri, 16 Aug 2024 17:13:47 +0100
-Message-Id: <20240816161350.3706332-2-peter.maydell@linaro.org>
+Subject: [PATCH 4/4] hw/arm/sbsa-ref: Use two-stage SMMU
+Date: Fri, 16 Aug 2024 17:13:50 +0100
+Message-Id: <20240816161350.3706332-5-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240816161350.3706332-1-peter.maydell@linaro.org>
 References: <20240816161350.3706332-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::334;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x334.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::429;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x429.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -133,272 +132,31 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: nql98EKhzpKz
+X-TUID: x0nuimqbm72w
 
-From: Cornelia Huck <cohuck@redhat.com>
+Now that our SMMU model supports enabling both stages of translation
+at once, we can enable this in the sbsa-ref board.  Existing guest
+code that only programs stage 1 and doesn't care about stage 2 should
+continue to run with the same behaviour, but guests that do want to
+do nested SMMU configurations can now do so.
 
-Add 9.2 machine types for arm/i440fx/m68k/q35/s390x/spapr.
-
-Signed-off-by: Cornelia Huck <cohuck@redhat.com>
-Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
-Message-id: 20240816103723.2325982-1-cohuck@redhat.com
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- include/hw/boards.h        |  3 +++
- include/hw/i386/pc.h       |  3 +++
- hw/arm/virt.c              | 11 +++++++++--
- hw/core/machine.c          |  3 +++
- hw/i386/pc.c               |  3 +++
- hw/i386/pc_piix.c          | 15 ++++++++++++---
- hw/i386/pc_q35.c           | 13 +++++++++++--
- hw/m68k/virt.c             | 11 +++++++++--
- hw/ppc/spapr.c             | 17 ++++++++++++++---
- hw/s390x/s390-virtio-ccw.c | 14 +++++++++++++-
- 10 files changed, 80 insertions(+), 13 deletions(-)
+ hw/arm/sbsa-ref.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/include/hw/boards.h b/include/hw/boards.h
-index 48ff6d8b93f..9a492770cbb 100644
---- a/include/hw/boards.h
-+++ b/include/hw/boards.h
-@@ -732,6 +732,9 @@ struct MachineState {
-     } \
-     type_init(machine_initfn##_register_types)
+diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
+index ae37a923015..396abe9c1bd 100644
+--- a/hw/arm/sbsa-ref.c
++++ b/hw/arm/sbsa-ref.c
+@@ -621,6 +621,7 @@ static void create_smmu(const SBSAMachineState *sms, PCIBus *bus)
  
-+extern GlobalProperty hw_compat_9_1[];
-+extern const size_t hw_compat_9_1_len;
-+
- extern GlobalProperty hw_compat_9_0[];
- extern const size_t hw_compat_9_0_len;
+     dev = qdev_new(TYPE_ARM_SMMUV3);
  
-diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
-index 4e55d7ef6ea..14ee06287da 100644
---- a/include/hw/i386/pc.h
-+++ b/include/hw/i386/pc.h
-@@ -215,6 +215,9 @@ void pc_system_parse_ovmf_flash(uint8_t *flash_ptr, size_t flash_size);
- /* sgx.c */
- void pc_machine_init_sgx_epc(PCMachineState *pcms);
- 
-+extern GlobalProperty pc_compat_9_1[];
-+extern const size_t pc_compat_9_1_len;
-+
- extern GlobalProperty pc_compat_9_0[];
- extern const size_t pc_compat_9_0_len;
- 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 687fe0bb8bc..a5d3ad9bf9e 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -3301,10 +3301,17 @@ static void machvirt_machine_init(void)
- }
- type_init(machvirt_machine_init);
- 
--static void virt_machine_9_1_options(MachineClass *mc)
-+static void virt_machine_9_2_options(MachineClass *mc)
- {
- }
--DEFINE_VIRT_MACHINE_AS_LATEST(9, 1)
-+DEFINE_VIRT_MACHINE_AS_LATEST(9, 2)
-+
-+static void virt_machine_9_1_options(MachineClass *mc)
-+{
-+    virt_machine_9_2_options(mc);
-+    compat_props_add(mc->compat_props, hw_compat_9_1, hw_compat_9_1_len);
-+}
-+DEFINE_VIRT_MACHINE(9, 1)
- 
- static void virt_machine_9_0_options(MachineClass *mc)
- {
-diff --git a/hw/core/machine.c b/hw/core/machine.c
-index 27dcda02483..adaba17ebac 100644
---- a/hw/core/machine.c
-+++ b/hw/core/machine.c
-@@ -34,6 +34,9 @@
- #include "hw/virtio/virtio-iommu.h"
- #include "audio/audio.h"
- 
-+GlobalProperty hw_compat_9_1[] = {};
-+const size_t hw_compat_9_1_len = G_N_ELEMENTS(hw_compat_9_1);
-+
- GlobalProperty hw_compat_9_0[] = {
-     {"arm-cpu", "backcompat-cntfrq", "true" },
-     { "scsi-hd", "migrate-emulated-scsi-request", "false" },
-diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-index c74931d577a..0cf4cb0d9f2 100644
---- a/hw/i386/pc.c
-+++ b/hw/i386/pc.c
-@@ -79,6 +79,9 @@
-     { "qemu64-" TYPE_X86_CPU, "model-id", "QEMU Virtual CPU version " v, },\
-     { "athlon-" TYPE_X86_CPU, "model-id", "QEMU Virtual CPU version " v, },
- 
-+GlobalProperty pc_compat_9_1[] = {};
-+const size_t pc_compat_9_1_len = G_N_ELEMENTS(pc_compat_9_1);
-+
- GlobalProperty pc_compat_9_0[] = {
-     { TYPE_X86_CPU, "x-amd-topoext-features-only", "false" },
-     { TYPE_X86_CPU, "x-l1-cache-per-thread", "false" },
-diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
-index d9e69243b4a..746bfe05d38 100644
---- a/hw/i386/pc_piix.c
-+++ b/hw/i386/pc_piix.c
-@@ -479,13 +479,24 @@ static void pc_i440fx_machine_options(MachineClass *m)
-                                      "Use a different south bridge than PIIX3");
- }
- 
--static void pc_i440fx_machine_9_1_options(MachineClass *m)
-+static void pc_i440fx_machine_9_2_options(MachineClass *m)
- {
-     pc_i440fx_machine_options(m);
-     m->alias = "pc";
-     m->is_default = true;
- }
- 
-+DEFINE_I440FX_MACHINE(9, 2);
-+
-+static void pc_i440fx_machine_9_1_options(MachineClass *m)
-+{
-+    pc_i440fx_machine_9_2_options(m);
-+    m->alias = NULL;
-+    m->is_default = false;
-+    compat_props_add(m->compat_props, hw_compat_9_1, hw_compat_9_1_len);
-+    compat_props_add(m->compat_props, pc_compat_9_1, pc_compat_9_1_len);
-+}
-+
- DEFINE_I440FX_MACHINE(9, 1);
- 
- static void pc_i440fx_machine_9_0_options(MachineClass *m)
-@@ -493,8 +504,6 @@ static void pc_i440fx_machine_9_0_options(MachineClass *m)
-     PCMachineClass *pcmc = PC_MACHINE_CLASS(m);
- 
-     pc_i440fx_machine_9_1_options(m);
--    m->alias = NULL;
--    m->is_default = false;
-     m->smbios_memory_device_size = 16 * GiB;
- 
-     compat_props_add(m->compat_props, hw_compat_9_0, hw_compat_9_0_len);
-diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
-index 9d108b194e4..67162ac8863 100644
---- a/hw/i386/pc_q35.c
-+++ b/hw/i386/pc_q35.c
-@@ -361,19 +361,28 @@ static void pc_q35_machine_options(MachineClass *m)
-                      pc_q35_compat_defaults, pc_q35_compat_defaults_len);
- }
- 
--static void pc_q35_machine_9_1_options(MachineClass *m)
-+static void pc_q35_machine_9_2_options(MachineClass *m)
- {
-     pc_q35_machine_options(m);
-     m->alias = "q35";
- }
- 
-+DEFINE_Q35_MACHINE(9, 2);
-+
-+static void pc_q35_machine_9_1_options(MachineClass *m)
-+{
-+    pc_q35_machine_9_2_options(m);
-+    m->alias = NULL;
-+    compat_props_add(m->compat_props, hw_compat_9_1, hw_compat_9_1_len);
-+    compat_props_add(m->compat_props, pc_compat_9_1, pc_compat_9_1_len);
-+}
-+
- DEFINE_Q35_MACHINE(9, 1);
- 
- static void pc_q35_machine_9_0_options(MachineClass *m)
- {
-     PCMachineClass *pcmc = PC_MACHINE_CLASS(m);
-     pc_q35_machine_9_1_options(m);
--    m->alias = NULL;
-     m->smbios_memory_device_size = 16 * GiB;
-     compat_props_add(m->compat_props, hw_compat_9_0, hw_compat_9_0_len);
-     compat_props_add(m->compat_props, pc_compat_9_0, pc_compat_9_0_len);
-diff --git a/hw/m68k/virt.c b/hw/m68k/virt.c
-index cda199af8fa..ea5c4a5a570 100644
---- a/hw/m68k/virt.c
-+++ b/hw/m68k/virt.c
-@@ -366,10 +366,17 @@ type_init(virt_machine_register_types)
- #define DEFINE_VIRT_MACHINE(major, minor) \
-     DEFINE_VIRT_MACHINE_IMPL(false, major, minor)
- 
--static void virt_machine_9_1_options(MachineClass *mc)
-+static void virt_machine_9_2_options(MachineClass *mc)
- {
- }
--DEFINE_VIRT_MACHINE_AS_LATEST(9, 1)
-+DEFINE_VIRT_MACHINE_AS_LATEST(9, 2)
-+
-+static void virt_machine_9_1_options(MachineClass *mc)
-+{
-+    virt_machine_9_2_options(mc);
-+    compat_props_add(mc->compat_props, hw_compat_9_1, hw_compat_9_1_len);
-+}
-+DEFINE_VIRT_MACHINE(9, 1)
- 
- static void virt_machine_9_0_options(MachineClass *mc)
- {
-diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
-index 370d7c35d3a..8aa3ce7449b 100644
---- a/hw/ppc/spapr.c
-+++ b/hw/ppc/spapr.c
-@@ -4838,14 +4838,25 @@ static void spapr_machine_latest_class_options(MachineClass *mc)
-     DEFINE_SPAPR_MACHINE_IMPL(false, major, minor, _, tag)
- 
- /*
-- * pseries-9.1
-+ * pseries-9.2
-  */
--static void spapr_machine_9_1_class_options(MachineClass *mc)
-+static void spapr_machine_9_2_class_options(MachineClass *mc)
- {
-     /* Defaults for the latest behaviour inherited from the base class */
- }
- 
--DEFINE_SPAPR_MACHINE_AS_LATEST(9, 1);
-+DEFINE_SPAPR_MACHINE_AS_LATEST(9, 2);
-+
-+/*
-+ * pseries-9.1
-+ */
-+static void spapr_machine_9_1_class_options(MachineClass *mc)
-+{
-+    spapr_machine_9_2_class_options(mc);
-+    compat_props_add(mc->compat_props, hw_compat_9_1, hw_compat_9_1_len);
-+}
-+
-+DEFINE_SPAPR_MACHINE(9, 1);
- 
- /*
-  * pseries-9.0
-diff --git a/hw/s390x/s390-virtio-ccw.c b/hw/s390x/s390-virtio-ccw.c
-index c483ff8064d..18240a0fd8b 100644
---- a/hw/s390x/s390-virtio-ccw.c
-+++ b/hw/s390x/s390-virtio-ccw.c
-@@ -871,14 +871,26 @@ static const TypeInfo ccw_machine_info = {
-     DEFINE_CCW_MACHINE_IMPL(false, major, minor)
- 
- 
-+static void ccw_machine_9_2_instance_options(MachineState *machine)
-+{
-+}
-+
-+static void ccw_machine_9_2_class_options(MachineClass *mc)
-+{
-+}
-+DEFINE_CCW_MACHINE_AS_LATEST(9, 2);
-+
- static void ccw_machine_9_1_instance_options(MachineState *machine)
- {
-+    ccw_machine_9_2_instance_options(machine);
- }
- 
- static void ccw_machine_9_1_class_options(MachineClass *mc)
- {
-+    ccw_machine_9_2_class_options(mc);
-+    compat_props_add(mc->compat_props, hw_compat_9_1, hw_compat_9_1_len);
- }
--DEFINE_CCW_MACHINE_AS_LATEST(9, 1);
-+DEFINE_CCW_MACHINE(9, 1);
- 
- static void ccw_machine_9_0_instance_options(MachineState *machine)
- {
++    object_property_set_str(OBJECT(dev), "stage", "nested", &error_abort);
+     object_property_set_link(OBJECT(dev), "primary-bus", OBJECT(bus),
+                              &error_abort);
+     sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
 -- 
 2.34.1
 

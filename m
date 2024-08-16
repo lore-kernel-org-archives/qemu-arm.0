@@ -1,241 +1,256 @@
-Received: by 2002:a17:504:9188:b0:1be9:327d:8ee3 with SMTP id i8csp1122737njf;
-        Fri, 16 Aug 2024 01:06:29 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCW0uEFKbfjKUl1gu4i2nPIpnVX70lILYwTQgAoH3umjdWgd+ZycIL2YxUaHPM8BG+Y/V/VC7/TN71cnMlZcxhocbJwGpMN6
-X-Google-Smtp-Source: AGHT+IHyMZ7Cdu8kA0dWM1O3NORYqzgmTmqjtdJrX4pSUw2dTwccVtigMo7xXEA0ywdhVgv1f6ze
-X-Received: by 2002:a05:620a:29c2:b0:79d:7e72:c7cf with SMTP id af79cd13be357-7a5069d3c77mr192941585a.70.1723795589492;
-        Fri, 16 Aug 2024 01:06:29 -0700 (PDT)
-Return-Path: <junjie.mao@intel.com>
-Received: from mgamail.intel.com (mgamail.intel.com. [198.175.65.9])
-        by mx.google.com with ESMTPS id af79cd13be357-7a4feffdfa7si396293685a.81.2024.08.16.01.06.27
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 16 Aug 2024 01:06:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of junjie.mao@intel.com designates 198.175.65.9 as permitted sender) client-ip=198.175.65.9;
+Received: by 2002:a17:504:9188:b0:1be9:327d:8ee3 with SMTP id i8csp1125205njf;
+        Fri, 16 Aug 2024 01:18:00 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWr9M7CbN3bc6gaG0RQZeuqdS6smmcdbUGC8juiSWaQnUf+1bomOoP2bC4NkYojZVULBRlXbOgy7XW3cXVkBP097Bb26s5p
+X-Received: by 2002:a17:907:e249:b0:a7a:ab8a:38a with SMTP id a640c23a62f3a-a839292ffbdmr174001866b.27.1723796279756;
+        Fri, 16 Aug 2024 01:17:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1723796279; cv=none;
+        d=google.com; s=arc-20160816;
+        b=uLdmekhBT0p0a+1+0Qk1mivonC+pUgKF2BCaswZoNKKQGXiGQz7FvRtD30FrbzxJp0
+         6w+qG4TH8rRFmiV2AQj+lyt+gT1Ni9GUkuZ8NdjwlAhR5UokXCMDI0og9/lu1+zXUQJc
+         P6gwhwTeJXD4wt+Nhi3hVA4B3r8+lCIsz7jpAyDZaYrxnhnvh2TWdGFcJ276Q0c5BL3X
+         Ml8qdOzUW2WCBe9KuZyhvmeY2WYW5cv6IEzPLNfUiObd8NGrhW8yyOJ0GeAXx3hpAgKM
+         HrLnUW1QfrK4wimNoRYqK0seMChWNEePQfn7t2FB+ybIAydvQ8RTnJeZ3aIkedJhrR2r
+         t/pg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=nPpU0PH6JcycdB2I98txnw/CAZnoVrAUDVWZJg3o/Sk=;
+        fh=iD3UpddV2zLRsYpwxBdiPsnZvkzFElupffwmuAK1cC8=;
+        b=fGX9FMg3rHst0naYIRPoquczH8FFluZjxawcr18tiSV5N9bidtAWkOKlOdxwKajSaA
+         pVPZWABpvuSLMqQPk1nX7O6wYCRMqAmF3HVsIWAP3tC9lHaEHPfRpZ3l1Cql8n1zW9r3
+         mFc/k4eOV8vwOmkcmVYv/VQVWeww6AGaenEHe9qPO7pw4HoCv6ePvTsnFrNHTDem9sn/
+         bSWEXWrxa1swTEfpTxJ+PEb8ZJQxI4ell5pnZqP8095Se4yj5OX7d8ZUosmI98labAJk
+         TanL7MXNXNbiZsPhPYG1wpqo3ArALQ/2Q99KrAWyY38ga53ltIDnbq5+EzhsZHD6zSbD
+         i5TQ==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=CtzNQ9oq;
+       spf=pass (google.com: domain of manos.pitsidianakis@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=manos.pitsidianakis@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <manos.pitsidianakis@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id a640c23a62f3a-a838394629bsor82570466b.20.2024.08.16.01.17.59
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Fri, 16 Aug 2024 01:17:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of manos.pitsidianakis@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=IXbA8v+F;
-       arc=fail (signature failed);
-       spf=pass (google.com: domain of junjie.mao@intel.com designates 198.175.65.9 as permitted sender) smtp.mailfrom=junjie.mao@intel.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1723795589; x=1755331589;
-  h=message-id:date:subject:to:cc:references:from:
-   in-reply-to:content-transfer-encoding:mime-version;
-  bh=HHO879QpI0uwDUWuToV/HzaOC/GeWtkGYxFTJLezhF8=;
-  b=IXbA8v+FSoyta5MBzseJNuAj2uD+jR28WcO0goO4mP2RAnC+BUyQ4h1X
-   FBYc3Z3Utk0lqhRu7v6s13zXtBAq2yzuySt0MYvDGmqNKiRdfgdbFEy4o
-   1WbXuCuoX07TVMbptekx05PXwx+4Q1Y1oe0+XGNiDJnLMBpz7FRMaf2im
-   HltQM2ZI5RyCT/B4h0qcIlEkTC9YqOLxlkVhzUJL9k7Wj/+wtUoz6Tdm1
-   0W0I7BmlEVhi4NWYgVPSbcC6G4wFoIf9bk0tSy1P1I+Ij7QRaltgRdC94
-   UhpLpuJdXL1oiJKDP14yXXP4ikFNMIJD1EJNgmhsgPO6CyRcxtIUCBwP9
-   A==;
-X-CSE-ConnectionGUID: dt7tQv8ZQ+GFFiyADSmTAQ==
-X-CSE-MsgGUID: xCJBPAqfTwuq8COUk7pR+Q==
-X-IronPort-AV: E=McAfee;i="6700,10204,11165"; a="44602953"
-X-IronPort-AV: E=Sophos;i="6.10,151,1719903600"; 
-   d="scan'208";a="44602953"
-Received: from fmviesa010.fm.intel.com ([10.60.135.150])
-  by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 16 Aug 2024 01:06:27 -0700
-X-CSE-ConnectionGUID: k8KdjhY6TVyufF98KUiJRQ==
-X-CSE-MsgGUID: bqO0nzQXRt+qujVi1+AVRg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.10,151,1719903600"; 
-   d="scan'208";a="59766641"
-Received: from orsmsx602.amr.corp.intel.com ([10.22.229.15])
-  by fmviesa010.fm.intel.com with ESMTP/TLS/AES256-GCM-SHA384; 16 Aug 2024 01:06:26 -0700
-Received: from orsmsx611.amr.corp.intel.com (10.22.229.24) by
- ORSMSX602.amr.corp.intel.com (10.22.229.15) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.39; Fri, 16 Aug 2024 01:06:25 -0700
-Received: from orsmsx601.amr.corp.intel.com (10.22.229.14) by
- ORSMSX611.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.39; Fri, 16 Aug 2024 01:06:25 -0700
-Received: from ORSEDG601.ED.cps.intel.com (10.7.248.6) by
- orsmsx601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.39 via Frontend Transport; Fri, 16 Aug 2024 01:06:25 -0700
-Received: from NAM12-MW2-obe.outbound.protection.outlook.com (104.47.66.49) by
- edgegateway.intel.com (134.134.137.102) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Fri, 16 Aug 2024 01:06:25 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=MTtni5jzakOck6h9jGLAoFfnk63KlBidzB2z9nDyDWfgpriPyR5tczVa7AJ/PgbtVOL42cLu4nHbifrGgI7z6uujwU0I05se/aThwgoZI2+ufnV+bua+gg/JO4Y6gOGkiqR1wvqGYvA7YLQKe4K2OUNp+Uw4rS19cCQxiH7lNegL7K1Xz24DUews55GDROsta4Hf+qYic+jeQtpotWw0BnY7/OtYR8vb4JUOC0Xkr/CRgwcljYVdbRpR0GQV/VBuEoaxZdzvum2yeeTNsU0gRsA6sPEV4p2dSWvrzz6XwwhYsI2VWYECie4wCWR+tEw96J4Qytf4T3qPOxOjXegeZw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=D/r9OrxDJwHQLke+2JkRGN6A8S45Vor5MGNmSZm6tFk=;
- b=UntJdYQgDg3pZ2C8iYJWKpEzXfFJvZtglmmShWb1HBT78cwZIiI7+9QMXn6ZaEdNmz7za5dobDZQVDaWEezceFUC1NaLsZcjN24v2/Me3Tg/8EdIGaJEUNS9Yk0yK+WtTRROBO/yO+eB/0bIe0mM/zOk5/GAlIxXb0vZLnT9eK2FJL9GwC8hUR5Fsfc8cQ6sMsPxU3oy2ScLSZcTtHWcwSjZ/MvoOyQ7emq3LRJTwwv7xqO++OwvCXgJC4foFFMxt3FiHNdr56jAsYkjQtoCsA2064yOjkffZNOS5Z/CXWLjKSiOr2JUCixae59PeOmqsBX1VVihaTvcURtTcrNx8A==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Received: from CY8PR11MB7009.namprd11.prod.outlook.com (2603:10b6:930:57::12)
- by CH3PR11MB7275.namprd11.prod.outlook.com (2603:10b6:610:14c::20) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7828.27; Fri, 16 Aug
- 2024 08:06:23 +0000
-Received: from CY8PR11MB7009.namprd11.prod.outlook.com
- ([fe80::7ebc:871a:bc7f:1eed]) by CY8PR11MB7009.namprd11.prod.outlook.com
- ([fe80::7ebc:871a:bc7f:1eed%4]) with mapi id 15.20.7875.016; Fri, 16 Aug 2024
- 08:06:23 +0000
-Message-ID: <8f5f670b-313e-4172-a04b-ff8439bc4777@intel.com>
-Date: Fri, 16 Aug 2024 16:06:10 +0800
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v7 0/7] Add Rust build support, ARM PL011 device impl
-To: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-CC: Paolo Bonzini <pbonzini@redhat.com>, =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?=
-	<marcandre.lureau@redhat.com>, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
-	<berrange@redhat.com>, Thomas Huth <thuth@redhat.com>,
-	=?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>, John Snow
-	<jsnow@redhat.com>, Cleber Rosa <crosa@redhat.com>, Beraldo Leal
-	<bleal@redhat.com>, =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Wainer dos Santos Moschetta <wainersm@redhat.com>, "Liu, Zhao1"
-	<zhao1.liu@intel.com>, Peter Maydell <peter.maydell@linaro.org>, ARM TCG CPUs
-	<qemu-arm@nongnu.org>, Stefan Hajnoczi <stefanha@redhat.com>, "Pierrick
- Bouvier" <pierrick.bouvier@linaro.org>, Richard Henderson
-	<richard.henderson@linaro.org>, Gustavo Romero <gustavo.romero@linaro.org>,
-	"Hart, Rowan" <rowan.hart@intel.com>, Mads Ynddal <mads@ynddal.dk>, "Markus
- Armbruster" <armbru@redhat.com>
-References: <20240815-rust-pl011-v7-0-975135e98831@linaro.org>
-Content-Language: en-US
-From: Junjie Mao <junjie.mao@intel.com>
-In-Reply-To: <20240815-rust-pl011-v7-0-975135e98831@linaro.org>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 7bit
-X-ClientProxiedBy: SGBP274CA0016.SGPP274.PROD.OUTLOOK.COM (2603:1096:4:b0::28)
- To CY8PR11MB7009.namprd11.prod.outlook.com (2603:10b6:930:57::12)
-Return-Path: junjie.mao@intel.com
+       dkim=pass header.i=@linaro.org header.s=google header.b=CtzNQ9oq;
+       spf=pass (google.com: domain of manos.pitsidianakis@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=manos.pitsidianakis@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1723796279; x=1724401079; darn=linaro.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=nPpU0PH6JcycdB2I98txnw/CAZnoVrAUDVWZJg3o/Sk=;
+        b=CtzNQ9oqu936aYbVrHDSPAkUsQSYetJ0ociBR24q3ttrjq7wLW/HRIA9j4wfPy7dnl
+         A9KWc0gwDsu+m2TgclJZ4Ce4+DPeUVbnkva6RTZKg2LxkFOOTFqZUaeT1rtRzi4KCLfi
+         xg6yzux0sQoe1Z6HSSffvMCUiFGSvftdeebqVhVf7cY3UY1szCGXIQ1XV869d9w2Ud65
+         g2zZRf1KERj2QvNCaBULdjMO9YlTZFaV5k8IKzy8PxhxMT58ve6i+hsK0OZ0L77CC2Sz
+         4hc5yTgTPAK+iK8JLC0PdYgvKBQ0qLlMd2O4CGwFcBPKbA29dbfc4lyfL83+0L6MZED4
+         R5pw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1723796279; x=1724401079;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=nPpU0PH6JcycdB2I98txnw/CAZnoVrAUDVWZJg3o/Sk=;
+        b=lvMyISq17TzgTrJTh53mk2AYhjpQMrLs4PetbJFZ9hPo05hjZ7oI5lmRKeLsBZyVJk
+         AM2d+t6YRM6xJZm2KBnP2E60Z+wziwazdBJ3cbOZ2Wo8HxTS+B1taXT9j9PUj82Sl1Nb
+         NV//yAY8637fLLevT0V0GaPyeGRNEt509YNaLIxXSG/a1RGHYH0ooYqNG74UaSsNaFFT
+         WgYV6FPdlKwrOYHhxfRqAVZclh4slV40b1rTxdnII5h0v3MYufFQCOl2lwBjyJRmXAtB
+         uzKB+5KYEJKlpA2b9hg7iDE61Hf6cj0+f6Uxo5NfdjG/hIyaazBoVRCvftOanJ7P/xP0
+         fi/w==
+X-Forwarded-Encrypted: i=1; AJvYcCXphB0BXpt8qz4Ru+OF5PEE5DS7fjjKTBjpc66Dg5BTKHHMkEvs1lsrkQu4oF4tTx7Xny8KNJoKZy+MfwWrcf21PAhmoTJo
+X-Gm-Message-State: AOJu0YwBaL7S0UT8utJ9oXeBDqLtkGz20ftaQUMCbsY4nD22jh/7FHgY
+	1tVdliwTVGvWLM733D5eEYVxQHQS+r80TqH5ztJdcGcsngcJ29P1eSL10PCnhKGhSOwyCe97kps
+	0SpPVrdkarDFtyYwsYFXwhSPc7gzyNQwGm6L1drJj
+X-Google-Smtp-Source: AGHT+IHwBzP7404BHcFLdlD7qbYBGf8bhQDZW5S7N8RM6o9qavhPbf51m0tm6yH9raLsgP8+KMvrnH8N/L9NMM3uGoo=
+X-Received: by 2002:a05:6402:2353:b0:5a1:1:27a9 with SMTP id
+ 4fb4d7f45d1cf-5beca595cbcmr1609888a12.18.1723796279045; Fri, 16 Aug 2024
+ 01:17:59 -0700 (PDT)
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: CY8PR11MB7009:EE_|CH3PR11MB7275:EE_
-X-MS-Office365-Filtering-Correlation-Id: 12bbb6f5-e388-4ae9-de63-08dcbdca5173
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|376014|7416014|366016;
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?M2pOTUJaUzN4RGM0bjNiK0JQb1VVTHBwQ0NtUFJ0RG9naTVTS1RTdE5QQ2ky?=
- =?utf-8?B?dWNUNXp4MllaYitVNUFheDdQbTBZZkF4K0V4YkhGcWF6RFdsNW9GMk11dktM?=
- =?utf-8?B?VUpSNTN3MENNRzMySndFOVV2TTl3NTNDSUlYb09uM2dqSzF2YnhrbW9ZTFlt?=
- =?utf-8?B?MG90NnMzQWNNRTk1bk5id21zTlJJYUQ4RjR6L0FCWTBMK1FyM213OGhKTHlJ?=
- =?utf-8?B?VU1FUjBxLzFya2Z3VlVyOERZcHJMMXVBR3dQODY5QzFva1Y2eDdTemg5T2hU?=
- =?utf-8?B?RzY1bzJESURqOGtZRGhaUlp4bGpOZmJ5cExkdkpyeERaajEvalpnc2JzSjlp?=
- =?utf-8?B?cy8wUzBUWStjbHhGanJUVHFZd2xtaGVNcmVWV0FqbXIyeEVFR3B2M0RaTFlM?=
- =?utf-8?B?K2E4eUhKejQ2b1l6L1JSODBnZm5vUzlwekxJK3BJdndiRDFXN3EwOWRxbjhQ?=
- =?utf-8?B?ek5yYTFxcVNBNS9ydmZWbi9yS2lhdHhaRDZKNzZ4K3pKODdaK3QvMVViTEpE?=
- =?utf-8?B?RmdUQVZkMmxBNjRrWmVFeFZiTlJPQkpaVVloTE8vL2lRMXlYK3B2Qks4bEZv?=
- =?utf-8?B?a1dJOFJLcisvZDVaektHckR0QlZLcWMvUDQvY3Q2aWFFV0NZZ0t6MmdrODBZ?=
- =?utf-8?B?ci82bDdaNkloM1pGYWxWYUkxbWZrVzcxRWptVTNlWTRaSitUNXRUanUvWVdR?=
- =?utf-8?B?aDNrQlBrUk82cHMySjFGNm4vUGd0QW5qakhLSVUwTHpybXdHOU05TlV3WTFu?=
- =?utf-8?B?RU92QjViM0R0ck5VUGpVM09TOHp3K3lBNTlMbzNwSnQxUUErZW9JZjRyamxr?=
- =?utf-8?B?S1cxUkNiRDVmVnJPc0NvMkY0WlVKbDg5VEprT0ZEaXJrdG4zdzkxb1FMa0hW?=
- =?utf-8?B?RzZ3V01DZmNNUURSdURXNlJ0OVZYZmpLNEtoU044NHlCU3pKR2N1a2w4K1JR?=
- =?utf-8?B?SHRYZXJRcUNJUWdwZEUwUTg3NkN4ZytpQUtUMFZmb0hWSUg2OW5CWWdPS0t0?=
- =?utf-8?B?Vkh3cXFMWjMzTkl4d04yaHY2bGwrem84cG5uU3Uzc0lPazZCeU9pbGtaMjhB?=
- =?utf-8?B?RWhvMU9zRU5BQU9QREtBd1U5eFFDN1hVQ3Jla1h5QXBjMVBvVkpTK0dhWlBM?=
- =?utf-8?B?aFJIUzJNTlZ6NTFURC9BbmM0c3pQOEJhMUVwTWtrRWJFU0tWYXN2NGszMHAy?=
- =?utf-8?B?YVJVdFJYSXMzTyszWVVJTWpCa1dkbEZTelAwTkFPdUtWVzVJVGJiRUMwZUpx?=
- =?utf-8?B?eTIxT1hqUmRPV0wzSUtvMXZLby83V3BiTnBZbGEzeWZRb0U0ekpCVFlBQ0dI?=
- =?utf-8?B?TFA2U3RVekEvcFdSUUxaNGJJSE9qYmhleWdrWXVPZEJhdGFWYjFWYUtpVmdW?=
- =?utf-8?B?SGI2ektoMmVPcVBid2NUYWFSc3ZranE2aytyMHdxMmo4bGpsc2NMUzlVOXNW?=
- =?utf-8?B?Ty9DOENKb0RwQ0V2ZzZ1L0gzOVRzRnlVV1MwKzhLdWs2bk0xNEQvSkpIZDVz?=
- =?utf-8?B?azhOZTBqc3JvMGlhcDlhY0pNaDVETnhjWEkrOG1hNWwvUlVNd3VMTXM4bk1m?=
- =?utf-8?B?ZmtmLzYrZnptT0tGRmgreTN2UWJyeWVxQmhTZWcvVHRKM0tBeWt2MjVFQjN6?=
- =?utf-8?B?MFZ6N3JKaU5pRExaRCtJN2lvSFBSTE40SHRDRmg2eWdFS21ROHRyc0pzRC95?=
- =?utf-8?B?Z0YwejdRSEhWa3ZFVGNyYUZZLy9RVXZCc3JZeUw2QTJ3ZVNINVhORUV0ampB?=
- =?utf-8?B?azNrN3NORlhDeWdlNGxLUzkxS2UzcVpDNy9jRit4eU1EQy9PRU0zeUlmTEcy?=
- =?utf-8?Q?Ani3yOL5Xh0tNBOWFg3SQcKSxypNrpGR3tjPE=3D?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:CY8PR11MB7009.namprd11.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(376014)(7416014)(366016);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?VDhQS3ZQVDRHNXA0YTE0YkFFdlZhMjlvOFF6bm91UmNQZGdWTk1UQnBBVHZ3?=
- =?utf-8?B?MVBGKzl1dno1Wlp2Q3hSRXNFV1YwTWdwSi9WejBVd2UzQlRhSnRHaWpQa2VK?=
- =?utf-8?B?Z2tBSjlrdk4rY0hweURUcG54TnZ3RWt6OVJiUk1CdW0wb1NzU3pBR2lqckpk?=
- =?utf-8?B?YkZLR0dPQnl4OWJJK2NDTVh5ZnB2SmdEakZlRUtvTmg0VWNPMy84ZEg2anFp?=
- =?utf-8?B?U3pnWW1lNG9BZnJlcENZZ2x2Y3N1WnhTQ2tBK21UVkx4Y04rVW5MV2VTdGJq?=
- =?utf-8?B?a1Z2Y1Z2K0M0eWJJS1pYcnMvS2QxV3lkeDNjbGE5TnFrNFFqNU1UK0IwUFpJ?=
- =?utf-8?B?U0RLWGgyQ2htT1hDeUZPYVhrU1lyQTFkZzZFUWRQUGtVN0tlWCtqeFFtTkd3?=
- =?utf-8?B?RFBxVmh5Z0dkUUdJN1JMT0xucEpMRWZ3YzRiQzcrUFV5aFJaSUFOTDhBUUZy?=
- =?utf-8?B?akJiY3hmU1U4UlVYTkdiV2ozcGtFNUZpcmpmWnVpWTVVenl1NDBaa1FWakp2?=
- =?utf-8?B?SVRHNlZkR3QwS1pDYW5jcXFWaWNPYmNMNVBUT0ExSXc4QjMrUCtkQWVycVM3?=
- =?utf-8?B?Z1E4WWZqR0JYcjBCbkRCNjY1QjUvbzE5UWRkUWI3QWlLTFNCdlg1UitkQUhw?=
- =?utf-8?B?RGtqNXM3dWxIOWgyWFhMdktBUjhaVHNFc0JKaW9MMUJzRXp0MjFIWjdPUjRv?=
- =?utf-8?B?MkxDL0tDbVhVSHRjZGtsdEpYT2NLQW04UUkzVWxHM1BpUExRUnpuUWlnRnVR?=
- =?utf-8?B?azdlWFBha3R5V1cwTkJqVnhVbVhDOHlsdzRKa2hVOEdCeDUrUmZKeU1Qc21V?=
- =?utf-8?B?VDdQdEo5M2VMeVNwSmgwS0Q1dTZsZG15L0I5S254RmMxWE5aRGpMb2ZxTjVT?=
- =?utf-8?B?VWttM1l2eXd6Vzg2bitvM3BvUWZTM0QrVnZTLzBZZ1Q5eFVUUW9hM1N4UFYr?=
- =?utf-8?B?eGZiZWRiWU5sYWRjTWxVVno5Z1lUR3owd2hrdlU3amJZa0Q3bks4M1ZVTHRv?=
- =?utf-8?B?bmNHRnBnSnNOd1FOOWZ4T2xsa2hhakVFejJDL0pmOVNEMnVWOGVmbUl3WCtR?=
- =?utf-8?B?Q3oraXB4cU5SZVBPNllRSVJHNWtPb0pvMmcrMTh6TmYrRHhMMzFqaWluekpU?=
- =?utf-8?B?TnZmSVJRNjdHcDFQOHpTWkZWbWkzR1JkQTIrV2VZdUhhQXFVMFpueGNaRzha?=
- =?utf-8?B?MFlCb3Y5TkYxN0JmUmhiN2FUblFJbkEwenUxdld4aVQ4OGJDdlZnNkVpN3RE?=
- =?utf-8?B?c1F4TDBWaTc0T0NlQktydjAwM0FEakkvUDRYWmlrYkZkOTVTOWRYZDUxSTdi?=
- =?utf-8?B?VCtjMEFtN0lJM1hIalE5Q0lzc2E0QUJSYjgwbm15QlpaWVJoM3JLbC9oTjdw?=
- =?utf-8?B?OUVydExrZTcraG03V3JwQUpWYm80UkNlWmZHcCtHTWhDN1BQcVh6aU9kK01S?=
- =?utf-8?B?bHVUTC9oTGZFallXZXN2Y3RpNWNkbzQvZm9nc2RSRkw4Rng0MTJ4K3Y0cG1p?=
- =?utf-8?B?L1JiM2xCY29JUVlrbDVpVGd2eTI3VlRTQmhOc2MySVF5NEtVMDhHTUlHYUZO?=
- =?utf-8?B?Sm91eTNMMDZEKzF6N2hyVURySmd6SHJ2R25YREQ2dmZMdXBrYjdmUUpjc0pj?=
- =?utf-8?B?N1dXY3Q1RDhvaGNHVUI4dEthd2NDZERuWmlOVUJPL2RhZ0lQeWlGajlab05l?=
- =?utf-8?B?U21YWTdya3RqSmFFWCtOUDRnemVvOUhTM2NkWGtjTmRPTWN2Y1FvMGgzeWdP?=
- =?utf-8?B?cE9qU3FWckU3ZXpuRmpXWS9mc1N1bHJpN1hrcEwvS2lYN3pqOHZDQ0JQS2sx?=
- =?utf-8?B?SFBicXlQcjV3QzQzaXBjMDZBZEFMV1lqb0Z2YmFkemlPNG9EbjRTakFHc2N2?=
- =?utf-8?B?UHE2ZHNCeEhzbUkxMEpNZ0JoMFBkcEFyeGQyVk9EdVphVXNaaC8rSmRyZmo3?=
- =?utf-8?B?WEhCaEFnRnV6MGlHMG81aTZNSExQWE9wU05naEwyVld2Y1Fvc21MMG03OENN?=
- =?utf-8?B?SFZqTnpaZG5teXUxb1RjMjBUUk4yRVhNdW9wcEpmc01FSUR2NGt1bG5pM1lu?=
- =?utf-8?B?ekFncHJpdlBQbUJ1M0VpeFNxbjFUTjZrRStNSXROOTlNWmNRUmtCSHFzRCty?=
- =?utf-8?Q?NhQx+hUSdP26DuMMYhOZwi8pB?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: 12bbb6f5-e388-4ae9-de63-08dcbdca5173
-X-MS-Exchange-CrossTenant-AuthSource: CY8PR11MB7009.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 16 Aug 2024 08:06:23.0647
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: qra88Ka0N+SDDbD7Y9ZuS1Du9gur8rxHZOp1eQ4/BmaNgy02LURcQ412GqQ/ywpQdkouNz4idHO/YKdsKnMLSA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH3PR11MB7275
-X-OriginatorOrg: intel.com
-X-TUID: qsS3dZhzc9IB
+References: <20240815-rust-pl011-v7-0-975135e98831@linaro.org> <8f5f670b-313e-4172-a04b-ff8439bc4777@intel.com>
+In-Reply-To: <8f5f670b-313e-4172-a04b-ff8439bc4777@intel.com>
+From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+Date: Fri, 16 Aug 2024 11:17:47 +0300
+Message-ID: <CAAjaMXYyggQuenzEt-cTpENAM5S46_Wi4iqeXjzLYoDrHXzj2g@mail.gmail.com>
+Subject: Re: [PATCH v7 0/7] Add Rust build support, ARM PL011 device impl
+To: Junjie Mao <junjie.mao@intel.com>
+Cc: "open list:ARM SMMU <qemu-arm@nongnu.org>," <qemu-devel@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>, 
+	=?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
+	=?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
+	Thomas Huth <thuth@redhat.com>, =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+	John Snow <jsnow@redhat.com>, Cleber Rosa <crosa@redhat.com>, Beraldo Leal <bleal@redhat.com>, 
+	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	Wainer dos Santos Moschetta <wainersm@redhat.com>, "Liu, Zhao1" <zhao1.liu@intel.com>, 
+	Peter Maydell <peter.maydell@linaro.org>, ARM TCG CPUs <qemu-arm@nongnu.org>, 
+	Stefan Hajnoczi <stefanha@redhat.com>, Pierrick Bouvier <pierrick.bouvier@linaro.org>, 
+	Richard Henderson <richard.henderson@linaro.org>, Gustavo Romero <gustavo.romero@linaro.org>, 
+	"Hart, Rowan" <rowan.hart@intel.com>, Mads Ynddal <mads@ynddal.dk>, 
+	Markus Armbruster <armbru@redhat.com>
+Content-Type: multipart/alternative; boundary="000000000000e0ce20061fc89844"
+X-TUID: wbYmz91GXGXD
 
-On 8/15/2024 7:42 PM, Manos Pitsidianakis wrote:
-> Outstanding issues
-> ==================
-> 
-> Outstanding issues that are not blocking for merge are:
-> 
-> - Cross-compilation for aarch64 is not possible out-of-the-box because of this bug:
->    <https://github.com/rust-lang/rust/issues/125619> in llvm which when
->    fixed, must be ported to upstream rust's llvm fork. Since the problem
->    is an extraneous symbol we could strip it with objcopy -N|--strip-symbol
-> - Adding more than one Rust device ends up with duplicate symbols from
->    rust std library because we are linking as whole archives because...
->    constructors are stripped by the linker otherwise :( It can be worked
->    around if a single Rust library is built with all the devices as
->    dependencies which is then linked to qemu. The fix is a small change
->    which I will add either in a next version or when a new Rust device is
->    added.
-> 
+--000000000000e0ce20061fc89844
+Content-Type: text/plain; charset="UTF-8"
 
-Hi Manos,
+On Fri, 16 Aug 2024, 11:06 Junjie Mao, <junjie.mao@intel.com> wrote:
 
-I also noticed that when I tried adding a second device. Some other projects met 
-similar issues [1], but no clean solution seems to be available yet. The options 
-are:
+> On 8/15/2024 7:42 PM, Manos Pitsidianakis wrote:
+> > Outstanding issues
+> > ==================
+> >
+> > Outstanding issues that are not blocking for merge are:
+> >
+> > - Cross-compilation for aarch64 is not possible out-of-the-box because
+> of this bug:
+> >    <https://github.com/rust-lang/rust/issues/125619> in llvm which when
+> >    fixed, must be ported to upstream rust's llvm fork. Since the problem
+> >    is an extraneous symbol we could strip it with objcopy
+> -N|--strip-symbol
+> > - Adding more than one Rust device ends up with duplicate symbols from
+> >    rust std library because we are linking as whole archives because...
+> >    constructors are stripped by the linker otherwise :( It can be worked
+> >    around if a single Rust library is built with all the devices as
+> >    dependencies which is then linked to qemu. The fix is a small change
+> >    which I will add either in a next version or when a new Rust device is
+> >    added.
+> >
+>
+> Hi Manos,
+>
+> I also noticed that when I tried adding a second device. Some other
+> projects met
+> similar issues [1], but no clean solution seems to be available yet. The
+> options
+> are:
+>
+> 1) Combining all crates into one staticlib which is linked to the final
+> executable. That requires generating one .rs with extern crate decls of
+> all
+> enabled crates. In the context of QEMU, different targets may enable
+> different
+> set of crates (e.g., some crates have arch constraints), thus one .rs for
+> each
+> target will be needed in general.
+>
+> 2) Linking rlibs (or emitted objects) directly with other C objects using
+> the C
+> linker. That somehow works (with some tricks) but is not officially
+> supported
+> and may break in the future.
+>
+> I'm working on (1), but would like to have your thoughts and preference on
+> those
+> options.
+>
 
-1) Combining all crates into one staticlib which is linked to the final 
-executable. That requires generating one .rs with extern crate decls of all 
-enabled crates. In the context of QEMU, different targets may enable different 
-set of crates (e.g., some crates have arch constraints), thus one .rs for each 
-target will be needed in general.
+Hello Junjie, I have also implemented (1) already (the fix I mentioned in
+the cover letter). In general I'd like to do it on a standalone patch so
+that it can be separated from the other changes instead of squashing it.
 
-2) Linking rlibs (or emitted objects) directly with other C objects using the C 
-linker. That somehow works (with some tricks) but is not officially supported 
-and may break in the future.
+If you have something already too, please share here! I will send mine as a
+reply to this thread when I am able. I am not familiar with meson so my
+version could be lacking!
 
-I'm working on (1), but would like to have your thoughts and preference on those 
-options.
+Manos
+
+
 
 [1] https://github.com/rust-lang/rust/issues/73632
+>
+> ---
+> Best Regards
+> Junjie Mao
+>
 
----
-Best Regards
-Junjie Mao
+--000000000000e0ce20061fc89844
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"auto"><div><br><br><div class=3D"gmail_quote"><div dir=3D"ltr" =
+class=3D"gmail_attr">On Fri, 16 Aug 2024, 11:06 Junjie Mao, &lt;<a href=3D"=
+mailto:junjie.mao@intel.com" target=3D"_blank" rel=3D"noreferrer">junjie.ma=
+o@intel.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=
+=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding=
+-left:1ex">On 8/15/2024 7:42 PM, Manos Pitsidianakis wrote:<br>
+&gt; Outstanding issues<br>
+&gt; =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D<br>
+&gt; <br>
+&gt; Outstanding issues that are not blocking for merge are:<br>
+&gt; <br>
+&gt; - Cross-compilation for aarch64 is not possible out-of-the-box because=
+ of this bug:<br>
+&gt;=C2=A0 =C2=A0 &lt;<a href=3D"https://github.com/rust-lang/rust/issues/1=
+25619" rel=3D"noreferrer noreferrer noreferrer" target=3D"_blank">https://g=
+ithub.com/rust-lang/rust/issues/125619</a>&gt; in llvm which when<br>
+&gt;=C2=A0 =C2=A0 fixed, must be ported to upstream rust&#39;s llvm fork. S=
+ince the problem<br>
+&gt;=C2=A0 =C2=A0 is an extraneous symbol we could strip it with objcopy -N=
+|--strip-symbol<br>
+&gt; - Adding more than one Rust device ends up with duplicate symbols from=
+<br>
+&gt;=C2=A0 =C2=A0 rust std library because we are linking as whole archives=
+ because...<br>
+&gt;=C2=A0 =C2=A0 constructors are stripped by the linker otherwise :( It c=
+an be worked<br>
+&gt;=C2=A0 =C2=A0 around if a single Rust library is built with all the dev=
+ices as<br>
+&gt;=C2=A0 =C2=A0 dependencies which is then linked to qemu. The fix is a s=
+mall change<br>
+&gt;=C2=A0 =C2=A0 which I will add either in a next version or when a new R=
+ust device is<br>
+&gt;=C2=A0 =C2=A0 added.<br>
+&gt; <br>
+<br>
+Hi Manos,<br>
+<br>
+I also noticed that when I tried adding a second device. Some other project=
+s met <br>
+similar issues [1], but no clean solution seems to be available yet. The op=
+tions <br>
+are:<br>
+<br>
+1) Combining all crates into one staticlib which is linked to the final <br=
+>
+executable. That requires generating one .rs with extern crate decls of all=
+ <br>
+enabled crates. In the context of QEMU, different targets may enable differ=
+ent <br>
+set of crates (e.g., some crates have arch constraints), thus one .rs for e=
+ach <br>
+target will be needed in general.<br>
+<br>
+2) Linking rlibs (or emitted objects) directly with other C objects using t=
+he C <br>
+linker. That somehow works (with some tricks) but is not officially support=
+ed <br>
+and may break in the future.<br>
+<br>
+I&#39;m working on (1), but would like to have your thoughts and preference=
+ on those <br>
+options.<br></blockquote></div></div><div dir=3D"auto"><br></div><div dir=
+=3D"auto">Hello Junjie, I have also implemented (1) already (the fix I ment=
+ioned in the cover letter). In general I&#39;d like to do it on a standalon=
+e patch so that it can be separated from the other changes instead of squas=
+hing it.</div><div dir=3D"auto"><br></div><div dir=3D"auto">If you have som=
+ething already too, please share here! I will send mine as a reply to this =
+thread when I am able. I am not familiar with meson so my version could be =
+lacking!</div><div dir=3D"auto"><br></div><div dir=3D"auto">Manos</div><div=
+ dir=3D"auto"><br></div><div dir=3D"auto"><br></div><div dir=3D"auto"><br><=
+/div><div dir=3D"auto"><div class=3D"gmail_quote"><blockquote class=3D"gmai=
+l_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,20=
+4,204);padding-left:1ex">
+[1] <a href=3D"https://github.com/rust-lang/rust/issues/73632" rel=3D"noref=
+errer noreferrer noreferrer" target=3D"_blank">https://github.com/rust-lang=
+/rust/issues/73632</a><br>
+<br>
+---<br>
+Best Regards<br>
+Junjie Mao<br>
+</blockquote></div></div></div>
+
+--000000000000e0ce20061fc89844--

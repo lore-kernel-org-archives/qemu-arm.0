@@ -1,320 +1,298 @@
-Received: by 2002:a17:504:9188:b0:1be9:327d:8ee3 with SMTP id i8csp1398289njf;
-        Fri, 16 Aug 2024 17:43:17 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUOqNSSfYcovM+TTZ0d2i0dq/vjD0x7ndGM4Yrn2y62c/5a2qxP4+G3LiIi3jC9/Roc2Y5mF726YVNcMQnpdRe7epsychBz
-X-Google-Smtp-Source: AGHT+IGK6fTu9fAMDfgi6FsYSK8imrveUUv+g7zDmwsGxn987KErGgdWmjChljysmGmr8nRPlEKu
-X-Received: by 2002:a05:6830:929:b0:703:fdda:c1c7 with SMTP id 46e09a7af769-70cac83d134mr4461384a34.7.1723855397505;
-        Fri, 16 Aug 2024 17:43:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1723855397; cv=none;
+Received: by 2002:a17:504:9188:b0:1be9:327d:8ee3 with SMTP id i8csp1398725njf;
+        Fri, 16 Aug 2024 17:45:58 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCUngINMNCLw/J00UL0uLCEeH+F23EmtFsaOd069pDQzgWtuiXC38tp5KqYw/gGe+1/wVYksYyPs52XDtA==@linaro.org
+X-Google-Smtp-Source: AGHT+IEFRng9NzxujHzT/Z/fDTKLQszBHAek5yxgXUSaZ5RiCJWPXymg4s5QSQZaMA48gEpR/Xa+
+X-Received: by 2002:a05:6808:18a1:b0:3da:a032:24c5 with SMTP id 5614622812f47-3dd3ad2f9c6mr4956101b6e.22.1723855558788;
+        Fri, 16 Aug 2024 17:45:58 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1723855558; cv=pass;
         d=google.com; s=arc-20160816;
-        b=lC41sqKBjezI8zOFJ4cHy5qoaGxD67xRKJnXVrEY1U4VJvYn6U0EGVpBp2X2As6UnW
-         WhGExij9HN4nCnOA48Kdh45r5Ufqot4Uc1g8ucVlA19TjTGe84B/DJoCcdnuib6tQtpY
-         FJe+ElMahRhrMrDWcHItpXfpB8SvJWHvrni+VBa8xcVXLdLYRkcbkdhCLnSqcFiNywlz
-         OpuzrrDzRAaep6fgvupMjQFPjiJroBazqnd74dVYhc6e2CiH5PoQFTXTC3ecZNRPgXZd
-         OvDtZ95fpA8FXl4BJ9Ax20NAwB/MaPuVIi44bWH71DO4+Jwkex/LOGorHLKVnTRrDxYT
-         VUGw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:references:to:cc:in-reply-to
-         :date:subject:mime-version:message-id:from:dkim-signature;
-        bh=Z1KtMJ9inNrCSBgeoGYAd5GLzpy22ae6mW9LL6GR8OY=;
-        fh=qJ9onPhxuJvKavxolNC2mYGQba5PpR+0LDyzhwHoIoE=;
-        b=gXNaH3CULq3GdzTLHAVAaGGobOr1Uh8ysxMI5xxLgMdibmxabQauKDyYNRK7HZT55t
-         ivNFrShzOn6ju51WYSsve/gAoB0SizarLvUYnmBlIwKc+4YePAl/bQ4VT9SJNHDa5dp9
-         5ef17avpiySr3KIbIe7m0UzTtWvhx04gLjlut2VVHDX2ki5UY141qOBYdkh5Y9uNSkN1
-         511BMdJtoa5fQCqvJ/B0aqDrUprBwY7KUBN6fuybIi99KWA+xQx0Bj2itxkDJMO/hmSV
-         SmImjFDpp7dj8oMxUsJUihshc+5Nt5pxWbAQFLKm8Q+yPw8hcu/8SOawwuEurAXxlzfq
-         HEHg==;
+        b=INI1d+NIDJlX82TRQx9ke3er34nPWchvxKz7AiMzMhYvJfenwktCX4nVO/hxIN+ZR+
+         eZ/he03f0ntH5NchKel7/1jtoFmXY7byO/r0VI6YGVEFZI2czUpN59BIiq4q9puhQ2Sw
+         FT5jOuWzM0hByliPgZOoMpc1e1PHWK4qezfD6vWCF7ylEsIzTnIOZ4PfnuKBHrvgJQdc
+         SfVL4IXHQsfnjG471i/pn0ExBU48akX1mUq7IIYCrPO7Y3oavDKoCrocYWrkXEekQG9J
+         TjEWRbis/7G8h7hBfZ6GJMfIM+gWNCz4VYkT1kOsiQz5SzpC/Nx77McWfmg8YAmHj4ii
+         DIiw==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=m4SVgnne9erkuAhrAeM3VCVOKRFMY2Is89F35hd+2Sk=;
+        fh=l5QszxWMWNP+ZFnHgaGYNhEtT9hb7KqcJ85KXFuefz8=;
+        b=kBo0/fFAiHSUW5a/egjEwQkcGmVuK8N+QWs9Oc/+bJ5Oa4ReQpvDsY9XJbBq9zabB3
+         hbBpJW26eDbfsVbNd7gjS0UIYUt0J7QKzIqJV2mQTrdUJEy2zx4Ug869OrfdfaP3KQM6
+         niP8GBjZl2RS+gz/u/3nFJo/gNRYW/eoa9HDPVbx20k6yVXwgaTFQ6Aqqt8N0mQ3xKFf
+         cpHM1zfCLqPVYZ+9gMGCGLFEewtm4ogqn2fDMLgDOEV0J8LIBduXqy1RUp+PaxRUmWSc
+         qOBxC+y35Y5DY3etYU+4osz8tz9n/iHuCd1IBtRRMxi4VFQXarlr/HIpJ9XH5HWSD71L
+         0PZA==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@apple.com header.s=20180706 header.b=igpAYPMS;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=REJECT dis=NONE) header.from=apple.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-45369fe6451si53580831cf.32.2024.08.16.17.43.17
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 16 Aug 2024 17:43:17 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@amd.com header.s=selector1 header.b=yyKe+f4O;
+       arc=pass (i=1 spf=pass spfdomain=amd.com dmarc=pass fromdomain=amd.com);
+       spf=pass (google.com: domain of jason.andryuk@amd.com designates 2a01:111:f403:2414::614 as permitted sender) smtp.mailfrom=Jason.Andryuk@amd.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
+Return-Path: <Jason.Andryuk@amd.com>
+Received: from NAM11-BN8-obe.outbound.protection.outlook.com (mail-bn8nam11on20614.outbound.protection.outlook.com. [2a01:111:f403:2414::614])
+        by mx.google.com with ESMTPS id 41be03b00d2f7-7c6b61a8a1csi4566033a12.82.2024.08.16.17.45.58
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 16 Aug 2024 17:45:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jason.andryuk@amd.com designates 2a01:111:f403:2414::614 as permitted sender) client-ip=2a01:111:f403:2414::614;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@apple.com header.s=20180706 header.b=igpAYPMS;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=REJECT dis=NONE) header.from=apple.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sf7WQ-0006Og-Ju; Fri, 16 Aug 2024 20:42:22 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <danny_canter@apple.com>)
- id 1sf7WO-0006OA-Py
- for qemu-devel@nongnu.org; Fri, 16 Aug 2024 20:42:20 -0400
-Received: from ma-mailsvcp-mx-lapp02.apple.com ([17.32.222.23])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <danny_canter@apple.com>)
- id 1sf7WM-0007X0-BY
- for qemu-devel@nongnu.org; Fri, 16 Aug 2024 20:42:20 -0400
-Received: from rn-mailsvcp-mta-lapp04.rno.apple.com
- (rn-mailsvcp-mta-lapp04.rno.apple.com [10.225.203.152])
- by ma-mailsvcp-mx-lapp02.apple.com
- (Oracle Communications Messaging Server 8.1.0.23.20230328 64bit (built Mar 28
- 2023)) with ESMTPS id <0SIC000MG722PA10@ma-mailsvcp-mx-lapp02.apple.com> for
- qemu-devel@nongnu.org; Fri, 16 Aug 2024 17:37:15 -0700 (PDT)
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1039,Hydra:6.0.680,FMLib:17.12.28.16
- definitions=2024-08-16_17,2024-08-16_01,2024-05-17_01
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=apple.com; h=cc :
- content-type : date : from : in-reply-to : message-id : mime-version :
- references : subject : to; s=20180706;
- bh=Z1KtMJ9inNrCSBgeoGYAd5GLzpy22ae6mW9LL6GR8OY=;
- b=igpAYPMSBEiDRqWVK6CQ/1rainOGPYdJ6FnPzSHAP5oJhxArV3RbI01dU/wDGeXvJJli
- 2SefRr/AKTOrj8+7YbyQDb9tKEIsqExjahH2J2koMmoKTCv84HBHg5mHS+qg2oQG+O8w
- tVEfuZC5hStXe7G6vhV0x0cIwRJp7SoNFdSc2rIEmphqv1ayUPM8/uAbpPPrmtMiycUh
- /Vo4DBaF6IV/4gRHRvHMBx5n55/HYaZBB76N1aVe6yzyh2ybXfxPOHvk6sObqtF2UVku
- FECKjYkY8WG8mtmmD79low5MwQVOEC+5MhmmQCHr1jjk+o63AA/WpWfhMKL5EKbyPSM0 UA==
-Received: from mr55p01nt-mmpp04.apple.com
- (mr55p01nt-mmpp04.apple.com [10.170.185.204])
- by rn-mailsvcp-mta-lapp04.rno.apple.com
- (Oracle Communications Messaging Server 8.1.0.23.20230328 64bit (built Mar 28
- 2023)) with ESMTPS id <0SIC00YKH721J590@rn-mailsvcp-mta-lapp04.rno.apple.com>; 
- Fri, 16 Aug 2024 17:37:13 -0700 (PDT)
-Received: from process_milters-daemon.mr55p01nt-mmpp04.apple.com by
- mr55p01nt-mmpp04.apple.com
- (Oracle Communications Messaging Server 8.1.0.23.20230328 64bit (built Mar 28
- 2023)) id <0SIC08X006TJVD00@mr55p01nt-mmpp04.apple.com>; Sat,
- 17 Aug 2024 00:37:13 +0000 (GMT)
-X-Va-A: 
-X-Va-T-CD: 9be860c946f6cbc0801dd392535b1c06
-X-Va-E-CD: 6e8d677d3901fd5b58b190047ca79016
-X-Va-R-CD: 4206bda14c83e153d471243933acbb53
-X-Va-ID: df1ee542-a3ac-4040-bb1c-4785413cf21f
-X-Va-CD: 0
-X-V-A: 
-X-V-T-CD: 9be860c946f6cbc0801dd392535b1c06
-X-V-E-CD: 6e8d677d3901fd5b58b190047ca79016
-X-V-R-CD: 4206bda14c83e153d471243933acbb53
-X-V-ID: 7c7b94ba-3674-487b-b424-138886f76123
-X-V-CD: 0
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1039,Hydra:6.0.680,FMLib:17.12.28.16
- definitions=2024-08-16_17,2024-08-16_01,2024-05-17_01
-Received: from smtpclient.apple (unknown [17.11.165.88])
- by mr55p01nt-mmpp04.apple.com
- (Oracle Communications Messaging Server 8.1.0.23.20230328 64bit (built Mar 28
- 2023)) with ESMTPSA id <0SIC08DD271OBV00@mr55p01nt-mmpp04.apple.com>; Sat,
- 17 Aug 2024 00:37:12 +0000 (GMT)
-From: Danny Canter <danny_canter@apple.com>
-Message-id: <CA7E2403-A9F6-4B29-B640-13E41D530744@apple.com>
-Content-type: multipart/alternative;
- boundary="Apple-Mail=_182B2C20-4477-4C15-BACF-6201DBE72E07"
-MIME-version: 1.0 (Mac OS X Mail 16.0 \(3815.100.3\))
-Subject: Re: [PATCH] hvf: arm: Allow creating VMs with > 63GB of RAM on macOS
- 15+
-Date: Fri, 16 Aug 2024 17:36:42 -0700
-In-reply-to: <CAFEAcA9XXhsUeHNjsVkjhjO2_Njkk=L00BG+24xtXWWKgJayRw@mail.gmail.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- Cameron Esfahani <dirty@apple.com>, rbolshakov@ddn.com, agraf@csgraf.de
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20240718230031.69641-1-danny_canter@apple.com>
- <CAFEAcA__WZ=uw0VLcP0fLbUTwmctsZ1y=FRf9bXMT9WJC2sRFA@mail.gmail.com>
- <E03A8C36-4079-468F-9596-328D713C3611@apple.com>
- <CAFEAcA9XXhsUeHNjsVkjhjO2_Njkk=L00BG+24xtXWWKgJayRw@mail.gmail.com>
-X-Mailer: Apple Mail (2.3815.100.3)
-Received-SPF: pass client-ip=17.32.222.23; envelope-from=danny_canter@apple.com;
- helo=ma-mailsvcp-mx-lapp02.apple.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
-X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.131,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: F5lWSrHQWlRb
+       dkim=pass header.i=@amd.com header.s=selector1 header.b=yyKe+f4O;
+       arc=pass (i=1 spf=pass spfdomain=amd.com dmarc=pass fromdomain=amd.com);
+       spf=pass (google.com: domain of jason.andryuk@amd.com designates 2a01:111:f403:2414::614 as permitted sender) smtp.mailfrom=Jason.Andryuk@amd.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=F8vrRC7roj99wmz41J6BY5Y2/SHa85GIugxghpM64KHak6LADmf7INUNpMCe0ntQU//bLG19qT8j/deMG0cHAphj6uDeUxpTY9LkJCWugau/WYukJ6JlEWQcGNDhHyw6Eb3XZ6eV8fgv7OcF7OCZZYy42Y4+p27qwGHO7FlY7EzqHtTtajvuxZwl8nunpPGmekS006W+RsgybZnkHsL7R6ABraH4Quw5T5jMufNDz4GJHXrHjHey71PdakVd1yIB6R3lTbdH7lDWt+tRVqirmCwu2scYzmaghJpZOfwFTiUVtrrtf+AV6uYwYRkeF93sGOXDCagXwD/2WP0OOHRoXA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=m4SVgnne9erkuAhrAeM3VCVOKRFMY2Is89F35hd+2Sk=;
+ b=cPfOm+jmZ25g1hPXYcCsoWQGD7wSYrL6ypUPgO0k/Pb+1acw4OVQaMn4ViQxVVkpoMXZ54T5JeQlHP1Lmcrjasvuo+7jsaWKQCGQjQrlsBdKnlWUo8JPUNiw1+cm1JHFL4dVndkqTue87rJsKEwwQPoXgJ+hwXNSV/JMl10K1ERpjx0oWQvfSOShYm49cBSrqWKM8qR/HbvlBSzwuRJmkhG7GseIXWxOF/3AyVQcUyRJm3Fq57c0BasdNPa6w+SlqU9yzPiOUbOZEEzplbRk1/kBryBRdCLijKqROJ3nbTELfGxly9kWm9VN/TKaDnliDtq1vAsprzYW44TomNNjhQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 165.204.84.17) smtp.rcpttodomain=kernel.org smtp.mailfrom=amd.com; dmarc=pass
+ (p=quarantine sp=quarantine pct=100) action=none header.from=amd.com;
+ dkim=none (message not signed); arc=none (0)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=m4SVgnne9erkuAhrAeM3VCVOKRFMY2Is89F35hd+2Sk=;
+ b=yyKe+f4OwTp3AbVgJbDKlFsVXBIeDFU4JTkfv34I+I96d0YRfxFOc6iQzyqW5B02vYhnbBJ6dBXjoSWqWgwADYjYkg0BokTQmOYEwgpspcB0YXITk4Guv8N9T4keFnmdBDRZiBKLZO1r5U4YfdiiI9vg0F1FVvbetqx0wo6IgXE=
+Received: from BN9PR03CA0709.namprd03.prod.outlook.com (2603:10b6:408:ef::24)
+ by LV3PR12MB9412.namprd12.prod.outlook.com (2603:10b6:408:211::18) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7875.20; Sat, 17 Aug
+ 2024 00:45:53 +0000
+Received: from BL6PEPF00020E63.namprd04.prod.outlook.com
+ (2603:10b6:408:ef:cafe::3c) by BN9PR03CA0709.outlook.office365.com
+ (2603:10b6:408:ef::24) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7875.19 via Frontend
+ Transport; Sat, 17 Aug 2024 00:45:53 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 165.204.84.17)
+ smtp.mailfrom=amd.com; dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=amd.com;
+Received-SPF: Pass (protection.outlook.com: domain of amd.com designates
+ 165.204.84.17 as permitted sender) receiver=protection.outlook.com;
+ client-ip=165.204.84.17; helo=SATLEXMB03.amd.com; pr=C
+Received: from SATLEXMB03.amd.com (165.204.84.17) by
+ BL6PEPF00020E63.mail.protection.outlook.com (10.167.249.24) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.20.7849.8 via Frontend Transport; Sat, 17 Aug 2024 00:45:53 +0000
+Received: from SATLEXMB06.amd.com (10.181.40.147) by SATLEXMB03.amd.com
+ (10.181.40.144) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.39; Fri, 16 Aug
+ 2024 19:45:48 -0500
+Received: from SATLEXMB04.amd.com (10.181.40.145) by SATLEXMB06.amd.com
+ (10.181.40.147) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.39; Fri, 16 Aug
+ 2024 19:45:45 -0500
+Received: from [172.24.94.179] (10.180.168.240) by SATLEXMB04.amd.com
+ (10.181.40.145) with Microsoft SMTP Server id 15.1.2507.39 via Frontend
+ Transport; Fri, 16 Aug 2024 19:45:45 -0500
+Message-ID: <93de8d6d-6123-4038-a566-d134206ba608@amd.com>
+Date: Fri, 16 Aug 2024 18:58:26 -0400
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v1 04/10] hw/arm: xenpvh: Add support for SMP guests
+To: Stefano Stabellini <sstabellini@kernel.org>, "Edgar E. Iglesias"
+	<edgar.iglesias@gmail.com>
+CC: <qemu-devel@nongnu.org>, <anthony@xenproject.org>, <paul@xen.org>,
+	<peter.maydell@linaro.org>, <alex.bennee@linaro.org>,
+	<xenia.ragiadakou@amd.com>, <edgar.iglesias@amd.com>,
+	<xen-devel@lists.xenproject.org>, <qemu-arm@nongnu.org>,
+	<andrew.cooper3@citrix.com>
+References: <20240812130606.90410-1-edgar.iglesias@gmail.com>
+ <20240812130606.90410-5-edgar.iglesias@gmail.com>
+ <alpine.DEB.2.22.394.2408121650590.298534@ubuntu-linux-20-04-desktop>
+ <ZruRm34zIMtUm7oH@zapote>
+ <alpine.DEB.2.22.394.2408131550080.298534@ubuntu-linux-20-04-desktop>
+ <ZryZwOoadeb1UWK8@zapote>
+ <alpine.DEB.2.22.394.2408141719400.298534@ubuntu-linux-20-04-desktop>
+ <CAJy5ezrUbGZCaF=HiYhyLCoXRL3d=t-QbmLeKvu7ByWksV888g@mail.gmail.com>
+ <alpine.DEB.2.22.394.2408160949320.298534@ubuntu-linux-20-04-desktop>
+Content-Language: en-US
+From: Jason Andryuk <jason.andryuk@amd.com>
+In-Reply-To: <alpine.DEB.2.22.394.2408160949320.298534@ubuntu-linux-20-04-desktop>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 8bit
+Return-Path: Jason.Andryuk@amd.com
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: BL6PEPF00020E63:EE_|LV3PR12MB9412:EE_
+X-MS-Office365-Filtering-Correlation-Id: ba8e23ee-e94c-44f2-3cd6-08dcbe55f2a5
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam:
+	BCL:0;ARA:13230040|82310400026|1800799024|7416014|36860700013|376014;
+X-Microsoft-Antispam-Message-Info:
+	=?utf-8?B?OXBSTWZPd2lwZ3FaZWh2Tk9UZXo3VnVSeXkvMWl5cngwNWZOZXErQSt4Nmo5?=
+ =?utf-8?B?Q0ozNXhaM1VoTkFsS0tYcTYyVTh4dnh0Slpoa3p5K29BMVJ5OVVrVHl6RGtl?=
+ =?utf-8?B?VXU1MkRvdGM5ZW5lalFwR3d5MzYzZDByRXFtQTE2UjI2V0tleVQ5eFA5RytI?=
+ =?utf-8?B?d1VyT2VYemxxSGtta0NTaXREZzVkdS90eTZvaGprUFZHdUgrd04yT0ZuQ0N3?=
+ =?utf-8?B?U1prSCtRVyttanBaMlkycFo1dVp2UW0xY0c4RGZhOHM5YUVJTjJQY2FJLzVW?=
+ =?utf-8?B?NnY5S3NUdEVyMGVVMkxlN0MzN29HMm9INnpuZ3F6c1NmV1F0aUxvQUJlb3dx?=
+ =?utf-8?B?UndiMU9sOG82d0RrdDZlb0hKZmpKRWxoM1hpZmpOSGZHa0hleithd1JremZN?=
+ =?utf-8?B?NG5WcnRkcE1RYlVYSmZsL1dJREtBaGwyWkhJd1FJb1pmbnJDSnVzRXZvMUZ5?=
+ =?utf-8?B?b3ZFNll0cEoxUHFDQlk1YXJrNnJxSzFhNmlib2lLK1AycTVTVHBNandDcW15?=
+ =?utf-8?B?cHhpc3NTMUpia29XQ1JPSzQrSmhqaFcwVTZzRHFXQzlpeUFBbndUNUJlY2Y0?=
+ =?utf-8?B?UmM5cnAzeFBzYThoTnAzNm1pUW1aZGdVWVVqRE15OVdYRXVVbitPakxORlpQ?=
+ =?utf-8?B?c1dMaVRmbkw4NUhFQ1ZQSnVwUFlBcDJYcE1zREloSjY5dkdjS3E0dkt1Y0hW?=
+ =?utf-8?B?YWVvYXhNYVRmc0JoRXBrcW9HUGY5WWNMUjR2RmozdGdmNTlZU3dYd3hoODFK?=
+ =?utf-8?B?UXAvWjdHSUJoRzdURGgyajY3bGVMaGptUVIxUGZ5d3FUa05ydllIWGN2NFNE?=
+ =?utf-8?B?YWd6dzRaODN3UllRTG9CNjgxUUVEcEdkMHJYeVpaUUpUYnZlZVRHY04xS3c3?=
+ =?utf-8?B?VXBEcFAxN3FZVWU1SFZ3U1o2bWV5SzJxRzBnM1g4b05zamk3M29WcnRmNmwv?=
+ =?utf-8?B?UjRXcEJxcWVVczFOTXZJelhzRWV3QjZ2Mm9UKzg3eHV2WmsvaTFNaEMwc2x0?=
+ =?utf-8?B?SjAwUG84UmVObmsvUXhyeFUydDAyaVdNcVpldE5qNDlQU3hpTHZ3OXYxMUxp?=
+ =?utf-8?B?enNSWTNtMWZ1Q2pCcmMzdVpXMUppOXRQOE9HRmdDVyt4VTUvdURielFTR2Zx?=
+ =?utf-8?B?c1I5aEpCbEFnODNRdU1KUU5IWnY2L01zSjVUQ0tkOXo4YnF3cHNKVzBnamFo?=
+ =?utf-8?B?MVpFdEdML0UycUR6NEYvYS95azVKR04zZ0x5YU0xUDJXV2JObGh2NG0yeDd1?=
+ =?utf-8?B?MStRS0xpcUJGc25nRFUydTZtZkJnSzZJSFZidysxaExOSTVzenlCU3FoUC9B?=
+ =?utf-8?B?K0VTTXpxdlFaZmk3WlZnYTdoSWdwZGtiSHBXNXVzL3JNZzB3OUh6VGw1TFNr?=
+ =?utf-8?B?VUhyOENnVmw2UXhod0NxRTRySzhkK3JyZTlncUJYeXlYcWFBOGx5K05IczhQ?=
+ =?utf-8?B?dEhpVzBQdUdiWVdwSUF4ME5YaElmMnoxVzZGcVl0aGhLdElvdVZkTVZzN2tW?=
+ =?utf-8?B?aFVNb0x4K0dIeFZabklKcmROYVlvZzhiVTg4bms4QnpIaVFmYkVCU0NueTNK?=
+ =?utf-8?B?M2xLbmtkMVBMcWVpODlYYlB2SFhSZnlCUm5JOVRhNFlDK1FmQWEzelFOdDYy?=
+ =?utf-8?B?dmRjUHBLeHNMSHVHYnNsOUZpQTZ0cmlIa29rWDNvTFdSaHJDZDJRcXJmaG1y?=
+ =?utf-8?B?ZWZKMFBYc1J1VW03MW13eFpKTVVOODV4NmtVd1BTaEZ1dGV3L2gvOEQ4cExG?=
+ =?utf-8?B?MWxKTkxCZmdIbko0QVBQdklkMTA4a21WWnI4UWdkaHlzU0FJdE9OSmFWN21J?=
+ =?utf-8?B?eGZxYjdkNld6cEVWQlc5K3NLeU1DV3RZdDdYUEt5dllpTDYxcXJETDIyTkpS?=
+ =?utf-8?B?N1F4WWc3ZXZsams2MVM1RlBEUWxmMWwyV21YbzVOOER0RHFGRXZaN0gvZVRq?=
+ =?utf-8?Q?20ss47yP/frVMvZbzfb+u/lvoXVO/JWk?=
+X-Forefront-Antispam-Report:
+	CIP:165.204.84.17;CTRY:US;LANG:en;SCL:1;SRV:;IPV:CAL;SFV:NSPM;H:SATLEXMB03.amd.com;PTR:InfoDomainNonexistent;CAT:NONE;SFS:(13230040)(82310400026)(1800799024)(7416014)(36860700013)(376014);DIR:OUT;SFP:1101;
+X-OriginatorOrg: amd.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 17 Aug 2024 00:45:53.1399
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: ba8e23ee-e94c-44f2-3cd6-08dcbe55f2a5
+X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=3dd8961f-e488-4e60-8e11-a82d994e183d;Ip=[165.204.84.17];Helo=[SATLEXMB03.amd.com]
+X-MS-Exchange-CrossTenant-AuthSource:
+	BL6PEPF00020E63.namprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: LV3PR12MB9412
+X-TUID: KB++6juHwgK9
 
+On 2024-08-16 12:53, Stefano Stabellini wrote:
+> On Fri, 16 Aug 2024, Edgar E. Iglesias wrote:
+>> On Thu, Aug 15, 2024 at 2:30 AM Stefano Stabellini <sstabellini@kernel.org> wrote:
+>>        On Wed, 14 Aug 2024, Edgar E. Iglesias wrote:
+>>        > On Tue, Aug 13, 2024 at 03:52:32PM -0700, Stefano Stabellini wrote:
+>>        > > On Tue, 13 Aug 2024, Edgar E. Iglesias wrote:
+>>        > > > On Mon, Aug 12, 2024 at 06:47:17PM -0700, Stefano Stabellini wrote:
+>>        > > > > On Mon, 12 Aug 2024, Edgar E. Iglesias wrote:
+>>        > > > > > From: "Edgar E. Iglesias" <edgar.iglesias@amd.com>
+>>        > > > > >
+>>        > > > > > Add SMP support for Xen PVH ARM guests. Create max_cpus ioreq
+>>        > > > > > servers to handle hotplug.
+>>        > > > > >
+>>        > > > > > Signed-off-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
+>>        > > > > > ---
+>>        > > > > >  hw/arm/xen_arm.c | 5 +++--
+>>        > > > > >  1 file changed, 3 insertions(+), 2 deletions(-)
+>>        > > > > >
+>>        > > > > > diff --git a/hw/arm/xen_arm.c b/hw/arm/xen_arm.c
+>>        > > > > > index 5f75cc3779..ef8315969c 100644
+>>        > > > > > --- a/hw/arm/xen_arm.c
+>>        > > > > > +++ b/hw/arm/xen_arm.c
+>>        > > > > > @@ -173,7 +173,7 @@ static void xen_arm_init(MachineState *machine)
+>>        > > > > >
+>>        > > > > >      xen_init_ram(machine);
+>>        > > > > >
+>>        > > > > > -    xen_register_ioreq(xam->state, machine->smp.cpus, &xen_memory_listener);
+>>        > > > > > +    xen_register_ioreq(xam->state, machine->smp.max_cpus, &xen_memory_listener);
+>>        > > > > >
+>>        > > > > >      xen_create_virtio_mmio_devices(xam);
+>>        > > > > >
+>>        > > > > > @@ -218,7 +218,8 @@ static void xen_arm_machine_class_init(ObjectClass *oc, void *data)
+>>        > > > > >      MachineClass *mc = MACHINE_CLASS(oc);
+>>        > > > > >      mc->desc = "Xen PVH ARM machine";
+>>        > > > > >      mc->init = xen_arm_init;
+>>        > > > > > -    mc->max_cpus = 1;
+>>        > > > > > +    /* MAX number of vcpus supported by Xen.  */
+>>        > > > > > +    mc->max_cpus = GUEST_MAX_VCPUS;
+>>        > > > >
+>>        > > > > Will this cause allocations of data structures with 128 elements?
+>>        > > > > Looking at hw/xen/xen-hvm-common.c:xen_do_ioreq_register it seems
+>>        > > > > possible? Or hw/xen/xen-hvm-common.c:xen_do_ioreq_register is called
+>>        > > >
+>>        > > > Yes, in theory there's probably overhead with this but as you correctly
+>>        > > > noted below, a PVH aware xl will set the max_cpus option to a lower value.
+>>        > > >
+>>        > > > With a non-pvh aware xl, I was a little worried about the overhead
+>>        > > > but I couldn't see any visible slow-down on ARM neither in boot or in network
+>>        > > > performance (I didn't run very sophisticated benchmarks).
+>>        > >
+>>        > > What do you mean by "non-pvh aware xl"? All useful versions of xl
+>>        > > support pvh?
+>>        >
+>>        >
+>>        > I mean an xl without our PVH patches merged.
+>>        > xl in upstream doesn't know much about PVH yet.
+>>        > Even for ARM, we're still carrying significant patches in our tree.
+>>
+>>        Oh I see. In that case, I don't think we need to support "non-pvh aware xl".
+>>
+>>
+>>        > > > > later on with the precise vCPU value which should be provided to QEMU
+>>        > > > > via the -smp command line option
+>>        > > > > (tools/libs/light/libxl_dm.c:libxl__build_device_model_args_new)?
+>>        > > >
+>>        > > > Yes, a pvh aware xl will for example pass -smp 2,maxcpus=4 based on
+>>        > > > values from the xl.cfg. If the user doesn't set maxvcpus in xl.cfg, xl
+>>        > > > will set maxvcpus to the same value as vcpus.
+>>        > >
+>>        > > OK good. In that case if this is just an initial value meant to be
+>>        > > overwritten, I think it is best to keep it as 1.
+>>        >
+>>        > Sorry but that won't work. I think the confusion here may be that
+>>        > it's easy to mix up mc->max_cpus and machine->smp.max_cpus, these are
+>>        > not the same. They have different purposes.
+>>        >
+>>        > I'll try to clarify the 3 values in play.
+>>        >
+>>        > machine-smp.cpus:
+>>        > Number of guest vcpus active at boot.
+>>        > Passed to QEMU via the -smp command-line option.
+>>        > We don't use this value in QEMU's ARM PVH machines.
+>>        >
+>>        > machine->smp.max_cpus:
+>>        > Max number of vcpus that the guest can use (equal or larger than machine-smp.cpus).
+>>        > Will be set by xl via the "-smp X,maxcpus=Y" command-line option to QEMU.
+>>        > Taken from maxvcpus from xl.cfg, same as XEN_DMOP_nr_vcpus.
+>>        > This is what we use for xen_register_ioreq().
+>>        >
+>>        > mc->max_cpus:
+>>        > Absolute MAX in QEMU used to cap the -smp command-line options.
+>>        > If xl tries to set -smp (machine->smp.max_cpus) larger than this, QEMU will bail out.
+>>        > Used to setup xen_register_ioreq() ONLY if -smp maxcpus was NOT set (i.e by a non PVH aware xl).
+>>        > Cannot be 1 because that would limit QEMU to MAX 1 vcpu.
+>>        >
+>>        > I guess we could set mc->max_cpus to what XEN_DMOP_nr_vcpus returns but I'll
+>>        > have to check if we can even issue that hypercall this early in QEMU since
+>>        > mc->max_cpus is setup before we even parse the machine options. We may
+>>        > not yet know what domid we're attaching to yet.
+>>
+>>        If mc->max_cpus is the absolute max and it will not be used if -smp is
+>>        passed to QEMU, then I think it is OK to use GUEST_MAX_VCPUS
+>>
+>> Looking at this a little more. If users (xl) don't pass an -smp option we actually default to smp.max_cpus=1.
+>> So, another option is to simply remove the upper limit in QEMU (e.g we can set mc->max_cpus to something very large like UINT32_MAX).
+>> That would avoid early hypercalls, avoid using GUEST_MAX_VCPUS and always let xl dictate the max_cpus value using the -smp cmdline option.
+> 
+> As the expectation is that there will be always a smp.max_cpus option
+> passed to QEMU, I would avoid an extra early hypercall.
+> 
+> For the initial value, I would use something static and large, but not
+> unreasonably large as UINT32_MAX to be more resilient in (erroneous)
+> cases where smp.max_cpus is not passed.
+> 
+> So I would initialize it to GUEST_MAX_VCPUS, or if we don't want to use
+> GUEST_MAX_VCPUS, something equivalent in the 64-256 range.
+> 
+> Alternative we can have a runtime check and exit with a warning if
+> smp.max_cpus is not set.
 
---Apple-Mail=_182B2C20-4477-4C15-BACF-6201DBE72E07
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain;
-	charset=utf-8
+FYI, xl only passes a -smp option when the domU has more than 1 vcpu. 
+Though that implies only a single vcpu.
 
-Peter, thought I=E2=80=99d send this little snippet before getting the =
-rest of V2 done in case anyone hates this :). I tried to take a similar =
-approach to kvm_type,
-but I=E2=80=99m not sure if this will be looked upon favorably so want =
-an early opinion. The nice thing about kvm_type is at least it has =
-differing meaning per
-platform so all the impls can do whatever they need, with the below =
-it=E2=80=99s really only needed on ARM (and obviously macOS specific) so =
-it's a bit odd,
-but couldn=E2=80=99t think of how else to be able to be able to get what =
-we need out of the memmap during vm creation.=20
-
-How this would be used is almost exactly like how ARMs kvm_type is used. =
-We set up hvf_get_physical_address_range to freeze the memory
-map and compute the highest gpa, then check if that exceeds our =
-platforms largest IPA size and if so return a sane error message. If =
-everything
-checks out we=E2=80=99d just set the IPA size on the VM config object =
-and then create the VM. The current patch should mostly stay the same =
-after that bit
-of plumbing I think besides removing the macOS 13 ifdef=E2=80=99s (and =
-simplifying the copy and pasted loop you pointed out). x86=E2=80=99s
-hvf_get_physical_address_range can be NULL.
-
---- a/include/hw/boards.h
-+++ b/include/hw/boards.h
-@@ -215,6 +215,10 @@ typedef struct {
-  *    Return the type of KVM corresponding to the kvm-type string =
-option or
-  *    computed based on other criteria such as the host kernel =
-capabilities.
-  *    kvm-type may be NULL if it is not needed.
-+ * @hvf_get_physical_address_range:
-+ *    Returns the physical address range in bits to use for the HVF =
-virtual
-+ *    machine based on the current boards memory map. This may be NULL =
-if it
-+ *    is not needed.
-  * @numa_mem_supported:
-  *    true if '--numa node.mem' option is supported and false otherwise
-  * @hotplug_allowed:
-@@ -253,6 +257,7 @@ struct MachineClass {
-     void (*reset)(MachineState *state, ShutdownCause reason);
-     void (*wakeup)(MachineState *state);
-     int (*kvm_type)(MachineState *machine, const char *arg);
-+    unsigned int (*hvf_get_physical_address_range)(MachineState =
-*machine);
-
-> On Aug 13, 2024, at 2:31=E2=80=AFAM, Peter Maydell =
-<peter.maydell@linaro.org> wrote:
->=20
-> On Mon, 12 Aug 2024 at 23:18, Danny Canter <danny_canter@apple.com> =
-wrote:
->> On Aug 12, 2024, at 10:52=E2=80=AFAM, Peter Maydell =
-<peter.maydell@linaro.org> wrote:
->>> This is unfortunately probably going to imply a bit of extra
->>> plumbing to be implemented for hvf -- that MachineClass::kvm_type
->>> method is (as the name suggests) KVM specific. (Multi-patch
->>> patchset for that, where we add the plumbing in as its own
->>> separate patch (and/or whatever other split of functionality
->>> into coherent chunks makes sense), rather than one-big-patch, =
-please.)
->>=20
->> That=E2=80=99s perfectly fine, I=E2=80=99ll try and see how the =
-plumbing was done
->> for KVM and try and emulate where it makes sense
->> for HVF. Agree though, that=E2=80=99d definitely push this into =
-multi-patch
->> territory. Curious if you think what=E2=80=99s here today should
->> be multiple patches or the current work seems fine in one?
->=20
-> I think it was fine as one patch. My personal preference
-> when I write code tends to go for more-smaller-patches
-> over fewer-larger-patches, so I might have for example
-> split out "Add hvf_arch_vm_create()" into its own
-> patch, but that's very borderline, and I wouldn't ask for
-> that change at code review time unless the patch as a whole
-> was too big and unwieldy and I was looking for places to
-> suggest a split into multiple patches.
->=20
-> -- PMM
-
-
---Apple-Mail=_182B2C20-4477-4C15-BACF-6201DBE72E07
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/html;
-	charset=utf-8
-
-<html><head><meta http-equiv=3D"content-type" content=3D"text/html; =
-charset=3Dutf-8"></head><body style=3D"overflow-wrap: break-word; =
--webkit-nbsp-mode: space; line-break: after-white-space;">Peter, thought =
-I=E2=80=99d send this little snippet before getting the rest of V2 done =
-in case anyone hates this :). I tried to take a similar approach to =
-kvm_type,<div>but I=E2=80=99m not sure if this will be looked upon =
-favorably so want an early opinion. The nice thing about kvm_type is at =
-least it has differing meaning per</div><div>platform so all the impls =
-can do whatever they need, with the below it=E2=80=99s really only =
-needed on ARM (and obviously macOS specific) so it's a bit =
-odd,</div><div>but couldn=E2=80=99t think of how else to be able to be =
-able to get what we need out of the memmap during vm =
-creation.&nbsp;<div><div><br></div><div>How this would be used is almost =
-exactly like how ARMs kvm_type is used. We set up&nbsp;<span =
-style=3D"caret-color: rgb(0, 0, 0); color: rgb(0, 0, =
-0);">hvf_get_physical_address_range to freeze the =
-memory</span></div><div>map and compute the highest gpa, then&nbsp;<span =
-style=3D"caret-color: rgb(0, 0, 0); color: rgb(0, 0, 0);">check if that =
-exceeds our platforms largest IPA size and if so return a sane error =
-message. If&nbsp;</span><span style=3D"caret-color: rgb(0, 0, 0); color: =
-rgb(0, 0, 0);">everything</span></div><div><span style=3D"caret-color: =
-rgb(0, 0, 0); color: rgb(0, 0, 0);">checks out we=E2=80=99d just set the =
-IPA size on the VM config object and then create the VM. The current =
-patch should mostly stay the&nbsp;</span><span style=3D"color: rgb(0, 0, =
-0);">same after that bit</span></div><div><span style=3D"color: rgb(0, =
-0, 0);">of plumbing I think besides removing the macOS 13 ifdef=E2=80=99s =
-(and simplifying the copy and pasted loop you pointed =
-out).&nbsp;</span><font color=3D"#000000">x86=E2=80=99s</font></div><div><=
-span style=3D"caret-color: rgb(0, 0, 0); color: rgb(0, 0, =
-0);">hvf_get_physical_address_range can be =
-NULL.</span></div><div><br></div><div><div>--- =
-a/include/hw/boards.h</div><div>+++ b/include/hw/boards.h</div><div>@@ =
--215,6 +215,10 @@ typedef struct {</div><div>&nbsp; * &nbsp; =
-&nbsp;Return the type of KVM corresponding to the kvm-type string option =
-or</div><div>&nbsp; * &nbsp; &nbsp;computed based on other criteria such =
-as the host kernel capabilities.</div><div>&nbsp; * &nbsp; =
-&nbsp;kvm-type may be NULL if it is not needed.</div><div>+ * =
-@hvf_get_physical_address_range:</div><div>+ * &nbsp; &nbsp;Returns the =
-physical address range in bits to use for the HVF virtual</div><div>+ * =
-&nbsp; &nbsp;machine based on the current boards memory map. This may be =
-NULL if it</div><div>+ * &nbsp; &nbsp;is not needed.</div><div>&nbsp; * =
-@numa_mem_supported:</div><div>&nbsp; * &nbsp; &nbsp;true if '--numa =
-node.mem' option is supported and false otherwise</div><div>&nbsp; * =
-@hotplug_allowed:</div><div>@@ -253,6 +257,7 @@ struct MachineClass =
-{</div><div>&nbsp; &nbsp; &nbsp;void (*reset)(MachineState *state, =
-ShutdownCause reason);</div><div>&nbsp; &nbsp; &nbsp;void =
-(*wakeup)(MachineState *state);</div><div>&nbsp; &nbsp; &nbsp;int =
-(*kvm_type)(MachineState *machine, const char *arg);</div><div>+ &nbsp; =
-&nbsp;unsigned int (*hvf_get_physical_address_range)(MachineState =
-*machine);</div></div><div><div><br><blockquote type=3D"cite"><div>On =
-Aug 13, 2024, at 2:31=E2=80=AFAM, Peter Maydell =
-&lt;peter.maydell@linaro.org&gt; wrote:</div><br =
-class=3D"Apple-interchange-newline"><div><div>On Mon, 12 Aug 2024 at =
-23:18, Danny Canter &lt;danny_canter@apple.com&gt; wrote:<br><blockquote =
-type=3D"cite">On Aug 12, 2024, at 10:52=E2=80=AFAM, Peter Maydell =
-&lt;peter.maydell@linaro.org&gt; wrote:<br><blockquote type=3D"cite">This =
-is unfortunately probably going to imply a bit of extra<br>plumbing to =
-be implemented for hvf -- that MachineClass::kvm_type<br>method is (as =
-the name suggests) KVM specific. (Multi-patch<br>patchset for that, =
-where we add the plumbing in as its own<br>separate patch (and/or =
-whatever other split of functionality<br>into coherent chunks makes =
-sense), rather than one-big-patch, please.)<br></blockquote><br>That=E2=80=
-=99s perfectly fine, I=E2=80=99ll try and see how the plumbing was =
-done<br>for KVM and try and emulate where it makes sense<br>for HVF. =
-Agree though, that=E2=80=99d definitely push this into =
-multi-patch<br>territory. Curious if you think what=E2=80=99s here today =
-should<br>be multiple patches or the current work seems fine in =
-one?<br></blockquote><br>I think it was fine as one patch. My personal =
-preference<br>when I write code tends to go for =
-more-smaller-patches<br>over fewer-larger-patches, so I might have for =
-example<br>split out "Add hvf_arch_vm_create()" into its own<br>patch, =
-but that's very borderline, and I wouldn't ask for<br>that change at =
-code review time unless the patch as a whole<br>was too big and unwieldy =
-and I was looking for places to<br>suggest a split into multiple =
-patches.<br><br>-- =
-PMM<br></div></div></blockquote></div><br></div></div></div></body></html>=
-
---Apple-Mail=_182B2C20-4477-4C15-BACF-6201DBE72E07--
+Regards,
+Jason

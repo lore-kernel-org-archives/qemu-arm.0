@@ -1,157 +1,241 @@
-Received: by 2002:a17:504:9188:b0:1be9:327d:8ee3 with SMTP id i8csp1066279njf;
-        Thu, 15 Aug 2024 19:32:04 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUzo2bhFUNSSTKZqvrVbSPu+1NpgXV3cCFlkWmpDj1RC8y+iGp9rSZ9pMcseCmRS4D6QyJxNdIVpSj21toJnSC5ZF9A1vt3
-X-Google-Smtp-Source: AGHT+IGMsVjQKWQgGjYSMfANaFMkpec0PrCEwahypgSUyjjSNx3hVO1rb0AsJE5borbSmMH9tm4k
-X-Received: by 2002:a05:622a:5a1a:b0:451:d57c:31e3 with SMTP id d75a77b69052e-45374253265mr18799031cf.29.1723775524428;
-        Thu, 15 Aug 2024 19:32:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1723775524; cv=none;
-        d=google.com; s=arc-20160816;
-        b=JnHdOuhLmtnUEuQGqVhIsNbmXOhU5DrEyQcFDNLJaXCVJwjYzGEUIThJVcUWtI3X2Y
-         tikB04Q7DH06vfaEjASo0f+od6OLKJGvp5mg0uAD4hVSU/YUqr5DOo6Rxek3Eco2uwsg
-         ap0zu5XLCycZGdYszvLlOZ/Dt9M+6SLeDoaZNcrnlba6iibAtHLq7SPMPWAXq4hqKpo+
-         MmGjrYJ7dH/uDI7+dyhQfE9+EifPeqzSyXPOGyQ75UCGs+C7/+cmPjzLTZ+GffvosaSJ
-         QALCkhoeFrvW9zQT0QalptkcpefTs4m/oyaj3MqGbHNrBbRP5B4+gs5CmgFMqNIKD7KF
-         X7PQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=grOFC+auwbhT88GAd3WGdq0vMd4igSM6zH1Gih7uRac=;
-        fh=qiILke2bOpWpVj2BwHpNARlR7sMWo/Sc4Z5jYiyQrZc=;
-        b=CB5mRAi2NSN1+MyBenVUapGEMFIUYJ6CeilcLZhskcJNpTAEV+5xjvHQaf1Amr4/jU
-         /OcUOUcku//MHqc77f2CQO+MWwMyVmvL6bsAvNcIJelK+0KG3Lm3V82/4ylKh11d4f4r
-         hF2KjV3DtB9Z4I4vwuXF6CKww/LdFqPuZs/8T5teqyrf6tsT3+1XtgmrSAHiJ/wVe37v
-         D15dgWNNNPtRmDGYdQlj3qoj2NRgI5DEPJX2isPoFAlGoedYtBs8Ao/YbvdiUXyZ7cft
-         9sbHWmXEpXG6hR+BDoAmpAsehPRMp48Dd1fYCgnhgJazZ+2/la83OvgYiQxSP1VQFYCQ
-         DkXA==;
-        dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OevDuqYv;
-       spf=pass (google.com: domain of jasowang@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=jasowang@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <jasowang@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id d75a77b69052e-4536a0716c1si31072281cf.297.2024.08.15.19.32.04
-        for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 15 Aug 2024 19:32:04 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jasowang@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+Received: by 2002:a17:504:9188:b0:1be9:327d:8ee3 with SMTP id i8csp1122737njf;
+        Fri, 16 Aug 2024 01:06:29 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCW0uEFKbfjKUl1gu4i2nPIpnVX70lILYwTQgAoH3umjdWgd+ZycIL2YxUaHPM8BG+Y/V/VC7/TN71cnMlZcxhocbJwGpMN6
+X-Google-Smtp-Source: AGHT+IHyMZ7Cdu8kA0dWM1O3NORYqzgmTmqjtdJrX4pSUw2dTwccVtigMo7xXEA0ywdhVgv1f6ze
+X-Received: by 2002:a05:620a:29c2:b0:79d:7e72:c7cf with SMTP id af79cd13be357-7a5069d3c77mr192941585a.70.1723795589492;
+        Fri, 16 Aug 2024 01:06:29 -0700 (PDT)
+Return-Path: <junjie.mao@intel.com>
+Received: from mgamail.intel.com (mgamail.intel.com. [198.175.65.9])
+        by mx.google.com with ESMTPS id af79cd13be357-7a4feffdfa7si396293685a.81.2024.08.16.01.06.27
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 16 Aug 2024 01:06:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of junjie.mao@intel.com designates 198.175.65.9 as permitted sender) client-ip=198.175.65.9;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OevDuqYv;
-       spf=pass (google.com: domain of jasowang@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=jasowang@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1723775523;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=grOFC+auwbhT88GAd3WGdq0vMd4igSM6zH1Gih7uRac=;
-	b=OevDuqYvoKMYdxMIkIlQi/avz4V0vrKRsnebQgpjUzPmgfls2XoVBVW7bQo/NL+ymLOj6x
-	4xWIJcwJdW5f9VHMnFPkf8D7TqAUA2LUYaHJnA1Nl3jxYmCd4oLj1IBtZYyMo6ks7Sf0SO
-	qGFwGCKdxX003BHS/TL0dbqFj55Lbmw=
-Received: from mail-pf1-f198.google.com (mail-pf1-f198.google.com
- [209.85.210.198]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-41-YXWGQh6qOx6gUiTHEEj8_g-1; Thu, 15 Aug 2024 22:31:59 -0400
-X-MC-Unique: YXWGQh6qOx6gUiTHEEj8_g-1
-Received: by mail-pf1-f198.google.com with SMTP id d2e1a72fcca58-71065f49abeso1424271b3a.3
-        for <alex.bennee@linaro.org>; Thu, 15 Aug 2024 19:31:58 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1723775517; x=1724380317;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=grOFC+auwbhT88GAd3WGdq0vMd4igSM6zH1Gih7uRac=;
-        b=NxUgtdrzq+1MjXBzFuEagRsLicYNmtwtkD77+CNrGu25XrpoqgPBPTDoSky7IZs5i2
-         lJ+edOTbXyVJRZ247baB1ROJxOun+G2Tp9USREyuoMtJMgG7cIjjgFUPk5jBYgy8ZiAz
-         Ix9DwVMdy45lATPtikRCX90ulicP+N6ohhmDkcBDgU5RdaV7v06z+bLynkjq7AmU/322
-         ayBNoXgSqaUBLOE1hRt2jkIR/7ItrHvfc1usgMNA8nMEC/VvROF9aNk0gc3Y9p+kfrz1
-         E7q1hv0Z3+/2h+Lv3Uj/ocePtUBrGTs83E5i9nNRhOLhJu6LyptsoOMdpAbUO0r2XLjW
-         i2jg==
-X-Forwarded-Encrypted: i=1; AJvYcCXOwPlZrhFlUq/5whQ1K0CVkZr094a8fhxolOHfMTw3ZmABxpMMWsYr6g9vJ1GKIQd0OkNkoY8J2U7nlvawQsgtJFIqDbEW
-X-Gm-Message-State: AOJu0YwzDUTHM0j661/Wkq2Qh1YnoC3wO7sCULX00uVfCyZ/NugSsAR5
-	tomUWk9UeCfhN+VH+ddo3jCx+x4Ncug1AaQSWMRQaSV3Pu7tjErj10PPzoSOS47U5jKlRCyiHbl
-	iHT43waykxN8+9rAe4vDSz1P9ZXi7KbXGncVa1FNxTnDcDuHILOY4gmDaeA2oiz+gLT8JzVR8lE
-	FgKmNqpxWsSErAunF6OiWc/bZAaT8R
-X-Received: by 2002:a05:6a20:d502:b0:1c4:919f:3677 with SMTP id adf61e73a8af0-1c90501f4a4mr1993060637.42.1723775517675;
-        Thu, 15 Aug 2024 19:31:57 -0700 (PDT)
-X-Received: by 2002:a05:6a20:d502:b0:1c4:919f:3677 with SMTP id
- adf61e73a8af0-1c90501f4a4mr1993001637.42.1723775516991; Thu, 15 Aug 2024
- 19:31:56 -0700 (PDT)
+       dkim=pass header.i=@intel.com header.s=Intel header.b=IXbA8v+F;
+       arc=fail (signature failed);
+       spf=pass (google.com: domain of junjie.mao@intel.com designates 198.175.65.9 as permitted sender) smtp.mailfrom=junjie.mao@intel.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1723795589; x=1755331589;
+  h=message-id:date:subject:to:cc:references:from:
+   in-reply-to:content-transfer-encoding:mime-version;
+  bh=HHO879QpI0uwDUWuToV/HzaOC/GeWtkGYxFTJLezhF8=;
+  b=IXbA8v+FSoyta5MBzseJNuAj2uD+jR28WcO0goO4mP2RAnC+BUyQ4h1X
+   FBYc3Z3Utk0lqhRu7v6s13zXtBAq2yzuySt0MYvDGmqNKiRdfgdbFEy4o
+   1WbXuCuoX07TVMbptekx05PXwx+4Q1Y1oe0+XGNiDJnLMBpz7FRMaf2im
+   HltQM2ZI5RyCT/B4h0qcIlEkTC9YqOLxlkVhzUJL9k7Wj/+wtUoz6Tdm1
+   0W0I7BmlEVhi4NWYgVPSbcC6G4wFoIf9bk0tSy1P1I+Ij7QRaltgRdC94
+   UhpLpuJdXL1oiJKDP14yXXP4ikFNMIJD1EJNgmhsgPO6CyRcxtIUCBwP9
+   A==;
+X-CSE-ConnectionGUID: dt7tQv8ZQ+GFFiyADSmTAQ==
+X-CSE-MsgGUID: xCJBPAqfTwuq8COUk7pR+Q==
+X-IronPort-AV: E=McAfee;i="6700,10204,11165"; a="44602953"
+X-IronPort-AV: E=Sophos;i="6.10,151,1719903600"; 
+   d="scan'208";a="44602953"
+Received: from fmviesa010.fm.intel.com ([10.60.135.150])
+  by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 16 Aug 2024 01:06:27 -0700
+X-CSE-ConnectionGUID: k8KdjhY6TVyufF98KUiJRQ==
+X-CSE-MsgGUID: bqO0nzQXRt+qujVi1+AVRg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.10,151,1719903600"; 
+   d="scan'208";a="59766641"
+Received: from orsmsx602.amr.corp.intel.com ([10.22.229.15])
+  by fmviesa010.fm.intel.com with ESMTP/TLS/AES256-GCM-SHA384; 16 Aug 2024 01:06:26 -0700
+Received: from orsmsx611.amr.corp.intel.com (10.22.229.24) by
+ ORSMSX602.amr.corp.intel.com (10.22.229.15) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.39; Fri, 16 Aug 2024 01:06:25 -0700
+Received: from orsmsx601.amr.corp.intel.com (10.22.229.14) by
+ ORSMSX611.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.39; Fri, 16 Aug 2024 01:06:25 -0700
+Received: from ORSEDG601.ED.cps.intel.com (10.7.248.6) by
+ orsmsx601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.39 via Frontend Transport; Fri, 16 Aug 2024 01:06:25 -0700
+Received: from NAM12-MW2-obe.outbound.protection.outlook.com (104.47.66.49) by
+ edgegateway.intel.com (134.134.137.102) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.39; Fri, 16 Aug 2024 01:06:25 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=MTtni5jzakOck6h9jGLAoFfnk63KlBidzB2z9nDyDWfgpriPyR5tczVa7AJ/PgbtVOL42cLu4nHbifrGgI7z6uujwU0I05se/aThwgoZI2+ufnV+bua+gg/JO4Y6gOGkiqR1wvqGYvA7YLQKe4K2OUNp+Uw4rS19cCQxiH7lNegL7K1Xz24DUews55GDROsta4Hf+qYic+jeQtpotWw0BnY7/OtYR8vb4JUOC0Xkr/CRgwcljYVdbRpR0GQV/VBuEoaxZdzvum2yeeTNsU0gRsA6sPEV4p2dSWvrzz6XwwhYsI2VWYECie4wCWR+tEw96J4Qytf4T3qPOxOjXegeZw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=D/r9OrxDJwHQLke+2JkRGN6A8S45Vor5MGNmSZm6tFk=;
+ b=UntJdYQgDg3pZ2C8iYJWKpEzXfFJvZtglmmShWb1HBT78cwZIiI7+9QMXn6ZaEdNmz7za5dobDZQVDaWEezceFUC1NaLsZcjN24v2/Me3Tg/8EdIGaJEUNS9Yk0yK+WtTRROBO/yO+eB/0bIe0mM/zOk5/GAlIxXb0vZLnT9eK2FJL9GwC8hUR5Fsfc8cQ6sMsPxU3oy2ScLSZcTtHWcwSjZ/MvoOyQ7emq3LRJTwwv7xqO++OwvCXgJC4foFFMxt3FiHNdr56jAsYkjQtoCsA2064yOjkffZNOS5Z/CXWLjKSiOr2JUCixae59PeOmqsBX1VVihaTvcURtTcrNx8A==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Received: from CY8PR11MB7009.namprd11.prod.outlook.com (2603:10b6:930:57::12)
+ by CH3PR11MB7275.namprd11.prod.outlook.com (2603:10b6:610:14c::20) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7828.27; Fri, 16 Aug
+ 2024 08:06:23 +0000
+Received: from CY8PR11MB7009.namprd11.prod.outlook.com
+ ([fe80::7ebc:871a:bc7f:1eed]) by CY8PR11MB7009.namprd11.prod.outlook.com
+ ([fe80::7ebc:871a:bc7f:1eed%4]) with mapi id 15.20.7875.016; Fri, 16 Aug 2024
+ 08:06:23 +0000
+Message-ID: <8f5f670b-313e-4172-a04b-ff8439bc4777@intel.com>
+Date: Fri, 16 Aug 2024 16:06:10 +0800
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v7 0/7] Add Rust build support, ARM PL011 device impl
+To: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+CC: Paolo Bonzini <pbonzini@redhat.com>, =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?=
+	<marcandre.lureau@redhat.com>, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
+	<berrange@redhat.com>, Thomas Huth <thuth@redhat.com>,
+	=?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>, John Snow
+	<jsnow@redhat.com>, Cleber Rosa <crosa@redhat.com>, Beraldo Leal
+	<bleal@redhat.com>, =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Wainer dos Santos Moschetta <wainersm@redhat.com>, "Liu, Zhao1"
+	<zhao1.liu@intel.com>, Peter Maydell <peter.maydell@linaro.org>, ARM TCG CPUs
+	<qemu-arm@nongnu.org>, Stefan Hajnoczi <stefanha@redhat.com>, "Pierrick
+ Bouvier" <pierrick.bouvier@linaro.org>, Richard Henderson
+	<richard.henderson@linaro.org>, Gustavo Romero <gustavo.romero@linaro.org>,
+	"Hart, Rowan" <rowan.hart@intel.com>, Mads Ynddal <mads@ynddal.dk>, "Markus
+ Armbruster" <armbru@redhat.com>
+References: <20240815-rust-pl011-v7-0-975135e98831@linaro.org>
+Content-Language: en-US
+From: Junjie Mao <junjie.mao@intel.com>
+In-Reply-To: <20240815-rust-pl011-v7-0-975135e98831@linaro.org>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 7bit
+X-ClientProxiedBy: SGBP274CA0016.SGPP274.PROD.OUTLOOK.COM (2603:1096:4:b0::28)
+ To CY8PR11MB7009.namprd11.prod.outlook.com (2603:10b6:930:57::12)
+Return-Path: junjie.mao@intel.com
 MIME-Version: 1.0
-References: <20240813202329.1237572-1-alex.bennee@linaro.org>
- <20240813202329.1237572-17-alex.bennee@linaro.org> <20240813164631-mutt-send-email-mst@kernel.org>
- <D3FEPPLH78YW.3BYA9B4HYGN1U@gmail.com> <20240814030308-mutt-send-email-mst@kernel.org>
- <87y14z81ak.fsf@draig.linaro.org> <D3GARIYVC16C.20SXVKSIMLED4@gmail.com> <20240815102754-mutt-send-email-mst@kernel.org>
-In-Reply-To: <20240815102754-mutt-send-email-mst@kernel.org>
-From: Jason Wang <jasowang@redhat.com>
-Date: Fri, 16 Aug 2024 10:31:41 +0800
-Message-ID: <CACGkMEtS6kges+_hOum2QnpTWotT_ohkJv8PaFHsycjR10QY5w@mail.gmail.com>
-Subject: Re: [PATCH v2 16/21] virtio-net: Use replay_schedule_bh_event for bhs
- that affect machine state
-To: "Michael S. Tsirkin" <mst@redhat.com>
-Cc: Nicholas Piggin <npiggin@gmail.com>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	qemu-devel@nongnu.org, Alistair Francis <alistair.francis@wdc.com>, 
-	Michael Roth <michael.roth@amd.com>, Palmer Dabbelt <palmer@dabbelt.com>, 
-	Mahmoud Mandour <ma.mandourr@gmail.com>, Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>, 
-	Yoshinori Sato <ysato@users.sourceforge.jp>, Weiwei Li <liwei1518@gmail.com>, 
-	Eduardo Habkost <eduardo@habkost.net>, =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
-	Markus Armbruster <armbru@redhat.com>, David Hildenbrand <david@redhat.com>, Beraldo Leal <bleal@redhat.com>, 
-	Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, Eric Auger <eric.auger@redhat.com>, 
-	Song Gao <gaosong@loongson.cn>, qemu-arm@nongnu.org, Peter Xu <peterx@redhat.com>, 
-	Jiri Pirko <jiri@resnulli.us>, Eric Blake <eblake@redhat.com>, Fabiano Rosas <farosas@suse.de>, 
-	qemu-s390x@nongnu.org, Peter Maydell <peter.maydell@linaro.org>, 
-	Daniel Henrique Barboza <dbarboza@ventanamicro.com>, John Snow <jsnow@redhat.com>, 
-	Alexandre Iooss <erdnaxe@crans.org>, Konstantin Kostiuk <kkostiuk@redhat.com>, 
-	Pierrick Bouvier <pierrick.bouvier@linaro.org>, Cleber Rosa <crosa@redhat.com>, 
-	Ilya Leoshkevich <iii@linux.ibm.com>, qemu-riscv@nongnu.org, Thomas Huth <thuth@redhat.com>, 
-	Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <richard.henderson@linaro.org>, 
-	Bin Meng <bmeng.cn@gmail.com>, =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
-	Wainer dos Santos Moschetta <wainersm@redhat.com>, Pavel Dovgalyuk <Pavel.Dovgalyuk@ispras.ru>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: 5ie8zaZ7TdyA
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: CY8PR11MB7009:EE_|CH3PR11MB7275:EE_
+X-MS-Office365-Filtering-Correlation-Id: 12bbb6f5-e388-4ae9-de63-08dcbdca5173
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|376014|7416014|366016;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?M2pOTUJaUzN4RGM0bjNiK0JQb1VVTHBwQ0NtUFJ0RG9naTVTS1RTdE5QQ2ky?=
+ =?utf-8?B?dWNUNXp4MllaYitVNUFheDdQbTBZZkF4K0V4YkhGcWF6RFdsNW9GMk11dktM?=
+ =?utf-8?B?VUpSNTN3MENNRzMySndFOVV2TTl3NTNDSUlYb09uM2dqSzF2YnhrbW9ZTFlt?=
+ =?utf-8?B?MG90NnMzQWNNRTk1bk5id21zTlJJYUQ4RjR6L0FCWTBMK1FyM213OGhKTHlJ?=
+ =?utf-8?B?VU1FUjBxLzFya2Z3VlVyOERZcHJMMXVBR3dQODY5QzFva1Y2eDdTemg5T2hU?=
+ =?utf-8?B?RzY1bzJESURqOGtZRGhaUlp4bGpOZmJ5cExkdkpyeERaajEvalpnc2JzSjlp?=
+ =?utf-8?B?cy8wUzBUWStjbHhGanJUVHFZd2xtaGVNcmVWV0FqbXIyeEVFR3B2M0RaTFlM?=
+ =?utf-8?B?K2E4eUhKejQ2b1l6L1JSODBnZm5vUzlwekxJK3BJdndiRDFXN3EwOWRxbjhQ?=
+ =?utf-8?B?ek5yYTFxcVNBNS9ydmZWbi9yS2lhdHhaRDZKNzZ4K3pKODdaK3QvMVViTEpE?=
+ =?utf-8?B?RmdUQVZkMmxBNjRrWmVFeFZiTlJPQkpaVVloTE8vL2lRMXlYK3B2Qks4bEZv?=
+ =?utf-8?B?a1dJOFJLcisvZDVaektHckR0QlZLcWMvUDQvY3Q2aWFFV0NZZ0t6MmdrODBZ?=
+ =?utf-8?B?ci82bDdaNkloM1pGYWxWYUkxbWZrVzcxRWptVTNlWTRaSitUNXRUanUvWVdR?=
+ =?utf-8?B?aDNrQlBrUk82cHMySjFGNm4vUGd0QW5qakhLSVUwTHpybXdHOU05TlV3WTFu?=
+ =?utf-8?B?RU92QjViM0R0ck5VUGpVM09TOHp3K3lBNTlMbzNwSnQxUUErZW9JZjRyamxr?=
+ =?utf-8?B?S1cxUkNiRDVmVnJPc0NvMkY0WlVKbDg5VEprT0ZEaXJrdG4zdzkxb1FMa0hW?=
+ =?utf-8?B?RzZ3V01DZmNNUURSdURXNlJ0OVZYZmpLNEtoU044NHlCU3pKR2N1a2w4K1JR?=
+ =?utf-8?B?SHRYZXJRcUNJUWdwZEUwUTg3NkN4ZytpQUtUMFZmb0hWSUg2OW5CWWdPS0t0?=
+ =?utf-8?B?Vkh3cXFMWjMzTkl4d04yaHY2bGwrem84cG5uU3Uzc0lPazZCeU9pbGtaMjhB?=
+ =?utf-8?B?RWhvMU9zRU5BQU9QREtBd1U5eFFDN1hVQ3Jla1h5QXBjMVBvVkpTK0dhWlBM?=
+ =?utf-8?B?aFJIUzJNTlZ6NTFURC9BbmM0c3pQOEJhMUVwTWtrRWJFU0tWYXN2NGszMHAy?=
+ =?utf-8?B?YVJVdFJYSXMzTyszWVVJTWpCa1dkbEZTelAwTkFPdUtWVzVJVGJiRUMwZUpx?=
+ =?utf-8?B?eTIxT1hqUmRPV0wzSUtvMXZLby83V3BiTnBZbGEzeWZRb0U0ekpCVFlBQ0dI?=
+ =?utf-8?B?TFA2U3RVekEvcFdSUUxaNGJJSE9qYmhleWdrWXVPZEJhdGFWYjFWYUtpVmdW?=
+ =?utf-8?B?SGI2ektoMmVPcVBid2NUYWFSc3ZranE2aytyMHdxMmo4bGpsc2NMUzlVOXNW?=
+ =?utf-8?B?Ty9DOENKb0RwQ0V2ZzZ1L0gzOVRzRnlVV1MwKzhLdWs2bk0xNEQvSkpIZDVz?=
+ =?utf-8?B?azhOZTBqc3JvMGlhcDlhY0pNaDVETnhjWEkrOG1hNWwvUlVNd3VMTXM4bk1m?=
+ =?utf-8?B?ZmtmLzYrZnptT0tGRmgreTN2UWJyeWVxQmhTZWcvVHRKM0tBeWt2MjVFQjN6?=
+ =?utf-8?B?MFZ6N3JKaU5pRExaRCtJN2lvSFBSTE40SHRDRmg2eWdFS21ROHRyc0pzRC95?=
+ =?utf-8?B?Z0YwejdRSEhWa3ZFVGNyYUZZLy9RVXZCc3JZeUw2QTJ3ZVNINVhORUV0ampB?=
+ =?utf-8?B?azNrN3NORlhDeWdlNGxLUzkxS2UzcVpDNy9jRit4eU1EQy9PRU0zeUlmTEcy?=
+ =?utf-8?Q?Ani3yOL5Xh0tNBOWFg3SQcKSxypNrpGR3tjPE=3D?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:CY8PR11MB7009.namprd11.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(376014)(7416014)(366016);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?VDhQS3ZQVDRHNXA0YTE0YkFFdlZhMjlvOFF6bm91UmNQZGdWTk1UQnBBVHZ3?=
+ =?utf-8?B?MVBGKzl1dno1Wlp2Q3hSRXNFV1YwTWdwSi9WejBVd2UzQlRhSnRHaWpQa2VK?=
+ =?utf-8?B?Z2tBSjlrdk4rY0hweURUcG54TnZ3RWt6OVJiUk1CdW0wb1NzU3pBR2lqckpk?=
+ =?utf-8?B?YkZLR0dPQnl4OWJJK2NDTVh5ZnB2SmdEakZlRUtvTmg0VWNPMy84ZEg2anFp?=
+ =?utf-8?B?U3pnWW1lNG9BZnJlcENZZ2x2Y3N1WnhTQ2tBK21UVkx4Y04rVW5MV2VTdGJq?=
+ =?utf-8?B?a1Z2Y1Z2K0M0eWJJS1pYcnMvS2QxV3lkeDNjbGE5TnFrNFFqNU1UK0IwUFpJ?=
+ =?utf-8?B?U0RLWGgyQ2htT1hDeUZPYVhrU1lyQTFkZzZFUWRQUGtVN0tlWCtqeFFtTkd3?=
+ =?utf-8?B?RFBxVmh5Z0dkUUdJN1JMT0xucEpMRWZ3YzRiQzcrUFV5aFJaSUFOTDhBUUZy?=
+ =?utf-8?B?akJiY3hmU1U4UlVYTkdiV2ozcGtFNUZpcmpmWnVpWTVVenl1NDBaa1FWakp2?=
+ =?utf-8?B?SVRHNlZkR3QwS1pDYW5jcXFWaWNPYmNMNVBUT0ExSXc4QjMrUCtkQWVycVM3?=
+ =?utf-8?B?Z1E4WWZqR0JYcjBCbkRCNjY1QjUvbzE5UWRkUWI3QWlLTFNCdlg1UitkQUhw?=
+ =?utf-8?B?RGtqNXM3dWxIOWgyWFhMdktBUjhaVHNFc0JKaW9MMUJzRXp0MjFIWjdPUjRv?=
+ =?utf-8?B?MkxDL0tDbVhVSHRjZGtsdEpYT2NLQW04UUkzVWxHM1BpUExRUnpuUWlnRnVR?=
+ =?utf-8?B?azdlWFBha3R5V1cwTkJqVnhVbVhDOHlsdzRKa2hVOEdCeDUrUmZKeU1Qc21V?=
+ =?utf-8?B?VDdQdEo5M2VMeVNwSmgwS0Q1dTZsZG15L0I5S254RmMxWE5aRGpMb2ZxTjVT?=
+ =?utf-8?B?VWttM1l2eXd6Vzg2bitvM3BvUWZTM0QrVnZTLzBZZ1Q5eFVUUW9hM1N4UFYr?=
+ =?utf-8?B?eGZiZWRiWU5sYWRjTWxVVno5Z1lUR3owd2hrdlU3amJZa0Q3bks4M1ZVTHRv?=
+ =?utf-8?B?bmNHRnBnSnNOd1FOOWZ4T2xsa2hhakVFejJDL0pmOVNEMnVWOGVmbUl3WCtR?=
+ =?utf-8?B?Q3oraXB4cU5SZVBPNllRSVJHNWtPb0pvMmcrMTh6TmYrRHhMMzFqaWluekpU?=
+ =?utf-8?B?TnZmSVJRNjdHcDFQOHpTWkZWbWkzR1JkQTIrV2VZdUhhQXFVMFpueGNaRzha?=
+ =?utf-8?B?MFlCb3Y5TkYxN0JmUmhiN2FUblFJbkEwenUxdld4aVQ4OGJDdlZnNkVpN3RE?=
+ =?utf-8?B?c1F4TDBWaTc0T0NlQktydjAwM0FEakkvUDRYWmlrYkZkOTVTOWRYZDUxSTdi?=
+ =?utf-8?B?VCtjMEFtN0lJM1hIalE5Q0lzc2E0QUJSYjgwbm15QlpaWVJoM3JLbC9oTjdw?=
+ =?utf-8?B?OUVydExrZTcraG03V3JwQUpWYm80UkNlWmZHcCtHTWhDN1BQcVh6aU9kK01S?=
+ =?utf-8?B?bHVUTC9oTGZFallXZXN2Y3RpNWNkbzQvZm9nc2RSRkw4Rng0MTJ4K3Y0cG1p?=
+ =?utf-8?B?L1JiM2xCY29JUVlrbDVpVGd2eTI3VlRTQmhOc2MySVF5NEtVMDhHTUlHYUZO?=
+ =?utf-8?B?Sm91eTNMMDZEKzF6N2hyVURySmd6SHJ2R25YREQ2dmZMdXBrYjdmUUpjc0pj?=
+ =?utf-8?B?N1dXY3Q1RDhvaGNHVUI4dEthd2NDZERuWmlOVUJPL2RhZ0lQeWlGajlab05l?=
+ =?utf-8?B?U21YWTdya3RqSmFFWCtOUDRnemVvOUhTM2NkWGtjTmRPTWN2Y1FvMGgzeWdP?=
+ =?utf-8?B?cE9qU3FWckU3ZXpuRmpXWS9mc1N1bHJpN1hrcEwvS2lYN3pqOHZDQ0JQS2sx?=
+ =?utf-8?B?SFBicXlQcjV3QzQzaXBjMDZBZEFMV1lqb0Z2YmFkemlPNG9EbjRTakFHc2N2?=
+ =?utf-8?B?UHE2ZHNCeEhzbUkxMEpNZ0JoMFBkcEFyeGQyVk9EdVphVXNaaC8rSmRyZmo3?=
+ =?utf-8?B?WEhCaEFnRnV6MGlHMG81aTZNSExQWE9wU05naEwyVld2Y1Fvc21MMG03OENN?=
+ =?utf-8?B?SFZqTnpaZG5teXUxb1RjMjBUUk4yRVhNdW9wcEpmc01FSUR2NGt1bG5pM1lu?=
+ =?utf-8?B?ekFncHJpdlBQbUJ1M0VpeFNxbjFUTjZrRStNSXROOTlNWmNRUmtCSHFzRCty?=
+ =?utf-8?Q?NhQx+hUSdP26DuMMYhOZwi8pB?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: 12bbb6f5-e388-4ae9-de63-08dcbdca5173
+X-MS-Exchange-CrossTenant-AuthSource: CY8PR11MB7009.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 16 Aug 2024 08:06:23.0647
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: qra88Ka0N+SDDbD7Y9ZuS1Du9gur8rxHZOp1eQ4/BmaNgy02LURcQ412GqQ/ywpQdkouNz4idHO/YKdsKnMLSA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH3PR11MB7275
+X-OriginatorOrg: intel.com
+X-TUID: qsS3dZhzc9IB
 
-On Thu, Aug 15, 2024 at 10:29=E2=80=AFPM Michael S. Tsirkin <mst@redhat.com=
-> wrote:
->
-> On Thu, Aug 15, 2024 at 05:12:32PM +1000, Nicholas Piggin wrote:
-> > Could be a good idea. Although I'm not sure what to do with
-> > all types, maybe we can restrict what is supported.
-> >
-> > > Is this wider re-factoring something that can wait for the next
-> > > developer cycle?
-> >
-> > I would say so. It's not quite trivial to do nicely since
-> > things are a bit tangled between util/async and replay.
-> >
-> > > >> I had started on a conversion once but not completed it.
-> > > >> I could resurrect if there is agreement on the API?
-> > >
-> > > I would certainly welcome it being cleaned up. The supported replay
-> > > devices are very piecemeal at the moment.
-> >
-> > I'll tidy up and post an RFC for how the new API might look.
-> >
-> > Thanks,
-> > Nick
->
-> Fundamentally it's virtio net, up to Jason.
+On 8/15/2024 7:42 PM, Manos Pitsidianakis wrote:
+> Outstanding issues
+> ==================
+> 
+> Outstanding issues that are not blocking for merge are:
+> 
+> - Cross-compilation for aarch64 is not possible out-of-the-box because of this bug:
+>    <https://github.com/rust-lang/rust/issues/125619> in llvm which when
+>    fixed, must be ported to upstream rust's llvm fork. Since the problem
+>    is an extraneous symbol we could strip it with objcopy -N|--strip-symbol
+> - Adding more than one Rust device ends up with duplicate symbols from
+>    rust std library because we are linking as whole archives because...
+>    constructors are stripped by the linker otherwise :( It can be worked
+>    around if a single Rust library is built with all the devices as
+>    dependencies which is then linked to qemu. The fix is a small change
+>    which I will add either in a next version or when a new Rust device is
+>    added.
+> 
 
-It seems it has been in the pull request from Alex Benn=C3=A9e.
+Hi Manos,
 
-> I don't like messy
-> APIs and people tend to get distracted and not fix them up
-> if one does not make this a blocker.
+I also noticed that when I tried adding a second device. Some other projects met 
+similar issues [1], but no clean solution seems to be available yet. The options 
+are:
 
-+1
+1) Combining all crates into one staticlib which is linked to the final 
+executable. That requires generating one .rs with extern crate decls of all 
+enabled crates. In the context of QEMU, different targets may enable different 
+set of crates (e.g., some crates have arch constraints), thus one .rs for each 
+target will be needed in general.
 
->
-> --
-> MST
+2) Linking rlibs (or emitted objects) directly with other C objects using the C 
+linker. That somehow works (with some tricks) but is not officially supported 
+and may break in the future.
 
-Thanks
+I'm working on (1), but would like to have your thoughts and preference on those 
+options.
 
->
+[1] https://github.com/rust-lang/rust/issues/73632
+
+---
+Best Regards
+Junjie Mao

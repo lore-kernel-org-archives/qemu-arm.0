@@ -1,94 +1,94 @@
-Received: by 2002:a17:504:9188:b0:1be9:327d:8ee3 with SMTP id i8csp1271912njf;
-        Fri, 16 Aug 2024 09:14:20 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVjdY24FjmMPh/wp/mFzpSmruiLQdNX9EGnO046Hulii3fPH5IFjvt9HUr9hBUwtRdVs4AxAJuuILdkGSixzL0nB7xAA3aS
-X-Google-Smtp-Source: AGHT+IGlXHTzwsBrupGQ2D+Fjfh5YQOm4o6nAxHtDD5cVqNTyjMR9R1Z6UReT1EePZFQjP7P3p3e
-X-Received: by 2002:ac8:6f0b:0:b0:446:5c35:d9d6 with SMTP id d75a77b69052e-4537427e701mr43988211cf.23.1723824860067;
-        Fri, 16 Aug 2024 09:14:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1723824860; cv=none;
+Received: by 2002:a17:504:9188:b0:1be9:327d:8ee3 with SMTP id i8csp1272372njf;
+        Fri, 16 Aug 2024 09:15:23 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXHgDD2WqWbrob20yM5KZeFe8tF0E9XFWTLxsjhTLyUz9qne+QVvbObizWNw4L/WLUgeT3tqC6U7xLkW3ahVF5cY2M2tWv2
+X-Google-Smtp-Source: AGHT+IHXU5fHwSPm508muEPKXhayx/HGICY7mSDx5bP0FWLcGqx+sMTjlX9dRY767MQzc/xGANuC
+X-Received: by 2002:a05:622a:618a:b0:44f:f814:38b7 with SMTP id d75a77b69052e-453744042f1mr32441841cf.58.1723824923473;
+        Fri, 16 Aug 2024 09:15:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1723824923; cv=none;
         d=google.com; s=arc-20160816;
-        b=kI17jU27kv4SZVLTnlpHr2TsXzGlOXWecvHbWb43PgOi/qYnw4AIjq3c4XKL4CZ+Gm
-         WDHEOkXSZGi+UxHRK2n3HF4TLTDh4Qne5c4Us9HvtyN4U4itRu4GCPtUZBAY6w3SDX9m
-         vHi08Pi/ivJLCQWYdbkLAg4TVrMuBKHlB/O+ZfFFyxyTJKUeGVZ2JYZsip8daxWiNf4/
-         ZLOQa7LVlHLLCpCItXCQBLdDU//GI77xO0frtCYTpDYbl9OwAsb9JnZGlXnCJbXVch8Y
-         TS8REOR5lrcfIMUZwKcKegouX+r2crfOGZFpckWCbKOJTaWyBQJNJvYWlblpcvIJ3JVH
-         GoAg==
+        b=wj84/vAwHXs2ryWEJ3x1NV3RsWRviXJnwn5sWNhc98KC9ydCGJFNkR9bjgg3mR2Nw/
+         5Wu0T96Ivf36gFT4GEGnuwZZQ/Ufqi/XtcjK9wk0os/58KDO6Um0uQM8iCy/aYaouP26
+         tj6SwZIJ/5Cy2Socqw1TMyuXrMNwtk/sfYc1EWiueU3TYOKZFaNXvYxcXwqv3npjdcIu
+         dYMU1HgVzvnFniwarMl1roWYQSwd6wgdPrEuoLP+DkTaPgwbKcCOZtGBmDUEbQRwyzzm
+         0dt4kYaN9W+6hZPHXIrOap6psoVEpLjwtsLhT4vP7TcTV5oQaR40j0scn0D31O2A8h7b
+         8X4A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=GjWmXs7UD5GkRyRxaGCKBrnzIsbM5XteQpuL4ObGWgY=;
+        bh=RhHY2mwb1dwmyJC3ZOyMGrBB8Z2DIi78BFy4b8vQ1Pg=;
         fh=8716YcvxZZxTMNcQZ0eLGoLGp1r7TadekkZAFKW2f4M=;
-        b=mdstsMPePIAhIcFD5XalTAlLCr8EANwEC1K/y9Y0ROg6zM2Ro8fuVqGfD150zhP1aM
-         C+jcR7THiubejkGVNr2B2nELeKoZ2kdcvba3T4OxwmQAr6+e+4ghGBneXqsBIcbz3dxy
-         IS6ldGsVxj21WpLfSzJfKLmr1ocxrEeOjKy+qNl6I1nmUT9eHWSOwDp7t+a+/EZ+XLG8
-         +wtnZBTeghRW/2gyKb6gijNepk1OYJ5jJnQJH7rePfEVNK3jU1V6PvAZmVssgMeDUuau
-         FlW4uC8j/SXC4O14YTLE8aK9XXte0gdXMJH38+/i/MpWNEgPKCEusqMKKAA5zjwo6QFD
-         XMvA==;
+        b=pr366Oqyj/6T0pyOIrhR0WH4EwMvkidYIrmHdBcERH3uR8xL+53ThwlTnpIFnQwUbL
+         KXYg7PQ+LPW0lo17pKjEx/ZKcHiMU+fDQtALn5WJnhWQf5NpjmQlOT+jCXlgcrqZ4mWm
+         3VLpKf+JG8zKJoxceLi74LgOBqCgj9FIi8Qyz4jV3BXLZWZ4dPvBJNqFfjXtIlfbfflK
+         ICB1/cMZIu1bljsUfpRzhweiEygbdDh7Ok19M/4ZZDAq8EAWpH1k7l9JJUPTfZAOj52s
+         4U6RFtVf+2dAn2BPihnzXuL8+YYsbb8dLs52SoC+eN/CG2eQc6kxDf3urEBA+M7YuKTv
+         PS0w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=S6jsYj8g;
+       dkim=pass header.i=@linaro.org header.s=google header.b="eXWdA4c/";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-45369fe702asi45033111cf.15.2024.08.16.09.14.19
+        by mx.google.com with ESMTPS id d75a77b69052e-4536a0b7b1asi43269401cf.559.2024.08.16.09.15.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 16 Aug 2024 09:14:20 -0700 (PDT)
+        Fri, 16 Aug 2024 09:15:23 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=S6jsYj8g;
+       dkim=pass header.i=@linaro.org header.s=google header.b="eXWdA4c/";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sezaS-0008OL-Bq; Fri, 16 Aug 2024 12:14:00 -0400
+	id 1sezaS-0008Oh-EX; Fri, 16 Aug 2024 12:14:00 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1sezaQ-0008E1-1S
+ id 1sezaQ-0008Dy-0l
  for qemu-arm@nongnu.org; Fri, 16 Aug 2024 12:13:58 -0400
-Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1sezaN-0007e0-Hq
+ id 1sezaN-0007dr-4c
  for qemu-arm@nongnu.org; Fri, 16 Aug 2024 12:13:57 -0400
-Received: by mail-wr1-x429.google.com with SMTP id
- ffacd0b85a97d-37172a83a4bso1060319f8f.0
- for <qemu-arm@nongnu.org>; Fri, 16 Aug 2024 09:13:55 -0700 (PDT)
+Received: by mail-wm1-x330.google.com with SMTP id
+ 5b1f17b1804b1-4281ca54fd3so15683005e9.2
+ for <qemu-arm@nongnu.org>; Fri, 16 Aug 2024 09:13:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1723824834; x=1724429634; darn=nongnu.org;
+ d=linaro.org; s=google; t=1723824833; x=1724429633; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=GjWmXs7UD5GkRyRxaGCKBrnzIsbM5XteQpuL4ObGWgY=;
- b=S6jsYj8gPgHJAzOPftR/QOtNunJIGW49g6/2mc6qL2U5WK7oE8LwW+upqiLDayKvIP
- uH+bw9R2kKjNNcWwQdR9JH8XK+Znrd1mkczN8WQ/1FovdawKfohdP4yZPEEcm2cYBv15
- 0L7apPjT+GORivv6rtacSWNAECFcOW/jot6AW2I0pT8aUcPIHdvkBD8cUD3JiAlgandP
- Q9lGbt/d7x3+h7ffXPe1Vp4ZsMGL0ewRu/A4IZR0EVz8JqsEV3YV4n/OkvVL5pocssYF
- CqTOjkuatFs1i7YwFJAoEn2GKP3SW/uAI9New8eWRnEBPVSYBAvQ/aas7QbEXcWDJm2/
- vMrA==
+ bh=RhHY2mwb1dwmyJC3ZOyMGrBB8Z2DIi78BFy4b8vQ1Pg=;
+ b=eXWdA4c/ewN9lCK7I0lr1HAAcsNc9+bNK+hu4TBPHHktOPuIgX9sFsMxKZVYgPqZEa
+ GlgX76b1pyXeqElpq3sgnTP13TvHPxuHLE7OrLHCfvQ4yEzH+GUqEZQjqgzn2w2v5+gz
+ J8xt0xSTYojn2HD9F4zwr1gcDgGIy1tdqArrAw10TTbcSeMdV1c5nuISwb9APT3rImBC
+ ohZ3PuXjEUIKAxQCtEPnjBZzAycB5opO3WIPFeZOBL/xriq+S9ewDvlnzdh/Bwq907v7
+ Qq1W+8OXRG5kmTkFrfOOQL8FAcRbB01aXU1OHwpAmAVH8hlcMAdZFzBHopK4BF1fFCPR
+ BnSQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1723824834; x=1724429634;
+ d=1e100.net; s=20230601; t=1723824833; x=1724429633;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=GjWmXs7UD5GkRyRxaGCKBrnzIsbM5XteQpuL4ObGWgY=;
- b=OMGQImM7wyEppWiBmE/uHa+jGIbxKUMsOEGdYYGjchpN73nuyojZ9vG6ua6UvhVDYw
- UEGtE2Tm4LYHIY0t1XvYjQyGxqvApQY5zMivyOKLAPYuuEXChlHM0BQiqMJadbeSrAuf
- +0c+zpmSQUafFzXGLVxCU6vUnQYTfP6bdp0zZ0SKERGu83ckH0LExaYTSZ9KhGacpTEn
- 564uWwbgrSXnu1hnCU97CB4ExSpFuzBjKlbBfyozO+SH9RIJVtSZyrCiV2H7gnPfvoUs
- 1jWgjIbf2IkovrS5otisnayQwM2SPyat9h7XwRGm3O9SS3l+mLxqnt4kJf4horlt3RMj
- ncIw==
-X-Gm-Message-State: AOJu0YxGObMV/ZaaU4LRdIFkrnsx3GvZEnd5q/zWTmVJzJQszB0eZwEj
- syP7i3IzqrUYB9Ljc3t3KXF16ZGnBx7ALaRQjEdtYBiXErRyFIhczNtuWjw2zC2x9ig2N6/txAM
- S
-X-Received: by 2002:a05:6000:141:b0:371:8845:b850 with SMTP id
- ffacd0b85a97d-371946c2b36mr2406984f8f.54.1723824833988; 
+ bh=RhHY2mwb1dwmyJC3ZOyMGrBB8Z2DIi78BFy4b8vQ1Pg=;
+ b=khZ2HDcnaxmBQTEFSG5uexbSImQn889VvQe/ZxXQC2mj/ihiWqhzqJuQiFIbpFnVgQ
+ JeIEY57J/3tlXc7aNzUbb2hcb2WlWWvaQeVawa2yaIzShcuTHq6+buijtxzYVjrm5zZ1
+ IhA6VCPok9SZyh4ljRTd3cIA7AxTY+W3RD+I9Rxxz4Nn4y0PPLCG8L+O4VNncUIiMN89
+ iAroTt6eD70mjdmguEDw6iqg0xRXbEq3OggJ/PMFoidchLESfqdx6eh+0qFymEn7yzNX
+ EHBdNKXjs0d/rBUw52KGirKCVOKnbzxiu2w+ZI9cKcD9w5FpqBdzeXtbgqM6pfEmM5Zq
+ 9ofw==
+X-Gm-Message-State: AOJu0YxtVvsXOT8N1p9RwG0POvHKWGqlh1WlUd+nSe2Jpqk+Nj2OUJBU
+ w3jinjZWwqhCh38dbyy7E39tfKk/6JoWu/D932TiTKy8S3IAIwRzZsZc/pJaonHQJtXG5KhHhdy
+ Y
+X-Received: by 2002:adf:fc44:0:b0:371:7e73:de6e with SMTP id
+ ffacd0b85a97d-371946897d8mr2727433f8f.52.1723824833475; 
  Fri, 16 Aug 2024 09:13:53 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
@@ -101,16 +101,16 @@ To: qemu-arm@nongnu.org,
 Cc: Leif Lindholm <quic_llindhol@quicinc.com>,
  Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
  Eric Auger <eric.auger@redhat.com>, Radoslaw Biernacki <rad@semihalf.com>
-Subject: [PATCH 4/4] hw/arm/sbsa-ref: Use two-stage SMMU
-Date: Fri, 16 Aug 2024 17:13:50 +0100
-Message-Id: <20240816161350.3706332-5-peter.maydell@linaro.org>
+Subject: [PATCH 3/4] hw/arm/virt: Default to two-stage SMMU from virt-9.2
+Date: Fri, 16 Aug 2024 17:13:49 +0100
+Message-Id: <20240816161350.3706332-4-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240816161350.3706332-1-peter.maydell@linaro.org>
 References: <20240816161350.3706332-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::429;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x429.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::330;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x330.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -132,31 +132,71 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: x0nuimqbm72w
+X-TUID: m+Ep1vXxlADv
 
 Now that our SMMU model supports enabling both stages of translation
-at once, we can enable this in the sbsa-ref board.  Existing guest
-code that only programs stage 1 and doesn't care about stage 2 should
-continue to run with the same behaviour, but guests that do want to
-do nested SMMU configurations can now do so.
+at once, we can enable this in the virt board.  This is no change in
+behaviour for guests, because if they simply ignore stage 2 and never
+configure it then it has no effect.  For the usual backwards
+compatibility reasons we enable this only for machine types starting
+with 9.2.
+
+(Note that the SMMU is disabled by default on the virt board and is
+only created if the user passes the 'iommu=smmuv3' machine option.)
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/arm/sbsa-ref.c | 1 +
- 1 file changed, 1 insertion(+)
+ include/hw/arm/virt.h | 1 +
+ hw/arm/virt.c         | 8 ++++++++
+ 2 files changed, 9 insertions(+)
 
-diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
-index ae37a923015..396abe9c1bd 100644
---- a/hw/arm/sbsa-ref.c
-+++ b/hw/arm/sbsa-ref.c
-@@ -621,6 +621,7 @@ static void create_smmu(const SBSAMachineState *sms, PCIBus *bus)
+diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+index a4d937ed45a..aca4f8061b1 100644
+--- a/include/hw/arm/virt.h
++++ b/include/hw/arm/virt.h
+@@ -134,6 +134,7 @@ struct VirtMachineClass {
+     bool no_cpu_topology;
+     bool no_tcg_lpa2;
+     bool no_ns_el2_virt_timer_irq;
++    bool no_nested_smmu;
+ };
+ 
+ struct VirtMachineState {
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index a5d3ad9bf9e..7934b236516 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -1408,6 +1408,7 @@ static void create_pcie_irq_map(const MachineState *ms,
+ static void create_smmu(const VirtMachineState *vms,
+                         PCIBus *bus)
+ {
++    VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
+     char *node;
+     const char compat[] = "arm,smmu-v3";
+     int irq =  vms->irqmap[VIRT_SMMU];
+@@ -1424,6 +1425,9 @@ static void create_smmu(const VirtMachineState *vms,
  
      dev = qdev_new(TYPE_ARM_SMMUV3);
  
-+    object_property_set_str(OBJECT(dev), "stage", "nested", &error_abort);
++    if (!vmc->no_nested_smmu) {
++        object_property_set_str(OBJECT(dev), "stage", "nested", &error_fatal);
++    }
      object_property_set_link(OBJECT(dev), "primary-bus", OBJECT(bus),
                               &error_abort);
      sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
+@@ -3308,8 +3312,12 @@ DEFINE_VIRT_MACHINE_AS_LATEST(9, 2)
+ 
+ static void virt_machine_9_1_options(MachineClass *mc)
+ {
++    VirtMachineClass *vmc = VIRT_MACHINE_CLASS(OBJECT_CLASS(mc));
++
+     virt_machine_9_2_options(mc);
+     compat_props_add(mc->compat_props, hw_compat_9_1, hw_compat_9_1_len);
++    /* 9.1 and earlier have only a stage-1 SMMU, not a nested s1+2 one */
++    vmc->no_nested_smmu = true;
+ }
+ DEFINE_VIRT_MACHINE(9, 1)
+ 
 -- 
 2.34.1
 

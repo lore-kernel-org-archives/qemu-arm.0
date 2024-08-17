@@ -1,337 +1,320 @@
-Received: by 2002:a17:504:9188:b0:1be9:327d:8ee3 with SMTP id i8csp2089944njf;
-        Mon, 19 Aug 2024 07:21:50 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCXG3WxTUd7p4aaDVDP2pA29YxogHUZCsvNa5XE580y6CG+RoN9FeOeenZzYPDKhjcFDzUe8ZZ6DimnR7w==@linaro.org
-X-Google-Smtp-Source: AGHT+IGFMKbn7GB+niZD46JC7CnCMpWhHRubQlbW7DuBiw5dp7vjTC7oJ0+0rKc6fRyZqfLCb+Tj
-X-Received: by 2002:a17:90a:8a14:b0:2c9:6d07:18f4 with SMTP id 98e67ed59e1d1-2d3e086bf86mr11284787a91.35.1724077309952;
-        Mon, 19 Aug 2024 07:21:49 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1724077309; cv=pass;
-        d=google.com; s=arc-20240605;
-        b=OwzkEaW2BZYfj6s6ANcNtuJ8C4+Emm55bDidHYSx5/D7lzw7d2S+QN/GWPvsF5uxHn
-         t1B3wAk1nEMeXwHrp4gKcDEO0knc+6gDuOuUofYw4sLDG+Cgz+BBduJ1NKxvc0cjeXIV
-         O2y8FjdxMmBj2lIaJQux075MIMaoy379Ll2hyWLkG4cJ+GRYz4XSMza/KlMUo6qHheMo
-         hH4P4gJsE6z5EfdK4e+BeF6mZvxHGnlpjE8xIfh4SuVmBZ7YZyE7g9+t1nO11s9+uazs
-         4huITwhRlNUHpouMNTXQswNYcJcTBqHtSkZl7H+Wf8UAGCiWYGJ2NskhDpCMNVtSUVoV
-         w9NQ==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=sbJ58YvVZ4dzlnRt+qzf9Ta7hAcbIsn3dkKna10OJxE=;
-        fh=kFusL2iezxf9fu1tqgPCGRo8IfRynm3bnMdxK5YKZXM=;
-        b=XY+Y0BynaqhM1qMXff4j3eyvevIO5ZTGOyR57ZOHTsUriK+6EP4xnJ7XM7n7t40bLs
-         a4nG+RSqJqxz8JvaBnSfGGq9mozj/+G99HUrpidX9MUEIgQjncO5PfRMaDddigb/8EEe
-         sG1iSlcpSoSGyRhX4EEqRRNzg8q/HvcBMr1Jr5Bm3lgjzwdrb2+SR/ZkcfNNpZ5fjbOD
-         lwcqObN0MorI4GvxxPMKA4Ke86vLw0xNg9n9ntzdvHx0zPxGcoGxir7DzM/ev1ZmtIoA
-         Lr8T7lnv7eIvpRHUgjxkTCLBoKt+TBIIV9a8RUpE5+XKMp1EwxqiO/NGqrusmfQnRUA2
-         wcfw==;
+Received: by 2002:a17:504:9188:b0:1be9:327d:8ee3 with SMTP id i8csp1398289njf;
+        Fri, 16 Aug 2024 17:43:17 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUOqNSSfYcovM+TTZ0d2i0dq/vjD0x7ndGM4Yrn2y62c/5a2qxP4+G3LiIi3jC9/Roc2Y5mF726YVNcMQnpdRe7epsychBz
+X-Google-Smtp-Source: AGHT+IGK6fTu9fAMDfgi6FsYSK8imrveUUv+g7zDmwsGxn987KErGgdWmjChljysmGmr8nRPlEKu
+X-Received: by 2002:a05:6830:929:b0:703:fdda:c1c7 with SMTP id 46e09a7af769-70cac83d134mr4461384a34.7.1723855397505;
+        Fri, 16 Aug 2024 17:43:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1723855397; cv=none;
+        d=google.com; s=arc-20160816;
+        b=lC41sqKBjezI8zOFJ4cHy5qoaGxD67xRKJnXVrEY1U4VJvYn6U0EGVpBp2X2As6UnW
+         WhGExij9HN4nCnOA48Kdh45r5Ufqot4Uc1g8ucVlA19TjTGe84B/DJoCcdnuib6tQtpY
+         FJe+ElMahRhrMrDWcHItpXfpB8SvJWHvrni+VBa8xcVXLdLYRkcbkdhCLnSqcFiNywlz
+         OpuzrrDzRAaep6fgvupMjQFPjiJroBazqnd74dVYhc6e2CiH5PoQFTXTC3ecZNRPgXZd
+         OvDtZ95fpA8FXl4BJ9Ax20NAwB/MaPuVIi44bWH71DO4+Jwkex/LOGorHLKVnTRrDxYT
+         VUGw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:references:to:cc:in-reply-to
+         :date:subject:mime-version:message-id:from:dkim-signature;
+        bh=Z1KtMJ9inNrCSBgeoGYAd5GLzpy22ae6mW9LL6GR8OY=;
+        fh=qJ9onPhxuJvKavxolNC2mYGQba5PpR+0LDyzhwHoIoE=;
+        b=gXNaH3CULq3GdzTLHAVAaGGobOr1Uh8ysxMI5xxLgMdibmxabQauKDyYNRK7HZT55t
+         ivNFrShzOn6ju51WYSsve/gAoB0SizarLvUYnmBlIwKc+4YePAl/bQ4VT9SJNHDa5dp9
+         5ef17avpiySr3KIbIe7m0UzTtWvhx04gLjlut2VVHDX2ki5UY141qOBYdkh5Y9uNSkN1
+         511BMdJtoa5fQCqvJ/B0aqDrUprBwY7KUBN6fuybIi99KWA+xQx0Bj2itxkDJMO/hmSV
+         SmImjFDpp7dj8oMxUsJUihshc+5Nt5pxWbAQFLKm8Q+yPw8hcu/8SOawwuEurAXxlzfq
+         HEHg==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Kym3MM06;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-24530-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="kvm+bounces-24530-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm+bounces-24530-alex.bennee=linaro.org@vger.kernel.org>
-Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [139.178.88.99])
-        by mx.google.com with ESMTPS id 98e67ed59e1d1-2d3e3d9a58fsi7610865a91.126.2024.08.19.07.21.49
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@apple.com header.s=20180706 header.b=igpAYPMS;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=REJECT dis=NONE) header.from=apple.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d75a77b69052e-45369fe6451si53580831cf.32.2024.08.16.17.43.17
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 19 Aug 2024 07:21:49 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm+bounces-24530-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) client-ip=139.178.88.99;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 16 Aug 2024 17:43:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Kym3MM06;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-24530-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="kvm+bounces-24530-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by sv.mirrors.kernel.org (Postfix) with ESMTPS id 7882A281AFC
-	for <alex.bennee@linaro.org>; Mon, 19 Aug 2024 14:21:49 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id EB22B16D30C;
-	Mon, 19 Aug 2024 14:21:47 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="Kym3MM06"
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0113816C863
-	for <kvm@vger.kernel.org>; Mon, 19 Aug 2024 14:21:45 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.133.124
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1724077307; cv=none; b=mIOKhDASqquGgSPZ7nTh0+vqqajGnPX3Ud3ZSRlOGy7jl4smR4KPGrf6nnFupBG+tkiYiK7d1qBnhYxtA8YR8jcQYzJd4kesrsKYZGYlYs5+X+8jowcnDynwlW4YVrcuYFRV2+XS+xNgCwILF+eFBk23lONsGDQ1o+tn3PLF/9Y=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1724077307; c=relaxed/simple;
-	bh=X6Oum9qUOFOyLXCFWWn44VFU84P/iKZ7Gr4ZKEWYMxg=;
-	h=Date:From:To:Cc:Subject:Message-ID:In-Reply-To:References:
-	 MIME-Version:Content-Type; b=SSmmSYvhBaMzoIJ5MiocYVluLN2f8h69vgknzHwANMoQAlBWm1ybKn8oWMYP1JbwgFM9yqIxIigzasW3AWjb1sgD+R5CKFgFgKjQMkz56QUrldioSWwVCnjni3Ro1zW4Sr6s0MAnbNGx+ucFw5dYkq4RLBDBL5LNCnFkqAO+TUQ=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=Kym3MM06; arc=none smtp.client-ip=170.10.133.124
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1724077304;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=sbJ58YvVZ4dzlnRt+qzf9Ta7hAcbIsn3dkKna10OJxE=;
-	b=Kym3MM06B5sOIoFC/VkC3w6snDftroA2gSLzIA1OgYNVWtDUGu04TSZn44i0waiVUETy8D
-	6dhAWzctT6PIYvt1ef/32mgS/XYhbFAyISyD1HrHTwrrtOGw7la/ppjCXShucZAf7UsFgG
-	rmxwMsMu/490AXp+jpHc2fw2EFq71do=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-34-uXa8Rg-lORmH-bA8PvzESg-1; Mon, 19 Aug 2024 10:21:41 -0400
-X-MC-Unique: uXa8Rg-lORmH-bA8PvzESg-1
-Received: by mail-wr1-f71.google.com with SMTP id ffacd0b85a97d-3718bf7d54aso2611841f8f.1
-        for <kvm@vger.kernel.org>; Mon, 19 Aug 2024 07:21:41 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1724077300; x=1724682100;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=sbJ58YvVZ4dzlnRt+qzf9Ta7hAcbIsn3dkKna10OJxE=;
-        b=amUCPF2N3kz4Dy1hgdadNbZKL33RQ9YZPCxYmOs/MkEjB66oksyn0ombecxx/4zEt2
-         VPU/nI7iE9nxLCHyWIE8eKGlDyHI5LVYJEZyvpJfWeOLMjEqVyB+ZuezrwXtpiSEK5FH
-         8tHzbj6K61pbww5uA194No6F25FLwEWi2Qy8QlobPEzJzEKQjtu4/M1sXbhZcgKBXd9c
-         d0ySVdDBv0b58KtyYq4cJZBEowfLN6BFt5fXCpCCX6gzUkW5icAoKh0CQJ95FEEwPBvI
-         3tf2BwBYMzrKhFvYGf4sH1ZHt6OWyOA9JTFWVita0wGe03Bo0URizULh6cSBr/Mgz9/S
-         RtAA==
-X-Forwarded-Encrypted: i=1; AJvYcCXiskkAzO+Yd76i8i5tOt3PlofPGFkK0t+K/RU3xWGgTvFjBxLIDg1EYchBmOl6EKFXe1s=@vger.kernel.org
-X-Gm-Message-State: AOJu0YxLKiFxLqndzVK4uPnf5lC7YmOpPGzwouIT6cVv4MIq24abvJud
-	wwnMoqCOXBUe62GsJCXy55Q2kYLEgqWViAfOL5povCZv74ir8AcaJzC3NxvaUWH4WljNomD3e/l
-	yPUkHmObnstNik4yBnHlGaiQKeQwSFWj1FAf5/hXqFLC9FlZ/+w==
-X-Received: by 2002:adf:cc8c:0:b0:368:3f60:8725 with SMTP id ffacd0b85a97d-3719468fac0mr5409896f8f.39.1724077299930;
-        Mon, 19 Aug 2024 07:21:39 -0700 (PDT)
-X-Received: by 2002:adf:cc8c:0:b0:368:3f60:8725 with SMTP id ffacd0b85a97d-3719468fac0mr5409876f8f.39.1724077299359;
-        Mon, 19 Aug 2024 07:21:39 -0700 (PDT)
-Received: from imammedo.users.ipa.redhat.com (nat-pool-brq-t.redhat.com. [213.175.37.10])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-429ed6507c4sm113966685e9.15.2024.08.19.07.21.38
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 19 Aug 2024 07:21:38 -0700 (PDT)
-Date: Mon, 19 Aug 2024 16:21:38 +0200
-From: Igor Mammedov <imammedo@redhat.com>
-To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>, Shiju Jose
- <shiju.jose@huawei.com>, Ani Sinha <anisinha@redhat.com>, Dongjiu Geng
- <gengdongjiu1@gmail.com>, Paolo Bonzini <pbonzini@redhat.com>, Peter
- Maydell <peter.maydell@linaro.org>, Shannon Zhao
- <shannon.zhaosl@gmail.com>, kvm@vger.kernel.org, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Subject: Re: [PATCH v8 00/13] Add ACPI CPER firmware first error injection
- on ARM emulation
-Message-ID: <20240819162138.4dd45330@imammedo.users.ipa.redhat.com>
-In-Reply-To: <cover.1723793768.git.mchehab+huawei@kernel.org>
-References: <cover.1723793768.git.mchehab+huawei@kernel.org>
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
-Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-TUID: z2jGiva5v78H
+       dkim=pass header.i=@apple.com header.s=20180706 header.b=igpAYPMS;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=REJECT dis=NONE) header.from=apple.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1sf7WQ-0006Og-Ju; Fri, 16 Aug 2024 20:42:22 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <danny_canter@apple.com>)
+ id 1sf7WO-0006OA-Py
+ for qemu-devel@nongnu.org; Fri, 16 Aug 2024 20:42:20 -0400
+Received: from ma-mailsvcp-mx-lapp02.apple.com ([17.32.222.23])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <danny_canter@apple.com>)
+ id 1sf7WM-0007X0-BY
+ for qemu-devel@nongnu.org; Fri, 16 Aug 2024 20:42:20 -0400
+Received: from rn-mailsvcp-mta-lapp04.rno.apple.com
+ (rn-mailsvcp-mta-lapp04.rno.apple.com [10.225.203.152])
+ by ma-mailsvcp-mx-lapp02.apple.com
+ (Oracle Communications Messaging Server 8.1.0.23.20230328 64bit (built Mar 28
+ 2023)) with ESMTPS id <0SIC000MG722PA10@ma-mailsvcp-mx-lapp02.apple.com> for
+ qemu-devel@nongnu.org; Fri, 16 Aug 2024 17:37:15 -0700 (PDT)
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1039,Hydra:6.0.680,FMLib:17.12.28.16
+ definitions=2024-08-16_17,2024-08-16_01,2024-05-17_01
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=apple.com; h=cc :
+ content-type : date : from : in-reply-to : message-id : mime-version :
+ references : subject : to; s=20180706;
+ bh=Z1KtMJ9inNrCSBgeoGYAd5GLzpy22ae6mW9LL6GR8OY=;
+ b=igpAYPMSBEiDRqWVK6CQ/1rainOGPYdJ6FnPzSHAP5oJhxArV3RbI01dU/wDGeXvJJli
+ 2SefRr/AKTOrj8+7YbyQDb9tKEIsqExjahH2J2koMmoKTCv84HBHg5mHS+qg2oQG+O8w
+ tVEfuZC5hStXe7G6vhV0x0cIwRJp7SoNFdSc2rIEmphqv1ayUPM8/uAbpPPrmtMiycUh
+ /Vo4DBaF6IV/4gRHRvHMBx5n55/HYaZBB76N1aVe6yzyh2ybXfxPOHvk6sObqtF2UVku
+ FECKjYkY8WG8mtmmD79low5MwQVOEC+5MhmmQCHr1jjk+o63AA/WpWfhMKL5EKbyPSM0 UA==
+Received: from mr55p01nt-mmpp04.apple.com
+ (mr55p01nt-mmpp04.apple.com [10.170.185.204])
+ by rn-mailsvcp-mta-lapp04.rno.apple.com
+ (Oracle Communications Messaging Server 8.1.0.23.20230328 64bit (built Mar 28
+ 2023)) with ESMTPS id <0SIC00YKH721J590@rn-mailsvcp-mta-lapp04.rno.apple.com>; 
+ Fri, 16 Aug 2024 17:37:13 -0700 (PDT)
+Received: from process_milters-daemon.mr55p01nt-mmpp04.apple.com by
+ mr55p01nt-mmpp04.apple.com
+ (Oracle Communications Messaging Server 8.1.0.23.20230328 64bit (built Mar 28
+ 2023)) id <0SIC08X006TJVD00@mr55p01nt-mmpp04.apple.com>; Sat,
+ 17 Aug 2024 00:37:13 +0000 (GMT)
+X-Va-A: 
+X-Va-T-CD: 9be860c946f6cbc0801dd392535b1c06
+X-Va-E-CD: 6e8d677d3901fd5b58b190047ca79016
+X-Va-R-CD: 4206bda14c83e153d471243933acbb53
+X-Va-ID: df1ee542-a3ac-4040-bb1c-4785413cf21f
+X-Va-CD: 0
+X-V-A: 
+X-V-T-CD: 9be860c946f6cbc0801dd392535b1c06
+X-V-E-CD: 6e8d677d3901fd5b58b190047ca79016
+X-V-R-CD: 4206bda14c83e153d471243933acbb53
+X-V-ID: 7c7b94ba-3674-487b-b424-138886f76123
+X-V-CD: 0
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1039,Hydra:6.0.680,FMLib:17.12.28.16
+ definitions=2024-08-16_17,2024-08-16_01,2024-05-17_01
+Received: from smtpclient.apple (unknown [17.11.165.88])
+ by mr55p01nt-mmpp04.apple.com
+ (Oracle Communications Messaging Server 8.1.0.23.20230328 64bit (built Mar 28
+ 2023)) with ESMTPSA id <0SIC08DD271OBV00@mr55p01nt-mmpp04.apple.com>; Sat,
+ 17 Aug 2024 00:37:12 +0000 (GMT)
+From: Danny Canter <danny_canter@apple.com>
+Message-id: <CA7E2403-A9F6-4B29-B640-13E41D530744@apple.com>
+Content-type: multipart/alternative;
+ boundary="Apple-Mail=_182B2C20-4477-4C15-BACF-6201DBE72E07"
+MIME-version: 1.0 (Mac OS X Mail 16.0 \(3815.100.3\))
+Subject: Re: [PATCH] hvf: arm: Allow creating VMs with > 63GB of RAM on macOS
+ 15+
+Date: Fri, 16 Aug 2024 17:36:42 -0700
+In-reply-to: <CAFEAcA9XXhsUeHNjsVkjhjO2_Njkk=L00BG+24xtXWWKgJayRw@mail.gmail.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ Cameron Esfahani <dirty@apple.com>, rbolshakov@ddn.com, agraf@csgraf.de
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <20240718230031.69641-1-danny_canter@apple.com>
+ <CAFEAcA__WZ=uw0VLcP0fLbUTwmctsZ1y=FRf9bXMT9WJC2sRFA@mail.gmail.com>
+ <E03A8C36-4079-468F-9596-328D713C3611@apple.com>
+ <CAFEAcA9XXhsUeHNjsVkjhjO2_Njkk=L00BG+24xtXWWKgJayRw@mail.gmail.com>
+X-Mailer: Apple Mail (2.3815.100.3)
+Received-SPF: pass client-ip=17.32.222.23; envelope-from=danny_canter@apple.com;
+ helo=ma-mailsvcp-mx-lapp02.apple.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.131,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: F5lWSrHQWlRb
 
-On Fri, 16 Aug 2024 09:37:32 +0200
-Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
 
-> This series add support for injecting generic CPER records.  Such records
-> are generated outside QEMU via a provided script.
-> 
-> On this version, I added two optional patches at the end:
-> - acpi/ghes: cleanup generic error data logic
-> 
->   It drops some obvious comments from some already-existing code.
->   As we're already doing lots of changes at the code, it sounded
->   reasonable to me to have such cleanup here;
-> 
-> - acpi/ghes: check if the BIOS pointers for HEST are correct
-> 
->   QEMU has two ways to navigate to a CPER start data: via its
->   memory address or indirectly following 2 BIOS pointers.
->   OS only have the latter one. This patch validates if the BIOS
->   links used by the OS were properly produced, comparing to the
->   actual location of the CPER record.
+--Apple-Mail=_182B2C20-4477-4C15-BACF-6201DBE72E07
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain;
+	charset=utf-8
 
-I went over the series,
-once suggestion in 13/13 implemented
-we can get rid of pointer math that is reshuffled several times
-in patches here.
+Peter, thought I=E2=80=99d send this little snippet before getting the =
+rest of V2 done in case anyone hates this :). I tried to take a similar =
+approach to kvm_type,
+but I=E2=80=99m not sure if this will be looked upon favorably so want =
+an early opinion. The nice thing about kvm_type is at least it has =
+differing meaning per
+platform so all the impls can do whatever they need, with the below =
+it=E2=80=99s really only needed on ARM (and obviously macOS specific) so =
+it's a bit odd,
+but couldn=E2=80=99t think of how else to be able to be able to get what =
+we need out of the memmap during vm creation.=20
 
-I'd suggest to structure series as following:
- 
-  1: patch that adds hest_addr_le
-  2: refactoring current code to use address lookup vs pointer math
-  3. renaming patches 
-  4. patch adding new error source
-  5. QAPI patch
-  6. python script for error injection
+How this would be used is almost exactly like how ARMs kvm_type is used. =
+We set up hvf_get_physical_address_range to freeze the memory
+map and compute the highest gpa, then check if that exceeds our =
+platforms largest IPA size and if so return a sane error message. If =
+everything
+checks out we=E2=80=99d just set the IPA size on the VM config object =
+and then create the VM. The current patch should mostly stay the same =
+after that bit
+of plumbing I think besides removing the macOS 13 ifdef=E2=80=99s (and =
+simplifying the copy and pasted loop you pointed out). x86=E2=80=99s
+hvf_get_physical_address_range can be NULL.
 
-with that in place we probably would need to
-  * iron out minor migration compat issues
-    (I didn't look for them during this review round as much
-     would change yet)
-  * make sure that bios tables test is updated
+--- a/include/hw/boards.h
++++ b/include/hw/boards.h
+@@ -215,6 +215,10 @@ typedef struct {
+  *    Return the type of KVM corresponding to the kvm-type string =
+option or
+  *    computed based on other criteria such as the host kernel =
+capabilities.
+  *    kvm-type may be NULL if it is not needed.
++ * @hvf_get_physical_address_range:
++ *    Returns the physical address range in bits to use for the HVF =
+virtual
++ *    machine based on the current boards memory map. This may be NULL =
+if it
++ *    is not needed.
+  * @numa_mem_supported:
+  *    true if '--numa node.mem' option is supported and false otherwise
+  * @hotplug_allowed:
+@@ -253,6 +257,7 @@ struct MachineClass {
+     void (*reset)(MachineState *state, ShutdownCause reason);
+     void (*wakeup)(MachineState *state);
+     int (*kvm_type)(MachineState *machine, const char *arg);
++    unsigned int (*hvf_get_physical_address_range)(MachineState =
+*machine);
 
-> 
-> ---
-> 
-> v8:
-> - Fix one of the BIOS links that were incorrect;
-> - Changed mem error internal injection to use a common code;
-> - No more hardcoded values for CPER: instead of using just the
->   payload at the QAPI, it now has the full raw CPER there;
-> - Error injection script now supports changing fields at the
->   Generic Error Data section of the CPER;
-> - Several minor cleanups.
-> 
-> v7:
-> - Change the way offsets are calculated and used on HEST table.
->   Now, it is compatible with migrations as all offsets are relative
->   to the HEST table;
-> - GHES interface is now more generic: the entire CPER is sent via
->   QMP, instead of just the payload;
-> - Some code cleanups to make the code more robust;
-> - The python script now uses QEMUMonitorProtocol class.
-> 
-> v6:
-> - PNP0C33 device creation moved to aml-build.c;
-> - acpi_ghes record functions now use ACPI notify parameter,
->   instead of source ID;
-> - the number of source IDs is now automatically calculated;
-> - some code cleanups and function/var renames;
-> - some fixes and cleanups at the error injection script;
-> - ghes cper stub now produces an error if cper JSON is not compiled;
-> - Offset calculation logic for GHES was refactored;
-> - Updated documentation to reflect the GHES allocated size;
-> - Added a x-mpidr object for QOM usage;
-> - Added a patch making usage of x-mpidr field at ARM injection
->   script;
-> 
-> v5:
-> - CPER guid is now passing as string;
-> - raw-data is now passed with base64 encode;
-> - Removed several GPIO left-overs from arm/virt.c changes;
-> - Lots of cleanups and improvements at the error injection script.
->   It now better handles QMP dialog and doesn't print debug messages.
->   Also, code was split on two modules, to make easier to add more
->   error injection commands.
-> 
-> v4:
-> - CPER generation moved to happen outside QEMU;
-> - One patch adding support for mpidr query was removed.
-> 
-> v3:
-> - patch 1 cleanups with some comment changes and adding another place where
->   the poweroff GPIO define should be used. No changes on other patches (except
->   due to conflict resolution).
-> 
-> v2:
-> - added a new patch using a define for GPIO power pin;
-> - patch 2 changed to also use a define for generic error GPIO pin;
-> - a couple cleanups at patch 2 removing uneeded else clauses.
-> 
-> Example of generating a CPER record:
-> 
-> $ scripts/ghes_inject.py -d arm -p 0xdeadbeef
-> GUID: e19e3d16-bc11-11e4-9caa-c2051d5d46b0
-> Generic Error Status Block (20 bytes):
->       00000000  01 00 00 00 00 00 00 00 00 00 00 00 90 00 00 00   ................
->       00000010  00 00 00 00                                       ....
-> 
-> Generic Error Data Entry (72 bytes):
->       00000000  16 3d 9e e1 11 bc e4 11 9c aa c2 05 1d 5d 46 b0   .=...........]F.
->       00000010  00 00 00 00 00 03 00 00 48 00 00 00 00 00 00 00   ........H.......
->       00000020  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   ................
->       00000030  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   ................
->       00000040  00 00 00 00 00 00 00 00                           ........
-> 
-> Payload (72 bytes):
->       00000000  05 00 00 00 01 00 00 00 48 00 00 00 00 00 00 00   ........H.......
->       00000010  00 00 00 80 00 00 00 00 10 05 0f 00 00 00 00 00   ................
->       00000020  00 00 00 00 00 00 00 00 00 20 14 00 02 01 00 03   ......... ......
->       00000030  0f 00 91 00 00 00 00 00 ef be ad de 00 00 00 00   ................
->       00000040  ef be ad de 00 00 00 00                           ........
-> 
-> Error injected.
-> 
-> [    9.358364] {1}[Hardware Error]: Hardware error from APEI Generic Hardware Error Source: 1
-> [    9.359027] {1}[Hardware Error]: event severity: recoverable
-> [    9.359586] {1}[Hardware Error]:  Error 0, type: recoverable
-> [    9.360124] {1}[Hardware Error]:   section_type: ARM processor error
-> [    9.360561] {1}[Hardware Error]:   MIDR: 0x00000000000f0510
-> [    9.361160] {1}[Hardware Error]:   Multiprocessor Affinity Register (MPIDR): 0x0000000080000000
-> [    9.361643] {1}[Hardware Error]:   running state: 0x0
-> [    9.362142] {1}[Hardware Error]:   Power State Coordination Interface state: 0
-> [    9.362682] {1}[Hardware Error]:   Error info structure 0:
-> [    9.363030] {1}[Hardware Error]:   num errors: 2
-> [    9.363656] {1}[Hardware Error]:    error_type: 0x02: cache error
-> [    9.364163] {1}[Hardware Error]:    error_info: 0x000000000091000f
-> [    9.364834] {1}[Hardware Error]:     transaction type: Data Access
-> [    9.365599] {1}[Hardware Error]:     cache error, operation type: Data write
-> [    9.366441] {1}[Hardware Error]:     cache level: 2
-> [    9.367005] {1}[Hardware Error]:     processor context not corrupted
-> [    9.367753] {1}[Hardware Error]:    physical fault address: 0x00000000deadbeef
-> [    9.374267] Memory failure: 0xdeadb: recovery action for free buddy page: Recovered
-> 
-> Such script currently supports arm processor error CPER, but can easily be
-> extended to other GHES notification types.
-> 
-> 
-> 
-> Jonathan Cameron (1):
->   acpi/ghes: Add support for GED error device
-> 
-> Mauro Carvalho Chehab (12):
->   acpi/generic_event_device: add an APEI error device
->   arm/virt: Wire up a GED error device for ACPI / GHES
->   qapi/acpi-hest: add an interface to do generic CPER error injection
->   acpi/ghes: rework the logic to handle HEST source ID
->   acpi/ghes: add support for generic error injection via QAPI
->   acpi/ghes: cleanup the memory error code logic
->   docs: acpi_hest_ghes: fix documentation for CPER size
->   scripts/ghes_inject: add a script to generate GHES error inject
->   target/arm: add an experimental mpidr arm cpu property object
->   scripts/arm_processor_error.py: retrieve mpidr if not filled
->   acpi/ghes: cleanup generic error data logic
->   acpi/ghes: check if the BIOS pointers for HEST are correct
-> 
->  MAINTAINERS                            |  10 +
->  docs/specs/acpi_hest_ghes.rst          |   6 +-
->  hw/acpi/Kconfig                        |   5 +
->  hw/acpi/aml-build.c                    |  10 +
->  hw/acpi/generic_event_device.c         |   8 +
->  hw/acpi/ghes-stub.c                    |   3 +-
->  hw/acpi/ghes.c                         | 362 ++++++++-----
->  hw/acpi/ghes_cper.c                    |  33 ++
->  hw/acpi/ghes_cper_stub.c               |  19 +
->  hw/acpi/meson.build                    |   2 +
->  hw/arm/Kconfig                         |   5 +
->  hw/arm/virt-acpi-build.c               |   6 +-
->  hw/arm/virt.c                          |  12 +-
->  include/hw/acpi/acpi_dev_interface.h   |   1 +
->  include/hw/acpi/aml-build.h            |   2 +
->  include/hw/acpi/generic_event_device.h |   1 +
->  include/hw/acpi/ghes.h                 |  24 +-
->  include/hw/arm/virt.h                  |   1 +
->  qapi/acpi-hest.json                    |  36 ++
->  qapi/meson.build                       |   1 +
->  qapi/qapi-schema.json                  |   1 +
->  scripts/arm_processor_error.py         | 388 ++++++++++++++
->  scripts/ghes_inject.py                 |  51 ++
->  scripts/qmp_helper.py                  | 702 +++++++++++++++++++++++++
->  target/arm/cpu.c                       |   1 +
->  target/arm/cpu.h                       |   1 +
->  target/arm/helper.c                    |  10 +-
->  target/arm/kvm.c                       |   2 +-
->  28 files changed, 1551 insertions(+), 152 deletions(-)
->  create mode 100644 hw/acpi/ghes_cper.c
->  create mode 100644 hw/acpi/ghes_cper_stub.c
->  create mode 100644 qapi/acpi-hest.json
->  create mode 100644 scripts/arm_processor_error.py
->  create mode 100755 scripts/ghes_inject.py
->  create mode 100644 scripts/qmp_helper.py
-> 
+> On Aug 13, 2024, at 2:31=E2=80=AFAM, Peter Maydell =
+<peter.maydell@linaro.org> wrote:
+>=20
+> On Mon, 12 Aug 2024 at 23:18, Danny Canter <danny_canter@apple.com> =
+wrote:
+>> On Aug 12, 2024, at 10:52=E2=80=AFAM, Peter Maydell =
+<peter.maydell@linaro.org> wrote:
+>>> This is unfortunately probably going to imply a bit of extra
+>>> plumbing to be implemented for hvf -- that MachineClass::kvm_type
+>>> method is (as the name suggests) KVM specific. (Multi-patch
+>>> patchset for that, where we add the plumbing in as its own
+>>> separate patch (and/or whatever other split of functionality
+>>> into coherent chunks makes sense), rather than one-big-patch, =
+please.)
+>>=20
+>> That=E2=80=99s perfectly fine, I=E2=80=99ll try and see how the =
+plumbing was done
+>> for KVM and try and emulate where it makes sense
+>> for HVF. Agree though, that=E2=80=99d definitely push this into =
+multi-patch
+>> territory. Curious if you think what=E2=80=99s here today should
+>> be multiple patches or the current work seems fine in one?
+>=20
+> I think it was fine as one patch. My personal preference
+> when I write code tends to go for more-smaller-patches
+> over fewer-larger-patches, so I might have for example
+> split out "Add hvf_arch_vm_create()" into its own
+> patch, but that's very borderline, and I wouldn't ask for
+> that change at code review time unless the patch as a whole
+> was too big and unwieldy and I was looking for places to
+> suggest a split into multiple patches.
+>=20
+> -- PMM
 
+
+--Apple-Mail=_182B2C20-4477-4C15-BACF-6201DBE72E07
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html;
+	charset=utf-8
+
+<html><head><meta http-equiv=3D"content-type" content=3D"text/html; =
+charset=3Dutf-8"></head><body style=3D"overflow-wrap: break-word; =
+-webkit-nbsp-mode: space; line-break: after-white-space;">Peter, thought =
+I=E2=80=99d send this little snippet before getting the rest of V2 done =
+in case anyone hates this :). I tried to take a similar approach to =
+kvm_type,<div>but I=E2=80=99m not sure if this will be looked upon =
+favorably so want an early opinion. The nice thing about kvm_type is at =
+least it has differing meaning per</div><div>platform so all the impls =
+can do whatever they need, with the below it=E2=80=99s really only =
+needed on ARM (and obviously macOS specific) so it's a bit =
+odd,</div><div>but couldn=E2=80=99t think of how else to be able to be =
+able to get what we need out of the memmap during vm =
+creation.&nbsp;<div><div><br></div><div>How this would be used is almost =
+exactly like how ARMs kvm_type is used. We set up&nbsp;<span =
+style=3D"caret-color: rgb(0, 0, 0); color: rgb(0, 0, =
+0);">hvf_get_physical_address_range to freeze the =
+memory</span></div><div>map and compute the highest gpa, then&nbsp;<span =
+style=3D"caret-color: rgb(0, 0, 0); color: rgb(0, 0, 0);">check if that =
+exceeds our platforms largest IPA size and if so return a sane error =
+message. If&nbsp;</span><span style=3D"caret-color: rgb(0, 0, 0); color: =
+rgb(0, 0, 0);">everything</span></div><div><span style=3D"caret-color: =
+rgb(0, 0, 0); color: rgb(0, 0, 0);">checks out we=E2=80=99d just set the =
+IPA size on the VM config object and then create the VM. The current =
+patch should mostly stay the&nbsp;</span><span style=3D"color: rgb(0, 0, =
+0);">same after that bit</span></div><div><span style=3D"color: rgb(0, =
+0, 0);">of plumbing I think besides removing the macOS 13 ifdef=E2=80=99s =
+(and simplifying the copy and pasted loop you pointed =
+out).&nbsp;</span><font color=3D"#000000">x86=E2=80=99s</font></div><div><=
+span style=3D"caret-color: rgb(0, 0, 0); color: rgb(0, 0, =
+0);">hvf_get_physical_address_range can be =
+NULL.</span></div><div><br></div><div><div>--- =
+a/include/hw/boards.h</div><div>+++ b/include/hw/boards.h</div><div>@@ =
+-215,6 +215,10 @@ typedef struct {</div><div>&nbsp; * &nbsp; =
+&nbsp;Return the type of KVM corresponding to the kvm-type string option =
+or</div><div>&nbsp; * &nbsp; &nbsp;computed based on other criteria such =
+as the host kernel capabilities.</div><div>&nbsp; * &nbsp; =
+&nbsp;kvm-type may be NULL if it is not needed.</div><div>+ * =
+@hvf_get_physical_address_range:</div><div>+ * &nbsp; &nbsp;Returns the =
+physical address range in bits to use for the HVF virtual</div><div>+ * =
+&nbsp; &nbsp;machine based on the current boards memory map. This may be =
+NULL if it</div><div>+ * &nbsp; &nbsp;is not needed.</div><div>&nbsp; * =
+@numa_mem_supported:</div><div>&nbsp; * &nbsp; &nbsp;true if '--numa =
+node.mem' option is supported and false otherwise</div><div>&nbsp; * =
+@hotplug_allowed:</div><div>@@ -253,6 +257,7 @@ struct MachineClass =
+{</div><div>&nbsp; &nbsp; &nbsp;void (*reset)(MachineState *state, =
+ShutdownCause reason);</div><div>&nbsp; &nbsp; &nbsp;void =
+(*wakeup)(MachineState *state);</div><div>&nbsp; &nbsp; &nbsp;int =
+(*kvm_type)(MachineState *machine, const char *arg);</div><div>+ &nbsp; =
+&nbsp;unsigned int (*hvf_get_physical_address_range)(MachineState =
+*machine);</div></div><div><div><br><blockquote type=3D"cite"><div>On =
+Aug 13, 2024, at 2:31=E2=80=AFAM, Peter Maydell =
+&lt;peter.maydell@linaro.org&gt; wrote:</div><br =
+class=3D"Apple-interchange-newline"><div><div>On Mon, 12 Aug 2024 at =
+23:18, Danny Canter &lt;danny_canter@apple.com&gt; wrote:<br><blockquote =
+type=3D"cite">On Aug 12, 2024, at 10:52=E2=80=AFAM, Peter Maydell =
+&lt;peter.maydell@linaro.org&gt; wrote:<br><blockquote type=3D"cite">This =
+is unfortunately probably going to imply a bit of extra<br>plumbing to =
+be implemented for hvf -- that MachineClass::kvm_type<br>method is (as =
+the name suggests) KVM specific. (Multi-patch<br>patchset for that, =
+where we add the plumbing in as its own<br>separate patch (and/or =
+whatever other split of functionality<br>into coherent chunks makes =
+sense), rather than one-big-patch, please.)<br></blockquote><br>That=E2=80=
+=99s perfectly fine, I=E2=80=99ll try and see how the plumbing was =
+done<br>for KVM and try and emulate where it makes sense<br>for HVF. =
+Agree though, that=E2=80=99d definitely push this into =
+multi-patch<br>territory. Curious if you think what=E2=80=99s here today =
+should<br>be multiple patches or the current work seems fine in =
+one?<br></blockquote><br>I think it was fine as one patch. My personal =
+preference<br>when I write code tends to go for =
+more-smaller-patches<br>over fewer-larger-patches, so I might have for =
+example<br>split out "Add hvf_arch_vm_create()" into its own<br>patch, =
+but that's very borderline, and I wouldn't ask for<br>that change at =
+code review time unless the patch as a whole<br>was too big and unwieldy =
+and I was looking for places to<br>suggest a split into multiple =
+patches.<br><br>-- =
+PMM<br></div></div></blockquote></div><br></div></div></div></body></html>=
+
+--Apple-Mail=_182B2C20-4477-4C15-BACF-6201DBE72E07--

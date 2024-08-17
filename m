@@ -1,105 +1,105 @@
-Received: by 2002:a17:504:9188:b0:1be9:327d:8ee3 with SMTP id i8csp1491241njf;
-        Sat, 17 Aug 2024 03:31:39 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUvMA/dowb7tDWgNLvOj6uB4HjUORUzLmit6jSMOzCOZtpDqaG2r5p8oUowGrNFd6ltF8n5eLf5HU3iHJIP1yZ5jI2sAyfF
-X-Google-Smtp-Source: AGHT+IGacstRlG3s510bq9hjyyaSYrdOL1uDGjLtETicYAYoSNKgTx9rzjPj11pofzf6+uw+44xM
-X-Received: by 2002:a05:622a:4d06:b0:44f:efff:af21 with SMTP id d75a77b69052e-4537426d94emr90660931cf.26.1723890698841;
-        Sat, 17 Aug 2024 03:31:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1723890698; cv=none;
+Received: by 2002:a17:504:9188:b0:1be9:327d:8ee3 with SMTP id i8csp1491356njf;
+        Sat, 17 Aug 2024 03:32:16 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVxNIhKRXYf0iTKEUbgvDDXh6FZbNalu38L8QTJBD1ZgwhqvwWDcVPdbMxOac0oUxx6US9nAd3QIabQifuf4bxwozn8TK8U
+X-Google-Smtp-Source: AGHT+IGVel0dFYfziUigSkgjj/q5/MMwch9GsUDVYdLOde6MILFmd2knXUTgtgXYmyXgQz2huSJ8
+X-Received: by 2002:a05:620a:448d:b0:7a1:c431:4b33 with SMTP id af79cd13be357-7a4fd24dabemr1572866085a.30.1723890736656;
+        Sat, 17 Aug 2024 03:32:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1723890736; cv=none;
         d=google.com; s=arc-20160816;
-        b=ji9KXXWFj996SLrKDDQ6QqyCiTzez78s5CXgmG2UEKylVbWbjxd+beI4ddPRprR5/2
-         G1AjmVOkoCx29RQ4pCMJt9ckP4gkHdEdvr2e7DrhZzqRwS5sBDS/DU04W8OJMOPosGWj
-         WJ6vsCcJOmzPIi1AM+eVSSLBsLpcvEVcdWZT464nJrK2OPOg4d6e/Sqbao4eFoCtbHzc
-         EyGJKzX1Hrig45bgFujDHljq0L3IGvM3jxi4yJYPPq85KVGEBTVLExGKckwNcL+sn732
-         vexI/11Y3oB0K1rPYnGYc6fjW9X+SN9QWAbfbRYQwhWICI8M7kARgA6bUa4iEnDe5t/2
-         iIOw==
+        b=lFEv1d4qX/w0ezpTT2aH8bkY3MHUoQyZ6tf0y/AwqxxUsX2GNySA/tgGvHrRnbF1aw
+         pO2gIfB2mbwzSqvwD8UOfb1x0SgGA2L/qv+q+eLkcGC4eTLNJkraW4MjPnC0WQjub3O9
+         VxOfldYOnKQTBVUI56A5yrREoeicYPPS5I/c6uipmoLUmIVu5N4H2Cdd53Z3Ai+ghrmj
+         a3EMecYYE8cpHRte+JBZB6ONQlZtVwz488kobEG/D9/tijTpsw+nMnEUyslmjdr7pL8Y
+         fiE7wkMmu5uvRhD4MIkZn/4FGAYR6BVPkhVAehZqOewIJMlVoCEqtKSsGlznq8uO5uJu
+         fvQw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
          :references:mime-version:in-reply-to:date:dkim-signature;
-        bh=mcVKhHeKnXv9oLOMcrl7o+6UIgPmeBUOImgu4ezoYKI=;
+        bh=jtA7OMGXC3nm30QYl6tV2Lp1z3zMEOqjEyF7m4p3wW0=;
         fh=pITIqJh0Z5XaT4QxI/zJAgHBZTuNeZPw20HbjxZRX7I=;
-        b=u7Xu3FyXoj2BQLpnZptBg7Y4jW10SSAYK54LFeCUmDDqi9OoDyLdkjV8ps6lv/VYnn
-         HnwBWDm2eFI1vnMczsLQqCRcAndnIPp3XPkYPN+/w0okyL78bArW5HV5xx6jqRz31qe/
-         e6p1uPzefhtN7KK8+/hgdyLdsDEsIckUqTzJUp+TavJrYQOzaIZ9sWes7MyRD4fTGBHx
-         1r//mA2coq1LR3C+9ewp6McUtDWn/wJJ7gnmr4r79uSPhTldTQ4A1RA3wVDYOuW4x9xB
-         3r5MX0w2o8VHiIm+N+r918UgendHfLQXBDGjJaeTy6KUMGt/bjSfqAWzlbk86x2ZYSDh
-         31OQ==;
+        b=TnlhWGQQ3MLpg7aXfEvOCeVU0IdezMt66RzdNJ+4fl8/1jKV86HaonMaQzBeVGdHwS
+         m/2k3A0eVXZzWFvKKWJsJf/AoRnXuD8tgr+Yjd+IQ3iUsHsZIJ80DPq27C2QnAO0GoMp
+         L99g+w4zdpKBS5It3ObaVcgQMLg5BThIb7UjVzwfatdEDhdXoMSJRuThL53BwcaHruuM
+         iErt+hkX7tc5LQNA4xM8cMrtdqIfk3638loagSte8ZZT/puCUMGodepXDj/yIHZJOGdw
+         l7bQqkiV52mFNVAhfPVGbkC4rakKAfjTon5Atl34CO3yatYD/Qyy/BHm8NaxBPo9jcvO
+         AZcA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=B7sKmB0e;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=E1eqUljW;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4536a06f6e3si59869551cf.306.2024.08.17.03.31.38
+        by mx.google.com with ESMTPS id af79cd13be357-7a4feffdf73si654641485a.108.2024.08.17.03.32.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 17 Aug 2024 03:31:38 -0700 (PDT)
+        Sat, 17 Aug 2024 03:32:16 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=B7sKmB0e;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=E1eqUljW;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sfGeJ-000829-Ay; Sat, 17 Aug 2024 06:27:07 -0400
+	id 1sfGeJ-00082m-G1; Sat, 17 Aug 2024 06:27:07 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <35HrAZgUKChkIzK7E5DD5A3.1DBF3BJ-23K3ACDC5CJ.DG5@flex--tavip.bounces.google.com>)
- id 1sfGe4-0006um-Rr
- for qemu-devel@nongnu.org; Sat, 17 Aug 2024 06:26:56 -0400
-Received: from mail-pl1-x649.google.com ([2607:f8b0:4864:20::649])
+ <3znrAZgUKCgMwdylsjrrjoh.frpthpx-ghyhoqrqjqx.ruj@flex--tavip.bounces.google.com>)
+ id 1sfGdj-0006IT-JH
+ for qemu-devel@nongnu.org; Sat, 17 Aug 2024 06:26:37 -0400
+Received: from mail-pj1-x104a.google.com ([2607:f8b0:4864:20::104a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from
- <35HrAZgUKChkIzK7E5DD5A3.1DBF3BJ-23K3ACDC5CJ.DG5@flex--tavip.bounces.google.com>)
- id 1sfGe0-0003KW-0q
- for qemu-devel@nongnu.org; Sat, 17 Aug 2024 06:26:52 -0400
-Received: by mail-pl1-x649.google.com with SMTP id
- d9443c01a7336-201f2de64ddso22990985ad.2
- for <qemu-devel@nongnu.org>; Sat, 17 Aug 2024 03:26:46 -0700 (PDT)
+ <3znrAZgUKCgMwdylsjrrjoh.frpthpx-ghyhoqrqjqx.ruj@flex--tavip.bounces.google.com>)
+ id 1sfGdf-0003GF-1x
+ for qemu-devel@nongnu.org; Sat, 17 Aug 2024 06:26:30 -0400
+Received: by mail-pj1-x104a.google.com with SMTP id
+ 98e67ed59e1d1-2d3c6b19444so2547866a91.2
+ for <qemu-devel@nongnu.org>; Sat, 17 Aug 2024 03:26:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1723890404; x=1724495204; darn=nongnu.org;
+ d=google.com; s=20230601; t=1723890384; x=1724495184; darn=nongnu.org;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:from:to:cc:subject:date:message-id:reply-to;
- bh=mcVKhHeKnXv9oLOMcrl7o+6UIgPmeBUOImgu4ezoYKI=;
- b=B7sKmB0em2awQMxXONuIcBvBWuKzGSjU+bCIx7Ttja1NE2tLsyowlxSKK9FXHZg9F+
- KuGOGzxcIPtZmmlEcnqX8i8M3snK7MHtW/R+CZ5DYrrpo8g5Bn9xpLMDD1YZy8DvLBBG
- I9+VuI+3KAiK2vQ6yHnxPDBbtR9H62/PoTvW/hKyjuYs3olM8rLRnTm+8PhMaI73dSPA
- cJPgaH9nOOjwKVap7IB5T2t4xadX4u8QOClXhFPoib+RThikAJU5J2VhuWqea6ZCuA7J
- m4XxhdLU2vH5Nbza2MvU/9ne05r07FvgzhHOZs764vElZzA9GEnnBpbmEk+9NLJjvUsD
- LUVQ==
+ bh=jtA7OMGXC3nm30QYl6tV2Lp1z3zMEOqjEyF7m4p3wW0=;
+ b=E1eqUljWlYXGolZ6ln7ecFtIcNs+7rTMoBc0mzu6SqC0AAralv4xH4ybAN/ta/I5dZ
+ Kbs0dNo+suNIZtthJzbk83lmu1kG3IwqKmqqFi3JwOEovJoeY0p/uf7sxsZyRfsckHqJ
+ 9uMRgKDV6MlsdcrPV+F3u/GosqlQnTOCDnNJ/JnuWPQQ5O3uyKcnjjXG94RuJywvTR6h
+ Hb+e/6df3M+NBPXmPt+gt1/MgqN66zn+RzdfWNAGW1Nzhh9WzNyNOHG1qvZ47bx785Of
+ 5tz+DPtTo70L39ulLAV3Vf4CsDmMKG2kdMxFFx1hsF8QsoKJvWjld+KHBbxosnccVoyH
+ vfDg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1723890404; x=1724495204;
+ d=1e100.net; s=20230601; t=1723890384; x=1724495184;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=mcVKhHeKnXv9oLOMcrl7o+6UIgPmeBUOImgu4ezoYKI=;
- b=MeXhb2rC7OODY74eqcqtUyU3UIYbvbqeQhUcmnmwTMD8zfATUJKacfNlVe8qz/Xzid
- Z1KLl4l59edStreF49vZH1FPw0Tg8qsoa8ZZE9VRRz4bTEPrREgJJj1iFXcsTPrvJSCr
- f7tuVA2BJGYMz+W83mIFKHVaWDYMaEYDyapBGkJBqWjb/VilWn8jYnrSzuEofv5sZa5I
- 5Xr/FAxqMRpILv8pH++SdYgmHR3hphvlMmt6uRsj1aBHuCin8O5GWFy+wwcKWx7zICsJ
- h8dVX/wdfvdofN/TBVLZHjMqFRTmqS8MlC53LvxI9kaub29DpKsXQuDbqE4BgLrujEE/
- Hz7g==
-X-Gm-Message-State: AOJu0YyUMwBYw/6YrWHxlCFqNUTqNkLQTYN0h50RsqpsUdGD2xlvFasH
- PgL3nXh02aXKrorkWJix1qwpBjTUicXehdzz1tLmVbfizqXpfK3zGIC+yGbk53EbGsMbccMZWcI
- kTgZdVVg4oDFAIZ+Budr5pCU2zeGR1wfE4u6JBz9JnwrVXstt2WYy/+TcZmN9ueGTx44/gaPww4
- mmWZd5hb3ru62h+15up7Dok/nFAg==
+ bh=jtA7OMGXC3nm30QYl6tV2Lp1z3zMEOqjEyF7m4p3wW0=;
+ b=bZvhXItFOTwt4Jx8sD6GcTzQ6vapqpA4ZUScOPBzuS9q63hm4/R4FJlcPSE2TW484p
+ sdvVqp20lIUA/HYH6xdIUSlexmZFtyLxEkjXaRKsTJ0JRPfK2ocKMM6Vi9r2bby6BZp2
+ yqk4733/pJ74IxdzgvBIr5erblOZ79nkPpBL22Bqkcbt/iAfqqmj66o0yAfMO3s2CyIi
+ 6DdEHpeAbbE8hggZA326qHancNPyJMUVG/jkSYeDOiuafG7IJrwC63ghO2Y50gzMlUWP
+ 0/3KuXmBXngBn8pmNVN376G3KQSl/mh1nYqKbgZiSItxZLNDhQgZxw/AKKaHgmBkmYHR
+ r4pg==
+X-Gm-Message-State: AOJu0Yx9pjZwC0VpL0CBBh9RJzV4swP1v0Pq26WmETPUtf9AV0AdMKcd
+ MhJ3Ui00TIFmTDkUifmHBoMyPgMdzN0efttQjHkNMrLykQ+F+M7OxzIda7RTMM4eflY8art+Z/H
+ HWNHWisWv8bf6MEBPXw8qUQJavcGp6QM1yRQfLR9eFvCKKDNDJSPepyC7/eOQGXGRW4R0dmdRot
+ QmWcuGGo+oPuRltkng40JUOE6Peg==
 X-Received: from warp10.c.googlers.com ([fda3:e722:ac3:cc00:24:72f4:c0a8:750])
- (user=tavip job=sendgmr) by 2002:a17:903:2310:b0:1fa:d491:a4a0
+ (user=tavip job=sendgmr) by 2002:a17:90b:2bd1:b0:2d3:b353:4ab9
  with SMTP id
- d9443c01a7336-20203e49592mr5326705ad.2.1723890404035; Sat, 17 Aug 2024
- 03:26:44 -0700 (PDT)
-Date: Sat, 17 Aug 2024 03:26:02 -0700
+ 98e67ed59e1d1-2d3e00ebe10mr13977a91.4.1723890382242; Sat, 17 Aug 2024
+ 03:26:22 -0700 (PDT)
+Date: Sat, 17 Aug 2024 03:25:51 -0700
 In-Reply-To: <20240817102606.3996242-1-tavip@google.com>
 Mime-Version: 1.0
 References: <20240817102606.3996242-1-tavip@google.com>
 X-Mailer: git-send-email 2.46.0.184.g6999bdac58-goog
-Message-ID: <20240817102606.3996242-20-tavip@google.com>
-Subject: [RFC PATCH v2 19/23] test/unit: add unit tests for RT500's clock
- controller
+Message-ID: <20240817102606.3996242-9-tavip@google.com>
+Subject: [RFC PATCH v2 08/23] test/unit: add register access macros and
+ functions
 From: Octavian Purdila <tavip@google.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, stefanst@google.com, pbonzini@redhat.com, 
@@ -107,9 +107,9 @@ Cc: qemu-arm@nongnu.org, stefanst@google.com, pbonzini@redhat.com,
  alistair@alistair23.me, berrange@redhat.com, philmd@linaro.org, 
  jsnow@redhat.com, crosa@redhat.com
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::649;
- envelope-from=35HrAZgUKChkIzK7E5DD5A3.1DBF3BJ-23K3ACDC5CJ.DG5@flex--tavip.bounces.google.com;
- helo=mail-pl1-x649.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::104a;
+ envelope-from=3znrAZgUKCgMwdylsjrrjoh.frpthpx-ghyhoqrqjqx.ruj@flex--tavip.bounces.google.com;
+ helo=mail-pj1-x104a.google.com
 X-Spam_score_int: -95
 X-Spam_score: -9.6
 X-Spam_bar: ---------
@@ -132,305 +132,129 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: +WN+Imn5gY5Y
+X-TUID: tKbOdC5YOLea
 
-Add test to exercise clocks set and clear, system PLL initialization,
-audio PLL initialization, systick and ostimer clock source selection.
+Add utility macros for accessing register or register bit fields in
+unit tests, e.g.:
+
+  REG32_WRITE(f->dev, FLEXCOMM, PSELID, persel);
+  g_assert(REG32_READ_FIELD(f->dev, FLEXCOMM, PSELID, PERSEL) == persel);
+
+Also add support for accessing 32bit registers with memory transaction
+state, e.g.:
+
+  /* no register access until a function is selected  */
+  g_assert(reg32_addr_read_raw(f->dev, FLEXCOMM_BASE, &tmp, 4) == MEMTX_ERROR);
 
 Signed-off-by: Octavian Purdila <tavip@google.com>
 ---
- tests/unit/test-rt500-clkctl.c | 263 +++++++++++++++++++++++++++++++++
- tests/unit/meson.build         |   7 +
- 2 files changed, 270 insertions(+)
- create mode 100644 tests/unit/test-rt500-clkctl.c
+ tests/unit/reg-utils.h | 97 ++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 97 insertions(+)
+ create mode 100644 tests/unit/reg-utils.h
 
-diff --git a/tests/unit/test-rt500-clkctl.c b/tests/unit/test-rt500-clkctl.c
+diff --git a/tests/unit/reg-utils.h b/tests/unit/reg-utils.h
 new file mode 100644
-index 0000000000..c02c349e52
+index 0000000000..9eb17ebe59
 --- /dev/null
-+++ b/tests/unit/test-rt500-clkctl.c
-@@ -0,0 +1,263 @@
++++ b/tests/unit/reg-utils.h
+@@ -0,0 +1,97 @@
 +/*
-+ * Copyright (c) 2024 Google LLC
++ * Register access utilities for peripheral device tests.
++ *
++ * Copyright (C) 2024 Google LLC
 + *
 + * SPDX-License-Identifier: GPL-2.0-or-later
 + *
 + * This work is licensed under the terms of the GNU GPL, version 2 or later.
 + * See the COPYING file in the top-level directory.
 + */
++#ifndef _REG_UTILS_H
++#define _REG_UTILS_H
 +
-+#include "qemu/osdep.h"
-+#include "qemu/log.h"
-+#include "qemu/module.h"
-+#include "qemu/main-loop.h"
-+#include "exec/memory.h"
-+#include "hw/clock.h"
-+#include "hw/irq.h"
-+#include "hw/qdev-clock.h"
-+#include "hw/qdev-properties.h"
++#ifdef DEBUG_REG
++#define debug(fmt, args...) fprintf(stderr, fmt, ## args)
++#else
++#define debug(fmt, args...)
++#endif
 +
-+#include "hw/misc/rt500_clkctl0.h"
-+#include "hw/misc/rt500_clkctl1.h"
-+#include "hw/misc/rt500_clk_freqs.h"
-+#include "sysbus-mock.h"
-+#include "reg-utils.h"
++#define _REG_OFF(mod, reg) (A_##mod##_##reg)
 +
-+typedef struct {
-+    DeviceState *clk0;
-+    DeviceState *clk1;
-+    Clock *sysclk;
-+    Clock *systick_clk;
-+    Clock *ostimer_clk;
-+} TestFixture;
++#define REG32_READ(dev, mod, reg)                                       \
++    ({                                                                  \
++        uint32_t value;                                                 \
++        value = sysbus_mmio_read_addr(dev, mod##_BASE + _REG_OFF(mod, reg), \
++                                      sizeof(uint32_t));                \
++        debug("[%s] -> %08x\n", #reg, value);                           \
++        value;                                                          \
++    })
 +
-+#define SYSCLK_HZ 100000000
++#define REG32_WRITE(dev, mod, reg, value)                               \
++    do {                                                                \
++        debug("[%s] <- %08x\n", #reg, value);                           \
++        sysbus_mmio_write_addr(dev, mod##_BASE + _REG_OFF(mod, reg), value, \
++                               sizeof(uint32_t));                       \
++    } while (0)
 +
-+#define RT500_CLKCTL0_BASE 0x40001000UL
-+#define RT500_CLKCTL1_BASE 0x40021000UL
++#define REG_FIELD_VAL(v, mod, reg, field)                               \
++    FIELD_EX32(v, mod##_##reg, field)                                   \
 +
-+/*
-+ * Test fixture initialization.
-+ */
-+static void set_up(TestFixture *f, gconstpointer data)
++#define REG32_READ_FIELD(dev, mod, reg, field)                  \
++    REG_FIELD_VAL(REG32_READ(dev, mod, reg), mod, reg, field)
++
++#define REG32_WRITE_FIELD(dev, mod, reg, field, val)                    \
++    do {                                                                \
++        uint32_t _tmp = REG32_READ(dev, mod, reg);                      \
++        _tmp = FIELD_DP32(_tmp, mod##_##reg, field, val);               \
++        REG32_WRITE(dev, mod, reg, _tmp);                               \
++    } while (0)
++
++#define REG32_WRITE_FIELD_NOUPDATE(dev, mod, reg, field, val)           \
++    do {                                                                \
++        uint32_t _tmp = FIELD_DP32(0, mod##_##reg, field, val);         \
++        REG32_WRITE(dev, mod, reg, _tmp);                               \
++    } while (0)
++
++#define WAIT_REG32_FIELD(ms, dev, mod, reg, field, val)         \
++    {                                                           \
++        int remaining = ms;                                     \
++                                                                \
++        while (remaining) {                                     \
++            if (REG32_READ_FIELD(dev, mod, reg, field) == val) {    \
++                break;                                          \
++            }                                                   \
++            main_loop_wait(false);                              \
++            usleep(1000);                                       \
++            remaining--;                                        \
++        }                                                       \
++                                                                \
++        g_assert(remaining);                                    \
++    }
++
++static inline MemTxResult reg32_addr_read_raw(DeviceState *dev, uint32_t addr,
++                                              uint32_t *value, uint32_t size)
 +{
-+    f->clk0 = qdev_new(TYPE_RT500_CLKCTL0);
-+    g_assert(f->clk0);
++    MemTxResult res;
++    uint64_t tmp;
 +
-+    f->clk1 = qdev_new(TYPE_RT500_CLKCTL1);
-+    g_assert(f->clk1);
-+
-+    f->sysclk = clock_new(OBJECT(&f->clk0->parent_obj), "SYSCLK");
-+    clock_set_hz(f->sysclk, SYSCLK_HZ);
-+
-+    qdev_connect_clock_in(f->clk0, "sysclk", f->sysclk);
-+    f->systick_clk = RT500_CLKCTL0(f->clk0)->systick_clk;
-+
-+    qdev_connect_clock_in(f->clk1, "sysclk", f->sysclk);
-+    f->ostimer_clk = RT500_CLKCTL1(f->clk1)->ostimer_clk;
-+
-+    qdev_realize_and_unref(f->clk0, NULL, NULL);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(f->clk0), 0, RT500_CLKCTL0_BASE);
-+
-+    qdev_realize_and_unref(f->clk1, NULL, NULL);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(f->clk1), 0, RT500_CLKCTL1_BASE);
-+
-+    device_cold_reset(f->clk0);
-+    device_cold_reset(f->clk1);
++    res = sysbus_mmio_read_addr_raw(dev, addr, &tmp, size);
++    if (res == MEMTX_OK) {
++        *value = tmp;
++    }
++    debug("%d: [%x] -[%d]-> %08x\n", res, addr, size, *value);
++    return res;
 +}
 +
-+static void tear_down(TestFixture *f, gconstpointer user_data)
++static inline MemTxResult reg32_addr_write_raw(DeviceState *dev, uint32_t addr,
++                                               uint32_t value, uint32_t size)
 +{
-+    qdev_unrealize(f->clk0);
-+    qdev_unrealize(f->clk1);
-+    g_free(f->clk0);
-+    g_free(f->clk1);
++    MemTxResult res;
++
++    res = sysbus_mmio_write_addr_raw(dev, addr, value, size);
++    debug("%d: [%x] <-[%d]- %08x\n", res, addr, size, value);
++    return res;
 +}
 +
-+static void pscctl_test(TestFixture *f, gconstpointer user_data)
-+{
-+    /* rom controller clock should be enabled at reset */
-+    g_assert(REG32_READ_FIELD(f->clk0, RT500_CLKCTL0, PSCCTL0, ROM_CTRLR_CLK)
-+             == 1);
-+
-+    /* DSP clk is disabled at reset */
-+    g_assert(REG32_READ_FIELD(f->clk0, RT500_CLKCTL0, PSCCTL0, DSP_CLK) == 0);
-+
-+    /* check PSCTL_SET functionality */
-+    REG32_WRITE_FIELD_NOUPDATE(f->clk0, RT500_CLKCTL0, PSCCTL0_SET, DSP_CLK, 1);
-+    g_assert(REG32_READ_FIELD(f->clk0, RT500_CLKCTL0, PSCCTL0, DSP_CLK) == 1);
-+
-+    /* check PSCTL_CLR functionality */
-+    REG32_WRITE_FIELD_NOUPDATE(f->clk0, RT500_CLKCTL0, PSCCTL0_CLR, DSP_CLK, 1);
-+    g_assert(REG32_READ_FIELD(f->clk0, RT500_CLKCTL0, PSCCTL0, DSP_CLK) == 0);
-+
-+    /* FLEXIO clk is disabled at reset */
-+    g_assert(REG32_READ_FIELD(f->clk1, RT500_CLKCTL1, PSCCTL0, FlexIO) == 0);
-+
-+    /* check PSCTL_SET functionality */
-+    REG32_WRITE_FIELD_NOUPDATE(f->clk1, RT500_CLKCTL1, PSCCTL0_SET, FlexIO, 1);
-+    g_assert(REG32_READ_FIELD(f->clk1, RT500_CLKCTL1, PSCCTL0, FlexIO) == 1);
-+
-+    /* check PSCTL_CLR functionality */
-+    REG32_WRITE_FIELD_NOUPDATE(f->clk1, RT500_CLKCTL1, PSCCTL0_CLR, FlexIO, 1);
-+    g_assert(REG32_READ_FIELD(f->clk1, RT500_CLKCTL1, PSCCTL0, FlexIO) == 0);
-+}
-+
-+static void audiopll0pfd_test(TestFixture *f, gconstpointer user_data)
-+{
-+    /*  audio plls are gated at boot */
-+    g_assert(REG32_READ_FIELD(f->clk1, RT500_CLKCTL1, AUDIOPLL0PFD,
-+                              PFD3_CLKGATE) == 1);
-+    g_assert(REG32_READ_FIELD(f->clk1, RT500_CLKCTL1, AUDIOPLL0PFD,
-+                              PFD2_CLKGATE) == 1);
-+    g_assert(REG32_READ_FIELD(f->clk1, RT500_CLKCTL1, AUDIOPLL0PFD,
-+                              PFD1_CLKGATE) == 1);
-+    g_assert(REG32_READ_FIELD(f->clk1, RT500_CLKCTL1, AUDIOPLL0PFD,
-+                              PFD0_CLKGATE) == 1);
-+
-+    /*  ,,, and clocks are not ready */
-+    g_assert(REG32_READ_FIELD(f->clk1, RT500_CLKCTL1, AUDIOPLL0PFD, PFD3_CLKRDY)
-+             == 0);
-+    g_assert(REG32_READ_FIELD(f->clk1, RT500_CLKCTL1, AUDIOPLL0PFD, PFD2_CLKRDY)
-+             == 0);
-+    g_assert(REG32_READ_FIELD(f->clk1, RT500_CLKCTL1, AUDIOPLL0PFD, PFD1_CLKRDY)
-+             == 0);
-+    g_assert(REG32_READ_FIELD(f->clk1, RT500_CLKCTL1, AUDIOPLL0PFD, PFD0_CLKRDY)
-+             == 0);
-+
-+    /* ungate all plls and check that clocks are ready */
-+    REG32_WRITE_FIELD(f->clk1, RT500_CLKCTL1, AUDIOPLL0PFD, PFD3_CLKGATE, 0);
-+    REG32_WRITE_FIELD(f->clk1, RT500_CLKCTL1, AUDIOPLL0PFD, PFD2_CLKGATE, 0);
-+    REG32_WRITE_FIELD(f->clk1, RT500_CLKCTL1, AUDIOPLL0PFD, PFD1_CLKGATE, 0);
-+    REG32_WRITE_FIELD(f->clk1, RT500_CLKCTL1, AUDIOPLL0PFD, PFD0_CLKGATE, 0);
-+
-+    g_assert(REG32_READ_FIELD(f->clk1, RT500_CLKCTL1, AUDIOPLL0PFD, PFD3_CLKRDY)
-+             == 1);
-+    g_assert(REG32_READ_FIELD(f->clk1, RT500_CLKCTL1, AUDIOPLL0PFD, PFD2_CLKRDY)
-+             == 1);
-+    g_assert(REG32_READ_FIELD(f->clk1, RT500_CLKCTL1, AUDIOPLL0PFD, PFD1_CLKRDY)
-+             == 1);
-+    g_assert(REG32_READ_FIELD(f->clk1, RT500_CLKCTL1, AUDIOPLL0PFD, PFD0_CLKRDY)
-+             == 1);
-+}
-+
-+static void syspll0pfd_test(TestFixture *f, gconstpointer user_data)
-+{
-+    /*  system plls are gated at boot */
-+    g_assert(REG32_READ_FIELD(f->clk0, RT500_CLKCTL0, SYSPLL0PFD, PFD3_CLKGATE)
-+             == 1);
-+    g_assert(REG32_READ_FIELD(f->clk0, RT500_CLKCTL0, SYSPLL0PFD, PFD2_CLKGATE)
-+             == 1);
-+    g_assert(REG32_READ_FIELD(f->clk0, RT500_CLKCTL0, SYSPLL0PFD, PFD1_CLKGATE)
-+             == 1);
-+    g_assert(REG32_READ_FIELD(f->clk0, RT500_CLKCTL0, SYSPLL0PFD, PFD0_CLKGATE)
-+             == 1);
-+
-+    /*  ,,, and clocks are not ready */
-+    g_assert(REG32_READ_FIELD(f->clk0, RT500_CLKCTL0, SYSPLL0PFD, PFD3_CLKRDY)
-+             == 0);
-+    g_assert(REG32_READ_FIELD(f->clk0, RT500_CLKCTL0, SYSPLL0PFD, PFD2_CLKRDY)
-+             == 0);
-+    g_assert(REG32_READ_FIELD(f->clk0, RT500_CLKCTL0, SYSPLL0PFD, PFD1_CLKRDY)
-+             == 0);
-+    g_assert(REG32_READ_FIELD(f->clk0, RT500_CLKCTL0, SYSPLL0PFD, PFD0_CLKRDY)
-+             == 0);
-+
-+    /* ungate all plls and check that clocks are ready */
-+    REG32_WRITE_FIELD(f->clk0, RT500_CLKCTL0, SYSPLL0PFD, PFD3_CLKGATE, 0);
-+    REG32_WRITE_FIELD(f->clk0, RT500_CLKCTL0, SYSPLL0PFD, PFD2_CLKGATE, 0);
-+    REG32_WRITE_FIELD(f->clk0, RT500_CLKCTL0, SYSPLL0PFD, PFD1_CLKGATE, 0);
-+    REG32_WRITE_FIELD(f->clk0, RT500_CLKCTL0, SYSPLL0PFD, PFD0_CLKGATE, 0);
-+
-+    g_assert(REG32_READ_FIELD(f->clk0, RT500_CLKCTL0, SYSPLL0PFD, PFD3_CLKRDY)
-+             == 1);
-+    g_assert(REG32_READ_FIELD(f->clk0, RT500_CLKCTL0, SYSPLL0PFD, PFD2_CLKRDY)
-+             == 1);
-+    g_assert(REG32_READ_FIELD(f->clk0, RT500_CLKCTL0, SYSPLL0PFD, PFD1_CLKRDY)
-+             == 1);
-+    g_assert(REG32_READ_FIELD(f->clk0, RT500_CLKCTL0, SYSPLL0PFD, PFD0_CLKRDY)
-+             == 1);
-+}
-+
-+static void systick_clk_test(TestFixture *f, gconstpointer user_data)
-+{
-+    /* systick is not running at reset */
-+    g_assert(clock_get_hz(f->systick_clk) == 0);
-+
-+    /* select divout no divisor */
-+    REG32_WRITE_FIELD(f->clk0, RT500_CLKCTL0, SYSTICKFCLKSEL, SEL,
-+                    SYSTICKFCLKSEL_DIVOUT);
-+    g_assert(clock_get_hz(f->systick_clk) == SYSCLK_HZ);
-+
-+    /* change divisor to 2 */
-+    REG32_WRITE_FIELD(f->clk0, RT500_CLKCTL0, SYSTICKFCLKDIV, DIV, 1);
-+    g_assert(clock_get_hz(f->systick_clk) == SYSCLK_HZ / 2);
-+
-+    /* select lpsoc */
-+    REG32_WRITE_FIELD(f->clk0, RT500_CLKCTL0, SYSTICKFCLKSEL, SEL,
-+                    SYSTICKFCLKSEL_LPOSC);
-+    g_assert(clock_get_hz(f->systick_clk) == LPOSC_CLK_HZ);
-+
-+    /* select lpsoc */
-+    REG32_WRITE_FIELD(f->clk0, RT500_CLKCTL0, SYSTICKFCLKSEL, SEL,
-+                    SYSTICKFCLKSEL_32KHZRTC);
-+    g_assert(clock_get_hz(f->systick_clk) == RTC32KHZ_CLK_HZ);
-+
-+    /* disable clock */
-+    REG32_WRITE_FIELD(f->clk0, RT500_CLKCTL0, SYSTICKFCLKSEL, SEL,
-+                    SYSTICKFCLKSEL_NONE);
-+    g_assert(clock_get_hz(f->systick_clk) == 0);
-+}
-+
-+static void ostimer_clk_test(TestFixture *f, gconstpointer user_data)
-+{
-+    /* systick is not running at reset */
-+    g_assert(clock_get_hz(f->ostimer_clk) == 0);
-+
-+    /* select lpsoc */
-+    REG32_WRITE_FIELD(f->clk1, RT500_CLKCTL1, OSEVENTTFCLKSEL, SEL,
-+                    OSEVENTTFCLKSEL_LPOSC);
-+    g_assert(clock_get_hz(f->ostimer_clk) == LPOSC_CLK_HZ);
-+
-+
-+    /* select 32khz RTC */
-+    REG32_WRITE_FIELD(f->clk1, RT500_CLKCTL1, OSEVENTTFCLKSEL, SEL,
-+                    OSEVENTTFCLKSEL_32KHZRTC);
-+    g_assert(clock_get_hz(f->ostimer_clk) == RTC32KHZ_CLK_HZ);
-+
-+    /* select hclk */
-+    REG32_WRITE_FIELD(f->clk1, RT500_CLKCTL1, OSEVENTTFCLKSEL, SEL,
-+                    OSEVENTTFCLKSEL_HCLK);
-+    g_assert(clock_get_hz(f->ostimer_clk) == SYSCLK_HZ);
-+
-+    /* disable clock */
-+    REG32_WRITE_FIELD(f->clk1, RT500_CLKCTL1, OSEVENTTFCLKSEL, SEL,
-+                    OSEVENTTFCLKSEL_NONE);
-+    g_assert(clock_get_hz(f->ostimer_clk) == 0);
-+}
-+
-+int main(int argc, char **argv)
-+{
-+    g_test_init(&argc, &argv, NULL);
-+
-+    /* Initialize object types. */
-+    sysbus_mock_init();
-+    module_call_init(MODULE_INIT_QOM);
-+
-+    g_test_add("/rt500-clkctl/pscctl-test", TestFixture, NULL,
-+               set_up, pscctl_test, tear_down);
-+
-+    g_test_add("/rt500-clkctl/syspll0pfd-test", TestFixture, NULL,
-+               set_up, syspll0pfd_test, tear_down);
-+
-+    g_test_add("/rt500-clkctl/audiopll0pfd-test", TestFixture, NULL,
-+               set_up, audiopll0pfd_test, tear_down);
-+
-+    g_test_add("/rt500-clkctl/systick-test", TestFixture, NULL,
-+               set_up, systick_clk_test, tear_down);
-+
-+    g_test_add("/rt500-clkctl/ostimer-clk-test", TestFixture, NULL,
-+               set_up, ostimer_clk_test, tear_down);
-+
-+    return g_test_run();
-+}
-diff --git a/tests/unit/meson.build b/tests/unit/meson.build
-index 7a28e7b521..be3062acbf 100644
---- a/tests/unit/meson.build
-+++ b/tests/unit/meson.build
-@@ -188,6 +188,13 @@ if have_system
-       meson.project_source_root() / 'hw/ssi/ssi.c',
-       'spi_tester.c',
-     ],
-+    'test-rt500-clkctl': [
-+      hwcore,
-+      meson.project_source_root() / 'hw/core/gpio.c',
-+      meson.project_source_root() / 'hw/misc/rt500_clkctl0.c',
-+      meson.project_source_root() / 'hw/misc/rt500_clkctl1.c',
-+      meson.project_source_root() / 'tests/unit/sysbus-mock.c',
-+    ],
-   }
-   if config_host_data.get('CONFIG_INOTIFY1')
-     tests += {'test-util-filemonitor': []}
++#endif /* _REG_UTILS_H */
 -- 
 2.46.0.184.g6999bdac58-goog
 

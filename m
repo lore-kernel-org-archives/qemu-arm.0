@@ -1,104 +1,103 @@
-Received: by 2002:a17:504:9188:b0:1be9:327d:8ee3 with SMTP id i8csp1491424njf;
-        Sat, 17 Aug 2024 03:32:35 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCU18L6ZpVMTUagmk4UsqpV6oqfnJIg1PEoMeLVyO+cpdBOfCTBP7k0bYHGajpMDBpb8RCcSkE4N+UG6zPJkDzxuHhW8G3wE
-X-Google-Smtp-Source: AGHT+IET31YkkAw0xdO4g1OKmjUPPeogllvAgEsE4QfUZMXL+U58QRcycZ1grfjbfKdGEF0wb4KP
-X-Received: by 2002:a05:620a:2902:b0:7a2:ce2:4ff1 with SMTP id af79cd13be357-7a5068f84ffmr777150185a.13.1723890755600;
-        Sat, 17 Aug 2024 03:32:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1723890755; cv=none;
+Received: by 2002:a17:504:9188:b0:1be9:327d:8ee3 with SMTP id i8csp1491486njf;
+        Sat, 17 Aug 2024 03:32:59 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVM0QafzhNd/pN/Bh7ZYZJSBE2NsFm0EbAT9xmzFuOvWV1clNTQin49wk9UNNwNQgUMFw7xUyoBAKyk52t9kA7LdLyg7kkk
+X-Google-Smtp-Source: AGHT+IE6SFpWsKC0NYnWkz4kliVjLzbJPHSCaKnxhaOKgepyQDfj/1US/zhvVahnxjjYnqRsAa7p
+X-Received: by 2002:a05:6214:3b8a:b0:6bd:69a1:7667 with SMTP id 6a1803df08f44-6bf7ce65a65mr47873216d6.39.1723890779358;
+        Sat, 17 Aug 2024 03:32:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1723890779; cv=none;
         d=google.com; s=arc-20160816;
-        b=WDHt5vO+/PScOdYV3fWnb3j+EabH0yoXKXiHm/wASmTcf7MIg0MtCCiwQiA/MFK3th
-         +N0idBWzD6XuTwabOdvFNl/Y9o6nAl0iQmc1qJs7fBD17M7r2Ib4MYGdwilUQGlcwC7G
-         Vo9BQYq9+5mXeQWnOCcBFAtSzqXdvP95g2hFpc2t3a1qCw4WZ+9Mhhdj9PXYMFhQ16ws
-         hs6LU+h1SY82gEr2yoXVt4YwZBgr7YTE+DhjqfOmyGqVB2uxMIcJ5DttRHf3uTO36muR
-         a885TB3wqv2A/HEZOwddjbRNRwoFGiF2JKjkkCrlq+9T8PZeER0MntQaSLnD464IDnWr
-         6Ziw==
+        b=WPQmv3FeqXhwxOhViowhIqVadrUEXFp6nYfRWuBizq/tlgiqnKktJDEi7cskyzI2mt
+         nezSDviyhCqGVEao9dz0FPUfbHHE537+cW9E68DLHHxdw0b1Jpd/49RtXSEgn0s7rjUQ
+         h1hdUBSqP8J0IC3oZLVrrOaLxVc1HURRV78NSs52mT3H8nPP+a7FDJG7rpryweby82CV
+         bF53a94mfes5DauWFX7vbaGbDdX8Td95Xkh+gxFZKm7MWhoovrsZuawqqC9n8TLbCOHf
+         4Pefnz/O3xDE2CJwRIK7XHw0dmY1cLIrKh+WNkhT9K1Rpq9wX+NHAN8XpHk3rMrvp2XY
+         DL9w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
          :references:mime-version:in-reply-to:date:dkim-signature;
-        bh=TFG0GcsuE3kOisrSR4liiPOd2eXKV3NpYPJrlboG3Jc=;
+        bh=j6Ufa99imFnktCDfLITp+fyxFsaMwcB1E2lVU+auqQM=;
         fh=pITIqJh0Z5XaT4QxI/zJAgHBZTuNeZPw20HbjxZRX7I=;
-        b=xiHRlOF2TWNwMPqqv8Qhg2owbSklixAbDeRvQ7V4v/fPoKW8BPTy7b8KFP3rh8cbmO
-         6tx+4zKoAluG4/UEdeQpTok+dkH/82V0cyjlIdsLeypGL5xJdzBt+PD3ygZCEB8IIsDs
-         E8qsnmMRrirm4oMPEUg84g7gfSCjyfCv8vb3TS20W7CQcox3a9MxfFWlbf/YsDtzgZ5f
-         G/Yr7w+G/V+QnNZP0nuSNVokEn8CeN971o8SdArEFsDOXo2qCFkUJXCWI+0NG91heaj9
-         Z0K8b6T6/a2bWXTuI7G3koiowksifSAjkrhKOasXFLpjyDALvQluRED+2V8mkU8KFRtv
-         0t0Q==;
+        b=mNBxV7ihd94FbMdp16AUUfheSr/NVtPu5JQtFdvEyNjPaZst9YTf0QeibNJWSNZDDM
+         0EkY2QiP86/TW0IA2QpYMz0MTaL0WiX53oiDX8XC4kDvMbeNItEyqEbglEU1pXtgvB31
+         jybMdNdYmR7cA0fjGDPU6qFu8EsMKo8HCrlGWirVXjMpN8kDLd+CncLhs8Lsh0LhUbX8
+         6safnO6Xs8QuBzz6/BMelW0cr57r1kTvK4Mon2V7yL8COnaCn94ZnMb2qbNbA+9xfLpj
+         hOVDkxK6GOgeJfl02sgsOlNq8nSSgKdU9JvW9xSqypo1D03V4TUJUoSO+EcfbXtnm9pF
+         u4xQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=m1dKtKef;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@google.com header.s=20230601 header.b=BvdKwj3y;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7a4ff10cd25si655365885a.556.2024.08.17.03.32.35
+        by mx.google.com with ESMTPS id 6a1803df08f44-6bf6fdcd60esi62549296d6.116.2024.08.17.03.32.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 17 Aug 2024 03:32:35 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sat, 17 Aug 2024 03:32:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=m1dKtKef;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@google.com header.s=20230601 header.b=BvdKwj3y;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sfGeM-0008Ha-SL; Sat, 17 Aug 2024 06:27:10 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sfGeE-0007Zu-79; Sat, 17 Aug 2024 06:27:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <32nrAZgUKCg88pAx4v33v0t.r315t19-stAt0232v29.36v@flex--tavip.bounces.google.com>)
- id 1sfGdx-0006T5-9P
- for qemu-devel@nongnu.org; Sat, 17 Aug 2024 06:26:47 -0400
-Received: from mail-pj1-x1049.google.com ([2607:f8b0:4864:20::1049])
+ <30XrAZgUKCAYzg1ovmuumrk.iuswks0-gxstutmt0.uxm@flex--tavip.bounces.google.com>)
+ id 1sfGds-0006NT-1c
+ for qemu-arm@nongnu.org; Sat, 17 Aug 2024 06:26:43 -0400
+Received: from mail-pf1-x44a.google.com ([2607:f8b0:4864:20::44a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from
- <32nrAZgUKCg88pAx4v33v0t.r315t19-stAt0232v29.36v@flex--tavip.bounces.google.com>)
- id 1sfGdt-0003IX-CJ
- for qemu-devel@nongnu.org; Sat, 17 Aug 2024 06:26:44 -0400
-Received: by mail-pj1-x1049.google.com with SMTP id
- 98e67ed59e1d1-2d3b438c8c9so2775439a91.0
- for <qemu-devel@nongnu.org>; Sat, 17 Aug 2024 03:26:36 -0700 (PDT)
+ <30XrAZgUKCAYzg1ovmuumrk.iuswks0-gxstutmt0.uxm@flex--tavip.bounces.google.com>)
+ id 1sfGdh-0003Gf-Fe
+ for qemu-arm@nongnu.org; Sat, 17 Aug 2024 06:26:35 -0400
+Received: by mail-pf1-x44a.google.com with SMTP id
+ d2e1a72fcca58-7104f37771eso2530967b3a.2
+ for <qemu-arm@nongnu.org>; Sat, 17 Aug 2024 03:26:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1723890395; x=1724495195; darn=nongnu.org;
+ d=google.com; s=20230601; t=1723890386; x=1724495186; darn=nongnu.org;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:from:to:cc:subject:date:message-id:reply-to;
- bh=TFG0GcsuE3kOisrSR4liiPOd2eXKV3NpYPJrlboG3Jc=;
- b=m1dKtKef8a/DYglUX4k+/modQAsWgWYU2GufaM4h3TP8eaegWeyNI6eXCEZAEDciVW
- TBFyqecHSN3oxUrBws9uACK3TwHaMOmXvwsMaFqt+yuUyIOcyakhEpK6JlezoaTL7NnZ
- ICgy+DYdjou6wk+lvtvLOxFtkTiHfbjBN04MCB5Seze6vqlydhBV4Di9SMMFIf9NapT5
- 3dx5m/lRR1oNSvow0S0IFmqv77LDu/Bwa3BvwjCAsSqXjvxpCESsaIOYUMYmarNrSgzF
- aDd6ga1p11gDdlYOoMvO8taL3hPikD1ht7RK+FUQX2tT21sbgIn4qldbVjvlvYctJahi
- juBQ==
+ bh=j6Ufa99imFnktCDfLITp+fyxFsaMwcB1E2lVU+auqQM=;
+ b=BvdKwj3ySyvp5QxV+TODoaaq5NiPJQb/iM2VLjOMHgjDzurtGapy9ruXvTeBWuFtvE
+ M1Iyfiyyai/bHLj3yeqEATiw6gg/LZgRL/h6BtySdFv7OZDpTkbKQOxBr7Wr+Z06RRGh
+ aYJKrQBfKySEI6B3rAnMY0bC5fPZwacw6CC8wR3Uw75eOp25erf4hzshP7ZseYK/rsLT
+ fQVPqEApSHfTeHteGeNjEcE0A6JsDxVypJDb8lDmRsw1VTMzS8XjVOovmJMq/oYB3tqx
+ r8Dp//xX87JF+ULC3FGqpy+T8QYLHdeaTr9ZekbwnDjkBSdowNHt84GR1fLLuiom9fgg
+ jxAA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1723890395; x=1724495195;
+ d=1e100.net; s=20230601; t=1723890386; x=1724495186;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=TFG0GcsuE3kOisrSR4liiPOd2eXKV3NpYPJrlboG3Jc=;
- b=lD/er1wCjHmygQpvwa/laZ6qKjG5+zdBUU0YNRTrhFtSkRomMRbDdsupN8D9R6WNMK
- XbI1RlDMR6gmtwfQMW2BCbGi/5DNMAYR6i9Af8XwcERUNlQywDyaI0L5/wrXcxwDiCg9
- /sc9On5/bICb5YAFDPbetNOwLT4vBk10skG4Y7NhuXBbx3FOZx/xwIu8jwWEv5QEutEp
- E83Vu5LYHJdNP5rtQeHL7FH1lCFWtN7WnB7u6UmhBcS2KxyYfPCksI/6gm1ccKJEeI7I
- IXeNKKoayItkyK/CZPwnZmFpIuW/Dt4p1FLsMwejh2rIK5e0Z7I2cudTi5czntezhLQJ
- doLA==
-X-Gm-Message-State: AOJu0YzZXHyvOcG/QZTXxaPhFhYk7P5gz9gsm8yruSfnqam6qcQ4cb1f
- jLALocJHtbhbIdpv5Nz8wyhDQmA9snHuq+nsyh3m7RXGf17B4MTiP5tSX6vyu0+9CnMSfAJkcf5
- gNMSLetBhXo4CW6X10DXtuOEoNvO4Oj6sQIBCNYRPvmqxbujwX/WvLKr8rX0AZONXu9B43zuA0s
- eWbHnLO37LF1TiWpIUAPLdI0tS4Q==
+ bh=j6Ufa99imFnktCDfLITp+fyxFsaMwcB1E2lVU+auqQM=;
+ b=wn0veYuXNlyElyZo80ME6ukKgQo2v5AGBGUhjkZLKqIZnV/0fXEX2/N6sFTMdhUU3a
+ K+gOpXHaQ8oJJDmBo4YG4jwZgwvikL+gfgWuZESMCSEZzRo3fzfyP74nWjkq7E8OukP4
+ wbBN9F9gGixFo69fmH71iKwguOXyMu0t33EteiSZGryDG7kDZXkzWLk+2jqzrJkzOXp/
+ SLM//a6t8Q9MRqHC94KNt/zcx25Ckrknz8YP3A2R5eKoLKCo4ryJhUD9F/ZGUQf3s9bH
+ wDqdilsEfJsxJFwhhHh7zL2osJVvmC2itSzZ00NRxgfGTzrvAWU8WNdDW5F0QAIp5LuZ
+ VjOg==
+X-Gm-Message-State: AOJu0Yz+x0kjpVzFSFf+wx0n5p7BFHFSFKZ0jnYgQKQyOQV+2dcnbQp7
+ ZD+VQIvESk4xir7jSHACpT43zwTFSJTuY7qoclVTzW3fd5WVNbnqfpreSq5M7cjtdtKmzYcwzg=
+ =
 X-Received: from warp10.c.googlers.com ([fda3:e722:ac3:cc00:24:72f4:c0a8:750])
- (user=tavip job=sendgmr) by 2002:a17:90b:1e50:b0:2d3:b7c7:d681
+ (user=tavip job=sendgmr) by 2002:a05:6a00:948b:b0:70d:1cb3:e3bb
  with SMTP id
- 98e67ed59e1d1-2d3e00ede53mr64440a91.3.1723890394594; Sat, 17 Aug 2024
- 03:26:34 -0700 (PDT)
-Date: Sat, 17 Aug 2024 03:25:57 -0700
+ d2e1a72fcca58-713c539b0famr15009b3a.5.1723890385902; Sat, 17 Aug 2024
+ 03:26:25 -0700 (PDT)
+Date: Sat, 17 Aug 2024 03:25:53 -0700
 In-Reply-To: <20240817102606.3996242-1-tavip@google.com>
 Mime-Version: 1.0
 References: <20240817102606.3996242-1-tavip@google.com>
 X-Mailer: git-send-email 2.46.0.184.g6999bdac58-goog
-Message-ID: <20240817102606.3996242-15-tavip@google.com>
-Subject: [RFC PATCH v2 14/23] test/unit: add unit tests for flexcomm i2c
+Message-ID: <20240817102606.3996242-11-tavip@google.com>
+Subject: [RFC PATCH v2 10/23] hw/char: add support for flexcomm usart
 From: Octavian Purdila <tavip@google.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, stefanst@google.com, pbonzini@redhat.com, 
@@ -106,9 +105,9 @@ Cc: qemu-arm@nongnu.org, stefanst@google.com, pbonzini@redhat.com,
  alistair@alistair23.me, berrange@redhat.com, philmd@linaro.org, 
  jsnow@redhat.com, crosa@redhat.com
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1049;
- envelope-from=32nrAZgUKCg88pAx4v33v0t.r315t19-stAt0232v29.36v@flex--tavip.bounces.google.com;
- helo=mail-pj1-x1049.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::44a;
+ envelope-from=30XrAZgUKCAYzg1ovmuumrk.iuswks0-gxstutmt0.uxm@flex--tavip.bounces.google.com;
+ helo=mail-pf1-x44a.google.com
 X-Spam_score_int: -95
 X-Spam_score: -9.6
 X-Spam_bar: ---------
@@ -116,40 +115,1073 @@ X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
+ USER_IN_DEF_DKIM_WL=-7.5 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 7+cVbcP346Yu
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: vYUylf/QHt+7
 
-Add master mode tests for flexcomm i2c.
+Add support for NXP's flexcomm usart. It supports interupts and FIFO
+access but no DMA.
+
+The patch includes an automatically generated header which contains
+the register layout and helpers.
+
+The header can be regenerated with the svd-flexcomm-usart target when
+the build is configured with --enable-mcux-soc-svd.
 
 Signed-off-by: Octavian Purdila <tavip@google.com>
 ---
- tests/unit/test-flexcomm-i2c.c | 210 +++++++++++++++++++++++++++++++++
- tests/unit/meson.build         |  10 ++
- 2 files changed, 220 insertions(+)
- create mode 100644 tests/unit/test-flexcomm-i2c.c
+ include/hw/arm/svd/flexcomm_usart.h | 959 ++++++++++++++++++++++++++++
+ include/hw/char/flexcomm_usart.h    |  20 +
+ include/hw/misc/flexcomm.h          |   5 +
+ hw/char/flexcomm_usart.c            | 292 +++++++++
+ hw/misc/flexcomm.c                  |   9 +
+ hw/arm/svd/meson.build              |   3 +
+ hw/char/meson.build                 |   1 +
+ hw/char/trace-events                |   9 +
+ tests/unit/meson.build              |   3 +-
+ 9 files changed, 1300 insertions(+), 1 deletion(-)
+ create mode 100644 include/hw/arm/svd/flexcomm_usart.h
+ create mode 100644 include/hw/char/flexcomm_usart.h
+ create mode 100644 hw/char/flexcomm_usart.c
 
-diff --git a/tests/unit/test-flexcomm-i2c.c b/tests/unit/test-flexcomm-i2c.c
+diff --git a/include/hw/arm/svd/flexcomm_usart.h b/include/hw/arm/svd/flexcomm_usart.h
 new file mode 100644
-index 0000000000..d31af884d0
+index 0000000000..8e2ef17fa7
 --- /dev/null
-+++ b/tests/unit/test-flexcomm-i2c.c
-@@ -0,0 +1,210 @@
++++ b/include/hw/arm/svd/flexcomm_usart.h
+@@ -0,0 +1,959 @@
 +/*
-+ * Copyright (c) 2024 Google LLC.
++ * Copyright 2016-2023 NXP SPDX-License-Identifier: BSD-3-Clause
++ *
++ * Automatically generated by svd-gen-header.py from MIMXRT595S_cm33.xml
++ */
++#pragma once
++
++#include "hw/registerfields.h"
++
++/* Flexcomm USART */
++#define FLEXCOMM_USART_REGS_NO (1024)
++
++/* USART Configuration */
++REG32(FLEXCOMM_USART_CFG, 0);
++/* USART Enable */
++FIELD(FLEXCOMM_USART_CFG, ENABLE, 0, 1);
++/* Data Length. Selects the data size for the USART. */
++FIELD(FLEXCOMM_USART_CFG, DATALEN, 2, 2);
++/* Parity Select. Selects what type of parity is used by the USART. */
++FIELD(FLEXCOMM_USART_CFG, PARITYSEL, 4, 2);
++/* Stop Length */
++FIELD(FLEXCOMM_USART_CFG, STOPLEN, 6, 1);
++/* Mode 32 kHz */
++FIELD(FLEXCOMM_USART_CFG, MODE32K, 7, 1);
++/* LIN Break Mode Enable */
++FIELD(FLEXCOMM_USART_CFG, LINMODE, 8, 1);
++/* CTS Enable */
++FIELD(FLEXCOMM_USART_CFG, CTSEN, 9, 1);
++/* Synchronous Enable. Selects synchronous or asynchronous operation. */
++FIELD(FLEXCOMM_USART_CFG, SYNCEN, 11, 1);
++/* Clock Polarity */
++FIELD(FLEXCOMM_USART_CFG, CLKPOL, 12, 1);
++/* Synchronous mode Master Select */
++FIELD(FLEXCOMM_USART_CFG, SYNCMST, 14, 1);
++/* Loopback Mode */
++FIELD(FLEXCOMM_USART_CFG, LOOP, 15, 1);
++/* Output Enable Turnaround Time Enable for RS-485 Operation. */
++FIELD(FLEXCOMM_USART_CFG, OETA, 18, 1);
++/* Automatic Address Matching Enable */
++FIELD(FLEXCOMM_USART_CFG, AUTOADDR, 19, 1);
++/* Output Enable Select */
++FIELD(FLEXCOMM_USART_CFG, OESEL, 20, 1);
++/* Output Enable Polarity */
++FIELD(FLEXCOMM_USART_CFG, OEPOL, 21, 1);
++/* Receive Data Polarity */
++FIELD(FLEXCOMM_USART_CFG, RXPOL, 22, 1);
++/* Transmit data polarity */
++FIELD(FLEXCOMM_USART_CFG, TXPOL, 23, 1);
++
++/* USART Control */
++REG32(FLEXCOMM_USART_CTL, 4);
++/* Break Enable */
++FIELD(FLEXCOMM_USART_CTL, TXBRKEN, 1, 1);
++/* Enable Address Detect Mode */
++FIELD(FLEXCOMM_USART_CTL, ADDRDET, 2, 1);
++/* Transmit Disable */
++FIELD(FLEXCOMM_USART_CTL, TXDIS, 6, 1);
++/* Continuous Clock Generation */
++FIELD(FLEXCOMM_USART_CTL, CC, 8, 1);
++/* Clear Continuous Clock */
++FIELD(FLEXCOMM_USART_CTL, CLRCCONRX, 9, 1);
++/* Autobaud Enable */
++FIELD(FLEXCOMM_USART_CTL, AUTOBAUD, 16, 1);
++
++/* USART Status */
++REG32(FLEXCOMM_USART_STAT, 8);
++/* Receiver Idle */
++FIELD(FLEXCOMM_USART_STAT, RXIDLE, 1, 1);
++/* Transmitter Idle */
++FIELD(FLEXCOMM_USART_STAT, TXIDLE, 3, 1);
++/* CTS value */
++FIELD(FLEXCOMM_USART_STAT, CTS, 4, 1);
++/* Delta CTS */
++FIELD(FLEXCOMM_USART_STAT, DELTACTS, 5, 1);
++/* Transmitter Disabled Status Flag */
++FIELD(FLEXCOMM_USART_STAT, TXDISSTAT, 6, 1);
++/* Received Break */
++FIELD(FLEXCOMM_USART_STAT, RXBRK, 10, 1);
++/* Delta Received Break */
++FIELD(FLEXCOMM_USART_STAT, DELTARXBRK, 11, 1);
++/* Start */
++FIELD(FLEXCOMM_USART_STAT, START, 12, 1);
++/* Framing Error Interrupt Flag */
++FIELD(FLEXCOMM_USART_STAT, FRAMERRINT, 13, 1);
++/* Parity Error Interrupt Flag */
++FIELD(FLEXCOMM_USART_STAT, PARITYERRINT, 14, 1);
++/* Received Noise Interrupt Flag */
++FIELD(FLEXCOMM_USART_STAT, RXNOISEINT, 15, 1);
++/* Auto Baud Error */
++FIELD(FLEXCOMM_USART_STAT, ABERR, 16, 1);
++
++/* Interrupt Enable Read and Set for USART (not FIFO) Status */
++REG32(FLEXCOMM_USART_INTENSET, 12);
++/* Transmit Idle Flag */
++FIELD(FLEXCOMM_USART_INTENSET, TXIDLEEN, 3, 1);
++/* Delta CTS Input Flag */
++FIELD(FLEXCOMM_USART_INTENSET, DELTACTSEN, 5, 1);
++/* Transmit Disabled Flag */
++FIELD(FLEXCOMM_USART_INTENSET, TXDISEN, 6, 1);
++/* Delta Receive Break Enable */
++FIELD(FLEXCOMM_USART_INTENSET, DELTARXBRKEN, 11, 1);
++/* Start Enable */
++FIELD(FLEXCOMM_USART_INTENSET, STARTEN, 12, 1);
++/* Frame Error Enable */
++FIELD(FLEXCOMM_USART_INTENSET, FRAMERREN, 13, 1);
++/* Parity Error Enble */
++FIELD(FLEXCOMM_USART_INTENSET, PARITYERREN, 14, 1);
++/* Receive Noise Enable */
++FIELD(FLEXCOMM_USART_INTENSET, RXNOISEEN, 15, 1);
++/* Auto Baud Error Enable */
++FIELD(FLEXCOMM_USART_INTENSET, ABERREN, 16, 1);
++
++/* Interrupt Enable Clear */
++REG32(FLEXCOMM_USART_INTENCLR, 16);
++/* Transmit Idle Clear */
++FIELD(FLEXCOMM_USART_INTENCLR, TXIDLECLR, 3, 1);
++/* Delta CTS Clear */
++FIELD(FLEXCOMM_USART_INTENCLR, DELTACTSCLR, 5, 1);
++/* Transmit Disable Clear */
++FIELD(FLEXCOMM_USART_INTENCLR, TXDISCLR, 6, 1);
++/* Delta Receive Break Clear */
++FIELD(FLEXCOMM_USART_INTENCLR, DELTARXBRKCLR, 11, 1);
++/* Start Clear */
++FIELD(FLEXCOMM_USART_INTENCLR, STARTCLR, 12, 1);
++/* Frame Error Clear */
++FIELD(FLEXCOMM_USART_INTENCLR, FRAMERRCLR, 13, 1);
++/* Parity Error Clear */
++FIELD(FLEXCOMM_USART_INTENCLR, PARITYERRCLR, 14, 1);
++/* Receive Noise Clear */
++FIELD(FLEXCOMM_USART_INTENCLR, RXNOISECLR, 15, 1);
++/* Auto Baud Error Clear */
++FIELD(FLEXCOMM_USART_INTENCLR, ABERRCLR, 16, 1);
++
++/* Baud Rate Generator */
++REG32(FLEXCOMM_USART_BRG, 32);
++/* Baud Rate Generator Value */
++FIELD(FLEXCOMM_USART_BRG, BRGVAL, 0, 16);
++
++/* Interrupt Status */
++REG32(FLEXCOMM_USART_INTSTAT, 36);
++/* Transmitter Idle Flag */
++FIELD(FLEXCOMM_USART_INTSTAT, TXIDLE, 3, 1);
++/* Delta CTS Change Flag */
++FIELD(FLEXCOMM_USART_INTSTAT, DELTACTS, 5, 1);
++/* Transmitter Disabled Interrupt Flag */
++FIELD(FLEXCOMM_USART_INTSTAT, TXDISINT, 6, 1);
++/* Delta Receiver Break Change Flag */
++FIELD(FLEXCOMM_USART_INTSTAT, DELTARXBRK, 11, 1);
++/* Start Detected on Receiver Flag */
++FIELD(FLEXCOMM_USART_INTSTAT, START, 12, 1);
++/* Framing Error Interrupt Flag */
++FIELD(FLEXCOMM_USART_INTSTAT, FRAMERRINT, 13, 1);
++/* Parity Error Interrupt Flag */
++FIELD(FLEXCOMM_USART_INTSTAT, PARITYERRINT, 14, 1);
++/* Received Noise Interrupt Flag */
++FIELD(FLEXCOMM_USART_INTSTAT, RXNOISEINT, 15, 1);
++/* Auto Baud Error Interrupt Flag */
++FIELD(FLEXCOMM_USART_INTSTAT, ABERRINT, 16, 1);
++
++/* Oversample Selection Register for Asynchronous Communication */
++REG32(FLEXCOMM_USART_OSR, 40);
++/* Oversample Selection Value */
++FIELD(FLEXCOMM_USART_OSR, OSRVAL, 0, 4);
++
++/* Address Register for Automatic Address Matching */
++REG32(FLEXCOMM_USART_ADDR, 44);
++/* Address */
++FIELD(FLEXCOMM_USART_ADDR, ADDRESS, 0, 8);
++
++/* FIFO Configuration */
++REG32(FLEXCOMM_USART_FIFOCFG, 3584);
++/* Enable the Transmit FIFO. */
++FIELD(FLEXCOMM_USART_FIFOCFG, ENABLETX, 0, 1);
++/* Enable the Receive FIFO */
++FIELD(FLEXCOMM_USART_FIFOCFG, ENABLERX, 1, 1);
++/* FIFO Size Configuration */
++FIELD(FLEXCOMM_USART_FIFOCFG, SIZE, 4, 2);
++/* DMA Configuration for Transmit */
++FIELD(FLEXCOMM_USART_FIFOCFG, DMATX, 12, 1);
++/* DMA Configuration for Receive */
++FIELD(FLEXCOMM_USART_FIFOCFG, DMARX, 13, 1);
++/* Wake-up for Transmit FIFO Level */
++FIELD(FLEXCOMM_USART_FIFOCFG, WAKETX, 14, 1);
++/* Wake-up for Receive FIFO Level */
++FIELD(FLEXCOMM_USART_FIFOCFG, WAKERX, 15, 1);
++/* Empty Command for the Transmit FIFO */
++FIELD(FLEXCOMM_USART_FIFOCFG, EMPTYTX, 16, 1);
++/* Empty Command for the Receive FIFO */
++FIELD(FLEXCOMM_USART_FIFOCFG, EMPTYRX, 17, 1);
++/* Pop FIFO for Debug Reads */
++FIELD(FLEXCOMM_USART_FIFOCFG, POPDBG, 18, 1);
++
++/* FIFO Status */
++REG32(FLEXCOMM_USART_FIFOSTAT, 3588);
++/* TX FIFO Error */
++FIELD(FLEXCOMM_USART_FIFOSTAT, TXERR, 0, 1);
++/* RX FIFO Error */
++FIELD(FLEXCOMM_USART_FIFOSTAT, RXERR, 1, 1);
++/* Peripheral Interrupt */
++FIELD(FLEXCOMM_USART_FIFOSTAT, PERINT, 3, 1);
++/* Transmit FIFO Empty */
++FIELD(FLEXCOMM_USART_FIFOSTAT, TXEMPTY, 4, 1);
++/* Transmit FIFO is Not Full */
++FIELD(FLEXCOMM_USART_FIFOSTAT, TXNOTFULL, 5, 1);
++/* Receive FIFO is Not Empty */
++FIELD(FLEXCOMM_USART_FIFOSTAT, RXNOTEMPTY, 6, 1);
++/* Receive FIFO is Full */
++FIELD(FLEXCOMM_USART_FIFOSTAT, RXFULL, 7, 1);
++/* Transmit FIFO Current Level */
++FIELD(FLEXCOMM_USART_FIFOSTAT, TXLVL, 8, 5);
++/* Receive FIFO Current Level */
++FIELD(FLEXCOMM_USART_FIFOSTAT, RXLVL, 16, 5);
++
++/* FIFO Trigger Settings for Interrupt and DMA Request */
++REG32(FLEXCOMM_USART_FIFOTRIG, 3592);
++/* Transmit FIFO Level Trigger Enable. */
++FIELD(FLEXCOMM_USART_FIFOTRIG, TXLVLENA, 0, 1);
++/* Receive FIFO Level Trigger Enable */
++FIELD(FLEXCOMM_USART_FIFOTRIG, RXLVLENA, 1, 1);
++/* Transmit FIFO Level Trigger Point */
++FIELD(FLEXCOMM_USART_FIFOTRIG, TXLVL, 8, 4);
++/* Receive FIFO Level Trigger Point */
++FIELD(FLEXCOMM_USART_FIFOTRIG, RXLVL, 16, 4);
++
++/* FIFO Interrupt Enable */
++REG32(FLEXCOMM_USART_FIFOINTENSET, 3600);
++/* Transmit Error Interrupt Enable */
++FIELD(FLEXCOMM_USART_FIFOINTENSET, TXERR, 0, 1);
++/* Receive Error Interrupt Enable */
++FIELD(FLEXCOMM_USART_FIFOINTENSET, RXERR, 1, 1);
++/* Transmit FIFO Level Interrupt Enable */
++FIELD(FLEXCOMM_USART_FIFOINTENSET, TXLVL, 2, 1);
++/* Receive FIFO Level Interrupt Enable */
++FIELD(FLEXCOMM_USART_FIFOINTENSET, RXLVL, 3, 1);
++
++/* FIFO Interrupt Enable Clear */
++REG32(FLEXCOMM_USART_FIFOINTENCLR, 3604);
++/* Transmit Error Interrupt Enable */
++FIELD(FLEXCOMM_USART_FIFOINTENCLR, TXERR, 0, 1);
++/* Receive Error Interrupt Enable */
++FIELD(FLEXCOMM_USART_FIFOINTENCLR, RXERR, 1, 1);
++/* Transmit FIFO Level Interrupt Enable */
++FIELD(FLEXCOMM_USART_FIFOINTENCLR, TXLVL, 2, 1);
++/* Receive FIFO Level Interrupt Enable */
++FIELD(FLEXCOMM_USART_FIFOINTENCLR, RXLVL, 3, 1);
++
++/* FIFO Interrupt Status */
++REG32(FLEXCOMM_USART_FIFOINTSTAT, 3608);
++/* TX FIFO Error Interrupt Status */
++FIELD(FLEXCOMM_USART_FIFOINTSTAT, TXERR, 0, 1);
++/* RX FIFO Error Interrupt Status */
++FIELD(FLEXCOMM_USART_FIFOINTSTAT, RXERR, 1, 1);
++/* Transmit FIFO Level Interrupt Status */
++FIELD(FLEXCOMM_USART_FIFOINTSTAT, TXLVL, 2, 1);
++/* Receive FIFO Level Interrupt Status */
++FIELD(FLEXCOMM_USART_FIFOINTSTAT, RXLVL, 3, 1);
++/* Peripheral Interrupt Status */
++FIELD(FLEXCOMM_USART_FIFOINTSTAT, PERINT, 4, 1);
++
++/* FIFO Write Data */
++REG32(FLEXCOMM_USART_FIFOWR, 3616);
++/* Transmit data to the FIFO */
++FIELD(FLEXCOMM_USART_FIFOWR, TXDATA, 0, 9);
++
++/* FIFO Read Data */
++REG32(FLEXCOMM_USART_FIFORD, 3632);
++/* Received Data from the FIFO */
++FIELD(FLEXCOMM_USART_FIFORD, RXDATA, 0, 9);
++/* Framing Error Status Flag */
++FIELD(FLEXCOMM_USART_FIFORD, FRAMERR, 13, 1);
++/* Parity Error Status Flag */
++FIELD(FLEXCOMM_USART_FIFORD, PARITYERR, 14, 1);
++/* Received Noise Flag */
++FIELD(FLEXCOMM_USART_FIFORD, RXNOISE, 15, 1);
++
++/* FIFO Data Read with No FIFO Pop */
++REG32(FLEXCOMM_USART_FIFORDNOPOP, 3648);
++/* Received Data from the FIFO */
++FIELD(FLEXCOMM_USART_FIFORDNOPOP, RXDATA, 0, 9);
++/* Framing Error Status Flag */
++FIELD(FLEXCOMM_USART_FIFORDNOPOP, FRAMERR, 13, 1);
++/* Parity Error Status Flag */
++FIELD(FLEXCOMM_USART_FIFORDNOPOP, PARITYERR, 14, 1);
++/* Received Noise Flag */
++FIELD(FLEXCOMM_USART_FIFORDNOPOP, RXNOISE, 15, 1);
++
++/* FIFO Size */
++REG32(FLEXCOMM_USART_FIFOSIZE, 3656);
++/* FIFO Size */
++FIELD(FLEXCOMM_USART_FIFOSIZE, FIFOSIZE, 0, 5);
++
++/* Peripheral Identification */
++REG32(FLEXCOMM_USART_ID, 4092);
++/* Aperture */
++FIELD(FLEXCOMM_USART_ID, APERTURE, 0, 8);
++/* Minor revision of module implementation */
++FIELD(FLEXCOMM_USART_ID, MINOR_REV, 8, 4);
++/* Major revision of module implementation */
++FIELD(FLEXCOMM_USART_ID, MAJOR_REV, 12, 4);
++/* Module identifier for the selected function */
++FIELD(FLEXCOMM_USART_ID, ID, 16, 16);
++
++
++typedef enum {
++    /* Disabled */
++    FLEXCOMM_USART_CFG_ENABLE_DISABLED = 0,
++    /* Enabled. The USART is enabled for operation. */
++    FLEXCOMM_USART_CFG_ENABLE_ENABLED = 1,
++} FLEXCOMM_USART_CFG_ENABLE_Enum;
++
++typedef enum {
++    /* 7 bit data length */
++    FLEXCOMM_USART_CFG_DATALEN_BIT_7 = 0,
++    /* 8 bit data length */
++    FLEXCOMM_USART_CFG_DATALEN_BIT_8 = 1,
++    /*
++     * 9 bit data length. The 9th bit is commonly used for addressing in
++     * multidrop mode. See the ADDRDET[CTL].
++     */
++    FLEXCOMM_USART_CFG_DATALEN_BIT_9 = 2,
++} FLEXCOMM_USART_CFG_DATALEN_Enum;
++
++typedef enum {
++    /* No parity */
++    FLEXCOMM_USART_CFG_PARITYSEL_NO_PARITY = 0,
++    /* Even parity */
++    FLEXCOMM_USART_CFG_PARITYSEL_EVEN_PARITY = 2,
++    /* Odd parity */
++    FLEXCOMM_USART_CFG_PARITYSEL_ODD_PARITY = 3,
++} FLEXCOMM_USART_CFG_PARITYSEL_Enum;
++
++typedef enum {
++    /* 1 stop bit */
++    FLEXCOMM_USART_CFG_STOPLEN_BIT_1 = 0,
++    /*
++     * 2 stop bits. This setting should be used only for asynchronous
++     * communication.
++     */
++    FLEXCOMM_USART_CFG_STOPLEN_BITS_2 = 1,
++} FLEXCOMM_USART_CFG_STOPLEN_Enum;
++
++typedef enum {
++    /* Disabled. USART uses standard clocking. */
++    FLEXCOMM_USART_CFG_MODE32K_DISABLED = 0,
++    /* Enabled */
++    FLEXCOMM_USART_CFG_MODE32K_ENABLED = 1,
++} FLEXCOMM_USART_CFG_MODE32K_Enum;
++
++typedef enum {
++    /*
++     * Disabled. Break detect and generate is configured for normal operation.
++     */
++    FLEXCOMM_USART_CFG_LINMODE_DISABLED = 0,
++    /*
++     * Enabled. Break detect and generate is configured for LIN bus operation.
++     */
++    FLEXCOMM_USART_CFG_LINMODE_ENABLED = 1,
++} FLEXCOMM_USART_CFG_LINMODE_Enum;
++
++typedef enum {
++    /*
++     * No flow control. The transmitter does not receive any automatic flow
++     * control signal.
++     */
++    FLEXCOMM_USART_CFG_CTSEN_DISABLED = 0,
++    /*
++     * Flow control enabled. The transmitter uses the CTS input (or RTS output
++     * in loopback mode) for flow control purposes.
++     */
++    FLEXCOMM_USART_CFG_CTSEN_ENABLED = 1,
++} FLEXCOMM_USART_CFG_CTSEN_Enum;
++
++typedef enum {
++    /* Asynchronous mode */
++    FLEXCOMM_USART_CFG_SYNCEN_ASYNCHRONOUS_MODE = 0,
++    /* Synchronous mode */
++    FLEXCOMM_USART_CFG_SYNCEN_SYNCHRONOUS_MODE = 1,
++} FLEXCOMM_USART_CFG_SYNCEN_Enum;
++
++typedef enum {
++    /* Falling edge. RXD is sampled on the falling edge of SCLK. */
++    FLEXCOMM_USART_CFG_CLKPOL_FALLING_EDGE = 0,
++    /* Rising edge. RXD is sampled on the rising edge of SCLK. */
++    FLEXCOMM_USART_CFG_CLKPOL_RISING_EDGE = 1,
++} FLEXCOMM_USART_CFG_CLKPOL_Enum;
++
++typedef enum {
++    /* Slave. When synchronous mode is enabled, the USART is a slave. */
++    FLEXCOMM_USART_CFG_SYNCMST_SLAVE = 0,
++    /* Master. When synchronous mode is enabled, the USART is a master. */
++    FLEXCOMM_USART_CFG_SYNCMST_MASTER = 1,
++} FLEXCOMM_USART_CFG_SYNCMST_Enum;
++
++typedef enum {
++    /* Normal operation */
++    FLEXCOMM_USART_CFG_LOOP_NORMAL = 0,
++    /* Loopback mode */
++    FLEXCOMM_USART_CFG_LOOP_LOOPBACK = 1,
++} FLEXCOMM_USART_CFG_LOOP_Enum;
++
++typedef enum {
++    /* Disabled */
++    FLEXCOMM_USART_CFG_OETA_DISABLED = 0,
++    /* Enabled */
++    FLEXCOMM_USART_CFG_OETA_ENABLED = 1,
++} FLEXCOMM_USART_CFG_OETA_Enum;
++
++typedef enum {
++    /* Disabled */
++    FLEXCOMM_USART_CFG_AUTOADDR_DISABLED = 0,
++    /* Enabled */
++    FLEXCOMM_USART_CFG_AUTOADDR_ENABLED = 1,
++} FLEXCOMM_USART_CFG_AUTOADDR_Enum;
++
++typedef enum {
++    /*
++     * Standard. The RTS signal is used as the standard flow control function.
++     */
++    FLEXCOMM_USART_CFG_OESEL_STANDARD = 0,
++    /*
++     * RS-485. The RTS signal is configured to provide an output enable signal
++     * to control an RS-485 transceiver.
++     */
++    FLEXCOMM_USART_CFG_OESEL_RS_485 = 1,
++} FLEXCOMM_USART_CFG_OESEL_Enum;
++
++typedef enum {
++    /* Low. If selected by OESEL, the output enable is active low. */
++    FLEXCOMM_USART_CFG_OEPOL_LOW = 0,
++    /* High. If selected by OESEL, the output enable is active high. */
++    FLEXCOMM_USART_CFG_OEPOL_HIGH = 1,
++} FLEXCOMM_USART_CFG_OEPOL_Enum;
++
++typedef enum {
++    /* Standard */
++    FLEXCOMM_USART_CFG_RXPOL_STANDARD = 0,
++    /* Inverted */
++    FLEXCOMM_USART_CFG_RXPOL_INVERTED = 1,
++} FLEXCOMM_USART_CFG_RXPOL_Enum;
++
++typedef enum {
++    /* Standard */
++    FLEXCOMM_USART_CFG_TXPOL_STANDARD = 0,
++    /* Inverted */
++    FLEXCOMM_USART_CFG_TXPOL_INVERTED = 1,
++} FLEXCOMM_USART_CFG_TXPOL_Enum;
++
++typedef enum {
++    /* Normal operation */
++    FLEXCOMM_USART_CTL_TXBRKEN_NORMAL = 0,
++    /* Continuous break */
++    FLEXCOMM_USART_CTL_TXBRKEN_CONTINUOUS = 1,
++} FLEXCOMM_USART_CTL_TXBRKEN_Enum;
++
++typedef enum {
++    /* Disabled. The USART presents all incoming data. */
++    FLEXCOMM_USART_CTL_ADDRDET_DISABLED = 0,
++    /* Enabled */
++    FLEXCOMM_USART_CTL_ADDRDET_ENABLED = 1,
++} FLEXCOMM_USART_CTL_ADDRDET_Enum;
++
++typedef enum {
++    /* Not disabled. USART transmitter is not disabled. */
++    FLEXCOMM_USART_CTL_TXDIS_ENABLED = 0,
++    /*
++     * Disabled. USART transmitter is disabled after any character currently
++     * being transmitted is complete. This feature can be used to facilitate
++     * software flow control.
++     */
++    FLEXCOMM_USART_CTL_TXDIS_DISABLED = 1,
++} FLEXCOMM_USART_CTL_TXDIS_Enum;
++
++typedef enum {
++    /* Clock on character */
++    FLEXCOMM_USART_CTL_CC_CLOCK_ON_CHARACTER = 0,
++    /* Continuous clock */
++    FLEXCOMM_USART_CTL_CC_CONTINOUS_CLOCK = 1,
++} FLEXCOMM_USART_CTL_CC_Enum;
++
++typedef enum {
++    /* No effect. No effect on the CC bit. */
++    FLEXCOMM_USART_CTL_CLRCCONRX_NO_EFFECT = 0,
++    /* Auto-clear */
++    FLEXCOMM_USART_CTL_CLRCCONRX_AUTO_CLEAR = 1,
++} FLEXCOMM_USART_CTL_CLRCCONRX_Enum;
++
++typedef enum {
++    /* Disabled */
++    FLEXCOMM_USART_CTL_AUTOBAUD_DISABLED = 0,
++    /* Enabled */
++    FLEXCOMM_USART_CTL_AUTOBAUD_ENABLED = 1,
++} FLEXCOMM_USART_CTL_AUTOBAUD_Enum;
++
++typedef enum {
++    /* The receiver is currently receiving data. */
++    FLEXCOMM_USART_STAT_RXIDLE_RX_ACTIVE = 0,
++    /* The receiver is not currently receiving data. */
++    FLEXCOMM_USART_STAT_RXIDLE_RX_IDLE = 1,
++} FLEXCOMM_USART_STAT_RXIDLE_Enum;
++
++typedef enum {
++    /* The transmitter is currently sending data. */
++    FLEXCOMM_USART_STAT_TXIDLE_TX_ACTIVE = 0,
++    /* The transmitter is not currently sending data. */
++    FLEXCOMM_USART_STAT_TXIDLE_TX_IDLE = 1,
++} FLEXCOMM_USART_STAT_TXIDLE_Enum;
++
++typedef enum {
++    /*
++     * Not Idle. Indicates that the USART transmitter is NOT fully idle after
++     * being disabled.
++     */
++    FLEXCOMM_USART_STAT_TXDISSTAT_TX_NOT_IDLE = 0,
++    /*
++     * Idle. Indicates that the USART transmitter is fully idle after being
++     * disabled (CTL[TXDIS] = 1).
++     */
++    FLEXCOMM_USART_STAT_TXDISSTAT_TX_IDLE = 1,
++} FLEXCOMM_USART_STAT_TXDISSTAT_Enum;
++
++typedef enum {
++    /*
++     * Enables an interrupt when the transmitter becomes idle (STAT[TXIDLE] =
++     * 1).
++     */
++    FLEXCOMM_USART_INTENSET_TXIDLEEN_ENABLE = 1,
++} FLEXCOMM_USART_INTENSET_TXIDLEEN_Enum;
++
++typedef enum {
++    /*
++     * Enables an interrupt when there is a change in the state of the CTS
++     * input.
++     */
++    FLEXCOMM_USART_INTENSET_DELTACTSEN_ENABLE = 1,
++} FLEXCOMM_USART_INTENSET_DELTACTSEN_Enum;
++
++typedef enum {
++    /*
++     * Enables an interrupt when the transmitter is fully disabled as indicated
++     * by the STAT[TXDISINT] flag. See the description of the STAT[TXDISINT]
++     * flag.
++     */
++    FLEXCOMM_USART_INTENSET_TXDISEN_ENABLE = 1,
++} FLEXCOMM_USART_INTENSET_TXDISEN_Enum;
++
++typedef enum {
++    /* Enable */
++    FLEXCOMM_USART_INTENSET_DELTARXBRKEN_ENABLE = 1,
++} FLEXCOMM_USART_INTENSET_DELTARXBRKEN_Enum;
++
++typedef enum {
++    /* Enables an interrupt when a received start bit has been detected. */
++    FLEXCOMM_USART_INTENSET_STARTEN_ENABLE = 1,
++} FLEXCOMM_USART_INTENSET_STARTEN_Enum;
++
++typedef enum {
++    /* Enables an interrupt when a framing error has been detected. */
++    FLEXCOMM_USART_INTENSET_FRAMERREN_ENABLE = 1,
++} FLEXCOMM_USART_INTENSET_FRAMERREN_Enum;
++
++typedef enum {
++    /* Enables an interrupt when a parity error has been detected. */
++    FLEXCOMM_USART_INTENSET_PARITYERREN_ENABLE = 1,
++} FLEXCOMM_USART_INTENSET_PARITYERREN_Enum;
++
++typedef enum {
++    /*
++     * Enables an interrupt when noise is detected. See the description of the
++     * CTL[RXNOISEINT] bit.
++     */
++    FLEXCOMM_USART_INTENSET_RXNOISEEN_ENABLE = 1,
++} FLEXCOMM_USART_INTENSET_RXNOISEEN_Enum;
++
++typedef enum {
++    /* Enables an interrupt when an auto baud error occurs. */
++    FLEXCOMM_USART_INTENSET_ABERREN_ENABLE = 1,
++} FLEXCOMM_USART_INTENSET_ABERREN_Enum;
++
++typedef enum {
++    /* FCLK is used directly by the USART function. */
++    FLEXCOMM_USART_BRG_BRGVAL_Zero = 0,
++    /* FCLK is divided by 2 before use by the USART function. */
++    FLEXCOMM_USART_BRG_BRGVAL_One = 1,
++    /* FCLK is divided by 3 before use by the USART function. */
++    FLEXCOMM_USART_BRG_BRGVAL_Two = 2,
++    /* FCLK is divided by 65,536 before use by the USART function. */
++    FLEXCOMM_USART_BRG_BRGVAL_FFFF = 65535,
++} FLEXCOMM_USART_BRG_BRGVAL_Enum;
++
++typedef enum {
++    /* Not supported */
++    FLEXCOMM_USART_OSR_OSRVAL_zero = 0,
++    /* Not supported */
++    FLEXCOMM_USART_OSR_OSRVAL_one = 1,
++    /* Not supported */
++    FLEXCOMM_USART_OSR_OSRVAL_two = 2,
++    /* Not supported */
++    FLEXCOMM_USART_OSR_OSRVAL_three = 3,
++    /* 5 function clocks are used to transmit and receive each data bit. */
++    FLEXCOMM_USART_OSR_OSRVAL_four = 4,
++    /* 6 function clocks are used to transmit and receive each data bit. */
++    FLEXCOMM_USART_OSR_OSRVAL_five = 5,
++    /* 16 function clocks are used to transmit and receive each data bit. */
++    FLEXCOMM_USART_OSR_OSRVAL_sixteen = 15,
++} FLEXCOMM_USART_OSR_OSRVAL_Enum;
++
++typedef enum {
++    /* The transmit FIFO is not enabled. */
++    FLEXCOMM_USART_FIFOCFG_ENABLETX_DISABLED = 0,
++    /* The transmit FIFO is enabled. */
++    FLEXCOMM_USART_FIFOCFG_ENABLETX_ENABLED = 1,
++} FLEXCOMM_USART_FIFOCFG_ENABLETX_Enum;
++
++typedef enum {
++    /* The receive FIFO is not enabled. */
++    FLEXCOMM_USART_FIFOCFG_ENABLERX_DISABLED = 0,
++    /* The receive FIFO is enabled. */
++    FLEXCOMM_USART_FIFOCFG_ENABLERX_ENABLED = 1,
++} FLEXCOMM_USART_FIFOCFG_ENABLERX_Enum;
++
++typedef enum {
++    /* FIFO is configured as 16 entries of 8 bits. */
++    FLEXCOMM_USART_FIFOCFG_SIZE_SIZE16 = 0,
++    /* Not used */
++    FLEXCOMM_USART_FIFOCFG_SIZE_SIZEINVALID1 = 1,
++    /* Not used */
++    FLEXCOMM_USART_FIFOCFG_SIZE_SIZEINVALID2 = 2,
++    /* Not used */
++    FLEXCOMM_USART_FIFOCFG_SIZE_SIZEINVALID3 = 3,
++} FLEXCOMM_USART_FIFOCFG_SIZE_Enum;
++
++typedef enum {
++    /* DMA is not used for the transmit function. */
++    FLEXCOMM_USART_FIFOCFG_DMATX_DISABLED = 0,
++    /*
++     * Triggers DMA for the transmit function if the FIFO is not full.
++     * Generally, data interrupts would be disabled if DMA is enabled.
++     */
++    FLEXCOMM_USART_FIFOCFG_DMATX_ENABLED = 1,
++} FLEXCOMM_USART_FIFOCFG_DMATX_Enum;
++
++typedef enum {
++    /* DMA is not used for the receive function. */
++    FLEXCOMM_USART_FIFOCFG_DMARX_DISABLED = 0,
++    /*
++     * Triggers DMA for the receive function if the FIFO is not empty.
++     * Generally, data interrupts would be disabled if DMA is enabled.
++     */
++    FLEXCOMM_USART_FIFOCFG_DMARX_ENABLED = 1,
++} FLEXCOMM_USART_FIFOCFG_DMARX_Enum;
++
++typedef enum {
++    /* Only enabled interrupts will wake up the device from low power modes. */
++    FLEXCOMM_USART_FIFOCFG_WAKETX_DISABLED = 0,
++    /*
++     * A device wake-up for DMA will occur if the transmit FIFO level reaches
++     * the value specified by FIFOTRIG[TXLVL], even when the TXLVL interrupt is
++     * not enabled.
++     */
++    FLEXCOMM_USART_FIFOCFG_WAKETX_ENABLED = 1,
++} FLEXCOMM_USART_FIFOCFG_WAKETX_Enum;
++
++typedef enum {
++    /* Only enabled interrupts will wake up the device from low power modes. */
++    FLEXCOMM_USART_FIFOCFG_WAKERX_DISABLED = 0,
++    /*
++     * A device wake-up for DMA will occur if the receive FIFO level reaches
++     * the value specified by FIFOTRIG[RXLVL], even when the RXLVL interrupt is
++     * not enabled.
++     */
++    FLEXCOMM_USART_FIFOCFG_WAKERX_ENABLED = 1,
++} FLEXCOMM_USART_FIFOCFG_WAKERX_Enum;
++
++typedef enum {
++    /* No effect */
++    FLEXCOMM_USART_FIFOCFG_EMPTYTX_NO_EFFECT = 0,
++    /* The TX FIFO is emptied. */
++    FLEXCOMM_USART_FIFOCFG_EMPTYTX_EMPTY_THE_TX_FIFO = 1,
++} FLEXCOMM_USART_FIFOCFG_EMPTYTX_Enum;
++
++typedef enum {
++    /* No effect */
++    FLEXCOMM_USART_FIFOCFG_EMPTYRX_NO_EFFECT = 0,
++    /* The RX FIFO is emptied. */
++    FLEXCOMM_USART_FIFOCFG_EMPTYRX_EMPTY_THE_RX_FIFO = 1,
++} FLEXCOMM_USART_FIFOCFG_EMPTYRX_Enum;
++
++typedef enum {
++    /* Debug reads of the FIFO do not pop the FIFO. */
++    FLEXCOMM_USART_FIFOCFG_POPDBG_DO_NOT_POP = 0,
++    /* A debug read will cause the FIFO to pop. */
++    FLEXCOMM_USART_FIFOCFG_POPDBG_POP = 1,
++} FLEXCOMM_USART_FIFOCFG_POPDBG_Enum;
++
++typedef enum {
++    /* A transmit FIFO error has not occurred. */
++    FLEXCOMM_USART_FIFOSTAT_TXERR_NO_TXERR = 0,
++    /*
++     * A transmit FIFO error has occurred. This error could be an overflow
++     * caused by pushing data into a full FIFO, or by an underflow if the FIFO
++     * is empty when data is needed.
++     */
++    FLEXCOMM_USART_FIFOSTAT_TXERR_TXERR = 1,
++} FLEXCOMM_USART_FIFOSTAT_TXERR_Enum;
++
++typedef enum {
++    /* A receive FIFO overflow has not occurred */
++    FLEXCOMM_USART_FIFOSTAT_RXERR_NO_RXERR = 0,
++    /*
++     * A receive FIFO overflow has occurred, caused by software or DMA not
++     * emptying the FIFO fast enough
++     */
++    FLEXCOMM_USART_FIFOSTAT_RXERR_RXERR = 1,
++} FLEXCOMM_USART_FIFOSTAT_RXERR_Enum;
++
++typedef enum {
++    /* No Peripheral Interrupt */
++    FLEXCOMM_USART_FIFOSTAT_PERINT_NO_PERINT = 0,
++    /* Peripheral Interrupt */
++    FLEXCOMM_USART_FIFOSTAT_PERINT_PERINT = 1,
++} FLEXCOMM_USART_FIFOSTAT_PERINT_Enum;
++
++typedef enum {
++    /* The transmit FIFO is not empty. */
++    FLEXCOMM_USART_FIFOSTAT_TXEMPTY_TXFIFO_ISNOTEMPTY = 0,
++    /*
++     * The transmit FIFO is empty, although the peripheral may still be
++     * processing the last piece of data.
++     */
++    FLEXCOMM_USART_FIFOSTAT_TXEMPTY_TXFIFO_ISEMPTY = 1,
++} FLEXCOMM_USART_FIFOSTAT_TXEMPTY_Enum;
++
++typedef enum {
++    /*
++     * The transmit FIFO is full and another write would cause it to overflow.
++     */
++    FLEXCOMM_USART_FIFOSTAT_TXNOTFULL_TXFIFO_ISFULL = 0,
++    /* The transmit FIFO is not full, so more data can be written. */
++    FLEXCOMM_USART_FIFOSTAT_TXNOTFULL_TXFIFO_ISNOTFULL = 1,
++} FLEXCOMM_USART_FIFOSTAT_TXNOTFULL_Enum;
++
++typedef enum {
++    /* The receive FIFO is empty. */
++    FLEXCOMM_USART_FIFOSTAT_RXNOTEMPTY_RXFIFO_ISEMPTY = 0,
++    /* The receive FIFO is not empty, so data can be read. */
++    FLEXCOMM_USART_FIFOSTAT_RXNOTEMPTY_RXFIFO_ISNOTEMPTY = 1,
++} FLEXCOMM_USART_FIFOSTAT_RXNOTEMPTY_Enum;
++
++typedef enum {
++    /* The receive FIFO is not full. */
++    FLEXCOMM_USART_FIFOSTAT_RXFULL_RXFIFO_ISNOTFULL = 0,
++    /* The receive FIFO is full. */
++    FLEXCOMM_USART_FIFOSTAT_RXFULL_RXFIFO_ISFULL = 1,
++} FLEXCOMM_USART_FIFOSTAT_RXFULL_Enum;
++
++typedef enum {
++    /* Transmit FIFO level does not generate a FIFO level trigger. */
++    FLEXCOMM_USART_FIFOTRIG_TXLVLENA_DISABLED = 0,
++    /*
++     * A trigger will be generated if the transmit FIFO level reaches the value
++     * specified by the TXLVL field.
++     */
++    FLEXCOMM_USART_FIFOTRIG_TXLVLENA_ENABLED = 1,
++} FLEXCOMM_USART_FIFOTRIG_TXLVLENA_Enum;
++
++typedef enum {
++    /* Receive FIFO level does not generate a FIFO level trigger. */
++    FLEXCOMM_USART_FIFOTRIG_RXLVLENA_DISABLED = 0,
++    /*
++     * An trigger will be generated if the receive FIFO level reaches the value
++     * specified by the RXLVL field.
++     */
++    FLEXCOMM_USART_FIFOTRIG_RXLVLENA_ENABLED = 1,
++} FLEXCOMM_USART_FIFOTRIG_RXLVLENA_Enum;
++
++typedef enum {
++    /* Trigger when the TX FIFO becomes empty */
++    FLEXCOMM_USART_FIFOTRIG_TXLVL_TXLVL0 = 0,
++    /* Trigger when the TX FIFO level decreases to 1 entry */
++    FLEXCOMM_USART_FIFOTRIG_TXLVL_TXLVL1 = 1,
++    /*
++     * Trigger when the TX FIFO level decreases to 15 entries (is no longer
++     * full)
++     */
++    FLEXCOMM_USART_FIFOTRIG_TXLVL_TXLVL15 = 15,
++} FLEXCOMM_USART_FIFOTRIG_TXLVL_Enum;
++
++typedef enum {
++    /* Trigger when the RX FIFO has received 1 entry (is no longer empty) */
++    FLEXCOMM_USART_FIFOTRIG_RXLVL_RXLVL1 = 0,
++    /* Trigger when the RX FIFO has received 2 entries */
++    FLEXCOMM_USART_FIFOTRIG_RXLVL_RXLVL2 = 1,
++    /* Trigger when the RX FIFO has received 16 entries (has become full) */
++    FLEXCOMM_USART_FIFOTRIG_RXLVL_RXLVL15 = 15,
++} FLEXCOMM_USART_FIFOTRIG_RXLVL_Enum;
++
++typedef enum {
++    /* No interrupt will be generated for a transmit error. */
++    FLEXCOMM_USART_FIFOINTENSET_TXERR_DISABLED = 0,
++    /* An interrupt will be generated when a transmit error occurs. */
++    FLEXCOMM_USART_FIFOINTENSET_TXERR_ENABLED = 1,
++} FLEXCOMM_USART_FIFOINTENSET_TXERR_Enum;
++
++typedef enum {
++    /* No interrupt will be generated for a receive error. */
++    FLEXCOMM_USART_FIFOINTENSET_RXERR_DISABLED = 0,
++    /* An interrupt will be generated when a receive error occurs. */
++    FLEXCOMM_USART_FIFOINTENSET_RXERR_ENABLED = 1,
++} FLEXCOMM_USART_FIFOINTENSET_RXERR_Enum;
++
++typedef enum {
++    /* No interrupt will be generated based on the TX FIFO level. */
++    FLEXCOMM_USART_FIFOINTENSET_TXLVL_DISABLED = 0,
++    /*
++     * If FIFOTRIG[TXLVLENA] = 1, then an interrupt will be generated when the
++     * TX FIFO level decreases to the level specified by FIFOTRIG[TXLVL]
++     */
++    FLEXCOMM_USART_FIFOINTENSET_TXLVL_ENABLED = 1,
++} FLEXCOMM_USART_FIFOINTENSET_TXLVL_Enum;
++
++typedef enum {
++    /* No interrupt will be generated based on the RX FIFO level. */
++    FLEXCOMM_USART_FIFOINTENSET_RXLVL_DISABLED = 0,
++    /*
++     * If FIFOTRIG[RXLVLENA] = 1, an interrupt will be generated when the when
++     * the RX FIFO level increases to the level specified by FIFOTRIG[RXLVL].
++     */
++    FLEXCOMM_USART_FIFOINTENSET_RXLVL_ENABLED = 1,
++} FLEXCOMM_USART_FIFOINTENSET_RXLVL_Enum;
++
++typedef enum {
++    /* No effect */
++    FLEXCOMM_USART_FIFOINTENCLR_TXERR_NO_EFFECT = 0,
++    /* Clear the interrupt */
++    FLEXCOMM_USART_FIFOINTENCLR_TXERR_CLEAR_THE_TXERR = 1,
++} FLEXCOMM_USART_FIFOINTENCLR_TXERR_Enum;
++
++typedef enum {
++    /* No effect */
++    FLEXCOMM_USART_FIFOINTENCLR_RXERR_NO_EFFECT = 0,
++    /* Clear the interrupt */
++    FLEXCOMM_USART_FIFOINTENCLR_RXERR_CLEAR_THE_RXERR = 1,
++} FLEXCOMM_USART_FIFOINTENCLR_RXERR_Enum;
++
++typedef enum {
++    /* No effect */
++    FLEXCOMM_USART_FIFOINTENCLR_TXLVL_NO_EFFECT = 0,
++    /* Clear the interrupt */
++    FLEXCOMM_USART_FIFOINTENCLR_TXLVL_CLEAR_THE_TXLVL = 1,
++} FLEXCOMM_USART_FIFOINTENCLR_TXLVL_Enum;
++
++typedef enum {
++    /* No effect */
++    FLEXCOMM_USART_FIFOINTENCLR_RXLVL_NO_EFFECT = 0,
++    /* Clear the interrupt */
++    FLEXCOMM_USART_FIFOINTENCLR_RXLVL_CLEAR_THE_RXLVL = 1,
++} FLEXCOMM_USART_FIFOINTENCLR_RXLVL_Enum;
++
++typedef enum {
++    /* Not pending */
++    FLEXCOMM_USART_FIFOINTSTAT_TXERR_TXERR_ISNOTPENDING = 0,
++    /* Pending */
++    FLEXCOMM_USART_FIFOINTSTAT_TXERR_TXERR_ISPENDING = 1,
++} FLEXCOMM_USART_FIFOINTSTAT_TXERR_Enum;
++
++typedef enum {
++    /* Not pending */
++    FLEXCOMM_USART_FIFOINTSTAT_RXERR_RXERR_ISNOTPENDING = 0,
++    /* Pending */
++    FLEXCOMM_USART_FIFOINTSTAT_RXERR_RXERR_ISPENDING = 1,
++} FLEXCOMM_USART_FIFOINTSTAT_RXERR_Enum;
++
++typedef enum {
++    /* Not pending */
++    FLEXCOMM_USART_FIFOINTSTAT_TXLVL_TXLVL_ISNOTPENDING = 0,
++    /* Pending */
++    FLEXCOMM_USART_FIFOINTSTAT_TXLVL_TXLVL_ISPENDING = 1,
++} FLEXCOMM_USART_FIFOINTSTAT_TXLVL_Enum;
++
++typedef enum {
++    /* Not pending */
++    FLEXCOMM_USART_FIFOINTSTAT_RXLVL_RXLVL_ISNOTPENDING = 0,
++    /* Pending */
++    FLEXCOMM_USART_FIFOINTSTAT_RXLVL_RXLVL_ISPENDING = 1,
++} FLEXCOMM_USART_FIFOINTSTAT_RXLVL_Enum;
++
++typedef enum {
++    /* Not pending */
++    FLEXCOMM_USART_FIFOINTSTAT_PERINT_PERINT_ISNOTPENDING = 0,
++    /* Pending */
++    FLEXCOMM_USART_FIFOINTSTAT_PERINT_PERINT_ISPENDING = 1,
++} FLEXCOMM_USART_FIFOINTSTAT_PERINT_Enum;
++
++
++#define FLEXCOMM_USART_REGISTER_NAMES_ARRAY(_name) \
++    const char *_name[FLEXCOMM_USART_REGS_NO] = { \
++        [R_FLEXCOMM_USART_CFG] = "CFG", \
++        [R_FLEXCOMM_USART_CTL] = "CTL", \
++        [R_FLEXCOMM_USART_STAT] = "STAT", \
++        [R_FLEXCOMM_USART_INTENSET] = "INTENSET", \
++        [R_FLEXCOMM_USART_INTENCLR] = "INTENCLR", \
++        [R_FLEXCOMM_USART_BRG] = "BRG", \
++        [R_FLEXCOMM_USART_INTSTAT] = "INTSTAT", \
++        [R_FLEXCOMM_USART_OSR] = "OSR", \
++        [R_FLEXCOMM_USART_ADDR] = "ADDR", \
++        [R_FLEXCOMM_USART_FIFOCFG] = "FIFOCFG", \
++        [R_FLEXCOMM_USART_FIFOSTAT] = "FIFOSTAT", \
++        [R_FLEXCOMM_USART_FIFOTRIG] = "FIFOTRIG", \
++        [R_FLEXCOMM_USART_FIFOINTENSET] = "FIFOINTENSET", \
++        [R_FLEXCOMM_USART_FIFOINTENCLR] = "FIFOINTENCLR", \
++        [R_FLEXCOMM_USART_FIFOINTSTAT] = "FIFOINTSTAT", \
++        [R_FLEXCOMM_USART_FIFOWR] = "FIFOWR", \
++        [R_FLEXCOMM_USART_FIFORD] = "FIFORD", \
++        [R_FLEXCOMM_USART_FIFORDNOPOP] = "FIFORDNOPOP", \
++        [R_FLEXCOMM_USART_FIFOSIZE] = "FIFOSIZE", \
++        [R_FLEXCOMM_USART_ID] = "ID", \
++    }
++
++#define FLEXCOMM_USART_REGISTER_WMASK_ARRAY(_name) \
++    const uint32_t _name[FLEXCOMM_USART_REGS_NO] = { \
++        [R_FLEXCOMM_USART_CFG] = 0xFCDBFD, \
++        [R_FLEXCOMM_USART_CTL] = 0x10346, \
++        [R_FLEXCOMM_USART_STAT] = 0x1F820, \
++        [R_FLEXCOMM_USART_INTENSET] = 0x1F868, \
++        [R_FLEXCOMM_USART_INTENCLR] = 0x1F868, \
++        [R_FLEXCOMM_USART_BRG] = 0xFFFF, \
++        [R_FLEXCOMM_USART_OSR] = 0xF, \
++        [R_FLEXCOMM_USART_ADDR] = 0xFF, \
++        [R_FLEXCOMM_USART_FIFOCFG] = 0x7F003, \
++        [R_FLEXCOMM_USART_FIFOSTAT] = 0x3, \
++        [R_FLEXCOMM_USART_FIFOTRIG] = 0xF0F03, \
++        [R_FLEXCOMM_USART_FIFOINTENSET] = 0xF, \
++        [R_FLEXCOMM_USART_FIFOINTENCLR] = 0xF, \
++        [R_FLEXCOMM_USART_FIFOWR] = 0x1FF, \
++    }
++
++static inline void flexcomm_usart_reset_registers(uint32_t *regs)
++{
++    regs[R_FLEXCOMM_USART_CFG] = 0x0;
++    regs[R_FLEXCOMM_USART_CTL] = 0x0;
++    regs[R_FLEXCOMM_USART_STAT] = 0xa;
++    regs[R_FLEXCOMM_USART_INTENSET] = 0x0;
++    regs[R_FLEXCOMM_USART_INTENCLR] = 0x0;
++    regs[R_FLEXCOMM_USART_BRG] = 0x0;
++    regs[R_FLEXCOMM_USART_INTSTAT] = 0x0;
++    regs[R_FLEXCOMM_USART_OSR] = 0xf;
++    regs[R_FLEXCOMM_USART_ADDR] = 0x0;
++    regs[R_FLEXCOMM_USART_FIFOCFG] = 0x0;
++    regs[R_FLEXCOMM_USART_FIFOSTAT] = 0x30;
++    regs[R_FLEXCOMM_USART_FIFOTRIG] = 0x0;
++    regs[R_FLEXCOMM_USART_FIFOINTENSET] = 0x0;
++    regs[R_FLEXCOMM_USART_FIFOINTENCLR] = 0x0;
++    regs[R_FLEXCOMM_USART_FIFOINTSTAT] = 0x0;
++    regs[R_FLEXCOMM_USART_FIFOWR] = 0x0;
++    regs[R_FLEXCOMM_USART_FIFORD] = 0x0;
++    regs[R_FLEXCOMM_USART_FIFORDNOPOP] = 0x0;
++    regs[R_FLEXCOMM_USART_FIFOSIZE] = 0x10;
++    regs[R_FLEXCOMM_USART_ID] = 0xe0102100;
++}
+diff --git a/include/hw/char/flexcomm_usart.h b/include/hw/char/flexcomm_usart.h
+new file mode 100644
+index 0000000000..07d14cb330
+--- /dev/null
++++ b/include/hw/char/flexcomm_usart.h
+@@ -0,0 +1,20 @@
++/*
++ * QEMU model for NXP's FLEXCOMM USART
++ *
++ * Copyright (c) 2024 Google LLC
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ *
++ * This work is licensed under the terms of the GNU GPL, version 2 or later.
++ * See the COPYING file in the top-level directory.
++ */
++
++#ifndef HW_CHAR_FLEXCOMM_USART_H
++#define HW_CHAR_FLEXCOMM_USART_H
++
++#include "hw/misc/flexcomm.h"
++
++void flexcomm_usart_init(FlexcommState *s);
++void flexcomm_usart_register(void);
++
++#endif /* HW_CHAR_RT500_FLEXCOMM_USART_H */
+diff --git a/include/hw/misc/flexcomm.h b/include/hw/misc/flexcomm.h
+index 137e483412..a4dfdb225f 100644
+--- a/include/hw/misc/flexcomm.h
++++ b/include/hw/misc/flexcomm.h
+@@ -13,7 +13,9 @@
+ #define HW_FLEXCOMM_H
+ 
+ #include "hw/sysbus.h"
++#include "chardev/char-fe.h"
+ #include "hw/arm/svd/flexcomm.h"
++#include "hw/arm/svd/flexcomm_usart.h"
+ #include "qemu/fifo32.h"
+ 
+ #define TYPE_FLEXCOMM "flexcomm"
+@@ -43,6 +45,9 @@ typedef struct {
+     uint32_t functions;
+     qemu_irq irq;
+     bool irq_state;
++    CharBackend chr;
++    Fifo32 tx_fifo;
++    Fifo32 rx_fifo;
+ } FlexcommState;
+ 
+ typedef struct {
+diff --git a/hw/char/flexcomm_usart.c b/hw/char/flexcomm_usart.c
+new file mode 100644
+index 0000000000..1be3e7a562
+--- /dev/null
++++ b/hw/char/flexcomm_usart.c
+@@ -0,0 +1,292 @@
++/*
++ * QEMU model for NXP's FLEXCOMM USART
++ *
++ * Copyright (c) 2024 Google LLC
 + *
 + * SPDX-License-Identifier: GPL-2.0-or-later
 + *
@@ -158,227 +1190,382 @@ index 0000000000..d31af884d0
 + */
 +
 +#include "qemu/osdep.h"
-+
-+#include "qemu/config-file.h"
-+#include "qemu/log.h"
-+#include "qemu/module.h"
-+#include "qapi/error.h"
-+#include "qemu/sockets.h"
-+#include "sysemu/sysemu.h"
-+#include "qemu/main-loop.h"
-+#include "qemu/option.h"
-+#include "exec/memory.h"
++#include "qemu/cutils.h"
 +#include "hw/irq.h"
 +#include "hw/qdev-properties.h"
-+#include "hw/qdev-core.h"
++#include "qemu/log.h"
++#include "qemu/module.h"
++#include "exec/address-spaces.h"
++#include "qapi/error.h"
++#include "trace.h"
++#include "hw/regs.h"
++#include "hw/char/flexcomm_usart.h"
 +
-+#include "hw/i2c/flexcomm_i2c.h"
-+#include "i2c_tester.h"
-+#include "sysbus-mock.h"
-+#include "reg-utils.h"
++#define REG(s, reg) (s->regs[R_FLEXCOMM_USART_##reg])
++/* register field write helper macro */
++#define RF_RD(s, reg, field, val) \
++    ARRAY_FIELD_DP32(s->regs, FLEXCOMM_USART_##reg, field, val)
++/* register field read helper macro */
++#define RF_WR(s, reg, field) \
++    ARRAY_FIELD_EX32(s->regs, FLEXCOMM_USART_##reg, field)
 +
-+#define PERIPH_ADDR (0x20)
-+#define INVALID_ADDR (0x10)
++static FLEXCOMM_USART_REGISTER_NAMES_ARRAY(reg_names);
 +
-+#define REG_ADDR 0x11
-+#define REG_VALUE 0xAA
-+
-+#define FLEXCOMM_BASE 0x40106000UL
-+#define FLEXCOMM_I2C_BASE FLEXCOMM_BASE
-+
-+typedef struct {
-+    DeviceState *dev;
-+    I2CSlave *periph;
-+    bool irq;
-+} TestFixture;
-+
-+/* Callback for the interrupt line. */
-+static void spi_irq_set(void *opaque, int line, int level)
++static void flexcomm_usart_reset(FlexcommState *s)
 +{
-+    TestFixture *f = (TestFixture *)opaque;
-+
-+    f->irq = level;
++    flexcomm_usart_reset_registers(s->regs);
 +}
 +
-+/*
-+ * Test fixture initialization.
-+ */
-+static void set_up(TestFixture *f, gconstpointer data)
++static void update_fifo_stat(FlexcommState *s)
 +{
-+    FlexcommState *s;
++    int rxlvl = fifo32_num_used(&s->rx_fifo);
++    int txlvl = fifo32_num_used(&s->tx_fifo);
 +
-+    f->dev = qdev_new(TYPE_FLEXCOMM);
-+    g_assert(f->dev);
++    RF_RD(s, FIFOSTAT, RXLVL, fifo32_num_used(&s->rx_fifo));
++    RF_RD(s, FIFOSTAT, TXLVL, fifo32_num_used(&s->tx_fifo));
++    RF_RD(s, FIFOSTAT, RXFULL, fifo32_is_full(&s->rx_fifo));
++    RF_RD(s, FIFOSTAT, RXNOTEMPTY, !fifo32_is_empty(&s->rx_fifo));
++    RF_RD(s, FIFOSTAT, TXNOTFULL, !fifo32_is_full(&s->tx_fifo));
++    RF_RD(s, FIFOSTAT, TXEMPTY, fifo32_is_empty(&s->tx_fifo));
 +
-+    s = FLEXCOMM(f->dev);
-+    s->irq = qemu_allocate_irq(spi_irq_set, f, 0);
-+
-+    if (data != NULL) {
-+        qdev_prop_set_int32(DEVICE(f->dev), "functions", (uintptr_t)data);
++    if (RF_WR(s, FIFOTRIG, RXLVLENA) &&
++        (rxlvl > RF_WR(s, FIFOTRIG, RXLVL))) {
++        RF_RD(s, FIFOINTSTAT, RXLVL, 1);
++    } else {
++        RF_RD(s, FIFOINTSTAT, RXLVL, 0);
 +    }
 +
-+    qdev_realize_and_unref(f->dev, NULL, &error_abort);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(f->dev), 0, FLEXCOMM_BASE);
++    if (RF_WR(s, FIFOTRIG, TXLVLENA) &&
++        (txlvl <= RF_WR(s, FIFOTRIG, TXLVL))) {
++        RF_RD(s, FIFOINTSTAT, TXLVL, 1);
++    } else {
++        RF_RD(s, FIFOINTSTAT, TXLVL, 0);
++    }
 +
-+    device_cold_reset(f->dev);
-+
-+    f->periph = i2c_slave_create_simple(s->i2c, TYPE_I2C_TESTER, PERIPH_ADDR);
++    trace_flexcomm_usart_fifostat(DEVICE(s)->id, REG(s, FIFOSTAT),
++                                  REG(s, FIFOINTSTAT));
 +}
 +
-+static void tear_down(TestFixture *f, gconstpointer user_data)
++static void flexcomm_usart_irq_update(FlexcommState *s)
 +{
-+    qdev_unrealize(f->dev);
-+    qdev_unrealize(DEVICE(f->periph));
++    bool irq, per_irqs, fifo_irqs, enabled = RF_WR(s, CFG, ENABLE);
++
++    update_fifo_stat(s);
++    fifo_irqs = REG(s, FIFOINTSTAT) & REG(s, FIFOINTENSET);
++
++    REG(s, INTSTAT) = REG(s, STAT) & REG(s, INTENSET);
++    per_irqs = REG(s, INTSTAT) != 0;
++
++    irq = enabled && (fifo_irqs || per_irqs);
++
++    trace_flexcomm_usart_irq(DEVICE(s)->id, irq, fifo_irqs, per_irqs, enabled);
++    flexcomm_irq(s, irq);
 +}
 +
-+static void master_test(TestFixture *f, gconstpointer user_data)
++static int flexcomm_usart_rx_space(void *opaque)
 +{
-+    uint32_t tmp;
++    FlexcommState *s = opaque;
++    uint32_t ret = fifo32_num_free(&s->rx_fifo);
 +
-+    /* Select and lock I2C */
-+    tmp = FLEXCOMM_PERSEL_I2C;
-+    FIELD_DP32(tmp, FLEXCOMM_PSELID, LOCK, 1);
-+    REG32_WRITE(f->dev, FLEXCOMM, PSELID, tmp);
++    if (!RF_WR(s, CFG, ENABLE) || !RF_WR(s, FIFOCFG, ENABLERX)) {
++        ret = 0;
++    }
 +
-+    /* Enable master mode */
-+    REG32_WRITE_FIELD(f->dev, FLEXCOMM_I2C, CFG, MSTEN, 1);
-+    g_assert(REG32_READ_FIELD(f->dev, FLEXCOMM_I2C, CFG, MSTEN) == 1);
++    trace_flexcomm_usart_rx_space(DEVICE(s)->id, ret);
 +
-+    g_assert(REG32_READ_FIELD(f->dev, FLEXCOMM_I2C, STAT, MSTPENDING) == 1);
-+    g_assert(REG32_READ_FIELD(f->dev, FLEXCOMM_I2C, STAT, MSTSTATE) ==
-+             MSTSTATE_IDLE);
-+
-+    /* Enable interrupts */
-+    REG32_WRITE_FIELD(f->dev, FLEXCOMM_I2C, INTENSET, MSTPENDINGEN, 1);
-+    g_assert(f->irq == true);
-+
-+    /* start for invalid address  */
-+    REG32_WRITE(f->dev, FLEXCOMM_I2C, MSTDAT, INVALID_ADDR);
-+    REG32_WRITE_FIELD_NOUPDATE(f->dev, FLEXCOMM_I2C, MSTCTL, MSTSTART, 1);
-+    g_assert(REG32_READ_FIELD(f->dev, FLEXCOMM_I2C, STAT, MSTSTATE) ==
-+             MSTSTATE_NAKADR);
-+    g_assert(f->irq == true);
-+    REG32_WRITE_FIELD_NOUPDATE(f->dev, FLEXCOMM_I2C, MSTCTL, MSTSTOP, 1);
-+
-+    /* write past the last register */
-+    REG32_WRITE_FIELD(f->dev, FLEXCOMM_I2C, MSTDAT, DATA, PERIPH_ADDR);
-+    REG32_WRITE_FIELD_NOUPDATE(f->dev, FLEXCOMM_I2C, MSTCTL, MSTSTART, 1);
-+    g_assert(f->irq == true);
-+    g_assert(REG32_READ_FIELD(f->dev, FLEXCOMM_I2C, STAT, MSTSTATE) ==
-+             MSTSTATE_TXRDY);
-+    REG32_WRITE_FIELD(f->dev, FLEXCOMM_I2C, MSTDAT, DATA,
-+                    (I2C_TESTER_NUM_REGS + 10));
-+    REG32_WRITE_FIELD_NOUPDATE(f->dev, FLEXCOMM_I2C, MSTCTL, MSTCONTINUE, 1);
-+    g_assert(f->irq == true);
-+    g_assert(REG32_READ_FIELD(f->dev, FLEXCOMM_I2C, STAT, MSTSTATE) ==
-+             MSTSTATE_TXRDY);
-+    REG32_WRITE_FIELD_NOUPDATE(f->dev, FLEXCOMM_I2C, MSTCTL, MSTCONTINUE, 1);
-+    g_assert(f->irq == true);
-+    g_assert(REG32_READ_FIELD(f->dev, FLEXCOMM_I2C, STAT, MSTSTATE) ==
-+             MSTSTATE_NAKDAT);
-+    REG32_WRITE_FIELD_NOUPDATE(f->dev, FLEXCOMM_I2C, MSTCTL, MSTSTOP, 1);
-+
-+    /* write value to register */
-+    REG32_WRITE_FIELD(f->dev, FLEXCOMM_I2C, MSTDAT, DATA, PERIPH_ADDR);
-+    REG32_WRITE_FIELD_NOUPDATE(f->dev, FLEXCOMM_I2C, MSTCTL, MSTSTART, 1);
-+    g_assert(f->irq == true);
-+    g_assert(REG32_READ_FIELD(f->dev, FLEXCOMM_I2C, STAT, MSTSTATE) ==
-+             MSTSTATE_TXRDY);
-+    REG32_WRITE_FIELD(f->dev, FLEXCOMM_I2C, MSTDAT, DATA, REG_ADDR);
-+    REG32_WRITE_FIELD_NOUPDATE(f->dev, FLEXCOMM_I2C, MSTCTL, MSTCONTINUE, 1);
-+    g_assert(f->irq == true);
-+    g_assert(REG32_READ_FIELD(f->dev, FLEXCOMM_I2C, STAT, MSTSTATE) ==
-+             MSTSTATE_TXRDY);
-+    REG32_WRITE_FIELD(f->dev, FLEXCOMM_I2C, MSTDAT, DATA, REG_VALUE);
-+    REG32_WRITE_FIELD_NOUPDATE(f->dev, FLEXCOMM_I2C, MSTCTL, MSTCONTINUE, 1);
-+    g_assert(f->irq == true);
-+    g_assert(REG32_READ_FIELD(f->dev, FLEXCOMM_I2C, STAT, MSTSTATE) ==
-+             MSTSTATE_TXRDY);
-+    REG32_WRITE_FIELD_NOUPDATE(f->dev, FLEXCOMM_I2C, MSTCTL, MSTSTOP, 1);
-+    g_assert(f->irq == true);
-+    g_assert(REG32_READ_FIELD(f->dev, FLEXCOMM_I2C, STAT, MSTSTATE) ==
-+             MSTSTATE_IDLE);
-+    REG32_WRITE_FIELD_NOUPDATE(f->dev, FLEXCOMM_I2C, MSTCTL, MSTSTOP, 1);
-+
-+    /* read value back from register */
-+    REG32_WRITE_FIELD(f->dev, FLEXCOMM_I2C, MSTDAT, DATA, PERIPH_ADDR);
-+    REG32_WRITE_FIELD_NOUPDATE(f->dev, FLEXCOMM_I2C, MSTCTL, MSTSTART, 1);
-+    g_assert(f->irq == true);
-+    g_assert(REG32_READ_FIELD(f->dev, FLEXCOMM_I2C, STAT, MSTSTATE) ==
-+             MSTSTATE_TXRDY);
-+    REG32_WRITE_FIELD(f->dev, FLEXCOMM_I2C, MSTDAT, DATA, REG_ADDR);
-+    REG32_WRITE_FIELD_NOUPDATE(f->dev, FLEXCOMM_I2C, MSTCTL, MSTCONTINUE, 1);
-+    g_assert(f->irq == true);
-+    g_assert(REG32_READ_FIELD(f->dev, FLEXCOMM_I2C, STAT, MSTSTATE) ==
-+             MSTSTATE_TXRDY);
-+    REG32_WRITE_FIELD(f->dev, FLEXCOMM_I2C, MSTDAT, DATA, (PERIPH_ADDR + 1));
-+    REG32_WRITE_FIELD_NOUPDATE(f->dev, FLEXCOMM_I2C, MSTCTL, MSTSTART, 1);
-+    g_assert(f->irq == true);
-+    g_assert(REG32_READ_FIELD(f->dev, FLEXCOMM_I2C, STAT, MSTSTATE) ==
-+             MSTSTATE_RXRDY);
-+    REG32_WRITE_FIELD_NOUPDATE(f->dev, FLEXCOMM_I2C, MSTCTL, MSTCONTINUE, 1);
-+    g_assert(REG32_READ_FIELD(f->dev, FLEXCOMM_I2C, MSTDAT, DATA) == REG_VALUE);
-+    REG32_WRITE_FIELD_NOUPDATE(f->dev, FLEXCOMM_I2C, MSTCTL, MSTSTOP, 1);
-+
-+    /*
-+     * Check that the master ended the transaction (i.e. i2c_end_transfer was
-+     * called). If the master does not properly end the transaction this would
-+     * be seen as a restart and it would not be NACKed.
-+     */
-+    REG32_WRITE_FIELD(f->dev, FLEXCOMM_I2C, MSTDAT, DATA, INVALID_ADDR);
-+    REG32_WRITE_FIELD_NOUPDATE(f->dev, FLEXCOMM_I2C, MSTCTL, MSTSTART, 1);
-+
-+    g_assert(REG32_READ_FIELD(f->dev, FLEXCOMM_I2C, STAT, MSTSTATE) ==
-+             MSTSTATE_NAKADR);
-+    g_assert(f->irq == true);
-+    REG32_WRITE_FIELD_NOUPDATE(f->dev, FLEXCOMM_I2C, MSTCTL, MSTSTOP, 1);
-+
-+    /* Disable interrupts */
-+    REG32_WRITE_FIELD(f->dev, FLEXCOMM_I2C, INTENCLR, MSTPENDINGCLR, 1);
-+    g_assert(f->irq == false);
++    return ret;
 +}
 +
-+/* mock-up */
-+const PropertyInfo qdev_prop_chr;
-+
-+int main(int argc, char **argv)
++static void flexcomm_usart_rx(void *opaque, const uint8_t *buf, int size)
 +{
-+    qemu_init_main_loop(&error_abort);
++    FlexcommState *s = opaque;
 +
-+    g_test_init(&argc, &argv, NULL);
++    if (!RF_WR(s, CFG, ENABLE) || !RF_WR(s, FIFOCFG, ENABLERX)) {
++        return;
++    }
 +
-+    /* Initialize object types. */
-+    sysbus_mock_init();
-+    module_call_init(MODULE_INIT_QOM);
-+    qemu_add_opts(&qemu_chardev_opts);
++    trace_flexcomm_usart_rx(DEVICE(s)->id);
 +
-+    g_test_add("/flexcomm-i2c/master", TestFixture,
-+               (gconstpointer)(1 << FLEXCOMM_FUNC_I2C),
-+               set_up, master_test, tear_down);
++    while (!fifo32_is_full(&s->rx_fifo) && size) {
++        fifo32_push(&s->rx_fifo, *buf++);
++        size--;
++    }
 +
-+    return g_test_run();
++    flexcomm_usart_irq_update(s);
 +}
++
++static MemTxResult flexcomm_usart_reg_read(void *opaque, FlexcommState *s,
++                                          int f, hwaddr addr, uint64_t *data,
++                                          unsigned size)
++{
++    MemTxResult ret = MEMTX_OK;
++
++    if (!reg32_aligned_access(addr, size)) {
++        ret = MEMTX_ERROR;
++        goto out;
++    }
++
++    switch (addr) {
++    case A_FLEXCOMM_USART_FIFORD:
++    {
++        if (!fifo32_is_empty(&s->rx_fifo)) {
++            *data = fifo32_pop(&s->rx_fifo);
++            qemu_chr_fe_accept_input(&s->chr);
++        }
++        break;
++    }
++    case A_FLEXCOMM_USART_FIFORDNOPOP:
++    {
++        if (!fifo32_is_empty(&s->rx_fifo)) {
++            *data = fifo32_peek(&s->rx_fifo);
++        }
++        break;
++    }
++    default:
++        *data = s->regs[addr / 4];
++        break;
++    }
++
++    flexcomm_usart_irq_update(s);
++
++out:
++    trace_flexcomm_usart_reg_read(DEVICE(s)->id, reg_names[addr], addr, *data);
++    return ret;
++}
++
++static MemTxResult flexcomm_usart_reg_write(void *opaque, FlexcommState *s,
++                                           int f, hwaddr addr, uint64_t value,
++                                           unsigned size)
++{
++    static FLEXCOMM_USART_REGISTER_WMASK_ARRAY(wmask);
++
++    trace_flexcomm_usart_reg_write(DEVICE(s)->id, reg_names[addr / 4],
++                                   addr, value);
++
++    if (!reg32_aligned_access(addr, size)) {
++        return MEMTX_ERROR;
++    }
++
++    value = value & wmask[addr / 4];
++
++    switch (addr) {
++    case A_FLEXCOMM_USART_INTENCLR:
++    {
++        s->regs[addr / 4] = value;
++        REG(s, INTENSET) &= ~REG(s, INTENCLR);
++        break;
++    }
++    case A_FLEXCOMM_USART_FIFOCFG:
++    {
++        s->regs[addr / 4] = value;
++        if (RF_WR(s, FIFOCFG, EMPTYRX)) {
++            RF_RD(s, FIFOCFG, EMPTYRX, 0);
++            fifo32_reset(&s->rx_fifo);
++        }
++        if (RF_WR(s, FIFOCFG, EMPTYTX)) {
++            RF_RD(s, FIFOCFG, EMPTYTX, 0);
++            fifo32_reset(&s->tx_fifo);
++        }
++        break;
++    }
++    case A_FLEXCOMM_USART_FIFOSTAT:
++    {
++        bool rxerr = RF_WR(s, FIFOSTAT, RXERR);
++        bool txerr = RF_WR(s, FIFOSTAT, TXERR);
++
++        s->regs[addr / 4] = value;
++
++        if (rxerr && RF_WR(s, FIFOSTAT, RXERR)) {
++            rxerr = false;
++        }
++        if (txerr && RF_WR(s, FIFOSTAT, TXERR)) {
++            txerr = false;
++        }
++
++        RF_RD(s, FIFOSTAT, RXERR, rxerr);
++        RF_RD(s, FIFOSTAT, TXERR, txerr);
++        break;
++    }
++    case A_FLEXCOMM_USART_FIFOINTENSET:
++    {
++        REG(s, FIFOINTENSET) |= value;
++        break;
++    }
++    case A_FLEXCOMM_USART_FIFOINTENCLR:
++    {
++        s->regs[addr / 4] = value;
++        REG(s, FIFOINTENSET) &= ~value;
++        break;
++    }
++    case A_FLEXCOMM_USART_FIFOWR:
++    {
++        s->regs[addr / 4] = value;
++
++        if (!fifo32_is_full(&s->tx_fifo)) {
++            fifo32_push(&s->tx_fifo, REG(s, FIFOWR));
++        }
++
++        if (!RF_WR(s, CFG, ENABLE) || !RF_WR(s, FIFOCFG, ENABLETX)) {
++            break;
++        }
++
++        while (!fifo32_is_empty(&s->tx_fifo)) {
++            uint32_t val32 = fifo32_pop(&s->tx_fifo);
++            uint8_t val8 = val32 & 0xff;
++
++            trace_flexcomm_usart_tx(DEVICE(s)->id);
++            qemu_chr_fe_write_all(&s->chr, &val8, sizeof(val8));
++        }
++        break;
++    }
++    case A_FLEXCOMM_USART_CFG:
++    {
++        s->regs[addr / 4] = value;
++        break;
++    }
++    default:
++        s->regs[addr / 4] = value;
++        break;
++    }
++
++    flexcomm_usart_irq_update(s);
++
++    return MEMTX_OK;
++}
++
++static void flexcomm_usart_select(void *opaque, FlexcommState *s, int f,
++                                 bool set)
++{
++    if (set) {
++        qemu_chr_fe_set_handlers(&s->chr, flexcomm_usart_rx_space,
++                             flexcomm_usart_rx, NULL, NULL,
++                             s, NULL, true);
++        flexcomm_usart_reset(s);
++        fifo32_create(&s->rx_fifo, RF_WR(s, FIFOSIZE, FIFOSIZE));
++        fifo32_create(&s->tx_fifo, RF_WR(s, FIFOSIZE, FIFOSIZE));
++    } else {
++        qemu_chr_fe_set_handlers(&s->chr, NULL, NULL, NULL, NULL, NULL, NULL,
++                                 false);
++        fifo32_destroy(&s->rx_fifo);
++        fifo32_destroy(&s->tx_fifo);
++    }
++}
++
++static const FlexcommFunctionOps flexcomm_usart_ops = {
++    .select = flexcomm_usart_select,
++    .reg_read = flexcomm_usart_reg_read,
++    .reg_write = flexcomm_usart_reg_write,
++};
++
++void flexcomm_usart_init(FlexcommState *s)
++{
++}
++
++void flexcomm_usart_register(void)
++{
++    Error *err = NULL;
++
++    if (!flexcomm_register_ops(FLEXCOMM_FUNC_USART, NULL,
++                               &flexcomm_usart_ops, &err)) {
++        error_report_err(err);
++    }
++}
+diff --git a/hw/misc/flexcomm.c b/hw/misc/flexcomm.c
+index e8d8816cfe..94847084a3 100644
+--- a/hw/misc/flexcomm.c
++++ b/hw/misc/flexcomm.c
+@@ -22,6 +22,7 @@
+ #include "trace.h"
+ #include "hw/regs.h"
+ #include "hw/misc/flexcomm.h"
++#include "hw/char/flexcomm_usart.h"
+ 
+ #define REG(s, reg) (s->regs[R_FLEXCOMM_##reg])
+ #define RF_WR(s, reg, field, val) \
+@@ -206,6 +207,7 @@ static const MemoryRegionOps flexcomm_ops = {
+ static Property flexcomm_properties[] = {
+     DEFINE_PROP_UINT32("functions", FlexcommState, functions,
+                        FLEXCOMM_FULL),
++    DEFINE_PROP_CHR("chardev", FlexcommState, chr),
+     DEFINE_PROP_END_OF_LIST(),
+ };
+ 
+@@ -224,6 +226,11 @@ static void flexcomm_init(Object *obj)
+ 
+ static void flexcomm_realize(DeviceState *dev, Error **errp)
+ {
++    FlexcommState *s = FLEXCOMM(dev);
++
++    if (has_function(s, FLEXCOMM_FUNC_USART)) {
++        flexcomm_usart_init(s);
++    }
+ }
+ 
+ static void flexcomm_class_init(ObjectClass *klass, void *data)
+@@ -233,6 +240,8 @@ static void flexcomm_class_init(ObjectClass *klass, void *data)
+     dc->reset = flexcomm_reset;
+     device_class_set_props(dc, flexcomm_properties);
+     dc->realize = flexcomm_realize;
++
++    flexcomm_usart_register();
+ }
+ 
+ static const TypeInfo flexcomm_types[] = {
+diff --git a/hw/arm/svd/meson.build b/hw/arm/svd/meson.build
+index 4b0bbbbbdc..2bde34d15b 100644
+--- a/hw/arm/svd/meson.build
++++ b/hw/arm/svd/meson.build
+@@ -4,4 +4,7 @@ if get_option('mcux-soc-svd')
+   run_target('svd-flexcomm', command: svd_gen_header +
+     [ '-i', rt595, '-o', '@SOURCE_ROOT@/include/hw/arm/svd/flexcomm.h',
+     '-p', 'FLEXCOMM0', '-t', 'FLEXCOMM'])
++  run_target('svd-flexcomm-usart', command: svd_gen_header +
++    [ '-i', rt595, '-o', '@SOURCE_ROOT@/include/hw/arm/svd/flexcomm_usart.h',
++    '-p', 'USART0', '-t', 'FLEXCOMM_USART'])
+ endif
+diff --git a/hw/char/meson.build b/hw/char/meson.build
+index e5b13b6958..8f8c17ae66 100644
+--- a/hw/char/meson.build
++++ b/hw/char/meson.build
+@@ -39,3 +39,4 @@ system_ss.add(when: 'CONFIG_GOLDFISH_TTY', if_true: files('goldfish_tty.c'))
+ specific_ss.add(when: 'CONFIG_TERMINAL3270', if_true: files('terminal3270.c'))
+ specific_ss.add(when: 'CONFIG_VIRTIO', if_true: files('virtio-serial-bus.c'))
+ specific_ss.add(when: 'CONFIG_PSERIES', if_true: files('spapr_vty.c'))
++system_ss.add(when: 'CONFIG_FLEXCOMM', if_true: files('flexcomm_usart.c'))
+diff --git a/hw/char/trace-events b/hw/char/trace-events
+index 8875758076..19fcf1f832 100644
+--- a/hw/char/trace-events
++++ b/hw/char/trace-events
+@@ -125,3 +125,12 @@ xen_console_unrealize(unsigned int idx) "idx %u"
+ xen_console_realize(unsigned int idx, const char *chrdev) "idx %u chrdev %s"
+ xen_console_device_create(unsigned int idx) "idx %u"
+ xen_console_device_destroy(unsigned int idx) "idx %u"
++
++# flexcomm_usart.c
++flexcomm_usart_reg_read(const char *id, const char *reg_name, uint32_t addr, uint32_t val) " %s: %s[0x%04x] -> 0x%08x"
++flexcomm_usart_reg_write(const char *id, const char *reg_name, uint32_t addr, uint32_t val) "%s: %s[0x%04x] <- 0x%08x"
++flexcomm_usart_rx_space(const char *id, uint32_t rx) "%s: %d"
++flexcomm_usart_rx(const char *id) "%s"
++flexcomm_usart_tx(const char *id) "%s"
++flexcomm_usart_fifostat(const char *id, uint32_t fifostat, uint32_t fifoinstat) "%s: %08x %08x"
++flexcomm_usart_irq(const char *id, bool irq, bool fifoirqs, bool perirqs, bool enabled) "%s: %d %d %d %d"
 diff --git a/tests/unit/meson.build b/tests/unit/meson.build
-index 4c22cb3ccc..3491e2003b 100644
+index 4ccb15404d..70e816c034 100644
 --- a/tests/unit/meson.build
 +++ b/tests/unit/meson.build
-@@ -160,6 +160,16 @@ if have_system
-       meson.project_source_root() / 'hw/i2c/flexcomm_i2c.c',
-       meson.project_source_root() / 'hw/i2c/core.c',
-     ],
-+    'test-flexcomm-i2c': [
+@@ -143,10 +143,11 @@ if have_system
+     'test-vmstate': [migration, io],
+     'test-yank': ['socket-helpers.c', qom, io, chardev],
+     'test-flexcomm': [
+-      hwcore,
 +      hwcore, chardev, qom, migration,
-+      meson.project_source_root() / 'hw/core/gpio.c',
-+      meson.project_source_root() / 'tests/unit/sysbus-mock.c',
-+      meson.project_source_root() / 'hw/misc/flexcomm.c',
+       meson.project_source_root() / 'hw/core/gpio.c',
+       meson.project_source_root() / 'tests/unit/sysbus-mock.c',
+       meson.project_source_root() / 'hw/misc/flexcomm.c',
 +      meson.project_source_root() / 'hw/char/flexcomm_usart.c',
-+      meson.project_source_root() / 'hw/i2c/flexcomm_i2c.c',
-+      meson.project_source_root() / 'hw/i2c/core.c',
-+      'i2c_tester.c',
-+    ],
+      ],
    }
    if config_host_data.get('CONFIG_INOTIFY1')
-     tests += {'test-util-filemonitor': []}
 -- 
 2.46.0.184.g6999bdac58-goog
 

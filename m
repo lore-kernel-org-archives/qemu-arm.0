@@ -1,103 +1,104 @@
-Received: by 2002:a17:504:9188:b0:1be9:327d:8ee3 with SMTP id i8csp1490514njf;
-        Sat, 17 Aug 2024 03:27:33 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUJDxGPsGIevSjI0pGAQy+wsPEBUQLxMz58PDbLB7D7IN1i1GbDbYp6578QjUVe8IWYiHUUw5Z/TrygWq4esYhopz/2BFG3
-X-Google-Smtp-Source: AGHT+IGHrBwv+SR3jLqSsVas2h9F/LUeJ4xo3FVO9GEPcx2rluvnTiKHwhbnfteHPcSgi7ZkRNom
-X-Received: by 2002:a05:6214:418c:b0:6b5:752e:a33a with SMTP id 6a1803df08f44-6bf7ce9d487mr47478206d6.57.1723890453628;
-        Sat, 17 Aug 2024 03:27:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1723890453; cv=none;
+Received: by 2002:a17:504:9188:b0:1be9:327d:8ee3 with SMTP id i8csp1490539njf;
+        Sat, 17 Aug 2024 03:27:40 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXmTZJEm37ONKWM5QwRzm8fkNMGAJ/eYcuW0leLzoAS1u0EvYQ5+nGTXE5sh2caKK6yJC7wq+zq2c0POQzZqFxP14U0SfwX
+X-Google-Smtp-Source: AGHT+IFj2/JThWRyBV+mW9eUSezi0A3/1KjCGg/9x3MErLyHpO9tQtRR6y27E56BsO1LGLMLN4P1
+X-Received: by 2002:a05:6214:5991:b0:6bf:6b15:a6d9 with SMTP id 6a1803df08f44-6bf7ce90d2emr84040506d6.51.1723890460182;
+        Sat, 17 Aug 2024 03:27:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1723890460; cv=none;
         d=google.com; s=arc-20160816;
-        b=QivJsToXfje0jLPXmsduJwYcWHNLzxqawLgK6WAKjWWLxUGgUq2bslU5cKrHRhC8A7
-         FAc4f38I9vJmcUXMnTnU9LEj4zZ+pU4FU1KoXLs2Y1SJ0WHIr08VvgTFALUeSOAP26pr
-         iUh5ljK+2cR3W6HCqPm5dAPSA7Guh008GmX6JL4u/U/PSb808YVSunJpyk/StYOdM36/
-         5E3w9M7VxazAXbh3D9hHncSfbg232YB5fLlnd0vhVKwTQVx1ckfu40/kpYTJMz4Yz1sh
-         9b/p6fuquRxZTrvrs7KSS34X9U/ln0TtCySk5BwOqABHOeKL7jIUmdRv1sJXngRSrybq
-         GLSw==
+        b=fuL5RQPnNXjU0Z3pZNnDnFASXEe9L0btlifW8q4rzBLQ5FGx7Wkh4U1QyauswcIVVj
+         my334aHWr4TGOXQtxIPnen0jiJd8+0Iw7uuiR/O/NG23xo3oKeZ2CoTDiPQ+PbMQHnBH
+         o7bBCSpKy+ZGRzMeseBk4Y87SR5Nmtf/P5CZEFKmlezYrZYRtwqs3016KjE8T0ZXRfWq
+         Fp0mzbVLu/Hb6tsyOFoXNjSLDF0K7BRi+YNz1lCNPLnjCJVPnUKELVgTt9mbUDXZ+2K0
+         CglUIUE33lntjjRUHN50yWPd3p0R7xF7Jp0zqYUrR93qEj4befpwDlxZymP5JqqucYtb
+         LOdg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
          :references:mime-version:in-reply-to:date:dkim-signature;
-        bh=EdDFjN4g9840m4ms6BWuG3c9OsfCPZptsfLAgkhTmCM=;
+        bh=gYjLNYCYgmz+RuXhYlYlEGx1aZzBL8oMAQt3ozgBUbM=;
         fh=pITIqJh0Z5XaT4QxI/zJAgHBZTuNeZPw20HbjxZRX7I=;
-        b=Ba+k0aKG0Q3PfpRKBAi9GGxuWHmjZ9DJxvsB0r1xjQEd+ct16aJ3QsrD3Yj94x1ZLB
-         NfuWN4+yWzZpTd+nfaqxGNxJA3BDiOYOpUY4yyIGdhc2FzxMYqZygr24BzENmdDt1ykA
-         hOiPWSj3Q2lbCtyAdbd49FXPM4drDsvh34pT6HVCXBocLfZHIphxMT4n74aL389n9Eqf
-         zgd9pN8cQ2d0E4JbRsWGtQjwMwHb1zvdZ7EkUS4JTqfUwbn9/Vj9q21hw/Gp71T+90LY
-         0wWJbQJKLuCGDZfRPsANG4vhwtRy3XyLn/B0q9hCOHJSmAASktvIsJwiu9UuePgXLMb2
-         kj9A==;
+        b=zWJ9w0a+Sy5SEk7uz3J28Po4cFtFeat3xrSDGH//7VTCZ7BH8Dwj603HLHi5mgxIP0
+         eUv6sZcYy9btvrb9pxGxEChv2bVG9c9PWfVS5STkZE8684v0oYhh38T+RUjslTTemEkD
+         3ECVr1/Z5/R6OmUyyvYlE3ZAe2+ZE3KK0dnzlgZH7Tgu9nAerdGJpCzYrXhGKnLpsQ2U
+         btI0PSqT8apC9FjoW0uXQw5c3Cv+jUMCbf6P0jGIFSDmdszCFSxLJm3MnNpQugMojGkY
+         R8/lSoEl1CKrywqfS23JorrjlwbTfqMFqvMJUWZCItQMHv46kmSQGscdC1y3gpOwnVRN
+         e4+Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=sfl4HVdf;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@google.com header.s=20230601 header.b=MOtUUm6N;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6bf6fec1119si59910526d6.212.2024.08.17.03.27.33
+        by mx.google.com with ESMTPS id 6a1803df08f44-6bf6fec0f88si62356836d6.288.2024.08.17.03.27.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 17 Aug 2024 03:27:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sat, 17 Aug 2024 03:27:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=sfl4HVdf;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@google.com header.s=20230601 header.b=MOtUUm6N;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sfGdV-000640-EP; Sat, 17 Aug 2024 06:26:17 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1sfGeI-0007xO-8c; Sat, 17 Aug 2024 06:27:06 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <3w3rAZgUKCPYrYtgnemmejc.amkocks-Ypklmlels.mpe@flex--tavip.bounces.google.com>)
- id 1sfGdU-00060A-HK
- for qemu-arm@nongnu.org; Sat, 17 Aug 2024 06:26:16 -0400
-Received: from mail-yb1-xb4a.google.com ([2607:f8b0:4864:20::b4a])
+ <32HrAZgUKCg06n8v2t11tyr.p1z3rz7-qr8ry010t07.14t@flex--tavip.bounces.google.com>)
+ id 1sfGdy-0006U2-4n
+ for qemu-devel@nongnu.org; Sat, 17 Aug 2024 06:26:48 -0400
+Received: from mail-yw1-x1149.google.com ([2607:f8b0:4864:20::1149])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from
- <3w3rAZgUKCPYrYtgnemmejc.amkocks-Ypklmlels.mpe@flex--tavip.bounces.google.com>)
- id 1sfGdS-00036u-Op
- for qemu-arm@nongnu.org; Sat, 17 Aug 2024 06:26:16 -0400
-Received: by mail-yb1-xb4a.google.com with SMTP id
- 3f1490d57ef6-e118098bdb0so3057559276.0
- for <qemu-arm@nongnu.org>; Sat, 17 Aug 2024 03:26:12 -0700 (PDT)
+ <32HrAZgUKCg06n8v2t11tyr.p1z3rz7-qr8ry010t07.14t@flex--tavip.bounces.google.com>)
+ id 1sfGdt-0003IH-Cc
+ for qemu-devel@nongnu.org; Sat, 17 Aug 2024 06:26:42 -0400
+Received: by mail-yw1-x1149.google.com with SMTP id
+ 00721157ae682-6ad97b9a0fbso54639587b3.0
+ for <qemu-devel@nongnu.org>; Sat, 17 Aug 2024 03:26:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1723890372; x=1724495172; darn=nongnu.org;
+ d=google.com; s=20230601; t=1723890393; x=1724495193; darn=nongnu.org;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:from:to:cc:subject:date:message-id:reply-to;
- bh=EdDFjN4g9840m4ms6BWuG3c9OsfCPZptsfLAgkhTmCM=;
- b=sfl4HVdfERObjd8+7SaJGpmlnZvTEhfQzEvcKUsMDbu8skhuRRm9ojlPdRNmWkxg1L
- Bitq2SYyQJEpRvtRjJWZhhGOaSgSSKaaptzAtA2qDhrNpUYrLdB9SVqDCGTDX6SSqIwo
- AcfI8RUIniyBQa64XtLvgZpR8MQVhMQMf6Cu+PM+KCglGGnO1FC/iLi5edhI9uHK9KgH
- G+PPIDm8qUD/TNOH2e695pmVOqSDfktILPnYRVUMtcZ2Z1syOGoyHMqzCH8ldh8R5NP0
- Aq5loEGSuQvHt2XMIa5Zw4ysv0leh6SUyieB/fl7tkrn2LX/J/fOx93f6N/ruImpLj6T
- 1mOA==
+ bh=gYjLNYCYgmz+RuXhYlYlEGx1aZzBL8oMAQt3ozgBUbM=;
+ b=MOtUUm6NUoHEj82igudWWXZ2Yqe9b1KHRBGUzet6PvF11kBlVNiBNNdN45c9fRld4S
+ 73zQ25j22bfi0SIiahF0H5xEUL3EvC8KLcMtvDsVnyBcoJBGelkuhs7ZbHnzwehjz3SH
+ GN+S+FGAVFKlqZabSZn6NUFfadzJYpotpCVnDCeebaDamhqk/BqelW0aRKtmoSrxhCFm
+ AqK9FPRtnZdiXhXAfx3E89ZsjgYa6tWNaO2EnNSBhIdKXgP8VWdenat1yfxmMxcgaePJ
+ aUaIFBCoK20SpHdTzeKtTz3YsI42Tygc8Q9bvw2VFLN1BTgRTHYzqgbAIZu6tK2dsD8g
+ 5EeQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1723890372; x=1724495172;
+ d=1e100.net; s=20230601; t=1723890393; x=1724495193;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=EdDFjN4g9840m4ms6BWuG3c9OsfCPZptsfLAgkhTmCM=;
- b=qx+iooynBPobgbTJehAB0FMAJ2o5eXVSCCTzU4Yjf/dm65gpwm+bV1mLBo3F2wrss0
- Lt8faZTj4bJ10dcSmfE9J7LQ7XjtRyV+rVifxYQumPs+tCqzx9zkVySMgL+4TplWPWwf
- SUaLvnDbx+7vfT/w+o8qZQVlXkGnC9X9mgxrHlDrgXZqWsnkbQIEdXusAFww7f9Wx/BA
- 30Ifmus7vbVw3wDqXXYPQ76lHmG80tBqsr3mFSi4MR89MwYZa2o/MITdKzdXJoP/FLxf
- pAjKmB/2340h+oze4BzCrMXKKRAMMi1MOp9AVKhmTSm0dtK6CsdjjCliTAxrAgYbBUcl
- +/hw==
-X-Gm-Message-State: AOJu0YzM0Gqvihv5QpCtsh1R/JSEZpETWbN8uxljfjTXs3OMUofkEt1U
- xFpQuCmTJJZvm4PxVf7Kc7TJDpNlj9/Jx4rIoA7+08JoJ1NU/n2JLjQvPRFr/+TMQAQ2DOxLnQ=
- =
+ bh=gYjLNYCYgmz+RuXhYlYlEGx1aZzBL8oMAQt3ozgBUbM=;
+ b=PYqRW/r4IMONHwKxizcWiiDBJE66sNy9UdIuqBUPra8J25hC5qylvMnBd/YPQCi7Ie
+ lnpEwIwElsG1QGw04E1ACKF84FRLbhimSQB9koBTfJ19HE4Xkh9XR4aeIEBdGNy79XBG
+ jPx3jWsu0lteidpGRcqggTagIzy4KUSbRa/5MvocKpAmSfO5YcVXXE4uxicpa2Wu61BC
+ Tu10PJdRmr/z0lTgFTcucAIggv2Chu/SmUm4vKjRpgt+MXLK7UMA8eVofR+zTog0ttno
+ X9RGRhNKDSNElhuL9iLyLdZdDl5alL7uH1la85Z2D8ghALdXvUF6Hus9SMtOuzjgtoxo
+ AQwA==
+X-Gm-Message-State: AOJu0YzOOpjaHuWXqukNnkvzOp05FQEnUf0cFmAnT7VAQXkxKIpnrDNO
+ o9EdYk3OzaHXgY28R4MnkFX8Ydg6aJeWjL6u/ERtGcRWTQAwJrfrBu/R/fwh41PATT8ggZMmeEP
+ iZPKgImJJEZBTdM+t3BRZpmm8bwDzCKE5ubsq4J/XLHTMrPILlzGUvp53em2IHzSZwQbpQoJ5gF
+ UuQBi1T7sRCDGE9/wMIWe7cUIZNg==
 X-Received: from warp10.c.googlers.com ([fda3:e722:ac3:cc00:24:72f4:c0a8:750])
- (user=tavip job=sendgmr) by 2002:a25:d311:0:b0:e0b:6bb1:fac with
- SMTP id
- 3f1490d57ef6-e1180f677afmr53534276.9.1723890371752; Sat, 17 Aug 2024 03:26:11
- -0700 (PDT)
-Date: Sat, 17 Aug 2024 03:25:45 -0700
+ (user=tavip job=sendgmr) by 2002:a05:690c:2b13:b0:673:b39a:92f2
+ with SMTP id
+ 00721157ae682-6b1baeae4ccmr303877b3.7.1723890392821; Sat, 17 Aug 2024
+ 03:26:32 -0700 (PDT)
+Date: Sat, 17 Aug 2024 03:25:56 -0700
 In-Reply-To: <20240817102606.3996242-1-tavip@google.com>
 Mime-Version: 1.0
 References: <20240817102606.3996242-1-tavip@google.com>
 X-Mailer: git-send-email 2.46.0.184.g6999bdac58-goog
-Message-ID: <20240817102606.3996242-3-tavip@google.com>
-Subject: [RFC PATCH v2 02/23] tests/unit: add fifo test
+Message-ID: <20240817102606.3996242-14-tavip@google.com>
+Subject: [RFC PATCH v2 13/23] test/unit: add i2c-tester
 From: Octavian Purdila <tavip@google.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, stefanst@google.com, pbonzini@redhat.com, 
@@ -105,9 +106,9 @@ Cc: qemu-arm@nongnu.org, stefanst@google.com, pbonzini@redhat.com,
  alistair@alistair23.me, berrange@redhat.com, philmd@linaro.org, 
  jsnow@redhat.com, crosa@redhat.com
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b4a;
- envelope-from=3w3rAZgUKCPYrYtgnemmejc.amkocks-Ypklmlels.mpe@flex--tavip.bounces.google.com;
- helo=mail-yb1-xb4a.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1149;
+ envelope-from=32HrAZgUKCg06n8v2t11tyr.p1z3rz7-qr8ry010t07.14t@flex--tavip.bounces.google.com;
+ helo=mail-yw1-x1149.google.com
 X-Spam_score_int: -95
 X-Spam_score: -9.6
 X-Spam_bar: ---------
@@ -117,41 +118,42 @@ X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01,
  USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: QD+h/fVAF+8D
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: MnDSBwJkbfy1
 
-Add a simple FIFO unit test that test wrap around and push, pop and
-peek for both fifo8 and fifo32.
+Add a simple i2c peripheral to be used for testing I2C device
+models. The peripheral has a fixed number of registers that can be
+read and written.
 
 Signed-off-by: Octavian Purdila <tavip@google.com>
 ---
- tests/unit/test-fifo.c | 97 ++++++++++++++++++++++++++++++++++++++++++
- tests/unit/meson.build |  1 +
- 2 files changed, 98 insertions(+)
- create mode 100644 tests/unit/test-fifo.c
+ tests/unit/i2c_tester.h |  30 +++++++++++
+ tests/unit/i2c_tester.c | 108 ++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 138 insertions(+)
+ create mode 100644 tests/unit/i2c_tester.h
+ create mode 100644 tests/unit/i2c_tester.c
 
-diff --git a/tests/unit/test-fifo.c b/tests/unit/test-fifo.c
+diff --git a/tests/unit/i2c_tester.h b/tests/unit/i2c_tester.h
 new file mode 100644
-index 0000000000..3e6f007229
+index 0000000000..14cf2ead36
 --- /dev/null
-+++ b/tests/unit/test-fifo.c
-@@ -0,0 +1,97 @@
++++ b/tests/unit/i2c_tester.h
+@@ -0,0 +1,30 @@
 +/*
-+ * QEMU FIFO testing
 + *
-+ * Copyright (C) 2024 Google LLC
++ * Copyright (c) 2024 Google LLC
 + *
 + * SPDX-License-Identifier: GPL-2.0-or-later
 + *
@@ -159,104 +161,140 @@ index 0000000000..3e6f007229
 + * See the COPYING file in the top-level directory.
 + */
 +
-+#include "qemu/osdep.h"
++#ifndef TESTS_UNIT_I2C_TESTER_H
++#define TESTS_UNIT_I2C_TESTER_H
 +
-+#include "qemu/fifo8.h"
-+#include "qemu/fifo32.h"
++#include "qemu/osdep.h"
++#include "hw/i2c/i2c.h"
++#include "hw/irq.h"
++
++#define I2C_TESTER_NUM_REGS    0x31
++
++#define TYPE_I2C_TESTER "i2c_tester"
++#define I2C_TESTER(obj) OBJECT_CHECK(I2cTesterState, (obj), TYPE_I2C_TESTER)
 +
 +typedef struct {
-+    Fifo8 fifo8;
-+    Fifo32 fifo32;
-+} TestFixture;
++    I2CSlave i2c;
++    bool set_reg_idx;
++    uint8_t reg_idx;
++    uint8_t regs[I2C_TESTER_NUM_REGS];
++} I2cTesterState;
 +
-+#define FIFO_SIZE 13
-+
++#endif /* TESTS_UNIT_I2C_TESTER_H */
+diff --git a/tests/unit/i2c_tester.c b/tests/unit/i2c_tester.c
+new file mode 100644
+index 0000000000..2e4314fe6e
+--- /dev/null
++++ b/tests/unit/i2c_tester.c
+@@ -0,0 +1,108 @@
 +/*
-+ * Test fixture initialization.
++ * Simple I2C peripheral for testing I2C device models.
++ *
++ * Copyright (c) 2024 Google LLC
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ *
++ * This work is licensed under the terms of the GNU GPL, version 2 or later.
++ * See the COPYING file in the top-level directory.
 + */
-+static void set_up(TestFixture *f, gconstpointer data)
-+{
-+    int n = (uintptr_t) data;
 +
-+    fifo8_create(&f->fifo8, n);
-+    fifo32_create(&f->fifo32, n);
++#include "i2c_tester.h"
++#include "qemu/log.h"
++#include "qemu/module.h"
++
++static void i2c_tester_reset(DeviceState *ds)
++{
++    I2cTesterState *s = I2C_TESTER(ds);
++
++    s->set_reg_idx = false;
++    s->reg_idx     = 0;
++    memset(s->regs, 0, I2C_TESTER_NUM_REGS);
 +}
 +
-+static void tear_down(TestFixture *f, gconstpointer user_data)
++static int i2c_tester_event(I2CSlave *i2c, enum i2c_event event)
 +{
-+    fifo8_destroy(&f->fifo8);
-+    fifo32_destroy(&f->fifo32);
-+}
++    I2cTesterState *s = I2C_TESTER(i2c);
 +
-+static void test_push_pop_batch(TestFixture *f, int n)
-+{
-+    uint8_t i;
-+
-+    /* push and check peek */
-+    for (i = 0; i < n; i++) {
-+        uint8_t val8 = i;
-+        uint32_t val32 = i | ((i + 1) << 8) | ((i + 2) << 16) | ((i + 3) << 24);
-+
-+        fifo8_push(&f->fifo8, val8);
-+        if (i == 0) {
-+            g_assert(*fifo8_peek_buf(&f->fifo8, 1, NULL) == val8);
-+        }
-+
-+        fifo32_push(&f->fifo32, val32);
-+        if (i == 0) {
-+            g_assert(fifo32_peek(&f->fifo32) == val32);
-+        }
++    if (event == I2C_START_SEND) {
++        s->set_reg_idx = true;
 +    }
 +
-+    /* check peek and pop */
-+    for (i = 0; i < n; i++) {
-+        uint8_t val8 = i;
-+        uint32_t val32 = i | ((i + 1) << 8) | ((i + 2) << 16) | ((i + 3) << 24);
-+
-+        g_assert(*fifo8_peek_buf(&f->fifo8, 1, NULL) == val8);
-+        g_assert(fifo8_pop(&f->fifo8) == val8);
-+
-+        g_assert(fifo32_peek(&f->fifo32) == val32);
-+        g_assert(fifo32_pop(&f->fifo32) == val32);
-+    }
++    return 0;
 +}
 +
-+/* max n should be less then 256 - 3 */
-+static void wrap_around_test(TestFixture *f, gconstpointer user_data)
++static uint8_t i2c_tester_rx(I2CSlave *i2c)
 +{
-+    int n = (uintptr_t) user_data;
-+    const int cycles = 3;
++    I2cTesterState *s = I2C_TESTER(i2c);
 +
-+    for (int i = 0; i < cycles; i++) {
-+        test_push_pop_batch(f, n / 2 + 1);
++    if (s->reg_idx >= I2C_TESTER_NUM_REGS) {
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: invalid reg 0x%02x\n", __func__,
++                      s->reg_idx);
++        return I2C_NACK;
 +    }
++
++    return s->regs[s->reg_idx];
 +}
 +
-+/* mock-ups */
-+void *vmstate_info_buffer;
-+uint32_t vmstate_info_uint32;
-+
-+int main(int argc, char **argv)
++static int i2c_tester_tx(I2CSlave *i2c, uint8_t data)
 +{
-+    g_test_init(&argc, &argv, NULL);
++    I2cTesterState *s = I2C_TESTER(i2c);
 +
-+    g_test_add("/fifo/wrap-around", TestFixture, (gconstpointer)FIFO_SIZE,
-+               set_up, wrap_around_test, tear_down);
++    if (s->set_reg_idx) {
++        /* Setting the register in which the operation will be done. */
++        s->reg_idx = data;
++        s->set_reg_idx = false;
++        return 0;
++    }
 +
-+    return g_test_run();
++    if (s->reg_idx >= I2C_TESTER_NUM_REGS) {
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: invalid reg 0x%02x\n", __func__,
++                      s->reg_idx);
++        return I2C_NACK;
++    }
++
++    /* Write reg data. */
++    s->regs[s->reg_idx] = data;
++
++    return 0;
 +}
-diff --git a/tests/unit/meson.build b/tests/unit/meson.build
-index 26c109c968..397f2503f8 100644
---- a/tests/unit/meson.build
-+++ b/tests/unit/meson.build
-@@ -47,6 +47,7 @@ tests = {
-   'test-logging': [],
-   'test-qapi-util': [],
-   'test-interval-tree': [],
-+  'test-fifo': [],
- }
- 
- if have_system or have_tools
++
++static void i2c_tester_init(Object *obj)
++{
++}
++
++static void i2c_tester_realize(DeviceState *ds, Error **errp)
++{
++}
++
++static void i2c_tester_unrealize(DeviceState *dev)
++{
++}
++
++static void i2c_tester_class_init(ObjectClass *oc, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(oc);
++    I2CSlaveClass *isc = I2C_SLAVE_CLASS(oc);
++
++    dc->reset = i2c_tester_reset;
++    dc->realize   = i2c_tester_realize;
++    dc->unrealize = i2c_tester_unrealize;
++
++    isc->event = i2c_tester_event;
++    isc->recv = i2c_tester_rx;
++    isc->send = i2c_tester_tx;
++}
++
++static const TypeInfo i2c_tester_types[] = {
++    {
++        .name = TYPE_I2C_TESTER,
++        .parent = TYPE_I2C_SLAVE,
++        .instance_size = sizeof(I2cTesterState),
++        .instance_init = i2c_tester_init,
++        .class_init = i2c_tester_class_init
++    },
++};
++
++DEFINE_TYPES(i2c_tester_types);
 -- 
 2.46.0.184.g6999bdac58-goog
 

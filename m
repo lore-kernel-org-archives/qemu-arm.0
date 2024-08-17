@@ -1,104 +1,103 @@
-Received: by 2002:a17:504:9188:b0:1be9:327d:8ee3 with SMTP id i8csp1490590njf;
-        Sat, 17 Aug 2024 03:27:58 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWkotTnL+jpfJW3bKoWeg2HP3SVyy++ycyzCMWpjib+zYSY61Qy2+gTIAURx9qNdj4Tf7jul85zaDX4tMq9yHf7SzDMFTPT
-X-Google-Smtp-Source: AGHT+IF3O4mq0445x5g5wDnHSaEBK4V+45C0Nw9TwpOR2wue4wkArrE4osYHIb+Pd0zm6lCXp4Xi
-X-Received: by 2002:a05:6902:89:b0:e13:c683:adc2 with SMTP id 3f1490d57ef6-e13c683b037mr3544988276.13.1723890478394;
-        Sat, 17 Aug 2024 03:27:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1723890478; cv=none;
+Received: by 2002:a17:504:9188:b0:1be9:327d:8ee3 with SMTP id i8csp1490628njf;
+        Sat, 17 Aug 2024 03:28:11 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCW7eYz5+4pm6ucHG0TLUVO5uaqagr3dY63pqzFXOizNPSyyAcI3OGhGEKbCWZ806kE6HMFsOO3ZaaeOBAN3AC9ad0cIT5UM
+X-Google-Smtp-Source: AGHT+IEjOPeYt4+l+Hacltv2RsPiWtQ+jgzIpVsfB12W5f9dVuqkBEHQBi+VJEHpXmGRJvqp9jLa
+X-Received: by 2002:a05:620a:394f:b0:7a2:c89:a557 with SMTP id af79cd13be357-7a50693e042mr664306585a.27.1723890491514;
+        Sat, 17 Aug 2024 03:28:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1723890491; cv=none;
         d=google.com; s=arc-20160816;
-        b=ayOzh/HO1A5uK8cuD+d+94iACPUUjLzaRBbtc9C3lXN8duwJ8GcfY8nIjcjazSzerU
-         AXgO/n6PujTLUoWYAD5MncaaWF82hAOewg5FsjQ43XipTSuUGVIzoHz7IIhn7UO8tmUx
-         KFHqahUL9BVYmjlBpt5Ti6H8lhNyiGlKBU9AajDK+xlrjowouS/NcoXYqE6y0MLhrtUZ
-         cJqe+1WgprFJyF5GV8a8o6MWlndOnE/5nngO5FFb0zO1/AkYIittuHP8FXMakGJiapeV
-         N0VA4f8dRRUgjLqmEAp3ej8PLMHV2uz+29fvdrHbfxLJ34/PuBer9eRsNp5hoAv7IowR
-         nHpg==
+        b=vKR1tqiQ46mfIKIUeK0CyTWNH9RuBh/KPIOso1L5Kf/27ygFcpobUNBlV5ZaBy3lap
+         mNVlHT+rywCLj9gQ1VymE98rcWx5+r4SJPzedyubwf7iMT2e6sw8nyPzJarK11lUTvK5
+         2yuSac6kY3Ma+NWM16vNmAOXA/8GXOMmBBhCM8TKGBLtwQJigPcxed/25WVIAEhKgH0G
+         G040M1LeSc7oDq93EMxUehYZ4M9do18S6liy9XOP0aMPnNwjiKjdfU/Yg15/iImiBQmu
+         eyl4q4zhCZqchr6mGVWAPHiJi8ADDY9y6azss0gzGAZwClKvMHRwTZadkVAaphyXmbYV
+         7NSQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
          :references:mime-version:in-reply-to:date:dkim-signature;
-        bh=KtjXebZCukHMKlUFxpvcXxmLOzDPD6D4WbOdIn8vIcU=;
+        bh=fqPk7/AJWoz7WWqFkmab3kfOO4u17Y5v7IRV7UHR3Gc=;
         fh=pITIqJh0Z5XaT4QxI/zJAgHBZTuNeZPw20HbjxZRX7I=;
-        b=adm9U9AVyjNOrGFaCOjyoMnE61Az56ESxY7NgyMioAUfamzuNzp9n3wgsAiumfPZds
-         pBz3oH3ypTLdgYxJdNPtVFmfqDqOqYbaLN3Z+JeNIUmeWqVoyCI+XZRJuhDlMZ2Jz7iG
-         F2E2/PZK6bQS8df4P0YeI2hEEOpaqfFbq1PwZrGHTvgp4AMVT3zRjBSSGmBpWKmh07/p
-         kgFdj6IdElvTuOmha0yjVL9W3zK9xHuLylJhT0CnV9UuJOhluKSFL5/ap6iUobleJmmi
-         z59OQXlrCf0mqlfVRzu15gMLHljoJHLaFW4uszoO0jQxgHeyoDkPkwmWs9H3/W2W+juQ
-         mXFg==;
+        b=fC4nxqPyBu07qL37HsCZB7aj8VOv3EVaypN1Ht3YkDQ29l8NzqRa9Rsa0SFI3lXCdC
+         2h0I4vGfOMiGg9MKkS67bFlose2u3NdGvzUhZSsbfaJZntWDrAGlYSxnulnqQlmLWTPc
+         MViMdlyZCeTAkGbAM9tcHxLI2sNndmTA+k6TuM30kXN3dLSfwJyS6Xozxz7pysb2bjBf
+         2sKgfhA5FjfZIy9Ixx/XJE3Kbynipt2V5cqvbM/tUL0t6vInOe1nT3SIo/LSf/tL96n0
+         1WdRp7/5cIY/DiRb4UdrSC0n5Ec2IZWRCXpNs9jZFstPNPi6fWzQDmpSWQzx2X413tUB
+         ZWRg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b="L9Q09kf/";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@google.com header.s=20230601 header.b=wCYS+rUC;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4536a003bc6si58771351cf.196.2024.08.17.03.27.58
+        by mx.google.com with ESMTPS id af79cd13be357-7a4ff0eb753si611685385a.499.2024.08.17.03.28.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 17 Aug 2024 03:27:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sat, 17 Aug 2024 03:28:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b="L9Q09kf/";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@google.com header.s=20230601 header.b=wCYS+rUC;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sfGeT-0000Vn-So; Sat, 17 Aug 2024 06:27:17 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sfGeF-0007ka-QL; Sat, 17 Aug 2024 06:27:03 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <363rAZgUKCiAP6RELCKKCHA.8KIMAIQ-9ARAHJKJCJQ.KNC@flex--tavip.bounces.google.com>)
- id 1sfGeF-0007iS-FM
- for qemu-devel@nongnu.org; Sat, 17 Aug 2024 06:27:03 -0400
-Received: from mail-pf1-x449.google.com ([2607:f8b0:4864:20::449])
+ <30HrAZgUKCAUyf0nulttlqj.htrvjrz-fwrstslsz.twl@flex--tavip.bounces.google.com>)
+ id 1sfGdq-0006KR-2S
+ for qemu-arm@nongnu.org; Sat, 17 Aug 2024 06:26:39 -0400
+Received: from mail-yw1-x114a.google.com ([2607:f8b0:4864:20::114a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from
- <363rAZgUKCiAP6RELCKKCHA.8KIMAIQ-9ARAHJKJCJQ.KNC@flex--tavip.bounces.google.com>)
- id 1sfGeA-0003Nl-K8
- for qemu-devel@nongnu.org; Sat, 17 Aug 2024 06:27:02 -0400
-Received: by mail-pf1-x449.google.com with SMTP id
- d2e1a72fcca58-71274faa89aso1819569b3a.2
- for <qemu-devel@nongnu.org>; Sat, 17 Aug 2024 03:26:54 -0700 (PDT)
+ <30HrAZgUKCAUyf0nulttlqj.htrvjrz-fwrstslsz.twl@flex--tavip.bounces.google.com>)
+ id 1sfGdf-0003GH-1E
+ for qemu-arm@nongnu.org; Sat, 17 Aug 2024 06:26:33 -0400
+Received: by mail-yw1-x114a.google.com with SMTP id
+ 00721157ae682-6b3825748c2so18666377b3.2
+ for <qemu-arm@nongnu.org>; Sat, 17 Aug 2024 03:26:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1723890413; x=1724495213; darn=nongnu.org;
+ d=google.com; s=20230601; t=1723890384; x=1724495184; darn=nongnu.org;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:from:to:cc:subject:date:message-id:reply-to;
- bh=KtjXebZCukHMKlUFxpvcXxmLOzDPD6D4WbOdIn8vIcU=;
- b=L9Q09kf/bBhLkPCOk2HHXyiKH1etFP+PCKJ3SsW4AVsjOWztwiIfOw3jkrvpazxA8P
- oO7Z+N9OvZbtODgTgGYQIF9wDQ7Vb89D0eoBcklE2XLybSm07J2ACsUwk585YMQOtA1f
- bOCByKWV13Yqz2MZTycQRGkq6z29bknBrTqy/JlVrweq4lFCaGJWGfTpJmIyecxvdbe7
- IdN+5VboQijLHV++L23vWVKxMHYUO7ju2P6SjhwOAKPk4m1crg+pWkPqsvr68uEhnN58
- CVghk+54G0tTx+6us7l/2jVx2GB/ysxz8dBwt4c4+pRAy1/HVObxXziW/5OSKYqnxgy/
- 1Rcw==
+ bh=fqPk7/AJWoz7WWqFkmab3kfOO4u17Y5v7IRV7UHR3Gc=;
+ b=wCYS+rUCJZI9shHssadNVztWd340PmiU8Iatqiuno+u1SUxOLCotzWcQusN1XCJJCJ
+ xG5SsfV8nqDo4PQ9Gub9MUUvzsdK82esbYwJHh598FluX74DWOccbfL4LJGyqOHo8AX9
+ XV27zF8YDF0ik2rHtVyx3JK05c2oc3rCQQeTMQ9JUXZU8l1DByPitbWdxeaWsOTt7CJJ
+ n+PmQj0m7VkmkyxhMLCAC4ItRfK+UuVH38o/EBo/8mfQ0zPQ+lOBuapWKqiKUUQ3PubS
+ zarniYAeFIFBw40zfRBIeVcUSYbyLZRQ7lROGhRxik9rlWVC4VCOMltDaHw5OdwHkfBL
+ E1cQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1723890413; x=1724495213;
+ d=1e100.net; s=20230601; t=1723890384; x=1724495184;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=KtjXebZCukHMKlUFxpvcXxmLOzDPD6D4WbOdIn8vIcU=;
- b=Relo7J6ERCRr8yTBARq2OrxguDnIOznM/QGQdRj+rrD4i0sx2JAH8CPq239JaKpDco
- xVwfrt8clU5T7yIkkb4jUBsO0wOnY3L//56EcNd0cUxo80H1Jn/gkz2J+qdEcmJsOve/
- fvL+oPUZzItogr1P/Z42itzV6gx6GYMIQf6jn07aP8EifJ6NysB0MkbluLBosfiJP7Dn
- jjbB337aq8rmah+u496/FPrZhThMM/TwylDGw1+p6JgxIW/NRSu0HJ34R/0dYluobJWS
- L6zTvhywOWLzQsWGL5lU0C9FizGR9YgQ8O6p7AWMgkIGMinTjKjCTGHoOlKUkvKnt9O9
- j2Dw==
-X-Gm-Message-State: AOJu0YwGknN2bIID61afHuo+pJmwjypFsaSNn8fqfCpQAn2CMJeKG10j
- +lExVoqcpKP1m28ZJxWIMewgGOzh6LZuOnItRbl9M7vsHzeLHZwEGbZzfz91BHAXCSoQhD4G4br
- 0qx6J5+R0JywnkgKIboqmDPoNQRFxsvZmjUWHGWOireRG4qo0o02ygpKpIHXVzhEjSzaLTIE+zk
- pu0vqexX6Hs+fedSZ+w8QN6W3d8A==
+ bh=fqPk7/AJWoz7WWqFkmab3kfOO4u17Y5v7IRV7UHR3Gc=;
+ b=thzAE0lkQ6mCDa+BddWVVM4PSmFL6Q2ivKm5ZHshSSAgoUgqyBe4VIZFUmHbR4QLOO
+ yUhold1fyUQEvwD6vOPmmkkWpTIYIbZ4TTA2c4E3tjFKPYRUr4vX3+ain3N20SaZyIDw
+ 6yAWJS1SWVyLtiXegtxJq7cerf3yS4OsF6wcOM+YPZm9JpNanxJI9Xg4UdQ2EsqB0Zjm
+ mRh3cQElGH4JxHvUoQfadJTaF3gG7z34ZlBpzK/55tu0+nQdrC1rBTCOkWGQLlBFo5GN
+ b3X+0w/4H1a2AOLfXlMvzMtpBLgi4bpp2EC6nxV5X6x1gboEQKlOGyTTBhDQyIb6m4aN
+ ieeA==
+X-Gm-Message-State: AOJu0Yz1wpGUAuUhIlrEWhZ4YzFbiYnobfClm55GAxrsfCcUHpX7hzmE
+ NEVAsB7WMnezlWJchrbO8tHvM00OwQfKTgJUZS41mWGl7AeC9xRqwYgbm3cvSXS4nmqwmBCy5A=
+ =
 X-Received: from warp10.c.googlers.com ([fda3:e722:ac3:cc00:24:72f4:c0a8:750])
- (user=tavip job=sendgmr) by 2002:aa7:8145:0:b0:710:4d4d:5ef1 with
+ (user=tavip job=sendgmr) by 2002:a05:6902:504:b0:e0b:f93:fe8c with
  SMTP id
- d2e1a72fcca58-713c525b48bmr22432b3a.4.1723890411263; Sat, 17 Aug 2024
- 03:26:51 -0700 (PDT)
-Date: Sat, 17 Aug 2024 03:26:06 -0700
+ 3f1490d57ef6-e1180bb58afmr218016276.0.1723890384102; Sat, 17 Aug 2024
+ 03:26:24 -0700 (PDT)
+Date: Sat, 17 Aug 2024 03:25:52 -0700
 In-Reply-To: <20240817102606.3996242-1-tavip@google.com>
 Mime-Version: 1.0
 References: <20240817102606.3996242-1-tavip@google.com>
 X-Mailer: git-send-email 2.46.0.184.g6999bdac58-goog
-Message-ID: <20240817102606.3996242-24-tavip@google.com>
-Subject: [RFC PATCH v2 23/23] hw/arm: add RT595-EVK board
+Message-ID: <20240817102606.3996242-10-tavip@google.com>
+Subject: [RFC PATCH v2 09/23] test/unit: add flexcomm unit test
 From: Octavian Purdila <tavip@google.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, stefanst@google.com, pbonzini@redhat.com, 
@@ -106,9 +105,9 @@ Cc: qemu-arm@nongnu.org, stefanst@google.com, pbonzini@redhat.com,
  alistair@alistair23.me, berrange@redhat.com, philmd@linaro.org, 
  jsnow@redhat.com, crosa@redhat.com
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::449;
- envelope-from=363rAZgUKCiAP6RELCKKCHA.8KIMAIQ-9ARAHJKJCJQ.KNC@flex--tavip.bounces.google.com;
- helo=mail-pf1-x449.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::114a;
+ envelope-from=30HrAZgUKCAUyf0nulttlqj.htrvjrz-fwrstslsz.twl@flex--tavip.bounces.google.com;
+ helo=mail-yw1-x114a.google.com
 X-Spam_score_int: -95
 X-Spam_score: -9.6
 X-Spam_bar: ---------
@@ -118,42 +117,38 @@ X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01,
  USER_IN_DEF_DKIM_WL=-7.5 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: uQfy/sCWMpsu
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: qLacBYKRvMkl
 
-Add basic support for the RT595-EVK board, enough to be able to run
-the NXP's microXpresso SDK hello world example.
+Add flexcomm function selection unit tests.
 
 Signed-off-by: Octavian Purdila <tavip@google.com>
 ---
- hw/arm/rt595-evk.c | 64 ++++++++++++++++++++++++++++++++++++++++++++++
- hw/arm/Kconfig     |  5 ++++
- hw/arm/meson.build |  1 +
- 3 files changed, 70 insertions(+)
- create mode 100644 hw/arm/rt595-evk.c
+ tests/unit/test-flexcomm.c | 212 +++++++++++++++++++++++++++++++++++++
+ tests/unit/meson.build     |   8 +-
+ 2 files changed, 219 insertions(+), 1 deletion(-)
+ create mode 100644 tests/unit/test-flexcomm.c
 
-diff --git a/hw/arm/rt595-evk.c b/hw/arm/rt595-evk.c
+diff --git a/tests/unit/test-flexcomm.c b/tests/unit/test-flexcomm.c
 new file mode 100644
-index 0000000000..e5daecc8b8
+index 0000000000..ecabc3e945
 --- /dev/null
-+++ b/hw/arm/rt595-evk.c
-@@ -0,0 +1,64 @@
++++ b/tests/unit/test-flexcomm.c
+@@ -0,0 +1,212 @@
 +/*
-+ * i.MX RT595 EVK
-+ *
-+ * Copyright (c) 2024 Google LLC
++ * Copyright (C) 2024 Google LLC
 + *
 + * SPDX-License-Identifier: GPL-2.0-or-later
 + *
@@ -162,83 +157,227 @@ index 0000000000..e5daecc8b8
 + */
 +
 +#include "qemu/osdep.h"
-+#include "elf.h"
-+#include "exec/address-spaces.h"
-+#include "hw/loader.h"
-+#include "hw/sysbus.h"
-+#include "hw/boards.h"
 +#include "qemu/log.h"
-+#include "hw/arm/armv7m.h"
-+#include "hw/arm/boot.h"
-+#include "qapi/error.h"
-+#include "hw/arm/rt500.h"
-+#include "hw/qdev-clock.h"
-+#include "sysemu/reset.h"
++#include "qemu/module.h"
++#include "qemu/main-loop.h"
++#include "exec/memory.h"
++#include "hw/irq.h"
++#include "hw/qdev-properties.h"
 +
-+static void rt595_evk_reset(MachineState *ms, ShutdownCause reason)
++#include "hw/misc/flexcomm.h"
++#include "sysbus-mock.h"
++#include "reg-utils.h"
++
++#define MAX_MSG_STACK 2
++
++typedef struct {
++    DeviceState *dev;
++    char *msg[MAX_MSG_STACK];
++    int msg_count;
++} TestFixture;
++
++#define SELECT_MSG(f, selected) "f[%d]select(%d)", f, selected
++#define REG_READ_MSG(f, addr, size) "f[%d]reg_read(%x, %d)", f, \
++        (uint32_t)addr, size
++#define REG_WRITE_MSG(f, addr, data, size) "f[%d]reg_write(%x, %x, %d)", \
++        f, (uint32_t)addr, (uint32_t)data, size
++
++#define FLEXCOMM_BASE 0x40106000UL
++
++
++static void f_ops_select(void *opaque, FlexcommState *s, int f,
++                         bool selected)
 +{
-+    /*
-+     * CPU reset is not done by default, we need to do it manually when the
-+     * machine is reset.
-+     */
-+    cpu_reset(first_cpu);
++    TestFixture *tf = (TestFixture *)opaque;
 +
-+    qemu_devices_reset(reason);
++    tf->msg[tf->msg_count++] = g_strdup_printf(SELECT_MSG(f, selected));
 +}
 +
-+static void rt595_evk_init(MachineState *ms)
++static MemTxResult f_ops_reg_read(void *opaque, FlexcommState *s, int f,
++                                  hwaddr addr, uint64_t *data, unsigned size)
 +{
-+    RT500State *s;
-+    Clock *sysclk;
++    TestFixture *tf = (TestFixture *)opaque;
 +
-+    sysclk = clock_new(OBJECT(ms), "SYSCLK");
-+    clock_set_hz(sysclk, 200000000);
++    tf->msg[tf->msg_count++] = g_strdup_printf(REG_READ_MSG(f, addr, size));
++    return MEMTX_OK;
++}
 +
-+    s = RT500(object_new(TYPE_RT500));
-+    qdev_connect_clock_in(DEVICE(s), "sysclk", sysclk);
-+    object_property_add_child(OBJECT(ms), "soc", OBJECT(s));
-+    sysbus_realize_and_unref(SYS_BUS_DEVICE(s), &error_fatal);
++static MemTxResult f_ops_reg_write(void *opaque, FlexcommState *s, int f,
++                                   hwaddr addr, uint64_t data, unsigned size)
++{
++    TestFixture *tf = (TestFixture *)opaque;
 +
-+    if (ms->kernel_filename) {
-+        armv7m_load_kernel(ARM_CPU(first_cpu), ms->kernel_filename, 0, 0);
++    tf->msg[tf->msg_count++] = g_strdup_printf(REG_WRITE_MSG(f, addr, data,
++                                                             size));
++    return MEMTX_OK;
++}
++
++static void assert_msg(TestFixture *f, const char *fmt, ...)
++    __attribute__((format(printf, 2, 3)));
++
++static void assert_msg(TestFixture *f, const char *fmt, ...)
++{
++    va_list ap;
++    char *msg;
++
++    va_start(ap, fmt);
++    msg = g_strdup_vprintf(fmt, ap);
++    va_end(ap);
++
++    g_assert_cmpstr(msg, ==, f->msg[--f->msg_count]);
++}
++
++static const FlexcommFunctionOps f_ops = {
++    .select = f_ops_select,
++    .reg_read = f_ops_reg_read,
++    .reg_write = f_ops_reg_write,
++};
++
++/*
++ * Test fixture initialization.
++ */
++static void set_up(TestFixture *f, gconstpointer data)
++{
++    f->dev = qdev_new(TYPE_FLEXCOMM);
++    g_assert(f->dev);
++
++    if (data != NULL) {
++        qdev_prop_set_int32(DEVICE(f->dev), "functions", (uintptr_t)data);
 +    }
++
++    qdev_realize_and_unref(f->dev, NULL, NULL);
++    sysbus_mmio_map(SYS_BUS_DEVICE(f->dev), 0, FLEXCOMM_BASE);
++
++    for (int i = 0; i < FLEXCOMM_FUNCTIONS; i++) {
++        /* replace functions ops */
++        flexcomm_unregister_ops(i);
++        assert(flexcomm_register_ops(i, f, &f_ops, NULL));
++        assert(!flexcomm_register_ops(i, f, &f_ops, NULL));
++    }
++
++    device_cold_reset(f->dev);
 +}
 +
-+static void rt595_evk_machine_init(MachineClass *mc)
++static void tear_down(TestFixture *f, gconstpointer user_data)
 +{
-+    mc->desc  = "RT595 EVK Machine (ARM Cortex-M33)";
-+    mc->init  = rt595_evk_init;
-+    mc->reset = rt595_evk_reset;
-+
-+    mc->ignore_memory_transaction_failures = true;
++    qdev_unrealize(f->dev);
++    g_free(f->dev);
 +}
 +
-+DEFINE_MACHINE("rt595-evk", rt595_evk_machine_init);
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index 7ffece3dec..26ec3d391a 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -720,3 +720,8 @@ config RT500
-     select RT500_CLKCTL1
-     select FLEXSPI
-     select RT500_RSTCTL
++static void select_test(TestFixture *f, gconstpointer user_data)
++{
++    uint32_t tmp = 0;
++    static const struct {
++        int persel;
++        int func;
++    } persel_func_map[] = {
++        { FLEXCOMM_PERSEL_USART, FLEXCOMM_FUNC_USART },
++        { FLEXCOMM_PERSEL_SPI, FLEXCOMM_FUNC_SPI },
++        { FLEXCOMM_PERSEL_I2C, FLEXCOMM_FUNC_I2C },
++        { FLEXCOMM_PERSEL_I2S_TX, FLEXCOMM_FUNC_I2S },
++        { FLEXCOMM_PERSEL_I2S_RX, FLEXCOMM_FUNC_I2S },
++    };
 +
-+config RT595_EVK
-+    bool
-+    default y
-+    select RT500
-diff --git a/hw/arm/meson.build b/hw/arm/meson.build
-index 7d827d512c..9792c93142 100644
---- a/hw/arm/meson.build
-+++ b/hw/arm/meson.build
-@@ -60,6 +60,7 @@ arm_ss.add(when: 'CONFIG_FSL_IMX6UL', if_true: files('fsl-imx6ul.c', 'mcimx6ul-e
- arm_ss.add(when: 'CONFIG_NRF51_SOC', if_true: files('nrf51_soc.c'))
- arm_ss.add(when: 'CONFIG_XEN', if_true: files('xen_arm.c'))
- arm_ss.add(when: 'CONFIG_RT500', if_true: files('rt500.c'))
-+arm_ss.add(when: 'CONFIG_RT595_EVK', if_true: files('rt595-evk.c'))
- 
- system_ss.add(when: 'CONFIG_ARM_SMMUV3', if_true: files('smmu-common.c'))
- system_ss.add(when: 'CONFIG_CHEETAH', if_true: files('palm.c'))
++    /* test that no function is selected */
++    g_assert(REG32_READ_FIELD(f->dev, FLEXCOMM, PSELID, PERSEL) == 0);
++
++    /* no register access until a function is selected  */
++    g_assert(reg32_addr_read_raw(f->dev, FLEXCOMM_BASE, &tmp, 4)
++             == MEMTX_ERROR);
++    g_assert(reg32_addr_write_raw(f->dev, FLEXCOMM_BASE, tmp, 4)
++             == MEMTX_ERROR);
++
++    /* test that we can select all functions (including I2S RX) */
++    for (int i = 0; i < ARRAY_SIZE(persel_func_map); i++) {
++        int persel = persel_func_map[i].persel;
++        int func = persel_func_map[i].func;
++
++        REG32_WRITE(f->dev, FLEXCOMM, PSELID, persel);
++        g_assert(REG32_READ_FIELD(f->dev, FLEXCOMM, PSELID, PERSEL) == persel);
++        g_assert(REG32_READ_FIELD(f->dev, FLEXCOMM, PID, ID) == persel);
++
++        /* check that current function was selected */
++        assert_msg(f, SELECT_MSG(func, 1));
++
++        /* check that previous function was de-selected */
++        if (i > 0) {
++            int prev_func = persel_func_map[i - 1].func;
++
++            assert_msg(f, SELECT_MSG(prev_func, 0));
++        }
++
++        /* test that we can access function registers */
++        reg32_addr_write_raw(f->dev, FLEXCOMM_BASE + 0x100, 0xabcd, 4);
++        assert_msg(f, REG_WRITE_MSG(func, 0x100, 0xabcd, 4));
++
++        reg32_addr_read_raw(f->dev, FLEXCOMM_BASE + 0x100, &tmp, 4);
++        assert_msg(f, REG_READ_MSG(func, 0x100, 4));
++    }
++
++    /* try to select something invalid */
++    REG32_WRITE(f->dev, FLEXCOMM, PSELID, 7);
++    /* check for no function selected */
++    g_assert(REG32_READ_FIELD(f->dev, FLEXCOMM, PSELID, PERSEL) == 0);
++    g_assert(REG32_READ_FIELD(f->dev, FLEXCOMM, PID, ID) == 0);
++    /* check that previous function was deselected */
++    assert_msg(f, SELECT_MSG(FLEXCOMM_FUNC_I2S, 0));
++
++    /* now select and lock USART */
++    tmp = FIELD_DP32(FLEXCOMM_PERSEL_USART, FLEXCOMM_PSELID, LOCK, 1);
++    REG32_WRITE(f->dev, FLEXCOMM, PSELID, tmp);
++    tmp = REG32_READ_FIELD(f->dev, FLEXCOMM, PSELID, PERSEL);
++    g_assert(tmp == FLEXCOMM_PERSEL_USART);
++    g_assert(REG32_READ_FIELD(f->dev, FLEXCOMM, PSELID, LOCK) == 1);
++    tmp = REG32_READ_FIELD(f->dev, FLEXCOMM, PID, ID);
++    g_assert(tmp == FLEXCOMM_PERSEL_USART);
++    assert_msg(f, SELECT_MSG(FLEXCOMM_FUNC_USART, 1));
++
++    /* try to change the selection to spi */
++    REG32_WRITE(f->dev, FLEXCOMM, PSELID, FLEXCOMM_PERSEL_SPI);
++    /* it should still be locked USART */
++    tmp = REG32_READ_FIELD(f->dev, FLEXCOMM, PSELID, PERSEL);
++    g_assert(tmp == FLEXCOMM_PERSEL_USART);
++    g_assert(REG32_READ_FIELD(f->dev, FLEXCOMM, PSELID, LOCK) == 1);
++    tmp = REG32_READ_FIELD(f->dev, FLEXCOMM, PID, ID);
++    g_assert(tmp == FLEXCOMM_PERSEL_USART);
++}
++
++/* mock-up */
++const PropertyInfo qdev_prop_chr;
++
++int main(int argc, char **argv)
++{
++    g_test_init(&argc, &argv, NULL);
++
++    /* Initialize object types. */
++    sysbus_mock_init();
++    module_call_init(MODULE_INIT_QOM);
++
++    g_test_add("/flexcomm/select_test", TestFixture,
++               (gconstpointer)FLEXCOMM_FULL, set_up, select_test,
++               tear_down);
++
++    return g_test_run();
++}
+diff --git a/tests/unit/meson.build b/tests/unit/meson.build
+index 397f2503f8..4ccb15404d 100644
+--- a/tests/unit/meson.build
++++ b/tests/unit/meson.build
+@@ -141,7 +141,13 @@ if have_system
+     'test-bufferiszero': [],
+     'test-smp-parse': [qom, meson.project_source_root() / 'hw/core/machine-smp.c'],
+     'test-vmstate': [migration, io],
+-    'test-yank': ['socket-helpers.c', qom, io, chardev]
++    'test-yank': ['socket-helpers.c', qom, io, chardev],
++    'test-flexcomm': [
++      hwcore,
++      meson.project_source_root() / 'hw/core/gpio.c',
++      meson.project_source_root() / 'tests/unit/sysbus-mock.c',
++      meson.project_source_root() / 'hw/misc/flexcomm.c',
++     ],
+   }
+   if config_host_data.get('CONFIG_INOTIFY1')
+     tests += {'test-util-filemonitor': []}
 -- 
 2.46.0.184.g6999bdac58-goog
 

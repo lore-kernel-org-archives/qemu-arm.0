@@ -1,103 +1,103 @@
-Received: by 2002:a17:504:9188:b0:1be9:327d:8ee3 with SMTP id i8csp1490386njf;
-        Sat, 17 Aug 2024 03:26:43 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCU4yPJovjBR46P+8t24nvjX70j/Aev7dDoYsCN1N/yRZtx2GvIf0xRI156oG8NUcJsQolXYp4zO4IUIUiyEpPlKPJSw7tEo
-X-Google-Smtp-Source: AGHT+IGd1z3wXioiN9DjbNQdOTT/+UlKmDIoS6tLPTn7M0ikLxYmnlcboQj1Kw8AklZMpS73y3PY
-X-Received: by 2002:a05:622a:5c05:b0:44d:6627:4b4d with SMTP id d75a77b69052e-453741e1bb4mr58665191cf.11.1723890403169;
-        Sat, 17 Aug 2024 03:26:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1723890403; cv=none;
+Received: by 2002:a17:504:9188:b0:1be9:327d:8ee3 with SMTP id i8csp1490406njf;
+        Sat, 17 Aug 2024 03:26:50 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWADO0Uin5biEl4o3X05w0NKFR+HVm2kD/NZKThQ6gN5OQ2tHvIOgp/naOyScTfrmyaPpfGCV1jdXsjacpLFui3HSYCl7WN
+X-Google-Smtp-Source: AGHT+IGOZt1G4qQC2MaxwP3vNGFZh1eYabQHB9VoMirnUnohTg0MTve4tjJAr5dnhqgCrj3FvPT6
+X-Received: by 2002:a05:6122:4103:b0:4f6:a697:d380 with SMTP id 71dfb90a1353d-4fc6c9f26b8mr7106185e0c.10.1723890410433;
+        Sat, 17 Aug 2024 03:26:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1723890410; cv=none;
         d=google.com; s=arc-20160816;
-        b=kz3XhXgUAGtTr+VPBgLA7d26dAX9hSFQ0wxwV361ULVXbuSNpSMYVeTNd1qi8J2UC5
-         3zN7+XCFURCcdm+kPubuQ0k50v30pyjfn8QanSC1hC0etcjbudVNfdI4IOytOOGTNwrp
-         q1sT4BWisqp24eb/FKXQ7FwbHRU0o8SVKFobqK4PxX3CU6Vx4bg9zvo8JBRfb8QOG0Ds
-         IwCzyWc3oYKNeR2T2tMqa5ZGz3CyfHwyqfZM9Wv/IJftGORUAGq5eR98poQOiBuvkDlH
-         WYGiWz5KmVDjgMAMHsPZty307TF6gksGG8vmny+m2Gh9Cvbhd/BAuo6OTf8w43VbJkpe
-         aw+A==
+        b=v0djhM3YTif/JSwrsMVYe4dlPULYHYuAh4fymSCbwcxtgYYrsxLSHchWIfLkvYa+tt
+         hvN2dOo0HSymLIjXpqt2Dgq8L2Nb4Sp6YqPfGMhfHOrbjb0Zy66E62f8jAsl7H/lE+YC
+         8MjwSi8RKR179fQfiXjopEoCqrf9pxRtyZ7i6Gs7CMiGZvAJpA/++VUc/ua3x5YrT9bo
+         GM8zx8XWnh/5HL7cuVi6Qvj4mQoqQZUJpDXWBmKc611nDhcJrGpi1BG4xkcPXt2KfU8V
+         kcRoXH5w8xWCYXKHD7NT0TmwsEkRGVMHO+qbiUr21akZMDLwP395hZ5qmc/uA50fMi4C
+         ScsA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
          :references:mime-version:in-reply-to:date:dkim-signature;
-        bh=FVNYijpYFtbfaDyQGxsk5OhIQ8sQjh7sQW2Q7Qw6WEo=;
+        bh=g0XCLUPYxGQ5i0atXjj8FMDAblhXlT56A5I6yFI98jg=;
         fh=pITIqJh0Z5XaT4QxI/zJAgHBZTuNeZPw20HbjxZRX7I=;
-        b=iNi0N4gxQrAzGrfw3hhNAFJrH+JJmV0pT2mDwd9PEwXrbsdORXHU95sYx5KtKSidYO
-         t9dp3VwzrrK2ZwpXzLtBfAa8JYQ7Ja9cz3GW4o0Uv0atAlIdGl6grNHHjJoXxIVHYvp9
-         ftIEelpHEyw4Ts2UQt6gqqYaJGr/00aLA6f70ujujdxgpjsr0scqg56NMSkv5cWoxRhL
-         ytSnAWDEcw+DJmXd4lvLTPCJ4l4ZgCjoXfwcAHl7TWTPLvD9guz/DP/M8E6EAw7E9NA8
-         tfnNB4gGCrr6kwOmZNfXk+lpWMzwwX0p5eB+lJAd5IHunKhldbnalX9ceUuo27Idg5GK
-         eiOw==;
+        b=OLD9q1ghbbALAGtzkYI/NWej4YQM+fXKd61AH0MauEH3DgiSyuqARFd973jmm+hqgH
+         dDvBysIDg3cFko2ZF2C/Swc/pZMs2WmeI8cVj25fRz5S/jlC+tOr/EQMN4JDGJFjDfGr
+         rwduevJnxB1YLpQmjEaLbdhTkTjqhO4cyzmBMTBJ9l4hIFeCz2QXI5FDa0hjp05icyAc
+         T0k98xJSOqF5+FBjSLDW97pndcXGOI5C3iZrqFeyAtcDMo7D+cnLs+q0LtVxt6po6C1z
+         8QIo+si01KxTl16DeXLK1nDxmMeD2QdTnNXoMaKuyz0170JtOqG8RJpABLFT6BJ4X+rD
+         PQtQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b="hv/rr9NG";
+       dkim=pass header.i=@google.com header.s=20230601 header.b=Q7x4fsAh;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4536a0724b3si61443801cf.369.2024.08.17.03.26.43
+        by mx.google.com with ESMTPS id d75a77b69052e-4536a06d3f3si60765261cf.314.2024.08.17.03.26.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 17 Aug 2024 03:26:43 -0700 (PDT)
+        Sat, 17 Aug 2024 03:26:50 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b="hv/rr9NG";
+       dkim=pass header.i=@google.com header.s=20230601 header.b=Q7x4fsAh;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sfGdg-0006Fo-3N; Sat, 17 Aug 2024 06:26:29 -0400
+	id 1sfGdU-00061N-Pa; Sat, 17 Aug 2024 06:26:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <3x3rAZgUKCPovcxkriqqing.eqosgow-ctopqpipw.qti@flex--tavip.bounces.google.com>)
- id 1sfGde-0006Ca-KJ
- for qemu-arm@nongnu.org; Sat, 17 Aug 2024 06:26:26 -0400
-Received: from mail-pg1-x54a.google.com ([2607:f8b0:4864:20::54a])
+ <3wXrAZgUKCPQpWrelckkcha.Ykimaiq-Wnijkjcjq.knc@flex--tavip.bounces.google.com>)
+ id 1sfGdT-0005um-6I
+ for qemu-arm@nongnu.org; Sat, 17 Aug 2024 06:26:15 -0400
+Received: from mail-yb1-xb49.google.com ([2607:f8b0:4864:20::b49])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from
- <3x3rAZgUKCPovcxkriqqing.eqosgow-ctopqpipw.qti@flex--tavip.bounces.google.com>)
- id 1sfGdV-0003Aq-8M
- for qemu-arm@nongnu.org; Sat, 17 Aug 2024 06:26:19 -0400
-Received: by mail-pg1-x54a.google.com with SMTP id
- 41be03b00d2f7-778702b9f8fso1500033a12.1
- for <qemu-arm@nongnu.org>; Sat, 17 Aug 2024 03:26:16 -0700 (PDT)
+ <3wXrAZgUKCPQpWrelckkcha.Ykimaiq-Wnijkjcjq.knc@flex--tavip.bounces.google.com>)
+ id 1sfGdR-00036h-M3
+ for qemu-arm@nongnu.org; Sat, 17 Aug 2024 06:26:14 -0400
+Received: by mail-yb1-xb49.google.com with SMTP id
+ 3f1490d57ef6-e13c4519ed6so1502702276.0
+ for <qemu-arm@nongnu.org>; Sat, 17 Aug 2024 03:26:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1723890376; x=1724495176; darn=nongnu.org;
+ d=google.com; s=20230601; t=1723890370; x=1724495170; darn=nongnu.org;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:from:to:cc:subject:date:message-id:reply-to;
- bh=FVNYijpYFtbfaDyQGxsk5OhIQ8sQjh7sQW2Q7Qw6WEo=;
- b=hv/rr9NG22hZ9TKVr+p+9Z6/xUgJDZly4LDb2bnP50GxZJNx255I7m0VCOQ7gelU7i
- vMfmfSZoXqp+jEVygKwynlDNRqZdU0TnMR6LRDOkfkSjVBpcVsCpDNWy+iCHYXnZJasw
- im4B6W4QedwtDuT6NhXWYxNOAldY2jvVULGEGdQdscSnBLeG0Oi48g1cljCWnVfrqNOv
- W3yEpUujb8dxMMros/A9gD5ms7eAmqLrvlG7qecYxR0cZ5TwzoxFq4OWMNfHQY4Po90k
- NhEwt87wNmhkJZYobk1MLzq7BjZW1OW/1dCaQ9VQkKsB7e7SmHIVtwT2EJFUPi+O5xZN
- 5S1g==
+ bh=g0XCLUPYxGQ5i0atXjj8FMDAblhXlT56A5I6yFI98jg=;
+ b=Q7x4fsAh9vMLnZpJ7qWruB1NmTkEJRGX10fMr/hge24uMMm3IeWxJiFe6BgAYyPKS3
+ P57LBtj1FwqmLUOJFyIqycj+3P+SS8GcaFWhN1/ebnV7lxF2ejzyc1ZK704wqDwM5Y21
+ 0SZ+lwkDrwqORRvlmXTN92WuYewJYxfqQ5CT9QUaIJxNX2VMl9EEHijslWmvawB5JhDm
+ uYGFGbsYFBdtHi9DeV2DkM0kHRczo2WQNDrKtk2yqeYNhjaetM1iq2uF9vq2ZuwBcF6W
+ lrcwcyEZFJCm0L2A5MZ7xVRyjSjMeeLxkNrltt69D9nOzzXbsEKM0O/el+xstCQm9POx
+ N5TQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1723890376; x=1724495176;
+ d=1e100.net; s=20230601; t=1723890370; x=1724495170;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=FVNYijpYFtbfaDyQGxsk5OhIQ8sQjh7sQW2Q7Qw6WEo=;
- b=YrD0WNVAjrw1Kq6aTMNSid1I1vVwSl6TsmL/zVD3H2gPBBK55jxVgy4YwkbtWxKaVh
- rgRcF7gwFCcuMH+UaCtoWAgc3uztSOAvqQ77lcGvfaw9x1dOab0AD9q/R9kvKFSix6KM
- aAvbVtHddZ3AY6W9B4NSkY/O5Bkpiy9yv6I3axtX4UQHUOZZot5FIne41DbjjPD6kpAU
- r9UgHVq3jXxCvU5dpu7ZTJEL5Xopd/+raW314NoVjuGidbbi2hDeUvxOm6ljT7EUJKGZ
- qx6B7gIgWDdh9wnyuWq86x4lL8Jc5MKE5caW2P1htUV3dIiXiJkEEqsfsSt/mw28jPNX
- EbHg==
-X-Gm-Message-State: AOJu0YyvaJ8wTg4wY43cGs4iTZuD1FToe7LmcrfwqStgund3HsbH/wV6
- 8ZZ3NHI0n38qnvEasSd0ZIpgh+kWYwLwnCicpYdblPKRdOPuHgoLiyAZYuoj9HSRjAyXay+Rkw=
+ bh=g0XCLUPYxGQ5i0atXjj8FMDAblhXlT56A5I6yFI98jg=;
+ b=w+3awibYtcVkn0nKxw61poAmcbslZgDTXO4nh9BGYFHsX7/w6BXBwF71zH/7Enyobt
+ lGwCKXu/loap8ErkKlLyvEIcurVdQdn6+VVj0dTQ4JH5UOKW43Vq1HVDYiqtOzB/p7zt
+ EIz9WMJFi3bdg1Agi7ic9XKliu+gRv74RC3KS3WVS866cyKv9nyUpQsKQT8+gAMDZZPA
+ 86H15BIcU5dgBFhu/y6nou+cAkw07fjyuleN9S3V5MEBar/uI/h3KPNK/FNq3o1cnnXQ
+ Abdiajh4Hylzx8VY4C/t18AAiklTBWGQNxA5K4/b7GEYFTLFWcDNOXPEdRsj2G3u4rLW
+ Stbg==
+X-Gm-Message-State: AOJu0Ywzym7jbwvtJT7IoCQpFf9Zsv3fMAlF+/wjysv+Gph+tsjNfe53
+ RY03he4RW4mH1iDxqAnzx0InZdPuzVuEolB3jPK6q6pviBhhZote5b13twbBaMN5+jSP+QyUHQ=
  =
 X-Received: from warp10.c.googlers.com ([fda3:e722:ac3:cc00:24:72f4:c0a8:750])
- (user=tavip job=sendgmr) by 2002:a05:6a02:590:b0:718:84ed:abe7
- with SMTP id
- 41be03b00d2f7-7ca488fb5e5mr7695a12.4.1723890375445; Sat, 17 Aug 2024 03:26:15
- -0700 (PDT)
-Date: Sat, 17 Aug 2024 03:25:47 -0700
+ (user=tavip job=sendgmr) by 2002:a25:910e:0:b0:e0b:a34d:f223 with
+ SMTP id
+ 3f1490d57ef6-e116cecab95mr126463276.5.1723890369867; Sat, 17 Aug 2024
+ 03:26:09 -0700 (PDT)
+Date: Sat, 17 Aug 2024 03:25:44 -0700
 In-Reply-To: <20240817102606.3996242-1-tavip@google.com>
 Mime-Version: 1.0
 References: <20240817102606.3996242-1-tavip@google.com>
 X-Mailer: git-send-email 2.46.0.184.g6999bdac58-goog
-Message-ID: <20240817102606.3996242-5-tavip@google.com>
-Subject: [RFC PATCH v2 04/23] Add mcux-soc-svd subproject
+Message-ID: <20240817102606.3996242-2-tavip@google.com>
+Subject: [RFC PATCH v2 01/23] fifo32: add peek function
 From: Octavian Purdila <tavip@google.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, stefanst@google.com, pbonzini@redhat.com, 
@@ -105,9 +105,9 @@ Cc: qemu-arm@nongnu.org, stefanst@google.com, pbonzini@redhat.com,
  alistair@alistair23.me, berrange@redhat.com, philmd@linaro.org, 
  jsnow@redhat.com, crosa@redhat.com
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::54a;
- envelope-from=3x3rAZgUKCPovcxkriqqing.eqosgow-ctopqpipw.qti@flex--tavip.bounces.google.com;
- helo=mail-pg1-x54a.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b49;
+ envelope-from=3wXrAZgUKCPQpWrelckkcha.Ykimaiq-Wnijkjcjq.knc@flex--tavip.bounces.google.com;
+ helo=mail-yb1-xb49.google.com
 X-Spam_score_int: -95
 X-Spam_score: -9.6
 X-Spam_bar: ---------
@@ -130,109 +130,55 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Cf8uSqkP2lzU
+X-TUID: CJPKSJnI5jyt
 
-Add mcux-soc-svd subproject that contains SVD files that are going to
-be used to generate C header with register layout definitions and
-other helpers to create device models.
-
-Guard the subproject by a configuration option since it is rarely
-going to be used - whenever new headers will be generated. It is
-unlikely that already generated headers will be updated, with the
-exception of minor hardware revisions.
-
-Also export the rt595 SVD file which is going to be used by subsequent
-patches.
-
-TBD: switch to a qemu gitlab fork before merge
+Add fifo32_peek() that returns the first element from the queue
+without popping it.
 
 Signed-off-by: Octavian Purdila <tavip@google.com>
 ---
- hw/arm/svd/meson.build                            | 4 ++++
- meson_options.txt                                 | 3 +++
- scripts/meson-buildoptions.sh                     | 4 ++++
- subprojects/.gitignore                            | 1 +
- subprojects/mcux-soc-svd.wrap                     | 5 +++++
- subprojects/packagefiles/mcux-soc-svd/meson.build | 5 +++++
- 6 files changed, 22 insertions(+)
- create mode 100644 hw/arm/svd/meson.build
- create mode 100644 subprojects/mcux-soc-svd.wrap
- create mode 100644 subprojects/packagefiles/mcux-soc-svd/meson.build
+ include/qemu/fifo32.h | 28 ++++++++++++++++++++++++++++
+ 1 file changed, 28 insertions(+)
 
-diff --git a/hw/arm/svd/meson.build b/hw/arm/svd/meson.build
-new file mode 100644
-index 0000000000..7d83d2ccbc
---- /dev/null
-+++ b/hw/arm/svd/meson.build
-@@ -0,0 +1,4 @@
-+if get_option('mcux-soc-svd')
-+  mcux_soc_svd = subproject('mcux-soc-svd')
-+  rt595 = mcux_soc_svd.get_variable('rt595')
-+endif
-diff --git a/meson_options.txt b/meson_options.txt
-index 4c1583eb40..25f827078a 100644
---- a/meson_options.txt
-+++ b/meson_options.txt
-@@ -366,3 +366,6 @@ option('qemu_ga_version', type: 'string', value: '',
+diff --git a/include/qemu/fifo32.h b/include/qemu/fifo32.h
+index 4e9fd1b5ef..77aab488ae 100644
+--- a/include/qemu/fifo32.h
++++ b/include/qemu/fifo32.h
+@@ -140,6 +140,34 @@ static inline uint32_t fifo32_pop(Fifo32 *fifo)
+     return ret;
+ }
  
- option('hexagon_idef_parser', type : 'boolean', value : true,
-        description: 'use idef-parser to automatically generate TCG code for the Hexagon frontend')
++/**
++ * fifo32_peek:
++ * @fifo: fifo to peek at
++ *
++ * Returns the value from the FIFO's head without poping it. Behaviour
++ * is undefined if the FIFO is empty. Clients are responsible for
++ * checking for emptiness using fifo32_is_empty().
++ *
++ * Returns: the value from the FIFO's head
++ */
 +
-+option('mcux-soc-svd', type : 'boolean', value : false,
-+       description: 'enable targets to generate C headers from mcux-soc-svd')
-diff --git a/scripts/meson-buildoptions.sh b/scripts/meson-buildoptions.sh
-index 6ce5a8b72a..2c1e501806 100644
---- a/scripts/meson-buildoptions.sh
-+++ b/scripts/meson-buildoptions.sh
-@@ -40,6 +40,8 @@ meson_options_help() {
-   printf "%s\n" '  --enable-lto             Use link time optimization'
-   printf "%s\n" '  --enable-malloc=CHOICE   choose memory allocator to use [system] (choices:'
-   printf "%s\n" '                           jemalloc/system/tcmalloc)'
-+  printf "%s\n" '  --enable-mcux-soc-svd    enable targets to generate C headers from mcux-'
-+  printf "%s\n" '                           soc-svd'
-   printf "%s\n" '  --enable-module-upgrades try to load modules from alternate paths for'
-   printf "%s\n" '                           upgrades'
-   printf "%s\n" '  --enable-rng-none        dummy RNG, avoid using /dev/(u)random and'
-@@ -390,6 +392,8 @@ _meson_option_parse() {
-     --enable-malloc-trim) printf "%s" -Dmalloc_trim=enabled ;;
-     --disable-malloc-trim) printf "%s" -Dmalloc_trim=disabled ;;
-     --mandir=*) quote_sh "-Dmandir=$2" ;;
-+    --enable-mcux-soc-svd) printf "%s" -Dmcux-soc-svd=true ;;
-+    --disable-mcux-soc-svd) printf "%s" -Dmcux-soc-svd=false ;;
-     --enable-membarrier) printf "%s" -Dmembarrier=enabled ;;
-     --disable-membarrier) printf "%s" -Dmembarrier=disabled ;;
-     --enable-module-upgrades) printf "%s" -Dmodule_upgrades=true ;;
-diff --git a/subprojects/.gitignore b/subprojects/.gitignore
-index adca0266be..bca8693ef4 100644
---- a/subprojects/.gitignore
-+++ b/subprojects/.gitignore
-@@ -6,3 +6,4 @@
- /keycodemapdb
- /libvfio-user
- /slirp
-+/mcux-soc-svd
-diff --git a/subprojects/mcux-soc-svd.wrap b/subprojects/mcux-soc-svd.wrap
-new file mode 100644
-index 0000000000..80d18e8561
---- /dev/null
-+++ b/subprojects/mcux-soc-svd.wrap
-@@ -0,0 +1,5 @@
-+[wrap-git]
-+url = https://github.com/nxp-mcuxpresso/mcux-soc-svd/
-+revision = 7f6f9ef7420144fe14cd9bc4d8e0e3523232da04
-+patch_directory = mcux-soc-svd
-+depth = 1
-diff --git a/subprojects/packagefiles/mcux-soc-svd/meson.build b/subprojects/packagefiles/mcux-soc-svd/meson.build
-new file mode 100644
-index 0000000000..37c537d040
---- /dev/null
-+++ b/subprojects/packagefiles/mcux-soc-svd/meson.build
-@@ -0,0 +1,5 @@
-+project('mcux-soc-svd')
++static inline uint32_t fifo32_peek(Fifo32 *fifo)
++{
++    uint32_t ret = 0, num;
++    const uint8_t *buf;
 +
-+fs = import('fs')
++    buf = fifo8_peek_buf(&fifo->fifo, 4, &num);
++    if (num != 4) {
++        return ret;
++    }
 +
-+rt595 = fs.copyfile('MIMXRT595S/MIMXRT595S_cm33.xml')
++    for (int i = 0; i < sizeof(uint32_t); i++) {
++        ret |= buf[i] << (i * 8);
++    }
++
++    return ret;
++}
++
+ /**
+  * There is no fifo32_pop_buf() because the data is not stored in the buffer
+  * as a set of native-order words.
 -- 
 2.46.0.184.g6999bdac58-goog
 

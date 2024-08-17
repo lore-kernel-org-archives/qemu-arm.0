@@ -1,104 +1,104 @@
-Received: by 2002:a17:504:9188:b0:1be9:327d:8ee3 with SMTP id i8csp1490539njf;
-        Sat, 17 Aug 2024 03:27:40 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXmTZJEm37ONKWM5QwRzm8fkNMGAJ/eYcuW0leLzoAS1u0EvYQ5+nGTXE5sh2caKK6yJC7wq+zq2c0POQzZqFxP14U0SfwX
-X-Google-Smtp-Source: AGHT+IFj2/JThWRyBV+mW9eUSezi0A3/1KjCGg/9x3MErLyHpO9tQtRR6y27E56BsO1LGLMLN4P1
-X-Received: by 2002:a05:6214:5991:b0:6bf:6b15:a6d9 with SMTP id 6a1803df08f44-6bf7ce90d2emr84040506d6.51.1723890460182;
-        Sat, 17 Aug 2024 03:27:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1723890460; cv=none;
+Received: by 2002:a17:504:9188:b0:1be9:327d:8ee3 with SMTP id i8csp1490590njf;
+        Sat, 17 Aug 2024 03:27:58 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWkotTnL+jpfJW3bKoWeg2HP3SVyy++ycyzCMWpjib+zYSY61Qy2+gTIAURx9qNdj4Tf7jul85zaDX4tMq9yHf7SzDMFTPT
+X-Google-Smtp-Source: AGHT+IF3O4mq0445x5g5wDnHSaEBK4V+45C0Nw9TwpOR2wue4wkArrE4osYHIb+Pd0zm6lCXp4Xi
+X-Received: by 2002:a05:6902:89:b0:e13:c683:adc2 with SMTP id 3f1490d57ef6-e13c683b037mr3544988276.13.1723890478394;
+        Sat, 17 Aug 2024 03:27:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1723890478; cv=none;
         d=google.com; s=arc-20160816;
-        b=fuL5RQPnNXjU0Z3pZNnDnFASXEe9L0btlifW8q4rzBLQ5FGx7Wkh4U1QyauswcIVVj
-         my334aHWr4TGOXQtxIPnen0jiJd8+0Iw7uuiR/O/NG23xo3oKeZ2CoTDiPQ+PbMQHnBH
-         o7bBCSpKy+ZGRzMeseBk4Y87SR5Nmtf/P5CZEFKmlezYrZYRtwqs3016KjE8T0ZXRfWq
-         Fp0mzbVLu/Hb6tsyOFoXNjSLDF0K7BRi+YNz1lCNPLnjCJVPnUKELVgTt9mbUDXZ+2K0
-         CglUIUE33lntjjRUHN50yWPd3p0R7xF7Jp0zqYUrR93qEj4befpwDlxZymP5JqqucYtb
-         LOdg==
+        b=ayOzh/HO1A5uK8cuD+d+94iACPUUjLzaRBbtc9C3lXN8duwJ8GcfY8nIjcjazSzerU
+         AXgO/n6PujTLUoWYAD5MncaaWF82hAOewg5FsjQ43XipTSuUGVIzoHz7IIhn7UO8tmUx
+         KFHqahUL9BVYmjlBpt5Ti6H8lhNyiGlKBU9AajDK+xlrjowouS/NcoXYqE6y0MLhrtUZ
+         cJqe+1WgprFJyF5GV8a8o6MWlndOnE/5nngO5FFb0zO1/AkYIittuHP8FXMakGJiapeV
+         N0VA4f8dRRUgjLqmEAp3ej8PLMHV2uz+29fvdrHbfxLJ34/PuBer9eRsNp5hoAv7IowR
+         nHpg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
          :references:mime-version:in-reply-to:date:dkim-signature;
-        bh=gYjLNYCYgmz+RuXhYlYlEGx1aZzBL8oMAQt3ozgBUbM=;
+        bh=KtjXebZCukHMKlUFxpvcXxmLOzDPD6D4WbOdIn8vIcU=;
         fh=pITIqJh0Z5XaT4QxI/zJAgHBZTuNeZPw20HbjxZRX7I=;
-        b=zWJ9w0a+Sy5SEk7uz3J28Po4cFtFeat3xrSDGH//7VTCZ7BH8Dwj603HLHi5mgxIP0
-         eUv6sZcYy9btvrb9pxGxEChv2bVG9c9PWfVS5STkZE8684v0oYhh38T+RUjslTTemEkD
-         3ECVr1/Z5/R6OmUyyvYlE3ZAe2+ZE3KK0dnzlgZH7Tgu9nAerdGJpCzYrXhGKnLpsQ2U
-         btI0PSqT8apC9FjoW0uXQw5c3Cv+jUMCbf6P0jGIFSDmdszCFSxLJm3MnNpQugMojGkY
-         R8/lSoEl1CKrywqfS23JorrjlwbTfqMFqvMJUWZCItQMHv46kmSQGscdC1y3gpOwnVRN
-         e4+Q==;
+        b=adm9U9AVyjNOrGFaCOjyoMnE61Az56ESxY7NgyMioAUfamzuNzp9n3wgsAiumfPZds
+         pBz3oH3ypTLdgYxJdNPtVFmfqDqOqYbaLN3Z+JeNIUmeWqVoyCI+XZRJuhDlMZ2Jz7iG
+         F2E2/PZK6bQS8df4P0YeI2hEEOpaqfFbq1PwZrGHTvgp4AMVT3zRjBSSGmBpWKmh07/p
+         kgFdj6IdElvTuOmha0yjVL9W3zK9xHuLylJhT0CnV9UuJOhluKSFL5/ap6iUobleJmmi
+         z59OQXlrCf0mqlfVRzu15gMLHljoJHLaFW4uszoO0jQxgHeyoDkPkwmWs9H3/W2W+juQ
+         mXFg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=MOtUUm6N;
+       dkim=pass header.i=@google.com header.s=20230601 header.b="L9Q09kf/";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6bf6fec0f88si62356836d6.288.2024.08.17.03.27.40
+        by mx.google.com with ESMTPS id d75a77b69052e-4536a003bc6si58771351cf.196.2024.08.17.03.27.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 17 Aug 2024 03:27:40 -0700 (PDT)
+        Sat, 17 Aug 2024 03:27:58 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=MOtUUm6N;
+       dkim=pass header.i=@google.com header.s=20230601 header.b="L9Q09kf/";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sfGeI-0007xO-8c; Sat, 17 Aug 2024 06:27:06 -0400
+	id 1sfGeT-0000Vn-So; Sat, 17 Aug 2024 06:27:17 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <32HrAZgUKCg06n8v2t11tyr.p1z3rz7-qr8ry010t07.14t@flex--tavip.bounces.google.com>)
- id 1sfGdy-0006U2-4n
- for qemu-devel@nongnu.org; Sat, 17 Aug 2024 06:26:48 -0400
-Received: from mail-yw1-x1149.google.com ([2607:f8b0:4864:20::1149])
+ <363rAZgUKCiAP6RELCKKCHA.8KIMAIQ-9ARAHJKJCJQ.KNC@flex--tavip.bounces.google.com>)
+ id 1sfGeF-0007iS-FM
+ for qemu-devel@nongnu.org; Sat, 17 Aug 2024 06:27:03 -0400
+Received: from mail-pf1-x449.google.com ([2607:f8b0:4864:20::449])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from
- <32HrAZgUKCg06n8v2t11tyr.p1z3rz7-qr8ry010t07.14t@flex--tavip.bounces.google.com>)
- id 1sfGdt-0003IH-Cc
- for qemu-devel@nongnu.org; Sat, 17 Aug 2024 06:26:42 -0400
-Received: by mail-yw1-x1149.google.com with SMTP id
- 00721157ae682-6ad97b9a0fbso54639587b3.0
- for <qemu-devel@nongnu.org>; Sat, 17 Aug 2024 03:26:34 -0700 (PDT)
+ <363rAZgUKCiAP6RELCKKCHA.8KIMAIQ-9ARAHJKJCJQ.KNC@flex--tavip.bounces.google.com>)
+ id 1sfGeA-0003Nl-K8
+ for qemu-devel@nongnu.org; Sat, 17 Aug 2024 06:27:02 -0400
+Received: by mail-pf1-x449.google.com with SMTP id
+ d2e1a72fcca58-71274faa89aso1819569b3a.2
+ for <qemu-devel@nongnu.org>; Sat, 17 Aug 2024 03:26:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1723890393; x=1724495193; darn=nongnu.org;
+ d=google.com; s=20230601; t=1723890413; x=1724495213; darn=nongnu.org;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:from:to:cc:subject:date:message-id:reply-to;
- bh=gYjLNYCYgmz+RuXhYlYlEGx1aZzBL8oMAQt3ozgBUbM=;
- b=MOtUUm6NUoHEj82igudWWXZ2Yqe9b1KHRBGUzet6PvF11kBlVNiBNNdN45c9fRld4S
- 73zQ25j22bfi0SIiahF0H5xEUL3EvC8KLcMtvDsVnyBcoJBGelkuhs7ZbHnzwehjz3SH
- GN+S+FGAVFKlqZabSZn6NUFfadzJYpotpCVnDCeebaDamhqk/BqelW0aRKtmoSrxhCFm
- AqK9FPRtnZdiXhXAfx3E89ZsjgYa6tWNaO2EnNSBhIdKXgP8VWdenat1yfxmMxcgaePJ
- aUaIFBCoK20SpHdTzeKtTz3YsI42Tygc8Q9bvw2VFLN1BTgRTHYzqgbAIZu6tK2dsD8g
- 5EeQ==
+ bh=KtjXebZCukHMKlUFxpvcXxmLOzDPD6D4WbOdIn8vIcU=;
+ b=L9Q09kf/bBhLkPCOk2HHXyiKH1etFP+PCKJ3SsW4AVsjOWztwiIfOw3jkrvpazxA8P
+ oO7Z+N9OvZbtODgTgGYQIF9wDQ7Vb89D0eoBcklE2XLybSm07J2ACsUwk585YMQOtA1f
+ bOCByKWV13Yqz2MZTycQRGkq6z29bknBrTqy/JlVrweq4lFCaGJWGfTpJmIyecxvdbe7
+ IdN+5VboQijLHV++L23vWVKxMHYUO7ju2P6SjhwOAKPk4m1crg+pWkPqsvr68uEhnN58
+ CVghk+54G0tTx+6us7l/2jVx2GB/ysxz8dBwt4c4+pRAy1/HVObxXziW/5OSKYqnxgy/
+ 1Rcw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1723890393; x=1724495193;
+ d=1e100.net; s=20230601; t=1723890413; x=1724495213;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=gYjLNYCYgmz+RuXhYlYlEGx1aZzBL8oMAQt3ozgBUbM=;
- b=PYqRW/r4IMONHwKxizcWiiDBJE66sNy9UdIuqBUPra8J25hC5qylvMnBd/YPQCi7Ie
- lnpEwIwElsG1QGw04E1ACKF84FRLbhimSQB9koBTfJ19HE4Xkh9XR4aeIEBdGNy79XBG
- jPx3jWsu0lteidpGRcqggTagIzy4KUSbRa/5MvocKpAmSfO5YcVXXE4uxicpa2Wu61BC
- Tu10PJdRmr/z0lTgFTcucAIggv2Chu/SmUm4vKjRpgt+MXLK7UMA8eVofR+zTog0ttno
- X9RGRhNKDSNElhuL9iLyLdZdDl5alL7uH1la85Z2D8ghALdXvUF6Hus9SMtOuzjgtoxo
- AQwA==
-X-Gm-Message-State: AOJu0YzOOpjaHuWXqukNnkvzOp05FQEnUf0cFmAnT7VAQXkxKIpnrDNO
- o9EdYk3OzaHXgY28R4MnkFX8Ydg6aJeWjL6u/ERtGcRWTQAwJrfrBu/R/fwh41PATT8ggZMmeEP
- iZPKgImJJEZBTdM+t3BRZpmm8bwDzCKE5ubsq4J/XLHTMrPILlzGUvp53em2IHzSZwQbpQoJ5gF
- UuQBi1T7sRCDGE9/wMIWe7cUIZNg==
+ bh=KtjXebZCukHMKlUFxpvcXxmLOzDPD6D4WbOdIn8vIcU=;
+ b=Relo7J6ERCRr8yTBARq2OrxguDnIOznM/QGQdRj+rrD4i0sx2JAH8CPq239JaKpDco
+ xVwfrt8clU5T7yIkkb4jUBsO0wOnY3L//56EcNd0cUxo80H1Jn/gkz2J+qdEcmJsOve/
+ fvL+oPUZzItogr1P/Z42itzV6gx6GYMIQf6jn07aP8EifJ6NysB0MkbluLBosfiJP7Dn
+ jjbB337aq8rmah+u496/FPrZhThMM/TwylDGw1+p6JgxIW/NRSu0HJ34R/0dYluobJWS
+ L6zTvhywOWLzQsWGL5lU0C9FizGR9YgQ8O6p7AWMgkIGMinTjKjCTGHoOlKUkvKnt9O9
+ j2Dw==
+X-Gm-Message-State: AOJu0YwGknN2bIID61afHuo+pJmwjypFsaSNn8fqfCpQAn2CMJeKG10j
+ +lExVoqcpKP1m28ZJxWIMewgGOzh6LZuOnItRbl9M7vsHzeLHZwEGbZzfz91BHAXCSoQhD4G4br
+ 0qx6J5+R0JywnkgKIboqmDPoNQRFxsvZmjUWHGWOireRG4qo0o02ygpKpIHXVzhEjSzaLTIE+zk
+ pu0vqexX6Hs+fedSZ+w8QN6W3d8A==
 X-Received: from warp10.c.googlers.com ([fda3:e722:ac3:cc00:24:72f4:c0a8:750])
- (user=tavip job=sendgmr) by 2002:a05:690c:2b13:b0:673:b39a:92f2
- with SMTP id
- 00721157ae682-6b1baeae4ccmr303877b3.7.1723890392821; Sat, 17 Aug 2024
- 03:26:32 -0700 (PDT)
-Date: Sat, 17 Aug 2024 03:25:56 -0700
+ (user=tavip job=sendgmr) by 2002:aa7:8145:0:b0:710:4d4d:5ef1 with
+ SMTP id
+ d2e1a72fcca58-713c525b48bmr22432b3a.4.1723890411263; Sat, 17 Aug 2024
+ 03:26:51 -0700 (PDT)
+Date: Sat, 17 Aug 2024 03:26:06 -0700
 In-Reply-To: <20240817102606.3996242-1-tavip@google.com>
 Mime-Version: 1.0
 References: <20240817102606.3996242-1-tavip@google.com>
 X-Mailer: git-send-email 2.46.0.184.g6999bdac58-goog
-Message-ID: <20240817102606.3996242-14-tavip@google.com>
-Subject: [RFC PATCH v2 13/23] test/unit: add i2c-tester
+Message-ID: <20240817102606.3996242-24-tavip@google.com>
+Subject: [RFC PATCH v2 23/23] hw/arm: add RT595-EVK board
 From: Octavian Purdila <tavip@google.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, stefanst@google.com, pbonzini@redhat.com, 
@@ -106,9 +106,9 @@ Cc: qemu-arm@nongnu.org, stefanst@google.com, pbonzini@redhat.com,
  alistair@alistair23.me, berrange@redhat.com, philmd@linaro.org, 
  jsnow@redhat.com, crosa@redhat.com
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1149;
- envelope-from=32HrAZgUKCg06n8v2t11tyr.p1z3rz7-qr8ry010t07.14t@flex--tavip.bounces.google.com;
- helo=mail-yw1-x1149.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::449;
+ envelope-from=363rAZgUKCiAP6RELCKKCHA.8KIMAIQ-9ARAHJKJCJQ.KNC@flex--tavip.bounces.google.com;
+ helo=mail-pf1-x449.google.com
 X-Spam_score_int: -95
 X-Spam_score: -9.6
 X-Spam_bar: ---------
@@ -116,7 +116,7 @@ X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
+ USER_IN_DEF_DKIM_WL=-7.5 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -131,27 +131,27 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: MnDSBwJkbfy1
+X-TUID: uQfy/sCWMpsu
 
-Add a simple i2c peripheral to be used for testing I2C device
-models. The peripheral has a fixed number of registers that can be
-read and written.
+Add basic support for the RT595-EVK board, enough to be able to run
+the NXP's microXpresso SDK hello world example.
 
 Signed-off-by: Octavian Purdila <tavip@google.com>
 ---
- tests/unit/i2c_tester.h |  30 +++++++++++
- tests/unit/i2c_tester.c | 108 ++++++++++++++++++++++++++++++++++++++++
- 2 files changed, 138 insertions(+)
- create mode 100644 tests/unit/i2c_tester.h
- create mode 100644 tests/unit/i2c_tester.c
+ hw/arm/rt595-evk.c | 64 ++++++++++++++++++++++++++++++++++++++++++++++
+ hw/arm/Kconfig     |  5 ++++
+ hw/arm/meson.build |  1 +
+ 3 files changed, 70 insertions(+)
+ create mode 100644 hw/arm/rt595-evk.c
 
-diff --git a/tests/unit/i2c_tester.h b/tests/unit/i2c_tester.h
+diff --git a/hw/arm/rt595-evk.c b/hw/arm/rt595-evk.c
 new file mode 100644
-index 0000000000..14cf2ead36
+index 0000000000..e5daecc8b8
 --- /dev/null
-+++ b/tests/unit/i2c_tester.h
-@@ -0,0 +1,30 @@
++++ b/hw/arm/rt595-evk.c
+@@ -0,0 +1,64 @@
 +/*
++ * i.MX RT595 EVK
 + *
 + * Copyright (c) 2024 Google LLC
 + *
@@ -160,141 +160,85 @@ index 0000000000..14cf2ead36
 + * This work is licensed under the terms of the GNU GPL, version 2 or later.
 + * See the COPYING file in the top-level directory.
 + */
-+
-+#ifndef TESTS_UNIT_I2C_TESTER_H
-+#define TESTS_UNIT_I2C_TESTER_H
 +
 +#include "qemu/osdep.h"
-+#include "hw/i2c/i2c.h"
-+#include "hw/irq.h"
-+
-+#define I2C_TESTER_NUM_REGS    0x31
-+
-+#define TYPE_I2C_TESTER "i2c_tester"
-+#define I2C_TESTER(obj) OBJECT_CHECK(I2cTesterState, (obj), TYPE_I2C_TESTER)
-+
-+typedef struct {
-+    I2CSlave i2c;
-+    bool set_reg_idx;
-+    uint8_t reg_idx;
-+    uint8_t regs[I2C_TESTER_NUM_REGS];
-+} I2cTesterState;
-+
-+#endif /* TESTS_UNIT_I2C_TESTER_H */
-diff --git a/tests/unit/i2c_tester.c b/tests/unit/i2c_tester.c
-new file mode 100644
-index 0000000000..2e4314fe6e
---- /dev/null
-+++ b/tests/unit/i2c_tester.c
-@@ -0,0 +1,108 @@
-+/*
-+ * Simple I2C peripheral for testing I2C device models.
-+ *
-+ * Copyright (c) 2024 Google LLC
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or later.
-+ * See the COPYING file in the top-level directory.
-+ */
-+
-+#include "i2c_tester.h"
++#include "elf.h"
++#include "exec/address-spaces.h"
++#include "hw/loader.h"
++#include "hw/sysbus.h"
++#include "hw/boards.h"
 +#include "qemu/log.h"
-+#include "qemu/module.h"
++#include "hw/arm/armv7m.h"
++#include "hw/arm/boot.h"
++#include "qapi/error.h"
++#include "hw/arm/rt500.h"
++#include "hw/qdev-clock.h"
++#include "sysemu/reset.h"
 +
-+static void i2c_tester_reset(DeviceState *ds)
++static void rt595_evk_reset(MachineState *ms, ShutdownCause reason)
 +{
-+    I2cTesterState *s = I2C_TESTER(ds);
++    /*
++     * CPU reset is not done by default, we need to do it manually when the
++     * machine is reset.
++     */
++    cpu_reset(first_cpu);
 +
-+    s->set_reg_idx = false;
-+    s->reg_idx     = 0;
-+    memset(s->regs, 0, I2C_TESTER_NUM_REGS);
++    qemu_devices_reset(reason);
 +}
 +
-+static int i2c_tester_event(I2CSlave *i2c, enum i2c_event event)
++static void rt595_evk_init(MachineState *ms)
 +{
-+    I2cTesterState *s = I2C_TESTER(i2c);
++    RT500State *s;
++    Clock *sysclk;
 +
-+    if (event == I2C_START_SEND) {
-+        s->set_reg_idx = true;
++    sysclk = clock_new(OBJECT(ms), "SYSCLK");
++    clock_set_hz(sysclk, 200000000);
++
++    s = RT500(object_new(TYPE_RT500));
++    qdev_connect_clock_in(DEVICE(s), "sysclk", sysclk);
++    object_property_add_child(OBJECT(ms), "soc", OBJECT(s));
++    sysbus_realize_and_unref(SYS_BUS_DEVICE(s), &error_fatal);
++
++    if (ms->kernel_filename) {
++        armv7m_load_kernel(ARM_CPU(first_cpu), ms->kernel_filename, 0, 0);
 +    }
-+
-+    return 0;
 +}
 +
-+static uint8_t i2c_tester_rx(I2CSlave *i2c)
++static void rt595_evk_machine_init(MachineClass *mc)
 +{
-+    I2cTesterState *s = I2C_TESTER(i2c);
++    mc->desc  = "RT595 EVK Machine (ARM Cortex-M33)";
++    mc->init  = rt595_evk_init;
++    mc->reset = rt595_evk_reset;
 +
-+    if (s->reg_idx >= I2C_TESTER_NUM_REGS) {
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: invalid reg 0x%02x\n", __func__,
-+                      s->reg_idx);
-+        return I2C_NACK;
-+    }
-+
-+    return s->regs[s->reg_idx];
++    mc->ignore_memory_transaction_failures = true;
 +}
 +
-+static int i2c_tester_tx(I2CSlave *i2c, uint8_t data)
-+{
-+    I2cTesterState *s = I2C_TESTER(i2c);
++DEFINE_MACHINE("rt595-evk", rt595_evk_machine_init);
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index 7ffece3dec..26ec3d391a 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -720,3 +720,8 @@ config RT500
+     select RT500_CLKCTL1
+     select FLEXSPI
+     select RT500_RSTCTL
 +
-+    if (s->set_reg_idx) {
-+        /* Setting the register in which the operation will be done. */
-+        s->reg_idx = data;
-+        s->set_reg_idx = false;
-+        return 0;
-+    }
-+
-+    if (s->reg_idx >= I2C_TESTER_NUM_REGS) {
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: invalid reg 0x%02x\n", __func__,
-+                      s->reg_idx);
-+        return I2C_NACK;
-+    }
-+
-+    /* Write reg data. */
-+    s->regs[s->reg_idx] = data;
-+
-+    return 0;
-+}
-+
-+static void i2c_tester_init(Object *obj)
-+{
-+}
-+
-+static void i2c_tester_realize(DeviceState *ds, Error **errp)
-+{
-+}
-+
-+static void i2c_tester_unrealize(DeviceState *dev)
-+{
-+}
-+
-+static void i2c_tester_class_init(ObjectClass *oc, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(oc);
-+    I2CSlaveClass *isc = I2C_SLAVE_CLASS(oc);
-+
-+    dc->reset = i2c_tester_reset;
-+    dc->realize   = i2c_tester_realize;
-+    dc->unrealize = i2c_tester_unrealize;
-+
-+    isc->event = i2c_tester_event;
-+    isc->recv = i2c_tester_rx;
-+    isc->send = i2c_tester_tx;
-+}
-+
-+static const TypeInfo i2c_tester_types[] = {
-+    {
-+        .name = TYPE_I2C_TESTER,
-+        .parent = TYPE_I2C_SLAVE,
-+        .instance_size = sizeof(I2cTesterState),
-+        .instance_init = i2c_tester_init,
-+        .class_init = i2c_tester_class_init
-+    },
-+};
-+
-+DEFINE_TYPES(i2c_tester_types);
++config RT595_EVK
++    bool
++    default y
++    select RT500
+diff --git a/hw/arm/meson.build b/hw/arm/meson.build
+index 7d827d512c..9792c93142 100644
+--- a/hw/arm/meson.build
++++ b/hw/arm/meson.build
+@@ -60,6 +60,7 @@ arm_ss.add(when: 'CONFIG_FSL_IMX6UL', if_true: files('fsl-imx6ul.c', 'mcimx6ul-e
+ arm_ss.add(when: 'CONFIG_NRF51_SOC', if_true: files('nrf51_soc.c'))
+ arm_ss.add(when: 'CONFIG_XEN', if_true: files('xen_arm.c'))
+ arm_ss.add(when: 'CONFIG_RT500', if_true: files('rt500.c'))
++arm_ss.add(when: 'CONFIG_RT595_EVK', if_true: files('rt595-evk.c'))
+ 
+ system_ss.add(when: 'CONFIG_ARM_SMMUV3', if_true: files('smmu-common.c'))
+ system_ss.add(when: 'CONFIG_CHEETAH', if_true: files('palm.c'))
 -- 
 2.46.0.184.g6999bdac58-goog
 

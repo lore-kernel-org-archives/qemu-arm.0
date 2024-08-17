@@ -1,103 +1,104 @@
-Received: by 2002:a17:504:9188:b0:1be9:327d:8ee3 with SMTP id i8csp1491012njf;
-        Sat, 17 Aug 2024 03:30:30 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUS22f5mREIGPQWOXT2oFExkT58ZGQMDyHViHTeMwqk7pOOY/Ik0j0FPgxxacCFUe4nSDlqTrh2+RPgp1+Vkdlc1dc6JZnp
-X-Google-Smtp-Source: AGHT+IGUgHt5cQhUjiWNNh99xe97eqIehyhWn+ch09QbDq0fjAujuLJ/OKebQux4ZNn3RTXcckxY
-X-Received: by 2002:a05:620a:4146:b0:7a2:32e:3c40 with SMTP id af79cd13be357-7a64c75a893mr243203185a.10.1723890629868;
-        Sat, 17 Aug 2024 03:30:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1723890629; cv=none;
+Received: by 2002:a17:504:9188:b0:1be9:327d:8ee3 with SMTP id i8csp1491185njf;
+        Sat, 17 Aug 2024 03:31:21 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWINqnRfSg+L/5Ci2cB6lxzrNseXjL9K+r1VtdjOHl94AFJYBZjxLHtYvSjSICqEZH0UxE74GsONGyOTk3disb4Tfv0M7cq
+X-Google-Smtp-Source: AGHT+IGGegurrWxGgj7HgXMDniaaOFdQngEDeVN4tX50PbhgzCh8qZrPkEZ86r4eA4sAsmIZRGF/
+X-Received: by 2002:a05:622a:2519:b0:447:ea30:d45f with SMTP id d75a77b69052e-4537420c737mr62861981cf.16.1723890681053;
+        Sat, 17 Aug 2024 03:31:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1723890681; cv=none;
         d=google.com; s=arc-20160816;
-        b=zyMGVyufMiIpH+IHT96S4MMH7kVwmmGtfTfEGZ7PKAaWpITDYE0B14sSaHKkUfnowy
-         Qyhic/NbgOjp3lVFbDmOYzPX34j8VUWDlSbbAp0g1kO34J0cMSHbrQyglfLD0NfJIPj0
-         tEvto4wr4831MobNS2sIxx3ExO8YYMeuHFENck5BrgePW4+wTi6sRwa47K5ALECWkJ3a
-         AaegR64JzLcqfJq70TBY3Gc9eFj1dHJce7QfQpgtFyQfOA8OrOolLIvE3JGQlsLFOxRv
-         SvdqnIa1l2NFGCGGCPYmzXzJW4t7kplFwXM0jE4DUJ3J6N8ivkX8JaIVOiVg01qtbKt6
-         Mdcg==
+        b=QJvyzECNIpu0+GQSCWzbY0qFi39UnM37w90wS+qxEXzbx2KJ9TFFzg8oZVpYvwW6O6
+         a6dkzYJknvd/REvzRiFftS7/Tz93VYh793M+prAAwl8gAyyJU/QcOf2H7iYOKOSFfihp
+         2wPX4MD3kpqf8qgIhl24rKDROD0Hsz5l5sebw6EvNG7xpFs2HIV+rrd0kDxjXU9cvNVx
+         GZNPA3REXgltRZlnxiD3Hl+GOounjWcTB/xCJu/Mb1T2vK93mFLcAJCvL8IaJmUQCJZh
+         WpUjWhAZotjvTwCUvUgt4OJMt/WJKpS1ra3OV+rqY/bCYPR5vLu55cO2rNvT68ylV1n7
+         jfaQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
          :references:mime-version:in-reply-to:date:dkim-signature;
-        bh=38g+fbRWO13xxf5AM82paICw3UIUSyYfVnBzCyAz1VU=;
+        bh=4xmQFiBvWJblW1g2pG0pKk8bvOpbtWmtMIrUPT8sTQo=;
         fh=pITIqJh0Z5XaT4QxI/zJAgHBZTuNeZPw20HbjxZRX7I=;
-        b=fFj1wsoToYgKPkqkl/mfQOK58cBwPDJl1WXePRdi1K149CZl7EIAat2MSvuzsWAGtL
-         MSF1e53rlfKXLM9RBR9slrK+MEWLFGKhmGhZG7/cbegsYROSpQBEk6fBgHWLsZ54dEdm
-         nRKpykspo2f5waIxSnjkeY/oa1Eqoxpa0zQPCxVQrM0+E3bZhFdtbF9F4EA76HFOfG9A
-         YAZU6Nb/eYtlqP2hTqnBv273MQWgFyolfoUj0uVrIPAnzyp2SFLK7QC+l520ralHKgrI
-         rh2hZOBV6CLB3Bwc6CSA+BLwQvukgobHFXfE290CT4o9u1c/o6LNvcbJoEZ+fK6EyMFy
-         12pQ==;
+        b=kqhgSqMWS11+w+PJZ9xOjbp4IRmTMEIhSWdgNnj5Ta4yKl8HWsrtfOtIH3N3C8RMo6
+         vzNeqELmRUVpKaoD2n1elMyFRQuC660977g3snzq22Yu7v/K0C9qtD0/c1THuYDuKQng
+         aMeMpKnJr0ifjO9IVb53awrc8Xt0gaQ6NvdlkFM6ahpa0ZqjgVEkFYfUz0nG2+CWq9uk
+         9wzoKoWeZ3Ufu1bgOEFxeznFQretFClRxF6/6m0VL7vC/DTkTYwt1QvSdfbxT1LlWEPo
+         1GJmXNUz7jgyetHZpQXufHU3T07GGIxgXHoak5mm+Rch0bcUsf5bwM7RO3WYQEWM+IJU
+         W+Qg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=fmmiZxtr;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@google.com header.s=20230601 header.b=rucxk4iM;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7a4ff12493csi590840185a.701.2024.08.17.03.30.29
+        by mx.google.com with ESMTPS id d75a77b69052e-4536a06d3f3si60830381cf.314.2024.08.17.03.31.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 17 Aug 2024 03:30:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sat, 17 Aug 2024 03:31:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=fmmiZxtr;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@google.com header.s=20230601 header.b=rucxk4iM;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sfGeK-000875-Di; Sat, 17 Aug 2024 06:27:08 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1sfGeO-0008PB-BS; Sat, 17 Aug 2024 06:27:12 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <31nrAZgUKCAs4l6t0rzzrwp.nzx1px5-l2xyzyry5.z2r@flex--tavip.bounces.google.com>)
- id 1sfGdx-0006Sr-7U
- for qemu-arm@nongnu.org; Sat, 17 Aug 2024 06:26:47 -0400
-Received: from mail-pg1-x549.google.com ([2607:f8b0:4864:20::549])
+ <36XrAZgUKCh4N4PCJAIIAF8.6IGK8GO-78P8FHIHAHO.ILA@flex--tavip.bounces.google.com>)
+ id 1sfGeF-0007ib-G7
+ for qemu-devel@nongnu.org; Sat, 17 Aug 2024 06:27:03 -0400
+Received: from mail-pf1-x44a.google.com ([2607:f8b0:4864:20::44a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from
- <31nrAZgUKCAs4l6t0rzzrwp.nzx1px5-l2xyzyry5.z2r@flex--tavip.bounces.google.com>)
- id 1sfGdq-0003Hb-Ki
- for qemu-arm@nongnu.org; Sat, 17 Aug 2024 06:26:44 -0400
-Received: by mail-pg1-x549.google.com with SMTP id
- 41be03b00d2f7-6507e2f0615so2314300a12.1
- for <qemu-arm@nongnu.org>; Sat, 17 Aug 2024 03:26:31 -0700 (PDT)
+ <36XrAZgUKCh4N4PCJAIIAF8.6IGK8GO-78P8FHIHAHO.ILA@flex--tavip.bounces.google.com>)
+ id 1sfGe8-0003NI-Gg
+ for qemu-devel@nongnu.org; Sat, 17 Aug 2024 06:27:02 -0400
+Received: by mail-pf1-x44a.google.com with SMTP id
+ d2e1a72fcca58-71065f49abeso2527083b3a.3
+ for <qemu-devel@nongnu.org>; Sat, 17 Aug 2024 03:26:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1723890391; x=1724495191; darn=nongnu.org;
+ d=google.com; s=20230601; t=1723890410; x=1724495210; darn=nongnu.org;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:from:to:cc:subject:date:message-id:reply-to;
- bh=38g+fbRWO13xxf5AM82paICw3UIUSyYfVnBzCyAz1VU=;
- b=fmmiZxtroyc33n5Iu6uzKsodai3+2DMWOeQNYkh5czMoxPP0htnzaz40zNzKpZnLaU
- CnJYi7QkoaTPSJLwnxzFhdro+MMLIOYR3aqBRCFIiRMqfYYVspKpgQR3DOec6151AK6J
- ykGPY5NIzDnLZKJRSPL1AJR1sipskVusWVgZN3PQqItLLAeIPrNIQBPOMCDzqB1/gCxK
- K3qyIx+ltlz9wqvNv0ZSixt1CUxdgxZydk2gUAHzLQpRYobSdj9drbUfSUDuEMBmYnK/
- YhEMlaqg0SXBo7xVF0+cHiE2NcyEHmCOCvzj1JfOBIkJY5WsGuM+MfeM3qYGRPwLucLL
- 4fWw==
+ bh=4xmQFiBvWJblW1g2pG0pKk8bvOpbtWmtMIrUPT8sTQo=;
+ b=rucxk4iMpCvbqVGIWHEbo+1syhsbKkajUOO7uSh3DzWZbdSTanrSZ2smf84miRGDB6
+ GYUlg1P+AcKqVNYOSO7vbg67Vbzo+ZSPwV5youB0JhQGGyH2x9sg0YoLU4WRJq/u+2kH
+ YK4vFZa6tJaWV8Do0/zOtLRoqkBk0ATBehaGnldlRRBxm9UYjjb2bH7bpGE5Vdlz3oco
+ Z33Vao08xNUyVz7n7NFm0z9ETc864m12QlRK7lKMj0WsiudV8nld8ZzRDSAgIFqr9wRd
+ Q5NmFBl+5D+NjOHjvl2PEx22pKH/nwsxKK2eGH3sa9Qxw6ntKMUgoro/qSnJ+LheS0Ul
+ 0C+w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1723890391; x=1724495191;
+ d=1e100.net; s=20230601; t=1723890410; x=1724495210;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=38g+fbRWO13xxf5AM82paICw3UIUSyYfVnBzCyAz1VU=;
- b=X2WEF/CNoevfQVfL6irVoy9XbMJBAQBTvqZknnpvTCagOO26Qz44zCIluQD6efpP3z
- V+Mw8dDGU9hINMMqmmvnsGirQlA6vu/3A6XBLfg2xRKyea0h4X6gkZxazvxOxKn404RS
- abvfObtvRQ2Ke24ehLKeyCevOARpv40dl9mI8PeKgLz+SjU563pz1BEImaqDKoZC02OU
- avLPkG0vBjzqfl86ORuq1Var0/fYbW0icLhBMK+8K0YqgPIV3zJOD+1YSvkaGl0G3UB4
- k70uSoHp9+JwXjbH0BxWJXE7b2w3hz9pceCSN5IwUUSpwG2dTa5dhRfQqCwiBiMhMEZT
- 4kqw==
-X-Gm-Message-State: AOJu0YwdJ/FqVjdzAHuGTrHP8vgZZaSjrNTOMFyCSbOHtl7Yv8At5zza
- CHzPNOUEn5ti748Z/hNXu/OPfzqom/4ceJg/PoSagMYV5z/A5gV52cB0l4Y9Nxy3tqPjABQvkA=
- =
+ bh=4xmQFiBvWJblW1g2pG0pKk8bvOpbtWmtMIrUPT8sTQo=;
+ b=DWdnlYI/Sp7ub8jEVDY0NfgPIMbj6/ULUFPvaOtIpoMXthOeMZP9W3AmtYHl/c5CVE
+ /ZO261JCPIpve5zW6oFcXsEDevx4OEg00OWDNMJoy07QBy2cr21k6Dj7BocENaEWThGp
+ xiE+FEyDKfN0vPnTfWbVErnun82Y4GPB/NpBKk2CUp3Rx4Ysk7cOvuBZdZZEA0btNq0v
+ hd8xs8RSshTFX3SB+MWHEF4L34PlJrIhZlghNWBFbQNxa/nZJhYTsH1zU9BlcF2jYDKt
+ m0Kp6Glbace4zrEDRHyWCKlAdHdGjwRAYCRQERIuQCcnD2YIWjZD21dag+FKZt1NkZPO
+ 9+XA==
+X-Gm-Message-State: AOJu0YzK4nxaipWOsk1P6Eh4ahPSRe5WDbmbjLtzv58T05sfejb6HFvp
+ 5K0ezohHdXjSlGZKHDG3kj8yer5mEqiLD2SbSPQaGk/85BQgE4bmPpGzysTvwqcE2UPn5WTy3e5
+ gCyTj3rkT2lnxw5hcuoEOo1raNZ5/WHEqNCdopnYwNsJ7b5cbV3avfGuzorp9tE14eir4A5M5qi
+ HmnpBluke3PqE4AqUTJeeWtM69uA==
 X-Received: from warp10.c.googlers.com ([fda3:e722:ac3:cc00:24:72f4:c0a8:750])
- (user=tavip job=sendgmr) by 2002:a05:6a02:4a3:b0:75f:3d6e:6461
- with SMTP id
- 41be03b00d2f7-7c97af56e6bmr13251a12.6.1723890390748; Sat, 17 Aug 2024
- 03:26:30 -0700 (PDT)
-Date: Sat, 17 Aug 2024 03:25:55 -0700
+ (user=tavip job=sendgmr) by 2002:a62:e70b:0:b0:710:4d06:93b3 with
+ SMTP id
+ d2e1a72fcca58-713c5275e91mr70545b3a.3.1723890409625; Sat, 17 Aug 2024
+ 03:26:49 -0700 (PDT)
+Date: Sat, 17 Aug 2024 03:26:05 -0700
 In-Reply-To: <20240817102606.3996242-1-tavip@google.com>
 Mime-Version: 1.0
 References: <20240817102606.3996242-1-tavip@google.com>
 X-Mailer: git-send-email 2.46.0.184.g6999bdac58-goog
-Message-ID: <20240817102606.3996242-13-tavip@google.com>
-Subject: [RFC PATCH v2 12/23] hw/i2c: add support for flexcomm i2c
+Message-ID: <20240817102606.3996242-23-tavip@google.com>
+Subject: [RFC PATCH v2 22/23] hw/arm: add basic support for the RT500 SoC
 From: Octavian Purdila <tavip@google.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, stefanst@google.com, pbonzini@redhat.com, 
@@ -105,9 +106,9 @@ Cc: qemu-arm@nongnu.org, stefanst@google.com, pbonzini@redhat.com,
  alistair@alistair23.me, berrange@redhat.com, philmd@linaro.org, 
  jsnow@redhat.com, crosa@redhat.com
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::549;
- envelope-from=31nrAZgUKCAs4l6t0rzzrwp.nzx1px5-l2xyzyry5.z2r@flex--tavip.bounces.google.com;
- helo=mail-pg1-x549.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::44a;
+ envelope-from=36XrAZgUKCh4N4PCJAIIAF8.6IGK8GO-78P8FHIHAHO.ILA@flex--tavip.bounces.google.com;
+ helo=mail-pf1-x44a.google.com
 X-Spam_score_int: -95
 X-Spam_score: -9.6
 X-Spam_bar: ---------
@@ -115,54 +116,101 @@ X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
+ USER_IN_DEF_DKIM_WL=-7.5 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: nxr9duTgPAWR
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: +zD3+M5i7Dyo
 
-Add support for NXP's flexcomm i2c. It does not support slave mode or
-DMA.
+Add basic support for the RT500 SoC. It supports enough peripherals to
+run the NXP's microXpresso SDK hello world example.
 
 The patch includes an automatically generated header which contains
-the register layout and helpers.
+peripheral base addreses and interrupt numbers.
 
-The header can be regenerated with the svd-flexcomm-i2c target when
-the build is configured with --enable-mcux-soc-svd.
+The header can be regenerated with the svd-rt500 target when the
+build is configured with --enable-mcux-soc-svd.
 
 Signed-off-by: Octavian Purdila <tavip@google.com>
 ---
- include/hw/arm/svd/flexcomm_i2c.h | 1134 +++++++++++++++++++++++++++++
- include/hw/i2c/flexcomm_i2c.h     |   27 +
- include/hw/misc/flexcomm.h        |    3 +
- hw/i2c/flexcomm_i2c.c             |  207 ++++++
- hw/misc/flexcomm.c                |    6 +
- hw/arm/svd/meson.build            |    3 +
- hw/i2c/meson.build                |    1 +
- hw/i2c/trace-events               |   10 +
- tests/unit/meson.build            |    4 +
- 9 files changed, 1395 insertions(+)
- create mode 100644 include/hw/arm/svd/flexcomm_i2c.h
- create mode 100644 include/hw/i2c/flexcomm_i2c.h
- create mode 100644 hw/i2c/flexcomm_i2c.c
+ include/hw/arm/rt500.h     |  44 +++++
+ include/hw/arm/svd/rt500.h |  65 +++++++
+ hw/arm/rt500.c             | 335 +++++++++++++++++++++++++++++++++++++
+ hw/arm/Kconfig             |   8 +
+ hw/arm/meson.build         |   1 +
+ hw/arm/svd/meson.build     |   4 +
+ 6 files changed, 457 insertions(+)
+ create mode 100644 include/hw/arm/rt500.h
+ create mode 100644 include/hw/arm/svd/rt500.h
+ create mode 100644 hw/arm/rt500.c
 
-diff --git a/include/hw/arm/svd/flexcomm_i2c.h b/include/hw/arm/svd/flexcomm_i2c.h
+diff --git a/include/hw/arm/rt500.h b/include/hw/arm/rt500.h
 new file mode 100644
-index 0000000000..9aecdaa93c
+index 0000000000..66ec82436b
 --- /dev/null
-+++ b/include/hw/arm/svd/flexcomm_i2c.h
-@@ -0,0 +1,1134 @@
++++ b/include/hw/arm/rt500.h
+@@ -0,0 +1,44 @@
++/*
++ * i.MX RT500 platforms.
++ *
++ * Copyright (c) 2024 Google LLC
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ *
++ * Contributions after 2012-01-13 are licensed under the terms of the
++ * GNU GPL, version 2 or (at your option) any later version.
++ */
++
++#ifndef HW_ARM_RT500_H
++#define HW_ARM_RT500_H
++
++#include "hw/arm/armv7m.h"
++#include "hw/misc/flexcomm.h"
++#include "hw/misc/rt500_clkctl0.h"
++#include "hw/misc/rt500_clkctl1.h"
++#include "hw/ssi/flexspi.h"
++#include "hw/misc/rt500_rstctl.h"
++
++#define TYPE_RT500 "rt500"
++#define RT500(obj) OBJECT_CHECK(RT500State, (obj), TYPE_RT500)
++
++#define RT500_FLEXCOMM_NUM (17)
++#define RT500_FLEXSPI_NUM (2)
++#define RT500_RSTCTL_NUM (2)
++
++typedef struct RT500State {
++    SysBusDevice parent_obj;
++
++    ARMv7MState armv7m;
++    MemoryRegion *mem;
++    FlexcommState flexcomm[RT500_FLEXCOMM_NUM];
++    RT500ClkCtl0State clkctl0;
++    RT500ClkCtl1State clkctl1;
++    FlexSpiState flexspi[RT500_FLEXSPI_NUM];
++    RT500RstCtlState rstctl[RT500_RSTCTL_NUM];
++
++    Clock *sysclk;
++    Clock *refclk;
++} RT500State;
++
++#endif /* HW_ARM_RT500_H */
+diff --git a/include/hw/arm/svd/rt500.h b/include/hw/arm/svd/rt500.h
+new file mode 100644
+index 0000000000..5160270b5f
+--- /dev/null
++++ b/include/hw/arm/svd/rt500.h
+@@ -0,0 +1,65 @@
 +/*
 + * Copyright 2016-2023 NXP SPDX-License-Identifier: BSD-3-Clause
 + *
@@ -172,1195 +220,70 @@ index 0000000000..9aecdaa93c
 +
 +#include "hw/registerfields.h"
 +
-+/* I2C Bus Interface */
-+#define FLEXCOMM_I2C_REGS_NO (1024)
-+
-+/* Configuration Register */
-+REG32(FLEXCOMM_I2C_CFG, 2048);
-+/* Master Enable */
-+FIELD(FLEXCOMM_I2C_CFG, MSTEN, 0, 1);
-+/* Slave Enable */
-+FIELD(FLEXCOMM_I2C_CFG, SLVEN, 1, 1);
-+/* Monitor Enable */
-+FIELD(FLEXCOMM_I2C_CFG, MONEN, 2, 1);
-+/* I2C bus Time-out Enable */
-+FIELD(FLEXCOMM_I2C_CFG, TIMEOUTEN, 3, 1);
-+/* Monitor function Clock Stretching */
-+FIELD(FLEXCOMM_I2C_CFG, MONCLKSTR, 4, 1);
-+/* High Speed mode Capable enable */
-+FIELD(FLEXCOMM_I2C_CFG, HSCAPABLE, 5, 1);
-+
-+/* Status Register */
-+REG32(FLEXCOMM_I2C_STAT, 2052);
-+/* Master Pending */
-+FIELD(FLEXCOMM_I2C_STAT, MSTPENDING, 0, 1);
-+/* Master State code */
-+FIELD(FLEXCOMM_I2C_STAT, MSTSTATE, 1, 3);
-+/* Master Arbitration Loss flag */
-+FIELD(FLEXCOMM_I2C_STAT, MSTARBLOSS, 4, 1);
-+/* Master Start/Stop Error flag */
-+FIELD(FLEXCOMM_I2C_STAT, MSTSTSTPERR, 6, 1);
-+/* Slave Pending */
-+FIELD(FLEXCOMM_I2C_STAT, SLVPENDING, 8, 1);
-+/* Slave State */
-+FIELD(FLEXCOMM_I2C_STAT, SLVSTATE, 9, 2);
-+/* Slave Not Stretching */
-+FIELD(FLEXCOMM_I2C_STAT, SLVNOTSTR, 11, 1);
-+/* Slave address match Index T */
-+FIELD(FLEXCOMM_I2C_STAT, SLVIDX, 12, 2);
-+/* Slave selected flag */
-+FIELD(FLEXCOMM_I2C_STAT, SLVSEL, 14, 1);
-+/* Slave Deselected flag */
-+FIELD(FLEXCOMM_I2C_STAT, SLVDESEL, 15, 1);
-+/* Monitor Ready */
-+FIELD(FLEXCOMM_I2C_STAT, MONRDY, 16, 1);
-+/* Monitor Overflow flag */
-+FIELD(FLEXCOMM_I2C_STAT, MONOV, 17, 1);
-+/* Monitor Active flag */
-+FIELD(FLEXCOMM_I2C_STAT, MONACTIVE, 18, 1);
-+/* Monitor Idle flag */
-+FIELD(FLEXCOMM_I2C_STAT, MONIDLE, 19, 1);
-+/* Event Time-out Interrupt flag */
-+FIELD(FLEXCOMM_I2C_STAT, EVENTTIMEOUT, 24, 1);
-+/* SCL Time-out Interrupt flag */
-+FIELD(FLEXCOMM_I2C_STAT, SCLTIMEOUT, 25, 1);
-+
-+/* Interrupt Enable Set Register */
-+REG32(FLEXCOMM_I2C_INTENSET, 2056);
-+/* Master Pending interrupt Enable */
-+FIELD(FLEXCOMM_I2C_INTENSET, MSTPENDINGEN, 0, 1);
-+/* Master Arbitration Loss interrupt Enable */
-+FIELD(FLEXCOMM_I2C_INTENSET, MSTARBLOSSEN, 4, 1);
-+/* Master Start/Stop Error interrupt Enable */
-+FIELD(FLEXCOMM_I2C_INTENSET, MSTSTSTPERREN, 6, 1);
-+/* Slave Pending interrupt Enable */
-+FIELD(FLEXCOMM_I2C_INTENSET, SLVPENDINGEN, 8, 1);
-+/* Slave Not Stretching interrupt Enable */
-+FIELD(FLEXCOMM_I2C_INTENSET, SLVNOTSTREN, 11, 1);
-+/* Slave Deselect interrupt Enable */
-+FIELD(FLEXCOMM_I2C_INTENSET, SLVDESELEN, 15, 1);
-+/* Monitor data Ready interrupt Enable */
-+FIELD(FLEXCOMM_I2C_INTENSET, MONRDYEN, 16, 1);
-+/* Monitor Overrun interrupt Enable */
-+FIELD(FLEXCOMM_I2C_INTENSET, MONOVEN, 17, 1);
-+/* Monitor Idle interrupt Enable */
-+FIELD(FLEXCOMM_I2C_INTENSET, MONIDLEEN, 19, 1);
-+/* Event Time-out interrupt Enable */
-+FIELD(FLEXCOMM_I2C_INTENSET, EVENTTIMEOUTEN, 24, 1);
-+/* SCL Time-out interrupt Enable */
-+FIELD(FLEXCOMM_I2C_INTENSET, SCLTIMEOUTEN, 25, 1);
-+
-+/* Interrupt Enable Clear Register */
-+REG32(FLEXCOMM_I2C_INTENCLR, 2060);
-+/* Master Pending interrupt clear */
-+FIELD(FLEXCOMM_I2C_INTENCLR, MSTPENDINGCLR, 0, 1);
-+/* Master Arbitration Loss interrupt clear */
-+FIELD(FLEXCOMM_I2C_INTENCLR, MSTARBLOSSCLR, 4, 1);
-+/* Master Start/Stop Error interrupt clear */
-+FIELD(FLEXCOMM_I2C_INTENCLR, MSTSTSTPERRCLR, 6, 1);
-+/* Slave Pending interrupt clear */
-+FIELD(FLEXCOMM_I2C_INTENCLR, SLVPENDINGCLR, 8, 1);
-+/* Slave Not Stretching interrupt clear */
-+FIELD(FLEXCOMM_I2C_INTENCLR, SLVNOTSTRCLR, 11, 1);
-+/* Slave Deselect interrupt clear */
-+FIELD(FLEXCOMM_I2C_INTENCLR, SLVDESELCLR, 15, 1);
-+/* Monitor data Ready interrupt clear */
-+FIELD(FLEXCOMM_I2C_INTENCLR, MONRDYCLR, 16, 1);
-+/* Monitor Overrun interrupt clear */
-+FIELD(FLEXCOMM_I2C_INTENCLR, MONOVCLR, 17, 1);
-+/* Monitor Idle interrupt clear */
-+FIELD(FLEXCOMM_I2C_INTENCLR, MONIDLECLR, 19, 1);
-+/* Event time-out interrupt clear */
-+FIELD(FLEXCOMM_I2C_INTENCLR, EVENTTIMEOUTCLR, 24, 1);
-+/* SCL time-out interrupt clear */
-+FIELD(FLEXCOMM_I2C_INTENCLR, SCLTIMEOUTCLR, 25, 1);
-+
-+/* Time-out Register */
-+REG32(FLEXCOMM_I2C_TIMEOUT, 2064);
-+/* Time-out time value, the bottom 4 bits */
-+FIELD(FLEXCOMM_I2C_TIMEOUT, TOMIN, 0, 4);
-+/* Time-out time value */
-+FIELD(FLEXCOMM_I2C_TIMEOUT, TO, 4, 12);
-+
-+/* Clock Divider Register */
-+REG32(FLEXCOMM_I2C_CLKDIV, 2068);
-+/* Divider Value */
-+FIELD(FLEXCOMM_I2C_CLKDIV, DIVVAL, 0, 16);
-+
-+/* Interrupt Status Register */
-+REG32(FLEXCOMM_I2C_INTSTAT, 2072);
-+/* Master Pending */
-+FIELD(FLEXCOMM_I2C_INTSTAT, MSTPENDING, 0, 1);
-+/* Master Arbitration Loss flag */
-+FIELD(FLEXCOMM_I2C_INTSTAT, MSTARBLOSS, 4, 1);
-+/* Master Start/Stop Error flag */
-+FIELD(FLEXCOMM_I2C_INTSTAT, MSTSTSTPERR, 6, 1);
-+/* Slave Pending */
-+FIELD(FLEXCOMM_I2C_INTSTAT, SLVPENDING, 8, 1);
-+/* Slave Not Stretching status */
-+FIELD(FLEXCOMM_I2C_INTSTAT, SLVNOTSTR, 11, 1);
-+/* Slave Deselected flag */
-+FIELD(FLEXCOMM_I2C_INTSTAT, SLVDESEL, 15, 1);
-+/* Monitor Ready */
-+FIELD(FLEXCOMM_I2C_INTSTAT, MONRDY, 16, 1);
-+/* Monitor Overflow flag */
-+FIELD(FLEXCOMM_I2C_INTSTAT, MONOV, 17, 1);
-+/* Monitor Idle flag */
-+FIELD(FLEXCOMM_I2C_INTSTAT, MONIDLE, 19, 1);
-+/* Event Time-out Interrupt flag */
-+FIELD(FLEXCOMM_I2C_INTSTAT, EVENTTIMEOUT, 24, 1);
-+/* SCL Time-out Interrupt flag */
-+FIELD(FLEXCOMM_I2C_INTSTAT, SCLTIMEOUT, 25, 1);
-+
-+/* Master Control Register */
-+REG32(FLEXCOMM_I2C_MSTCTL, 2080);
-+/* Master Continue(write-only) */
-+FIELD(FLEXCOMM_I2C_MSTCTL, MSTCONTINUE, 0, 1);
-+/* Master Start control(write-only) */
-+FIELD(FLEXCOMM_I2C_MSTCTL, MSTSTART, 1, 1);
-+/* Master Stop control(write-only) */
-+FIELD(FLEXCOMM_I2C_MSTCTL, MSTSTOP, 2, 1);
-+/* Master DMA enable */
-+FIELD(FLEXCOMM_I2C_MSTCTL, MSTDMA, 3, 1);
-+
-+/* Master Timing Register */
-+REG32(FLEXCOMM_I2C_MSTTIME, 2084);
-+/* Master SCL Low time */
-+FIELD(FLEXCOMM_I2C_MSTTIME, MSTSCLLOW, 0, 3);
-+/* Master SCL High time */
-+FIELD(FLEXCOMM_I2C_MSTTIME, MSTSCLHIGH, 4, 3);
-+
-+/* Master Data Register */
-+REG32(FLEXCOMM_I2C_MSTDAT, 2088);
-+/* Master function data register */
-+FIELD(FLEXCOMM_I2C_MSTDAT, DATA, 0, 8);
-+
-+/* Slave Control Register */
-+REG32(FLEXCOMM_I2C_SLVCTL, 2112);
-+/* Slave Continue */
-+FIELD(FLEXCOMM_I2C_SLVCTL, SLVCONTINUE, 0, 1);
-+/* Slave NACK */
-+FIELD(FLEXCOMM_I2C_SLVCTL, SLVNACK, 1, 1);
-+/* Slave DMA enable */
-+FIELD(FLEXCOMM_I2C_SLVCTL, SLVDMA, 3, 1);
-+/* Automatic Acknowledge */
-+FIELD(FLEXCOMM_I2C_SLVCTL, AUTOACK, 8, 1);
-+/* Automatic Match Read */
-+FIELD(FLEXCOMM_I2C_SLVCTL, AUTOMATCHREAD, 9, 1);
-+
-+/* Slave Data Register */
-+REG32(FLEXCOMM_I2C_SLVDAT, 2116);
-+/* Slave function data register */
-+FIELD(FLEXCOMM_I2C_SLVDAT, DATA, 0, 8);
-+
-+/* Slave Address Register */
-+REG32(FLEXCOMM_I2C_SLVADR0, 2120);
-+/* Slave Address n Disable */
-+FIELD(FLEXCOMM_I2C_SLVADR0, SADISABLE, 0, 1);
-+/* Slave Address. */
-+FIELD(FLEXCOMM_I2C_SLVADR0, SLVADR, 1, 7);
-+/* Automatic NACK operation */
-+FIELD(FLEXCOMM_I2C_SLVADR0, AUTONACK, 15, 1);
-+
-+/* Slave Address Register */
-+REG32(FLEXCOMM_I2C_SLVADR1, 2124);
-+/* Slave Address n Disable */
-+FIELD(FLEXCOMM_I2C_SLVADR1, SADISABLE, 0, 1);
-+/* Slave Address. */
-+FIELD(FLEXCOMM_I2C_SLVADR1, SLVADR, 1, 7);
-+/* Automatic NACK operation */
-+FIELD(FLEXCOMM_I2C_SLVADR1, AUTONACK, 15, 1);
-+
-+/* Slave Address Register */
-+REG32(FLEXCOMM_I2C_SLVADR2, 2128);
-+/* Slave Address n Disable */
-+FIELD(FLEXCOMM_I2C_SLVADR2, SADISABLE, 0, 1);
-+/* Slave Address. */
-+FIELD(FLEXCOMM_I2C_SLVADR2, SLVADR, 1, 7);
-+/* Automatic NACK operation */
-+FIELD(FLEXCOMM_I2C_SLVADR2, AUTONACK, 15, 1);
-+
-+/* Slave Address Register */
-+REG32(FLEXCOMM_I2C_SLVADR3, 2132);
-+/* Slave Address n Disable */
-+FIELD(FLEXCOMM_I2C_SLVADR3, SADISABLE, 0, 1);
-+/* Slave Address. */
-+FIELD(FLEXCOMM_I2C_SLVADR3, SLVADR, 1, 7);
-+/* Automatic NACK operation */
-+FIELD(FLEXCOMM_I2C_SLVADR3, AUTONACK, 15, 1);
-+
-+/* Slave Qualification for Address 0 Register */
-+REG32(FLEXCOMM_I2C_SLVQUAL0, 2136);
-+/* Qualify mode for slave address 0 */
-+FIELD(FLEXCOMM_I2C_SLVQUAL0, QUALMODE0, 0, 1);
-+/* Slave address Qualifier for address 0 */
-+FIELD(FLEXCOMM_I2C_SLVQUAL0, SLVQUAL0, 1, 7);
-+
-+/* Monitor Receiver Data Register */
-+REG32(FLEXCOMM_I2C_MONRXDAT, 2176);
-+/* Monitor function Receiver Data */
-+FIELD(FLEXCOMM_I2C_MONRXDAT, MONRXDAT, 0, 8);
-+/* Monitor Received Start */
-+FIELD(FLEXCOMM_I2C_MONRXDAT, MONSTART, 8, 1);
-+/* Monitor Received Repeated Start */
-+FIELD(FLEXCOMM_I2C_MONRXDAT, MONRESTART, 9, 1);
-+/* Monitor Received NACK */
-+FIELD(FLEXCOMM_I2C_MONRXDAT, MONNACK, 10, 1);
-+
-+/* Peripheral Identification Register */
-+REG32(FLEXCOMM_I2C_ID, 4092);
-+/* Aperture */
-+FIELD(FLEXCOMM_I2C_ID, APERTURE, 0, 8);
-+/* Minor revision of module implementation */
-+FIELD(FLEXCOMM_I2C_ID, MINOR_REV, 8, 4);
-+/* Major revision of module implementation */
-+FIELD(FLEXCOMM_I2C_ID, MAJOR_REV, 12, 4);
-+/* Module identifier for the selected function */
-+FIELD(FLEXCOMM_I2C_ID, ID, 16, 16);
-+
-+
-+typedef enum {
-+    /*
-+     * Disabled. The I2C Master function is disabled. When disabled, the Master
-+     * configuration settings are not changed, but the Master function is
-+     * internally reset.
-+     */
-+    FLEXCOMM_I2C_CFG_MSTEN_DISABLED = 0,
-+    /* Enabled. The I2C Master function is enabled. */
-+    FLEXCOMM_I2C_CFG_MSTEN_ENABLED = 1,
-+} FLEXCOMM_I2C_CFG_MSTEN_Enum;
-+
-+typedef enum {
-+    /*
-+     * Disabled. The I2C slave function is disabled. When disabled, the Slave
-+     * configuration settings are not changed, but the Slave function is
-+     * internally reset.
-+     */
-+    FLEXCOMM_I2C_CFG_SLVEN_DISABLED = 0,
-+    /* Enabled. The I2C slave function is enabled. */
-+    FLEXCOMM_I2C_CFG_SLVEN_ENABLED = 1,
-+} FLEXCOMM_I2C_CFG_SLVEN_Enum;
-+
-+typedef enum {
-+    /*
-+     * Disabled. The I2C Monitor function is disabled. When disabled, the
-+     * Monitor function configuration settings are not changed, but the Monitor
-+     * function is internally reset.
-+     */
-+    FLEXCOMM_I2C_CFG_MONEN_DISABLED = 0,
-+    /* Enabled. The I2C Monitor function is enabled. */
-+    FLEXCOMM_I2C_CFG_MONEN_ENABLED = 1,
-+} FLEXCOMM_I2C_CFG_MONEN_Enum;
-+
-+typedef enum {
-+    /*
-+     * Disabled. The time-out function is disabled. When disabled, the time-out
-+     * function is internally reset.
-+     */
-+    FLEXCOMM_I2C_CFG_TIMEOUTEN_DISABLED = 0,
-+    /*
-+     * Enabled. The time-out function is enabled. Both types of time-out flags
-+     * will be generated and will cause interrupts if those flags are enabled.
-+     * Typically, only one time-out flag will be used in a system.
-+     */
-+    FLEXCOMM_I2C_CFG_TIMEOUTEN_ENABLED = 1,
-+} FLEXCOMM_I2C_CFG_TIMEOUTEN_Enum;
-+
-+typedef enum {
-+    /*
-+     * Disabled. The Monitor function will not perform clock stretching.
-+     * Software or DMA may not always be able to read data provided by the
-+     * Monitor function before it (the data) is overwritten. This mode can be
-+     * used when non-invasive monitoring is critical.
-+     */
-+    FLEXCOMM_I2C_CFG_MONCLKSTR_DISABLED = 0,
-+    /*
-+     * Enabled. The Monitor function will perform clock stretching, to ensure
-+     * that the software or DMA can read all incoming data supplied by the
-+     * Monitor function.
-+     */
-+    FLEXCOMM_I2C_CFG_MONCLKSTR_ENABLED = 1,
-+} FLEXCOMM_I2C_CFG_MONCLKSTR_Enum;
-+
-+typedef enum {
-+    /* Fast mode Plus enable */
-+    FLEXCOMM_I2C_CFG_HSCAPABLE_FAST_MODE_PLUS = 0,
-+    /* High Speed mode enable */
-+    FLEXCOMM_I2C_CFG_HSCAPABLE_HIGH_SPEED = 1,
-+} FLEXCOMM_I2C_CFG_HSCAPABLE_Enum;
-+
-+typedef enum {
-+    /*
-+     * In progress. Communication is in progress and the Master function is
-+     * busy and cannot currently accept a command.
-+     */
-+    FLEXCOMM_I2C_STAT_MSTPENDING_IN_PROGRESS = 0,
-+    /*
-+     * Pending. The Master function needs software service or is in the idle
-+     * state. If the master is not in the idle state, then the master is
-+     * waiting to receive or transmit data, or is waiting for the NACK bit.
-+     */
-+    FLEXCOMM_I2C_STAT_MSTPENDING_PENDING = 1,
-+} FLEXCOMM_I2C_STAT_MSTPENDING_Enum;
-+
-+typedef enum {
-+    /*
-+     * Idle. The Master function is available to be used for a new transaction.
-+     */
-+    FLEXCOMM_I2C_STAT_MSTSTATE_IDLE = 0,
-+    /*
-+     * Receive ready. Received data is available (in Master Receiver mode).
-+     * Address plus Read was previously sent and Acknowledged by a slave.
-+     */
-+    FLEXCOMM_I2C_STAT_MSTSTATE_RECEIVE_READY = 1,
-+    /*
-+     * Transmit ready. Data can be transmitted (in Master Transmitter mode).
-+     * Address plus Write was previously sent and Acknowledged by a slave.
-+     */
-+    FLEXCOMM_I2C_STAT_MSTSTATE_TRANSMIT_READY = 2,
-+    /* NACK Address. Slave NACKed address. */
-+    FLEXCOMM_I2C_STAT_MSTSTATE_NACK_ADDRESS = 3,
-+    /* NACK Data. Slave NACKed transmitted data. */
-+    FLEXCOMM_I2C_STAT_MSTSTATE_NACK_DATA = 4,
-+} FLEXCOMM_I2C_STAT_MSTSTATE_Enum;
-+
-+typedef enum {
-+    /* No Arbitration Loss has occurred */
-+    FLEXCOMM_I2C_STAT_MSTARBLOSS_NO_LOSS = 0,
-+    /*
-+     * Arbitration loss. The Master function has experienced an Arbitration
-+     * Loss. At this point, the Master function has already stopped driving the
-+     * bus and has gone into an idle state. Software can respond by doing
-+     * nothing, or by sending a Start (to attempt to gain control of the bus
-+     * when the bus next becomes idle).
-+     */
-+    FLEXCOMM_I2C_STAT_MSTARBLOSS_ARBITRATION_LOSS = 1,
-+} FLEXCOMM_I2C_STAT_MSTARBLOSS_Enum;
-+
-+typedef enum {
-+    /* No Start/Stop Error has occurred. */
-+    FLEXCOMM_I2C_STAT_MSTSTSTPERR_NO_ERROR = 0,
-+    /*
-+     * The Master function has experienced a Start/Stop Error. A Start or Stop
-+     * was detected at a time when Start or Stop is not allowed by the I2C
-+     * specification. The Master interface has stopped driving the bus and gone
-+     * into an idle state; no action is required. A request for a Start could
-+     * be made, or software could attempt to make sure that the bus has not
-+     * stalled.
-+     */
-+    FLEXCOMM_I2C_STAT_MSTSTSTPERR_ERROR = 1,
-+} FLEXCOMM_I2C_STAT_MSTSTSTPERR_Enum;
-+
-+typedef enum {
-+    /*
-+     * In progress. The Slave function does not currently need software
-+     * service.
-+     */
-+    FLEXCOMM_I2C_STAT_SLVPENDING_IN_PROGRESS = 0,
-+    /*
-+     * Pending. The Slave function needs software service. Information about
-+     * what is needed is in the Slave state field (SLVSTATE).
-+     */
-+    FLEXCOMM_I2C_STAT_SLVPENDING_PENDING = 1,
-+} FLEXCOMM_I2C_STAT_SLVPENDING_Enum;
-+
-+typedef enum {
-+    /*
-+     * Slave address. Address plus R/W received. At least one of the 4 slave
-+     * addresses has been matched by hardware.
-+     */
-+    FLEXCOMM_I2C_STAT_SLVSTATE_SLAVE_ADDRESS = 0,
-+    /* Slave receive. Received data is available (in Slave Receiver mode). */
-+    FLEXCOMM_I2C_STAT_SLVSTATE_SLAVE_RECEIVE = 1,
-+    /* Slave transmit. Data can be transmitted (in Slave Transmitter mode). */
-+    FLEXCOMM_I2C_STAT_SLVSTATE_SLAVE_TRANSMIT = 2,
-+} FLEXCOMM_I2C_STAT_SLVSTATE_Enum;
-+
-+typedef enum {
-+    /*
-+     * Stretching. The slave function is currently stretching the I2C bus
-+     * clock. Deep-Sleepmode cannot be entered at this time.
-+     */
-+    FLEXCOMM_I2C_STAT_SLVNOTSTR_STRETCHING = 0,
-+    /*
-+     * Not stretching. The slave function is not currently stretching the I2C
-+     * bus clock. Deep-sleep mode can be entered at this time.
-+     */
-+    FLEXCOMM_I2C_STAT_SLVNOTSTR_NOT_STRETCHING = 1,
-+} FLEXCOMM_I2C_STAT_SLVNOTSTR_Enum;
-+
-+typedef enum {
-+    /* Address 0. Slave address 0 was matched. */
-+    FLEXCOMM_I2C_STAT_SLVIDX_ADDRESS0 = 0,
-+    /* Address 1. Slave address 1 was matched. */
-+    FLEXCOMM_I2C_STAT_SLVIDX_ADDRESS1 = 1,
-+    /* Address 2. Slave address 2 was matched. */
-+    FLEXCOMM_I2C_STAT_SLVIDX_ADDRESS2 = 2,
-+    /* Address 3. Slave address 3 was matched. */
-+    FLEXCOMM_I2C_STAT_SLVIDX_ADDRESS3 = 3,
-+} FLEXCOMM_I2C_STAT_SLVIDX_Enum;
-+
-+typedef enum {
-+    /* Not selected. The Slave function is not currently selected. */
-+    FLEXCOMM_I2C_STAT_SLVSEL_NOT_SELECTED = 0,
-+    /* Selected. The Slave function is currently selected. */
-+    FLEXCOMM_I2C_STAT_SLVSEL_SELECTED = 1,
-+} FLEXCOMM_I2C_STAT_SLVSEL_Enum;
-+
-+typedef enum {
-+    /*
-+     * Not deselected. The Slave function has not become deselected. This does
-+     * not mean that the Slave is currently selected. That information is in
-+     * the SLVSEL flag.
-+     */
-+    FLEXCOMM_I2C_STAT_SLVDESEL_NOT_DESELECTED = 0,
-+    /*
-+     * Deselected. The Slave function has become deselected. This is
-+     * specifically caused by the SLVSEL flag changing from 1 to 0. See SLVSEL
-+     * for details about when that event occurs.
-+     */
-+    FLEXCOMM_I2C_STAT_SLVDESEL_DESELECTED = 1,
-+} FLEXCOMM_I2C_STAT_SLVDESEL_Enum;
-+
-+typedef enum {
-+    /* No data. The Monitor function does not currently have data available. */
-+    FLEXCOMM_I2C_STAT_MONRDY_NO_DATA = 0,
-+    /* Data waiting. The Monitor function has data waiting to be read. */
-+    FLEXCOMM_I2C_STAT_MONRDY_DATA_WAITING = 1,
-+} FLEXCOMM_I2C_STAT_MONRDY_Enum;
-+
-+typedef enum {
-+    /* No overrun. Monitor data has not overrun. */
-+    FLEXCOMM_I2C_STAT_MONOV_NO_OVERRUN = 0,
-+    /*
-+     * Overrun. A Monitor data overrun has occurred. An overrun can only happen
-+     * when Monitor clock stretching not enabled via the CFG[MONCLKSTR] bit.
-+     * Writing 1 to MONOV bit clears the MONOV flag.
-+     */
-+    FLEXCOMM_I2C_STAT_MONOV_OVERRUN = 1,
-+} FLEXCOMM_I2C_STAT_MONOV_Enum;
-+
-+typedef enum {
-+    /* Inactive. The Monitor function considers the I2C bus to be inactive. */
-+    FLEXCOMM_I2C_STAT_MONACTIVE_INACTIVE = 0,
-+    /* Active. The Monitor function considers the I2C bus to be active. */
-+    FLEXCOMM_I2C_STAT_MONACTIVE_ACTIVE = 1,
-+} FLEXCOMM_I2C_STAT_MONACTIVE_Enum;
-+
-+typedef enum {
-+    /*
-+     * Not idle. The I2C bus is not idle, or MONIDLE flag has been cleared by
-+     * software.
-+     */
-+    FLEXCOMM_I2C_STAT_MONIDLE_NOT_IDLE = 0,
-+    /*
-+     * Idle. The I2C bus has gone idle at least once, since the last time
-+     * MONIDLE flag was cleared by software.
-+     */
-+    FLEXCOMM_I2C_STAT_MONIDLE_IDLE = 1,
-+} FLEXCOMM_I2C_STAT_MONIDLE_Enum;
-+
-+typedef enum {
-+    /* No time-out. I2C bus events have not caused a time-out. */
-+    FLEXCOMM_I2C_STAT_EVENTTIMEOUT_NO_TIMEOUT = 0,
-+    /*
-+     * Event time-out. The time between I2C bus events has been longer than the
-+     * time specified by the TIMEOUT register.
-+     */
-+    FLEXCOMM_I2C_STAT_EVENTTIMEOUT_EVEN_TIMEOUT = 1,
-+} FLEXCOMM_I2C_STAT_EVENTTIMEOUT_Enum;
-+
-+typedef enum {
-+    /* No time-out. SCL low time has not caused a time-out. */
-+    FLEXCOMM_I2C_STAT_SCLTIMEOUT_NO_TIMEOUT = 0,
-+    /* Time-out. SCL low time has caused a time-out. */
-+    FLEXCOMM_I2C_STAT_SCLTIMEOUT_TIMEOUT = 1,
-+} FLEXCOMM_I2C_STAT_SCLTIMEOUT_Enum;
-+
-+typedef enum {
-+    /* Disabled. The MstPending interrupt is disabled. */
-+    FLEXCOMM_I2C_INTENSET_MSTPENDINGEN_DISABLED = 0,
-+    /* Enabled. The MstPending interrupt is enabled. */
-+    FLEXCOMM_I2C_INTENSET_MSTPENDINGEN_ENABLED = 1,
-+} FLEXCOMM_I2C_INTENSET_MSTPENDINGEN_Enum;
-+
-+typedef enum {
-+    /* Disabled. The MstArbLoss interrupt is disabled. */
-+    FLEXCOMM_I2C_INTENSET_MSTARBLOSSEN_DISABLED = 0,
-+    /* Enabled. The MstArbLoss interrupt is enabled. */
-+    FLEXCOMM_I2C_INTENSET_MSTARBLOSSEN_ENABLED = 1,
-+} FLEXCOMM_I2C_INTENSET_MSTARBLOSSEN_Enum;
-+
-+typedef enum {
-+    /* Disabled. The MstStStpErr interrupt is disabled. */
-+    FLEXCOMM_I2C_INTENSET_MSTSTSTPERREN_DISABLED = 0,
-+    /* Enabled. The MstStStpErr interrupt is enabled. */
-+    FLEXCOMM_I2C_INTENSET_MSTSTSTPERREN_ENABLED = 1,
-+} FLEXCOMM_I2C_INTENSET_MSTSTSTPERREN_Enum;
-+
-+typedef enum {
-+    /* Disabled. The SlvPending interrupt is disabled. */
-+    FLEXCOMM_I2C_INTENSET_SLVPENDINGEN_DISABLED = 0,
-+    /* Enabled. The SlvPending interrupt is enabled. */
-+    FLEXCOMM_I2C_INTENSET_SLVPENDINGEN_ENABLED = 1,
-+} FLEXCOMM_I2C_INTENSET_SLVPENDINGEN_Enum;
-+
-+typedef enum {
-+    /* Disabled. The SlvNotStr interrupt is disabled. */
-+    FLEXCOMM_I2C_INTENSET_SLVNOTSTREN_DISABLED = 0,
-+    /* Enabled. The SlvNotStr interrupt is enabled. */
-+    FLEXCOMM_I2C_INTENSET_SLVNOTSTREN_ENABLED = 1,
-+} FLEXCOMM_I2C_INTENSET_SLVNOTSTREN_Enum;
-+
-+typedef enum {
-+    /* Disabled. The SlvDeSel interrupt is disabled. */
-+    FLEXCOMM_I2C_INTENSET_SLVDESELEN_DISABLED = 0,
-+    /* Enabled. The SlvDeSel interrupt is enabled. */
-+    FLEXCOMM_I2C_INTENSET_SLVDESELEN_ENABLED = 1,
-+} FLEXCOMM_I2C_INTENSET_SLVDESELEN_Enum;
-+
-+typedef enum {
-+    /* Disabled. The MonRdy interrupt is disabled. */
-+    FLEXCOMM_I2C_INTENSET_MONRDYEN_DISABLED = 0,
-+    /* Enabled. The MonRdy interrupt is enabled. */
-+    FLEXCOMM_I2C_INTENSET_MONRDYEN_ENABLED = 1,
-+} FLEXCOMM_I2C_INTENSET_MONRDYEN_Enum;
-+
-+typedef enum {
-+    /* Disabled. The MonOv interrupt is disabled. */
-+    FLEXCOMM_I2C_INTENSET_MONOVEN_DISABLED = 0,
-+    /* Enabled. The MonOv interrupt is enabled. */
-+    FLEXCOMM_I2C_INTENSET_MONOVEN_ENABLED = 1,
-+} FLEXCOMM_I2C_INTENSET_MONOVEN_Enum;
-+
-+typedef enum {
-+    /* Disabled. The MonIdle interrupt is disabled. */
-+    FLEXCOMM_I2C_INTENSET_MONIDLEEN_DISABLED = 0,
-+    /* Enabled. The MonIdle interrupt is enabled. */
-+    FLEXCOMM_I2C_INTENSET_MONIDLEEN_ENABLED = 1,
-+} FLEXCOMM_I2C_INTENSET_MONIDLEEN_Enum;
-+
-+typedef enum {
-+    /* Disabled. The Event time-out interrupt is disabled. */
-+    FLEXCOMM_I2C_INTENSET_EVENTTIMEOUTEN_DISABLED = 0,
-+    /* Enabled. The Event time-out interrupt is enabled. */
-+    FLEXCOMM_I2C_INTENSET_EVENTTIMEOUTEN_ENABLED = 1,
-+} FLEXCOMM_I2C_INTENSET_EVENTTIMEOUTEN_Enum;
-+
-+typedef enum {
-+    /* Disabled. The SCL time-out interrupt is disabled. */
-+    FLEXCOMM_I2C_INTENSET_SCLTIMEOUTEN_DISABLED = 0,
-+    /* Enabled. The SCL time-out interrupt is enabled. */
-+    FLEXCOMM_I2C_INTENSET_SCLTIMEOUTEN_ENABLED = 1,
-+} FLEXCOMM_I2C_INTENSET_SCLTIMEOUTEN_Enum;
-+
-+typedef enum {
-+    /* No effect on interrupt */
-+    FLEXCOMM_I2C_INTENCLR_MSTPENDINGCLR_NO_EFFECT = 0,
-+    /* Clears the interrupt bit in INTENSET register */
-+    FLEXCOMM_I2C_INTENCLR_MSTPENDINGCLR_CLEAR_MSTPENDING = 1,
-+} FLEXCOMM_I2C_INTENCLR_MSTPENDINGCLR_Enum;
-+
-+typedef enum {
-+    /* No effect on interrupt */
-+    FLEXCOMM_I2C_INTENCLR_MSTARBLOSSCLR_NO_EFFECT = 0,
-+    /* Clears the interrupt bit in INTENSET register */
-+    FLEXCOMM_I2C_INTENCLR_MSTARBLOSSCLR_CLEAR_MSTARBLOSS = 1,
-+} FLEXCOMM_I2C_INTENCLR_MSTARBLOSSCLR_Enum;
-+
-+typedef enum {
-+    /* No effect on interrupt */
-+    FLEXCOMM_I2C_INTENCLR_MSTSTSTPERRCLR_NO_EFFECT = 0,
-+    /* Clears the interrupt bit in INTENSET register */
-+    FLEXCOMM_I2C_INTENCLR_MSTSTSTPERRCLR_CLEAR_MSTSTSTPERR = 1,
-+} FLEXCOMM_I2C_INTENCLR_MSTSTSTPERRCLR_Enum;
-+
-+typedef enum {
-+    /* No effect on interrupt */
-+    FLEXCOMM_I2C_INTENCLR_SLVPENDINGCLR_NO_EFFECT = 0,
-+    /* Clears the interrupt bit in INTENSET register */
-+    FLEXCOMM_I2C_INTENCLR_SLVPENDINGCLR_CLEAR_SLVPENDING = 1,
-+} FLEXCOMM_I2C_INTENCLR_SLVPENDINGCLR_Enum;
-+
-+typedef enum {
-+    /* No effect on interrupt */
-+    FLEXCOMM_I2C_INTENCLR_SLVNOTSTRCLR_NO_EFFECT = 0,
-+    /* Clears the interrupt bit in INTENSET register */
-+    FLEXCOMM_I2C_INTENCLR_SLVNOTSTRCLR_CLEAR_SLVNOTSTR = 1,
-+} FLEXCOMM_I2C_INTENCLR_SLVNOTSTRCLR_Enum;
-+
-+typedef enum {
-+    /* No effect on interrupt */
-+    FLEXCOMM_I2C_INTENCLR_SLVDESELCLR_NO_EFFECT = 0,
-+    /* Clears the interrupt bit in INTENSET register */
-+    FLEXCOMM_I2C_INTENCLR_SLVDESELCLR_CLEAR_SLVDESEL = 1,
-+} FLEXCOMM_I2C_INTENCLR_SLVDESELCLR_Enum;
-+
-+typedef enum {
-+    /* No effect on interrupt */
-+    FLEXCOMM_I2C_INTENCLR_MONRDYCLR_NO_EFFECT = 0,
-+    /* Clears the interrupt bit in INTENSET register */
-+    FLEXCOMM_I2C_INTENCLR_MONRDYCLR_CLEAR_MONRDY = 1,
-+} FLEXCOMM_I2C_INTENCLR_MONRDYCLR_Enum;
-+
-+typedef enum {
-+    /* No effect on interrupt */
-+    FLEXCOMM_I2C_INTENCLR_MONOVCLR_NO_EFFECT = 0,
-+    /* Clears the interrupt bit in INTENSET register */
-+    FLEXCOMM_I2C_INTENCLR_MONOVCLR_CLEAR_MONOV = 1,
-+} FLEXCOMM_I2C_INTENCLR_MONOVCLR_Enum;
-+
-+typedef enum {
-+    /* No effect on interrupt */
-+    FLEXCOMM_I2C_INTENCLR_MONIDLECLR_NO_EFFECT = 0,
-+    /* Clears the interrupt bit in INTENSET register */
-+    FLEXCOMM_I2C_INTENCLR_MONIDLECLR_CLEAR_MONIDLE = 1,
-+} FLEXCOMM_I2C_INTENCLR_MONIDLECLR_Enum;
-+
-+typedef enum {
-+    /* No effect on interrupt */
-+    FLEXCOMM_I2C_INTENCLR_EVENTTIMEOUTCLR_NO_EFFECT = 0,
-+    /* Clears the interrupt bit in INTENSET register */
-+    FLEXCOMM_I2C_INTENCLR_EVENTTIMEOUTCLR_CLEAR_EVENTTIMEOUT = 1,
-+} FLEXCOMM_I2C_INTENCLR_EVENTTIMEOUTCLR_Enum;
-+
-+typedef enum {
-+    /* No effect on interrupt */
-+    FLEXCOMM_I2C_INTENCLR_SCLTIMEOUTCLR_NO_EFFECT = 0,
-+    /* Clears the interrupt bit in INTENSET register */
-+    FLEXCOMM_I2C_INTENCLR_SCLTIMEOUTCLR_CLEAR_SCLTIMEOUT = 1,
-+} FLEXCOMM_I2C_INTENCLR_SCLTIMEOUTCLR_Enum;
-+
-+typedef enum {
-+    /* A time-out will occur after 16 counts of the I2C function clock. */
-+    FLEXCOMM_I2C_TIMEOUT_TO_TIMEOUT16 = 0,
-+    /* A time-out will occur after 32 counts of the I2C function clock. */
-+    FLEXCOMM_I2C_TIMEOUT_TO_TIMEOUT32 = 1,
-+    /* A time-out will occur after 65,536 counts of the I2C function clock. */
-+    FLEXCOMM_I2C_TIMEOUT_TO_TIMEOUT65K = 4095,
-+} FLEXCOMM_I2C_TIMEOUT_TO_Enum;
-+
-+typedef enum {
-+    /* FCLK is used directly by the I2C. */
-+    FLEXCOMM_I2C_CLKDIV_DIVVAL_FCLKUNDIVIDED = 0,
-+    /* FCLK is divided by 2 before being used by the I2C. */
-+    FLEXCOMM_I2C_CLKDIV_DIVVAL_FCLKDIV2 = 1,
-+    /* FCLK is divided by 3 before being used by the I2C. */
-+    FLEXCOMM_I2C_CLKDIV_DIVVAL_FCLKDIV3 = 2,
-+    /* FCLK is divided by 65,536 before being used by the I2C. */
-+    FLEXCOMM_I2C_CLKDIV_DIVVAL_FCLKDIV65K = 65535,
-+} FLEXCOMM_I2C_CLKDIV_DIVVAL_Enum;
-+
-+typedef enum {
-+    /* Not active */
-+    FLEXCOMM_I2C_INTSTAT_MSTPENDING_MSTPENDING_ISNOTACTIVE = 0,
-+    /* Active */
-+    FLEXCOMM_I2C_INTSTAT_MSTPENDING_MSTPENDING_ISACTIVE = 1,
-+} FLEXCOMM_I2C_INTSTAT_MSTPENDING_Enum;
-+
-+typedef enum {
-+    /* Not active */
-+    FLEXCOMM_I2C_INTSTAT_MSTARBLOSS_MSTARBLOSS_ISNOTACTIVE = 0,
-+    /* Active */
-+    FLEXCOMM_I2C_INTSTAT_MSTARBLOSS_MSTARBLOSS_ISACTIVE = 1,
-+} FLEXCOMM_I2C_INTSTAT_MSTARBLOSS_Enum;
-+
-+typedef enum {
-+    /* Not active */
-+    FLEXCOMM_I2C_INTSTAT_MSTSTSTPERR_MSTSTSTPERR_ISNOTACTIVE = 0,
-+    /* Active */
-+    FLEXCOMM_I2C_INTSTAT_MSTSTSTPERR_MSTSTSTPERR_ISACTIVE = 1,
-+} FLEXCOMM_I2C_INTSTAT_MSTSTSTPERR_Enum;
-+
-+typedef enum {
-+    /* Not active */
-+    FLEXCOMM_I2C_INTSTAT_SLVPENDING_SLVPENDING_ISNOTACTIVE = 0,
-+    /* Active */
-+    FLEXCOMM_I2C_INTSTAT_SLVPENDING_SLVPENDING_ISACTIVE = 1,
-+} FLEXCOMM_I2C_INTSTAT_SLVPENDING_Enum;
-+
-+typedef enum {
-+    /* Not active */
-+    FLEXCOMM_I2C_INTSTAT_SLVNOTSTR_SLVNOTSTR_ISNOTACTIVE = 0,
-+    /* Active */
-+    FLEXCOMM_I2C_INTSTAT_SLVNOTSTR_SLVNOTSTR_ISACTIVE = 1,
-+} FLEXCOMM_I2C_INTSTAT_SLVNOTSTR_Enum;
-+
-+typedef enum {
-+    /* Not active */
-+    FLEXCOMM_I2C_INTSTAT_SLVDESEL_SLVDESEL_ISNOTACTIVE = 0,
-+    /* Active */
-+    FLEXCOMM_I2C_INTSTAT_SLVDESEL_SLVDESEL_ISACTIVE = 1,
-+} FLEXCOMM_I2C_INTSTAT_SLVDESEL_Enum;
-+
-+typedef enum {
-+    /* Not active */
-+    FLEXCOMM_I2C_INTSTAT_MONRDY_MONRDY_ISNOTACTIVE = 0,
-+    /* Active */
-+    FLEXCOMM_I2C_INTSTAT_MONRDY_MONRDY_ISACTIVE = 1,
-+} FLEXCOMM_I2C_INTSTAT_MONRDY_Enum;
-+
-+typedef enum {
-+    /* Not active */
-+    FLEXCOMM_I2C_INTSTAT_MONOV_MONOV_ISNOTACTIVE = 0,
-+    /* Active */
-+    FLEXCOMM_I2C_INTSTAT_MONOV_MONOV_ISACTIVE = 1,
-+} FLEXCOMM_I2C_INTSTAT_MONOV_Enum;
-+
-+typedef enum {
-+    /* Not active */
-+    FLEXCOMM_I2C_INTSTAT_MONIDLE_MONIDLE_ISNOTACTIVE = 0,
-+    /* Active */
-+    FLEXCOMM_I2C_INTSTAT_MONIDLE_MONIDLE_ISACTIVE = 1,
-+} FLEXCOMM_I2C_INTSTAT_MONIDLE_Enum;
-+
-+typedef enum {
-+    /* Not active */
-+    FLEXCOMM_I2C_INTSTAT_EVENTTIMEOUT_EVENTTIMEOUT_ISNOTACTIVE = 0,
-+    /* Active */
-+    FLEXCOMM_I2C_INTSTAT_EVENTTIMEOUT_EVENTTIMEOUT_ISACTIVE = 1,
-+} FLEXCOMM_I2C_INTSTAT_EVENTTIMEOUT_Enum;
-+
-+typedef enum {
-+    /* Not active */
-+    FLEXCOMM_I2C_INTSTAT_SCLTIMEOUT_SCLTIMEOUT_ISNOTACTIVE = 0,
-+    /* Active */
-+    FLEXCOMM_I2C_INTSTAT_SCLTIMEOUT_SCLTIMEOUT_ISACTIVE = 1,
-+} FLEXCOMM_I2C_INTSTAT_SCLTIMEOUT_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    FLEXCOMM_I2C_MSTCTL_MSTCONTINUE_NO_EFFECT = 0,
-+    /*
-+     * Continue. Informs the Master function to continue to the next operation.
-+     * This action must done after writing transmit data, reading received
-+     * data, or any other housekeeping related to the next bus operation.
-+     */
-+    FLEXCOMM_I2C_MSTCTL_MSTCONTINUE_CONTINUE = 1,
-+} FLEXCOMM_I2C_MSTCTL_MSTCONTINUE_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    FLEXCOMM_I2C_MSTCTL_MSTSTART_NO_EFFECT = 0,
-+    /*
-+     * Start. A Start will be generated on the I2C bus at the next allowed
-+     * time.
-+     */
-+    FLEXCOMM_I2C_MSTCTL_MSTSTART_START = 1,
-+} FLEXCOMM_I2C_MSTCTL_MSTSTART_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    FLEXCOMM_I2C_MSTCTL_MSTSTOP_NO_EFFECT = 0,
-+    /*
-+     * Stop. A Stop will be generated on the I2C bus at the next allowed time,
-+     * preceded by a NACK to the slave if the master is receiving data from the
-+     * slave (in Master Receiver mode).
-+     */
-+    FLEXCOMM_I2C_MSTCTL_MSTSTOP_STOP = 1,
-+} FLEXCOMM_I2C_MSTCTL_MSTSTOP_Enum;
-+
-+typedef enum {
-+    /* Disable. No DMA requests are generated for master operation. */
-+    FLEXCOMM_I2C_MSTCTL_MSTDMA_DISABLED = 0,
-+    /*
-+     * Enable. A DMA request is generated for I2C master data operations. When
-+     * this I2C master is generating Acknowledge bits in Master Receiver mode,
-+     * the acknowledge is generated automatically.
-+     */
-+    FLEXCOMM_I2C_MSTCTL_MSTDMA_ENABLED = 1,
-+} FLEXCOMM_I2C_MSTCTL_MSTDMA_Enum;
-+
-+typedef enum {
-+    /*
-+     * 2 clocks. Minimum SCL low time is 2 clocks of the I2C clock pre-divider.
-+     */
-+    FLEXCOMM_I2C_MSTTIME_MSTSCLLOW_MSTSCLLOW_2CLOCKS = 0,
-+    /*
-+     * 3 clocks. Minimum SCL low time is 3 clocks of the I2C clock pre-divider.
-+     */
-+    FLEXCOMM_I2C_MSTTIME_MSTSCLLOW_MSTSCLLOW_3CLOCKS = 1,
-+    /*
-+     * 4 clocks. Minimum SCL low time is 4 clocks of the I2C clock pre-divider.
-+     */
-+    FLEXCOMM_I2C_MSTTIME_MSTSCLLOW_MSTSCLLOW_4CLOCKS = 2,
-+    /*
-+     * 5 clocks. Minimum SCL low time is 5 clocks of the I2C clock pre-divider.
-+     */
-+    FLEXCOMM_I2C_MSTTIME_MSTSCLLOW_MSTSCLLOW_5CLOCKS = 3,
-+    /*
-+     * 6 clocks. Minimum SCL low time is 6 clocks of the I2C clock pre-divider.
-+     */
-+    FLEXCOMM_I2C_MSTTIME_MSTSCLLOW_MSTSCLLOW_6CLOCKS = 4,
-+    /*
-+     * 7 clocks. Minimum SCL low time is 7 clocks of the I2C clock pre-divider.
-+     */
-+    FLEXCOMM_I2C_MSTTIME_MSTSCLLOW_MSTSCLLOW_7CLOCKS = 5,
-+    /*
-+     * 8 clocks. Minimum SCL low time is 8 clocks of the I2C clock pre-divider.
-+     */
-+    FLEXCOMM_I2C_MSTTIME_MSTSCLLOW_MSTSCLLOW_8CLOCKS = 6,
-+    /*
-+     * 9 clocks. Minimum SCL low time is 9 clocks of the I2C clock pre-divider.
-+     */
-+    FLEXCOMM_I2C_MSTTIME_MSTSCLLOW_MSTSCLLOW_9CLOCKS = 7,
-+} FLEXCOMM_I2C_MSTTIME_MSTSCLLOW_Enum;
-+
-+typedef enum {
-+    /*
-+     * 2 clocks. Minimum SCL high time is 2 clocks of the I2C clock
-+     * pre-divider.
-+     */
-+    FLEXCOMM_I2C_MSTTIME_MSTSCLHIGH_MSTSCLHIGH_2CLOCKS = 0,
-+    /*
-+     * 3 clocks. Minimum SCL high time is 3 clocks of the I2C clock pre-divider
-+     * .
-+     */
-+    FLEXCOMM_I2C_MSTTIME_MSTSCLHIGH_MSTSCLHIGH_3CLOCKS = 1,
-+    /*
-+     * 4 clocks. Minimum SCL high time is 4 clocks of the I2C clock
-+     * pre-divider.
-+     */
-+    FLEXCOMM_I2C_MSTTIME_MSTSCLHIGH_MSTSCLHIGH_4CLOCKS = 2,
-+    /*
-+     * 5 clocks. Minimum SCL high time is 5 clocks of the I2C clock
-+     * pre-divider.
-+     */
-+    FLEXCOMM_I2C_MSTTIME_MSTSCLHIGH_MSTSCLHIGH_5CLOCKS = 3,
-+    /*
-+     * 6 clocks. Minimum SCL high time is 6 clocks of the I2C clock
-+     * pre-divider.
-+     */
-+    FLEXCOMM_I2C_MSTTIME_MSTSCLHIGH_MSTSCLHIGH_6CLOCKS = 4,
-+    /*
-+     * 7 clocks. Minimum SCL high time is 7 clocks of the I2C clock
-+     * pre-divider.
-+     */
-+    FLEXCOMM_I2C_MSTTIME_MSTSCLHIGH_MSTSCLHIGH_7CLOCKS = 5,
-+    /*
-+     * 8 clocks. Minimum SCL high time is 8 clocks of the I2C clock
-+     * pre-divider.
-+     */
-+    FLEXCOMM_I2C_MSTTIME_MSTSCLHIGH_MSTSCLHIGH_8CLOCKS = 6,
-+    /*
-+     * 9 clocks. Minimum SCL high time is 9 clocks of the I2C clock
-+     * pre-divider.
-+     */
-+    FLEXCOMM_I2C_MSTTIME_MSTSCLHIGH_MSTSCLHIGH_9CLOCKS = 7,
-+} FLEXCOMM_I2C_MSTTIME_MSTSCLHIGH_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    FLEXCOMM_I2C_SLVCTL_SLVCONTINUE_NO_EFFECT = 0,
-+    /*
-+     * Continue. Informs the Slave function to continue to the next operation,
-+     * by clearing the STAT[SLVPENDING] flag. This must be done after writing
-+     * transmit data, reading received data, or any other housekeeping related
-+     * to the next bus operation. Automatic Operation has different
-+     * requirements. SLVCONTINUE should not be set unless SLVPENDING = 1.
-+     */
-+    FLEXCOMM_I2C_SLVCTL_SLVCONTINUE_CONTINUE = 1,
-+} FLEXCOMM_I2C_SLVCTL_SLVCONTINUE_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    FLEXCOMM_I2C_SLVCTL_SLVNACK_NO_EFFECT = 0,
-+    /*
-+     * NACK. Causes the Slave function to NACK the master when the slave is
-+     * receiving data from the master (in Slave Receiver mode).
-+     */
-+    FLEXCOMM_I2C_SLVCTL_SLVNACK_NACK = 1,
-+} FLEXCOMM_I2C_SLVCTL_SLVNACK_Enum;
-+
-+typedef enum {
-+    /* Disabled. No DMA requests are issued for Slave mode operation. */
-+    FLEXCOMM_I2C_SLVCTL_SLVDMA_DISABLED = 0,
-+    /*
-+     * Enabled. DMA requests are issued for I2C slave data transmission and
-+     * reception.
-+     */
-+    FLEXCOMM_I2C_SLVCTL_SLVDMA_ENABLED = 1,
-+} FLEXCOMM_I2C_SLVCTL_SLVDMA_Enum;
-+
-+typedef enum {
-+    /*
-+     * Normal, non-automatic operation. If AUTONACK = 0, then a SlvPending
-+     * interrupt is generated when a matching address is received. If AUTONACK
-+     * = 1, then received addresses are NACKed (ignored).
-+     */
-+    FLEXCOMM_I2C_SLVCTL_AUTOACK_NORMAL = 0,
-+    /*
-+     * A header with matching SLVADR0 and matching direction as set by
-+     * AUTOMATCHREAD will be ACKed immediately, allowing the master to move on
-+     * to the data bytes. If the address matches SLVADR0, but the direction
-+     * does not match AUTOMATCHREAD, then the behavior will depend on the
-+     * SLVADR0[AUTONACK] bit: if AUTONACK is set, then it will be Nacked; if
-+     * AUTONACK is clear, then a SlvPending interrupt is generated.
-+     */
-+    FLEXCOMM_I2C_SLVCTL_AUTOACK_AUTOMATIC_ACK = 1,
-+} FLEXCOMM_I2C_SLVCTL_AUTOACK_Enum;
-+
-+typedef enum {
-+    /* In Automatic Mode, the expected next operation is an I2C write. */
-+    FLEXCOMM_I2C_SLVCTL_AUTOMATCHREAD_I2C_WRITE = 0,
-+    /* In Automatic Mode, the expected next operation is an I2C read. */
-+    FLEXCOMM_I2C_SLVCTL_AUTOMATCHREAD_I2C_READ = 1,
-+} FLEXCOMM_I2C_SLVCTL_AUTOMATCHREAD_Enum;
-+
-+typedef enum {
-+    /* Enabled. Slave Address n is enabled. */
-+    FLEXCOMM_I2C_SLVADR0_SADISABLE_ENABLED = 0,
-+    /* Ignored. Slave Address n is ignored. */
-+    FLEXCOMM_I2C_SLVADR0_SADISABLE_DISABLED = 1,
-+} FLEXCOMM_I2C_SLVADR0_SADISABLE_Enum;
-+
-+typedef enum {
-+    /* Normal operation, matching I2C addresses are not ignored. */
-+    FLEXCOMM_I2C_SLVADR0_AUTONACK_NORMAL = 0,
-+    /*
-+     * Automatic-only mode. All incoming addresses are ignored (NACKed), unless
-+     * AUTOACK is set, and the address matches SLVADRn, and AUTOMATCHREAD
-+     * matches the direction.
-+     */
-+    FLEXCOMM_I2C_SLVADR0_AUTONACK_AUTOMATIC = 1,
-+} FLEXCOMM_I2C_SLVADR0_AUTONACK_Enum;
-+
-+typedef enum {
-+    /* Enabled. Slave Address n is enabled. */
-+    FLEXCOMM_I2C_SLVADR1_SADISABLE_ENABLED = 0,
-+    /* Ignored. Slave Address n is ignored. */
-+    FLEXCOMM_I2C_SLVADR1_SADISABLE_DISABLED = 1,
-+} FLEXCOMM_I2C_SLVADR1_SADISABLE_Enum;
-+
-+typedef enum {
-+    /* Normal operation, matching I2C addresses are not ignored. */
-+    FLEXCOMM_I2C_SLVADR1_AUTONACK_NORMAL = 0,
-+    /*
-+     * Automatic-only mode. All incoming addresses are ignored (NACKed), unless
-+     * AUTOACK is set, and the address matches SLVADRn, and AUTOMATCHREAD
-+     * matches the direction.
-+     */
-+    FLEXCOMM_I2C_SLVADR1_AUTONACK_AUTOMATIC = 1,
-+} FLEXCOMM_I2C_SLVADR1_AUTONACK_Enum;
-+
-+typedef enum {
-+    /* Enabled. Slave Address n is enabled. */
-+    FLEXCOMM_I2C_SLVADR2_SADISABLE_ENABLED = 0,
-+    /* Ignored. Slave Address n is ignored. */
-+    FLEXCOMM_I2C_SLVADR2_SADISABLE_DISABLED = 1,
-+} FLEXCOMM_I2C_SLVADR2_SADISABLE_Enum;
-+
-+typedef enum {
-+    /* Normal operation, matching I2C addresses are not ignored. */
-+    FLEXCOMM_I2C_SLVADR2_AUTONACK_NORMAL = 0,
-+    /*
-+     * Automatic-only mode. All incoming addresses are ignored (NACKed), unless
-+     * AUTOACK is set, and the address matches SLVADRn, and AUTOMATCHREAD
-+     * matches the direction.
-+     */
-+    FLEXCOMM_I2C_SLVADR2_AUTONACK_AUTOMATIC = 1,
-+} FLEXCOMM_I2C_SLVADR2_AUTONACK_Enum;
-+
-+typedef enum {
-+    /* Enabled. Slave Address n is enabled. */
-+    FLEXCOMM_I2C_SLVADR3_SADISABLE_ENABLED = 0,
-+    /* Ignored. Slave Address n is ignored. */
-+    FLEXCOMM_I2C_SLVADR3_SADISABLE_DISABLED = 1,
-+} FLEXCOMM_I2C_SLVADR3_SADISABLE_Enum;
-+
-+typedef enum {
-+    /* Normal operation, matching I2C addresses are not ignored. */
-+    FLEXCOMM_I2C_SLVADR3_AUTONACK_NORMAL = 0,
-+    /*
-+     * Automatic-only mode. All incoming addresses are ignored (NACKed), unless
-+     * AUTOACK is set, and the address matches SLVADRn, and AUTOMATCHREAD
-+     * matches the direction.
-+     */
-+    FLEXCOMM_I2C_SLVADR3_AUTONACK_AUTOMATIC = 1,
-+} FLEXCOMM_I2C_SLVADR3_AUTONACK_Enum;
-+
-+typedef enum {
-+    /*
-+     * Mask. The SLVQUAL0 field is used as a logical mask for matching address
-+     * 0.
-+     */
-+    FLEXCOMM_I2C_SLVQUAL0_QUALMODE0_MASK = 0,
-+    /*
-+     * Extend. The SLVQUAL0 field is used to extend address 0 matching in a
-+     * range of addresses.
-+     */
-+    FLEXCOMM_I2C_SLVQUAL0_QUALMODE0_EXTEND = 1,
-+} FLEXCOMM_I2C_SLVQUAL0_QUALMODE0_Enum;
-+
-+typedef enum {
-+    /*
-+     * No start detected. The Monitor function has not detected a Start event
-+     * on the I2C bus.
-+     */
-+    FLEXCOMM_I2C_MONRXDAT_MONSTART_NO_START_DETECTED = 0,
-+    /*
-+     * Start detected. The Monitor function has detected a Start event on the
-+     * I2C bus.
-+     */
-+    FLEXCOMM_I2C_MONRXDAT_MONSTART_START_DETECTED = 1,
-+} FLEXCOMM_I2C_MONRXDAT_MONSTART_Enum;
-+
-+typedef enum {
-+    /*
-+     * No repeated start detected. The Monitor function has not detected a
-+     * Repeated Start event on the I2C bus.
-+     */
-+    FLEXCOMM_I2C_MONRXDAT_MONRESTART_NOT_DETECTED = 0,
-+    /*
-+     * Repeated start detected. The Monitor function has detected a Repeated
-+     * Start event on the I2C bus.
-+     */
-+    FLEXCOMM_I2C_MONRXDAT_MONRESTART_DETECTED = 1,
-+} FLEXCOMM_I2C_MONRXDAT_MONRESTART_Enum;
-+
-+typedef enum {
-+    /*
-+     * Acknowledged. The data currently being provided by the Monitor function
-+     * was acknowledged by at least one master or slave receiver.
-+     */
-+    FLEXCOMM_I2C_MONRXDAT_MONNACK_ACKNOWLEDGED = 0,
-+    /*
-+     * Not acknowledged. The data currently being provided by the Monitor
-+     * function was not acknowledged by any receiver.
-+     */
-+    FLEXCOMM_I2C_MONRXDAT_MONNACK_NOT_ACKNOWLEDGED = 1,
-+} FLEXCOMM_I2C_MONRXDAT_MONNACK_Enum;
-+
-+
-+#define FLEXCOMM_I2C_REGISTER_NAMES_ARRAY(_name) \
-+    const char *_name[FLEXCOMM_I2C_REGS_NO] = { \
-+        [R_FLEXCOMM_I2C_CFG] = "CFG", \
-+        [R_FLEXCOMM_I2C_STAT] = "STAT", \
-+        [R_FLEXCOMM_I2C_INTENSET] = "INTENSET", \
-+        [R_FLEXCOMM_I2C_INTENCLR] = "INTENCLR", \
-+        [R_FLEXCOMM_I2C_TIMEOUT] = "TIMEOUT", \
-+        [R_FLEXCOMM_I2C_CLKDIV] = "CLKDIV", \
-+        [R_FLEXCOMM_I2C_INTSTAT] = "INTSTAT", \
-+        [R_FLEXCOMM_I2C_MSTCTL] = "MSTCTL", \
-+        [R_FLEXCOMM_I2C_MSTTIME] = "MSTTIME", \
-+        [R_FLEXCOMM_I2C_MSTDAT] = "MSTDAT", \
-+        [R_FLEXCOMM_I2C_SLVCTL] = "SLVCTL", \
-+        [R_FLEXCOMM_I2C_SLVDAT] = "SLVDAT", \
-+        [R_FLEXCOMM_I2C_SLVADR0] = "SLVADR0", \
-+        [R_FLEXCOMM_I2C_SLVADR1] = "SLVADR1", \
-+        [R_FLEXCOMM_I2C_SLVADR2] = "SLVADR2", \
-+        [R_FLEXCOMM_I2C_SLVADR3] = "SLVADR3", \
-+        [R_FLEXCOMM_I2C_SLVQUAL0] = "SLVQUAL0", \
-+        [R_FLEXCOMM_I2C_MONRXDAT] = "MONRXDAT", \
-+        [R_FLEXCOMM_I2C_ID] = "ID", \
-+    }
-+
-+#define FLEXCOMM_I2C_REGISTER_WMASK_ARRAY(_name) \
-+    const uint32_t _name[FLEXCOMM_I2C_REGS_NO] = { \
-+        [R_FLEXCOMM_I2C_CFG] = 0x3F, \
-+        [R_FLEXCOMM_I2C_STAT] = 0x30A8050, \
-+        [R_FLEXCOMM_I2C_INTENSET] = 0x30B8951, \
-+        [R_FLEXCOMM_I2C_INTENCLR] = 0x30B8951, \
-+        [R_FLEXCOMM_I2C_TIMEOUT] = 0xFFFF, \
-+        [R_FLEXCOMM_I2C_CLKDIV] = 0xFFFF, \
-+        [R_FLEXCOMM_I2C_MSTCTL] = 0xF, \
-+        [R_FLEXCOMM_I2C_MSTTIME] = 0x77, \
-+        [R_FLEXCOMM_I2C_MSTDAT] = 0xFF, \
-+        [R_FLEXCOMM_I2C_SLVCTL] = 0x30B, \
-+        [R_FLEXCOMM_I2C_SLVDAT] = 0xFF, \
-+        [R_FLEXCOMM_I2C_SLVADR0] = 0x80FF, \
-+        [R_FLEXCOMM_I2C_SLVADR1] = 0x80FF, \
-+        [R_FLEXCOMM_I2C_SLVADR2] = 0x80FF, \
-+        [R_FLEXCOMM_I2C_SLVADR3] = 0x80FF, \
-+        [R_FLEXCOMM_I2C_SLVQUAL0] = 0xFF, \
-+    }
-+
-+static inline void flexcomm_i2c_reset_registers(uint32_t *regs)
-+{
-+    regs[R_FLEXCOMM_I2C_CFG] = 0x0;
-+    regs[R_FLEXCOMM_I2C_STAT] = 0x801;
-+    regs[R_FLEXCOMM_I2C_INTENSET] = 0x0;
-+    regs[R_FLEXCOMM_I2C_INTENCLR] = 0x0;
-+    regs[R_FLEXCOMM_I2C_TIMEOUT] = 0xffff;
-+    regs[R_FLEXCOMM_I2C_CLKDIV] = 0x0;
-+    regs[R_FLEXCOMM_I2C_INTSTAT] = 0x801;
-+    regs[R_FLEXCOMM_I2C_MSTCTL] = 0x0;
-+    regs[R_FLEXCOMM_I2C_MSTTIME] = 0x77;
-+    regs[R_FLEXCOMM_I2C_MSTDAT] = 0x0;
-+    regs[R_FLEXCOMM_I2C_SLVCTL] = 0x0;
-+    regs[R_FLEXCOMM_I2C_SLVDAT] = 0x0;
-+    regs[R_FLEXCOMM_I2C_SLVADR0] = 0x1;
-+    regs[R_FLEXCOMM_I2C_SLVADR1] = 0x1;
-+    regs[R_FLEXCOMM_I2C_SLVADR2] = 0x1;
-+    regs[R_FLEXCOMM_I2C_SLVADR3] = 0x1;
-+    regs[R_FLEXCOMM_I2C_SLVQUAL0] = 0x0;
-+    regs[R_FLEXCOMM_I2C_MONRXDAT] = 0x0;
-+    regs[R_FLEXCOMM_I2C_ID] = 0xe0301300;
-+}
-diff --git a/include/hw/i2c/flexcomm_i2c.h b/include/hw/i2c/flexcomm_i2c.h
++#define RT500_FLEXCOMM0_BASE 0x40106000UL
++#define RT500_FLEXCOMM1_BASE 0x40107000UL
++#define RT500_FLEXCOMM2_BASE 0x40108000UL
++#define RT500_FLEXCOMM3_BASE 0x40109000UL
++#define RT500_FLEXCOMM4_BASE 0x40122000UL
++#define RT500_FLEXCOMM5_BASE 0x40123000UL
++#define RT500_FLEXCOMM6_BASE 0x40124000UL
++#define RT500_FLEXCOMM7_BASE 0x40125000UL
++#define RT500_FLEXCOMM14_BASE 0x40126000UL
++#define RT500_FLEXCOMM15_BASE 0x40127000UL
++#define RT500_FLEXCOMM16_BASE 0x40128000UL
++#define RT500_FLEXCOMM8_BASE 0x40209000UL
++#define RT500_FLEXCOMM9_BASE 0x4020A000UL
++#define RT500_FLEXCOMM10_BASE 0x4020B000UL
++#define RT500_FLEXCOMM11_BASE 0x4020C000UL
++#define RT500_FLEXCOMM12_BASE 0x4020D000UL
++#define RT500_FLEXCOMM13_BASE 0x4020E000UL
++
++#define RT500_FLEXCOMM0_IRQn 0x14UL
++#define RT500_FLEXCOMM1_IRQn 0x15UL
++#define RT500_FLEXCOMM2_IRQn 0x16UL
++#define RT500_FLEXCOMM3_IRQn 0x17UL
++#define RT500_FLEXCOMM4_IRQn 0x18UL
++#define RT500_FLEXCOMM5_IRQn 0x19UL
++#define RT500_FLEXCOMM6_IRQn 0x43UL
++#define RT500_FLEXCOMM7_IRQn 0x44UL
++#define RT500_FLEXCOMM14_IRQn 0x20UL
++#define RT500_FLEXCOMM15_IRQn 0x21UL
++#define RT500_FLEXCOMM16_IRQn 0x66UL
++#define RT500_FLEXCOMM8_IRQn 0x60UL
++#define RT500_FLEXCOMM9_IRQn 0x61UL
++#define RT500_FLEXCOMM10_IRQn 0x62UL
++#define RT500_FLEXCOMM11_IRQn 0x63UL
++#define RT500_FLEXCOMM12_IRQn 0x64UL
++#define RT500_FLEXCOMM13_IRQn 0x65UL
++
++#define RT500_CLKCTL0_BASE 0x40001000UL
++
++
++#define RT500_CLKCTL1_BASE 0x40021000UL
++
++
++#define RT500_FLEXSPI0_BASE 0x40134000UL
++
++#define RT500_FLEXSPI0_FLEXSPI1_IRQn 0x42UL
++
++#define RT500_FLEXSPI1_BASE 0x4013C000UL
++
++#define RT500_FLEXSPI0_FLEXSPI1_IRQn 0x42UL
++
++#define RT500_RSTCTL0_BASE 0x40000000UL
++
++
++#define RT500_RSTCTL1_BASE 0x40020000UL
++
++
+diff --git a/hw/arm/rt500.c b/hw/arm/rt500.c
 new file mode 100644
-index 0000000000..aea01f13bd
+index 0000000000..2c6d238c18
 --- /dev/null
-+++ b/include/hw/i2c/flexcomm_i2c.h
-@@ -0,0 +1,27 @@
++++ b/hw/arm/rt500.c
+@@ -0,0 +1,335 @@
 +/*
-+ * QEMU model for NXP's FLEXCOMM I2C
-+ *
-+ * Copyright (c) 2024 Google LLC
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or later.
-+ * See the COPYING file in the top-level directory.
-+ */
-+
-+#ifndef HW_CHAR_FLEXCOMM_I2C_H
-+#define HW_CHAR_FLEXCOMM_I2C_H
-+
-+#include "hw/misc/flexcomm.h"
-+
-+void flexcomm_i2c_init(FlexcommState *s);
-+void flexcomm_i2c_register(void);
-+
-+#define MSTSTATE_IDLE 0
-+#define MSTSTATE_RXRDY 1
-+#define MSTSTATE_TXRDY 2
-+#define MSTSTATE_NAKADR 3
-+#define MSTSTATE_NAKDAT 4
-+
-+
-+#endif /* HW_CHAR_FLEXCOMM_I2C_H */
-diff --git a/include/hw/misc/flexcomm.h b/include/hw/misc/flexcomm.h
-index a4dfdb225f..2fdca81ba9 100644
---- a/include/hw/misc/flexcomm.h
-+++ b/include/hw/misc/flexcomm.h
-@@ -14,8 +14,10 @@
- 
- #include "hw/sysbus.h"
- #include "chardev/char-fe.h"
-+#include "hw/i2c/i2c.h"
- #include "hw/arm/svd/flexcomm.h"
- #include "hw/arm/svd/flexcomm_usart.h"
-+#include "hw/arm/svd/flexcomm_i2c.h"
- #include "qemu/fifo32.h"
- 
- #define TYPE_FLEXCOMM "flexcomm"
-@@ -48,6 +50,7 @@ typedef struct {
-     CharBackend chr;
-     Fifo32 tx_fifo;
-     Fifo32 rx_fifo;
-+    I2CBus *i2c;
- } FlexcommState;
- 
- typedef struct {
-diff --git a/hw/i2c/flexcomm_i2c.c b/hw/i2c/flexcomm_i2c.c
-new file mode 100644
-index 0000000000..0734f4ea42
---- /dev/null
-+++ b/hw/i2c/flexcomm_i2c.c
-@@ -0,0 +1,207 @@
-+/*
-+ * QEMU model for NXP's FLEXCOMM I2C
++ * i.MX RT500 platforms.
 + *
 + * Copyright (c) 2024 Google LLC
 + *
@@ -1371,294 +294,370 @@ index 0000000000..0734f4ea42
 + */
 +
 +#include "qemu/osdep.h"
-+#include "qemu/cutils.h"
-+#include "hw/irq.h"
-+#include "hw/qdev-properties.h"
-+#include "qemu/log.h"
-+#include "qemu/module.h"
-+#include "exec/address-spaces.h"
 +#include "qapi/error.h"
-+#include "trace.h"
-+#include "hw/regs.h"
-+#include "hw/i2c/flexcomm_i2c.h"
++#include "hw/sysbus.h"
++#include "hw/arm/boot.h"
++#include "hw/boards.h"
++#include "hw/irq.h"
++#include "qemu/log.h"
++#include "qemu/datadir.h"
++#include "qemu/units.h"
++#include "exec/address-spaces.h"
++#include "sysemu/reset.h"
++#include "sysemu/runstate.h"
++#include "sysemu/sysemu.h"
++#include "hw/arm/armv7m.h"
++#include "hw/loader.h"
++#include "hw/qdev-clock.h"
++#include "hw/misc/unimp.h"
++#include "hw/arm/rt500.h"
++#include "hw/arm/svd/rt500.h"
 +
-+#define REG(s, reg) (s->regs[R_FLEXCOMM_I2C_##reg])
-+#define RF_WR(s, reg, field, val) \
-+    ARRAY_FIELD_DP32(s->regs, FLEXCOMM_I2C_##reg, field, val)
-+#define RF_RD(s, reg, field) \
-+    ARRAY_FIELD_EX32(s->regs, FLEXCOMM_I2C_##reg, field)
++#define MMAP_SRAM_CODE_BASE   (0x0)
++#define MMAP_SRAM_DATA_BASE   (0x20000000)
++#define MMAP_SRAM_SIZE        (5 * MiB)
++#define MMAP_BOOT_ROM_BASE    (0x03000000)
++#define MMAP_BOOT_ROM_SIZE    (192 * KiB)
++#define MMAP_SDMA_RAM_BASE    (0x24100000)
++#define MMAP_SDMA_RAM_SIZE    (32 * KiB)
++#define MMAP_FLEXSPI0_BASE    (0x08000000)
++#define MMAP_FLEXSPI0_SIZE    (128 * MiB)
++#define MMAP_FLEXSPI1_BASE    (0x28000000)
++#define MMAP_FLEXSPI1_SIZE    (128 * MiB)
 +
-+static FLEXCOMM_I2C_REGISTER_NAMES_ARRAY(reg_names);
++#define SECURE_OFFSET (0x10000000)
 +
-+static void flexcomm_i2c_reset(FlexcommState *s)
++#define RT500_NUM_IRQ (RT500_FLEXCOMM16_IRQn + 1)
++
++typedef enum MemInfoType {
++    MEM_RAM,
++    MEM_ROM,
++    MEM_ALIAS
++} MemInfoType;
++
++static void do_sys_reset(void *opaque, int n, int level)
 +{
-+    flexcomm_i2c_reset_registers(s->regs);
++    if (level) {
++        qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
++    }
 +}
 +
-+static void flexcomm_i2c_irq_update(FlexcommState *s)
++static void rt500_init(Object *obj)
 +{
-+    bool enabled = RF_RD(s, CFG, MSTEN);
-+    bool irq, per_irqs;
++    RT500State *s = RT500(obj);
 +
-+    REG(s, INTSTAT) = REG(s, STAT) & REG(s, INTENSET);
-+    per_irqs = REG(s, INTSTAT) != 0;
++    /* Add ARMv7-M device */
++    object_initialize_child(obj, "armv7m", &s->armv7m, TYPE_ARMV7M);
 +
-+    irq = enabled && per_irqs;
++    for (int i = 0; i < RT500_FLEXCOMM_NUM; i++) {
++        char *id = g_strdup_printf("flexcomm%d", i);
 +
-+    trace_flexcomm_i2c_irq(DEVICE(s)->id, irq, per_irqs, enabled);
-+    flexcomm_irq(s, irq);
-+}
-+
-+static MemTxResult flexcomm_i2c_reg_read(void *opaque, FlexcommState *s,
-+                                          int f, hwaddr addr, uint64_t *data,
-+                                          unsigned size)
-+{
-+    MemTxResult ret = MEMTX_OK;
-+
-+    if (!reg32_aligned_access(addr, size)) {
-+        ret = MEMTX_ERROR;
-+        goto out;
++        object_initialize_child(obj, id, &s->flexcomm[i], TYPE_FLEXCOMM);
++        DEVICE(&s->flexcomm[i])->id = id;
 +    }
 +
-+    *data = s->regs[addr / 4];
++    object_initialize_child(obj, "clkctl0", &s->clkctl0, TYPE_RT500_CLKCTL0);
++    object_initialize_child(obj, "clkctl1", &s->clkctl1, TYPE_RT500_CLKCTL1);
 +
-+    flexcomm_i2c_irq_update(s);
++    /* Initialize clocks */
++    s->sysclk = qdev_init_clock_in(DEVICE(s), "sysclk", NULL, NULL, 0);
++    s->refclk = qdev_init_clock_in(DEVICE(s), "refclk", NULL, NULL, 0);
 +
-+out:
-+    trace_flexcomm_i2c_reg_read(DEVICE(s)->id, reg_names[addr], addr, *data);
-+    return ret;
-+}
++    for (int i = 0; i < RT500_FLEXSPI_NUM; i++) {
++        char *id = g_strdup_printf("flexspi%d", i);
 +
-+static MemTxResult flexcomm_i2c_reg_write(void *opaque, FlexcommState *s,
-+                                           int f, hwaddr addr, uint64_t value,
-+                                           unsigned size)
-+{
-+    static FLEXCOMM_I2C_REGISTER_WMASK_ARRAY(wmask);
-+
-+    trace_flexcomm_i2c_reg_write(DEVICE(s)->id, reg_names[addr], addr, value);
-+
-+    if (!reg32_aligned_access(addr, size)) {
-+        return MEMTX_ERROR;
++        object_initialize_child(obj, id, &s->flexspi[i], TYPE_FLEXSPI);
++        DEVICE(&s->flexspi[i])->id = id;
 +    }
 +
-+    value &= wmask[addr / 4];
++    for (int i = 0; i < RT500_RSTCTL_NUM; i++) {
++        static const char *types[] = {
++            TYPE_RT500_RSTCTL0, TYPE_RT500_RSTCTL1
++        };
++        char *id = g_strdup_printf("rstctl%d", i);
 +
-+    switch (addr) {
-+    case A_FLEXCOMM_I2C_CFG:
-+    {
-+        s->regs[addr / 4] = value;
-+        if (RF_RD(s, CFG, SLVEN)) {
-+            qemu_log_mask(LOG_GUEST_ERROR, "I2C slave not supported");
++        object_initialize_child(obj, id, &s->rstctl[i], types[i]);
++        DEVICE(&s->rstctl[i])->id = id;
++    }
++}
++
++static void rt500_realize_memory(RT500State *s, Error **errp)
++{
++    static const struct {
++        const char *name;
++        hwaddr base;
++        size_t size;
++        MemInfoType type;
++        int alias_for;
++    } mem_info[] = {
++        {
++            .name = "SRAM (code bus)",
++            .base = MMAP_SRAM_CODE_BASE,
++            .size = MMAP_SRAM_SIZE,
++            .type = MEM_RAM,
++        },
++        {
++            .name = "BOOT-ROM",
++            .base = MMAP_BOOT_ROM_BASE,
++            .size = MMAP_BOOT_ROM_SIZE,
++            .type = MEM_ROM,
++        },
++        {
++            .name = "Smart DMA RAM",
++            .base = MMAP_SDMA_RAM_BASE,
++            .size = MMAP_SDMA_RAM_SIZE,
++            .type = MEM_RAM,
++        },
++        {
++            .name = "SRAM (data bus)",
++            .base = MMAP_SRAM_DATA_BASE,
++            .size = MMAP_SRAM_SIZE,
++            .type = MEM_ALIAS,
++            .alias_for = 0
++        },
++    };
++
++    s->mem = g_malloc_n(2 * ARRAY_SIZE(mem_info), sizeof(MemoryRegion));
++    for (int i = 0; i < ARRAY_SIZE(mem_info); i++) {
++        const char *name = mem_info[i].name;
++        int size = mem_info[i].size;
++        int type = mem_info[i].type;
++        int alias_for = mem_info[i].alias_for;
++        MemoryRegion *mem = &s->mem[i];
++        uint32_t base = mem_info[i].base;
++        MemoryRegion *sec_mem;
++        char sec_name[256];
++
++        switch (type) {
++        case MEM_RAM:
++            memory_region_init_ram(mem, OBJECT(s), name, size, errp);
++            break;
++        case MEM_ROM:
++            memory_region_init_rom(mem, OBJECT(s), name, size, errp);
++            break;
++        case MEM_ALIAS:
++        {
++            MemoryRegion *orig = &s->mem[alias_for];
++
++            memory_region_init_alias(mem, OBJECT(s), name, orig, 0, size);
++            break;
 +        }
-+        if (RF_RD(s, CFG, MONEN)) {
-+            qemu_log_mask(LOG_GUEST_ERROR, "I2C monitoring not supported");
++        default:
++            g_assert_not_reached();
 +        }
-+        break;
-+    }
-+    case A_FLEXCOMM_I2C_INTENCLR:
-+    {
-+        REG(s, INTENSET) &= ~value;
-+        break;
-+    }
-+    case A_FLEXCOMM_I2C_TIMEOUT:
-+    {
-+        s->regs[addr / 4] = value;
-+        /* The bottom 4 bits are hard-wired to 0xF */
-+        RF_WR(s, TIMEOUT, TOMIN, 0xf);
-+        break;
-+    }
-+    case A_FLEXCOMM_I2C_MSTCTL:
-+    {
-+        s->regs[addr / 4] = value;
-+        if (RF_RD(s, MSTCTL, MSTSTART)) {
-+            uint8_t i2c_addr = RF_RD(s, MSTDAT, DATA);
-+            bool recv = i2c_addr & 1;
 +
-+            trace_flexcomm_i2c_start(DEVICE(s)->id, i2c_addr, recv);
-+            if (i2c_start_transfer(s->i2c, i2c_addr, recv)) {
-+                RF_WR(s, STAT, MSTSTATE, MSTSTATE_NAKADR);
-+                trace_flexcomm_i2c_nak(DEVICE(s)->id);
-+            } else {
-+                if (recv) {
-+                    uint8_t data = i2c_recv(s->i2c);
++        memory_region_add_subregion(get_system_memory(), base, mem);
 +
-+                    RF_WR(s, MSTDAT, DATA, data);
-+                    trace_flexcomm_i2c_rx(DEVICE(s)->id, data);
-+                    RF_WR(s, STAT, MSTSTATE, MSTSTATE_RXRDY);
++        /* create secure alias */
++        snprintf(sec_name, sizeof(sec_name), "SECURE %s", name);
++        sec_mem = &s->mem[ARRAY_SIZE(mem_info) + i];
++        if (type == MEM_ALIAS) {
++            mem = &s->mem[alias_for];
++        }
++        memory_region_init_alias(sec_mem, OBJECT(s), sec_name, mem, 0, size);
++        memory_region_add_subregion(get_system_memory(), base + SECURE_OFFSET,
++                                    sec_mem);
++
++        if (mem_info[i].type == MEM_ROM) {
++            char *fname = qemu_find_file(QEMU_FILE_TYPE_BIOS, "rt500.rom");
++
++            if (fname) {
++                int fsize = get_image_size(fname);
++                int ret;
++
++                if (fsize > size) {
++                    error_setg(errp, "rom file too big: %d > %d", fsize, size);
 +                } else {
-+                    RF_WR(s, STAT, MSTSTATE, MSTSTATE_TXRDY);
++                    ret = load_image_targphys(fname, base, size);
++                    if (ret < 0) {
++                        error_setg(errp, "could not load rom: %s", fname);
++                    }
 +                }
 +            }
++            g_free(fname);
 +        }
-+        if (RF_RD(s, MSTCTL, MSTSTOP)) {
-+            RF_WR(s, STAT, MSTSTATE, MSTSTATE_IDLE);
-+            i2c_end_transfer(s->i2c);
-+        }
-+        if (RF_RD(s, MSTCTL, MSTCONTINUE)) {
-+            if (RF_RD(s, STAT, MSTSTATE) == MSTSTATE_TXRDY) {
-+                uint8_t data = RF_RD(s, MSTDAT, DATA);
-+
-+                trace_flexcomm_i2c_tx(DEVICE(s)->id, data);
-+                if (i2c_send(s->i2c, data)) {
-+                    RF_WR(s, STAT, MSTSTATE, MSTSTATE_NAKDAT);
-+                }
-+            } else if (RF_RD(s, STAT, MSTSTATE) == MSTSTATE_RXRDY) {
-+                uint8_t data = i2c_recv(s->i2c);
-+
-+                RF_WR(s, MSTDAT, DATA, data);
-+                trace_flexcomm_i2c_rx(DEVICE(s)->id, data);
-+            }
-+        }
-+        break;
 +    }
-+    case A_FLEXCOMM_I2C_STAT:
-+    {
-+        /* write 1 to clear bits */
-+        REG(s, STAT) &= ~value;
-+        break;
-+    }
-+    case A_FLEXCOMM_I2C_SLVCTL:
-+    case A_FLEXCOMM_I2C_SLVDAT:
-+    case A_FLEXCOMM_I2C_SLVADR0:
-+    case A_FLEXCOMM_I2C_SLVADR1:
-+    case A_FLEXCOMM_I2C_SLVADR2:
-+    case A_FLEXCOMM_I2C_SLVADR3:
-+    case A_FLEXCOMM_I2C_SLVQUAL0:
-+    {
-+        qemu_log_mask(LOG_GUEST_ERROR, "I2C slave not supported\n");
-+        break;
-+    }
-+    default:
-+        s->regs[addr / 4] = value;
-+        break;
-+    }
-+
-+    flexcomm_i2c_irq_update(s);
-+
-+    return MEMTX_OK;
 +}
 +
-+static void flexcomm_i2c_select(void *opaque, FlexcommState *s, int f,
-+                                 bool set)
++static void rt500_realize(DeviceState *dev, Error **errp)
 +{
-+    if (set) {
-+        flexcomm_i2c_reset(s);
++    MachineState *ms = MACHINE(qdev_get_machine());
++    RT500State *s = RT500(dev);
++
++    rt500_realize_memory(s, errp);
++
++    /* Setup ARMv7M CPU */
++    qdev_prop_set_uint32(DEVICE(&s->armv7m), "num-irq", RT500_NUM_IRQ);
++    qdev_prop_set_uint8(DEVICE(&s->armv7m), "num-prio-bits", 3);
++    qdev_prop_set_string(DEVICE(&s->armv7m), "cpu-type", "cortex-m33-arm-cpu");
++    object_property_set_link(OBJECT(&s->armv7m), "memory",
++                             OBJECT(get_system_memory()), &error_abort);
++    if (!ms->kernel_filename) {
++        qdev_prop_set_uint32(DEVICE(&s->armv7m), "init-nsvtor",
++                             MMAP_BOOT_ROM_BASE);
++        qdev_prop_set_uint32(DEVICE(&s->armv7m), "init-svtor",
++                             MMAP_BOOT_ROM_BASE + SECURE_OFFSET);
++    }
++
++    qdev_connect_clock_in(DEVICE(&s->armv7m), "cpuclk", s->sysclk);
++    qdev_connect_clock_in(DEVICE(&s->armv7m), "refclk",
++                     qdev_get_clock_out(DEVICE(&s->clkctl0), "systick_clk"));
++
++    sysbus_realize_and_unref(SYS_BUS_DEVICE(&s->armv7m), errp);
++    qdev_connect_gpio_out_named(DEVICE(&s->armv7m), "SYSRESETREQ", 0,
++                                qemu_allocate_irq(&do_sys_reset, NULL, 0));
++
++    /* Setup FLEXCOMM */
++    for (int i = 0; i < RT500_FLEXCOMM_NUM; i++) {
++        static const uint32_t addr[] = {
++            RT500_FLEXCOMM0_BASE, RT500_FLEXCOMM1_BASE, RT500_FLEXCOMM2_BASE,
++            RT500_FLEXCOMM3_BASE, RT500_FLEXCOMM4_BASE, RT500_FLEXCOMM5_BASE,
++            RT500_FLEXCOMM6_BASE, RT500_FLEXCOMM7_BASE, RT500_FLEXCOMM8_BASE,
++            RT500_FLEXCOMM8_BASE, RT500_FLEXCOMM10_BASE, RT500_FLEXCOMM11_BASE,
++            RT500_FLEXCOMM12_BASE, RT500_FLEXCOMM13_BASE, RT500_FLEXCOMM14_BASE,
++            RT500_FLEXCOMM15_BASE, RT500_FLEXCOMM16_BASE
++        };
++        static const int irq[] = {
++            RT500_FLEXCOMM0_IRQn, RT500_FLEXCOMM1_IRQn, RT500_FLEXCOMM2_IRQn,
++            RT500_FLEXCOMM3_IRQn, RT500_FLEXCOMM4_IRQn, RT500_FLEXCOMM5_IRQn,
++            RT500_FLEXCOMM6_IRQn, RT500_FLEXCOMM7_IRQn, RT500_FLEXCOMM8_IRQn,
++            RT500_FLEXCOMM9_IRQn, RT500_FLEXCOMM10_IRQn, RT500_FLEXCOMM11_IRQn,
++            RT500_FLEXCOMM12_IRQn, RT500_FLEXCOMM13_IRQn, RT500_FLEXCOMM14_IRQn,
++            RT500_FLEXCOMM15_IRQn, RT500_FLEXCOMM16_IRQn
++        };
++        static const int functions[] = {
++            FLEXCOMM_FULL, FLEXCOMM_FULL, FLEXCOMM_FULL,
++            FLEXCOMM_FULL, FLEXCOMM_FULL, FLEXCOMM_FULL,
++            FLEXCOMM_FULL, FLEXCOMM_FULL, FLEXCOMM_FULL,
++            FLEXCOMM_FULL, FLEXCOMM_FULL, FLEXCOMM_FULL,
++            FLEXCOMM_FULL, FLEXCOMM_FULL, FLEXCOMM_HSSPI,
++            FLEXCOMM_PMICI2C, FLEXCOMM_HSSPI
++        };
++        DeviceState *ds = DEVICE(&s->flexcomm[i]);
++
++        qdev_prop_set_uint32(ds, "functions", functions[i]);
++        qdev_prop_set_chr(ds, "chardev", qemu_chr_find(ds->id));
++        sysbus_realize_and_unref(SYS_BUS_DEVICE(ds), errp);
++        sysbus_mmio_map(SYS_BUS_DEVICE(ds), 0, addr[i]);
++        sysbus_connect_irq(SYS_BUS_DEVICE(ds), 0,
++                           qdev_get_gpio_in(DEVICE(&s->armv7m), irq[i]));
++    }
++
++    /* Setup CTLCTL0 */
++    qdev_connect_clock_in(DEVICE(&s->clkctl0), "sysclk", s->sysclk);
++    sysbus_realize_and_unref(SYS_BUS_DEVICE(DEVICE(&s->clkctl0)), errp);
++    sysbus_mmio_map(SYS_BUS_DEVICE(DEVICE(&s->clkctl0)), 0, RT500_CLKCTL0_BASE);
++
++    /* Setup CTLCTL1 */
++    qdev_connect_clock_in(DEVICE(&s->clkctl1), "sysclk", s->sysclk);
++    sysbus_realize_and_unref(SYS_BUS_DEVICE(DEVICE(&s->clkctl1)), errp);
++    sysbus_mmio_map(SYS_BUS_DEVICE(DEVICE(&s->clkctl1)), 0, RT500_CLKCTL1_BASE);
++
++    /* Setup FlexSPI */
++    for (int i = 0; i < RT500_FLEXSPI_NUM; i++) {
++        static const uint32_t addr[] = {
++            RT500_FLEXSPI0_BASE, RT500_FLEXSPI1_BASE
++        };
++        static const uint32_t mmap_base[] = {
++            MMAP_FLEXSPI0_BASE, MMAP_FLEXSPI1_BASE
++        };
++        static const uint32_t mmap_size[] = {
++            MMAP_FLEXSPI0_SIZE, MMAP_FLEXSPI1_SIZE,
++        };
++        DeviceState *ds = DEVICE(&s->flexspi[i]);
++
++        qdev_prop_set_uint32(ds, "mmap_size", mmap_size[i]);
++        sysbus_realize_and_unref(SYS_BUS_DEVICE(ds), errp);
++        sysbus_mmio_map(SYS_BUS_DEVICE(ds), 0, addr[i]);
++        sysbus_mmio_map(SYS_BUS_DEVICE(ds), 1, mmap_base[i]);
++    }
++
++    /* Setup reset controllers */
++    for (int i = 0; i < RT500_RSTCTL_NUM; i++) {
++        DeviceState *ds = DEVICE(&s->rstctl[i]);
++        static const uint32_t addr[] = {
++            RT500_RSTCTL0_BASE, RT500_RSTCTL1_BASE
++        };
++
++        sysbus_realize_and_unref(SYS_BUS_DEVICE(ds), errp);
++        sysbus_mmio_map(SYS_BUS_DEVICE(ds), 0, addr[i]);
 +    }
 +}
 +
-+static const FlexcommFunctionOps flexcomm_i2c_ops = {
-+    .select = flexcomm_i2c_select,
-+    .reg_read = flexcomm_i2c_reg_read,
-+    .reg_write = flexcomm_i2c_reg_write,
++static void rt500_unrealize(DeviceState *ds)
++{
++    RT500State *s = RT500(ds);
++
++    g_free(s->mem);
++}
++
++static void rt500_reset(DeviceState *ds)
++{
++}
++
++static void rt500_class_init(ObjectClass *oc, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(oc);
++
++    dc->realize = rt500_realize;
++    dc->unrealize = rt500_unrealize;
++    dc->desc = "RT500 (ARM Cortex-M33)";
++    dc->reset = rt500_reset;
++}
++
++static const TypeInfo rt500_types[] = {
++    {
++        .name = TYPE_RT500,
++        .parent = TYPE_SYS_BUS_DEVICE,
++        .instance_size = sizeof(RT500State),
++        .instance_init = rt500_init,
++        .class_init = rt500_class_init,
++    },
 +};
 +
-+void flexcomm_i2c_init(FlexcommState *s)
-+{
-+    s->i2c = i2c_init_bus(DEVICE(s), "i2c");
-+}
++DEFINE_TYPES(rt500_types);
 +
-+void flexcomm_i2c_register(void)
-+{
-+    Error *err = NULL;
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index 1ad60da7aa..7ffece3dec 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -712,3 +712,11 @@ config ARMSSE
+     select UNIMP
+     select SSE_COUNTER
+     select SSE_TIMER
 +
-+    if (!flexcomm_register_ops(FLEXCOMM_FUNC_I2C, NULL,
-+                               &flexcomm_i2c_ops, &err)) {
-+        error_report_err(err);
-+    }
-+}
-diff --git a/hw/misc/flexcomm.c b/hw/misc/flexcomm.c
-index 94847084a3..c7bd1633e9 100644
---- a/hw/misc/flexcomm.c
-+++ b/hw/misc/flexcomm.c
-@@ -23,6 +23,7 @@
- #include "hw/regs.h"
- #include "hw/misc/flexcomm.h"
- #include "hw/char/flexcomm_usart.h"
-+#include "hw/i2c/flexcomm_i2c.h"
++config RT500
++    bool
++    select FLEXCOMM
++    select RT500_CLKCTL0
++    select RT500_CLKCTL1
++    select FLEXSPI
++    select RT500_RSTCTL
+diff --git a/hw/arm/meson.build b/hw/arm/meson.build
+index eb604d00cf..7d827d512c 100644
+--- a/hw/arm/meson.build
++++ b/hw/arm/meson.build
+@@ -59,6 +59,7 @@ arm_ss.add(when: 'CONFIG_ARM_SMMUV3', if_true: files('smmuv3.c'))
+ arm_ss.add(when: 'CONFIG_FSL_IMX6UL', if_true: files('fsl-imx6ul.c', 'mcimx6ul-evk.c'))
+ arm_ss.add(when: 'CONFIG_NRF51_SOC', if_true: files('nrf51_soc.c'))
+ arm_ss.add(when: 'CONFIG_XEN', if_true: files('xen_arm.c'))
++arm_ss.add(when: 'CONFIG_RT500', if_true: files('rt500.c'))
  
- #define REG(s, reg) (s->regs[R_FLEXCOMM_##reg])
- #define RF_WR(s, reg, field, val) \
-@@ -231,6 +232,10 @@ static void flexcomm_realize(DeviceState *dev, Error **errp)
-     if (has_function(s, FLEXCOMM_FUNC_USART)) {
-         flexcomm_usart_init(s);
-     }
-+
-+    if (has_function(s, FLEXCOMM_FUNC_I2C)) {
-+        flexcomm_i2c_init(s);
-+    }
- }
- 
- static void flexcomm_class_init(ObjectClass *klass, void *data)
-@@ -242,6 +247,7 @@ static void flexcomm_class_init(ObjectClass *klass, void *data)
-     dc->realize = flexcomm_realize;
- 
-     flexcomm_usart_register();
-+    flexcomm_i2c_register();
- }
- 
- static const TypeInfo flexcomm_types[] = {
+ system_ss.add(when: 'CONFIG_ARM_SMMUV3', if_true: files('smmu-common.c'))
+ system_ss.add(when: 'CONFIG_CHEETAH', if_true: files('palm.c'))
 diff --git a/hw/arm/svd/meson.build b/hw/arm/svd/meson.build
-index 2bde34d15b..417491cd5c 100644
+index 25f4917089..b7480e7d48 100644
 --- a/hw/arm/svd/meson.build
 +++ b/hw/arm/svd/meson.build
-@@ -7,4 +7,7 @@ if get_option('mcux-soc-svd')
-   run_target('svd-flexcomm-usart', command: svd_gen_header +
-     [ '-i', rt595, '-o', '@SOURCE_ROOT@/include/hw/arm/svd/flexcomm_usart.h',
-     '-p', 'USART0', '-t', 'FLEXCOMM_USART'])
-+  run_target('svd-flexcomm-i2c', command: svd_gen_header +
-+    [ '-i', rt595, '-o', '@SOURCE_ROOT@/include/hw/arm/svd/flexcomm_i2c.h',
-+      '-p', 'I2C0', '-t', 'FLEXCOMM_I2C'])
+@@ -28,4 +28,8 @@ if get_option('mcux-soc-svd')
+   run_target('svd-rt500-rstctl1', command: svd_gen_header +
+     [ '-i', rt595, '-o', '@SOURCE_ROOT@/include/hw/arm/svd/rt500_rstctl1.h',
+       '-p', 'RSTCTL1', '-t', 'RT500_RSTCTL1'])
++  run_target('svd-rt500', command: svd_gen_header +
++    [ '-i', rt595, '-o', '@SOURCE_ROOT@/include/hw/arm/svd/rt500.h',
++      '-s', 'RT500', '-p', 'FLEXCOMM0', '-p', 'CLKCTL0', '-p', 'CLKCTL1',
++      '-p', 'FLEXSPI0', '-p', 'FLEXSPI1', '-p', 'RSTCTL0', '-p', 'RSTCTL1'])
  endif
-diff --git a/hw/i2c/meson.build b/hw/i2c/meson.build
-index c459adcb59..e7d79e6938 100644
---- a/hw/i2c/meson.build
-+++ b/hw/i2c/meson.build
-@@ -18,4 +18,5 @@ i2c_ss.add(when: 'CONFIG_PPC4XX', if_true: files('ppc4xx_i2c.c'))
- i2c_ss.add(when: 'CONFIG_PCA954X', if_true: files('i2c_mux_pca954x.c'))
- i2c_ss.add(when: 'CONFIG_PMBUS', if_true: files('pmbus_device.c'))
- i2c_ss.add(when: 'CONFIG_BCM2835_I2C', if_true: files('bcm2835_i2c.c'))
-+i2c_ss.add(when: 'CONFIG_FLEXCOMM', if_true: files('flexcomm_i2c.c'))
- system_ss.add_all(when: 'CONFIG_I2C', if_true: i2c_ss)
-diff --git a/hw/i2c/trace-events b/hw/i2c/trace-events
-index 6900e06eda..9f0175fab7 100644
---- a/hw/i2c/trace-events
-+++ b/hw/i2c/trace-events
-@@ -51,3 +51,13 @@ npcm7xx_smbus_recv_fifo(const char *id, uint8_t received, uint8_t expected) "%s
- 
- pca954x_write_bytes(uint8_t value) "PCA954X write data: 0x%02x"
- pca954x_read_data(uint8_t value) "PCA954X read data: 0x%02x"
-+
-+# flexcomm_i2c.c
-+
-+flexcomm_i2c_reg_read(const char *id, const char *reg_name, uint32_t addr, uint32_t val) " %s: %s[0x%04x] -> 0x%08x"
-+flexcomm_i2c_reg_write(const char *id, const char *reg_name, uint32_t addr, uint32_t val) "%s: %s[0x%04x] <- 0x%08x"
-+flexcomm_i2c_start(const char *id, uint8_t addr, uint8_t recv) "%s: 0x%02x %d"
-+flexcomm_i2c_rx(const char *id, uint8_t data) "%s: <- 0x%02x"
-+flexcomm_i2c_tx(const char *id, uint8_t data) "%s: -> 0x%02x"
-+flexcomm_i2c_nak(const char *id) "%s: <- nak"
-+flexcomm_i2c_irq(const char *id, bool irq, bool perirqs, bool enabled) "%s: %d %d %d"
-diff --git a/tests/unit/meson.build b/tests/unit/meson.build
-index dcfd2e661c..4c22cb3ccc 100644
---- a/tests/unit/meson.build
-+++ b/tests/unit/meson.build
-@@ -148,6 +148,8 @@ if have_system
-       meson.project_source_root() / 'tests/unit/sysbus-mock.c',
-       meson.project_source_root() / 'hw/misc/flexcomm.c',
-       meson.project_source_root() / 'hw/char/flexcomm_usart.c',
-+      meson.project_source_root() / 'hw/i2c/flexcomm_i2c.c',
-+      meson.project_source_root() / 'hw/i2c/core.c',
-      ],
-     'test-flexcomm-usart': [
-       hwcore, chardev, qom, migration,
-@@ -155,6 +157,8 @@ if have_system
-       meson.project_source_root() / 'tests/unit/sysbus-mock.c',
-       meson.project_source_root() / 'hw/misc/flexcomm.c',
-       meson.project_source_root() / 'hw/char/flexcomm_usart.c',
-+      meson.project_source_root() / 'hw/i2c/flexcomm_i2c.c',
-+      meson.project_source_root() / 'hw/i2c/core.c',
-     ],
-   }
-   if config_host_data.get('CONFIG_INOTIFY1')
 -- 
 2.46.0.184.g6999bdac58-goog
 

@@ -1,298 +1,362 @@
-Received: by 2002:a17:504:9188:b0:1be9:327d:8ee3 with SMTP id i8csp1398725njf;
-        Fri, 16 Aug 2024 17:45:58 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCUngINMNCLw/J00UL0uLCEeH+F23EmtFsaOd069pDQzgWtuiXC38tp5KqYw/gGe+1/wVYksYyPs52XDtA==@linaro.org
-X-Google-Smtp-Source: AGHT+IEFRng9NzxujHzT/Z/fDTKLQszBHAek5yxgXUSaZ5RiCJWPXymg4s5QSQZaMA48gEpR/Xa+
-X-Received: by 2002:a05:6808:18a1:b0:3da:a032:24c5 with SMTP id 5614622812f47-3dd3ad2f9c6mr4956101b6e.22.1723855558788;
-        Fri, 16 Aug 2024 17:45:58 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1723855558; cv=pass;
+Received: by 2002:a17:504:9188:b0:1be9:327d:8ee3 with SMTP id i8csp1490343njf;
+        Sat, 17 Aug 2024 03:26:33 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXBopXOWZMXHDrntQgSBMfLfJOGGD5+j10DjC2arywiCgeHUQaVMHvZC037NAY7ugumxqjq11w+ubey86VY081oOqD+Pv37
+X-Google-Smtp-Source: AGHT+IFYBWr0KLouQBaNLpOMAR7l3dJE6UaARTWW6ST65iylgk2fUxoD6SE6HhU2fySicwYQU2Yy
+X-Received: by 2002:a05:622a:124e:b0:44f:edb1:fb6c with SMTP id d75a77b69052e-4537441aba2mr63531381cf.62.1723890393451;
+        Sat, 17 Aug 2024 03:26:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1723890393; cv=none;
         d=google.com; s=arc-20160816;
-        b=INI1d+NIDJlX82TRQx9ke3er34nPWchvxKz7AiMzMhYvJfenwktCX4nVO/hxIN+ZR+
-         eZ/he03f0ntH5NchKel7/1jtoFmXY7byO/r0VI6YGVEFZI2czUpN59BIiq4q9puhQ2Sw
-         FT5jOuWzM0hByliPgZOoMpc1e1PHWK4qezfD6vWCF7ylEsIzTnIOZ4PfnuKBHrvgJQdc
-         SfVL4IXHQsfnjG471i/pn0ExBU48akX1mUq7IIYCrPO7Y3oavDKoCrocYWrkXEekQG9J
-         TjEWRbis/7G8h7hBfZ6GJMfIM+gWNCz4VYkT1kOsiQz5SzpC/Nx77McWfmg8YAmHj4ii
-         DIiw==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=m4SVgnne9erkuAhrAeM3VCVOKRFMY2Is89F35hd+2Sk=;
-        fh=l5QszxWMWNP+ZFnHgaGYNhEtT9hb7KqcJ85KXFuefz8=;
-        b=kBo0/fFAiHSUW5a/egjEwQkcGmVuK8N+QWs9Oc/+bJ5Oa4ReQpvDsY9XJbBq9zabB3
-         hbBpJW26eDbfsVbNd7gjS0UIYUt0J7QKzIqJV2mQTrdUJEy2zx4Ug869OrfdfaP3KQM6
-         niP8GBjZl2RS+gz/u/3nFJo/gNRYW/eoa9HDPVbx20k6yVXwgaTFQ6Aqqt8N0mQ3xKFf
-         cpHM1zfCLqPVYZ+9gMGCGLFEewtm4ogqn2fDMLgDOEV0J8LIBduXqy1RUp+PaxRUmWSc
-         qOBxC+y35Y5DY3etYU+4osz8tz9n/iHuCd1IBtRRMxi4VFQXarlr/HIpJ9XH5HWSD71L
-         0PZA==;
+        b=aaufDC1J/XTQaWtaJrGERaq0JZDzidf/K5fDZlUu2S58YNupYNOb+7Y8W3XWHIpFRU
+         Ciprx7wk+mhcIWj83HAIpdTBK8cjhTE3iWEYx1dwDwEa/CT7kKlaRGlCq/bxwdfKzBPD
+         BpIy3Yk+Bi58BnM5qVllNFB9OH+qGVc4YdNs503zJgSPt8EkOT0LafmjTO4hWK57PmKK
+         mo6aPo4V4iMG2lgRHLN2FKczGf7sfERaOXtSIHkbvFevwacQiv96a+UxC5gzj1zy9R9J
+         wqYmAtA7gdl0iwwRxJhaPThT3ku1QsBNq+FLWyr9X488CAxDx1qtMumizLB/AIuGmj6l
+         g8pQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
+         :mime-version:date:dkim-signature;
+        bh=gJ7FkzR4rnRxOTRm9HDwdpqUjndpT48FwsqUgOZ8ewk=;
+        fh=pITIqJh0Z5XaT4QxI/zJAgHBZTuNeZPw20HbjxZRX7I=;
+        b=K82BQ90IT76zpxNeJTOB/5z/cJbyksAA3rG07fdXiykFAythD9LFumfknW34Or0t4H
+         50QltOP3Rj0Ia9GoTN/nsUFlywUlRb0eY552jp7pZJpmA7mLuEQnhXAMnpoqEfs9+G8D
+         2Y74YYo7m33RT/Vz/VW2W7HaO11uUBbzqxy/uJTXnyhpdmp7GbDmbluIdrZXCFmT0b+h
+         HKjHlsJ0Rmxe+4MXkb994LXuKMg2TKjWCVTEUhtSZ0NIZ5bF4LO9C+BsrtyWudRPjJQB
+         L7EbOSQ3uU+OcIwfJFutOtuHjjY4qGzD87QK+dId5w/okXw2/9v/j17HEwpwHxa4Mtc4
+         wy9Q==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@amd.com header.s=selector1 header.b=yyKe+f4O;
-       arc=pass (i=1 spf=pass spfdomain=amd.com dmarc=pass fromdomain=amd.com);
-       spf=pass (google.com: domain of jason.andryuk@amd.com designates 2a01:111:f403:2414::614 as permitted sender) smtp.mailfrom=Jason.Andryuk@amd.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
-Return-Path: <Jason.Andryuk@amd.com>
-Received: from NAM11-BN8-obe.outbound.protection.outlook.com (mail-bn8nam11on20614.outbound.protection.outlook.com. [2a01:111:f403:2414::614])
-        by mx.google.com with ESMTPS id 41be03b00d2f7-7c6b61a8a1csi4566033a12.82.2024.08.16.17.45.58
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 16 Aug 2024 17:45:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jason.andryuk@amd.com designates 2a01:111:f403:2414::614 as permitted sender) client-ip=2a01:111:f403:2414::614;
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=cbSb0DBg;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d75a77b69052e-4536a06e49fsi59503351cf.238.2024.08.17.03.26.33
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Sat, 17 Aug 2024 03:26:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@amd.com header.s=selector1 header.b=yyKe+f4O;
-       arc=pass (i=1 spf=pass spfdomain=amd.com dmarc=pass fromdomain=amd.com);
-       spf=pass (google.com: domain of jason.andryuk@amd.com designates 2a01:111:f403:2414::614 as permitted sender) smtp.mailfrom=Jason.Andryuk@amd.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=F8vrRC7roj99wmz41J6BY5Y2/SHa85GIugxghpM64KHak6LADmf7INUNpMCe0ntQU//bLG19qT8j/deMG0cHAphj6uDeUxpTY9LkJCWugau/WYukJ6JlEWQcGNDhHyw6Eb3XZ6eV8fgv7OcF7OCZZYy42Y4+p27qwGHO7FlY7EzqHtTtajvuxZwl8nunpPGmekS006W+RsgybZnkHsL7R6ABraH4Quw5T5jMufNDz4GJHXrHjHey71PdakVd1yIB6R3lTbdH7lDWt+tRVqirmCwu2scYzmaghJpZOfwFTiUVtrrtf+AV6uYwYRkeF93sGOXDCagXwD/2WP0OOHRoXA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=m4SVgnne9erkuAhrAeM3VCVOKRFMY2Is89F35hd+2Sk=;
- b=cPfOm+jmZ25g1hPXYcCsoWQGD7wSYrL6ypUPgO0k/Pb+1acw4OVQaMn4ViQxVVkpoMXZ54T5JeQlHP1Lmcrjasvuo+7jsaWKQCGQjQrlsBdKnlWUo8JPUNiw1+cm1JHFL4dVndkqTue87rJsKEwwQPoXgJ+hwXNSV/JMl10K1ERpjx0oWQvfSOShYm49cBSrqWKM8qR/HbvlBSzwuRJmkhG7GseIXWxOF/3AyVQcUyRJm3Fq57c0BasdNPa6w+SlqU9yzPiOUbOZEEzplbRk1/kBryBRdCLijKqROJ3nbTELfGxly9kWm9VN/TKaDnliDtq1vAsprzYW44TomNNjhQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 165.204.84.17) smtp.rcpttodomain=kernel.org smtp.mailfrom=amd.com; dmarc=pass
- (p=quarantine sp=quarantine pct=100) action=none header.from=amd.com;
- dkim=none (message not signed); arc=none (0)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=m4SVgnne9erkuAhrAeM3VCVOKRFMY2Is89F35hd+2Sk=;
- b=yyKe+f4OwTp3AbVgJbDKlFsVXBIeDFU4JTkfv34I+I96d0YRfxFOc6iQzyqW5B02vYhnbBJ6dBXjoSWqWgwADYjYkg0BokTQmOYEwgpspcB0YXITk4Guv8N9T4keFnmdBDRZiBKLZO1r5U4YfdiiI9vg0F1FVvbetqx0wo6IgXE=
-Received: from BN9PR03CA0709.namprd03.prod.outlook.com (2603:10b6:408:ef::24)
- by LV3PR12MB9412.namprd12.prod.outlook.com (2603:10b6:408:211::18) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7875.20; Sat, 17 Aug
- 2024 00:45:53 +0000
-Received: from BL6PEPF00020E63.namprd04.prod.outlook.com
- (2603:10b6:408:ef:cafe::3c) by BN9PR03CA0709.outlook.office365.com
- (2603:10b6:408:ef::24) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7875.19 via Frontend
- Transport; Sat, 17 Aug 2024 00:45:53 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 165.204.84.17)
- smtp.mailfrom=amd.com; dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=amd.com;
-Received-SPF: Pass (protection.outlook.com: domain of amd.com designates
- 165.204.84.17 as permitted sender) receiver=protection.outlook.com;
- client-ip=165.204.84.17; helo=SATLEXMB03.amd.com; pr=C
-Received: from SATLEXMB03.amd.com (165.204.84.17) by
- BL6PEPF00020E63.mail.protection.outlook.com (10.167.249.24) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.20.7849.8 via Frontend Transport; Sat, 17 Aug 2024 00:45:53 +0000
-Received: from SATLEXMB06.amd.com (10.181.40.147) by SATLEXMB03.amd.com
- (10.181.40.144) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.39; Fri, 16 Aug
- 2024 19:45:48 -0500
-Received: from SATLEXMB04.amd.com (10.181.40.145) by SATLEXMB06.amd.com
- (10.181.40.147) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.39; Fri, 16 Aug
- 2024 19:45:45 -0500
-Received: from [172.24.94.179] (10.180.168.240) by SATLEXMB04.amd.com
- (10.181.40.145) with Microsoft SMTP Server id 15.1.2507.39 via Frontend
- Transport; Fri, 16 Aug 2024 19:45:45 -0500
-Message-ID: <93de8d6d-6123-4038-a566-d134206ba608@amd.com>
-Date: Fri, 16 Aug 2024 18:58:26 -0400
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 04/10] hw/arm: xenpvh: Add support for SMP guests
-To: Stefano Stabellini <sstabellini@kernel.org>, "Edgar E. Iglesias"
-	<edgar.iglesias@gmail.com>
-CC: <qemu-devel@nongnu.org>, <anthony@xenproject.org>, <paul@xen.org>,
-	<peter.maydell@linaro.org>, <alex.bennee@linaro.org>,
-	<xenia.ragiadakou@amd.com>, <edgar.iglesias@amd.com>,
-	<xen-devel@lists.xenproject.org>, <qemu-arm@nongnu.org>,
-	<andrew.cooper3@citrix.com>
-References: <20240812130606.90410-1-edgar.iglesias@gmail.com>
- <20240812130606.90410-5-edgar.iglesias@gmail.com>
- <alpine.DEB.2.22.394.2408121650590.298534@ubuntu-linux-20-04-desktop>
- <ZruRm34zIMtUm7oH@zapote>
- <alpine.DEB.2.22.394.2408131550080.298534@ubuntu-linux-20-04-desktop>
- <ZryZwOoadeb1UWK8@zapote>
- <alpine.DEB.2.22.394.2408141719400.298534@ubuntu-linux-20-04-desktop>
- <CAJy5ezrUbGZCaF=HiYhyLCoXRL3d=t-QbmLeKvu7ByWksV888g@mail.gmail.com>
- <alpine.DEB.2.22.394.2408160949320.298534@ubuntu-linux-20-04-desktop>
-Content-Language: en-US
-From: Jason Andryuk <jason.andryuk@amd.com>
-In-Reply-To: <alpine.DEB.2.22.394.2408160949320.298534@ubuntu-linux-20-04-desktop>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-Path: Jason.Andryuk@amd.com
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: BL6PEPF00020E63:EE_|LV3PR12MB9412:EE_
-X-MS-Office365-Filtering-Correlation-Id: ba8e23ee-e94c-44f2-3cd6-08dcbe55f2a5
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam:
-	BCL:0;ARA:13230040|82310400026|1800799024|7416014|36860700013|376014;
-X-Microsoft-Antispam-Message-Info:
-	=?utf-8?B?OXBSTWZPd2lwZ3FaZWh2Tk9UZXo3VnVSeXkvMWl5cngwNWZOZXErQSt4Nmo5?=
- =?utf-8?B?Q0ozNXhaM1VoTkFsS0tYcTYyVTh4dnh0Slpoa3p5K29BMVJ5OVVrVHl6RGtl?=
- =?utf-8?B?VXU1MkRvdGM5ZW5lalFwR3d5MzYzZDByRXFtQTE2UjI2V0tleVQ5eFA5RytI?=
- =?utf-8?B?d1VyT2VYemxxSGtta0NTaXREZzVkdS90eTZvaGprUFZHdUgrd04yT0ZuQ0N3?=
- =?utf-8?B?U1prSCtRVyttanBaMlkycFo1dVp2UW0xY0c4RGZhOHM5YUVJTjJQY2FJLzVW?=
- =?utf-8?B?NnY5S3NUdEVyMGVVMkxlN0MzN29HMm9INnpuZ3F6c1NmV1F0aUxvQUJlb3dx?=
- =?utf-8?B?UndiMU9sOG82d0RrdDZlb0hKZmpKRWxoM1hpZmpOSGZHa0hleithd1JremZN?=
- =?utf-8?B?NG5WcnRkcE1RYlVYSmZsL1dJREtBaGwyWkhJd1FJb1pmbnJDSnVzRXZvMUZ5?=
- =?utf-8?B?b3ZFNll0cEoxUHFDQlk1YXJrNnJxSzFhNmlib2lLK1AycTVTVHBNandDcW15?=
- =?utf-8?B?cHhpc3NTMUpia29XQ1JPSzQrSmhqaFcwVTZzRHFXQzlpeUFBbndUNUJlY2Y0?=
- =?utf-8?B?UmM5cnAzeFBzYThoTnAzNm1pUW1aZGdVWVVqRE15OVdYRXVVbitPakxORlpQ?=
- =?utf-8?B?c1dMaVRmbkw4NUhFQ1ZQSnVwUFlBcDJYcE1zREloSjY5dkdjS3E0dkt1Y0hW?=
- =?utf-8?B?YWVvYXhNYVRmc0JoRXBrcW9HUGY5WWNMUjR2RmozdGdmNTlZU3dYd3hoODFK?=
- =?utf-8?B?UXAvWjdHSUJoRzdURGgyajY3bGVMaGptUVIxUGZ5d3FUa05ydllIWGN2NFNE?=
- =?utf-8?B?YWd6dzRaODN3UllRTG9CNjgxUUVEcEdkMHJYeVpaUUpUYnZlZVRHY04xS3c3?=
- =?utf-8?B?VXBEcFAxN3FZVWU1SFZ3U1o2bWV5SzJxRzBnM1g4b05zamk3M29WcnRmNmwv?=
- =?utf-8?B?UjRXcEJxcWVVczFOTXZJelhzRWV3QjZ2Mm9UKzg3eHV2WmsvaTFNaEMwc2x0?=
- =?utf-8?B?SjAwUG84UmVObmsvUXhyeFUydDAyaVdNcVpldE5qNDlQU3hpTHZ3OXYxMUxp?=
- =?utf-8?B?enNSWTNtMWZ1Q2pCcmMzdVpXMUppOXRQOE9HRmdDVyt4VTUvdURielFTR2Zx?=
- =?utf-8?B?c1I5aEpCbEFnODNRdU1KUU5IWnY2L01zSjVUQ0tkOXo4YnF3cHNKVzBnamFo?=
- =?utf-8?B?MVpFdEdML0UycUR6NEYvYS95azVKR04zZ0x5YU0xUDJXV2JObGh2NG0yeDd1?=
- =?utf-8?B?MStRS0xpcUJGc25nRFUydTZtZkJnSzZJSFZidysxaExOSTVzenlCU3FoUC9B?=
- =?utf-8?B?K0VTTXpxdlFaZmk3WlZnYTdoSWdwZGtiSHBXNXVzL3JNZzB3OUh6VGw1TFNr?=
- =?utf-8?B?VUhyOENnVmw2UXhod0NxRTRySzhkK3JyZTlncUJYeXlYcWFBOGx5K05IczhQ?=
- =?utf-8?B?dEhpVzBQdUdiWVdwSUF4ME5YaElmMnoxVzZGcVl0aGhLdElvdVZkTVZzN2tW?=
- =?utf-8?B?aFVNb0x4K0dIeFZabklKcmROYVlvZzhiVTg4bms4QnpIaVFmYkVCU0NueTNK?=
- =?utf-8?B?M2xLbmtkMVBMcWVpODlYYlB2SFhSZnlCUm5JOVRhNFlDK1FmQWEzelFOdDYy?=
- =?utf-8?B?dmRjUHBLeHNMSHVHYnNsOUZpQTZ0cmlIa29rWDNvTFdSaHJDZDJRcXJmaG1y?=
- =?utf-8?B?ZWZKMFBYc1J1VW03MW13eFpKTVVOODV4NmtVd1BTaEZ1dGV3L2gvOEQ4cExG?=
- =?utf-8?B?MWxKTkxCZmdIbko0QVBQdklkMTA4a21WWnI4UWdkaHlzU0FJdE9OSmFWN21J?=
- =?utf-8?B?eGZxYjdkNld6cEVWQlc5K3NLeU1DV3RZdDdYUEt5dllpTDYxcXJETDIyTkpS?=
- =?utf-8?B?N1F4WWc3ZXZsams2MVM1RlBEUWxmMWwyV21YbzVOOER0RHFGRXZaN0gvZVRq?=
- =?utf-8?Q?20ss47yP/frVMvZbzfb+u/lvoXVO/JWk?=
-X-Forefront-Antispam-Report:
-	CIP:165.204.84.17;CTRY:US;LANG:en;SCL:1;SRV:;IPV:CAL;SFV:NSPM;H:SATLEXMB03.amd.com;PTR:InfoDomainNonexistent;CAT:NONE;SFS:(13230040)(82310400026)(1800799024)(7416014)(36860700013)(376014);DIR:OUT;SFP:1101;
-X-OriginatorOrg: amd.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 17 Aug 2024 00:45:53.1399
- (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: ba8e23ee-e94c-44f2-3cd6-08dcbe55f2a5
-X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=3dd8961f-e488-4e60-8e11-a82d994e183d;Ip=[165.204.84.17];Helo=[SATLEXMB03.amd.com]
-X-MS-Exchange-CrossTenant-AuthSource:
-	BL6PEPF00020E63.namprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: LV3PR12MB9412
-X-TUID: KB++6juHwgK9
+       dkim=pass header.i=@google.com header.s=20230601 header.b=cbSb0DBg;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
+       dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sfGdT-0005uQ-19; Sat, 17 Aug 2024 06:26:15 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from
+ <3wHrAZgUKCPMoVqdkbjjbgZ.XjhlZhp-Vmhijibip.jmb@flex--tavip.bounces.google.com>)
+ id 1sfGdR-0005r6-CA
+ for qemu-arm@nongnu.org; Sat, 17 Aug 2024 06:26:13 -0400
+Received: from mail-pl1-x649.google.com ([2607:f8b0:4864:20::649])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from
+ <3wHrAZgUKCPMoVqdkbjjbgZ.XjhlZhp-Vmhijibip.jmb@flex--tavip.bounces.google.com>)
+ id 1sfGdP-00036X-57
+ for qemu-arm@nongnu.org; Sat, 17 Aug 2024 06:26:13 -0400
+Received: by mail-pl1-x649.google.com with SMTP id
+ d9443c01a7336-1fc58790766so26271465ad.3
+ for <qemu-arm@nongnu.org>; Sat, 17 Aug 2024 03:26:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=google.com; s=20230601; t=1723890368; x=1724495168; darn=nongnu.org;
+ h=cc:to:from:subject:message-id:mime-version:date:from:to:cc:subject
+ :date:message-id:reply-to;
+ bh=gJ7FkzR4rnRxOTRm9HDwdpqUjndpT48FwsqUgOZ8ewk=;
+ b=cbSb0DBg8j1A8h7kXeeK4MPSG3tgdeVUuHFkFxlBsmpNkm0U+UjVl4U7FTicW/xqFc
+ 3aeF81ttiq/TCvUi6B9lBsEEVsLAVGFMqG4vPonsT6PUNfTdziLAuUnbQaMVNQUolpz3
+ 1mu6JT6QO9v+au8tBwrx+hbTzrhb0dXmX0tP9bSdo3t6WnF4quXskwsH+93amT1W5BqX
+ kfS309fBS8K4jt18ha8oorA0wFk/bv0Fj4p9iyrkga+Pu3pwJC91bnNmqe3NY9MEsue+
+ PVPMOcTExBOdN0YoiwvxM3t2M0W2FCUnUNrGTxg6+USVJpyS9mFDlzmWWGw52XJdfO7L
+ i0qA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1723890368; x=1724495168;
+ h=cc:to:from:subject:message-id:mime-version:date:x-gm-message-state
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=gJ7FkzR4rnRxOTRm9HDwdpqUjndpT48FwsqUgOZ8ewk=;
+ b=PhxIRJVluSWdWXHEEhEt1EcuZJT7jIRVCI9rPVXr7geTDanfVN3H7jT470q+hZgj/f
+ 0KCRPjkRBl0iHM0G4254aifjhNgnxY4GOAwoSJFiJZvCwvqZ3lMm8pOc4y08m4pDdg0q
+ umH3urX0NcIbO55p/BpxdRIOrYdtVC05MW+w6p5SJ75uej2Sr2kvttXzS3Mu5H5WSmSi
+ 1/S9ttPTjulig+Fi5CODW5cLQHlX4CE2mSaBc7AjPVcyowecg0WcW6SXjv4VL5nTQa7o
+ cm+3Q5efnnY8akzLwSRLGwA+Pf7VMtBM48fySKXscgXRO5BfpsSrLOhElVJcMrCuKWZY
+ J22A==
+X-Gm-Message-State: AOJu0YwH6TCVF2m/G4CEZ/DJbKycPOPpcUmxdd2/xpT4BD2QpteVdxn7
+ 8IL2gonzE40V2t1DMsL3wON2cAm1x2kD9AjHJNvFdxku0hWM4I8/ww9U2glAPDdj4uQVKAliyw=
+ =
+X-Received: from warp10.c.googlers.com ([fda3:e722:ac3:cc00:24:72f4:c0a8:750])
+ (user=tavip job=sendgmr) by 2002:a17:902:c40d:b0:1fb:8620:e113
+ with SMTP id
+ d9443c01a7336-20203e35d20mr5870355ad.3.1723890368005; Sat, 17 Aug 2024
+ 03:26:08 -0700 (PDT)
+Date: Sat, 17 Aug 2024 03:25:43 -0700
+Mime-Version: 1.0
+X-Mailer: git-send-email 2.46.0.184.g6999bdac58-goog
+Message-ID: <20240817102606.3996242-1-tavip@google.com>
+Subject: [RFC PATCH v2 00/23] NXP i.MX RT595,
+ ARM SVD and device model unit tests
+From: Octavian Purdila <tavip@google.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, stefanst@google.com, pbonzini@redhat.com, 
+ thuth@redhat.com, peter.maydell@linaro.org, marcandre.lureau@redhat.com, 
+ alistair@alistair23.me, berrange@redhat.com, philmd@linaro.org, 
+ jsnow@redhat.com, crosa@redhat.com
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::649;
+ envelope-from=3wHrAZgUKCPMoVqdkbjjbgZ.XjhlZhp-Vmhijibip.jmb@flex--tavip.bounces.google.com;
+ helo=mail-pl1-x649.google.com
+X-Spam_score_int: -95
+X-Spam_score: -9.6
+X-Spam_bar: ---------
+X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01,
+ USER_IN_DEF_DKIM_WL=-7.5 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: V6LpNo2unj55
 
-On 2024-08-16 12:53, Stefano Stabellini wrote:
-> On Fri, 16 Aug 2024, Edgar E. Iglesias wrote:
->> On Thu, Aug 15, 2024 at 2:30 AM Stefano Stabellini <sstabellini@kernel.org> wrote:
->>        On Wed, 14 Aug 2024, Edgar E. Iglesias wrote:
->>        > On Tue, Aug 13, 2024 at 03:52:32PM -0700, Stefano Stabellini wrote:
->>        > > On Tue, 13 Aug 2024, Edgar E. Iglesias wrote:
->>        > > > On Mon, Aug 12, 2024 at 06:47:17PM -0700, Stefano Stabellini wrote:
->>        > > > > On Mon, 12 Aug 2024, Edgar E. Iglesias wrote:
->>        > > > > > From: "Edgar E. Iglesias" <edgar.iglesias@amd.com>
->>        > > > > >
->>        > > > > > Add SMP support for Xen PVH ARM guests. Create max_cpus ioreq
->>        > > > > > servers to handle hotplug.
->>        > > > > >
->>        > > > > > Signed-off-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
->>        > > > > > ---
->>        > > > > >  hw/arm/xen_arm.c | 5 +++--
->>        > > > > >  1 file changed, 3 insertions(+), 2 deletions(-)
->>        > > > > >
->>        > > > > > diff --git a/hw/arm/xen_arm.c b/hw/arm/xen_arm.c
->>        > > > > > index 5f75cc3779..ef8315969c 100644
->>        > > > > > --- a/hw/arm/xen_arm.c
->>        > > > > > +++ b/hw/arm/xen_arm.c
->>        > > > > > @@ -173,7 +173,7 @@ static void xen_arm_init(MachineState *machine)
->>        > > > > >
->>        > > > > >      xen_init_ram(machine);
->>        > > > > >
->>        > > > > > -    xen_register_ioreq(xam->state, machine->smp.cpus, &xen_memory_listener);
->>        > > > > > +    xen_register_ioreq(xam->state, machine->smp.max_cpus, &xen_memory_listener);
->>        > > > > >
->>        > > > > >      xen_create_virtio_mmio_devices(xam);
->>        > > > > >
->>        > > > > > @@ -218,7 +218,8 @@ static void xen_arm_machine_class_init(ObjectClass *oc, void *data)
->>        > > > > >      MachineClass *mc = MACHINE_CLASS(oc);
->>        > > > > >      mc->desc = "Xen PVH ARM machine";
->>        > > > > >      mc->init = xen_arm_init;
->>        > > > > > -    mc->max_cpus = 1;
->>        > > > > > +    /* MAX number of vcpus supported by Xen.  */
->>        > > > > > +    mc->max_cpus = GUEST_MAX_VCPUS;
->>        > > > >
->>        > > > > Will this cause allocations of data structures with 128 elements?
->>        > > > > Looking at hw/xen/xen-hvm-common.c:xen_do_ioreq_register it seems
->>        > > > > possible? Or hw/xen/xen-hvm-common.c:xen_do_ioreq_register is called
->>        > > >
->>        > > > Yes, in theory there's probably overhead with this but as you correctly
->>        > > > noted below, a PVH aware xl will set the max_cpus option to a lower value.
->>        > > >
->>        > > > With a non-pvh aware xl, I was a little worried about the overhead
->>        > > > but I couldn't see any visible slow-down on ARM neither in boot or in network
->>        > > > performance (I didn't run very sophisticated benchmarks).
->>        > >
->>        > > What do you mean by "non-pvh aware xl"? All useful versions of xl
->>        > > support pvh?
->>        >
->>        >
->>        > I mean an xl without our PVH patches merged.
->>        > xl in upstream doesn't know much about PVH yet.
->>        > Even for ARM, we're still carrying significant patches in our tree.
->>
->>        Oh I see. In that case, I don't think we need to support "non-pvh aware xl".
->>
->>
->>        > > > > later on with the precise vCPU value which should be provided to QEMU
->>        > > > > via the -smp command line option
->>        > > > > (tools/libs/light/libxl_dm.c:libxl__build_device_model_args_new)?
->>        > > >
->>        > > > Yes, a pvh aware xl will for example pass -smp 2,maxcpus=4 based on
->>        > > > values from the xl.cfg. If the user doesn't set maxvcpus in xl.cfg, xl
->>        > > > will set maxvcpus to the same value as vcpus.
->>        > >
->>        > > OK good. In that case if this is just an initial value meant to be
->>        > > overwritten, I think it is best to keep it as 1.
->>        >
->>        > Sorry but that won't work. I think the confusion here may be that
->>        > it's easy to mix up mc->max_cpus and machine->smp.max_cpus, these are
->>        > not the same. They have different purposes.
->>        >
->>        > I'll try to clarify the 3 values in play.
->>        >
->>        > machine-smp.cpus:
->>        > Number of guest vcpus active at boot.
->>        > Passed to QEMU via the -smp command-line option.
->>        > We don't use this value in QEMU's ARM PVH machines.
->>        >
->>        > machine->smp.max_cpus:
->>        > Max number of vcpus that the guest can use (equal or larger than machine-smp.cpus).
->>        > Will be set by xl via the "-smp X,maxcpus=Y" command-line option to QEMU.
->>        > Taken from maxvcpus from xl.cfg, same as XEN_DMOP_nr_vcpus.
->>        > This is what we use for xen_register_ioreq().
->>        >
->>        > mc->max_cpus:
->>        > Absolute MAX in QEMU used to cap the -smp command-line options.
->>        > If xl tries to set -smp (machine->smp.max_cpus) larger than this, QEMU will bail out.
->>        > Used to setup xen_register_ioreq() ONLY if -smp maxcpus was NOT set (i.e by a non PVH aware xl).
->>        > Cannot be 1 because that would limit QEMU to MAX 1 vcpu.
->>        >
->>        > I guess we could set mc->max_cpus to what XEN_DMOP_nr_vcpus returns but I'll
->>        > have to check if we can even issue that hypercall this early in QEMU since
->>        > mc->max_cpus is setup before we even parse the machine options. We may
->>        > not yet know what domid we're attaching to yet.
->>
->>        If mc->max_cpus is the absolute max and it will not be used if -smp is
->>        passed to QEMU, then I think it is OK to use GUEST_MAX_VCPUS
->>
->> Looking at this a little more. If users (xl) don't pass an -smp option we actually default to smp.max_cpus=1.
->> So, another option is to simply remove the upper limit in QEMU (e.g we can set mc->max_cpus to something very large like UINT32_MAX).
->> That would avoid early hypercalls, avoid using GUEST_MAX_VCPUS and always let xl dictate the max_cpus value using the -smp cmdline option.
-> 
-> As the expectation is that there will be always a smp.max_cpus option
-> passed to QEMU, I would avoid an extra early hypercall.
-> 
-> For the initial value, I would use something static and large, but not
-> unreasonably large as UINT32_MAX to be more resilient in (erroneous)
-> cases where smp.max_cpus is not passed.
-> 
-> So I would initialize it to GUEST_MAX_VCPUS, or if we don't want to use
-> GUEST_MAX_VCPUS, something equivalent in the 64-256 range.
-> 
-> Alternative we can have a runtime check and exit with a warning if
-> smp.max_cpus is not set.
+This patch set adds support for NXP's RT500 MCU [1] and the RT595
+EVK[2]. More RT500 device models will be submitted in future patch sets.
 
-FYI, xl only passes a -smp option when the domU has more than 1 vcpu. 
-Though that implies only a single vcpu.
+The goal of this first patch set is to provide a minimal set that
+allows running the NXP MCU SDK hello world example[4].
 
-Regards,
-Jason
+The patch set introduces a (python) tool that generates C header files
+from ARM SVD files[3]. This significantly reduces the effort to write
+a new device model by automatically generating: register definitions
+and layout (including bit fields), register names for easier debugging
+and tracing, reset register values, register write masks, etc.
+
+The generated files are commited and not generated at compile
+time. Build targets are created so that they can be easily regenerated
+if needed.
+
+It also introduces unit tests for device models. To allow accessing
+registers from unit tests a system bus mock is created.
+
+This can potentially introduce maintainance issues, due to mocks or
+unit tests getting outdated when code is refactored. However, I think
+this is not an issue in this case because the APIs we mocked (system
+bus MMIO access) or directly used (irq APIs, chardev APIs, clock tree
+APIs) to interact with device models are stable at this
+point. Anecdotally, our experience seems to confirm this: we only run
+into one (trivially fixed) breaking upstream change (gpio getting
+removed from hwcore) in the last three years.
+
+Changes since v1:
+ * setup scripts/git.orderfile
+ * svd_gen_header: add support for multi line comments
+ * svd_gen_header: use qemu register fields instead of bitfields
+ * svd_gen_header: generate register write mask array
+ * add mcux-soc-svd as a subproject instead of commiting the rt595 SVD
+   file directly
+ * svd generated headers: don't generate them at compile time, instead
+   commit the generated headers and create compile targets so that it is
+   easy to regenerate them
+ * remove pysvd dependency; developers who need to (re)generate svd
+   headers need to have it installed on the host machine
+ * use DEFINE_TYPES where possible
+ * use g_strdup_printf where possible
+ * reduce iterator variables scopes
+ * hard code rt500 to use the cortex-m33
+ * use static for local arrays initializers
+ * remove rt500 properties as they are not yet used
+ * drop private/public comments
+ * remove unused headers
+ * free rt500 mem regions in rt500_unrealize() instead of
+   rt500_finalize
+ * use memops access constraints where possible instead of
+   reg32_aligned_access
+ * flexspi: use 64bit properties for mmap_size property
+ * rstctl: use a generic abstract type and remove the  "num" property
+ * flexspi: don't call get_system_memory() directly and remove
+   mmap_base property
+
+[1] https://www.nxp.com/docs/en/data-sheet/IMXRT500EC.pdf
+[2] https://www.nxp.com/webapp/Download?colCode=MIMXRT595EVKHUG
+[3] https://arm-software.github.io/CMSIS_5/SVD/html/index.html
+[4] Building and running the NXP MCU SDK hello world example
+
+    Clone the following git repos:
+
+    https://github.com/nxp-mcuxpresso/cmsis.git,
+    https://github.com/nxp-mcuxpresso/mcux-sdk.git
+    https://github.com/nxp-mcuxpresso/mcux-sdk-examples.git
+
+    in the following directories: CMSIS, core, examples.
+
+    cd examples/evkmimxrt595/demo_apps/hello_world/armgcc
+
+    ARMGCC_DIR=/usr CFLAGS=-I../../../../../CMSIS/CMSIS/Core/Include \
+      sh build_flash_debug.sh
+
+    qemu-system-arm --machine rt595-evk -kernel flash_debug/hello_world.elf \
+      -global armv7m.init-nsvtor=0x08001000 -global armv7m.init-svtor=0x08001000 \
+      -chardev stdio,id=flexcomm0
+
+Octavian Purdila (19):
+  fifo32: add peek function
+  tests/unit: add fifo test
+  Add mcux-soc-svd subproject
+  hw: add register access utility functions
+  hw/misc: add basic flexcomm device model
+  test/unit: add register access macros and functions
+  test/unit: add flexcomm unit test
+  hw/char: add support for flexcomm usart
+  test/unit: add flexcomm usart unit test
+  hw/i2c: add support for flexcomm i2c
+  test/unit: add i2c-tester
+  test/unit: add unit tests for flexcomm i2c
+  test/unit: add spi-tester
+  hw/misc: add support for RT500's clock controller
+  test/unit: add unit tests for RT500's clock controller
+  hw/ssi: add support for flexspi
+  hw/misc: add support for RT500's reset controller
+  hw/arm: add basic support for the RT500 SoC
+  hw/arm: add RT595-EVK board
+
+Sebastian Ene (2):
+  hw/ssi: add support for flexcomm spi
+  test/unit: add unit tests for flexcomm spi
+
+Stefan Stanacar (1):
+  scripts: add script to generate C header files from SVD XML files
+
+Valentin Ghita (1):
+  tests/unit: add system bus mock
+
+ meson.build                                   |    4 +
+ include/hw/arm/rt500.h                        |   44 +
+ include/hw/arm/svd/flexcomm.h                 |  109 +
+ include/hw/arm/svd/flexcomm_i2c.h             | 1134 ++++++
+ include/hw/arm/svd/flexcomm_spi.h             |  980 ++++++
+ include/hw/arm/svd/flexcomm_usart.h           |  959 +++++
+ include/hw/arm/svd/flexspi.h                  | 2100 +++++++++++
+ include/hw/arm/svd/rt500.h                    |   65 +
+ include/hw/arm/svd/rt500_clkctl0.h            | 2287 ++++++++++++
+ include/hw/arm/svd/rt500_clkctl1.h            | 3109 +++++++++++++++++
+ include/hw/arm/svd/rt500_rstctl0.h            |  832 +++++
+ include/hw/arm/svd/rt500_rstctl1.h            | 1344 +++++++
+ include/hw/char/flexcomm_usart.h              |   20 +
+ include/hw/i2c/flexcomm_i2c.h                 |   27 +
+ include/hw/misc/flexcomm.h                    |   85 +
+ include/hw/misc/rt500_clk_freqs.h             |   18 +
+ include/hw/misc/rt500_clkctl0.h               |   37 +
+ include/hw/misc/rt500_clkctl1.h               |   36 +
+ include/hw/misc/rt500_rstctl.h                |   32 +
+ include/hw/regs.h                             |   34 +
+ include/hw/ssi/flexcomm_spi.h                 |   20 +
+ include/hw/ssi/flexspi.h                      |   32 +
+ include/qemu/fifo32.h                         |   28 +
+ tests/unit/i2c_tester.h                       |   30 +
+ tests/unit/reg-utils.h                        |   97 +
+ tests/unit/spi_tester.h                       |   32 +
+ tests/unit/sysbus-mock.h                      |   82 +
+ hw/arm/rt500.c                                |  335 ++
+ hw/arm/rt595-evk.c                            |   64 +
+ hw/char/flexcomm_usart.c                      |  292 ++
+ hw/i2c/flexcomm_i2c.c                         |  207 ++
+ hw/misc/flexcomm.c                            |  304 ++
+ hw/misc/rt500_clkctl0.c                       |  226 ++
+ hw/misc/rt500_clkctl1.c                       |  207 ++
+ hw/misc/rt500_rstctl.c                        |  225 ++
+ hw/ssi/flexcomm_spi.c                         |  439 +++
+ hw/ssi/flexspi.c                              |  157 +
+ tests/unit/i2c_tester.c                       |  108 +
+ tests/unit/spi_tester.c                       |   57 +
+ tests/unit/sysbus-mock.c                      |  312 ++
+ tests/unit/test-fifo.c                        |   97 +
+ tests/unit/test-flexcomm-i2c.c                |  210 ++
+ tests/unit/test-flexcomm-spi.c                |  201 ++
+ tests/unit/test-flexcomm-usart.c              |  320 ++
+ tests/unit/test-flexcomm.c                    |  212 ++
+ tests/unit/test-rt500-clkctl.c                |  263 ++
+ hw/arm/Kconfig                                |   13 +
+ hw/arm/meson.build                            |    4 +
+ hw/arm/svd/meson.build                        |   35 +
+ hw/char/meson.build                           |    1 +
+ hw/char/trace-events                          |    9 +
+ hw/i2c/meson.build                            |    1 +
+ hw/i2c/trace-events                           |   10 +
+ hw/misc/Kconfig                               |   12 +
+ hw/misc/meson.build                           |    5 +
+ hw/misc/trace-events                          |   18 +
+ hw/ssi/Kconfig                                |    4 +
+ hw/ssi/meson.build                            |    2 +
+ hw/ssi/trace-events                           |   12 +
+ meson_options.txt                             |    3 +
+ scripts/meson-buildoptions.sh                 |    4 +
+ scripts/svd-gen-header.py                     |  343 ++
+ subprojects/.gitignore                        |    1 +
+ subprojects/mcux-soc-svd.wrap                 |    5 +
+ .../packagefiles/mcux-soc-svd/meson.build     |    5 +
+ tests/unit/meson.build                        |   56 +-
+ 66 files changed, 18355 insertions(+), 1 deletion(-)
+ create mode 100644 include/hw/arm/rt500.h
+ create mode 100644 include/hw/arm/svd/flexcomm.h
+ create mode 100644 include/hw/arm/svd/flexcomm_i2c.h
+ create mode 100644 include/hw/arm/svd/flexcomm_spi.h
+ create mode 100644 include/hw/arm/svd/flexcomm_usart.h
+ create mode 100644 include/hw/arm/svd/flexspi.h
+ create mode 100644 include/hw/arm/svd/rt500.h
+ create mode 100644 include/hw/arm/svd/rt500_clkctl0.h
+ create mode 100644 include/hw/arm/svd/rt500_clkctl1.h
+ create mode 100644 include/hw/arm/svd/rt500_rstctl0.h
+ create mode 100644 include/hw/arm/svd/rt500_rstctl1.h
+ create mode 100644 include/hw/char/flexcomm_usart.h
+ create mode 100644 include/hw/i2c/flexcomm_i2c.h
+ create mode 100644 include/hw/misc/flexcomm.h
+ create mode 100644 include/hw/misc/rt500_clk_freqs.h
+ create mode 100644 include/hw/misc/rt500_clkctl0.h
+ create mode 100644 include/hw/misc/rt500_clkctl1.h
+ create mode 100644 include/hw/misc/rt500_rstctl.h
+ create mode 100644 include/hw/regs.h
+ create mode 100644 include/hw/ssi/flexcomm_spi.h
+ create mode 100644 include/hw/ssi/flexspi.h
+ create mode 100644 tests/unit/i2c_tester.h
+ create mode 100644 tests/unit/reg-utils.h
+ create mode 100644 tests/unit/spi_tester.h
+ create mode 100644 tests/unit/sysbus-mock.h
+ create mode 100644 hw/arm/rt500.c
+ create mode 100644 hw/arm/rt595-evk.c
+ create mode 100644 hw/char/flexcomm_usart.c
+ create mode 100644 hw/i2c/flexcomm_i2c.c
+ create mode 100644 hw/misc/flexcomm.c
+ create mode 100644 hw/misc/rt500_clkctl0.c
+ create mode 100644 hw/misc/rt500_clkctl1.c
+ create mode 100644 hw/misc/rt500_rstctl.c
+ create mode 100644 hw/ssi/flexcomm_spi.c
+ create mode 100644 hw/ssi/flexspi.c
+ create mode 100644 tests/unit/i2c_tester.c
+ create mode 100644 tests/unit/spi_tester.c
+ create mode 100644 tests/unit/sysbus-mock.c
+ create mode 100644 tests/unit/test-fifo.c
+ create mode 100644 tests/unit/test-flexcomm-i2c.c
+ create mode 100644 tests/unit/test-flexcomm-spi.c
+ create mode 100644 tests/unit/test-flexcomm-usart.c
+ create mode 100644 tests/unit/test-flexcomm.c
+ create mode 100644 tests/unit/test-rt500-clkctl.c
+ create mode 100644 hw/arm/svd/meson.build
+ create mode 100755 scripts/svd-gen-header.py
+ create mode 100644 subprojects/mcux-soc-svd.wrap
+ create mode 100644 subprojects/packagefiles/mcux-soc-svd/meson.build
+
+-- 
+2.46.0.184.g6999bdac58-goog
+

@@ -1,182 +1,179 @@
-Received: by 2002:a17:504:9188:b0:1be9:327d:8ee3 with SMTP id i8csp1957062njf;
-        Sun, 18 Aug 2024 22:31:57 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWPmvA2Kwlob7whfQpsiftRLYDcBhZy2wpZEsz5HKQFlMfo4PQSeR2E9Cp6P9nxEy4KnJENnu9QWeFYAhzSiOceltMp1v0e
-X-Google-Smtp-Source: AGHT+IHIprcfHDCmmmuNaoGdHRRd4cO5zYhNOUnIlT5stuvVHgMvQXPFhNbySrPr/pNfxg5J1GhW
-X-Received: by 2002:a05:622a:5295:b0:453:5dab:8e85 with SMTP id d75a77b69052e-453741e1e28mr102144731cf.8.1724045517515;
-        Sun, 18 Aug 2024 22:31:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1724045517; cv=none;
+Received: by 2002:a17:504:9188:b0:1be9:327d:8ee3 with SMTP id i8csp2052700njf;
+        Mon, 19 Aug 2024 05:35:40 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGvUccSWJVznj1Y2mC13PKT0DzAoCKU3CJTuVwctIGJKl/YN/9SZ6ox7UuasTjYkQYZ2X6G
+X-Received: by 2002:a05:600c:3506:b0:428:c0a:27ea with SMTP id 5b1f17b1804b1-429ed789084mr66557895e9.12.1724070940197;
+        Mon, 19 Aug 2024 05:35:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1724070940; cv=none;
         d=google.com; s=arc-20160816;
-        b=bQtatvRgU9dMxg6oTyvqyopQdwPQt8gTCw951AmW1r141EVwIsKEyyo3ywmetYJRJM
-         OhKY4uSIDxwdTaz42NOThx6v8CH41OJpiK2FCY9ww/HmaZ8clE4RbsHiBDDmSyuiTrs1
-         289ah2RmiO/WIfu3vwNikt6ib5yrzFXTT+2p3wYdRWwcfKsaQvYl75JcVgKCTsuGb3mU
-         R4SMLmQAsUBHTRwCALVzrFTEZ3VkHdpWOib8WKyhFHzh2S5OFQ4WYNMdRx638BNJpMEe
-         +/XtpqvtaGj47xsyK79t39aGXY9jCkXYhBV7zbnGOD3ybUSw/K3yhwZR0NlkxQnh/vd2
-         88dw==
+        b=JyL+jBNBRaD5FTuW1DyDEF8bicgYHOlbS9MpkJCywnoyJaAhmf7bFPkRDaAxWFeMXw
+         1D0kEc9A/LR2+BabcQ7jRomnsghIxgJvkxXiqzG5etPhR+U1tA5elHjOgwtxKEDpuv7d
+         E/Q41CJbmQkVUGSsfYO0m/U+JV6XoHveqLH0RBgBNxLJ/sT9TXMAjG7xGLwrU2xQe2f3
+         TSQ28e10gG+hU3HXBNi9sX0cBy/pzMivAKnWZXi0jgmNMtjSHC4KiwlM2bZAR+8Q7Ipd
+         ofv8efBom5/wlHR+69+rfv/MQxs1tWRGW0aLftoS4IHOVejnmYtJZ5590BWDvEJr3W9U
+         s7Qg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:from
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=RH0ysvCwiDD6BUVvceG6WstRkYD2wwJ9b+IfnvkifDM=;
-        fh=FC4WyGgKWK1dmcrO+1EWhvGJkaxsyJoqiF7B9bk5Dlg=;
-        b=SB3YFG8uY2plsaFEG8AVTQ2qZHHbcaMsGwEcWsMwoHiE0blEK7h7d3EBqdb8qCp47J
-         yxPhoTMTbfJ1LMWFcZylpdoMa6+GwlrQZxTw2zeLBqmTfccchfoGq4iT/+ThIINY0V1v
-         4lODlxzo2watFOnP8uMvuIVBo+D4ij1rlHe+io9CgZ4lBW28/asDJUvcOy0DCuTa77BY
-         9k5/ontB3q0/ilDkJn3Ci4Lid30aE1mkYzCMDIoP3QeGjwMp5EVUz6ceEr0yVrXtd1qG
-         2Z7N/CRRkGYW2w/AVwhHy/XueiJ32GyXcFq2OAlLuP4q3iu6hnwr282CVCWKevSfRjbo
-         AhLA==;
+        h=mime-version:content-transfer-encoding:content-language
+         :accept-language:in-reply-to:references:message-id:date:thread-index
+         :thread-topic:subject:cc:to:from;
+        bh=8PiMkTV5ygaSgM0zswQE2eXXo1g3+Vel7P4ZKE8ZWtQ=;
+        fh=UhORApbgGGz+OdOFo4Xi1SCQNUOQhRZrnQ87ejjIWHU=;
+        b=POEtORVvWQTyrcvCTfKC4XWBN2jHgq+S8XlptuP7U0xp2NUL+0Y2R75FsigP8x1JVf
+         H5dUagW6n9O2iQV4Iwtr6pFTAeRhYkxuMg/QmopWTgWEmJ70/NWlGlKkrmPYMgB7/jHt
+         4nPYnsor5Zvp7LV7Zj7iVFLsn6fUvoePThVRbWmDn8ggz8KoZvgYUqqqDHwZi5UHaz41
+         jVDtx07YpILftdxBO69At8fhNUP1tbvqXPF93j+nLH497fgNM7+mnqU7dBgZsL4E2dx6
+         oDFCGjdTp7aJWUvS76HIlbvApRo5MMcscCqgM/cwIUGqf9s2WzeADZiPiVUp72LiWhlT
+         vzgA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="FH1/iWQM";
-       spf=pass (google.com: domain of gshan@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=gshan@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <gshan@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id d75a77b69052e-4536a08eecfsi95366491cf.466.2024.08.18.22.31.57
-        for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 18 Aug 2024 22:31:57 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gshan@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Return-Path: <salil.mehta@huawei.com>
+Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
+        by mx.google.com with ESMTPS id ffacd0b85a97d-371898b2857si4286101f8f.678.2024.08.19.05.35.39
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 19 Aug 2024 05:35:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="FH1/iWQM";
-       spf=pass (google.com: domain of gshan@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=gshan@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1724045517;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=RH0ysvCwiDD6BUVvceG6WstRkYD2wwJ9b+IfnvkifDM=;
-	b=FH1/iWQMHFZ8wqWA/dz7JJCYELe4JzY+AVR6kEqwy8VX+4yTfi5hf5UjjMvV9w0vxjOcXy
-	yZCLzlyg1MsamOf7I8tABnr2PzNaJHNjbv/a5os/5kljmB2qH0jOeFue5Lgtnv6dR10s/s
-	LWVW8mOjnG/CrkyERSxhZGws3nfrivc=
-Received: from mail-pj1-f69.google.com (mail-pj1-f69.google.com
- [209.85.216.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-482-RIhf1rSGNyqTioBxCRr77A-1; Mon, 19 Aug 2024 01:31:55 -0400
-X-MC-Unique: RIhf1rSGNyqTioBxCRr77A-1
-Received: by mail-pj1-f69.google.com with SMTP id 98e67ed59e1d1-2d40752d653so1372103a91.0
-        for <alex.bennee@linaro.org>; Sun, 18 Aug 2024 22:31:55 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1724045514; x=1724650314;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=RH0ysvCwiDD6BUVvceG6WstRkYD2wwJ9b+IfnvkifDM=;
-        b=wcMyytd2ogz4W2GRbNx40ORSG3iBZfRjYBYUDq4tHadC+n7UWQFNpG+HvGAtgiHIzq
-         IzWDb5HJtfrt3su5FO92qq4quNUixWO34yBkFGu9rSD33+dLuKOLYgtSROQmZyjfrijv
-         hz30xnqXnd1Dbv40hrCuwisDASDX7tzVIf/DYR8zAq/LMKkRgxRE2ZCL8s7oRdpaQdQ5
-         Ch7GPY7kwrDsBUHblg9NkjqzDLBsCV5Cl4PWJZKHUf3IEVwvnQxDcTjZQp1rV+MLFr3y
-         jFYiXVDI1t3Yjy8xPQqN5xRMMOZYbTfnAhS9CwvnTd9iw3n4K2ti61xdzqXe67c1o7/5
-         iorw==
-X-Forwarded-Encrypted: i=1; AJvYcCWw+0E1dGS0ORARX3oVaxCr6SXo8wipyDyMPB86xRgBQyyyO5sEuenvMF+dhspPxskdbi1Z3aXJCqrpxg3O4S/vbj21tY+f
-X-Gm-Message-State: AOJu0YxYLTbii8GdeOGESgMC3jLRUgKFUu9EKFhSwlQtFdSOm2xeP6nU
-	BVTqWVaSO4RHK5AoSR3m+XVOvEPhqRU96b4DvTp+p15XJpPXMULLO3RKEnyW2srrwSRlBhm3lUR
-	EeHi00CaX/6kJSFJ2upyyljQU9l4cjb6V2Me8evYC+vbjlEbwdyLyBA==
-X-Received: by 2002:a17:90a:8c11:b0:2d3:c05c:c51 with SMTP id 98e67ed59e1d1-2d3dfacb1eemr8581391a91.0.1724045514184;
-        Sun, 18 Aug 2024 22:31:54 -0700 (PDT)
-X-Received: by 2002:a17:90a:8c11:b0:2d3:c05c:c51 with SMTP id 98e67ed59e1d1-2d3dfacb1eemr8581366a91.0.1724045513697;
-        Sun, 18 Aug 2024 22:31:53 -0700 (PDT)
-Return-Path: <gshan@redhat.com>
-Received: from [192.168.68.54] ([103.210.27.48])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-2d3ac7dcfc7sm10154019a91.14.2024.08.18.22.31.39
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 18 Aug 2024 22:31:53 -0700 (PDT)
-Message-ID: <28f3107f-0267-4112-b0ca-da59df2968ae@redhat.com>
-Date: Mon, 19 Aug 2024 15:31:37 +1000
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH RFC V3 06/29] arm/virt,kvm: Pre-create disabled possible
- vCPUs @machine init
-To: Salil Mehta <salil.mehta@huawei.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, mst@redhat.com
-Cc: maz@kernel.org, jean-philippe@linaro.org, jonathan.cameron@huawei.com,
- lpieralisi@kernel.org, peter.maydell@linaro.org,
- richard.henderson@linaro.org, imammedo@redhat.com, andrew.jones@linux.dev,
- david@redhat.com, philmd@linaro.org, eric.auger@redhat.com, will@kernel.org,
- ardb@kernel.org, oliver.upton@linux.dev, pbonzini@redhat.com,
- rafael@kernel.org, borntraeger@linux.ibm.com, alex.bennee@linaro.org,
- npiggin@gmail.com, harshpb@linux.ibm.com, linux@armlinux.org.uk,
- darren@os.amperecomputing.com, ilkka@os.amperecomputing.com,
- vishnu@os.amperecomputing.com, karl.heubaum@oracle.com,
- miguel.luis@oracle.com, salil.mehta@opnsrc.net, zhukeqian1@huawei.com,
- wangxiongfeng2@huawei.com, wangyanan55@huawei.com, jiakernel2@gmail.com,
- maobibo@loongson.cn, lixianglai@loongson.cn, shahuang@redhat.com,
- zhao1.liu@intel.com, linuxarm@huawei.com
+       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Received: from mail.maildlp.com (unknown [172.18.186.216])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4WnX6r0Y16z6LDFs;
+	Mon, 19 Aug 2024 20:32:36 +0800 (CST)
+Received: from lhrpeml500003.china.huawei.com (unknown [7.191.162.67])
+	by mail.maildlp.com (Postfix) with ESMTPS id 07830140A78;
+	Mon, 19 Aug 2024 20:35:39 +0800 (CST)
+Received: from lhrpeml500001.china.huawei.com (7.191.163.213) by
+ lhrpeml500003.china.huawei.com (7.191.162.67) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.39; Mon, 19 Aug 2024 13:35:38 +0100
+Received: from lhrpeml500001.china.huawei.com ([7.191.163.213]) by
+ lhrpeml500001.china.huawei.com ([7.191.163.213]) with mapi id 15.01.2507.039;
+ Mon, 19 Aug 2024 13:35:38 +0100
+From: Salil Mehta <salil.mehta@huawei.com>
+To: =?utf-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+CC: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org"
+	<qemu-arm@nongnu.org>, "mst@redhat.com" <mst@redhat.com>, "maz@kernel.org"
+	<maz@kernel.org>, "jean-philippe@linaro.org" <jean-philippe@linaro.org>,
+	Jonathan Cameron <jonathan.cameron@huawei.com>, "lpieralisi@kernel.org"
+	<lpieralisi@kernel.org>, "peter.maydell@linaro.org"
+	<peter.maydell@linaro.org>, "richard.henderson@linaro.org"
+	<richard.henderson@linaro.org>, "imammedo@redhat.com" <imammedo@redhat.com>,
+	"andrew.jones@linux.dev" <andrew.jones@linux.dev>, "david@redhat.com"
+	<david@redhat.com>, "philmd@linaro.org" <philmd@linaro.org>,
+	"eric.auger@redhat.com" <eric.auger@redhat.com>, "will@kernel.org"
+	<will@kernel.org>, "ardb@kernel.org" <ardb@kernel.org>,
+	"oliver.upton@linux.dev" <oliver.upton@linux.dev>, "pbonzini@redhat.com"
+	<pbonzini@redhat.com>, "gshan@redhat.com" <gshan@redhat.com>,
+	"rafael@kernel.org" <rafael@kernel.org>, "borntraeger@linux.ibm.com"
+	<borntraeger@linux.ibm.com>, "npiggin@gmail.com" <npiggin@gmail.com>,
+	"harshpb@linux.ibm.com" <harshpb@linux.ibm.com>, "linux@armlinux.org.uk"
+	<linux@armlinux.org.uk>, "darren@os.amperecomputing.com"
+	<darren@os.amperecomputing.com>, "ilkka@os.amperecomputing.com"
+	<ilkka@os.amperecomputing.com>, "vishnu@os.amperecomputing.com"
+	<vishnu@os.amperecomputing.com>, "karl.heubaum@oracle.com"
+	<karl.heubaum@oracle.com>, "miguel.luis@oracle.com" <miguel.luis@oracle.com>,
+	"salil.mehta@opnsrc.net" <salil.mehta@opnsrc.net>, zhukeqian
+	<zhukeqian1@huawei.com>, "wangxiongfeng (C)" <wangxiongfeng2@huawei.com>,
+	"wangyanan (Y)" <wangyanan55@huawei.com>, "jiakernel2@gmail.com"
+	<jiakernel2@gmail.com>, "maobibo@loongson.cn" <maobibo@loongson.cn>,
+	"lixianglai@loongson.cn" <lixianglai@loongson.cn>, "shahuang@redhat.com"
+	<shahuang@redhat.com>, "zhao1.liu@intel.com" <zhao1.liu@intel.com>, Linuxarm
+	<linuxarm@huawei.com>
+Subject: RE: [PATCH RFC V3 24/29] target/arm: Add support of *unrealize*
+ ARMCPU during vCPU Hot-unplug
+Thread-Topic: [PATCH RFC V3 24/29] target/arm: Add support of *unrealize*
+ ARMCPU during vCPU Hot-unplug
+Thread-Index: AQHavev6H7OxF7zZK02qabf2MUOdZrIqaJGSgASDY4A=
+Date: Mon, 19 Aug 2024 12:35:38 +0000
+Message-ID: <2cb51f91bea3472e8ac04854d7c6bb71@huawei.com>
 References: <20240613233639.202896-1-salil.mehta@huawei.com>
- <20240613233639.202896-7-salil.mehta@huawei.com>
-From: Gavin Shan <gshan@redhat.com>
-In-Reply-To: <20240613233639.202896-7-salil.mehta@huawei.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+	<20240613233639.202896-25-salil.mehta@huawei.com>
+ <87v800wkb1.fsf@draig.linaro.org>
+In-Reply-To: <87v800wkb1.fsf@draig.linaro.org>
+Accept-Language: en-US
 Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-TUID: DDx+vzEYtoB4
+X-MS-Has-Attach:
+X-MS-TNEF-Correlator:
+x-originating-ip: [10.48.151.47]
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+X-TUID: qSucaWl3rtEd
 
-On 6/14/24 9:36 AM, Salil Mehta wrote:
-> In the ARMv8 architecture, the GIC must know all the CPUs it is connected to
-> during its initialization, and this cannot change afterward. This must be
-> ensured during the initialization of the VGIC as well in KVM, which requires all
-> vCPUs to be created and present during its initialization. This is necessary
-> because:
-> 
-> 1. The association between GICC and MPIDR must be fixed at VM initialization
->     time. This is represented by the register `GIC_TYPER(mp_affinity, proc_num)`.
-> 2. GICC (CPU interfaces), GICR (redistributors), etc., must all be initialized
->     at boot time.
-> 3. Memory regions associated with GICR, etc., cannot be changed (added, deleted,
->     or modified) after the VM has been initialized.
-> 
-> This patch adds support to pre-create all possible vCPUs within the host using
-> the KVM interface as part of the virtual machine initialization. These vCPUs can
-> later be attached to QOM/ACPI when they are actually hot-plugged and made
-> present.
-> 
-> Co-developed-by: Keqian Zhu <zhukeqian1@huawei.com>
-> Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
-> Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
-> Reported-by: Vishnu Pajjuri <vishnu@os.amperecomputing.com>
-> [VP: Identified CPU stall issue & suggested probable fix]
-> ---
->   hw/arm/virt.c         | 56 +++++++++++++++++++++++++++++++++++--------
->   include/hw/core/cpu.h |  1 +
->   target/arm/cpu64.c    |  1 +
->   target/arm/kvm.c      | 41 ++++++++++++++++++++++++++++++-
->   target/arm/kvm_arm.h  | 11 +++++++++
->   5 files changed, 99 insertions(+), 11 deletions(-)
-> 
-
-The vCPU file descriptor is associated with a feature bitmap when the file descriptor
-is initialized by ioctl(vm_fd, KVM_ARM_VCPU_INIT, &init). The feature bitmap is sorted
-out based on the vCPU properties. The vCPU properties can be different when the vCPU
-file descriptor is initialized for the first time when the vCPU is instantiated, and
-re-initialized when the vCPU is hot added.
-
-It can lead to system crash as below. We probably need a mechanism to disallow passing
-extra properties when vCPU is hot added to avoid the conflicts to the global properties
-from the command line "-cpu host,pmu=on". Some of the properties like "id", "socket-id"
-are still needed.
-
-/home/gavin/sandbox/qemu.main/build/qemu-system-aarch64                  \
--accel kvm -machine virt,gic-version=host,nvdimm=on                      \
--cpu host -smp maxcpus=2,cpus=1,sockets=2,clusters=1,cores=1,threads=1   \
--m 4096M,slots=16,maxmem=128G                                            \
--object memory-backend-ram,id=mem0,size=2048M                            \
--object memory-backend-ram,id=mem1,size=2048M                            \
--numa node,nodeid=0,memdev=mem0,cpus=0-0                                 \
--numa node,nodeid=1,memdev=mem1,cpus=1-1                                 \
--L /home/gavin/sandbox/qemu.main/build/pc-bios                           \
--monitor none -serial mon:stdio -nographic                               \
--gdb tcp::6666 -qmp tcp:localhost:5555,server,wait=off                   \
--bios /home/gavin/sandbox/qemu.main/build/pc-bios/edk2-aarch64-code.fd   \
--kernel /home/gavin/sandbox/linux.guest/arch/arm64/boot/Image            \
--initrd /home/gavin/sandbox/images/rootfs.cpio.xz                        \
--append memhp_default_state=online_movable                               \
-     :
-(qemu) device_add host-arm-cpu,id=cpu1,socket-id=1,pmu=off
-kvm_arch_init_vcpu: Error -22 from kvm_arm_vcpu_init()
-qemu-system-aarch64: kvm_init_vcpu: kvm_arch_init_vcpu failed (1): Invalid argument
-
-Thanks,
-Gavin
+SGkgQWxleCwNCg0KPiAgRnJvbTogQWxleCBCZW5uw6llIDxhbGV4LmJlbm5lZUBsaW5hcm8ub3Jn
+Pg0KPiAgU2VudDogRnJpZGF5LCBBdWd1c3QgMTYsIDIwMjQgNDozNyBQTQ0KPiAgVG86IFNhbGls
+IE1laHRhIDxzYWxpbC5tZWh0YUBodWF3ZWkuY29tPg0KPiAgDQo+ICBTYWxpbCBNZWh0YSA8c2Fs
+aWwubWVodGFAaHVhd2VpLmNvbT4gd3JpdGVzOg0KPiAgDQo+ICA+IHZDUFUgSG90LXVucGx1ZyB3
+aWxsIHJlc3VsdCBpbiBRT00gQ1BVIG9iamVjdCB1bnJlYWxpemF0aW9uIHdoaWNoIHdpbGwNCj4g
+ID4gZG8gYXdheSB3aXRoIGFsbCB0aGUgdkNQVSB0aHJlYWQgY3JlYXRpb25zLCBhbGxvY2F0aW9u
+cywgcmVnaXN0cmF0aW9ucw0KPiAgPiB0aGF0IGhhcHBlbmVkIGFzIHBhcnQgb2YgdGhlIHJlYWxp
+emF0aW9uIHByb2Nlc3MuIFRoaXMgY2hhbmdlDQo+ICA+IGludHJvZHVjZXMgdGhlIEFSTSBDUFUg
+dW5yZWFsaXplIGZ1bmN0aW9uIHRha2luZyBjYXJlIG9mIGV4YWN0bHkgdGhhdC4NCj4gID4NCj4g
+ID4gTm90ZSwgaW5pdGlhbGl6ZWQgS1ZNIHZDUFVzIGFyZSBub3QgZGVzdHJveWVkIGluIGhvc3Qg
+S1ZNIGJ1dCB0aGVpcg0KPiAgPiBRZW11IGNvbnRleHQgaXMgcGFya2VkIGF0IHRoZSBRRU1VIEtW
+TSBsYXllci4NCj4gID4NCj4gID4gQ28tZGV2ZWxvcGVkLWJ5OiBLZXFpYW4gWmh1IDx6aHVrZXFp
+YW4xQGh1YXdlaS5jb20+DQo+ICA+IFNpZ25lZC1vZmYtYnk6IEtlcWlhbiBaaHUgPHpodWtlcWlh
+bjFAaHVhd2VpLmNvbT4NCj4gID4gU2lnbmVkLW9mZi1ieTogU2FsaWwgTWVodGEgPHNhbGlsLm1l
+aHRhQGh1YXdlaS5jb20+DQo+ICA+IFJlcG9ydGVkLWJ5OiBWaXNobnUgUGFqanVyaSA8dmlzaG51
+QG9zLmFtcGVyZWNvbXB1dGluZy5jb20+DQo+ICA+IFtWUDogSWRlbnRpZmllZCBDUFUgc3RhbGwg
+aXNzdWUgJiBzdWdnZXN0ZWQgcHJvYmFibGUgZml4XQ0KPiAgPiBTaWduZWQtb2ZmLWJ5OiBTYWxp
+bCBNZWh0YSA8c2FsaWwubWVodGFAaHVhd2VpLmNvbT4NCj4gID4gLS0tDQo+ICA+ICB0YXJnZXQv
+YXJtL2NwdS5jICAgICAgIHwgMTAxDQo+ICArKysrKysrKysrKysrKysrKysrKysrKysrKysrKysr
+KysrKysrKysrKw0KPiAgPiAgdGFyZ2V0L2FybS9jcHUuaCAgICAgICB8ICAxNCArKysrKysNCj4g
+ID4gIHRhcmdldC9hcm0vZ2Ric3R1Yi5jICAgfCAgIDYgKysrDQo+ICA+ICB0YXJnZXQvYXJtL2hl
+bHBlci5jICAgIHwgIDI1ICsrKysrKysrKysNCj4gID4gIHRhcmdldC9hcm0vaW50ZXJuYWxzLmgg
+fCAgIDMgKysNCj4gID4gIHRhcmdldC9hcm0va3ZtLmMgICAgICAgfCAgIDUgKysNCj4gID4gIDYg
+ZmlsZXMgY2hhbmdlZCwgMTU0IGluc2VydGlvbnMoKykNCj4gID4NCj4gID4gZGlmZiAtLWdpdCBh
+L3RhcmdldC9hcm0vY3B1LmMgYi90YXJnZXQvYXJtL2NwdS5jIGluZGV4DQo+ICA+IGM5MjE2MmZh
+OTcuLmEzZGM2NjkzMDkgMTAwNjQ0DQo+ICA+IC0tLSBhL3RhcmdldC9hcm0vY3B1LmMNCj4gID4g
+KysrIGIvdGFyZ2V0L2FybS9jcHUuYw0KPiAgPiBAQCAtMTU3LDYgKzE1NywxNiBAQCB2b2lkDQo+
+ICBhcm1fcmVnaXN0ZXJfcHJlX2VsX2NoYW5nZV9ob29rKEFSTUNQVSAqY3B1LCBBUk1FTENoYW5n
+ZUhvb2tGbg0KPiAgKmhvb2ssDQo+ICA+ICAgICAgUUxJU1RfSU5TRVJUX0hFQUQoJmNwdS0+cHJl
+X2VsX2NoYW5nZV9ob29rcywgZW50cnksIG5vZGUpOyAgfQ0KPiAgPg0KPiAgPiArdm9pZCBhcm1f
+dW5yZWdpc3Rlcl9wcmVfZWxfY2hhbmdlX2hvb2tzKEFSTUNQVSAqY3B1KSB7DQo+ICA+ICsgICAg
+QVJNRUxDaGFuZ2VIb29rICplbnRyeSwgKm5leHQ7DQo+ICA+ICsNCj4gID4gKyAgICBRTElTVF9G
+T1JFQUNIX1NBRkUoZW50cnksICZjcHUtPnByZV9lbF9jaGFuZ2VfaG9va3MsIG5vZGUsDQo+ICBu
+ZXh0KSB7DQo+ICA+ICsgICAgICAgIFFMSVNUX1JFTU9WRShlbnRyeSwgbm9kZSk7DQo+ICA+ICsg
+ICAgICAgIGdfZnJlZShlbnRyeSk7DQo+ICA+ICsgICAgfQ0KPiAgPiArfQ0KPiAgPiArDQo+ICA+
+ICB2b2lkIGFybV9yZWdpc3Rlcl9lbF9jaGFuZ2VfaG9vayhBUk1DUFUgKmNwdSwNCj4gIEFSTUVM
+Q2hhbmdlSG9va0ZuICpob29rLA0KPiAgPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgdm9pZCAqb3BhcXVlKSAgeyBAQCAtMTY4LDYgKzE3OCwxNg0KPiAgPiBAQCB2b2lkIGFybV9y
+ZWdpc3Rlcl9lbF9jaGFuZ2VfaG9vayhBUk1DUFUgKmNwdSwNCj4gIEFSTUVMQ2hhbmdlSG9va0Zu
+ICpob29rLA0KPiAgPiAgICAgIFFMSVNUX0lOU0VSVF9IRUFEKCZjcHUtPmVsX2NoYW5nZV9ob29r
+cywgZW50cnksIG5vZGUpOyAgfQ0KPiAgPg0KPiAgPiArdm9pZCBhcm1fdW5yZWdpc3Rlcl9lbF9j
+aGFuZ2VfaG9va3MoQVJNQ1BVICpjcHUpIHsNCj4gID4gKyAgICBBUk1FTENoYW5nZUhvb2sgKmVu
+dHJ5LCAqbmV4dDsNCj4gID4gKw0KPiAgPiArICAgIFFMSVNUX0ZPUkVBQ0hfU0FGRShlbnRyeSwg
+JmNwdS0+ZWxfY2hhbmdlX2hvb2tzLCBub2RlLCBuZXh0KSB7DQo+ICA+ICsgICAgICAgIFFMSVNU
+X1JFTU9WRShlbnRyeSwgbm9kZSk7DQo+ICA+ICsgICAgICAgIGdfZnJlZShlbnRyeSk7DQo+ICA+
+ICsgICAgfQ0KPiAgPiArfQ0KPiAgPiArDQo+ICA+ICBzdGF0aWMgdm9pZCBjcF9yZWdfcmVzZXQo
+Z3BvaW50ZXIga2V5LCBncG9pbnRlciB2YWx1ZSwgZ3BvaW50ZXINCj4gID4gb3BhcXVlKSAgew0K
+PiAgPiAgICAgIC8qIFJlc2V0IGEgc2luZ2xlIEFSTUNQUmVnSW5mbyByZWdpc3RlciAqLyBAQCAt
+MjU1Miw2ICsyNTcyLDg1IEBADQo+ICA+IHN0YXRpYyB2b2lkIGFybV9jcHVfcmVhbGl6ZWZuKERl
+dmljZVN0YXRlICpkZXYsIEVycm9yICoqZXJycCkNCj4gID4gICAgICBhY2MtPnBhcmVudF9yZWFs
+aXplKGRldiwgZXJycCk7DQo+ICA+ICB9DQo+ICA+DQo+ICA+ICtzdGF0aWMgdm9pZCBhcm1fY3B1
+X3VucmVhbGl6ZWZuKERldmljZVN0YXRlICpkZXYpIHsNCj4gID4gKyAgICBBUk1DUFVDbGFzcyAq
+YWNjID0gQVJNX0NQVV9HRVRfQ0xBU1MoZGV2KTsNCj4gID4gKyAgICBBUk1DUFUgKmNwdSA9IEFS
+TV9DUFUoZGV2KTsNCj4gID4gKyAgICBDUFVBUk1TdGF0ZSAqZW52ID0gJmNwdS0+ZW52Ow0KPiAg
+PiArICAgIENQVVN0YXRlICpjcyA9IENQVShkZXYpOw0KPiAgPiArICAgIGJvb2wgaGFzX3NlY3Vy
+ZTsNCj4gID4gKw0KPiAgPiArICAgIGhhc19zZWN1cmUgPSBjcHUtPmhhc19lbDMgfHwgYXJtX2Zl
+YXR1cmUoZW52LA0KPiAgPiArIEFSTV9GRUFUVVJFX01fU0VDVVJJVFkpOw0KPiAgPiArDQo+ICA+
+ICsgICAgLyogcm9jayAnbicgdW4tcm9sbCwgd2hhdGV2ZXIgaGFwcGVuZWQgaW4gdGhlIGFybV9j
+cHVfcmVhbGl6ZWZuDQo+ICBjbGVhbmx5ICovDQo+ICA+ICsgICAgY3B1X2FkZHJlc3Nfc3BhY2Vf
+ZGVzdHJveShjcywgQVJNQVNJZHhfTlMpOw0KPiAgDQo+ICBPbiBjdXJyZW50IG1hc3RlciB0aGlz
+IHdpbGwgZmFpbDoNCj4gIA0KPiAgLi4vLi4vdGFyZ2V0L2FybS9jcHUuYzogSW4gZnVuY3Rpb24g
+4oCYYXJtX2NwdV91bnJlYWxpemVmbuKAmToNCj4gIC4uLy4uL3RhcmdldC9hcm0vY3B1LmM6MjYy
+Njo1OiBlcnJvcjogaW1wbGljaXQgZGVjbGFyYXRpb24gb2YgZnVuY3Rpb24NCj4gIOKAmGNwdV9h
+ZGRyZXNzX3NwYWNlX2Rlc3Ryb3nigJkgWy1XZXJyb3I9aW1wbGljaXQtZnVuY3Rpb24tZGVjbGFy
+YXRpb25dDQo+ICAgMjYyNiB8ICAgICBjcHVfYWRkcmVzc19zcGFjZV9kZXN0cm95KGNzLCBBUk1B
+U0lkeF9OUyk7DQo+ICAgICAgICB8ICAgICBefn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+DQo+ICAu
+Li8uLi90YXJnZXQvYXJtL2NwdS5jOjI2MjY6NTogZXJyb3I6IG5lc3RlZCBleHRlcm4gZGVjbGFy
+YXRpb24gb2YNCj4gIOKAmGNwdV9hZGRyZXNzX3NwYWNlX2Rlc3Ryb3nigJkgWy1XZXJyb3I9bmVz
+dGVkLWV4dGVybnNdDQo+ICBjYzE6IGFsbCB3YXJuaW5ncyBiZWluZyB0cmVhdGVkIGFzIGVycm9y
+cw0KDQoNClRoZSBjdXJyZW50IG1hc3RlciBhbHJlYWR5IGhhcyBhcmNoLWFnbm9zdGljIHBhdGNo
+LXNldC4gSSd2ZSBhcHBsaWVkIHRoZQ0KUkZDIFYzIHRvIHRoZSBsYXRlc3QgYW5kIGNvbXBsaWVk
+LiBJIGRpZCBub3Qgc2VlIHRoaXMgaXNzdWU/DQoNCkkndmUgY3JlYXRlIGEgbmV3IGJyYW5jaCBm
+b3IgeW91ciByZWZlcmVuY2UuDQoNCmh0dHBzOi8vZ2l0aHViLmNvbS9zYWxpbC1tZWh0YS9xZW11
+L3RyZWUvdmlydC1jcHVocC1hcm12OC9yZmMtdjQtcmM0DQoNClBsZWFzZSBsZXQgbWUga25vdyBp
+ZiB0aGlzIHdvcmtzIGZvciB5b3U/DQoNCg0KVGhhbmtzDQpTYWxpbC4NCg0KDQoNCj4gIA0KPiAg
+LS0NCj4gIEFsZXggQmVubsOpZQ0KPiAgVmlydHVhbGlzYXRpb24gVGVjaCBMZWFkIEAgTGluYXJv
+DQo=

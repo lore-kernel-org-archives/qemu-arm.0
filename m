@@ -1,121 +1,122 @@
-Received: by 2002:a17:504:9188:b0:1be9:327d:8ee3 with SMTP id i8csp1491495njf;
-        Sat, 17 Aug 2024 03:33:01 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWlU8VyX1ji2QoOlKouoSf1TbHlfWDNyCL+0JE6PQmQvEP8Nkf9/SSJEkA6ueezFUEoXB9NpFDAyMP9QC0GMWcEWHz7KA2b
-X-Google-Smtp-Source: AGHT+IH4uuusODF4mlypgX1MsXnR1nbvFmBfngaJqj8vmK5ti1VJlxn+twa6p46onc3i7QoQ6dSY
-X-Received: by 2002:a05:6358:781:b0:1aa:9fdd:af89 with SMTP id e5c5f4694b2df-1b393290cacmr716463655d.20.1723890781655;
-        Sat, 17 Aug 2024 03:33:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1723890781; cv=none;
+Received: by 2002:a17:504:9188:b0:1be9:327d:8ee3 with SMTP id i8csp1945586njf;
+        Sun, 18 Aug 2024 21:10:35 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWrLG2ZZ7pH7XwH+Y4xscah0nyKhB5B/g9P//XGnQTputP/p5+Pbd3Hb1HIwInzo7BVaVF6MHq0dnfVhqWZglYA2YrnmUPN
+X-Google-Smtp-Source: AGHT+IGyO9CfZ5SkCkmG192VHD/V5C7KQQcskATSnbdcI2VGQlXjZKnmRiEzEgPacY/9HNKoyUYg
+X-Received: by 2002:a05:622a:2605:b0:44f:f83d:46a3 with SMTP id d75a77b69052e-453743ad15amr110950011cf.40.1724040635751;
+        Sun, 18 Aug 2024 21:10:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1724040635; cv=none;
         d=google.com; s=arc-20160816;
-        b=aVI4BiO+x3AQau9NUJfl/WZYCW7RPkwYEs5tDiFK36W7SC4TgeAYM/HPQVFcXZ+sVG
-         I05GQmzk7tjosXe9ywCwsnGwi0pFyBu4ux/k+Wwe4ka7IzIvb4GWntO0ugwQQ1Dt6I0s
-         oZWxgYr4Zem+7qzTUj5tvxaqaP6aSO6OxkN70MITdDeCV6AXqx7ImKFAntyhXAb+GEWo
-         eZlg/PBdhX8cDm5C6A0C7xSOgoYSY3jqcPs16j9NK3gDRkCXw+P6g8AMpnISvI9MCsTp
-         Kj5D84nS5VXJRFjQ30c9JKn+lArYheS6deRbjm9qxs9k0jV0g/6Z7hZNVCEzjKOjqqA8
-         Ps3Q==
+        b=vbIegZNA/O1BxhKE+9SMAxx5xZM2pz8Q7ClcjG5An7HU3W7PZq/GmSvrDEuvXQLnqR
+         vEuvKc8iMzP2mbJAVET/IVTQsJzJl2CA36Q5/rJacgliMTLW1XeUY7GNEiFhmb5b2eTr
+         69/bn5dauT2n8wYvEYf9E0yD4b3Js2bpiV37k/Ev5gPX8UfoaeClqNKUUGaSreXr3rKi
+         0WhxfCEi3xDmFJHXktZsFwsT0j/NFCdox7TykkUSBAdtioBBlbeJT7zG39ZD6ZjnKH9j
+         Yd/wdDpI4NqhtNXMguTefNCJB/zh1h04i9VmdFKj7DljdeoeX1XbJKg33S5bigWtl7u+
+         TnIw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
-         :references:mime-version:in-reply-to:date:dkim-signature;
-        bh=Fqy5PG7dZmv6u/xL9uLGNHpMxKTeXuS+O1ZLevLT05M=;
-        fh=pITIqJh0Z5XaT4QxI/zJAgHBZTuNeZPw20HbjxZRX7I=;
-        b=BPfT9p8JomNrj3hxoVlFiC1N3X9dF5JDAIC7mQZl0UtHZWc13eQSQSSs4eFlltzuEy
-         7M06hLpbvySCcOwJi8dto6SYtyRxGQn+z1de3EN8MKrUIjKvDjk/2gu0/s47KE2QXbwQ
-         XujJWDtkuxT4NyELKQr+B3kcqWXNUrCv2VaE3KKw16k2gA8Benw6bml3KQGPRLbHAhfg
-         apkFUnKS+yTnrQ9EZqTLTw31vLwM6d04hUmB1gOc6slrMouZ84a1Sv5Fr2hj6ntuvL+4
-         rLEnEZTurlCFI6Fstq70+81u/EbM0+GozEXD5MIBfVWfUG8L4QtZPcMRSYVsF6hSmrlR
-         IdOw==;
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=v2qdX8mWUNXZJiWfJcpgF+TJTRmV7VWVMGYVoqqgQAw=;
+        fh=bd6JYs+zsWylHr8uUdIOK32CzPUgRjMqojZbfvqbqVY=;
+        b=ZNH26jnoM6htBF7zHZHrBivRntLsbtCKH8zDyMYtVhen22iNBqdIzdGmnV2AlcFW00
+         kd4yOpdygH3ipkpkaZDwf6jZBEAW2PmcW008bOfs/mulPnxK9X3CiM4mu1dYKjEa/5Vi
+         LXLlfApekiXG3x04lwueMck0apPYSDtLifbIgz5C/xUE6Dr004opX9FCy5q2oF5/3/k9
+         M3xnpMKkI5LRxQtSPSFnFp+WMaZcGtMMLtzAzkn1yXWpNYFf2nT+2ifQXh3/D5h+PUVu
+         1dZfmjL/fqUrdvhI8iVhP1tPvueyMQqznglCiq9iuVAeLtlIz5e6lFp8CrzOnY+QGJTx
+         uXfA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=h34AmmeZ;
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=jF5AGaKp;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7a4ff0e53besi598845685a.402.2024.08.17.03.33.01
+        by mx.google.com with ESMTPS id d75a77b69052e-45369fe6280si96030541cf.92.2024.08.18.21.10.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 17 Aug 2024 03:33:01 -0700 (PDT)
+        Sun, 18 Aug 2024 21:10:35 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=h34AmmeZ;
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=jF5AGaKp;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sfGeH-0007uq-IU; Sat, 17 Aug 2024 06:27:05 -0400
+	id 1sftiq-00053A-Rd; Mon, 19 Aug 2024 00:10:26 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from
- <33HrAZgUKCBEArCz6x55x2v.t537v3B-r83454x4B.58x@flex--tavip.bounces.google.com>)
- id 1sfGdz-0006YA-Jr
- for qemu-arm@nongnu.org; Sat, 17 Aug 2024 06:26:48 -0400
-Received: from mail-pg1-x549.google.com ([2607:f8b0:4864:20::549])
+ (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
+ id 1sftiZ-0004zs-Ie
+ for qemu-arm@nongnu.org; Mon, 19 Aug 2024 00:10:07 -0400
+Received: from mail-oi1-x244.google.com ([2607:f8b0:4864:20::244])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from
- <33HrAZgUKCBEArCz6x55x2v.t537v3B-r83454x4B.58x@flex--tavip.bounces.google.com>)
- id 1sfGdt-0003If-CR
- for qemu-arm@nongnu.org; Sat, 17 Aug 2024 06:26:46 -0400
-Received: by mail-pg1-x549.google.com with SMTP id
- 41be03b00d2f7-6818fa37eecso2649516a12.1
- for <qemu-arm@nongnu.org>; Sat, 17 Aug 2024 03:26:38 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
+ id 1sftiX-0002qr-I6
+ for qemu-arm@nongnu.org; Mon, 19 Aug 2024 00:10:07 -0400
+Received: by mail-oi1-x244.google.com with SMTP id
+ 5614622812f47-3db18c4927bso2277213b6e.1
+ for <qemu-arm@nongnu.org>; Sun, 18 Aug 2024 21:10:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1723890397; x=1724495197; darn=nongnu.org;
- h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
- :date:from:to:cc:subject:date:message-id:reply-to;
- bh=Fqy5PG7dZmv6u/xL9uLGNHpMxKTeXuS+O1ZLevLT05M=;
- b=h34AmmeZLrEeV+VLKGJMzc9/30zWPyXWB9qr5EJGLUMrb6DeYiFqGi25eMlVklpz0v
- VYuPiM0Y8koxS+ixbgnG1RTc5Q1d3yKg2kiVbwtbBuY6w3nuH3mUVULGdFa2FsnYkxc8
- QatdpIPBbQ0LIzDTtEsThVWsGDGaK6nPL9T57NRdd/bTV1WEFJ5g6k3C0RldOY0rt/J4
- Z9NumTssNl/zWi7J/m5OoIe7Z6rPgGT6JfzEzp7+aSW6aFeJvlXJZSLs5CeArly15h3D
- qfC2/c4LuWTafXyDyebrb8ikSrKQxcmp9hG+0R7iqWHhq8FdQxT1NVTShLiO5KE+bf2N
- h4hw==
+ d=ventanamicro.com; s=google; t=1724040603; x=1724645403; darn=nongnu.org;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+ bh=v2qdX8mWUNXZJiWfJcpgF+TJTRmV7VWVMGYVoqqgQAw=;
+ b=jF5AGaKpa7UUwxV9nUhDigztzUJay2boAm40nHIxUxgc3Jcjyy5EHAaAJplmZJEl/m
+ j0yp91cQOdX2KoK4lvzRDqF1vYpdLeMjLowZODyQ8dT1R9yyuXSmnGxhb9IYv2wQzXv+
+ Wyr7Vwq+Utn6BnEai3RArusOL1HLd06jjvyG7436kOIq+u+xSJGhX7F4+NPs/k6+Zids
+ vakpX5RaufBWc0BjcWVyKmbyShSIrzqwS3iiutIj8x1qi3bMJr1q0NEs6xnfXDNFl2kd
+ T092EaIye1K0DwALVE+JPsDQOIGZJxw+1OCCIhRT6R1Itz5yw0S2xJXwU6HEaB38Dpin
+ aqEQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1723890397; x=1724495197;
- h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
- :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=Fqy5PG7dZmv6u/xL9uLGNHpMxKTeXuS+O1ZLevLT05M=;
- b=PLkUd5PaFvhGMFL154t6ET8e3GtZIObiAIhZONP24rmfwdCZyMYkXKlpM3RTd0CpXZ
- gj0ulOJRcbNCoqpdK9KNewsEB3IjgJCXU/SbyhyoEaHeoYhrWasdRVjpX0YrXW/jqjXL
- 39R7Io6pyCBFCn/A/DDTlK50l8IxXKBxfFPaWgQrPbKwXB/cSVZxaDbv1zuK2UoL3VPZ
- SWm+RZ7tSKpnnaRo+ERBNBLXEeSQEumw6i0WzS2QhLBm4xNbEXssK0KLsN1dsgo1JNIi
- uuGRQ/lHrUzQuBgD1OO7IA8DWOSiUnCh/BkhwZWqpRay3D4sLdjM9QdrlW0Pr9/PypBk
- z1yQ==
-X-Gm-Message-State: AOJu0YwH6THmSsJ11t5QTZzj4ouIyOJeBDxufvddjAMTa7yZ0ZuQBcIP
- DPVRGeDoomrM1w1/ZReapV/8BbKJ1BN16h8V2AVFwNfBZtyCcsZyHZ3UfGX1AjGvuWXgUMfkJg=
- =
-X-Received: from warp10.c.googlers.com ([fda3:e722:ac3:cc00:24:72f4:c0a8:750])
- (user=tavip job=sendgmr) by 2002:a17:903:2307:b0:201:dcb0:9fb2
- with SMTP id
- d9443c01a7336-20203eeebdamr4676075ad.9.1723890396430; Sat, 17 Aug 2024
- 03:26:36 -0700 (PDT)
-Date: Sat, 17 Aug 2024 03:25:58 -0700
-In-Reply-To: <20240817102606.3996242-1-tavip@google.com>
-Mime-Version: 1.0
-References: <20240817102606.3996242-1-tavip@google.com>
-X-Mailer: git-send-email 2.46.0.184.g6999bdac58-goog
-Message-ID: <20240817102606.3996242-16-tavip@google.com>
-Subject: [RFC PATCH v2 15/23] hw/ssi: add support for flexcomm spi
-From: Octavian Purdila <tavip@google.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, stefanst@google.com, pbonzini@redhat.com, 
- thuth@redhat.com, peter.maydell@linaro.org, marcandre.lureau@redhat.com, 
- alistair@alistair23.me, berrange@redhat.com, philmd@linaro.org, 
- jsnow@redhat.com, crosa@redhat.com
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::549;
- envelope-from=33HrAZgUKCBEArCz6x55x2v.t537v3B-r83454x4B.58x@flex--tavip.bounces.google.com;
- helo=mail-pg1-x549.google.com
-X-Spam_score_int: -95
-X-Spam_score: -9.6
-X-Spam_bar: ---------
-X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ d=1e100.net; s=20230601; t=1724040603; x=1724645403;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=v2qdX8mWUNXZJiWfJcpgF+TJTRmV7VWVMGYVoqqgQAw=;
+ b=txCUZ6YvfEbHRRkESRMqYALQFFQNRv0AD629+bJE5hk2YzktwoYqBib23jvdLFPJlT
+ n185IzfaMrtNErfPJVLEMkPHj2pH22y35co4xsB5S1UxLbIggT6l+9uxO/u4IHYK6ovD
+ rVlXm//kmwBk3tUbGhppVHydqyQ/iocR1OBLRKPiXUF0xCMMQu3BuYk2ty4Md1FhpBCs
+ 34sewODpJJ2ZVOaKlYYwNDPgfkr98yNYyPgKwH+v5zB/MHJHY8Vnc5dcbCJ+QnyFFOKv
+ E7iH4WQdgBLBiLbBfXpO1PSC1LtzICQq1FXNnPzUNzcwR0wrjBrENZJCD7buzZhUlUZF
+ fYbQ==
+X-Gm-Message-State: AOJu0YyNmv/D14ykEeY/nsMz/GyWEjjzskVhdocJ/HQcU3A7B8aUzRN3
+ J0N0olgR+KQU+HqKjL/syAn+RN8pE0VI7Rvv4r524Nxey6vS8iBkMP4cxFtjGr8=
+X-Received: by 2002:a05:6808:3187:b0:3dd:37ab:34bc with SMTP id
+ 5614622812f47-3dd3ad37097mr11487728b6e.21.1724040603507; 
+ Sun, 18 Aug 2024 21:10:03 -0700 (PDT)
+Received: from sunil-laptop ([106.51.198.16]) by smtp.gmail.com with ESMTPSA id
+ 5614622812f47-3dd33d3fea9sm2072923b6e.1.2024.08.18.21.09.57
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 18 Aug 2024 21:10:03 -0700 (PDT)
+Date: Mon, 19 Aug 2024 09:39:53 +0530
+From: Sunil V L <sunilvl@ventanamicro.com>
+To: Sia Jee Heng <jeeheng.sia@starfivetech.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, qemu-riscv@nongnu.org,
+ mst@redhat.com, imammedo@redhat.com, anisinha@redhat.com,
+ peter.maydell@linaro.org, shannon.zhaosl@gmail.com,
+ palmer@dabbelt.com, alistair.francis@wdc.com,
+ bin.meng@windriver.com, liwei1518@gmail.com,
+ dbarboza@ventanamicro.com, zhiwei_liu@linux.alibaba.com
+Subject: Re: [PATCH v3 2/3] hw/acpi: Upgrade ACPI SPCR table to support SPCR
+ table version 4 format
+Message-ID: <ZsLFkbZxvOLpf8bZ@sunil-laptop>
+References: <20240813052223.1033420-1-jeeheng.sia@starfivetech.com>
+ <20240813052223.1033420-3-jeeheng.sia@starfivetech.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240813052223.1033420-3-jeeheng.sia@starfivetech.com>
+Received-SPF: pass client-ip=2607:f8b0:4864:20::244;
+ envelope-from=sunilvl@ventanamicro.com; helo=mail-oi1-x244.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -130,1622 +131,94 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: tfTxnARP5j8G
+X-TUID: q5tVpzbQQByG
 
-From: Sebastian Ene <sebastianene@google.com>
+Hi Jee Heng,
 
-Add support for NXP's flexcomm spi. It supports FIFO access,
-interrupts and master mode only. It does not support DMA.
+On Mon, Aug 12, 2024 at 10:22:22PM -0700, Sia Jee Heng wrote:
+> Update the SPCR table to accommodate the SPCR Table version 4 [1].
+> The SPCR table has been modified to adhere to the version 4 format [2].
+> 
+> [1]: https://learn.microsoft.com/en-us/windows-hardware/drivers/serports/serial-port-console-redirection-table
+> [2]: https://github.com/acpica/acpica/pull/931
+> 
+> Signed-off-by: Sia Jee Heng <jeeheng.sia@starfivetech.com>
+> Acked-by: Alistair Francis <alistair.francis@wdc.com>
+> ---
+>  hw/acpi/aml-build.c         | 14 +++++++++++---
+>  hw/arm/virt-acpi-build.c    | 10 ++++++++--
+>  hw/riscv/virt-acpi-build.c  | 12 +++++++++---
+>  include/hw/acpi/acpi-defs.h |  7 +++++--
+>  include/hw/acpi/aml-build.h |  2 +-
+>  5 files changed, 34 insertions(+), 11 deletions(-)
+> 
+> diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
+> index 6d4517cfbe..7c43573eef 100644
+> --- a/hw/acpi/aml-build.c
+> +++ b/hw/acpi/aml-build.c
+> @@ -1996,7 +1996,7 @@ static void build_processor_hierarchy_node(GArray *tbl, uint32_t flags,
+>  
+>  void build_spcr(GArray *table_data, BIOSLinker *linker,
+>                  const AcpiSpcrData *f, const uint8_t rev,
+> -                const char *oem_id, const char *oem_table_id)
+> +                const char *oem_id, const char *oem_table_id, const char *name)
+>  {
+>      AcpiTable table = { .sig = "SPCR", .rev = rev, .oem_id = oem_id,
+>                          .oem_table_id = oem_table_id };
+> @@ -2042,8 +2042,16 @@ void build_spcr(GArray *table_data, BIOSLinker *linker,
+>      build_append_int_noprefix(table_data, f->pci_flags, 4);
+>      /* PCI Segment */
+>      build_append_int_noprefix(table_data, f->pci_segment, 1);
+> -    /* Reserved */
+> -    build_append_int_noprefix(table_data, 0, 4);
+> +    /* UartClkFreq */
+> +    build_append_int_noprefix(table_data, f->uart_clk_freq, 4);
+> +    /* PreciseBaudrate */
+> +    build_append_int_noprefix(table_data, f->precise_baudrate, 4);
+> +    /* NameSpaceStringLength */
+> +    build_append_int_noprefix(table_data, f->namespace_string_length, 2);
+> +    /* NameSpaceStringOffset */
+> +    build_append_int_noprefix(table_data, f->namespace_string_offset, 2);
+> +    /* NamespaceString[] */
+> +    g_array_append_vals(table_data, name, f->namespace_string_length);
+>  
+>      acpi_table_end(linker, &table);
+>  }
+> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> index e10cad86dd..ae075dc9fd 100644
+> --- a/hw/arm/virt-acpi-build.c
+> +++ b/hw/arm/virt-acpi-build.c
+> @@ -435,11 +435,12 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>  
+>  /*
+>   * Serial Port Console Redirection Table (SPCR)
+> - * Rev: 1.07
+> + * Rev: 1.10
+>   */
+>  static void
+>  spcr_setup(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>  {
+> +    const char name[] = ".";
+>      AcpiSpcrData serial = {
+>          .interface_type = 3,       /* ARM PL011 UART */
+>          .base_addr.id = AML_AS_SYSTEM_MEMORY,
+> @@ -463,9 +464,14 @@ spcr_setup(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>          .pci_function = 0,
+>          .pci_flags = 0,
+>          .pci_segment = 0,
+> +        .uart_clk_freq = 0,
+> +        .precise_baudrate = 0,
+> +        .namespace_string_length = sizeof(name),
+> +        .namespace_string_offset = 88,
+>      };
+>  
+> -    build_spcr(table_data, linker, &serial, 2, vms->oem_id, vms->oem_table_id);
+> +    build_spcr(table_data, linker, &serial, 4, vms->oem_id, vms->oem_table_id,
+> +               name);
+I request the same which I had asked earlier. Please keep SPCR for other
+architectures like ARM intact. The latest revision is primarily required
+for RISC-V. So, restrict the series only for RISC-V. The common
+build_spcr() should create SPCR based on the revision parameter.
 
-The patch includes an automatically generated header which contains
-the register layout and helpers.
-
-The header can be regenerated with the svd-flexcomm-spi target when
-the build is configured with --enable-mcux-soc-svd.
-
-Signed-off-by: Sebastian Ene <sebastianene@google.com>
-[tavip: add suport for CFG.SPOL, CFG.LSBF, TX control flags per FIFO
-entry and 8/16 bit access to FIFORD and FIFOWR]
-Signed-off-by: Octavian Purdila <tavip@google.com>
----
- include/hw/arm/svd/flexcomm_spi.h | 980 ++++++++++++++++++++++++++++++
- include/hw/misc/flexcomm.h        |   7 +
- include/hw/ssi/flexcomm_spi.h     |  20 +
- hw/misc/flexcomm.c                |   6 +
- hw/ssi/flexcomm_spi.c             | 439 +++++++++++++
- hw/arm/svd/meson.build            |   3 +
- hw/ssi/meson.build                |   1 +
- hw/ssi/trace-events               |   8 +
- tests/unit/meson.build            |   6 +
- 9 files changed, 1470 insertions(+)
- create mode 100644 include/hw/arm/svd/flexcomm_spi.h
- create mode 100644 include/hw/ssi/flexcomm_spi.h
- create mode 100644 hw/ssi/flexcomm_spi.c
-
-diff --git a/include/hw/arm/svd/flexcomm_spi.h b/include/hw/arm/svd/flexcomm_spi.h
-new file mode 100644
-index 0000000000..a7282d6b64
---- /dev/null
-+++ b/include/hw/arm/svd/flexcomm_spi.h
-@@ -0,0 +1,980 @@
-+/*
-+ * Copyright 2016-2023 NXP SPDX-License-Identifier: BSD-3-Clause
-+ *
-+ * Automatically generated by svd-gen-header.py from MIMXRT595S_cm33.xml
-+ */
-+#pragma once
-+
-+#include "hw/registerfields.h"
-+
-+/* Serial Peripheral Interfaces (SPI) */
-+#define FLEXCOMM_SPI_REGS_NO (1024)
-+
-+/* Configuration Register */
-+REG32(FLEXCOMM_SPI_CFG, 1024);
-+/* SPI Enable */
-+FIELD(FLEXCOMM_SPI_CFG, ENABLE, 0, 1);
-+/* Master Mode Select */
-+FIELD(FLEXCOMM_SPI_CFG, MASTER, 2, 1);
-+/* LSB First Mode Enable */
-+FIELD(FLEXCOMM_SPI_CFG, LSBF, 3, 1);
-+/* Clock Phase Select */
-+FIELD(FLEXCOMM_SPI_CFG, CPHA, 4, 1);
-+/* Clock Polarity Select */
-+FIELD(FLEXCOMM_SPI_CFG, CPOL, 5, 1);
-+/* Loopback Mode Enable */
-+FIELD(FLEXCOMM_SPI_CFG, LOOP, 7, 1);
-+/* SSEL0 Polarity Select */
-+FIELD(FLEXCOMM_SPI_CFG, SPOL0, 8, 1);
-+/* SSEL1 Polarity Select */
-+FIELD(FLEXCOMM_SPI_CFG, SPOL1, 9, 1);
-+/* SSEL2 Polarity Select */
-+FIELD(FLEXCOMM_SPI_CFG, SPOL2, 10, 1);
-+/* SSEL3 Polarity Select */
-+FIELD(FLEXCOMM_SPI_CFG, SPOL3, 11, 1);
-+
-+/* Delay Register */
-+REG32(FLEXCOMM_SPI_DLY, 1028);
-+/* Pre-Delay */
-+FIELD(FLEXCOMM_SPI_DLY, PRE_DELAY, 0, 4);
-+/* Post-Delay */
-+FIELD(FLEXCOMM_SPI_DLY, POST_DELAY, 4, 4);
-+/* Frame Delay */
-+FIELD(FLEXCOMM_SPI_DLY, FRAME_DELAY, 8, 4);
-+/* Transfer Delay */
-+FIELD(FLEXCOMM_SPI_DLY, TRANSFER_DELAY, 12, 4);
-+
-+/* Status Register */
-+REG32(FLEXCOMM_SPI_STAT, 1032);
-+/* Slave Select Assert */
-+FIELD(FLEXCOMM_SPI_STAT, SSA, 4, 1);
-+/* Slave Select Deassert */
-+FIELD(FLEXCOMM_SPI_STAT, SSD, 5, 1);
-+/* Stalled Status Flag */
-+FIELD(FLEXCOMM_SPI_STAT, STALLED, 6, 1);
-+/* End Transfer Control */
-+FIELD(FLEXCOMM_SPI_STAT, ENDTRANSFER, 7, 1);
-+/* Master Idle Status Flag */
-+FIELD(FLEXCOMM_SPI_STAT, MSTIDLE, 8, 1);
-+
-+/* Interrupt Enable Register */
-+REG32(FLEXCOMM_SPI_INTENSET, 1036);
-+/* Slave Select Assert Interrupt Enable */
-+FIELD(FLEXCOMM_SPI_INTENSET, SSAEN, 4, 1);
-+/* Slave Select Deassert Interrupt Enable */
-+FIELD(FLEXCOMM_SPI_INTENSET, SSDEN, 5, 1);
-+/* Master Idle Interrupt Enable */
-+FIELD(FLEXCOMM_SPI_INTENSET, MSTIDLEEN, 8, 1);
-+
-+/* Interrupt Enable Clear Register */
-+REG32(FLEXCOMM_SPI_INTENCLR, 1040);
-+/* Slave Select Assert Interrupt Enable */
-+FIELD(FLEXCOMM_SPI_INTENCLR, SSAEN, 4, 1);
-+/* Slave Select Deassert Interrupt Enable */
-+FIELD(FLEXCOMM_SPI_INTENCLR, SSDEN, 5, 1);
-+/* Master Idle Interrupt Enable */
-+FIELD(FLEXCOMM_SPI_INTENCLR, MSTIDLE, 8, 1);
-+
-+/* Clock Divider Register */
-+REG32(FLEXCOMM_SPI_DIV, 1060);
-+/* Rate Divider Value */
-+FIELD(FLEXCOMM_SPI_DIV, DIVVAL, 0, 16);
-+
-+/* Interrupt Status Register */
-+REG32(FLEXCOMM_SPI_INTSTAT, 1064);
-+/* Slave Select Assert Interrupt */
-+FIELD(FLEXCOMM_SPI_INTSTAT, SSA, 4, 1);
-+/* Slave Select Deassert Interrupt */
-+FIELD(FLEXCOMM_SPI_INTSTAT, SSD, 5, 1);
-+/* Master Idle Status Flag Interrupt */
-+FIELD(FLEXCOMM_SPI_INTSTAT, MSTIDLE, 8, 1);
-+
-+/* FIFO Configuration Register */
-+REG32(FLEXCOMM_SPI_FIFOCFG, 3584);
-+/* Enable the Transmit FIFO */
-+FIELD(FLEXCOMM_SPI_FIFOCFG, ENABLETX, 0, 1);
-+/* Enable the Receive FIFO */
-+FIELD(FLEXCOMM_SPI_FIFOCFG, ENABLERX, 1, 1);
-+/* FIFO Size Configuration */
-+FIELD(FLEXCOMM_SPI_FIFOCFG, SIZE, 4, 2);
-+/* DMA Configuration for Transmit */
-+FIELD(FLEXCOMM_SPI_FIFOCFG, DMATX, 12, 1);
-+/* DMA Configuration for Receive */
-+FIELD(FLEXCOMM_SPI_FIFOCFG, DMARX, 13, 1);
-+/* Wake-up for Transmit FIFO Level */
-+FIELD(FLEXCOMM_SPI_FIFOCFG, WAKETX, 14, 1);
-+/* Wake-up for Receive FIFO Level */
-+FIELD(FLEXCOMM_SPI_FIFOCFG, WAKERX, 15, 1);
-+/* Empty Command for the Transmit FIFO */
-+FIELD(FLEXCOMM_SPI_FIFOCFG, EMPTYTX, 16, 1);
-+/* Empty Command for the Receive FIFO */
-+FIELD(FLEXCOMM_SPI_FIFOCFG, EMPTYRX, 17, 1);
-+/* Pop FIFO for Debug Reads */
-+FIELD(FLEXCOMM_SPI_FIFOCFG, POPDBG, 18, 1);
-+
-+/* FIFO Status Register */
-+REG32(FLEXCOMM_SPI_FIFOSTAT, 3588);
-+/* TX FIFO Error */
-+FIELD(FLEXCOMM_SPI_FIFOSTAT, TXERR, 0, 1);
-+/* RX FIFO Error */
-+FIELD(FLEXCOMM_SPI_FIFOSTAT, RXERR, 1, 1);
-+/* Peripheral Interrupt */
-+FIELD(FLEXCOMM_SPI_FIFOSTAT, PERINT, 3, 1);
-+/* Transmit FIFO Empty */
-+FIELD(FLEXCOMM_SPI_FIFOSTAT, TXEMPTY, 4, 1);
-+/* Transmit FIFO is Not Full */
-+FIELD(FLEXCOMM_SPI_FIFOSTAT, TXNOTFULL, 5, 1);
-+/* Receive FIFO is Not Empty */
-+FIELD(FLEXCOMM_SPI_FIFOSTAT, RXNOTEMPTY, 6, 1);
-+/* Receive FIFO is Full */
-+FIELD(FLEXCOMM_SPI_FIFOSTAT, RXFULL, 7, 1);
-+/* Transmit FIFO Current Level */
-+FIELD(FLEXCOMM_SPI_FIFOSTAT, TXLVL, 8, 5);
-+/* Receive FIFO Current Level */
-+FIELD(FLEXCOMM_SPI_FIFOSTAT, RXLVL, 16, 5);
-+
-+/* FIFO Trigger Register */
-+REG32(FLEXCOMM_SPI_FIFOTRIG, 3592);
-+/* Transmit FIFO Level Trigger Enable */
-+FIELD(FLEXCOMM_SPI_FIFOTRIG, TXLVLENA, 0, 1);
-+/* Receive FIFO Level Trigger Enable */
-+FIELD(FLEXCOMM_SPI_FIFOTRIG, RXLVLENA, 1, 1);
-+/* Transmit FIFO Level Trigger Point */
-+FIELD(FLEXCOMM_SPI_FIFOTRIG, TXLVL, 8, 4);
-+/* Receive FIFO Level Trigger Point */
-+FIELD(FLEXCOMM_SPI_FIFOTRIG, RXLVL, 16, 4);
-+
-+/* FIFO Interrupt Enable Register */
-+REG32(FLEXCOMM_SPI_FIFOINTENSET, 3600);
-+/* TX Error Interrupt Enable */
-+FIELD(FLEXCOMM_SPI_FIFOINTENSET, TXERR, 0, 1);
-+/* Receive Error Interrupt Enable */
-+FIELD(FLEXCOMM_SPI_FIFOINTENSET, RXERR, 1, 1);
-+/* Transmit FIFO Level Interrupt Enable */
-+FIELD(FLEXCOMM_SPI_FIFOINTENSET, TXLVL, 2, 1);
-+/* Receive FIFO Level Interrupt Enable */
-+FIELD(FLEXCOMM_SPI_FIFOINTENSET, RXLVL, 3, 1);
-+
-+/* FIFO Interrupt Enable Clear Register */
-+REG32(FLEXCOMM_SPI_FIFOINTENCLR, 3604);
-+/* TX Error Interrupt Enable */
-+FIELD(FLEXCOMM_SPI_FIFOINTENCLR, TXERR, 0, 1);
-+/* Receive Error Interrupt Enable */
-+FIELD(FLEXCOMM_SPI_FIFOINTENCLR, RXERR, 1, 1);
-+/* Transmit FIFO Level Interrupt Enable */
-+FIELD(FLEXCOMM_SPI_FIFOINTENCLR, TXLVL, 2, 1);
-+/* Receive FIFO Level Interrupt Enable */
-+FIELD(FLEXCOMM_SPI_FIFOINTENCLR, RXLVL, 3, 1);
-+
-+/* FIFO Interrupt Status Register */
-+REG32(FLEXCOMM_SPI_FIFOINTSTAT, 3608);
-+/* TX FIFO Error Interrupt Status */
-+FIELD(FLEXCOMM_SPI_FIFOINTSTAT, TXERR, 0, 1);
-+/* RX FIFO Error Interrupt Status */
-+FIELD(FLEXCOMM_SPI_FIFOINTSTAT, RXERR, 1, 1);
-+/* Transmit FIFO Level Interrupt Status */
-+FIELD(FLEXCOMM_SPI_FIFOINTSTAT, TXLVL, 2, 1);
-+/* Receive FIFO Level Interrupt Status */
-+FIELD(FLEXCOMM_SPI_FIFOINTSTAT, RXLVL, 3, 1);
-+/* Peripheral Interrupt Status */
-+FIELD(FLEXCOMM_SPI_FIFOINTSTAT, PERINT, 4, 1);
-+
-+/* FIFO Write Data Register */
-+REG32(FLEXCOMM_SPI_FIFOWR, 3616);
-+/* Transmit Data to the FIFO */
-+FIELD(FLEXCOMM_SPI_FIFOWR, TXDATA, 0, 16);
-+/* Transmit Slave Select 0 */
-+FIELD(FLEXCOMM_SPI_FIFOWR, TXSSEL0_N, 16, 1);
-+/* Transmit Slave Select 1 */
-+FIELD(FLEXCOMM_SPI_FIFOWR, TXSSEL1_N, 17, 1);
-+/* Transmit Slave Select 2 */
-+FIELD(FLEXCOMM_SPI_FIFOWR, TXSSEL2_N, 18, 1);
-+/* Transmit Slave Select 3 */
-+FIELD(FLEXCOMM_SPI_FIFOWR, TXSSEL3_N, 19, 1);
-+/* End of Transfer */
-+FIELD(FLEXCOMM_SPI_FIFOWR, EOT, 20, 1);
-+/* End of Frame */
-+FIELD(FLEXCOMM_SPI_FIFOWR, EOF, 21, 1);
-+/* Receive Ignore */
-+FIELD(FLEXCOMM_SPI_FIFOWR, RXIGNORE, 22, 1);
-+/* Transmit Ignore */
-+FIELD(FLEXCOMM_SPI_FIFOWR, TXIGNORE, 23, 1);
-+/* Data Length */
-+FIELD(FLEXCOMM_SPI_FIFOWR, LEN, 24, 4);
-+
-+/* FIFO Read Data Register */
-+REG32(FLEXCOMM_SPI_FIFORD, 3632);
-+/* Received Data from the FIFO */
-+FIELD(FLEXCOMM_SPI_FIFORD, RXDATA, 0, 16);
-+/* Slave Select 0 for Receive */
-+FIELD(FLEXCOMM_SPI_FIFORD, RXSSEL0_N, 16, 1);
-+/* Slave Select 1 for Receive */
-+FIELD(FLEXCOMM_SPI_FIFORD, RXSSEL1_N, 17, 1);
-+/* Slave Select 2 for Receive */
-+FIELD(FLEXCOMM_SPI_FIFORD, RXSSEL2_N, 18, 1);
-+/* Slave Select 3 for Receive */
-+FIELD(FLEXCOMM_SPI_FIFORD, RXSSEL3_N, 19, 1);
-+/* Start of Transfer Flag */
-+FIELD(FLEXCOMM_SPI_FIFORD, SOT, 20, 1);
-+
-+/* FIFO Data Read with no FIFO Pop Register */
-+REG32(FLEXCOMM_SPI_FIFORDNOPOP, 3648);
-+/* Received Data from the FIFO */
-+FIELD(FLEXCOMM_SPI_FIFORDNOPOP, RXDATA, 0, 16);
-+/* Slave Select 0 for Receive */
-+FIELD(FLEXCOMM_SPI_FIFORDNOPOP, RXSSEL0_N, 16, 1);
-+/* Slave Select 1 for Receive */
-+FIELD(FLEXCOMM_SPI_FIFORDNOPOP, RXSSEL1_N, 17, 1);
-+/* Slave Select 2 for Receive */
-+FIELD(FLEXCOMM_SPI_FIFORDNOPOP, RXSSEL2_N, 18, 1);
-+/* Slave Select 3 for Receive */
-+FIELD(FLEXCOMM_SPI_FIFORDNOPOP, RXSSEL3_N, 19, 1);
-+/* Start of Transfer Flag */
-+FIELD(FLEXCOMM_SPI_FIFORDNOPOP, SOT, 20, 1);
-+
-+/* FIFO Size Register */
-+REG32(FLEXCOMM_SPI_FIFOSIZE, 3656);
-+/* FIFO Size */
-+FIELD(FLEXCOMM_SPI_FIFOSIZE, FIFOSIZE, 0, 5);
-+
-+/* Peripheral Identification Register */
-+REG32(FLEXCOMM_SPI_ID, 4092);
-+/* Aperture */
-+FIELD(FLEXCOMM_SPI_ID, APERTURE, 0, 8);
-+/* Minor revision of module implementation */
-+FIELD(FLEXCOMM_SPI_ID, MINOR_REV, 8, 4);
-+/* Major revision of module implementation */
-+FIELD(FLEXCOMM_SPI_ID, MAJOR_REV, 12, 4);
-+/* Module identifier for the selected function */
-+FIELD(FLEXCOMM_SPI_ID, ID, 16, 16);
-+
-+
-+typedef enum {
-+    /*
-+     * Disabled. The SPI is disabled and the internal state machine and
-+     * counters are reset.
-+     */
-+    FLEXCOMM_SPI_CFG_ENABLE_DISABLED = 0,
-+    /* Enabled. The SPI is enabled for operation. */
-+    FLEXCOMM_SPI_CFG_ENABLE_ENABLED = 1,
-+} FLEXCOMM_SPI_CFG_ENABLE_Enum;
-+
-+typedef enum {
-+    /*
-+     * Slave mode. The SPI will operate in slave mode. SCK, MOSI, and the SSEL
-+     * signals are inputs; MISO is an output.
-+     */
-+    FLEXCOMM_SPI_CFG_MASTER_SLAVE_MODE = 0,
-+    /*
-+     * Master mode. The SPI will operate in master mode. SCK, MOSI, and the
-+     * SSEL signals are outputs; MISO is an input.
-+     */
-+    FLEXCOMM_SPI_CFG_MASTER_MASTER_MODE = 1,
-+} FLEXCOMM_SPI_CFG_MASTER_Enum;
-+
-+typedef enum {
-+    /*
-+     * Standard. Data is transmitted and received in standard MSB-first order.
-+     */
-+    FLEXCOMM_SPI_CFG_LSBF_STANDARD = 0,
-+    /*
-+     * Reverse. Data is transmitted and received in reverse order (LSB first).
-+     */
-+    FLEXCOMM_SPI_CFG_LSBF_REVERSE = 1,
-+} FLEXCOMM_SPI_CFG_LSBF_Enum;
-+
-+typedef enum {
-+    /* Change */
-+    FLEXCOMM_SPI_CFG_CPHA_CHANGE = 0,
-+    /* Capture */
-+    FLEXCOMM_SPI_CFG_CPHA_CAPTURE = 1,
-+} FLEXCOMM_SPI_CFG_CPHA_Enum;
-+
-+typedef enum {
-+    /* Low. The rest state of the clock (between transfers) is low. */
-+    FLEXCOMM_SPI_CFG_CPOL_LOW = 0,
-+    /* High. The rest state of the clock (between transfers) is high. */
-+    FLEXCOMM_SPI_CFG_CPOL_HIGH = 1,
-+} FLEXCOMM_SPI_CFG_CPOL_Enum;
-+
-+typedef enum {
-+    /* Disabled */
-+    FLEXCOMM_SPI_CFG_LOOP_DISABLED = 0,
-+    /* Enabled */
-+    FLEXCOMM_SPI_CFG_LOOP_ENABLED = 1,
-+} FLEXCOMM_SPI_CFG_LOOP_Enum;
-+
-+typedef enum {
-+    /* Low. The SSEL0 pin is active low. */
-+    FLEXCOMM_SPI_CFG_SPOL0_LOW = 0,
-+    /* High. The SSEL0 pin is active high. */
-+    FLEXCOMM_SPI_CFG_SPOL0_HIGH = 1,
-+} FLEXCOMM_SPI_CFG_SPOL0_Enum;
-+
-+typedef enum {
-+    /* Low. The SSEL1 pin is active low. */
-+    FLEXCOMM_SPI_CFG_SPOL1_LOW = 0,
-+    /* High. The SSEL1 pin is active high. */
-+    FLEXCOMM_SPI_CFG_SPOL1_HIGH = 1,
-+} FLEXCOMM_SPI_CFG_SPOL1_Enum;
-+
-+typedef enum {
-+    /* Low. The SSEL2 pin is active low. */
-+    FLEXCOMM_SPI_CFG_SPOL2_LOW = 0,
-+    /* High. The SSEL2 pin is active high. */
-+    FLEXCOMM_SPI_CFG_SPOL2_HIGH = 1,
-+} FLEXCOMM_SPI_CFG_SPOL2_Enum;
-+
-+typedef enum {
-+    /* Low. The SSEL3 pin is active low. */
-+    FLEXCOMM_SPI_CFG_SPOL3_LOW = 0,
-+    /* High. The SSEL3 pin is active high. */
-+    FLEXCOMM_SPI_CFG_SPOL3_HIGH = 1,
-+} FLEXCOMM_SPI_CFG_SPOL3_Enum;
-+
-+typedef enum {
-+    /* No additional time is inserted */
-+    FLEXCOMM_SPI_DLY_PRE_DELAY_PRE_DELAY0 = 0,
-+    /* 1 SPI clock time is inserted */
-+    FLEXCOMM_SPI_DLY_PRE_DELAY_PRE_DELAY1 = 1,
-+    /* 2 SPI clock times are inserted */
-+    FLEXCOMM_SPI_DLY_PRE_DELAY_PRE_DELAY2 = 2,
-+    /* 15 SPI clock times are inserted */
-+    FLEXCOMM_SPI_DLY_PRE_DELAY_PRE_DELAY15 = 15,
-+} FLEXCOMM_SPI_DLY_PRE_DELAY_Enum;
-+
-+typedef enum {
-+    /* No additional time is inserted */
-+    FLEXCOMM_SPI_DLY_POST_DELAY_POST_DELAY0 = 0,
-+    /* 1 SPI clock time is inserted */
-+    FLEXCOMM_SPI_DLY_POST_DELAY_POST_DELAY1 = 1,
-+    /* 2 SPI clock times are inserted */
-+    FLEXCOMM_SPI_DLY_POST_DELAY_POST_DELAY2 = 2,
-+    /* 15 SPI clock times are inserted */
-+    FLEXCOMM_SPI_DLY_POST_DELAY_POST_DELAY15 = 15,
-+} FLEXCOMM_SPI_DLY_POST_DELAY_Enum;
-+
-+typedef enum {
-+    /* No additional time is inserted */
-+    FLEXCOMM_SPI_DLY_FRAME_DELAY_FRAME_DELAY0 = 0,
-+    /* 1 SPI clock time is inserted */
-+    FLEXCOMM_SPI_DLY_FRAME_DELAY_FRAME_DELAY1 = 1,
-+    /* 2 SPI clock times are inserted */
-+    FLEXCOMM_SPI_DLY_FRAME_DELAY_FRAME_DELAY2 = 2,
-+    /* 15 SPI clock times are inserted */
-+    FLEXCOMM_SPI_DLY_FRAME_DELAY_FRAME_DELAY15 = 15,
-+} FLEXCOMM_SPI_DLY_FRAME_DELAY_Enum;
-+
-+typedef enum {
-+    /*
-+     * The minimum time that SSEL is deasserted is 1 SPI clock time (zero-added
-+     * time)
-+     */
-+    FLEXCOMM_SPI_DLY_TRANSFER_DELAY_TRANSFER_DELAY1 = 0,
-+    /* The minimum time that SSEL is deasserted is 2 SPI clock times */
-+    FLEXCOMM_SPI_DLY_TRANSFER_DELAY_TRANSFER_DELAY2 = 1,
-+    /* The minimum time that SSEL is deasserted is 3 SPI clock times */
-+    FLEXCOMM_SPI_DLY_TRANSFER_DELAY_TRANSFER_DELAY3 = 2,
-+    /* The minimum time that SSEL is deasserted is 16 SPI clock times */
-+    FLEXCOMM_SPI_DLY_TRANSFER_DELAY_TRANSFER_DELAY16 = 15,
-+} FLEXCOMM_SPI_DLY_TRANSFER_DELAY_Enum;
-+
-+typedef enum {
-+    /*
-+     * Disabled. No interrupt will be generated when any Slave Select
-+     * transitions from deasserted to asserted.
-+     */
-+    FLEXCOMM_SPI_INTENSET_SSAEN_DISABLED = 0,
-+    /*
-+     * Enabled. An interrupt will be generated when any Slave Select
-+     * transitions from deasserted to asserted.
-+     */
-+    FLEXCOMM_SPI_INTENSET_SSAEN_ENABLED = 1,
-+} FLEXCOMM_SPI_INTENSET_SSAEN_Enum;
-+
-+typedef enum {
-+    /*
-+     * Disabled. No interrupt will be generated when all asserted Slave Selects
-+     * transition to deasserted.
-+     */
-+    FLEXCOMM_SPI_INTENSET_SSDEN_DISABLED = 0,
-+    /*
-+     * Enabled. An interrupt will be generated when all asserted Slave Selects
-+     * transition to deasserted.
-+     */
-+    FLEXCOMM_SPI_INTENSET_SSDEN_ENABLED = 1,
-+} FLEXCOMM_SPI_INTENSET_SSDEN_Enum;
-+
-+typedef enum {
-+    /* No interrupt will be generated when the SPI master function is idle. */
-+    FLEXCOMM_SPI_INTENSET_MSTIDLEEN_DISABLED = 0,
-+    /*
-+     * An interrupt will be generated when the SPI master function is fully
-+     * idle.
-+     */
-+    FLEXCOMM_SPI_INTENSET_MSTIDLEEN_ENABLED = 1,
-+} FLEXCOMM_SPI_INTENSET_MSTIDLEEN_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    FLEXCOMM_SPI_INTENCLR_SSAEN_NO_EFFECT = 0,
-+    /* Clear the Slave Select Assert Interrupt Enable bit (INTENSET[SSAEN]) */
-+    FLEXCOMM_SPI_INTENCLR_SSAEN_CLEAR_THE_SSAEN = 1,
-+} FLEXCOMM_SPI_INTENCLR_SSAEN_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    FLEXCOMM_SPI_INTENCLR_SSDEN_NO_EFFECT = 0,
-+    /* Clear the Slave Select Deassert Interrupt Enable bit (INTENSET[SSDEN]) */
-+    FLEXCOMM_SPI_INTENCLR_SSDEN_CLEAR_THE_SSDEN = 1,
-+} FLEXCOMM_SPI_INTENCLR_SSDEN_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    FLEXCOMM_SPI_INTENCLR_MSTIDLE_NO_EFFECT = 0,
-+    /* Clear the Master Idle Interrupt Enable bit (INTENSET[MSTIDLE]) */
-+    FLEXCOMM_SPI_INTENCLR_MSTIDLE_CLEAR_THE_MSTIDLE = 1,
-+} FLEXCOMM_SPI_INTENCLR_MSTIDLE_Enum;
-+
-+typedef enum {
-+    /* Disabled */
-+    FLEXCOMM_SPI_INTSTAT_SSA_SSA_INTERRUPT_DISABLED = 0,
-+    /* Enabled */
-+    FLEXCOMM_SPI_INTSTAT_SSA_SSA_INTERRUPT_ENABLED = 1,
-+} FLEXCOMM_SPI_INTSTAT_SSA_Enum;
-+
-+typedef enum {
-+    /* Disabled */
-+    FLEXCOMM_SPI_INTSTAT_SSD_SSD_INTERRUPT_DISABLED = 0,
-+    /* Enabled */
-+    FLEXCOMM_SPI_INTSTAT_SSD_SSD_INTERRUPT_ENABLED = 1,
-+} FLEXCOMM_SPI_INTSTAT_SSD_Enum;
-+
-+typedef enum {
-+    /* Disabled */
-+    FLEXCOMM_SPI_INTSTAT_MSTIDLE_MSTIDLE_INTERRUPT_DISABLED = 0,
-+    /* Enabled */
-+    FLEXCOMM_SPI_INTSTAT_MSTIDLE_MSTIDLE_INTERRUPT_ENABLED = 1,
-+} FLEXCOMM_SPI_INTSTAT_MSTIDLE_Enum;
-+
-+typedef enum {
-+    /* The transmit FIFO is not enabled */
-+    FLEXCOMM_SPI_FIFOCFG_ENABLETX_DISABLED = 0,
-+    /* The transmit FIFO is enabled */
-+    FLEXCOMM_SPI_FIFOCFG_ENABLETX_ENABLED = 1,
-+} FLEXCOMM_SPI_FIFOCFG_ENABLETX_Enum;
-+
-+typedef enum {
-+    /* The receive FIFO is not enabled */
-+    FLEXCOMM_SPI_FIFOCFG_ENABLERX_DISABLED = 0,
-+    /* The receive FIFO is enabled */
-+    FLEXCOMM_SPI_FIFOCFG_ENABLERX_ENABLED = 1,
-+} FLEXCOMM_SPI_FIFOCFG_ENABLERX_Enum;
-+
-+typedef enum {
-+    /* FIFO is configured as 16 entries of 8 bits. */
-+    FLEXCOMM_SPI_FIFOCFG_SIZE_SIZE16ENTRIES8BITS = 0,
-+    /* FIFO is configured as 8 entries of 16 bits. */
-+    FLEXCOMM_SPI_FIFOCFG_SIZE_SIZE8ENTRIES16BITS = 1,
-+    /* Not used */
-+    FLEXCOMM_SPI_FIFOCFG_SIZE_SIZEINVALID2 = 2,
-+    /* Not used */
-+    FLEXCOMM_SPI_FIFOCFG_SIZE_SIZEINVALID3 = 3,
-+} FLEXCOMM_SPI_FIFOCFG_SIZE_Enum;
-+
-+typedef enum {
-+    /* DMA is not used for the transmit function */
-+    FLEXCOMM_SPI_FIFOCFG_DMATX_DISABLED = 0,
-+    /*
-+     * Issues DMA request for the transmit function if the FIFO is not full.
-+     * Generally, data interrupts would be disabled if DMA is enabled.
-+     */
-+    FLEXCOMM_SPI_FIFOCFG_DMATX_ENABLED = 1,
-+} FLEXCOMM_SPI_FIFOCFG_DMATX_Enum;
-+
-+typedef enum {
-+    /* DMA is not used for the receive function. */
-+    FLEXCOMM_SPI_FIFOCFG_DMARX_DISABLED = 0,
-+    /*
-+     * Issues a DMA request for the receive function if the FIFO is not empty.
-+     * Generally, data interrupts would be disabled if DMA is enabled.
-+     */
-+    FLEXCOMM_SPI_FIFOCFG_DMARX_ENABLED = 1,
-+} FLEXCOMM_SPI_FIFOCFG_DMARX_Enum;
-+
-+typedef enum {
-+    /*
-+     * Only enabled interrupts will wake up the device form reduced power modes
-+     */
-+    FLEXCOMM_SPI_FIFOCFG_WAKETX_DISABLED = 0,
-+    /*
-+     * A device wake-up for DMA will occur if the transmit FIFO level reaches
-+     * the value specified by TXLVL in FIFOTRIG, even when the TXLVL interrupt
-+     * is not enabled.
-+     */
-+    FLEXCOMM_SPI_FIFOCFG_WAKETX_ENABLED = 1,
-+} FLEXCOMM_SPI_FIFOCFG_WAKETX_Enum;
-+
-+typedef enum {
-+    /*
-+     * Only enabled interrupts will wake up the device form reduced power
-+     * modes.
-+     */
-+    FLEXCOMM_SPI_FIFOCFG_WAKERX_DISABLED = 0,
-+    /*
-+     * A device wake-up for DMA will occur if the receive FIFO level reaches
-+     * the value specified by FIFOTRIG[RXLVL], even when the RXLVL interrupt is
-+     * not enabled.
-+     */
-+    FLEXCOMM_SPI_FIFOCFG_WAKERX_ENABLED = 1,
-+} FLEXCOMM_SPI_FIFOCFG_WAKERX_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    FLEXCOMM_SPI_FIFOCFG_EMPTYTX_NO_EFFECT = 0,
-+    /* The TX FIFO is emptied */
-+    FLEXCOMM_SPI_FIFOCFG_EMPTYTX_EMPTY_THE_TX_FIFO = 1,
-+} FLEXCOMM_SPI_FIFOCFG_EMPTYTX_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    FLEXCOMM_SPI_FIFOCFG_EMPTYRX_NO_EFFECT = 0,
-+    /* The RX FIFO is emptied */
-+    FLEXCOMM_SPI_FIFOCFG_EMPTYRX_EMPTY_THE_RX_FIFO = 1,
-+} FLEXCOMM_SPI_FIFOCFG_EMPTYRX_Enum;
-+
-+typedef enum {
-+    /* Debug reads of the FIFO do not pop the FIFO */
-+    FLEXCOMM_SPI_FIFOCFG_POPDBG_DO_NOT_POP = 0,
-+    /* A debug read will cause the FIFO to pop */
-+    FLEXCOMM_SPI_FIFOCFG_POPDBG_POP = 1,
-+} FLEXCOMM_SPI_FIFOCFG_POPDBG_Enum;
-+
-+typedef enum {
-+    /* A transmit FIFO error has not occurred. */
-+    FLEXCOMM_SPI_FIFOSTAT_TXERR_NO_TXERR = 0,
-+    /*
-+     * A transmit FIFO error has occurred. This error could be an overflow
-+     * caused by pushing data into a full FIFO, or by an underflow if the FIFO
-+     * is empty when data is needed.
-+     */
-+    FLEXCOMM_SPI_FIFOSTAT_TXERR_TXERR = 1,
-+} FLEXCOMM_SPI_FIFOSTAT_TXERR_Enum;
-+
-+typedef enum {
-+    /* A receive FIFO overflow has not occurred */
-+    FLEXCOMM_SPI_FIFOSTAT_RXERR_NO_RXERR = 0,
-+    /*
-+     * A receive FIFO overflow has occurred, caused by software or DMA not
-+     * emptying the FIFO fast enough
-+     */
-+    FLEXCOMM_SPI_FIFOSTAT_RXERR_RXERR = 1,
-+} FLEXCOMM_SPI_FIFOSTAT_RXERR_Enum;
-+
-+typedef enum {
-+    /* The peripheral function has not asserted an interrupt */
-+    FLEXCOMM_SPI_FIFOSTAT_PERINT_NO_PERINT = 0,
-+    /*
-+     * Indicates that the peripheral function has asserted an interrupt. More
-+     * information can be found by reading the peripheral's status register
-+     * (STAT).
-+     */
-+    FLEXCOMM_SPI_FIFOSTAT_PERINT_PERINT = 1,
-+} FLEXCOMM_SPI_FIFOSTAT_PERINT_Enum;
-+
-+typedef enum {
-+    /* The transmit FIFO is not empty */
-+    FLEXCOMM_SPI_FIFOSTAT_TXEMPTY_TXFIFO_ISNOTEMPTY = 0,
-+    /*
-+     * The transmit FIFO is empty, although the peripheral may still be
-+     * processing the last piece of data.
-+     */
-+    FLEXCOMM_SPI_FIFOSTAT_TXEMPTY_TXFIFO_ISEMPTY = 1,
-+} FLEXCOMM_SPI_FIFOSTAT_TXEMPTY_Enum;
-+
-+typedef enum {
-+    /* The transmit FIFO is full and another write would cause it to overflow */
-+    FLEXCOMM_SPI_FIFOSTAT_TXNOTFULL_TXFIFO_ISFULL = 0,
-+    /* The transmit FIFO is not full, so more data can be written */
-+    FLEXCOMM_SPI_FIFOSTAT_TXNOTFULL_TXFIFO_ISNOTFULL = 1,
-+} FLEXCOMM_SPI_FIFOSTAT_TXNOTFULL_Enum;
-+
-+typedef enum {
-+    /* When 0, the receive FIFO is empty */
-+    FLEXCOMM_SPI_FIFOSTAT_RXNOTEMPTY_RXFIFO_ISEMPTY = 0,
-+    /* When 1, the receive FIFO is not empty, so data can be read */
-+    FLEXCOMM_SPI_FIFOSTAT_RXNOTEMPTY_RXFIFO_ISNOTEMPTY = 1,
-+} FLEXCOMM_SPI_FIFOSTAT_RXNOTEMPTY_Enum;
-+
-+typedef enum {
-+    /* The receive FIFO is not full */
-+    FLEXCOMM_SPI_FIFOSTAT_RXFULL_RXFIFO_ISNOTFULL = 0,
-+    /*
-+     * The receive FIFO is full. To prevent the peripheral from causing an
-+     * overflow, data should be read out.
-+     */
-+    FLEXCOMM_SPI_FIFOSTAT_RXFULL_RXFIFO_ISFULL = 1,
-+} FLEXCOMM_SPI_FIFOSTAT_RXFULL_Enum;
-+
-+typedef enum {
-+    /* Transmit FIFO level does not generate a FIFO level trigger */
-+    FLEXCOMM_SPI_FIFOTRIG_TXLVLENA_DISABLED = 0,
-+    /*
-+     * An trigger will be generated if the transmit FIFO level reaches the
-+     * value specified by the FIFOTRIG[TXLVL] field.
-+     */
-+    FLEXCOMM_SPI_FIFOTRIG_TXLVLENA_ENABLED = 1,
-+} FLEXCOMM_SPI_FIFOTRIG_TXLVLENA_Enum;
-+
-+typedef enum {
-+    /* Receive FIFO level does not generate a FIFO level trigger */
-+    FLEXCOMM_SPI_FIFOTRIG_RXLVLENA_DISABLED = 0,
-+    /*
-+     * An trigger will be generated if the receive FIFO level reaches the value
-+     * specified by the FIFOTRIG[RXLVL] field.
-+     */
-+    FLEXCOMM_SPI_FIFOTRIG_RXLVLENA_ENABLED = 1,
-+} FLEXCOMM_SPI_FIFOTRIG_RXLVLENA_Enum;
-+
-+typedef enum {
-+    /* Trigger when the TX FIFO becomes empty */
-+    FLEXCOMM_SPI_FIFOTRIG_TXLVL_TXLVL0 = 0,
-+    /* Trigger when the TX FIFO level decreases to 1 entry */
-+    FLEXCOMM_SPI_FIFOTRIG_TXLVL_TXLVL1 = 1,
-+    /*
-+     * Trigger when the TX FIFO level decreases to 15 entries (is no longer
-+     * full)
-+     */
-+    FLEXCOMM_SPI_FIFOTRIG_TXLVL_TXLVL15 = 15,
-+} FLEXCOMM_SPI_FIFOTRIG_TXLVL_Enum;
-+
-+typedef enum {
-+    /* Trigger when the RX FIFO has received 1 entry (is no longer empty) */
-+    FLEXCOMM_SPI_FIFOTRIG_RXLVL_RXLVL1 = 0,
-+    /* Trigger when the RX FIFO has received 2 entries */
-+    FLEXCOMM_SPI_FIFOTRIG_RXLVL_RXLVL2 = 1,
-+    /* Trigger when the RX FIFO has received 16 entries (has become full) */
-+    FLEXCOMM_SPI_FIFOTRIG_RXLVL_RXLVL15 = 15,
-+} FLEXCOMM_SPI_FIFOTRIG_RXLVL_Enum;
-+
-+typedef enum {
-+    /* No interrupt will be generated for a transmit error */
-+    FLEXCOMM_SPI_FIFOINTENSET_TXERR_DISABLED = 0,
-+    /* An interrupt will be generated when a transmit error occurs */
-+    FLEXCOMM_SPI_FIFOINTENSET_TXERR_ENABLED = 1,
-+} FLEXCOMM_SPI_FIFOINTENSET_TXERR_Enum;
-+
-+typedef enum {
-+    /* No interrupt will be generated for a receive error */
-+    FLEXCOMM_SPI_FIFOINTENSET_RXERR_DISABLED = 0,
-+    /* An interrupt will be generated when a receive error occurs */
-+    FLEXCOMM_SPI_FIFOINTENSET_RXERR_ENABLED = 1,
-+} FLEXCOMM_SPI_FIFOINTENSET_RXERR_Enum;
-+
-+typedef enum {
-+    /* No interrupt will be generated based on the TX FIFO level */
-+    FLEXCOMM_SPI_FIFOINTENSET_TXLVL_DISABLED = 0,
-+    /*
-+     * If FIFOTRIG[TXLVLENA]=1, then an interrupt will be generated when the TX
-+     * FIFO level decreases to the level specified by FIFOTRIG[TXLVL]
-+     */
-+    FLEXCOMM_SPI_FIFOINTENSET_TXLVL_ENABLED = 1,
-+} FLEXCOMM_SPI_FIFOINTENSET_TXLVL_Enum;
-+
-+typedef enum {
-+    /* No interrupt will be generated based on the RX FIFO level */
-+    FLEXCOMM_SPI_FIFOINTENSET_RXLVL_DISABLED = 0,
-+    /*
-+     * If FIFOTRIG[RXLVLENA]=1, then an interrupt will be generated when the RX
-+     * FIFO level increases to the level specified by FIFOTRIG[RXLVL]
-+     */
-+    FLEXCOMM_SPI_FIFOINTENSET_RXLVL_ENABLED = 1,
-+} FLEXCOMM_SPI_FIFOINTENSET_RXLVL_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    FLEXCOMM_SPI_FIFOINTENCLR_TXERR_NO_EFFECT = 0,
-+    /* Clear the TX Error Interrupt Enable bit FIFOINTENSET[TXERR] */
-+    FLEXCOMM_SPI_FIFOINTENCLR_TXERR_CLEAR_THE_TXERR = 1,
-+} FLEXCOMM_SPI_FIFOINTENCLR_TXERR_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    FLEXCOMM_SPI_FIFOINTENCLR_RXERR_NO_EFFECT = 0,
-+    /* Clear the Receive Error Interrupt Enable bit FIFOINTENSET[RXERR] */
-+    FLEXCOMM_SPI_FIFOINTENCLR_RXERR_CLEAR_THE_RXERR = 1,
-+} FLEXCOMM_SPI_FIFOINTENCLR_RXERR_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    FLEXCOMM_SPI_FIFOINTENCLR_TXLVL_NO_EFFECT = 0,
-+    /* Clear the Transmit FIFO Level Interrupt Enable bit FIFOINTENSET[TXLVL] */
-+    FLEXCOMM_SPI_FIFOINTENCLR_TXLVL_CLEAR_THE_TXLVL = 1,
-+} FLEXCOMM_SPI_FIFOINTENCLR_TXLVL_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    FLEXCOMM_SPI_FIFOINTENCLR_RXLVL_NO_EFFECT = 0,
-+    /* Clear the Receive FIFO Level Interrupt Enable bit FIFOINTENSET[RXLVL] */
-+    FLEXCOMM_SPI_FIFOINTENCLR_RXLVL_CLEAR_THE_RXLVL = 1,
-+} FLEXCOMM_SPI_FIFOINTENCLR_RXLVL_Enum;
-+
-+typedef enum {
-+    /* Not pending */
-+    FLEXCOMM_SPI_FIFOINTSTAT_TXERR_TXERR_ISNOTPENDING = 0,
-+    /* Pending */
-+    FLEXCOMM_SPI_FIFOINTSTAT_TXERR_TXERR_ISPENDING = 1,
-+} FLEXCOMM_SPI_FIFOINTSTAT_TXERR_Enum;
-+
-+typedef enum {
-+    /* Not pending */
-+    FLEXCOMM_SPI_FIFOINTSTAT_RXERR_RXERR_ISNOTPENDING = 0,
-+    /* Pending */
-+    FLEXCOMM_SPI_FIFOINTSTAT_RXERR_RXERR_ISPENDING = 1,
-+} FLEXCOMM_SPI_FIFOINTSTAT_RXERR_Enum;
-+
-+typedef enum {
-+    /* Not pending */
-+    FLEXCOMM_SPI_FIFOINTSTAT_TXLVL_TXLVL_ISNOTPENDING = 0,
-+    /* Pending */
-+    FLEXCOMM_SPI_FIFOINTSTAT_TXLVL_TXLVL_ISPENDING = 1,
-+} FLEXCOMM_SPI_FIFOINTSTAT_TXLVL_Enum;
-+
-+typedef enum {
-+    /* Not pending */
-+    FLEXCOMM_SPI_FIFOINTSTAT_RXLVL_RXLVL_ISNOTPENDING = 0,
-+    /* Pending */
-+    FLEXCOMM_SPI_FIFOINTSTAT_RXLVL_RXLVL_ISPENDING = 1,
-+} FLEXCOMM_SPI_FIFOINTSTAT_RXLVL_Enum;
-+
-+typedef enum {
-+    /* Not pending */
-+    FLEXCOMM_SPI_FIFOINTSTAT_PERINT_PERINT_ISNOTPENDING = 0,
-+    /* Pending */
-+    FLEXCOMM_SPI_FIFOINTSTAT_PERINT_PERINT_ISPENDING = 1,
-+} FLEXCOMM_SPI_FIFOINTSTAT_PERINT_Enum;
-+
-+typedef enum {
-+    /* SSEL0 is asserted */
-+    FLEXCOMM_SPI_FIFOWR_TXSSEL0_N_ASSERTED = 0,
-+    /* SSEL0 is not asserted */
-+    FLEXCOMM_SPI_FIFOWR_TXSSEL0_N_NOT_ASSERTED = 1,
-+} FLEXCOMM_SPI_FIFOWR_TXSSEL0_N_Enum;
-+
-+typedef enum {
-+    /* SSEL1 is asserted */
-+    FLEXCOMM_SPI_FIFOWR_TXSSEL1_N_ASSERTED = 0,
-+    /* SSEL1 is not asserted */
-+    FLEXCOMM_SPI_FIFOWR_TXSSEL1_N_NOT_ASSERTED = 1,
-+} FLEXCOMM_SPI_FIFOWR_TXSSEL1_N_Enum;
-+
-+typedef enum {
-+    /* SSEL2 is asserted */
-+    FLEXCOMM_SPI_FIFOWR_TXSSEL2_N_ASSERTED = 0,
-+    /* SSEL2 is not asserted */
-+    FLEXCOMM_SPI_FIFOWR_TXSSEL2_N_NOT_ASSERTED = 1,
-+} FLEXCOMM_SPI_FIFOWR_TXSSEL2_N_Enum;
-+
-+typedef enum {
-+    /* SSEL3 is asserted */
-+    FLEXCOMM_SPI_FIFOWR_TXSSEL3_N_ASSERTED = 0,
-+    /* SSEL3 is not asserted */
-+    FLEXCOMM_SPI_FIFOWR_TXSSEL3_N_NOT_ASSERTED = 1,
-+} FLEXCOMM_SPI_FIFOWR_TXSSEL3_N_Enum;
-+
-+typedef enum {
-+    /*
-+     * SSEL is not deasserted. This piece of data is not treated as the end of
-+     * a transfer. SSEL will not be deasserted at the end of this data.
-+     */
-+    FLEXCOMM_SPI_FIFOWR_EOT_NOT_DEASSERTED = 0,
-+    /*
-+     * SSEL is deasserted. This piece of data is treated as the end of a
-+     * transfer. SSEL will be deasserted at the end of this piece of data.
-+     */
-+    FLEXCOMM_SPI_FIFOWR_EOT_DEASSERTED = 1,
-+} FLEXCOMM_SPI_FIFOWR_EOT_Enum;
-+
-+typedef enum {
-+    /*
-+     * Data not EOF. This piece of data transmitted is not treated as the end
-+     * of a frame.
-+     */
-+    FLEXCOMM_SPI_FIFOWR_EOF_NOT_EOF = 0,
-+    /*
-+     * Data EOF. This piece of data is treated as the end of a frame, causing
-+     * the Frame_delay time to be inserted before subsequent data is
-+     * transmitted.
-+     */
-+    FLEXCOMM_SPI_FIFOWR_EOF_EOF = 1,
-+} FLEXCOMM_SPI_FIFOWR_EOF_Enum;
-+
-+typedef enum {
-+    /*
-+     * Read received data. Received data must be read, to allow transmission to
-+     * proceed. SPI transmit will halt when the receive data FIFO is full. In
-+     * slave mode, an overrun error will occur if received data is not read
-+     * before new data is received.
-+     */
-+    FLEXCOMM_SPI_FIFOWR_RXIGNORE_READ = 0,
-+    /*
-+     * Ignore received data. Received data is ignored, allowing transmission
-+     * without reading unneeded received data. No receiver flags are generated.
-+     */
-+    FLEXCOMM_SPI_FIFOWR_RXIGNORE_IGNORE = 1,
-+} FLEXCOMM_SPI_FIFOWR_RXIGNORE_Enum;
-+
-+typedef enum {
-+    /* Write transmit data */
-+    FLEXCOMM_SPI_FIFOWR_TXIGNORE_WRITETXDATA = 0,
-+    /* Ignore transmit data */
-+    FLEXCOMM_SPI_FIFOWR_TXIGNORE_IGNORETXDATA = 1,
-+} FLEXCOMM_SPI_FIFOWR_TXIGNORE_Enum;
-+
-+typedef enum {
-+    /* Data transfer is 4 bits in length */
-+    FLEXCOMM_SPI_FIFOWR_LEN_LEN_4BITS = 3,
-+    /* Data transfer is 5 bits in length */
-+    FLEXCOMM_SPI_FIFOWR_LEN_LEN_5BITS = 4,
-+    /* Data transfer is 16 bits in length */
-+    FLEXCOMM_SPI_FIFOWR_LEN_LEN_16BITS = 15,
-+} FLEXCOMM_SPI_FIFOWR_LEN_Enum;
-+
-+typedef enum {
-+    /* Slave Select 0 is active */
-+    FLEXCOMM_SPI_FIFORD_RXSSEL0_N_RXSSEL0_ISACTIVE = 0,
-+    /* Slave Select 0 is not active */
-+    FLEXCOMM_SPI_FIFORD_RXSSEL0_N_RXSSEL0_ISNOTACTIVE = 1,
-+} FLEXCOMM_SPI_FIFORD_RXSSEL0_N_Enum;
-+
-+typedef enum {
-+    /* Slave Select 1 is active */
-+    FLEXCOMM_SPI_FIFORD_RXSSEL1_N_RXSSEL1_ISACTIVE = 0,
-+    /* Slave Select 1 is not active */
-+    FLEXCOMM_SPI_FIFORD_RXSSEL1_N_RXSSEL1_ISNOTACTIVE = 1,
-+} FLEXCOMM_SPI_FIFORD_RXSSEL1_N_Enum;
-+
-+typedef enum {
-+    /* Slave Select 2 is active */
-+    FLEXCOMM_SPI_FIFORD_RXSSEL2_N_RXSSEL2_ISACTIVE = 0,
-+    /* Slave Select 2 is not active */
-+    FLEXCOMM_SPI_FIFORD_RXSSEL2_N_RXSSEL2_ISNOTACTIVE = 1,
-+} FLEXCOMM_SPI_FIFORD_RXSSEL2_N_Enum;
-+
-+typedef enum {
-+    /* Slave Select 3 is active */
-+    FLEXCOMM_SPI_FIFORD_RXSSEL3_N_RXSSEL3_ISACTIVE = 0,
-+    /* Slave Select 3 is not active */
-+    FLEXCOMM_SPI_FIFORD_RXSSEL3_N_RXSSEL3_ISNOTACTIVE = 1,
-+} FLEXCOMM_SPI_FIFORD_RXSSEL3_N_Enum;
-+
-+typedef enum {
-+    /*
-+     * This is not the 1st data after the SSELs went from deasserted to
-+     * asserted
-+     */
-+    FLEXCOMM_SPI_FIFORD_SOT_SOT0 = 0,
-+    /*
-+     * This is the 1st data after the SSELs went from deasserted to asserted
-+     * (i.e., any previous transfer has ended). This information can be used to
-+     * identify the 1st piece of data in cases where the transfer length is
-+     * greater than 16 bits.
-+     */
-+    FLEXCOMM_SPI_FIFORD_SOT_SOT1 = 1,
-+} FLEXCOMM_SPI_FIFORD_SOT_Enum;
-+
-+typedef enum {
-+    /* Not selected */
-+    FLEXCOMM_SPI_FIFORDNOPOP_RXSSEL0_N_NOT_SELECTED = 0,
-+    /* Selected */
-+    FLEXCOMM_SPI_FIFORDNOPOP_RXSSEL0_N_RXSSEL0_N_SELECTED = 1,
-+} FLEXCOMM_SPI_FIFORDNOPOP_RXSSEL0_N_Enum;
-+
-+typedef enum {
-+    /* Not selected */
-+    FLEXCOMM_SPI_FIFORDNOPOP_RXSSEL1_N_NOT_SELECTED = 0,
-+    /* Selected */
-+    FLEXCOMM_SPI_FIFORDNOPOP_RXSSEL1_N_RXSSEL1_N_SELECTED = 1,
-+} FLEXCOMM_SPI_FIFORDNOPOP_RXSSEL1_N_Enum;
-+
-+typedef enum {
-+    /* Not selected */
-+    FLEXCOMM_SPI_FIFORDNOPOP_RXSSEL2_N_NOT_SELECTED = 0,
-+    /* Selected */
-+    FLEXCOMM_SPI_FIFORDNOPOP_RXSSEL2_N_RXSSEL2_N_SELECTED = 1,
-+} FLEXCOMM_SPI_FIFORDNOPOP_RXSSEL2_N_Enum;
-+
-+typedef enum {
-+    /* Not selected */
-+    FLEXCOMM_SPI_FIFORDNOPOP_RXSSEL3_N_NOT_SELECTED = 0,
-+    /* Selected */
-+    FLEXCOMM_SPI_FIFORDNOPOP_RXSSEL3_N_RXSSEL3_N_SELECTED = 1,
-+} FLEXCOMM_SPI_FIFORDNOPOP_RXSSEL3_N_Enum;
-+
-+typedef enum {
-+    /* Not active */
-+    FLEXCOMM_SPI_FIFORDNOPOP_SOT_SOT_NOT_ACTIVE = 0,
-+    /* Active */
-+    FLEXCOMM_SPI_FIFORDNOPOP_SOT_SOT_ACTIVE = 1,
-+} FLEXCOMM_SPI_FIFORDNOPOP_SOT_Enum;
-+
-+
-+#define FLEXCOMM_SPI_REGISTER_NAMES_ARRAY(_name) \
-+    const char *_name[FLEXCOMM_SPI_REGS_NO] = { \
-+        [R_FLEXCOMM_SPI_CFG] = "CFG", \
-+        [R_FLEXCOMM_SPI_DLY] = "DLY", \
-+        [R_FLEXCOMM_SPI_STAT] = "STAT", \
-+        [R_FLEXCOMM_SPI_INTENSET] = "INTENSET", \
-+        [R_FLEXCOMM_SPI_INTENCLR] = "INTENCLR", \
-+        [R_FLEXCOMM_SPI_DIV] = "DIV", \
-+        [R_FLEXCOMM_SPI_INTSTAT] = "INTSTAT", \
-+        [R_FLEXCOMM_SPI_FIFOCFG] = "FIFOCFG", \
-+        [R_FLEXCOMM_SPI_FIFOSTAT] = "FIFOSTAT", \
-+        [R_FLEXCOMM_SPI_FIFOTRIG] = "FIFOTRIG", \
-+        [R_FLEXCOMM_SPI_FIFOINTENSET] = "FIFOINTENSET", \
-+        [R_FLEXCOMM_SPI_FIFOINTENCLR] = "FIFOINTENCLR", \
-+        [R_FLEXCOMM_SPI_FIFOINTSTAT] = "FIFOINTSTAT", \
-+        [R_FLEXCOMM_SPI_FIFOWR] = "FIFOWR", \
-+        [R_FLEXCOMM_SPI_FIFORD] = "FIFORD", \
-+        [R_FLEXCOMM_SPI_FIFORDNOPOP] = "FIFORDNOPOP", \
-+        [R_FLEXCOMM_SPI_FIFOSIZE] = "FIFOSIZE", \
-+        [R_FLEXCOMM_SPI_ID] = "ID", \
-+    }
-+
-+#define FLEXCOMM_SPI_REGISTER_WMASK_ARRAY(_name) \
-+    const uint32_t _name[FLEXCOMM_SPI_REGS_NO] = { \
-+        [R_FLEXCOMM_SPI_CFG] = 0xFBD, \
-+        [R_FLEXCOMM_SPI_DLY] = 0xFFFF, \
-+        [R_FLEXCOMM_SPI_STAT] = 0xB0, \
-+        [R_FLEXCOMM_SPI_INTENSET] = 0x130, \
-+        [R_FLEXCOMM_SPI_INTENCLR] = 0x130, \
-+        [R_FLEXCOMM_SPI_DIV] = 0xFFFF, \
-+        [R_FLEXCOMM_SPI_FIFOCFG] = 0x7F003, \
-+        [R_FLEXCOMM_SPI_FIFOSTAT] = 0x3, \
-+        [R_FLEXCOMM_SPI_FIFOTRIG] = 0xF0F03, \
-+        [R_FLEXCOMM_SPI_FIFOINTENSET] = 0xF, \
-+        [R_FLEXCOMM_SPI_FIFOINTENCLR] = 0xF, \
-+        [R_FLEXCOMM_SPI_FIFOWR] = 0xFFFFFFF, \
-+    }
-+
-+static inline void flexcomm_spi_reset_registers(uint32_t *regs)
-+{
-+    regs[R_FLEXCOMM_SPI_CFG] = 0x0;
-+    regs[R_FLEXCOMM_SPI_DLY] = 0x0;
-+    regs[R_FLEXCOMM_SPI_STAT] = 0x100;
-+    regs[R_FLEXCOMM_SPI_INTENSET] = 0x0;
-+    regs[R_FLEXCOMM_SPI_INTENCLR] = 0x0;
-+    regs[R_FLEXCOMM_SPI_DIV] = 0x0;
-+    regs[R_FLEXCOMM_SPI_INTSTAT] = 0x0;
-+    regs[R_FLEXCOMM_SPI_FIFOCFG] = 0x0;
-+    regs[R_FLEXCOMM_SPI_FIFOSTAT] = 0x30;
-+    regs[R_FLEXCOMM_SPI_FIFOTRIG] = 0x0;
-+    regs[R_FLEXCOMM_SPI_FIFOINTENSET] = 0x0;
-+    regs[R_FLEXCOMM_SPI_FIFOINTENCLR] = 0x0;
-+    regs[R_FLEXCOMM_SPI_FIFOINTSTAT] = 0x0;
-+    regs[R_FLEXCOMM_SPI_FIFOWR] = 0x0;
-+    regs[R_FLEXCOMM_SPI_FIFORD] = 0x0;
-+    regs[R_FLEXCOMM_SPI_FIFORDNOPOP] = 0x0;
-+    regs[R_FLEXCOMM_SPI_FIFOSIZE] = 0x0;
-+    regs[R_FLEXCOMM_SPI_ID] = 0xe0201200;
-+}
-diff --git a/include/hw/misc/flexcomm.h b/include/hw/misc/flexcomm.h
-index 2fdca81ba9..0f44eabc57 100644
---- a/include/hw/misc/flexcomm.h
-+++ b/include/hw/misc/flexcomm.h
-@@ -15,9 +15,12 @@
- #include "hw/sysbus.h"
- #include "chardev/char-fe.h"
- #include "hw/i2c/i2c.h"
-+#include "hw/ssi/ssi.h"
- #include "hw/arm/svd/flexcomm.h"
- #include "hw/arm/svd/flexcomm_usart.h"
- #include "hw/arm/svd/flexcomm_i2c.h"
-+#undef EOF
-+#include "hw/arm/svd/flexcomm_spi.h"
- #include "qemu/fifo32.h"
- 
- #define TYPE_FLEXCOMM "flexcomm"
-@@ -51,6 +54,10 @@ typedef struct {
-     Fifo32 tx_fifo;
-     Fifo32 rx_fifo;
-     I2CBus *i2c;
-+    SSIBus *spi;
-+    qemu_irq cs[4];
-+    bool cs_asserted[4];
-+    uint32_t spi_tx_ctrl;
- } FlexcommState;
- 
- typedef struct {
-diff --git a/include/hw/ssi/flexcomm_spi.h b/include/hw/ssi/flexcomm_spi.h
-new file mode 100644
-index 0000000000..d5567aa1e6
---- /dev/null
-+++ b/include/hw/ssi/flexcomm_spi.h
-@@ -0,0 +1,20 @@
-+/*
-+ * QEMU model for NXP's FLEXCOMM SPI
-+ *
-+ * Copyright (c) 2024 Google LLC
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or later.
-+ * See the COPYING file in the top-level directory.
-+ */
-+
-+#ifndef HW_CHAR_FLEXCOMM_SPI_H
-+#define HW_CHAR_FLEXCOMM_SPI_H
-+
-+#include "hw/misc/flexcomm.h"
-+
-+void flexcomm_spi_init(FlexcommState *s);
-+void flexcomm_spi_register(void);
-+
-+#endif /* HW_CHAR_FLEXCOMM_SPI_H */
-diff --git a/hw/misc/flexcomm.c b/hw/misc/flexcomm.c
-index c7bd1633e9..d50873cee3 100644
---- a/hw/misc/flexcomm.c
-+++ b/hw/misc/flexcomm.c
-@@ -24,6 +24,7 @@
- #include "hw/misc/flexcomm.h"
- #include "hw/char/flexcomm_usart.h"
- #include "hw/i2c/flexcomm_i2c.h"
-+#include "hw/ssi/flexcomm_spi.h"
- 
- #define REG(s, reg) (s->regs[R_FLEXCOMM_##reg])
- #define RF_WR(s, reg, field, val) \
-@@ -236,6 +237,10 @@ static void flexcomm_realize(DeviceState *dev, Error **errp)
-     if (has_function(s, FLEXCOMM_FUNC_I2C)) {
-         flexcomm_i2c_init(s);
-     }
-+
-+    if (has_function(s, FLEXCOMM_FUNC_SPI)) {
-+        flexcomm_spi_init(s);
-+    }
- }
- 
- static void flexcomm_class_init(ObjectClass *klass, void *data)
-@@ -248,6 +253,7 @@ static void flexcomm_class_init(ObjectClass *klass, void *data)
- 
-     flexcomm_usart_register();
-     flexcomm_i2c_register();
-+    flexcomm_spi_register();
- }
- 
- static const TypeInfo flexcomm_types[] = {
-diff --git a/hw/ssi/flexcomm_spi.c b/hw/ssi/flexcomm_spi.c
-new file mode 100644
-index 0000000000..1bf0c34fd7
---- /dev/null
-+++ b/hw/ssi/flexcomm_spi.c
-@@ -0,0 +1,439 @@
-+/*
-+ * QEMU model for NXP's FLEXCOMM SPI
-+ *
-+ * Copyright (c) 2024 Google LLC
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or later.
-+ * See the COPYING file in the top-level directory.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "hw/irq.h"
-+#include "hw/qdev-properties.h"
-+#include "qemu/cutils.h"
-+#include "qemu/log.h"
-+#include "qemu/module.h"
-+#include "exec/address-spaces.h"
-+#include "qapi/error.h"
-+#include "trace.h"
-+#include "hw/regs.h"
-+#include "hw/ssi/flexcomm_spi.h"
-+
-+#define REG(s, reg) (s->regs[R_FLEXCOMM_SPI_##reg])
-+#define RF_WR(s, reg, field, val) \
-+    ARRAY_FIELD_DP32(s->regs, FLEXCOMM_SPI_##reg, field, val)
-+#define RF_RD(s, reg, field) \
-+    ARRAY_FIELD_EX32(s->regs, FLEXCOMM_SPI_##reg, field)
-+
-+#define FLEXCOMM_SSEL_ASSERTED             (0)
-+#define FLEXCOMM_SSEL_DEASSERTED           (1)
-+
-+#define FLEXCOMM_SPI_FIFOWR_LEN_MIN        (3)
-+#define FLEXCOMM_SPI_FIFOWR_LEN_MAX        (15)
-+
-+static FLEXCOMM_SPI_REGISTER_NAMES_ARRAY(reg_names);
-+
-+static void flexcomm_spi_reset(FlexcommState *s)
-+{
-+    flexcomm_spi_reset_registers(s->regs);
-+    RF_WR(s, FIFOSIZE, FIFOSIZE, 0x8);
-+}
-+
-+static void update_fifo_stat(FlexcommState *s)
-+{
-+    int rxlvl = fifo32_num_used(&s->rx_fifo);
-+    int txlvl = fifo32_num_used(&s->tx_fifo);
-+
-+    RF_WR(s, FIFOSTAT, RXLVL, fifo32_num_used(&s->rx_fifo));
-+    RF_WR(s, FIFOSTAT, TXLVL, fifo32_num_used(&s->tx_fifo));
-+    RF_WR(s, FIFOSTAT, RXFULL, fifo32_is_full(&s->rx_fifo) ? 1 : 0);
-+    RF_WR(s, FIFOSTAT, RXNOTEMPTY, !fifo32_is_empty(&s->rx_fifo) ? 1 : 0);
-+    RF_WR(s, FIFOSTAT, TXNOTFULL, !fifo32_is_full(&s->tx_fifo) ? 1 : 0);
-+    RF_WR(s, FIFOSTAT, TXEMPTY, fifo32_is_empty(&s->tx_fifo) ? 1 : 0);
-+
-+    if (RF_RD(s, FIFOTRIG, RXLVLENA) &&
-+        (rxlvl > RF_RD(s, FIFOTRIG, RXLVL))) {
-+        RF_WR(s, FIFOINTSTAT, RXLVL, 1);
-+    } else {
-+        RF_WR(s, FIFOINTSTAT, RXLVL, 0);
-+    }
-+
-+    if (RF_RD(s, FIFOTRIG, TXLVLENA) &&
-+        (txlvl <= RF_RD(s, FIFOTRIG, TXLVL))) {
-+        RF_WR(s, FIFOINTSTAT, TXLVL, 1);
-+    } else {
-+        RF_WR(s, FIFOINTSTAT, TXLVL, 0);
-+    }
-+
-+    trace_flexcomm_spi_fifostat(DEVICE(s)->id, REG(s, FIFOSTAT),
-+                               REG(s, FIFOINTSTAT));
-+}
-+
-+static void flexcomm_spi_irq_update(FlexcommState *s)
-+{
-+    bool irq, per_irqs, fifo_irqs, enabled = RF_RD(s, CFG, ENABLE);
-+
-+    update_fifo_stat(s);
-+    fifo_irqs = REG(s, FIFOINTSTAT) & REG(s, FIFOINTENSET);
-+
-+    REG(s, INTSTAT) = REG(s, STAT) & REG(s, INTENSET);
-+    per_irqs = REG(s, INTSTAT) != 0;
-+
-+    irq = enabled && (fifo_irqs || per_irqs);
-+
-+    trace_flexcomm_spi_irq(DEVICE(s)->id, irq, fifo_irqs, per_irqs, enabled);
-+    flexcomm_irq(s, irq);
-+}
-+
-+static void flexcomm_spi_select(void *opaque, FlexcommState *s, int f,
-+                               bool set)
-+{
-+    if (set) {
-+        bool spol[] = {
-+            RF_RD(s, CFG, SPOL0), RF_RD(s, CFG, SPOL1), RF_RD(s, CFG, SPOL2),
-+            RF_RD(s, CFG, SPOL3),
-+        };
-+
-+        flexcomm_spi_reset(s);
-+        fifo32_create(&s->rx_fifo, RF_RD(s, FIFOSIZE, FIFOSIZE));
-+        fifo32_create(&s->tx_fifo, RF_RD(s, FIFOSIZE, FIFOSIZE));
-+        for (int i = 0; i < ARRAY_SIZE(s->cs); i++) {
-+            s->cs_asserted[i] = false;
-+            qemu_set_irq(s->cs[i], !spol[i]);
-+        }
-+    } else {
-+        fifo32_destroy(&s->rx_fifo);
-+        fifo32_destroy(&s->tx_fifo);
-+    }
-+}
-+
-+static MemTxResult flexcomm_spi_reg_read(void *opaque, FlexcommState *s,
-+                                        int f, hwaddr addr, uint64_t *data,
-+                                        unsigned size)
-+{
-+    MemTxResult ret = MEMTX_OK;
-+
-+    /*
-+     * Allow 8/16 bits access to the FIFORD LSB half-word. This is supported by
-+     * hardware and required for 1/2 byte(s) width DMA transfers.
-+     */
-+    if (!reg32_aligned_access(addr, size) && addr != A_FLEXCOMM_SPI_FIFORD) {
-+        ret = MEMTX_ERROR;
-+        goto out;
-+    }
-+
-+    switch (addr) {
-+    case A_FLEXCOMM_SPI_FIFORD:
-+    {
-+        /* If we are running in loopback mode get the data from TX FIFO */
-+        if (RF_RD(s, CFG, LOOP) &&
-+            RF_RD(s, CFG, MASTER))
-+        {
-+            if (!fifo32_is_empty(&s->tx_fifo)) {
-+                *data = fifo32_pop(&s->tx_fifo);
-+            }
-+            break;
-+        }
-+
-+        if (!fifo32_is_empty(&s->rx_fifo)) {
-+            *data = fifo32_pop(&s->rx_fifo);
-+            qemu_chr_fe_accept_input(&s->chr);
-+        }
-+        break;
-+    }
-+    case A_FLEXCOMM_SPI_FIFORDNOPOP:
-+    {
-+        if (!fifo32_is_empty(&s->rx_fifo)) {
-+            *data = fifo32_peek(&s->rx_fifo);
-+        }
-+        break;
-+    }
-+    default:
-+        *data = s->regs[addr / 4];
-+        break;
-+    }
-+
-+    flexcomm_spi_irq_update(s);
-+
-+out:
-+    trace_flexcomm_spi_reg_read(DEVICE(s)->id, reg_names[addr / 4], addr,
-+                                *data);
-+    return ret;
-+}
-+
-+static uint32_t fifowr_len_bits(uint32_t val)
-+{
-+    int len = FIELD_EX32(val, FLEXCOMM_SPI_FIFOWR, LEN);
-+
-+    if (len < FLEXCOMM_SPI_FIFOWR_LEN_MIN ||
-+        len > FLEXCOMM_SPI_FIFOWR_LEN_MAX) {
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: invalid spi xfer len %d\n",
-+                      __func__, val);
-+        return 0;
-+    }
-+
-+    return len + 1;
-+}
-+
-+static inline uint32_t fifowr_len_bytes(uint32_t val)
-+{
-+    return fifowr_len_bits(val) > 8 ? 2 : 1;
-+}
-+
-+static uint32_t flexcomm_spi_xfer_word(FlexcommState *s,
-+                                      uint32_t out_data,
-+                                      int bytes,
-+                                      bool be)
-+{
-+    uint32_t word = 0;
-+    int out = 0;
-+
-+    for (int i = 0; i < bytes; i++) {
-+        if (be) {
-+            int byte_offset = bytes - i - 1;
-+            out = (out_data & (0xFF << byte_offset * 8)) >> byte_offset * 8;
-+            word |= ssi_transfer(s->spi, out) << byte_offset * 8;
-+        } else {
-+            out = (out_data & (0xFF << i * 8)) >> i * 8;
-+            word |= ssi_transfer(s->spi, out) << i * 8;
-+        }
-+    }
-+
-+    return word;
-+}
-+
-+static uint32_t flexcomm_spi_get_ss_mask(FlexcommState *s,
-+                                        uint32_t txfifo_val)
-+{
-+    uint32_t slave_select_mask = 0;
-+    bool ss[] = {
-+        FIELD_EX32(txfifo_val, FLEXCOMM_SPI_FIFOWR, TXSSEL0_N),
-+        FIELD_EX32(txfifo_val, FLEXCOMM_SPI_FIFOWR, TXSSEL1_N),
-+        FIELD_EX32(txfifo_val, FLEXCOMM_SPI_FIFOWR, TXSSEL2_N),
-+        FIELD_EX32(txfifo_val, FLEXCOMM_SPI_FIFOWR, TXSSEL3_N),
-+    };
-+    bool spol[] = {
-+        RF_RD(s, CFG, SPOL0), RF_RD(s, CFG, SPOL1), RF_RD(s, CFG, SPOL2),
-+        RF_RD(s, CFG, SPOL3),
-+    };
-+
-+    for (int i = 0; i < ARRAY_SIZE(s->cs); i++) {
-+        int irq_level = ss[i] ? spol[i] : !spol[i];
-+
-+        slave_select_mask |= (ss[i] << i);
-+        s->cs_asserted[i] = ss[i];
-+        qemu_set_irq(s->cs[i], irq_level);
-+    }
-+
-+    return slave_select_mask;
-+}
-+
-+static MemTxResult flexcomm_spi_reg_write(void *opaque, FlexcommState *s,
-+                                         int f, hwaddr addr, uint64_t value,
-+                                         unsigned size)
-+{
-+    MemTxResult ret = MEMTX_OK;
-+    static FLEXCOMM_SPI_REGISTER_WMASK_ARRAY(wmask);
-+
-+    trace_flexcomm_spi_reg_write(DEVICE(s)->id, reg_names[addr / 4], addr,
-+                                 value);
-+
-+    value &= wmask[addr / 4];
-+
-+    /*
-+     * Allow 8/16 bits access to both the FIFOWR MSB and LSB half-words. The
-+     * former is required for updating the control bits while the latter for DMA
-+     * transfers of 1/2 byte(s) width.
-+     */
-+    if (!reg32_aligned_access(addr, size) &&
-+        (addr / 4 * 4 != A_FLEXCOMM_SPI_FIFOWR)) {
-+        return MEMTX_ERROR;
-+    }
-+
-+    switch (addr) {
-+    case A_FLEXCOMM_SPI_CFG:
-+    {
-+        s->regs[addr / 4] = value;
-+
-+        if (RF_RD(s, CFG, ENABLE)) {
-+            qemu_chr_fe_accept_input(&s->chr);
-+        }
-+
-+        break;
-+    }
-+    case A_FLEXCOMM_SPI_INTENCLR:
-+    {
-+        s->regs[addr / 4] = value;
-+        REG(s, INTENSET) &= ~REG(s, INTENCLR);
-+        break;
-+    }
-+    case A_FLEXCOMM_SPI_FIFOCFG:
-+    {
-+        s->regs[addr / 4] = value;
-+        if (RF_RD(s, FIFOCFG, EMPTYRX)) {
-+            RF_WR(s, FIFOCFG, EMPTYRX, 0);
-+            fifo32_reset(&s->rx_fifo);
-+        }
-+        if (RF_RD(s, FIFOCFG, EMPTYTX)) {
-+            RF_WR(s, FIFOCFG, EMPTYTX, 0);
-+            fifo32_reset(&s->tx_fifo);
-+        }
-+        if (RF_RD(s, FIFOCFG, ENABLERX)) {
-+            qemu_chr_fe_accept_input(&s->chr);
-+        }
-+        break;
-+    }
-+    case A_FLEXCOMM_SPI_FIFOSTAT:
-+    {
-+        bool rxerr = RF_RD(s, FIFOSTAT, RXERR);
-+        bool txerr = RF_RD(s, FIFOSTAT, TXERR);
-+
-+        s->regs[addr / 4] = value;
-+
-+        if (rxerr && RF_RD(s, FIFOSTAT, RXERR)) {
-+            rxerr = false;
-+        }
-+        if (txerr && RF_RD(s, FIFOSTAT, TXERR)) {
-+            txerr = false;
-+        }
-+
-+        RF_WR(s, FIFOSTAT, RXERR, rxerr);
-+        RF_WR(s, FIFOSTAT, TXERR, txerr);
-+        break;
-+    }
-+    case A_FLEXCOMM_SPI_FIFOINTENSET:
-+    {
-+        REG(s, FIFOINTENSET) |= value;
-+        break;
-+    }
-+    case A_FLEXCOMM_SPI_FIFOINTENCLR:
-+    {
-+        s->regs[addr / 4] = value;
-+        REG(s, FIFOINTENSET) &= ~REG(s, FIFOINTENCLR);
-+        break;
-+    }
-+    /* update control bits but don't push into the FIFO */
-+    case A_FLEXCOMM_SPI_FIFOWR + 2:
-+    {
-+        if (size > 2) {
-+            ret = MEMTX_ERROR;
-+            break;
-+        }
-+        if (value != 0) {
-+            s->spi_tx_ctrl = value << 16;
-+        }
-+        break;
-+    }
-+    /* update control bits but don't push into the FIFO */
-+    case A_FLEXCOMM_SPI_FIFOWR + 3:
-+    {
-+        if (size > 1) {
-+            ret = MEMTX_ERROR;
-+            break;
-+        }
-+        if (value != 0) {
-+            s->spi_tx_ctrl = value << 24;
-+        }
-+        break;
-+    }
-+    case A_FLEXCOMM_SPI_FIFOWR:
-+    {
-+        /* fifo value contains both data and control bits */
-+        uint32_t txfifo_val;
-+        uint16_t tx_data = FIELD_EX32(value, FLEXCOMM_SPI_FIFOWR, TXDATA);
-+        uint32_t tx_ctrl = value & 0xffff0000;
-+
-+        if (size > 2 && tx_ctrl != 0) {
-+            /* non-zero writes to control bits updates them */
-+            s->spi_tx_ctrl = tx_ctrl;
-+        }
-+
-+        /* push the data and control bits into the FIFO */
-+        txfifo_val = tx_data | s->spi_tx_ctrl;
-+
-+        if (!fifo32_is_full(&s->tx_fifo)) {
-+            fifo32_push(&s->tx_fifo, txfifo_val);
-+        }
-+
-+        if (!RF_RD(s, CFG, ENABLE) || !RF_RD(s, FIFOCFG, ENABLETX)) {
-+            break;
-+        }
-+
-+        /*
-+         * On loopback mode we just insert the values in the TX FIFO. On slave
-+         * mode master needs to initiate the SPI transfer.
-+         */
-+        if (RF_RD(s, CFG, LOOP) || !RF_RD(s, CFG, MASTER)) {
-+            break;
-+        }
-+
-+        while (!fifo32_is_empty(&s->tx_fifo)) {
-+            txfifo_val = fifo32_pop(&s->tx_fifo);
-+
-+            uint32_t ss_mask = flexcomm_spi_get_ss_mask(s, txfifo_val);
-+            uint32_t data = FIELD_EX32(txfifo_val, FLEXCOMM_SPI_FIFOWR, TXDATA);
-+            uint8_t bytes = fifowr_len_bytes(txfifo_val);
-+            bool msb = !RF_RD(s, CFG, LSBF);
-+            uint32_t val32;
-+
-+            val32 = flexcomm_spi_xfer_word(s, data, bytes, msb);
-+
-+            if (!fifo32_is_full(&s->rx_fifo)) {
-+                /* Append the mask that informs which client is active */
-+                val32 |= (ss_mask << R_FLEXCOMM_SPI_FIFORD_RXSSEL0_N_SHIFT);
-+                fifo32_push(&s->rx_fifo, val32);
-+            }
-+
-+            /* If this is the end of the transfer raise the CS line */
-+            if (FIELD_EX32(txfifo_val, FLEXCOMM_SPI_FIFOWR, EOT)) {
-+                bool spol[ARRAY_SIZE(s->cs)] = {
-+                    RF_RD(s, CFG, SPOL0),
-+                    RF_RD(s, CFG, SPOL1),
-+                    RF_RD(s, CFG, SPOL2),
-+                    RF_RD(s, CFG, SPOL3),
-+                };
-+
-+                for (int i = 0; i < ARRAY_SIZE(s->cs); i++) {
-+                    if (s->cs_asserted[i]) {
-+                        s->cs_asserted[i] = false;
-+                        qemu_set_irq(s->cs[i], !spol[i]);
-+                    }
-+                }
-+            }
-+        }
-+        break;
-+    }
-+    default:
-+        s->regs[addr / 4] = value;
-+        break;
-+    }
-+
-+    flexcomm_spi_irq_update(s);
-+
-+    return ret;
-+}
-+
-+static const FlexcommFunctionOps flexcomm_spi_ops = {
-+    .select = flexcomm_spi_select,
-+    .reg_read = flexcomm_spi_reg_read,
-+    .reg_write = flexcomm_spi_reg_write,
-+};
-+
-+void flexcomm_spi_init(FlexcommState *s)
-+{
-+    s->spi = ssi_create_bus(DEVICE(s), "spi");
-+    qdev_init_gpio_out_named(DEVICE(s), &s->cs[0], "cs", ARRAY_SIZE(s->cs));
-+}
-+
-+/* Register the SPI operations with the flexcomm upper layer */
-+void flexcomm_spi_register(void)
-+{
-+    Error *err = NULL;
-+
-+    if (!flexcomm_register_ops(FLEXCOMM_FUNC_SPI, NULL,
-+                               &flexcomm_spi_ops, &err)) {
-+        error_report_err(err);
-+    }
-+}
-diff --git a/hw/arm/svd/meson.build b/hw/arm/svd/meson.build
-index 417491cd5c..7f1c847caf 100644
---- a/hw/arm/svd/meson.build
-+++ b/hw/arm/svd/meson.build
-@@ -10,4 +10,7 @@ if get_option('mcux-soc-svd')
-   run_target('svd-flexcomm-i2c', command: svd_gen_header +
-     [ '-i', rt595, '-o', '@SOURCE_ROOT@/include/hw/arm/svd/flexcomm_i2c.h',
-       '-p', 'I2C0', '-t', 'FLEXCOMM_I2C'])
-+  run_target('svd-flexcomm-spi', command: svd_gen_header +
-+    [ '-i', rt595, '-o', '@SOURCE_ROOT@/include/hw/arm/svd/flexcomm_spi.h',
-+      '-p', 'SPI0', '-t', 'FLEXCOMM_SPI'])
- endif
-diff --git a/hw/ssi/meson.build b/hw/ssi/meson.build
-index b999aeb027..57d3e14727 100644
---- a/hw/ssi/meson.build
-+++ b/hw/ssi/meson.build
-@@ -12,3 +12,4 @@ system_ss.add(when: 'CONFIG_IMX', if_true: files('imx_spi.c'))
- system_ss.add(when: 'CONFIG_OMAP', if_true: files('omap_spi.c'))
- system_ss.add(when: 'CONFIG_IBEX', if_true: files('ibex_spi_host.c'))
- system_ss.add(when: 'CONFIG_BCM2835_SPI', if_true: files('bcm2835_spi.c'))
-+system_ss.add(when: 'CONFIG_FLEXCOMM', if_true: files('flexcomm_spi.c'))
-diff --git a/hw/ssi/trace-events b/hw/ssi/trace-events
-index 2d5bd2b83d..5caa1c17ac 100644
---- a/hw/ssi/trace-events
-+++ b/hw/ssi/trace-events
-@@ -32,3 +32,11 @@ ibex_spi_host_reset(const char *msg) "%s"
- ibex_spi_host_transfer(uint32_t tx_data, uint32_t rx_data) "tx_data: 0x%" PRIx32 " rx_data: @0x%" PRIx32
- ibex_spi_host_write(uint64_t addr, uint32_t size, uint64_t data) "@0x%" PRIx64 " size %u: 0x%" PRIx64
- ibex_spi_host_read(uint64_t addr, uint32_t size) "@0x%" PRIx64 " size %u:"
-+
-+# flexcomm_spi.c
-+flexcomm_spi_reg_read(const char *id, const char *reg_name, uint32_t addr, uint32_t val) " %s: %s[0x%04x] -> 0x%08x"
-+flexcomm_spi_reg_write(const char *id, const char *reg_name, uint32_t addr, uint32_t val) "%s: %s[0x%04x] <- 0x%08x"
-+flexcomm_spi_fifostat(const char *id, uint32_t fifostat, uint32_t fifoinstat) "%s: %08x %08x"
-+flexcomm_spi_irq(const char *id, bool irq, bool fifoirqs, bool perirqs, bool enabled) "%s: %d %d %d %d"
-+flexcomm_spi_chr_rx_space(const char *id, uint32_t rx) "%s: %d"
-+flexcomm_spi_chr_rx(const char *id) "%s"
-diff --git a/tests/unit/meson.build b/tests/unit/meson.build
-index 3491e2003b..033e98483f 100644
---- a/tests/unit/meson.build
-+++ b/tests/unit/meson.build
-@@ -150,6 +150,8 @@ if have_system
-       meson.project_source_root() / 'hw/char/flexcomm_usart.c',
-       meson.project_source_root() / 'hw/i2c/flexcomm_i2c.c',
-       meson.project_source_root() / 'hw/i2c/core.c',
-+      meson.project_source_root() / 'hw/ssi/flexcomm_spi.c',
-+      meson.project_source_root() / 'hw/ssi/ssi.c',
-      ],
-     'test-flexcomm-usart': [
-       hwcore, chardev, qom, migration,
-@@ -159,6 +161,8 @@ if have_system
-       meson.project_source_root() / 'hw/char/flexcomm_usart.c',
-       meson.project_source_root() / 'hw/i2c/flexcomm_i2c.c',
-       meson.project_source_root() / 'hw/i2c/core.c',
-+      meson.project_source_root() / 'hw/ssi/flexcomm_spi.c',
-+      meson.project_source_root() / 'hw/ssi/ssi.c',
-     ],
-     'test-flexcomm-i2c': [
-       hwcore, chardev, qom, migration,
-@@ -169,6 +173,8 @@ if have_system
-       meson.project_source_root() / 'hw/i2c/flexcomm_i2c.c',
-       meson.project_source_root() / 'hw/i2c/core.c',
-       'i2c_tester.c',
-+      meson.project_source_root() / 'hw/ssi/flexcomm_spi.c',
-+      meson.project_source_root() / 'hw/ssi/ssi.c',
-     ],
-   }
-   if config_host_data.get('CONFIG_INOTIFY1')
--- 
-2.46.0.184.g6999bdac58-goog
-
+Thanks,
+Sunil

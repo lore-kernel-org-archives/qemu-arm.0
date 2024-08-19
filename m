@@ -1,200 +1,337 @@
-Received: by 2002:a17:504:9188:b0:1be9:327d:8ee3 with SMTP id i8csp1284926njf;
-        Fri, 16 Aug 2024 09:53:37 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUCC6LzBEAJzJUZfDVpqSzqIZhgMjdN05KykWvqxLbspphav0iMcKKui56Ky2f5Zi7bs6fLg/WaykQzX8OT0eDmkwH73qfk
-X-Google-Smtp-Source: AGHT+IGVqK/WRtXzVSZ6Zl2AZY5NWf0WcTrZlF37LW7nKuzsU+4qSW77asTM0Z0dFySGD0AY9v9j
-X-Received: by 2002:a05:6870:418c:b0:260:26a2:68e8 with SMTP id 586e51a60fabf-2701db20e7dmr1223988fac.4.1723827217762;
-        Fri, 16 Aug 2024 09:53:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1723827217; cv=none;
-        d=google.com; s=arc-20160816;
-        b=Sf4VAWFd+Y2H7lO/+0G1/WxYRdwnZ/N9roLIbBLsm3fE5naL8labiB9a8Ka7xnKxjD
-         CCC523GnlMPQ6IPP/e4mizIyONJAh8S+NIKZdejR5c6G12NEaNZNP1qPpaorM5uZmm0V
-         Hp9RlyxD4642cIvDtH2TE7KvXkbMUFk5I03y2lRhfeH2PZ46srfv0zECn2PKKjV0vUAN
-         f025YlDLCLYy2KYmShLSHerDq3RedvehNWte7RALg8B2CqxeFaxv7BpW698E+OP+/rPF
-         QUtUDsFLed9ZZIejY0c8ApKlOS01D1j9Rk4q0LnrY7dv150k4Hywvq6JDpjiWVo/GqKg
-         MUbg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date:dkim-signature;
-        bh=zdp7YPAtbLhZgDK0Dc4uwOUPnUM2kURmGY6TwMzkQOk=;
-        fh=X2hxAmW+prxDFqlKxtwqx/eBa1AAwc3Aj4NLmPGNjx4=;
-        b=YqAxy/3jrwKjkllrDs6OIWvcxIOtQ+mOleOld4HXKr/c0/pgejZTlyCahy+Ku+mHIB
-         q86nCta2x+PWqUwTbL7sb89P8GOYq5H3hPpLdKbUOExJU3VY5EIIRk4AVeWSesoexK/O
-         y8YgOigq6yXZPAOilnze/kz03nt5pz2zURkmWl0fXlEothEXVKCBPSiyp/2rxhzWgD6i
-         YEphxCX2KT4MLEqmB65UYieeZ2pP6wG4J2iViqLvau5BmoyK/B/wQ9qopaTyUwArIUSe
-         iNjEEmkRFd4gqPutpMEyriXY2YqM6yMv8Rt6IzldX7ctknFmfJ/cwxKsJe/B90oJAO2N
-         oJ8A==;
+Received: by 2002:a17:504:9188:b0:1be9:327d:8ee3 with SMTP id i8csp2089944njf;
+        Mon, 19 Aug 2024 07:21:50 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCXG3WxTUd7p4aaDVDP2pA29YxogHUZCsvNa5XE580y6CG+RoN9FeOeenZzYPDKhjcFDzUe8ZZ6DimnR7w==@linaro.org
+X-Google-Smtp-Source: AGHT+IGFMKbn7GB+niZD46JC7CnCMpWhHRubQlbW7DuBiw5dp7vjTC7oJ0+0rKc6fRyZqfLCb+Tj
+X-Received: by 2002:a17:90a:8a14:b0:2c9:6d07:18f4 with SMTP id 98e67ed59e1d1-2d3e086bf86mr11284787a91.35.1724077309952;
+        Mon, 19 Aug 2024 07:21:49 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1724077309; cv=pass;
+        d=google.com; s=arc-20240605;
+        b=OwzkEaW2BZYfj6s6ANcNtuJ8C4+Emm55bDidHYSx5/D7lzw7d2S+QN/GWPvsF5uxHn
+         t1B3wAk1nEMeXwHrp4gKcDEO0knc+6gDuOuUofYw4sLDG+Cgz+BBduJ1NKxvc0cjeXIV
+         O2y8FjdxMmBj2lIaJQux075MIMaoy379Ll2hyWLkG4cJ+GRYz4XSMza/KlMUo6qHheMo
+         hH4P4gJsE6z5EfdK4e+BeF6mZvxHGnlpjE8xIfh4SuVmBZ7YZyE7g9+t1nO11s9+uazs
+         4huITwhRlNUHpouMNTXQswNYcJcTBqHtSkZl7H+Wf8UAGCiWYGJ2NskhDpCMNVtSUVoV
+         w9NQ==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=sbJ58YvVZ4dzlnRt+qzf9Ta7hAcbIsn3dkKna10OJxE=;
+        fh=kFusL2iezxf9fu1tqgPCGRo8IfRynm3bnMdxK5YKZXM=;
+        b=XY+Y0BynaqhM1qMXff4j3eyvevIO5ZTGOyR57ZOHTsUriK+6EP4xnJ7XM7n7t40bLs
+         a4nG+RSqJqxz8JvaBnSfGGq9mozj/+G99HUrpidX9MUEIgQjncO5PfRMaDddigb/8EEe
+         sG1iSlcpSoSGyRhX4EEqRRNzg8q/HvcBMr1Jr5Bm3lgjzwdrb2+SR/ZkcfNNpZ5fjbOD
+         lwcqObN0MorI4GvxxPMKA4Ke86vLw0xNg9n9ntzdvHx0zPxGcoGxir7DzM/ev1ZmtIoA
+         Lr8T7lnv7eIvpRHUgjxkTCLBoKt+TBIIV9a8RUpE5+XKMp1EwxqiO/NGqrusmfQnRUA2
+         wcfw==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b="k/LHvJhp";
-       spf=pass (google.com: domain of sstabellini@kernel.org designates 139.178.84.217 as permitted sender) smtp.mailfrom=sstabellini@kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
-Return-Path: <sstabellini@kernel.org>
-Received: from dfw.source.kernel.org (dfw.source.kernel.org. [139.178.84.217])
-        by mx.google.com with ESMTPS id 586e51a60fabf-2702d8f30aesi344530fac.28.2024.08.16.09.53.37
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Kym3MM06;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of kvm+bounces-24530-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="kvm+bounces-24530-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kvm+bounces-24530-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [139.178.88.99])
+        by mx.google.com with ESMTPS id 98e67ed59e1d1-2d3e3d9a58fsi7610865a91.126.2024.08.19.07.21.49
+        for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 16 Aug 2024 09:53:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sstabellini@kernel.org designates 139.178.84.217 as permitted sender) client-ip=139.178.84.217;
+        Mon, 19 Aug 2024 07:21:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm+bounces-24530-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) client-ip=139.178.88.99;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b="k/LHvJhp";
-       spf=pass (google.com: domain of sstabellini@kernel.org designates 139.178.84.217 as permitted sender) smtp.mailfrom=sstabellini@kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 6258462117;
-	Fri, 16 Aug 2024 16:53:37 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6DDCFC32782;
-	Fri, 16 Aug 2024 16:53:35 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1723827217;
-	bh=05FqKFiDp1obCU8IVAX68BZqgenFk4qV0Beo1Yu69iI=;
-	h=Date:From:To:cc:Subject:In-Reply-To:References:From;
-	b=k/LHvJhpaspNwG/e3/BBfVQljbSO8JQivzWeF4Uxz45RMPAEC9E3KvFr+YNcCfmZ5
-	 WryYmXyz3cN3Lp4NW/tJjAK2W45HAYHTN5ayPNkXp56F9Lgs/1CJFoxOlgupGgU8q2
-	 7tL+jGtoY8p/CHy36L5B7d3FgExilUr587zCy8j2sXeAtD+3rvRXve4M+M81TiZCbp
-	 lr7ZNXO6JzvYELT2B4q5HHnKocwAxiER/oo8IT/VwD+Phl5/XdnUAXI0AeuDgMxO/2
-	 1gzKn2T8HN/HMU4MB/rRNbcba14q1TCcxZJ801HM6NLlYy+3N7KRMCOnS/2pMdXJrs
-	 9citVOSJqzZuA==
-Date: Fri, 16 Aug 2024 09:53:34 -0700 (PDT)
-From: Stefano Stabellini <sstabellini@kernel.org>
-X-X-Sender: sstabellini@ubuntu-linux-20-04-desktop
-To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-cc: Stefano Stabellini <sstabellini@kernel.org>, qemu-devel@nongnu.org, 
-    anthony@xenproject.org, paul@xen.org, peter.maydell@linaro.org, 
-    alex.bennee@linaro.org, xenia.ragiadakou@amd.com, jason.andryuk@amd.com, 
-    edgar.iglesias@amd.com, xen-devel@lists.xenproject.org, 
-    qemu-arm@nongnu.org, andrew.cooper3@citrix.com
-Subject: Re: [PATCH v1 04/10] hw/arm: xenpvh: Add support for SMP guests
-In-Reply-To: <CAJy5ezrUbGZCaF=HiYhyLCoXRL3d=t-QbmLeKvu7ByWksV888g@mail.gmail.com>
-Message-ID: <alpine.DEB.2.22.394.2408160949320.298534@ubuntu-linux-20-04-desktop>
-References: <20240812130606.90410-1-edgar.iglesias@gmail.com> <20240812130606.90410-5-edgar.iglesias@gmail.com> <alpine.DEB.2.22.394.2408121650590.298534@ubuntu-linux-20-04-desktop> <ZruRm34zIMtUm7oH@zapote> <alpine.DEB.2.22.394.2408131550080.298534@ubuntu-linux-20-04-desktop>
- <ZryZwOoadeb1UWK8@zapote> <alpine.DEB.2.22.394.2408141719400.298534@ubuntu-linux-20-04-desktop> <CAJy5ezrUbGZCaF=HiYhyLCoXRL3d=t-QbmLeKvu7ByWksV888g@mail.gmail.com>
-User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Kym3MM06;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of kvm+bounces-24530-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="kvm+bounces-24530-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by sv.mirrors.kernel.org (Postfix) with ESMTPS id 7882A281AFC
+	for <alex.bennee@linaro.org>; Mon, 19 Aug 2024 14:21:49 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id EB22B16D30C;
+	Mon, 19 Aug 2024 14:21:47 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="Kym3MM06"
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0113816C863
+	for <kvm@vger.kernel.org>; Mon, 19 Aug 2024 14:21:45 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.133.124
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1724077307; cv=none; b=mIOKhDASqquGgSPZ7nTh0+vqqajGnPX3Ud3ZSRlOGy7jl4smR4KPGrf6nnFupBG+tkiYiK7d1qBnhYxtA8YR8jcQYzJd4kesrsKYZGYlYs5+X+8jowcnDynwlW4YVrcuYFRV2+XS+xNgCwILF+eFBk23lONsGDQ1o+tn3PLF/9Y=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1724077307; c=relaxed/simple;
+	bh=X6Oum9qUOFOyLXCFWWn44VFU84P/iKZ7Gr4ZKEWYMxg=;
+	h=Date:From:To:Cc:Subject:Message-ID:In-Reply-To:References:
+	 MIME-Version:Content-Type; b=SSmmSYvhBaMzoIJ5MiocYVluLN2f8h69vgknzHwANMoQAlBWm1ybKn8oWMYP1JbwgFM9yqIxIigzasW3AWjb1sgD+R5CKFgFgKjQMkz56QUrldioSWwVCnjni3Ro1zW4Sr6s0MAnbNGx+ucFw5dYkq4RLBDBL5LNCnFkqAO+TUQ=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=Kym3MM06; arc=none smtp.client-ip=170.10.133.124
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1724077304;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=sbJ58YvVZ4dzlnRt+qzf9Ta7hAcbIsn3dkKna10OJxE=;
+	b=Kym3MM06B5sOIoFC/VkC3w6snDftroA2gSLzIA1OgYNVWtDUGu04TSZn44i0waiVUETy8D
+	6dhAWzctT6PIYvt1ef/32mgS/XYhbFAyISyD1HrHTwrrtOGw7la/ppjCXShucZAf7UsFgG
+	rmxwMsMu/490AXp+jpHc2fw2EFq71do=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-34-uXa8Rg-lORmH-bA8PvzESg-1; Mon, 19 Aug 2024 10:21:41 -0400
+X-MC-Unique: uXa8Rg-lORmH-bA8PvzESg-1
+Received: by mail-wr1-f71.google.com with SMTP id ffacd0b85a97d-3718bf7d54aso2611841f8f.1
+        for <kvm@vger.kernel.org>; Mon, 19 Aug 2024 07:21:41 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1724077300; x=1724682100;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=sbJ58YvVZ4dzlnRt+qzf9Ta7hAcbIsn3dkKna10OJxE=;
+        b=amUCPF2N3kz4Dy1hgdadNbZKL33RQ9YZPCxYmOs/MkEjB66oksyn0ombecxx/4zEt2
+         VPU/nI7iE9nxLCHyWIE8eKGlDyHI5LVYJEZyvpJfWeOLMjEqVyB+ZuezrwXtpiSEK5FH
+         8tHzbj6K61pbww5uA194No6F25FLwEWi2Qy8QlobPEzJzEKQjtu4/M1sXbhZcgKBXd9c
+         d0ySVdDBv0b58KtyYq4cJZBEowfLN6BFt5fXCpCCX6gzUkW5icAoKh0CQJ95FEEwPBvI
+         3tf2BwBYMzrKhFvYGf4sH1ZHt6OWyOA9JTFWVita0wGe03Bo0URizULh6cSBr/Mgz9/S
+         RtAA==
+X-Forwarded-Encrypted: i=1; AJvYcCXiskkAzO+Yd76i8i5tOt3PlofPGFkK0t+K/RU3xWGgTvFjBxLIDg1EYchBmOl6EKFXe1s=@vger.kernel.org
+X-Gm-Message-State: AOJu0YxLKiFxLqndzVK4uPnf5lC7YmOpPGzwouIT6cVv4MIq24abvJud
+	wwnMoqCOXBUe62GsJCXy55Q2kYLEgqWViAfOL5povCZv74ir8AcaJzC3NxvaUWH4WljNomD3e/l
+	yPUkHmObnstNik4yBnHlGaiQKeQwSFWj1FAf5/hXqFLC9FlZ/+w==
+X-Received: by 2002:adf:cc8c:0:b0:368:3f60:8725 with SMTP id ffacd0b85a97d-3719468fac0mr5409896f8f.39.1724077299930;
+        Mon, 19 Aug 2024 07:21:39 -0700 (PDT)
+X-Received: by 2002:adf:cc8c:0:b0:368:3f60:8725 with SMTP id ffacd0b85a97d-3719468fac0mr5409876f8f.39.1724077299359;
+        Mon, 19 Aug 2024 07:21:39 -0700 (PDT)
+Received: from imammedo.users.ipa.redhat.com (nat-pool-brq-t.redhat.com. [213.175.37.10])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-429ed6507c4sm113966685e9.15.2024.08.19.07.21.38
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 19 Aug 2024 07:21:38 -0700 (PDT)
+Date: Mon, 19 Aug 2024 16:21:38 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>, Shiju Jose
+ <shiju.jose@huawei.com>, Ani Sinha <anisinha@redhat.com>, Dongjiu Geng
+ <gengdongjiu1@gmail.com>, Paolo Bonzini <pbonzini@redhat.com>, Peter
+ Maydell <peter.maydell@linaro.org>, Shannon Zhao
+ <shannon.zhaosl@gmail.com>, kvm@vger.kernel.org, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Subject: Re: [PATCH v8 00/13] Add ACPI CPER firmware first error injection
+ on ARM emulation
+Message-ID: <20240819162138.4dd45330@imammedo.users.ipa.redhat.com>
+In-Reply-To: <cover.1723793768.git.mchehab+huawei@kernel.org>
+References: <cover.1723793768.git.mchehab+huawei@kernel.org>
+X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
+Precedence: bulk
+X-Mailing-List: kvm@vger.kernel.org
+List-Id: <kvm.vger.kernel.org>
+List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="8323329-1147340740-1723827217=:298534"
-X-TUID: h4E2hmtzBn2o
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-TUID: z2jGiva5v78H
 
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
+On Fri, 16 Aug 2024 09:37:32 +0200
+Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
 
---8323329-1147340740-1723827217=:298534
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8BIT
-
-On Fri, 16 Aug 2024, Edgar E. Iglesias wrote:
-> On Thu, Aug 15, 2024 at 2:30 AM Stefano Stabellini <sstabellini@kernel.org> wrote:
->       On Wed, 14 Aug 2024, Edgar E. Iglesias wrote:
->       > On Tue, Aug 13, 2024 at 03:52:32PM -0700, Stefano Stabellini wrote:
->       > > On Tue, 13 Aug 2024, Edgar E. Iglesias wrote:
->       > > > On Mon, Aug 12, 2024 at 06:47:17PM -0700, Stefano Stabellini wrote:
->       > > > > On Mon, 12 Aug 2024, Edgar E. Iglesias wrote:
->       > > > > > From: "Edgar E. Iglesias" <edgar.iglesias@amd.com>
->       > > > > >
->       > > > > > Add SMP support for Xen PVH ARM guests. Create max_cpus ioreq
->       > > > > > servers to handle hotplug.
->       > > > > >
->       > > > > > Signed-off-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
->       > > > > > ---
->       > > > > >  hw/arm/xen_arm.c | 5 +++--
->       > > > > >  1 file changed, 3 insertions(+), 2 deletions(-)
->       > > > > >
->       > > > > > diff --git a/hw/arm/xen_arm.c b/hw/arm/xen_arm.c
->       > > > > > index 5f75cc3779..ef8315969c 100644
->       > > > > > --- a/hw/arm/xen_arm.c
->       > > > > > +++ b/hw/arm/xen_arm.c
->       > > > > > @@ -173,7 +173,7 @@ static void xen_arm_init(MachineState *machine)
->       > > > > > 
->       > > > > >      xen_init_ram(machine);
->       > > > > > 
->       > > > > > -    xen_register_ioreq(xam->state, machine->smp.cpus, &xen_memory_listener);
->       > > > > > +    xen_register_ioreq(xam->state, machine->smp.max_cpus, &xen_memory_listener);
->       > > > > > 
->       > > > > >      xen_create_virtio_mmio_devices(xam);
->       > > > > > 
->       > > > > > @@ -218,7 +218,8 @@ static void xen_arm_machine_class_init(ObjectClass *oc, void *data)
->       > > > > >      MachineClass *mc = MACHINE_CLASS(oc);
->       > > > > >      mc->desc = "Xen PVH ARM machine";
->       > > > > >      mc->init = xen_arm_init;
->       > > > > > -    mc->max_cpus = 1;
->       > > > > > +    /* MAX number of vcpus supported by Xen.  */
->       > > > > > +    mc->max_cpus = GUEST_MAX_VCPUS;
->       > > > >
->       > > > > Will this cause allocations of data structures with 128 elements?
->       > > > > Looking at hw/xen/xen-hvm-common.c:xen_do_ioreq_register it seems
->       > > > > possible? Or hw/xen/xen-hvm-common.c:xen_do_ioreq_register is called
->       > > >
->       > > > Yes, in theory there's probably overhead with this but as you correctly
->       > > > noted below, a PVH aware xl will set the max_cpus option to a lower value.
->       > > >
->       > > > With a non-pvh aware xl, I was a little worried about the overhead
->       > > > but I couldn't see any visible slow-down on ARM neither in boot or in network
->       > > > performance (I didn't run very sophisticated benchmarks).
->       > > 
->       > > What do you mean by "non-pvh aware xl"? All useful versions of xl
->       > > support pvh?
->       >
->       >
->       > I mean an xl without our PVH patches merged.
->       > xl in upstream doesn't know much about PVH yet.
->       > Even for ARM, we're still carrying significant patches in our tree.
+> This series add support for injecting generic CPER records.  Such records
+> are generated outside QEMU via a provided script.
 > 
->       Oh I see. In that case, I don't think we need to support "non-pvh aware xl".
+> On this version, I added two optional patches at the end:
+> - acpi/ghes: cleanup generic error data logic
+> 
+>   It drops some obvious comments from some already-existing code.
+>   As we're already doing lots of changes at the code, it sounded
+>   reasonable to me to have such cleanup here;
+> 
+> - acpi/ghes: check if the BIOS pointers for HEST are correct
+> 
+>   QEMU has two ways to navigate to a CPER start data: via its
+>   memory address or indirectly following 2 BIOS pointers.
+>   OS only have the latter one. This patch validates if the BIOS
+>   links used by the OS were properly produced, comparing to the
+>   actual location of the CPER record.
+
+I went over the series,
+once suggestion in 13/13 implemented
+we can get rid of pointer math that is reshuffled several times
+in patches here.
+
+I'd suggest to structure series as following:
+ 
+  1: patch that adds hest_addr_le
+  2: refactoring current code to use address lookup vs pointer math
+  3. renaming patches 
+  4. patch adding new error source
+  5. QAPI patch
+  6. python script for error injection
+
+with that in place we probably would need to
+  * iron out minor migration compat issues
+    (I didn't look for them during this review round as much
+     would change yet)
+  * make sure that bios tables test is updated
+
+> 
+> ---
+> 
+> v8:
+> - Fix one of the BIOS links that were incorrect;
+> - Changed mem error internal injection to use a common code;
+> - No more hardcoded values for CPER: instead of using just the
+>   payload at the QAPI, it now has the full raw CPER there;
+> - Error injection script now supports changing fields at the
+>   Generic Error Data section of the CPER;
+> - Several minor cleanups.
+> 
+> v7:
+> - Change the way offsets are calculated and used on HEST table.
+>   Now, it is compatible with migrations as all offsets are relative
+>   to the HEST table;
+> - GHES interface is now more generic: the entire CPER is sent via
+>   QMP, instead of just the payload;
+> - Some code cleanups to make the code more robust;
+> - The python script now uses QEMUMonitorProtocol class.
+> 
+> v6:
+> - PNP0C33 device creation moved to aml-build.c;
+> - acpi_ghes record functions now use ACPI notify parameter,
+>   instead of source ID;
+> - the number of source IDs is now automatically calculated;
+> - some code cleanups and function/var renames;
+> - some fixes and cleanups at the error injection script;
+> - ghes cper stub now produces an error if cper JSON is not compiled;
+> - Offset calculation logic for GHES was refactored;
+> - Updated documentation to reflect the GHES allocated size;
+> - Added a x-mpidr object for QOM usage;
+> - Added a patch making usage of x-mpidr field at ARM injection
+>   script;
+> 
+> v5:
+> - CPER guid is now passing as string;
+> - raw-data is now passed with base64 encode;
+> - Removed several GPIO left-overs from arm/virt.c changes;
+> - Lots of cleanups and improvements at the error injection script.
+>   It now better handles QMP dialog and doesn't print debug messages.
+>   Also, code was split on two modules, to make easier to add more
+>   error injection commands.
+> 
+> v4:
+> - CPER generation moved to happen outside QEMU;
+> - One patch adding support for mpidr query was removed.
+> 
+> v3:
+> - patch 1 cleanups with some comment changes and adding another place where
+>   the poweroff GPIO define should be used. No changes on other patches (except
+>   due to conflict resolution).
+> 
+> v2:
+> - added a new patch using a define for GPIO power pin;
+> - patch 2 changed to also use a define for generic error GPIO pin;
+> - a couple cleanups at patch 2 removing uneeded else clauses.
+> 
+> Example of generating a CPER record:
+> 
+> $ scripts/ghes_inject.py -d arm -p 0xdeadbeef
+> GUID: e19e3d16-bc11-11e4-9caa-c2051d5d46b0
+> Generic Error Status Block (20 bytes):
+>       00000000  01 00 00 00 00 00 00 00 00 00 00 00 90 00 00 00   ................
+>       00000010  00 00 00 00                                       ....
+> 
+> Generic Error Data Entry (72 bytes):
+>       00000000  16 3d 9e e1 11 bc e4 11 9c aa c2 05 1d 5d 46 b0   .=...........]F.
+>       00000010  00 00 00 00 00 03 00 00 48 00 00 00 00 00 00 00   ........H.......
+>       00000020  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   ................
+>       00000030  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   ................
+>       00000040  00 00 00 00 00 00 00 00                           ........
+> 
+> Payload (72 bytes):
+>       00000000  05 00 00 00 01 00 00 00 48 00 00 00 00 00 00 00   ........H.......
+>       00000010  00 00 00 80 00 00 00 00 10 05 0f 00 00 00 00 00   ................
+>       00000020  00 00 00 00 00 00 00 00 00 20 14 00 02 01 00 03   ......... ......
+>       00000030  0f 00 91 00 00 00 00 00 ef be ad de 00 00 00 00   ................
+>       00000040  ef be ad de 00 00 00 00                           ........
+> 
+> Error injected.
+> 
+> [    9.358364] {1}[Hardware Error]: Hardware error from APEI Generic Hardware Error Source: 1
+> [    9.359027] {1}[Hardware Error]: event severity: recoverable
+> [    9.359586] {1}[Hardware Error]:  Error 0, type: recoverable
+> [    9.360124] {1}[Hardware Error]:   section_type: ARM processor error
+> [    9.360561] {1}[Hardware Error]:   MIDR: 0x00000000000f0510
+> [    9.361160] {1}[Hardware Error]:   Multiprocessor Affinity Register (MPIDR): 0x0000000080000000
+> [    9.361643] {1}[Hardware Error]:   running state: 0x0
+> [    9.362142] {1}[Hardware Error]:   Power State Coordination Interface state: 0
+> [    9.362682] {1}[Hardware Error]:   Error info structure 0:
+> [    9.363030] {1}[Hardware Error]:   num errors: 2
+> [    9.363656] {1}[Hardware Error]:    error_type: 0x02: cache error
+> [    9.364163] {1}[Hardware Error]:    error_info: 0x000000000091000f
+> [    9.364834] {1}[Hardware Error]:     transaction type: Data Access
+> [    9.365599] {1}[Hardware Error]:     cache error, operation type: Data write
+> [    9.366441] {1}[Hardware Error]:     cache level: 2
+> [    9.367005] {1}[Hardware Error]:     processor context not corrupted
+> [    9.367753] {1}[Hardware Error]:    physical fault address: 0x00000000deadbeef
+> [    9.374267] Memory failure: 0xdeadb: recovery action for free buddy page: Recovered
+> 
+> Such script currently supports arm processor error CPER, but can easily be
+> extended to other GHES notification types.
 > 
 > 
->       > > > > later on with the precise vCPU value which should be provided to QEMU
->       > > > > via the -smp command line option
->       > > > > (tools/libs/light/libxl_dm.c:libxl__build_device_model_args_new)?
->       > > >
->       > > > Yes, a pvh aware xl will for example pass -smp 2,maxcpus=4 based on
->       > > > values from the xl.cfg. If the user doesn't set maxvcpus in xl.cfg, xl
->       > > > will set maxvcpus to the same value as vcpus.
->       > >
->       > > OK good. In that case if this is just an initial value meant to be
->       > > overwritten, I think it is best to keep it as 1.
->       >
->       > Sorry but that won't work. I think the confusion here may be that
->       > it's easy to mix up mc->max_cpus and machine->smp.max_cpus, these are
->       > not the same. They have different purposes.
->       >
->       > I'll try to clarify the 3 values in play.
->       >
->       > machine-smp.cpus:
->       > Number of guest vcpus active at boot.
->       > Passed to QEMU via the -smp command-line option.
->       > We don't use this value in QEMU's ARM PVH machines.
->       >
->       > machine->smp.max_cpus:
->       > Max number of vcpus that the guest can use (equal or larger than machine-smp.cpus).
->       > Will be set by xl via the "-smp X,maxcpus=Y" command-line option to QEMU.
->       > Taken from maxvcpus from xl.cfg, same as XEN_DMOP_nr_vcpus.
->       > This is what we use for xen_register_ioreq().
->       >
->       > mc->max_cpus:
->       > Absolute MAX in QEMU used to cap the -smp command-line options.
->       > If xl tries to set -smp (machine->smp.max_cpus) larger than this, QEMU will bail out.
->       > Used to setup xen_register_ioreq() ONLY if -smp maxcpus was NOT set (i.e by a non PVH aware xl).
->       > Cannot be 1 because that would limit QEMU to MAX 1 vcpu.
->       >
->       > I guess we could set mc->max_cpus to what XEN_DMOP_nr_vcpus returns but I'll
->       > have to check if we can even issue that hypercall this early in QEMU since
->       > mc->max_cpus is setup before we even parse the machine options. We may
->       > not yet know what domid we're attaching to yet.
 > 
->       If mc->max_cpus is the absolute max and it will not be used if -smp is
->       passed to QEMU, then I think it is OK to use GUEST_MAX_VCPUS
+> Jonathan Cameron (1):
+>   acpi/ghes: Add support for GED error device
 > 
-> Looking at this a little more. If users (xl) don't pass an -smp option we actually default to smp.max_cpus=1.
-> So, another option is to simply remove the upper limit in QEMU (e.g we can set mc->max_cpus to something very large like UINT32_MAX).
-> That would avoid early hypercalls, avoid using GUEST_MAX_VCPUS and always let xl dictate the max_cpus value using the -smp cmdline option. 
+> Mauro Carvalho Chehab (12):
+>   acpi/generic_event_device: add an APEI error device
+>   arm/virt: Wire up a GED error device for ACPI / GHES
+>   qapi/acpi-hest: add an interface to do generic CPER error injection
+>   acpi/ghes: rework the logic to handle HEST source ID
+>   acpi/ghes: add support for generic error injection via QAPI
+>   acpi/ghes: cleanup the memory error code logic
+>   docs: acpi_hest_ghes: fix documentation for CPER size
+>   scripts/ghes_inject: add a script to generate GHES error inject
+>   target/arm: add an experimental mpidr arm cpu property object
+>   scripts/arm_processor_error.py: retrieve mpidr if not filled
+>   acpi/ghes: cleanup generic error data logic
+>   acpi/ghes: check if the BIOS pointers for HEST are correct
+> 
+>  MAINTAINERS                            |  10 +
+>  docs/specs/acpi_hest_ghes.rst          |   6 +-
+>  hw/acpi/Kconfig                        |   5 +
+>  hw/acpi/aml-build.c                    |  10 +
+>  hw/acpi/generic_event_device.c         |   8 +
+>  hw/acpi/ghes-stub.c                    |   3 +-
+>  hw/acpi/ghes.c                         | 362 ++++++++-----
+>  hw/acpi/ghes_cper.c                    |  33 ++
+>  hw/acpi/ghes_cper_stub.c               |  19 +
+>  hw/acpi/meson.build                    |   2 +
+>  hw/arm/Kconfig                         |   5 +
+>  hw/arm/virt-acpi-build.c               |   6 +-
+>  hw/arm/virt.c                          |  12 +-
+>  include/hw/acpi/acpi_dev_interface.h   |   1 +
+>  include/hw/acpi/aml-build.h            |   2 +
+>  include/hw/acpi/generic_event_device.h |   1 +
+>  include/hw/acpi/ghes.h                 |  24 +-
+>  include/hw/arm/virt.h                  |   1 +
+>  qapi/acpi-hest.json                    |  36 ++
+>  qapi/meson.build                       |   1 +
+>  qapi/qapi-schema.json                  |   1 +
+>  scripts/arm_processor_error.py         | 388 ++++++++++++++
+>  scripts/ghes_inject.py                 |  51 ++
+>  scripts/qmp_helper.py                  | 702 +++++++++++++++++++++++++
+>  target/arm/cpu.c                       |   1 +
+>  target/arm/cpu.h                       |   1 +
+>  target/arm/helper.c                    |  10 +-
+>  target/arm/kvm.c                       |   2 +-
+>  28 files changed, 1551 insertions(+), 152 deletions(-)
+>  create mode 100644 hw/acpi/ghes_cper.c
+>  create mode 100644 hw/acpi/ghes_cper_stub.c
+>  create mode 100644 qapi/acpi-hest.json
+>  create mode 100644 scripts/arm_processor_error.py
+>  create mode 100755 scripts/ghes_inject.py
+>  create mode 100644 scripts/qmp_helper.py
+> 
 
-As the expectation is that there will be always a smp.max_cpus option
-passed to QEMU, I would avoid an extra early hypercall.
-
-For the initial value, I would use something static and large, but not
-unreasonably large as UINT32_MAX to be more resilient in (erroneous)
-cases where smp.max_cpus is not passed.
-
-So I would initialize it to GUEST_MAX_VCPUS, or if we don't want to use
-GUEST_MAX_VCPUS, something equivalent in the 64-256 range.
-
-Alternative we can have a runtime check and exit with a warning if
-smp.max_cpus is not set.
---8323329-1147340740-1723827217=:298534--

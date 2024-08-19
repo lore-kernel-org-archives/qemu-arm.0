@@ -1,224 +1,189 @@
-Received: by 2002:a17:504:9188:b0:1be9:327d:8ee3 with SMTP id i8csp1945586njf;
-        Sun, 18 Aug 2024 21:10:35 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWrLG2ZZ7pH7XwH+Y4xscah0nyKhB5B/g9P//XGnQTputP/p5+Pbd3Hb1HIwInzo7BVaVF6MHq0dnfVhqWZglYA2YrnmUPN
-X-Google-Smtp-Source: AGHT+IGyO9CfZ5SkCkmG192VHD/V5C7KQQcskATSnbdcI2VGQlXjZKnmRiEzEgPacY/9HNKoyUYg
-X-Received: by 2002:a05:622a:2605:b0:44f:f83d:46a3 with SMTP id d75a77b69052e-453743ad15amr110950011cf.40.1724040635751;
-        Sun, 18 Aug 2024 21:10:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1724040635; cv=none;
+Received: by 2002:a17:504:9188:b0:1be9:327d:8ee3 with SMTP id i8csp1947160njf;
+        Sun, 18 Aug 2024 21:21:24 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWvLDong3fOOA9UnWKpc7HQIy01xtbbCe2tSNlQpPCmml5lgqnYKM86INtGV3MUqZLqdUicA6Y+tGxakUPWi7WIhnHDEEDx
+X-Received: by 2002:a05:6830:2816:b0:709:450b:a3aa with SMTP id 46e09a7af769-70cac8a3db7mr12763293a34.21.1724041284578;
+        Sun, 18 Aug 2024 21:21:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1724041284; cv=none;
         d=google.com; s=arc-20160816;
-        b=vbIegZNA/O1BxhKE+9SMAxx5xZM2pz8Q7ClcjG5An7HU3W7PZq/GmSvrDEuvXQLnqR
-         vEuvKc8iMzP2mbJAVET/IVTQsJzJl2CA36Q5/rJacgliMTLW1XeUY7GNEiFhmb5b2eTr
-         69/bn5dauT2n8wYvEYf9E0yD4b3Js2bpiV37k/Ev5gPX8UfoaeClqNKUUGaSreXr3rKi
-         0WhxfCEi3xDmFJHXktZsFwsT0j/NFCdox7TykkUSBAdtioBBlbeJT7zG39ZD6ZjnKH9j
-         Yd/wdDpI4NqhtNXMguTefNCJB/zh1h04i9VmdFKj7DljdeoeX1XbJKg33S5bigWtl7u+
-         TnIw==
+        b=ZX9LbmFiemhYuietCG+ZNo+lfXFSz9Fgy9ZbrKTplfLi1PnH36YJAW9Fb0b8bnfvwt
+         n9/LDOFGBx0U5sK2ky2rsmO+d12SQs0Yg+0hrMhYM+qY1tPs0n9EBw83ke79058qJ20v
+         dLR01dX2DvswlUST/GHXoeJ5/QH7T+PV3P7tGFeg+PP9mT28/nXvnlI61m34/nwk4B6S
+         W8nTDBFpAvVqfwQMIn/mqPp9hHhNYKcu0GMwfMJbAJt/gVeu/mLX6YR8KBu4hkNRhXJJ
+         TZP6R9u9/8fmPU5Mshzill5mqY0qtKSFt3WLC52CawQRVq78i/F4a83z70NciuYOhe91
+         Hp+g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
          :dkim-signature;
-        bh=v2qdX8mWUNXZJiWfJcpgF+TJTRmV7VWVMGYVoqqgQAw=;
-        fh=bd6JYs+zsWylHr8uUdIOK32CzPUgRjMqojZbfvqbqVY=;
-        b=ZNH26jnoM6htBF7zHZHrBivRntLsbtCKH8zDyMYtVhen22iNBqdIzdGmnV2AlcFW00
-         kd4yOpdygH3ipkpkaZDwf6jZBEAW2PmcW008bOfs/mulPnxK9X3CiM4mu1dYKjEa/5Vi
-         LXLlfApekiXG3x04lwueMck0apPYSDtLifbIgz5C/xUE6Dr004opX9FCy5q2oF5/3/k9
-         M3xnpMKkI5LRxQtSPSFnFp+WMaZcGtMMLtzAzkn1yXWpNYFf2nT+2ifQXh3/D5h+PUVu
-         1dZfmjL/fqUrdvhI8iVhP1tPvueyMQqznglCiq9iuVAeLtlIz5e6lFp8CrzOnY+QGJTx
-         uXfA==;
+        bh=9zMBFLaUmtC+DIxiu4oheIM8uCLkqi+EyyEj4w3QR8w=;
+        fh=K8WUj7vrj9pJzXOP3262ErYVON3I8cKz7goWU/glkuk=;
+        b=0jqWFp+iIcXhP4kvVweQ2NyQkntT5eFrY6/S6pFsI+zQ36riIAo/HR/nqQsgQQ1UGc
+         /keolMJru8dJZyis2gUAszLduLd3eD2k+PY2C/PljecRO6lOp8naLRCqvxhPksF4fHqf
+         xjo/t3eDJN6dXt2keA0tird1kW41qk0t+NAm7HfPBpw8VKfxyloM7mZ86vfy4ce52nlH
+         hPB/FL5eKBnTuh0PlFpC395XG7H/YbBCeyKA+dSuhWCNQVDR4dEmB2CWg1hiXTh51ZVO
+         ob7pwXV7H/UaD4gX2vpCw3IzcDbYoIWYbQNGt6OYYv6+qvcDyLnaeZ2BPEtoGFvnmG3N
+         yBLQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=jF5AGaKp;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=nemmgu5Q;
+       spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-45369fe6280si96030541cf.92.2024.08.18.21.10.35
+Return-Path: <gustavo.romero@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 46e09a7af769-70ca64b4016sor5201289a34.9.2024.08.18.21.21.24
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 18 Aug 2024 21:10:35 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Sun, 18 Aug 2024 21:21:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=jF5AGaKp;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=nemmgu5Q;
+       spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sftiq-00053A-Rd; Mon, 19 Aug 2024 00:10:26 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
- id 1sftiZ-0004zs-Ie
- for qemu-arm@nongnu.org; Mon, 19 Aug 2024 00:10:07 -0400
-Received: from mail-oi1-x244.google.com ([2607:f8b0:4864:20::244])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
- id 1sftiX-0002qr-I6
- for qemu-arm@nongnu.org; Mon, 19 Aug 2024 00:10:07 -0400
-Received: by mail-oi1-x244.google.com with SMTP id
- 5614622812f47-3db18c4927bso2277213b6e.1
- for <qemu-arm@nongnu.org>; Sun, 18 Aug 2024 21:10:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=ventanamicro.com; s=google; t=1724040603; x=1724645403; darn=nongnu.org;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=v2qdX8mWUNXZJiWfJcpgF+TJTRmV7VWVMGYVoqqgQAw=;
- b=jF5AGaKpa7UUwxV9nUhDigztzUJay2boAm40nHIxUxgc3Jcjyy5EHAaAJplmZJEl/m
- j0yp91cQOdX2KoK4lvzRDqF1vYpdLeMjLowZODyQ8dT1R9yyuXSmnGxhb9IYv2wQzXv+
- Wyr7Vwq+Utn6BnEai3RArusOL1HLd06jjvyG7436kOIq+u+xSJGhX7F4+NPs/k6+Zids
- vakpX5RaufBWc0BjcWVyKmbyShSIrzqwS3iiutIj8x1qi3bMJr1q0NEs6xnfXDNFl2kd
- T092EaIye1K0DwALVE+JPsDQOIGZJxw+1OCCIhRT6R1Itz5yw0S2xJXwU6HEaB38Dpin
- aqEQ==
+        d=linaro.org; s=google; t=1724041284; x=1724646084; darn=linaro.org;
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=9zMBFLaUmtC+DIxiu4oheIM8uCLkqi+EyyEj4w3QR8w=;
+        b=nemmgu5QNUYIBXQ14HDnYfShY4dVimm+WDIA5FxlZ1N6Sdb/pzu+3qUhJq3ZtFzxP2
+         9oIIYPaQPQxSZ95BwVZV631a0ghK554tVKvAWQhNNbYyVp4yjBUWEWnJLI5zDkQMrJf0
+         d81W5V92pnYDb1eNYSLunAH92fxh9vkEcJ13B14hyMdIXCcAurQWNmATsz88i4MDOF7E
+         1cGwAfhJdrXk6AGwrfe/GzcqoeHO1lxVmWNW07J6vFxaqozuR2R8nrITdeYS/QSnRGWP
+         mh4hG87IKfduZKaAzBrNe90SWymNkEdXFsV1uDapLgStMEk22B4x7gK2UC+SRg4wsggh
+         w2ew==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1724040603; x=1724645403;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=v2qdX8mWUNXZJiWfJcpgF+TJTRmV7VWVMGYVoqqgQAw=;
- b=txCUZ6YvfEbHRRkESRMqYALQFFQNRv0AD629+bJE5hk2YzktwoYqBib23jvdLFPJlT
- n185IzfaMrtNErfPJVLEMkPHj2pH22y35co4xsB5S1UxLbIggT6l+9uxO/u4IHYK6ovD
- rVlXm//kmwBk3tUbGhppVHydqyQ/iocR1OBLRKPiXUF0xCMMQu3BuYk2ty4Md1FhpBCs
- 34sewODpJJ2ZVOaKlYYwNDPgfkr98yNYyPgKwH+v5zB/MHJHY8Vnc5dcbCJ+QnyFFOKv
- E7iH4WQdgBLBiLbBfXpO1PSC1LtzICQq1FXNnPzUNzcwR0wrjBrENZJCD7buzZhUlUZF
- fYbQ==
-X-Gm-Message-State: AOJu0YyNmv/D14ykEeY/nsMz/GyWEjjzskVhdocJ/HQcU3A7B8aUzRN3
- J0N0olgR+KQU+HqKjL/syAn+RN8pE0VI7Rvv4r524Nxey6vS8iBkMP4cxFtjGr8=
-X-Received: by 2002:a05:6808:3187:b0:3dd:37ab:34bc with SMTP id
- 5614622812f47-3dd3ad37097mr11487728b6e.21.1724040603507; 
- Sun, 18 Aug 2024 21:10:03 -0700 (PDT)
-Received: from sunil-laptop ([106.51.198.16]) by smtp.gmail.com with ESMTPSA id
- 5614622812f47-3dd33d3fea9sm2072923b6e.1.2024.08.18.21.09.57
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 18 Aug 2024 21:10:03 -0700 (PDT)
-Date: Mon, 19 Aug 2024 09:39:53 +0530
-From: Sunil V L <sunilvl@ventanamicro.com>
-To: Sia Jee Heng <jeeheng.sia@starfivetech.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, qemu-riscv@nongnu.org,
- mst@redhat.com, imammedo@redhat.com, anisinha@redhat.com,
- peter.maydell@linaro.org, shannon.zhaosl@gmail.com,
- palmer@dabbelt.com, alistair.francis@wdc.com,
- bin.meng@windriver.com, liwei1518@gmail.com,
- dbarboza@ventanamicro.com, zhiwei_liu@linux.alibaba.com
-Subject: Re: [PATCH v3 2/3] hw/acpi: Upgrade ACPI SPCR table to support SPCR
- table version 4 format
-Message-ID: <ZsLFkbZxvOLpf8bZ@sunil-laptop>
-References: <20240813052223.1033420-1-jeeheng.sia@starfivetech.com>
- <20240813052223.1033420-3-jeeheng.sia@starfivetech.com>
+        d=1e100.net; s=20230601; t=1724041284; x=1724646084;
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=9zMBFLaUmtC+DIxiu4oheIM8uCLkqi+EyyEj4w3QR8w=;
+        b=hWzLZidSlP4DmkXVZhNS8qorLZl5MUvyCOo0LHRgkJGeXjS34ZIX/f8z8ZmOkvJUZP
+         GFIvjjPs1YTy3FvESUORt+4iP3A2sHZuQA4boJNElbUThglWi6Ehq/WoiZTXVFvYUhLC
+         XLzqvhpFARezOEwrnyIQN/hu/7rsSp1fQrlQyxJfmhJ5oOjXZeCpMuAeWC/rdDRMbfiP
+         sKHGdC7hsgufmEywpf58h9Ianf9IC9OQ+lC6OzAMhm8788ojcNFqZWJsdZyEIG6VPrgF
+         8wjNZ9DxWwK8babYDhI8zR4sYfUMDK3cSQEEAdEiuN4qFmgXBuLuvwx7oj6TdKBMrnHy
+         080w==
+X-Forwarded-Encrypted: i=1; AJvYcCVdsSK5GGO6TLfw1T8Ri3V358P443PM/FXB3LblTzhZYGffXx8ZlnKgK+d8kIIu4eJG8rR35l01zTGdjfePS9/fTVoyrTCw
+X-Gm-Message-State: AOJu0YyO9kN1Ct3yE5KtkjEaYaw18HouusRiB4+tcWQmFkHl7gLqptBx
+	gLMOJMV9bF36x0qaYIbOukn6vg9YxEumRFx3ljLEycpqeEA20uJMcha4EkaLWPkCSzx2Br5PJLn
+	q590=
+X-Google-Smtp-Source: AGHT+IEf8Q7/4W0fWIddamgDNe4FKal2aZCyI1xTaFnY6BC1hm07senB8BqZybM4OGwy4Hi05KU6Ag==
+X-Received: by 2002:a05:6358:478e:b0:19f:5a42:d2bd with SMTP id e5c5f4694b2df-1b393282954mr1606058055d.22.1724041283597;
+        Sun, 18 Aug 2024 21:21:23 -0700 (PDT)
+Return-Path: <gustavo.romero@linaro.org>
+Received: from [192.168.0.103] ([191.205.40.123])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-7127ae669b7sm5891811b3a.88.2024.08.18.21.21.21
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 18 Aug 2024 21:21:23 -0700 (PDT)
+Subject: Re: [PATCH 1/8] hw/pci-host/designware: Declare CPU QOM types using
+ DEFINE_TYPES() macro
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Andrey Smirnov <andrew.smirnov@gmail.com>, qemu-arm@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
+References: <20231012121857.31873-1-philmd@linaro.org>
+ <20231012121857.31873-2-philmd@linaro.org>
+From: Gustavo Romero <gustavo.romero@linaro.org>
+Message-ID: <2f3df725-0d99-97d0-af7b-7054036e4228@linaro.org>
+Date: Mon, 19 Aug 2024 01:21:19 -0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.6.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20240813052223.1033420-3-jeeheng.sia@starfivetech.com>
-Received-SPF: pass client-ip=2607:f8b0:4864:20::244;
- envelope-from=sunilvl@ventanamicro.com; helo=mail-oi1-x244.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: q5tVpzbQQByG
+In-Reply-To: <20231012121857.31873-2-philmd@linaro.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-TUID: v6OEuKn+7xYs
 
-Hi Jee Heng,
+Hi Phil,
 
-On Mon, Aug 12, 2024 at 10:22:22PM -0700, Sia Jee Heng wrote:
-> Update the SPCR table to accommodate the SPCR Table version 4 [1].
-> The SPCR table has been modified to adhere to the version 4 format [2].
+On 10/12/23 9:18 AM, Philippe Mathieu-Daudé wrote:
+> When multiple QOM types are registered in the same file,
+> it is simpler to use the the DEFINE_TYPES() macro. In
+> particular because type array declared with such macro
+> are easier to review.
 > 
-> [1]: https://learn.microsoft.com/en-us/windows-hardware/drivers/serports/serial-port-console-redirection-table
-> [2]: https://github.com/acpica/acpica/pull/931
+> Remove a pointless structure declaration in "designware.h".
 > 
-> Signed-off-by: Sia Jee Heng <jeeheng.sia@starfivetech.com>
-> Acked-by: Alistair Francis <alistair.francis@wdc.com>
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->  hw/acpi/aml-build.c         | 14 +++++++++++---
->  hw/arm/virt-acpi-build.c    | 10 ++++++++--
->  hw/riscv/virt-acpi-build.c  | 12 +++++++++---
->  include/hw/acpi/acpi-defs.h |  7 +++++--
->  include/hw/acpi/aml-build.h |  2 +-
->  5 files changed, 34 insertions(+), 11 deletions(-)
+>   include/hw/pci-host/designware.h |  2 --
+>   hw/pci-host/designware.c         | 39 ++++++++++++++------------------
+>   2 files changed, 17 insertions(+), 24 deletions(-)
 > 
-> diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
-> index 6d4517cfbe..7c43573eef 100644
-> --- a/hw/acpi/aml-build.c
-> +++ b/hw/acpi/aml-build.c
-> @@ -1996,7 +1996,7 @@ static void build_processor_hierarchy_node(GArray *tbl, uint32_t flags,
->  
->  void build_spcr(GArray *table_data, BIOSLinker *linker,
->                  const AcpiSpcrData *f, const uint8_t rev,
-> -                const char *oem_id, const char *oem_table_id)
-> +                const char *oem_id, const char *oem_table_id, const char *name)
->  {
->      AcpiTable table = { .sig = "SPCR", .rev = rev, .oem_id = oem_id,
->                          .oem_table_id = oem_table_id };
-> @@ -2042,8 +2042,16 @@ void build_spcr(GArray *table_data, BIOSLinker *linker,
->      build_append_int_noprefix(table_data, f->pci_flags, 4);
->      /* PCI Segment */
->      build_append_int_noprefix(table_data, f->pci_segment, 1);
-> -    /* Reserved */
-> -    build_append_int_noprefix(table_data, 0, 4);
-> +    /* UartClkFreq */
-> +    build_append_int_noprefix(table_data, f->uart_clk_freq, 4);
-> +    /* PreciseBaudrate */
-> +    build_append_int_noprefix(table_data, f->precise_baudrate, 4);
-> +    /* NameSpaceStringLength */
-> +    build_append_int_noprefix(table_data, f->namespace_string_length, 2);
-> +    /* NameSpaceStringOffset */
-> +    build_append_int_noprefix(table_data, f->namespace_string_offset, 2);
-> +    /* NamespaceString[] */
-> +    g_array_append_vals(table_data, name, f->namespace_string_length);
->  
->      acpi_table_end(linker, &table);
->  }
-> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> index e10cad86dd..ae075dc9fd 100644
-> --- a/hw/arm/virt-acpi-build.c
-> +++ b/hw/arm/virt-acpi-build.c
-> @@ -435,11 +435,12 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->  
->  /*
->   * Serial Port Console Redirection Table (SPCR)
-> - * Rev: 1.07
-> + * Rev: 1.10
->   */
->  static void
->  spcr_setup(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->  {
-> +    const char name[] = ".";
->      AcpiSpcrData serial = {
->          .interface_type = 3,       /* ARM PL011 UART */
->          .base_addr.id = AML_AS_SYSTEM_MEMORY,
-> @@ -463,9 +464,14 @@ spcr_setup(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->          .pci_function = 0,
->          .pci_flags = 0,
->          .pci_segment = 0,
-> +        .uart_clk_freq = 0,
-> +        .precise_baudrate = 0,
-> +        .namespace_string_length = sizeof(name),
-> +        .namespace_string_offset = 88,
->      };
->  
-> -    build_spcr(table_data, linker, &serial, 2, vms->oem_id, vms->oem_table_id);
-> +    build_spcr(table_data, linker, &serial, 4, vms->oem_id, vms->oem_table_id,
-> +               name);
-I request the same which I had asked earlier. Please keep SPCR for other
-architectures like ARM intact. The latest revision is primarily required
-for RISC-V. So, restrict the series only for RISC-V. The common
-build_spcr() should create SPCR based on the revision parameter.
+> diff --git a/include/hw/pci-host/designware.h b/include/hw/pci-host/designware.h
+> index 908f3d946b..c484e377a8 100644
+> --- a/include/hw/pci-host/designware.h
+> +++ b/include/hw/pci-host/designware.h
+> @@ -31,8 +31,6 @@ OBJECT_DECLARE_SIMPLE_TYPE(DesignwarePCIEHost, DESIGNWARE_PCIE_HOST)
+>   #define TYPE_DESIGNWARE_PCIE_ROOT "designware-pcie-root"
+>   OBJECT_DECLARE_SIMPLE_TYPE(DesignwarePCIERoot, DESIGNWARE_PCIE_ROOT)
+>   
+> -struct DesignwarePCIERoot;
+> -
+>   typedef struct DesignwarePCIEViewport {
+>       DesignwarePCIERoot *root;
+>   
+> diff --git a/hw/pci-host/designware.c b/hw/pci-host/designware.c
+> index 6f5442f108..304eca1b5c 100644
+> --- a/hw/pci-host/designware.c
+> +++ b/hw/pci-host/designware.c
+> @@ -746,28 +746,23 @@ static void designware_pcie_host_init(Object *obj)
+>       qdev_prop_set_bit(DEVICE(root), "multifunction", false);
+>   }
+>   
+> -static const TypeInfo designware_pcie_root_info = {
+> -    .name = TYPE_DESIGNWARE_PCIE_ROOT,
+> -    .parent = TYPE_PCI_BRIDGE,
+> -    .instance_size = sizeof(DesignwarePCIERoot),
+> -    .class_init = designware_pcie_root_class_init,
+> -    .interfaces = (InterfaceInfo[]) {
+> -        { INTERFACE_PCIE_DEVICE },
+> -        { }
+> +static const TypeInfo designware_pcie_types[] = {
+> +    {
+> +        .name           = TYPE_DESIGNWARE_PCIE_HOST,
+> +        .parent         = TYPE_PCI_HOST_BRIDGE,
+> +        .instance_size  = sizeof(DesignwarePCIEHost),
+> +        .instance_init  = designware_pcie_host_init,
+> +        .class_init     = designware_pcie_host_class_init,
+> +    }, {
+> +        .name           = TYPE_DESIGNWARE_PCIE_ROOT,
+> +        .parent         = TYPE_PCI_BRIDGE,
+> +        .instance_size  = sizeof(DesignwarePCIERoot),
+> +        .class_init     = designware_pcie_root_class_init,
+> +        .interfaces     = (InterfaceInfo[]) {
+> +            { INTERFACE_PCIE_DEVICE },
+> +            { }
+> +        },
+>       },
+>   };
+>   
+> -static const TypeInfo designware_pcie_host_info = {
+> -    .name       = TYPE_DESIGNWARE_PCIE_HOST,
+> -    .parent     = TYPE_PCI_HOST_BRIDGE,
+> -    .instance_size = sizeof(DesignwarePCIEHost),
+> -    .instance_init = designware_pcie_host_init,
+> -    .class_init = designware_pcie_host_class_init,
+> -};
+> -
+> -static void designware_pcie_register(void)
+> -{
+> -    type_register_static(&designware_pcie_root_info);
+> -    type_register_static(&designware_pcie_host_info);
+> -}
+> -type_init(designware_pcie_register)
+> +DEFINE_TYPES(designware_pcie_types)
+> 
 
-Thanks,
-Sunil
+Reviewed-by: Gustavo Romero <gustavo.romero@linaro.org>
+
+This patch can get merged independently of this series.
+
+
+Cheers,
+Gustavo

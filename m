@@ -1,371 +1,346 @@
-Received: by 2002:a17:504:9188:b0:1be9:327d:8ee3 with SMTP id i8csp1945488njf;
-        Sun, 18 Aug 2024 21:09:58 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWYO6uHWgZJbR8WueOLOSCmTc4e79ZmgnzNnzyro83NEx1PcX4VOkaXv1WkkbJK1Oxh1LPatuCiQ4ZtkJjvEHzC3yOr0ipG
-X-Google-Smtp-Source: AGHT+IFY/c3a2m0WNQ0wGZeN1hVBbfTxM1mpxNXQOC7ba1PocpjCjTRiTz6fZnSMsbYqEyFcMcuj
-X-Received: by 2002:a05:620a:31a0:b0:79c:130:452b with SMTP id af79cd13be357-7a5069af55amr1195995285a.47.1724040598599;
-        Sun, 18 Aug 2024 21:09:58 -0700 (PDT)
-Return-Path: <junjie.mao@intel.com>
-Received: from mgamail.intel.com (mgamail.intel.com. [192.198.163.11])
-        by mx.google.com with ESMTPS id d75a77b69052e-4536a003615si96251661cf.185.2024.08.18.21.09.56
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 18 Aug 2024 21:09:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of junjie.mao@intel.com designates 192.198.163.11 as permitted sender) client-ip=192.198.163.11;
+Received: by 2002:a17:504:9188:b0:1be9:327d:8ee3 with SMTP id i8csp1947492njf;
+        Sun, 18 Aug 2024 21:23:39 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWwY9PEcdOC39YzD6cZ/BYNhktd64Me6HJWnAOm+NWgbpNnJqj/lulLrmAqKNpw9t/LX6wTF7pbFxwzRsL1IPgIuzvQpMej
+X-Received: by 2002:a05:6a21:3a81:b0:1be:d1bf:a371 with SMTP id adf61e73a8af0-1c9050477c9mr13230997637.33.1724041419527;
+        Sun, 18 Aug 2024 21:23:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1724041419; cv=none;
+        d=google.com; s=arc-20160816;
+        b=PXNbDH6aHaXzc9xAByYILOdBRcjPIAoComyqsC3Lbo+ivu3SF0cyyFTZOu8iD14/PP
+         z68NbOWkTy+aKhvhkOtoIV9nd0zgS7bFNdBnZpqF5PZgpPokPJFvbp976wDeJUECJLcD
+         2ElPRTwGAMIGAd6IKFDI2RUMZxA/L5TA5V3JyaL9BzHcZ88VigrUfv4rwiva0VRogRPT
+         s3kNAZzRAWVRwOI4JwntsomYJFzTY2P3uoEBSkelt4NelJDgBG4RiNqjpd/YiwAkgV7v
+         EPP6vqlgT85kFdFcdcqXcrGJzsGxansqC4CTYAUvrJHSZZLRxLDAA0Hj/5xw1f3Pdras
+         45GQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
+         :dkim-signature;
+        bh=0EVO4TPq7zEeDhrpfxb/u7bFPuWUTGTEzv2yfJHA6xk=;
+        fh=3L+twm+5ndoQaw7P8+Nf8Rh8Pl6QthfmAv0vC6t3+7A=;
+        b=aM/ciJUvsmcG5IuEVkpn37hENRt5G3TsKb/z5bYuiHRTWEErLhspZmilE3VT7l0SAT
+         LXqiVBtcCG/AweDnuK+lkGp1cuTkOymv+WqNtEjqptQRroXPR8wn3iTer+uHRls5PMb3
+         myzIs4R06yiXGHIkgnn2rgX6OVF9We76WzX+9t4XdYBKP/tfshWxxRB3z013Mx16BVqk
+         4mYKJHx30VYJctqeaktV7sONlRcLtDX1PcHa1JI33KgWxY1/uQbA9maW2jaZTCAK5FC1
+         VVSK9TJCTu8PyEtmEz276fRVpZSn9g7iyTC/RcUVk/IYLTby9JFvCYdhxUP8LfDs9qjY
+         LmXw==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=lD48Ak7T;
+       spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <gustavo.romero@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d9443c01a7336-202371e1919sor25793825ad.8.2024.08.18.21.23.39
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Sun, 18 Aug 2024 21:23:39 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=Lm8qDlzF;
-       arc=fail (signature failed);
-       spf=pass (google.com: domain of junjie.mao@intel.com designates 192.198.163.11 as permitted sender) smtp.mailfrom=junjie.mao@intel.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1724040598; x=1755576598;
-  h=message-id:date:subject:to:cc:references:from:
-   in-reply-to:content-transfer-encoding:mime-version;
-  bh=sb879EC5CaTzfzNEs8NXKnW/7ehdIHt8CJWWDASJLmc=;
-  b=Lm8qDlzF9Z+/2Ftam7upZPp95QdRoChZ214ktODKFQ/F5R27B5y5TLc/
-   8Ewe7eK8kQjM9uZiFZwDO4R/MbIAXVEfK4rM56Ef9KpCshSg/H5OZJlRT
-   gpI8rllS1uxQGyeROIspIIqrAdrkOrcLAwKoNHOz/qfWyQd7ijkTovBYx
-   FaD3c114GfCGsS16tTMtI9JXN5A7+PR9p3M7Pe3wwj9RyBXJy8ycgqdYy
-   c4tFBbN0R1QIajCIfaSHsvWBAuJvDMkMSrtPb7AtykzoA2P4PqMvSuq88
-   Irpo7/IEi2E1nCl44xvk9ZWp4fbHQLyzQm6zZY8J950Ln6qi02425aIx0
-   g==;
-X-CSE-ConnectionGUID: 7lNJi7l0R/+Dg5f8vmactg==
-X-CSE-MsgGUID: nI8f6o9vTKS0FFrXEqDrYw==
-X-IronPort-AV: E=McAfee;i="6700,10204,11168"; a="32891448"
-X-IronPort-AV: E=Sophos;i="6.10,158,1719903600"; 
-   d="scan'208";a="32891448"
-Received: from fmviesa008.fm.intel.com ([10.60.135.148])
-  by fmvoesa105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Aug 2024 21:09:55 -0700
-X-CSE-ConnectionGUID: nGZFmMqnTxOnPaD0jeBkpw==
-X-CSE-MsgGUID: wpr9ifj+Tuuya0KFvCNwTA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.10,158,1719903600"; 
-   d="scan'208";a="60239460"
-Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82])
-  by fmviesa008.fm.intel.com with ESMTP/TLS/AES256-GCM-SHA384; 18 Aug 2024 21:09:55 -0700
-Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
- fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.39; Sun, 18 Aug 2024 21:09:55 -0700
-Received: from fmsedg602.ED.cps.intel.com (10.1.192.136) by
- fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.39 via Frontend Transport; Sun, 18 Aug 2024 21:09:55 -0700
-Received: from NAM12-BN8-obe.outbound.protection.outlook.com (104.47.55.168)
- by edgegateway.intel.com (192.55.55.71) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Sun, 18 Aug 2024 21:09:54 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=P+jPoXFiy+ngRArEhQQrNZfIxBxcyzF+Olr1EefRZMqnm6c04oUDrYf1YQM/ZxYIvZwlHkoAVrtU1faz7lL3Rb+doBUnidGk//Hdgfp7hhpdVdXr/EyOoRHv3Hg80WtSteYGB0e7d1n1qenK23FXijicP3Lj8x3MNl4jK/fpIXoiVWNQsr6/MpQHlFTksM5QYuimZpJzRtNFdq9nxake5dxOaboOjtlNaarwq3PRlxelVb3t/cvpL7uYMUMlQFqDNvPN8yMIjT0zGAi/jH6l1W241MgYFbXp/uvKNuohPZ3UIB8IwxZRVcsPPM+UcZMUco/g4MyToZRVmBYAD5B9Ew==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=cFFYN/p2mJrT02rMuzwtGLIspEkoqwxTGWllSpAb7a8=;
- b=ddJJOl9Pc8LGNCXWfTUvZLxTn7pDN/+0QxLIBnifGrDRng9fbPlWoEE+v5eDLAM6acrXglgHGx9JR1oidBPI93yg9nDsJwp80EpVA2S/5C2dcRm+PixktLx6caljxIz0YhRePJVGu3J2f3UoB0n55m1fq7+S2nrCPRF9InvTJ6GtvzmRVXOje+b5E8haS8VIvwytGGT+I2PFr9k+/2Ta9O+tp+Wl9RxAaMrMfuzfXPqOrzXTbWNhN4MeXG1W5pArYXtx7/0/H43EdeNq8dUEsCWCKCVH3qi9XiHrCOn3vDKrf4qFleK/cu0ehaj0Pvm9n4FYosdo++VuDuoKstfo3w==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Received: from CY8PR11MB7009.namprd11.prod.outlook.com (2603:10b6:930:57::12)
- by DM4PR11MB7183.namprd11.prod.outlook.com (2603:10b6:8:111::10) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7875.21; Mon, 19 Aug
- 2024 04:09:52 +0000
-Received: from CY8PR11MB7009.namprd11.prod.outlook.com
- ([fe80::7ebc:871a:bc7f:1eed]) by CY8PR11MB7009.namprd11.prod.outlook.com
- ([fe80::7ebc:871a:bc7f:1eed%4]) with mapi id 15.20.7875.019; Mon, 19 Aug 2024
- 04:09:52 +0000
-Message-ID: <1179eadd-c0a5-4a46-ba85-4e2a9c60b727@intel.com>
-Date: Mon, 19 Aug 2024 12:09:39 +0800
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v7 0/7] Add Rust build support, ARM PL011 device impl
-To: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-CC: "open list:ARM SMMU" <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>,
-	"Paolo Bonzini" <pbonzini@redhat.com>, =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?=
-	<marcandre.lureau@redhat.com>, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
-	<berrange@redhat.com>, Thomas Huth <thuth@redhat.com>,
-	=?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>, John Snow
-	<jsnow@redhat.com>, Cleber Rosa <crosa@redhat.com>, Beraldo Leal
-	<bleal@redhat.com>, =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Wainer dos Santos Moschetta <wainersm@redhat.com>, "Liu, Zhao1"
-	<zhao1.liu@intel.com>, Peter Maydell <peter.maydell@linaro.org>, ARM TCG CPUs
-	<qemu-arm@nongnu.org>, Stefan Hajnoczi <stefanha@redhat.com>, "Pierrick
- Bouvier" <pierrick.bouvier@linaro.org>, Richard Henderson
-	<richard.henderson@linaro.org>, Gustavo Romero <gustavo.romero@linaro.org>,
-	"Hart, Rowan" <rowan.hart@intel.com>, Mads Ynddal <mads@ynddal.dk>, "Markus
- Armbruster" <armbru@redhat.com>
-References: <20240815-rust-pl011-v7-0-975135e98831@linaro.org>
- <8f5f670b-313e-4172-a04b-ff8439bc4777@intel.com>
- <CAAjaMXYyggQuenzEt-cTpENAM5S46_Wi4iqeXjzLYoDrHXzj2g@mail.gmail.com>
-Content-Language: en-US
-From: Junjie Mao <junjie.mao@intel.com>
-In-Reply-To: <CAAjaMXYyggQuenzEt-cTpENAM5S46_Wi4iqeXjzLYoDrHXzj2g@mail.gmail.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 8bit
-X-ClientProxiedBy: SI2PR02CA0012.apcprd02.prod.outlook.com
- (2603:1096:4:194::7) To CY8PR11MB7009.namprd11.prod.outlook.com
- (2603:10b6:930:57::12)
-Return-Path: junjie.mao@intel.com
+       dkim=pass header.i=@linaro.org header.s=google header.b=lD48Ak7T;
+       spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1724041419; x=1724646219; darn=linaro.org;
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=0EVO4TPq7zEeDhrpfxb/u7bFPuWUTGTEzv2yfJHA6xk=;
+        b=lD48Ak7TljgRJFp0PzrHi6Z2E9EHGyZdoTBBM6dsj/fMdrvaAuuTcY4+u7L3ChncWI
+         j3E14Lp7hQX9rOIJgvEHi/VKRHuQe2DKNRB6nftmtsM2i6ZXSB7kuH1lx2jvGX50ivVi
+         2t9v5PSqOfAAHHaq0uE9rTV9nuHQV4M0SbFiExinsvU9/MzzgbIrxfZDAt8HN4adks8K
+         81VgLkqp1V9E3GC6yRc0ihq1vNedYgtTFpjorU1gWh5mxg3W4BZ8LRzKiseD7a6aXbts
+         nL6AyyB5nfOIHx0cpUvzgM6dSetm9PNaGNN3i6KUW5wIOyPrBK1B+E/GaH1PRd7ofZEq
+         aECw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1724041419; x=1724646219;
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=0EVO4TPq7zEeDhrpfxb/u7bFPuWUTGTEzv2yfJHA6xk=;
+        b=KklQ2FL6m41XKTXpsi6FvIS/Lzjo+W3hMcZbJz3wr9lJV5/RwwUWliDgO86C9DapK4
+         VfSPhjKLTNGD+4Wf4BBL3jwrMk07vxQ6+BuoW3ZrIW1ZEUk9NnEA1ljuUm4PiJ5HDvy3
+         JncEqCx0te34XEVe9PvW56iu73MqR5oANs+mIDwM7JlA0IP+fmFa3p5+b7p8JmZ6IdEY
+         H8qZIZa8ccsFbSTFVoGkFJpoobgiTMCav1mwc+oMFF4nlr1HO1MScNzZk+AEXxsU9AOk
+         qICndO1KLtaHcAnyiyBZuLEpJv05L/Q6jJcnLYLXHalMHM40CJKd6VIG3k7IV5uvgvCu
+         CpoA==
+X-Forwarded-Encrypted: i=1; AJvYcCV9BJszCpPJ7p4/mLZCw6bEd+nFqNid6kWwOCc/J8KLeTSGiRqp6R82W99l2sKvO0XODuW2dtD53wsBKjmmgQa2+a6FYHgj
+X-Gm-Message-State: AOJu0Yw77LMCUiM/pWMir1k/O3PCh8IJ1CKyAyoMAt6RsDJ9svBdtsjm
+	zQp4ZgIV64kHaGgUoOW+QMdOP5pYF18jlFf7c8yGstm1EMZRsDt9KhTsEm5PlTfF6lyT3IWOEfK
+	vVQc=
+X-Google-Smtp-Source: AGHT+IHeXBPBl2nz3ey//IV8NOtCWsyLIU0+2yFfF95IdWYcc3PzNX2iq1/EEBnXDA/NAXk5pPWdwQ==
+X-Received: by 2002:a05:6a20:43a8:b0:1c4:a531:bafd with SMTP id adf61e73a8af0-1c904fab22bmr13890308637.18.1724041418718;
+        Sun, 18 Aug 2024 21:23:38 -0700 (PDT)
+Return-Path: <gustavo.romero@linaro.org>
+Received: from [192.168.0.103] ([191.205.40.123])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-2d3e3d9ab28sm6217384a91.55.2024.08.18.21.23.36
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 18 Aug 2024 21:23:38 -0700 (PDT)
+Subject: Re: [PATCH 7/8] hw/pci-host/designware: Move MSI registers from root
+ func to host bridge
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Andrey Smirnov <andrew.smirnov@gmail.com>, qemu-arm@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
+References: <20231012121857.31873-1-philmd@linaro.org>
+ <20231012121857.31873-8-philmd@linaro.org>
+From: Gustavo Romero <gustavo.romero@linaro.org>
+Message-ID: <f9fa0215-006b-5dd1-b634-13e1a2b4448f@linaro.org>
+Date: Mon, 19 Aug 2024 01:23:35 -0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.6.0
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: CY8PR11MB7009:EE_|DM4PR11MB7183:EE_
-X-MS-Office365-Filtering-Correlation-Id: 2651e2fc-7b10-45ba-a415-08dcc004c65d
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|7416014|376014|1800799024;
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?ZVRMZDhsTnozZGxFK013cEdyV0lFL0M5L0gyckFWMWFZR0pCQWxuT3RKbUgy?=
- =?utf-8?B?RUNIdXFOclBuV29ZVUErdFJMdVI1U1V2U3Y0TzdoTEJGajRlU3BiUUpYUUxs?=
- =?utf-8?B?bGtzOHlTUzFVTHg4dWp6YzZacHF2TW1CU3psKzBsTzBzKzhHc1RGUEZZY1dL?=
- =?utf-8?B?YWdHck1MN0dUMHpOTzJXNFJtaVF2VzBDbGJRemlkOG5tZldQeXVEK0JHWjZN?=
- =?utf-8?B?TVdUbFpPbFBkOVFaR3FndjFXczQ3RnlrMDhqUHROYWgzRXBhSUNORlJncVZZ?=
- =?utf-8?B?VERHaWRxVzdxSjVoMnBLQmZwRUROZFhIeWlwYW9vWWVlbkNmM0ZvNmxqVEo1?=
- =?utf-8?B?ZjZaSWFhb3R0SkJjbjViaUkrSUYvSWZyRDRnNndwZmF5T2ZaT09mend2UDRG?=
- =?utf-8?B?WFpaZmhwdUIzaXppTW1PWVdua2JMQnZNRGxobEtjWlBmNjRGYnJRcGZHREpk?=
- =?utf-8?B?VFJyYWFXWnRKRDdya09walhHOFJuTS9vblBvemdoSXE5ai8vdmdvYllNVWd4?=
- =?utf-8?B?b3B5UG1kaVdHMVpTR0dhdGR0RHkxdUVmZHU4dU5DRm1BcXNHUk85amtqK2gv?=
- =?utf-8?B?Y2I1eFpMR0pzWWxsdVMrMUY2MGZvZXNVa3lDMHFLNVBRUkR0bHg0MktVbHlD?=
- =?utf-8?B?S1UySHB4eHpQc0NMWFVyUmJhQ2xHNUNQUXViMXNRb1ZscDdwaFpOYkswelow?=
- =?utf-8?B?UXJBNGdmNGtFUjhCVjQ4R0hGYmllbzU3S2ZucmViOHJQNHdaZUN1MHZCditJ?=
- =?utf-8?B?WkFYejJOVi80aFVpcGhIa2MvQndCdEI3bzNRV293RTk1WEU5UmF6M1dZTlZK?=
- =?utf-8?B?Vm5saExiQjkySmpkUUJKdVByRldGd1k2aDUxSlgwTFJ0QmVJRkNHczF5b1JG?=
- =?utf-8?B?Sm9IcXZsTEx2TVN4UFpVUEVQdVBJVXBvVHpUZlJES29YeGI2Z056QTlqZitx?=
- =?utf-8?B?OVdoMTBzRTUrWG5FaWlIU2ZLZ2NFQjBLUmFVZ0VuckFZUk9tMHc0OEJGZndI?=
- =?utf-8?B?V0NhNzIrV0NlTENOV25IazBzUXNKaXhzR2twbEZWcGhQWEJKRDlrWXVrVU9h?=
- =?utf-8?B?aUFQOEhLdWlKL3hRc0dqV2pDbndUcEVGVWVRcVZGbWpQdk51NnoyNndHYUJC?=
- =?utf-8?B?YnovdXNlUk9rcWRlaHhPNFNIaGxoV2lqSHNDV0JnY1lkTHVJc2ZaUWh4bTE2?=
- =?utf-8?B?NWRrZDNRaS9BMkR0RVZQcDhqRnpNaFdzdkNGdGFQNlZRazlSVEZqVVVIUWpq?=
- =?utf-8?B?YmxXN2lFVHNKRlJHVXFia0RqVjNGTzMxK0FQQjlmNnhiZHVTMWZxUFNld2ZV?=
- =?utf-8?B?ZDMxVDgwQkhJSkRJc0JMMXhUV2hXaFlhZ1RWdjQzYjRqV1E0THBFMlYzUjJp?=
- =?utf-8?B?enorU0p5MXNrTXVCSE8vODl5YmFJWDAzeGlYdDVUSEt2T1htMCtjc0hmNFBR?=
- =?utf-8?B?SzQ2YmpscDNOMmhHNzBIRm5lZkQ0d0lmeTluRkFNWlcyaUMyZmErZXNLRFJQ?=
- =?utf-8?B?cm82a0lsVi8yS3UyZWJjVXAwSWxmVi82NDRWS2F1QUJpNGVobURnWlpRN1Iz?=
- =?utf-8?B?UDhnQ3psN0tXd2tTZTgwOEFUNUFYRnR6aUxVUGZ2U1ZpYmdHeTVGaVJMZWxG?=
- =?utf-8?B?blN4S25CRzBLYzJBRWxRb3hhMGl5Y1Bma282d29QdHBIdVlXM0cxMXdvcEVa?=
- =?utf-8?B?amJhcGNyMXYrRXlTRkJscEdmblpaMmxUZjhVRHNXcVhEbVc1VkhxWnFlNkVa?=
- =?utf-8?Q?DpXHS92zwsffcMvVy4vhyskXYmqfeDd7m5BLjL4?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:CY8PR11MB7009.namprd11.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(7416014)(376014)(1800799024);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?N21hRGlEQjdVZ2pXd2ZhN0Y3VlhEQmJUQmc1eDdzeVUxUmtkeHg2NUpzVVgx?=
- =?utf-8?B?ajYxeHNrZXZNeHRPb2tZRGVxS0NybjZTTC9yM1hOeTV5WGVYQkttc0pndG11?=
- =?utf-8?B?cEFiN0tlUGRVZTFZTVhrQyszbEt2b1Zyc0pkTFhjcGhYUWN2U2dNZ09QUDhj?=
- =?utf-8?B?T21waDZ3L3A3eHg2YVBhWXJHWE12ZXhoSFoxYjZnQmtZYmllNFBNRloyOHR2?=
- =?utf-8?B?WGROL1BSdVZQbGZqSEltcmZLYm5VdW9vRVFHd29JTytSQmc5ekt3cStBMkhF?=
- =?utf-8?B?SDBCenNaUFJtZndQR3hWbHdvYjhNNjZHRnRsK1JIMi8rVk5nb3ltRmpDS2Y2?=
- =?utf-8?B?WE9EQjBxR0NpWHl1SWU1a0JaM1padExxVGx3a3RaK0tUSXVpRmxWczV2UERJ?=
- =?utf-8?B?MCtSRmlWUHVVV1Z2R09HZ0hHZGF4b25PUmVaZUNZNS9WdUdOWFk4OEdQS3lZ?=
- =?utf-8?B?NGhVOVVkNndINXdodVh1bnkxL09zTVkvaGRmSmZZbmR3Y0VOK2cwak9FVGpM?=
- =?utf-8?B?QkZiQzNaRDYrMmpyS1ZCUHJXL0I5MmtUdS9IdlVtVlpnaDdYd01PMjB2SW5k?=
- =?utf-8?B?NWRBMXp0Q1RqbUNmMGlUamZUVW11dGlTTmpWZjdqNmpzL0daeUg5L0o5bUxm?=
- =?utf-8?B?RElQRGlZc2NHMVNucjBEbmViYkw1Z3FFRWdybzEyN2xNMllQRHdnQzI4c1N0?=
- =?utf-8?B?cTY1ZkFMOWVqWDlBZXkwZXFvRW5ZOVVEcEdkMzJaWWlxWmtyQzFFRkZIYk1F?=
- =?utf-8?B?ayt0V0MzTUpLVmtQbis0Y29CK08xT0dXQTNLZVd0QjBmdXIycytCRDBEVExh?=
- =?utf-8?B?azFTbkJnR0FDaU0zNFlPMmYvRHZUWkg2MVI2K0F2bGp6M2RRQlJ0RGJVMEFo?=
- =?utf-8?B?eHZuNWk3WHV1ZTdZUmdWRXZ6dnE5ZWw1Z3FUcGF0djNTTUQxbmsxeTBiTStx?=
- =?utf-8?B?bmVIb2pzK2RNQ3VBSEtiQ1lKcS8vRVZYcGZ5VTc1L0huQXJSSzZPcHRFRjd6?=
- =?utf-8?B?SmQveXFyOGVZeCtod1pOK0RDbFVXMWNjYU0yVHFOeXVHcURHM3ptYVYweDY5?=
- =?utf-8?B?ZW9xaEV6VHRNbi9QbVZzaWxFbEd0SnFiMXBkeXg5eU50ajk1cm41KzJYNHBv?=
- =?utf-8?B?Zzl4b1M4Rkg5dHhEWjl4dHNHbTBGWWdJNFF5ekRCK21kZjJPTnhRSEZTdFU3?=
- =?utf-8?B?ekZiQUlLaW5nRHNNS3ZicmxUbHZINEpqV0JxK0JLRnZjTFY2ZVBjR1dwSjgy?=
- =?utf-8?B?Ri8wc3hKM3Via0ZxMVROaU1YTDVsZnJUelE0cUxJWHhCWGhQdDl1QmJRTGEz?=
- =?utf-8?B?NXFKZStDZ1BVVzF1bUs2ZzlNdDNKNjl2VDhHVUo5SU5HS1lQVlUvYlMyY2Uz?=
- =?utf-8?B?NGIwaUhvN1FHZU1lb2dZY3hTRTl0eEdYUUJWYnVpQzhrbmJWaFJ2N2lXZTQ5?=
- =?utf-8?B?bTJEM0h2eEx2dU1SakxQS1Q0RDhob2Q4K21QQmtERzF3OVh4a1p6aElDRW41?=
- =?utf-8?B?Z09ucFdmRkFwNHNKRHZJL1JqeE02bkhtTjdFcTdrRktBWTJyRmhTSWw0QW9X?=
- =?utf-8?B?R2V4QkZ4d3ZUU2MvYkNUU1Fud3F2dXNwWWcyMXVMb0FQSWNpOUJtUjBNdFYx?=
- =?utf-8?B?N2N2cFRyYzZoNHNuRGUxMURBczdKZGE0TEJxVjd1T0NrY292cEdHYXpLMDFY?=
- =?utf-8?B?bVpJLzIrU0NNRmVlTFQ4a0pEN0FSUE5VVElXSHlEWjRYSkNNV0NiTTFuQ2NR?=
- =?utf-8?B?amc5WG4yakJmeC9YdldnOGhvVjFpWGhNWG5xZ0NMSkp6VFBKNy9oTWxBQ3kx?=
- =?utf-8?B?VW5jUmh3Q21YN1dVQ2ZMakc0K3dOa2t0Rjh5ZlFjYmZKWFdUTWJZSnFic3Ir?=
- =?utf-8?B?WXY1Q1lFZDRzb2E0WlI0c1ZqS3BDWXo0bmJwNE1QSE5ha2FwMzN2QjA5aHBH?=
- =?utf-8?B?MGNDckxNUEZPcEE3S0Jxa3U2dUtkdFRjd00vWlgvdHFqbmpITThCdlhDZlpZ?=
- =?utf-8?B?ekE4WFcxZVQyZEZIOW1kSEhGUzd2NG5SR2tHY2JyWVhUZXVLOTVudDNEN2Nv?=
- =?utf-8?B?QTg0Z0JqQXA0Kyt1SmozencwOWNKSjBOa3E4Q0htck9uNFdSdVNDdU92ejgw?=
- =?utf-8?Q?IlCQIRI8VOroGVIUiJwUhrwWr?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: 2651e2fc-7b10-45ba-a415-08dcc004c65d
-X-MS-Exchange-CrossTenant-AuthSource: CY8PR11MB7009.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 19 Aug 2024 04:09:52.1328
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: fl1XKtFE1R0YxFREdn1bV+ccKBUeEgLahzZzLBqpZ6JjFr7qaPC6voit+WHHj7JuGAH1k7d86viXZcGSKETQuQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM4PR11MB7183
-X-OriginatorOrg: intel.com
-X-TUID: wnux1/ByU5Xo
+In-Reply-To: <20231012121857.31873-8-philmd@linaro.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-TUID: 55i3KgktUAeP
 
-On 8/16/2024 4:17 PM, Manos Pitsidianakis wrote:
-> 
-> 
-> On Fri, 16 Aug 2024, 11:06 Junjie Mao, <junjie.mao@intel.com 
-> <mailto:junjie.mao@intel.com>> wrote:
-> 
->     On 8/15/2024 7:42 PM, Manos Pitsidianakis wrote:
->      > Outstanding issues
->      > ==================
->      >
->      > Outstanding issues that are not blocking for merge are:
->      >
->      > - Cross-compilation for aarch64 is not possible out-of-the-box because of
->     this bug:
->      >    <https://github.com/rust-lang/rust/issues/125619
->     <https://github.com/rust-lang/rust/issues/125619>> in llvm which when
->      >    fixed, must be ported to upstream rust's llvm fork. Since the problem
->      >    is an extraneous symbol we could strip it with objcopy -N|--strip-symbol
->      > - Adding more than one Rust device ends up with duplicate symbols from
->      >    rust std library because we are linking as whole archives because...
->      >    constructors are stripped by the linker otherwise :( It can be worked
->      >    around if a single Rust library is built with all the devices as
->      >    dependencies which is then linked to qemu. The fix is a small change
->      >    which I will add either in a next version or when a new Rust device is
->      >    added.
->      >
-> 
->     Hi Manos,
-> 
->     I also noticed that when I tried adding a second device. Some other projects
->     met
->     similar issues [1], but no clean solution seems to be available yet. The
->     options
->     are:
-> 
->     1) Combining all crates into one staticlib which is linked to the final
->     executable. That requires generating one .rs with extern crate decls of all
->     enabled crates. In the context of QEMU, different targets may enable different
->     set of crates (e.g., some crates have arch constraints), thus one .rs for each
->     target will be needed in general.
-> 
->     2) Linking rlibs (or emitted objects) directly with other C objects using the C
->     linker. That somehow works (with some tricks) but is not officially supported
->     and may break in the future.
-> 
->     I'm working on (1), but would like to have your thoughts and preference on
->     those
->     options.
-> 
-> 
-> Hello Junjie, I have also implemented (1) already (the fix I mentioned in the 
-> cover letter). In general I'd like to do it on a standalone patch so that it can 
-> be separated from the other changes instead of squashing it.
-> 
-> If you have something already too, please share here! I will send mine as a 
-> reply to this thread when I am able. I am not familiar with meson so my version 
-> could be lacking!
+Hi Phil
 
-Here's my version for your reference. There are still a few places yet to be 
-improved:
+On 10/12/23 9:18 AM, Philippe Mathieu-Daudé wrote:
+> The MSI registers belong the the host bridge. Move the
+> DesignwarePCIEMSI field to the host bridge state.
 
-1. Each virtual device is required to write an additional `variables: {'crate': 
-'crate_name'}` in dep decl. It duplicates the crate name which is already given 
-in the static_libary() call, "abuses" the dep variables originally for cmake or 
-pkg-config, but is the only way I found to include the crate name in the dep.
+I would say MSI registers are more tied to the PCI/PCIe network
+side than to the host side. The MSI registers control if an
+interrupt will be delivered to a host by looking at MSI data
+payload to determine which end point sent the MSI packet and
+which interrupt vector it corresponds to.
 
-2. Names of variables and scripts are tentative.
+Why do you say the belong to the host bridge?
 
-diff --git a/meson.build b/meson.build
-index 97f90a9a60..07401b379a 100644
---- a/meson.build
-+++ b/meson.build
-@@ -3879,6 +3879,8 @@ common_all = static_library('common',
-                              dependencies: common_ss.all_dependencies())
+In 0/8 you mentioned you "noticed few discrepancies due to the
+fact that host bridge pieces were managed by the root function",
+is this patch addressing some of these discrepancies? What are
+them exactly?
 
-  if have_rust and have_system
-+  rust_root_crate = find_program('scripts/rust_root_crate.sh')
-+
-    rust_args += run_command(
-      meson.global_source_root() / 'scripts/rustc_args.py',
-      '--config-headers', meson.project_build_root() / 'config-host.h',
-@@ -3916,6 +3918,8 @@ if have_rust and have_system
-        '--allowlist-file', meson.project_build_root() + '/.*'
-        ],
-      )
-+
-+  rust_ss = ss.source_set()
-    subdir('rust')
-  endif
+This patch also needs a rebase onto master.
 
-@@ -4013,6 +4017,28 @@ foreach target : target_dirs
-    arch_srcs += target_specific.sources()
-    arch_deps += target_specific.dependencies()
 
-+  if have_rust and have_system
-+    target_rust = rust_ss.apply(config_target, strict: false)
-+    crates = []
-+    foreach dep : target_rust.dependencies()
-+      crates += dep.get_variable('crate')
-+    endforeach
-+    if crates.length() > 0
-+      root_crate = custom_target('rust-' + target + '.rs',
-+                                 output: 'rust-' + target + '.rs',
-+                                 command: [rust_root_crate] + crates,
-+                                 capture: true,
-+                                 build_by_default: true,
-+                                 build_always_stale: true)
-+      rust_lib = static_library('rust-' + target,
-+                                root_crate,
-+                                dependencies: target_rust.dependencies(),
-+                                rust_abi: 'c')
-+      arch_deps += declare_dependency(link_whole: [rust_lib])
-+    endif
-+  endif
-+
-    # allow using headers from the dependencies but do not include the sources,
-    # because this emulator only needs those in "objects".  For external
-    # dependencies, the full dependency is included below in the executable.
-diff --git a/rust/hw/char/pl011/meson.build b/rust/hw/char/pl011/meson.build
-index 518d4924a9..55d68ffb5c 100644
---- a/rust/hw/char/pl011/meson.build
-+++ b/rust/hw/char/pl011/meson.build
-@@ -8,7 +8,7 @@ _libpl011_rs = static_library(
-    'pl011',
-    files('src/lib.rs'),
-    override_options: ['rust_std=2021', 'build.rust_std=2021'],
--  rust_abi: 'c',
-+  rust_abi: 'rust',
-    dependencies: [
-      bilge_dep,
-      bilge_impl_dep,
-@@ -16,6 +16,7 @@ _libpl011_rs = static_library(
-    ],
-  )
+Cheers,
+Gustavo
 
--specific_ss.add(when: 'CONFIG_X_PL011_RUST', if_true: [declare_dependency(
-+rust_ss.add(when: 'CONFIG_X_PL011_RUST', if_true: [declare_dependency(
-    link_whole: [_libpl011_rs],
-+  variables: {'crate': 'pl011'},
-  )])
-diff --git a/scripts/rust_root_crate.sh b/scripts/rust_root_crate.sh
-new file mode 100755
-index 0000000000..46d7e8728a
---- /dev/null
-+++ b/scripts/rust_root_crate.sh
-@@ -0,0 +1,12 @@
-+#!/bin/sh
-+
-+set -eu
-+
-+cat <<EOF
-+/* This file is autogenerated by scripts/rust_root_crate.sh. */
-+
-+EOF
-+
-+for crate in $*; do
-+    echo "extern crate $crate;"
-+done
 
----
-Best Regards
-Junjie Mao
-
+> This is a migration compatibility break for the machines
+> using the i.MX7 SoC (currently the mcimx7d-sabre machine).
 > 
-> Manos
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> ---
+>   include/hw/pci-host/designware.h |  2 +-
+>   hw/pci-host/designware.c         | 79 ++++++++++++++++----------------
+>   2 files changed, 40 insertions(+), 41 deletions(-)
 > 
-> 
-> 
->     [1] https://github.com/rust-lang/rust/issues/73632
->     <https://github.com/rust-lang/rust/issues/73632>
-> 
->     ---
->     Best Regards
->     Junjie Mao
+> diff --git a/include/hw/pci-host/designware.h b/include/hw/pci-host/designware.h
+> index 702777ab17..fe8e8a9f24 100644
+> --- a/include/hw/pci-host/designware.h
+> +++ b/include/hw/pci-host/designware.h
+> @@ -63,7 +63,6 @@ typedef struct DesignwarePCIEMSI {
+>   struct DesignwarePCIERoot {
+>       PCIBridge parent_obj;
+>   
+> -    DesignwarePCIEMSI msi;
+>       DesignwarePCIEHost *host;
+>   };
+>   
+> @@ -71,6 +70,7 @@ struct DesignwarePCIEHost {
+>       PCIHostState parent_obj;
+>   
+>       DesignwarePCIERoot root;
+> +    DesignwarePCIEMSI msi;
+>   
+>       uint32_t atu_viewport;
+>   #define DESIGNWARE_PCIE_VIEWPORT_OUTBOUND    0
+> diff --git a/hw/pci-host/designware.c b/hw/pci-host/designware.c
+> index 2ef17137e2..6cb8655a75 100644
+> --- a/hw/pci-host/designware.c
+> +++ b/hw/pci-host/designware.c
+> @@ -57,7 +57,7 @@
+>   
+>   #define DESIGNWARE_PCIE_IRQ_MSI                    3
+>   
+> -static uint64_t designware_pcie_root_msi_read(void *opaque, hwaddr addr,
+> +static uint64_t designware_pcie_host_msi_read(void *opaque, hwaddr addr,
+>                                                 unsigned size)
+>   {
+>       /*
+> @@ -74,22 +74,21 @@ static uint64_t designware_pcie_root_msi_read(void *opaque, hwaddr addr,
+>       return 0;
+>   }
+>   
+> -static void designware_pcie_root_msi_write(void *opaque, hwaddr addr,
+> +static void designware_pcie_host_msi_write(void *opaque, hwaddr addr,
+>                                              uint64_t val, unsigned len)
+>   {
+> -    DesignwarePCIERoot *root = DESIGNWARE_PCIE_ROOT(opaque);
+> -    DesignwarePCIEHost *host = root->host;
+> +    DesignwarePCIEHost *host = opaque;
+>   
+> -    root->msi.intr[0].status |= BIT(val) & root->msi.intr[0].enable;
+> +    host->msi.intr[0].status |= BIT(val) & host->msi.intr[0].enable;
+>   
+> -    if (root->msi.intr[0].status & ~root->msi.intr[0].mask) {
+> +    if (host->msi.intr[0].status & ~host->msi.intr[0].mask) {
+>           qemu_set_irq(host->pci.irqs[DESIGNWARE_PCIE_IRQ_MSI], 1);
+>       }
+>   }
+>   
+>   static const MemoryRegionOps designware_pci_host_msi_ops = {
+> -    .read = designware_pcie_root_msi_read,
+> -    .write = designware_pcie_root_msi_write,
+> +    .read = designware_pcie_host_msi_read,
+> +    .write = designware_pcie_host_msi_write,
+>       .endianness = DEVICE_LITTLE_ENDIAN,
+>       .valid = {
+>           .min_access_size = 4,
+> @@ -97,12 +96,12 @@ static const MemoryRegionOps designware_pci_host_msi_ops = {
+>       },
+>   };
+>   
+> -static void designware_pcie_root_update_msi_mapping(DesignwarePCIERoot *root)
+> +static void designware_pcie_host_update_msi_mapping(DesignwarePCIEHost *host)
+>   
+>   {
+> -    MemoryRegion *mem   = &root->msi.iomem;
+> -    const uint64_t base = root->msi.base;
+> -    const bool enable   = root->msi.intr[0].enable;
+> +    MemoryRegion *mem   = &host->msi.iomem;
+> +    const uint64_t base = host->msi.base;
+> +    const bool enable   = host->msi.intr[0].enable;
+>   
+>       memory_region_set_address(mem, base);
+>       memory_region_set_enabled(mem, enable);
+> @@ -147,23 +146,23 @@ designware_pcie_root_config_read(PCIDevice *d, uint32_t address, int len)
+>           break;
+>   
+>       case DESIGNWARE_PCIE_MSI_ADDR_LO:
+> -        val = root->msi.base;
+> +        val = host->msi.base;
+>           break;
+>   
+>       case DESIGNWARE_PCIE_MSI_ADDR_HI:
+> -        val = root->msi.base >> 32;
+> +        val = host->msi.base >> 32;
+>           break;
+>   
+>       case DESIGNWARE_PCIE_MSI_INTR0_ENABLE:
+> -        val = root->msi.intr[0].enable;
+> +        val = host->msi.intr[0].enable;
+>           break;
+>   
+>       case DESIGNWARE_PCIE_MSI_INTR0_MASK:
+> -        val = root->msi.intr[0].mask;
+> +        val = host->msi.intr[0].mask;
+>           break;
+>   
+>       case DESIGNWARE_PCIE_MSI_INTR0_STATUS:
+> -        val = root->msi.intr[0].status;
+> +        val = host->msi.intr[0].status;
+>           break;
+>   
+>       case DESIGNWARE_PCIE_PHY_DEBUG_R1:
+> @@ -305,29 +304,29 @@ static void designware_pcie_root_config_write(PCIDevice *d, uint32_t address,
+>           break;
+>   
+>       case DESIGNWARE_PCIE_MSI_ADDR_LO:
+> -        root->msi.base &= 0xFFFFFFFF00000000ULL;
+> -        root->msi.base |= val;
+> -        designware_pcie_root_update_msi_mapping(root);
+> +        host->msi.base &= 0xFFFFFFFF00000000ULL;
+> +        host->msi.base |= val;
+> +        designware_pcie_host_update_msi_mapping(host);
+>           break;
+>   
+>       case DESIGNWARE_PCIE_MSI_ADDR_HI:
+> -        root->msi.base &= 0x00000000FFFFFFFFULL;
+> -        root->msi.base |= (uint64_t)val << 32;
+> -        designware_pcie_root_update_msi_mapping(root);
+> +        host->msi.base &= 0x00000000FFFFFFFFULL;
+> +        host->msi.base |= (uint64_t)val << 32;
+> +        designware_pcie_host_update_msi_mapping(host);
+>           break;
+>   
+>       case DESIGNWARE_PCIE_MSI_INTR0_ENABLE:
+> -        root->msi.intr[0].enable = val;
+> -        designware_pcie_root_update_msi_mapping(root);
+> +        host->msi.intr[0].enable = val;
+> +        designware_pcie_host_update_msi_mapping(host);
+>           break;
+>   
+>       case DESIGNWARE_PCIE_MSI_INTR0_MASK:
+> -        root->msi.intr[0].mask = val;
+> +        host->msi.intr[0].mask = val;
+>           break;
+>   
+>       case DESIGNWARE_PCIE_MSI_INTR0_STATUS:
+> -        root->msi.intr[0].status ^= val;
+> -        if (!root->msi.intr[0].status) {
+> +        host->msi.intr[0].status ^= val;
+> +        if (!host->msi.intr[0].status) {
+>               qemu_set_irq(host->pci.irqs[DESIGNWARE_PCIE_IRQ_MSI], 0);
+>           }
+>           break;
+> @@ -495,7 +494,7 @@ static void designware_pcie_root_realize(PCIDevice *dev, Error **errp)
+>       viewport->cr[1] = DESIGNWARE_PCIE_ATU_ENABLE;
+>       designware_pcie_update_viewport(root, viewport);
+>   
+> -    memory_region_init_io(&root->msi.iomem, OBJECT(root),
+> +    memory_region_init_io(&host->msi.iomem, OBJECT(root),
+>                             &designware_pci_host_msi_ops,
+>                             root, "pcie-msi", 0x4);
+>       /*
+> @@ -504,8 +503,8 @@ static void designware_pcie_root_realize(PCIDevice *dev, Error **errp)
+>        * in designware_pcie_root_update_msi_mapping() as a part of
+>        * initialization done by guest OS
+>        */
+> -    memory_region_add_subregion(address_space, dummy_offset, &root->msi.iomem);
+> -    memory_region_set_enabled(&root->msi.iomem, false);
+> +    memory_region_add_subregion(address_space, dummy_offset, &host->msi.iomem);
+> +    memory_region_set_enabled(&host->msi.iomem, false);
+>   }
+>   
+>   static void designware_pcie_set_irq(void *opaque, int irq_num, int level)
+> @@ -564,15 +563,10 @@ static const VMStateDescription vmstate_designware_pcie_viewport = {
+>   
+>   static const VMStateDescription vmstate_designware_pcie_root = {
+>       .name = "designware-pcie-root",
+> -    .version_id = 2,
+> -    .minimum_version_id = 2,
+> +    .version_id = 3,
+> +    .minimum_version_id = 3,
+>       .fields = (VMStateField[]) {
+>           VMSTATE_PCI_DEVICE(parent_obj, PCIBridge),
+> -        VMSTATE_STRUCT(msi,
+> -                       DesignwarePCIERoot,
+> -                       1,
+> -                       vmstate_designware_pcie_msi,
+> -                       DesignwarePCIEMSI),
+>           VMSTATE_END_OF_LIST()
+>       }
+>   };
+> @@ -704,8 +698,8 @@ static void designware_pcie_host_realize(DeviceState *dev, Error **errp)
+>   
+>   static const VMStateDescription vmstate_designware_pcie_host = {
+>       .name = "designware-pcie-host",
+> -    .version_id = 2,
+> -    .minimum_version_id = 2,
+> +    .version_id = 3,
+> +    .minimum_version_id = 3,
+>       .fields = (VMStateField[]) {
+>           VMSTATE_STRUCT(root,
+>                          DesignwarePCIEHost,
+> @@ -720,6 +714,11 @@ static const VMStateDescription vmstate_designware_pcie_host = {
+>                                  1,
+>                                  vmstate_designware_pcie_viewport,
+>                                  DesignwarePCIEViewport),
+> +        VMSTATE_STRUCT(msi,
+> +                       DesignwarePCIEHost,
+> +                       1,
+> +                       vmstate_designware_pcie_msi,
+> +                       DesignwarePCIEMSI),
+>           VMSTATE_END_OF_LIST()
+>       }
+>   };
 > 

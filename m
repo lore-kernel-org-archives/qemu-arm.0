@@ -1,254 +1,198 @@
-Received: by 2002:a17:504:9188:b0:1be9:327d:8ee3 with SMTP id i8csp2057059njf;
-        Mon, 19 Aug 2024 05:51:57 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCW7K6kdO2zJawxqTO9lWCo0O0fzZlY3Q+6s/liZKTttd3uomlW3/K+ur5pSPE4E3D5DTFVRNFvCzNgPRkgKT5bui11LVYzo
-X-Google-Smtp-Source: AGHT+IEJ6wE4cic1WYiMIr9wbEgbPMvZ1zgR7ukk+8ZfAFtOGCRC0i1U/3lUm4iRqyerd+o4Uc/+
-X-Received: by 2002:a05:622a:259b:b0:453:7706:75a8 with SMTP id d75a77b69052e-453770689edmr140314671cf.13.1724071917126;
-        Mon, 19 Aug 2024 05:51:57 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1724071917; cv=pass;
+Received: by 2002:a17:504:9188:b0:1be9:327d:8ee3 with SMTP id i8csp2048506njf;
+        Mon, 19 Aug 2024 05:21:27 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWRqUlQesrnOUw1kLENUXMyNKt2wy2+cTfrAYMcwsqs1UyEsFxx+oYPoci1EMDP93dZ7nOtL1Mztm3HjIq4Thik7y5xGSJD
+X-Google-Smtp-Source: AGHT+IFSKzgShNhZNPlEtX26eT/2n+y0aHWJns6mEds6+oyaC7XIIrBsVnblOrrOBXLGe4fZT1AZ
+X-Received: by 2002:a05:600c:1d05:b0:426:6e95:78d6 with SMTP id 5b1f17b1804b1-429ed785cdemr67676545e9.4.1724070086802;
+        Mon, 19 Aug 2024 05:21:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1724070086; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ua/HEyUBKQvK7uiDCGZg82XfTv+v9RufaW1busO5ZWHCDQiCeA2K9i6SNTqVk+n/+n
-         4gnTaRqshLxe5Ywl8Mi4ILd+CM7npKubZb6DFkEHFpaj9RzxB1orJAYKP7uu5x134q1s
-         Pchfw1QEsrgU9CAWkwrPzZE6+z4kV5xuZqCTW2OhavBuvKXXNo2gRC3KDPGkIH3Se22x
-         LESsHj9SUtQyo8/TQVZYWfiE31tjR8nUV2JUtw+bRehpnJ3aky9gC62tAFAi4ztXR8yT
-         dVFlrzg82awsitOxFUrcdE7miv2bcuBS0JA1NsHE2bPyA248uDGdk4M5SVqif/UZeW7i
-         4W2w==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=by+QCFBT6MiEPhb9gf96i+Wtei4ibVP3WzqXMkTBrlg=;
-        fh=5zhvEsYSO7dOqVfxXN7t/EgL9y5bu+TGrDyXQjsGWao=;
-        b=ueQb1h5CI4iYcBBSDcxVYPRHnLlixf9Qj6o2G7TUpFYsBEcsxLlqSq10QAj//VAYt7
-         NzgF7FHHUQoD+GVp7CgdqSP46sHIOVYT1aVI1c705D2frPSOC3t8AgzO5aryLuNApsoG
-         2WajgcFMqKe+q5ukGw68rqCPV2QXCV6tRhpuD3hGdETB/g4sxyRNdwoluISt5OtdRjP8
-         de3ul0vPhzbJrXveV8J4tT26A4SNHLIPRKQOpjkqUNIL/ld7pe7XBWGFjUxftou3bpEe
-         bDEb9ZJe0LX8cyu9RK/B37TrVfQBVpwuaQ1WUPkgh1O2NGNrsFEgy6jZnAJKNGinNF2m
-         jcVw==;
+        b=ODnXXEU3AQGk5Z1ns5QqXvU8wrWJa3Nummz4YGnrBltQYv/8cyDr29afOxi6ROlr3a
+         bxJSUk4MJOuVvTSBM45trGzazths1pR0zVijheYxip/qyRmaTSgZTzir55+mnCQCPOnK
+         Xf7VQPQtevvP5fo+zmJIiPWLWAKjex7Y6ZeL53oN8iwE/YIK4DQ0LJdsRIZ3UUGC2NjY
+         V7KMFZA8qfNoQukp0iki6wnOJ2SIg6QWjBFzmjxy0oFdaiyuUZ0xv3LCPiKoDP/AfL1w
+         AuRfgSIsI60XzOI6o7c0gR0b6lNUzJYarR33VGFX93MhCNI5YhGBUX5PzvOGAj3u2O1t
+         Ck5w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:content-transfer-encoding:content-language
+         :accept-language:in-reply-to:references:message-id:date:thread-index
+         :thread-topic:subject:cc:to:from;
+        bh=PP1MQ+QD9NFPq2PwKZ6mtJj2GKpkymm0awnlhpxAcKg=;
+        fh=IcghoZT+iwDwnUWe0/8u2lfgCRl3Js+UrcNMjs/i9hE=;
+        b=ZzgplZh8qRV3bKGSu+bGdAOtVYMX1kbtr1ZxVZrCib5+92jDI/gxz7JQHC6VWhjx8C
+         NKmwI95WBb1xUTJ113aPOOZqApz8yFU+tp3cymE4GZniv9vou8/lDayZ+b1FeU3HnpW9
+         IiIWtll4n57I9TIiGhr6SrrUWeZB4GmP9B4qMPB1g7jGLoRRUnIaficiEe59ZjP7vrKQ
+         IPXMPkje5tMMJU+xGWqDfWPqSza2KopnPI0CcwMQJWdAnbj2EuJqV6AmBXSQuOd3f5ic
+         l6dQd0E3AoW8SLz8VA9k2Gf0cs9JZ214bNXOgBG3Y24lGEBB4E4rffC4JvbHi76WgDYZ
+         HXwQ==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=XLzdRlZi;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of linux-kernel+bounces-292110-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-292110-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <linux-kernel+bounces-292110-alex.bennee=linaro.org@vger.kernel.org>
-Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [2604:1380:45d1:ec00::1])
-        by mx.google.com with ESMTPS id d75a77b69052e-4536a0dafe8si106811631cf.639.2024.08.19.05.51.57
-        for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 19 Aug 2024 05:51:57 -0700 (PDT)
-Received-SPF: pass (google.com: domain of linux-kernel+bounces-292110-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) client-ip=2604:1380:45d1:ec00::1;
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Return-Path: <salil.mehta@huawei.com>
+Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
+        by mx.google.com with ESMTPS id ffacd0b85a97d-371898b1661si4226921f8f.639.2024.08.19.05.21.26
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 19 Aug 2024 05:21:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=XLzdRlZi;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of linux-kernel+bounces-292110-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-292110-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ny.mirrors.kernel.org (Postfix) with ESMTPS id C53D91C21AF2
-	for <alex.bennee@linaro.org>; Mon, 19 Aug 2024 12:51:56 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 6FE3A16A95B;
-	Mon, 19 Aug 2024 12:51:44 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="XLzdRlZi"
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8F92216849F
-	for <linux-kernel@vger.kernel.org>; Mon, 19 Aug 2024 12:51:42 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.133.124
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1724071904; cv=none; b=rRwXT3gfXJus2mTScTaGrFJLzrQVsrX03mT9DjMQOzDhBb6JeKpDQb0SDCwNhTDe2NuIGinBCSJFQwrfS7msj7YuFeP5GYSftONa+m4NLAuuK4at0a1SV1+6Fj2Uw2fXAE6lNBaikt54QbpPTl2Ljhjv7cxv3GIzkbnYqVJz8o4=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1724071904; c=relaxed/simple;
-	bh=Tp60tvpmXwimkntneg2cYy+EyA+zEdByTTCcBNV0cc8=;
-	h=Date:From:To:Cc:Subject:Message-ID:In-Reply-To:References:
-	 MIME-Version:Content-Type; b=MuaLK1c9gVOcVYZIZYA/7uzY4/oghJ64kqC9FQztXyJGreopjgA/XFrtO+2jpTIa5zlsK2ux7B24EFUZ3li6HW8989M2tac/nPXuAfkkDYzBz6QbnZlRLt/CNFQd/15J1fuAJOQb+Dq0c5Hr2NPHCUkzlmFYQB0Dye/xbOgkLtQ=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=XLzdRlZi; arc=none smtp.client-ip=170.10.133.124
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1724071901;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=by+QCFBT6MiEPhb9gf96i+Wtei4ibVP3WzqXMkTBrlg=;
-	b=XLzdRlZi9DCwD9/uYOnLJnZMGK/ZjXbIsz00HChi1YyBN4WsurzYo6chmbeDxE3lnPYL7B
-	kJUOX9iL24emjjjbOWmELAqSNmo4vOna04qtoFo4qXnz24WkSi9XL2rokXu7tQ5Zc0lprG
-	4fvBX1aWZeSPZ6LJfI/P8OWje8NdtH8=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-410-S5sW4amVOSKHk7FpkiSAsw-1; Mon, 19 Aug 2024 08:51:40 -0400
-X-MC-Unique: S5sW4amVOSKHk7FpkiSAsw-1
-Received: by mail-wr1-f69.google.com with SMTP id ffacd0b85a97d-37193ed09b2so1700329f8f.1
-        for <linux-kernel@vger.kernel.org>; Mon, 19 Aug 2024 05:51:40 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1724071899; x=1724676699;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=by+QCFBT6MiEPhb9gf96i+Wtei4ibVP3WzqXMkTBrlg=;
-        b=TyShTrE/q4pxAcAxVMQOYtyZwGuIL7nzOu2awDXOcqGBAogJ4/WnzwdFZEwxZhu8Oc
-         PCnWKiki3xFayjF2fNX4iBpmbc0qkaDgpEK/XKNIkTcLV3jAx4OkKIxh1GG7Hb/c3cC+
-         snoiPYQ9rSYon0p4yawgSQUijZeMyvHzIUokzh10//YGWQ4zCAg+GD65aClsW/gkQ41S
-         sOGjQE7kky2qSU/VUZ+Eh077OrfOXADckO2/DFWphqqwnjm+1UIox/7Z5raN0+lxqdni
-         9Y6OtokPognCm9FEYrdPVF5FbNqhmfR9liX24VKZU903g2xbi1MjlLFuj25aRpvWRY79
-         q5+A==
-X-Forwarded-Encrypted: i=1; AJvYcCV1/9038aQ8a8CmCr8K7NmWZUjnXupAf1NJvFHUkKjgdIXyf/mmxPvST74LafzyTQOI63wZxj5MtGbL+chJPOSbsmTikHMUUePLjn5O
-X-Gm-Message-State: AOJu0YymvkOPOYdPzECMn8L5GsfHg5eqxoT+FNbfEwUea+FwbdPAxZDh
-	BwOXI494TpP0+74ZWnu+gqSaFrVDtg9TmY5PCccMfO0tldXRtZKfr12+pcBKcezO/3HZPbPJQ6L
-	+MG+RZiT+OfHxsRZNKcstp+9ikba6mMDP8iJ+AHAPjBSjAtXAvPSOw31M7kY+Qw==
-X-Received: by 2002:a05:600c:a4f:b0:426:67f9:a7d8 with SMTP id 5b1f17b1804b1-429ed9f844fmr70111975e9.9.1724071898914;
-        Mon, 19 Aug 2024 05:51:38 -0700 (PDT)
-X-Received: by 2002:a05:600c:a4f:b0:426:67f9:a7d8 with SMTP id 5b1f17b1804b1-429ed9f844fmr70111795e9.9.1724071898403;
-        Mon, 19 Aug 2024 05:51:38 -0700 (PDT)
-Received: from imammedo.users.ipa.redhat.com (nat-pool-brq-t.redhat.com. [213.175.37.10])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-429ed65072asm108393795e9.13.2024.08.19.05.51.37
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 19 Aug 2024 05:51:37 -0700 (PDT)
-Date: Mon, 19 Aug 2024 14:51:36 +0200
-From: Igor Mammedov <imammedo@redhat.com>
-To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>, Shiju Jose
- <shiju.jose@huawei.com>, "Michael S. Tsirkin" <mst@redhat.com>, Ani Sinha
- <anisinha@redhat.com>, Dongjiu Geng <gengdongjiu1@gmail.com>,
- linux-kernel@vger.kernel.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [PATCH v8 06/13] acpi/ghes: add support for generic error
- injection via QAPI
-Message-ID: <20240819145136.0452ff2b@imammedo.users.ipa.redhat.com>
-In-Reply-To: <2c8970b5d54d17b601dc65d778cc8b5fb288984b.1723793768.git.mchehab+huawei@kernel.org>
-References: <cover.1723793768.git.mchehab+huawei@kernel.org>
-	<2c8970b5d54d17b601dc65d778cc8b5fb288984b.1723793768.git.mchehab+huawei@kernel.org>
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
-Precedence: bulk
-X-Mailing-List: linux-kernel@vger.kernel.org
-List-Id: <linux-kernel.vger.kernel.org>
-List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
+       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Received: from mail.maildlp.com (unknown [172.18.186.216])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4WnWns1H5Gz6K6yv;
+	Mon, 19 Aug 2024 20:17:53 +0800 (CST)
+Received: from lhrpeml100003.china.huawei.com (unknown [7.191.160.210])
+	by mail.maildlp.com (Postfix) with ESMTPS id 620661400D7;
+	Mon, 19 Aug 2024 20:21:25 +0800 (CST)
+Received: from lhrpeml500001.china.huawei.com (7.191.163.213) by
+ lhrpeml100003.china.huawei.com (7.191.160.210) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.39; Mon, 19 Aug 2024 13:21:25 +0100
+Received: from lhrpeml500001.china.huawei.com ([7.191.163.213]) by
+ lhrpeml500001.china.huawei.com ([7.191.163.213]) with mapi id 15.01.2507.039;
+ Mon, 19 Aug 2024 13:21:24 +0100
+From: Salil Mehta <salil.mehta@huawei.com>
+To: Gavin Shan <gshan@redhat.com>, "qemu-devel@nongnu.org"
+	<qemu-devel@nongnu.org>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+	"mst@redhat.com" <mst@redhat.com>
+CC: "maz@kernel.org" <maz@kernel.org>, "jean-philippe@linaro.org"
+	<jean-philippe@linaro.org>, Jonathan Cameron <jonathan.cameron@huawei.com>,
+	"lpieralisi@kernel.org" <lpieralisi@kernel.org>, "peter.maydell@linaro.org"
+	<peter.maydell@linaro.org>, "richard.henderson@linaro.org"
+	<richard.henderson@linaro.org>, "imammedo@redhat.com" <imammedo@redhat.com>,
+	"andrew.jones@linux.dev" <andrew.jones@linux.dev>, "david@redhat.com"
+	<david@redhat.com>, "philmd@linaro.org" <philmd@linaro.org>,
+	"eric.auger@redhat.com" <eric.auger@redhat.com>, "will@kernel.org"
+	<will@kernel.org>, "ardb@kernel.org" <ardb@kernel.org>,
+	"oliver.upton@linux.dev" <oliver.upton@linux.dev>, "pbonzini@redhat.com"
+	<pbonzini@redhat.com>, "rafael@kernel.org" <rafael@kernel.org>,
+	"borntraeger@linux.ibm.com" <borntraeger@linux.ibm.com>,
+	"alex.bennee@linaro.org" <alex.bennee@linaro.org>, "npiggin@gmail.com"
+	<npiggin@gmail.com>, "harshpb@linux.ibm.com" <harshpb@linux.ibm.com>,
+	"linux@armlinux.org.uk" <linux@armlinux.org.uk>,
+	"darren@os.amperecomputing.com" <darren@os.amperecomputing.com>,
+	"ilkka@os.amperecomputing.com" <ilkka@os.amperecomputing.com>,
+	"vishnu@os.amperecomputing.com" <vishnu@os.amperecomputing.com>,
+	"karl.heubaum@oracle.com" <karl.heubaum@oracle.com>, "miguel.luis@oracle.com"
+	<miguel.luis@oracle.com>, "salil.mehta@opnsrc.net" <salil.mehta@opnsrc.net>,
+	zhukeqian <zhukeqian1@huawei.com>, "wangxiongfeng (C)"
+	<wangxiongfeng2@huawei.com>, "wangyanan (Y)" <wangyanan55@huawei.com>,
+	"jiakernel2@gmail.com" <jiakernel2@gmail.com>, "maobibo@loongson.cn"
+	<maobibo@loongson.cn>, "lixianglai@loongson.cn" <lixianglai@loongson.cn>,
+	"shahuang@redhat.com" <shahuang@redhat.com>, "zhao1.liu@intel.com"
+	<zhao1.liu@intel.com>, Linuxarm <linuxarm@huawei.com>
+Subject: RE: [PATCH RFC V3 17/29] arm/virt: Release objects for *disabled*
+ possible vCPUs after init
+Thread-Topic: [PATCH RFC V3 17/29] arm/virt: Release objects for *disabled*
+ possible vCPUs after init
+Thread-Index: AQHaveuckEaR/Tp4NUKcalC/yUyS9LIksGYAgAo1aXA=
+Date: Mon, 19 Aug 2024 12:21:24 +0000
+Message-ID: <6b435c1f2b934867b8d82850d6d866c6@huawei.com>
+References: <20240613233639.202896-1-salil.mehta@huawei.com>
+	<20240613233639.202896-18-salil.mehta@huawei.com>
+ <51dc0813-7dc9-4927-a24b-bd718be54e46@redhat.com>
+In-Reply-To: <51dc0813-7dc9-4927-a24b-bd718be54e46@redhat.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach:
+X-MS-TNEF-Correlator:
+x-originating-ip: [10.48.151.47]
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-TUID: K70UlrQV4BTO
+X-TUID: JlvtuYCNs/6a
 
-On Fri, 16 Aug 2024 09:37:38 +0200
-Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
-
-> Provide a generic interface for error injection via GHESv2.
-> 
-> This patch is co-authored:
->     - original ghes logic to inject a simple ARM record by Shiju Jose;
->     - generic logic to handle block addresses by Jonathan Cameron;
->     - generic GHESv2 error inject by Mauro Carvalho Chehab;
-> 
-> Co-authored-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-> Co-authored-by: Shiju Jose <shiju.jose@huawei.com>
-> Co-authored-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-> Signed-off-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-> Signed-off-by: Shiju Jose <shiju.jose@huawei.com>
-> Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-> ---
->  hw/acpi/ghes.c      | 57 +++++++++++++++++++++++++++++++++++++++++++++
->  hw/acpi/ghes_cper.c |  2 +-
->  2 files changed, 58 insertions(+), 1 deletion(-)
-> 
-> diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
-> index 7870f51e2a9e..a3ae710dcf81 100644
-> --- a/hw/acpi/ghes.c
-> +++ b/hw/acpi/ghes.c
-> @@ -500,6 +500,63 @@ int acpi_ghes_record_errors(enum AcpiGhesNotifyType notify,
->  NotifierList acpi_generic_error_notifiers =
->      NOTIFIER_LIST_INITIALIZER(error_device_notifiers);
->  
-> +void ghes_record_cper_errors(uint8_t *cper, size_t len,
-> +                             enum AcpiGhesNotifyType notify, Error **errp)
-> +{
-> +    uint64_t cper_addr, read_ack_start_addr;
-> +    enum AcpiHestSourceId source;
-> +    AcpiGedState *acpi_ged_state;
-> +    AcpiGhesState *ags;
-> +    uint64_t read_ack;
-> +
-> +    if (ghes_notify_to_source_id(notify, &source)) {
-> +        error_setg(errp,
-> +                   "GHES: Invalid error block/ack address(es) for notify %d",
-> +                   notify);
-> +        return;
-> +    }
-> +
-> +    acpi_ged_state = ACPI_GED(object_resolve_path_type("", TYPE_ACPI_GED,
-> +                                                       NULL));
-> +    g_assert(acpi_ged_state);
-> +    ags = &acpi_ged_state->ghes_state;
-> +
-> +    cper_addr = le64_to_cpu(ags->ghes_addr_le);
-       ^^^ suggest to rename to error_block_address
-       that way reader can easily match it with spec.
-
-> +    cper_addr += ACPI_HEST_SRC_ID_COUNT * sizeof(uint64_t);
-and it would be better to merge this with previous line to be more clear
- + to avoid shifting meaning of variable between lines.
-
-> +    read_ack_start_addr = cper_addr + source * sizeof(uint64_t);
-
-> +    cper_addr += ACPI_HEST_SRC_ID_COUNT * sizeof(uint64_t);
-> +    cper_addr += source * ACPI_GHES_MAX_RAW_DATA_LENGTH;
-I'd avoid changing meaning of variable, it adds up to confusion.
-Anyway, what the point of of above math?  
-
-> +
-> +    cpu_physical_memory_read(read_ack_start_addr,
-> +                             &read_ack, sizeof(uint64_t));
-s/sizeof(uint64_t)/sizeof(read_ack)/
-ditto elsewhere
-
-> +
-> +    /* zero means OSPM does not acknowledge the error */
-> +    if (!read_ack) {
-> +        error_setg(errp,
-> +                   "Last CPER record was not acknowledged yet");
-
-> +        read_ack = 1;
-> +        cpu_physical_memory_write(read_ack_start_addr,
-> +                                  &read_ack, (uint64_t));
-we don't do this for SEV so, why are you setting it to 1 here?
-
-
-> +        return;
-> +    }
-> +
-> +    read_ack = cpu_to_le64(0);
-> +    cpu_physical_memory_write(read_ack_start_addr,
-> +                              &read_ack, sizeof(uint64_t));
-> +
-> +    /* Build CPER record */
-> +
-> +    if (len > ACPI_GHES_MAX_RAW_DATA_LENGTH) {
-> +        error_setg(errp, "GHES CPER record is too big: %ld", len);
-> +    }
-move check at start of function?
-
-> +
-> +    /* Write the generic error data entry into guest memory */
-> +    cpu_physical_memory_write(cper_addr, cper, len);
-> +
-> +    notifier_list_notify(&acpi_generic_error_notifiers, NULL);
-> +}
-> +
->  bool acpi_ghes_present(void)
->  {
->      AcpiGedState *acpi_ged_state;
-> diff --git a/hw/acpi/ghes_cper.c b/hw/acpi/ghes_cper.c
-> index 92ca84d738de..2328dbff7012 100644
-> --- a/hw/acpi/ghes_cper.c
-> +++ b/hw/acpi/ghes_cper.c
-> @@ -29,5 +29,5 @@ void qmp_ghes_cper(const char *qmp_cper,
->          return;
->      }
->  
-> -    /* TODO: call a function at ghes */
-> +    ghes_record_cper_errors(cper, len, ACPI_GHES_NOTIFY_GPIO, errp);
->  }
-
+SGkgR2F2aW4sDQoNCj4gIEZyb206IEdhdmluIFNoYW4gPGdzaGFuQHJlZGhhdC5jb20+DQo+ICBT
+ZW50OiBUdWVzZGF5LCBBdWd1c3QgMTMsIDIwMjQgMjoxNyBBTQ0KPiAgVG86IFNhbGlsIE1laHRh
+IDxzYWxpbC5tZWh0YUBodWF3ZWkuY29tPjsgcWVtdS1kZXZlbEBub25nbnUub3JnOw0KPiAgcWVt
+dS1hcm1Abm9uZ251Lm9yZzsgbXN0QHJlZGhhdC5jb20NCj4gIA0KPiAgT24gNi8xNC8yNCA5OjM2
+IEFNLCBTYWxpbCBNZWh0YSB3cm90ZToNCj4gID4gRHVyaW5nIGBtYWNodmlydF9pbml0KClgLCBR
+T00gQVJNQ1BVIG9iamVjdHMgYXJlIHByZS1jcmVhdGVkIGFsb25nDQo+ICA+IHdpdGggdGhlIGNv
+cnJlc3BvbmRpbmcgS1ZNIHZDUFVzIGluIHRoZSBob3N0IGZvciBhbGwgcG9zc2libGUgdkNQVXMu
+DQo+ICA+IFRoaXMgaXMgbmVjZXNzYXJ5IGR1ZSB0byB0aGUgYXJjaGl0ZWN0dXJhbCBjb25zdHJh
+aW50IHRoYXQgS1ZNDQo+ICA+IHJlc3RyaWN0cyB0aGUgZGVmZXJyZWQgY3JlYXRpb24gb2YgS1ZN
+IHZDUFVzIGFuZCBWR0lDDQo+ICA+IGluaXRpYWxpemF0aW9uL3NpemluZyBhZnRlciBWTSBpbml0
+aWFsaXphdGlvbi4gSGVuY2UsIFZHSUMgaXMgcHJlLXNpemVkIHdpdGgNCj4gIHBvc3NpYmxlIHZD
+UFVzLg0KPiAgPg0KPiAgPiBBZnRlciB0aGUgaW5pdGlhbGl6YXRpb24gb2YgdGhlIG1hY2hpbmUg
+aXMgY29tcGxldGUsIHRoZSBkaXNhYmxlZA0KPiAgPiBwb3NzaWJsZSBLVk0gdkNQVXMgYXJlIHBh
+cmtlZCBpbiB0aGUgcGVyLXZpcnQtbWFjaGluZSBsaXN0DQo+ICA+ICJrdm1fcGFya2VkX3ZjcHVz
+LCIgYW5kIHdlIHJlbGVhc2UgdGhlIFFPTSBBUk1DUFUgb2JqZWN0cyBmb3IgdGhlDQo+ICA+IGRp
+c2FibGVkIHZDUFVzLiBUaGVzZSB3aWxsIGJlIHJlLWNyZWF0ZWQgd2hlbiB0aGUgdkNQVSBpcyBo
+b3RwbHVnZ2VkDQo+ICA+IGFnYWluLiBUaGUgUU9NIEFSTUNQVSBvYmplY3QgaXMgdGhlbiByZS1h
+dHRhY2hlZCB0byB0aGUgY29ycmVzcG9uZGluZw0KPiAgcGFya2VkIEtWTSB2Q1BVLg0KPiAgPg0K
+PiAgPiBBbHRlcm5hdGl2ZWx5LCB3ZSBjb3VsZCBoYXZlIGNob3NlbiBub3QgdG8gcmVsZWFzZSB0
+aGUgUU9NIENQVSBvYmplY3RzDQo+ICA+IGFuZCBrZXB0IHJldXNpbmcgdGhlbS4gVGhpcyBhcHBy
+b2FjaCBtaWdodCByZXF1aXJlIHNvbWUgbW9kaWZpY2F0aW9ucw0KPiAgPiB0byB0aGUgYHFkZXZp
+Y2VfYWRkKClgIGludGVyZmFjZSB0byByZXRyaWV2ZSB0aGUgb2xkIEFSTUNQVSBvYmplY3QNCj4g
+ID4gaW5zdGVhZCBvZiBjcmVhdGluZyBhIG5ldyBvbmUgZm9yIHRoZSBob3RwbHVnIHJlcXVlc3Qu
+DQo+ICA+DQo+ICA+IEVhY2ggb2YgdGhlc2UgYXBwcm9hY2hlcyBoYXMgaXRzIG93biBwcm9zIGFu
+ZCBjb25zLiBUaGlzIHByb3RvdHlwZQ0KPiAgPiB1c2VzIHRoZSBmaXJzdCBhcHByb2FjaCAoc3Vn
+Z2VzdGlvbnMgYXJlIHdlbGNvbWUhKS4NCj4gID4NCj4gID4gQ28tZGV2ZWxvcGVkLWJ5OiBLZXFp
+YW4gWmh1IDx6aHVrZXFpYW4xQGh1YXdlaS5jb20+DQo+ICA+IFNpZ25lZC1vZmYtYnk6IEtlcWlh
+biBaaHUgPHpodWtlcWlhbjFAaHVhd2VpLmNvbT4NCj4gID4gU2lnbmVkLW9mZi1ieTogU2FsaWwg
+TWVodGEgPHNhbGlsLm1laHRhQGh1YXdlaS5jb20+DQo+ICA+IC0tLQ0KPiAgPiAgIGh3L2FybS92
+aXJ0LmMgfCAzMiArKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKw0KPiAgPiAgIDEgZmls
+ZSBjaGFuZ2VkLCAzMiBpbnNlcnRpb25zKCspDQo+ICA+DQo+ICA+IGRpZmYgLS1naXQgYS9ody9h
+cm0vdmlydC5jIGIvaHcvYXJtL3ZpcnQuYyBpbmRleA0KPiAgPiA5ZDMzZjMwYTZhLi5hNzJjZDNi
+MjBkIDEwMDY0NA0KPiAgPiAtLS0gYS9ody9hcm0vdmlydC5jDQo+ICA+ICsrKyBiL2h3L2FybS92
+aXJ0LmMNCj4gID4gQEAgLTIwNTAsNiArMjA1MCw3IEBAIHN0YXRpYyB2b2lkIHZpcnRfY3B1X3Bv
+c3RfaW5pdChWaXJ0TWFjaGluZVN0YXRlDQo+ICAqdm1zLCBNZW1vcnlSZWdpb24gKnN5c21lbSkN
+Cj4gID4gICB7DQo+ICA+ICAgICAgIENQVUFyY2hJZExpc3QgKnBvc3NpYmxlX2NwdXMgPSB2bXMt
+PnBhcmVudC5wb3NzaWJsZV9jcHVzOw0KPiAgPiAgICAgICBpbnQgbWF4X2NwdXMgPSBNQUNISU5F
+KHZtcyktPnNtcC5tYXhfY3B1czsNCj4gID4gKyAgICBNYWNoaW5lU3RhdGUgKm1zID0gTUFDSElO
+RSh2bXMpOw0KPiAgPiAgICAgICBib29sIGFhcmNoNjQsIHN0ZWFsX3RpbWU7DQo+ICA+ICAgICAg
+IENQVVN0YXRlICpjcHU7DQo+ICA+ICAgICAgIGludCBuOw0KPiAgPiBAQCAtMjExMSw2ICsyMTEy
+LDM3IEBAIHN0YXRpYyB2b2lkIHZpcnRfY3B1X3Bvc3RfaW5pdChWaXJ0TWFjaGluZVN0YXRlDQo+
+ICAqdm1zLCBNZW1vcnlSZWdpb24gKnN5c21lbSkNCj4gID4gICAgICAgICAgICAgICB9DQo+ICA+
+ICAgICAgICAgICB9DQo+ICA+ICAgICAgIH0NCj4gID4gKw0KPiAgPiArICAgIGlmIChrdm1fZW5h
+YmxlZCgpIHx8IHRjZ19lbmFibGVkKCkpIHsNCj4gID4gKyAgICAgICAgZm9yIChuID0gMDsgbiA8
+IHBvc3NpYmxlX2NwdXMtPmxlbjsgbisrKSB7DQo+ICA+ICsgICAgICAgICAgICBjcHUgPSBxZW11
+X2dldF9wb3NzaWJsZV9jcHUobik7DQo+ICA+ICsNCj4gID4gKyAgICAgICAgICAgIC8qDQo+ICA+
+ICsgICAgICAgICAgICAgKiBOb3csIEdJQyBoYXMgYmVlbiBzaXplZCB3aXRoIHBvc3NpYmxlIENQ
+VXMgYW5kIHdlIGRvbnQNCj4gIHJlcXVpcmUNCj4gID4gKyAgICAgICAgICAgICAqIGRpc2FibGVk
+IHZDUFUgb2JqZWN0cyB0byBiZSByZXByZXNlbnRlZCBpbiB0aGUgUU9NLiBSZWxlYXNlDQo+ICB0
+aGUNCj4gID4gKyAgICAgICAgICAgICAqIGRpc2FibGVkIEFSTUNQVSBvYmplY3RzIGVhcmxpZXIg
+dXNlZCBkdXJpbmcgaW5pdCBmb3IgcHJlLXNpemluZy4NCj4gID4gKyAgICAgICAgICAgICAqDQo+
+ICA+ICsgICAgICAgICAgICAgKiBXZSBmYWtlIHRvIHRoZSBndWVzdCB0aHJvdWdoIEFDUEkgYWJv
+dXQgdGhlDQo+ICBwcmVzZW5jZShfU1RBLlBSRVM9MSkNCj4gID4gKyAgICAgICAgICAgICAqIG9m
+IHRoZXNlIG5vbi1leGlzdGVudCB2Q1BVcyBhdCBWTU0vcWVtdSBhbmQgcHJlc2VudCB0aGVzZQ0K
+PiAgYXMNCj4gID4gKyAgICAgICAgICAgICAqIGRpc2FibGVkIHZDUFVzKF9TVEEuRU5BPTApIHNv
+IHRoYXQgdGhleSBjYW50IGJlIHVzZWQuIFRoZXNlDQo+ICB2Q1BVcw0KPiAgPiArICAgICAgICAg
+ICAgICogY2FuIGJlIGxhdGVyIGFkZGVkIHRvIHRoZSBndWVzdCB0aHJvdWdoIGhvdHBsdWcgZXhj
+aGFuZ2VzDQo+ICB3aGVuDQo+ICA+ICsgICAgICAgICAgICAgKiBBUk1DUFUgb2JqZWN0cyBhcmUg
+Y3JlYXRlZCBiYWNrIGFnYWluIHVzaW5nICdkZXZpY2VfYWRkJyBRTVANCj4gID4gKyAgICAgICAg
+ICAgICAqIGNvbW1hbmQuDQo+ICA+ICsgICAgICAgICAgICAgKi8NCj4gID4gKyAgICAgICAgICAg
+IC8qDQo+ICA+ICsgICAgICAgICAgICAgKiBSRkM6IFF1ZXN0aW9uOiBPdGhlciBhcHByb2FjaCBj
+b3VsZCd2ZSBiZWVuIHRvIGtlZXAgdGhlbQ0KPiAgZm9yZXZlcg0KPiAgPiArICAgICAgICAgICAg
+ICogYW5kIHJlbGVhc2UgaXQgb25seSBvbmNlIHdoZW4gcWVtdSBleGl0cyBhcyBwYXJ0IG9mIGZp
+bmFsaXplIG9yDQo+ICA+ICsgICAgICAgICAgICAgKiB3aGVuIG5ldyB2Q1BVIGlzIGhvdHBsdWdn
+ZWQuIEluIHRoZSBsYXRlciBvbGQgY291bGQgYmUgcmVsZWFzZWQNCj4gID4gKyAgICAgICAgICAg
+ICAqIGZvciB0aGUgbmV3bHkgY3JlYXRlZCBvYmplY3QgZm9yIHRoZSBzYW1lIHZDUFU/DQo+ICA+
+ICsgICAgICAgICAgICAgKi8NCj4gID4gKyAgICAgICAgICAgIGlmICghcWVtdV9lbmFibGVkX2Nw
+dShjcHUpKSB7DQo+ICA+ICsgICAgICAgICAgICAgICAgQ1BVQXJjaElkICpjcHVfc2xvdDsNCj4g
+ID4gKyAgICAgICAgICAgICAgICBjcHVfc2xvdCA9IHZpcnRfZmluZF9jcHVfc2xvdChtcywgY3B1
+LT5jcHVfaW5kZXgpOw0KPiAgPiArICAgICAgICAgICAgICAgIGNwdV9zbG90LT5jcHUgPSBOVUxM
+Ow0KPiAgPiArICAgICAgICAgICAgICAgIG9iamVjdF91bnJlZihPQkpFQ1QoY3B1KSk7DQo+ICA+
+ICsgICAgICAgICAgICB9DQo+ICA+ICsgICAgICAgIH0NCj4gID4gKyAgICB9DQo+ICA+ICAgfQ0K
+PiAgDQo+ICBJdCdzIHByb2JhYmx5IGhhcmQgdG8ga2VlcCB0aG9zZSBBUk1DUFUgb2JqZWN0cyBm
+b3JldmVyLiBGaXJzdCBvZiBhbGwsIG9uZQ0KPiAgdkNQVSBjYW4gYmUgaG90LWFkZGVkIGZpcnN0
+IGFuZCB0aGVuIGhvdC1yZW1vdmVkIGFmdGVyd2FyZHMuIFdpdGggdGhvc2UNCj4gIEFSTUNQVSBv
+YmplY3RzIGtlcHQgZm9yZXZlciwgdGhlIHN5bnRheCBvZiAnZGV2aWNlX2FkZCcgYW5kICdkZXZp
+Y2VfZGVsJw0KPiAgYmVjb21lIGJyb2tlbiBhdCBsZWFzdC4NCg0KSSBoYWQgcHJvdG90eXBlZCBi
+b3RoIGFwcHJvYWNoZXMgNCB5ZWFycyBiYWNrLiBZZXMsIGludGVyZmFjZSBwcm9ibGVtIHdpdGgN
+CmRldmljZV9hZGQgd2FzIHNvbHZlZCBieSBhIHRyaWNrIG9mIGtlZXBpbmcgdGhlIG9sZCB2Q1BV
+IG9iamVjdCBhbmQgb24NCmRldmljZV9hZGQgaW5zdGVhZCBvZiBjcmVhdGluZyBhIG5ldyB2Q1BV
+IG9iamVjdCB3ZSBjb3VsZCB1c2UgdGhlIG9sZCB2Q1BVDQpvYmplY3QgYW5kIHRoZW4gY2FsbCBx
+ZGV2X3JlYWxpemUoKSBvbiBpdC4NCg0KQnV0IGJpZ2dlciBwcm9ibGVtIHdpdGggdGhpcyBhcHBy
+b2FjaCBpcyB0aGF0IG9mIG1pZ3JhdGlvbi4gT25seSByZWFsaXplZCBvYmplY3RzDQpoYXZlIHN0
+YXRlIHRvIGJlIG1pZ3JhdGVkLiBTbyBpdCBtaWdodCBsb29rIGNsZWFuZXIgb24gb25lIGFzcGVj
+dCBidXQgaGFkIGl0cw0Kb3duIGlzc3Vlcy4NCg0KSSB0aGluayBJIGRpZCBzaGFyZSBhIHByb3Rv
+dHlwZSBvZiB0aGlzIHdpdGggSWdvciB3aGljaCBoZSB3YXMgbm90IGluIGFncmVlbWVudCB3aXRo
+DQphbmQgd2FudGVkIHZDUFUgb2JqZWN0cyB0byBiZSBkZXN0cm95ZWQgbGlrZSBpbiB4ODYuIEhl
+bmNlLCB3ZSBzdHVjayB3aXRoDQp0aGUgY3VycmVudCBhcHByb2FjaC4NCg0KDQo+ICBUaGUgaWRl
+YWwgbWVjaGFuaXNtIHdvdWxkIGJlIHRvIGF2b2lkIGluc3RhbmNpYXRpbmcgdGhvc2UgQVJNQ1BV
+IG9iamVjdHMNCj4gIGFuZCBkZXN0cm95aW5nIHRoZW0gc29vbi4gSSBkb24ndCBrbm93IGlmIG1z
+LT5wb3NzaWJsZV9jcHVzLT5jcHVzW10gY2FuDQo+ICBmaXQgYW5kIGhvdyBtdWNoIGVmZm9ydHMg
+bmVlZGVkLg0KDQpUaGlzIGlzIHdoYXQgd2UgYXJlIGRvaW5nIG5vdyBpbiB0aGUgY3VycmVudCBh
+cHByb2FjaC4gUGxlYXNlIHJlYWQgdGhlIEtWTUZvcnVtDQpzbGlkZXMgb2YgMjAyMyBmb3IgbW9y
+ZSBkZXRhaWxzIGFuZCB0aGUgY292ZXIgbGV0dGVyIG9mIFJGQyBWMyBmb3IgbW9yZSBkZXRhaWxz
+Lg0KDQoNCg0KVGhhbmtzDQpTYWxpbC4NCg0KPiAgDQo+ICBUaGFua3MsDQo+ICBHYXZpbg0KDQo=

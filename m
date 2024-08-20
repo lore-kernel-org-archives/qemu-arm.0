@@ -1,79 +1,79 @@
-Received: by 2002:a17:505:4e90:b0:1be9:327d:8ee3 with SMTP id y16csp341245njx;
-        Tue, 20 Aug 2024 07:29:58 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUE+kl9nceZnVH4M1LAKngm2XWBZEZSmOfrMjon4BKEnOyH9IZXv+R22IvTH/mkWct6XkWB4Zmnt+p5vw==@linaro.org
-X-Received: by 2002:a05:6512:3094:b0:530:e323:b1cd with SMTP id 2adb3069b0e04-5331c6e387fmr10314479e87.40.1724164198260;
-        Tue, 20 Aug 2024 07:29:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1724164198; cv=none;
+Received: by 2002:a17:505:4e90:b0:1be9:327d:8ee3 with SMTP id y16csp341255njx;
+        Tue, 20 Aug 2024 07:29:59 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUh1AKxwJGvjgI7xFYmt0tNQw45dqEV57k1FTbmoR1CxAOc9tPgprETdOm72+dcDL08tCEO1BqFr3P9xA==@linaro.org
+X-Received: by 2002:a05:6512:1256:b0:52c:e3bd:c708 with SMTP id 2adb3069b0e04-5331c68a8f7mr9388545e87.10.1724164199376;
+        Tue, 20 Aug 2024 07:29:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1724164199; cv=none;
         d=google.com; s=arc-20160816;
-        b=q9wo4D2EEf8cAvFD3OQBGvOonBUNfFK7Boiy2skuFbJkWBlpwBbANWOttCSUfXBqDX
-         OWa58Rt6Ts5EDttJpy2Md0AA5SzX1sfyoD4RQjT82peFbFTWi1yqS1uvT+lX6oCw3LNw
-         T4GGH+uDwNlKB4MxfO738ZMjLpGMX38yg2HkdmlireNOmhy2qBMI1dNSoNbxsrQ/hd0k
-         deEq2g/sTP0TBy8OWJIYgUEkuBQ+3z+zU7Vr7/W/z2WIMGOuGsbGudJdDk1f5rHJNKDL
-         Lfi4/ZVlO3eIkqeSAIiX3VB2jgC8Pb3fKa3K/vOal1UUazpzt07otOz18lVlWRT3us0x
-         k9Yg==
+        b=yA6d1AvJQvOjtkfnV9ymOVlraszQ23qXlB0Y73w85uo5LQki+G1QS2gUwBZMANrFHG
+         cDNGJ33QPcP0JiVIBjlHQ8CjxqYIWsUmVcRdpd3BeHy4XOcKRQOwk7i15kSJTDzK3iSm
+         9yqw68t8a0XEkkTow2P4wpRj+G3/yZDFSa4+ooRC4gZC+zvRo7Li4iFiTMVq0Xedhebe
+         xWf8Fuq/cdgfqDssYe8iWyfiDjNG4xjKiihI2gr6NtwtERcwu0Hiv5fYyfyiKSxXzsVE
+         hg33ad8KZycq2DhR3XSpByvEArwJbk7lIsF/zsQfO0lmGeFye3nrdCuJxoUDZHxBafVY
+         KOUw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=cXrv0E3MFlFU+ItFyAOjyjeGygFPyj9i38Ckg44wQ0M=;
-        fh=rw0gExXJFXKi41RyUXmlDGNYPpuxXTRzfHiDsMxXeQs=;
-        b=EyKfCI5VSpenvD0mbVMKmwQibrTyfXTM/1iz6mQCA7trYDIRNeWdtrfOyCcGdFQeqi
-         gOL5TKEsimfXWkqoReTC9g4MyQU38Bcfstz0d+suMtgn8WK5bPW4p9dnee+BsqGNgMqu
-         b2l2X+YIGJ4eTkVYktLrKjVClOP9SVsbLaL/fAID+4m05jXDzk4sj/+EGSrA0vUinXeg
-         MQ+dbJe2pcLL5VPgKe4bccGkTkRkVfjeRCo4z3msKiG1blvdI1EBlIf+COO8hRzScyCb
-         SS8BGn5V3AJiH3Y1Ur2hxXQPOpreMT3zndKdwP3gm+JoPCdjE7LVe7VgNGT35V+uwYZP
-         fjuw==;
+        bh=j3FilNtR3ylHjSgCwXgc1/4kLFqGR/asrW9olruIp6U=;
+        fh=khdzFXzGFt0VIBN2ybq+THBXN6+ZZ5PjoL8EnBGb4/Q=;
+        b=BDdCUZ27xJb5H3V054pyFnTBWYcdLkoBF25uSoIYBdPSYRmkvV+rQlf47QS4lC4RMS
+         fS7ynNAEd3jAChYy3li/7fp++k1NWiH7zUM5m+6ifUHRnr02gF7avIHV1H7h8qq4/oLE
+         JV0AI8WHdXOEbBrI+Pv0gobUsqryd9kArLK5MtFgUdozQKWd9ud8SmcwKima6F+gX7w7
+         0c31v0jn/RXTqZGWv75Mvdyas8tSC4y3jDf5nFOYgwUJsiSnENz4PTEquiv4tDj1P26M
+         OJ6rXTZsT+UuLnLCZW7yM0kScA2U5PgsxVCoFNt/QjcAkiHA0w1uF9zk+MJ8H+NPFk47
+         2kHg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=QKmTtaw1;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=kH2JowpA;
        spf=pass (google.com: domain of edgar.iglesias@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=edgar.iglesias@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Return-Path: <edgar.iglesias@gmail.com>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 2adb3069b0e04-5330d43054csor3286945e87.30.2024.08.20.07.29.58
+        by mx.google.com with SMTPS id 2adb3069b0e04-5330d401c0bsor3216324e87.20.2024.08.20.07.29.59
         (Google Transport Security);
-        Tue, 20 Aug 2024 07:29:58 -0700 (PDT)
+        Tue, 20 Aug 2024 07:29:59 -0700 (PDT)
 Received-SPF: pass (google.com: domain of edgar.iglesias@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=QKmTtaw1;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=kH2JowpA;
        spf=pass (google.com: domain of edgar.iglesias@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=edgar.iglesias@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1724164198; x=1724768998; darn=linaro.org;
+        d=gmail.com; s=20230601; t=1724164199; x=1724768999; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=cXrv0E3MFlFU+ItFyAOjyjeGygFPyj9i38Ckg44wQ0M=;
-        b=QKmTtaw1A7ACjLfpghGOWYAYwFo+f1svVMmMLUqOLCoBuMjfzu6R9EeMWdY5x7hJCI
-         Ult2bwCcCOkyhR4kT/JwyrbDVs98IE2wF2tulyIV8hhJlih8cHOCRzudJw56SFr9Zd4U
-         VtmiAlBXnX2fqKSbdnewMri/1/egVKtsV4anMNXIsOqKOnn/UgVxfgBifJyyKWR7+Zo2
-         124qwNCB/iO6jspttp1Xmd3NlSpYqABM+2wAFhM0saNSxEC/Tl79UBX5HIsymzd18/rH
-         IYKK5HMOPmePwY+Cqqfx0P+cYflYuo/xxrkC5hhwbStwFs4rFwDPSHuJP1eb3Eo2yvC2
-         eb8g==
+        bh=j3FilNtR3ylHjSgCwXgc1/4kLFqGR/asrW9olruIp6U=;
+        b=kH2JowpAy/7zskDlSG5oukRFR9fdPHFn+LRnukLgisVEBWkXy0gzBktkJObHP+o05I
+         3nOKzEErgh/nLWj/rxBeG5WDjw/Xqa30CiplvodYpvJtfShYistPModieZuW/nDAueXP
+         /IP6GYk1Arpp137z2LVJbJKH2lfp6RWwIBuKfNT8SgmS4PnZb8E2AxizatEVu0xtXSgl
+         NUICnLnMl1RRECVQgUqPZRqfX03WRd4kNJBWX7L/wERFBfSgIHILYS20uhgd3lKGkrOW
+         MaBZD3TLdZYZHDj89l4soSXUm8CbdzlJfsbn9TsuF1AMsrrZQXCLcvBIuvWVz4thQPPu
+         OSCg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1724164198; x=1724768998;
+        d=1e100.net; s=20230601; t=1724164199; x=1724768999;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=cXrv0E3MFlFU+ItFyAOjyjeGygFPyj9i38Ckg44wQ0M=;
-        b=NCrQ2vmUFCFmIPrEfXa4QLD6tm/gnQVwvHIzu99NznrLIbqmjYetH/PkY+E7zY4Zil
-         JDSS3GFEgCoPLi/fPNDry4mlYZuxi2WDn6gRU6ZMKogTMNgNOGnVvI8Gxs0W9+V6bbEp
-         E1fRzs+nNoGHfXkuA2C/7GBysIkSRDEHTsqlNChdy6k22LRIL7qpo0bY0Z5FHjIwtZlc
-         OqQF/JVdPmujxxZJCqogK1E0df11+rkzmLny/vjgDgZ410mOR3waMu87/XNGtoMtDA40
-         NYjNjT3hMCqd03aZQzKwYDGc/mhWFnJhdNEmxS/X7K0axAS5SvFWDQ9YKP6t6wkxbDWY
-         0ImQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVehJ21cJduo39V5CeTd5rS8honj++yuFXOmauniV8cD9SLh39fC39LjNuHAJItTkzm5yHlC4NWbq2l8K7P/w==@linaro.org, AJvYcCWX0x1g9r4v1RT3M2C4Kr2xa/LeRM0XhpRrcdjK7ugH8t1f2dK5B+FXGstMAbO3k9fu0TzYW1GOpc4jJA==@linaro.org
-X-Gm-Message-State: AOJu0YzlStVPxT1A2qLWwLQQhYe6ccn8CFFzxJiDLE4Dgo4TwvIucmGl
-	xc1SnsVY1A4i9/o2g9PhCFCU5R9phgFsIPfxTi+SGPaml5cLeaHS
-X-Google-Smtp-Source: AGHT+IEUHrJ/SYDaIj+10HjdHpBx8iCW0Ws8VM3nxx/08/Kowr+gNMxcGQJYD8Ll+OK5SPcAIO861w==
-X-Received: by 2002:a05:6512:1085:b0:52f:413:7e8c with SMTP id 2adb3069b0e04-5331c6a2a5bmr10786717e87.14.1724164196933;
-        Tue, 20 Aug 2024 07:29:56 -0700 (PDT)
+        bh=j3FilNtR3ylHjSgCwXgc1/4kLFqGR/asrW9olruIp6U=;
+        b=xVXFWkhIHt96o6OVuh1I82An0Y+Jalkl/YP42XiEYvbt9ddfmwLRBpJrWdmKbRnXrB
+         D9dTzsK5FiceGyVY4RivVyJK3RjFDQhlivZE/0kQscKRvBHNb+VILysa8sYTeYT6NWn3
+         yQEGgxUEB0FCgaIBoLSB4c2smEliWfdsTx7OW/oxC4sGy2HMXoWCuUTxLaGJyjRjv2px
+         Ig2eM+yqw6WYZKYqEPlGbMLXzRH7OqefRnKKN9eed+LOYRMaBo6rt80XgStbhEV5ruu1
+         QgwO8HARr/10nyQiUPtX7AImdEgBpQJA8Q3BzlvwlfobK63omhb8Vdy94YTcyMN8hWNq
+         8LCQ==
+X-Forwarded-Encrypted: i=1; AJvYcCWsYUG9CJ+7oAuhdS/uoWWEZGuVIKYbIwyYowzEkQsVso3kQF0JgzHUhvca4+Lvfh2JtZoXliQOWtvplevTSw==@linaro.org, AJvYcCXlW/fq7euI1DFWzgo00fYGi0AW2tflzgyyFcUOGQHamSrBGtHRRFIl8TNjkQ5Af1srEwOfDlyF3V9P5Q==@linaro.org
+X-Gm-Message-State: AOJu0YxwwhDJ7xfFvbreOLXTKBl/FyLCCXhXWYJsqyMCkvM2pG/alpU8
+	gkBfGSGoLp0YV9xIt+dj22vf0Luxx0jLCxaLI1x+YoU7Y9qu03UXzm144his
+X-Google-Smtp-Source: AGHT+IGQzw9towbWt3esYv6BylqAAAmG7i8maUZip7BzOASpnZ5frQ70BGwkwxAacACbTLNukHjFrw==
+X-Received: by 2002:a05:6512:224c:b0:52e:a008:8f55 with SMTP id 2adb3069b0e04-5331c6dcd38mr9613532e87.41.1724164198100;
+        Tue, 20 Aug 2024 07:29:58 -0700 (PDT)
 Return-Path: <edgar.iglesias@gmail.com>
 Received: from gmail.com (213-67-3-247-no600.tbcn.telia.com. [213.67.3.247])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-5330d3b8f77sm1773996e87.72.2024.08.20.07.29.55
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-5330d41e1a0sm1782218e87.196.2024.08.20.07.29.57
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 20 Aug 2024 07:29:55 -0700 (PDT)
+        Tue, 20 Aug 2024 07:29:57 -0700 (PDT)
 From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: sstabellini@kernel.org,
@@ -86,39 +86,76 @@ Cc: sstabellini@kernel.org,
 	edgar.iglesias@amd.com,
 	xen-devel@lists.xenproject.org,
 	qemu-arm@nongnu.org
-Subject: [PATCH v2 03/12] hw/arm: xenpvh: Tweak machine description
-Date: Tue, 20 Aug 2024 16:29:40 +0200
-Message-ID: <20240820142949.533381-4-edgar.iglesias@gmail.com>
+Subject: [PATCH v2 04/12] hw/arm: xenpvh: Add support for SMP guests
+Date: Tue, 20 Aug 2024 16:29:41 +0200
+Message-ID: <20240820142949.533381-5-edgar.iglesias@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20240820142949.533381-1-edgar.iglesias@gmail.com>
 References: <20240820142949.533381-1-edgar.iglesias@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: patmb3evSDSv
+X-TUID: WnDyWyUPRZ/U
 
 From: "Edgar E. Iglesias" <edgar.iglesias@amd.com>
 
-Tweak machine description to better express that this is
-a Xen PVH machine for ARM.
+Add SMP support for Xen PVH ARM guests.
+Create ms->smp.max_cpus ioreq servers to handle hotplug.
+
+Note that ms->smp.max_cpus will be passed to us by the
+user (Xen tools) set to the guests maxvcpus.
+
+The value in mc->max_cpus is an absolute maximum for the
+-smp option and won't be used to setup ioreq servers unless
+the user explicitly specifies it with -smp.
+
+If the user doesn't pass -smp on the command-line, smp.cpus
+and smp.max_cpus will default to 1.
 
 Signed-off-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
-Reviewed-by: Stefano Stabellini <sstabellini@kernel.org>
 ---
- hw/arm/xen_arm.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/arm/xen_arm.c | 23 +++++++++++++++++++++--
+ 1 file changed, 21 insertions(+), 2 deletions(-)
 
 diff --git a/hw/arm/xen_arm.c b/hw/arm/xen_arm.c
-index 766a194fa1..5f75cc3779 100644
+index 5f75cc3779..fda65d0d8d 100644
 --- a/hw/arm/xen_arm.c
 +++ b/hw/arm/xen_arm.c
-@@ -216,7 +216,7 @@ static void xen_arm_machine_class_init(ObjectClass *oc, void *data)
- {
+@@ -173,7 +173,7 @@ static void xen_arm_init(MachineState *machine)
  
+     xen_init_ram(machine);
+ 
+-    xen_register_ioreq(xam->state, machine->smp.cpus, &xen_memory_listener);
++    xen_register_ioreq(xam->state, machine->smp.max_cpus, &xen_memory_listener);
+ 
+     xen_create_virtio_mmio_devices(xam);
+ 
+@@ -218,7 +218,26 @@ static void xen_arm_machine_class_init(ObjectClass *oc, void *data)
      MachineClass *mc = MACHINE_CLASS(oc);
--    mc->desc = "Xen Para-virtualized PC";
-+    mc->desc = "Xen PVH ARM machine";
+     mc->desc = "Xen PVH ARM machine";
      mc->init = xen_arm_init;
-     mc->max_cpus = 1;
+-    mc->max_cpus = 1;
++
++    /*
++     * mc->max_cpus holds the MAX value allowed in the -smp command-line opts.
++     *
++     * 1. If users don't pass any -smp option:
++     *   ms->smp.cpus will default to 1.
++     *   ms->smp.max_cpus will default to 1.
++     *
++     * 2. If users pass -smp X:
++     *   ms->smp.cpus will be set to X.
++     *   ms->smp.max_cpus will also be set to X.
++     *
++     * 3. If users pass -smp X,maxcpus=Y:
++     *   ms->smp.cpus will be set to X.
++     *   ms->smp.max_cpus will be set to Y.
++     *
++     * In scenarios 2 and 3, if X or Y are set to something larger than
++     * mc->max_cpus, QEMU will bail out with an error message.
++     */
++    mc->max_cpus = GUEST_MAX_VCPUS;
      mc->default_machine_opts = "accel=xen";
+     /* Set explicitly here to make sure that real ram_size is passed */
+     mc->default_ram_size = 0;
 -- 
 2.43.0

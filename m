@@ -1,200 +1,143 @@
-Received: by 2002:a17:505:4e90:b0:1be9:327d:8ee3 with SMTP id y16csp322112njx;
-        Tue, 20 Aug 2024 06:43:11 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWjJ88L6t6JeOnoB5JmGQgJazFdRIpIwXNz+RlvxMnat6jPDRK+WcrA4e5EATtMUOI6tsdqwGZ75/eA1w==@linaro.org
-X-Google-Smtp-Source: AGHT+IEzSRA7ZbobpB8hkkbbe4zbnxGYdd7Xzvr0EDhtYjlWBGb2WwzhhgnAaojp6OptyawTaVCz
-X-Received: by 2002:a05:620a:192a:b0:79f:8f3:6ad4 with SMTP id af79cd13be357-7a5068f844amr1767036585a.1.1724161391298;
-        Tue, 20 Aug 2024 06:43:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1724161391; cv=none;
+Received: by 2002:a17:505:4e90:b0:1be9:327d:8ee3 with SMTP id y16csp341235njx;
+        Tue, 20 Aug 2024 07:29:56 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWA5pznTF7kCl6VQzxmaPd6f5MLIXFv+555jskP6MbG8XvIhStaG8EKGUYXoWh0/mGSxl22k2XOunyxYlm4qZDJaNHo+PCQ
+X-Received: by 2002:a05:6512:3195:b0:52b:de5b:1b30 with SMTP id 2adb3069b0e04-5331c6e23a8mr10412974e87.44.1724164196704;
+        Tue, 20 Aug 2024 07:29:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1724164196; cv=none;
         d=google.com; s=arc-20160816;
-        b=AakrIuoIQ7zufCXI24Eb+2z4wbJlL+BKXB7mH8beaIxrQEG8gfrLZmLDSDcnY/JDS3
-         S17IlW9yL8qW00wX3BYjPfz3nnVwE8+y7SuaidwTChld2qG49XGGQ/MalIx0fnU3XXTb
-         BG78PY2isyIFLzfrf0dCE/FWJfivn9M4m3EfKU+MjmvcAprxmirHksLkzy+UcRALtxib
-         5puQ3Xm7xKcRoQgdReO3zHudjp5tcG1p7o1bLJ2cOxjBR1+4ohzf9IRD517cpVxy4b8H
-         Brz6A429QAeXPhnb97UXTIxqDOz/wnofdyCxYy4l5XfYxsoik5pL2zhQS6+wKhOfuy4p
-         Hw0Q==
+        b=FKvNWjLrBP+fd0psXWkOxjVo+OS2Vsk+9IRgTMSQT2ARFh7hpK2VC8WFqq8DrsIp4l
+         42c8gG6SpfWIX9dGPyUJdT8TtRWgG/tLUG7ROwp2e3/LXqJhmM+D9XWjaMNBln6hPosS
+         3kfWCTZDORfIS86wqIXw10t5YKoaW3nCIFqURcw1WzMVfQrEjDuXjpAV+B8F912liVpx
+         s6xWvf3e90wpsDcp+J/f2FCpjA/Gc2a1d+Q0FIpqJMuhA0mVXjOR74UKKdRS4lrPZYFa
+         plUsKBG68Lz8v8OrPTCKcVKjg/s08C6W1nd1ZDb1b1CjIrAbt04iqVmE6HU998FcYfoA
+         VYdg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=x53UA5XZQzcHFqQczWRz/UkFLdL3wtbU8KgAdwqK0ww=;
-        fh=zln7ITr09mwCezI3XZ/tAUUtarHDoyVVyF3F79XZRX4=;
-        b=gB6lLLLWeV90TN/D3uuR+w9/sp9oC5Cur2Y1ViadQhjzbKgemza8cqCnMBpkoVQBbt
-         ckf+fp0zE5I+VUci7Jx1l+5z5fezu+qVQErXlwc73Wr/6DTc8DZ9tc9jk4GOfPv4JNFa
-         EmOyV110KOMZU7LzzlotikvHv+3nddh0ulPwZnwrHzO6rAQZZyTBnEf/qQuumdgmrek0
-         0rxsdtQFjoYhyb9g5eNsOtSJBYGtcTYfO7VXbikkJiQLiteAW9wLxva2n+5UcgpArG5y
-         qXIaKRFc/iuJ0VtOmIWlaefBWy/qEeqUzj2VU/xxhCHkKcCIbh3QlpczXunOy5R1wajw
-         duvw==;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=N6K1JnQDB3GxWbgLc2L3O0RRJjZo+EVTDK5d5nCO5jo=;
+        fh=n+TwEbHmUcr1eccAaw/Q8e+sPw0Qpat+q21hveCiBKg=;
+        b=S/w8Wy4eDuroBL9QU0SUXDREq9ZutpKgbIYej8rTqXzsyMI8fD+qq5S3iyZho1kU5C
+         XJq9PVypbe3uqaUJ2F5SdM92gyEoEUiz+o8fQcbQRpJ2M5u5t1G4XDXDnNKpRTk4+UcY
+         +tXgkP6Wag2TBTfi9KspNL3raDImQVRzKon139kHt85hc05RIdqmYAGSxxl2EGrYzzbe
+         Bnj4asNPsk8RTkcF3c1a6Quuj/pgDQrYPR4tXfcDmQCGl95bS81vFXYXmvUTbADZTELB
+         qEViYj1Qy0QNWfWMmg0Cwdk13OloLtDq6YQ9BaieYbqfCCwREKr+VnsMkqbKI7pPYq3T
+         FR9w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=dsnVNPCg;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=F2zWFf6r;
+       spf=pass (google.com: domain of edgar.iglesias@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=edgar.iglesias@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7a4ff0b8ef7si1354537185a.259.2024.08.20.06.43.11
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 20 Aug 2024 06:43:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Return-Path: <edgar.iglesias@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 2adb3069b0e04-5330d3a9a86sor3085083e87.5.2024.08.20.07.29.56
+        (Google Transport Security);
+        Tue, 20 Aug 2024 07:29:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of edgar.iglesias@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=dsnVNPCg;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=F2zWFf6r;
+       spf=pass (google.com: domain of edgar.iglesias@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=edgar.iglesias@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sgP82-0000jz-1e; Tue, 20 Aug 2024 09:42:30 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1sgP7t-0000hg-1H
- for qemu-arm@nongnu.org; Tue, 20 Aug 2024 09:42:22 -0400
-Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1sgP7q-0001s2-Aa
- for qemu-arm@nongnu.org; Tue, 20 Aug 2024 09:42:20 -0400
-Received: by mail-ed1-x52a.google.com with SMTP id
- 4fb4d7f45d1cf-5bed72ff2f2so4611149a12.2
- for <qemu-arm@nongnu.org>; Tue, 20 Aug 2024 06:42:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1724161336; x=1724766136; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=x53UA5XZQzcHFqQczWRz/UkFLdL3wtbU8KgAdwqK0ww=;
- b=dsnVNPCgjeth8gLJFkn0EdrkpTA0X8kjB+eGZ3JzuCF0VvZSjrT3VzDbtzv2bbxBCe
- Whi0b/KW32d4k7/sZoErcaDs/tUmZVXrXqeW9XzxsbQadDAmdwk9izihCbtSdBPs5vq6
- Am+vw/sHR+ixHvBPtfQROQiVmPN+JFBlmfjK73u8N062/rs+QcfdPcBBD799eZglWykq
- MWvNG/tDe5RwRYwquJbYrdrMMaXyu7mN+pxrwb91DWb5yXkHsuZKffGElExsynSJ4+j4
- zO7ypbGsboi99Qs4fjnVEcS1ula/drrzX0oenk6qnaA7J2d4PR8c3i3DgEAbS+clvYQB
- 5Oow==
+        d=gmail.com; s=20230601; t=1724164196; x=1724768996; darn=linaro.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=N6K1JnQDB3GxWbgLc2L3O0RRJjZo+EVTDK5d5nCO5jo=;
+        b=F2zWFf6rqaAilaDQ4ub7FTJd1n4E/a7gkiXydYVECX1Y96JKS24VH9ysVsecsqqmnj
+         n3lCqQTCC8iXE9e3aNBYYMkIjl6rCk07Nayrd45BQ1iuEfKN+ycy1Hg4N2DKF0wvLQKr
+         +kbHkfPmcpyKIfeYDlBlNnliJweFY1DueyII36sEALCAKUhKJHqS8B5Z0wtI4aQwJQxu
+         OEj8fcmItfezxRZCgaEWxXx6bmi6wVsPeehn8TmCwz7yh0s+ghvHZlLl+jv8oG2DEZpr
+         znGNoQAAf/+9gpgksAoaWEAn6CCJ3eXtO15A6KxmdxAiRr3udykCDmjSV9qPVvBUf8oS
+         ClTw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1724161336; x=1724766136;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=x53UA5XZQzcHFqQczWRz/UkFLdL3wtbU8KgAdwqK0ww=;
- b=nLjvrG1kTol3Ei9M8MOm2BYcE/5gfIVsjpa6T1OM8eHyUcATwU5BKwEKGT7cyMDqIU
- fzblHIalOKiItHGgGEylBCUNCRx63tgMy7vMfoTQICFTymhM8O1Ruc/f4uvDQJM2pzch
- t4eVZqs+FDzWTGWfj6Q6Rko0JR36E0oAHtd5dKi2HsUCwXM/XpMC2f951m4rx3MB5b2t
- Mc72hgb7R/WFi0/zQuIAweTRO69LedaAwZYtTOUhK+2s6trKdlWYIDER7hatt3SpstFc
- 5ZYpK0ShhDO3Xao+cEMA6fH+0RXTRPTQcnrFkC4iTKwd+La917DIKEaj/NwFuvmiRAUk
- Z9Ig==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUBtnm5ZPDmVwhpubrjwK8ISdsnzEoLdhquq4x/is0GpXioAMr1F9SUvA2syM7I//9SRoGCRFY3kg==@nongnu.org
-X-Gm-Message-State: AOJu0YxOcgJVPEySRwxFRYB+bxBpYWnKQyES7T3hLSQbh4OMO9fnoJ0M
- xwG7L3/rziKLOUOso8ddVdaLu5PpborX3hbEBfdOk5hE7uLs1Hnc/rSIdsJRjX7AJaIhpPq4HXq
- u9bYCyRtXBtGsE9PqPEAPVEyYrHQo+8biiSzXOQ==
-X-Received: by 2002:a05:6402:1d4b:b0:5be:f295:a181 with SMTP id
- 4fb4d7f45d1cf-5bef295a2dfmr5104451a12.28.1724161335990; Tue, 20 Aug 2024
- 06:42:15 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1724164196; x=1724768996;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=N6K1JnQDB3GxWbgLc2L3O0RRJjZo+EVTDK5d5nCO5jo=;
+        b=CJr5/5BvHGQvHMY4EBTDOYazxQFhoFY38YUBJVtcWJ3Cc8Oota+YX1Pl3NAM9svh1G
+         dPSOsnILjb3DWs99OWgwRgrow5AwoFOmi22xD9Bo/5sf5V0Qqmhbh6wU8spxn2WInuC4
+         h7aZhnyT3FVvRF4ueEWnCkNxEZw5XuUZheBMfwpMt8ZJdLReiDwZavihEYnESZKH1oar
+         ElvKYZ2ldKq7jQnwYmtmKazfh2K89PPPv7g9mwRiBiHyrAupypslny6ogTf9Iv7bPNOk
+         mvvaiQ9lrS5MFrlN1PZLdf936e8dOMMQENIw3zt+6LY4ArxSSk3SqHJTnO2hhu3rp0q0
+         d6DQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVbmGxqV+VEnA8Q5BsjAE3qvAkTLz1BfD9bw14bBGfNNDvef730WnVxIOP6zpn9bLUm0ym5+7kWys+NniZbANKUpltifRJuJQeEUf4F7A2BAbDfMRjG5PWagNLu+Dld61o=
+X-Gm-Message-State: AOJu0Yw0elgcjZwMyRMIA1ijBfGA7GtuHRRBwtde6hmIXYJsO2muRGft
+	8ca76LZmydlLDJLgtK+cfi6H5k6IWsom4PLgqwIZ8jrIae5hQLRd
+X-Google-Smtp-Source: AGHT+IERWznLEeJJPBmVGgbqZsGGHpjiqbNNsmHg/7CXZqA1iSzt7K9nFEzoO0ph3Q9aeI604W1JJQ==
+X-Received: by 2002:a05:6512:138b:b0:52c:e3bd:c70b with SMTP id 2adb3069b0e04-5331c690c37mr9543219e87.1.1724164195374;
+        Tue, 20 Aug 2024 07:29:55 -0700 (PDT)
+Return-Path: <edgar.iglesias@gmail.com>
+Received: from gmail.com (213-67-3-247-no600.tbcn.telia.com. [213.67.3.247])
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-53345d17c33sm53420e87.128.2024.08.20.07.29.54
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 20 Aug 2024 07:29:54 -0700 (PDT)
+From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: sstabellini@kernel.org,
+	anthony@xenproject.org,
+	paul@xen.org,
+	peter.maydell@linaro.org,
+	alex.bennee@linaro.org,
+	xenia.ragiadakou@amd.com,
+	jason.andryuk@amd.com,
+	edgar.iglesias@amd.com,
+	xen-devel@lists.xenproject.org,
+	qemu-arm@nongnu.org
+Subject: [PATCH v2 02/12] hw/arm: xenpvh: Update file header to use SPDX
+Date: Tue, 20 Aug 2024 16:29:39 +0200
+Message-ID: <20240820142949.533381-3-edgar.iglesias@gmail.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20240820142949.533381-1-edgar.iglesias@gmail.com>
+References: <20240820142949.533381-1-edgar.iglesias@gmail.com>
 MIME-Version: 1.0
-References: <20240718230031.69641-1-danny_canter@apple.com>
- <CAFEAcA__WZ=uw0VLcP0fLbUTwmctsZ1y=FRf9bXMT9WJC2sRFA@mail.gmail.com>
- <E03A8C36-4079-468F-9596-328D713C3611@apple.com>
- <CAFEAcA9XXhsUeHNjsVkjhjO2_Njkk=L00BG+24xtXWWKgJayRw@mail.gmail.com>
- <CA7E2403-A9F6-4B29-B640-13E41D530744@apple.com>
-In-Reply-To: <CA7E2403-A9F6-4B29-B640-13E41D530744@apple.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 20 Aug 2024 14:42:05 +0100
-Message-ID: <CAFEAcA948k3=ep0FhqPL929=vB38SR-5sBS4fETrv4HUMC+zug@mail.gmail.com>
-Subject: Re: [PATCH] hvf: arm: Allow creating VMs with > 63GB of RAM on macOS
- 15+
-To: Danny Canter <danny_canter@apple.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
- Cameron Esfahani <dirty@apple.com>, rbolshakov@ddn.com, agraf@csgraf.de
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::52a;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52a.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: tj7FBOdlFWPH
+Content-Transfer-Encoding: 8bit
+X-TUID: l9aoYT5phRLn
 
-On Sat, 17 Aug 2024 at 01:37, Danny Canter <danny_canter@apple.com> wrote:
->
-> Peter, thought I=E2=80=99d send this little snippet before getting the re=
-st of V2 done in case anyone hates this :). I tried to take a similar appro=
-ach to kvm_type,
-> but I=E2=80=99m not sure if this will be looked upon favorably so want an=
- early opinion. The nice thing about kvm_type is at least it has differing =
-meaning per
-> platform so all the impls can do whatever they need, with the below it=E2=
-=80=99s really only needed on ARM (and obviously macOS specific) so it's a =
-bit odd,
-> but couldn=E2=80=99t think of how else to be able to be able to get what =
-we need out of the memmap during vm creation.
->
-> How this would be used is almost exactly like how ARMs kvm_type is used. =
-We set up hvf_get_physical_address_range to freeze the memory
-> map and compute the highest gpa, then check if that exceeds our platforms=
- largest IPA size and if so return a sane error message. If everything
-> checks out we=E2=80=99d just set the IPA size on the VM config object and=
- then create the VM. The current patch should mostly stay the same after th=
-at bit
-> of plumbing I think besides removing the macOS 13 ifdef=E2=80=99s (and si=
-mplifying the copy and pasted loop you pointed out). x86=E2=80=99s
-> hvf_get_physical_address_range can be NULL.
->
-> --- a/include/hw/boards.h
-> +++ b/include/hw/boards.h
-> @@ -215,6 +215,10 @@ typedef struct {
->   *    Return the type of KVM corresponding to the kvm-type string option=
- or
->   *    computed based on other criteria such as the host kernel capabilit=
-ies.
->   *    kvm-type may be NULL if it is not needed.
-> + * @hvf_get_physical_address_range:
-> + *    Returns the physical address range in bits to use for the HVF virt=
-ual
-> + *    machine based on the current boards memory map. This may be NULL i=
-f it
-> + *    is not needed.
->   * @numa_mem_supported:
->   *    true if '--numa node.mem' option is supported and false otherwise
->   * @hotplug_allowed:
-> @@ -253,6 +257,7 @@ struct MachineClass {
->      void (*reset)(MachineState *state, ShutdownCause reason);
->      void (*wakeup)(MachineState *state);
->      int (*kvm_type)(MachineState *machine, const char *arg);
-> +    unsigned int (*hvf_get_physical_address_range)(MachineState *machine=
-);
+From: "Edgar E. Iglesias" <edgar.iglesias@amd.com>
 
-My gut feeling was that this felt very specific compared
-to the kvm_type method which lets different architectures
-use it for whatever they need. But on the other hand we
-have exactly one use for this for hvf right now and at
-least for the foreseeable future it's unlikely we're going
-to want to do more. And this API isn't a set-in-stone one,
-so we can come back and generalize it later if we ever need
-to do that. (Or, if we find we need this kind of hook for
-a third hypervisor type, maybe we try to make it hypervisor
-agnostic at that point.)
+Update file header to use SPDX and remove stray empty
+comment line.
 
-So I'm OK with this.
+No functional changes.
 
-thanks
--- PMM
+Signed-off-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
+Acked-by: Stefano Stabellini <sstabellini@kernel.org>
+---
+ hw/arm/xen_arm.c | 19 +------------------
+ 1 file changed, 1 insertion(+), 18 deletions(-)
+
+diff --git a/hw/arm/xen_arm.c b/hw/arm/xen_arm.c
+index 6fad829ede..766a194fa1 100644
+--- a/hw/arm/xen_arm.c
++++ b/hw/arm/xen_arm.c
+@@ -1,24 +1,7 @@
+ /*
+  * QEMU ARM Xen PVH Machine
+  *
+- *
+- * Permission is hereby granted, free of charge, to any person obtaining a copy
+- * of this software and associated documentation files (the "Software"), to deal
+- * in the Software without restriction, including without limitation the rights
+- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+- * copies of the Software, and to permit persons to whom the Software is
+- * furnished to do so, subject to the following conditions:
+- *
+- * The above copyright notice and this permission notice shall be included in
+- * all copies or substantial portions of the Software.
+- *
+- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+- * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+- * THE SOFTWARE.
++ * SPDX-License-Identifier: MIT
+  */
+ 
+ #include "qemu/osdep.h"
+-- 
+2.43.0

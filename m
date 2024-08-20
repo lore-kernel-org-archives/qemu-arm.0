@@ -1,93 +1,93 @@
-Received: by 2002:a17:505:4e90:b0:1be9:327d:8ee3 with SMTP id y16csp147980njx;
-        Mon, 19 Aug 2024 17:22:19 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVGVL3eRQ1hxrxFqA8UOM+6Z/Bd4XFLBqOwJ6Kx+dbtfLMdawDlRH2FqjRo6fjsqNHdVEX1CG2OXF5HbC6QPK9pw8WK3caH
-X-Google-Smtp-Source: AGHT+IH+g15K+SzA+er8bEDrYS6MW6/AmuTSX5/ax6/gl97BlR8tZ6v1EPnJtw9q1rAeZxG30j59
-X-Received: by 2002:a05:6102:a54:b0:493:b9a0:8ee8 with SMTP id ada2fe7eead31-497799d5f60mr9747852137.22.1724113338808;
-        Mon, 19 Aug 2024 17:22:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1724113338; cv=none;
+Received: by 2002:a17:505:4e90:b0:1be9:327d:8ee3 with SMTP id y16csp144675njx;
+        Mon, 19 Aug 2024 17:06:19 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVf34UYHeCAIxzDpdjwLgHrlwjSSie0M+2nAcLzV1raRWc2Tzzuj0uH+qX1q8KJ8/Etxw4//1kiDU6yFbKsW2+bt+XdD7BL
+X-Google-Smtp-Source: AGHT+IG5kRoBwemEP2g0k7/0ICIyR39XU6pC8RrLO3b+8L4Y4znIlZBQNyD+DbnKI42xDMH9Djw/
+X-Received: by 2002:a05:6214:540e:b0:6b5:df48:bc6e with SMTP id 6a1803df08f44-6bfaa00a318mr9790646d6.39.1724112379468;
+        Mon, 19 Aug 2024 17:06:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1724112379; cv=none;
         d=google.com; s=arc-20160816;
-        b=wHAZ7i/8LG55sTph2dnphEgy0RZVvo04KzkeevmIZAK2AWNUDkCVuStvNHYCDfJ7pI
-         8l+hsPqVJM0QTnVr0VUbuLZX+BSf4fKG1NEiwQ2fbvyy8gkFsZYpuBY5t8JMaxLlbtbl
-         0hYpDqMMWMAutu7lqi4aWFm1Q0L9viNnharyqktNUJOEb4MFEyd5nxzAbwAc8RLfwlSb
-         fwrSl4RNVSqrlaV7t29uOoafpswc0cagzSP7L67y3Wzaj5cK83E14mTjIG9WzXyBSNJE
-         fnZxD5uz852AEQUDirmm6cNm/hZB1RWtUo4Ew2Fl/4m4lrxm8syKBXZ9X1qdWHbudPjt
-         xT5w==
+        b=uekVxn99zKVCra3dwfHStGis2o8V51jQZF7LUbgXGSsP0Sr8Jn78QEyANk5vXGG3Ro
+         AXjlYpCt6ferzeiOw3IfzfevCNXLGlrxy51b/JyI6oigHHtk3sW3dPnehUuLVN6uL6fR
+         2ZZrSQ77d6DUBvvsywShLCxe3NS7AUc3khdl0oq+l5yvsn+2UFf3sKPgpBacqKjRxtkh
+         KSKT5qQd1r8NOCehNN/HsnGwiRyn6s+8/plCGK/Kbj39u9GkeSGivU3H+hNfRmaIvzo9
+         OgZ0zUpIcfcmJ19fLf0pFOu7SclVSLbu7pUNI/VicJr37M/hlZwOs8uSEfSK0MFBQeIC
+         prsQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:from
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=4MKczJNn7eWeSgYJzFg8/eo5vyV7rrNgXziv7QtGHbg=;
-        fh=XXZKB4d5BxXV9hGG1/36/EneC88vhGYidmQvgJ8ULig=;
-        b=msWb8IdM6n5TfCl5iJb0oVPMlVfO+DHJaop0hZ5Zse8ulazQq8uyYCY0unwXEyeJeI
-         HkubekfpolwWQTJQPOIyH87kpvuQBbyc3yoryCV/7AK5KeVfpObFPwoJr/xo1Gtw3FAz
-         V+S2x/fy+EcIijKDBWni89naCPtW5+MZIBV+MIyuCdXqBL/q8ihi7nd6j3dqAifHuSTS
-         Ft0oTvBrGw0r9+s5ePLS6FIxGjXl+Q2+JYBonz+W/2YVRc+tptXLUckthsF0bYCv0X8C
-         844MKwLKDEJHPJ/DmAclG9g7D6es1AeArUPJeqZGjOlIK8suqIYDYZnh/p5HvjSMH/1t
-         vAAw==;
+        bh=JJEydKeQmdOmLMAudtBetG1MczMHRW8T9SNRL0pTjIc=;
+        fh=Q+HB7tCS7uxg3Fi18LgVUXhZB28LAvYHCJj3TxCrMPk=;
+        b=oD/TNU9byX3zHK1ysdx2AG29Idqk3lUplk/mThJv70/KpmV4XkZNz4qipFY8vmcS2a
+         p6sHcTxvWObJxOU4PROOs2dATom9tBW9y6qqtHEa5bTk77jbYZdIa7P9qDS1sN5q/7QV
+         3jzi/U+Co/WbUs0z2hBGPhqNr5mjY11O7m5kk8lTg/WT7exw8/MilIydEEPBzm53EmhA
+         2qlx95tvMUnv7M/W9Ix2ujfaD49iCQYtnRRGN1dKwbl8RbPJ1o/ykBumm51BSzCjzVcb
+         ei2g/orcov/mCGQ5JdgKaEbo5XTJzcF9pxfAEBHwBFe2enS3KGfXyBOJpqJTwinp3l4e
+         NfFw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=KBCoNrS6;
-       spf=pass (google.com: domain of gshan@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=gshan@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Vt+OVpyx;
+       spf=pass (google.com: domain of gshan@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=gshan@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <gshan@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id af79cd13be357-7a4ff1272f7si1123495485a.783.2024.08.19.17.22.18
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6bf6fee7450si119107176d6.323.2024.08.19.17.06.19
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 19 Aug 2024 17:22:18 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gshan@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        Mon, 19 Aug 2024 17:06:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gshan@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=KBCoNrS6;
-       spf=pass (google.com: domain of gshan@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=gshan@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Vt+OVpyx;
+       spf=pass (google.com: domain of gshan@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=gshan@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1724113338;
+	s=mimecast20190719; t=1724112379;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=4MKczJNn7eWeSgYJzFg8/eo5vyV7rrNgXziv7QtGHbg=;
-	b=KBCoNrS6u2yowQ+ex8frEV2WbnddWLfO0Iy2P7GveRswdTnEkN6ucMW/k5evUPtPu/SuZD
-	vtzRsMuer/FWLoW5JUQko6Oj10xiTN8vBjanyInwRrM8opshfVFAUyaiVUC7GqY2jZ2yGg
-	IUzfFs7g9NKdxp0+cIgLWCRgNYinhVQ=
-Received: from mail-pf1-f200.google.com (mail-pf1-f200.google.com
- [209.85.210.200]) by relay.mimecast.com with ESMTP with STARTTLS
+	bh=JJEydKeQmdOmLMAudtBetG1MczMHRW8T9SNRL0pTjIc=;
+	b=Vt+OVpyxci/JW62TU16butW/xUXftpPo2jdsYFLY3GTW6D1KzFyxg1rk86JbL5sjOxEOcJ
+	JEUvYA+k10Jcp+V6/tK2wcY49VrkdUYTJeGsyxD+FNGkuU+CocAbZB/G617ZEmSeKUrXR4
+	cbosGrmHLkSW7gG6psznrsDTiPNKFBQ=
+Received: from mail-pj1-f71.google.com (mail-pj1-f71.google.com
+ [209.85.216.71]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-435-feJPtocEMKierxhPbJ-d1A-1; Mon, 19 Aug 2024 20:22:17 -0400
-X-MC-Unique: feJPtocEMKierxhPbJ-d1A-1
-Received: by mail-pf1-f200.google.com with SMTP id d2e1a72fcca58-70d1a9bad5dso4908020b3a.0
-        for <alex.bennee@linaro.org>; Mon, 19 Aug 2024 17:22:17 -0700 (PDT)
+ us-mta-608-Vtfy6754MsOk-BO_BQwi6w-1; Mon, 19 Aug 2024 20:06:17 -0400
+X-MC-Unique: Vtfy6754MsOk-BO_BQwi6w-1
+Received: by mail-pj1-f71.google.com with SMTP id 98e67ed59e1d1-2d3d45c308fso4269328a91.1
+        for <alex.bennee@linaro.org>; Mon, 19 Aug 2024 17:06:17 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1724113336; x=1724718136;
+        d=1e100.net; s=20230601; t=1724112377; x=1724717177;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=4MKczJNn7eWeSgYJzFg8/eo5vyV7rrNgXziv7QtGHbg=;
-        b=WTZPF/aGjO5jtHp5YmTtO5GFuh6rchplZh+jxVYJUoO7DOldqnFxmij/U7eQbwvJe3
-         iJBVywOxUgW8wUtNwxPsGhc0pX2rLrXB9/LVt0pm4muweq1YjRJjm0NIj28jx8kX4Uwy
-         5NlYzRAXEumhrzw0cFBXpTn93NBX/AdbJp5EPs3Stmuj/yvOSQh0d2lZdM50Kj2+vUpK
-         lPDBnzP98BnMD0OHOPn4+v+Bpvs6wTJnUbBB8f4fJM+h6eDR+lY1dRTcxNs1GgE5n/yH
-         7AZ5rapDHZdaukcNz9c9Z+0/0AaGhhqHYDgMdyKWj3HAZHFA+Vl8Xz4v8+udqHe7z8Gv
-         9Lrg==
-X-Forwarded-Encrypted: i=1; AJvYcCWvjxpEdfWfZDt4qtiw+5aQBGgQ2VdQ/HrFDON2P3JQwy3vX+gDO6jBOz4Bb6O3lBKHgqXdVGhwO5k0IuJ2MaQrqdReQM3n
-X-Gm-Message-State: AOJu0YycRJ6nYcxqSXprmWp+nlLlYhaEeL8rNQ3hFUR0FUYfiiBdt0Im
-	R/oTBpI4rcS+7PFpqiaQ0WKPdl9Nh5awKoKtan0sfR/qlLlf3aGaHLEK00Ot6A3PYi4Ygw5UlJJ
-	t1oqHjtQnxTFJIBb+Xxh9O7H9S1EITZJ58HuExUqxTUjnxBvPy2dd7w==
-X-Received: by 2002:a05:6a00:148b:b0:70d:278e:4e94 with SMTP id d2e1a72fcca58-713c5285995mr13467681b3a.30.1724113336254;
-        Mon, 19 Aug 2024 17:22:16 -0700 (PDT)
-X-Received: by 2002:a05:6a00:148b:b0:70d:278e:4e94 with SMTP id d2e1a72fcca58-713c5285995mr13467659b3a.30.1724113335722;
-        Mon, 19 Aug 2024 17:22:15 -0700 (PDT)
+        bh=JJEydKeQmdOmLMAudtBetG1MczMHRW8T9SNRL0pTjIc=;
+        b=EIHJ2f8B60LRADvTrDQylnXu1jGlXQANeBbTGGJD5yJLu0449jzG6xfsXd4td8xtnI
+         Pkp8zwxLNGGs5WRsrT3+2MyuWS15Uoc2k8HdMqWkD0eMg1qJAde9rGr6Y5UOexgJk3vM
+         RCsB9vUsJVas2f5wVljJNDMM/mRmPlp/XKhacgkGd1hqM25/8qCoOQQjDgq/zp2ZHogU
+         KOGmcMPkzfqkNaorQ/gzumROIcr6554svYlh96FST0K+KifDU4+pWHvHBb2EdcJ/edBZ
+         cUqdeG9QZNSBIo4ptGxmdtjod4wFn33sNJX1xRVEe2WW6NFmcKu3SxnrpQ9J4iTf7VhD
+         cpqg==
+X-Forwarded-Encrypted: i=1; AJvYcCW1quGO3JK4v3pCEPbzIy11tjj7gejgo76cnOnxTTFvQEzzdAzF3lcNzMkquXY5paNMQDnIp8t4hUJ9z9HZeYFRnA1T1IOp
+X-Gm-Message-State: AOJu0YxasaIKTcIyejAgQIV/QdJ/SYq/bl5ahKuXCX8n+2uMfFm/V2E5
+	OpLdLG7SJOpvHsNg6hjAUHOflzIoQRWiEhR7MBdD5FPy6Yx2j4yjJP/C3F8YHqORwnAOoL/j5bg
+	GsKbRozL/llrkbAKWr3ZhFHOcCwJ8YgSzaPLHE0tNhHSt6C307a2kzg==
+X-Received: by 2002:a17:90a:e7cc:b0:2cd:2992:e8dc with SMTP id 98e67ed59e1d1-2d5c0d79fcdmr786340a91.5.1724112376907;
+        Mon, 19 Aug 2024 17:06:16 -0700 (PDT)
+X-Received: by 2002:a17:90a:e7cc:b0:2cd:2992:e8dc with SMTP id 98e67ed59e1d1-2d5c0d79fcdmr786278a91.5.1724112376311;
+        Mon, 19 Aug 2024 17:06:16 -0700 (PDT)
 Return-Path: <gshan@redhat.com>
 Received: from [192.168.68.54] ([103.210.27.48])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-7127aef574asm7120615b3a.114.2024.08.19.17.22.03
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-2d3ac7dd3f0sm11710796a91.18.2024.08.19.17.06.03
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 19 Aug 2024 17:22:15 -0700 (PDT)
-Message-ID: <52ae18ca-0a5a-44d4-95f5-56cfc7a035a8@redhat.com>
-Date: Tue, 20 Aug 2024 10:22:00 +1000
+        Mon, 19 Aug 2024 17:06:15 -0700 (PDT)
+Message-ID: <9b7582f0-8149-4bf0-a1aa-4d4fe0d35e70@redhat.com>
+Date: Tue, 20 Aug 2024 10:05:59 +1000
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH RFC V3 11/29] arm/virt: Create GED dev before *disabled*
- CPU Objs are destroyed
+Subject: Re: [PATCH RFC V3 17/29] arm/virt: Release objects for *disabled*
+ possible vCPUs after init
 To: Salil Mehta <salil.mehta@huawei.com>,
  "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
  "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "mst@redhat.com"
@@ -126,113 +126,158 @@ Cc: "maz@kernel.org" <maz@kernel.org>,
  "shahuang@redhat.com" <shahuang@redhat.com>,
  "zhao1.liu@intel.com" <zhao1.liu@intel.com>, Linuxarm <linuxarm@huawei.com>
 References: <20240613233639.202896-1-salil.mehta@huawei.com>
- <20240613233639.202896-12-salil.mehta@huawei.com>
- <143ad7d2-8f45-4428-bed3-891203a49029@redhat.com>
- <b6bdee28101741169048819c0d562bfc@huawei.com>
+ <20240613233639.202896-18-salil.mehta@huawei.com>
+ <51dc0813-7dc9-4927-a24b-bd718be54e46@redhat.com>
+ <6b435c1f2b934867b8d82850d6d866c6@huawei.com>
 From: Gavin Shan <gshan@redhat.com>
-In-Reply-To: <b6bdee28101741169048819c0d562bfc@huawei.com>
+In-Reply-To: <6b435c1f2b934867b8d82850d6d866c6@huawei.com>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-TUID: 4rMj7uKZ+SU4
+X-TUID: AZE4YvnDyD/O
 
 Hi Salil,
 
-On 8/19/24 10:10 PM, Salil Mehta wrote:
+On 8/19/24 10:21 PM, Salil Mehta wrote:
 >>   From: Gavin Shan <gshan@redhat.com>
->>   Sent: Tuesday, August 13, 2024 2:05 AM
+>>   Sent: Tuesday, August 13, 2024 2:17 AM
 >>   To: Salil Mehta <salil.mehta@huawei.com>; qemu-devel@nongnu.org;
 >>   qemu-arm@nongnu.org; mst@redhat.com
 >>   
 >>   On 6/14/24 9:36 AM, Salil Mehta wrote:
->>   > ACPI CPU hotplug state (is_present=_STA.PRESENT,
->>   > is_enabled=_STA.ENABLED) for all the possible vCPUs MUST be
->>   > initialized during machine init. This is done during the creation of
->>   > the GED device. VMM/Qemu MUST expose/fake the ACPI state of the
->>   > disabled vCPUs to the Guest kernel as 'present' (_STA.PRESENT) always
->>   > i.e. ACPI persistent. if the 'disabled' vCPU objectes are destroyed
->>   > before the GED device has been created then their ACPI hotplug state
->>   > might not get initialized correctly as acpi_persistent flag is part of the
->>   CPUState. This will expose wrong status of the unplugged vCPUs to the
->>   Guest kernel.
+>>   > During `machvirt_init()`, QOM ARMCPU objects are pre-created along
+>>   > with the corresponding KVM vCPUs in the host for all possible vCPUs.
+>>   > This is necessary due to the architectural constraint that KVM
+>>   > restricts the deferred creation of KVM vCPUs and VGIC
+>>   > initialization/sizing after VM initialization. Hence, VGIC is pre-sized with
+>>   possible vCPUs.
 >>   >
->>   > Hence, moving the GED device creation before disabled vCPU objects get
->>   > destroyed as part of the post CPU init routine.
+>>   > After the initialization of the machine is complete, the disabled
+>>   > possible KVM vCPUs are parked in the per-virt-machine list
+>>   > "kvm_parked_vcpus," and we release the QOM ARMCPU objects for the
+>>   > disabled vCPUs. These will be re-created when the vCPU is hotplugged
+>>   > again. The QOM ARMCPU object is then re-attached to the corresponding
+>>   parked KVM vCPU.
 >>   >
+>>   > Alternatively, we could have chosen not to release the QOM CPU objects
+>>   > and kept reusing them. This approach might require some modifications
+>>   > to the `qdevice_add()` interface to retrieve the old ARMCPU object
+>>   > instead of creating a new one for the hotplug request.
+>>   >
+>>   > Each of these approaches has its own pros and cons. This prototype
+>>   > uses the first approach (suggestions are welcome!).
+>>   >
+>>   > Co-developed-by: Keqian Zhu <zhukeqian1@huawei.com>
+>>   > Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
 >>   > Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
 >>   > ---
->>   >   hw/arm/virt.c | 10 +++++++---
->>   >   1 file changed, 7 insertions(+), 3 deletions(-)
+>>   >   hw/arm/virt.c | 32 ++++++++++++++++++++++++++++++++
+>>   >   1 file changed, 32 insertions(+)
 >>   >
 >>   > diff --git a/hw/arm/virt.c b/hw/arm/virt.c index
->>   > 918bcb9a1b..5f98162587 100644
+>>   > 9d33f30a6a..a72cd3b20d 100644
 >>   > --- a/hw/arm/virt.c
 >>   > +++ b/hw/arm/virt.c
->>   > @@ -2467,6 +2467,12 @@ static void machvirt_init(MachineState
->>   > *machine)
->>   >
->>   >       create_gic(vms, sysmem);
->>   >
->>   > +    has_ged = has_ged && aarch64 && firmware_loaded &&
->>   > +              virt_is_acpi_enabled(vms);
->>   > +    if (has_ged) {
->>   > +        vms->acpi_dev = create_acpi_ged(vms);
->>   > +    }
->>   > +
->>   >       virt_cpu_post_init(vms, sysmem);
->>   >
->>   >       fdt_add_pmu_nodes(vms);
->>   > @@ -2489,9 +2495,7 @@ static void machvirt_init(MachineState
->>   *machine)
->>   >
->>   >       create_pcie(vms);
->>   >
->>   > -    if (has_ged && aarch64 && firmware_loaded &&
->>   virt_is_acpi_enabled(vms)) {
->>   > -        vms->acpi_dev = create_acpi_ged(vms);
->>   > -    } else {
->>   > +    if (!has_ged) {
->>   >           create_gpio_devices(vms, VIRT_GPIO, sysmem);
+>>   > @@ -2050,6 +2050,7 @@ static void virt_cpu_post_init(VirtMachineState
+>>   *vms, MemoryRegion *sysmem)
+>>   >   {
+>>   >       CPUArchIdList *possible_cpus = vms->parent.possible_cpus;
+>>   >       int max_cpus = MACHINE(vms)->smp.max_cpus;
+>>   > +    MachineState *ms = MACHINE(vms);
+>>   >       bool aarch64, steal_time;
+>>   >       CPUState *cpu;
+>>   >       int n;
+>>   > @@ -2111,6 +2112,37 @@ static void virt_cpu_post_init(VirtMachineState
+>>   *vms, MemoryRegion *sysmem)
+>>   >               }
+>>   >           }
 >>   >       }
->>   >
+>>   > +
+>>   > +    if (kvm_enabled() || tcg_enabled()) {
+>>   > +        for (n = 0; n < possible_cpus->len; n++) {
+>>   > +            cpu = qemu_get_possible_cpu(n);
+>>   > +
+>>   > +            /*
+>>   > +             * Now, GIC has been sized with possible CPUs and we dont
+>>   require
+>>   > +             * disabled vCPU objects to be represented in the QOM. Release
+>>   the
+>>   > +             * disabled ARMCPU objects earlier used during init for pre-sizing.
+>>   > +             *
+>>   > +             * We fake to the guest through ACPI about the
+>>   presence(_STA.PRES=1)
+>>   > +             * of these non-existent vCPUs at VMM/qemu and present these
+>>   as
+>>   > +             * disabled vCPUs(_STA.ENA=0) so that they cant be used. These
+>>   vCPUs
+>>   > +             * can be later added to the guest through hotplug exchanges
+>>   when
+>>   > +             * ARMCPU objects are created back again using 'device_add' QMP
+>>   > +             * command.
+>>   > +             */
+>>   > +            /*
+>>   > +             * RFC: Question: Other approach could've been to keep them
+>>   forever
+>>   > +             * and release it only once when qemu exits as part of finalize or
+>>   > +             * when new vCPU is hotplugged. In the later old could be released
+>>   > +             * for the newly created object for the same vCPU?
+>>   > +             */
+>>   > +            if (!qemu_enabled_cpu(cpu)) {
+>>   > +                CPUArchId *cpu_slot;
+>>   > +                cpu_slot = virt_find_cpu_slot(ms, cpu->cpu_index);
+>>   > +                cpu_slot->cpu = NULL;
+>>   > +                object_unref(OBJECT(cpu));
+>>   > +            }
+>>   > +        }
+>>   > +    }
+>>   >   }
 >>   
->>   It's likely the GPIO device can be created before those disabled CPU objects
->>   are destroyed. It means the whole chunk of code can be moved together, I
->>   think.
+>>   It's probably hard to keep those ARMCPU objects forever. First of all, one
+>>   vCPU can be hot-added first and then hot-removed afterwards. With those
+>>   ARMCPU objects kept forever, the syntax of 'device_add' and 'device_del'
+>>   become broken at least.
 > 
-> I was not totally sure of this. Hence, kept the order of the rest like that. I can
-> definitely check again if we can do that to reduce the change.
+> I had prototyped both approaches 4 years back. Yes, interface problem with
+> device_add was solved by a trick of keeping the old vCPU object and on
+> device_add instead of creating a new vCPU object we could use the old vCPU
+> object and then call qdev_realize() on it.
+> 
+> But bigger problem with this approach is that of migration. Only realized objects
+> have state to be migrated. So it might look cleaner on one aspect but had its
+> own issues.
+> 
+> I think I did share a prototype of this with Igor which he was not in agreement with
+> and wanted vCPU objects to be destroyed like in x86. Hence, we stuck with
+> the current approach.
 > 
 
-@has_ged is the equivalent to '!vmc->no_ged' initially and then it's overrided by
-the following changes in this patch. The syntax of @has_ged has been changed and
-it's not the best name to match the changes. There are two solutions: (1) Rename
-@has_ged to something meaningful and matching with the changes; (2) Move the whole
-chunk of codes, which I preferred. The GPIO device and GED device are supplementing
-to each other, meaning GPIO device will be created when GED device has been disallowed.
+Migration needn't to be the blocker necessarily. For those states of vCPUs, which
+have been instantiated and not realized yet, those states can be moved around to
+be managed under another migratable object (e.g. MachineState). In this way, those
+vCPU states can be migrated together with MachineState. However, it sounds strange
+to me to have vCPU objects instantiated, but unrealized until hot-add is triggered.
+It's not what QOM supposes to support.
 
-     has_ged = has_ged && aarch64 && firmware_loaded && virt_is_acpi_enabled(vms);
+Ok, I don't realize x86 also follows this model: instantiate hotpluggable vCPUs
+and destroy them on bootup.
 
-The code to be moved together in virt.c since they're correlated:
+> 
+>>   The ideal mechanism would be to avoid instanciating those ARMCPU objects
+>>   and destroying them soon. I don't know if ms->possible_cpus->cpus[] can
+>>   fit and how much efforts needed.
+> 
+> This is what we are doing now in the current approach. Please read the KVMForum
+> slides of 2023 for more details and the cover letter of RFC V3 for more details.
+> 
 
-     if (has_ged && aarch64 && firmware_loaded && virt_is_acpi_enabled(vms)) {
-         vms->acpi_dev = create_acpi_ged(vms);
-     } else {
-         create_gpio_devices(vms, VIRT_GPIO, sysmem);
-     }
-     
-     if (vms->secure && !vmc->no_secure_gpio) {
-         create_gpio_devices(vms, VIRT_SECURE_GPIO, secure_sysmem);
-     }
-
-      /* connect powerdown request */
-      vms->powerdown_notifier.notify = virt_powerdown_req;
-      qemu_register_powerdown_notifier(&vms->powerdown_notifier);
+My question has been parsed in a wrong way. My question was if it's doable to avoid
+instantiating vCPU#1 on bootup when we have command lines '-cpu host -smp cpus=1,max_cpus=2'
+and release it in machvirt_init(). Instead, ms->possible_cpus->cpus[] are reused to create
+GICv3 and vCPU file descriptors. It looks like a clean way at least. There may be significant
+efforts to reuse mc->possible_cpus->cpus[], but vCPU#1 object has ephemeral life cycle.
+It looks unnecessary to create the ephemeral vCPU#1 object.
 
 Thanks,
 Gavin
-
-
-

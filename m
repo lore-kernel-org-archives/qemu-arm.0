@@ -1,302 +1,525 @@
-Received: by 2002:a17:505:4e90:b0:1be9:327d:8ee3 with SMTP id y16csp303659njx;
-        Tue, 20 Aug 2024 05:55:32 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCV8K6g9pzpOTSfqLQTrjfGnZBD77RtYvVT0+OcwflZoJR7x5pE2ERZVWxNf9uM6lz3yKYFoDPbENOXIcAXUQn57ROE7zXUo
-X-Google-Smtp-Source: AGHT+IF0AYw2AD8hD/GdyIKKOQoRsOXILBd4kPeXNIEjZViM9VD1gU3/Ec4VP+AvNwctJ2l39UIb
-X-Received: by 2002:a05:6102:304a:b0:492:9e3a:9f48 with SMTP id ada2fe7eead31-49779892fb2mr17148695137.2.1724158532486;
-        Tue, 20 Aug 2024 05:55:32 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1724158532; cv=pass;
+Received: by 2002:a17:505:4e90:b0:1be9:327d:8ee3 with SMTP id y16csp334721njx;
+        Tue, 20 Aug 2024 07:13:25 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVIdwhpXERslPezBgATuNeORYT4lght8wu+eEuxN4HfiggyOvsFkfLsl43f3IGvMHHrSi8kv79uVY62Iw==@linaro.org
+X-Received: by 2002:a05:6402:2348:b0:585:5697:b882 with SMTP id 4fb4d7f45d1cf-5bf0ac0c9d2mr3020173a12.3.1724163204907;
+        Tue, 20 Aug 2024 07:13:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1724163204; cv=none;
         d=google.com; s=arc-20160816;
-        b=dHYTd2mh6DeQ1Ss0Kmx9JeI3jq2c3H9rL5Pg1AzintlWN0ii/RonO9m5DqGSbuuonP
-         R3sjTtaFkVwRY/qpW/OS+zh3G0dJBp4iQBrydEcyo5oFTz6SNFhAMOI6X+zsNzkqEkLj
-         r0lP8wcT1EXuzKoRh2u7LAnD++77/l9fArLU2c3HP/pneTKevpyRqlPyjkBEHvYYHUlV
-         8m3O9NWRJJNy5GGQ3fu4zd3uCfr8F9dYEwfitYTgIa1o0sw0Fn07Y4zkzFrYWF2fL1kF
-         9Achs1WjujuhGtcv9X0ppZ3sORt1d2L3pV74ClXZ8BKBdv9PNpU24djaiFv7UIWRXz+l
-         t3xA==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :in-reply-to:references:message-id:date:thread-index:thread-topic
-         :subject:cc:to:from;
-        bh=y18ObBfJ+ZHiJQdWv6owPNJgy4pTjfididwN8V0Kb9M=;
-        fh=OhhDyosO++8kJ5pj/gx18JH1E/ywoDMa0eNhDO6JoSs=;
-        b=wfTG5Cw5hLTMYPkFrGOPJI+Pjv6D8xabthtx/HhpW/e9b2r/R0FUSb+JamoGnRX6Xz
-         2nPwW9t6oX4MjNj229J4Gf0VOvVq84j/iEBKEtfvuD0BocA1VXigoQTaeXh4np537DfH
-         IvaroxfxZ8FivUFFGsJKxguCRiwpFw0KV4rKAgwqqDxRN3hA6fwxwXRktcxkUkMk48KW
-         1PNaCc0j5uJ5ouf3ZRdJY036thNyXpMNFByncjzkZzusCNR4Ph37dUTM/9w3OG/GfSqg
-         mTbH4iblVfJ6hTICnYV/5j7vwLxGLKpqX89QoqqTgdGbgIvYAsd3YUBsEBj8j+H57zm0
-         Kmtw==;
+        b=dJxtM9Fj+ZzKqVLpqNmYoVbGkgLR+AwhYCZfA0BJBkHbK1Lu57YDhR9OFZ/XWyPLk9
+         jUyQpBnLZSSMVPRI4QpJmADRvBFBzq+3ZkclZH+3NKXfXg7okxtBe83BfFRxPRShzySR
+         M5pP0ZUeGeMHxKIR+s8Tm9036lwoKcia9/o47C1KBCBuNoukauWPAFILZ3HrMsW20OtM
+         P0NcSuIrALKO/7ehw0zLpO1+3YpVgXxNg72cI7SsvPpI1IFlVJOOxX2AbDjswhDybG8X
+         P9F727hlDHAALwpqGHGtOihjlOgtwZKx5gUUIL1YAv/pVQvTmTWSRZu8tVoKVYtCw08H
+         X/Bg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=HqlixZGtnNSdwk9qAJAaBBrZLbKEh4Yudg6Ug8KTXQw=;
+        fh=Io/ARTZwZCSN44mwNnlmQ5QKsJFhDAs6eBfpppV2iYU=;
+        b=xjfDI62cX42azoZ8iN/zFbVznq3ogK+WPyZbtog22RkryyACna7X8NyTNmTsrCXTme
+         U7B/OytghQTOBO9gAofGnYUsPD7+nwREY+2fd7i7ZdPpMbr2SzVZH9BGHafkAq4MK7gC
+         Iaq2aryG/5DFuho9ad4D+La4NqhIeCj0Z65FsuLQzNVaNhIJ4QGu7SMCn8sTwiZCD5J/
+         VvS+4HVNIVokXYbXT7SawDu45ePQtonuSlNpCgUSN5bR5IIkMWTK8Jhj6b3kK7TlWxvN
+         VfafojI2G5LncKer5JyH1AjNEXuqO8RqOHRBCEVzwV9Sx8e2lL200DrMOb+Z4UcTLUUw
+         7WWg==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       arc=pass (i=1 spf=pass spfdomain=starfivetech.com dkim=pass dkdomain=starfivetech.com dmarc=pass fromdomain=starfivetech.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7a4ff030642si1246015285a.176.2024.08.20.05.55.32
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 20 Aug 2024 05:55:32 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=i2LBwxjt;
+       spf=pass (google.com: domain of edgar.iglesias@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=edgar.iglesias@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=neutral header.i=@linaro.org
+Return-Path: <edgar.iglesias@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 4fb4d7f45d1cf-5bebb6f8db7sor4644190a12.6.2024.08.20.07.13.24
+        (Google Transport Security);
+        Tue, 20 Aug 2024 07:13:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of edgar.iglesias@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       arc=pass (i=1 spf=pass spfdomain=starfivetech.com dkim=pass dkdomain=starfivetech.com dmarc=pass fromdomain=starfivetech.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sgONu-0005rY-T0; Tue, 20 Aug 2024 08:54:51 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jeeheng.sia@starfivetech.com>)
- id 1sgONt-0005pZ-4b; Tue, 20 Aug 2024 08:54:49 -0400
-Received: from mail-bjschn02on2072f.outbound.protection.partner.outlook.cn
- ([2406:e500:4440:2::72f]
- helo=CHN02-BJS-obe.outbound.protection.partner.outlook.cn)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jeeheng.sia@starfivetech.com>)
- id 1sgONp-0002k6-3z; Tue, 20 Aug 2024 08:54:48 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=jo3WJHVyN8OKYvum/V8gUS/7PufuViRSVxYf+uuAh3NXPb4Ozl4Zmsa+3zE3YHJ1QjaKUrZvoSxUvswxo/ZtzUKx1ZZudcd69VFLepyPshX+Asy2WHbX4cLjGpdeL2+GAse1XxokE5NQ2jk2Ktalxo2sHGV2u1TUZrSaG3pUOaJyAWF+QN2H6V7cy9Zo2y7zDDEdpXuEReRjw9yvo8v4AiaDT7f5SGlVxzS6wmTvsQ7yHiEBinobkUjmFBLbl/U6cfGpnmcHWUh3TEgUAX5CyWwUeWwbDKUFFqNpnrwde9hsHnBaCh0GgcvVRZeV1HukNQA6RnqLluubQBd8IYth9A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=y18ObBfJ+ZHiJQdWv6owPNJgy4pTjfididwN8V0Kb9M=;
- b=CLQFpTELnDymTyoSQ1vMvh9fO4FTbe83LYhYB4ToatFtLj52A44BIQN0Hs0wlBka4crQPDkE7SAVL08Zr6+sTNzHbFDs6slcz8fvQpSnWoX538RH5R88GSMcr/RrulQG9wu6VxpDjBFADDhd2/Abbm7tDswznMKEXjq3T8qmVarnjj/CatASlQK1rk6Gh8qDRE+KI4Lpr+5CyPUfKJM2cUvOtJQSqhLTSZDnbNKGSdcJHWi7g4uSFGOLQZDAFpGp1Z93iNOA/tLUfox9R6qik2w6Lkds52ALLPooNShIOdIfJKDTqwsF3+R45bBwp+F5OJTf4k8oFZnPQOqlVbrt3w==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=starfivetech.com; dmarc=pass action=none
- header.from=starfivetech.com; dkim=pass header.d=starfivetech.com; arc=none
-Received: from NT0PR01MB1278.CHNPR01.prod.partner.outlook.cn
- (2406:e500:c510:12::10) by NT0PR01MB1231.CHNPR01.prod.partner.outlook.cn
- (2406:e500:c510:e::9) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7875.25; Tue, 20 Aug
- 2024 12:54:28 +0000
-Received: from NT0PR01MB1278.CHNPR01.prod.partner.outlook.cn
- ([fe80::affa:7fe4:57c8:11ce]) by
- NT0PR01MB1278.CHNPR01.prod.partner.outlook.cn ([fe80::affa:7fe4:57c8:11ce%5])
- with mapi id 15.20.7875.023; Tue, 20 Aug 2024 12:54:28 +0000
-From: JeeHeng Sia <jeeheng.sia@starfivetech.com>
-To: Sunil V L <sunilvl@ventanamicro.com>
-CC: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org"
- <qemu-devel@nongnu.org>, "qemu-riscv@nongnu.org" <qemu-riscv@nongnu.org>,
- "mst@redhat.com" <mst@redhat.com>, "imammedo@redhat.com"
- <imammedo@redhat.com>, "anisinha@redhat.com" <anisinha@redhat.com>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>, "palmer@dabbelt.com"
- <palmer@dabbelt.com>, "alistair.francis@wdc.com" <alistair.francis@wdc.com>,
- "bin.meng@windriver.com" <bin.meng@windriver.com>, "liwei1518@gmail.com"
- <liwei1518@gmail.com>, "dbarboza@ventanamicro.com"
- <dbarboza@ventanamicro.com>, "zhiwei_liu@linux.alibaba.com"
- <zhiwei_liu@linux.alibaba.com>
-Subject: RE: [PATCH v3 2/3] hw/acpi: Upgrade ACPI SPCR table to support SPCR
- table version 4 format
-Thread-Topic: [PATCH v3 2/3] hw/acpi: Upgrade ACPI SPCR table to support SPCR
- table version 4 format
-Thread-Index: AQHa7UDZgmLVZbRpbUy2BtkZ8CGjnLIuAMeAgAIkpNA=
-Date: Tue, 20 Aug 2024 12:54:28 +0000
-Message-ID: <NT0PR01MB12787808C27B4CA5FE459CD09C8D2@NT0PR01MB1278.CHNPR01.prod.partner.outlook.cn>
-References: <20240813052223.1033420-1-jeeheng.sia@starfivetech.com>
- <20240813052223.1033420-3-jeeheng.sia@starfivetech.com>
- <ZsLFkbZxvOLpf8bZ@sunil-laptop>
-In-Reply-To: <ZsLFkbZxvOLpf8bZ@sunil-laptop>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=starfivetech.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: NT0PR01MB1278:EE_|NT0PR01MB1231:EE_
-x-ms-office365-filtering-correlation-id: 3df1861b-e9ee-45f3-b2d6-08dcc1173a44
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
- ARA:13230040|366016|41320700013|7416014|1800799024|38070700018; 
-x-microsoft-antispam-message-info: 44uwc6uSN0iuFkzzorjwvT3VxN+UjvfdcKIBox/YBA/kFVZXoG7EarXuWCJFiUV1Byt7tZk54zWdJ5nrMLBsTH03h+7vpSuVAQFhdOHxxh07m3KkjFQpORrcYOfYSOScRZFiuhN14k1qUPdwQ3UNhfqv/oIkcuu2GIjjczpSnzUWCgsr7XUtlSSd7zFXaXqrcmrvgfmgZX6Nok+hf9PjU6ZD6Eg6XK0bzIRB6bh0v6swO8rwkVXdoaco+58aEkhEkakm03mFWE+Tua7gWiPmX74R31OJTy/o8X79+69v+3WsqhohfWt5UNCSvHRPz8wQMj5pnG5Ahmb72Wq1PmNSxoDv+yntdA3qza32Y33iZrlNz80oIVlS32MiaSFrCsoh4h9IGAEraPV6HwkwVrTziRWJFPxrmbSSeH1eBl0dIqEW7+6oaaLoNkOYwuniMIu1ql1d59HDAJnIOBcuOBPrdv4TD7GBGcG7ola9tNzEu2+mIZJCx+nBZGVKUEOASQiU2pa6E85pRZNuAb1bB6F+7iv2/YkZUG7TSmqjS9SCQyQAk7mPmRONW1vbwoPco6ngpIb8E7ViUebUpI5Tb2f+1DbW8u1LcxgN1UcA+0Q9Kr8nl7QjEHfOeafLzRl4t/eV
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:NT0PR01MB1278.CHNPR01.prod.partner.outlook.cn; PTR:;
- CAT:NONE;
- SFS:(13230040)(366016)(41320700013)(7416014)(1800799024)(38070700018); DIR:OUT;
- SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?aX5du1MiMAmnrb6Y3K17KNj9rftve6JDU6RNtYHLR7ktUl3eiTuWlnobDf4z?=
- =?us-ascii?Q?h512yqwl4zZh8DJD63ARkQ0RP8Db2gvaMtWIN/+xKcApUPHIg4/51JKzvicZ?=
- =?us-ascii?Q?6UwPShGM/KsXvBOw1mXWJLYFMCpfoQakj2rxqR31oyvcnA9CsU+BkCp8n2pO?=
- =?us-ascii?Q?bx/PHRG1oXANxKuuYXKgi6Pt2NJaJL2CnXAExPyHrs+HLRnAAYqv+NzNbDFM?=
- =?us-ascii?Q?Q4qCE8x/fwYt2PWNxbnjlurd9/bgSLsl8IERbwqIO84SogAPV3ttBNOKeDz0?=
- =?us-ascii?Q?CgZPlFhMjktxB2vTUmwmuO8P/pK+dCJcb7CFD0IEj/lmPvQOXNk/+GN9F08n?=
- =?us-ascii?Q?6SUdyx+om4T393Td+hnnnW1lQ8GBS+9oF9Z96FxfH1xQ61ExHhB3F5azjMmc?=
- =?us-ascii?Q?T+73jM3+qUSz6vXijYr1u8TfWjBsykVGOXBFfj5FIE4T0Q2iM1T+4srDT+yf?=
- =?us-ascii?Q?CEk4ctau0CtAN6wB9KcIlNvluXftOmSYcTK1EvnzdAzArPcj2tg3TVZ6Lm6q?=
- =?us-ascii?Q?udwcObrlZ4LQ1IiNGyUgSAVZKc3Zaecj9VvNlHRhkLttjGLV5/P6YqWU9jRf?=
- =?us-ascii?Q?ITrsfnVpdiLy6uv3IiwX/HpdjZG3AcxDN2FKmBCVDOgdzxYSKf5r8CadjNKT?=
- =?us-ascii?Q?0hPGU6XXcKNs5KweO7MYsOWIY5bUh9xdYlOkf4/Kuzwoo2Pu3T+P4vqWiVOb?=
- =?us-ascii?Q?FXgPBpYl6cJMODqkcyZZXFVBWkhE6LEbYSWsM/8qlNR2xwcdjU3k3kzTs44W?=
- =?us-ascii?Q?7+uHfvkjRFiOKtoOlnPNwyPeLQx4f+/iEz6Gk7/b4FZRVHCQjK3Ty08u8de/?=
- =?us-ascii?Q?QPIogI6RMVbj/mt0uc51Izj9HMh3ET9aVK+/1NZRhSQ9WQnGJA0q3DohLo2R?=
- =?us-ascii?Q?0TquYd6JU1TlKEpCVkKMpJQISj3PefilGRQlafHpFbjW5c7y6UTilJMvnP96?=
- =?us-ascii?Q?UnCTfY9sXHIk0LDLNLFxwN5575dZImkv5PHw1TMwJHenolFd5486GSt4PZNG?=
- =?us-ascii?Q?jCu4WtUVUa8ekHAoIvEXe4DRdWDkgZCsgPnjZ///ImFBnQhESyCt8ZvmMzAt?=
- =?us-ascii?Q?3hfs9e3Ysm9HA7uYBzivnucCgwaGLbGxww3IVxhIJV63ZmnI5W2YFrdm8ZIk?=
- =?us-ascii?Q?fHKozz+22Vgiuc+uQtrttbhPvBsXbtw2hs+hB+PIWn4Blxypj0kLHUUYSwF8?=
- =?us-ascii?Q?aJl8jrwMot79TyqiH3JgKddANi2XNq1pyBFPkbMSnrC6QNurnCNEJxgbU6pB?=
- =?us-ascii?Q?2ZzRbQ6X0qblpG7jkd9M+Y24T5xXRy1Xo88fF2nnUhvF5hzNdscq7IB0E5Ic?=
- =?us-ascii?Q?0TRkRJyqzcU+qHFzk7cVwJ+YDJ8mzupOyL224XYYI+lUxEj67Q9kaVFiCGHW?=
- =?us-ascii?Q?2fIeeWNnl/TwuEw4R2rhrn7Dw6BKtUg6PLENSesQD9UmBdsJwWsKh9ckCbyX?=
- =?us-ascii?Q?H03h6gO3dithHzl66AphP7bnKazpIGiWsvafvX/ue4hvyGCXltytZup2prmq?=
- =?us-ascii?Q?mYmSpWFVRT9eSp4ZGIwU5RKBD38UzCOd0T9Q9VKPYt85CyROeOSwNde+U1Bo?=
- =?us-ascii?Q?7Zr+jI5F+BQ8N12TRpgzvJGiL4wqnPKDyAnKY8UUzHvwunqcIeJa7m4+ifC3?=
- =?us-ascii?Q?rQ=3D=3D?=
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=i2LBwxjt;
+       spf=pass (google.com: domain of edgar.iglesias@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=edgar.iglesias@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1724163204; x=1724768004; darn=linaro.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=HqlixZGtnNSdwk9qAJAaBBrZLbKEh4Yudg6Ug8KTXQw=;
+        b=i2LBwxjtSRGoj2k1u8huh3QdYbP4QPWIiwt1BWtV+avd4UMw/mYDFgB3rjFOee3Z5S
+         98GVJotUJ3URTGRhCKuMTL73HBxP6P8JnemBtuAxP6Px14qmwtkEblNVyk7EDSVuRn9z
+         neDZSaDaLvaspoHxNqs9ji/XdvLfwt8qp7p+KS7MGhnImPFjczLjylgRQ8LKOCGHek81
+         KTnN5e4lge1ZrZEWo8dBFHtzPcCVGTUGjMVBFDFGRIrOn46QItbenW+RQWBwiQTc7RiW
+         a/xXSrkNZcFtCp5I4Lk5zE8k2EYhItRXaAb0czU1IyctH1A2OteuEC/NRFG91jirb1AA
+         Vsxw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1724163204; x=1724768004;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=HqlixZGtnNSdwk9qAJAaBBrZLbKEh4Yudg6Ug8KTXQw=;
+        b=TGcLoMCh4PEm9idokYcMo6SrmCT/IlG1v2rVWRhBhL+L0SkMz1m2pzWF+/zaisjetO
+         XgUDISPvAsOuMtqMq0lB1123sWHzStyVBqt0aJMPluQwo+o+ucFvDWGriSzwOykodd7Q
+         SQ8C3epmzfQsnp4zm/Z9IHw0Y6CZksyyybziQ2NA4XhW9Ta1A+SAzhyGjrXwYGoNGB0U
+         0+hpqf4yDYiy5OWfPhd1Vk+uFc/zJrNtDCKgmIvVz1wVobUlTe7lr8vJZGRROPpJUQwe
+         BjOtIp18piNbTfc7IIz4PxUsWK9vQhhl768A56q647CN2qPxF7FnNcvm0xCGsoOTWazC
+         fpHA==
+X-Forwarded-Encrypted: i=1; AJvYcCUQDNTq8wu0uGxno7Ef6CCWDOXzL1E5LP4lRe9YZZbHqOGXblEJIYnMLuqvjAbhT5jLNSSkEJ6XhOXudA==@linaro.org, AJvYcCWnbUnCCuXt5/qnOAMDO2ziqgk4GLq70V8fL00dFFWep2RplINgyiybpX6gRoMSJx2g+NrbXEBK3mjLKqgnig==@linaro.org
+X-Gm-Message-State: AOJu0YycpBabZBmgn27Ps2fFCxjwUg7rrW09/0OH2d+Vi00BELQRFzR7
+	fNgeruPuTSjdWEfh345AKFZej/+b9DTtcZ7XKSP01SQJ8kPKxpmyaXFayhHZi/bUthMaPco09oQ
+	zz1blRW7waSk7opd5Nl4LiV2wPhA=
+X-Google-Smtp-Source: AGHT+IFYXoeF3FkeU2yRw9Zo8xB+GajV1hIlPvROdYyo/QgSrD0N91jQzsYOSqk1zJkttdz8EesefwH1O22HjOYezNo=
+X-Received: by 2002:a05:6402:1912:b0:5b4:cbba:902a with SMTP id
+ 4fb4d7f45d1cf-5bf0ac0c9ddmr2867783a12.4.1724163203518; Tue, 20 Aug 2024
+ 07:13:23 -0700 (PDT)
 MIME-Version: 1.0
-X-OriginatorOrg: starfivetech.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: NT0PR01MB1278.CHNPR01.prod.partner.outlook.cn
-X-MS-Exchange-CrossTenant-Network-Message-Id: 3df1861b-e9ee-45f3-b2d6-08dcc1173a44
-X-MS-Exchange-CrossTenant-originalarrivaltime: 20 Aug 2024 12:54:28.5609 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 06fe3fa3-1221-43d3-861b-5a4ee687a85c
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: TLnjTNsZ+87mpq5O+YjQX4UdIDz/3o6ffNfq23pCR2pnDBBBx0m8EzH803J1eD0NgtNZrHFCkr75+lzblpziK4BXu+xtskhYDQWFUoGSCJ0=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: NT0PR01MB1231
-Received-SPF: pass client-ip=2406:e500:4440:2::72f;
- envelope-from=jeeheng.sia@starfivetech.com;
- helo=CHN02-BJS-obe.outbound.protection.partner.outlook.cn
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: KgQwYLJntB9w
+References: <20240812130606.90410-1-edgar.iglesias@gmail.com>
+ <20240812130606.90410-5-edgar.iglesias@gmail.com> <alpine.DEB.2.22.394.2408121650590.298534@ubuntu-linux-20-04-desktop>
+ <ZruRm34zIMtUm7oH@zapote> <alpine.DEB.2.22.394.2408131550080.298534@ubuntu-linux-20-04-desktop>
+ <ZryZwOoadeb1UWK8@zapote> <alpine.DEB.2.22.394.2408141719400.298534@ubuntu-linux-20-04-desktop>
+ <CAJy5ezrUbGZCaF=HiYhyLCoXRL3d=t-QbmLeKvu7ByWksV888g@mail.gmail.com>
+ <alpine.DEB.2.22.394.2408160949320.298534@ubuntu-linux-20-04-desktop> <93de8d6d-6123-4038-a566-d134206ba608@amd.com>
+In-Reply-To: <93de8d6d-6123-4038-a566-d134206ba608@amd.com>
+From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Date: Tue, 20 Aug 2024 16:13:10 +0200
+Message-ID: <CAJy5ezonjsd95GhkoagrivQy_Vme7wyj1xLvVd9ZxNP_tJyBRA@mail.gmail.com>
+Subject: Re: [PATCH v1 04/10] hw/arm: xenpvh: Add support for SMP guests
+To: Jason Andryuk <jason.andryuk@amd.com>
+Cc: Stefano Stabellini <sstabellini@kernel.org>, qemu-devel@nongnu.org, anthony@xenproject.org, 
+	paul@xen.org, peter.maydell@linaro.org, alex.bennee@linaro.org, 
+	xenia.ragiadakou@amd.com, edgar.iglesias@amd.com, 
+	xen-devel@lists.xenproject.org, qemu-arm@nongnu.org, 
+	andrew.cooper3@citrix.com
+Content-Type: multipart/alternative; boundary="00000000000047d8ac06201e0744"
+X-TUID: 6jwTcX2aDbv1
+
+--00000000000047d8ac06201e0744
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+On Sat, Aug 17, 2024 at 2:45=E2=80=AFAM Jason Andryuk <jason.andryuk@amd.co=
+m> wrote:
+
+> On 2024-08-16 12:53, Stefano Stabellini wrote:
+> > On Fri, 16 Aug 2024, Edgar E. Iglesias wrote:
+> >> On Thu, Aug 15, 2024 at 2:30=E2=80=AFAM Stefano Stabellini <
+> sstabellini@kernel.org> wrote:
+> >>        On Wed, 14 Aug 2024, Edgar E. Iglesias wrote:
+> >>        > On Tue, Aug 13, 2024 at 03:52:32PM -0700, Stefano Stabellini
+> wrote:
+> >>        > > On Tue, 13 Aug 2024, Edgar E. Iglesias wrote:
+> >>        > > > On Mon, Aug 12, 2024 at 06:47:17PM -0700, Stefano
+> Stabellini wrote:
+> >>        > > > > On Mon, 12 Aug 2024, Edgar E. Iglesias wrote:
+> >>        > > > > > From: "Edgar E. Iglesias" <edgar.iglesias@amd.com>
+> >>        > > > > >
+> >>        > > > > > Add SMP support for Xen PVH ARM guests. Create
+> max_cpus ioreq
+> >>        > > > > > servers to handle hotplug.
+> >>        > > > > >
+> >>        > > > > > Signed-off-by: Edgar E. Iglesias <
+> edgar.iglesias@amd.com>
+> >>        > > > > > ---
+> >>        > > > > >  hw/arm/xen_arm.c | 5 +++--
+> >>        > > > > >  1 file changed, 3 insertions(+), 2 deletions(-)
+> >>        > > > > >
+> >>        > > > > > diff --git a/hw/arm/xen_arm.c b/hw/arm/xen_arm.c
+> >>        > > > > > index 5f75cc3779..ef8315969c 100644
+> >>        > > > > > --- a/hw/arm/xen_arm.c
+> >>        > > > > > +++ b/hw/arm/xen_arm.c
+> >>        > > > > > @@ -173,7 +173,7 @@ static void
+> xen_arm_init(MachineState *machine)
+> >>        > > > > >
+> >>        > > > > >      xen_init_ram(machine);
+> >>        > > > > >
+> >>        > > > > > -    xen_register_ioreq(xam->state, machine->smp.cpus=
+,
+> &xen_memory_listener);
+> >>        > > > > > +    xen_register_ioreq(xam->state,
+> machine->smp.max_cpus, &xen_memory_listener);
+> >>        > > > > >
+> >>        > > > > >      xen_create_virtio_mmio_devices(xam);
+> >>        > > > > >
+> >>        > > > > > @@ -218,7 +218,8 @@ static void
+> xen_arm_machine_class_init(ObjectClass *oc, void *data)
+> >>        > > > > >      MachineClass *mc =3D MACHINE_CLASS(oc);
+> >>        > > > > >      mc->desc =3D "Xen PVH ARM machine";
+> >>        > > > > >      mc->init =3D xen_arm_init;
+> >>        > > > > > -    mc->max_cpus =3D 1;
+> >>        > > > > > +    /* MAX number of vcpus supported by Xen.  */
+> >>        > > > > > +    mc->max_cpus =3D GUEST_MAX_VCPUS;
+> >>        > > > >
+> >>        > > > > Will this cause allocations of data structures with 128
+> elements?
+> >>        > > > > Looking at hw/xen/xen-hvm-common.c:xen_do_ioreq_registe=
+r
+> it seems
+> >>        > > > > possible? Or
+> hw/xen/xen-hvm-common.c:xen_do_ioreq_register is called
+> >>        > > >
+> >>        > > > Yes, in theory there's probably overhead with this but as
+> you correctly
+> >>        > > > noted below, a PVH aware xl will set the max_cpus option
+> to a lower value.
+> >>        > > >
+> >>        > > > With a non-pvh aware xl, I was a little worried about the
+> overhead
+> >>        > > > but I couldn't see any visible slow-down on ARM neither i=
+n
+> boot or in network
+> >>        > > > performance (I didn't run very sophisticated benchmarks).
+> >>        > >
+> >>        > > What do you mean by "non-pvh aware xl"? All useful versions
+> of xl
+> >>        > > support pvh?
+> >>        >
+> >>        >
+> >>        > I mean an xl without our PVH patches merged.
+> >>        > xl in upstream doesn't know much about PVH yet.
+> >>        > Even for ARM, we're still carrying significant patches in our
+> tree.
+> >>
+> >>        Oh I see. In that case, I don't think we need to support
+> "non-pvh aware xl".
+> >>
+> >>
+> >>        > > > > later on with the precise vCPU value which should be
+> provided to QEMU
+> >>        > > > > via the -smp command line option
+> >>        > > > >
+> (tools/libs/light/libxl_dm.c:libxl__build_device_model_args_new)?
+> >>        > > >
+> >>        > > > Yes, a pvh aware xl will for example pass -smp 2,maxcpus=
+=3D4
+> based on
+> >>        > > > values from the xl.cfg. If the user doesn't set maxvcpus
+> in xl.cfg, xl
+> >>        > > > will set maxvcpus to the same value as vcpus.
+> >>        > >
+> >>        > > OK good. In that case if this is just an initial value mean=
+t
+> to be
+> >>        > > overwritten, I think it is best to keep it as 1.
+> >>        >
+> >>        > Sorry but that won't work. I think the confusion here may be
+> that
+> >>        > it's easy to mix up mc->max_cpus and machine->smp.max_cpus,
+> these are
+> >>        > not the same. They have different purposes.
+> >>        >
+> >>        > I'll try to clarify the 3 values in play.
+> >>        >
+> >>        > machine-smp.cpus:
+> >>        > Number of guest vcpus active at boot.
+> >>        > Passed to QEMU via the -smp command-line option.
+> >>        > We don't use this value in QEMU's ARM PVH machines.
+> >>        >
+> >>        > machine->smp.max_cpus:
+> >>        > Max number of vcpus that the guest can use (equal or larger
+> than machine-smp.cpus).
+> >>        > Will be set by xl via the "-smp X,maxcpus=3DY" command-line
+> option to QEMU.
+> >>        > Taken from maxvcpus from xl.cfg, same as XEN_DMOP_nr_vcpus.
+> >>        > This is what we use for xen_register_ioreq().
+> >>        >
+> >>        > mc->max_cpus:
+> >>        > Absolute MAX in QEMU used to cap the -smp command-line option=
+s.
+> >>        > If xl tries to set -smp (machine->smp.max_cpus) larger than
+> this, QEMU will bail out.
+> >>        > Used to setup xen_register_ioreq() ONLY if -smp maxcpus was
+> NOT set (i.e by a non PVH aware xl).
+> >>        > Cannot be 1 because that would limit QEMU to MAX 1 vcpu.
+> >>        >
+> >>        > I guess we could set mc->max_cpus to what XEN_DMOP_nr_vcpus
+> returns but I'll
+> >>        > have to check if we can even issue that hypercall this early
+> in QEMU since
+> >>        > mc->max_cpus is setup before we even parse the machine
+> options. We may
+> >>        > not yet know what domid we're attaching to yet.
+> >>
+> >>        If mc->max_cpus is the absolute max and it will not be used if
+> -smp is
+> >>        passed to QEMU, then I think it is OK to use GUEST_MAX_VCPUS
+> >>
+> >> Looking at this a little more. If users (xl) don't pass an -smp option
+> we actually default to smp.max_cpus=3D1.
+> >> So, another option is to simply remove the upper limit in QEMU (e.g we
+> can set mc->max_cpus to something very large like UINT32_MAX).
+> >> That would avoid early hypercalls, avoid using GUEST_MAX_VCPUS and
+> always let xl dictate the max_cpus value using the -smp cmdline option.
+> >
+> > As the expectation is that there will be always a smp.max_cpus option
+> > passed to QEMU, I would avoid an extra early hypercall.
+> >
+> > For the initial value, I would use something static and large, but not
+> > unreasonably large as UINT32_MAX to be more resilient in (erroneous)
+> > cases where smp.max_cpus is not passed.
+> >
+> > So I would initialize it to GUEST_MAX_VCPUS, or if we don't want to use
+> > GUEST_MAX_VCPUS, something equivalent in the 64-256 range.
+>
+
+Thanks Stefano,
+
+I'm going to send a v2 following this suggestion of using GUEST_MAX_VCPUS.
+Will also add comments clarifying that this is a MAX value for the
+command-line option
+and not what gets passed to register_ioreq.
+We can continue the discussion from there to see if we want to change
+things,
+I don't have a strong opinion here so I'm happy to go either way.
 
 
 
-> -----Original Message-----
-> From: Sunil V L <sunilvl@ventanamicro.com>
-> Sent: Monday, August 19, 2024 12:10 PM
-> To: JeeHeng Sia <jeeheng.sia@starfivetech.com>
-> Cc: qemu-arm@nongnu.org; qemu-devel@nongnu.org; qemu-riscv@nongnu.org; ms=
-t@redhat.com; imammedo@redhat.com;
-> anisinha@redhat.com; peter.maydell@linaro.org; shannon.zhaosl@gmail.com; =
-palmer@dabbelt.com; alistair.francis@wdc.com;
-> bin.meng@windriver.com; liwei1518@gmail.com; dbarboza@ventanamicro.com; z=
-hiwei_liu@linux.alibaba.com
-> Subject: Re: [PATCH v3 2/3] hw/acpi: Upgrade ACPI SPCR table to support S=
-PCR table version 4 format
->=20
-> Hi Jee Heng,
->=20
-> On Mon, Aug 12, 2024 at 10:22:22PM -0700, Sia Jee Heng wrote:
-> > Update the SPCR table to accommodate the SPCR Table version 4 [1].
-> > The SPCR table has been modified to adhere to the version 4 format [2].
 > >
-> > [1]: https://learn.microsoft.com/en-us/windows-hardware/drivers/serport=
-s/serial-port-console-redirection-table
-> > [2]: https://github.com/acpica/acpica/pull/931
-> >
-> > Signed-off-by: Sia Jee Heng <jeeheng.sia@starfivetech.com>
-> > Acked-by: Alistair Francis <alistair.francis@wdc.com>
-> > ---
-> >  hw/acpi/aml-build.c         | 14 +++++++++++---
-> >  hw/arm/virt-acpi-build.c    | 10 ++++++++--
-> >  hw/riscv/virt-acpi-build.c  | 12 +++++++++---
-> >  include/hw/acpi/acpi-defs.h |  7 +++++--
-> >  include/hw/acpi/aml-build.h |  2 +-
-> >  5 files changed, 34 insertions(+), 11 deletions(-)
-> >
-> > diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
-> > index 6d4517cfbe..7c43573eef 100644
-> > --- a/hw/acpi/aml-build.c
-> > +++ b/hw/acpi/aml-build.c
-> > @@ -1996,7 +1996,7 @@ static void build_processor_hierarchy_node(GArray=
- *tbl, uint32_t flags,
-> >
-> >  void build_spcr(GArray *table_data, BIOSLinker *linker,
-> >                  const AcpiSpcrData *f, const uint8_t rev,
-> > -                const char *oem_id, const char *oem_table_id)
-> > +                const char *oem_id, const char *oem_table_id, const ch=
-ar *name)
-> >  {
-> >      AcpiTable table =3D { .sig =3D "SPCR", .rev =3D rev, .oem_id =3D o=
-em_id,
-> >                          .oem_table_id =3D oem_table_id };
-> > @@ -2042,8 +2042,16 @@ void build_spcr(GArray *table_data, BIOSLinker *=
-linker,
-> >      build_append_int_noprefix(table_data, f->pci_flags, 4);
-> >      /* PCI Segment */
-> >      build_append_int_noprefix(table_data, f->pci_segment, 1);
-> > -    /* Reserved */
-> > -    build_append_int_noprefix(table_data, 0, 4);
-> > +    /* UartClkFreq */
-> > +    build_append_int_noprefix(table_data, f->uart_clk_freq, 4);
-> > +    /* PreciseBaudrate */
-> > +    build_append_int_noprefix(table_data, f->precise_baudrate, 4);
-> > +    /* NameSpaceStringLength */
-> > +    build_append_int_noprefix(table_data, f->namespace_string_length, =
-2);
-> > +    /* NameSpaceStringOffset */
-> > +    build_append_int_noprefix(table_data, f->namespace_string_offset, =
-2);
-> > +    /* NamespaceString[] */
-> > +    g_array_append_vals(table_data, name, f->namespace_string_length);
-> >
-> >      acpi_table_end(linker, &table);
-> >  }
-> > diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> > index e10cad86dd..ae075dc9fd 100644
-> > --- a/hw/arm/virt-acpi-build.c
-> > +++ b/hw/arm/virt-acpi-build.c
-> > @@ -435,11 +435,12 @@ build_iort(GArray *table_data, BIOSLinker *linker=
-, VirtMachineState *vms)
-> >
-> >  /*
-> >   * Serial Port Console Redirection Table (SPCR)
-> > - * Rev: 1.07
-> > + * Rev: 1.10
-> >   */
-> >  static void
-> >  spcr_setup(GArray *table_data, BIOSLinker *linker, VirtMachineState *v=
-ms)
-> >  {
-> > +    const char name[] =3D ".";
-> >      AcpiSpcrData serial =3D {
-> >          .interface_type =3D 3,       /* ARM PL011 UART */
-> >          .base_addr.id =3D AML_AS_SYSTEM_MEMORY,
-> > @@ -463,9 +464,14 @@ spcr_setup(GArray *table_data, BIOSLinker *linker,=
- VirtMachineState *vms)
-> >          .pci_function =3D 0,
-> >          .pci_flags =3D 0,
-> >          .pci_segment =3D 0,
-> > +        .uart_clk_freq =3D 0,
-> > +        .precise_baudrate =3D 0,
-> > +        .namespace_string_length =3D sizeof(name),
-> > +        .namespace_string_offset =3D 88,
-> >      };
-> >
-> > -    build_spcr(table_data, linker, &serial, 2, vms->oem_id, vms->oem_t=
-able_id);
-> > +    build_spcr(table_data, linker, &serial, 4, vms->oem_id, vms->oem_t=
-able_id,
-> > +               name);
-> I request the same which I had asked earlier. Please keep SPCR for other
-> architectures like ARM intact. The latest revision is primarily required
-> for RISC-V. So, restrict the series only for RISC-V. The common
-> build_spcr() should create SPCR based on the revision parameter.
-Since there is no disagreement from other arch owner, I will proceed to rem=
-ove
-the changes. thanks
->=20
-> Thanks,
-> Sunil
+> > Alternative we can have a runtime check and exit with a warning if
+> > smp.max_cpus is not set.
+>
+> FYI, xl only passes a -smp option when the domU has more than 1 vcpu.
+> Though that implies only a single vcpu.
+>
+>
+Thanks Jason, yes, in that case the default of cpus=3D1, maxcpus=3D1 gets s=
+et.
+I was initially under the wrong assumption that without -smp options, the
+max would get set.
+This is what I was trying to clarify in my previous email:
+>> Looking at this a little more. If users (xl) don't pass an -smp option
+we actually default to smp.max_cpus=3D1.
+
+Best regards,
+Edgar
+
+--00000000000047d8ac06201e0744
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr">On Sat, Aug 17, 2024 at 2:45=E2=80=AFAM J=
+ason Andryuk &lt;<a href=3D"mailto:jason.andryuk@amd.com">jason.andryuk@amd=
+.com</a>&gt; wrote:<br></div><div class=3D"gmail_quote"><blockquote class=
+=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rg=
+b(204,204,204);padding-left:1ex">On 2024-08-16 12:53, Stefano Stabellini wr=
+ote:<br>
+&gt; On Fri, 16 Aug 2024, Edgar E. Iglesias wrote:<br>
+&gt;&gt; On Thu, Aug 15, 2024 at 2:30=E2=80=AFAM Stefano Stabellini &lt;<a =
+href=3D"mailto:sstabellini@kernel.org" target=3D"_blank">sstabellini@kernel=
+.org</a>&gt; wrote:<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 On Wed, 14 Aug 2024, Edgar E. Iglesias =
+wrote:<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; On Tue, Aug 13, 2024 at 03:52:32PM=
+ -0700, Stefano Stabellini wrote:<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; &gt; On Tue, 13 Aug 2024, Edgar E.=
+ Iglesias wrote:<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; &gt; &gt; On Mon, Aug 12, 2024 at =
+06:47:17PM -0700, Stefano Stabellini wrote:<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; &gt; &gt; &gt; On Mon, 12 Aug 2024=
+, Edgar E. Iglesias wrote:<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; &gt; &gt; &gt; &gt; From: &quot;Ed=
+gar E. Iglesias&quot; &lt;<a href=3D"mailto:edgar.iglesias@amd.com" target=
+=3D"_blank">edgar.iglesias@amd.com</a>&gt;<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; &gt; &gt; &gt; &gt;<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; &gt; &gt; &gt; &gt; Add SMP suppor=
+t for Xen PVH ARM guests. Create max_cpus ioreq<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; &gt; &gt; &gt; &gt; servers to han=
+dle hotplug.<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; &gt; &gt; &gt; &gt;<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; &gt; &gt; &gt; &gt; Signed-off-by:=
+ Edgar E. Iglesias &lt;<a href=3D"mailto:edgar.iglesias@amd.com" target=3D"=
+_blank">edgar.iglesias@amd.com</a>&gt;<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; &gt; &gt; &gt; &gt; ---<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; &gt; &gt; &gt; &gt;=C2=A0 hw/arm/x=
+en_arm.c | 5 +++--<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; &gt; &gt; &gt; &gt;=C2=A0 1 file c=
+hanged, 3 insertions(+), 2 deletions(-)<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; &gt; &gt; &gt; &gt;<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; &gt; &gt; &gt; &gt; diff --git a/h=
+w/arm/xen_arm.c b/hw/arm/xen_arm.c<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; &gt; &gt; &gt; &gt; index 5f75cc37=
+79..ef8315969c 100644<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; &gt; &gt; &gt; &gt; --- a/hw/arm/x=
+en_arm.c<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; &gt; &gt; &gt; &gt; +++ b/hw/arm/x=
+en_arm.c<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; &gt; &gt; &gt; &gt; @@ -173,7 +173=
+,7 @@ static void xen_arm_init(MachineState *machine)<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; &gt; &gt; &gt; &gt;<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; &gt; &gt; &gt; &gt;=C2=A0 =C2=A0 =
+=C2=A0 xen_init_ram(machine);<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; &gt; &gt; &gt; &gt;<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; &gt; &gt; &gt; &gt; -=C2=A0 =C2=A0=
+ xen_register_ioreq(xam-&gt;state, machine-&gt;smp.cpus, &amp;xen_memory_li=
+stener);<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; &gt; &gt; &gt; &gt; +=C2=A0 =C2=A0=
+ xen_register_ioreq(xam-&gt;state, machine-&gt;smp.max_cpus, &amp;xen_memor=
+y_listener);<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; &gt; &gt; &gt; &gt;<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; &gt; &gt; &gt; &gt;=C2=A0 =C2=A0 =
+=C2=A0 xen_create_virtio_mmio_devices(xam);<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; &gt; &gt; &gt; &gt;<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; &gt; &gt; &gt; &gt; @@ -218,7 +218=
+,8 @@ static void xen_arm_machine_class_init(ObjectClass *oc, void *data)<b=
+r>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; &gt; &gt; &gt; &gt;=C2=A0 =C2=A0 =
+=C2=A0 MachineClass *mc =3D MACHINE_CLASS(oc);<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; &gt; &gt; &gt; &gt;=C2=A0 =C2=A0 =
+=C2=A0 mc-&gt;desc =3D &quot;Xen PVH ARM machine&quot;;<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; &gt; &gt; &gt; &gt;=C2=A0 =C2=A0 =
+=C2=A0 mc-&gt;init =3D xen_arm_init;<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; &gt; &gt; &gt; &gt; -=C2=A0 =C2=A0=
+ mc-&gt;max_cpus =3D 1;<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; &gt; &gt; &gt; &gt; +=C2=A0 =C2=A0=
+ /* MAX number of vcpus supported by Xen.=C2=A0 */<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; &gt; &gt; &gt; &gt; +=C2=A0 =C2=A0=
+ mc-&gt;max_cpus =3D GUEST_MAX_VCPUS;<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; &gt; &gt; &gt;<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; &gt; &gt; &gt; Will this cause all=
+ocations of data structures with 128 elements?<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; &gt; &gt; &gt; Looking at hw/xen/x=
+en-hvm-common.c:xen_do_ioreq_register it seems<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; &gt; &gt; &gt; possible? Or hw/xen=
+/xen-hvm-common.c:xen_do_ioreq_register is called<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; &gt; &gt;<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; &gt; &gt; Yes, in theory there&#39=
+;s probably overhead with this but as you correctly<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; &gt; &gt; noted below, a PVH aware=
+ xl will set the max_cpus option to a lower value.<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; &gt; &gt;<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; &gt; &gt; With a non-pvh aware xl,=
+ I was a little worried about the overhead<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; &gt; &gt; but I couldn&#39;t see a=
+ny visible slow-down on ARM neither in boot or in network<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; &gt; &gt; performance (I didn&#39;=
+t run very sophisticated benchmarks).<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; &gt;<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; &gt; What do you mean by &quot;non=
+-pvh aware xl&quot;? All useful versions of xl<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; &gt; support pvh?<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt;<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt;<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; I mean an xl without our PVH patch=
+es merged.<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; xl in upstream doesn&#39;t know mu=
+ch about PVH yet.<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; Even for ARM, we&#39;re still carr=
+ying significant patches in our tree.<br>
+&gt;&gt;<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 Oh I see. In that case, I don&#39;t thi=
+nk we need to support &quot;non-pvh aware xl&quot;.<br>
+&gt;&gt;<br>
+&gt;&gt;<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; &gt; &gt; &gt; later on with the p=
+recise vCPU value which should be provided to QEMU<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; &gt; &gt; &gt; via the -smp comman=
+d line option<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; &gt; &gt; &gt; (tools/libs/light/l=
+ibxl_dm.c:libxl__build_device_model_args_new)?<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; &gt; &gt;<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; &gt; &gt; Yes, a pvh aware xl will=
+ for example pass -smp 2,maxcpus=3D4 based on<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; &gt; &gt; values from the xl.cfg. =
+If the user doesn&#39;t set maxvcpus in xl.cfg, xl<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; &gt; &gt; will set maxvcpus to the=
+ same value as vcpus.<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; &gt;<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; &gt; OK good. In that case if this=
+ is just an initial value meant to be<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; &gt; overwritten, I think it is be=
+st to keep it as 1.<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt;<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; Sorry but that won&#39;t work. I t=
+hink the confusion here may be that<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; it&#39;s easy to mix up mc-&gt;max=
+_cpus and machine-&gt;smp.max_cpus, these are<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; not the same. They have different =
+purposes.<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt;<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; I&#39;ll try to clarify the 3 valu=
+es in play.<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt;<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; machine-smp.cpus:<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; Number of guest vcpus active at bo=
+ot.<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; Passed to QEMU via the -smp comman=
+d-line option.<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; We don&#39;t use this value in QEM=
+U&#39;s ARM PVH machines.<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt;<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; machine-&gt;smp.max_cpus:<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; Max number of vcpus that the guest=
+ can use (equal or larger than machine-smp.cpus).<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; Will be set by xl via the &quot;-s=
+mp X,maxcpus=3DY&quot; command-line option to QEMU.<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; Taken from maxvcpus from xl.cfg, s=
+ame as XEN_DMOP_nr_vcpus.<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; This is what we use for xen_regist=
+er_ioreq().<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt;<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; mc-&gt;max_cpus:<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; Absolute MAX in QEMU used to cap t=
+he -smp command-line options.<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; If xl tries to set -smp (machine-&=
+gt;smp.max_cpus) larger than this, QEMU will bail out.<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; Used to setup xen_register_ioreq()=
+ ONLY if -smp maxcpus was NOT set (i.e by a non PVH aware xl).<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; Cannot be 1 because that would lim=
+it QEMU to MAX 1 vcpu.<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt;<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; I guess we could set mc-&gt;max_cp=
+us to what XEN_DMOP_nr_vcpus returns but I&#39;ll<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; have to check if we can even issue=
+ that hypercall this early in QEMU since<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; mc-&gt;max_cpus is setup before we=
+ even parse the machine options. We may<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 &gt; not yet know what domid we&#39;re =
+attaching to yet.<br>
+&gt;&gt;<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 If mc-&gt;max_cpus is the absolute max =
+and it will not be used if -smp is<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 passed to QEMU, then I think it is OK t=
+o use GUEST_MAX_VCPUS<br>
+&gt;&gt;<br>
+&gt;&gt; Looking at this a little more. If users (xl) don&#39;t pass an -sm=
+p option we actually default to smp.max_cpus=3D1.<br>
+&gt;&gt; So, another option is to simply remove the upper limit in QEMU (e.=
+g we can set mc-&gt;max_cpus to something very large like UINT32_MAX).<br>
+&gt;&gt; That would avoid early hypercalls, avoid using GUEST_MAX_VCPUS and=
+ always let xl dictate the max_cpus value using the -smp cmdline option.<br=
+>
+&gt; <br>
+&gt; As the expectation is that there will be always a smp.max_cpus option<=
+br>
+&gt; passed to QEMU, I would avoid an extra early hypercall.<br>
+&gt; <br>
+&gt; For the initial value, I would use something static and large, but not=
+<br>
+&gt; unreasonably large as UINT32_MAX to be more resilient in (erroneous)<b=
+r>
+&gt; cases where smp.max_cpus is not passed.<br>
+&gt; <br>
+&gt; So I would initialize it to GUEST_MAX_VCPUS, or if we don&#39;t want t=
+o use<br>
+&gt; GUEST_MAX_VCPUS, something equivalent in the 64-256 range.<br></blockq=
+uote><div><br></div><div>Thanks Stefano,</div><div><br></div><div>I&#39;m g=
+oing to send a v2 following this suggestion of using=C2=A0GUEST_MAX_VCPUS.<=
+/div><div>Will also add comments clarifying that this is a MAX value for th=
+e command-line option</div><div>and not what gets passed to register_ioreq.=
+</div><div>We can continue the discussion from there to see if we want to c=
+hange things,</div><div>I don&#39;t have a strong opinion here so I&#39;m h=
+appy to go either way.</div><div><br></div><div>=C2=A0</div><blockquote cla=
+ss=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid =
+rgb(204,204,204);padding-left:1ex">
+&gt; <br>
+&gt; Alternative we can have a runtime check and exit with a warning if<br>
+&gt; smp.max_cpus is not set.<br>
+<br>
+FYI, xl only passes a -smp option when the domU has more than 1 vcpu. <br>
+Though that implies only a single vcpu.<br><br></blockquote><div><br></div>=
+<div>Thanks Jason, yes, in that case the default of cpus=3D1, maxcpus=3D1 g=
+ets set. I was initially under the wrong assumption that without -smp optio=
+ns, the max would get set.</div><div>This is what I was trying to clarify i=
+n my previous email:</div><div>&gt;&gt; Looking at this a little more. If u=
+sers (xl) don&#39;t pass an -smp option we actually default to smp.max_cpus=
+=3D1.</div><div><br></div><div>Best regards,</div><div>Edgar</div></div></d=
+iv>
+
+--00000000000047d8ac06201e0744--

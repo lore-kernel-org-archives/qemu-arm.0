@@ -1,146 +1,156 @@
-Received: by 2002:a17:505:4e90:b0:1be9:327d:8ee3 with SMTP id y16csp366466njx;
-        Tue, 20 Aug 2024 08:34:31 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEXXJcGcKMV3/5aoQxD+wEMkkiMX0FjLSCfBbXhDfBTZ5bl/Uxr4dinb8/DfMcBqQomAsx6
-X-Received: by 2002:a17:902:dacb:b0:202:4800:9cca with SMTP id d9443c01a7336-2024800a15emr55130605ad.27.1724168071626;
-        Tue, 20 Aug 2024 08:34:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1724168071; cv=none;
+Received: by 2002:a17:505:917:b0:1be9:327d:8ee3 with SMTP id hq23csp168959njb;
+        Wed, 21 Aug 2024 00:24:35 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWIJ8Q01ij+Ehi1YYhhvLzE5sTTZpJEeVm7i6H7rswr5OuwAMEQoV5EpO/xFl0OpslNDNVHrHDYdwtpLA==@linaro.org
+X-Received: by 2002:a05:600c:5493:b0:427:d8f7:b718 with SMTP id 5b1f17b1804b1-42abd2449f8mr11849235e9.24.1724225075403;
+        Wed, 21 Aug 2024 00:24:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1724225075; cv=none;
         d=google.com; s=arc-20160816;
-        b=drBx/OuHBQFYrpM97hUoMC6ZiPyvHxCxXQv3P5kPUAW1WfpL+nV3PPM05XZvESRJkK
-         FyEDLQrnGsQ6uUwLdD8qKIT/S5+c4x5VOKx84i5M5cuuB+WVaMqxNdispA8N30je99WM
-         tMWJFMjkbRpgOyGA3wWMgSf86vS9eUSE/2fyKQP8xl+oiXmePgVbOwR7syOfeB1r+u3X
-         /4gVGM7LlHzlLVLL87g9c+E6zfbsMbwKaV/FsvrzoqO8E1GnufqEfrezWNdONH70x2WY
-         eiV5lOPNHCjlDorNZvX7iq7cQcQ8jrr0rDy7JTzwXUgMa4uf9ctU34s4w7ZlUMCtwYw2
-         6SFA==
+        b=lb0ZjftDmFjfh72rQG3XQMVgg6QZMw+eyRlxnZucgahAdPmSIQFxrna5XIk01UQbLM
+         cxRGmPGJmnQW4OLFr4uNRMUxePgXY3fZxzT6TPl7NIg4zlIXzhLU/gPd71w+BCDdCOZF
+         z3vaLcRfP+ycWxMyekrfZvic7qWDcxKWanzKa4yjAUzjC98p9x/3tVtdMQZnMUclpXnJ
+         703WQSJ3IGtgA5pep27Ep45+xVN2yDY1l622L4HM2t2akaCPOU+f7bUZRhk5ZsVnmqEN
+         LdcXHEHcV3Xlm/+KzRDZ+km2yowOdNvAbNLxzCQFJh+OHCiUtUq0ob0BgjwS3CB8g2rN
+         9qWA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:content-transfer-encoding:content-language
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:subject:cc:to:from;
-        bh=f6jTm0uXQbjczGAa/7u10FIE3DDoBMbU5nKdbfvpfq0=;
-        fh=URuC8eB0/+IhPvUTOAoKHcSwQRJjMXlAdL96ilSiuWw=;
-        b=Alc8YqYvxwAtKVJHXXdjd9StB68Zw3Ee9pfU1gFHd7PMP+x9QzPQU0yvZSM86YeL94
-         SSlbZzfTg6vIclvqfditrvTL04eVoKFLP207oKVshiykmIokfZZk2rzdonuMNwYdYUUr
-         HCns6cZiBe+cWPnzZpo0xiGYSskOOx4jikhT0QyFE+mE0r3SdyPjpRJtybeygnwgG65e
-         KV8NYFYqlx2CEDpXzjZO3GvdNCUcr+ptwO9okES9FFgh0Q18xdvlthbbMVlBLj0VLgci
-         1HsMiqjXDOS61FqdqQa/UuZuHBthzw4YFi20ftSMZZXfs/LUqwJzW1qmJFPm2uAYJbw9
-         sVOA==;
+        h=content-transfer-encoding:mime-version:message-id:in-reply-to
+         :references:user-agent:subject:cc:to:from:date:dkim-signature;
+        bh=jGjcH8Pmwuc7DxR1Lmg/Gb1PDCFtSLxYhj1L8wOnRoY=;
+        fh=wtekWp7T6IMvCOIkLZTjSL7omlzmfv0FoDRCXGmgWvU=;
+        b=PNI+R2ceBD/zPXp7JD564cbH3hoZGTqm0/5taQyoJEMDl5XrjnPLIlCoZNzMgrIbkb
+         Tkz77m/Nztb2ZEpQ416tRc0Rw1DTZAjqp3cSt2vhY51jKZdp1GGo1uGeZSl9sDQ8KomF
+         Z5i+G8jWfByMO1iubdWG2CeQ2jW+DPBK2LDpFBqtYZ3KybbDUnbGTSpSSf1eQqT3dkFr
+         ZrBz906UVlx2R3SnFg6lwMDDuvVnMARmfNWQQI0etsSowWr9yGAOYqnr57cOxMVGoN1o
+         HxO3nyXHLtigZTHuW5kAe8NWs35sBuR2QCJ/RIbOnjjwpvFcyra2kVVmirOSj+GCGJ8o
+         alpA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Return-Path: <salil.mehta@huawei.com>
-Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id d9443c01a7336-201f0306332si126085735ad.50.2024.08.20.08.34.30
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 20 Aug 2024 08:34:31 -0700 (PDT)
-Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
+       dkim=pass header.i=@linaro.org header.s=google header.b=H8jDtOw5;
+       spf=pass (google.com: domain of manos.pitsidianakis@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=manos.pitsidianakis@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <manos.pitsidianakis@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 5b1f17b1804b1-429e805a744sor44690975e9.9.2024.08.21.00.24.35
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Wed, 21 Aug 2024 00:24:35 -0700 (PDT)
+Received-SPF: pass (google.com: domain of manos.pitsidianakis@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from mail.maildlp.com (unknown [172.18.186.231])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4WpD2f5ccNz6K9VG;
-	Tue, 20 Aug 2024 23:31:22 +0800 (CST)
-Received: from lhrpeml100005.china.huawei.com (unknown [7.191.160.25])
-	by mail.maildlp.com (Postfix) with ESMTPS id 62AE0140B63;
-	Tue, 20 Aug 2024 23:34:27 +0800 (CST)
-Received: from lhrpeml500001.china.huawei.com (7.191.163.213) by
- lhrpeml100005.china.huawei.com (7.191.160.25) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Tue, 20 Aug 2024 16:34:27 +0100
-Received: from lhrpeml500001.china.huawei.com ([7.191.163.213]) by
- lhrpeml500001.china.huawei.com ([7.191.163.213]) with mapi id 15.01.2507.039;
- Tue, 20 Aug 2024 16:34:27 +0100
-From: Salil Mehta <salil.mehta@huawei.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-CC: =?utf-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org"
-	<qemu-arm@nongnu.org>, "mst@redhat.com" <mst@redhat.com>, "maz@kernel.org"
-	<maz@kernel.org>, "jean-philippe@linaro.org" <jean-philippe@linaro.org>,
-	Jonathan Cameron <jonathan.cameron@huawei.com>, "lpieralisi@kernel.org"
-	<lpieralisi@kernel.org>, "richard.henderson@linaro.org"
-	<richard.henderson@linaro.org>, "imammedo@redhat.com" <imammedo@redhat.com>,
-	"andrew.jones@linux.dev" <andrew.jones@linux.dev>, "david@redhat.com"
-	<david@redhat.com>, "philmd@linaro.org" <philmd@linaro.org>,
-	"eric.auger@redhat.com" <eric.auger@redhat.com>, "will@kernel.org"
-	<will@kernel.org>, "ardb@kernel.org" <ardb@kernel.org>,
-	"oliver.upton@linux.dev" <oliver.upton@linux.dev>, "pbonzini@redhat.com"
-	<pbonzini@redhat.com>, "gshan@redhat.com" <gshan@redhat.com>,
-	"rafael@kernel.org" <rafael@kernel.org>, "borntraeger@linux.ibm.com"
-	<borntraeger@linux.ibm.com>, "npiggin@gmail.com" <npiggin@gmail.com>,
-	"harshpb@linux.ibm.com" <harshpb@linux.ibm.com>, "linux@armlinux.org.uk"
-	<linux@armlinux.org.uk>, "darren@os.amperecomputing.com"
-	<darren@os.amperecomputing.com>, "ilkka@os.amperecomputing.com"
-	<ilkka@os.amperecomputing.com>, "vishnu@os.amperecomputing.com"
-	<vishnu@os.amperecomputing.com>, "karl.heubaum@oracle.com"
-	<karl.heubaum@oracle.com>, "miguel.luis@oracle.com" <miguel.luis@oracle.com>,
-	"salil.mehta@opnsrc.net" <salil.mehta@opnsrc.net>, zhukeqian
-	<zhukeqian1@huawei.com>, "wangxiongfeng (C)" <wangxiongfeng2@huawei.com>,
-	"wangyanan (Y)" <wangyanan55@huawei.com>, "jiakernel2@gmail.com"
-	<jiakernel2@gmail.com>, "maobibo@loongson.cn" <maobibo@loongson.cn>,
-	"lixianglai@loongson.cn" <lixianglai@loongson.cn>, "shahuang@redhat.com"
-	<shahuang@redhat.com>, "zhao1.liu@intel.com" <zhao1.liu@intel.com>, Linuxarm
-	<linuxarm@huawei.com>
-Subject: RE: [PATCH RFC V3 24/29] target/arm: Add support of *unrealize*
- ARMCPU during vCPU Hot-unplug
-Thread-Topic: [PATCH RFC V3 24/29] target/arm: Add support of *unrealize*
- ARMCPU during vCPU Hot-unplug
-Thread-Index: AQHavev6H7OxF7zZK02qabf2MUOdZrIqaJGS///y5oCABJZOYP///iIAgAG9M6A=
-Date: Tue, 20 Aug 2024 15:34:26 +0000
-Message-ID: <7005be32578e46728e9d58ea9c64a7a8@huawei.com>
-References: <20240613233639.202896-1-salil.mehta@huawei.com>
- <20240613233639.202896-25-salil.mehta@huawei.com>
- <87v800wkb1.fsf@draig.linaro.org>
- <CAFEAcA9A9Oq0nURkiLNWZNC=P7KQGyr8TjjfOmEq+squwF+xog@mail.gmail.com>
- <0059c598676a4b9d8e34b9c0dc62b09e@huawei.com>
- <CAFEAcA9jm8RD0FF4fo7YPCHwaC9FwEG0q1EYce-OmrD1J--iWw@mail.gmail.com>
-In-Reply-To: <CAFEAcA9jm8RD0FF4fo7YPCHwaC9FwEG0q1EYce-OmrD1J--iWw@mail.gmail.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach:
-X-MS-TNEF-Correlator:
-x-originating-ip: [10.48.151.47]
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+       dkim=pass header.i=@linaro.org header.s=google header.b=H8jDtOw5;
+       spf=pass (google.com: domain of manos.pitsidianakis@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=manos.pitsidianakis@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1724225075; x=1724829875; darn=linaro.org;
+        h=content-transfer-encoding:mime-version:message-id:in-reply-to
+         :references:user-agent:subject:cc:to:from:date:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=jGjcH8Pmwuc7DxR1Lmg/Gb1PDCFtSLxYhj1L8wOnRoY=;
+        b=H8jDtOw5tJNO11FJlEy4OPkxNpNNY+R1PRsAoU0QtxKpKCnimAYICZNkIX957EsAgD
+         zYW5MCKXJ1c6NXfMimrYEVpuqKuITjRMAeHzOpmaUD9gcZed0DY0UEeuHaoYGEYT8P+p
+         0p6cEXLZBkcb8iJ3HsR25xHudDdMvlS44ZTBGUli4VbU/QW2+LvJkesCyjFr7zdPVnwp
+         0xPQKsBtliMHQCWGEH7BtXOHhj01vIJRG+W1tttqbukCbiWyfLKjR+S8HVoyMtesqhTL
+         nonOV4h+sDgvYi0r0aJiuvt8F0VZcNoBfj1V1IiX8MZfm+Dlw9BNi+dE9yXZOQKFNloW
+         25vg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1724225075; x=1724829875;
+        h=content-transfer-encoding:mime-version:message-id:in-reply-to
+         :references:user-agent:subject:cc:to:from:date:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=jGjcH8Pmwuc7DxR1Lmg/Gb1PDCFtSLxYhj1L8wOnRoY=;
+        b=tiYCfpU/Kb0+wGEjCeIyhXbsG/bto0OR2EoHaYaCNEcbrGO6hSTc38MPh+0hvcks3l
+         QrOASvWwKoo8MkqbFwOk6qtURY6P7bkim0nWFVwiuIBvyemCSXOEZ4XwVBHdb3fTUXeU
+         C0VGtFuT9XdL80uGB8nXduJipoZjkrpWv4N+srXXdxmjcijh0JN+Lu63fbF0UzfETjsl
+         MRxsiiSEoN45gZ0L5ShtEte/GcRu94BBSjk7xg7wH/hMvQmNi7eB+7Za1QEF/r2mUbLK
+         SVWMWc0bBeu1/KZch8vJtTy8gPAXyiginTbTYT5292AXCXiBInFaplAe6cphe9yKqLpl
+         U71A==
+X-Forwarded-Encrypted: i=1; AJvYcCWq3ELPwaes8A819Cg0swem8H+y8OADK8arxByST9+4Xyp/TrsJuK+ZMQZSufILsg1Ed8Vxe3FPn0cRAQ==@linaro.org
+X-Gm-Message-State: AOJu0YwJPRPV42Fl75Hvu4xgd0VHWD3EpsUVnVLUZ0OfivKD0Uc3i/sO
+	PJzq0fegiYEdI+pGtE/CZUF+HBUmFWXa4ilDxqtUe/x7DVWcqws1st68Of1KJvPVbA==
+X-Google-Smtp-Source: AGHT+IEApsZUZvXZmgHBhgCvsPSCVM+K9OZrjqwnH7zX5X1lNf6RAatwQBOuZk44gIYfgz1bRz5oaA==
+X-Received: by 2002:a05:6000:2c2:b0:371:9360:c4a8 with SMTP id ffacd0b85a97d-372fd57e737mr1019209f8f.6.1724225074517;
+        Wed, 21 Aug 2024 00:24:34 -0700 (PDT)
+Return-Path: <manos.pitsidianakis@linaro.org>
+Received: from meli-email.org (adsl-122.37.6.3.tellas.gr. [37.6.3.122])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-371898b89bdsm14861983f8f.112.2024.08.21.00.24.33
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 21 Aug 2024 00:24:34 -0700 (PDT)
+Date: Wed, 21 Aug 2024 10:24:05 +0300
+From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+To: Philippe Mathieu-Daud=?UTF-8?B?w6kg?=<philmd@linaro.org>, "Daniel P. Berrang=?UTF-8?B?w6k=?= " <berrange@redhat.com>
+Cc: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>, qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>, Marc-Andr=?UTF-8?B?w6kg?=Lureau <marcandre.lureau@redhat.com>, Thomas Huth <thuth@redhat.com>, John Snow <jsnow@redhat.com>, Cleber Rosa <crosa@redhat.com>, Beraldo Leal <bleal@redhat.com>, Alex Benn=?UTF-8?B?w6k=?= e <alex.bennee@linaro.org>, Wainer dos Santos Moschetta <wainersm@redhat.com>, Zhao Liu <zhao1.liu@intel.com>, Peter Maydell <peter.maydell@linaro.org>, ARM TCG CPUs <qemu-arm@nongnu.org>, Stefan Hajnoczi <stefanha@redhat.com>, Junjie Mao <junjie.mao@intel.com>, Pierrick Bouvier <pierrick.bouvier@linaro.org>, Richard Henderson <richard.henderson@linaro.org>, Gustavo Romero <gustavo.romero@linaro.org>, rowan.hart@intel.com, Mads Ynddal <mads@ynddal.dk>, Markus Armbruster <armbru@redhat.com>
+Bcc: 
+Subject: Re: [PATCH v7 6/7] rust: add crate to expose bindings and interfaces
+User-Agent: meli 0.8.7
+References: <20240815-rust-pl011-v7-0-975135e98831@linaro.org> <20240815-rust-pl011-v7-6-975135e98831@linaro.org> <9f6c96fd-bb0c-4014-bba1-70986f4bb384@linaro.org> <Zr4ZbOHR9Sc10YSX@redhat.com> <6f009629-fbad-4868-bc12-21a18de379b5@linaro.org>
+In-Reply-To: <6f009629-fbad-4868-bc12-21a18de379b5@linaro.org>
+Message-ID: <ik4kw.0ewrm1y9xy4w@linaro.org>
 MIME-Version: 1.0
-X-TUID: ZTPbQ3jFwrvi
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=utf-8; format=flowed
+X-TUID: O2QORGz8l/j9
 
-SEkgUGV0ZXIsDQoNCj4gIEZyb206IFBldGVyIE1heWRlbGwgPHBldGVyLm1heWRlbGxAbGluYXJv
-Lm9yZz4NCj4gIFNlbnQ6IE1vbmRheSwgQXVndXN0IDE5LCAyMDI0IDI6NDcgUE0NCj4gIFRvOiBT
-YWxpbCBNZWh0YSA8c2FsaWwubWVodGFAaHVhd2VpLmNvbT4NCj4gIA0KPiAgT24gTW9uLCAxOSBB
-dWcgMjAyNCBhdCAxMzo1OCwgU2FsaWwgTWVodGEgPHNhbGlsLm1laHRhQGh1YXdlaS5jb20+DQo+
-ICB3cm90ZToNCj4gID4NCj4gID4gSGkgUGV0ZXIsDQo+ICA+DQo+ICA+ID4gIEZyb206IFBldGVy
-IE1heWRlbGwgPHBldGVyLm1heWRlbGxAbGluYXJvLm9yZz4NCj4gID4gPg0KPiAgPiA+ICBXZSBz
-aG91bGRuJ3QgbmVlZCB0byBleHBsaWNpdGx5IGNhbGwgY3B1X2FkZHJlc3Nfc3BhY2VfZGVzdHJv
-eSgpDQo+ICA+ID4gZnJvbSBhICB0YXJnZXQtc3BlY2lmaWMgdW5yZWFsaXplIGFueXdheTogd2Ug
-Y2FuIGRvIGl0IGFsbCBmcm9tIHRoZQ0KPiAgPiA+IGJhc2UgY2xhc3MgKGFuZCBJICB0aGluayB0
-aGlzIHdvdWxkIGZpeCBzb21lIGxlYWtzIGluIGN1cnJlbnQgY29kZQ0KPiAgPiA+IGZvciB0YXJn
-ZXRzIHRoYXQgaG90LXVucGx1ZywgIHRob3VnaCBJIHNob3VsZCBjaGVjayB0aGF0KS4gT3RoZXJ3
-aXNlDQo+ICA+ID4geW91IG5lZWQgdG8gZHVwbGljYXRlIGFsbCB0aGUgbG9naWMgZm9yICBmaWd1
-cmluZyBvdXQgd2hpY2ggYWRkcmVzcw0KPiAgPiA+IHNwYWNlcyB3ZSBjcmVhdGVkIGluIHJlYWxp
-emUsIHdoaWNoIGlzIGZyYWdpbGUgYW5kICBub3QgbmVjZXNzYXJ5DQo+ICA+ID4gd2hlbiBhbGwg
-d2Ugd2FudCB0byBkbyBpcyAiZGVsZXRlIGV2ZXJ5IGFkZHJlc3Mgc3BhY2UgdGhlICBDUFUgb2Jq
-ZWN0DQo+ICBoYXMiDQo+ICA+ID4gIGFuZCB3ZSB3YW50IHRvIGRvIHRoYXQgZm9yIGV2ZXJ5IHRh
-cmdldCBhcmNoaXRlY3R1cmUgYWx3YXlzLg0KPiAgPg0KPiAgPg0KPiAgPiBBZ3JlZWQgYnV0IEkg
-d291bGQgc3VnZ2VzdCB0byBtYWtlIGl0IG9wdGlvbmFsIGkuZS4gaW4gY2FzZQ0KPiAgPiBhcmNo
-aXRlY3R1cmUgd2FudCB0byByZWxlYXNlIHRvIGZyb20gaXRzIGNvZGUuIEl0IHNob3VsZCBiZSBh
-bGxvd2VkLg0KPiAgPiBUaGlzIGFsc28gZW5zdXJlcyBjbGFyaXR5IG9mIHRoZSBmbG93cywNCj4g
-ID4NCj4gID4gaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvcWVtdS0NCj4gIGRldmVsL2EzMDhlMWY0
-ZjA2ZjRlM2FiNmFiNTFmMzUzNjAxZjQzQGh1DQo+ICA+IGF3ZWkuY29tLw0KPiAgDQo+ICBEbyB5
-b3UgaGF2ZSBhbnkgY29uY3JldGUgZXhhbXBsZXMgd2hlcmUgYSB0YXJnZXQgYXJjaCB3b3VsZCB3
-YW50IHRvDQo+ICBleHBsaWNpdGx5IHJlbGVhc2UgYW4gQVMgZnJvbSBpdHMgb3duIGNvZGU/IA0K
-DQoNCk5vLCBJIGRvbuKAmXQgaGF2ZSBidXQgc29tZSBvZiB0aGUgcmVhc29ucyBJIHRob3VnaHQg
-d2VyZToNCg0KMS4gT3JkZXIgb2YgZGVzdHJ1Y3Rpb24gb2YgYWRkcmVzcyBzcGFjZS4gQ2FuIGl0
-IGJlIGRpZmZlcmVudCB0aGFuIHdoYXQgd2lsbDsgYmUgYXNzdW1lZCBpbiB0aGUgbG9vcD8NCjIu
-IFdoYXQgaWYgc29tZXRoaW5nIG5lZWRzIHRvIGJlIGRvbmUgb3IgaGFuZGxlZCBiZWZvcmUgZGVz
-dHJveWluZyBlYWNoIGFkZHJlc3Mgc3BhY2U/DQozLiB0aGUgZmxvdw0KDQoNClVubGVzcyB0aGVy
-ZSdzIGEgcmVhbCB1c2UgY2FzZSBmb3INCj4gIGRvaW5nIHRoYXQsIEkgdGhpbmsgdGhhdCAiY29t
-bW9uIGNvZGUgYWx3YXlzIGRvZXMgdGhlIGNsZWFudXAgb2YgdGhlIEFTZXMsDQo+ICBub3RoaW5n
-IGVsc2UgZXZlciBkb2VzIiBpcyBhIHNpbXBsZSBkZXNpZ24gcnVsZSB0aGF0IGF2b2lkcyB0aGUg
-bmVlZCBmb3INCj4gIHRhcmdldC1zcGVjaWZpYyBjb2RlIGFuZCBtZWFucyB3ZSBkb24ndCBuZWVk
-IGNvbXBsaWNhdGVkIGhhbmRsaW5nIGZvcg0KPiAgInNvbWUgb2YgdGhlIEFTZXMgaW4gY3B1LT5j
-cHVfYXNlcyBhcmUgbGl2ZSBhbmQgc29tZSBoYXZlIGJlZW4NCj4gIHJlbGVhc2VkIjoNCj4gIGVp
-dGhlciB0aGUgQ1BVIGlzIHJlYWxpemVkIGFuZCB0aGV5J3JlIGFsbCB2YWxpZCwgb3IgZWxzZSB3
-ZSdyZSBpbiB0aGUgcHJvY2VzcyBvZg0KPiAgdW5yZWFsaXppbmcgdGhlIENQVSBhbmQgd2UgZ2V0
-IHJpZCBvZiB0aGVtIGFsbCBhdCBvbmNlLg0KDQpJIGRvbuKAmXQgaGF2ZSBoYXJkIG9waW5pb25z
-IG9uIHRoaXMuIFlvdSBjYW4gc2hhcmUgdGhlIHBhdGNoLiBJJ2xsIHRlc3Qgd2l0aCBteSBicmFu
-Y2gNCm9mIHZDUFUgaG90cGx1Zw0KDQpUaGFua3MNClNhbGlsLg0KDQo+ICANCj4gIHRoYW5rcw0K
-PiAgLS0gUE1NDQo=
+On Fri, 16 Aug 2024 11:34, Philippe Mathieu-Daudé <philmd@linaro.org> wrote:
+>On 15/8/24 17:06, Daniel P. Berrangé wrote:
+>> On Thu, Aug 15, 2024 at 04:01:17PM +0200, Philippe Mathieu-Daudé wrote:
+>>> Hi Manos,
+>>>
+>>> On 15/8/24 13:42, Manos Pitsidianakis wrote:
+>>>> Add rust/qemu-api, which exposes rust-bindgen generated FFI bindings and
+>>>> provides some declaration macros for symbols visible to the rest of
+>>>> QEMU.
+>>>>
+>>>> Co-authored-by: Junjie Mao <junjie.mao@intel.com>
+>>>> Co-authored-by: Paolo Bonzini <pbonzini@redhat.com>
+>>>> Signed-off-by: Junjie Mao <junjie.mao@intel.com>
+>>>> Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+>>>> Signed-off-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+>>>> ---
+>>>>    MAINTAINERS                       |   6 ++
+>>>>    rust/meson.build                  |   9 +++
+>>>>    rust/qemu-api/.gitignore          |   2 +
+>>>>    rust/qemu-api/Cargo.lock          |   7 +++
+>>>>    rust/qemu-api/Cargo.toml          |  23 +++++++
+>>>>    rust/qemu-api/README.md           |  17 +++++
+>>>>    rust/qemu-api/build.rs            |  13 ++++
+>>>>    rust/qemu-api/meson.build         |  17 +++++
+>>>>    rust/qemu-api/rustfmt.toml        |   1 +
+>>>>    rust/qemu-api/src/bindings.rs     |   7 +++
+>>>>    rust/qemu-api/src/definitions.rs  | 108 ++++++++++++++++++++++++++++++++
+>>>>    rust/qemu-api/src/device_class.rs | 128 ++++++++++++++++++++++++++++++++++++++
+>>>>    rust/qemu-api/src/lib.rs          | 100 +++++++++++++++++++++++++++++
+>>>>    rust/qemu-api/src/tests.rs        |  48 ++++++++++++++
+>>>>    rust/rustfmt.toml                 |   7 +++
+>>>>    15 files changed, 493 insertions(+)
+>> 
+>>>> diff --git a/rust/qemu-api/Cargo.toml b/rust/qemu-api/Cargo.toml
+>>>> new file mode 100644
+>>>> index 0000000000..51260cbe42
+>>>> --- /dev/null
+>>>> +++ b/rust/qemu-api/Cargo.toml
+>>>> @@ -0,0 +1,23 @@
+>>>> +[package]
+>>>> +name = "qemu_api"
+>>>> +version = "0.1.0"
+>>>> +edition = "2021"
+>>>
+>>>> +license = "GPL-2.0 OR GPL-3.0-or-later"
+>>>
+>>> in particular explaining the license choice.
+>> 
+>> Semantically this is an overly verbose way of saying
+>> "GPL-2.0-or-later", so just simplify this.
+>
+>Indeed. Manos, please use GPL-2.0-or-later to keep it simple.
+>
+>> 
+>>> Should all rust code use it?
+>> 
+>> GPL-2.0-or-later is what we expect all new QEMU contributions to be
+>> licensed as, regardless of language[1], so this looks desirable.
+>
+>Agreed.
+
+Thanks, will replace it.
+
+Manos

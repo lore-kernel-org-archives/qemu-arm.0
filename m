@@ -1,80 +1,80 @@
-Received: by 2002:a17:505:917:b0:1be9:327d:8ee3 with SMTP id hq23csp293990njb;
-        Wed, 21 Aug 2024 07:41:28 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUKyeObi0CZYWU1fys27Vbw56djBCGlMe04YPcbvt7HVKMJuh8IWPi8sKArFdnMfEgxKQxjXoep0RLPRQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IF2XaXxM2T6GWH9RRFiNRa58wjH8k5R5q/SW62hlwWgMWZxUIApjK7hc7sxmcvVKBBCzGMo
-X-Received: by 2002:a05:6214:20e3:b0:6bf:7ae1:9a8f with SMTP id 6a1803df08f44-6c1571caa31mr41686956d6.19.1724251288021;
-        Wed, 21 Aug 2024 07:41:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1724251288; cv=none;
+Received: by 2002:a17:505:917:b0:1be9:327d:8ee3 with SMTP id hq23csp294831njb;
+        Wed, 21 Aug 2024 07:44:09 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXesSCV39HkN0NeHBYzTPRyzqRRCSO98TPgvkHGvnt3ZCG4IxD7yzylxIeCLxIfmdh01SUHmneSHL4DwA==@linaro.org
+X-Google-Smtp-Source: AGHT+IF1S1Q3EVt2hZx+ShP6lRYWAeQmuZW6gMJu3KsfmfHc8BrIbKH70RMi83adf3+c1dRKAJVI
+X-Received: by 2002:a05:620a:44cd:b0:79f:17da:6444 with SMTP id af79cd13be357-7a6740b992dmr303531085a.47.1724251449078;
+        Wed, 21 Aug 2024 07:44:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1724251449; cv=none;
         d=google.com; s=arc-20160816;
-        b=oAh8mqXk/T0XoYJDf6wGjjww4bD08cTfUegSBo2EXrrWn5SXP8RFyYzPzsixz8Y8+7
-         qUq9VMaX2uqhzkhXyYe5s0kp2ix3GdNbCQH8F7bcR0ryIyPS+iAqm6rl/upKt/GerEJ0
-         GQFUDue9ZC1FlwMgCozPAcr0Iu1dutUNL6kxFNgYrUbEnBiBlUc5nS4BSan0cBSoE6ws
-         fhTml0Lsny117cBEKm45d/wnfIWntT65IuqfIZnueyb0pOCb4KmMVBa0USE8pO6hM6ST
-         bFlq95LG8lhK3C4BcDEKrNsZ7i9dCfbMo0ebS6Ma4OjHRJZP+Jv33XOXCgmKwKUAWn8l
-         YQpA==
+        b=Ugq6x2djc8sEl0apnT2w3E0TvW7LUKBSflbIkPHol2RRVhVppPolKv1l/5+TmGItwM
+         KNCGjqJYgXyBiua9bKvgkdCwZL91G+1p9oewRsdm9I3j+RiVg9h9uEacrVopX5eUmULj
+         pIKpzjFqSFfMSlUuWe/F//6RIhUpyJoz2l+VOAeCdpZYODZtl7+3JIq2Q1SUOKMOmlOY
+         NRSUvAmbernGJV4AEQzZ2bhDeHCIDZA9OaXAlwKMUgkkFQ9BFy5ZqKSLQWChmELM8KFU
+         Eimx5TY7vhUVGjFJevRQNzXRHTLk0cMWFv+MKrYfCwt9cbDx87CTUuYpLTx6hKno0uiF
+         h86w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:in-reply-to:autocrypt:from
          :content-language:references:cc:to:user-agent:mime-version:date
          :message-id:dkim-signature;
-        bh=bwsHAD0yGfpUtbHtpbE0bak+QsoyCzOaVlfL0UZSyDs=;
+        bh=oE0el3nOyexeQayR9MOJZz4Bmv9pn7dTyR6fop5vHaI=;
         fh=j2i2Yp23PQBOJB8NmVVSneDIZYyHAynNb53maHX+XV4=;
-        b=LnE1TXaTlca9ld6kmN0YB2GihsUzlKLbLSmGAQ7skXLXkStngKz18cSMrcSOpED/dq
-         XBNQWCOC7Ea0pyiqyDZmIgTP7coa6MICzegNRYxtQaTrWh0+z4LmzkehJvt+MOQNtHrh
-         XDmPMpiiYjceMI1gaaezn9G3tvR/O1T+yqYvt4RWZoTkM1hI7vpsWseV6uxRPQMUSHru
-         6P6E5bVA374Kdp3WIPReKBkaazsRcaa9w9LrROe2ZzkmtqeLPBCnCoaG7entz5vMKvRc
-         Ml+b6wghB+O8mfD7sBKo11Kwpgr/jgghHP8lzkJnjzcVsUeRLnjtbL/aVLag1rn/hnFO
-         nztA==;
+        b=fLR0rxsrT7Is+m+8mNN2G+QGkyNgzBLn+oclteMmPJiBbEk4qKBInUEgPkWiXbuJza
+         pfocgr4HKXqOJOaEa/IYaWAaW6geJP4yqwCeTa/NvYqmMwt2VjtyJl7JZ5e7FHYz/+mY
+         4YIzWj6MqP82Q+4gVf9LZsr2AgGXhUAWVCdwCHZ26Fl96s9ZWxpHA+B4SAnjymlcUkSp
+         +/7Q9u+LVraFswFWDNur0sDHm+k7YhJ3e4UW5njORMFogkBQNZOyKnk7NhMBNIMNR1IQ
+         LJgwWkV6nnnPNnKYMOdizETDYDi3PYG7Kwe+2rtwrSoUoIOCGR7QIB132UG5AjQiLjr9
+         UftQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=JJ2kj9j6;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=WRFcXe9i;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6bf6fef4c7esi155318596d6.400.2024.08.21.07.41.27
+        by mx.google.com with ESMTPS id af79cd13be357-7a4ff1274basi1526024185a.761.2024.08.21.07.44.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 21 Aug 2024 07:41:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 21 Aug 2024 07:44:09 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=JJ2kj9j6;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=WRFcXe9i;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sgmVz-0000B1-Pq; Wed, 21 Aug 2024 10:40:47 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1sgmYb-0005jF-N8; Wed, 21 Aug 2024 10:43:29 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1sgmVv-0008NB-EG; Wed, 21 Aug 2024 10:40:43 -0400
+ id 1sgmYZ-0005hS-9G; Wed, 21 Aug 2024 10:43:27 -0400
 Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1sgmVi-0006UW-N3; Wed, 21 Aug 2024 10:40:43 -0400
+ id 1sgmYX-0006hn-Jv; Wed, 21 Aug 2024 10:43:26 -0400
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=ilande.co.uk; s=20220518; h=Subject:Content-Transfer-Encoding:Content-Type:
  In-Reply-To:From:References:Cc:To:MIME-Version:Date:Message-ID:Sender:
  Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
  :Resent-To:Resent-Cc:Resent-Message-ID;
- bh=bwsHAD0yGfpUtbHtpbE0bak+QsoyCzOaVlfL0UZSyDs=; b=JJ2kj9j6dT0rVM/1S5yBYWbTId
- k2ep6GXCAjJC4jvNOkD+TPfkPyz2nEwYQdmBdTuD4NuaYGKYPp4NAk8r9odgGzH1NuC2WwzxKr0Se
- fJbqufKJHOV2PtKppVefcWXAw0krUHll2ayftkwpjTXED0Q7FwrUQV7//V6SjBFKzn67Xeu8uYcwQ
- UxjTHXqmi3YmOYVJcEjCbkhP0ojsm7Oqdw9gb9/AVN+3Q6gVbPGWn0oIHWvTxUwiqQdPKiKjN4SH1
- X5a0nCEvzyIgRErLwbFKeLtt4jnqh8Uxx4+2uoSVVAJvvkA1U8xOgWcM0uwBuiDYu2UUikwO3k3i3
- qWWG9mvkAxSNbi4MjaaegsKDK1VYPfYFqWPxLHYWYEBeKoOnkrp5aQLL5PWCjfAd1KjrSSZG5sNfN
- KQe5Ed85X5jLCM9H9ax2r/7eF3hDKbzGzh/l9fi6eKkZJxAjJfyZvq8Tl4USuldckDeNE+P/NmD6W
- 254LGpLGeXyj/FuSq43kjfhOicd8+J1GWN2ap1FFXf933+6H6SILbDmBK6BJYJRVGOgf4Ze3CKSL0
- 8rpGFefHHwK8lfGtsE85uMODUZT4qyLIWqsqsEhWqBSfVigf5radFvk0USKLoG1v18ITr3lNy42VW
- fQraQo+KZYViLcMif1Wg+HFib0YQWfXq669p6TDzM=;
+ bh=oE0el3nOyexeQayR9MOJZz4Bmv9pn7dTyR6fop5vHaI=; b=WRFcXe9i9jiTPQp7Rijl2SdC6+
+ 7h12PdzVCXQMfzpzmhSvVEoSA+BZwvmYNvL7QLiOOyqgGkwlsmTF7aun2NKKyNKotMqZwTj7i0zTG
+ AkMiRdGlt2KTAK7Mq4fBgnUrqNCmqJgfwb4ENHz7cfT6/l9jIT3/J/vfeClZSfm/KMKsEjZEXsVLF
+ 2R+QZgTa4EY7HpbvBdbX7FORcka+wBplnNdTsAqfsXdPTG4sDrTI3dqe8AknfEkUE1BtOAAQcrEDA
+ DCVVsVC3y7LYspKQvbHifNDF93BXNme771W96v1Dp8FnXbdX0ORiLgLidDnUpFr54XkxE3kv/6xcO
+ 7OnRDq8lNogg4mx0T6ftxrxd3OPaVZjC8pEBj1u0aC5zeJD8CxN6omC0FUA4+CYY2BR9WEUI+l4Ly
+ eDtORjt4a3hzGZw/cX/UizE0rjeWd9akz6YvSJlIsxkBwgz9K9KpItvvLZwRBwwjnHS2wdwvx9Hmm
+ v9SCUhTiXHi+XxOj0VDOakutyW3dI2qFxm3kPZqzg/GG5jkDW4B73ImOIql+o0L6isw8u9a3egHKX
+ oLQahHnFLWJdpbgoFOgH800LZRLH+QCPXLz9aVts8wZ+vsffa9BvxegDXzNHEVxECYKWJO0TnWywD
+ KWwnYioW1sF2awBsB7YhMBQZfVg1xjXQpsyT9BWA4=;
 Received: from [2a02:8012:c93d:0:260e:bf57:a4e9:8142]
  by mail.ilande.co.uk with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.92) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1sgmUe-0001BX-DN; Wed, 21 Aug 2024 15:39:28 +0100
-Message-ID: <f98e6e97-40dd-4dc5-bdb9-c8129168e29d@ilande.co.uk>
-Date: Wed, 21 Aug 2024 15:39:31 +0100
+ id 1sgmXk-0001EV-G3; Wed, 21 Aug 2024 15:42:40 +0100
+Message-ID: <0fa1e7a5-cfa7-49e9-8bbd-5eac055e25cd@ilande.co.uk>
+Date: Wed, 21 Aug 2024 15:42:43 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
@@ -112,7 +112,7 @@ Cc: Jiaxun Yang <jiaxun.yang@flygoat.com>,
  qemu-riscv@nongnu.org, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Song Gao <gaosong@loongson.cn>
 References: <20240814181534.218964-1-shentey@gmail.com>
- <20240814181534.218964-2-shentey@gmail.com>
+ <20240814181534.218964-4-shentey@gmail.com>
 Content-Language: en-US
 From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
 Autocrypt: addr=mark.cave-ayland@ilande.co.uk; keydata=
@@ -139,12 +139,13 @@ Autocrypt: addr=mark.cave-ayland@ilande.co.uk; keydata=
  Ir6VauZs5Gp25XLrL6bh/SL8aK0BX6y79m5nhfKI1/6qtzHAjtMAjqy8ChPvOqVVVqmGUzFg
  KPsrrIoklWcYHXPyMLj9afispPVR8e0tMKvxzFBWzrWX1mzljbBlnV2n8BIwVXWNbgwpHSsj
  imgcU9TTGC5qd9g=
-In-Reply-To: <20240814181534.218964-2-shentey@gmail.com>
+In-Reply-To: <20240814181534.218964-4-shentey@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-SA-Exim-Connect-IP: 2a02:8012:c93d:0:260e:bf57:a4e9:8142
 X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
-Subject: Re: [PATCH 1/5] hw: Remove unused inclusion of hw/char/serial.h
+Subject: Re: [PATCH 3/5] hw/ppc/Kconfig: Add missing SERIAL_ISA dependency to
+ POWERNV machine
 X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
 X-SA-Exim-Scanned: Yes (on mail.ilande.co.uk)
 Received-SPF: pass client-ip=2001:41c9:1:41f::167;
@@ -156,81 +157,43 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: UDlGHm4fcNin
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: FzNxky8uYk6a
 
 On 14/08/2024 19:15, Bernhard Beschow wrote:
 
+> The machine calls serial_hds_isa_init() which is provided by serial-isa.c,
+> guarded by SERIAL_ISA.
+> 
 > Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 > ---
->   hw/char/riscv_htif.c | 1 -
->   hw/ppc/prep.c        | 1 -
->   hw/riscv/sifive_e.c  | 1 -
->   hw/riscv/sifive_u.c  | 1 -
->   4 files changed, 4 deletions(-)
+>   hw/ppc/Kconfig | 1 +
+>   1 file changed, 1 insertion(+)
 > 
-> diff --git a/hw/char/riscv_htif.c b/hw/char/riscv_htif.c
-> index 9bef60def1..54fd55c3e6 100644
-> --- a/hw/char/riscv_htif.c
-> +++ b/hw/char/riscv_htif.c
-> @@ -24,7 +24,6 @@
->   #include "qapi/error.h"
->   #include "qemu/log.h"
->   #include "hw/char/riscv_htif.h"
-> -#include "hw/char/serial.h"
->   #include "chardev/char.h"
->   #include "chardev/char-fe.h"
->   #include "qemu/timer.h"
-> diff --git a/hw/ppc/prep.c b/hw/ppc/prep.c
-> index 4eb5477069..fb58c312ac 100644
-> --- a/hw/ppc/prep.c
-> +++ b/hw/ppc/prep.c
-> @@ -25,7 +25,6 @@
->   
->   #include "qemu/osdep.h"
->   #include "hw/rtc/m48t59.h"
-> -#include "hw/char/serial.h"
->   #include "hw/block/fdc.h"
->   #include "net/net.h"
->   #include "hw/isa/isa.h"
-> diff --git a/hw/riscv/sifive_e.c b/hw/riscv/sifive_e.c
-> index 87d9602383..5a1959f2a9 100644
-> --- a/hw/riscv/sifive_e.c
-> +++ b/hw/riscv/sifive_e.c
-> @@ -35,7 +35,6 @@
->   #include "hw/boards.h"
->   #include "hw/loader.h"
->   #include "hw/sysbus.h"
-> -#include "hw/char/serial.h"
->   #include "hw/misc/unimp.h"
->   #include "target/riscv/cpu.h"
->   #include "hw/riscv/riscv_hart.h"
-> diff --git a/hw/riscv/sifive_u.c b/hw/riscv/sifive_u.c
-> index af5f923f54..efc8443c84 100644
-> --- a/hw/riscv/sifive_u.c
-> +++ b/hw/riscv/sifive_u.c
-> @@ -43,7 +43,6 @@
->   #include "hw/irq.h"
->   #include "hw/loader.h"
->   #include "hw/sysbus.h"
-> -#include "hw/char/serial.h"
->   #include "hw/cpu/cluster.h"
->   #include "hw/misc/unimp.h"
->   #include "hw/sd/sd.h"
-
-For the PReP machine:
+> diff --git a/hw/ppc/Kconfig b/hw/ppc/Kconfig
+> index c235519881..5addad1124 100644
+> --- a/hw/ppc/Kconfig
+> +++ b/hw/ppc/Kconfig
+> @@ -39,6 +39,7 @@ config POWERNV
+>       select PCI_POWERNV
+>       select PCA9552
+>       select PCA9554
+> +    select SERIAL_ISA
+>       select SSI
+>       select SSI_M25P80
+>       select PNV_SPI
 
 Reviewed-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
 

@@ -1,111 +1,118 @@
-Received: by 2002:a17:505:917:b0:1be9:327d:8ee3 with SMTP id hq23csp634457njb;
-        Thu, 22 Aug 2024 06:28:51 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCU7d9QEXX1aVrf0/Qsweqd2EO+TY6pPAqFJb0MZkTfNVSZukiTmvDVIfAnqL2b8OS4JY09P5LN4uyAi9A==@linaro.org
-X-Google-Smtp-Source: AGHT+IHD48TYtkbK60ja6y+eOSOXj/dzy323diixKkf42tIMfK9RyW4nwYpkrRfKLhEngg5qf8gq
-X-Received: by 2002:a05:620a:430f:b0:79d:7d6e:e02b with SMTP id af79cd13be357-7a674106cecmr458796685a.70.1724333331704;
-        Thu, 22 Aug 2024 06:28:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1724333331; cv=none;
+Received: by 2002:a17:505:917:b0:1be9:327d:8ee3 with SMTP id hq23csp662115njb;
+        Thu, 22 Aug 2024 07:40:13 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXNzOcDGsEV2tbzNYf3HyPUZBqeT6Nja7IE4YU9+fmlxqDSzOpJqCLhQyADwN7VbLGtFyVqVLGt/C07rw==@linaro.org
+X-Google-Smtp-Source: AGHT+IGEs9DiXr9x56BuYmIAY3NB6KCIHk5Nz6FF8nx8H9p2NoCGGUma9cc3PilwHZS8xIsGU9oF
+X-Received: by 2002:a05:6214:468e:b0:6bf:7474:348b with SMTP id 6a1803df08f44-6c155d6fe3cmr72553486d6.16.1724337613261;
+        Thu, 22 Aug 2024 07:40:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1724337613; cv=none;
         d=google.com; s=arc-20160816;
-        b=InEUsJNePkFIpQfUatF1VTt6qB29vn+cWSIAE5mrAoWN4S/mt3qJ2og0f423GAARb0
-         ton9Je1fNW8rgyRA+VKMUZ7g2EEE0ikqVLaOsoTE5yiymmNQmGKRBvlGT3ibdUseehEZ
-         8BKuEIgCvUV4LGEhDW1zVA0mA+gOhRjFq8HzriTaYX+ORGd8YgGFZ3Kqcb9BUQALsqPu
-         V+gIk1fQx7OmTOcamjAslm/8ADwYDYI+SDvnAaFJT5wgEl9DVw6BseNRKtrxqbrzjMo8
-         xTusK6bOhG0mDsoYdSMh5S+iH6i+RlnNrYLjt3URIviY1jxMG1ZTsSNaL1qSsVSx2q2W
-         oyPA==
+        b=oMw1FRNpO0a5qR/mCmWxSytL89OMeu4xIBLJIPLnzy40e/ltDvijYl4OAEqAndX4du
+         vBpQj0FnDhIwgMcjpCMiyEJef/06YEMnJOOdHXERA1D4SNe7WQeKh+05ISzo1+VSJIlt
+         26x1dH5JYQvlnP5jdUtEjABtHC9xPmJVoLvZwYlHnmeiz7O6Ehm/r6e/BgGPS4j5s7Pi
+         bQxwvvMa5ud6+VcOz/veg/z513TSaFwGYqZk+qzBU3fXlOLknUdE9/RfaJTAHhUAVC22
+         EqMjEoBQr0iXJ55M61vZh/KgNUzwXF4FBFRDNhL9ACJPD1saHgPR1migYJLkzn27v5DP
+         bJPA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=iboVwxqYZ7dX7dV1LSG5gTtGmY5fYUoZtXeRX0F1mrU=;
-        fh=6/CDHjMawg0uaTejzm0ook6ctfJ+Ejs3I9RJ9mLgTpA=;
-        b=ajCcsUqlMjeAxMWIpoyrcx+0+hCYts+psW3qG5IlJxhcJl89d1W1uKrBtO78TRUO3m
-         g0kOUyRhXh87UznE05vjSw23DwRxCniIRzW4AicSe7MjYl9fjpIsU3j+xiQ4WYrEeh8Q
-         nEcq3ZB304remwj2MeQD/u1TN8KBKFskTKpX5Kd1nakza2GoBGv/q1pH00llrdQeHwf9
-         5pm3gEly1BOujwHHsPQLQCE0OUnM8scD43sTuPNhCyXp3QuC+CAktbUKBftGF0w+WcU9
-         w2HFwCYw+MqUJRFsqmhOTerp1ZAwph3bMXdT2DPtF1/7g/Q6azMTjHMjfHeN/nZLfzO2
-         L8Zg==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=1ukufj80TaNtT2oOkSwasdrBCZNH2zbdV7sjzzAN8PE=;
+        fh=xKTfezR+gOnvluSTFiLD6jAfh63AB7G2VjrtPVJyod4=;
+        b=Aoqg1msTrnga/DZGEFuCwOO6sMB8g4WlhfWZHCL9TWXiSyW3bnzy+zKnaXagrWPXXy
+         U/rJytUaIMLqB9TKCKoxVjK4crS2O8OiZHGLJunFhyx0DwSgcC8gxJFk2wmWZkiS03v8
+         K0fzVA73/CHkUY5rlXibl4oHvVFxZN560fRLAENm0juTeIzfUvM+uJzRPTTNBXPGnakC
+         ZBHSaldd8YssTYA+eakW7CPJ52fIKXMAlQG/dhj11DacgZAs5lM4Vdz6yy0gyj3zpV/E
+         qhD7AZ4Y4mC0Kzbsh8V4Wur2hISa9DQTyqVdBArwPazKKJjb+99ZE96X01Q46W5IaaZ+
+         1HlQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=luU1f+sT;
+       dkim=pass header.i=@linaro.org header.s=google header.b=wUfWHZne;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7a67f3d6ed2si155642985a.309.2024.08.22.06.28.51
+        by mx.google.com with ESMTPS id 6a1803df08f44-6c162dd48c2si19022666d6.357.2024.08.22.07.40.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 22 Aug 2024 06:28:51 -0700 (PDT)
+        Thu, 22 Aug 2024 07:40:13 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=luU1f+sT;
+       dkim=pass header.i=@linaro.org header.s=google header.b=wUfWHZne;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sh7rb-0004UW-Oy; Thu, 22 Aug 2024 09:28:32 -0400
+	id 1sh8yd-0005G8-KG; Thu, 22 Aug 2024 10:39:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1sh7rZ-0004TL-7D
- for qemu-arm@nongnu.org; Thu, 22 Aug 2024 09:28:29 -0400
-Received: from mail-lj1-x236.google.com ([2a00:1450:4864:20::236])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sh8ya-0005Ex-8D
+ for qemu-arm@nongnu.org; Thu, 22 Aug 2024 10:39:48 -0400
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1sh7rX-0007H3-AT
- for qemu-arm@nongnu.org; Thu, 22 Aug 2024 09:28:28 -0400
-Received: by mail-lj1-x236.google.com with SMTP id
- 38308e7fff4ca-2f40a1a2c1aso4047121fa.3
- for <qemu-arm@nongnu.org>; Thu, 22 Aug 2024 06:28:25 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sh8yY-0000kB-Ii
+ for qemu-arm@nongnu.org; Thu, 22 Aug 2024 10:39:48 -0400
+Received: by mail-wm1-x334.google.com with SMTP id
+ 5b1f17b1804b1-428178fc07eso6306735e9.3
+ for <qemu-arm@nongnu.org>; Thu, 22 Aug 2024 07:39:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1724333304; x=1724938104; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=iboVwxqYZ7dX7dV1LSG5gTtGmY5fYUoZtXeRX0F1mrU=;
- b=luU1f+sTRSgmHJVcKDb8iweOaONsuLcYgfu5d5oo1AtbaW3X+512bB9Zj5i2ZfNCQM
- I7PIjr3C6Di4SD4qFWDXW8b3JEdfesQ/Pt5PtLdLUyf/nW5W+ydn7EIclwTZYVCUQwlQ
- vyok6pY76PrFQLwDmJAtEuG2jsBpSORqQozDq5adhKdNwGdL9PjWbUittH6Bgjy/FwkR
- e8Xl/iCKaZja9Zh2YF60CTSUvKwFu95lJr0xa1W+9em44xsA5maiwp1KaD1deFBcUarv
- IAdrTczvQF50dvbCKXNUcck0Pvb+jSeVjJibQNUldvdxHwGTPed0qx/bUxNpXm89cuOP
- cAQw==
+ d=linaro.org; s=google; t=1724337584; x=1724942384; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=1ukufj80TaNtT2oOkSwasdrBCZNH2zbdV7sjzzAN8PE=;
+ b=wUfWHZneYbR2rgb5h1fzXDm9LNYdYnPfQYhrVQvUokLRSguRG1xMJngFsQJK4q+ptu
+ gl3XTF/ttew4dWFtjWytBYN8TK1RRqyUJkS572/cXPYs8qbeDPmsi+VSzRvYn901YZh/
+ O6RjXdSSjwNOYx0DYi2FeahNlxTHjULmTMNNlBeyMebTiwEyO/xaCLzJl/FuIiltObTp
+ oKgmnZRZnCzmMWtz76mwaIU1+ql3SqMzgFUWIlWNYBbq/tp9K/831FbsUCqVUY0zIuti
+ 3ds3j95v7T4GUVIYac4tAG6h4hRnFfDAitA+R4Axd3DB28skqAycMPK5mpyF3fCYlANh
+ xjdg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1724333304; x=1724938104;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=iboVwxqYZ7dX7dV1LSG5gTtGmY5fYUoZtXeRX0F1mrU=;
- b=Jwdv1mMfR5DkSKPZHcYQy6eAbIPL6nr85ZiQbDiPNns/sfuP7Gyu+KWOOGv6i7Rm7d
- xE+nqUEx3OVLb+LopDUVF178D/5Wvj+8cxUWSelU6kyrmkvJXwvmSPBy9Ll8yFEyigOX
- 5zNtsY3j0fCRBisKKDeRkKajFPlAcxXz7dak4cGUAEDPply+4a+OLtJoCwOUPUL5601u
- wGfiJW0HwFaQi6IvK55/5E4pWT/rpwUnKKazEyfUA89f5LwX0j3k/Vs1rXdRw83qpvXE
- KV5VgItPDHznFh4SunlE0kQodl2HXr5/5qMF0+0qU74lmdS9a1gtLqtZvsfZCKshTdW7
- Lqtw==
+ d=1e100.net; s=20230601; t=1724337584; x=1724942384;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=1ukufj80TaNtT2oOkSwasdrBCZNH2zbdV7sjzzAN8PE=;
+ b=nkcC4y3Xa/1sjmgBc1AkOYRw46Xd8e6f8+RTlg1ZMQyiO0MSetWUdhB4vNzzEzg6Ol
+ 82fM2XrB+INl1oVjnic1QF5S94gF+RdK/H/HY2E5hNvZoo376frrNJ5kGJ4p0J6Wrxdg
+ Nd0EuLn3pGp/wP7YvgDRXMdReoPDZ83PzN5GxQPCulUkip1sPEFsnYB/OVA+g7cSliui
+ WbQb4jBs2kjtOGN3lmSxypoaDbDI60FNIHvWBGbbhvUDPQKktuWAIy/LkuQGWVvlifz2
+ dThOsyt0myJpOeqVnSMZpcz4qfMnr0IpFZmwErZQzwkp9CTlJaEXBiG/Zo05x7Y/Of/r
+ R+/Q==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUABFAxm//JsziQ9jPJKbLYSBTgYnu1MW3T1ymxnVFzCF2jG3gksJ5hSNfeUc3osT4nBVOZcNvmWQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yy+soOtV4HDo7mSRqFjPXoAuMBTBlA5R9ChMJ0rvG9UmmKtHv7B
- 8M3ShGaTTzkcQxFjlYyDWnkihxen8tuefCdWHUSe1uLSOcIulvHnzH+3jJasjgbZGHvpA6WgA1O
- MoFzey0BTdK2fTmWf8X4kL4oT0vkgz+eHTyk/I1Tys2oqiE4X
-X-Received: by 2002:a2e:a549:0:b0:2f3:f49a:c6df with SMTP id
- 38308e7fff4ca-2f405eedcf3mr13183331fa.32.1724333303859; Thu, 22 Aug 2024
- 06:28:23 -0700 (PDT)
+ AJvYcCUWKEzEA5KucOgS0QnQ+JOaU5eNmcjhTdomNAeS7uVS0Z/WAcJ/txSXJgD/r9HCAKXkZmc/MlmMsA==@nongnu.org
+X-Gm-Message-State: AOJu0YwE0j8kcMArHzqiGrzI2Pe8mbBWYPwpLThwW2Yu+OLqLY/J/jNt
+ GQsQM9vxzuus1o/Fv1rRid/6RFcfoLzgu0SgNQdG1fB+r4+0mA8OEjLVTHaMaDE=
+X-Received: by 2002:a05:6000:1881:b0:362:8ec2:53d6 with SMTP id
+ ffacd0b85a97d-3730905e28amr1791323f8f.61.1724337584189; 
+ Thu, 22 Aug 2024 07:39:44 -0700 (PDT)
+Received: from [192.168.69.100] ([176.187.206.153])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-3730817a4bfsm1835886f8f.62.2024.08.22.07.39.42
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 22 Aug 2024 07:39:43 -0700 (PDT)
+Message-ID: <b3d054b9-4ede-489c-bca5-b61b046dea50@linaro.org>
+Date: Thu, 22 Aug 2024 16:39:41 +0200
 MIME-Version: 1.0
-References: <20240817102606.3996242-1-tavip@google.com>
-In-Reply-To: <20240817102606.3996242-1-tavip@google.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 22 Aug 2024 14:28:13 +0100
-Message-ID: <CAFEAcA8gg1u4_HwG9QOHj4RqfHgNLkT5nHLTFNrcaHdgL+zEPQ@mail.gmail.com>
-Subject: Re: [RFC PATCH v2 00/23] NXP i.MX RT595, ARM SVD and device model
- unit tests
-To: Octavian Purdila <tavip@google.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, stefanst@google.com, 
- pbonzini@redhat.com, thuth@redhat.com, marcandre.lureau@redhat.com, 
- alistair@alistair23.me, berrange@redhat.com, philmd@linaro.org, 
- jsnow@redhat.com, crosa@redhat.com
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::236;
- envelope-from=peter.maydell@linaro.org; helo=mail-lj1-x236.google.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2] tests/functional: Convert Aarch64 SBSA-Ref avocado
+ tests
+To: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>, qemu-devel@nongnu.org
+Cc: Thomas Huth <thuth@redhat.com>, Radoslaw Biernacki <rad@semihalf.com>,
+ qemu-arm@nongnu.org, Leif Lindholm <quic_llindhol@quicinc.com>,
+ Peter Maydell <peter.maydell@linaro.org>
+References: <20240822114146.86838-1-philmd@linaro.org>
+ <d8c744cf-0da1-42fc-92cc-f8bec8ca00e1@linaro.org>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <d8c744cf-0da1-42fc-92cc-f8bec8ca00e1@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::334;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x334.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -127,53 +134,43 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: AIqBFIA8e0K1
+X-TUID: rVv/E4N8/7f+
 
-On Sat, 17 Aug 2024 at 11:26, Octavian Purdila <tavip@google.com> wrote:
->
-> This patch set adds support for NXP's RT500 MCU [1] and the RT595
-> EVK[2]. More RT500 device models will be submitted in future patch sets.
->
-> The goal of this first patch set is to provide a minimal set that
-> allows running the NXP MCU SDK hello world example[4].
->
-> The patch set introduces a (python) tool that generates C header files
-> from ARM SVD files[3]. This significantly reduces the effort to write
-> a new device model by automatically generating: register definitions
-> and layout (including bit fields), register names for easier debugging
-> and tracing, reset register values, register write masks, etc.
->
-> The generated files are commited and not generated at compile
-> time. Build targets are created so that they can be easily regenerated
-> if needed.
->
-> It also introduces unit tests for device models. To allow accessing
-> registers from unit tests a system bus mock is created.
->
-> This can potentially introduce maintainance issues, due to mocks or
-> unit tests getting outdated when code is refactored. However, I think
-> this is not an issue in this case because the APIs we mocked (system
-> bus MMIO access) or directly used (irq APIs, chardev APIs, clock tree
-> APIs) to interact with device models are stable at this
-> point. Anecdotally, our experience seems to confirm this: we only run
-> into one (trivially fixed) breaking upstream change (gpio getting
-> removed from hwcore) in the last three years.
+On 22/8/24 16:06, Marcin Juszkiewicz wrote:
+> On 22.08.2024 13:41, Philippe Mathieu-Daudé wrote:
+>>   # Timeouts for individual tests that can be slow e.g. with debugging 
+>> enabled
+>>   test_timeouts = {
+>> +  'aarch64_sbsaref' : 180,
+> 
+> What kind of machine is able to run those tests in 180s? I bumped them 
+> to 2400s and got timeout (Macbook with M1 Pro).
+> 
+> "make check-avocado" (with some AVOCADO_* vars to limit list of tests) 
+> shown me which test is run and pass/fail for each.
+> 
+> "make check-functional-aarch64 V=1" shows me "1/4 
+> qemu:func-thorough+func-aarch64-thorough+thorough / 
+> func-aarch64-aarch64_sbsaref" and timeouts without information which 
+> tests pass, which fail.
+> 
+> Maybe for QEMU project this is a progress. For me it is moving tests 
+> from working ones to "sorry, timeout, find out why" ones.
 
-My main issue with the mocking is that it introduces a
-completely different way of testing devices that is
-not the same as what we use for any existing device.
-QEMU already has too many places where there are multiple
-different ways or styles of doing something, so adding a
-new one should be a high bar (e.g. "this lets us test XYZ
-that would be impossible in the old way") and preferably
-also have a transition plan for how we would be
-deprecating and dropping the old way of doing things.
+Sorry for the annoyance of switching from one framework to another
+one :/ Are you using Linux on your Macbook with M1 Pro? I'm using
+macOS and these tests currently don't work, so for me this is a
+huge win.
 
-So my inclination here is to say "you said that you could
-do the testing of this device with qtest, so use qtest".
-If we were designing a "test devices" framework from
-scratch, using mocks would probably be a strong candidate
-for that design, but we aren't starting from scratch.
+Most of the (long) time was spent in downloading the assets.
 
-thanks
--- PMM
+IIUC there is a way to pre-download without using the test timer
+(apparently Richard and Daniel use it) but I haven't found the way
+yet.
+
+I'll check with Thomas how to tune these timeouts and return back
+to you.
+
+Regards,
+
+Phil.

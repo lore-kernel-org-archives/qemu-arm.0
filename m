@@ -1,124 +1,119 @@
-Received: by 2002:a17:505:917:b0:1be9:327d:8ee3 with SMTP id hq23csp702548njb;
-        Thu, 22 Aug 2024 09:22:32 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXOPbD81KEOl7lV9S/gX2qiOscFGc1Kwtdv7azasQtgepV8rGGToN09aItWSSpJY6jDRziUq3mx2sdZUw==@linaro.org
-X-Google-Smtp-Source: AGHT+IGZlGqDn3NUKQq+jxKMip/IRhL5PjCG5QPOeAXF8OLt0C1BLraCBMt4aAzgTcruZmSGxYuW
-X-Received: by 2002:a05:6122:1828:b0:4f5:1c87:ce75 with SMTP id 71dfb90a1353d-4fd099db477mr3293202e0c.11.1724343752589;
-        Thu, 22 Aug 2024 09:22:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1724343752; cv=none;
+Received: by 2002:a17:505:917:b0:1be9:327d:8ee3 with SMTP id hq23csp702566njb;
+        Thu, 22 Aug 2024 09:22:35 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUC0bLuuoqtnGeJtj056sQL70/1adfvKMA/a5uY1rcz6gXogH23C0z20Oon9Sdfv/TDw8e2YOOr9aYbug==@linaro.org
+X-Google-Smtp-Source: AGHT+IHtbT9C/GaLbkXHbMWID3bFKCHoGA0uKJYiWZ/MYYk6g/FwKaqOoFKv2HdvreLpsvIV0YdI
+X-Received: by 2002:a05:6122:1790:b0:4fc:da8f:c8a8 with SMTP id 71dfb90a1353d-4fcf18fc84cmr7814749e0c.1.1724343755127;
+        Thu, 22 Aug 2024 09:22:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1724343755; cv=none;
         d=google.com; s=arc-20160816;
-        b=c2hUYKc1BvCQO9CZC0eAyYXXF6QX4eKL4nQGStNMufv/p+Gt07JI6k8HSIJ6VCmv7f
-         zG7A0JXRAfYp1eWZdFk38j6MmkPYsXeMVQCAiqtiwfIpMILWuuoEswYPsjxEwBObx1DA
-         W/Kzs/Hr5MEC8nv+gty46EcDUpp1F9j0GbU5xavyLEG05+9DV7O5/yuMZT6+1xkObXAK
-         5VgEFcAbtnVpxBRjHVuL/o0JiFyySlKfJkgq+Ik3EYFrSbv8RudOm9xLfVLTXgN3YbVU
-         MnYh2lvAmsWnklhvfwUKzNn7Xe7u8Wb4I7iOrjulhwwhVRVnkxoy08VMCWvtwebcJXZm
-         /btw==
+        b=mGt13X1rjYHzz42NWFRbhXIAhzoUM19Cmxghl57qVvWyBZBpXHEhLVH4NBcbmKDsvY
+         8vFCVbewY2QoH1EWdGzdFvm9rzeG3SL7sInMLoWbZnE3jqH+MzNyNk5KlWj8fQjFrvYD
+         m24Qpj4GXM1ZMYYvVGYgTDZbEqjQiSwB18bvW3aLP2y+Ux5Cn54TCUgye0YqWTYWWHaJ
+         xm10qQuCfrV/w1YzvdSfP9/H3IvLMW2qh8rQmo8mqY6J5sUNbUMHrJDyEmZ5zjoZneiC
+         AHFHeRXbUyunRzM3nqge6dIz9NtD0bzJwtb4bCiMOYfaY65NFwW80WxveidaLgqBk4Jb
+         33lQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=rRIh29OU7dNzm5XtXlrEQk7GPVofTkxU59XhpGGv5/A=;
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=7Pwg1o239tHw5GeNWwmrUQKUbQB8ts+OmOxcr++H9xA=;
         fh=eKvyMq82ozF2pexIVE339+mXcynob0ROL80gQzK9b2g=;
-        b=G6oaXKA7tbbd2TTleU291kduvdO8kGTUcOHomGpJNW7HXXGbtttxYNn1lzKc5aY96G
-         jGVdBklSBOHrIbTV+JmM5laBZvVN6V6Rl2mJ1mSRuahnr5Y22HXlkGhpdgWYFcDFjDku
-         ZLBMu1y4Kd09lzW7DWP7YWKPnBjj/IpaZV1Id4yXPlfHP2G1BRFo2zVOdTThPaShEcYr
-         knABsdWQwyCss3uk+0qzMBBhhm68W+YoyY+T+ijPfkGCXp++GGMIO/+bcCPiV0Fmmzk9
-         WBrCc5w5b8R0ybWKYVpxzLQOi2iyD2C0aVHLZERpjQlK+aTdZ2eUM7hzCUmEwQYxjqW5
-         opzA==;
+        b=Myqu7H6ScSXK7fLMjtDLhoSl3NV/YNS7NLqV0Vrv7XtzA5FX2eCzkHHzx2aezsknU0
+         UigNGSExHFbQ15h6gZlJXb3aX2KhpFHQVmE7dhGgzHuNbzuhY+VylzGeW91Zlb2VuAQI
+         SC8ZQjTO4NNvubKbkwNT6ZglxWI5Nv+pmJpLq42a4DHU0b8uuApSKub4rSN7oDlwExPz
+         j0x071gxp1xX9icfpKApLjgeaDAiv9uMnBSzGw1DZKxbkIuaUYtzkITBi+vZeYzAhpqK
+         1jNMQh+W7E7VFCI/nKd2VvlYZfNMukzTf8pAWHUw47Ip4cZsAfPu/lQ1Kq5uesuHSeu1
+         REtQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Aqig05m1;
+       dkim=pass header.i=@linaro.org header.s=google header.b=EmlNIVRI;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 71dfb90a1353d-4fd0839c38esi422939e0c.296.2024.08.22.09.22.32
+        by mx.google.com with ESMTPS id 71dfb90a1353d-4fd0824c4f8si420004e0c.69.2024.08.22.09.22.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 22 Aug 2024 09:22:32 -0700 (PDT)
+        Thu, 22 Aug 2024 09:22:35 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Aqig05m1;
+       dkim=pass header.i=@linaro.org header.s=google header.b=EmlNIVRI;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1shAZL-0005aI-S4; Thu, 22 Aug 2024 12:21:51 -0400
+	id 1shAZC-00052Q-B9; Thu, 22 Aug 2024 12:21:42 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1shAZD-00057Y-JS
- for qemu-arm@nongnu.org; Thu, 22 Aug 2024 12:21:43 -0400
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
+ id 1shAZ5-0004tl-VD
+ for qemu-arm@nongnu.org; Thu, 22 Aug 2024 12:21:36 -0400
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1shAZ7-0007KA-MJ
- for qemu-arm@nongnu.org; Thu, 22 Aug 2024 12:21:41 -0400
-Received: by mail-wm1-x332.google.com with SMTP id
- 5b1f17b1804b1-427fc97a88cso7585125e9.0
- for <qemu-arm@nongnu.org>; Thu, 22 Aug 2024 09:21:32 -0700 (PDT)
+ id 1shAZ2-0007JZ-5Q
+ for qemu-arm@nongnu.org; Thu, 22 Aug 2024 12:21:34 -0400
+Received: by mail-wm1-x32f.google.com with SMTP id
+ 5b1f17b1804b1-428119da952so7826755e9.0
+ for <qemu-arm@nongnu.org>; Thu, 22 Aug 2024 09:21:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1724343690; x=1724948490; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=rRIh29OU7dNzm5XtXlrEQk7GPVofTkxU59XhpGGv5/A=;
- b=Aqig05m1LszCefa1p+WpMvLPgGz1e5vPghRll6xMHoUz/EcDSOHpEkHL5YXl0DWz8J
- lAvmMzzQHJw1xwV+nNoLXBZfFPcgwo54r24WYpH8HDvqMvobF61/5k76TlqueBfGeQoe
- vJ70y2R6GY0vN1Vx20sKPMKbq2j83IpZUWTa6LrJl2YKEb4zB9pGb26JHprUu2gnpsEQ
- 5PhTGKwFsn3Ltb4i/IZy5vzeRq94dMZ332SqXE6T6IuOdAVBT/VMriwg8qD/zxDdeSMA
- NDAmiZZXX/XEm4i/GYR13oPTN4FIB+ZiYhc4CEaGHuyIum4q6Y+sA6lz8PJ5tKNHDAMU
- KwTQ==
+ d=linaro.org; s=google; t=1724343689; x=1724948489; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=7Pwg1o239tHw5GeNWwmrUQKUbQB8ts+OmOxcr++H9xA=;
+ b=EmlNIVRIITaRXxUCIJQate2Qp7Sa53D1fbFsl1wtvWfVuKlgZCpvXSCuHArYz5XXmQ
+ czyhncuiP1ETNCLNe4qTw6c14YzglyUYpbBW3pY1l60MpdOmPk81+mkK3/sL9mGmk/PK
+ i8n0fSEvLqAIiWjo4L7npTh0q+KrLt6uXrUM514X1vYxiAuJMKZ3m0IxPMfDdfQhTpXB
+ HUialNPN4iTmhl9fbnWj+UPpqBYOa3rPYDCCqEZhJ1kUUJCK/hxyj/nAdkVqD5CqxvsX
+ kG0pXCfkR6qb/6N5zIvr5yp3frg8YcLwHnXuR0umDej+b8Us2PfcKVEGStUr+PrxMbJt
+ 4znA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1724343690; x=1724948490;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=rRIh29OU7dNzm5XtXlrEQk7GPVofTkxU59XhpGGv5/A=;
- b=VaC6oU6h+Z8vkE3JqFmm7mXMP1cxzjTXy6NYjgvrRwKL1nYqsMbylmdLsSXS7oPV/A
- pI+jqK2D4LeGAt8RoohpNQ/bIlqun12KqAP4PNZXE9w12Mx9vhY4yu0qoYN0mx4uRd2f
- LqlMR5jYpitQqhOkogdYweEcRAPHa2GETftj479mtBMUxBMQMAPtc7oU9+2AwG6ERcAO
- fB3eCOej2TCZ8rsKzG1cQiWIOpoW+xdeHMWAPn3D9SAm4coufVmkXT5/uRYNozP7BKTu
- ShAFZMYRGDAWYGHphbDjPzdO2lAofeZtIJgCjOdLUCNFvjzknis8y/7fTgvmCktdTe9W
- ITzQ==
-X-Gm-Message-State: AOJu0YxpEreT0Wc1FLcQDwupSPQL4im2rkSFUnJ49GgBdcnyItQiYq8K
- uTAQmLGQKwPjV8c/gkY0lGdZw5OQrelXzLVYFBJQjmYomxLuzhzrxTDsLdD08or8TN+9ksx/5Ju
- D
-X-Received: by 2002:a05:600c:1992:b0:426:6ee7:c05a with SMTP id
- 5b1f17b1804b1-42abd23061amr43199385e9.15.1724343690325; 
- Thu, 22 Aug 2024 09:21:30 -0700 (PDT)
+ d=1e100.net; s=20230601; t=1724343689; x=1724948489;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=7Pwg1o239tHw5GeNWwmrUQKUbQB8ts+OmOxcr++H9xA=;
+ b=hTRmpWX8CrJUKW3l3aCslXjl4loDkKBL0rxPQZV6se5s8wCotC8BKGwmL8swUrJYiV
+ r8vSoUMNVh2SzZ/QI7VPPgwOGQTziYcAXtKvDek7jLjMyCZ7F509NfrT1wl/MVmtl/oI
+ HS4gaBklHUtGJgT6M5uk4Li8UGkfYd7sollCclmsZ/dl3csXnyYhF3O1oF6txEiB8Esj
+ uGdByAumVe8bSNUKz9BDZU90+5g5wa5irbKZuUQPwny90YSezawZw8bGTJ+ODSDg5xqy
+ ei/3jx2az+67OwwynhDg/CawML4iekPRV13cqwrlp7CH+h7TWo90x+xjOhC3fSkPxOCL
+ bueA==
+X-Gm-Message-State: AOJu0YzxLeROIpmIxXSn+9MYfp0b1hxqvcidrtE7TmuFSRGJwfzPYpHL
+ 8D7cY0cjShaZj4rH0AWvdIf/NH5IzKwT1FAK2jlNX24eQrJvVAE1CTDoSowzNxWZnxlSQ1QwX3C
+ s
+X-Received: by 2002:a05:600c:3b08:b0:426:60e4:c691 with SMTP id
+ 5b1f17b1804b1-42abf05796dmr39379265e9.11.1724343689279; 
+ Thu, 22 Aug 2024 09:21:29 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-42ac5162347sm28928485e9.23.2024.08.22.09.21.29
+ 5b1f17b1804b1-42ac5162347sm28928485e9.23.2024.08.22.09.21.28
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 22 Aug 2024 09:21:30 -0700 (PDT)
+ Thu, 22 Aug 2024 09:21:28 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Alistair Francis <alistair@alistair23.me>,
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
  Francisco Iglesias <francisco.iglesias@amd.com>
-Subject: [PATCH for-9.2 2/6] hw/misc/xlnx-versal-trng: Free s->prng in
- finalize, not unrealize
-Date: Thu, 22 Aug 2024 17:21:23 +0100
-Message-Id: <20240822162127.705879-3-peter.maydell@linaro.org>
+Subject: [PATCH for-9.2 0/6] arm: xlnx: fix minor memory leaks
+Date: Thu, 22 Aug 2024 17:21:21 +0100
+Message-Id: <20240822162127.705879-1-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20240822162127.705879-1-peter.maydell@linaro.org>
-References: <20240822162127.705879-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::332;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x332.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -133,68 +128,35 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: an0xkgwvRSBC
+X-TUID: AvPKs7pygmWD
 
-The TYPE_XLNX_VERSAL_TRNG device creates s->prng with g_rand_new()
-in its init method, but it frees it in its unrealize method. This
-results in a leak in the QOM introspection "initialize-inspect-finalize"
-lifecycle:
+This patchset fixes a collection of minor memory leaks in
+various xlnx devices, all detected by clang LeakSanitizer
+when running 'make check'. Since these are longstanding
+and not very important leaks, this is 9.2 material.
 
-Direct leak of 2500 byte(s) in 1 object(s) allocated from:
-    #0 0x55ec89eae9d8 in __interceptor_calloc (/mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/asan/qemu-system-aarch64+0x294d9d8) (BuildId: 6d5
-08874816cc47d17c8dd775e8f809ae520e8cb)
-    #1 0x7f697018fc50 in g_malloc0 debian/build/deb/../../../glib/gmem.c:161:13
-    #2 0x7f6970197738 in g_rand_new_with_seed_array debian/build/deb/../../../glib/grand.c:202:17
-    #3 0x7f6970197816 in g_rand_new debian/build/deb/../../../glib/grand.c:286:10
-    #4 0x55ec8aa3656a in trng_init hw/misc/xlnx-versal-trng.c:624:15
-    #5 0x55ec8ce75da1 in object_init_with_type qom/object.c:420:9
-    #6 0x55ec8ce5d07b in object_initialize_with_type qom/object.c:562:5
-    #7 0x55ec8ce5e91d in object_new_with_type qom/object.c:782:5
-    #8 0x55ec8ce5e9f1 in object_new qom/object.c:797:12
-    #9 0x55ec8d65c81d in qmp_device_list_properties qom/qom-qmp-cmds.c:144:11
+thanks
+-- PMM
 
-Move the free to finalize so it matches where we are initing
-s->prng. Since that's the only thing our unrealize method was
-doing, this essentially switches the whole function to be
-a finalize implementation.
+Peter Maydell (6):
+  hw/misc/xlnx-versal-cfu: destroy fifo in finalize
+  hw/misc/xlnx-versal-trng: Free s->prng in finalize, not unrealize
+  hw/nvram/xlnx-bbram: Call register_finalize_block
+  hw/nvram/xlnx-zynqmp-efuse: Call register_finalize_block
+  hw/misc/xlnx-versal-trng: Call register_finalize_block
+  hm/nvram/xlnx-versal-efuse-ctrl: Call register_finalize_block
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- hw/misc/xlnx-versal-trng.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ include/hw/misc/xlnx-versal-trng.h   |  1 +
+ include/hw/nvram/xlnx-bbram.h        |  1 +
+ include/hw/nvram/xlnx-versal-efuse.h |  1 +
+ include/hw/nvram/xlnx-zynqmp-efuse.h |  1 +
+ hw/misc/xlnx-versal-cfu.c            |  8 ++++++++
+ hw/misc/xlnx-versal-trng.c           | 12 ++++++------
+ hw/nvram/xlnx-bbram.c                | 13 ++++++++++---
+ hw/nvram/xlnx-versal-efuse-ctrl.c    |  6 +++---
+ hw/nvram/xlnx-zynqmp-efuse.c         | 13 ++++++++++---
+ 9 files changed, 41 insertions(+), 15 deletions(-)
 
-diff --git a/hw/misc/xlnx-versal-trng.c b/hw/misc/xlnx-versal-trng.c
-index 51eb7600414..c0d1dde8708 100644
---- a/hw/misc/xlnx-versal-trng.c
-+++ b/hw/misc/xlnx-versal-trng.c
-@@ -624,9 +624,9 @@ static void trng_init(Object *obj)
-     s->prng = g_rand_new();
- }
- 
--static void trng_unrealize(DeviceState *dev)
-+static void trng_finalize(Object *obj)
- {
--    XlnxVersalTRng *s = XLNX_VERSAL_TRNG(dev);
-+    XlnxVersalTRng *s = XLNX_VERSAL_TRNG(obj);
- 
-     g_rand_free(s->prng);
-     s->prng = NULL;
-@@ -689,7 +689,6 @@ static void trng_class_init(ObjectClass *klass, void *data)
-     ResettableClass *rc = RESETTABLE_CLASS(klass);
- 
-     dc->vmsd = &vmstate_trng;
--    dc->unrealize = trng_unrealize;
-     rc->phases.hold = trng_reset_hold;
- 
-     /* Clone uint64 property with set allowed after realized */
-@@ -706,6 +705,7 @@ static const TypeInfo trng_info = {
-     .instance_size = sizeof(XlnxVersalTRng),
-     .class_init    = trng_class_init,
-     .instance_init = trng_init,
-+    .instance_finalize = trng_finalize,
- };
- 
- static void trng_register_types(void)
 -- 
 2.34.1
 

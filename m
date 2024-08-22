@@ -1,104 +1,104 @@
-Received: by 2002:a17:505:917:b0:1be9:327d:8ee3 with SMTP id hq23csp648760njb;
-        Thu, 22 Aug 2024 07:06:51 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXxmPOKiEklav95geZrKr1lZInKY1AseIszsONDn4aEBU1cnhghVrUdHsXLWiLPNzuCcgmWdPuOasrezg==@linaro.org
-X-Google-Smtp-Source: AGHT+IFu5RHzPyK9icqlRMg0TzGaSAZICsK9K3G+qR0oS+MNCG4vO23aMj9GCBRBAjhOzH8pG3jV
-X-Received: by 2002:a05:6870:7a07:b0:260:fc49:3e96 with SMTP id 586e51a60fabf-273cff98fcbmr2052098fac.46.1724335610864;
-        Thu, 22 Aug 2024 07:06:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1724335610; cv=none;
+Received: by 2002:a17:505:917:b0:1be9:327d:8ee3 with SMTP id hq23csp751742njb;
+        Thu, 22 Aug 2024 11:49:18 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCW5z3fk7LG/XkCFeWhKMNHQB3bgjMhONVZCIRYTDRXQ//E3jrfKzsiXekOBhgIS/h8HnKaV7CXm7sO5xA==@linaro.org
+X-Google-Smtp-Source: AGHT+IF89Nn3AsgdwuhocVL95tb4zrSzR+miDfQ5UoYlvy37TR/rWtXazwaIHYasIEZnCAw/6qfz
+X-Received: by 2002:a05:6102:3ec4:b0:48f:df1d:696f with SMTP id ada2fe7eead31-498d3f672b6mr7280645137.30.1724352558719;
+        Thu, 22 Aug 2024 11:49:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1724352558; cv=none;
         d=google.com; s=arc-20160816;
-        b=nl4aU/D5tXfg/+ARRs6CKWZjfJZKT8CyuqFyJ8TObvEjeOzMVIEzBZRUteTsrqPYdy
-         m6Yzh/bQzhpx1YVjsE5zk5aiJVnXxNyOGVbfUlKzGbqzpA24IwOZcCUGySF6cVLTHEVp
-         wFAz/mkRWx1xULEDsdLejNRWVe3fh362L7hq0/WnPE4GGmWKjfIgSxcozNA8BLXzovLq
-         K3+lSlqSG+KmjQHrPWsfY1bkMindUYu7s1ppkd1S+4kCW7vR/SJws9VSYdHbMrFIigw2
-         VVhMTGrcaTlBkx3bM+t+RKKrSDPSgVe/mr+DxoxAR8rotRqhtj88FoN5HI5A4NqdV5Gw
-         ccMw==
+        b=hNgqk3bqKnSKNkH+mGBWF0Oj6+XY73DMz72bAMPPybNxvpiSM+qO1LACynk2PZajV5
+         cNwHe+bgpT+VTDFAmOFkpRDmUcJ86Bn5P06q+MkhNPTTN9wLhxIwn8lSvir3Y3r5e9S1
+         7VbrKtBUZz74U/QnaujD4xdG2XjAMPcbjNZBvZSUQreeilDFmPPHshSPBSAgtbrOnbE3
+         G2J/ROTSdlRhY+1rTJq3DwSzAuDA1aUZA/ZMXjTYkViydgJPaB85Bf+dxjHyAVJ2VcoQ
+         +4awpJiqirAvfhHbtc/ypHyxjWkcZFrJdb+oJTn+T+Pqx4r3dDrXJJv4HyNsR0q+DjiL
+         +M1A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:organization:content-language:from:references:cc:to
          :subject:user-agent:mime-version:date:message-id:dkim-signature;
-        bh=5WuU7N6kTdeDYc3Ueq/WVoJTwZ9rengQJot1YtszAyU=;
-        fh=Gz1jzATjvuwiKD1nR7oaFlKOA3awR8UM26Vuq2SMlQs=;
-        b=uu+I6xrxAT9TmHhw9Mfb8GWHdCz6BP6kTHwPI8OabtQk/QtwQI3+4ALOp+mVG7siXE
-         vh14ukFayokg0WFmmbMpMtMTPs9uuHwf7DWpWk15hXoHOmqg5VDetnL+0JYpXgxp37f1
-         pMOpTYDAOzctm6J5RHrxZFKO8tXy6PvqkyppeiZfzlHYc/qDuHH+HGDrPgcqD1qOIEqu
-         qmAy3Dz2e8N0hrtYTKFRlDIz8qGX7XYtj3KT8iTARbNQCYIR/NhCpo6j5Hw/VfzzK9p6
-         QWe71CWk3hpChwKZ7s8AyDJKOPUNazu8WFmkC8S3VrPdbqkaGtqAqcQs0ZYU28gAaGYG
-         yh8A==;
+        bh=v3Rq6RD9bD6z2hu2d8FQg2chetgTeL8EOgxKa4xMRK8=;
+        fh=n8CAdbNyEwW/ra4nzIdCH1YD3eHIijLriMNgPnYoYaM=;
+        b=GuI9ax56heOKm+JeRk2y7P7YxLmq/vi7b3nBRjiSyVLK6Es4MMduwM4B/zly4cGLoF
+         n47IW7Jay3RuvOGEDpafIcxJt1MzSEdSwHRHqCiwVD+O6BgLJhTrA22ETclX9tP3iTaj
+         u9hP4JkMQA6MpKo0aOI8rvsHuzwvcf9LSv7nicjz5U48kbiKev+o8Zc9kryB/Nos0Yv7
+         YQg/mebeUPcpIAq4lh+lZMEkk9pExa9cJLZsDzJ+tB7fFCZn9rvmP8i55bPYqOyam9rV
+         YdQ98vwtgF1nrfFLB1bxHSrL7szfjzTqyBujtVTBFJrKJ38ht5ZWlcLae3rDZMgZd0dl
+         bjrw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="p7W6Q/Ny";
+       dkim=pass header.i=@linaro.org header.s=google header.b=fhgYB1qY;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 71dfb90a1353d-4fd0822881fsi265024e0c.47.2024.08.22.07.06.50
+        by mx.google.com with ESMTPS id af79cd13be357-7a67f45fb05si226962285a.775.2024.08.22.11.49.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 22 Aug 2024 07:06:50 -0700 (PDT)
+        Thu, 22 Aug 2024 11:49:18 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="p7W6Q/Ny";
+       dkim=pass header.i=@linaro.org header.s=google header.b=fhgYB1qY;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sh8SU-0003fr-S3; Thu, 22 Aug 2024 10:06:39 -0400
+	id 1shCrX-0000gb-4S; Thu, 22 Aug 2024 14:48:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
- id 1sh8SS-0003eZ-UX
- for qemu-arm@nongnu.org; Thu, 22 Aug 2024 10:06:37 -0400
-Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
+ id 1shCrU-0000dy-TO
+ for qemu-arm@nongnu.org; Thu, 22 Aug 2024 14:48:44 -0400
+Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
- id 1sh8SR-0004ou-CN
- for qemu-arm@nongnu.org; Thu, 22 Aug 2024 10:06:36 -0400
-Received: by mail-ej1-x62c.google.com with SMTP id
- a640c23a62f3a-a7ac469e4c4so153611966b.0
- for <qemu-arm@nongnu.org>; Thu, 22 Aug 2024 07:06:32 -0700 (PDT)
+ id 1shCrT-0003ZY-0P
+ for qemu-arm@nongnu.org; Thu, 22 Aug 2024 14:48:44 -0400
+Received: by mail-ej1-x634.google.com with SMTP id
+ a640c23a62f3a-a86984e035aso94406466b.2
+ for <qemu-arm@nongnu.org>; Thu, 22 Aug 2024 11:48:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1724335591; x=1724940391; darn=nongnu.org;
+ d=linaro.org; s=google; t=1724352521; x=1724957321; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:organization:content-language
  :from:references:cc:to:subject:user-agent:mime-version:date
  :message-id:from:to:cc:subject:date:message-id:reply-to;
- bh=5WuU7N6kTdeDYc3Ueq/WVoJTwZ9rengQJot1YtszAyU=;
- b=p7W6Q/Ny2UORuw2bY4bnyTsJ53GHZQKJ4hm/bFNtcyBOcbKVauVPPJTnKTjUh2SBXE
- tt9QCDvm/bco9qvFO36CHRBPzIIwkLUdVAGh0IJW3WRVed8qNiiWEKwKyM1PMEfqQScd
- eoTnwWM7KgIV+QNvFqMBK0SUmg4LAF0/zL5rcM9Bekeo9zt2r+MHcRfioKzaD5f/R/Xm
- lTOTS2qzoiM9pUNLE4O8ijt6x+UFKzI89AvKqiIzApsHuGwVilYMcv95zaUZRafMehK5
- ss9m3qt6biucgkd0ASjye2EEy0ij/RXNHkucG9ZzIt9SRFnHtmjGZzaF/UvcZZv17hPn
- G6Yw==
+ bh=v3Rq6RD9bD6z2hu2d8FQg2chetgTeL8EOgxKa4xMRK8=;
+ b=fhgYB1qYfKydTkEe1iNkhJLhzDDPHHAz5aJmBre2cDOAOQiHW/wmsZxhQMBTWv6g/k
+ qGQFl8l7XpRg6uppVjCykN+Xc3NAuPBhMyGImXN+04/woB8A4PXY1IaqScj0w+L0CHpK
+ NT76UGFmlll2bNJF/44lciUoSmS0iUpi1DVNIYTlfPLjFEjdcx4VE6dcvsn8X9drzoQU
+ P6wkIDLco0eBoQkgDkXaMpel7NpHcKWuYsfISy+Tlk00+IYhO+VYK9TLA369Ck8No9BN
+ EnOTp/KKphSARxs5H20p/+9BUklRWzI32/GxTXIq+yMqpourWFac0mCKTN0c68BHltIA
+ IkjA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1724335591; x=1724940391;
+ d=1e100.net; s=20230601; t=1724352521; x=1724957321;
  h=content-transfer-encoding:in-reply-to:organization:content-language
  :from:references:cc:to:subject:user-agent:mime-version:date
  :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=5WuU7N6kTdeDYc3Ueq/WVoJTwZ9rengQJot1YtszAyU=;
- b=Mr0uj7Dva6RaE/4JGBdkBuXecT2vWhbpdQwRN+Dmg9htFxbe8tyi0kp1k8SdpJoA3A
- RewlkT6/F5/tiJ1xh9cbG55y1/CoKh6fqaKy9qFVjE87J07iqlX69/f7C5rPQfAFFWmq
- idDObEdboHiE+tNgAj4BWqpE57mRu0s+4vxFXROQo3tRwUaKd44L40rQSwaOOeSLghWK
- UGL9yX5aX49lpJi2C/d20HmO+JRnHwrrTq35+qkBRD0dPmBVzjdt7xBIRGWhKST1HZ5/
- zkkWnQZBdkXFGoM2iOtphalgdZYObRXUb7OyipTIBXXPuL488uwe97GjQlC+qyz6gcut
- cqjQ==
+ bh=v3Rq6RD9bD6z2hu2d8FQg2chetgTeL8EOgxKa4xMRK8=;
+ b=uoazw40BFS+joI7tLzEgo/xLlFp5RKfpVZyXxbFS5onzaOQcmMnI/Sd0xokUVnEWyJ
+ N4EYUvSdLsCz9watjtHzKBwMgtN0OStwEAJGD8dy2DVgH5Kr+wWFBIEERhFkxyugSlGe
+ KPy6vd4DNntPVRQme3QIcWvul2MsCKuLVDNZx4vfULVAHTc0M82FfW22+iyEtCUGrLcK
+ y7yO+posx0ehOMG0gJYOUghBiEqkDSRV1TaedZeE+kbwaSI0Y7+962tTU4y2mK+6G7PV
+ LkHxWVl8M0c+S4ebd1wAxy0pGwKVQ03rpCS4FI93x0fqJbmgP297zh1cZceDxecD4UeT
+ m6LQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWHGN1SVfiJDSWR67Tr8AcMTUol6eHx2Yn5smZdOFIST09RMQSZJo+HtPnibbVDxRwPiwOyaP7bfg==@nongnu.org
-X-Gm-Message-State: AOJu0Ywg+LxIOG2tMIVX/+MPk+Im+r+cBpHVFkNM/BKe4cvM2ZOW1UDG
- gGtsxv6J9aIlZOevssgrR4kBIGO7Hd04LOxFOprDSvkOSi7ZYbnQmwTTISz4tPY=
-X-Received: by 2002:a17:906:f596:b0:a7a:c7f3:580d with SMTP id
- a640c23a62f3a-a868a912650mr290515866b.25.1724335590455; 
- Thu, 22 Aug 2024 07:06:30 -0700 (PDT)
+ AJvYcCU5R7sgRQuDTcZGLJuEY1oRPLxfe+8QBo3YfbeLBwlthJzwhRXYSGQz+2gaxuX45HmXniZjhX9RYQ==@nongnu.org
+X-Gm-Message-State: AOJu0YxSEcDQmjdk98KE81UuPk43JMQp1L5M2bR0Wlmnf/RAmxrAF+tZ
+ cpASSbEPjmGMbk6rgeUttqyLOi5b59KxtqRwYzY54JbfABRGzsBclUM1x//Z5bg=
+X-Received: by 2002:a17:906:6a1b:b0:a80:f7d8:5bbe with SMTP id
+ a640c23a62f3a-a866ee6dfd8mr509649166b.0.1724352520180; 
+ Thu, 22 Aug 2024 11:48:40 -0700 (PDT)
 Received: from [192.168.200.25] (83.25.211.12.ipv4.supernova.orange.pl.
  [83.25.211.12]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-a868f220ccbsm125683266b.36.2024.08.22.07.06.29
+ a640c23a62f3a-a868f2adc55sm150691666b.71.2024.08.22.11.48.39
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 22 Aug 2024 07:06:29 -0700 (PDT)
-Message-ID: <d8c744cf-0da1-42fc-92cc-f8bec8ca00e1@linaro.org>
-Date: Thu, 22 Aug 2024 16:06:28 +0200
+ Thu, 22 Aug 2024 11:48:39 -0700 (PDT)
+Message-ID: <17ba91fd-b876-4169-8b72-3fddf966e1a3@linaro.org>
+Date: Thu, 22 Aug 2024 20:48:38 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v2] tests/functional: Convert Aarch64 SBSA-Ref avocado
@@ -115,15 +115,15 @@ Organization: Linaro
 In-Reply-To: <20240822114146.86838-1-philmd@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::62c;
- envelope-from=marcin.juszkiewicz@linaro.org; helo=mail-ej1-x62c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::634;
+ envelope-from=marcin.juszkiewicz@linaro.org; helo=mail-ej1-x634.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -138,23 +138,57 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 1ZDbc8jP3ZR4
+X-TUID: Ra/Abr6M2tR1
 
 On 22.08.2024 13:41, Philippe Mathieu-Daudé wrote:
->   # Timeouts for individual tests that can be slow e.g. with debugging enabled
->   test_timeouts = {
-> +  'aarch64_sbsaref' : 180,
+> Straight forward conversion. Since SBSA_FLASH files are not
+> tarballs, use lzma_uncompress() method.
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> ---
+> Based-on: <20240821082748.65853-1-thuth@redhat.com>
+> ---
 
-What kind of machine is able to run those tests in 180s? I bumped them 
-to 2400s and got timeout (Macbook with M1 Pro).
+> diff --git a/tests/avocado/machine_aarch64_sbsaref.py b/tests/functional/test_aarch64_sbsaref.py
+> old mode 100644
+> new mode 100755
+> similarity index 56%
+> rename from tests/avocado/machine_aarch64_sbsaref.py
+> rename to tests/functional/test_aarch64_sbsaref.py
+> index f8bf40c192..6728e5f92a
+> --- a/tests/avocado/machine_aarch64_sbsaref.py
+> +++ b/tests/functional/test_aarch64_sbsaref.py
 
-"make check-avocado" (with some AVOCADO_* vars to limit list of tests) 
-shown me which test is run and pass/fail for each.
+> @@ -44,47 +55,31 @@ def fetch_firmware(self):
+>           """
+>   
+>           # Secure BootRom (TF-A code)
+> -        fs0_xz_url = (
+> -            "https://artifacts.codelinaro.org/artifactory/linaro-419-sbsa-ref/"
+> -            "20240619-148232/edk2/SBSA_FLASH0.fd.xz"
+> -        )
+> -        fs0_xz_hash = "0c954842a590988f526984de22e21ae0ab9cb351a0c99a8a58e928f0c7359cf7"
+> -        tar_xz_path = self.fetch_asset(fs0_xz_url, asset_hash=fs0_xz_hash,
+> -                                      algorithm='sha256')
+> -        archive.extract(tar_xz_path, self.workdir)
+> +        fs0_xz_path = self.ASSET_FLASH0.fetch()
+>           fs0_path = os.path.join(self.workdir, "SBSA_FLASH0.fd")
+> +        lzma_uncompress(fs0_xz_path, fs0_path)
+>   
+>           # Non-secure rom (UEFI and EFI variables)
+> -        fs1_xz_url = (
+> -            "https://artifacts.codelinaro.org/artifactory/linaro-419-sbsa-ref/"
+> -            "20240619-148232/edk2/SBSA_FLASH1.fd.xz"
+> -        )
+> -        fs1_xz_hash = "c6ec39374c4d79bb9e9cdeeb6db44732d90bb4a334cec92002b3f4b9cac4b5ee"
+> -        tar_xz_path = self.fetch_asset(fs1_xz_url, asset_hash=fs1_xz_hash,
+> -                                      algorithm='sha256')
+> -        archive.extract(tar_xz_path, self.workdir)
+> +        fs1_xz_path = self.ASSET_FLASH0.fetch()
 
-"make check-functional-aarch64 V=1" shows me "1/4 
-qemu:func-thorough+func-aarch64-thorough+thorough / 
-func-aarch64-aarch64_sbsaref" and timeouts without information which 
-tests pass, which fail.
+Here you want ASSET_FLASH1 not ASSET_FLASH0. That's why it timed out - 
+system was hanging on exit from TF-A to EDK2.
 
-Maybe for QEMU project this is a progress. For me it is moving tests 
-from working ones to "sorry, timeout, find out why" ones.
+>           fs1_path = os.path.join(self.workdir, "SBSA_FLASH1.fd")
+> +        lzma_uncompress(fs1_xz_path, fs1_path)
+

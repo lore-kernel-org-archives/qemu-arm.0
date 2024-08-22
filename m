@@ -1,110 +1,110 @@
-Received: by 2002:a17:505:917:b0:1be9:327d:8ee3 with SMTP id hq23csp702486njb;
-        Thu, 22 Aug 2024 09:22:21 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVlpsk4RrNmU580c75gKFgnvbtz+rmZLEZym0pG8vE312Ts7yaBDrNegHf+Xa0Jjp8TjWQB3myjAnJ3OA==@linaro.org
-X-Google-Smtp-Source: AGHT+IG+WDTlw1wIog0+WO1mGS2e68NxZ6cBNTzaOiQ41AOL8d7/4LEXy3K7jI6V50qYmLfgfNPo
-X-Received: by 2002:a05:6102:5120:b0:492:76e9:961a with SMTP id ada2fe7eead31-498e21da544mr2910632137.1.1724343741143;
-        Thu, 22 Aug 2024 09:22:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1724343741; cv=none;
+Received: by 2002:a17:505:917:b0:1be9:327d:8ee3 with SMTP id hq23csp702526njb;
+        Thu, 22 Aug 2024 09:22:29 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCW89chZMZuLq/8M8CjVSohreXuyhiBFXLLvkapz667SRoiqfsIVs2PGWN0XKq9F4TxKBlI/yeaXmiDGrg==@linaro.org
+X-Google-Smtp-Source: AGHT+IHnXQQbvXFeMBs0eF9VCkGnMxLJ9T0PSeMx6DJW0DHkUBJMqzqDALdnicccO98d2bmoFJzr
+X-Received: by 2002:a05:6214:3381:b0:6c1:6b52:5b90 with SMTP id 6a1803df08f44-6c16b525c62mr2948786d6.26.1724343749330;
+        Thu, 22 Aug 2024 09:22:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1724343749; cv=none;
         d=google.com; s=arc-20160816;
-        b=c0XuewcudCSfVsa4huvN1EwGxnPl980DpFPhtQh7ycQ4WG6Zkzn9QoOhfWgTgQ3KwK
-         1ZCIYCAx8LFCOhcBKX2IikOW1VkfESjSecrvRdulSBpYAxDrYAodMqUltW8m7QFU5/UI
-         wqAF+IViU0VkbEe0sHNiekDJuKKXnhc/377Ye4Hs10CHAwo4mrq05wq8BCpDoOYRnayC
-         Pjpl8C7errHO8Hf4IXriSktmkIfB+h8BjSPrUqPhzoVZD4baTuvAN4LykwYP44YuqmIh
-         2bZNAsKq+r33rxDprZBVv09qfqTlHyQAuC0CXCFlojwj2GxnMbXGY6zkXWnTW/+QWbQy
-         bK6A==
+        b=JPhK0+21kA1GWXcp88QdO9XIcR4NlIPD2S+1mykeNQenRvQNOKtnqSNrYfZ8W0xMAF
+         xuT0Mj3mCxAAO6tJf1yJ3ZMr2t3eE6NeJ0ag1teyfGmnxbQTk7gOi9DwLWfw33q1616O
+         cxjp+lDGvx0CioAyZGtbgNpYtkjfkUyO6ClHNHPuIF+L+LM5gOPV/OGdpqbK/OSS1vv1
+         8jqmDhZZHhvVeSagcPMhHMCTAGOk542Mc9Wxfk9Z6FDSbOMQLovEvRTKEmIhBmZka2hK
+         12CZ+MAj0xQIitCJN9TS8BBlO6k9KFsbTqSShJrgVOoAIm3wPZObeDMm2S2QXxJoGYke
+         u/6w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=AY1IW4T2DNcuGaXu8tbq///494SrbvPqRCnm6aioH7A=;
+        bh=Q9APIXuRLkKIat+l/rZBodPQDnkc/ZwrT5ldPMm81wI=;
         fh=eKvyMq82ozF2pexIVE339+mXcynob0ROL80gQzK9b2g=;
-        b=cLLv+6qbwZVHAbCr17Yc/at+bPxGVeQbR52rsXQiIlVD2SdKv5h4eFD+OdqSd2m8c1
-         XjU3rP5z8+5jUXa20y0sKwxVt93RcmsXrtmPgjunsm/B4uvFC6OYyRIVCrKFpEG8E3Gv
-         unhY6cYqRj9gQXFlLA7pFVzg5aMDNhvk5ZQNrZyv+rjDQAd7tstb2RSEO+0f4n8e+yUT
-         Ek0gnkNcqKkA3YutzHsVb02Fq6xEDEhtatSeQS/rVgUulOrrTkshsyLPuimUyVI26/4N
-         F1BwK1ZLfH9mGOdeceGoi7dGOaDRvx+gB+IErRy8ShpKwHgWnz7ezqkXi1dk/KSqO3sh
-         NhaQ==;
+        b=HBm3eQ2ESofvIX3wx3s4qEDUjSqek5cnwKTT12xwQemJFugnJJob+qOtv1q5kJgcNK
+         QlRlrXmTvjlKQI5u61oh+sTaeY2BexrE7KWlYIMmAOHj2kUeq8eqS70MWSMDhl3Jk58V
+         n+il36GEjqOwk7Z1McbBRgX66dHrQBcyqI2Me5F22pvCO3zzLpg9t6nt7jw0tU3ZdqMG
+         GCNNut50xsAXNCN1w37N2aGoeZCo5OUPKNjtmfz0wlb9eDNELhF3pmiCqErcoNTg0QAk
+         c1kl1XQNoivFynVAdAo9pU/FQM2lssV5u6RildpSn7jlXC77M0HScWXuDoNNBo8psSDb
+         WEiA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Fl1OuYOW;
+       dkim=pass header.i=@linaro.org header.s=google header.b="dX4gtxa/";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ada2fe7eead31-498e491350esi456796137.460.2024.08.22.09.22.21
+        by mx.google.com with ESMTPS id 6a1803df08f44-6c162dd92fesi20834386d6.398.2024.08.22.09.22.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 22 Aug 2024 09:22:21 -0700 (PDT)
+        Thu, 22 Aug 2024 09:22:29 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Fl1OuYOW;
+       dkim=pass header.i=@linaro.org header.s=google header.b="dX4gtxa/";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1shAZG-0005JS-90; Thu, 22 Aug 2024 12:21:46 -0400
+	id 1shAZF-0005H7-M4; Thu, 22 Aug 2024 12:21:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1shAZD-00057f-KE
+ id 1shAZD-00057Z-JG
  for qemu-arm@nongnu.org; Thu, 22 Aug 2024 12:21:43 -0400
 Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1shAZ5-0007Kp-Nz
+ id 1shAZ5-0007KT-O7
  for qemu-arm@nongnu.org; Thu, 22 Aug 2024 12:21:39 -0400
 Received: by mail-wm1-x32c.google.com with SMTP id
- 5b1f17b1804b1-4281ca54fd3so7975975e9.2
- for <qemu-arm@nongnu.org>; Thu, 22 Aug 2024 09:21:33 -0700 (PDT)
+ 5b1f17b1804b1-4281faefea9so7266645e9.2
+ for <qemu-arm@nongnu.org>; Thu, 22 Aug 2024 09:21:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1724343692; x=1724948492; darn=nongnu.org;
+ d=linaro.org; s=google; t=1724343691; x=1724948491; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=AY1IW4T2DNcuGaXu8tbq///494SrbvPqRCnm6aioH7A=;
- b=Fl1OuYOWFDeQlOlcI9XVmcXAxU309m/nzgchKo+6ZRffcwtUQgsljiJ6V8Oymsigw0
- uKTvsbXz5si2DB52mBM8hFsfIIZRrhwagUS9/SCpQx9wEqxFzXhI1vYRsS2VF2QJ2EH9
- 0IIEs5DY/RByp97UQOrWANDntiTGlo1cuuTe1pqDTXboqhtJOMCZonUBA6jYLMWBoB4k
- qzQKO0UbLhdY59XZiLWNFWEOWxbk8TWZEekLbwuBm41iWOB1Vpf/VdbuSH+qicQjQf6O
- KCkcD3UErJN5bUoDzkbninizZndayvFaTZ4WZSlvqbAlaf2pu97ZGvuzP09avNtVlThS
- wdrg==
+ bh=Q9APIXuRLkKIat+l/rZBodPQDnkc/ZwrT5ldPMm81wI=;
+ b=dX4gtxa/fE4qo5Yt/TAdeYUd7Vjyz0nqR61MVZ1qxEvUR3bL4GEkbeyCi87HXiUd+H
+ TtMHy/UYwqbJXDg7IOSe6U6vNVFXb2TAidq5nNjtKLteP/Gzs+SUs8x3zDtiQBAp4t/9
+ EWMKVti032LHS8tN+s0UC2WPiJ/F/tW9vVZNXbNmLyeSMBjH7ryKl/7AvU77RG+xCaLb
+ hd0kHxDd2Q6eb3ALBMIaWhg1PB+8bRe37UkMqIsNd1DJXz0bJuVjItxbjwFThssoL5GF
+ sigcwKwK3DwDlV7WSekiKfVzDwtd7NZsgAZKJXvPFC0Mn6Mb52zgZlKV38Mp7bxHHZ22
+ VGYQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1724343692; x=1724948492;
+ d=1e100.net; s=20230601; t=1724343691; x=1724948491;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=AY1IW4T2DNcuGaXu8tbq///494SrbvPqRCnm6aioH7A=;
- b=MPHjlN4dSA1dmN8JPdlCHc6lz1BQIiv+Dp49VT6VlFY44lh+gees6dgDVijZSBbXKR
- choBx/9KvaeWD/Z8/2YSi2QTxQnuxcN5YuNTdKSgwpIhgxXMP51pZ2jroq0f47F9w/Qb
- f3VDfz2q/gxcm8MkSP8PNHtm/MCNpWlpKbAmdFnaJ55oAfPbaObdFHULYCReMiNXoZey
- wy7VnywtWtze3ctMPYWuYsWuiMdpLk2S7PvJhbNRw46/5upMY6IAS/c0UYmBa2CPd238
- DxClhKFCWmXhrcnD65FiGJ5JBxW2EaEzsc2W/48Fikp2XxgOPLym71dWscIpGD9C9/es
- Ox9w==
-X-Gm-Message-State: AOJu0YzTMTcmmd4yr7aBzjBtjh4sph2d3y9HDLIyb8yVAjz2ENrtNqee
- efk0I7HE5N/9fojbd7noYfrM7+4c8V4x5asqkOwsThG4JukbjbLKAw32k4dOmxnrg95Sib+A8b4
- x
-X-Received: by 2002:a05:600c:468f:b0:426:68f2:4d7b with SMTP id
- 5b1f17b1804b1-42abd1121bbmr47556815e9.3.1724343692582; 
- Thu, 22 Aug 2024 09:21:32 -0700 (PDT)
+ bh=Q9APIXuRLkKIat+l/rZBodPQDnkc/ZwrT5ldPMm81wI=;
+ b=WBkQaISz5mIlwgDcLBGrq7rwTpkTsEjSTm1xnnG9MRgDQkbk9ZOKrDqa0yIwAu1Xw9
+ Ij257B/iAmGTlxogzO7rJ0Mj7yPsqPTcBoe/FfjDSAWTSq/jzE/UKANPjiFZevYwipR6
+ xEJwuon3LpYhP6IuBsTe3tyQ5/6HZjYMzfOPcm2ob5Dmb6oAA4EBhV4f+ekoMlcYrzUl
+ uN2wlHI2rvdG9qT10Uu9CoDiQNUPAn370xQO6gPREI5+oNGiU1PMuatd6BT9cFpuhAJR
+ JG+e5NYgGzba7WpY2IrfSwa3L89ZO5UVcoPfHKV8qoH+/wRiPhcPfDVmihB8KV+fnbtj
+ 3j4g==
+X-Gm-Message-State: AOJu0YxOyoKDiqaNJlPQgwbtgba6fAT4VCYsX3esSjC+VPx20DwkHhfq
+ PDfZoRjSs4qfoE+toAG0xfTRrBAYUoYVATuLIeISnj1POB7xMUuUCpo2dvUAhC5xr5hjWW1JdeX
+ D
+X-Received: by 2002:a05:600c:1c90:b0:426:647b:1bfc with SMTP id
+ 5b1f17b1804b1-42abd244b11mr38979685e9.30.1724343691475; 
+ Thu, 22 Aug 2024 09:21:31 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-42ac5162347sm28928485e9.23.2024.08.22.09.21.32
+ 5b1f17b1804b1-42ac5162347sm28928485e9.23.2024.08.22.09.21.31
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 22 Aug 2024 09:21:32 -0700 (PDT)
+ Thu, 22 Aug 2024 09:21:31 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Alistair Francis <alistair@alistair23.me>,
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
  Francisco Iglesias <francisco.iglesias@amd.com>
-Subject: [PATCH for-9.2 6/6] hm/nvram/xlnx-versal-efuse-ctrl: Call
+Subject: [PATCH for-9.2 4/6] hw/nvram/xlnx-zynqmp-efuse: Call
  register_finalize_block
-Date: Thu, 22 Aug 2024 17:21:27 +0100
-Message-Id: <20240822162127.705879-7-peter.maydell@linaro.org>
+Date: Thu, 22 Aug 2024 17:21:25 +0100
+Message-Id: <20240822162127.705879-5-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240822162127.705879-1-peter.maydell@linaro.org>
 References: <20240822162127.705879-1-peter.maydell@linaro.org>
@@ -118,7 +118,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -133,76 +133,85 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 8KiW0LB2+s8g
+X-TUID: 26OqAVKBLYCS
 
-The TYPE_XLNX_VERSAL_EFUSE_CTRL device creates a register block with
+The TYPE_XLNX_ZYNQMP_EFUSE device creates a register block with
 register_init_block32() in its instance_init method; we must
 therefore destroy it in our instance_finalize method to avoid a leak
 in the QOM introspection "init-inspect-finalize" lifecycle:
 
 Direct leak of 304 byte(s) in 1 object(s) allocated from:
-    #0 0x55f222b5b9d8 in __interceptor_calloc (/mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/asan/qemu-system-aarch64+0x294e9d8) (BuildId: 420
-43d49e1139e3f3071b1f22fac1e3e7249c9a6)
-    #1 0x7fbb10669c50 in g_malloc0 debian/build/deb/../../../glib/gmem.c:161:13
-    #2 0x55f222f90c5d in register_init_block hw/core/register.c:248:34
-    #3 0x55f222f916be in register_init_block32 hw/core/register.c:299:12
-    #4 0x55f223bbdd15 in efuse_ctrl_init hw/nvram/xlnx-versal-efuse-ctrl.c:718:9
-    #5 0x55f225b23391 in object_init_with_type qom/object.c:420:9
-    #6 0x55f225b0a66b in object_initialize_with_type qom/object.c:562:5
-    #7 0x55f225b0bf0d in object_new_with_type qom/object.c:782:5
-    #8 0x55f225b0bfe1 in object_new qom/object.c:797:12
-    #9 0x55f226309e0d in qmp_device_list_properties qom/qom-qmp-cmds.c:144:11
+    #0 0x55f3ff5839d8 in __interceptor_calloc (/mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/asan/qemu-system-aarch64+0x294d9d8) (BuildId: 23cf931c66865a71b6cc4da95156d03bc106fa72)
+    #1 0x7f3f31c6bc50 in g_malloc0 debian/build/deb/../../../glib/gmem.c:161:13
+    #2 0x55f3ff9b8c5d in register_init_block hw/core/register.c:248:34
+    #3 0x55f3ff9b96be in register_init_block32 hw/core/register.c:299:12
+    #4 0x55f4005e5b25 in efuse_ctrl_init hw/nvram/xlnx-versal-efuse-ctrl.c:718:9
+    #5 0x55f40254afb1 in object_init_with_type qom/object.c:420:9
+    #6 0x55f40253228b in object_initialize_with_type qom/object.c:562:5
+    #7 0x55f402533b2d in object_new_with_type qom/object.c:782:5
+    #8 0x55f402533c01 in object_new qom/object.c:797:12
+    #9 0x55f402d31a2d in qmp_device_list_properties qom/qom-qmp-cmds.c:144:11
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- include/hw/nvram/xlnx-versal-efuse.h | 1 +
- hw/nvram/xlnx-versal-efuse-ctrl.c    | 6 +++---
- 2 files changed, 4 insertions(+), 3 deletions(-)
+ include/hw/nvram/xlnx-zynqmp-efuse.h |  1 +
+ hw/nvram/xlnx-zynqmp-efuse.c         | 13 ++++++++++---
+ 2 files changed, 11 insertions(+), 3 deletions(-)
 
-diff --git a/include/hw/nvram/xlnx-versal-efuse.h b/include/hw/nvram/xlnx-versal-efuse.h
-index 86e2261b9a3..afa4f4f9960 100644
---- a/include/hw/nvram/xlnx-versal-efuse.h
-+++ b/include/hw/nvram/xlnx-versal-efuse.h
-@@ -44,6 +44,7 @@ struct XlnxVersalEFuseCtrl {
-     void *extra_pg0_lock_spec;      /* Opaque property */
-     uint32_t extra_pg0_lock_n16;
+diff --git a/include/hw/nvram/xlnx-zynqmp-efuse.h b/include/hw/nvram/xlnx-zynqmp-efuse.h
+index f5beacc2e6a..7fb12df3fbb 100644
+--- a/include/hw/nvram/xlnx-zynqmp-efuse.h
++++ b/include/hw/nvram/xlnx-zynqmp-efuse.h
+@@ -37,6 +37,7 @@ struct XlnxZynqMPEFuse {
+     qemu_irq irq;
  
+     XlnxEFuse *efuse;
 +    RegisterInfoArray *reg_array;
-     uint32_t regs[XLNX_VERSAL_EFUSE_CTRL_R_MAX];
-     RegisterInfo regs_info[XLNX_VERSAL_EFUSE_CTRL_R_MAX];
+     uint32_t regs[XLNX_ZYNQMP_EFUSE_R_MAX];
+     RegisterInfo regs_info[XLNX_ZYNQMP_EFUSE_R_MAX];
  };
-diff --git a/hw/nvram/xlnx-versal-efuse-ctrl.c b/hw/nvram/xlnx-versal-efuse-ctrl.c
-index def6fe3302b..8252a5cabe0 100644
---- a/hw/nvram/xlnx-versal-efuse-ctrl.c
-+++ b/hw/nvram/xlnx-versal-efuse-ctrl.c
-@@ -712,9 +712,8 @@ static void efuse_ctrl_init(Object *obj)
+diff --git a/hw/nvram/xlnx-zynqmp-efuse.c b/hw/nvram/xlnx-zynqmp-efuse.c
+index 2d465f0fc6a..4e2d1b9d1e7 100644
+--- a/hw/nvram/xlnx-zynqmp-efuse.c
++++ b/hw/nvram/xlnx-zynqmp-efuse.c
+@@ -803,9 +803,8 @@ static void zynqmp_efuse_init(Object *obj)
  {
-     XlnxVersalEFuseCtrl *s = XLNX_VERSAL_EFUSE_CTRL(obj);
+     XlnxZynqMPEFuse *s = XLNX_ZYNQMP_EFUSE(obj);
      SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
 -    RegisterInfoArray *reg_array;
  
 -    reg_array =
 +    s->reg_array =
-         register_init_block32(DEVICE(obj), efuse_ctrl_regs_info,
-                               ARRAY_SIZE(efuse_ctrl_regs_info),
+         register_init_block32(DEVICE(obj), zynqmp_efuse_regs_info,
+                               ARRAY_SIZE(zynqmp_efuse_regs_info),
                                s->regs_info, s->regs,
-@@ -722,7 +721,7 @@ static void efuse_ctrl_init(Object *obj)
-                               XLNX_VERSAL_EFUSE_CTRL_ERR_DEBUG,
+@@ -813,10 +812,17 @@ static void zynqmp_efuse_init(Object *obj)
+                               ZYNQMP_EFUSE_ERR_DEBUG,
                                R_MAX * 4);
  
 -    sysbus_init_mmio(sbd, &reg_array->mem);
 +    sysbus_init_mmio(sbd, &s->reg_array->mem);
-     sysbus_init_irq(sbd, &s->irq_efuse_imr);
+     sysbus_init_irq(sbd, &s->irq);
  }
  
-@@ -730,6 +729,7 @@ static void efuse_ctrl_finalize(Object *obj)
- {
-     XlnxVersalEFuseCtrl *s = XLNX_VERSAL_EFUSE_CTRL(obj);
- 
++static void zynqmp_efuse_finalize(Object *obj)
++{
++    XlnxZynqMPEFuse *s = XLNX_ZYNQMP_EFUSE(obj);
++
 +    register_finalize_block(s->reg_array);
-     g_free(s->extra_pg0_lock_spec);
- }
++}
++
+ static const VMStateDescription vmstate_efuse = {
+     .name = TYPE_XLNX_ZYNQMP_EFUSE,
+     .version_id = 1,
+@@ -853,6 +859,7 @@ static const TypeInfo efuse_info = {
+     .instance_size = sizeof(XlnxZynqMPEFuse),
+     .class_init    = zynqmp_efuse_class_init,
+     .instance_init = zynqmp_efuse_init,
++    .instance_finalize = zynqmp_efuse_finalize,
+ };
  
+ static void efuse_register_types(void)
 -- 
 2.34.1
 

@@ -1,117 +1,117 @@
-Received: by 2002:a17:505:917:b0:1be9:327d:8ee3 with SMTP id hq23csp702526njb;
-        Thu, 22 Aug 2024 09:22:29 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCW89chZMZuLq/8M8CjVSohreXuyhiBFXLLvkapz667SRoiqfsIVs2PGWN0XKq9F4TxKBlI/yeaXmiDGrg==@linaro.org
-X-Google-Smtp-Source: AGHT+IHnXQQbvXFeMBs0eF9VCkGnMxLJ9T0PSeMx6DJW0DHkUBJMqzqDALdnicccO98d2bmoFJzr
-X-Received: by 2002:a05:6214:3381:b0:6c1:6b52:5b90 with SMTP id 6a1803df08f44-6c16b525c62mr2948786d6.26.1724343749330;
-        Thu, 22 Aug 2024 09:22:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1724343749; cv=none;
+Received: by 2002:a17:505:917:b0:1be9:327d:8ee3 with SMTP id hq23csp702548njb;
+        Thu, 22 Aug 2024 09:22:32 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXOPbD81KEOl7lV9S/gX2qiOscFGc1Kwtdv7azasQtgepV8rGGToN09aItWSSpJY6jDRziUq3mx2sdZUw==@linaro.org
+X-Google-Smtp-Source: AGHT+IGZlGqDn3NUKQq+jxKMip/IRhL5PjCG5QPOeAXF8OLt0C1BLraCBMt4aAzgTcruZmSGxYuW
+X-Received: by 2002:a05:6122:1828:b0:4f5:1c87:ce75 with SMTP id 71dfb90a1353d-4fd099db477mr3293202e0c.11.1724343752589;
+        Thu, 22 Aug 2024 09:22:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1724343752; cv=none;
         d=google.com; s=arc-20160816;
-        b=JPhK0+21kA1GWXcp88QdO9XIcR4NlIPD2S+1mykeNQenRvQNOKtnqSNrYfZ8W0xMAF
-         xuT0Mj3mCxAAO6tJf1yJ3ZMr2t3eE6NeJ0ag1teyfGmnxbQTk7gOi9DwLWfw33q1616O
-         cxjp+lDGvx0CioAyZGtbgNpYtkjfkUyO6ClHNHPuIF+L+LM5gOPV/OGdpqbK/OSS1vv1
-         8jqmDhZZHhvVeSagcPMhHMCTAGOk542Mc9Wxfk9Z6FDSbOMQLovEvRTKEmIhBmZka2hK
-         12CZ+MAj0xQIitCJN9TS8BBlO6k9KFsbTqSShJrgVOoAIm3wPZObeDMm2S2QXxJoGYke
-         u/6w==
+        b=c2hUYKc1BvCQO9CZC0eAyYXXF6QX4eKL4nQGStNMufv/p+Gt07JI6k8HSIJ6VCmv7f
+         zG7A0JXRAfYp1eWZdFk38j6MmkPYsXeMVQCAiqtiwfIpMILWuuoEswYPsjxEwBObx1DA
+         W/Kzs/Hr5MEC8nv+gty46EcDUpp1F9j0GbU5xavyLEG05+9DV7O5/yuMZT6+1xkObXAK
+         5VgEFcAbtnVpxBRjHVuL/o0JiFyySlKfJkgq+Ik3EYFrSbv8RudOm9xLfVLTXgN3YbVU
+         MnYh2lvAmsWnklhvfwUKzNn7Xe7u8Wb4I7iOrjulhwwhVRVnkxoy08VMCWvtwebcJXZm
+         /btw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=Q9APIXuRLkKIat+l/rZBodPQDnkc/ZwrT5ldPMm81wI=;
+        bh=rRIh29OU7dNzm5XtXlrEQk7GPVofTkxU59XhpGGv5/A=;
         fh=eKvyMq82ozF2pexIVE339+mXcynob0ROL80gQzK9b2g=;
-        b=HBm3eQ2ESofvIX3wx3s4qEDUjSqek5cnwKTT12xwQemJFugnJJob+qOtv1q5kJgcNK
-         QlRlrXmTvjlKQI5u61oh+sTaeY2BexrE7KWlYIMmAOHj2kUeq8eqS70MWSMDhl3Jk58V
-         n+il36GEjqOwk7Z1McbBRgX66dHrQBcyqI2Me5F22pvCO3zzLpg9t6nt7jw0tU3ZdqMG
-         GCNNut50xsAXNCN1w37N2aGoeZCo5OUPKNjtmfz0wlb9eDNELhF3pmiCqErcoNTg0QAk
-         c1kl1XQNoivFynVAdAo9pU/FQM2lssV5u6RildpSn7jlXC77M0HScWXuDoNNBo8psSDb
-         WEiA==;
+        b=G6oaXKA7tbbd2TTleU291kduvdO8kGTUcOHomGpJNW7HXXGbtttxYNn1lzKc5aY96G
+         jGVdBklSBOHrIbTV+JmM5laBZvVN6V6Rl2mJ1mSRuahnr5Y22HXlkGhpdgWYFcDFjDku
+         ZLBMu1y4Kd09lzW7DWP7YWKPnBjj/IpaZV1Id4yXPlfHP2G1BRFo2zVOdTThPaShEcYr
+         knABsdWQwyCss3uk+0qzMBBhhm68W+YoyY+T+ijPfkGCXp++GGMIO/+bcCPiV0Fmmzk9
+         WBrCc5w5b8R0ybWKYVpxzLQOi2iyD2C0aVHLZERpjQlK+aTdZ2eUM7hzCUmEwQYxjqW5
+         opzA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="dX4gtxa/";
+       dkim=pass header.i=@linaro.org header.s=google header.b=Aqig05m1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6c162dd92fesi20834386d6.398.2024.08.22.09.22.29
+        by mx.google.com with ESMTPS id 71dfb90a1353d-4fd0839c38esi422939e0c.296.2024.08.22.09.22.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 22 Aug 2024 09:22:29 -0700 (PDT)
+        Thu, 22 Aug 2024 09:22:32 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="dX4gtxa/";
+       dkim=pass header.i=@linaro.org header.s=google header.b=Aqig05m1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1shAZF-0005H7-M4; Thu, 22 Aug 2024 12:21:46 -0400
+	id 1shAZL-0005aI-S4; Thu, 22 Aug 2024 12:21:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1shAZD-00057Z-JG
+ id 1shAZD-00057Y-JS
  for qemu-arm@nongnu.org; Thu, 22 Aug 2024 12:21:43 -0400
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1shAZ5-0007KT-O7
- for qemu-arm@nongnu.org; Thu, 22 Aug 2024 12:21:39 -0400
-Received: by mail-wm1-x32c.google.com with SMTP id
- 5b1f17b1804b1-4281faefea9so7266645e9.2
+ id 1shAZ7-0007KA-MJ
+ for qemu-arm@nongnu.org; Thu, 22 Aug 2024 12:21:41 -0400
+Received: by mail-wm1-x332.google.com with SMTP id
+ 5b1f17b1804b1-427fc97a88cso7585125e9.0
  for <qemu-arm@nongnu.org>; Thu, 22 Aug 2024 09:21:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1724343691; x=1724948491; darn=nongnu.org;
+ d=linaro.org; s=google; t=1724343690; x=1724948490; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=Q9APIXuRLkKIat+l/rZBodPQDnkc/ZwrT5ldPMm81wI=;
- b=dX4gtxa/fE4qo5Yt/TAdeYUd7Vjyz0nqR61MVZ1qxEvUR3bL4GEkbeyCi87HXiUd+H
- TtMHy/UYwqbJXDg7IOSe6U6vNVFXb2TAidq5nNjtKLteP/Gzs+SUs8x3zDtiQBAp4t/9
- EWMKVti032LHS8tN+s0UC2WPiJ/F/tW9vVZNXbNmLyeSMBjH7ryKl/7AvU77RG+xCaLb
- hd0kHxDd2Q6eb3ALBMIaWhg1PB+8bRe37UkMqIsNd1DJXz0bJuVjItxbjwFThssoL5GF
- sigcwKwK3DwDlV7WSekiKfVzDwtd7NZsgAZKJXvPFC0Mn6Mb52zgZlKV38Mp7bxHHZ22
- VGYQ==
+ bh=rRIh29OU7dNzm5XtXlrEQk7GPVofTkxU59XhpGGv5/A=;
+ b=Aqig05m1LszCefa1p+WpMvLPgGz1e5vPghRll6xMHoUz/EcDSOHpEkHL5YXl0DWz8J
+ lAvmMzzQHJw1xwV+nNoLXBZfFPcgwo54r24WYpH8HDvqMvobF61/5k76TlqueBfGeQoe
+ vJ70y2R6GY0vN1Vx20sKPMKbq2j83IpZUWTa6LrJl2YKEb4zB9pGb26JHprUu2gnpsEQ
+ 5PhTGKwFsn3Ltb4i/IZy5vzeRq94dMZ332SqXE6T6IuOdAVBT/VMriwg8qD/zxDdeSMA
+ NDAmiZZXX/XEm4i/GYR13oPTN4FIB+ZiYhc4CEaGHuyIum4q6Y+sA6lz8PJ5tKNHDAMU
+ KwTQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1724343691; x=1724948491;
+ d=1e100.net; s=20230601; t=1724343690; x=1724948490;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=Q9APIXuRLkKIat+l/rZBodPQDnkc/ZwrT5ldPMm81wI=;
- b=WBkQaISz5mIlwgDcLBGrq7rwTpkTsEjSTm1xnnG9MRgDQkbk9ZOKrDqa0yIwAu1Xw9
- Ij257B/iAmGTlxogzO7rJ0Mj7yPsqPTcBoe/FfjDSAWTSq/jzE/UKANPjiFZevYwipR6
- xEJwuon3LpYhP6IuBsTe3tyQ5/6HZjYMzfOPcm2ob5Dmb6oAA4EBhV4f+ekoMlcYrzUl
- uN2wlHI2rvdG9qT10Uu9CoDiQNUPAn370xQO6gPREI5+oNGiU1PMuatd6BT9cFpuhAJR
- JG+e5NYgGzba7WpY2IrfSwa3L89ZO5UVcoPfHKV8qoH+/wRiPhcPfDVmihB8KV+fnbtj
- 3j4g==
-X-Gm-Message-State: AOJu0YxOyoKDiqaNJlPQgwbtgba6fAT4VCYsX3esSjC+VPx20DwkHhfq
- PDfZoRjSs4qfoE+toAG0xfTRrBAYUoYVATuLIeISnj1POB7xMUuUCpo2dvUAhC5xr5hjWW1JdeX
+ bh=rRIh29OU7dNzm5XtXlrEQk7GPVofTkxU59XhpGGv5/A=;
+ b=VaC6oU6h+Z8vkE3JqFmm7mXMP1cxzjTXy6NYjgvrRwKL1nYqsMbylmdLsSXS7oPV/A
+ pI+jqK2D4LeGAt8RoohpNQ/bIlqun12KqAP4PNZXE9w12Mx9vhY4yu0qoYN0mx4uRd2f
+ LqlMR5jYpitQqhOkogdYweEcRAPHa2GETftj479mtBMUxBMQMAPtc7oU9+2AwG6ERcAO
+ fB3eCOej2TCZ8rsKzG1cQiWIOpoW+xdeHMWAPn3D9SAm4coufVmkXT5/uRYNozP7BKTu
+ ShAFZMYRGDAWYGHphbDjPzdO2lAofeZtIJgCjOdLUCNFvjzknis8y/7fTgvmCktdTe9W
+ ITzQ==
+X-Gm-Message-State: AOJu0YxpEreT0Wc1FLcQDwupSPQL4im2rkSFUnJ49GgBdcnyItQiYq8K
+ uTAQmLGQKwPjV8c/gkY0lGdZw5OQrelXzLVYFBJQjmYomxLuzhzrxTDsLdD08or8TN+9ksx/5Ju
  D
-X-Received: by 2002:a05:600c:1c90:b0:426:647b:1bfc with SMTP id
- 5b1f17b1804b1-42abd244b11mr38979685e9.30.1724343691475; 
- Thu, 22 Aug 2024 09:21:31 -0700 (PDT)
+X-Received: by 2002:a05:600c:1992:b0:426:6ee7:c05a with SMTP id
+ 5b1f17b1804b1-42abd23061amr43199385e9.15.1724343690325; 
+ Thu, 22 Aug 2024 09:21:30 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-42ac5162347sm28928485e9.23.2024.08.22.09.21.31
+ 5b1f17b1804b1-42ac5162347sm28928485e9.23.2024.08.22.09.21.29
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 22 Aug 2024 09:21:31 -0700 (PDT)
+ Thu, 22 Aug 2024 09:21:30 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Alistair Francis <alistair@alistair23.me>,
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
  Francisco Iglesias <francisco.iglesias@amd.com>
-Subject: [PATCH for-9.2 4/6] hw/nvram/xlnx-zynqmp-efuse: Call
- register_finalize_block
-Date: Thu, 22 Aug 2024 17:21:25 +0100
-Message-Id: <20240822162127.705879-5-peter.maydell@linaro.org>
+Subject: [PATCH for-9.2 2/6] hw/misc/xlnx-versal-trng: Free s->prng in
+ finalize, not unrealize
+Date: Thu, 22 Aug 2024 17:21:23 +0100
+Message-Id: <20240822162127.705879-3-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240822162127.705879-1-peter.maydell@linaro.org>
 References: <20240822162127.705879-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::332;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x332.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -133,85 +133,68 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 26OqAVKBLYCS
+X-TUID: an0xkgwvRSBC
 
-The TYPE_XLNX_ZYNQMP_EFUSE device creates a register block with
-register_init_block32() in its instance_init method; we must
-therefore destroy it in our instance_finalize method to avoid a leak
-in the QOM introspection "init-inspect-finalize" lifecycle:
+The TYPE_XLNX_VERSAL_TRNG device creates s->prng with g_rand_new()
+in its init method, but it frees it in its unrealize method. This
+results in a leak in the QOM introspection "initialize-inspect-finalize"
+lifecycle:
 
-Direct leak of 304 byte(s) in 1 object(s) allocated from:
-    #0 0x55f3ff5839d8 in __interceptor_calloc (/mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/asan/qemu-system-aarch64+0x294d9d8) (BuildId: 23cf931c66865a71b6cc4da95156d03bc106fa72)
-    #1 0x7f3f31c6bc50 in g_malloc0 debian/build/deb/../../../glib/gmem.c:161:13
-    #2 0x55f3ff9b8c5d in register_init_block hw/core/register.c:248:34
-    #3 0x55f3ff9b96be in register_init_block32 hw/core/register.c:299:12
-    #4 0x55f4005e5b25 in efuse_ctrl_init hw/nvram/xlnx-versal-efuse-ctrl.c:718:9
-    #5 0x55f40254afb1 in object_init_with_type qom/object.c:420:9
-    #6 0x55f40253228b in object_initialize_with_type qom/object.c:562:5
-    #7 0x55f402533b2d in object_new_with_type qom/object.c:782:5
-    #8 0x55f402533c01 in object_new qom/object.c:797:12
-    #9 0x55f402d31a2d in qmp_device_list_properties qom/qom-qmp-cmds.c:144:11
+Direct leak of 2500 byte(s) in 1 object(s) allocated from:
+    #0 0x55ec89eae9d8 in __interceptor_calloc (/mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/asan/qemu-system-aarch64+0x294d9d8) (BuildId: 6d5
+08874816cc47d17c8dd775e8f809ae520e8cb)
+    #1 0x7f697018fc50 in g_malloc0 debian/build/deb/../../../glib/gmem.c:161:13
+    #2 0x7f6970197738 in g_rand_new_with_seed_array debian/build/deb/../../../glib/grand.c:202:17
+    #3 0x7f6970197816 in g_rand_new debian/build/deb/../../../glib/grand.c:286:10
+    #4 0x55ec8aa3656a in trng_init hw/misc/xlnx-versal-trng.c:624:15
+    #5 0x55ec8ce75da1 in object_init_with_type qom/object.c:420:9
+    #6 0x55ec8ce5d07b in object_initialize_with_type qom/object.c:562:5
+    #7 0x55ec8ce5e91d in object_new_with_type qom/object.c:782:5
+    #8 0x55ec8ce5e9f1 in object_new qom/object.c:797:12
+    #9 0x55ec8d65c81d in qmp_device_list_properties qom/qom-qmp-cmds.c:144:11
+
+Move the free to finalize so it matches where we are initing
+s->prng. Since that's the only thing our unrealize method was
+doing, this essentially switches the whole function to be
+a finalize implementation.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- include/hw/nvram/xlnx-zynqmp-efuse.h |  1 +
- hw/nvram/xlnx-zynqmp-efuse.c         | 13 ++++++++++---
- 2 files changed, 11 insertions(+), 3 deletions(-)
+ hw/misc/xlnx-versal-trng.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/include/hw/nvram/xlnx-zynqmp-efuse.h b/include/hw/nvram/xlnx-zynqmp-efuse.h
-index f5beacc2e6a..7fb12df3fbb 100644
---- a/include/hw/nvram/xlnx-zynqmp-efuse.h
-+++ b/include/hw/nvram/xlnx-zynqmp-efuse.h
-@@ -37,6 +37,7 @@ struct XlnxZynqMPEFuse {
-     qemu_irq irq;
- 
-     XlnxEFuse *efuse;
-+    RegisterInfoArray *reg_array;
-     uint32_t regs[XLNX_ZYNQMP_EFUSE_R_MAX];
-     RegisterInfo regs_info[XLNX_ZYNQMP_EFUSE_R_MAX];
- };
-diff --git a/hw/nvram/xlnx-zynqmp-efuse.c b/hw/nvram/xlnx-zynqmp-efuse.c
-index 2d465f0fc6a..4e2d1b9d1e7 100644
---- a/hw/nvram/xlnx-zynqmp-efuse.c
-+++ b/hw/nvram/xlnx-zynqmp-efuse.c
-@@ -803,9 +803,8 @@ static void zynqmp_efuse_init(Object *obj)
- {
-     XlnxZynqMPEFuse *s = XLNX_ZYNQMP_EFUSE(obj);
-     SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
--    RegisterInfoArray *reg_array;
- 
--    reg_array =
-+    s->reg_array =
-         register_init_block32(DEVICE(obj), zynqmp_efuse_regs_info,
-                               ARRAY_SIZE(zynqmp_efuse_regs_info),
-                               s->regs_info, s->regs,
-@@ -813,10 +812,17 @@ static void zynqmp_efuse_init(Object *obj)
-                               ZYNQMP_EFUSE_ERR_DEBUG,
-                               R_MAX * 4);
- 
--    sysbus_init_mmio(sbd, &reg_array->mem);
-+    sysbus_init_mmio(sbd, &s->reg_array->mem);
-     sysbus_init_irq(sbd, &s->irq);
+diff --git a/hw/misc/xlnx-versal-trng.c b/hw/misc/xlnx-versal-trng.c
+index 51eb7600414..c0d1dde8708 100644
+--- a/hw/misc/xlnx-versal-trng.c
++++ b/hw/misc/xlnx-versal-trng.c
+@@ -624,9 +624,9 @@ static void trng_init(Object *obj)
+     s->prng = g_rand_new();
  }
  
-+static void zynqmp_efuse_finalize(Object *obj)
-+{
-+    XlnxZynqMPEFuse *s = XLNX_ZYNQMP_EFUSE(obj);
-+
-+    register_finalize_block(s->reg_array);
-+}
-+
- static const VMStateDescription vmstate_efuse = {
-     .name = TYPE_XLNX_ZYNQMP_EFUSE,
-     .version_id = 1,
-@@ -853,6 +859,7 @@ static const TypeInfo efuse_info = {
-     .instance_size = sizeof(XlnxZynqMPEFuse),
-     .class_init    = zynqmp_efuse_class_init,
-     .instance_init = zynqmp_efuse_init,
-+    .instance_finalize = zynqmp_efuse_finalize,
+-static void trng_unrealize(DeviceState *dev)
++static void trng_finalize(Object *obj)
+ {
+-    XlnxVersalTRng *s = XLNX_VERSAL_TRNG(dev);
++    XlnxVersalTRng *s = XLNX_VERSAL_TRNG(obj);
+ 
+     g_rand_free(s->prng);
+     s->prng = NULL;
+@@ -689,7 +689,6 @@ static void trng_class_init(ObjectClass *klass, void *data)
+     ResettableClass *rc = RESETTABLE_CLASS(klass);
+ 
+     dc->vmsd = &vmstate_trng;
+-    dc->unrealize = trng_unrealize;
+     rc->phases.hold = trng_reset_hold;
+ 
+     /* Clone uint64 property with set allowed after realized */
+@@ -706,6 +705,7 @@ static const TypeInfo trng_info = {
+     .instance_size = sizeof(XlnxVersalTRng),
+     .class_init    = trng_class_init,
+     .instance_init = trng_init,
++    .instance_finalize = trng_finalize,
  };
  
- static void efuse_register_types(void)
+ static void trng_register_types(void)
 -- 
 2.34.1
 

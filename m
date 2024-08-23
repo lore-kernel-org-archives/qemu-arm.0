@@ -1,40 +1,40 @@
-Received: by 2002:a17:505:1116:b0:1be9:327d:8ee3 with SMTP id pu22csp143309njb;
-        Fri, 23 Aug 2024 04:33:33 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCUhUnfUNzRXZOAkXuXmWlIzX8qbPKYtafKPesSA1era1YftRIxjOhm8ZOx0rK9trnFfMviZy/pVgoJoeQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IEXEpzP7zdMlbjIICmCraYfbXvgzIBNUz3UpIIwt5H0K9VaWn3dVzWNmgKytAEtzOUvNX9a
-X-Received: by 2002:a05:6830:2b1f:b0:709:5890:691d with SMTP id 46e09a7af769-70e0eb04dd5mr2133495a34.4.1724412813057;
-        Fri, 23 Aug 2024 04:33:33 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1724412813; cv=pass;
+Received: by 2002:a17:505:1116:b0:1be9:327d:8ee3 with SMTP id pu22csp143387njb;
+        Fri, 23 Aug 2024 04:33:51 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCVqhHRdkogdKFyCXmV2JNHIDiUGE2scH5dpNAJpO//huqEOJLEjCx2460NpjaVGGBVHLIEnnU200tGsUQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IGUNOGjmXDGpW6GoEXRveh36t8uiviTzEkW21LAvoSXC+t+lPzVxdYadXYXjlA/Om60ZdeN
+X-Received: by 2002:a05:622a:2597:b0:454:f364:c388 with SMTP id d75a77b69052e-455095dfb0dmr22994341cf.10.1724412831264;
+        Fri, 23 Aug 2024 04:33:51 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1724412831; cv=pass;
         d=google.com; s=arc-20160816;
-        b=L7oTP98OOSc1XQ35v+ljpZZzNklY58tRduuqikezz4nyCz+qRoJ5Kgb/ONqPHZv3y7
-         Gor/Ra1WkJgyQ1o6Px6U9215USIgzYuEowA4Q4f6mfa5S7A+lDfZrOUgfC2BJR8E/OTi
-         EbO8YQOeWH7QKKM5CkNrCQemOBg72wjwzDpEeRUFSuQXFmwEiB0OlI+daxTpvIknOQiI
-         Xeay9yOfHU1tU/YzMi+2tXAC/p2Mp97S3USXDmogj3tDufa1RUKGJYDJXOD2E8dIJsVE
-         mpUHYW5QtCkbeDrrMJDIJr6/xDjjImdO9b82RiToWJK0mxJnj345/1spc0vlxQXwHNXB
-         xnEA==
+        b=YFCyC7+7oj9/i4Af/3nHp5jR2ca8P62/xm4SYHiBMWV/p2wyLykXlkfncbeNeqes96
+         mWpJDL7ohsSj8GzogK/4Hmk23eb6lnNFcj+ErQVIDAZ/1LksIMj3++ez/2m4WUBbakqJ
+         LqPLhDUIJGGxUNwHQm2tP9o33ix8eXd2GuRu7/a8F7H9IRJrrrxkGIlwT/+J/B40DpRk
+         RAtrEr2zAZ5joc3VsxrFyxbp24Y/M9K687HQoAMcFHauo8SEYEdDwZ6teGOObg9Gr+p/
+         Mexczp2Xb4qhCNu6Wcrh9s8ggzmI0CoWxo1tMiBZcy0n9svPNQXnZZx5h44OwhjfvDbz
+         ZlWQ==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:mime-version
          :content-transfer-encoding:references:in-reply-to:message-id:date
          :subject:cc:to:from;
-        bh=JmGMyq1MZKLP2C4HOPw7aPDX7g8TOYFd6Ri1Rt9aew4=;
+        bh=FzxH5X+32xRrw4I4+OLF9DJdKtLOWNhJB41gb/C45Gc=;
         fh=BPqx+tT0l4/T42nLjlbaMbNPkbDvuI5V4MIQ4GAZFPU=;
-        b=N6qrmOnQRkaUnPAGGsUuofuGm3oM2dUjtFOxJ9Nimlf3gkbDjmMD1/TRRMkAOZMxY3
-         SKrauArkHJYu92ZJlyg5NDnAiSFtnvg2n7brNshVe6eL3AGXx+61Fe15ixrAyxT/4AWZ
-         MKHt55MVRgKVa3Uxuh4yXJtGN+ZjIxPM/ipoTcXqItuISMJtmQqiXDO0FwRb99gwZzye
-         1cxhno1U0+ZH3LVti5D6O2UVC1G9dnpf0r2dDutX6EKfpanBCHyTKx4nAO64m6vOG9mD
-         OxOhDdEx2olSFj/LAV5PCYSsJ0pJtUWrWnLbyEw70pISGs8pw/wv/W0xGhzaC83AiQ4M
-         d/+w==;
+        b=faTzrXpiGqpVt8Qm6e3dmXByS//lLivLk2Uh/KHlkjdskzQXZ0FEzzR9SMvrzi3gZq
+         xvYAtCv3lQl+M+D7LPmEbawoR92l28gdzLm2y98wkZ53ESHYc0U+jKDZ3y0ZSKawSrg3
+         vv/WLd33ZWGz+yBEQ0ukTyUikq77L+bTG1qQxTMbr4R9vKt5vF8kfgRgQiHpUEwaEvX1
+         Kl/pRQWROoX0cCj6UsUAXZURT8wUzCoe5MQ7Sce1vKjv6+pYnZvKb3OBzGAGRTjk2Rb5
+         CvPhTFHQ5TRLcp1Ypm0PTKInoaxxOjg3iwy4pE9a8joc28XSKEXrLQMIjreTrTY4OOTU
+         EUXA==;
         dara=google.com
 ARC-Authentication-Results: i=2; mx.google.com;
        arc=pass (i=1 spf=pass spfdomain=starfivetech.com dkim=pass dkdomain=starfivetech.com dmarc=pass fromdomain=starfivetech.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-454fe323baasi36442641cf.585.2024.08.23.04.33.32
+        by mx.google.com with ESMTPS id d75a77b69052e-454fe0d238esi38422671cf.50.2024.08.23.04.33.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 23 Aug 2024 04:33:33 -0700 (PDT)
+        Fri, 23 Aug 2024 04:33:51 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        arc=pass (i=1 spf=pass spfdomain=starfivetech.com dkim=pass dkdomain=starfivetech.com dmarc=pass fromdomain=starfivetech.com);
@@ -42,24 +42,24 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1shSXK-0001ZD-5Z; Fri, 23 Aug 2024 07:32:59 -0400
+	id 1shSXD-0001BB-B9; Fri, 23 Aug 2024 07:32:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jeeheng.sia@starfivetech.com>)
- id 1shSXI-0001QL-1d; Fri, 23 Aug 2024 07:32:56 -0400
+ id 1shSX9-00017n-FR; Fri, 23 Aug 2024 07:32:49 -0400
 Received: from mail-sh0chn02on20706.outbound.protection.partner.outlook.cn
  ([2406:e500:4420:2::706]
  helo=CHN02-SH0-obe.outbound.protection.partner.outlook.cn)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jeeheng.sia@starfivetech.com>)
- id 1shSXF-00086J-Bo; Fri, 23 Aug 2024 07:32:54 -0400
+ id 1shSWg-00086J-EL; Fri, 23 Aug 2024 07:32:46 -0400
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=ncWG6jlvs8vC1RFMZ7DxmplG0S/2CT4ur6poCpwdQBphCIHpWGg0E1zz9TG6ozHmz4VO/UyllX2xfd5OZP2vYhQKSC8uGWItR9Mp3SE69tOdnsN5W6XVsJAFDZHASx5oW94ivrNnBzQtnTS2qDICSYlq7PEOrf+4invBTOh4EbPnQqhqZr6MN84CrlEbsw8nAomuwGLiRg/O4aYKY5hCMn5dNpMyfo/UHYsHP0BUpz198kqIMUjko48JDPThvmT+h81GQP/VCwEb4jFDL3dV+qm/eBmFv3V6L9SuwkQu7HJ+OHZqQyXhhPaEyjjYal6S0SVcShbk4csA+z1DmmvMJw==
+ b=E30YCPtYDwelKG1T9/GUhNQ5QB/kqm++XNcbE5IUcz8tHxtWlfItTOcmW0yKYISzKeuYjGRqSBtqXXEOAOyzr7OTU9xsbNdJYDtudPfw0HCp/6iP/RBplV4U9KpcZoUvKqFE0fGUDgW8FwcXP7dm/QJM7GfVwbdpu+Mudvop5DbTR3uCzsPwsTjyaCGD0mtRylwQS4NbcpzGkvMAWdx5LNT19UavZpiok6WZF89foCF2aw8gTb9gIkWLgasPmw8ChpqqsaS1kDe/u1i7mBP1s5OMwtFNkyv6aDtW74GHldbwjBwxPHP/nJYVRgImAp4VW4qX2usrJYR+2pgXYrWO2w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=JmGMyq1MZKLP2C4HOPw7aPDX7g8TOYFd6Ri1Rt9aew4=;
- b=RQCx40mPwjEuDN+NZ5Iy1Dlj1BKiwgDMK0YyQMkUh2esJCRIgl3a+r15qlJeZgyx/n4Vn2jfFTIyhhHCBWA3J0WVLc+pa5wlsQQisFl7PDfaES2acKMw0EYma3CDFv7SUPF25J6WvDsXr/PKWtzO9NMyUWob+P7z63+yJGLCxa0MfMigAzec7tEC5WLJ/zShhBslTdSx6OkvXyKpV3IUTde8DC8a7z49ZFiECLHlkpBplw/Hkein/cEZjdb5Zif0cE0FA/swTUPZyBVRCOWEdpMVnLUqWLX+Fqf568IsrCUahOMgEBaPVH6vWf4YR5nnbjLGJhmopKjoyxnFKrzxPQ==
+ bh=FzxH5X+32xRrw4I4+OLF9DJdKtLOWNhJB41gb/C45Gc=;
+ b=eFu09cSVTy8xxUnHrZyZRyS5b9zKkm+ir4pvJHzPthhcu4wjh4K9cL0juzTNpvKA3QVj8SqRyibiM9VXhMZqnwehjBN0lKX2IcfZTv3lBW2mz6LL2U64OrlA3wCFGR08GA2cyz6cj57/SKoZTEfp+TTwzm7uUpV4hLj6BpA2IHA81oZlkxTGXi/8YBe0dRIHdoZzVxRaArGQ063hxPBwVUb19O4ECJDSoRiytXH7+5vECOvK4rbzlapBtqo7G+szrdTj+8/3vpT58wITOfFXsyvrNFk9PnwUQk2kpaYFvUFju9WthOUB+wYeoYTZuaGc0pyArGOS2tsrEhbR8JvUtA==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=starfivetech.com; dmarc=pass action=none
  header.from=starfivetech.com; dkim=pass header.d=starfivetech.com; arc=none
@@ -69,11 +69,11 @@ Received: from NT0PR01MB1278.CHNPR01.prod.partner.outlook.cn
  (2406:e500:c510:12::10) by NT0PR01MB0973.CHNPR01.prod.partner.outlook.cn
  (2406:e500:c510:6::7) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7875.22; Fri, 23 Aug
- 2024 11:32:13 +0000
+ 2024 11:32:07 +0000
 Received: from NT0PR01MB1278.CHNPR01.prod.partner.outlook.cn
  ([fe80::affa:7fe4:57c8:11ce]) by
  NT0PR01MB1278.CHNPR01.prod.partner.outlook.cn ([fe80::affa:7fe4:57c8:11ce%5])
- with mapi id 15.20.7897.014; Fri, 23 Aug 2024 11:32:13 +0000
+ with mapi id 15.20.7897.014; Fri, 23 Aug 2024 11:32:07 +0000
 From: Sia Jee Heng <jeeheng.sia@starfivetech.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org,
@@ -83,10 +83,9 @@ Cc: mst@redhat.com, imammedo@redhat.com, anisinha@redhat.com,
  shannon.zhaosl@gmail.com, sunilvl@ventanamicro.com, palmer@dabbelt.com,
  alistair.francis@wdc.com, bin.meng@windriver.com, liwei1518@gmail.com,
  dbarboza@ventanamicro.com, zhiwei_liu@linux.alibaba.com
-Subject: [PATCH RESEND v4 3/3] tests/qtest/bios-tables-test: Update virt SPCR
- golden reference for RISC-V
-Date: Fri, 23 Aug 2024 04:31:42 -0700
-Message-Id: <20240823113142.161727-4-jeeheng.sia@starfivetech.com>
+Subject: [PATCH RESEND v4 1/3] qtest: allow SPCR acpi table changes
+Date: Fri, 23 Aug 2024 04:31:40 -0700
+Message-Id: <20240823113142.161727-2-jeeheng.sia@starfivetech.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240823113142.161727-1-jeeheng.sia@starfivetech.com>
 References: <20240823113142.161727-1-jeeheng.sia@starfivetech.com>
@@ -98,54 +97,54 @@ X-ClientProxiedBy: NT0PR01CA0025.CHNPR01.prod.partner.outlook.cn
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
 X-MS-TrafficTypeDiagnostic: NT0PR01MB1278:EE_|NT0PR01MB0973:EE_
-X-MS-Office365-Filtering-Correlation-Id: 5e2922ba-9b9a-462b-5923-08dcc3673b96
+X-MS-Office365-Filtering-Correlation-Id: 382391ad-5092-42e3-4849-08dcc3673812
 X-MS-Exchange-SenderADCheck: 1
 X-Microsoft-Antispam: BCL:0;
  ARA:13230040|1800799024|7416014|52116014|41320700013|366016|38350700014; 
-X-Microsoft-Antispam-Message-Info: iruJ35aIZcybldT4oZ8wbcQytx8yE2z83c+6OE4U2R2ydPKpU474VotJQAa6dQ9BOPon3qJdocsdBk3dks5MQZeSqAa/23qsUsw/DVmRo7X1w0B9IBf7IbmnzTBa1awCaooeXgI6uN/gX2FDyg0aYEAhVnPAqN0hYvoxj+92VicVEzFLip/yUd0Kb5XJiHWYQUHQ9Nbyaa4MVaiXgSwcbUKFb4JvZcHqRRTTLdam9Juu7qj9qKr8VQGEBJMtBszH50E/LoOm3EDTtskSZZbcynLP7wTtdySF7DXVdne2MPlWLBuiz+zdm0yigL9G5ppjwh2pF4QnNTMod7TxEhVfiLBPgrjVtZeb1ulGGsxnXrHRu7rk/qCIGdLGpgMP4Zy2R8deSadDOR/VyVMlOKdX9WaCObZIZ6kzRazc5+Kceg5l5isK5yqKkn/Oy9d6Elew+y/6ycEl9F1ry79/2+xGyjGEOJhaquiIU//a9IPpsUcUyyIjyzuPwpJRX28fqWde+n7tFshbxbnPY+56rf53+aZj/m1ImciR6Slh3U7sb/4C9HoUV3y8NcuXYQiiYzgHhFE2M6l7YX9xQ6XHpB+yZheLxBvLIhwY1y5ODia2HCoE6tUYQF1COrBtoZFY0Q17
+X-Microsoft-Antispam-Message-Info: MEOEiRPsjfMQkeQOazioizwzE+Cpva2I1kn3JU0dp06svqZI+aBuUDfpZMLoZkbB1hyfG/hrdYZirPf8hnUiJ2eAGBlnaRckIapLvELw/rafRT1MD5ZnU5ApYMlVGdPBH5WUPfXENeiBpH27fumo2JXqkuHctHIeLr4+uWPPP5Ykgg7hZpINhwu4POjPf/AL48YwX0bllXlXorRc3usYop93ASZtIbpZhFpGZCFMnGFZT8+HbN6T71ekV/82w2y+SRu1pHLx/Tx3oEbuMgn41B1g7UvNeJVTTpDnIm8Vk+qf4aYVkPfZcGZkOVLyAkidc4dFfjKER6zyATjXe7nJSLZeTPQoLTayfx8SWqRBW1/4KkMKxIMeOa66m5CAV1C5cf2DtiDOAKJihnHNfC3AeQgGViJpMWV2R5y0tW1957DT6jg3RN7UaYQB3Qa96mEheATCXkqRs36wbMkTYMVy36LkqeoI6+RDOc12KKAwBmysO4mZUgL7cxIWjXivUPgiSw3y0b6vwyFYgplBUMaUARuzezyzu0CfTzwbAJHXIrN9a4sdw7DXmWifQ0nFcqZgSqwX8sqCFvFORq2k7hit32eqHgVHZfzeGwLGVYLZaBO+SbY8ci33ye6Yi4Nx4fQ+
 X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:NT0PR01MB1278.CHNPR01.prod.partner.outlook.cn; PTR:;
  CAT:NONE;
  SFS:(13230040)(1800799024)(7416014)(52116014)(41320700013)(366016)(38350700014);
  DIR:OUT; SFP:1102; 
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?TM6Rew17ssGtkE0DZhZn0nOKqVTGAeHdI+oaw24eF2NDYj4iAatlTnDzm7KP?=
- =?us-ascii?Q?H0se9dMgagicjh9Ma/57f4PIgZrVva04u1m0yyG+bRtbwWJZ3ZnsA08pQ06K?=
- =?us-ascii?Q?AuJoC62q0AzIOQ8h7cPrsdXxnRUqtHC4rVtOJM2S2BuE1A6s66KTOp49OOFE?=
- =?us-ascii?Q?fXOw6wznQdkVU/wFZySsb8joUYyUkORKlaE12hGRIIUL6xPoAhPW9pa9xZw5?=
- =?us-ascii?Q?BjvTP43V2qMOfq4UGdZUTSMTBntA/zu1MCB/tYP0WKict3zW8S24s1p1rOpt?=
- =?us-ascii?Q?rc73ATLp3qGWfU6rvs5FUr4j7i0j+437SdtEDlGJush5hBUfx50qmde/58Gv?=
- =?us-ascii?Q?OYv6Dk9Jt1jvST9iIsbgqzitmL7JgUEmqRNqKsXtYT71BRJRmpdcGSrXZ6hZ?=
- =?us-ascii?Q?fHWhNIGSzB/ytEQ8kL1P4E2Rsjw9SRKfGf61cOlKsCk5tfFZFbPQENUHU0gd?=
- =?us-ascii?Q?8nfTq4CH1nvyxSTXwRQ5ljAV3UZHgMNLWybYR6Lr4tAqbj7Ca6Bzq8G5Xh0Z?=
- =?us-ascii?Q?DeLbXHitLsenZ+wm8gX4FBwIsM2bXBcDOD9bdBRl/uPzxxld9xnsvNT4FsEs?=
- =?us-ascii?Q?REXzcDZVvMFIpvEJBmYSDf9mJHSkABy4lAY6Rfj6yTShyNykwkZAj9Kxeq6l?=
- =?us-ascii?Q?7OCufZLQ/8FMAacR1XpnoFVnkSnZ7Wt6PrJQ6Pz/guvWp64G8bHmVRQD0I8c?=
- =?us-ascii?Q?tpas9s12gbxkCqRySEBi/DZeexRBo5QcjgfOuIeHH6s5xJxRbb42Ubi0edXX?=
- =?us-ascii?Q?KAKNytn9idY3t4uXSJJP6irpz9BQn81SGazs4XDVDx5Nlu0MLlJQf1FPEnxM?=
- =?us-ascii?Q?duAW1kyg2fEAzVBfjF+aNllhTRKqJiKgYwEDjIgdYP7XjVrFyykaVAFx2DSZ?=
- =?us-ascii?Q?AboHT58xJrlXUMVRBduaJZAVNakW6h/FyRwd+wvg15cUOiBeAEnW+PVY0O36?=
- =?us-ascii?Q?YyaPe/HmvbYFtL8DJ+Iol9jzzRlx5AENNow2TwZE1TO11TgfvIsdYOjYelnr?=
- =?us-ascii?Q?OjY6UQzrslN1Wx+ala2dCzVXgLDuxhJUjY1/ZKRcz4bQM4+6Owc4n8wZltzM?=
- =?us-ascii?Q?5IsuCtEOFOvT5uXKDyuCi+Crdwt2JiFGRrhCQ4nRuIagAIz4ZzN6SFzMK0Gi?=
- =?us-ascii?Q?1ww4IDIZUiHLYzquBS0TaGJI99A1G0Xc2o4EFTOY3hA9QnJh+nPAAHuiGnu/?=
- =?us-ascii?Q?pLqUJ1TmtO9PV4ndxBSmbh6sT8hjmw/j8EN1sF3KGE6WewQbWkNDQnJ5IPrA?=
- =?us-ascii?Q?GkGtZ/6yFqmzlwTGpPgXrUE6SD3Lvk7hUOND0JQN5Tk4TSGK7iZpacEnHIUT?=
- =?us-ascii?Q?w8kygP1csBeFbzrWWgwyprK6K4i50n0Y1x+JfE/fi+txQ4OSaAw4UHW9MRUE?=
- =?us-ascii?Q?8JCslIkbHN7RvNg70uh4XIKrnH9jeKcH0gIirW35kuyVV5c1Ygp/dn2h3Bkk?=
- =?us-ascii?Q?WnAt3G5N8FNDn3qZMx/3tZISptvWyrZruCgxkbpc2kcUa7/J6/NDwVcJwXNi?=
- =?us-ascii?Q?pTlf7A2N4GOObraC4FGuMsE1Ld6Nsq6omI46ImI3lMMGPi8ZWrSzIBrxQPDm?=
- =?us-ascii?Q?nyNxwKBk4SrIiRRpLvDpBRjnMAxGoKPlBvdDyu8PuEug4IjmUHHV53DfENJA?=
- =?us-ascii?Q?Ug=3D=3D?=
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?1X8U25ye40lShL43cezvXZgxns/Ahom+i7OmhoyP7K+cEPeort/g6GaGd0Bc?=
+ =?us-ascii?Q?NNT7G4JrqbhmzC6dlCGf6ERXeS0PtVMBFGa9r5wNzEZYrG7h3rvh5Nn1r3Zj?=
+ =?us-ascii?Q?qlm9Z+T3M6SMIQyGUfTd7EOF0vWPl4KVpAqj5B48mG7NRJaJHfFcJ7jEofkj?=
+ =?us-ascii?Q?XjKTUO2MUJVKqPCdOphj40w2qcZKow6ZtkhURKWXhM3CWFd07xRRbGrbpuzG?=
+ =?us-ascii?Q?LxxWth8uKD4e5g2qhphbV0pDDoZkcmrrA10oqhrE9O/2s1mp2PYguf1vK1pS?=
+ =?us-ascii?Q?sKz6IxhIcDXVPMqMVozgXHwTpa43SaY/VZV9m81YokKVUD2ThtNDfiDBnIpN?=
+ =?us-ascii?Q?fEMaqTEZdhGeRcV0N1wWa82oU6Oe0APvxIEEC1XhDalH0UdVCXppeTKzUgMr?=
+ =?us-ascii?Q?C2CsTZscpLlsc0QFonO8O5mSdZaYTmfG2m0rSv2c6VzoN01UO7m9gJ9j8dWS?=
+ =?us-ascii?Q?kfhZrcNDi1xBDbsxLc90xZAtSCvZBozbhaBwx7BZ6ok25rQyWBiKeKB9qx80?=
+ =?us-ascii?Q?FpSRnewQ5XlQNiE9+1NmIM2kEYIY1qv3G6u3ySXkGKI0d5ivBbh3gFBvqtYL?=
+ =?us-ascii?Q?JIjV/NQCHFCZIe2+b2eqA26Fsia12VXjYL0mDv2TMbJNLaa/djhipflN50IW?=
+ =?us-ascii?Q?kjYwA6NnvVjrVdIua8HDDNmBHXOjjBYOrNYh2uhSnHkuAx0FsQM/RSi29SPJ?=
+ =?us-ascii?Q?OKrKQBTCUGlqCtwZgLiVcjhSHfTZCjHZ24wvkCg3bi3GGaz1b0X79utp3PtY?=
+ =?us-ascii?Q?8mGdtgf5oTHJH6khW5CtORYVZ99/6fblCUazc3USixkqrRVGR45KTNl4S0UJ?=
+ =?us-ascii?Q?3tGeq7p29O0UP9lr1U2pXOjEQc4zP+daIvyBKB/XcukJc0cHkwyOthiieCNd?=
+ =?us-ascii?Q?pbqNsnGjInImIS7IGbxtDJJfpsxxYBrx0yB1Q5i2bLqd/jqiRtyxAJOTcgNn?=
+ =?us-ascii?Q?v5jqD1u1pp3s7h98R12oAXVUOQ8KAf4ACOljSQNnqmHVBjbaPb9NU0VofQDV?=
+ =?us-ascii?Q?VvqH9gi4jxWQm9RY8EfmRPjlGROHLYOt0pYItQgQ2ZilAegp4LWpiX4ieYvA?=
+ =?us-ascii?Q?B3ZynBybgoxGfwVQhEXdsExIziTi37/DOCnvF3MA3EDTA4/w2DsstAHd66L6?=
+ =?us-ascii?Q?JQsSNPFwq8F3T6xibjR6PNLBVU1wLLLvjFGD88x0clqaaaUUpV0h3S2/fyCL?=
+ =?us-ascii?Q?6q5X8xcYOFopGzcRyJVy01VnwmX0B9CRQlgmjOs4orrMdMF13iCqD6qJuyva?=
+ =?us-ascii?Q?H0iDohBMW6eBiqPDVE7NUZaJy5szZz/NIQXQDtqIcICTI/Hr7Wd+F8eAqWPv?=
+ =?us-ascii?Q?5vboCL8B3Nr/rBK7TdYCnp/8L/KONpMRZe9GmJoC4VwihE8xjI39fu2fZlki?=
+ =?us-ascii?Q?7L9rOODTPMBKzlIb9k8aG//yccXN5hlYN5ZiAwlcAJzJTG7gA452Dj7YuVd5?=
+ =?us-ascii?Q?e6cf9WddGs7WTOnsGRP5eQo9sobCE1sPd7JI7y7abHiJo52OlIJtGv8OjLT/?=
+ =?us-ascii?Q?CJ1bess282KbKMQnH+XI/D8AU8iMZDBNupiTd+GUZBtM0pxg4l01qjYpFb5L?=
+ =?us-ascii?Q?HtGe7jjnLCSI/dQgZmZystkA1GcEvWAH+FKBhugtmzo6QV7+YwF8ZPjzC7LK?=
+ =?us-ascii?Q?pA=3D=3D?=
 X-OriginatorOrg: starfivetech.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 5e2922ba-9b9a-462b-5923-08dcc3673b96
+X-MS-Exchange-CrossTenant-Network-Message-Id: 382391ad-5092-42e3-4849-08dcc3673812
 X-MS-Exchange-CrossTenant-AuthSource: NT0PR01MB1278.CHNPR01.prod.partner.outlook.cn
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 23 Aug 2024 11:32:13.0193 (UTC)
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 23 Aug 2024 11:32:07.1710 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 06fe3fa3-1221-43d3-861b-5a4ee687a85c
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: nQgs8lI7ptmBNHgcSvOgG14dlVeVzQ0PKRiG7m668QWltDAjoeA7egae86nPyTkm64cSZRNj2fzpwv+AqedJkQIOTxIruc8rjUltOyb9b3I=
+X-MS-Exchange-CrossTenant-UserPrincipalName: TFIhjdFAnDsbDYbaoN/ObJBEs8QZxhn/at6Pn5oDSIJJQRq9G+k9yt+1JGrPY+FRhjT6SCw/HhU7Y1n1pWBG3ZcxMdmDbU/wtZHNJ8LgSg4=
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: NT0PR01MB0973
 Received-SPF: pass client-ip=2406:e500:4420:2::706;
  envelope-from=jeeheng.sia@starfivetech.com;
@@ -153,8 +152,9 @@ Received-SPF: pass client-ip=2406:e500:4420:2::706;
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01,
+ T_SPF_HELO_TEMPERROR=0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -169,106 +169,20 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: oQEBT3er55et
-
-Update the virt SPCR golden reference file for RISC-V to accommodate the
-SPCR Table revision 4 [1], utilizing the iasl binary compiled from the
-latest ACPICA repository. The SPCR table has been modified to
-adhere to the revision 4 format [2].
-
-[1]: https://learn.microsoft.com/en-us/windows-hardware/drivers/serports/serial-port-console-redirection-table
-[2]: https://github.com/acpica/acpica/pull/931
-
-Diffs from iasl:
-/*
-  * Intel ACPI Component Architecture
-  * AML/ASL+ Disassembler version 20200925 (64-bit version)
-  * Copyright (c) 2000 - 2020 Intel Corporation
-  *
-- * Disassembly of tests/data/acpi/riscv64/virt/SPCR, Fri Aug 23 02:07:47 2024
-+ * Disassembly of /tmp/aml-Y8JPS2, Fri Aug 23 02:07:47 2024
-  *
-  * ACPI Data Table [SPCR]
-  *
-  * Format: [HexOffset DecimalOffset ByteLength]  FieldName : FieldValue
-  */
-
- [000h 0000   4]                    Signature : "SPCR"    [Serial Port Console Redirection table]
--[004h 0004   4]                 Table Length : 00000050
--[008h 0008   1]                     Revision : 02
--[009h 0009   1]                     Checksum : B9
-+[004h 0004   4]                 Table Length : 0000005A
-+[008h 0008   1]                     Revision : 04
-+[009h 0009   1]                     Checksum : 13
- [00Ah 0010   6]                       Oem ID : "BOCHS "
- [010h 0016   8]                 Oem Table ID : "BXPC    "
- [018h 0024   4]                 Oem Revision : 00000001
- [01Ch 0028   4]              Asl Compiler ID : "BXPC"
- [020h 0032   4]        Asl Compiler Revision : 00000001
-
--[024h 0036   1]               Interface Type : 00
-+[024h 0036   1]               Interface Type : 12
- [025h 0037   3]                     Reserved : 000000
-
- [028h 0040  12]         Serial Port Register : [Generic Address Structure]
- [028h 0040   1]                     Space ID : 00 [SystemMemory]
- [029h 0041   1]                    Bit Width : 20
- [02Ah 0042   1]                   Bit Offset : 00
- [02Bh 0043   1]         Encoded Access Width : 01 [Byte Access:8]
- [02Ch 0044   8]                      Address : 0000000010000000
-
- [034h 0052   1]               Interrupt Type : 10
- [035h 0053   1]          PCAT-compatible IRQ : 00
- [036h 0054   4]                    Interrupt : 0000000A
- [03Ah 0058   1]                    Baud Rate : 07
- [03Bh 0059   1]                       Parity : 00
- [03Ch 0060   1]                    Stop Bits : 01
- [03Dh 0061   1]                 Flow Control : 00
- [03Eh 0062   1]                Terminal Type : 00
- [04Ch 0076   1]                     Reserved : 00
- [040h 0064   2]                PCI Device ID : FFFF
- [042h 0066   2]                PCI Vendor ID : FFFF
- [044h 0068   1]                      PCI Bus : 00
- [045h 0069   1]                   PCI Device : 00
- [046h 0070   1]                 PCI Function : 00
- [047h 0071   4]                    PCI Flags : 00000000
- [04Bh 0075   1]                  PCI Segment : 00
- [04Ch 0076   4]                     Reserved : 00000000
-
--Raw Table Data: Length 80 (0x50)
-+Raw Table Data: Length 90 (0x5A)
-
--    0000: 53 50 43 52 50 00 00 00 02 B9 42 4F 43 48 53 20  // SPCRP.....BOCHS
-+    0000: 53 50 43 52 5A 00 00 00 04 13 42 4F 43 48 53 20  // SPCRZ.....BOCHS
-     0010: 42 58 50 43 20 20 20 20 01 00 00 00 42 58 50 43  // BXPC    ....BXPC
--    0020: 01 00 00 00 00 00 00 00 00 20 00 01 00 00 00 10  // ......... ......
-+    0020: 01 00 00 00 12 00 00 00 00 20 00 01 00 00 00 10  // ......... ......
-     0030: 00 00 00 00 10 00 0A 00 00 00 07 00 01 00 00 03  // ................
-     0040: FF FF FF FF 00 00 00 00 00 00 00 00 00 00 00 00  // ................
-+    0050: 00 00 00 00 02 00 58 00 2E 00                    // ......X...
+X-TUID: g5xfRiX5av6b
 
 Signed-off-by: Sia Jee Heng <jeeheng.sia@starfivetech.com>
 ---
- tests/data/acpi/riscv64/virt/SPCR           | Bin 80 -> 90 bytes
- tests/qtest/bios-tables-test-allowed-diff.h |   1 -
- 2 files changed, 1 deletion(-)
-
-diff --git a/tests/data/acpi/riscv64/virt/SPCR b/tests/data/acpi/riscv64/virt/SPCR
-index 4da9daf65f71a13ac2b488d4e9728f194b569a43..09617f8793a6f7b1f08172f735b58aa748671540 100644
-GIT binary patch
-delta 32
-mcmWHD;tCFM4vJ!6U|<oR$R))nG*MNX3&>+&Vu)bSV*mhNumqU^
-
-delta 21
-ccmazF;0g|K4hmpkU|`xgkxPn^VWO%w05v59j{pDw
+ tests/qtest/bios-tables-test-allowed-diff.h | 1 +
+ 1 file changed, 1 insertion(+)
 
 diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
-index aae973048a..dfb8523c8b 100644
+index dfb8523c8b..aae973048a 100644
 --- a/tests/qtest/bios-tables-test-allowed-diff.h
 +++ b/tests/qtest/bios-tables-test-allowed-diff.h
-@@ -1,2 +1 @@
+@@ -1 +1,2 @@
  /* List of comma-separated changed AML files to ignore */
--"tests/data/acpi/riscv64/virt/SPCR",
++"tests/data/acpi/riscv64/virt/SPCR",
 -- 
 2.34.1
 

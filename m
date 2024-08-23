@@ -1,121 +1,125 @@
-Received: by 2002:a17:505:917:b0:1be9:327d:8ee3 with SMTP id hq23csp773146njb;
-        Thu, 22 Aug 2024 13:06:06 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUTxfmH4Evj02eknYswBJ4H3fwhoeTtv9COFmDv64AeLXjIYx6C6X/nzb+yZFeGNln0ceE6cTft3tGyDg==@linaro.org
-X-Google-Smtp-Source: AGHT+IGkAW7HeofvRTurlGNIBkCeqXmtOKKyCqAk7anDEeGDnYdJ1cuOK/g035sGdwFPfkimPV2M
-X-Received: by 2002:a05:6122:54e:b0:4fc:da8f:c8a8 with SMTP id 71dfb90a1353d-4fd1a512ad7mr116039e0c.1.1724357166123;
-        Thu, 22 Aug 2024 13:06:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1724357166; cv=none;
+Received: by 2002:a17:505:1116:b0:1be9:327d:8ee3 with SMTP id pu22csp69425njb;
+        Thu, 22 Aug 2024 23:21:14 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCW64lX7WMVnni0y91twXhjFsz04VGusDo7+Gko7PtUpGSDMpou3uDsPp35BPclV2EitUYoRF3SyjFhVtg==@linaro.org
+X-Google-Smtp-Source: AGHT+IFTdWCAt+EyGSZLYn3L/9XjJJyd+dSVaWC3oRdpkWd9FJVh2B0+K8V3s1BQv/EtXj+B73fH
+X-Received: by 2002:a05:620a:2623:b0:79f:d0f:2b1f with SMTP id af79cd13be357-7a6897ba6d7mr134441285a.61.1724394074187;
+        Thu, 22 Aug 2024 23:21:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1724394074; cv=none;
         d=google.com; s=arc-20160816;
-        b=N8gadzEQ2p1nxY4MgkXEjo9eulrwj/o58XdpjedL49wVe5IBKkOkvkbcRAsDHpt90O
-         JwL7e41BZL/OxqKeDRvPDagQKLr8j+k1d6c1wtKmPkO/zdgTzev9Yl6C+mvdSET9yDAb
-         IBdanA6k1it0BN31oK8y34/89hPLgkWOqvI0HO4ydZQalWpuSQf8zV737rqq/iTbA59X
-         mBqX0ogYsdw9VXhyzl1ljKWWSR1JqYOG4J728Qu86AA2kdcNew2VXWWFn1hvBlLeb791
-         pkARifyx2oy6ifP2Xk3v0krn7rOFUO4kFaPj5M8sZYUNQWeAdpvmH1aJ/3C/spsrx638
-         AzhQ==
+        b=zxnFEkJepuLs7E1NRCIOwI0GRwryZ2dTGnIXurcCZ3/AjDbhpE5XXJlBmzWotFEJDq
+         GV/Ult7JXibMrfC/SA8/7xJYDK0l7DC46YfGcFtfxmxiuCGyrPekF1gWnNxXftHg3MQf
+         jYSrI8IzqQAERFxvuzgKpOQ2ADMUXSOlMz+fxRJbA8nO42S4iyG+1O+brR/4mozRAXHG
+         5kLzukWyYgF/DcW9jAATbBjBomT8QXdGM3bH1NeYiHXz2E/34RtvCnXIt175VKXK0+79
+         UjwVvkLk165KmCDFdVObrUHuezvlIVFR0R/cBUJBQnDvCZcBHFR2GXiZLyGygQvPXMts
+         y/KA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=LHjw9TuxbXlkebqSQdiQuYwr40RhVog8KVJbsePag34=;
-        fh=Y+hbqojD2XoCHCYdfNj67+oKqfaAg/gzl4Df6oJZPeA=;
-        b=bk++EjuiYLkXCUffp7QpBfJ9/YmcbLDG3oK1AMgYbMwSY/2cqJh78MpWiElK9J4IyA
-         gDb141x3iHJNr6+G7dD4FI4N/FiVdiCRnNdx4DaxD0rXWsp6wevyOs7jjtVwp/r0hxdl
-         v4JGVODjYUPw/ZnpUFda5+CrA8wcOz1grSyMW3AZkPeRGDJ16TnqdN6+BdfeZVTQH9Cs
-         KK5PUI6NOtSFKoM4cEq87ieKtIXbiPbPNkh0cwJyBizIFUjshB/5RCR4iy/3qgW4uiFR
-         B/Fl52Elhh+CHJYTm5LBBvq4SVItRK6tn8u49hhbg1zjLBZpUUKkO0WIsDYyMo/yRMcm
-         xpTQ==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=lHhF/F/swQaONpwD+nKZPTJF1ZZpGwL3r/Flj4EEU9E=;
+        fh=do0TMBOvtes8x+LP4Z9kpP3Vxm1/r8Aw01KwrJ/ZOy8=;
+        b=DPVLSIj32c1DGKC8QtRfmYFMPAcbjXRb2CO6grJ8ECVMPo+5/XQ3vAL7FEUMGlm5Id
+         48siTSPK0qz0DSWa3pnbWOKaf9pQg6u6rLXO1hw1XMzjQIxglL0wlldxg2tFu3foepkh
+         uXZVSeYbe1C+hAuxRn9VCNLE+tQHGW44paDWskc6Hlpmdd5Sy8yOCd2pGeo8AokcnJ3M
+         1FEe6Is6pW1Ur+G1g2PDLeuB4JoHv8zsyoY8dNcTyPxhfKUwrAIyV7UBZ6si9qytZhT2
+         owKwpLZbUVAZIlI/W2TlRQr8WczU6Vfr0uyfNXqiWw7Z+p1oBLOf47lF6roObAQ8e3TA
+         82Bg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=cWQcN3Nu;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Zzbj0jHf;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ada2fe7eead31-498e48de498si555149137.316.2024.08.22.13.06.06
+        by mx.google.com with ESMTPS id af79cd13be357-7a67f4296d6si353512285a.642.2024.08.22.23.21.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 22 Aug 2024 13:06:06 -0700 (PDT)
+        Thu, 22 Aug 2024 23:21:14 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=cWQcN3Nu;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Zzbj0jHf;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1shE4C-0003I6-OS; Thu, 22 Aug 2024 16:05:57 -0400
+	id 1shNfS-00020U-6P; Fri, 23 Aug 2024 02:21:03 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <tavip@google.com>) id 1shE48-0003Gx-Kv
- for qemu-arm@nongnu.org; Thu, 22 Aug 2024 16:05:52 -0400
-Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1shNfO-0001nC-Uf
+ for qemu-arm@nongnu.org; Fri, 23 Aug 2024 02:20:58 -0400
+Received: from mail-qk1-x72d.google.com ([2607:f8b0:4864:20::72d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <tavip@google.com>) id 1shE46-0006fw-8Z
- for qemu-arm@nongnu.org; Thu, 22 Aug 2024 16:05:51 -0400
-Received: by mail-ed1-x534.google.com with SMTP id
- 4fb4d7f45d1cf-5bec507f4ddso4863a12.0
- for <qemu-arm@nongnu.org>; Thu, 22 Aug 2024 13:05:46 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1shNfN-0004MC-5p
+ for qemu-arm@nongnu.org; Fri, 23 Aug 2024 02:20:58 -0400
+Received: by mail-qk1-x72d.google.com with SMTP id
+ af79cd13be357-7a1df0a93eeso103204285a.1
+ for <qemu-arm@nongnu.org>; Thu, 22 Aug 2024 23:20:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1724357145; x=1724961945; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=LHjw9TuxbXlkebqSQdiQuYwr40RhVog8KVJbsePag34=;
- b=cWQcN3NuOslqR9465K1AKXioANTfkqSYQjz5KHkveJYPTgyb7ri7N3dfLmXhZuEgWD
- VqSuXaKAc0vQc8tAlWRdFPKJp2sfhD2b9ZvIh6Zmi7lAN0GKRK2D+Wht2petH/XpKAPc
- HnltRS0rVFKZ8EEfyctreKOnNGsDZ2kWeN06DXirmP2DYZC/MOc29OWgYm8R3K3TCqj0
- zdLT47PNjJ+QNmbwuHjlvMfdOEUQKXpmVEntmWN4PkpZEE8Xf9Sq71agLIQ83WT1kGkr
- 03xjIGNAisiinw/zeNpA4H3UlRXCgn9v+uC9nqFoUvRvXkdnwC89fbYTEobuxklZEDxg
- lDLg==
+ d=linaro.org; s=google; t=1724394055; x=1724998855; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=lHhF/F/swQaONpwD+nKZPTJF1ZZpGwL3r/Flj4EEU9E=;
+ b=Zzbj0jHfnx9v4v04dhauXw6NK5fq7T7dDD9/VYV38vmFFWEEycpjl38d4qKzGr0/FN
+ bFmnesXfk+HxFZ5BwES+/HAPcX9UjwBpRSuFtcadm+6M8SegTZNSWCzdeg08OMBemJIt
+ fWgnwxbJP+exKPTtewrKcF8X8y/GpoTmljFBL2mzB0/h2pFP5CrZEoF6oBQmI53S0Na/
+ 7T3zR3Y4I1rh3DTw3tmJtMSipE7dMjYlfmSVdI4edgzo0ILG8C+lJGVhZkXSENubculz
+ S+pfesfIsjEZ8xJ5wWm48eJRI5OP8BFYo9/04rUHhaqut6IR0N38IWvl9M+Iebbgd8od
+ Mieg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1724357145; x=1724961945;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=LHjw9TuxbXlkebqSQdiQuYwr40RhVog8KVJbsePag34=;
- b=XjUKAA//PlloMQyi7crcKrhhu4+fD/OXJT+zZYCrcTS7jN/+oITGMnmWWwy5yF1bEC
- CF7rr6E7GZPSp4LmIKyBx4BrV8DCAH4XmCO9JXiXhNdClTl4kYYgyWZI5sXRXFYnBtfn
- fMdSntAYtoj6QhvRm+F0JYA+vrcnElX2S/1/dZBZsBaoZPAnTtncb55HwmCRUjgdjzht
- 7zpRvuMxyZwzsMj61/Pyj+0lbqxoPiclzWfljwIFimzqw3NQKsqjU6U+kmdCZPMJUUVc
- XE/ZGMOtWSJUPyDXCq/SKTR+VdgahWRLSX9KTZQ/fMUQ3oReYj4y3TG9DWSfwhweBa6A
- dU8Q==
+ d=1e100.net; s=20230601; t=1724394055; x=1724998855;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=lHhF/F/swQaONpwD+nKZPTJF1ZZpGwL3r/Flj4EEU9E=;
+ b=h3nZr30A1iL5EbHfrv9IABdStYF2dDhCDLd1iiVMJaON/5Q4JsgRAKuKiBLrM7cREG
+ fDAy9NcDYfgSaas22k5MCqKgOHqQNkr0vqS4reU47eDajDgZBiAwlyxPzQvlV0efYLDz
+ J1EgNUc9CwVugLvEsYhhEgnidHnqup7BLFpwVwAppCXN+PMFaKwfXAdXWmnje3S3wVMW
+ 2CRaBlO+YQrrfiSS3BZVoTpECuImTmF+WC+oknjYetm34UavXh03BsHtfurg0FAYw0E9
+ xEVTlZLMa/VDxR79yw43ZyMhdCOOw+sqcJtgSyYv8sQyP9JEwtsh9oGHNKDs9casHNBc
+ lGZA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCU1xeqbbkE3Twil5ZpENx99KyfkMhU8Zt0ZbfW+Jji1tPxR0/8XwAeZwBwpIb4JG6qaSUZ9iFQLrw==@nongnu.org
-X-Gm-Message-State: AOJu0YwrGvQ/mRrMPKJujuTY5SuWE+nAz0IFTcbIOw+6o18JUE2mYmQ3
- urIU/09s7b1C60i3bELz6Ktl7ZA4NtyNcFYzyWqHNYTpdELGetnOXrE6IIYFHpOtNQl9jfKwXec
- +zO8QWyPH/BxESxKIDx+0WCcNxZ8KhYH4Sb+C
-X-Received: by 2002:a05:6402:40c5:b0:5be:ce7d:ad0d with SMTP id
- 4fb4d7f45d1cf-5c086ad8aa2mr51956a12.0.1724357144242; Thu, 22 Aug 2024
- 13:05:44 -0700 (PDT)
+ AJvYcCVaD4wAAfyZUttPlxjtM24Eei5KRGLIiLSH8WlRHYUx3szD+8vdQXikRHUXbL7LjQsbG0UL72OlIQ==@nongnu.org
+X-Gm-Message-State: AOJu0YxmlaRcjaZDdfMvULp5OOmACG3HJQ/hFS8Cyh4kOFploAN/7p9H
+ nDExgsDrDCLLJYL4pxMbZKTcpEuEg7K6Gc1DDcZ9p7RfgLv+9GQHgkdRAvJkxC8=
+X-Received: by 2002:a05:620a:170b:b0:7a1:df6f:4374 with SMTP id
+ af79cd13be357-7a689700b3fmr125664085a.16.1724394055249; 
+ Thu, 22 Aug 2024 23:20:55 -0700 (PDT)
+Received: from [192.168.69.100] ([176.187.206.153])
+ by smtp.gmail.com with ESMTPSA id
+ af79cd13be357-7a67f3fc6b9sm145482785a.115.2024.08.22.23.20.52
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 22 Aug 2024 23:20:54 -0700 (PDT)
+Message-ID: <60ae5753-548f-429d-89b5-f9f3721741f3@linaro.org>
+Date: Fri, 23 Aug 2024 08:20:51 +0200
 MIME-Version: 1.0
-References: <20240817102606.3996242-1-tavip@google.com>
- <CAFEAcA8gg1u4_HwG9QOHj4RqfHgNLkT5nHLTFNrcaHdgL+zEPQ@mail.gmail.com>
-In-Reply-To: <CAFEAcA8gg1u4_HwG9QOHj4RqfHgNLkT5nHLTFNrcaHdgL+zEPQ@mail.gmail.com>
-From: Octavian Purdila <tavip@google.com>
-Date: Thu, 22 Aug 2024 13:05:33 -0700
-Message-ID: <CAGWr4cQ7rWaCo3q71+EaTQMXf1p-pdxL88s5tg_kzeLNo7DTRA@mail.gmail.com>
-Subject: Re: [RFC PATCH v2 00/23] NXP i.MX RT595, ARM SVD and device model
- unit tests
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, stefanst@google.com, 
- pbonzini@redhat.com, thuth@redhat.com, marcandre.lureau@redhat.com, 
- alistair@alistair23.me, berrange@redhat.com, philmd@linaro.org, 
- jsnow@redhat.com, crosa@redhat.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::534;
- envelope-from=tavip@google.com; helo=mail-ed1-x534.google.com
-X-Spam_score_int: -175
-X-Spam_score: -17.6
-X-Spam_bar: -----------------
-X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- ENV_AND_HDR_SPF_MATCH=-0.5, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01, USER_IN_DEF_DKIM_WL=-7.5,
- USER_IN_DEF_SPF_WL=-7.5 autolearn=unavailable autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2] tests/functional: Convert Aarch64 SBSA-Ref avocado
+ tests
+To: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>, qemu-devel@nongnu.org
+Cc: Thomas Huth <thuth@redhat.com>, Radoslaw Biernacki <rad@semihalf.com>,
+ qemu-arm@nongnu.org, Leif Lindholm <quic_llindhol@quicinc.com>,
+ Peter Maydell <peter.maydell@linaro.org>
+References: <20240822114146.86838-1-philmd@linaro.org>
+ <17ba91fd-b876-4169-8b72-3fddf966e1a3@linaro.org>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <17ba91fd-b876-4169-8b72-3fddf966e1a3@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::72d;
+ envelope-from=philmd@linaro.org; helo=mail-qk1-x72d.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -130,94 +134,67 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: C+ARItKv9hUV
+X-TUID: nl74pTiaqDdq
 
-On Thu, Aug 22, 2024 at 6:28=E2=80=AFAM Peter Maydell <peter.maydell@linaro=
-.org> wrote:
->
-> On Sat, 17 Aug 2024 at 11:26, Octavian Purdila <tavip@google.com> wrote:
-> >
-> > This patch set adds support for NXP's RT500 MCU [1] and the RT595
-> > EVK[2]. More RT500 device models will be submitted in future patch sets=
-.
-> >
-> > The goal of this first patch set is to provide a minimal set that
-> > allows running the NXP MCU SDK hello world example[4].
-> >
-> > The patch set introduces a (python) tool that generates C header files
-> > from ARM SVD files[3]. This significantly reduces the effort to write
-> > a new device model by automatically generating: register definitions
-> > and layout (including bit fields), register names for easier debugging
-> > and tracing, reset register values, register write masks, etc.
-> >
-> > The generated files are commited and not generated at compile
-> > time. Build targets are created so that they can be easily regenerated
-> > if needed.
-> >
-> > It also introduces unit tests for device models. To allow accessing
-> > registers from unit tests a system bus mock is created.
-> >
-> > This can potentially introduce maintainance issues, due to mocks or
-> > unit tests getting outdated when code is refactored. However, I think
-> > this is not an issue in this case because the APIs we mocked (system
-> > bus MMIO access) or directly used (irq APIs, chardev APIs, clock tree
-> > APIs) to interact with device models are stable at this
-> > point. Anecdotally, our experience seems to confirm this: we only run
-> > into one (trivially fixed) breaking upstream change (gpio getting
-> > removed from hwcore) in the last three years.
->
-> My main issue with the mocking is that it introduces a
-> completely different way of testing devices that is
-> not the same as what we use for any existing device.
-> QEMU already has too many places where there are multiple
-> different ways or styles of doing something, so adding a
-> new one should be a high bar (e.g. "this lets us test XYZ
-> that would be impossible in the old way") and preferably
-> also have a transition plan for how we would be
-> deprecating and dropping the old way of doing things.
->
-> So my inclination here is to say "you said that you could
-> do the testing of this device with qtest, so use qtest".
+On 22/8/24 20:48, Marcin Juszkiewicz wrote:
+> On 22.08.2024 13:41, Philippe Mathieu-Daudé wrote:
+>> Straight forward conversion. Since SBSA_FLASH files are not
+>> tarballs, use lzma_uncompress() method.
+>>
+>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+>> ---
+>> Based-on: <20240821082748.65853-1-thuth@redhat.com>
+>> ---
+> 
+>> diff --git a/tests/avocado/machine_aarch64_sbsaref.py 
+>> b/tests/functional/test_aarch64_sbsaref.py
+>> old mode 100644
+>> new mode 100755
+>> similarity index 56%
+>> rename from tests/avocado/machine_aarch64_sbsaref.py
+>> rename to tests/functional/test_aarch64_sbsaref.py
+>> index f8bf40c192..6728e5f92a
+>> --- a/tests/avocado/machine_aarch64_sbsaref.py
+>> +++ b/tests/functional/test_aarch64_sbsaref.py
+> 
+>> @@ -44,47 +55,31 @@ def fetch_firmware(self):
+>>           """
+>>           # Secure BootRom (TF-A code)
+>> -        fs0_xz_url = (
+>> -            
+>> "https://artifacts.codelinaro.org/artifactory/linaro-419-sbsa-ref/"
+>> -            "20240619-148232/edk2/SBSA_FLASH0.fd.xz"
+>> -        )
+>> -        fs0_xz_hash = 
+>> "0c954842a590988f526984de22e21ae0ab9cb351a0c99a8a58e928f0c7359cf7"
+>> -        tar_xz_path = self.fetch_asset(fs0_xz_url, 
+>> asset_hash=fs0_xz_hash,
+>> -                                      algorithm='sha256')
+>> -        archive.extract(tar_xz_path, self.workdir)
+>> +        fs0_xz_path = self.ASSET_FLASH0.fetch()
+>>           fs0_path = os.path.join(self.workdir, "SBSA_FLASH0.fd")
+>> +        lzma_uncompress(fs0_xz_path, fs0_path)
+>>           # Non-secure rom (UEFI and EFI variables)
+>> -        fs1_xz_url = (
+>> -            
+>> "https://artifacts.codelinaro.org/artifactory/linaro-419-sbsa-ref/"
+>> -            "20240619-148232/edk2/SBSA_FLASH1.fd.xz"
+>> -        )
+>> -        fs1_xz_hash = 
+>> "c6ec39374c4d79bb9e9cdeeb6db44732d90bb4a334cec92002b3f4b9cac4b5ee"
+>> -        tar_xz_path = self.fetch_asset(fs1_xz_url, 
+>> asset_hash=fs1_xz_hash,
+>> -                                      algorithm='sha256')
+>> -        archive.extract(tar_xz_path, self.workdir)
+>> +        fs1_xz_path = self.ASSET_FLASH0.fetch()
+> 
+> Here you want ASSET_FLASH1 not ASSET_FLASH0. That's why it timed out - 
+> system was hanging on exit from TF-A to EDK2.
 
-Looks like I missed some things when I looked at it, probably minor or
-a matter of preference in the great scheme of things. It might still
-be worth mentioning them here.
+Oops... Thanks you for debugging / noticing this!
 
-In patch 19 we are testing exposed clocks and AFAICS there are no
-qtest APIs for that. We can probably add a qest API for that though.
+> 
+>>           fs1_path = os.path.join(self.workdir, "SBSA_FLASH1.fd")
+>> +        lzma_uncompress(fs1_xz_path, fs1_path)
+> 
 
-In patch 9 we are using internal APIs exposed by the generic flexcom
-device to check that device selection works as expected. I don't see
-how we can reimplement that with qtest, this is a classic example of
-what unit tests can enable vs functional testing.
-
-There are also a few things that are a bit cumbersome to do with
-qtest. In patch 13 and 16 we introduce i2c and spi echo test devices
-to test i2c/spi transactions. I've noticed that device qtests use an
-existing i2c peripheral for tests. We could add the i2c and spi test
-devices to qemu and have them enabled by default. Or continue using
-existing spi/i2c peripherals for testing spi/i2c controllers for
-qtests which I personally don't like because it requires knowledge of
-specific peripherals.
-
-That being said, I'll go ahead and switch to qtests, if only to better
-understand advantages / disadvantages and separate this patch from the
-bigger device unit tests discussion.
-
-> If we were designing a "test devices" framework from
-> scratch, using mocks would probably be a strong candidate
-> for that design, but we aren't starting from scratch.
-
-I still think that writing device tests as unit tests is better:
- - devices can be tested independently
- - we can test more, including internal behaviour and APIs, error paths, et=
-c.
- - enable sanitizers by default for device tests*
-
-I wonder what people think and what would be a path to enable device
-unit tests. What would we need to prove, besides converting existing
-device qtests to unit tests, which I can certainly help with.
-
-*I was surprised to see that sanitizers are not enabled by default on
-unit tests when host dependencies are available, what is preventing
-that?

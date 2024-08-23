@@ -1,115 +1,123 @@
-Received: by 2002:a17:505:1116:b0:1be9:327d:8ee3 with SMTP id pu22csp180611njb;
-        Fri, 23 Aug 2024 06:20:28 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVKhCekMIV04N50pr7ABGXiCXEr7AXcHswd7R7fQej7luAVtU00mWQprJjUkHUhZsBtJnb8+8TVC+Q+Vg==@linaro.org
-X-Google-Smtp-Source: AGHT+IFuvcGuGyOMeTS4MMWDQfww0wRLGWWretRMVQAb1L1spBeSubuQWXLeZ58CLBvzDe7j0piT
-X-Received: by 2002:a05:6102:c88:b0:493:d69b:78c0 with SMTP id ada2fe7eead31-498f4c3fdaemr2604102137.27.1724419228788;
-        Fri, 23 Aug 2024 06:20:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1724419228; cv=none;
+Received: by 2002:a17:505:1116:b0:1be9:327d:8ee3 with SMTP id pu22csp213004njb;
+        Fri, 23 Aug 2024 07:45:01 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCV5LvcxW+93XLICQ4/Xq00ZmiljRi00vtrflCs6pMOB8WaPS75ueD34MUP1AFQHbDqMdjOwHu4f/dJ5Ww==@linaro.org
+X-Google-Smtp-Source: AGHT+IHDyh54vaRshb7mXKk7PiG+rYDul5ner+nT+XDSbENWErH5VLMy6YqQAKfrI7C05y6sJ0e2
+X-Received: by 2002:a05:620a:269b:b0:79e:f851:66ec with SMTP id af79cd13be357-7a6897ba7cfmr243161985a.61.1724424301151;
+        Fri, 23 Aug 2024 07:45:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1724424301; cv=none;
         d=google.com; s=arc-20160816;
-        b=MCWPQ/LWi35dKpHrx11d3GP1P4dKZ3dU8OTNB0NN36JtsrY0ezV9vH2xV1t///NiKO
-         KghsULmtqrTc2o+ILEv+NFvhqcdd7KeoOg+ndquoAPdUBCjLngV8M+sfZw9g3bsmpdM0
-         DGfqx4uJI3yAFvv7AOSWX3rOvibKtQb7zp8yccfhshiKv53KIaCRl2f2xabcbxUUmvlG
-         miwIOh5FN7+w5cUN/lniObcaQAyCIrYQMH+madbIoDOb0dtPNdQtgBFXfQIPD7W+Z+0u
-         +YSwj19e8aWxvNHKppBBs94ThiqfuoAEUegHWfag0WujzfcKhe+WbrqpQO+E/W5CvcXu
-         RRqQ==
+        b=F+VTXRuY6v0/aQl5HoDDdaY4NAM7Kqmhu/07hjkJxrttSCDIDGEOnCnujPGgFIstye
+         j8qd42lKcKCQDufmiNim8OnmNaEZQyuGK9l473GimS9461CyiTKW+fX1BKNweWqqXwzm
+         B6I91SlmvkKu6Cw72r8BkZTs6id+wPkHIlRs0mqKIuhptLcdfmf3pJbYpDxtmrf4ujX0
+         JjtSf1mXK2/Qh0qWx+RddgfKHUHUd1yKwBV7SiBV1YfQP7jWiqmjE2DQUKDPt/h/uXJO
+         bC8Y4YDc5HrDSJefPq1P870QpIrTb75yNLFwmda9FegIgqx7VRunmEaDO+IewBUHICSQ
+         wGEw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=c3Iy+EmEFhSfRcw35yG/DpcncueMVCKcsXZFQjjA4OU=;
-        fh=bd6JYs+zsWylHr8uUdIOK32CzPUgRjMqojZbfvqbqVY=;
-        b=qKpCAJAT5eCQX8/AUZyoTF/ggwyXijNGia71UkUIQk3xlSE3VFC2Xkq4BEy2TAGkRl
-         BcKvgPdX/MLV1A7GSDMR2lPvCj4nTl4aqxi+iGSqX/aYOo0v8g2x0NieH/NxKtWfpHQT
-         0U1VDJBDAPzNyy160K2kS4z4BA02t17i4XR+2gSOJmC12AefoK8C/MOZIoEfdOnNdgOn
-         P+kj5jR2CFyrvxzbG7WGBewGELoGw/CMRgivrlDKxbFLPHB3hlZcPAZH5GwtrG9wCZQ7
-         0ao4obARXznrDWCOFYp0pk3cogT64Dhsl8vra9HhTgwWtr+ep9lNYditkmF9A90zsKSG
-         aWeQ==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:organization:content-language:from:references:cc:to
+         :subject:user-agent:mime-version:date:message-id:dkim-signature;
+        bh=fDO1UunCpORbilzq8v5rXeDb+AES/vyYNU4mVBCcBgo=;
+        fh=y5E4WJwH5D+dW5XFeSZJJh3z6J9JAItWJPT9GOaipGM=;
+        b=Hhk7SaRV6BKlRPleXGhEd5y8Nucbxw78dCf7u8ArwS71DaTPqHy8YyU+tjCVkRbpsu
+         V4AcJ/lIMMKUIPT2Ynz5oqJLQpk5ozv6zmPAbJI/t+w8EM2j44kywsXwNLEjQ6DZQ7ls
+         touJuEBdWvcDb79Dm83z0jEmo6mmdz8o0YzLVTqQHl64v3i8Gegq/L2pYg9/8OnjAhab
+         HagIpOz5mX6qhVSxpRZsC6sdfwH4TxEsqIcwjvHOyulKlVOi46ATJq1G+XCvdB/54+6I
+         mPo8eRjOTUjWqITGNxkNBRpdePkyZMbXzO+EEzO7LfNQVGz9K5hOfi3nmG0JFzpTPESU
+         Av+w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=Z1idFMXi;
+       dkim=pass header.i=@linaro.org header.s=google header.b=IjO6Haj5;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ada2fe7eead31-498e4944b77si1216048137.671.2024.08.23.06.20.28
+        by mx.google.com with ESMTPS id af79cd13be357-7a67f40a62bsi433418985a.519.2024.08.23.07.45.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 23 Aug 2024 06:20:28 -0700 (PDT)
+        Fri, 23 Aug 2024 07:45:01 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=Z1idFMXi;
+       dkim=pass header.i=@linaro.org header.s=google header.b=IjO6Haj5;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1shUD2-0004vw-I0; Fri, 23 Aug 2024 09:20:11 -0400
+	id 1shVX4-0003Kf-Qe; Fri, 23 Aug 2024 10:44:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
- id 1shUCs-0004Hb-Gv
- for qemu-arm@nongnu.org; Fri, 23 Aug 2024 09:20:00 -0400
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+ (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
+ id 1shVX2-0003Is-NI
+ for qemu-arm@nongnu.org; Fri, 23 Aug 2024 10:44:52 -0400
+Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
- id 1shUCo-000192-SL
- for qemu-arm@nongnu.org; Fri, 23 Aug 2024 09:19:56 -0400
-Received: by mail-wm1-x32b.google.com with SMTP id
- 5b1f17b1804b1-428fb103724so16034755e9.1
- for <qemu-arm@nongnu.org>; Fri, 23 Aug 2024 06:19:53 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
+ id 1shVWz-0001A0-HX
+ for qemu-arm@nongnu.org; Fri, 23 Aug 2024 10:44:52 -0400
+Received: by mail-ed1-x52e.google.com with SMTP id
+ 4fb4d7f45d1cf-5bebd3b7c22so5080065a12.0
+ for <qemu-arm@nongnu.org>; Fri, 23 Aug 2024 07:44:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=ventanamicro.com; s=google; t=1724419191; x=1725023991; darn=nongnu.org;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=c3Iy+EmEFhSfRcw35yG/DpcncueMVCKcsXZFQjjA4OU=;
- b=Z1idFMXi52JkfwfmHZ2aWWwHWPppBboCDkpaeJMb1dT4sow+/R+4idoaQk8metE/ew
- RyISKPd+1a43tt1Qrj2acCz8x2bxm6jv1T6Jx7ix1r9GzjK57kBi0uYuJw2mIw4+rMXS
- PcCfglAouRDbJMmPNM5obKKyghFd1YublKAgGDOu5NbTLTXa8bqDl1d3DOdX9sFuC1kq
- iWpRSoSILpVWxWp8LOEyNAe1aOy3D+t6c6vtUKICtamATxyVdF9jqh1CgH+dscjpK3AB
- MbhvhvYNQI4cImbjSOI12WUTjgopDptkm9Wc4chlmWVXYvFugrr0hxYjbqbnA790aawG
- s97Q==
+ d=linaro.org; s=google; t=1724424286; x=1725029086; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:organization:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:from:to:cc:subject:date:message-id:reply-to;
+ bh=fDO1UunCpORbilzq8v5rXeDb+AES/vyYNU4mVBCcBgo=;
+ b=IjO6Haj5syMwAJJ9AWsFXAjipKbHXT1l6iDf4+Sl7c5S/WVhg74O7/9SA4IUhd/T41
+ ovDV+6F0Qm79Ma5/hzr955+jxhK3WQl06anNLdPOPGUpyJeh9i9J7zZoxrqK12q81a5K
+ Hg4LvoeWafTetm8r9iazWsedWOhwaF3eG4FQnmGJ5H4iekVro3wvw9hHQgPPLBteVUQ/
+ xY2PKhgPJlHuCEM4HIEqPE/+fBrTWxd7dwhG9GvnzcmrjZeEUiKxl0CATLEbHDpf9vqX
+ 1JpRyD0fu8Cu9ug0S6QvgevXbSeSLTrmy3lysiHWk6W1KaN4YiP37FDiDNHResu0Ur5g
+ 3V6g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1724419191; x=1725023991;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=c3Iy+EmEFhSfRcw35yG/DpcncueMVCKcsXZFQjjA4OU=;
- b=T82t/9berKPnU5yeMAAJnfs+iY7SCO+SwU2/MROmo+ZAnBj1eGSY/ovzXzrS+HsQZ1
- tz82NIX4K9CQCiGQ2H7RLZ2B0Di/6Hwq3XbG5zvZuw0nlHoRSgFPxUK+oT7KXaB1paus
- nooxR2FKlX1f9eKUW77duAqvX78G788+l2WMwNiGR2g/UQ4SoLrCuo9e4a5D+hDB1d6p
- mnUi+RgRSAOUOa+esiSU4nXi+su+OYFSkrnWV5fdcbjYIDsuIn5WmUOMC3iYBPhgvAnO
- FEQj6576pnNRhuruOCyrI/UyzUnnK+1ZDkOFJZ9a1xA5FGr5dH9V46QU/ZaOJ4Q15Lol
- h7dg==
-X-Gm-Message-State: AOJu0YwMhv6xr+X5PWH573ZbDsC09n1OwZg5YwotcqKBsOLs3ZSC2scY
- +MzTv+BDpV93Q9X52v40zl0L7mLs41T/sgNB9lW99PYQqEfd1pcsjMPOuUvxbYI=
-X-Received: by 2002:a05:600c:a04:b0:426:526f:4a1f with SMTP id
- 5b1f17b1804b1-42acca01a23mr13272315e9.16.1724419191013; 
- Fri, 23 Aug 2024 06:19:51 -0700 (PDT)
-Received: from sunil-laptop ([106.51.198.16]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-373081ff654sm4137939f8f.75.2024.08.23.06.19.43
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 23 Aug 2024 06:19:50 -0700 (PDT)
-Date: Fri, 23 Aug 2024 18:49:38 +0530
-From: Sunil V L <sunilvl@ventanamicro.com>
-To: Sia Jee Heng <jeeheng.sia@starfivetech.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, qemu-riscv@nongnu.org,
- mst@redhat.com, imammedo@redhat.com, anisinha@redhat.com,
- peter.maydell@linaro.org, shannon.zhaosl@gmail.com,
- palmer@dabbelt.com, alistair.francis@wdc.com,
- bin.meng@windriver.com, liwei1518@gmail.com,
- dbarboza@ventanamicro.com, zhiwei_liu@linux.alibaba.com
-Subject: Re: [PATCH RESEND v4 3/3] tests/qtest/bios-tables-test: Update virt
- SPCR golden reference for RISC-V
-Message-ID: <ZsiMah7pBYLOqHXA@sunil-laptop>
-References: <20240823113142.161727-1-jeeheng.sia@starfivetech.com>
- <20240823113142.161727-4-jeeheng.sia@starfivetech.com>
+ d=1e100.net; s=20230601; t=1724424286; x=1725029086;
+ h=content-transfer-encoding:in-reply-to:organization:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=fDO1UunCpORbilzq8v5rXeDb+AES/vyYNU4mVBCcBgo=;
+ b=SDR80e/813GEu5A328ZFgd6pIHf+KVB9QQPR6KwRJ5MpqwaLBjNFj/3xYQydC6OhMt
+ Trz6dsZU75Jm/0gu3vxKmhChneJ3zi+AKjgwLpm3gAqIPl9DW7LJqnddMdT5URZt7YAZ
+ ROADF5S5isHyHtRTrV6sFtxkWqfn2Vdxzb0F9sUrqnIYt0EZGppvd/dYNzteWsb5th3Q
+ 2i7DSTr02qwl3wjxvkCCCHVYupSOMVtZPEh2Krys58hMurniw5zM/Clb8Qhk1D1wcAV9
+ 5YUJmzMJFlg4YrZbC9WHRxpnGxeQBkkMGRWx6AurXmgAx+4+szrGJW3Mh5m/fp62dk7V
+ 3j+Q==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCU4OgcJlvciq1wRU3cpAHhd5AjSxAf+Koh0IDjMydTgSY2ADvv4OJYGA2jNgVZSF8sofU7X9Q1nsA==@nongnu.org
+X-Gm-Message-State: AOJu0YyUpyIL5f60qtZbRIuwPHbg6VLEs1vXX4jPfkDpy9wP7WgQTpa7
+ GDAfHYxcECXLwdjFzlhkq1210YFPJqmQoEi0liRgsrlO3SFcgc0ZD1XV7SsJEkyaWIAO+lTeg4b
+ UY4g=
+X-Received: by 2002:a17:906:6a1e:b0:a73:9037:fdf5 with SMTP id
+ a640c23a62f3a-a86a2f1f72emr288622866b.6.1724424285862; 
+ Fri, 23 Aug 2024 07:44:45 -0700 (PDT)
+Received: from [192.168.200.25] (83.25.211.12.ipv4.supernova.orange.pl.
+ [83.25.211.12]) by smtp.gmail.com with ESMTPSA id
+ a640c23a62f3a-a868f2adc55sm265928266b.71.2024.08.23.07.44.44
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 23 Aug 2024 07:44:45 -0700 (PDT)
+Message-ID: <857d39f8-c45c-489a-875e-7e1a4358aaf9@linaro.org>
+Date: Fri, 23 Aug 2024 16:44:44 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20240823113142.161727-4-jeeheng.sia@starfivetech.com>
-Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
- envelope-from=sunilvl@ventanamicro.com; helo=mail-wm1-x32b.google.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3] tests/functional: Convert Aarch64 SBSA-Ref avocado
+ tests
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Leif Lindholm <quic_llindhol@quicinc.com>, qemu-arm@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Radoslaw Biernacki <rad@semihalf.com>, Thomas Huth <thuth@redhat.com>
+References: <20240823131614.10269-1-philmd@linaro.org>
+From: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+Content-Language: pl-PL, en-GB
+Organization: Linaro
+In-Reply-To: <20240823131614.10269-1-philmd@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::52e;
+ envelope-from=marcin.juszkiewicz@linaro.org; helo=mail-ed1-x52e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -131,111 +139,38 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 33325MCaPL85
+X-TUID: sHrdbLiGRJPJ
 
-On Fri, Aug 23, 2024 at 04:31:42AM -0700, Sia Jee Heng wrote:
-> Update the virt SPCR golden reference file for RISC-V to accommodate the
-> SPCR Table revision 4 [1], utilizing the iasl binary compiled from the
-> latest ACPICA repository. The SPCR table has been modified to
-> adhere to the revision 4 format [2].
+On 23.08.2024 15:16, Philippe Mathieu-Daudé wrote:
+> Straight forward conversion. Since SBSA_FLASH files are not
+> tarballs, use lzma_uncompress() method.
 > 
-> [1]: https://learn.microsoft.com/en-us/windows-hardware/drivers/serports/serial-port-console-redirection-table
-> [2]: https://github.com/acpica/acpica/pull/931
+> Avocado used to set a timeout of 11 tests * 180s = 1980s.
+> Hopefully 600s should be sufficient.
 > 
-> Diffs from iasl:
-> /*
->   * Intel ACPI Component Architecture
->   * AML/ASL+ Disassembler version 20200925 (64-bit version)
->   * Copyright (c) 2000 - 2020 Intel Corporation
->   *
-> - * Disassembly of tests/data/acpi/riscv64/virt/SPCR, Fri Aug 23 02:07:47 2024
-> + * Disassembly of /tmp/aml-Y8JPS2, Fri Aug 23 02:07:47 2024
->   *
->   * ACPI Data Table [SPCR]
->   *
->   * Format: [HexOffset DecimalOffset ByteLength]  FieldName : FieldValue
->   */
+> Running on macOS Sonoma / Apple silicon M1:
 > 
->  [000h 0000   4]                    Signature : "SPCR"    [Serial Port Console Redirection table]
-> -[004h 0004   4]                 Table Length : 00000050
-> -[008h 0008   1]                     Revision : 02
-> -[009h 0009   1]                     Checksum : B9
-> +[004h 0004   4]                 Table Length : 0000005A
-> +[008h 0008   1]                     Revision : 04
-> +[009h 0009   1]                     Checksum : 13
->  [00Ah 0010   6]                       Oem ID : "BOCHS "
->  [010h 0016   8]                 Oem Table ID : "BXPC    "
->  [018h 0024   4]                 Oem Revision : 00000001
->  [01Ch 0028   4]              Asl Compiler ID : "BXPC"
->  [020h 0032   4]        Asl Compiler Revision : 00000001
-> 
-> -[024h 0036   1]               Interface Type : 00
-> +[024h 0036   1]               Interface Type : 12
->  [025h 0037   3]                     Reserved : 000000
-> 
->  [028h 0040  12]         Serial Port Register : [Generic Address Structure]
->  [028h 0040   1]                     Space ID : 00 [SystemMemory]
->  [029h 0041   1]                    Bit Width : 20
->  [02Ah 0042   1]                   Bit Offset : 00
->  [02Bh 0043   1]         Encoded Access Width : 01 [Byte Access:8]
->  [02Ch 0044   8]                      Address : 0000000010000000
-> 
->  [034h 0052   1]               Interrupt Type : 10
->  [035h 0053   1]          PCAT-compatible IRQ : 00
->  [036h 0054   4]                    Interrupt : 0000000A
->  [03Ah 0058   1]                    Baud Rate : 07
->  [03Bh 0059   1]                       Parity : 00
->  [03Ch 0060   1]                    Stop Bits : 01
->  [03Dh 0061   1]                 Flow Control : 00
->  [03Eh 0062   1]                Terminal Type : 00
->  [04Ch 0076   1]                     Reserved : 00
->  [040h 0064   2]                PCI Device ID : FFFF
->  [042h 0066   2]                PCI Vendor ID : FFFF
->  [044h 0068   1]                      PCI Bus : 00
->  [045h 0069   1]                   PCI Device : 00
->  [046h 0070   1]                 PCI Function : 00
->  [047h 0071   4]                    PCI Flags : 00000000
->  [04Bh 0075   1]                  PCI Segment : 00
->  [04Ch 0076   4]                     Reserved : 00000000
-> 
-Shouldn't iasl print additional fields added in version 4?
+>    $ QEMU_TEST_TIMEOUT_EXPECTED=1 make check-functional-aarch64 V=1
+>    ▶ 1/5 test_aarch64_sbsaref.Aarch64SbsarefMachine.test_sbsaref_alpine_linux_max              OK
+>    ▶ 1/5 test_aarch64_sbsaref.Aarch64SbsarefMachine.test_sbsaref_alpine_linux_max_pauth_impdef OK
+>    ▶ 1/5 test_aarch64_sbsaref.Aarch64SbsarefMachine.test_sbsaref_alpine_linux_max_pauth_off    OK
+>    ▶ 1/5 test_aarch64_sbsaref.Aarch64SbsarefMachine.test_sbsaref_alpine_linux_neoverse_n1      OK
+>    ▶ 1/5 test_aarch64_sbsaref.Aarch64SbsarefMachine.test_sbsaref_edk2_firmware                 OK
+>    ▶ 1/5 test_aarch64_sbsaref.Aarch64SbsarefMachine.test_sbsaref_openbsd73_cortex_a57          OK
+>    ▶ 1/5 test_aarch64_sbsaref.Aarch64SbsarefMachine.test_sbsaref_openbsd73_max                 OK
+>    ▶ 1/5 test_aarch64_sbsaref.Aarch64SbsarefMachine.test_sbsaref_openbsd73_max_pauth_impdef    OK
+>    ▶ 1/5 test_aarch64_sbsaref.Aarch64SbsarefMachine.test_sbsaref_openbsd73_max_pauth_off       OK
+>    ▶ 1/5 test_aarch64_sbsaref.Aarch64SbsarefMachine.test_sbsaref_openbsd73_neoverse_n1         OK
+>    1/5 qemu:func-thorough+func-aarch64-thorough+thorough / func-aarch64-aarch64_sbsaref        OK   241.79s  11 subtests passed
 
-Thanks,
-Sunil
-> -Raw Table Data: Length 80 (0x50)
-> +Raw Table Data: Length 90 (0x5A)
+354.35s   11 subtests passed
+
+M1 Pro, Fedora Linux. 600s feels fine.
+
+>    ...
 > 
-> -    0000: 53 50 43 52 50 00 00 00 02 B9 42 4F 43 48 53 20  // SPCRP.....BOCHS
-> +    0000: 53 50 43 52 5A 00 00 00 04 13 42 4F 43 48 53 20  // SPCRZ.....BOCHS
->      0010: 42 58 50 43 20 20 20 20 01 00 00 00 42 58 50 43  // BXPC    ....BXPC
-> -    0020: 01 00 00 00 00 00 00 00 00 20 00 01 00 00 00 10  // ......... ......
-> +    0020: 01 00 00 00 12 00 00 00 00 20 00 01 00 00 00 10  // ......... ......
->      0030: 00 00 00 00 10 00 0A 00 00 00 07 00 01 00 00 03  // ................
->      0040: FF FF FF FF 00 00 00 00 00 00 00 00 00 00 00 00  // ................
-> +    0050: 00 00 00 00 02 00 58 00 2E 00                    // ......X...
-> 
-> Signed-off-by: Sia Jee Heng <jeeheng.sia@starfivetech.com>
+> Signed-off-by: Philippe Mathieu-Daudé<philmd@linaro.org>
 > ---
->  tests/data/acpi/riscv64/virt/SPCR           | Bin 80 -> 90 bytes
->  tests/qtest/bios-tables-test-allowed-diff.h |   1 -
->  2 files changed, 1 deletion(-)
-> 
-> diff --git a/tests/data/acpi/riscv64/virt/SPCR b/tests/data/acpi/riscv64/virt/SPCR
-> index 4da9daf65f71a13ac2b488d4e9728f194b569a43..09617f8793a6f7b1f08172f735b58aa748671540 100644
-> GIT binary patch
-> delta 32
-> mcmWHD;tCFM4vJ!6U|<oR$R))nG*MNX3&>+&Vu)bSV*mhNumqU^
-> 
-> delta 21
-> ccmazF;0g|K4hmpkU|`xgkxPn^VWO%w05v59j{pDw
-> 
-> diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
-> index aae973048a..dfb8523c8b 100644
-> --- a/tests/qtest/bios-tables-test-allowed-diff.h
-> +++ b/tests/qtest/bios-tables-test-allowed-diff.h
-> @@ -1,2 +1 @@
->  /* List of comma-separated changed AML files to ignore */
-> -"tests/data/acpi/riscv64/virt/SPCR",
-> -- 
-> 2.34.1
-> 
+> Based-on:<20240821082748.65853-1-thuth@redhat.com>
+
+Reviewed-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>

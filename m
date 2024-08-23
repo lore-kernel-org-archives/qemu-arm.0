@@ -1,200 +1,156 @@
-Received: by 2002:a17:505:1116:b0:1be9:327d:8ee3 with SMTP id pu22csp69425njb;
-        Thu, 22 Aug 2024 23:21:14 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCW64lX7WMVnni0y91twXhjFsz04VGusDo7+Gko7PtUpGSDMpou3uDsPp35BPclV2EitUYoRF3SyjFhVtg==@linaro.org
-X-Google-Smtp-Source: AGHT+IFTdWCAt+EyGSZLYn3L/9XjJJyd+dSVaWC3oRdpkWd9FJVh2B0+K8V3s1BQv/EtXj+B73fH
-X-Received: by 2002:a05:620a:2623:b0:79f:d0f:2b1f with SMTP id af79cd13be357-7a6897ba6d7mr134441285a.61.1724394074187;
-        Thu, 22 Aug 2024 23:21:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1724394074; cv=none;
+Received: by 2002:a17:505:1116:b0:1be9:327d:8ee3 with SMTP id pu22csp70714njb;
+        Thu, 22 Aug 2024 23:28:31 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVA2Rro6cc6YLh3BP2MJ6ltTEh54hxOxz8fQiQflLALMybcVjjVKlBsjSITTLJbKGhmgNoBcOzDX9WEiw==@linaro.org
+X-Google-Smtp-Source: AGHT+IGKXmX0/iw2AZ/x9X33PCW8mii3ur4rz4hZYm1gMJHU1+SgHkxVvrrucQVzB1mkRyptUYQ+
+X-Received: by 2002:ac8:690e:0:b0:446:589b:cea8 with SMTP id d75a77b69052e-4550931fad0mr23527871cf.28.1724394511431;
+        Thu, 22 Aug 2024 23:28:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1724394511; cv=none;
         d=google.com; s=arc-20160816;
-        b=zxnFEkJepuLs7E1NRCIOwI0GRwryZ2dTGnIXurcCZ3/AjDbhpE5XXJlBmzWotFEJDq
-         GV/Ult7JXibMrfC/SA8/7xJYDK0l7DC46YfGcFtfxmxiuCGyrPekF1gWnNxXftHg3MQf
-         jYSrI8IzqQAERFxvuzgKpOQ2ADMUXSOlMz+fxRJbA8nO42S4iyG+1O+brR/4mozRAXHG
-         5kLzukWyYgF/DcW9jAATbBjBomT8QXdGM3bH1NeYiHXz2E/34RtvCnXIt175VKXK0+79
-         UjwVvkLk165KmCDFdVObrUHuezvlIVFR0R/cBUJBQnDvCZcBHFR2GXiZLyGygQvPXMts
-         y/KA==
+        b=yXRicSpYlRWHEvsgVjK+FlVO/I6ecYyA0i3qUMAiHue4rbAWppjOE16ZY4fvmBdTqS
+         2Sd4+F6jZNGpxiiPvuJJXZMTSD0rM4VpVwBXWDoQQoR2lCC/nW8ym2D7CAl8h6hmaCQg
+         hrsqlrUJ5m/aW8GJokbYMZzci6bn6BYmewb2nwctGgQp+thnEbadULWiAAHeIw6feS6j
+         fElX/I4+vWjy2C6KSr+WigJ+eoO+rd8tOFoFqpRCTHXL6RQYy7lu21ELizJdkYjuI2vy
+         s4dxXEFVXzTLRtuPfOP2a/5FvRpQAz5CQKWo9057ob5H8gFKqBLPOln9kWjEZTblXEE1
+         frFw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:content-language:references:cc:to:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=lHhF/F/swQaONpwD+nKZPTJF1ZZpGwL3r/Flj4EEU9E=;
-        fh=do0TMBOvtes8x+LP4Z9kpP3Vxm1/r8Aw01KwrJ/ZOy8=;
-        b=DPVLSIj32c1DGKC8QtRfmYFMPAcbjXRb2CO6grJ8ECVMPo+5/XQ3vAL7FEUMGlm5Id
-         48siTSPK0qz0DSWa3pnbWOKaf9pQg6u6rLXO1hw1XMzjQIxglL0wlldxg2tFu3foepkh
-         uXZVSeYbe1C+hAuxRn9VCNLE+tQHGW44paDWskc6Hlpmdd5Sy8yOCd2pGeo8AokcnJ3M
-         1FEe6Is6pW1Ur+G1g2PDLeuB4JoHv8zsyoY8dNcTyPxhfKUwrAIyV7UBZ6si9qytZhT2
-         owKwpLZbUVAZIlI/W2TlRQr8WczU6Vfr0uyfNXqiWw7Z+p1oBLOf47lF6roObAQ8e3TA
-         82Bg==;
+        bh=L9cq5SSqR0fe7bHR0w6kL76yTFiFNv8uUr6KDGyS7nk=;
+        fh=XVPGJT9pPI+rpjNDLD1UVW4w7kE3XTQwTMDu6szP2L0=;
+        b=mRHoZqvzR4SL9zoK2Cox7ts9lGNVnT+OsWG/s2m/EjBN3gAsc4AX74avPx+/Eyu4oa
+         YRG4yfjVWCHtqsWkl/jK8X5M35+jvJqxCislvGOFwJwOgBZV8yweYKdgw819CaXh84ne
+         V3RW2hFLuJl3TbI+DdWNZgbFGYkCLrgtKgdvmphnM7SEoTTSHnP3ywew4FB5gA38J6uA
+         1nFYFHU5KbHOCbF2FjPmbommpB/UPp+JHZXlGIHn00Ggx1FNykIIZjPAHwtTDYUBSct3
+         bKaBHk7P2lHdjoIPQsQrtXVkMNPS2n7VBLtALbBhF+44pnt0mPrEMB7/o7x3yin+nLAT
+         hgtw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Zzbj0jHf;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=Zox+KxIg;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7a67f4296d6si353512285a.642.2024.08.22.23.21.14
+        by mx.google.com with ESMTPS id d75a77b69052e-454fe0d3ec4si32381131cf.75.2024.08.22.23.28.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 22 Aug 2024 23:21:14 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 22 Aug 2024 23:28:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Zzbj0jHf;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=Zox+KxIg;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1shNfS-00020U-6P; Fri, 23 Aug 2024 02:21:03 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1shNmQ-00084R-Or; Fri, 23 Aug 2024 02:28:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1shNfO-0001nC-Uf
- for qemu-arm@nongnu.org; Fri, 23 Aug 2024 02:20:58 -0400
-Received: from mail-qk1-x72d.google.com ([2607:f8b0:4864:20::72d])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1shNmP-000816-Mw
+ for qemu-devel@nongnu.org; Fri, 23 Aug 2024 02:28:13 -0400
+Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1shNfN-0004MC-5p
- for qemu-arm@nongnu.org; Fri, 23 Aug 2024 02:20:58 -0400
-Received: by mail-qk1-x72d.google.com with SMTP id
- af79cd13be357-7a1df0a93eeso103204285a.1
- for <qemu-arm@nongnu.org>; Thu, 22 Aug 2024 23:20:56 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1shNmO-0005d3-2J
+ for qemu-devel@nongnu.org; Fri, 23 Aug 2024 02:28:13 -0400
+Received: by mail-ej1-x629.google.com with SMTP id
+ a640c23a62f3a-a869f6ce2b9so97184266b.2
+ for <qemu-devel@nongnu.org>; Thu, 22 Aug 2024 23:28:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1724394055; x=1724998855; darn=nongnu.org;
+ d=linaro.org; s=google; t=1724394489; x=1724999289; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=lHhF/F/swQaONpwD+nKZPTJF1ZZpGwL3r/Flj4EEU9E=;
- b=Zzbj0jHfnx9v4v04dhauXw6NK5fq7T7dDD9/VYV38vmFFWEEycpjl38d4qKzGr0/FN
- bFmnesXfk+HxFZ5BwES+/HAPcX9UjwBpRSuFtcadm+6M8SegTZNSWCzdeg08OMBemJIt
- fWgnwxbJP+exKPTtewrKcF8X8y/GpoTmljFBL2mzB0/h2pFP5CrZEoF6oBQmI53S0Na/
- 7T3zR3Y4I1rh3DTw3tmJtMSipE7dMjYlfmSVdI4edgzo0ILG8C+lJGVhZkXSENubculz
- S+pfesfIsjEZ8xJ5wWm48eJRI5OP8BFYo9/04rUHhaqut6IR0N38IWvl9M+Iebbgd8od
- Mieg==
+ bh=L9cq5SSqR0fe7bHR0w6kL76yTFiFNv8uUr6KDGyS7nk=;
+ b=Zox+KxIgBJ0qqNiUOJhnevnEmqQDDrYKs9JbdWUDeQA91jjRMrFbmqxCvucWC2omud
+ ezQP1D0l05OnuolkCHlwp1Bk13RWIA5X2uon0MEy2hkRDXwNiEPSQTnos6+JXk0Pi1aV
+ vBbPR0JZoWkYyHGxODleR/MujFEruEjKGvWQ6SJIRMm9bxycdTXC0S2h8YH0TfjR1+bf
+ XJoxrYMlvXK4TjdukWbdRs2Pp938iZ2U5y5nznLj1rjeiXxqy4baInsMyJcXk3kW+Eoz
+ rq/8pQON7gkIAR+O8Fy7HMONTthEGaDcvUOh68Bd3f1ibA2S07vXYhzFCQaOu96BVp9k
+ GKlA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1724394055; x=1724998855;
+ d=1e100.net; s=20230601; t=1724394489; x=1724999289;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=lHhF/F/swQaONpwD+nKZPTJF1ZZpGwL3r/Flj4EEU9E=;
- b=h3nZr30A1iL5EbHfrv9IABdStYF2dDhCDLd1iiVMJaON/5Q4JsgRAKuKiBLrM7cREG
- fDAy9NcDYfgSaas22k5MCqKgOHqQNkr0vqS4reU47eDajDgZBiAwlyxPzQvlV0efYLDz
- J1EgNUc9CwVugLvEsYhhEgnidHnqup7BLFpwVwAppCXN+PMFaKwfXAdXWmnje3S3wVMW
- 2CRaBlO+YQrrfiSS3BZVoTpECuImTmF+WC+oknjYetm34UavXh03BsHtfurg0FAYw0E9
- xEVTlZLMa/VDxR79yw43ZyMhdCOOw+sqcJtgSyYv8sQyP9JEwtsh9oGHNKDs9casHNBc
- lGZA==
+ bh=L9cq5SSqR0fe7bHR0w6kL76yTFiFNv8uUr6KDGyS7nk=;
+ b=dMwhpAW6maVvGgPEOldt3e1jSjusQDoFwZNdwvdiQ4vc5jsFuWhmKxqFvXDK6EI0FB
+ xmuePspZnkrBTI2Tw+viz6ZF2+S2eDWyN+8NtICxhC1CskdbhMGnSbunogaHKzShNFf4
+ xR/BSTdg4afBFhABmxbyrtZf1KK6VksHUQe010d9PJcir3reky/gmPX+ihOhHTGDj+bM
+ uYN7rOT70ExqKroapiuEGYlUSWvKZXKTF0k5yuUDf4jXMtnZ5JwjtDGJ50KN22Lhgzro
+ imtpHVhID6E5sq8X8qeSWUg5lMl0Fpwcq6/HIJTzHWQ4CsLK4lT0Akw/NKs3ejTtMgoA
+ jPmA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVaD4wAAfyZUttPlxjtM24Eei5KRGLIiLSH8WlRHYUx3szD+8vdQXikRHUXbL7LjQsbG0UL72OlIQ==@nongnu.org
-X-Gm-Message-State: AOJu0YxmlaRcjaZDdfMvULp5OOmACG3HJQ/hFS8Cyh4kOFploAN/7p9H
- nDExgsDrDCLLJYL4pxMbZKTcpEuEg7K6Gc1DDcZ9p7RfgLv+9GQHgkdRAvJkxC8=
-X-Received: by 2002:a05:620a:170b:b0:7a1:df6f:4374 with SMTP id
- af79cd13be357-7a689700b3fmr125664085a.16.1724394055249; 
- Thu, 22 Aug 2024 23:20:55 -0700 (PDT)
+ AJvYcCUnVmst90gw9cVQb/QIXXGwVMcC3A68MzH6ERZAsIrDFQmHbOKFtOxxxptlvfkx177+viUtRwHNX9E5@nongnu.org
+X-Gm-Message-State: AOJu0YxaEMiGpSdM7CsugXUqCEjZB8jMUwbt/wPRX2G65g2FaCeuzebU
+ Z4iiBY7LVHM82jGrXOwIXCVoKfyw2j3a1ixJTbfcaPJOpCIRlPr2VoXQzmnzx2Y=
+X-Received: by 2002:a17:907:72d0:b0:a86:8196:e04d with SMTP id
+ a640c23a62f3a-a86a530539dmr76107166b.39.1724394488875; 
+ Thu, 22 Aug 2024 23:28:08 -0700 (PDT)
 Received: from [192.168.69.100] ([176.187.206.153])
  by smtp.gmail.com with ESMTPSA id
- af79cd13be357-7a67f3fc6b9sm145482785a.115.2024.08.22.23.20.52
+ a640c23a62f3a-a868f220dbesm208907966b.27.2024.08.22.23.28.07
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 22 Aug 2024 23:20:54 -0700 (PDT)
-Message-ID: <60ae5753-548f-429d-89b5-f9f3721741f3@linaro.org>
-Date: Fri, 23 Aug 2024 08:20:51 +0200
+ Thu, 22 Aug 2024 23:28:08 -0700 (PDT)
+Message-ID: <b2b37ef6-1eb6-4572-81a9-7c1406373d23@linaro.org>
+Date: Fri, 23 Aug 2024 08:28:06 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] tests/functional: Convert Aarch64 SBSA-Ref avocado
- tests
-To: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>, qemu-devel@nongnu.org
-Cc: Thomas Huth <thuth@redhat.com>, Radoslaw Biernacki <rad@semihalf.com>,
- qemu-arm@nongnu.org, Leif Lindholm <quic_llindhol@quicinc.com>,
- Peter Maydell <peter.maydell@linaro.org>
-References: <20240822114146.86838-1-philmd@linaro.org>
- <17ba91fd-b876-4169-8b72-3fddf966e1a3@linaro.org>
+Subject: Re: [PATCH for-9.2] hw/arm/sbsa-ref: Don't leak string in
+ sbsa_fdt_add_gic_node()
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: Radoslaw Biernacki <rad@semihalf.com>,
+ Leif Lindholm <quic_llindhol@quicinc.com>,
+ Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+References: <20240822162323.706382-1-peter.maydell@linaro.org>
 Content-Language: en-US
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <17ba91fd-b876-4169-8b72-3fddf966e1a3@linaro.org>
+In-Reply-To: <20240822162323.706382-1-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::72d;
- envelope-from=philmd@linaro.org; helo=mail-qk1-x72d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::629;
+ envelope-from=philmd@linaro.org; helo=mail-ej1-x629.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: nl74pTiaqDdq
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: c6Rb5rPIC2+W
 
-On 22/8/24 20:48, Marcin Juszkiewicz wrote:
-> On 22.08.2024 13:41, Philippe Mathieu-Daudé wrote:
->> Straight forward conversion. Since SBSA_FLASH files are not
->> tarballs, use lzma_uncompress() method.
->>
->> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->> ---
->> Based-on: <20240821082748.65853-1-thuth@redhat.com>
->> ---
+On 22/8/24 18:23, Peter Maydell wrote:
+> In sbsa_fdt_add_gic_node() we g_strdup_printf() two nodename
+> strings, but only free one.
 > 
->> diff --git a/tests/avocado/machine_aarch64_sbsaref.py 
->> b/tests/functional/test_aarch64_sbsaref.py
->> old mode 100644
->> new mode 100755
->> similarity index 56%
->> rename from tests/avocado/machine_aarch64_sbsaref.py
->> rename to tests/functional/test_aarch64_sbsaref.py
->> index f8bf40c192..6728e5f92a
->> --- a/tests/avocado/machine_aarch64_sbsaref.py
->> +++ b/tests/functional/test_aarch64_sbsaref.py
+> Since the string is actually entirely constant and we don't
+> make any use of printf's format-string operations, we can
+> drop the g_strdup_printf() use entirely.
 > 
->> @@ -44,47 +55,31 @@ def fetch_firmware(self):
->>           """
->>           # Secure BootRom (TF-A code)
->> -        fs0_xz_url = (
->> -            
->> "https://artifacts.codelinaro.org/artifactory/linaro-419-sbsa-ref/"
->> -            "20240619-148232/edk2/SBSA_FLASH0.fd.xz"
->> -        )
->> -        fs0_xz_hash = 
->> "0c954842a590988f526984de22e21ae0ab9cb351a0c99a8a58e928f0c7359cf7"
->> -        tar_xz_path = self.fetch_asset(fs0_xz_url, 
->> asset_hash=fs0_xz_hash,
->> -                                      algorithm='sha256')
->> -        archive.extract(tar_xz_path, self.workdir)
->> +        fs0_xz_path = self.ASSET_FLASH0.fetch()
->>           fs0_path = os.path.join(self.workdir, "SBSA_FLASH0.fd")
->> +        lzma_uncompress(fs0_xz_path, fs0_path)
->>           # Non-secure rom (UEFI and EFI variables)
->> -        fs1_xz_url = (
->> -            
->> "https://artifacts.codelinaro.org/artifactory/linaro-419-sbsa-ref/"
->> -            "20240619-148232/edk2/SBSA_FLASH1.fd.xz"
->> -        )
->> -        fs1_xz_hash = 
->> "c6ec39374c4d79bb9e9cdeeb6db44732d90bb4a334cec92002b3f4b9cac4b5ee"
->> -        tar_xz_path = self.fetch_asset(fs1_xz_url, 
->> asset_hash=fs1_xz_hash,
->> -                                      algorithm='sha256')
->> -        archive.extract(tar_xz_path, self.workdir)
->> +        fs1_xz_path = self.ASSET_FLASH0.fetch()
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+> A small once-only leak, so this is 9.2 material. Spotted
+> with clang leak-sanitizer.
 > 
-> Here you want ASSET_FLASH1 not ASSET_FLASH0. That's why it timed out - 
-> system was hanging on exit from TF-A to EDK2.
+>   hw/arm/sbsa-ref.c | 15 ++++++---------
+>   1 file changed, 6 insertions(+), 9 deletions(-)
 
-Oops... Thanks you for debugging / noticing this!
-
-> 
->>           fs1_path = os.path.join(self.workdir, "SBSA_FLASH1.fd")
->> +        lzma_uncompress(fs1_xz_path, fs1_path)
-> 
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 

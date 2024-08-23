@@ -1,123 +1,95 @@
-Received: by 2002:a17:505:1116:b0:1be9:327d:8ee3 with SMTP id pu22csp207613njb;
-        Fri, 23 Aug 2024 07:30:15 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUVxEkBjjdsynxt7iwOIMcseOA3u5MEzZUVUkEkNNLsRuktIbaYMTj7YQSpWu8yGx8wmJtze31/qCGZyQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IEVb/2VYHWcxNbEXzpLHWNyMjVwKoAq2rdnsMwpn3F6NM2SOr3QhHfZWk4sGTERteZqaYZY
-X-Received: by 2002:a05:620a:4503:b0:7a6:6b98:8e36 with SMTP id af79cd13be357-7a6896ed071mr213585085a.16.1724423414797;
-        Fri, 23 Aug 2024 07:30:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1724423414; cv=none;
+Received: by 2002:a17:505:1116:b0:1be9:327d:8ee3 with SMTP id pu22csp169734njb;
+        Fri, 23 Aug 2024 05:55:49 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXE0YEnQgCZap/ypJffSmdoQU6vashrUA3SULlMbBi3Ojr1jNh0ptTOIyDI6xf6828oCYb46uhK462Vsg==@linaro.org
+X-Google-Smtp-Source: AGHT+IHGzTmRMm5zAOGGMXe/zTfeHMu1t9nt0t1QbK/AfdZaa1MuSY7yt942umURI4yHuQDFCN1Y
+X-Received: by 2002:a05:622a:1e90:b0:453:7634:bbfa with SMTP id d75a77b69052e-45509c1bd33mr27152831cf.21.1724417749764;
+        Fri, 23 Aug 2024 05:55:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1724417749; cv=none;
         d=google.com; s=arc-20160816;
-        b=OWwY4MwQ3pjjwG1BbQflYjnr42/g/I/ZsBG6KVct7soPErxk09Q/bDiB8lzjUeLRw/
-         aCXFar2GBkbyiHB09ekQ7ZzLZLhOoKLowEsBpw2D4Z9w0x8szHf97P7QuDACxWdug+SP
-         +jkUlf5N02aJIaOcSXf9r5XBEQ/zEssLdILrTLZL8Ui9LAi/jkfOlPOad46UhMchepLi
-         u9kiRsXCCkQ+mg/ZUa9le1ZDev3t30f5dr7SkEoTH3u14U204fhKaGhFXqEo3JPSZkaj
-         tnnEgU2kKINafhN0Tyn0s5hcHOcgQhhPVC5VKw2YFMEZT27la0wKumiDEQlu2uRIZySZ
-         Tdaw==
+        b=FD2z49b3nACkRlJczUB6R72+0q6gswhbcIe1QzHDouSFUgylYUbJc8Jc9Vkil/9KsO
+         zjRHag56DXnjv/0OxSVJ+QUmNZPV//E4kRHu1tWgzIuNlfDt9lPr/7yq25C4Ttc5guG+
+         Vmc+MQyn3C4lxugV2bHKS0k63dXZ/1S2X33LdIyQKWubG83/KMdsu0Lv7V55OmG25FEN
+         kY05jpCraHzrhnrmmoHiyJ6G/ZswDIhbW0nK4xHfin05fU/swzceWHckgpOhOdyf8bsX
+         aizTJV/1wJNdrCTMrW/b5/G4bI7Wc1g7HJw0TLb3bH6vY/swBTz04EH1elVwyQOBEk96
+         a8Sg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=BPbbLF0GHdd+ri1cnfKNyoAt6KlPi+CZPhgJOEB10iM=;
-        fh=e570b11XDRKf0Xn/ovUQTK6J/11Cw/ty6KNDkKlwxSc=;
-        b=r2M3MthR0TJLvO7FQQo1z8AEVGTyL16J/aCGi5AMa6hr0irXM/LXmFm3NEwDpa2Mjh
-         NMTmLNu3QXVkrpvSdK+lJduk3cOsbFTWDLBkWaOVRt1qkuT1/rCqtx6Uo3sk42sTOWUM
-         OSA8S+id4ccBFSgTm7TUJxCD1bKXFeZTdXTKaWS7E7NtmEj9m2ZacZCLUYe5To1vPOT8
-         6Fyc/6PfmzZCyTNBDCG+mjEkQQ7mZydlvMUMFrZ/9zyor8Y0wy2QFJeAjUBO+e+sRaUB
-         jGPKFtGPcbk/IUXyeLkTouPjGUKutbWDWqasBDOPfUB/LqWmzqw6Ppcb4d2Jf5Vm6Ghu
-         O86A==;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to;
+        bh=dZ8SDUosSEgaAhh3RkR7aaVS1/GJohf/rFlRTMpfdLk=;
+        fh=FkJWaune7hMuK+jemAGcJmHRm42IOkVpZLD1KexBaC8=;
+        b=NsVvq5bruPK9UB2kICDyDXiVI+Q9/26JwcN1uaCXKsuRRoQGZkHa1Uv+TEfyb+sXA0
+         Coj0uQRbqbVrqKkNYA4ryJpn6YRv1TwwY+g/hkZrnhvr5B3rZt2DadQ4+9SZnuxhw6na
+         Y4A+EIhCq6J2chs3KqRJPib9gDxbsjbWFquYEhfKU0aU58EQJvynCH5AgkRxC4ZEnELC
+         R203lFjkAg7TBK7psrqq8f4PgeGL3TLSVwuABXkrDJmC3c67+D8yXKkbT3ckkpzsT2By
+         xpS4TIPe30E5+ZPkHIkNFLknqmD0oMFjnK73wchnOh/6CW/mM2Cr4HtqnGD4QhBZXKBH
+         q83A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=AHRhr2fH;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7a67f427c4bsi76714885a.605.2024.08.23.07.30.14
+        by mx.google.com with ESMTPS id d75a77b69052e-454fe0d2ccasi41261771cf.25.2024.08.23.05.55.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 23 Aug 2024 07:30:14 -0700 (PDT)
+        Fri, 23 Aug 2024 05:55:49 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=AHRhr2fH;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1shVIB-0006yj-Rk; Fri, 23 Aug 2024 10:29:31 -0400
+	id 1shTpF-0007Bx-RF; Fri, 23 Aug 2024 08:55:33 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
- id 1shVIA-0006ua-E9
- for qemu-devel@nongnu.org; Fri, 23 Aug 2024 10:29:30 -0400
-Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
- id 1shVI7-0006W1-CE
- for qemu-devel@nongnu.org; Fri, 23 Aug 2024 10:29:29 -0400
-Received: by mail-wr1-x432.google.com with SMTP id
- ffacd0b85a97d-3718c176ed7so1048374f8f.2
- for <qemu-devel@nongnu.org>; Fri, 23 Aug 2024 07:29:26 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=ventanamicro.com; s=google; t=1724423366; x=1725028166; darn=nongnu.org;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=BPbbLF0GHdd+ri1cnfKNyoAt6KlPi+CZPhgJOEB10iM=;
- b=AHRhr2fHckZNt2khPKfMXAzzNNBXG/JSWYs83YBo3oClKGRdnjDUB0zD+DBcWnRAqQ
- vBf4PZZ/rGPRWfpLo8m5lADcDV+sh6Gzun2QvAjCIiXzpytWm3ZeSnBjvki+YICGvA/T
- J5Vnoqw3qzNFOTMl1xFiyCdEK+tSrl577ZNAFO6gwPvAKXK1cih/yANJ6JL3lH+pXOKz
- hcanBgW61EPTdmLBfrrjX5EJAhurniQhiAPOASFgQauTVFBbF0VXLzeEpSozeSRNnc+/
- z9g6QCbD4H+TpV8JMlwMkzCJFyeUGb+1pDBpu9rHcxL7eWoawS+i8s8xjK6laXbYb+bI
- CSIQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1724423366; x=1725028166;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=BPbbLF0GHdd+ri1cnfKNyoAt6KlPi+CZPhgJOEB10iM=;
- b=MIaaQb7S0gCyY/2DOOG6mjlqYM+3ha4EjXJePtA6Fd9R9fYVvqtBOr9x03GvpXuh3o
- 4i+7/JGEjR3sCNYzGirMFMxImlazZKMVo+6nnllCc/PO8beHPI/JaWB4CB/GMFhwOHUE
- OUvriOnkrOLB41M9yJ6ntFoaKn1VjCM2gg7482peoZPFs3HNIbbT8l8Pecy0a0uZiZi9
- nHVPOzQYdv/OoRTSnwkzMtHQoiV1qmJX5Ky+DWHAMxAthnof3MIakrW4qQbZpgmZL5ye
- /rIgrFbIWfcs00vk4XaBJCR9sN758fN3sQ1s7Zm1YIUeG2xljEpHDl57wXhgdkbUEaWj
- e/dA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUHfauIpdXID+DslBKjuOc1gXmEKANKLpt7WuFQ9bF3RNL8vp65gkQ2mMwip/Jd0ifX9imIeY5HznAV@nongnu.org
-X-Gm-Message-State: AOJu0YwIr2lRPzJYJhtnmyqL3icjhsjCFamlp2/s2i46NA6Ux9iu22fU
- tTdah0ubs7SAFQwunFfw/LAYf8Q4pz1sV79nhTv2jxj+lA/HRD4rCl5OW92SuCE=
-X-Received: by 2002:a5d:64ef:0:b0:367:9522:5e6b with SMTP id
- ffacd0b85a97d-373118c7ce8mr2137032f8f.45.1724423365528; 
- Fri, 23 Aug 2024 07:29:25 -0700 (PDT)
-Received: from sunil-laptop ([106.51.198.16]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-373081ffb34sm4295403f8f.71.2024.08.23.07.29.17
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 23 Aug 2024 07:29:25 -0700 (PDT)
-Date: Fri, 23 Aug 2024 19:59:13 +0530
-From: Sunil V L <sunilvl@ventanamicro.com>
-To: Sia Jee Heng <jeeheng.sia@starfivetech.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, qemu-riscv@nongnu.org,
- mst@redhat.com, imammedo@redhat.com, anisinha@redhat.com,
- peter.maydell@linaro.org, shannon.zhaosl@gmail.com,
- palmer@dabbelt.com, alistair.francis@wdc.com,
- bin.meng@windriver.com, liwei1518@gmail.com,
- dbarboza@ventanamicro.com, zhiwei_liu@linux.alibaba.com
-Subject: Re: [PATCH RESEND v4 0/3] Upgrade ACPI SPCR table to support SPCR
- table revision 4 format
-Message-ID: <ZsicubCBw2YAjq9c@sunil-laptop>
-References: <20240823113142.161727-1-jeeheng.sia@starfivetech.com>
+ (Exim 4.90_1) (envelope-from <alireza.sanaee@huawei.com>)
+ id 1shTpD-0007AH-Ab; Fri, 23 Aug 2024 08:55:31 -0400
+Received: from frasgout.his.huawei.com ([185.176.79.56])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <alireza.sanaee@huawei.com>)
+ id 1shTpB-0005Aj-Ov; Fri, 23 Aug 2024 08:55:31 -0400
+Received: from mail.maildlp.com (unknown [172.18.186.31])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4Wr0Mf5PQlz6K918;
+ Fri, 23 Aug 2024 20:52:14 +0800 (CST)
+Received: from lhrpeml500006.china.huawei.com (unknown [7.191.161.198])
+ by mail.maildlp.com (Postfix) with ESMTPS id 9E73A140B2A;
+ Fri, 23 Aug 2024 20:55:23 +0800 (CST)
+Received: from a2303103017.china.huawei.com (10.47.79.211) by
+ lhrpeml500006.china.huawei.com (7.191.161.198) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.39; Fri, 23 Aug 2024 13:55:22 +0100
+To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
+CC: <zhao1.liu@intel.com>, <zhenyu.z.wang@intel.com>,
+ <dapeng1.mi@linux.intel.com>, <yongwei.ma@intel.com>, <armbru@redhat.com>,
+ <farman@linux.ibm.com>, <peter.maydell@linaro.org>, <mst@redhat.com>,
+ <anisinha@redhat.com>, <shannon.zhaosl@gmail.com>, <imammedo@redhat.com>,
+ <mtosatti@redhat.com>, <berrange@redhat.com>, <richard.henderson@linaro.org>, 
+ <linuxarm@huwei.com>, <shameerali.kolothum.thodi@huawei.com>,
+ <Jonathan.Cameron@Huawei.com>, <jiangkunkun@huawei.com>
+Subject: [PATCH 1/2] target/arm/tcg: increase cache level for cpu=max
+Date: Fri, 23 Aug 2024 13:54:45 +0100
+Message-ID: <20240823125446.721-2-alireza.sanaee@huawei.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20240823125446.721-1-alireza.sanaee@huawei.com>
+References: <20240823125446.721-1-alireza.sanaee@huawei.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20240823113142.161727-1-jeeheng.sia@starfivetech.com>
-Received-SPF: pass client-ip=2a00:1450:4864:20::432;
- envelope-from=sunilvl@ventanamicro.com; helo=mail-wr1-x432.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-Originating-IP: [10.47.79.211]
+X-ClientProxiedBy: lhrpeml500006.china.huawei.com (7.191.161.198) To
+ lhrpeml500006.china.huawei.com (7.191.161.198)
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=alireza.sanaee@huawei.com; helo=frasgout.his.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H2=-0.001, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -130,23 +102,80 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Reply-to:  Alireza Sanaee <alireza.sanaee@huawei.com>
+From:  Alireza Sanaee via <qemu-devel@nongnu.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: xeF+7QXrdAB+
+X-TUID: BRvkm9sQJJyZ
 
-Hi Jee Heng,
-On Fri, Aug 23, 2024 at 04:31:39AM -0700, Sia Jee Heng wrote:
-> Update the SPCR table to accommodate the SPCR Table revision 4 [1].
-> The SPCR table has been modified to adhere to the revision 4 format [2].
-> 
-> Meanwhile, the virt SPCR golden reference file for RISC-V have been updated to
-> accommodate the SPCR Table revision 4.
-> 
-> [1]: https://learn.microsoft.com/en-us/windows-hardware/drivers/serports/serial-port-console-redirection-table
-> [2]: https://github.com/acpica/acpica/pull/931
-> 
-Just curious - whether this needs changes in linux side as well? Does
-current linux code work fine with version 4 of SPCR table on RISC-V?
+This patch addresses cache description in the `aarch64_max_tcg_initfn`
+function. It introduces three layers of caches and modifies the cache
+description registers accordingly. Additionally, a new function is added
+to handle cache description when CCIDX is disabled. The CCIDX remains
+disabled for cpu=max configuration.
 
-Thanks,
-Sunil
+TODO: I am planning to send a separate patch using this cache
+description function for the rest of the CPU types. This is a
+starting point to test L3 caches for cpu=max.
+
+Signed-off-by: Alireza Sanaee <alireza.sanaee@huawei.com>
+---
+ target/arm/tcg/cpu64.c | 35 +++++++++++++++++++++++++++++++++++
+ 1 file changed, 35 insertions(+)
+
+diff --git a/target/arm/tcg/cpu64.c b/target/arm/tcg/cpu64.c
+index fe232eb306..f2b6fb6d84 100644
+--- a/target/arm/tcg/cpu64.c
++++ b/target/arm/tcg/cpu64.c
+@@ -55,6 +55,32 @@ static uint64_t make_ccsidr64(unsigned assoc, unsigned linesize,
+          | (lg_linesize - 4);
+ }
+ 
++static uint64_t make_ccsidr32(unsigned assoc, unsigned linesize,
++                              unsigned cachesize)
++{
++    unsigned lg_linesize = ctz32(linesize);
++    unsigned sets;
++
++    /*
++     * The 32-bit CCSIDR_EL1 format is:
++     *   [27:13] number of sets - 1
++     *   [12:3]  associativity - 1
++     *   [2:0]   log2(linesize) - 4
++     *           so 0 == 16 bytes, 1 == 32 bytes, 2 == 64 bytes, etc
++     */
++    assert(assoc != 0);
++    assert(is_power_of_2(linesize));
++    assert(lg_linesize >= 4 && lg_linesize <= 7 + 4);
++
++    /* sets * associativity * linesize == cachesize. */
++    sets = cachesize / (assoc * linesize);
++    assert(cachesize % (assoc * linesize) == 0);
++
++    return ((uint64_t)(sets - 1) << 13)
++         | ((assoc - 1) << 3)
++         | (lg_linesize - 4);
++}
++
+ static void aarch64_a35_initfn(Object *obj)
+ {
+     ARMCPU *cpu = ARM_CPU(obj);
+@@ -1086,6 +1112,15 @@ void aarch64_max_tcg_initfn(Object *obj)
+     uint64_t t;
+     uint32_t u;
+ 
++    /*
++     * Expanded cache set
++     */
++    cpu->clidr = 0x8200123; /* 4 4 3 in 3 bit fields */
++    cpu->ccsidr[0] = make_ccsidr32(4, 64, 64 * KiB); /* 64KB L1 dcache */
++    cpu->ccsidr[1] = cpu->ccsidr[0];                 /* 64KB L1 icache */
++    cpu->ccsidr[2] = make_ccsidr32(8, 64, 1 * MiB);  /* 1MB L2 unified cache */
++    cpu->ccsidr[4] = make_ccsidr32(8, 64, 2 * MiB);  /* 2MB L3 unified cache */
++
+     /*
+      * Unset ARM_FEATURE_BACKCOMPAT_CNTFRQ, which we would otherwise default
+      * to because we started with aarch64_a57_initfn(). A 'max' CPU might
+-- 
+2.34.1
+

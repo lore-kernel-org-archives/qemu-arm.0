@@ -1,194 +1,531 @@
-Received: by 2002:a17:505:917:b0:1be9:327d:8ee3 with SMTP id hq23csp751742njb;
-        Thu, 22 Aug 2024 11:49:18 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCW5z3fk7LG/XkCFeWhKMNHQB3bgjMhONVZCIRYTDRXQ//E3jrfKzsiXekOBhgIS/h8HnKaV7CXm7sO5xA==@linaro.org
-X-Google-Smtp-Source: AGHT+IF89Nn3AsgdwuhocVL95tb4zrSzR+miDfQ5UoYlvy37TR/rWtXazwaIHYasIEZnCAw/6qfz
-X-Received: by 2002:a05:6102:3ec4:b0:48f:df1d:696f with SMTP id ada2fe7eead31-498d3f672b6mr7280645137.30.1724352558719;
-        Thu, 22 Aug 2024 11:49:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1724352558; cv=none;
+Received: by 2002:a17:505:1116:b0:1be9:327d:8ee3 with SMTP id pu22csp131174njb;
+        Fri, 23 Aug 2024 03:52:29 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXLu6yaNeh51untPUC1VvRHVpyrrY/NuAZGDG7+4D/p/b7RyEbEMa4Q+XbzJKBkLRHzGxbOa65SVHk/gw==@linaro.org
+X-Google-Smtp-Source: AGHT+IGD5sIem6BjFyquObvto65iRdmPb+5R2F7XON64YZ79hmw5X+yysWomRdDtmAgLBahJAPfA
+X-Received: by 2002:a05:6214:5a04:b0:6c1:6edb:79c1 with SMTP id 6a1803df08f44-6c16edb7aacmr21018636d6.9.1724410349115;
+        Fri, 23 Aug 2024 03:52:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1724410349; cv=none;
         d=google.com; s=arc-20160816;
-        b=hNgqk3bqKnSKNkH+mGBWF0Oj6+XY73DMz72bAMPPybNxvpiSM+qO1LACynk2PZajV5
-         cNwHe+bgpT+VTDFAmOFkpRDmUcJ86Bn5P06q+MkhNPTTN9wLhxIwn8lSvir3Y3r5e9S1
-         7VbrKtBUZz74U/QnaujD4xdG2XjAMPcbjNZBvZSUQreeilDFmPPHshSPBSAgtbrOnbE3
-         G2J/ROTSdlRhY+1rTJq3DwSzAuDA1aUZA/ZMXjTYkViydgJPaB85Bf+dxjHyAVJ2VcoQ
-         +4awpJiqirAvfhHbtc/ypHyxjWkcZFrJdb+oJTn+T+Pqx4r3dDrXJJv4HyNsR0q+DjiL
-         +M1A==
+        b=Bef4jQX/IZltec2EuFUGske/PksZ6xP0ML8b0RQPlUcAWPF8Ts1hv3HoBLpidGhO0p
+         qo0fSAK7pyabsP1TQpdBN4z2nRCM7NgNPYc4BOUDrORqZPAAno1g8QumgIKFpVJzmSVk
+         7XjeF+JGow6nbSEOYyrSU0G9zXEeeqBy/plqYS3vqmZr98PhV65aq62x8mZomvaMXrIV
+         CdSvJLjd6a6Uf0emiWxDZc/bNtVBFt+2MvVPwlhvB77zIzER7AlWdQfc2FFXSdaUB5Jl
+         aL8DtWNGLiPRzkxtk99rhQspopf7BWEyh1x7LJ1TSMGHiTVMIEf8Nk5QsvBVLP5mxKRF
+         dxXg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:organization:content-language:from:references:cc:to
-         :subject:user-agent:mime-version:date:message-id:dkim-signature;
-        bh=v3Rq6RD9bD6z2hu2d8FQg2chetgTeL8EOgxKa4xMRK8=;
-        fh=n8CAdbNyEwW/ra4nzIdCH1YD3eHIijLriMNgPnYoYaM=;
-        b=GuI9ax56heOKm+JeRk2y7P7YxLmq/vi7b3nBRjiSyVLK6Es4MMduwM4B/zly4cGLoF
-         n47IW7Jay3RuvOGEDpafIcxJt1MzSEdSwHRHqCiwVD+O6BgLJhTrA22ETclX9tP3iTaj
-         u9hP4JkMQA6MpKo0aOI8rvsHuzwvcf9LSv7nicjz5U48kbiKev+o8Zc9kryB/Nos0Yv7
-         YQg/mebeUPcpIAq4lh+lZMEkk9pExa9cJLZsDzJ+tB7fFCZn9rvmP8i55bPYqOyam9rV
-         YdQ98vwtgF1nrfFLB1bxHSrL7szfjzTqyBujtVTBFJrKJ38ht5ZWlcLae3rDZMgZd0dl
-         bjrw==;
+        h=content-transfer-encoding:content-language:in-reply-to:from
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=0uis5UZkHvL4tuC2wK12ycafDdDpOMpMexq8FX0cMKU=;
+        fh=Q6EAxbCS1dLfzYQq8KC6UxGK9a1MPgmjYg+gMJSSX2Q=;
+        b=m9DuRKDGqsJh3uNJpf+V+LvBSflhNZ2RP1EyyoRVl3yFnMxRw+RexzdUJrWpuwYUQA
+         RAkT/rFvSjhRtCGrhQ6754HGrzd30SmTUPoLrNJDHhfFUYZi9KhinniB4+9yPbt1eU8D
+         G6wkt57DP8dW8z2RdeHngNFeBw7Rz1dNdlmyhiwb7iCxiP2OiBDKQ2XbQN5geq/Uvhsa
+         Kn0kmuvXLk+zSuCcXVkBQeUvJDJHYCCq9N25GI2yIAxSRPuFX9tF8d3Dk81ebXTMlRB8
+         zl8WOhHWYx9+0Q2giJJM2xEdG7qRJ4EeroedUVjJR4q9b8jt7KFCSUgaDa43dvDu0FVb
+         kYRw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=fhgYB1qY;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7a67f45fb05si226962285a.775.2024.08.22.11.49.18
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=IBbiSB0T;
+       spf=pass (google.com: domain of gshan@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=gshan@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <gshan@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6c162db1de2si40155136d6.305.2024.08.23.03.52.28
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 22 Aug 2024 11:49:18 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 23 Aug 2024 03:52:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gshan@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=fhgYB1qY;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1shCrX-0000gb-4S; Thu, 22 Aug 2024 14:48:47 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
- id 1shCrU-0000dy-TO
- for qemu-arm@nongnu.org; Thu, 22 Aug 2024 14:48:44 -0400
-Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
- id 1shCrT-0003ZY-0P
- for qemu-arm@nongnu.org; Thu, 22 Aug 2024 14:48:44 -0400
-Received: by mail-ej1-x634.google.com with SMTP id
- a640c23a62f3a-a86984e035aso94406466b.2
- for <qemu-arm@nongnu.org>; Thu, 22 Aug 2024 11:48:42 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1724352521; x=1724957321; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:organization:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:from:to:cc:subject:date:message-id:reply-to;
- bh=v3Rq6RD9bD6z2hu2d8FQg2chetgTeL8EOgxKa4xMRK8=;
- b=fhgYB1qYfKydTkEe1iNkhJLhzDDPHHAz5aJmBre2cDOAOQiHW/wmsZxhQMBTWv6g/k
- qGQFl8l7XpRg6uppVjCykN+Xc3NAuPBhMyGImXN+04/woB8A4PXY1IaqScj0w+L0CHpK
- NT76UGFmlll2bNJF/44lciUoSmS0iUpi1DVNIYTlfPLjFEjdcx4VE6dcvsn8X9drzoQU
- P6wkIDLco0eBoQkgDkXaMpel7NpHcKWuYsfISy+Tlk00+IYhO+VYK9TLA369Ck8No9BN
- EnOTp/KKphSARxs5H20p/+9BUklRWzI32/GxTXIq+yMqpourWFac0mCKTN0c68BHltIA
- IkjA==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=IBbiSB0T;
+       spf=pass (google.com: domain of gshan@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=gshan@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1724410348;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=0uis5UZkHvL4tuC2wK12ycafDdDpOMpMexq8FX0cMKU=;
+	b=IBbiSB0TidbW/QdC70mAnjbKfJ8t4X6bzQp4FYmq0a6LiHqReA96RQVOcT6rzIlpGcYOtI
+	OQ7wL2rMHzqkccBbqpwDwSkb6vMcRB6kgtmthxr9EgjWoZ3WWZ9pBgswvB/bJI2RNIGWzX
+	e/1n+getxbs8EsIkn/+bpyiZzvsO/mM=
+Received: from mail-pl1-f197.google.com (mail-pl1-f197.google.com
+ [209.85.214.197]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-26-ptRxeMQJO6qAx-yb4OI_LQ-1; Fri, 23 Aug 2024 06:52:27 -0400
+X-MC-Unique: ptRxeMQJO6qAx-yb4OI_LQ-1
+Received: by mail-pl1-f197.google.com with SMTP id d9443c01a7336-201e94a71a0so15582465ad.1
+        for <alex.bennee@linaro.org>; Fri, 23 Aug 2024 03:52:27 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1724352521; x=1724957321;
- h=content-transfer-encoding:in-reply-to:organization:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=v3Rq6RD9bD6z2hu2d8FQg2chetgTeL8EOgxKa4xMRK8=;
- b=uoazw40BFS+joI7tLzEgo/xLlFp5RKfpVZyXxbFS5onzaOQcmMnI/Sd0xokUVnEWyJ
- N4EYUvSdLsCz9watjtHzKBwMgtN0OStwEAJGD8dy2DVgH5Kr+wWFBIEERhFkxyugSlGe
- KPy6vd4DNntPVRQme3QIcWvul2MsCKuLVDNZx4vfULVAHTc0M82FfW22+iyEtCUGrLcK
- y7yO+posx0ehOMG0gJYOUghBiEqkDSRV1TaedZeE+kbwaSI0Y7+962tTU4y2mK+6G7PV
- LkHxWVl8M0c+S4ebd1wAxy0pGwKVQ03rpCS4FI93x0fqJbmgP297zh1cZceDxecD4UeT
- m6LQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCU5R7sgRQuDTcZGLJuEY1oRPLxfe+8QBo3YfbeLBwlthJzwhRXYSGQz+2gaxuX45HmXniZjhX9RYQ==@nongnu.org
-X-Gm-Message-State: AOJu0YxSEcDQmjdk98KE81UuPk43JMQp1L5M2bR0Wlmnf/RAmxrAF+tZ
- cpASSbEPjmGMbk6rgeUttqyLOi5b59KxtqRwYzY54JbfABRGzsBclUM1x//Z5bg=
-X-Received: by 2002:a17:906:6a1b:b0:a80:f7d8:5bbe with SMTP id
- a640c23a62f3a-a866ee6dfd8mr509649166b.0.1724352520180; 
- Thu, 22 Aug 2024 11:48:40 -0700 (PDT)
-Received: from [192.168.200.25] (83.25.211.12.ipv4.supernova.orange.pl.
- [83.25.211.12]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-a868f2adc55sm150691666b.71.2024.08.22.11.48.39
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 22 Aug 2024 11:48:39 -0700 (PDT)
-Message-ID: <17ba91fd-b876-4169-8b72-3fddf966e1a3@linaro.org>
-Date: Thu, 22 Aug 2024 20:48:38 +0200
+        d=1e100.net; s=20230601; t=1724410347; x=1725015147;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=0uis5UZkHvL4tuC2wK12ycafDdDpOMpMexq8FX0cMKU=;
+        b=oQKHPAfZU9gKATrr5tY1ly95DSeZtvX4DzzVtWzT6KeP7hDVehNoVmBLidqAxDuazp
+         90sD09nn7lq6lhhXNGGaAUEAFdSLQBjJAkPKbIY7OxNnKW+Ea4AOG2l9aaAD29U+sw29
+         tfRsReHB/ZIf8NafHgf7C33lCPpMnI5L37Z70vSI0FK6yQ2CwQl+2YCu1DyVUGRGBVV0
+         ksS4jg4qzp4NC1B3ZBmUmWzp9rdNcPsEtGTKYh4bauSvsllbuQhIVuhzIfu9hR2MTeCI
+         FSp0IrT1qsDLhKmLvsYBsNnE585LPcGVg6N0Vcp/ziY/GdEYHPLgvX+Ks6hnWxVw9Tor
+         ss9A==
+X-Forwarded-Encrypted: i=1; AJvYcCXbMsLIriz0zoCxuvMJloPfLyQoT36WVi00p4909PWPuZmTa7+412vFcGRo7hUpxw+QjQ0WMlOt4nlvyw==@linaro.org
+X-Gm-Message-State: AOJu0YwVMKvcv85PnRW9HxdPRfpiVy9e26OBau4gkw79DqpRkB5gKmNl
+	XnV0poYCorXR3BNYa2ItZCQYoZzzFpg3AxLQTO7yo8+TGpwLloIQsWvse7rTo+N/oJfDpacznvi
+	C/DuKVYcJJ6AjVk6PytbM1N+O8bt63nYeW1DbCZAf+Mc0i2EvJ3sQEg==
+X-Received: by 2002:a17:902:d2c6:b0:202:3617:d52a with SMTP id d9443c01a7336-2039c324606mr48661785ad.6.1724410346216;
+        Fri, 23 Aug 2024 03:52:26 -0700 (PDT)
+X-Received: by 2002:a17:902:d2c6:b0:202:3617:d52a with SMTP id d9443c01a7336-2039c324606mr48660755ad.6.1724410345311;
+        Fri, 23 Aug 2024 03:52:25 -0700 (PDT)
+Return-Path: <gshan@redhat.com>
+Received: from [192.168.68.54] ([103.210.27.48])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-203855dbed6sm26151165ad.172.2024.08.23.03.52.11
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 23 Aug 2024 03:52:24 -0700 (PDT)
+Message-ID: <13ab0fda-fea3-47a6-8c17-006e6bd4430a@redhat.com>
+Date: Fri, 23 Aug 2024 20:52:09 +1000
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] tests/functional: Convert Aarch64 SBSA-Ref avocado
- tests
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: Thomas Huth <thuth@redhat.com>, Radoslaw Biernacki <rad@semihalf.com>,
- qemu-arm@nongnu.org, Leif Lindholm <quic_llindhol@quicinc.com>,
- Peter Maydell <peter.maydell@linaro.org>
-References: <20240822114146.86838-1-philmd@linaro.org>
-From: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
-Content-Language: pl-PL, en-GB
-Organization: Linaro
-In-Reply-To: <20240822114146.86838-1-philmd@linaro.org>
+Subject: Re: [PATCH RFC V3 17/29] arm/virt: Release objects for *disabled*
+ possible vCPUs after init
+To: Salil Mehta <salil.mehta@huawei.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "mst@redhat.com"
+ <mst@redhat.com>
+Cc: "maz@kernel.org" <maz@kernel.org>,
+ "jean-philippe@linaro.org" <jean-philippe@linaro.org>,
+ Jonathan Cameron <jonathan.cameron@huawei.com>,
+ "lpieralisi@kernel.org" <lpieralisi@kernel.org>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ "richard.henderson@linaro.org" <richard.henderson@linaro.org>,
+ "imammedo@redhat.com" <imammedo@redhat.com>,
+ "andrew.jones@linux.dev" <andrew.jones@linux.dev>,
+ "david@redhat.com" <david@redhat.com>, "philmd@linaro.org"
+ <philmd@linaro.org>, "eric.auger@redhat.com" <eric.auger@redhat.com>,
+ "will@kernel.org" <will@kernel.org>, "ardb@kernel.org" <ardb@kernel.org>,
+ "oliver.upton@linux.dev" <oliver.upton@linux.dev>,
+ "pbonzini@redhat.com" <pbonzini@redhat.com>,
+ "rafael@kernel.org" <rafael@kernel.org>,
+ "borntraeger@linux.ibm.com" <borntraeger@linux.ibm.com>,
+ "alex.bennee@linaro.org" <alex.bennee@linaro.org>,
+ "npiggin@gmail.com" <npiggin@gmail.com>,
+ "harshpb@linux.ibm.com" <harshpb@linux.ibm.com>,
+ "linux@armlinux.org.uk" <linux@armlinux.org.uk>,
+ "darren@os.amperecomputing.com" <darren@os.amperecomputing.com>,
+ "ilkka@os.amperecomputing.com" <ilkka@os.amperecomputing.com>,
+ "vishnu@os.amperecomputing.com" <vishnu@os.amperecomputing.com>,
+ "karl.heubaum@oracle.com" <karl.heubaum@oracle.com>,
+ "miguel.luis@oracle.com" <miguel.luis@oracle.com>,
+ "salil.mehta@opnsrc.net" <salil.mehta@opnsrc.net>,
+ zhukeqian <zhukeqian1@huawei.com>,
+ "wangxiongfeng (C)" <wangxiongfeng2@huawei.com>,
+ "wangyanan (Y)" <wangyanan55@huawei.com>,
+ "jiakernel2@gmail.com" <jiakernel2@gmail.com>,
+ "maobibo@loongson.cn" <maobibo@loongson.cn>,
+ "lixianglai@loongson.cn" <lixianglai@loongson.cn>,
+ "shahuang@redhat.com" <shahuang@redhat.com>,
+ "zhao1.liu@intel.com" <zhao1.liu@intel.com>, Linuxarm <linuxarm@huawei.com>
+References: <20240613233639.202896-1-salil.mehta@huawei.com>
+ <20240613233639.202896-18-salil.mehta@huawei.com>
+ <51dc0813-7dc9-4927-a24b-bd718be54e46@redhat.com>
+ <6b435c1f2b934867b8d82850d6d866c6@huawei.com>
+ <9b7582f0-8149-4bf0-a1aa-4d4fe0d35e70@redhat.com>
+ <1252c2d35b3e40ed84d5d5ae454878a7@huawei.com>
+ <d2371011-e7a3-42fe-b1a3-a185fbf4a612@redhat.com>
+ <1c31ab30bae6437fac7799227ca4bfd1@huawei.com>
+ <62227c7a-6c0e-403a-8d6a-9647c6e006e6@redhat.com>
+ <754a693989cf426bb07e40c43b80bce2@huawei.com>
+From: Gavin Shan <gshan@redhat.com>
+In-Reply-To: <754a693989cf426bb07e40c43b80bce2@huawei.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::634;
- envelope-from=marcin.juszkiewicz@linaro.org; helo=mail-ej1-x634.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Ra/Abr6M2tR1
+X-TUID: hA3TaNo7d36r
 
-On 22.08.2024 13:41, Philippe Mathieu-Daudé wrote:
-> Straight forward conversion. Since SBSA_FLASH files are not
-> tarballs, use lzma_uncompress() method.
+Hi Sail,
+
+On 8/22/24 8:58 PM, Salil Mehta wrote:
+>>   On 8/21/24 8:23 PM, Salil Mehta wrote:
+>>   >>
+>>   >>   On 8/21/24 2:40 AM, Salil Mehta wrote:
+>>   >>   >
+>>   >>   > I don’t understand this clearly. Are  you suggesting to reuse only
+>>   >>   > single vCPU object to initialize all KVM vCPUs not yet plugged? If
+>>   >>   > yes, then I'm not sure what do we gain here by adding this complexity?
+>>   >>   > It does not consume time or resources because we are not realizing any
+>>   >>   > of these vCPU object in any case.
+>>   >>   >
+>>   >>
+>>   >>   First of all, it seems we have different names and terms for those cold-
+>>   >>   booted vCPUs and hotpluggable vCPUs. For example, vCPU-0 and vCPU-1
+>>   >>   are cold-booted vCPUs while
+>>   >>   vCPU-2 and vCPU-3 are hotpluggable vCPUs when we have '-smp
+>>   >>   maxcpus=4,cpus=2'. Lets stick to convention and terms for easier discussion.
+>>   >>
+>>   >>   The idea is avoid instantiating hotpluggable vCPUs in virtmach_init() and
+>>   >>   released in the same function for those hotpluggable vCPUs. As I can
+>>   >>   understand, those hotpluggable vCPU instances are serving for two
+>>   >>   purposes: (1) Relax the constraint that all vCPU's (kvm) file descriptor have
+>>   >>   to be created and populated;
+>>   >
+>>   >
+>>   > We are devising *workarounds* in Qemu for the ARM CPU architectural
+>>   > constraints in KVM and in Guest Kernel,  *not relaxing* them. We are
+>>   > not allowed to meddle with the constraints. That is the whole point.
+>>   >
+>>   > Not having to respect those constraints led to rejection of the
+>>   > earlier attempts to upstream Virtual CPU Hotplug for ARM.
+>>   >
+>>   
+>>   I meant to 'overcome' the constraints by 'relax'. My apologies if there're any
+>>   caused confusions.
 > 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> ---
-> Based-on: <20240821082748.65853-1-thuth@redhat.com>
-> ---
+> 
+> Ok. No issues. It was important for me to clarify though.
+> 
+> 
+>   Previously, you had attempt to create all vCPU objects
+>>   and reuse them when vCPU hot added.
+> 
+> Yes, at QOM level. But that approach did not realize the unplugged/yet-to-be-plugged
+> vCPUs. We were just using QOM vCPU objects as the place holders
+> 
 
-> diff --git a/tests/avocado/machine_aarch64_sbsaref.py b/tests/functional/test_aarch64_sbsaref.py
-> old mode 100644
-> new mode 100755
-> similarity index 56%
-> rename from tests/avocado/machine_aarch64_sbsaref.py
-> rename to tests/functional/test_aarch64_sbsaref.py
-> index f8bf40c192..6728e5f92a
-> --- a/tests/avocado/machine_aarch64_sbsaref.py
-> +++ b/tests/functional/test_aarch64_sbsaref.py
+Right, my point was actually vCPU objects are too heavy as the place holders. It was
+reason why I had the concern: why those hotpluggable vCPU objects can't be avoided
+during the bootup time.
 
-> @@ -44,47 +55,31 @@ def fetch_firmware(self):
->           """
->   
->           # Secure BootRom (TF-A code)
-> -        fs0_xz_url = (
-> -            "https://artifacts.codelinaro.org/artifactory/linaro-419-sbsa-ref/"
-> -            "20240619-148232/edk2/SBSA_FLASH0.fd.xz"
-> -        )
-> -        fs0_xz_hash = "0c954842a590988f526984de22e21ae0ab9cb351a0c99a8a58e928f0c7359cf7"
-> -        tar_xz_path = self.fetch_asset(fs0_xz_url, asset_hash=fs0_xz_hash,
-> -                                      algorithm='sha256')
-> -        archive.extract(tar_xz_path, self.workdir)
-> +        fs0_xz_path = self.ASSET_FLASH0.fetch()
->           fs0_path = os.path.join(self.workdir, "SBSA_FLASH0.fd")
-> +        lzma_uncompress(fs0_xz_path, fs0_path)
->   
->           # Non-secure rom (UEFI and EFI variables)
-> -        fs1_xz_url = (
-> -            "https://artifacts.codelinaro.org/artifactory/linaro-419-sbsa-ref/"
-> -            "20240619-148232/edk2/SBSA_FLASH1.fd.xz"
-> -        )
-> -        fs1_xz_hash = "c6ec39374c4d79bb9e9cdeeb6db44732d90bb4a334cec92002b3f4b9cac4b5ee"
-> -        tar_xz_path = self.fetch_asset(fs1_xz_url, asset_hash=fs1_xz_hash,
-> -                                      algorithm='sha256')
-> -        archive.extract(tar_xz_path, self.workdir)
-> +        fs1_xz_path = self.ASSET_FLASH0.fetch()
+>   In current implementation, the
+>>   hotpluggable vCPUs are instantiated and released pretty soon. I was
+>>   bringing the third possibility, to avoid instantiating those hotpluggable vCPU
+>>   objects, for discussion.
+> 
+> 
+> Are you suggesting not calling KVM_ARM_VCPU_INIT IOCTL as all for the vCPUs
+> which are part of possible list but not yet plugged?
+> 
+> If yes, we cannot do that as KVM vCPUs should be fully initialized even before
+> VGIC is initialized inside the KVM. This is a constraint. I've explained this in
+> detail in the cover letter of this patch-set and in the slides I have shared
+> earlier.
+> 
 
-Here you want ASSET_FLASH1 not ASSET_FLASH0. That's why it timed out - 
-system was hanging on exit from TF-A to EDK2.
+No, it's not what I was suggesting. What I suggested is to avoid creating those hotpluggable
+vCPU objects (place holders) during the bootup time. However, all vCPU file descriptors (KVM
+objects) still need to be created and initialized before GICv3 is initialized. It's one of
+the constrains. So we need to create and populate all vCPU file descriptors through
+ioctl(vm_fd, CREATE_VCPU) and ioctl(vcpu_fd, INIT_VCPU) before GICv3 object is created and
+realized. As I explained in the previous reply, the hotpluggable vCPU objects (place holders)
+haven't to be created in order to initialize and populate the vCPU file descriptors for those
+hotpluggable vCPUs. I think the parameters used to create and initialize vCPU-0's file descriptor
+can be reused by all other vCPUs, because we don't support heterogeneous vCPUs.
 
->           fs1_path = os.path.join(self.workdir, "SBSA_FLASH1.fd")
-> +        lzma_uncompress(fs1_xz_path, fs1_path)
+What I suggested is something like below: the point is to avoid instantiating those hotpluggable
+vCPUs, but their vCPU file descriptor (KVM object) are still created and initialized.
 
+     static void machvirt_init(MachineState *machine)
+     {
+
+         /*
+          * Instantiate and realize vCPU-0, record the parameter passed to
+          * ioctl(vcpu-fd, VCPU_INIT, &init), or a better place to remember the parameter.
+          * The point is the parameter can be shared by all vCPUs.
+          */
+
+         /*
+          * Create vCPU descriptors for all other vCPUs (including hotpluggable vCPUs).
+          * The remembered parameter is reused and passed to ioctl(vcpu-fd, VCPU_INIT, &init).
+          */
+
+         /* Instanaite and realize other cold-booted vCPUs */
+
+         /* Instantiate and realize GICv3 */
+
+     }
+
+> 
+> In this series, the life cycle of those hotpluggable
+>>   vCPU objects are really short. Again, I didn't say we must avoid instantiating
+>>   those vCPU objects, I brought the topic ONLY for discussion.
+> 
+> Sure, I appreciate that. For the details of the reasons please follow below:
+> 
+> 1. Cover Letter of this patch-set (Constraints are explained there)
+> 2. KVMForum Slides of 2020 and 2023
+> 
+> 
+>>   > (2) Help to instantiate and realize
+>>   >>   GICv3 object.
+>>   >>
+>>   >>   For (1), I don't think we have to instantiate those hotpluggable vCPUs at all.
+>>   >>   In the above example where we have command line '-smp
+>>   >>   maxcpus=4,cpus=2', it's unnecessary to instantiate
+>>   >>   vCPU-3 and vCPU-4 to create and populate their KVM file descriptors.
+>>   >
+>>   >
+>>   > We cannot defer create vCPU in KVM after GIC has been initialized in KVM.
+>>   > It needs to know every vCPU that will ever exists right at the time it
+>>   > is getting Initialized. This is an ARM CPU Architectural constraint.
+>>   >
+>>   
+>>   It will be appreciated if more details other than 'an ARM CPU architectural constraint'
+>>   can be provided. I don't understand this constrain very well at least.
+> 
+> 
+> We cannot do that as we MUST present KVM vCPUs to the VGIC fully initialized,
+> even before it starts its initialization. Initialization of the vCPUs also initializes
+> the system registers for the corresponding KVM vCPU.
+> 
+> For example, MPIDR_EL1 must be initialized at VCPU INIT time. We cannot
+> avoid this. MPIDR value is used by VGIC during its initialization. This MUST be
+> present for all of the possible KVM vCPUs right from start during vgic_init()
+> 
+> Please check the cover letter of this patch-set, I explained these there and the
+> KVMForum slides.  Please review and comment there and let me know what is
+> not clear from the text.
+> 
+
+It seems my suggestion wasn't fully understood. I was suggesting to avoid instantiating
+those hotpluggable vCPU objects (place holders) during QEMU startup time. All vCPU file
+descriptors (the vCPU's corresponding objects) still need to be in place before GICv3
+object is initiated and realized.
+
+> 
+>>   >   A
+>>   >>   vCPU's KVM file descriptor is create and populated by the following ioctls
+>>   >>   and function calls. When the first vCPU (vCPU-0) is realized, the property
+>>   >>   corresponding to "&init" is fixed for all vCPUs. It means all vCPUs have same
+>>   >>   properties except the "vcpu_index".
+>>   >>
+>>   >>      ioctl(vm-fd,   KVM_CREATE_VCPU,   vcpu_index);
+>>   >>      ioctl(vcpu-fd, KVM_ARM_VCPU_INIT, &init);
+>>   >>      kvm_park_vcpu(cs);
+>>   >>
+>>   >>   A vCPU's properties are determined by two sources and both are global. It
+>>   >>   means all vCPUs should have same properties: (a) Feature registers
+>>   >>   returned from the host. The function
+>>   >>   kvm_arm_get_host_cpu_features() is called for once, meaning this source
+>>   >>   is same to all vCPUs;
+>>   >
+>>   >
+>>   > Sure, but what are you trying to save here?
+>>   >
+>>   
+>>   As mentioned above, the life cycle of those hotpluggable vCPU objects are
+>>   really short. They still consume time and memory to instantiate them. If I'm
+>>   correct, one of the primary goal for vCPU hotplug feature is to save system
+>>   boot-up time, correct?
+> 
+> 
+> Correct. We targeted vCPU hotplug for Kata-containers for on-demand resource
+> allocation and saving the resources. Kata-containers can work with different types
+> of VMM like Qemu and microVMs like Firecracker. AFAIK, Usecase of microVM is
+> slightly different than the normal containers. They are short lived (say around
+> 15 min) and require ultrafast boot-up times (say less than 125 ms) - these figures
+> are from Amazon who invented the concept of microVM in the earlier decade.
+> 
+> With the current patches, we have only partially achieved what we had started
+> i.e. Kata/Qemu but we also want to target Kata/microVM. In our case, we want
+> that microVM to be Qemu based fro ARM. I think x86 already has reduced lots
+> of legacy stuff and created a microVM in Qemu. I'm not sure how it compares
+> against the true microVM like Firecracker. It will be a good target to reduce
+> memory foot print of ARM Qemu Virt Machine. or think or creating a new one
+> just like x86. Using the vCPU Hotplug feature we were drastically able to reduce
+> the boot up times of Qemu. Please check the calibrated performance figures in
+> KVmForum  2023 slide 19G (Page 26) [1]
+> 
+> [1]  https://kvm-forum.qemu.org/2023/Challenges_Revisited_in_Supporting_Virt_CPU_Hotplug_-__ii0iNb3.pdf
+> 
+> Last year, I had prototyped a microVM for ARM, Michael Tsirkin suggested that if
+> the performance number of the ARM Virt machine can match the x86 microVM then
+> we might not require an explicit microVM code for ARM. Hence, my current efforts
+> are to reduce the memory foot print of existing Virt machine. But I do have a rough
+> prototype of microVM as well. We can debate about that later in a different
+> discussion.
+> 
+
+Thanks for the linker to the slides. Yeah, it's nice to reduce the bootup time
+and memory footprint if possible. vCPU hotplug feature may help to improve the
+performance, but all other paths might also impact the performance. In summary,
+it's a comprehensive goal to reduce the memory footprint and bootup time, and
+other components (paths) need optimization to achieve this goal.
+
+> 
+>>   >>   (b) The parameters provided by user through '-cpu host,sve=off' are
+>>   >>   translated to global properties and applied to all vCPUs when they're
+>>   >>   instantiated.
+>>   >
+>>   >
+>>   > Sure. Same is the case with PMU and other per-vCPU parameters.
+>>   > We do not support heterogenous computing and therefore we do not have
+>>   > per-vCPU control of these features as of now.
+>>   >
+>>   >
+>>   >>
+>>   >>          (a)                                            (b)
+>>   >>
+>>   >>      aarch64_host_initfn                          qemu_init
+>>   >>      kvm_arm_set_cpu_features_from_host           parse_cpu_option
+>>   >>        kvm_arm_get_host_cpu_features
+>>   cpu_common_parse_features
+>>   >>                                                   qdev_prop_register_global
+>>   >>                                                     :
+>>   >>                                                   device_post_init
+>>   >>
+>>   >> qdev_prop_set_globals
+>>   >
+>>   >
+>>   > Sure, I understand the code flow but what are you trying to suggest here?
+>>   >
+>>   
+>>   I tried to explain that vCPU object isn't needed to create and populate
+>>   vCPU's file descriptors, as highlight in (1). The information used to create the
+>>   cold-booted
+>>   vCPU-0 can be reused because all vCPUs have same properties and feature
+>>   set.
+> 
+> 
+> It does not matter. We use those QOM vCPU object states to initializes Qemu
+> GICv3 model with max possible vCPUs and then release the QOM vCPU objects.
+> which are yet-to-be-plugged.
+> 
+
+It's what has been implemented in this series. My concern remains: why those
+vCPU hotpluggable objects can't be avoided? Again, their corresponding vCPU
+file descritpors (KVM vCPU objects) still have to be in place before GICv3
+is instantiated and realized.
+
+> 
+>>   >>   For (2), I'm still looking into the GICv3 code for better understanding.
+>>   >
+>>   >
+>>   > Oh, I thought you said you've finished your reviews 😊
+>>   >
+>>   > Please take your time. For your reference, you might want to check:
+>>   >
+>>   > KVMForum 2023:
+>>   > https://kvm-
+>>   forum.qemu.org/2023/Challenges_Revisited_in_Supporting_Vir
+>>   > t_CPU_Hotplug_-__ii0iNb3.pdf
+>>   > https://kvm-forum.qemu.org/2023/KVM-forum-cpu-
+>>   hotplug_7OJ1YyJ.pdf
+>>   >
+>>   > KVMForum 2020:
+>>   > https://kvm-
+>>   forum.qemu.org/2020/Oct%2029_Challenges%20in%20Supporting%
+>>   >
+>>   20Virtual%20CPU%20Hotplug%20in%20SoC%20Based%20Systems%20like%2
+>>   0ARM64_
+>>   > Salil%20Mehta.pdf
+>>   >
+>>   
+>>   hmm, 'finished my review' has been misread frankly. By that, I meant I
+>>   finished my tests and provided all the comments I had. Some of them are
+>>   questions and discussions, which I still need to follow up.
+> 
+> 
+> Sure. No worries. Even if you miss, you will have more chance to comment on
+> upcoming RFC V4 😊
+> 
+
+Ok :-)
+
+> 
+>>   > Until
+>>   >>   now, I don't see we need the instantiated hotpluggable vCPUs either.
+>>   >
+>>   >
+>>   > I think, I've already answered this above it is because of ARM Architectural
+>>   constraint.
+>>   >
+>>   >
+>>   >   For
+>>   >>   example, the redistributor regions can be exposed based on 'maxcpus'
+>>   >>   instead of 'cpus'.
+>>   >
+>>   > You mean during the review of the code you found that we are not doing
+>>   it?
+>>   >
+>>   
+>>   It's all about the discussion to the possibility to avoid instantiating
+>>   hotpluggable vCPU objects.
+> 
+> 
+> As mentioned above, with the current KVM code you cannot. But if we
+> really want to then perhaps we would need to change KVM.
+> 
+> I might be wrong but AFAICS I don’t see a reason why we cannot have
+> something like *batch* KVM vCPU create and  initialize instead of current
+> sequential KVM operations. This will avoid multiple calls to the KVM Host
+> and can improve Qemu init time further. But this will require a separate
+> discussion in the LKML including all the KVM folks.
+> 
+> This has potential to delay the vCPU hotplug feature acceptance and I'm
+> really not in favor of that. We have already stretched it a lot because of
+> the standards change acceptance earlier.
+> 
+
+Again, my suggestion wasn't completely understood. I was suggesting to avoid instantiating
+those hotpluggable objects, but their vCPU file descriptors still need to be in place
+before GICv3's instantiation and realization.
+
+Yes, I was also concerned that too much code changes would be needed if my suggestion is
+accepted. It will definitely delay the feature's upstreaming process. It's why I said the
+topic (to avoid the hotpluggable objects) are just for discussion now. We can do it (as
+separate optimization) after your current implementation is merged.
+
+> 
+>>   > The IRQ connection and teardown can be dynamically
+>>   >>   done by connecting the board with GICv3 through callbacks in
+>>   >>   ARMGICv3CommonClass.
+>>   >>   The connection between GICv3CPUState and CPUARMState also can be
+>>   >>   done dynamically.
+>>   >
+>>   > Are you suggesting this after reviewing the code or you have to review
+>>   > it yet? 😉
+>>   >
+>>   
+>>   I was actually trying to ask for your input and feedback. I was hoping your
+>>   input to clear my puzzles: why vCPU objects must be in place to create
+>>   GICv3 object?
+>>   Is it possible to create the GICv3 object without those vCPU objects?
+> 
+> 
+> No. VGIC initializes IRQs to target KVM vCPUs, it would expect same KVM vCPU MPIDR
+> or MP-AFFINITY configured when KVM vCPUs were initialized at the first place
+> otherwise the VGIC initialization will not happen correctly. Hence, the sequence.
+> 
+> The sequence of these initialization is generally strictly controlled by specification
+> which is closely tied up with hardware including powering up initializations.
+> You will need to honor the expectations of the KVM VGIC init which in turn are
+> ARM CPU Architecture specification compliant. It is not just a loosely written code.
+> 
+
+umm, As I explained from the beginning, all KVM vCPU file descriptors are still
+in place before GICv3 is instantiated and realized. With those KVM vCPU file
+descriptor, we shouldn't have problem except more code changes are needed, or
+I miss something? :)
+
+> 
+> What
+>>   kinds of efforts we need to avoid instantiating those hotpluggable vCPU
+>>   objects.
+> 
+> 
+> I mentioned one of the ways above. Introduce *batch* KVM vCPU create &
+> initialize. But it will have to undergo greater scrutiny because we are touching
+> a common part which might affect many stake holders.  But this is a discussion
+> we can do later as part of microVM for ARM.
+> 
+
+Remember you just had the architecture agnostic series merged. The vCPU file
+descriptor can be parked and picked up at a later time based on the vCPU index.
+This KVM vCPU create in batch mode can be well supported. What you need to is
+record the parameters passed to ioctl(vm_fd, CREATE_VCPU, index) and ioctl(vcpu_fd,
+INIT_CPU) for vCPU-0 in hw/arm/virt.c and create all other vCPU file descriptors
+based on the recorded parameters.
+
+Thanks,
+Gavin

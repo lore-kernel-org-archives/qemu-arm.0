@@ -1,290 +1,243 @@
-Received: by 2002:a17:505:1116:b0:1be9:327d:8ee3 with SMTP id pu22csp250614njb;
-        Fri, 23 Aug 2024 09:25:43 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCWq4mdzFDxJh7gwWnV+Y13yX2asZyadrgF8DjydMVSUPzMQrEqNjMTPy7EjAD1axAEVxB1zBg6DT7RY8w==@linaro.org
-X-Google-Smtp-Source: AGHT+IFuHaQssZWK9oF4fHFec62UfVwuERjlDC47wjdOw6gGBVnud4hz5fqHtSpX5/RPMeKY2Buq
-X-Received: by 2002:a05:6102:162a:b0:48f:db40:99e9 with SMTP id ada2fe7eead31-498f41bf959mr3722675137.0.1724430342900;
-        Fri, 23 Aug 2024 09:25:42 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1724430342; cv=pass;
+Received: by 2002:a17:505:1116:b0:1be9:327d:8ee3 with SMTP id pu22csp366583njb;
+        Fri, 23 Aug 2024 16:28:28 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCVufYvLGDALDsre4yNnhFt2POYtsnF+GAuUdM/bBRuVAwLO2AOpjrDx1Z1I5BK5Y00dnO3NU/UuL4aUYQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IFXCCqr6lVtQF5H/j1CPu4byoUS2MXR8FtzD9V+816MGx8T2AuiBQ9qss1rtFdvIB2bDOh1
+X-Received: by 2002:a05:6808:2dce:b0:3da:9fc5:56ea with SMTP id 5614622812f47-3de2a7a76ffmr4971337b6e.0.1724455708454;
+        Fri, 23 Aug 2024 16:28:28 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1724455708; cv=pass;
         d=google.com; s=arc-20160816;
-        b=O3EjC4UXq8axvp3bxEKioLAwyVrdBdvsHeN/yWh+8PNZSkVcB+f+b87uLrX+ZDkkT8
-         5mmQK66WBOSOmDBVA5aPouYS5Pt1ghDIfeGnvKfXNk4Sp1Wq8PAaL0PzytCTXrguW0mI
-         vi1d7zenayitbGibU1xzFwAIZkqy8mudeIK5oFNXkdTLhrytLFN/zblO5MEBLPgmppTg
-         mpMolM360ZKKihRtNJEKU6VBS7LsGzwkpb+EFTIxdYha4IlKPHLkqWcjy4Sf5Hr4N673
-         3eYCMJ3dm09uJVoAxWyNG2pUdSyKmrzm1eOGJ3tWYopS+h+phgtxw7JAV1ZKo8+nYEN6
-         dwpw==
+        b=JAghWQCpX1nmoR7y1BjwPECwwIrYYmq0OfnqvuQMYEJhfcMEXlNrN3yRFF8aSefLxm
+         WdbEHfhvHqen+6RDjQdj9AkkygLhWyBNsaCdkY3PW7Qx2STRvt69MuaWD07VMMhwGMkV
+         ahdcbEvpLC7R/vvD8wKHHlVj+nMxd+AjjBhLhnRz/eW5jETh3zbDvGpFXdO2bTqppbPH
+         EC2YvuMF3CDJOtMCtZPpswpRtN64+++gbTJ3rsCRJM55SzG6kkk+ne5Yf75ihrzqAWgt
+         BHN8oQKgH2RLOY4VGcpTqF0YXVVFDso63NLUbsjmyxBEVYcE8neraMybRD4CteOrccOA
+         kYXQ==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:in-reply-to
-         :content-disposition:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=A7uZBmqYJwhkrHQramnYjcXYfQYU/WQB9d7Fos51KSg=;
-        fh=9mLm26VBlG4e94VEjMABJE0po5OIVMVozalZsxkK2RY=;
-        b=QR9yYhRNFnzdRULhjPVZ9LonUJj5IJHE2Z7+uwKrEl8JijyljXNQIuciSElngzYHjX
-         eTHbbMPw0kiUH91JafGf3OV4giEffVGlKcgD52aUFakg6xghXB4KN2q/PshY2YlQ3HHX
-         ZWgPreDaHI8sWPt80+sBRU3qKtbJzwgFnqfueQkaN9oGuCk2yA+cUC22XWEwO5Fwfs8u
-         0zg6rZxnXFOp7M0t1520H48CqIHRguA0ck1UJLlO3+ZTCMVKSHE05EK1V80d8vOzowgM
-         B0oKYIEkX8b+waztUQb3QlV7oHNqLO7Nv13deYCimz6BB0LcVxN/bcPb8GETtYfMywVE
-         XajA==;
+        h=content-transfer-encoding:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=dXnGO7ESLRR/+Nl9KrUibo9fmG+C4uWneGcOlhh01Bo=;
+        fh=AJ8hn4ioKJA5lsG3NCMNx8yhntdFUmRi9f6dN5eYbeg=;
+        b=zlTXDLjX1S8U6uohInii04YhHlQmCt1LeyQhZpv83nsebSW1J2YuUz33KOKr2qTvP+
+         Nhdw3iA7G7WX+4AQNhfvE4OT827k0uqP2iwRD1yzKBOeePawu+xTJwIcvahAISrcX+eV
+         9U/hOmy6FQK0hUzo0mPRkp+9cuTowVamD+0wzvAI/61ci01j5p3NIV+/uTZo6/h3/2mk
+         DkSFu85egfA3DieRjFBPYbkxNR1VkyMf40gE5xTl7htHocvzzeOKo6R4Vxk5Ot65Fh6o
+         jAc/yuw+46xhr0agBzG/pwo7ZeX086sdavZ5xsSlj9AqujqzSuQqSwMLOHIBqZaax/yY
+         glXg==;
         dara=google.com
 ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@amd.com header.s=selector1 header.b=E1vOBoe6;
-       arc=pass (i=1 spf=pass spfdomain=amd.com dkim=pass dkdomain=amd.com dmarc=pass fromdomain=amd.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ada2fe7eead31-498e47a2b45si1174141137.105.2024.08.23.09.25.42
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=vORTuiKb;
+       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
+       spf=pass (google.com: domain of linux-kernel+bounces-299757-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-299757-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
+Return-Path: <linux-kernel+bounces-299757-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [2604:1380:45e3:2400::1])
+        by mx.google.com with ESMTPS id 41be03b00d2f7-7cd9ad87952si5003399a12.696.2024.08.23.16.28.28
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 23 Aug 2024 09:25:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 23 Aug 2024 16:28:28 -0700 (PDT)
+Received-SPF: pass (google.com: domain of linux-kernel+bounces-299757-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) client-ip=2604:1380:45e3:2400::1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@amd.com header.s=selector1 header.b=E1vOBoe6;
-       arc=pass (i=1 spf=pass spfdomain=amd.com dkim=pass dkdomain=amd.com dmarc=pass fromdomain=amd.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1shX6Z-0002q3-KM; Fri, 23 Aug 2024 12:25:39 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <francisco.iglesias@amd.com>)
- id 1shX6X-0002br-6V; Fri, 23 Aug 2024 12:25:37 -0400
-Received: from mail-mw2nam10on2061c.outbound.protection.outlook.com
- ([2a01:111:f403:2412::61c]
- helo=NAM10-MW2-obe.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <francisco.iglesias@amd.com>)
- id 1shX6T-0006FW-SG; Fri, 23 Aug 2024 12:25:36 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=L0IMbAR+7/0qS505IPmQj40cogjsSns3BX71Llu4haLVTz4yJtreSzV9NDAerxuaSQs9B1cJXbTSPJNsb2ks2MZCAM4LpAcXZq6/DE7xS42Y61gbRiBmybrvFhSKViQ/RGPhs5cnDyMJuKJ1ZFJtKwoJW84qeRuuZyNWaD+rRI9ZuuwH1yLq21ewCQUqtwKRugNSiEdvTmPNNYEWiFD2AhJH4rNKM0/mKvYVbj/u9e3PW4suZKXpyOLfS26UBOySyaiVpU0z28E6TuAYUVFLyiEY9NP+1H3J/vTz30YescRMWUIZ/8dWIgi8u7bU8AyecrpSEBfcEV+7ZDqy0NTDUg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=A7uZBmqYJwhkrHQramnYjcXYfQYU/WQB9d7Fos51KSg=;
- b=DzfTRkUimQC9lFR7skKk7uPOrnhzowZZKBSxO2oPlMpgq5/yBOwDv1zPUFIMco5rH25mAcdsqOdFfRic1Gc90Il0GjWAP2azY28ilcMiNLtFB57gvb+gC+8RSqAZ1MzkXY+QmmlP8CtTTKmccbB0n3cr4D6ewOTKS7xQPlbzT+9FOJfS4eWNz7YVvqJFjQEbaLOdVJpvOUREfcJXVRiAA2hLhAILlqIKszC7MY/l/FgIq9+rkyKS2dK82VtNIx2Wr4IhboX3zsC9XTarqjgWHYKWm7SZyyIYfpvCuaPQnEIyXRiHsJgUmoNUYCOr5ago2V0EgX5Rhe761xu7PGlj2w==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=amd.com; dmarc=pass action=none header.from=amd.com; dkim=pass
- header.d=amd.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1; 
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=A7uZBmqYJwhkrHQramnYjcXYfQYU/WQB9d7Fos51KSg=;
- b=E1vOBoe6vxSJndRe+1dgP27dhUcu/sXv1+s/2Lf+NsEwVVcHK/v2SZ3+ZcN1eJqQhRnniLKrXBCWl53l44pyn9JNC6vLvQPBQo7VT3GAYAwvAMWCygDSzkRtx4YEvtHP2emnsC3fS7Akk3eGBBMrbgeJri86DrjbMjgykJpzk0M=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=amd.com;
-Received: from SJ2PR12MB8739.namprd12.prod.outlook.com (2603:10b6:a03:549::10)
- by IA1PR12MB9031.namprd12.prod.outlook.com (2603:10b6:208:3f9::19)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7875.21; Fri, 23 Aug
- 2024 16:25:24 +0000
-Received: from SJ2PR12MB8739.namprd12.prod.outlook.com
- ([fe80::29bb:9aa:2a72:df1b]) by SJ2PR12MB8739.namprd12.prod.outlook.com
- ([fe80::29bb:9aa:2a72:df1b%6]) with mapi id 15.20.7897.014; Fri, 23 Aug 2024
- 16:25:23 +0000
-Date: Fri, 23 Aug 2024 18:25:16 +0200
-From: Francisco Iglesias <francisco.iglesias@amd.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- Alistair Francis <alistair@alistair23.me>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Subject: Re: [PATCH for-9.2 6/6] hm/nvram/xlnx-versal-efuse-ctrl: Call
- register_finalize_block
-Message-ID: <Zsi37HIW1DMy9l3C@xse-figlesia-l2.amd.com>
-References: <20240822162127.705879-1-peter.maydell@linaro.org>
- <20240822162127.705879-7-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <20240822162127.705879-7-peter.maydell@linaro.org>
-X-ClientProxiedBy: FR3P281CA0076.DEUP281.PROD.OUTLOOK.COM
- (2603:10a6:d10:1f::14) To SJ2PR12MB8739.namprd12.prod.outlook.com
- (2603:10b6:a03:549::10)
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=vORTuiKb;
+       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
+       spf=pass (google.com: domain of linux-kernel+bounces-299757-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-299757-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
+Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by sv.mirrors.kernel.org (Postfix) with ESMTPS id 0551F28613E
+	for <alex.bennee@linaro.org>; Fri, 23 Aug 2024 23:28:28 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id B08381C8FCE;
+	Fri, 23 Aug 2024 23:28:22 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="vORTuiKb"
+Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 70FAD61FFC
+	for <linux-kernel@vger.kernel.org>; Fri, 23 Aug 2024 23:28:22 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=10.30.226.201
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1724455702; cv=none; b=JsvmkBajAsys3m6urZRoYsAkY0rSYrZ0ZOfcFSuCwYDKn7CxRRh9hTn38u62Ko0NI097OUlxj1ojl4tcy8OXMHEj4gM3Qezim0gsBLuYTIdDoBq4UE93iRfvJrENxdGcidM2Jt2jDIik4P9KEAprcm2+uWK/2y01ylvVYPuUtJg=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1724455702; c=relaxed/simple;
+	bh=qUWlsVBaCvs/ScOoZEuc4eDAUzoBoNdCnkHyMXoBP0Y=;
+	h=Date:From:To:Cc:Subject:Message-ID:In-Reply-To:References:
+	 MIME-Version:Content-Type; b=dZDDj4JhiyzoSP7qkJwZ2fidj50TLwZy0E5cC5VtATTsiBAu8cVCMR3ErGI25boNKp+5S/OxJ/0wAX6zRbd3xuW0ybY7VLWrfYF7VC54IzWRlzyIcCnp40sDrLHztBC1YQXP0R0J7TubIH1ncHNZEUlUoIGV531DFpDu06YBDy8=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=vORTuiKb; arc=none smtp.client-ip=10.30.226.201
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 57787C32786;
+	Fri, 23 Aug 2024 23:28:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1724455701;
+	bh=qUWlsVBaCvs/ScOoZEuc4eDAUzoBoNdCnkHyMXoBP0Y=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=vORTuiKbLxZNPOEQ0PzthnF0YH6X3D3t02uOkqzxXEq3ydhuflVlK3Waov1PUgvD3
+	 7cF8XEuVzOfd9feh4tnCeA5ZFXAep0b31PKMPFr1s0danzrge9wOW0+haFLp1CCj/S
+	 lQOizMv3uah49tKyOFUH8fpRFmgXA9loFR6Pa+w8xkdzzHG6hqcj9josDJwMI6JLjy
+	 JZk0F/3AUmy4xUbjEERKYoPRKj8ckzWxQfe1WsNR+bzzR9u3BObxclWpPquTBY5tns
+	 MNvjEK8mV5/IxshEJXM62Wjf9e9cUjTXPuZtMJkwbgdpizZSn0w1f6hMAPFWAv6x0R
+	 IOMmxMh68Yg1g==
+Date: Sat, 24 Aug 2024 01:28:06 +0200
+From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+To: Igor Mammedov <imammedo@redhat.com>
+Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>, Shiju Jose
+ <shiju.jose@huawei.com>, "Michael S. Tsirkin" <mst@redhat.com>, Ani Sinha
+ <anisinha@redhat.com>, Dongjiu Geng <gengdongjiu1@gmail.com>,
+ linux-kernel@vger.kernel.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [PATCH v8 03/13] acpi/ghes: Add support for GED error device
+Message-ID: <20240824012806.6189d0a4@sal.lan>
+In-Reply-To: <20240819134304.68c54eae@imammedo.users.ipa.redhat.com>
+References: <cover.1723793768.git.mchehab+huawei@kernel.org>
+	<ba1864f1aa7073abe090eec0c31915f187967140.1723793768.git.mchehab+huawei@kernel.org>
+	<20240819134304.68c54eae@imammedo.users.ipa.redhat.com>
+X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
+Precedence: bulk
+X-Mailing-List: linux-kernel@vger.kernel.org
+List-Id: <linux-kernel.vger.kernel.org>
+List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: SJ2PR12MB8739:EE_|IA1PR12MB9031:EE_
-X-MS-Office365-Filtering-Correlation-Id: cf83bd28-94fd-4aba-d9ad-08dcc390300e
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|1800799024|366016;
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?bjRGVUs2UVRYRlYzSHRCOW5OaEljeW9SY3QxWXF0NVNxN1MzYVlmQmNRc240?=
- =?utf-8?B?V0NHOGY5Q0ZFN0hxK1FMdHd4WHlLZHYxSzVydFBHbHBHUWcxbnNNOUV4REVE?=
- =?utf-8?B?VEJTbTZPZlBwcnZxWXk1UjlFS3B3dEluTVZQUlFSMC9EWFZlZzFON3lrcjYv?=
- =?utf-8?B?RnFNR201K0t3TUUyUEo0cGROc21nWCtndWtmTCtZbDBmSDhUalhOWlFRSFE5?=
- =?utf-8?B?TXVPczVzRzM3WWxLbEV3eDRKRkNNNWd0NEZ6TTloNElERmM3VXJFdC9ybkUv?=
- =?utf-8?B?Z1VJdXhzZXRlSjdPTEx2aFJPKzc0MEFuN1ZKVlNhWEtzaFE1eE1rMmVxZy8r?=
- =?utf-8?B?ZHBKZTl1U0t0OG4yb0REVTZXdGtYUHp5d3d3b29EcGxPTVkraUFCdGZ0WXo1?=
- =?utf-8?B?MW5MM3dROVpGREJBTk0vSU0xUVpYcVJGYU52RjFaVlJHa0o5VFRrUFBsT1M3?=
- =?utf-8?B?YU1kWU13MldVU083d1hJSjg2ODdlaUFGeGRjMVJUT3lrYkJMeTdjQlBMTEZk?=
- =?utf-8?B?bE5JaG8zdm1qeE9wZ3hsWVFEWWpCdW9Fbm1TLzM1bnRndGhkNFZ0eDExSmFm?=
- =?utf-8?B?WncxK3NhalZQQzdwdURBTFBrNFB1SW43UlA3Y3J6VzY3YnpINm5pVTBwV09k?=
- =?utf-8?B?SnZ1YUZESVl1ZHA3M3pmZWo5M0dhZWtSczdUbVVKNGZPb09iQUpRM2ZUWita?=
- =?utf-8?B?V2dZVEhqdEs2VmliTjFuM29BM05sNGErYTNDZ0Jka0FnWXhpWFA4MmVaMmNW?=
- =?utf-8?B?RnhaTWYrNkdRdE1PU3ZleVVQQVQ2blIrNFllRlZwbjh0Z2hOQndMeE5MdUFl?=
- =?utf-8?B?NGNrMEgzbHBMUXZEbzNFMFdyaDc3ajRSNzdGRzIxSnZzKzZDcmQ4S01pNTN3?=
- =?utf-8?B?cUxIQlJCUVBtQzBUUjBvenEwb1FkUFY4U3ZKdkRmUlhKQnNRMFhVdzlVZG1Y?=
- =?utf-8?B?YnZrbjloMWxoRmxWS1BuMEdaNi9PNGRNdWVRSzI5bDdjaHFFVWlBV25SZzQr?=
- =?utf-8?B?OVpmWTBBY1N0Q0pXV2JVZS9waU1wS3pVUldoejQ2UGdkSjBpTyttcjF4dk52?=
- =?utf-8?B?RkFHT2ViR1FkM29QRXZSZzlkUHpVUElLd3JQM2VIdndrcTY0cjQ4RkE5aXhH?=
- =?utf-8?B?eFpLQ2Y4eDUrelhHMVkwdlp6ODhsWjFFZVphRFVIaVFOMGd5bU9pZ2FPWHdw?=
- =?utf-8?B?OEJDVmFJai9EMGZEait5WTMvUEZ0QUNQbTVWelVKVG83VEcvUUp2TUhyeStq?=
- =?utf-8?B?QngveldBbThJUjM0NWsyRkRXQjlqN1pBL0IvWmIyeitNaG1KZDN0bElsSnRC?=
- =?utf-8?B?NU5kUEdWZHU5YkhwcDc2TzFkRkh5cmlDaHpwYnBidXpiODVOQTIvRmNuaWNo?=
- =?utf-8?B?cmV4UGJDN2FxamM4UTI5aGJFMmptU1lSVWRiSzZid0dzRGpMZ2dKYnoyVlRs?=
- =?utf-8?B?RWlqS29NUGJJZ0tENWt3NEJYbEFjQXprRE9pR2l0aGYrWWJXdmlKZjB4TVkr?=
- =?utf-8?B?OXN6NFNMY0dxUG1qRDl3VFVOWGRwL2NTR3V2NzNISFFDZXl2c1N3NWxlUnNy?=
- =?utf-8?B?NWQ1WkV2eE0rai9GVm9xWlBJbHplbWVKTGJrb00rUjU5bTVDeEkrK1d6b0dY?=
- =?utf-8?B?aG1JdXBQazRBcjBJa0R3d25OSUNhd09iK20xU2J5OUtsK2VBZExhMDJFcS9U?=
- =?utf-8?B?TjBzbjEvOUQvalFPZjdpQTFDYTVVeG9XTFBPa3QwRnZuVDdsOGRDWW1kcE82?=
- =?utf-8?B?U2o1RGNYSklMd1pON3BDK0U0MEdndFBkZWR6RU5VRTkxeFRvc0t1OG5DU3lH?=
- =?utf-8?B?c1hxUHNxT0p5Smh6S3hydz09?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:SJ2PR12MB8739.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(376014)(1800799024)(366016); DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?V2U2WXNSTU1QYUlmekE1STg5anBYbERPQW8yQUxRcnd6NEhqN1ErVEZrTDA0?=
- =?utf-8?B?ZFc0YVVzSGhOOTFzSEp1R3RFYW0xZ2VwOHpoLzcyMnZaQ1ZpOWxsTVllVGhv?=
- =?utf-8?B?ZUxIajZlTHJ5SjB2SUgxbUE1dktvWGxrQ2todU4rL3h6RUV6RElQcDZRWUdj?=
- =?utf-8?B?L0hHTWgyMTNaWFM5UmplRnZYenRGV0dHWHMzdFo1OHc5cEtnM0xidmZja3Uz?=
- =?utf-8?B?ZHFzTGhSWkljQzMvTGF2S28xd3ZtckUvUmlNOHpTVStFT1FqV0NvcFFDTGdx?=
- =?utf-8?B?Q21IRkpxVUkwYkpEcjdySVc4R0VIYm55SldzMzZFdFUxNks1cFMxb3kxdU1s?=
- =?utf-8?B?UVppNG4yNEYwNXBWWlptTEs5cFNZaWpMVDhsTFgvWUpkQUF6SHY4TWZYUzVu?=
- =?utf-8?B?czc1cjBqOGMrK2psbVJENVh5Uy9ONk42MHhUc3I3aENyRThuQmhEVEdzSzNr?=
- =?utf-8?B?bi84dTB3eDdlV3oxQkJPTEpxRENEczdiTndGWGNlK3lBUzl0eWxFbDZ3YkRZ?=
- =?utf-8?B?UnN0ZHFBSGsySnFEeGtKRDFvSWtQUnpFM1d2cndLZXlZcmdVbXBmcFA4anZZ?=
- =?utf-8?B?VWRpTU4rUzZYUTUvNXVISVkrK1hVbmRac3RhZk9ZQlNyYjRWV0VoU1FHU1lM?=
- =?utf-8?B?YndSUXkvRG4wa09FaG9nNVpnTnN4WnI1VHArV0dSV3QwaXlIZDZldkh6TWVX?=
- =?utf-8?B?VkN3Ulc1cUk5U00yajhyNFJhMGsvdVJmWjdxQThsVVpia0YvWld6Uk9WOUFq?=
- =?utf-8?B?aEZwVDJqNjlnVklEUGQ1UFhKWnBsUmR0cWp3VjZkMGROdjFFYmp1UFdYSG5P?=
- =?utf-8?B?eHRHbUUwNmNORG80a2IyRnMyUkRNQ1FYYXBKYkYwOGtBSTh1RFkzOE1pTFlD?=
- =?utf-8?B?WFdadTJncmI5Y0dsLzhHZTNWc0pWL3QrRTREamxJMjdPVi92ZVlmSHhBSmR5?=
- =?utf-8?B?Z2JKUU1BMDdVeGhDTXgrbXh5SVE2bS9aUHFTNzE4a2UxM0ZUakZwNmtYMHJO?=
- =?utf-8?B?Y0hDZzBpdTJuVDRNVFV4azJIcWppVFpITXBHOHl1bm54cUg3MGVGeDVOM3Nk?=
- =?utf-8?B?eTdja2VoZ0U5NXM4dVFCbHRJWE1SZkp4QVJsWTV3a1U0MEhrVENlT09ZSUVV?=
- =?utf-8?B?SnFBMnlHd3ZhZ3ZxaUJFWE1JY0p3eURzUGxRMzVkb0FUMmpiYk41SmN3dDVS?=
- =?utf-8?B?aDFSVWpTTHZJSndYT0FSd1lZMUJqZWZYWktEZ3VsOFFpNTJxQmI2dkJJb1Rq?=
- =?utf-8?B?QVd5alpJRHFabTcyOGlVNjlpbzZET2RHZGtqd2w3Y0hENGpoY0FBdUd4Z05H?=
- =?utf-8?B?OGhyZDJrdkNjUlBqZFd5VWZCSElSMUZiTm8yRnFjWkFUemlXMHlreDNjb2d1?=
- =?utf-8?B?L2RvaEJFMjlqMS82bkJQaGs1WVpDSkhBaU1RZmZ0aS9KUm13YzhuRG5QVlJN?=
- =?utf-8?B?UHVuamR5VFBHRnMvVzZEVGtNS0RQdDBnaVdVMWN4Nm1FcHJpZVdDbWNTOU1G?=
- =?utf-8?B?NHhiNFMrUjRJTElHbGhSNSt6N3V1WGQzYXhDdlJkb2o5SU1qQXVRMG1CV1F0?=
- =?utf-8?B?N08yVjMzdDF4VVFJelVmNjdmcWdVbGVKNzllc3N1cGdSMTlyckp4S3FhUUFn?=
- =?utf-8?B?Ky9uZ2RCSGorTmZSSzZZUlVBdUd3V0ZEbG9KK0t5S3NYVUdWZEVZTEwvdEtq?=
- =?utf-8?B?MmtZdkZUbDlSMVJvYnBobURJakpsdmtIeUVtVkptZzFJWTI1RHBtVTYrYkEv?=
- =?utf-8?B?ZWVTdXJnV2pDdTgzL3Nlc1NQS3FTT1VtWFlUSWozMFRRT083Yit0SEtPU0ZZ?=
- =?utf-8?B?UThmaHcvNjdkUEI4UjJrYVowQmVEVTcxaXUyaXJYMnoxODNWVE9RSVFrVjhX?=
- =?utf-8?B?S3JKdkRUbW91RU1HY0pqZldLZ2JmMXNHWU5GejhJZVVTWmU5WDNVOFNYeXlX?=
- =?utf-8?B?QlprTnk4SmtVaURUWnJXeFdDVFlLUzVvdkhQMmc2dUJvSnV3blMzaEJpTkJS?=
- =?utf-8?B?UWhDd095RG1MZzdQamxFYnZJVnF5R1VYVnNDUG1jN3Rpc2tPTW9aL21KWWFH?=
- =?utf-8?B?MldkNFhwU0E1d2NnTE9aSmxHbFl2ODJLZk9HM0RJQUo2dHd4aFVhQWlldUtn?=
- =?utf-8?Q?kj8861v10jmCSzKrL5v2VlqT0?=
-X-OriginatorOrg: amd.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: cf83bd28-94fd-4aba-d9ad-08dcc390300e
-X-MS-Exchange-CrossTenant-AuthSource: SJ2PR12MB8739.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 23 Aug 2024 16:25:23.0926 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: R0z/by3QfYspsajIq1HwkPnUoLMPK1OdTTklFtX7WAEI+Htm/i728T5erTJfh3sk8cj/t96pzaZ/DsbUA6252w==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA1PR12MB9031
-Received-SPF: permerror client-ip=2a01:111:f403:2412::61c;
- envelope-from=francisco.iglesias@amd.com;
- helo=NAM10-MW2-obe.outbound.protection.outlook.com
-X-Spam_score_int: -22
-X-Spam_score: -2.3
-X-Spam_bar: --
-X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.144,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: FiQGN68c5Vij
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-TUID: ubUSgwtblKjY
 
-On Thu, Aug 22, 2024 at 05:21:27PM +0100, Peter Maydell wrote:
-> The TYPE_XLNX_VERSAL_EFUSE_CTRL device creates a register block with
-> register_init_block32() in its instance_init method; we must
-> therefore destroy it in our instance_finalize method to avoid a leak
-> in the QOM introspection "init-inspect-finalize" lifecycle:
-> 
-> Direct leak of 304 byte(s) in 1 object(s) allocated from:
->     #0 0x55f222b5b9d8 in __interceptor_calloc (/mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/asan/qemu-system-aarch64+0x294e9d8) (BuildId: 420
-> 43d49e1139e3f3071b1f22fac1e3e7249c9a6)
->     #1 0x7fbb10669c50 in g_malloc0 debian/build/deb/../../../glib/gmem.c:161:13
->     #2 0x55f222f90c5d in register_init_block hw/core/register.c:248:34
->     #3 0x55f222f916be in register_init_block32 hw/core/register.c:299:12
->     #4 0x55f223bbdd15 in efuse_ctrl_init hw/nvram/xlnx-versal-efuse-ctrl.c:718:9
->     #5 0x55f225b23391 in object_init_with_type qom/object.c:420:9
->     #6 0x55f225b0a66b in object_initialize_with_type qom/object.c:562:5
->     #7 0x55f225b0bf0d in object_new_with_type qom/object.c:782:5
->     #8 0x55f225b0bfe1 in object_new qom/object.c:797:12
->     #9 0x55f226309e0d in qmp_device_list_properties qom/qom-qmp-cmds.c:144:11
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Em Mon, 19 Aug 2024 13:43:04 +0200
+Igor Mammedov <imammedo@redhat.com> escreveu:
 
-Reviewed-by: Francisco Iglesias <francisco.iglesias@amd.com>
+> On Fri, 16 Aug 2024 09:37:35 +0200
+> Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
+> 
+> > From: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+> > 
+> > As a GED error device is now defined, add another type
+> > of notification.
+> > 
+> > Add error notification to GHES v2 using
+> >a GED error device GED triggered via interrupt.  
+>  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> This is hard to parse, perhaps update so it would be
+> more clear what does what
+> 
+> > 
+> > [mchehab: do some cleanups at ACPI_HEST_SRC_ID_* checks and
+> >  rename HEST event to better identify GED interrupt OSPM]
+> > 
+> > Signed-off-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+> > Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+> > Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+> > ---  
+> 
+> in addition to change log in cover letter,
+> I'd suggest to keep per patch change log as well (after ---),
+> it helps reviewer to notice intended changes.
+> 
+> 
+> [...]
+> > +    case ACPI_HEST_SRC_ID_GED:
+> > +        build_ghes_hw_error_notification(table_data, ACPI_GHES_NOTIFY_GPIO);  
+> While GPIO works for arm, it's not the case for other machines.
+> I recall a suggestion to use ACPI_GHES_NOTIFY_EXTERNAL instead of GPIO one,
+> but that got lost somewhere...
 
-> ---
->  include/hw/nvram/xlnx-versal-efuse.h | 1 +
->  hw/nvram/xlnx-versal-efuse-ctrl.c    | 6 +++---
->  2 files changed, 4 insertions(+), 3 deletions(-)
-> 
-> diff --git a/include/hw/nvram/xlnx-versal-efuse.h b/include/hw/nvram/xlnx-versal-efuse.h
-> index 86e2261b9a3..afa4f4f9960 100644
-> --- a/include/hw/nvram/xlnx-versal-efuse.h
-> +++ b/include/hw/nvram/xlnx-versal-efuse.h
-> @@ -44,6 +44,7 @@ struct XlnxVersalEFuseCtrl {
->      void *extra_pg0_lock_spec;      /* Opaque property */
->      uint32_t extra_pg0_lock_n16;
->  
-> +    RegisterInfoArray *reg_array;
->      uint32_t regs[XLNX_VERSAL_EFUSE_CTRL_R_MAX];
->      RegisterInfo regs_info[XLNX_VERSAL_EFUSE_CTRL_R_MAX];
->  };
-> diff --git a/hw/nvram/xlnx-versal-efuse-ctrl.c b/hw/nvram/xlnx-versal-efuse-ctrl.c
-> index def6fe3302b..8252a5cabe0 100644
-> --- a/hw/nvram/xlnx-versal-efuse-ctrl.c
-> +++ b/hw/nvram/xlnx-versal-efuse-ctrl.c
-> @@ -712,9 +712,8 @@ static void efuse_ctrl_init(Object *obj)
->  {
->      XlnxVersalEFuseCtrl *s = XLNX_VERSAL_EFUSE_CTRL(obj);
->      SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
-> -    RegisterInfoArray *reg_array;
->  
-> -    reg_array =
-> +    s->reg_array =
->          register_init_block32(DEVICE(obj), efuse_ctrl_regs_info,
->                                ARRAY_SIZE(efuse_ctrl_regs_info),
->                                s->regs_info, s->regs,
-> @@ -722,7 +721,7 @@ static void efuse_ctrl_init(Object *obj)
->                                XLNX_VERSAL_EFUSE_CTRL_ERR_DEBUG,
->                                R_MAX * 4);
->  
-> -    sysbus_init_mmio(sbd, &reg_array->mem);
-> +    sysbus_init_mmio(sbd, &s->reg_array->mem);
->      sysbus_init_irq(sbd, &s->irq_efuse_imr);
->  }
->  
-> @@ -730,6 +729,7 @@ static void efuse_ctrl_finalize(Object *obj)
->  {
->      XlnxVersalEFuseCtrl *s = XLNX_VERSAL_EFUSE_CTRL(obj);
->  
-> +    register_finalize_block(s->reg_array);
->      g_free(s->extra_pg0_lock_spec);
->  }
->  
-> -- 
-> 2.34.1
-> 
+True, but the same also applies to SEA, which is ARMv8+. After having
+everything in place, I confined the source ID into this code inside
+ghes.c:
+
+	enum AcpiHestSourceId {
+	    ACPI_HEST_SRC_ID_SEA,
+	    ACPI_HEST_SRC_ID_GED,
+
+	    /* Shall be the last one */
+	    ACPI_HEST_SRC_ID_COUNT
+	} AcpiHestSourceId;
+
+	static bool ghes_notify_to_source_id(enum AcpiGhesNotifyType notify,
+	                                     enum AcpiHestSourceId *source_id)
+	{
+	    switch (notify) {
+	    case ACPI_GHES_NOTIFY_SEA:             /* ARMv8 */
+	        *source_id = ACPI_HEST_SRC_ID_SEA;
+	        return false;
+	    case ACPI_GHES_NOTIFY_GPIO:
+	        *source_id = ACPI_HEST_SRC_ID_GED;
+	        return false;
+	    default:
+	        /* Unsupported notification types */
+	        return true;
+	    }
+	}
+
+The only place where the source ID number is used is at
+ghes_notify_to_source_id() - still we use ACPI_HEST_SRC_ID_COUNT on other
+places to initialize and fill in the HEST table and its error source 
+structures.
+
+On other words, the source ID field is filled from the notification types as
+defined at include/hw/acpi/ghes.h:
+
+    ACPI_GHES_NOTIFY_POLLED = 0,
+    ACPI_GHES_NOTIFY_EXTERNAL = 1,
+    ACPI_GHES_NOTIFY_LOCAL = 2,
+    ACPI_GHES_NOTIFY_SCI = 3,
+    ACPI_GHES_NOTIFY_NMI = 4,
+    ACPI_GHES_NOTIFY_CMCI = 5,
+    ACPI_GHES_NOTIFY_MCE = 6,
+    ACPI_GHES_NOTIFY_GPIO = 7,
+    ACPI_GHES_NOTIFY_SEA = 8,
+    ACPI_GHES_NOTIFY_SEI = 9,
+    ACPI_GHES_NOTIFY_GSIV = 10,
+    ACPI_GHES_NOTIFY_SDEI = 11,
+
+(please notice that ACPI already defines "EXTERNAL" as being something 
+else)
+
+Now, if we want to add support for x86, we could either add some ifdefs
+inside ghes.c, e. g. something like:
+
+	enum AcpiHestSourceId {
+	#ifdef TARGET_ARM
+	    ACPI_HEST_SRC_ID_SEA,
+	    ACPI_HEST_SRC_ID_GED,
+	#endif
+	#ifdef TARGET_I386
+	   ACPI_HEST_SRC_ID_MCE,
+        #endif
+
+	    /* Shall be the last one */
+	    ACPI_HEST_SRC_ID_COUNT
+	} AcpiHestSourceId;
+
+and something similar at ghes_notify_to_source_id():
+	static bool ghes_notify_to_source_id(enum AcpiGhesNotifyType notify,
+	                                     enum AcpiHestSourceId *source_id)
+	{
+	    switch (notify) {
+	#ifdef TARGET_ARM
+	    case ACPI_GHES_NOTIFY_SEA:             /* ARMv8 */
+	        *source_id = ACPI_HEST_SRC_ID_SEA;
+	        return false;
+	    case ACPI_GHES_NOTIFY_GPIO:
+	        *source_id = ACPI_HEST_SRC_ID_GED;
+	        return false;
+	#endif
+	#ifdef TARGET_I386
+	    case ACPI_GHES_NOTIFY_MCE:
+	        *source_id = ACPI_HEST_SRC_ID_MCE;
+	        return false;
+	#endif
+	    default:
+	        /* Unsupported notification types */
+	        return true;
+	    }
+	}
+
+An alternative would be to move source id/notification code out, placing
+them at hw/arm, hw/i386, but a more complex binding logic will be needed.
+
+If we're willing to do something like that, I would prefer to not do such
+redesign now. Better to do such change when we'll be ready to add some 
+notification support that works on x86 (MCE? SCI? NMI?).
+
+Regards,
+Mauro

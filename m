@@ -1,200 +1,159 @@
-Received: by 2002:a17:505:1116:b0:1be9:327d:8ee3 with SMTP id pu22csp169741njb;
-        Fri, 23 Aug 2024 05:55:50 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUXssx8vKPNtHD8g7kHidmtIzWJZ+j3D99WJ8hsNH+YhHD3wJUNUqPDs55h/Z+jcKDokbp2DweMgAVNsA==@linaro.org
-X-Google-Smtp-Source: AGHT+IFfTQyIdLfGRTsqH4zWHZ1pWqgttaNKtpTauooIywPSdPSjR6lzkkTiF47qaNfw1iVDM0Dn
-X-Received: by 2002:a05:6214:498a:b0:6bf:7fb3:2611 with SMTP id 6a1803df08f44-6c16dcc947bmr28488816d6.46.1724417750772;
-        Fri, 23 Aug 2024 05:55:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1724417750; cv=none;
+Received: by 2002:a17:505:1116:b0:1be9:327d:8ee3 with SMTP id pu22csp565598njb;
+        Sat, 24 Aug 2024 09:36:30 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCX8YeBxgsZ69VruNuvVhiveasp6OO4OQtCARgHGZDKLg7uGXzhwrXvsDGhaymGa9RJLTSRtS2bSb88ZDQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IEy/6R0DDoBKIhI2PDt0fxPyDKD8urspF7wXu9JRlO4tiHU+L8IcQ3D13gIUoatnSEUMQ1o
+X-Received: by 2002:a05:622a:591b:b0:44f:fb58:8c3e with SMTP id d75a77b69052e-45509d21ef1mr79063521cf.46.1724517390119;
+        Sat, 24 Aug 2024 09:36:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1724517390; cv=none;
         d=google.com; s=arc-20160816;
-        b=yU+qEnEo8mUBVzAoN2Zc+iQoaRg59qc6cHNqJvFcXJamSYdbKUHPKvuRIPW1bXYzQ8
-         TXdRZCPrLMAv4ZbXFwwv0PeoM4oakaC4OyMV3FpgOdXUEs7nXkEDXa0n/c9CiyYBBToC
-         7VKeixlPouV48xsXAXw1kWHm1fmfziutH6LohWkGD/swgracdXI8C1ZNTQDX9g1zPGP2
-         6+8ll5a90pkgjrtPvzcnQx1YSx3It63yW2P+1IGRQz+4gIh8pfoVRdHYyXQRdpmpzznq
-         xnR0Xae/7Axa4TyXK1Jx16DLJNiTMDgBztmSx+llGxgSNEicnSjpkUETb009YoOdNLNC
-         izSg==
+        b=A3rTV4nX0BXcIRVZQFYimrGs9MkmCiRGHoIhrMwt0lam41fhm6w9qANZwZVQqtVQuZ
+         f/GWs104jxJ18CjBC8AqBvVwWosk+IpRN4O0X8bjAd/ixHc4qXfkg/w9WzLEGkLDt8Nn
+         MKFUeWHUihDp3KuobS8dBFSyG8rgppT9C0D7KFqplfBZ9hvS3l4v8E9f3/syBTY62X9j
+         CNdBRigGJpGgAs6kr5CRKvwJIDkYkJO3dVXgFjnZeLDnnL4xZYzLth43lymb0NG7juwo
+         1Fn+xTkm6BwTQvdO4I4bmpuvf9jDBHixBk3ctb0d2eAnu4eEovPgzh6ga7RKGFaUFrCT
+         RGOQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to;
-        bh=iALeS98ZhOk83Eag67b75FR3Ozdr4Db5BmE2yVBACP4=;
-        fh=FkJWaune7hMuK+jemAGcJmHRm42IOkVpZLD1KexBaC8=;
-        b=WyXt98Y+0/uWo4VxL5UViLzZLrwfl/hIWij50K2MM52Wz9qq5GEVx8pmKRg+avGHCz
-         qlBZkm0mAZawmtViOFbL1S6vWZADL4di/aVL7whMxhD82NRczWXoNEqEYQuzKne+b2TE
-         E+FrgYT5sl5NLDPAgbZzBFAJHCqOtYLfg+2J/2qg1sKgCNv5fNptpb+vehjX6DvBj3Uo
-         Vne1J6MJJkyIJK33Zf8IuoF0AXRsLw4+ERPYLVuj8imjf5FIIeEvcBvHQBUVFIYd96yL
-         U075RlrXfV5DQ/z37fQrz0EsF9T1jqkZbyBmZSxNWRoC7j0xY54cYZ4/eq+ZX64Xqmis
-         chow==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:cc:content-language:references:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=sH/QiTEgbTNIqK+XvtSniUZyfSTINGeiLTCgiJHHDIU=;
+        fh=KVK/ENikhcaN0nR54wLN7PJeP5CAsLPHawRFhPUJI24=;
+        b=B3GtdWdFKepks02MIvWxDcHPlu57Teb3bhphxf1Ofg9DMjiSn/IEtepZx5udpb4fob
+         +0tsqfts5KaR+/ITQ9XGWetH8/q+sG6ies2kK0bJmveizoMyZLIbDSeQGm4vxT3D2kmt
+         oOrctKZAsDxkH/irnkdT/aKiDJhsLco9bYwV7WlV8ysgx73TBaGK7lUJV0PslSgdq6UB
+         CKKItW8EH/b1yZJEaa08KmP5bbw2gXdqiQN3DA+aH8TFbAFq1/41Az/f9OE3szOFFs4c
+         oZdSK9CIxSLZvAra4Pi+adi5pbIaKQD/1EnV0UVZVKxFTMXnakKIlvIdxDvtUNQpe63q
+         Ne6Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=rl63DDjG;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6c162dd8841si42676446d6.361.2024.08.23.05.55.50
+        by mx.google.com with ESMTPS id d75a77b69052e-454fe0d2e7asi72624901cf.1.2024.08.24.09.36.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 23 Aug 2024 05:55:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sat, 24 Aug 2024 09:36:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dkim=pass header.i=@linaro.org header.s=google header.b=rl63DDjG;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1shTor-0006ax-VS; Fri, 23 Aug 2024 08:55:10 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1shtkO-0001tc-Px; Sat, 24 Aug 2024 12:36:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alireza.sanaee@huawei.com>)
- id 1shTop-0006ZM-V0; Fri, 23 Aug 2024 08:55:07 -0400
-Received: from frasgout.his.huawei.com ([185.176.79.56])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alireza.sanaee@huawei.com>)
- id 1shTom-0004uA-W6; Fri, 23 Aug 2024 08:55:07 -0400
-Received: from mail.maildlp.com (unknown [172.18.186.31])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4Wr0M13ycsz6K91r;
- Fri, 23 Aug 2024 20:51:41 +0800 (CST)
-Received: from lhrpeml500006.china.huawei.com (unknown [7.191.161.198])
- by mail.maildlp.com (Postfix) with ESMTPS id 6BBAC140594;
- Fri, 23 Aug 2024 20:54:50 +0800 (CST)
-Received: from a2303103017.china.huawei.com (10.47.79.211) by
- lhrpeml500006.china.huawei.com (7.191.161.198) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Fri, 23 Aug 2024 13:54:49 +0100
-To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
-CC: <zhao1.liu@intel.com>, <zhenyu.z.wang@intel.com>,
- <dapeng1.mi@linux.intel.com>, <yongwei.ma@intel.com>, <armbru@redhat.com>,
- <farman@linux.ibm.com>, <peter.maydell@linaro.org>, <mst@redhat.com>,
- <anisinha@redhat.com>, <shannon.zhaosl@gmail.com>, <imammedo@redhat.com>,
- <mtosatti@redhat.com>, <berrange@redhat.com>, <richard.henderson@linaro.org>, 
- <linuxarm@huwei.com>, <shameerali.kolothum.thodi@huawei.com>,
- <Jonathan.Cameron@Huawei.com>, <jiangkunkun@huawei.com>
-Subject: [RFC PATCH 0/2] Specifying cache topology on ARM
-Date: Fri, 23 Aug 2024 13:54:44 +0100
-Message-ID: <20240823125446.721-1-alireza.sanaee@huawei.com>
-X-Mailer: git-send-email 2.34.1
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1shtkL-0001rN-RR
+ for qemu-arm@nongnu.org; Sat, 24 Aug 2024 12:36:14 -0400
+Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1shtkK-0001Xu-8o
+ for qemu-arm@nongnu.org; Sat, 24 Aug 2024 12:36:13 -0400
+Received: by mail-ej1-x62b.google.com with SMTP id
+ a640c23a62f3a-a7aa086b077so304598366b.0
+ for <qemu-arm@nongnu.org>; Sat, 24 Aug 2024 09:36:11 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1724517369; x=1725122169; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:cc:content-language
+ :references:to:subject:user-agent:mime-version:date:message-id:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=sH/QiTEgbTNIqK+XvtSniUZyfSTINGeiLTCgiJHHDIU=;
+ b=rl63DDjG4OckVYK0cYhXvEMCmSIGYOlbN3PJzUDWBcbBY5P+DVKy6Awvh3mOoZ6FSM
+ WCW4Co7TF13ltmJ3ylIXSd66HvORbBtAJnjir/Kfo7uKWeZOT/TijMh/5aDFTLWczlli
+ ZFttcnvRXN4HXpt9HouzvK6RHHwdAlQCrbyQi+oQb+DdvMOzbeF+0EwZdosSgWf+QET9
+ 5tpBSH4t0I4Hay1nCLNoaOMgsyQGptRz+AlmwI+CFkaedywuX6HUNyemJ2WkcqC4v3r4
+ vyf4vzkSTa5rwirSBx54gLPBizpj+3glNwfTDFXVgqcRmqE1xh42LJfF5RYsi2gsCBUe
+ cZew==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1724517369; x=1725122169;
+ h=content-transfer-encoding:in-reply-to:from:cc:content-language
+ :references:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=sH/QiTEgbTNIqK+XvtSniUZyfSTINGeiLTCgiJHHDIU=;
+ b=Z4V+wpjx5dXj+V+cxfWWDI1jwSxX6dgmO/ORgpODw3k/INqcSLq3SHxByZUK86ztTU
+ t3DMw+tyf5tAXyeBDhBDV3o9M3AMhH+9HOwl/sfZC7XaB1ub/N7+8l8rYY0ZzTPunKU2
+ RzmOGrmnOYvKnNSe+wBSTnMNfhHr5g9MjqTVr2rf/tcMoBV/1evXPmD8YZRUHtZDSMxJ
+ MD953JU6x04WRIl/FPnxrUDUjdrX8xed0LA7kIvjzI+Ay5tpC3U2xiHX8eapOyg8UEpU
+ yh8PEL0Oom/Dpu4hi7VqFi8KbYsLxY2labc3fLuRCf9m0yUtsVGx01zM9+5wsku5Hwev
+ pe/A==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUuCy5Oz6etg62dA/Q/2vs7Chmnizojt8fnYUuL6ygyFipnbzh6TCCUGmYW/auvLMRMnGLi1bYeIw==@nongnu.org
+X-Gm-Message-State: AOJu0YzzSoKQiD3Bc0c4Y3u7OIGlxDLVkinHxIoavO9Mj3wWZwKkZwL7
+ QQW+P24Qr/qzAbVu64BjvzjhWCvfI1Brbhm6X1IbjWYI3/pkKO5n2KwT3U+Q5O4=
+X-Received: by 2002:a17:907:1c2a:b0:a86:97e3:c6c with SMTP id
+ a640c23a62f3a-a86a54df91bmr387352566b.65.1724517369456; 
+ Sat, 24 Aug 2024 09:36:09 -0700 (PDT)
+Received: from [192.168.69.100] ([176.187.198.30])
+ by smtp.gmail.com with ESMTPSA id
+ a640c23a62f3a-a868f43661dsm420279166b.100.2024.08.24.09.36.07
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sat, 24 Aug 2024 09:36:08 -0700 (PDT)
+Message-ID: <95246f95-6231-4c16-8d46-421901778507@linaro.org>
+Date: Sat, 24 Aug 2024 18:36:06 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.47.79.211]
-X-ClientProxiedBy: lhrpeml500006.china.huawei.com (7.191.161.198) To
- lhrpeml500006.china.huawei.com (7.191.161.198)
-Received-SPF: pass client-ip=185.176.79.56;
- envelope-from=alireza.sanaee@huawei.com; helo=frasgout.his.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H2=-0.001, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: Kernel panic - not syncing: Unable to initialise architected
+ timer : unable to boot Android 14 with qemu-system-aarch64 on Ubuntu 24.04
+ X64 bit
+To: Mario Marietto <marietto2008@gmail.com>, qemu-arm <qemu-arm@nongnu.org>
+References: <CA+1FSiiUFeXRvyCk3KK7XfmUjLzOvBLo=VhcQDiZ1z8kgfpjyw@mail.gmail.com>
+Content-Language: en-US
+Cc: Sergey Kambalin <sergey.kambalin@auriga.com>, qemu-discuss@nongnu.org
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <CA+1FSiiUFeXRvyCk3KK7XfmUjLzOvBLo=VhcQDiZ1z8kgfpjyw@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::62b;
+ envelope-from=philmd@linaro.org; helo=mail-ej1-x62b.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-to:  Alireza Sanaee <alireza.sanaee@huawei.com>
-From:  Alireza Sanaee via <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: LJ7+GKmYvwxi
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: rZkojZnBGvYn
 
-Specifying the cache layout in virtual machines is useful for
-applications and operating systems to fetch accurate information about
-the cache structure and make appropriate adjustments. Enforcing correct
-sharing information can lead to better optimizations. This patch enables
-the specification of cache layout through a command line parameter,
-building on a patch set by Intel [1]. It uses this set as a foundation.
-The ACPI/PPTT table is populated based on user-provided information and
-CPU topology.
+Hi Mario,
 
-Example:
+Cc'ing Sergey & qemu-arm@ list.
 
+On 24/8/24 18:11, Mario Marietto wrote:
+> Hello.
+> 
+> I want to emulate Android 14 by KonstaKang using qemu-system-aarch64 and 
+> as model virt on Ubuntu 24.04 x64 bit installed on my PC (Intel I9 + RTX 
+> 2080 ti).
 
-+----------------+                            +----------------+
-|    Socket 0    |                            |    Socket 1    |
-|    (L3 Cache)  |                            |    (L3 Cache)  |
-+--------+-------+                            +--------+-------+
-         |                                             |
-+--------+--------+                            +--------+--------+
-|   Cluster 0     |                            |   Cluster 0     |
-|   (L2 Cache)    |                            |   (L2 Cache)    |
-+--------+--------+                            +--------+--------+
-         |                                             |
-+--------+--------+  +--------+--------+    +--------+--------+  +--------+----+
-|   Core 0         | |   Core 1        |    |   Core 0        |  |   Core 1    |
-|   (L1i, L1d)     | |   (L1i, L1d)    |    |   (L1i, L1d)    |  |   (L1i, L1d)|
-+--------+--------+  +--------+--------+    +--------+--------+  +--------+----+
-         |                   |                       |                   |
-+--------+              +--------+              +--------+          +--------+
-|Thread 0|              |Thread 1|              |Thread 1|          |Thread 0|
-+--------+              +--------+              +--------+          +--------+
-|Thread 1|              |Thread 0|              |Thread 0|          |Thread 1|
-+--------+              +--------+              +--------+          +--------+
+You already opened an issue for this:
+https://gitlab.com/qemu-project/qemu/-/issues/2533
 
+Please add "-d unimp,guest_errors" to your command and attach the output
+to the issue, we'll update any progress there.
 
-The following command will represent the system.
+> [ 0.000000] timer_probe: no matching timers found
+> [ 0.000000] Kernel panic - not syncing: Unable to initialise architected timer.
 
-./qemu-system-aarch64 \
- -machine virt,**smp-cache=cache0** \
- -cpu max \
- -m 2048 \
- -smp sockets=2,clusters=1,cores=2,threads=2 \
- -kernel ./Image.gz \
- -append "console=ttyAMA0 root=/dev/ram rdinit=/init acpi=force" \
- -initrd rootfs.cpio.gz \
- -bios ./edk2-aarch64-code.fd \
- **-object '{"qom-type":"smp-cache","id":"cache0","caches":[{"name":"l1d","topo":"core"},{"name":"l1i","topo":"core"},{"name":"l2","topo":"cluster"},{"name":"l3","topo":"socket"}]}'** \
- -nographic
+Regards,
 
-Failure cases:
-    1) there are cases where QEMU might not have any clusters selected in the
-    -smp option, while user specifies caches to be shared at cluster level. In
-    this situations, qemu returns error.
-
-    2) There are other scenarios where caches exist in systems' registers but
-    not left unspecified by users. In this case qemu returns failure.
-
-Currently only three levels of caches are supported to be specified from
-the command line. However, increasing the value does not require
-significant changes. Further, this patch assumes l2 and l3 unified
-caches and does not allow l(2/3)(i/d). The level terminology is
-thread/core/cluster/socket right now.
-
-Here is the hierarchy assumed in this patch:
-Socket level = Cluster level + 1 = Core level + 2 = Thread level + 3;
-
-[1] https://lore.kernel.org/qemu-devel/20240704031603.1744546-1-zhao1.liu@intel.com/#r
-
-TODO:
-1) Making the code to work with arbitrary levels
-2) Separated data and instruction cache at L2 and L3.
-3) Allow for different Data or Instruction only at a particular level.
-4) Additional cache controls.  e.g. size of L3 may not want to just
-match the underlying system, because only some of the associated host
-CPUs may be bound to this VM.
-5) Add device tree related code to generate info related to caches.
-
-Alireza Sanaee (2):
-  target/arm/tcg: increase cache level for cpu=max
-  hw/acpi: add cache hierarchy node to pptt table
-
- hw/acpi/aml-build.c         | 307 +++++++++++++++++++++++++++++++++++-
- hw/arm/virt-acpi-build.c    | 137 +++++++++++++++-
- hw/arm/virt.c               |   5 +
- hw/core/machine-smp.c       |   6 +-
- hw/loongarch/acpi-build.c   |   3 +-
- include/hw/acpi/aml-build.h |  20 ++-
- target/arm/tcg/cpu64.c      |  35 ++++
- 7 files changed, 503 insertions(+), 10 deletions(-)
-
--- 
-2.34.1
-
+Phil.

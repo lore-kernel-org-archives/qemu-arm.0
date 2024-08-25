@@ -1,147 +1,156 @@
-Received: by 2002:a17:505:1116:b0:1be9:327d:8ee3 with SMTP id pu22csp732241njb;
-        Sun, 25 Aug 2024 04:34:39 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCU1Cd5L5l+IOHbQw76SJcb6mFV0tNV0Xf2nMZGzkg09cplG7iCStxq/jNqR1bt3eysV+AGFJNGOiBQlLg==@linaro.org
-X-Google-Smtp-Source: AGHT+IHCVYboTAa0Jh6Cy3xJmKxyjZjRZzrtsuLmpj8FsMrAVQSpohvC0NlSZskRCO+PkRB1t93t
-X-Received: by 2002:a05:6902:1007:b0:e13:c6ec:2a7d with SMTP id 3f1490d57ef6-e17a8686056mr9314031276.37.1724585678864;
-        Sun, 25 Aug 2024 04:34:38 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1724585678; cv=pass;
+Received: by 2002:a17:505:1116:b0:1be9:327d:8ee3 with SMTP id pu22csp741747njb;
+        Sun, 25 Aug 2024 05:14:42 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVeuZegh+ybPNnqXbHgtUOrasKULkhaGgae8q0k04+z2zk4w+caqokqvxCXhDp1Gqzz9BdYUOPv/ImaEQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IEwzzOBeHSZlSC4HTtl+bmPdNrq5laBZ31Fm4z9nby+OY69JZ73daK+OTkSOD3j2vf23y9y
+X-Received: by 2002:a25:e0cd:0:b0:e17:bb87:fd06 with SMTP id 3f1490d57ef6-e17bb87fe00mr4846705276.49.1724588082378;
+        Sun, 25 Aug 2024 05:14:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1724588082; cv=none;
         d=google.com; s=arc-20160816;
-        b=b89ltUn8jy2YWQzY6cYbzrmDnLb/flcc9McMY8IMhbkxHvRRgTrq6PvT6uG4+NY0/E
-         8ADosFVcoyuBpCw8ClZBpTLvFbvlXB/aqmsYVyIn6oVnlRCLtdL7sHsJUo72e/KYJDzS
-         UmuLGJJnIZ/d395D5o03IQdccIArnnY2Tya2iAZi0yCFsE58hQCKNG3it3M4XZAmUeKk
-         PECeP8IgBUUWE/Ozv4jt3VlHDoCZFGP5dBc466uPOyYO0Pjn3WVzc+h1nTJN2K6PBLen
-         MQY1CYg3OdEg6cVx5dqOPn/e5G/CFBogRh+5NqLgbuuHRkH7/KkESsCpKvB2C/ptFJzM
-         +PBw==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:list-unsubscribe:list-subscribe:list-id:precedence
-         :dkim-signature;
-        bh=EBOPOD0hJ91yJ/PWd+Kka1k6IWK/LJzUbuBA4uXwCkI=;
-        fh=Uf9dqCjncnZ58Fhbg3/HIyvJa3lrGqgybO7Vxx5txzE=;
-        b=qKPNhMdLn08pcjFI2YCWtHNJElereZ+zqxEMMZJQDpd2peIS5TWCBf1jThezJNtUEr
-         deShfpd8LvYJJaCGyfaLnhYE93CmmkF4rVZu4JPYWlC036fCtpLmOqMNqUqAvS/V8d8Z
-         wBdDj4UNgiFbYtczJO8HM/PjPjOsCcMwapHFglddt1mGFYbu9ZiOtvbru6OwdW93Priu
-         Uyxvvbk3N5ZSSCrwPrqttn3G9WOhCDPYnz+c9ybAIf888ZnGchVEDKsc4bKKv3b/wkMK
-         mA4Fe9WCF+Wz/StODkR++A72GHKSFG9mItvatOIXeYvBUjPrvFaIXAb/QKf8cNpa0Grb
-         tVTg==;
+        b=PFAaq2J9fx8OwpefqXHI6euql3U9dPkbh6se3pYjHth3JpCVKrwCpjxLnDj+JepNs4
+         zYIf/CSrhLA0drujns1zk0GL+GfTmpXEcrnFHqilCctO0UCvHrGba1QR8vFno2iCRglx
+         MoxmWv9mmwEPW7EWaIIeUw7muW0oZdi4KIkJMnIOdTshSPllxNSAAp0plot5BLU7K0oG
+         ii2Dfch/1Fllq9RFiwjwqs8sl+4a2Slra88l/G9HJxDx19MA0KR0fPjkox6fAZrUsSdY
+         eLCwbY7aLTIuq/V9HvCofRSQ3+3z1AH7IzThbsq8smcRvp5zbT2r8MCHx/47+r10TeHJ
+         21OQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=sbToXCrbajlrJ7hi8Rhhm4AB0nfPJ7yL41Ygg1MUy2w=;
+        fh=nqIiD6dVem/YO7BZGfB+fhMUnZWeuOdOXcJEsARRpas=;
+        b=l4ZPDvwKtq/vifnHj8956XoUupqGMZHPbn+tXO6dQsMXdzzjF9d/CR9lYA8gf8Y16A
+         uRaxzEfyL4DDSLGQY8X8kUOrOV6iMkAj2Ejt7VbckfPP9SA1+7G53XaTpAiJ3ZeEyP/f
+         nHspdv6n71qpTm/ce1+Ebno9mYZTppkIO+qdHDxcesYlctQKIJa+0DFpoRl0FclDP3D/
+         Ldapaz8DF57YJv4566Ohiop8dnpjMuYmQqXwl4Mm31ldTdDDTmKezZtDgR2grCy8TKV6
+         kL+EED51+v/v/jql/3hfU14IjA3nIZdyOyVRXv45mLYyxa0uXY1gr7WWTHJ67PQh8CkA
+         qKnQ==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=NsqCfE5c;
-       arc=pass (i=1 spf=pass spfdomain=linaro.org dkim=pass dkdomain=linaro.org dmarc=pass fromdomain=linaro.org);
-       spf=pass (google.com: domain of linux-kernel+bounces-300390-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-300390-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <linux-kernel+bounces-300390-alex.bennee=linaro.org@vger.kernel.org>
-Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [2604:1380:45d1:ec00::1])
-        by mx.google.com with ESMTPS id d75a77b69052e-454fe0d368fsi92014281cf.26.2024.08.25.04.34.38
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=IugYCywW;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6c162e44b86si86938236d6.518.2024.08.25.05.14.42
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 25 Aug 2024 04:34:38 -0700 (PDT)
-Received-SPF: pass (google.com: domain of linux-kernel+bounces-300390-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) client-ip=2604:1380:45d1:ec00::1;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Sun, 25 Aug 2024 05:14:42 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=NsqCfE5c;
-       arc=pass (i=1 spf=pass spfdomain=linaro.org dkim=pass dkdomain=linaro.org dmarc=pass fromdomain=linaro.org);
-       spf=pass (google.com: domain of linux-kernel+bounces-300390-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-300390-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ny.mirrors.kernel.org (Postfix) with ESMTPS id 829901C20AAC
-	for <alex.bennee@linaro.org>; Sun, 25 Aug 2024 11:34:38 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id B481F13D89D;
-	Sun, 25 Aug 2024 11:34:29 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="NsqCfE5c"
-Received: from mail-lj1-f182.google.com (mail-lj1-f182.google.com [209.85.208.182])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B701E13D28C
-	for <linux-kernel@vger.kernel.org>; Sun, 25 Aug 2024 11:34:27 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.208.182
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1724585669; cv=none; b=qAPwcUZZZE+WKsk0350FEGqnUx9DaL1BNm3Y7FNgCB1C7BH7NuHKAsPiHTfgjV9VtWKZqR5xxSj9hhaAHFywfxEkV7QdTvkF6HA8UI75sXM4E3kRW0hL+F0K5G95n+i693aGnFSng7qD8BhdGegeTKfjisjYZIJ3TuuNpLghCRU=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1724585669; c=relaxed/simple;
-	bh=80as+5GIVwTlFe8wnjziZdFc8lzeVGEEdcOd9p6iXzw=;
-	h=MIME-Version:References:In-Reply-To:From:Date:Message-ID:Subject:
-	 To:Cc:Content-Type; b=gB9/aub7zcfHkOWTIimehnGNXS2Dm+/PbIeDKjtni0u+dBYMyloLaHZaeLz+pzg6gwCLU7/TZWD8b7bJjS/tH0hDXBofDkdGCxF/gqQxyqFgbltmgNccabtfwu9fSj7wlO5WDHBkufigSU6f8CS5G4B6ZiTCuLRZn7P4ZeJr6AQ=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org; spf=pass smtp.mailfrom=linaro.org; dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b=NsqCfE5c; arc=none smtp.client-ip=209.85.208.182
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=linaro.org
-Received: by mail-lj1-f182.google.com with SMTP id 38308e7fff4ca-2f3f90295a9so37120981fa.0
-        for <linux-kernel@vger.kernel.org>; Sun, 25 Aug 2024 04:34:27 -0700 (PDT)
+       dkim=pass header.i=@linaro.org header.s=google header.b=IugYCywW;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1siC8H-0004i9-6T; Sun, 25 Aug 2024 08:14:09 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1siC8F-0004fk-97
+ for qemu-arm@nongnu.org; Sun, 25 Aug 2024 08:14:07 -0400
+Received: from mail-io1-xd32.google.com ([2607:f8b0:4864:20::d32])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1siC8D-0003Sa-KM
+ for qemu-arm@nongnu.org; Sun, 25 Aug 2024 08:14:06 -0400
+Received: by mail-io1-xd32.google.com with SMTP id
+ ca18e2360f4ac-81fb419f77bso188858339f.2
+ for <qemu-arm@nongnu.org>; Sun, 25 Aug 2024 05:14:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1724585666; x=1725190466; darn=vger.kernel.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=EBOPOD0hJ91yJ/PWd+Kka1k6IWK/LJzUbuBA4uXwCkI=;
-        b=NsqCfE5ct1zu7MlETQJ8eKt+c45BreUrqHHAZETJ9xYm4kw9PqKhPHjWMK2brHkXS+
-         aYI2mrBGBjt4goOkmVEi0z86vRzs+XQbyrWNw+J2+Asp9geB5qFdYVeP8ROEEiS4jynm
-         CMV7q9MuN0z8aV79ODKaz3VLtKFOR+D4KUe6OWbOoHqGx+747quLaPE6kFEJ3g2BInZU
-         SxbN4UvKB0SeGJfxH0+Mn2KCDmL13NCCnPNkj0nQmn3FGd3aLqByhLFpNJW3l39SdctP
-         nGkonHsjKZzuw+cPXAQyw37Z2CWY/VCmQ07RCOQvKkZWpvm3N13nf6rjSyl455QCIFPn
-         CUGQ==
+ d=linaro.org; s=google; t=1724588044; x=1725192844; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=sbToXCrbajlrJ7hi8Rhhm4AB0nfPJ7yL41Ygg1MUy2w=;
+ b=IugYCywWW8DxPgzB1ApxQWB6wcNAEJmagN6dMr+keeGm4jtaUs6nsnK3YYAJsa7n4V
+ BFg3j4mJW6oUYK774SIwLc4xQQA3dJW6w5eimfqAUVfdQPrug6z7ErGZLmwbn0gJXFY2
+ BvZaFZH5nTI1pG+0J7u73fjZIoW8CQpVN6xGLBdnU/dIKPxsyWN9UpS2MdLkGhlLoJO6
+ BzG3yyp1mJHXS3dofv02iSquaGRtZ3Q11i4UhbPlbobJzfucXTyUXCETApns9LKfHUYd
+ BjlqNc4bTYaZNJHmm5YZqZ35rL9QnO7BycP7+U9rABJBehU90Ujwjrbb9fuo9U24M2hC
+ vMKQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1724585666; x=1725190466;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=EBOPOD0hJ91yJ/PWd+Kka1k6IWK/LJzUbuBA4uXwCkI=;
-        b=wP2bny1Ei0s4pRm7b1tb1CbAbiLMRMQaQF5FgzqCkWESmdcUEWeB9YSUgcCuHwm5pT
-         hcyph3LEKiKKcbcoIQgHJTL3LVBjyWoJ08dzKqwAEgd99m3ko1DP9QQT3UTUvQ/ZAuEq
-         svNgM84TiVwT5N0g2WCi+zOkNcM08Bn7NOrNYoasQIUFKkKCETakaoY4y8PsUJCIWc8C
-         1es4XlIPUncUDh/j8d9+WNFrqWm1Duu8ZMeIJR2eIwhC+WQRCq2P7tZCBvf2q/3eiZM4
-         HA7F6SYlokXXCljwuxFfH+EyyI4QqPDga5i3c7hZndYie/+8FnNWSdBvEskd9e19774H
-         8jBQ==
-X-Gm-Message-State: AOJu0Yy4i15Zmi1YI5xBL66+jO655p1l0kPWWkHwl8BbM//s6Z2Eaa/u
-	U3rJrE2OhVC18Xv77q3a9QPnveSxKOanEO81XjY2WchXeFMR6z91clPDpPecvN19l14byWIYb9f
-	PmY25loA1BW0V81Ll+vLozgVBBMggM119I5bLbLc+XJPgMkj9
-X-Received: by 2002:a05:651c:19a1:b0:2f0:25dc:1886 with SMTP id
- 38308e7fff4ca-2f4f48ec576mr44375681fa.10.1724585665438; Sun, 25 Aug 2024
- 04:34:25 -0700 (PDT)
-Precedence: bulk
-X-Mailing-List: linux-kernel@vger.kernel.org
-List-Id: <linux-kernel.vger.kernel.org>
-List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
+ d=1e100.net; s=20230601; t=1724588044; x=1725192844;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=sbToXCrbajlrJ7hi8Rhhm4AB0nfPJ7yL41Ygg1MUy2w=;
+ b=hSn0TG6oW/ctR5QpfocHGzkGUpyf4pM7Z+kNK0ov4DSK5t0xdiJgMjhxvmxLu5QMHl
+ hC+GnQ/gxoKZ0nXSizOgQpelnbtUcKwe8bQxru7T+CnoAyXxY5DGJdWuR64MrTRrCkpP
+ 7VMsQtbNGBzblhOaG5I68e3Sv+sZcr5RY5lf9K5Spubylt35yd0Zs7vDokEDVSdj9y16
+ HErFT8fugKxQewSOfMud92teu2zLXGqX3zf4Rbu7waC7EosCm5tcdZM45/kULng1GYhI
+ bw2RSR6HWJrtM4fMmCw99evu0AfAmSe9zhFIKv15bVw8F5Es+O4GYaBylZAjOrXPPoKO
+ ZNPA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVjBHOMPOHEmJ7nvm/3KTqGlbvR9s944PI/MMPdG4OVP2QIt7AcPKNIS9tSRGpO8mRpeh9BdYE8ig==@nongnu.org
+X-Gm-Message-State: AOJu0Ywat3EewoupwUPp21eMPWoGKaXjMS46g+zoU1aav2nfQgUe2a+Q
+ cxdi7wZiLDDhVqVJUUucs8x71gYIoyVIBeb/FfRwjVuHS5b1BuLJot3g8XqCUAA=
+X-Received: by 2002:a05:6602:6185:b0:824:d4da:3c3d with SMTP id
+ ca18e2360f4ac-82787360804mr902086739f.12.1724588043594; 
+ Sun, 25 Aug 2024 05:14:03 -0700 (PDT)
+Received: from [192.168.98.227] ([172.58.160.182])
+ by smtp.gmail.com with ESMTPSA id
+ 8926c6da1cb9f-4ce70f5bd94sm1750062173.42.2024.08.25.05.13.57
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sun, 25 Aug 2024 05:14:03 -0700 (PDT)
+Message-ID: <f9bfe251-fc5c-4ffc-9842-a13d6fbe8b66@linaro.org>
+Date: Sun, 25 Aug 2024 22:13:52 +1000
 MIME-Version: 1.0
-References: <cover.1724556967.git.mchehab+huawei@kernel.org> <b88fe895e6f71711387ca153f4f1b3fbb0aa2176.1724556967.git.mchehab+huawei@kernel.org>
-In-Reply-To: <b88fe895e6f71711387ca153f4f1b3fbb0aa2176.1724556967.git.mchehab+huawei@kernel.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Sun, 25 Aug 2024 12:34:14 +0100
-Message-ID: <CAFEAcA-OaQ1ypa7LXz5nOs+6+fjmYNHzNL0VVgapoXEHU=rHnQ@mail.gmail.com>
-Subject: Re: [PATCH v9 11/12] target/arm: add an experimental mpidr arm cpu
- property object
-To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-Cc: linux-kernel@vger.kernel.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-X-TUID: +MCsag/KeZ0F
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH for-9.2] hw/arm/sbsa-ref: Don't leak string in
+ sbsa_fdt_add_gic_node()
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: Radoslaw Biernacki <rad@semihalf.com>,
+ Leif Lindholm <quic_llindhol@quicinc.com>,
+ Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+References: <20240822162323.706382-1-peter.maydell@linaro.org>
+ <795d0c95-9bbe-43f5-bcd4-edcbe00cddc9@linaro.org>
+Content-Language: en-US
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <795d0c95-9bbe-43f5-bcd4-edcbe00cddc9@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::d32;
+ envelope-from=richard.henderson@linaro.org; helo=mail-io1-xd32.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: T//HylZrgtpu
 
-On Sun, 25 Aug 2024 at 04:46, Mauro Carvalho Chehab
-<mchehab+huawei@kernel.org> wrote:
->
-> Accurately injecting an ARM Processor error ACPI/APEI GHES
-> error record requires the value of the ARM Multiprocessor
-> Affinity Register (mpidr).
->
-> While ARM implements it, this is currently not visible.
->
-> Add a field at CPU storing it, and place it at arm_cpu_properties
-> as experimental, thus allowing it to be queried via QMP using
-> qom-get function.
+On 8/23/24 16:42, Philippe Mathieu-Daudé wrote:
+>>   static void sbsa_fdt_add_gic_node(SBSAMachineState *sms)
+>>   {
+>> -    char *nodename;
+>> +    const char *intc_nodename = "/intc";
+>> +    const char *its_nodename = "/intc/its";
+> 
+> Should we use static qualifiers?'
 
->  static Property arm_cpu_properties[] = {
->      DEFINE_PROP_UINT64("midr", ARMCPU, midr, 0),
-> +    DEFINE_PROP_UINT64("x-mpidr", ARMCPU, mpidr, 0),
->      DEFINE_PROP_UINT64("mp-affinity", ARMCPU,
->                          mp_affinity, ARM64_AFFINITY_INVALID),
->      DEFINE_PROP_INT32("node-id", ARMCPU, node_id, CPU_UNSET_NUMA_NODE_ID),
+No.  The real object is the string literal.  The local variable simply allows multiple 
+references within the function.
 
-Why do we need this? Why is it experimental? The later patch
-seems to use it via QMP, which I'm not super enthusiastic
-about -- the preexisting mpidr and mp-affinity properties are
-there for code that is creating CPU objects to configure
-the CPU object, not as a query interface for QOM.
 
-thanks
--- PMM
+r~

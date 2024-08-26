@@ -1,97 +1,127 @@
-Received: by 2002:a17:505:1116:b0:1be9:327d:8ee3 with SMTP id pu22csp1013248njb;
-        Mon, 26 Aug 2024 04:49:01 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWA+MMNijgHYK3/a4HxAp0iYQgdgkgZ1gU4kPfxlOGTyg7B4yIHKHGeaX4NfT9T7gfCri5ZUL4zaEKLGA==@linaro.org
-X-Google-Smtp-Source: AGHT+IFNTtyO8LgyYK7x++VlBvP/19trxFKHOozFxqoCiFyH0iZA4SK9vAqs1Y0A0+S+O472ACkX
-X-Received: by 2002:a05:620a:3705:b0:7a3:78f1:1c08 with SMTP id af79cd13be357-7a689726d6amr826063785a.41.1724672940792;
-        Mon, 26 Aug 2024 04:49:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1724672940; cv=none;
+Received: by 2002:a17:505:1116:b0:1be9:327d:8ee3 with SMTP id pu22csp1108269njb;
+        Mon, 26 Aug 2024 09:12:17 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXNM3alOIcRTboUY80207xYdZS6QhONeed7p6xC5gPkWs0Y2H3pZL7TDHCoGrnK83H3vooZPIoBzHnUFA==@linaro.org
+X-Google-Smtp-Source: AGHT+IEX+mYAH+EL6+0lZaDDABYLq+EmYSAmRA7CUPS+1qdGYTEXTHzybySWtn4CemYa90sICP3J
+X-Received: by 2002:ac8:6757:0:b0:455:a31:7b10 with SMTP id d75a77b69052e-4550a317c70mr109777051cf.30.1724688736808;
+        Mon, 26 Aug 2024 09:12:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1724688736; cv=none;
         d=google.com; s=arc-20160816;
-        b=Jbr/QPOafBxvsxY64qUuTY8vLatGWmkEe5gaK/MfAWmdUpR94vJAnUk0EM1aOo6z7v
-         VD0OPZj8/2j6i+BpV1fFbCdKkvg2RR5LGCTrENGrvNpc4TXfVvzH8oiTLJYoQINVNc0m
-         /IbbEh3Ip0iklE1+DdnYe3lUIOI2k4FKl/6jLy9SMcBU7KlcXV0JCCfB6zaYTDJycZ/2
-         Pi7E7S11dGfcHeCHZ5DyBPAUhF/ioql2KCTm74kc4LUuLcITR82vY/mR4oHLQFQyycZS
-         WlXsgEbqWu5QslMKuQ6cKchozCEF4YBZbnSc8cfm6l8MqADYSSdPaR52QlK83EW+yBbb
-         EiyA==
+        b=qvLx0z3JBkCnOsKOMAXzdPIY6dqRmPx+spGqAFEZKrxbd3ofin3q9GY35Jh47Djj//
+         TvgR6FU+GHM7AJ2jkmBAB4l7S68zyn9/4J7qoCM6lyNNq952/V9pXN+ZkJ2J/ZON1Rp7
+         NoanZzn/iXN2WWcdcLgjyA2Ps4CdINOAjMoSX4mS5tNLLgCurRdU/u9+jmlfsDkqPcYN
+         /Vhjgam8aMRtF+3BaQMRe1gUFqXjqk6al78kNillWuGWul2CxtWoz5xA8Abf5Q0Hn6hm
+         u0jqIVCSz/BA52beIMLtbektX472mYmQi3ISl16MRn/O1TBBddGkoXF048jxG9G0s3lw
+         ZlpQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id;
-        bh=WUZtEee8jt2h3hJYCNT00Aqvye+skLswBzQ7Nl9ecYw=;
-        fh=tmik4N/gozUO5rkbKzUnYbzlPu/DlGgK0E+9Zox7Ooc=;
-        b=VbDmKk9ZSGPf0G0NHav24zdspWDZO74g9QL2mLEJC7/kfGfIPCyPOKpTjFIhyiTzB1
-         ajWYUpjDMC5EwcYOUCv72ANJNzcnbFxd0t6QqSaf9kHZ1wFlRTW5pLHC7Uz8zMoIj+Z5
-         Ngt63tF2OT2ki61pSsViYdXvAOhRdavY0Z1LPmspI9FE0qG6FFy2HTEyF/LekEEdYCEU
-         Zp/F7eLzhLrYqbf7ZSRz1NUT3qJDhms61JJm/7hLlwYLFtkUx3GQmYVKO9BYfwexgGi6
-         7PDU3iafJ4z4frXH6Irtz9hJtBfr4qs4zsjn7lfFPQyV4GrMULXv30VJRKgjUi9r1AUc
-         LBTA==;
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=Ll0Bv0e9ifVMdX16PbaLptHbvOdXV+Mp0DUceSHpQ4g=;
+        fh=8xeOaFpWJwWK6VHBH6QTCpx6J5guuzxxhawSSswyxWM=;
+        b=yk1nA5HyDA3srcJPAe4Omk7Sh19IHS/KB8ZnGwdhhYEzALf8vqsCBsssy80cYe3zV4
+         LifRx791jlhkBy1vFkjV9eCUe0K56kDl+Lh/H+T/iq6/ofTCDujnBZZb301xkRB3jSi3
+         eSHK1WvT8PpA2vOun8gE2OeMXIg/4sjDdqb/MQx1SCxSFgZs/3G+RxnQEw5kandQZYHI
+         YJBQHQMdwMFUSKdEBkY6NyU/W6POScs0cV1FqO8o645l8d7ppb3jZgFjaTyGI0X85G1V
+         2Iq02yrFfAjDmKTsCqmREKoUm+oF/ye25EbzaKBQ/4z2xM/vlrSPODYL3O1pJJm1lteb
+         ntSg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=VZlTE24x;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7a67f4253b0si1065405185a.585.2024.08.26.04.49.00
+        by mx.google.com with ESMTPS id d75a77b69052e-454fe344310si109198211cf.746.2024.08.26.09.12.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 26 Aug 2024 04:49:00 -0700 (PDT)
+        Mon, 26 Aug 2024 09:12:16 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=VZlTE24x;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1siYDD-0006UE-IM; Mon, 26 Aug 2024 07:48:43 -0400
+	id 1sicJj-0005Pp-AB; Mon, 26 Aug 2024 12:11:43 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=7wMH=PZ=kaod.org=clg@ozlabs.org>)
- id 1siYD9-0006Pp-2Z; Mon, 26 Aug 2024 07:48:39 -0400
-Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=7wMH=PZ=kaod.org=clg@ozlabs.org>)
- id 1siYD1-0007Pb-CY; Mon, 26 Aug 2024 07:48:38 -0400
-Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4Wsppg6DmLz4x3J;
- Mon, 26 Aug 2024 21:48:27 +1000 (AEST)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4Wsppb4Hfzz4wnt;
- Mon, 26 Aug 2024 21:48:23 +1000 (AEST)
-Message-ID: <62fad646-c132-4de3-8e57-aaa5cb23cc2f@kaod.org>
-Date: Mon, 26 Aug 2024 13:48:20 +0200
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sicJh-0005Or-OH
+ for qemu-devel@nongnu.org; Mon, 26 Aug 2024 12:11:41 -0400
+Received: from mail-qv1-xf2a.google.com ([2607:f8b0:4864:20::f2a])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sicJg-0000JS-0e
+ for qemu-devel@nongnu.org; Mon, 26 Aug 2024 12:11:41 -0400
+Received: by mail-qv1-xf2a.google.com with SMTP id
+ 6a1803df08f44-6bf747371ecso21201506d6.3
+ for <qemu-devel@nongnu.org>; Mon, 26 Aug 2024 09:11:39 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1724688699; x=1725293499; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=Ll0Bv0e9ifVMdX16PbaLptHbvOdXV+Mp0DUceSHpQ4g=;
+ b=VZlTE24xT5Io81ZMOtRJZbZTWG5QD/5ECXyKd9CwzWwEVzdVZfJz9AyuOVzsPfTqoH
+ eJg0xFE93yXbCi+VmqZ8jKZ83TqNXpa7kozVVEeFs1jWMBbjrlgBSQ1imVnNjlIMO1VZ
+ 1a7XppoLUYTetsLf2buyPT1zLpQdUds1r2jng4YK5LEnsZtwWu2yvMrQ/5swMATKD6/+
+ 6s1jPPS3Sb539q/fFYai4aLJ+2W1v7jOz3fgheP7Nx7jdas9dCyvkYK6w87tFltYAWHe
+ vXn8ZJClA6S3ZBChfyFikBsqUkEEH7QW9gSuvT78Skyrz/R3RZBNTAsbX4dcUq7vFafH
+ Z1MQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1724688699; x=1725293499;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=Ll0Bv0e9ifVMdX16PbaLptHbvOdXV+Mp0DUceSHpQ4g=;
+ b=gkwb0UrZfElFv185BkHzOZUgm60t4HNtpTAfOFMbraIXU3klwAL+L7p5gctNtUQRQP
+ aonT9ctsH3L9eG9M/DjPzxAVokjpJs2aAT2dXUjbTwf66ObjHIpoGZMm1cFrmr2DO5Kl
+ ziZsOt0FrsW5Q4vPNGtoERjIsNOgH/5PpseavRzx3fkUT8jm7ATZb4YiGCiFZAnrXCrQ
+ fFtV5zQA/ajg0qtfOxI/FLuqhHkG06cWDlg/psqe3/m5fC3qHmHJcK/NWfIezBjS97sJ
+ feBaFIkADWBjfN1rvkyzPYOM5jGgOzYE4HY59pb5HmnKKyhVAWL4Wsd+p8D2W7AUBC+X
+ JRdA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVaGF0VWNrcyspopiZ2jKt8je8GlcYl5YBOeTjJ4Xk6YKPCQuree7fFsUg+phb3/wvQ3XHMAdv00WpC@nongnu.org
+X-Gm-Message-State: AOJu0YzW3o8EW2donQrikgla2opn8JVnMObLj7lUaDPRTt12BL2oBi7l
+ gQSpOSJRUSnFEXqjNYsnkla3hmwaG4hzhSJf+ra9iBSpUv4ITYeOP7xE25UwDmA=
+X-Received: by 2002:a05:6214:318d:b0:6c1:6ad1:faee with SMTP id
+ 6a1803df08f44-6c16dc2180fmr129043186d6.3.1724688698735; 
+ Mon, 26 Aug 2024 09:11:38 -0700 (PDT)
+Received: from [192.168.69.100] ([176.187.216.241])
+ by smtp.gmail.com with ESMTPSA id
+ 6a1803df08f44-6c162d6e750sm47559096d6.67.2024.08.26.09.11.34
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 26 Aug 2024 09:11:38 -0700 (PDT)
+Message-ID: <3f305742-def7-48b7-bdf9-42bd33dc9d34@linaro.org>
+Date: Mon, 26 Aug 2024 18:11:31 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 04/15] hw/i2c/aspeed: support discontinuous register
- memory region of I2C bus
-To: Jamin Lin <jamin_lin@aspeedtech.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- Alistair Francis <alistair@alistair23.me>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-Cc: Troy Lee <troy_lee@aspeedtech.com>,
- Yunlin Tang <yunlin.tang@aspeedtech.com>
-References: <20240718064925.1846074-1-jamin_lin@aspeedtech.com>
- <20240718064925.1846074-5-jamin_lin@aspeedtech.com>
- <de851b5c-5983-44f6-955a-6ba71f966c71@kaod.org>
- <SI2PR06MB5041E3D271FB5839B12E76D4FCAC2@SI2PR06MB5041.apcprd06.prod.outlook.com>
- <c7d00701-cada-4ed8-856b-85249aa1ac0b@kaod.org>
- <SI2PR06MB5041D50CAC61711661F4B56FFCB42@SI2PR06MB5041.apcprd06.prod.outlook.com>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <SI2PR06MB5041D50CAC61711661F4B56FFCB42@SI2PR06MB5041.apcprd06.prod.outlook.com>
+Subject: Re: [PATCH] tests/avocado: Move LinuxTest related code into a
+ separate file
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
+Cc: Cleber Rosa <crosa@redhat.com>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ Beraldo Leal <bleal@redhat.com>, Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
+ Paolo Bonzini <pbonzini@redhat.com>, Eric Auger <eric.auger@redhat.com>,
+ qemu-arm@nongnu.org
+References: <20240719095031.32814-1-thuth@redhat.com>
+ <3e530db3-99e2-4878-a927-e6eebc0f92fe@linaro.org>
+ <16c8e2b1-e9ae-44fe-ac97-adcce3a2900d@redhat.com>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <16c8e2b1-e9ae-44fe-ac97-adcce3a2900d@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
- envelope-from=SRS0=7wMH=PZ=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
-X-Spam_score_int: -39
-X-Spam_score: -4.0
-X-Spam_bar: ----
-X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.25, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+Received-SPF: pass client-ip=2607:f8b0:4864:20::f2a;
+ envelope-from=philmd@linaro.org; helo=mail-qv1-xf2a.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
@@ -107,113 +137,52 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Q7pTCBhgl2Z3
+X-TUID: 2Y3rNPxMBm3G
 
-Hello Jamin,
-
-On 7/26/24 08:00, Jamin Lin wrote:
-> Hi Cedric,
-
-I will looked at v2. Sorry for the late reply, I was on PTO.
-
-Thanks,
-
-C.
-
-  
-
-
->> Subject: Re: [PATCH v1 04/15] hw/i2c/aspeed: support discontinuous register
->> memory region of I2C bus
->>
->> On 7/18/24 11:44, Jamin Lin wrote:
->>> Hi Cedric,
+On 21/8/24 17:14, Thomas Huth wrote:
+> On 21/08/2024 17.11, Philippe Mathieu-Daudé wrote:
+>> On 19/7/24 11:50, Thomas Huth wrote:
+>>> Only some few tests are using the LinuxTest class. Move the related
+>>> code into a separate file so that this does not pollute the main
+>>> namespace.
 >>>
->>>> Subject: Re: [PATCH v1 04/15] hw/i2c/aspeed: support discontinuous
->>>> register memory region of I2C bus
->>>>
->>>> On 7/18/24 08:49, Jamin Lin wrote:
->>>>> It only support continuous register memory region for all I2C bus.
->>>>> However, the register address of all I2c bus are discontinuous for
->>>>> AST2700.
->>>>>
->>>>> Ex: the register address of I2C bus for ast2700 as following.
->>>>> 0x100 - 0x17F: Device 0
->>>>> 0x200 - 0x27F: Device 1
->>>>> 0x300 - 0x37F: Device 2
->>>>> 0x400 - 0x47F: Device 3
->>>>> 0x500 - 0x57F: Device 4
->>>>> 0x600 - 0x67F: Device 5
->>>>> 0x700 - 0x77F: Device 6
->>>>> 0x800 - 0x87F: Device 7
->>>>> 0x900 - 0x97F: Device 8
->>>>> 0xA00 - 0xA7F: Device 9
->>>>> 0xB00 - 0xB7F: Device 10
->>>>> 0xC00 - 0xC7F: Device 11
->>>>> 0xD00 - 0xD7F: Device 12
->>>>> 0xE00 - 0xE7F: Device 13
->>>>> 0xF00 – 0xF7F: Device 14
->>>>> 0x1000 – 0x107F: Device 15
->>>>>
->>>>> Introduce a new class attribute to make user set each I2C bus gap size.
->>>>> Update formula to create all I2C bus register memory regions.
->>>>
->>>> I don't think this is necessary to model. Could we simply increase
->>>> tge register MMIO size for the AST2700 bus model and rely on the
->>>> memops to catch invalid register offsets ?
->>>>
->>> Thanks for your review and suggestion.
+>>> Signed-off-by: Thomas Huth <thuth@redhat.com>
+>>> ---
+>>>   tests/avocado/avocado_qemu/__init__.py  | 239 +---------------------
+>>>   tests/avocado/avocado_qemu/linuxtest.py | 253 ++++++++++++++++++++++++
+>>>   tests/avocado/boot_linux.py             |   3 +-
+>>>   tests/avocado/hotplug_blk.py            |   2 +-
+>>>   tests/avocado/hotplug_cpu.py            |   2 +-
+>>>   tests/avocado/intel_iommu.py            |   2 +-
+>>>   tests/avocado/replay_linux.py           |   2 +-
+>>>   tests/avocado/smmu.py                   |   3 +-
+>>>   8 files changed, 262 insertions(+), 244 deletions(-)
+>>>   create mode 100644 tests/avocado/avocado_qemu/linuxtest.py
 >>>
->>> Sorry, I am not very clearly understand your comments.
->>> Could you please describe it more detail?
->>> Thanks-Jamin
+>>> diff --git a/tests/avocado/avocado_qemu/__init__.py 
+>>> b/tests/avocado/avocado_qemu/__init__.py
+>>> index 304c428168..a3da2a96bb 100644
+>>> --- a/tests/avocado/avocado_qemu/__init__.py
+>>> +++ b/tests/avocado/avocado_qemu/__init__.py
+>>> @@ -10,7 +10,6 @@
+>>>   import logging
+>>>   import os
+>>> -import shutil
+>>>   import subprocess
+>>>   import sys
+>>>   import tempfile
+>>> @@ -18,7 +17,7 @@
+>>>   import uuid
+>>>   import avocado
+>>> -from avocado.utils import cloudinit, datadrainer, process, ssh, vmimage
+>>> +from avocado.utils import ssh
 >>
->> I don't think you need to introduce a gap size class attribute.
->>
->> Setting :
->>
->>       aic->reg_size = 0x100; /* size + gap */
->>
->> in aspeed_2700_i2c_class_init() should be enough.
->>
-> Sorry reply you late.
+>> Unfortunately we don't run the user mode tests on CI and missed
+>> 'process' is used by the QemuUserTest class.
 > 
-> The address space of I2C bus and pool buffer are as following
-> 0x100 - 0x17F: device1_reg  0x1a0 - 0x1bf: device1_buf
-> 0x200 - 0x27F: device2_reg  0x2a0 - 0x2bf:device2_buf
-> 0x300 - 0x37F: device3_reg  0x3a0 -0x3bf: device3_buf
-> 
-> I tried to set the aic->reg_size 0x100 and aic->pool_size 0x100.
-> And the memory regions of I2c bus became as following.
-> 
-> 0x100-0x1ff aspeed.i2c.bus.0  0x1a0-0x29f aspeed.i2c.bus.0.pool
-> 0x200-0x2ff aspeed.i2c.bus.1  0x2a0-0x39f aspeed.i2c.bus.1.pool
-> 0x300-0x3ff aspeed.i2c.bus.2  0x3a0-0x49f aspeed.i2c.bus.2.pool
-> 
-> 0000000014c0f000-0000000014c10fff (prio 0, i/o): aspeed.i2c
->      0000000014c0f100-0000000014c0f1ff (prio 0, i/o): aspeed.i2c.bus.0
->      0000000014c0f1a0-0000000014c0f29f (prio 0, i/o): aspeed.i2c.bus.0.pool
->      0000000014c0f200-0000000014c0f2ff (prio 0, i/o): aspeed.i2c.bus.1
->      0000000014c0f2a0-0000000014c0f39f (prio 0, i/o): aspeed.i2c.bus.1.pool
->      0000000014c0f300-0000000014c0f3ff (prio 0, i/o): aspeed.i2c.bus.2
->      0000000014c0f3a0-0000000014c0f49f (prio 0, i/o): aspeed.i2c.bus.2.pool
-> 
-> The memory region of aspeed.i2c.bus.0 (0x100-0x1ff) occupied aspeed.i2c.bus.0.pool address space(0x1a0-0x1bf).
-> And the memory region of aspeed.i2c.bus.0.pool (0x1a0-0x29f) occupied aspeed.i2c.bus.1 address space(0x200-0x27F)
-> That was why I created reg_gap_size and pool_gap_size to fix this issue.
-> Do you have any suggestion?
-> 
-> Thanks-Jamin
-> 
->> Thanks,
->>
->> C.
->>
-> 
-> ************* Email Confidentiality Notice ********************
-> 免責聲明:
-> 本信件(或其附件)可能包含機密資訊，並受法律保護。如 台端非指定之收件者，請以電子郵件通知本電子郵件之發送者, 並請立即刪除本電子郵件及其附件和銷毀所有複印件。謝謝您的合作!
-> 
-> DISCLAIMER:
-> This message (and any attachments) may contain legally privileged and/or other confidential information. If you have received it in error, please notify the sender by reply e-mail and immediately delete the e-mail and any attachments without copying or disclosing the contents. Thank you.
+> Oh, sorry ... apparently I'm not running these locally on my machine 
+> either ... could you send a patch to fix it, or want me to do it?
+
+Updating this thread, the patch is here:
+https://lore.kernel.org/qemu-devel/20240822095045.72643-4-philmd@linaro.org/
 

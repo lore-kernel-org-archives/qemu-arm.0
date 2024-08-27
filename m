@@ -1,104 +1,105 @@
-Received: by 2002:a17:504:26c2:b0:1be9:327d:8ee3 with SMTP id j2csp19441nji;
-        Mon, 26 Aug 2024 23:47:07 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVG8jHR7zEI0aAWdCkGDRW+vYrsjr2NyP76utuMpMPbKXWwU0KuKsjDeJoCKyQzWIHgZBMDKBQOCT+8Bg==@linaro.org
-X-Google-Smtp-Source: AGHT+IFGLONeTLmg0yqFxW9IhGqITSeY4B6lquEHsUyULD2rND8JU2sYbAjrys4G/pjQaqstJEHs
-X-Received: by 2002:a05:620a:c4b:b0:79d:5b21:804a with SMTP id af79cd13be357-7a6896e3855mr1787528585a.14.1724741226949;
-        Mon, 26 Aug 2024 23:47:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1724741226; cv=none;
+Received: by 2002:a17:504:26c2:b0:1be9:327d:8ee3 with SMTP id j2csp19504nji;
+        Mon, 26 Aug 2024 23:47:25 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVA7otNUGDfCJGSjP1oTvqdafcZrH2C+aH8u88SSIjNdO8m+4SYvzGdxzvIwDcX+WYTpxJB66jBdfyqeg==@linaro.org
+X-Google-Smtp-Source: AGHT+IHAUs4GZl/Ch0nwloiHNue8RP+Kfx18BF6uKMnUzR2myR4BP5976gN+IAPEVRnEPH13W05r
+X-Received: by 2002:a05:6214:5bc9:b0:6bf:6df0:b462 with SMTP id 6a1803df08f44-6c16dcc1732mr147126656d6.31.1724741245804;
+        Mon, 26 Aug 2024 23:47:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1724741245; cv=none;
         d=google.com; s=arc-20160816;
-        b=jCJCrP1cXFFORhGg1Bvq0rx00uWU6VXV9nntsphnmPIYMXiF00Pscijvf0gn/yVNxj
-         CzixrLAFUT6MWnSsQLTLKa3PXfo66cxOQn3QQXv/YvfYYF7DFR81/SQhiqK61wpnyYLX
-         UvzqsZe4c/N3h0wWQW1vcOO9sB9bnlVQ+6t+f77SLuOi0h4qcZ+mgWY8YVfiUL3xQs7T
-         UA0medfbfHF7L7QOtMfVffBL5jfeSKPT3bL2NL8a5HzZAUwrD9q7ReSWIVrXLdH0349C
-         L25n0cIU+tezVsyoHO7zUuvuyzl4Agpl6dX0iUq5eT+S+Szig4opJXw20+kf9APePwkh
-         4msA==
+        b=RYcjeQ3xJBVbqj7MYMH3U8Atrx1eYFVWy70fhzHXVsdo9y4RnKpOC/0BZf2iwfNKUN
+         T3V/dI1Rpe711hUTfjqW26/EBzcPNc4+uZt0iB5IAIRXOTlyE5c+trOUK/XQlink+ed3
+         F0ABdtLr5IhbuErPmVVYKT+i/wFbJMOOznQIjfFZyGVargI+AmbtQpya3qdz+WjF9Cg4
+         7IlEUaknCAiLLWOUBetowo9UhYkPTlZ+CMduzG3M9WEkma/s0naPXSCFZmJiIy8iBtd1
+         nTfy3YgQMOlLftIA0d7+9oRyKAKGNtvn/ni5sAT4r8L5gCsT/rO4et9RCTWQMqpK5RWU
+         kinQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
          :references:mime-version:in-reply-to:date:dkim-signature;
-        bh=QAb7sPO/VgRC8CdmRh6+IgA62zqKsaHlo0fRBlzqmbo=;
+        bh=Zz923pwwDN/VS0a8ZCn3vZ6fDnLK7TCJWzC4KDdiIlE=;
         fh=2mssAqYKJuMcD/Ya5YUzhxP7uPixmdZ7O75Bi0gtEhM=;
-        b=Hcn+7HE8Ahbzl2ly8eN0HVLtYO5W1XIH9yhF/3aomcRFkK1ru2LwfqyFvy3iOp0SO9
-         2wmOPRw7OajsmUTnra3mZT6WDWXHZEJblsV6XKhWi9p9Z7no08VMvaom100BI/RDBTlQ
-         4uN+Bp7EjFqptiPhWF7BdjqRjLE7KP1zWrSRe6msqPuRm085O8tFPI8Z7wmflxyY1rif
-         DcL6kh1KbOnpxDoOjA81bdTrzLDN0GV6wK66KoBRWWTvOMn73/wbZNQ3rPLT0kD4BTsG
-         S89Nkmqm0GTIoU+ieIWvp+rdtDHg3LYOMjcsBL/8lJVdpEDFDo3iaLOQWzvsIoadYdXh
-         uYAw==;
+        b=Ru5MTLyabuvW4egxLppzmLv8SXuFrOzjhRq//7ty4TXnZ2ot8Ebd1TiOOpukqgOvYa
+         MeUO25yk3P4AFvly8aMAwf9NuxOcOJNpgx8TthuE4q/UG7RKX6DSfM/mEeqEJrbBW8mU
+         vEI3n3scZtA9Ja6L8Z3w/sgOgl0B0tLH4aTRB6CcuWC5hZsaKvoLOm4S+QEQ7II9FEZo
+         thYS5ndhEgNY0QrnhomoV8w42k9XHYKqNgckkWuqM2egwVf4fVhVFUdSmxAhPAXQw3g4
+         fb4g1XKoiOgYlbrqye6BVSAq1Wccs3qmwwtZw9OMULtHcKvL9FVpsn/mIIBmMvxjTx50
+         JgYQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=mXEiDGiC;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@google.com header.s=20230601 header.b=vrz96lq8;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7a67f411f54si1230299985a.526.2024.08.26.23.47.06
+        by mx.google.com with ESMTPS id 6a1803df08f44-6c162db2ac7si127243936d6.285.2024.08.26.23.47.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 26 Aug 2024 23:47:06 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 26 Aug 2024 23:47:25 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=mXEiDGiC;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@google.com header.s=20230601 header.b=vrz96lq8;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sipyN-0004dM-EB; Tue, 27 Aug 2024 02:46:35 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1sipyT-000593-SV; Tue, 27 Aug 2024 02:46:41 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <3JXbNZgUKCIQ1i3qxowwotm.kwuymu2-izuvwvov2.wzo@flex--tavip.bounces.google.com>)
- id 1sipy9-00041H-Gd
- for qemu-arm@nongnu.org; Tue, 27 Aug 2024 02:46:31 -0400
-Received: from mail-pg1-x549.google.com ([2607:f8b0:4864:20::549])
+ <3MHbNZgUKCo8CtE18z77z4x.v759x5D-wxEx4676z6D.7Az@flex--tavip.bounces.google.com>)
+ id 1sipyL-0004Qf-I3
+ for qemu-devel@nongnu.org; Tue, 27 Aug 2024 02:46:33 -0400
+Received: from mail-yw1-x114a.google.com ([2607:f8b0:4864:20::114a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from
- <3JXbNZgUKCIQ1i3qxowwotm.kwuymu2-izuvwvov2.wzo@flex--tavip.bounces.google.com>)
- id 1sipy4-000699-2O
- for qemu-arm@nongnu.org; Tue, 27 Aug 2024 02:46:19 -0400
-Received: by mail-pg1-x549.google.com with SMTP id
- 41be03b00d2f7-7d2159ebf3dso712726a12.2
- for <qemu-arm@nongnu.org>; Mon, 26 Aug 2024 23:45:59 -0700 (PDT)
+ <3MHbNZgUKCo8CtE18z77z4x.v759x5D-wxEx4676z6D.7Az@flex--tavip.bounces.google.com>)
+ id 1sipyH-0006BM-JS
+ for qemu-devel@nongnu.org; Tue, 27 Aug 2024 02:46:33 -0400
+Received: by mail-yw1-x114a.google.com with SMTP id
+ 00721157ae682-6ad660add0fso69829667b3.0
+ for <qemu-devel@nongnu.org>; Mon, 26 Aug 2024 23:46:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1724741157; x=1725345957; darn=nongnu.org;
+ d=google.com; s=20230601; t=1724741169; x=1725345969; darn=nongnu.org;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:from:to:cc:subject:date:message-id:reply-to;
- bh=QAb7sPO/VgRC8CdmRh6+IgA62zqKsaHlo0fRBlzqmbo=;
- b=mXEiDGiCmMUPWgan5Tq+yp6CEk6FNy03Wb6/T3NG3R37+7T2tSVUNAgeRxpZUilQDl
- uRzXpBgriJQYBkgq8+RSpOUfo2cMgCnP2HkHVWwbq4qtsF791CfSf7O7NjLiiT2JA0/p
- ATtiblQ878KrjAu84kjrjd3gh9O1aGt3+Cg0piVLUipnDVGNZ+n9NSpudoJvMheHaUQ/
- Ceqb4btT5pXzdeXFmh6NDqpEpVZoMkoM26Gb1gTC9UoTkW7Uyymz7Pj3CCw1uDFoOu+G
- Y7g2SKilieAuQXCn3BWZEd5VlzCknRkzstFLsUfNlbJu30Ppqa0+1I8LMVXuYi364OOJ
- cJbQ==
+ bh=Zz923pwwDN/VS0a8ZCn3vZ6fDnLK7TCJWzC4KDdiIlE=;
+ b=vrz96lq8ELPdyGJ6YioTb4MF/sk16SIxCnc5sge5o9BSw3QoNYb34j4a7jnO3evbfS
+ E2bMpHmx2HARdWiesmHLOVGxjqRubShnuBwCdxk1m9TBSzudpZTXMfBsE02WVlvGZQSs
+ Cfp6AEkq6UJ7J3v9H/+IYenbtPW4pA5CCNUmde8z36r02E82jqV+SDk0wNwrmgD8zAy/
+ wv1Flb4IvlnjYtsRxUhc7yw5C2PgNWxh6BcuEAdVYpr+OKlZl0B2GkYRKNev6Eqwy/HJ
+ Hftz3/zzgL4qHFN3L3R3xyL4TPZImzHrwO1mNQ9uNTeIQ+oWx7qgrRQkNVtcutf3vGfk
+ GZXw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1724741157; x=1725345957;
+ d=1e100.net; s=20230601; t=1724741169; x=1725345969;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=QAb7sPO/VgRC8CdmRh6+IgA62zqKsaHlo0fRBlzqmbo=;
- b=DLdBEZt1zVCTpHut3vN65bJ28/4rh5y5TuiE76FdorBHp8zc1ExhVxk4OY9X3LxuXA
- +DtlvWARpzqI78apRwobl6kPLm1C7gnEnu3j0btBUQyna0UbJ1SC7rN9SGrQ3VDDh9gQ
- 3hk/lbB9ZJS5e1MJ+hOJ9e+3NptID5tgztcQcy7o61MEO04esNIPoLMo4swRhAGm9Q1r
- Z6t4dGfH5Va8jzMOVLsiZ+umEskcCS8VJT3SJfRooB30qfIpzOPEWV3Fp38AmC3rrJzL
- dxsPkmFHPZQLqxrk2m/1L01f0KP69CjetupeT/WIzZCSunwZ/XJwezT2QuwEEKxUCfSx
- cnzw==
-X-Gm-Message-State: AOJu0YzX03as1WTQXoPFiecedkDqAWtgmvoTSBnREUuhnGZLeo37vdlk
- Ab2JdZWP5jUfRzchDquLMe2B1s8NQqcEgZKUCywrm3Fyl0hpHG7lflW98tHXAIbyWXwLYMTxog=
- =
+ bh=Zz923pwwDN/VS0a8ZCn3vZ6fDnLK7TCJWzC4KDdiIlE=;
+ b=TXznO5Ncqk34G39ZyG4WWLKPUFDpjA8CYE8b7LeiQ303oqzGr30j+f7XJ6qbwL+efH
+ GEV4dpCHuD9JGo4eTS8oLIrOHs5Uq7X/pikzg7C4Z9mD7QB5nnsWm+Uqe9rlYPHZt+MS
+ 229rKgdTMEJipxMKPvWkPBFIT5HGD21i1Xgd/QmBTLm3V9WUUtVGdDOt45mg9xeyg8Y/
+ aTKCcdWj9UOHrnaKJ0DsJ/P3XFhl7c0IajilyuWT46Zq53bkhiy52Li8C3dbBH/hZzSv
+ /p2HMlVZA6I+vvtNyOKboGmB0sselS6VjEvdSxLsWzcHBx5jj0UZ098nodTrFf1y5fN8
+ SuBQ==
+X-Gm-Message-State: AOJu0Yzd07DqZWvgdrT/q/CeDh2a1ipyUrqyPZcnXbhWjKmgfoz6LpxW
+ WQ6T10bYKpuoCMcTRcvucQZv/aI1zjU+GcleC9u495e0268EgCfJKhCTjJcSq2zz94XnRvAHOTq
+ kfTGfUs32YTLnB5pthYPFfCUDhgZcUQYZKr1NQqnTRSa0dwBtDPXfqCHCrXVyRVUYo/hlWreVZn
+ Egs7xVK8+LoSUSo5xcexbC7C7cvQ==
 X-Received: from warp10.c.googlers.com ([fda3:e722:ac3:cc00:24:72f4:c0a8:750])
- (user=tavip job=sendgmr) by 2002:a17:903:1210:b0:1fc:369b:c1b5
+ (user=tavip job=sendgmr) by 2002:a05:690c:6712:b0:6b2:7bd8:d794
  with SMTP id
- d9443c01a7336-204df43252emr843855ad.5.1724741157078; Mon, 26 Aug 2024
- 23:45:57 -0700 (PDT)
-Date: Mon, 26 Aug 2024 23:45:18 -0700
+ 00721157ae682-6cfb3402b58mr1522097b3.4.1724741168451; Mon, 26 Aug 2024
+ 23:46:08 -0700 (PDT)
+Date: Mon, 26 Aug 2024 23:45:24 -0700
 In-Reply-To: <20240827064529.1246786-1-tavip@google.com>
 Mime-Version: 1.0
 References: <20240827064529.1246786-1-tavip@google.com>
 X-Mailer: git-send-email 2.46.0.295.g3b9ea8a38a-goog
-Message-ID: <20240827064529.1246786-15-tavip@google.com>
-Subject: [RFC PATCH v3 14/24] tests/qtest: add register access macros and
- functions
+Message-ID: <20240827064529.1246786-21-tavip@google.com>
+Subject: [RFC PATCH v3 20/24] hw/ssi: allow NULL realize callbacks for
+ peripherals
 From: Octavian Purdila <tavip@google.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, stefanst@google.com, pbonzini@redhat.com, 
@@ -107,9 +108,9 @@ Cc: qemu-arm@nongnu.org, stefanst@google.com, pbonzini@redhat.com,
  alistair@alistair23.me, thuth@redhat.com, philmd@linaro.org, jsnow@redhat.com, 
  crosa@redhat.com, lvivier@redhat.com
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::549;
- envelope-from=3JXbNZgUKCIQ1i3qxowwotm.kwuymu2-izuvwvov2.wzo@flex--tavip.bounces.google.com;
- helo=mail-pg1-x549.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::114a;
+ envelope-from=3MHbNZgUKCo8CtE18z77z4x.v759x5D-wxEx4676z6D.7Az@flex--tavip.bounces.google.com;
+ helo=mail-yw1-x114a.google.com
 X-Spam_score_int: -95
 X-Spam_score: -9.6
 X-Spam_bar: ---------
@@ -117,111 +118,43 @@ X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
+ USER_IN_DEF_DKIM_WL=-7.5 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: LtWbLx4pCrw1
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: uVGIh/mgK5Ae
 
-Add utility macros for accessing register or register bit fields in
-tests, e.g.:
-
-  REG32_WRITE(FLEXCOMM, PSELID, persel);
-  g_assert(REG32_READ_FIELD(FLEXCOMM, PSELID, PERSEL) == persel);
-
-Signed-off-by: Octavian Purdila <tavip@google.com>
+Signed-off-by: tavip <tavip@warp10.c.googlers.com>
 ---
- tests/qtest/reg-utils.h | 70 +++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 70 insertions(+)
- create mode 100644 tests/qtest/reg-utils.h
+ hw/ssi/ssi.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/tests/qtest/reg-utils.h b/tests/qtest/reg-utils.h
-new file mode 100644
-index 0000000000..e09aaf3333
---- /dev/null
-+++ b/tests/qtest/reg-utils.h
-@@ -0,0 +1,70 @@
-+/*
-+ * Register access utilities for device tests.
-+ *
-+ * Copyright (C) 2024 Google LLC
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or later.
-+ * See the COPYING file in the top-level directory.
-+ */
-+#ifndef _REG_UTILS_H
-+#define _REG_UTILS_H
-+
-+#include "libqtest-single.h"
-+#include "hw/registerfields.h"
-+
-+#ifdef DEBUG_REG
-+#define debug(fmt, args...) fprintf(stderr, fmt, ## args)
-+#else
-+#define debug(fmt, args...)
-+#endif
-+
-+#define _REG_OFF(mod, reg) (A_##mod##_##reg)
-+
-+#define REG32_READ(mod, reg)                                            \
-+    ({                                                                  \
-+        uint32_t value;                                                 \
-+        value = readl(mod##_BASE + _REG_OFF(mod, reg));                 \
-+        debug("[%s] -> %08x\n", #reg, value);                           \
-+        value;                                                          \
-+    })
-+
-+#define REG32_WRITE(mod, reg, value)                                    \
-+    do {                                                                \
-+        debug("[%s] <- %08x\n", #reg, value);                           \
-+        writel(mod##_BASE + _REG_OFF(mod, reg), value);                 \
-+    } while (0)
-+
-+#define REG_FIELD_VAL(v, mod, reg, field)                               \
-+    FIELD_EX32(v, mod##_##reg, field)                                   \
-+
-+#define REG32_READ_FIELD(mod, reg, field)                   \
-+    REG_FIELD_VAL(REG32_READ(mod, reg), mod, reg, field)
-+
-+#define REG32_WRITE_FIELD(mod, reg, field, val)                         \
-+    do {                                                                \
-+        uint32_t _tmp = REG32_READ(mod, reg);                           \
-+        _tmp = FIELD_DP32(_tmp, mod##_##reg, field, val);               \
-+        REG32_WRITE(mod, reg, _tmp);                                    \
-+    } while (0)
-+
-+#define REG32_WRITE_FIELD_NOUPDATE(mod, reg, field, val)                \
-+    do {                                                                \
-+        uint32_t _tmp = FIELD_DP32(0, mod##_##reg, field, val);         \
-+        REG32_WRITE(mod, reg, _tmp);                                    \
-+    } while (0)
-+
-+#define WAIT_REG32_FIELD(ns, mod, reg, field, val)                      \
-+    do {                                                                \
-+        clock_step(ns);                                                 \
-+        g_assert_cmpuint(REG32_READ_FIELD(mod, reg, field), ==, val);   \
-+    } while (0)
-+
-+#define REG32_READ_FAIL(mod, reg) \
-+    readl_fail(mod##_BASE + _REG_OFF(mod, reg))
-+
-+#define REG32_WRITE_FAIL(mod, reg, value) \
-+    writel_fail(mod##_BASE + _REG_OFF(mod, reg), value)
-+
-+#endif /* _REG_UTILS_H */
+diff --git a/hw/ssi/ssi.c b/hw/ssi/ssi.c
+index 3f357e8f16..d1f3ce7c22 100644
+--- a/hw/ssi/ssi.c
++++ b/hw/ssi/ssi.c
+@@ -105,7 +105,9 @@ static void ssi_peripheral_realize(DeviceState *dev, Error **errp)
+     }
+     s->spc = ssc;
+ 
+-    ssc->realize(s, errp);
++    if (ssc->realize) {
++        ssc->realize(s, errp);
++    }
+ }
+ 
+ static Property ssi_peripheral_properties[] = {
 -- 
 2.46.0.295.g3b9ea8a38a-goog
 

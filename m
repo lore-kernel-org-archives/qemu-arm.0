@@ -1,104 +1,103 @@
-Received: by 2002:a17:504:26c2:b0:1be9:327d:8ee3 with SMTP id j2csp19636nji;
-        Mon, 26 Aug 2024 23:48:04 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWGAQvB2VhNfU/aXBtQxU5wOnSanKxjQpAIWlTmIN/GkjR71yc2m8EwcJ0yEnDibpCin5pgy7O3WnHzOA==@linaro.org
-X-Google-Smtp-Source: AGHT+IFyUxZYFu9rLRRfbO/wz501yH9yFkwjtBjKo0jzzDfEko5mTUxfdQA4PwTeXj6sY0p9HqUF
-X-Received: by 2002:a05:6902:1b11:b0:e17:a52f:832 with SMTP id 3f1490d57ef6-e1a2a9b5ae8mr1826839276.56.1724741283994;
-        Mon, 26 Aug 2024 23:48:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1724741283; cv=none;
+Received: by 2002:a17:504:26c2:b0:1be9:327d:8ee3 with SMTP id j2csp19658nji;
+        Mon, 26 Aug 2024 23:48:10 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVxWLZFyZ/w0K9/naZMuOv+kYfThwnDM+iItIKbWa25LD89X2S1VACixF3wdiiXD4BpuNghGJuioQR9dQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IEDbgWaucIy0yap8EbS4Kv52SkANIZcIRyofTUqeR7PrWFSEvgCyUiQUkT6CzWdnQE83Plf
+X-Received: by 2002:a05:620a:430a:b0:7a4:faab:fc79 with SMTP id af79cd13be357-7a6896d1835mr1517103785a.8.1724741290798;
+        Mon, 26 Aug 2024 23:48:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1724741290; cv=none;
         d=google.com; s=arc-20160816;
-        b=fmHSQgGwpRhvPgAGDU+jmo/KNRaGiWWLmeRbH2X5ga+76ZeuX/103XStf8pxilY45y
-         e7b5Yd9rRq9WsA/iHV1NDKrp46EnqLF/MXi6GkhDTQp+hBOji4X/GHhfmZ2DezVczVd6
-         0/+l5/nE+G19z8hN2vSkAZ6ARV67lfbCjrLDTo4ylmRS97+ZyVai3NkTyACfNOrPWNZJ
-         kDeG9GqNPm7DbvvGtqt9AFuSKtFhNkbRZP1MUMoSEXmflLxqkketJOUTlGTvBwizUqvV
-         dzIffb7/NDRWhCXrXw2u9NKByEtAtDEuQGndGE0IijK8WpLHZZ08+weky/abz8cV3xPH
-         R6/Q==
+        b=aFGp4b2NnsVRoCY340JnQBEsNxdbd5ASGmvX7wAMiwq1PKrXOhv62PwIVVyHY+XrlT
+         Jl0yYEybJz7qKUHqu+SvRhFBGD2vLTG88lmRkOriG3ec1XNhx+xlS4HamYPPdxJXpGXR
+         RQlyNFw1ZrEtwittoWewYHcMckqN/BDndcng35xao860z0OXnEKhsQ74B8swZMcUM7Gq
+         CgfT8dF225vhM+53IA8p/n0fiGCndkgqP4HvJI+8G+zumLqZzTfNddynJ6XF/E+cRsPF
+         ER5UC6RUaOognAB5DSp/MGYAMHYoP+9nnxBPBZikncWJbBeOrgP4wSfaBTdx86TNVgcP
+         BuMg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
          :references:mime-version:in-reply-to:date:dkim-signature;
-        bh=hjj5euhaeBWVKURTA/20dijhmsqMuqw8o1St7aOFqYA=;
+        bh=0X5ajN0GlVBjzS6CMfRPYWSbMFYtloxhycByOvUYOGU=;
         fh=2mssAqYKJuMcD/Ya5YUzhxP7uPixmdZ7O75Bi0gtEhM=;
-        b=gtfn+dNqAcwdkge+a5wEak4BuQV53KNRM11F4wduSys09OBrYrCBIKs5BtG6mgoMmw
-         Ww/CyKcXeUKrh/YSwwIZS6C8IS0aHf9fP7PSX3Ahw/2s58VoQ+3Uu/PRhokR6DOKdsJ6
-         lYJYQqe3/qr4on5BzeS62XTUxOx+QDaHBWbyTYEEjN9CtsSHsr29gBDs2Y0IJ3BX/8PX
-         5D6DfOvaEw5psWdzyB3hF+SuOqZ/rNpUpnZ4amQIRd0VkNQHH9MrqqMQxvq9njVZJbzz
-         NSCy0qZhsmKeHkMnVu8VZxUbg8oQMm8CBF+47DvslA9uqm1aJbEz29b2IxLnwG0q8mym
-         NsyA==;
+        b=G4SoZYG7zju/fX0Ay9ZDRhweQlJvZUUndHbV/Sfpr4aAf6bstIlbYzOaXyY5hKHad6
+         Q6V8xrFZ6rWySKzul6Wmcs5rsPi+S2EeTY0w1s1jZ4OjnnSg4U4o7A6nMi8Bxx6MAVvI
+         D+a9W17sNqGiVI6PW7CHkTnVDKgVcOgvsNtpN+I+v6xDtwYFlQP3eLmnCk8dytR7Xu6C
+         bcGzlXUxBSvMTYZ3rB5bS1/QDbCBAI3atjICXd5aohHAtqvB6FHfYRGGdJYNPi6FKHDp
+         7d+1ZIyxzghB8tuS3dgQRP9yK9/1YTsC5+ksGJDa3Z0K2qfqp+MCja8W/zR68EDvexOj
+         oCrQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=nar7oE+U;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@google.com header.s=20230601 header.b="jq5EI/oa";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-454fe3265b6si136452971cf.691.2024.08.26.23.48.03
+        by mx.google.com with ESMTPS id af79cd13be357-7a67f400280si1361901085a.445.2024.08.26.23.48.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 26 Aug 2024 23:48:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 26 Aug 2024 23:48:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=nar7oE+U;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@google.com header.s=20230601 header.b="jq5EI/oa";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sipyW-0005Md-Nz; Tue, 27 Aug 2024 02:46:44 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sipyQ-0004xR-QK; Tue, 27 Aug 2024 02:46:38 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <3NnbNZgUKCpUIzK7E5DD5A3.1DBF3BJ-23K3ACDC5CJ.DG5@flex--tavip.bounces.google.com>)
- id 1sipyI-00048s-D0
- for qemu-devel@nongnu.org; Tue, 27 Aug 2024 02:46:31 -0400
-Received: from mail-yb1-xb4a.google.com ([2607:f8b0:4864:20::b4a])
+ <3LnbNZgUKCI0ArCz6x55x2v.t537v3B-r83454x4B.58x@flex--tavip.bounces.google.com>)
+ id 1sipyN-0004cp-DS
+ for qemu-arm@nongnu.org; Tue, 27 Aug 2024 02:46:35 -0400
+Received: from mail-yw1-x114a.google.com ([2607:f8b0:4864:20::114a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from
- <3NnbNZgUKCpUIzK7E5DD5A3.1DBF3BJ-23K3ACDC5CJ.DG5@flex--tavip.bounces.google.com>)
- id 1sipyE-0006CR-LA
- for qemu-devel@nongnu.org; Tue, 27 Aug 2024 02:46:30 -0400
-Received: by mail-yb1-xb4a.google.com with SMTP id
- 3f1490d57ef6-e178e745c49so7095093276.2
- for <qemu-devel@nongnu.org>; Mon, 26 Aug 2024 23:46:15 -0700 (PDT)
+ <3LnbNZgUKCI0ArCz6x55x2v.t537v3B-r83454x4B.58x@flex--tavip.bounces.google.com>)
+ id 1sipyI-0006B8-5I
+ for qemu-arm@nongnu.org; Tue, 27 Aug 2024 02:46:35 -0400
+Received: by mail-yw1-x114a.google.com with SMTP id
+ 00721157ae682-6b41e02c255so110276687b3.3
+ for <qemu-arm@nongnu.org>; Mon, 26 Aug 2024 23:46:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1724741174; x=1725345974; darn=nongnu.org;
+ d=google.com; s=20230601; t=1724741167; x=1725345967; darn=nongnu.org;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:from:to:cc:subject:date:message-id:reply-to;
- bh=hjj5euhaeBWVKURTA/20dijhmsqMuqw8o1St7aOFqYA=;
- b=nar7oE+U8dx0VWNi7uOsfDTC/j9GB3f34SREOhb716+rSi4ZjBCpkAY+O1271xUiwg
- tweiFmbWkA/UMYO4VzY1amjcydUdAk7ndGVR1jJF8fSd0LetLqnTuw94jg/j0YQbTI/M
- kOB31PtG4Ln8wEMA/TVteI8XH1hBM5QEw4OdddsmxDRwi9jtljpeT+QoklpDP6N4jVSo
- t60nUHZOEKJ69SNasE4Mvdkz2j5j3JU1Zq65j9N4XBnNJChjb5Ftjc3U6b9B5k7/6JUz
- AFWdKzfKlvkmBeHXQ9+h4K9FAXFd4EyStbgLEfl7QL7Bs2qusHHpo9kzr1dZWC9vKxiJ
- ttPA==
+ bh=0X5ajN0GlVBjzS6CMfRPYWSbMFYtloxhycByOvUYOGU=;
+ b=jq5EI/oaS4i1T3OAR0vWf7DEZqpFY0WDruPGiOAqQECgkCobgOM3IL2BY0XosXIzGB
+ zl72MZo97F0BkGhnXDHXlM3VhA4W1tf6pmx0/SRYuNSzIKV7+dzd8UnqNFRBcAt4dFqh
+ IE8L2IyExq+XVFOzioMtobYKe9cd/mv6JOM3SlZXts/hd8lUJ3bKkEAx78bpl27hUjKZ
+ NfkKieiBSm+hEUFWraKtKa1RkQgtE8fIcWNOf1jaVl6vwi7UkLl+GizO5egqShi3lJEw
+ kt6/otsiUKdDisHbvRVgVXNRaqpm6iYrPA7Uxyo4YhcdjSnF9E/lQoYHOcjks5oGpYAF
+ T9Gw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1724741174; x=1725345974;
+ d=1e100.net; s=20230601; t=1724741167; x=1725345967;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=hjj5euhaeBWVKURTA/20dijhmsqMuqw8o1St7aOFqYA=;
- b=jkH391xt5UGTqiD8T7xtG5fWUCmOmYSbZUQYNlB6CPVsIGTjgRdDZTUOdXGdZgM4DV
- wCaQKJqEOthdtX7lhToLY8IkLU7ck+GeYuWBQ+cT4Wtrjgy2YGFLFUne2y0IF1j/HTmv
- Amoytsay3oVlZ5loEgtGmBSkAtEGeqCU9qcxSv8vm6Gxe4TNhUW6XcGXT53//MC6H58O
- M3Ljr/iN/jqSyvPgZlb6NKTcJKJwghEHLBPghBwqFbhaQNyyHrGhWd9x823reo+yVSQo
- PerSCdLg9sIEBc60fM3y9kSiel4lCG+aloYOGaS4IR8vHuDSbLm29cfLsuccs7prZzNg
- gwig==
-X-Gm-Message-State: AOJu0YzFtq/FUkTzsdj2+uqpLQbgWhX27e8HgURV4986FtaOUS9OE8p7
- IqkzzxtfuousExuG7B2e6tdxDLTyFsz3eghvq4tb7abnTDEayK6NBtOljee6R9AOFexpzD1D36y
- /EjzzTN5LhrBlvJ03IUzunkbdxklhXG+4waK3iyBdqKO+0jBaBa+tLChiLDN/z7ogTFLg5XJgyI
- +rVABWpMwJN0Sy01PoRRkHTPCoMQ==
+ bh=0X5ajN0GlVBjzS6CMfRPYWSbMFYtloxhycByOvUYOGU=;
+ b=ky9q6ZHUjoPoJMNHqBKvovJUHUQbR8KfWJuyJNFXmm1U0hKE/K+kaWBrxYirBLf87J
+ 6Ddm5QTKY+ZCNlmA8rm78Xm+je7g86GwWTVib6u//3Svnw06JEjUUMgiqanZb3uUqCq9
+ hhaSgDzKiQyqNYiW+SIgPwmcslmLiKhjsHwPQDmyhiINDAHHLjGbDU6VfOoRa2BWvnfr
+ 8LQLGo2+A7uxTmbFlsf4sqQ1zGy/LFmZkz9DDwD4+O8DuxO5dihnlDD2M+ImfPVZayCv
+ NIB2B6Y5P+/Eab5e5xoB3nAqPohFc1MImEaKEJw0wpkH2zalz6vGQQetmcYWC6VT/A8c
+ z3xw==
+X-Gm-Message-State: AOJu0YymcBstd2HgqUesoszvAu70O99CNzOUq4GDDuwg626UCVFr7qkO
+ s7QlnrUsVaYn3vT5Y++iExuumIm5bFni/mADBHjTVDbB4V9DeLzHVJaRK946l+SK6jOzMmOl0A=
+ =
 X-Received: from warp10.c.googlers.com ([fda3:e722:ac3:cc00:24:72f4:c0a8:750])
- (user=tavip job=sendgmr) by 2002:a25:ab32:0:b0:e11:cd91:a3e2 with
+ (user=tavip job=sendgmr) by 2002:a5b:dc5:0:b0:e11:6d5f:79b3 with
  SMTP id
- 3f1490d57ef6-e17a86675a8mr23521276.10.1724741174106; Mon, 26 Aug 2024
- 23:46:14 -0700 (PDT)
-Date: Mon, 26 Aug 2024 23:45:27 -0700
+ 3f1490d57ef6-e17a83cdb5dmr215584276.4.1724741166685; Mon, 26 Aug 2024
+ 23:46:06 -0700 (PDT)
+Date: Mon, 26 Aug 2024 23:45:23 -0700
 In-Reply-To: <20240827064529.1246786-1-tavip@google.com>
 Mime-Version: 1.0
 References: <20240827064529.1246786-1-tavip@google.com>
 X-Mailer: git-send-email 2.46.0.295.g3b9ea8a38a-goog
-Message-ID: <20240827064529.1246786-24-tavip@google.com>
-Subject: [RFC PATCH v3 23/24] systems/qtest: add device clock APIs
+Message-ID: <20240827064529.1246786-20-tavip@google.com>
+Subject: [RFC PATCH v3 19/24] tests/qtest: add tests for flexcomm i2c
 From: Octavian Purdila <tavip@google.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, stefanst@google.com, pbonzini@redhat.com, 
@@ -107,261 +106,230 @@ Cc: qemu-arm@nongnu.org, stefanst@google.com, pbonzini@redhat.com,
  alistair@alistair23.me, thuth@redhat.com, philmd@linaro.org, jsnow@redhat.com, 
  crosa@redhat.com, lvivier@redhat.com
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b4a;
- envelope-from=3NnbNZgUKCpUIzK7E5DD5A3.1DBF3BJ-23K3ACDC5CJ.DG5@flex--tavip.bounces.google.com;
- helo=mail-yb1-xb4a.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::114a;
+ envelope-from=3LnbNZgUKCI0ArCz6x55x2v.t537v3B-r83454x4B.58x@flex--tavip.bounces.google.com;
+ helo=mail-yw1-x114a.google.com
 X-Spam_score_int: -95
 X-Spam_score: -9.6
 X-Spam_bar: ---------
 X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01, USER_IN_DEF_DKIM_WL=-7.5,
- WEIRD_QUOTING=0.001 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01,
+ USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ubfv3RQ+MrJt
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: a2q83nvYG+J9
 
-Add qtest APIs to check the device clock frequency.
+Add master mode tests for flexcomm i2c.
 
-Signed-off-by: tavip <tavip@warp10.c.googlers.com>
+Signed-off-by: Octavian Purdila <tavip@google.com>
 ---
- include/hw/qdev-clock.h       | 10 +++++++
- tests/qtest/libqtest-single.h | 24 +++++++++++++++++
- tests/qtest/libqtest.h        | 22 +++++++++++++++
- hw/core/qdev-clock.c          |  2 +-
- system/qtest.c                | 51 +++++++++++++++++++++++++++++++++++
- tests/qtest/libqtest.c        | 29 ++++++++++++++++++++
- 6 files changed, 137 insertions(+), 1 deletion(-)
+ tests/qtest/flexcomm-i2c-test.c | 169 ++++++++++++++++++++++++++++++++
+ tests/qtest/meson.build         |   2 +-
+ 2 files changed, 170 insertions(+), 1 deletion(-)
+ create mode 100644 tests/qtest/flexcomm-i2c-test.c
 
-diff --git a/include/hw/qdev-clock.h b/include/hw/qdev-clock.h
-index ffa0f7ba09..19ed34ae88 100644
---- a/include/hw/qdev-clock.h
-+++ b/include/hw/qdev-clock.h
-@@ -15,6 +15,7 @@
- #define QDEV_CLOCK_H
- 
- #include "hw/clock.h"
+diff --git a/tests/qtest/flexcomm-i2c-test.c b/tests/qtest/flexcomm-i2c-test.c
+new file mode 100644
+index 0000000000..30ab40e132
+--- /dev/null
++++ b/tests/qtest/flexcomm-i2c-test.c
+@@ -0,0 +1,169 @@
++/*
++ * Copyright (c) 2024 Google LLC.
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ *
++ * This work is licensed under the terms of the GNU GPL, version 2 or later.
++ * See the COPYING file in the top-level directory.
++ */
++
++#include "qemu/osdep.h"
++
++#include "qemu/config-file.h"
++#include "qemu/log.h"
++#include "qemu/module.h"
++#include "qapi/error.h"
++#include "qemu/sockets.h"
++#include "sysemu/sysemu.h"
++#include "qemu/main-loop.h"
++#include "qemu/option.h"
++#include "exec/memory.h"
++#include "hw/irq.h"
++#include "hw/qdev-properties.h"
 +#include "hw/qdev-core.h"
- 
- /**
-  * qdev_init_clock_in:
-@@ -161,4 +162,13 @@ typedef struct ClockPortInitElem ClockPortInitArray[];
-  */
- void qdev_init_clocks(DeviceState *dev, const ClockPortInitArray clocks);
- 
-+/**
-+ * qdev_get_clocklist:
-+ * @dev: the device to find clock for
-+ * @name: clock name
-+ *
-+ * Returns: a named clock list entry or NULL if the clock was not found
-+ */
-+NamedClockList *qdev_get_clocklist(DeviceState *dev, const char *name);
 +
- #endif /* QDEV_CLOCK_H */
-diff --git a/tests/qtest/libqtest-single.h b/tests/qtest/libqtest-single.h
-index c22037c8b2..51eb69ff74 100644
---- a/tests/qtest/libqtest-single.h
-+++ b/tests/qtest/libqtest-single.h
-@@ -408,4 +408,28 @@ static inline int64_t clock_step(int64_t step)
-     return qtest_clock_step(global_qtest, step);
- }
- 
-+/**
-+ * qtest_qdev_clock_in_get_hz:
-+ * @path: QOM path of a device.
-+ * @name: Clock name.
-+ *
-+ * Returns: device clock frequency in HZ
-+ */
-+static inline uint64_t dev_clock_in_get_hz(const char *path, const char *name)
++#include "hw/i2c/flexcomm_i2c.h"
++#include "hw/arm/svd/rt500.h"
++#include "hw/misc/i2c_tester.h"
++#include "reg-utils.h"
++
++#define PERIPH_ADDR (0x50)
++#define INVALID_ADDR (0x10)
++
++#define REG_ADDR 11
++#define REG_VALUE 0xAA
++
++#define FLEXCOMM_BASE RT500_FLEXCOMM0_BASE
++#define FLEXCOMM_I2C_BASE RT500_FLEXCOMM0_BASE
++#define DEVICE_NAME "/machine/soc/flexcomm0"
++
++struct TestState {
++    QTestState *qtest;
++};
++
++static void master_test(gconstpointer user_data)
 +{
-+    return qtest_dev_clock_in_get_hz(global_qtest, path, name);
++    struct TestState *t = (struct TestState *)user_data;
++    uint32_t tmp;
++
++    qtest_irq_intercept_out_named(t->qtest, DEVICE_NAME,
++                                  SYSBUS_DEVICE_GPIO_IRQ);
++
++    /* Select and lock I2C */
++    tmp = FLEXCOMM_PERSEL_I2C;
++    FIELD_DP32(tmp, FLEXCOMM_PSELID, LOCK, 1);
++    REG32_WRITE(FLEXCOMM, PSELID, tmp);
++
++    /* Enable master mode */
++    REG32_WRITE_FIELD(FLEXCOMM_I2C, CFG, MSTEN, 1);
++    g_assert(REG32_READ_FIELD(FLEXCOMM_I2C, CFG, MSTEN) == 1);
++
++    g_assert(REG32_READ_FIELD(FLEXCOMM_I2C, STAT, MSTPENDING) == 1);
++    g_assert(REG32_READ_FIELD(FLEXCOMM_I2C, STAT, MSTSTATE) ==
++             MSTSTATE_IDLE);
++
++    /* Enable interrupts */
++    REG32_WRITE_FIELD(FLEXCOMM_I2C, INTENSET, MSTPENDINGEN, 1);
++    g_assert_true(get_irq(0));
++
++    /* start for invalid address  */
++    REG32_WRITE(FLEXCOMM_I2C, MSTDAT, INVALID_ADDR);
++    REG32_WRITE_FIELD_NOUPDATE(FLEXCOMM_I2C, MSTCTL, MSTSTART, 1);
++    g_assert(REG32_READ_FIELD(FLEXCOMM_I2C, STAT, MSTSTATE) ==
++             MSTSTATE_NAKADR);
++    g_assert_true(get_irq(0));
++    REG32_WRITE_FIELD_NOUPDATE(FLEXCOMM_I2C, MSTCTL, MSTSTOP, 1);
++
++    /* write past the last register */
++    REG32_WRITE_FIELD(FLEXCOMM_I2C, MSTDAT, DATA, PERIPH_ADDR);
++    REG32_WRITE_FIELD_NOUPDATE(FLEXCOMM_I2C, MSTCTL, MSTSTART, 1);
++    g_assert_true(get_irq(0));
++    g_assert(REG32_READ_FIELD(FLEXCOMM_I2C, STAT, MSTSTATE) ==
++             MSTSTATE_TXRDY);
++    REG32_WRITE_FIELD(FLEXCOMM_I2C, MSTDAT, DATA, I2C_TESTER_NUM_REGS + 10);
++    REG32_WRITE_FIELD_NOUPDATE(FLEXCOMM_I2C, MSTCTL, MSTCONTINUE, 1);
++    g_assert_true(get_irq(0));
++    g_assert(REG32_READ_FIELD(FLEXCOMM_I2C, STAT, MSTSTATE) ==
++             MSTSTATE_TXRDY);
++    REG32_WRITE_FIELD_NOUPDATE(FLEXCOMM_I2C, MSTCTL, MSTCONTINUE, 1);
++    g_assert_true(get_irq(0));
++    g_assert(REG32_READ_FIELD(FLEXCOMM_I2C, STAT, MSTSTATE) ==
++             MSTSTATE_NAKDAT);
++    REG32_WRITE_FIELD_NOUPDATE(FLEXCOMM_I2C, MSTCTL, MSTSTOP, 1);
++
++    /* write value to register */
++    REG32_WRITE_FIELD(FLEXCOMM_I2C, MSTDAT, DATA, PERIPH_ADDR);
++    REG32_WRITE_FIELD_NOUPDATE(FLEXCOMM_I2C, MSTCTL, MSTSTART, 1);
++    g_assert_true(get_irq(0));
++    g_assert(REG32_READ_FIELD(FLEXCOMM_I2C, STAT, MSTSTATE) ==
++             MSTSTATE_TXRDY);
++    REG32_WRITE_FIELD(FLEXCOMM_I2C, MSTDAT, DATA, REG_ADDR);
++    REG32_WRITE_FIELD_NOUPDATE(FLEXCOMM_I2C, MSTCTL, MSTCONTINUE, 1);
++    g_assert_true(get_irq(0));
++    g_assert(REG32_READ_FIELD(FLEXCOMM_I2C, STAT, MSTSTATE) ==
++             MSTSTATE_TXRDY);
++    REG32_WRITE_FIELD(FLEXCOMM_I2C, MSTDAT, DATA, REG_VALUE);
++    REG32_WRITE_FIELD_NOUPDATE(FLEXCOMM_I2C, MSTCTL, MSTCONTINUE, 1);
++    g_assert_true(get_irq(0));
++    g_assert(REG32_READ_FIELD(FLEXCOMM_I2C, STAT, MSTSTATE) ==
++             MSTSTATE_TXRDY);
++    REG32_WRITE_FIELD_NOUPDATE(FLEXCOMM_I2C, MSTCTL, MSTSTOP, 1);
++    g_assert_true(get_irq(0));
++    g_assert(REG32_READ_FIELD(FLEXCOMM_I2C, STAT, MSTSTATE) ==
++             MSTSTATE_IDLE);
++
++    /* read value back from register */
++    REG32_WRITE_FIELD(FLEXCOMM_I2C, MSTDAT, DATA, PERIPH_ADDR);
++    REG32_WRITE_FIELD_NOUPDATE(FLEXCOMM_I2C, MSTCTL, MSTSTART, 1);
++    g_assert_true(get_irq(0));
++    g_assert(REG32_READ_FIELD(FLEXCOMM_I2C, STAT, MSTSTATE) ==
++             MSTSTATE_TXRDY);
++    REG32_WRITE_FIELD(FLEXCOMM_I2C, MSTDAT, DATA, REG_ADDR);
++    REG32_WRITE_FIELD_NOUPDATE(FLEXCOMM_I2C, MSTCTL, MSTCONTINUE, 1);
++    g_assert_true(get_irq(0));
++    g_assert(REG32_READ_FIELD(FLEXCOMM_I2C, STAT, MSTSTATE) ==
++             MSTSTATE_TXRDY);
++    REG32_WRITE_FIELD(FLEXCOMM_I2C, MSTDAT, DATA, (PERIPH_ADDR + 1));
++    REG32_WRITE_FIELD_NOUPDATE(FLEXCOMM_I2C, MSTCTL, MSTSTART, 1);
++    g_assert_true(get_irq(0));
++    g_assert(REG32_READ_FIELD(FLEXCOMM_I2C, STAT, MSTSTATE) ==
++             MSTSTATE_RXRDY);
++    g_assert_cmpuint(REG32_READ_FIELD(FLEXCOMM_I2C, MSTDAT, DATA), ==,
++                     REG_VALUE);
++    REG32_WRITE_FIELD_NOUPDATE(FLEXCOMM_I2C, MSTCTL, MSTSTOP, 1);
++
++    /*
++     * Check that the master ended the transaction (i.e. i2c_end_transfer was
++     * called). If the master does not properly end the transaction this would
++     * be seen as a restart and it would not be NACKed.
++     */
++    REG32_WRITE_FIELD(FLEXCOMM_I2C, MSTDAT, DATA, INVALID_ADDR);
++    REG32_WRITE_FIELD_NOUPDATE(FLEXCOMM_I2C, MSTCTL, MSTSTART, 1);
++
++    g_assert(REG32_READ_FIELD(FLEXCOMM_I2C, STAT, MSTSTATE) ==
++             MSTSTATE_NAKADR);
++    g_assert_true(get_irq(0));
++    REG32_WRITE_FIELD_NOUPDATE(FLEXCOMM_I2C, MSTCTL, MSTSTOP, 1);
++
++    /* Disable interrupts */
++    REG32_WRITE_FIELD(FLEXCOMM_I2C, INTENCLR, MSTPENDINGCLR, 1);
++    g_assert_false(get_irq(0));
 +}
 +
-+/**
-+ * qtest_qdev_clock_out_get_hz:
-+ * @path: QOM path of a device.
-+ * @name: Clock name.
-+ *
-+ * Returns: device clock frequency in HZ
-+ */
-+static inline uint64_t dev_clock_out_get_hz(const char *path, const char *name)
++int main(int argc, char **argv)
 +{
-+    return qtest_dev_clock_out_get_hz(global_qtest, path, name);
-+}
-+
- #endif
-diff --git a/tests/qtest/libqtest.h b/tests/qtest/libqtest.h
-index 9057d019c6..d1069e233a 100644
---- a/tests/qtest/libqtest.h
-+++ b/tests/qtest/libqtest.h
-@@ -1161,4 +1161,26 @@ bool have_qemu_img(void);
-  */
- bool mkimg(const char *file, const char *fmt, unsigned size_mb);
- 
-+/**
-+ * qtest_qdev_clock_in_get_hz:
-+ * @s: #QTestState instance to operate on.
-+ * @path: QOM path of a device.
-+ * @name: Clock name.
-+ *
-+ * Returns: device clock frequency in HZ
-+ */
-+uint64_t qtest_dev_clock_in_get_hz(QTestState *s, const char *path,
-+                                   const char *name);
-+
-+/**
-+ * qtest_qdev_clock_out_get_hz:
-+ * @s: #QTestState instance to operate on.
-+ * @path: QOM path of a device.
-+ * @name: Clock name.
-+ *
-+ * Returns: device clock frequency in HZ
-+ */
-+uint64_t qtest_dev_clock_out_get_hz(QTestState *s, const char *path,
-+                                    const char *name);
-+
- #endif
-diff --git a/hw/core/qdev-clock.c b/hw/core/qdev-clock.c
-index 82799577f3..3c9e2d5d73 100644
---- a/hw/core/qdev-clock.c
-+++ b/hw/core/qdev-clock.c
-@@ -144,7 +144,7 @@ void qdev_init_clocks(DeviceState *dev, const ClockPortInitArray clocks)
-     }
- }
- 
--static NamedClockList *qdev_get_clocklist(DeviceState *dev, const char *name)
-+NamedClockList *qdev_get_clocklist(DeviceState *dev, const char *name)
- {
-     NamedClockList *ncl;
- 
-diff --git a/system/qtest.c b/system/qtest.c
-index da46388a6e..0ce4dd7898 100644
---- a/system/qtest.c
-+++ b/system/qtest.c
-@@ -19,6 +19,7 @@
- #include "exec/ioport.h"
- #include "exec/memory.h"
- #include "exec/tswap.h"
-+#include "hw/qdev-clock.h"
- #include "hw/qdev-core.h"
- #include "hw/irq.h"
- #include "hw/core/cpu.h"
-@@ -245,6 +246,20 @@ static void *qtest_server_send_opaque;
-  *
-  * Forcibly set the given interrupt pin to the given level.
-  *
-+ * Device clock frequency
-+ * """"""""""""""""""""""
-+ *
-+ * .. code-block:: none
-+ *
-+ *  > qdev_clock_out_get_hz QOM-PATH CLOCK-NAME
-+ *  < OK HZ
-+ *
-+ * .. code-block:: none
-+ *
-+ *  > qdev_clock_in_get_hz QOM-PATH CLOCK-NAME
-+ *  < OK HZ
-+ *
-+ * where HZ is the clock frequency in hertz.
-  */
- 
- static int hex2nib(char ch)
-@@ -789,6 +804,42 @@ static void qtest_process_command(CharBackend *chr, gchar **words)
-         qtest_send_prefix(chr);
-         qtest_sendf(chr, "OK %"PRIi64"\n",
-                     (int64_t)qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL));
-+    } else if (strcmp(words[0], "qdev_clock_in_get_hz") == 0 ||
-+               strcmp(words[0], "qdev_clock_out_get_hz") == 0) {
-+        bool is_outbound = words[0][11] == 'o';
-+        DeviceState *dev;
-+        NamedClockList *ncl;
-+
-+        g_assert(words[1]);
-+        g_assert(words[2]);
-+
-+        dev = DEVICE(object_resolve_path(words[1], NULL));
-+        if (!dev) {
-+            qtest_send_prefix(chr);
-+            qtest_send(chr, "FAIL Unknown device\n");
-+            return;
-+        }
-+
-+        ncl = qdev_get_clocklist(dev, words[2]);
-+        if (!ncl) {
-+            qtest_send_prefix(chr);
-+            qtest_send(chr, "FAIL Unknown clock\n");
-+            return;
-+        }
-+
-+        if (is_outbound && !ncl->output) {
-+            qtest_send_prefix(chr);
-+            qtest_send(chr, "FAIL Not an output clock\n");
-+            return;
-+        }
-+
-+        if (!is_outbound && ncl->output) {
-+            qtest_send_prefix(chr);
-+            qtest_send(chr, "FAIL Not an input clock\n");
-+            return;
-+        }
-+
-+        qtest_sendf(chr, "OK %u\n", clock_get_hz(ncl->clock));
-     } else if (process_command_cb && process_command_cb(chr, words)) {
-         /* Command got consumed by the callback handler */
-     } else {
-diff --git a/tests/qtest/libqtest.c b/tests/qtest/libqtest.c
-index 62ba49d5d8..68291ce721 100644
---- a/tests/qtest/libqtest.c
-+++ b/tests/qtest/libqtest.c
-@@ -1979,3 +1979,32 @@ bool mkimg(const char *file, const char *fmt, unsigned size_mb)
- 
-     return ret && !err;
- }
-+
-+static uint64_t qtest_dev_clock_get_hz(QTestState *s, const char *path,
-+                                       const char *name, bool out)
-+{
-+    gchar **args;
 +    int ret;
-+    uint64_t value;
++    struct TestState test;
 +
-+    qtest_sendf(s, "qdev_clock_%s_get_hz %s %s\n", out ? "out" : "in",
-+                path, name);
-+    args = qtest_rsp_args(s, 2);
-+    ret = qemu_strtou64(args[1], NULL, 0, &value);
-+    g_assert(!ret);
-+    g_strfreev(args);
++    module_call_init(MODULE_INIT_QOM);
++    g_test_init(&argc, &argv, NULL);
 +
-+    return value;
++    qtest_add_data_func("/flexcomm-i2c/master", &test, master_test);
++
++    test.qtest = qtest_start("-M rt595-evk "
++                          "-device i2c-tester,address=0x50,bus=/flexcomm0/i2c");
++    ret = g_test_run();
++    qtest_end();
++
++    return ret;
 +}
-+
-+uint64_t qtest_dev_clock_out_get_hz(QTestState *s, const char *path,
-+                                    const char *name)
-+{
-+    return qtest_dev_clock_get_hz(s, path, name, true);
-+}
-+
-+uint64_t qtest_dev_clock_in_get_hz(QTestState *s, const char *path,
-+                                   const char *name)
-+{
-+    return qtest_dev_clock_get_hz(s, path, name, false);
-+}
+diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
+index 93d1f781bc..df69c1cfbf 100644
+--- a/tests/qtest/meson.build
++++ b/tests/qtest/meson.build
+@@ -229,7 +229,7 @@ qtests_arm = \
+   (config_all_devices.has_key('CONFIG_FSI_APB2OPB_ASPEED') ? ['aspeed_fsi-test'] : []) + \
+   (config_all_devices.has_key('CONFIG_STM32L4X5_SOC') and
+    config_all_devices.has_key('CONFIG_DM163')? ['dm163-test'] : []) + \
+-  (config_all_devices.has_key('CONFIG_FLEXCOMM') ? ['flexcomm-test', 'flexcomm-usart-test'] : []) + \
++  (config_all_devices.has_key('CONFIG_FLEXCOMM') ? ['flexcomm-test', 'flexcomm-usart-test', 'flexcomm-i2c-test'] : []) + \
+   ['arm-cpu-features',
+    'boot-serial-test']
+ 
 -- 
 2.46.0.295.g3b9ea8a38a-goog
 

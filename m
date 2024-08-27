@@ -1,489 +1,429 @@
-Received: by 2002:a17:504:26c2:b0:1be9:327d:8ee3 with SMTP id j2csp20517nji;
-        Mon, 26 Aug 2024 23:52:54 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUf9K+fEMWbv4VzRmlt1LmOi9mOPMENp4quKb4qaL9cxSwaN37CaiL646lcCcttELLYqItHIAeHn6mg5g==@linaro.org
-X-Google-Smtp-Source: AGHT+IH6AmJnmoRATakq93XW7sgh1igSfg1yFuoM6jdSjPbH8DOrtHd6RqpaTKcv5gXa0sRaStTE
-X-Received: by 2002:a05:6102:512a:b0:493:bedd:1da4 with SMTP id ada2fe7eead31-49a3bba28a8mr2173826137.7.1724741574023;
-        Mon, 26 Aug 2024 23:52:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1724741574; cv=none;
+Received: by 2002:a17:504:26c2:b0:1be9:327d:8ee3 with SMTP id j2csp80374nji;
+        Tue, 27 Aug 2024 04:11:38 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCWMpW3+k5p+2ZtWQN2Ifbed1gIXpzPjWj/Kd1hH3Aj+Nq7B5VoWBpPNNSb3PP56mjin9k0jwrsSe/FN1g==@linaro.org
+X-Google-Smtp-Source: AGHT+IHn8ytnO9hnhvrrs2FjAlHa87KNgJPMEn/RQ1a6jpcnch3mzRvlVNtzqVqRoqUEK/jZMhKA
+X-Received: by 2002:a05:6808:14d0:b0:3db:1646:e93a with SMTP id 5614622812f47-3de2a909cc4mr15465246b6e.47.1724757098189;
+        Tue, 27 Aug 2024 04:11:38 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1724757098; cv=pass;
         d=google.com; s=arc-20160816;
-        b=bVTzgPR4NRE2QiYtu4yTAl3Tg9KZ5q9LSaOToyE8X1twXoFs2zMFM5ZsPF5PcRNj01
-         Ifuv42gSW6c72tpv9n5Jc2fjWZgAM6xGA+zBgJJoywWhIDTHh9BSHkAy3NYcvdLhvmc9
-         uTzul+4VzlQA6mRTlxIVy3uqoTBgo9vyDW85GUSfvfpzsVA2RJ7GznNw8okxG56VB3V2
-         vJ0gYGhnl7o/zTqTM73yd+jEzERsDRdCAVMX3Mmn1FaaGRlYvrTCekCliHI5Fvu5HADA
-         spB/jO/I0s83JycsOLApUPKpVFb4Ze2Eh5qe8Pk9q/qhn6ewaYJ6jDmynCGL5d1W7yMI
-         xlFg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
-         :references:mime-version:in-reply-to:date:dkim-signature;
-        bh=nzZ2KnsiXCcZkyOJnrOVWGo3C4OfA+YJL0LECFuxCWc=;
-        fh=2mssAqYKJuMcD/Ya5YUzhxP7uPixmdZ7O75Bi0gtEhM=;
-        b=AGK5wOLFnoIqgX+PJ2e1G6LnqbZSuD1eEUW90beS7nla9ft4czuNvokaQCLTCgX+jX
-         atN1AD5NiRpqooEioNo+knvZwYvjMw2yVBayPmFyPaSfj4C36INdxlsyrX0kINrb3Ud8
-         sL0lbb87/+Eem0JEEwLWlL4W4o5/tEsv0tnVfmPOtetPLyc63zvl+1LxhT7FkcXVkPHn
-         2R28tcaiMET+HIt+l+OVZvban3didXRZvzpQDZ2Dj3/VsYVDxVR+sHY6rGw/7QCJHXgu
-         bQIDxBpJMsaAlbekkLDCeBYSLyx43XkwZOEJxgu+7FPB3pdgqHIeINESiblCtJFoZgdT
-         osdw==;
+        b=boTZX2q5Ud7thH/A3TkR4j4yMI0FHvoNEbyMW+shuigSlbPbMf9eUNYQDTGZ85xOFV
+         fZp6teXgb2UNEfUHvYtnTkGjZ22/LBS4V89ir11hztlcPEHEncegVIKRe1vS3K8Qs5ue
+         p/W9siTYl17IEUUtzQ+VBBKrkb7BeMx8nflcXoYRtAR11U2qG/ZwYPOhEriGH7hwOH2w
+         +sV9n5NbhlNv/qdPOhKUdUfGHRBGgGrgGdbVLZES3uUvCgH7b4ofUpjt3+2IPyR03zJC
+         RX/jmlQFopfTOHY5F+iSV3gHJHhtS6GNLrVsE7sRCA54wZDDfzYHPE9X1e5Fd0Pq/dKr
+         5Hmw==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:list-unsubscribe:list-subscribe:list-id:precedence
+         :user-agent:message-id:date:references:in-reply-to:subject:cc:to
+         :from:dkim-signature;
+        bh=Re4f/NsbK/0wQQSb4yTGyo3qgp+at0K2+UOzM03eXno=;
+        fh=zQnGKxJilpmvmxx9mhM7ucsW7tbxjG62FVqiIRJ5AyA=;
+        b=t0FDh4hYlD7Su5rMzke6P0QKeIqhjTrEzQDQR0UfjrxqGQtcLIeDoys4zS2SGs8T1m
+         cvw5hJulLrSSgVl1FStkJ9bZh8jpfJ4gwSICPdSrSr8AFHg3w89gEAe1XezGT93Iqn4M
+         wKOxbXgPzCs3TASml1gGWtYwDO9GAPlsP5sLTGR59JJu027DrZPxR6MpsSjIcQftfNHq
+         PGmggvRJGK0xd3L9h3BKZClZMtlyczSsRORsQk0aYSN0UdKGT0KEhTL/RHyuFJUfVPB2
+         qVMR9Q2zwqyq9sc77S3M4RNwlj/nNRwvZE1fxF/yyyENrCwAbTCaKiTuv8JTNoUOKwBN
+         xX+w==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=lH1ptgUa;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7a67f34912dsi1223769485a.173.2024.08.26.23.52.53
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="UeBL/4Jt";
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of linux-kernel+bounces-303157-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) smtp.mailfrom="linux-kernel+bounces-303157-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <linux-kernel+bounces-303157-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sy.mirrors.kernel.org (sy.mirrors.kernel.org. [147.75.48.161])
+        by mx.google.com with ESMTPS id 41be03b00d2f7-7cd9ad88c2csi1585282a12.761.2024.08.27.04.11.37
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 26 Aug 2024 23:52:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 27 Aug 2024 04:11:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of linux-kernel+bounces-303157-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) client-ip=147.75.48.161;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=lH1ptgUa;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
-       dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sipyV-0005EQ-1I; Tue, 27 Aug 2024 02:46:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from
- <3K3bNZgUKCoo7o9w3u22uzs.q204s08-rs9sz121u18.25u@flex--tavip.bounces.google.com>)
- id 1sipyM-0004Vg-74
- for qemu-devel@nongnu.org; Tue, 27 Aug 2024 02:46:34 -0400
-Received: from mail-pj1-x104a.google.com ([2607:f8b0:4864:20::104a])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from
- <3K3bNZgUKCoo7o9w3u22uzs.q204s08-rs9sz121u18.25u@flex--tavip.bounces.google.com>)
- id 1sipyH-0006Aq-Bv
- for qemu-devel@nongnu.org; Tue, 27 Aug 2024 02:46:33 -0400
-Received: by mail-pj1-x104a.google.com with SMTP id
- 98e67ed59e1d1-2d3baf38457so5476091a91.0
- for <qemu-devel@nongnu.org>; Mon, 26 Aug 2024 23:46:04 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1724741164; x=1725345964; darn=nongnu.org;
- h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
- :date:from:to:cc:subject:date:message-id:reply-to;
- bh=nzZ2KnsiXCcZkyOJnrOVWGo3C4OfA+YJL0LECFuxCWc=;
- b=lH1ptgUatpap0wK6CW0JEo8vE+gs25Zc6bz+KUdLbCGeAcNek3R84heutXWNXHmJmI
- 6lL4TzXlzhiz9j/rrdixVl3gCS8aq3onExkOS2zhMbz+CNWsLGMLtgNgs5Z9TwIJvpmx
- 5/e2CxlZ5ZA1ELNigDT3d3AZvEAsOQnr22UwYutNJj08ywE+JT1QmZZX0BQhkcjmQrIB
- TDn/sLSAgg8Ck2ZBcleZ7EWJwe6tflqnA51pdwE//MYyNjYQ4NQ7BxPzc9DU6V534UrR
- USBFEZhEAFLG7+T8YN+zqCaShSW7ZNbreW8zWafuicJhKhnHY+7YqW9o/CFzdVVo48QV
- WDRw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1724741164; x=1725345964;
- h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
- :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=nzZ2KnsiXCcZkyOJnrOVWGo3C4OfA+YJL0LECFuxCWc=;
- b=juoOfbAdA2lmqnQ0So4ULG7jb83+AcqtUzc5asCNirLFaQVC2S8/eVj7z3kMAJkZSZ
- qDopiZe+vkW0c6M4P0S/lI79trhDl9EJczj7LuqUqEhsYUcNwhOfiOEE7BecYgqx9SN1
- p9UgvrnsE1uMXI9UStFaxtNMZd017oUX4DGjivexCyt3WGlFfnGC4aKjwPNBVPIOLTHH
- MNmF9B/QoWjS2YhDRQsc1/NcrF82u8rZ0GcIbqyCkQbJuqhp8C+sog1tCHu4rZJ+2Aa2
- wYwPqWpp0jTfnqoUgHQwCtpFfIMD0FGP1BuzL1SN8fu5gqd+RWQLCtvyOwLH3mhi3LDp
- 7PSA==
-X-Gm-Message-State: AOJu0YxgnUAixHRiRaXD6ai1gheEnSBbKp8m643nbeJqYzJWGXd1SphC
- cC8k3o7JUtPgw602c/OsmXtxgBjUgiUFicPDlk4Nidh0sBNcM2RTU+XbdOfAQ1E2LzTDaOiqPM4
- aPlXs+2jRRjQV1H0oLH1NYRA+gghobP2ptgiETQGuhUpx3YUtyPzgGp3NIrxIdFvTafFkYPeZmR
- M8hGwlls2vYgYMxI6/Iwee70VuFw==
-X-Received: from warp10.c.googlers.com ([fda3:e722:ac3:cc00:24:72f4:c0a8:750])
- (user=tavip job=sendgmr) by 2002:a17:90b:1e11:b0:2d1:b718:fc5f
- with SMTP id
- 98e67ed59e1d1-2d8249ded2emr34546a91.1.1724741163229; Mon, 26 Aug 2024
- 23:46:03 -0700 (PDT)
-Date: Mon, 26 Aug 2024 23:45:21 -0700
-In-Reply-To: <20240827064529.1246786-1-tavip@google.com>
-Mime-Version: 1.0
-References: <20240827064529.1246786-1-tavip@google.com>
-X-Mailer: git-send-email 2.46.0.295.g3b9ea8a38a-goog
-Message-ID: <20240827064529.1246786-18-tavip@google.com>
-Subject: [RFC PATCH v3 17/24] tests/qtest: add flexcomm usart tests
-From: Octavian Purdila <tavip@google.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, stefanst@google.com, pbonzini@redhat.com, 
- peter.maydell@linaro.org, marcandre.lureau@redhat.com, berrange@redhat.com, 
- eduardo@habkost.net, luc@lmichel.fr, damien.hedde@dahe.fr, 
- alistair@alistair23.me, thuth@redhat.com, philmd@linaro.org, jsnow@redhat.com, 
- crosa@redhat.com, lvivier@redhat.com
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::104a;
- envelope-from=3K3bNZgUKCoo7o9w3u22uzs.q204s08-rs9sz121u18.25u@flex--tavip.bounces.google.com;
- helo=mail-pj1-x104a.google.com
-X-Spam_score_int: -95
-X-Spam_score: -9.6
-X-Spam_bar: ---------
-X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: X5wjjoDxS/5p
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="UeBL/4Jt";
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of linux-kernel+bounces-303157-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) smtp.mailfrom="linux-kernel+bounces-303157-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by sy.mirrors.kernel.org (Postfix) with ESMTPS id D26F4B20C0C
+	for <alex.bennee@linaro.org>; Tue, 27 Aug 2024 11:11:35 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 110FF19AD48;
+	Tue, 27 Aug 2024 11:11:31 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="UeBL/4Jt"
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 59AC4155CBD
+	for <linux-kernel@vger.kernel.org>; Tue, 27 Aug 2024 11:11:28 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.133.124
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1724757090; cv=none; b=AgdprgLPMShr6rkMYJ40HbTosctwpRPPXrVaWaMuR92nMWxFn7Ms/CbP2T1kM+ty0tXF4giPhEK92jWxCV/2dqAjWaBfbin5WaTlvSjJoCXQOsg08erONOM3olQ5TDFKVttW+Vny9PHy+qJQrGlrcKqlaljP97cvDE7U0tAU4z8=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1724757090; c=relaxed/simple;
+	bh=UIHnJU/6EE9a4g218tsU9RGW5S7Z7WrRB74LsX5ogj4=;
+	h=From:To:Cc:Subject:In-Reply-To:References:Date:Message-ID:
+	 MIME-Version:Content-Type; b=L3ne8KMLffSArOkNA89s5oUH/ayUkSXzzVtJ0nO4PzRXPBpjuc6U+Wt0TZBCj9rwU7zEanAOeNWm4+/EoLUq9oJ1XuFq9OaOJAS6sv7RbB3peeanPinA6LuTTyq10LZwXWBEttP+ivdLZS83zSY4zN+YUAuuC+g3N3kNVoNyar0=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=UeBL/4Jt; arc=none smtp.client-ip=170.10.133.124
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1724757087;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=Re4f/NsbK/0wQQSb4yTGyo3qgp+at0K2+UOzM03eXno=;
+	b=UeBL/4Jt7Y1LW+BXjzpI1AZPRNeOs2rG0bcjkdMz60Z82+fqh5OSIRjCDU1KB2BlhQvN1t
+	/53Cxgn0YBXsLURPJyzSKPFdUUJy3XlzJ387mp7REdZy1B04/jJ+kNhX17rSsMWyjZ5kxk
+	Vpk07QyDoemSnKNcCzGar1Hk/jo2WOU=
+Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-378-J7FnludzPWiImjwD7HQ4Nw-1; Tue,
+ 27 Aug 2024 07:11:20 -0400
+X-MC-Unique: J7FnludzPWiImjwD7HQ4Nw-1
+Received: from mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.40])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id D6E751955BF4;
+	Tue, 27 Aug 2024 11:11:15 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.39.192.112])
+	by mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 4F7FB19560A3;
+	Tue, 27 Aug 2024 11:11:14 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 1B94A21E6A28; Tue, 27 Aug 2024 13:11:12 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+Cc: "Michael S. Tsirkin" <mst@redhat.com>,  Ani Sinha <anisinha@redhat.com>,
+  Dongjiu Geng <gengdongjiu1@gmail.com>,  Eric Blake <eblake@redhat.com>,
+  Igor Mammedov <imammedo@redhat.com>,  Michael Roth
+ <michael.roth@amd.com>,  Paolo Bonzini <pbonzini@redhat.com>,  Peter
+ Maydell <peter.maydell@linaro.org>,  Shannon Zhao
+ <shannon.zhaosl@gmail.com>,  linux-kernel@vger.kernel.org,
+  qemu-arm@nongnu.org,  qemu-devel@nongnu.org,  Jonathan Cameron
+ <Jonathan.Cameron@huawei.com>,  Shiju Jose <shiju.jose@huawei.com>
+Subject: Re: [PATCH v9 08/12] qapi/acpi-hest: add an interface to do generic
+ CPER error injection
+In-Reply-To: <834d690eaf748800c9b3a7afd59d7cd31e706abd.1724556967.git.mchehab+huawei@kernel.org>
+	(Mauro Carvalho Chehab's message of "Sun, 25 Aug 2024 05:46:03 +0200")
+References: <cover.1724556967.git.mchehab+huawei@kernel.org>
+	<834d690eaf748800c9b3a7afd59d7cd31e706abd.1724556967.git.mchehab+huawei@kernel.org>
+Date: Tue, 27 Aug 2024 13:11:12 +0200
+Message-ID: <8734mqkypb.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13)
+Precedence: bulk
+X-Mailing-List: linux-kernel@vger.kernel.org
+List-Id: <linux-kernel.vger.kernel.org>
+List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
+MIME-Version: 1.0
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.40
+X-TUID: vodiUp/+Lozr
 
-Add flexcomm usart polling and irq unit tests.
+Mauro Carvalho Chehab <mchehab+huawei@kernel.org> writes:
 
-Signed-off-by: Octavian Purdila <tavip@google.com>
----
- tests/qtest/flexcomm-usart-test.c | 314 ++++++++++++++++++++++++++++++
- tests/qtest/meson.build           |   3 +-
- 2 files changed, 316 insertions(+), 1 deletion(-)
- create mode 100644 tests/qtest/flexcomm-usart-test.c
+> Creates a QMP command to be used for generic ACPI APEI hardware error
+> injection (HEST) via GHESv2, and add support for it for ARM guests.
+>
+> Error injection uses ACPI_HEST_SRC_ID_QMP source ID to be platform
+> independent. This is mapped at arch virt bindings, depending on the
+> types supported by QEMU and by the BIOS. So, on ARM, this is supported
+> via ACPI_GHES_NOTIFY_GPIO notification type.
+>
+> This patch is co-authored:
+>     - original ghes logic to inject a simple ARM record by Shiju Jose;
+>     - generic logic to handle block addresses by Jonathan Cameron;
+>     - generic GHESv2 error inject by Mauro Carvalho Chehab;
+>
+> Co-authored-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+> Co-authored-by: Shiju Jose <shiju.jose@huawei.com>
+> Co-authored-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+> Signed-off-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+> Signed-off-by: Shiju Jose <shiju.jose@huawei.com>
+> Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+> ---
+>  MAINTAINERS              |  7 +++++++
+>  hw/acpi/Kconfig          |  5 +++++
+>  hw/acpi/ghes_cper.c      | 32 ++++++++++++++++++++++++++++++++
+>  hw/acpi/ghes_cper_stub.c | 19 +++++++++++++++++++
+>  hw/acpi/meson.build      |  2 ++
+>  hw/arm/Kconfig           |  5 +++++
+>  hw/arm/virt-acpi-build.c |  1 +
+>  include/hw/acpi/ghes.h   |  4 ++++
+>  include/hw/arm/virt.h    |  2 ++
+>  qapi/acpi-hest.json      | 36 ++++++++++++++++++++++++++++++++++++
+>  qapi/meson.build         |  1 +
+>  qapi/qapi-schema.json    |  1 +
+>  12 files changed, 115 insertions(+)
+>  create mode 100644 hw/acpi/ghes_cper.c
+>  create mode 100644 hw/acpi/ghes_cper_stub.c
+>  create mode 100644 qapi/acpi-hest.json
+>
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 3584d6a6c6da..1d8091818899 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -2077,6 +2077,13 @@ F: hw/acpi/ghes.c
+>  F: include/hw/acpi/ghes.h
+>  F: docs/specs/acpi_hest_ghes.rst
+>  
+> +ACPI/HEST/GHES/ARM processor CPER
+> +R: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+> +S: Maintained
+> +F: hw/arm/ghes_cper.c
+> +F: hw/acpi/ghes_cper_stub.c
+> +F: qapi/acpi-hest.json
+> +
+>  ppc4xx
+>  L: qemu-ppc@nongnu.org
+>  S: Orphan
+> diff --git a/hw/acpi/Kconfig b/hw/acpi/Kconfig
+> index e07d3204eb36..73ffbb82c150 100644
+> --- a/hw/acpi/Kconfig
+> +++ b/hw/acpi/Kconfig
+> @@ -51,6 +51,11 @@ config ACPI_APEI
+>      bool
+>      depends on ACPI
+>  
+> +config GHES_CPER
+> +    bool
+> +    depends on ACPI_APEI
+> +    default y
+> +
+>  config ACPI_PCI
+>      bool
+>      depends on ACPI && PCI
+> diff --git a/hw/acpi/ghes_cper.c b/hw/acpi/ghes_cper.c
+> new file mode 100644
+> index 000000000000..a10a5e7ab29b
+> --- /dev/null
+> +++ b/hw/acpi/ghes_cper.c
+> @@ -0,0 +1,32 @@
+> +/*
+> + * CPER payload parser for error injection
+> + *
+> + * Copyright(C) 2024 Huawei LTD.
+> + *
+> + * This code is licensed under the GPL version 2 or later. See the
+> + * COPYING file in the top-level directory.
+> + *
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +
+> +#include "qemu/base64.h"
+> +#include "qemu/error-report.h"
+> +#include "qemu/uuid.h"
+> +#include "qapi/qapi-commands-acpi-hest.h"
+> +#include "hw/acpi/ghes.h"
+> +
+> +void qmp_ghes_cper(const char *qmp_cper, Error **errp)
+> +{
+> +
+> +    uint8_t *cper;
+> +    size_t  len;
+> +
+> +    cper = qbase64_decode(qmp_cper, -1, &len, errp);
+> +    if (!cper) {
+> +        error_setg(errp, "missing GHES CPER payload");
+> +        return;
+> +    }
+> +
+> +    ghes_record_cper_errors(cper, len, ACPI_HEST_SRC_ID_QMP, errp);
+> +}
+> diff --git a/hw/acpi/ghes_cper_stub.c b/hw/acpi/ghes_cper_stub.c
+> new file mode 100644
+> index 000000000000..36138c462ac9
+> --- /dev/null
+> +++ b/hw/acpi/ghes_cper_stub.c
+> @@ -0,0 +1,19 @@
+> +/*
+> + * Stub interface for CPER payload parser for error injection
+> + *
+> + * Copyright(C) 2024 Huawei LTD.
+> + *
+> + * This code is licensed under the GPL version 2 or later. See the
+> + * COPYING file in the top-level directory.
+> + *
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "qapi/error.h"
+> +#include "qapi/qapi-commands-acpi-hest.h"
+> +#include "hw/acpi/ghes.h"
+> +
+> +void qmp_ghes_cper(const char *cper, Error **errp)
+> +{
+> +    error_setg(errp, "GHES QMP error inject is not compiled in");
+> +}
+> diff --git a/hw/acpi/meson.build b/hw/acpi/meson.build
+> index fa5c07db9068..6cbf430eb66d 100644
+> --- a/hw/acpi/meson.build
+> +++ b/hw/acpi/meson.build
+> @@ -34,4 +34,6 @@ endif
+>  system_ss.add(when: 'CONFIG_ACPI', if_false: files('acpi-stub.c', 'aml-build-stub.c', 'ghes-stub.c', 'acpi_interface.c'))
+>  system_ss.add(when: 'CONFIG_ACPI_PCI_BRIDGE', if_false: files('pci-bridge-stub.c'))
+>  system_ss.add_all(when: 'CONFIG_ACPI', if_true: acpi_ss)
+> +system_ss.add(when: 'CONFIG_GHES_CPER', if_true: files('ghes_cper.c'))
+> +system_ss.add(when: 'CONFIG_GHES_CPER', if_false: files('ghes_cper_stub.c'))
+>  system_ss.add(files('acpi-qmp-cmds.c'))
+> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+> index 1ad60da7aa2d..bed6ba27d715 100644
+> --- a/hw/arm/Kconfig
+> +++ b/hw/arm/Kconfig
+> @@ -712,3 +712,8 @@ config ARMSSE
+>      select UNIMP
+>      select SSE_COUNTER
+>      select SSE_TIMER
+> +
+> +config GHES_CPER
+> +    bool
+> +    depends on ARM
+> +    default y if AARCH64
+> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> index 9c36da3c831f..a6b03b16d922 100644
+> --- a/hw/arm/virt-acpi-build.c
+> +++ b/hw/arm/virt-acpi-build.c
+> @@ -893,6 +893,7 @@ static void acpi_align_size(GArray *blob, unsigned align)
+>  
+>  static const uint16_t hest_ghes_notify[] = {
+>      [ARM_ACPI_HEST_SRC_ID_SEA] = ACPI_GHES_NOTIFY_SEA,
+> +    [ARM_ACPI_HEST_SRC_ID_GPIO] = ACPI_GHES_NOTIFY_GPIO,
+>  };
+>  
+>  static
+> diff --git a/include/hw/acpi/ghes.h b/include/hw/acpi/ghes.h
+> index b1ec9795270f..ea6b33e133d6 100644
+> --- a/include/hw/acpi/ghes.h
+> +++ b/include/hw/acpi/ghes.h
+> @@ -66,6 +66,10 @@ typedef struct AcpiGhesState {
+>      bool present; /* True if GHES is present at all on this board */
+>  } AcpiGhesState;
+>  
+> +
+> +/* Source ID associated with qapi/acpi-hest.json QMP error injection */
+> +#define ACPI_HEST_SRC_ID_QMP   0
+> +
+>  void acpi_build_hest(GArray *table_data, GArray *hardware_errors,
+>                       BIOSLinker *linker,
+>                       const uint16_t * const notify,
+> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+> index 1c682d43fdac..8b042053dfa1 100644
+> --- a/include/hw/arm/virt.h
+> +++ b/include/hw/arm/virt.h
+> @@ -33,6 +33,7 @@
+>  #include "exec/hwaddr.h"
+>  #include "qemu/notify.h"
+>  #include "hw/boards.h"
+> +#include "hw/acpi/ghes.h"
+>  #include "hw/arm/boot.h"
+>  #include "hw/arm/bsa.h"
+>  #include "hw/block/flash.h"
+> @@ -194,6 +195,7 @@ bool virt_is_acpi_enabled(VirtMachineState *vms);
+>   * ID numbers used to fill HEST source ID field
+>   */
+>  enum {
+> +    ARM_ACPI_HEST_SRC_ID_GPIO = ACPI_HEST_SRC_ID_QMP,
+>      ARM_ACPI_HEST_SRC_ID_SEA,
+>  };
+>  
+> diff --git a/qapi/acpi-hest.json b/qapi/acpi-hest.json
+> new file mode 100644
+> index 000000000000..0255695c95ad
+> --- /dev/null
+> +++ b/qapi/acpi-hest.json
+> @@ -0,0 +1,36 @@
+> +# -*- Mode: Python -*-
+> +# vim: filetype=python
+> +
+> +##
+> +# = GHESv2 CPER Error Injection
 
-diff --git a/tests/qtest/flexcomm-usart-test.c b/tests/qtest/flexcomm-usart-test.c
-new file mode 100644
-index 0000000000..cb6b3c24b9
---- /dev/null
-+++ b/tests/qtest/flexcomm-usart-test.c
-@@ -0,0 +1,314 @@
-+/*
-+ * Copyright (C) 2024 Google LLC
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or later.
-+ * See the COPYING file in the top-level directory.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include <glib/gstdio.h>
-+
-+#include "io/channel-socket.h"
-+#include "qemu/config-file.h"
-+#include "qemu/log.h"
-+#include "qemu/module.h"
-+#include "qapi/error.h"
-+#include "qemu/sockets.h"
-+#include "sysemu/sysemu.h"
-+#include "qemu/main-loop.h"
-+#include "qemu/option.h"
-+#include "exec/memory.h"
-+#include "hw/irq.h"
-+#include "hw/qdev-properties.h"
-+
-+#include "hw/misc/flexcomm.h"
-+#include "hw/arm/svd/rt500.h"
-+#include "reg-utils.h"
-+
-+#define FLEXCOMM_BASE RT500_FLEXCOMM0_BASE
-+#define FLEXCOMM_USART_BASE RT500_FLEXCOMM0_BASE
-+#define DEVICE_NAME "/machine/soc/flexcomm0"
-+
-+struct TestState {
-+    QTestState *qtest;
-+    QIOChannel *ioc;
-+};
-+
-+static void polling_test(gconstpointer user_data)
-+{
-+    struct TestState *t = (struct TestState *)user_data;
-+    uint32_t tmp;
-+    char byte;
-+    int fifo_size;
-+    QDict *resp;
-+
-+    resp = qmp("{\"execute\": \"system_reset\"}");
-+    qdict_unref(resp);
-+
-+    /* select and lock USART */
-+    tmp = FIELD_DP32(FLEXCOMM_PERSEL_USART, FLEXCOMM_PSELID, LOCK, 1);
-+    REG32_WRITE(FLEXCOMM, PSELID, tmp);
-+
-+    fifo_size = REG32_READ_FIELD(FLEXCOMM_USART, FIFOSIZE, FIFOSIZE);
-+
-+    /* enable USART */
-+    REG32_WRITE_FIELD(FLEXCOMM_USART, CFG, ENABLE, 1);
-+    g_assert_cmpuint(REG32_READ_FIELD(FLEXCOMM_USART, CFG, ENABLE), ==, 1);
-+
-+    /* enable TX and RX FIFO */
-+    REG32_WRITE_FIELD(FLEXCOMM_USART, FIFOCFG, ENABLETX, 1);
-+    g_assert_cmpuint(REG32_READ_FIELD(FLEXCOMM_USART, FIFOCFG, ENABLETX),
-+                     ==, 1);
-+    REG32_WRITE_FIELD(FLEXCOMM_USART, FIFOCFG, ENABLERX, 1);
-+    g_assert_cmpuint(REG32_READ_FIELD(FLEXCOMM_USART, FIFOCFG, ENABLERX),
-+                     ==, 1);
-+
-+    /* test writes and fifo counters wrap */
-+    for (int i = 0; i < fifo_size / 2; i++) {
-+        /* check fifostat */
-+        g_assert_cmpuint(REG32_READ_FIELD(FLEXCOMM_USART, FIFOSTAT, RXFULL),
-+                         ==, 0);
-+        g_assert_cmpuint(REG32_READ_FIELD(FLEXCOMM_USART, FIFOSTAT, RXNOTEMPTY),
-+                         ==, 0);
-+        g_assert_cmpuint(REG32_READ_FIELD(FLEXCOMM_USART, FIFOSTAT, TXNOTFULL),
-+                         ==, 1);
-+        g_assert_cmpuint(REG32_READ_FIELD(FLEXCOMM_USART, FIFOSTAT, TXEMPTY),
-+                         ==, 1);
-+
-+        REG32_WRITE(FLEXCOMM_USART, FIFOWR, 'a' + i);
-+        qio_channel_read(t->ioc, &byte, 1, &error_abort);
-+        g_assert_cmpuint(byte, ==, 'a' + i);
-+    }
-+
-+    /* test reads and fifo level */
-+
-+    for (int i = 0; i < fifo_size / 2; i++) {
-+        byte = 'A' + i;
-+        g_assert_cmpuint(qio_channel_write(t->ioc, &byte, 1, &error_abort),
-+                         ==, 1);
-+    }
-+
-+    /* wait for the RXLVL to update */
-+    WAIT_REG32_FIELD(1000, FLEXCOMM_USART, FIFOSTAT, RXLVL,
-+                     fifo_size / 2);
-+
-+    /* check fifo stat */
-+    g_assert_cmpuint(REG32_READ_FIELD(FLEXCOMM_USART, FIFOSTAT, RXFULL),
-+                     ==, 0);
-+    g_assert_cmpuint(REG32_READ_FIELD(FLEXCOMM_USART, FIFOSTAT, RXNOTEMPTY),
-+                     ==, 1);
-+    g_assert_cmpuint(REG32_READ_FIELD(FLEXCOMM_USART, FIFOSTAT, TXNOTFULL),
-+                     ==, 1);
-+    g_assert_cmpuint(REG32_READ_FIELD(FLEXCOMM_USART, FIFOSTAT, TXEMPTY),
-+                     ==, 1);
-+
-+    /* send until FIFO is full */
-+    for (int i = fifo_size / 2; i < fifo_size; i++) {
-+        byte = 'A' + i;
-+        g_assert_cmpuint(qio_channel_write(t->ioc, &byte, 1, &error_abort),
-+                         ==, 1);
-+    }
-+
-+    /* wait for the RXLVL to update */
-+    WAIT_REG32_FIELD(1000, FLEXCOMM_USART, FIFOSTAT, RXLVL, fifo_size);
-+
-+    /* check fifo stat */
-+    g_assert_cmpuint(REG32_READ_FIELD(FLEXCOMM_USART, FIFOSTAT, RXFULL),
-+                     ==, 1);
-+    g_assert_cmpuint(REG32_READ_FIELD(FLEXCOMM_USART, FIFOSTAT, RXNOTEMPTY),
-+                     ==, 1);
-+    g_assert_cmpuint(REG32_READ_FIELD(FLEXCOMM_USART, FIFOSTAT, TXNOTFULL),
-+                     ==, 1);
-+    g_assert_cmpuint(REG32_READ_FIELD(FLEXCOMM_USART, FIFOSTAT, TXEMPTY),
-+                     ==, 1);
-+
-+    /* check read no pop */
-+    g_assert_cmpuint(REG32_READ_FIELD(FLEXCOMM_USART, FIFORDNOPOP, RXDATA),
-+                     ==, 'A');
-+
-+    /* now read from the fifo  */
-+    for (int i = 0; i < fifo_size; i++) {
-+        g_assert_cmpuint(REG32_READ_FIELD(FLEXCOMM_USART, FIFORD, RXDATA),
-+                         ==, 'A' + i);
-+    }
-+
-+    /* check fifostat */
-+    g_assert_cmpuint(REG32_READ_FIELD(FLEXCOMM_USART, FIFOSTAT, RXFULL), ==, 0);
-+    g_assert_cmpuint(REG32_READ_FIELD(FLEXCOMM_USART, FIFOSTAT, RXNOTEMPTY),
-+                     ==, 0);
-+    g_assert_cmpuint(REG32_READ_FIELD(FLEXCOMM_USART, FIFOSTAT, TXNOTFULL),
-+                     ==, 1);
-+    g_assert_cmpuint(REG32_READ_FIELD(FLEXCOMM_USART, FIFOSTAT, TXEMPTY),
-+                     ==, 1);
-+}
-+
-+static void irq_test(gconstpointer user_data)
-+{
-+    struct TestState *t = (struct TestState *)user_data;
-+    char buf[256] = { 0, };
-+    uint32_t tmp;
-+    QDict *resp;
-+
-+    resp = qmp("{\"execute\": \"system_reset\"}");
-+    qdict_unref(resp);
-+
-+    qtest_irq_intercept_out_named(t->qtest, DEVICE_NAME,
-+                                  SYSBUS_DEVICE_GPIO_IRQ);
-+
-+    /* select and lock FLEXCOMM_USART */
-+    tmp = FIELD_DP32(FLEXCOMM_PERSEL_USART, FLEXCOMM_PSELID, LOCK, 1);
-+    REG32_WRITE(FLEXCOMM, PSELID, tmp);
-+
-+    /*
-+     * set RX IRQ/DMA trigger level to 4 bytes - value 3 in FIFOTRIG
-+     *
-+     * 0000 - Trigger when the RX FIFO has received 1 entry (is no longer empty)
-+     * 0001 - Trigger when the RX FIFO has received 2 entries
-+     * 1111 - Trigger when the RX FIFO has received 16 entries (has become full)
-+     */
-+    REG32_WRITE_FIELD(FLEXCOMM_USART, FIFOTRIG, RXLVL, 3);
-+    g_assert_cmpuint(REG32_READ_FIELD(FLEXCOMM_USART, FIFOTRIG, RXLVL),
-+                     ==, 3);
-+
-+    /* enable RX trigger for IRQ/DMA  */
-+    REG32_WRITE_FIELD(FLEXCOMM_USART, FIFOTRIG, RXLVLENA, 1);
-+    g_assert_cmpuint(REG32_READ_FIELD(FLEXCOMM_USART, FIFOTRIG, RXLVLENA),
-+                     ==, 1);
-+
-+    /* enable RXLVL interrupt */
-+    REG32_WRITE_FIELD(FLEXCOMM_USART, FIFOINTENSET, RXLVL, 1);
-+    g_assert_cmpuint(REG32_READ_FIELD(FLEXCOMM_USART, FIFOINTENSET, RXLVL),
-+                     ==, 1);
-+
-+    /* enable FLEXCOMM_USART */
-+    REG32_WRITE_FIELD(FLEXCOMM_USART, CFG, ENABLE, 1);
-+    g_assert_cmpuint(REG32_READ_FIELD(FLEXCOMM_USART, CFG, ENABLE),
-+                     ==, 1);
-+
-+    /* enable TX and RX FIFO */
-+    REG32_WRITE_FIELD(FLEXCOMM_USART, FIFOCFG, ENABLETX, 1);
-+    g_assert_cmpuint(REG32_READ_FIELD(FLEXCOMM_USART, FIFOCFG, ENABLETX),
-+                     ==, 1);
-+    REG32_WRITE_FIELD(FLEXCOMM_USART, FIFOCFG, ENABLERX, 1);
-+    g_assert_cmpuint(REG32_READ_FIELD(FLEXCOMM_USART, FIFOCFG, ENABLERX),
-+                     ==, 1);
-+
-+    /* check interrupt status */
-+    g_assert_cmpuint(REG32_READ_FIELD(FLEXCOMM_USART, FIFOINTSTAT, RXLVL),
-+                     ==, 0);
-+    g_assert_cmpuint(REG32_READ_FIELD(FLEXCOMM_USART, FIFOINTSTAT, TXLVL),
-+                     ==, 0);
-+    g_assert_false(get_irq(0));
-+
-+    /* enable TX trigger for IRQ/DMA  */
-+    REG32_WRITE_FIELD(FLEXCOMM_USART, FIFOTRIG, TXLVLENA, 1);
-+    g_assert_cmpuint(REG32_READ_FIELD(FLEXCOMM_USART, FIFOTRIG, TXLVLENA),
-+                     ==, 1);
-+
-+    /* enable irq for TX */
-+    REG32_WRITE_FIELD(FLEXCOMM_USART, FIFOINTENSET, TXLVL, 1);
-+    g_assert_cmpuint(REG32_READ_FIELD(FLEXCOMM_USART, FIFOINTENSET, TXLVL),
-+                     ==, 1);
-+
-+    /* check TX irq */
-+    g_assert_cmpuint(REG32_READ_FIELD(FLEXCOMM_USART, FIFOINTSTAT, TXLVL),
-+                     ==, 1);
-+    g_assert_true(get_irq(0));
-+
-+    /* disable irq for TX */
-+    REG32_WRITE_FIELD(FLEXCOMM_USART, FIFOTRIG, TXLVLENA, 0);
-+    g_assert_cmpuint(REG32_READ_FIELD(FLEXCOMM_USART, FIFOTRIG, TXLVLENA),
-+                     ==, 0);
-+    g_assert_cmpuint(REG32_READ_FIELD(FLEXCOMM_USART, FIFOINTSTAT, TXLVL),
-+                     ==, 0);
-+    g_assert_false(get_irq(0));
-+
-+    /* send 3 bytes */
-+    g_assert_cmpuint(qio_channel_write(t->ioc, buf, 3, &error_abort),
-+                     ==, 3);
-+
-+    /* check that we have 3 bytes in the fifo */
-+    WAIT_REG32_FIELD(1000, FLEXCOMM_USART, FIFOSTAT, RXLVL, 3);
-+
-+    /* and no interrupt has been triggered yet */
-+    g_assert_cmpuint(REG32_READ_FIELD(FLEXCOMM_USART, FIFOINTSTAT, RXLVL),
-+                     ==, 0);
-+    g_assert_false(get_irq(0));
-+
-+    /* push it over the edge */
-+    g_assert_cmpuint(qio_channel_write(t->ioc, buf, 1, &error_abort), ==, 1);
-+
-+    /* check that we have 4 bytes in the fifo */
-+    WAIT_REG32_FIELD(1000, FLEXCOMM_USART, FIFOSTAT, RXLVL, 4);
-+
-+    /* and the interrupt has been triggered */
-+    g_assert_cmpuint(REG32_READ_FIELD(FLEXCOMM_USART, FIFOINTSTAT, RXLVL),
-+                     ==, 1);
-+    g_assert_true(get_irq(0));
-+
-+    /* read one byte from the fifo */
-+    g_assert_cmpuint(REG32_READ_FIELD(FLEXCOMM_USART, FIFORD, RXDATA),
-+                     ==, 0);
-+
-+    /* we should have 3 bytes in the FIFO */
-+    g_assert_cmpuint(REG32_READ_FIELD(FLEXCOMM_USART, FIFOSTAT, RXLVL),
-+                     ==, 3);
-+
-+    /* and no interrupts active */
-+    g_assert_cmpuint(REG32_READ_FIELD(FLEXCOMM_USART, FIFOINTSTAT, RXLVL),
-+             ==, 0);
-+    g_assert_false(get_irq(0));
-+}
-+
-+static void close_ioc(void *ioc)
-+{
-+    qio_channel_close(ioc, NULL);
-+}
-+
-+int main(int argc, char **argv)
-+{
-+    int ret;
-+    struct TestState test;
-+    char *tmp_path = g_dir_make_tmp("qemu-flexcomm-usart-test.XXXXXX", NULL);
-+    SocketAddress addr = {
-+        .type = SOCKET_ADDRESS_TYPE_UNIX,
-+        .u.q_unix.path = g_build_filename(tmp_path, "sock", NULL),
-+    };
-+    char *args;
-+    QIOChannelSocket *lioc;
-+
-+    module_call_init(MODULE_INIT_QOM);
-+    g_test_init(&argc, &argv, NULL);
-+
-+    lioc = qio_channel_socket_new();
-+    qio_channel_socket_listen_sync(lioc, &addr, 1, &error_abort);
-+
-+    qtest_add_data_func("/flexcomm-usart/polling", &test, polling_test);
-+    qtest_add_data_func("/flexcomm-usart/irq", &test, irq_test);
-+
-+    args = g_strdup_printf("-M rt595-evk -chardev socket,id=flexcomm0,path=%s",
-+                           addr.u.q_unix.path);
-+    test.qtest = qtest_start(args);
-+
-+    qio_channel_wait(QIO_CHANNEL(lioc), G_IO_IN);
-+    test.ioc = QIO_CHANNEL(qio_channel_socket_accept(lioc, &error_abort));
-+    g_assert(test.ioc);
-+    qtest_add_abrt_handler(close_ioc, test.ioc);
-+
-+    ret = g_test_run();
-+
-+    qtest_end();
-+
-+    qtest_remove_abrt_handler(test.ioc);
-+    g_unlink(addr.u.q_unix.path);
-+    g_free(addr.u.q_unix.path);
-+    g_rmdir(tmp_path);
-+    g_free(tmp_path);
-+    g_free(args);
-+    object_unref(OBJECT(test.ioc));
-+    object_unref(OBJECT(lioc));
-+
-+    return ret;
-+}
-diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-index 9631b6c401..93d1f781bc 100644
---- a/tests/qtest/meson.build
-+++ b/tests/qtest/meson.build
-@@ -229,7 +229,7 @@ qtests_arm = \
-   (config_all_devices.has_key('CONFIG_FSI_APB2OPB_ASPEED') ? ['aspeed_fsi-test'] : []) + \
-   (config_all_devices.has_key('CONFIG_STM32L4X5_SOC') and
-    config_all_devices.has_key('CONFIG_DM163')? ['dm163-test'] : []) + \
--  (config_all_devices.has_key('CONFIG_FLEXCOMM')? ['flexcomm-test'] : []) + \
-+  (config_all_devices.has_key('CONFIG_FLEXCOMM') ? ['flexcomm-test', 'flexcomm-usart-test'] : []) + \
-   ['arm-cpu-features',
-    'boot-serial-test']
- 
-@@ -344,6 +344,7 @@ qtests = {
-   'virtio-net-failover': files('migration-helpers.c'),
-   'vmgenid-test': files('boot-sector.c', 'acpi-utils.c'),
-   'netdev-socket': files('netdev-socket.c', '../unit/socket-helpers.c'),
-+  'flexcomm-usart-test': [io],
- }
- 
- if vnc.found()
--- 
-2.46.0.295.g3b9ea8a38a-goog
+This makes it a section next to section ACPI.  Should it be a subjection
+of ACPI?  If yes, add a second =.
+
+> +#
+> +# Defined since ACPI Specification 6.1,
+> +# section 18.3.2.8 Generic Hardware Error Source version 2. See:
+> +#
+> +# https://uefi.org/sites/default/files/resources/ACPI_6_1.pdf
+> +##
+> +
+> +
+> +##
+> +# @ghes-cper:
+
+Can we pick a command name that provides more of a clue to the
+uninitiated on what the command does?  inject-ghes-cper?
+inject-ghes-cper-error?
+
+> +#
+> +# Inject a CPER error data to be filled according to ACPI 6.1
+> +# spec via GHESv2.
+
+It's either "a datum", or "data".  Scratch "data"?
+
+What do you mean by "to be filled"?  Who's doing the filling?
+
+What about something like "Inject an error with additional ACPI 6.1 GHES
+v2 error information"?
+
+> +#
+> +# @cper: contains a base64 encoded string with raw data for a single CPER
+> +#     record with Generic Error Status Block, Generic Error Data Entry and
+> +#     generic error data payload, as described at
+> +#     https://uefi.org/specs/UEFI/2.10/Apx_N_Common_Platform_Error_Record.html#format
+
+docs/devel/qapi-code-gen.rst:
+
+    For legibility, wrap text paragraphs so every line is at most 70
+    characters long.
+
+Thus:
+
+   # @cper: contains a base64 encoded string with raw data for a single
+   #     CPER record with Generic Error Status Block, Generic Error Data
+   #     Entry and generic error data payload, as described at
+   #     https://uefi.org/specs/UEFI/2.10/Apx_N_Common_Platform_Error_Record.html#format
+
+> +#
+> +# Features:
+> +#
+> +# @unstable: This command is experimental.
+> +#
+> +# Since: 9.2
+> +##
+> +{ 'command': 'ghes-cper',
+> +  'data': {
+> +    'cper': 'str'
+> +  },
+> +  'features': [ 'unstable' ]
+> +}
+> diff --git a/qapi/meson.build b/qapi/meson.build
+> index e7bc54e5d047..35cea6147262 100644
+> --- a/qapi/meson.build
+> +++ b/qapi/meson.build
+> @@ -59,6 +59,7 @@ qapi_all_modules = [
+>  if have_system
+>    qapi_all_modules += [
+>      'acpi',
+> +    'acpi-hest',
+>      'audio',
+>      'cryptodev',
+>      'qdev',
+> diff --git a/qapi/qapi-schema.json b/qapi/qapi-schema.json
+> index b1581988e4eb..baf19ab73afe 100644
+> --- a/qapi/qapi-schema.json
+> +++ b/qapi/qapi-schema.json
+> @@ -75,6 +75,7 @@
+>  { 'include': 'misc-target.json' }
+>  { 'include': 'audio.json' }
+>  { 'include': 'acpi.json' }
+> +{ 'include': 'acpi-hest.json' }
+>  { 'include': 'pci.json' }
+>  { 'include': 'stats.json' }
+>  { 'include': 'virtio.json' }
 

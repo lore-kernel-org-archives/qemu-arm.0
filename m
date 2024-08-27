@@ -1,104 +1,102 @@
-Received: by 2002:a17:504:26c2:b0:1be9:327d:8ee3 with SMTP id j2csp19306nji;
-        Mon, 26 Aug 2024 23:46:19 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXitovRe7nOAsm6zobEUDvDhVQZMelX0Y9BISW45U7WtkWGJn4oFyA4fC9fMuAS2KrAoEEI5GPtaOezRw==@linaro.org
-X-Google-Smtp-Source: AGHT+IFIYPjKMA95xW83hKX4Bfc++uJq9Za+ICBHT6AdTEO8mg6g/Bt3jjyK/6KI8ncKup4xrZo+
-X-Received: by 2002:a05:6102:548a:b0:492:a6fb:23cd with SMTP id ada2fe7eead31-498f451fb2cmr16825302137.6.1724741179566;
-        Mon, 26 Aug 2024 23:46:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1724741179; cv=none;
+Received: by 2002:a17:504:26c2:b0:1be9:327d:8ee3 with SMTP id j2csp19400nji;
+        Mon, 26 Aug 2024 23:46:55 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCW5MuMHmg4gxvRiYWSbJ44COJGmZPqHNOcIRW64IlIqTF/lRCJtRXvVije1VeIDsX8Lu43bmjLzqMWLvA==@linaro.org
+X-Google-Smtp-Source: AGHT+IE39cOky/PRe8beuiZmvSW82bWZeCf35f02ciqgunxWZ28H0HwvZ8On4nPVxH3URu7WFDN+
+X-Received: by 2002:a05:6214:5d0f:b0:6c1:6afb:569 with SMTP id 6a1803df08f44-6c16dc7a10fmr127877936d6.31.1724741215055;
+        Mon, 26 Aug 2024 23:46:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1724741215; cv=none;
         d=google.com; s=arc-20160816;
-        b=U1X/V0MzT8fPBZkvzlNcuLsp3xImXGgdRq3xFG0mOTnPs0ZhRFyOppR7cD7l2Z8U7t
-         R8dfIy0rgGL1ZcycBglkcYalXk5aloi8GpYF6516q+EuY34ms2Ly5wxlgDB7lh+H1rtl
-         ILTVTTuSNAp7sJuxVfF2kYoF61/OGm7n64p7MrTwCcQ+KCitqRauL5tLpt24OT+8tmJt
-         JK9jj3UPILMD2KBdqLKIvjQve/jDBJlvwT4BBJE3CmuyxNACDgiLhI5kVHfKgRHM644f
-         iTIyf84kh4fTGLShBtFiWgcQBMKKJqixiiaxXjGJYhkEGTJiC2KstpA113IaoYkgB7c6
-         HEaw==
+        b=ULlF9uUyrl32nvNM+7clgeAJrxqt2AJBj5Q3EPkYzEE3oJMKyFKEzHLPhWZ/XkYifR
+         9UH7tVms9DrRDA6IzrsYGNURb/PYbV7nogF0aa9Y8b2Md1SYQ3UeOdlo0K5eL3Qf6CjA
+         Jk6NxdPbenhqTmIpezYFlI/xs36kVO+RsIDcCzeVyZfx2Rznh1fRDmazUpD6at8IRIU7
+         N+yHAx84tDMJSKY8dGwk/6FseToR2OJjfCriEYP0Xy+TED4CdVNcM5o1egYUUwgF+XHw
+         Iw3ZHPicd/zLM8aOL9vsY/uxqI2Rnj3Sobf46tgvwQTlgax2kijzKFyWaMqxsuN73ED4
+         PO9w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
-         :references:mime-version:in-reply-to:date:dkim-signature;
-        bh=sYJIi6ezq2vZAFcWE+Oi1a3J9njQ1zztAPYOoRhq3lI=;
+         :mime-version:date:dkim-signature;
+        bh=AqiuqeLPs//G+UZrMjCPw9P3JOIbNGDF4RHaSINlp+E=;
         fh=2mssAqYKJuMcD/Ya5YUzhxP7uPixmdZ7O75Bi0gtEhM=;
-        b=iAROGzAXpig3qapgFJfx2LobVHY++IThev6GUjXSgTgPD3SxcYnKVx+HGrexNTP4Of
-         20AGmTGpadF+pD8O6gxHtD8LqVnimsVJd7AK4vYdrsGf7aQCGBLuBuHxKjpVGO/+fXl+
-         i13j3WVM13aRePklaSVfoFIIYWxLZ/xmTkrUbjyBd7rdnx2CEpApVwXUITyVTp03JI6T
-         qoRenDZ0YSWsoIC9ovThNFXCWJ4s5MQgB7YQNlO4bKnUeQyvCtSHnDosnCHyeKbguvb1
-         h4oc2cmNbejTW0YYeNRLMb/m1iPl2CttiLIsL7nqNgLNyUORroayYeRLSrWXQGHx4eQ9
-         iYaQ==;
+        b=RftDMHVbkGw1LDnBmUPURxffEvHgQSVbOe+sXhlRsU2pwzneCadl41cWSC/5oCOQM/
+         IlMuYAOl2HpfrwtVMWzhOYZFb+07xWS51DYl2CuwnMRHlSMW5W4w3X4kT3JyYV7boL5K
+         b4KRZuMDWsbhIXJUTDgif4NDx2ZsbTR4mp1hXcC6QPvOU7AiQlSQfSDmJc6VcBVlJVwE
+         9plh82nZXNnvEQbO6jM2o+Bo88+7o01cg58+sACWE477COiqvHyr2PBwVRQCC4AKfxlw
+         vKIaoHSwVLDUF5UjjuBT0lbiJ0e6qEWplGHBj5UC3cepFI2ppk6YRS3Oz/UVnBoHQsky
+         qrmA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b="bkotbk3/";
+       dkim=pass header.i=@google.com header.s=20230601 header.b=B6LqBhU3;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7a67f34fd1bsi1264327185a.208.2024.08.26.23.46.19
+        by mx.google.com with ESMTPS id 6a1803df08f44-6c162d2c989si124798166d6.75.2024.08.26.23.46.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 26 Aug 2024 23:46:19 -0700 (PDT)
+        Mon, 26 Aug 2024 23:46:55 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b="bkotbk3/";
+       dkim=pass header.i=@google.com header.s=20230601 header.b=B6LqBhU3;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sipxh-00036I-Um; Tue, 27 Aug 2024 02:45:55 -0400
+	id 1sipxh-00038T-Ul; Tue, 27 Aug 2024 02:45:55 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <3EXbNZgUKCnAhOjWdUccUZS.QcaeSai-RSjSZbcbUbi.cfU@flex--tavip.bounces.google.com>)
- id 1sipxa-0002oO-H9
- for qemu-devel@nongnu.org; Tue, 27 Aug 2024 02:45:46 -0400
-Received: from mail-pg1-x549.google.com ([2607:f8b0:4864:20::549])
+ <3CnbNZgUKCmkaHcPWNVVNSL.JVTXLTb-KLcLSUVUNUb.VYN@flex--tavip.bounces.google.com>)
+ id 1sipxb-0002tt-Q7
+ for qemu-devel@nongnu.org; Tue, 27 Aug 2024 02:45:47 -0400
+Received: from mail-pl1-x64a.google.com ([2607:f8b0:4864:20::64a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from
- <3EXbNZgUKCnAhOjWdUccUZS.QcaeSai-RSjSZbcbUbi.cfU@flex--tavip.bounces.google.com>)
- id 1sipxW-00064j-08
- for qemu-devel@nongnu.org; Tue, 27 Aug 2024 02:45:46 -0400
-Received: by mail-pg1-x549.google.com with SMTP id
- 41be03b00d2f7-7cd7614d826so4620900a12.1
- for <qemu-devel@nongnu.org>; Mon, 26 Aug 2024 23:45:40 -0700 (PDT)
+ <3CnbNZgUKCmkaHcPWNVVNSL.JVTXLTb-KLcLSUVUNUb.VYN@flex--tavip.bounces.google.com>)
+ id 1sipxT-00063V-4F
+ for qemu-devel@nongnu.org; Tue, 27 Aug 2024 02:45:47 -0400
+Received: by mail-pl1-x64a.google.com with SMTP id
+ d9443c01a7336-204e310e050so6646335ad.0
+ for <qemu-devel@nongnu.org>; Mon, 26 Aug 2024 23:45:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1724741139; x=1725345939; darn=nongnu.org;
- h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
- :date:from:to:cc:subject:date:message-id:reply-to;
- bh=sYJIi6ezq2vZAFcWE+Oi1a3J9njQ1zztAPYOoRhq3lI=;
- b=bkotbk3/LuQLXFcYVehb+Dtr7AMNBz69upG8O2rHxPL+BNtY3fcubCDdMycQy0F+iJ
- JPyt94emqNc6Xvvx54f3GR73+7iDeNgXBb3kAS3KS4B+qZhXi2ScxG0i8a9tRKOG3sAB
- GUSygTyFlqsv50BTkfC1eKDVUrVkVPlBti/xXVTxrtEzNlsjYq+iRkXnnCY8T8jWv3so
- 1uotnYFv3K2Uf4em7i6HZ3PM796XPYkrPs4F3IFbjG5lcU26bZuhOBAzs3paUntWSg40
- ivdNB+f+Skun2veeNGI30Uwy4GpHf1iMZX0lIi9G9RDX9klYefqQZQqZI1BCZ09SnI1o
- VlnA==
+ d=google.com; s=20230601; t=1724741130; x=1725345930; darn=nongnu.org;
+ h=cc:to:from:subject:message-id:mime-version:date:from:to:cc:subject
+ :date:message-id:reply-to;
+ bh=AqiuqeLPs//G+UZrMjCPw9P3JOIbNGDF4RHaSINlp+E=;
+ b=B6LqBhU3xI+mZKneUW8H1dADzmICT1xZGMBhrGXxSWbmx5uJRFPQwJcA3vlqv4UcAF
+ nJ+8lnmBTE5ea8sx6buLA3xwcmK3w1BOjnEgixtkKvtmXaqY2QV7SW58DqmgrnVZ2k7E
+ SrBCvplsfvmqdtZFao7EjnWprvg7WFIAVECvuIAYCatQufcFlmWQoXZQGxnAFb673Isu
+ PxgM0e2GlrWiKY0PwjBdenRWglu+wFg3UV2/8+g82/55TaqP4p8aCpwMer4HErRywBrB
+ 20BxkwxzBrFBMRV1ZZpK+vZnUmETL0nVSXcl5vdW2Xp6tFIB34opfwORnG/rYfHsi7Ht
+ L30Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1724741139; x=1725345939;
- h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
- :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=sYJIi6ezq2vZAFcWE+Oi1a3J9njQ1zztAPYOoRhq3lI=;
- b=kykYQMqUxF+YAeNHuTyzV3rlsN615wwa0lRx+SGimMGNpWq1vHxrYmH4Q+4VAN5Yfw
- pMfM/gzB3KLzn9Ymwuc7YW7mZGri0WSC9Ev+H45PmbRI9TxUNoQblFNObhnclqFASLdE
- L4cAnuKe3nGdzH+huYXU0jgYUwROQzzh/R1vCnFCWYqdXOBEf/FI4rFrVKuv3Oj+UyGF
- FROOGXZGO9tlzrBE/l/HgprV2/frJvPz0fxb6h/2hKV1SBGvgUg1DP6myas5fWeLpB4O
- z58U6ajQsvKd5Wxsm7Qbsz4/0uyVLCt/oRBo1w1tgbqI1bqvEN7njnbLiefCEPdTMGC7
- PNBA==
-X-Gm-Message-State: AOJu0YzEAmi/I1gOuXEqr/+EyjNtptERjl/ZlPjetIEUOrsQV9oKyrR+
- MUuzaAxGoLa1/A6JxFDK68w7lRdOp/Nz+eQjSyUvXkTzrU1Ef5Dfb8jBbmqA/nQtcVnr48+Eh3t
- f6g8OjOhRb6ffnL+7jNfirEKr7uDkKqecKvfGLv0HJc9PiIXcMd1G08kq6QPkcjgKRHCaJdrRHo
- yuHJWscE0E0MuJhfKkzkX0Yexz2Q==
+ d=1e100.net; s=20230601; t=1724741130; x=1725345930;
+ h=cc:to:from:subject:message-id:mime-version:date:x-gm-message-state
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=AqiuqeLPs//G+UZrMjCPw9P3JOIbNGDF4RHaSINlp+E=;
+ b=EoLrUd9j73zsJBy5+4t+w895u7ZA7w7dw/UYRNzogEYP41uqx7WKwlPQfjNu3GBdwi
+ NkpGUnTwY/LJE2AnuG87073yabuXcG0g2/aRIY6Jt2OBEXqFWnz5ETpkPnVG10lfDAnI
+ 65wg6RyDf6DXnR082fCgxNLOQL9dF2pgc1RH/JJZlOiDA2JEKxYBdCkepXJmU3s7Kx0+
+ Mq6FXFHWw9gZDcLoZ7yJt3ORwCIcqsLJOM+KxrXLdCTsm72Jj1Hc/D89eccEKCAAZq/e
+ UZ4Ozu/97ryU8dLbBju5FqiAWYo9CLt1hM/xRaPMl8iSYn8MH1s9Ppu75D+yO+B+ka4B
+ l+YQ==
+X-Gm-Message-State: AOJu0Yyo7QNqe2TdwrHqkfITCCBh4rxZtFmJbCjDoKEI2cMdojw0RYk6
+ LUNv9JGuRhOxLI6ddKwIjrnmLvnOch7oUenLaP3TDbT94Y2hEP5+8ViOmTrCyxZnTpCETvtBEYI
+ zDZuJk+EEUWsUzbyvJnfP5XUHDHHpqDgvxKWdA0Q2M6nQtzzJMBC2sx16P8fR6+CNLE8phzbrf6
+ YMbbM1uKXp4NLx023WxtCixLqD6Q==
 X-Received: from warp10.c.googlers.com ([fda3:e722:ac3:cc00:24:72f4:c0a8:750])
- (user=tavip job=sendgmr) by 2002:a17:90b:1e11:b0:2d1:b718:fc5f
+ (user=tavip job=sendgmr) by 2002:a17:902:d48d:b0:202:36fc:5d4b
  with SMTP id
- 98e67ed59e1d1-2d8249ded2emr34520a91.1.1724741137769; Mon, 26 Aug 2024
- 23:45:37 -0700 (PDT)
-Date: Mon, 26 Aug 2024 23:45:08 -0700
-In-Reply-To: <20240827064529.1246786-1-tavip@google.com>
+ d9443c01a7336-204df5210ebmr1014305ad.12.1724741130495; Mon, 26 Aug 2024
+ 23:45:30 -0700 (PDT)
+Date: Mon, 26 Aug 2024 23:45:04 -0700
 Mime-Version: 1.0
-References: <20240827064529.1246786-1-tavip@google.com>
 X-Mailer: git-send-email 2.46.0.295.g3b9ea8a38a-goog
-Message-ID: <20240827064529.1246786-5-tavip@google.com>
-Subject: [RFC PATCH v3 04/24] Add mcux-soc-svd subproject
+Message-ID: <20240827064529.1246786-1-tavip@google.com>
+Subject: [RFC PATCH v3 00/24] NXP i.MX RT595
 From: Octavian Purdila <tavip@google.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, stefanst@google.com, pbonzini@redhat.com, 
@@ -107,9 +105,9 @@ Cc: qemu-arm@nongnu.org, stefanst@google.com, pbonzini@redhat.com,
  alistair@alistair23.me, thuth@redhat.com, philmd@linaro.org, jsnow@redhat.com, 
  crosa@redhat.com, lvivier@redhat.com
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::549;
- envelope-from=3EXbNZgUKCnAhOjWdUccUZS.QcaeSai-RSjSZbcbUbi.cfU@flex--tavip.bounces.google.com;
- helo=mail-pg1-x549.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::64a;
+ envelope-from=3CnbNZgUKCmkaHcPWNVVNSL.JVTXLTb-KLcLSUVUNUb.VYN@flex--tavip.bounces.google.com;
+ helo=mail-pl1-x64a.google.com
 X-Spam_score_int: -95
 X-Spam_score: -9.6
 X-Spam_bar: ---------
@@ -132,109 +130,235 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: UvNt6OaFpTg2
+X-TUID: xPb4q1pCrnQ8
 
-Add mcux-soc-svd subproject that contains SVD files that are going to
-be used to generate C header with register layout definitions and
-other helpers to create device models.
+This patch set adds support for NXP's RT500 MCU [1] and the RT595
+EVK[2]. More RT500 device models will be submitted in future patch sets.
 
-Guard the subproject by a configuration option since it is rarely
-going to be used - whenever new headers will be generated. It is
-unlikely that already generated headers will be updated, with the
-exception of minor hardware revisions.
+The goal of this first patch set is to provide a minimal set that
+allows running the NXP MCU SDK hello world example[4].
 
-Also export the rt595 SVD file which is going to be used by subsequent
-patches.
+The patch set introduces a (python) tool that generates C header files
+from ARM SVD files[3]. This significantly reduces the effort to write
+a new device model by automatically generating: register definitions
+and layout (including bit fields), register names for easier debugging
+and tracing, reset register values, register write masks, etc.
 
-TBD: switch to a qemu gitlab fork before merge
+The generated files are commited and not generated at compile
+time. Build targets are created so that they can be easily regenerated
+if needed.
 
-Signed-off-by: Octavian Purdila <tavip@google.com>
----
- hw/arm/svd/meson.build                            | 4 ++++
- meson_options.txt                                 | 3 +++
- scripts/meson-buildoptions.sh                     | 4 ++++
- subprojects/.gitignore                            | 1 +
- subprojects/mcux-soc-svd.wrap                     | 5 +++++
- subprojects/packagefiles/mcux-soc-svd/meson.build | 5 +++++
- 6 files changed, 22 insertions(+)
+Changes since v2:
+ * convert tests from unit to qtest
+ * move i2c and spi testers from unit tests to hw/misc devices
+ * switch to using RegisterAccessInfo to generate register information
+   like register names, reset values, or read-only mask
+ * use register_write instead of adding a new reg32_write API
+ * remove reg32_aligned_access completly and rely on memops access
+   constraints and size of access for alignment checks
+ * add qtest APIs for checking memory access faulires
+ * add qtest APIs for accessing the device clock frequency
+ * fix bugs detected by address sanitizers
+
+Changes since v1:
+ * setup scripts/git.orderfile
+ * svd_gen_header: add support for multi line comments
+ * svd_gen_header: use qemu register fields instead of bitfields
+ * svd_gen_header: generate register write mask array
+ * add mcux-soc-svd as a subproject instead of commiting the rt595 SVD
+   file directly
+ * svd generated headers: don't generate them at compile time, instead
+   commit the generated headers and create compile targets so that it is
+   easy to regenerate them
+ * remove pysvd dependency; developers who need to (re)generate svd
+   headers need to have it installed on the host machine
+ * use DEFINE_TYPES where possible
+ * use g_strdup_printf where possible
+ * reduce iterator variables scopes
+ * hard code rt500 to use the cortex-m33
+ * use static for local arrays initializers
+ * remove rt500 properties as they are not yet used
+ * drop private/public comments
+ * remove unused headers
+ * free rt500 mem regions in rt500_unrealize() instead of
+   rt500_finalize
+ * use memops access constraints where possible instead of
+   reg32_aligned_access
+ * flexspi: use 64bit properties for mmap_size property
+ * rstctl: use a generic abstract type and remove the  "num" property
+ * flexspi: don't call get_system_memory() directly and remove
+   mmap_base property
+
+[1] https://www.nxp.com/docs/en/data-sheet/IMXRT500EC.pdf
+[2] https://www.nxp.com/webapp/Download?colCode=MIMXRT595EVKHUG
+[3] https://arm-software.github.io/CMSIS_5/SVD/html/index.html
+[4] Building and running the NXP MCU SDK hello world example
+
+    Clone the following git repos:
+
+    https://github.com/nxp-mcuxpresso/cmsis.git,
+    https://github.com/nxp-mcuxpresso/mcux-sdk.git
+    https://github.com/nxp-mcuxpresso/mcux-sdk-examples.git
+
+    in the following directories: CMSIS, core, examples.
+
+    cd examples/evkmimxrt595/demo_apps/hello_world/armgcc
+
+    ARMGCC_DIR=/usr CFLAGS=-I../../../../../CMSIS/CMSIS/Core/Include \
+      sh build_flash_debug.sh
+
+    qemu-system-arm --machine rt595-evk -kernel flash_debug/hello_world.elf \
+      -global armv7m.init-nsvtor=0x08001000 -global armv7m.init-svtor=0x08001000 \
+      -chardev stdio,id=flexcomm0
+
+Octavian Purdila (21):
+  fifo32: add peek function
+  tests/unit: add fifo test
+  Add mcux-soc-svd subproject
+  hw/misc: add basic flexcomm device model
+  hw/char: add support for flexcomm usart
+  hw/i2c: add support for flexcomm i2c
+  hw/misc: add support for RT500's clock controller
+  hw/ssi: add support for flexspi
+  hw/misc: add support for RT500's reset controller
+  hw/arm: add basic support for the RT500 SoC
+  hw/arm: add RT595-EVK board
+  tests/qtest: add register access macros and functions
+  system/qtest: add APIS to check for memory access failures
+  tests/qtest: add flexcomm tests
+  tests/qtest: add flexcomm usart tests
+  hw/misc: add i2c-tester
+  tests/qtest: add tests for flexcomm i2c
+  hw/ssi: allow NULL realize callbacks for peripherals
+  hw/misc: add spi-tester
+  systems/qtest: add device clock APIs
+  test/unit: add unit tests for RT500's clock controller
+
+Sebastian Ene (2):
+  hw/ssi: add support for flexcomm spi
+  tests/qtest: add tests for flexcomm spi
+
+Stefan Stanacar (1):
+  scripts: add script to generate C header files from SVD XML files
+
+ meson.build                                   |    4 +
+ include/hw/arm/rt500.h                        |   44 +
+ include/hw/arm/svd/flexcomm.h                 |  114 +
+ include/hw/arm/svd/flexcomm_i2c.h             | 1192 ++++++
+ include/hw/arm/svd/flexcomm_spi.h             | 1038 +++++
+ include/hw/arm/svd/flexcomm_usart.h           | 1023 +++++
+ include/hw/arm/svd/flexspi.h                  | 2658 +++++++++++++
+ include/hw/arm/svd/rt500.h                    |   63 +
+ include/hw/arm/svd/rt500_clkctl0.h            | 2485 ++++++++++++
+ include/hw/arm/svd/rt500_clkctl1.h            | 3398 +++++++++++++++++
+ include/hw/arm/svd/rt500_rstctl0.h            |  860 +++++
+ include/hw/arm/svd/rt500_rstctl1.h            | 1373 +++++++
+ include/hw/char/flexcomm_usart.h              |   20 +
+ include/hw/i2c/flexcomm_i2c.h                 |   27 +
+ include/hw/misc/flexcomm.h                    |   85 +
+ include/hw/misc/i2c_tester.h                  |   30 +
+ include/hw/misc/rt500_clk_freqs.h             |   18 +
+ include/hw/misc/rt500_clkctl0.h               |   37 +
+ include/hw/misc/rt500_clkctl1.h               |   36 +
+ include/hw/misc/rt500_rstctl.h                |   32 +
+ include/hw/misc/spi_tester.h                  |   32 +
+ include/hw/qdev-clock.h                       |   10 +
+ include/hw/ssi/flexcomm_spi.h                 |   20 +
+ include/hw/ssi/flexspi.h                      |   32 +
+ include/qemu/fifo32.h                         |   28 +
+ tests/qtest/libqtest-single.h                 |  116 +
+ tests/qtest/libqtest.h                        |   98 +
+ tests/qtest/reg-utils.h                       |   70 +
+ hw/arm/rt500.c                                |  335 ++
+ hw/arm/rt595-evk.c                            |   64 +
+ hw/char/flexcomm_usart.c                      |  306 ++
+ hw/core/qdev-clock.c                          |    2 +-
+ hw/i2c/flexcomm_i2c.c                         |  222 ++
+ hw/misc/flexcomm.c                            |  323 ++
+ hw/misc/i2c_tester.c                          |   94 +
+ hw/misc/rt500_clkctl0.c                       |  239 ++
+ hw/misc/rt500_clkctl1.c                       |  223 ++
+ hw/misc/rt500_rstctl.c                        |  235 ++
+ hw/misc/spi_tester.c                          |   52 +
+ hw/ssi/flexcomm_spi.c                         |  442 +++
+ hw/ssi/flexspi.c                              |  169 +
+ hw/ssi/ssi.c                                  |    4 +-
+ system/qtest.c                                |   95 +-
+ tests/qtest/flexcomm-i2c-test.c               |  169 +
+ tests/qtest/flexcomm-spi-test.c               |  144 +
+ tests/qtest/flexcomm-test.c                   |   86 +
+ tests/qtest/flexcomm-usart-test.c             |  314 ++
+ tests/qtest/libqtest.c                        |  102 +-
+ tests/qtest/rt500-clkctl-test.c               |  195 +
+ tests/unit/test-fifo.c                        |   97 +
+ hw/arm/Kconfig                                |   12 +
+ hw/arm/meson.build                            |    4 +
+ hw/arm/svd/meson.build                        |   35 +
+ hw/char/meson.build                           |    1 +
+ hw/char/trace-events                          |    9 +
+ hw/i2c/meson.build                            |    1 +
+ hw/i2c/trace-events                           |   10 +
+ hw/misc/Kconfig                               |   21 +
+ hw/misc/meson.build                           |    7 +
+ hw/misc/trace-events                          |   18 +
+ hw/ssi/Kconfig                                |    4 +
+ hw/ssi/meson.build                            |    2 +
+ hw/ssi/trace-events                           |   12 +
+ meson_options.txt                             |    3 +
+ scripts/meson-buildoptions.sh                 |    4 +
+ scripts/svd-gen-header.py                     |  330 ++
+ subprojects/.gitignore                        |    1 +
+ subprojects/mcux-soc-svd.wrap                 |    5 +
+ .../packagefiles/mcux-soc-svd/meson.build     |    5 +
+ tests/qtest/meson.build                       |    3 +
+ tests/unit/meson.build                        |    1 +
+ 71 files changed, 19321 insertions(+), 22 deletions(-)
+ create mode 100644 include/hw/arm/rt500.h
+ create mode 100644 include/hw/arm/svd/flexcomm.h
+ create mode 100644 include/hw/arm/svd/flexcomm_i2c.h
+ create mode 100644 include/hw/arm/svd/flexcomm_spi.h
+ create mode 100644 include/hw/arm/svd/flexcomm_usart.h
+ create mode 100644 include/hw/arm/svd/flexspi.h
+ create mode 100644 include/hw/arm/svd/rt500.h
+ create mode 100644 include/hw/arm/svd/rt500_clkctl0.h
+ create mode 100644 include/hw/arm/svd/rt500_clkctl1.h
+ create mode 100644 include/hw/arm/svd/rt500_rstctl0.h
+ create mode 100644 include/hw/arm/svd/rt500_rstctl1.h
+ create mode 100644 include/hw/char/flexcomm_usart.h
+ create mode 100644 include/hw/i2c/flexcomm_i2c.h
+ create mode 100644 include/hw/misc/flexcomm.h
+ create mode 100644 include/hw/misc/i2c_tester.h
+ create mode 100644 include/hw/misc/rt500_clk_freqs.h
+ create mode 100644 include/hw/misc/rt500_clkctl0.h
+ create mode 100644 include/hw/misc/rt500_clkctl1.h
+ create mode 100644 include/hw/misc/rt500_rstctl.h
+ create mode 100644 include/hw/misc/spi_tester.h
+ create mode 100644 include/hw/ssi/flexcomm_spi.h
+ create mode 100644 include/hw/ssi/flexspi.h
+ create mode 100644 tests/qtest/reg-utils.h
+ create mode 100644 hw/arm/rt500.c
+ create mode 100644 hw/arm/rt595-evk.c
+ create mode 100644 hw/char/flexcomm_usart.c
+ create mode 100644 hw/i2c/flexcomm_i2c.c
+ create mode 100644 hw/misc/flexcomm.c
+ create mode 100644 hw/misc/i2c_tester.c
+ create mode 100644 hw/misc/rt500_clkctl0.c
+ create mode 100644 hw/misc/rt500_clkctl1.c
+ create mode 100644 hw/misc/rt500_rstctl.c
+ create mode 100644 hw/misc/spi_tester.c
+ create mode 100644 hw/ssi/flexcomm_spi.c
+ create mode 100644 hw/ssi/flexspi.c
+ create mode 100644 tests/qtest/flexcomm-i2c-test.c
+ create mode 100644 tests/qtest/flexcomm-spi-test.c
+ create mode 100644 tests/qtest/flexcomm-test.c
+ create mode 100644 tests/qtest/flexcomm-usart-test.c
+ create mode 100644 tests/qtest/rt500-clkctl-test.c
+ create mode 100644 tests/unit/test-fifo.c
  create mode 100644 hw/arm/svd/meson.build
+ create mode 100755 scripts/svd-gen-header.py
  create mode 100644 subprojects/mcux-soc-svd.wrap
  create mode 100644 subprojects/packagefiles/mcux-soc-svd/meson.build
 
-diff --git a/hw/arm/svd/meson.build b/hw/arm/svd/meson.build
-new file mode 100644
-index 0000000000..7d83d2ccbc
---- /dev/null
-+++ b/hw/arm/svd/meson.build
-@@ -0,0 +1,4 @@
-+if get_option('mcux-soc-svd')
-+  mcux_soc_svd = subproject('mcux-soc-svd')
-+  rt595 = mcux_soc_svd.get_variable('rt595')
-+endif
-diff --git a/meson_options.txt b/meson_options.txt
-index 4c1583eb40..25f827078a 100644
---- a/meson_options.txt
-+++ b/meson_options.txt
-@@ -366,3 +366,6 @@ option('qemu_ga_version', type: 'string', value: '',
- 
- option('hexagon_idef_parser', type : 'boolean', value : true,
-        description: 'use idef-parser to automatically generate TCG code for the Hexagon frontend')
-+
-+option('mcux-soc-svd', type : 'boolean', value : false,
-+       description: 'enable targets to generate C headers from mcux-soc-svd')
-diff --git a/scripts/meson-buildoptions.sh b/scripts/meson-buildoptions.sh
-index 6ce5a8b72a..2c1e501806 100644
---- a/scripts/meson-buildoptions.sh
-+++ b/scripts/meson-buildoptions.sh
-@@ -40,6 +40,8 @@ meson_options_help() {
-   printf "%s\n" '  --enable-lto             Use link time optimization'
-   printf "%s\n" '  --enable-malloc=CHOICE   choose memory allocator to use [system] (choices:'
-   printf "%s\n" '                           jemalloc/system/tcmalloc)'
-+  printf "%s\n" '  --enable-mcux-soc-svd    enable targets to generate C headers from mcux-'
-+  printf "%s\n" '                           soc-svd'
-   printf "%s\n" '  --enable-module-upgrades try to load modules from alternate paths for'
-   printf "%s\n" '                           upgrades'
-   printf "%s\n" '  --enable-rng-none        dummy RNG, avoid using /dev/(u)random and'
-@@ -390,6 +392,8 @@ _meson_option_parse() {
-     --enable-malloc-trim) printf "%s" -Dmalloc_trim=enabled ;;
-     --disable-malloc-trim) printf "%s" -Dmalloc_trim=disabled ;;
-     --mandir=*) quote_sh "-Dmandir=$2" ;;
-+    --enable-mcux-soc-svd) printf "%s" -Dmcux-soc-svd=true ;;
-+    --disable-mcux-soc-svd) printf "%s" -Dmcux-soc-svd=false ;;
-     --enable-membarrier) printf "%s" -Dmembarrier=enabled ;;
-     --disable-membarrier) printf "%s" -Dmembarrier=disabled ;;
-     --enable-module-upgrades) printf "%s" -Dmodule_upgrades=true ;;
-diff --git a/subprojects/.gitignore b/subprojects/.gitignore
-index adca0266be..bca8693ef4 100644
---- a/subprojects/.gitignore
-+++ b/subprojects/.gitignore
-@@ -6,3 +6,4 @@
- /keycodemapdb
- /libvfio-user
- /slirp
-+/mcux-soc-svd
-diff --git a/subprojects/mcux-soc-svd.wrap b/subprojects/mcux-soc-svd.wrap
-new file mode 100644
-index 0000000000..80d18e8561
---- /dev/null
-+++ b/subprojects/mcux-soc-svd.wrap
-@@ -0,0 +1,5 @@
-+[wrap-git]
-+url = https://github.com/nxp-mcuxpresso/mcux-soc-svd/
-+revision = 7f6f9ef7420144fe14cd9bc4d8e0e3523232da04
-+patch_directory = mcux-soc-svd
-+depth = 1
-diff --git a/subprojects/packagefiles/mcux-soc-svd/meson.build b/subprojects/packagefiles/mcux-soc-svd/meson.build
-new file mode 100644
-index 0000000000..37c537d040
---- /dev/null
-+++ b/subprojects/packagefiles/mcux-soc-svd/meson.build
-@@ -0,0 +1,5 @@
-+project('mcux-soc-svd')
-+
-+fs = import('fs')
-+
-+rt595 = fs.copyfile('MIMXRT595S/MIMXRT595S_cm33.xml')
 -- 
 2.46.0.295.g3b9ea8a38a-goog
 

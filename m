@@ -1,103 +1,103 @@
-Received: by 2002:a17:504:26c2:b0:1be9:327d:8ee3 with SMTP id j2csp19592nji;
+Received: by 2002:a17:504:26c2:b0:1be9:327d:8ee3 with SMTP id j2csp19596nji;
         Mon, 26 Aug 2024 23:47:52 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWQALqcQPjIfkr5DIeC1gALF+95IvPs3sYUkhkJBwL2IRGvsKk0j+w4oK1DVQzo1ed+2rAqbq488KyRsQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IGDTPsK8fHF+H4qtyfqfNKpPvUHzdBkkzSm5sDOoBPJOT9eKPR4xK2LG3KVjznn++7Bqfx9
-X-Received: by 2002:a05:6122:3d05:b0:4ef:594a:a706 with SMTP id 71dfb90a1353d-4fd1aced809mr13838353e0c.14.1724741271846;
-        Mon, 26 Aug 2024 23:47:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1724741271; cv=none;
+X-Forwarded-Encrypted: i=2; AJvYcCUCypEH8UMH7yHs1fl7gV7ftRkGO1jGJeUypwmCS9whnAbEit7tXDkUnBwIs5xLIcOZu0+xvz9+xG+PSA==@linaro.org
+X-Google-Smtp-Source: AGHT+IGsiLTUfRZZlr4w6M8s72h2dew2qicZJi8kIz2FGrNkO/pej0iIC5y4spsGkbv94PyG2RLG
+X-Received: by 2002:a05:620a:1a0c:b0:7a6:5cb3:8794 with SMTP id af79cd13be357-7a6897b7eb4mr1392561885a.62.1724741272662;
+        Mon, 26 Aug 2024 23:47:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1724741272; cv=none;
         d=google.com; s=arc-20160816;
-        b=J3fYIVDDmDosPejvP692NBaIoi5i6nLJXs/UWISNLA+l16RHxyamrplxivOsyFeGKa
-         TAAeXJez2Wvv4XXrShjnuaC+jerj+0NnRRVNHZ3lwBYjGiqzpYB7pC3SAr1dFNjed5K9
-         h9pIf8jHs9hJ7QfYv+qpEKqSUxrGdNOUWV62xS4/4mlOgowek+tSrXS0w0IZyd9inCj7
-         OQ6kvo2PQCqGmafrfzWlfklsY5HTgb7lCMR7UMAvqXB5Ydp+JOJLeUFcbSVc9+CYkKau
-         EvzF+XKir4L08h/2iIoHe4azLFiqE6PpKLeQBH5nDFh0NFO+FaEY74x0hSQqdWdxq+2c
-         6y/g==
+        b=jBpmitQQLAAnpMb2574aW0sg0y5A1aDy/JaJU7y3oDX8HHOCBWPhesXpT21UQOpk/W
+         Dtq47BxjtrODL24pnfJhrf11DBafyLcmXoF+m2SnubmmMOChKvBinO0x5dHAMOq/YL6D
+         Z4seJFPGgqJHGWatF925I5J9Cea8TgUirz3Xyf25Mcj1amA8vMuxIGYusJZn85/q8C1j
+         wM8DTp1aWHly5k+aqaqq0UKRdoBLZkdDswJ88r1LWfDBC/0TItOn1HcjS9DibTYei9sE
+         m6ciXnBCFbnhGmMWaIlvon9eqP8fluBgM73YCBkKec2Duq6aJqo8xhP0bwZ8XK8D2iFT
+         V7Cw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
          :references:mime-version:in-reply-to:date:dkim-signature;
-        bh=gsfQiA80OgYk0fCZd3pS8YfayOgtUinCxyWulv0LKT8=;
+        bh=MUptCNKb7fQCzCuOM6B8parO9p5OujSGWqVEiaYxFh4=;
         fh=2mssAqYKJuMcD/Ya5YUzhxP7uPixmdZ7O75Bi0gtEhM=;
-        b=pysH4tLeIK58UYyuKGWgpM9fOA03+6c1P5RDzjpm8+GSDAat7vVZsQQ7QuBcdV5FOo
-         ylDXU0F/Aq2ANT9BVGaDVb/+o3pdb/HSBWUJppBUzYgm7TOIyZtefqz5hKkHHOWPgCZd
-         KHlRnaYB+1YXThHZCu6EeOhxLy5XrBZwdxuv1ZgNb4s3uZRgcTRyHgNgIOBaqB3p2mLR
-         yFdIm5NCtyNHdeFLWeW1qeq1BpoeNz7k6+erwZ1xhsTFRDtHMitUmqaTgOlxmsc1BFQT
-         a5fkiKMe3YSaLWxxyduUtga0J558ESE63LwKXyYgPbc8FwokJiGe8p0BYgZvyEVsAR5K
-         PKbw==;
+        b=CLvisnOSk8HtZCyh0GucCfDFaP3qRG6iYn/2kCcWtXw/n7baNTvlBBf9wM3CnQR9K1
+         1wfJqFtR8iNBy8r9QmSgMGf0Lki2QXALTFMB25XR/w1ZJLQkWMRDv+s8wyKqC92+h8mQ
+         AhDa7+OPwn7PWs1LXaVRrj5x06Ddn++O3Z8EM6TzdBq31BoaDio2IDH1c6lzcJ6BJfER
+         q8O+O8p6s6jm9nAQ3z/9CjSfJxAV+3IzrEwO07nDnktUYmbF21Ow92Bsf1p/sAU6OVxe
+         cc19cMCAAoQZPxiew6lbR4X/eVMXBiRlQYoVK4MClPmYZoJXwlN0KoxudQSLlHh6lF2g
+         gOFA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=EJ88aRsF;
+       dkim=pass header.i=@google.com header.s=20230601 header.b="Jvr/C8oQ";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-454fe324cd5si137868351cf.600.2024.08.26.23.47.51
+        by mx.google.com with ESMTPS id af79cd13be357-7a67f44f62bsi1191268585a.722.2024.08.26.23.47.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 26 Aug 2024 23:47:51 -0700 (PDT)
+        Mon, 26 Aug 2024 23:47:52 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=EJ88aRsF;
+       dkim=pass header.i=@google.com header.s=20230601 header.b="Jvr/C8oQ";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sipyN-0004hC-Vg; Tue, 27 Aug 2024 02:46:36 -0400
+	id 1sipyQ-0004vC-Ct; Tue, 27 Aug 2024 02:46:38 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <3H3bNZgUKCH4vcxkriqqing.eqosgow-ctopqpipw.qti@flex--tavip.bounces.google.com>)
- id 1sipy7-000416-Bf
- for qemu-arm@nongnu.org; Tue, 27 Aug 2024 02:46:31 -0400
-Received: from mail-pl1-x649.google.com ([2607:f8b0:4864:20::649])
+ <3FXbNZgUKCHQlSnahYggYdW.UgeiWem-SjefgfYfm.gjY@flex--tavip.bounces.google.com>)
+ id 1sipxj-0003Lw-7l
+ for qemu-arm@nongnu.org; Tue, 27 Aug 2024 02:45:57 -0400
+Received: from mail-yb1-xb4a.google.com ([2607:f8b0:4864:20::b4a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from
- <3H3bNZgUKCH4vcxkriqqing.eqosgow-ctopqpipw.qti@flex--tavip.bounces.google.com>)
- id 1sipxj-00067r-MM
- for qemu-arm@nongnu.org; Tue, 27 Aug 2024 02:46:13 -0400
-Received: by mail-pl1-x649.google.com with SMTP id
- d9443c01a7336-201f89c6b21so63351855ad.1
- for <qemu-arm@nongnu.org>; Mon, 26 Aug 2024 23:45:52 -0700 (PDT)
+ <3FXbNZgUKCHQlSnahYggYdW.UgeiWem-SjefgfYfm.gjY@flex--tavip.bounces.google.com>)
+ id 1sipxX-00065X-8T
+ for qemu-arm@nongnu.org; Tue, 27 Aug 2024 02:45:53 -0400
+Received: by mail-yb1-xb4a.google.com with SMTP id
+ 3f1490d57ef6-e164e64efb6so9570811276.3
+ for <qemu-arm@nongnu.org>; Mon, 26 Aug 2024 23:45:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1724741152; x=1725345952; darn=nongnu.org;
+ d=google.com; s=20230601; t=1724741142; x=1725345942; darn=nongnu.org;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:from:to:cc:subject:date:message-id:reply-to;
- bh=gsfQiA80OgYk0fCZd3pS8YfayOgtUinCxyWulv0LKT8=;
- b=EJ88aRsFWKxrxBIsIlzWT/Hp3uw6swLdIik5/mlFcJP6FydHLnQC3G1jJYoFgMZ7Ep
- fQWC6Xcq46k0WPgzqagjnPp7qYfPJpHFg1kvaUUco0ytSSgBlIotI1usB9/OwhPh82qX
- +OR9XBnxf33/3Z+mMZvPEgZ79J+fy4ZRddFiv/iYrMlTWczS6Ohe+tHzmYmX8JSJUoCp
- gNKPWX9wlYbOByRwhkGiGMXs5BQXkkg+1EYuwvpkuCAKmEHT9hoCdA8LaYCzlajN6Xa5
- HCadoV76qVjg2GHS5kH4ULU/GbnNo5rac1kpGt03rjpnqF9Vkz8MZjsY+zDrgHQkArYG
- U1hg==
+ bh=MUptCNKb7fQCzCuOM6B8parO9p5OujSGWqVEiaYxFh4=;
+ b=Jvr/C8oQyde165iqJvvTyJfguYf0cy65cpMDmiBjvFrulbs+ilJGpLV7tY2hRY5CIv
+ +H9oaV27ZhFRGzb6kMfd0tf0X6CrrqCi379kWtNzmtMCp4Y+H/10g0aDpN2NxmgCEC1S
+ Sk9Ct3a4sGerrNlRCYbBAz4w/gzbNK1RCRpcj1ULNxoptTbEio7S6hF7M2YUanbHhHZx
+ ThCGdHyk0k+OBJ7JmzS6pMjRMEQmYOnyVblFt6N266139o7yvU6Nk5d0tl+J0HOpFK2q
+ bCA7ZnoxtoYJ0BQ/YdjpTjEmqXr+Kn5/Gc9jtoOXbpbbQb426KIA2PFAuTJqt2pgN3fM
+ uIsw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1724741152; x=1725345952;
+ d=1e100.net; s=20230601; t=1724741142; x=1725345942;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=gsfQiA80OgYk0fCZd3pS8YfayOgtUinCxyWulv0LKT8=;
- b=UuBj+Y9ZKpxsnKoMH6HDXKc3T0zBw7V16xbpDSHtSznXobQ0Im6NmQbnmxhy78Z1JL
- Y74XwUGOIrYhFgpWqItHvJHYy/FzTuGVM8e0s0FY1L5NtrlRCaJO5+fthlNdHO3dhu6+
- aeYQ3ns9R3fIT0oiQrYatrXxlye5B4iirHOVdSfy7r/J9hcrlR7nCVjOblviDADkEfB2
- 8ykR61HfulA/+i4wdkJ9RHrLwyFgh9cnHxGkkoKytjvv2dWm4NpGbIbU6HJ9PYBIjCvF
- DBMYH4QztjVLKfxwG78+9qfOqs51ZIezSd/93B32pxRqO//9GgJ9u9pFjLMlRxYzk7va
- Q9oQ==
-X-Gm-Message-State: AOJu0YxENKZwASGf29fVjEVqeQG1pu+D6gDQfCnfdwBXGRmA74wpUQVZ
- hCzQOizCFWv6saZl5X68EJV0t7IrDRG9/FJOGc/X2S/LYgi9QGp4k9MbnZ1kOMAZRlwxzlDcwA=
+ bh=MUptCNKb7fQCzCuOM6B8parO9p5OujSGWqVEiaYxFh4=;
+ b=N7hrTUustwy8QNGqek3GX2dLbZBMYrPv4EDFdQK9cIGJsF3jKySM63WWGO3WtK/2g2
+ c7Ud6hnqN0LbviYbB5IZXSKBAC9Vs5ea2tp1VsYxw4gzvf5o63SsSM8Yp56rdqoiX4wA
+ svafNOPgwPH7KDc08ZHSoA+/GRl13l6rtvYr2qx2DU+xzqR6DJZb2rMA1JEd5ikCdn6H
+ YA0ALP39H/Gnx6Rlt+x1HdIN/9uNdfqkGTeCBbJZWXSVmuNpnvNS+jS8VIiWMe11Guu8
+ qs0vY10pojTBudVdUV4AvkFe8YWKWH2PAp1qYdA3geBpjI3u3JzGtwQj1Dj0MHF7Gqks
+ mR+w==
+X-Gm-Message-State: AOJu0YxzErdmZnTsqJD29Mho3r1KZoz/fmmpw2h28HR197VVFo/QR6YS
+ g9zuHQKRAS8OM6QMhNZIYT9nE9YmaDLZO1/fyBMn1V5bTWVo9aBUCx8kI9BtZgaWYhlYcCye7g=
  =
 X-Received: from warp10.c.googlers.com ([fda3:e722:ac3:cc00:24:72f4:c0a8:750])
- (user=tavip job=sendgmr) by 2002:a17:903:2283:b0:1fb:7f2c:5642
- with SMTP id
- d9443c01a7336-2039e46dac8mr9352325ad.4.1724741151500; Mon, 26 Aug 2024
- 23:45:51 -0700 (PDT)
-Date: Mon, 26 Aug 2024 23:45:15 -0700
+ (user=tavip job=sendgmr) by 2002:a25:3617:0:b0:e13:c772:5c18 with
+ SMTP id
+ 3f1490d57ef6-e17a866a769mr20563276.12.1724741141704; Mon, 26 Aug 2024
+ 23:45:41 -0700 (PDT)
+Date: Mon, 26 Aug 2024 23:45:10 -0700
 In-Reply-To: <20240827064529.1246786-1-tavip@google.com>
 Mime-Version: 1.0
 References: <20240827064529.1246786-1-tavip@google.com>
 X-Mailer: git-send-email 2.46.0.295.g3b9ea8a38a-goog
-Message-ID: <20240827064529.1246786-12-tavip@google.com>
-Subject: [RFC PATCH v3 11/24] hw/misc: add support for RT500's reset controller
+Message-ID: <20240827064529.1246786-7-tavip@google.com>
+Subject: [RFC PATCH v3 06/24] hw/char: add support for flexcomm usart
 From: Octavian Purdila <tavip@google.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, stefanst@google.com, pbonzini@redhat.com, 
@@ -106,17 +106,16 @@ Cc: qemu-arm@nongnu.org, stefanst@google.com, pbonzini@redhat.com,
  alistair@alistair23.me, thuth@redhat.com, philmd@linaro.org, jsnow@redhat.com, 
  crosa@redhat.com, lvivier@redhat.com
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::649;
- envelope-from=3H3bNZgUKCH4vcxkriqqing.eqosgow-ctopqpipw.qti@flex--tavip.bounces.google.com;
- helo=mail-pl1-x649.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b4a;
+ envelope-from=3FXbNZgUKCHQlSnahYggYdW.UgeiWem-SjefgfYfm.gjY@flex--tavip.bounces.google.com;
+ helo=mail-yb1-xb4a.google.com
 X-Spam_score_int: -95
 X-Spam_score: -9.6
 X-Spam_bar: ---------
 X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01, UPPERCASE_50_75=0.008,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=no autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01,
+ USER_IN_DEF_DKIM_WL=-7.5 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -131,43 +130,38 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: S1CfYkAM7IZC
+X-TUID: zM3uXyLIa3LQ
 
-The RT500 reset controller has two instances that have the same
-register layout but with different fields for some registers.
+Add support for NXP's flexcomm usart. It supports interupts and FIFO
+access but no DMA.
 
-The model only provides set and clear functionality for the various
-reset lines which is common for both instances. Because of that only
-one type is implemented for both controllers.
+The patch includes an automatically generated header which contains
+the register layout and helpers.
 
-The patch includes automatically generated headers which contains the
-register layout and helpers.
-
-The header can be regenerated with the svd-rstctl0 and svd-rstctl1
-targets when the build is configured with --enable-mcux-soc-svd.
+The header can be regenerated with the svd-flexcomm-usart target when
+the build is configured with --enable-mcux-soc-svd.
 
 Signed-off-by: Octavian Purdila <tavip@google.com>
 ---
- include/hw/arm/svd/rt500_rstctl0.h |  860 +++++++++++++++++
- include/hw/arm/svd/rt500_rstctl1.h | 1373 ++++++++++++++++++++++++++++
- include/hw/misc/rt500_rstctl.h     |   32 +
- hw/misc/rt500_rstctl.c             |  235 +++++
- hw/arm/svd/meson.build             |    6 +
- hw/misc/Kconfig                    |    3 +
- hw/misc/meson.build                |    1 +
- hw/misc/trace-events               |    4 +
- 8 files changed, 2514 insertions(+)
- create mode 100644 include/hw/arm/svd/rt500_rstctl0.h
- create mode 100644 include/hw/arm/svd/rt500_rstctl1.h
- create mode 100644 include/hw/misc/rt500_rstctl.h
- create mode 100644 hw/misc/rt500_rstctl.c
+ include/hw/arm/svd/flexcomm_usart.h | 1023 +++++++++++++++++++++++++++
+ include/hw/char/flexcomm_usart.h    |   20 +
+ include/hw/misc/flexcomm.h          |    5 +
+ hw/char/flexcomm_usart.c            |  306 ++++++++
+ hw/misc/flexcomm.c                  |    9 +
+ hw/arm/svd/meson.build              |    3 +
+ hw/char/meson.build                 |    1 +
+ hw/char/trace-events                |    9 +
+ 8 files changed, 1376 insertions(+)
+ create mode 100644 include/hw/arm/svd/flexcomm_usart.h
+ create mode 100644 include/hw/char/flexcomm_usart.h
+ create mode 100644 hw/char/flexcomm_usart.c
 
-diff --git a/include/hw/arm/svd/rt500_rstctl0.h b/include/hw/arm/svd/rt500_rstctl0.h
+diff --git a/include/hw/arm/svd/flexcomm_usart.h b/include/hw/arm/svd/flexcomm_usart.h
 new file mode 100644
-index 0000000000..8fc7ca58f6
+index 0000000000..fc85ff897f
 --- /dev/null
-+++ b/include/hw/arm/svd/rt500_rstctl0.h
-@@ -0,0 +1,860 @@
++++ b/include/hw/arm/svd/flexcomm_usart.h
+@@ -0,0 +1,1023 @@
 +/*
 + * Copyright 2016-2023 NXP SPDX-License-Identifier: BSD-3-Clause
 + *
@@ -179,2242 +173,1026 @@ index 0000000000..8fc7ca58f6
 +
 +#include "hw/registerfields.h"
 +
-+/* Reset Controller 0 */
-+#define RT500_RSTCTL0_REGS_NO (31)
++/* Flexcomm USART */
++#define FLEXCOMM_USART_REGS_NO (1024)
 +
-+/* System Reset Status Register */
-+REG32(RT500_RSTCTL0_SYSRSTSTAT, 0);
-+/* VDD CORE Power-On Reset (POR) was detected */
-+FIELD(RT500_RSTCTL0_SYSRSTSTAT, VDD_POR, 0, 1);
-+/* RESETN pin reset was detected */
-+FIELD(RT500_RSTCTL0_SYSRSTSTAT, PAD_RESET, 4, 1);
-+/* ARM reset was detected */
-+FIELD(RT500_RSTCTL0_SYSRSTSTAT, ARM_RESET, 5, 1);
-+/* WatchDog Timer 0 reset was detected */
-+FIELD(RT500_RSTCTL0_SYSRSTSTAT, WDT0_RESET, 6, 1);
-+/* WatchDog Timer 1 reset was detected */
-+FIELD(RT500_RSTCTL0_SYSRSTSTAT, WDT1_RESET, 7, 1);
++/* USART Configuration */
++REG32(FLEXCOMM_USART_CFG, 0);
++/* USART Enable */
++FIELD(FLEXCOMM_USART_CFG, ENABLE, 0, 1);
++/* Data Length. Selects the data size for the USART. */
++FIELD(FLEXCOMM_USART_CFG, DATALEN, 2, 2);
++/* Parity Select. Selects what type of parity is used by the USART. */
++FIELD(FLEXCOMM_USART_CFG, PARITYSEL, 4, 2);
++/* Stop Length */
++FIELD(FLEXCOMM_USART_CFG, STOPLEN, 6, 1);
++/* Mode 32 kHz */
++FIELD(FLEXCOMM_USART_CFG, MODE32K, 7, 1);
++/* LIN Break Mode Enable */
++FIELD(FLEXCOMM_USART_CFG, LINMODE, 8, 1);
++/* CTS Enable */
++FIELD(FLEXCOMM_USART_CFG, CTSEN, 9, 1);
++/* Synchronous Enable. Selects synchronous or asynchronous operation. */
++FIELD(FLEXCOMM_USART_CFG, SYNCEN, 11, 1);
++/* Clock Polarity */
++FIELD(FLEXCOMM_USART_CFG, CLKPOL, 12, 1);
++/* Synchronous mode Master Select */
++FIELD(FLEXCOMM_USART_CFG, SYNCMST, 14, 1);
++/* Loopback Mode */
++FIELD(FLEXCOMM_USART_CFG, LOOP, 15, 1);
++/* Output Enable Turnaround Time Enable for RS-485 Operation. */
++FIELD(FLEXCOMM_USART_CFG, OETA, 18, 1);
++/* Automatic Address Matching Enable */
++FIELD(FLEXCOMM_USART_CFG, AUTOADDR, 19, 1);
++/* Output Enable Select */
++FIELD(FLEXCOMM_USART_CFG, OESEL, 20, 1);
++/* Output Enable Polarity */
++FIELD(FLEXCOMM_USART_CFG, OEPOL, 21, 1);
++/* Receive Data Polarity */
++FIELD(FLEXCOMM_USART_CFG, RXPOL, 22, 1);
++/* Transmit data polarity */
++FIELD(FLEXCOMM_USART_CFG, TXPOL, 23, 1);
 +
-+/* Peripheral Reset Control Register 0 */
-+REG32(RT500_RSTCTL0_PRSTCTL0, 16);
-+/* Fusion F1 DSP reset control */
-+FIELD(RT500_RSTCTL0_PRSTCTL0, DSP, 1, 1);
-+/* AXI Switch reset control */
-+FIELD(RT500_RSTCTL0_PRSTCTL0, AXI_SWITCH, 3, 1);
-+/* POWERQUAD reset control */
-+FIELD(RT500_RSTCTL0_PRSTCTL0, POWERQUAD, 8, 1);
-+/* CASPER reset control */
-+FIELD(RT500_RSTCTL0_PRSTCTL0, CASPER, 9, 1);
-+/* Hash-Crypt reset control */
-+FIELD(RT500_RSTCTL0_PRSTCTL0, HASHCRYPT, 10, 1);
-+/* PUF reset control */
-+FIELD(RT500_RSTCTL0_PRSTCTL0, PUF, 11, 1);
-+/* RNG reset control */
-+FIELD(RT500_RSTCTL0_PRSTCTL0, RNG, 12, 1);
-+/* FLEXSPI0 and OTFAD reset control */
-+FIELD(RT500_RSTCTL0_PRSTCTL0, FLEXSPI0_OTFAD, 16, 1);
-+/* FLEXSPI1 reset control */
-+FIELD(RT500_RSTCTL0_PRSTCTL0, FLEXSPI1, 18, 1);
-+/* USB PHY reset control */
-+FIELD(RT500_RSTCTL0_PRSTCTL0, USBHS_PHY, 20, 1);
-+/* USB HS Device reset control */
-+FIELD(RT500_RSTCTL0_PRSTCTL0, USBHS_DEVICE, 21, 1);
-+/* USB HOST reset control */
-+FIELD(RT500_RSTCTL0_PRSTCTL0, USBHS_HOST, 22, 1);
-+/* USB RAM reset control */
-+FIELD(RT500_RSTCTL0_PRSTCTL0, USBHS_SRAM, 23, 1);
-+/* SCTimer reset control */
-+FIELD(RT500_RSTCTL0_PRSTCTL0, SCT, 24, 1);
-+/* GPU reset control */
-+FIELD(RT500_RSTCTL0_PRSTCTL0, GPU, 26, 1);
-+/* LCDIF Display Controller reset control */
-+FIELD(RT500_RSTCTL0_PRSTCTL0, DISPLAY_CONTROLLER, 27, 1);
-+/* MIPI Digital serial Interface controller reset control */
-+FIELD(RT500_RSTCTL0_PRSTCTL0, MIPI_DSI_CONTROLLER, 28, 1);
-+/* MIPI DSI PHY reset control */
-+FIELD(RT500_RSTCTL0_PRSTCTL0, MIPI_DSI_PHY, 29, 1);
-+/* SMARTDMA Event/Algorithm handler reset control */
-+FIELD(RT500_RSTCTL0_PRSTCTL0, SMARTDMA, 30, 1);
++/* USART Control */
++REG32(FLEXCOMM_USART_CTL, 4);
++/* Break Enable */
++FIELD(FLEXCOMM_USART_CTL, TXBRKEN, 1, 1);
++/* Enable Address Detect Mode */
++FIELD(FLEXCOMM_USART_CTL, ADDRDET, 2, 1);
++/* Transmit Disable */
++FIELD(FLEXCOMM_USART_CTL, TXDIS, 6, 1);
++/* Continuous Clock Generation */
++FIELD(FLEXCOMM_USART_CTL, CC, 8, 1);
++/* Clear Continuous Clock */
++FIELD(FLEXCOMM_USART_CTL, CLRCCONRX, 9, 1);
++/* Autobaud Enable */
++FIELD(FLEXCOMM_USART_CTL, AUTOBAUD, 16, 1);
 +
-+/* Peripheral Reset Control Register 1 */
-+REG32(RT500_RSTCTL0_PRSTCTL1, 20);
-+/* SDIO0 reset control */
-+FIELD(RT500_RSTCTL0_PRSTCTL1, SDIO0, 2, 1);
-+/* SDIO1 reset control */
-+FIELD(RT500_RSTCTL0_PRSTCTL1, SDIO1, 3, 1);
-+/* Analog comparator reset control */
-+FIELD(RT500_RSTCTL0_PRSTCTL1, ACMP0, 15, 1);
-+/* Analog-to-Digital converter reset control */
-+FIELD(RT500_RSTCTL0_PRSTCTL1, ADC0, 16, 1);
-+/* Secure GPIO 0 reset control */
-+FIELD(RT500_RSTCTL0_PRSTCTL1, SHSGPIO0, 24, 1);
++/* USART Status */
++REG32(FLEXCOMM_USART_STAT, 8);
++/* Receiver Idle */
++FIELD(FLEXCOMM_USART_STAT, RXIDLE, 1, 1);
++/* Transmitter Idle */
++FIELD(FLEXCOMM_USART_STAT, TXIDLE, 3, 1);
++/* CTS value */
++FIELD(FLEXCOMM_USART_STAT, CTS, 4, 1);
++/* Delta CTS */
++FIELD(FLEXCOMM_USART_STAT, DELTACTS, 5, 1);
++/* Transmitter Disabled Status Flag */
++FIELD(FLEXCOMM_USART_STAT, TXDISSTAT, 6, 1);
++/* Received Break */
++FIELD(FLEXCOMM_USART_STAT, RXBRK, 10, 1);
++/* Delta Received Break */
++FIELD(FLEXCOMM_USART_STAT, DELTARXBRK, 11, 1);
++/* Start */
++FIELD(FLEXCOMM_USART_STAT, START, 12, 1);
++/* Framing Error Interrupt Flag */
++FIELD(FLEXCOMM_USART_STAT, FRAMERRINT, 13, 1);
++/* Parity Error Interrupt Flag */
++FIELD(FLEXCOMM_USART_STAT, PARITYERRINT, 14, 1);
++/* Received Noise Interrupt Flag */
++FIELD(FLEXCOMM_USART_STAT, RXNOISEINT, 15, 1);
++/* Auto Baud Error */
++FIELD(FLEXCOMM_USART_STAT, ABERR, 16, 1);
 +
-+/* Peripheral Reset Control Register 2 */
-+REG32(RT500_RSTCTL0_PRSTCTL2, 24);
-+/* Micro-tick timer reset control */
-+FIELD(RT500_RSTCTL0_PRSTCTL2, UTICK0, 0, 1);
-+/* Watchdog timer reset control */
-+FIELD(RT500_RSTCTL0_PRSTCTL2, WWDT0, 1, 1);
++/* Interrupt Enable Read and Set for USART (not FIFO) Status */
++REG32(FLEXCOMM_USART_INTENSET, 12);
++/* Transmit Idle Flag */
++FIELD(FLEXCOMM_USART_INTENSET, TXIDLEEN, 3, 1);
++/* Delta CTS Input Flag */
++FIELD(FLEXCOMM_USART_INTENSET, DELTACTSEN, 5, 1);
++/* Transmit Disabled Flag */
++FIELD(FLEXCOMM_USART_INTENSET, TXDISEN, 6, 1);
++/* Delta Receive Break Enable */
++FIELD(FLEXCOMM_USART_INTENSET, DELTARXBRKEN, 11, 1);
++/* Start Enable */
++FIELD(FLEXCOMM_USART_INTENSET, STARTEN, 12, 1);
++/* Frame Error Enable */
++FIELD(FLEXCOMM_USART_INTENSET, FRAMERREN, 13, 1);
++/* Parity Error Enble */
++FIELD(FLEXCOMM_USART_INTENSET, PARITYERREN, 14, 1);
++/* Receive Noise Enable */
++FIELD(FLEXCOMM_USART_INTENSET, RXNOISEEN, 15, 1);
++/* Auto Baud Error Enable */
++FIELD(FLEXCOMM_USART_INTENSET, ABERREN, 16, 1);
 +
-+/* Peripheral Reset Control Register 0 SET */
-+REG32(RT500_RSTCTL0_PRSTCTL0_SET, 64);
-+/* Fusion_ DSP reset set */
-+FIELD(RT500_RSTCTL0_PRSTCTL0_SET, DSP, 1, 1);
-+/* AXI SWITCH reset set */
-+FIELD(RT500_RSTCTL0_PRSTCTL0_SET, AXI_SWITCH, 3, 1);
-+/* POWERQUAD reset set */
-+FIELD(RT500_RSTCTL0_PRSTCTL0_SET, POWERQUAD, 8, 1);
-+/* CASPER reset set */
-+FIELD(RT500_RSTCTL0_PRSTCTL0_SET, CASPER, 9, 1);
-+/* HASHCRYPT reset set */
-+FIELD(RT500_RSTCTL0_PRSTCTL0_SET, HASHCRYPT, 10, 1);
-+/* PUF reset set */
-+FIELD(RT500_RSTCTL0_PRSTCTL0_SET, PUF, 11, 1);
-+/* RNG reset set */
-+FIELD(RT500_RSTCTL0_PRSTCTL0_SET, RNG, 12, 1);
-+/* FLEXSPI0 and OTFAD reset set */
-+FIELD(RT500_RSTCTL0_PRSTCTL0_SET, FLEXSPI0_OTFAD, 16, 1);
-+/* FLEXSPI1 reset set */
-+FIELD(RT500_RSTCTL0_PRSTCTL0_SET, FLEXSPI1, 18, 1);
-+/* USB PHY reset set */
-+FIELD(RT500_RSTCTL0_PRSTCTL0_SET, USBHS_PHY, 20, 1);
-+/* USB Device reset set */
-+FIELD(RT500_RSTCTL0_PRSTCTL0_SET, USBHS_DEVICE, 21, 1);
-+/* USB HOST reset set */
-+FIELD(RT500_RSTCTL0_PRSTCTL0_SET, USBHS_HOST, 22, 1);
-+/* USBHS SRAM reset set */
-+FIELD(RT500_RSTCTL0_PRSTCTL0_SET, USBHS_SRAM, 23, 1);
-+/* SCTimer reset set */
-+FIELD(RT500_RSTCTL0_PRSTCTL0_SET, SCT, 24, 1);
-+/* GPU reset set */
-+FIELD(RT500_RSTCTL0_PRSTCTL0_SET, GPU, 26, 1);
-+/* LCDIF DISPLAY CONTROLLER reset set */
-+FIELD(RT500_RSTCTL0_PRSTCTL0_SET, DISPLAY_CONTROLLER, 27, 1);
-+/* MIPI DSI controller reset set */
-+FIELD(RT500_RSTCTL0_PRSTCTL0_SET, MIPI_DSI_CONTROLLER, 28, 1);
-+/* MIPI DSI PHY reset set */
-+FIELD(RT500_RSTCTL0_PRSTCTL0_SET, MIPI_DSI_PHY, 29, 1);
-+/* SMARTDMA Event/Algorithm handler reset set */
-+FIELD(RT500_RSTCTL0_PRSTCTL0_SET, SMARTDMA, 30, 1);
++/* Interrupt Enable Clear */
++REG32(FLEXCOMM_USART_INTENCLR, 16);
++/* Transmit Idle Clear */
++FIELD(FLEXCOMM_USART_INTENCLR, TXIDLECLR, 3, 1);
++/* Delta CTS Clear */
++FIELD(FLEXCOMM_USART_INTENCLR, DELTACTSCLR, 5, 1);
++/* Transmit Disable Clear */
++FIELD(FLEXCOMM_USART_INTENCLR, TXDISCLR, 6, 1);
++/* Delta Receive Break Clear */
++FIELD(FLEXCOMM_USART_INTENCLR, DELTARXBRKCLR, 11, 1);
++/* Start Clear */
++FIELD(FLEXCOMM_USART_INTENCLR, STARTCLR, 12, 1);
++/* Frame Error Clear */
++FIELD(FLEXCOMM_USART_INTENCLR, FRAMERRCLR, 13, 1);
++/* Parity Error Clear */
++FIELD(FLEXCOMM_USART_INTENCLR, PARITYERRCLR, 14, 1);
++/* Receive Noise Clear */
++FIELD(FLEXCOMM_USART_INTENCLR, RXNOISECLR, 15, 1);
++/* Auto Baud Error Clear */
++FIELD(FLEXCOMM_USART_INTENCLR, ABERRCLR, 16, 1);
 +
-+/* Peripheral Reset Control Register 1 SET */
-+REG32(RT500_RSTCTL0_PRSTCTL1_SET, 68);
-+/* SDIO0 reset set */
-+FIELD(RT500_RSTCTL0_PRSTCTL1_SET, SDIO0, 2, 1);
-+/* SDIO1 reset set */
-+FIELD(RT500_RSTCTL0_PRSTCTL1_SET, SDIO1, 3, 1);
-+/* ACMP0 reset set */
-+FIELD(RT500_RSTCTL0_PRSTCTL1_SET, ACMP0, 15, 1);
-+/* ADC0 reset set */
-+FIELD(RT500_RSTCTL0_PRSTCTL1_SET, ADC0, 16, 1);
-+/* SHSGPIO0 reset set */
-+FIELD(RT500_RSTCTL0_PRSTCTL1_SET, SHSGPIO0, 24, 1);
++/* Baud Rate Generator */
++REG32(FLEXCOMM_USART_BRG, 32);
++/* Baud Rate Generator Value */
++FIELD(FLEXCOMM_USART_BRG, BRGVAL, 0, 16);
 +
-+/* Peripheral Reset Control Register 2 SET */
-+REG32(RT500_RSTCTL0_PRSTCTL2_SET, 72);
-+/* Micro-tick timer 0 reset set */
-+FIELD(RT500_RSTCTL0_PRSTCTL2_SET, UTICK0, 0, 1);
-+/* WWDT0 reset set */
-+FIELD(RT500_RSTCTL0_PRSTCTL2_SET, WWDT0, 1, 1);
++/* Interrupt Status */
++REG32(FLEXCOMM_USART_INTSTAT, 36);
++/* Transmitter Idle Flag */
++FIELD(FLEXCOMM_USART_INTSTAT, TXIDLE, 3, 1);
++/* Delta CTS Change Flag */
++FIELD(FLEXCOMM_USART_INTSTAT, DELTACTS, 5, 1);
++/* Transmitter Disabled Interrupt Flag */
++FIELD(FLEXCOMM_USART_INTSTAT, TXDISINT, 6, 1);
++/* Delta Receiver Break Change Flag */
++FIELD(FLEXCOMM_USART_INTSTAT, DELTARXBRK, 11, 1);
++/* Start Detected on Receiver Flag */
++FIELD(FLEXCOMM_USART_INTSTAT, START, 12, 1);
++/* Framing Error Interrupt Flag */
++FIELD(FLEXCOMM_USART_INTSTAT, FRAMERRINT, 13, 1);
++/* Parity Error Interrupt Flag */
++FIELD(FLEXCOMM_USART_INTSTAT, PARITYERRINT, 14, 1);
++/* Received Noise Interrupt Flag */
++FIELD(FLEXCOMM_USART_INTSTAT, RXNOISEINT, 15, 1);
++/* Auto Baud Error Interrupt Flag */
++FIELD(FLEXCOMM_USART_INTSTAT, ABERRINT, 16, 1);
 +
-+/* Peripheral Reset Control Register 0 CLR */
-+REG32(RT500_RSTCTL0_PRSTCTL0_CLR, 112);
-+/* Fusion_ F1 DSP reset clear */
-+FIELD(RT500_RSTCTL0_PRSTCTL0_CLR, DSP, 1, 1);
-+/* AXI SWITCH reset clear */
-+FIELD(RT500_RSTCTL0_PRSTCTL0_CLR, AXI_SWITCH, 3, 1);
-+/* POWERQUAD reset clear */
-+FIELD(RT500_RSTCTL0_PRSTCTL0_CLR, POWERQUAD, 8, 1);
-+/* CASPER reset clear */
-+FIELD(RT500_RSTCTL0_PRSTCTL0_CLR, CASPER, 9, 1);
-+/* HASHCRYPT reset clear */
-+FIELD(RT500_RSTCTL0_PRSTCTL0_CLR, HASHCRYPT, 10, 1);
-+/* PUF reset clear */
-+FIELD(RT500_RSTCTL0_PRSTCTL0_CLR, PUF, 11, 1);
-+/* RNG reset clear */
-+FIELD(RT500_RSTCTL0_PRSTCTL0_CLR, RNG, 12, 1);
-+/* FLEXSPI0 and OTFAD reset clear */
-+FIELD(RT500_RSTCTL0_PRSTCTL0_CLR, FLEXSPI0_OTFAD, 16, 1);
-+/* FLEXSPI1 reset clear */
-+FIELD(RT500_RSTCTL0_PRSTCTL0_CLR, FLEXSPI1, 18, 1);
-+/* USB PHY reset clear */
-+FIELD(RT500_RSTCTL0_PRSTCTL0_CLR, USBHS_PHY, 20, 1);
-+/* USB DEVICE reset clear */
-+FIELD(RT500_RSTCTL0_PRSTCTL0_CLR, USBHS_DEVICE, 21, 1);
-+/* USB HOST reset clear */
-+FIELD(RT500_RSTCTL0_PRSTCTL0_CLR, USBHS_HOST, 22, 1);
-+/* USBHS SRAM reset clear */
-+FIELD(RT500_RSTCTL0_PRSTCTL0_CLR, USBHS_SRAM, 23, 1);
-+/* SCT reset clear */
-+FIELD(RT500_RSTCTL0_PRSTCTL0_CLR, SCT, 24, 1);
-+/* GPU reset clear */
-+FIELD(RT500_RSTCTL0_PRSTCTL0_CLR, GPU, 26, 1);
-+/* LCDIF DISPLAY CONTROLLER reset clear */
-+FIELD(RT500_RSTCTL0_PRSTCTL0_CLR, DISPLAY_CONTROLLER, 27, 1);
-+/* MIPI DSI controller reset clear */
-+FIELD(RT500_RSTCTL0_PRSTCTL0_CLR, MIPI_DSI_CONTROLLER, 28, 1);
-+/* MIPI DSI PHY reset clear */
-+FIELD(RT500_RSTCTL0_PRSTCTL0_CLR, MIPI_DSI_PHY, 29, 1);
-+/* SMARTDMA Event/Algorithm handler reset clear */
-+FIELD(RT500_RSTCTL0_PRSTCTL0_CLR, SMARTDMA, 30, 1);
++/* Oversample Selection Register for Asynchronous Communication */
++REG32(FLEXCOMM_USART_OSR, 40);
++/* Oversample Selection Value */
++FIELD(FLEXCOMM_USART_OSR, OSRVAL, 0, 4);
 +
-+/* Peripheral Reset Control Register 1 CLR */
-+REG32(RT500_RSTCTL0_PRSTCTL1_CLR, 116);
-+/* SDIO0 reset clear */
-+FIELD(RT500_RSTCTL0_PRSTCTL1_CLR, SDIO0, 2, 1);
-+/* SDIO1 reset clear */
-+FIELD(RT500_RSTCTL0_PRSTCTL1_CLR, SDIO1, 3, 1);
-+/* ACMP0 reset clear */
-+FIELD(RT500_RSTCTL0_PRSTCTL1_CLR, ACMP0, 15, 1);
-+/* ADC0 reset clear */
-+FIELD(RT500_RSTCTL0_PRSTCTL1_CLR, ADC0, 16, 1);
-+/* Secure HSGPIO0 reset clear */
-+FIELD(RT500_RSTCTL0_PRSTCTL1_CLR, SHSGPIO0, 24, 1);
++/* Address Register for Automatic Address Matching */
++REG32(FLEXCOMM_USART_ADDR, 44);
++/* Address */
++FIELD(FLEXCOMM_USART_ADDR, ADDRESS, 0, 8);
 +
-+/* Peripheral Reset Control Register 2 CLR */
-+REG32(RT500_RSTCTL0_PRSTCTL2_CLR, 120);
-+/* Micro-tick timer 0 reset clear */
-+FIELD(RT500_RSTCTL0_PRSTCTL2_CLR, UTICK0, 0, 1);
-+/* WWDT0 reset clear */
-+FIELD(RT500_RSTCTL0_PRSTCTL2_CLR, WWDT0, 1, 1);
++/* FIFO Configuration */
++REG32(FLEXCOMM_USART_FIFOCFG, 3584);
++/* Enable the Transmit FIFO. */
++FIELD(FLEXCOMM_USART_FIFOCFG, ENABLETX, 0, 1);
++/* Enable the Receive FIFO */
++FIELD(FLEXCOMM_USART_FIFOCFG, ENABLERX, 1, 1);
++/* FIFO Size Configuration */
++FIELD(FLEXCOMM_USART_FIFOCFG, SIZE, 4, 2);
++/* DMA Configuration for Transmit */
++FIELD(FLEXCOMM_USART_FIFOCFG, DMATX, 12, 1);
++/* DMA Configuration for Receive */
++FIELD(FLEXCOMM_USART_FIFOCFG, DMARX, 13, 1);
++/* Wake-up for Transmit FIFO Level */
++FIELD(FLEXCOMM_USART_FIFOCFG, WAKETX, 14, 1);
++/* Wake-up for Receive FIFO Level */
++FIELD(FLEXCOMM_USART_FIFOCFG, WAKERX, 15, 1);
++/* Empty Command for the Transmit FIFO */
++FIELD(FLEXCOMM_USART_FIFOCFG, EMPTYTX, 16, 1);
++/* Empty Command for the Receive FIFO */
++FIELD(FLEXCOMM_USART_FIFOCFG, EMPTYRX, 17, 1);
++/* Pop FIFO for Debug Reads */
++FIELD(FLEXCOMM_USART_FIFOCFG, POPDBG, 18, 1);
 +
++/* FIFO Status */
++REG32(FLEXCOMM_USART_FIFOSTAT, 3588);
++/* TX FIFO Error */
++FIELD(FLEXCOMM_USART_FIFOSTAT, TXERR, 0, 1);
++/* RX FIFO Error */
++FIELD(FLEXCOMM_USART_FIFOSTAT, RXERR, 1, 1);
++/* Peripheral Interrupt */
++FIELD(FLEXCOMM_USART_FIFOSTAT, PERINT, 3, 1);
++/* Transmit FIFO Empty */
++FIELD(FLEXCOMM_USART_FIFOSTAT, TXEMPTY, 4, 1);
++/* Transmit FIFO is Not Full */
++FIELD(FLEXCOMM_USART_FIFOSTAT, TXNOTFULL, 5, 1);
++/* Receive FIFO is Not Empty */
++FIELD(FLEXCOMM_USART_FIFOSTAT, RXNOTEMPTY, 6, 1);
++/* Receive FIFO is Full */
++FIELD(FLEXCOMM_USART_FIFOSTAT, RXFULL, 7, 1);
++/* Transmit FIFO Current Level */
++FIELD(FLEXCOMM_USART_FIFOSTAT, TXLVL, 8, 5);
++/* Receive FIFO Current Level */
++FIELD(FLEXCOMM_USART_FIFOSTAT, RXLVL, 16, 5);
 +
-+typedef enum {
-+    /* No VDD CORE POR event is detected */
-+    RT500_RSTCTL0_SYSRSTSTAT_VDD_POR_VDD_POR_EVENT_IS_NOT_DETECTED = 0,
-+    /* VDD CORE POR event was detected */
-+    RT500_RSTCTL0_SYSRSTSTAT_VDD_POR_VDD_POR_EVENT_WAS_DETECTED = 1,
-+} RT500_RSTCTL0_SYSRSTSTAT_VDD_POR_Enum;
++/* FIFO Trigger Settings for Interrupt and DMA Request */
++REG32(FLEXCOMM_USART_FIFOTRIG, 3592);
++/* Transmit FIFO Level Trigger Enable. */
++FIELD(FLEXCOMM_USART_FIFOTRIG, TXLVLENA, 0, 1);
++/* Receive FIFO Level Trigger Enable */
++FIELD(FLEXCOMM_USART_FIFOTRIG, RXLVLENA, 1, 1);
++/* Transmit FIFO Level Trigger Point */
++FIELD(FLEXCOMM_USART_FIFOTRIG, TXLVL, 8, 4);
++/* Receive FIFO Level Trigger Point */
++FIELD(FLEXCOMM_USART_FIFOTRIG, RXLVL, 16, 4);
 +
-+typedef enum {
-+    /* No RESETN pin event is detected */
-+    RT500_RSTCTL0_SYSRSTSTAT_PAD_RESET_PAD_RESET_IS_NOT_DETECTED = 0,
-+    /* RESETN pin event was detected. Write '1' to clear this bit */
-+    RT500_RSTCTL0_SYSRSTSTAT_PAD_RESET_PAD_RESET_WAS_DETECTED = 1,
-+} RT500_RSTCTL0_SYSRSTSTAT_PAD_RESET_Enum;
++/* FIFO Interrupt Enable */
++REG32(FLEXCOMM_USART_FIFOINTENSET, 3600);
++/* Transmit Error Interrupt Enable */
++FIELD(FLEXCOMM_USART_FIFOINTENSET, TXERR, 0, 1);
++/* Receive Error Interrupt Enable */
++FIELD(FLEXCOMM_USART_FIFOINTENSET, RXERR, 1, 1);
++/* Transmit FIFO Level Interrupt Enable */
++FIELD(FLEXCOMM_USART_FIFOINTENSET, TXLVL, 2, 1);
++/* Receive FIFO Level Interrupt Enable */
++FIELD(FLEXCOMM_USART_FIFOINTENSET, RXLVL, 3, 1);
 +
-+typedef enum {
-+    /* No ARM reset event is detected */
-+    RT500_RSTCTL0_SYSRSTSTAT_ARM_RESET_ARM_RESET_IS_NOT_DETECTED = 0,
-+    /* ARM reset was detected. Write '1' to clear this bit */
-+    RT500_RSTCTL0_SYSRSTSTAT_ARM_RESET_ARM_RESET_WAS_DETECTED = 1,
-+} RT500_RSTCTL0_SYSRSTSTAT_ARM_RESET_Enum;
++/* FIFO Interrupt Enable Clear */
++REG32(FLEXCOMM_USART_FIFOINTENCLR, 3604);
++/* Transmit Error Interrupt Enable */
++FIELD(FLEXCOMM_USART_FIFOINTENCLR, TXERR, 0, 1);
++/* Receive Error Interrupt Enable */
++FIELD(FLEXCOMM_USART_FIFOINTENCLR, RXERR, 1, 1);
++/* Transmit FIFO Level Interrupt Enable */
++FIELD(FLEXCOMM_USART_FIFOINTENCLR, TXLVL, 2, 1);
++/* Receive FIFO Level Interrupt Enable */
++FIELD(FLEXCOMM_USART_FIFOINTENCLR, RXLVL, 3, 1);
 +
-+typedef enum {
-+    /* No WDT0 reset event detected */
-+    RT500_RSTCTL0_SYSRSTSTAT_WDT0_RESET_WDT0_RESET_IS_NOT_DETECTED = 0,
-+    /* WDT0 reset event detected. Write '1' to clear this bit */
-+    RT500_RSTCTL0_SYSRSTSTAT_WDT0_RESET_WDT0_RESET_WAS_DETECTED = 1,
-+} RT500_RSTCTL0_SYSRSTSTAT_WDT0_RESET_Enum;
++/* FIFO Interrupt Status */
++REG32(FLEXCOMM_USART_FIFOINTSTAT, 3608);
++/* TX FIFO Error Interrupt Status */
++FIELD(FLEXCOMM_USART_FIFOINTSTAT, TXERR, 0, 1);
++/* RX FIFO Error Interrupt Status */
++FIELD(FLEXCOMM_USART_FIFOINTSTAT, RXERR, 1, 1);
++/* Transmit FIFO Level Interrupt Status */
++FIELD(FLEXCOMM_USART_FIFOINTSTAT, TXLVL, 2, 1);
++/* Receive FIFO Level Interrupt Status */
++FIELD(FLEXCOMM_USART_FIFOINTSTAT, RXLVL, 3, 1);
++/* Peripheral Interrupt Status */
++FIELD(FLEXCOMM_USART_FIFOINTSTAT, PERINT, 4, 1);
 +
-+typedef enum {
-+    /* No WDT1 reset event detected */
-+    RT500_RSTCTL0_SYSRSTSTAT_WDT1_RESET_WDT1_RESET_IS_NOT_DETECTED = 0,
-+    /* WDT1 reset event detected. Write '1' to clear this bit */
-+    RT500_RSTCTL0_SYSRSTSTAT_WDT1_RESET_WDT1_RESET_WAS_DETECTED = 1,
-+} RT500_RSTCTL0_SYSRSTSTAT_WDT1_RESET_Enum;
++/* FIFO Write Data */
++REG32(FLEXCOMM_USART_FIFOWR, 3616);
++/* Transmit data to the FIFO */
++FIELD(FLEXCOMM_USART_FIFOWR, TXDATA, 0, 9);
 +
-+typedef enum {
-+    /* Clear Reset */
-+    RT500_RSTCTL0_PRSTCTL0_DSP_DSP_CLR = 0,
-+    /* Set Reset */
-+    RT500_RSTCTL0_PRSTCTL0_DSP_DSP_SET = 1,
-+} RT500_RSTCTL0_PRSTCTL0_DSP_Enum;
++/* FIFO Read Data */
++REG32(FLEXCOMM_USART_FIFORD, 3632);
++/* Received Data from the FIFO */
++FIELD(FLEXCOMM_USART_FIFORD, RXDATA, 0, 9);
++/* Framing Error Status Flag */
++FIELD(FLEXCOMM_USART_FIFORD, FRAMERR, 13, 1);
++/* Parity Error Status Flag */
++FIELD(FLEXCOMM_USART_FIFORD, PARITYERR, 14, 1);
++/* Received Noise Flag */
++FIELD(FLEXCOMM_USART_FIFORD, RXNOISE, 15, 1);
 +
-+typedef enum {
-+    /* Clear Reset */
-+    RT500_RSTCTL0_PRSTCTL0_AXI_SWITCH_AXI_SWITCH_CLR = 0,
-+    /* Set Reset */
-+    RT500_RSTCTL0_PRSTCTL0_AXI_SWITCH_AXI_SWITCH_SET = 1,
-+} RT500_RSTCTL0_PRSTCTL0_AXI_SWITCH_Enum;
++/* FIFO Data Read with No FIFO Pop */
++REG32(FLEXCOMM_USART_FIFORDNOPOP, 3648);
++/* Received Data from the FIFO */
++FIELD(FLEXCOMM_USART_FIFORDNOPOP, RXDATA, 0, 9);
++/* Framing Error Status Flag */
++FIELD(FLEXCOMM_USART_FIFORDNOPOP, FRAMERR, 13, 1);
++/* Parity Error Status Flag */
++FIELD(FLEXCOMM_USART_FIFORDNOPOP, PARITYERR, 14, 1);
++/* Received Noise Flag */
++FIELD(FLEXCOMM_USART_FIFORDNOPOP, RXNOISE, 15, 1);
 +
-+typedef enum {
-+    /* Clear Reset */
-+    RT500_RSTCTL0_PRSTCTL0_POWERQUAD_POWERQUAD_CLR = 0,
-+    /* Set Reset */
-+    RT500_RSTCTL0_PRSTCTL0_POWERQUAD_POWERQUAD_SET = 1,
-+} RT500_RSTCTL0_PRSTCTL0_POWERQUAD_Enum;
++/* FIFO Size */
++REG32(FLEXCOMM_USART_FIFOSIZE, 3656);
++/* FIFO Size */
++FIELD(FLEXCOMM_USART_FIFOSIZE, FIFOSIZE, 0, 5);
 +
-+typedef enum {
-+    /* Clear Reset */
-+    RT500_RSTCTL0_PRSTCTL0_CASPER_CASPER_CLR = 0,
-+    /* Set Reset */
-+    RT500_RSTCTL0_PRSTCTL0_CASPER_CASPER_SET = 1,
-+} RT500_RSTCTL0_PRSTCTL0_CASPER_Enum;
++/* Peripheral Identification */
++REG32(FLEXCOMM_USART_ID, 4092);
++/* Aperture */
++FIELD(FLEXCOMM_USART_ID, APERTURE, 0, 8);
++/* Minor revision of module implementation */
++FIELD(FLEXCOMM_USART_ID, MINOR_REV, 8, 4);
++/* Major revision of module implementation */
++FIELD(FLEXCOMM_USART_ID, MAJOR_REV, 12, 4);
++/* Module identifier for the selected function */
++FIELD(FLEXCOMM_USART_ID, ID, 16, 16);
 +
-+typedef enum {
-+    /* Clear Reset */
-+    RT500_RSTCTL0_PRSTCTL0_HASHCRYPT_HASHCRYPT_CLR = 0,
-+    /* Set Reset */
-+    RT500_RSTCTL0_PRSTCTL0_HASHCRYPT_HASHCRYPT_SET = 1,
-+} RT500_RSTCTL0_PRSTCTL0_HASHCRYPT_Enum;
-+
-+typedef enum {
-+    /* Clear Reset */
-+    RT500_RSTCTL0_PRSTCTL0_PUF_PUF_CLR = 0,
-+    /* Set Reset */
-+    RT500_RSTCTL0_PRSTCTL0_PUF_PUF_SET = 1,
-+} RT500_RSTCTL0_PRSTCTL0_PUF_Enum;
-+
-+typedef enum {
-+    /* Clear Reset */
-+    RT500_RSTCTL0_PRSTCTL0_RNG_RNG_CLR = 0,
-+    /* Set Reset */
-+    RT500_RSTCTL0_PRSTCTL0_RNG_RNG_SET = 1,
-+} RT500_RSTCTL0_PRSTCTL0_RNG_Enum;
-+
-+typedef enum {
-+    /* Clear Reset */
-+    RT500_RSTCTL0_PRSTCTL0_FLEXSPI0_OTFAD_FLEXSPI0_OTFAD_CLR = 0,
-+    /* Set Reset */
-+    RT500_RSTCTL0_PRSTCTL0_FLEXSPI0_OTFAD_FLEXSPI0_OTFAD_SET = 1,
-+} RT500_RSTCTL0_PRSTCTL0_FLEXSPI0_OTFAD_Enum;
-+
-+typedef enum {
-+    /* Clear Reset */
-+    RT500_RSTCTL0_PRSTCTL0_FLEXSPI1_FLEXSPI1_CLR = 0,
-+    /* Set Reset */
-+    RT500_RSTCTL0_PRSTCTL0_FLEXSPI1_FLEXSPI1_SET = 1,
-+} RT500_RSTCTL0_PRSTCTL0_FLEXSPI1_Enum;
 +
 +typedef enum {
-+    /* Clear Reset */
-+    RT500_RSTCTL0_PRSTCTL0_USBHS_PHY_USBHS_PHY_CLR = 0,
-+    /* Set Reset */
-+    RT500_RSTCTL0_PRSTCTL0_USBHS_PHY_USBHS_PHY_SET = 1,
-+} RT500_RSTCTL0_PRSTCTL0_USBHS_PHY_Enum;
++    /* Disabled */
++    FLEXCOMM_USART_CFG_ENABLE_DISABLED = 0,
++    /* Enabled. The USART is enabled for operation. */
++    FLEXCOMM_USART_CFG_ENABLE_ENABLED = 1,
++} FLEXCOMM_USART_CFG_ENABLE_Enum;
 +
 +typedef enum {
-+    /* Clear Reset */
-+    RT500_RSTCTL0_PRSTCTL0_USBHS_DEVICE_USBHS_DEVICE_CLR = 0,
-+    /* Set Reset */
-+    RT500_RSTCTL0_PRSTCTL0_USBHS_DEVICE_USBHS_DEVICE_SET = 1,
-+} RT500_RSTCTL0_PRSTCTL0_USBHS_DEVICE_Enum;
++    /* 7 bit data length */
++    FLEXCOMM_USART_CFG_DATALEN_BIT_7 = 0,
++    /* 8 bit data length */
++    FLEXCOMM_USART_CFG_DATALEN_BIT_8 = 1,
++    /*
++     * 9 bit data length. The 9th bit is commonly used for addressing in
++     * multidrop mode. See the ADDRDET[CTL].
++     */
++    FLEXCOMM_USART_CFG_DATALEN_BIT_9 = 2,
++} FLEXCOMM_USART_CFG_DATALEN_Enum;
 +
 +typedef enum {
-+    /* Clear Reset */
-+    RT500_RSTCTL0_PRSTCTL0_USBHS_HOST_USBHS_HOST_CLR = 0,
-+    /* Set Reset */
-+    RT500_RSTCTL0_PRSTCTL0_USBHS_HOST_USBHS_HOST_SET = 1,
-+} RT500_RSTCTL0_PRSTCTL0_USBHS_HOST_Enum;
++    /* No parity */
++    FLEXCOMM_USART_CFG_PARITYSEL_NO_PARITY = 0,
++    /* Even parity */
++    FLEXCOMM_USART_CFG_PARITYSEL_EVEN_PARITY = 2,
++    /* Odd parity */
++    FLEXCOMM_USART_CFG_PARITYSEL_ODD_PARITY = 3,
++} FLEXCOMM_USART_CFG_PARITYSEL_Enum;
 +
 +typedef enum {
-+    /* Clear Reset */
-+    RT500_RSTCTL0_PRSTCTL0_USBHS_SRAM_USBHS_SRAM_CLR = 0,
-+    /* Set Reset */
-+    RT500_RSTCTL0_PRSTCTL0_USBHS_SRAM_USBHS_SRAM_SET = 1,
-+} RT500_RSTCTL0_PRSTCTL0_USBHS_SRAM_Enum;
++    /* 1 stop bit */
++    FLEXCOMM_USART_CFG_STOPLEN_BIT_1 = 0,
++    /*
++     * 2 stop bits. This setting should be used only for asynchronous
++     * communication.
++     */
++    FLEXCOMM_USART_CFG_STOPLEN_BITS_2 = 1,
++} FLEXCOMM_USART_CFG_STOPLEN_Enum;
 +
 +typedef enum {
-+    /* Clear Reset */
-+    RT500_RSTCTL0_PRSTCTL0_SCT_SCT_CLR = 0,
-+    /* Set Reset */
-+    RT500_RSTCTL0_PRSTCTL0_SCT_SCT_SET = 1,
-+} RT500_RSTCTL0_PRSTCTL0_SCT_Enum;
++    /* Disabled. USART uses standard clocking. */
++    FLEXCOMM_USART_CFG_MODE32K_DISABLED = 0,
++    /* Enabled */
++    FLEXCOMM_USART_CFG_MODE32K_ENABLED = 1,
++} FLEXCOMM_USART_CFG_MODE32K_Enum;
 +
 +typedef enum {
-+    /* Clear Reset */
-+    RT500_RSTCTL0_PRSTCTL0_GPU_GPU_CLR = 0,
-+    /* Set Reset */
-+    RT500_RSTCTL0_PRSTCTL0_GPU_GPU_SET = 1,
-+} RT500_RSTCTL0_PRSTCTL0_GPU_Enum;
++    /*
++     * Disabled. Break detect and generate is configured for normal operation.
++     */
++    FLEXCOMM_USART_CFG_LINMODE_DISABLED = 0,
++    /*
++     * Enabled. Break detect and generate is configured for LIN bus operation.
++     */
++    FLEXCOMM_USART_CFG_LINMODE_ENABLED = 1,
++} FLEXCOMM_USART_CFG_LINMODE_Enum;
 +
 +typedef enum {
-+    /* Clear Reset */
-+    RT500_RSTCTL0_PRSTCTL0_DISPLAY_CONTROLLER_DISPLAY_CONTROLLER_CLR = 0,
-+    /* Set Reset */
-+    RT500_RSTCTL0_PRSTCTL0_DISPLAY_CONTROLLER_DISPLAY_CONTROLLER_SET = 1,
-+} RT500_RSTCTL0_PRSTCTL0_DISPLAY_CONTROLLER_Enum;
++    /*
++     * No flow control. The transmitter does not receive any automatic flow
++     * control signal.
++     */
++    FLEXCOMM_USART_CFG_CTSEN_DISABLED = 0,
++    /*
++     * Flow control enabled. The transmitter uses the CTS input (or RTS output
++     * in loopback mode) for flow control purposes.
++     */
++    FLEXCOMM_USART_CFG_CTSEN_ENABLED = 1,
++} FLEXCOMM_USART_CFG_CTSEN_Enum;
 +
 +typedef enum {
-+    /* Clear Reset */
-+    RT500_RSTCTL0_PRSTCTL0_MIPI_DSI_CONTROLLER_MIPI_DSI_CONTROLLER_CLR = 0,
-+    /* Set Reset */
-+    RT500_RSTCTL0_PRSTCTL0_MIPI_DSI_CONTROLLER_MIPI_DSI_CONTROLLER_SET = 1,
-+} RT500_RSTCTL0_PRSTCTL0_MIPI_DSI_CONTROLLER_Enum;
++    /* Asynchronous mode */
++    FLEXCOMM_USART_CFG_SYNCEN_ASYNCHRONOUS_MODE = 0,
++    /* Synchronous mode */
++    FLEXCOMM_USART_CFG_SYNCEN_SYNCHRONOUS_MODE = 1,
++} FLEXCOMM_USART_CFG_SYNCEN_Enum;
 +
 +typedef enum {
-+    /* Clear Reset */
-+    RT500_RSTCTL0_PRSTCTL0_MIPI_DSI_PHY_MIPI_DSI_PHY_CLR = 0,
-+    /* Set Reset */
-+    RT500_RSTCTL0_PRSTCTL0_MIPI_DSI_PHY_MIPI_DSI_PHY_SET = 1,
-+} RT500_RSTCTL0_PRSTCTL0_MIPI_DSI_PHY_Enum;
++    /* Falling edge. RXD is sampled on the falling edge of SCLK. */
++    FLEXCOMM_USART_CFG_CLKPOL_FALLING_EDGE = 0,
++    /* Rising edge. RXD is sampled on the rising edge of SCLK. */
++    FLEXCOMM_USART_CFG_CLKPOL_RISING_EDGE = 1,
++} FLEXCOMM_USART_CFG_CLKPOL_Enum;
 +
 +typedef enum {
-+    /* Clear Reset */
-+    RT500_RSTCTL0_PRSTCTL0_SMARTDMA_SMARTDMA_CLR = 0,
-+    /* Set Reset */
-+    RT500_RSTCTL0_PRSTCTL0_SMARTDMA_SMARTDMA_SET = 1,
-+} RT500_RSTCTL0_PRSTCTL0_SMARTDMA_Enum;
++    /* Slave. When synchronous mode is enabled, the USART is a slave. */
++    FLEXCOMM_USART_CFG_SYNCMST_SLAVE = 0,
++    /* Master. When synchronous mode is enabled, the USART is a master. */
++    FLEXCOMM_USART_CFG_SYNCMST_MASTER = 1,
++} FLEXCOMM_USART_CFG_SYNCMST_Enum;
 +
 +typedef enum {
-+    /* Clear Reset */
-+    RT500_RSTCTL0_PRSTCTL1_SDIO0_SDIO0_CLR = 0,
-+    /* Set Reset */
-+    RT500_RSTCTL0_PRSTCTL1_SDIO0_SDIO0_SET = 1,
-+} RT500_RSTCTL0_PRSTCTL1_SDIO0_Enum;
++    /* Normal operation */
++    FLEXCOMM_USART_CFG_LOOP_NORMAL = 0,
++    /* Loopback mode */
++    FLEXCOMM_USART_CFG_LOOP_LOOPBACK = 1,
++} FLEXCOMM_USART_CFG_LOOP_Enum;
 +
 +typedef enum {
-+    /* Clear Reset */
-+    RT500_RSTCTL0_PRSTCTL1_SDIO1_SDIO1_CLR = 0,
-+    /* Set Reset */
-+    RT500_RSTCTL0_PRSTCTL1_SDIO1_SDIO1_SET = 1,
-+} RT500_RSTCTL0_PRSTCTL1_SDIO1_Enum;
++    /* Disabled */
++    FLEXCOMM_USART_CFG_OETA_DISABLED = 0,
++    /* Enabled */
++    FLEXCOMM_USART_CFG_OETA_ENABLED = 1,
++} FLEXCOMM_USART_CFG_OETA_Enum;
 +
 +typedef enum {
-+    /* Clear Reset */
-+    RT500_RSTCTL0_PRSTCTL1_ACMP0_ACMP0_CLR = 0,
-+    /* Set Reset */
-+    RT500_RSTCTL0_PRSTCTL1_ACMP0_ACMP0_SET = 1,
-+} RT500_RSTCTL0_PRSTCTL1_ACMP0_Enum;
++    /* Disabled */
++    FLEXCOMM_USART_CFG_AUTOADDR_DISABLED = 0,
++    /* Enabled */
++    FLEXCOMM_USART_CFG_AUTOADDR_ENABLED = 1,
++} FLEXCOMM_USART_CFG_AUTOADDR_Enum;
 +
 +typedef enum {
-+    /* Clear Reset */
-+    RT500_RSTCTL0_PRSTCTL1_ADC0_ADC0_CLR = 0,
-+    /* Set Reset */
-+    RT500_RSTCTL0_PRSTCTL1_ADC0_ADC0_SET = 1,
-+} RT500_RSTCTL0_PRSTCTL1_ADC0_Enum;
++    /*
++     * Standard. The RTS signal is used as the standard flow control function.
++     */
++    FLEXCOMM_USART_CFG_OESEL_STANDARD = 0,
++    /*
++     * RS-485. The RTS signal is configured to provide an output enable signal
++     * to control an RS-485 transceiver.
++     */
++    FLEXCOMM_USART_CFG_OESEL_RS_485 = 1,
++} FLEXCOMM_USART_CFG_OESEL_Enum;
 +
 +typedef enum {
-+    /* Clear Reset */
-+    RT500_RSTCTL0_PRSTCTL1_SHSGPIO0_SHSGPIO0_CLR = 0,
-+    /* Set Reset */
-+    RT500_RSTCTL0_PRSTCTL1_SHSGPIO0_SHSGPIO0_SET = 1,
-+} RT500_RSTCTL0_PRSTCTL1_SHSGPIO0_Enum;
++    /* Low. If selected by OESEL, the output enable is active low. */
++    FLEXCOMM_USART_CFG_OEPOL_LOW = 0,
++    /* High. If selected by OESEL, the output enable is active high. */
++    FLEXCOMM_USART_CFG_OEPOL_HIGH = 1,
++} FLEXCOMM_USART_CFG_OEPOL_Enum;
 +
 +typedef enum {
-+    /* Clear Reset */
-+    RT500_RSTCTL0_PRSTCTL2_UTICK0_UTICK0_CLR = 0,
-+    /* Set Reset */
-+    RT500_RSTCTL0_PRSTCTL2_UTICK0_UTICK0_SET = 1,
-+} RT500_RSTCTL0_PRSTCTL2_UTICK0_Enum;
++    /* Standard */
++    FLEXCOMM_USART_CFG_RXPOL_STANDARD = 0,
++    /* Inverted */
++    FLEXCOMM_USART_CFG_RXPOL_INVERTED = 1,
++} FLEXCOMM_USART_CFG_RXPOL_Enum;
 +
 +typedef enum {
-+    /* Clear Reset */
-+    RT500_RSTCTL0_PRSTCTL2_WWDT0_WWDT0_CLR = 0,
-+    /* Set Reset */
-+    RT500_RSTCTL0_PRSTCTL2_WWDT0_WWDT0_SET = 1,
-+} RT500_RSTCTL0_PRSTCTL2_WWDT0_Enum;
++    /* Standard */
++    FLEXCOMM_USART_CFG_TXPOL_STANDARD = 0,
++    /* Inverted */
++    FLEXCOMM_USART_CFG_TXPOL_INVERTED = 1,
++} FLEXCOMM_USART_CFG_TXPOL_Enum;
 +
 +typedef enum {
-+    /* No Effect */
-+    RT500_RSTCTL0_PRSTCTL0_SET_DSP_DSP_CLR = 0,
-+    /* Sets the PRSTCTL0 Bit */
-+    RT500_RSTCTL0_PRSTCTL0_SET_DSP_DSP_SET = 1,
-+} RT500_RSTCTL0_PRSTCTL0_SET_DSP_Enum;
++    /* Normal operation */
++    FLEXCOMM_USART_CTL_TXBRKEN_NORMAL = 0,
++    /* Continuous break */
++    FLEXCOMM_USART_CTL_TXBRKEN_CONTINUOUS = 1,
++} FLEXCOMM_USART_CTL_TXBRKEN_Enum;
 +
 +typedef enum {
-+    /* No Effect */
-+    RT500_RSTCTL0_PRSTCTL0_SET_AXI_SWITCH_AXI_SWITCH_CLR = 0,
-+    /* Sets the PRSTCTL0 Bit */
-+    RT500_RSTCTL0_PRSTCTL0_SET_AXI_SWITCH_AXI_SWITCH_SET = 1,
-+} RT500_RSTCTL0_PRSTCTL0_SET_AXI_SWITCH_Enum;
++    /* Disabled. The USART presents all incoming data. */
++    FLEXCOMM_USART_CTL_ADDRDET_DISABLED = 0,
++    /* Enabled */
++    FLEXCOMM_USART_CTL_ADDRDET_ENABLED = 1,
++} FLEXCOMM_USART_CTL_ADDRDET_Enum;
 +
 +typedef enum {
-+    /* No Effect */
-+    RT500_RSTCTL0_PRSTCTL0_SET_POWERQUAD_POWERQUAD_CLR = 0,
-+    /* Sets the PRSTCTL0 Bit */
-+    RT500_RSTCTL0_PRSTCTL0_SET_POWERQUAD_POWERQUAD_SET = 1,
-+} RT500_RSTCTL0_PRSTCTL0_SET_POWERQUAD_Enum;
++    /* Not disabled. USART transmitter is not disabled. */
++    FLEXCOMM_USART_CTL_TXDIS_ENABLED = 0,
++    /*
++     * Disabled. USART transmitter is disabled after any character currently
++     * being transmitted is complete. This feature can be used to facilitate
++     * software flow control.
++     */
++    FLEXCOMM_USART_CTL_TXDIS_DISABLED = 1,
++} FLEXCOMM_USART_CTL_TXDIS_Enum;
 +
 +typedef enum {
-+    /* No Effect */
-+    RT500_RSTCTL0_PRSTCTL0_SET_CASPER_CASPER_CLR = 0,
-+    /* Sets the PRSTCTL0 Bit */
-+    RT500_RSTCTL0_PRSTCTL0_SET_CASPER_CASPER_SET = 1,
-+} RT500_RSTCTL0_PRSTCTL0_SET_CASPER_Enum;
++    /* Clock on character */
++    FLEXCOMM_USART_CTL_CC_CLOCK_ON_CHARACTER = 0,
++    /* Continuous clock */
++    FLEXCOMM_USART_CTL_CC_CONTINOUS_CLOCK = 1,
++} FLEXCOMM_USART_CTL_CC_Enum;
 +
 +typedef enum {
-+    /* No Effect */
-+    RT500_RSTCTL0_PRSTCTL0_SET_HASHCRYPT_HASHCRYPT_CLR = 0,
-+    /* Sets the PRSTCTL0 Bit */
-+    RT500_RSTCTL0_PRSTCTL0_SET_HASHCRYPT_HASHCRYPT_SET = 1,
-+} RT500_RSTCTL0_PRSTCTL0_SET_HASHCRYPT_Enum;
++    /* No effect. No effect on the CC bit. */
++    FLEXCOMM_USART_CTL_CLRCCONRX_NO_EFFECT = 0,
++    /* Auto-clear */
++    FLEXCOMM_USART_CTL_CLRCCONRX_AUTO_CLEAR = 1,
++} FLEXCOMM_USART_CTL_CLRCCONRX_Enum;
 +
 +typedef enum {
-+    /* No Effect */
-+    RT500_RSTCTL0_PRSTCTL0_SET_PUF_PUF_CLR = 0,
-+    /* Sets the PRSTCTL0 Bit */
-+    RT500_RSTCTL0_PRSTCTL0_SET_PUF_PUF_SET = 1,
-+} RT500_RSTCTL0_PRSTCTL0_SET_PUF_Enum;
++    /* Disabled */
++    FLEXCOMM_USART_CTL_AUTOBAUD_DISABLED = 0,
++    /* Enabled */
++    FLEXCOMM_USART_CTL_AUTOBAUD_ENABLED = 1,
++} FLEXCOMM_USART_CTL_AUTOBAUD_Enum;
 +
 +typedef enum {
-+    /* No Effect */
-+    RT500_RSTCTL0_PRSTCTL0_SET_RNG_RNG_CLR = 0,
-+    /* Sets the PRSTCTL0 Bit */
-+    RT500_RSTCTL0_PRSTCTL0_SET_RNG_RNG_SET = 1,
-+} RT500_RSTCTL0_PRSTCTL0_SET_RNG_Enum;
++    /* The receiver is currently receiving data. */
++    FLEXCOMM_USART_STAT_RXIDLE_RX_ACTIVE = 0,
++    /* The receiver is not currently receiving data. */
++    FLEXCOMM_USART_STAT_RXIDLE_RX_IDLE = 1,
++} FLEXCOMM_USART_STAT_RXIDLE_Enum;
 +
 +typedef enum {
-+    /* No Effect */
-+    RT500_RSTCTL0_PRSTCTL0_SET_FLEXSPI0_OTFAD_FLEXSPI0_OTFAD_CLR = 0,
-+    /* Sets the PRSTCTL0 Bit */
-+    RT500_RSTCTL0_PRSTCTL0_SET_FLEXSPI0_OTFAD_FLEXSPI0_OTFAD_SET = 1,
-+} RT500_RSTCTL0_PRSTCTL0_SET_FLEXSPI0_OTFAD_Enum;
++    /* The transmitter is currently sending data. */
++    FLEXCOMM_USART_STAT_TXIDLE_TX_ACTIVE = 0,
++    /* The transmitter is not currently sending data. */
++    FLEXCOMM_USART_STAT_TXIDLE_TX_IDLE = 1,
++} FLEXCOMM_USART_STAT_TXIDLE_Enum;
 +
 +typedef enum {
-+    /* No Effect */
-+    RT500_RSTCTL0_PRSTCTL0_SET_FLEXSPI1_FLEXSPI1_CLR = 0,
-+    /* Sets the PRSTCTL0 Bit */
-+    RT500_RSTCTL0_PRSTCTL0_SET_FLEXSPI1_FLEXSPI1_SET = 1,
-+} RT500_RSTCTL0_PRSTCTL0_SET_FLEXSPI1_Enum;
++    /*
++     * Not Idle. Indicates that the USART transmitter is NOT fully idle after
++     * being disabled.
++     */
++    FLEXCOMM_USART_STAT_TXDISSTAT_TX_NOT_IDLE = 0,
++    /*
++     * Idle. Indicates that the USART transmitter is fully idle after being
++     * disabled (CTL[TXDIS] = 1).
++     */
++    FLEXCOMM_USART_STAT_TXDISSTAT_TX_IDLE = 1,
++} FLEXCOMM_USART_STAT_TXDISSTAT_Enum;
 +
 +typedef enum {
-+    /* No Effect */
-+    RT500_RSTCTL0_PRSTCTL0_SET_USBHS_PHY_USBHS_PHY_CLR = 0,
-+    /* Sets the PRSTCTL0 Bit */
-+    RT500_RSTCTL0_PRSTCTL0_SET_USBHS_PHY_USBHS_PHY_SET = 1,
-+} RT500_RSTCTL0_PRSTCTL0_SET_USBHS_PHY_Enum;
++    /*
++     * Enables an interrupt when the transmitter becomes idle (STAT[TXIDLE] =
++     * 1).
++     */
++    FLEXCOMM_USART_INTENSET_TXIDLEEN_ENABLE = 1,
++} FLEXCOMM_USART_INTENSET_TXIDLEEN_Enum;
 +
 +typedef enum {
-+    /* No Effect */
-+    RT500_RSTCTL0_PRSTCTL0_SET_USBHS_DEVICE_USBHS_DEVICE_CLR = 0,
-+    /* Sets the PRSTCTL0 Bit */
-+    RT500_RSTCTL0_PRSTCTL0_SET_USBHS_DEVICE_USBHS_DEVICE_SET = 1,
-+} RT500_RSTCTL0_PRSTCTL0_SET_USBHS_DEVICE_Enum;
++    /*
++     * Enables an interrupt when there is a change in the state of the CTS
++     * input.
++     */
++    FLEXCOMM_USART_INTENSET_DELTACTSEN_ENABLE = 1,
++} FLEXCOMM_USART_INTENSET_DELTACTSEN_Enum;
 +
 +typedef enum {
-+    /* No Effect */
-+    RT500_RSTCTL0_PRSTCTL0_SET_USBHS_HOST_USBHS_HOST_CLR = 0,
-+    /* Sets the PRSTCTL0 Bit */
-+    RT500_RSTCTL0_PRSTCTL0_SET_USBHS_HOST_USBHS_HOST_SET = 1,
-+} RT500_RSTCTL0_PRSTCTL0_SET_USBHS_HOST_Enum;
++    /*
++     * Enables an interrupt when the transmitter is fully disabled as indicated
++     * by the STAT[TXDISINT] flag. See the description of the STAT[TXDISINT]
++     * flag.
++     */
++    FLEXCOMM_USART_INTENSET_TXDISEN_ENABLE = 1,
++} FLEXCOMM_USART_INTENSET_TXDISEN_Enum;
 +
 +typedef enum {
-+    /* No Effect */
-+    RT500_RSTCTL0_PRSTCTL0_SET_USBHS_SRAM_USBHS_SRAM_CLR = 0,
-+    /* Sets the PRSTCTL0 Bit */
-+    RT500_RSTCTL0_PRSTCTL0_SET_USBHS_SRAM_USBHS_SRAM_SET = 1,
-+} RT500_RSTCTL0_PRSTCTL0_SET_USBHS_SRAM_Enum;
++    /* Enable */
++    FLEXCOMM_USART_INTENSET_DELTARXBRKEN_ENABLE = 1,
++} FLEXCOMM_USART_INTENSET_DELTARXBRKEN_Enum;
 +
 +typedef enum {
-+    /* No Effect */
-+    RT500_RSTCTL0_PRSTCTL0_SET_SCT_SCT_CLR = 0,
-+    /* Sets the PRSTCTL0 Bit */
-+    RT500_RSTCTL0_PRSTCTL0_SET_SCT_SCT_SET = 1,
-+} RT500_RSTCTL0_PRSTCTL0_SET_SCT_Enum;
++    /* Enables an interrupt when a received start bit has been detected. */
++    FLEXCOMM_USART_INTENSET_STARTEN_ENABLE = 1,
++} FLEXCOMM_USART_INTENSET_STARTEN_Enum;
 +
 +typedef enum {
-+    /* No Effect */
-+    RT500_RSTCTL0_PRSTCTL0_SET_GPU_GPU_CLR = 0,
-+    /* Sets the PRSTCTL0 Bit */
-+    RT500_RSTCTL0_PRSTCTL0_SET_GPU_GPU_SET = 1,
-+} RT500_RSTCTL0_PRSTCTL0_SET_GPU_Enum;
++    /* Enables an interrupt when a framing error has been detected. */
++    FLEXCOMM_USART_INTENSET_FRAMERREN_ENABLE = 1,
++} FLEXCOMM_USART_INTENSET_FRAMERREN_Enum;
 +
 +typedef enum {
-+    /* No Effect */
-+    RT500_RSTCTL0_PRSTCTL0_SET_DISPLAY_CONTROLLER_DISPLAY_CONTROLLER_CLR = 0,
-+    /* Sets the PRSTCTL0 Bit */
-+    RT500_RSTCTL0_PRSTCTL0_SET_DISPLAY_CONTROLLER_DISPLAY_CONTROLLER_SET = 1,
-+} RT500_RSTCTL0_PRSTCTL0_SET_DISPLAY_CONTROLLER_Enum;
++    /* Enables an interrupt when a parity error has been detected. */
++    FLEXCOMM_USART_INTENSET_PARITYERREN_ENABLE = 1,
++} FLEXCOMM_USART_INTENSET_PARITYERREN_Enum;
 +
 +typedef enum {
-+    /* No Effect */
-+    RT500_RSTCTL0_PRSTCTL0_SET_MIPI_DSI_CONTROLLER_MIPI_DSI_CONTROLLER_CLR = 0,
-+    /* Sets the PRSTCTL0 Bit */
-+    RT500_RSTCTL0_PRSTCTL0_SET_MIPI_DSI_CONTROLLER_MIPI_DSI_CONTROLLER_SET = 1,
-+} RT500_RSTCTL0_PRSTCTL0_SET_MIPI_DSI_CONTROLLER_Enum;
++    /*
++     * Enables an interrupt when noise is detected. See the description of the
++     * CTL[RXNOISEINT] bit.
++     */
++    FLEXCOMM_USART_INTENSET_RXNOISEEN_ENABLE = 1,
++} FLEXCOMM_USART_INTENSET_RXNOISEEN_Enum;
 +
 +typedef enum {
-+    /* No Effect */
-+    RT500_RSTCTL0_PRSTCTL0_SET_MIPI_DSI_PHY_MIPI_DSI_PHY_CLR = 0,
-+    /* Sets the PRSTCTL0 Bit */
-+    RT500_RSTCTL0_PRSTCTL0_SET_MIPI_DSI_PHY_MIPI_DSI_PHY_SET = 1,
-+} RT500_RSTCTL0_PRSTCTL0_SET_MIPI_DSI_PHY_Enum;
++    /* Enables an interrupt when an auto baud error occurs. */
++    FLEXCOMM_USART_INTENSET_ABERREN_ENABLE = 1,
++} FLEXCOMM_USART_INTENSET_ABERREN_Enum;
 +
 +typedef enum {
-+    /* No Effect */
-+    RT500_RSTCTL0_PRSTCTL0_SET_SMARTDMA_SMARTDMA_CLR = 0,
-+    /* Sets the PRSTCTL0 Bit */
-+    RT500_RSTCTL0_PRSTCTL0_SET_SMARTDMA_SMARTDMA_SET = 1,
-+} RT500_RSTCTL0_PRSTCTL0_SET_SMARTDMA_Enum;
++    /* FCLK is used directly by the USART function. */
++    FLEXCOMM_USART_BRG_BRGVAL_Zero = 0,
++    /* FCLK is divided by 2 before use by the USART function. */
++    FLEXCOMM_USART_BRG_BRGVAL_One = 1,
++    /* FCLK is divided by 3 before use by the USART function. */
++    FLEXCOMM_USART_BRG_BRGVAL_Two = 2,
++    /* FCLK is divided by 65,536 before use by the USART function. */
++    FLEXCOMM_USART_BRG_BRGVAL_FFFF = 65535,
++} FLEXCOMM_USART_BRG_BRGVAL_Enum;
++
++typedef enum {
++    /* Not supported */
++    FLEXCOMM_USART_OSR_OSRVAL_zero = 0,
++    /* Not supported */
++    FLEXCOMM_USART_OSR_OSRVAL_one = 1,
++    /* Not supported */
++    FLEXCOMM_USART_OSR_OSRVAL_two = 2,
++    /* Not supported */
++    FLEXCOMM_USART_OSR_OSRVAL_three = 3,
++    /* 5 function clocks are used to transmit and receive each data bit. */
++    FLEXCOMM_USART_OSR_OSRVAL_four = 4,
++    /* 6 function clocks are used to transmit and receive each data bit. */
++    FLEXCOMM_USART_OSR_OSRVAL_five = 5,
++    /* 16 function clocks are used to transmit and receive each data bit. */
++    FLEXCOMM_USART_OSR_OSRVAL_sixteen = 15,
++} FLEXCOMM_USART_OSR_OSRVAL_Enum;
++
++typedef enum {
++    /* The transmit FIFO is not enabled. */
++    FLEXCOMM_USART_FIFOCFG_ENABLETX_DISABLED = 0,
++    /* The transmit FIFO is enabled. */
++    FLEXCOMM_USART_FIFOCFG_ENABLETX_ENABLED = 1,
++} FLEXCOMM_USART_FIFOCFG_ENABLETX_Enum;
++
++typedef enum {
++    /* The receive FIFO is not enabled. */
++    FLEXCOMM_USART_FIFOCFG_ENABLERX_DISABLED = 0,
++    /* The receive FIFO is enabled. */
++    FLEXCOMM_USART_FIFOCFG_ENABLERX_ENABLED = 1,
++} FLEXCOMM_USART_FIFOCFG_ENABLERX_Enum;
++
++typedef enum {
++    /* FIFO is configured as 16 entries of 8 bits. */
++    FLEXCOMM_USART_FIFOCFG_SIZE_SIZE16 = 0,
++    /* Not used */
++    FLEXCOMM_USART_FIFOCFG_SIZE_SIZEINVALID1 = 1,
++    /* Not used */
++    FLEXCOMM_USART_FIFOCFG_SIZE_SIZEINVALID2 = 2,
++    /* Not used */
++    FLEXCOMM_USART_FIFOCFG_SIZE_SIZEINVALID3 = 3,
++} FLEXCOMM_USART_FIFOCFG_SIZE_Enum;
++
++typedef enum {
++    /* DMA is not used for the transmit function. */
++    FLEXCOMM_USART_FIFOCFG_DMATX_DISABLED = 0,
++    /*
++     * Triggers DMA for the transmit function if the FIFO is not full.
++     * Generally, data interrupts would be disabled if DMA is enabled.
++     */
++    FLEXCOMM_USART_FIFOCFG_DMATX_ENABLED = 1,
++} FLEXCOMM_USART_FIFOCFG_DMATX_Enum;
++
++typedef enum {
++    /* DMA is not used for the receive function. */
++    FLEXCOMM_USART_FIFOCFG_DMARX_DISABLED = 0,
++    /*
++     * Triggers DMA for the receive function if the FIFO is not empty.
++     * Generally, data interrupts would be disabled if DMA is enabled.
++     */
++    FLEXCOMM_USART_FIFOCFG_DMARX_ENABLED = 1,
++} FLEXCOMM_USART_FIFOCFG_DMARX_Enum;
++
++typedef enum {
++    /* Only enabled interrupts will wake up the device from low power modes. */
++    FLEXCOMM_USART_FIFOCFG_WAKETX_DISABLED = 0,
++    /*
++     * A device wake-up for DMA will occur if the transmit FIFO level reaches
++     * the value specified by FIFOTRIG[TXLVL], even when the TXLVL interrupt is
++     * not enabled.
++     */
++    FLEXCOMM_USART_FIFOCFG_WAKETX_ENABLED = 1,
++} FLEXCOMM_USART_FIFOCFG_WAKETX_Enum;
++
++typedef enum {
++    /* Only enabled interrupts will wake up the device from low power modes. */
++    FLEXCOMM_USART_FIFOCFG_WAKERX_DISABLED = 0,
++    /*
++     * A device wake-up for DMA will occur if the receive FIFO level reaches
++     * the value specified by FIFOTRIG[RXLVL], even when the RXLVL interrupt is
++     * not enabled.
++     */
++    FLEXCOMM_USART_FIFOCFG_WAKERX_ENABLED = 1,
++} FLEXCOMM_USART_FIFOCFG_WAKERX_Enum;
 +
 +typedef enum {
 +    /* No effect */
-+    RT500_RSTCTL0_PRSTCTL1_SET_SDIO0_SDIO0_CLR = 0,
-+    /* Sets the PRSTCTL1 Bit */
-+    RT500_RSTCTL0_PRSTCTL1_SET_SDIO0_SDIO0_SET = 1,
-+} RT500_RSTCTL0_PRSTCTL1_SET_SDIO0_Enum;
++    FLEXCOMM_USART_FIFOCFG_EMPTYTX_NO_EFFECT = 0,
++    /* The TX FIFO is emptied. */
++    FLEXCOMM_USART_FIFOCFG_EMPTYTX_EMPTY_THE_TX_FIFO = 1,
++} FLEXCOMM_USART_FIFOCFG_EMPTYTX_Enum;
 +
 +typedef enum {
 +    /* No effect */
-+    RT500_RSTCTL0_PRSTCTL1_SET_SDIO1_SDIO1_CLR = 0,
-+    /* Sets the PRSTCTL1 Bit */
-+    RT500_RSTCTL0_PRSTCTL1_SET_SDIO1_SDIO1_SET = 1,
-+} RT500_RSTCTL0_PRSTCTL1_SET_SDIO1_Enum;
++    FLEXCOMM_USART_FIFOCFG_EMPTYRX_NO_EFFECT = 0,
++    /* The RX FIFO is emptied. */
++    FLEXCOMM_USART_FIFOCFG_EMPTYRX_EMPTY_THE_RX_FIFO = 1,
++} FLEXCOMM_USART_FIFOCFG_EMPTYRX_Enum;
++
++typedef enum {
++    /* Debug reads of the FIFO do not pop the FIFO. */
++    FLEXCOMM_USART_FIFOCFG_POPDBG_DO_NOT_POP = 0,
++    /* A debug read will cause the FIFO to pop. */
++    FLEXCOMM_USART_FIFOCFG_POPDBG_POP = 1,
++} FLEXCOMM_USART_FIFOCFG_POPDBG_Enum;
++
++typedef enum {
++    /* A transmit FIFO error has not occurred. */
++    FLEXCOMM_USART_FIFOSTAT_TXERR_NO_TXERR = 0,
++    /*
++     * A transmit FIFO error has occurred. This error could be an overflow
++     * caused by pushing data into a full FIFO, or by an underflow if the FIFO
++     * is empty when data is needed.
++     */
++    FLEXCOMM_USART_FIFOSTAT_TXERR_TXERR = 1,
++} FLEXCOMM_USART_FIFOSTAT_TXERR_Enum;
++
++typedef enum {
++    /* A receive FIFO overflow has not occurred */
++    FLEXCOMM_USART_FIFOSTAT_RXERR_NO_RXERR = 0,
++    /*
++     * A receive FIFO overflow has occurred, caused by software or DMA not
++     * emptying the FIFO fast enough
++     */
++    FLEXCOMM_USART_FIFOSTAT_RXERR_RXERR = 1,
++} FLEXCOMM_USART_FIFOSTAT_RXERR_Enum;
++
++typedef enum {
++    /* No Peripheral Interrupt */
++    FLEXCOMM_USART_FIFOSTAT_PERINT_NO_PERINT = 0,
++    /* Peripheral Interrupt */
++    FLEXCOMM_USART_FIFOSTAT_PERINT_PERINT = 1,
++} FLEXCOMM_USART_FIFOSTAT_PERINT_Enum;
++
++typedef enum {
++    /* The transmit FIFO is not empty. */
++    FLEXCOMM_USART_FIFOSTAT_TXEMPTY_TXFIFO_ISNOTEMPTY = 0,
++    /*
++     * The transmit FIFO is empty, although the peripheral may still be
++     * processing the last piece of data.
++     */
++    FLEXCOMM_USART_FIFOSTAT_TXEMPTY_TXFIFO_ISEMPTY = 1,
++} FLEXCOMM_USART_FIFOSTAT_TXEMPTY_Enum;
++
++typedef enum {
++    /*
++     * The transmit FIFO is full and another write would cause it to overflow.
++     */
++    FLEXCOMM_USART_FIFOSTAT_TXNOTFULL_TXFIFO_ISFULL = 0,
++    /* The transmit FIFO is not full, so more data can be written. */
++    FLEXCOMM_USART_FIFOSTAT_TXNOTFULL_TXFIFO_ISNOTFULL = 1,
++} FLEXCOMM_USART_FIFOSTAT_TXNOTFULL_Enum;
++
++typedef enum {
++    /* The receive FIFO is empty. */
++    FLEXCOMM_USART_FIFOSTAT_RXNOTEMPTY_RXFIFO_ISEMPTY = 0,
++    /* The receive FIFO is not empty, so data can be read. */
++    FLEXCOMM_USART_FIFOSTAT_RXNOTEMPTY_RXFIFO_ISNOTEMPTY = 1,
++} FLEXCOMM_USART_FIFOSTAT_RXNOTEMPTY_Enum;
++
++typedef enum {
++    /* The receive FIFO is not full. */
++    FLEXCOMM_USART_FIFOSTAT_RXFULL_RXFIFO_ISNOTFULL = 0,
++    /* The receive FIFO is full. */
++    FLEXCOMM_USART_FIFOSTAT_RXFULL_RXFIFO_ISFULL = 1,
++} FLEXCOMM_USART_FIFOSTAT_RXFULL_Enum;
++
++typedef enum {
++    /* Transmit FIFO level does not generate a FIFO level trigger. */
++    FLEXCOMM_USART_FIFOTRIG_TXLVLENA_DISABLED = 0,
++    /*
++     * A trigger will be generated if the transmit FIFO level reaches the value
++     * specified by the TXLVL field.
++     */
++    FLEXCOMM_USART_FIFOTRIG_TXLVLENA_ENABLED = 1,
++} FLEXCOMM_USART_FIFOTRIG_TXLVLENA_Enum;
++
++typedef enum {
++    /* Receive FIFO level does not generate a FIFO level trigger. */
++    FLEXCOMM_USART_FIFOTRIG_RXLVLENA_DISABLED = 0,
++    /*
++     * An trigger will be generated if the receive FIFO level reaches the value
++     * specified by the RXLVL field.
++     */
++    FLEXCOMM_USART_FIFOTRIG_RXLVLENA_ENABLED = 1,
++} FLEXCOMM_USART_FIFOTRIG_RXLVLENA_Enum;
++
++typedef enum {
++    /* Trigger when the TX FIFO becomes empty */
++    FLEXCOMM_USART_FIFOTRIG_TXLVL_TXLVL0 = 0,
++    /* Trigger when the TX FIFO level decreases to 1 entry */
++    FLEXCOMM_USART_FIFOTRIG_TXLVL_TXLVL1 = 1,
++    /*
++     * Trigger when the TX FIFO level decreases to 15 entries (is no longer
++     * full)
++     */
++    FLEXCOMM_USART_FIFOTRIG_TXLVL_TXLVL15 = 15,
++} FLEXCOMM_USART_FIFOTRIG_TXLVL_Enum;
++
++typedef enum {
++    /* Trigger when the RX FIFO has received 1 entry (is no longer empty) */
++    FLEXCOMM_USART_FIFOTRIG_RXLVL_RXLVL1 = 0,
++    /* Trigger when the RX FIFO has received 2 entries */
++    FLEXCOMM_USART_FIFOTRIG_RXLVL_RXLVL2 = 1,
++    /* Trigger when the RX FIFO has received 16 entries (has become full) */
++    FLEXCOMM_USART_FIFOTRIG_RXLVL_RXLVL15 = 15,
++} FLEXCOMM_USART_FIFOTRIG_RXLVL_Enum;
++
++typedef enum {
++    /* No interrupt will be generated for a transmit error. */
++    FLEXCOMM_USART_FIFOINTENSET_TXERR_DISABLED = 0,
++    /* An interrupt will be generated when a transmit error occurs. */
++    FLEXCOMM_USART_FIFOINTENSET_TXERR_ENABLED = 1,
++} FLEXCOMM_USART_FIFOINTENSET_TXERR_Enum;
++
++typedef enum {
++    /* No interrupt will be generated for a receive error. */
++    FLEXCOMM_USART_FIFOINTENSET_RXERR_DISABLED = 0,
++    /* An interrupt will be generated when a receive error occurs. */
++    FLEXCOMM_USART_FIFOINTENSET_RXERR_ENABLED = 1,
++} FLEXCOMM_USART_FIFOINTENSET_RXERR_Enum;
++
++typedef enum {
++    /* No interrupt will be generated based on the TX FIFO level. */
++    FLEXCOMM_USART_FIFOINTENSET_TXLVL_DISABLED = 0,
++    /*
++     * If FIFOTRIG[TXLVLENA] = 1, then an interrupt will be generated when the
++     * TX FIFO level decreases to the level specified by FIFOTRIG[TXLVL]
++     */
++    FLEXCOMM_USART_FIFOINTENSET_TXLVL_ENABLED = 1,
++} FLEXCOMM_USART_FIFOINTENSET_TXLVL_Enum;
++
++typedef enum {
++    /* No interrupt will be generated based on the RX FIFO level. */
++    FLEXCOMM_USART_FIFOINTENSET_RXLVL_DISABLED = 0,
++    /*
++     * If FIFOTRIG[RXLVLENA] = 1, an interrupt will be generated when the when
++     * the RX FIFO level increases to the level specified by FIFOTRIG[RXLVL].
++     */
++    FLEXCOMM_USART_FIFOINTENSET_RXLVL_ENABLED = 1,
++} FLEXCOMM_USART_FIFOINTENSET_RXLVL_Enum;
 +
 +typedef enum {
 +    /* No effect */
-+    RT500_RSTCTL0_PRSTCTL1_SET_ACMP0_ACMP0_CLR = 0,
-+    /* Sets the PRSTCTL1 Bit */
-+    RT500_RSTCTL0_PRSTCTL1_SET_ACMP0_ACMP0_SET = 1,
-+} RT500_RSTCTL0_PRSTCTL1_SET_ACMP0_Enum;
++    FLEXCOMM_USART_FIFOINTENCLR_TXERR_NO_EFFECT = 0,
++    /* Clear the interrupt */
++    FLEXCOMM_USART_FIFOINTENCLR_TXERR_CLEAR_THE_TXERR = 1,
++} FLEXCOMM_USART_FIFOINTENCLR_TXERR_Enum;
 +
 +typedef enum {
 +    /* No effect */
-+    RT500_RSTCTL0_PRSTCTL1_SET_ADC0_ADC0_CLR = 0,
-+    /* Sets the PRSTCTL1 Bit */
-+    RT500_RSTCTL0_PRSTCTL1_SET_ADC0_ADC0_SET = 1,
-+} RT500_RSTCTL0_PRSTCTL1_SET_ADC0_Enum;
++    FLEXCOMM_USART_FIFOINTENCLR_RXERR_NO_EFFECT = 0,
++    /* Clear the interrupt */
++    FLEXCOMM_USART_FIFOINTENCLR_RXERR_CLEAR_THE_RXERR = 1,
++} FLEXCOMM_USART_FIFOINTENCLR_RXERR_Enum;
 +
 +typedef enum {
 +    /* No effect */
-+    RT500_RSTCTL0_PRSTCTL1_SET_SHSGPIO0_SHSGPIO0_CLR = 0,
-+    /* Sets the PRSTCTL1 Bit */
-+    RT500_RSTCTL0_PRSTCTL1_SET_SHSGPIO0_SHSGPIO0_SET = 1,
-+} RT500_RSTCTL0_PRSTCTL1_SET_SHSGPIO0_Enum;
++    FLEXCOMM_USART_FIFOINTENCLR_TXLVL_NO_EFFECT = 0,
++    /* Clear the interrupt */
++    FLEXCOMM_USART_FIFOINTENCLR_TXLVL_CLEAR_THE_TXLVL = 1,
++} FLEXCOMM_USART_FIFOINTENCLR_TXLVL_Enum;
 +
 +typedef enum {
 +    /* No effect */
-+    RT500_RSTCTL0_PRSTCTL2_SET_UTICK0_UTICK0_CLR = 0,
-+    /* Sets the PRSTCTL2 Bit */
-+    RT500_RSTCTL0_PRSTCTL2_SET_UTICK0_UTICK0_SET = 1,
-+} RT500_RSTCTL0_PRSTCTL2_SET_UTICK0_Enum;
++    FLEXCOMM_USART_FIFOINTENCLR_RXLVL_NO_EFFECT = 0,
++    /* Clear the interrupt */
++    FLEXCOMM_USART_FIFOINTENCLR_RXLVL_CLEAR_THE_RXLVL = 1,
++} FLEXCOMM_USART_FIFOINTENCLR_RXLVL_Enum;
 +
 +typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL0_PRSTCTL2_SET_WWDT0_WWDT0_CLR = 0,
-+    /* Sets the PRSTCTL2 Bit */
-+    RT500_RSTCTL0_PRSTCTL2_SET_WWDT0_WWDT0_SET = 1,
-+} RT500_RSTCTL0_PRSTCTL2_SET_WWDT0_Enum;
++    /* Not pending */
++    FLEXCOMM_USART_FIFOINTSTAT_TXERR_TXERR_ISNOTPENDING = 0,
++    /* Pending */
++    FLEXCOMM_USART_FIFOINTSTAT_TXERR_TXERR_ISPENDING = 1,
++} FLEXCOMM_USART_FIFOINTSTAT_TXERR_Enum;
 +
 +typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL0_PRSTCTL0_CLR_DSP_DSP_CLR = 0,
-+    /* Clears the PRSTCTL0 Bit */
-+    RT500_RSTCTL0_PRSTCTL0_CLR_DSP_DSP_SET = 1,
-+} RT500_RSTCTL0_PRSTCTL0_CLR_DSP_Enum;
++    /* Not pending */
++    FLEXCOMM_USART_FIFOINTSTAT_RXERR_RXERR_ISNOTPENDING = 0,
++    /* Pending */
++    FLEXCOMM_USART_FIFOINTSTAT_RXERR_RXERR_ISPENDING = 1,
++} FLEXCOMM_USART_FIFOINTSTAT_RXERR_Enum;
 +
 +typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL0_PRSTCTL0_CLR_AXI_SWITCH_AXI_SWITCH_CLR = 0,
-+    /* Clears the PRSTCTL0 Bit */
-+    RT500_RSTCTL0_PRSTCTL0_CLR_AXI_SWITCH_AXI_SWITCH_SET = 1,
-+} RT500_RSTCTL0_PRSTCTL0_CLR_AXI_SWITCH_Enum;
++    /* Not pending */
++    FLEXCOMM_USART_FIFOINTSTAT_TXLVL_TXLVL_ISNOTPENDING = 0,
++    /* Pending */
++    FLEXCOMM_USART_FIFOINTSTAT_TXLVL_TXLVL_ISPENDING = 1,
++} FLEXCOMM_USART_FIFOINTSTAT_TXLVL_Enum;
 +
 +typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL0_PRSTCTL0_CLR_POWERQUAD_POWERQUAD_CLR = 0,
-+    /* Clears the PRSTCTL0 Bit */
-+    RT500_RSTCTL0_PRSTCTL0_CLR_POWERQUAD_POWERQUAD_SET = 1,
-+} RT500_RSTCTL0_PRSTCTL0_CLR_POWERQUAD_Enum;
++    /* Not pending */
++    FLEXCOMM_USART_FIFOINTSTAT_RXLVL_RXLVL_ISNOTPENDING = 0,
++    /* Pending */
++    FLEXCOMM_USART_FIFOINTSTAT_RXLVL_RXLVL_ISPENDING = 1,
++} FLEXCOMM_USART_FIFOINTSTAT_RXLVL_Enum;
 +
 +typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL0_PRSTCTL0_CLR_CASPER_CASPER_CLR = 0,
-+    /* Clears the PRSTCTL0 Bit */
-+    RT500_RSTCTL0_PRSTCTL0_CLR_CASPER_CASPER_SET = 1,
-+} RT500_RSTCTL0_PRSTCTL0_CLR_CASPER_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL0_PRSTCTL0_CLR_HASHCRYPT_HASHCRYPT_CLR = 0,
-+    /* Clears the PRSTCTL0 Bit */
-+    RT500_RSTCTL0_PRSTCTL0_CLR_HASHCRYPT_HASHCRYPT_SET = 1,
-+} RT500_RSTCTL0_PRSTCTL0_CLR_HASHCRYPT_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL0_PRSTCTL0_CLR_PUF_PUF_CLR = 0,
-+    /* Clears the PRSTCTL0 Bit */
-+    RT500_RSTCTL0_PRSTCTL0_CLR_PUF_PUF_SET = 1,
-+} RT500_RSTCTL0_PRSTCTL0_CLR_PUF_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL0_PRSTCTL0_CLR_RNG_RNG_CLR = 0,
-+    /* Clears the PRSTCTL0 Bit */
-+    RT500_RSTCTL0_PRSTCTL0_CLR_RNG_RNG_SET = 1,
-+} RT500_RSTCTL0_PRSTCTL0_CLR_RNG_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL0_PRSTCTL0_CLR_FLEXSPI0_OTFAD_FLEXSPI0_OTFAD_CLR = 0,
-+    /* Clears the PRSTCTL0 Bit */
-+    RT500_RSTCTL0_PRSTCTL0_CLR_FLEXSPI0_OTFAD_FLEXSPI0_OTFAD_SET = 1,
-+} RT500_RSTCTL0_PRSTCTL0_CLR_FLEXSPI0_OTFAD_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL0_PRSTCTL0_CLR_FLEXSPI1_FLEXSPI1_CLR = 0,
-+    /* Clears the PRSTCTL0 Bit */
-+    RT500_RSTCTL0_PRSTCTL0_CLR_FLEXSPI1_FLEXSPI1_SET = 1,
-+} RT500_RSTCTL0_PRSTCTL0_CLR_FLEXSPI1_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL0_PRSTCTL0_CLR_USBHS_PHY_USBHS_PHY_CLR = 0,
-+    /* Clears the PRSTCTL0 Bit */
-+    RT500_RSTCTL0_PRSTCTL0_CLR_USBHS_PHY_USBHS_PHY_SET = 1,
-+} RT500_RSTCTL0_PRSTCTL0_CLR_USBHS_PHY_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL0_PRSTCTL0_CLR_USBHS_DEVICE_USBHS_DEVICE_CLR = 0,
-+    /* Clears the PRSTCTL0 Bit */
-+    RT500_RSTCTL0_PRSTCTL0_CLR_USBHS_DEVICE_USBHS_DEVICE_SET = 1,
-+} RT500_RSTCTL0_PRSTCTL0_CLR_USBHS_DEVICE_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL0_PRSTCTL0_CLR_USBHS_HOST_USBHS_HOST_CLR = 0,
-+    /* Clears the PRSTCTL0 Bit */
-+    RT500_RSTCTL0_PRSTCTL0_CLR_USBHS_HOST_USBHS_HOST_SET = 1,
-+} RT500_RSTCTL0_PRSTCTL0_CLR_USBHS_HOST_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL0_PRSTCTL0_CLR_USBHS_SRAM_USBHS_SRAM_CLR = 0,
-+    /* Clears the PRSTCTL0 Bit */
-+    RT500_RSTCTL0_PRSTCTL0_CLR_USBHS_SRAM_USBHS_SRAM_SET = 1,
-+} RT500_RSTCTL0_PRSTCTL0_CLR_USBHS_SRAM_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL0_PRSTCTL0_CLR_SCT_SCT_CLR = 0,
-+    /* Clears the PRSTCTL0 Bit */
-+    RT500_RSTCTL0_PRSTCTL0_CLR_SCT_SCT_SET = 1,
-+} RT500_RSTCTL0_PRSTCTL0_CLR_SCT_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL0_PRSTCTL0_CLR_GPU_GPU_CLR = 0,
-+    /* Clears the PRSTCTL0 Bit */
-+    RT500_RSTCTL0_PRSTCTL0_CLR_GPU_GPU_SET = 1,
-+} RT500_RSTCTL0_PRSTCTL0_CLR_GPU_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL0_PRSTCTL0_CLR_DISPLAY_CONTROLLER_DISPLAY_CONTROLLER_CLR = 0,
-+    /* Clears the PRSTCTL0 Bit */
-+    RT500_RSTCTL0_PRSTCTL0_CLR_DISPLAY_CONTROLLER_DISPLAY_CONTROLLER_SET = 1,
-+} RT500_RSTCTL0_PRSTCTL0_CLR_DISPLAY_CONTROLLER_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL0_PRSTCTL0_CLR_MIPI_DSI_CONTROLLER_MIPI_DSI_CONTROLLER_CLR = 0,
-+    /* Clears the PRSTCTL0 Bit */
-+    RT500_RSTCTL0_PRSTCTL0_CLR_MIPI_DSI_CONTROLLER_MIPI_DSI_CONTROLLER_SET = 1,
-+} RT500_RSTCTL0_PRSTCTL0_CLR_MIPI_DSI_CONTROLLER_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL0_PRSTCTL0_CLR_MIPI_DSI_PHY_MIPI_DSI_PHY_CLR = 0,
-+    /* Clears the PRSTCTL0 Bit */
-+    RT500_RSTCTL0_PRSTCTL0_CLR_MIPI_DSI_PHY_MIPI_DSI_PHY_SET = 1,
-+} RT500_RSTCTL0_PRSTCTL0_CLR_MIPI_DSI_PHY_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL0_PRSTCTL0_CLR_SMARTDMA_SMARTDMA_CLR = 0,
-+    /* Clears the PRSTCTL0 Bit */
-+    RT500_RSTCTL0_PRSTCTL0_CLR_SMARTDMA_SMARTDMA_SET = 1,
-+} RT500_RSTCTL0_PRSTCTL0_CLR_SMARTDMA_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL0_PRSTCTL1_CLR_SDIO0_SDIO0_CLR = 0,
-+    /* Clears the PRSTCTL1 Bit */
-+    RT500_RSTCTL0_PRSTCTL1_CLR_SDIO0_SDIO0_SET = 1,
-+} RT500_RSTCTL0_PRSTCTL1_CLR_SDIO0_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL0_PRSTCTL1_CLR_SDIO1_SDIO1_CLR = 0,
-+    /* Clears the PRSTCTL1 Bit */
-+    RT500_RSTCTL0_PRSTCTL1_CLR_SDIO1_SDIO1_SET = 1,
-+} RT500_RSTCTL0_PRSTCTL1_CLR_SDIO1_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL0_PRSTCTL1_CLR_ACMP0_ACMP0_CLR = 0,
-+    /* Clears the PRSTCTL1 Bit */
-+    RT500_RSTCTL0_PRSTCTL1_CLR_ACMP0_ACMP0_SET = 1,
-+} RT500_RSTCTL0_PRSTCTL1_CLR_ACMP0_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL0_PRSTCTL1_CLR_ADC0_ADC0_CLR = 0,
-+    /* Clears the PRSTCTL1 Bit */
-+    RT500_RSTCTL0_PRSTCTL1_CLR_ADC0_ADC0_SET = 1,
-+} RT500_RSTCTL0_PRSTCTL1_CLR_ADC0_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL0_PRSTCTL1_CLR_SHSGPIO0_SHSGPIO0_CLR = 0,
-+    /* Clears the PRSTCTL1 Bit */
-+    RT500_RSTCTL0_PRSTCTL1_CLR_SHSGPIO0_SHSGPIO0_SET = 1,
-+} RT500_RSTCTL0_PRSTCTL1_CLR_SHSGPIO0_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL0_PRSTCTL2_CLR_UTICK0_UTICK0_CLR = 0,
-+    /* Clears the PRSTCTL2 Bit */
-+    RT500_RSTCTL0_PRSTCTL2_CLR_UTICK0_UTICK0_SET = 1,
-+} RT500_RSTCTL0_PRSTCTL2_CLR_UTICK0_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL0_PRSTCTL2_CLR_WWDT0_WWDT0_CLR = 0,
-+    /* Clears the PRSTCTL2 Bit */
-+    RT500_RSTCTL0_PRSTCTL2_CLR_WWDT0_WWDT0_SET = 1,
-+} RT500_RSTCTL0_PRSTCTL2_CLR_WWDT0_Enum;
++    /* Not pending */
++    FLEXCOMM_USART_FIFOINTSTAT_PERINT_PERINT_ISNOTPENDING = 0,
++    /* Pending */
++    FLEXCOMM_USART_FIFOINTSTAT_PERINT_PERINT_ISPENDING = 1,
++} FLEXCOMM_USART_FIFOINTSTAT_PERINT_Enum;
 +
 +
-+#define RT500_RSTCTL0_REGISTER_ACCESS_INFO_ARRAY(_name) \
-+    struct RegisterAccessInfo _name[RT500_RSTCTL0_REGS_NO] = { \
-+        [0 ... RT500_RSTCTL0_REGS_NO - 1] = { \
++#define FLEXCOMM_USART_REGISTER_ACCESS_INFO_ARRAY(_name) \
++    struct RegisterAccessInfo _name[FLEXCOMM_USART_REGS_NO] = { \
++        [0 ... FLEXCOMM_USART_REGS_NO - 1] = { \
 +            .name = "", \
 +            .addr = -1, \
 +        }, \
-+        [R_RT500_RSTCTL0_SYSRSTSTAT] = { \
-+            .name = "SYSRSTSTAT", \
++        [R_FLEXCOMM_USART_CFG] = { \
++            .name = "CFG", \
 +            .addr = 0x0, \
-+            .ro = 0xFFFFFF0E, \
-+            .reset = 0x1, \
++            .ro = 0xFF032402, \
++            .reset = 0x0, \
 +        }, \
-+        [R_RT500_RSTCTL0_PRSTCTL0] = { \
-+            .name = "PRSTCTL0", \
++        [R_FLEXCOMM_USART_CTL] = { \
++            .name = "CTL", \
++            .addr = 0x4, \
++            .ro = 0xFFFEFCB9, \
++            .reset = 0x0, \
++        }, \
++        [R_FLEXCOMM_USART_STAT] = { \
++            .name = "STAT", \
++            .addr = 0x8, \
++            .ro = 0xFFFE07DF, \
++            .reset = 0xA, \
++        }, \
++        [R_FLEXCOMM_USART_INTENSET] = { \
++            .name = "INTENSET", \
++            .addr = 0xC, \
++            .ro = 0xFFFE0797, \
++            .reset = 0x0, \
++        }, \
++        [R_FLEXCOMM_USART_INTENCLR] = { \
++            .name = "INTENCLR", \
 +            .addr = 0x10, \
-+            .ro = 0x820AE0F5, \
-+            .reset = 0x7DF51F0A, \
-+        }, \
-+        [R_RT500_RSTCTL0_PRSTCTL1] = { \
-+            .name = "PRSTCTL1", \
-+            .addr = 0x14, \
-+            .ro = 0xFEFE7FF3, \
-+            .reset = 0x101800C, \
-+        }, \
-+        [R_RT500_RSTCTL0_PRSTCTL2] = { \
-+            .name = "PRSTCTL2", \
-+            .addr = 0x18, \
-+            .ro = 0xFFFFFFFC, \
-+            .reset = 0x1C000001, \
-+        }, \
-+        [R_RT500_RSTCTL0_PRSTCTL0_SET] = { \
-+            .name = "PRSTCTL0_SET", \
-+            .addr = 0x40, \
-+            .ro = 0x820AE0F5, \
++            .ro = 0xFFFE0797, \
 +            .reset = 0x0, \
 +        }, \
-+        [R_RT500_RSTCTL0_PRSTCTL1_SET] = { \
-+            .name = "PRSTCTL1_SET", \
-+            .addr = 0x44, \
-+            .ro = 0xFEFE7FF3, \
++        [R_FLEXCOMM_USART_BRG] = { \
++            .name = "BRG", \
++            .addr = 0x20, \
++            .ro = 0xFFFF0000, \
 +            .reset = 0x0, \
 +        }, \
-+        [R_RT500_RSTCTL0_PRSTCTL2_SET] = { \
-+            .name = "PRSTCTL2_SET", \
-+            .addr = 0x48, \
-+            .ro = 0xFFFFFFFC, \
-+            .reset = 0x0, \
-+        }, \
-+        [R_RT500_RSTCTL0_PRSTCTL0_CLR] = { \
-+            .name = "PRSTCTL0_CLR", \
-+            .addr = 0x70, \
-+            .ro = 0x820AE0F5, \
-+            .reset = 0x0, \
-+        }, \
-+        [R_RT500_RSTCTL0_PRSTCTL1_CLR] = { \
-+            .name = "PRSTCTL1_CLR", \
-+            .addr = 0x74, \
-+            .ro = 0xFEFE7FF3, \
-+            .reset = 0x0, \
-+        }, \
-+        [R_RT500_RSTCTL0_PRSTCTL2_CLR] = { \
-+            .name = "PRSTCTL2_CLR", \
-+            .addr = 0x78, \
-+            .ro = 0xFFFFFFFC, \
-+            .reset = 0x0, \
-+        }, \
-+    }
-diff --git a/include/hw/arm/svd/rt500_rstctl1.h b/include/hw/arm/svd/rt500_rstctl1.h
-new file mode 100644
-index 0000000000..447100b540
---- /dev/null
-+++ b/include/hw/arm/svd/rt500_rstctl1.h
-@@ -0,0 +1,1373 @@
-+/*
-+ * Copyright 2016-2023 NXP SPDX-License-Identifier: BSD-3-Clause
-+ *
-+ * Automatically generated by svd-gen-header.py from MIMXRT595S_cm33.xml
-+ */
-+#pragma once
-+
-+#include "hw/register.h"
-+
-+#include "hw/registerfields.h"
-+
-+/* Reset Controller 1 */
-+#define RT500_RSTCTL1_REGS_NO (31)
-+
-+/* System Reset Status Register */
-+REG32(RT500_RSTCTL1_SYSRSTSTAT, 0);
-+/* VDD Power-On Reset (POR) was detected */
-+FIELD(RT500_RSTCTL1_SYSRSTSTAT, VDD_POR, 0, 1);
-+/* RESETN pin reset was detected */
-+FIELD(RT500_RSTCTL1_SYSRSTSTAT, PAD_RESET, 4, 1);
-+/* ARM reset was detected */
-+FIELD(RT500_RSTCTL1_SYSRSTSTAT, ARM_RESET, 5, 1);
-+/* WDT0 reset was detected */
-+FIELD(RT500_RSTCTL1_SYSRSTSTAT, WDT0_RESET, 6, 1);
-+/* WDT1 reset was detected */
-+FIELD(RT500_RSTCTL1_SYSRSTSTAT, WDT1_RESET, 7, 1);
-+
-+/* Peripheral Reset Control Register 0 */
-+REG32(RT500_RSTCTL1_PRSTCTL0, 16);
-+/* Flexcomm0 reset control */
-+FIELD(RT500_RSTCTL1_PRSTCTL0, FLEXCOMM0, 8, 1);
-+/* Flexcomm1 reset control */
-+FIELD(RT500_RSTCTL1_PRSTCTL0, FLEXCOMM1, 9, 1);
-+/* Flexcomm2 reset control */
-+FIELD(RT500_RSTCTL1_PRSTCTL0, FLEXCOMM2, 10, 1);
-+/* Flexcomm3 reset control */
-+FIELD(RT500_RSTCTL1_PRSTCTL0, FLEXCOMM3, 11, 1);
-+/* Flexcomm4 reset control */
-+FIELD(RT500_RSTCTL1_PRSTCTL0, FLEXCOMM4, 12, 1);
-+/* Flexcomm5 reset control */
-+FIELD(RT500_RSTCTL1_PRSTCTL0, FLEXCOMM5, 13, 1);
-+/* Flexcomm6 reset control */
-+FIELD(RT500_RSTCTL1_PRSTCTL0, FLEXCOMM6, 14, 1);
-+/* Flexcomm7 reset control */
-+FIELD(RT500_RSTCTL1_PRSTCTL0, FLEXCOMM7, 15, 1);
-+/* Flexcomm8 reset control */
-+FIELD(RT500_RSTCTL1_PRSTCTL0, FLEXCOMM8, 16, 1);
-+/* Flexcomm9 reset control */
-+FIELD(RT500_RSTCTL1_PRSTCTL0, FLEXCOMM9, 17, 1);
-+/* Flexcomm10 reset control */
-+FIELD(RT500_RSTCTL1_PRSTCTL0, FLEXCOMM10, 18, 1);
-+/* Flexcomm11 reset control */
-+FIELD(RT500_RSTCTL1_PRSTCTL0, FLEXCOMM11, 19, 1);
-+/* Flexcomm12 reset control */
-+FIELD(RT500_RSTCTL1_PRSTCTL0, FLEXCOMM12, 20, 1);
-+/* Flexcomm13 reset control */
-+FIELD(RT500_RSTCTL1_PRSTCTL0, FLEXCOMM13, 21, 1);
-+/* Flexcomm14 SPI0 reset control */
-+FIELD(RT500_RSTCTL1_PRSTCTL0, FLEXCOMM14, 22, 1);
-+/* Flexcomm15 I2C reset control */
-+FIELD(RT500_RSTCTL1_PRSTCTL0, FLEXCOMM15_I2C, 23, 1);
-+/* DMIC0 reset control */
-+FIELD(RT500_RSTCTL1_PRSTCTL0, DMIC0, 24, 1);
-+/* Flexcomm SPI reset control */
-+FIELD(RT500_RSTCTL1_PRSTCTL0, FLEXCOMM16, 25, 1);
-+/* OSEVENT Timer reset control */
-+FIELD(RT500_RSTCTL1_PRSTCTL0, OSEVENT_TIMER, 27, 1);
-+/* FLEXIO reset control */
-+FIELD(RT500_RSTCTL1_PRSTCTL0, FLEXIO, 29, 1);
-+
-+/* Peripheral Reset Control Register 1 */
-+REG32(RT500_RSTCTL1_PRSTCTL1, 20);
-+/* HSGPIO[7:0] reset control */
-+FIELD(RT500_RSTCTL1_PRSTCTL1, HSGPIO0, 0, 1);
-+/* HSGPIO[7:0] reset control */
-+FIELD(RT500_RSTCTL1_PRSTCTL1, HSGPIO1, 1, 1);
-+/* HSGPIO[7:0] reset control */
-+FIELD(RT500_RSTCTL1_PRSTCTL1, HSGPIO2, 2, 1);
-+/* HSGPIO[7:0] reset control */
-+FIELD(RT500_RSTCTL1_PRSTCTL1, HSGPIO3, 3, 1);
-+/* HSGPIO[7:0] reset control */
-+FIELD(RT500_RSTCTL1_PRSTCTL1, HSGPIO4, 4, 1);
-+/* HSGPIO[7:0] reset control */
-+FIELD(RT500_RSTCTL1_PRSTCTL1, HSGPIO5, 5, 1);
-+/* HSGPIO[7:0] reset control */
-+FIELD(RT500_RSTCTL1_PRSTCTL1, HSGPIO6, 6, 1);
-+/* HSGPIO[7:0] reset control */
-+FIELD(RT500_RSTCTL1_PRSTCTL1, HSGPIO7, 7, 1);
-+/* CRC reset control */
-+FIELD(RT500_RSTCTL1_PRSTCTL1, CRC, 16, 1);
-+/* DMAC reset control */
-+FIELD(RT500_RSTCTL1_PRSTCTL1, DMAC0, 23, 1);
-+/* DMAC reset control */
-+FIELD(RT500_RSTCTL1_PRSTCTL1, DMAC1, 24, 1);
-+/* MU reset control */
-+FIELD(RT500_RSTCTL1_PRSTCTL1, MU, 28, 1);
-+/* SEMA reset control */
-+FIELD(RT500_RSTCTL1_PRSTCTL1, SEMA, 29, 1);
-+/* FREQME reset control */
-+FIELD(RT500_RSTCTL1_PRSTCTL1, FREQME, 31, 1);
-+
-+/* Peripheral Reset Control Register 2 */
-+REG32(RT500_RSTCTL1_PRSTCTL2, 24);
-+/* CT32BIT[4:0] reset */
-+FIELD(RT500_RSTCTL1_PRSTCTL2, CT32BIT0, 0, 1);
-+/* CT32BIT[4:0] reset */
-+FIELD(RT500_RSTCTL1_PRSTCTL2, CT32BIT1, 1, 1);
-+/* CT32BIT[4:0] reset */
-+FIELD(RT500_RSTCTL1_PRSTCTL2, CT32BIT2, 2, 1);
-+/* CT32BIT[4:0] reset */
-+FIELD(RT500_RSTCTL1_PRSTCTL2, CT32BIT3, 3, 1);
-+/* CT32BIT[4:0] reset */
-+FIELD(RT500_RSTCTL1_PRSTCTL2, CT32BIT4, 4, 1);
-+/* MRT0 reset control */
-+FIELD(RT500_RSTCTL1_PRSTCTL2, MRT0, 8, 1);
-+/* WWDT1 reset control */
-+FIELD(RT500_RSTCTL1_PRSTCTL2, WWDT1, 10, 1);
-+/* I3C0 reset control */
-+FIELD(RT500_RSTCTL1_PRSTCTL2, I3C0, 16, 1);
-+/* I3C1 reset control */
-+FIELD(RT500_RSTCTL1_PRSTCTL2, I3C1, 17, 1);
-+/* GPIOINTCTL reset control */
-+FIELD(RT500_RSTCTL1_PRSTCTL2, GPIOINTCTL, 30, 1);
-+/* INPUTMUX reset control */
-+FIELD(RT500_RSTCTL1_PRSTCTL2, PIMCTL, 31, 1);
-+
-+/* Peripheral Reset Control Register 0 SET */
-+REG32(RT500_RSTCTL1_PRSTCTL0_SET, 64);
-+/* Flexcomm0 reset set */
-+FIELD(RT500_RSTCTL1_PRSTCTL0_SET, FLEXCOMM0, 8, 1);
-+/* Flexcomm1 reset set */
-+FIELD(RT500_RSTCTL1_PRSTCTL0_SET, FLEXCOMM1, 9, 1);
-+/* Flexcomm2 reset set */
-+FIELD(RT500_RSTCTL1_PRSTCTL0_SET, FLEXCOMM2, 10, 1);
-+/* Flexcomm3 reset set */
-+FIELD(RT500_RSTCTL1_PRSTCTL0_SET, FLEXCOMM3, 11, 1);
-+/* Flexcomm4 reset set */
-+FIELD(RT500_RSTCTL1_PRSTCTL0_SET, FLEXCOMM4, 12, 1);
-+/* Flexcomm5 reset set */
-+FIELD(RT500_RSTCTL1_PRSTCTL0_SET, FLEXCOMM5, 13, 1);
-+/* Flexcomm6 reset set */
-+FIELD(RT500_RSTCTL1_PRSTCTL0_SET, FLEXCOMM6, 14, 1);
-+/* Flexcomm7 reset set */
-+FIELD(RT500_RSTCTL1_PRSTCTL0_SET, FLEXCOMM7, 15, 1);
-+/* Flexcomm8 reset set */
-+FIELD(RT500_RSTCTL1_PRSTCTL0_SET, FLEXCOMM8, 16, 1);
-+/* Flexcomm9 reset set */
-+FIELD(RT500_RSTCTL1_PRSTCTL0_SET, FLEXCOMM9, 17, 1);
-+/* Flexcomm10 reset set */
-+FIELD(RT500_RSTCTL1_PRSTCTL0_SET, FLEXCOMM10, 18, 1);
-+/* Flexcomm11 reset set */
-+FIELD(RT500_RSTCTL1_PRSTCTL0_SET, FLEXCOMM11, 19, 1);
-+/* Flexcomm12 reset set */
-+FIELD(RT500_RSTCTL1_PRSTCTL0_SET, FLEXCOMM12, 20, 1);
-+/* Flexcomm13 reset set */
-+FIELD(RT500_RSTCTL1_PRSTCTL0_SET, FLEXCOMM13, 21, 1);
-+/* Flexcomm14 SPI0 reset set */
-+FIELD(RT500_RSTCTL1_PRSTCTL0_SET, FLEXCOMM14, 22, 1);
-+/* Flexcomm15 I2C reset set */
-+FIELD(RT500_RSTCTL1_PRSTCTL0_SET, FLEXCOMM15_I2C, 23, 1);
-+/* DMIC0 reset set */
-+FIELD(RT500_RSTCTL1_PRSTCTL0_SET, DMIC0, 24, 1);
-+/* Flexcomm16 SPI1 reset set */
-+FIELD(RT500_RSTCTL1_PRSTCTL0_SET, FLEXCOMM16, 25, 1);
-+/* OSEVENT Timer reset set */
-+FIELD(RT500_RSTCTL1_PRSTCTL0_SET, OSEVENT_TIMER, 27, 1);
-+/* FEXIO reset set */
-+FIELD(RT500_RSTCTL1_PRSTCTL0_SET, FLEXIO, 29, 1);
-+
-+/* Peripheral Reset Control Register 1 SET */
-+REG32(RT500_RSTCTL1_PRSTCTL1_SET, 68);
-+/* HSGPIO0 reset set */
-+FIELD(RT500_RSTCTL1_PRSTCTL1_SET, HSGPIO0, 0, 1);
-+/* HSGPIO1 reset set */
-+FIELD(RT500_RSTCTL1_PRSTCTL1_SET, HSGPIO1, 1, 1);
-+/* HSGPIO2 reset set */
-+FIELD(RT500_RSTCTL1_PRSTCTL1_SET, HSGPIO2, 2, 1);
-+/* HSGPIO3 reset set */
-+FIELD(RT500_RSTCTL1_PRSTCTL1_SET, HSGPIO3, 3, 1);
-+/* HSGPIO4 reset set */
-+FIELD(RT500_RSTCTL1_PRSTCTL1_SET, HSGPIO4, 4, 1);
-+/* HSGPIO5 reset set */
-+FIELD(RT500_RSTCTL1_PRSTCTL1_SET, HSGPIO5, 5, 1);
-+/* HSGPIO6 reset set */
-+FIELD(RT500_RSTCTL1_PRSTCTL1_SET, HSGPIO6, 6, 1);
-+/* HSGPIO7 reset set */
-+FIELD(RT500_RSTCTL1_PRSTCTL1_SET, HSGPIO7, 7, 1);
-+/* CRC reset set */
-+FIELD(RT500_RSTCTL1_PRSTCTL1_SET, CRC, 16, 1);
-+/* DMAC0 reset set */
-+FIELD(RT500_RSTCTL1_PRSTCTL1_SET, DMAC0, 23, 1);
-+/* DMAC1 reset set */
-+FIELD(RT500_RSTCTL1_PRSTCTL1_SET, DMAC1, 24, 1);
-+/* MU reset set */
-+FIELD(RT500_RSTCTL1_PRSTCTL1_SET, MU, 28, 1);
-+/* SEMA reset set */
-+FIELD(RT500_RSTCTL1_PRSTCTL1_SET, SEMA, 29, 1);
-+/* FREQME reset set */
-+FIELD(RT500_RSTCTL1_PRSTCTL1_SET, FREQME, 31, 1);
-+
-+/* Peripheral Reset Control Register 2 SET */
-+REG32(RT500_RSTCTL1_PRSTCTL2_SET, 72);
-+/* CT32BIT0 reset set */
-+FIELD(RT500_RSTCTL1_PRSTCTL2_SET, CT32BIT0, 0, 1);
-+/* CT32BIT1 reset set */
-+FIELD(RT500_RSTCTL1_PRSTCTL2_SET, CT32BIT1, 1, 1);
-+/* CT32BIT2 reset set */
-+FIELD(RT500_RSTCTL1_PRSTCTL2_SET, CT32BIT2, 2, 1);
-+/* CT32BIT3 reset set */
-+FIELD(RT500_RSTCTL1_PRSTCTL2_SET, CT32BIT3, 3, 1);
-+/* CT32BIT4 reset set */
-+FIELD(RT500_RSTCTL1_PRSTCTL2_SET, CT32BIT4, 4, 1);
-+/* MRT0 reset set */
-+FIELD(RT500_RSTCTL1_PRSTCTL2_SET, MRT0, 8, 1);
-+/* WWDT1 reset set */
-+FIELD(RT500_RSTCTL1_PRSTCTL2_SET, WWDT1, 10, 1);
-+/* I3C0 reset set */
-+FIELD(RT500_RSTCTL1_PRSTCTL2_SET, I3C0, 16, 1);
-+/* I3C1 reset set */
-+FIELD(RT500_RSTCTL1_PRSTCTL2_SET, I3C1, 17, 1);
-+/* GPIOINTCTL reset set */
-+FIELD(RT500_RSTCTL1_PRSTCTL2_SET, GPIOINTCTL, 30, 1);
-+/* PIMCTL reset set */
-+FIELD(RT500_RSTCTL1_PRSTCTL2_SET, PIMCTL, 31, 1);
-+
-+/* Peripheral Reset Control Register 0 CLR */
-+REG32(RT500_RSTCTL1_PRSTCTL0_CLR, 112);
-+/* Flexcomm0 reset clear */
-+FIELD(RT500_RSTCTL1_PRSTCTL0_CLR, FLEXCOMM0, 8, 1);
-+/* Flexcomm1 reset clear */
-+FIELD(RT500_RSTCTL1_PRSTCTL0_CLR, FLEXCOMM1, 9, 1);
-+/* Flexcomm2 reset clear */
-+FIELD(RT500_RSTCTL1_PRSTCTL0_CLR, FLEXCOMM2, 10, 1);
-+/* Flexcomm3 reset clear */
-+FIELD(RT500_RSTCTL1_PRSTCTL0_CLR, FLEXCOMM3, 11, 1);
-+/* Flexcomm4 reset clear */
-+FIELD(RT500_RSTCTL1_PRSTCTL0_CLR, FLEXCOMM4, 12, 1);
-+/* Flexcomm5 reset clear */
-+FIELD(RT500_RSTCTL1_PRSTCTL0_CLR, FLEXCOMM5, 13, 1);
-+/* Flexcomm6 reset clear */
-+FIELD(RT500_RSTCTL1_PRSTCTL0_CLR, FLEXCOMM6, 14, 1);
-+/* Flexcomm7 reset clear */
-+FIELD(RT500_RSTCTL1_PRSTCTL0_CLR, FLEXCOMM7, 15, 1);
-+/* Flexcomm8 reset clear */
-+FIELD(RT500_RSTCTL1_PRSTCTL0_CLR, FLEXCOMM8, 16, 1);
-+/* Flexcomm9 reset clear */
-+FIELD(RT500_RSTCTL1_PRSTCTL0_CLR, FLEXCOMM9, 17, 1);
-+/* Flexcomm10 reset clear */
-+FIELD(RT500_RSTCTL1_PRSTCTL0_CLR, FLEXCOMM10, 18, 1);
-+/* Flexcomm11 reset clear */
-+FIELD(RT500_RSTCTL1_PRSTCTL0_CLR, FLEXCOMM11, 19, 1);
-+/* Flexcomm12 reset clear */
-+FIELD(RT500_RSTCTL1_PRSTCTL0_CLR, FLEXCOMM12, 20, 1);
-+/* Flexcomm13 reset clear */
-+FIELD(RT500_RSTCTL1_PRSTCTL0_CLR, FLEXCOMM13, 21, 1);
-+/* FLexcomm SPI0 reset clear */
-+FIELD(RT500_RSTCTL1_PRSTCTL0_CLR, FLEXCOMM14, 22, 1);
-+/* Flexcomm I2C reset clear */
-+FIELD(RT500_RSTCTL1_PRSTCTL0_CLR, FLEXCOMM15_I2C, 23, 1);
-+/* DMIC0 reset clear */
-+FIELD(RT500_RSTCTL1_PRSTCTL0_CLR, DMIC0, 24, 1);
-+/* Flexcomm SPI1 reset clear */
-+FIELD(RT500_RSTCTL1_PRSTCTL0_CLR, FLEXCOMM16, 25, 1);
-+/* OSEVENT Timer reset clear */
-+FIELD(RT500_RSTCTL1_PRSTCTL0_CLR, OSEVENT_TIMER, 27, 1);
-+/* FLEXIO reset clear */
-+FIELD(RT500_RSTCTL1_PRSTCTL0_CLR, FLEXIO, 29, 1);
-+
-+/* Peripheral Reset Control Register 1 CLR */
-+REG32(RT500_RSTCTL1_PRSTCTL1_CLR, 116);
-+/* HSGPIO0 reset clear */
-+FIELD(RT500_RSTCTL1_PRSTCTL1_CLR, HSGPIO0, 0, 1);
-+/* HSGPIO1 reset clear */
-+FIELD(RT500_RSTCTL1_PRSTCTL1_CLR, HSGPIO1, 1, 1);
-+/* HSGPIO2 reset clear */
-+FIELD(RT500_RSTCTL1_PRSTCTL1_CLR, HSGPIO2, 2, 1);
-+/* HSGPIO3 reset clear */
-+FIELD(RT500_RSTCTL1_PRSTCTL1_CLR, HSGPIO3, 3, 1);
-+/* HSGPIO4 reset clear */
-+FIELD(RT500_RSTCTL1_PRSTCTL1_CLR, HSGPIO4, 4, 1);
-+/* HSGPIO5 reset clear */
-+FIELD(RT500_RSTCTL1_PRSTCTL1_CLR, HSGPIO5, 5, 1);
-+/* HSGPIO6 reset clear */
-+FIELD(RT500_RSTCTL1_PRSTCTL1_CLR, HSGPIO6, 6, 1);
-+/* HSGPIO7 reset clear */
-+FIELD(RT500_RSTCTL1_PRSTCTL1_CLR, HSGPIO7, 7, 1);
-+/* CRC reset clear */
-+FIELD(RT500_RSTCTL1_PRSTCTL1_CLR, CRC, 16, 1);
-+/* DMAC0 reset clear */
-+FIELD(RT500_RSTCTL1_PRSTCTL1_CLR, DMAC0, 23, 1);
-+/* DMAC1 reset clear */
-+FIELD(RT500_RSTCTL1_PRSTCTL1_CLR, DMAC1, 24, 1);
-+/* MU reset clear */
-+FIELD(RT500_RSTCTL1_PRSTCTL1_CLR, MU, 28, 1);
-+/* SMEA reset clear */
-+FIELD(RT500_RSTCTL1_PRSTCTL1_CLR, SEMA, 29, 1);
-+/* FREQME reset clear */
-+FIELD(RT500_RSTCTL1_PRSTCTL1_CLR, FREQME, 31, 1);
-+
-+/* Peripheral Reset Control Register 2 CLR */
-+REG32(RT500_RSTCTL1_PRSTCTL2_CLR, 120);
-+/* CT32BIT0 reset clear */
-+FIELD(RT500_RSTCTL1_PRSTCTL2_CLR, CT32BIT0, 0, 1);
-+/* CT32BIT1 reset clear */
-+FIELD(RT500_RSTCTL1_PRSTCTL2_CLR, CT32BIT1, 1, 1);
-+/* CT32BIT2 reset clear */
-+FIELD(RT500_RSTCTL1_PRSTCTL2_CLR, CT32BIT2, 2, 1);
-+/* CT32BIT3 reset clear */
-+FIELD(RT500_RSTCTL1_PRSTCTL2_CLR, CT32BIT3, 3, 1);
-+/* CT32BIT4 reset clear */
-+FIELD(RT500_RSTCTL1_PRSTCTL2_CLR, CT32BIT4, 4, 1);
-+/* MRT0 reset clear */
-+FIELD(RT500_RSTCTL1_PRSTCTL2_CLR, MRT0, 8, 1);
-+/* WWDT1 reset clear */
-+FIELD(RT500_RSTCTL1_PRSTCTL2_CLR, WWDT1, 10, 1);
-+/* I3C[1:0] reset clear */
-+FIELD(RT500_RSTCTL1_PRSTCTL2_CLR, I3C0, 16, 1);
-+/* I3C[1:0] reset clear */
-+FIELD(RT500_RSTCTL1_PRSTCTL2_CLR, I3C1, 17, 1);
-+/* GPIOINTCTL reset clear */
-+FIELD(RT500_RSTCTL1_PRSTCTL2_CLR, GPIOINTCTL, 30, 1);
-+/* PIMCTL reset clear */
-+FIELD(RT500_RSTCTL1_PRSTCTL2_CLR, PIMCTL, 31, 1);
-+
-+
-+typedef enum {
-+    /* No VDD POR event is detected */
-+    RT500_RSTCTL1_SYSRSTSTAT_VDD_POR_VDD_POR_EVENT_IS_NOT_DETECTED = 0,
-+    /* VDD POR event was detected */
-+    RT500_RSTCTL1_SYSRSTSTAT_VDD_POR_VDD_POR_EVENT_WAS_DETECTED = 1,
-+} RT500_RSTCTL1_SYSRSTSTAT_VDD_POR_Enum;
-+
-+typedef enum {
-+    /* No RESETN pin event is detected */
-+    RT500_RSTCTL1_SYSRSTSTAT_PAD_RESET_PAD_RESET_IS_NOT_DETECTED = 0,
-+    /* RESETN pin reset event was detected */
-+    RT500_RSTCTL1_SYSRSTSTAT_PAD_RESET_PAD_RESET_WAS_DETECTED = 1,
-+} RT500_RSTCTL1_SYSRSTSTAT_PAD_RESET_Enum;
-+
-+typedef enum {
-+    /* No ARM reset event is detected */
-+    RT500_RSTCTL1_SYSRSTSTAT_ARM_RESET_ARM_RESET_IS_NOT_DETECTED = 0,
-+    /* ARM reset was detected */
-+    RT500_RSTCTL1_SYSRSTSTAT_ARM_RESET_ARM_RESET_WAS_DETECTED = 1,
-+} RT500_RSTCTL1_SYSRSTSTAT_ARM_RESET_Enum;
-+
-+typedef enum {
-+    /* No WDT0 reset event is detected */
-+    RT500_RSTCTL1_SYSRSTSTAT_WDT0_RESET_WDT0_RESET_IS_NOT_DETECTED = 0,
-+    /* WDT0 reset was detected */
-+    RT500_RSTCTL1_SYSRSTSTAT_WDT0_RESET_WDT0_RESET_WAS_DETECTED = 1,
-+} RT500_RSTCTL1_SYSRSTSTAT_WDT0_RESET_Enum;
-+
-+typedef enum {
-+    /* No WDT1 reset event is detected */
-+    RT500_RSTCTL1_SYSRSTSTAT_WDT1_RESET_WDT1_RESET_IS_NOT_DETECTED = 0,
-+    /* WDT1 reset was detected */
-+    RT500_RSTCTL1_SYSRSTSTAT_WDT1_RESET_WDT1_RESET_WAS_DETECTED = 1,
-+} RT500_RSTCTL1_SYSRSTSTAT_WDT1_RESET_Enum;
-+
-+typedef enum {
-+    /* Clear Reset */
-+    RT500_RSTCTL1_PRSTCTL0_FLEXCOMM0_FLEXCOMM_CLR = 0,
-+    /* Set Reset */
-+    RT500_RSTCTL1_PRSTCTL0_FLEXCOMM0_FLEXCOMM_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL0_FLEXCOMM0_Enum;
-+
-+typedef enum {
-+    /* Clear Reset */
-+    RT500_RSTCTL1_PRSTCTL0_FLEXCOMM1_FLEXCOMM_CLR = 0,
-+    /* Set Reset */
-+    RT500_RSTCTL1_PRSTCTL0_FLEXCOMM1_FLEXCOMM_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL0_FLEXCOMM1_Enum;
-+
-+typedef enum {
-+    /* Clear Reset */
-+    RT500_RSTCTL1_PRSTCTL0_FLEXCOMM2_FLEXCOMM_CLR = 0,
-+    /* Set Reset */
-+    RT500_RSTCTL1_PRSTCTL0_FLEXCOMM2_FLEXCOMM_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL0_FLEXCOMM2_Enum;
-+
-+typedef enum {
-+    /* Clear Reset */
-+    RT500_RSTCTL1_PRSTCTL0_FLEXCOMM3_FLEXCOMM_CLR = 0,
-+    /* Set Reset */
-+    RT500_RSTCTL1_PRSTCTL0_FLEXCOMM3_FLEXCOMM_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL0_FLEXCOMM3_Enum;
-+
-+typedef enum {
-+    /* Clear Reset */
-+    RT500_RSTCTL1_PRSTCTL0_FLEXCOMM4_FLEXCOMM_CLR = 0,
-+    /* Set Reset */
-+    RT500_RSTCTL1_PRSTCTL0_FLEXCOMM4_FLEXCOMM_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL0_FLEXCOMM4_Enum;
-+
-+typedef enum {
-+    /* Clear Reset */
-+    RT500_RSTCTL1_PRSTCTL0_FLEXCOMM5_FLEXCOMM_CLR = 0,
-+    /* Set Reset */
-+    RT500_RSTCTL1_PRSTCTL0_FLEXCOMM5_FLEXCOMM_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL0_FLEXCOMM5_Enum;
-+
-+typedef enum {
-+    /* Clear Reset */
-+    RT500_RSTCTL1_PRSTCTL0_FLEXCOMM6_FLEXCOMM_CLR = 0,
-+    /* Set Reset */
-+    RT500_RSTCTL1_PRSTCTL0_FLEXCOMM6_FLEXCOMM_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL0_FLEXCOMM6_Enum;
-+
-+typedef enum {
-+    /* Clear Reset */
-+    RT500_RSTCTL1_PRSTCTL0_FLEXCOMM7_FLEXCOMM_CLR = 0,
-+    /* Set Reset */
-+    RT500_RSTCTL1_PRSTCTL0_FLEXCOMM7_FLEXCOMM_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL0_FLEXCOMM7_Enum;
-+
-+typedef enum {
-+    /* Clear Reset */
-+    RT500_RSTCTL1_PRSTCTL0_FLEXCOMM8_FLEXCOMM_CLR = 0,
-+    /* Set Reset */
-+    RT500_RSTCTL1_PRSTCTL0_FLEXCOMM8_FLEXCOMM_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL0_FLEXCOMM8_Enum;
-+
-+typedef enum {
-+    /* Clear Reset */
-+    RT500_RSTCTL1_PRSTCTL0_FLEXCOMM9_FLEXCOMM_CLR = 0,
-+    /* Set Reset */
-+    RT500_RSTCTL1_PRSTCTL0_FLEXCOMM9_FLEXCOMM_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL0_FLEXCOMM9_Enum;
-+
-+typedef enum {
-+    /* Clear Reset */
-+    RT500_RSTCTL1_PRSTCTL0_FLEXCOMM10_FLEXCOMM_CLR = 0,
-+    /* Set Reset */
-+    RT500_RSTCTL1_PRSTCTL0_FLEXCOMM10_FLEXCOMM_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL0_FLEXCOMM10_Enum;
-+
-+typedef enum {
-+    /* Clear Reset */
-+    RT500_RSTCTL1_PRSTCTL0_FLEXCOMM11_FLEXCOMM_CLR = 0,
-+    /* Set Reset */
-+    RT500_RSTCTL1_PRSTCTL0_FLEXCOMM11_FLEXCOMM_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL0_FLEXCOMM11_Enum;
-+
-+typedef enum {
-+    /* Clear Reset */
-+    RT500_RSTCTL1_PRSTCTL0_FLEXCOMM12_FLEXCOMM_CLR = 0,
-+    /* Set Reset */
-+    RT500_RSTCTL1_PRSTCTL0_FLEXCOMM12_FLEXCOMM_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL0_FLEXCOMM12_Enum;
-+
-+typedef enum {
-+    /* Clear Reset */
-+    RT500_RSTCTL1_PRSTCTL0_FLEXCOMM13_FLEXCOMM_CLR = 0,
-+    /* Set Reset */
-+    RT500_RSTCTL1_PRSTCTL0_FLEXCOMM13_FLEXCOMM_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL0_FLEXCOMM13_Enum;
-+
-+typedef enum {
-+    /* Clear Reset */
-+    RT500_RSTCTL1_PRSTCTL0_FLEXCOMM14_FLEXCOMM_CLR = 0,
-+    /* Set Reset */
-+    RT500_RSTCTL1_PRSTCTL0_FLEXCOMM14_FLEXCOMM_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL0_FLEXCOMM14_Enum;
-+
-+typedef enum {
-+    /* Clear Reset */
-+    RT500_RSTCTL1_PRSTCTL0_FLEXCOMM15_I2C_FLEXCOMM15_I2C_CLR = 0,
-+    /* Set Reset */
-+    RT500_RSTCTL1_PRSTCTL0_FLEXCOMM15_I2C_FLEXCOMM15_I2C_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL0_FLEXCOMM15_I2C_Enum;
-+
-+typedef enum {
-+    /* Clear Reset */
-+    RT500_RSTCTL1_PRSTCTL0_DMIC0_DMIC0_CLR = 0,
-+    /* Set Reset */
-+    RT500_RSTCTL1_PRSTCTL0_DMIC0_DMIC0_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL0_DMIC0_Enum;
-+
-+typedef enum {
-+    /* Clear Reset */
-+    RT500_RSTCTL1_PRSTCTL0_FLEXCOMM16_FLEXCOMM16_SPI1_CLR = 0,
-+    /* Set Reset */
-+    RT500_RSTCTL1_PRSTCTL0_FLEXCOMM16_FLEXCOMM16_SPI1_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL0_FLEXCOMM16_Enum;
-+
-+typedef enum {
-+    /* Clear Reset */
-+    RT500_RSTCTL1_PRSTCTL0_OSEVENT_TIMER_OSEVENT_TIMER_CLR = 0,
-+    /* Set Reset */
-+    RT500_RSTCTL1_PRSTCTL0_OSEVENT_TIMER_OSEVENT_TIMER_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL0_OSEVENT_TIMER_Enum;
-+
-+typedef enum {
-+    /* Clear Reset */
-+    RT500_RSTCTL1_PRSTCTL0_FLEXIO_FLEXIO_CLR = 0,
-+    /* Set Reset */
-+    RT500_RSTCTL1_PRSTCTL0_FLEXIO_FLEXIO_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL0_FLEXIO_Enum;
-+
-+typedef enum {
-+    /* Clear Reset */
-+    RT500_RSTCTL1_PRSTCTL1_HSGPIO0_HSGPIO_CLR = 0,
-+    /* Set Reset */
-+    RT500_RSTCTL1_PRSTCTL1_HSGPIO0_HSGPIO_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL1_HSGPIO0_Enum;
-+
-+typedef enum {
-+    /* Clear Reset */
-+    RT500_RSTCTL1_PRSTCTL1_HSGPIO1_HSGPIO_CLR = 0,
-+    /* Set Reset */
-+    RT500_RSTCTL1_PRSTCTL1_HSGPIO1_HSGPIO_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL1_HSGPIO1_Enum;
-+
-+typedef enum {
-+    /* Clear Reset */
-+    RT500_RSTCTL1_PRSTCTL1_HSGPIO2_HSGPIO_CLR = 0,
-+    /* Set Reset */
-+    RT500_RSTCTL1_PRSTCTL1_HSGPIO2_HSGPIO_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL1_HSGPIO2_Enum;
-+
-+typedef enum {
-+    /* Clear Reset */
-+    RT500_RSTCTL1_PRSTCTL1_HSGPIO3_HSGPIO_CLR = 0,
-+    /* Set Reset */
-+    RT500_RSTCTL1_PRSTCTL1_HSGPIO3_HSGPIO_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL1_HSGPIO3_Enum;
-+
-+typedef enum {
-+    /* Clear Reset */
-+    RT500_RSTCTL1_PRSTCTL1_HSGPIO4_HSGPIO_CLR = 0,
-+    /* Set Reset */
-+    RT500_RSTCTL1_PRSTCTL1_HSGPIO4_HSGPIO_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL1_HSGPIO4_Enum;
-+
-+typedef enum {
-+    /* Clear Reset */
-+    RT500_RSTCTL1_PRSTCTL1_HSGPIO5_HSGPIO_CLR = 0,
-+    /* Set Reset */
-+    RT500_RSTCTL1_PRSTCTL1_HSGPIO5_HSGPIO_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL1_HSGPIO5_Enum;
-+
-+typedef enum {
-+    /* Clear Reset */
-+    RT500_RSTCTL1_PRSTCTL1_HSGPIO6_HSGPIO_CLR = 0,
-+    /* Set Reset */
-+    RT500_RSTCTL1_PRSTCTL1_HSGPIO6_HSGPIO_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL1_HSGPIO6_Enum;
-+
-+typedef enum {
-+    /* Clear Reset */
-+    RT500_RSTCTL1_PRSTCTL1_HSGPIO7_HSGPIO_CLR = 0,
-+    /* Set Reset */
-+    RT500_RSTCTL1_PRSTCTL1_HSGPIO7_HSGPIO_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL1_HSGPIO7_Enum;
-+
-+typedef enum {
-+    /* Clear Reset */
-+    RT500_RSTCTL1_PRSTCTL1_CRC_CRC_CLR = 0,
-+    /* Set Reset */
-+    RT500_RSTCTL1_PRSTCTL1_CRC_CRC_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL1_CRC_Enum;
-+
-+typedef enum {
-+    /* Clear Reset */
-+    RT500_RSTCTL1_PRSTCTL1_DMAC0_DMAC_CLR = 0,
-+    /* Set Reset */
-+    RT500_RSTCTL1_PRSTCTL1_DMAC0_DMAC_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL1_DMAC0_Enum;
-+
-+typedef enum {
-+    /* Clear Reset */
-+    RT500_RSTCTL1_PRSTCTL1_DMAC1_DMAC_CLR = 0,
-+    /* Set Reset */
-+    RT500_RSTCTL1_PRSTCTL1_DMAC1_DMAC_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL1_DMAC1_Enum;
-+
-+typedef enum {
-+    /* Clear Reset */
-+    RT500_RSTCTL1_PRSTCTL1_MU_MU_CLR = 0,
-+    /* Set Reset */
-+    RT500_RSTCTL1_PRSTCTL1_MU_MU_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL1_MU_Enum;
-+
-+typedef enum {
-+    /* Clear Reset */
-+    RT500_RSTCTL1_PRSTCTL1_SEMA_SEMA_CLR = 0,
-+    /* Set Reset */
-+    RT500_RSTCTL1_PRSTCTL1_SEMA_SEMA_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL1_SEMA_Enum;
-+
-+typedef enum {
-+    /* Clear Reset */
-+    RT500_RSTCTL1_PRSTCTL1_FREQME_FREQME_CLR = 0,
-+    /* Set Reset */
-+    RT500_RSTCTL1_PRSTCTL1_FREQME_FREQME_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL1_FREQME_Enum;
-+
-+typedef enum {
-+    /* Clear Reset */
-+    RT500_RSTCTL1_PRSTCTL2_CT32BIT0_CT32BIT_CLR = 0,
-+    /* Set Reset */
-+    RT500_RSTCTL1_PRSTCTL2_CT32BIT0_CT32BIT_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL2_CT32BIT0_Enum;
-+
-+typedef enum {
-+    /* Clear Reset */
-+    RT500_RSTCTL1_PRSTCTL2_CT32BIT1_CT32BIT_CLR = 0,
-+    /* Set Reset */
-+    RT500_RSTCTL1_PRSTCTL2_CT32BIT1_CT32BIT_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL2_CT32BIT1_Enum;
-+
-+typedef enum {
-+    /* Clear Reset */
-+    RT500_RSTCTL1_PRSTCTL2_CT32BIT2_CT32BIT_CLR = 0,
-+    /* Set Reset */
-+    RT500_RSTCTL1_PRSTCTL2_CT32BIT2_CT32BIT_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL2_CT32BIT2_Enum;
-+
-+typedef enum {
-+    /* Clear Reset */
-+    RT500_RSTCTL1_PRSTCTL2_CT32BIT3_CT32BIT_CLR = 0,
-+    /* Set Reset */
-+    RT500_RSTCTL1_PRSTCTL2_CT32BIT3_CT32BIT_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL2_CT32BIT3_Enum;
-+
-+typedef enum {
-+    /* Clear Reset */
-+    RT500_RSTCTL1_PRSTCTL2_CT32BIT4_CT32BIT_CLR = 0,
-+    /* Set Reset */
-+    RT500_RSTCTL1_PRSTCTL2_CT32BIT4_CT32BIT_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL2_CT32BIT4_Enum;
-+
-+typedef enum {
-+    /* Clear Reset */
-+    RT500_RSTCTL1_PRSTCTL2_MRT0_MRT0_CLR = 0,
-+    /* Set Reset */
-+    RT500_RSTCTL1_PRSTCTL2_MRT0_MRT0_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL2_MRT0_Enum;
-+
-+typedef enum {
-+    /* Clear Reset */
-+    RT500_RSTCTL1_PRSTCTL2_WWDT1_WWDT1_CLR = 0,
-+    /* Set Reset */
-+    RT500_RSTCTL1_PRSTCTL2_WWDT1_WWDT1_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL2_WWDT1_Enum;
-+
-+typedef enum {
-+    /* Clear Reset */
-+    RT500_RSTCTL1_PRSTCTL2_I3C0_I3C_CLR = 0,
-+    /* Set Reset */
-+    RT500_RSTCTL1_PRSTCTL2_I3C0_I3C_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL2_I3C0_Enum;
-+
-+typedef enum {
-+    /* Clear Reset */
-+    RT500_RSTCTL1_PRSTCTL2_I3C1_I3C_CLR = 0,
-+    /* Set Reset */
-+    RT500_RSTCTL1_PRSTCTL2_I3C1_I3C_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL2_I3C1_Enum;
-+
-+typedef enum {
-+    /* Clear Reset */
-+    RT500_RSTCTL1_PRSTCTL2_GPIOINTCTL_GPIOINTCTL_CLR = 0,
-+    /* Set Reset */
-+    RT500_RSTCTL1_PRSTCTL2_GPIOINTCTL_GPIOINTCTL_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL2_GPIOINTCTL_Enum;
-+
-+typedef enum {
-+    /* Clear Reset */
-+    RT500_RSTCTL1_PRSTCTL2_PIMCTL_PIMCTL_CLR = 0,
-+    /* Set Reset */
-+    RT500_RSTCTL1_PRSTCTL2_PIMCTL_PIMCTL_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL2_PIMCTL_Enum;
-+
-+typedef enum {
-+    /* No Effect */
-+    RT500_RSTCTL1_PRSTCTL0_SET_FLEXCOMM0_FLEXCOMM_CLR = 0,
-+    /* Sets the PRSTCTL0 Bit */
-+    RT500_RSTCTL1_PRSTCTL0_SET_FLEXCOMM0_FLEXCOMM_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL0_SET_FLEXCOMM0_Enum;
-+
-+typedef enum {
-+    /* No Effect */
-+    RT500_RSTCTL1_PRSTCTL0_SET_FLEXCOMM1_FLEXCOMM_CLR = 0,
-+    /* Sets the PRSTCTL0 Bit */
-+    RT500_RSTCTL1_PRSTCTL0_SET_FLEXCOMM1_FLEXCOMM_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL0_SET_FLEXCOMM1_Enum;
-+
-+typedef enum {
-+    /* No Effect */
-+    RT500_RSTCTL1_PRSTCTL0_SET_FLEXCOMM2_FLEXCOMM_CLR = 0,
-+    /* Sets the PRSTCTL0 Bit */
-+    RT500_RSTCTL1_PRSTCTL0_SET_FLEXCOMM2_FLEXCOMM_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL0_SET_FLEXCOMM2_Enum;
-+
-+typedef enum {
-+    /* No Effect */
-+    RT500_RSTCTL1_PRSTCTL0_SET_FLEXCOMM3_FLEXCOMM_CLR = 0,
-+    /* Sets the PRSTCTL0 Bit */
-+    RT500_RSTCTL1_PRSTCTL0_SET_FLEXCOMM3_FLEXCOMM_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL0_SET_FLEXCOMM3_Enum;
-+
-+typedef enum {
-+    /* No Effect */
-+    RT500_RSTCTL1_PRSTCTL0_SET_FLEXCOMM4_FLEXCOMM_CLR = 0,
-+    /* Sets the PRSTCTL0 Bit */
-+    RT500_RSTCTL1_PRSTCTL0_SET_FLEXCOMM4_FLEXCOMM_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL0_SET_FLEXCOMM4_Enum;
-+
-+typedef enum {
-+    /* No Effect */
-+    RT500_RSTCTL1_PRSTCTL0_SET_FLEXCOMM5_FLEXCOMM_CLR = 0,
-+    /* Sets the PRSTCTL0 Bit */
-+    RT500_RSTCTL1_PRSTCTL0_SET_FLEXCOMM5_FLEXCOMM_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL0_SET_FLEXCOMM5_Enum;
-+
-+typedef enum {
-+    /* No Effect */
-+    RT500_RSTCTL1_PRSTCTL0_SET_FLEXCOMM6_FLEXCOMM_CLR = 0,
-+    /* Sets the PRSTCTL0 Bit */
-+    RT500_RSTCTL1_PRSTCTL0_SET_FLEXCOMM6_FLEXCOMM_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL0_SET_FLEXCOMM6_Enum;
-+
-+typedef enum {
-+    /* No Effect */
-+    RT500_RSTCTL1_PRSTCTL0_SET_FLEXCOMM7_FLEXCOMM_CLR = 0,
-+    /* Sets the PRSTCTL0 Bit */
-+    RT500_RSTCTL1_PRSTCTL0_SET_FLEXCOMM7_FLEXCOMM_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL0_SET_FLEXCOMM7_Enum;
-+
-+typedef enum {
-+    /* No Effect */
-+    RT500_RSTCTL1_PRSTCTL0_SET_FLEXCOMM8_FLEXCOMM_CLR = 0,
-+    /* Sets the PRSTCTL0 Bit */
-+    RT500_RSTCTL1_PRSTCTL0_SET_FLEXCOMM8_FLEXCOMM_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL0_SET_FLEXCOMM8_Enum;
-+
-+typedef enum {
-+    /* No Effect */
-+    RT500_RSTCTL1_PRSTCTL0_SET_FLEXCOMM9_FLEXCOMM_CLR = 0,
-+    /* Sets the PRSTCTL0 Bit */
-+    RT500_RSTCTL1_PRSTCTL0_SET_FLEXCOMM9_FLEXCOMM_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL0_SET_FLEXCOMM9_Enum;
-+
-+typedef enum {
-+    /* No Effect */
-+    RT500_RSTCTL1_PRSTCTL0_SET_FLEXCOMM10_FLEXCOMM_CLR = 0,
-+    /* Sets the PRSTCTL0 Bit */
-+    RT500_RSTCTL1_PRSTCTL0_SET_FLEXCOMM10_FLEXCOMM_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL0_SET_FLEXCOMM10_Enum;
-+
-+typedef enum {
-+    /* No Effect */
-+    RT500_RSTCTL1_PRSTCTL0_SET_FLEXCOMM11_FLEXCOMM_CLR = 0,
-+    /* Sets the PRSTCTL0 Bit */
-+    RT500_RSTCTL1_PRSTCTL0_SET_FLEXCOMM11_FLEXCOMM_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL0_SET_FLEXCOMM11_Enum;
-+
-+typedef enum {
-+    /* No Effect */
-+    RT500_RSTCTL1_PRSTCTL0_SET_FLEXCOMM12_FLEXCOMM_CLR = 0,
-+    /* Sets the PRSTCTL0 Bit */
-+    RT500_RSTCTL1_PRSTCTL0_SET_FLEXCOMM12_FLEXCOMM_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL0_SET_FLEXCOMM12_Enum;
-+
-+typedef enum {
-+    /* No Effect */
-+    RT500_RSTCTL1_PRSTCTL0_SET_FLEXCOMM13_FLEXCOMM_CLR = 0,
-+    /* Sets the PRSTCTL0 Bit */
-+    RT500_RSTCTL1_PRSTCTL0_SET_FLEXCOMM13_FLEXCOMM_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL0_SET_FLEXCOMM13_Enum;
-+
-+typedef enum {
-+    /* No Effect */
-+    RT500_RSTCTL1_PRSTCTL0_SET_FLEXCOMM14_FLEXCOMM_CLR = 0,
-+    /* Sets the PRSTCTL0 Bit */
-+    RT500_RSTCTL1_PRSTCTL0_SET_FLEXCOMM14_FLEXCOMM_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL0_SET_FLEXCOMM14_Enum;
-+
-+typedef enum {
-+    /* No Effect */
-+    RT500_RSTCTL1_PRSTCTL0_SET_FLEXCOMM15_I2C_FLEXCOMM15_I2C_CLR = 0,
-+    /* Sets the PRSTCTL0 Bit */
-+    RT500_RSTCTL1_PRSTCTL0_SET_FLEXCOMM15_I2C_FLEXCOMM15_I2C_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL0_SET_FLEXCOMM15_I2C_Enum;
-+
-+typedef enum {
-+    /* No Effect */
-+    RT500_RSTCTL1_PRSTCTL0_SET_DMIC0_FLEXCOMM_CLR = 0,
-+    /* Sets the PRSTCTL0 Bit */
-+    RT500_RSTCTL1_PRSTCTL0_SET_DMIC0_FLEXCOMM_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL0_SET_DMIC0_Enum;
-+
-+typedef enum {
-+    /* No Effect */
-+    RT500_RSTCTL1_PRSTCTL0_SET_FLEXCOMM16_FLEXCOMM16_SPI1_CLR = 0,
-+    /* Sets the PRSTCTL0 Bit */
-+    RT500_RSTCTL1_PRSTCTL0_SET_FLEXCOMM16_FLEXCOMM16_SPI1_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL0_SET_FLEXCOMM16_Enum;
-+
-+typedef enum {
-+    /* No Effect */
-+    RT500_RSTCTL1_PRSTCTL0_SET_OSEVENT_TIMER_OSEVENT_TIMER_CLR = 0,
-+    /* Sets the PRSTCTL0 Bit */
-+    RT500_RSTCTL1_PRSTCTL0_SET_OSEVENT_TIMER_OSEVENT_TIMER_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL0_SET_OSEVENT_TIMER_Enum;
-+
-+typedef enum {
-+    /* No Effect */
-+    RT500_RSTCTL1_PRSTCTL0_SET_FLEXIO_FLEXIO_CLR = 0,
-+    /* Sets the PRSTCTL0 Bit */
-+    RT500_RSTCTL1_PRSTCTL0_SET_FLEXIO_FLEXIO_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL0_SET_FLEXIO_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL1_PRSTCTL1_SET_HSGPIO0_HSGPIO_CLR = 0,
-+    /* Sets the PRSTCTL1 Bit */
-+    RT500_RSTCTL1_PRSTCTL1_SET_HSGPIO0_HSGPIO_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL1_SET_HSGPIO0_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL1_PRSTCTL1_SET_HSGPIO1_HSGPIO_CLR = 0,
-+    /* Sets the PRSTCTL1 Bit */
-+    RT500_RSTCTL1_PRSTCTL1_SET_HSGPIO1_HSGPIO_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL1_SET_HSGPIO1_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL1_PRSTCTL1_SET_HSGPIO2_HSGPIO_CLR = 0,
-+    /* Sets the PRSTCTL1 Bit */
-+    RT500_RSTCTL1_PRSTCTL1_SET_HSGPIO2_HSGPIO_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL1_SET_HSGPIO2_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL1_PRSTCTL1_SET_HSGPIO3_HSGPIO_CLR = 0,
-+    /* Sets the PRSTCTL1 Bit */
-+    RT500_RSTCTL1_PRSTCTL1_SET_HSGPIO3_HSGPIO_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL1_SET_HSGPIO3_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL1_PRSTCTL1_SET_HSGPIO4_HSGPIO_CLR = 0,
-+    /* Sets the PRSTCTL1 Bit */
-+    RT500_RSTCTL1_PRSTCTL1_SET_HSGPIO4_HSGPIO_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL1_SET_HSGPIO4_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL1_PRSTCTL1_SET_HSGPIO5_HSGPIO_CLR = 0,
-+    /* Sets the PRSTCTL1 Bit */
-+    RT500_RSTCTL1_PRSTCTL1_SET_HSGPIO5_HSGPIO_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL1_SET_HSGPIO5_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL1_PRSTCTL1_SET_HSGPIO6_HSGPIO_CLR = 0,
-+    /* Sets the PRSTCTL1 Bit */
-+    RT500_RSTCTL1_PRSTCTL1_SET_HSGPIO6_HSGPIO_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL1_SET_HSGPIO6_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL1_PRSTCTL1_SET_HSGPIO7_HSGPIO_CLR = 0,
-+    /* Sets the PRSTCTL1 Bit */
-+    RT500_RSTCTL1_PRSTCTL1_SET_HSGPIO7_HSGPIO_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL1_SET_HSGPIO7_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL1_PRSTCTL1_SET_CRC_CRC_CLR = 0,
-+    /* Sets the PRSTCTL1 Bit */
-+    RT500_RSTCTL1_PRSTCTL1_SET_CRC_CRC_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL1_SET_CRC_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL1_PRSTCTL1_SET_DMAC0_DMAC_CLR = 0,
-+    /* Sets the PRSTCTL1 Bit */
-+    RT500_RSTCTL1_PRSTCTL1_SET_DMAC0_DMAC_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL1_SET_DMAC0_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL1_PRSTCTL1_SET_DMAC1_DMAC_CLR = 0,
-+    /* Sets the PRSTCTL1 Bit */
-+    RT500_RSTCTL1_PRSTCTL1_SET_DMAC1_DMAC_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL1_SET_DMAC1_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL1_PRSTCTL1_SET_MU_MU_CLR = 0,
-+    /* Sets the PRSTCTL1 Bit */
-+    RT500_RSTCTL1_PRSTCTL1_SET_MU_MU_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL1_SET_MU_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL1_PRSTCTL1_SET_SEMA_SEMA_CLR = 0,
-+    /* Sets the PRSTCTL1 Bit */
-+    RT500_RSTCTL1_PRSTCTL1_SET_SEMA_SEMA_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL1_SET_SEMA_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL1_PRSTCTL1_SET_FREQME_FREQME_CLR = 0,
-+    /* Sets the PRSTCTL1 Bit */
-+    RT500_RSTCTL1_PRSTCTL1_SET_FREQME_FREQME_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL1_SET_FREQME_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL1_PRSTCTL2_SET_CT32BIT0_CT32BIT_CLR = 0,
-+    /* Sets the PRSTCTL2 Bit */
-+    RT500_RSTCTL1_PRSTCTL2_SET_CT32BIT0_CT32BIT_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL2_SET_CT32BIT0_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL1_PRSTCTL2_SET_CT32BIT1_CT32BIT_CLR = 0,
-+    /* Sets the PRSTCTL2 Bit */
-+    RT500_RSTCTL1_PRSTCTL2_SET_CT32BIT1_CT32BIT_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL2_SET_CT32BIT1_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL1_PRSTCTL2_SET_CT32BIT2_CT32BIT_CLR = 0,
-+    /* Sets the PRSTCTL2 Bit */
-+    RT500_RSTCTL1_PRSTCTL2_SET_CT32BIT2_CT32BIT_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL2_SET_CT32BIT2_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL1_PRSTCTL2_SET_CT32BIT3_CT32BIT_CLR = 0,
-+    /* Sets the PRSTCTL2 Bit */
-+    RT500_RSTCTL1_PRSTCTL2_SET_CT32BIT3_CT32BIT_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL2_SET_CT32BIT3_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL1_PRSTCTL2_SET_CT32BIT4_CT32BIT_CLR = 0,
-+    /* Sets the PRSTCTL2 Bit */
-+    RT500_RSTCTL1_PRSTCTL2_SET_CT32BIT4_CT32BIT_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL2_SET_CT32BIT4_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL1_PRSTCTL2_SET_MRT0_MRT0_CLR = 0,
-+    /* Sets the PRSTCTL2 Bit */
-+    RT500_RSTCTL1_PRSTCTL2_SET_MRT0_MRT0_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL2_SET_MRT0_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL1_PRSTCTL2_SET_WWDT1_WWDT1_CLR = 0,
-+    /* Sets the PRSTCTL2 Bit */
-+    RT500_RSTCTL1_PRSTCTL2_SET_WWDT1_WWDT1_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL2_SET_WWDT1_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL1_PRSTCTL2_SET_I3C0_I3C_CLR = 0,
-+    /* Sets the PRSTCTL2 Bit */
-+    RT500_RSTCTL1_PRSTCTL2_SET_I3C0_I3C_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL2_SET_I3C0_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL1_PRSTCTL2_SET_I3C1_I3C_CLR = 0,
-+    /* Sets the PRSTCTL2 Bit */
-+    RT500_RSTCTL1_PRSTCTL2_SET_I3C1_I3C_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL2_SET_I3C1_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL1_PRSTCTL2_SET_GPIOINTCTL_GPIOINTCTL_CLR = 0,
-+    /* Sets the PRSTCTL2 Bit */
-+    RT500_RSTCTL1_PRSTCTL2_SET_GPIOINTCTL_GPIOINTCTL_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL2_SET_GPIOINTCTL_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL1_PRSTCTL2_SET_PIMCTL_PIMCTL_CLR = 0,
-+    /* Sets the PRSTCTL2 Bit */
-+    RT500_RSTCTL1_PRSTCTL2_SET_PIMCTL_PIMCTL_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL2_SET_PIMCTL_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL1_PRSTCTL0_CLR_FLEXCOMM0_FLEXCOMM_CLR = 0,
-+    /* Clears the PRSTCTL0 Bit */
-+    RT500_RSTCTL1_PRSTCTL0_CLR_FLEXCOMM0_FLEXCOMM_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL0_CLR_FLEXCOMM0_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL1_PRSTCTL0_CLR_FLEXCOMM1_FLEXCOMM_CLR = 0,
-+    /* Clears the PRSTCTL0 Bit */
-+    RT500_RSTCTL1_PRSTCTL0_CLR_FLEXCOMM1_FLEXCOMM_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL0_CLR_FLEXCOMM1_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL1_PRSTCTL0_CLR_FLEXCOMM2_FLEXCOMM_CLR = 0,
-+    /* Clears the PRSTCTL0 Bit */
-+    RT500_RSTCTL1_PRSTCTL0_CLR_FLEXCOMM2_FLEXCOMM_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL0_CLR_FLEXCOMM2_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL1_PRSTCTL0_CLR_FLEXCOMM3_FLEXCOMM_CLR = 0,
-+    /* Clears the PRSTCTL0 Bit */
-+    RT500_RSTCTL1_PRSTCTL0_CLR_FLEXCOMM3_FLEXCOMM_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL0_CLR_FLEXCOMM3_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL1_PRSTCTL0_CLR_FLEXCOMM4_FLEXCOMM_CLR = 0,
-+    /* Clears the PRSTCTL0 Bit */
-+    RT500_RSTCTL1_PRSTCTL0_CLR_FLEXCOMM4_FLEXCOMM_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL0_CLR_FLEXCOMM4_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL1_PRSTCTL0_CLR_FLEXCOMM5_FLEXCOMM_CLR = 0,
-+    /* Clears the PRSTCTL0 Bit */
-+    RT500_RSTCTL1_PRSTCTL0_CLR_FLEXCOMM5_FLEXCOMM_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL0_CLR_FLEXCOMM5_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL1_PRSTCTL0_CLR_FLEXCOMM6_FLEXCOMM_CLR = 0,
-+    /* Clears the PRSTCTL0 Bit */
-+    RT500_RSTCTL1_PRSTCTL0_CLR_FLEXCOMM6_FLEXCOMM_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL0_CLR_FLEXCOMM6_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL1_PRSTCTL0_CLR_FLEXCOMM7_FLEXCOMM_CLR = 0,
-+    /* Clears the PRSTCTL0 Bit */
-+    RT500_RSTCTL1_PRSTCTL0_CLR_FLEXCOMM7_FLEXCOMM_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL0_CLR_FLEXCOMM7_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL1_PRSTCTL0_CLR_FLEXCOMM8_FLEXCOMM_CLR = 0,
-+    /* Clears the PRSTCTL0 Bit */
-+    RT500_RSTCTL1_PRSTCTL0_CLR_FLEXCOMM8_FLEXCOMM_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL0_CLR_FLEXCOMM8_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL1_PRSTCTL0_CLR_FLEXCOMM9_FLEXCOMM_CLR = 0,
-+    /* Clears the PRSTCTL0 Bit */
-+    RT500_RSTCTL1_PRSTCTL0_CLR_FLEXCOMM9_FLEXCOMM_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL0_CLR_FLEXCOMM9_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL1_PRSTCTL0_CLR_FLEXCOMM10_FLEXCOMM_CLR = 0,
-+    /* Clears the PRSTCTL0 Bit */
-+    RT500_RSTCTL1_PRSTCTL0_CLR_FLEXCOMM10_FLEXCOMM_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL0_CLR_FLEXCOMM10_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL1_PRSTCTL0_CLR_FLEXCOMM11_FLEXCOMM_CLR = 0,
-+    /* Clears the PRSTCTL0 Bit */
-+    RT500_RSTCTL1_PRSTCTL0_CLR_FLEXCOMM11_FLEXCOMM_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL0_CLR_FLEXCOMM11_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL1_PRSTCTL0_CLR_FLEXCOMM12_FLEXCOMM_CLR = 0,
-+    /* Clears the PRSTCTL0 Bit */
-+    RT500_RSTCTL1_PRSTCTL0_CLR_FLEXCOMM12_FLEXCOMM_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL0_CLR_FLEXCOMM12_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL1_PRSTCTL0_CLR_FLEXCOMM13_FLEXCOMM_CLR = 0,
-+    /* Clears the PRSTCTL0 Bit */
-+    RT500_RSTCTL1_PRSTCTL0_CLR_FLEXCOMM13_FLEXCOMM_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL0_CLR_FLEXCOMM13_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL1_PRSTCTL0_CLR_FLEXCOMM14_FLEXCOMM_CLR = 0,
-+    /* Clears the PRSTCTL0 Bit */
-+    RT500_RSTCTL1_PRSTCTL0_CLR_FLEXCOMM14_FLEXCOMM_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL0_CLR_FLEXCOMM14_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL1_PRSTCTL0_CLR_FLEXCOMM15_I2C_FLEXCOMM15_I2C_CLR = 0,
-+    /* Clears the PRSTCTL0 Bit */
-+    RT500_RSTCTL1_PRSTCTL0_CLR_FLEXCOMM15_I2C_FLEXCOMM15_I2C_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL0_CLR_FLEXCOMM15_I2C_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL1_PRSTCTL0_CLR_DMIC0_FLEXCOMM_CLR = 0,
-+    /* Clears the PRSTCTL0 Bit */
-+    RT500_RSTCTL1_PRSTCTL0_CLR_DMIC0_FLEXCOMM_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL0_CLR_DMIC0_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL1_PRSTCTL0_CLR_FLEXCOMM16_FLEXCOMM16_SPI1_CLR = 0,
-+    /* Clears the PRSTCTL0 Bit */
-+    RT500_RSTCTL1_PRSTCTL0_CLR_FLEXCOMM16_FLEXCOMM16_SPI1_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL0_CLR_FLEXCOMM16_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL1_PRSTCTL0_CLR_OSEVENT_TIMER_OSEVENT_TIMER_CLR = 0,
-+    /* Clears the PRSTCTL0 Bit */
-+    RT500_RSTCTL1_PRSTCTL0_CLR_OSEVENT_TIMER_OSEVENT_TIMER_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL0_CLR_OSEVENT_TIMER_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL1_PRSTCTL0_CLR_FLEXIO_FLEXIO_CLR = 0,
-+    /* Clears the PRSTCTL0 Bit */
-+    RT500_RSTCTL1_PRSTCTL0_CLR_FLEXIO_FLEXIO_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL0_CLR_FLEXIO_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL1_PRSTCTL1_CLR_HSGPIO0_HSGPIO_CLR = 0,
-+    /* Clears the PRSTCTL1 Bit */
-+    RT500_RSTCTL1_PRSTCTL1_CLR_HSGPIO0_HSGPIO_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL1_CLR_HSGPIO0_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL1_PRSTCTL1_CLR_HSGPIO1_HSGPIO_CLR = 0,
-+    /* Clears the PRSTCTL1 Bit */
-+    RT500_RSTCTL1_PRSTCTL1_CLR_HSGPIO1_HSGPIO_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL1_CLR_HSGPIO1_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL1_PRSTCTL1_CLR_HSGPIO2_HSGPIO_CLR = 0,
-+    /* Clears the PRSTCTL1 Bit */
-+    RT500_RSTCTL1_PRSTCTL1_CLR_HSGPIO2_HSGPIO_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL1_CLR_HSGPIO2_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL1_PRSTCTL1_CLR_HSGPIO3_HSGPIO_CLR = 0,
-+    /* Clears the PRSTCTL1 Bit */
-+    RT500_RSTCTL1_PRSTCTL1_CLR_HSGPIO3_HSGPIO_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL1_CLR_HSGPIO3_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL1_PRSTCTL1_CLR_HSGPIO4_HSGPIO_CLR = 0,
-+    /* Clears the PRSTCTL1 Bit */
-+    RT500_RSTCTL1_PRSTCTL1_CLR_HSGPIO4_HSGPIO_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL1_CLR_HSGPIO4_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL1_PRSTCTL1_CLR_HSGPIO5_HSGPIO_CLR = 0,
-+    /* Clears the PRSTCTL1 Bit */
-+    RT500_RSTCTL1_PRSTCTL1_CLR_HSGPIO5_HSGPIO_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL1_CLR_HSGPIO5_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL1_PRSTCTL1_CLR_HSGPIO6_HSGPIO_CLR = 0,
-+    /* Clears the PRSTCTL1 Bit */
-+    RT500_RSTCTL1_PRSTCTL1_CLR_HSGPIO6_HSGPIO_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL1_CLR_HSGPIO6_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL1_PRSTCTL1_CLR_HSGPIO7_HSGPIO_CLR = 0,
-+    /* Clears the PRSTCTL1 Bit */
-+    RT500_RSTCTL1_PRSTCTL1_CLR_HSGPIO7_HSGPIO_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL1_CLR_HSGPIO7_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL1_PRSTCTL1_CLR_CRC_CRC_CLR = 0,
-+    /* Clears the PRSTCTL1 Bit */
-+    RT500_RSTCTL1_PRSTCTL1_CLR_CRC_CRC_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL1_CLR_CRC_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL1_PRSTCTL1_CLR_DMAC0_DMAC_CLR = 0,
-+    /* Clears the PRSTCTL1 Bit */
-+    RT500_RSTCTL1_PRSTCTL1_CLR_DMAC0_DMAC_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL1_CLR_DMAC0_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL1_PRSTCTL1_CLR_DMAC1_DMAC_CLR = 0,
-+    /* Clears the PRSTCTL1 Bit */
-+    RT500_RSTCTL1_PRSTCTL1_CLR_DMAC1_DMAC_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL1_CLR_DMAC1_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL1_PRSTCTL1_CLR_MU_MU_CLR = 0,
-+    /* Clears the PRSTCTL1 Bit */
-+    RT500_RSTCTL1_PRSTCTL1_CLR_MU_MU_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL1_CLR_MU_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL1_PRSTCTL1_CLR_SEMA_SEMA_CLR = 0,
-+    /* Clears the PRSTCTL1 Bit */
-+    RT500_RSTCTL1_PRSTCTL1_CLR_SEMA_SEMA_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL1_CLR_SEMA_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL1_PRSTCTL1_CLR_FREQME_FREQME_CLR = 0,
-+    /* Clears the PRSTCTL1 Bit */
-+    RT500_RSTCTL1_PRSTCTL1_CLR_FREQME_FREQME_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL1_CLR_FREQME_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL1_PRSTCTL2_CLR_CT32BIT0_CT32BIT_CLR = 0,
-+    /* Clears the PRSTCTL2 Bit */
-+    RT500_RSTCTL1_PRSTCTL2_CLR_CT32BIT0_CT32BIT_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL2_CLR_CT32BIT0_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL1_PRSTCTL2_CLR_CT32BIT1_CT32BIT_CLR = 0,
-+    /* Clears the PRSTCTL2 Bit */
-+    RT500_RSTCTL1_PRSTCTL2_CLR_CT32BIT1_CT32BIT_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL2_CLR_CT32BIT1_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL1_PRSTCTL2_CLR_CT32BIT2_CT32BIT_CLR = 0,
-+    /* Clears the PRSTCTL2 Bit */
-+    RT500_RSTCTL1_PRSTCTL2_CLR_CT32BIT2_CT32BIT_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL2_CLR_CT32BIT2_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL1_PRSTCTL2_CLR_CT32BIT3_CT32BIT_CLR = 0,
-+    /* Clears the PRSTCTL2 Bit */
-+    RT500_RSTCTL1_PRSTCTL2_CLR_CT32BIT3_CT32BIT_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL2_CLR_CT32BIT3_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL1_PRSTCTL2_CLR_CT32BIT4_CT32BIT_CLR = 0,
-+    /* Clears the PRSTCTL2 Bit */
-+    RT500_RSTCTL1_PRSTCTL2_CLR_CT32BIT4_CT32BIT_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL2_CLR_CT32BIT4_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL1_PRSTCTL2_CLR_MRT0_MRT0_CLR = 0,
-+    /* Clears the PRSTCTL2 Bit */
-+    RT500_RSTCTL1_PRSTCTL2_CLR_MRT0_MRT0_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL2_CLR_MRT0_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL1_PRSTCTL2_CLR_WWDT1_WWDT1_CLR = 0,
-+    /* Clears the PRSTCTL2 Bit */
-+    RT500_RSTCTL1_PRSTCTL2_CLR_WWDT1_WWDT1_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL2_CLR_WWDT1_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL1_PRSTCTL2_CLR_I3C0_I3C_CLR = 0,
-+    /* Clears the PRSTCTL2 Bit */
-+    RT500_RSTCTL1_PRSTCTL2_CLR_I3C0_I3C_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL2_CLR_I3C0_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL1_PRSTCTL2_CLR_I3C1_I3C_CLR = 0,
-+    /* Clears the PRSTCTL2 Bit */
-+    RT500_RSTCTL1_PRSTCTL2_CLR_I3C1_I3C_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL2_CLR_I3C1_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL1_PRSTCTL2_CLR_GPIOINTCTL_GPIOINTCTL_CLR = 0,
-+    /* Clears the PRSTCTL2 Bit */
-+    RT500_RSTCTL1_PRSTCTL2_CLR_GPIOINTCTL_GPIOINTCTL_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL2_CLR_GPIOINTCTL_Enum;
-+
-+typedef enum {
-+    /* No effect */
-+    RT500_RSTCTL1_PRSTCTL2_CLR_PIMCTL_PIMCTL_CLR = 0,
-+    /* Clears the PRSTCTL2 Bit */
-+    RT500_RSTCTL1_PRSTCTL2_CLR_PIMCTL_PIMCTL_SET = 1,
-+} RT500_RSTCTL1_PRSTCTL2_CLR_PIMCTL_Enum;
-+
-+
-+#define RT500_RSTCTL1_REGISTER_ACCESS_INFO_ARRAY(_name) \
-+    struct RegisterAccessInfo _name[RT500_RSTCTL1_REGS_NO] = { \
-+        [0 ... RT500_RSTCTL1_REGS_NO - 1] = { \
-+            .name = "", \
-+            .addr = -1, \
-+        }, \
-+        [R_RT500_RSTCTL1_SYSRSTSTAT] = { \
-+            .name = "SYSRSTSTAT", \
-+            .addr = 0x0, \
++        [R_FLEXCOMM_USART_INTSTAT] = { \
++            .name = "INTSTAT", \
++            .addr = 0x24, \
 +            .ro = 0xFFFFFFFF, \
-+            .reset = 0x1, \
-+        }, \
-+        [R_RT500_RSTCTL1_PRSTCTL0] = { \
-+            .name = "PRSTCTL0", \
-+            .addr = 0x10, \
-+            .ro = 0xD40000FF, \
-+            .reset = 0x1C0FF00, \
-+        }, \
-+        [R_RT500_RSTCTL1_PRSTCTL1] = { \
-+            .name = "PRSTCTL1", \
-+            .addr = 0x14, \
-+            .ro = 0x4E7EFF00, \
-+            .reset = 0xB18100FF, \
-+        }, \
-+        [R_RT500_RSTCTL1_PRSTCTL2] = { \
-+            .name = "PRSTCTL2", \
-+            .addr = 0x18, \
-+            .ro = 0x3FFCFAE0, \
-+            .reset = 0xC001011F, \
-+        }, \
-+        [R_RT500_RSTCTL1_PRSTCTL0_SET] = { \
-+            .name = "PRSTCTL0_SET", \
-+            .addr = 0x40, \
-+            .ro = 0xD40000FF, \
 +            .reset = 0x0, \
 +        }, \
-+        [R_RT500_RSTCTL1_PRSTCTL1_SET] = { \
-+            .name = "PRSTCTL1_SET", \
-+            .addr = 0x44, \
-+            .ro = 0x4E7EFF00, \
++        [R_FLEXCOMM_USART_OSR] = { \
++            .name = "OSR", \
++            .addr = 0x28, \
++            .ro = 0xFFFFFFF0, \
++            .reset = 0xF, \
++        }, \
++        [R_FLEXCOMM_USART_ADDR] = { \
++            .name = "ADDR", \
++            .addr = 0x2C, \
++            .ro = 0xFFFFFF00, \
 +            .reset = 0x0, \
 +        }, \
-+        [R_RT500_RSTCTL1_PRSTCTL2_SET] = { \
-+            .name = "PRSTCTL2_SET", \
-+            .addr = 0x48, \
-+            .ro = 0x3FFCFAE0, \
++        [R_FLEXCOMM_USART_FIFOCFG] = { \
++            .name = "FIFOCFG", \
++            .addr = 0xE00, \
++            .ro = 0xFFF80FFC, \
 +            .reset = 0x0, \
 +        }, \
-+        [R_RT500_RSTCTL1_PRSTCTL0_CLR] = { \
-+            .name = "PRSTCTL0_CLR", \
-+            .addr = 0x70, \
-+            .ro = 0xD40000FF, \
++        [R_FLEXCOMM_USART_FIFOSTAT] = { \
++            .name = "FIFOSTAT", \
++            .addr = 0xE04, \
++            .ro = 0xFFFFFFFC, \
++            .reset = 0x30, \
++        }, \
++        [R_FLEXCOMM_USART_FIFOTRIG] = { \
++            .name = "FIFOTRIG", \
++            .addr = 0xE08, \
++            .ro = 0xFFF0F0FC, \
 +            .reset = 0x0, \
 +        }, \
-+        [R_RT500_RSTCTL1_PRSTCTL1_CLR] = { \
-+            .name = "PRSTCTL1_CLR", \
-+            .addr = 0x74, \
-+            .ro = 0x4E7EFF00, \
++        [R_FLEXCOMM_USART_FIFOINTENSET] = { \
++            .name = "FIFOINTENSET", \
++            .addr = 0xE10, \
++            .ro = 0xFFFFFFF0, \
 +            .reset = 0x0, \
 +        }, \
-+        [R_RT500_RSTCTL1_PRSTCTL2_CLR] = { \
-+            .name = "PRSTCTL2_CLR", \
-+            .addr = 0x78, \
-+            .ro = 0x3FFCFAE0, \
++        [R_FLEXCOMM_USART_FIFOINTENCLR] = { \
++            .name = "FIFOINTENCLR", \
++            .addr = 0xE14, \
++            .ro = 0xFFFFFFF0, \
 +            .reset = 0x0, \
++        }, \
++        [R_FLEXCOMM_USART_FIFOINTSTAT] = { \
++            .name = "FIFOINTSTAT", \
++            .addr = 0xE18, \
++            .ro = 0xFFFFFFFF, \
++            .reset = 0x0, \
++        }, \
++        [R_FLEXCOMM_USART_FIFOWR] = { \
++            .name = "FIFOWR", \
++            .addr = 0xE20, \
++            .ro = 0xFFFFFE00, \
++            .reset = 0x0, \
++        }, \
++        [R_FLEXCOMM_USART_FIFORD] = { \
++            .name = "FIFORD", \
++            .addr = 0xE30, \
++            .ro = 0xFFFFFFFF, \
++            .reset = 0x0, \
++        }, \
++        [R_FLEXCOMM_USART_FIFORDNOPOP] = { \
++            .name = "FIFORDNOPOP", \
++            .addr = 0xE40, \
++            .ro = 0xFFFFFFFF, \
++            .reset = 0x0, \
++        }, \
++        [R_FLEXCOMM_USART_FIFOSIZE] = { \
++            .name = "FIFOSIZE", \
++            .addr = 0xE48, \
++            .ro = 0xFFFFFFFF, \
++            .reset = 0x10, \
++        }, \
++        [R_FLEXCOMM_USART_ID] = { \
++            .name = "ID", \
++            .addr = 0xFFC, \
++            .ro = 0xFFFFFFFF, \
++            .reset = 0xE0102100, \
 +        }, \
 +    }
-diff --git a/include/hw/misc/rt500_rstctl.h b/include/hw/misc/rt500_rstctl.h
+diff --git a/include/hw/char/flexcomm_usart.h b/include/hw/char/flexcomm_usart.h
 new file mode 100644
-index 0000000000..ae7e304b2e
+index 0000000000..07d14cb330
 --- /dev/null
-+++ b/include/hw/misc/rt500_rstctl.h
-@@ -0,0 +1,32 @@
++++ b/include/hw/char/flexcomm_usart.h
+@@ -0,0 +1,20 @@
 +/*
-+ * QEMU model for RT500 Reset Controller
++ * QEMU model for NXP's FLEXCOMM USART
 + *
 + * Copyright (c) 2024 Google LLC
 + *
@@ -2424,35 +1202,47 @@ index 0000000000..ae7e304b2e
 + * See the COPYING file in the top-level directory.
 + */
 +
-+#ifndef HW_MISC_RT500_RSTCTL_H
-+#define HW_MISC_RT500_RSTCTL_H
++#ifndef HW_CHAR_FLEXCOMM_USART_H
++#define HW_CHAR_FLEXCOMM_USART_H
 +
-+#include "hw/arm/svd/rt500_rstctl0.h"
-+#include "hw/arm/svd/rt500_rstctl1.h"
-+#include "hw/sysbus.h"
++#include "hw/misc/flexcomm.h"
 +
-+#define TYPE_RT500_RSTCTL "rt500-rstctl"
-+#define RT500_RSTCTL(o) OBJECT_CHECK(RT500RstCtlState, o, TYPE_RT500_RSTCTL)
++void flexcomm_usart_init(FlexcommState *s);
++void flexcomm_usart_register(void);
 +
-+#define TYPE_RT500_RSTCTL0 "rt500-rstctl0"
-+#define TYPE_RT500_RSTCTL1 "rt500-rstctl1"
-+
-+typedef struct {
-+    SysBusDevice parent_obj;
-+
-+    MemoryRegion mmio;
-+    uint32_t regs[RT500_RSTCTL1_REGS_NO];
-+} RT500RstCtlState;
-+
-+#endif /* HW_MISC_RT500_RSTCTL_H */
-diff --git a/hw/misc/rt500_rstctl.c b/hw/misc/rt500_rstctl.c
++#endif /* HW_CHAR_RT500_FLEXCOMM_USART_H */
+diff --git a/include/hw/misc/flexcomm.h b/include/hw/misc/flexcomm.h
+index 137e483412..a4dfdb225f 100644
+--- a/include/hw/misc/flexcomm.h
++++ b/include/hw/misc/flexcomm.h
+@@ -13,7 +13,9 @@
+ #define HW_FLEXCOMM_H
+ 
+ #include "hw/sysbus.h"
++#include "chardev/char-fe.h"
+ #include "hw/arm/svd/flexcomm.h"
++#include "hw/arm/svd/flexcomm_usart.h"
+ #include "qemu/fifo32.h"
+ 
+ #define TYPE_FLEXCOMM "flexcomm"
+@@ -43,6 +45,9 @@ typedef struct {
+     uint32_t functions;
+     qemu_irq irq;
+     bool irq_state;
++    CharBackend chr;
++    Fifo32 tx_fifo;
++    Fifo32 rx_fifo;
+ } FlexcommState;
+ 
+ typedef struct {
+diff --git a/hw/char/flexcomm_usart.c b/hw/char/flexcomm_usart.c
 new file mode 100644
-index 0000000000..f167538360
+index 0000000000..4e097b6990
 --- /dev/null
-+++ b/hw/misc/rt500_rstctl.c
-@@ -0,0 +1,235 @@
++++ b/hw/char/flexcomm_usart.c
+@@ -0,0 +1,306 @@
 +/*
-+ * QEMU model for RT500 Reset Controller
++ * QEMU model for NXP's FLEXCOMM USART
 + *
 + * Copyright (c) 2024 Google LLC
 + *
@@ -2463,168 +1253,36 @@ index 0000000000..f167538360
 + */
 +
 +#include "qemu/osdep.h"
-+#include "qapi/error.h"
++#include "qemu/cutils.h"
 +#include "hw/irq.h"
 +#include "hw/qdev-properties.h"
 +#include "qemu/log.h"
 +#include "qemu/module.h"
 +#include "exec/address-spaces.h"
-+#include "hw/misc/rt500_rstctl.h"
-+
++#include "qapi/error.h"
 +#include "trace.h"
++#include "hw/char/flexcomm_usart.h"
 +
-+/*
-+ * There are two intances for RSTCTL with the same register names and layout but
-+ * with different fields.
-+ */
-+#define BUILD_BUG_REG_ADDR(reg) \
-+    QEMU_BUILD_BUG_ON((int)A_RT500_RSTCTL0_##reg != (int)A_RT500_RSTCTL1_##reg)
++#define REG(s, reg) (s->regs[R_FLEXCOMM_USART_##reg])
++/* register field write helper macro */
++#define RF_RD(s, reg, field, val) \
++    ARRAY_FIELD_DP32(s->regs, FLEXCOMM_USART_##reg, field, val)
++/* register field read helper macro */
++#define RF_WR(s, reg, field) \
++    ARRAY_FIELD_EX32(s->regs, FLEXCOMM_USART_##reg, field)
 +
-+#define REG(s, reg) (s->regs[R_RT500_RSTCTL0_##reg])
-+#define RF_WR(s, reg, field, val) \
-+    ARRAY_FIELD_DP32(s->regs, RT500_RSTCTL0_##reg, field, val)
-+#define RF_RD(s, reg, field) \
-+    ARRAY_FIELD_EX32(s->regs, RT500_RSTCTL0_##reg, field)
++static FLEXCOMM_USART_REGISTER_ACCESS_INFO_ARRAY(reg_info);
 +
-+#define RSTCTL_SYSRSTSTAT_WMASK (BITS(7, 4) | BIT(0))
-+#define RSTCL0_PRSCTL0_WMASK (BITS(30, 26) | BITS(24, 20) | BIT(18) | \
-+                              BIT(16) | BITS(12, 8) | BIT(3) | BIT(1))
-+#define RSTCL0_PRSCTL1_WMASK (BIT(24) | BITS(16, 15) | BITS(3, 2))
-+#define RSTCL0_PRSCTL2_WMASK (BITS(1, 0))
-+#define RSTCL1_PRSCTL0_WMASK (BIT(29) | BIT(27) |  BITS(25, 8))
-+#define RSTCL1_PRSCTL1_WMASK (BIT(31) | BITS(29, 28) | BITS(24, 23) | \
-+                              BIT(16) | BITS(7, 0))
-+#define RSTCL1_PRSCTL2_WMASK (BITS(31, 30) | BITS(17, 16) | BIT(10) | \
-+                              BIT(8) | BITS(4, 0))
-+
-+
-+/*
-+ * The two RSTCLK modules have different write register masks.
-+ */
-+typedef struct {
-+    SysBusDeviceClass parent;
-+    const struct RegisterAccessInfo *reg_info;
-+    int reg_info_num;
-+} RT500RstCtlClass;
-+
-+#define RT500_RSTCTL_CLASS(klass) \
-+    OBJECT_CLASS_CHECK(RT500RstCtlClass, (klass), TYPE_RT500_RSTCTL)
-+#define RT500_RSTCTL_GET_CLASS(obj) \
-+    OBJECT_GET_CLASS(RT500RstCtlClass, (obj), TYPE_RT500_RSTCTL)
-+
-+BUILD_BUG_REG_ADDR(SYSRSTSTAT);
-+BUILD_BUG_REG_ADDR(PRSTCTL0);
-+BUILD_BUG_REG_ADDR(PRSTCTL1);
-+BUILD_BUG_REG_ADDR(PRSTCTL2);
-+BUILD_BUG_REG_ADDR(PRSTCTL0_SET);
-+BUILD_BUG_REG_ADDR(PRSTCTL1_SET);
-+BUILD_BUG_REG_ADDR(PRSTCTL2_SET);
-+BUILD_BUG_REG_ADDR(PRSTCTL0_CLR);
-+BUILD_BUG_REG_ADDR(PRSTCTL1_CLR);
-+BUILD_BUG_REG_ADDR(PRSTCTL2_CLR);
-+
-+static MemTxResult rt500_rstctl_read(void *opaque, hwaddr addr,
-+                                     uint64_t *data, unsigned size,
-+                                     MemTxAttrs attrs)
++static void flexcomm_usart_reset(FlexcommState *s)
 +{
-+    RT500RstCtlState *s = opaque;
-+    RT500RstCtlClass *c = RT500_RSTCTL_GET_CLASS(s);
-+    const struct RegisterAccessInfo *rai = &c->reg_info[addr / 4];
-+    MemTxResult ret = MEMTX_OK;
-+
-+    switch (addr) {
-+    case A_RT500_RSTCTL0_SYSRSTSTAT:
-+    case A_RT500_RSTCTL0_PRSTCTL0:
-+    case A_RT500_RSTCTL0_PRSTCTL1:
-+    case A_RT500_RSTCTL0_PRSTCTL2:
-+        *data = s->regs[addr / 4];
-+        break;
-+    default:
-+        ret = MEMTX_ERROR;
-+    }
-+
-+    trace_rt500_rstctl_reg_read(DEVICE(s)->id, rai->name, addr, *data);
-+    return ret;
-+}
-+
-+static MemTxResult rt500_rstctl_write(void *opaque, hwaddr addr,
-+                                      uint64_t value, unsigned size,
-+                                      MemTxAttrs attrs)
-+{
-+    RT500RstCtlState *s = opaque;
-+    RT500RstCtlClass *c = RT500_RSTCTL_GET_CLASS(s);
-+    const struct RegisterAccessInfo *rai = &c->reg_info[addr / 4];
-+    struct RegisterInfo ri = {
-+        .data = &s->regs[addr / 4],
-+        .data_size = 4,
-+        .access = rai,
-+    };
-+
-+    trace_rt500_rstctl_reg_write(DEVICE(s)->id, rai->name, addr, value);
-+
-+    switch (addr) {
-+    case A_RT500_RSTCTL0_SYSRSTSTAT:
-+    {
-+        /* write 1 to clear bits */
-+        REG(s, SYSRSTSTAT) &= ~value;
-+        break;
-+    }
-+    case A_RT500_RSTCTL0_PRSTCTL0:
-+    case A_RT500_RSTCTL0_PRSTCTL1:
-+    case A_RT500_RSTCTL0_PRSTCTL2:
-+    {
-+        register_write(&ri, value, ~0, NULL, false);
-+        break;
-+    }
-+    case A_RT500_RSTCTL0_PRSTCTL0_SET:
-+    case A_RT500_RSTCTL0_PRSTCTL1_SET:
-+    case A_RT500_RSTCTL0_PRSTCTL2_SET:
-+    {
-+        uint32_t tmp;
-+
-+        tmp = A_RT500_RSTCTL0_PRSTCTL0 + (addr - A_RT500_RSTCTL0_PRSTCTL0_SET);
-+        s->regs[tmp / 4] |= value;
-+        break;
-+    }
-+    case A_RT500_RSTCTL0_PRSTCTL0_CLR:
-+    case A_RT500_RSTCTL0_PRSTCTL1_CLR:
-+    case A_RT500_RSTCTL0_PRSTCTL2_CLR:
-+    {
-+        uint32_t tmp;
-+
-+        tmp = A_RT500_RSTCTL0_PRSTCTL0 + (addr - A_RT500_RSTCTL0_PRSTCTL0_CLR);
-+        s->regs[tmp / 4] &= ~value;
-+        break;
-+    }
-+    }
-+
-+    return MEMTX_OK;
-+}
-+
-+static const MemoryRegionOps rt500_rstctl_ops = {
-+    .read_with_attrs = rt500_rstctl_read,
-+    .write_with_attrs = rt500_rstctl_write,
-+    .endianness = DEVICE_NATIVE_ENDIAN,
-+    .valid = {
-+        .min_access_size = 1,
-+        .max_access_size = 4,
-+        .unaligned = false,
-+    },
-+};
-+
-+static void rt500_rstctl_reset(DeviceState *dev)
-+{
-+    RT500RstCtlState *s = RT500_RSTCTL(dev);
-+    RT500RstCtlClass *c = RT500_RSTCTL_GET_CLASS(s);
-+
-+    for (int i = 0; i < c->reg_info_num; i++) {
-+        hwaddr addr = c->reg_info[i].addr;
++    for (int i = 0; i < FLEXCOMM_USART_REGS_NO; i++) {
++        hwaddr addr = reg_info[i].addr;
 +
 +        if (addr != -1) {
 +            struct RegisterInfo ri = {
 +                .data = &s->regs[addr / 4],
 +                .data_size = 4,
-+                .access = &c->reg_info[i],
++                .access = &reg_info[i],
 +            };
 +
 +            register_reset(&ri);
@@ -2632,108 +1290,342 @@ index 0000000000..f167538360
 +    }
 +}
 +
-+static void rt500_rstctl_init(Object *obj)
++static void update_fifo_stat(FlexcommState *s)
 +{
-+    RT500RstCtlState *s = RT500_RSTCTL(obj);
++    int rxlvl = fifo32_num_used(&s->rx_fifo);
++    int txlvl = fifo32_num_used(&s->tx_fifo);
 +
-+    memory_region_init_io(&s->mmio, obj, &rt500_rstctl_ops, s,
-+                          TYPE_RT500_RSTCTL, sizeof(s->regs));
-+    sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->mmio);
++    RF_RD(s, FIFOSTAT, RXLVL, fifo32_num_used(&s->rx_fifo));
++    RF_RD(s, FIFOSTAT, TXLVL, fifo32_num_used(&s->tx_fifo));
++    RF_RD(s, FIFOSTAT, RXFULL, fifo32_is_full(&s->rx_fifo));
++    RF_RD(s, FIFOSTAT, RXNOTEMPTY, !fifo32_is_empty(&s->rx_fifo));
++    RF_RD(s, FIFOSTAT, TXNOTFULL, !fifo32_is_full(&s->tx_fifo));
++    RF_RD(s, FIFOSTAT, TXEMPTY, fifo32_is_empty(&s->tx_fifo));
++
++    if (RF_WR(s, FIFOTRIG, RXLVLENA) &&
++        (rxlvl > RF_WR(s, FIFOTRIG, RXLVL))) {
++        RF_RD(s, FIFOINTSTAT, RXLVL, 1);
++    } else {
++        RF_RD(s, FIFOINTSTAT, RXLVL, 0);
++    }
++
++    if (RF_WR(s, FIFOTRIG, TXLVLENA) &&
++        (txlvl <= RF_WR(s, FIFOTRIG, TXLVL))) {
++        RF_RD(s, FIFOINTSTAT, TXLVL, 1);
++    } else {
++        RF_RD(s, FIFOINTSTAT, TXLVL, 0);
++    }
++
++    trace_flexcomm_usart_fifostat(DEVICE(s)->id, REG(s, FIFOSTAT),
++                                  REG(s, FIFOINTSTAT));
 +}
 +
-+static void rt500_rstctl0_class_init(ObjectClass *klass, void *data)
++static void flexcomm_usart_irq_update(FlexcommState *s)
 +{
-+    RT500RstCtlClass *rc = RT500_RSTCTL_CLASS(klass);
-+    static const RT500_RSTCTL0_REGISTER_ACCESS_INFO_ARRAY(reg_info);
-+    DeviceClass *dc = DEVICE_CLASS(klass);
++    bool irq, per_irqs, fifo_irqs, enabled = RF_WR(s, CFG, ENABLE);
 +
-+    dc->reset = rt500_rstctl_reset;
-+    rc->reg_info = reg_info;
-+    rc->reg_info_num = ARRAY_SIZE(reg_info);
++    update_fifo_stat(s);
++    fifo_irqs = REG(s, FIFOINTSTAT) & REG(s, FIFOINTENSET);
++
++    REG(s, INTSTAT) = REG(s, STAT) & REG(s, INTENSET);
++    per_irqs = REG(s, INTSTAT) != 0;
++
++    irq = enabled && (fifo_irqs || per_irqs);
++
++    trace_flexcomm_usart_irq(DEVICE(s)->id, irq, fifo_irqs, per_irqs, enabled);
++    flexcomm_irq(s, irq);
 +}
 +
-+static void rt500_rstctl1_class_init(ObjectClass *klass, void *data)
++static int flexcomm_usart_rx_space(void *opaque)
 +{
-+    RT500RstCtlClass *rc = RT500_RSTCTL_CLASS(klass);
-+    static const RT500_RSTCTL1_REGISTER_ACCESS_INFO_ARRAY(reg_info);
-+    DeviceClass *dc = DEVICE_CLASS(klass);
++    FlexcommState *s = opaque;
++    uint32_t ret = fifo32_num_free(&s->rx_fifo);
 +
-+    dc->reset = rt500_rstctl_reset;
-+    rc->reg_info = reg_info;
-+    rc->reg_info_num = ARRAY_SIZE(reg_info);
++    if (!RF_WR(s, CFG, ENABLE) || !RF_WR(s, FIFOCFG, ENABLERX)) {
++        ret = 0;
++    }
++
++    trace_flexcomm_usart_rx_space(DEVICE(s)->id, ret);
++
++    return ret;
 +}
 +
-+static const TypeInfo rt500_rstctl_types[] = {
++static void flexcomm_usart_rx(void *opaque, const uint8_t *buf, int size)
++{
++    FlexcommState *s = opaque;
++
++    if (!RF_WR(s, CFG, ENABLE) || !RF_WR(s, FIFOCFG, ENABLERX)) {
++        return;
++    }
++
++    trace_flexcomm_usart_rx(DEVICE(s)->id);
++
++    while (!fifo32_is_full(&s->rx_fifo) && size) {
++        fifo32_push(&s->rx_fifo, *buf++);
++        size--;
++    }
++
++    flexcomm_usart_irq_update(s);
++}
++
++static MemTxResult flexcomm_usart_reg_read(void *opaque, FlexcommState *s,
++                                          int f, hwaddr addr, uint64_t *data,
++                                          unsigned size)
++{
++    const struct RegisterAccessInfo *rai = &reg_info[addr / 4];
++    MemTxResult ret = MEMTX_OK;
++
++    if (size != 4) {
++        ret = MEMTX_ERROR;
++        goto out;
++    }
++
++    switch (addr) {
++    case A_FLEXCOMM_USART_FIFORD:
 +    {
-+        .name          = TYPE_RT500_RSTCTL,
-+        .parent        = TYPE_SYS_BUS_DEVICE,
-+        .instance_size = sizeof(RT500RstCtlState),
-+        .instance_init = rt500_rstctl_init,
-+        .abstract      = true,
-+    },
++        if (!fifo32_is_empty(&s->rx_fifo)) {
++            *data = fifo32_pop(&s->rx_fifo);
++            qemu_chr_fe_accept_input(&s->chr);
++        }
++        break;
++    }
++    case A_FLEXCOMM_USART_FIFORDNOPOP:
 +    {
-+        .name          = TYPE_RT500_RSTCTL0,
-+        .parent        = TYPE_RT500_RSTCTL,
-+        .class_init    = rt500_rstctl0_class_init,
-+        .class_size    = sizeof(RT500RstCtlClass),
-+    },
++        if (!fifo32_is_empty(&s->rx_fifo)) {
++            *data = fifo32_peek(&s->rx_fifo);
++        }
++        break;
++    }
++    default:
++        *data = s->regs[addr / 4];
++        break;
++    }
++
++    flexcomm_usart_irq_update(s);
++
++out:
++    trace_flexcomm_usart_reg_read(DEVICE(s)->id, rai->name, addr, *data);
++    return ret;
++}
++
++static MemTxResult flexcomm_usart_reg_write(void *opaque, FlexcommState *s,
++                                           int f, hwaddr addr, uint64_t value,
++                                           unsigned size)
++{
++    const struct RegisterAccessInfo *rai = &reg_info[addr / 4];
++    struct RegisterInfo ri = {
++        .data = &s->regs[addr / 4],
++        .data_size = 4,
++        .access = rai,
++    };
++
++    trace_flexcomm_usart_reg_write(DEVICE(s)->id, rai->name, addr, value);
++
++    if (size != 4) {
++        return MEMTX_ERROR;
++    }
++
++    switch (addr) {
++    case A_FLEXCOMM_USART_INTENCLR:
 +    {
-+        .name          = TYPE_RT500_RSTCTL1,
-+        .parent        = TYPE_RT500_RSTCTL,
-+        .class_init    = rt500_rstctl1_class_init,
-+        .class_size    = sizeof(RT500RstCtlClass),
-+    },
++        register_write(&ri, value, ~0, NULL, false);
++        REG(s, INTENSET) &= ~REG(s, INTENCLR);
++        break;
++    }
++    case A_FLEXCOMM_USART_FIFOCFG:
++    {
++        register_write(&ri, value, ~0, NULL, false);
++        if (RF_WR(s, FIFOCFG, EMPTYRX)) {
++            RF_RD(s, FIFOCFG, EMPTYRX, 0);
++            fifo32_reset(&s->rx_fifo);
++        }
++        if (RF_WR(s, FIFOCFG, EMPTYTX)) {
++            RF_RD(s, FIFOCFG, EMPTYTX, 0);
++            fifo32_reset(&s->tx_fifo);
++        }
++        break;
++    }
++    case A_FLEXCOMM_USART_FIFOSTAT:
++    {
++        bool rxerr = RF_WR(s, FIFOSTAT, RXERR);
++        bool txerr = RF_WR(s, FIFOSTAT, TXERR);
++
++        register_write(&ri, value, ~0, NULL, false);
++
++        if (rxerr && RF_WR(s, FIFOSTAT, RXERR)) {
++            rxerr = false;
++        }
++        if (txerr && RF_WR(s, FIFOSTAT, TXERR)) {
++            txerr = false;
++        }
++
++        RF_RD(s, FIFOSTAT, RXERR, rxerr);
++        RF_RD(s, FIFOSTAT, TXERR, txerr);
++        break;
++    }
++    case A_FLEXCOMM_USART_FIFOINTENSET:
++    {
++        REG(s, FIFOINTENSET) |= value;
++        break;
++    }
++    case A_FLEXCOMM_USART_FIFOINTENCLR:
++    {
++        register_write(&ri, value, ~0, NULL, false);
++        REG(s, FIFOINTENSET) &= ~value;
++        break;
++    }
++    case A_FLEXCOMM_USART_FIFOWR:
++    {
++        register_write(&ri, value, ~0, NULL, false);
++
++        if (!fifo32_is_full(&s->tx_fifo)) {
++            fifo32_push(&s->tx_fifo, REG(s, FIFOWR));
++        }
++
++        if (!RF_WR(s, CFG, ENABLE) || !RF_WR(s, FIFOCFG, ENABLETX)) {
++            break;
++        }
++
++        while (!fifo32_is_empty(&s->tx_fifo)) {
++            uint32_t val32 = fifo32_pop(&s->tx_fifo);
++            uint8_t val8 = val32 & 0xff;
++
++            trace_flexcomm_usart_tx(DEVICE(s)->id);
++            qemu_chr_fe_write_all(&s->chr, &val8, sizeof(val8));
++        }
++        break;
++    }
++    case A_FLEXCOMM_USART_CFG:
++    {
++        register_write(&ri, value, ~0, NULL, false);
++        break;
++    }
++    default:
++        register_write(&ri, value, ~0, NULL, false);
++        break;
++    }
++
++    flexcomm_usart_irq_update(s);
++
++    return MEMTX_OK;
++}
++
++static void flexcomm_usart_select(void *opaque, FlexcommState *s, int f,
++                                 bool set)
++{
++    if (set) {
++        qemu_chr_fe_set_handlers(&s->chr, flexcomm_usart_rx_space,
++                             flexcomm_usart_rx, NULL, NULL,
++                             s, NULL, true);
++        flexcomm_usart_reset(s);
++        fifo32_create(&s->rx_fifo, RF_WR(s, FIFOSIZE, FIFOSIZE));
++        fifo32_create(&s->tx_fifo, RF_WR(s, FIFOSIZE, FIFOSIZE));
++    } else {
++        qemu_chr_fe_set_handlers(&s->chr, NULL, NULL, NULL, NULL, NULL, NULL,
++                                 false);
++        fifo32_destroy(&s->rx_fifo);
++        fifo32_destroy(&s->tx_fifo);
++    }
++}
++
++static const FlexcommFunctionOps flexcomm_usart_ops = {
++    .select = flexcomm_usart_select,
++    .reg_read = flexcomm_usart_reg_read,
++    .reg_write = flexcomm_usart_reg_write,
 +};
 +
-+DEFINE_TYPES(rt500_rstctl_types);
++void flexcomm_usart_init(FlexcommState *s)
++{
++}
++
++void flexcomm_usart_register(void)
++{
++    Error *err = NULL;
++
++    if (!flexcomm_register_ops(FLEXCOMM_FUNC_USART, NULL,
++                               &flexcomm_usart_ops, &err)) {
++        error_report_err(err);
++    }
++}
+diff --git a/hw/misc/flexcomm.c b/hw/misc/flexcomm.c
+index 2bac4f008e..3d296b50d3 100644
+--- a/hw/misc/flexcomm.c
++++ b/hw/misc/flexcomm.c
+@@ -21,6 +21,7 @@
+ #include "qapi/error.h"
+ #include "trace.h"
+ #include "hw/misc/flexcomm.h"
++#include "hw/char/flexcomm_usart.h"
+ 
+ #define REG(s, reg) (s->regs[R_FLEXCOMM_##reg])
+ #define RF_WR(s, reg, field, val) \
+@@ -225,6 +226,7 @@ static const MemoryRegionOps flexcomm_ops = {
+ static Property flexcomm_properties[] = {
+     DEFINE_PROP_UINT32("functions", FlexcommState, functions,
+                        FLEXCOMM_FULL),
++    DEFINE_PROP_CHR("chardev", FlexcommState, chr),
+     DEFINE_PROP_END_OF_LIST(),
+ };
+ 
+@@ -243,6 +245,11 @@ static void flexcomm_init(Object *obj)
+ 
+ static void flexcomm_realize(DeviceState *dev, Error **errp)
+ {
++    FlexcommState *s = FLEXCOMM(dev);
++
++    if (has_function(s, FLEXCOMM_FUNC_USART)) {
++        flexcomm_usart_init(s);
++    }
+ }
+ 
+ static void flexcomm_class_init(ObjectClass *klass, void *data)
+@@ -252,6 +259,8 @@ static void flexcomm_class_init(ObjectClass *klass, void *data)
+     dc->reset = flexcomm_reset;
+     device_class_set_props(dc, flexcomm_properties);
+     dc->realize = flexcomm_realize;
++
++    flexcomm_usart_register();
+ }
+ 
+ static const TypeInfo flexcomm_types[] = {
 diff --git a/hw/arm/svd/meson.build b/hw/arm/svd/meson.build
-index 7e59eda0d3..25f4917089 100644
+index 4b0bbbbbdc..2bde34d15b 100644
 --- a/hw/arm/svd/meson.build
 +++ b/hw/arm/svd/meson.build
-@@ -22,4 +22,10 @@ if get_option('mcux-soc-svd')
-   run_target('svd-flexspi', command: svd_gen_header +
-     [ '-i', rt595, '-o', '@SOURCE_ROOT@/include/hw/arm/svd/flexspi.h',
-       '-p', 'FLEXSPI0', '-t', 'FLEXSPI'])
-+  run_target('svd-rt500-rstctl0', command: svd_gen_header +
-+    [ '-i', rt595, '-o', '@SOURCE_ROOT@/include/hw/arm/svd/rt500_rstctl0.h',
-+      '-p', 'RSTCTL0', '-t', 'RT500_RSTCTL0'])
-+  run_target('svd-rt500-rstctl1', command: svd_gen_header +
-+    [ '-i', rt595, '-o', '@SOURCE_ROOT@/include/hw/arm/svd/rt500_rstctl1.h',
-+      '-p', 'RSTCTL1', '-t', 'RT500_RSTCTL1'])
+@@ -4,4 +4,7 @@ if get_option('mcux-soc-svd')
+   run_target('svd-flexcomm', command: svd_gen_header +
+     [ '-i', rt595, '-o', '@SOURCE_ROOT@/include/hw/arm/svd/flexcomm.h',
+     '-p', 'FLEXCOMM0', '-t', 'FLEXCOMM'])
++  run_target('svd-flexcomm-usart', command: svd_gen_header +
++    [ '-i', rt595, '-o', '@SOURCE_ROOT@/include/hw/arm/svd/flexcomm_usart.h',
++    '-p', 'USART0', '-t', 'FLEXCOMM_USART'])
  endif
-diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
-index 02feb93840..4b688aead2 100644
---- a/hw/misc/Kconfig
-+++ b/hw/misc/Kconfig
-@@ -221,4 +221,7 @@ config FLEXCOMM
- config RT500_CLKCTL
-     bool
- 
-+config RT500_RSTCTL
-+    bool
+diff --git a/hw/char/meson.build b/hw/char/meson.build
+index e5b13b6958..8f8c17ae66 100644
+--- a/hw/char/meson.build
++++ b/hw/char/meson.build
+@@ -39,3 +39,4 @@ system_ss.add(when: 'CONFIG_GOLDFISH_TTY', if_true: files('goldfish_tty.c'))
+ specific_ss.add(when: 'CONFIG_TERMINAL3270', if_true: files('terminal3270.c'))
+ specific_ss.add(when: 'CONFIG_VIRTIO', if_true: files('virtio-serial-bus.c'))
+ specific_ss.add(when: 'CONFIG_PSERIES', if_true: files('spapr_vty.c'))
++system_ss.add(when: 'CONFIG_FLEXCOMM', if_true: files('flexcomm_usart.c'))
+diff --git a/hw/char/trace-events b/hw/char/trace-events
+index 8875758076..19fcf1f832 100644
+--- a/hw/char/trace-events
++++ b/hw/char/trace-events
+@@ -125,3 +125,12 @@ xen_console_unrealize(unsigned int idx) "idx %u"
+ xen_console_realize(unsigned int idx, const char *chrdev) "idx %u chrdev %s"
+ xen_console_device_create(unsigned int idx) "idx %u"
+ xen_console_device_destroy(unsigned int idx) "idx %u"
 +
- source macio/Kconfig
-diff --git a/hw/misc/meson.build b/hw/misc/meson.build
-index c98ca56d0a..df36b45d9f 100644
---- a/hw/misc/meson.build
-+++ b/hw/misc/meson.build
-@@ -159,3 +159,4 @@ system_ss.add(when: 'CONFIG_LASI', if_true: files('lasi.c'))
- 
- system_ss.add(when: 'CONFIG_FLEXCOMM', if_true: files('flexcomm.c'))
- system_ss.add(when: 'CONFIG_RT500_CLKCTL', if_true: files('rt500_clkctl0.c', 'rt500_clkctl1.c'))
-+system_ss.add(when: 'CONFIG_RT500_RSTCTL', if_true: files('rt500_rstctl.c'))
-diff --git a/hw/misc/trace-events b/hw/misc/trace-events
-index e65fcfa613..41a94d5ef6 100644
---- a/hw/misc/trace-events
-+++ b/hw/misc/trace-events
-@@ -365,3 +365,7 @@ rt500_clkctl0_reg_write(const char *regname, uint32_t addr, uint32_t val) "%s[0x
- # rt500_clkctl1.c
- rt500_clkctl1_reg_read(const char *regname, uint32_t addr, uint32_t val) "%s[0x%04x] -> 0x%08x"
- rt500_clkctl1_reg_write(const char *regname, uint32_t addr, uint32_t val) "%s[0x%04x] <- 0x%08x"
-+
-+# rt500_rstctl.c
-+rt500_rstctl_reg_read(const char *id, const char *regname, uint32_t addr, uint32_t val) "%s: %s[0x%04x] -> 0x%08x"
-+rt500_rstctl_reg_write(const char *id, const char *regname, uint32_t addr, uint32_t val) "%s: %s[0x%04x] <- 0x%08x"
++# flexcomm_usart.c
++flexcomm_usart_reg_read(const char *id, const char *reg_name, uint32_t addr, uint32_t val) " %s: %s[0x%04x] -> 0x%08x"
++flexcomm_usart_reg_write(const char *id, const char *reg_name, uint32_t addr, uint32_t val) "%s: %s[0x%04x] <- 0x%08x"
++flexcomm_usart_rx_space(const char *id, uint32_t rx) "%s: %d"
++flexcomm_usart_rx(const char *id) "%s"
++flexcomm_usart_tx(const char *id) "%s"
++flexcomm_usart_fifostat(const char *id, uint32_t fifostat, uint32_t fifoinstat) "%s: %08x %08x"
++flexcomm_usart_irq(const char *id, bool irq, bool fifoirqs, bool perirqs, bool enabled) "%s: %d %d %d %d"
 -- 
 2.46.0.295.g3b9ea8a38a-goog
 

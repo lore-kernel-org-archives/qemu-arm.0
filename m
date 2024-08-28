@@ -1,265 +1,254 @@
-Received: by 2002:a17:504:26c2:b0:1be9:327d:8ee3 with SMTP id j2csp529306nji;
-        Wed, 28 Aug 2024 08:12:46 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWDSrHkppIfaZOGTxDSZo7ge1fWaRRQByApqJu5CsoP7YR4SH75k+4TDUwrjnM9bJKfqqxirTc+lxbQMQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IEG9r2e4NLWJaDrWVf6t+TM1yuslLYSRbFWVL1KjcU0DNHr8EgIh0VpjKwftIxVKc2Fa/Xz
-X-Received: by 2002:a05:6122:2516:b0:4f5:1b58:acd9 with SMTP id 71dfb90a1353d-4fd1a524c7fmr15745366e0c.2.1724857966252;
-        Wed, 28 Aug 2024 08:12:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1724857966; cv=none;
+Received: by 2002:a17:504:26c2:b0:1be9:327d:8ee3 with SMTP id j2csp628667nji;
+        Wed, 28 Aug 2024 13:24:10 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUD/8w0UY46e1OPLh5EWKLi6ZWQdBTnhDQnXddOQqhDXs9t3FaA/+Nya2nA7+D8xbk9w+Ac/F/33Xwfmg==@linaro.org
+X-Received: by 2002:a05:6a21:a343:b0:1c0:ef1c:b80 with SMTP id adf61e73a8af0-1cce10dcd98mr564907637.52.1724876650341;
+        Wed, 28 Aug 2024 13:24:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1724876650; cv=none;
         d=google.com; s=arc-20160816;
-        b=c4JhSycGbGfJK2ecj6MCR7IWAHyKf+2uDS032DudNVDD1uZ0rtdTfCal1TXxUsNmYu
-         JyDg32dsCMwaOwhlUSJI/sGpAZlxMFOtBAzzqdX4YMinxni1q8IBvaRpwtsQfsJoOeXd
-         4IaG6sWGqfha1dqqysjbap7ath5Oj+pWIVYgkpEHxbmtzshpPetKATv3+7Ktn7nllt8A
-         gs1unWtv53zjvTlhBpHJUQIdAiBx6aThJa0wpJfvT+l4Df7PSf/JDCNBn4viPrx5Q3Vu
-         L0gOMIBbNOF2b95M1zMYmcPCzdlhGUyxFivVzUdo+ss4xlyXfhqBBQjwmotJ3tujqeKA
-         bZJQ==
+        b=nVPFDY/65jYdu/vhMU28bo15FD7MHR0T3BX23ebJeZH4IjuWpuP3X0JK8Z3iQr3eZH
+         HXb1wySGwmyxbcbxOgOKBWL3vQhHacWt4kEsd1stF0WAQbtUkkxkAlR5EIzqn2RcHuME
+         UKwiBeXQcM/O+bHyW++OM96f8VzhXcmoTe/sulGrABPs71Rxs2mmYNcyXcYajK6LX+zA
+         y1vTMGuUQrf//4ZLgmKT6r02TpBui88Ys488tYHvMomf3acA+guq0mdiSkF9rfCQuE2D
+         numh8D9kzR+Zl0AX3Ex6mS/sIkAdsPBcb/05DifJggwCNvmw1EhANMxgAVVCkePrAYmS
+         EQ3A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:autocrypt:from:content-language:references:cc:to
-         :subject:user-agent:mime-version:date:message-id:dkim-signature;
-        bh=gGgK9/Upc9LKO92n/PRGMPv4W5/Cmzi2o2u7R0RhS7g=;
-        fh=mmJbHQfqEye5JN3NfcmzPwetEzMMsdwVdKoUlSFNnaA=;
-        b=LL7K0ikV0aFTE4rjnm9zMmjNSGd7JY/xeIpWujQwCiSOBNxIy/xlZVy3ECVQPxr24P
-         p6rhqSnbpD9+jBocPb+n2QelLB+LgF1rDvV3q5OKb4P1NYJ2Aq+RUIWsqUPl7+k644sj
-         ZfWF6pxioO0cEqbAe7hyE2sNDyyvw4Gfo4dtEG++mmXA+eaPMAMjiYZ3e8yA6PzDVjka
-         ccLDFGBZd1Z9M3OzUX/o91vWNKafoSBwmUDMySMfC6E+XINFQtwe1YJbPj4ELtHHQSos
-         wI2aROD6YM9WWvWz9JaaFxsyepmAylCBW1ZqG5RcL8T6fxM1HyxoiTyS7VxOosTfcd4M
-         G7SA==;
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
+         :dkim-signature;
+        bh=gguf8t3rKhToKTPy5d+X9ibzd4TMeHO1MB4Pi9unjgo=;
+        fh=wDJkqIdJLTGYRbW2Kpnud6B9xeEnlULa9rbudKtl9AY=;
+        b=lYcksk4iXUmc2D0leV3xbwIIJLOBVN8xj7hzVDu7PUXg1nDKpRKT0W659KxHx+WbCu
+         gW2Vkj7OSbFYJtVyAZ/zH9NkDqfhrrqRVHGRHvu5a0e5tMesrvr6EP9x+PE1yJMxAIeZ
+         TDiUDDIK1/iMbRhI09zuImYjxUmnsfIMqReqiFluu80hrdluEBdNzyRu6mpb7R7sR/Hp
+         pDOpQ9WTIofaAkskvr0Be6NuHEqdAzf1VDC8jIsI9zGaOU11sGpfkl7koymeK0oRczAh
+         6I6BPleWl+i8hNmzUJhtAhlh86qMjdQaRO0zLGYDaYUfgFvJtIy9M0HaZ0aDXLDpN0MZ
+         jljQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20230601 header.b=dvGcKcRk;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dara=fail header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 71dfb90a1353d-4fd083604e3si3045218e0c.190.2024.08.28.08.12.46
+       dkim=pass header.i=@linaro.org header.s=google header.b=REpvPf0D;
+       spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <gustavo.romero@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d2e1a72fcca58-714342312c8sor11186446b3a.1.2024.08.28.13.24.10
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 28 Aug 2024 08:12:46 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Wed, 28 Aug 2024 13:24:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20230601 header.b=dvGcKcRk;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dara=fail header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sjKLY-0004Qt-5f; Wed, 28 Aug 2024 11:12:32 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
- id 1sjKLW-0004NQ-NY; Wed, 28 Aug 2024 11:12:31 -0400
-Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
- id 1sjKLU-0003uO-Le; Wed, 28 Aug 2024 11:12:30 -0400
-Received: by mail-pl1-x635.google.com with SMTP id
- d9443c01a7336-202146e93f6so70042975ad.3; 
- Wed, 28 Aug 2024 08:12:27 -0700 (PDT)
+       dkim=pass header.i=@linaro.org header.s=google header.b=REpvPf0D;
+       spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1724857946; x=1725462746; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:autocrypt:from
- :content-language:references:cc:to:subject:user-agent:mime-version
- :date:message-id:sender:from:to:cc:subject:date:message-id:reply-to;
- bh=gGgK9/Upc9LKO92n/PRGMPv4W5/Cmzi2o2u7R0RhS7g=;
- b=dvGcKcRkAqY/D0h7MgR1QpHlqznD45Ob2YMrLt7gYSghztyRgG9jyFUCvL0BIOFXCq
- Gtj2P0IvkdsWt3QpqMsh7851gWr7LmPkoT5OTG7UsKccZAl+V8rROfwbXCKE4TmRQXTk
- RYdITLtLgndW9zxkxqHJTqR3nEvsf2v11QmGP+G8oyV0euhddRZGflC8Qn+Aa+tVT2x2
- xfvaURrTSRIDneeWvcHtw2DQVKW6CQqYT31TxHn9gl3d6ULuuH5RtK1VmO79643eIovn
- qmu1RdM6XAArrvoAENqiZ3KucxdnFIgD0RXMaPUf0rrjDBkulXpqz5xHABW7abQzK2T/
- QYpA==
+        d=linaro.org; s=google; t=1724876650; x=1725481450; darn=linaro.org;
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=gguf8t3rKhToKTPy5d+X9ibzd4TMeHO1MB4Pi9unjgo=;
+        b=REpvPf0D8Qa6Rn731e60geBvB8f4tRJrDDSNYOpWq6QSpVm+2TIuLXCJNak+Fqbk30
+         epbk2u6zuCKJ5/uEjzaAO9NOndXiIf+XP9WpOtYuAKs50xQeLq6yA6+3Epu4LQqdDMPE
+         x2FYkddhYfhimmSoy2EJWgpLDUuqeaF6Zl4X/PcyzyhA3cD1TAET6kW5Hs1ts3mY2rpx
+         inKUsz3qeog+XLGTLxPv9pRhiSlMXEXLe6ysEPaSfWnCPFWuXyA3V1L1VkrtD6UKqlmr
+         OHrd0bT+uldmoODR5mTzimoVwcx0HPdps15NayN/26B5I33IK9Xm+8IpGrWi7UzcYCoE
+         uMxQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1724857946; x=1725462746;
- h=content-transfer-encoding:in-reply-to:autocrypt:from
- :content-language:references:cc:to:subject:user-agent:mime-version
- :date:message-id:sender:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=gGgK9/Upc9LKO92n/PRGMPv4W5/Cmzi2o2u7R0RhS7g=;
- b=I/ZXD6uDkIffmGL9i8t6ORmVX/Qq502VioISOrTorMuWNsbr2aPTrqY6TzSZR10zT5
- lr/jmqC5p+hir+Iw+0XFD1hlLElh0IKmagRvlNgCjVCiMcj/oxLjksBXbxw7ol9MJsyC
- SYfmWrwuS6WvMC89Xsbu7SVX1KVk/0SHVeAxnsltypZWHeVOzBQKJs066QOHQu5OSfU8
- llk5gK1x0AwZVkQXEqFuha6EMx6q7b0x8XasLLCowjBCwm89Uxks3paTZsK3yC/XWd31
- Nj07x3GbKlOs8dHKBy+ouu/OSoyXcfH0Co0Y9l3hxBdrPziuLuFTuv8r+F/EsiO9VMhU
- giPA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVw+T+oPc/CZkQyY0V2NqVloHz3QY/L3y16tQYqubh20eV+BSDitGqk/h7I8Q0GxF6VlfM1DGr1K95h@nongnu.org
-X-Gm-Message-State: AOJu0YwHMP4o8bovFeJhGXa6lWILLz5ayJBiWoF+81ocr4MOltocxDpE
- 9fvSQZslw1ttTy9vudSkb5k4Iu9ogp3gxL3LhQC7Qk84sx++5AIc7iDwKw==
-X-Received: by 2002:a17:903:11c5:b0:1fd:a0b9:2be7 with SMTP id
- d9443c01a7336-2039e44f83dmr198858185ad.13.1724857946086; 
- Wed, 28 Aug 2024 08:12:26 -0700 (PDT)
-Received: from ?IPV6:2600:1700:e321:62f0:329c:23ff:fee3:9d7c?
- ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
- by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-204fb9c52f7sm12349515ad.188.2024.08.28.08.12.23
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 28 Aug 2024 08:12:24 -0700 (PDT)
-Message-ID: <014b83a8-d733-442b-ba33-a24c35e46f3f@roeck-us.net>
-Date: Wed, 28 Aug 2024 08:12:23 -0700
+        d=1e100.net; s=20230601; t=1724876650; x=1725481450;
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=gguf8t3rKhToKTPy5d+X9ibzd4TMeHO1MB4Pi9unjgo=;
+        b=Li0fhVXCFjxLfs3yIJ8I/pTAONhqGMYGBSYXq561ZzmJhPp6naxwvqyvXWw4vkAcQd
+         ismnJz4EpVAE3TIhXnXn/b5XIIHONfR8nRzEoUHAz27E1NMWNZY1nLylY6AQHqhzxgZq
+         StmFPTAVEkM8wQYJBCbyYvPNN75vKD5lfjF1AH/6w5nROJ4TUazWjZVTVpjY7IZuFfuz
+         EsRSInDLz8+HvmdYtl58hMslk7u2WYijtTewm0jc7Ccrr42xr0Co4CL6CiZ56JS48lPm
+         4rLEyO8u4XUjxjdY/EBiTHmmIYQoyAIVaC1KNE3NpMYCpII6x+pjMMcSPjRdDkPAfSGY
+         fOQg==
+X-Forwarded-Encrypted: i=1; AJvYcCVXyBh5BQifUMLJLC+9spWzOT74Mj4vUizdTztkAjiYjIsWc+OhUw87dzB978Ol5SUrGRfGel0HywDFPA==@linaro.org
+X-Gm-Message-State: AOJu0YxXgweR/67cD/0y+AhcWkwdZBonVNQF70bEtBL1Ilmm70VNv3do
+	dA52PENce0TmC5Y0jf4aTYmzIKjkH2Z/XvNmZ76aykTewN+oNj+oLgHkX8OBsEfS9w==
+X-Google-Smtp-Source: AGHT+IHXBdX2GWacJtu/ZCYA1GSI/ZEm37DGFP1j+ITVUMRKps8USMB6yKK34yttZLp405lr71NG9w==
+X-Received: by 2002:a05:6a00:1747:b0:70b:2a:15cd with SMTP id d2e1a72fcca58-715df97c536mr917622b3a.0.1724876649752;
+        Wed, 28 Aug 2024 13:24:09 -0700 (PDT)
+Return-Path: <gustavo.romero@linaro.org>
+Received: from ?IPv6:2804:7f0:b400:bb79:4bdf:de43:1f6c:1151? ([2804:7f0:b400:bb79:4bdf:de43:1f6c:1151])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-7143422ec2esm10521121b3a.27.2024.08.28.13.23.58
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 28 Aug 2024 13:24:09 -0700 (PDT)
+Subject: Re: [PATCH RFC V3 24/29] target/arm: Add support of *unrealize*
+ ARMCPU during vCPU Hot-unplug
+To: Salil Mehta <salil.mehta@huawei.com>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
+ <alex.bennee@linaro.org>
+Cc: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "mst@redhat.com"
+ <mst@redhat.com>, "maz@kernel.org" <maz@kernel.org>,
+ "jean-philippe@linaro.org" <jean-philippe@linaro.org>,
+ Jonathan Cameron <jonathan.cameron@huawei.com>,
+ "lpieralisi@kernel.org" <lpieralisi@kernel.org>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ "richard.henderson@linaro.org" <richard.henderson@linaro.org>,
+ "imammedo@redhat.com" <imammedo@redhat.com>,
+ "andrew.jones@linux.dev" <andrew.jones@linux.dev>,
+ "david@redhat.com" <david@redhat.com>, "philmd@linaro.org"
+ <philmd@linaro.org>, "eric.auger@redhat.com" <eric.auger@redhat.com>,
+ "will@kernel.org" <will@kernel.org>, "ardb@kernel.org" <ardb@kernel.org>,
+ "oliver.upton@linux.dev" <oliver.upton@linux.dev>,
+ "pbonzini@redhat.com" <pbonzini@redhat.com>,
+ "gshan@redhat.com" <gshan@redhat.com>, "rafael@kernel.org"
+ <rafael@kernel.org>, "borntraeger@linux.ibm.com"
+ <borntraeger@linux.ibm.com>, "npiggin@gmail.com" <npiggin@gmail.com>,
+ "harshpb@linux.ibm.com" <harshpb@linux.ibm.com>,
+ "linux@armlinux.org.uk" <linux@armlinux.org.uk>,
+ "darren@os.amperecomputing.com" <darren@os.amperecomputing.com>,
+ "ilkka@os.amperecomputing.com" <ilkka@os.amperecomputing.com>,
+ "vishnu@os.amperecomputing.com" <vishnu@os.amperecomputing.com>,
+ "karl.heubaum@oracle.com" <karl.heubaum@oracle.com>,
+ "miguel.luis@oracle.com" <miguel.luis@oracle.com>,
+ "salil.mehta@opnsrc.net" <salil.mehta@opnsrc.net>,
+ zhukeqian <zhukeqian1@huawei.com>,
+ "wangxiongfeng (C)" <wangxiongfeng2@huawei.com>,
+ "wangyanan (Y)" <wangyanan55@huawei.com>,
+ "jiakernel2@gmail.com" <jiakernel2@gmail.com>,
+ "maobibo@loongson.cn" <maobibo@loongson.cn>,
+ "lixianglai@loongson.cn" <lixianglai@loongson.cn>,
+ "shahuang@redhat.com" <shahuang@redhat.com>,
+ "zhao1.liu@intel.com" <zhao1.liu@intel.com>, Linuxarm <linuxarm@huawei.com>
+References: <20240613233639.202896-1-salil.mehta@huawei.com>
+ <20240613233639.202896-25-salil.mehta@huawei.com>
+ <87v800wkb1.fsf@draig.linaro.org>
+ <2cb51f91bea3472e8ac04854d7c6bb71@huawei.com>
+From: Gustavo Romero <gustavo.romero@linaro.org>
+Message-ID: <be14d023-f65f-96e4-45ef-8fe002e69bc4@linaro.org>
+Date: Wed, 28 Aug 2024 17:23:57 -0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.6.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] aspeed: Deprecate the tacoma-bmc machine
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>, Joel Stanley <joel@jms.id.au>,
- Andrew Jeffery <andrew@codeconstruct.com.au>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-References: <20240625070830.492251-1-clg@redhat.com>
- <4e04f930-e7af-4084-99a8-2a3139e2bf43@roeck-us.net>
- <5fb7342b-fa67-4cb2-b6fd-2241b7b76d03@redhat.com>
- <f70cb39f-3567-4322-b1c4-1bc5991d91fa@roeck-us.net>
- <8d1fd867-647b-4827-a2b2-a239618a7743@redhat.com>
+In-Reply-To: <2cb51f91bea3472e8ac04854d7c6bb71@huawei.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
-From: Guenter Roeck <linux@roeck-us.net>
-Autocrypt: addr=linux@roeck-us.net; keydata=
- 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
- mDW4+i+XlNFUPUYMrIKi9joBhu18ssf5i5Q=
-In-Reply-To: <8d1fd867-647b-4827-a2b2-a239618a7743@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::635;
- envelope-from=groeck7@gmail.com; helo=mail-pl1-x635.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_ENVFROM_END_DIGIT=0.25,
- FREEMAIL_FORGED_FROMDOMAIN=0.001, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: zNqtzVTcIqQz
+X-TUID: HeQzyJJ/IbBT
 
-On 8/28/24 05:35, Cédric Le Goater wrote:
-> On 8/26/24 20:50, Guenter Roeck wrote:
->> Hi,
->>
->> On 8/26/24 02:58, Cédric Le Goater wrote:
->>> Hello Guenter,
->>>
->>> On 8/9/24 00:05, Guenter Roeck wrote:
->>>> Hi,
->>>>
->>>> On Tue, Jun 25, 2024 at 09:08:30AM +0200, Cédric Le Goater wrote:
->>>>> The tacoma-bmc machine was a board including an AST2600 SoC based BMC
->>>>> and a witherspoon like OpenPOWER system. It was used for bring up of
->>>>> the AST2600 SoC in labs. It can be easily replaced by the rainier-bmc
->>>>> machine which is part of a real product offering.
->>>>>
->>>>> Signed-off-by: Cédric Le Goater <clg@redhat.com>
->>>>
->>>> I have been using tacoma-bmc to test tcg,tpm-tis-i2c functionality
->>>> on arm. rainier-bmc doesn't support that, and other IBM BMCs which
->>>> do support it (bonnell, everest, system1) are not supported in qemu.
->>>>
->>>> Do you have a suggested alternative ?
->>>
->>> Could you use the ast2600-evb machine instead ? as done in
->>> machine_aspeed.py, see routine test_arm_ast2600_evb_buildroot_tpm.
->>>
->>
->> Unfortunately, that does not work for me because that requires instantiating
->> the tpm chip from the CLI by writing into the new_device sysfs attribute,
->> and I can not do that in my test environment.
-> 
-> Ah. too bad.
-> 
->>> We can't add a "tpm-tis-i2c" device to the tacoma-bmc machine init
->>> routine because a TPM backend is required.
->>>
->>
->> Not sure I understand; tacoma-bmc instantiates the TPM chip through its
->> devicetree file which is what I was looking for.
-> 
-> I meant at the "HW" board level in QEMU.
-> 
-> We can not instantiate the TPM I2C chip device model in the tacoma-bmc
-> machine init routine and attach it to the I2C bus because of the required
-> TPM backend. This means that the device is necessarily defined on the QEMU
-> command line and this makes the ast2600-evb and tacoma-bmc machine very
-> similar in terms of HW definitions.
-> 
+Hi Salil,
 
-Yes, I found that as well.
-
->> I solved the problem by adding support for IBM Bonnell (which instantiates
->> the TPM chip through its devicetree file, similar to tacoma-bmc) to my local
->> copy of qemu. 
+On 8/19/24 9:35 AM, Salil Mehta via wrote:
+> Hi Alex,
 > 
-> Hmm, did you copy the rainier-bmc machine definition ?
+>>   From: Alex Bennée <alex.bennee@linaro.org>
+>>   Sent: Friday, August 16, 2024 4:37 PM
+>>   To: Salil Mehta <salil.mehta@huawei.com>
+>>   
+>>   Salil Mehta <salil.mehta@huawei.com> writes:
+>>   
+>>   > vCPU Hot-unplug will result in QOM CPU object unrealization which will
+>>   > do away with all the vCPU thread creations, allocations, registrations
+>>   > that happened as part of the realization process. This change
+>>   > introduces the ARM CPU unrealize function taking care of exactly that.
+>>   >
+>>   > Note, initialized KVM vCPUs are not destroyed in host KVM but their
+>>   > Qemu context is parked at the QEMU KVM layer.
+>>   >
+>>   > Co-developed-by: Keqian Zhu <zhukeqian1@huawei.com>
+>>   > Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
+>>   > Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
+>>   > Reported-by: Vishnu Pajjuri <vishnu@os.amperecomputing.com>
+>>   > [VP: Identified CPU stall issue & suggested probable fix]
+>>   > Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
+>>   > ---
+>>   >  target/arm/cpu.c       | 101
+>>   +++++++++++++++++++++++++++++++++++++++++
+>>   >  target/arm/cpu.h       |  14 ++++++
+>>   >  target/arm/gdbstub.c   |   6 +++
+>>   >  target/arm/helper.c    |  25 ++++++++++
+>>   >  target/arm/internals.h |   3 ++
+>>   >  target/arm/kvm.c       |   5 ++
+>>   >  6 files changed, 154 insertions(+)
+>>   >
+>>   > diff --git a/target/arm/cpu.c b/target/arm/cpu.c index
+>>   > c92162fa97..a3dc669309 100644
+>>   > --- a/target/arm/cpu.c
+>>   > +++ b/target/arm/cpu.c
+>>   > @@ -157,6 +157,16 @@ void
+>>   arm_register_pre_el_change_hook(ARMCPU *cpu, ARMELChangeHookFn
+>>   *hook,
+>>   >      QLIST_INSERT_HEAD(&cpu->pre_el_change_hooks, entry, node);  }
+>>   >
+>>   > +void arm_unregister_pre_el_change_hooks(ARMCPU *cpu) {
+>>   > +    ARMELChangeHook *entry, *next;
+>>   > +
+>>   > +    QLIST_FOREACH_SAFE(entry, &cpu->pre_el_change_hooks, node,
+>>   next) {
+>>   > +        QLIST_REMOVE(entry, node);
+>>   > +        g_free(entry);
+>>   > +    }
+>>   > +}
+>>   > +
+>>   >  void arm_register_el_change_hook(ARMCPU *cpu,
+>>   ARMELChangeHookFn *hook,
+>>   >                                   void *opaque)  { @@ -168,6 +178,16
+>>   > @@ void arm_register_el_change_hook(ARMCPU *cpu,
+>>   ARMELChangeHookFn *hook,
+>>   >      QLIST_INSERT_HEAD(&cpu->el_change_hooks, entry, node);  }
+>>   >
+>>   > +void arm_unregister_el_change_hooks(ARMCPU *cpu) {
+>>   > +    ARMELChangeHook *entry, *next;
+>>   > +
+>>   > +    QLIST_FOREACH_SAFE(entry, &cpu->el_change_hooks, node, next) {
+>>   > +        QLIST_REMOVE(entry, node);
+>>   > +        g_free(entry);
+>>   > +    }
+>>   > +}
+>>   > +
+>>   >  static void cp_reg_reset(gpointer key, gpointer value, gpointer
+>>   > opaque)  {
+>>   >      /* Reset a single ARMCPRegInfo register */ @@ -2552,6 +2572,85 @@
+>>   > static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+>>   >      acc->parent_realize(dev, errp);
+>>   >  }
+>>   >
+>>   > +static void arm_cpu_unrealizefn(DeviceState *dev) {
+>>   > +    ARMCPUClass *acc = ARM_CPU_GET_CLASS(dev);
+>>   > +    ARMCPU *cpu = ARM_CPU(dev);
+>>   > +    CPUARMState *env = &cpu->env;
+>>   > +    CPUState *cs = CPU(dev);
+>>   > +    bool has_secure;
+>>   > +
+>>   > +    has_secure = cpu->has_el3 || arm_feature(env,
+>>   > + ARM_FEATURE_M_SECURITY);
+>>   > +
+>>   > +    /* rock 'n' un-roll, whatever happened in the arm_cpu_realizefn
+>>   cleanly */
+>>   > +    cpu_address_space_destroy(cs, ARMASIdx_NS);
+>>   
+>>   On current master this will fail:
+>>   
+>>   ../../target/arm/cpu.c: In function ‘arm_cpu_unrealizefn’:
+>>   ../../target/arm/cpu.c:2626:5: error: implicit declaration of function
+>>   ‘cpu_address_space_destroy’ [-Werror=implicit-function-declaration]
+>>    2626 |     cpu_address_space_destroy(cs, ARMASIdx_NS);
+>>         |     ^~~~~~~~~~~~~~~~~~~~~~~~~
+>>   ../../target/arm/cpu.c:2626:5: error: nested extern declaration of
+>>   ‘cpu_address_space_destroy’ [-Werror=nested-externs]
+>>   cc1: all warnings being treated as errors
 > 
-For aspeed_machine_bonnell_class_init(), pretty much yes, since I don't know
-the actual hardware. For I2C initialization I used the devicetree file.
-You can find the patch in the master-local or v9.1.0-local branches
-of my qemu clone at https://github.com/groeck/qemu if you are interested.
-
->> It isn't perfect since I don't know the correct HW pin strapping
->> and reused the strapping from Rainier, but it works for me.
 > 
-> Keeping the tacoma-bmc machine is fine if there is a use for it. Testing
-> the TPM I2C device driver is certainly a good use but we should reflect
-> that in QEMU also (so that we don't forget). Could we change the test in
-> machine_aspeed.py to use the tacoma-bmc machine instead ? and revert the
-> deprecation patch of course.
+> The current master already has arch-agnostic patch-set. I've applied the
+> RFC V3 to the latest and complied. I did not see this issue?
 > 
+> I've create a new branch for your reference.
+> 
+> https://github.com/salil-mehta/qemu/tree/virt-cpuhp-armv8/rfc-v4-rc4
+> 
+> Please let me know if this works for you?
 
-No need from my perspective. This isn't the only patch I carry on top of
-upstream qemu, after all.
+It still happens on the new branch. You need to configure Linux user mode
+to reproduce it, e.g.:
 
-Thanks,
-Guenter
+$ ../configure --target-list=aarch64-linux-user,aarch64-softmmu [...]
 
+If you just configure the 'aarch64-softmmu' target it doesn't happen.
+
+
+Cheers,
+Gustavo

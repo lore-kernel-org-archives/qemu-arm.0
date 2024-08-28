@@ -1,181 +1,134 @@
-Received: by 2002:a17:504:26c2:b0:1be9:327d:8ee3 with SMTP id j2csp104387nji;
-        Tue, 27 Aug 2024 05:30:22 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUzDtoUOruCCUady0LlTVtyddQR3SZUH1Bx8D7inUfXMz4arXuMWAgI2J1Vjs6KXYd/2izIommdBL16cQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IG6qOGvWFK87H9e3b951Wp0bVK+e2m9fz++w4Tq3fhWWaQgrrNm6Yt7gNaimU3AeJIg9FqQ
-X-Received: by 2002:a05:622a:2445:b0:44f:ca27:cca7 with SMTP id d75a77b69052e-4566094d662mr34065511cf.49.1724761821853;
-        Tue, 27 Aug 2024 05:30:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1724761821; cv=none;
+Received: by 2002:a17:504:26c2:b0:1be9:327d:8ee3 with SMTP id j2csp447892nji;
+        Wed, 28 Aug 2024 04:16:57 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWt5gaInvMNTtXnQ2zW356ZgmYMHbI1fRi4XehKmcpQMSfRw4A17w8+ySdOjD2BL0EYdF9DyXCycbk72w==@linaro.org
+X-Google-Smtp-Source: AGHT+IEj9gSgOBIDXclVtmlRA97Obr3JhPj+l5RWdcKBy4icK5ZJbaRrzmE/letTw2OqcTzphiHn
+X-Received: by 2002:a05:6214:310b:b0:6b2:d69d:a2d7 with SMTP id 6a1803df08f44-6c16dcaffc1mr178220596d6.19.1724843817487;
+        Wed, 28 Aug 2024 04:16:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1724843817; cv=none;
         d=google.com; s=arc-20160816;
-        b=INFLCFgkaTvZ+kmwwOx/DMzKnQCRAr5DMXIxUThtGFoU+ziXVUgBxPjIxAFS9qJUsc
-         HyazS9ofmOdiTEQUDu1IRQSP0C091LYQB1NFswiLa3YQH/ZLJEYoA1RRq01ASwmX7MM+
-         hMKdUWGos4hRbNbeifdIN3aLuaTCPAU/kzb8ekwtlSjKSXkOckou993w1PHBym2GGneo
-         oYpwJYd4ShjD99u7TUz1w3rK2iLsp6lpJK88XmGTTYF1L8noSkJgQs+bl8vjJatSqmF1
-         ZSB0ly5oRVOEAoW28bWQBnGOmD0huodFeO0F2Z+6jo/0x0OsM44Wg4qZXFE0k1qvybrT
-         WJ+g==
+        b=FFeQYlJgRhxxa9OGJy443qkSqLR0QQd+l1aT1fI6maIdtU0c95gzF24PDDB67x3I5+
+         yHYqRns8B0ZcEh0AAd+/OO+ZMN+wto0v2s+gImNiUZway50nfZUGFaI+b+oXv2o8VTgf
+         YDtgoiP+OFKZa1mJlAeCqH0mHnoWyjo66Qnie90Z1PIYk6rKb4zTLo6I+6vp3nQyhBNu
+         oLe+liX42wCYKuZL5M2VpwCncNNX53Q1vYJtlCIGenAMc6oYW9RSdbKvwan4Iu7Fi1xa
+         Tw+JMJtpiMV0uCBOePc+KWeYPDD/tsc/Ww67utG4p3fizb1D4/OGt1njovKyyp+hAq5c
+         DhAQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:autocrypt:from:references:cc:to
-         :subject:user-agent:mime-version:date:message-id:dkim-signature;
-        bh=7fVIRHkINQ3k1HhCBJiV5y9uktykYpZ41V9E8toZVYo=;
-        fh=xPLRPaJy+TiAiY7vTiKoMQMdVaswG/Nr+FS1dKOWPfY=;
-        b=ofvz0PtMAZdgwHHJMz7GN07/bxTev5dOxyoummANfP7eJaObc18fynTurV03YW+kVd
-         DQOY9pf5j6Y/bKG/z2r0sYM1+fgv1KoSQjrU/X6hV3e82QMO1O9Zo9ZwzsUUBk0tD6fp
-         4DuH2G9dFP89GmHpRAt5ZFGw982VUFsaHKPL6pS9gX31fmh0g4jHR8+yD+4jl4FVGF7R
-         bggTWSCp1EeXSYR4pRz0Gw0+Iey7nfXpicIViANBBPnOtkSyi0zkty1yfSqyVddFU+qv
-         njSOS5cML2BYzXkR3TcxPoiZZIgxA2KYgLJVHueipvzvUkq4Vx7LtOUPfvP3SYEjJK4t
-         kqOg==;
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=sOr9SXANZBasTOCdfSIuUykxw+BHWqrfQ9hmECDwWPQ=;
+        fh=EBJJH4R4P+cYctxzT3H8oPG+VG5hu6LE/XNTDk1zDIw=;
+        b=px6dLdxVoT4dUxeivujKpbaQjzODNAfNj1pD1QDChD1JvTk1EATUca3Z6xeyi85pvW
+         41vff+8ZcAX+FpK62wc+2mH9cyTsTNz5WM+lV1Wawzqc/uYYYBghVfThWZJceA6250oO
+         5Z0UWsB7fRtHp9nnS4FnHpgy0d0qUVfCOy9B4dKj5ksc1BCB88vL10rDKm8s+TjQ2gJ/
+         ZhvQVre9lRBOhBZdbrIPu8yjMho/cQ4Bmkm6ChI8VqsKmoJ0VDVmILTmTfRhSz4RAgZb
+         YzWl93o+fk9vK3z3MBkxFYhg532yisU+f8R+08p+Ar1i1r1V8C06kMcH53jea9zyR4ck
+         SRqw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=adwGNiGY;
+       dkim=pass header.i=@apple.com header.s=20180706 header.b=QWqUMWjo;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=QUARANTINE sp=REJECT dis=NONE) header.from=apple.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-454fe343abesi126641971cf.730.2024.08.27.05.30.21
+        by mx.google.com with ESMTPS id 6a1803df08f44-6c162d2b2f5si156307636d6.67.2024.08.28.04.16.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 27 Aug 2024 05:30:21 -0700 (PDT)
+        Wed, 28 Aug 2024 04:16:57 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=adwGNiGY;
+       dkim=pass header.i=@apple.com header.s=20180706 header.b=QWqUMWjo;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=QUARANTINE sp=REJECT dis=NONE) header.from=apple.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sivKe-0005qD-OI; Tue, 27 Aug 2024 08:29:56 -0400
+	id 1sjGf1-0000PN-4t; Wed, 28 Aug 2024 07:16:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1sivKa-0005mS-Vr
- for qemu-arm@nongnu.org; Tue, 27 Aug 2024 08:29:55 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1sivKY-0007fc-CQ
- for qemu-arm@nongnu.org; Tue, 27 Aug 2024 08:29:52 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1724761789;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=7fVIRHkINQ3k1HhCBJiV5y9uktykYpZ41V9E8toZVYo=;
- b=adwGNiGYGX/INj54CD764w5LT95qpxgJT1s+FwUqtbNjWW+YfSxBxt7lSu1nwr4OUGedm3
- uhpnUXZe+t6/pwFh7mn57XIWh7v7TfD8Y/Sb2W//Dzc92AfzTchT9jILcNvb+gxmKXEj4f
- voeURphMuTTnkuJPwNI2lYXlBJEoKn4=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-477-m8gj08WOOKiYbrSVvzuScQ-1; Tue, 27 Aug 2024 08:29:46 -0400
-X-MC-Unique: m8gj08WOOKiYbrSVvzuScQ-1
-Received: by mail-wr1-f70.google.com with SMTP id
- ffacd0b85a97d-3718e1d1847so3239678f8f.1
- for <qemu-arm@nongnu.org>; Tue, 27 Aug 2024 05:29:45 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1724761785; x=1725366585;
- h=content-transfer-encoding:in-reply-to:autocrypt:from
- :content-language:references:cc:to:subject:user-agent:mime-version
- :date:message-id:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=7fVIRHkINQ3k1HhCBJiV5y9uktykYpZ41V9E8toZVYo=;
- b=LNIt4+YRRsP+EAA15g8utjuLK8xRpTvl/bqMhOXxd8TkFVSKx6HWUApr3gXUtAWrhh
- +4giuGZObvoqA0C+4TYC5xAnPCJgO2RmzyNRXuFH6HQqHBu7vbo0r+tbfc2MOgZZ+taT
- TCyGx9IS9+KUMtstKPCdlowK9vJ1IVZOikuKpt1orkDFtSYRkDTjhrJVo1UZ3hfxcyFA
- tccB6omxCcx5I7ywo8Ix2wpmcEFlEksC65Jg6y/qQhdXsnOenC7kWl5KTRyYx7IFqRuI
- kcY8dJ3K0gw/TbrlrMLKMj//S5V1BvJQyHWTV07FRvsJJeCAbBCbXpsOwxLvAcLCGrwK
- DLsQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXSAOAKmF+3MFlWM2uQFKkGB9+VUBBXDOZOy9bBq/KdfMo+2LooNU/af5HdAvffOLaU2Wu4EiBc7Q==@nongnu.org
-X-Gm-Message-State: AOJu0YyEhn7Z1S5/MiLwXHwQ5sOx9w/nc2mLynMnQwgsTAMqdVSHKBo1
- 7vGPlpaZWgFgVh+ZwwTaHND+hiIuT8JocXYgJk1lmKwO0WSmQw9TDFBzQKp4hmWkvAtG2zyT8ns
- dKFr57hfNhvUThIZ1jAt+Zsfe0YMAoCCi651om/3XhxFGMckG4g==
-X-Received: by 2002:adf:e3c1:0:b0:367:4d9d:56a1 with SMTP id
- ffacd0b85a97d-373118c86c7mr10715375f8f.45.1724761784949; 
- Tue, 27 Aug 2024 05:29:44 -0700 (PDT)
-X-Received: by 2002:adf:e3c1:0:b0:367:4d9d:56a1 with SMTP id
- ffacd0b85a97d-373118c86c7mr10715338f8f.45.1724761784431; 
- Tue, 27 Aug 2024 05:29:44 -0700 (PDT)
-Received: from [192.168.0.6] (ip-109-43-179-35.web.vodafone.de.
- [109.43.179.35]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3730810ff83sm12956572f8f.17.2024.08.27.05.29.43
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 27 Aug 2024 05:29:44 -0700 (PDT)
-Message-ID: <9cb7e060-85ab-49c4-a8dd-6149847c3f89@redhat.com>
-Date: Tue, 27 Aug 2024 14:29:42 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/4] tests/functional: Add a class containing Linux kernel
- helpers
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: Cleber Rosa <crosa@redhat.com>,
- Sergey Kambalin <sergey.kambalin@auriga.com>, qemu-arm@nongnu.org,
- Wainer dos Santos Moschetta <wainersm@redhat.com>,
- Beraldo Leal <bleal@redhat.com>, Peter Maydell <peter.maydell@linaro.org>
-References: <20240826221058.75126-1-philmd@linaro.org>
- <20240826221058.75126-2-philmd@linaro.org>
- <e66847a0-7390-42d9-a51d-190e0734d25e@redhat.com>
- <aeb7bd72-095f-43cf-8216-18c341310915@linaro.org>
-From: Thomas Huth <thuth@redhat.com>
-Autocrypt: addr=thuth@redhat.com; keydata=
- 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
-In-Reply-To: <aeb7bd72-095f-43cf-8216-18c341310915@linaro.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+ (Exim 4.90_1) (envelope-from <danny_canter@apple.com>)
+ id 1sjGex-0000AJ-FI
+ for qemu-arm@nongnu.org; Wed, 28 Aug 2024 07:16:21 -0400
+Received: from rn-mailsvcp-mx-lapp01.apple.com ([17.179.253.22])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <danny_canter@apple.com>)
+ id 1sjGev-0001yV-CW
+ for qemu-arm@nongnu.org; Wed, 28 Aug 2024 07:16:19 -0400
+Received: from rn-mailsvcp-mta-lapp04.rno.apple.com
+ (rn-mailsvcp-mta-lapp04.rno.apple.com [10.225.203.152])
+ by rn-mailsvcp-mx-lapp01.rno.apple.com
+ (Oracle Communications Messaging Server 8.1.0.23.20230328 64bit (built Mar 28
+ 2023)) with ESMTPS id <0SIX00R2ZDZ3NP00@rn-mailsvcp-mx-lapp01.rno.apple.com>
+ for qemu-arm@nongnu.org; Wed, 28 Aug 2024 04:16:16 -0700 (PDT)
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1039,Hydra:6.0.680,FMLib:17.12.28.16
+ definitions=2024-08-28_03,2024-08-27_01,2024-05-17_01
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=apple.com; h=cc :
+ content-transfer-encoding : date : from : in-reply-to : message-id :
+ mime-version : references : subject : to; s=20180706;
+ bh=sOr9SXANZBasTOCdfSIuUykxw+BHWqrfQ9hmECDwWPQ=;
+ b=QWqUMWjo7QvXmrFovHBKiPierXZLeFGJkX06tGXQzocHJxlh5wnUIZMkXJoiqJO+6PVb
+ iIUkGB/Dlg7LsUpdDGaim2z12pW0FGI8NjbCNa3HuwnPOQMTyB//4fUc1FYLBjsU8j2k
+ ULBQUI3Z62gio5R9f9IIuRMUdd/v8Sd278ZN8D1Ulp95pdzrd+W83KDcPixjG9l931WL
+ ckDoWO5qGYnmpM7EO+guexpixk6SY5h2TM+cVrq3lve77Ra3ie0NUCJH8OuttsBFW53I
+ TzGBCfsuUMpuE9izilp/jsbfapvVoyLlcd7+CpAXiViu+E0YMC0fUZ91o41MygaV0e++ 6w==
+Received: from mr55p01nt-mmpp02.apple.com
+ (mr55p01nt-mmpp02.apple.com [10.170.185.213])
+ by rn-mailsvcp-mta-lapp04.rno.apple.com
+ (Oracle Communications Messaging Server 8.1.0.23.20230328 64bit (built Mar 28
+ 2023)) with ESMTPS id <0SIX00H9RDZ35M00@rn-mailsvcp-mta-lapp04.rno.apple.com>; 
+ Wed, 28 Aug 2024 04:16:15 -0700 (PDT)
+Received: from process_milters-daemon.mr55p01nt-mmpp02.apple.com by
+ mr55p01nt-mmpp02.apple.com
+ (Oracle Communications Messaging Server 8.1.0.23.20230328 64bit (built Mar 28
+ 2023)) id <0SIX2GG00DAAEB00@mr55p01nt-mmpp02.apple.com>; Wed,
+ 28 Aug 2024 11:16:15 +0000 (GMT)
+X-Va-A: 
+X-Va-T-CD: 18a8a04ab20a1763aa377ff80017b310
+X-Va-E-CD: cf443eeeda88520596c661908908994e
+X-Va-R-CD: 234d7789dec848a652f3cdc64dff37cf
+X-Va-ID: 18e3a4c3-5490-44b2-ad7f-3fdafced04e4
+X-Va-CD: 0
+X-V-A: 
+X-V-T-CD: 18a8a04ab20a1763aa377ff80017b310
+X-V-E-CD: cf443eeeda88520596c661908908994e
+X-V-R-CD: 234d7789dec848a652f3cdc64dff37cf
+X-V-ID: 68e10ae8-ceaf-45ae-b5a2-04222b38c1a6
+X-V-CD: 0
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1039,Hydra:6.0.680,FMLib:17.12.28.16
+ definitions=2024-08-28_03,2024-08-27_01,2024-05-17_01
+Received: from Mac.apple.com ([17.11.139.69]) by mr55p01nt-mmpp02.apple.com
+ (Oracle Communications Messaging Server 8.1.0.23.20230328 64bit (built Mar 28
+ 2023)) with ESMTPSA id <0SIX2GJ1IDYJB800@mr55p01nt-mmpp02.apple.com>; Wed,
+ 28 Aug 2024 11:16:14 +0000 (GMT)
+From: Danny Canter <danny_canter@apple.com>
+To: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Cc: dirty@apple.com, rbolshakov@ddn.com, agraf@csgraf.de,
+ peter.maydell@linaro.org, pbonzini@redhat.com, richard.henderson@linaro.org,
+ eduardo@habkost.net, mst@redhat.com, marcel.apfelbaum@gmail.com,
+ philmd@linaro.org, wangyanan55@huawei.com, zhao1.liu@intel.com,
+ danny_canter@apple.com
+Subject: [PATCH v2 3/3] hvf: arm: Implement and use
+ hvf_get_physical_address_range
+Date: Wed, 28 Aug 2024 04:15:52 -0700
+Message-id: <20240828111552.93482-4-danny_canter@apple.com>
+X-Mailer: git-send-email 2.39.5 (Apple Git-154)
+In-reply-to: <20240828111552.93482-1-danny_canter@apple.com>
+References: <20240828111552.93482-1-danny_canter@apple.com>
+MIME-version: 1.0
+Content-transfer-encoding: 8bit
+Received-SPF: pass client-ip=17.179.253.22;
+ envelope-from=danny_canter@apple.com; helo=rn-mailsvcp-mx-lapp01.apple.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -190,66 +143,323 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: tKXLOvAaUPXK
+X-TUID: 3o7N6ykA2Ysw
 
-On 27/08/2024 11.21, Philippe Mathieu-Daudé wrote:
-> Hi Thomas,
-> 
-> On 27/8/24 07:34, Thomas Huth wrote:
->> On 27/08/2024 00.10, Philippe Mathieu-Daudé wrote:
->>> Use the 'linux_kernel' namespace to provide common helpers
->>> to functional tests booting a Linux kernel.
->>>
->>> Suggested-by: Thomas Huth <thuth@redhat.com>
->>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->>> ---
->>>   tests/functional/qemu_test/linux_kernel.py | 19 +++++++++++++++++++
->>>   1 file changed, 19 insertions(+)
->>>   create mode 100644 tests/functional/qemu_test/linux_kernel.py
->>>
->>> diff --git a/tests/functional/qemu_test/linux_kernel.py 
->>> b/tests/functional/qemu_test/linux_kernel.py
->>> new file mode 100644
->>> index 0000000000..917beb7fb6
->>> --- /dev/null
->>> +++ b/tests/functional/qemu_test/linux_kernel.py
->>> @@ -0,0 +1,19 @@
->>> +# Linux kernel functional test helpers
->>> +#
->>> +# Copyright (c) 2024 Linaro Ltd.
->>> +#
->>> +# Author:
->>> +#  Philippe Mathieu-Daudé <philmd@linaro.org>
->>> +#
->>> +# SPDX-License-Identifier: GPL-2.0-or-later
->>> +
->>> +from . import wait_for_console_pattern
->>> +
->>> +KERNEL_COMMON_COMMAND_LINE = 'printk.time=0 '
->>> +
->>> +KERNEL_PANIC_MESSAGE = 'Kernel panic - not syncing'
->>> +
->>> +def linux_kernel_wait_for_pattern(test, success_message):
->>> +    wait_for_console_pattern(test,
->>> +                             success_message=success_message,
->>> +                             failure_message=KERNEL_PANIC_MESSAGE)
->>
->> I'd prefer to have the whole LinuxKernelTest class here (without the 
->> BootLinuxConsole class of course), that way the modifications that we have 
->> to do to the converted tests are definitely smaller when we don't have to 
->> change the "wait_for_console_pattern" lines everywhere. And it's also 
->> nicer if the variables are properly wrapped in a class.
-> 
-> I'm a bit confused by your comment. I exposed my view on LinuxKernelTest
-> methods (which I don't see specific to this class) here:
-> https://lore.kernel.org/qemu-devel/9910ebc8-b7c4-4505-a987-3a5e308fb3d1@linaro.org/
-> 
-> Could your request be implemented on top on this patch, as we go (as it
-> is already helpful in its current state)? Otherwise I'll ask you to
-> share a snippet of what you mean, or even better to post a v2 :)
+This patch's main focus is to use the previously added
+hvf_get_physical_address_range to inform VM creation
+about the IPA size we need for the VM, so we can extend
+the default 36b IPA size and support VMs with 64+GB of
+RAM. This is done by freezing the memory map, computing
+the highest GPA and then (depending on if the platform
+supports an IPA size that large) telling the kernel to
+use a size >= for the VM. In pursuit of this a couple of
+things related to how we handle the physical address range
+we expose to guests were altered, but for an explanation of
+what we were doing:
 
-I'll post a mini patch series (converting the Q800 test) in reply to your 
-mail to show what I had in mind...
+Today, to get the IPA size we were reading id_aa64mmfr0_el1's
+PARange field from a newly made vcpu. Unfortunately, HVF just
+returns the hosts PARange directly for the initial value and
+not the IPA size that will actually back the VM, so we believe
+we have much more address space than we actually do today it seems.
 
-  Thomas
+Starting in macOS 13.0 some APIs were introduced to be able to
+query the maximum IPA size the kernel supports, and to set the IPA
+size for a given VM. However, this still has a couple of issues
+on < macOS 15. Up until macOS 15 (and if the hardware supported
+it) the max IPA size was 39 bits which is not a valid PARange
+value, so we can't clamp down what we advertise in the vcpu's
+id_aa64mmfr0_el1 to our IPA size. Starting in macOS 15 however,
+the maximum IPA size is 40 bits (if it's supported in the hardware
+as well) which is also a valid PARange value so we can set our IPA
+size to the maximum as well as clamp down the PARange we advertise
+to the guest. This allows VMs with 64+ GB of RAM and should fix the
+oddness of the PARange situation as well.
+
+Signed-off-by: Danny Canter <danny_canter@apple.com>
+---
+ accel/hvf/hvf-accel-ops.c | 12 ++++++++-
+ hw/arm/virt.c             | 31 +++++++++++++++++++++-
+ target/arm/hvf/hvf.c      | 56 ++++++++++++++++++++++++++++++++++++++-
+ target/arm/hvf_arm.h      | 19 +++++++++++++
+ target/arm/internals.h    | 19 +++++++++++++
+ target/arm/ptw.c          | 15 +++++++++++
+ 6 files changed, 149 insertions(+), 3 deletions(-)
+
+diff --git a/accel/hvf/hvf-accel-ops.c b/accel/hvf/hvf-accel-ops.c
+index dbebf209f4..d60874d3e6 100644
+--- a/accel/hvf/hvf-accel-ops.c
++++ b/accel/hvf/hvf-accel-ops.c
+@@ -53,6 +53,7 @@
+ #include "exec/address-spaces.h"
+ #include "exec/exec-all.h"
+ #include "gdbstub/enums.h"
++#include "hw/boards.h"
+ #include "sysemu/cpus.h"
+ #include "sysemu/hvf.h"
+ #include "sysemu/hvf_int.h"
+@@ -319,8 +320,17 @@ static int hvf_accel_init(MachineState *ms)
+     int x;
+     hv_return_t ret;
+     HVFState *s;
++    int pa_range = 36;
++    MachineClass *mc = MACHINE_GET_CLASS(ms);
+ 
+-    ret = hvf_arch_vm_create(ms, 0);
++    if (mc->hvf_get_physical_address_range) {
++        pa_range = mc->hvf_get_physical_address_range(ms);
++        if (pa_range < 0) {
++            return -EINVAL;
++        }
++    }
++
++    ret = hvf_arch_vm_create(ms, (uint32_t)pa_range);
+     assert_hvf_ok(ret);
+ 
+     s = g_new0(HVFState, 1);
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 62ee5f849b..b39c7924a0 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -66,6 +66,7 @@
+ #include "hw/intc/arm_gicv3_its_common.h"
+ #include "hw/irq.h"
+ #include "kvm_arm.h"
++#include "hvf_arm.h"
+ #include "hw/firmware/smbios.h"
+ #include "qapi/visitor.h"
+ #include "qapi/qapi-visit-common.h"
+@@ -3030,7 +3031,35 @@ static int virt_kvm_type(MachineState *ms, const char *type_str)
+ 
+ static int virt_hvf_get_physical_address_range(MachineState *ms)
+ {
+-    return 0;
++    VirtMachineState *vms = VIRT_MACHINE(ms);
++
++    int default_ipa_size = hvf_arm_get_default_ipa_bit_size();
++    int max_ipa_size = hvf_arm_get_max_ipa_bit_size();
++
++    /* We freeze the memory map to compute the highest gpa */
++    virt_set_memmap(vms, max_ipa_size);
++
++    int requested_ipa_size = 64 - clz64(vms->highest_gpa);
++
++    /*
++     * If we're <= the default IPA size just use the default.
++     * If we're above the default but below the maximum, round up to
++     * the maximum. hvf_arm_get_max_ipa_bit_size() conveniently only
++     * returns values that are valid ARM PARange values.
++     */
++    if (requested_ipa_size <= default_ipa_size) {
++        requested_ipa_size = default_ipa_size;
++    } else if (requested_ipa_size <= max_ipa_size) {
++        requested_ipa_size = max_ipa_size;
++    } else {
++        error_report("-m and ,maxmem option values "
++                     "require an IPA range (%d bits) larger than "
++                     "the one supported by the host (%d bits)",
++                     requested_ipa_size, max_ipa_size);
++        return -1;
++    }
++
++    return requested_ipa_size;
+ }
+ 
+ static void virt_machine_class_init(ObjectClass *oc, void *data)
+diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+index 19964d241e..6cea483d42 100644
+--- a/target/arm/hvf/hvf.c
++++ b/target/arm/hvf/hvf.c
+@@ -22,6 +22,7 @@
+ #include <mach/mach_time.h>
+ 
+ #include "exec/address-spaces.h"
++#include "hw/boards.h"
+ #include "hw/irq.h"
+ #include "qemu/main-loop.h"
+ #include "sysemu/cpus.h"
+@@ -297,6 +298,8 @@ void hvf_arm_init_debug(void)
+ 
+ static void hvf_wfi(CPUState *cpu);
+ 
++static uint32_t chosen_ipa_bit_size;
++
+ typedef struct HVFVTimer {
+     /* Vtimer value during migration and paused state */
+     uint64_t vtimer_val;
+@@ -839,6 +842,16 @@ static uint64_t hvf_get_reg(CPUState *cpu, int rt)
+     return val;
+ }
+ 
++static void clamp_id_aa64mmfr0_parange_to_ipa_size(uint64_t *id_aa64mmfr0)
++{
++    uint32_t ipa_size = chosen_ipa_bit_size ?
++            chosen_ipa_bit_size : hvf_arm_get_max_ipa_bit_size();
++
++    /* Clamp down the PARange to the IPA size the kernel supports. */
++    uint8_t index = round_down_to_parange_index(ipa_size);
++    *id_aa64mmfr0 = (*id_aa64mmfr0 & ~R_ID_AA64MMFR0_PARANGE_MASK) | index;
++}
++
+ static bool hvf_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+ {
+     ARMISARegisters host_isar = {};
+@@ -882,6 +895,8 @@ static bool hvf_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+     r |= hv_vcpu_get_sys_reg(fd, HV_SYS_REG_MIDR_EL1, &ahcf->midr);
+     r |= hv_vcpu_destroy(fd);
+ 
++    clamp_id_aa64mmfr0_parange_to_ipa_size(&host_isar.id_aa64mmfr0);
++
+     ahcf->isar = host_isar;
+ 
+     /*
+@@ -904,6 +919,30 @@ static bool hvf_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+     return r == HV_SUCCESS;
+ }
+ 
++uint32_t hvf_arm_get_default_ipa_bit_size(void)
++{
++    uint32_t default_ipa_size;
++    hv_return_t ret = hv_vm_config_get_default_ipa_size(&default_ipa_size);
++    assert_hvf_ok(ret);
++
++    return default_ipa_size;
++}
++
++uint32_t hvf_arm_get_max_ipa_bit_size(void)
++{
++    uint32_t max_ipa_size;
++    hv_return_t ret = hv_vm_config_get_max_ipa_size(&max_ipa_size);
++    assert_hvf_ok(ret);
++
++    /*
++     * We clamp any IPA size we want to back the VM with to a valid PARange
++     * value so the guest doesn't try and map memory outside of the valid range.
++     * This logic just clamps the passed in IPA bit size to the first valid
++     * PARange value <= to it.
++     */
++    return round_down_to_parange_bit_size(max_ipa_size);
++}
++
+ void hvf_arm_set_cpu_features_from_host(ARMCPU *cpu)
+ {
+     if (!arm_host_cpu_features.dtb_compatible) {
+@@ -931,8 +970,18 @@ void hvf_arch_vcpu_destroy(CPUState *cpu)
+ 
+ hv_return_t hvf_arch_vm_create(MachineState *ms, uint32_t pa_range)
+ {
++    hv_return_t ret;
+     hv_vm_config_t config = hv_vm_config_create();
+-    hv_return_t ret = hv_vm_create(config);
++
++    ret = hv_vm_config_set_ipa_size(config, pa_range);
++    if (ret != HV_SUCCESS) {
++        goto cleanup;
++    }
++    chosen_ipa_bit_size = pa_range;
++
++    ret = hv_vm_create(config);
++
++cleanup:
+     os_release(config);
+ 
+     return ret;
+@@ -1004,6 +1053,11 @@ int hvf_arch_init_vcpu(CPUState *cpu)
+                               &arm_cpu->isar.id_aa64mmfr0);
+     assert_hvf_ok(ret);
+ 
++    clamp_id_aa64mmfr0_parange_to_ipa_size(&arm_cpu->isar.id_aa64mmfr0);
++    ret = hv_vcpu_set_sys_reg(cpu->accel->fd, HV_SYS_REG_ID_AA64MMFR0_EL1,
++                              arm_cpu->isar.id_aa64mmfr0);
++    assert_hvf_ok(ret);
++
+     return 0;
+ }
+ 
+diff --git a/target/arm/hvf_arm.h b/target/arm/hvf_arm.h
+index e848c1d27d..26c717b382 100644
+--- a/target/arm/hvf_arm.h
++++ b/target/arm/hvf_arm.h
+@@ -22,4 +22,23 @@ void hvf_arm_init_debug(void);
+ 
+ void hvf_arm_set_cpu_features_from_host(ARMCPU *cpu);
+ 
++#ifdef CONFIG_HVF
++
++uint32_t hvf_arm_get_default_ipa_bit_size(void);
++uint32_t hvf_arm_get_max_ipa_bit_size(void);
++
++#else
++
++static inline uint32_t hvf_arm_get_default_ipa_bit_size(void)
++{
++    return 0;
++}
++
++static inline uint32_t hvf_arm_get_max_ipa_bit_size(void)
++{
++    return 0;
++}
++
++#endif
++
+ #endif
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index 203a2dae14..c5d7b0b492 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -450,6 +450,25 @@ static inline void update_spsel(CPUARMState *env, uint32_t imm)
+  */
+ unsigned int arm_pamax(ARMCPU *cpu);
+ 
++/*
++ * round_down_to_parange_index
++ * @bit_size: uint8_t
++ *
++ * Rounds down the bit_size supplied to the first supported ARM physical
++ * address range and returns the index for this. The index is intended to
++ * be used to set ID_AA64MMFR0_EL1's PARANGE bits.
++ */
++uint8_t round_down_to_parange_index(uint8_t bit_size);
++
++/*
++ * round_down_to_parange_bit_size
++ * @bit_size: uint8_t
++ *
++ * Rounds down the bit_size supplied to the first supported ARM physical
++ * address range bit size and returns this.
++ */
++uint8_t round_down_to_parange_bit_size(uint8_t bit_size);
++
+ /* Return true if extended addresses are enabled.
+  * This is always the case if our translation regime is 64 bit,
+  * but depends on TTBCR.EAE for 32 bit.
+diff --git a/target/arm/ptw.c b/target/arm/ptw.c
+index 278004661b..defd6b84de 100644
+--- a/target/arm/ptw.c
++++ b/target/arm/ptw.c
+@@ -96,6 +96,21 @@ static const uint8_t pamax_map[] = {
+     [6] = 52,
+ };
+ 
++uint8_t round_down_to_parange_index(uint8_t bit_size)
++{
++    for (int i = ARRAY_SIZE(pamax_map) - 1; i >= 0; i--) {
++        if (pamax_map[i] <= bit_size) {
++            return i;
++        }
++    }
++    g_assert_not_reached();
++}
++
++uint8_t round_down_to_parange_bit_size(uint8_t bit_size)
++{
++    return pamax_map[round_down_to_parange_index(bit_size)];
++}
++
+ /*
+  * The cpu-specific constant value of PAMax; also used by hw/arm/virt.
+  * Note that machvirt_init calls this on a CPU that is inited but not realized!
+-- 
+2.39.5 (Apple Git-154)
 

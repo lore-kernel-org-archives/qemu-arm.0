@@ -1,133 +1,134 @@
-Received: by 2002:a17:504:26c2:b0:1be9:327d:8ee3 with SMTP id j2csp447892nji;
-        Wed, 28 Aug 2024 04:16:57 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWt5gaInvMNTtXnQ2zW356ZgmYMHbI1fRi4XehKmcpQMSfRw4A17w8+ySdOjD2BL0EYdF9DyXCycbk72w==@linaro.org
-X-Google-Smtp-Source: AGHT+IEj9gSgOBIDXclVtmlRA97Obr3JhPj+l5RWdcKBy4icK5ZJbaRrzmE/letTw2OqcTzphiHn
-X-Received: by 2002:a05:6214:310b:b0:6b2:d69d:a2d7 with SMTP id 6a1803df08f44-6c16dcaffc1mr178220596d6.19.1724843817487;
-        Wed, 28 Aug 2024 04:16:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1724843817; cv=none;
+Received: by 2002:a17:504:26c2:b0:1be9:327d:8ee3 with SMTP id j2csp471817nji;
+        Wed, 28 Aug 2024 05:35:20 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWKBSQ87TQH6yCB3xUnE16zu2iXACLuE+z6xViyliaz209DQb0qqCq5jy6c/kTNVxzwxY2B4C0oUvU/ow==@linaro.org
+X-Google-Smtp-Source: AGHT+IEur9uI7B6bloAd1ffjP7tGar3IB1eYxP27C2VZNgA8PAcLSG4AnjoKTzTs40/V/Meyn4Ka
+X-Received: by 2002:a05:6214:3106:b0:6c1:6e39:d8de with SMTP id 6a1803df08f44-6c3362be15bmr20985036d6.2.1724848520673;
+        Wed, 28 Aug 2024 05:35:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1724848520; cv=none;
         d=google.com; s=arc-20160816;
-        b=FFeQYlJgRhxxa9OGJy443qkSqLR0QQd+l1aT1fI6maIdtU0c95gzF24PDDB67x3I5+
-         yHYqRns8B0ZcEh0AAd+/OO+ZMN+wto0v2s+gImNiUZway50nfZUGFaI+b+oXv2o8VTgf
-         YDtgoiP+OFKZa1mJlAeCqH0mHnoWyjo66Qnie90Z1PIYk6rKb4zTLo6I+6vp3nQyhBNu
-         oLe+liX42wCYKuZL5M2VpwCncNNX53Q1vYJtlCIGenAMc6oYW9RSdbKvwan4Iu7Fi1xa
-         Tw+JMJtpiMV0uCBOePc+KWeYPDD/tsc/Ww67utG4p3fizb1D4/OGt1njovKyyp+hAq5c
-         DhAQ==
+        b=rgA+PFv4dnFbljcENvwWUBjTbIHW4rlkws2Wg7ovr9mjOBcpv9ZfFWi+6g/Z+7RhSY
+         AZCFFW9QKruIOki3e8d7egdcQFQyHDLEIQONXipzJSpdO+gsMA+QhD929uabpkkbqKkn
+         gA/YBm9+aZQFk5O189kLg75rKocfvIf5U9T8cQ1gcZ84wGJA9IFH4WwWqQUgCwYaqvh9
+         Q+cpckv1sd/okWHYUuPnztlgGhZapUyLQq4bs0HpAASOnmw711J9QOzQwYGqc+/+Iul0
+         8x9YtotveMPl16fUH8Qo9QlbEUjI1j2cS/+8NtXMaS8MFZt/OnmhwfVayseXqsyaK7ta
+         B0Fg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=sOr9SXANZBasTOCdfSIuUykxw+BHWqrfQ9hmECDwWPQ=;
-        fh=EBJJH4R4P+cYctxzT3H8oPG+VG5hu6LE/XNTDk1zDIw=;
-        b=px6dLdxVoT4dUxeivujKpbaQjzODNAfNj1pD1QDChD1JvTk1EATUca3Z6xeyi85pvW
-         41vff+8ZcAX+FpK62wc+2mH9cyTsTNz5WM+lV1Wawzqc/uYYYBghVfThWZJceA6250oO
-         5Z0UWsB7fRtHp9nnS4FnHpgy0d0qUVfCOy9B4dKj5ksc1BCB88vL10rDKm8s+TjQ2gJ/
-         ZhvQVre9lRBOhBZdbrIPu8yjMho/cQ4Bmkm6ChI8VqsKmoJ0VDVmILTmTfRhSz4RAgZb
-         YzWl93o+fk9vK3z3MBkxFYhg532yisU+f8R+08p+Ar1i1r1V8C06kMcH53jea9zyR4ck
-         SRqw==;
+         :content-language:in-reply-to:from:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=0bktHROW/eeK6KIiYmxl5H0JjE5rD5n4UGGYZUC/j2c=;
+        fh=X1uXDNS3CVGBdW6R1BqR8daGVf13cPHGzH8O2/MCgr4=;
+        b=C14rKtYB40OV+Xg7b95w8MVNNaQ6VVgHzmek5Rq7SpQTnrBkXFGmfatjj0b8niVWtT
+         StHDqow+yyWomhRhxZNTAj6BBBKLBhlqXB3XA90VpMg2n51g/9ZAUzdZTER91u4+P9y8
+         oJ/ZAG+tnYIq+s1Plf94fH9E01jMq9t2yMs7CASOHcNT+O9J7D/NgKLoohjPufUDKkQp
+         7V7LBgYeMp3usIFaHb7otxaBMyR6oI1gRLDQ9NkT5T8ZSINCxk0srTqGSmx3qRbJ2mRn
+         7UZWoJbxw95XH03lUToS78jHW6nXoiGmUc8QO57cZnpPhSbLRTOg8Wkr8cyWCqpUUG+I
+         Fd8g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@apple.com header.s=20180706 header.b=QWqUMWjo;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Cnc06ngf;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=REJECT dis=NONE) header.from=apple.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6c162d2b2f5si156307636d6.67.2024.08.28.04.16.57
+        by mx.google.com with ESMTPS id 6a1803df08f44-6c162dd8fc8si160776526d6.343.2024.08.28.05.35.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 28 Aug 2024 04:16:57 -0700 (PDT)
+        Wed, 28 Aug 2024 05:35:20 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@apple.com header.s=20180706 header.b=QWqUMWjo;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Cnc06ngf;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=REJECT dis=NONE) header.from=apple.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sjGf1-0000PN-4t; Wed, 28 Aug 2024 07:16:23 -0400
+	id 1sjHtL-0003Gw-S6; Wed, 28 Aug 2024 08:35:15 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <danny_canter@apple.com>)
- id 1sjGex-0000AJ-FI
- for qemu-arm@nongnu.org; Wed, 28 Aug 2024 07:16:21 -0400
-Received: from rn-mailsvcp-mx-lapp01.apple.com ([17.179.253.22])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <danny_canter@apple.com>)
- id 1sjGev-0001yV-CW
- for qemu-arm@nongnu.org; Wed, 28 Aug 2024 07:16:19 -0400
-Received: from rn-mailsvcp-mta-lapp04.rno.apple.com
- (rn-mailsvcp-mta-lapp04.rno.apple.com [10.225.203.152])
- by rn-mailsvcp-mx-lapp01.rno.apple.com
- (Oracle Communications Messaging Server 8.1.0.23.20230328 64bit (built Mar 28
- 2023)) with ESMTPS id <0SIX00R2ZDZ3NP00@rn-mailsvcp-mx-lapp01.rno.apple.com>
- for qemu-arm@nongnu.org; Wed, 28 Aug 2024 04:16:16 -0700 (PDT)
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1039,Hydra:6.0.680,FMLib:17.12.28.16
- definitions=2024-08-28_03,2024-08-27_01,2024-05-17_01
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=apple.com; h=cc :
- content-transfer-encoding : date : from : in-reply-to : message-id :
- mime-version : references : subject : to; s=20180706;
- bh=sOr9SXANZBasTOCdfSIuUykxw+BHWqrfQ9hmECDwWPQ=;
- b=QWqUMWjo7QvXmrFovHBKiPierXZLeFGJkX06tGXQzocHJxlh5wnUIZMkXJoiqJO+6PVb
- iIUkGB/Dlg7LsUpdDGaim2z12pW0FGI8NjbCNa3HuwnPOQMTyB//4fUc1FYLBjsU8j2k
- ULBQUI3Z62gio5R9f9IIuRMUdd/v8Sd278ZN8D1Ulp95pdzrd+W83KDcPixjG9l931WL
- ckDoWO5qGYnmpM7EO+guexpixk6SY5h2TM+cVrq3lve77Ra3ie0NUCJH8OuttsBFW53I
- TzGBCfsuUMpuE9izilp/jsbfapvVoyLlcd7+CpAXiViu+E0YMC0fUZ91o41MygaV0e++ 6w==
-Received: from mr55p01nt-mmpp02.apple.com
- (mr55p01nt-mmpp02.apple.com [10.170.185.213])
- by rn-mailsvcp-mta-lapp04.rno.apple.com
- (Oracle Communications Messaging Server 8.1.0.23.20230328 64bit (built Mar 28
- 2023)) with ESMTPS id <0SIX00H9RDZ35M00@rn-mailsvcp-mta-lapp04.rno.apple.com>; 
- Wed, 28 Aug 2024 04:16:15 -0700 (PDT)
-Received: from process_milters-daemon.mr55p01nt-mmpp02.apple.com by
- mr55p01nt-mmpp02.apple.com
- (Oracle Communications Messaging Server 8.1.0.23.20230328 64bit (built Mar 28
- 2023)) id <0SIX2GG00DAAEB00@mr55p01nt-mmpp02.apple.com>; Wed,
- 28 Aug 2024 11:16:15 +0000 (GMT)
-X-Va-A: 
-X-Va-T-CD: 18a8a04ab20a1763aa377ff80017b310
-X-Va-E-CD: cf443eeeda88520596c661908908994e
-X-Va-R-CD: 234d7789dec848a652f3cdc64dff37cf
-X-Va-ID: 18e3a4c3-5490-44b2-ad7f-3fdafced04e4
-X-Va-CD: 0
-X-V-A: 
-X-V-T-CD: 18a8a04ab20a1763aa377ff80017b310
-X-V-E-CD: cf443eeeda88520596c661908908994e
-X-V-R-CD: 234d7789dec848a652f3cdc64dff37cf
-X-V-ID: 68e10ae8-ceaf-45ae-b5a2-04222b38c1a6
-X-V-CD: 0
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1039,Hydra:6.0.680,FMLib:17.12.28.16
- definitions=2024-08-28_03,2024-08-27_01,2024-05-17_01
-Received: from Mac.apple.com ([17.11.139.69]) by mr55p01nt-mmpp02.apple.com
- (Oracle Communications Messaging Server 8.1.0.23.20230328 64bit (built Mar 28
- 2023)) with ESMTPSA id <0SIX2GJ1IDYJB800@mr55p01nt-mmpp02.apple.com>; Wed,
- 28 Aug 2024 11:16:14 +0000 (GMT)
-From: Danny Canter <danny_canter@apple.com>
-To: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Cc: dirty@apple.com, rbolshakov@ddn.com, agraf@csgraf.de,
- peter.maydell@linaro.org, pbonzini@redhat.com, richard.henderson@linaro.org,
- eduardo@habkost.net, mst@redhat.com, marcel.apfelbaum@gmail.com,
- philmd@linaro.org, wangyanan55@huawei.com, zhao1.liu@intel.com,
- danny_canter@apple.com
-Subject: [PATCH v2 3/3] hvf: arm: Implement and use
- hvf_get_physical_address_range
-Date: Wed, 28 Aug 2024 04:15:52 -0700
-Message-id: <20240828111552.93482-4-danny_canter@apple.com>
-X-Mailer: git-send-email 2.39.5 (Apple Git-154)
-In-reply-to: <20240828111552.93482-1-danny_canter@apple.com>
-References: <20240828111552.93482-1-danny_canter@apple.com>
-MIME-version: 1.0
-Content-transfer-encoding: 8bit
-Received-SPF: pass client-ip=17.179.253.22;
- envelope-from=danny_canter@apple.com; helo=rn-mailsvcp-mx-lapp01.apple.com
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1sjHtG-0002zu-EM
+ for qemu-arm@nongnu.org; Wed, 28 Aug 2024 08:35:11 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1sjHtE-00032n-Hc
+ for qemu-arm@nongnu.org; Wed, 28 Aug 2024 08:35:10 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1724848506;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=0bktHROW/eeK6KIiYmxl5H0JjE5rD5n4UGGYZUC/j2c=;
+ b=Cnc06ngfabKCO0wBw1xM6GIkQ47JYTFUpnGmCKvf1WmvJaiZ8E/EIveZhtY70D/NmPaVLL
+ n9gk3h8u6UNVFEy3CmFV7UW8gPP95BJYE4AWEv2dTsKHKIahh/M+nNWUonS6cUIp+bUCQa
+ fyfCyQQXAcI0Qk9jsZ3dwEPp4aYQF7A=
+Received: from mail-qt1-f199.google.com (mail-qt1-f199.google.com
+ [209.85.160.199]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-401-mnTQuj2BM1OUCN-6z_24pw-1; Wed, 28 Aug 2024 08:35:05 -0400
+X-MC-Unique: mnTQuj2BM1OUCN-6z_24pw-1
+Received: by mail-qt1-f199.google.com with SMTP id
+ d75a77b69052e-44fe92a34d2so99906211cf.0
+ for <qemu-arm@nongnu.org>; Wed, 28 Aug 2024 05:35:05 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1724848505; x=1725453305;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=0bktHROW/eeK6KIiYmxl5H0JjE5rD5n4UGGYZUC/j2c=;
+ b=io2iq0S+Nxze/flUG7Myrs30N7RgCHXZ0DYBWuhqMAWLp5EWajizEfzcYC0+Z6jksr
+ hgz3tE1kAH+PWHLjBT0vzu8+Wh5WZN7Uyt3vuOYiDZi/lpu6aiXV9JTpSAUgwUek0AX9
+ +9HC496JdDjerwIc9sfOOYf70U8oHATNBLDC3Kwa18tDsGTnj1vyYGxPcly8CLwtpmTk
+ R6LqcaQRmB33quW0HObUbI0LkpNNrgyqcp+W6iQ3FgQOxsQUXsV254KmLZIgq/jRXyhG
+ Q+r0JjUpTT52USvveBSMB337+h7P/E3rdzWJEj5Hqlt8bNGz6WPCYgrZjb3GM0Q+9TXw
+ BSrA==
+X-Gm-Message-State: AOJu0YyGEt+motcCAKkdendoUwY922xwJwcERbco+TYAxQltFEvoW6QA
+ S/O5JYiIqBWNkDqm5RizoF8ZEQkQou04weEbMx1HqSDVcl2eRGJDGU+hPW91gRMJL0JR6i7Szu3
+ P1CbYVEAgVz/TyAaYFTiwERh4fkCYV3IYUtbcwdoW47O0uDi0hw==
+X-Received: by 2002:a05:622a:4895:b0:453:7706:759a with SMTP id
+ d75a77b69052e-4566e59da5dmr23124611cf.3.1724848504844; 
+ Wed, 28 Aug 2024 05:35:04 -0700 (PDT)
+X-Received: by 2002:a05:622a:4895:b0:453:7706:759a with SMTP id
+ d75a77b69052e-4566e59da5dmr23124271cf.3.1724848504409; 
+ Wed, 28 Aug 2024 05:35:04 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:280:24f0:3f78:514a:4f03:fdc0?
+ ([2a01:e0a:280:24f0:3f78:514a:4f03:fdc0])
+ by smtp.gmail.com with ESMTPSA id
+ d75a77b69052e-4567d226c35sm428161cf.31.2024.08.28.05.35.03
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 28 Aug 2024 05:35:04 -0700 (PDT)
+Message-ID: <8d1fd867-647b-4827-a2b2-a239618a7743@redhat.com>
+Date: Wed, 28 Aug 2024 14:35:01 +0200
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2] aspeed: Deprecate the tacoma-bmc machine
+To: Guenter Roeck <linux@roeck-us.net>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>, Joel Stanley <joel@jms.id.au>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+References: <20240625070830.492251-1-clg@redhat.com>
+ <4e04f930-e7af-4084-99a8-2a3139e2bf43@roeck-us.net>
+ <5fb7342b-fa67-4cb2-b6fd-2241b7b76d03@redhat.com>
+ <f70cb39f-3567-4322-b1c4-1bc5991d91fa@roeck-us.net>
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
+In-Reply-To: <f70cb39f-3567-4322-b1c4-1bc5991d91fa@roeck-us.net>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US, fr
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -143,323 +144,74 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 3o7N6ykA2Ysw
+X-TUID: Rs7X/fEItcsB
 
-This patch's main focus is to use the previously added
-hvf_get_physical_address_range to inform VM creation
-about the IPA size we need for the VM, so we can extend
-the default 36b IPA size and support VMs with 64+GB of
-RAM. This is done by freezing the memory map, computing
-the highest GPA and then (depending on if the platform
-supports an IPA size that large) telling the kernel to
-use a size >= for the VM. In pursuit of this a couple of
-things related to how we handle the physical address range
-we expose to guests were altered, but for an explanation of
-what we were doing:
+On 8/26/24 20:50, Guenter Roeck wrote:
+> Hi,
+> 
+> On 8/26/24 02:58, Cédric Le Goater wrote:
+>> Hello Guenter,
+>>
+>> On 8/9/24 00:05, Guenter Roeck wrote:
+>>> Hi,
+>>>
+>>> On Tue, Jun 25, 2024 at 09:08:30AM +0200, Cédric Le Goater wrote:
+>>>> The tacoma-bmc machine was a board including an AST2600 SoC based BMC
+>>>> and a witherspoon like OpenPOWER system. It was used for bring up of
+>>>> the AST2600 SoC in labs. It can be easily replaced by the rainier-bmc
+>>>> machine which is part of a real product offering.
+>>>>
+>>>> Signed-off-by: Cédric Le Goater <clg@redhat.com>
+>>>
+>>> I have been using tacoma-bmc to test tcg,tpm-tis-i2c functionality
+>>> on arm. rainier-bmc doesn't support that, and other IBM BMCs which
+>>> do support it (bonnell, everest, system1) are not supported in qemu.
+>>>
+>>> Do you have a suggested alternative ?
+>>
+>> Could you use the ast2600-evb machine instead ? as done in
+>> machine_aspeed.py, see routine test_arm_ast2600_evb_buildroot_tpm.
+>>
+> 
+> Unfortunately, that does not work for me because that requires instantiating
+> the tpm chip from the CLI by writing into the new_device sysfs attribute,
+> and I can not do that in my test environment.
 
-Today, to get the IPA size we were reading id_aa64mmfr0_el1's
-PARange field from a newly made vcpu. Unfortunately, HVF just
-returns the hosts PARange directly for the initial value and
-not the IPA size that will actually back the VM, so we believe
-we have much more address space than we actually do today it seems.
+Ah. too bad.
 
-Starting in macOS 13.0 some APIs were introduced to be able to
-query the maximum IPA size the kernel supports, and to set the IPA
-size for a given VM. However, this still has a couple of issues
-on < macOS 15. Up until macOS 15 (and if the hardware supported
-it) the max IPA size was 39 bits which is not a valid PARange
-value, so we can't clamp down what we advertise in the vcpu's
-id_aa64mmfr0_el1 to our IPA size. Starting in macOS 15 however,
-the maximum IPA size is 40 bits (if it's supported in the hardware
-as well) which is also a valid PARange value so we can set our IPA
-size to the maximum as well as clamp down the PARange we advertise
-to the guest. This allows VMs with 64+ GB of RAM and should fix the
-oddness of the PARange situation as well.
+>> We can't add a "tpm-tis-i2c" device to the tacoma-bmc machine init
+>> routine because a TPM backend is required.
+>>
+> 
+> Not sure I understand; tacoma-bmc instantiates the TPM chip through its
+> devicetree file which is what I was looking for.
 
-Signed-off-by: Danny Canter <danny_canter@apple.com>
----
- accel/hvf/hvf-accel-ops.c | 12 ++++++++-
- hw/arm/virt.c             | 31 +++++++++++++++++++++-
- target/arm/hvf/hvf.c      | 56 ++++++++++++++++++++++++++++++++++++++-
- target/arm/hvf_arm.h      | 19 +++++++++++++
- target/arm/internals.h    | 19 +++++++++++++
- target/arm/ptw.c          | 15 +++++++++++
- 6 files changed, 149 insertions(+), 3 deletions(-)
+I meant at the "HW" board level in QEMU.
 
-diff --git a/accel/hvf/hvf-accel-ops.c b/accel/hvf/hvf-accel-ops.c
-index dbebf209f4..d60874d3e6 100644
---- a/accel/hvf/hvf-accel-ops.c
-+++ b/accel/hvf/hvf-accel-ops.c
-@@ -53,6 +53,7 @@
- #include "exec/address-spaces.h"
- #include "exec/exec-all.h"
- #include "gdbstub/enums.h"
-+#include "hw/boards.h"
- #include "sysemu/cpus.h"
- #include "sysemu/hvf.h"
- #include "sysemu/hvf_int.h"
-@@ -319,8 +320,17 @@ static int hvf_accel_init(MachineState *ms)
-     int x;
-     hv_return_t ret;
-     HVFState *s;
-+    int pa_range = 36;
-+    MachineClass *mc = MACHINE_GET_CLASS(ms);
- 
--    ret = hvf_arch_vm_create(ms, 0);
-+    if (mc->hvf_get_physical_address_range) {
-+        pa_range = mc->hvf_get_physical_address_range(ms);
-+        if (pa_range < 0) {
-+            return -EINVAL;
-+        }
-+    }
-+
-+    ret = hvf_arch_vm_create(ms, (uint32_t)pa_range);
-     assert_hvf_ok(ret);
- 
-     s = g_new0(HVFState, 1);
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 62ee5f849b..b39c7924a0 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -66,6 +66,7 @@
- #include "hw/intc/arm_gicv3_its_common.h"
- #include "hw/irq.h"
- #include "kvm_arm.h"
-+#include "hvf_arm.h"
- #include "hw/firmware/smbios.h"
- #include "qapi/visitor.h"
- #include "qapi/qapi-visit-common.h"
-@@ -3030,7 +3031,35 @@ static int virt_kvm_type(MachineState *ms, const char *type_str)
- 
- static int virt_hvf_get_physical_address_range(MachineState *ms)
- {
--    return 0;
-+    VirtMachineState *vms = VIRT_MACHINE(ms);
-+
-+    int default_ipa_size = hvf_arm_get_default_ipa_bit_size();
-+    int max_ipa_size = hvf_arm_get_max_ipa_bit_size();
-+
-+    /* We freeze the memory map to compute the highest gpa */
-+    virt_set_memmap(vms, max_ipa_size);
-+
-+    int requested_ipa_size = 64 - clz64(vms->highest_gpa);
-+
-+    /*
-+     * If we're <= the default IPA size just use the default.
-+     * If we're above the default but below the maximum, round up to
-+     * the maximum. hvf_arm_get_max_ipa_bit_size() conveniently only
-+     * returns values that are valid ARM PARange values.
-+     */
-+    if (requested_ipa_size <= default_ipa_size) {
-+        requested_ipa_size = default_ipa_size;
-+    } else if (requested_ipa_size <= max_ipa_size) {
-+        requested_ipa_size = max_ipa_size;
-+    } else {
-+        error_report("-m and ,maxmem option values "
-+                     "require an IPA range (%d bits) larger than "
-+                     "the one supported by the host (%d bits)",
-+                     requested_ipa_size, max_ipa_size);
-+        return -1;
-+    }
-+
-+    return requested_ipa_size;
- }
- 
- static void virt_machine_class_init(ObjectClass *oc, void *data)
-diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-index 19964d241e..6cea483d42 100644
---- a/target/arm/hvf/hvf.c
-+++ b/target/arm/hvf/hvf.c
-@@ -22,6 +22,7 @@
- #include <mach/mach_time.h>
- 
- #include "exec/address-spaces.h"
-+#include "hw/boards.h"
- #include "hw/irq.h"
- #include "qemu/main-loop.h"
- #include "sysemu/cpus.h"
-@@ -297,6 +298,8 @@ void hvf_arm_init_debug(void)
- 
- static void hvf_wfi(CPUState *cpu);
- 
-+static uint32_t chosen_ipa_bit_size;
-+
- typedef struct HVFVTimer {
-     /* Vtimer value during migration and paused state */
-     uint64_t vtimer_val;
-@@ -839,6 +842,16 @@ static uint64_t hvf_get_reg(CPUState *cpu, int rt)
-     return val;
- }
- 
-+static void clamp_id_aa64mmfr0_parange_to_ipa_size(uint64_t *id_aa64mmfr0)
-+{
-+    uint32_t ipa_size = chosen_ipa_bit_size ?
-+            chosen_ipa_bit_size : hvf_arm_get_max_ipa_bit_size();
-+
-+    /* Clamp down the PARange to the IPA size the kernel supports. */
-+    uint8_t index = round_down_to_parange_index(ipa_size);
-+    *id_aa64mmfr0 = (*id_aa64mmfr0 & ~R_ID_AA64MMFR0_PARANGE_MASK) | index;
-+}
-+
- static bool hvf_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
- {
-     ARMISARegisters host_isar = {};
-@@ -882,6 +895,8 @@ static bool hvf_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
-     r |= hv_vcpu_get_sys_reg(fd, HV_SYS_REG_MIDR_EL1, &ahcf->midr);
-     r |= hv_vcpu_destroy(fd);
- 
-+    clamp_id_aa64mmfr0_parange_to_ipa_size(&host_isar.id_aa64mmfr0);
-+
-     ahcf->isar = host_isar;
- 
-     /*
-@@ -904,6 +919,30 @@ static bool hvf_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
-     return r == HV_SUCCESS;
- }
- 
-+uint32_t hvf_arm_get_default_ipa_bit_size(void)
-+{
-+    uint32_t default_ipa_size;
-+    hv_return_t ret = hv_vm_config_get_default_ipa_size(&default_ipa_size);
-+    assert_hvf_ok(ret);
-+
-+    return default_ipa_size;
-+}
-+
-+uint32_t hvf_arm_get_max_ipa_bit_size(void)
-+{
-+    uint32_t max_ipa_size;
-+    hv_return_t ret = hv_vm_config_get_max_ipa_size(&max_ipa_size);
-+    assert_hvf_ok(ret);
-+
-+    /*
-+     * We clamp any IPA size we want to back the VM with to a valid PARange
-+     * value so the guest doesn't try and map memory outside of the valid range.
-+     * This logic just clamps the passed in IPA bit size to the first valid
-+     * PARange value <= to it.
-+     */
-+    return round_down_to_parange_bit_size(max_ipa_size);
-+}
-+
- void hvf_arm_set_cpu_features_from_host(ARMCPU *cpu)
- {
-     if (!arm_host_cpu_features.dtb_compatible) {
-@@ -931,8 +970,18 @@ void hvf_arch_vcpu_destroy(CPUState *cpu)
- 
- hv_return_t hvf_arch_vm_create(MachineState *ms, uint32_t pa_range)
- {
-+    hv_return_t ret;
-     hv_vm_config_t config = hv_vm_config_create();
--    hv_return_t ret = hv_vm_create(config);
-+
-+    ret = hv_vm_config_set_ipa_size(config, pa_range);
-+    if (ret != HV_SUCCESS) {
-+        goto cleanup;
-+    }
-+    chosen_ipa_bit_size = pa_range;
-+
-+    ret = hv_vm_create(config);
-+
-+cleanup:
-     os_release(config);
- 
-     return ret;
-@@ -1004,6 +1053,11 @@ int hvf_arch_init_vcpu(CPUState *cpu)
-                               &arm_cpu->isar.id_aa64mmfr0);
-     assert_hvf_ok(ret);
- 
-+    clamp_id_aa64mmfr0_parange_to_ipa_size(&arm_cpu->isar.id_aa64mmfr0);
-+    ret = hv_vcpu_set_sys_reg(cpu->accel->fd, HV_SYS_REG_ID_AA64MMFR0_EL1,
-+                              arm_cpu->isar.id_aa64mmfr0);
-+    assert_hvf_ok(ret);
-+
-     return 0;
- }
- 
-diff --git a/target/arm/hvf_arm.h b/target/arm/hvf_arm.h
-index e848c1d27d..26c717b382 100644
---- a/target/arm/hvf_arm.h
-+++ b/target/arm/hvf_arm.h
-@@ -22,4 +22,23 @@ void hvf_arm_init_debug(void);
- 
- void hvf_arm_set_cpu_features_from_host(ARMCPU *cpu);
- 
-+#ifdef CONFIG_HVF
-+
-+uint32_t hvf_arm_get_default_ipa_bit_size(void);
-+uint32_t hvf_arm_get_max_ipa_bit_size(void);
-+
-+#else
-+
-+static inline uint32_t hvf_arm_get_default_ipa_bit_size(void)
-+{
-+    return 0;
-+}
-+
-+static inline uint32_t hvf_arm_get_max_ipa_bit_size(void)
-+{
-+    return 0;
-+}
-+
-+#endif
-+
- #endif
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index 203a2dae14..c5d7b0b492 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -450,6 +450,25 @@ static inline void update_spsel(CPUARMState *env, uint32_t imm)
-  */
- unsigned int arm_pamax(ARMCPU *cpu);
- 
-+/*
-+ * round_down_to_parange_index
-+ * @bit_size: uint8_t
-+ *
-+ * Rounds down the bit_size supplied to the first supported ARM physical
-+ * address range and returns the index for this. The index is intended to
-+ * be used to set ID_AA64MMFR0_EL1's PARANGE bits.
-+ */
-+uint8_t round_down_to_parange_index(uint8_t bit_size);
-+
-+/*
-+ * round_down_to_parange_bit_size
-+ * @bit_size: uint8_t
-+ *
-+ * Rounds down the bit_size supplied to the first supported ARM physical
-+ * address range bit size and returns this.
-+ */
-+uint8_t round_down_to_parange_bit_size(uint8_t bit_size);
-+
- /* Return true if extended addresses are enabled.
-  * This is always the case if our translation regime is 64 bit,
-  * but depends on TTBCR.EAE for 32 bit.
-diff --git a/target/arm/ptw.c b/target/arm/ptw.c
-index 278004661b..defd6b84de 100644
---- a/target/arm/ptw.c
-+++ b/target/arm/ptw.c
-@@ -96,6 +96,21 @@ static const uint8_t pamax_map[] = {
-     [6] = 52,
- };
- 
-+uint8_t round_down_to_parange_index(uint8_t bit_size)
-+{
-+    for (int i = ARRAY_SIZE(pamax_map) - 1; i >= 0; i--) {
-+        if (pamax_map[i] <= bit_size) {
-+            return i;
-+        }
-+    }
-+    g_assert_not_reached();
-+}
-+
-+uint8_t round_down_to_parange_bit_size(uint8_t bit_size)
-+{
-+    return pamax_map[round_down_to_parange_index(bit_size)];
-+}
-+
- /*
-  * The cpu-specific constant value of PAMax; also used by hw/arm/virt.
-  * Note that machvirt_init calls this on a CPU that is inited but not realized!
--- 
-2.39.5 (Apple Git-154)
+We can not instantiate the TPM I2C chip device model in the tacoma-bmc
+machine init routine and attach it to the I2C bus because of the required
+TPM backend. This means that the device is necessarily defined on the QEMU
+command line and this makes the ast2600-evb and tacoma-bmc machine very
+similar in terms of HW definitions.
+  
+> I solved the problem by adding support for IBM Bonnell (which instantiates
+> the TPM chip through its devicetree file, similar to tacoma-bmc) to my local
+> copy of qemu. 
+
+Hmm, did you copy the rainier-bmc machine definition ?
+
+> It isn't perfect since I don't know the correct HW pin strapping
+> and reused the strapping from Rainier, but it works for me.
+
+Keeping the tacoma-bmc machine is fine if there is a use for it. Testing
+the TPM I2C device driver is certainly a good use but we should reflect
+that in QEMU also (so that we don't forget). Could we change the test in
+machine_aspeed.py to use the tacoma-bmc machine instead ? and revert the
+deprecation patch of course.
+
+Thanks,
+
+C.
+
+
 

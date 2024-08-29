@@ -1,116 +1,107 @@
-Received: by 2002:a17:504:26c2:b0:1be9:327d:8ee3 with SMTP id j2csp837583nji;
-        Thu, 29 Aug 2024 05:50:33 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCURH30WRnAYSmSskBE5mxZr23ngk/dPTHyAGHjWNTnMKTnAXoJbpp9ZBPb2dOm3enLMtzsriTHa8SQjmA==@linaro.org
-X-Google-Smtp-Source: AGHT+IE4PX062o9EgnhheZfzV731QQE+XJLHKm7w4frvDarCGjUtw4DXUTl/H1qOJDVkKBPkQ7FO
-X-Received: by 2002:a05:620a:1729:b0:79e:f8b7:5c73 with SMTP id af79cd13be357-7a80424b3b9mr265127385a.55.1724935832882;
-        Thu, 29 Aug 2024 05:50:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1724935832; cv=none;
-        d=google.com; s=arc-20160816;
-        b=MDWDCOxFn1QDNSpSsEpkGJvI+sn0I7Tfc93gtchmqaTO64JNkb7pRVj2uRovdZzaRs
-         e+dQIGQY16mr4A+rqo//BRlDln8LJnQowPbxpdjGMmkYJObseT/w1MpmbvAliw1GtJpq
-         K4xpOnhla9ZKIUbm1JUuRQA9bQxn/k/2JO0U3fnobJPf2C1Hd7XE47i67sG0CXauq0YS
-         Pwb5ImunGq/Wj8S6Re7obEYFT1FLm3NMUgOnP5sWqG9USTx1VZ5CJYmarMDvGvxjknSG
-         OYxCmN5RPyZDkKpk7swTOJg+cFvCcLbv3nlruzAHr/BTh3a2aLzegi1oGIgD9L9x0Kcz
-         yoSg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+Received: by 2002:a17:504:26c2:b0:1be9:327d:8ee3 with SMTP id j2csp853630nji;
+        Thu, 29 Aug 2024 06:32:19 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWnd5Mut++KVE3tcKlyI/zvjAticz1chxDVC6pQIyt+/9v038yt+2E/Ow9TmCLomCsinu/R4opmkPPvsg==@linaro.org
+X-Google-Smtp-Source: AGHT+IF/d/V3x71HjKdlVni0d21ohijrLcb9/16bXOU27Yfs9O3bQbpFV+kMHx0qGy41g/mLnRbm
+X-Received: by 2002:a5d:58f8:0:b0:371:7e1b:871b with SMTP id ffacd0b85a97d-3749b551e81mr2093762f8f.29.1724938339317;
+        Thu, 29 Aug 2024 06:32:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1724938339; cv=none;
+        d=google.com; s=arc-20240605;
+        b=HXXSQfOM31DuIIylEHwhFmBwjZe9U3B3yUaVeKcsU3J3RpoiMAWjjvd82eDUIqqysq
+         h00MxZTWp/ygsnlL3SlyM0MB8NnU7OFAaHJVxuHO/Lly6tDFEUHL9LA9J1pVd8IVFguJ
+         t+5NrpEupymnDSVnMalTUc/F82rDhYaeVaPUc816IjvlHQT+/Zr+Fxm8NMjtUo7qGKmb
+         PFufUo+9sdBsq2XsA2kIC4iCxY9ANu2AuSm/ozNGsb6TRDgsClmsP8GP2M2At8tPMMYu
+         IM38TSdK5mw3zwzOxuKybh9jsbek2YPAHn/7euEJ6ueCKyPvD+Uo4Q3HpJ0G4YWoyGEx
+         G51g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=2wRSRQffSI3jvGx4sR+FNXzobzhljUOnvnpFox4nMKE=;
-        fh=3XxDdEQzjEO8jOLf/Fs087zzKVbJ+Y92pHyjutEJcvM=;
-        b=ipXVWT0qPqv2OHE9cW9emcY8NGqfb5Y/Nq164/cBj98CPQdoXZXvpYPsdDgP4fGWJH
-         idBPw5YLVepQxNTlrX5T4RqVswARZCiQv1R/FtSqkhiIAvq/AKY/YfEDAo0nJIDQGmDg
-         bfAtAWlc1em/SJltENuOP6/GHHs21c49QXpIa7XLRYEfdDT/ZehYQpOnE1bJyxoMFVUo
-         U9xNiGkoWzrHLtoyFBlzL3Tym2Izz+P7Qr8rrwnAih9nx3jm8EI1oCIAfgd33BVxsOuY
-         Iizx7FciJDt7wY8y+hKVI3wK+f7r2IoaoBmWWCcc0Wshqs9RUKPVAXPs5cEkSXh4QbZk
-         nkcw==;
+         :list-unsubscribe:list-id:precedence:thread-index:thread-topic
+         :content-transfer-encoding:mime-version:subject:references
+         :in-reply-to:message-id:cc:to:from:date;
+        bh=amzGSGLTSLWXQyCq3hatF+Hv0OyXKYodG+BQadiVbfk=;
+        fh=7cN3o/iiqCA14FYy9nF21q5HztgiH/zsfdp2UmfZI0Y=;
+        b=HxjbgoWtO40xBi4TCHtfjYz9ONRrp5DNDgs4uwN+QiMAPShH/95QYPPKFi9MxKXMwo
+         elyZ/1rDg/xbhVKv/2rjTjzg7TdM4V9xNbP+41QXBf1vJv5yyZol3ThzV1LafIS12Xa2
+         Z+P19/Z8EppKsNtYlps+CLOjfswPo1zW8E/AdqhXRYdIPXtb8KV7FarMudDGv6RsQJeg
+         yqgbtp4XhGU2RvQ9qwm+d62Ptkt5Yd0ryrlGpnqrTB215xN6e8NjHr0qAR3cTfUow0/g
+         8EfSlMzsDmaJ2w9OCFzQj7B7WWhiT2w7N7dj4EnjlmC1tt0xByzTLRuGagY6D8BJahBw
+         BLJQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=RwtSw+I1;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-45682d3d296si13405061cf.297.2024.08.29.05.50.32
+        by mx.google.com with ESMTPS id 5b1f17b1804b1-42bb6deacb2si7139505e9.3.2024.08.29.06.32.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 29 Aug 2024 05:50:32 -0700 (PDT)
+        Thu, 29 Aug 2024 06:32:19 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=RwtSw+I1;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sjebS-0008Os-Vf; Thu, 29 Aug 2024 08:50:19 -0400
+	id 1sjfFl-0002TS-Cl; Thu, 29 Aug 2024 09:31:58 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1sjebR-0008NJ-Jo
- for qemu-arm@nongnu.org; Thu, 29 Aug 2024 08:50:17 -0400
-Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1sjebP-0003OU-U4
- for qemu-arm@nongnu.org; Thu, 29 Aug 2024 08:50:17 -0400
-Received: by mail-ej1-x636.google.com with SMTP id
- a640c23a62f3a-a866cea40c4so69089966b.0
- for <qemu-arm@nongnu.org>; Thu, 29 Aug 2024 05:50:14 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1724935813; x=1725540613; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=2wRSRQffSI3jvGx4sR+FNXzobzhljUOnvnpFox4nMKE=;
- b=RwtSw+I1ZuCa3XwzZBIdEMDDwFwcmwYgmTr3UP/LWxcrbi2M4Ro1IuhaU1lLXNDtCz
- qp7vgOwTOukPjTIHdaBGMLjRnp91n2ZeJlczpS3a8nLiWP/W8jRu5CJSCxjw4F30legr
- QRI0TT52UHFtyAvog+ODrlfeZNBSXtcDxELCAKGeoijwfKQUk2ESqlxfMKjrou/uQ+uq
- HHaHJVQim/poyCLXrbviccJ9hQzOJ4+5/VaKHQ+cUj0yprRq2CA6E+WCmcgLmfeY8b/s
- RqD9cA6VGm4SiznQ3PlhOeb06M9kfme37jQHdQZF77RCzWTk07eJxC6S6gXzNHMCgBkW
- 3/Yw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1724935813; x=1725540613;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=2wRSRQffSI3jvGx4sR+FNXzobzhljUOnvnpFox4nMKE=;
- b=Sc4zA4G827lMTuGgvC7E9dNOoMfnBnJQcSLu2RSV4gCDPP7peEgCQt+9MPNjSQMlmX
- knW9gAZ2IrCgVT5iSRuDf9BKNHYkSocXUVltpkHZ93G0JYVMm3rmjzmV+zpad1LumyvG
- dhq3tquuLB3/wzK7T9tj2u5ihWqiAUYxnKzy79TRcphXVGUiwm3iXNW6l7notOoib14y
- gqcrjRZacxMFjdseLmg1jGc+JGlzImHtwaOk4UA3GfwXRcewJdT7CzumPYugV/xh+mDc
- a/vLw5d9SmImwcma/vCFbUrNQfLPu5Ny9rH54QSNdxbHQuCUWk9QTvRY+KJum1NPxnhW
- jAWw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWFf/602mcoTdCOd4w/k+1oSGvNISPPDS2WUcu3Urkjv38UDhUzWNyGtmD6HXOK7EcGG2O+UgO6Kg==@nongnu.org
-X-Gm-Message-State: AOJu0YzKWtblU85PfoMY6v3ItjJ9dx1Ua5YGG36pRF4hP9RSDXecdL3U
- xTY8QMY47BfjxkuF52BkpxUtez6RlX1/NRXhnUbqtjzmxLpHA3FJ0nhlEBeMPnTk7z4cT8nkkGh
- nu4xmbPohVD32gTDmwyWfUwZxrAkuuFriQkqwZg==
-X-Received: by 2002:a17:907:d8c:b0:a86:a30f:4b0d with SMTP id
- a640c23a62f3a-a897f930927mr259336266b.38.1724935813430; Thu, 29 Aug 2024
- 05:50:13 -0700 (PDT)
-MIME-Version: 1.0
-References: <20240828005019.57705-1-sebastian.huber@embedded-brains.de>
-In-Reply-To: <20240828005019.57705-1-sebastian.huber@embedded-brains.de>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 29 Aug 2024 13:50:02 +0100
-Message-ID: <CAFEAcA-p+CBeKTgH-YXzrATKDpwG5iY+A3WGaVkbEeHCXxTzug@mail.gmail.com>
-Subject: Re: [PATCH] hw/arm/xilinx_zynq: Enable Security Extensions
-To: Sebastian Huber <sebastian.huber@embedded-brains.de>
+ (Exim 4.90_1) (envelope-from <sebastian.huber@embedded-brains.de>)
+ id 1sjfFk-0002ST-2t; Thu, 29 Aug 2024 09:31:56 -0400
+Received: from dedi548.your-server.de ([85.10.215.148])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <sebastian.huber@embedded-brains.de>)
+ id 1sjfFh-0003L2-W4; Thu, 29 Aug 2024 09:31:55 -0400
+Received: from sslproxy04.your-server.de ([78.46.152.42])
+ by dedi548.your-server.de with esmtpsa  (TLS1.3) tls TLS_AES_256_GCM_SHA384
+ (Exim 4.96.2) (envelope-from <sebastian.huber@embedded-brains.de>)
+ id 1sjfFc-000KqY-0q; Thu, 29 Aug 2024 15:31:48 +0200
+Received: from [82.100.198.138] (helo=mail.embedded-brains.de)
+ by sslproxy04.your-server.de with esmtpsa (TLS1.3) tls TLS_AES_256_GCM_SHA384
+ (Exim 4.96) (envelope-from <sebastian.huber@embedded-brains.de>)
+ id 1sjfFc-0008hG-1A; Thu, 29 Aug 2024 15:31:48 +0200
+Received: from localhost (localhost [127.0.0.1])
+ by mail.embedded-brains.de (Postfix) with ESMTP id DDD5A480180;
+ Thu, 29 Aug 2024 15:31:47 +0200 (CEST)
+Received: from mail.embedded-brains.de ([127.0.0.1])
+ by localhost (zimbra.eb.localhost [127.0.0.1]) (amavis, port 10032)
+ with ESMTP id 5UqitALMj2Q1; Thu, 29 Aug 2024 15:31:47 +0200 (CEST)
+Received: from localhost (localhost [127.0.0.1])
+ by mail.embedded-brains.de (Postfix) with ESMTP id 749BA4801BB;
+ Thu, 29 Aug 2024 15:31:47 +0200 (CEST)
+X-Virus-Scanned: amavis at zimbra.eb.localhost
+Received: from mail.embedded-brains.de ([127.0.0.1])
+ by localhost (zimbra.eb.localhost [127.0.0.1]) (amavis, port 10026)
+ with ESMTP id GJ3th0uv7_34; Thu, 29 Aug 2024 15:31:47 +0200 (CEST)
+Received: from zimbra.eb.localhost (zimbra.eb.localhost [192.168.96.204])
+ by mail.embedded-brains.de (Postfix) with ESMTP id 4F259480180;
+ Thu, 29 Aug 2024 15:31:47 +0200 (CEST)
+Date: Thu, 29 Aug 2024 15:31:47 +0200 (CEST)
+From: Sebastian Huber <sebastian.huber@embedded-brains.de>
+To: Peter Maydell <peter.maydell@linaro.org>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
  Alistair Francis <alistair@alistair23.me>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::636;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x636.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+Message-ID: <694012793.134674.1724938307291.JavaMail.zimbra@embedded-brains.de>
+In-Reply-To: <CAFEAcA-p+CBeKTgH-YXzrATKDpwG5iY+A3WGaVkbEeHCXxTzug@mail.gmail.com>
+References: <20240828005019.57705-1-sebastian.huber@embedded-brains.de>
+ <CAFEAcA-p+CBeKTgH-YXzrATKDpwG5iY+A3WGaVkbEeHCXxTzug@mail.gmail.com>
+Subject: Re: [PATCH] hw/arm/xilinx_zynq: Enable Security Extensions
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Originating-IP: [192.168.96.204]
+X-Mailer: Zimbra 9.0.0_GA_4615 (ZimbraWebClient - FF115 (Linux)/9.0.0_GA_4615)
+Thread-Topic: hw/arm/xilinx_zynq: Enable Security Extensions
+Thread-Index: xRCJRVSMo8Gofd7M0UxQXxVZXgJSAA==
+X-Authenticated-Sender: smtp-embedded@poldi-networks.de
+X-Virus-Scanned: Clear (ClamAV 1.0.5/27382/Thu Aug 29 10:52:14 2024)
+Received-SPF: pass client-ip=85.10.215.148;
+ envelope-from=sebastian.huber@embedded-brains.de; helo=dedi548.your-server.de
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -125,50 +116,51 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: JeDxC6QbYWet
+X-TUID: Mo8BLHZig43s
 
-On Wed, 28 Aug 2024 at 01:51, Sebastian Huber
-<sebastian.huber@embedded-brains.de> wrote:
->
-> The system supports the Security Extensions (core and GIC).  This change is
-> necessary to run tests which pass on the real hardware.
->
-> Signed-off-by: Sebastian Huber <sebastian.huber@embedded-brains.de>
+Hello Peter,
 
-(Added the maintainers to cc.)
+----- Am 29. Aug 2024 um 14:50 schrieb Peter Maydell peter.maydell@linaro.o=
+rg:
 
-Does the system have any secure-only devices, RAM, etc?
+> On Wed, 28 Aug 2024 at 01:51, Sebastian Huber
+> <sebastian.huber@embedded-brains.de> wrote:
+>>
+>> The system supports the Security Extensions (core and GIC).  This change=
+ is
+>> necessary to run tests which pass on the real hardware.
+>>
+>> Signed-off-by: Sebastian Huber <sebastian.huber@embedded-brains.de>
+>=20
+> (Added the maintainers to cc.)
+>=20
+> Does the system have any secure-only devices, RAM, etc?
+>=20
+> How much testing have you done with this change? (The main
+> reason we disabled has-el3 on this board back in 2014 was
+> as a backwards-compatibility thing when we added EL3 support
+> to the CPU model -- we didn't have a ton of images for the
+> board so we erred on the safe side of not changing the
+> behaviour to avoid potentially breaking existing guest code.)
 
-How much testing have you done with this change? (The main
-reason we disabled has-el3 on this board back in 2014 was
-as a backwards-compatibility thing when we added EL3 support
-to the CPU model -- we didn't have a ton of images for the
-board so we erred on the safe side of not changing the
-behaviour to avoid potentially breaking existing guest code.)
+I only tested this change with the RTEMS test suite. I added new tests for =
+the exception handling and this change was necessary to trigger FIQs.
 
-> ---
->  hw/arm/xilinx_zynq.c | 8 --------
->  1 file changed, 8 deletions(-)
->
-> diff --git a/hw/arm/xilinx_zynq.c b/hw/arm/xilinx_zynq.c
-> index 3c56b9abe1..37c234f5ab 100644
-> --- a/hw/arm/xilinx_zynq.c
-> +++ b/hw/arm/xilinx_zynq.c
-> @@ -219,14 +219,6 @@ static void zynq_init(MachineState *machine)
->      for (n = 0; n < smp_cpus; n++) {
->          Object *cpuobj = object_new(machine->cpu_type);
->
-> -        /*
-> -         * By default A9 CPUs have EL3 enabled.  This board does not currently
-> -         * support EL3 so the CPU EL3 property is disabled before realization.
-> -         */
-> -        if (object_property_find(cpuobj, "has_el3")) {
-> -            object_property_set_bool(cpuobj, "has_el3", false, &error_fatal);
-> -        }
-> -
->          object_property_set_int(cpuobj, "midr", ZYNQ_BOARD_MIDR,
->                                  &error_fatal);
->          object_property_set_int(cpuobj, "reset-cbar", MPCORE_PERIPHBASE,
+I haven't used this machine to work with Linux so far.
 
-thanks
--- PMM
+--=20
+embedded brains GmbH & Co. KG
+Herr Sebastian HUBER
+Dornierstr. 4
+82178 Puchheim
+Germany
+email: sebastian.huber@embedded-brains.de
+phone: +49-89-18 94 741 - 16
+fax:   +49-89-18 94 741 - 08
+
+Registergericht: Amtsgericht M=C3=BCnchen
+Registernummer: HRB 157899
+Vertretungsberechtigte Gesch=C3=A4ftsf=C3=BChrer: Peter Rasmussen, Thomas D=
+=C3=B6rfler
+Unsere Datenschutzerkl=C3=A4rung finden Sie hier:
+https://embedded-brains.de/datenschutzerklaerung/

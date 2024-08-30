@@ -1,94 +1,111 @@
-Received: by 2002:a17:504:3a8f:b0:1be9:327d:8ee3 with SMTP id g15csp189337njf;
-        Fri, 30 Aug 2024 02:53:05 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVcLzumTqp95SCfmtM6MIJOilX4z985nqcg/sLTz1k5b09CxTMdkFl7/HN+CZSbCF+1tCKPSeclVOMqXw==@linaro.org
-X-Google-Smtp-Source: AGHT+IE9vRFkpG/ftziaQBL4c9lri/nh8i4R43IpBmFMpHzCzfbosKwmj7Pp8oyBUGl7TyNJYxzd
-X-Received: by 2002:a05:6214:843:b0:6c3:4736:17d1 with SMTP id 6a1803df08f44-6c34736192fmr22768896d6.10.1725011585621;
-        Fri, 30 Aug 2024 02:53:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1725011585; cv=none;
+Received: by 2002:a17:504:3a8f:b0:1be9:327d:8ee3 with SMTP id g15csp193205njf;
+        Fri, 30 Aug 2024 03:06:38 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUPSyfrHLI7a77ZhdWs48n1uBjERRc99QJu8v9PJhXW7gy1UvUEBVZg+1qt1Uj64U1kFIpagMAto1cyTQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IG9ZXkwc6Qjitn8IAyLxFl2+NffMHF6T8XVzTsdLccxgAFcvsLwerhdWh0Ox3mNIrnuEuPR
+X-Received: by 2002:a0c:fed0:0:b0:6c3:4736:179a with SMTP id 6a1803df08f44-6c3473618b1mr19442126d6.24.1725012397782;
+        Fri, 30 Aug 2024 03:06:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1725012397; cv=none;
         d=google.com; s=arc-20160816;
-        b=o2C2Sax9FxaXzL6JZ5uoHParROzgxKUKuq8II8zz+10QnPxVprs7ctPNyZejqKmbew
-         dpGBsTkjGy8hkhfH5/LG/mE+593MDUwSgwVZAf0vNKUwfNEMvsQcgIG/wBwjNeewnh1I
-         upGnuQSNFHu3lFiLve59dHuvb5VO6FljxuYNQgka5dFBMUETS97bI6WcrA5Qec+abur8
-         WKrrZPIxa7BPP8AiM/wqy8rQYIABgtfvoTmPx28VxixJKNwO3I9lHvum+d+Qch8kMks4
-         2EogoYzHnV9jsXYd3IsVITBJRXXSqtT2j6pPRF8JrsEFKm2RBOc6+fRY0BUjuizicWwx
-         DwTw==
+        b=IZIKzW97vkvWRJuyT9OGvpshToqexJYCyQJKxI+yoL2uXQGPN7yFIaImfp7KjD5Wrb
+         A9ejJF0kH/7M1Oj+XTzHWBtthikOLBNrK9PlyfdRDEDGaBmTraHgBx6C0WcwW4e2hT81
+         A7GH9eQYYXgOTebAR0W2q6cI66zetr7Dn/9k31kmkGOjaM9aUUrz8nNXTmLipeLSqcnA
+         fkt0qfTRq06aOkQy8JGI/JLhbEM8V02m1+RWDl7y8Cfd3+rV4LMlGKBMncKEs3A7j1MU
+         sYaUIIqycgo6j12BbVO/YSQyTbQegTehpia9AY5lgLlORnNZxRNSrx4h9aeFVAJTWtY/
+         CfiA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:subject:cc:to:date;
-        bh=As6a5y41WHT7VYdMQTxfRQi5P7isXQ946Nd2nYyq1Lc=;
-        fh=n1pNRimLHi8i/G9YmXY8rIVcJD5z/xUgfM0fFR0QWwM=;
-        b=N46o2dFwc6ppbnYSDuc9E4118HzfEjR8zivMKEJzqn0/6REYTDSZ7tx9Tjjiw2IPbd
-         h1IyOJbPYaeiHdgA+83wL8OgVjhV77Nhg9ekTTTXgg4nc5uV+t9tmSPMlhW5qIzw1MzF
-         4TiQ+AzhBwO8JW31cxcur/wvFLdBZiExUtIZNOPjyVnt+EZzhv9nJYe5X48ZbGjXk2G3
-         fPX0Ohu54Zjs8uLC5KE7SE+trrgUJnfOqsAnZtn6Yrt9J3RXQ8QGiV/Fps1kjAImROq6
-         08xqniq/jOw22WTLQoTYPTaAAKdRAy0vrFAcQvzNqPqSKbYLzudnqB1DQ2yRgAGrh2h3
-         5T8A==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=Hs2qtB5SM0sNGdXaCHjuSBmUfcX5uW/a41hVBlDatjw=;
+        fh=Zb6IWOKaya4W1BPgwTkOQu9seWVYrWIuVzSaiscPQxc=;
+        b=kWXB3vvyZ44RqtBpu4Vmv8KAx7ZtjIjKS6LV8p81js1fT34GRh1reRmCR/iwcm4crb
+         Ja0ClJkDGmjcndI/QPd3c8FeBiDXvrQQIg3bHOXUw5r9EOHNxxvgiyNEl9cTEhFw3+cv
+         O5o0+DmyGludrNqJgO0v8CNs/EKT9F/xWH+lxK6bgBG/rdhdtXqcRygqZWLHAC80ZMJg
+         xTo9ifBOjbM3+OsBA96ogw4RoKVnaag1J5SUDWnIg5JOq4WrJc5sen6V8GhArEm35w9M
+         npYoQOAjXYLNm1SMTIuATX01+cHKfd3tZcsOnSh+nzryDOY06sL3I6Smj9ZcPlH4OPju
+         CmbA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=QYO9qw0Y;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6c340ca35a3si35475066d6.360.2024.08.30.02.53.05
+        by mx.google.com with ESMTPS id 6a1803df08f44-6c340dc0da2si35333796d6.594.2024.08.30.03.06.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 30 Aug 2024 02:53:05 -0700 (PDT)
+        Fri, 30 Aug 2024 03:06:37 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=QYO9qw0Y;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sjyJK-0005Oi-W6; Fri, 30 Aug 2024 05:52:56 -0400
+	id 1sjyWM-0006pj-Fl; Fri, 30 Aug 2024 06:06:22 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1sjyJH-0005Nf-Tl; Fri, 30 Aug 2024 05:52:52 -0400
-Received: from frasgout.his.huawei.com ([185.176.79.56])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1sjyJE-00060r-Rb; Fri, 30 Aug 2024 05:52:51 -0400
-Received: from mail.maildlp.com (unknown [172.18.186.231])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4WwCz8038Hz6K5q9;
- Fri, 30 Aug 2024 17:49:08 +0800 (CST)
-Received: from lhrpeml500005.china.huawei.com (unknown [7.191.163.240])
- by mail.maildlp.com (Postfix) with ESMTPS id A1083140736;
- Fri, 30 Aug 2024 17:52:31 +0800 (CST)
-Received: from localhost (10.203.177.66) by lhrpeml500005.china.huawei.com
- (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Fri, 30 Aug
- 2024 10:52:31 +0100
-Date: Fri, 30 Aug 2024 10:52:30 +0100
-To: Yuquan Wang <wangyuquan1236@phytium.com.cn>
-CC: <quic_llindhol@quicinc.com>, <peter.maydell@linaro.org>,
- <marcin.juszkiewicz@linaro.org>, <qemu-devel@nongnu.org>,
- <linux-cxl@vger.kernel.org>, <qemu-arm@nongnu.org>,
- <chenbaozi@phytium.com.cn>, <wangyinfeng@phytium.com.cn>,
- <shuyiqi@phytium.com.cn>
-Subject: Re: [RFC PATCH 1/2] hw/arm/sbsa-ref: Enable CXL Host Bridge by pxb-cxl
-Message-ID: <20240830105230.00002043@Huawei.com>
-In-Reply-To: <20240830041557.600607-2-wangyuquan1236@phytium.com.cn>
-References: <20240830041557.600607-1-wangyuquan1236@phytium.com.cn>
- <20240830041557.600607-2-wangyuquan1236@phytium.com.cn>
-Organization: Huawei Technologies Research and Development (UK) Ltd.
-X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1sjyWL-0006o9-5C
+ for qemu-arm@nongnu.org; Fri, 30 Aug 2024 06:06:21 -0400
+Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1sjyWI-0007Rc-6Y
+ for qemu-arm@nongnu.org; Fri, 30 Aug 2024 06:06:20 -0400
+Received: by mail-ed1-x535.google.com with SMTP id
+ 4fb4d7f45d1cf-58ef19aa69dso1536356a12.3
+ for <qemu-arm@nongnu.org>; Fri, 30 Aug 2024 03:06:11 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1725012371; x=1725617171; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=Hs2qtB5SM0sNGdXaCHjuSBmUfcX5uW/a41hVBlDatjw=;
+ b=QYO9qw0YqixTp5Ih8K2cOuUUaONUhny4s/yBuwBKbkQ8Lx5jwgR7xfmXtLAzBEnL4s
+ mUL534wPnvnPvvO1xZcd0n49AqCpB1QSx3nUh4RQQOseAUs5Tb/uAZ6Cpac+YZqBgPIW
+ IoFzsBRkhT/d1QtG18lu57GL3jIzlE1t8Mpzxwu4YEfYmBQ3845J0sxg3mLj9TM9GXSG
+ f7TaMazZWWrmJUlJaXEFg/sCMu9Vxfm0gMEcK8t6h64xqsDRMGhESke59sjbbl5spnpG
+ eVRK6xOiOGhR7kEEJUM6jMW50PgtVY1Mws3x61BnIB8CeOTnTIszlNSP7LmBo08Jrg17
+ LrVw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1725012371; x=1725617171;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=Hs2qtB5SM0sNGdXaCHjuSBmUfcX5uW/a41hVBlDatjw=;
+ b=fi3CPhZd+glFbreD11FnjhdHrOXdQ1CTtE63ha+C3drGMRWt9TmoVjsyQHtjGCs5X9
+ scMppyrVer5W6G4eC/MhTaYEFAoQWaSkB04wECiZ8q4y7jVu28cM2HnsGunX2O84ec+H
+ 3DnpuDZfPyHuN6Oj2AWIe8uhIIVyw/I6xPwdCPSfBl8SHN1Gs2nwN1NJTGquHX65iv8u
+ EPcCaTeQ81zkvbqbqiE3u1dzJspQ2dWuOQJ78QR3KGq9pJqzd1/Wkkf7klEprq2iJOky
+ 9haMPRBiCPaJ+van7eZx45xopLmKT1VrVKk5cRN89w2YpaSAGBnTlwtWObJy/wgIY6eT
+ +siQ==
+X-Gm-Message-State: AOJu0Ywwn/R6txa/FVddHOOlcCiLa8PVyo3YuryXIkf3xW36YV+AUzZp
+ KPSgFLhioxFes2bgu31X67SfH9AHxuxSEHm9hpAq2CTJ7Wlz2Apt0ZQ7GkSWxm9UH+pApfEKs6Q
+ O1ylZ7R3XvBBYzAFTeW66YHSIlNAgsIf6RzMw0Q==
+X-Received: by 2002:a05:6402:5d0:b0:5bf:256a:357d with SMTP id
+ 4fb4d7f45d1cf-5c21eda1887mr4395538a12.38.1725012370427; Fri, 30 Aug 2024
+ 03:06:10 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
-Content-Transfer-Encoding: quoted-printable
-X-Originating-IP: [10.203.177.66]
-X-ClientProxiedBy: lhrpeml500001.china.huawei.com (7.191.163.213) To
- lhrpeml500005.china.huawei.com (7.191.163.240)
-Received-SPF: pass client-ip=185.176.79.56;
- envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H2=-0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+References: <20240830072409.2399084-1-changbin.du@huawei.com>
+In-Reply-To: <20240830072409.2399084-1-changbin.du@huawei.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 30 Aug 2024 11:05:59 +0100
+Message-ID: <CAFEAcA995BnypV8Yx4fA_ojAt6NopyMnCWY8Gwb840++8kx91w@mail.gmail.com>
+Subject: Re: [PATCH] hw/arm/boot: Report error msg if loading elf/dtb failed
+To: Changbin Du <changbin.du@huawei.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::535;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x535.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -102,204 +119,44 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Jonathan Cameron <Jonathan.Cameron@Huawei.com>
-From:  Jonathan Cameron via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: RFcmcnhAdmgG
+X-TUID: gp1XiPXOVzRe
 
-On Fri, 30 Aug 2024 12:15:56 +0800
-Yuquan Wang <wangyuquan1236@phytium.com.cn> wrote:
-
-> The memory layout places 1M space for 16 host bridge register regions
-> in the sbsa-ref memmap. In addition, this creates a default pxb-cxl
-> (bus_nr=3D0xfe) bridge with one cxl-rp on sbsa-ref.
-
-If you are only supporting 1 host bridge you could reduce the space to just
-fit that?
-
-=46rom the command line example and code here it seems the pxb instances are =
-hard
-coded so you don't need to support the flexibility I needed for virt.
-
-Otherwise, just superficial code comments inline.
-Fixed setups are definitely easier to support :)
-
-Jonathan
-
-
->=20
-> Signed-off-by: Yuquan Wang <wangyuquan1236@phytium.com.cn>
+On Fri, 30 Aug 2024 at 08:24, Changbin Du <changbin.du@huawei.com> wrote:
+>
+> Print errors before exit. Do not exit silently.
+>
+> Signed-off-by: Changbin Du <changbin.du@huawei.com>
 > ---
->  hw/arm/sbsa-ref.c | 54 ++++++++++++++++++++++++++++++++++++++++++++---
->  1 file changed, 51 insertions(+), 3 deletions(-)
->=20
-> diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
-> index ae37a92301..dc924d181e 100644
-> --- a/hw/arm/sbsa-ref.c
-> +++ b/hw/arm/sbsa-ref.c
-> @@ -41,7 +41,10 @@
->  #include "hw/intc/arm_gicv3_common.h"
->  #include "hw/intc/arm_gicv3_its_common.h"
->  #include "hw/loader.h"
-> +#include "hw/pci/pci_bridge.h"
-> +#include "hw/pci/pci_bus.h"
->  #include "hw/pci-host/gpex.h"
-> +#include "hw/pci-bridge/pci_expander_bridge.h"
->  #include "hw/qdev-properties.h"
->  #include "hw/usb.h"
->  #include "hw/usb/xhci.h"
-> @@ -52,6 +55,8 @@
->  #include "qom/object.h"
->  #include "target/arm/cpu-qom.h"
->  #include "target/arm/gtimer.h"
-> +#include "hw/cxl/cxl.h"
-> +#include "hw/cxl/cxl_host.h"
+>  hw/arm/boot.c | 2 ++
+>  1 file changed, 2 insertions(+)
+>
+> diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+> index d480a7da02cf..17c01f299831 100644
+> --- a/hw/arm/boot.c
+> +++ b/hw/arm/boot.c
+> @@ -839,6 +839,7 @@ static ssize_t arm_load_elf(struct arm_boot_info *info, uint64_t *pentry,
+>                        1, data_swab, as);
+>      if (ret <= 0) {
+>          /* The header loaded but the image didn't */
+> +        error_report("could not load elf '%s'", info->kernel_filename);
+>          exit(1);
 
-Headers look to be alphabetical order.
+I agree we should print a message here.
 
-> =20
->  #define RAMLIMIT_GB 8192
->  #define RAMLIMIT_BYTES (RAMLIMIT_GB * GiB)
-> @@ -94,6 +99,7 @@ enum {
->      SBSA_SECURE_MEM,
->      SBSA_AHCI,
->      SBSA_XHCI,
-> +    SBSA_CXL_HOST,
->  };
-> =20
->  struct SBSAMachineState {
-> @@ -105,6 +111,9 @@ struct SBSAMachineState {
->      int psci_conduit;
->      DeviceState *gic;
->      PFlashCFI01 *flash[2];
-> +    CXLState cxl_devices_state;
-> +    PCIBus *bus;
-
-Lot of buses in a system, I'd call the pcibus
-or similar. However, see below - I don't think
-it is necessary.
-
-
-> +    PCIBus *cxlbus;
->  };
-> =20
->  #define TYPE_SBSA_MACHINE   MACHINE_TYPE_NAME("sbsa-ref")
-> @@ -132,6 +141,8 @@ static const MemMapEntry sbsa_ref_memmap[] =3D {
->      /* Space here reserved for more SMMUs */
->      [SBSA_AHCI] =3D               { 0x60100000, 0x00010000 },
->      [SBSA_XHCI] =3D               { 0x60110000, 0x00010000 },
-> +    /* 1M CXL Host Bridge Registers space (64KiB * 16) */
-> +    [SBSA_CXL_HOST] =3D           { 0x60120000, 0x00100000 },
-
-As below, can just leave space for however many you are creating.
-
->      /* Space here reserved for other devices */
->      [SBSA_PCIE_PIO] =3D           { 0x7fff0000, 0x00010000 },
->      /* 32-bit address PCIE MMIO space */
-> @@ -631,6 +642,26 @@ static void create_smmu(const SBSAMachineState *sms,=
- PCIBus *bus)
 >      }
->  }
-> =20
-> +static void create_pxb_cxl(SBSAMachineState *sms)
-> +{
-> +    CXLHost *host;
-> +    PCIHostState *cxl;
-> +
-> +    sms->cxl_devices_state.is_enabled =3D true;
-> +
-> +    DeviceState *qdev;
+>
+> @@ -1322,6 +1323,7 @@ void arm_load_kernel(ARMCPU *cpu, MachineState *ms, struct arm_boot_info *info)
+>       */
+>      if (!info->skip_dtb_autoload && have_dtb(info)) {
+>          if (arm_load_dtb(info->dtb_start, info, info->dtb_limit, as, ms) < 0) {
+> +            error_report("could not load dtb '%s'", info->dtb_filename);
+>              exit(1);
 
-I think qemu still sticks mostly to declarations at the top
-of functions. So move this up.
+But for this case, arm_load_dtb() should be printing the error
+message itself (which lets it be more precise about what went
+wrong). Is there a code path where it fails to print an error?
 
-> +    qdev =3D qdev_new(TYPE_PXB_CXL_DEV);
-> +    qdev_prop_set_uint32(qdev, "bus_nr", 0xfe);
-
-Ouch. That's not a lot of space in bus numbers.
-Move it down a bit so there is room for switches etc
-and not just a single root port.
-Up to SBSA ref maintainers, but I'd use 0xc0 or something
-like that.
-
-> +
-> +    PCIDevice *dev =3D PCI_DEVICE(qdev);
-
-Declarations at the top I think.
-
-> +    pci_realize_and_unref(dev, sms->bus, &error_fatal);
-> +
-> +    host =3D PXB_CXL_DEV(dev)->cxl_host_bridge;
-> +    cxl =3D PCI_HOST_BRIDGE(host);
-> +    sms->cxlbus =3D cxl->bus;
-> +    pci_create_simple(sms->cxlbus, -1, "cxl-rp");
-
-You want to enable at least some interleaving the HB so I'd
-add at least 2 root ports.
-
-> +}
-> +
->  static void create_pcie(SBSAMachineState *sms)
->  {
->      hwaddr base_ecam =3D sbsa_ref_memmap[SBSA_PCIE_ECAM].base;
-> @@ -682,12 +713,25 @@ static void create_pcie(SBSAMachineState *sms)
->      }
-> =20
->      pci =3D PCI_HOST_BRIDGE(dev);
-> +    sms->bus =3D pci->bus;
-
-I'd carry on using pci->bus for this code to minimize changes
-needed and set sms->bus at the end of the function, not the
-start (see below - you can get rid of need to store pci->bus
-I think).
-
-> +
-> +    pci_init_nic_devices(sms->bus, mc->default_nic);
-> =20
-> -    pci_init_nic_devices(pci->bus, mc->default_nic);
-> +    pci_create_simple(sms->bus, -1, "bochs-display");
-> =20
-> -    pci_create_simple(pci->bus, -1, "bochs-display");
-> +    create_smmu(sms, sms->bus);
-> =20
-> -    create_smmu(sms, pci->bus);
-> +    create_pxb_cxl(sms);
-
-Keep this similar to the others and pass in pci->bus even
-though you are going to stash pci->bus
-
-> +}
-
-
-> =20
->  static void *sbsa_ref_dtb(const struct arm_boot_info *binfo, int *fdt_si=
-ze)
-> @@ -823,6 +867,10 @@ static void sbsa_ref_init(MachineState *machine)
-> =20
->      create_pcie(sms);
-> =20
-> +    create_cxl_host_reg_region(sms);
-> +
-> +    cxl_hook_up_pxb_registers(sms->bus, &sms->cxl_devices_state, &error_=
-fatal);
-> +
-
-Fixed pxb instances certainly make this less of a dance than we need for pc=
- / virt
-as the creation order is constrained in a way it isn't for those generic ma=
-chines.
-
-Given you know you only have one PXB-cxl and have it in sms->cxlbus
-you could just call
-pxb_cxl_hook_up_registers(&sms->cxl_devices_state, pci->cxlbus, &error_fata=
-l)
-I think and get same result without needed to add sms->bus to get hold of t=
-he
-pci bus.
-
-
->      create_secure_ec(secure_sysmem);
-> =20
->      sms->bootinfo.ram_size =3D machine->ram_size;
-
+thanks
+-- PMM

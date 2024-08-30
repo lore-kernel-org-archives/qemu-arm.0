@@ -1,522 +1,175 @@
-Received: by 2002:a17:504:3a8f:b0:1be9:327d:8ee3 with SMTP id g15csp148859njf;
-        Thu, 29 Aug 2024 23:43:51 -0700 (PDT)
-X-Received: by 2002:a17:906:fd42:b0:a86:85eb:bdd4 with SMTP id a640c23a62f3a-a89a36a2d63mr49262066b.38.1725000231458;
-        Thu, 29 Aug 2024 23:43:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1725000231; cv=none;
+Received: by 2002:a17:504:3a8f:b0:1be9:327d:8ee3 with SMTP id g15csp166496njf;
+        Fri, 30 Aug 2024 01:09:54 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVJi+knXp1/NnFAfvNlX9BlZzcjIhxk8+LAsF3qt1r4WbEmJkcKwJRRSWNBkpd3szh3/T7B7kz0NfbJ0Q==@linaro.org
+X-Google-Smtp-Source: AGHT+IGvmXe8c/BYdCMpoUSq+SiB+vnNuzZfPEf4l1WaSgjGZU07krQ1plV5Q6U4JS3UOZhIFaHb
+X-Received: by 2002:a05:6214:5b0e:b0:6c3:33b1:20dd with SMTP id 6a1803df08f44-6c33e69612dmr64499286d6.53.1725005393856;
+        Fri, 30 Aug 2024 01:09:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1725005393; cv=none;
         d=google.com; s=arc-20160816;
-        b=kKyQ5KLnSYque+FVmWmNBxn1Fk1eHViJLnljbvCkXI5ufC+MVmaKuBxwIA/y8zYC0P
-         5VAy4/xjfw41Ud3NxZkezFyuyQTT8z/Ao9dJLgNfDWiCvPaRLr8U1e7ROKjn3raGRziY
-         s0Q7fhiCjccW5vwC49tRHmJLf9qsrUqEPnpbZcUWSDmXO6i0lYEdmbhiUTkzjy6G4J++
-         t0zrOuMGbyNy3j2/wEX+bx0l900+5WfNz5aAW8Gv8n45xzt3+A2RtjYahfw27HszLx/w
-         FVRCBMVcACG7RtSX0jB2bx+coFXE21p9RlPYZZA2mzS7QLRVPFBLq6AY8m9y73ano2Od
-         9L9g==
+        b=IpWJEnjQSzMGpFwbsIDheG1On8NHQHr/Dvhn4SEA+lLKYles/JepDUuN2A762nSeFG
+         8hWPhnhXRQyifhtKykrdoNxrRURUzmxispzdvhpuvIn0+jGLsWYl6gWWgPstGcGkjVOC
+         G7qS5UEJ4SgYWupttFo8/k2Qm+ouQJphFgYWeK9dsAVdhHgtQTqRYDshersCuMhMKTYY
+         dpXlY4Uf5K0fY5hgQSrW+qewwLl6Vn/s0BGp9Mbj8s1fBkGq2LJXuc7oMqLTP8xex6DL
+         nh6669Ixv3lwY9Ef5j7lzrfRcNNXd/LBydHktNmu4/4onpODzgu5v3/KvQa7Ab98ClC/
+         AvgQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=rGoDqIKDra4SHAZMcKmuE8kq3KSl6lBGnAg2BCVAt30=;
-        fh=WVhCYe9ghrAl6cMXkTezevwCEujLzfLGJ8rL5GTZbMw=;
-        b=Pkc1M4OgNNDJ5uoALHGIlqq1FtiniSZ1W1qGD2df/AXQwrCr2FZPfwpmFkXi6BqM4x
-         pmR31wsHFTWsnTmPIQKeGbGPGZa+rvUZ+p26kySkig7aEia+mU0lVAo4C2oJ5mk9IEV5
-         idm6aDGwjI3T8tNWFoFG4MflJxv5u8QJD7+oraX7b37kEh0nNFhX/cVWpkdl7WgewNto
-         QmQ3fBvi6TEcPkBJVIg+yHeBeaFq/HvHBuB6Y3gZKUJnTSl3i8cEfj2Tykw8VwPv5JOX
-         Z3w+jSbzPMVSweOi95Wi2tOvbW9z7B5Um65eSGm+14BJgw/NPNhdz0qIes2/T25DU089
-         J4Wg==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:from:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=cRM0z2YiEimXmzOjezTcVGa11bxpmbinpvMckbeEPP8=;
+        fh=X1uXDNS3CVGBdW6R1BqR8daGVf13cPHGzH8O2/MCgr4=;
+        b=FlXIpg4ArOsZIvGH51NDKhROmO1xrKBqc8Nf39bPJ488JhVY3ZYbE3WiJ6iA6lydWD
+         legJMGhyziOqmsd/JKm4t5MEYEXY9f7/6ZCKqtKpWNp4BaK89Xb51nAywGSxxWmzvNqe
+         1VvP3CWrwNsueidwi5xPhVdWT6K3oRUk7nLYpaXGnrsPZomPVj5cnrxTOu5r+tlrhlrG
+         +OTlqAp5luOZU5zeKUfus5zWVJXZ5XCKrF7EsSBjxChAP6rrejMIT/cE/IumWujpa7rB
+         m9fWV8Z+3hloMzmGSOsGkLVbckr4F8rrloCLcMAO1793aTQbiQsxjGn0pGC0TnCpJ6gm
+         rzXQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=n+z0r8A2;
-       spf=pass (google.com: domain of manos.pitsidianakis@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=manos.pitsidianakis@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <manos.pitsidianakis@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id a640c23a62f3a-a898912f100sor90686766b.16.2024.08.29.23.43.51
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=CSGoHF1X;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6c340ca4611si34144196d6.394.2024.08.30.01.09.53
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Thu, 29 Aug 2024 23:43:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of manos.pitsidianakis@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 30 Aug 2024 01:09:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=n+z0r8A2;
-       spf=pass (google.com: domain of manos.pitsidianakis@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=manos.pitsidianakis@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1725000231; x=1725605031; darn=linaro.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=rGoDqIKDra4SHAZMcKmuE8kq3KSl6lBGnAg2BCVAt30=;
-        b=n+z0r8A2UGaVaxMfU5TmwI8JrOJUs9JqUnuK4MQ/yIErv9EJD3mBTvqIRnNVhWhIIA
-         ZQbEsg7x99QRNgvfE9bnUOhozKjhdGUQfkP7nQzlCzmB8vcweyUZOmSeyItR7DbcOGhp
-         dpUbUzaI4FuEn+NoTIf3WxG39j23jYlbRBDtqGDf5PqiGh9JhYyZXuvzcKG5bvP34BNx
-         ZY4fuSIdjG0LOAJgnqMEsFbe86arl/oAcbZf5hVLaDmdW8a/wK0wQ/cLpvRTEw2QLsaL
-         XL5uUifD+JqxneAm3FAclJrAa9PXq20pT6C1CDs4//iGrUTSFrIIYr0JRyCSVopr5+0m
-         GZHQ==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=CSGoHF1X;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sjwhM-0002el-7B; Fri, 30 Aug 2024 04:09:36 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1sjwhK-0002bF-V1
+ for qemu-arm@nongnu.org; Fri, 30 Aug 2024 04:09:34 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1sjwhJ-00025D-9q
+ for qemu-arm@nongnu.org; Fri, 30 Aug 2024 04:09:34 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1725005370;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=cRM0z2YiEimXmzOjezTcVGa11bxpmbinpvMckbeEPP8=;
+ b=CSGoHF1XOhbXYFNT66RIHaUuQD4NLyQCYjshQETtxwSCT1FY2oT96oP88Sls65ijF6uwUf
+ PxxLmvXpjlZZ+whZjPhfFW8krrHSSXt2rz3T2+Pf9/5HdMibgh7b0gcT1zW9RPhLuofo1e
+ TWyfMIbcvBHmJGZNJhG66pwP/V9BZuc=
+Received: from mail-qv1-f71.google.com (mail-qv1-f71.google.com
+ [209.85.219.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-59-t39AU0pBPqan4XE1yq4Iyg-1; Fri, 30 Aug 2024 04:09:29 -0400
+X-MC-Unique: t39AU0pBPqan4XE1yq4Iyg-1
+Received: by mail-qv1-f71.google.com with SMTP id
+ 6a1803df08f44-6bf8d9867a3so18152776d6.1
+ for <qemu-arm@nongnu.org>; Fri, 30 Aug 2024 01:09:28 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1725000231; x=1725605031;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=rGoDqIKDra4SHAZMcKmuE8kq3KSl6lBGnAg2BCVAt30=;
-        b=iBPTITHCvgiG8kV9LggzJv4N24ZV1vlCI8Hr+3Jkiwz0wq1WgQkWZmIs05c65wLUJv
-         YoahG+NGXnt5LwHHD4IfDyIaBJ2PalK8Ivtu5EnqF/0doYgHCDtRiBJjuTrgQk41mpQy
-         jt6plWl7P0nHAajR6qRG45jVLGK96l0Gx25tCsGxGgreU9xZvTg9N+Vv2ts/537jJs1l
-         Tu/HP1xLKJI1bBo/Y5gdiBPJfVFd5BrXHurUkaUq/bt7IRZRWHlyOPutY+z+yV4TaZ5U
-         GiUCKMnDwo6TAZ76nFgdhqeSGH2uqSNKH/PlVIbvNMNytggaqxCqZ7/4aMVHskAXPzRI
-         iGaw==
-X-Gm-Message-State: AOJu0Yy8YLkbiypo55s5rHADIksnHLgoZc4SK3UeU/NFEmWVwaRQXGeu
-	CNXbioKkgCM7XbUFx7V1Cpy5umzDzIClGwjVoDKyjdt4fEEQD0I5EmXwVPUvUOvxMM0w2m1+iQw
-	O/K67mhq5JMwfELOZqAWNhXRRY+DgrPej640DMSav0V2g8lkiqgE=
-X-Google-Smtp-Source: AGHT+IHD9nzqIIpu2eIhkaOhKBS93IuP4kSb6/phG8kC6RWTOOaYQ7iat2V9Ym/lTXPyvLEXylZy1ehaugNkCX226gc=
-X-Received: by 2002:a05:6402:35d6:b0:5c0:a8b1:ca8a with SMTP id
- 4fb4d7f45d1cf-5c21ed42ac9mr3888946a12.11.1725000230260; Thu, 29 Aug 2024
- 23:43:50 -0700 (PDT)
+ d=1e100.net; s=20230601; t=1725005368; x=1725610168;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=cRM0z2YiEimXmzOjezTcVGa11bxpmbinpvMckbeEPP8=;
+ b=Aj4xHz05KImUv5iKfrtPyMkcSmkJ6e1vzfYCexQYHeofIAIGELKoKiDQFlDsKM34KQ
+ rv1IJy7c0EhQAqlA7kui3siphCuUm11vag3KhDut+OYYX1KY+KshUsA310SLlF8k4ecT
+ 3CCZzR+Pzgt5O29y6aXilK55+x/vtxo6if6RMFZbDsCrjuRM8DsBqf2Bl6eg2jOMQmr3
+ xlu0Q4kJC1g1mf4r8LPGe26bXkJGh4KtsA/p+Z/sRfvVn4aalAa6qQewYRZlVwafloDA
+ 6U69LRKadEc5tB2a+ADR6YYHEOVXiFVvY6cZC/WPZI7y7/ZCinYnm5HR8QiAHo9yaHgV
+ nGFg==
+X-Gm-Message-State: AOJu0YxGPoUErPxfrjxEAy+wkU4HM6ePty0pf6gII7MKxDNyLDq6NZ02
+ yyImyLLZXQDW7Szf4l46bJjg675lgBQAztp96fHxH47B/2s0N7An6+fBvJ36an9tmwzLrxTm7Mf
+ P0ojAKHIdGrVYtiZ1aewfknbleBJLWrU1x9n3pYlzVrCSO6bTPQ==
+X-Received: by 2002:a05:6214:3f90:b0:6c3:4851:36a4 with SMTP id
+ 6a1803df08f44-6c348513c18mr22577626d6.26.1725005368443; 
+ Fri, 30 Aug 2024 01:09:28 -0700 (PDT)
+X-Received: by 2002:a05:6214:3f90:b0:6c3:4851:36a4 with SMTP id
+ 6a1803df08f44-6c348513c18mr22577436d6.26.1725005368091; 
+ Fri, 30 Aug 2024 01:09:28 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:280:24f0:3f78:514a:4f03:fdc0?
+ ([2a01:e0a:280:24f0:3f78:514a:4f03:fdc0])
+ by smtp.gmail.com with ESMTPSA id
+ 6a1803df08f44-6c340c00310sm12564466d6.52.2024.08.30.01.09.26
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 30 Aug 2024 01:09:27 -0700 (PDT)
+Message-ID: <bdb443f9-376e-4d4e-8c06-9ba0c5482c5e@redhat.com>
+Date: Fri, 30 Aug 2024 10:09:25 +0200
 MIME-Version: 1.0
-References: <20240828-rust-pl011-v9-0-35579191f17c@linaro.org>
- <20240828-rust-pl011-v9-7-35579191f17c@linaro.org> <871q284wxk.fsf@draig.linaro.org>
- <dd2ed180-3624-4981-adb7-c78e699048a7@intel.com>
-In-Reply-To: <dd2ed180-3624-4981-adb7-c78e699048a7@intel.com>
-From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-Date: Fri, 30 Aug 2024 09:43:38 +0300
-Message-ID: <CAAjaMXZhvq3qppgEhs5zB-M=hfDFNT993XCUp0ZKPFmVxFXL2Q@mail.gmail.com>
-Subject: Re: [PATCH RESEND v9 7/9] rust: add crate to expose bindings and interfaces
-To: Junjie Mao <junjie.mao@intel.com>
-Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	"open list:ARM SMMU <qemu-arm@nongnu.org>," <qemu-devel@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>, 
-	=?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
-	=?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
-	Thomas Huth <thuth@redhat.com>, =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
-	Pierrick Bouvier <pierrick.bouvier@linaro.org>, 
-	Richard Henderson <richard.henderson@linaro.org>, Gustavo Romero <gustavo.romero@linaro.org>, 
-	Peter Maydell <peter.maydell@linaro.org>, Zhao Liu <zhao1.liu@intel.com>
-Content-Type: multipart/alternative; boundary="000000000000f669bb0620e0e98f"
-X-TUID: 2zzv5kmJdy+U
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2] aspeed: Deprecate the tacoma-bmc machine
+To: Guenter Roeck <linux@roeck-us.net>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>, Joel Stanley <joel@jms.id.au>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+References: <20240625070830.492251-1-clg@redhat.com>
+ <4e04f930-e7af-4084-99a8-2a3139e2bf43@roeck-us.net>
+ <5fb7342b-fa67-4cb2-b6fd-2241b7b76d03@redhat.com>
+ <f70cb39f-3567-4322-b1c4-1bc5991d91fa@roeck-us.net>
+ <8d1fd867-647b-4827-a2b2-a239618a7743@redhat.com>
+ <014b83a8-d733-442b-ba33-a24c35e46f3f@roeck-us.net>
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
+In-Reply-To: <014b83a8-d733-442b-ba33-a24c35e46f3f@roeck-us.net>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US, fr
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 2Vkmaw4sEUHN
 
---000000000000f669bb0620e0e98f
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-=F0=9F=8E=B1
-
-On Fri, 30 Aug 2024, 04:19 Junjie Mao, <junjie.mao@intel.com> wrote:
-
-> On 8/28/2024 9:08 PM, Alex Benn=C3=A9e wrote:
-> > Manos Pitsidianakis <manos.pitsidianakis@linaro.org> writes:
-> >
-> >> Add rust/qemu-api, which exposes rust-bindgen generated FFI bindings a=
-nd
-> >> provides some declaration macros for symbols visible to the rest of
-> >> QEMU.
-> >
-> > As mentioned on IRC I'm hitting a compilation error that bisects to thi=
-s
-> > commit:
-> >
-> >    [148/1010] Generating bindings for Rust rustmod-bindgen-rust_wrapper=
-.h
-> >    FAILED: bindings.rs
-> >    /home/alex/.cargo/bin/bindgen ../../rust/wrapper.h --output
-> /home/alex/lsrc/qemu.git/builds/rust/bindings.rs --disable-header-comment
-> --raw-line '// @generated' --ctypes-prefix core::ffi --formatter rustfmt
-> --generate-block --generate-cstr --impl-debug --merge-extern-blocks
-> --no-doc-comments --use-core --with-derive-default --allowlist-file
-> '/home/alex/lsrc/qemu.git/include/.*' --allowlist-file
-> '/home/alex/lsrc/qemu.git/.*' --allowlist-file
-> '/home/alex/lsrc/qemu.git/builds/rust/.*' -- -I/home/alex/lsrc/qemu.git/.
-> -I/home/alex/lsrc/qemu.git/builds/rust/. -I/home/alex/lsrc/qemu.git/inclu=
-de
-> -I/home/alex/lsrc/qemu.git/builds/rust/include -I/usr/include/capstone
-> -I/usr/include/p11-kit-1 -I/usr/include/pixman-1 -I/usr/include/libpng16
-> -I/usr/include/spice-server -I/usr/include/spice-1 -I/usr/include/spice-1
-> -DSTRUCT_IOVEC_DEFINED -I/usr/include/libusb-1.0 -I/usr/include/SDL2
-> -D_REENTRANT -I/usr/include/glib-2.0
-> -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -pthread
-> -I/usr/include/libmount -I/usr/include/blkid -I/usr/include/gio-unix-2.0
-> -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include
-> -pthread -I/usr/include/libmount -I/usr/include/blkid -I/usr/include/slir=
-p
-> -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include
-> -DNCURSES_WIDECHAR=3D1 -D_DEFAULT_SOURCE -D_XOPEN_SOURCE=3D600
-> -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include
-> -I/usr/include/gtk-3.0 -I/usr/include/pango-1.0 -I/usr/include/glib-2.0
-> -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/harfbuzz
-> -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/libmount
-> -I/usr/include/blkid -I/usr/include/fribidi -I/usr/include/cairo
-> -I/usr/include/pixman-1 -I/usr/include/gdk-pixbuf-2.0
-> -I/usr/include/x86_64-linux-gnu -I/usr/include/gio-unix-2.0
-> -I/usr/include/atk-1.0 -I/usr/include/at-spi2-atk/2.0
-> -I/usr/include/at-spi-2.0 -I/usr/include/dbus-1.0
-> -I/usr/lib/x86_64-linux-gnu/dbus-1.0/include -pthread
-> -I/usr/include/gtk-3.0 -I/usr/include/pango-1.0 -I/usr/include/glib-2.0
-> -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/harfbuzz
-> -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/libmount
-> -I/usr/include/blkid -I/usr/include/fribidi -I/usr/include/cairo
-> -I/usr/include/pixman-1 -I/usr/include/gdk-pixbuf-2.0
-> -I/usr/include/x86_64-linux-gnu -I/usr/include/gio-unix-2.0
-> -I/usr/include/atk-1.0 -I/usr/include/at-spi2-atk/2.0
-> -I/usr/include/at-spi-2.0 -I/usr/include/dbus-1.0
-> -I/usr/lib/x86_64-linux-gnu/dbus-1.0/include -pthread
-> -I/usr/include/vte-2.91 -I/usr/include/glib-2.0
-> -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/libmount
-> -I/usr/include/blkid -I/usr/include/pango-1.0 -I/usr/include/harfbuzz
-> -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/fribidi
-> -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/gtk-3.0
-> -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/x86_64-linux-gnu
-> -I/usr/include/gio-unix-2.0 -I/usr/include/atk-1.0
-> -I/usr/include/at-spi2-atk/2.0 -I/usr/include/at-spi-2.0
-> -I/usr/include/dbus-1.0 -I/usr/lib/x86_64-linux-gnu/dbus-1.0/include
-> -pthread -I/usr/include/glib-2.0
-> -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/spice-server
-> -I/usr/include/spice-1 -I/usr/include/cacard -I/usr/include/glib-2.0
-> -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/nss
-> -I/usr/include/nspr -I/usr/include/PCSC -pthread -D_REENTRANT
-> -I/usr/include/pipewire-0.3 -I/usr/include/spa-0.2 -D_REENTRANT
-> -I/usr/include/p11-kit-1 -I/usr/include/fuse3
-> -I/usr/include/x86_64-linux-gnu -D_FILE_OFFSET_BITS=3D64
-> -D__USE_FILE_OFFSET64 -D__USE_LARGEFILE64 -DUSE_POSIX_ACLS=3D1
-> -I/usr/include/uuid -I/usr/include/glib-2.0
-> -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/p11-kit-1
-> -I/usr/include/p11-kit-1 -I/usr/include/p11-kit-1 -I/usr/include/p11-kit-=
-1
-> -D_GNU_SOURCE -D_FILE_OFFSET_BITS=3D64 -D_LARGEFILE_SOURCE
-> -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include
-> -std=3Dgnu11 -MD -MQ ../../rust/wrapper.h -MF wrapper.h.d
-> >    /usr/include/liburing.h:296:3: error: use of undeclared identifier
-> 'memory_order_release'
-> >    /usr/include/liburing.h:1080:11: error: use of undeclared identifier
-> 'memory_order_acquire'
-> >    /usr/include/liburing.h:1116:9: error: use of undeclared identifier
-> 'memory_order_acquire'
-> >    /usr/include/liburing.h:1125:9: error: use of undeclared identifier
-> 'memory_order_relaxed'
-> >    /usr/include/liburing.h:1161:2: error: use of undeclared identifier
-> 'memory_order_relaxed'
-> >    /usr/include/liburing.h:1197:19: error: use of undeclared identifier
-> 'memory_order_acquire'
-> >    /usr/include/liburing.h:1267:10: error: use of undeclared identifier
-> 'memory_order_relaxed'
-> >    /usr/include/liburing.h:1269:10: error: use of undeclared identifier
-> 'memory_order_acquire'
-> >    /usr/include/liburing.h:1320:2: error: use of undeclared identifier
-> 'memory_order_release'
-> >    panicked at
-> /home/alex/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bindgen-c=
-li-0.69.4/main.rs:52
-> :36:
-> >    Unable to generate bindings:
-> ClangDiagnostic("/usr/include/liburing.h:296:3: error: use of undeclared
-> identifier 'memory_order_release'\n/usr/include/liburing.h:1080:11: error=
-:
-> use of undeclared identifier
-> 'memory_order_acquire'\n/usr/include/liburing.h:1116:9: error: use of
-> undeclared identifier
-> 'memory_order_acquire'\n/usr/include/liburing.h:1125:9: error: use of
-> undeclared identifier
-> 'memory_order_relaxed'\n/usr/include/liburing.h:1161:2: error: use of
-> undeclared identifier
-> 'memory_order_relaxed'\n/usr/include/liburing.h:1197:19: error: use of
-> undeclared identifier
-> 'memory_order_acquire'\n/usr/include/liburing.h:1267:10: error: use of
-> undeclared identifier
-> 'memory_order_relaxed'\n/usr/include/liburing.h:1269:10: error: use of
-> undeclared identifier
-> 'memory_order_acquire'\n/usr/include/liburing.h:1320:2: error: use of
-> undeclared identifier 'memory_order_release'\n")
->
-> Those missing identifiers should have been defined in stdatomic.h which i=
-s
-> part
-> of C11. You can check if that header exists under the default header
-> search
-> paths (which is listed by clang -E -Wp,-v -) and whether that file
-> declares
-> those enum constants. If so, you can further check whether there is any
-> stdatomic.h elsewhere that shadows the standard one.
->
-
-Indeed. These are in the compiler's own header files. I had problems on
-Debian when using clang-14 and clang-15 but I got rid of them after I
-upgraded to newer versions. If anyone can confirm/reproduce this we can add
-a meson warning check?
+Hello,
 
 
->
-> > And I wasn't able to force the newer clang with:
-> >
-> >    env CLANG_PATH=3D/usr/bin/clang-15 ../../configure '--disable-docs'
-> --target-list=3Daarch64-softmmu --enable-rust
-> >
-> > So if clang is required for bindgen we at least need:
-> >
-> >    - to probe for clang (separately from --cc)
-> >    - allow the user to override the default
-> >    - pass the clang we want to use somehow to bindgen
-> >
-> > Briefly looking at the bindgen code I see:
-> >
-> >    fn main() {
-> >        let out_dir =3D PathBuf::from(env::var("OUT_DIR").unwrap());
-> >
-> >        let mut dst =3D
-> >
-> File::create(Path::new(&out_dir).join("host-target.txt")).unwrap();
-> >        dst.write_all(env::var("TARGET").unwrap().as_bytes())
-> >            .unwrap();
-> >
-> >        // On behalf of clang_sys, rebuild ourselves if important
-> configuration
-> >        // variables change, to ensure that bindings get rebuilt if the
-> >        // underlying libclang changes.
-> >        println!("cargo:rerun-if-env-changed=3DLLVM_CONFIG_PATH");
-> >        println!("cargo:rerun-if-env-changed=3DLIBCLANG_PATH");
-> >        println!("cargo:rerun-if-env-changed=3DLIBCLANG_STATIC_PATH");
-> >        println!("cargo:rerun-if-env-changed=3DBINDGEN_EXTRA_CLANG_ARGS"=
-);
-> >        println!(
-> >            "cargo:rerun-if-env-changed=3DBINDGEN_EXTRA_CLANG_ARGS_{}",
-> >            std::env::var("TARGET").unwrap()
-> >        );
-> >        println!(
-> >            "cargo:rerun-if-env-changed=3DBINDGEN_EXTRA_CLANG_ARGS_{}",
-> >            std::env::var("TARGET").unwrap().replace('-', "_")
-> >        );
-> >    }
->
-> This is build.rs which is a build script invoked by cargo. The entry of
-> the
-> bindgen executable is in the bindgen-cli crate.
->
-> ---
-> Best Regards
-> Junjie Mao
->
-> >
-> > So I wonder if this depends on what libclang versions can be found when
-> > cargo builds it? Although if it does it must do so dynamically:
-> >
-> >    $ ldd /home/alex/.cargo/bin/bindgen
-> >            linux-vdso.so.1 (0x00007f7cb43d8000)
-> >            libgcc_s.so.1 =3D> /lib/x86_64-linux-gnu/libgcc_s.so.1
-> (0x00007f7cb438c000)
-> >            libm.so.6 =3D> /lib/x86_64-linux-gnu/libm.so.6
-> (0x00007f7cb42ad000)
-> >            libc.so.6 =3D> /lib/x86_64-linux-gnu/libc.so.6
-> (0x00007f7cb3a1f000)
-> >            /lib64/ld-linux-x86-64.so.2 (0x00007f7cb43da000)
-> >
->
+>>> I solved the problem by adding support for IBM Bonnell (which instantiates
+>>> the TPM chip through its devicetree file, similar to tacoma-bmc) to my local
+>>> copy of qemu. 
+>>
+>> Hmm, did you copy the rainier-bmc machine definition ?
+>>
+> For aspeed_machine_bonnell_class_init(), pretty much yes, since I don't know
+> the actual hardware. For I2C initialization I used the devicetree file.
+> You can find the patch in the master-local or v9.1.0-local branches
+> of my qemu clone at https://github.com/groeck/qemu if you are interested.
 
---000000000000f669bb0620e0e98f
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Oh nice ! Let's merge the IBM Bonnell machine. We can ask IBM to help fixing
+the definitions (strapping). Enabling the PCA9554 is good to have too.
 
-<div dir=3D"auto"><div>=F0=9F=8E=B1<br><br><div class=3D"gmail_quote"><div =
-dir=3D"ltr" class=3D"gmail_attr">On Fri, 30 Aug 2024, 04:19 Junjie Mao, &lt=
-;<a href=3D"mailto:junjie.mao@intel.com">junjie.mao@intel.com</a>&gt; wrote=
-:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.=
-8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">On 8/28/2024 9=
-:08 PM, Alex Benn=C3=A9e wrote:<br>
-&gt; Manos Pitsidianakis &lt;<a href=3D"mailto:manos.pitsidianakis@linaro.o=
-rg" target=3D"_blank" rel=3D"noreferrer">manos.pitsidianakis@linaro.org</a>=
-&gt; writes:<br>
-&gt; <br>
-&gt;&gt; Add rust/qemu-api, which exposes rust-bindgen generated FFI bindin=
-gs and<br>
-&gt;&gt; provides some declaration macros for symbols visible to the rest o=
-f<br>
-&gt;&gt; QEMU.<br>
-&gt; <br>
-&gt; As mentioned on IRC I&#39;m hitting a compilation error that bisects t=
-o this<br>
-&gt; commit:<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 [148/1010] Generating bindings for Rust rustmod-bindgen-r=
-ust_wrapper.h<br>
-&gt;=C2=A0 =C2=A0 FAILED: <a href=3D"http://bindings.rs" rel=3D"noreferrer =
-noreferrer" target=3D"_blank">bindings.rs</a><br>
-&gt;=C2=A0 =C2=A0 /home/alex/.cargo/bin/bindgen ../../rust/wrapper.h --outp=
-ut /home/alex/lsrc/qemu.git/builds/rust/<a href=3D"http://bindings.rs" rel=
-=3D"noreferrer noreferrer" target=3D"_blank">bindings.rs</a> --disable-head=
-er-comment --raw-line &#39;// @generated&#39; --ctypes-prefix core::ffi --f=
-ormatter rustfmt --generate-block --generate-cstr --impl-debug --merge-exte=
-rn-blocks --no-doc-comments --use-core --with-derive-default --allowlist-fi=
-le &#39;/home/alex/lsrc/qemu.git/include/.*&#39; --allowlist-file &#39;/hom=
-e/alex/lsrc/qemu.git/.*&#39; --allowlist-file &#39;/home/alex/lsrc/qemu.git=
-/builds/rust/.*&#39; -- -I/home/alex/lsrc/qemu.git/. -I/home/alex/lsrc/qemu=
-.git/builds/rust/. -I/home/alex/lsrc/qemu.git/include -I/home/alex/lsrc/qem=
-u.git/builds/rust/include -I/usr/include/capstone -I/usr/include/p11-kit-1 =
--I/usr/include/pixman-1 -I/usr/include/libpng16 -I/usr/include/spice-server=
- -I/usr/include/spice-1 -I/usr/include/spice-1 -DSTRUCT_IOVEC_DEFINED -I/us=
-r/include/libusb-1.0 -I/usr/include/SDL2 -D_REENTRANT -I/usr/include/glib-2=
-.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -pthread -I/usr/include/lib=
-mount -I/usr/include/blkid -I/usr/include/gio-unix-2.0 -I/usr/include/glib-=
-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -pthread -I/usr/include/li=
-bmount -I/usr/include/blkid -I/usr/include/slirp -I/usr/include/glib-2.0 -I=
-/usr/lib/x86_64-linux-gnu/glib-2.0/include -DNCURSES_WIDECHAR=3D1 -D_DEFAUL=
-T_SOURCE -D_XOPEN_SOURCE=3D600 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-li=
-nux-gnu/glib-2.0/include -I/usr/include/gtk-3.0 -I/usr/include/pango-1.0 -I=
-/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/i=
-nclude/harfbuzz -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/inc=
-lude/libmount -I/usr/include/blkid -I/usr/include/fribidi -I/usr/include/ca=
-iro -I/usr/include/pixman-1 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/x8=
-6_64-linux-gnu -I/usr/include/gio-unix-2.0 -I/usr/include/atk-1.0 -I/usr/in=
-clude/at-spi2-atk/2.0 -I/usr/include/at-spi-2.0 -I/usr/include/dbus-1.0 -I/=
-usr/lib/x86_64-linux-gnu/dbus-1.0/include -pthread -I/usr/include/gtk-3.0 -=
-I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu=
-/glib-2.0/include -I/usr/include/harfbuzz -I/usr/include/freetype2 -I/usr/i=
-nclude/libpng16 -I/usr/include/libmount -I/usr/include/blkid -I/usr/include=
-/fribidi -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/gdk-pi=
-xbuf-2.0 -I/usr/include/x86_64-linux-gnu -I/usr/include/gio-unix-2.0 -I/usr=
-/include/atk-1.0 -I/usr/include/at-spi2-atk/2.0 -I/usr/include/at-spi-2.0 -=
-I/usr/include/dbus-1.0 -I/usr/lib/x86_64-linux-gnu/dbus-1.0/include -pthrea=
-d -I/usr/include/vte-2.91 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-g=
-nu/glib-2.0/include -I/usr/include/libmount -I/usr/include/blkid -I/usr/inc=
-lude/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/freetype2 -I/usr/incl=
-ude/libpng16 -I/usr/include/fribidi -I/usr/include/cairo -I/usr/include/pix=
-man-1 -I/usr/include/gtk-3.0 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/x=
-86_64-linux-gnu -I/usr/include/gio-unix-2.0 -I/usr/include/atk-1.0 -I/usr/i=
-nclude/at-spi2-atk/2.0 -I/usr/include/at-spi-2.0 -I/usr/include/dbus-1.0 -I=
-/usr/lib/x86_64-linux-gnu/dbus-1.0/include -pthread -I/usr/include/glib-2.0=
- -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/spice-server -=
-I/usr/include/spice-1 -I/usr/include/cacard -I/usr/include/glib-2.0 -I/usr/=
-lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/nss -I/usr/include/nsp=
-r -I/usr/include/PCSC -pthread -D_REENTRANT -I/usr/include/pipewire-0.3 -I/=
-usr/include/spa-0.2 -D_REENTRANT -I/usr/include/p11-kit-1 -I/usr/include/fu=
-se3 -I/usr/include/x86_64-linux-gnu -D_FILE_OFFSET_BITS=3D64 -D__USE_FILE_O=
-FFSET64 -D__USE_LARGEFILE64 -DUSE_POSIX_ACLS=3D1 -I/usr/include/uuid -I/usr=
-/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/inclu=
-de/p11-kit-1 -I/usr/include/p11-kit-1 -I/usr/include/p11-kit-1 -I/usr/inclu=
-de/p11-kit-1 -D_GNU_SOURCE -D_FILE_OFFSET_BITS=3D64 -D_LARGEFILE_SOURCE -I/=
-usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -std=3Dgn=
-u11 -MD -MQ ../../rust/wrapper.h -MF wrapper.h.d<br>
-&gt;=C2=A0 =C2=A0 /usr/include/liburing.h:296:3: error: use of undeclared i=
-dentifier &#39;memory_order_release&#39;<br>
-&gt;=C2=A0 =C2=A0 /usr/include/liburing.h:1080:11: error: use of undeclared=
- identifier &#39;memory_order_acquire&#39;<br>
-&gt;=C2=A0 =C2=A0 /usr/include/liburing.h:1116:9: error: use of undeclared =
-identifier &#39;memory_order_acquire&#39;<br>
-&gt;=C2=A0 =C2=A0 /usr/include/liburing.h:1125:9: error: use of undeclared =
-identifier &#39;memory_order_relaxed&#39;<br>
-&gt;=C2=A0 =C2=A0 /usr/include/liburing.h:1161:2: error: use of undeclared =
-identifier &#39;memory_order_relaxed&#39;<br>
-&gt;=C2=A0 =C2=A0 /usr/include/liburing.h:1197:19: error: use of undeclared=
- identifier &#39;memory_order_acquire&#39;<br>
-&gt;=C2=A0 =C2=A0 /usr/include/liburing.h:1267:10: error: use of undeclared=
- identifier &#39;memory_order_relaxed&#39;<br>
-&gt;=C2=A0 =C2=A0 /usr/include/liburing.h:1269:10: error: use of undeclared=
- identifier &#39;memory_order_acquire&#39;<br>
-&gt;=C2=A0 =C2=A0 /usr/include/liburing.h:1320:2: error: use of undeclared =
-identifier &#39;memory_order_release&#39;<br>
-&gt;=C2=A0 =C2=A0 panicked at /home/alex/.cargo/registry/src/index.crates.i=
-o-6f17d22bba15001f/bindgen-cli-0.69.4/main.rs:52:36:<br>
-&gt;=C2=A0 =C2=A0 Unable to generate bindings: ClangDiagnostic(&quot;/usr/i=
-nclude/liburing.h:296:3: error: use of undeclared identifier &#39;memory_or=
-der_release&#39;\n/usr/include/liburing.h:1080:11: error: use of undeclared=
- identifier &#39;memory_order_acquire&#39;\n/usr/include/liburing.h:1116:9:=
- error: use of undeclared identifier &#39;memory_order_acquire&#39;\n/usr/i=
-nclude/liburing.h:1125:9: error: use of undeclared identifier &#39;memory_o=
-rder_relaxed&#39;\n/usr/include/liburing.h:1161:2: error: use of undeclared=
- identifier &#39;memory_order_relaxed&#39;\n/usr/include/liburing.h:1197:19=
-: error: use of undeclared identifier &#39;memory_order_acquire&#39;\n/usr/=
-include/liburing.h:1267:10: error: use of undeclared identifier &#39;memory=
-_order_relaxed&#39;\n/usr/include/liburing.h:1269:10: error: use of undecla=
-red identifier &#39;memory_order_acquire&#39;\n/usr/include/liburing.h:1320=
-:2: error: use of undeclared identifier &#39;memory_order_release&#39;\n&qu=
-ot;)<br>
-<br>
-Those missing identifiers should have been defined in stdatomic.h which is =
-part <br>
-of C11. You can check if that header exists under the default header search=
- <br>
-paths (which is listed by clang -E -Wp,-v -) and whether that file declares=
- <br>
-those enum constants. If so, you can further check whether there is any <br=
->
-stdatomic.h elsewhere that shadows the standard one.<br></blockquote></div>=
-</div><div dir=3D"auto"><br></div><div dir=3D"auto">Indeed. These are in th=
-e compiler&#39;s own header files. I had problems on Debian when using clan=
-g-14 and clang-15 but I got rid of them after I upgraded to newer versions.=
- If anyone can confirm/reproduce this we can add a meson warning check?</di=
-v><div dir=3D"auto"><br></div><div dir=3D"auto"><br></div><div dir=3D"auto"=
-><div class=3D"gmail_quote"><blockquote class=3D"gmail_quote" style=3D"marg=
-in:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1e=
-x">
-&gt; <br>
-&gt; And I wasn&#39;t able to force the newer clang with:<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 env CLANG_PATH=3D/usr/bin/clang-15 ../../configure &#39;-=
--disable-docs&#39; --target-list=3Daarch64-softmmu --enable-rust<br>
-&gt; <br>
-&gt; So if clang is required for bindgen we at least need:<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 - to probe for clang (separately from --cc)<br>
-&gt;=C2=A0 =C2=A0 - allow the user to override the default<br>
-&gt;=C2=A0 =C2=A0 - pass the clang we want to use somehow to bindgen<br>
-&gt; <br>
-&gt; Briefly looking at the bindgen code I see:<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 fn main() {<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 let out_dir =3D PathBuf::from(env::var(&quo=
-t;OUT_DIR&quot;).unwrap());<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 let mut dst =3D<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 File::create(Path::new(&amp;o=
-ut_dir).join(&quot;host-target.txt&quot;)).unwrap();<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 dst.write_all(env::var(&quot;TARGET&quot;).=
-unwrap().as_bytes())<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 .unwrap();<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 // On behalf of clang_sys, rebuild ourselve=
-s if important configuration<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 // variables change, to ensure that binding=
-s get rebuilt if the<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 // underlying libclang changes.<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 println!(&quot;cargo:rerun-if-env-changed=
-=3DLLVM_CONFIG_PATH&quot;);<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 println!(&quot;cargo:rerun-if-env-changed=
-=3DLIBCLANG_PATH&quot;);<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 println!(&quot;cargo:rerun-if-env-changed=
-=3DLIBCLANG_STATIC_PATH&quot;);<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 println!(&quot;cargo:rerun-if-env-changed=
-=3DBINDGEN_EXTRA_CLANG_ARGS&quot;);<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 println!(<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &quot;cargo:rerun-if-env-chan=
-ged=3DBINDGEN_EXTRA_CLANG_ARGS_{}&quot;,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 std::env::var(&quot;TARGET&qu=
-ot;).unwrap()<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 );<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 println!(<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &quot;cargo:rerun-if-env-chan=
-ged=3DBINDGEN_EXTRA_CLANG_ARGS_{}&quot;,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 std::env::var(&quot;TARGET&qu=
-ot;).unwrap().replace(&#39;-&#39;, &quot;_&quot;)<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 );<br>
-&gt;=C2=A0 =C2=A0 }<br>
-<br>
-This is <a href=3D"http://build.rs" rel=3D"noreferrer noreferrer" target=3D=
-"_blank">build.rs</a> which is a build script invoked by cargo. The entry o=
-f the <br>
-bindgen executable is in the bindgen-cli crate.<br>
-<br>
----<br>
-Best Regards<br>
-Junjie Mao<br>
-<br>
-&gt; <br>
-&gt; So I wonder if this depends on what libclang versions can be found whe=
-n<br>
-&gt; cargo builds it? Although if it does it must do so dynamically:<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 $ ldd /home/alex/.cargo/bin/bindgen<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 linux-vdso.so.1 (0x00007f7cb4=
-3d8000)<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 libgcc_s.so.1 =3D&gt; /lib/x8=
-6_64-linux-gnu/libgcc_s.so.1 (0x00007f7cb438c000)<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 libm.so.6 =3D&gt; /lib/x86_64=
--linux-gnu/libm.so.6 (0x00007f7cb42ad000)<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 libc.so.6 =3D&gt; /lib/x86_64=
--linux-gnu/libc.so.6 (0x00007f7cb3a1f000)<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 /lib64/ld-linux-x86-64.so.2 (=
-0x00007f7cb43da000)<br>
-&gt; <br>
-</blockquote></div></div></div>
+Why are you keeping the tmp105 changes ? LGTM. Same for the new tmp models,
+they could be upstreamed.
 
---000000000000f669bb0620e0e98f--
+
+Thanks,
+
+C.
+

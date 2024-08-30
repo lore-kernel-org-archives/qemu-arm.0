@@ -1,121 +1,94 @@
-Received: by 2002:a17:504:3a8f:b0:1be9:327d:8ee3 with SMTP id g15csp165488njf;
-        Fri, 30 Aug 2024 01:05:48 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWtfieIgeD1qcFZSefECMqf7MdCaQcCMiOinx/iMyX7j7c9O8C77QZnZ3IUUxii+9NjRzB/3GwJnWoYnQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IG8lC/o/FKgXIK7vfsm/mS0RcrOg4d5hFJRqryCPS6YJ9tKGTOTPWXgI3ma1k7TwX71bdKI
-X-Received: by 2002:a05:6102:50a2:b0:493:c81c:3148 with SMTP id ada2fe7eead31-49a5ae7de80mr6065028137.0.1725005148556;
-        Fri, 30 Aug 2024 01:05:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1725005148; cv=none;
+Received: by 2002:a17:504:3a8f:b0:1be9:327d:8ee3 with SMTP id g15csp189337njf;
+        Fri, 30 Aug 2024 02:53:05 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVcLzumTqp95SCfmtM6MIJOilX4z985nqcg/sLTz1k5b09CxTMdkFl7/HN+CZSbCF+1tCKPSeclVOMqXw==@linaro.org
+X-Google-Smtp-Source: AGHT+IE9vRFkpG/ftziaQBL4c9lri/nh8i4R43IpBmFMpHzCzfbosKwmj7Pp8oyBUGl7TyNJYxzd
+X-Received: by 2002:a05:6214:843:b0:6c3:4736:17d1 with SMTP id 6a1803df08f44-6c34736192fmr22768896d6.10.1725011585621;
+        Fri, 30 Aug 2024 02:53:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1725011585; cv=none;
         d=google.com; s=arc-20160816;
-        b=T3130J5aANMXwlHJsVP8+tofkU/sVTg8lU7PW5BZw74Uw3zNTlMa/zxC2ObaztqNdP
-         d69z8/a7R9SMopYTuhv2gcQMAwSySbP8gVJwEQVPaq3qDKGWDB8J7GHatxaX80DlH/Hz
-         DtsmBrfK/5QTZy8pb8x1TrfuR9Pu4lkb+CloUjiOI8XD/+OhgY00fzcWfGTJxmgPIwtU
-         WRkVjMXwYeArgIW5tBKfPgHP4Er21G/ZlbxK/MWGHo9ac5QmtmGFvhXxhv3w7JO2YPdI
-         edihI5CNlo5XtHTu4Z4lT0puCyDunAos5mpqpHgT7l4AvExB4kQpepjQIIZZSMkpyZEI
-         sRtg==
+        b=o2C2Sax9FxaXzL6JZ5uoHParROzgxKUKuq8II8zz+10QnPxVprs7ctPNyZejqKmbew
+         dpGBsTkjGy8hkhfH5/LG/mE+593MDUwSgwVZAf0vNKUwfNEMvsQcgIG/wBwjNeewnh1I
+         upGnuQSNFHu3lFiLve59dHuvb5VO6FljxuYNQgka5dFBMUETS97bI6WcrA5Qec+abur8
+         WKrrZPIxa7BPP8AiM/wqy8rQYIABgtfvoTmPx28VxixJKNwO3I9lHvum+d+Qch8kMks4
+         2EogoYzHnV9jsXYd3IsVITBJRXXSqtT2j6pPRF8JrsEFKm2RBOc6+fRY0BUjuizicWwx
+         DwTw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=MC7aFzaY1FZaEi2O4l4eCXSkJoXGvCzyVJYM3mZE2S0=;
-        fh=Xnoas6Yryhjazj8yFLcXWR/roHDesGTvQtbStQguWhk=;
-        b=Ab2bRt0gADrF7dOK1WEOk9cNSlObTeC+IRQqSFuBvTAsb3OL1jOfPuJoKmwTtLnhHl
-         mndAr58f1oi4GlQiwkuKeNRoZ2jNUDLKJ50ru0Cc0nwhmS4FR//Vgpct+fetCDikgTnL
-         GnaQy5NlpZZzkeG5UWASkKwH6jvdsaR6MbIreton4jTp/c9BS6mN5mGzV7p8klh4UwO7
-         uF43I+E5PMMew3eEojNrs2KgWattbMO2Ojibeu5knLQCsIbqZoVkh5SM2u6B++fHPgtQ
-         QgHRps6/jcnRA9vGLopyLXpl1KElkkluAj5y9rejY3VAC3xsdkZIt8ZyfpAImPvBFEf5
-         EMpQ==;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:subject:cc:to:date;
+        bh=As6a5y41WHT7VYdMQTxfRQi5P7isXQ946Nd2nYyq1Lc=;
+        fh=n1pNRimLHi8i/G9YmXY8rIVcJD5z/xUgfM0fFR0QWwM=;
+        b=N46o2dFwc6ppbnYSDuc9E4118HzfEjR8zivMKEJzqn0/6REYTDSZ7tx9Tjjiw2IPbd
+         h1IyOJbPYaeiHdgA+83wL8OgVjhV77Nhg9ekTTTXgg4nc5uV+t9tmSPMlhW5qIzw1MzF
+         4TiQ+AzhBwO8JW31cxcur/wvFLdBZiExUtIZNOPjyVnt+EZzhv9nJYe5X48ZbGjXk2G3
+         fPX0Ohu54Zjs8uLC5KE7SE+trrgUJnfOqsAnZtn6Yrt9J3RXQ8QGiV/Fps1kjAImROq6
+         08xqniq/jOw22WTLQoTYPTaAAKdRAy0vrFAcQvzNqPqSKbYLzudnqB1DQ2yRgAGrh2h3
+         5T8A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=It8HHJHL;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7a806c1880dsi337233385a.44.2024.08.30.01.05.48
+        by mx.google.com with ESMTPS id 6a1803df08f44-6c340ca35a3si35475066d6.360.2024.08.30.02.53.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 30 Aug 2024 01:05:48 -0700 (PDT)
+        Fri, 30 Aug 2024 02:53:05 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=It8HHJHL;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sjwdM-000241-UA; Fri, 30 Aug 2024 04:05:30 -0400
+	id 1sjyJK-0005Oi-W6; Fri, 30 Aug 2024 05:52:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1sjwdL-00020Y-8s; Fri, 30 Aug 2024 04:05:27 -0400
-Received: from mail-lf1-x136.google.com ([2a00:1450:4864:20::136])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1sjwdJ-0001Rg-Cg; Fri, 30 Aug 2024 04:05:27 -0400
-Received: by mail-lf1-x136.google.com with SMTP id
- 2adb3069b0e04-5353cd2fa28so1939943e87.3; 
- Fri, 30 Aug 2024 01:05:24 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1725005123; x=1725609923; darn=nongnu.org;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=MC7aFzaY1FZaEi2O4l4eCXSkJoXGvCzyVJYM3mZE2S0=;
- b=It8HHJHLWH5jW1F1LCnbfkyXuSNDWGx/Vf8g/sVHgaKN3+gNEuqvR5eq/GIkdnOXo5
- 91mTxIme/FeDzBEKkc+4yrovyyGkSeFbn64fLUmETzaWX5zmIcE8AZhvcDuEsxvfhpYn
- zCk06r40v/3MJuTfCG5Tg2H+++yzWs329QoTJm4WwU4PDXJHZGS35DROGgSQV76ubqjI
- urxpkorCOWk/rKMmQhS3zqoTlblWPjbvfui3JEd218ialQxi0AEQoEDpMWggExc5Zrlb
- 4CdsNs2KZo5KHP2Zs0U3V8SKsU7qtEviVC38CycvvFhw21+EWxk9WTh8GRxqpwL8eZGx
- 2zpQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1725005123; x=1725609923;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=MC7aFzaY1FZaEi2O4l4eCXSkJoXGvCzyVJYM3mZE2S0=;
- b=jjhJj0h2qMZ9Wrb9ss1aLkMnhHzfNogSiNhQmtwH3gbJ+cUAUZ+Chzavgn4dGOZ4Ag
- 3gzNwlvQNefaybdRzTPujdR0uwfcIlrI6rCqrjCp0Qs2HCenaGx9BZipx69TflRZEyJg
- pT+DScfHVORJ9ys5lYr9X2XxjxDnyS3Q6IspbMpAhTiDwzSWrKP56Y6ak9oe1jIdHTS4
- n2UzaCilsm6+9QGybAP6wOFudNrVJm8IuoaJQAgjmeIyd9rsthY/WQlT2DyRrMauztTL
- oo7z/MMMYhQVseClzpwRU4LimXXwkxtae/UgJusUFoGDDoqw18EHwYoQqLIbLArPDUUC
- d+Jw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVk2Ii/+VPs1oxekI13BbJgV0xrrhOLD8zd5UD8AybLGsvvh/p+b40wJExJhfSfH83dlwAprqDzq2ARBw==@nongnu.org,
- AJvYcCXissrGKWJbUSOlSnwpPf6RdGVgfiuqwmYvG2ski0RZLB+6E3PzMKwIFMjsvFh3WdAxtzz/1kEqlA==@nongnu.org
-X-Gm-Message-State: AOJu0Yx6wYmvEruYtzbRy0idY/Dnn4Y6uYFd6pj7gE5CyKK2yw+BhuED
- cmVG3xErokE1ZeraR8aZ0w/KA6pTVmR7hK1jqXEba3TynnWnv1rZ
-X-Received: by 2002:a05:6512:3b0b:b0:530:aa82:a50a with SMTP id
- 2adb3069b0e04-53546ba0471mr890486e87.45.1725005122066; 
- Fri, 30 Aug 2024 01:05:22 -0700 (PDT)
-Received: from gmail.com (213-67-3-247-no600.tbcn.telia.com. [213.67.3.247])
- by smtp.gmail.com with ESMTPSA id
- 2adb3069b0e04-535408412a0sm479985e87.192.2024.08.30.01.05.20
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 30 Aug 2024 01:05:20 -0700 (PDT)
-Date: Fri, 30 Aug 2024 10:05:19 +0200
-From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Sebastian Huber <sebastian.huber@embedded-brains.de>,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- Alistair Francis <alistair@alistair23.me>
-Subject: Re: [PATCH] hw/arm/xilinx_zynq: Enable Security Extensions
-Message-ID: <ZtF9P_QtnH1nAYuu@zapote>
-References: <20240828005019.57705-1-sebastian.huber@embedded-brains.de>
- <CAFEAcA-p+CBeKTgH-YXzrATKDpwG5iY+A3WGaVkbEeHCXxTzug@mail.gmail.com>
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1sjyJH-0005Nf-Tl; Fri, 30 Aug 2024 05:52:52 -0400
+Received: from frasgout.his.huawei.com ([185.176.79.56])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1sjyJE-00060r-Rb; Fri, 30 Aug 2024 05:52:51 -0400
+Received: from mail.maildlp.com (unknown [172.18.186.231])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4WwCz8038Hz6K5q9;
+ Fri, 30 Aug 2024 17:49:08 +0800 (CST)
+Received: from lhrpeml500005.china.huawei.com (unknown [7.191.163.240])
+ by mail.maildlp.com (Postfix) with ESMTPS id A1083140736;
+ Fri, 30 Aug 2024 17:52:31 +0800 (CST)
+Received: from localhost (10.203.177.66) by lhrpeml500005.china.huawei.com
+ (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Fri, 30 Aug
+ 2024 10:52:31 +0100
+Date: Fri, 30 Aug 2024 10:52:30 +0100
+To: Yuquan Wang <wangyuquan1236@phytium.com.cn>
+CC: <quic_llindhol@quicinc.com>, <peter.maydell@linaro.org>,
+ <marcin.juszkiewicz@linaro.org>, <qemu-devel@nongnu.org>,
+ <linux-cxl@vger.kernel.org>, <qemu-arm@nongnu.org>,
+ <chenbaozi@phytium.com.cn>, <wangyinfeng@phytium.com.cn>,
+ <shuyiqi@phytium.com.cn>
+Subject: Re: [RFC PATCH 1/2] hw/arm/sbsa-ref: Enable CXL Host Bridge by pxb-cxl
+Message-ID: <20240830105230.00002043@Huawei.com>
+In-Reply-To: <20240830041557.600607-2-wangyuquan1236@phytium.com.cn>
+References: <20240830041557.600607-1-wangyuquan1236@phytium.com.cn>
+ <20240830041557.600607-2-wangyuquan1236@phytium.com.cn>
+Organization: Huawei Technologies Research and Development (UK) Ltd.
+X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAFEAcA-p+CBeKTgH-YXzrATKDpwG5iY+A3WGaVkbEeHCXxTzug@mail.gmail.com>
-Received-SPF: pass client-ip=2a00:1450:4864:20::136;
- envelope-from=edgar.iglesias@gmail.com; helo=mail-lf1-x136.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+Content-Type: text/plain; charset="US-ASCII"
+Content-Transfer-Encoding: quoted-printable
+X-Originating-IP: [10.203.177.66]
+X-ClientProxiedBy: lhrpeml500001.china.huawei.com (7.191.163.213) To
+ lhrpeml500005.china.huawei.com (7.191.163.240)
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H2=-0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -129,79 +102,204 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Jonathan Cameron <Jonathan.Cameron@Huawei.com>
+From:  Jonathan Cameron via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: XlLH0aoY8TRN
+X-TUID: RFcmcnhAdmgG
 
-On Thu, Aug 29, 2024 at 01:50:02PM +0100, Peter Maydell wrote:
-> On Wed, 28 Aug 2024 at 01:51, Sebastian Huber
-> <sebastian.huber@embedded-brains.de> wrote:
-> >
-> > The system supports the Security Extensions (core and GIC).  This change is
-> > necessary to run tests which pass on the real hardware.
-> >
-> > Signed-off-by: Sebastian Huber <sebastian.huber@embedded-brains.de>
-> 
-> (Added the maintainers to cc.)
-> 
-> Does the system have any secure-only devices, RAM, etc?
+On Fri, 30 Aug 2024 12:15:56 +0800
+Yuquan Wang <wangyuquan1236@phytium.com.cn> wrote:
 
-Yes, on real HW there are but I don't think we've modelled any of it yet.
-There's TZ both on the SoC and also ability to create FPGA logic that
-can issue secure/non-secure transactions. Here's an overview:
-https://docs.amd.com/v/u/en-US/ug1019-zynq-trustzone
+> The memory layout places 1M space for 16 host bridge register regions
+> in the sbsa-ref memmap. In addition, this creates a default pxb-cxl
+> (bus_nr=3D0xfe) bridge with one cxl-rp on sbsa-ref.
 
-The primary use-case for the upstream Zynq-7000 QEMU models has historically
-been to run the Open Source SW stack from Linux (some times from u-boot)
-and up. It's important that we don't break that.
+If you are only supporting 1 host bridge you could reduce the space to just
+fit that?
 
-So as long as we add additional support without breaking direct Linux
-boots, I think it's OK to incrementally enable missing pieces even
-if there's not yet coherent support for firmware boot.
+=46rom the command line example and code here it seems the pxb instances are =
+hard
+coded so you don't need to support the flexibility I needed for virt.
 
-In this case, IIUC, when doing direct Linux boot, TYPE_ARM_LINUX_BOOT_IF
-will take care of the GIC setup for us.
+Otherwise, just superficial code comments inline.
+Fixed setups are definitely easier to support :)
 
-> 
-> How much testing have you done with this change? (The main
-> reason we disabled has-el3 on this board back in 2014 was
-> as a backwards-compatibility thing when we added EL3 support
-> to the CPU model -- we didn't have a ton of images for the
-> board so we erred on the safe side of not changing the
-> behaviour to avoid potentially breaking existing guest code.)
+Jonathan
 
 
-I tried this patch on a couple of my images and it works fine for me!
+>=20
+> Signed-off-by: Yuquan Wang <wangyuquan1236@phytium.com.cn>
+> ---
+>  hw/arm/sbsa-ref.c | 54 ++++++++++++++++++++++++++++++++++++++++++++---
+>  1 file changed, 51 insertions(+), 3 deletions(-)
+>=20
+> diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
+> index ae37a92301..dc924d181e 100644
+> --- a/hw/arm/sbsa-ref.c
+> +++ b/hw/arm/sbsa-ref.c
+> @@ -41,7 +41,10 @@
+>  #include "hw/intc/arm_gicv3_common.h"
+>  #include "hw/intc/arm_gicv3_its_common.h"
+>  #include "hw/loader.h"
+> +#include "hw/pci/pci_bridge.h"
+> +#include "hw/pci/pci_bus.h"
+>  #include "hw/pci-host/gpex.h"
+> +#include "hw/pci-bridge/pci_expander_bridge.h"
+>  #include "hw/qdev-properties.h"
+>  #include "hw/usb.h"
+>  #include "hw/usb/xhci.h"
+> @@ -52,6 +55,8 @@
+>  #include "qom/object.h"
+>  #include "target/arm/cpu-qom.h"
+>  #include "target/arm/gtimer.h"
+> +#include "hw/cxl/cxl.h"
+> +#include "hw/cxl/cxl_host.h"
 
-Reviewed-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
-Tested-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
+Headers look to be alphabetical order.
+
+> =20
+>  #define RAMLIMIT_GB 8192
+>  #define RAMLIMIT_BYTES (RAMLIMIT_GB * GiB)
+> @@ -94,6 +99,7 @@ enum {
+>      SBSA_SECURE_MEM,
+>      SBSA_AHCI,
+>      SBSA_XHCI,
+> +    SBSA_CXL_HOST,
+>  };
+> =20
+>  struct SBSAMachineState {
+> @@ -105,6 +111,9 @@ struct SBSAMachineState {
+>      int psci_conduit;
+>      DeviceState *gic;
+>      PFlashCFI01 *flash[2];
+> +    CXLState cxl_devices_state;
+> +    PCIBus *bus;
+
+Lot of buses in a system, I'd call the pcibus
+or similar. However, see below - I don't think
+it is necessary.
 
 
+> +    PCIBus *cxlbus;
+>  };
+> =20
+>  #define TYPE_SBSA_MACHINE   MACHINE_TYPE_NAME("sbsa-ref")
+> @@ -132,6 +141,8 @@ static const MemMapEntry sbsa_ref_memmap[] =3D {
+>      /* Space here reserved for more SMMUs */
+>      [SBSA_AHCI] =3D               { 0x60100000, 0x00010000 },
+>      [SBSA_XHCI] =3D               { 0x60110000, 0x00010000 },
+> +    /* 1M CXL Host Bridge Registers space (64KiB * 16) */
+> +    [SBSA_CXL_HOST] =3D           { 0x60120000, 0x00100000 },
 
-> 
-> > ---
-> >  hw/arm/xilinx_zynq.c | 8 --------
-> >  1 file changed, 8 deletions(-)
-> >
-> > diff --git a/hw/arm/xilinx_zynq.c b/hw/arm/xilinx_zynq.c
-> > index 3c56b9abe1..37c234f5ab 100644
-> > --- a/hw/arm/xilinx_zynq.c
-> > +++ b/hw/arm/xilinx_zynq.c
-> > @@ -219,14 +219,6 @@ static void zynq_init(MachineState *machine)
-> >      for (n = 0; n < smp_cpus; n++) {
-> >          Object *cpuobj = object_new(machine->cpu_type);
-> >
-> > -        /*
-> > -         * By default A9 CPUs have EL3 enabled.  This board does not currently
-> > -         * support EL3 so the CPU EL3 property is disabled before realization.
-> > -         */
-> > -        if (object_property_find(cpuobj, "has_el3")) {
-> > -            object_property_set_bool(cpuobj, "has_el3", false, &error_fatal);
-> > -        }
-> > -
-> >          object_property_set_int(cpuobj, "midr", ZYNQ_BOARD_MIDR,
-> >                                  &error_fatal);
-> >          object_property_set_int(cpuobj, "reset-cbar", MPCORE_PERIPHBASE,
-> 
-> thanks
-> -- PMM
+As below, can just leave space for however many you are creating.
+
+>      /* Space here reserved for other devices */
+>      [SBSA_PCIE_PIO] =3D           { 0x7fff0000, 0x00010000 },
+>      /* 32-bit address PCIE MMIO space */
+> @@ -631,6 +642,26 @@ static void create_smmu(const SBSAMachineState *sms,=
+ PCIBus *bus)
+>      }
+>  }
+> =20
+> +static void create_pxb_cxl(SBSAMachineState *sms)
+> +{
+> +    CXLHost *host;
+> +    PCIHostState *cxl;
+> +
+> +    sms->cxl_devices_state.is_enabled =3D true;
+> +
+> +    DeviceState *qdev;
+
+I think qemu still sticks mostly to declarations at the top
+of functions. So move this up.
+
+> +    qdev =3D qdev_new(TYPE_PXB_CXL_DEV);
+> +    qdev_prop_set_uint32(qdev, "bus_nr", 0xfe);
+
+Ouch. That's not a lot of space in bus numbers.
+Move it down a bit so there is room for switches etc
+and not just a single root port.
+Up to SBSA ref maintainers, but I'd use 0xc0 or something
+like that.
+
+> +
+> +    PCIDevice *dev =3D PCI_DEVICE(qdev);
+
+Declarations at the top I think.
+
+> +    pci_realize_and_unref(dev, sms->bus, &error_fatal);
+> +
+> +    host =3D PXB_CXL_DEV(dev)->cxl_host_bridge;
+> +    cxl =3D PCI_HOST_BRIDGE(host);
+> +    sms->cxlbus =3D cxl->bus;
+> +    pci_create_simple(sms->cxlbus, -1, "cxl-rp");
+
+You want to enable at least some interleaving the HB so I'd
+add at least 2 root ports.
+
+> +}
+> +
+>  static void create_pcie(SBSAMachineState *sms)
+>  {
+>      hwaddr base_ecam =3D sbsa_ref_memmap[SBSA_PCIE_ECAM].base;
+> @@ -682,12 +713,25 @@ static void create_pcie(SBSAMachineState *sms)
+>      }
+> =20
+>      pci =3D PCI_HOST_BRIDGE(dev);
+> +    sms->bus =3D pci->bus;
+
+I'd carry on using pci->bus for this code to minimize changes
+needed and set sms->bus at the end of the function, not the
+start (see below - you can get rid of need to store pci->bus
+I think).
+
+> +
+> +    pci_init_nic_devices(sms->bus, mc->default_nic);
+> =20
+> -    pci_init_nic_devices(pci->bus, mc->default_nic);
+> +    pci_create_simple(sms->bus, -1, "bochs-display");
+> =20
+> -    pci_create_simple(pci->bus, -1, "bochs-display");
+> +    create_smmu(sms, sms->bus);
+> =20
+> -    create_smmu(sms, pci->bus);
+> +    create_pxb_cxl(sms);
+
+Keep this similar to the others and pass in pci->bus even
+though you are going to stash pci->bus
+
+> +}
+
+
+> =20
+>  static void *sbsa_ref_dtb(const struct arm_boot_info *binfo, int *fdt_si=
+ze)
+> @@ -823,6 +867,10 @@ static void sbsa_ref_init(MachineState *machine)
+> =20
+>      create_pcie(sms);
+> =20
+> +    create_cxl_host_reg_region(sms);
+> +
+> +    cxl_hook_up_pxb_registers(sms->bus, &sms->cxl_devices_state, &error_=
+fatal);
+> +
+
+Fixed pxb instances certainly make this less of a dance than we need for pc=
+ / virt
+as the creation order is constrained in a way it isn't for those generic ma=
+chines.
+
+Given you know you only have one PXB-cxl and have it in sms->cxlbus
+you could just call
+pxb_cxl_hook_up_registers(&sms->cxl_devices_state, pci->cxlbus, &error_fata=
+l)
+I think and get same result without needed to add sms->bus to get hold of t=
+he
+pci bus.
+
+
+>      create_secure_ec(secure_sysmem);
+> =20
+>      sms->bootinfo.ram_size =3D machine->ram_size;
+

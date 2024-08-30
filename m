@@ -1,175 +1,371 @@
-Received: by 2002:a17:504:3a8f:b0:1be9:327d:8ee3 with SMTP id g15csp166496njf;
-        Fri, 30 Aug 2024 01:09:54 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVJi+knXp1/NnFAfvNlX9BlZzcjIhxk8+LAsF3qt1r4WbEmJkcKwJRRSWNBkpd3szh3/T7B7kz0NfbJ0Q==@linaro.org
-X-Google-Smtp-Source: AGHT+IGvmXe8c/BYdCMpoUSq+SiB+vnNuzZfPEf4l1WaSgjGZU07krQ1plV5Q6U4JS3UOZhIFaHb
-X-Received: by 2002:a05:6214:5b0e:b0:6c3:33b1:20dd with SMTP id 6a1803df08f44-6c33e69612dmr64499286d6.53.1725005393856;
-        Fri, 30 Aug 2024 01:09:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1725005393; cv=none;
-        d=google.com; s=arc-20160816;
-        b=IpWJEnjQSzMGpFwbsIDheG1On8NHQHr/Dvhn4SEA+lLKYles/JepDUuN2A762nSeFG
-         8hWPhnhXRQyifhtKykrdoNxrRURUzmxispzdvhpuvIn0+jGLsWYl6gWWgPstGcGkjVOC
-         G7qS5UEJ4SgYWupttFo8/k2Qm+ouQJphFgYWeK9dsAVdhHgtQTqRYDshersCuMhMKTYY
-         dpXlY4Uf5K0fY5hgQSrW+qewwLl6Vn/s0BGp9Mbj8s1fBkGq2LJXuc7oMqLTP8xex6DL
-         nh6669Ixv3lwY9Ef5j7lzrfRcNNXd/LBydHktNmu4/4onpODzgu5v3/KvQa7Ab98ClC/
-         AvgQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:from:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=cRM0z2YiEimXmzOjezTcVGa11bxpmbinpvMckbeEPP8=;
-        fh=X1uXDNS3CVGBdW6R1BqR8daGVf13cPHGzH8O2/MCgr4=;
-        b=FlXIpg4ArOsZIvGH51NDKhROmO1xrKBqc8Nf39bPJ488JhVY3ZYbE3WiJ6iA6lydWD
-         legJMGhyziOqmsd/JKm4t5MEYEXY9f7/6ZCKqtKpWNp4BaK89Xb51nAywGSxxWmzvNqe
-         1VvP3CWrwNsueidwi5xPhVdWT6K3oRUk7nLYpaXGnrsPZomPVj5cnrxTOu5r+tlrhlrG
-         +OTlqAp5luOZU5zeKUfus5zWVJXZ5XCKrF7EsSBjxChAP6rrejMIT/cE/IumWujpa7rB
-         m9fWV8Z+3hloMzmGSOsGkLVbckr4F8rrloCLcMAO1793aTQbiQsxjGn0pGC0TnCpJ6gm
-         rzXQ==;
-        dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=CSGoHF1X;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6c340ca4611si34144196d6.394.2024.08.30.01.09.53
-        for <alex.bennee@linaro.org>
+Received: by 2002:a17:504:3a8f:b0:1be9:327d:8ee3 with SMTP id g15csp175453njf;
+        Fri, 30 Aug 2024 01:51:03 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGZTCLU9oGjkTQe+wS/tZVpYb35Ujcqb1FXt3ixT/DRZoa18SolfS6h0pAVskhT1rF99KHp
+X-Received: by 2002:a05:6214:5d03:b0:6c1:6ad0:7175 with SMTP id 6a1803df08f44-6c33e6172femr69950006d6.19.1725007862945;
+        Fri, 30 Aug 2024 01:51:02 -0700 (PDT)
+Return-Path: <junjie.mao@intel.com>
+Received: from mgamail.intel.com (mgamail.intel.com. [192.198.163.19])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6c340c90fc7si34483436d6.283.2024.08.30.01.51.00
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 30 Aug 2024 01:09:53 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 30 Aug 2024 01:51:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of junjie.mao@intel.com designates 192.198.163.19 as permitted sender) client-ip=192.198.163.19;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=CSGoHF1X;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sjwhM-0002el-7B; Fri, 30 Aug 2024 04:09:36 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1sjwhK-0002bF-V1
- for qemu-arm@nongnu.org; Fri, 30 Aug 2024 04:09:34 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1sjwhJ-00025D-9q
- for qemu-arm@nongnu.org; Fri, 30 Aug 2024 04:09:34 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1725005370;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=cRM0z2YiEimXmzOjezTcVGa11bxpmbinpvMckbeEPP8=;
- b=CSGoHF1XOhbXYFNT66RIHaUuQD4NLyQCYjshQETtxwSCT1FY2oT96oP88Sls65ijF6uwUf
- PxxLmvXpjlZZ+whZjPhfFW8krrHSSXt2rz3T2+Pf9/5HdMibgh7b0gcT1zW9RPhLuofo1e
- TWyfMIbcvBHmJGZNJhG66pwP/V9BZuc=
-Received: from mail-qv1-f71.google.com (mail-qv1-f71.google.com
- [209.85.219.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-59-t39AU0pBPqan4XE1yq4Iyg-1; Fri, 30 Aug 2024 04:09:29 -0400
-X-MC-Unique: t39AU0pBPqan4XE1yq4Iyg-1
-Received: by mail-qv1-f71.google.com with SMTP id
- 6a1803df08f44-6bf8d9867a3so18152776d6.1
- for <qemu-arm@nongnu.org>; Fri, 30 Aug 2024 01:09:28 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1725005368; x=1725610168;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=cRM0z2YiEimXmzOjezTcVGa11bxpmbinpvMckbeEPP8=;
- b=Aj4xHz05KImUv5iKfrtPyMkcSmkJ6e1vzfYCexQYHeofIAIGELKoKiDQFlDsKM34KQ
- rv1IJy7c0EhQAqlA7kui3siphCuUm11vag3KhDut+OYYX1KY+KshUsA310SLlF8k4ecT
- 3CCZzR+Pzgt5O29y6aXilK55+x/vtxo6if6RMFZbDsCrjuRM8DsBqf2Bl6eg2jOMQmr3
- xlu0Q4kJC1g1mf4r8LPGe26bXkJGh4KtsA/p+Z/sRfvVn4aalAa6qQewYRZlVwafloDA
- 6U69LRKadEc5tB2a+ADR6YYHEOVXiFVvY6cZC/WPZI7y7/ZCinYnm5HR8QiAHo9yaHgV
- nGFg==
-X-Gm-Message-State: AOJu0YxGPoUErPxfrjxEAy+wkU4HM6ePty0pf6gII7MKxDNyLDq6NZ02
- yyImyLLZXQDW7Szf4l46bJjg675lgBQAztp96fHxH47B/2s0N7An6+fBvJ36an9tmwzLrxTm7Mf
- P0ojAKHIdGrVYtiZ1aewfknbleBJLWrU1x9n3pYlzVrCSO6bTPQ==
-X-Received: by 2002:a05:6214:3f90:b0:6c3:4851:36a4 with SMTP id
- 6a1803df08f44-6c348513c18mr22577626d6.26.1725005368443; 
- Fri, 30 Aug 2024 01:09:28 -0700 (PDT)
-X-Received: by 2002:a05:6214:3f90:b0:6c3:4851:36a4 with SMTP id
- 6a1803df08f44-6c348513c18mr22577436d6.26.1725005368091; 
- Fri, 30 Aug 2024 01:09:28 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:280:24f0:3f78:514a:4f03:fdc0?
- ([2a01:e0a:280:24f0:3f78:514a:4f03:fdc0])
- by smtp.gmail.com with ESMTPSA id
- 6a1803df08f44-6c340c00310sm12564466d6.52.2024.08.30.01.09.26
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 30 Aug 2024 01:09:27 -0700 (PDT)
-Message-ID: <bdb443f9-376e-4d4e-8c06-9ba0c5482c5e@redhat.com>
-Date: Fri, 30 Aug 2024 10:09:25 +0200
-MIME-Version: 1.0
+       dkim=pass header.i=@intel.com header.s=Intel header.b="l952u/X0";
+       arc=fail (signature failed);
+       spf=pass (google.com: domain of junjie.mao@intel.com designates 192.198.163.19 as permitted sender) smtp.mailfrom=junjie.mao@intel.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1725007863; x=1756543863;
+  h=message-id:date:subject:to:cc:references:from:
+   in-reply-to:content-transfer-encoding:mime-version;
+  bh=i99QEQBzVWbniav03MRI+WI7bnLAhcZjvtoIj6ubLR8=;
+  b=l952u/X08pn2l4Q+nzY5kgYBJ28F+cNVFetYBWvYKxN8kamAF4dO9R0g
+   ii6aaZXcg29B3E+jTwiC8W30OB1Y2I5fYANv16f5cL9qXKNFfI/Mj5W7P
+   NYjG2lvd8eVOrGqtofsA8+qtOHIYwnbGP2ncLqPgVffwKDUGipuMmYL4Q
+   t8ni4bnHxJwqb6l4pVTw3KTvC5A8JcOMVrKybJC5dnnK0TP7+8sonG70n
+   8KM5FsfzzN9LTx5omFbse32pPwjBUspBhhstcWvOWCypD4XadylRmhol9
+   XNi62+aNRhoBxtaoOipAazeav1hkyNvMUEXPlUs4ezuPrk0uhRDm0nzY+
+   Q==;
+X-CSE-ConnectionGUID: vyTSZErgTKy23Wzwyn9Rmw==
+X-CSE-MsgGUID: C6T4Z4AvSPyDXKCWmSLgag==
+X-IronPort-AV: E=McAfee;i="6700,10204,11179"; a="23208101"
+X-IronPort-AV: E=Sophos;i="6.10,188,1719903600"; 
+   d="scan'208";a="23208101"
+Received: from fmviesa005.fm.intel.com ([10.60.135.145])
+  by fmvoesa113.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 30 Aug 2024 01:51:00 -0700
+X-CSE-ConnectionGUID: VGf0lVytRYCMbrkLoW3SUQ==
+X-CSE-MsgGUID: ysgEAuBSTfmErLYBLjiDFQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.10,188,1719903600"; 
+   d="scan'208";a="68236224"
+Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82])
+  by fmviesa005.fm.intel.com with ESMTP/TLS/AES256-GCM-SHA384; 30 Aug 2024 01:50:59 -0700
+Received: from fmsmsx603.amr.corp.intel.com (10.18.126.83) by
+ fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.39; Fri, 30 Aug 2024 01:50:59 -0700
+Received: from fmsedg602.ED.cps.intel.com (10.1.192.136) by
+ fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.39 via Frontend Transport; Fri, 30 Aug 2024 01:50:59 -0700
+Received: from NAM11-BN8-obe.outbound.protection.outlook.com (104.47.58.172)
+ by edgegateway.intel.com (192.55.55.71) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.39; Fri, 30 Aug 2024 01:50:59 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=mXJBMNnNna07ltL3HO6279MWYo5OBsW3BBXHzvsMP/UNSfD6bAG50j3tDLuopadOUGy7wA62m9fWP342w5s1Qvwv4YJvRUta6QxWnBiKNshRhodaMKniuMBqdHqQDf3uxkY3OODKmW+r0Kh0lBaChi/CCSMVkSEy2IaushxbWmrrQfHdQMw1UcA650WoaQrkRQL+eiqs/ENuUdY1Rq47vOwFvnL2GIZlpj9ef1r3iwdwyEUDCH4v14KApaAT0JUXTr36OtiAYvNN9+lJ7rahf63KfXHY2D/iV+mhSp4qz26Wr2jgyiUV+xPVvv3vuI5n2D/EKNTM95DUXWDzElb+IQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=X3jTt/zAjcQ/lZ0Mx2bovUoaMrAY7LyKXErDL51s+9c=;
+ b=sDfVhz7NkftqQMsE1L6cx4gyP7D7x1ZzcdctJpLnojc/lJu5RQylESL+GsuecE/2lr0TU4/87AkRlzmiE9eQFiAbb8JWZJTXHeA5RGtgLUrx2hjRMIxRAkgjZ0LEbcxB13Ln3u5RJOczDc0XC1axzk9JFNtvZQeTcghQ+TVla8fgPAGaVn4RuNnwXl/D5NQXjs3ioSVXR4uPtqYmqMzuph9Rr2sfrkViAYrQ7id0QjpUGnFwx1TVBavBR3So0Q5gF0Qhg0tk8Q1sc+xNqOs853Usq4PEmb+LVIdKz9zBi+GoE5/9W32VFgKy/GJCAPTDxCDJE+jPA4QVO/At9IydQQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Received: from CY8PR11MB7009.namprd11.prod.outlook.com (2603:10b6:930:57::12)
+ by MN0PR11MB6060.namprd11.prod.outlook.com (2603:10b6:208:378::8) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7918.20; Fri, 30 Aug
+ 2024 08:50:56 +0000
+Received: from CY8PR11MB7009.namprd11.prod.outlook.com
+ ([fe80::7ebc:871a:bc7f:1eed]) by CY8PR11MB7009.namprd11.prod.outlook.com
+ ([fe80::7ebc:871a:bc7f:1eed%4]) with mapi id 15.20.7897.027; Fri, 30 Aug 2024
+ 08:50:56 +0000
+Message-ID: <8b82efb4-74a7-4d46-8ba9-c7354a812623@intel.com>
+Date: Fri, 30 Aug 2024 16:50:45 +0800
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] aspeed: Deprecate the tacoma-bmc machine
-To: Guenter Roeck <linux@roeck-us.net>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>, Joel Stanley <joel@jms.id.au>,
- Andrew Jeffery <andrew@codeconstruct.com.au>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-References: <20240625070830.492251-1-clg@redhat.com>
- <4e04f930-e7af-4084-99a8-2a3139e2bf43@roeck-us.net>
- <5fb7342b-fa67-4cb2-b6fd-2241b7b76d03@redhat.com>
- <f70cb39f-3567-4322-b1c4-1bc5991d91fa@roeck-us.net>
- <8d1fd867-647b-4827-a2b2-a239618a7743@redhat.com>
- <014b83a8-d733-442b-ba33-a24c35e46f3f@roeck-us.net>
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
-In-Reply-To: <014b83a8-d733-442b-ba33-a24c35e46f3f@roeck-us.net>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US, fr
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 2Vkmaw4sEUHN
+Subject: Re: [PATCH RESEND v9 7/9] rust: add crate to expose bindings and
+ interfaces
+To: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+CC: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>, "open list:ARM
+ SMMU" <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>, Paolo Bonzini
+	<pbonzini@redhat.com>, =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?=
+	<marcandre.lureau@redhat.com>, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
+	<berrange@redhat.com>, Thomas Huth <thuth@redhat.com>,
+	=?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>, Pierrick Bouvier
+	<pierrick.bouvier@linaro.org>, Richard Henderson
+	<richard.henderson@linaro.org>, Gustavo Romero <gustavo.romero@linaro.org>,
+	Peter Maydell <peter.maydell@linaro.org>, Zhao Liu <zhao1.liu@intel.com>
+References: <20240828-rust-pl011-v9-0-35579191f17c@linaro.org>
+ <20240828-rust-pl011-v9-7-35579191f17c@linaro.org>
+ <871q284wxk.fsf@draig.linaro.org>
+ <dd2ed180-3624-4981-adb7-c78e699048a7@intel.com>
+ <CAAjaMXZhvq3qppgEhs5zB-M=hfDFNT993XCUp0ZKPFmVxFXL2Q@mail.gmail.com>
+Content-Language: en-US
+From: Junjie Mao <junjie.mao@intel.com>
+In-Reply-To: <CAAjaMXZhvq3qppgEhs5zB-M=hfDFNT993XCUp0ZKPFmVxFXL2Q@mail.gmail.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 8bit
+X-ClientProxiedBy: SG2PR01CA0197.apcprd01.prod.exchangelabs.com
+ (2603:1096:4:189::8) To CY8PR11MB7009.namprd11.prod.outlook.com
+ (2603:10b6:930:57::12)
+Return-Path: junjie.mao@intel.com
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: CY8PR11MB7009:EE_|MN0PR11MB6060:EE_
+X-MS-Office365-Filtering-Correlation-Id: 2ed519e5-d5e0-436e-867c-08dcc8d0dcf7
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|366016|376014|7416014;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?R0xsdXZBK0Z5c0t3aE4vdk1HSkVjZXhBM3RFQ2lLYWFHNkt6VGZLbUJ1cGt4?=
+ =?utf-8?B?WUFxWTNpYjNXT3NPUEdReTFwbEFYSnpnUXhqamY1Qm5KZ1M4YkNIcnl1R1Iv?=
+ =?utf-8?B?RzFlUkR1cEpRYmkxcW5EZ0tzeDYzc1RGWlB3aGhrUWZQbWRSMGFqRkVPQm4r?=
+ =?utf-8?B?TEJ2NDhmdDBsTUdmbndQdGM1ODBvaDNCQmk0QUNlRklKdnJFOCtDTmh1MnpI?=
+ =?utf-8?B?Yys0aG0ra2c2L2dTWDQ5Q0hIWUlKcFJEL1ZnVXoxV1BHSktvZ3lDb0ZXa2dx?=
+ =?utf-8?B?RTZWUkNxUWZEL0RsSDh3TEU5S3JQSFVRRzB6R3F2YnZnNnhVbjRpcXMrYW5U?=
+ =?utf-8?B?OEt2NVVmZlRCb0FDUzZMMVlHSklHZjBHcW9LNDFZMGg5NUFJRytUQTNWUEZB?=
+ =?utf-8?B?NXEzcnJXRVlkaFBoUVQwdjdSbGlLWFVDOVpRdDZIdnlnaVBPRHJtYXYvK3R0?=
+ =?utf-8?B?K1FsOE81aEJaeFdqbkhGVHhnS0lKMm1lUW56cTdZRlA1S1habnRDRnNKZU9F?=
+ =?utf-8?B?YmdGQitMdnRCTmExMDAyTjF0aVZCY1U2VXRoZE5ZU3Z4bmEva3NTVGpOWTc0?=
+ =?utf-8?B?OGxNY2VacTQybG41QTRGU2Q5SitxRGFPcmNEdTNvK3lhaEVEZTIyQ3lrVVdG?=
+ =?utf-8?B?VVA1K29LVTloTkhwUjZwUWtHWkovcU4zTkRSMjRjZVVVakdOcitBZ2Jpc0Uy?=
+ =?utf-8?B?NzBHZk5zL1ZiSXZRWlBSOTh3ZkJDc2c0YzFmYzczc2dyTHUwenR3ak9aVkJC?=
+ =?utf-8?B?bXcydDA1U0J6dmZpT09xSHVCc09ud1ZicDIycVY5SGNDZm9EQ0RKaHRrdzdj?=
+ =?utf-8?B?YkxYaUFPcEtCc2ZqemJPYUg1bjQ2MnFPM05ncDR3S2xpS0dKWWhHQVJkU0V6?=
+ =?utf-8?B?b2k1WmtGSHdBa1VYbVpSbjJwZkwxbDJjM2UyNmpkQURRN2l0T0ZiYWpydmtl?=
+ =?utf-8?B?YkZ1TURwTlpxRWdLaUxWOGlSTVRtWHQ2bjdXcmVpbVArc01vVGdkN3J6ZXhX?=
+ =?utf-8?B?YlhkbUZVVzJ5YmRnSXYrZ1loNStvZ29YeHFZVDM5YnVycGRUL1hXVm1jbDJH?=
+ =?utf-8?B?bUF0bXFoNlV3c1RWRDc1MHpPeHNLZTNkK0VwYkR4dHdybitLQ2RsSmgrZUJ1?=
+ =?utf-8?B?TUt2VU9saUx1Ukh1eE9wMFhXdzFFWjVEajRiaFpkaTQzU2lqeTVxNXpUUnM0?=
+ =?utf-8?B?VEthQzBvdUR1OTI5ZHRyTlFTMnJkVzZ1TE1vQ1laeEUwcXlFOE1NUWtWM2xF?=
+ =?utf-8?B?RnlMWTNYOStpTFhEMStIcXo1eFk2SCtRUTRtRHRud0tXUW5MQU1JYUFOblFs?=
+ =?utf-8?B?ZzNVaUFpME1hMVpRVXE5Q0VYNmlnOWQwT1BEU2N5MnEwSXZ4TzMrcjA2c1N2?=
+ =?utf-8?B?MmxHSGRRT0c3cnowME93bng3WHFpZ29hSnNORkJDc1dodGt4bVBCQlRhY1B0?=
+ =?utf-8?B?THRlMTlYMyt0NXNTUXZJUy92ZDVncEJ1Vk5wQUJHR0pJR3daZnFsU2ZvQnBH?=
+ =?utf-8?B?U3dIeUF4STc0WURpQ0ZqVmorS21OMjhJb3Z4MHlGditNajI1L1JVZGhVOTg4?=
+ =?utf-8?B?MmFReURqYkFiZTF4V0plem5KU0VTL2t6SWdGWWZxOWZ2RGl1ZnRhcW9Gc3R2?=
+ =?utf-8?B?S0hkK3d2R0twdTJsMWIzZkcxRFdKVWxnYlNOMUg4NXZOc3VyeXl2QTl1Uk9I?=
+ =?utf-8?B?cFVVTEVUWjlGRWN2VGhwK2VoaHQ5ZkVaYndrV1BQSFN3TTczRUE1enBxVGF5?=
+ =?utf-8?Q?3F0Zb3f+elv2Mc+UMY=3D?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:CY8PR11MB7009.namprd11.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(366016)(376014)(7416014);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?YktGZGdLSWIvMmhzcnJJRnh0RmppZmszbmFBVTh1QXVUSkJoR0d4MTUyb3Vk?=
+ =?utf-8?B?bHllY1JjM3RJV1JxWEdCRWFDdjZTaDdiNnBQamU4THRWVUlkRG5aa1ZZUnVZ?=
+ =?utf-8?B?QjZwOTR0T2J6VmdST0tYN2xrRy9jdjBNcnZVaUNaWW53Rm9HZUptNStCZ3l4?=
+ =?utf-8?B?SWNpbktJM2NkN0R6N2ticXM1WnBUaHJ4dFZXVExxMklUNWhHRHpTelllMWZG?=
+ =?utf-8?B?MFF6Qm9NQ1hxaC9PNGxtUHRlWTlzRmYyT3k5NnF6NW1ldmhWM2xROTQ5UmtU?=
+ =?utf-8?B?cG9TSFJzUnByanZrYXl4MW5CMktMd3kwZWVEK2FZRXRqcksyR2Vwa2dMSFpQ?=
+ =?utf-8?B?SGZsR29OWUtkc3pXblJDb3ZBbzRKUTUwc283VEJUWkIwc3Bpc0JxMDRNaENO?=
+ =?utf-8?B?V0lqTWVJVnVpaVE4dmRHRm1pSzRWbkc5NVU4eVdoL00zRFVkN2lhZW5uRW1H?=
+ =?utf-8?B?VmNRYnpEY3Jsd0FVbk0vY2w3YXlBdXN2RlZkRGNBYkNmRGlaV2JzL1Z5aUVh?=
+ =?utf-8?B?czY5RkYvUGRrVDRCb3FlWFdzR3ZoQ3pmdXUrRUNWVHF1N1dSTGRUME0razYv?=
+ =?utf-8?B?dXdSRlFwMWdZbmxtYUZKT0JLa0FOL2J1WlQ4NlJYZkI4R2VjbW9DUVNvSjZs?=
+ =?utf-8?B?YmRYVVV2REtrcHJTMmNhUFdqc1U3UEZtMnV3bjZ2bm8zejMwVUU2YjZrcndj?=
+ =?utf-8?B?OHVtZUpzSmtvMXJSbGJTZnZqMGJEUkl2NEhRNW02T0pJRDZudVVvTVZKcnFZ?=
+ =?utf-8?B?QSs3eXo3aEFWbnR3UDNLblk1b3NUbnUzS3E4Q3lCNFVJY2lYRjN5RU0wMzUy?=
+ =?utf-8?B?R1owMGdyaTV0ZFE1RHBzMFlOYUJDc2E5bjNlT3dVQnRXeU5xbFQ1R0dieThI?=
+ =?utf-8?B?aGRDWDM2MXpHZTJyREZLNEpRWkJwR0pNaVFQT0l2Z25FWGQzRHlrRk5abElp?=
+ =?utf-8?B?UjdUK1lBK3pOWXdhY0l1K0VvRkRLcm00UFlhN09yNG5DRkIwMWx1cTJHdGNE?=
+ =?utf-8?B?NExSYi9LWnc0cmRnRjRTZGREdnhFd2tTb3lnQjBlZ2p1bTF6cy9yMzIzMlA0?=
+ =?utf-8?B?bXlIK3pESjRjRFh5NTMvYUFTWW9rMm9rWU02d3dMdEJzNFVzTWVldWRuTEo0?=
+ =?utf-8?B?OHpVMWFBbDVVaXdiOEd4dTcvRzJSZkR0OE9HMm5yVGlJZnYvRDlKdEw0eWZ0?=
+ =?utf-8?B?QjFUZ0FXMlI5ejVGNHZXdHpFNHR3bmRsUW1wS3JpOWFoajNiVlhFV1ZhVzFY?=
+ =?utf-8?B?TncxSzZzb1ZVU09SanE5SUpYWWN5RTErNHZNWlJMZitxUkZLT0VHZTdueDRs?=
+ =?utf-8?B?b283UTQ3RUsvcHp6K2hVejZldnNMZFRmTnE5aFlkWWtwWWpyd3NpQlZVUGRG?=
+ =?utf-8?B?T2VqRDBOL0ZzMG9VUHVVbGhiejlRR01mek9OVUorVjBWOHhja3YxeU5hdFZM?=
+ =?utf-8?B?clUvS0pWeWNLekNWWkQwY3YyQ3NpS3ZMZytpc0pJOE0xeXdoK0lMR0sxeW05?=
+ =?utf-8?B?aitWRUliTndnWWlIWFoySElxN3h0YUFoaWI2NjRQMmVDOUNlbkVhRlYzSjYz?=
+ =?utf-8?B?ek95QTQ5N3R2ejFaMHJzK2hIc05rdjdWaVFFV1Izam1mR3g2Z3NrMmhIaXor?=
+ =?utf-8?B?TGpFUkF2eXpvemUva2hIajUxcVFFRytOK1lwMEFCQmltR0F1b2pLTzN5aTg0?=
+ =?utf-8?B?aHBRaVVEK1hKMm9vZlJaOWRmSTQvZUhOMFZlVWtGMkxIYWt2dG93am5kbDdK?=
+ =?utf-8?B?ZkVLYStCTDhDL25Gd2dMeXVMaVRTVFoyMk5oR1BNVEFXSDMwcWZwUldhd0lm?=
+ =?utf-8?B?dTExNEVrNFlZdStpcUFPbWpCbFFNeWhmNml6cmU5ekltQzFreHJ6T0VyMTVS?=
+ =?utf-8?B?V2tBR3FpNVRlYXY3dWRMQldTY1ZEZEtjd29JN2l0d0VwM2s3cUp1QXB1cmdW?=
+ =?utf-8?B?MEg2VUJZVGtsb3pHejFCdVM3Y2hkZGN4azRrQjV3RTljai9kQ0UybXFFbHM5?=
+ =?utf-8?B?R0RQWGtqVDlGWlpmcHJBU25ZandsOFcybDZ3Z2IyWVQ4SENhRFEzUGZ0VnBT?=
+ =?utf-8?B?bE5EcjFQUGxnZkFqRWIxOFBEZkVlQ1lEd1ZxR2h1dUN3MTBSWFRPOUhxZ2dE?=
+ =?utf-8?Q?dJbQ7QnefVi6zUG1Jc6gPHBNE?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: 2ed519e5-d5e0-436e-867c-08dcc8d0dcf7
+X-MS-Exchange-CrossTenant-AuthSource: CY8PR11MB7009.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 30 Aug 2024 08:50:56.6780
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: 8uBSjeGvCQU2U/urkVRJcIcuYEh5ew8qj1VNRHF2RIPiklOEDX2Fla+ygYvxlKVQuZpEFaRr+Y7PatkZ+Bq9AQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN0PR11MB6060
+X-OriginatorOrg: intel.com
+X-TUID: KVFO9FthP3fr
 
-Hello,
+On 8/30/2024 2:43 PM, Manos Pitsidianakis wrote:
+> 🎱
+> 
+> On Fri, 30 Aug 2024, 04:19 Junjie Mao, <junjie.mao@intel.com 
+> <mailto:junjie.mao@intel.com>> wrote:
+> 
+>     On 8/28/2024 9:08 PM, Alex Bennée wrote:
+>      > Manos Pitsidianakis <manos.pitsidianakis@linaro.org
+>     <mailto:manos.pitsidianakis@linaro.org>> writes:
+>      >
+>      >> Add rust/qemu-api, which exposes rust-bindgen generated FFI bindings and
+>      >> provides some declaration macros for symbols visible to the rest of
+>      >> QEMU.
+>      >
+>      > As mentioned on IRC I'm hitting a compilation error that bisects to this
+>      > commit:
+>      >
+>      >    [148/1010] Generating bindings for Rust rustmod-bindgen-rust_wrapper.h
+>      >    FAILED: bindings.rs <http://bindings.rs>
+>      >    /home/alex/.cargo/bin/bindgen ../../rust/wrapper.h --output
+>     /home/alex/lsrc/qemu.git/builds/rust/bindings.rs <http://bindings.rs>
+>     --disable-header-comment --raw-line '// @generated' --ctypes-prefix
+>     core::ffi --formatter rustfmt --generate-block --generate-cstr --impl-debug
+>     --merge-extern-blocks --no-doc-comments --use-core --with-derive-default
+>     --allowlist-file '/home/alex/lsrc/qemu.git/include/.*' --allowlist-file
+>     '/home/alex/lsrc/qemu.git/.*' --allowlist-file
+>     '/home/alex/lsrc/qemu.git/builds/rust/.*' -- -I/home/alex/lsrc/qemu.git/.
+>     -I/home/alex/lsrc/qemu.git/builds/rust/. -I/home/alex/lsrc/qemu.git/include
+>     -I/home/alex/lsrc/qemu.git/builds/rust/include -I/usr/include/capstone
+>     -I/usr/include/p11-kit-1 -I/usr/include/pixman-1 -I/usr/include/libpng16
+>     -I/usr/include/spice-server -I/usr/include/spice-1 -I/usr/include/spice-1
+>     -DSTRUCT_IOVEC_DEFINED -I/usr/include/libusb-1.0 -I/usr/include/SDL2
+>     -D_REENTRANT -I/usr/include/glib-2.0
+>     -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -pthread
+>     -I/usr/include/libmount -I/usr/include/blkid -I/usr/include/gio-unix-2.0
+>     -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include
+>     -pthread -I/usr/include/libmount -I/usr/include/blkid -I/usr/include/slirp
+>     -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include
+>     -DNCURSES_WIDECHAR=1 -D_DEFAULT_SOURCE -D_XOPEN_SOURCE=600
+>     -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include
+>     -I/usr/include/gtk-3.0 -I/usr/include/pango-1.0 -I/usr/include/glib-2.0
+>     -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/harfbuzz
+>     -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/libmount
+>     -I/usr/include/blkid -I/usr/include/fribidi -I/usr/include/cairo
+>     -I/usr/include/pixman-1 -I/usr/include/gdk-pixbuf-2.0
+>     -I/usr/include/x86_64-linux-gnu -I/usr/include/gio-unix-2.0
+>     -I/usr/include/atk-1.0 -I/usr/include/at-spi2-atk/2.0
+>     -I/usr/include/at-spi-2.0 -I/usr/include/dbus-1.0
+>     -I/usr/lib/x86_64-linux-gnu/dbus-1.0/include -pthread -I/usr/include/gtk-3.0
+>     -I/usr/include/pango-1.0 -I/usr/include/glib-2.0
+>     -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/harfbuzz
+>     -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/libmount
+>     -I/usr/include/blkid -I/usr/include/fribidi -I/usr/include/cairo
+>     -I/usr/include/pixman-1 -I/usr/include/gdk-pixbuf-2.0
+>     -I/usr/include/x86_64-linux-gnu -I/usr/include/gio-unix-2.0
+>     -I/usr/include/atk-1.0 -I/usr/include/at-spi2-atk/2.0
+>     -I/usr/include/at-spi-2.0 -I/usr/include/dbus-1.0
+>     -I/usr/lib/x86_64-linux-gnu/dbus-1.0/include -pthread
+>     -I/usr/include/vte-2.91 -I/usr/include/glib-2.0
+>     -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/libmount
+>     -I/usr/include/blkid -I/usr/include/pango-1.0 -I/usr/include/harfbuzz
+>     -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/fribidi
+>     -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/gtk-3.0
+>     -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/x86_64-linux-gnu
+>     -I/usr/include/gio-unix-2.0 -I/usr/include/atk-1.0
+>     -I/usr/include/at-spi2-atk/2.0 -I/usr/include/at-spi-2.0
+>     -I/usr/include/dbus-1.0 -I/usr/lib/x86_64-linux-gnu/dbus-1.0/include
+>     -pthread -I/usr/include/glib-2.0
+>     -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/spice-server
+>     -I/usr/include/spice-1 -I/usr/include/cacard -I/usr/include/glib-2.0
+>     -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/nss
+>     -I/usr/include/nspr -I/usr/include/PCSC -pthread -D_REENTRANT
+>     -I/usr/include/pipewire-0.3 -I/usr/include/spa-0.2 -D_REENTRANT
+>     -I/usr/include/p11-kit-1 -I/usr/include/fuse3
+>     -I/usr/include/x86_64-linux-gnu -D_FILE_OFFSET_BITS=64 -D__USE_FILE_OFFSET64
+>     -D__USE_LARGEFILE64 -DUSE_POSIX_ACLS=1 -I/usr/include/uuid
+>     -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include
+>     -I/usr/include/p11-kit-1 -I/usr/include/p11-kit-1 -I/usr/include/p11-kit-1
+>     -I/usr/include/p11-kit-1 -D_GNU_SOURCE -D_FILE_OFFSET_BITS=64
+>     -D_LARGEFILE_SOURCE -I/usr/include/glib-2.0
+>     -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -std=gnu11 -MD -MQ
+>     ../../rust/wrapper.h -MF wrapper.h.d
+>      >    /usr/include/liburing.h:296:3: error: use of undeclared identifier
+>     'memory_order_release'
+>      >    /usr/include/liburing.h:1080:11: error: use of undeclared identifier
+>     'memory_order_acquire'
+>      >    /usr/include/liburing.h:1116:9: error: use of undeclared identifier
+>     'memory_order_acquire'
+>      >    /usr/include/liburing.h:1125:9: error: use of undeclared identifier
+>     'memory_order_relaxed'
+>      >    /usr/include/liburing.h:1161:2: error: use of undeclared identifier
+>     'memory_order_relaxed'
+>      >    /usr/include/liburing.h:1197:19: error: use of undeclared identifier
+>     'memory_order_acquire'
+>      >    /usr/include/liburing.h:1267:10: error: use of undeclared identifier
+>     'memory_order_relaxed'
+>      >    /usr/include/liburing.h:1269:10: error: use of undeclared identifier
+>     'memory_order_acquire'
+>      >    /usr/include/liburing.h:1320:2: error: use of undeclared identifier
+>     'memory_order_release'
+>      >    panicked at
+>     /home/alex/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bindgen-cli-0.69.4/main.rs:52:36:
+>      >    Unable to generate bindings:
+>     ClangDiagnostic("/usr/include/liburing.h:296:3: error: use of undeclared
+>     identifier 'memory_order_release'\n/usr/include/liburing.h:1080:11: error:
+>     use of undeclared identifier
+>     'memory_order_acquire'\n/usr/include/liburing.h:1116:9: error: use of
+>     undeclared identifier
+>     'memory_order_acquire'\n/usr/include/liburing.h:1125:9: error: use of
+>     undeclared identifier
+>     'memory_order_relaxed'\n/usr/include/liburing.h:1161:2: error: use of
+>     undeclared identifier
+>     'memory_order_relaxed'\n/usr/include/liburing.h:1197:19: error: use of
+>     undeclared identifier
+>     'memory_order_acquire'\n/usr/include/liburing.h:1267:10: error: use of
+>     undeclared identifier
+>     'memory_order_relaxed'\n/usr/include/liburing.h:1269:10: error: use of
+>     undeclared identifier
+>     'memory_order_acquire'\n/usr/include/liburing.h:1320:2: error: use of
+>     undeclared identifier 'memory_order_release'\n")
+> 
+>     Those missing identifiers should have been defined in stdatomic.h which is part
+>     of C11. You can check if that header exists under the default header search
+>     paths (which is listed by clang -E -Wp,-v -) and whether that file declares
+>     those enum constants. If so, you can further check whether there is any
+>     stdatomic.h elsewhere that shadows the standard one.
+> 
+> 
+> Indeed. These are in the compiler's own header files. I had problems on Debian 
+> when using clang-14 and clang-15 but I got rid of them after I upgraded to newer 
+> versions. If anyone can confirm/reproduce this we can add a meson warning check?
+> 
+> 
 
+I can reproduce the issue after rolling back clang-18 to clang-15, but the issue 
+is not tied to any specific clang version. It happens when the version of newest 
+libclang does not match with the "clang" executable in PATH.
 
->>> I solved the problem by adding support for IBM Bonnell (which instantiates
->>> the TPM chip through its devicetree file, similar to tacoma-bmc) to my local
->>> copy of qemu. 
->>
->> Hmm, did you copy the rainier-bmc machine definition ?
->>
-> For aspeed_machine_bonnell_class_init(), pretty much yes, since I don't know
-> the actual hardware. For I2C initialization I used the devicetree file.
-> You can find the patch in the master-local or v9.1.0-local branches
-> of my qemu clone at https://github.com/groeck/qemu if you are interested.
+The effective header search paths of libclang invoked by bindgen have the following:
 
-Oh nice ! Let's merge the IBM Bonnell machine. We can ask IBM to help fixing
-the definitions (strapping). Enabling the PCA9554 is good to have too.
+1. The default search paths used by the "clang" executable. The clang-sys crate 
+determines which executable to use and collects its default search paths, and 
+bindgen adds them (in the form of "-isystem") to clang args.
 
-Why are you keeping the tmp105 changes ? LGTM. Same for the new tmp models,
-they could be upstreamed.
+2. The default search paths that libclang has.
 
+Clang has a version-specific standard header directory (on my Ubuntu it looks 
+like /usr/lib/llvm-15/lib/clang/15.0.7/include). When those versions mismatch, 
+the effective search paths contain two standard header paths, causing 
+stdatomic.h to be included twice without declaring any symbol because clang's 
+stdatomic.h starts with:
 
-Thanks,
+#ifndef __CLANG_STDATOMIC_H
+#define __CLANG_STDATOMIC_H
 
-C.
+#if __STDC_HOSTED__ &&                                                         \
+     __has_include_next(<stdatomic.h>) &&                                       \
+     (!defined(_MSC_VER) || (defined(__cplusplus) && __cplusplus >= 202002L))
+# include_next <stdatomic.h>
+#else
+(symbol declarations ...)
 
+Both the clang executable and libclang library are detected by clang-sys at 
+runtime. In my experiments, that crate always find the latest libclang, but 
+doesn't necessarily find the latest clang when there are multiple "clang-X" but 
+not "clang" in the system.
+
+How about we try bindgen on a simple header like:
+
+#include <libatomic.h>
+memory_order order;
+
+If that fails with unknown type name 'memory_order', suggest the user to 
+symbolic link the latest clang executable as "clang".
+
+---
+Best Regards
+Junjie Mao

@@ -1,88 +1,121 @@
-Received: by 2002:a17:504:3a8f:b0:1be9:327d:8ee3 with SMTP id g15csp157091njf;
-        Fri, 30 Aug 2024 00:25:04 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWhxKHxd6qaZClIp5nCJqFbbc+qTmISwrH+2vjOf/Y/H1iEXMraqAbW0X4+I31MYiB2ktKYHShtD5maCg==@linaro.org
-X-Google-Smtp-Source: AGHT+IFtpGnBu+FuhaC3YQxUsbOsQmqtt/YOkKR2+eoEnFJga9a2IWwW5RJWMuJsSM+D5DpLEc05
-X-Received: by 2002:a05:620a:1993:b0:7a4:d56a:a928 with SMTP id af79cd13be357-7a804c30b2fmr925911485a.21.1725002704265;
-        Fri, 30 Aug 2024 00:25:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1725002704; cv=none;
+Received: by 2002:a17:504:3a8f:b0:1be9:327d:8ee3 with SMTP id g15csp165488njf;
+        Fri, 30 Aug 2024 01:05:48 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWtfieIgeD1qcFZSefECMqf7MdCaQcCMiOinx/iMyX7j7c9O8C77QZnZ3IUUxii+9NjRzB/3GwJnWoYnQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IG8lC/o/FKgXIK7vfsm/mS0RcrOg4d5hFJRqryCPS6YJ9tKGTOTPWXgI3ma1k7TwX71bdKI
+X-Received: by 2002:a05:6102:50a2:b0:493:c81c:3148 with SMTP id ada2fe7eead31-49a5ae7de80mr6065028137.0.1725005148556;
+        Fri, 30 Aug 2024 01:05:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1725005148; cv=none;
         d=google.com; s=arc-20160816;
-        b=xHyqCUNx6mIywyu5fFs8P0km98act6gYXWCufIv7QhpAOUWOSQRSzJnMXq4a9oEiyG
-         oU2zwrGT/sZGs2mlJhwCTd58yVXNgWJTmxiBOEuVIzC4RGXwpNDODLbNNR9Ph/Y7S7pn
-         j2nwrqbdkGBwUTIqtC0u6axfoQiH27uD92fQSn0zr8mIZV4v2CrnkWpL8eQC6rgtS9AI
-         zZaihV8mtLQ7oh6PCvpketSrgDri+GRJeVRYrEuZvQomK75O1VS1L093UP8XLSGDv37D
-         JRYiGVgCbDZ/JZvwObbHxnvWX6kzSJ9aW8c93sVp5yoE/lZHAvgUWX9zQ5NwOv/CB2Hj
-         Lf9Q==
+        b=T3130J5aANMXwlHJsVP8+tofkU/sVTg8lU7PW5BZw74Uw3zNTlMa/zxC2ObaztqNdP
+         d69z8/a7R9SMopYTuhv2gcQMAwSySbP8gVJwEQVPaq3qDKGWDB8J7GHatxaX80DlH/Hz
+         DtsmBrfK/5QTZy8pb8x1TrfuR9Pu4lkb+CloUjiOI8XD/+OhgY00fzcWfGTJxmgPIwtU
+         WRkVjMXwYeArgIW5tBKfPgHP4Er21G/ZlbxK/MWGHo9ac5QmtmGFvhXxhv3w7JO2YPdI
+         edihI5CNlo5XtHTu4Z4lT0puCyDunAos5mpqpHgT7l4AvExB4kQpepjQIIZZSMkpyZEI
+         sRtg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to;
-        bh=onYQQVORS3zhp5/kezrCeD/wux13cs04C5Jb/rUEqIg=;
-        fh=wAMUNjOnh9On8XvCTmS1kxnyR3bEipPoLC6SSdBX0Jc=;
-        b=rgJXdKJKd3s2/hyFiQwB0tnCvToirk5m3b5F30nHg3o6wOqugbOJfgmIoIx2ruxH8X
-         1fuPPQpMX78OSC6dCl/eGMtIdOdGJgy+VNWAUuMuopE4yfHjb6hhyfcoi1DWeimLvuB6
-         BdNjica8s/0fAsgJw32AO8rNrjm/Teq3ra4/IUipuA2FRMGy6JHLqnBAdF5putTz4SuF
-         DNY8YQNu9CkJkv+cFrSrNt73hUtF041HAMelpXcqLtaZ3pYgbXz9CYJHWN9aW1iMf5HO
-         sQwnTJc4RlWuvq8MOWXbxNdYjibSLwH/ju+xjdHRSWjVLbxlCtCkCAjOoRGnHrqICPMY
-         5ohA==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=MC7aFzaY1FZaEi2O4l4eCXSkJoXGvCzyVJYM3mZE2S0=;
+        fh=Xnoas6Yryhjazj8yFLcXWR/roHDesGTvQtbStQguWhk=;
+        b=Ab2bRt0gADrF7dOK1WEOk9cNSlObTeC+IRQqSFuBvTAsb3OL1jOfPuJoKmwTtLnhHl
+         mndAr58f1oi4GlQiwkuKeNRoZ2jNUDLKJ50ru0Cc0nwhmS4FR//Vgpct+fetCDikgTnL
+         GnaQy5NlpZZzkeG5UWASkKwH6jvdsaR6MbIreton4jTp/c9BS6mN5mGzV7p8klh4UwO7
+         uF43I+E5PMMew3eEojNrs2KgWattbMO2Ojibeu5knLQCsIbqZoVkh5SM2u6B++fHPgtQ
+         QgHRps6/jcnRA9vGLopyLXpl1KElkkluAj5y9rejY3VAC3xsdkZIt8ZyfpAImPvBFEf5
+         EMpQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=It8HHJHL;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7a806c485e3si332851285a.217.2024.08.30.00.25.04
+        by mx.google.com with ESMTPS id af79cd13be357-7a806c1880dsi337233385a.44.2024.08.30.01.05.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 30 Aug 2024 00:25:04 -0700 (PDT)
+        Fri, 30 Aug 2024 01:05:48 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=It8HHJHL;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sjw05-0007tm-I9; Fri, 30 Aug 2024 03:24:54 -0400
+	id 1sjwdM-000241-UA; Fri, 30 Aug 2024 04:05:30 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <changbin.du@huawei.com>)
- id 1sjw04-0007sp-8x; Fri, 30 Aug 2024 03:24:52 -0400
-Received: from szxga08-in.huawei.com ([45.249.212.255])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <changbin.du@huawei.com>)
- id 1sjw00-0000ut-Db; Fri, 30 Aug 2024 03:24:52 -0400
-Received: from mail.maildlp.com (unknown [172.19.162.254])
- by szxga08-in.huawei.com (SkyGuard) with ESMTP id 4Ww8lK2fgZz18MxS;
- Fri, 30 Aug 2024 15:23:41 +0800 (CST)
-Received: from kwepemd100011.china.huawei.com (unknown [7.221.188.204])
- by mail.maildlp.com (Postfix) with ESMTPS id 001D6180105;
- Fri, 30 Aug 2024 15:24:32 +0800 (CST)
-Received: from M910t.huawei.com (10.110.54.157) by
- kwepemd100011.china.huawei.com (7.221.188.204) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.34; Fri, 30 Aug 2024 15:24:31 +0800
+ (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
+ id 1sjwdL-00020Y-8s; Fri, 30 Aug 2024 04:05:27 -0400
+Received: from mail-lf1-x136.google.com ([2a00:1450:4864:20::136])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
+ id 1sjwdJ-0001Rg-Cg; Fri, 30 Aug 2024 04:05:27 -0400
+Received: by mail-lf1-x136.google.com with SMTP id
+ 2adb3069b0e04-5353cd2fa28so1939943e87.3; 
+ Fri, 30 Aug 2024 01:05:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1725005123; x=1725609923; darn=nongnu.org;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+ bh=MC7aFzaY1FZaEi2O4l4eCXSkJoXGvCzyVJYM3mZE2S0=;
+ b=It8HHJHLWH5jW1F1LCnbfkyXuSNDWGx/Vf8g/sVHgaKN3+gNEuqvR5eq/GIkdnOXo5
+ 91mTxIme/FeDzBEKkc+4yrovyyGkSeFbn64fLUmETzaWX5zmIcE8AZhvcDuEsxvfhpYn
+ zCk06r40v/3MJuTfCG5Tg2H+++yzWs329QoTJm4WwU4PDXJHZGS35DROGgSQV76ubqjI
+ urxpkorCOWk/rKMmQhS3zqoTlblWPjbvfui3JEd218ialQxi0AEQoEDpMWggExc5Zrlb
+ 4CdsNs2KZo5KHP2Zs0U3V8SKsU7qtEviVC38CycvvFhw21+EWxk9WTh8GRxqpwL8eZGx
+ 2zpQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1725005123; x=1725609923;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=MC7aFzaY1FZaEi2O4l4eCXSkJoXGvCzyVJYM3mZE2S0=;
+ b=jjhJj0h2qMZ9Wrb9ss1aLkMnhHzfNogSiNhQmtwH3gbJ+cUAUZ+Chzavgn4dGOZ4Ag
+ 3gzNwlvQNefaybdRzTPujdR0uwfcIlrI6rCqrjCp0Qs2HCenaGx9BZipx69TflRZEyJg
+ pT+DScfHVORJ9ys5lYr9X2XxjxDnyS3Q6IspbMpAhTiDwzSWrKP56Y6ak9oe1jIdHTS4
+ n2UzaCilsm6+9QGybAP6wOFudNrVJm8IuoaJQAgjmeIyd9rsthY/WQlT2DyRrMauztTL
+ oo7z/MMMYhQVseClzpwRU4LimXXwkxtae/UgJusUFoGDDoqw18EHwYoQqLIbLArPDUUC
+ d+Jw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVk2Ii/+VPs1oxekI13BbJgV0xrrhOLD8zd5UD8AybLGsvvh/p+b40wJExJhfSfH83dlwAprqDzq2ARBw==@nongnu.org,
+ AJvYcCXissrGKWJbUSOlSnwpPf6RdGVgfiuqwmYvG2ski0RZLB+6E3PzMKwIFMjsvFh3WdAxtzz/1kEqlA==@nongnu.org
+X-Gm-Message-State: AOJu0Yx6wYmvEruYtzbRy0idY/Dnn4Y6uYFd6pj7gE5CyKK2yw+BhuED
+ cmVG3xErokE1ZeraR8aZ0w/KA6pTVmR7hK1jqXEba3TynnWnv1rZ
+X-Received: by 2002:a05:6512:3b0b:b0:530:aa82:a50a with SMTP id
+ 2adb3069b0e04-53546ba0471mr890486e87.45.1725005122066; 
+ Fri, 30 Aug 2024 01:05:22 -0700 (PDT)
+Received: from gmail.com (213-67-3-247-no600.tbcn.telia.com. [213.67.3.247])
+ by smtp.gmail.com with ESMTPSA id
+ 2adb3069b0e04-535408412a0sm479985e87.192.2024.08.30.01.05.20
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 30 Aug 2024 01:05:20 -0700 (PDT)
+Date: Fri, 30 Aug 2024 10:05:19 +0200
+From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
 To: Peter Maydell <peter.maydell@linaro.org>
-CC: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>, Changbin Du
- <changbin.du@huawei.com>
-Subject: [PATCH] hw/arm/boot: Report error msg if loading elf/dtb failed
-Date: Fri, 30 Aug 2024 15:24:09 +0800
-Message-ID: <20240830072409.2399084-1-changbin.du@huawei.com>
-X-Mailer: git-send-email 2.34.1
+Cc: Sebastian Huber <sebastian.huber@embedded-brains.de>,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ Alistair Francis <alistair@alistair23.me>
+Subject: Re: [PATCH] hw/arm/xilinx_zynq: Enable Security Extensions
+Message-ID: <ZtF9P_QtnH1nAYuu@zapote>
+References: <20240828005019.57705-1-sebastian.huber@embedded-brains.de>
+ <CAFEAcA-p+CBeKTgH-YXzrATKDpwG5iY+A3WGaVkbEeHCXxTzug@mail.gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.110.54.157]
-X-ClientProxiedBy: dggems702-chm.china.huawei.com (10.3.19.179) To
- kwepemd100011.china.huawei.com (7.221.188.204)
-Received-SPF: pass client-ip=45.249.212.255;
- envelope-from=changbin.du@huawei.com; helo=szxga08-in.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAFEAcA-p+CBeKTgH-YXzrATKDpwG5iY+A3WGaVkbEeHCXxTzug@mail.gmail.com>
+Received-SPF: pass client-ip=2a00:1450:4864:20::136;
+ envelope-from=edgar.iglesias@gmail.com; helo=mail-lf1-x136.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -96,39 +129,79 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Changbin Du <changbin.du@huawei.com>
-From:  Changbin Du via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: v5Z37N+9rsA3
+X-TUID: XlLH0aoY8TRN
 
-Print errors before exit. Do not exit silently.
+On Thu, Aug 29, 2024 at 01:50:02PM +0100, Peter Maydell wrote:
+> On Wed, 28 Aug 2024 at 01:51, Sebastian Huber
+> <sebastian.huber@embedded-brains.de> wrote:
+> >
+> > The system supports the Security Extensions (core and GIC).  This change is
+> > necessary to run tests which pass on the real hardware.
+> >
+> > Signed-off-by: Sebastian Huber <sebastian.huber@embedded-brains.de>
+> 
+> (Added the maintainers to cc.)
+> 
+> Does the system have any secure-only devices, RAM, etc?
 
-Signed-off-by: Changbin Du <changbin.du@huawei.com>
----
- hw/arm/boot.c | 2 ++
- 1 file changed, 2 insertions(+)
+Yes, on real HW there are but I don't think we've modelled any of it yet.
+There's TZ both on the SoC and also ability to create FPGA logic that
+can issue secure/non-secure transactions. Here's an overview:
+https://docs.amd.com/v/u/en-US/ug1019-zynq-trustzone
 
-diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-index d480a7da02cf..17c01f299831 100644
---- a/hw/arm/boot.c
-+++ b/hw/arm/boot.c
-@@ -839,6 +839,7 @@ static ssize_t arm_load_elf(struct arm_boot_info *info, uint64_t *pentry,
-                       1, data_swab, as);
-     if (ret <= 0) {
-         /* The header loaded but the image didn't */
-+        error_report("could not load elf '%s'", info->kernel_filename);
-         exit(1);
-     }
- 
-@@ -1322,6 +1323,7 @@ void arm_load_kernel(ARMCPU *cpu, MachineState *ms, struct arm_boot_info *info)
-      */
-     if (!info->skip_dtb_autoload && have_dtb(info)) {
-         if (arm_load_dtb(info->dtb_start, info, info->dtb_limit, as, ms) < 0) {
-+            error_report("could not load dtb '%s'", info->dtb_filename);
-             exit(1);
-         }
-     }
--- 
-2.34.1
+The primary use-case for the upstream Zynq-7000 QEMU models has historically
+been to run the Open Source SW stack from Linux (some times from u-boot)
+and up. It's important that we don't break that.
 
+So as long as we add additional support without breaking direct Linux
+boots, I think it's OK to incrementally enable missing pieces even
+if there's not yet coherent support for firmware boot.
+
+In this case, IIUC, when doing direct Linux boot, TYPE_ARM_LINUX_BOOT_IF
+will take care of the GIC setup for us.
+
+> 
+> How much testing have you done with this change? (The main
+> reason we disabled has-el3 on this board back in 2014 was
+> as a backwards-compatibility thing when we added EL3 support
+> to the CPU model -- we didn't have a ton of images for the
+> board so we erred on the safe side of not changing the
+> behaviour to avoid potentially breaking existing guest code.)
+
+
+I tried this patch on a couple of my images and it works fine for me!
+
+Reviewed-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
+Tested-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
+
+
+
+> 
+> > ---
+> >  hw/arm/xilinx_zynq.c | 8 --------
+> >  1 file changed, 8 deletions(-)
+> >
+> > diff --git a/hw/arm/xilinx_zynq.c b/hw/arm/xilinx_zynq.c
+> > index 3c56b9abe1..37c234f5ab 100644
+> > --- a/hw/arm/xilinx_zynq.c
+> > +++ b/hw/arm/xilinx_zynq.c
+> > @@ -219,14 +219,6 @@ static void zynq_init(MachineState *machine)
+> >      for (n = 0; n < smp_cpus; n++) {
+> >          Object *cpuobj = object_new(machine->cpu_type);
+> >
+> > -        /*
+> > -         * By default A9 CPUs have EL3 enabled.  This board does not currently
+> > -         * support EL3 so the CPU EL3 property is disabled before realization.
+> > -         */
+> > -        if (object_property_find(cpuobj, "has_el3")) {
+> > -            object_property_set_bool(cpuobj, "has_el3", false, &error_fatal);
+> > -        }
+> > -
+> >          object_property_set_int(cpuobj, "midr", ZYNQ_BOARD_MIDR,
+> >                                  &error_fatal);
+> >          object_property_set_int(cpuobj, "reset-cbar", MPCORE_PERIPHBASE,
+> 
+> thanks
+> -- PMM

@@ -1,115 +1,92 @@
-Received: by 2002:a17:504:3a8f:b0:1be9:327d:8ee3 with SMTP id g15csp324418njf;
-        Fri, 30 Aug 2024 09:30:21 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUJSfSmgvtmZtb7Xzn2K18iPY6zUKt//zbYFfiDLxoRP5ToGxw+/1xRWO5Ez4aZByn7V+E1tLMHP6h1lQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IGNb6CZFZcQs75atGwkonHtlYJIFLsLQdvMQfVgVkxbsCbSCM4MznytFfGuD6zixDPj6/UT
-X-Received: by 2002:a05:6214:d83:b0:6bf:a3a6:e7ce with SMTP id 6a1803df08f44-6c33f3c9006mr94321726d6.26.1725035421363;
-        Fri, 30 Aug 2024 09:30:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1725035421; cv=none;
+Received: by 2002:a17:504:3a8f:b0:1be9:327d:8ee3 with SMTP id g15csp367519njf;
+        Fri, 30 Aug 2024 11:44:52 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCW2sHXlUZTwQikt5xwBP0eyLJF3QDzmG1XBTKADdCxrFcKVGXb3j7XgkHeLkcZO9BVrARsjZmBgXYvBnw==@linaro.org
+X-Google-Smtp-Source: AGHT+IGa+9ydrV+x+3uLSMuK9/+Y9C/+jSd2SJCAd0RfEUpHQ+nc461esv5KMV/Jb9HYX07uId5i
+X-Received: by 2002:a05:620a:280c:b0:79f:14ef:40cf with SMTP id af79cd13be357-7a804266f84mr647612385a.56.1725043492208;
+        Fri, 30 Aug 2024 11:44:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1725043492; cv=none;
         d=google.com; s=arc-20160816;
-        b=UD4nhc8rEP0Q7GvETfuvpaXPhfihVAAwvihCdRyuIUHCXs7AAAMMm4tSNcoEmkLs8e
-         Osr0FTa7xbZv5J2h1VCIF3OexJJA1y2VQocrm0aYYtldR8xvLYRJZNysT06PkUnO0cbT
-         OOW7wz2t/ehPIqHUbV4I424A4QQWD9kwNC+BfLIfyYEVGKVf2PAdXVmee5/lA+P4RGsA
-         ZA0zAm6NwinVxCdsdLmsMOokp+mTLDoRkjVtXph5ckvGo69g1a346G3xmCgyP+bcH3+O
-         Pj7iERX1ao62wfO3buqn4kLMcSEDLTR8FBGC949Bn2vmAia3+fBnzEfNkrniV0cLfBAf
-         FU/w==
+        b=TZMQ8a5K3h271IjDkoUG144LocwKqHkCi/kSgBqIIRikuAWS8Bg1IqnqBhDrOPmQqw
+         f1gfEGvZ6uyL/uDybFbjWKpjGMObcLw0J/YLVqyLmsLhPV1UieG+WkfUXM+KhVv4i69M
+         +3M/Xp80TNnp/r6wwFe3OR4BUXEzTOQGXUtSC5eTS+79Mkz6ZnBN24WryS/5rzobscm3
+         cx9aXoC93/ClF+RTy5PH+e6bgc8pQMOxa9wSM8N2g3JcKOAP2unaTnErOSxyDVHo9Tp+
+         XXZdVq4IzFxOKgqeMKeWVLYFtkLUlrtQykFd6m8duUSq9s+pJ8PnpOtDih31vkvdPUbW
+         RK6w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=u+V31Mqg1iTS0y7T36ICG6IoXhl7dnQFm+0Bmu56rww=;
-        fh=F253wKpH61ugzN7JgXlNEIQs31mR8MtSoUWT1NIfXgU=;
-        b=STl8s/vopB3Kc2fJjunh7ORy/QfEfzi6mGqh1INMebJMgkYgpAwVKN+lnh1CHv71m2
-         fGYpCp1RG1wrUIjrw+TDddRwfeP6NbqH4Y7QAVlYybaZSaScy8XKbu8w1Wa8/Pz1A6r4
-         cjFiFJMLDCOR7D5QeCwXi5sI1bZFwD5zsUeq8SV6iJjlggKdTPzMh2tTE6rsQbyCaCRL
-         MWzV9lat/Kgs+lNLIcsDvXwQaWrQWCHEboPJcWwW9ZEnLSF859cVXleTe446L7bnRqpm
-         NibJegRo3ULmizsS+OsDcTqSDFy5XbN43Rdbq+Jny4ud9e0IO8hJwAAqiPVaIyglv//5
-         K3Zg==;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:subject:cc:to:date;
+        bh=TtUY8nleRKMclPZQW8GHjuUWHBZMHpNqbmZHwtcpFAI=;
+        fh=eJg1DQBnCaPPcIise5N30/UdUeb1EABfSMa6jQaJ200=;
+        b=v5QiJu+THgZsFHWuAK9glgzYaBjQI3ajTbB2HmPqsDQBXiTJ4KU4Qb1iWUcpzgi5t9
+         OiopWT1FIb8WLbGXmYhErmfgscQqO5UTLN5z+HmcxXGckQYMIfZka60ufix/cH8W9zhq
+         ZQTAcbA56ZgmhDS+hL18btA1a954fxUh4BPXRXw3uR9WF3hpIfJ3wbNTh3vFihpjRUXZ
+         84HMki5dIEmG2EbDRSLYGAcpIh4kKod92ThWVPbCusawGkCybXvM0FwMsteVAMgLat4J
+         Vt/xIp9ot37rSMp1TP9ORc6ObQ/uByelXsSHlE2tjp8w/uzJ1/p6Ly1d47rSvBx7XuGT
+         5ddA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=oSACRumx;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6c340c89fb0si42944846d6.293.2024.08.30.09.30.21
+        by mx.google.com with ESMTPS id af79cd13be357-7a806c1a18asi449081685a.20.2024.08.30.11.44.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 30 Aug 2024 09:30:21 -0700 (PDT)
+        Fri, 30 Aug 2024 11:44:52 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=oSACRumx;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sk4Vr-0004ID-2X; Fri, 30 Aug 2024 12:30:15 -0400
+	id 1sk6c1-0002yj-N0; Fri, 30 Aug 2024 14:44:45 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1sk4Vp-0004HF-TR
- for qemu-arm@nongnu.org; Fri, 30 Aug 2024 12:30:13 -0400
-Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1sk4Vo-0005T4-0W
- for qemu-arm@nongnu.org; Fri, 30 Aug 2024 12:30:13 -0400
-Received: by mail-ed1-x533.google.com with SMTP id
- 4fb4d7f45d1cf-5bf006f37daso3366109a12.1
- for <qemu-arm@nongnu.org>; Fri, 30 Aug 2024 09:30:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1725035410; x=1725640210; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=u+V31Mqg1iTS0y7T36ICG6IoXhl7dnQFm+0Bmu56rww=;
- b=oSACRumxKKp3jiQVhqG6DJxX6ZbXlPL6glXy842A/e7Ps494lTGriJ2IpXZCjMlDXq
- ITj5zzFHW2emOwpDeCM0du6TKAkeckeI+qZUTtMJACxbVB+IXwQVIuOByTv3PQ90JStU
- O1QYxJddoVgjh+635HWXY6NxqQUlDTkl2OXv9N8Q1cWG1P8WaDIH+cQggo8Earf7Z0/j
- FO0lPCxqt7rPTObuDFjjIrtrwE7z77r1r7pAN8vbxCLwvtn3WMYUxraYWnvhsCELVyfi
- 8cy3+ZFazM1AE3B+ZzPVKq/NgYX+x2lMDWZGcmj+Pncy+Fjb2JXOUaTbE8bMMGZKCgNL
- 2kVQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1725035410; x=1725640210;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=u+V31Mqg1iTS0y7T36ICG6IoXhl7dnQFm+0Bmu56rww=;
- b=HKJvaf3z5DbUg85RsrMsAho+urCfKWqNm5Q3KytuIty/GviqvFfnA83uDuMVahkMav
- S8T4/QrtUWfi/35rn8jccl636v7AG30LAecggF9Iu8BS3J/Im/w6WJT53/HkvZbi97Zg
- PvMTaJakYJ8Yq2oQ6VMGWa+nehbOPw+NJi0VqsjStulkSNGM2Socwc6R1z1ot8bEpT4N
- xuMVpm/23uVwt1YszeVK0d5flt+BnjyKfYOxpup/P0Uvwhlkx/jUoFvd2BpTueZMQukt
- tvfn5ug1+bDgbJ5g8cEw4WwrvzPY2qweQT4kaGWT0MrN3s139ljtfXj2mDYi+EyTwfmx
- hqmw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUmCqNPz7WWJXNhH4YXutdRYmMA3aPsn5peURbmTZTGQN7Gf/Rm/PGI8Ue3kxhTw2mzxTHBzb6Xaw==@nongnu.org
-X-Gm-Message-State: AOJu0YwqbmH8d/z0dnqTycpw75XviMJo95nFvSfFeolZ5E4frmr49jj3
- zzXPgtJXm6EZQ6zXVvq76wG9GdA8RQ//5OaZq5SDdnkHMDv5KmtwR0Viuv/WG89Bnfo+GaH6/Z/
- A7vaC+F202N85bbamrX2DIKt+swflPf8T7JiIXw==
-X-Received: by 2002:a05:6402:1d54:b0:5be:b4eb:e1de with SMTP id
- 4fb4d7f45d1cf-5c2200de8a6mr7328273a12.1.1725035410151; Fri, 30 Aug 2024
- 09:30:10 -0700 (PDT)
-MIME-Version: 1.0
-References: <20240830161932.44-1-alireza.sanaee@huawei.com>
-In-Reply-To: <20240830161932.44-1-alireza.sanaee@huawei.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 30 Aug 2024 17:29:59 +0100
-Message-ID: <CAFEAcA8d9SfCTSk02fg3C+t0mAQkanMPeYTahn0vWOOMnoCsAA@mail.gmail.com>
+ (Exim 4.90_1) (envelope-from <alireza.sanaee@huawei.com>)
+ id 1sk6bz-0002xn-UW; Fri, 30 Aug 2024 14:44:44 -0400
+Received: from frasgout.his.huawei.com ([185.176.79.56])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <alireza.sanaee@huawei.com>)
+ id 1sk6bx-0001mR-67; Fri, 30 Aug 2024 14:44:43 -0400
+Received: from mail.maildlp.com (unknown [172.18.186.231])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4WwRn72ZGbz67ZDL;
+ Sat, 31 Aug 2024 02:41:15 +0800 (CST)
+Received: from lhrpeml500006.china.huawei.com (unknown [7.191.161.198])
+ by mail.maildlp.com (Postfix) with ESMTPS id E39181402C7;
+ Sat, 31 Aug 2024 02:44:34 +0800 (CST)
+Received: from localhost (10.47.73.222) by lhrpeml500006.china.huawei.com
+ (7.191.161.198) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Fri, 30 Aug
+ 2024 19:44:34 +0100
+Date: Fri, 30 Aug 2024 19:44:29 +0100
+To: Peter Maydell <peter.maydell@linaro.org>
+CC: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <linuxarm@huawei.com>,
+ <richard.henderson@linaro.org>, <shameerali.kolothum.thodi@huawei.com>,
+ <Jonathan.Cameron@huawei.com>, <jiangkunkun@huawei.com>
 Subject: Re: [PATCH] target/arm/tcg: refine cache descriptions with a wrapper
-To: Alireza Sanaee <alireza.sanaee@huawei.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, linuxarm@huawei.com, 
- richard.henderson@linaro.org, shameerali.kolothum.thodi@huawei.com, 
- Jonathan.Cameron@huawei.com, jiangkunkun@huawei.com
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::533;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x533.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+Message-ID: <20240830194429.00005f84@huawei.com>
+In-Reply-To: <CAFEAcA8d9SfCTSk02fg3C+t0mAQkanMPeYTahn0vWOOMnoCsAA@mail.gmail.com>
+References: <20240830161932.44-1-alireza.sanaee@huawei.com>
+ <CAFEAcA8d9SfCTSk02fg3C+t0mAQkanMPeYTahn0vWOOMnoCsAA@mail.gmail.com>
+Organization: Huawei
+X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
+MIME-Version: 1.0
+Content-Type: text/plain; charset="US-ASCII"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.47.73.222]
+X-ClientProxiedBy: lhrpeml500004.china.huawei.com (7.191.163.9) To
+ lhrpeml500006.china.huawei.com (7.191.161.198)
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=alireza.sanaee@huawei.com; helo=frasgout.his.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H2=-0.001, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -123,27 +100,40 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Alireza Sanaee <alireza.sanaee@huawei.com>
+From:  Alireza Sanaee via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: zGy6OL3r4UA1
+X-TUID: lHbEsl+rrqkX
 
-On Fri, 30 Aug 2024 at 17:19, Alireza Sanaee <alireza.sanaee@huawei.com> wrote:
->
-> Add wrapper for different types of CPUs available in tcg to decribe
-> caches. Two functions `make_ccsidr32` and `make_ccsidr64`
-> describing descriptions. The 32 bit version receives extra parameters
-> that became unknown later in 64 bit.
->
-> For CCSIDR register, 32 bit version follows specification [1].
-> Conversely, 64 bit version follows specification [2].
->
-> [1] B4.1.19, ARM Architecture Reference Manual ARMv7-A and ARMv7-R
-> edition, https://developer.arm.com/documentation/ddi0406
-> [2] D23.2.29, ARM Architecture Reference Manual for A-profile Architecture,
-> https://developer.arm.com/documentation/ddi0487/latest/
+On Fri, 30 Aug 2024 17:29:59 +0100
+Peter Maydell <peter.maydell@linaro.org> wrote:
 
-Could you explain in the commit message the reason for
-making this change, please?
+> On Fri, 30 Aug 2024 at 17:19, Alireza Sanaee
+> <alireza.sanaee@huawei.com> wrote:
+> >
+> > Add wrapper for different types of CPUs available in tcg to decribe
+> > caches. Two functions `make_ccsidr32` and `make_ccsidr64`
+> > describing descriptions. The 32 bit version receives extra
+> > parameters that became unknown later in 64 bit.
+> >
+> > For CCSIDR register, 32 bit version follows specification [1].
+> > Conversely, 64 bit version follows specification [2].
+> >
+> > [1] B4.1.19, ARM Architecture Reference Manual ARMv7-A and ARMv7-R
+> > edition, https://developer.arm.com/documentation/ddi0406
+> > [2] D23.2.29, ARM Architecture Reference Manual for A-profile
+> > Architecture, https://developer.arm.com/documentation/ddi0487/latest/  
+> 
+> Could you explain in the commit message the reason for
+> making this change, please?
+> 
+> thanks
+> -- PMM
 
-thanks
--- PMM
+Sure. Just to clarify here, the patch allows for
+easier manipulation of cache register description which can be handy for
+testing in particular, and it cleans up existing descriptions of course.
+
+Thanks,
+Alireza

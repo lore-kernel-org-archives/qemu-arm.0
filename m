@@ -1,41 +1,40 @@
-Received: by 2002:a17:504:3a8f:b0:1be9:327d:8ee3 with SMTP id g15csp204831njf;
-        Fri, 30 Aug 2024 03:52:17 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXgnh6CmdXqtnUxeq/XejFVfaKC7E1Y52TR6X8mOKorFHOMKGQR4mu2iScblo6s7wx9PhWi7c6Vf9iPXg==@linaro.org
-X-Google-Smtp-Source: AGHT+IGU6XmFBkdi1js4d5Vjx7l5OLfzQbhkhBBZWZFqbR2z+i5V/XkPx22NEek4gB3BN89MTKA+
-X-Received: by 2002:a05:6214:5544:b0:6b4:fea8:6bfc with SMTP id 6a1803df08f44-6c33e5e6b46mr67727096d6.10.1725015136814;
-        Fri, 30 Aug 2024 03:52:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1725015136; cv=none;
+Received: by 2002:a17:504:3a8f:b0:1be9:327d:8ee3 with SMTP id g15csp205160njf;
+        Fri, 30 Aug 2024 03:53:52 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUTUuKZv8lPVQhef1FiCkQnLo9xwv+qHg0aRS1GWSRTXz8jWGcV73brdyTcXBaMa/2wTJM33aeRBDHEig==@linaro.org
+X-Google-Smtp-Source: AGHT+IFQwrObymMQbRfG5wpuM8HB93TiVCESzLtvqo+UQ824UA+hJYhGLU3Umd6WXZge/fAQ0xdg
+X-Received: by 2002:a05:620a:3f85:b0:7a6:5d48:131f with SMTP id af79cd13be357-7a8042734f1mr566980785a.70.1725015232593;
+        Fri, 30 Aug 2024 03:53:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1725015232; cv=none;
         d=google.com; s=arc-20160816;
-        b=TJk6kmVkKNXb5SukU6I2LUtp0SUbWaCNXZCb5ztHUOAdqEUDNKd4tS4bWD1EWVb8+1
-         GxnknWdgMYRQt4d6jTs5kANJbNseQQfxgRgBUuZUKSZCDwSMjdb/cVr24j7Z0n0Z3/PV
-         9hTtgmJDDjA9aw9CE8xMK+GqMjf8wwr0zEwG6OfLNya/IGh1P6HKrjOOYj8RV2YqZWFS
-         AZA6ULr8luHtR1k3Ww34ZzgaQQKCrfBXsK5fsyREnDfa1HY0woXKfCfIr5hi00wd8JeD
-         776VJ6UbF31FbVsLuDqfToG+CJvSNWWAm4QHvlMOPxkFnrBgOQLgpvFbX4kgusgHivbU
-         Qekw==
+        b=CQcJAU6wy7e+VidVE/SDfJV6dnG9J2/MpwTIWQflWMDoHmLBxRo0aNgc7pjKVpW1O8
+         J8H0B3bCZWCnu2ZirDcK7KyR4GibjAzIRrjXQgwElYT1R+9w/Wj7e1TOSi+DbllaNnM5
+         LCGXfhHnsAdtEEdNrnQSu6rFwK3C3bvE7zNvOCJ6AL6c4lZ8H1bi0QWObt08BTM6nDxx
+         KXvv7fSQJ1DAcvZjEpLHdRmNNUqkHvxusOuMlhCArezxFUZsBnlLqTKJMkT/MLNB6dg/
+         eoRWY7iUOx5Dl8PfBpAg0lU2zT/eZRRYTvssVKfn3mIHi3jDAzUnHWILr+Qo4Nl/AHiT
+         tkSw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-id:content-language
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:subject:cc:to;
-        bh=AxelLFBlARu44DczKKH9x61tsw2peCrL6vBQUg7rF5E=;
-        fh=3RaMZS7iAIuChOfpdfk1M11hYJZR/tcV5ciwfGIkimw=;
-        b=of9ofjveSlLitNr4z/ggErCiI3eLQ1ASdYxA3zj0CI3mgEjJ7puvue7jb05B+Kni9j
-         +iEXp1EWQwDTBgGcsZfUXUs+EQsOiwvb+1kxlcGgHybwHvqpXI/AvZnqyXYMUI2g2rAS
-         r5kLQ6YjMwoePeks7ZmTds+/OyIo7Ejy7Hfil64axz+qHiCNmStaab0AepD6JBKcBM+m
-         NM5Pi/gkW5rTotxwPdwzHbpwwUAGsmS1BbhitSnr4VS0tlFT3QaKf+pkZHaLXMLWvwkk
-         gJkWy36xdqe/J/CsrfP9LFpuv10TGjh+cYXxwFnrO8ztYyt8VrQRalJrqsevo5b9Vp+R
-         KZeA==;
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to;
+        bh=yE3GfHpTIFts6lIcXY9psHvb4DY1srgKIYkk+Mv7RWo=;
+        fh=wAMUNjOnh9On8XvCTmS1kxnyR3bEipPoLC6SSdBX0Jc=;
+        b=GFhV4rV9dkQIRcO698ZvOtGKPAt5jVFsbH/mVQ4aGgwni1FkHiMLjOHgyi9DQdCfvp
+         tVpZQ7QBPZnyI6V2lp33DlUg/fA//y/GYQW+JN/KIEk39QioiNRC6rGcVKwgT92AX9dS
+         wRQmb2BwT3VFoCt9lnMCUM2k2JSzrlfn9UwaZLUAz3LTJz+Hi8G6fLug6XKVX5BivHX5
+         6NWtGK5woM70oOaofd07FncXn5QzLvPVJZJShcAGe+HrXsauBXjNyxSYfeTLnKVIQ6TQ
+         K/uVaH6e2il0ZtayzAtfuUXA/sL2vwgJEPHsGsPodKWfN4grm//MKmHOzjL1zFmbmmJ9
+         JwPQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6c340da5b0bsi36569566d6.420.2024.08.30.03.52.16
+        by mx.google.com with ESMTPS id af79cd13be357-7a806c460d6si355019485a.176.2024.08.30.03.53.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 30 Aug 2024 03:52:16 -0700 (PDT)
+        Fri, 30 Aug 2024 03:53:52 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
@@ -43,52 +42,40 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sjzEW-00054K-41; Fri, 30 Aug 2024 06:52:01 -0400
+	id 1sjzGA-0001Pk-7B; Fri, 30 Aug 2024 06:53:44 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <changbin.du@huawei.com>)
- id 1sjzET-00053S-J0; Fri, 30 Aug 2024 06:51:57 -0400
-Received: from szxga02-in.huawei.com ([45.249.212.188])
+ id 1sjzG6-0001B2-Gt; Fri, 30 Aug 2024 06:53:38 -0400
+Received: from szxga04-in.huawei.com ([45.249.212.190])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <changbin.du@huawei.com>)
- id 1sjzEP-0003v9-R9; Fri, 30 Aug 2024 06:51:57 -0400
-Received: from mail.maildlp.com (unknown [172.19.88.105])
- by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4WwFK52MvSzpStD;
- Fri, 30 Aug 2024 18:49:45 +0800 (CST)
-Received: from kwepemd100012.china.huawei.com (unknown [7.221.188.214])
- by mail.maildlp.com (Postfix) with ESMTPS id 61500140360;
- Fri, 30 Aug 2024 18:51:30 +0800 (CST)
-Received: from kwepemd100011.china.huawei.com (7.221.188.204) by
- kwepemd100012.china.huawei.com (7.221.188.214) with Microsoft SMTP Server
+ id 1sjzG3-00044L-RP; Fri, 30 Aug 2024 06:53:38 -0400
+Received: from mail.maildlp.com (unknown [172.19.88.163])
+ by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4WwFP55YGvz2Cp7W;
+ Fri, 30 Aug 2024 18:53:13 +0800 (CST)
+Received: from kwepemd100011.china.huawei.com (unknown [7.221.188.204])
+ by mail.maildlp.com (Postfix) with ESMTPS id A93F6180041;
+ Fri, 30 Aug 2024 18:53:27 +0800 (CST)
+Received: from M910t.huawei.com (10.110.54.157) by
+ kwepemd100011.china.huawei.com (7.221.188.204) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.34; Fri, 30 Aug 2024 18:51:30 +0800
-Received: from kwepemd100011.china.huawei.com ([7.221.188.204]) by
- kwepemd100011.china.huawei.com ([7.221.188.204]) with mapi id 15.02.1258.034; 
- Fri, 30 Aug 2024 18:51:29 +0800
+ 15.2.1258.34; Fri, 30 Aug 2024 18:53:26 +0800
 To: Peter Maydell <peter.maydell@linaro.org>
-CC: duchangbin <changbin.du@huawei.com>, "qemu-arm@nongnu.org"
- <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Subject: Re: [PATCH] hw/arm/boot: Report error msg if loading elf/dtb failed
-Thread-Topic: [PATCH] hw/arm/boot: Report error msg if loading elf/dtb failed
-Thread-Index: AQHa+q2oIp7h7OzKoEG863TRfi6oB7I/DPSAgACSrAA=
-Date: Fri, 30 Aug 2024 10:51:29 +0000
-Message-ID: <80da1b5b8a2043dea81d7883e10ccc55@huawei.com>
-References: <20240830072409.2399084-1-changbin.du@huawei.com>
- <CAFEAcA995BnypV8Yx4fA_ojAt6NopyMnCWY8Gwb840++8kx91w@mail.gmail.com>
-In-Reply-To: <CAFEAcA995BnypV8Yx4fA_ojAt6NopyMnCWY8Gwb840++8kx91w@mail.gmail.com>
-Accept-Language: en-US
-Content-Language: zh-CN
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-exchange-imapappendstamp: kwepemd100011.china.huawei.com (15.02.1258.034)
-x-ms-exchange-messagesentrepresentingtype: 1
-x-originating-ip: [10.110.54.75]
-Content-Type: text/plain; charset="us-ascii"
-Content-ID: <F0AD03D4E217F64686041A4DAF22BAA0@huawei.com>
-Content-Transfer-Encoding: quoted-printable
+CC: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>, Changbin Du
+ <changbin.du@huawei.com>
+Subject: [PATCH v2] hw/arm/boot: Report error msg if loading elf/dtb failed
+Date: Fri, 30 Aug 2024 18:53:04 +0800
+Message-ID: <20240830105304.2547406-1-changbin.du@huawei.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Received-SPF: pass client-ip=45.249.212.188;
- envelope-from=changbin.du@huawei.com; helo=szxga02-in.huawei.com
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-Originating-IP: [10.110.54.157]
+X-ClientProxiedBy: dggems701-chm.china.huawei.com (10.3.19.178) To
+ kwepemd100011.china.huawei.com (7.221.188.204)
+Received-SPF: pass client-ip=45.249.212.190;
+ envelope-from=changbin.du@huawei.com; helo=szxga04-in.huawei.com
 X-Spam_score_int: -41
 X-Spam_score: -4.2
 X-Spam_bar: ----
@@ -109,60 +96,34 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  duchangbin <changbin.du@huawei.com>
-From:  duchangbin via <qemu-arm@nongnu.org>
+Reply-to:  Changbin Du <changbin.du@huawei.com>
+From:  Changbin Du via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: U76eCBq/adbR
+X-TUID: DVqqoYFT5mVM
 
-On Fri, Aug 30, 2024 at 11:05:59AM +0100, Peter Maydell wrote:
-> On Fri, 30 Aug 2024 at 08:24, Changbin Du <changbin.du@huawei.com> wrote:
-> >
-> > Print errors before exit. Do not exit silently.
-> >
-> > Signed-off-by: Changbin Du <changbin.du@huawei.com>
-> > ---
-> >  hw/arm/boot.c | 2 ++
-> >  1 file changed, 2 insertions(+)
-> >
-> > diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-> > index d480a7da02cf..17c01f299831 100644
-> > --- a/hw/arm/boot.c
-> > +++ b/hw/arm/boot.c
-> > @@ -839,6 +839,7 @@ static ssize_t arm_load_elf(struct arm_boot_info *i=
-nfo, uint64_t *pentry,
-> >                        1, data_swab, as);
-> >      if (ret <=3D 0) {
-> >          /* The header loaded but the image didn't */
-> > +        error_report("could not load elf '%s'", info->kernel_filename)=
-;
-> >          exit(1);
->=20
-> I agree we should print a message here.
->=20
-> >      }
-> >
-> > @@ -1322,6 +1323,7 @@ void arm_load_kernel(ARMCPU *cpu, MachineState *m=
-s, struct arm_boot_info *info)
-> >       */
-> >      if (!info->skip_dtb_autoload && have_dtb(info)) {
-> >          if (arm_load_dtb(info->dtb_start, info, info->dtb_limit, as, m=
-s) < 0) {
-> > +            error_report("could not load dtb '%s'", info->dtb_filename=
-);
-> >              exit(1);
->=20
-> But for this case, arm_load_dtb() should be printing the error
-> message itself (which lets it be more precise about what went
-> wrong). Is there a code path where it fails to print an error?
->
-Seems not. arm_load_dtb() prints errors on all of its failure paths. So thi=
-s
-change should be removed.
+Print errors before exit. Do not exit silently.
 
-> thanks
-> -- PMM
+Signed-off-by: Changbin Du <changbin.du@huawei.com>
 
---=20
-Cheers,
-Changbin Du
+---
+v2: remove msg for arm_load_dtb.
+---
+ hw/arm/boot.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+index d480a7da02cf..e15bf097a559 100644
+--- a/hw/arm/boot.c
++++ b/hw/arm/boot.c
+@@ -839,6 +839,7 @@ static ssize_t arm_load_elf(struct arm_boot_info *info, uint64_t *pentry,
+                       1, data_swab, as);
+     if (ret <= 0) {
+         /* The header loaded but the image didn't */
++        error_report("could not load elf '%s'", info->kernel_filename);
+         exit(1);
+     }
+ 
+-- 
+2.34.1
+

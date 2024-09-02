@@ -1,68 +1,68 @@
-Received: by 2002:a17:504:3a8f:b0:1be9:327d:8ee3 with SMTP id g15csp1095445njf;
-        Mon, 2 Sep 2024 06:09:12 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWm02HhII6J5p4mHCDC6mdGthmU8pFXcXfrpeTnIdWwm7p1nBtybzHJQ9421rxuov9VUHm4HeOgbDEiQg==@linaro.org
-X-Google-Smtp-Source: AGHT+IEz2eoaM8R2rG8gpoavwdav5kiHRN2PDxdCo6SB+qrSdTf9turAJnib/iDZtoPkNQD7+REW
-X-Received: by 2002:a05:622a:258c:b0:457:cab4:6e4a with SMTP id d75a77b69052e-457cab46f1cmr68119671cf.37.1725282551938;
-        Mon, 02 Sep 2024 06:09:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1725282551; cv=none;
+Received: by 2002:a17:504:3a8f:b0:1be9:327d:8ee3 with SMTP id g15csp1095594njf;
+        Mon, 2 Sep 2024 06:09:34 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXi2QSp1eNEVzwKCcJBiOPZTu6FTos7w6E0p8cnxine/OI9d2gqdBd9tTNAdzv5MPAzOHa2BMuVl53P7w==@linaro.org
+X-Google-Smtp-Source: AGHT+IFo8buShkLQ4bV4CKopcM2YZjWlcwTVdZAWmJ+xV+nJftL3dR39FL/FRN+ytEF2CCEoAIcx
+X-Received: by 2002:a05:6808:3197:b0:3dd:3171:6d03 with SMTP id 5614622812f47-3df1d4c55a8mr10789109b6e.0.1725282574495;
+        Mon, 02 Sep 2024 06:09:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1725282574; cv=none;
         d=google.com; s=arc-20160816;
-        b=lqPCH8banmR6lWtOoD9LgVWEGmo17NhftLHiZz+d8tVeE/NG/DuM+uoAFboNCVJ13O
-         nEDL9O5wN1UYtJb8Uu0Jz9LhoGhW0oujeSal/hXtBXSvBE4qtRgUHPpm1BycZHFP40T4
-         2JPei+4ZWhKIJnpxJu3ulqesXZutMpDxykrUvPyBHAc+Qm4nOacXSC9QzFePxUrJFa95
-         3U1844OIFAATuD4xU/6atTHGLoCocnpZ3N4m7B5RT2EOwek/et6yDhJGtiYKbucxjUOR
-         1GxmtS6Fkqyz+tkl5Np09aLUk/M7iiWDhpNaagCvlll1h3qGA1PH5848k724Nplka0Jg
-         5n+w==
+        b=bEwmnzIZtCQ4WOXJuIyL9XKaF8ju7ZjJFM9Gq0Kwj3AyAEjtHNSj0EWSBPrH3PQjJU
+         f6EFHrdbhwhSzjYowYJ1lnDwOPi55HXEfev47zZhBEim9pudlzBxBmFATrv7UQEcZESn
+         spD5Ej5PX/krPBlofuLUv0RGfRvpW1Wdevr0znaQtZKdcZzqmlRqA5nDr2zxx8PFrlFs
+         LetsOHKiTwcqm2w9uIKqb+VRqu8kza8HF7TpNiv78Hq8NutVBhG+uwHl3fL5dF4rHD2G
+         /Dy0f10NHlod5d5baZLZ1a3N9Dk9WmVfrVYBQQlsuN4LWbIHO5vvyOIK3qD8wkPRWcUY
+         nfFA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:content-language:references:cc:to:subject
          :user-agent:mime-version:date:message-id;
-        bh=lRwEVxdkEr4BO278+E6/gPCGeDiqZvZenZeJUBihqOo=;
+        bh=tOyyxtgzFLUQFgGx8P0hwK9lLClca0JxT7N0FvI4LhQ=;
         fh=P9eF86Qai1jM7EkBuFwf50J/wVjW4uTYQ/nRQ7unStY=;
-        b=qACPja+CI9ySse2EuI5QtnTM/hlpJ3+9vt/gakbdpMNG4yANORS6h/GLdim/J9yy3G
-         rzQ/FHPE2rhb/ZgeULF3Z17O92kMTLsHLPQVOS1TF48pekjM5D3x3r5MxAHzZMlxdFc3
-         k+H001/bNgkDmEvR6A9TUEmeSOzio61CeqAOO/EPNebV7EiRLKbK8OvU+ccKf37KV8sD
-         Qwkur7xNg3sbhgfStiR/UKyJpfsuqYuL0XdoM9/eA8K13VrI8oMzdvAvJKToKmvTPsVx
-         uZuC7Vm2wrDP2f04ghjUvoSV+lHKTEboOW9pa/mv13BRdBrCt4kBv5uNJvgODRpJIPML
-         vWzg==;
+        b=qb7RG8+1hclm/i5GqdSVk5Q586Us6LY5p8o+RqJR+DeZPFwIGC+2v/70x3mA8r/IRm
+         oa0cXxG2brfW1ZSyv8xbk76aljpCZwnvQa3eo9FAyU8HfQdfmYPdi+Z6W9x8Qc3K58tr
+         TidKABOmkGC2h1a2tPXChZKMe/1yCJ5uD8bhBWg3z8uQiG3XuTMH+OVRO0DP0We+lWK6
+         hbs1D+Hiy9dsrdj3Wd/28h/yRZzsM+h/W69PwmyJmPn9B/ggwKOovfAka3paTwWuNiun
+         VDs+jc7/Cs9uYtBjRFyj6rS2+YIDJn8CM5SlARM0J3ulfNP050EjJmgdIPGaeYK60b4e
+         5WzQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-45682db8fadsi122585201cf.558.2024.09.02.06.09.11
+        by mx.google.com with ESMTPS id a1e0cc1a2514c-846bf5ce723si1293700241.137.2024.09.02.06.09.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 02 Sep 2024 06:09:11 -0700 (PDT)
+        Mon, 02 Sep 2024 06:09:34 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sl6nc-0003ej-Az; Mon, 02 Sep 2024 09:08:53 -0400
+	id 1sl6ne-0003jq-Ud; Mon, 02 Sep 2024 09:08:55 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=3a9v=QA=kaod.org=clg@ozlabs.org>)
- id 1sl6na-0003cH-Hc; Mon, 02 Sep 2024 09:08:50 -0400
+ id 1sl6nc-0003e8-8W; Mon, 02 Sep 2024 09:08:52 -0400
 Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=3a9v=QA=kaod.org=clg@ozlabs.org>)
- id 1sl6nY-0004xV-32; Mon, 02 Sep 2024 09:08:50 -0400
+ id 1sl6na-0004xz-4w; Mon, 02 Sep 2024 09:08:51 -0400
 Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4Wy8G14NyCz4xDT;
- Mon,  2 Sep 2024 23:08:41 +1000 (AEST)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4Wy8G710Xdz4x2M;
+ Mon,  2 Sep 2024 23:08:47 +1000 (AEST)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4Wy8Fw0GDfz4x2M;
- Mon,  2 Sep 2024 23:08:32 +1000 (AEST)
-Message-ID: <ffb6506a-3903-4f7f-b3ef-744e9877d8a1@kaod.org>
-Date: Mon, 2 Sep 2024 15:08:27 +0200
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4Wy8G21tygz4xDF;
+ Mon,  2 Sep 2024 23:08:41 +1000 (AEST)
+Message-ID: <97b87c04-4884-4632-a8be-ab2a0b41ba69@kaod.org>
+Date: Mon, 2 Sep 2024 15:08:39 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 01/11] hw/i2c/aspeed: support discontinuous register
+Subject: Re: [PATCH v2 03/11] hw/i2c/aspeed: support discontinuous poll buffer
  memory region of I2C bus
 To: Jamin Lin <jamin_lin@aspeedtech.com>,
  Peter Maydell <peter.maydell@linaro.org>,
@@ -75,10 +75,10 @@ To: Jamin Lin <jamin_lin@aspeedtech.com>,
  <qemu-devel@nongnu.org>
 Cc: troy_lee@aspeedtech.com, yunlin.tang@aspeedtech.com
 References: <20240808024916.1262715-1-jamin_lin@aspeedtech.com>
- <20240808024916.1262715-2-jamin_lin@aspeedtech.com>
+ <20240808024916.1262715-4-jamin_lin@aspeedtech.com>
 Content-Language: en-US, fr
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20240808024916.1262715-2-jamin_lin@aspeedtech.com>
+In-Reply-To: <20240808024916.1262715-4-jamin_lin@aspeedtech.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
@@ -104,33 +104,34 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: QfLDuN1ySz/c
+X-TUID: sZFI3H+ccGcn
 
 On 8/8/24 04:49, Jamin Lin wrote:
-> It only support continuous register memory region for all I2C bus.
-> However, the register address of all I2c bus are discontinuous
+> It only support continuous pool buffer memory region for all I2C bus.
+> However, the pool buffer address of all I2c bus are discontinuous
 > for AST2700.
 > 
-> Ex: the register address of I2C bus for ast2700 as following.
-> 0x100 - 0x17F: Device 0
-> 0x200 - 0x27F: Device 1
-> 0x300 - 0x37F: Device 2
-> 0x400 - 0x47F: Device 3
-> 0x500 - 0x57F: Device 4
-> 0x600 - 0x67F: Device 5
-> 0x700 - 0x77F: Device 6
-> 0x800 - 0x87F: Device 7
-> 0x900 - 0x97F: Device 8
-> 0xA00 - 0xA7F: Device 9
-> 0xB00 - 0xB7F: Device 10
-> 0xC00 - 0xC7F: Device 11
-> 0xD00 - 0xD7F: Device 12
-> 0xE00 - 0xE7F: Device 13
-> 0xF00 – 0xF7F: Device 14
-> 0x1000 – 0x107F: Device 15
+> Ex: the pool buffer address of I2C bus for ast2700 as following.
+> 0x1A0 - 0x1BF: Device 0 buffer
+> 0x2A0 - 0x2BF: Device 1 buffer
+> 0x3A0 - 0x3BF: Device 2 buffer
+> 0x4A0 - 0x4BF: Device 3 buffer
+> 0x5A0 - 0x5BF: Device 4 buffer
+> 0x6A0 - 0x6BF: Device 5 buffer
+> 0x7A0 - 0x7BF: Device 6 buffer
+> 0x8A0 - 0x8BF: Device 7 buffer
+> 0x9A0 - 0x9BF: Device 8 buffer
+> 0xAA0 - 0xABF: Device 9 buffer
+> 0xBA0 - 0xBBF: Device 10 buffer
+> 0xCA0 - 0xCBF: Device 11 buffer
+> 0xDA0 - 0xDBF: Device 12 buffer
+> 0xEA0 - 0xEBF: Device 13 buffer
+> 0xFA0 – 0xFBF: Device 14 buffer
+> 0x10A0 – 0x10BF: Device 15 buffer
 > 
-> Introduce a new class attribute to make user set each I2C bus gap size.
-> Update formula to create all I2C bus register memory regions.
+> Introduce a new class attribute to make user set each I2C bus
+> pool buffer gap size. Update formula to create all I2C bus
+> pool buffer memory regions.
 > 
 > Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 
@@ -148,36 +149,36 @@ C.
 >   2 files changed, 3 insertions(+), 1 deletion(-)
 > 
 > diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
-> index b52a99896c..9c222a02fe 100644
+> index d3d49340ea..abcb1d5330 100644
 > --- a/hw/i2c/aspeed_i2c.c
 > +++ b/hw/i2c/aspeed_i2c.c
-> @@ -1012,6 +1012,7 @@ static void aspeed_i2c_realize(DeviceState *dev, Error **errp)
->       SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
+> @@ -1098,6 +1098,7 @@ static void aspeed_i2c_realize(DeviceState *dev, Error **errp)
 >       AspeedI2CState *s = ASPEED_I2C(dev);
 >       AspeedI2CClass *aic = ASPEED_I2C_GET_CLASS(s);
-> +    uint32_t reg_offset = aic->reg_size + aic->reg_gap_size;
+>       uint32_t reg_offset = aic->reg_size + aic->reg_gap_size;
+> +    uint32_t pool_offset = aic->pool_size + aic->pool_gap_size;
 >   
 >       sysbus_init_irq(sbd, &s->irq);
 >       memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_i2c_ctrl_ops, s,
-> @@ -1034,7 +1035,7 @@ static void aspeed_i2c_realize(DeviceState *dev, Error **errp)
->               return;
+> @@ -1133,7 +1134,7 @@ static void aspeed_i2c_realize(DeviceState *dev, Error **errp)
+>       } else {
+>           for (i = 0; i < aic->num_busses; i++) {
+>               memory_region_add_subregion(&s->iomem,
+> -                                        aic->pool_base + (aic->pool_size * i),
+> +                                        aic->pool_base + (pool_offset * i),
+>                                           &s->busses[i].mr_pool);
 >           }
->   
-> -        memory_region_add_subregion(&s->iomem, aic->reg_size * (i + offset),
-> +        memory_region_add_subregion(&s->iomem, reg_offset * (i + offset),
->                                       &s->busses[i].mr);
 >       }
->   
 > diff --git a/include/hw/i2c/aspeed_i2c.h b/include/hw/i2c/aspeed_i2c.h
-> index fad5e9259a..02ede85906 100644
+> index 8e62ec64f8..b42c4dc584 100644
 > --- a/include/hw/i2c/aspeed_i2c.h
 > +++ b/include/hw/i2c/aspeed_i2c.h
-> @@ -275,6 +275,7 @@ struct AspeedI2CClass {
+> @@ -284,6 +284,7 @@ struct AspeedI2CClass {
 >   
->       uint8_t num_busses;
->       uint8_t reg_size;
-> +    uint32_t reg_gap_size;
->       uint8_t gap;
->       qemu_irq (*bus_get_irq)(AspeedI2CBus *);
->   
+>       uint64_t pool_size;
+>       hwaddr pool_base;
+> +    uint32_t pool_gap_size;
+>       uint8_t *(*bus_pool_base)(AspeedI2CBus *);
+>       bool check_sram;
+>       bool has_dma;
 

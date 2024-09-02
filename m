@@ -1,121 +1,130 @@
-Received: by 2002:a17:504:3a8f:b0:1be9:327d:8ee3 with SMTP id g15csp1249170njf;
-        Mon, 2 Sep 2024 15:39:20 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUoFfdnAum+aKG6NoXYhEcyXb4FkLzZciLnzCRuZTHjCuZjLahjUBSYlvtLZtOdfGzMF8SPi5YLNiLbLQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IGj3KVNYRxGqzlXkiMw1c9upcdRvVE4RasMIJA910YZpQVzjKaGZJfIHojlZheU7887Jb2h
-X-Received: by 2002:a05:622a:4898:b0:457:e3ee:7c3d with SMTP id d75a77b69052e-457e3ee7c8amr27543801cf.1.1725316759868;
-        Mon, 02 Sep 2024 15:39:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1725316759; cv=none;
+Received: by 2002:a17:504:3a8f:b0:1be9:327d:8ee3 with SMTP id g15csp1252662njf;
+        Mon, 2 Sep 2024 15:59:58 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVW0m8SySpl7KpIVninMcSklW5Wyx+9577ar4NLhydpMDB/oPaRJmDiFZkB9YnoreMVeLQ5e/TuxmaPbg==@linaro.org
+X-Google-Smtp-Source: AGHT+IGqsckWnJeHkxz3TFRwWDYRlGTzc/S2/nNGRAlKvHoL+PmtHYOdtLnhI3i2l9bWsgBBiTOl
+X-Received: by 2002:a05:622a:4acf:b0:453:74cd:3c93 with SMTP id d75a77b69052e-456f166a284mr164000251cf.9.1725317998432;
+        Mon, 02 Sep 2024 15:59:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1725317998; cv=none;
         d=google.com; s=arc-20160816;
-        b=VIdR+V2aZ43zT4NpkgznO5kC0o/EFyuoHjwrmhvGjUoozf4jOTUQlkHMD6KRGQ8qOo
-         MNVqRB7lLliHXmq8SFwtSW6JVnLnCyoLjX5V+4YtFBFwCXMInL3y8XSzDFR98raR4wpP
-         WkjuPQCas1T/Qpkm7tHZcnAoyDifDmzo/9/JV+n1f7KAWrFYJirpdbEzslGIrhi9UfsI
-         sKJsQBdNqKGC6Sd3LZ/Dsb+mctqAXfNYF2W1M4tVxjCzmMV3hBPy3cua7LxJPBqRyDrz
-         /7/etc3TKWFQnJL1vSkNBKFleA59x92GjM19QTHnidIOXXrPDqz+pF2LvdrmetO4qwvD
-         u6yQ==
+        b=GyeD7IZP++PmbbVG0Ng8KNm8hON6K3019gM4cxg6DlM75e9e+SVaitU0z4tC6qHNq6
+         +UMZUnGitbs1ENaNyZdDmDNIuboC1dohNUM/1WFuBDKhyAxU9fEGdBXQLmhXeiyI8Dsm
+         8ar5lV7kJgOTi770BjJ3La3HS3LNYLEXxUtMMAZ9f3Lm1r2QBTDN9kPEunuFYmcXsKH+
+         21ApjIda65XaDzxpsteKCzKs1ifoL4HKKHR+wyT1lb1VxDnhyt+zdfgIAGwsHHCtTBXV
+         3XO0TugfatlaAeWK4Xzg0//cDiy04KRxxY/drf1lXYaTUl5bX7vDt1I+TSZruhbYHDEr
+         JcBw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=Dq+g4FEZh68NmgX2WSdTxLdkAjL/JlW7tT3LFLSaMk4=;
-        fh=Ijsv8AzS91xPYADLbLCA66bQ+bBAXYs0C9Nl0ae2Bf4=;
-        b=sFtl4ssKZRi49srSyg9qDZwIm5qw1oq4KO3gAEwf4mVmSgNyf+UhBbUKyPmt6+naxp
-         8z7IiuW0/qoztHD9ffY31lpGh5c3DIrUAXMZglEmypS0dy3iIAfiVWA2IGLd1nt9vgGQ
-         0lnbDc1Op2A02qLnkl4wE7ZV31v/d+pANPDkUgMfsBUCbO/V3d4a5PkuEnpI4i1vH06/
-         oycZQ0hImBJm0pNsybxu0KgXa5TTwW6NHyS4znWFZ2Mw1KdSsly7c8v9LnDx4jmoQCad
-         MG3A/PZr3U39TV9VEsm28I1hvyfDb3PFVg3EkCPdEJNBGmFQROJQceM8r7iE4DKCBVrq
-         Mbcg==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:content-language:from:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=sDUKHwHTcnQ/kwQFFn2SFU7u2YUr6tqaRuPuTNOpxAA=;
+        fh=v1ZoQvyCXMxesOREIUltHIflLploPje/H1LveSwF32g=;
+        b=CX9lI9vCfzTL67eRbCkS1QdXWR63hZV4ZtuHK9vNmAtGbpYCBVjmOwVp9HmzzWwIEY
+         F7C0Cy9jURhxo1W/W7SE0iaWef4ZkGTSvqPwpC3ggPTxhXRC/3zjMdGHmpc2K/kjNj1r
+         80M7zdPLYUr2N2UfSQlUSgyq0CBTEATePrallKndAqod0dkNqrlmeITsrtXgr6iNy/yc
+         QJIn7JwOZb4hf8Ehskmg2E9uN/MAGuf6scnZPOx36y1wje6wLALUY6lgB1d7sOsfLmxE
+         vPNvoLrWprO2MxlHv8oScycQSJcF0o/FKK1SDbWXjJrONY6wOu4mkE9XWia+McdrASUM
+         irsw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=jWO+mrsV;
+       dkim=pass header.i=@linaro.org header.s=google header.b=OHGEReGI;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-45682e27e27si110582041cf.708.2024.09.02.15.39.19
+        by mx.google.com with ESMTPS id d75a77b69052e-45682d3d08bsi114522401cf.379.2024.09.02.15.59.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 02 Sep 2024 15:39:19 -0700 (PDT)
+        Mon, 02 Sep 2024 15:59:58 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=jWO+mrsV;
+       dkim=pass header.i=@linaro.org header.s=google header.b=OHGEReGI;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1slFhA-0000KF-Ax; Mon, 02 Sep 2024 18:38:48 -0400
+	id 1slG1J-0007Hn-Aq; Mon, 02 Sep 2024 18:59:37 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marietto2008@gmail.com>)
- id 1slFh8-0000Gx-Aa; Mon, 02 Sep 2024 18:38:46 -0400
-Received: from mail-pg1-x530.google.com ([2607:f8b0:4864:20::530])
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
+ id 1slG1H-0007HE-Ot
+ for qemu-arm@nongnu.org; Mon, 02 Sep 2024 18:59:35 -0400
+Received: from mail-pf1-x42f.google.com ([2607:f8b0:4864:20::42f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <marietto2008@gmail.com>)
- id 1slFh2-0005m2-Qo; Mon, 02 Sep 2024 18:38:45 -0400
-Received: by mail-pg1-x530.google.com with SMTP id
- 41be03b00d2f7-7c1324be8easo3682497a12.1; 
- Mon, 02 Sep 2024 15:38:40 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
+ id 1slG1E-0008AO-CT
+ for qemu-arm@nongnu.org; Mon, 02 Sep 2024 18:59:35 -0400
+Received: by mail-pf1-x42f.google.com with SMTP id
+ d2e1a72fcca58-7141285db14so3974364b3a.1
+ for <qemu-arm@nongnu.org>; Mon, 02 Sep 2024 15:59:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1725316719; x=1725921519; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=Dq+g4FEZh68NmgX2WSdTxLdkAjL/JlW7tT3LFLSaMk4=;
- b=jWO+mrsVfZbXSoNL6/nB7U7va8jm81//jeRsZQra7EJCwB8j9Vq0FaPgZWj+homMfn
- cQTMSt1dw29azihzw8q8zsx6hkAkw3qWV79SssEn4urmHIhFuv7dUYQQuaERc+n3D5G5
- PNTBuGVcnKs8x66aLe3Wsq58SDJODVZrCGA94MA9qCgwgXxuqCP46fHCAthjHrI2+m2h
- bEbuK6M7+G3u1EbYNDXN/Jvf1jgZPC6Hbjf/2L7nNTnlqr9wa19TrdB40awbw0hQAN4A
- p9L/JgU/wtqh/riIG4ZhWwQQNiMzerlqRCoEdIEvUptdxV7ordm9HM+jaz3aDlvxDFYQ
- BvAA==
+ d=linaro.org; s=google; t=1725317971; x=1725922771; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=sDUKHwHTcnQ/kwQFFn2SFU7u2YUr6tqaRuPuTNOpxAA=;
+ b=OHGEReGIOakdu84nFxykAkxYJZdPPQ/GSYMCi1SQtG6vBe6xXe78SIXaml1svG/l6C
+ k2jRgNHtFR86XPSXRMxsysGuZz47WXASoPQXoftu8wDigdxpAWV19mp3ha7xx1U/GU7K
+ w/3CHL8JhVy4fURw6G7JTwDJtj9yDCGS8USXIl9rjvurmcrU8XKzg4crd0tmv4wBbElM
+ s+xSONPzaTTOVwW9o8nXL3o5eaZaiGhz6mX/5nXsSv7JkC+R+8eRWjM//4wgD/XL/spp
+ QJsna4kAx3FteSImYy5FD3eFXoliJHdB5QzshI+IKdPeQyvMF1PPaQ/hsUbP1+rpWFSh
+ Dmxw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1725316719; x=1725921519;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=Dq+g4FEZh68NmgX2WSdTxLdkAjL/JlW7tT3LFLSaMk4=;
- b=AfgGgFoYle8X43vAzv4yKn3DyMFXlPXJYZDnysHTbWjqHOLVsQ0r5/3xHe63hBPUe/
- naa3XuAPckGMrzV2gh5IITlQ1oz6N+moOD/b+wCxYxAywymlXGByCHHB3EPqeFNYgRwd
- oyG8VJovoLd+S4ZyKN5bAwUYpPddZ9UmiwM6nyw5XzPY0TRYmFjV3eQLgr/JN1I33tnx
- PZRvkwwhV3uWKLtDiUprzZUkHluhanFZTw8pf1RKbtbigCnM+VGzsKZo4wJjVqM9gFzS
- zdQ1IvUncXTTxWzHCZZqX1sL3PIjwgQ7AJpqaxMsKtdXr+KQ9QwcDUCmS+WPOjap+X13
- 0Fnw==
+ d=1e100.net; s=20230601; t=1725317971; x=1725922771;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=sDUKHwHTcnQ/kwQFFn2SFU7u2YUr6tqaRuPuTNOpxAA=;
+ b=l9kdmonFY9e9R3O6VgFOlNaG8480xnZtJDQltZCdywvrQZyQsKhwlpahuVyDqU5bSE
+ dD5jRBP4B53Ls3Ehhk7o+0b2hmXaInjxljx8L16oORIKLMHtmHa2yY5F0M5AR+bTuzUa
+ QgHjSRzrQ9XLgLhe5WmqiZ57iyN282Uab4MhDWexK5rvhrlW7sbEFiu4IJu9Opyc2J0c
+ Sf9St5TSEtP1COGST+7uvaFF3UJ4TJnajoKH4ewcaupk4Bwl+8UFx0AbGIMzgvOtJv1L
+ pMBitikMhfUAkJ+sBicRLHKs9YbHZacvmK1wyrOYF1YTEbX1KNXrkKHBGQXioPZYT0SI
+ SJOw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWK6tgoV926IWOtGbDY7qa0C8uQ9IhncxBsKudzDJC7tTK5MTlYo8hcoUuPz4qD2moyigpUSByB4A==@nongnu.org
-X-Gm-Message-State: AOJu0Yy0yZgwTEuw9AZ8efGDnExJCF8tKCm0ivYG94woLWzT9CY/BvVY
- SCXCQa+Dou0Qs8emOWqI5qv6vxQ5WOZ1uN6SGxvB//4qmK82GsDZW5qU6roYjuAHjgd+GpijOlu
- frRkK5vWc2bi3BsZ4UDzRcBtHqqV3DIlUYVg=
-X-Received: by 2002:a17:90b:46c2:b0:2d8:8a3a:7b88 with SMTP id
- 98e67ed59e1d1-2d88a3a7c44mr14229316a91.6.1725316718572; Mon, 02 Sep 2024
- 15:38:38 -0700 (PDT)
+ AJvYcCUl24e5SRToLbgJ6ubihcVhP1ZOdM+w6TxkMQ1ci24Ig0jPQ30NxxhB3LulrX7mFevng3/jzjj8Eg==@nongnu.org
+X-Gm-Message-State: AOJu0YwAR6Ojrgzu9o0kqvhr6+Upum/MHczzAPHNiGppRo3D4y2dALvq
+ F9YTSWPYirtiKTUWmbvCGfVRoCP07KO6y8UAbP3UbOYKtZqlSDsaT440qWhHGMc=
+X-Received: by 2002:a05:6a20:c88b:b0:1c4:ba7c:741c with SMTP id
+ adf61e73a8af0-1cecdf0fb58mr10888304637.21.1725317970761; 
+ Mon, 02 Sep 2024 15:59:30 -0700 (PDT)
+Received: from ?IPV6:2604:3d08:9384:1d00::27bd? ([2604:3d08:9384:1d00::27bd])
+ by smtp.gmail.com with ESMTPSA id
+ 98e67ed59e1d1-2d8445e8026sm12219671a91.18.2024.09.02.15.59.29
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 02 Sep 2024 15:59:30 -0700 (PDT)
+Message-ID: <927dbfc5-a42c-4e7a-8e1a-24de44942207@linaro.org>
+Date: Mon, 2 Sep 2024 15:59:29 -0700
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: Error : init: partition(s) not found in /sys, waiting for their
+ uevent(s): mmcblk0p2, mmcblk0p3 while trying to emulate Android 14 on Ubuntu
+ 24.04 X64 bit using qemu-system-aarch64.
+To: Mario Marietto <marietto2008@gmail.com>
+Cc: qemu-discuss@nongnu.org, qemu-arm <qemu-arm@nongnu.org>
 References: <CA+1FSiirzpq4wjcKTLSexiOWtv26sgD37h=wA2qxv8Qh5MW_-w@mail.gmail.com>
  <23d60255-614a-4a06-b449-644f215555d0@linaro.org>
  <CA+1FSiitcSBa3JZaAZMGkdB356d2M0rPqscwFnNXGML5HghVCQ@mail.gmail.com>
  <c80e855a-ac1c-40b6-8a76-966e53c0b7d7@linaro.org>
  <4cbc21b0-0634-445d-8a67-7705a4e186d8@linaro.org>
  <CA+1FSigiu8xXF1OPs1oSPS7LiGe23gsN73RwPpJUYH=X5EkTRQ@mail.gmail.com>
- <CA+1FSiiH9LP-7UupNLjDyZJGqJAHAjN2nSLFm9fCx=ZNphxGoQ@mail.gmail.com>
-In-Reply-To: <CA+1FSiiH9LP-7UupNLjDyZJGqJAHAjN2nSLFm9fCx=ZNphxGoQ@mail.gmail.com>
-From: Mario Marietto <marietto2008@gmail.com>
-Date: Tue, 3 Sep 2024 00:38:02 +0200
-Message-ID: <CA+1FSih6t-Ccnxh1GvOFMf9pMjcfV1V+yyJHV=ZH0c2RY0Kjng@mail.gmail.com>
-Subject: Re: Error : init: partition(s) not found in /sys, waiting for their
- uevent(s): mmcblk0p2, mmcblk0p3 while trying to emulate Android 14 on Ubuntu
- 24.04 X64 bit using qemu-system-aarch64.
-To: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Cc: qemu-discuss@nongnu.org, qemu-arm <qemu-arm@nongnu.org>
-Content-Type: multipart/alternative; boundary="00000000000022bf7606212a9a74"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::530;
- envelope-from=marietto2008@gmail.com; helo=mail-pg1-x530.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Content-Language: en-US
+In-Reply-To: <CA+1FSigiu8xXF1OPs1oSPS7LiGe23gsN73RwPpJUYH=X5EkTRQ@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: base64
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42f;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pf1-x42f.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, HTML_MESSAGE=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01, WEIRD_PORT=0.001 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -130,1853 +139,201 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: h+qv4vmq4jUV
+X-TUID: ymvwABJANX7K
 
---00000000000022bf7606212a9a74
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-Update :
-
-ziomario@Z390-AORUS-PRO-DEST:
-/mnt/zroot-133/_OS/Android/aosp_14/android-image/bin$ mkdir
-x86_64-linux-musl
-
-ziomario@Z390-AORUS-PRO-DEST:
-/mnt/zroot-133/_OS/Android/aosp_14/android-image/bin$ cp
-/mnt/zroot-133/_OS/Android/aosp_14/android-image/bin/aarch64-linux-musl/cro=
-svm
-/mnt/zroot-133/_OS/Android/aosp_14/android-image/bin/x86_64-linux-musl
-
-ziomario@Z390-AORUS-PRO-DEST:
-/mnt/zroot-133/_OS/Android/aosp_14/android-image$ HOME=3D$(pwd)
-./bin/launch_cvd -vm_manager qemu_cli -report_anonymous_usage_stats=3Dn
---start_webrtc=3Dfalse
-
-
-Unfortunately it does not work :
-
-
-09-03 00:03:28.916 2737211 2737211 I launch_cvd: main.cc:235 Using
-system_image_dir of:
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
-NOTICE:
-
-By using this Android Virtual Device, you agree to
-Google Terms of Service (https://policies.google.com/terms).
-The Google Privacy Policy (https://policies.google.com/privacy)
-describes how Google handles information generated as you use
-Google Services.
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
-
-Reading --config option from:
-/mnt/zroot-133/_OS/Android/aosp_14/android-image/android-info.txt
-Launching CVD using --config=3D'phone'.
-/mnt/zroot-133/_OS/Android/aosp_14/android-image/bin/aarch64-linux-gnu/gfxs=
-tream_graphics_detector:
-error while loading shared
-
-libraries: libc.so.6: cannot open shared object file: No such file or
-directory
-
-Failed to run graphics detector, bad return value: 127. Assuming no
-availability.
-GPU auto mode: did not detect prerequisites for accelerated rendering
-support, enabling --gpu_mode=3Dguest_swiftshader.
-GPU vhost user auto mode: not needed for --gpu_mode=3Dguest_swiftshader. No=
-t
-enabling vhost user gpu.
-Requested resuming a previous session (the default behavior) but the base
-images have changed under the overlay, making the overlay incompatible.
-Wiping the overlay files.
-
-Path for instance UDS: /tmp/cf_avd_1000
-
-The following lines contain useful debugging information:
- Serial console is disabled; use -console=3Dtrue to enable it.
- Logcat output:
-/mnt/zroot-133/_OS/Android/aosp_14/android-image/cuttlefish/instances/cvd-1=
-/logs/logcat
- Kernel log:
-/mnt/zroot-133/_OS/Android/aosp_14/android-image/cuttlefish/instances/cvd-1=
-/kernel.log
- Launcher log:
-/mnt/zroot-133/_OS/Android/aosp_14/android-image/cuttlefish/instances/cvd-1=
-/logs/launcher.log
- Instance configuration:
-/mnt/zroot-133/_OS/Android/aosp_14/android-image/cuttlefish/instances/cvd-1=
-/cuttlefish_config.json
- Launcher Build ID: 12309296
-4. main.cc:232 | RunCvdMain |
-3. main.cc:104 | Run |
-2. server_loop_impl.cpp:89 | Run |
-1. qemu_manager.cpp:247 | StartCommands |
-| device/google/cuttlefish/host/libs/vm_manager/qemu_manager.cpp:97
-| Result<std::pair<int, int>> cuttlefish::vm_manager::(anonymous
-namespace)::GetQemuVersion(const std::string &)
-v CF_EXPECT(qemu_version_ret =3D=3D 0)
-/mnt/zroot-133/_OS/Android/aosp_14/android-image/bin/aarch64-linux-gnu/qemu=
-/qemu-system-aarch64
--version returned unexpected response .
-Stderr was
-/mnt/zroot-133/_OS/Android/aosp_14/android-image/bin/aarch64-linux-gnu/qemu=
-/qemu-system-aarch64:
-error while loading shared
-
-libraries: libncursesw.so.6: cannot open shared object file: No such file
-or directory
-
-On Mon, Sep 2, 2024 at 11:30=E2=80=AFPM Mario Marietto <marietto2008@gmail.=
-com>
-wrote:
-
-> Something is not right :
->
-> ziomario@Z390-AORUS-PRO-DEST:
-> /mnt/zroot-133/_OS/Android/aosp_14/android-image$ unzip ../aosp_cf_*.zip
->
-> Archive:  ../aosp_cf_arm64_only_phone-img-12309296.zip
->  inflating: android-info.txt
->  inflating: fastboot-info.txt
->  inflating: kernel_16k
->  inflating: ramdisk_16k.img
->  inflating: boot.img
->  inflating: boot_16k.img
->  inflating: bootloader
->  inflating: init_boot.img
->  inflating: userdata.img
->  inflating: vbmeta.img
->  inflating: vbmeta_system.img
->  inflating: vbmeta_system_dlkm.img
->  inflating: vbmeta_vendor_dlkm.img
->  inflating: vendor_boot.img
->  inflating: super.img
->
-> ziomario@Z390-AORUS-PRO-DEST:
-> /mnt/zroot-133/_OS/Android/aosp_14/android-image$ tar xzvf
-> ../cvd-host_package.tar.gz
->
->
-> ./
-> ./lib64/
-> ./lib64/android.hardware.keymaster@3.0.so
-> ./lib64/libciborium_io.dylib.so
-> ./lib64/libjpeg.so
-> ./lib64/cuttlefish_net.so
-> ./lib64/libbase.so
-> ./lib64/vulkan.pastel.so
-> ./lib64/libcuttlefish_host_config.so
-> ./lib64/libflagset.dylib.so
-> ./lib64/libkmr_common.dylib.so
-> ./lib64/libpkcs1.dylib.so
-> ./lib64/libicui18n-host.so
-> ./lib64/libwayland_client.so
-> ./lib64/libunwindstack.so
-> ./lib64/libkmr_ta.dylib.so
-> ./lib64/libcoset.dylib.so
-> ./lib64/libcppbor.so
-> ./lib64/libgatekeeper.so
-> ./lib64/libyuv.so
-> ./lib64/libgrpc++.so
-> ./lib64/libkmr_cf_ffi.so
-> ./lib64/libcppcose_rkp.so
-> ./lib64/libcuttlefish_transport.so
-> ./lib64/liblzma.so
-> ./lib64/libciborium_ll.dylib.so
-> ./lib64/libcuttlefish_allocd_utils.so
-> ./lib64/libgflags.so
-> ./lib64/android.hardware.keymaster@4.0.so
-> ./lib64/libcfg_if.dylib.so
-> ./lib64/libspki.dylib.so
-> ./lib64/libzeroize.dylib.so
-> ./lib64/libcgrouprc.so
-> ./lib64/libprotobuf-cpp-full.so
-> ./lib64/libcutils.so
-> ./lib64/libsqlite.so
-> ./lib64/libcuttlefish_utils_result.so
-> ./lib64/libbinder_ndk.so
-> ./lib64/libext2_uuid-host.so
-> ./lib64/libhex.dylib.so
-> ./lib64/libc_musl.so
-> ./lib64/libconst_oid.dylib.so
-> ./lib64/libprotobuf_support.dylib.so
-> ./lib64/tpm2-tss2-tcti.so
-> ./lib64/libserde.dylib.so
-> ./lib64/libartpalette.so
-> ./lib64/liblog.so
-> ./lib64/libonce_cell.dylib.so
-> ./lib64/libthiserror.dylib.so
-> ./lib64/libssl-host.so
-> ./lib64/libc++.so
-> ./lib64/libext4_utils.so
-> ./lib64/libpkcs8.dylib.so
-> ./lib64/libsparse-host.so
-> ./lib64/sandboxed_api_sandbox2.so
-> ./lib64/libcuttlefish_command_util.so
-> ./lib64/libbssl_sys.dylib.so
-> ./lib64/libkeymaster_messages.so
-> ./lib64/libcuttlefish_web.so
-> ./lib64/libvpx.so
-> ./lib64/libopus.so
-> ./lib64/libminijail.so
-> ./lib64/libcurl-host.so
-> ./lib64/libcuttlefish_kernel_log_monitor_utils.so
-> ./lib64/tpm2-tss2-util.so
-> ./lib64/liblibc.dylib.so
-> ./lib64/libprotobuf.dylib.so
-> ./lib64/libbitflags.dylib.so
-> ./lib64/libutils.so
-> ./lib64/libjsoncpp.so
-> ./lib64/libext2_blkid-host.so
-> ./lib64/libnl.so
-> ./lib64/tpm2-tss2-sys.so
-> ./lib64/libartbase.so
-> ./lib64/libxml2.so
-> ./lib64/libkmr_proto_rust.dylib.so
-> ./lib64/libcuttlefish_security.so
-> ./lib64/libsecure_env_tpm.dylib.so
-> ./lib64/libz-host.so
-> ./lib64/libprocessgroup.so
-> ./lib64/libcrypto_utils.so
-> ./lib64/libder.dylib.so
-> ./lib64/libdexfile.so
-> ./lib64/cf_metrics_proto.so
-> ./lib64/tpm2-tss2-esys.so
-> ./lib64/libcuttlefish_utils.so
-> ./lib64/libkeymaster_portable.so
-> ./lib64/libfruit.so
-> ./lib64/tpm2-tss2-rc.so
-> ./lib64/libcap.so
-> ./lib64/libnix.dylib.so
-> ./lib64/libicuuc-host.so
-> ./lib64/libziparchive.so
-> ./lib64/libkmr_ta_nonsecure.dylib.so
-> ./lib64/libstd.dylib.so
-> ./lib64/libhalf.dylib.so
-> ./lib64/tpm2-tss2-mu.so
-> ./lib64/libmemoffset.dylib.so
-> ./lib64/liblp.so
-> ./lib64/libcuttlefish_fs.so
-> ./lib64/libProxyConfig.so
-> ./lib64/libopenssl.dylib.so
-> ./lib64/libkmr_wire.dylib.so
-> ./lib64/libkmr_crypto_boring.dylib.so
-> ./lib64/liblog_rust.dylib.so
-> ./lib64/libhidlbase.so
-> ./lib64/libgrpc_wrap.so
-> ./lib64/libgrpc++_unsecure.so
-> ./lib64/libbytes.dylib.so
-> ./lib64/libsoft_attestation_cert.so
-> ./lib64/libcuttlefish_run_cvd_proto.so
-> ./lib64/libbinder.so
-> ./lib64/libcrypto-host.so
-> ./lib64/libwebm_mkvmuxer.so
-> ./lib64/libkmr_cf.dylib.so
-> ./lib64/libciborium.dylib.so
-> ./lib64/libpuresoftkeymasterdevice_host.so
-> ./lib64/libx509_cert.dylib.so
-> ./lib64/libsec1.dylib.so
-> ./nativetest64/
-> ./nativetest64/modem_simulator_test/
-> ./nativetest64/modem_simulator_test/modem_simulator_test
-> ./nativetest64/cuttlefish_net_tests/
-> ./nativetest64/cuttlefish_net_tests/cuttlefish_net_tests
-> ./etc/
-> ./etc/modem_simulator/
-> ./etc/modem_simulator/files/
-> ./etc/modem_simulator/files/iccprofile_for_sim0_for_CtsCarrierApiTestCase=
-s.xml
->
-> ./etc/modem_simulator/files/iccprofile_for_sim0.xml
-> ./etc/modem_simulator/files/numeric_operator.xml
-> ./etc/cvd_rsa4096.avbpubkey
-> ./etc/bootloader_aarch64/
-> ./etc/bootloader_aarch64/bootloader.qemu
-> ./etc/bootloader_aarch64/bootloader.crosvm
-> ./etc/bootloader_riscv64/
-> ./etc/bootloader_riscv64/bootloader.qemu
-> ./etc/automotive/
-> ./etc/automotive/vhalconfig/
-> ./etc/automotive/vhalconfig/VendorClusterTestProperties.json
-> ./etc/automotive/vhalconfig/DefaultProperties.json
-> ./etc/automotive/vhalconfig/TestProperties.json
-> ./etc/automotive/proxy_config.json
-> ./etc/cvd_rsa2048.avbpubkey
-> ./etc/cvd_avb_testkey_rsa4096.pem
-> ./etc/bootloader_arm/
-> ./etc/bootloader_arm/bootloader.qemu
-> ./etc/bootloader_x86_64/
-> ./etc/bootloader_x86_64/bootloader.qemu
-> ./etc/bootloader_x86_64/bootloader.crosvm
-> ./etc/cvd_avb_testkey_rsa2048.pem
-> ./etc/openwrt/
-> ./etc/openwrt/images/
-> ./etc/openwrt/images/openwrt_kernel_aarch64
-> ./etc/openwrt/images/openwrt_rootfs_x86_64
-> ./etc/openwrt/images/openwrt_rootfs_aarch64
-> ./etc/openwrt/images/openwrt_kernel_x86_64
-> ./etc/cvd_config/
-> ./etc/cvd_config/cvd_config_tv.json
-> ./etc/cvd_config/cvd_config_tablet.json
-> ./etc/cvd_config/cvd_config_wear.json
-> ./etc/cvd_config/cvd_config_auto_portrait.json
-> ./etc/cvd_config/cvd_config_slim.json
-> ./etc/cvd_config/cvd_config_go.json
-> ./etc/cvd_config/cvd_config_foldable.json
-> ./etc/cvd_config/cvd_config_auto.json
-> ./etc/cvd_config/cvd_config_auto_md.json
-> ./etc/cvd_config/cvd_config_phone.json
-> ./usr/
-> ./usr/share/
-> ./usr/share/vulkan/
-> ./usr/share/vulkan/icd.d/
-> ./usr/share/vulkan/icd.d/vk_swiftshader_icd.json
-> ./usr/share/qemu/
-> ./usr/share/qemu/aarch64-linux-gnu/
-> ./usr/share/qemu/aarch64-linux-gnu/opensbi-riscv64-generic-fw_dynamic.bin
-> ./usr/share/qemu/aarch64-linux-gnu/efi-virtio.rom
-> ./usr/share/qemu/aarch64-linux-gnu/keymaps/
-> ./usr/share/qemu/aarch64-linux-gnu/keymaps/en-us
-> ./usr/share/webrtc/
-> ./usr/share/webrtc/assets/
-> ./usr/share/webrtc/assets/style.css
-> ./usr/share/webrtc/assets/index.css
-> ./usr/share/webrtc/assets/index.html
-> ./usr/share/webrtc/assets/js/
-> ./usr/share/webrtc/assets/js/location.js
-> ./usr/share/webrtc/assets/js/rootcanal.js
-> ./usr/share/webrtc/assets/js/app.js
-> ./usr/share/webrtc/assets/js/touch.js
-> ./usr/share/webrtc/assets/js/adb.js
-> ./usr/share/webrtc/assets/js/index.js
-> ./usr/share/webrtc/assets/js/cf_webrtc.js
-> ./usr/share/webrtc/assets/js/server_connector.js
-> ./usr/share/webrtc/assets/js/controls.js
-> ./usr/share/webrtc/assets/controls.css
-> ./usr/share/webrtc/assets/custom.css
-> ./usr/share/webrtc/assets/client.html
-> ./usr/share/webrtc/certs/
-> ./usr/share/webrtc/certs/server.p12
-> ./usr/share/webrtc/certs/server.key
-> ./usr/share/webrtc/certs/trusted.pem
-> ./usr/share/webrtc/certs/server.crt
-> ./usr/share/zoneinfo/
-> ./usr/share/zoneinfo/tzdata
-> ./usr/share/crosvm/
-> ./usr/share/crosvm/aarch64-linux-gnu/
-> ./usr/share/crosvm/aarch64-linux-gnu/seccomp/
-> ./usr/share/crosvm/aarch64-linux-gnu/seccomp/snd_null_device.policy
-> ./usr/share/crosvm/aarch64-linux-gnu/seccomp/gpu_render_server.policy
-> ./usr/share/crosvm/aarch64-linux-gnu/seccomp/battery.policy
-> ./usr/share/crosvm/aarch64-linux-gnu/seccomp/block_device.policy
-> ./usr/share/crosvm/aarch64-linux-gnu/seccomp/pmem_device.policy
-> ./usr/share/crosvm/aarch64-linux-gnu/seccomp/wl_device.policy
-> ./usr/share/crosvm/aarch64-linux-gnu/seccomp/9p_device.policy
-> ./usr/share/crosvm/aarch64-linux-gnu/seccomp/input_device.policy
-> ./usr/share/crosvm/aarch64-linux-gnu/seccomp/net_device.policy
-> ./usr/share/crosvm/aarch64-linux-gnu/seccomp/rng_device.policy
-> ./usr/share/crosvm/aarch64-linux-gnu/seccomp/coiommu_device.policy
-> ./usr/share/crosvm/aarch64-linux-gnu/seccomp/gpu_device.policy
-> ./usr/share/crosvm/aarch64-linux-gnu/seccomp/serial_device.policy
-> ./usr/share/crosvm/aarch64-linux-gnu/seccomp/cras_audio_device.policy
-> ./usr/share/crosvm/aarch64-linux-gnu/seccomp/null_audio_device.policy
-> ./usr/share/crosvm/aarch64-linux-gnu/seccomp/snd_cras_device.policy
-> ./usr/share/crosvm/aarch64-linux-gnu/seccomp/vhost_scmi_device.policy
-> ./usr/share/crosvm/aarch64-linux-gnu/seccomp/balloon_device.policy
-> ./usr/share/crosvm/aarch64-linux-gnu/seccomp/vhost_net_device.policy
-> ./usr/share/crosvm/aarch64-linux-gnu/seccomp/vhost_vsock_device.policy
-> ./usr/share/crosvm/aarch64-linux-gnu/seccomp/fs_device.policy
-> ./usr/share/crosvm/aarch64-linux-gnu/seccomp/video_device.policy
-> ./usr/share/crosvm/aarch64-linux-gnu/seccomp/xhci_device.policy
-> ./usr/share/crosvm/aarch64-linux-gnu/seccomp/vios_audio_device.policy
-> ./bin/
-> ./bin/modem_simulator
-> ./bin/ms-tpm-20-ref
-> ./bin/mkenvimage_slim
-> ./bin/metrics
-> ./bin/socket_vsock_proxy
-> ./bin/resize.f2fs
-> ./bin/metrics_launcher
-> ./bin/automotive_vsock_proxy
-> ./bin/newfs_msdos
-> ./bin/netsim-ui/
-> ./bin/netsim-ui/assets/
-> ./bin/netsim-ui/assets/grid-background.svg
-> ./bin/netsim-ui/assets/netsim-logo.svg
-> ./bin/netsim-ui/assets/polar-background.svg
-> ./bin/netsim-ui/assets/hexagonal-background.png
-> ./bin/netsim-ui/assets/netsim-logo-b.svg
-> ./bin/netsim-ui/node_modules/
-> ./bin/netsim-ui/node_modules/tslib/
-> ./bin/netsim-ui/node_modules/tslib/tslib.es6.js
-> ./bin/netsim-ui/index.html
-> ./bin/netsim-ui/js/
-> ./bin/netsim-ui/js/device-info.js
-> ./bin/netsim-ui/js/device-list.js
-> ./bin/netsim-ui/js/packet-info.js
-> ./bin/netsim-ui/js/device-dropzone.js
-> ./bin/netsim-ui/js/navigation-bar.js
-> ./bin/netsim-ui/js/device-map.js
-> ./bin/netsim-ui/js/device-dragzone.js
-> ./bin/netsim-ui/js/netsim-app.js
-> ./bin/netsim-ui/js/customize-map-button.js
-> ./bin/netsim-ui/js/device-observer.js
-> ./bin/netsim-ui/js/license-info.js
-> ./bin/netsim-ui/js/cube-sprite.js
-> ./bin/netsim-ui/js/pyramid-sprite.js
-> ./bin/unpack_bootimg
-> ./bin/adb
-> ./bin/extract-vmlinux
-> ./bin/health
-> ./bin/screen_recording_server
-> ./bin/lz4
-> ./bin/wmediumd_gen_config
-> ./bin/gnss_grpc_proxy
-> ./bin/simg2img
-> ./bin/secure_env
-> ./bin/mke2fs
-> ./bin/snapshot_util_cvd
-> ./bin/cvd_internal_display
-> ./bin/acloud_translator
-> ./bin/defrag.f2fs
-> ./bin/tombstone_receiver
-> ./bin/root-canal
-> ./bin/netsimd
-> ./bin/console_forwarder
-> ./bin/powerwash_cvd
-> ./bin/process_restarter
-> ./bin/fsck.f2fs
-> ./bin/cvd_host_bugreport
-> ./bin/extract-ikconfig
-> ./bin/cvd_internal_status
-> ./bin/webRTC
-> ./bin/acloud
-> ./bin/tcp_connector
-> ./bin/process_sandboxer
-> ./bin/webrtc_operator
-> ./bin/cvd_update_location
-> ./bin/e2fsdroid
-> ./bin/avbtool
-> ./bin/fastboot
-> ./bin/build_super_image
-> ./bin/powerbtn_cvd
-> ./bin/allocd_client
-> ./bin/dump.f2fs
-> ./bin/netsim
-> ./bin/casimir
-> ./bin/pica
-> ./bin/cvd_update_security_algorithm
-> ./bin/record_cvd
-> ./bin/vhal_proxy_server
-> ./bin/cvd_status
-> ./bin/cvd_import_locations
-> ./bin/launch_cvd
-> ./bin/cvd_internal_start
-> ./bin/restart_cvd
-> ./bin/cvd_internal_host_bugreport
-> ./bin/mkuserimg_mke2fs
-> ./bin/fec
-> ./bin/cvd_internal_env
-> ./bin/vhost_device_vsock
-> ./bin/cvd_internal_stop
-> ./bin/cvd_send_sms
-> ./bin/assemble_cvd
-> ./bin/cvd_send_id_disclosure
-> ./bin/mcopy
-> ./bin/operator_proxy
-> ./bin/mkbootfs
-> ./bin/run_cvd
-> ./bin/openwrt_control_server
-> ./bin/mkbootimg
-> ./bin/kernel_log_monitor
-> ./bin/mmd
-> ./bin/toybox
-> ./bin/crosvm
-> ./bin/aarch64-linux-musl/
-> ./bin/aarch64-linux-musl/crosvm
-> ./bin/sefcontext_compile
-> ./bin/wmediumd
-> ./bin/echo_server
-> ./bin/log_tee
-> ./bin/lpmake
-> ./bin/logcat_receiver
-> ./bin/lpunpack
-> ./bin/control_env_proxy_server
-> ./bin/mtools
-> ./bin/adb_connector
-> ./bin/aarch64-linux-gnu/
-> ./bin/aarch64-linux-gnu/libepoxy.so.0
-> ./bin/aarch64-linux-gnu/libffi.so.7
-> ./bin/aarch64-linux-gnu/qemu/
-> ./bin/aarch64-linux-gnu/qemu/qemu-system-x86_64
-> ./bin/aarch64-linux-gnu/qemu/libepoxy.so.0
-> ./bin/aarch64-linux-gnu/qemu/libvirglrenderer.so.1
-> ./bin/aarch64-linux-gnu/qemu/libgbm.so.1
-> ./bin/aarch64-linux-gnu/qemu/libgfxstream_backend.so.0
-> ./bin/aarch64-linux-gnu/qemu/librutabaga_gfx_ffi.so.0
-> ./bin/aarch64-linux-gnu/qemu/qemu-system-riscv64
-> ./bin/aarch64-linux-gnu/qemu/qemu-system-aarch64
-> ./bin/aarch64-linux-gnu/qemu/libc++.so.1
-> ./bin/aarch64-linux-gnu/qemu/libunwind.so.1
-> ./bin/aarch64-linux-gnu/qemu/libz.so.1
-> ./bin/aarch64-linux-gnu/qemu/libc++abi.so.1
-> ./bin/aarch64-linux-gnu/libvirglrenderer.so.1
-> ./bin/aarch64-linux-gnu/libdrm.so.2
-> ./bin/aarch64-linux-gnu/libgbm.so.1
-> ./bin/aarch64-linux-gnu/libgfxstream_backend.so
-> ./bin/aarch64-linux-gnu/libwayland-client.so.0
-> ./bin/aarch64-linux-gnu/libminijail.so
-> ./bin/aarch64-linux-gnu/gfxstream_graphics_detector
-> ./bin/aarch64-linux-gnu/crosvm
-> ./bin/lpadd
-> ./bin/make_f2fs
-> ./bin/sandboxer_proxy
-> ./bin/stop_cvd
-> ./bin/casimir_control_server
->
->
-> ziomario@Z390-AORUS-PRO-DEST:
-> /mnt/zroot-133/_OS/Android/aosp_14/android-image$ HOME=3D$(pwd)
-> ./bin/launch_cvd -vm_manager qemu_cli -report_anonymous_usage_stats=3Dn
-> --start_webrtc=3Dfalse
->
->
-> 09-02 23:27:10.473 2729990 2729990 I launch_cvd: main.cc:235 Using
-> system_image_dir of:
-> =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
-> NOTICE:
->
-> By using this Android Virtual Device, you agree to
-> Google Terms of Service (https://policies.google.com/terms).
-> The Google Privacy Policy (https://policies.google.com/privacy)
-> describes how Google handles information generated as you use
-> Google Services.
-> =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
->
-> Reading --config option from:
-> /mnt/zroot-133/_OS/Android/aosp_14/android-image/android-info.txt
-> Launching CVD using --config=3D'phone'.
-> aarch64-binfmt-P: Could not open '/lib/ld-linux-aarch64.so.1': No such
-> file or directory
-> Failed to run graphics detector, bad return value: 255. Assuming no
-> availability.
-> GPU auto mode: did not detect prerequisites for accelerated rendering
-> support, enabling --gpu_mode=3Dguest_swiftshader.
-> GPU vhost user auto mode: not needed for --gpu_mode=3Dguest_swiftshader. =
-Not
-> enabling vhost user gpu.
-> Requested resuming a previous session (the default behavior) but the base
-> images have changed under the overlay, making the overlay inc
-> ompatible. Wiping the overlay files.
-> Path for instance UDS: /tmp/cf_avd_1000
-> Failed to run `/mnt/zroot-133/_OS/Android/aosp_14/android-image/bin/crosv=
-m
-> create_qcow2 --backing-file /mnt/zroot-133/_OS/Android/aosp_
-> 14/android-image/cuttlefish/instances/cvd-1/persistent_composite.img
-> /mnt/zroot-133/_OS/Android/aosp_14/android-image/cuttlefish/instan
-> ces/cvd-1/persistent_composite_overlay.img`
-> stdout:
-> ###
->
-> ###
-> stderr:
-> ###
-> /mnt/zroot-133/_OS/Android/aosp_14/android-image/bin/crosvm: riga 3:
-> /mnt/zroot-133/_OS/Android/aosp_14/android-image/bin/x86_64-linux-
-> musl/crosvm: File o directory non esistente
->
-> ###
-> Return code: "127"
-> qemu: uncaught target signal 6 (Aborted) - core dumped
-> 09-02 23:27:31.223 2729990 2729990 E launch_cvd: subprocess.cpp:207
-> Subprocess 2730018 was interrupted by a signal 'Aborted' (6)
-> 09-02 23:27:31.224 2729990 2729990 E launch_cvd: main.cc:323 assemble_cvd
-> returned -1
->
-> On Mon, Sep 2, 2024 at 11:20=E2=80=AFPM Mario Marietto <marietto2008@gmai=
-l.com>
-> wrote:
->
->> Hello.
->>
->> I've downloaded this file : aosp_cf_arm64_only_phone-img-12309296.zip an=
-d
->> this file : cvd-host_package.tar.gz
->>
->> from here :
->> https://ci.android.com/builds/submitted/12309296/aosp_cf_arm64_only_phon=
-e-trunk_staging-userdebug/latest
->>
->> But let's say that I don't want to use the *.img files that are stored
->> inside "aosp_cf_arm64_only_phone-img-12309296.zip",but the same files th=
-at
->> have been produced when I have compiled this version of Android :
->>
->>
->> https://github.com/raspberry-vanilla/android_local_manifest?tab=3Dreadme=
--ov-file
->>
->> Can I do it ? Is it supposed to work the same ?
->>
->> Thanks.
->>
->> On Mon, Sep 2, 2024 at 10:23=E2=80=AFPM Pierrick Bouvier <
->> pierrick.bouvier@linaro.org> wrote:
->>
->>>
->>>
->>> On 9/2/24 13:20, Pierrick Bouvier wrote:
->>> > On 9/2/24 12:53, Mario Marietto wrote:
->>> >> Hello Pierrick.
->>> >>
->>> >> With Cuttlefish can I emulate Android 14 for arm64 ? I ask because i=
-n
->>> >> your script I read :
->>> >>
->>> >> "|/home/user/.work/qemu/build/qemu-system-x86_64", so,I suspect that
->>> you
->>> >> have emulated Android x64 bit,but I need arm64. |
->>> >>
->>> >
->>> > Yes, it works for both architecture. The only thing I didn't try is a=
-n
->>> > arm64 vm accelerated with kvm (I don't have this a linux-aarch64
->>> > machine), but it should work.
->>>
->>> And of course, if you want to write a custom wrapper for qemu, name it
->>> qemu-system-aarch64, and call the same binary instead of x86_64 variant=
-s.
->>>
->>> >
->>> >> I also read "for aarch64 images: select
->>> >> |aosp_cf_arm64_only_phone-trunk_staging-userdebug" : I'm not able to
->>> >> download this kind of images. I don't understand how the Branch Grid
->>> >> works. Can you explain to me a little bit more ?
->>> >> |
->>> >
->>> > You have a link just next to it ("Branch grid") on the wiki page.
->>> > Once on ci android page, click on filter button (three bars, inverted
->>> > pyramid), and select aosp_cf_arm64_only_phone-trunk_staging-userdebug=
-.
->>> > Then go to artifacts, and download image and cvd_host_x86_64 package,
->>> as
->>> > wiki mentions.
->>> >
->>> > Don't hesitate to ask more questions on this. I imagine this topic
->>> might
->>> > interest some people who try to do the same thing.
->>> >
->>> > Pierrick
->>> >
->>> >> |
->>> >> |
->>> >>
->>> >>
->>> >> On Mon, Sep 2, 2024 at 8:47=E2=80=AFPM Pierrick Bouvier
->>> >> <pierrick.bouvier@linaro.org <mailto:pierrick.bouvier@linaro.org>>
->>> wrote:
->>> >>
->>> >>      Hello Mario,
->>> >>
->>> >>      very recently, I had to investigate booting time of Android whe=
-n
->>> using
->>> >>      QEMU. You can probably manage to boot this with only QEMU alone=
-,
->>> but in
->>> >>      my experience, using Cuttlefish tooling is an easier approach.
->>> >>
->>> >>      If you really want to use only QEMU, you can use Cuttlefish to
->>> get
->>> >>      exact
->>> >>      command line used (which disk goes where), and iterate from tha=
-t.
->>> >>
->>> >>      Instructions:
->>> >>
->>> https://linaro.atlassian.net/wiki/spaces/QEMU/pages/29464068097/Run+And=
-roid+using+QEMU
->>> <
->>> https://linaro.atlassian.net/wiki/spaces/QEMU/pages/29464068097/Run+And=
-roid+using+QEMU
->>> >
->>> >>
->>> >>      As you'll see, I could not get a direct graphic output, but usi=
-ng
->>> >>      scrcpy, it worked well for me. Hope it can fit your use case.
->>> >>
->>> >>      Regards,
->>> >>      Pierrick
->>> >>
->>> >>      On 9/2/24 06:49, Mario Marietto wrote:
->>> >>       > Hello.
->>> >>       >
->>> >>       > I would like to emulate Android 14 on my Ubuntu 24.04 OS X64
->>> bit
->>> >>      using
->>> >>       > qemu-system-aarch64. I tried using the following parameters =
-:
->>> >>       >
->>> >>       > qemu-system-aarch64 \
->>> >>       >          -smp 4 \
->>> >>       >          -m 2048 \
->>> >>       >          -cpu cortex-a72 \
->>> >>       >          -M virt \
->>> >>       >          -device virtio-gpu-pci,xres=3D1024,yres=3D768 \
->>> >>       >          -display sdl,gl=3Don \
->>> >>       >          -device usb-ehci \
->>> >>       >          -device usb-kbd \
->>> >>       >          -device virtio-tablet-pci \
->>> >>       >          -usb \
->>> >>       >          -serial stdio \
->>> >>       >          -kernel /mnt/zroot-133/_OS/Android/rpi4/Image \
->>> >>       >          -initrd /mnt/zroot-133/_OS/Android/rpi4/ramdisk.img=
- \
->>> >>       >          -drive
->>> >>       >
->>> >>
->>> index=3D0,if=3Dnone,id=3Dsystem,file=3D/mnt/zroot-133/_OS/Android/rpi4/=
-boot.img \
->>> >>       >          -device virtio-blk-pci,drive=3Dboot \
->>> >>       >          -drive
->>> >>       >
->>> >>
->>> index=3D1,if=3Dnone,id=3Dsystem,file=3D/mnt/zroot-133/_OS/Android/rpi4/=
-system.img \
->>> >>       >          -device virtio-blk-pci,drive=3Dsystem \
->>> >>       >          -drive
->>> >>       >
->>> >>
->>> index=3D2,if=3Dnone,id=3Dvendor,file=3D/mnt/zroot-133/_OS/Android/rpi4/=
-vendor.img \
->>> >>       >          -device virtio-blk-pci,drive=3Dvendor \
->>> >>       > -append "console=3DttyAMA0,38400 drm.debug=3D0x0 rootwait
->>> rootdelay=3D5
->>> >>       > root=3D/dev/mmcblk0p2 androidboot.hardware=3Drpi4
->>> >>       > androidboot.selinux=3Dpermissive security=3Dselinux selinux=
-=3D1
->>> >>       > androidboot.qemu.hw.mainkeys=3D0 androidboot.lcd.density=3D1=
-60"
->>> >>       >
->>> >>       > The error I get in short is :
->>> >>       >
->>> >>       > [ 1.993668] init: bool
->>> >>       >
->>> >>
->>> android::init::BlockDevInitializer::InitDevices(std::set<std::string>):
->>> >>       > partition(s) not found in /sys, waiting for their uevent(s):
->>> >>      mmcblk0p2,
->>> >>       > mmcblk0p3
->>> >>       >
->>> >>       >
->>> >>       > One user suggested to :
->>> >>       >
->>> >>       >
->>> >>       >
->>> >>       >
->>> >>       >
->>> >>       > Hi!!! The "/sys" is a "dynamic fs" created at ram from the
->>> >>      kernel, to
->>> >>       > export a lot of things...so most of the files only exist at
->>> runtime.
->>> >>       > Normally, the partitions from the block device have a symlin=
-k
->>> at
->>> >>       > /sys/<something>/<...> that points to /dev/ block node. It
->>> seems
->>> >>      that
->>> >>       > there are no such files under /sys according to what init is
->>> looking
->>> >>       > for. You can double check this at init source code to check
->>> the
->>> >>      exact
->>> >>       > path but I'm guessing that you'll have to change the qemu
->>> arguments
->>> >>       > regarding the block device.
->>> >>       >
->>> >>       > About userdata.img I think it's normal since in the old days=
-,
->>> the
->>> >>      image
->>> >>       > was a "empty sparse image", that means, at the first flashin=
-g
->>> >>      process,
->>> >>       > there isn't userdata information, we're just "flashing the
->>> >>      partition"
->>> >>       > with empty data.
->>> >>       > Tks!!!
->>> >>       >
->>> >>       >
->>> >>       >
->>> >>       > So,in short I should change the qemu arguments regarding the
->>> block
->>> >>       > device. I tried in this way :
->>> >>       >
->>> >>       >
->>> >>       > qemu-system-aarch64 \
->>> >>       >          -smp 4 \
->>> >>       >          -m 2048 \
->>> >>       >          -cpu cortex-a72 \
->>> >>       >          -M virt \
->>> >>       >          -device virtio-gpu-pci,xres=3D1024,yres=3D768 \
->>> >>       >          -display sdl,gl=3Don \
->>> >>       >          -device usb-ehci \
->>> >>       >          -device usb-kbd \
->>> >>       >          -device virtio-tablet-pci \
->>> >>       >          -usb \
->>> >>       >          -serial stdio \
->>> >>       >          -kernel /mnt/zroot-133/_OS/Android/rpi4/Image \
->>> >>       >          -initrd /mnt/zroot-133/_OS/Android/rpi4/ramdisk.img=
- \
->>> >>       >          -hda /mnt/zroot-133/_OS/Android/rpi4/boot.img \
->>> >>       >          -hdb /mnt/zroot-133/_OS/Android/rpi4/system.img \
->>> >>       >          -hdc /mnt/zroot-133/_OS/Android/rpi4/vendor.img \
->>> >>       >        -append "console=3DttyAMA0,38400 drm.debug=3D0x0 root=
-wait
->>> >>      rootdelay=3D5
->>> >>       > root=3D/dev/mmcblk0p2 androidboot.hardware=3Drpi4
->>> >>       > androidboot.selinux=3Dpermissive security=3Dselinux selinux=
-=3D1
->>> >>       > androidboot.qemu.hw.mainkeys=3D0 androidboot.lcd.density=3D1=
-60"
->>> >>       >
->>> >>       >
->>> >>       > but the error is still there. Do you know some different
->>> alternative
->>> >>       > block devices to try ? thanks.
->>> >>       >
->>> >>       >
->>> >>       > --
->>> >>       > Mario.
->>> >>
->>> >>
->>> >>
->>> >> --
->>> >> Mario.
->>>
->>
->>
->> --
->> Mario.
->>
->
->
-> --
-> Mario.
->
-
-
---=20
-Mario.
-
---00000000000022bf7606212a9a74
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div>Update :</div><div><span style=3D"font-family:monospa=
-ce"><span style=3D"font-weight:bold;color:rgb(84,255,84);background-color:r=
-gb(255,255,255)"><br></span></span></div><div><span style=3D"font-family:mo=
-nospace"><span style=3D"font-weight:bold;color:rgb(84,255,84);background-co=
-lor:rgb(255,255,255)">ziomario@Z390-AORUS-PRO-DEST</span><span style=3D"col=
-or:rgb(0,0,0);background-color:rgb(255,255,255)">:</span><span style=3D"fon=
-t-weight:bold;color:rgb(84,84,255);background-color:rgb(255,255,255)">/mnt/=
-zroot-133/_OS/Android/aosp_14/android-image/bin</span><span style=3D"color:=
-rgb(0,0,0);background-color:rgb(255,255,255)">$ mkdir x86_64-linux-musl</sp=
-an></span></div><div><span style=3D"font-family:monospace"><span style=3D"f=
-ont-weight:bold;color:rgb(84,255,84);background-color:rgb(255,255,255)"><br=
-></span></span></div><div><span style=3D"font-family:monospace"><span style=
-=3D"font-weight:bold;color:rgb(84,255,84);background-color:rgb(255,255,255)=
-">ziomario@Z390-AORUS-PRO-DEST</span><span style=3D"color:rgb(0,0,0);backgr=
-ound-color:rgb(255,255,255)">:</span><span style=3D"font-weight:bold;color:=
-rgb(84,84,255);background-color:rgb(255,255,255)">/mnt/zroot-133/_OS/Androi=
-d/aosp_14/android-image/bin</span><span style=3D"color:rgb(0,0,0);backgroun=
-d-color:rgb(255,255,255)">$ </span></span>cp /mnt/zroot-133/_OS/Android/aos=
-p_14/android-image/bin/aarch64-linux-musl/crosvm /mnt/zroot-133/_OS/Android=
-/aosp_14/android-image/bin/<span style=3D"font-family:monospace"><span styl=
-e=3D"color:rgb(0,0,0);background-color:rgb(255,255,255)">x86_64-linux-musl<=
-/span></span></div><div><br></div><div><span style=3D"font-family:monospace=
-"><span style=3D"font-weight:bold;color:rgb(84,255,84);background-color:rgb=
-(255,255,255)">ziomario@Z390-AORUS-PRO-DEST</span><span style=3D"color:rgb(=
-0,0,0);background-color:rgb(255,255,255)">:</span><span style=3D"font-weigh=
-t:bold;color:rgb(84,84,255);background-color:rgb(255,255,255)">/mnt/zroot-1=
-33/_OS/Android/aosp_14/android-image</span><span style=3D"color:rgb(0,0,0);=
-background-color:rgb(255,255,255)">$ HOME=3D$(pwd) ./bin/launch_cvd -vm_man=
-ager qemu_cli -repor</span>t_anonymous_usage_stats=3Dn --start_webrtc=3Dfal=
-se
-<br></span></div><div><span style=3D"font-family:monospace"><br></span></di=
-v><div><span style=3D"font-family:monospace"><br></span></div><div><span st=
-yle=3D"font-family:monospace">Unfortunately it does not work :</span></div>=
-<div><span style=3D"font-family:monospace"><br></span></div><div><span styl=
-e=3D"font-family:monospace"><br></span></div><div><span style=3D"font-famil=
-y:monospace">09-03 00:03:28.916 2737211 2737211 I launch_cvd: main.cc:235 U=
-sing system_image_dir of: =C2=A0<br>=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D
-<br>NOTICE:
-<br>
-<br>By using this Android Virtual Device, you agree to
-<br>Google Terms of Service (<a href=3D"https://policies.google.com/terms">=
-https://policies.google.com/terms</a>).
-<br>The Google Privacy Policy (<a href=3D"https://policies.google.com/priva=
-cy">https://policies.google.com/privacy</a>)
-<br>describes how Google handles information generated as you use
-<br>Google Services.
-<br>=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
-<br>
-<br>Reading --config option from: /mnt/zroot-133/_OS/Android/aosp_14/androi=
-d-image/android-info.txt
-<br>Launching CVD using --config=3D&#39;phone&#39;.
-<br>/mnt/zroot-133/_OS/Android/aosp_14/android-image/bin/aarch64-linux-gnu/=
-gfxstream_graphics_detector: error while loading shared=C2=A0</span></div><=
-div><span style=3D"font-family:monospace"><br></span></div><div><span style=
-=3D"font-family:monospace">libraries: libc.so.6: cannot open shared object =
-file: No such file or directory
-<br></span></div><div><span style=3D"font-family:monospace"><br></span></di=
-v><div><span style=3D"font-family:monospace">Failed to run graphics detecto=
-r, bad return value: 127. Assuming no availability.
-<br>GPU auto mode: did not detect prerequisites for accelerated rendering s=
-upport, enabling --gpu_mode=3Dguest_swiftshader.
-<br>GPU vhost user auto mode: not needed for --gpu_mode=3Dguest_swiftshader=
-. Not enabling vhost user gpu.
-<br>Requested resuming a previous session (the default behavior) but the ba=
-se images have changed under the overlay, making the overlay incompatible. =
-Wiping the overlay files.
-<br></span></div><div><span style=3D"font-family:monospace"><br></span></di=
-v><div><span style=3D"font-family:monospace">Path for instance UDS: /tmp/cf=
-_avd_1000
-<br><span style=3D"font-weight:bold;color:rgb(84,255,84);background-color:r=
-gb(255,255,255)"><br></span></span></div><div><span style=3D"font-family:mo=
-nospace"><span style=3D"font-weight:bold;color:rgb(84,255,84);background-co=
-lor:rgb(255,255,255)">The following lines contain useful debugging informat=
-ion:</span><span style=3D"color:rgb(0,0,0);background-color:rgb(255,255,255=
-)">
-</span><br><span style=3D"font-weight:bold;color:rgb(84,255,84);background-=
-color:rgb(255,255,255)"> =C2=A0Serial console is disabled; use -console=3Dt=
-rue to enable it.</span><span style=3D"color:rgb(0,0,0);background-color:rg=
-b(255,255,255)">
-</span><br><span style=3D"font-weight:bold;color:rgb(84,255,84);background-=
-color:rgb(255,255,255)"> =C2=A0Logcat output: /mnt/zroot-133/_OS/Android/ao=
-sp_14/android-image/cuttlefish/instances/cvd-1/logs/logcat</span><span styl=
-e=3D"color:rgb(0,0,0);background-color:rgb(255,255,255)">
-</span><br><span style=3D"font-weight:bold;color:rgb(84,255,84);background-=
-color:rgb(255,255,255)"> =C2=A0Kernel log: /mnt/zroot-133/_OS/Android/aosp_=
-14/android-image/cuttlefish/instances/cvd-1/kernel.log</span><span style=3D=
-"color:rgb(0,0,0);background-color:rgb(255,255,255)">
-</span><br><span style=3D"font-weight:bold;color:rgb(84,255,84);background-=
-color:rgb(255,255,255)"> =C2=A0Launcher log: /mnt/zroot-133/_OS/Android/aos=
-p_14/android-image/cuttlefish/instances/cvd-1/logs/launcher.log</span><span=
- style=3D"color:rgb(0,0,0);background-color:rgb(255,255,255)">
-</span><br><span style=3D"font-weight:bold;color:rgb(84,255,84);background-=
-color:rgb(255,255,255)"> =C2=A0Instance configuration: /mnt/zroot-133/_OS/A=
-ndroid/aosp_14/android-image/cuttlefish/instances/cvd-1/cuttlefish_config.j=
-son</span><span style=3D"color:rgb(0,0,0);background-color:rgb(255,255,255)=
-">
-</span><br><span style=3D"font-weight:bold;color:rgb(84,255,84);background-=
-color:rgb(255,255,255)"> =C2=A0Launcher Build ID: 12309296</span><span styl=
-e=3D"color:rgb(0,0,0);background-color:rgb(255,255,255)">
-</span><br><span style=3D"color:rgb(178,104,24);background-color:rgb(255,25=
-5,255)">4</span><span style=3D"color:rgb(0,0,0);background-color:rgb(255,25=
-5,255)">. </span><span style=3D"color:rgb(0,0,0);background-color:rgb(255,2=
-55,255)">main.cc</span><span style=3D"color:rgb(0,0,0);background-color:rgb=
-(255,255,255)">:</span><span style=3D"color:rgb(178,104,24);background-colo=
-r:rgb(255,255,255)">232</span><span style=3D"color:rgb(0,0,0);background-co=
-lor:rgb(255,255,255)"> | </span><span style=3D"color:rgb(24,178,178);backgr=
-ound-color:rgb(255,255,255)">RunCvdMain</span><span style=3D"color:rgb(0,0,=
-0);background-color:rgb(255,255,255)"> | =C2=A0</span><br><span style=3D"co=
-lor:rgb(178,104,24);background-color:rgb(255,255,255)">3</span><span style=
-=3D"color:rgb(0,0,0);background-color:rgb(255,255,255)">. </span><span styl=
-e=3D"color:rgb(0,0,0);background-color:rgb(255,255,255)">main.cc</span><spa=
-n style=3D"color:rgb(0,0,0);background-color:rgb(255,255,255)">:</span><spa=
-n style=3D"color:rgb(178,104,24);background-color:rgb(255,255,255)">104</sp=
-an><span style=3D"color:rgb(0,0,0);background-color:rgb(255,255,255)"> | </=
-span><span style=3D"color:rgb(24,178,178);background-color:rgb(255,255,255)=
-">Run</span><span style=3D"color:rgb(0,0,0);background-color:rgb(255,255,25=
-5)"> | =C2=A0</span><br><span style=3D"color:rgb(178,104,24);background-col=
-or:rgb(255,255,255)">2</span><span style=3D"color:rgb(0,0,0);background-col=
-or:rgb(255,255,255)">. </span><span style=3D"color:rgb(0,0,0);background-co=
-lor:rgb(255,255,255)">server_loop_impl.cpp</span><span style=3D"color:rgb(0=
-,0,0);background-color:rgb(255,255,255)">:</span><span style=3D"color:rgb(1=
-78,104,24);background-color:rgb(255,255,255)">89</span><span style=3D"color=
-:rgb(0,0,0);background-color:rgb(255,255,255)"> | </span><span style=3D"col=
-or:rgb(24,178,178);background-color:rgb(255,255,255)">Run</span><span style=
-=3D"color:rgb(0,0,0);background-color:rgb(255,255,255)"> | =C2=A0</span><br=
-><span style=3D"color:rgb(178,104,24);background-color:rgb(255,255,255)">1<=
-/span><span style=3D"color:rgb(0,0,0);background-color:rgb(255,255,255)">. =
-</span><span style=3D"color:rgb(0,0,0);background-color:rgb(255,255,255)">q=
-emu_manager.cpp</span><span style=3D"color:rgb(0,0,0);background-color:rgb(=
-255,255,255)">:</span><span style=3D"color:rgb(178,104,24);background-color=
-:rgb(255,255,255)">247</span><span style=3D"color:rgb(0,0,0);background-col=
-or:rgb(255,255,255)"> | </span><span style=3D"color:rgb(24,178,178);backgro=
-und-color:rgb(255,255,255)">StartCommands</span><span style=3D"color:rgb(0,=
-0,0);background-color:rgb(255,255,255)"> | =C2=A0</span><br><span style=3D"=
-color:rgb(178,24,24);background-color:rgb(255,255,255)"> | </span><span sty=
-le=3D"color:rgb(0,0,0);background-color:rgb(255,255,255)">device/google/cut=
-tlefish/host/libs/vm_manager/qemu_manager.cpp</span><span style=3D"color:rg=
-b(0,0,0);background-color:rgb(255,255,255)">:</span><span style=3D"color:rg=
-b(178,104,24);background-color:rgb(255,255,255)">97</span><span style=3D"co=
-lor:rgb(0,0,0);background-color:rgb(255,255,255)">
-</span><br><span style=3D"color:rgb(178,24,24);background-color:rgb(255,255=
-,255)"> | </span><span style=3D"color:rgb(24,178,178);background-color:rgb(=
-255,255,255)">Result&lt;std::pair&lt;int, int&gt;&gt; cuttlefish::vm_manage=
-r::(anonymous namespace)::GetQemuVersion(const std::string &amp;)</span><sp=
-an style=3D"color:rgb(0,0,0);background-color:rgb(255,255,255)">
-</span><br><span style=3D"color:rgb(178,24,24);background-color:rgb(255,255=
-,255)"> v </span><span style=3D"color:rgb(0,0,0);background-color:rgb(255,2=
-55,255)">CF_EXPECT(qemu_version_ret =3D=3D 0)
-</span><br><span style=3D"font-weight:bold;color:rgb(255,84,84);background-=
-color:rgb(255,255,255)">/mnt/zroot-133/_OS/Android/aosp_14/android-image/bi=
-n/aarch64-linux-gnu/qemu/qemu-system-aarch64 -version returned unexpected r=
-esponse .</span><br> Stderr was /mnt/zroot-133/_OS/Android/aosp_14/android-=
-image/bin/aarch64-linux-gnu/qemu/qemu-system-aarch64: error while loading s=
-hared</span></div><div><span style=3D"font-family:monospace"><br></span></d=
-iv><div><span style=3D"font-family:monospace"> libraries: libncursesw.so.6:=
- cannot open shared object file: No such file or directory<br></span></div>=
-</div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">=
-On Mon, Sep 2, 2024 at 11:30=E2=80=AFPM Mario Marietto &lt;<a href=3D"mailt=
-o:marietto2008@gmail.com">marietto2008@gmail.com</a>&gt; wrote:<br></div><b=
-lockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-le=
-ft:1px solid rgb(204,204,204);padding-left:1ex"><div dir=3D"ltr"><div><span=
- style=3D"font-family:monospace"><span style=3D"font-weight:bold;color:rgb(=
-84,255,84);background-color:rgb(255,255,255)">Something is not right :</spa=
-n></span></div><div><span style=3D"font-family:monospace"><span style=3D"fo=
-nt-weight:bold;color:rgb(84,255,84);background-color:rgb(255,255,255)"><br>=
-</span></span></div><div><span style=3D"font-family:monospace"><span style=
-=3D"font-weight:bold;color:rgb(84,255,84);background-color:rgb(255,255,255)=
-">ziomario@Z390-AORUS-PRO-DEST</span><span style=3D"color:rgb(0,0,0);backgr=
-ound-color:rgb(255,255,255)">:</span><span style=3D"font-weight:bold;color:=
-rgb(84,84,255);background-color:rgb(255,255,255)">/mnt/zroot-133/_OS/Androi=
-d/aosp_14/android-image</span><span style=3D"color:rgb(0,0,0);background-co=
-lor:rgb(255,255,255)">$ unzip ../aosp_cf_*.zip
-</span></span></div><div><span style=3D"font-family:monospace"></span></div=
-><div><span style=3D"font-family:monospace"><br></span></div><div><span sty=
-le=3D"font-family:monospace">Archive: =C2=A0../aosp_cf_arm64_only_phone-img=
--12309296.zip
-</span></div><div><span style=3D"font-family:monospace"></span></div><span =
-style=3D"font-family:monospace"> =C2=A0inflating: android-info.txt =C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<br> =C2=A0inflating: fastboot-in=
-fo.txt =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<br> =C2=A0inflating: kern=
-el_16k =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0<br> =C2=A0inflating: ramdisk_16k.img =C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<br> =C2=A0inflating: boot.img =C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0<br> =C2=A0inflating: boot_16k.img =C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<br> =C2=A0inflating: bootl=
-oader =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0<br> =C2=A0inflating: init_boot.img =C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<br> =C2=A0inflating: userdata.im=
-g =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<=
-br> =C2=A0inflating: vbmeta.img =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<br> =C2=A0inflating: vbmeta_syst=
-em.img =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<br> =C2=A0inflating: vbme=
-ta_system_dlkm.img =C2=A0=C2=A0<br> =C2=A0inflating: vbmeta_vendor_dlkm.img=
- =C2=A0=C2=A0<br> =C2=A0inflating: vendor_boot.img =C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<br></span><div><span style=3D"font-family:mo=
-nospace"> =C2=A0inflating: super.img =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0</span><=
-/div><div><span style=3D"font-family:monospace">=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0 <br></span></div><div><span style=3D"font-famil=
-y:monospace"></span></div><div><span style=3D"font-family:monospace"><span =
-style=3D"font-weight:bold;color:rgb(84,255,84);background-color:rgb(255,255=
-,255)">ziomario@Z390-AORUS-PRO-DEST</span><span style=3D"color:rgb(0,0,0);b=
-ackground-color:rgb(255,255,255)">:</span><span style=3D"font-weight:bold;c=
-olor:rgb(84,84,255);background-color:rgb(255,255,255)">/mnt/zroot-133/_OS/A=
-ndroid/aosp_14/android-image</span><span style=3D"color:rgb(0,0,0);backgrou=
-nd-color:rgb(255,255,255)">$ tar xzvf ../cvd-host_package.tar.gz
-</span></span></div><br><div><br><span style=3D"font-family:monospace"></sp=
-an></div><span style=3D"font-family:monospace">./
-<br>./lib64/
-<br>./lib64/<a href=3D"mailto:android.hardware.keymaster@3.0.so" target=3D"=
-_blank">android.hardware.keymaster@3.0.so</a>
-<br>./lib64/<a href=3D"http://libciborium_io.dylib.so" target=3D"_blank">li=
-bciborium_io.dylib.so</a>
-<br>./lib64/libjpeg.so
-<br>./lib64/cuttlefish_net.so
-<br>./lib64/libbase.so
-<br>./lib64/<a href=3D"http://vulkan.pastel.so" target=3D"_blank">vulkan.pa=
-stel.so</a>
-<br>./lib64/libcuttlefish_host_config.so
-<br>./lib64/<a href=3D"http://libflagset.dylib.so" target=3D"_blank">libfla=
-gset.dylib.so</a>
-<br>./lib64/<a href=3D"http://libkmr_common.dylib.so" target=3D"_blank">lib=
-kmr_common.dylib.so</a>
-<br>./lib64/<a href=3D"http://libpkcs1.dylib.so" target=3D"_blank">libpkcs1=
-.dylib.so</a>
-<br>./lib64/libicui18n-host.so
-<br>./lib64/libwayland_client.so
-<br>./lib64/libunwindstack.so
-<br>./lib64/<a href=3D"http://libkmr_ta.dylib.so" target=3D"_blank">libkmr_=
-ta.dylib.so</a>
-<br>./lib64/<a href=3D"http://libcoset.dylib.so" target=3D"_blank">libcoset=
-.dylib.so</a>
-<br>./lib64/libcppbor.so
-<br>./lib64/libgatekeeper.so
-<br>./lib64/libyuv.so
-<br>./lib64/libgrpc++.so
-<br>./lib64/libkmr_cf_ffi.so
-<br>./lib64/libcppcose_rkp.so
-<br>./lib64/libcuttlefish_transport.so
-<br>./lib64/liblzma.so
-<br>./lib64/<a href=3D"http://libciborium_ll.dylib.so" target=3D"_blank">li=
-bciborium_ll.dylib.so</a>
-<br>./lib64/libcuttlefish_allocd_utils.so
-<br>./lib64/libgflags.so
-<br>./lib64/<a href=3D"mailto:android.hardware.keymaster@4.0.so" target=3D"=
-_blank">android.hardware.keymaster@4.0.so</a>
-<br>./lib64/<a href=3D"http://libcfg_if.dylib.so" target=3D"_blank">libcfg_=
-if.dylib.so</a>
-<br>./lib64/<a href=3D"http://libspki.dylib.so" target=3D"_blank">libspki.d=
-ylib.so</a>
-<br>./lib64/<a href=3D"http://libzeroize.dylib.so" target=3D"_blank">libzer=
-oize.dylib.so</a>
-<br>./lib64/libcgrouprc.so
-<br>./lib64/libprotobuf-cpp-full.so
-<br>./lib64/libcutils.so
-<br>./lib64/libsqlite.so
-<br>./lib64/libcuttlefish_utils_result.so
-<br>./lib64/libbinder_ndk.so
-<br>./lib64/libext2_uuid-host.so
-<br>./lib64/<a href=3D"http://libhex.dylib.so" target=3D"_blank">libhex.dyl=
-ib.so</a>
-<br>./lib64/libc_musl.so
-<br>./lib64/<a href=3D"http://libconst_oid.dylib.so" target=3D"_blank">libc=
-onst_oid.dylib.so</a>
-<br>./lib64/<a href=3D"http://libprotobuf_support.dylib.so" target=3D"_blan=
-k">libprotobuf_support.dylib.so</a>
-<br>./lib64/tpm2-tss2-tcti.so
-<br>./lib64/<a href=3D"http://libserde.dylib.so" target=3D"_blank">libserde=
-.dylib.so</a>
-<br>./lib64/libartpalette.so
-<br>./lib64/liblog.so
-<br>./lib64/<a href=3D"http://libonce_cell.dylib.so" target=3D"_blank">libo=
-nce_cell.dylib.so</a>
-<br>./lib64/<a href=3D"http://libthiserror.dylib.so" target=3D"_blank">libt=
-hiserror.dylib.so</a>
-<br>./lib64/libssl-host.so
-<br>./lib64/libc++.so
-<br>./lib64/libext4_utils.so
-<br>./lib64/<a href=3D"http://libpkcs8.dylib.so" target=3D"_blank">libpkcs8=
-.dylib.so</a>
-<br>./lib64/libsparse-host.so
-<br>./lib64/sandboxed_api_sandbox2.so
-<br>./lib64/libcuttlefish_command_util.so
-<br>./lib64/<a href=3D"http://libbssl_sys.dylib.so" target=3D"_blank">libbs=
-sl_sys.dylib.so</a>
-<br>./lib64/libkeymaster_messages.so
-<br>./lib64/libcuttlefish_web.so
-<br>./lib64/libvpx.so
-<br>./lib64/libopus.so
-<br>./lib64/libminijail.so
-<br>./lib64/libcurl-host.so
-<br>./lib64/libcuttlefish_kernel_log_monitor_utils.so
-<br>./lib64/tpm2-tss2-util.so
-<br>./lib64/<a href=3D"http://liblibc.dylib.so" target=3D"_blank">liblibc.d=
-ylib.so</a>
-<br>./lib64/<a href=3D"http://libprotobuf.dylib.so" target=3D"_blank">libpr=
-otobuf.dylib.so</a>
-<br>./lib64/<a href=3D"http://libbitflags.dylib.so" target=3D"_blank">libbi=
-tflags.dylib.so</a>
-<br>./lib64/libutils.so
-<br>./lib64/libjsoncpp.so
-<br>./lib64/libext2_blkid-host.so
-<br>./lib64/libnl.so
-<br>./lib64/tpm2-tss2-sys.so
-<br>./lib64/libartbase.so
-<br>./lib64/libxml2.so
-<br>./lib64/<a href=3D"http://libkmr_proto_rust.dylib.so" target=3D"_blank"=
->libkmr_proto_rust.dylib.so</a>
-<br>./lib64/libcuttlefish_security.so
-<br>./lib64/<a href=3D"http://libsecure_env_tpm.dylib.so" target=3D"_blank"=
->libsecure_env_tpm.dylib.so</a>
-<br>./lib64/libz-host.so
-<br>./lib64/libprocessgroup.so
-<br>./lib64/libcrypto_utils.so
-<br>./lib64/<a href=3D"http://libder.dylib.so" target=3D"_blank">libder.dyl=
-ib.so</a>
-<br>./lib64/libdexfile.so
-<br>./lib64/cf_metrics_proto.so
-<br>./lib64/tpm2-tss2-esys.so
-<br>./lib64/libcuttlefish_utils.so
-<br>./lib64/libkeymaster_portable.so
-<br>./lib64/libfruit.so
-<br>./lib64/tpm2-tss2-rc.so
-<br>./lib64/libcap.so
-<br>./lib64/<a href=3D"http://libnix.dylib.so" target=3D"_blank">libnix.dyl=
-ib.so</a>
-<br>./lib64/libicuuc-host.so
-<br>./lib64/libziparchive.so
-<br>./lib64/<a href=3D"http://libkmr_ta_nonsecure.dylib.so" target=3D"_blan=
-k">libkmr_ta_nonsecure.dylib.so</a>
-<br>./lib64/<a href=3D"http://libstd.dylib.so" target=3D"_blank">libstd.dyl=
-ib.so</a>
-<br>./lib64/<a href=3D"http://libhalf.dylib.so" target=3D"_blank">libhalf.d=
-ylib.so</a>
-<br>./lib64/tpm2-tss2-mu.so
-<br>./lib64/<a href=3D"http://libmemoffset.dylib.so" target=3D"_blank">libm=
-emoffset.dylib.so</a>
-<br>./lib64/liblp.so
-<br>./lib64/libcuttlefish_fs.so
-<br>./lib64/libProxyConfig.so
-<br>./lib64/<a href=3D"http://libopenssl.dylib.so" target=3D"_blank">libope=
-nssl.dylib.so</a>
-<br>./lib64/<a href=3D"http://libkmr_wire.dylib.so" target=3D"_blank">libkm=
-r_wire.dylib.so</a>
-<br>./lib64/<a href=3D"http://libkmr_crypto_boring.dylib.so" target=3D"_bla=
-nk">libkmr_crypto_boring.dylib.so</a>
-<br>./lib64/<a href=3D"http://liblog_rust.dylib.so" target=3D"_blank">liblo=
-g_rust.dylib.so</a>
-<br>./lib64/libhidlbase.so
-<br>./lib64/libgrpc_wrap.so
-<br>./lib64/libgrpc++_unsecure.so
-<br>./lib64/<a href=3D"http://libbytes.dylib.so" target=3D"_blank">libbytes=
-.dylib.so</a>
-<br>./lib64/libsoft_attestation_cert.so
-<br>./lib64/libcuttlefish_run_cvd_proto.so
-<br>./lib64/libbinder.so
-<br>./lib64/libcrypto-host.so
-<br>./lib64/libwebm_mkvmuxer.so
-<br>./lib64/<a href=3D"http://libkmr_cf.dylib.so" target=3D"_blank">libkmr_=
-cf.dylib.so</a>
-<br>./lib64/<a href=3D"http://libciborium.dylib.so" target=3D"_blank">libci=
-borium.dylib.so</a>
-<br>./lib64/libpuresoftkeymasterdevice_host.so
-<br>./lib64/<a href=3D"http://libx509_cert.dylib.so" target=3D"_blank">libx=
-509_cert.dylib.so</a>
-<br>./lib64/<a href=3D"http://libsec1.dylib.so" target=3D"_blank">libsec1.d=
-ylib.so</a>
-<br>./nativetest64/
-<br>./nativetest64/modem_simulator_test/
-<br>./nativetest64/modem_simulator_test/modem_simulator_test
-<br>./nativetest64/cuttlefish_net_tests/
-<br>./nativetest64/cuttlefish_net_tests/cuttlefish_net_tests
-<br>./etc/
-<br>./etc/modem_simulator/
-<br>./etc/modem_simulator/files/
-<br>./etc/modem_simulator/files/iccprofile_for_sim0_for_CtsCarrierApiTestCa=
-ses.xml
-<br>./etc/modem_simulator/files/iccprofile_for_sim0.xml
-<br>./etc/modem_simulator/files/numeric_operator.xml
-<br>./etc/cvd_rsa4096.avbpubkey
-<br>./etc/bootloader_aarch64/
-<br>./etc/bootloader_aarch64/bootloader.qemu
-<br>./etc/bootloader_aarch64/bootloader.crosvm
-<br>./etc/bootloader_riscv64/
-<br>./etc/bootloader_riscv64/bootloader.qemu
-<br>./etc/automotive/
-<br>./etc/automotive/vhalconfig/
-<br>./etc/automotive/vhalconfig/VendorClusterTestProperties.json
-<br>./etc/automotive/vhalconfig/DefaultProperties.json
-<br>./etc/automotive/vhalconfig/TestProperties.json
-<br>./etc/automotive/proxy_config.json
-<br>./etc/cvd_rsa2048.avbpubkey
-<br>./etc/cvd_avb_testkey_rsa4096.pem
-<br>./etc/bootloader_arm/
-<br>./etc/bootloader_arm/bootloader.qemu
-<br>./etc/bootloader_x86_64/
-<br>./etc/bootloader_x86_64/bootloader.qemu
-<br>./etc/bootloader_x86_64/bootloader.crosvm
-<br>./etc/cvd_avb_testkey_rsa2048.pem
-<br>./etc/openwrt/
-<br>./etc/openwrt/images/
-<br>./etc/openwrt/images/openwrt_kernel_aarch64
-<br>./etc/openwrt/images/openwrt_rootfs_x86_64
-<br>./etc/openwrt/images/openwrt_rootfs_aarch64
-<br>./etc/openwrt/images/openwrt_kernel_x86_64
-<br>./etc/cvd_config/
-<br>./etc/cvd_config/cvd_config_tv.json
-<br>./etc/cvd_config/cvd_config_tablet.json
-<br>./etc/cvd_config/cvd_config_wear.json
-<br>./etc/cvd_config/cvd_config_auto_portrait.json
-<br>./etc/cvd_config/cvd_config_slim.json
-<br>./etc/cvd_config/cvd_config_go.json
-<br>./etc/cvd_config/cvd_config_foldable.json
-<br>./etc/cvd_config/cvd_config_auto.json
-<br>./etc/cvd_config/cvd_config_auto_md.json
-<br>./etc/cvd_config/cvd_config_phone.json
-<br>./usr/
-<br>./usr/share/
-<br>./usr/share/vulkan/
-<br>./usr/share/vulkan/icd.d/
-<br>./usr/share/vulkan/icd.d/vk_swiftshader_icd.json
-<br>./usr/share/qemu/
-<br>./usr/share/qemu/aarch64-linux-gnu/
-<br>./usr/share/qemu/aarch64-linux-gnu/opensbi-riscv64-generic-fw_dynamic.b=
-in
-<br>./usr/share/qemu/aarch64-linux-gnu/efi-virtio.rom
-<br>./usr/share/qemu/aarch64-linux-gnu/keymaps/
-<br>./usr/share/qemu/aarch64-linux-gnu/keymaps/en-us
-<br>./usr/share/webrtc/
-<br>./usr/share/webrtc/assets/
-<br>./usr/share/webrtc/assets/style.css
-<br>./usr/share/webrtc/assets/index.css
-<br>./usr/share/webrtc/assets/index.html
-<br>./usr/share/webrtc/assets/js/
-<br>./usr/share/webrtc/assets/js/location.js
-<br>./usr/share/webrtc/assets/js/rootcanal.js
-<br>./usr/share/webrtc/assets/js/app.js
-<br>./usr/share/webrtc/assets/js/touch.js
-<br>./usr/share/webrtc/assets/js/adb.js
-<br>./usr/share/webrtc/assets/js/index.js
-<br>./usr/share/webrtc/assets/js/cf_webrtc.js
-<br>./usr/share/webrtc/assets/js/server_connector.js
-<br>./usr/share/webrtc/assets/js/controls.js
-<br>./usr/share/webrtc/assets/controls.css
-<br>./usr/share/webrtc/assets/custom.css
-<br>./usr/share/webrtc/assets/client.html
-<br>./usr/share/webrtc/certs/
-<br>./usr/share/webrtc/certs/server.p12
-<br>./usr/share/webrtc/certs/server.key
-<br>./usr/share/webrtc/certs/trusted.pem
-<br>./usr/share/webrtc/certs/server.crt
-<br>./usr/share/zoneinfo/
-<br>./usr/share/zoneinfo/tzdata
-<br>./usr/share/crosvm/
-<br>./usr/share/crosvm/aarch64-linux-gnu/
-<br>./usr/share/crosvm/aarch64-linux-gnu/seccomp/
-<br>./usr/share/crosvm/aarch64-linux-gnu/seccomp/snd_null_device.policy
-<br>./usr/share/crosvm/aarch64-linux-gnu/seccomp/gpu_render_server.policy
-<br>./usr/share/crosvm/aarch64-linux-gnu/seccomp/battery.policy
-<br>./usr/share/crosvm/aarch64-linux-gnu/seccomp/block_device.policy
-<br>./usr/share/crosvm/aarch64-linux-gnu/seccomp/pmem_device.policy
-<br>./usr/share/crosvm/aarch64-linux-gnu/seccomp/wl_device.policy
-<br>./usr/share/crosvm/aarch64-linux-gnu/seccomp/9p_device.policy
-<br>./usr/share/crosvm/aarch64-linux-gnu/seccomp/input_device.policy
-<br>./usr/share/crosvm/aarch64-linux-gnu/seccomp/net_device.policy
-<br>./usr/share/crosvm/aarch64-linux-gnu/seccomp/rng_device.policy
-<br>./usr/share/crosvm/aarch64-linux-gnu/seccomp/coiommu_device.policy
-<br>./usr/share/crosvm/aarch64-linux-gnu/seccomp/gpu_device.policy
-<br>./usr/share/crosvm/aarch64-linux-gnu/seccomp/serial_device.policy
-<br>./usr/share/crosvm/aarch64-linux-gnu/seccomp/cras_audio_device.policy
-<br>./usr/share/crosvm/aarch64-linux-gnu/seccomp/null_audio_device.policy
-<br>./usr/share/crosvm/aarch64-linux-gnu/seccomp/snd_cras_device.policy
-<br>./usr/share/crosvm/aarch64-linux-gnu/seccomp/vhost_scmi_device.policy
-<br>./usr/share/crosvm/aarch64-linux-gnu/seccomp/balloon_device.policy
-<br>./usr/share/crosvm/aarch64-linux-gnu/seccomp/vhost_net_device.policy
-<br>./usr/share/crosvm/aarch64-linux-gnu/seccomp/vhost_vsock_device.policy
-<br>./usr/share/crosvm/aarch64-linux-gnu/seccomp/fs_device.policy
-<br>./usr/share/crosvm/aarch64-linux-gnu/seccomp/video_device.policy
-<br>./usr/share/crosvm/aarch64-linux-gnu/seccomp/xhci_device.policy
-<br>./usr/share/crosvm/aarch64-linux-gnu/seccomp/vios_audio_device.policy
-<br>./bin/
-<br>./bin/modem_simulator
-<br>./bin/ms-tpm-20-ref
-<br>./bin/mkenvimage_slim
-<br>./bin/metrics
-<br>./bin/socket_vsock_proxy
-<br>./bin/resize.f2fs
-<br>./bin/metrics_launcher
-<br>./bin/automotive_vsock_proxy
-<br>./bin/newfs_msdos
-<br>./bin/netsim-ui/
-<br>./bin/netsim-ui/assets/
-<br>./bin/netsim-ui/assets/grid-background.svg
-<br>./bin/netsim-ui/assets/netsim-logo.svg
-<br>./bin/netsim-ui/assets/polar-background.svg
-<br>./bin/netsim-ui/assets/hexagonal-background.png
-<br>./bin/netsim-ui/assets/netsim-logo-b.svg
-<br>./bin/netsim-ui/node_modules/
-<br>./bin/netsim-ui/node_modules/tslib/
-<br>./bin/netsim-ui/node_modules/tslib/tslib.es6.js
-<br>./bin/netsim-ui/index.html
-<br>./bin/netsim-ui/js/
-<br>./bin/netsim-ui/js/device-info.js
-<br>./bin/netsim-ui/js/device-list.js
-<br>./bin/netsim-ui/js/packet-info.js
-<br>./bin/netsim-ui/js/device-dropzone.js
-<br>./bin/netsim-ui/js/navigation-bar.js
-<br>./bin/netsim-ui/js/device-map.js
-<br>./bin/netsim-ui/js/device-dragzone.js
-<br>./bin/netsim-ui/js/netsim-app.js
-<br>./bin/netsim-ui/js/customize-map-button.js
-<br>./bin/netsim-ui/js/device-observer.js
-<br>./bin/netsim-ui/js/license-info.js
-<br>./bin/netsim-ui/js/cube-sprite.js
-<br>./bin/netsim-ui/js/pyramid-sprite.js
-<br>./bin/unpack_bootimg
-<br>./bin/adb
-<br>./bin/extract-vmlinux
-<br>./bin/health
-<br>./bin/screen_recording_server
-<br>./bin/lz4
-<br>./bin/wmediumd_gen_config
-<br>./bin/gnss_grpc_proxy
-<br>./bin/simg2img
-<br>./bin/secure_env
-<br>./bin/mke2fs
-<br>./bin/snapshot_util_cvd
-<br>./bin/cvd_internal_display
-<br>./bin/acloud_translator
-<br>./bin/defrag.f2fs
-<br>./bin/tombstone_receiver
-<br>./bin/root-canal
-<br>./bin/netsimd
-<br>./bin/console_forwarder
-<br>./bin/powerwash_cvd
-<br>./bin/process_restarter
-<br>./bin/fsck.f2fs
-<br>./bin/cvd_host_bugreport
-<br>./bin/extract-ikconfig
-<br>./bin/cvd_internal_status
-<br>./bin/webRTC
-<br>./bin/acloud
-<br>./bin/tcp_connector
-<br>./bin/process_sandboxer
-<br>./bin/webrtc_operator
-<br>./bin/cvd_update_location
-<br>./bin/e2fsdroid
-<br>./bin/avbtool
-<br>./bin/fastboot
-<br>./bin/build_super_image
-<br>./bin/powerbtn_cvd
-<br>./bin/allocd_client
-<br>./bin/dump.f2fs
-<br>./bin/netsim
-<br>./bin/casimir
-<br>./bin/pica
-<br>./bin/cvd_update_security_algorithm
-<br>./bin/record_cvd
-<br>./bin/vhal_proxy_server
-<br>./bin/cvd_status
-<br>./bin/cvd_import_locations
-<br>./bin/launch_cvd
-<br>./bin/cvd_internal_start
-<br>./bin/restart_cvd
-<br>./bin/cvd_internal_host_bugreport
-<br>./bin/mkuserimg_mke2fs
-<br>./bin/fec
-<br>./bin/cvd_internal_env
-<br>./bin/vhost_device_vsock
-<br>./bin/cvd_internal_stop
-<br>./bin/cvd_send_sms
-<br>./bin/assemble_cvd
-<br>./bin/cvd_send_id_disclosure
-<br>./bin/mcopy
-<br>./bin/operator_proxy
-<br>./bin/mkbootfs
-<br>./bin/run_cvd
-<br>./bin/openwrt_control_server
-<br>./bin/mkbootimg
-<br>./bin/kernel_log_monitor
-<br>./bin/mmd
-<br>./bin/toybox
-<br>./bin/crosvm
-<br>./bin/aarch64-linux-musl/
-<br>./bin/aarch64-linux-musl/crosvm
-<br>./bin/sefcontext_compile
-<br>./bin/wmediumd
-<br>./bin/echo_server
-<br>./bin/log_tee
-<br>./bin/lpmake
-<br>./bin/logcat_receiver
-<br>./bin/lpunpack
-<br>./bin/control_env_proxy_server
-<br>./bin/mtools
-<br>./bin/adb_connector
-<br>./bin/aarch64-linux-gnu/
-<br>./bin/aarch64-linux-gnu/libepoxy.so.0
-<br>./bin/aarch64-linux-gnu/libffi.so.7
-<br>./bin/aarch64-linux-gnu/qemu/
-<br>./bin/aarch64-linux-gnu/qemu/qemu-system-x86_64
-<br>./bin/aarch64-linux-gnu/qemu/libepoxy.so.0
-<br>./bin/aarch64-linux-gnu/qemu/libvirglrenderer.so.1
-<br>./bin/aarch64-linux-gnu/qemu/libgbm.so.1
-<br>./bin/aarch64-linux-gnu/qemu/libgfxstream_backend.so.0
-<br>./bin/aarch64-linux-gnu/qemu/librutabaga_gfx_ffi.so.0
-<br>./bin/aarch64-linux-gnu/qemu/qemu-system-riscv64
-<br>./bin/aarch64-linux-gnu/qemu/qemu-system-aarch64
-<br>./bin/aarch64-linux-gnu/qemu/libc++.so.1
-<br>./bin/aarch64-linux-gnu/qemu/libunwind.so.1
-<br>./bin/aarch64-linux-gnu/qemu/libz.so.1
-<br>./bin/aarch64-linux-gnu/qemu/libc++abi.so.1
-<br>./bin/aarch64-linux-gnu/libvirglrenderer.so.1
-<br>./bin/aarch64-linux-gnu/libdrm.so.2
-<br>./bin/aarch64-linux-gnu/libgbm.so.1
-<br>./bin/aarch64-linux-gnu/libgfxstream_backend.so
-<br>./bin/aarch64-linux-gnu/libwayland-client.so.0
-<br>./bin/aarch64-linux-gnu/libminijail.so
-<br>./bin/aarch64-linux-gnu/gfxstream_graphics_detector
-<br>./bin/aarch64-linux-gnu/crosvm
-<br>./bin/lpadd
-<br>./bin/make_f2fs
-<br>./bin/sandboxer_proxy
-<br>./bin/stop_cvd
-<br></span><div><span style=3D"font-family:monospace">./bin/casimir_control=
-_server
-</span></div><br><div><br><span style=3D"font-family:monospace"></span></di=
-v><div><span style=3D"font-family:monospace"><span style=3D"font-weight:bol=
-d;color:rgb(84,255,84);background-color:rgb(255,255,255)">ziomario@Z390-AOR=
-US-PRO-DEST</span><span style=3D"color:rgb(0,0,0);background-color:rgb(255,=
-255,255)">:</span><span style=3D"font-weight:bold;color:rgb(84,84,255);back=
-ground-color:rgb(255,255,255)">/mnt/zroot-133/_OS/Android/aosp_14/android-i=
-mage</span><span style=3D"color:rgb(0,0,0);background-color:rgb(255,255,255=
-)">$ HOME=3D$(pwd) ./bin/launch_cvd -vm_manager qemu_cli -repor</span>t_ano=
-nymous_usage_stats=3Dn --start_webrtc=3Dfalse
-</span></div><br><div><br><span style=3D"font-family:monospace"></span></di=
-v><span style=3D"font-family:monospace">09-02 23:27:10.473 2729990 2729990 =
-I launch_cvd: main.cc:235 Using system_image_dir of: =C2=A0<br>=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
-<br>NOTICE:
-<br>
-<br>By using this Android Virtual Device, you agree to
-<br>Google Terms of Service (<a href=3D"https://policies.google.com/terms" =
-target=3D"_blank">https://policies.google.com/terms</a>).
-<br>The Google Privacy Policy (<a href=3D"https://policies.google.com/priva=
-cy" target=3D"_blank">https://policies.google.com/privacy</a>)
-<br>describes how Google handles information generated as you use
-<br>Google Services.
-<br>=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
-<br>
-<br>Reading --config option from: /mnt/zroot-133/_OS/Android/aosp_14/androi=
-d-image/android-info.txt
-<br>Launching CVD using --config=3D&#39;phone&#39;.
-<br>aarch64-binfmt-P: Could not open &#39;/lib/ld-linux-aarch64.so.1&#39;: =
-No such file or directory
-<br>Failed to run graphics detector, bad return value: 255. Assuming no ava=
-ilability.
-<br>GPU auto mode: did not detect prerequisites for accelerated rendering s=
-upport, enabling --gpu_mode=3Dguest_swiftshader.
-<br>GPU vhost user auto mode: not needed for --gpu_mode=3Dguest_swiftshader=
-. Not enabling vhost user gpu.
-<br>Requested resuming a previous session (the default behavior) but the ba=
-se images have changed under the overlay, making the overlay inc<br>ompatib=
-le. Wiping the overlay files.
-<br>Path for instance UDS: /tmp/cf_avd_1000
-<br>Failed to run `/mnt/zroot-133/_OS/Android/aosp_14/android-image/bin/cro=
-svm create_qcow2 --backing-file /mnt/zroot-133/_OS/Android/aosp_<br>14/andr=
-oid-image/cuttlefish/instances/cvd-1/persistent_composite.img /mnt/zroot-13=
-3/_OS/Android/aosp_14/android-image/cuttlefish/instan<br>ces/cvd-1/persiste=
-nt_composite_overlay.img`
-<br>stdout:
-<br>###
-<br>
-<br>###
-<br>stderr:
-<br>###
-<br>/mnt/zroot-133/_OS/Android/aosp_14/android-image/bin/crosvm: riga 3: /m=
-nt/zroot-133/_OS/Android/aosp_14/android-image/bin/x86_64-linux-<br>musl/cr=
-osvm: File o directory non esistente
-<br>
-<br>###
-<br>Return code: &quot;127&quot;
-<br>qemu: uncaught target signal 6 (Aborted) - core dumped
-<br>09-02 23:27:31.223 2729990 2729990 E launch_cvd: subprocess.cpp:207 Sub=
-process 2730018 was interrupted by a signal &#39;Aborted&#39; (6)
-<br>09-02 23:27:31.224 2729990 2729990 E launch_cvd: main.cc:323 assemble_c=
-vd returned -1</span></div><br><div class=3D"gmail_quote"><div dir=3D"ltr" =
-class=3D"gmail_attr">On Mon, Sep 2, 2024 at 11:20=E2=80=AFPM Mario Marietto=
- &lt;<a href=3D"mailto:marietto2008@gmail.com" target=3D"_blank">marietto20=
-08@gmail.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" styl=
-e=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);paddin=
-g-left:1ex"><div dir=3D"ltr"><div>Hello.</div><div><div><br></div><div>I&#3=
-9;ve downloaded this file : aosp_cf_arm64_only_phone-img-12309296.zip and t=
-his file : cvd-host_package.tar.gz</div><div><div><br></div></div></div><di=
-v>from here : <a href=3D"https://ci.android.com/builds/submitted/12309296/a=
-osp_cf_arm64_only_phone-trunk_staging-userdebug/latest" target=3D"_blank">h=
-ttps://ci.android.com/builds/submitted/12309296/aosp_cf_arm64_only_phone-tr=
-unk_staging-userdebug/latest</a></div><div></div><div><br></div><div>But le=
-t&#39;s say that I don&#39;t want to use the *.img files that are stored in=
-side &quot;aosp_cf_arm64_only_phone-img-12309296.zip&quot;,but the same fil=
-es that have been produced when I have compiled this version of Android :</=
-div><div><br></div><div><a href=3D"https://github.com/raspberry-vanilla/and=
-roid_local_manifest?tab=3Dreadme-ov-file" target=3D"_blank">https://github.=
-com/raspberry-vanilla/android_local_manifest?tab=3Dreadme-ov-file</a></div>=
-<div><br></div><div>Can I do it ? Is it supposed to work the same ? <br></d=
-iv><div><br></div><div>Thanks.<br></div><div><div></div></div></div><br><di=
-v class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Mon, Sep 2=
-, 2024 at 10:23=E2=80=AFPM Pierrick Bouvier &lt;<a href=3D"mailto:pierrick.=
-bouvier@linaro.org" target=3D"_blank">pierrick.bouvier@linaro.org</a>&gt; w=
-rote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0p=
-x 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex"><br>
-<br>
-On 9/2/24 13:20, Pierrick Bouvier wrote:<br>
-&gt; On 9/2/24 12:53, Mario Marietto wrote:<br>
-&gt;&gt; Hello Pierrick.<br>
-&gt;&gt;<br>
-&gt;&gt; With Cuttlefish can I emulate Android 14 for arm64 ? I ask because=
- in<br>
-&gt;&gt; your script I read :<br>
-&gt;&gt;<br>
-&gt;&gt; &quot;|/home/user/.work/qemu/build/qemu-system-x86_64&quot;, so,I =
-suspect that you<br>
-&gt;&gt; have emulated Android x64 bit,but I need arm64. |<br>
-&gt;&gt;<br>
-&gt; <br>
-&gt; Yes, it works for both architecture. The only thing I didn&#39;t try i=
-s an<br>
-&gt; arm64 vm accelerated with kvm (I don&#39;t have this a linux-aarch64<b=
-r>
-&gt; machine), but it should work.<br>
-<br>
-And of course, if you want to write a custom wrapper for qemu, name it <br>
-qemu-system-aarch64, and call the same binary instead of x86_64 variants.<b=
-r>
-<br>
-&gt; <br>
-&gt;&gt; I also read &quot;for aarch64 images: select<br>
-&gt;&gt; |aosp_cf_arm64_only_phone-trunk_staging-userdebug&quot; : I&#39;m =
-not able to<br>
-&gt;&gt; download this kind of images. I don&#39;t understand how the Branc=
-h Grid<br>
-&gt;&gt; works. Can you explain to me a little bit more ?<br>
-&gt;&gt; |<br>
-&gt; <br>
-&gt; You have a link just next to it (&quot;Branch grid&quot;) on the wiki =
-page.<br>
-&gt; Once on ci android page, click on filter button (three bars, inverted<=
-br>
-&gt; pyramid), and select aosp_cf_arm64_only_phone-trunk_staging-userdebug.=
-<br>
-&gt; Then go to artifacts, and download image and cvd_host_x86_64 package, =
-as<br>
-&gt; wiki mentions.<br>
-&gt; <br>
-&gt; Don&#39;t hesitate to ask more questions on this. I imagine this topic=
- might<br>
-&gt; interest some people who try to do the same thing.<br>
-&gt; <br>
-&gt; Pierrick<br>
-&gt; <br>
-&gt;&gt; |<br>
-&gt;&gt; |<br>
-&gt;&gt;<br>
-&gt;&gt;<br>
-&gt;&gt; On Mon, Sep 2, 2024 at 8:47=E2=80=AFPM Pierrick Bouvier<br>
-&gt;&gt; &lt;<a href=3D"mailto:pierrick.bouvier@linaro.org" target=3D"_blan=
-k">pierrick.bouvier@linaro.org</a> &lt;mailto:<a href=3D"mailto:pierrick.bo=
-uvier@linaro.org" target=3D"_blank">pierrick.bouvier@linaro.org</a>&gt;&gt;=
- wrote:<br>
-&gt;&gt;<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 Hello Mario,<br>
-&gt;&gt;<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 very recently, I had to investigate booting ti=
-me of Android when using<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 QEMU. You can probably manage to boot this wit=
-h only QEMU alone, but in<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 my experience, using Cuttlefish tooling is an =
-easier approach.<br>
-&gt;&gt;<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 If you really want to use only QEMU, you can u=
-se Cuttlefish to get<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 exact<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 command line used (which disk goes where), and=
- iterate from that.<br>
-&gt;&gt;<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 Instructions:<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 <a href=3D"https://linaro.atlassian.net/wiki/s=
-paces/QEMU/pages/29464068097/Run+Android+using+QEMU" rel=3D"noreferrer" tar=
-get=3D"_blank">https://linaro.atlassian.net/wiki/spaces/QEMU/pages/29464068=
-097/Run+Android+using+QEMU</a> &lt;<a href=3D"https://linaro.atlassian.net/=
-wiki/spaces/QEMU/pages/29464068097/Run+Android+using+QEMU" rel=3D"noreferre=
-r" target=3D"_blank">https://linaro.atlassian.net/wiki/spaces/QEMU/pages/29=
-464068097/Run+Android+using+QEMU</a>&gt;<br>
-&gt;&gt;<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 As you&#39;ll see, I could not get a direct gr=
-aphic output, but using<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 scrcpy, it worked well for me. Hope it can fit=
- your use case.<br>
-&gt;&gt;<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 Regards,<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 Pierrick<br>
-&gt;&gt;<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 On 9/2/24 06:49, Mario Marietto wrote:<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt; Hello.<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt;<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt; I would like to emulate Android 14 =
-on my Ubuntu 24.04 OS X64 bit<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 using<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt; qemu-system-aarch64. I tried using =
-the following parameters :<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt;<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt; qemu-system-aarch64 \<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 -=
-smp 4 \<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 -=
-m 2048 \<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 -=
-cpu cortex-a72 \<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 -=
-M virt \<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 -=
-device virtio-gpu-pci,xres=3D1024,yres=3D768 \<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 -=
-display sdl,gl=3Don \<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 -=
-device usb-ehci \<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 -=
-device usb-kbd \<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 -=
-device virtio-tablet-pci \<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 -=
-usb \<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 -=
-serial stdio \<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 -=
-kernel /mnt/zroot-133/_OS/Android/rpi4/Image \<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 -=
-initrd /mnt/zroot-133/_OS/Android/rpi4/ramdisk.img \<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0=C2=A0=C2=
-=A0 -drive<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt;<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 index=3D0,if=3Dnone,id=3Dsystem,file=3D/mnt/zr=
-oot-133/_OS/Android/rpi4/boot.img \<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 -=
-device virtio-blk-pci,drive=3Dboot \<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt;=C2=A0 =C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0 -drive<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt;<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 index=3D1,if=3Dnone,id=3Dsystem,file=3D/mnt/zr=
-oot-133/_OS/Android/rpi4/system.img \<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 -=
-device virtio-blk-pci,drive=3Dsystem \<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 -=
-drive<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt;<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 index=3D2,if=3Dnone,id=3Dvendor,file=3D/mnt/zr=
-oot-133/_OS/Android/rpi4/vendor.img \<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 -=
-device virtio-blk-pci,drive=3Dvendor \<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt; -append &quot;console=3DttyAMA0,384=
-00 drm.debug=3D0x0 rootwait rootdelay=3D5<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt; root=3D/dev/mmcblk0p2 androidboot.h=
-ardware=3Drpi4<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt; androidboot.selinux=3Dpermissive se=
-curity=3Dselinux selinux=3D1<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt; androidboot.qemu.hw.mainkeys=3D0 an=
-droidboot.lcd.density=3D160&quot;<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt;<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt; The error I get in short is :<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt;<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt; [ 1.993668] init: bool<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt;<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 android::init::BlockDevInitializer::InitDevice=
-s(std::set&lt;std::string&gt;):<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt; partition(s) not found in /sys, wai=
-ting for their uevent(s):<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 mmcblk0p2,<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt; mmcblk0p3<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt;<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt;<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt; One user suggested to :<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt;<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt;<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt;<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt;<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt;<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt; Hi!!! The &quot;/sys&quot; is a &qu=
-ot;dynamic fs&quot; created at ram from the<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 kernel, to<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt; export a lot of things...so most of=
- the files only exist at runtime.<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt; Normally, the partitions from the b=
-lock device have a symlink at<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt; /sys/&lt;something&gt;/&lt;...&gt; =
-that points to /dev/ block node. It seems<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 that<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt; there are no such files under /sys =
-according to what init is looking<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt; for. You can double check this at i=
-nit source code to check the<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 exact<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt; path but I&#39;m guessing that you&=
-#39;ll have to change the qemu arguments<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt; regarding the block device.<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt;<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt; About userdata.img I think it&#39;s=
- normal since in the old days, the<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 image<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt; was a &quot;empty sparse image&quot=
-;, that means, at the first flashing<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 process,<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt; there isn&#39;t userdata informatio=
-n, we&#39;re just &quot;flashing the<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 partition&quot;<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt; with empty data.<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt; Tks!!!<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt;<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt;<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt;<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt; So,in short I should change the qem=
-u arguments regarding the block<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt; device. I tried in this way :<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt;<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt;<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt; qemu-system-aarch64 \<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 -=
-smp 4 \<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 -=
-m 2048 \<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 -=
-cpu cortex-a72 \<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 -=
-M virt \<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 -=
-device virtio-gpu-pci,xres=3D1024,yres=3D768 \<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 -=
-display sdl,gl=3Don \<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 -=
-device usb-ehci \<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 -=
-device usb-kbd \<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 -=
-device virtio-tablet-pci \<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 -=
-usb \<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 -=
-serial stdio \<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 -=
-kernel /mnt/zroot-133/_OS/Android/rpi4/Image \<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 -=
-initrd /mnt/zroot-133/_OS/Android/rpi4/ramdisk.img \<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt;=C2=A0 =C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0 -hda /mnt/zroot-133/_OS/Android/rpi4/boot.img \<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 -=
-hdb /mnt/zroot-133/_OS/Android/rpi4/system.img \<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 -=
-hdc /mnt/zroot-133/_OS/Android/rpi4/vendor.img \<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 -append =
-&quot;console=3DttyAMA0,38400 drm.debug=3D0x0 rootwait<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 rootdelay=3D5<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt; root=3D/dev/mmcblk0p2 androidboot.h=
-ardware=3Drpi4<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt; androidboot.selinux=3Dpermissive se=
-curity=3Dselinux selinux=3D1<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt; androidboot.qemu.hw.mainkeys=3D0 an=
-droidboot.lcd.density=3D160&quot;<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt;<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt;<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt; but the error is still there. Do yo=
-u know some different alternative<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt; block devices to try ? thanks.<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt;<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt;<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt; --<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt; Mario.<br>
-&gt;&gt;<br>
-&gt;&gt;<br>
-&gt;&gt;<br>
-&gt;&gt; -- <br>
-&gt;&gt; Mario.<br>
-</blockquote></div><br clear=3D"all"><br><span class=3D"gmail_signature_pre=
-fix">-- </span><br><div dir=3D"ltr" class=3D"gmail_signature">Mario.<br></d=
-iv>
-</blockquote></div><br clear=3D"all"><br><span class=3D"gmail_signature_pre=
-fix">-- </span><br><div dir=3D"ltr" class=3D"gmail_signature">Mario.<br></d=
-iv>
-</blockquote></div><br clear=3D"all"><br><span class=3D"gmail_signature_pre=
-fix">-- </span><br><div dir=3D"ltr" class=3D"gmail_signature">Mario.<br></d=
-iv>
-
---00000000000022bf7606212a9a74--
+T24gOS8yLzI0IDE0OjIwLCBNYXJpbyBNYXJpZXR0byB3cm90ZToNCj4gSGVsbG8uDQo+IA0K
+PiBJJ3ZlIGRvd25sb2FkZWQgdGhpcyBmaWxlIDogYW9zcF9jZl9hcm02NF9vbmx5X3Bob25l
+LWltZy0xMjMwOTI5Ni56aXAgDQo+IGFuZCB0aGlzIGZpbGUgOiBjdmQtaG9zdF9wYWNrYWdl
+LnRhci5neg0KPiANCj4gZnJvbSBoZXJlIDogDQo+IGh0dHBzOi8vY2kuYW5kcm9pZC5jb20v
+YnVpbGRzL3N1Ym1pdHRlZC8xMjMwOTI5Ni9hb3NwX2NmX2FybTY0X29ubHlfcGhvbmUtdHJ1
+bmtfc3RhZ2luZy11c2VyZGVidWcvbGF0ZXN0IDxodHRwczovL2NpLmFuZHJvaWQuY29tL2J1
+aWxkcy9zdWJtaXR0ZWQvMTIzMDkyOTYvYW9zcF9jZl9hcm02NF9vbmx5X3Bob25lLXRydW5r
+X3N0YWdpbmctdXNlcmRlYnVnL2xhdGVzdD4NCj4gDQo+IEJ1dCBsZXQncyBzYXkgdGhhdCBJ
+IGRvbid0IHdhbnQgdG8gdXNlIHRoZSAqLmltZyBmaWxlcyB0aGF0IGFyZSBzdG9yZWQgDQo+
+IGluc2lkZSAiYW9zcF9jZl9hcm02NF9vbmx5X3Bob25lLWltZy0xMjMwOTI5Ni56aXAiLGJ1
+dCB0aGUgc2FtZSBmaWxlcyANCj4gdGhhdCBoYXZlIGJlZW4gcHJvZHVjZWQgd2hlbiBJIGhh
+dmUgY29tcGlsZWQgdGhpcyB2ZXJzaW9uIG9mIEFuZHJvaWQgOg0KPiANCj4gaHR0cHM6Ly9n
+aXRodWIuY29tL3Jhc3BiZXJyeS12YW5pbGxhL2FuZHJvaWRfbG9jYWxfbWFuaWZlc3Q/dGFi
+PXJlYWRtZS1vdi1maWxlIDxodHRwczovL2dpdGh1Yi5jb20vcmFzcGJlcnJ5LXZhbmlsbGEv
+YW5kcm9pZF9sb2NhbF9tYW5pZmVzdD90YWI9cmVhZG1lLW92LWZpbGU+DQo+IA0KPiBDYW4g
+SSBkbyBpdCA/IElzIGl0IHN1cHBvc2VkIHRvIHdvcmsgdGhlIHNhbWUgPw0KPiANCg0KSSBj
+YW4ndCBndWFyYW50ZWUgdGhlIGltYWdlIGhhcyBleGFjdGx5IHRoZSBzYW1lIHN0cnVjdHVy
+ZSBoYXMgVmFuaWxsYSANCkFPU1AsIGJ1dCB5b3UgY2FuIGRlZmluaXRlbHkgZ2l2ZSBpdCBh
+IHRyeSBpZiBpdCdzIHlvdXIgZ29hbC4NCg0KPiBUaGFua3MuDQo+IA0KPiBPbiBNb24sIFNl
+cCAyLCAyMDI0IGF0IDEwOjIz4oCvUE0gUGllcnJpY2sgQm91dmllciANCj4gPHBpZXJyaWNr
+LmJvdXZpZXJAbGluYXJvLm9yZyA8bWFpbHRvOnBpZXJyaWNrLmJvdXZpZXJAbGluYXJvLm9y
+Zz4+IHdyb3RlOg0KPiANCj4gDQo+IA0KPiAgICAgT24gOS8yLzI0IDEzOjIwLCBQaWVycmlj
+ayBCb3V2aWVyIHdyb3RlOg0KPiAgICAgID4gT24gOS8yLzI0IDEyOjUzLCBNYXJpbyBNYXJp
+ZXR0byB3cm90ZToNCj4gICAgICA+PiBIZWxsbyBQaWVycmljay4NCj4gICAgICA+Pg0KPiAg
+ICAgID4+IFdpdGggQ3V0dGxlZmlzaCBjYW4gSSBlbXVsYXRlIEFuZHJvaWQgMTQgZm9yIGFy
+bTY0ID8gSSBhc2sNCj4gICAgIGJlY2F1c2UgaW4NCj4gICAgICA+PiB5b3VyIHNjcmlwdCBJ
+IHJlYWQgOg0KPiAgICAgID4+DQo+ICAgICAgPj4gInwvaG9tZS91c2VyLy53b3JrL3FlbXUv
+YnVpbGQvcWVtdS1zeXN0ZW0teDg2XzY0Iiwgc28sSSBzdXNwZWN0DQo+ICAgICB0aGF0IHlv
+dQ0KPiAgICAgID4+IGhhdmUgZW11bGF0ZWQgQW5kcm9pZCB4NjQgYml0LGJ1dCBJIG5lZWQg
+YXJtNjQuIHwNCj4gICAgICA+Pg0KPiAgICAgID4NCj4gICAgICA+IFllcywgaXQgd29ya3Mg
+Zm9yIGJvdGggYXJjaGl0ZWN0dXJlLiBUaGUgb25seSB0aGluZyBJIGRpZG4ndCB0cnkNCj4g
+ICAgIGlzIGFuDQo+ICAgICAgPiBhcm02NCB2bSBhY2NlbGVyYXRlZCB3aXRoIGt2bSAoSSBk
+b24ndCBoYXZlIHRoaXMgYSBsaW51eC1hYXJjaDY0DQo+ICAgICAgPiBtYWNoaW5lKSwgYnV0
+IGl0IHNob3VsZCB3b3JrLg0KPiANCj4gICAgIEFuZCBvZiBjb3Vyc2UsIGlmIHlvdSB3YW50
+IHRvIHdyaXRlIGEgY3VzdG9tIHdyYXBwZXIgZm9yIHFlbXUsIG5hbWUgaXQNCj4gICAgIHFl
+bXUtc3lzdGVtLWFhcmNoNjQsIGFuZCBjYWxsIHRoZSBzYW1lIGJpbmFyeSBpbnN0ZWFkIG9m
+IHg4Nl82NA0KPiAgICAgdmFyaWFudHMuDQo+IA0KPiAgICAgID4NCj4gICAgICA+PiBJIGFs
+c28gcmVhZCAiZm9yIGFhcmNoNjQgaW1hZ2VzOiBzZWxlY3QNCj4gICAgICA+PiB8YW9zcF9j
+Zl9hcm02NF9vbmx5X3Bob25lLXRydW5rX3N0YWdpbmctdXNlcmRlYnVnIiA6IEknbSBub3Qg
+YWJsZSB0bw0KPiAgICAgID4+IGRvd25sb2FkIHRoaXMga2luZCBvZiBpbWFnZXMuIEkgZG9u
+J3QgdW5kZXJzdGFuZCBob3cgdGhlIEJyYW5jaCBHcmlkDQo+ICAgICAgPj4gd29ya3MuIENh
+biB5b3UgZXhwbGFpbiB0byBtZSBhIGxpdHRsZSBiaXQgbW9yZSA/DQo+ICAgICAgPj4gfA0K
+PiAgICAgID4NCj4gICAgICA+IFlvdSBoYXZlIGEgbGluayBqdXN0IG5leHQgdG8gaXQgKCJC
+cmFuY2ggZ3JpZCIpIG9uIHRoZSB3aWtpIHBhZ2UuDQo+ICAgICAgPiBPbmNlIG9uIGNpIGFu
+ZHJvaWQgcGFnZSwgY2xpY2sgb24gZmlsdGVyIGJ1dHRvbiAodGhyZWUgYmFycywgaW52ZXJ0
+ZWQNCj4gICAgICA+IHB5cmFtaWQpLCBhbmQgc2VsZWN0DQo+ICAgICBhb3NwX2NmX2FybTY0
+X29ubHlfcGhvbmUtdHJ1bmtfc3RhZ2luZy11c2VyZGVidWcuDQo+ICAgICAgPiBUaGVuIGdv
+IHRvIGFydGlmYWN0cywgYW5kIGRvd25sb2FkIGltYWdlIGFuZCBjdmRfaG9zdF94ODZfNjQN
+Cj4gICAgIHBhY2thZ2UsIGFzDQo+ICAgICAgPiB3aWtpIG1lbnRpb25zLg0KPiAgICAgID4N
+Cj4gICAgICA+IERvbid0IGhlc2l0YXRlIHRvIGFzayBtb3JlIHF1ZXN0aW9ucyBvbiB0aGlz
+LiBJIGltYWdpbmUgdGhpcw0KPiAgICAgdG9waWMgbWlnaHQNCj4gICAgICA+IGludGVyZXN0
+IHNvbWUgcGVvcGxlIHdobyB0cnkgdG8gZG8gdGhlIHNhbWUgdGhpbmcuDQo+ICAgICAgPg0K
+PiAgICAgID4gUGllcnJpY2sNCj4gICAgICA+DQo+ICAgICAgPj4gfA0KPiAgICAgID4+IHwN
+Cj4gICAgICA+Pg0KPiAgICAgID4+DQo+ICAgICAgPj4gT24gTW9uLCBTZXAgMiwgMjAyNCBh
+dCA4OjQ34oCvUE0gUGllcnJpY2sgQm91dmllcg0KPiAgICAgID4+IDxwaWVycmljay5ib3V2
+aWVyQGxpbmFyby5vcmcNCj4gICAgIDxtYWlsdG86cGllcnJpY2suYm91dmllckBsaW5hcm8u
+b3JnPg0KPiAgICAgPG1haWx0bzpwaWVycmljay5ib3V2aWVyQGxpbmFyby5vcmcNCj4gICAg
+IDxtYWlsdG86cGllcnJpY2suYm91dmllckBsaW5hcm8ub3JnPj4+IHdyb3RlOg0KPiAgICAg
+ID4+DQo+ICAgICAgPj7CoCDCoCDCoCBIZWxsbyBNYXJpbywNCj4gICAgICA+Pg0KPiAgICAg
+ID4+wqAgwqAgwqAgdmVyeSByZWNlbnRseSwgSSBoYWQgdG8gaW52ZXN0aWdhdGUgYm9vdGlu
+ZyB0aW1lIG9mIEFuZHJvaWQNCj4gICAgIHdoZW4gdXNpbmcNCj4gICAgICA+PsKgIMKgIMKg
+IFFFTVUuIFlvdSBjYW4gcHJvYmFibHkgbWFuYWdlIHRvIGJvb3QgdGhpcyB3aXRoIG9ubHkg
+UUVNVQ0KPiAgICAgYWxvbmUsIGJ1dCBpbg0KPiAgICAgID4+wqAgwqAgwqAgbXkgZXhwZXJp
+ZW5jZSwgdXNpbmcgQ3V0dGxlZmlzaCB0b29saW5nIGlzIGFuIGVhc2llciBhcHByb2FjaC4N
+Cj4gICAgICA+Pg0KPiAgICAgID4+wqAgwqAgwqAgSWYgeW91IHJlYWxseSB3YW50IHRvIHVz
+ZSBvbmx5IFFFTVUsIHlvdSBjYW4gdXNlIEN1dHRsZWZpc2gNCj4gICAgIHRvIGdldA0KPiAg
+ICAgID4+wqAgwqAgwqAgZXhhY3QNCj4gICAgICA+PsKgIMKgIMKgIGNvbW1hbmQgbGluZSB1
+c2VkICh3aGljaCBkaXNrIGdvZXMgd2hlcmUpLCBhbmQgaXRlcmF0ZSBmcm9tDQo+ICAgICB0
+aGF0Lg0KPiAgICAgID4+DQo+ICAgICAgPj7CoCDCoCDCoCBJbnN0cnVjdGlvbnM6DQo+ICAg
+ICAgPj4NCj4gICAgIGh0dHBzOi8vbGluYXJvLmF0bGFzc2lhbi5uZXQvd2lraS9zcGFjZXMv
+UUVNVS9wYWdlcy8yOTQ2NDA2ODA5Ny9SdW4rQW5kcm9pZCt1c2luZytRRU1VIDxodHRwczov
+L2xpbmFyby5hdGxhc3NpYW4ubmV0L3dpa2kvc3BhY2VzL1FFTVUvcGFnZXMvMjk0NjQwNjgw
+OTcvUnVuK0FuZHJvaWQrdXNpbmcrUUVNVT4gPGh0dHBzOi8vbGluYXJvLmF0bGFzc2lhbi5u
+ZXQvd2lraS9zcGFjZXMvUUVNVS9wYWdlcy8yOTQ2NDA2ODA5Ny9SdW4rQW5kcm9pZCt1c2lu
+ZytRRU1VIDxodHRwczovL2xpbmFyby5hdGxhc3NpYW4ubmV0L3dpa2kvc3BhY2VzL1FFTVUv
+cGFnZXMvMjk0NjQwNjgwOTcvUnVuK0FuZHJvaWQrdXNpbmcrUUVNVT4+DQo+ICAgICAgPj4N
+Cj4gICAgICA+PsKgIMKgIMKgIEFzIHlvdSdsbCBzZWUsIEkgY291bGQgbm90IGdldCBhIGRp
+cmVjdCBncmFwaGljIG91dHB1dCwgYnV0DQo+ICAgICB1c2luZw0KPiAgICAgID4+wqAgwqAg
+wqAgc2NyY3B5LCBpdCB3b3JrZWQgd2VsbCBmb3IgbWUuIEhvcGUgaXQgY2FuIGZpdCB5b3Vy
+IHVzZSBjYXNlLg0KPiAgICAgID4+DQo+ICAgICAgPj7CoCDCoCDCoCBSZWdhcmRzLA0KPiAg
+ICAgID4+wqAgwqAgwqAgUGllcnJpY2sNCj4gICAgICA+Pg0KPiAgICAgID4+wqAgwqAgwqAg
+T24gOS8yLzI0IDA2OjQ5LCBNYXJpbyBNYXJpZXR0byB3cm90ZToNCj4gICAgICA+PsKgIMKg
+IMKgIMKgPiBIZWxsby4NCj4gICAgICA+PsKgIMKgIMKgIMKgPg0KPiAgICAgID4+wqAgwqAg
+wqAgwqA+IEkgd291bGQgbGlrZSB0byBlbXVsYXRlIEFuZHJvaWQgMTQgb24gbXkgVWJ1bnR1
+IDI0LjA0IE9TDQo+ICAgICBYNjQgYml0DQo+ICAgICAgPj7CoCDCoCDCoCB1c2luZw0KPiAg
+ICAgID4+wqAgwqAgwqAgwqA+IHFlbXUtc3lzdGVtLWFhcmNoNjQuIEkgdHJpZWQgdXNpbmcg
+dGhlIGZvbGxvd2luZw0KPiAgICAgcGFyYW1ldGVycyA6DQo+ICAgICAgPj7CoCDCoCDCoCDC
+oD4NCj4gICAgICA+PsKgIMKgIMKgIMKgPiBxZW11LXN5c3RlbS1hYXJjaDY0IFwNCj4gICAg
+ICA+PsKgIMKgIMKgIMKgPsKgIMKgIMKgIMKgIMKgIC1zbXAgNCBcDQo+ICAgICAgPj7CoCDC
+oCDCoCDCoD7CoCDCoCDCoCDCoCDCoCAtbSAyMDQ4IFwNCj4gICAgICA+PsKgIMKgIMKgIMKg
+PsKgIMKgIMKgIMKgIMKgIC1jcHUgY29ydGV4LWE3MiBcDQo+ICAgICAgPj7CoCDCoCDCoCDC
+oD7CoCDCoCDCoCDCoCDCoCAtTSB2aXJ0IFwNCj4gICAgICA+PsKgIMKgIMKgIMKgPsKgIMKg
+IMKgIMKgIMKgIC1kZXZpY2UgdmlydGlvLWdwdS1wY2kseHJlcz0xMDI0LHlyZXM9NzY4IFwN
+Cj4gICAgICA+PsKgIMKgIMKgIMKgPsKgIMKgIMKgIMKgIMKgIC1kaXNwbGF5IHNkbCxnbD1v
+biBcDQo+ICAgICAgPj7CoCDCoCDCoCDCoD7CoCDCoCDCoCDCoCDCoCAtZGV2aWNlIHVzYi1l
+aGNpIFwNCj4gICAgICA+PsKgIMKgIMKgIMKgPsKgIMKgIMKgIMKgIMKgIC1kZXZpY2UgdXNi
+LWtiZCBcDQo+ICAgICAgPj7CoCDCoCDCoCDCoD7CoCDCoCDCoCDCoCDCoCAtZGV2aWNlIHZp
+cnRpby10YWJsZXQtcGNpIFwNCj4gICAgICA+PsKgIMKgIMKgIMKgPsKgIMKgIMKgIMKgIMKg
+IC11c2IgXA0KPiAgICAgID4+wqAgwqAgwqAgwqA+wqAgwqAgwqAgwqAgwqAgLXNlcmlhbCBz
+dGRpbyBcDQo+ICAgICAgPj7CoCDCoCDCoCDCoD7CoCDCoCDCoCDCoCDCoCAta2VybmVsIC9t
+bnQvenJvb3QtMTMzL19PUy9BbmRyb2lkL3JwaTQvSW1hZ2UgXA0KPiAgICAgID4+wqAgwqAg
+wqAgwqA+wqAgwqAgwqAgwqAgwqAgLWluaXRyZA0KPiAgICAgL21udC96cm9vdC0xMzMvX09T
+L0FuZHJvaWQvcnBpNC9yYW1kaXNrLmltZyBcDQo+ICAgICAgPj7CoCDCoCDCoCDCoD7CoCDC
+oCDCoCDCoMKgwqAgLWRyaXZlDQo+ICAgICAgPj7CoCDCoCDCoCDCoD4NCj4gICAgICA+PiAg
+ICAgDQo+ICAgICBpbmRleD0wLGlmPW5vbmUsaWQ9c3lzdGVtLGZpbGU9L21udC96cm9vdC0x
+MzMvX09TL0FuZHJvaWQvcnBpNC9ib290LmltZyBcDQo+ICAgICAgPj7CoCDCoCDCoCDCoD7C
+oCDCoCDCoCDCoCDCoCAtZGV2aWNlIHZpcnRpby1ibGstcGNpLGRyaXZlPWJvb3QgXA0KPiAg
+ICAgID4+wqAgwqAgwqAgwqA+wqAgwqDCoMKgwqDCoMKgwqAgLWRyaXZlDQo+ICAgICAgPj7C
+oCDCoCDCoCDCoD4NCj4gICAgICA+PiAgICAgDQo+ICAgICBpbmRleD0xLGlmPW5vbmUsaWQ9
+c3lzdGVtLGZpbGU9L21udC96cm9vdC0xMzMvX09TL0FuZHJvaWQvcnBpNC9zeXN0ZW0uaW1n
+IFwNCj4gICAgICA+PsKgIMKgIMKgIMKgPsKgIMKgIMKgIMKgIMKgIC1kZXZpY2UgdmlydGlv
+LWJsay1wY2ksZHJpdmU9c3lzdGVtIFwNCj4gICAgICA+PsKgIMKgIMKgIMKgPsKgIMKgIMKg
+IMKgIMKgIC1kcml2ZQ0KPiAgICAgID4+wqAgwqAgwqAgwqA+DQo+ICAgICAgPj4gICAgIA0K
+PiAgICAgaW5kZXg9MixpZj1ub25lLGlkPXZlbmRvcixmaWxlPS9tbnQvenJvb3QtMTMzL19P
+Uy9BbmRyb2lkL3JwaTQvdmVuZG9yLmltZyBcDQo+ICAgICAgPj7CoCDCoCDCoCDCoD7CoCDC
+oCDCoCDCoCDCoCAtZGV2aWNlIHZpcnRpby1ibGstcGNpLGRyaXZlPXZlbmRvciBcDQo+ICAg
+ICAgPj7CoCDCoCDCoCDCoD4gLWFwcGVuZCAiY29uc29sZT10dHlBTUEwLDM4NDAwIGRybS5k
+ZWJ1Zz0weDAgcm9vdHdhaXQNCj4gICAgIHJvb3RkZWxheT01DQo+ICAgICAgPj7CoCDCoCDC
+oCDCoD4gcm9vdD0vZGV2L21tY2JsazBwMiBhbmRyb2lkYm9vdC5oYXJkd2FyZT1ycGk0DQo+
+ICAgICAgPj7CoCDCoCDCoCDCoD4gYW5kcm9pZGJvb3Quc2VsaW51eD1wZXJtaXNzaXZlIHNl
+Y3VyaXR5PXNlbGludXggc2VsaW51eD0xDQo+ICAgICAgPj7CoCDCoCDCoCDCoD4gYW5kcm9p
+ZGJvb3QucWVtdS5ody5tYWlua2V5cz0wIGFuZHJvaWRib290LmxjZC5kZW5zaXR5PTE2MCIN
+Cj4gICAgICA+PsKgIMKgIMKgIMKgPg0KPiAgICAgID4+wqAgwqAgwqAgwqA+IFRoZSBlcnJv
+ciBJIGdldCBpbiBzaG9ydCBpcyA6DQo+ICAgICAgPj7CoCDCoCDCoCDCoD4NCj4gICAgICA+
+PsKgIMKgIMKgIMKgPiBbIDEuOTkzNjY4XSBpbml0OiBib29sDQo+ICAgICAgPj7CoCDCoCDC
+oCDCoD4NCj4gICAgICA+PiAgICAgDQo+ICAgICBhbmRyb2lkOjppbml0OjpCbG9ja0Rldklu
+aXRpYWxpemVyOjpJbml0RGV2aWNlcyhzdGQ6OnNldDxzdGQ6OnN0cmluZz4pOg0KPiAgICAg
+ID4+wqAgwqAgwqAgwqA+IHBhcnRpdGlvbihzKSBub3QgZm91bmQgaW4gL3N5cywgd2FpdGlu
+ZyBmb3IgdGhlaXIgdWV2ZW50KHMpOg0KPiAgICAgID4+wqAgwqAgwqAgbW1jYmxrMHAyLA0K
+PiAgICAgID4+wqAgwqAgwqAgwqA+IG1tY2JsazBwMw0KPiAgICAgID4+wqAgwqAgwqAgwqA+
+DQo+ICAgICAgPj7CoCDCoCDCoCDCoD4NCj4gICAgICA+PsKgIMKgIMKgIMKgPiBPbmUgdXNl
+ciBzdWdnZXN0ZWQgdG8gOg0KPiAgICAgID4+wqAgwqAgwqAgwqA+DQo+ICAgICAgPj7CoCDC
+oCDCoCDCoD4NCj4gICAgICA+PsKgIMKgIMKgIMKgPg0KPiAgICAgID4+wqAgwqAgwqAgwqA+
+DQo+ICAgICAgPj7CoCDCoCDCoCDCoD4NCj4gICAgICA+PsKgIMKgIMKgIMKgPiBIaSEhISBU
+aGUgIi9zeXMiIGlzIGEgImR5bmFtaWMgZnMiIGNyZWF0ZWQgYXQgcmFtIGZyb20gdGhlDQo+
+ICAgICAgPj7CoCDCoCDCoCBrZXJuZWwsIHRvDQo+ICAgICAgPj7CoCDCoCDCoCDCoD4gZXhw
+b3J0IGEgbG90IG9mIHRoaW5ncy4uLnNvIG1vc3Qgb2YgdGhlIGZpbGVzIG9ubHkgZXhpc3QN
+Cj4gICAgIGF0IHJ1bnRpbWUuDQo+ICAgICAgPj7CoCDCoCDCoCDCoD4gTm9ybWFsbHksIHRo
+ZSBwYXJ0aXRpb25zIGZyb20gdGhlIGJsb2NrIGRldmljZSBoYXZlIGENCj4gICAgIHN5bWxp
+bmsgYXQNCj4gICAgICA+PsKgIMKgIMKgIMKgPiAvc3lzLzxzb21ldGhpbmc+LzwuLi4+IHRo
+YXQgcG9pbnRzIHRvIC9kZXYvIGJsb2NrIG5vZGUuDQo+ICAgICBJdCBzZWVtcw0KPiAgICAg
+ID4+wqAgwqAgwqAgdGhhdA0KPiAgICAgID4+wqAgwqAgwqAgwqA+IHRoZXJlIGFyZSBubyBz
+dWNoIGZpbGVzIHVuZGVyIC9zeXMgYWNjb3JkaW5nIHRvIHdoYXQNCj4gICAgIGluaXQgaXMg
+bG9va2luZw0KPiAgICAgID4+wqAgwqAgwqAgwqA+IGZvci4gWW91IGNhbiBkb3VibGUgY2hl
+Y2sgdGhpcyBhdCBpbml0IHNvdXJjZSBjb2RlIHRvDQo+ICAgICBjaGVjayB0aGUNCj4gICAg
+ICA+PsKgIMKgIMKgIGV4YWN0DQo+ICAgICAgPj7CoCDCoCDCoCDCoD4gcGF0aCBidXQgSSdt
+IGd1ZXNzaW5nIHRoYXQgeW91J2xsIGhhdmUgdG8gY2hhbmdlIHRoZQ0KPiAgICAgcWVtdSBh
+cmd1bWVudHMNCj4gICAgICA+PsKgIMKgIMKgIMKgPiByZWdhcmRpbmcgdGhlIGJsb2NrIGRl
+dmljZS4NCj4gICAgICA+PsKgIMKgIMKgIMKgPg0KPiAgICAgID4+wqAgwqAgwqAgwqA+IEFi
+b3V0IHVzZXJkYXRhLmltZyBJIHRoaW5rIGl0J3Mgbm9ybWFsIHNpbmNlIGluIHRoZSBvbGQN
+Cj4gICAgIGRheXMsIHRoZQ0KPiAgICAgID4+wqAgwqAgwqAgaW1hZ2UNCj4gICAgICA+PsKg
+IMKgIMKgIMKgPiB3YXMgYSAiZW1wdHkgc3BhcnNlIGltYWdlIiwgdGhhdCBtZWFucywgYXQg
+dGhlIGZpcnN0DQo+ICAgICBmbGFzaGluZw0KPiAgICAgID4+wqAgwqAgwqAgcHJvY2VzcywN
+Cj4gICAgICA+PsKgIMKgIMKgIMKgPiB0aGVyZSBpc24ndCB1c2VyZGF0YSBpbmZvcm1hdGlv
+biwgd2UncmUganVzdCAiZmxhc2hpbmcgdGhlDQo+ICAgICAgPj7CoCDCoCDCoCBwYXJ0aXRp
+b24iDQo+ICAgICAgPj7CoCDCoCDCoCDCoD4gd2l0aCBlbXB0eSBkYXRhLg0KPiAgICAgID4+
+wqAgwqAgwqAgwqA+IFRrcyEhIQ0KPiAgICAgID4+wqAgwqAgwqAgwqA+DQo+ICAgICAgPj7C
+oCDCoCDCoCDCoD4NCj4gICAgICA+PsKgIMKgIMKgIMKgPg0KPiAgICAgID4+wqAgwqAgwqAg
+wqA+IFNvLGluIHNob3J0IEkgc2hvdWxkIGNoYW5nZSB0aGUgcWVtdSBhcmd1bWVudHMgcmVn
+YXJkaW5nDQo+ICAgICB0aGUgYmxvY2sNCj4gICAgICA+PsKgIMKgIMKgIMKgPiBkZXZpY2Uu
+IEkgdHJpZWQgaW4gdGhpcyB3YXkgOg0KPiAgICAgID4+wqAgwqAgwqAgwqA+DQo+ICAgICAg
+Pj7CoCDCoCDCoCDCoD4NCj4gICAgICA+PsKgIMKgIMKgIMKgPiBxZW11LXN5c3RlbS1hYXJj
+aDY0IFwNCj4gICAgICA+PsKgIMKgIMKgIMKgPsKgIMKgIMKgIMKgIMKgIC1zbXAgNCBcDQo+
+ICAgICAgPj7CoCDCoCDCoCDCoD7CoCDCoCDCoCDCoCDCoCAtbSAyMDQ4IFwNCj4gICAgICA+
+PsKgIMKgIMKgIMKgPsKgIMKgIMKgIMKgIMKgIC1jcHUgY29ydGV4LWE3MiBcDQo+ICAgICAg
+Pj7CoCDCoCDCoCDCoD7CoCDCoCDCoCDCoCDCoCAtTSB2aXJ0IFwNCj4gICAgICA+PsKgIMKg
+IMKgIMKgPsKgIMKgIMKgIMKgIMKgIC1kZXZpY2UgdmlydGlvLWdwdS1wY2kseHJlcz0xMDI0
+LHlyZXM9NzY4IFwNCj4gICAgICA+PsKgIMKgIMKgIMKgPsKgIMKgIMKgIMKgIMKgIC1kaXNw
+bGF5IHNkbCxnbD1vbiBcDQo+ICAgICAgPj7CoCDCoCDCoCDCoD7CoCDCoCDCoCDCoCDCoCAt
+ZGV2aWNlIHVzYi1laGNpIFwNCj4gICAgICA+PsKgIMKgIMKgIMKgPsKgIMKgIMKgIMKgIMKg
+IC1kZXZpY2UgdXNiLWtiZCBcDQo+ICAgICAgPj7CoCDCoCDCoCDCoD7CoCDCoCDCoCDCoCDC
+oCAtZGV2aWNlIHZpcnRpby10YWJsZXQtcGNpIFwNCj4gICAgICA+PsKgIMKgIMKgIMKgPsKg
+IMKgIMKgIMKgIMKgIC11c2IgXA0KPiAgICAgID4+wqAgwqAgwqAgwqA+wqAgwqAgwqAgwqAg
+wqAgLXNlcmlhbCBzdGRpbyBcDQo+ICAgICAgPj7CoCDCoCDCoCDCoD7CoCDCoCDCoCDCoCDC
+oCAta2VybmVsIC9tbnQvenJvb3QtMTMzL19PUy9BbmRyb2lkL3JwaTQvSW1hZ2UgXA0KPiAg
+ICAgID4+wqAgwqAgwqAgwqA+wqAgwqAgwqAgwqAgwqAgLWluaXRyZA0KPiAgICAgL21udC96
+cm9vdC0xMzMvX09TL0FuZHJvaWQvcnBpNC9yYW1kaXNrLmltZyBcDQo+ICAgICAgPj7CoCDC
+oCDCoCDCoD7CoCDCoMKgwqDCoMKgwqDCoCAtaGRhIC9tbnQvenJvb3QtMTMzL19PUy9BbmRy
+b2lkL3JwaTQvYm9vdC5pbWcgXA0KPiAgICAgID4+wqAgwqAgwqAgwqA+wqAgwqAgwqAgwqAg
+wqAgLWhkYiAvbW50L3pyb290LTEzMy9fT1MvQW5kcm9pZC9ycGk0L3N5c3RlbS5pbWcgXA0K
+PiAgICAgID4+wqAgwqAgwqAgwqA+wqAgwqAgwqAgwqAgwqAgLWhkYyAvbW50L3pyb290LTEz
+My9fT1MvQW5kcm9pZC9ycGk0L3ZlbmRvci5pbWcgXA0KPiAgICAgID4+wqAgwqAgwqAgwqA+
+wqAgwqAgwqAgwqAgLWFwcGVuZCAiY29uc29sZT10dHlBTUEwLDM4NDAwIGRybS5kZWJ1Zz0w
+eDAgcm9vdHdhaXQNCj4gICAgICA+PsKgIMKgIMKgIHJvb3RkZWxheT01DQo+ICAgICAgPj7C
+oCDCoCDCoCDCoD4gcm9vdD0vZGV2L21tY2JsazBwMiBhbmRyb2lkYm9vdC5oYXJkd2FyZT1y
+cGk0DQo+ICAgICAgPj7CoCDCoCDCoCDCoD4gYW5kcm9pZGJvb3Quc2VsaW51eD1wZXJtaXNz
+aXZlIHNlY3VyaXR5PXNlbGludXggc2VsaW51eD0xDQo+ICAgICAgPj7CoCDCoCDCoCDCoD4g
+YW5kcm9pZGJvb3QucWVtdS5ody5tYWlua2V5cz0wIGFuZHJvaWRib290LmxjZC5kZW5zaXR5
+PTE2MCINCj4gICAgICA+PsKgIMKgIMKgIMKgPg0KPiAgICAgID4+wqAgwqAgwqAgwqA+DQo+
+ICAgICAgPj7CoCDCoCDCoCDCoD4gYnV0IHRoZSBlcnJvciBpcyBzdGlsbCB0aGVyZS4gRG8g
+eW91IGtub3cgc29tZSBkaWZmZXJlbnQNCj4gICAgIGFsdGVybmF0aXZlDQo+ICAgICAgPj7C
+oCDCoCDCoCDCoD4gYmxvY2sgZGV2aWNlcyB0byB0cnkgPyB0aGFua3MuDQo+ICAgICAgPj7C
+oCDCoCDCoCDCoD4NCj4gICAgICA+PsKgIMKgIMKgIMKgPg0KPiAgICAgID4+wqAgwqAgwqAg
+wqA+IC0tDQo+ICAgICAgPj7CoCDCoCDCoCDCoD4gTWFyaW8uDQo+ICAgICAgPj4NCj4gICAg
+ICA+Pg0KPiAgICAgID4+DQo+ICAgICAgPj4gLS0NCj4gICAgICA+PiBNYXJpby4NCj4gDQo+
+IA0KPiANCj4gLS0gDQo+IE1hcmlvLg0K

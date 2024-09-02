@@ -1,112 +1,94 @@
-Received: by 2002:a17:504:3a8f:b0:1be9:327d:8ee3 with SMTP id g15csp1076259njf;
-        Mon, 2 Sep 2024 05:08:13 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCV21xMprg4Rb3oE9dG5wrle/Mxo+jS0wcVB1Z1XlFdFZV1ORWRUpV5Jj0ifmFycGQf1JGV0VEO//AafkQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IEGFuS82O+Jwv20jyWkAuZBg6+8blhVSzgUjhCBNpz2BtENiQKivL2h+yIPDVOKZpee2a7o
-X-Received: by 2002:a05:6830:6f04:b0:704:46da:5fa0 with SMTP id 46e09a7af769-70f710104dfmr8544721a34.10.1725278893009;
-        Mon, 02 Sep 2024 05:08:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1725278892; cv=none;
+Received: by 2002:a17:504:3a8f:b0:1be9:327d:8ee3 with SMTP id g15csp1095445njf;
+        Mon, 2 Sep 2024 06:09:12 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWm02HhII6J5p4mHCDC6mdGthmU8pFXcXfrpeTnIdWwm7p1nBtybzHJQ9421rxuov9VUHm4HeOgbDEiQg==@linaro.org
+X-Google-Smtp-Source: AGHT+IEz2eoaM8R2rG8gpoavwdav5kiHRN2PDxdCo6SB+qrSdTf9turAJnib/iDZtoPkNQD7+REW
+X-Received: by 2002:a05:622a:258c:b0:457:cab4:6e4a with SMTP id d75a77b69052e-457cab46f1cmr68119671cf.37.1725282551938;
+        Mon, 02 Sep 2024 06:09:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1725282551; cv=none;
         d=google.com; s=arc-20160816;
-        b=o52d6lqSp/u6aBkzfzxgHErRNjcSeU353QgR+cjLpPrODu+WAtPaAKENUVes8FPLiG
-         QGRkCuRZaBHH/Rji2pKjuev67NME8GXKDhqI1ip8W+5qjkUOWjWLACqKm3jtv97M4ifj
-         6GUtzj3/PMTKMgrc1urUzR7uWn9ubpXD314sWobDulSJ+VYKtt+ppcC595Ex7lHPbY/0
-         tPTCv2WKxBMIBj1xq7dGTffOXOM/Mtv4F4hnNgNvvVBIxewGdmm/q7GHkmVlQH03JF61
-         CQ3ThGYJSuFDF0+DnvoC/rUF15qzQThLPISB0rRJrAiTrZOhUF3K2uZ/6nsyKBkNUKzv
-         ImmQ==
+        b=lqPCH8banmR6lWtOoD9LgVWEGmo17NhftLHiZz+d8tVeE/NG/DuM+uoAFboNCVJ13O
+         nEDL9O5wN1UYtJb8Uu0Jz9LhoGhW0oujeSal/hXtBXSvBE4qtRgUHPpm1BycZHFP40T4
+         2JPei+4ZWhKIJnpxJu3ulqesXZutMpDxykrUvPyBHAc+Qm4nOacXSC9QzFePxUrJFa95
+         3U1844OIFAATuD4xU/6atTHGLoCocnpZ3N4m7B5RT2EOwek/et6yDhJGtiYKbucxjUOR
+         1GxmtS6Fkqyz+tkl5Np09aLUk/M7iiWDhpNaagCvlll1h3qGA1PH5848k724Nplka0Jg
+         5n+w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=dkQxYeFZK8yzOwfSeCZ18iVu4+ksZbGRP7U47oaewW0=;
-        fh=lu+wOHEYZO1oZq4R0p5rj+pV6gbzqyjP6WYQYAObjOk=;
-        b=XwbQLj2tTUYN2O53GOfiC4VDnyIK2pcuXIygSbaG8tfdW/pX6Wr9W3CHP4zHQEZt/g
-         NWvBlBrru/BCH56sLdxnV9C8ZOlrnlrpEhY5QKYOwIkb7e8YwbYs1q1q1ZuUk7PNZSVv
-         RV1ddK8KvfWOyIRl9xXc3251fJLXXhL6Fm/J9U1d8SoXcCivEv7/F+KhuDFOSc3TlDvx
-         tfPan2TYOTrgK4cqnAkhgzsmXAhDFQAWMPZq4vnSrsizhPADpGMQ3iLY1TXx+b7L7Iem
-         TASQMLEfqIMlHmrb9lrMbVi9HMnZYb7slCeKrvE7S4XdW17wbUyE2DZtLpKiRHaCxiNw
-         iMiQ==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id;
+        bh=lRwEVxdkEr4BO278+E6/gPCGeDiqZvZenZeJUBihqOo=;
+        fh=P9eF86Qai1jM7EkBuFwf50J/wVjW4uTYQ/nRQ7unStY=;
+        b=qACPja+CI9ySse2EuI5QtnTM/hlpJ3+9vt/gakbdpMNG4yANORS6h/GLdim/J9yy3G
+         rzQ/FHPE2rhb/ZgeULF3Z17O92kMTLsHLPQVOS1TF48pekjM5D3x3r5MxAHzZMlxdFc3
+         k+H001/bNgkDmEvR6A9TUEmeSOzio61CeqAOO/EPNebV7EiRLKbK8OvU+ccKf37KV8sD
+         Qwkur7xNg3sbhgfStiR/UKyJpfsuqYuL0XdoM9/eA8K13VrI8oMzdvAvJKToKmvTPsVx
+         uZuC7Vm2wrDP2f04ghjUvoSV+lHKTEboOW9pa/mv13BRdBrCt4kBv5uNJvgODRpJIPML
+         vWzg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=hENLyiwl;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 71dfb90a1353d-5007163e9b4si1944255e0c.175.2024.09.02.05.08.12
+        by mx.google.com with ESMTPS id d75a77b69052e-45682db8fadsi122585201cf.558.2024.09.02.06.09.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 02 Sep 2024 05:08:12 -0700 (PDT)
+        Mon, 02 Sep 2024 06:09:11 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=hENLyiwl;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sl5qg-0003VP-ED; Mon, 02 Sep 2024 08:07:58 -0400
+	id 1sl6nc-0003ej-Az; Mon, 02 Sep 2024 09:08:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1sl5qe-0003UQ-NG; Mon, 02 Sep 2024 08:07:56 -0400
-Received: from mgamail.intel.com ([198.175.65.10])
+ (Exim 4.90_1) (envelope-from <SRS0=3a9v=QA=kaod.org=clg@ozlabs.org>)
+ id 1sl6na-0003cH-Hc; Mon, 02 Sep 2024 09:08:50 -0400
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1sl5qc-0005Lc-As; Mon, 02 Sep 2024 08:07:56 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1725278874; x=1756814874;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=qgr1sU7wkJHclCHETFO8vyp0MlBwWnW+iyMOkHg9Fkk=;
- b=hENLyiwlK904calFsce5LwbM7Ubc8iepw7GriLluG3Wzd4OYxv6USiBr
- zU8pCew5pINv0c08AjkXxl+AaG/VMe7OEadNXfRhZucaTCgupMS/573Fd
- XPVLxz6q4HS7GDrzulbTsodGYc7vgBvNJk4NQ9Zgmy4TofdFcUIX8wQrx
- vJ0P7n+lKl024OAH0iaqrblJPlYjZ3cj+7D9ZlbtJtNDAGuph9SkP8o15
- HTGYMub/6SB0bLefi6LvCqpgZuMnoNNaMUrSWzXrFTQvaeKeYJX/9DrcX
- zQKQx9KWy34RfTuJbQTMC9rGoDk8mqN6Bz0id/nMgIb9l1WyzK7+9PWLC Q==;
-X-CSE-ConnectionGUID: 07UTZtAOTzeFJ7hroD6INA==
-X-CSE-MsgGUID: h/cuJ6LbRsWbYAjJBdfAGA==
-X-IronPort-AV: E=McAfee;i="6700,10204,11182"; a="41333119"
-X-IronPort-AV: E=Sophos;i="6.10,195,1719903600"; d="scan'208";a="41333119"
-Received: from fmviesa001.fm.intel.com ([10.60.135.141])
- by orvoesa102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 02 Sep 2024 05:07:49 -0700
-X-CSE-ConnectionGUID: XhA4ac0RSvugfTevNzWVkQ==
-X-CSE-MsgGUID: O8z3vyWmQb2M+INS6gcYvA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.10,195,1719903600"; d="scan'208";a="95405433"
-Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost)
- ([10.239.160.36])
- by fmviesa001.fm.intel.com with ESMTP; 02 Sep 2024 05:07:44 -0700
-Date: Mon, 2 Sep 2024 20:23:43 +0800
-From: Zhao Liu <zhao1.liu@intel.com>
-To: Alireza Sanaee <alireza.sanaee@huawei.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, zhenyu.z.wang@intel.com,
- dapeng1.mi@linux.intel.com, yongwei.ma@intel.com, armbru@redhat.com,
- farman@linux.ibm.com, peter.maydell@linaro.org, mst@redhat.com,
- anisinha@redhat.com, shannon.zhaosl@gmail.com, imammedo@redhat.com,
- mtosatti@redhat.com, berrange@redhat.com,
- richard.henderson@linaro.org, linuxarm@huwei.com,
- shameerali.kolothum.thodi@huawei.com, Jonathan.Cameron@huawei.com,
- jiangkunkun@huawei.com, zhao1.liu@intel.com
-Subject: Re: [RFC PATCH 0/2] Specifying cache topology on ARM
-Message-ID: <ZtWuT4W5kKEtodyo@intel.com>
-References: <20240823125446.721-1-alireza.sanaee@huawei.com>
- <ZtL9u9kQcx0GtEKq@intel.com> <20240902112519.00005b67@huawei.com>
+ (Exim 4.90_1) (envelope-from <SRS0=3a9v=QA=kaod.org=clg@ozlabs.org>)
+ id 1sl6nY-0004xV-32; Mon, 02 Sep 2024 09:08:50 -0400
+Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4Wy8G14NyCz4xDT;
+ Mon,  2 Sep 2024 23:08:41 +1000 (AEST)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (Client did not present a certificate)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4Wy8Fw0GDfz4x2M;
+ Mon,  2 Sep 2024 23:08:32 +1000 (AEST)
+Message-ID: <ffb6506a-3903-4f7f-b3ef-744e9877d8a1@kaod.org>
+Date: Mon, 2 Sep 2024 15:08:27 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20240902112519.00005b67@huawei.com>
-Received-SPF: pass client-ip=198.175.65.10; envelope-from=zhao1.liu@intel.com;
- helo=mgamail.intel.com
-X-Spam_score_int: -44
-X-Spam_score: -4.5
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 01/11] hw/i2c/aspeed: support discontinuous register
+ memory region of I2C bus
+To: Jamin Lin <jamin_lin@aspeedtech.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ Cleber Rosa <crosa@redhat.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
+ <philmd@linaro.org>, Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ Beraldo Leal <bleal@redhat.com>, "open list:ASPEED BMCs"
+ <qemu-arm@nongnu.org>, "open list:All patches CC here"
+ <qemu-devel@nongnu.org>
+Cc: troy_lee@aspeedtech.com, yunlin.tang@aspeedtech.com
+References: <20240808024916.1262715-1-jamin_lin@aspeedtech.com>
+ <20240808024916.1262715-2-jamin_lin@aspeedtech.com>
+Content-Language: en-US, fr
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <20240808024916.1262715-2-jamin_lin@aspeedtech.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
+ envelope-from=SRS0=3a9v=QA=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
+X-Spam_score_int: -39
+X-Spam_score: -4.0
 X-Spam_bar: ----
-X-Spam_report: (-4.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.142,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.25, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -122,25 +104,80 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: TRwbAfOcsiEy
+X-TUID: QfLDuN1ySz/c
 
-On Mon, Sep 02, 2024 at 11:25:19AM +0100, Alireza Sanaee wrote:
+On 8/8/24 04:49, Jamin Lin wrote:
+> It only support continuous register memory region for all I2C bus.
+> However, the register address of all I2c bus are discontinuous
+> for AST2700.
 > 
-> Hi Zhao,
+> Ex: the register address of I2C bus for ast2700 as following.
+> 0x100 - 0x17F: Device 0
+> 0x200 - 0x27F: Device 1
+> 0x300 - 0x37F: Device 2
+> 0x400 - 0x47F: Device 3
+> 0x500 - 0x57F: Device 4
+> 0x600 - 0x67F: Device 5
+> 0x700 - 0x77F: Device 6
+> 0x800 - 0x87F: Device 7
+> 0x900 - 0x97F: Device 8
+> 0xA00 - 0xA7F: Device 9
+> 0xB00 - 0xB7F: Device 10
+> 0xC00 - 0xC7F: Device 11
+> 0xD00 - 0xD7F: Device 12
+> 0xE00 - 0xE7F: Device 13
+> 0xF00 – 0xF7F: Device 14
+> 0x1000 – 0x107F: Device 15
 > 
-> Yes, please keep me CCed. 
+> Introduce a new class attribute to make user set each I2C bus gap size.
+> Update formula to create all I2C bus register memory regions.
 > 
-> One thing that I noticed, sometimes, since you were going down the
-> Intel path, some variables couldn't be NULL. But when I was gonna go
-> down to ARM path, I faced some scenarios where I ended up with
-> some uninit vars which is still OK but could have been avoided.
+> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 
-Ah I didn't get your point very clearly. Could you please figure out
-those places on my patches? Then I can fix them in my next version. :)
+
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
 
 Thanks,
-Zhao
 
-> Looking forward to the next revision.
+C.
+
+
+> ---
+>   hw/i2c/aspeed_i2c.c         | 3 ++-
+>   include/hw/i2c/aspeed_i2c.h | 1 +
+>   2 files changed, 3 insertions(+), 1 deletion(-)
 > 
-> Alireza
+> diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
+> index b52a99896c..9c222a02fe 100644
+> --- a/hw/i2c/aspeed_i2c.c
+> +++ b/hw/i2c/aspeed_i2c.c
+> @@ -1012,6 +1012,7 @@ static void aspeed_i2c_realize(DeviceState *dev, Error **errp)
+>       SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
+>       AspeedI2CState *s = ASPEED_I2C(dev);
+>       AspeedI2CClass *aic = ASPEED_I2C_GET_CLASS(s);
+> +    uint32_t reg_offset = aic->reg_size + aic->reg_gap_size;
+>   
+>       sysbus_init_irq(sbd, &s->irq);
+>       memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_i2c_ctrl_ops, s,
+> @@ -1034,7 +1035,7 @@ static void aspeed_i2c_realize(DeviceState *dev, Error **errp)
+>               return;
+>           }
+>   
+> -        memory_region_add_subregion(&s->iomem, aic->reg_size * (i + offset),
+> +        memory_region_add_subregion(&s->iomem, reg_offset * (i + offset),
+>                                       &s->busses[i].mr);
+>       }
+>   
+> diff --git a/include/hw/i2c/aspeed_i2c.h b/include/hw/i2c/aspeed_i2c.h
+> index fad5e9259a..02ede85906 100644
+> --- a/include/hw/i2c/aspeed_i2c.h
+> +++ b/include/hw/i2c/aspeed_i2c.h
+> @@ -275,6 +275,7 @@ struct AspeedI2CClass {
+>   
+>       uint8_t num_busses;
+>       uint8_t reg_size;
+> +    uint32_t reg_gap_size;
+>       uint8_t gap;
+>       qemu_irq (*bus_get_irq)(AspeedI2CBus *);
+>   
+

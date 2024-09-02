@@ -1,124 +1,111 @@
-Received: by 2002:a17:504:3a8f:b0:1be9:327d:8ee3 with SMTP id g15csp1070309njf;
-        Mon, 2 Sep 2024 04:50:27 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXuUswiTpte/XQ5i/VqK9GbYk4VRNIuoes3cRgckyQFbIdIWht7fRvCTNE8I7DnhfnqdMe+rFEEbVK8fA==@linaro.org
-X-Google-Smtp-Source: AGHT+IFtbHPs7rb77kv3ABO0nbJN2SKwQoIllRAgWV4ZmTL9juJwD3Srbw4RTjm27bjjvMpy04qV
-X-Received: by 2002:a05:620a:1905:b0:7a4:f2e9:814a with SMTP id af79cd13be357-7a81d72040amr1030942685a.54.1725277827182;
-        Mon, 02 Sep 2024 04:50:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1725277827; cv=none;
+Received: by 2002:a17:504:3a8f:b0:1be9:327d:8ee3 with SMTP id g15csp1109484njf;
+        Mon, 2 Sep 2024 06:50:52 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWpRHiSeQHAIr6m5DJOP2+A080QDnb0B3/YfEsCyuz0PxdfrIXzRW5on3B73JrbtMIR2aLIyKeZ+jvyyA==@linaro.org
+X-Google-Smtp-Source: AGHT+IF7OHq+x/p1sdGlqzfvI4qp1zQTvds30po4TKjwhZixW8Li8/kJKjUFXrzjKhbcsA7gyKGw
+X-Received: by 2002:a05:6870:fb91:b0:277:c28c:147e with SMTP id 586e51a60fabf-27810c1052fmr343130fac.21.1725285052717;
+        Mon, 02 Sep 2024 06:50:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1725285052; cv=none;
         d=google.com; s=arc-20160816;
-        b=qVCwGxhHPtO73bD3ArKdD0IuirFUD5mfTcEZA/IKFlVaKOB9yj6RV7UVCN4rAsta7l
-         dpJccENuyuh2jwTY9MTK8bqSKmTvYiTrjum4SpuZwJuWH/zGeB/IkdzYqK8wBe/qPKB1
-         o6tRRUQsHGOAUbrq8qMbczD+FaP4T/kEAIT44TeaAQmBo/U2eAuAakxTnf1YNkwOEv7p
-         1fiIPwqGbXW6faql0fGrf8mC96OBxDvihnzWglyDB5Lu9/56E50Tu+wEYxpMflXGIbSV
-         trGT9/ZtZaktwJZi+jGviLtA5a7gCsql4Fssc6MoxSNgUik3k26LVifWObYmpW6vdSRT
-         kq0A==
+        b=UQQekckNqnzilK0G01dgTTRM5xqbxYz4GafUixnimbtszMEbT5yBqdRGwBiVBIFqQI
+         BbNg3rXWLIKqq5MtjFVt0vUYYFpRvpmVkyFuDbs8Zy/LjWqH4qxsKhug5FOBJJvLG5gA
+         kLPnMFFbiLF38mLp8UBWZtdb1NrvMb0WkcFGNWS5O1NdoxAn4e8jryelHs9mAsBf+zCb
+         MKW0lVLpBToaf29Gn59ey93PZjKzolHHWoDCH1wKBFoBvIdEFouHggsGh8WixNHf9LCT
+         R1edyZZP0pjJTQ4h7541TnbQbXfqy9w909ENpgAN0rx3H7kI3bz9Xek765wY0wHvE2zs
+         qMww==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:organization:content-language:from:references:to
-         :subject:user-agent:mime-version:date:message-id:dkim-signature;
-        bh=n3RBm/4+x8Ii6qMbo3OkaDPBp3dY/M41qpdpEswMicY=;
-        fh=eGmh+hBI2SG0pRd6+hlqqS5OiiklpmpzLB2v0yS22FI=;
-        b=j+PM0KoKL8y4BUXYXQVkYNu+HqY5srJnL5DDXed5Zj+oulJWhEqwXGANbZrYj/EThI
-         iHE0oo8eCJ/zN4UwHa41dkaPeFMQonT1o6pxNjzbC3JtW4mlNNc+d2PtbzIAx1SOhGH/
-         LHEl1egKKIj3IvPgSqSFGDFtVvZEc3LT7Ejp2eGkiPk6utvCb0Mb7nVkI67vBQ3F0/V8
-         JjvBVRdvv2DaP8emM7FUQBsILqtQdlTIVrVoll8rp3GJdcvrUbFg3bbOOzqykOvthqUQ
-         aDcMCNL7H2TKmnM8yds6Qidzz9/rgoZoMgjMJyBxIP9GPKuFsG9zh4ktni4cmy9MklQp
-         ie/g==;
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :mime-version:dkim-signature;
+        bh=86Wtjwlk7p61ZOojwtzGDO05XFu8qOxdfefgXGWxunk=;
+        fh=6hrxJz77WcQoNvJOuPmgcS8KW9+yzMIqtAevjeNtFUg=;
+        b=MfrrKL4w8T/mpcy79UxEblhIYP5zZ/KDosQdmbzRsqMeVw+ndy+RSe7QQ8DCTAGvS3
+         4mF9ArHEWPWiUOzLUA5uegeWvISzUQnFFuGuRVCnEFcEvdbnPzvcZMkMRR60d5daDQsQ
+         uLDS8pk5zWJ80bQ1pCsEdNYvHNrDoxrv8CRYr8guq+xh0ISsT5NEeUCe9mzZbyX2ZlQ8
+         6IdjeZaeewK2LhOMPwFnRx5F0mzSg76OeedouQECpX8MxsNAFA8B+rQzbOoyvShSqExU
+         z9zZk2CSsMnggX3q9saYEwnbfvyMRcAXc/Hi40ylp/HQ7NtP72jkHZnX99Naeb2gK6DO
+         acIQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=CFwAG70s;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=SNNXNvfr;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7a806d4f9a7si1052309785a.337.2024.09.02.04.50.27
+        by mx.google.com with ESMTPS id af79cd13be357-7a806df1123si1036685385a.690.2024.09.02.06.50.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 02 Sep 2024 04:50:27 -0700 (PDT)
+        Mon, 02 Sep 2024 06:50:52 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=CFwAG70s;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=SNNXNvfr;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sl5ZT-0003VR-Sw; Mon, 02 Sep 2024 07:50:12 -0400
+	id 1sl7S9-0006Iz-1C; Mon, 02 Sep 2024 09:50:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
- id 1sl5ZN-0003UN-Eq
- for qemu-arm@nongnu.org; Mon, 02 Sep 2024 07:50:08 -0400
-Received: from mail-lf1-x12a.google.com ([2a00:1450:4864:20::12a])
+ (Exim 4.90_1) (envelope-from <marietto2008@gmail.com>)
+ id 1sl7S4-0006GA-VX; Mon, 02 Sep 2024 09:50:40 -0400
+Received: from mail-pj1-x1034.google.com ([2607:f8b0:4864:20::1034])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
- id 1sl5ZC-0002TG-7w
- for qemu-arm@nongnu.org; Mon, 02 Sep 2024 07:50:03 -0400
-Received: by mail-lf1-x12a.google.com with SMTP id
- 2adb3069b0e04-534366c1aa2so4263251e87.1
- for <qemu-arm@nongnu.org>; Mon, 02 Sep 2024 04:49:53 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <marietto2008@gmail.com>)
+ id 1sl7S2-0001Mu-Qd; Mon, 02 Sep 2024 09:50:40 -0400
+Received: by mail-pj1-x1034.google.com with SMTP id
+ 98e67ed59e1d1-2d88c5d76eeso1373928a91.2; 
+ Mon, 02 Sep 2024 06:50:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1725277792; x=1725882592; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:organization:content-language
- :from:references:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=n3RBm/4+x8Ii6qMbo3OkaDPBp3dY/M41qpdpEswMicY=;
- b=CFwAG70s32Zaqa0mNZm5K4gKL4LI5Q4Gio+sDyH3ERG5MnHS2EcZjqu3/+njY7b3Dr
- Fz6Mw/s/Q6TbEt0YtV9g/mRKTW67tORR5jGaasi2JcbPWgl1LSOMD5v1h+Ie6p6sGORA
- m/vbDJ9tyhsijwRYyvqKYgGRV9Vl94Pl1a/3zCytighQsozjy+OG4qUPzJW1w/+Z2cNE
- YSUFyQY4RXJK8ckZbllTA5lOG3kwTj/syuMVAdrupvbF91lg5AaP6Cq8gxMxTx61I+EH
- G3ALhWvsknaf5bzQOelohZeFzZPVlGa1YHrJCqI+1Kmp+ZETkim/08SVkhefm174KQTJ
- fhxA==
+ d=gmail.com; s=20230601; t=1725285035; x=1725889835; darn=nongnu.org;
+ h=to:subject:message-id:date:from:mime-version:from:to:cc:subject
+ :date:message-id:reply-to;
+ bh=86Wtjwlk7p61ZOojwtzGDO05XFu8qOxdfefgXGWxunk=;
+ b=SNNXNvfreC3EuxZc9sjbZzoNik/ef6qhzQOkxk2veZ7rjypc2pUmOPGapb5GHg9vdD
+ BcW2s05wgUs7NGZfDI6Duo0reThzbWMJg/PgZFqTt7JS8eIFagcZaBt88UEn0ld+0iaX
+ uWLJrHioS0t7f2pOUbcers24K9CBDXiI/Tara0YJ8lNUD8ua4n3F4WW6qu2Gy0p0dcZZ
+ Cg2NU1RX7ZTH0HZUIyiyo0JnrARZ9sa7hDHhHm2e5uurihyk7tX7YZtW8M6PFxig8khr
+ Q7r7MA+3QYbNsosAcLU3F3c1tKX8Vitm+uuiXU7DPE8dSVig1UdLX912NwBblvUJDHRh
+ jMCQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1725277792; x=1725882592;
- h=content-transfer-encoding:in-reply-to:organization:content-language
- :from:references:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=n3RBm/4+x8Ii6qMbo3OkaDPBp3dY/M41qpdpEswMicY=;
- b=P7iHpQrtex+c+haVQZjmPkG1OuMiO2kFmhBQkLQVySlTfCSdaiQTZHOpT2JUReZWGu
- 1TvGLLwMJ1FzP4mJ25PePTZzvRY37xOTDVWpM8cLgYY+5MI5xMas+pgJEmT72WGrMpM9
- CtOlMDpRfvLUKuyO3Spin0RptmeZUs/czS/Bi2ya89SyH8fuGuyBUDRXH4wGUKvGpDzd
- 3KvwEY57TxIDoaLzuYujeIueD8SUF13nI9uIG7V0+eWwAi3OSTf3GKtYrbG7TfTsL7G1
- a1cBUjw9W6Ps0L2/d2oU3xWqA0wmXbRpJW7o4a0CQgAZBHv4gZ7zBnJKKXuM4vj8EDdk
- c3Jg==
+ d=1e100.net; s=20230601; t=1725285035; x=1725889835;
+ h=to:subject:message-id:date:from:mime-version:x-gm-message-state
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=86Wtjwlk7p61ZOojwtzGDO05XFu8qOxdfefgXGWxunk=;
+ b=FM5z5CPSHjp1FU7Ay8bWPiZt7Ma5i93PcfLBn6Ig1wjnIg801aHUVw0bHm42mcP1LI
+ ho6CU+vl7h71Pr1V8U/H86yIbA6RNid7qEEsfX866Sy6x3RWQNr/hrHYEArheiQug3AV
+ BU1ayu7LvmjXAp8MKCjfsOhGeqfLz4FAOMUPEMGeYTBXAEBB1tZQnmgs9zIt8mgf/sI+
+ CaNavj4jm9n5KDUKrJNOudN7uOLMMWG8YKIvOykX8ZO+BfPK8Nb6pZUBTO7UVBq9L3H0
+ 6zC1Lm2QDexz1a57S/q78HbDNGeuPpoSqVz4sCYMf46CeStrPD4srHZcFypRKsIlTkiN
+ iiZw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVsMv1b0UnMqWSpDczrV6jO5CnicefkIjlPo661q2mDgSwDszVrbG9TBetywez3r23u3kT2LdnlXg==@nongnu.org
-X-Gm-Message-State: AOJu0YwnuHVEyNff3SVB7K/PLBR6NO2NpY3xMNVMtl1r3Kirb3cZQcY5
- 3ZpcJMMBA4nj2nkFVH4N1pQxcGRZTVqUkoMJK6uzzJr2geOjydbDnCSxv0pOci4=
-X-Received: by 2002:a05:6512:ad1:b0:52e:9f76:53dc with SMTP id
- 2adb3069b0e04-53546a59f62mr6619177e87.0.1725277790944; 
- Mon, 02 Sep 2024 04:49:50 -0700 (PDT)
-Received: from [192.168.200.25] (83.11.24.101.ipv4.supernova.orange.pl.
- [83.11.24.101]) by smtp.gmail.com with ESMTPSA id
- 2adb3069b0e04-53540828d77sm1609267e87.180.2024.09.02.04.49.50
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 02 Sep 2024 04:49:50 -0700 (PDT)
-Message-ID: <d457014f-104a-4fe3-8896-d22425a007e8@linaro.org>
-Date: Mon, 2 Sep 2024 13:49:48 +0200
+ AJvYcCVbAd4EDYcE/RoVey081PihVNS7296Atg5iaosUoSzSXDgVaLYUUejVaNssbFpeM/TO5AybJts0SQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yy+uuiuC5UqyQhlGdeDKBJkmJytiWFT0JBuhKhrjlSN8AMjGDpa
+ BL1Rx7AAQPLx4fNWB4KhI+4sJjP4tnxhJt9bF/IIzXqisQQXHU2B97/dcJ6pmE5zNGVW4xb/q0W
+ rMFO/dDAZ/6mIgiycDpbNXHlIpHjN8dy446c=
+X-Received: by 2002:a17:90b:4b92:b0:2da:5289:89a2 with SMTP id
+ 98e67ed59e1d1-2da52898ae1mr306525a91.41.1725285034872; Mon, 02 Sep 2024
+ 06:50:34 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH 0/2] Specifying cache topology on ARM
-To: Alireza Sanaee <alireza.sanaee@huawei.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org
-References: <20240823125446.721-1-alireza.sanaee@huawei.com>
-From: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
-Content-Language: pl-PL, en-GB
-Organization: Linaro
-In-Reply-To: <20240823125446.721-1-alireza.sanaee@huawei.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::12a;
- envelope-from=marcin.juszkiewicz@linaro.org; helo=mail-lf1-x12a.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+From: Mario Marietto <marietto2008@gmail.com>
+Date: Mon, 2 Sep 2024 15:49:58 +0200
+Message-ID: <CA+1FSiirzpq4wjcKTLSexiOWtv26sgD37h=wA2qxv8Qh5MW_-w@mail.gmail.com>
+Subject: Error : init: partition(s) not found in /sys, waiting for their
+ uevent(s): mmcblk0p2, mmcblk0p3 while trying to emulate Android 14 on Ubuntu
+ 24.04 X64 bit using qemu-system-aarch64.
+To: qemu-discuss@nongnu.org, qemu-arm <qemu-arm@nongnu.org>
+Content-Type: multipart/alternative; boundary="000000000000a3dfc7062123392b"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1034;
+ envelope-from=marietto2008@gmail.com; helo=mail-pj1-x1034.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, HTML_MESSAGE=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -133,82 +120,196 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: VRK202EpQd+L
+X-TUID: EYEFyysRlhFf
 
-On 23.08.2024 14:54, Alireza Sanaee via wrote:
+--000000000000a3dfc7062123392b
+Content-Type: text/plain; charset="UTF-8"
 
-> Failure cases:
->      1) there are cases where QEMU might not have any clusters selected in the
->      -smp option, while user specifies caches to be shared at cluster level. In
->      this situations, qemu returns error.
-> 
->      2) There are other scenarios where caches exist in systems' registers but
->      not left unspecified by users. In this case qemu returns failure.
+Hello.
 
-Sockets, clusters, cores, threads. And then caches. Sounds like more fun
-than it is already.
+I would like to emulate Android 14 on my Ubuntu 24.04 OS X64 bit using
+qemu-system-aarch64. I tried using the following parameters :
 
-IIRC Arm hardware can have up to 16 cores per cluster (virt uses 16,
-sbsa-ref uses 8) as this is GIC limitation.
+qemu-system-aarch64 \
+        -smp 4 \
+        -m 2048 \
+        -cpu cortex-a72 \
+        -M virt \
+        -device virtio-gpu-pci,xres=1024,yres=768 \
+        -display sdl,gl=on \
+        -device usb-ehci \
+        -device usb-kbd \
+        -device virtio-tablet-pci \
+        -usb \
+        -serial stdio \
+        -kernel /mnt/zroot-133/_OS/Android/rpi4/Image \
+        -initrd /mnt/zroot-133/_OS/Android/rpi4/ramdisk.img \
+        -drive
+index=0,if=none,id=system,file=/mnt/zroot-133/_OS/Android/rpi4/boot.img \
+        -device virtio-blk-pci,drive=boot \
+        -drive
+index=1,if=none,id=system,file=/mnt/zroot-133/_OS/Android/rpi4/system.img \
+        -device virtio-blk-pci,drive=system \
+        -drive
+index=2,if=none,id=vendor,file=/mnt/zroot-133/_OS/Android/rpi4/vendor.img \
+        -device virtio-blk-pci,drive=vendor \
+-append "console=ttyAMA0,38400 drm.debug=0x0 rootwait rootdelay=5
+root=/dev/mmcblk0p2 androidboot.hardware=rpi4
+androidboot.selinux=permissive security=selinux selinux=1
+androidboot.qemu.hw.mainkeys=0 androidboot.lcd.density=160"
 
-I have a script to visualize Arm topology:
+The error I get in short is :
 
-https://github.com/hrw/sbsa-ref-status/blob/main/parse-pptt-log.py
+[ 1.993668] init: bool
+android::init::BlockDevInitializer::InitDevices(std::set<std::string>):
+partition(s) not found in /sys, waiting for their uevent(s): mmcblk0p2,
+mmcblk0p3
 
-It uses 'EFIShell> acpiview -s PPTT' output and gives something like this:
 
--smp 24,sockets=1,clusters=2,cores=3,threads=4
-socket:        offset: 0x24 parent: 0x0
-   cluster:     offset: 0x38 parent: 0x24
-     core:      offset: 0x4C parent: 0x38 cpuId: 0x0 L1i: 0x68 L1d: 0x84
-       cache:   offset: 0x68 cacheId: 1 size: 0x10000 next: 0xA0
-       cache:   offset: 0x84 cacheId: 2 size: 0x10000 next: 0xA0
-       cache:   offset: 0xA0 cacheId: 3 size: 0x80000
-       thread:  offset: 0xBC parent: 0x4C cpuId: 0x0
-       thread:  offset: 0xD0 parent: 0x4C cpuId: 0x1
-       thread:  offset: 0xE4 parent: 0x4C cpuId: 0x2
-       thread:  offset: 0xF8 parent: 0x4C cpuId: 0x3
-     core:      offset: 0x10C parent: 0x38 cpuId: 0x0 L1i: 0x128 L1d: 0x144
-       cache:   offset: 0x128 cacheId: 4 size: 0x10000 next: 0x160
-       cache:   offset: 0x144 cacheId: 5 size: 0x10000 next: 0x160
-       cache:   offset: 0x160 cacheId: 6 size: 0x80000
-       thread:  offset: 0x17C parent: 0x10C cpuId: 0x4
-       thread:  offset: 0x190 parent: 0x10C cpuId: 0x5
-       thread:  offset: 0x1A4 parent: 0x10C cpuId: 0x6
-       thread:  offset: 0x1B8 parent: 0x10C cpuId: 0x7
-     core:      offset: 0x1CC parent: 0x38 cpuId: 0x0 L1i: 0x1E8 L1d: 0x204
-       cache:   offset: 0x1E8 cacheId: 7 size: 0x10000 next: 0x220
-       cache:   offset: 0x204 cacheId: 8 size: 0x10000 next: 0x220
-       cache:   offset: 0x220 cacheId: 9 size: 0x80000
-       thread:  offset: 0x23C parent: 0x1CC cpuId: 0x8
-       thread:  offset: 0x250 parent: 0x1CC cpuId: 0x9
-       thread:  offset: 0x264 parent: 0x1CC cpuId: 0xA
-       thread:  offset: 0x278 parent: 0x1CC cpuId: 0xB
-   cluster:     offset: 0x28C parent: 0x24
-     core:      offset: 0x2A0 parent: 0x28C cpuId: 0x0 L1i: 0x2BC L1d: 0x2D8
-       cache:   offset: 0x2BC cacheId: 10 size: 0x10000 next: 0x2F4
-       cache:   offset: 0x2D8 cacheId: 11 size: 0x10000 next: 0x2F4
-       cache:   offset: 0x2F4 cacheId: 12 size: 0x80000
-       thread:  offset: 0x310 parent: 0x2A0 cpuId: 0xC
-       thread:  offset: 0x324 parent: 0x2A0 cpuId: 0xD
-       thread:  offset: 0x338 parent: 0x2A0 cpuId: 0xE
-       thread:  offset: 0x34C parent: 0x2A0 cpuId: 0xF
-     core:      offset: 0x360 parent: 0x28C cpuId: 0x0 L1i: 0x37C L1d: 0x398
-       cache:   offset: 0x37C cacheId: 13 size: 0x10000 next: 0x3B4
-       cache:   offset: 0x398 cacheId: 14 size: 0x10000 next: 0x3B4
-       cache:   offset: 0x3B4 cacheId: 15 size: 0x80000
-       thread:  offset: 0x3D0 parent: 0x360 cpuId: 0x10
-       thread:  offset: 0x3E4 parent: 0x360 cpuId: 0x11
-       thread:  offset: 0x3F8 parent: 0x360 cpuId: 0x12
-       thread:  offset: 0x40C parent: 0x360 cpuId: 0x13
-     core:      offset: 0x420 parent: 0x28C cpuId: 0x0 L1i: 0x43C L1d: 0x458
-       cache:   offset: 0x43C cacheId: 16 size: 0x10000 next: 0x474
-       cache:   offset: 0x458 cacheId: 17 size: 0x10000 next: 0x474
-       cache:   offset: 0x474 cacheId: 18 size: 0x80000
-       thread:  offset: 0x490 parent: 0x420 cpuId: 0x14
-       thread:  offset: 0x4A4 parent: 0x420 cpuId: 0x15
-       thread:  offset: 0x4B8 parent: 0x420 cpuId: 0x16
-       thread:  offset: 0x4CC parent: 0x420 cpuId: 0x17
+One user suggested to :
 
-You may find it useful. I tested it only with cache at either core or
-cluster level.
+
+
+
+Hi!!! The "/sys" is a "dynamic fs" created at ram from the kernel, to
+export a lot of things...so most of the files only exist at runtime.
+Normally, the partitions from the block device have a symlink at
+/sys/<something>/<...> that points to /dev/ block node. It seems that there
+are no such files under /sys according to what init is looking for. You can
+double check this at init source code to check the exact path but I'm
+guessing that you'll have to change the qemu arguments regarding the block
+device.
+
+About userdata.img I think it's normal since in the old days, the image was
+a "empty sparse image", that means, at the first flashing process, there
+isn't userdata information, we're just "flashing the partition" with empty
+data.
+Tks!!!
+
+
+
+So,in short I should change the qemu arguments regarding the block device.
+I tried in this way :
+
+
+qemu-system-aarch64 \
+        -smp 4 \
+        -m 2048 \
+        -cpu cortex-a72 \
+        -M virt \
+        -device virtio-gpu-pci,xres=1024,yres=768 \
+        -display sdl,gl=on \
+        -device usb-ehci \
+        -device usb-kbd \
+        -device virtio-tablet-pci \
+        -usb \
+        -serial stdio \
+        -kernel /mnt/zroot-133/_OS/Android/rpi4/Image \
+        -initrd /mnt/zroot-133/_OS/Android/rpi4/ramdisk.img \
+        -hda /mnt/zroot-133/_OS/Android/rpi4/boot.img \
+        -hdb /mnt/zroot-133/_OS/Android/rpi4/system.img \
+        -hdc /mnt/zroot-133/_OS/Android/rpi4/vendor.img \
+        -append "console=ttyAMA0,38400 drm.debug=0x0 rootwait rootdelay=5
+root=/dev/mmcblk0p2 androidboot.hardware=rpi4
+androidboot.selinux=permissive security=selinux selinux=1
+androidboot.qemu.hw.mainkeys=0 androidboot.lcd.density=160"
+
+but the error is still there. Do you know some different alternative block
+devices to try ? thanks.
+
+-- 
+Mario.
+
+--000000000000a3dfc7062123392b
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr"><div>Hello.</div><div><br></div><div>I wo=
+uld like to=20
+emulate Android 14 on my Ubuntu 24.04 OS X64 bit using=20
+qemu-system-aarch64. I tried using the following parameters :</div><div><br=
+></div><div><span class=3D"gmail-im">qemu-system-aarch64 \<br>=C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 -smp 4 \<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 -m 2048 \<br>=C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 -cpu cortex-a72 \<br></span>=C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 -M virt \<span class=3D"gmail-im"><br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 -devi=
+ce virtio-gpu-pci,xres=3D1024,yres=3D768 \<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 -=
+display sdl,gl=3Don \<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 -device usb-ehci \<br>=
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 -device usb-kbd \<br>=C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 -device virtio-tablet-pci \<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 -usb \<br>=
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 -serial stdio \<br></span>=C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 -kernel /mnt/zroot-133/_OS/Android/rpi4/Image \<br>=C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 -initrd /mnt/zroot-133/_OS/Android/rpi4/ramdisk.img \</div><div>=
+=C2=A0 =C2=A0 =C2=A0=C2=A0=C2=A0 -drive index=3D0,if=3Dnone,id=3Dsystem,fil=
+e=3D/mnt/zroot-133/_OS/Android/rpi4/boot.img \<br>=C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 -device virtio-blk-pci,drive=3Dboot \</div><div>=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0 -drive index=3D1,if=3Dnone,id=3Dsystem,file=3D/mnt/zr=
+oot-133/_OS/Android/rpi4/system.img \<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 -devic=
+e virtio-blk-pci,drive=3Dsystem \<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 -drive ind=
+ex=3D2,if=3Dnone,id=3Dvendor,file=3D/mnt/zroot-133/_OS/Android/rpi4/vendor.=
+img \<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 -device virtio-blk-pci,drive=3Dvendor =
+\ <br>-append &quot;console=3DttyAMA0,38400 drm.debug=3D0x0 rootwait rootde=
+lay=3D5
+ root=3D/dev/mmcblk0p2 androidboot.hardware=3Drpi4=20
+androidboot.selinux=3Dpermissive security=3Dselinux selinux=3D1=20
+androidboot.qemu.hw.mainkeys=3D0 androidboot.lcd.density=3D160&quot;</div><=
+div><br></div><div>The error I get in short is :</div><div><br></div><div><=
+span><span><p>
+    <span>[ 1.993668] init: bool android::init::BlockDevInitializer::InitDe=
+vices(std::set&lt;std::string&gt;): partition(s) not found in /sys, waiting=
+ for their uevent(s): mmcblk0p2, mmcblk0p3</span><br></p><p><br></p><p>One =
+user suggested to :</p><p><br>
+  </p></span></span></div><div><div><table cellpadding=3D"0"><tbody><tr><td=
+><table cellpadding=3D"0"><tbody><tr><td><br><br></td></tr></tbody></table>=
+</td><td><div>Hi!!! The &quot;/sys&quot; is a &quot;dynamic fs&quot; create=
+d at ram from the kernel, to=20
+export a lot of things...so most of the files only exist at runtime.=20
+Normally, the partitions from the block device have a symlink at=20
+/sys/&lt;something&gt;/&lt;...&gt; that points to /dev/ block node. It=20
+seems that there are no such files under /sys according to what init is=20
+looking for. You can double check this at init source code to check the=20
+exact path but I&#39;m guessing that you&#39;ll have to change the qemu=20
+arguments regarding the block device.<br><br>About userdata.img I think=20
+it&#39;s normal since in the old days, the image was a &quot;empty sparse=
+=20
+image&quot;, that means, at the first flashing process, there isn&#39;t use=
+rdata=20
+information, we&#39;re just &quot;flashing the partition&quot; with empty d=
+ata.<br>Tks!!!</div><div><br></div></td></tr></tbody></table></div></div><t=
+able cellpadding=3D"0"><tbody><tr><td><br></td><td rowspan=3D"2"><br>So,in =
+short I should change the qemu=20
+arguments regarding the block device. I tried in this way :<br><br><br><div=
+><span class=3D"gmail-im">qemu-system-aarch64 \<br>=C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 -smp 4 \<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 -m 2048 \<br>=C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 -cpu cortex-a72 \<br></span>=C2=A0 =C2=A0 =C2=A0 =C2=A0 -M virt =
+\<span class=3D"gmail-im"><br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 -device virtio-gp=
+u-pci,xres=3D1024,yres=3D768 \<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 -display sdl,=
+gl=3Don \<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 -device usb-ehci \<br>=C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 -device usb-kbd \<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 -device =
+virtio-tablet-pci \<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 -usb \<br>=C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 -serial stdio \<br></span>=C2=A0 =C2=A0 =C2=A0 =C2=A0 -kernel=
+ /mnt/zroot-133/_OS/Android/rpi4/Image \<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 -in=
+itrd /mnt/zroot-133/_OS/Android/rpi4/ramdisk.img \</div>=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0 -hda /mnt/zroot-133/_OS/Android/rpi4/boot.img \<br=
+>=C2=A0 =C2=A0 =C2=A0 =C2=A0 -hdb /mnt/zroot-133/_OS/Android/rpi4/system.im=
+g \<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 -hdc /mnt/zroot-133/_OS/Android/rpi4/ven=
+dor.img \<br>=C2=A0
+ =C2=A0 =C2=A0 =C2=A0 -append &quot;console=3DttyAMA0,38400 drm.debug=3D0x0=
+ rootwait rootdelay=3D5
+ root=3D/dev/mmcblk0p2 androidboot.hardware=3Drpi4=20
+androidboot.selinux=3Dpermissive security=3Dselinux selinux=3D1=20
+androidboot.qemu.hw.mainkeys=3D0 androidboot.lcd.density=3D160&quot;</td></=
+tr></tbody></table><div></div><table cellpadding=3D"0"><tbody><tr></tr></tb=
+ody></table><table cellpadding=3D"0"><tbody><tr><td colspan=3D"3"><table ce=
+llpadding=3D"0"><tbody><tr><td><div id=3D"m_5541545894965738869m_-646450509=
+2228251337m_8113901380321572879gmail-:q5" aria-haspopup=3D"true" role=3D"bu=
+tton" aria-label=3D"Show details"><img src=3D"https://mail.google.com/mail/=
+u/0/images/cleardot.gif" alt=3D"" class=3D"gmail-CToWUd"></div><div aria-ha=
+spopup=3D"true" role=3D"button" aria-label=3D"Show details"><br></div><div =
+aria-haspopup=3D"true" role=3D"button" aria-label=3D"Show details">but the =
+error is still there. Do you know some different alternative block devices =
+to try ? thanks.<br></div></td></tr></tbody></table></td></tr></tbody></tab=
+le></div><br><span class=3D"gmail_signature_prefix">-- </span><br><div dir=
+=3D"ltr" class=3D"gmail_signature" data-smartmail=3D"gmail_signature">Mario=
+.<br></div></div>
+
+--000000000000a3dfc7062123392b--

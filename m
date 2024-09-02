@@ -1,117 +1,268 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5c243fd65f4sm2925323a12.29.2024.09.02.03.28.54
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 02 Sep 2024 03:28:54 -0700 (PDT)
-Received: from draig (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 74B2E5F835;
-	Mon,  2 Sep 2024 11:28:53 +0100 (BST)
-From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Alireza Sanaee via <qemu-arm@nongnu.org>
-Cc: <qemu-devel@nongnu.org>,  Alireza Sanaee <alireza.sanaee@huawei.com>,
-  <linuxarm@huawei.com>,  <peter.maydell@linaro.org>,
-  <richard.henderson@linaro.org>,  <shameerali.kolothum.thodi@huawei.com>,
-  <Jonathan.Cameron@Huawei.com>,  <jiangkunkun@huawei.com>
+Received: by 2002:a17:504:3a8f:b0:1be9:327d:8ee3 with SMTP id g15csp1060019njf;
+        Mon, 2 Sep 2024 04:10:54 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXLII6tK6X0RkIWgCHyerNNW8bGFw/BCWsObL7zrorelEWLH0Byc8JP9Nr2G1vU0LVsclxHgkgASLvFhg==@linaro.org
+X-Google-Smtp-Source: AGHT+IEFx5/6kqp2/xlFs8dsaG20+VsEZB/AN3Re3VCpxxuVGJAEqMRmm24zJYob2g6MQ2RAInsB
+X-Received: by 2002:a05:620a:28c8:b0:7a5:27e:8814 with SMTP id af79cd13be357-7a89aca776emr1041201685a.44.1725275454211;
+        Mon, 02 Sep 2024 04:10:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1725275454; cv=none;
+        d=google.com; s=arc-20160816;
+        b=IGk5S4U4gN63Ppcpb348XwKrDZKBrS3sZFffgAeQfDtCJs6V0GanXM7QmUo9KBccTv
+         D6rDLh1xt7KxfNtxdvQkKayS+Id47hD5D4HONZMJATj6ZryYStRe9DIz9sADExUDlkds
+         Wl/p37f+UoMGXlD74zB5Jfdu3zvmR2fgPB8TkUSEDWaXn9W0HZ1Bg7IGslu2vtinW2SD
+         b8UujLk9eIUyvdXQXBAvTk8QK04vX3+ErRnnXzYFvwu1lRZgQEjBVS8prwC7Lk49R5p2
+         MTYNLP6L45idvR4CnOXsc/MGN7Djj01PnrRH/lWWPw2T+/ZRAo4CYuGRjLYx8yhpVZFV
+         SiqA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:subject:cc:to:date;
+        bh=ioLuZjzyBdxk3TocjYNxyyqPf48D8K3/qA+sKXFWd2E=;
+        fh=J5SWebY0nCenDjBeAKbDHmt4cxDH0x8I08pGL97E0IM=;
+        b=QaMSe40rxB+QGDghMVDdQ/JDTneyzTXwAjCasIaXbPNE1pJ6XF1ep61RcCNo13yz1r
+         V7Fxy3W8K8QHmvBbbBDNljOwh+0eTSKlbYVw02iovuMpLCv/RqX4DqRvKCJfOGb0qh3x
+         LuYxWKftp3dIlNzNTc/W6MOSlT9fpFkkRBgE/2G/M5XDAQqljSfKLpt+VMrZhtMltUT/
+         emuN2QIlvBwtfphXnWcU6zEG9e1t9q5+Wi5Fk6mHec4/QP3ZQSsD6rtfesdUoKiuLV5I
+         Wpx0KU0qhFYMBN0oS7dPnhqF8iLipymW8ZHnQ+cl6iX5LKlPU+wk+Gv2RIaICAH4I/2s
+         KZ3w==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d75a77b69052e-45682e23400si98558861cf.712.2024.09.02.04.10.54
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 02 Sep 2024 04:10:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sl4xI-0004mM-Az; Mon, 02 Sep 2024 07:10:46 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <alireza.sanaee@huawei.com>)
+ id 1sl4x7-0004f8-EO; Mon, 02 Sep 2024 07:10:36 -0400
+Received: from frasgout.his.huawei.com ([185.176.79.56])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <alireza.sanaee@huawei.com>)
+ id 1sl4x2-0005E2-R7; Mon, 02 Sep 2024 07:10:33 -0400
+Received: from mail.maildlp.com (unknown [172.18.186.216])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4Wy5Yc3LFTz6LDBK;
+ Mon,  2 Sep 2024 19:07:00 +0800 (CST)
+Received: from lhrpeml500006.china.huawei.com (unknown [7.191.161.198])
+ by mail.maildlp.com (Postfix) with ESMTPS id 1FF2E140A35;
+ Mon,  2 Sep 2024 19:10:24 +0800 (CST)
+Received: from localhost (10.47.78.245) by lhrpeml500006.china.huawei.com
+ (7.191.161.198) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Mon, 2 Sep
+ 2024 12:10:23 +0100
+Date: Mon, 2 Sep 2024 12:10:18 +0100
+To: Peter Maydell <peter.maydell@linaro.org>
+CC: Philippe =?ISO-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
+ <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <linuxarm@huawei.com>,
+ <richard.henderson@linaro.org>, <shameerali.kolothum.thodi@huawei.com>,
+ <Jonathan.Cameron@huawei.com>, <jiangkunkun@huawei.com>
 Subject: Re: [PATCH v2] target/arm/tcg: refine cache descriptions with a
  wrapper
-In-Reply-To: <20240830184713.224-1-alireza.sanaee@huawei.com> (Alireza Sanaee
-	via's message of "Fri, 30 Aug 2024 19:47:13 +0100")
+Message-ID: <20240902121018.00006eb6@huawei.com>
+In-Reply-To: <CAFEAcA90iqLv0OYs5U0L474C1vP0qvh57i8XWe+=WVfOGshQbQ@mail.gmail.com>
 References: <20240830184713.224-1-alireza.sanaee@huawei.com>
-User-Agent: mu4e 1.12.6; emacs 29.4
-Date: Mon, 02 Sep 2024 11:28:53 +0100
-Message-ID: <87r0a2cpsq.fsf@draig.linaro.org>
+ <6bed13cc-fe6e-40ec-93af-1723bf46a6c3@linaro.org>
+ <CAFEAcA90iqLv0OYs5U0L474C1vP0qvh57i8XWe+=WVfOGshQbQ@mail.gmail.com>
+Organization: Huawei
+X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset="ISO-8859-1"
 Content-Transfer-Encoding: quoted-printable
-X-TUID: ymTRnDAaZR3O
+X-Originating-IP: [10.47.78.245]
+X-ClientProxiedBy: lhrpeml100005.china.huawei.com (7.191.160.25) To
+ lhrpeml500006.china.huawei.com (7.191.161.198)
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=alireza.sanaee@huawei.com; helo=frasgout.his.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H2=-0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Alireza Sanaee <alireza.sanaee@huawei.com>
+From:  Alireza Sanaee via <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 85Jwv/j2wHHZ
 
-Alireza Sanaee via <qemu-arm@nongnu.org> writes:
+On Mon, 2 Sep 2024 11:25:36 +0100
+Peter Maydell <peter.maydell@linaro.org> wrote:
 
-> This patch allows for easier manipulation of the cache description
-> register, CCSIDR. Which is helpful for testing as well. Currently
-> numbers get hard-coded and might be prone to errors.
->
-> Therefore, this patch adds wrappers for different types of CPUs
-> available in tcg to decribe caches. Two functions `make_ccsidr32` and
-> `make_ccsidr64` describing descriptions. The 32 bit version receives
-> extra parameters that became unknown later in 64 bit.
->
-> For CCSIDR register, 32 bit version follows specification [1].
-> Conversely, 64 bit version follows specification [2].
->
-> [1] B4.1.19, ARM Architecture Reference Manual ARMv7-A and ARMv7-R
-> edition, https://developer.arm.com/documentation/ddi0406
-> [2] D23.2.29, ARM Architecture Reference Manual for A-profile Architectur=
-e,
-> https://developer.arm.com/documentation/ddi0487/latest/
->
-> Signed-off-by: Alireza Sanaee <alireza.sanaee@huawei.com>
-> ---
->  target/arm/cpu-features.h | 53 ++++++++++++++++++++++++
->  target/arm/cpu64.c        | 19 ++++++---
->  target/arm/tcg/cpu64.c    | 86 ++++++++++++++++++---------------------
->  3 files changed, 105 insertions(+), 53 deletions(-)
->
-> diff --git a/target/arm/cpu-features.h b/target/arm/cpu-features.h
-> index c59ca104fe..00a0f0d963 100644
-> --- a/target/arm/cpu-features.h
-> +++ b/target/arm/cpu-features.h
-> @@ -1022,6 +1022,59 @@ static inline bool isar_feature_any_evt(const ARMI=
-SARegisters *id)
->      return isar_feature_aa64_evt(id) || isar_feature_aa32_evt(id);
->  }
->=20=20
-> +static inline uint64_t make_ccsidr32(unsigned assoc, unsigned linesize,
-> +                                     unsigned cachesize, uint8_t flags)
-> +{
+> On Mon, 2 Sept 2024 at 11:07, Philippe Mathieu-Daud=E9
+> <philmd@linaro.org> wrote:
+> >
+> > Hi Alireza,
+> >
+> > On 30/8/24 20:47, Alireza Sanaee via wrote: =20
+> > > This patch allows for easier manipulation of the cache description
+> > > register, CCSIDR. Which is helpful for testing as well. Currently
+> > > numbers get hard-coded and might be prone to errors.
+> > >
+> > > Therefore, this patch adds wrappers for different types of CPUs
+> > > available in tcg to decribe caches. Two functions `make_ccsidr32`
+> > > and `make_ccsidr64` describing descriptions. The 32 bit version
+> > > receives extra parameters that became unknown later in 64 bit.
+> > >
+> > > For CCSIDR register, 32 bit version follows specification [1].
+> > > Conversely, 64 bit version follows specification [2].
+> > >
+> > > [1] B4.1.19, ARM Architecture Reference Manual ARMv7-A and ARMv7-R
+> > > edition, https://developer.arm.com/documentation/ddi0406
+> > > [2] D23.2.29, ARM Architecture Reference Manual for A-profile
+> > > Architecture, https://developer.arm.com/documentation/ddi0487/latest/
+> > >
+> > > Signed-off-by: Alireza Sanaee <alireza.sanaee@huawei.com>
+> > > ---
+> > >   target/arm/cpu-features.h | 53 ++++++++++++++++++++++++
+> > >   target/arm/cpu64.c        | 19 ++++++---
+> > >   target/arm/tcg/cpu64.c    | 86
+> > > ++++++++++++++++++--------------------- 3 files changed, 105
+> > > insertions(+), 53 deletions(-)
+> > >
+> > > diff --git a/target/arm/cpu-features.h b/target/arm/cpu-features.h
+> > > index c59ca104fe..00a0f0d963 100644
+> > > --- a/target/arm/cpu-features.h
+> > > +++ b/target/arm/cpu-features.h
+> > > @@ -1022,6 +1022,59 @@ static inline bool
+> > > isar_feature_any_evt(const ARMISARegisters *id) return
+> > > isar_feature_aa64_evt(id) || isar_feature_aa32_evt(id); }
+> > >
+> > > +static inline uint64_t make_ccsidr32(unsigned assoc, unsigned
+> > > linesize,
+> > > +                                     unsigned cachesize, uint8_t
+> > > flags) +{
+> > > +    unsigned lg_linesize =3D ctz32(linesize);
+> > > +    unsigned sets;
+> > > +
+> > > +    /*
+> > > +     * The 32-bit CCSIDR_EL1 format is:
+> > > +     *   [27:13] number of sets - 1
+> > > +     *   [12:3]  associativity - 1
+> > > +     *   [2:0]   log2(linesize) - 4
+> > > +     *           so 0 =3D=3D 16 bytes, 1 =3D=3D 32 bytes, 2 =3D=3D 6=
+4 bytes,
+> > > etc
+> > > +     */
+> > > +    assert(assoc !=3D 0);
+> > > +    assert(is_power_of_2(linesize));
+> > > +    assert(lg_linesize >=3D 4 && lg_linesize <=3D 7 + 4);
+> > > +
+> > > +    /* sets * associativity * linesize =3D=3D cachesize. */
+> > > +    sets =3D cachesize / (assoc * linesize);
+> > > +    assert(cachesize % (assoc * linesize) =3D=3D 0);
+> > > +
+> > > +    return ((uint64_t)(flags) << 28)
+> > > +        | ((sets - 1) << 13)
+> > > +        | ((assoc - 1) << 3)
+> > > +        | (lg_linesize - 4);
+> > > +}
+> > > +
+> > > +static inline uint64_t make_ccsidr64(unsigned assoc, unsigned
+> > > linesize,
+> > > +                              unsigned cachesize)
+> > > +{
+> > > +    unsigned lg_linesize =3D ctz32(linesize);
+> > > +    unsigned sets;
+> > > +
+> > > +    /*
+> > > +     * The 64-bit CCSIDR_EL1 format is:
+> > > +     *   [55:32] number of sets - 1
+> > > +     *   [23:3]  associativity - 1
+> > > +     *   [2:0]   log2(linesize) - 4
+> > > +     *           so 0 =3D=3D 16 bytes, 1 =3D=3D 32 bytes, 2 =3D=3D 6=
+4 bytes,
+> > > etc
+> > > +     */
+> > > +    assert(assoc !=3D 0);
+> > > +    assert(is_power_of_2(linesize));
+> > > +    assert(lg_linesize >=3D 4 && lg_linesize <=3D 7 + 4);
+> > > +
+> > > +    /* sets * associativity * linesize =3D=3D cachesize. */
+> > > +    sets =3D cachesize / (assoc * linesize);
+> > > +    assert(cachesize % (assoc * linesize) =3D=3D 0);
+> > > +
+> > > +    return ((uint64_t)(sets - 1) << 32)
+> > > +         | ((assoc - 1) << 3)
+> > > +         | (lg_linesize - 4);
+> > > +}
+> > > +
+> > >   /*
+> > >    * Forward to the above feature tests given an ARMCPU pointer.
+> > >    */
+> > > diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+> > > index 262a1d6c0b..57ebc1b979 100644
+> > > --- a/target/arm/cpu64.c
+> > > +++ b/target/arm/cpu64.c
+> > > @@ -23,6 +23,7 @@
+> > >   #include "cpu.h"
+> > >   #include "cpregs.h"
+> > >   #include "qemu/module.h"
+> > > +#include "qemu/units.h"
+> > >   #include "sysemu/kvm.h"
+> > >   #include "sysemu/hvf.h"
+> > >   #include "sysemu/qtest.h"
+> > > @@ -642,9 +643,12 @@ static void aarch64_a57_initfn(Object *obj)
+> > >       cpu->isar.dbgdevid1 =3D 0x2;
+> > >       cpu->isar.reset_pmcr_el0 =3D 0x41013000;
+> > >       cpu->clidr =3D 0x0a200023;
+> > > -    cpu->ccsidr[0] =3D 0x701fe00a; /* 32KB L1 dcache */
+> > > -    cpu->ccsidr[1] =3D 0x201fe012; /* 48KB L1 icache */
+> > > -    cpu->ccsidr[2] =3D 0x70ffe07a; /* 2048KB L2 cache */
+> > > +    /* 32KB L1 dcache */
+> > > +    cpu->ccsidr[0] =3D make_ccsidr32(4, 64, 32 * KiB, 7);
+> > > +    /* 48KB L1 icache */
+> > > +    cpu->ccsidr[1] =3D make_ccsidr32(3, 64, 48 * KiB, 2);
+> > > +    /* 2048KB L2 cache */
+> > > +    cpu->ccsidr[2] =3D make_ccsidr32(16, 64, 2 * MiB, 7); =20
+> >
+> > I like the uses of make_ccsidrXX() instead of the magic values.
+> >
+> > I don't like much the code duplication between make_ccsidrXX()
+> > definitions, I'd prefer both call a common (static?) one. =20
+>=20
+> How about we have
+> typedef enum {
+>     CCSIDR_FORMAT_LEGACY,
+>     CCSIDR_FORMAT_CCIDX,
+> } CCSIDRFormat;
+>=20
+> and a single
+> uint64_t make_ccsidr(CCSIDRFormat format, unsigned assoc, unsigned
+>                      linesize, unsigned cachesize, unsigned flags);
+>=20
+> ? Since the only difference between the two functions is the final
+> line that assembles the return value, that seems like maybe
+> a better way to avoid the code duplication than a common
+> sub-function.
+>=20
+> -- PMM
 
-isn't this returning a 32 bit value?
+I like this suggestion. I can address Philippe's concern too if I move
+functions around. I thought a bit how to avoid duplication then I ended
+up saying let's see what others might say.
 
-> +    unsigned lg_linesize =3D ctz32(linesize);
-> +    unsigned sets;
-> +
-> +    /*
-> +     * The 32-bit CCSIDR_EL1 format is:
-> +     *   [27:13] number of sets - 1
-> +     *   [12:3]  associativity - 1
-> +     *   [2:0]   log2(linesize) - 4
-> +     *           so 0 =3D=3D 16 bytes, 1 =3D=3D 32 bytes, 2 =3D=3D 64 by=
-tes, etc
-> +     */
-> +    assert(assoc !=3D 0);
-> +    assert(is_power_of_2(linesize));
-> +    assert(lg_linesize >=3D 4 && lg_linesize <=3D 7 + 4);
-> +
-> +    /* sets * associativity * linesize =3D=3D cachesize. */
-> +    sets =3D cachesize / (assoc * linesize);
-> +    assert(cachesize % (assoc * linesize) =3D=3D 0);
-> +
-> +    return ((uint64_t)(flags) << 28)
-> +        | ((sets - 1) << 13)
-> +        | ((assoc - 1) << 3)
-> +        | (lg_linesize - 4);
-
-This is a nice improvement but using deposit() will ensure you don't
-accidentally overflow fields with the shift/or combos. So something
-like:
-
-  uint32_t ccsidr32 =3D 0;
-  ..
-  ccsidr32 =3D deposit32(ccsidr32, 28,  4, flags);
-  ccsidr32 =3D deposit32(ccsidr32, 13, 14, sets - 1);
-  ccsidr32 =3D deposit32(ccsidr32,  3, 10, assoc - 1);
-  ccsidr32 =3D deposit32(ccsidr32,  0,  3, lg_linesize - 1);
-
-And leave the compiler to simplify everything (not that it matters that
-much for an init function).
-
-Actually I note CCSIDR already has some field definitions so it would
-be:
-
-  ccsidr32 =3D FIELD_DP32(ccsidr32, CCSIDR_EL1, LINESIZE, lg_linesize -1);
-
-etc. Although I notice it two sets of defines to account for FEAT_CCIDX
-
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro
+Alireza

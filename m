@@ -1,120 +1,120 @@
-Received: by 2002:a17:504:3a8f:b0:1be9:327d:8ee3 with SMTP id g15csp1502859njf;
-        Tue, 3 Sep 2024 09:15:36 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXnkGnuHBLUUJ3GmVHLJu08Vl0ozXT4xh9jqP9HAe85TrtTrPYSoGW/K/XKRAfCjobqumQcggqsT9auLQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IF7QZlvJaBYv4798f49hbCFttI83gcdD3IAcxFu1V0IEJ/shkgCLLV5+IjBK8EsZCpiWXF7
-X-Received: by 2002:a05:6214:5d8a:b0:6c5:13f0:240d with SMTP id 6a1803df08f44-6c513f02c9bmr11419766d6.38.1725380136388;
-        Tue, 03 Sep 2024 09:15:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1725380136; cv=none;
+Received: by 2002:a17:504:3a8f:b0:1be9:327d:8ee3 with SMTP id g15csp1502900njf;
+        Tue, 3 Sep 2024 09:15:42 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCW5LgscjrHOOCAjC5kAKPtz+GBivMlHXvJmEkF9qzIfFOyiXRx0yVPaOiB6pYaQr0Jfk9uqrhcGdz9nMA==@linaro.org
+X-Google-Smtp-Source: AGHT+IG0sCcNsa62dJEXDFP58lGIPdkcY3Dzxsr1/vYw8FmveGYZ/0oCXgFIjHJ6ed30dxOdnsp6
+X-Received: by 2002:a05:6214:2d42:b0:6c5:16ab:894 with SMTP id 6a1803df08f44-6c516ab08a5mr155106d6.37.1725380142355;
+        Tue, 03 Sep 2024 09:15:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1725380142; cv=none;
         d=google.com; s=arc-20160816;
-        b=Orekach0kvhsN9g+PxJ83rM12i/iEIBuzL5hjZtgzWWfvLkGDqBjDV6QLZxl2Gy0+s
-         cpOCJxBmxmFuIXD4qNEnszYuxkAMCuma3E9kyfynEB3d3EIkJug4YkiDU+zCENHbQhkS
-         1kBe7VYwjAcgqO76RAmYD+A2d3h0O73rPi4TvoLBJsQ+6QCNtrqzyWB/rwoyM2CM/zW3
-         0YIzAZi/tiGrvTdqaPt21bCvr6tGE+G1G8k3Bv/S/L5RN0x9r9DObCNdwHl5UwUcbZX6
-         2FeXploqq5oJhPsyK8ASw50D6YKf/uMz7CFIxT3Ft7fiRmzZxAsum/ESzVmtE322UV6f
-         k4gw==
+        b=ikP/kNBoqMdgP/qqBTKl51RV5I12Jl7977ntqu2/6K7aUphHdvj/oruAUQkIIoqCkY
+         bxDBTYNi0KZ/zC1sbXG2sEpdQaZunkKkIkbYBAJFsc1KMtseA6lTgRBkdgWIFuXbd7bj
+         oqKCuwDp5mXyfkrC0OKpEcIz2Zn/faUnBr7xXSKfueVAn6Tadqz5IXOon5TLiDIworuB
+         X/dBb16nFbmwhS3B3ygc1XMbB2h6SzA6FGYzIjUy1SvWXfWBsrGBEqmSJKcOGm7rafHS
+         ltBM/YF8VH9Gtckx5ZE/WLGVF8GzGcXSeNKS4rc2m9oCwV0TD6ts0D1XkbroI3boqIbK
+         uRxA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=afv60rrB0ZY/dc2gtfzP3F/HVYz9gXuU/H30gvl/uYE=;
+        bh=fOfef+JkPcTbeQrgH3GrXKLVyKFTqxllcvWZvuS9QLo=;
         fh=H2AmuqulvQE+T5zu97MCEUC3z9wF9NssS7895NhR/+c=;
-        b=AvavVAS9JSs7Hw0CPeik+BaJAVZ1AJhsYo+lO9t8I8jVmeNEy+SSZ50RIe0p8oJDY6
-         kQXVuttxdYm2lEbFfla7T63KVgc2Zbk5B1SrDIUtGmpkvtvsW6JVpjc6vriYvFO7KQX4
-         C2f1eX9xvAdXlLJdtlF+yx7D3gEaCDWbDpDotyek65fQdAHubm4naxEEroAytr9qo8s9
-         bQBHvSiINIMQHWmQ/+4Qn+J/xSVc/UbQbh3EvdL79v9+YLCnvW8hNGYQR+1I8qF0GjWY
-         G/qoN3m41p5DxS50nGWHVHeS9QB64W57/orB3p31tfM8KZzN7pz26KYjZxHo3Jknbg2z
-         KQuw==;
+        b=I+ZUI7fBI8/Ya+cpoZNPw/TwoajVJ1OT4CRE92Po8W0+/49H8041ETTmzZXU2LbPGx
+         2AcKcPNjfyd2jX5PlC+3vC5a6CvMYV1TlfuXczonc2kAZ/CtHwQjFZHy4hHAuQ+ej3PW
+         K5VBxdIsDtW5S0bUoIHya7/ijKQtleVxqY2zuG1kTY3viXBiI5E6XAV34XkJ0QmFKHH1
+         bcNSv5JJmV0jsmweWh9zWfD1z/4vnv9GR+u3JBN0az/xPWPgjMkDjgQyo8mlkbZ9WMmc
+         zcWdRgJPTlfgYPkT7ek/v90lK1uAQoZa1Qmo21OXNlb/7/zxYOqZhieRvVLT9D1yP4eY
+         9hyw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=h2AuTO1x;
+       dkim=pass header.i=@linaro.org header.s=google header.b=iiqJ70zB;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6c50ddfb07fsi21049046d6.566.2024.09.03.09.15.36
+        by mx.google.com with ESMTPS id 6a1803df08f44-6c3591543fasi79331916d6.65.2024.09.03.09.15.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 03 Sep 2024 09:15:36 -0700 (PDT)
+        Tue, 03 Sep 2024 09:15:42 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=h2AuTO1x;
+       dkim=pass header.i=@linaro.org header.s=google header.b=iiqJ70zB;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1slW4Z-0004hj-JB; Tue, 03 Sep 2024 12:08:03 -0400
+	id 1slW5a-0001Sh-Cq; Tue, 03 Sep 2024 12:09:06 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1slW4X-0004Z4-Fz
- for qemu-arm@nongnu.org; Tue, 03 Sep 2024 12:08:01 -0400
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
+ id 1slW5Y-0001Gz-8L
+ for qemu-arm@nongnu.org; Tue, 03 Sep 2024 12:09:04 -0400
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1slW4S-0002eJ-8P
- for qemu-arm@nongnu.org; Tue, 03 Sep 2024 12:08:01 -0400
-Received: by mail-wr1-x431.google.com with SMTP id
- ffacd0b85a97d-374bfc395a5so1879553f8f.0
- for <qemu-arm@nongnu.org>; Tue, 03 Sep 2024 09:07:55 -0700 (PDT)
+ id 1slW5T-0002x3-SN
+ for qemu-arm@nongnu.org; Tue, 03 Sep 2024 12:09:03 -0400
+Received: by mail-wm1-x333.google.com with SMTP id
+ 5b1f17b1804b1-42c2e50ec13so30011535e9.0
+ for <qemu-arm@nongnu.org>; Tue, 03 Sep 2024 09:08:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1725379674; x=1725984474; darn=nongnu.org;
+ d=linaro.org; s=google; t=1725379738; x=1725984538; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=afv60rrB0ZY/dc2gtfzP3F/HVYz9gXuU/H30gvl/uYE=;
- b=h2AuTO1xK6CbAAg1yeVbLuESNqhwYwD+2QpGc1E1PpLA+lTsBagncSwUVn/m5ZrPJ7
- ISY0UvawrR8/601v10q+uIqEVJF1u0XNDk1lMVWFCdkrjQMVVpt4snY2Nyl7fkSijSfj
- WVEMJ50cyCHETGCO3NaBa5jY4Gpzrk20wEY5lCV/44/OaF8WXNWcB7cZIp7Kt9YPFaB0
- 5fjM2FjGqQ0LdxOdSjRt/tHc7GbmVgfzQuPQMyuVm74vKFQ4WZ7LbggC2IuDghPclofD
- HY1SPH9+Owd/txc27duJ4GlIjxJpChMqSKHOneFdVY8x7s3oaJAb/rD6H6qkEvrv7CYq
- GNjQ==
+ :reply-to; bh=fOfef+JkPcTbeQrgH3GrXKLVyKFTqxllcvWZvuS9QLo=;
+ b=iiqJ70zBrNWXRVWGU2ADE9eLipjpe6KmDoQEh693yW27ijWz57U6O9pQ+kQM/YrSk7
+ HkjVkybLqfuRR1uK1P29B5pg6QGsINU64zx83gKM/C/EAUUvIfGAzzq0V5ct9vaIq3Vb
+ IShtPoiR2hmsP9QQuhgmCofM0tsBOnRgo5lWUl8NdCDWn7zzz6+U+GxIdRGo9Mn3mxPB
+ YGxz/vwfYr8NpaPOoWIHJttRl9IIkwIejXJhW4Q8Ogryi/XDOY79iJ8y5hT+5DslUsvK
+ AlLB4zo+2m9ZqI4XN05m7/783dSslbDgrwCZos31Q1FiSqlM+BeKRqgjYqLoytGg5u6q
+ UVng==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1725379674; x=1725984474;
+ d=1e100.net; s=20230601; t=1725379738; x=1725984538;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=afv60rrB0ZY/dc2gtfzP3F/HVYz9gXuU/H30gvl/uYE=;
- b=HQq0aheAq46OfpDbE9Rd0uOA5ZIh17kJ+2A/UYb10Uky1xB/oWs7vO0pLFzYUYlaDe
- MvY4sYIZied+x2eBjxt4RTAdr1FsmkDg7AGA3zZW59iLAw0R9NFEaOIYIP1d3xfpKaSX
- 5JPBiPa133Ufevcqau/gr2g9LJJ8YvVPDbfhm+gzsFyVJsigbayctny1dYuyS9TUPXg7
- GgCZkEbCv9kbUeKKUIE5mwbPOQO7SyqbqWJtX1JGz6ESPoEWHjVftAXUtNnKsZQBiINN
- l0pPhbBlyzg9ypZYKavKY/KNPgzE/yOai9YHJ1qSBKCxq9QS6ROJHNjJf4yk4DOI+XE7
- nQ4A==
-X-Gm-Message-State: AOJu0YxtJFDa+xx3Y2uTam7+ARC6T+HMaZAq5Dwh3OG8ERwASMoTIL1P
- fw/ZnngnNN6a4sP/xY063j0n6csWzeiuKe3xZHcRBYvhZVcw6SNMaLIOS6VJGPODIaHHDajMHOe
- A
-X-Received: by 2002:adf:b1d2:0:b0:374:c11c:5024 with SMTP id
- ffacd0b85a97d-374c11c5101mr6023425f8f.16.1725379673958; 
- Tue, 03 Sep 2024 09:07:53 -0700 (PDT)
+ bh=fOfef+JkPcTbeQrgH3GrXKLVyKFTqxllcvWZvuS9QLo=;
+ b=UUSQG0zEIdGd+XxXp+9MBmNRKgT/hvYEprCZ1as5Qll7Ef1kD8W2UGzJv7FnNa88gE
+ MdBb5DJUgEGThvgdgwB6IHcby0jvYCip3X5WURJx3yk78lLz5/ExM36VG0VhMCzV/iEe
+ 8CHfgsdqtI3SVCypYJTN1vBJF/yTV52ikCAQxrCUycVcFnhU5ltz2UbGOm6Ay84d6KPk
+ NB/NFy+G28hmihR19hsyGyeevfXyfstFyVKG+rLfo3iGYiubnalNpwv/4yh1pfJr0FSs
+ AoH19iVmpgFqlBWxrjmgInKSfTVRSdBSiliq34y7RbH5kv7zLhURpYGM/eMovIleJHdT
+ 4wIg==
+X-Gm-Message-State: AOJu0Ywxm6i7RV75ZLJXYSJu4sPIfp4SQb7hNBh9VfuO9HxILjZmt7CJ
+ cVBvtVuaPfT9Gz6tcA3aVxb/KZmBTmVnJlAv3SYVy347dXsgVhLHRINabikoa4WoHIsxRFo4SrU
+ g
+X-Received: by 2002:a05:600c:3c9e:b0:426:627e:37af with SMTP id
+ 5b1f17b1804b1-42bbb10d2d5mr98685375e9.3.1725379738076; 
+ Tue, 03 Sep 2024 09:08:58 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-42bb6df1066sm175123065e9.18.2024.09.03.09.07.53
+ 5b1f17b1804b1-42bb6df1066sm175123065e9.18.2024.09.03.09.08.57
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 03 Sep 2024 09:07:53 -0700 (PDT)
+ Tue, 03 Sep 2024 09:08:57 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH for-9.2 01/53] hw/arm: Remove deprecated akita, borzoi, spitz,
- terrier, tosa boards
-Date: Tue,  3 Sep 2024 17:06:59 +0100
-Message-Id: <20240903160751.4100218-2-peter.maydell@linaro.org>
+Subject: [PATCH for-9.2 43/53] hw/misc: Remove omap_gpmc
+Date: Tue,  3 Sep 2024 17:07:41 +0100
+Message-Id: <20240903160751.4100218-44-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240903160751.4100218-1-peter.maydell@linaro.org>
 References: <20240903160751.4100218-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::431;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x431.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::333;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x333.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -129,1794 +129,963 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: UVFUfv/0g0Wp
+X-TUID: quLz6dt3dT/9
 
-The Sharp XScale-based PDA board models akita, borzoi, spitz,
-terrier, and tosa were all deprecated in 9.0, so our deprecation
-cycle permits removing them for the 9.2 release.
-
-Remove the source files for the board models themselves, and their
-documentation. There were no tests for these boards.
-
-We will move the text describing the dropped boards from
-deprecated.rst to removed-features.rst when we've cleaned up all the
-boards it lists.  Device models used only by removed board models
-will be removed in separate commits.
+The omap_gpmc device is only in OMAP2, which we are removing.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- MAINTAINERS                             |    3 -
- docs/system/arm/xscale.rst              |   35 -
- docs/system/target-arm.rst              |    1 -
- configs/devices/arm-softmmu/default.mak |    2 -
- hw/arm/spitz.c                          | 1284 -----------------------
- hw/arm/tosa.c                           |  327 ------
- hw/arm/Kconfig                          |   23 -
- hw/arm/meson.build                      |    2 -
- 8 files changed, 1677 deletions(-)
- delete mode 100644 docs/system/arm/xscale.rst
- delete mode 100644 hw/arm/spitz.c
- delete mode 100644 hw/arm/tosa.c
+ include/hw/arm/omap.h |  11 -
+ hw/misc/omap_gpmc.c   | 898 ------------------------------------------
+ hw/misc/meson.build   |   1 -
+ 3 files changed, 910 deletions(-)
+ delete mode 100644 hw/misc/omap_gpmc.c
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 3584d6a6c6d..bcd84582099 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -924,8 +924,6 @@ M: Peter Maydell <peter.maydell@linaro.org>
- L: qemu-arm@nongnu.org
- S: Odd Fixes
- F: hw/arm/mainstone.c
--F: hw/arm/spitz.c
--F: hw/arm/tosa.c
- F: hw/arm/z2.c
- F: hw/*/pxa2xx*
- F: hw/display/tc6393xb.c
-@@ -938,7 +936,6 @@ F: include/hw/adc/max111x.h
- F: include/hw/arm/pxa.h
- F: include/hw/arm/sharpsl.h
- F: include/hw/display/tc6393xb.h
--F: docs/system/arm/xscale.rst
- F: docs/system/arm/mainstone.rst
+diff --git a/include/hw/arm/omap.h b/include/hw/arm/omap.h
+index dcd338c7c49..0cbbf2fecb5 100644
+--- a/include/hw/arm/omap.h
++++ b/include/hw/arm/omap.h
+@@ -147,15 +147,6 @@ hwaddr omap_l4_region_base(struct omap_target_agent_s *ta,
+ hwaddr omap_l4_region_size(struct omap_target_agent_s *ta,
+                                        int region);
  
- SABRELITE / i.MX6
-diff --git a/docs/system/arm/xscale.rst b/docs/system/arm/xscale.rst
+-/* OMAP2 general purpose memory controller */
+-struct omap_gpmc_s;
+-struct omap_gpmc_s *omap_gpmc_init(struct omap_mpu_state_s *mpu,
+-                                   hwaddr base,
+-                                   qemu_irq irq, qemu_irq drq);
+-void omap_gpmc_reset(struct omap_gpmc_s *s);
+-void omap_gpmc_attach(struct omap_gpmc_s *s, int cs, MemoryRegion *iomem);
+-void omap_gpmc_attach_nand(struct omap_gpmc_s *s, int cs, DeviceState *nand);
+-
+ /*
+  * Common IRQ numbers for level 1 interrupt handler
+  * See /usr/include/asm-arm/arch-omap/irqs.h in Linux.
+@@ -948,8 +939,6 @@ struct omap_mpu_state_s {
+     struct omap_gp_timer_s *gptimer[12];
+     struct omap_synctimer_s *synctimer;
+ 
+-    struct omap_gpmc_s *gpmc;
+-
+     struct omap_mcspi_s *mcspi[2];
+ 
+     struct omap_dss_s *dss;
+diff --git a/hw/misc/omap_gpmc.c b/hw/misc/omap_gpmc.c
 deleted file mode 100644
-index e239136c3c7..00000000000
---- a/docs/system/arm/xscale.rst
+index 67158eb1649..00000000000
+--- a/hw/misc/omap_gpmc.c
 +++ /dev/null
-@@ -1,35 +0,0 @@
--Sharp XScale-based PDA models (``akita``, ``borzoi``, ``spitz``, ``terrier``, ``tosa``)
--=======================================================================================
--
--The Sharp Zaurus are PDAs based on XScale, able to run Linux ('SL series').
--
--The SL-6000 (\"Tosa\"), released in 2005, uses a PXA255 System-on-chip.
--
--The SL-C3000 (\"Spitz\"), SL-C1000 (\"Akita\"), SL-C3100 (\"Borzoi\") and
--SL-C3200 (\"Terrier\") use a PXA270.
--
--The clamshell PDA models emulation includes the following peripherals:
--
---  Intel PXA255/PXA270 System-on-chip (ARMv5TE core)
--
---  NAND Flash memory - not in \"Tosa\"
--
---  IBM/Hitachi DSCM microdrive in a PXA PCMCIA slot - not in \"Akita\"
--
---  On-chip OHCI USB controller - not in \"Tosa\"
--
---  On-chip LCD controller
--
---  On-chip Real Time Clock
--
---  TI ADS7846 touchscreen controller on SSP bus
--
---  Maxim MAX1111 analog-digital converter on |I2C| bus
--
---  GPIO-connected keyboard controller and LEDs
--
---  Secure Digital card connected to PXA MMC/SD host
--
---  Three on-chip UARTs
--
---  WM8750 audio CODEC on |I2C| and |I2S| buses
-diff --git a/docs/system/target-arm.rst b/docs/system/target-arm.rst
-index 7b992722846..326b69502b5 100644
---- a/docs/system/target-arm.rst
-+++ b/docs/system/target-arm.rst
-@@ -101,7 +101,6 @@ undocumented; you can get a complete list by running
-    arm/orangepi
-    arm/palm
-    arm/raspi
--   arm/xscale
-    arm/collie
-    arm/sx1
-    arm/stellaris
-diff --git a/configs/devices/arm-softmmu/default.mak b/configs/devices/arm-softmmu/default.mak
-index 31f77c20269..4cbe04ffbf1 100644
---- a/configs/devices/arm-softmmu/default.mak
-+++ b/configs/devices/arm-softmmu/default.mak
-@@ -30,8 +30,6 @@
- # CONFIG_ZYNQ=n
- # CONFIG_MAINSTONE=n
- # CONFIG_GUMSTIX=n
--# CONFIG_SPITZ=n
--# CONFIG_TOSA=n
- # CONFIG_Z2=n
- # CONFIG_NPCM7XX=n
- # CONFIG_COLLIE=n
-diff --git a/hw/arm/spitz.c b/hw/arm/spitz.c
-deleted file mode 100644
-index 62cd55ba914..00000000000
---- a/hw/arm/spitz.c
-+++ /dev/null
-@@ -1,1284 +0,0 @@
+@@ -1,898 +0,0 @@
 -/*
-- * PXA270-based Clamshell PDA platforms.
+- * TI OMAP general purpose memory controller emulation.
 - *
-- * Copyright (c) 2006 Openedhand Ltd.
-- * Written by Andrzej Zaborowski <balrog@zabor.org>
+- * Copyright (C) 2007-2009 Nokia Corporation
+- * Original code written by Andrzej Zaborowski <andrew@openedhand.com>
+- * Enhancements for OMAP3 and NAND support written by Juha Riihimäki
 - *
-- * This code is licensed under the GNU GPL v2.
+- * This program is free software; you can redistribute it and/or
+- * modify it under the terms of the GNU General Public License as
+- * published by the Free Software Foundation; either version 2 or
+- * (at your option) any later version of the License.
 - *
-- * Contributions after 2012-01-13 are licensed under the terms of the
-- * GNU GPL, version 2 or (at your option) any later version.
+- * This program is distributed in the hope that it will be useful,
+- * but WITHOUT ANY WARRANTY; without even the implied warranty of
+- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+- * GNU General Public License for more details.
+- *
+- * You should have received a copy of the GNU General Public License along
+- * with this program; if not, see <http://www.gnu.org/licenses/>.
 - */
 -
 -#include "qemu/osdep.h"
--#include "qapi/error.h"
--#include "hw/arm/pxa.h"
--#include "hw/arm/boot.h"
--#include "sysemu/runstate.h"
--#include "sysemu/sysemu.h"
--#include "hw/pcmcia.h"
--#include "hw/qdev-properties.h"
--#include "hw/i2c/i2c.h"
 -#include "hw/irq.h"
--#include "hw/ssi/ssi.h"
 -#include "hw/block/flash.h"
--#include "qemu/timer.h"
--#include "qemu/log.h"
--#include "hw/arm/sharpsl.h"
--#include "ui/console.h"
--#include "hw/audio/wm8750.h"
--#include "audio/audio.h"
--#include "hw/boards.h"
--#include "hw/sysbus.h"
--#include "hw/adc/max111x.h"
--#include "migration/vmstate.h"
+-#include "hw/arm/omap.h"
+-#include "exec/memory.h"
 -#include "exec/address-spaces.h"
--#include "qom/object.h"
--#include "audio/audio.h"
 -
--enum spitz_model_e { spitz, akita, borzoi, terrier };
--
--struct SpitzMachineClass {
--    MachineClass parent;
--    enum spitz_model_e model;
--    int arm_id;
--};
--
--struct SpitzMachineState {
--    MachineState parent;
--    PXA2xxState *mpu;
--    DeviceState *mux;
--    DeviceState *lcdtg;
--    DeviceState *ads7846;
--    DeviceState *max1111;
--    DeviceState *scp0;
--    DeviceState *scp1;
--    DeviceState *misc_gpio;
--};
--
--#define TYPE_SPITZ_MACHINE "spitz-common"
--OBJECT_DECLARE_TYPE(SpitzMachineState, SpitzMachineClass, SPITZ_MACHINE)
--
--#define zaurus_printf(format, ...)                              \
--    fprintf(stderr, "%s: " format, __func__, ##__VA_ARGS__)
--
--/* Spitz Flash */
--#define FLASH_BASE              0x0c000000
--#define FLASH_ECCLPLB           0x00    /* Line parity 7 - 0 bit */
--#define FLASH_ECCLPUB           0x04    /* Line parity 15 - 8 bit */
--#define FLASH_ECCCP             0x08    /* Column parity 5 - 0 bit */
--#define FLASH_ECCCNTR           0x0c    /* ECC byte counter */
--#define FLASH_ECCCLRR           0x10    /* Clear ECC */
--#define FLASH_FLASHIO           0x14    /* Flash I/O */
--#define FLASH_FLASHCTL          0x18    /* Flash Control */
--
--#define FLASHCTL_CE0            (1 << 0)
--#define FLASHCTL_CLE            (1 << 1)
--#define FLASHCTL_ALE            (1 << 2)
--#define FLASHCTL_WP             (1 << 3)
--#define FLASHCTL_CE1            (1 << 4)
--#define FLASHCTL_RYBY           (1 << 5)
--#define FLASHCTL_NCE            (FLASHCTL_CE0 | FLASHCTL_CE1)
--
--#define TYPE_SL_NAND "sl-nand"
--OBJECT_DECLARE_SIMPLE_TYPE(SLNANDState, SL_NAND)
--
--struct SLNANDState {
--    SysBusDevice parent_obj;
--
+-/* General-Purpose Memory Controller */
+-struct omap_gpmc_s {
+-    qemu_irq irq;
+-    qemu_irq drq;
 -    MemoryRegion iomem;
--    DeviceState *nand;
--    uint8_t ctl;
--    uint8_t manf_id;
--    uint8_t chip_id;
--    ECCState ecc;
+-    int accept_256;
+-
+-    uint8_t revision;
+-    uint8_t sysconfig;
+-    uint16_t irqst;
+-    uint16_t irqen;
+-    uint16_t lastirq;
+-    uint16_t timeout;
+-    uint16_t config;
+-    struct omap_gpmc_cs_file_s {
+-        uint32_t config[7];
+-        MemoryRegion *iomem;
+-        MemoryRegion container;
+-        MemoryRegion nandiomem;
+-        DeviceState *dev;
+-    } cs_file[8];
+-    int ecc_cs;
+-    int ecc_ptr;
+-    uint32_t ecc_cfg;
+-    ECCState ecc[9];
+-    struct prefetch {
+-        uint32_t config1; /* GPMC_PREFETCH_CONFIG1 */
+-        uint32_t transfercount; /* GPMC_PREFETCH_CONFIG2:TRANSFERCOUNT */
+-        int startengine; /* GPMC_PREFETCH_CONTROL:STARTENGINE */
+-        int fifopointer; /* GPMC_PREFETCH_STATUS:FIFOPOINTER */
+-        int count; /* GPMC_PREFETCH_STATUS:COUNTVALUE */
+-        MemoryRegion iomem;
+-        uint8_t fifo[64];
+-    } prefetch;
 -};
 -
--static uint64_t sl_read(void *opaque, hwaddr addr, unsigned size)
+-#define OMAP_GPMC_8BIT 0
+-#define OMAP_GPMC_16BIT 1
+-#define OMAP_GPMC_NOR 0
+-#define OMAP_GPMC_NAND 2
+-
+-static int omap_gpmc_devtype(struct omap_gpmc_cs_file_s *f)
 -{
--    SLNANDState *s = (SLNANDState *) opaque;
--    int ryby;
+-    return (f->config[0] >> 10) & 3;
+-}
 -
--    switch (addr) {
--#define BSHR(byte, from, to)    ((s->ecc.lp[byte] >> (from - to)) & (1 << to))
--    case FLASH_ECCLPLB:
--        return BSHR(0, 4, 0) | BSHR(0, 5, 2) | BSHR(0, 6, 4) | BSHR(0, 7, 6) |
--                BSHR(1, 4, 1) | BSHR(1, 5, 3) | BSHR(1, 6, 5) | BSHR(1, 7, 7);
+-static int omap_gpmc_devsize(struct omap_gpmc_cs_file_s *f)
+-{
+-    /* devsize field is really 2 bits but we ignore the high
+-     * bit to ensure consistent behaviour if the guest sets
+-     * it (values 2 and 3 are reserved in the TRM)
+-     */
+-    return (f->config[0] >> 12) & 1;
+-}
 -
--#define BSHL(byte, from, to)    ((s->ecc.lp[byte] << (to - from)) & (1 << to))
--    case FLASH_ECCLPUB:
--        return BSHL(0, 0, 0) | BSHL(0, 1, 2) | BSHL(0, 2, 4) | BSHL(0, 3, 6) |
--                BSHL(1, 0, 1) | BSHL(1, 1, 3) | BSHL(1, 2, 5) | BSHL(1, 3, 7);
+-/* Extract the chip-select value from the prefetch config1 register */
+-static int prefetch_cs(uint32_t config1)
+-{
+-    return (config1 >> 24) & 7;
+-}
 -
--    case FLASH_ECCCP:
--        return s->ecc.cp;
+-static int prefetch_threshold(uint32_t config1)
+-{
+-    return (config1 >> 8) & 0x7f;
+-}
 -
--    case FLASH_ECCCNTR:
--        return s->ecc.count & 0xff;
+-static void omap_gpmc_int_update(struct omap_gpmc_s *s)
+-{
+-    /* The TRM is a bit unclear, but it seems to say that
+-     * the TERMINALCOUNTSTATUS bit is set only on the
+-     * transition when the prefetch engine goes from
+-     * active to inactive, whereas the FIFOEVENTSTATUS
+-     * bit is held high as long as the fifo has at
+-     * least THRESHOLD bytes available.
+-     * So we do the latter here, but TERMINALCOUNTSTATUS
+-     * is set elsewhere.
+-     */
+-    if (s->prefetch.fifopointer >= prefetch_threshold(s->prefetch.config1)) {
+-        s->irqst |= 1;
+-    }
+-    if ((s->irqen & s->irqst) != s->lastirq) {
+-        s->lastirq = s->irqen & s->irqst;
+-        qemu_set_irq(s->irq, s->lastirq);
+-    }
+-}
 -
--    case FLASH_FLASHCTL:
--        nand_getpins(s->nand, &ryby);
--        if (ryby)
--            return s->ctl | FLASHCTL_RYBY;
--        else
--            return s->ctl;
+-static void omap_gpmc_dma_update(struct omap_gpmc_s *s, int value)
+-{
+-    if (s->prefetch.config1 & 4) {
+-        qemu_set_irq(s->drq, value);
+-    }
+-}
 -
--    case FLASH_FLASHIO:
--        if (size == 4) {
--            return ecc_digest(&s->ecc, nand_getio(s->nand)) |
--                (ecc_digest(&s->ecc, nand_getio(s->nand)) << 16);
+-/* Access functions for when a NAND-like device is mapped into memory:
+- * all addresses in the region behave like accesses to the relevant
+- * GPMC_NAND_DATA_i register (which is actually implemented to call these)
+- */
+-static uint64_t omap_nand_read(void *opaque, hwaddr addr,
+-                               unsigned size)
+-{
+-    struct omap_gpmc_cs_file_s *f = opaque;
+-    uint64_t v;
+-    nand_setpins(f->dev, 0, 0, 0, 1, 0);
+-    switch (omap_gpmc_devsize(f)) {
+-    case OMAP_GPMC_8BIT:
+-        v = nand_getio(f->dev);
+-        if (size == 1) {
+-            return v;
 -        }
--        return ecc_digest(&s->ecc, nand_getio(s->nand));
--
+-        v |= (nand_getio(f->dev) << 8);
+-        if (size == 2) {
+-            return v;
+-        }
+-        v |= (nand_getio(f->dev) << 16);
+-        v |= (nand_getio(f->dev) << 24);
+-        return v;
+-    case OMAP_GPMC_16BIT:
+-        v = nand_getio(f->dev);
+-        if (size == 1) {
+-            /* 8 bit read from 16 bit device : probably a guest bug */
+-            return v & 0xff;
+-        }
+-        if (size == 2) {
+-            return v;
+-        }
+-        v |= (nand_getio(f->dev) << 16);
+-        return v;
 -    default:
--        qemu_log_mask(LOG_GUEST_ERROR,
--                      "sl_read: bad register offset 0x%02" HWADDR_PRIx "\n",
--                      addr);
+-        abort();
 -    }
--    return 0;
 -}
 -
--static void sl_write(void *opaque, hwaddr addr,
--                     uint64_t value, unsigned size)
+-static void omap_nand_setio(DeviceState *dev, uint64_t value,
+-                            int nandsize, int size)
 -{
--    SLNANDState *s = (SLNANDState *) opaque;
--
--    switch (addr) {
--    case FLASH_ECCCLRR:
--        /* Value is ignored.  */
--        ecc_reset(&s->ecc);
+-    /* Write the specified value to the NAND device, respecting
+-     * both size of the NAND device and size of the write access.
+-     */
+-    switch (nandsize) {
+-    case OMAP_GPMC_8BIT:
+-        switch (size) {
+-        case 1:
+-            nand_setio(dev, value & 0xff);
+-            break;
+-        case 2:
+-            nand_setio(dev, value & 0xff);
+-            nand_setio(dev, (value >> 8) & 0xff);
+-            break;
+-        case 4:
+-        default:
+-            nand_setio(dev, value & 0xff);
+-            nand_setio(dev, (value >> 8) & 0xff);
+-            nand_setio(dev, (value >> 16) & 0xff);
+-            nand_setio(dev, (value >> 24) & 0xff);
+-            break;
+-        }
 -        break;
--
--    case FLASH_FLASHCTL:
--        s->ctl = value & 0xff & ~FLASHCTL_RYBY;
--        nand_setpins(s->nand,
--                        s->ctl & FLASHCTL_CLE,
--                        s->ctl & FLASHCTL_ALE,
--                        s->ctl & FLASHCTL_NCE,
--                        s->ctl & FLASHCTL_WP,
--                        0);
+-    case OMAP_GPMC_16BIT:
+-        switch (size) {
+-        case 1:
+-            /* writing to a 16bit device with 8bit access is probably a guest
+-             * bug; pass the value through anyway.
+-             */
+-        case 2:
+-            nand_setio(dev, value & 0xffff);
+-            break;
+-        case 4:
+-        default:
+-            nand_setio(dev, value & 0xffff);
+-            nand_setio(dev, (value >> 16) & 0xffff);
+-            break;
+-        }
 -        break;
--
--    case FLASH_FLASHIO:
--        nand_setio(s->nand, ecc_digest(&s->ecc, value & 0xff));
--        break;
--
--    default:
--        qemu_log_mask(LOG_GUEST_ERROR,
--                      "sl_write: bad register offset 0x%02" HWADDR_PRIx "\n",
--                      addr);
 -    }
 -}
 -
--enum {
--    FLASH_128M,
--    FLASH_1024M,
--};
+-static void omap_nand_write(void *opaque, hwaddr addr,
+-                            uint64_t value, unsigned size)
+-{
+-    struct omap_gpmc_cs_file_s *f = opaque;
+-    nand_setpins(f->dev, 0, 0, 0, 1, 0);
+-    omap_nand_setio(f->dev, value, omap_gpmc_devsize(f), size);
+-}
 -
--static const MemoryRegionOps sl_ops = {
--    .read = sl_read,
--    .write = sl_write,
+-static const MemoryRegionOps omap_nand_ops = {
+-    .read = omap_nand_read,
+-    .write = omap_nand_write,
 -    .endianness = DEVICE_NATIVE_ENDIAN,
 -};
 -
--static void sl_flash_register(PXA2xxState *cpu, int size)
+-static void fill_prefetch_fifo(struct omap_gpmc_s *s)
 -{
--    DeviceState *dev;
--
--    dev = qdev_new(TYPE_SL_NAND);
--
--    qdev_prop_set_uint8(dev, "manf_id", NAND_MFR_SAMSUNG);
--    if (size == FLASH_128M)
--        qdev_prop_set_uint8(dev, "chip_id", 0x73);
--    else if (size == FLASH_1024M)
--        qdev_prop_set_uint8(dev, "chip_id", 0xf1);
--
--    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
--    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, FLASH_BASE);
--}
--
--static void sl_nand_init(Object *obj)
--{
--    SLNANDState *s = SL_NAND(obj);
--    SysBusDevice *dev = SYS_BUS_DEVICE(obj);
--
--    s->ctl = 0;
--
--    memory_region_init_io(&s->iomem, obj, &sl_ops, s, "sl", 0x40);
--    sysbus_init_mmio(dev, &s->iomem);
--}
--
--static void sl_nand_realize(DeviceState *dev, Error **errp)
--{
--    SLNANDState *s = SL_NAND(dev);
--    DriveInfo *nand;
--
--    /* FIXME use a qdev drive property instead of drive_get() */
--    nand = drive_get(IF_MTD, 0, 0);
--    s->nand = nand_init(nand ? blk_by_legacy_dinfo(nand) : NULL,
--                        s->manf_id, s->chip_id);
--}
--
--/* Spitz Keyboard */
--
--#define SPITZ_KEY_STROBE_NUM    11
--#define SPITZ_KEY_SENSE_NUM     7
--
--static const int spitz_gpio_key_sense[SPITZ_KEY_SENSE_NUM] = {
--    12, 17, 91, 34, 36, 38, 39
--};
--
--static const int spitz_gpio_key_strobe[SPITZ_KEY_STROBE_NUM] = {
--    88, 23, 24, 25, 26, 27, 52, 103, 107, 108, 114
--};
--
--/* Eighth additional row maps the special keys */
--static int spitz_keymap[SPITZ_KEY_SENSE_NUM + 1][SPITZ_KEY_STROBE_NUM] = {
--    { 0x1d, 0x02, 0x04, 0x06, 0x07, 0x08, 0x0a, 0x0b, 0x0e, 0x3f, 0x40 },
--    {  -1 , 0x03, 0x05, 0x13, 0x15, 0x09, 0x17, 0x18, 0x19, 0x41, 0x42 },
--    { 0x0f, 0x10, 0x12, 0x14, 0x22, 0x16, 0x24, 0x25,  -1 ,  -1 ,  -1  },
--    { 0x3c, 0x11, 0x1f, 0x21, 0x2f, 0x23, 0x32, 0x26,  -1 , 0x36,  -1  },
--    { 0x3b, 0x1e, 0x20, 0x2e, 0x30, 0x31, 0x34,  -1 , 0x1c, 0x2a,  -1  },
--    { 0x44, 0x2c, 0x2d, 0x0c, 0x39, 0x33,  -1 , 0x48,  -1 ,  -1 , 0x38 },
--    { 0x37, 0x3d,  -1 , 0x45, 0x57, 0x58, 0x4b, 0x50, 0x4d,  -1 ,  -1  },
--    { 0x52, 0x43, 0x01, 0x47, 0x49,  -1 ,  -1 ,  -1 ,  -1 ,  -1 ,  -1  },
--};
--
--#define SPITZ_GPIO_AK_INT       13      /* Remote control */
--#define SPITZ_GPIO_SYNC                 16      /* Sync button */
--#define SPITZ_GPIO_ON_KEY       95      /* Power button */
--#define SPITZ_GPIO_SWA          97      /* Lid */
--#define SPITZ_GPIO_SWB          96      /* Tablet mode */
--
--/* The special buttons are mapped to unused keys */
--static const int spitz_gpiomap[5] = {
--    SPITZ_GPIO_AK_INT, SPITZ_GPIO_SYNC, SPITZ_GPIO_ON_KEY,
--    SPITZ_GPIO_SWA, SPITZ_GPIO_SWB,
--};
--
--#define TYPE_SPITZ_KEYBOARD "spitz-keyboard"
--OBJECT_DECLARE_SIMPLE_TYPE(SpitzKeyboardState, SPITZ_KEYBOARD)
--
--struct SpitzKeyboardState {
--    SysBusDevice parent_obj;
--
--    qemu_irq sense[SPITZ_KEY_SENSE_NUM];
--    qemu_irq gpiomap[5];
--    int keymap[0x80];
--    uint16_t keyrow[SPITZ_KEY_SENSE_NUM];
--    uint16_t strobe_state;
--    uint16_t sense_state;
--
--    uint16_t pre_map[0x100];
--    uint16_t modifiers;
--    uint16_t imodifiers;
--    uint8_t fifo[16];
--    int fifopos, fifolen;
--    QEMUTimer *kbdtimer;
--};
--
--static void spitz_keyboard_sense_update(SpitzKeyboardState *s)
--{
--    int i;
--    uint16_t strobe, sense = 0;
--    for (i = 0; i < SPITZ_KEY_SENSE_NUM; i ++) {
--        strobe = s->keyrow[i] & s->strobe_state;
--        if (strobe) {
--            sense |= 1 << i;
--            if (!(s->sense_state & (1 << i)))
--                qemu_irq_raise(s->sense[i]);
--        } else if (s->sense_state & (1 << i))
--            qemu_irq_lower(s->sense[i]);
+-    /* Fill the prefetch FIFO by reading data from NAND.
+-     * We do this synchronously, unlike the hardware which
+-     * will do this asynchronously. We refill when the
+-     * FIFO has THRESHOLD bytes free, and we always refill
+-     * as much data as possible starting at the top end
+-     * of the FIFO.
+-     * (We have to refill at THRESHOLD rather than waiting
+-     * for the FIFO to empty to allow for the case where
+-     * the FIFO size isn't an exact multiple of THRESHOLD
+-     * and we're doing DMA transfers.)
+-     * This means we never need to handle wrap-around in
+-     * the fifo-reading code, and the next byte of data
+-     * to read is always fifo[63 - fifopointer].
+-     */
+-    int fptr;
+-    int cs = prefetch_cs(s->prefetch.config1);
+-    int is16bit = (((s->cs_file[cs].config[0] >> 12) & 3) != 0);
+-    int bytes;
+-    /* Don't believe the bit of the OMAP TRM that says that COUNTVALUE
+-     * and TRANSFERCOUNT are in units of 16 bit words for 16 bit NAND.
+-     * Instead believe the bit that says it is always a byte count.
+-     */
+-    bytes = 64 - s->prefetch.fifopointer;
+-    if (bytes > s->prefetch.count) {
+-        bytes = s->prefetch.count;
+-    }
+-    if (is16bit) {
+-        bytes &= ~1;
 -    }
 -
--    s->sense_state = sense;
--}
--
--static void spitz_keyboard_strobe(void *opaque, int line, int level)
--{
--    SpitzKeyboardState *s = (SpitzKeyboardState *) opaque;
--
--    if (level)
--        s->strobe_state |= 1 << line;
--    else
--        s->strobe_state &= ~(1 << line);
--    spitz_keyboard_sense_update(s);
--}
--
--static void spitz_keyboard_keydown(SpitzKeyboardState *s, int keycode)
--{
--    int spitz_keycode = s->keymap[keycode & 0x7f];
--    if (spitz_keycode == -1)
--        return;
--
--    /* Handle the additional keys */
--    if ((spitz_keycode >> 4) == SPITZ_KEY_SENSE_NUM) {
--        qemu_set_irq(s->gpiomap[spitz_keycode & 0xf], (keycode < 0x80));
--        return;
+-    s->prefetch.count -= bytes;
+-    s->prefetch.fifopointer += bytes;
+-    fptr = 64 - s->prefetch.fifopointer;
+-    /* Move the existing data in the FIFO so it sits just
+-     * before what we're about to read in
+-     */
+-    while (fptr < (64 - bytes)) {
+-        s->prefetch.fifo[fptr] = s->prefetch.fifo[fptr + bytes];
+-        fptr++;
 -    }
--
--    if (keycode & 0x80)
--        s->keyrow[spitz_keycode >> 4] &= ~(1 << (spitz_keycode & 0xf));
--    else
--        s->keyrow[spitz_keycode >> 4] |= 1 << (spitz_keycode & 0xf);
--
--    spitz_keyboard_sense_update(s);
--}
--
--#define SPITZ_MOD_SHIFT   (1 << 7)
--#define SPITZ_MOD_CTRL    (1 << 8)
--#define SPITZ_MOD_FN      (1 << 9)
--
--#define QUEUE_KEY(c)    s->fifo[(s->fifopos + s->fifolen ++) & 0xf] = c
--
--static void spitz_keyboard_handler(void *opaque, int keycode)
--{
--    SpitzKeyboardState *s = opaque;
--    uint16_t code;
--    int mapcode;
--    switch (keycode) {
--    case 0x2a:  /* Left Shift */
--        s->modifiers |= 1;
--        break;
--    case 0xaa:
--        s->modifiers &= ~1;
--        break;
--    case 0x36:  /* Right Shift */
--        s->modifiers |= 2;
--        break;
--    case 0xb6:
--        s->modifiers &= ~2;
--        break;
--    case 0x1d:  /* Control */
--        s->modifiers |= 4;
--        break;
--    case 0x9d:
--        s->modifiers &= ~4;
--        break;
--    case 0x38:  /* Alt */
--        s->modifiers |= 8;
--        break;
--    case 0xb8:
--        s->modifiers &= ~8;
--        break;
--    }
--
--    code = s->pre_map[mapcode = ((s->modifiers & 3) ?
--            (keycode | SPITZ_MOD_SHIFT) :
--            (keycode & ~SPITZ_MOD_SHIFT))];
--
--    if (code != mapcode) {
--#if 0
--        if ((code & SPITZ_MOD_SHIFT) && !(s->modifiers & 1)) {
--            QUEUE_KEY(0x2a | (keycode & 0x80));
--        }
--        if ((code & SPITZ_MOD_CTRL) && !(s->modifiers & 4)) {
--            QUEUE_KEY(0x1d | (keycode & 0x80));
--        }
--        if ((code & SPITZ_MOD_FN) && !(s->modifiers & 8)) {
--            QUEUE_KEY(0x38 | (keycode & 0x80));
--        }
--        if ((code & SPITZ_MOD_FN) && (s->modifiers & 1)) {
--            QUEUE_KEY(0x2a | (~keycode & 0x80));
--        }
--        if ((code & SPITZ_MOD_FN) && (s->modifiers & 2)) {
--            QUEUE_KEY(0x36 | (~keycode & 0x80));
--        }
--#else
--        if (keycode & 0x80) {
--            if ((s->imodifiers & 1   ) && !(s->modifiers & 1))
--                QUEUE_KEY(0x2a | 0x80);
--            if ((s->imodifiers & 4   ) && !(s->modifiers & 4))
--                QUEUE_KEY(0x1d | 0x80);
--            if ((s->imodifiers & 8   ) && !(s->modifiers & 8))
--                QUEUE_KEY(0x38 | 0x80);
--            if ((s->imodifiers & 0x10) && (s->modifiers & 1))
--                QUEUE_KEY(0x2a);
--            if ((s->imodifiers & 0x20) && (s->modifiers & 2))
--                QUEUE_KEY(0x36);
--            s->imodifiers = 0;
+-    while (fptr < 64) {
+-        if (is16bit) {
+-            uint32_t v = omap_nand_read(&s->cs_file[cs], 0, 2);
+-            s->prefetch.fifo[fptr++] = v & 0xff;
+-            s->prefetch.fifo[fptr++] = (v >> 8) & 0xff;
 -        } else {
--            if ((code & SPITZ_MOD_SHIFT) &&
--                !((s->modifiers | s->imodifiers) & 1)) {
--                QUEUE_KEY(0x2a);
--                s->imodifiers |= 1;
--            }
--            if ((code & SPITZ_MOD_CTRL) &&
--                !((s->modifiers | s->imodifiers) & 4)) {
--                QUEUE_KEY(0x1d);
--                s->imodifiers |= 4;
--            }
--            if ((code & SPITZ_MOD_FN) &&
--                !((s->modifiers | s->imodifiers) & 8)) {
--                QUEUE_KEY(0x38);
--                s->imodifiers |= 8;
--            }
--            if ((code & SPITZ_MOD_FN) && (s->modifiers & 1) &&
--                            !(s->imodifiers & 0x10)) {
--                QUEUE_KEY(0x2a | 0x80);
--                s->imodifiers |= 0x10;
--            }
--            if ((code & SPITZ_MOD_FN) && (s->modifiers & 2) &&
--                            !(s->imodifiers & 0x20)) {
--                QUEUE_KEY(0x36 | 0x80);
--                s->imodifiers |= 0x20;
--            }
+-            s->prefetch.fifo[fptr++] = omap_nand_read(&s->cs_file[cs], 0, 1);
 -        }
--#endif
 -    }
--
--    QUEUE_KEY((code & 0x7f) | (keycode & 0x80));
--}
--
--static void spitz_keyboard_tick(void *opaque)
--{
--    SpitzKeyboardState *s = (SpitzKeyboardState *) opaque;
--
--    if (s->fifolen) {
--        spitz_keyboard_keydown(s, s->fifo[s->fifopos ++]);
--        s->fifolen --;
--        if (s->fifopos >= 16)
--            s->fifopos = 0;
+-    if (s->prefetch.startengine && (s->prefetch.count == 0)) {
+-        /* This was the final transfer: raise TERMINALCOUNTSTATUS */
+-        s->irqst |= 2;
+-        s->prefetch.startengine = 0;
 -    }
--
--    timer_mod(s->kbdtimer, qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) +
--                   NANOSECONDS_PER_SECOND / 32);
+-    /* If there are any bytes in the FIFO at this point then
+-     * we must raise a DMA request (either this is a final part
+-     * transfer, or we filled the FIFO in which case we certainly
+-     * have THRESHOLD bytes available)
+-     */
+-    if (s->prefetch.fifopointer != 0) {
+-        omap_gpmc_dma_update(s, 1);
+-    }
+-    omap_gpmc_int_update(s);
 -}
 -
--static void spitz_keyboard_pre_map(SpitzKeyboardState *s)
+-/* Access functions for a NAND-like device when the prefetch/postwrite
+- * engine is enabled -- all addresses in the region behave alike:
+- * data is read or written to the FIFO.
+- */
+-static uint64_t omap_gpmc_prefetch_read(void *opaque, hwaddr addr,
+-                                        unsigned size)
 -{
--    int i;
--    for (i = 0; i < 0x100; i ++)
--        s->pre_map[i] = i;
--    s->pre_map[0x02 | SPITZ_MOD_SHIFT] = 0x02 | SPITZ_MOD_SHIFT; /* exclam */
--    s->pre_map[0x28 | SPITZ_MOD_SHIFT] = 0x03 | SPITZ_MOD_SHIFT; /* quotedbl */
--    s->pre_map[0x04 | SPITZ_MOD_SHIFT] = 0x04 | SPITZ_MOD_SHIFT; /* # */
--    s->pre_map[0x05 | SPITZ_MOD_SHIFT] = 0x05 | SPITZ_MOD_SHIFT; /* dollar */
--    s->pre_map[0x06 | SPITZ_MOD_SHIFT] = 0x06 | SPITZ_MOD_SHIFT; /* percent */
--    s->pre_map[0x08 | SPITZ_MOD_SHIFT] = 0x07 | SPITZ_MOD_SHIFT; /* ampersand */
--    s->pre_map[0x28]                   = 0x08 | SPITZ_MOD_SHIFT; /* ' */
--    s->pre_map[0x0a | SPITZ_MOD_SHIFT] = 0x09 | SPITZ_MOD_SHIFT; /* ( */
--    s->pre_map[0x0b | SPITZ_MOD_SHIFT] = 0x0a | SPITZ_MOD_SHIFT; /* ) */
--    s->pre_map[0x29 | SPITZ_MOD_SHIFT] = 0x0b | SPITZ_MOD_SHIFT; /* tilde */
--    s->pre_map[0x03 | SPITZ_MOD_SHIFT] = 0x0c | SPITZ_MOD_SHIFT; /* at */
--    s->pre_map[0xd3]                   = 0x0e | SPITZ_MOD_FN;    /* Delete */
--    s->pre_map[0x3a]                   = 0x0f | SPITZ_MOD_FN;    /* Caps_Lock */
--    s->pre_map[0x07 | SPITZ_MOD_SHIFT] = 0x11 | SPITZ_MOD_FN;    /* ^ */
--    s->pre_map[0x0d]                   = 0x12 | SPITZ_MOD_FN;    /* equal */
--    s->pre_map[0x0d | SPITZ_MOD_SHIFT] = 0x13 | SPITZ_MOD_FN;    /* plus */
--    s->pre_map[0x1a]                   = 0x14 | SPITZ_MOD_FN;    /* [ */
--    s->pre_map[0x1b]                   = 0x15 | SPITZ_MOD_FN;    /* ] */
--    s->pre_map[0x1a | SPITZ_MOD_SHIFT] = 0x16 | SPITZ_MOD_FN;    /* { */
--    s->pre_map[0x1b | SPITZ_MOD_SHIFT] = 0x17 | SPITZ_MOD_FN;    /* } */
--    s->pre_map[0x27]                   = 0x22 | SPITZ_MOD_FN;    /* semicolon */
--    s->pre_map[0x27 | SPITZ_MOD_SHIFT] = 0x23 | SPITZ_MOD_FN;    /* colon */
--    s->pre_map[0x09 | SPITZ_MOD_SHIFT] = 0x24 | SPITZ_MOD_FN;    /* asterisk */
--    s->pre_map[0x2b]                   = 0x25 | SPITZ_MOD_FN;    /* backslash */
--    s->pre_map[0x2b | SPITZ_MOD_SHIFT] = 0x26 | SPITZ_MOD_FN;    /* bar */
--    s->pre_map[0x0c | SPITZ_MOD_SHIFT] = 0x30 | SPITZ_MOD_FN;    /* _ */
--    s->pre_map[0x33 | SPITZ_MOD_SHIFT] = 0x33 | SPITZ_MOD_FN;    /* less */
--    s->pre_map[0x35]                   = 0x33 | SPITZ_MOD_SHIFT; /* slash */
--    s->pre_map[0x34 | SPITZ_MOD_SHIFT] = 0x34 | SPITZ_MOD_FN;    /* greater */
--    s->pre_map[0x35 | SPITZ_MOD_SHIFT] = 0x34 | SPITZ_MOD_SHIFT; /* question */
--    s->pre_map[0x49]                   = 0x48 | SPITZ_MOD_FN;    /* Page_Up */
--    s->pre_map[0x51]                   = 0x50 | SPITZ_MOD_FN;    /* Page_Down */
--
--    s->modifiers = 0;
--    s->imodifiers = 0;
--    s->fifopos = 0;
--    s->fifolen = 0;
+-    struct omap_gpmc_s *s = opaque;
+-    uint32_t data;
+-    if (s->prefetch.config1 & 1) {
+-        /* The TRM doesn't define the behaviour if you read from the
+-         * FIFO when the prefetch engine is in write mode. We choose
+-         * to always return zero.
+-         */
+-        return 0;
+-    }
+-    /* Note that trying to read an empty fifo repeats the last byte */
+-    if (s->prefetch.fifopointer) {
+-        s->prefetch.fifopointer--;
+-    }
+-    data = s->prefetch.fifo[63 - s->prefetch.fifopointer];
+-    if (s->prefetch.fifopointer ==
+-        (64 - prefetch_threshold(s->prefetch.config1))) {
+-        /* We've drained THRESHOLD bytes now. So deassert the
+-         * DMA request, then refill the FIFO (which will probably
+-         * assert it again.)
+-         */
+-        omap_gpmc_dma_update(s, 0);
+-        fill_prefetch_fifo(s);
+-    }
+-    omap_gpmc_int_update(s);
+-    return data;
 -}
 -
--#undef SPITZ_MOD_SHIFT
--#undef SPITZ_MOD_CTRL
--#undef SPITZ_MOD_FN
--
--static int spitz_keyboard_post_load(void *opaque, int version_id)
+-static void omap_gpmc_prefetch_write(void *opaque, hwaddr addr,
+-                                     uint64_t value, unsigned size)
 -{
--    SpitzKeyboardState *s = (SpitzKeyboardState *) opaque;
--
--    /* Release all pressed keys */
--    memset(s->keyrow, 0, sizeof(s->keyrow));
--    spitz_keyboard_sense_update(s);
--    s->modifiers = 0;
--    s->imodifiers = 0;
--    s->fifopos = 0;
--    s->fifolen = 0;
--
--    return 0;
+-    struct omap_gpmc_s *s = opaque;
+-    int cs = prefetch_cs(s->prefetch.config1);
+-    if ((s->prefetch.config1 & 1) == 0) {
+-        /* The TRM doesn't define the behaviour of writing to the
+-         * FIFO when the prefetch engine is in read mode. We
+-         * choose to ignore the write.
+-         */
+-        return;
+-    }
+-    if (s->prefetch.count == 0) {
+-        /* The TRM doesn't define the behaviour of writing to the
+-         * FIFO if the transfer is complete. We choose to ignore.
+-         */
+-        return;
+-    }
+-    /* The only reason we do any data buffering in postwrite
+-     * mode is if we are talking to a 16 bit NAND device, in
+-     * which case we need to buffer the first byte of the
+-     * 16 bit word until the other byte arrives.
+-     */
+-    int is16bit = (((s->cs_file[cs].config[0] >> 12) & 3) != 0);
+-    if (is16bit) {
+-        /* fifopointer alternates between 64 (waiting for first
+-         * byte of word) and 63 (waiting for second byte)
+-         */
+-        if (s->prefetch.fifopointer == 64) {
+-            s->prefetch.fifo[0] = value;
+-            s->prefetch.fifopointer--;
+-        } else {
+-            value = (value << 8) | s->prefetch.fifo[0];
+-            omap_nand_write(&s->cs_file[cs], 0, value, 2);
+-            s->prefetch.count--;
+-            s->prefetch.fifopointer = 64;
+-        }
+-    } else {
+-        /* Just write the byte : fifopointer remains 64 at all times */
+-        omap_nand_write(&s->cs_file[cs], 0, value, 1);
+-        s->prefetch.count--;
+-    }
+-    if (s->prefetch.count == 0) {
+-        /* Final transfer: raise TERMINALCOUNTSTATUS */
+-        s->irqst |= 2;
+-        s->prefetch.startengine = 0;
+-    }
+-    omap_gpmc_int_update(s);
 -}
 -
--static void spitz_keyboard_register(PXA2xxState *cpu)
--{
--    int i;
--    DeviceState *dev;
--    SpitzKeyboardState *s;
--
--    dev = sysbus_create_simple(TYPE_SPITZ_KEYBOARD, -1, NULL);
--    s = SPITZ_KEYBOARD(dev);
--
--    for (i = 0; i < SPITZ_KEY_SENSE_NUM; i ++)
--        qdev_connect_gpio_out(dev, i, qdev_get_gpio_in(cpu->gpio, spitz_gpio_key_sense[i]));
--
--    for (i = 0; i < 5; i ++)
--        s->gpiomap[i] = qdev_get_gpio_in(cpu->gpio, spitz_gpiomap[i]);
--
--    if (!graphic_rotate)
--        s->gpiomap[4] = qemu_irq_invert(s->gpiomap[4]);
--
--    for (i = 0; i < 5; i++)
--        qemu_set_irq(s->gpiomap[i], 0);
--
--    for (i = 0; i < SPITZ_KEY_STROBE_NUM; i ++)
--        qdev_connect_gpio_out(cpu->gpio, spitz_gpio_key_strobe[i],
--                qdev_get_gpio_in(dev, i));
--
--    timer_mod(s->kbdtimer, qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL));
--
--    qemu_add_kbd_event_handler(spitz_keyboard_handler, s);
--}
--
--static void spitz_keyboard_init(Object *obj)
--{
--    DeviceState *dev = DEVICE(obj);
--    SpitzKeyboardState *s = SPITZ_KEYBOARD(obj);
--    int i, j;
--
--    for (i = 0; i < 0x80; i ++)
--        s->keymap[i] = -1;
--    for (i = 0; i < SPITZ_KEY_SENSE_NUM + 1; i ++)
--        for (j = 0; j < SPITZ_KEY_STROBE_NUM; j ++)
--            if (spitz_keymap[i][j] != -1)
--                s->keymap[spitz_keymap[i][j]] = (i << 4) | j;
--
--    spitz_keyboard_pre_map(s);
--
--    qdev_init_gpio_in(dev, spitz_keyboard_strobe, SPITZ_KEY_STROBE_NUM);
--    qdev_init_gpio_out(dev, s->sense, SPITZ_KEY_SENSE_NUM);
--}
--
--static void spitz_keyboard_realize(DeviceState *dev, Error **errp)
--{
--    SpitzKeyboardState *s = SPITZ_KEYBOARD(dev);
--    s->kbdtimer = timer_new_ns(QEMU_CLOCK_VIRTUAL, spitz_keyboard_tick, s);
--}
--
--/* LCD backlight controller */
--
--#define LCDTG_RESCTL    0x00
--#define LCDTG_PHACTRL   0x01
--#define LCDTG_DUTYCTRL  0x02
--#define LCDTG_POWERREG0         0x03
--#define LCDTG_POWERREG1         0x04
--#define LCDTG_GPOR3     0x05
--#define LCDTG_PICTRL    0x06
--#define LCDTG_POLCTRL   0x07
--
--#define TYPE_SPITZ_LCDTG "spitz-lcdtg"
--OBJECT_DECLARE_SIMPLE_TYPE(SpitzLCDTG, SPITZ_LCDTG)
--
--struct SpitzLCDTG {
--    SSIPeripheral ssidev;
--    uint32_t bl_intensity;
--    uint32_t bl_power;
+-static const MemoryRegionOps omap_prefetch_ops = {
+-    .read = omap_gpmc_prefetch_read,
+-    .write = omap_gpmc_prefetch_write,
+-    .endianness = DEVICE_NATIVE_ENDIAN,
+-    .impl.min_access_size = 1,
+-    .impl.max_access_size = 1,
 -};
 -
--static void spitz_bl_update(SpitzLCDTG *s)
+-static MemoryRegion *omap_gpmc_cs_memregion(struct omap_gpmc_s *s, int cs)
 -{
--    if (s->bl_power && s->bl_intensity)
--        zaurus_printf("LCD Backlight now at %u/63\n", s->bl_intensity);
--    else
--        zaurus_printf("LCD Backlight now off\n");
+-    /* Return the MemoryRegion* to map/unmap for this chipselect */
+-    struct omap_gpmc_cs_file_s *f = &s->cs_file[cs];
+-    if (omap_gpmc_devtype(f) == OMAP_GPMC_NOR) {
+-        return f->iomem;
+-    }
+-    if ((s->prefetch.config1 & 0x80) &&
+-        (prefetch_cs(s->prefetch.config1) == cs)) {
+-        /* The prefetch engine is enabled for this CS: map the FIFO */
+-        return &s->prefetch.iomem;
+-    }
+-    return &f->nandiomem;
 -}
 -
--static inline void spitz_bl_bit5(void *opaque, int line, int level)
+-static void omap_gpmc_cs_map(struct omap_gpmc_s *s, int cs)
 -{
--    SpitzLCDTG *s = opaque;
--    int prev = s->bl_intensity;
+-    struct omap_gpmc_cs_file_s *f = &s->cs_file[cs];
+-    uint32_t mask = (f->config[6] >> 8) & 0xf;
+-    uint32_t base = f->config[6] & 0x3f;
+-    uint32_t size;
 -
--    if (level)
--        s->bl_intensity &= ~0x20;
--    else
--        s->bl_intensity |= 0x20;
+-    if (!f->iomem && !f->dev) {
+-        return;
+-    }
 -
--    if (s->bl_power && prev != s->bl_intensity)
--        spitz_bl_update(s);
+-    if (!(f->config[6] & (1 << 6))) {
+-        /* Do nothing unless CSVALID */
+-        return;
+-    }
+-
+-    /* TODO: check for overlapping regions and report access errors */
+-    if (mask != 0x8 && mask != 0xc && mask != 0xe && mask != 0xf
+-         && !(s->accept_256 && !mask)) {
+-        fprintf(stderr, "%s: invalid chip-select mask address (0x%x)\n",
+-                 __func__, mask);
+-    }
+-
+-    base <<= 24;
+-    size = (0x0fffffff & ~(mask << 24)) + 1;
+-    /* TODO: rather than setting the size of the mapping (which should be
+-     * constant), the mask should cause wrapping of the address space, so
+-     * that the same memory becomes accessible at every <i>size</i> bytes
+-     * starting from <i>base</i>.  */
+-    memory_region_init(&f->container, NULL, "omap-gpmc-file", size);
+-    memory_region_add_subregion(&f->container, 0,
+-                                omap_gpmc_cs_memregion(s, cs));
+-    memory_region_add_subregion(get_system_memory(), base,
+-                                &f->container);
 -}
 -
--static inline void spitz_bl_power(void *opaque, int line, int level)
+-static void omap_gpmc_cs_unmap(struct omap_gpmc_s *s, int cs)
 -{
--    SpitzLCDTG *s = opaque;
--    s->bl_power = !!level;
--    spitz_bl_update(s);
+-    struct omap_gpmc_cs_file_s *f = &s->cs_file[cs];
+-    if (!(f->config[6] & (1 << 6))) {
+-        /* Do nothing unless CSVALID */
+-        return;
+-    }
+-    if (!f->iomem && !f->dev) {
+-        return;
+-    }
+-    memory_region_del_subregion(get_system_memory(), &f->container);
+-    memory_region_del_subregion(&f->container, omap_gpmc_cs_memregion(s, cs));
+-    object_unparent(OBJECT(&f->container));
 -}
 -
--static uint32_t spitz_lcdtg_transfer(SSIPeripheral *dev, uint32_t value)
+-void omap_gpmc_reset(struct omap_gpmc_s *s)
 -{
--    SpitzLCDTG *s = SPITZ_LCDTG(dev);
--    int addr;
--    addr = value >> 5;
--    value &= 0x1f;
+-    int i;
+-
+-    s->sysconfig = 0;
+-    s->irqst = 0;
+-    s->irqen = 0;
+-    omap_gpmc_int_update(s);
+-    for (i = 0; i < 8; i++) {
+-        /* This has to happen before we change any of the config
+-         * used to determine which memory regions are mapped or unmapped.
+-         */
+-        omap_gpmc_cs_unmap(s, i);
+-    }
+-    s->timeout = 0;
+-    s->config = 0xa00;
+-    s->prefetch.config1 = 0x00004000;
+-    s->prefetch.transfercount = 0x00000000;
+-    s->prefetch.startengine = 0;
+-    s->prefetch.fifopointer = 0;
+-    s->prefetch.count = 0;
+-    for (i = 0; i < 8; i ++) {
+-        s->cs_file[i].config[1] = 0x101001;
+-        s->cs_file[i].config[2] = 0x020201;
+-        s->cs_file[i].config[3] = 0x10031003;
+-        s->cs_file[i].config[4] = 0x10f1111;
+-        s->cs_file[i].config[5] = 0;
+-        s->cs_file[i].config[6] = 0xf00;
+-        /* In theory we could probe attached devices for some CFG1
+-         * bits here, but we just retain them across resets as they
+-         * were set initially by omap_gpmc_attach().
+-         */
+-        if (i == 0) {
+-            s->cs_file[i].config[0] &= 0x00433e00;
+-            s->cs_file[i].config[6] |= 1 << 6; /* CSVALID */
+-            omap_gpmc_cs_map(s, i);
+-        } else {
+-            s->cs_file[i].config[0] &= 0x00403c00;
+-        }
+-    }
+-    s->ecc_cs = 0;
+-    s->ecc_ptr = 0;
+-    s->ecc_cfg = 0x3fcff000;
+-    for (i = 0; i < 9; i ++)
+-        ecc_reset(&s->ecc[i]);
+-}
+-
+-static int gpmc_wordaccess_only(hwaddr addr)
+-{
+-    /* Return true if the register offset is to a register that
+-     * only permits word width accesses.
+-     * Non-word accesses are only OK for GPMC_NAND_DATA/ADDRESS/COMMAND
+-     * for any chipselect.
+-     */
+-    if (addr >= 0x60 && addr <= 0x1d4) {
+-        int cs = (addr - 0x60) / 0x30;
+-        addr -= cs * 0x30;
+-        if (addr >= 0x7c && addr < 0x88) {
+-            /* GPMC_NAND_COMMAND, GPMC_NAND_ADDRESS, GPMC_NAND_DATA */
+-            return 0;
+-        }
+-    }
+-    return 1;
+-}
+-
+-static uint64_t omap_gpmc_read(void *opaque, hwaddr addr,
+-                               unsigned size)
+-{
+-    struct omap_gpmc_s *s = opaque;
+-    int cs;
+-    struct omap_gpmc_cs_file_s *f;
+-
+-    if (size != 4 && gpmc_wordaccess_only(addr)) {
+-        return omap_badwidth_read32(opaque, addr);
+-    }
 -
 -    switch (addr) {
--    case LCDTG_RESCTL:
--        if (value)
--            zaurus_printf("LCD in QVGA mode\n");
--        else
--            zaurus_printf("LCD in VGA mode\n");
--        break;
+-    case 0x000:	/* GPMC_REVISION */
+-        return s->revision;
 -
--    case LCDTG_DUTYCTRL:
--        s->bl_intensity &= ~0x1f;
--        s->bl_intensity |= value;
--        if (s->bl_power)
--            spitz_bl_update(s);
--        break;
+-    case 0x010:	/* GPMC_SYSCONFIG */
+-        return s->sysconfig;
 -
--    case LCDTG_POWERREG0:
--        /* Set common voltage to M62332FP */
--        break;
--    }
--    return 0;
--}
+-    case 0x014:	/* GPMC_SYSSTATUS */
+-        return 1;						/* RESETDONE */
 -
--static void spitz_lcdtg_realize(SSIPeripheral *ssi, Error **errp)
--{
--    SpitzLCDTG *s = SPITZ_LCDTG(ssi);
--    DeviceState *dev = DEVICE(s);
+-    case 0x018:	/* GPMC_IRQSTATUS */
+-        return s->irqst;
 -
--    s->bl_power = 0;
--    s->bl_intensity = 0x20;
+-    case 0x01c:	/* GPMC_IRQENABLE */
+-        return s->irqen;
 -
--    qdev_init_gpio_in_named(dev, spitz_bl_bit5, "bl_bit5", 1);
--    qdev_init_gpio_in_named(dev, spitz_bl_power, "bl_power", 1);
--}
+-    case 0x040:	/* GPMC_TIMEOUT_CONTROL */
+-        return s->timeout;
 -
--/* SSP devices */
+-    case 0x044:	/* GPMC_ERR_ADDRESS */
+-    case 0x048:	/* GPMC_ERR_TYPE */
+-        return 0;
 -
--#define CORGI_SSP_PORT          2
+-    case 0x050:	/* GPMC_CONFIG */
+-        return s->config;
 -
--#define SPITZ_GPIO_LCDCON_CS    53
--#define SPITZ_GPIO_ADS7846_CS   14
--#define SPITZ_GPIO_MAX1111_CS   20
--#define SPITZ_GPIO_TP_INT       11
+-    case 0x054:	/* GPMC_STATUS */
+-        return 0x001;
 -
--#define TYPE_CORGI_SSP "corgi-ssp"
--OBJECT_DECLARE_SIMPLE_TYPE(CorgiSSPState, CORGI_SSP)
--
--/* "Demux" the signal based on current chipselect */
--struct CorgiSSPState {
--    SSIPeripheral ssidev;
--    SSIBus *bus[3];
--    uint32_t enable[3];
--};
--
--static uint32_t corgi_ssp_transfer(SSIPeripheral *dev, uint32_t value)
--{
--    CorgiSSPState *s = CORGI_SSP(dev);
--    int i;
--
--    for (i = 0; i < 3; i++) {
--        if (s->enable[i]) {
--            return ssi_transfer(s->bus[i], value);
+-    case 0x060 ... 0x1d4:
+-        cs = (addr - 0x060) / 0x30;
+-        addr -= cs * 0x30;
+-        f = s->cs_file + cs;
+-        switch (addr) {
+-        case 0x60:      /* GPMC_CONFIG1 */
+-            return f->config[0];
+-        case 0x64:      /* GPMC_CONFIG2 */
+-            return f->config[1];
+-        case 0x68:      /* GPMC_CONFIG3 */
+-            return f->config[2];
+-        case 0x6c:      /* GPMC_CONFIG4 */
+-            return f->config[3];
+-        case 0x70:      /* GPMC_CONFIG5 */
+-            return f->config[4];
+-        case 0x74:      /* GPMC_CONFIG6 */
+-            return f->config[5];
+-        case 0x78:      /* GPMC_CONFIG7 */
+-            return f->config[6];
+-        case 0x84 ... 0x87: /* GPMC_NAND_DATA */
+-            if (omap_gpmc_devtype(f) == OMAP_GPMC_NAND) {
+-                return omap_nand_read(f, 0, size);
+-            }
+-            return 0;
 -        }
+-        break;
+-
+-    case 0x1e0:	/* GPMC_PREFETCH_CONFIG1 */
+-        return s->prefetch.config1;
+-    case 0x1e4:	/* GPMC_PREFETCH_CONFIG2 */
+-        return s->prefetch.transfercount;
+-    case 0x1ec:	/* GPMC_PREFETCH_CONTROL */
+-        return s->prefetch.startengine;
+-    case 0x1f0:	/* GPMC_PREFETCH_STATUS */
+-        /* NB: The OMAP3 TRM is inconsistent about whether the GPMC
+-         * FIFOTHRESHOLDSTATUS bit should be set when
+-         * FIFOPOINTER > FIFOTHRESHOLD or when it is >= FIFOTHRESHOLD.
+-         * Apparently the underlying functional spec from which the TRM was
+-         * created states that the behaviour is ">=", and this also
+-         * makes more conceptual sense.
+-         */
+-        return (s->prefetch.fifopointer << 24) |
+-                ((s->prefetch.fifopointer >=
+-                  ((s->prefetch.config1 >> 8) & 0x7f) ? 1 : 0) << 16) |
+-                s->prefetch.count;
+-
+-    case 0x1f4:	/* GPMC_ECC_CONFIG */
+-        return s->ecc_cs;
+-    case 0x1f8:	/* GPMC_ECC_CONTROL */
+-        return s->ecc_ptr;
+-    case 0x1fc:	/* GPMC_ECC_SIZE_CONFIG */
+-        return s->ecc_cfg;
+-    case 0x200 ... 0x220:	/* GPMC_ECC_RESULT */
+-        cs = (addr & 0x1f) >> 2;
+-        /* TODO: check correctness */
+-        return
+-                ((s->ecc[cs].cp    &  0x07) <<  0) |
+-                ((s->ecc[cs].cp    &  0x38) << 13) |
+-                ((s->ecc[cs].lp[0] & 0x1ff) <<  3) |
+-                ((s->ecc[cs].lp[1] & 0x1ff) << 19);
+-
+-    case 0x230:	/* GPMC_TESTMODE_CTRL */
+-        return 0;
+-    case 0x234:	/* GPMC_PSA_LSB */
+-    case 0x238:	/* GPMC_PSA_MSB */
+-        return 0x00000000;
 -    }
+-
+-    OMAP_BAD_REG(addr);
 -    return 0;
 -}
 -
--static void corgi_ssp_gpio_cs(void *opaque, int line, int level)
+-static void omap_gpmc_write(void *opaque, hwaddr addr,
+-                            uint64_t value, unsigned size)
 -{
--    CorgiSSPState *s = (CorgiSSPState *)opaque;
--    assert(line >= 0 && line < 3);
--    s->enable[line] = !level;
--}
+-    struct omap_gpmc_s *s = opaque;
+-    int cs;
+-    struct omap_gpmc_cs_file_s *f;
 -
--#define MAX1111_BATT_VOLT       1
--#define MAX1111_BATT_TEMP       2
--#define MAX1111_ACIN_VOLT       3
--
--#define SPITZ_BATTERY_TEMP      0xe0    /* About 2.9V */
--#define SPITZ_BATTERY_VOLT      0xd0    /* About 4.0V */
--#define SPITZ_CHARGEON_ACIN     0x80    /* About 5.0V */
--
--static void corgi_ssp_realize(SSIPeripheral *d, Error **errp)
--{
--    DeviceState *dev = DEVICE(d);
--    CorgiSSPState *s = CORGI_SSP(d);
--
--    qdev_init_gpio_in(dev, corgi_ssp_gpio_cs, 3);
--    s->bus[0] = ssi_create_bus(dev, "ssi0");
--    s->bus[1] = ssi_create_bus(dev, "ssi1");
--    s->bus[2] = ssi_create_bus(dev, "ssi2");
--}
--
--static void spitz_ssp_attach(SpitzMachineState *sms)
--{
--    void *bus;
--
--    sms->mux = ssi_create_peripheral(sms->mpu->ssp[CORGI_SSP_PORT - 1],
--                                     TYPE_CORGI_SSP);
--
--    bus = qdev_get_child_bus(sms->mux, "ssi0");
--    sms->lcdtg = ssi_create_peripheral(bus, TYPE_SPITZ_LCDTG);
--
--    bus = qdev_get_child_bus(sms->mux, "ssi1");
--    sms->ads7846 = ssi_create_peripheral(bus, "ads7846");
--    qdev_connect_gpio_out(sms->ads7846, 0,
--                          qdev_get_gpio_in(sms->mpu->gpio, SPITZ_GPIO_TP_INT));
--
--    bus = qdev_get_child_bus(sms->mux, "ssi2");
--    sms->max1111 = qdev_new(TYPE_MAX_1111);
--    qdev_prop_set_uint8(sms->max1111, "input1" /* BATT_VOLT */,
--                        SPITZ_BATTERY_VOLT);
--    qdev_prop_set_uint8(sms->max1111, "input2" /* BATT_TEMP */, 0);
--    qdev_prop_set_uint8(sms->max1111, "input3" /* ACIN_VOLT */,
--                        SPITZ_CHARGEON_ACIN);
--    ssi_realize_and_unref(sms->max1111, bus, &error_fatal);
--
--    qdev_connect_gpio_out(sms->mpu->gpio, SPITZ_GPIO_LCDCON_CS,
--                        qdev_get_gpio_in(sms->mux, 0));
--    qdev_connect_gpio_out(sms->mpu->gpio, SPITZ_GPIO_ADS7846_CS,
--                        qdev_get_gpio_in(sms->mux, 1));
--    qdev_connect_gpio_out(sms->mpu->gpio, SPITZ_GPIO_MAX1111_CS,
--                        qdev_get_gpio_in(sms->mux, 2));
--}
--
--/* CF Microdrive */
--
--static void spitz_microdrive_attach(PXA2xxState *cpu, int slot)
--{
--    PCMCIACardState *md;
--    DriveInfo *dinfo;
--
--    dinfo = drive_get(IF_IDE, 0, 0);
--    if (!dinfo || dinfo->media_cd)
+-    if (size != 4 && gpmc_wordaccess_only(addr)) {
+-        omap_badwidth_write32(opaque, addr, value);
 -        return;
--    md = dscm1xxxx_init(dinfo);
--    pxa2xx_pcmcia_attach(cpu->pcmcia[slot], md);
--}
--
--/* Wm8750 and Max7310 on I2C */
--
--#define AKITA_MAX_ADDR  0x18
--#define SPITZ_WM_ADDRL  0x1b
--#define SPITZ_WM_ADDRH  0x1a
--
--#define SPITZ_GPIO_WM   5
--
--static void spitz_wm8750_addr(void *opaque, int line, int level)
--{
--    I2CSlave *wm = (I2CSlave *) opaque;
--    if (level)
--        i2c_slave_set_address(wm, SPITZ_WM_ADDRH);
--    else
--        i2c_slave_set_address(wm, SPITZ_WM_ADDRL);
--}
--
--static void spitz_i2c_setup(MachineState *machine, PXA2xxState *cpu)
--{
--    /* Attach the CPU on one end of our I2C bus.  */
--    I2CBus *bus = pxa2xx_i2c_bus(cpu->i2c[0]);
--
--    /* Attach a WM8750 to the bus */
--    I2CSlave *i2c_dev = i2c_slave_new(TYPE_WM8750, 0);
--    DeviceState *wm = DEVICE(i2c_dev);
--
--    if (machine->audiodev) {
--        qdev_prop_set_string(wm, "audiodev", machine->audiodev);
--    }
--    i2c_slave_realize_and_unref(i2c_dev, bus, &error_abort);
--
--    spitz_wm8750_addr(wm, 0, 0);
--    qdev_connect_gpio_out(cpu->gpio, SPITZ_GPIO_WM,
--                          qemu_allocate_irq(spitz_wm8750_addr, wm, 0));
--    /* .. and to the sound interface.  */
--    cpu->i2s->opaque = wm;
--    cpu->i2s->codec_out = wm8750_dac_dat;
--    cpu->i2s->codec_in = wm8750_adc_dat;
--    wm8750_data_req_set(wm, cpu->i2s->data_req, cpu->i2s);
--}
--
--static void spitz_akita_i2c_setup(PXA2xxState *cpu)
--{
--    /* Attach a Max7310 to Akita I2C bus.  */
--    i2c_slave_create_simple(pxa2xx_i2c_bus(cpu->i2c[0]), "max7310",
--                     AKITA_MAX_ADDR);
--}
--
--/* Other peripherals */
--
--/*
-- * Encapsulation of some miscellaneous GPIO line behaviour for the Spitz boards.
-- *
-- * QEMU interface:
-- *  + named GPIO inputs "green-led", "orange-led", "charging", "discharging":
-- *    these currently just print messages that the line has been signalled
-- *  + named GPIO input "adc-temp-on": set to cause the battery-temperature
-- *    value to be passed to the max111x ADC
-- *  + named GPIO output "adc-temp": the ADC value, to be wired up to the max111x
-- */
--#define TYPE_SPITZ_MISC_GPIO "spitz-misc-gpio"
--OBJECT_DECLARE_SIMPLE_TYPE(SpitzMiscGPIOState, SPITZ_MISC_GPIO)
--
--struct SpitzMiscGPIOState {
--    SysBusDevice parent_obj;
--
--    qemu_irq adc_value;
--};
--
--static void spitz_misc_charging(void *opaque, int n, int level)
--{
--    zaurus_printf("Charging %s.\n", level ? "off" : "on");
--}
--
--static void spitz_misc_discharging(void *opaque, int n, int level)
--{
--    zaurus_printf("Discharging %s.\n", level ? "off" : "on");
--}
--
--static void spitz_misc_green_led(void *opaque, int n, int level)
--{
--    zaurus_printf("Green LED %s.\n", level ? "off" : "on");
--}
--
--static void spitz_misc_orange_led(void *opaque, int n, int level)
--{
--    zaurus_printf("Orange LED %s.\n", level ? "off" : "on");
--}
--
--static void spitz_misc_adc_temp(void *opaque, int n, int level)
--{
--    SpitzMiscGPIOState *s = SPITZ_MISC_GPIO(opaque);
--    int batt_temp = level ? SPITZ_BATTERY_TEMP : 0;
--
--    qemu_set_irq(s->adc_value, batt_temp);
--}
--
--static void spitz_misc_gpio_init(Object *obj)
--{
--    SpitzMiscGPIOState *s = SPITZ_MISC_GPIO(obj);
--    DeviceState *dev = DEVICE(obj);
--
--    qdev_init_gpio_in_named(dev, spitz_misc_charging, "charging", 1);
--    qdev_init_gpio_in_named(dev, spitz_misc_discharging, "discharging", 1);
--    qdev_init_gpio_in_named(dev, spitz_misc_green_led, "green-led", 1);
--    qdev_init_gpio_in_named(dev, spitz_misc_orange_led, "orange-led", 1);
--    qdev_init_gpio_in_named(dev, spitz_misc_adc_temp, "adc-temp-on", 1);
--
--    qdev_init_gpio_out_named(dev, &s->adc_value, "adc-temp", 1);
--}
--
--#define SPITZ_SCP_LED_GREEN             1
--#define SPITZ_SCP_JK_B                  2
--#define SPITZ_SCP_CHRG_ON               3
--#define SPITZ_SCP_MUTE_L                4
--#define SPITZ_SCP_MUTE_R                5
--#define SPITZ_SCP_CF_POWER              6
--#define SPITZ_SCP_LED_ORANGE            7
--#define SPITZ_SCP_JK_A                  8
--#define SPITZ_SCP_ADC_TEMP_ON           9
--#define SPITZ_SCP2_IR_ON                1
--#define SPITZ_SCP2_AKIN_PULLUP          2
--#define SPITZ_SCP2_BACKLIGHT_CONT       7
--#define SPITZ_SCP2_BACKLIGHT_ON                 8
--#define SPITZ_SCP2_MIC_BIAS             9
--
--static void spitz_scoop_gpio_setup(SpitzMachineState *sms)
--{
--    DeviceState *miscdev = sysbus_create_simple(TYPE_SPITZ_MISC_GPIO, -1, NULL);
--
--    sms->misc_gpio = miscdev;
--
--    qdev_connect_gpio_out(sms->scp0, SPITZ_SCP_CHRG_ON,
--                          qdev_get_gpio_in_named(miscdev, "charging", 0));
--    qdev_connect_gpio_out(sms->scp0, SPITZ_SCP_JK_B,
--                          qdev_get_gpio_in_named(miscdev, "discharging", 0));
--    qdev_connect_gpio_out(sms->scp0, SPITZ_SCP_LED_GREEN,
--                          qdev_get_gpio_in_named(miscdev, "green-led", 0));
--    qdev_connect_gpio_out(sms->scp0, SPITZ_SCP_LED_ORANGE,
--                          qdev_get_gpio_in_named(miscdev, "orange-led", 0));
--    qdev_connect_gpio_out(sms->scp0, SPITZ_SCP_ADC_TEMP_ON,
--                          qdev_get_gpio_in_named(miscdev, "adc-temp-on", 0));
--    qdev_connect_gpio_out_named(miscdev, "adc-temp", 0,
--                                qdev_get_gpio_in(sms->max1111, MAX1111_BATT_TEMP));
--
--    if (sms->scp1) {
--        qdev_connect_gpio_out(sms->scp1, SPITZ_SCP2_BACKLIGHT_CONT,
--                              qdev_get_gpio_in_named(sms->lcdtg, "bl_bit5", 0));
--        qdev_connect_gpio_out(sms->scp1, SPITZ_SCP2_BACKLIGHT_ON,
--                              qdev_get_gpio_in_named(sms->lcdtg, "bl_power", 0));
--    }
--}
--
--#define SPITZ_GPIO_HSYNC                22
--#define SPITZ_GPIO_SD_DETECT            9
--#define SPITZ_GPIO_SD_WP                81
--#define SPITZ_GPIO_ON_RESET             89
--#define SPITZ_GPIO_BAT_COVER            90
--#define SPITZ_GPIO_CF1_IRQ              105
--#define SPITZ_GPIO_CF1_CD               94
--#define SPITZ_GPIO_CF2_IRQ              106
--#define SPITZ_GPIO_CF2_CD               93
--
--static int spitz_hsync;
--
--static void spitz_lcd_hsync_handler(void *opaque, int line, int level)
--{
--    PXA2xxState *cpu = (PXA2xxState *) opaque;
--    qemu_set_irq(qdev_get_gpio_in(cpu->gpio, SPITZ_GPIO_HSYNC), spitz_hsync);
--    spitz_hsync ^= 1;
--}
--
--static void spitz_reset(void *opaque, int line, int level)
--{
--    if (level) {
--        qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
--    }
--}
--
--static void spitz_gpio_setup(PXA2xxState *cpu, int slots)
--{
--    qemu_irq lcd_hsync;
--    qemu_irq reset;
--
--    /*
--     * Bad hack: We toggle the LCD hsync GPIO on every GPIO status
--     * read to satisfy broken guests that poll-wait for hsync.
--     * Simulating a real hsync event would be less practical and
--     * wouldn't guarantee that a guest ever exits the loop.
--     */
--    spitz_hsync = 0;
--    lcd_hsync = qemu_allocate_irq(spitz_lcd_hsync_handler, cpu, 0);
--    pxa2xx_gpio_read_notifier(cpu->gpio, lcd_hsync);
--    pxa2xx_lcd_vsync_notifier(cpu->lcd, lcd_hsync);
--
--    /* MMC/SD host */
--    pxa2xx_mmci_handlers(cpu->mmc,
--                    qdev_get_gpio_in(cpu->gpio, SPITZ_GPIO_SD_WP),
--                    qdev_get_gpio_in(cpu->gpio, SPITZ_GPIO_SD_DETECT));
--
--    /* Battery lock always closed */
--    qemu_irq_raise(qdev_get_gpio_in(cpu->gpio, SPITZ_GPIO_BAT_COVER));
--
--    /* Handle reset */
--    reset = qemu_allocate_irq(spitz_reset, cpu, 0);
--    qdev_connect_gpio_out(cpu->gpio, SPITZ_GPIO_ON_RESET, reset);
--
--    /* PCMCIA signals: card's IRQ and Card-Detect */
--    if (slots >= 1)
--        pxa2xx_pcmcia_set_irq_cb(cpu->pcmcia[0],
--                        qdev_get_gpio_in(cpu->gpio, SPITZ_GPIO_CF1_IRQ),
--                        qdev_get_gpio_in(cpu->gpio, SPITZ_GPIO_CF1_CD));
--    if (slots >= 2)
--        pxa2xx_pcmcia_set_irq_cb(cpu->pcmcia[1],
--                        qdev_get_gpio_in(cpu->gpio, SPITZ_GPIO_CF2_IRQ),
--                        qdev_get_gpio_in(cpu->gpio, SPITZ_GPIO_CF2_CD));
--}
--
--/* Board init.  */
--#define SPITZ_RAM       0x04000000
--#define SPITZ_ROM       0x00800000
--
--static struct arm_boot_info spitz_binfo = {
--    .loader_start = PXA2XX_SDRAM_BASE,
--    .ram_size = 0x04000000,
--};
--
--static void spitz_common_init(MachineState *machine)
--{
--    SpitzMachineClass *smc = SPITZ_MACHINE_GET_CLASS(machine);
--    SpitzMachineState *sms = SPITZ_MACHINE(machine);
--    enum spitz_model_e model = smc->model;
--    PXA2xxState *mpu;
--    MemoryRegion *rom = g_new(MemoryRegion, 1);
--
--    /* Setup CPU & memory */
--    mpu = pxa270_init(spitz_binfo.ram_size, machine->cpu_type);
--    sms->mpu = mpu;
--
--    sl_flash_register(mpu, (model == spitz) ? FLASH_128M : FLASH_1024M);
--
--    memory_region_init_rom(rom, NULL, "spitz.rom", SPITZ_ROM, &error_fatal);
--    memory_region_add_subregion(get_system_memory(), 0, rom);
--
--    /* Setup peripherals */
--    spitz_keyboard_register(mpu);
--
--    spitz_ssp_attach(sms);
--
--    sms->scp0 = sysbus_create_simple("scoop", 0x10800000, NULL);
--    if (model != akita) {
--        sms->scp1 = sysbus_create_simple("scoop", 0x08800040, NULL);
--    } else {
--        sms->scp1 = NULL;
 -    }
 -
--    spitz_scoop_gpio_setup(sms);
--
--    spitz_gpio_setup(mpu, (model == akita) ? 1 : 2);
--
--    spitz_i2c_setup(machine, mpu);
--
--    if (model == akita)
--        spitz_akita_i2c_setup(mpu);
--
--    if (model == terrier)
--        /* A 6.0 GB microdrive is permanently sitting in CF slot 1.  */
--        spitz_microdrive_attach(mpu, 1);
--    else if (model != akita)
--        /* A 4.0 GB microdrive is permanently sitting in CF slot 0.  */
--        spitz_microdrive_attach(mpu, 0);
--
--    spitz_binfo.board_id = smc->arm_id;
--    arm_load_kernel(mpu->cpu, machine, &spitz_binfo);
--    sl_bootparam_write(SL_PXA_PARAM_BASE);
--}
--
--static void spitz_common_class_init(ObjectClass *oc, void *data)
--{
--    MachineClass *mc = MACHINE_CLASS(oc);
--
--    mc->block_default_type = IF_IDE;
--    mc->ignore_memory_transaction_failures = true;
--    mc->init = spitz_common_init;
--    mc->deprecation_reason = "machine is old and unmaintained";
--
--    machine_add_audiodev_property(mc);
--}
--
--static const TypeInfo spitz_common_info = {
--    .name = TYPE_SPITZ_MACHINE,
--    .parent = TYPE_MACHINE,
--    .abstract = true,
--    .instance_size = sizeof(SpitzMachineState),
--    .class_size = sizeof(SpitzMachineClass),
--    .class_init = spitz_common_class_init,
--};
--
--static void akitapda_class_init(ObjectClass *oc, void *data)
--{
--    MachineClass *mc = MACHINE_CLASS(oc);
--    SpitzMachineClass *smc = SPITZ_MACHINE_CLASS(oc);
--
--    mc->desc = "Sharp SL-C1000 (Akita) PDA (PXA270)";
--    mc->default_cpu_type = ARM_CPU_TYPE_NAME("pxa270-c0");
--    smc->model = akita;
--    smc->arm_id = 0x2e8;
--}
--
--static const TypeInfo akitapda_type = {
--    .name = MACHINE_TYPE_NAME("akita"),
--    .parent = TYPE_SPITZ_MACHINE,
--    .class_init = akitapda_class_init,
--};
--
--static void spitzpda_class_init(ObjectClass *oc, void *data)
--{
--    MachineClass *mc = MACHINE_CLASS(oc);
--    SpitzMachineClass *smc = SPITZ_MACHINE_CLASS(oc);
--
--    mc->desc = "Sharp SL-C3000 (Spitz) PDA (PXA270)";
--    mc->default_cpu_type = ARM_CPU_TYPE_NAME("pxa270-c0");
--    smc->model = spitz;
--    smc->arm_id = 0x2c9;
--}
--
--static const TypeInfo spitzpda_type = {
--    .name = MACHINE_TYPE_NAME("spitz"),
--    .parent = TYPE_SPITZ_MACHINE,
--    .class_init = spitzpda_class_init,
--};
--
--static void borzoipda_class_init(ObjectClass *oc, void *data)
--{
--    MachineClass *mc = MACHINE_CLASS(oc);
--    SpitzMachineClass *smc = SPITZ_MACHINE_CLASS(oc);
--
--    mc->desc = "Sharp SL-C3100 (Borzoi) PDA (PXA270)";
--    mc->default_cpu_type = ARM_CPU_TYPE_NAME("pxa270-c0");
--    smc->model = borzoi;
--    smc->arm_id = 0x33f;
--}
--
--static const TypeInfo borzoipda_type = {
--    .name = MACHINE_TYPE_NAME("borzoi"),
--    .parent = TYPE_SPITZ_MACHINE,
--    .class_init = borzoipda_class_init,
--};
--
--static void terrierpda_class_init(ObjectClass *oc, void *data)
--{
--    MachineClass *mc = MACHINE_CLASS(oc);
--    SpitzMachineClass *smc = SPITZ_MACHINE_CLASS(oc);
--
--    mc->desc = "Sharp SL-C3200 (Terrier) PDA (PXA270)";
--    mc->default_cpu_type = ARM_CPU_TYPE_NAME("pxa270-c5");
--    smc->model = terrier;
--    smc->arm_id = 0x33f;
--}
--
--static const TypeInfo terrierpda_type = {
--    .name = MACHINE_TYPE_NAME("terrier"),
--    .parent = TYPE_SPITZ_MACHINE,
--    .class_init = terrierpda_class_init,
--};
--
--static void spitz_machine_init(void)
--{
--    type_register_static(&spitz_common_info);
--    type_register_static(&akitapda_type);
--    type_register_static(&spitzpda_type);
--    type_register_static(&borzoipda_type);
--    type_register_static(&terrierpda_type);
--}
--
--type_init(spitz_machine_init)
--
--static bool is_version_0(void *opaque, int version_id)
--{
--    return version_id == 0;
--}
--
--static const VMStateDescription vmstate_sl_nand_info = {
--    .name = "sl-nand",
--    .version_id = 0,
--    .minimum_version_id = 0,
--    .fields = (const VMStateField[]) {
--        VMSTATE_UINT8(ctl, SLNANDState),
--        VMSTATE_STRUCT(ecc, SLNANDState, 0, vmstate_ecc_state, ECCState),
--        VMSTATE_END_OF_LIST(),
--    },
--};
--
--static Property sl_nand_properties[] = {
--    DEFINE_PROP_UINT8("manf_id", SLNANDState, manf_id, NAND_MFR_SAMSUNG),
--    DEFINE_PROP_UINT8("chip_id", SLNANDState, chip_id, 0xf1),
--    DEFINE_PROP_END_OF_LIST(),
--};
--
--static void sl_nand_class_init(ObjectClass *klass, void *data)
--{
--    DeviceClass *dc = DEVICE_CLASS(klass);
--
--    dc->vmsd = &vmstate_sl_nand_info;
--    device_class_set_props(dc, sl_nand_properties);
--    dc->realize = sl_nand_realize;
--    /* Reason: init() method uses drive_get() */
--    dc->user_creatable = false;
--}
--
--static const TypeInfo sl_nand_info = {
--    .name          = TYPE_SL_NAND,
--    .parent        = TYPE_SYS_BUS_DEVICE,
--    .instance_size = sizeof(SLNANDState),
--    .instance_init = sl_nand_init,
--    .class_init    = sl_nand_class_init,
--};
--
--static const VMStateDescription vmstate_spitz_kbd = {
--    .name = "spitz-keyboard",
--    .version_id = 1,
--    .minimum_version_id = 0,
--    .post_load = spitz_keyboard_post_load,
--    .fields = (const VMStateField[]) {
--        VMSTATE_UINT16(sense_state, SpitzKeyboardState),
--        VMSTATE_UINT16(strobe_state, SpitzKeyboardState),
--        VMSTATE_UNUSED_TEST(is_version_0, 5),
--        VMSTATE_END_OF_LIST(),
--    },
--};
--
--static void spitz_keyboard_class_init(ObjectClass *klass, void *data)
--{
--    DeviceClass *dc = DEVICE_CLASS(klass);
--
--    dc->vmsd = &vmstate_spitz_kbd;
--    dc->realize = spitz_keyboard_realize;
--}
--
--static const TypeInfo spitz_keyboard_info = {
--    .name          = TYPE_SPITZ_KEYBOARD,
--    .parent        = TYPE_SYS_BUS_DEVICE,
--    .instance_size = sizeof(SpitzKeyboardState),
--    .instance_init = spitz_keyboard_init,
--    .class_init    = spitz_keyboard_class_init,
--};
--
--static const VMStateDescription vmstate_corgi_ssp_regs = {
--    .name = "corgi-ssp",
--    .version_id = 2,
--    .minimum_version_id = 2,
--    .fields = (const VMStateField[]) {
--        VMSTATE_SSI_PERIPHERAL(ssidev, CorgiSSPState),
--        VMSTATE_UINT32_ARRAY(enable, CorgiSSPState, 3),
--        VMSTATE_END_OF_LIST(),
--    }
--};
--
--static void corgi_ssp_class_init(ObjectClass *klass, void *data)
--{
--    DeviceClass *dc = DEVICE_CLASS(klass);
--    SSIPeripheralClass *k = SSI_PERIPHERAL_CLASS(klass);
--
--    k->realize = corgi_ssp_realize;
--    k->transfer = corgi_ssp_transfer;
--    dc->vmsd = &vmstate_corgi_ssp_regs;
--}
--
--static const TypeInfo corgi_ssp_info = {
--    .name          = TYPE_CORGI_SSP,
--    .parent        = TYPE_SSI_PERIPHERAL,
--    .instance_size = sizeof(CorgiSSPState),
--    .class_init    = corgi_ssp_class_init,
--};
--
--static const VMStateDescription vmstate_spitz_lcdtg_regs = {
--    .name = "spitz-lcdtg",
--    .version_id = 1,
--    .minimum_version_id = 1,
--    .fields = (const VMStateField[]) {
--        VMSTATE_SSI_PERIPHERAL(ssidev, SpitzLCDTG),
--        VMSTATE_UINT32(bl_intensity, SpitzLCDTG),
--        VMSTATE_UINT32(bl_power, SpitzLCDTG),
--        VMSTATE_END_OF_LIST(),
--    }
--};
--
--static void spitz_lcdtg_class_init(ObjectClass *klass, void *data)
--{
--    DeviceClass *dc = DEVICE_CLASS(klass);
--    SSIPeripheralClass *k = SSI_PERIPHERAL_CLASS(klass);
--
--    k->realize = spitz_lcdtg_realize;
--    k->transfer = spitz_lcdtg_transfer;
--    dc->vmsd = &vmstate_spitz_lcdtg_regs;
--}
--
--static const TypeInfo spitz_lcdtg_info = {
--    .name          = TYPE_SPITZ_LCDTG,
--    .parent        = TYPE_SSI_PERIPHERAL,
--    .instance_size = sizeof(SpitzLCDTG),
--    .class_init    = spitz_lcdtg_class_init,
--};
--
--static const TypeInfo spitz_misc_gpio_info = {
--    .name = TYPE_SPITZ_MISC_GPIO,
--    .parent = TYPE_SYS_BUS_DEVICE,
--    .instance_size = sizeof(SpitzMiscGPIOState),
--    .instance_init = spitz_misc_gpio_init,
--    /*
--     * No class_init required: device has no internal state so does not
--     * need to set up reset or vmstate, and does not have a realize method.
--     */
--};
--
--static void spitz_register_types(void)
--{
--    type_register_static(&corgi_ssp_info);
--    type_register_static(&spitz_lcdtg_info);
--    type_register_static(&spitz_keyboard_info);
--    type_register_static(&sl_nand_info);
--    type_register_static(&spitz_misc_gpio_info);
--}
--
--type_init(spitz_register_types)
-diff --git a/hw/arm/tosa.c b/hw/arm/tosa.c
-deleted file mode 100644
-index 5891f6064f9..00000000000
---- a/hw/arm/tosa.c
-+++ /dev/null
-@@ -1,327 +0,0 @@
--/* vim:set shiftwidth=4 ts=4 et: */
--/*
-- * PXA255 Sharp Zaurus SL-6000 PDA platform
-- *
-- * Copyright (c) 2008 Dmitry Baryshkov
-- *
-- * Code based on spitz platform by Andrzej Zaborowski <balrog@zabor.org>
-- * This code is licensed under the GNU GPL v2.
-- *
-- * Contributions after 2012-01-13 are licensed under the terms of the
-- * GNU GPL, version 2 or (at your option) any later version.
-- */
--
--#include "qemu/osdep.h"
--#include "qapi/error.h"
--#include "sysemu/runstate.h"
--#include "hw/arm/pxa.h"
--#include "hw/arm/boot.h"
--#include "hw/arm/sharpsl.h"
--#include "hw/pcmcia.h"
--#include "hw/boards.h"
--#include "hw/display/tc6393xb.h"
--#include "hw/i2c/i2c.h"
--#include "hw/irq.h"
--#include "hw/ssi/ssi.h"
--#include "hw/sysbus.h"
--#include "hw/misc/led.h"
--#include "exec/address-spaces.h"
--#include "qom/object.h"
--
--#define TOSA_RAM 0x04000000
--#define TOSA_ROM 0x00800000
--
--#define TOSA_GPIO_USB_IN                (5)
--#define TOSA_GPIO_nSD_DETECT            (9)
--#define TOSA_GPIO_ON_RESET              (19)
--#define TOSA_GPIO_CF_IRQ                (21)    /* CF slot0 Ready */
--#define TOSA_GPIO_CF_CD                 (13)
--#define TOSA_GPIO_TC6393XB_INT          (15)
--#define TOSA_GPIO_JC_CF_IRQ             (36)    /* CF slot1 Ready */
--
--#define TOSA_SCOOP_GPIO_BASE            1
--#define TOSA_GPIO_IR_POWERDWN           (TOSA_SCOOP_GPIO_BASE + 2)
--#define TOSA_GPIO_SD_WP                 (TOSA_SCOOP_GPIO_BASE + 3)
--#define TOSA_GPIO_PWR_ON                (TOSA_SCOOP_GPIO_BASE + 4)
--
--#define TOSA_SCOOP_JC_GPIO_BASE         1
--#define TOSA_GPIO_BT_LED                (TOSA_SCOOP_JC_GPIO_BASE + 0)
--#define TOSA_GPIO_NOTE_LED              (TOSA_SCOOP_JC_GPIO_BASE + 1)
--#define TOSA_GPIO_CHRG_ERR_LED          (TOSA_SCOOP_JC_GPIO_BASE + 2)
--#define TOSA_GPIO_TC6393XB_L3V_ON       (TOSA_SCOOP_JC_GPIO_BASE + 5)
--#define TOSA_GPIO_WLAN_LED              (TOSA_SCOOP_JC_GPIO_BASE + 7)
--
--#define DAC_BASE 0x4e
--#define DAC_CH1 0
--#define DAC_CH2 1
--
--static void tosa_microdrive_attach(PXA2xxState *cpu)
--{
--    PCMCIACardState *md;
--    DriveInfo *dinfo;
--
--    dinfo = drive_get(IF_IDE, 0, 0);
--    if (!dinfo || dinfo->media_cd)
--        return;
--    md = dscm1xxxx_init(dinfo);
--    pxa2xx_pcmcia_attach(cpu->pcmcia[0], md);
--}
--
--/*
-- * Encapsulation of some GPIO line behaviour for the Tosa board
-- *
-- * QEMU interface:
-- *  + named GPIO inputs "leds[0..3]": assert to light LEDs
-- *  + named GPIO input "reset": when asserted, resets the system
-- */
--
--#define TYPE_TOSA_MISC_GPIO "tosa-misc-gpio"
--OBJECT_DECLARE_SIMPLE_TYPE(TosaMiscGPIOState, TOSA_MISC_GPIO)
--
--struct TosaMiscGPIOState {
--    SysBusDevice parent_obj;
--};
--
--static void tosa_reset(void *opaque, int line, int level)
--{
--    if (level) {
--        qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
--    }
--}
--
--static void tosa_misc_gpio_init(Object *obj)
--{
--    DeviceState *dev = DEVICE(obj);
--
--    qdev_init_gpio_in_named(dev, tosa_reset, "reset", 1);
--}
--
--static void tosa_gpio_setup(PXA2xxState *cpu,
--                DeviceState *scp0,
--                DeviceState *scp1,
--                TC6393xbState *tmio)
--{
--    DeviceState *misc_gpio;
--    LEDState *led[4];
--
--    misc_gpio = sysbus_create_simple(TYPE_TOSA_MISC_GPIO, -1, NULL);
--
--    /* MMC/SD host */
--    pxa2xx_mmci_handlers(cpu->mmc,
--                    qdev_get_gpio_in(scp0, TOSA_GPIO_SD_WP),
--                    qemu_irq_invert(qdev_get_gpio_in(cpu->gpio, TOSA_GPIO_nSD_DETECT)));
--
--    /* Handle reset */
--    qdev_connect_gpio_out(cpu->gpio, TOSA_GPIO_ON_RESET,
--                          qdev_get_gpio_in_named(misc_gpio, "reset", 0));
--
--    /* PCMCIA signals: card's IRQ and Card-Detect */
--    pxa2xx_pcmcia_set_irq_cb(cpu->pcmcia[0],
--                        qdev_get_gpio_in(cpu->gpio, TOSA_GPIO_CF_IRQ),
--                        qdev_get_gpio_in(cpu->gpio, TOSA_GPIO_CF_CD));
--
--    pxa2xx_pcmcia_set_irq_cb(cpu->pcmcia[1],
--                        qdev_get_gpio_in(cpu->gpio, TOSA_GPIO_JC_CF_IRQ),
--                        NULL);
--
--    led[0] = led_create_simple(OBJECT(misc_gpio), GPIO_POLARITY_ACTIVE_HIGH,
--                               LED_COLOR_BLUE, "bluetooth");
--    led[1] = led_create_simple(OBJECT(misc_gpio), GPIO_POLARITY_ACTIVE_HIGH,
--                               LED_COLOR_GREEN, "note");
--    led[2] = led_create_simple(OBJECT(misc_gpio), GPIO_POLARITY_ACTIVE_HIGH,
--                               LED_COLOR_AMBER, "charger-error");
--    led[3] = led_create_simple(OBJECT(misc_gpio), GPIO_POLARITY_ACTIVE_HIGH,
--                               LED_COLOR_GREEN, "wlan");
--
--    qdev_connect_gpio_out(scp1, TOSA_GPIO_BT_LED,
--                          qdev_get_gpio_in(DEVICE(led[0]), 0));
--    qdev_connect_gpio_out(scp1, TOSA_GPIO_NOTE_LED,
--                          qdev_get_gpio_in(DEVICE(led[1]), 0));
--    qdev_connect_gpio_out(scp1, TOSA_GPIO_CHRG_ERR_LED,
--                          qdev_get_gpio_in(DEVICE(led[2]), 0));
--    qdev_connect_gpio_out(scp1, TOSA_GPIO_WLAN_LED,
--                          qdev_get_gpio_in(DEVICE(led[3]), 0));
--
--    qdev_connect_gpio_out(scp1, TOSA_GPIO_TC6393XB_L3V_ON, tc6393xb_l3v_get(tmio));
--
--    /* UDC Vbus */
--    qemu_irq_raise(qdev_get_gpio_in(cpu->gpio, TOSA_GPIO_USB_IN));
--}
--
--static uint32_t tosa_ssp_tansfer(SSIPeripheral *dev, uint32_t value)
--{
--    fprintf(stderr, "TG: %u %02x\n", value >> 5, value & 0x1f);
--    return 0;
--}
--
--static void tosa_ssp_realize(SSIPeripheral *dev, Error **errp)
--{
--    /* Nothing to do.  */
--}
--
--#define TYPE_TOSA_DAC "tosa_dac"
--OBJECT_DECLARE_SIMPLE_TYPE(TosaDACState, TOSA_DAC)
--
--struct TosaDACState {
--    I2CSlave parent_obj;
--
--    int len;
--    char buf[3];
--};
--
--static int tosa_dac_send(I2CSlave *i2c, uint8_t data)
--{
--    TosaDACState *s = TOSA_DAC(i2c);
--
--    s->buf[s->len] = data;
--    if (s->len ++ > 2) {
--#ifdef VERBOSE
--        fprintf(stderr, "%s: message too long (%i bytes)\n", __func__, s->len);
--#endif
--        return 1;
--    }
--
--    if (s->len == 2) {
--        fprintf(stderr, "dac: channel %d value 0x%02x\n",
--                s->buf[0], s->buf[1]);
--    }
--
--    return 0;
--}
--
--static int tosa_dac_event(I2CSlave *i2c, enum i2c_event event)
--{
--    TosaDACState *s = TOSA_DAC(i2c);
--
--    s->len = 0;
--    switch (event) {
--    case I2C_START_SEND:
+-    switch (addr) {
+-    case 0x000:	/* GPMC_REVISION */
+-    case 0x014:	/* GPMC_SYSSTATUS */
+-    case 0x054:	/* GPMC_STATUS */
+-    case 0x1f0:	/* GPMC_PREFETCH_STATUS */
+-    case 0x200 ... 0x220:	/* GPMC_ECC_RESULT */
+-    case 0x234:	/* GPMC_PSA_LSB */
+-    case 0x238:	/* GPMC_PSA_MSB */
+-        OMAP_RO_REG(addr);
 -        break;
--    case I2C_START_RECV:
--        printf("%s: recv not supported!!!\n", __func__);
+-
+-    case 0x010:	/* GPMC_SYSCONFIG */
+-        if ((value >> 3) == 0x3)
+-            fprintf(stderr, "%s: bad SDRAM idle mode %"PRIi64"\n",
+-                            __func__, value >> 3);
+-        if (value & 2)
+-            omap_gpmc_reset(s);
+-        s->sysconfig = value & 0x19;
 -        break;
--    case I2C_FINISH:
--#ifdef VERBOSE
--        if (s->len < 2)
--            printf("%s: message too short (%i bytes)\n", __func__, s->len);
--        if (s->len > 2)
--            printf("%s: message too long\n", __func__);
--#endif
+-
+-    case 0x018:	/* GPMC_IRQSTATUS */
+-        s->irqst &= ~value;
+-        omap_gpmc_int_update(s);
 -        break;
+-
+-    case 0x01c:	/* GPMC_IRQENABLE */
+-        s->irqen = value & 0xf03;
+-        omap_gpmc_int_update(s);
+-        break;
+-
+-    case 0x040:	/* GPMC_TIMEOUT_CONTROL */
+-        s->timeout = value & 0x1ff1;
+-        break;
+-
+-    case 0x044:	/* GPMC_ERR_ADDRESS */
+-    case 0x048:	/* GPMC_ERR_TYPE */
+-        break;
+-
+-    case 0x050:	/* GPMC_CONFIG */
+-        s->config = value & 0xf13;
+-        break;
+-
+-    case 0x060 ... 0x1d4:
+-        cs = (addr - 0x060) / 0x30;
+-        addr -= cs * 0x30;
+-        f = s->cs_file + cs;
+-        switch (addr) {
+-        case 0x60:      /* GPMC_CONFIG1 */
+-            f->config[0] = value & 0xffef3e13;
+-            break;
+-        case 0x64:      /* GPMC_CONFIG2 */
+-            f->config[1] = value & 0x001f1f8f;
+-            break;
+-        case 0x68:      /* GPMC_CONFIG3 */
+-            f->config[2] = value & 0x001f1f8f;
+-            break;
+-        case 0x6c:      /* GPMC_CONFIG4 */
+-            f->config[3] = value & 0x1f8f1f8f;
+-            break;
+-        case 0x70:      /* GPMC_CONFIG5 */
+-            f->config[4] = value & 0x0f1f1f1f;
+-            break;
+-        case 0x74:      /* GPMC_CONFIG6 */
+-            f->config[5] = value & 0x00000fcf;
+-            break;
+-        case 0x78:      /* GPMC_CONFIG7 */
+-            if ((f->config[6] ^ value) & 0xf7f) {
+-                omap_gpmc_cs_unmap(s, cs);
+-                f->config[6] = value & 0x00000f7f;
+-                omap_gpmc_cs_map(s, cs);
+-            }
+-            break;
+-        case 0x7c ... 0x7f: /* GPMC_NAND_COMMAND */
+-            if (omap_gpmc_devtype(f) == OMAP_GPMC_NAND) {
+-                nand_setpins(f->dev, 1, 0, 0, 1, 0); /* CLE */
+-                omap_nand_setio(f->dev, value, omap_gpmc_devsize(f), size);
+-            }
+-            break;
+-        case 0x80 ... 0x83: /* GPMC_NAND_ADDRESS */
+-            if (omap_gpmc_devtype(f) == OMAP_GPMC_NAND) {
+-                nand_setpins(f->dev, 0, 1, 0, 1, 0); /* ALE */
+-                omap_nand_setio(f->dev, value, omap_gpmc_devsize(f), size);
+-            }
+-            break;
+-        case 0x84 ... 0x87: /* GPMC_NAND_DATA */
+-            if (omap_gpmc_devtype(f) == OMAP_GPMC_NAND) {
+-                omap_nand_write(f, 0, value, size);
+-            }
+-            break;
+-        default:
+-            goto bad_reg;
+-        }
+-        break;
+-
+-    case 0x1e0:	/* GPMC_PREFETCH_CONFIG1 */
+-        if (!s->prefetch.startengine) {
+-            uint32_t newconfig1 = value & 0x7f8f7fbf;
+-            uint32_t changed;
+-            changed = newconfig1 ^ s->prefetch.config1;
+-            if (changed & (0x80 | 0x7000000)) {
+-                /* Turning the engine on or off, or mapping it somewhere else.
+-                 * cs_map() and cs_unmap() check the prefetch config and
+-                 * overall CSVALID bits, so it is sufficient to unmap-and-map
+-                 * both the old cs and the new one. Note that we adhere to
+-                 * the "unmap/change config/map" order (and not unmap twice
+-                 * if newcs == oldcs), otherwise we'll try to delete the wrong
+-                 * memory region.
+-                 */
+-                int oldcs = prefetch_cs(s->prefetch.config1);
+-                int newcs = prefetch_cs(newconfig1);
+-                omap_gpmc_cs_unmap(s, oldcs);
+-                if (oldcs != newcs) {
+-                    omap_gpmc_cs_unmap(s, newcs);
+-                }
+-                s->prefetch.config1 = newconfig1;
+-                omap_gpmc_cs_map(s, oldcs);
+-                if (oldcs != newcs) {
+-                    omap_gpmc_cs_map(s, newcs);
+-                }
+-            } else {
+-                s->prefetch.config1 = newconfig1;
+-            }
+-        }
+-        break;
+-
+-    case 0x1e4:	/* GPMC_PREFETCH_CONFIG2 */
+-        if (!s->prefetch.startengine) {
+-            s->prefetch.transfercount = value & 0x3fff;
+-        }
+-        break;
+-
+-    case 0x1ec:	/* GPMC_PREFETCH_CONTROL */
+-        if (s->prefetch.startengine != (value & 1)) {
+-            s->prefetch.startengine = value & 1;
+-            if (s->prefetch.startengine) {
+-                /* Prefetch engine start */
+-                s->prefetch.count = s->prefetch.transfercount;
+-                if (s->prefetch.config1 & 1) {
+-                    /* Write */
+-                    s->prefetch.fifopointer = 64;
+-                } else {
+-                    /* Read */
+-                    s->prefetch.fifopointer = 0;
+-                    fill_prefetch_fifo(s);
+-                }
+-            } else {
+-                /* Prefetch engine forcibly stopped. The TRM
+-                 * doesn't define the behaviour if you do this.
+-                 * We clear the prefetch count, which means that
+-                 * we permit no more writes, and don't read any
+-                 * more data from NAND. The CPU can still drain
+-                 * the FIFO of unread data.
+-                 */
+-                s->prefetch.count = 0;
+-            }
+-            omap_gpmc_int_update(s);
+-        }
+-        break;
+-
+-    case 0x1f4:	/* GPMC_ECC_CONFIG */
+-        s->ecc_cs = 0x8f;
+-        break;
+-    case 0x1f8:	/* GPMC_ECC_CONTROL */
+-        if (value & (1 << 8))
+-            for (cs = 0; cs < 9; cs ++)
+-                ecc_reset(&s->ecc[cs]);
+-        s->ecc_ptr = value & 0xf;
+-        if (s->ecc_ptr == 0 || s->ecc_ptr > 9) {
+-            s->ecc_ptr = 0;
+-            s->ecc_cs &= ~1;
+-        }
+-        break;
+-    case 0x1fc:	/* GPMC_ECC_SIZE_CONFIG */
+-        s->ecc_cfg = value & 0x3fcff1ff;
+-        break;
+-    case 0x230:	/* GPMC_TESTMODE_CTRL */
+-        if (value & 7)
+-            fprintf(stderr, "%s: test mode enable attempt\n", __func__);
+-        break;
+-
 -    default:
--        break;
+-    bad_reg:
+-        OMAP_BAD_REG(addr);
+-        return;
+-    }
+-}
+-
+-static const MemoryRegionOps omap_gpmc_ops = {
+-    .read = omap_gpmc_read,
+-    .write = omap_gpmc_write,
+-    .endianness = DEVICE_NATIVE_ENDIAN,
+-};
+-
+-struct omap_gpmc_s *omap_gpmc_init(struct omap_mpu_state_s *mpu,
+-                                   hwaddr base,
+-                                   qemu_irq irq, qemu_irq drq)
+-{
+-    int cs;
+-    struct omap_gpmc_s *s = g_new0(struct omap_gpmc_s, 1);
+-
+-    memory_region_init_io(&s->iomem, NULL, &omap_gpmc_ops, s, "omap-gpmc", 0x1000);
+-    memory_region_add_subregion(get_system_memory(), base, &s->iomem);
+-
+-    s->irq = irq;
+-    s->drq = drq;
+-    s->accept_256 = cpu_is_omap3630(mpu);
+-    s->revision = cpu_class_omap3(mpu) ? 0x50 : 0x20;
+-    s->lastirq = 0;
+-    omap_gpmc_reset(s);
+-
+-    /* We have to register a different IO memory handler for each
+-     * chip select region in case a NAND device is mapped there. We
+-     * make the region the worst-case size of 256MB and rely on the
+-     * container memory region in cs_map to chop it down to the actual
+-     * guest-requested size.
+-     */
+-    for (cs = 0; cs < 8; cs++) {
+-        memory_region_init_io(&s->cs_file[cs].nandiomem, NULL,
+-                              &omap_nand_ops,
+-                              &s->cs_file[cs],
+-                              "omap-nand",
+-                              256 * 1024 * 1024);
 -    }
 -
--    return 0;
+-    memory_region_init_io(&s->prefetch.iomem, NULL, &omap_prefetch_ops, s,
+-                          "omap-gpmc-prefetch", 256 * 1024 * 1024);
+-    return s;
 -}
 -
--static uint8_t tosa_dac_recv(I2CSlave *s)
+-void omap_gpmc_attach(struct omap_gpmc_s *s, int cs, MemoryRegion *iomem)
 -{
--    printf("%s: recv not supported!!!\n", __func__);
--    return 0xff;
+-    struct omap_gpmc_cs_file_s *f;
+-    assert(iomem);
+-
+-    if (cs < 0 || cs >= 8) {
+-        fprintf(stderr, "%s: bad chip-select %i\n", __func__, cs);
+-        exit(-1);
+-    }
+-    f = &s->cs_file[cs];
+-
+-    omap_gpmc_cs_unmap(s, cs);
+-    f->config[0] &= ~(0xf << 10);
+-    f->iomem = iomem;
+-    omap_gpmc_cs_map(s, cs);
 -}
 -
--static void tosa_tg_init(PXA2xxState *cpu)
+-void omap_gpmc_attach_nand(struct omap_gpmc_s *s, int cs, DeviceState *nand)
 -{
--    I2CBus *bus = pxa2xx_i2c_bus(cpu->i2c[0]);
--    i2c_slave_create_simple(bus, TYPE_TOSA_DAC, DAC_BASE);
--    ssi_create_peripheral(cpu->ssp[1], "tosa-ssp");
+-    struct omap_gpmc_cs_file_s *f;
+-    assert(nand);
+-
+-    if (cs < 0 || cs >= 8) {
+-        fprintf(stderr, "%s: bad chip-select %i\n", __func__, cs);
+-        exit(-1);
+-    }
+-    f = &s->cs_file[cs];
+-
+-    omap_gpmc_cs_unmap(s, cs);
+-    f->config[0] &= ~(0xf << 10);
+-    f->config[0] |= (OMAP_GPMC_NAND << 10);
+-    f->dev = nand;
+-    if (nand_getbuswidth(f->dev) == 16) {
+-        f->config[0] |= OMAP_GPMC_16BIT << 12;
+-    }
+-    omap_gpmc_cs_map(s, cs);
 -}
--
--
--static struct arm_boot_info tosa_binfo = {
--    .loader_start = PXA2XX_SDRAM_BASE,
--    .ram_size = 0x04000000,
--};
--
--static void tosa_init(MachineState *machine)
--{
--    MemoryRegion *address_space_mem = get_system_memory();
--    MemoryRegion *rom = g_new(MemoryRegion, 1);
--    PXA2xxState *mpu;
--    TC6393xbState *tmio;
--    DeviceState *scp0, *scp1;
--
--    mpu = pxa255_init(tosa_binfo.ram_size);
--
--    memory_region_init_rom(rom, NULL, "tosa.rom", TOSA_ROM, &error_fatal);
--    memory_region_add_subregion(address_space_mem, 0, rom);
--
--    tmio = tc6393xb_init(address_space_mem, 0x10000000,
--            qdev_get_gpio_in(mpu->gpio, TOSA_GPIO_TC6393XB_INT));
--
--    scp0 = sysbus_create_simple("scoop", 0x08800000, NULL);
--    scp1 = sysbus_create_simple("scoop", 0x14800040, NULL);
--
--    tosa_gpio_setup(mpu, scp0, scp1, tmio);
--
--    tosa_microdrive_attach(mpu);
--
--    tosa_tg_init(mpu);
--
--    tosa_binfo.board_id = 0x208;
--    arm_load_kernel(mpu->cpu, machine, &tosa_binfo);
--    sl_bootparam_write(SL_PXA_PARAM_BASE);
--}
--
--static void tosapda_machine_init(MachineClass *mc)
--{
--    mc->desc = "Sharp SL-6000 (Tosa) PDA (PXA255)";
--    mc->init = tosa_init;
--    mc->block_default_type = IF_IDE;
--    mc->ignore_memory_transaction_failures = true;
--    mc->deprecation_reason = "machine is old and unmaintained";
--}
--
--DEFINE_MACHINE("tosa", tosapda_machine_init)
--
--static void tosa_dac_class_init(ObjectClass *klass, void *data)
--{
--    I2CSlaveClass *k = I2C_SLAVE_CLASS(klass);
--
--    k->event = tosa_dac_event;
--    k->recv = tosa_dac_recv;
--    k->send = tosa_dac_send;
--}
--
--static const TypeInfo tosa_dac_info = {
--    .name          = TYPE_TOSA_DAC,
--    .parent        = TYPE_I2C_SLAVE,
--    .instance_size = sizeof(TosaDACState),
--    .class_init    = tosa_dac_class_init,
--};
--
--static void tosa_ssp_class_init(ObjectClass *klass, void *data)
--{
--    SSIPeripheralClass *k = SSI_PERIPHERAL_CLASS(klass);
--
--    k->realize = tosa_ssp_realize;
--    k->transfer = tosa_ssp_tansfer;
--}
--
--static const TypeInfo tosa_ssp_info = {
--    .name          = "tosa-ssp",
--    .parent        = TYPE_SSI_PERIPHERAL,
--    .instance_size = sizeof(SSIPeripheral),
--    .class_init    = tosa_ssp_class_init,
--};
--
--static const TypeInfo tosa_misc_gpio_info = {
--    .name          = TYPE_TOSA_MISC_GPIO,
--    .parent        = TYPE_SYS_BUS_DEVICE,
--    .instance_size = sizeof(TosaMiscGPIOState),
--    .instance_init = tosa_misc_gpio_init,
--    /*
--     * No class init required: device has no internal state so does not
--     * need to set up reset or vmstate, and has no realize method.
--     */
--};
--
--static void tosa_register_types(void)
--{
--    type_register_static(&tosa_dac_info);
--    type_register_static(&tosa_ssp_info);
--    type_register_static(&tosa_misc_gpio_info);
--}
--
--type_init(tosa_register_types)
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index 1ad60da7aa2..32c5e601d1c 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -199,29 +199,6 @@ config GUMSTIX
-     select SMC91C111
-     select PXA2XX
- 
--config TOSA
--    bool
--    default y
--    depends on TCG && ARM
--    select ZAURUS  # scoop
--    select MICRODRIVE
--    select PXA2XX
--    select LED
--
--config SPITZ
--    bool
--    default y
--    depends on TCG && ARM
--    select ADS7846 # touch-screen controller
--    select MAX111X # A/D converter
--    select WM8750  # audio codec
--    select MAX7310 # GPIO expander
--    select ZAURUS  # scoop
--    select NAND    # memory
--    select ECC     # Error-correcting for NAND
--    select MICRODRIVE
--    select PXA2XX
--
- config Z2
-     bool
-     default y
-diff --git a/hw/arm/meson.build b/hw/arm/meson.build
-index 0c07ab522f4..b099319a223 100644
---- a/hw/arm/meson.build
-+++ b/hw/arm/meson.build
-@@ -70,10 +70,8 @@ system_ss.add(when: 'CONFIG_NETDUINO2', if_true: files('netduino2.c'))
- system_ss.add(when: 'CONFIG_OMAP', if_true: files('omap2.c'))
- system_ss.add(when: 'CONFIG_RASPI', if_true: files('bcm2835_peripherals.c'))
- system_ss.add(when: 'CONFIG_RASPI', if_true: files('bcm2838_peripherals.c'))
--system_ss.add(when: 'CONFIG_SPITZ', if_true: files('spitz.c'))
- system_ss.add(when: 'CONFIG_STRONGARM', if_true: files('strongarm.c'))
- system_ss.add(when: 'CONFIG_SX1', if_true: files('omap_sx1.c'))
--system_ss.add(when: 'CONFIG_TOSA', if_true: files('tosa.c'))
- system_ss.add(when: 'CONFIG_VERSATILE', if_true: files('versatilepb.c'))
- system_ss.add(when: 'CONFIG_VEXPRESS', if_true: files('vexpress.c'))
- system_ss.add(when: 'CONFIG_Z2', if_true: files('z2.c'))
+diff --git a/hw/misc/meson.build b/hw/misc/meson.build
+index 7c9addbe68f..122084b1694 100644
+--- a/hw/misc/meson.build
++++ b/hw/misc/meson.build
+@@ -75,7 +75,6 @@ system_ss.add(when: 'CONFIG_NPCM7XX', if_true: files(
+ ))
+ system_ss.add(when: 'CONFIG_OMAP', if_true: files(
+   'omap_clk.c',
+-  'omap_gpmc.c',
+   'omap_l4.c',
+   'omap_tap.c',
+ ))
 -- 
 2.34.1
 

@@ -1,435 +1,781 @@
-Received: by 2002:a17:504:3a8f:b0:1be9:327d:8ee3 with SMTP id g15csp1500325njf;
-        Tue, 3 Sep 2024 09:09:31 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUkVlH63J/nVa0UCiGpSfqLDtVXhPTYwQY9vm43/uNuMmVvcGDBhSS2smninJ/+HgH1coFFUArV5JOsWw==@linaro.org
-X-Google-Smtp-Source: AGHT+IFnXE0HL1bGZhMUYb99Jg8je3sypInnbWuPTQckr3S7+1rmN7wAHN25HGtxNdn6n7/t4V46
-X-Received: by 2002:a05:6830:3692:b0:709:3431:94c3 with SMTP id 46e09a7af769-710af7060e6mr1955092a34.23.1725379771572;
-        Tue, 03 Sep 2024 09:09:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1725379771; cv=none;
+Received: by 2002:a17:504:3a8f:b0:1be9:327d:8ee3 with SMTP id g15csp1500361njf;
+        Tue, 3 Sep 2024 09:09:35 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCX/rvVbTXvTPz7cLvWYDvP+6HO06AjBPX9kzCIfLXE3c4tbfjVZKNPWdXxE6NeDelqaMT8E1Ml4m/5MPQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IFm0xwisIfY9qWMt04qH/ZxV5xCkA6bFwdQDcQ46gBZG2IX1J88tL58B1rMOx/TWDYBELIH
+X-Received: by 2002:a05:6102:3748:b0:493:b484:ac06 with SMTP id ada2fe7eead31-49a7783c7c3mr12563628137.21.1725379775565;
+        Tue, 03 Sep 2024 09:09:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1725379775; cv=none;
         d=google.com; s=arc-20160816;
-        b=AMqhbncwWkkMXkPxjqEjxHu7FV9d4h3Xhao/GHhm4VwQUXDnFJM3FgWTHMhZ4pP16v
-         wQY1BgyakzPtdkIzGXAf0f/zxnFVELiMPUCAFXeNbDt4isnLSSDPlKk7nFqosXt+7Jig
-         aipt7qdFKGY3ceBNdP48OwkBf/iwFBfRuQFawrkVbDVCPrzFlgjO3CIQn3FOxP40bWFk
-         HnNBX6cdG/vFeaCy3FYgeIMUJhgwogsJ8qfTyGQ7Ww6YguMSQLAeF8C3W085PiS0IbiY
-         9StWaRsfrE26M56T6yafLU5lfK2gzGox6ws/uk5Y5lR8uD3rusI24DuPF2KWCvGXRv7Z
-         NAVA==
+        b=X2nH5bJb7Gf1oPwdJi9xLEGvkuCPCf+XcJQRZOwUn/behi03j9iWxpTUQkN2ent845
+         vjzTQaQ+geo91sonhkQBdExZTnkaAhg2zqxjLljT5D1PEX21CgxG9vn84KtBTsI1jKzo
+         OYSD0qoleQXGZDb7eOuPlzySB4QNkOZw6YXTGsxouVJ7UkHBr4Jzf3sv1L0tltxKALeX
+         AOJQ2UTh2OIKb1JsWOJxgHLW4+/Uo4MDa+TaJiyb9Aua8x18xiVStmlLUHSMt+oLJHJv
+         TAtU8qPzeBRi8fkfausWzSn/3vuyq8K/tfsSspELIXWLFKrKRyla6+euK0Q5NdOMc93m
+         rOnQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=2aydQID0IvRZpJDoAElwkwj3hjmSAGgIkWQyks+OEzI=;
-        fh=H2AmuqulvQE+T5zu97MCEUC3z9wF9NssS7895NhR/+c=;
-        b=Dzk8xw7d/WfYyYnl8CBKNnm3QAEEyc0FOOswgOMW1wxKgrOpP2WmNWD4yiljOqN83h
-         tZOkW0Xuta1Ay3Mx3KM7aaZR91kKiYf/WiMO7v986u3/81hFpu7Zx9yemV8qfqozPlJ8
-         wMYPsofi6dA48NjLPUNufyAfajaQ+hphJe594hXxpiOTCEia73Zdx2h/82IEd6nm4imZ
-         sGCfOmxLrPoYS8WPuMcGz9fK7MbKzzJ01dBwtFzWyypOr97eWYuaPO3WTAp58WKf5ch+
-         W1jlxOBI1hd+mmWl7EUAXVvZv57/AaGUGRFpaheE19AA9JKwpvtO5k+8jdHZzlHMbwlQ
-         BTiQ==;
+        bh=xe4R5FEFpWoMlWGjQCllIqrdIuChSeSG4y2M5VJKLxc=;
+        fh=5lmLcFREJjWafSOPO3QftQwyu9HqMYUyuDkAQpUZNvg=;
+        b=EmHHfiMTrX9X3mRUpgnesjhhG+MKTwLSGlBkk8yvopNqnRvMgBeWF8J/zEo+1UMcM2
+         fHfAtXYxgC7j/hpzjg00UjmSSeAEao54tKluLpq6Dai5z4QyLYsO4ocupgzU9SXKB3WA
+         fvJ0nOX9QIUFTV7PSsFkaQFF1T4gN1r8Sf7OfvFkDhhhB20DCGhmKTFvcpREH9X5CoAo
+         qkH7F0cH5mUu8eViOguL+BPkrqCvW+ok+mnUDvuA6voaHajaRG6zAgKSKxUSXjY3mH/n
+         tHIeQH1c09l6whE4RphAVEXOaDCguHtptdlRamVmgTQqns4CKKej9fBzEKtHeL2EHZNl
+         kLyQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=RgeQ14Z2;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=RsSL2WTD;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 71dfb90a1353d-500965236a1si2438087e0c.171.2024.09.03.09.09.31
+        by mx.google.com with ESMTPS id ada2fe7eead31-49a5f5a22fcsi3528800137.770.2024.09.03.09.09.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 03 Sep 2024 09:09:31 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 03 Sep 2024 09:09:35 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=RgeQ14Z2;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=RsSL2WTD;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1slW4q-0005vr-CE; Tue, 03 Sep 2024 12:08:20 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1slW4c-0004uH-On; Tue, 03 Sep 2024 12:08:06 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1slW4n-0005en-E1
- for qemu-arm@nongnu.org; Tue, 03 Sep 2024 12:08:18 -0400
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+ id 1slW4b-0004os-CJ
+ for qemu-devel@nongnu.org; Tue, 03 Sep 2024 12:08:05 -0400
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1slW4i-0002jR-Nm
- for qemu-arm@nongnu.org; Tue, 03 Sep 2024 12:08:16 -0400
-Received: by mail-wm1-x334.google.com with SMTP id
- 5b1f17b1804b1-42bb8c6e250so42190165e9.1
- for <qemu-arm@nongnu.org>; Tue, 03 Sep 2024 09:08:12 -0700 (PDT)
+ id 1slW4X-0002gH-Jz
+ for qemu-devel@nongnu.org; Tue, 03 Sep 2024 12:08:05 -0400
+Received: by mail-wm1-x32b.google.com with SMTP id
+ 5b1f17b1804b1-42bb9d719d4so41361935e9.3
+ for <qemu-devel@nongnu.org>; Tue, 03 Sep 2024 09:08:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1725379691; x=1725984491; darn=nongnu.org;
+ d=linaro.org; s=google; t=1725379680; x=1725984480; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=2aydQID0IvRZpJDoAElwkwj3hjmSAGgIkWQyks+OEzI=;
- b=RgeQ14Z2YVXjL773O5Dz7NIQAs5i6Y4NyppUDMFqNcMYNuswIZU1B3ai4LfMywv7he
- RPGQERWNRG44rasFKxzETNPyPUPwYUne2BceEKvM3z/Rv2zSvYnEIwno0zyF58eMEytm
- cidubi1lIta8Hqo9wHSQflyxQ50bpvw1TbZzL4vGcr/p3YbnxlKjKAbqmm43EYVGZI9Z
- Gou0yM2Cg2XXRKC4Nik1/mbHU4WU4n3eeySIi806v7wllhAGlR2MUvgT+bfYoiMQjbcN
- FOT/LTX4IvvxtTQfQv3mxEyTyEcbVDo8DraqO/EA5Vp9VN7UtqYcCX8SfaPRrq271pW1
- 9hzA==
+ :reply-to; bh=xe4R5FEFpWoMlWGjQCllIqrdIuChSeSG4y2M5VJKLxc=;
+ b=RsSL2WTD13D3SKiFp6Qyw7t759a6jlFpQc3QA4f6JmacKGr8Qa2bNDH6RuitqZ3WeV
+ PkZwkh0XkSK49dSh39D18ySuxSfZ1xgMRte69DZLwA0JhXHafEV0BIt/KqTd5FDqwv6K
+ pqWBrnFuQuYkYnOj0brZfBNjqI6ElKxFFnAYcmITZM/AoXwl1gaQFGTl8g1RyV/k5iXp
+ jh9KFvLWoy1E7ou3Qu7qQhzCBZWzI2/+W03TR6XDYPHRC4GgLFFcSA2fb0B9OIGfdwR3
+ d4DV/lTnyrDt+rmWtTX+6XY+bO1D2FIAiqMl3a2Ar4ayTujWtMPqWVKQXg3vOPfiY2qD
+ JWkQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1725379691; x=1725984491;
+ d=1e100.net; s=20230601; t=1725379680; x=1725984480;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=2aydQID0IvRZpJDoAElwkwj3hjmSAGgIkWQyks+OEzI=;
- b=qytTujL9snjOyMMcGIDGs4KEew+7Y0NIxbtdmahnHtzHMPnsOSvO+WbS8HuhedZiN6
- oN36kjDh0Qun25Qqq5Ik9CG7jeoBDf7MSlCpUUrxY+cpu1GtOZO2Lk5Mve+BNNFQgEcY
- X5/xzaOplkZ0rQK2WZdrXOCC0j6wbHjjCAFS0I42GWNBtzNfadgWB2hQ5e1XS7Yko2AY
- eegoYPHPbbBtn+CxDnVnF13xlpyFZoGAQXDAhadE2fZrqnIQV11A6IxrR4X8g9Lof8gz
- eg4cWp9MIHcF95swewM1cGOXfy/fGGV6a2WxxzC7yGXqtSNcw09Pmsz4BePzTZMT4ETP
- x1vg==
-X-Gm-Message-State: AOJu0YwEaNnDpG6eTdIgUEsNw2FlZStaMCg3MODz0LRMaK4HNJxJ+7Ap
- QCtIJGEc03KMBMfKSI66aKOYRwVSUNkXnxmjnL90k4/Hu6kjvSOxxskAaidpw39xDDKdm7A2NqA
- d
-X-Received: by 2002:a05:600c:1f86:b0:426:58cb:8ca3 with SMTP id
- 5b1f17b1804b1-42c82f56a98mr59500095e9.21.1725379691203; 
- Tue, 03 Sep 2024 09:08:11 -0700 (PDT)
+ bh=xe4R5FEFpWoMlWGjQCllIqrdIuChSeSG4y2M5VJKLxc=;
+ b=UY5pzMCSbVPgW66/Tz27lIn7I1XMNQIXOAyDNGT47rctYubEJPPjG4vpww6EnkUVKw
+ GUzgKRx9ttohSE40RlVitIi4gYWUHAXkZU639PhFioVWhVmXrI5JyRslMntnGZOTywH4
+ n4cmswy9eMEuyGifYb3aKFZ7ZZIkizMYIczagnhnGdJEwurZFni19gg2jB0lWoinGW2S
+ IlSZCnJjmAXjv0A0RElLIBBHWEmbenWjf4cftxnlJyRfuUY0x4iv7scbmU1Hfwj1hJ4C
+ sB+US7no0kjnyNmEa96fFX0nyP+JS9ICdMzJ+WIUrRGE7UDgLmsg6hCkILF/GP9eBAwn
+ vWXQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXSKriBGlyGf2wXeKYt2GyI/EMc/lRUPSyP2j7oASG2Eokw6mrJcuK+LzqR9IBZMHNScVyFS42xT6hU@nongnu.org
+X-Gm-Message-State: AOJu0YzjVqKF+BhaskEbMY60xZl6AmSFSzs2PqrBcHd7qDVNDD70MjXT
+ j7atYDFgcHsH+84tCPMPsQw0U4ebY/fVj/3WjLsd6cc227PFm2fSdntPCmmkUm+NlF6ePRg4AHE
+ W
+X-Received: by 2002:a05:600c:294:b0:42c:8812:82a6 with SMTP id
+ 5b1f17b1804b1-42c88128392mr32307465e9.21.1725379679702; 
+ Tue, 03 Sep 2024 09:07:59 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-42bb6df1066sm175123065e9.18.2024.09.03.09.08.10
+ 5b1f17b1804b1-42bb6df1066sm175123065e9.18.2024.09.03.09.07.56
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 03 Sep 2024 09:08:10 -0700 (PDT)
+ Tue, 03 Sep 2024 09:07:56 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH for-9.2 10/53] hw/arm: Remove 'mainstone' machine
-Date: Tue,  3 Sep 2024 17:07:08 +0100
-Message-Id: <20240903160751.4100218-11-peter.maydell@linaro.org>
+Subject: [PATCH for-9.2 06/53] hw/display: Remove tc6393xb device
+Date: Tue,  3 Sep 2024 17:07:04 +0100
+Message-Id: <20240903160751.4100218-7-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240903160751.4100218-1-peter.maydell@linaro.org>
 References: <20240903160751.4100218-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::334;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x334.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: tD1yMxdLTyio
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: Trsvd466OoBX
 
-The 'mainstone' machine has been deprecated since 9.0, and
-so we can remove it for the 9.2 release.
+The tc6393xb was used only by the XScale-based Zaurus machine types.
+Now they have been removed we can remove this device too.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- MAINTAINERS                             |   2 -
- docs/system/arm/mainstone.rst           |  25 ----
- docs/system/target-arm.rst              |   1 -
- configs/devices/arm-softmmu/default.mak |   1 -
- hw/arm/mainstone.c                      | 175 ------------------------
- hw/arm/Kconfig                          |   8 --
- hw/arm/meson.build                      |   1 -
- 7 files changed, 213 deletions(-)
- delete mode 100644 docs/system/arm/mainstone.rst
- delete mode 100644 hw/arm/mainstone.c
+ MAINTAINERS                   |   2 -
+ include/hw/display/tc6393xb.h |  21 --
+ hw/display/tc6393xb.c         | 568 ----------------------------------
+ hw/display/meson.build        |   1 -
+ 4 files changed, 592 deletions(-)
+ delete mode 100644 include/hw/display/tc6393xb.h
+ delete mode 100644 hw/display/tc6393xb.c
 
 diff --git a/MAINTAINERS b/MAINTAINERS
-index 13685711f61..bfc0868aa64 100644
+index e9ce1e2e051..c40f4f91e9c 100644
 --- a/MAINTAINERS
 +++ b/MAINTAINERS
-@@ -907,12 +907,10 @@ PXA2XX
- M: Peter Maydell <peter.maydell@linaro.org>
- L: qemu-arm@nongnu.org
- S: Odd Fixes
--F: hw/arm/mainstone.c
+@@ -926,12 +926,10 @@ S: Odd Fixes
+ F: hw/arm/mainstone.c
  F: hw/arm/z2.c
  F: hw/*/pxa2xx*
+-F: hw/display/tc6393xb.c
+ F: hw/gpio/zaurus.c
  F: hw/misc/mst_fpga.c
  F: include/hw/arm/pxa.h
--F: docs/system/arm/mainstone.rst
+ F: include/hw/arm/sharpsl.h
+-F: include/hw/display/tc6393xb.h
+ F: docs/system/arm/mainstone.rst
  
  SABRELITE / i.MX6
- M: Peter Maydell <peter.maydell@linaro.org>
-diff --git a/docs/system/arm/mainstone.rst b/docs/system/arm/mainstone.rst
+diff --git a/include/hw/display/tc6393xb.h b/include/hw/display/tc6393xb.h
 deleted file mode 100644
-index 05310f42c7f..00000000000
---- a/docs/system/arm/mainstone.rst
+index f9263bf98a6..00000000000
+--- a/include/hw/display/tc6393xb.h
 +++ /dev/null
-@@ -1,25 +0,0 @@
--Intel Mainstone II board (``mainstone``)
--========================================
--
--The ``mainstone`` board emulates the Intel Mainstone II development
--board, which uses a PXA270 CPU.
--
--Emulated devices:
--
--- Flash memory
--- Keypad
--- MMC controller
--- 91C111 ethernet
--- PIC
--- Timer
--- DMA
--- GPIO
--- FIR
--- Serial
--- LCD controller
--- SSP
--- USB controller
--- RTC
--- PCMCIA
--- I2C
--- I2S
-diff --git a/docs/system/target-arm.rst b/docs/system/target-arm.rst
-index ddaf1675dcc..28af58135e4 100644
---- a/docs/system/target-arm.rst
-+++ b/docs/system/target-arm.rst
-@@ -91,7 +91,6 @@ undocumented; you can get a complete list by running
-    arm/cubieboard
-    arm/emcraft-sf2
-    arm/musicpal
--   arm/mainstone
-    arm/kzm
-    arm/nseries
-    arm/nrf
-diff --git a/configs/devices/arm-softmmu/default.mak b/configs/devices/arm-softmmu/default.mak
-index 490ef4b3943..547100a06f3 100644
---- a/configs/devices/arm-softmmu/default.mak
-+++ b/configs/devices/arm-softmmu/default.mak
-@@ -27,7 +27,6 @@
- # CONFIG_VERSATILE=n
- # CONFIG_VEXPRESS=n
- # CONFIG_ZYNQ=n
--# CONFIG_MAINSTONE=n
- # CONFIG_Z2=n
- # CONFIG_NPCM7XX=n
- # CONFIG_COLLIE=n
-diff --git a/hw/arm/mainstone.c b/hw/arm/mainstone.c
-deleted file mode 100644
-index 3a6c22fddbc..00000000000
---- a/hw/arm/mainstone.c
-+++ /dev/null
-@@ -1,175 +0,0 @@
+@@ -1,21 +0,0 @@
 -/*
-- * PXA270-based Intel Mainstone platforms.
+- * Toshiba TC6393XB I/O Controller.
+- * Found in Sharp Zaurus SL-6000 (tosa) or some
+- * Toshiba e-Series PDAs.
 - *
-- * Copyright (c) 2007 by Armin Kuster <akuster@kama-aina.net> or
-- *                                    <akuster@mvista.com>
+- * Copyright (c) 2007 Hervé Poussineau
 - *
-- * Code based on spitz platform by Andrzej Zaborowski <balrog@zabor.org>
+- * This work is licensed under the terms of the GNU GPL, version 2 or later.
+- * See the COPYING file in the top-level directory.
+- */
+-
+-#ifndef HW_DISPLAY_TC6393XB_H
+-#define HW_DISPLAY_TC6393XB_H
+-
+-typedef struct TC6393xbState TC6393xbState;
+-
+-TC6393xbState *tc6393xb_init(struct MemoryRegion *sysmem,
+-                             uint32_t base, qemu_irq irq);
+-qemu_irq tc6393xb_l3v_get(TC6393xbState *s);
+-
+-#endif
+diff --git a/hw/display/tc6393xb.c b/hw/display/tc6393xb.c
+deleted file mode 100644
+index c7beba453b0..00000000000
+--- a/hw/display/tc6393xb.c
++++ /dev/null
+@@ -1,568 +0,0 @@
+-/*
+- * Toshiba TC6393XB I/O Controller.
+- * Found in Sharp Zaurus SL-6000 (tosa) or some
+- * Toshiba e-Series PDAs.
+- *
+- * Most features are currently unsupported!!!
 - *
 - * This code is licensed under the GNU GPL v2.
 - *
 - * Contributions after 2012-01-13 are licensed under the terms of the
 - * GNU GPL, version 2 or (at your option) any later version.
 - */
+-
 -#include "qemu/osdep.h"
--#include "qemu/units.h"
--#include "qemu/error-report.h"
 -#include "qapi/error.h"
--#include "hw/arm/pxa.h"
--#include "hw/arm/boot.h"
--#include "net/net.h"
--#include "hw/net/smc91c111.h"
--#include "hw/boards.h"
+-#include "qemu/host-utils.h"
+-#include "hw/irq.h"
+-#include "hw/display/tc6393xb.h"
+-#include "exec/memory.h"
 -#include "hw/block/flash.h"
--#include "hw/sysbus.h"
--#include "exec/address-spaces.h"
+-#include "ui/console.h"
+-#include "ui/pixel_ops.h"
+-#include "sysemu/blockdev.h"
 -
--/* Device addresses */
--#define MST_FPGA_PHYS	0x08000000
--#define MST_ETH_PHYS	0x10000300
--#define MST_FLASH_0		0x00000000
--#define MST_FLASH_1		0x04000000
+-#define IRQ_TC6393_NAND		0
+-#define IRQ_TC6393_MMC		1
+-#define IRQ_TC6393_OHCI		2
+-#define IRQ_TC6393_SERIAL	3
+-#define IRQ_TC6393_FB		4
 -
--/* IRQ definitions */
--#define MMC_IRQ       0
--#define USIM_IRQ      1
--#define USBC_IRQ      2
--#define ETHERNET_IRQ  3
--#define AC97_IRQ      4
--#define PEN_IRQ       5
--#define MSINS_IRQ     6
--#define EXBRD_IRQ     7
--#define S0_CD_IRQ     9
--#define S0_STSCHG_IRQ 10
--#define S0_IRQ        11
--#define S1_CD_IRQ     13
--#define S1_STSCHG_IRQ 14
--#define S1_IRQ        15
+-#define	TC6393XB_NR_IRQS	8
 -
--static const struct keymap map[0xE0] = {
--    [0 ... 0xDF] = { -1, -1 },
--    [0x1e] = {0,0}, /* a */
--    [0x30] = {0,1}, /* b */
--    [0x2e] = {0,2}, /* c */
--    [0x20] = {0,3}, /* d */
--    [0x12] = {0,4}, /* e */
--    [0x21] = {0,5}, /* f */
--    [0x22] = {1,0}, /* g */
--    [0x23] = {1,1}, /* h */
--    [0x17] = {1,2}, /* i */
--    [0x24] = {1,3}, /* j */
--    [0x25] = {1,4}, /* k */
--    [0x26] = {1,5}, /* l */
--    [0x32] = {2,0}, /* m */
--    [0x31] = {2,1}, /* n */
--    [0x18] = {2,2}, /* o */
--    [0x19] = {2,3}, /* p */
--    [0x10] = {2,4}, /* q */
--    [0x13] = {2,5}, /* r */
--    [0x1f] = {3,0}, /* s */
--    [0x14] = {3,1}, /* t */
--    [0x16] = {3,2}, /* u */
--    [0x2f] = {3,3}, /* v */
--    [0x11] = {3,4}, /* w */
--    [0x2d] = {3,5}, /* x */
--    [0x34] = {4,0}, /* . */
--    [0x15] = {4,2}, /* y */
--    [0x2c] = {4,3}, /* z */
--    [0x35] = {4,4}, /* / */
--    [0xc7] = {5,0}, /* Home */
--    [0x2a] = {5,1}, /* shift */
--    /*
--     * There are two matrix positions which map to space,
--     * but QEMU can only use one of them for the reverse
--     * mapping, so simply use the second one.
--     */
--    /* [0x39] = {5,2}, space */
--    [0x39] = {5,3}, /* space */
--    /*
--     * Matrix position {5,4} and other keys are missing here.
--     * TODO: Compare with Linux code and test real hardware.
--     */
--    [0x1c] = {5,4}, /* enter */
--    [0x0e] = {5,5}, /* backspace */
--    [0xc8] = {6,0}, /* up */
--    [0xd0] = {6,1}, /* down */
--    [0xcb] = {6,2}, /* left */
--    [0xcd] = {6,3}, /* right */
+-#define TC6393XB_GPIOS  16
+-
+-#define SCR_REVID	0x08		/* b Revision ID	*/
+-#define SCR_ISR		0x50		/* b Interrupt Status	*/
+-#define SCR_IMR		0x52		/* b Interrupt Mask	*/
+-#define SCR_IRR		0x54		/* b Interrupt Routing	*/
+-#define SCR_GPER	0x60		/* w GP Enable		*/
+-#define SCR_GPI_SR(i)	(0x64 + (i))	/* b3 GPI Status	*/
+-#define SCR_GPI_IMR(i)	(0x68 + (i))	/* b3 GPI INT Mask	*/
+-#define SCR_GPI_EDER(i)	(0x6c + (i))	/* b3 GPI Edge Detect Enable */
+-#define SCR_GPI_LIR(i)	(0x70 + (i))	/* b3 GPI Level Invert	*/
+-#define SCR_GPO_DSR(i)	(0x78 + (i))	/* b3 GPO Data Set	*/
+-#define SCR_GPO_DOECR(i) (0x7c + (i))	/* b3 GPO Data OE Control */
+-#define SCR_GP_IARCR(i)	(0x80 + (i))	/* b3 GP Internal Active Register Control */
+-#define SCR_GP_IARLCR(i) (0x84 + (i))	/* b3 GP INTERNAL Active Register Level Control */
+-#define SCR_GPI_BCR(i)	(0x88 + (i))	/* b3 GPI Buffer Control */
+-#define SCR_GPA_IARCR	0x8c		/* w GPa Internal Active Register Control */
+-#define SCR_GPA_IARLCR	0x90		/* w GPa Internal Active Register Level Control */
+-#define SCR_GPA_BCR	0x94		/* w GPa Buffer Control */
+-#define SCR_CCR		0x98		/* w Clock Control	*/
+-#define SCR_PLL2CR	0x9a		/* w PLL2 Control	*/
+-#define SCR_PLL1CR	0x9c		/* l PLL1 Control	*/
+-#define SCR_DIARCR	0xa0		/* b Device Internal Active Register Control */
+-#define SCR_DBOCR	0xa1		/* b Device Buffer Off Control */
+-#define SCR_FER		0xe0		/* b Function Enable	*/
+-#define SCR_MCR		0xe4		/* w Mode Control	*/
+-#define SCR_CONFIG	0xfc		/* b Configuration Control */
+-#define SCR_DEBUG	0xff		/* b Debug		*/
+-
+-#define NAND_CFG_COMMAND    0x04    /* w Command        */
+-#define NAND_CFG_BASE       0x10    /* l Control Base Address */
+-#define NAND_CFG_INTP       0x3d    /* b Interrupt Pin  */
+-#define NAND_CFG_INTE       0x48    /* b Int Enable     */
+-#define NAND_CFG_EC         0x4a    /* b Event Control  */
+-#define NAND_CFG_ICC        0x4c    /* b Internal Clock Control */
+-#define NAND_CFG_ECCC       0x5b    /* b ECC Control    */
+-#define NAND_CFG_NFTC       0x60    /* b NAND Flash Transaction Control */
+-#define NAND_CFG_NFM        0x61    /* b NAND Flash Monitor */
+-#define NAND_CFG_NFPSC      0x62    /* b NAND Flash Power Supply Control */
+-#define NAND_CFG_NFDC       0x63    /* b NAND Flash Detect Control */
+-
+-#define NAND_DATA   0x00        /* l Data       */
+-#define NAND_MODE   0x04        /* b Mode       */
+-#define NAND_STATUS 0x05        /* b Status     */
+-#define NAND_ISR    0x06        /* b Interrupt Status */
+-#define NAND_IMR    0x07        /* b Interrupt Mask */
+-
+-#define NAND_MODE_WP        0x80
+-#define NAND_MODE_CE        0x10
+-#define NAND_MODE_ALE       0x02
+-#define NAND_MODE_CLE       0x01
+-#define NAND_MODE_ECC_MASK  0x60
+-#define NAND_MODE_ECC_EN    0x20
+-#define NAND_MODE_ECC_READ  0x40
+-#define NAND_MODE_ECC_RST   0x60
+-
+-struct TC6393xbState {
+-    MemoryRegion iomem;
+-    qemu_irq irq;
+-    qemu_irq *sub_irqs;
+-    struct {
+-        uint8_t ISR;
+-        uint8_t IMR;
+-        uint8_t IRR;
+-        uint16_t GPER;
+-        uint8_t GPI_SR[3];
+-        uint8_t GPI_IMR[3];
+-        uint8_t GPI_EDER[3];
+-        uint8_t GPI_LIR[3];
+-        uint8_t GP_IARCR[3];
+-        uint8_t GP_IARLCR[3];
+-        uint8_t GPI_BCR[3];
+-        uint16_t GPA_IARCR;
+-        uint16_t GPA_IARLCR;
+-        uint16_t CCR;
+-        uint16_t PLL2CR;
+-        uint32_t PLL1CR;
+-        uint8_t DIARCR;
+-        uint8_t DBOCR;
+-        uint8_t FER;
+-        uint16_t MCR;
+-        uint8_t CONFIG;
+-        uint8_t DEBUG;
+-    } scr;
+-    uint32_t gpio_dir;
+-    uint32_t gpio_level;
+-    uint32_t prev_level;
+-    qemu_irq handler[TC6393XB_GPIOS];
+-    qemu_irq *gpio_in;
+-
+-    struct {
+-        uint8_t mode;
+-        uint8_t isr;
+-        uint8_t imr;
+-    } nand;
+-    int nand_enable;
+-    uint32_t nand_phys;
+-    DeviceState *flash;
+-    ECCState ecc;
+-
+-    QemuConsole *con;
+-    MemoryRegion vram;
+-    uint16_t *vram_ptr;
+-    uint32_t scr_width, scr_height; /* in pixels */
+-    qemu_irq l3v;
+-    unsigned blank : 1,
+-             blanked : 1;
 -};
 -
--enum mainstone_model_e { mainstone };
--
--#define MAINSTONE_RAM_SIZE      (64 * MiB)
--#define MAINSTONE_ROM_SIZE      (8 * MiB)
--#define MAINSTONE_FLASH_SIZE    (32 * MiB)
--
--static struct arm_boot_info mainstone_binfo = {
--    .loader_start = PXA2XX_SDRAM_BASE,
--    .ram_size = MAINSTONE_RAM_SIZE,
--};
--
--#define FLASH_SECTOR_SIZE   (256 * KiB)
--
--static void mainstone_common_init(MachineState *machine,
--                                  enum mainstone_model_e model, int arm_id)
+-static void tc6393xb_gpio_set(void *opaque, int line, int level)
 -{
--    hwaddr mainstone_flash_base[] = { MST_FLASH_0, MST_FLASH_1 };
--    PXA2xxState *mpu;
--    DeviceState *mst_irq;
--    DriveInfo *dinfo;
--    int i;
--    MemoryRegion *rom = g_new(MemoryRegion, 1);
+-//    TC6393xbState *s = opaque;
 -
--    /* Setup CPU & memory */
--    mpu = pxa270_init(mainstone_binfo.ram_size, machine->cpu_type);
--    memory_region_init_rom(rom, NULL, "mainstone.rom", MAINSTONE_ROM_SIZE,
--                           &error_fatal);
--    memory_region_add_subregion(get_system_memory(), 0x00000000, rom);
--
--    /* There are two 32MiB flash devices on the board */
--    for (i = 0; i < 2; i ++) {
--        dinfo = drive_get(IF_PFLASH, 0, i);
--        pflash_cfi01_register(mainstone_flash_base[i],
--                              i ? "mainstone.flash1" : "mainstone.flash0",
--                              MAINSTONE_FLASH_SIZE,
--                              dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
--                              FLASH_SECTOR_SIZE, 4, 0, 0, 0, 0, 0);
+-    if (line > TC6393XB_GPIOS) {
+-        printf("%s: No GPIO pin %i\n", __func__, line);
+-        return;
 -    }
 -
--    mst_irq = sysbus_create_simple("mainstone-fpga", MST_FPGA_PHYS,
--                    qdev_get_gpio_in(mpu->gpio, 0));
--
--    /* setup keypad */
--    pxa27x_register_keypad(mpu->kp, map, 0xe0);
--
--    /* MMC/SD host */
--    pxa2xx_mmci_handlers(mpu->mmc, NULL, qdev_get_gpio_in(mst_irq, MMC_IRQ));
--
--    pxa2xx_pcmcia_set_irq_cb(mpu->pcmcia[0],
--            qdev_get_gpio_in(mst_irq, S0_IRQ),
--            qdev_get_gpio_in(mst_irq, S0_CD_IRQ));
--    pxa2xx_pcmcia_set_irq_cb(mpu->pcmcia[1],
--            qdev_get_gpio_in(mst_irq, S1_IRQ),
--            qdev_get_gpio_in(mst_irq, S1_CD_IRQ));
--
--    smc91c111_init(MST_ETH_PHYS, qdev_get_gpio_in(mst_irq, ETHERNET_IRQ));
--
--    mainstone_binfo.board_id = arm_id;
--    arm_load_kernel(mpu->cpu, machine, &mainstone_binfo);
+-    // FIXME: how does the chip reflect the GPIO input level change?
 -}
 -
--static void mainstone_init(MachineState *machine)
+-static void tc6393xb_gpio_handler_update(TC6393xbState *s)
 -{
--    mainstone_common_init(machine, mainstone, 0x196);
+-    uint32_t level, diff;
+-    int bit;
+-
+-    level = s->gpio_level & s->gpio_dir;
+-    level &= MAKE_64BIT_MASK(0, TC6393XB_GPIOS);
+-
+-    for (diff = s->prev_level ^ level; diff; diff ^= 1 << bit) {
+-        bit = ctz32(diff);
+-        qemu_set_irq(s->handler[bit], (level >> bit) & 1);
+-    }
+-
+-    s->prev_level = level;
 -}
 -
--static void mainstone2_machine_init(MachineClass *mc)
+-qemu_irq tc6393xb_l3v_get(TC6393xbState *s)
 -{
--    mc->desc = "Mainstone II (PXA27x)";
--    mc->init = mainstone_init;
--    mc->ignore_memory_transaction_failures = true;
--    mc->default_cpu_type = ARM_CPU_TYPE_NAME("pxa270-c5");
--    mc->deprecation_reason = "machine is old and unmaintained";
+-    return s->l3v;
 -}
 -
--DEFINE_MACHINE("mainstone", mainstone2_machine_init)
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index d3e07262b14..84cc34f016c 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -94,14 +94,6 @@ config INTEGRATOR
-     select PL181 # display
-     select SMC91C111
+-static void tc6393xb_l3v(void *opaque, int line, int level)
+-{
+-    TC6393xbState *s = opaque;
+-    s->blank = !level;
+-    fprintf(stderr, "L3V: %d\n", level);
+-}
+-
+-static void tc6393xb_sub_irq(void *opaque, int line, int level) {
+-    TC6393xbState *s = opaque;
+-    uint8_t isr = s->scr.ISR;
+-    if (level)
+-        isr |= 1 << line;
+-    else
+-        isr &= ~(1 << line);
+-    s->scr.ISR = isr;
+-    qemu_set_irq(s->irq, isr & s->scr.IMR);
+-}
+-
+-#define SCR_REG_B(N)                            \
+-    case SCR_ ##N: return s->scr.N
+-#define SCR_REG_W(N)                            \
+-    case SCR_ ##N: return s->scr.N;             \
+-    case SCR_ ##N + 1: return s->scr.N >> 8;
+-#define SCR_REG_L(N)                            \
+-    case SCR_ ##N: return s->scr.N;             \
+-    case SCR_ ##N + 1: return s->scr.N >> 8;    \
+-    case SCR_ ##N + 2: return s->scr.N >> 16;   \
+-    case SCR_ ##N + 3: return s->scr.N >> 24;
+-#define SCR_REG_A(N)                            \
+-    case SCR_ ##N(0): return s->scr.N[0];       \
+-    case SCR_ ##N(1): return s->scr.N[1];       \
+-    case SCR_ ##N(2): return s->scr.N[2]
+-
+-static uint32_t tc6393xb_scr_readb(TC6393xbState *s, hwaddr addr)
+-{
+-    switch (addr) {
+-        case SCR_REVID:
+-            return 3;
+-        case SCR_REVID+1:
+-            return 0;
+-        SCR_REG_B(ISR);
+-        SCR_REG_B(IMR);
+-        SCR_REG_B(IRR);
+-        SCR_REG_W(GPER);
+-        SCR_REG_A(GPI_SR);
+-        SCR_REG_A(GPI_IMR);
+-        SCR_REG_A(GPI_EDER);
+-        SCR_REG_A(GPI_LIR);
+-        case SCR_GPO_DSR(0):
+-        case SCR_GPO_DSR(1):
+-        case SCR_GPO_DSR(2):
+-            return (s->gpio_level >> ((addr - SCR_GPO_DSR(0)) * 8)) & 0xff;
+-        case SCR_GPO_DOECR(0):
+-        case SCR_GPO_DOECR(1):
+-        case SCR_GPO_DOECR(2):
+-            return (s->gpio_dir >> ((addr - SCR_GPO_DOECR(0)) * 8)) & 0xff;
+-        SCR_REG_A(GP_IARCR);
+-        SCR_REG_A(GP_IARLCR);
+-        SCR_REG_A(GPI_BCR);
+-        SCR_REG_W(GPA_IARCR);
+-        SCR_REG_W(GPA_IARLCR);
+-        SCR_REG_W(CCR);
+-        SCR_REG_W(PLL2CR);
+-        SCR_REG_L(PLL1CR);
+-        SCR_REG_B(DIARCR);
+-        SCR_REG_B(DBOCR);
+-        SCR_REG_B(FER);
+-        SCR_REG_W(MCR);
+-        SCR_REG_B(CONFIG);
+-        SCR_REG_B(DEBUG);
+-    }
+-    fprintf(stderr, "tc6393xb_scr: unhandled read at %08x\n", (uint32_t) addr);
+-    return 0;
+-}
+-#undef SCR_REG_B
+-#undef SCR_REG_W
+-#undef SCR_REG_L
+-#undef SCR_REG_A
+-
+-#define SCR_REG_B(N)                                \
+-    case SCR_ ##N: s->scr.N = value; return;
+-#define SCR_REG_W(N)                                \
+-    case SCR_ ##N: s->scr.N = (s->scr.N & ~0xff) | (value & 0xff); return; \
+-    case SCR_ ##N + 1: s->scr.N = (s->scr.N & 0xff) | (value << 8); return
+-#define SCR_REG_L(N)                                \
+-    case SCR_ ##N: s->scr.N = (s->scr.N & ~0xff) | (value & 0xff); return;   \
+-    case SCR_ ##N + 1: s->scr.N = (s->scr.N & ~(0xff << 8)) | (value & (0xff << 8)); return;     \
+-    case SCR_ ##N + 2: s->scr.N = (s->scr.N & ~(0xff << 16)) | (value & (0xff << 16)); return;   \
+-    case SCR_ ##N + 3: s->scr.N = (s->scr.N & ~(0xff << 24)) | (value & (0xff << 24)); return;
+-#define SCR_REG_A(N)                                \
+-    case SCR_ ##N(0): s->scr.N[0] = value; return;   \
+-    case SCR_ ##N(1): s->scr.N[1] = value; return;   \
+-    case SCR_ ##N(2): s->scr.N[2] = value; return
+-
+-static void tc6393xb_scr_writeb(TC6393xbState *s, hwaddr addr, uint32_t value)
+-{
+-    switch (addr) {
+-        SCR_REG_B(ISR);
+-        SCR_REG_B(IMR);
+-        SCR_REG_B(IRR);
+-        SCR_REG_W(GPER);
+-        SCR_REG_A(GPI_SR);
+-        SCR_REG_A(GPI_IMR);
+-        SCR_REG_A(GPI_EDER);
+-        SCR_REG_A(GPI_LIR);
+-        case SCR_GPO_DSR(0):
+-        case SCR_GPO_DSR(1):
+-        case SCR_GPO_DSR(2):
+-            s->gpio_level = (s->gpio_level & ~(0xff << ((addr - SCR_GPO_DSR(0))*8))) | ((value & 0xff) << ((addr - SCR_GPO_DSR(0))*8));
+-            tc6393xb_gpio_handler_update(s);
+-            return;
+-        case SCR_GPO_DOECR(0):
+-        case SCR_GPO_DOECR(1):
+-        case SCR_GPO_DOECR(2):
+-            s->gpio_dir = (s->gpio_dir & ~(0xff << ((addr - SCR_GPO_DOECR(0))*8))) | ((value & 0xff) << ((addr - SCR_GPO_DOECR(0))*8));
+-            tc6393xb_gpio_handler_update(s);
+-            return;
+-        SCR_REG_A(GP_IARCR);
+-        SCR_REG_A(GP_IARLCR);
+-        SCR_REG_A(GPI_BCR);
+-        SCR_REG_W(GPA_IARCR);
+-        SCR_REG_W(GPA_IARLCR);
+-        SCR_REG_W(CCR);
+-        SCR_REG_W(PLL2CR);
+-        SCR_REG_L(PLL1CR);
+-        SCR_REG_B(DIARCR);
+-        SCR_REG_B(DBOCR);
+-        SCR_REG_B(FER);
+-        SCR_REG_W(MCR);
+-        SCR_REG_B(CONFIG);
+-        SCR_REG_B(DEBUG);
+-    }
+-    fprintf(stderr, "tc6393xb_scr: unhandled write at %08x: %02x\n",
+-                                        (uint32_t) addr, value & 0xff);
+-}
+-#undef SCR_REG_B
+-#undef SCR_REG_W
+-#undef SCR_REG_L
+-#undef SCR_REG_A
+-
+-static void tc6393xb_nand_irq(TC6393xbState *s) {
+-    qemu_set_irq(s->sub_irqs[IRQ_TC6393_NAND],
+-            (s->nand.imr & 0x80) && (s->nand.imr & s->nand.isr));
+-}
+-
+-static uint32_t tc6393xb_nand_cfg_readb(TC6393xbState *s, hwaddr addr) {
+-    switch (addr) {
+-        case NAND_CFG_COMMAND:
+-            return s->nand_enable ? 2 : 0;
+-        case NAND_CFG_BASE:
+-        case NAND_CFG_BASE + 1:
+-        case NAND_CFG_BASE + 2:
+-        case NAND_CFG_BASE + 3:
+-            return s->nand_phys >> (addr - NAND_CFG_BASE);
+-    }
+-    fprintf(stderr, "tc6393xb_nand_cfg: unhandled read at %08x\n", (uint32_t) addr);
+-    return 0;
+-}
+-static void tc6393xb_nand_cfg_writeb(TC6393xbState *s, hwaddr addr, uint32_t value) {
+-    switch (addr) {
+-        case NAND_CFG_COMMAND:
+-            s->nand_enable = (value & 0x2);
+-            return;
+-        case NAND_CFG_BASE:
+-        case NAND_CFG_BASE + 1:
+-        case NAND_CFG_BASE + 2:
+-        case NAND_CFG_BASE + 3:
+-            s->nand_phys &= ~(0xff << ((addr - NAND_CFG_BASE) * 8));
+-            s->nand_phys |= (value & 0xff) << ((addr - NAND_CFG_BASE) * 8);
+-            return;
+-    }
+-    fprintf(stderr, "tc6393xb_nand_cfg: unhandled write at %08x: %02x\n",
+-                                        (uint32_t) addr, value & 0xff);
+-}
+-
+-static uint32_t tc6393xb_nand_readb(TC6393xbState *s, hwaddr addr) {
+-    switch (addr) {
+-        case NAND_DATA + 0:
+-        case NAND_DATA + 1:
+-        case NAND_DATA + 2:
+-        case NAND_DATA + 3:
+-            return nand_getio(s->flash);
+-        case NAND_MODE:
+-            return s->nand.mode;
+-        case NAND_STATUS:
+-            return 0x14;
+-        case NAND_ISR:
+-            return s->nand.isr;
+-        case NAND_IMR:
+-            return s->nand.imr;
+-    }
+-    fprintf(stderr, "tc6393xb_nand: unhandled read at %08x\n", (uint32_t) addr);
+-    return 0;
+-}
+-static void tc6393xb_nand_writeb(TC6393xbState *s, hwaddr addr, uint32_t value) {
+-//    fprintf(stderr, "tc6393xb_nand: write at %08x: %02x\n",
+-//					(uint32_t) addr, value & 0xff);
+-    switch (addr) {
+-        case NAND_DATA + 0:
+-        case NAND_DATA + 1:
+-        case NAND_DATA + 2:
+-        case NAND_DATA + 3:
+-            nand_setio(s->flash, value);
+-            s->nand.isr |= 1;
+-            tc6393xb_nand_irq(s);
+-            return;
+-        case NAND_MODE:
+-            s->nand.mode = value;
+-            nand_setpins(s->flash,
+-                    value & NAND_MODE_CLE,
+-                    value & NAND_MODE_ALE,
+-                    !(value & NAND_MODE_CE),
+-                    value & NAND_MODE_WP,
+-                    0); // FIXME: gnd
+-            switch (value & NAND_MODE_ECC_MASK) {
+-                case NAND_MODE_ECC_RST:
+-                    ecc_reset(&s->ecc);
+-                    break;
+-                case NAND_MODE_ECC_READ:
+-                    // FIXME
+-                    break;
+-                case NAND_MODE_ECC_EN:
+-                    ecc_reset(&s->ecc);
+-            }
+-            return;
+-        case NAND_ISR:
+-            s->nand.isr = value;
+-            tc6393xb_nand_irq(s);
+-            return;
+-        case NAND_IMR:
+-            s->nand.imr = value;
+-            tc6393xb_nand_irq(s);
+-            return;
+-    }
+-    fprintf(stderr, "tc6393xb_nand: unhandled write at %08x: %02x\n",
+-                                        (uint32_t) addr, value & 0xff);
+-}
+-
+-static void tc6393xb_draw_graphic(TC6393xbState *s, int full_update)
+-{
+-    DisplaySurface *surface = qemu_console_surface(s->con);
+-    int i;
+-    uint16_t *data_buffer;
+-    uint8_t *data_display;
+-
+-    data_buffer = s->vram_ptr;
+-    data_display = surface_data(surface);
+-    for (i = 0; i < s->scr_height; i++) {
+-        int j;
+-        for (j = 0; j < s->scr_width; j++, data_display += 4, data_buffer++) {
+-            uint16_t color = *data_buffer;
+-            uint32_t dest_color = rgb_to_pixel32(
+-                           ((color & 0xf800) * 0x108) >> 11,
+-                           ((color & 0x7e0) * 0x41) >> 9,
+-                           ((color & 0x1f) * 0x21) >> 2
+-                           );
+-            *(uint32_t *)data_display = dest_color;
+-        }
+-    }
+-    dpy_gfx_update_full(s->con);
+-}
+-
+-static void tc6393xb_draw_blank(TC6393xbState *s, int full_update)
+-{
+-    DisplaySurface *surface = qemu_console_surface(s->con);
+-    int i, w;
+-    uint8_t *d;
+-
+-    if (!full_update)
+-        return;
+-
+-    w = s->scr_width * surface_bytes_per_pixel(surface);
+-    d = surface_data(surface);
+-    for(i = 0; i < s->scr_height; i++) {
+-        memset(d, 0, w);
+-        d += surface_stride(surface);
+-    }
+-
+-    dpy_gfx_update_full(s->con);
+-}
+-
+-static void tc6393xb_update_display(void *opaque)
+-{
+-    TC6393xbState *s = opaque;
+-    DisplaySurface *surface = qemu_console_surface(s->con);
+-    int full_update;
+-
+-    if (s->scr_width == 0 || s->scr_height == 0)
+-        return;
+-
+-    full_update = 0;
+-    if (s->blanked != s->blank) {
+-        s->blanked = s->blank;
+-        full_update = 1;
+-    }
+-    if (s->scr_width != surface_width(surface) ||
+-        s->scr_height != surface_height(surface)) {
+-        qemu_console_resize(s->con, s->scr_width, s->scr_height);
+-        full_update = 1;
+-    }
+-    if (s->blanked)
+-        tc6393xb_draw_blank(s, full_update);
+-    else
+-        tc6393xb_draw_graphic(s, full_update);
+-}
+-
+-
+-static uint64_t tc6393xb_readb(void *opaque, hwaddr addr,
+-                               unsigned size)
+-{
+-    TC6393xbState *s = opaque;
+-
+-    switch (addr >> 8) {
+-        case 0:
+-            return tc6393xb_scr_readb(s, addr & 0xff);
+-        case 1:
+-            return tc6393xb_nand_cfg_readb(s, addr & 0xff);
+-    };
+-
+-    if ((addr &~0xff) == s->nand_phys && s->nand_enable) {
+-//        return tc6393xb_nand_readb(s, addr & 0xff);
+-        uint8_t d = tc6393xb_nand_readb(s, addr & 0xff);
+-//        fprintf(stderr, "tc6393xb_nand: read at %08x: %02hhx\n", (uint32_t) addr, d);
+-        return d;
+-    }
+-
+-//    fprintf(stderr, "tc6393xb: unhandled read at %08x\n", (uint32_t) addr);
+-    return 0;
+-}
+-
+-static void tc6393xb_writeb(void *opaque, hwaddr addr,
+-                            uint64_t value, unsigned size) {
+-    TC6393xbState *s = opaque;
+-
+-    switch (addr >> 8) {
+-        case 0:
+-            tc6393xb_scr_writeb(s, addr & 0xff, value);
+-            return;
+-        case 1:
+-            tc6393xb_nand_cfg_writeb(s, addr & 0xff, value);
+-            return;
+-    };
+-
+-    if ((addr &~0xff) == s->nand_phys && s->nand_enable)
+-        tc6393xb_nand_writeb(s, addr & 0xff, value);
+-    else
+-        fprintf(stderr, "tc6393xb: unhandled write at %08x: %02x\n",
+-                (uint32_t) addr, (int)value & 0xff);
+-}
+-
+-static const GraphicHwOps tc6393xb_gfx_ops = {
+-    .gfx_update  = tc6393xb_update_display,
+-};
+-
+-TC6393xbState *tc6393xb_init(MemoryRegion *sysmem, uint32_t base, qemu_irq irq)
+-{
+-    TC6393xbState *s;
+-    DriveInfo *nand;
+-    static const MemoryRegionOps tc6393xb_ops = {
+-        .read = tc6393xb_readb,
+-        .write = tc6393xb_writeb,
+-        .endianness = DEVICE_NATIVE_ENDIAN,
+-        .impl = {
+-            .min_access_size = 1,
+-            .max_access_size = 1,
+-        },
+-    };
+-
+-    s = g_new0(TC6393xbState, 1);
+-    s->irq = irq;
+-    s->gpio_in = qemu_allocate_irqs(tc6393xb_gpio_set, s, TC6393XB_GPIOS);
+-
+-    s->l3v = qemu_allocate_irq(tc6393xb_l3v, s, 0);
+-    s->blanked = 1;
+-
+-    s->sub_irqs = qemu_allocate_irqs(tc6393xb_sub_irq, s, TC6393XB_NR_IRQS);
+-
+-    nand = drive_get(IF_MTD, 0, 0);
+-    s->flash = nand_init(nand ? blk_by_legacy_dinfo(nand) : NULL,
+-                         NAND_MFR_TOSHIBA, 0x76);
+-
+-    memory_region_init_io(&s->iomem, NULL, &tc6393xb_ops, s, "tc6393xb", 0x10000);
+-    memory_region_add_subregion(sysmem, base, &s->iomem);
+-
+-    memory_region_init_ram(&s->vram, NULL, "tc6393xb.vram", 0x100000,
+-                           &error_fatal);
+-    s->vram_ptr = memory_region_get_ram_ptr(&s->vram);
+-    memory_region_add_subregion(sysmem, base + 0x100000, &s->vram);
+-    s->scr_width = 480;
+-    s->scr_height = 640;
+-    s->con = graphic_console_init(NULL, 0, &tc6393xb_gfx_ops, s);
+-
+-    return s;
+-}
+diff --git a/hw/display/meson.build b/hw/display/meson.build
+index 7db05eace97..dabc0d1da6b 100644
+--- a/hw/display/meson.build
++++ b/hw/display/meson.build
+@@ -25,7 +25,6 @@ system_ss.add(when: 'CONFIG_BOCHS_DISPLAY', if_true: files('bochs-display.c'))
+ system_ss.add(when: 'CONFIG_BLIZZARD', if_true: files('blizzard.c'))
+ system_ss.add(when: 'CONFIG_EXYNOS4', if_true: files('exynos4210_fimd.c'))
+ system_ss.add(when: 'CONFIG_FRAMEBUFFER', if_true: files('framebuffer.c'))
+-system_ss.add(when: 'CONFIG_ZAURUS', if_true: files('tc6393xb.c'))
  
--config MAINSTONE
--    bool
--    default y
--    depends on TCG && ARM
--    select PXA2XX
--    select PFLASH_CFI01
--    select SMC91C111
--
- config MPS3R
-     bool
-     default y
-diff --git a/hw/arm/meson.build b/hw/arm/meson.build
-index 7b474ad518b..72afb9e62a7 100644
---- a/hw/arm/meson.build
-+++ b/hw/arm/meson.build
-@@ -6,7 +6,6 @@ arm_ss.add(when: 'CONFIG_DIGIC', if_true: files('digic_boards.c'))
- arm_ss.add(when: 'CONFIG_EMCRAFT_SF2', if_true: files('msf2-som.c'))
- arm_ss.add(when: 'CONFIG_HIGHBANK', if_true: files('highbank.c'))
- arm_ss.add(when: 'CONFIG_INTEGRATOR', if_true: files('integratorcp.c'))
--arm_ss.add(when: 'CONFIG_MAINSTONE', if_true: files('mainstone.c'))
- arm_ss.add(when: 'CONFIG_MICROBIT', if_true: files('microbit.c'))
- arm_ss.add(when: 'CONFIG_MPS3R', if_true: files('mps3r.c'))
- arm_ss.add(when: 'CONFIG_MUSICPAL', if_true: files('musicpal.c'))
+ system_ss.add(when: 'CONFIG_OMAP', if_true: files('omap_dss.c'))
+ system_ss.add(when: 'CONFIG_PXA2XX', if_true: files('pxa2xx_lcd.c'))
 -- 
 2.34.1
 

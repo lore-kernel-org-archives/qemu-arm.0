@@ -1,112 +1,113 @@
-Received: by 2002:a17:504:3a8f:b0:1be9:327d:8ee3 with SMTP id g15csp1500943njf;
-        Tue, 3 Sep 2024 09:10:56 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUXY9vaysaSYg1wRTrTNJ8NLNy9VnHj4h3FWPShaYp3w/Z2fIbw5Szs3NE0bsnqYXUdU7Q/drn0vcDEiA==@linaro.org
-X-Google-Smtp-Source: AGHT+IHEb1g3HX0bGdNa5fMAnT8HYBD5gMRd0NIeQoXxtplmL2cKcvS0UUJe4172OrrDyFNyEh6q
-X-Received: by 2002:a05:622a:1924:b0:456:7fb2:5460 with SMTP id d75a77b69052e-457e80e4a25mr31825561cf.0.1725379855920;
-        Tue, 03 Sep 2024 09:10:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1725379855; cv=none;
+Received: by 2002:a17:504:3a8f:b0:1be9:327d:8ee3 with SMTP id g15csp1500962njf;
+        Tue, 3 Sep 2024 09:10:58 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXpls1NmuFfyC30zi2ojFlPhtsd9779AanSmMY4DSWos0NT7E72acrSB1gTEPhMOyOfPjjF8Wrs6UEDHw==@linaro.org
+X-Google-Smtp-Source: AGHT+IH8KRC+8uhUtNTmgvEUVSix/hyymv6ZcmKnZjvi1WAs4+4akbO2hnSdxwkHJrPJAVUyAia5
+X-Received: by 2002:a05:6808:1242:b0:3da:a16e:1764 with SMTP id 5614622812f47-3df05c3161cmr18919025b6e.4.1725379858491;
+        Tue, 03 Sep 2024 09:10:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1725379858; cv=none;
         d=google.com; s=arc-20160816;
-        b=GNGLIOYEWZrPkn163tlgoYlC5my0xdrPWDl0r11I2rdj7JY8DIfrP3K1wLsvmNTN2J
-         iv3uwhG14FIU9YNFLnGiL9VeXKD3FrAzodFlmE6G+WegrRA0J57B8CxHvCSr9f36VjiD
-         XI38u3mTM8+/ovEBtWar4rSgJmWTOL9/pqKJEKkiC6oO+amOfpyVmoFVN9FDCScxaNa8
-         Sw41Hh8N9bM25kdGNbR5/8q5eL9U4gxnBoKT/rwhgwovcg6DKATyZGc9r+UdpatX+1MR
-         UcAJj+WeREDLoOr7PmzkY1cP21xOawSX2XONAyCVpLDp/MNLYR38KMjwOwEpQezgTd98
-         zgYg==
+        b=vNb2Z+rnA8camTIJvUhkQ5P7AzBvRPM0npY0uhFfZfIeB+fOSy0zJfd7YvC9EgkeCu
+         qWiYISsNDO6UVY+Yk+JZzUQL02ORtXd63OjIrQPnY1ETZYwY0562SbRMaZAzHAjJEU+V
+         HCMJ+7FVp3l3tBz5HpvJN+IiCBnAe5OcjcCsPjNR8cCrbE8o46BzOMuFl6GgBuDy83Ua
+         mfWV6iVN6Kljtm9QL2gNfqjsPWiuMyKxKI/HdOvzRw2X+RA9LSuQtuLs03vjdNCBWpKD
+         Nb7PCEnN/Yb2hxcbFyw04rxaaDsT+ZhLyH5R1OFtyhQH3c4UClCojD/KLbAbXgO3C5AC
+         og8g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=2bL9kLVJH5Q2HjCODQ+RLibBR+ZnfC9lMb7jT7UXxNs=;
-        fh=H2AmuqulvQE+T5zu97MCEUC3z9wF9NssS7895NhR/+c=;
-        b=uoHcuW1PhK5Fked+aTkiaWbylBIn3WF3wZvESsL4XG5z3Nh0qdgl0+wdgnuxcL/Unc
-         9T6W0DVZEa6ovZ3YNsGQhopeIgI1z/E+oMIcSJMEz43TMRZkVLVmMnUxm7VfuyfnmFhk
-         fM+HKeiCMMxWP9YLdu/5BWF/xr4Bn6Zke5RS4XORyLLk0Vh+fuCsu6zSgpXqpAZwgNnw
-         LHzrKBak9KluWTnYclg86NOr6zATOkQQgV9RClDHcijmiFMkrR5S/JRZSNLSdzib3SsZ
-         OnHu32a3ocvuVD05oCjRHBxhV/XLMpNtJkX8cFrGWf40B5c7i9No1GBeY5lVepwpLjSd
-         vRZw==;
+        bh=1hkuiM8kCwtLjA2hmy1f4xZ9hVGPuFvO8PEzKFEDgtQ=;
+        fh=C3Ly9/DvSliXfBXqK9hjYSg/gHKpa6sTNJEjL2g4Xck=;
+        b=EfU9qvzXtqrNH51BC6mfO+CTUMptj0PkupRWU2R+tr1/7tdW2m/glx/p7M+16goiSz
+         PqRwdZ5pDM0vS0dqwBQyfRxWj9JNAFD8kR7b5CpZvyUFYWQDfRtnCp3MOrmgtIs07rs6
+         2hPytGqMfWPdgdTWRfZJY5+glvo+uKd88Noe69+J2Wplw+Nh2FzA3jwBvUwaz0PyNyi5
+         pbx0EPuY8B3Uvn3lazDsNLQ7aGuWj29aQazWwLTPBFa7rOAywANECVHjRS/GZ0WNQrFY
+         pOr5JFCRo6mWvoP+v1jCBEqGkaAvrN0g9BTht+0p5ihFAjRW76CF8ppsunfZDAwDKqow
+         iVVA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=gAAriE8C;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=wlmfmf1q;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-45682c87ed0si129389251cf.125.2024.09.03.09.10.55
+        by mx.google.com with ESMTPS id a1e0cc1a2514c-846a9e02b88si2459944241.207.2024.09.03.09.10.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 03 Sep 2024 09:10:55 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 03 Sep 2024 09:10:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=gAAriE8C;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=wlmfmf1q;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1slW5H-00087u-FT; Tue, 03 Sep 2024 12:08:47 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1slW50-0006dz-V8; Tue, 03 Sep 2024 12:08:30 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1slW5E-0007lZ-Fo
- for qemu-arm@nongnu.org; Tue, 03 Sep 2024 12:08:44 -0400
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
+ id 1slW4r-00063D-WC
+ for qemu-devel@nongnu.org; Tue, 03 Sep 2024 12:08:22 -0400
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1slW56-0002pk-D4
- for qemu-arm@nongnu.org; Tue, 03 Sep 2024 12:08:44 -0400
-Received: by mail-wm1-x335.google.com with SMTP id
- 5b1f17b1804b1-42c2e50ec6aso19673715e9.0
- for <qemu-arm@nongnu.org>; Tue, 03 Sep 2024 09:08:36 -0700 (PDT)
+ id 1slW4p-0002mN-Hs
+ for qemu-devel@nongnu.org; Tue, 03 Sep 2024 12:08:21 -0400
+Received: by mail-wm1-x336.google.com with SMTP id
+ 5b1f17b1804b1-42bb72a5e0bso48709835e9.1
+ for <qemu-devel@nongnu.org>; Tue, 03 Sep 2024 09:08:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1725379715; x=1725984515; darn=nongnu.org;
+ d=linaro.org; s=google; t=1725379698; x=1725984498; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=2bL9kLVJH5Q2HjCODQ+RLibBR+ZnfC9lMb7jT7UXxNs=;
- b=gAAriE8C0bje/dN3O4fcsrgljBlI8jtI1l6jhLEqhZ5C0L5LlAOq2rf2+Du+sX0ovF
- ayTjCpZ9I9GR3epOcsELD9UiUsVOy4pljJ90n9AeX0n2I9TPYi1x0JzqLbNZOjW6qMvQ
- DinNXXbDh2JQXHc8NKodmm0tDYPnnPmZ4sp5iYkv6FCdYQCirPouFlxD6YgnrwUXIn8Y
- 9HezhQT+CdkBow7uZJ0Ta+XmJ1M7mILowgh4Wqex59ogNjzqD5XHBEdjoK2uRg38inXo
- yrinq07FuV1MeAM/Ce6CETE161JUblw4NeVbMk4xjxqDgKBNsF4jW+ljq66aJ8+eqQPe
- So/A==
+ :reply-to; bh=1hkuiM8kCwtLjA2hmy1f4xZ9hVGPuFvO8PEzKFEDgtQ=;
+ b=wlmfmf1qINVei1nNLsbxUWhVcF1Fs9aYdRCp+2H8HHkAyfVZPK/qs2ypU7zQ+Nv3sl
+ t3NOP8hELrV2h/RwBzrs2QPX1bNrfuRf1wlaIGkORpuBeMpeMVktdORjt470voZ8R/RN
+ g1IQMyCmtZ8bQgdqeTS2OnF+qWf6YkSOQ8CE2GcY+qu+IMVyamXGWAOv7hXgQHMoEoMy
+ zt4nyV9wn9Hg9IatbQ1sWFwtG4ojeKUpuC4qiW8KY+Nwu1+4q1mVI7gxzEhsnVvmqUzi
+ 2gjSIBKjCr2vZ5lVKBlfEsFEeoOlsLYEVyiPBVE/Y8wk7QPDrBRP3ERd+Qv91wXht3aj
+ 2B4A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1725379715; x=1725984515;
+ d=1e100.net; s=20230601; t=1725379698; x=1725984498;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=2bL9kLVJH5Q2HjCODQ+RLibBR+ZnfC9lMb7jT7UXxNs=;
- b=K9DDap0IKsDsG8pXyrpFgnHFajcbE/M3Je7w7Ic1nkk+KPK56mwidwTCgggBEB7ki+
- 6/ysiXIZKAbOwNTeEC/0VN3kHV/i+ofVJ6Ski6Dtsp0azH3/ZSsMDDdtYZWdp0Id655K
- 8ASlvYv/lRE0e2WxCw0MwZPQwcktPH6SjiUfnbwxRFM1RAi7ykFxiBDjblc0K4uLoedM
- 3HOhNWXE1ipkjb+zIjIPigrFlXyauoAQLt97l09WxJePwQBB1jB0ke3AbBuyzfKu/lsG
- ovLw3cLfeKm8ZdNAOv0w3BckbaMe4IhoaJwOuOUSXt96dxMTkqyee/i6+xEjP3djvP3c
- dKiw==
-X-Gm-Message-State: AOJu0YzhlJA4VYKUs0IxO9V8TQPpDxAzf+4444J6g9fVHl3c5N2T3HOj
- XSA5D8fKm76EFILchPPSLhWofMx9zIFBcxRnadaURG0qreRllicKWaYRXLoLsi6PK1ww8uPskRK
- a
-X-Received: by 2002:a05:600c:190a:b0:42c:8806:8b19 with SMTP id
- 5b1f17b1804b1-42c88068c12mr30990775e9.11.1725379714729; 
- Tue, 03 Sep 2024 09:08:34 -0700 (PDT)
+ bh=1hkuiM8kCwtLjA2hmy1f4xZ9hVGPuFvO8PEzKFEDgtQ=;
+ b=p4WNjIEbUkobwEr6XicqZKzSPkazYuKXiYMxZESfANJi/XmA+lVjt3KCxpS6aB/mZ1
+ PY2MubgGZI3O5GWNW2vQar6GJHlAZblA84N5fkTxHvuU7vRIFaGsNbDiMU1o7fMKb8e7
+ IrCGxlxn5pDBQLI9khiPKOI7kAhd6+wPoF9BJpJLnWeX+WO9MIQ8vPIOhzpF4+ukEJEo
+ N2+8Pj18y5clyPKhQgA1+utwa53NYXZC0TWiJRI4pWHCwmroSNsSB+20GibX5MMUN5ou
+ 7/7Lb47WVABKDtGlWph6/IzXcYLZ0Pp42FwhxRP6d4Vi5kEolQInU6fAmU+lPSylXHkI
+ oxoA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUYDtr8Wlk4BFJoV++iaHR6E3/kEcQPX6fSCXHnJ8plKnQF+JxQPvuBpXSshOBC8l1s/Nx0BdwraxuG@nongnu.org
+X-Gm-Message-State: AOJu0YyIzaMQsH+W9ivWFq1Ua8J4dqzgDY6qZPac+VR8HfvrP6ymMAH6
+ 4qIwYPnAWT3dOTjaxjapEgifK5MBvRdmggztWn5Ngi55kq9riNFa+2glBVinbLE=
+X-Received: by 2002:a05:600c:4fd3:b0:428:3b5:816b with SMTP id
+ 5b1f17b1804b1-42bb01aa120mr127645985e9.3.1725379697985; 
+ Tue, 03 Sep 2024 09:08:17 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-42bb6df1066sm175123065e9.18.2024.09.03.09.08.34
+ 5b1f17b1804b1-42bb6df1066sm175123065e9.18.2024.09.03.09.08.15
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 03 Sep 2024 09:08:34 -0700 (PDT)
+ Tue, 03 Sep 2024 09:08:15 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH for-9.2 27/53] hw/display: Remove Blizzard display device
-Date: Tue,  3 Sep 2024 17:07:25 +0100
-Message-Id: <20240903160751.4100218-28-peter.maydell@linaro.org>
+Subject: [PATCH for-9.2 17/53] hw/input: Remove pxa2xx_keypad
+Date: Tue,  3 Sep 2024 17:07:15 +0100
+Message-Id: <20240903160751.4100218-18-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240903160751.4100218-1-peter.maydell@linaro.org>
 References: <20240903160751.4100218-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::335;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x335.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::336;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x336.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -115,1137 +116,400 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 9fHoiz1J2dt+
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 2JQ4ZGC44pbx
 
-Remove the blizzard display device, which was only used with the
-n800 and n810 machines.
+Remove the pxa2xx-specific pxa2xx_keypad device.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- MAINTAINERS                   |    2 -
- include/hw/display/blizzard.h |   21 -
- hw/display/blizzard.c         | 1026 ---------------------------------
- hw/display/Kconfig            |    3 -
- hw/display/meson.build        |    1 -
- 5 files changed, 1053 deletions(-)
- delete mode 100644 include/hw/display/blizzard.h
- delete mode 100644 hw/display/blizzard.c
+ include/hw/arm/pxa.h     |  12 --
+ hw/input/pxa2xx_keypad.c | 331 ---------------------------------------
+ hw/input/meson.build     |   1 -
+ 3 files changed, 344 deletions(-)
+ delete mode 100644 hw/input/pxa2xx_keypad.c
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 156c1ba992c..beee6cb9613 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -867,12 +867,10 @@ nSeries
- M: Peter Maydell <peter.maydell@linaro.org>
- L: qemu-arm@nongnu.org
- S: Odd Fixes
--F: hw/display/blizzard.c
- F: hw/input/lm832x.c
- F: hw/input/tsc2005.c
- F: hw/input/tsc210x.c
- F: hw/rtc/twl92230.c
--F: include/hw/display/blizzard.h
- F: include/hw/input/lm832x.h
- F: include/hw/input/tsc2xxx.h
+diff --git a/include/hw/arm/pxa.h b/include/hw/arm/pxa.h
+index cc4de0750af..40f9356b226 100644
+--- a/include/hw/arm/pxa.h
++++ b/include/hw/arm/pxa.h
+@@ -94,16 +94,4 @@ int pxa2xx_pcmcia_attach(void *opaque, PCMCIACardState *card);
+ int pxa2xx_pcmcia_detach(void *opaque);
+ void pxa2xx_pcmcia_set_irq_cb(void *opaque, qemu_irq irq, qemu_irq cd_irq);
  
-diff --git a/include/hw/display/blizzard.h b/include/hw/display/blizzard.h
+-/* pxa2xx_keypad.c */
+-struct  keymap {
+-    int8_t column;
+-    int8_t row;
+-};
+-typedef struct PXA2xxKeyPadState PXA2xxKeyPadState;
+-PXA2xxKeyPadState *pxa27x_keypad_init(MemoryRegion *sysmem,
+-                                      hwaddr base,
+-                                      qemu_irq irq);
+-void pxa27x_register_keypad(PXA2xxKeyPadState *kp,
+-                            const struct keymap *map, int size);
+-
+ #endif /* PXA_H */
+diff --git a/hw/input/pxa2xx_keypad.c b/hw/input/pxa2xx_keypad.c
 deleted file mode 100644
-index 5b330188354..00000000000
---- a/include/hw/display/blizzard.h
+index 3858648d9f6..00000000000
+--- a/hw/input/pxa2xx_keypad.c
 +++ /dev/null
-@@ -1,21 +0,0 @@
+@@ -1,331 +0,0 @@
 -/*
-- * Epson S1D13744/S1D13745 (Blizzard/Hailstorm/Tornado) LCD/TV controller.
+- * Intel PXA27X Keypad Controller emulation.
 - *
-- * Copyright (C) 2008 Nokia Corporation
-- * Written by Andrzej Zaborowski
+- * Copyright (c) 2007 MontaVista Software, Inc
+- * Written by Armin Kuster <akuster@kama-aina.net>
+- *              or  <Akuster@mvista.com>
 - *
-- * This work is licensed under the terms of the GNU GPL, version 2 or later.
-- * See the COPYING file in the top-level directory.
-- */
--
--#ifndef HW_DISPLAY_BLIZZARD_H
--#define HW_DISPLAY_BLIZZARD_H
--
--
--void *s1d13745_init(qemu_irq gpio_int);
--void s1d13745_write(void *opaque, int dc, uint16_t value);
--void s1d13745_write_block(void *opaque, int dc,
--                          void *buf, size_t len, int pitch);
--uint16_t s1d13745_read(void *opaque, int dc);
--
--#endif
-diff --git a/hw/display/blizzard.c b/hw/display/blizzard.c
-deleted file mode 100644
-index 030abbe7d4d..00000000000
---- a/hw/display/blizzard.c
-+++ /dev/null
-@@ -1,1026 +0,0 @@
--/*
-- * Epson S1D13744/S1D13745 (Blizzard/Hailstorm/Tornado) LCD/TV controller.
+- * This code is licensed under the GPLv2.
 - *
-- * Copyright (C) 2008 Nokia Corporation
-- * Written by Andrzej Zaborowski <andrew@openedhand.com>
-- *
-- * This program is free software; you can redistribute it and/or
-- * modify it under the terms of the GNU General Public License as
-- * published by the Free Software Foundation; either version 2 or
-- * (at your option) version 3 of the License.
-- *
-- * This program is distributed in the hope that it will be useful,
-- * but WITHOUT ANY WARRANTY; without even the implied warranty of
-- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-- * GNU General Public License for more details.
-- *
-- * You should have received a copy of the GNU General Public License along
-- * with this program; if not, see <http://www.gnu.org/licenses/>.
+- * Contributions after 2012-01-13 are licensed under the terms of the
+- * GNU GPL, version 2 or (at your option) any later version.
 - */
 -
 -#include "qemu/osdep.h"
--#include "qemu/bitops.h"
+-#include "qemu/log.h"
+-#include "hw/irq.h"
+-#include "migration/vmstate.h"
+-#include "hw/arm/pxa.h"
 -#include "ui/console.h"
--#include "hw/display/blizzard.h"
--#include "ui/pixel_ops.h"
 -
--typedef void (*blizzard_fn_t)(uint8_t *, const uint8_t *, unsigned int);
+-/*
+- * Keypad
+- */
+-#define KPC         0x00    /* Keypad Interface Control register */
+-#define KPDK        0x08    /* Keypad Interface Direct Key register */
+-#define KPREC       0x10    /* Keypad Interface Rotary Encoder register */
+-#define KPMK        0x18    /* Keypad Interface Matrix Key register */
+-#define KPAS        0x20    /* Keypad Interface Automatic Scan register */
+-#define KPASMKP0    0x28    /* Keypad Interface Automatic Scan Multiple
+-                                Key Presser register 0 */
+-#define KPASMKP1    0x30    /* Keypad Interface Automatic Scan Multiple
+-                                Key Presser register 1 */
+-#define KPASMKP2    0x38    /* Keypad Interface Automatic Scan Multiple
+-                                Key Presser register 2 */
+-#define KPASMKP3    0x40    /* Keypad Interface Automatic Scan Multiple
+-                                Key Presser register 3 */
+-#define KPKDI       0x48    /* Keypad Interface Key Debounce Interval
+-                                register */
 -
--typedef struct {
--    uint8_t reg;
--    uint32_t addr;
--    int swallow;
+-/* Keypad defines */
+-#define KPC_AS          (0x1 << 30)  /* Automatic Scan bit */
+-#define KPC_ASACT       (0x1 << 29)  /* Automatic Scan on Activity */
+-#define KPC_MI          (0x1 << 22)  /* Matrix interrupt bit */
+-#define KPC_IMKP        (0x1 << 21)  /* Ignore Multiple Key Press */
+-#define KPC_MS7         (0x1 << 20)  /* Matrix scan line 7 */
+-#define KPC_MS6         (0x1 << 19)  /* Matrix scan line 6 */
+-#define KPC_MS5         (0x1 << 18)  /* Matrix scan line 5 */
+-#define KPC_MS4         (0x1 << 17)  /* Matrix scan line 4 */
+-#define KPC_MS3         (0x1 << 16)  /* Matrix scan line 3 */
+-#define KPC_MS2         (0x1 << 15)  /* Matrix scan line 2 */
+-#define KPC_MS1         (0x1 << 14)  /* Matrix scan line 1 */
+-#define KPC_MS0         (0x1 << 13)  /* Matrix scan line 0 */
+-#define KPC_ME          (0x1 << 12)  /* Matrix Keypad Enable */
+-#define KPC_MIE         (0x1 << 11)  /* Matrix Interrupt Enable */
+-#define KPC_DK_DEB_SEL  (0x1 <<  9)  /* Direct Keypad Debounce Select */
+-#define KPC_DI          (0x1 <<  5)  /* Direct key interrupt bit */
+-#define KPC_RE_ZERO_DEB (0x1 <<  4)  /* Rotary Encoder Zero Debounce */
+-#define KPC_REE1        (0x1 <<  3)  /* Rotary Encoder1 Enable */
+-#define KPC_REE0        (0x1 <<  2)  /* Rotary Encoder0 Enable */
+-#define KPC_DE          (0x1 <<  1)  /* Direct Keypad Enable */
+-#define KPC_DIE         (0x1 <<  0)  /* Direct Keypad interrupt Enable */
 -
--    int pll;
--    int pll_range;
--    int pll_ctrl;
--    uint8_t pll_mode;
--    uint8_t clksel;
--    int memenable;
--    int memrefresh;
--    uint8_t timing[3];
--    int priority;
+-#define KPDK_DKP        (0x1 << 31)
+-#define KPDK_DK7        (0x1 <<  7)
+-#define KPDK_DK6        (0x1 <<  6)
+-#define KPDK_DK5        (0x1 <<  5)
+-#define KPDK_DK4        (0x1 <<  4)
+-#define KPDK_DK3        (0x1 <<  3)
+-#define KPDK_DK2        (0x1 <<  2)
+-#define KPDK_DK1        (0x1 <<  1)
+-#define KPDK_DK0        (0x1 <<  0)
 -
--    uint8_t lcd_config;
--    int x;
--    int y;
--    int skipx;
--    int skipy;
--    uint8_t hndp;
--    uint8_t vndp;
--    uint8_t hsync;
--    uint8_t vsync;
--    uint8_t pclk;
--    uint8_t u;
--    uint8_t v;
--    uint8_t yrc[2];
--    int ix[2];
--    int iy[2];
--    int ox[2];
--    int oy[2];
+-#define KPREC_OF1       (0x1 << 31)
+-#define KPREC_UF1       (0x1 << 30)
+-#define KPREC_OF0       (0x1 << 15)
+-#define KPREC_UF0       (0x1 << 14)
 -
--    int enable;
--    int blank;
--    int bpp;
--    int invalidate;
--    int mx[2];
--    int my[2];
--    uint8_t mode;
--    uint8_t effect;
--    uint8_t iformat;
--    uint8_t source;
--    QemuConsole *con;
--    blizzard_fn_t *line_fn_tab[2];
--    void *fb;
+-#define KPMK_MKP        (0x1 << 31)
+-#define KPAS_SO         (0x1 << 31)
+-#define KPASMKPx_SO     (0x1 << 31)
 -
--    uint8_t hssi_config[3];
--    uint8_t tv_config;
--    uint8_t tv_timing[4];
--    uint8_t vbi;
--    uint8_t tv_x;
--    uint8_t tv_y;
--    uint8_t tv_test;
--    uint8_t tv_filter_config;
--    uint8_t tv_filter_idx;
--    uint8_t tv_filter_coeff[0x20];
--    uint8_t border_r;
--    uint8_t border_g;
--    uint8_t border_b;
--    uint8_t gamma_config;
--    uint8_t gamma_idx;
--    uint8_t gamma_lut[0x100];
--    uint8_t matrix_ena;
--    uint8_t matrix_coeff[0x12];
--    uint8_t matrix_r;
--    uint8_t matrix_g;
--    uint8_t matrix_b;
--    uint8_t pm;
--    uint8_t status;
--    uint8_t rgbgpio_dir;
--    uint8_t rgbgpio;
--    uint8_t gpio_dir;
--    uint8_t gpio;
--    uint8_t gpio_edge[2];
--    uint8_t gpio_irq;
--    uint8_t gpio_pdown;
 -
--    struct {
--        int x;
--        int y;
--        int dx;
--        int dy;
--        int len;
--        int buflen;
--        void *buf;
--        void *data;
--        uint16_t *ptr;
--        int angle;
--        int pitch;
--        blizzard_fn_t line_fn;
--    } data;
--} BlizzardState;
+-#define KPASMKPx_MKC(row, col)  (1 << (row + 16 * (col % 2)))
 -
--/* Bytes(!) per pixel */
--static const int blizzard_iformat_bpp[0x10] = {
--    0,
--    2,  /* RGB 5:6:5*/
--    3,  /* RGB 6:6:6 mode 1 */
--    3,  /* RGB 8:8:8 mode 1 */
--    0, 0,
--    4,  /* RGB 6:6:6 mode 2 */
--    4,  /* RGB 8:8:8 mode 2 */
--    0,  /* YUV 4:2:2 */
--    0,  /* YUV 4:2:0 */
--    0, 0, 0, 0, 0, 0,
+-#define PXAKBD_MAXROW   8
+-#define PXAKBD_MAXCOL   8
+-
+-struct PXA2xxKeyPadState {
+-    MemoryRegion iomem;
+-    qemu_irq    irq;
+-    const struct  keymap *map;
+-    int         pressed_cnt;
+-    int         alt_code;
+-
+-    uint32_t    kpc;
+-    uint32_t    kpdk;
+-    uint32_t    kprec;
+-    uint32_t    kpmk;
+-    uint32_t    kpas;
+-    uint32_t    kpasmkp[4];
+-    uint32_t    kpkdi;
 -};
 -
--static void blizzard_window(BlizzardState *s)
+-static void pxa27x_keypad_find_pressed_key(PXA2xxKeyPadState *kp, int *row, int *col)
 -{
--    DisplaySurface *surface = qemu_console_surface(s->con);
--    uint8_t *src, *dst;
--    int bypp[2];
--    int bypl[3];
--    int y;
--    blizzard_fn_t fn = s->data.line_fn;
+-    int i;
+-    for (i = 0; i < 4; i++)
+-    {
+-        *col = i * 2;
+-        for (*row = 0; *row < 8; (*row)++) {
+-            if (kp->kpasmkp[i] & (1 << *row))
+-                return;
+-        }
+-        *col = i * 2 + 1;
+-        for (*row = 0; *row < 8; (*row)++) {
+-            if (kp->kpasmkp[i] & (1 << (*row + 16)))
+-                return;
+-        }
+-    }
+-}
 -
--    if (!fn)
+-static void pxa27x_keyboard_event (PXA2xxKeyPadState *kp, int keycode)
+-{
+-    int row, col, rel, assert_irq = 0;
+-    uint32_t val;
+-
+-    if (keycode == 0xe0) {
+-        kp->alt_code = 1;
 -        return;
--    if (s->mx[0] > s->data.x)
--        s->mx[0] = s->data.x;
--    if (s->my[0] > s->data.y)
--        s->my[0] = s->data.y;
--    if (s->mx[1] < s->data.x + s->data.dx)
--        s->mx[1] = s->data.x + s->data.dx;
--    if (s->my[1] < s->data.y + s->data.dy)
--        s->my[1] = s->data.y + s->data.dy;
--
--    bypp[0] = s->bpp;
--    bypp[1] = surface_bytes_per_pixel(surface);
--    bypl[0] = bypp[0] * s->data.pitch;
--    bypl[1] = bypp[1] * s->x;
--    bypl[2] = bypp[0] * s->data.dx;
--
--    src = s->data.data;
--    dst = s->fb + bypl[1] * s->data.y + bypp[1] * s->data.x;
--    for (y = s->data.dy; y > 0; y --, src += bypl[0], dst += bypl[1])
--        fn(dst, src, bypl[2]);
--}
--
--static int blizzard_transfer_setup(BlizzardState *s)
--{
--    if (s->source > 3 || !s->bpp ||
--                    s->ix[1] < s->ix[0] || s->iy[1] < s->iy[0])
--        return 0;
--
--    s->data.angle = s->effect & 3;
--    s->data.line_fn = s->line_fn_tab[!!s->data.angle][s->iformat];
--    s->data.x = s->ix[0];
--    s->data.y = s->iy[0];
--    s->data.dx = s->ix[1] - s->ix[0] + 1;
--    s->data.dy = s->iy[1] - s->iy[0] + 1;
--    s->data.len = s->bpp * s->data.dx * s->data.dy;
--    s->data.pitch = s->data.dx;
--    if (s->data.len > s->data.buflen) {
--        s->data.buf = g_realloc(s->data.buf, s->data.len);
--        s->data.buflen = s->data.len;
 -    }
--    s->data.ptr = s->data.buf;
--    s->data.data = s->data.buf;
--    s->data.len /= 2;
--    return 1;
+-
+-    if(!(kp->kpc & KPC_ME)) /* skip if not enabled */
+-        return;
+-
+-    rel = (keycode & 0x80) ? 1 : 0; /* key release from qemu */
+-    keycode &= ~0x80; /* strip qemu key release bit */
+-    if (kp->alt_code) {
+-        keycode |= 0x80;
+-        kp->alt_code = 0;
+-    }
+-
+-    row = kp->map[keycode].row;
+-    col = kp->map[keycode].column;
+-    if (row == -1 || col == -1) {
+-        return;
+-    }
+-
+-    val = KPASMKPx_MKC(row, col);
+-    if (rel) {
+-        if (kp->kpasmkp[col / 2] & val) {
+-            kp->kpasmkp[col / 2] &= ~val;
+-            kp->pressed_cnt--;
+-            assert_irq = 1;
+-        }
+-    } else {
+-        if (!(kp->kpasmkp[col / 2] & val)) {
+-            kp->kpasmkp[col / 2] |= val;
+-            kp->pressed_cnt++;
+-            assert_irq = 1;
+-        }
+-    }
+-    kp->kpas = ((kp->pressed_cnt & 0x1f) << 26) | (0xf << 4) | 0xf;
+-    if (kp->pressed_cnt == 1) {
+-        kp->kpas &= ~((0xf << 4) | 0xf);
+-        if (rel) {
+-            pxa27x_keypad_find_pressed_key(kp, &row, &col);
+-        }
+-        kp->kpas |= ((row & 0xf) << 4) | (col & 0xf);
+-    }
+-
+-    if (!(kp->kpc & (KPC_AS | KPC_ASACT)))
+-        assert_irq = 0;
+-
+-    if (assert_irq && (kp->kpc & KPC_MIE)) {
+-        kp->kpc |= KPC_MI;
+-        qemu_irq_raise(kp->irq);
+-    }
 -}
 -
--static void blizzard_reset(BlizzardState *s)
+-static uint64_t pxa2xx_keypad_read(void *opaque, hwaddr offset,
+-                                   unsigned size)
 -{
--    s->reg = 0;
--    s->swallow = 0;
+-    PXA2xxKeyPadState *s = (PXA2xxKeyPadState *) opaque;
+-    uint32_t tmp;
 -
--    s->pll = 9;
--    s->pll_range = 1;
--    s->pll_ctrl = 0x14;
--    s->pll_mode = 0x32;
--    s->clksel = 0x00;
--    s->memenable = 0;
--    s->memrefresh = 0x25c;
--    s->timing[0] = 0x3f;
--    s->timing[1] = 0x13;
--    s->timing[2] = 0x21;
--    s->priority = 0;
--
--    s->lcd_config = 0x74;
--    s->x = 8;
--    s->y = 1;
--    s->skipx = 0;
--    s->skipy = 0;
--    s->hndp = 3;
--    s->vndp = 2;
--    s->hsync = 1;
--    s->vsync = 1;
--    s->pclk = 0x80;
--
--    s->ix[0] = 0;
--    s->ix[1] = 0;
--    s->iy[0] = 0;
--    s->iy[1] = 0;
--    s->ox[0] = 0;
--    s->ox[1] = 0;
--    s->oy[0] = 0;
--    s->oy[1] = 0;
--
--    s->yrc[0] = 0x00;
--    s->yrc[1] = 0x30;
--    s->u = 0;
--    s->v = 0;
--
--    s->iformat = 3;
--    s->source = 0;
--    s->bpp = blizzard_iformat_bpp[s->iformat];
--
--    s->hssi_config[0] = 0x00;
--    s->hssi_config[1] = 0x00;
--    s->hssi_config[2] = 0x01;
--    s->tv_config = 0x00;
--    s->tv_timing[0] = 0x00;
--    s->tv_timing[1] = 0x00;
--    s->tv_timing[2] = 0x00;
--    s->tv_timing[3] = 0x00;
--    s->vbi = 0x10;
--    s->tv_x = 0x14;
--    s->tv_y = 0x03;
--    s->tv_test = 0x00;
--    s->tv_filter_config = 0x80;
--    s->tv_filter_idx = 0x00;
--    s->border_r = 0x10;
--    s->border_g = 0x80;
--    s->border_b = 0x80;
--    s->gamma_config = 0x00;
--    s->gamma_idx = 0x00;
--    s->matrix_ena = 0x00;
--    memset(&s->matrix_coeff, 0, sizeof(s->matrix_coeff));
--    s->matrix_r = 0x00;
--    s->matrix_g = 0x00;
--    s->matrix_b = 0x00;
--    s->pm = 0x02;
--    s->status = 0x00;
--    s->rgbgpio_dir = 0x00;
--    s->gpio_dir = 0x00;
--    s->gpio_edge[0] = 0x00;
--    s->gpio_edge[1] = 0x00;
--    s->gpio_irq = 0x00;
--    s->gpio_pdown = 0xff;
--}
--
--static inline void blizzard_invalidate_display(void *opaque) {
--    BlizzardState *s = (BlizzardState *) opaque;
--
--    s->invalidate = 1;
--}
--
--static uint16_t blizzard_reg_read(void *opaque, uint8_t reg)
--{
--    BlizzardState *s = (BlizzardState *) opaque;
--
--    switch (reg) {
--    case 0x00:  /* Revision Code */
--        return 0xa5;
--
--    case 0x02:  /* Configuration Readback */
--        return 0x83;    /* Macrovision OK, CNF[2:0] = 3 */
--
--    case 0x04:  /* PLL M-Divider */
--        return (s->pll - 1) | (1 << 7);
--    case 0x06:  /* PLL Lock Range Control */
--        return s->pll_range;
--    case 0x08:  /* PLL Lock Synthesis Control 0 */
--        return s->pll_ctrl & 0xff;
--    case 0x0a:  /* PLL Lock Synthesis Control 1 */
--        return s->pll_ctrl >> 8;
--    case 0x0c:  /* PLL Mode Control 0 */
--        return s->pll_mode;
--
--    case 0x0e:  /* Clock-Source Select */
--        return s->clksel;
--
--    case 0x10:  /* Memory Controller Activate */
--    case 0x14:  /* Memory Controller Bank 0 Status Flag */
--        return s->memenable;
--
--    case 0x18:  /* Auto-Refresh Interval Setting 0 */
--        return s->memrefresh & 0xff;
--    case 0x1a:  /* Auto-Refresh Interval Setting 1 */
--        return s->memrefresh >> 8;
--
--    case 0x1c:  /* Power-On Sequence Timing Control */
--        return s->timing[0];
--    case 0x1e:  /* Timing Control 0 */
--        return s->timing[1];
--    case 0x20:  /* Timing Control 1 */
--        return s->timing[2];
--
--    case 0x24:  /* Arbitration Priority Control */
--        return s->priority;
--
--    case 0x28:  /* LCD Panel Configuration */
--        return s->lcd_config;
--
--    case 0x2a:  /* LCD Horizontal Display Width */
--        return s->x >> 3;
--    case 0x2c:  /* LCD Horizontal Non-display Period */
--        return s->hndp;
--    case 0x2e:  /* LCD Vertical Display Height 0 */
--        return s->y & 0xff;
--    case 0x30:  /* LCD Vertical Display Height 1 */
--        return s->y >> 8;
--    case 0x32:  /* LCD Vertical Non-display Period */
--        return s->vndp;
--    case 0x34:  /* LCD HS Pulse-width */
--        return s->hsync;
--    case 0x36:  /* LCd HS Pulse Start Position */
--        return s->skipx >> 3;
--    case 0x38:  /* LCD VS Pulse-width */
--        return s->vsync;
--    case 0x3a:  /* LCD VS Pulse Start Position */
--        return s->skipy;
--
--    case 0x3c:  /* PCLK Polarity */
--        return s->pclk;
--
--    case 0x3e:  /* High-speed Serial Interface Tx Configuration Port 0 */
--        return s->hssi_config[0];
--    case 0x40:  /* High-speed Serial Interface Tx Configuration Port 1 */
--        return s->hssi_config[1];
--    case 0x42:  /* High-speed Serial Interface Tx Mode */
--        return s->hssi_config[2];
--    case 0x44:  /* TV Display Configuration */
--        return s->tv_config;
--    case 0x46 ... 0x4c: /* TV Vertical Blanking Interval Data bits */
--        return s->tv_timing[(reg - 0x46) >> 1];
--    case 0x4e:  /* VBI: Closed Caption / XDS Control / Status */
--        return s->vbi;
--    case 0x50:  /* TV Horizontal Start Position */
--        return s->tv_x;
--    case 0x52:  /* TV Vertical Start Position */
--        return s->tv_y;
--    case 0x54:  /* TV Test Pattern Setting */
--        return s->tv_test;
--    case 0x56:  /* TV Filter Setting */
--        return s->tv_filter_config;
--    case 0x58:  /* TV Filter Coefficient Index */
--        return s->tv_filter_idx;
--    case 0x5a:  /* TV Filter Coefficient Data */
--        if (s->tv_filter_idx < 0x20)
--            return s->tv_filter_coeff[s->tv_filter_idx ++];
--        return 0;
--
--    case 0x60:  /* Input YUV/RGB Translate Mode 0 */
--        return s->yrc[0];
--    case 0x62:  /* Input YUV/RGB Translate Mode 1 */
--        return s->yrc[1];
--    case 0x64:  /* U Data Fix */
--        return s->u;
--    case 0x66:  /* V Data Fix */
--        return s->v;
--
--    case 0x68:  /* Display Mode */
--        return s->mode;
--
--    case 0x6a:  /* Special Effects */
--        return s->effect;
--
--    case 0x6c:  /* Input Window X Start Position 0 */
--        return s->ix[0] & 0xff;
--    case 0x6e:  /* Input Window X Start Position 1 */
--        return s->ix[0] >> 3;
--    case 0x70:  /* Input Window Y Start Position 0 */
--        return s->ix[0] & 0xff;
--    case 0x72:  /* Input Window Y Start Position 1 */
--        return s->ix[0] >> 3;
--    case 0x74:  /* Input Window X End Position 0 */
--        return s->ix[1] & 0xff;
--    case 0x76:  /* Input Window X End Position 1 */
--        return s->ix[1] >> 3;
--    case 0x78:  /* Input Window Y End Position 0 */
--        return s->ix[1] & 0xff;
--    case 0x7a:  /* Input Window Y End Position 1 */
--        return s->ix[1] >> 3;
--    case 0x7c:  /* Output Window X Start Position 0 */
--        return s->ox[0] & 0xff;
--    case 0x7e:  /* Output Window X Start Position 1 */
--        return s->ox[0] >> 3;
--    case 0x80:  /* Output Window Y Start Position 0 */
--        return s->oy[0] & 0xff;
--    case 0x82:  /* Output Window Y Start Position 1 */
--        return s->oy[0] >> 3;
--    case 0x84:  /* Output Window X End Position 0 */
--        return s->ox[1] & 0xff;
--    case 0x86:  /* Output Window X End Position 1 */
--        return s->ox[1] >> 3;
--    case 0x88:  /* Output Window Y End Position 0 */
--        return s->oy[1] & 0xff;
--    case 0x8a:  /* Output Window Y End Position 1 */
--        return s->oy[1] >> 3;
--
--    case 0x8c:  /* Input Data Format */
--        return s->iformat;
--    case 0x8e:  /* Data Source Select */
--        return s->source;
--    case 0x90:  /* Display Memory Data Port */
--        return 0;
--
--    case 0xa8:  /* Border Color 0 */
--        return s->border_r;
--    case 0xaa:  /* Border Color 1 */
--        return s->border_g;
--    case 0xac:  /* Border Color 2 */
--        return s->border_b;
--
--    case 0xb4:  /* Gamma Correction Enable */
--        return s->gamma_config;
--    case 0xb6:  /* Gamma Correction Table Index */
--        return s->gamma_idx;
--    case 0xb8:  /* Gamma Correction Table Data */
--        return s->gamma_lut[s->gamma_idx ++];
--
--    case 0xba:  /* 3x3 Matrix Enable */
--        return s->matrix_ena;
--    case 0xbc ... 0xde: /* Coefficient Registers */
--        return s->matrix_coeff[(reg - 0xbc) >> 1];
--    case 0xe0:  /* 3x3 Matrix Red Offset */
--        return s->matrix_r;
--    case 0xe2:  /* 3x3 Matrix Green Offset */
--        return s->matrix_g;
--    case 0xe4:  /* 3x3 Matrix Blue Offset */
--        return s->matrix_b;
--
--    case 0xe6:  /* Power-save */
--        return s->pm;
--    case 0xe8:  /* Non-display Period Control / Status */
--        return s->status | (1 << 5);
--    case 0xea:  /* RGB Interface Control */
--        return s->rgbgpio_dir;
--    case 0xec:  /* RGB Interface Status */
--        return s->rgbgpio;
--    case 0xee:  /* General-purpose IO Pins Configuration */
--        return s->gpio_dir;
--    case 0xf0:  /* General-purpose IO Pins Status / Control */
--        return s->gpio;
--    case 0xf2:  /* GPIO Positive Edge Interrupt Trigger */
--        return s->gpio_edge[0];
--    case 0xf4:  /* GPIO Negative Edge Interrupt Trigger */
--        return s->gpio_edge[1];
--    case 0xf6:  /* GPIO Interrupt Status */
--        return s->gpio_irq;
--    case 0xf8:  /* GPIO Pull-down Control */
--        return s->gpio_pdown;
--
+-    switch (offset) {
+-    case KPC:
+-        tmp = s->kpc;
+-        if(tmp & KPC_MI)
+-            s->kpc &= ~(KPC_MI);
+-        if(tmp & KPC_DI)
+-            s->kpc &= ~(KPC_DI);
+-        qemu_irq_lower(s->irq);
+-        return tmp;
+-    case KPDK:
+-        return s->kpdk;
+-    case KPREC:
+-        tmp = s->kprec;
+-        if(tmp & KPREC_OF1)
+-            s->kprec &= ~(KPREC_OF1);
+-        if(tmp & KPREC_UF1)
+-            s->kprec &= ~(KPREC_UF1);
+-        if(tmp & KPREC_OF0)
+-            s->kprec &= ~(KPREC_OF0);
+-        if(tmp & KPREC_UF0)
+-            s->kprec &= ~(KPREC_UF0);
+-        return tmp;
+-    case KPMK:
+-        tmp = s->kpmk;
+-        if(tmp & KPMK_MKP)
+-            s->kpmk &= ~(KPMK_MKP);
+-        return tmp;
+-    case KPAS:
+-        return s->kpas;
+-    case KPASMKP0:
+-        return s->kpasmkp[0];
+-    case KPASMKP1:
+-        return s->kpasmkp[1];
+-    case KPASMKP2:
+-        return s->kpasmkp[2];
+-    case KPASMKP3:
+-        return s->kpasmkp[3];
+-    case KPKDI:
+-        return s->kpkdi;
 -    default:
--        fprintf(stderr, "%s: unknown register %02x\n", __func__, reg);
--        return 0;
+-        qemu_log_mask(LOG_GUEST_ERROR,
+-                      "%s: Bad read offset 0x%"HWADDR_PRIx"\n",
+-                      __func__, offset);
 -    }
+-
+-    return 0;
 -}
 -
--static void blizzard_reg_write(void *opaque, uint8_t reg, uint16_t value)
+-static void pxa2xx_keypad_write(void *opaque, hwaddr offset,
+-                                uint64_t value, unsigned size)
 -{
--    BlizzardState *s = (BlizzardState *) opaque;
+-    PXA2xxKeyPadState *s = (PXA2xxKeyPadState *) opaque;
 -
--    switch (reg) {
--    case 0x04:  /* PLL M-Divider */
--        s->pll = (value & 0x3f) + 1;
+-    switch (offset) {
+-    case KPC:
+-        s->kpc = value;
+-        if (s->kpc & KPC_AS) {
+-            s->kpc &= ~(KPC_AS);
+-        }
 -        break;
--    case 0x06:  /* PLL Lock Range Control */
--        s->pll_range = value & 3;
+-    case KPDK:
+-        s->kpdk = value;
 -        break;
--    case 0x08:  /* PLL Lock Synthesis Control 0 */
--        s->pll_ctrl &= 0xf00;
--        s->pll_ctrl |= (value << 0) & 0x0ff;
+-    case KPREC:
+-        s->kprec = value;
 -        break;
--    case 0x0a:  /* PLL Lock Synthesis Control 1 */
--        s->pll_ctrl &= 0x0ff;
--        s->pll_ctrl |= (value << 8) & 0xf00;
+-    case KPMK:
+-        s->kpmk = value;
 -        break;
--    case 0x0c:  /* PLL Mode Control 0 */
--        s->pll_mode = value & 0x77;
--        if ((value & 3) == 0 || (value & 3) == 3)
--            fprintf(stderr, "%s: wrong PLL Control bits (%i)\n",
--                    __func__, value & 3);
+-    case KPAS:
+-        s->kpas = value;
 -        break;
--
--    case 0x0e:  /* Clock-Source Select */
--        s->clksel = value & 0xff;
+-    case KPASMKP0:
+-        s->kpasmkp[0] = value;
 -        break;
--
--    case 0x10:  /* Memory Controller Activate */
--        s->memenable = value & 1;
+-    case KPASMKP1:
+-        s->kpasmkp[1] = value;
 -        break;
--    case 0x14:  /* Memory Controller Bank 0 Status Flag */
+-    case KPASMKP2:
+-        s->kpasmkp[2] = value;
 -        break;
--
--    case 0x18:  /* Auto-Refresh Interval Setting 0 */
--        s->memrefresh &= 0xf00;
--        s->memrefresh |= (value << 0) & 0x0ff;
+-    case KPASMKP3:
+-        s->kpasmkp[3] = value;
 -        break;
--    case 0x1a:  /* Auto-Refresh Interval Setting 1 */
--        s->memrefresh &= 0x0ff;
--        s->memrefresh |= (value << 8) & 0xf00;
--        break;
--
--    case 0x1c:  /* Power-On Sequence Timing Control */
--        s->timing[0] = value & 0x7f;
--        break;
--    case 0x1e:  /* Timing Control 0 */
--        s->timing[1] = value & 0x17;
--        break;
--    case 0x20:  /* Timing Control 1 */
--        s->timing[2] = value & 0x35;
--        break;
--
--    case 0x24:  /* Arbitration Priority Control */
--        s->priority = value & 1;
--        break;
--
--    case 0x28:  /* LCD Panel Configuration */
--        s->lcd_config = value & 0xff;
--        if (value & (1 << 7))
--            fprintf(stderr, "%s: data swap not supported!\n", __func__);
--        break;
--
--    case 0x2a:  /* LCD Horizontal Display Width */
--        s->x = value << 3;
--        break;
--    case 0x2c:  /* LCD Horizontal Non-display Period */
--        s->hndp = value & 0xff;
--        break;
--    case 0x2e:  /* LCD Vertical Display Height 0 */
--        s->y &= 0x300;
--        s->y |= (value << 0) & 0x0ff;
--        break;
--    case 0x30:  /* LCD Vertical Display Height 1 */
--        s->y &= 0x0ff;
--        s->y |= (value << 8) & 0x300;
--        break;
--    case 0x32:  /* LCD Vertical Non-display Period */
--        s->vndp = value & 0xff;
--        break;
--    case 0x34:  /* LCD HS Pulse-width */
--        s->hsync = value & 0xff;
--        break;
--    case 0x36:  /* LCD HS Pulse Start Position */
--        s->skipx = value & 0xff;
--        break;
--    case 0x38:  /* LCD VS Pulse-width */
--        s->vsync = value & 0xbf;
--        break;
--    case 0x3a:  /* LCD VS Pulse Start Position */
--        s->skipy = value & 0xff;
--        break;
--
--    case 0x3c:  /* PCLK Polarity */
--        s->pclk = value & 0x82;
--        /* Affects calculation of s->hndp, s->hsync and s->skipx.  */
--        break;
--
--    case 0x3e:  /* High-speed Serial Interface Tx Configuration Port 0 */
--        s->hssi_config[0] = value;
--        break;
--    case 0x40:  /* High-speed Serial Interface Tx Configuration Port 1 */
--        s->hssi_config[1] = value;
--        if (((value >> 4) & 3) == 3)
--            fprintf(stderr, "%s: Illegal active-data-links value\n",
--                            __func__);
--        break;
--    case 0x42:  /* High-speed Serial Interface Tx Mode */
--        s->hssi_config[2] = value & 0xbd;
--        break;
--
--    case 0x44:  /* TV Display Configuration */
--        s->tv_config = value & 0xfe;
--        break;
--    case 0x46 ... 0x4c: /* TV Vertical Blanking Interval Data bits 0 */
--        s->tv_timing[(reg - 0x46) >> 1] = value;
--        break;
--    case 0x4e:  /* VBI: Closed Caption / XDS Control / Status */
--        s->vbi = value;
--        break;
--    case 0x50:  /* TV Horizontal Start Position */
--        s->tv_x = value;
--        break;
--    case 0x52:  /* TV Vertical Start Position */
--        s->tv_y = value & 0x7f;
--        break;
--    case 0x54:  /* TV Test Pattern Setting */
--        s->tv_test = value;
--        break;
--    case 0x56:  /* TV Filter Setting */
--        s->tv_filter_config = value & 0xbf;
--        break;
--    case 0x58:  /* TV Filter Coefficient Index */
--        s->tv_filter_idx = value & 0x1f;
--        break;
--    case 0x5a:  /* TV Filter Coefficient Data */
--        if (s->tv_filter_idx < 0x20)
--            s->tv_filter_coeff[s->tv_filter_idx ++] = value;
--        break;
--
--    case 0x60:  /* Input YUV/RGB Translate Mode 0 */
--        s->yrc[0] = value & 0xb0;
--        break;
--    case 0x62:  /* Input YUV/RGB Translate Mode 1 */
--        s->yrc[1] = value & 0x30;
--        break;
--    case 0x64:  /* U Data Fix */
--        s->u = value & 0xff;
--        break;
--    case 0x66:  /* V Data Fix */
--        s->v = value & 0xff;
--        break;
--
--    case 0x68:  /* Display Mode */
--        if ((s->mode ^ value) & 3)
--            s->invalidate = 1;
--        s->mode = value & 0xb7;
--        s->enable = value & 1;
--        s->blank = (value >> 1) & 1;
--        if (value & (1 << 4))
--            fprintf(stderr, "%s: Macrovision enable attempt!\n", __func__);
--        break;
--
--    case 0x6a:  /* Special Effects */
--        s->effect = value & 0xfb;
--        break;
--
--    case 0x6c:  /* Input Window X Start Position 0 */
--        s->ix[0] &= 0x300;
--        s->ix[0] |= (value << 0) & 0x0ff;
--        break;
--    case 0x6e:  /* Input Window X Start Position 1 */
--        s->ix[0] &= 0x0ff;
--        s->ix[0] |= (value << 8) & 0x300;
--        break;
--    case 0x70:  /* Input Window Y Start Position 0 */
--        s->iy[0] &= 0x300;
--        s->iy[0] |= (value << 0) & 0x0ff;
--        break;
--    case 0x72:  /* Input Window Y Start Position 1 */
--        s->iy[0] &= 0x0ff;
--        s->iy[0] |= (value << 8) & 0x300;
--        break;
--    case 0x74:  /* Input Window X End Position 0 */
--        s->ix[1] &= 0x300;
--        s->ix[1] |= (value << 0) & 0x0ff;
--        break;
--    case 0x76:  /* Input Window X End Position 1 */
--        s->ix[1] &= 0x0ff;
--        s->ix[1] |= (value << 8) & 0x300;
--        break;
--    case 0x78:  /* Input Window Y End Position 0 */
--        s->iy[1] &= 0x300;
--        s->iy[1] |= (value << 0) & 0x0ff;
--        break;
--    case 0x7a:  /* Input Window Y End Position 1 */
--        s->iy[1] &= 0x0ff;
--        s->iy[1] |= (value << 8) & 0x300;
--        break;
--    case 0x7c:  /* Output Window X Start Position 0 */
--        s->ox[0] &= 0x300;
--        s->ox[0] |= (value << 0) & 0x0ff;
--        break;
--    case 0x7e:  /* Output Window X Start Position 1 */
--        s->ox[0] &= 0x0ff;
--        s->ox[0] |= (value << 8) & 0x300;
--        break;
--    case 0x80:  /* Output Window Y Start Position 0 */
--        s->oy[0] &= 0x300;
--        s->oy[0] |= (value << 0) & 0x0ff;
--        break;
--    case 0x82:  /* Output Window Y Start Position 1 */
--        s->oy[0] &= 0x0ff;
--        s->oy[0] |= (value << 8) & 0x300;
--        break;
--    case 0x84:  /* Output Window X End Position 0 */
--        s->ox[1] &= 0x300;
--        s->ox[1] |= (value << 0) & 0x0ff;
--        break;
--    case 0x86:  /* Output Window X End Position 1 */
--        s->ox[1] &= 0x0ff;
--        s->ox[1] |= (value << 8) & 0x300;
--        break;
--    case 0x88:  /* Output Window Y End Position 0 */
--        s->oy[1] &= 0x300;
--        s->oy[1] |= (value << 0) & 0x0ff;
--        break;
--    case 0x8a:  /* Output Window Y End Position 1 */
--        s->oy[1] &= 0x0ff;
--        s->oy[1] |= (value << 8) & 0x300;
--        break;
--
--    case 0x8c:  /* Input Data Format */
--        s->iformat = value & 0xf;
--        s->bpp = blizzard_iformat_bpp[s->iformat];
--        if (!s->bpp)
--            fprintf(stderr, "%s: Illegal or unsupported input format %x\n",
--                            __func__, s->iformat);
--        break;
--    case 0x8e:  /* Data Source Select */
--        s->source = value & 7;
--        /* Currently all windows will be "destructive overlays".  */
--        if ((!(s->effect & (1 << 3)) && (s->ix[0] != s->ox[0] ||
--                                        s->iy[0] != s->oy[0] ||
--                                        s->ix[1] != s->ox[1] ||
--                                        s->iy[1] != s->oy[1])) ||
--                        !((s->ix[1] - s->ix[0]) & (s->iy[1] - s->iy[0]) &
--                          (s->ox[1] - s->ox[0]) & (s->oy[1] - s->oy[0]) & 1))
--            fprintf(stderr, "%s: Illegal input/output window positions\n",
--                            __func__);
--
--        blizzard_transfer_setup(s);
--        break;
--
--    case 0x90:  /* Display Memory Data Port */
--        if (!s->data.len && !blizzard_transfer_setup(s))
--            break;
--
--        *s->data.ptr ++ = value;
--        if (-- s->data.len == 0)
--            blizzard_window(s);
--        break;
--
--    case 0xa8:  /* Border Color 0 */
--        s->border_r = value;
--        break;
--    case 0xaa:  /* Border Color 1 */
--        s->border_g = value;
--        break;
--    case 0xac:  /* Border Color 2 */
--        s->border_b = value;
--        break;
--
--    case 0xb4:  /* Gamma Correction Enable */
--        s->gamma_config = value & 0x87;
--        break;
--    case 0xb6:  /* Gamma Correction Table Index */
--        s->gamma_idx = value;
--        break;
--    case 0xb8:  /* Gamma Correction Table Data */
--        s->gamma_lut[s->gamma_idx ++] = value;
--        break;
--
--    case 0xba:  /* 3x3 Matrix Enable */
--        s->matrix_ena = value & 1;
--        break;
--    case 0xbc ... 0xde: /* Coefficient Registers */
--        s->matrix_coeff[(reg - 0xbc) >> 1] = value & ((reg & 2) ? 0x80 : 0xff);
--        break;
--    case 0xe0:  /* 3x3 Matrix Red Offset */
--        s->matrix_r = value;
--        break;
--    case 0xe2:  /* 3x3 Matrix Green Offset */
--        s->matrix_g = value;
--        break;
--    case 0xe4:  /* 3x3 Matrix Blue Offset */
--        s->matrix_b = value;
--        break;
--
--    case 0xe6:  /* Power-save */
--        s->pm = value & 0x83;
--        if (value & s->mode & 1)
--            fprintf(stderr, "%s: The display must be disabled before entering "
--                            "Standby Mode\n", __func__);
--        break;
--    case 0xe8:  /* Non-display Period Control / Status */
--        s->status = value & 0x1b;
--        break;
--    case 0xea:  /* RGB Interface Control */
--        s->rgbgpio_dir = value & 0x8f;
--        break;
--    case 0xec:  /* RGB Interface Status */
--        s->rgbgpio = value & 0xcf;
--        break;
--    case 0xee:  /* General-purpose IO Pins Configuration */
--        s->gpio_dir = value;
--        break;
--    case 0xf0:  /* General-purpose IO Pins Status / Control */
--        s->gpio = value;
--        break;
--    case 0xf2:  /* GPIO Positive Edge Interrupt Trigger */
--        s->gpio_edge[0] = value;
--        break;
--    case 0xf4:  /* GPIO Negative Edge Interrupt Trigger */
--        s->gpio_edge[1] = value;
--        break;
--    case 0xf6:  /* GPIO Interrupt Status */
--        s->gpio_irq &= value;
--        break;
--    case 0xf8:  /* GPIO Pull-down Control */
--        s->gpio_pdown = value;
+-    case KPKDI:
+-        s->kpkdi = value;
 -        break;
 -
 -    default:
--        fprintf(stderr, "%s: unknown register %02x\n", __func__, reg);
--        break;
+-        qemu_log_mask(LOG_GUEST_ERROR,
+-                      "%s: Bad write offset 0x%"HWADDR_PRIx"\n",
+-                      __func__, offset);
 -    }
 -}
 -
--uint16_t s1d13745_read(void *opaque, int dc)
--{
--    BlizzardState *s = (BlizzardState *) opaque;
--    uint16_t value = blizzard_reg_read(s, s->reg);
--
--    if (s->swallow -- > 0)
--        return 0;
--    if (dc)
--        s->reg ++;
--
--    return value;
--}
--
--void s1d13745_write(void *opaque, int dc, uint16_t value)
--{
--    BlizzardState *s = (BlizzardState *) opaque;
--
--    if (s->swallow -- > 0)
--        return;
--    if (dc) {
--        blizzard_reg_write(s, s->reg, value);
--
--        if (s->reg != 0x90 && s->reg != 0x5a && s->reg != 0xb8)
--            s->reg += 2;
--    } else
--        s->reg = value & 0xff;
--}
--
--void s1d13745_write_block(void *opaque, int dc,
--                void *buf, size_t len, int pitch)
--{
--    BlizzardState *s = (BlizzardState *) opaque;
--
--    while (len > 0) {
--        if (s->reg == 0x90 && dc &&
--                        (s->data.len || blizzard_transfer_setup(s)) &&
--                        len >= (s->data.len << 1)) {
--            len -= s->data.len << 1;
--            s->data.len = 0;
--            s->data.data = buf;
--            if (pitch)
--                s->data.pitch = pitch;
--            blizzard_window(s);
--            s->data.data = s->data.buf;
--            continue;
--        }
--
--        s1d13745_write(opaque, dc, *(uint16_t *) buf);
--        len -= 2;
--        buf += 2;
--    }
--}
--
--static void blizzard_update_display(void *opaque)
--{
--    BlizzardState *s = (BlizzardState *) opaque;
--    DisplaySurface *surface = qemu_console_surface(s->con);
--    int y, bypp, bypl, bwidth;
--    uint8_t *src, *dst;
--
--    if (!s->enable)
--        return;
--
--    if (s->x != surface_width(surface) || s->y != surface_height(surface)) {
--        s->invalidate = 1;
--        qemu_console_resize(s->con, s->x, s->y);
--        surface = qemu_console_surface(s->con);
--    }
--
--    if (s->invalidate) {
--        s->invalidate = 0;
--
--        if (s->blank) {
--            bypp = surface_bytes_per_pixel(surface);
--            memset(surface_data(surface), 0, bypp * s->x * s->y);
--            return;
--        }
--
--        s->mx[0] = 0;
--        s->mx[1] = s->x;
--        s->my[0] = 0;
--        s->my[1] = s->y;
--    }
--
--    if (s->mx[1] <= s->mx[0])
--        return;
--
--    bypp = surface_bytes_per_pixel(surface);
--    bypl = bypp * s->x;
--    bwidth = bypp * (s->mx[1] - s->mx[0]);
--    y = s->my[0];
--    src = s->fb + bypl * y + bypp * s->mx[0];
--    dst = surface_data(surface) + bypl * y + bypp * s->mx[0];
--    for (; y < s->my[1]; y ++, src += bypl, dst += bypl)
--        memcpy(dst, src, bwidth);
--
--    dpy_gfx_update(s->con, s->mx[0], s->my[0],
--                   s->mx[1] - s->mx[0], y - s->my[0]);
--
--    s->mx[0] = s->x;
--    s->mx[1] = 0;
--    s->my[0] = s->y;
--    s->my[1] = 0;
--}
--
--static void blizzard_draw_line16_32(uint32_t *dest,
--                                    const uint16_t *src, unsigned int width)
--{
--    uint16_t data;
--    unsigned int r, g, b;
--    const uint16_t *end = (const void *) src + width;
--    while (src < end) {
--        data = *src ++;
--        b = extract16(data, 0, 5) << 3;
--        g = extract16(data, 5, 6) << 2;
--        r = extract16(data, 11, 5) << 3;
--        *dest++ = rgb_to_pixel32(r, g, b);
--    }
--}
--
--static void blizzard_draw_line24mode1_32(uint32_t *dest,
--                                         const uint8_t *src, unsigned int width)
--{
--    /* TODO: check if SDL 24-bit planes are not in the same format and
--     * if so, use memcpy */
--    unsigned int r[2], g[2], b[2];
--    const uint8_t *end = src + width;
--    while (src < end) {
--        g[0] = *src ++;
--        r[0] = *src ++;
--        r[1] = *src ++;
--        b[0] = *src ++;
--        *dest++ = rgb_to_pixel32(r[0], g[0], b[0]);
--        b[1] = *src ++;
--        g[1] = *src ++;
--        *dest++ = rgb_to_pixel32(r[1], g[1], b[1]);
--    }
--}
--
--static void blizzard_draw_line24mode2_32(uint32_t *dest,
--                                         const uint8_t *src, unsigned int width)
--{
--    unsigned int r, g, b;
--    const uint8_t *end = src + width;
--    while (src < end) {
--        r = *src ++;
--        src ++;
--        b = *src ++;
--        g = *src ++;
--        *dest++ = rgb_to_pixel32(r, g, b);
--    }
--}
--
--/* No rotation */
--static blizzard_fn_t blizzard_draw_fn_32[0x10] = {
--    NULL,
--    /* RGB 5:6:5*/
--    (blizzard_fn_t) blizzard_draw_line16_32,
--    /* RGB 6:6:6 mode 1 */
--    (blizzard_fn_t) blizzard_draw_line24mode1_32,
--    /* RGB 8:8:8 mode 1 */
--    (blizzard_fn_t) blizzard_draw_line24mode1_32,
--    NULL, NULL,
--    /* RGB 6:6:6 mode 2 */
--    (blizzard_fn_t) blizzard_draw_line24mode2_32,
--    /* RGB 8:8:8 mode 2 */
--    (blizzard_fn_t) blizzard_draw_line24mode2_32,
--    /* YUV 4:2:2 */
--    NULL,
--    /* YUV 4:2:0 */
--    NULL,
--    NULL, NULL, NULL, NULL, NULL, NULL,
+-static const MemoryRegionOps pxa2xx_keypad_ops = {
+-    .read = pxa2xx_keypad_read,
+-    .write = pxa2xx_keypad_write,
+-    .endianness = DEVICE_NATIVE_ENDIAN,
 -};
 -
--/* 90deg, 180deg and 270deg rotation */
--static blizzard_fn_t blizzard_draw_fn_r_32[0x10] = {
--    /* TODO */
--    [0 ... 0xf] = NULL,
+-static const VMStateDescription vmstate_pxa2xx_keypad = {
+-    .name = "pxa2xx_keypad",
+-    .version_id = 0,
+-    .minimum_version_id = 0,
+-    .fields = (const VMStateField[]) {
+-        VMSTATE_UINT32(kpc, PXA2xxKeyPadState),
+-        VMSTATE_UINT32(kpdk, PXA2xxKeyPadState),
+-        VMSTATE_UINT32(kprec, PXA2xxKeyPadState),
+-        VMSTATE_UINT32(kpmk, PXA2xxKeyPadState),
+-        VMSTATE_UINT32(kpas, PXA2xxKeyPadState),
+-        VMSTATE_UINT32_ARRAY(kpasmkp, PXA2xxKeyPadState, 4),
+-        VMSTATE_UINT32(kpkdi, PXA2xxKeyPadState),
+-        VMSTATE_END_OF_LIST()
+-    }
 -};
 -
--static const GraphicHwOps blizzard_ops = {
--    .invalidate  = blizzard_invalidate_display,
--    .gfx_update  = blizzard_update_display,
--};
--
--void *s1d13745_init(qemu_irq gpio_int)
+-PXA2xxKeyPadState *pxa27x_keypad_init(MemoryRegion *sysmem,
+-                                      hwaddr base,
+-                                      qemu_irq irq)
 -{
--    BlizzardState *s = g_malloc0(sizeof(*s));
--    DisplaySurface *surface;
+-    PXA2xxKeyPadState *s;
 -
--    s->fb = g_malloc(0x180000);
+-    s = g_new0(PXA2xxKeyPadState, 1);
+-    s->irq = irq;
 -
--    s->con = graphic_console_init(NULL, 0, &blizzard_ops, s);
--    surface = qemu_console_surface(s->con);
+-    memory_region_init_io(&s->iomem, NULL, &pxa2xx_keypad_ops, s,
+-                          "pxa2xx-keypad", 0x00100000);
+-    memory_region_add_subregion(sysmem, base, &s->iomem);
 -
--    assert(surface_bits_per_pixel(surface) == 32);
--
--    s->line_fn_tab[0] = blizzard_draw_fn_32;
--    s->line_fn_tab[1] = blizzard_draw_fn_r_32;
--
--    blizzard_reset(s);
+-    vmstate_register(NULL, 0, &vmstate_pxa2xx_keypad, s);
 -
 -    return s;
 -}
-diff --git a/hw/display/Kconfig b/hw/display/Kconfig
-index a4552c8ed78..2c72a61987a 100644
---- a/hw/display/Kconfig
-+++ b/hw/display/Kconfig
-@@ -66,9 +66,6 @@ config BOCHS_DISPLAY
-     select VGA
-     select EDID
- 
--config BLIZZARD
--    bool
 -
- config FRAMEBUFFER
-     bool
+-void pxa27x_register_keypad(PXA2xxKeyPadState *kp,
+-                            const struct keymap *map, int size)
+-{
+-    if(!map || size < 0x80) {
+-        fprintf(stderr, "%s - No PXA keypad map defined\n", __func__);
+-        exit(-1);
+-    }
+-
+-    kp->map = map;
+-    qemu_add_kbd_event_handler((QEMUPutKBDEvent *) pxa27x_keyboard_event, kp);
+-}
+diff --git a/hw/input/meson.build b/hw/input/meson.build
+index 07a28c2c01c..fe60b6e28fc 100644
+--- a/hw/input/meson.build
++++ b/hw/input/meson.build
+@@ -11,6 +11,5 @@ system_ss.add(when: 'CONFIG_VIRTIO_INPUT', if_true: files('virtio-input.c'))
+ system_ss.add(when: 'CONFIG_VIRTIO_INPUT', if_true: files('virtio-input-hid.c'))
+ system_ss.add(when: 'CONFIG_VIRTIO_INPUT_HOST', if_true: files('virtio-input-host.c'))
  
-diff --git a/hw/display/meson.build b/hw/display/meson.build
-index 1f965a1be84..2b1693ad728 100644
---- a/hw/display/meson.build
-+++ b/hw/display/meson.build
-@@ -22,7 +22,6 @@ system_ss.add(when: 'CONFIG_VGA_MMIO', if_true: files('vga-mmio.c'))
- system_ss.add(when: 'CONFIG_VMWARE_VGA', if_true: files('vmware_vga.c'))
- system_ss.add(when: 'CONFIG_BOCHS_DISPLAY', if_true: files('bochs-display.c'))
- 
--system_ss.add(when: 'CONFIG_BLIZZARD', if_true: files('blizzard.c'))
- system_ss.add(when: 'CONFIG_EXYNOS4', if_true: files('exynos4210_fimd.c'))
- system_ss.add(when: 'CONFIG_FRAMEBUFFER', if_true: files('framebuffer.c'))
- 
+-system_ss.add(when: 'CONFIG_PXA2XX', if_true: files('pxa2xx_keypad.c'))
+ system_ss.add(when: 'CONFIG_TSC210X', if_true: files('tsc210x.c'))
+ system_ss.add(when: 'CONFIG_LASIPS2', if_true: files('lasips2.c'))
 -- 
 2.34.1
 

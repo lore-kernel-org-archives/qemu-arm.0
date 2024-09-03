@@ -1,139 +1,126 @@
-Received: by 2002:a17:504:3a8f:b0:1be9:327d:8ee3 with SMTP id g15csp1471696njf;
-        Tue, 3 Sep 2024 07:58:54 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUu21QIguf69qQlrQIfZIvTnXVbAfgc3j0kYJzLefByj6DwRvoXhmwJu+IheYbiKRPzA6MXy+5gSmNBHQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IFW35DYSI4SXcHeP8cBkJSZ2apQUhX7LTTCFTtefLzfYFAxZ1Urcj8fZ0peb6wtPtbc2eti
-X-Received: by 2002:a05:600c:190a:b0:426:63b8:2cce with SMTP id 5b1f17b1804b1-42c880ec215mr30150525e9.7.1725375534193;
-        Tue, 03 Sep 2024 07:58:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1725375534; cv=none;
-        d=google.com; s=arc-20240605;
-        b=G6NzM4zCmJF+Ifut+tPvgm3j1msD3Xpy5Z4wdBOoiGY+HH7HpW5NI0OwM30vTLH0my
-         vFlDig22BL/ZO/8CDdkEEbjYs07fp9hLeY1cAjPybxdkY6+cy/MUrkADT8ze/6qV9hrD
-         oCZaF9IylmTlNKQ8hMU2v2T94XuttUdjklwwY4EV8F9DvC1SUr/8RPZSovwo3sfwSjmk
-         Kg8wwPTBbBM/nnn59KJn+b2UMR3mW7XbwZH4o9XPN3ptafP6GdLGhpUGLWln7CtyFIyj
-         SppeUuAhHuMiDH+J8+JMabeTLoF82Iyy86TtyNyiKdx4O9WOIfz34z8YKNQUMzjP+1dI
-         chXQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:subject:cc:to:from:date;
-        bh=tEwLdQueTH+UoIswN0OWyu84TqjyLeDNeIGyaZ/csOE=;
-        fh=GbFg9YhPvCwUhVCv2YdN6dppB5x2+2lAvigvlqX8Qkk=;
-        b=bs5U7vzBLV57xXtv1Unoc6z8DiRvmhAnq6R6BvyL28YV8DI25/x3CAnE8plmI59nmM
-         WmRQmANc0uiqn4zE857A8QxrHxDRbdUVQMU+d/2DZ7NWHM/guqbpfVjWJoYsg4/Sga9F
-         d3XnbK4K+6+y41wAxa918MVlyV1Hx0R2qguH0/UC7WPpHPyOIHcGmOlFEbTiV/xl15i0
-         dnkGvbrlqa8UzkuUM6EuDf9TBTlYlWWRTqjTL5RhGfJlsLUyPy4/1WmTPp0FzR2BrmUg
-         57y4KKLiR8Qyoqev03qY5sfcFmID2K+6r+MXOaFK9awRtbUK92LGK4fONHquxGv5qPI3
-         GcnQ==;
+Received: by 2002:a17:504:3a8f:b0:1be9:327d:8ee3 with SMTP id g15csp1482932njf;
+        Tue, 3 Sep 2024 08:23:51 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUhI9Ddog3mjTBFv2qKV01cBM3lBDsrEyQiP8VQ78HE6/qu/cfXDYY1v/5UZtR6y+N162b1W7R8ljkHpQ==@linaro.org
+X-Received: by 2002:a5d:6892:0:b0:371:86bc:6c05 with SMTP id ffacd0b85a97d-374c945549amr5214581f8f.10.1725377031525;
+        Tue, 03 Sep 2024 08:23:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1725377031; cv=none;
+        d=google.com; s=arc-20160816;
+        b=CR1apC7o+zc7AlUNyP6NcPG3t21KRt54cExZdT2VUSxXkNNscxAr/JY4fLCKPCnq46
+         9pXNeqZzBFYduSq039a/ztbOfpqiz2xV4xHexQTvCezczc7yWllWSmwmoQjCOWH1EQoA
+         ze0xTPniFhEnMdkPZcU61an6xucm88LAn6xt7b3Kccm/lEQzFYmTThAPlypc5nBrhV9a
+         j3xHBz1lqdIJvVR7ootvWRVVV1ofAdiEWUfRlWhFUGpEG5QvdbKfKAHtcZDGLeek4h4t
+         iyBF4XxrUg0t7XRo5ruUHigtMYx9fQWd6l5zTCHPpn8igIXz/T1ismo7+J/Bd9eOL7Tm
+         jZPQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=iT5pBN8PxBTkq82fOMKVzoFYg8GWHcdkhNz9qrdMkRU=;
+        fh=0iIUJS4VncrclAK57SATElfrbemBZSP/hcyllXRY8os=;
+        b=EzvAKuPWZE43uK7EhJC9QCIfN799N+D3/PDWJ6fIqKNvLhwa3yrLtSj+XUZ3Mv1KQ3
+         iaeHvfCr6ihzNdvVrgGDggs/62iWrxRYA2effA7yOekowC/iXQ1voMqlbWFA7izLYRfL
+         hQUKMwoZL8jRz5hp0tfw352b+5gBOMwRJfFajjIu794IkjSNoZNUhhCr1592z+OtdkN4
+         XPMr1uOurVsaLGV9gofA8eMCDcc0bWvEFSSfvBmu3veIScI4HxUPUmWLpg6QdcqmUgsD
+         8rDcvKdgN3gyWHbGLaL/uJLtaaG0dcYtb5VMpocuIavpOe2dSP7M6nWFprPbQ/IXt+RD
+         SO0A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of alireza.sanaee@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=alireza.sanaee@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Return-Path: <alireza.sanaee@huawei.com>
-Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id 5b1f17b1804b1-42bb6deaa1fsi59632695e9.13.2024.09.03.07.58.53
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 03 Sep 2024 07:58:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of alireza.sanaee@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
+       dkim=pass header.i=@linaro.org header.s=google header.b="x/Fs7F+G";
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <philmd@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id ffacd0b85a97d-374c57e223asor1219879f8f.3.2024.09.03.08.23.51
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Tue, 03 Sep 2024 08:23:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of alireza.sanaee@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=alireza.sanaee@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from mail.maildlp.com (unknown [172.18.186.31])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4WypZX66L3z6HJcx;
-	Tue,  3 Sep 2024 22:55:16 +0800 (CST)
-Received: from lhrpeml500006.china.huawei.com (unknown [7.191.161.198])
-	by mail.maildlp.com (Postfix) with ESMTPS id 2D30F1408FC;
-	Tue,  3 Sep 2024 22:58:53 +0800 (CST)
-Received: from localhost (10.47.29.115) by lhrpeml500006.china.huawei.com
- (7.191.161.198) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Tue, 3 Sep
- 2024 15:58:52 +0100
-Date: Tue, 3 Sep 2024 15:58:47 +0100
-From: Alireza Sanaee <alireza.sanaee@huawei.com>
-To: Philippe =?ISO-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>
-CC: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <linuxarm@huawei.com>,
-	<peter.maydell@linaro.org>, <richard.henderson@linaro.org>,
-	<shameerali.kolothum.thodi@huawei.com>, <Jonathan.Cameron@Huawei.com>,
-	<alex.bennee@linaro.org>, <jiangkunkun@huawei.com>
-Subject: Re: [PATCH v4] target/arm/tcg: refine cache descriptions with a
- wrapper
-Message-ID: <20240903155847.00000379@huawei.com>
-In-Reply-To: <7fda2f7c-091f-4b8b-bd61-5f8fcbbcf8ba@linaro.org>
-References: <20240903083520.209-1-alireza.sanaee@huawei.com>
-	<7fda2f7c-091f-4b8b-bd61-5f8fcbbcf8ba@linaro.org>
-Organization: Huawei
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
+       dkim=pass header.i=@linaro.org header.s=google header.b="x/Fs7F+G";
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1725377031; x=1725981831; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=iT5pBN8PxBTkq82fOMKVzoFYg8GWHcdkhNz9qrdMkRU=;
+        b=x/Fs7F+GDT4Rxdy5CyRoir3on6oQyEZl3mWz4XrgKJ1c200aQ49Zb+xEfYBW+E4BeE
+         CEQf51z4bhcmPCVPC9BbEe6MafvvZqaENwiYWW7QQZH6QnTsmGXDJByboe7LHA4ypykT
+         QO85HGoRrPT+r159kwswdYY/o/GqFQlnVT9L6xV1iKItgpsED+ik46Xh96vmGTZGk+n2
+         YGj75RnVwbpEC9EPCK4JfJ6iN2A1+1HIDT/QqhGJlNA6DyCGkkze09LCg/2wyayDs/bB
+         lARDaUXWgzF9SQ8fvaudxbvoy2NB9i1/5QtL/631G28gf9r2wKSg4LqDeIMNmGMezDYG
+         KI2w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1725377031; x=1725981831;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=iT5pBN8PxBTkq82fOMKVzoFYg8GWHcdkhNz9qrdMkRU=;
+        b=HsjJ/2rLgo8I0osvBXyW+xObTKJpFvWf0sxtlAZ5RK6aHBlmSDnajJBj5BvUKloyS9
+         VnzpHyCijh9rdBmj6+GhrWGbGfxHL1UQAwD0osWFKY2cQHz5mA3eXPnp92Nmx5yVjIz+
+         X5nCIGpnr0Mk47ZbOips+i5V9Z9IlsTyJXurfU6jNtwQpEmS6KmcO7Kjd1Ya3G+Zow5B
+         sRqTt23Zi9MrRXCPh+msp3clLp8k5H9N4tziYnn8a10LlTAHkzyi5mizoPKGSCq5JXPh
+         m81MMZiUmidNrtQy/a5FxLpPR8Q9/FvH6VF5cl6rV/Fb13MEfhEX4vGtuDOzzcCS3S50
+         Lw+g==
+X-Forwarded-Encrypted: i=1; AJvYcCXntZ30GYURxdVsyKa7DEB6gwmwRauCSI/uf2FelsoN3wxuL60ZE5kJhq5IUtoz7lT05eo1mDKHZewCHA==@linaro.org
+X-Gm-Message-State: AOJu0Yw5rqWVEEJinGPVuE21eaMxS+zrWrmCUkrIkQxYi76dQ3UE5ixQ
+	YOods4cGjrFMjxJSThwnPpclBuBFIwWffc6In+QJqEW2l5iMsLr6CRsDTTc2TElwbw==
+X-Google-Smtp-Source: AGHT+IEMsfaZ7ob0Ym1L9PXiOpsYdgs2mYgQj5vYY9SsyfvXMu4jQ2YQ72ytU39m2gw6MhwTIWhtdg==
+X-Received: by 2002:a5d:5184:0:b0:374:b960:f847 with SMTP id ffacd0b85a97d-374c947189amr4199068f8f.41.1725377030793;
+        Tue, 03 Sep 2024 08:23:50 -0700 (PDT)
+Return-Path: <philmd@linaro.org>
+Received: from [192.168.1.67] ([78.196.4.158])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-42bb6e2737dsm174239655e9.29.2024.09.03.08.23.49
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 03 Sep 2024 08:23:50 -0700 (PDT)
+Message-ID: <c07957a1-fb5c-4973-aa7d-220ad06a0889@linaro.org>
+Date: Tue, 3 Sep 2024 17:23:49 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset="ISO-8859-1"
-Content-Transfer-Encoding: quoted-printable
-X-Originating-IP: [10.47.29.115]
-X-ClientProxiedBy: lhrpeml500006.china.huawei.com (7.191.161.198) To
- lhrpeml500006.china.huawei.com (7.191.161.198)
-X-TUID: 6d4TgmMYsEji
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v5] target/arm/tcg: refine cache descriptions with a
+ wrapper
+To: Alireza Sanaee <alireza.sanaee@huawei.com>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org
+Cc: linuxarm@huawei.com, peter.maydell@linaro.org,
+ richard.henderson@linaro.org, shameerali.kolothum.thodi@huawei.com,
+ Jonathan.Cameron@Huawei.com, alex.bennee@linaro.org, jiangkunkun@huawei.com
+References: <20240903144550.280-1-alireza.sanaee@huawei.com>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20240903144550.280-1-alireza.sanaee@huawei.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-TUID: pxkPoaASjpAc
 
-On Tue, 3 Sep 2024 15:18:41 +0200
-Philippe Mathieu-Daud=E9 <philmd@linaro.org> wrote:
-
-> On 3/9/24 10:35, Alireza Sanaee wrote:
-> > This patch allows for easier manipulation of the cache description
-> > register, CCSIDR. Which is helpful for testing as well. Currently,
-> > numbers get hard-coded and might be prone to errors.
-> >=20
-> > Therefore, this patch adds a wrapper for different types of CPUs
-> > available in tcg to decribe caches. One function `make_ccsidr`
-> > supports two cases by carrying a parameter as FORMAT that can be
-> > LEGACY and CCIDX which determines the specification of the register.
-> >=20
-> > For CCSIDR register, 32 bit version follows specification [1].
-> > Conversely, 64 bit version follows specification [2]. =20
->=20
-> This is the commit description,
->=20
+On 3/9/24 16:45, Alireza Sanaee wrote:
+> This patch allows for easier manipulation of the cache description
+> register, CCSIDR. Which is helpful for testing as well. Currently,
+> numbers get hard-coded and might be prone to errors.
+> 
+> Therefore, this patch adds a wrapper for different types of CPUs
+> available in tcg to decribe caches. One function `make_ccsidr` supports
+> two cases by carrying a parameter as FORMAT that can be LEGACY and
+> CCIDX which determines the specification of the register.
+> 
+> For CCSIDR register, 32 bit version follows specification [1].
+> Conversely, 64 bit version follows specification [2].
+> 
+> [1] B4.1.19, ARM Architecture Reference Manual ARMv7-A and ARMv7-R
+> edition, https://developer.arm.com/documentation/ddi0406
+> [2] D23.2.29, ARM Architecture Reference Manual for A-profile Architecture,
+> https://developer.arm.com/documentation/ddi0487/latest/
+> 
+> Signed-off-by: Alireza Sanaee <alireza.sanaee@huawei.com>
 > ---
->=20
-> this part is not relevant in the git history and can go
-> (hopefully the maintainer can do that for you),
->=20
-> >=20
-> > Changes from v2 [3] -> v3:
-> >=20
-> > 1) add only one function instead of ccsidr32 and ccsidr64
-> > 2) use deposit32 and deposit64 in ccsidr function
-> >=20
-> > Chnages from v3 [4] -> v4:
-> > 1) Use only one variable in the make_ccsidr function.
-> > 2) Include qemu/host-utils.h to get is_power_of_2() declaration.
-> >  =20
-> ---
->=20
-> keeping these references,
->=20
-> > [1] B4.1.19, ARM Architecture Reference Manual ARMv7-A and ARMv7-R
-> > edition, https://developer.arm.com/documentation/ddi0406
-> > [2] D23.2.29, ARM Architecture Reference Manual for A-profile
-> > Architecture, https://developer.arm.com/documentation/ddi0487/latest/ =
-=20
->=20
-> ---
->=20
-> and dropping these ones.
->=20
-> > [3] https://lore.kernel.org/qemu-devel/20240830184713.224-1-alireza.san=
-aee@huawei.com/
-> > [4] https://lore.kernel.org/qemu-devel/20240902203211.270-1-alireza.san=
-aee@huawei.com/
-> >=20
-> > Signed-off-by: Alireza Sanaee <alireza.sanaee@huawei.com>
-> > ---
-> >   target/arm/cpu-features.h |  50 ++++++++++++++++++
-> >   target/arm/cpu64.c        |  19 ++++---
-> >   target/arm/tcg/cpu64.c    | 108
-> > +++++++++++++++++++------------------- 3 files changed, 117
-> > insertions(+), 60 deletions(-) =20
->=20
-> Thanks for the iterations.
->=20
-> Reviewed-by: Philippe Mathieu-Daud=E9 <philmd@linaro.org>
->=20
+>   target/arm/cpu-features.h |  50 ++++++++++++++++++
+>   target/arm/cpu64.c        |  19 ++++---
+>   target/arm/tcg/cpu64.c    | 108 +++++++++++++++++++-------------------
+>   3 files changed, 117 insertions(+), 60 deletions(-)
 
-Thanks for the feedback.
+For minor / doc changes it helps reviewer to carry their tag ;)
+https://www.qemu.org/docs/master/devel/submitting-a-patch.html#proper-use-of-reviewed-by-tags-can-aid-review
 
-v5 sent. hopefully that's OK.
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>

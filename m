@@ -1,120 +1,119 @@
-Received: by 2002:a17:504:3a8f:b0:1be9:327d:8ee3 with SMTP id g15csp1500402njf;
-        Tue, 3 Sep 2024 09:09:42 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVeQ58YOS6mxyYCsoTmYlb1Euc8+6J864fWkQpJVKX+Z0kBjNJkdxXxDje00b04oAkwF00IhPnBor7rCw==@linaro.org
-X-Google-Smtp-Source: AGHT+IEnGEw84VJv8Vl2YUMb1WJz6oAxTiNhC1mzn4fUJp1qb0c0rCXigSKaexjBQPovf8MkAM8j
-X-Received: by 2002:a05:6358:528e:b0:1b5:f923:33d2 with SMTP id e5c5f4694b2df-1b7f193398fmr1329037455d.1.1725379782415;
-        Tue, 03 Sep 2024 09:09:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1725379782; cv=none;
+Received: by 2002:a17:504:3a8f:b0:1be9:327d:8ee3 with SMTP id g15csp1500449njf;
+        Tue, 3 Sep 2024 09:09:49 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWy7b/XT2gXGxkBEERWPOgqXS3ToPXdccdXN6Ou19Q6uQ3UkHxf8keErXwPMShJ5U2+gzmCkIRi3q/V9g==@linaro.org
+X-Google-Smtp-Source: AGHT+IE9OzYqiF6jbHwrQF4Bv2z4xppVhrSNvQX0toOcCBu3dcOx9EsB5GE2XMQa5SFSjneQR1Tp
+X-Received: by 2002:a05:6870:55d2:b0:278:2c82:e056 with SMTP id 586e51a60fabf-2782c82e203mr752186fac.23.1725379789716;
+        Tue, 03 Sep 2024 09:09:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1725379789; cv=none;
         d=google.com; s=arc-20160816;
-        b=APF99jlgAh1JZ6J6HaWiDhEANTPsCuQB3Nyq3K0CRNQvRfaP8zaMSsmnnHv9zOqcQR
-         nSw9oxUS6j7wo1gR5n8vjF+ZCqfN/gza7UWuriGxV3kWVfuLiDpFgjoC9o/0cR9TV+Pk
-         FClA/Gordu93q9JxxMf919eb9hqhtLCZFdh60ewFBnCjrkJwALtnnA2l/t9Jxt7Y90vg
-         Gh6+zlq6FVl63ZJEUNMw4Em+AN+JLXr8bSAh2whfzuR7DAtP/sLm+s9awLwm5NZlH8n2
-         jrmzXz2eD8Ry9HERPcRhsu54nCevdERcCkUn6Q4XSbmn/mqxPrQS5JzDDNN79kflSXQq
-         D5xw==
+        b=oWnSI2x2qjB0xAkhwE6tE4jdSv6o+mBGHGj0Jk05d/qEaoLtCF/djDuuvlckNJhTxe
+         DJCM0NLglnM939wPlSl/G8feLhyOfPATvSpXyd5SH7Yea4vifoJRYayHjxGyIo3xV8Nj
+         ZPcleeGnSp5P6BNlUKC7MJpu1ivrE95Ed9ag0hl5XNGg+M+Qh1G6mMqD6rSGBcPCD1Wy
+         ClpQBz9DObvq15cKWZIU6SJtunefl+Dz9RTD3jJDBLhdapKtFHvM0ysj51Y4LX0Tuef7
+         lsccxpXkqWikamNVru8kZtaI+57U1cax05mshWIeUq/tIRxOi9FrE58YEC8MK7+yaIc9
+         sL8Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=fmDEQAHR61WT1tBB8RVs6stzaZ4Kwf55ODK6be7k5N4=;
+        bh=omeNUQBHhD7rQ+2+37oDOhIxxFTSqrGLWgH+yK1kOBw=;
         fh=H2AmuqulvQE+T5zu97MCEUC3z9wF9NssS7895NhR/+c=;
-        b=kLY4MucU0s/DcLPxtVUIA72zjiSVsufVibEJU6kHamGinJoYHwoRI9q03zEiC/0MdG
-         H2Yz7NKP0l44afPkXJszhh2QwLAElY2X6wRk8+GdqXhK494Gnw1SRbKRrukkeidB4jJ0
-         4pZCRMdyhk5CXA1yDmTQOOHpHS+vsqciEKw2Uhg5cstn0nfR8TKjim3urOL4uhefEdyq
-         8h1uYKpoTMTmtUQnSffm3kwTbqToRSrZ5g8nD+VCsCTSA9EuNB+caVCtJM3ND22MRNFE
-         /jW1VNIpV9joDHjvUqstMuiXIo+TxLUcui8R72vTmBVtR6yG8Cc8JXFFrni5WimQ8Bxt
-         GrDA==;
+        b=rtg6x+MPDvHzQi3oE81bz4SCx1dT2xRng4cAlxt3EZ+wdUeiHC9U2tWYTP8kpLo0ca
+         Nrf6DsJmDG5yv5P1K0rAVKn1jHhdAvpJxtBowIUTVLLSeiEnUG8M07XtBD2HCc1DfHdP
+         jeJ6ciYeBGqcil8d888Z+4vVRT3FPi3REWZz2Squg+6mtKz1u19uxguHB57rp+qI1/vg
+         bWxasg2msTjwR2K0mJZ5JnHiSpNj3VLYEkeYt7CUVzeu26ijeOs6UL9px8CbRmR/ZZlC
+         DUEfarHQwY7WDuvk3PHtiv8VzOIpxNNXmxzYQQwUggjZpnl2m4dQKGa+GIi90Pz9BnGM
+         NXwQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=VYlUeRNs;
+       dkim=pass header.i=@linaro.org header.s=google header.b=NdayRPwe;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6c3552cb6f8si88264846d6.444.2024.09.03.09.09.42
+        by mx.google.com with ESMTPS id 71dfb90a1353d-500716a6c59si2656528e0c.268.2024.09.03.09.09.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 03 Sep 2024 09:09:42 -0700 (PDT)
+        Tue, 03 Sep 2024 09:09:49 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=VYlUeRNs;
+       dkim=pass header.i=@linaro.org header.s=google header.b=NdayRPwe;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1slW4c-0004t3-B4; Tue, 03 Sep 2024 12:08:06 -0400
+	id 1slW5U-0000qy-GL; Tue, 03 Sep 2024 12:09:00 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1slW4a-0004nA-Vt
- for qemu-arm@nongnu.org; Tue, 03 Sep 2024 12:08:05 -0400
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+ id 1slW5S-0000is-Hi
+ for qemu-arm@nongnu.org; Tue, 03 Sep 2024 12:08:58 -0400
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1slW4U-0002f6-1B
- for qemu-arm@nongnu.org; Tue, 03 Sep 2024 12:08:04 -0400
-Received: by mail-wm1-x336.google.com with SMTP id
- 5b1f17b1804b1-42c7b5b2d01so35247175e9.3
- for <qemu-arm@nongnu.org>; Tue, 03 Sep 2024 09:07:57 -0700 (PDT)
+ id 1slW5O-0002uz-0L
+ for qemu-arm@nongnu.org; Tue, 03 Sep 2024 12:08:58 -0400
+Received: by mail-wm1-x32e.google.com with SMTP id
+ 5b1f17b1804b1-42c7b5b2d01so35260065e9.3
+ for <qemu-arm@nongnu.org>; Tue, 03 Sep 2024 09:08:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1725379676; x=1725984476; darn=nongnu.org;
+ d=linaro.org; s=google; t=1725379732; x=1725984532; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=fmDEQAHR61WT1tBB8RVs6stzaZ4Kwf55ODK6be7k5N4=;
- b=VYlUeRNs/VA+lob0HIcuxhHMKTXfPidW5eqLlk4EoVXWDtxyX1jX2HP5847KY9u9KO
- 6nLlsJ6fQq4cbjJ/DCwFu6s1D37cg+TUHh6sXVD+ZhIK4LkbT5BBIGZOOyR9go+w/qSR
- tctX6tIvBjZlQOupCMqPDhDeX42aIu2xeDcSjVXWDvyMoNqUNiSdyIOqeM9ZotwXdTTx
- YBdOhmK/tGFUI/FhuA4CFxkAi0FyZFGkywgbygOmYzAA2SLkOeBarc/mqECWpmHVNpsp
- Ne+Vp1//mNsYgnsLmcs/GDzoQ1+0bhMC4FEeZdzosD+xn5Hl+AdPeNwnIS55HSMJhKB9
- IPjA==
+ :reply-to; bh=omeNUQBHhD7rQ+2+37oDOhIxxFTSqrGLWgH+yK1kOBw=;
+ b=NdayRPweqYqelJCKPwy3qhZ+nEV+XMN5XNYlSz3/sgBdH8rseVd+wSCRsbHn3L4mC4
+ Vh9trP8I+28+FHbRp8Lf1PElNZ1xrsX2kz++r0If3LiTOU7vACt67c8G58L+M3HHBRS3
+ UEPVpsurO9z6VWHMw/P4JSriL91G8PXBgrdAVOK5E2JR3SIe5IHhxm6zmOWh3tcLDJ5r
+ Vvm7aFcvhDNxCBEqUHL/qtJZW88ZR1KXMKpFTq4VDXflUfYKreMkwfJuBE58s1B6z4Sr
+ YYofL8giyEkBk19xpLldpXuMUkPQc9cT7cWw9cyun3zI+nZZL/D7TM3rhd1R6aTNKVub
+ kA3w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1725379676; x=1725984476;
+ d=1e100.net; s=20230601; t=1725379732; x=1725984532;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=fmDEQAHR61WT1tBB8RVs6stzaZ4Kwf55ODK6be7k5N4=;
- b=q2xdsSm53cjxVRFpCev5xKSb83IdZhZQNJ2aNB+GgmSx8knh88lUON5aKv6Mp9chxt
- EOxO3YD0W9Ab/d1trtuWd5rl2Mt2D69Uhg1FniiMy82FVpXLJLWSP559nl6XkEHfkTeQ
- zj0R1xNaboWlo0A2f+LMWNZ6dRAMFhDFLrk3Ex5/mBL9yyHvNVq+eqdTYfjYhZUgeb1y
- VHQNBs0HwM5pwbSXgdhLVgj6ZbVS944fGx2ZTJOz9pKex888HuIO4fJRYCWrLOFUE20d
- lHxe9Xmv3nTaU2DX9c9CPwXUQ0g5x66EgC9lnrTz4JoLSe4WO6lZWpUSpdU9IFuUrVXV
- BqGg==
-X-Gm-Message-State: AOJu0YxjzoLCO5x7ESY/jbrnbwlbNpyqTg9q/16r4QB1mY8MMIwU/7bP
- iY1BllUtLXuyM/7v3GrS1kkxAlrefcBUY8SpZY5d4Ji6v19jBVuwo5zYnGzr/aiF95aGsmLL3js
- q
-X-Received: by 2002:a05:600c:a01:b0:426:6857:3156 with SMTP id
- 5b1f17b1804b1-42bb01edd50mr169493835e9.27.1725379676341; 
- Tue, 03 Sep 2024 09:07:56 -0700 (PDT)
+ bh=omeNUQBHhD7rQ+2+37oDOhIxxFTSqrGLWgH+yK1kOBw=;
+ b=BUW9mbCwalR9upnGrRqfmgbXc3kTlrBLAIdjURS4SaWtd+Hp/7erK9/6Y5zRj2nmEa
+ LMTn9wiy7EhGb+i685T/J5WFrp4W1tuYi3sdYEj/WS7riB32hWBIh2wu9SsSWmBQd+/J
+ fxUaSDrOeyA/YuTT9DqT4Fqm3NO42gs4nr3l2+mObcP9Eqadd3iHJ5bV4dKtZwRZvUa9
+ bBHEpCLLWNW0yhECeM8aJWMHNjWb76ni2KzrpRAGpbRxrSpV4OZPwtZ23u61PxWMtHEi
+ 6pKHq93EyS7wufUDfokGNQdbdEeC8gvq3GhJrVAwxNoEvsAeOpIgEe+zksfKJCmtJkRu
+ EJ8Q==
+X-Gm-Message-State: AOJu0YybYHToxeIA9hov++aDD3lgb9TOZt1Gq331S/ZYLnafquDgOYJD
+ CG1G7OmIj9vTRiyihQn47wzCIaBexEfmNozReh6lb/GlPavXZZBsA6T77AtBF1n2KrcYrSjfqYd
+ R
+X-Received: by 2002:a05:600c:1c83:b0:426:59fe:ac27 with SMTP id
+ 5b1f17b1804b1-42bb01edc2amr146564185e9.26.1725379732243; 
+ Tue, 03 Sep 2024 09:08:52 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-42bb6df1066sm175123065e9.18.2024.09.03.09.07.55
+ 5b1f17b1804b1-42bb6df1066sm175123065e9.18.2024.09.03.09.08.51
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 03 Sep 2024 09:07:55 -0700 (PDT)
+ Tue, 03 Sep 2024 09:08:51 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH for-9.2 05/53] hw/ide: Remove DSCM-1XXXX microdrive device
- model
-Date: Tue,  3 Sep 2024 17:07:03 +0100
-Message-Id: <20240903160751.4100218-6-peter.maydell@linaro.org>
+Subject: [PATCH for-9.2 38/53] hw/gpio: Remove TYPE_OMAP2_GPIO
+Date: Tue,  3 Sep 2024 17:07:36 +0100
+Message-Id: <20240903160751.4100218-39-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240903160751.4100218-1-peter.maydell@linaro.org>
 References: <20240903160751.4100218-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::336;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x336.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -129,709 +128,632 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: QFGK5YQ+gGv6
+X-TUID: mYDY6sI3vMlf
 
-The DSCM-1XXXX microdrive device model was used only by the
-XScale-based Zaurus machine types.  Now they have been removed, we
-can delete this device too.
+We've removed the OMAP2 SoC, so we can remove the OMAP2 GPIO
+device. (The source file remains, as it also has the model of
+the OMAP1 GPIO device.)
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- include/hw/pcmcia.h |   3 -
- hw/ide/microdrive.c | 644 --------------------------------------------
- hw/ide/Kconfig      |   6 -
- hw/ide/meson.build  |   1 -
- 4 files changed, 654 deletions(-)
- delete mode 100644 hw/ide/microdrive.c
+ include/hw/arm/omap.h |   8 -
+ hw/gpio/omap_gpio.c   | 557 ------------------------------------------
+ 2 files changed, 565 deletions(-)
 
-diff --git a/include/hw/pcmcia.h b/include/hw/pcmcia.h
-index ab268027511..6c08ad616a5 100644
---- a/include/hw/pcmcia.h
-+++ b/include/hw/pcmcia.h
-@@ -60,7 +60,4 @@ struct PCMCIACardClass {
- #define CISTPL_END            0xff  /* Tuple End */
- #define CISTPL_ENDMARK        0xff
+diff --git a/include/hw/arm/omap.h b/include/hw/arm/omap.h
+index e3f50b4ab13..b569580b09e 100644
+--- a/include/hw/arm/omap.h
++++ b/include/hw/arm/omap.h
+@@ -105,17 +105,9 @@ typedef struct Omap1GpioState Omap1GpioState;
+ DECLARE_INSTANCE_CHECKER(Omap1GpioState, OMAP1_GPIO,
+                          TYPE_OMAP1_GPIO)
  
--/* dscm1xxxx.c */
--PCMCIACardState *dscm1xxxx_init(DriveInfo *bdrv);
+-#define TYPE_OMAP2_GPIO "omap2-gpio"
+-typedef struct Omap2GpioState Omap2GpioState;
+-DECLARE_INSTANCE_CHECKER(Omap2GpioState, OMAP2_GPIO,
+-                         TYPE_OMAP2_GPIO)
 -
- #endif
-diff --git a/hw/ide/microdrive.c b/hw/ide/microdrive.c
-deleted file mode 100644
-index 3bb152b5d33..00000000000
---- a/hw/ide/microdrive.c
-+++ /dev/null
-@@ -1,644 +0,0 @@
--/*
-- * QEMU IDE Emulation: microdrive (CF / PCMCIA)
-- *
-- * Copyright (c) 2003 Fabrice Bellard
-- * Copyright (c) 2006 Openedhand Ltd.
-- *
-- * Permission is hereby granted, free of charge, to any person obtaining a copy
-- * of this software and associated documentation files (the "Software"), to deal
-- * in the Software without restriction, including without limitation the rights
-- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-- * copies of the Software, and to permit persons to whom the Software is
-- * furnished to do so, subject to the following conditions:
-- *
-- * The above copyright notice and this permission notice shall be included in
-- * all copies or substantial portions of the Software.
-- *
-- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-- * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-- * THE SOFTWARE.
-- */
+ /* TODO: clock framework (see above) */
+ void omap_gpio_set_clk(Omap1GpioState *gpio, omap_clk clk);
+ 
+-void omap2_gpio_set_iclk(Omap2GpioState *gpio, omap_clk clk);
+-void omap2_gpio_set_fclk(Omap2GpioState *gpio, uint8_t i, omap_clk clk);
 -
--#include "qemu/osdep.h"
--#include "hw/pcmcia.h"
--#include "migration/vmstate.h"
--#include "qapi/error.h"
--#include "qemu/module.h"
--#include "sysemu/dma.h"
--#include "hw/irq.h"
+ /* OMAP2 l4 Interconnect */
+ struct omap_l4_s;
+ struct omap_l4_region_s {
+diff --git a/hw/gpio/omap_gpio.c b/hw/gpio/omap_gpio.c
+index a3341d70f16..0ded1f749bb 100644
+--- a/hw/gpio/omap_gpio.c
++++ b/hw/gpio/omap_gpio.c
+@@ -190,408 +190,6 @@ static void omap_gpio_reset(struct omap_gpio_s *s)
+     s->pins = ~0;
+ }
+ 
+-struct omap2_gpio_s {
+-    qemu_irq irq[2];
+-    qemu_irq wkup;
+-    qemu_irq *handler;
+-    MemoryRegion iomem;
 -
--#include "qom/object.h"
--#include "ide-internal.h"
--
--#define TYPE_MICRODRIVE "microdrive"
--OBJECT_DECLARE_SIMPLE_TYPE(MicroDriveState, MICRODRIVE)
--
--/***********************************************************/
--/* CF-ATA Microdrive */
--
--#define METADATA_SIZE   0x20
--
--/* DSCM-1XXXX Microdrive hard disk with CF+ II / PCMCIA interface.  */
--
--struct MicroDriveState {
--    /*< private >*/
--    PCMCIACardState parent_obj;
--    /*< public >*/
--
--    IDEBus bus;
--    uint32_t attr_base;
--    uint32_t io_base;
--
--    /* Card state */
--    uint8_t opt;
--    uint8_t stat;
--    uint8_t pins;
--
--    uint8_t ctrl;
--    uint16_t io;
--    uint8_t cycle;
+-    uint8_t revision;
+-    uint8_t config[2];
+-    uint32_t inputs;
+-    uint32_t outputs;
+-    uint32_t dir;
+-    uint32_t level[2];
+-    uint32_t edge[2];
+-    uint32_t mask[2];
+-    uint32_t wumask;
+-    uint32_t ints[2];
+-    uint32_t debounce;
+-    uint8_t delay;
 -};
 -
--/* Register bitfields */
--enum md_opt {
--    OPT_MODE_MMAP    = 0,
--    OPT_MODE_IOMAP16 = 1,
--    OPT_MODE_IOMAP1  = 2,
--    OPT_MODE_IOMAP2  = 3,
--    OPT_MODE         = 0x3f,
--    OPT_LEVIREQ      = 0x40,
--    OPT_SRESET       = 0x80,
--};
--enum md_cstat {
--    STAT_INT        = 0x02,
--    STAT_PWRDWN     = 0x04,
--    STAT_XE         = 0x10,
--    STAT_IOIS8      = 0x20,
--    STAT_SIGCHG     = 0x40,
--    STAT_CHANGED    = 0x80,
--};
--enum md_pins {
--    PINS_MRDY       = 0x02,
--    PINS_CRDY       = 0x20,
--};
--enum md_ctrl {
--    CTRL_IEN        = 0x02,
--    CTRL_SRST       = 0x04,
+-struct Omap2GpioState {
+-    SysBusDevice parent_obj;
+-
+-    MemoryRegion iomem;
+-    int mpu_model;
+-    void *iclk;
+-    void *fclk[6];
+-    int modulecount;
+-    struct omap2_gpio_s *modules;
+-    qemu_irq *handler;
+-    int autoidle;
+-    int gpo;
 -};
 -
--static inline void md_interrupt_update(MicroDriveState *s)
+-/* General-Purpose Interface of OMAP2/3 */
+-static inline void omap2_gpio_module_int_update(struct omap2_gpio_s *s,
+-                                                int line)
 -{
--    PCMCIACardState *card = PCMCIA_CARD(s);
+-    qemu_set_irq(s->irq[line], s->ints[line] & s->mask[line]);
+-}
 -
--    if (card->slot == NULL) {
+-static void omap2_gpio_module_wake(struct omap2_gpio_s *s, int line)
+-{
+-    if (!(s->config[0] & (1 << 2)))			/* ENAWAKEUP */
+-        return;
+-    if (!(s->config[0] & (3 << 3)))			/* Force Idle */
+-        return;
+-    if (!(s->wumask & (1 << line)))
+-        return;
+-
+-    qemu_irq_raise(s->wkup);
+-}
+-
+-static inline void omap2_gpio_module_out_update(struct omap2_gpio_s *s,
+-                uint32_t diff)
+-{
+-    int ln;
+-
+-    s->outputs ^= diff;
+-    diff &= ~s->dir;
+-    while ((ln = ctz32(diff)) != 32) {
+-        qemu_set_irq(s->handler[ln], (s->outputs >> ln) & 1);
+-        diff &= ~(1 << ln);
+-    }
+-}
+-
+-static void omap2_gpio_module_level_update(struct omap2_gpio_s *s, int line)
+-{
+-    s->ints[line] |= s->dir &
+-            ((s->inputs & s->level[1]) | (~s->inputs & s->level[0]));
+-    omap2_gpio_module_int_update(s, line);
+-}
+-
+-static inline void omap2_gpio_module_int(struct omap2_gpio_s *s, int line)
+-{
+-    s->ints[0] |= 1 << line;
+-    omap2_gpio_module_int_update(s, 0);
+-    s->ints[1] |= 1 << line;
+-    omap2_gpio_module_int_update(s, 1);
+-    omap2_gpio_module_wake(s, line);
+-}
+-
+-static void omap2_gpio_set(void *opaque, int line, int level)
+-{
+-    Omap2GpioState *p = opaque;
+-    struct omap2_gpio_s *s = &p->modules[line >> 5];
+-
+-    line &= 31;
+-    if (level) {
+-        if (s->dir & (1 << line) & ((~s->inputs & s->edge[0]) | s->level[1]))
+-            omap2_gpio_module_int(s, line);
+-        s->inputs |= 1 << line;
+-    } else {
+-        if (s->dir & (1 << line) & ((s->inputs & s->edge[1]) | s->level[0]))
+-            omap2_gpio_module_int(s, line);
+-        s->inputs &= ~(1 << line);
+-    }
+-}
+-
+-static void omap2_gpio_module_reset(struct omap2_gpio_s *s)
+-{
+-    s->config[0] = 0;
+-    s->config[1] = 2;
+-    s->ints[0] = 0;
+-    s->ints[1] = 0;
+-    s->mask[0] = 0;
+-    s->mask[1] = 0;
+-    s->wumask = 0;
+-    s->dir = ~0;
+-    s->level[0] = 0;
+-    s->level[1] = 0;
+-    s->edge[0] = 0;
+-    s->edge[1] = 0;
+-    s->debounce = 0;
+-    s->delay = 0;
+-}
+-
+-static uint32_t omap2_gpio_module_read(void *opaque, hwaddr addr)
+-{
+-    struct omap2_gpio_s *s = opaque;
+-
+-    switch (addr) {
+-    case 0x00:	/* GPIO_REVISION */
+-        return s->revision;
+-
+-    case 0x10:	/* GPIO_SYSCONFIG */
+-        return s->config[0];
+-
+-    case 0x14:	/* GPIO_SYSSTATUS */
+-        return 0x01;
+-
+-    case 0x18:	/* GPIO_IRQSTATUS1 */
+-        return s->ints[0];
+-
+-    case 0x1c:	/* GPIO_IRQENABLE1 */
+-    case 0x60:	/* GPIO_CLEARIRQENABLE1 */
+-    case 0x64:	/* GPIO_SETIRQENABLE1 */
+-        return s->mask[0];
+-
+-    case 0x20:	/* GPIO_WAKEUPENABLE */
+-    case 0x80:	/* GPIO_CLEARWKUENA */
+-    case 0x84:	/* GPIO_SETWKUENA */
+-        return s->wumask;
+-
+-    case 0x28:	/* GPIO_IRQSTATUS2 */
+-        return s->ints[1];
+-
+-    case 0x2c:	/* GPIO_IRQENABLE2 */
+-    case 0x70:	/* GPIO_CLEARIRQENABLE2 */
+-    case 0x74:	/* GPIO_SETIREQNEABLE2 */
+-        return s->mask[1];
+-
+-    case 0x30:	/* GPIO_CTRL */
+-        return s->config[1];
+-
+-    case 0x34:	/* GPIO_OE */
+-        return s->dir;
+-
+-    case 0x38:	/* GPIO_DATAIN */
+-        return s->inputs;
+-
+-    case 0x3c:	/* GPIO_DATAOUT */
+-    case 0x90:	/* GPIO_CLEARDATAOUT */
+-    case 0x94:	/* GPIO_SETDATAOUT */
+-        return s->outputs;
+-
+-    case 0x40:	/* GPIO_LEVELDETECT0 */
+-        return s->level[0];
+-
+-    case 0x44:	/* GPIO_LEVELDETECT1 */
+-        return s->level[1];
+-
+-    case 0x48:	/* GPIO_RISINGDETECT */
+-        return s->edge[0];
+-
+-    case 0x4c:	/* GPIO_FALLINGDETECT */
+-        return s->edge[1];
+-
+-    case 0x50:	/* GPIO_DEBOUNCENABLE */
+-        return s->debounce;
+-
+-    case 0x54:	/* GPIO_DEBOUNCINGTIME */
+-        return s->delay;
+-    }
+-
+-    OMAP_BAD_REG(addr);
+-    return 0;
+-}
+-
+-static void omap2_gpio_module_write(void *opaque, hwaddr addr,
+-                uint32_t value)
+-{
+-    struct omap2_gpio_s *s = opaque;
+-    uint32_t diff;
+-    int ln;
+-
+-    switch (addr) {
+-    case 0x00:	/* GPIO_REVISION */
+-    case 0x14:	/* GPIO_SYSSTATUS */
+-    case 0x38:	/* GPIO_DATAIN */
+-        OMAP_RO_REG(addr);
+-        break;
+-
+-    case 0x10:	/* GPIO_SYSCONFIG */
+-        if (((value >> 3) & 3) == 3) {
+-            qemu_log_mask(LOG_GUEST_ERROR,
+-                          "%s: Illegal IDLEMODE value: 3\n", __func__);
+-        }
+-        if (value & 2)
+-            omap2_gpio_module_reset(s);
+-        s->config[0] = value & 0x1d;
+-        break;
+-
+-    case 0x18:	/* GPIO_IRQSTATUS1 */
+-        if (s->ints[0] & value) {
+-            s->ints[0] &= ~value;
+-            omap2_gpio_module_level_update(s, 0);
+-        }
+-        break;
+-
+-    case 0x1c:	/* GPIO_IRQENABLE1 */
+-        s->mask[0] = value;
+-        omap2_gpio_module_int_update(s, 0);
+-        break;
+-
+-    case 0x20:	/* GPIO_WAKEUPENABLE */
+-        s->wumask = value;
+-        break;
+-
+-    case 0x28:	/* GPIO_IRQSTATUS2 */
+-        if (s->ints[1] & value) {
+-            s->ints[1] &= ~value;
+-            omap2_gpio_module_level_update(s, 1);
+-        }
+-        break;
+-
+-    case 0x2c:	/* GPIO_IRQENABLE2 */
+-        s->mask[1] = value;
+-        omap2_gpio_module_int_update(s, 1);
+-        break;
+-
+-    case 0x30:	/* GPIO_CTRL */
+-        s->config[1] = value & 7;
+-        break;
+-
+-    case 0x34:	/* GPIO_OE */
+-        diff = s->outputs & (s->dir ^ value);
+-        s->dir = value;
+-
+-        value = s->outputs & ~s->dir;
+-        while ((ln = ctz32(diff)) != 32) {
+-            diff &= ~(1 << ln);
+-            qemu_set_irq(s->handler[ln], (value >> ln) & 1);
+-        }
+-
+-        omap2_gpio_module_level_update(s, 0);
+-        omap2_gpio_module_level_update(s, 1);
+-        break;
+-
+-    case 0x3c:	/* GPIO_DATAOUT */
+-        omap2_gpio_module_out_update(s, s->outputs ^ value);
+-        break;
+-
+-    case 0x40:	/* GPIO_LEVELDETECT0 */
+-        s->level[0] = value;
+-        omap2_gpio_module_level_update(s, 0);
+-        omap2_gpio_module_level_update(s, 1);
+-        break;
+-
+-    case 0x44:	/* GPIO_LEVELDETECT1 */
+-        s->level[1] = value;
+-        omap2_gpio_module_level_update(s, 0);
+-        omap2_gpio_module_level_update(s, 1);
+-        break;
+-
+-    case 0x48:	/* GPIO_RISINGDETECT */
+-        s->edge[0] = value;
+-        break;
+-
+-    case 0x4c:	/* GPIO_FALLINGDETECT */
+-        s->edge[1] = value;
+-        break;
+-
+-    case 0x50:	/* GPIO_DEBOUNCENABLE */
+-        s->debounce = value;
+-        break;
+-
+-    case 0x54:	/* GPIO_DEBOUNCINGTIME */
+-        s->delay = value;
+-        break;
+-
+-    case 0x60:	/* GPIO_CLEARIRQENABLE1 */
+-        s->mask[0] &= ~value;
+-        omap2_gpio_module_int_update(s, 0);
+-        break;
+-
+-    case 0x64:	/* GPIO_SETIRQENABLE1 */
+-        s->mask[0] |= value;
+-        omap2_gpio_module_int_update(s, 0);
+-        break;
+-
+-    case 0x70:	/* GPIO_CLEARIRQENABLE2 */
+-        s->mask[1] &= ~value;
+-        omap2_gpio_module_int_update(s, 1);
+-        break;
+-
+-    case 0x74:	/* GPIO_SETIREQNEABLE2 */
+-        s->mask[1] |= value;
+-        omap2_gpio_module_int_update(s, 1);
+-        break;
+-
+-    case 0x80:	/* GPIO_CLEARWKUENA */
+-        s->wumask &= ~value;
+-        break;
+-
+-    case 0x84:	/* GPIO_SETWKUENA */
+-        s->wumask |= value;
+-        break;
+-
+-    case 0x90:	/* GPIO_CLEARDATAOUT */
+-        omap2_gpio_module_out_update(s, s->outputs & value);
+-        break;
+-
+-    case 0x94:	/* GPIO_SETDATAOUT */
+-        omap2_gpio_module_out_update(s, ~s->outputs & value);
+-        break;
+-
+-    default:
+-        OMAP_BAD_REG(addr);
+-        return;
+-    }
+-}
+-
+-static uint64_t omap2_gpio_module_readp(void *opaque, hwaddr addr,
+-                                        unsigned size)
+-{
+-    return omap2_gpio_module_read(opaque, addr & ~3) >> ((addr & 3) << 3);
+-}
+-
+-static void omap2_gpio_module_writep(void *opaque, hwaddr addr,
+-                                     uint64_t value, unsigned size)
+-{
+-    uint32_t cur = 0;
+-    uint32_t mask = 0xffff;
+-
+-    if (size == 4) {
+-        omap2_gpio_module_write(opaque, addr, value);
 -        return;
 -    }
 -
--    qemu_set_irq(card->slot->irq,
--                    !(s->stat & STAT_INT) &&    /* Inverted */
--                    !(s->ctrl & (CTRL_IEN | CTRL_SRST)) &&
--                    !(s->opt & OPT_SRESET));
--}
+-    switch (addr & ~3) {
+-    case 0x00:	/* GPIO_REVISION */
+-    case 0x14:	/* GPIO_SYSSTATUS */
+-    case 0x38:	/* GPIO_DATAIN */
+-        OMAP_RO_REG(addr);
+-        break;
 -
--static void md_set_irq(void *opaque, int irq, int level)
--{
--    MicroDriveState *s = opaque;
+-    case 0x10:	/* GPIO_SYSCONFIG */
+-    case 0x1c:	/* GPIO_IRQENABLE1 */
+-    case 0x20:	/* GPIO_WAKEUPENABLE */
+-    case 0x2c:	/* GPIO_IRQENABLE2 */
+-    case 0x30:	/* GPIO_CTRL */
+-    case 0x34:	/* GPIO_OE */
+-    case 0x3c:	/* GPIO_DATAOUT */
+-    case 0x40:	/* GPIO_LEVELDETECT0 */
+-    case 0x44:	/* GPIO_LEVELDETECT1 */
+-    case 0x48:	/* GPIO_RISINGDETECT */
+-    case 0x4c:	/* GPIO_FALLINGDETECT */
+-    case 0x50:	/* GPIO_DEBOUNCENABLE */
+-    case 0x54:	/* GPIO_DEBOUNCINGTIME */
+-        cur = omap2_gpio_module_read(opaque, addr & ~3) &
+-                ~(mask << ((addr & 3) << 3));
 -
--    if (level) {
--        s->stat |= STAT_INT;
--    } else {
--        s->stat &= ~STAT_INT;
+-        /* Fall through.  */
+-    case 0x18:	/* GPIO_IRQSTATUS1 */
+-    case 0x28:	/* GPIO_IRQSTATUS2 */
+-    case 0x60:	/* GPIO_CLEARIRQENABLE1 */
+-    case 0x64:	/* GPIO_SETIRQENABLE1 */
+-    case 0x70:	/* GPIO_CLEARIRQENABLE2 */
+-    case 0x74:	/* GPIO_SETIREQNEABLE2 */
+-    case 0x80:	/* GPIO_CLEARWKUENA */
+-    case 0x84:	/* GPIO_SETWKUENA */
+-    case 0x90:	/* GPIO_CLEARDATAOUT */
+-    case 0x94:	/* GPIO_SETDATAOUT */
+-        value <<= (addr & 3) << 3;
+-        omap2_gpio_module_write(opaque, addr, cur | value);
+-        break;
+-
+-    default:
+-        OMAP_BAD_REG(addr);
+-        return;
 -    }
--
--    md_interrupt_update(s);
 -}
 -
--static void md_reset(DeviceState *dev)
+-static const MemoryRegionOps omap2_gpio_module_ops = {
+-    .read = omap2_gpio_module_readp,
+-    .write = omap2_gpio_module_writep,
+-    .valid.min_access_size = 1,
+-    .valid.max_access_size = 4,
+-    .endianness = DEVICE_NATIVE_ENDIAN,
+-};
+-
+ static void omap_gpif_reset(DeviceState *dev)
+ {
+     Omap1GpioState *s = OMAP1_GPIO(dev);
+@@ -599,81 +197,6 @@ static void omap_gpif_reset(DeviceState *dev)
+     omap_gpio_reset(&s->omap1);
+ }
+ 
+-static void omap2_gpif_reset(DeviceState *dev)
 -{
--    MicroDriveState *s = MICRODRIVE(dev);
+-    Omap2GpioState *s = OMAP2_GPIO(dev);
+-    int i;
 -
--    s->opt = OPT_MODE_MMAP;
--    s->stat = 0;
--    s->pins = 0;
--    s->cycle = 0;
--    s->ctrl = 0;
--    ide_bus_reset(&s->bus);
--}
--
--static uint8_t md_attr_read(PCMCIACardState *card, uint32_t at)
--{
--    MicroDriveState *s = MICRODRIVE(card);
--    PCMCIACardClass *pcc = PCMCIA_CARD_GET_CLASS(card);
--
--    if (at < s->attr_base) {
--        if (at < pcc->cis_len) {
--            return pcc->cis[at];
--        } else {
--            return 0x00;
--        }
+-    for (i = 0; i < s->modulecount; i++) {
+-        omap2_gpio_module_reset(&s->modules[i]);
 -    }
+-    s->autoidle = 0;
+-    s->gpo = 0;
+-}
 -
--    at -= s->attr_base;
+-static uint64_t omap2_gpif_top_read(void *opaque, hwaddr addr, unsigned size)
+-{
+-    Omap2GpioState *s = opaque;
 -
--    switch (at) {
--    case 0x00:  /* Configuration Option Register */
--        return s->opt;
--    case 0x02:  /* Card Configuration Status Register */
--        if (s->ctrl & CTRL_IEN) {
--            return s->stat & ~STAT_INT;
--        } else {
--            return s->stat;
--        }
--    case 0x04:  /* Pin Replacement Register */
--        return (s->pins & PINS_CRDY) | 0x0c;
--    case 0x06:  /* Socket and Copy Register */
+-    switch (addr) {
+-    case 0x00:	/* IPGENERICOCPSPL_REVISION */
+-        return 0x18;
+-
+-    case 0x10:	/* IPGENERICOCPSPL_SYSCONFIG */
+-        return s->autoidle;
+-
+-    case 0x14:	/* IPGENERICOCPSPL_SYSSTATUS */
+-        return 0x01;
+-
+-    case 0x18:	/* IPGENERICOCPSPL_IRQSTATUS */
 -        return 0x00;
--#ifdef VERBOSE
--    default:
--        printf("%s: Bad attribute space register %02x\n", __func__, at);
--#endif
+-
+-    case 0x40:	/* IPGENERICOCPSPL_GPO */
+-        return s->gpo;
+-
+-    case 0x50:	/* IPGENERICOCPSPL_GPI */
+-        return 0x00;
 -    }
 -
+-    OMAP_BAD_REG(addr);
 -    return 0;
 -}
 -
--static void md_attr_write(PCMCIACardState *card, uint32_t at, uint8_t value)
+-static void omap2_gpif_top_write(void *opaque, hwaddr addr,
+-                                 uint64_t value, unsigned size)
 -{
--    MicroDriveState *s = MICRODRIVE(card);
+-    Omap2GpioState *s = opaque;
 -
--    at -= s->attr_base;
+-    switch (addr) {
+-    case 0x00:	/* IPGENERICOCPSPL_REVISION */
+-    case 0x14:	/* IPGENERICOCPSPL_SYSSTATUS */
+-    case 0x18:	/* IPGENERICOCPSPL_IRQSTATUS */
+-    case 0x50:	/* IPGENERICOCPSPL_GPI */
+-        OMAP_RO_REG(addr);
+-        break;
 -
--    switch (at) {
--    case 0x00:  /* Configuration Option Register */
--        s->opt = value & 0xcf;
--        if (value & OPT_SRESET) {
--            device_cold_reset(DEVICE(s));
--        }
--        md_interrupt_update(s);
+-    case 0x10:	/* IPGENERICOCPSPL_SYSCONFIG */
+-        if (value & (1 << 1))					/* SOFTRESET */
+-            omap2_gpif_reset(DEVICE(s));
+-        s->autoidle = value & 1;
 -        break;
--    case 0x02:  /* Card Configuration Status Register */
--        if ((s->stat ^ value) & STAT_PWRDWN) {
--            s->pins |= PINS_CRDY;
--        }
--        s->stat &= 0x82;
--        s->stat |= value & 0x74;
--        md_interrupt_update(s);
--        /* Word 170 in Identify Device must be equal to STAT_XE */
+-
+-    case 0x40:	/* IPGENERICOCPSPL_GPO */
+-        s->gpo = value & 1;
 -        break;
--    case 0x04:  /* Pin Replacement Register */
--        s->pins &= PINS_CRDY;
--        s->pins |= value & PINS_MRDY;
--        break;
--    case 0x06:  /* Socket and Copy Register */
--        break;
+-
 -    default:
--        printf("%s: Bad attribute space register %02x\n", __func__, at);
+-        OMAP_BAD_REG(addr);
+-        return;
 -    }
 -}
 -
--static uint16_t md_common_read(PCMCIACardState *card, uint32_t at)
--{
--    MicroDriveState *s = MICRODRIVE(card);
--    IDEState *ifs;
--    uint16_t ret;
--    at -= s->io_base;
--
--    switch (s->opt & OPT_MODE) {
--    case OPT_MODE_MMAP:
--        if ((at & ~0x3ff) == 0x400) {
--            at = 0;
--        }
--        break;
--    case OPT_MODE_IOMAP16:
--        at &= 0xf;
--        break;
--    case OPT_MODE_IOMAP1:
--        if ((at & ~0xf) == 0x3f0) {
--            at -= 0x3e8;
--        } else if ((at & ~0xf) == 0x1f0) {
--            at -= 0x1f0;
--        }
--        break;
--    case OPT_MODE_IOMAP2:
--        if ((at & ~0xf) == 0x370) {
--            at -= 0x368;
--        } else if ((at & ~0xf) == 0x170) {
--            at -= 0x170;
--        }
--    }
--
--    switch (at) {
--    case 0x0:  /* Even RD Data */
--    case 0x8:
--        return ide_data_readw(&s->bus, 0);
--
--        /* TODO: 8-bit accesses */
--        if (s->cycle) {
--            ret = s->io >> 8;
--        } else {
--            s->io = ide_data_readw(&s->bus, 0);
--            ret = s->io & 0xff;
--        }
--        s->cycle = !s->cycle;
--        return ret;
--    case 0x9:  /* Odd RD Data */
--        return s->io >> 8;
--    case 0xd:  /* Error */
--        return ide_ioport_read(&s->bus, 0x1);
--    case 0xe:  /* Alternate Status */
--        ifs = ide_bus_active_if(&s->bus);
--        if (ifs->blk) {
--            return ifs->status;
--        } else {
--            return 0;
--        }
--    case 0xf:  /* Device Address */
--        ifs = ide_bus_active_if(&s->bus);
--        return 0xc2 | ((~ifs->select << 2) & 0x3c);
--    default:
--        return ide_ioport_read(&s->bus, at);
--    }
--
--    return 0;
--}
--
--static void md_common_write(PCMCIACardState *card, uint32_t at, uint16_t value)
--{
--    MicroDriveState *s = MICRODRIVE(card);
--    at -= s->io_base;
--
--    switch (s->opt & OPT_MODE) {
--    case OPT_MODE_MMAP:
--        if ((at & ~0x3ff) == 0x400) {
--            at = 0;
--        }
--        break;
--    case OPT_MODE_IOMAP16:
--        at &= 0xf;
--        break;
--    case OPT_MODE_IOMAP1:
--        if ((at & ~0xf) == 0x3f0) {
--            at -= 0x3e8;
--        } else if ((at & ~0xf) == 0x1f0) {
--            at -= 0x1f0;
--        }
--        break;
--    case OPT_MODE_IOMAP2:
--        if ((at & ~0xf) == 0x370) {
--            at -= 0x368;
--        } else if ((at & ~0xf) == 0x170) {
--            at -= 0x170;
--        }
--    }
--
--    switch (at) {
--    case 0x0:  /* Even WR Data */
--    case 0x8:
--        ide_data_writew(&s->bus, 0, value);
--        break;
--
--        /* TODO: 8-bit accesses */
--        if (s->cycle) {
--            ide_data_writew(&s->bus, 0, s->io | (value << 8));
--        } else {
--            s->io = value & 0xff;
--        }
--        s->cycle = !s->cycle;
--        break;
--    case 0x9:
--        s->io = value & 0xff;
--        s->cycle = !s->cycle;
--        break;
--    case 0xd:  /* Features */
--        ide_ioport_write(&s->bus, 0x1, value);
--        break;
--    case 0xe:  /* Device Control */
--        s->ctrl = value;
--        if (value & CTRL_SRST) {
--            device_cold_reset(DEVICE(s));
--        }
--        md_interrupt_update(s);
--        break;
--    default:
--        if (s->stat & STAT_PWRDWN) {
--            s->pins |= PINS_CRDY;
--            s->stat &= ~STAT_PWRDWN;
--        }
--        ide_ioport_write(&s->bus, at, value);
--    }
--}
--
--static const VMStateDescription vmstate_microdrive = {
--    .name = "microdrive",
--    .version_id = 3,
--    .minimum_version_id = 0,
--    .fields = (const VMStateField[]) {
--        VMSTATE_UINT8(opt, MicroDriveState),
--        VMSTATE_UINT8(stat, MicroDriveState),
--        VMSTATE_UINT8(pins, MicroDriveState),
--        VMSTATE_UINT8(ctrl, MicroDriveState),
--        VMSTATE_UINT16(io, MicroDriveState),
--        VMSTATE_UINT8(cycle, MicroDriveState),
--        VMSTATE_IDE_BUS(bus, MicroDriveState),
--        VMSTATE_IDE_DRIVES(bus.ifs, MicroDriveState),
--        VMSTATE_END_OF_LIST()
--    }
+-static const MemoryRegionOps omap2_gpif_top_ops = {
+-    .read = omap2_gpif_top_read,
+-    .write = omap2_gpif_top_write,
+-    .endianness = DEVICE_NATIVE_ENDIAN,
 -};
 -
--static const uint8_t dscm1xxxx_cis[0x14a] = {
--    [0x000] = CISTPL_DEVICE,    /* 5V Device Information */
--    [0x002] = 0x03,             /* Tuple length = 4 bytes */
--    [0x004] = 0xdb,             /* ID: DTYPE_FUNCSPEC, non WP, DSPEED_150NS */
--    [0x006] = 0x01,             /* Size = 2K bytes */
--    [0x008] = CISTPL_ENDMARK,
+ static void omap_gpio_init(Object *obj)
+ {
+     DeviceState *dev = DEVICE(obj);
+@@ -697,51 +220,6 @@ static void omap_gpio_realize(DeviceState *dev, Error **errp)
+     }
+ }
+ 
+-static void omap2_gpio_realize(DeviceState *dev, Error **errp)
+-{
+-    Omap2GpioState *s = OMAP2_GPIO(dev);
+-    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
+-    int i;
 -
--    [0x00a] = CISTPL_DEVICE_OC, /* Additional Device Information */
--    [0x00c] = 0x04,             /* Tuple length = 4 byest */
--    [0x00e] = 0x03,             /* Conditions: Ext = 0, Vcc 3.3V, MWAIT = 1 */
--    [0x010] = 0xdb,             /* ID: DTYPE_FUNCSPEC, non WP, DSPEED_150NS */
--    [0x012] = 0x01,             /* Size = 2K bytes */
--    [0x014] = CISTPL_ENDMARK,
+-    if (!s->iclk) {
+-        error_setg(errp, "omap2-gpio: iclk not connected");
+-        return;
+-    }
 -
--    [0x016] = CISTPL_JEDEC_C,   /* JEDEC ID */
--    [0x018] = 0x02,             /* Tuple length = 2 bytes */
--    [0x01a] = 0xdf,             /* PC Card ATA with no Vpp required */
--    [0x01c] = 0x01,
+-    s->modulecount = s->mpu_model < omap2430 ? 4
+-        : s->mpu_model < omap3430 ? 5
+-        : 6;
 -
--    [0x01e] = CISTPL_MANFID,    /* Manufacture ID */
--    [0x020] = 0x04,             /* Tuple length = 4 bytes */
--    [0x022] = 0xa4,             /* TPLMID_MANF = 00a4 (IBM) */
--    [0x024] = 0x00,
--    [0x026] = 0x00,             /* PLMID_CARD = 0000 */
--    [0x028] = 0x00,
+-    if (s->mpu_model < omap3430) {
+-        memory_region_init_io(&s->iomem, OBJECT(dev), &omap2_gpif_top_ops, s,
+-                              "omap2.gpio", 0x1000);
+-        sysbus_init_mmio(sbd, &s->iomem);
+-    }
 -
--    [0x02a] = CISTPL_VERS_1,    /* Level 1 Version */
--    [0x02c] = 0x12,             /* Tuple length = 23 bytes */
--    [0x02e] = 0x04,             /* Major Version = JEIDA 4.2 / PCMCIA 2.1 */
--    [0x030] = 0x01,             /* Minor Version = 1 */
--    [0x032] = 'I',
--    [0x034] = 'B',
--    [0x036] = 'M',
--    [0x038] = 0x00,
--    [0x03a] = 'm',
--    [0x03c] = 'i',
--    [0x03e] = 'c',
--    [0x040] = 'r',
--    [0x042] = 'o',
--    [0x044] = 'd',
--    [0x046] = 'r',
--    [0x048] = 'i',
--    [0x04a] = 'v',
--    [0x04c] = 'e',
--    [0x04e] = 0x00,
--    [0x050] = CISTPL_ENDMARK,
+-    s->modules = g_new0(struct omap2_gpio_s, s->modulecount);
+-    s->handler = g_new0(qemu_irq, s->modulecount * 32);
+-    qdev_init_gpio_in(dev, omap2_gpio_set, s->modulecount * 32);
+-    qdev_init_gpio_out(dev, s->handler, s->modulecount * 32);
 -
--    [0x052] = CISTPL_FUNCID,    /* Function ID */
--    [0x054] = 0x02,             /* Tuple length = 2 bytes */
--    [0x056] = 0x04,             /* TPLFID_FUNCTION = Fixed Disk */
--    [0x058] = 0x01,             /* TPLFID_SYSINIT: POST = 1, ROM = 0 */
+-    for (i = 0; i < s->modulecount; i++) {
+-        struct omap2_gpio_s *m = &s->modules[i];
 -
--    [0x05a] = CISTPL_FUNCE,     /* Function Extension */
--    [0x05c] = 0x02,             /* Tuple length = 2 bytes */
--    [0x05e] = 0x01,             /* TPLFE_TYPE = Disk Device Interface */
--    [0x060] = 0x01,             /* TPLFE_DATA = PC Card ATA Interface */
+-        if (!s->fclk[i]) {
+-            error_setg(errp, "omap2-gpio: fclk%d not connected", i);
+-            return;
+-        }
 -
--    [0x062] = CISTPL_FUNCE,     /* Function Extension */
--    [0x064] = 0x03,             /* Tuple length = 3 bytes */
--    [0x066] = 0x02,             /* TPLFE_TYPE = Basic PC Card ATA Interface */
--    [0x068] = 0x08,             /* TPLFE_DATA: Rotating, Unique, Single */
--    [0x06a] = 0x0f,             /* TPLFE_DATA: Sleep, Standby, Idle, Auto */
+-        m->revision = (s->mpu_model < omap3430) ? 0x18 : 0x25;
+-        m->handler = &s->handler[i * 32];
+-        sysbus_init_irq(sbd, &m->irq[0]); /* mpu irq */
+-        sysbus_init_irq(sbd, &m->irq[1]); /* dsp irq */
+-        sysbus_init_irq(sbd, &m->wkup);
+-        memory_region_init_io(&m->iomem, OBJECT(dev), &omap2_gpio_module_ops, m,
+-                              "omap.gpio-module", 0x1000);
+-        sysbus_init_mmio(sbd, &m->iomem);
+-    }
+-}
 -
--    [0x06c] = CISTPL_CONFIG,    /* Configuration */
--    [0x06e] = 0x05,             /* Tuple length = 5 bytes */
--    [0x070] = 0x01,             /* TPCC_RASZ = 2 bytes, TPCC_RMSZ = 1 byte */
--    [0x072] = 0x07,             /* TPCC_LAST = 7 */
--    [0x074] = 0x00,             /* TPCC_RADR = 0200 */
--    [0x076] = 0x02,
--    [0x078] = 0x0f,             /* TPCC_RMSK = 200, 202, 204, 206 */
+ void omap_gpio_set_clk(Omap1GpioState *gpio, omap_clk clk)
+ {
+     gpio->clk = clk;
+@@ -771,44 +249,9 @@ static const TypeInfo omap_gpio_info = {
+     .class_init    = omap_gpio_class_init,
+ };
+ 
+-void omap2_gpio_set_iclk(Omap2GpioState *gpio, omap_clk clk)
+-{
+-    gpio->iclk = clk;
+-}
 -
--    [0x07a] = CISTPL_CFTABLE_ENTRY, /* 16-bit PC Card Configuration */
--    [0x07c] = 0x0b,             /* Tuple length = 11 bytes */
--    [0x07e] = 0xc0,             /* TPCE_INDX = Memory Mode, Default, Iface */
--    [0x080] = 0xc0,             /* TPCE_IF = Memory, no BVDs, no WP, READY */
--    [0x082] = 0xa1,             /* TPCE_FS = Vcc only, no I/O, Memory, Misc */
--    [0x084] = 0x27,             /* NomV = 1, MinV = 1, MaxV = 1, Peakl = 1 */
--    [0x086] = 0x55,             /* NomV: 5.0 V */
--    [0x088] = 0x4d,             /* MinV: 4.5 V */
--    [0x08a] = 0x5d,             /* MaxV: 5.5 V */
--    [0x08c] = 0x4e,             /* Peakl: 450 mA */
--    [0x08e] = 0x08,             /* TPCE_MS = 1 window, 1 byte, Host address */
--    [0x090] = 0x00,             /* Window descriptor: Window length = 0 */
--    [0x092] = 0x20,             /* TPCE_MI: support power down mode, RW */
+-void omap2_gpio_set_fclk(Omap2GpioState *gpio, uint8_t i, omap_clk clk)
+-{
+-    assert(i <= 5);
+-    gpio->fclk[i] = clk;
+-}
 -
--    [0x094] = CISTPL_CFTABLE_ENTRY, /* 16-bit PC Card Configuration */
--    [0x096] = 0x06,             /* Tuple length = 6 bytes */
--    [0x098] = 0x00,             /* TPCE_INDX = Memory Mode, no Default */
--    [0x09a] = 0x01,             /* TPCE_FS = Vcc only, no I/O, no Memory */
--    [0x09c] = 0x21,             /* NomV = 1, MinV = 0, MaxV = 0, Peakl = 1 */
--    [0x09e] = 0xb5,             /* NomV: 3.3 V */
--    [0x0a0] = 0x1e,
--    [0x0a2] = 0x3e,             /* Peakl: 350 mA */
--
--    [0x0a4] = CISTPL_CFTABLE_ENTRY, /* 16-bit PC Card Configuration */
--    [0x0a6] = 0x0d,             /* Tuple length = 13 bytes */
--    [0x0a8] = 0xc1,             /* TPCE_INDX = I/O and Memory Mode, Default */
--    [0x0aa] = 0x41,             /* TPCE_IF = I/O and Memory, no BVD, no WP */
--    [0x0ac] = 0x99,             /* TPCE_FS = Vcc only, I/O, Interrupt, Misc */
--    [0x0ae] = 0x27,             /* NomV = 1, MinV = 1, MaxV = 1, Peakl = 1 */
--    [0x0b0] = 0x55,             /* NomV: 5.0 V */
--    [0x0b2] = 0x4d,             /* MinV: 4.5 V */
--    [0x0b4] = 0x5d,             /* MaxV: 5.5 V */
--    [0x0b6] = 0x4e,             /* Peakl: 450 mA */
--    [0x0b8] = 0x64,             /* TPCE_IO = 16-byte boundary, 16/8 accesses */
--    [0x0ba] = 0xf0,             /* TPCE_IR =  MASK, Level, Pulse, Share */
--    [0x0bc] = 0xff,             /* IRQ0..IRQ7 supported */
--    [0x0be] = 0xff,             /* IRQ8..IRQ15 supported */
--    [0x0c0] = 0x20,             /* TPCE_MI = support power down mode */
--
--    [0x0c2] = CISTPL_CFTABLE_ENTRY, /* 16-bit PC Card Configuration */
--    [0x0c4] = 0x06,             /* Tuple length = 6 bytes */
--    [0x0c6] = 0x01,             /* TPCE_INDX = I/O and Memory Mode */
--    [0x0c8] = 0x01,             /* TPCE_FS = Vcc only, no I/O, no Memory */
--    [0x0ca] = 0x21,             /* NomV = 1, MinV = 0, MaxV = 0, Peakl = 1 */
--    [0x0cc] = 0xb5,             /* NomV: 3.3 V */
--    [0x0ce] = 0x1e,
--    [0x0d0] = 0x3e,             /* Peakl: 350 mA */
--
--    [0x0d2] = CISTPL_CFTABLE_ENTRY, /* 16-bit PC Card Configuration */
--    [0x0d4] = 0x12,             /* Tuple length = 18 bytes */
--    [0x0d6] = 0xc2,             /* TPCE_INDX = I/O Primary Mode */
--    [0x0d8] = 0x41,             /* TPCE_IF = I/O and Memory, no BVD, no WP */
--    [0x0da] = 0x99,             /* TPCE_FS = Vcc only, I/O, Interrupt, Misc */
--    [0x0dc] = 0x27,             /* NomV = 1, MinV = 1, MaxV = 1, Peakl = 1 */
--    [0x0de] = 0x55,             /* NomV: 5.0 V */
--    [0x0e0] = 0x4d,             /* MinV: 4.5 V */
--    [0x0e2] = 0x5d,             /* MaxV: 5.5 V */
--    [0x0e4] = 0x4e,             /* Peakl: 450 mA */
--    [0x0e6] = 0xea,             /* TPCE_IO = 1K boundary, 16/8 access, Range */
--    [0x0e8] = 0x61,             /* Range: 2 fields, 2 bytes addr, 1 byte len */
--    [0x0ea] = 0xf0,             /* Field 1 address = 0x01f0 */
--    [0x0ec] = 0x01,
--    [0x0ee] = 0x07,             /* Address block length = 8 */
--    [0x0f0] = 0xf6,             /* Field 2 address = 0x03f6 */
--    [0x0f2] = 0x03,
--    [0x0f4] = 0x01,             /* Address block length = 2 */
--    [0x0f6] = 0xee,             /* TPCE_IR = IRQ E, Level, Pulse, Share */
--    [0x0f8] = 0x20,             /* TPCE_MI = support power down mode */
--
--    [0x0fa] = CISTPL_CFTABLE_ENTRY, /* 16-bit PC Card Configuration */
--    [0x0fc] = 0x06,             /* Tuple length = 6 bytes */
--    [0x0fe] = 0x02,             /* TPCE_INDX = I/O Primary Mode, no Default */
--    [0x100] = 0x01,             /* TPCE_FS = Vcc only, no I/O, no Memory */
--    [0x102] = 0x21,             /* NomV = 1, MinV = 0, MaxV = 0, Peakl = 1 */
--    [0x104] = 0xb5,             /* NomV: 3.3 V */
--    [0x106] = 0x1e,
--    [0x108] = 0x3e,             /* Peakl: 350 mA */
--
--    [0x10a] = CISTPL_CFTABLE_ENTRY, /* 16-bit PC Card Configuration */
--    [0x10c] = 0x12,             /* Tuple length = 18 bytes */
--    [0x10e] = 0xc3,             /* TPCE_INDX = I/O Secondary Mode, Default */
--    [0x110] = 0x41,             /* TPCE_IF = I/O and Memory, no BVD, no WP */
--    [0x112] = 0x99,             /* TPCE_FS = Vcc only, I/O, Interrupt, Misc */
--    [0x114] = 0x27,             /* NomV = 1, MinV = 1, MaxV = 1, Peakl = 1 */
--    [0x116] = 0x55,             /* NomV: 5.0 V */
--    [0x118] = 0x4d,             /* MinV: 4.5 V */
--    [0x11a] = 0x5d,             /* MaxV: 5.5 V */
--    [0x11c] = 0x4e,             /* Peakl: 450 mA */
--    [0x11e] = 0xea,             /* TPCE_IO = 1K boundary, 16/8 access, Range */
--    [0x120] = 0x61,             /* Range: 2 fields, 2 byte addr, 1 byte len */
--    [0x122] = 0x70,             /* Field 1 address = 0x0170 */
--    [0x124] = 0x01,
--    [0x126] = 0x07,             /* Address block length = 8 */
--    [0x128] = 0x76,             /* Field 2 address = 0x0376 */
--    [0x12a] = 0x03,
--    [0x12c] = 0x01,             /* Address block length = 2 */
--    [0x12e] = 0xee,             /* TPCE_IR = IRQ E, Level, Pulse, Share */
--    [0x130] = 0x20,             /* TPCE_MI = support power down mode */
--
--    [0x132] = CISTPL_CFTABLE_ENTRY, /* 16-bit PC Card Configuration */
--    [0x134] = 0x06,             /* Tuple length = 6 bytes */
--    [0x136] = 0x03,             /* TPCE_INDX = I/O Secondary Mode */
--    [0x138] = 0x01,             /* TPCE_FS = Vcc only, no I/O, no Memory */
--    [0x13a] = 0x21,             /* NomV = 1, MinV = 0, MaxV = 0, Peakl = 1 */
--    [0x13c] = 0xb5,             /* NomV: 3.3 V */
--    [0x13e] = 0x1e,
--    [0x140] = 0x3e,             /* Peakl: 350 mA */
--
--    [0x142] = CISTPL_NO_LINK,   /* No Link */
--    [0x144] = 0x00,             /* Tuple length = 0 bytes */
--
--    [0x146] = CISTPL_END,       /* Tuple End */
+-static Property omap2_gpio_properties[] = {
+-    DEFINE_PROP_INT32("mpu_model", Omap2GpioState, mpu_model, 0),
+-    DEFINE_PROP_END_OF_LIST(),
 -};
 -
--#define TYPE_DSCM1XXXX "dscm1xxxx"
--
--static int dscm1xxxx_attach(PCMCIACardState *card)
+-static void omap2_gpio_class_init(ObjectClass *klass, void *data)
 -{
--    MicroDriveState *md = MICRODRIVE(card);
--    PCMCIACardClass *pcc = PCMCIA_CARD_GET_CLASS(card);
+-    DeviceClass *dc = DEVICE_CLASS(klass);
 -
--    md->attr_base = pcc->cis[0x74] | (pcc->cis[0x76] << 8);
--    md->io_base = 0x0;
--
--    device_cold_reset(DEVICE(md));
--    md_interrupt_update(md);
--
--    return 0;
--}
--
--static int dscm1xxxx_detach(PCMCIACardState *card)
--{
--    MicroDriveState *md = MICRODRIVE(card);
--
--    device_cold_reset(DEVICE(md));
--    return 0;
--}
--
--PCMCIACardState *dscm1xxxx_init(DriveInfo *dinfo)
--{
--    MicroDriveState *md;
--
--    md = MICRODRIVE(object_new(TYPE_DSCM1XXXX));
--    qdev_realize(DEVICE(md), NULL, &error_fatal);
--
--    if (dinfo != NULL) {
--        ide_bus_create_drive(&md->bus, 0, dinfo);
--    }
--    md->bus.ifs[0].drive_kind = IDE_CFATA;
--    md->bus.ifs[0].mdata_size = METADATA_SIZE;
--    md->bus.ifs[0].mdata_storage = g_malloc0(METADATA_SIZE);
--
--    return PCMCIA_CARD(md);
--}
--
--static void dscm1xxxx_class_init(ObjectClass *oc, void *data)
--{
--    PCMCIACardClass *pcc = PCMCIA_CARD_CLASS(oc);
--    DeviceClass *dc = DEVICE_CLASS(oc);
--
--    pcc->cis = dscm1xxxx_cis;
--    pcc->cis_len = sizeof(dscm1xxxx_cis);
--
--    pcc->attach = dscm1xxxx_attach;
--    pcc->detach = dscm1xxxx_detach;
--    /* Reason: Needs to be wired-up in code, see dscm1xxxx_init() */
+-    dc->realize = omap2_gpio_realize;
+-    dc->reset = omap2_gpif_reset;
+-    device_class_set_props(dc, omap2_gpio_properties);
+-    /* Reason: pointer properties "iclk", "fclk0", ..., "fclk5" */
 -    dc->user_creatable = false;
 -}
 -
--static const TypeInfo dscm1xxxx_type_info = {
--    .name = TYPE_DSCM1XXXX,
--    .parent = TYPE_MICRODRIVE,
--    .class_init = dscm1xxxx_class_init,
+-static const TypeInfo omap2_gpio_info = {
+-    .name          = TYPE_OMAP2_GPIO,
+-    .parent        = TYPE_SYS_BUS_DEVICE,
+-    .instance_size = sizeof(Omap2GpioState),
+-    .class_init    = omap2_gpio_class_init,
 -};
 -
--static void microdrive_realize(DeviceState *dev, Error **errp)
--{
--    MicroDriveState *md = MICRODRIVE(dev);
--
--    ide_bus_init_output_irq(&md->bus, qemu_allocate_irq(md_set_irq, md, 0));
--}
--
--static void microdrive_init(Object *obj)
--{
--    MicroDriveState *md = MICRODRIVE(obj);
--
--    ide_bus_init(&md->bus, sizeof(md->bus), DEVICE(obj), 0, 1);
--}
--
--static void microdrive_class_init(ObjectClass *oc, void *data)
--{
--    DeviceClass *dc = DEVICE_CLASS(oc);
--    PCMCIACardClass *pcc = PCMCIA_CARD_CLASS(oc);
--
--    pcc->attr_read = md_attr_read;
--    pcc->attr_write = md_attr_write;
--    pcc->common_read = md_common_read;
--    pcc->common_write = md_common_write;
--    pcc->io_read = md_common_read;
--    pcc->io_write = md_common_write;
--
--    dc->realize = microdrive_realize;
--    dc->reset = md_reset;
--    dc->vmsd = &vmstate_microdrive;
--}
--
--static const TypeInfo microdrive_type_info = {
--    .name = TYPE_MICRODRIVE,
--    .parent = TYPE_PCMCIA_CARD,
--    .instance_size = sizeof(MicroDriveState),
--    .instance_init = microdrive_init,
--    .abstract = true,
--    .class_init = microdrive_class_init,
--};
--
--static void microdrive_register_types(void)
--{
--    type_register_static(&microdrive_type_info);
--    type_register_static(&dscm1xxxx_type_info);
--}
--
--type_init(microdrive_register_types)
-diff --git a/hw/ide/Kconfig b/hw/ide/Kconfig
-index 6dfc5a21292..2e22b677da3 100644
---- a/hw/ide/Kconfig
-+++ b/hw/ide/Kconfig
-@@ -43,12 +43,6 @@ config IDE_VIA
-     bool
-     select IDE_PCI
+ static void omap_gpio_register_types(void)
+ {
+     type_register_static(&omap_gpio_info);
+-    type_register_static(&omap2_gpio_info);
+ }
  
--config MICRODRIVE
--    bool
--    select IDE_BUS
--    select IDE_DEV
--    depends on PCMCIA
--
- config AHCI
-     bool
-     select IDE_BUS
-diff --git a/hw/ide/meson.build b/hw/ide/meson.build
-index d09705cac03..90ea8614233 100644
---- a/hw/ide/meson.build
-+++ b/hw/ide/meson.build
-@@ -13,4 +13,3 @@ system_ss.add(when: 'CONFIG_IDE_PCI', if_true: files('pci.c'))
- system_ss.add(when: 'CONFIG_IDE_PIIX', if_true: files('piix.c', 'ioport.c'))
- system_ss.add(when: 'CONFIG_IDE_SII3112', if_true: files('sii3112.c'))
- system_ss.add(when: 'CONFIG_IDE_VIA', if_true: files('via.c'))
--system_ss.add(when: 'CONFIG_MICRODRIVE', if_true: files('microdrive.c'))
+ type_init(omap_gpio_register_types)
 -- 
 2.34.1
 

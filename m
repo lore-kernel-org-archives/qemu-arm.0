@@ -1,794 +1,713 @@
-Received: by 2002:a17:504:3a8f:b0:1be9:327d:8ee3 with SMTP id g15csp1501460njf;
+Received: by 2002:a17:504:3a8f:b0:1be9:327d:8ee3 with SMTP id g15csp1501462njf;
         Tue, 3 Sep 2024 09:12:11 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVuhdNgobfKPafbDzrV7WTMarOxr5q8HnSUwhPieRH0iTsVa0MEMRszqXC0mGXl+aO5Th/C95pOZl4/4w==@linaro.org
-X-Google-Smtp-Source: AGHT+IGKBS8TZPzkceoi23QeWSy4vOBeegvjdWNeiNlU6C57l88UNJah66XXJVUYzW9hVAYstliH
-X-Received: by 2002:a05:6122:29cb:b0:4f5:254e:e111 with SMTP id 71dfb90a1353d-5009b07f31fmr11800544e0c.7.1725379931255;
+X-Forwarded-Encrypted: i=2; AJvYcCXYcErbgvrlIkeLRrMfW+KbY8zdeEDg3uV9/bcjLOwDlJ8CXlISvG5iylT6WBKhbceO55FHiWxzf4j3Tg==@linaro.org
+X-Google-Smtp-Source: AGHT+IG2qq6pxVRf6JHjVSJS4nFGYVbrEJkpY8eL4/ROD6AepXnzWfo1HAcfxdOtl7TEj21jaQ53
+X-Received: by 2002:a05:6808:1811:b0:3de:218f:b60 with SMTP id 5614622812f47-3df220f1a8cmr12894184b6e.17.1725379931484;
         Tue, 03 Sep 2024 09:12:11 -0700 (PDT)
 ARC-Seal: i=1; a=rsa-sha256; t=1725379931; cv=none;
         d=google.com; s=arc-20160816;
-        b=bNjG+NO+bkTIbFk1VifBQe7ukjxOsXEFLqTHLln29F2Xu9Cd7XwD2NSONcZtJE2Va4
-         Lmxzf9EJ9xjPL/X3yk/lHpa/HffnZsg6eiS+ZjrvoFAnP9HODJtjGlfHzZGyV9HxgQ6D
-         XjJSiqsIZaomVr8jCwXS1qgmsNEyMqHlhHrmuQezvA6NXvg9cKMBLv/Z0lfW94fc73FU
-         ZLVDu7QKGVIKD14+5F+dI/4cKYH0V8ni5dFyPJxOgZsy7dHCIBU4TsREFK/iBDLhBWeM
-         K/9u84SquNa2Kap7kFjfXQh9+1JN3hZ2aSbGCBCV247tZkhNP0Ic++8v1Q/pW1DVdugk
-         tbSg==
+        b=0BCeGDoPeKPpODM7G7jkIcDaMW8WbcQbnL/q74/74nqCJA6DYbyCDYHA4VLfVnIBaG
+         mQaannXmPs8PDqTrQpWXkIeH4+kzNX6pAIb5m6unZK5xR70Rp9vHjUgG9tYU0AC2FPSI
+         8QA/ecK1eebWhSuvHHwsutcottwWPCmvDabpYyMaaqf/8mIi4a7GoMhwMtKCQTwM6Jfx
+         BvDRh9/mWNrVGmpJoCOO5HgxWRPe9no16EhFwaoF7c1J6beuUSqYRN4fbUnM/c/SpR/j
+         n4rAjAdCEj2MeRQ2SFh/stisqOD2Vs0J0TPgbLLukDhhflpppQVv0pjSDLIcoQvtdE16
+         cDzw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=IiCawLw2POwTZcTTAV1P3hhlN4KcpW1sTG7Gg9YSIJ8=;
-        fh=H2AmuqulvQE+T5zu97MCEUC3z9wF9NssS7895NhR/+c=;
-        b=1BYMrmjjVPhTxfXTOgKtKaxH81QvwxP5hKPM8H3DICeOMK0OCSN9YPONW0/cduOs8P
-         tOFSKDoWQda2YS8yVRompwx5lFE3SjVzfwPPdYtKwqmh3a7IHNMn2IEVKMffhpPcps5a
-         rr7fdBAeENJfVQ4gSWeFp5rhL8c+xyKP7ox5bCTGHHRD1Opu5RzGgsQZsSQaTKwUlbNm
-         phECq1AcJjBI8/bXnSQ27vKznGpwN2QUUJylVD2kQdX04n3NUIEbfpHg385pAaCDvvwS
-         q83JlJzwK0AtPzQqJLRqXKtIMvL5ZnXBb3mpcklU9LbMK6uc+I2RV8J2ZgvMppvfJQGs
-         /Y9w==;
+        bh=woCPrbI3R+Np+REB27zbFUXCAusB9NajxbY/iA0dKFE=;
+        fh=xkttUBj7c52SbtHnJzh+W7/WF7kXJTPASg+TzK9usGE=;
+        b=AUdqECGXb20/PxZb2D+FYNRTON68+5cryPWyKbCPM/w1S1AO57bi3JRicTCb4GGPW0
+         m6Tha69yorOmL7fSrprCsmXFk5m4ZyH4Z6yMtnEvTFMTPyn82+688SJCBJBHCD1HVhGi
+         AktRaABlLIgU2soebR2iqtZxrJSFDJYCRIkxyDJFnUhNf+W9pK61NBbYqCwfY8V/ZvLf
+         r43aP9Z3sZ9iCrmZDyyLX6j1D9m5hqbQ/+Lnr8mkaQQ/PCCw79LdZR7I511NW1V9OyGC
+         x6eBRlJvdjvWIdYhkUX/yGQMtM72JVPuh+kN57DiKhVERWjMmnRjyPGszRJyTQAjTX4v
+         3hFQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=E71722J+;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=ZRZd1242;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 71dfb90a1353d-5007167883dsi2764990e0c.242.2024.09.03.09.12.11
+        by mx.google.com with ESMTPS id a1e0cc1a2514c-846a9e02aaesi2483620241.205.2024.09.03.09.12.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Tue, 03 Sep 2024 09:12:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=E71722J+;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=ZRZd1242;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1slW4u-0006CK-3f; Tue, 03 Sep 2024 12:08:25 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1slW5l-0002Zr-Kf; Tue, 03 Sep 2024 12:09:17 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1slW4q-0005y8-SK
- for qemu-arm@nongnu.org; Tue, 03 Sep 2024 12:08:20 -0400
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+ id 1slW5i-0002Ec-50
+ for qemu-devel@nongnu.org; Tue, 03 Sep 2024 12:09:14 -0400
+Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1slW4n-0002ky-5g
- for qemu-arm@nongnu.org; Tue, 03 Sep 2024 12:08:20 -0400
-Received: by mail-wm1-x32c.google.com with SMTP id
- 5b1f17b1804b1-42bb8cf8abeso44414125e9.2
- for <qemu-arm@nongnu.org>; Tue, 03 Sep 2024 09:08:16 -0700 (PDT)
+ id 1slW5d-00030c-BS
+ for qemu-devel@nongnu.org; Tue, 03 Sep 2024 12:09:13 -0400
+Received: by mail-wr1-x429.google.com with SMTP id
+ ffacd0b85a97d-374bd0da617so2184754f8f.3
+ for <qemu-devel@nongnu.org>; Tue, 03 Sep 2024 09:09:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1725379695; x=1725984495; darn=nongnu.org;
+ d=linaro.org; s=google; t=1725379748; x=1725984548; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=IiCawLw2POwTZcTTAV1P3hhlN4KcpW1sTG7Gg9YSIJ8=;
- b=E71722J+A2oxs2CDlUza/NiZQaTO4DHYQNSuEIlSjuTA6HGFjYpMIxVFGAc3x8Tq1c
- j3+jls8D0rF5KdvN0PM8ltEVFC1N08POx+63K2Ufd4wN9U42GUdX39tElnPYvtDg6ksn
- hAkeozhp0txHTeDlIOvSqUoz0ZywqGRjEarlAH+cNNEXijOdwZqrTcIt+zPZQTAKhgu/
- 6FVdDLq2RnhpYjUBOlxvk7F3RDWQbRE5aF7Ly+eDRNQQI822oP3WoWAanw8gRvDLUPgl
- ubxAV9Jdoeaig3Wmzhmzp7zLHbI48eU7OzyIdSAx75+PmRqncW2XoKecR6EQoTJPLg3n
- 6JkQ==
+ :reply-to; bh=woCPrbI3R+Np+REB27zbFUXCAusB9NajxbY/iA0dKFE=;
+ b=ZRZd12420MUjICp9gGRsXXE3oN9UlHq6Ab1nC620GaILCLPawCUuZK/2Blrox9MS9O
+ PkjizQtu8z4/D0nz8dqF/CaNsBmf9BM2KFZV6f88jOQqW1OcEuF1amSUXQH5lubnpONp
+ MfvWL4Uiq43d0cYSzbjymClnGrs2FGID8NflL0jt27Eh4GibrWdbUCqUNLqpyU+WLFmJ
+ SCwweolBQqgUrkZ1vpdDgJG+ezI+P/p6NdvPJ0hQiMDtKGvn8+L3tOO0BDK+Udd29VyB
+ Ogjyrv2+CGyfDiC8WFwp4XcRY1HHDVynPLjXsy+EIFsyWroxuv2zGONCjtJGJXlRGA0h
+ XrtQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1725379695; x=1725984495;
+ d=1e100.net; s=20230601; t=1725379748; x=1725984548;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=IiCawLw2POwTZcTTAV1P3hhlN4KcpW1sTG7Gg9YSIJ8=;
- b=DcuDvtgxL4hTrvfeOqTlgMzuK2xmQQEBB9LsZzWru+DMXuo4gzZgm6bS6B957OlX4a
- e1cVaZ8/a1t721COHQJMLBQO1fpZUqhYfqfj1+Wwk2ilf6zuM8n94dI6yU1b+40GOuWY
- 8C1UejNBh1s0GyjFBZNp9Dek4Y7Bi1gkFEguowRmHFkP4lapA2y3yQwEjaB7IWpanTAW
- IvS5HEihMIkE58qvSUGwstqdmT8CWPsDBwggxN1bw5YvBP3RR5ag6LnJaCHjs44zilQB
- s4vJGRzGiHVF46KlDEvf7VtwgS153w3jKMjKIkITT7uC4h3zuCXE/ItETPx6f5CjWtyL
- UMzA==
-X-Gm-Message-State: AOJu0YwCjcjx+CmSKZtRHZrjaRdAwiSZcTce6ewEmhQ5/OJxvSfe9EkK
- CTRWgZ0VGqpyfdWcX+a8/diRSSPJqoejYYez67yNM819ORm6PO0vFWkNY/Balh0r0G6rmpo89Co
- 2
-X-Received: by 2002:a05:600c:4f47:b0:427:ff7a:79e with SMTP id
- 5b1f17b1804b1-42c8de7b311mr11314135e9.16.1725379694990; 
- Tue, 03 Sep 2024 09:08:14 -0700 (PDT)
+ bh=woCPrbI3R+Np+REB27zbFUXCAusB9NajxbY/iA0dKFE=;
+ b=JrdqWQp9tty3o8xkNdQ8qSWweivfVyuP0Ibzki6RRZxil3IisP8bYTjpagV9AFbgkV
+ Yju1k+3KXoryygWrdjV9q1vcf7KNCq03OmhTI0UBsQvLpquT9GppdmS9jYLh5p4NbYSU
+ 7HFEEAmrVZrx1LGVcaWSQ8oGjEl06hprCytEhMsnxxweWnCckxxvOpCAxsD8MLvZ5Ybh
+ 27T+t1f5ivyW8vDmRy+8DXWLUWCuIzEM6QqkVj2l+XeTotjAFXkxRxzRRAu1H0dB835v
+ MbskKOMTbqTgXd2tT5KlpXOczHlQU10GyNKzA7kIMPDB5SgNtEfuFyKWbp2ONr3+lFH4
+ c6dw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWARcgrNFia8rQ90sa49Tn0cNCic+0NMzCxCboXo8/yGxgL8VaBsrAwuiVyTKg10/QqaVYxF4aou1tX@nongnu.org
+X-Gm-Message-State: AOJu0Yw0ksC8Px+dV4LrTRn8CgXLOb7Qvlkk7MIGfniUFKEDbMXq08yd
+ QqPxjeI6o8pnbZtoBbOz+9FhKVCQagCIxpt/HAHgBTs6YCNMJtT1XUZOr56YN2Jfkjs5bjwkkgD
+ w
+X-Received: by 2002:adf:978c:0:b0:371:8dcc:7f9e with SMTP id
+ ffacd0b85a97d-374bce9864bmr10164712f8f.2.1725379747771; 
+ Tue, 03 Sep 2024 09:09:07 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-42bb6df1066sm175123065e9.18.2024.09.03.09.08.14
+ 5b1f17b1804b1-42bb6df1066sm175123065e9.18.2024.09.03.09.09.07
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 03 Sep 2024 09:08:14 -0700 (PDT)
+ Tue, 03 Sep 2024 09:09:07 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH for-9.2 16/53] hw/sd: Remove pxa2xx_mmci.c
-Date: Tue,  3 Sep 2024 17:07:14 +0100
-Message-Id: <20240903160751.4100218-17-peter.maydell@linaro.org>
+Subject: [PATCH for-9.2 51/53] hw/misc/omap_clk: Remove OMAP2-specifics
+Date: Tue,  3 Sep 2024 17:07:49 +0100
+Message-Id: <20240903160751.4100218-52-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240903160751.4100218-1-peter.maydell@linaro.org>
 References: <20240903160751.4100218-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::429;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x429.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 0uz+kLQ9nW5h
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: seYda+1+HpHr
 
-Remove the pxa2xx-specific pxa2xx_mmci device.
+Remove the handling for all non-OMAP1 SoCs.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- include/hw/arm/pxa.h |  10 -
- hw/sd/pxa2xx_mmci.c  | 594 -------------------------------------------
- hw/sd/meson.build    |   1 -
- hw/sd/trace-events   |   4 -
- 4 files changed, 609 deletions(-)
- delete mode 100644 hw/sd/pxa2xx_mmci.c
+ hw/misc/omap_clk.c | 527 +--------------------------------------------
+ 1 file changed, 2 insertions(+), 525 deletions(-)
 
-diff --git a/include/hw/arm/pxa.h b/include/hw/arm/pxa.h
-index bf7f868700a..cc4de0750af 100644
---- a/include/hw/arm/pxa.h
-+++ b/include/hw/arm/pxa.h
-@@ -86,16 +86,6 @@ PXA2xxLCDState *pxa2xx_lcdc_init(MemoryRegion *sysmem,
-                 hwaddr base, qemu_irq irq);
- void pxa2xx_lcd_vsync_notifier(PXA2xxLCDState *s, qemu_irq handler);
+diff --git a/hw/misc/omap_clk.c b/hw/misc/omap_clk.c
+index c77ca2fc74e..0157c9be759 100644
+--- a/hw/misc/omap_clk.c
++++ b/hw/misc/omap_clk.c
+@@ -35,9 +35,6 @@ struct clk {
+ #define CLOCK_IN_OMAP730	(1 << 11)
+ #define CLOCK_IN_OMAP1510	(1 << 12)
+ #define CLOCK_IN_OMAP16XX	(1 << 13)
+-#define CLOCK_IN_OMAP242X	(1 << 14)
+-#define CLOCK_IN_OMAP243X	(1 << 15)
+-#define CLOCK_IN_OMAP343X	(1 << 16)
+     uint32_t flags;
+     int id;
  
--/* pxa2xx_mmci.c */
--#define TYPE_PXA2XX_MMCI "pxa2xx-mmci"
--OBJECT_DECLARE_SIMPLE_TYPE(PXA2xxMMCIState, PXA2XX_MMCI)
--
--PXA2xxMMCIState *pxa2xx_mmci_init(MemoryRegion *sysmem,
--                hwaddr base,
--                qemu_irq irq, qemu_irq rx_dma, qemu_irq tx_dma);
--void pxa2xx_mmci_handlers(PXA2xxMMCIState *s, qemu_irq readonly,
--                qemu_irq coverswitch);
--
- /* pxa2xx_pcmcia.c */
- #define TYPE_PXA2XX_PCMCIA "pxa2xx-pcmcia"
- OBJECT_DECLARE_SIMPLE_TYPE(PXA2xxPCMCIAState, PXA2XX_PCMCIA)
-diff --git a/hw/sd/pxa2xx_mmci.c b/hw/sd/pxa2xx_mmci.c
-deleted file mode 100644
-index 82529708c8a..00000000000
---- a/hw/sd/pxa2xx_mmci.c
-+++ /dev/null
-@@ -1,594 +0,0 @@
--/*
-- * Intel XScale PXA255/270 MultiMediaCard/SD/SDIO Controller emulation.
-- *
-- * Copyright (c) 2006 Openedhand Ltd.
-- * Written by Andrzej Zaborowski <balrog@zabor.org>
-- *
-- * This code is licensed under the GPLv2.
-- *
-- * Contributions after 2012-01-13 are licensed under the terms of the
-- * GNU GPL, version 2 or (at your option) any later version.
-- */
--
--#include "qemu/osdep.h"
--#include "qapi/error.h"
--#include "hw/irq.h"
--#include "hw/sysbus.h"
--#include "migration/vmstate.h"
--#include "hw/arm/pxa.h"
--#include "hw/sd/sd.h"
--#include "hw/qdev-properties.h"
--#include "qemu/log.h"
--#include "qemu/module.h"
--#include "trace.h"
--#include "qom/object.h"
--
--#define TYPE_PXA2XX_MMCI_BUS "pxa2xx-mmci-bus"
--/* This is reusing the SDBus typedef from SD_BUS */
--DECLARE_INSTANCE_CHECKER(SDBus, PXA2XX_MMCI_BUS,
--                         TYPE_PXA2XX_MMCI_BUS)
--
--struct PXA2xxMMCIState {
--    SysBusDevice parent_obj;
--
--    MemoryRegion iomem;
--    qemu_irq irq;
--    qemu_irq rx_dma;
--    qemu_irq tx_dma;
--    qemu_irq inserted;
--    qemu_irq readonly;
--
--    BlockBackend *blk;
--    SDBus sdbus;
--
--    uint32_t status;
--    uint32_t clkrt;
--    uint32_t spi;
--    uint32_t cmdat;
--    uint32_t resp_tout;
--    uint32_t read_tout;
--    int32_t blklen;
--    int32_t numblk;
--    uint32_t intmask;
--    uint32_t intreq;
--    int32_t cmd;
--    uint32_t arg;
--
--    int32_t active;
--    int32_t bytesleft;
--    uint8_t tx_fifo[64];
--    uint32_t tx_start;
--    uint32_t tx_len;
--    uint8_t rx_fifo[32];
--    uint32_t rx_start;
--    uint32_t rx_len;
--    uint16_t resp_fifo[9];
--    uint32_t resp_len;
--
--    int32_t cmdreq;
+@@ -59,8 +56,7 @@ static struct clk xtal_osc12m = {
+ static struct clk xtal_osc32k = {
+     .name	= "xtal_osc_32k",
+     .rate	= 32768,
+-    .flags	= CLOCK_IN_OMAP1510 | CLOCK_IN_OMAP16XX | CLOCK_IN_OMAP310 |
+-            CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
++    .flags	= CLOCK_IN_OMAP1510 | CLOCK_IN_OMAP16XX | CLOCK_IN_OMAP310,
+ };
+ 
+ static struct clk ck_ref = {
+@@ -507,449 +503,10 @@ static struct clk i2c_ick = {
+ static struct clk clk32k = {
+     .name	= "clk32-kHz",
+     .flags	= CLOCK_IN_OMAP310 | CLOCK_IN_OMAP1510 | CLOCK_IN_OMAP16XX |
+-            CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X | ALWAYS_ENABLED,
++            ALWAYS_ENABLED,
+     .parent	= &xtal_osc32k,
+ };
+ 
+-static struct clk ref_clk = {
+-    .name	= "ref_clk",
+-    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X | ALWAYS_ENABLED,
+-    .rate	= 12000000,	/* 12 MHz or 13 MHz or 19.2 MHz */
+-    /*.parent	= sys.xtalin */
 -};
 -
--static bool pxa2xx_mmci_vmstate_validate(void *opaque, int version_id)
--{
--    PXA2xxMMCIState *s = opaque;
--
--    return s->tx_start < ARRAY_SIZE(s->tx_fifo)
--        && s->rx_start < ARRAY_SIZE(s->rx_fifo)
--        && s->tx_len <= ARRAY_SIZE(s->tx_fifo)
--        && s->rx_len <= ARRAY_SIZE(s->rx_fifo)
--        && s->resp_len <= ARRAY_SIZE(s->resp_fifo);
--}
--
--
--static const VMStateDescription vmstate_pxa2xx_mmci = {
--    .name = "pxa2xx-mmci",
--    .version_id = 2,
--    .minimum_version_id = 2,
--    .fields = (const VMStateField[]) {
--        VMSTATE_UINT32(status, PXA2xxMMCIState),
--        VMSTATE_UINT32(clkrt, PXA2xxMMCIState),
--        VMSTATE_UINT32(spi, PXA2xxMMCIState),
--        VMSTATE_UINT32(cmdat, PXA2xxMMCIState),
--        VMSTATE_UINT32(resp_tout, PXA2xxMMCIState),
--        VMSTATE_UINT32(read_tout, PXA2xxMMCIState),
--        VMSTATE_INT32(blklen, PXA2xxMMCIState),
--        VMSTATE_INT32(numblk, PXA2xxMMCIState),
--        VMSTATE_UINT32(intmask, PXA2xxMMCIState),
--        VMSTATE_UINT32(intreq, PXA2xxMMCIState),
--        VMSTATE_INT32(cmd, PXA2xxMMCIState),
--        VMSTATE_UINT32(arg, PXA2xxMMCIState),
--        VMSTATE_INT32(cmdreq, PXA2xxMMCIState),
--        VMSTATE_INT32(active, PXA2xxMMCIState),
--        VMSTATE_INT32(bytesleft, PXA2xxMMCIState),
--        VMSTATE_UINT32(tx_start, PXA2xxMMCIState),
--        VMSTATE_UINT32(tx_len, PXA2xxMMCIState),
--        VMSTATE_UINT32(rx_start, PXA2xxMMCIState),
--        VMSTATE_UINT32(rx_len, PXA2xxMMCIState),
--        VMSTATE_UINT32(resp_len, PXA2xxMMCIState),
--        VMSTATE_VALIDATE("fifo size incorrect", pxa2xx_mmci_vmstate_validate),
--        VMSTATE_UINT8_ARRAY(tx_fifo, PXA2xxMMCIState, 64),
--        VMSTATE_UINT8_ARRAY(rx_fifo, PXA2xxMMCIState, 32),
--        VMSTATE_UINT16_ARRAY(resp_fifo, PXA2xxMMCIState, 9),
--        VMSTATE_END_OF_LIST()
--    }
+-static struct clk apll_96m = {
+-    .name	= "apll_96m",
+-    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X | ALWAYS_ENABLED,
+-    .rate	= 96000000,
+-    /*.parent	= ref_clk */
 -};
 -
--#define MMC_STRPCL	0x00	/* MMC Clock Start/Stop register */
--#define MMC_STAT	0x04	/* MMC Status register */
--#define MMC_CLKRT	0x08	/* MMC Clock Rate register */
--#define MMC_SPI		0x0c	/* MMC SPI Mode register */
--#define MMC_CMDAT	0x10	/* MMC Command/Data register */
--#define MMC_RESTO	0x14	/* MMC Response Time-Out register */
--#define MMC_RDTO	0x18	/* MMC Read Time-Out register */
--#define MMC_BLKLEN	0x1c	/* MMC Block Length register */
--#define MMC_NUMBLK	0x20	/* MMC Number of Blocks register */
--#define MMC_PRTBUF	0x24	/* MMC Buffer Partly Full register */
--#define MMC_I_MASK	0x28	/* MMC Interrupt Mask register */
--#define MMC_I_REG	0x2c	/* MMC Interrupt Request register */
--#define MMC_CMD		0x30	/* MMC Command register */
--#define MMC_ARGH	0x34	/* MMC Argument High register */
--#define MMC_ARGL	0x38	/* MMC Argument Low register */
--#define MMC_RES		0x3c	/* MMC Response FIFO */
--#define MMC_RXFIFO	0x40	/* MMC Receive FIFO */
--#define MMC_TXFIFO	0x44	/* MMC Transmit FIFO */
--#define MMC_RDWAIT	0x48	/* MMC RD_WAIT register */
--#define MMC_BLKS_REM	0x4c	/* MMC Blocks Remaining register */
--
--/* Bitfield masks */
--#define STRPCL_STOP_CLK	(1 << 0)
--#define STRPCL_STRT_CLK	(1 << 1)
--#define STAT_TOUT_RES	(1 << 1)
--#define STAT_CLK_EN	(1 << 8)
--#define STAT_DATA_DONE	(1 << 11)
--#define STAT_PRG_DONE	(1 << 12)
--#define STAT_END_CMDRES	(1 << 13)
--#define SPI_SPI_MODE	(1 << 0)
--#define CMDAT_RES_TYPE	(3 << 0)
--#define CMDAT_DATA_EN	(1 << 2)
--#define CMDAT_WR_RD	(1 << 3)
--#define CMDAT_DMA_EN	(1 << 7)
--#define CMDAT_STOP_TRAN	(1 << 10)
--#define INT_DATA_DONE	(1 << 0)
--#define INT_PRG_DONE	(1 << 1)
--#define INT_END_CMD	(1 << 2)
--#define INT_STOP_CMD	(1 << 3)
--#define INT_CLK_OFF	(1 << 4)
--#define INT_RXFIFO_REQ	(1 << 5)
--#define INT_TXFIFO_REQ	(1 << 6)
--#define INT_TINT	(1 << 7)
--#define INT_DAT_ERR	(1 << 8)
--#define INT_RES_ERR	(1 << 9)
--#define INT_RD_STALLED	(1 << 10)
--#define INT_SDIO_INT	(1 << 11)
--#define INT_SDIO_SACK	(1 << 12)
--#define PRTBUF_PRT_BUF	(1 << 0)
--
--/* Route internal interrupt lines to the global IC and DMA */
--static void pxa2xx_mmci_int_update(PXA2xxMMCIState *s)
--{
--    uint32_t mask = s->intmask;
--    if (s->cmdat & CMDAT_DMA_EN) {
--        mask |= INT_RXFIFO_REQ | INT_TXFIFO_REQ;
--
--        qemu_set_irq(s->rx_dma, !!(s->intreq & INT_RXFIFO_REQ));
--        qemu_set_irq(s->tx_dma, !!(s->intreq & INT_TXFIFO_REQ));
--    }
--
--    qemu_set_irq(s->irq, !!(s->intreq & ~mask));
--}
--
--static void pxa2xx_mmci_fifo_update(PXA2xxMMCIState *s)
--{
--    if (!s->active)
--        return;
--
--    if (s->cmdat & CMDAT_WR_RD) {
--        while (s->bytesleft && s->tx_len) {
--            sdbus_write_byte(&s->sdbus, s->tx_fifo[s->tx_start++]);
--            s->tx_start &= 0x1f;
--            s->tx_len --;
--            s->bytesleft --;
--        }
--        if (s->bytesleft)
--            s->intreq |= INT_TXFIFO_REQ;
--    } else
--        while (s->bytesleft && s->rx_len < 32) {
--            s->rx_fifo[(s->rx_start + (s->rx_len ++)) & 0x1f] =
--                sdbus_read_byte(&s->sdbus);
--            s->bytesleft --;
--            s->intreq |= INT_RXFIFO_REQ;
--        }
--
--    if (!s->bytesleft) {
--        s->active = 0;
--        s->intreq |= INT_DATA_DONE;
--        s->status |= STAT_DATA_DONE;
--
--        if (s->cmdat & CMDAT_WR_RD) {
--            s->intreq |= INT_PRG_DONE;
--            s->status |= STAT_PRG_DONE;
--        }
--    }
--
--    pxa2xx_mmci_int_update(s);
--}
--
--static void pxa2xx_mmci_wakequeues(PXA2xxMMCIState *s)
--{
--    int rsplen, i;
--    SDRequest request;
--    uint8_t response[16];
--
--    s->active = 1;
--    s->rx_len = 0;
--    s->tx_len = 0;
--    s->cmdreq = 0;
--
--    request.cmd = s->cmd;
--    request.arg = s->arg;
--    request.crc = 0;	/* FIXME */
--
--    rsplen = sdbus_do_command(&s->sdbus, &request, response);
--    s->intreq |= INT_END_CMD;
--
--    memset(s->resp_fifo, 0, sizeof(s->resp_fifo));
--    switch (s->cmdat & CMDAT_RES_TYPE) {
--#define PXAMMCI_RESP(wd, value0, value1)	\
--        s->resp_fifo[(wd) + 0] |= (value0);	\
--        s->resp_fifo[(wd) + 1] |= (value1) << 8;
--    case 0:	/* No response */
--        goto complete;
--
--    case 1:	/* R1, R4, R5 or R6 */
--        if (rsplen < 4)
--            goto timeout;
--        goto complete;
--
--    case 2:	/* R2 */
--        if (rsplen < 16)
--            goto timeout;
--        goto complete;
--
--    case 3:	/* R3 */
--        if (rsplen < 4)
--            goto timeout;
--        goto complete;
--
--    complete:
--        for (i = 0; rsplen > 0; i ++, rsplen -= 2) {
--            PXAMMCI_RESP(i, response[i * 2], response[i * 2 + 1]);
--        }
--        s->status |= STAT_END_CMDRES;
--
--        if (!(s->cmdat & CMDAT_DATA_EN))
--            s->active = 0;
--        else
--            s->bytesleft = s->numblk * s->blklen;
--
--        s->resp_len = 0;
--        break;
--
--    timeout:
--        s->active = 0;
--        s->status |= STAT_TOUT_RES;
--        break;
--    }
--
--    pxa2xx_mmci_fifo_update(s);
--}
--
--static uint64_t pxa2xx_mmci_read(void *opaque, hwaddr offset, unsigned size)
--{
--    PXA2xxMMCIState *s = (PXA2xxMMCIState *) opaque;
--    uint32_t ret = 0;
--
--    switch (offset) {
--    case MMC_STRPCL:
--        break;
--    case MMC_STAT:
--        ret = s->status;
--        break;
--    case MMC_CLKRT:
--        ret = s->clkrt;
--        break;
--    case MMC_SPI:
--        ret = s->spi;
--        break;
--    case MMC_CMDAT:
--        ret = s->cmdat;
--        break;
--    case MMC_RESTO:
--        ret = s->resp_tout;
--        break;
--    case MMC_RDTO:
--        ret = s->read_tout;
--        break;
--    case MMC_BLKLEN:
--        ret = s->blklen;
--        break;
--    case MMC_NUMBLK:
--        ret = s->numblk;
--        break;
--    case MMC_PRTBUF:
--        break;
--    case MMC_I_MASK:
--        ret = s->intmask;
--        break;
--    case MMC_I_REG:
--        ret = s->intreq;
--        break;
--    case MMC_CMD:
--        ret = s->cmd | 0x40;
--        break;
--    case MMC_ARGH:
--        ret = s->arg >> 16;
--        break;
--    case MMC_ARGL:
--        ret = s->arg & 0xffff;
--        break;
--    case MMC_RES:
--        ret = (s->resp_len < 9) ? s->resp_fifo[s->resp_len++] : 0;
--        break;
--    case MMC_RXFIFO:
--        while (size-- && s->rx_len) {
--            ret |= s->rx_fifo[s->rx_start++] << (size << 3);
--            s->rx_start &= 0x1f;
--            s->rx_len --;
--        }
--        s->intreq &= ~INT_RXFIFO_REQ;
--        pxa2xx_mmci_fifo_update(s);
--        break;
--    case MMC_RDWAIT:
--        break;
--    case MMC_BLKS_REM:
--        ret = s->numblk;
--        break;
--    default:
--        qemu_log_mask(LOG_GUEST_ERROR,
--                      "%s: incorrect register 0x%02" HWADDR_PRIx "\n",
--                      __func__, offset);
--    }
--    trace_pxa2xx_mmci_read(size, offset, ret);
--
--    return ret;
--}
--
--static void pxa2xx_mmci_write(void *opaque,
--                              hwaddr offset, uint64_t value, unsigned size)
--{
--    PXA2xxMMCIState *s = (PXA2xxMMCIState *) opaque;
--
--    trace_pxa2xx_mmci_write(size, offset, value);
--    switch (offset) {
--    case MMC_STRPCL:
--        if (value & STRPCL_STRT_CLK) {
--            s->status |= STAT_CLK_EN;
--            s->intreq &= ~INT_CLK_OFF;
--
--            if (s->cmdreq && !(s->cmdat & CMDAT_STOP_TRAN)) {
--                s->status &= STAT_CLK_EN;
--                pxa2xx_mmci_wakequeues(s);
--            }
--        }
--
--        if (value & STRPCL_STOP_CLK) {
--            s->status &= ~STAT_CLK_EN;
--            s->intreq |= INT_CLK_OFF;
--            s->active = 0;
--        }
--
--        pxa2xx_mmci_int_update(s);
--        break;
--
--    case MMC_CLKRT:
--        s->clkrt = value & 7;
--        break;
--
--    case MMC_SPI:
--        s->spi = value & 0xf;
--        if (value & SPI_SPI_MODE) {
--            qemu_log_mask(LOG_GUEST_ERROR,
--                          "%s: attempted to use card in SPI mode\n", __func__);
--        }
--        break;
--
--    case MMC_CMDAT:
--        s->cmdat = value & 0x3dff;
--        s->active = 0;
--        s->cmdreq = 1;
--        if (!(value & CMDAT_STOP_TRAN)) {
--            s->status &= STAT_CLK_EN;
--
--            if (s->status & STAT_CLK_EN)
--                pxa2xx_mmci_wakequeues(s);
--        }
--
--        pxa2xx_mmci_int_update(s);
--        break;
--
--    case MMC_RESTO:
--        s->resp_tout = value & 0x7f;
--        break;
--
--    case MMC_RDTO:
--        s->read_tout = value & 0xffff;
--        break;
--
--    case MMC_BLKLEN:
--        s->blklen = value & 0xfff;
--        break;
--
--    case MMC_NUMBLK:
--        s->numblk = value & 0xffff;
--        break;
--
--    case MMC_PRTBUF:
--        if (value & PRTBUF_PRT_BUF) {
--            s->tx_start ^= 32;
--            s->tx_len = 0;
--        }
--        pxa2xx_mmci_fifo_update(s);
--        break;
--
--    case MMC_I_MASK:
--        s->intmask = value & 0x1fff;
--        pxa2xx_mmci_int_update(s);
--        break;
--
--    case MMC_CMD:
--        s->cmd = value & 0x3f;
--        break;
--
--    case MMC_ARGH:
--        s->arg &= 0x0000ffff;
--        s->arg |= value << 16;
--        break;
--
--    case MMC_ARGL:
--        s->arg &= 0xffff0000;
--        s->arg |= value & 0x0000ffff;
--        break;
--
--    case MMC_TXFIFO:
--        while (size-- && s->tx_len < 0x20)
--            s->tx_fifo[(s->tx_start + (s->tx_len ++)) & 0x1f] =
--                    (value >> (size << 3)) & 0xff;
--        s->intreq &= ~INT_TXFIFO_REQ;
--        pxa2xx_mmci_fifo_update(s);
--        break;
--
--    case MMC_RDWAIT:
--    case MMC_BLKS_REM:
--        break;
--
--    default:
--        qemu_log_mask(LOG_GUEST_ERROR,
--                      "%s: incorrect reg 0x%02" HWADDR_PRIx " "
--                      "(value 0x%08" PRIx64 ")\n", __func__, offset, value);
--    }
--}
--
--static const MemoryRegionOps pxa2xx_mmci_ops = {
--    .read = pxa2xx_mmci_read,
--    .write = pxa2xx_mmci_write,
--    .endianness = DEVICE_NATIVE_ENDIAN,
+-static struct clk apll_54m = {
+-    .name	= "apll_54m",
+-    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X | ALWAYS_ENABLED,
+-    .rate	= 54000000,
+-    /*.parent	= ref_clk */
 -};
 -
--PXA2xxMMCIState *pxa2xx_mmci_init(MemoryRegion *sysmem,
--                hwaddr base,
--                qemu_irq irq, qemu_irq rx_dma, qemu_irq tx_dma)
--{
--    DeviceState *dev;
+-static struct clk sys_clk = {
+-    .name	= "sys_clk",
+-    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X | ALWAYS_ENABLED,
+-    .rate	= 32768,
+-    /*.parent	= sys.xtalin */
+-};
 -
--    dev = sysbus_create_simple(TYPE_PXA2XX_MMCI, base, irq);
--    qdev_connect_gpio_out_named(dev, "rx-dma", 0, rx_dma);
--    qdev_connect_gpio_out_named(dev, "tx-dma", 0, tx_dma);
+-static struct clk sleep_clk = {
+-    .name	= "sleep_clk",
+-    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X | ALWAYS_ENABLED,
+-    .rate	= 32768,
+-    /*.parent	= sys.xtalin */
+-};
 -
--    return PXA2XX_MMCI(dev);
--}
+-static struct clk dpll_ck = {
+-    .name	= "dpll",
+-    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X | ALWAYS_ENABLED,
+-    .parent	= &ref_clk,
+-};
 -
--static void pxa2xx_mmci_set_inserted(DeviceState *dev, bool inserted)
--{
--    PXA2xxMMCIState *s = PXA2XX_MMCI(dev);
+-static struct clk dpll_x2_ck = {
+-    .name	= "dpll_x2",
+-    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X | ALWAYS_ENABLED,
+-    .parent	= &ref_clk,
+-};
 -
--    qemu_set_irq(s->inserted, inserted);
--}
+-static struct clk wdt1_sys_clk = {
+-    .name	= "wdt1_sys_clk",
+-    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X | ALWAYS_ENABLED,
+-    .rate	= 32768,
+-    /*.parent	= sys.xtalin */
+-};
 -
--static void pxa2xx_mmci_set_readonly(DeviceState *dev, bool readonly)
--{
--    PXA2xxMMCIState *s = PXA2XX_MMCI(dev);
+-static struct clk func_96m_clk = {
+-    .name	= "func_96m_clk",
+-    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
+-    .divisor	= 1,
+-    .parent	= &apll_96m,
+-};
 -
--    qemu_set_irq(s->readonly, readonly);
--}
+-static struct clk func_48m_clk = {
+-    .name	= "func_48m_clk",
+-    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
+-    .divisor	= 2,
+-    .parent	= &apll_96m,
+-};
 -
--void pxa2xx_mmci_handlers(PXA2xxMMCIState *s, qemu_irq readonly,
--                          qemu_irq coverswitch)
--{
--    DeviceState *dev = DEVICE(s);
+-static struct clk func_12m_clk = {
+-    .name	= "func_12m_clk",
+-    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
+-    .divisor	= 8,
+-    .parent	= &apll_96m,
+-};
 -
--    s->readonly = readonly;
--    s->inserted = coverswitch;
+-static struct clk func_54m_clk = {
+-    .name	= "func_54m_clk",
+-    .flags	= CLOCK_IN_OMAP242X,
+-    .divisor	= 1,
+-    .parent	= &apll_54m,
+-};
 -
--    pxa2xx_mmci_set_inserted(dev, sdbus_get_inserted(&s->sdbus));
--    pxa2xx_mmci_set_readonly(dev, sdbus_get_readonly(&s->sdbus));
--}
+-static struct clk sys_clkout = {
+-    .name	= "clkout",
+-    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
+-    .parent	= &sys_clk,
+-};
 -
--static void pxa2xx_mmci_reset(DeviceState *d)
--{
--    PXA2xxMMCIState *s = PXA2XX_MMCI(d);
+-static struct clk sys_clkout2 = {
+-    .name	= "clkout2",
+-    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
+-    .parent	= &sys_clk,
+-};
 -
--    s->status = 0;
--    s->clkrt = 0;
--    s->spi = 0;
--    s->cmdat = 0;
--    s->resp_tout = 0;
--    s->read_tout = 0;
--    s->blklen = 0;
--    s->numblk = 0;
--    s->intmask = 0;
--    s->intreq = 0;
--    s->cmd = 0;
--    s->arg = 0;
--    s->active = 0;
--    s->bytesleft = 0;
--    s->tx_start = 0;
--    s->tx_len = 0;
--    s->rx_start = 0;
--    s->rx_len = 0;
--    s->resp_len = 0;
--    s->cmdreq = 0;
--    memset(s->tx_fifo, 0, sizeof(s->tx_fifo));
--    memset(s->rx_fifo, 0, sizeof(s->rx_fifo));
--    memset(s->resp_fifo, 0, sizeof(s->resp_fifo));
--}
+-static struct clk core_clk = {
+-    .name	= "core_clk",
+-    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
+-    .parent	= &dpll_x2_ck,	/* Switchable between dpll_ck and clk32k */
+-};
 -
--static void pxa2xx_mmci_instance_init(Object *obj)
--{
--    PXA2xxMMCIState *s = PXA2XX_MMCI(obj);
--    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
--    DeviceState *dev = DEVICE(obj);
+-static struct clk l3_clk = {
+-    .name	= "l3_clk",
+-    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
+-    .parent	= &core_clk,
+-};
 -
--    memory_region_init_io(&s->iomem, obj, &pxa2xx_mmci_ops, s,
--                          "pxa2xx-mmci", 0x00100000);
--    sysbus_init_mmio(sbd, &s->iomem);
--    sysbus_init_irq(sbd, &s->irq);
--    qdev_init_gpio_out_named(dev, &s->rx_dma, "rx-dma", 1);
--    qdev_init_gpio_out_named(dev, &s->tx_dma, "tx-dma", 1);
+-static struct clk core_l4_iclk = {
+-    .name	= "core_l4_iclk",
+-    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
+-    .parent	= &l3_clk,
+-};
 -
--    qbus_init(&s->sdbus, sizeof(s->sdbus),
--              TYPE_PXA2XX_MMCI_BUS, DEVICE(obj), "sd-bus");
--}
+-static struct clk wu_l4_iclk = {
+-    .name	= "wu_l4_iclk",
+-    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
+-    .parent	= &l3_clk,
+-};
 -
--static void pxa2xx_mmci_class_init(ObjectClass *klass, void *data)
--{
--    DeviceClass *dc = DEVICE_CLASS(klass);
+-static struct clk core_l3_iclk = {
+-    .name	= "core_l3_iclk",
+-    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
+-    .parent	= &core_clk,
+-};
 -
--    dc->vmsd = &vmstate_pxa2xx_mmci;
--    dc->reset = pxa2xx_mmci_reset;
--}
+-static struct clk core_l4_usb_clk = {
+-    .name	= "core_l4_usb_clk",
+-    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
+-    .parent	= &l3_clk,
+-};
 -
--static void pxa2xx_mmci_bus_class_init(ObjectClass *klass, void *data)
--{
--    SDBusClass *sbc = SD_BUS_CLASS(klass);
+-static struct clk wu_gpt1_clk = {
+-    .name	= "wu_gpt1_clk",
+-    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
+-    .parent	= &sys_clk,
+-};
 -
--    sbc->set_inserted = pxa2xx_mmci_set_inserted;
--    sbc->set_readonly = pxa2xx_mmci_set_readonly;
--}
+-static struct clk wu_32k_clk = {
+-    .name	= "wu_32k_clk",
+-    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
+-    .parent	= &sys_clk,
+-};
 -
--static const TypeInfo pxa2xx_mmci_types[] = {
+-static struct clk uart1_fclk = {
+-    .name	= "uart1_fclk",
+-    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
+-    .parent	= &func_48m_clk,
+-};
+-
+-static struct clk uart1_iclk = {
+-    .name	= "uart1_iclk",
+-    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
+-    .parent	= &core_l4_iclk,
+-};
+-
+-static struct clk uart2_fclk = {
+-    .name	= "uart2_fclk",
+-    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
+-    .parent	= &func_48m_clk,
+-};
+-
+-static struct clk uart2_iclk = {
+-    .name	= "uart2_iclk",
+-    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
+-    .parent	= &core_l4_iclk,
+-};
+-
+-static struct clk uart3_fclk = {
+-    .name	= "uart3_fclk",
+-    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
+-    .parent	= &func_48m_clk,
+-};
+-
+-static struct clk uart3_iclk = {
+-    .name	= "uart3_iclk",
+-    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
+-    .parent	= &core_l4_iclk,
+-};
+-
+-static struct clk mpu_fclk = {
+-    .name	= "mpu_fclk",
+-    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
+-    .parent	= &core_clk,
+-};
+-
+-static struct clk mpu_iclk = {
+-    .name	= "mpu_iclk",
+-    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
+-    .parent	= &core_clk,
+-};
+-
+-static struct clk int_m_fclk = {
+-    .name	= "int_m_fclk",
+-    .alias	= "mpu_intc_fclk",
+-    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
+-    .parent	= &core_clk,
+-};
+-
+-static struct clk int_m_iclk = {
+-    .name	= "int_m_iclk",
+-    .alias	= "mpu_intc_iclk",
+-    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
+-    .parent	= &core_clk,
+-};
+-
+-static struct clk core_gpt2_clk = {
+-    .name	= "core_gpt2_clk",
+-    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
+-    .parent	= &sys_clk,
+-};
+-
+-static struct clk core_gpt3_clk = {
+-    .name	= "core_gpt3_clk",
+-    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
+-    .parent	= &sys_clk,
+-};
+-
+-static struct clk core_gpt4_clk = {
+-    .name	= "core_gpt4_clk",
+-    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
+-    .parent	= &sys_clk,
+-};
+-
+-static struct clk core_gpt5_clk = {
+-    .name	= "core_gpt5_clk",
+-    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
+-    .parent	= &sys_clk,
+-};
+-
+-static struct clk core_gpt6_clk = {
+-    .name	= "core_gpt6_clk",
+-    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
+-    .parent	= &sys_clk,
+-};
+-
+-static struct clk core_gpt7_clk = {
+-    .name	= "core_gpt7_clk",
+-    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
+-    .parent	= &sys_clk,
+-};
+-
+-static struct clk core_gpt8_clk = {
+-    .name	= "core_gpt8_clk",
+-    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
+-    .parent	= &sys_clk,
+-};
+-
+-static struct clk core_gpt9_clk = {
+-    .name	= "core_gpt9_clk",
+-    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
+-    .parent	= &sys_clk,
+-};
+-
+-static struct clk core_gpt10_clk = {
+-    .name	= "core_gpt10_clk",
+-    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
+-    .parent	= &sys_clk,
+-};
+-
+-static struct clk core_gpt11_clk = {
+-    .name	= "core_gpt11_clk",
+-    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
+-    .parent	= &sys_clk,
+-};
+-
+-static struct clk core_gpt12_clk = {
+-    .name	= "core_gpt12_clk",
+-    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
+-    .parent	= &sys_clk,
+-};
+-
+-static struct clk mcbsp1_clk = {
+-    .name	= "mcbsp1_cg",
+-    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
+-    .divisor	= 2,
+-    .parent	= &func_96m_clk,
+-};
+-
+-static struct clk mcbsp2_clk = {
+-    .name	= "mcbsp2_cg",
+-    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
+-    .divisor	= 2,
+-    .parent	= &func_96m_clk,
+-};
+-
+-static struct clk emul_clk = {
+-    .name	= "emul_ck",
+-    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
+-    .parent	= &func_54m_clk,
+-};
+-
+-static struct clk sdma_fclk = {
+-    .name	= "sdma_fclk",
+-    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
+-    .parent	= &l3_clk,
+-};
+-
+-static struct clk sdma_iclk = {
+-    .name	= "sdma_iclk",
+-    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
+-    .parent	= &core_l3_iclk, /* core_l4_iclk for the configuration port */
+-};
+-
+-static struct clk i2c1_fclk = {
+-    .name	= "i2c1.fclk",
+-    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
+-    .parent	= &func_12m_clk,
+-    .divisor	= 1,
+-};
+-
+-static struct clk i2c1_iclk = {
+-    .name	= "i2c1.iclk",
+-    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
+-    .parent	= &core_l4_iclk,
+-};
+-
+-static struct clk i2c2_fclk = {
+-    .name	= "i2c2.fclk",
+-    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
+-    .parent	= &func_12m_clk,
+-    .divisor	= 1,
+-};
+-
+-static struct clk i2c2_iclk = {
+-    .name	= "i2c2.iclk",
+-    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
+-    .parent	= &core_l4_iclk,
+-};
+-
+-static struct clk gpio_dbclk[5] = {
 -    {
--        .name           = TYPE_PXA2XX_MMCI,
--        .parent         = TYPE_SYS_BUS_DEVICE,
--        .instance_size  = sizeof(PXA2xxMMCIState),
--        .instance_init  = pxa2xx_mmci_instance_init,
--        .class_init     = pxa2xx_mmci_class_init,
--    },
--    {
--        .name           = TYPE_PXA2XX_MMCI_BUS,
--        .parent         = TYPE_SD_BUS,
--        .instance_size  = sizeof(SDBus),
--        .class_init     = pxa2xx_mmci_bus_class_init,
+-        .name	= "gpio1_dbclk",
+-        .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
+-        .parent	= &wu_32k_clk,
+-    }, {
+-        .name	= "gpio2_dbclk",
+-        .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
+-        .parent	= &wu_32k_clk,
+-    }, {
+-        .name	= "gpio3_dbclk",
+-        .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
+-        .parent	= &wu_32k_clk,
+-    }, {
+-        .name	= "gpio4_dbclk",
+-        .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
+-        .parent	= &wu_32k_clk,
+-    }, {
+-        .name   = "gpio5_dbclk",
+-        .flags  = CLOCK_IN_OMAP243X,
+-        .parent = &wu_32k_clk,
 -    },
 -};
 -
--DEFINE_TYPES(pxa2xx_mmci_types)
-diff --git a/hw/sd/meson.build b/hw/sd/meson.build
-index bbb75af0c9b..b43d45bc564 100644
---- a/hw/sd/meson.build
-+++ b/hw/sd/meson.build
-@@ -5,7 +5,6 @@ system_ss.add(when: 'CONFIG_SDHCI_PCI', if_true: files('sdhci-pci.c'))
- system_ss.add(when: 'CONFIG_SSI_SD', if_true: files('ssi-sd.c'))
- 
- system_ss.add(when: 'CONFIG_OMAP', if_true: files('omap_mmc.c'))
--system_ss.add(when: 'CONFIG_PXA2XX', if_true: files('pxa2xx_mmci.c'))
- system_ss.add(when: 'CONFIG_RASPI', if_true: files('bcm2835_sdhost.c'))
- system_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files('aspeed_sdhci.c'))
- system_ss.add(when: 'CONFIG_ALLWINNER_H3', if_true: files('allwinner-sdhost.c'))
-diff --git a/hw/sd/trace-events b/hw/sd/trace-events
-index 43671dc7912..db0644256d9 100644
---- a/hw/sd/trace-events
-+++ b/hw/sd/trace-events
-@@ -60,10 +60,6 @@ sdcard_set_voltage(uint16_t millivolts) "%u mV"
- sdcard_ext_csd_update(unsigned index, uint8_t oval, uint8_t nval) "index %u: 0x%02x -> 0x%02x"
- sdcard_switch(unsigned access, unsigned index, unsigned value, unsigned set) "SWITCH acc:%u idx:%u val:%u set:%u"
- 
--# pxa2xx_mmci.c
--pxa2xx_mmci_read(uint8_t size, uint32_t addr, uint32_t value) "size %d addr 0x%02x value 0x%08x"
--pxa2xx_mmci_write(uint8_t size, uint32_t addr, uint32_t value) "size %d addr 0x%02x value 0x%08x"
+-static struct clk gpio_iclk = {
+-    .name	= "gpio_iclk",
+-    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
+-    .parent	= &wu_l4_iclk,
+-};
 -
- # pl181.c
- pl181_command_send(uint8_t cmd, uint32_t arg) "sending CMD%02d arg 0x%08" PRIx32
- pl181_command_sent(void) "command sent"
+-static struct clk mmc_fck = {
+-    .name	= "mmc_fclk",
+-    .flags	= CLOCK_IN_OMAP242X,
+-    .parent	= &func_96m_clk,
+-};
+-
+-static struct clk mmc_ick = {
+-    .name	= "mmc_iclk",
+-    .flags	= CLOCK_IN_OMAP242X,
+-    .parent	= &core_l4_iclk,
+-};
+-
+-static struct clk spi_fclk[3] = {
+-    {
+-        .name	= "spi1_fclk",
+-        .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
+-        .parent	= &func_48m_clk,
+-    }, {
+-        .name	= "spi2_fclk",
+-        .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
+-        .parent	= &func_48m_clk,
+-    }, {
+-        .name	= "spi3_fclk",
+-        .flags	= CLOCK_IN_OMAP243X,
+-        .parent	= &func_48m_clk,
+-    },
+-};
+-
+-static struct clk dss_clk[2] = {
+-    {
+-        .name	= "dss_clk1",
+-        .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
+-        .parent	= &core_clk,
+-    }, {
+-        .name	= "dss_clk2",
+-        .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
+-        .parent	= &sys_clk,
+-    },
+-};
+-
+-static struct clk dss_54m_clk = {
+-    .name	= "dss_54m_clk",
+-    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
+-    .parent	= &func_54m_clk,
+-};
+-
+-static struct clk dss_l3_iclk = {
+-    .name	= "dss_l3_iclk",
+-    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
+-    .parent	= &core_l3_iclk,
+-};
+-
+-static struct clk dss_l4_iclk = {
+-    .name	= "dss_l4_iclk",
+-    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
+-    .parent	= &core_l4_iclk,
+-};
+-
+-static struct clk spi_iclk[3] = {
+-    {
+-        .name	= "spi1_iclk",
+-        .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
+-        .parent	= &core_l4_iclk,
+-    }, {
+-        .name	= "spi2_iclk",
+-        .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
+-        .parent	= &core_l4_iclk,
+-    }, {
+-        .name	= "spi3_iclk",
+-        .flags	= CLOCK_IN_OMAP243X,
+-        .parent	= &core_l4_iclk,
+-    },
+-};
+-
+-static struct clk omapctrl_clk = {
+-    .name	= "omapctrl_iclk",
+-    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
+-    /* XXX Should be in WKUP domain */
+-    .parent	= &core_l4_iclk,
+-};
+-
+ static struct clk *onchip_clks[] = {
+     /* OMAP 1 */
+ 
+@@ -1019,80 +576,6 @@ static struct clk *onchip_clks[] = {
+     &i2c_fck,
+     &i2c_ick,
+ 
+-    /* OMAP 2 */
+-
+-    &ref_clk,
+-    &apll_96m,
+-    &apll_54m,
+-    &sys_clk,
+-    &sleep_clk,
+-    &dpll_ck,
+-    &dpll_x2_ck,
+-    &wdt1_sys_clk,
+-    &func_96m_clk,
+-    &func_48m_clk,
+-    &func_12m_clk,
+-    &func_54m_clk,
+-    &sys_clkout,
+-    &sys_clkout2,
+-    &core_clk,
+-    &l3_clk,
+-    &core_l4_iclk,
+-    &wu_l4_iclk,
+-    &core_l3_iclk,
+-    &core_l4_usb_clk,
+-    &wu_gpt1_clk,
+-    &wu_32k_clk,
+-    &uart1_fclk,
+-    &uart1_iclk,
+-    &uart2_fclk,
+-    &uart2_iclk,
+-    &uart3_fclk,
+-    &uart3_iclk,
+-    &mpu_fclk,
+-    &mpu_iclk,
+-    &int_m_fclk,
+-    &int_m_iclk,
+-    &core_gpt2_clk,
+-    &core_gpt3_clk,
+-    &core_gpt4_clk,
+-    &core_gpt5_clk,
+-    &core_gpt6_clk,
+-    &core_gpt7_clk,
+-    &core_gpt8_clk,
+-    &core_gpt9_clk,
+-    &core_gpt10_clk,
+-    &core_gpt11_clk,
+-    &core_gpt12_clk,
+-    &mcbsp1_clk,
+-    &mcbsp2_clk,
+-    &emul_clk,
+-    &sdma_fclk,
+-    &sdma_iclk,
+-    &i2c1_fclk,
+-    &i2c1_iclk,
+-    &i2c2_fclk,
+-    &i2c2_iclk,
+-    &gpio_dbclk[0],
+-    &gpio_dbclk[1],
+-    &gpio_dbclk[2],
+-    &gpio_dbclk[3],
+-    &gpio_iclk,
+-    &mmc_fck,
+-    &mmc_ick,
+-    &spi_fclk[0],
+-    &spi_iclk[0],
+-    &spi_fclk[1],
+-    &spi_iclk[1],
+-    &spi_fclk[2],
+-    &spi_iclk[2],
+-    &dss_clk[0],
+-    &dss_clk[1],
+-    &dss_54m_clk,
+-    &dss_l3_iclk,
+-    &dss_l4_iclk,
+-    &omapctrl_clk,
+-
+     NULL
+ };
+ 
+@@ -1230,12 +713,6 @@ void omap_clk_init(struct omap_mpu_state_s *mpu)
+         flag = CLOCK_IN_OMAP310;
+     else if (cpu_is_omap1510(mpu))
+         flag = CLOCK_IN_OMAP1510;
+-    else if (cpu_is_omap2410(mpu) || cpu_is_omap2420(mpu))
+-        flag = CLOCK_IN_OMAP242X;
+-    else if (cpu_is_omap2430(mpu))
+-        flag = CLOCK_IN_OMAP243X;
+-    else if (cpu_is_omap3430(mpu))
+-        flag = CLOCK_IN_OMAP243X;
+     else
+         return;
+ 
 -- 
 2.34.1
 

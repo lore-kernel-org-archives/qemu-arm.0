@@ -1,112 +1,114 @@
-Received: by 2002:a17:504:3a8f:b0:1be9:327d:8ee3 with SMTP id g15csp1502022njf;
-        Tue, 3 Sep 2024 09:13:38 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCU3W02Z83oErXo34rXo6uR5ALsSpm/2RCatjM70/9j40zDPrgp/DWp5lliuGsgNjGQoSrAunHaMiM2e5A==@linaro.org
-X-Google-Smtp-Source: AGHT+IFEXskRkUy/P6lXTCaNOH7hCLWPu4fB8DPctUTzFCrYxudbTCGzjbzdmCytTT1cGeAv1Fdx
-X-Received: by 2002:a05:6214:319d:b0:6c5:1316:8a37 with SMTP id 6a1803df08f44-6c513168b1bmr15487136d6.17.1725380017719;
-        Tue, 03 Sep 2024 09:13:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1725380017; cv=none;
+Received: by 2002:a17:504:3a8f:b0:1be9:327d:8ee3 with SMTP id g15csp1502042njf;
+        Tue, 3 Sep 2024 09:13:40 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWhxX2oAoJHcOu3OMoSJe/MGisURwirsQiHpBNVMBMC6ZECxyyxi4BtBfgWI3DosGKQjim4WIvrnaa2fw==@linaro.org
+X-Google-Smtp-Source: AGHT+IEITWEwWMP2e7Rx0fEHXKxMrL2N9gX/4/kStDTv/c57leW1QCMYarnLwvJofXdI048jUzSX
+X-Received: by 2002:a05:620a:458e:b0:79f:89c:6c8 with SMTP id af79cd13be357-7a902e873a3mr1214914985a.39.1725380020266;
+        Tue, 03 Sep 2024 09:13:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1725380020; cv=none;
         d=google.com; s=arc-20160816;
-        b=Z6rvV2OHRptcgJ+1eoZ+B06Il9DwOeFtWMEa3nFOHGrUX77bhHtogBRPCV+K07gpus
-         pLM45pfFSopV3LNQc8A9HD5D86aSWxoQozWgcUCYEwCA7tKj7lcRcoTYDqekY8v64d/B
-         OKVBDmCIfhXga4MANrLUdOAugED/CGbZd1s0ziks93PD4WugDWNjh4c3Lj7PTHdfk3h8
-         Ut6fTU0LKg3AFFeew7CL3EW3OC9NKF2CCUfMSgXT0czDleh+BPo4GiC5ue6ZcS9GNhHi
-         uvjxfHd8obQ7ZsIPaHACT0QT9hjx+fQPPPsl8cEn8sgt+YGK/uOHsmjn7H+lJahv4cAv
-         xSGg==
+        b=vyS3dJHPSKSk9umSlWaV5OpWA06FoAer6/NalyThfbrS5CrjcF6TgGRR55NbAKngfp
+         bKWG+zyiNVTVJy6MbPNjS8fBDdu2s64QSY+XwSETwrmb1iMldPt1zG3x7QMbjtkGROu2
+         BrMxVKHQRAH7/XdjqwbEpVvGRZre1S65Nd+S9sPZvC5AEfg9Qc2BT+EMqbWyOu15vHF9
+         m6BMPMVzBKYGZ8DLNPeV+o7kFO1e4Om/TV6W600KWn/AMcrpSG93uaEbEb9WuF9vZUa2
+         8NgyrOFzOd1A307mHHDhB5aAq0yAkjQtPGdX5rWIeD06aBl1hKqypBVeIQPs80j2qGSL
+         lvgw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=DBc/bJy+JM7lDQDRwxqLPG14xFZM1slW+0SGy2bjs2k=;
-        fh=H2AmuqulvQE+T5zu97MCEUC3z9wF9NssS7895NhR/+c=;
-        b=dSrHzYBqsyr5VNyOTlBpHsXCbrF7qZa0C6BV8PKEHb2hsiIUPgHFRLk2zCcFrQJ6uW
-         UHm5aohKlxmLMjYDLmbDXbc1UcVZ3wRGFhzYfY1nQR0sftLdP8cqpiYHQP/BUV1awt3B
-         n0Sy/9BCI8J0LTZVeVSGc1roeLoDWd4Lr199iNplhOo9bUcpHVJ6YM6bpqTKdjlRR9gh
-         55tpE1NeLAJfOnzocjyXiYehZjtkZaXIGZSrW86XXs9CqexynsIwyRrh8IinpaqkXR/m
-         iqZRGnOh2pbnT9ObCgmAzOsCOggEx013P89mIIk4xgxcDJy9O7pT0r3NuOx5ED97EAJM
-         Nd4A==;
+        bh=4XZ7NOx/WtVIQqrk01ux4dOB629Yo/Ds1l4cW4PljMY=;
+        fh=76nqOXruOt3eJ/+9iUYEf9YwQMsTXqfm34nlupnKWZY=;
+        b=dz6x9sHnORd5oSBAlEjorZeYsaHEHHXQVnwUZIc8NjZ7NQVQx/qekc04bpMMAveqY4
+         mf3DG4OTqrMJ7K7pAh3xAuf/vbbua3nNpsSQanDOiE2RLU6XT+e6KWAtIWmO+HrKb5qB
+         GO5/oGMGoRgfsLTqZKrCRHfTMJD4Qnmo87HilDpghy+y70cKsey6ZzfTvMIbOsC5KSM3
+         dNgXIFlqEUG/Er24IiqFIQejqXixt9TXTX2nWN/l9Cog7IMBHbYwDn0DxzF6zb436tyx
+         SL6vOIEq/GFt3R47Guw2/DCxYfM6dRax9Wihx7XJLgbxeRAa1CPIOqAJC3+PDJPXQlKi
+         /94Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Kab+6SPq;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=DW+3XEP1;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6c340bff474si135932556d6.171.2024.09.03.09.13.37
+        by mx.google.com with ESMTPS id d75a77b69052e-45682d404b1si98995691cf.332.2024.09.03.09.13.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 03 Sep 2024 09:13:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 03 Sep 2024 09:13:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Kab+6SPq;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=DW+3XEP1;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1slW5Z-0001OS-EF; Tue, 03 Sep 2024 12:09:05 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1slW4r-00062P-RQ; Tue, 03 Sep 2024 12:08:21 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1slW5U-0000s6-Qy
- for qemu-arm@nongnu.org; Tue, 03 Sep 2024 12:09:00 -0400
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
+ id 1slW4p-0005ru-Rg
+ for qemu-devel@nongnu.org; Tue, 03 Sep 2024 12:08:19 -0400
+Received: from mail-lf1-x12f.google.com ([2a00:1450:4864:20::12f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1slW5P-0002vl-V9
- for qemu-arm@nongnu.org; Tue, 03 Sep 2024 12:09:00 -0400
-Received: by mail-wm1-x32a.google.com with SMTP id
- 5b1f17b1804b1-42bb7298bdeso62214575e9.1
- for <qemu-arm@nongnu.org>; Tue, 03 Sep 2024 09:08:55 -0700 (PDT)
+ id 1slW4l-0002k3-6o
+ for qemu-devel@nongnu.org; Tue, 03 Sep 2024 12:08:19 -0400
+Received: by mail-lf1-x12f.google.com with SMTP id
+ 2adb3069b0e04-533496017f8so7423055e87.0
+ for <qemu-devel@nongnu.org>; Tue, 03 Sep 2024 09:08:14 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1725379734; x=1725984534; darn=nongnu.org;
+ d=linaro.org; s=google; t=1725379692; x=1725984492; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=DBc/bJy+JM7lDQDRwxqLPG14xFZM1slW+0SGy2bjs2k=;
- b=Kab+6SPql0RnCcKZUjgmSa0mDb/ukAGx/SNmovemAAX4uadp3IYPiTNOFtL+ymMtQF
- JHvHWTIZnCxHe7OqoTWLgnOxA3RtZoqk62xv0IUPXqVSoYENLRtadgyr1V+dT/Y8FKkC
- AszI+YDfIe7+iEOli7+uBRAGUay54urn+Fw3+uPEe84J9dris+ifq4D2Iw0z1jeGBB3z
- YqYTTzjknCpd4lSoUTjyZeC60DDzgRcwBNlhMln6C5swVkMN2m7arpyMIa8UlLl0ndsa
- y7AL2dbntX6A8y0SExc9B3wBxDUDQpATmvDiSslxo55+KQMvzHwNPW+/Bu23COvEdzlH
- Wgpw==
+ :reply-to; bh=4XZ7NOx/WtVIQqrk01ux4dOB629Yo/Ds1l4cW4PljMY=;
+ b=DW+3XEP1Pi9Us1XjOb7IFupTSqr5qPoVI5Uz9nguQWNLwlFR5k9gvgEgGFuTYPJIYD
+ Cj8tbPCAYoPV13GArvW3Vj0vUyYdunWwqNEH7XHG69UqYesW5HLn9B0D96L8tBENQqx1
+ u9H4vpH3k7uv+QTSbre2nf0FdLcf1Ryfcz9oTE4lQzSnB8Dv7Hwrjwm1MzGucnYOcsdO
+ YmAXbs/n1AB10tcQXBnw5z9cM8feCZs/3s174Syhudy9mOUtsd7jw8pawZ5JQoWKcWXZ
+ U95Jh9NNbdvChFYux9F8OPa5FEc638stnXQmrqWjrVCdWUb6fPPANGiRsqmHAGTv5+0O
+ wtgA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1725379734; x=1725984534;
+ d=1e100.net; s=20230601; t=1725379692; x=1725984492;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=DBc/bJy+JM7lDQDRwxqLPG14xFZM1slW+0SGy2bjs2k=;
- b=TUyn3aALcVvi5s+NojdZr4Y8xUtBo6nE49Wp9Ry7NKk/UJ1Sq06dl30Q0iVAsabnS3
- U+yQLv0kCZzYWq8Ig5XlF9+cWePzTVSFPgs2DxLyrtQ66KDJNrr9oDVFqHl6+jd8Sxxt
- IJvtKRTb5nZE8vvDccTYbMGJRynnsZE2KNgGfhxZ+IVmn35Yx/C8p68Dz5URz9pJ7EVN
- J8VP4tx4lyrr1wEqBrhdn0+jPUq4lw8HAvJ+p025KFjqFhsK31xP8frU+H4zLtkGCTb5
- aMjNIBVHA1ZAXpwVgL4KTagSrqJgaWxqQwfBGV2iebPBrw/zzOgopEguH6Q2A84hu7L+
- pNUg==
-X-Gm-Message-State: AOJu0Yx+4WT7DlRm8HjbhwkS1ROrnx76hHi//k0bpS9e9SFVnSomK/Nl
- yvqlzGI8dH3LVJBFFvB+FbIWLhBpJEqmphJzXZb2gL/iafJbn+kUxjX7x7V15FpJvX8Bc37XA6S
- a
-X-Received: by 2002:a05:600c:4586:b0:426:61fc:fc1a with SMTP id
- 5b1f17b1804b1-42bb01ae2a7mr162606245e9.3.1725379734319; 
- Tue, 03 Sep 2024 09:08:54 -0700 (PDT)
+ bh=4XZ7NOx/WtVIQqrk01ux4dOB629Yo/Ds1l4cW4PljMY=;
+ b=k75g6kuDeebdTeZWUiUPzXQrKP7p5ELbkc4eZewuYAxWVSiQYWnSmBOd76agKm6njC
+ Zzj5/1bJvw8bFRNY3SsPY8E986Pb2xZK67KZhZ9gq4tMrJN+mYuYw/B+MjfLk51c+E0B
+ CHT9HsMuZQrlt54/6XN2mdhib9YiocE47eXbO1oDT38LcWuQOzo7Z4SHXLVfrYQ4KDzn
+ YKWfPYWWluebL4XqbO48AMqx69jbGUAsFEjOKJciiIvQMnGAeJsfsO+bg6Qai0wodNl7
+ fXGc98Q/hDuGWVaKrnkh0Ggdol9rEaaRNIbYYx9TZczxML2oXqrozKLeZKDy+Fr1En3K
+ kUug==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCX5sciJTVbbuF/uiuTZxLDApRieStxfQ8agKpx/8D10kVzLkA077SJjvukosoA7fZnexVLSnGsiwm9z@nongnu.org
+X-Gm-Message-State: AOJu0YzROOM6Z7sN46WtzpN1oTkGYVPL66Jzp8bMls3rmbLqa7I5lOEM
+ EgWsV2ge5bcd8MhvWYVWZW27ORVKDwEM0uVOFYyq/JuxS/dqwBQkrbVmJFKZ3Ev0ETf9TTfX8YQ
+ F
+X-Received: by 2002:a05:6512:138d:b0:533:4bd0:df69 with SMTP id
+ 2adb3069b0e04-53546b9cdcbmr9082639e87.55.1725379692364; 
+ Tue, 03 Sep 2024 09:08:12 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-42bb6df1066sm175123065e9.18.2024.09.03.09.08.53
+ 5b1f17b1804b1-42bb6df1066sm175123065e9.18.2024.09.03.09.08.11
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 03 Sep 2024 09:08:53 -0700 (PDT)
+ Tue, 03 Sep 2024 09:08:12 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH for-9.2 40/53] hw/intc: Remove omap2-intc device
-Date: Tue,  3 Sep 2024 17:07:38 +0100
-Message-Id: <20240903160751.4100218-41-peter.maydell@linaro.org>
+Subject: [PATCH for-9.2 12/53] hw/arm: Remove 'z2' machine
+Date: Tue,  3 Sep 2024 17:07:10 +0100
+Message-Id: <20240903160751.4100218-13-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240903160751.4100218-1-peter.maydell@linaro.org>
 References: <20240903160751.4100218-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::12f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-lf1-x12f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -115,336 +117,450 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: N+mr+f5GniCx
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: AI79LQlW8VnF
 
-Remove the OMAP2 specific code from omap_intc.c.
+The 'z2' machine was deprecated in 9.0, so we can remove it for
+9.2.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/intc/omap_intc.c | 276 --------------------------------------------
- 1 file changed, 276 deletions(-)
+ MAINTAINERS                             |   1 -
+ configs/devices/arm-softmmu/default.mak |   1 -
+ hw/arm/z2.c                             | 355 ------------------------
+ hw/arm/Kconfig                          |   9 -
+ hw/arm/meson.build                      |   1 -
+ 5 files changed, 367 deletions(-)
+ delete mode 100644 hw/arm/z2.c
 
-diff --git a/hw/intc/omap_intc.c b/hw/intc/omap_intc.c
-index 435c47600fc..c14b22d3819 100644
---- a/hw/intc/omap_intc.c
-+++ b/hw/intc/omap_intc.c
-@@ -50,8 +50,6 @@ struct OMAPIntcState {
-     int level_only;
-     uint32_t size;
+diff --git a/MAINTAINERS b/MAINTAINERS
+index fd4e8b0d705..8ca445ad5a0 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -907,7 +907,6 @@ PXA2XX
+ M: Peter Maydell <peter.maydell@linaro.org>
+ L: qemu-arm@nongnu.org
+ S: Odd Fixes
+-F: hw/arm/z2.c
+ F: hw/*/pxa2xx*
+ F: include/hw/arm/pxa.h
  
--    uint8_t revision;
+diff --git a/configs/devices/arm-softmmu/default.mak b/configs/devices/arm-softmmu/default.mak
+index 547100a06f3..260b0cf9772 100644
+--- a/configs/devices/arm-softmmu/default.mak
++++ b/configs/devices/arm-softmmu/default.mak
+@@ -27,7 +27,6 @@
+ # CONFIG_VERSATILE=n
+ # CONFIG_VEXPRESS=n
+ # CONFIG_ZYNQ=n
+-# CONFIG_Z2=n
+ # CONFIG_NPCM7XX=n
+ # CONFIG_COLLIE=n
+ # CONFIG_ASPEED_SOC=n
+diff --git a/hw/arm/z2.c b/hw/arm/z2.c
+deleted file mode 100644
+index fc5672e7ab2..00000000000
+--- a/hw/arm/z2.c
++++ /dev/null
+@@ -1,355 +0,0 @@
+-/*
+- * PXA270-based Zipit Z2 device
+- *
+- * Copyright (c) 2011 by Vasily Khoruzhick <anarsoul@gmail.com>
+- *
+- * Code is based on mainstone platform.
+- *
+- * This code is licensed under the GNU GPL v2.
+- *
+- * Contributions after 2012-01-13 are licensed under the terms of the
+- * GNU GPL, version 2 or (at your option) any later version.
+- */
 -
-     /* state */
-     uint32_t new_agr[2];
-     int sir_intr[2];
-@@ -133,26 +131,6 @@ static void omap_set_intr(void *opaque, int irq, int req)
-     }
- }
- 
--/* Simplified version with no edge detection */
--static void omap_set_intr_noedge(void *opaque, int irq, int req)
+-#include "qemu/osdep.h"
+-#include "qemu/units.h"
+-#include "hw/arm/pxa.h"
+-#include "hw/arm/boot.h"
+-#include "hw/i2c/i2c.h"
+-#include "hw/irq.h"
+-#include "hw/ssi/ssi.h"
+-#include "migration/vmstate.h"
+-#include "hw/boards.h"
+-#include "hw/block/flash.h"
+-#include "ui/console.h"
+-#include "hw/audio/wm8750.h"
+-#include "audio/audio.h"
+-#include "exec/address-spaces.h"
+-#include "qom/object.h"
+-#include "qapi/error.h"
+-#include "trace.h"
+-
+-static const struct keymap map[0x100] = {
+-    [0 ... 0xff] = { -1, -1 },
+-    [0x3b] = {0, 0}, /* Option = F1 */
+-    [0xc8] = {0, 1}, /* Up */
+-    [0xd0] = {0, 2}, /* Down */
+-    [0xcb] = {0, 3}, /* Left */
+-    [0xcd] = {0, 4}, /* Right */
+-    [0xcf] = {0, 5}, /* End */
+-    [0x0d] = {0, 6}, /* KPPLUS */
+-    [0xc7] = {1, 0}, /* Home */
+-    [0x10] = {1, 1}, /* Q */
+-    [0x17] = {1, 2}, /* I */
+-    [0x22] = {1, 3}, /* G */
+-    [0x2d] = {1, 4}, /* X */
+-    [0x1c] = {1, 5}, /* Enter */
+-    [0x0c] = {1, 6}, /* KPMINUS */
+-    [0xc9] = {2, 0}, /* PageUp */
+-    [0x11] = {2, 1}, /* W */
+-    [0x18] = {2, 2}, /* O */
+-    [0x23] = {2, 3}, /* H */
+-    [0x2e] = {2, 4}, /* C */
+-    [0x38] = {2, 5}, /* LeftAlt */
+-    [0xd1] = {3, 0}, /* PageDown */
+-    [0x12] = {3, 1}, /* E */
+-    [0x19] = {3, 2}, /* P */
+-    [0x24] = {3, 3}, /* J */
+-    [0x2f] = {3, 4}, /* V */
+-    [0x2a] = {3, 5}, /* LeftShift */
+-    [0x01] = {4, 0}, /* Esc */
+-    [0x13] = {4, 1}, /* R */
+-    [0x1e] = {4, 2}, /* A */
+-    [0x25] = {4, 3}, /* K */
+-    [0x30] = {4, 4}, /* B */
+-    [0x1d] = {4, 5}, /* LeftCtrl */
+-    [0x0f] = {5, 0}, /* Tab */
+-    [0x14] = {5, 1}, /* T */
+-    [0x1f] = {5, 2}, /* S */
+-    [0x26] = {5, 3}, /* L */
+-    [0x31] = {5, 4}, /* N */
+-    [0x39] = {5, 5}, /* Space */
+-    [0x3c] = {6, 0}, /* Stop = F2 */
+-    [0x15] = {6, 1}, /* Y */
+-    [0x20] = {6, 2}, /* D */
+-    [0x0e] = {6, 3}, /* Backspace */
+-    [0x32] = {6, 4}, /* M */
+-    [0x33] = {6, 5}, /* Comma */
+-    [0x3d] = {7, 0}, /* Play = F3 */
+-    [0x16] = {7, 1}, /* U */
+-    [0x21] = {7, 2}, /* F */
+-    [0x2c] = {7, 3}, /* Z */
+-    [0x27] = {7, 4}, /* Semicolon */
+-    [0x34] = {7, 5}, /* Dot */
+-};
+-
+-#define Z2_RAM_SIZE     0x02000000
+-#define Z2_FLASH_BASE   0x00000000
+-#define Z2_FLASH_SIZE   0x00800000
+-
+-static struct arm_boot_info z2_binfo = {
+-    .loader_start   = PXA2XX_SDRAM_BASE,
+-    .ram_size       = Z2_RAM_SIZE,
+-};
+-
+-#define Z2_GPIO_SD_DETECT   96
+-#define Z2_GPIO_AC_IN       0
+-#define Z2_GPIO_KEY_ON      1
+-#define Z2_GPIO_LCD_CS      88
+-
+-struct ZipitLCD {
+-    SSIPeripheral ssidev;
+-    int32_t selected;
+-    int32_t enabled;
+-    uint8_t buf[3];
+-    uint32_t cur_reg;
+-    int pos;
+-};
+-
+-#define TYPE_ZIPIT_LCD "zipit-lcd"
+-OBJECT_DECLARE_SIMPLE_TYPE(ZipitLCD, ZIPIT_LCD)
+-
+-static uint32_t zipit_lcd_transfer(SSIPeripheral *dev, uint32_t value)
 -{
--    OMAPIntcState *ih = opaque;
--    uint32_t rise;
+-    ZipitLCD *z = ZIPIT_LCD(dev);
+-    uint16_t val;
 -
--    struct omap_intr_handler_bank_s *bank = &ih->bank[irq >> 5];
--    int n = irq & 31;
--
--    if (req) {
--        rise = ~bank->inputs & (1 << n);
--        if (rise) {
--            bank->irqs |= bank->inputs |= rise;
--            omap_inth_update(ih, 0);
--            omap_inth_update(ih, 1);
--        }
--    } else
--        bank->irqs = (bank->inputs &= ~(1 << n)) | bank->swi;
--}
--
- static uint64_t omap_inth_read(void *opaque, hwaddr addr,
-                                unsigned size)
- {
-@@ -420,259 +398,6 @@ static const TypeInfo omap_intc_info = {
-     .class_init    = omap_intc_class_init,
- };
- 
--static uint64_t omap2_inth_read(void *opaque, hwaddr addr,
--                                unsigned size)
--{
--    OMAPIntcState *s = opaque;
--    int offset = addr;
--    int bank_no, line_no;
--    struct omap_intr_handler_bank_s *bank = NULL;
--
--    if ((offset & 0xf80) == 0x80) {
--        bank_no = (offset & 0x60) >> 5;
--        if (bank_no < s->nbanks) {
--            offset &= ~0x60;
--            bank = &s->bank[bank_no];
--        } else {
--            OMAP_BAD_REG(addr);
--            return 0;
--        }
+-    trace_z2_lcd_reg_update(z->cur_reg, z->buf[0], z->buf[1], z->buf[2], value);
+-    if (z->selected) {
+-        z->buf[z->pos] = value & 0xff;
+-        z->pos++;
 -    }
--
--    switch (offset) {
--    case 0x00:	/* INTC_REVISION */
--        return s->revision;
--
--    case 0x10:	/* INTC_SYSCONFIG */
--        return (s->autoidle >> 2) & 1;
--
--    case 0x14:	/* INTC_SYSSTATUS */
--        return 1;						/* RESETDONE */
--
--    case 0x40:	/* INTC_SIR_IRQ */
--        return s->sir_intr[0];
--
--    case 0x44:	/* INTC_SIR_FIQ */
--        return s->sir_intr[1];
--
--    case 0x48:	/* INTC_CONTROL */
--        return (!s->mask) << 2;					/* GLOBALMASK */
--
--    case 0x4c:	/* INTC_PROTECTION */
--        return 0;
--
--    case 0x50:	/* INTC_IDLE */
--        return s->autoidle & 3;
--
--    /* Per-bank registers */
--    case 0x80:	/* INTC_ITR */
--        return bank->inputs;
--
--    case 0x84:	/* INTC_MIR */
--        return bank->mask;
--
--    case 0x88:	/* INTC_MIR_CLEAR */
--    case 0x8c:	/* INTC_MIR_SET */
--        return 0;
--
--    case 0x90:	/* INTC_ISR_SET */
--        return bank->swi;
--
--    case 0x94:	/* INTC_ISR_CLEAR */
--        return 0;
--
--    case 0x98:	/* INTC_PENDING_IRQ */
--        return bank->irqs & ~bank->mask & ~bank->fiq;
--
--    case 0x9c:	/* INTC_PENDING_FIQ */
--        return bank->irqs & ~bank->mask & bank->fiq;
--
--    /* Per-line registers */
--    case 0x100 ... 0x300:	/* INTC_ILR */
--        bank_no = (offset - 0x100) >> 7;
--        if (bank_no > s->nbanks)
+-    if (z->pos == 3) {
+-        switch (z->buf[0]) {
+-        case 0x74:
+-            z->cur_reg = z->buf[2];
 -            break;
--        bank = &s->bank[bank_no];
--        line_no = (offset & 0x7f) >> 2;
--        return (bank->priority[line_no] << 2) |
--                ((bank->fiq >> line_no) & 1);
+-        case 0x76:
+-            val = z->buf[1] << 8 | z->buf[2];
+-            if (z->cur_reg == 0x22 && val == 0x0000) {
+-                z->enabled = 1;
+-                trace_z2_lcd_enable_disable_result("enabled");
+-            } else if (z->cur_reg == 0x10 && val == 0x0000) {
+-                z->enabled = 0;
+-                trace_z2_lcd_enable_disable_result("disabled");
+-            }
+-            break;
+-        default:
+-            break;
+-        }
+-        z->pos = 0;
 -    }
--    OMAP_BAD_REG(addr);
 -    return 0;
 -}
 -
--static void omap2_inth_write(void *opaque, hwaddr addr,
--                             uint64_t value, unsigned size)
+-static void z2_lcd_cs(void *opaque, int line, int level)
 -{
--    OMAPIntcState *s = opaque;
--    int offset = addr;
--    int bank_no, line_no;
--    struct omap_intr_handler_bank_s *bank = NULL;
--
--    if ((offset & 0xf80) == 0x80) {
--        bank_no = (offset & 0x60) >> 5;
--        if (bank_no < s->nbanks) {
--            offset &= ~0x60;
--            bank = &s->bank[bank_no];
--        } else {
--            OMAP_BAD_REG(addr);
--            return;
--        }
--    }
--
--    switch (offset) {
--    case 0x10:	/* INTC_SYSCONFIG */
--        s->autoidle &= 4;
--        s->autoidle |= (value & 1) << 2;
--        if (value & 2) {                                        /* SOFTRESET */
--            omap_inth_reset(DEVICE(s));
--        }
--        return;
--
--    case 0x48:	/* INTC_CONTROL */
--        s->mask = (value & 4) ? 0 : ~0;				/* GLOBALMASK */
--        if (value & 2) {					/* NEWFIQAGR */
--            qemu_set_irq(s->parent_intr[1], 0);
--            s->new_agr[1] = ~0;
--            omap_inth_update(s, 1);
--        }
--        if (value & 1) {					/* NEWIRQAGR */
--            qemu_set_irq(s->parent_intr[0], 0);
--            s->new_agr[0] = ~0;
--            omap_inth_update(s, 0);
--        }
--        return;
--
--    case 0x4c:	/* INTC_PROTECTION */
--        /* TODO: Make a bitmap (or sizeof(char)map) of access privileges
--         * for every register, see Chapter 3 and 4 for privileged mode.  */
--        if (value & 1)
--            fprintf(stderr, "%s: protection mode enable attempt\n",
--                            __func__);
--        return;
--
--    case 0x50:	/* INTC_IDLE */
--        s->autoidle &= ~3;
--        s->autoidle |= value & 3;
--        return;
--
--    /* Per-bank registers */
--    case 0x84:	/* INTC_MIR */
--        bank->mask = value;
--        omap_inth_update(s, 0);
--        omap_inth_update(s, 1);
--        return;
--
--    case 0x88:	/* INTC_MIR_CLEAR */
--        bank->mask &= ~value;
--        omap_inth_update(s, 0);
--        omap_inth_update(s, 1);
--        return;
--
--    case 0x8c:	/* INTC_MIR_SET */
--        bank->mask |= value;
--        return;
--
--    case 0x90:	/* INTC_ISR_SET */
--        bank->irqs |= bank->swi |= value;
--        omap_inth_update(s, 0);
--        omap_inth_update(s, 1);
--        return;
--
--    case 0x94:	/* INTC_ISR_CLEAR */
--        bank->swi &= ~value;
--        bank->irqs = bank->swi & bank->inputs;
--        return;
--
--    /* Per-line registers */
--    case 0x100 ... 0x300:	/* INTC_ILR */
--        bank_no = (offset - 0x100) >> 7;
--        if (bank_no > s->nbanks)
--            break;
--        bank = &s->bank[bank_no];
--        line_no = (offset & 0x7f) >> 2;
--        bank->priority[line_no] = (value >> 2) & 0x3f;
--        bank->fiq &= ~(1 << line_no);
--        bank->fiq |= (value & 1) << line_no;
--        return;
--
--    case 0x00:	/* INTC_REVISION */
--    case 0x14:	/* INTC_SYSSTATUS */
--    case 0x40:	/* INTC_SIR_IRQ */
--    case 0x44:	/* INTC_SIR_FIQ */
--    case 0x80:	/* INTC_ITR */
--    case 0x98:	/* INTC_PENDING_IRQ */
--    case 0x9c:	/* INTC_PENDING_FIQ */
--        OMAP_RO_REG(addr);
--        return;
--    }
--    OMAP_BAD_REG(addr);
+-    ZipitLCD *z2_lcd = opaque;
+-    z2_lcd->selected = !level;
 -}
 -
--static const MemoryRegionOps omap2_inth_mem_ops = {
--    .read = omap2_inth_read,
--    .write = omap2_inth_write,
--    .endianness = DEVICE_NATIVE_ENDIAN,
--    .valid = {
--        .min_access_size = 4,
--        .max_access_size = 4,
--    },
+-static void zipit_lcd_realize(SSIPeripheral *dev, Error **errp)
+-{
+-    ZipitLCD *z = ZIPIT_LCD(dev);
+-    z->selected = 0;
+-    z->enabled = 0;
+-    z->pos = 0;
+-}
+-
+-static const VMStateDescription vmstate_zipit_lcd_state = {
+-    .name = "zipit-lcd",
+-    .version_id = 2,
+-    .minimum_version_id = 2,
+-    .fields = (const VMStateField[]) {
+-        VMSTATE_SSI_PERIPHERAL(ssidev, ZipitLCD),
+-        VMSTATE_INT32(selected, ZipitLCD),
+-        VMSTATE_INT32(enabled, ZipitLCD),
+-        VMSTATE_BUFFER(buf, ZipitLCD),
+-        VMSTATE_UINT32(cur_reg, ZipitLCD),
+-        VMSTATE_INT32(pos, ZipitLCD),
+-        VMSTATE_END_OF_LIST(),
+-    }
 -};
 -
--static void omap2_intc_init(Object *obj)
--{
--    DeviceState *dev = DEVICE(obj);
--    OMAPIntcState *s = OMAP_INTC(obj);
--    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
--
--    s->level_only = 1;
--    s->nbanks = 3;
--    sysbus_init_irq(sbd, &s->parent_intr[0]);
--    sysbus_init_irq(sbd, &s->parent_intr[1]);
--    qdev_init_gpio_in(dev, omap_set_intr_noedge, s->nbanks * 32);
--    memory_region_init_io(&s->mmio, obj, &omap2_inth_mem_ops, s,
--                          "omap2-intc", 0x1000);
--    sysbus_init_mmio(sbd, &s->mmio);
--}
--
--static void omap2_intc_realize(DeviceState *dev, Error **errp)
--{
--    OMAPIntcState *s = OMAP_INTC(dev);
--
--    if (!s->iclk) {
--        error_setg(errp, "omap2-intc: iclk not connected");
--        return;
--    }
--    if (!s->fclk) {
--        error_setg(errp, "omap2-intc: fclk not connected");
--        return;
--    }
--}
--
--static Property omap2_intc_properties[] = {
--    DEFINE_PROP_UINT8("revision", OMAPIntcState,
--    revision, 0x21),
--    DEFINE_PROP_END_OF_LIST(),
--};
--
--static void omap2_intc_class_init(ObjectClass *klass, void *data)
+-static void zipit_lcd_class_init(ObjectClass *klass, void *data)
 -{
 -    DeviceClass *dc = DEVICE_CLASS(klass);
+-    SSIPeripheralClass *k = SSI_PERIPHERAL_CLASS(klass);
 -
--    dc->reset = omap_inth_reset;
--    device_class_set_props(dc, omap2_intc_properties);
--    /* Reason: pointer property "iclk", "fclk" */
--    dc->user_creatable = false;
--    dc->realize = omap2_intc_realize;
+-    k->realize = zipit_lcd_realize;
+-    k->transfer = zipit_lcd_transfer;
+-    dc->vmsd = &vmstate_zipit_lcd_state;
 -}
 -
--static const TypeInfo omap2_intc_info = {
--    .name          = "omap2-intc",
--    .parent        = TYPE_OMAP_INTC,
--    .instance_init = omap2_intc_init,
--    .class_init    = omap2_intc_class_init,
+-static const TypeInfo zipit_lcd_info = {
+-    .name          = TYPE_ZIPIT_LCD,
+-    .parent        = TYPE_SSI_PERIPHERAL,
+-    .instance_size = sizeof(ZipitLCD),
+-    .class_init    = zipit_lcd_class_init,
 -};
 -
- static const TypeInfo omap_intc_type_info = {
-     .name          = TYPE_OMAP_INTC,
-     .parent        = TYPE_SYS_BUS_DEVICE,
-@@ -684,7 +409,6 @@ static void omap_intc_register_types(void)
- {
-     type_register_static(&omap_intc_type_info);
-     type_register_static(&omap_intc_info);
--    type_register_static(&omap2_intc_info);
- }
+-#define TYPE_AER915 "aer915"
+-OBJECT_DECLARE_SIMPLE_TYPE(AER915State, AER915)
+-
+-struct AER915State {
+-    I2CSlave parent_obj;
+-
+-    int len;
+-    uint8_t buf[3];
+-};
+-
+-static int aer915_send(I2CSlave *i2c, uint8_t data)
+-{
+-    AER915State *s = AER915(i2c);
+-
+-    s->buf[s->len] = data;
+-    if (s->len++ > 2) {
+-        trace_z2_aer915_send_too_long(s->len);
+-        return 1;
+-    }
+-
+-    if (s->len == 2) {
+-        trace_z2_aer915_send(s->buf[0], s->buf[1]);
+-    }
+-
+-    return 0;
+-}
+-
+-static int aer915_event(I2CSlave *i2c, enum i2c_event event)
+-{
+-    AER915State *s = AER915(i2c);
+-
+-    trace_z2_aer915_event(s->len, event);
+-    switch (event) {
+-    case I2C_START_SEND:
+-        s->len = 0;
+-        break;
+-    case I2C_START_RECV:
+-        break;
+-    case I2C_FINISH:
+-        break;
+-    default:
+-        break;
+-    }
+-
+-    return 0;
+-}
+-
+-static uint8_t aer915_recv(I2CSlave *slave)
+-{
+-    AER915State *s = AER915(slave);
+-    int retval = 0x00;
+-
+-    switch (s->buf[0]) {
+-    /* Return hardcoded battery voltage,
+-     * 0xf0 means ~4.1V
+-     */
+-    case 0x02:
+-        retval = 0xf0;
+-        break;
+-    /* Return 0x00 for other regs,
+-     * we don't know what they are for,
+-     * anyway they return 0x00 on real hardware.
+-     */
+-    default:
+-        break;
+-    }
+-
+-    return retval;
+-}
+-
+-static const VMStateDescription vmstate_aer915_state = {
+-    .name = "aer915",
+-    .version_id = 1,
+-    .minimum_version_id = 1,
+-    .fields = (const VMStateField[]) {
+-        VMSTATE_INT32(len, AER915State),
+-        VMSTATE_BUFFER(buf, AER915State),
+-        VMSTATE_END_OF_LIST(),
+-    }
+-};
+-
+-static void aer915_class_init(ObjectClass *klass, void *data)
+-{
+-    DeviceClass *dc = DEVICE_CLASS(klass);
+-    I2CSlaveClass *k = I2C_SLAVE_CLASS(klass);
+-
+-    k->event = aer915_event;
+-    k->recv = aer915_recv;
+-    k->send = aer915_send;
+-    dc->vmsd = &vmstate_aer915_state;
+-}
+-
+-static const TypeInfo aer915_info = {
+-    .name          = TYPE_AER915,
+-    .parent        = TYPE_I2C_SLAVE,
+-    .instance_size = sizeof(AER915State),
+-    .class_init    = aer915_class_init,
+-};
+-
+-#define FLASH_SECTOR_SIZE   (64 * KiB)
+-
+-static void z2_init(MachineState *machine)
+-{
+-    PXA2xxState *mpu;
+-    DriveInfo *dinfo;
+-    void *z2_lcd;
+-    I2CBus *bus;
+-    DeviceState *wm;
+-    I2CSlave *i2c_dev;
+-
+-    /* Setup CPU & memory */
+-    mpu = pxa270_init(z2_binfo.ram_size, machine->cpu_type);
+-
+-    dinfo = drive_get(IF_PFLASH, 0, 0);
+-    pflash_cfi01_register(Z2_FLASH_BASE, "z2.flash0", Z2_FLASH_SIZE,
+-                          dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
+-                          FLASH_SECTOR_SIZE, 4, 0, 0, 0, 0, 0);
+-
+-    /* setup keypad */
+-    pxa27x_register_keypad(mpu->kp, map, 0x100);
+-
+-    /* MMC/SD host */
+-    pxa2xx_mmci_handlers(mpu->mmc,
+-        NULL,
+-        qdev_get_gpio_in(mpu->gpio, Z2_GPIO_SD_DETECT));
+-
+-    type_register_static(&zipit_lcd_info);
+-    type_register_static(&aer915_info);
+-    z2_lcd = ssi_create_peripheral(mpu->ssp[1], TYPE_ZIPIT_LCD);
+-    bus = pxa2xx_i2c_bus(mpu->i2c[0]);
+-
+-    i2c_slave_create_simple(bus, TYPE_AER915, 0x55);
+-
+-    i2c_dev = i2c_slave_new(TYPE_WM8750, 0x1b);
+-    wm = DEVICE(i2c_dev);
+-
+-    if (machine->audiodev) {
+-        qdev_prop_set_string(wm, "audiodev", machine->audiodev);
+-    }
+-    i2c_slave_realize_and_unref(i2c_dev, bus, &error_abort);
+-
+-    mpu->i2s->opaque = wm;
+-    mpu->i2s->codec_out = wm8750_dac_dat;
+-    mpu->i2s->codec_in = wm8750_adc_dat;
+-    wm8750_data_req_set(wm, mpu->i2s->data_req, mpu->i2s);
+-
+-    qdev_connect_gpio_out(mpu->gpio, Z2_GPIO_LCD_CS,
+-                          qemu_allocate_irq(z2_lcd_cs, z2_lcd, 0));
+-
+-    z2_binfo.board_id = 0x6dd;
+-    arm_load_kernel(mpu->cpu, machine, &z2_binfo);
+-}
+-
+-static void z2_machine_init(MachineClass *mc)
+-{
+-    mc->desc = "Zipit Z2 (PXA27x)";
+-    mc->init = z2_init;
+-    mc->ignore_memory_transaction_failures = true;
+-    mc->default_cpu_type = ARM_CPU_TYPE_NAME("pxa270-c5");
+-    mc->deprecation_reason = "machine is old and unmaintained";
+-
+-    machine_add_audiodev_property(mc);
+-}
+-
+-DEFINE_MACHINE("z2", z2_machine_init)
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index 84cc34f016c..c2452bd7b91 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -176,15 +176,6 @@ config PXA2XX
+     select USB_OHCI_SYSBUS
+     select PCMCIA
  
- type_init(omap_intc_register_types)
+-config Z2
+-    bool
+-    default y
+-    depends on TCG && ARM
+-    select PFLASH_CFI01
+-    select WM8750
+-    select PL011 # UART
+-    select PXA2XX
+-
+ config REALVIEW
+     bool
+     default y
+diff --git a/hw/arm/meson.build b/hw/arm/meson.build
+index 72afb9e62a7..1a4a51d6302 100644
+--- a/hw/arm/meson.build
++++ b/hw/arm/meson.build
+@@ -71,6 +71,5 @@ system_ss.add(when: 'CONFIG_STRONGARM', if_true: files('strongarm.c'))
+ system_ss.add(when: 'CONFIG_SX1', if_true: files('omap_sx1.c'))
+ system_ss.add(when: 'CONFIG_VERSATILE', if_true: files('versatilepb.c'))
+ system_ss.add(when: 'CONFIG_VEXPRESS', if_true: files('vexpress.c'))
+-system_ss.add(when: 'CONFIG_Z2', if_true: files('z2.c'))
+ 
+ hw_arch += {'arm': arm_ss}
 -- 
 2.34.1
 

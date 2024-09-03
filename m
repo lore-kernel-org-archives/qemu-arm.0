@@ -1,295 +1,385 @@
-Received: by 2002:a17:504:3a8f:b0:1be9:327d:8ee3 with SMTP id g15csp1500605njf;
+Received: by 2002:a17:504:3a8f:b0:1be9:327d:8ee3 with SMTP id g15csp1500609njf;
         Tue, 3 Sep 2024 09:10:08 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCU5BDDdZ4OV0rxrrXYq1JjB2JJt01zwbraS+RlM6ST+IIeiYQ47lLkgzIJ2DCo3oV10SgaEt8KjmOjUjg==@linaro.org
-X-Google-Smtp-Source: AGHT+IH8SwK+5pAH0WPVq7QOf4G/rK6DYizaClTzLuCjy09ENHXPXKQc5BRsMqrV7foaUXhBw/4A
-X-Received: by 2002:a05:6830:6c88:b0:70f:6c32:8edd with SMTP id 46e09a7af769-70f6c32902bmr13027275a34.30.1725379808282;
+X-Forwarded-Encrypted: i=2; AJvYcCVWlMWqSx+GRmtAKyyHU9TpdVaicX7nMVwZAC/1fZgmCSLHhkFJZHjE2W4rvxAtBeNHuxnbKo7PA3aaYg==@linaro.org
+X-Google-Smtp-Source: AGHT+IGf2FRVDSTd1tG5o5hjmTcW3micMPa6P/DSNX1KYJsrpnwcubhxCHEWvtgK+TCpLwPyRGcT
+X-Received: by 2002:a05:6102:32ce:b0:493:e327:8344 with SMTP id ada2fe7eead31-49a5b061486mr17153866137.9.1725379808394;
         Tue, 03 Sep 2024 09:10:08 -0700 (PDT)
 ARC-Seal: i=1; a=rsa-sha256; t=1725379808; cv=none;
         d=google.com; s=arc-20160816;
-        b=sugjgv67dKXz6Wh9tXgoTJ3qFCOZVxQL5ZpDEd/oN49qrFVu6PYVaHi5WoOsmX8Me9
-         enTvlTcD1rHHq9abyrOA9DKJ4L5ti57Rbog10QUYuEjnUOAAThcbO9c1FVc5c//nbzBW
-         Ghnmt7zGnLifUkGaAKrzgILgvu4hlzYQOFwHTLWZHwE6sQs1RwaZcr+2OfUOhiXgcBih
-         bc+6pMzP2zJTl/G/fsFJ8Nj98piD9LPJQeu+S/xOPOBTBobI9WDirK6mpmkd4ed0e1dO
-         fz9bA2moGmXO3tNpKSOa7wu6gACaF/7Haz8P9iczxaQ9deXiBqViX5R3CNu91qXShCaE
-         8jDw==
+        b=JeO6SaGJpDbK8klaRtOdK0AhuPpmHJWV/EXisca7jF6G4GVAzVBurrUx0i5vtOck0W
+         kzIjPznIzgppu/iQDQSq2AVisYnaSHplu1cJ0V+37jXeUoyJwVlIU1iA4Yrn2dPnNf5S
+         Sr6WoFHpBBw0eSoNY01CpK/46U0a07fbuxcVm7gX8/rRISL2/oAIr7wN4Zfm7iRBQs9n
+         lKSJkI7C5W7jfmA4nM5GxI8SihG5+wjKNMbgG3EjMBELGx4S2cKuIWQsWuJg4fo68QvS
+         anmCShCW29AMz3p/w2zkn2CGyUEBNicDew4+l29Gj1ng9xRdKSr616zkQxO0dz2AywlR
+         274Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=6KZWNBjhhzjYgLlW+2QJ75y9er/DhS+ckZ21pfSiKUs=;
-        fh=qzu0cR9jZpW4iTzbRtmgfsT8JOnbUIvMqYlIqOsCJ/o=;
-        b=MMy6MqPO8dzj0Sof4KFZGZl76IlqsfAHZYnnGeafgycehZouecUjC2chKuYyd1ZyvS
-         DwDma5t+XUJ0CRJX6OxEMFtyI9ZZYAMnnv1wmiYg9jyiToCOwl8yFnoS2C4Sjsj0SDR1
-         2f0p9YOpfg9id+/4U/tt1B+R5gf8+/K16D13TMPEw9WZ/piI1b9KUeemFp36s8b0YuME
-         kHCnumfi2RIzsgQ8fktcOa6qxORK0QAlCM7y39j9l8m9bpJaZokifkbWrBLzyegHsX3g
-         hBUNkkfNmzYsPM9OwFo8vKN8rwyCudGf6SwOPnNjYASZVSqVpDhWFziFsSAMT5xfsTNr
-         Fv6Q==;
+        bh=98dHBXppZY7GIvhfWwkwSB+S+qCyCFrZ2JMSYpx+b9s=;
+        fh=H2AmuqulvQE+T5zu97MCEUC3z9wF9NssS7895NhR/+c=;
+        b=gsCe1P5y5xosaraTEh8b7u5Pox2hHe5tslcht1FY26L0dyU+PyIrO/HrUnXIpRsSdE
+         Kms8bbJQxJl7UvqWyxJSECDxx0U2KkXO932FPZ6HLLU8+SmObS60tmAHzXmbhlAlklwR
+         QmBCPnkXAc1v8PS88/ONOZIdXMcGhF2Rufa79g9xk0U7e8oEkAL4AF0aPJmnXYUcub2F
+         etW0R4jKRdtKxddE+LjS0Hxg0EAq6edr1N51QldGHFjxKj1wXPb0G/2JSQOWDXgb0jGz
+         cDKwh6cWD8PmviDA8q1SWt7ur2WHV3BL8g37A3vmnO0yfOkF08fL8aRnrlNoaXVSrupN
+         1Fdg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=IofOdgyz;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=VIJG3Usi;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 71dfb90a1353d-500716a8cbdsi2564733e0c.278.2024.09.03.09.10.08
+        by mx.google.com with ESMTPS id ada2fe7eead31-49ba98b1175si657673137.689.2024.09.03.09.10.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Tue, 03 Sep 2024 09:10:08 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=IofOdgyz;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=VIJG3Usi;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1slW5V-0000td-3x; Tue, 03 Sep 2024 12:09:01 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1slW5h-0002E2-VZ; Tue, 03 Sep 2024 12:09:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1slW5T-0000lV-7A
- for qemu-devel@nongnu.org; Tue, 03 Sep 2024 12:08:59 -0400
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
+ id 1slW5f-0001va-TO
+ for qemu-arm@nongnu.org; Tue, 03 Sep 2024 12:09:11 -0400
+Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1slW5O-0002vB-Ke
- for qemu-devel@nongnu.org; Tue, 03 Sep 2024 12:08:58 -0400
-Received: by mail-wr1-x42a.google.com with SMTP id
- ffacd0b85a97d-374ca7a10d4so1350215f8f.3
- for <qemu-devel@nongnu.org>; Tue, 03 Sep 2024 09:08:54 -0700 (PDT)
+ id 1slW5c-00030M-Sx
+ for qemu-arm@nongnu.org; Tue, 03 Sep 2024 12:09:11 -0400
+Received: by mail-wr1-x433.google.com with SMTP id
+ ffacd0b85a97d-374d29ad870so949165f8f.3
+ for <qemu-arm@nongnu.org>; Tue, 03 Sep 2024 09:09:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1725379733; x=1725984533; darn=nongnu.org;
+ d=linaro.org; s=google; t=1725379747; x=1725984547; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=6KZWNBjhhzjYgLlW+2QJ75y9er/DhS+ckZ21pfSiKUs=;
- b=IofOdgyzqc6pJWcJRxFCRiBlrsloL6Wk6RIz4BA9Vv1PSfFIGoOFPpLZs5+vGKCU0U
- Be1RzkCpTY80oquR/PBEH1UMlwLZIIQJgg03y/+8DPcRH7ToW0e8iOJeMxlRSovIdd9D
- 3quNR7hqOV7kf2ImNC2KY/PJDl5r/scD6WEBEbS5roCH6ieAtNqYgZlvqST+Nd2+FGlX
- 4xVjI658JMXUwOj3xdks83baZ9NKJ7uGA543Lfe7LJX6vgnkT2O72IXg0n0prhfoJOW1
- Edd5agCvzMDmmdncLSuvt3FUaAdJmb+T8Zz9v4ldpO4w+NxxRGj+Mvbckr1veCk3u0dM
- 6taA==
+ :reply-to; bh=98dHBXppZY7GIvhfWwkwSB+S+qCyCFrZ2JMSYpx+b9s=;
+ b=VIJG3UsiXrMsogi3ocjPz8wds1OyQVVDoi/a7Oa2gLwPPT/xiSNI9TgsNlkcNKW7Np
+ 3ZYV9mp2LN3PCVpMUpjpETukgS22LHycWlpndfKlYU1+eLFA2+wpmmjfVBOyXitltM4V
+ U34gI5nj2Qa53/gyOb1+QxGkbIKPyMl9Vmw5XPo+AWnmfTslqJ/9gCQmJkSUFJQ9P0sE
+ hapzcJMylxSPEZ4lsUgcHq1E5+wH1Nl1Ce41N3AArrO6MiuA8sRYlo60fvuAlA6TUYZy
+ PwekQDnEF9yMZvIoSwF1cqhGy3TSsIpmm2Ha/sjtrNuersKv/3WC9I3417ngTW80q2fs
+ LWxw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1725379733; x=1725984533;
+ d=1e100.net; s=20230601; t=1725379747; x=1725984547;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=6KZWNBjhhzjYgLlW+2QJ75y9er/DhS+ckZ21pfSiKUs=;
- b=R7zwtBpn1/6xVUYmsd0HNgqXnFf6xfVTTr8sTu3uFa7q2k7qoePbhBFrTsk8mxScqP
- uA9vwMh77qrTklufmTVF+i6Rdrq85Llutzge8tGVNe8gGXL75c26pBEuK0zsRtsKjp35
- un4W7F5X7yaIwQElzN7UlTRrqfFuAmNID/wv96O+soIejbMeUbYWLZMC3DJYakiZAa2q
- AN/RZjznmFj8PF9nceY64sl6vuI2M/Wf+S3Cdxtvs7H3zBsMcsFj5Ml/7y9mfJmJOL/R
- 7sKYtOa1d+SR4H3vKPF0R9qOHE5oLjl6ORrFBX1k5eC21l3A9yA0F3ahLI7YE86Jv79a
- 3YaA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVy2onuQMxgsTSM72ungVATYdio2+V0uiFcWUd9NAUZy2CnxDl2BMNig4bshOPgoa/NBIAT8nkYw44r@nongnu.org
-X-Gm-Message-State: AOJu0YzTEJ1obOM6t4ed6ONeDKHFPg4XHnXdW/j3FHzoqWosBVNmH5b4
- Tc7rTRNEMoQ8vTFbjJ+rmVUm0AQSli0DNLqGGdPkM1IpHVElB+cEOhBaKN5QbTs=
-X-Received: by 2002:a5d:4608:0:b0:374:c31e:971a with SMTP id
- ffacd0b85a97d-374c31e991emr6538557f8f.0.1725379732903; 
- Tue, 03 Sep 2024 09:08:52 -0700 (PDT)
+ bh=98dHBXppZY7GIvhfWwkwSB+S+qCyCFrZ2JMSYpx+b9s=;
+ b=JuZWjv6jaWUBMvJf/pilOPfEhGGqVS+JqD5qukWpaYDDVasFEFRqlxck7f9yF3bhDE
+ +o+DHgK7FNgFU88a/mto/RWZCgqC0qx+hJbpwWwObt0zJ8sOLK+tHXC+gUce0P5W0DeZ
+ lICLnZs73UVzc/skql+NK+ho2cn5Abk2EYPQSz1G6H0kS28dqjbukhEELNYnNJEnFZbP
+ kUEYk/8ABu9R1npLQNc/InY+D7Lo/73HJIbcBOXTk3O2NSkv/w4L3eR9f8Apiu7rONJ3
+ rd2cyAeLFfxIlVgy/84hyZJYyo3gn/2NbnTRrTaBHAlRkdcXKTANG0UveuEGJcTQbvR2
+ 0VJQ==
+X-Gm-Message-State: AOJu0YyYV/PMKXaMe6n927eadbZlpGQgXfHq54CkTDwLXYJSt0Er6tR3
+ +AdhMBKqg/AqsfnPpGoVE14w4w2yGRljZ41mveJ2AtKIa/Cv0hsyai3e6n9ezU+sJZD85tc8doH
+ k
+X-Received: by 2002:adf:e602:0:b0:374:b9a0:ddee with SMTP id
+ ffacd0b85a97d-374bf1e4a3dmr6742058f8f.56.1725379747195; 
+ Tue, 03 Sep 2024 09:09:07 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-42bb6df1066sm175123065e9.18.2024.09.03.09.08.52
+ 5b1f17b1804b1-42bb6df1066sm175123065e9.18.2024.09.03.09.09.05
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 03 Sep 2024 09:08:52 -0700 (PDT)
+ Tue, 03 Sep 2024 09:09:06 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH for-9.2 39/53] hw/char: Remove omap2_uart
-Date: Tue,  3 Sep 2024 17:07:37 +0100
-Message-Id: <20240903160751.4100218-40-peter.maydell@linaro.org>
+Subject: [PATCH for-9.2 50/53] hw/misc: Remove omap_l4 device
+Date: Tue,  3 Sep 2024 17:07:48 +0100
+Message-Id: <20240903160751.4100218-51-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240903160751.4100218-1-peter.maydell@linaro.org>
 References: <20240903160751.4100218-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::433;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x433.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: QslkAuqYPW7M
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: SOd7fQ/cIkmN
 
-Remove the OMAP2 specific code from omap_uart.c.
+The omap_l4 device is OMAP2 only, so we can remove it.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- include/hw/arm/omap.h |   5 --
- hw/char/omap_uart.c   | 113 ------------------------------------------
- 2 files changed, 118 deletions(-)
+ include/hw/arm/omap.h |  42 -----------
+ hw/misc/omap_l4.c     | 162 ------------------------------------------
+ hw/misc/meson.build   |   1 -
+ 3 files changed, 205 deletions(-)
+ delete mode 100644 hw/misc/omap_l4.c
 
 diff --git a/include/hw/arm/omap.h b/include/hw/arm/omap.h
-index b569580b09e..67bb83dff5d 100644
+index 2300b97716d..f82b820d4d8 100644
 --- a/include/hw/arm/omap.h
 +++ b/include/hw/arm/omap.h
-@@ -709,11 +709,6 @@ struct omap_uart_s *omap_uart_init(hwaddr base,
-                 qemu_irq irq, omap_clk fclk, omap_clk iclk,
-                 qemu_irq txdma, qemu_irq rxdma,
-                 const char *label, Chardev *chr);
--struct omap_uart_s *omap2_uart_init(MemoryRegion *sysmem,
--                struct omap_target_agent_s *ta,
--                qemu_irq irq, omap_clk fclk, omap_clk iclk,
--                qemu_irq txdma, qemu_irq rxdma,
--                const char *label, Chardev *chr);
- void omap_uart_reset(struct omap_uart_s *s);
+@@ -108,45 +108,6 @@ DECLARE_INSTANCE_CHECKER(Omap1GpioState, OMAP1_GPIO,
+ /* TODO: clock framework (see above) */
+ void omap_gpio_set_clk(Omap1GpioState *gpio, omap_clk clk);
  
- struct omap_mpuio_s;
-diff --git a/hw/char/omap_uart.c b/hw/char/omap_uart.c
-index c2ef4c137e1..d789c253b49 100644
---- a/hw/char/omap_uart.c
-+++ b/hw/char/omap_uart.c
-@@ -28,7 +28,6 @@ struct omap_uart_s {
-     MemoryRegion iomem;
-     hwaddr base;
-     SerialMM *serial; /* TODO */
--    struct omap_target_agent_s *ta;
-     omap_clk fclk;
-     qemu_irq irq;
- 
-@@ -36,8 +35,6 @@ struct omap_uart_s {
-     uint8_t syscontrol;
-     uint8_t wkup;
-     uint8_t cfps;
--    uint8_t mdr[2];
--    uint8_t scr;
-     uint8_t clksel;
+-/* OMAP2 l4 Interconnect */
+-struct omap_l4_s;
+-struct omap_l4_region_s {
+-    hwaddr offset;
+-    size_t size;
+-    int access;
+-};
+-struct omap_l4_agent_info_s {
+-    int ta;
+-    int region;
+-    int regions;
+-    int ta_region;
+-};
+-struct omap_target_agent_s {
+-    MemoryRegion iomem;
+-    struct omap_l4_s *bus;
+-    int regions;
+-    const struct omap_l4_region_s *start;
+-    hwaddr base;
+-    uint32_t component;
+-    uint32_t control;
+-    uint32_t status;
+-};
+-struct omap_l4_s *omap_l4_init(MemoryRegion *address_space,
+-                               hwaddr base, int ta_num);
+-
+-struct omap_target_agent_s;
+-struct omap_target_agent_s *omap_l4ta_get(
+-    struct omap_l4_s *bus,
+-    const struct omap_l4_region_s *regions,
+-    const struct omap_l4_agent_info_s *agents,
+-    int cs);
+-hwaddr omap_l4_attach(struct omap_target_agent_s *ta,
+-                                         int region, MemoryRegion *mr);
+-hwaddr omap_l4_region_base(struct omap_target_agent_s *ta,
+-                                       int region);
+-hwaddr omap_l4_region_size(struct omap_target_agent_s *ta,
+-                                       int region);
+-
+ /*
+  * Common IRQ numbers for level 1 interrupt handler
+  * See /usr/include/asm-arm/arch-omap/irqs.h in Linux.
+@@ -890,9 +851,6 @@ struct omap_mpu_state_s {
+         uint16_t dsp_idlect2;
+         uint16_t dsp_rstct2;
+     } clkm;
+-
+-    /* OMAP2-only peripherals */
+-    struct omap_l4_s *l4;
  };
  
-@@ -66,113 +63,3 @@ struct omap_uart_s *omap_uart_init(hwaddr base,
-                                DEVICE_NATIVE_ENDIAN);
-     return s;
- }
+ /* omap1.c */
+diff --git a/hw/misc/omap_l4.c b/hw/misc/omap_l4.c
+deleted file mode 100644
+index b7875489da3..00000000000
+--- a/hw/misc/omap_l4.c
++++ /dev/null
+@@ -1,162 +0,0 @@
+-/*
+- * TI OMAP L4 interconnect emulation.
+- *
+- * Copyright (C) 2007-2009 Nokia Corporation
+- * Written by Andrzej Zaborowski <andrew@openedhand.com>
+- *
+- * This program is free software; you can redistribute it and/or
+- * modify it under the terms of the GNU General Public License as
+- * published by the Free Software Foundation; either version 2 or
+- * (at your option) any later version of the License.
+- *
+- * This program is distributed in the hope that it will be useful,
+- * but WITHOUT ANY WARRANTY; without even the implied warranty of
+- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+- * GNU General Public License for more details.
+- *
+- * You should have received a copy of the GNU General Public License along
+- * with this program; if not, see <http://www.gnu.org/licenses/>.
+- */
+-#include "qemu/osdep.h"
+-#include "hw/arm/omap.h"
 -
--static uint64_t omap_uart_read(void *opaque, hwaddr addr, unsigned size)
+-struct omap_l4_s {
+-    MemoryRegion *address_space;
+-    hwaddr base;
+-    int ta_num;
+-    struct omap_target_agent_s ta[];
+-};
+-
+-struct omap_l4_s *omap_l4_init(MemoryRegion *address_space,
+-                               hwaddr base, int ta_num)
 -{
--    struct omap_uart_s *s = opaque;
+-    struct omap_l4_s *bus = g_malloc0(
+-                    sizeof(*bus) + ta_num * sizeof(*bus->ta));
 -
--    if (size == 4) {
--        return omap_badwidth_read8(opaque, addr);
+-    bus->address_space = address_space;
+-    bus->ta_num = ta_num;
+-    bus->base = base;
+-
+-    return bus;
+-}
+-
+-hwaddr omap_l4_region_base(struct omap_target_agent_s *ta,
+-                                       int region)
+-{
+-    return ta->bus->base + ta->start[region].offset;
+-}
+-
+-hwaddr omap_l4_region_size(struct omap_target_agent_s *ta,
+-                                       int region)
+-{
+-    return ta->start[region].size;
+-}
+-
+-static uint64_t omap_l4ta_read(void *opaque, hwaddr addr, unsigned size)
+-{
+-    struct omap_target_agent_s *s = opaque;
+-
+-    if (size != 2) {
+-        return omap_badwidth_read16(opaque, addr);
 -    }
 -
 -    switch (addr) {
--    case 0x20:  /* MDR1 */
--        return s->mdr[0];
--    case 0x24:  /* MDR2 */
--        return s->mdr[1];
--    case 0x40:  /* SCR */
--        return s->scr;
--    case 0x44:  /* SSR */
--        return 0x0;
--    case 0x48:  /* EBLR (OMAP2) */
--        return s->eblr;
--    case 0x4C:  /* OSC_12M_SEL (OMAP1) */
--        return s->clksel;
--    case 0x50:  /* MVR */
--        return 0x30;
--    case 0x54:  /* SYSC (OMAP2) */
--        return s->syscontrol;
--    case 0x58:  /* SYSS (OMAP2) */
--        return 1;
--    case 0x5c:  /* WER (OMAP2) */
--        return s->wkup;
--    case 0x60:  /* CFPS (OMAP2) */
--        return s->cfps;
+-    case 0x00:	/* COMPONENT */
+-        return s->component;
+-
+-    case 0x20:	/* AGENT_CONTROL */
+-        return s->control;
+-
+-    case 0x28:	/* AGENT_STATUS */
+-        return s->status;
 -    }
 -
 -    OMAP_BAD_REG(addr);
 -    return 0;
 -}
 -
--static void omap_uart_write(void *opaque, hwaddr addr,
+-static void omap_l4ta_write(void *opaque, hwaddr addr,
 -                            uint64_t value, unsigned size)
 -{
--    struct omap_uart_s *s = opaque;
+-    struct omap_target_agent_s *s = opaque;
 -
--    if (size == 4) {
--        omap_badwidth_write8(opaque, addr, value);
+-    if (size != 4) {
+-        omap_badwidth_write32(opaque, addr, value);
 -        return;
 -    }
 -
 -    switch (addr) {
--    case 0x20:  /* MDR1 */
--        s->mdr[0] = value & 0x7f;
--        break;
--    case 0x24:  /* MDR2 */
--        s->mdr[1] = value & 0xff;
--        break;
--    case 0x40:  /* SCR */
--        s->scr = value & 0xff;
--        break;
--    case 0x48:  /* EBLR (OMAP2) */
--        s->eblr = value & 0xff;
--        break;
--    case 0x4C:  /* OSC_12M_SEL (OMAP1) */
--        s->clksel = value & 1;
--        break;
--    case 0x44:  /* SSR */
--    case 0x50:  /* MVR */
--    case 0x58:  /* SYSS (OMAP2) */
+-    case 0x00:	/* COMPONENT */
+-    case 0x28:	/* AGENT_STATUS */
 -        OMAP_RO_REG(addr);
 -        break;
--    case 0x54:  /* SYSC (OMAP2) */
--        s->syscontrol = value & 0x1d;
--        if (value & 2) {
--            omap_uart_reset(s);
--        }
+-
+-    case 0x20:	/* AGENT_CONTROL */
+-        s->control = value & 0x01000700;
+-        if (value & 1)					/* OCP_RESET */
+-            s->status &= ~1;				/* REQ_TIMEOUT */
 -        break;
--    case 0x5c:  /* WER (OMAP2) */
--        s->wkup = value & 0x7f;
--        break;
--    case 0x60:  /* CFPS (OMAP2) */
--        s->cfps = value & 0xff;
--        break;
+-
 -    default:
 -        OMAP_BAD_REG(addr);
 -    }
 -}
 -
--static const MemoryRegionOps omap_uart_ops = {
--    .read = omap_uart_read,
--    .write = omap_uart_write,
+-static const MemoryRegionOps omap_l4ta_ops = {
+-    .read = omap_l4ta_read,
+-    .write = omap_l4ta_write,
 -    .endianness = DEVICE_NATIVE_ENDIAN,
 -};
 -
--struct omap_uart_s *omap2_uart_init(MemoryRegion *sysmem,
--                struct omap_target_agent_s *ta,
--                qemu_irq irq, omap_clk fclk, omap_clk iclk,
--                qemu_irq txdma, qemu_irq rxdma,
--                const char *label, Chardev *chr)
+-struct omap_target_agent_s *omap_l4ta_get(struct omap_l4_s *bus,
+-        const struct omap_l4_region_s *regions,
+-        const struct omap_l4_agent_info_s *agents,
+-        int cs)
 -{
--    hwaddr base = omap_l4_attach(ta, 0, NULL);
--    struct omap_uart_s *s = omap_uart_init(base, irq,
--                    fclk, iclk, txdma, rxdma, label, chr);
+-    int i;
+-    struct omap_target_agent_s *ta = NULL;
+-    const struct omap_l4_agent_info_s *info = NULL;
 -
--    memory_region_init_io(&s->iomem, NULL, &omap_uart_ops, s, "omap.uart", 0x100);
+-    for (i = 0; i < bus->ta_num; i ++)
+-        if (agents[i].ta == cs) {
+-            ta = &bus->ta[i];
+-            info = &agents[i];
+-            break;
+-        }
+-    if (!ta) {
+-        fprintf(stderr, "%s: bad target agent (%i)\n", __func__, cs);
+-        exit(-1);
+-    }
 -
--    s->ta = ta;
+-    ta->bus = bus;
+-    ta->start = &regions[info->region];
+-    ta->regions = info->regions;
 -
--    memory_region_add_subregion(sysmem, base + 0x20, &s->iomem);
+-    ta->component = ('Q' << 24) | ('E' << 16) | ('M' << 8) | ('U' << 0);
+-    ta->status = 0x00000000;
+-    ta->control = 0x00000200;	/* XXX 01000200 for L4TAO */
 -
--    return s;
+-    memory_region_init_io(&ta->iomem, NULL, &omap_l4ta_ops, ta, "omap.l4ta",
+-                          omap_l4_region_size(ta, info->ta_region));
+-    omap_l4_attach(ta, info->ta_region, &ta->iomem);
+-
+-    return ta;
 -}
+-
+-hwaddr omap_l4_attach(struct omap_target_agent_s *ta,
+-                                         int region, MemoryRegion *mr)
+-{
+-    hwaddr base;
+-
+-    if (region < 0 || region >= ta->regions) {
+-        fprintf(stderr, "%s: bad io region (%i)\n", __func__, region);
+-        exit(-1);
+-    }
+-
+-    base = ta->bus->base + ta->start[region].offset;
+-    if (mr) {
+-        memory_region_add_subregion(ta->bus->address_space, base, mr);
+-    }
+-
+-    return base;
+-}
+diff --git a/hw/misc/meson.build b/hw/misc/meson.build
+index b7e97e47cf9..a2951951b59 100644
+--- a/hw/misc/meson.build
++++ b/hw/misc/meson.build
+@@ -75,7 +75,6 @@ system_ss.add(when: 'CONFIG_NPCM7XX', if_true: files(
+ ))
+ system_ss.add(when: 'CONFIG_OMAP', if_true: files(
+   'omap_clk.c',
+-  'omap_l4.c',
+ ))
+ system_ss.add(when: 'CONFIG_RASPI', if_true: files(
+   'bcm2835_mbox.c',
 -- 
 2.34.1
 

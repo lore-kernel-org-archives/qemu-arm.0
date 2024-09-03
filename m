@@ -1,40 +1,40 @@
-Received: by 2002:a17:504:3a8f:b0:1be9:327d:8ee3 with SMTP id g15csp1355545njf;
-        Tue, 3 Sep 2024 01:36:56 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWaDGqWZrS1ikLiHkvwlxcbxGfgvizM1BA9NPahupVOqQzzsMooH/M4xuIVY9akx/3z4v1fgj4yngLwVw==@linaro.org
-X-Google-Smtp-Source: AGHT+IGm7wwSB8M4H4TFI7OvbKLdgfBfOj2+ktXysQ4rxfH+4lsKKzDLRx4fTJ1Fr99zwXHJcHSd
-X-Received: by 2002:a05:620a:1999:b0:7a2:32e:3c47 with SMTP id af79cd13be357-7a81d69d736mr1427793185a.34.1725352616144;
-        Tue, 03 Sep 2024 01:36:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1725352616; cv=none;
+Received: by 2002:a17:504:3a8f:b0:1be9:327d:8ee3 with SMTP id g15csp1355580njf;
+        Tue, 3 Sep 2024 01:37:08 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVfSkrTHEP6dq4V2TzvROnMJ8ygBwsNSVKYKXFmVWIAyvXephOk2F9sB0XKUFN5bg1xwZ81ZExZYjJNcA==@linaro.org
+X-Google-Smtp-Source: AGHT+IGyfaKr6fAG8/LL7k4nwgtUg1a6OD7NeKcTuSE9/v6tHEOTrryhPNFfGQ7KQ7s1qb82lSec
+X-Received: by 2002:a05:6902:1243:b0:e13:c773:68c2 with SMTP id 3f1490d57ef6-e1a7a19e5e3mr16704417276.51.1725352628425;
+        Tue, 03 Sep 2024 01:37:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1725352628; cv=none;
         d=google.com; s=arc-20160816;
-        b=oYzKjR74VAyjfbilSda3TOXcyJ41nfTIyFJYCnGBTPXzKYaCB7kOxVTn1C66OQCeJJ
-         7lLN2ay/yiGeLMg3SagYA7eLc5IIAS8cQLkyaXY0CmjdCRQiA1wMjULEiICCJR0/x7a7
-         bwYZwVEAnsIF8vxXTQChXqWW52NLVzXhsyxkJiArMegiVuv54QTDQPsgEqCUb6+HZqEy
-         Dm8IhvMxVpx816vJRvW6xTYxCrGYUtTIqZrxGVNEScLw5lG5fqBhu+0o5Fw6abCiBUDN
-         0J6dHNWajQsHEQBH0TSCNzU3dBJFbCSkAjFlQWVE85ReFleAXZfVZNjhpuGlAm5zjuhB
-         MHlQ==
+        b=1LM+FnDcoe2+QxUh7Z2SXZUPd98NLdmQHHH0C0y5U5MvTvIIAPvI6J8G0yf6lbxCpu
+         F4Sc9beBOQo6GdqxCOf5Szmgh/RQEyfsLPMLd0I9bVU3a9mAncwnH4p8bRB+fCDzl4ia
+         mLYaPUw2qqeoM/Z9+YHHBcW+qC/xKAkkOVI+FJrVDJfeIjgyGofvzAATW64fWLwF8rFO
+         +Eg065bw7hSOmKF85oG1X/sX4xeEhapoVj2ryHrlvv+Azf3Y46ho7pi0ca8v8IRxAdY4
+         aSk6DPTpOH3qvPgG8fe1ExaGd1craATmILUHuMy4LyFnAPBzu8KSMAm3St49wJHABKxn
+         eQZQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to;
-        bh=h66VtST85Nslg/20nggQCt96gYEvk5JIW+A9DEgUp5k=;
+        bh=BmN7foCqfG5eKzf0xvui74cqS5dnDD0qMqSHDTMbHds=;
         fh=sVs3p8gbptRv32z9lLYpJL2ORX7RrMh6U4eLBNuVM2U=;
-        b=dfaR+zb9nuARWu91wGClPg3On+KA49kxlCO6yIXYcsRdmgV5cfhxBRSgQbAhBFHO/Z
-         fZga9AS5GyYsj2qnJxmXbSX5sZkUIbi7fob4KrDvzKOBtc8UUttWq4f7jcw7AU31UMjG
-         LFypLa9U3O5kNjzvDF3z5FoB6wFVbXRLE7JkBKABvqYTmEWqvWiudH/r0+UnWJpCm/5p
-         na50SNFSpX+imUWxcic0FvZSOTGmbzT36HW+0dp7xio/QcTGE6eJmHAb1KbM6pdSO8cO
-         ul0uqgbxa/0UYW6OOuAO0K5+VKrsOm0m88D38+dBrMkUIPrSDnI0uKB5Js4CMkRedVIJ
-         2Amw==;
+        b=uicNkaTsirSeR2jqIAffNHvoYLjnAg7hCWBDkvV+cq2sobUjp+r/WaEQRabIpVxwWY
+         xrORo2h+rONyF2SYu+tVI5qpRACQnEMTDECfMEtjdsMkXOcX7gqdkRivstSngLlcoYbH
+         DA1PtF0hkPCRpYQ6ea4dtGNZ7F3OlktCRjW9iCNiovhXsRlZKz8lpTSWstPvYYrWx9FS
+         lg339O6Hrj12sXjY+3QGlM1ZprWKdomlJuzL8HzrbzuEhltpH+UG/dUItTaA5n5VbUdE
+         hy0NU1/B3q6Lg5MXFCIzCk9tRbjOuAy8CvjECrXHd7mPZifQmdVc6h97YxtL645vAYBt
+         CAuw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7a806c173dbsi956544685a.112.2024.09.03.01.36.56
+        by mx.google.com with ESMTPS id 6a1803df08f44-6c350b73713si90233176d6.615.2024.09.03.01.37.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 03 Sep 2024 01:36:56 -0700 (PDT)
+        Tue, 03 Sep 2024 01:37:08 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
@@ -42,15 +42,15 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1slP1U-0005lk-Sf; Tue, 03 Sep 2024 04:36:24 -0400
+	id 1slP1b-0006ea-Jd; Tue, 03 Sep 2024 04:36:31 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1slP1E-0004mX-Ct; Tue, 03 Sep 2024 04:36:08 -0400
+ id 1slP19-0004PF-Uh; Tue, 03 Sep 2024 04:36:04 -0400
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1slP1D-0008A7-01; Tue, 03 Sep 2024 04:36:08 -0400
+ id 1slP18-00084x-IA; Tue, 03 Sep 2024 04:36:03 -0400
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.12; Tue, 3 Sep
@@ -69,9 +69,9 @@ To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
 CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
  <yunlin.tang@aspeedtech.com>, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?=
  <clg@redhat.com>
-Subject: [PATCH v3 11/11] machine_aspeed.py: Update to test I2C for AST2700
-Date: Tue, 3 Sep 2024 16:35:28 +0800
-Message-ID: <20240903083528.2182190-12-jamin_lin@aspeedtech.com>
+Subject: [PATCH v3 10/11] aspeed: Add tmp105 in i2c bus 0 for AST2700
+Date: Tue, 3 Sep 2024 16:35:27 +0800
+Message-ID: <20240903083528.2182190-11-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20240903083528.2182190-1-jamin_lin@aspeedtech.com>
 References: <20240903083528.2182190-1-jamin_lin@aspeedtech.com>
@@ -103,46 +103,48 @@ Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
 From:  Jamin Lin via <qemu-devel@nongnu.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: HkHAq4t0g+G8
+X-TUID: ITDluamr/n4R
 
-Update test case to test lm75 temperature sensor.
+ASPEED SDK add lm75 in i2c bus 0 for AST2700.
+LM75 is compatible with TMP105 driver.
+
+Introduce a new i2c init function and
+add tmp105 device model in i2c bus 0.
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
 ---
- tests/avocado/machine_aspeed.py | 16 ++++++++++++++++
- 1 file changed, 16 insertions(+)
+ hw/arm/aspeed.c | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
 
-diff --git a/tests/avocado/machine_aspeed.py b/tests/avocado/machine_aspeed.py
-index c0b01e8f1f..4e144bde91 100644
---- a/tests/avocado/machine_aspeed.py
-+++ b/tests/avocado/machine_aspeed.py
-@@ -433,9 +433,25 @@ def test_aarch64_ast2700_evb_sdk_v09_02(self):
-                              f'loader,addr=0x430000000,cpu-num={i}')
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index fd5603f7aa..3d13b16768 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -1650,6 +1650,15 @@ static void aspeed_minibmc_machine_ast1030_evb_class_init(ObjectClass *oc,
+ }
  
-         self.vm.add_args('-smp', str(num_cpu))
-+        self.vm.add_args('-device',
-+                         'tmp105,bus=aspeed.i2c.bus.1,address=0x4d,id=tmp-test')
-         self.do_test_aarch64_aspeed_sdk_start(image_dir + 'image-bmc')
-         self.wait_for_console_pattern('nodistro.0 ast2700-default ttyS12')
+ #ifdef TARGET_AARCH64
++static void ast2700_evb_i2c_init(AspeedMachineState *bmc)
++{
++    AspeedSoCState *soc = bmc->soc;
 +
-         self.ssh_connect('root', '0penBmc', False)
-+        self.ssh_command('dmesg -c > /dev/null')
++    /* LM75 is compatible with TMP105 driver */
++    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 0),
++                            TYPE_TMP105, 0x4d);
++}
 +
-+        self.ssh_command_output_contains(
-+            'echo lm75 0x4d > /sys/class/i2c-dev/i2c-1/device/new_device '
-+            '&& dmesg -c',
-+            'i2c i2c-1: new_device: Instantiated device lm75 at 0x4d');
-+
-+        self.ssh_command_output_contains(
-+            'cat /sys/class/hwmon/hwmon20/temp1_input', '0')
-+        self.vm.cmd('qom-set', path='/machine/peripheral/tmp-test',
-+                    property='temperature', value=18000)
-+        self.ssh_command_output_contains(
-+            'cat /sys/class/hwmon/hwmon20/temp1_input', '18000')
- 
- class AST2x00MachineMMC(QemuSystemTest):
- 
+ static void aspeed_machine_ast2700_evb_class_init(ObjectClass *oc, void *data)
+ {
+     MachineClass *mc = MACHINE_CLASS(oc);
+@@ -1664,6 +1673,7 @@ static void aspeed_machine_ast2700_evb_class_init(ObjectClass *oc, void *data)
+     amc->num_cs    = 2;
+     amc->macs_mask = ASPEED_MAC0_ON | ASPEED_MAC1_ON | ASPEED_MAC2_ON;
+     amc->uart_default = ASPEED_DEV_UART12;
++    amc->i2c_init  = ast2700_evb_i2c_init;
+     mc->default_ram_size = 1 * GiB;
+     aspeed_machine_class_init_cpus_defaults(mc);
+ }
 -- 
 2.34.1
 

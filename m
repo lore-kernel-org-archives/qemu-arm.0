@@ -1,109 +1,112 @@
-Received: by 2002:a17:504:3a8f:b0:1be9:327d:8ee3 with SMTP id g15csp1499947njf;
-        Tue, 3 Sep 2024 09:08:47 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXYLGB+uALmDoiVrqn7C2hc6dhsy168WHF4qzu5zlDRyOg/5L+vpRuQjTx16z2DuG8ufEVd1EBXqP7mzQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IGbnG6wbZ96/bh3zrFSJ9QgjZZFKDFEcoVUU/4GU+McmyEXoa6ixKg8RszYUX/dS3B9+9UJ
-X-Received: by 2002:a05:620a:19a5:b0:79d:6039:784c with SMTP id af79cd13be357-7a97bc99312mr352882785a.30.1725379727275;
-        Tue, 03 Sep 2024 09:08:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1725379727; cv=none;
+Received: by 2002:a17:504:3a8f:b0:1be9:327d:8ee3 with SMTP id g15csp1500048njf;
+        Tue, 3 Sep 2024 09:08:59 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXXgQd96paF6KfsfwOJVlV4a/D79j6i9NOm+DI7pXLsR6yd1EurWJAlXGmvZAFmoV/gjJMwe6f5EPu0hA==@linaro.org
+X-Google-Smtp-Source: AGHT+IGmC18t8YMHcLXof9x6ElQYXv0KGTgtgoJOunM484kN9MvGWMeNzrCm3YxDiwbTDtlZLARa
+X-Received: by 2002:a05:620a:4250:b0:79e:f851:66ec with SMTP id af79cd13be357-7a8a3dc6c7cmr1488463485a.61.1725379739754;
+        Tue, 03 Sep 2024 09:08:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1725379739; cv=none;
         d=google.com; s=arc-20160816;
-        b=F2YhKgeyyq91q3wCVaiGHYdQO9EZihfZMfyR9oczB4cMUHuqvIe0+vFdYcD/PxxOWL
-         herIzSrhUh20ikqHNPkk98WOadt5UAZ1EOkSiG/bnnGMz5wGWJKkZcueSGHZKydXTTlm
-         vpHca4sjnfAjOz1ej7cqbGs80tahN2LHr2/mVVVL9Q5U85/tgTnbyc5rruzHPDkbx9MP
-         +Oet4ncglZoPtSHiOAFfQ5sqfwEbDx/MudPGYxut7qn7eWxfN+MVD0wOyUkWh9wAmhv1
-         +aWbf8SgM0JNUPFtmtKpA2iBmyViNOOeBq2EQFU5zopCcIalu+t/toyFznPlqqIXLMEj
-         n+vA==
+        b=fi4P3m8lRos4k2Bnv0OU/LNy4TcVSvQPKkmG/uMnxEp/fDf0OgSw0a42IfosNo/GQ5
+         sBRlMWHnVqO4520b4sBnrxZEsFrctS5WUgjlS5W3F7FRWH3rhCGFk3wg0gY1bhKDreZT
+         3dIrd/AqzC5JSS+6M+h6E8OnyazUparws2gnFMNdMrRBKyMUpTVRlgfMkPtDD08KtlzJ
+         h2hjW8CdRHs4Y17y2/NHm7tVBFmaqCGBzagHTubEPb7LLX3yzkTkFfcK4cFUVcopX6LT
+         5xuxMbxYoc0lCc3+MDRpcbFNznHrVl4LZHDtbdBl75QcPQa4sb7+9F1Wm+nzwHmHsEHz
+         49Pw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=5xJGOULLxbVBooTuu6NWNSsaVwfIMBQ4uajQRXbH12o=;
-        fh=yTIUQhhCLdqMHDABkt1rhX8fbK2JDv3hkCQXZC8Lctc=;
-        b=brNxiUmcITNRTu44DszL05ylEjA9LjrsOCGSNyHB/jkc8eIiAd81jInNLX8Odlt3yX
-         I8KQ8MBXLBPwyDnaMR2Gy4qEr+m7/GWVvyBusm42UQniYlebJuzArNzGDQGmR+Y+fGQf
-         QVCEcfPBfXN44p4gMv74V6kB/WTjcc/rG0oDdbUt2X7ZNOCg5PyF4TPN1metfo7OTyOG
-         Um8teeNHYnD0GXPR+IQlUy8jK6UTiclenqu/D/C8u3ieP9D8kNuIvIoJPD8ttqtyoCIz
-         9HR4V+n4i16sPoGbWYGQQMMClRGk3nnUzH2vuyKxoKcIxndzy6/IGlr98mz2RvvsPLla
-         stkw==;
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=13B8gTkbbPzY+9dN2IYKPXcaRCE8IIQJPQasX/L66Ag=;
+        fh=H2AmuqulvQE+T5zu97MCEUC3z9wF9NssS7895NhR/+c=;
+        b=ovynaQNalQF8HFa0GXPqGTQYFRmtGcP82A5fiTre5n3hOoFh0v3acApTLlgHJUEEpp
+         ptI8i0XL0krON2txPSC3mFOidaOLzGtdAwxcAL+iJLLSKcf4mc/dWnrS8MtIkQPImhbc
+         1ocApLqSeDYhyVb7MnbdBHVYN0mPEHR3WbuN/dXL5ajkCg321HCg7z6E2lp7EGT2n2a5
+         c7NQDH9ISnCrWqHdQP2pDQ+euRW/ErJEOINPbDcAYO8jIreYHvvDoa++iYdSyEzjZ2iZ
+         /kuVVyw8L24c0hmSSkD8NQep6wz5CxXQ4sCo4r5lex8/D1KnuRHIWFh7FuyZqcJDKdPh
+         8y1w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=bKluGKA0;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=gesrq2ff;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7a806d540c5si1329558585a.321.2024.09.03.09.08.47
+        by mx.google.com with ESMTPS id af79cd13be357-7a9782651fcsi281912185a.59.2024.09.03.09.08.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 03 Sep 2024 09:08:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 03 Sep 2024 09:08:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=bKluGKA0;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=gesrq2ff;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1slW4U-0004Nn-OK; Tue, 03 Sep 2024 12:07:58 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1slW4b-0004pT-FA; Tue, 03 Sep 2024 12:08:05 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1slW4T-0004MJ-Ce
- for qemu-devel@nongnu.org; Tue, 03 Sep 2024 12:07:57 -0400
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+ id 1slW4Y-0004bp-6P
+ for qemu-arm@nongnu.org; Tue, 03 Sep 2024 12:08:02 -0400
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1slW4R-0002e1-4w
- for qemu-devel@nongnu.org; Tue, 03 Sep 2024 12:07:57 -0400
-Received: by mail-wm1-x333.google.com with SMTP id
- 5b1f17b1804b1-428e0d184b4so46210615e9.2
- for <qemu-devel@nongnu.org>; Tue, 03 Sep 2024 09:07:54 -0700 (PDT)
+ id 1slW4T-0002ej-6C
+ for qemu-arm@nongnu.org; Tue, 03 Sep 2024 12:08:01 -0400
+Received: by mail-wm1-x330.google.com with SMTP id
+ 5b1f17b1804b1-42bb4f8a4bfso30254645e9.1
+ for <qemu-arm@nongnu.org>; Tue, 03 Sep 2024 09:07:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1725379673; x=1725984473; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:to
- :from:from:to:cc:subject:date:message-id:reply-to;
- bh=5xJGOULLxbVBooTuu6NWNSsaVwfIMBQ4uajQRXbH12o=;
- b=bKluGKA0+hhNU61fWukYE2DhMwoaK8dqL0URwGMYZUrOjYrvkl6VQ65VZ8mf+B1ba+
- 028vG6L36M7GkCYYIQhP9k6JEhupvG370pUaK4cn0vRCZf4+BQpSie6ANx+RMqxCM1vR
- 6LvJnGXJMwgxyxkj8Cxpmv6aryHts02PHmwdUJa0dOYZfWSsq3171phkGltVJtXoT1Jz
- qsIx8emx9PDPPWIjJnDVUi0kBNI7vn51lbdssypA4M4FVg4Oi4pmDzuDsoibLrRF6MMq
- lccFzsMVg5Rl8w6Aqb1xvk8bwKDIZREG6JyL9fHXiDj3nB8XJwax7XgwxTqDjbaO5tmJ
- jdNg==
+ d=linaro.org; s=google; t=1725379676; x=1725984476; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
+ :reply-to; bh=13B8gTkbbPzY+9dN2IYKPXcaRCE8IIQJPQasX/L66Ag=;
+ b=gesrq2ff+aip66eNU4we3mDNnCHo6feNOYt11YrbYVWo3WqVQBcUy7lTcD5XPSrOjv
+ wdQHFKA3xKTjNqTLrUKmc7q60n6O1imgLVvNKE0hVOuYdqkpG2PReOcZAuZ4+Og5b5nt
+ CUT4BhpjvNScHfr3NCgSQvJAS5REeVraMzD79KU+Vt69U8kHFRROQfv/tgKQ2yTNI3k7
+ ha4ebBq5EiTpD72kmDgJZyyCkq+/qqGjYvwM1S9OkEl7IfCDD8GsiR4spGpwiXa3HxBZ
+ REApKWQCijt8ongDg6xxXtRicLSOAUzUA6UFJbP8Ux8jUBtWso9aTx4LCAEOb1rBlcRG
+ rUtw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1725379673; x=1725984473;
- h=content-transfer-encoding:mime-version:message-id:date:subject:to
- :from:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=5xJGOULLxbVBooTuu6NWNSsaVwfIMBQ4uajQRXbH12o=;
- b=hwiQAMXikvWgJgsCuefdr8zkGtrsOYByZDySKWCvc8hNYCLN69NGuUakHCE7e+4MHx
- U2Z9QX6ACECod2kweR0VrBzXVIt/2yGNrUnh29m2npZeWH6wFhN85DF4HoBQEN1C4VBC
- jyTcJubcw4NDs30lh+Snn6xnECbJt4LmzgElvkzWXrFX7IlccW9ck6JWTDwzbvhAol3N
- q9vG+zgpaF5JxP4Tc0vqJUpZTBvGuYRBcpfJ23wPt3PVoNV9CGwANhyABHp7vXPYjt6Q
- QH9H8dDBS4jqjC3G8KEMTaQV8Kqrv9gEm28xK+LVMoranK9L92JfF1na/Y/LVRnw7TVQ
- BVcQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWh5WRaIJwfo3erJmPtya36U+4ZmOm4gSnt96IF50mmzJWzpWjC0GeF0VLZon48FafdvXWfex0hyd0q@nongnu.org
-X-Gm-Message-State: AOJu0YwV4fyRWgBJ/XkSo3fCXhW9zqFVJEcWZelfsARjYwz/hZNPbKmL
- 5qTMVVNho+RkGVPRAxbKMP68sfGn+Gq0zD3rpmexS4L4uUpW4SjJo3/yhUGcI5c=
-X-Received: by 2002:adf:9c8b:0:b0:36c:ff0c:36d7 with SMTP id
- ffacd0b85a97d-374bef3a257mr9043183f8f.2.1725379673162; 
- Tue, 03 Sep 2024 09:07:53 -0700 (PDT)
+ d=1e100.net; s=20230601; t=1725379676; x=1725984476;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=13B8gTkbbPzY+9dN2IYKPXcaRCE8IIQJPQasX/L66Ag=;
+ b=GL/UOfi2Fde3YM+FzFssr7NUNoWdOToCupz3hVyLNt1H/GpDz1LlZAC1AgebfpUTvi
+ Qq7zPnaPj5GXG6ri8VNhX9FZuduVyCk6L23vUQEob5BE20ODE2RWO9yqbq+aIlIr/Dhh
+ AF25gR2Ix7dTBZNjg32SDSeaLMrm6/cuPhdHPdGvAtDiFrsNM7BWQpKEu+zVFZnVa3PC
+ d1ttccf+/Pk33h5vLQHDBYQwYvK8W0aHYYzHK5DJDQibHCktjED6xfCgG3GmHZMNjn++
+ LSyx0KLYJhIQTHnh8B/T6q2+14LUKpMwqUqsNc98KmJMRTDFS6qfEwflcqieFH6CDgi4
+ bI4Q==
+X-Gm-Message-State: AOJu0Yy8E7Rd9Fbw697hbPJ2V84lEo76R+M9Zc17f09ofodqOm/caARp
+ EBzbFcP4iE/uYs9pu6snrcWgkLJ5Pctz8+xoHmRAoX6XFg0d2JYvz0VTTeD4y4Uy6oIXSOH+Hoz
+ u
+X-Received: by 2002:a05:600c:3ba1:b0:42a:a6dc:3083 with SMTP id
+ 5b1f17b1804b1-42bbb692e8fmr84195735e9.13.1725379675604; 
+ Tue, 03 Sep 2024 09:07:55 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-42bb6df1066sm175123065e9.18.2024.09.03.09.07.52
+ 5b1f17b1804b1-42bb6df1066sm175123065e9.18.2024.09.03.09.07.55
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 03 Sep 2024 09:07:52 -0700 (PDT)
+ Tue, 03 Sep 2024 09:07:55 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH for-9.2 00/53] arm: Drop deprecated boards
-Date: Tue,  3 Sep 2024 17:06:58 +0100
-Message-Id: <20240903160751.4100218-1-peter.maydell@linaro.org>
+Subject: [PATCH for-9.2 04/53] hw/gpio: Remove MAX7310 device
+Date: Tue,  3 Sep 2024 17:07:02 +0100
+Message-Id: <20240903160751.4100218-5-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20240903160751.4100218-1-peter.maydell@linaro.org>
+References: <20240903160751.4100218-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::333;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x333.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::330;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x330.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -112,278 +115,293 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Y8GoSIF7imtF
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: zC6Xp2hlmSUH
 
-This patchset removes the various Arm machines which we deprecated
-for the 9.0 release and are therefore allowed to remove for the 9.2
-release:
- akita, borzoi, cheetah, connex, mainstone, n800, n810,
- spitz, terrier, tosa, verdex, z2
-We get to drop over 30,000 lines of unmaintained code. So it's
-a big patchset but it's almost all deletions.
+The MAX7310 GPIO controller was used only by the XScale-based Zaurus
+machine types.  Now they have been removed we can remove this device
+model as well.
 
-We have some command line options which were documented as only used
-by the pxa2xx LCD display driver: -portrait and -rotate.  These
-allowed the user to tell the display device to rotate its output by
-90/180/270 degrees (and the ui input layer to correspondingly rotate
-mouse event coordinates to match).  I didn't realize these existed
-when we deprecated the pxa2xx machines -- do we need a separate
-deprecate-and-drop period to remove the command line options?  (If
-so, I can drop the relevant patch from this series.)
-
-The series includes removal of some code which while not strictly
-specific to these machines was in practice used only by them:
- * the OneNAND flash memory device
- * the PCMCIA subsystem
- * the MUSB USB2.0 OTG USB controller chip (hcd-musb)
-
-Removing these machines hopefully will make it easier to complete
-some API transitions (e.g.  there is only one caller of the
-ui/input-legacy.c function qemu_add_kbd_event_handler() left, and
-five of qemu_add_mouse_event_handler(); a lot of
-qemu_register_reset() calls have gone; and so on).
-
-(There will be a trivial conflict with my reset patch that gets rid
-of direct setting of DeviceClass::reset in some places, but I'll fix
-that up when merging.)
-
-thanks
--- PMM
-
-Peter Maydell (53):
-  hw/arm: Remove deprecated akita, borzoi, spitz, terrier, tosa boards
-  hw/input: Drop ADS7846 device
-  hw/adc: Remove MAX111X device
-  hw/gpio: Remove MAX7310 device
-  hw/ide: Remove DSCM-1XXXX microdrive device model
-  hw/display: Remove tc6393xb device
-  hw/arm/KConfig: Replace ZAURUS with ZAURUS_SCOOP
-  hw/arm: Remove 'cheetah' machine
-  hw/arm: Remove 'connex' and 'verdex' machines
-  hw/arm: Remove 'mainstone' machine
-  hw/misc: Remove MAINSTONE_FPGA device
-  hw/arm: Remove 'z2' machine
-  hw/arm: Remove STRONGARM->PXA2XX dependency
-  hw/timer/pxa2xx_timer: Remove use of pxa.h header
-  hw/arm: Remove pxa2xx.c
-  hw/sd: Remove pxa2xx_mmci.c
-  hw/input: Remove pxa2xx_keypad
-  hw/display: Remove pxa2xx_lcd.c
-  hw/dma: Remove pxa2xx_dma
-  hw/pcmcia: Remove pxa2xx pcmcia device
-  hw/arm: Remove pxa2xx_gpio
-  hw/arm: Remove pxa2xx_pic
-  hw/timer: Remove pxa27x-timer
-  vl.c: Remove pxa2xx-specific -portrait and -rotate options
-  hw/arm: Remove 'n800' and 'n810' machines
-  hw/misc: Remove cbus
-  hw/display: Remove Blizzard display device
-  hw/input: Remove tsc2005 touchscreen controller
-  hw/input: Remove tsc210x device
-  hw/rtc: Remove twl92230 device
-  hw/input: Remove lm832x device
-  hw/block: Remove OneNAND device
-  hw/usb: Remove tusb6010 USB controller
-  hw/usb: Remove MUSB USB host controller
-  hw: Remove PCMCIA subsystem
-  docs: Document removal of old Arm boards
-  hw/arm: Remove omap2.c
-  hw/gpio: Remove TYPE_OMAP2_GPIO
-  hw/char: Remove omap2_uart
-  hw/intc: Remove omap2-intc device
-  hw/sd: Remove omap2_mmc device
-  hw/misc: Remove omap_sdrc device
-  hw/misc: Remove omap_gpmc
-  hw/timer: Remove omap_gptimer
-  hw/timer: Remove omap_synctimer
-  hw/block: Remove ecc
-  hw/ssi: Remove omap_mcspi
-  hw/misc: Remove omap_tap device
-  hw/display: Remove omap_dss
-  hw/misc: Remove omap_l4 device
-  hw/misc/omap_clk: Remove OMAP2-specifics
-  hw/dma: Remove omap_dma4 device
-  hw: Remove omap2 specific defines and enums
-
- MAINTAINERS                             |   58 +-
- docs/about/deprecated.rst               |   15 -
- docs/about/removed-features.rst         |   15 +
- docs/system/arm/gumstix.rst             |   21 -
- docs/system/arm/mainstone.rst           |   25 -
- docs/system/arm/nseries.rst             |   33 -
- docs/system/arm/palm.rst                |   23 -
- docs/system/arm/xscale.rst              |   35 -
- docs/system/target-arm.rst              |    5 -
- configs/devices/arm-softmmu/default.mak |    7 -
- include/hw/adc/max111x.h                |   56 -
- include/hw/arm/omap.h                   |  350 +--
- include/hw/arm/pxa.h                    |  197 --
- include/hw/block/flash.h                |   14 -
- include/hw/display/blizzard.h           |   21 -
- include/hw/display/tc6393xb.h           |   21 -
- include/hw/input/lm832x.h               |   28 -
- include/hw/input/tsc2xxx.h              |   41 -
- include/hw/misc/cbus.h                  |   31 -
- include/hw/pcmcia.h                     |   66 -
- include/hw/usb/hcd-musb.h               |   49 -
- include/sysemu/sysemu.h                 |    1 -
- hw/adc/max111x.c                        |  236 --
- hw/arm/gumstix.c                        |  141 --
- hw/arm/mainstone.c                      |  175 --
- hw/arm/nseries.c                        | 1473 ------------
- hw/arm/omap2.c                          | 2715 -----------------------
- hw/arm/palm.c                           |  324 ---
- hw/arm/pxa2xx.c                         | 2393 --------------------
- hw/arm/pxa2xx_gpio.c                    |  365 ---
- hw/arm/pxa2xx_pic.c                     |  359 ---
- hw/arm/spitz.c                          | 1284 -----------
- hw/arm/tosa.c                           |  327 ---
- hw/arm/z2.c                             |  355 ---
- hw/block/ecc.c                          |   91 -
- hw/block/onenand.c                      |  872 --------
- hw/char/omap_uart.c                     |  113 -
- hw/display/blizzard.c                   | 1026 ---------
- hw/display/omap_dss.c                   | 1093 ---------
- hw/display/pxa2xx_lcd.c                 | 1451 ------------
- hw/display/tc6393xb.c                   |  568 -----
- hw/dma/omap_dma.c                       |  451 +---
- hw/dma/pxa2xx_dma.c                     |  591 -----
- hw/gpio/max7310.c                       |  217 --
- hw/gpio/omap_gpio.c                     |  557 -----
- hw/ide/microdrive.c                     |  644 ------
- hw/input/ads7846.c                      |  186 --
- hw/input/lm832x.c                       |  528 -----
- hw/input/pxa2xx_keypad.c                |  331 ---
- hw/input/tsc2005.c                      |  571 -----
- hw/input/tsc210x.c                      | 1241 -----------
- hw/intc/omap_intc.c                     |  276 ---
- hw/misc/cbus.c                          |  619 ------
- hw/misc/mst_fpga.c                      |  269 ---
- hw/misc/omap_clk.c                      |  527 +----
- hw/misc/omap_gpmc.c                     |  898 --------
- hw/misc/omap_l4.c                       |  162 --
- hw/misc/omap_sdrc.c                     |  167 --
- hw/misc/omap_tap.c                      |  117 -
- hw/pcmcia/pcmcia.c                      |   24 -
- hw/pcmcia/pxa2xx.c                      |  248 ---
- hw/rtc/twl92230.c                       |  882 --------
- hw/sd/omap_mmc.c                        |   63 -
- hw/sd/pxa2xx_mmci.c                     |  594 -----
- hw/ssi/omap_spi.c                       |  380 ----
- hw/timer/omap_gptimer.c                 |  512 -----
- hw/timer/omap_synctimer.c               |  110 -
- hw/timer/pxa2xx_timer.c                 |   25 -
- hw/usb/hcd-musb.c                       | 1553 -------------
- hw/usb/tusb6010.c                       |  850 -------
- system/globals.c                        |    1 -
- system/vl.c                             |   11 -
- ui/input.c                              |   36 -
- hw/Kconfig                              |    1 -
- hw/adc/Kconfig                          |    3 -
- hw/adc/meson.build                      |    1 -
- hw/arm/Kconfig                          |   90 +-
- hw/arm/meson.build                      |    9 -
- hw/block/Kconfig                        |    6 -
- hw/block/meson.build                    |    2 -
- hw/display/Kconfig                      |    3 -
- hw/display/meson.build                  |    4 -
- hw/dma/meson.build                      |    1 -
- hw/gpio/Kconfig                         |    7 +-
- hw/gpio/meson.build                     |    3 +-
- hw/ide/Kconfig                          |    6 -
- hw/ide/meson.build                      |    1 -
- hw/input/Kconfig                        |   13 -
- hw/input/meson.build                    |    5 -
- hw/input/trace-events                   |    3 -
- hw/meson.build                          |    1 -
- hw/misc/Kconfig                         |    1 -
- hw/misc/meson.build                     |    6 -
- hw/pcmcia/Kconfig                       |    2 -
- hw/pcmcia/meson.build                   |    2 -
- hw/rtc/Kconfig                          |    4 -
- hw/rtc/meson.build                      |    1 -
- hw/sd/meson.build                       |    1 -
- hw/sd/trace-events                      |    4 -
- hw/ssi/meson.build                      |    1 -
- hw/timer/Kconfig                        |    3 +
- hw/timer/meson.build                    |    4 +-
- hw/usb/Kconfig                          |    8 -
- hw/usb/meson.build                      |    2 -
- qemu-options.hx                         |   16 -
- tests/avocado/machine_arm_n8x0.py       |   49 -
- 106 files changed, 39 insertions(+), 30338 deletions(-)
- delete mode 100644 docs/system/arm/gumstix.rst
- delete mode 100644 docs/system/arm/mainstone.rst
- delete mode 100644 docs/system/arm/nseries.rst
- delete mode 100644 docs/system/arm/palm.rst
- delete mode 100644 docs/system/arm/xscale.rst
- delete mode 100644 include/hw/adc/max111x.h
- delete mode 100644 include/hw/arm/pxa.h
- delete mode 100644 include/hw/display/blizzard.h
- delete mode 100644 include/hw/display/tc6393xb.h
- delete mode 100644 include/hw/input/lm832x.h
- delete mode 100644 include/hw/input/tsc2xxx.h
- delete mode 100644 include/hw/misc/cbus.h
- delete mode 100644 include/hw/pcmcia.h
- delete mode 100644 include/hw/usb/hcd-musb.h
- delete mode 100644 hw/adc/max111x.c
- delete mode 100644 hw/arm/gumstix.c
- delete mode 100644 hw/arm/mainstone.c
- delete mode 100644 hw/arm/nseries.c
- delete mode 100644 hw/arm/omap2.c
- delete mode 100644 hw/arm/palm.c
- delete mode 100644 hw/arm/pxa2xx.c
- delete mode 100644 hw/arm/pxa2xx_gpio.c
- delete mode 100644 hw/arm/pxa2xx_pic.c
- delete mode 100644 hw/arm/spitz.c
- delete mode 100644 hw/arm/tosa.c
- delete mode 100644 hw/arm/z2.c
- delete mode 100644 hw/block/ecc.c
- delete mode 100644 hw/block/onenand.c
- delete mode 100644 hw/display/blizzard.c
- delete mode 100644 hw/display/omap_dss.c
- delete mode 100644 hw/display/pxa2xx_lcd.c
- delete mode 100644 hw/display/tc6393xb.c
- delete mode 100644 hw/dma/pxa2xx_dma.c
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ MAINTAINERS         |   1 -
+ hw/gpio/max7310.c   | 217 --------------------------------------------
+ hw/gpio/Kconfig     |   4 -
+ hw/gpio/meson.build |   1 -
+ 4 files changed, 223 deletions(-)
  delete mode 100644 hw/gpio/max7310.c
- delete mode 100644 hw/ide/microdrive.c
- delete mode 100644 hw/input/ads7846.c
- delete mode 100644 hw/input/lm832x.c
- delete mode 100644 hw/input/pxa2xx_keypad.c
- delete mode 100644 hw/input/tsc2005.c
- delete mode 100644 hw/input/tsc210x.c
- delete mode 100644 hw/misc/cbus.c
- delete mode 100644 hw/misc/mst_fpga.c
- delete mode 100644 hw/misc/omap_gpmc.c
- delete mode 100644 hw/misc/omap_l4.c
- delete mode 100644 hw/misc/omap_sdrc.c
- delete mode 100644 hw/misc/omap_tap.c
- delete mode 100644 hw/pcmcia/pcmcia.c
- delete mode 100644 hw/pcmcia/pxa2xx.c
- delete mode 100644 hw/rtc/twl92230.c
- delete mode 100644 hw/sd/pxa2xx_mmci.c
- delete mode 100644 hw/ssi/omap_spi.c
- delete mode 100644 hw/timer/omap_gptimer.c
- delete mode 100644 hw/timer/omap_synctimer.c
- delete mode 100644 hw/usb/hcd-musb.c
- delete mode 100644 hw/usb/tusb6010.c
- delete mode 100644 hw/pcmcia/Kconfig
- delete mode 100644 hw/pcmcia/meson.build
- delete mode 100644 tests/avocado/machine_arm_n8x0.py
 
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 7873350f6ef..e9ce1e2e051 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -927,7 +927,6 @@ F: hw/arm/mainstone.c
+ F: hw/arm/z2.c
+ F: hw/*/pxa2xx*
+ F: hw/display/tc6393xb.c
+-F: hw/gpio/max7310.c
+ F: hw/gpio/zaurus.c
+ F: hw/misc/mst_fpga.c
+ F: include/hw/arm/pxa.h
+diff --git a/hw/gpio/max7310.c b/hw/gpio/max7310.c
+deleted file mode 100644
+index 86315714fbd..00000000000
+--- a/hw/gpio/max7310.c
++++ /dev/null
+@@ -1,217 +0,0 @@
+-/*
+- * MAX7310 8-port GPIO expansion chip.
+- *
+- * Copyright (c) 2006 Openedhand Ltd.
+- * Written by Andrzej Zaborowski <balrog@zabor.org>
+- *
+- * This file is licensed under GNU GPL.
+- */
+-
+-#include "qemu/osdep.h"
+-#include "hw/i2c/i2c.h"
+-#include "hw/irq.h"
+-#include "migration/vmstate.h"
+-#include "qemu/log.h"
+-#include "qemu/module.h"
+-#include "qom/object.h"
+-
+-#define TYPE_MAX7310 "max7310"
+-OBJECT_DECLARE_SIMPLE_TYPE(MAX7310State, MAX7310)
+-
+-struct MAX7310State {
+-    I2CSlave parent_obj;
+-
+-    int i2c_command_byte;
+-    int len;
+-
+-    uint8_t level;
+-    uint8_t direction;
+-    uint8_t polarity;
+-    uint8_t status;
+-    uint8_t command;
+-    qemu_irq handler[8];
+-    qemu_irq *gpio_in;
+-};
+-
+-static void max7310_reset(DeviceState *dev)
+-{
+-    MAX7310State *s = MAX7310(dev);
+-
+-    s->level &= s->direction;
+-    s->direction = 0xff;
+-    s->polarity = 0xf0;
+-    s->status = 0x01;
+-    s->command = 0x00;
+-}
+-
+-static uint8_t max7310_rx(I2CSlave *i2c)
+-{
+-    MAX7310State *s = MAX7310(i2c);
+-
+-    switch (s->command) {
+-    case 0x00:  /* Input port */
+-        return s->level ^ s->polarity;
+-
+-    case 0x01:  /* Output port */
+-        return s->level & ~s->direction;
+-
+-    case 0x02:  /* Polarity inversion */
+-        return s->polarity;
+-
+-    case 0x03:  /* Configuration */
+-        return s->direction;
+-
+-    case 0x04:  /* Timeout */
+-        return s->status;
+-
+-    case 0xff:  /* Reserved */
+-        return 0xff;
+-
+-    default:
+-        qemu_log_mask(LOG_UNIMP, "%s: Unsupported register 0x02%" PRIx8 "\n",
+-                      __func__, s->command);
+-        break;
+-    }
+-    return 0xff;
+-}
+-
+-static int max7310_tx(I2CSlave *i2c, uint8_t data)
+-{
+-    MAX7310State *s = MAX7310(i2c);
+-    uint8_t diff;
+-    int line;
+-
+-    if (s->len ++ > 1) {
+-#ifdef VERBOSE
+-        printf("%s: message too long (%i bytes)\n", __func__, s->len);
+-#endif
+-        return 1;
+-    }
+-
+-    if (s->i2c_command_byte) {
+-        s->command = data;
+-        s->i2c_command_byte = 0;
+-        return 0;
+-    }
+-
+-    switch (s->command) {
+-    case 0x01:  /* Output port */
+-        for (diff = (data ^ s->level) & ~s->direction; diff;
+-                        diff &= ~(1 << line)) {
+-            line = ctz32(diff);
+-            if (s->handler[line])
+-                qemu_set_irq(s->handler[line], (data >> line) & 1);
+-        }
+-        s->level = (s->level & s->direction) | (data & ~s->direction);
+-        break;
+-
+-    case 0x02:  /* Polarity inversion */
+-        s->polarity = data;
+-        break;
+-
+-    case 0x03:  /* Configuration */
+-        s->level &= ~(s->direction ^ data);
+-        s->direction = data;
+-        break;
+-
+-    case 0x04:  /* Timeout */
+-        s->status = data;
+-        break;
+-
+-    case 0x00:  /* Input port - ignore writes */
+-        break;
+-    default:
+-        qemu_log_mask(LOG_UNIMP, "%s: Unsupported register 0x02%" PRIx8 "\n",
+-                      __func__, s->command);
+-        return 1;
+-    }
+-
+-    return 0;
+-}
+-
+-static int max7310_event(I2CSlave *i2c, enum i2c_event event)
+-{
+-    MAX7310State *s = MAX7310(i2c);
+-    s->len = 0;
+-
+-    switch (event) {
+-    case I2C_START_SEND:
+-        s->i2c_command_byte = 1;
+-        break;
+-    case I2C_FINISH:
+-#ifdef VERBOSE
+-        if (s->len == 1)
+-            printf("%s: message too short (%i bytes)\n", __func__, s->len);
+-#endif
+-        break;
+-    default:
+-        break;
+-    }
+-
+-    return 0;
+-}
+-
+-static const VMStateDescription vmstate_max7310 = {
+-    .name = "max7310",
+-    .version_id = 0,
+-    .minimum_version_id = 0,
+-    .fields = (const VMStateField[]) {
+-        VMSTATE_INT32(i2c_command_byte, MAX7310State),
+-        VMSTATE_INT32(len, MAX7310State),
+-        VMSTATE_UINT8(level, MAX7310State),
+-        VMSTATE_UINT8(direction, MAX7310State),
+-        VMSTATE_UINT8(polarity, MAX7310State),
+-        VMSTATE_UINT8(status, MAX7310State),
+-        VMSTATE_UINT8(command, MAX7310State),
+-        VMSTATE_I2C_SLAVE(parent_obj, MAX7310State),
+-        VMSTATE_END_OF_LIST()
+-    }
+-};
+-
+-static void max7310_gpio_set(void *opaque, int line, int level)
+-{
+-    MAX7310State *s = (MAX7310State *) opaque;
+-    assert(line >= 0 && line < ARRAY_SIZE(s->handler));
+-
+-    if (level)
+-        s->level |= s->direction & (1 << line);
+-    else
+-        s->level &= ~(s->direction & (1 << line));
+-}
+-
+-/* MAX7310 is SMBus-compatible (can be used with only SMBus protocols),
+- * but also accepts sequences that are not SMBus so return an I2C device.  */
+-static void max7310_realize(DeviceState *dev, Error **errp)
+-{
+-    MAX7310State *s = MAX7310(dev);
+-
+-    qdev_init_gpio_in(dev, max7310_gpio_set, ARRAY_SIZE(s->handler));
+-    qdev_init_gpio_out(dev, s->handler, ARRAY_SIZE(s->handler));
+-}
+-
+-static void max7310_class_init(ObjectClass *klass, void *data)
+-{
+-    DeviceClass *dc = DEVICE_CLASS(klass);
+-    I2CSlaveClass *k = I2C_SLAVE_CLASS(klass);
+-
+-    dc->realize = max7310_realize;
+-    k->event = max7310_event;
+-    k->recv = max7310_rx;
+-    k->send = max7310_tx;
+-    dc->reset = max7310_reset;
+-    dc->vmsd = &vmstate_max7310;
+-}
+-
+-static const TypeInfo max7310_info = {
+-    .name          = TYPE_MAX7310,
+-    .parent        = TYPE_I2C_SLAVE,
+-    .instance_size = sizeof(MAX7310State),
+-    .class_init    = max7310_class_init,
+-};
+-
+-static void max7310_register_types(void)
+-{
+-    type_register_static(&max7310_info);
+-}
+-
+-type_init(max7310_register_types)
+diff --git a/hw/gpio/Kconfig b/hw/gpio/Kconfig
+index 19c97cc823f..c9c340f6eb4 100644
+--- a/hw/gpio/Kconfig
++++ b/hw/gpio/Kconfig
+@@ -1,7 +1,3 @@
+-config MAX7310
+-    bool
+-    depends on I2C
+-
+ config PL061
+     bool
+ 
+diff --git a/hw/gpio/meson.build b/hw/gpio/meson.build
+index a7495d196ae..010ad3bf5a7 100644
+--- a/hw/gpio/meson.build
++++ b/hw/gpio/meson.build
+@@ -1,7 +1,6 @@
+ system_ss.add(when: 'CONFIG_GPIO_KEY', if_true: files('gpio_key.c'))
+ system_ss.add(when: 'CONFIG_GPIO_MPC8XXX', if_true: files('mpc8xxx.c'))
+ system_ss.add(when: 'CONFIG_GPIO_PWR', if_true: files('gpio_pwr.c'))
+-system_ss.add(when: 'CONFIG_MAX7310', if_true: files('max7310.c'))
+ system_ss.add(when: 'CONFIG_PCA9552', if_true: files('pca9552.c'))
+ system_ss.add(when: 'CONFIG_PCA9554', if_true: files('pca9554.c'))
+ system_ss.add(when: 'CONFIG_PL061', if_true: files('pl061.c'))
 -- 
 2.34.1
 

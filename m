@@ -1,183 +1,171 @@
-Received: by 2002:a17:504:3a8f:b0:1be9:327d:8ee3 with SMTP id g15csp1500491njf;
-        Tue, 3 Sep 2024 09:09:55 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWXRsm04WPKu2xQx43cST9na+mbQao3+HtM8CAPQgSTBMcvk+wi7wBhj9REr7dN82t/GWouO5fd7lZuFQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IEAbSpdR5FQ5QEVC5P6CMHeyvzq1yAeccwLnoxgQMtM6uXNnZH8rWM7/uq46qFHDnGFri52
-X-Received: by 2002:a05:6214:3c9a:b0:6c5:1453:8c0b with SMTP id 6a1803df08f44-6c5145394f2mr18117476d6.46.1725379794877;
-        Tue, 03 Sep 2024 09:09:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1725379794; cv=none;
+Received: by 2002:a17:504:3a8f:b0:1be9:327d:8ee3 with SMTP id g15csp1500533njf;
+        Tue, 3 Sep 2024 09:09:59 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVvzlV0N2vfW5eD1vtQ3fLRfRR2CLKiAmaxLw5OnOY4AwQWxV6I1WA9mq2+MEezobrgMRH1FOA+epg2bA==@linaro.org
+X-Google-Smtp-Source: AGHT+IF1TrhRGVevwnNi5RwExGM27bk792q4TIsffRdHhM/OrZIjn3sY+e2Ld+VdtpTeqhbNYX0T
+X-Received: by 2002:a05:6214:3d85:b0:6c3:61bd:a06 with SMTP id 6a1803df08f44-6c361bd1775mr119023106d6.53.1725379799391;
+        Tue, 03 Sep 2024 09:09:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1725379799; cv=none;
         d=google.com; s=arc-20160816;
-        b=uEI3YvjXnKMbDLnTHK2CkYStPlHnP3DsxI7a2c2IJlUivTgmzN44XqrZv7iZsQrc32
-         m28HMpb8kV2aQxT9rfn5pawe3QAuv7yHFdd/vDfqpJY+VVO6ComtPkCGQvI/U77E3qV9
-         CCu0y1qn+xTeuCtTXdk5gmyf+LWzwqt6tFr+SttgJ3YoJbkoP/a4YssuSPGJi1YtnPx/
-         i8RHazwmBu3/WzCQkAOG0Ks+9HVlOvRf1KOe3ICEmd59Fuadwf3dl0UbZrzJ6g4kcv/X
-         +D6tOSe4Bs+e0aqKVhYUPfvq7NWeehH1FKNuT3eZI5kMtUtIr+ErEr+xKbTYNVgEYWXl
-         qiDQ==
+        b=efDW7MCLwFdw6B5ftYN4FKyE85pSrA4KnYwm+D5D3qTWvhH0NRWQW87hUHfwYHNuHy
+         wRUsE2x7XLEkS18UzOEY2BEqk960i8qpFql3+ADcq4+adftFnVvuMI3euQsiy4eWU9eD
+         BfrFX57IBWMg0STZbOsE2ivp4wS+/doQR1VZpo5GbFVDpfswmDZcB+FHpXg0v6y7haNm
+         v6XGMI7E4AYzNgy9guTnThia036OzS9v4k9M+9ER0e5HE0p4kVmpNukLGdL5k6reG2q7
+         eae8L+H5lc1LuRC2PGVlUeZNL4rx8CPRfQBnbtZlTkKXIU6eXuWzEInsHoYxxXJfUYJf
+         Xcjw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=slM94TULEewYKeVq6sh2hQIHzbNpZcOVLQjaenOMVd4=;
-        fh=H2AmuqulvQE+T5zu97MCEUC3z9wF9NssS7895NhR/+c=;
-        b=Lal8XI4/5iLazGvtpPmAnXq3chgRSicK4ahV8NiNc5sJpjJKTQ+PYOoPR+qWb5w1T3
-         CHTmpHEXVWTG7pbBtYhABzPJUKFOFxAqq+ngg2CnQP5CdsVGYFbA3iwnvBojbUon7yD+
-         WMJks+zL9SmR7gyGpwd3Bb/M7ZOFVj5gk0hern6MH1vyQ+aCnijALUXqpTKoUD/YSVeH
-         wzAcvZ9bCmKWax1vq8lToHx5gGxg7dvdT6p2vdsScYOAntB1XcTZGAQ32IhHMSLhy7ET
-         Dxk4nFsDPwrjqCsOYqkPPCdXDkeG3mys/UL0vE70nHvlx7YKqyc3oLZ5pj0auNcCnoF8
-         hp0A==;
+        bh=THIrIBfM4vzOfJ3nHM2ubG7+E5S52F8G9as4tfAXnnQ=;
+        fh=290w85G8HWNuKqunk+646Eog7gNUUSW6z8l8YEnI5tk=;
+        b=AntOnPL2Wj1PTmDExDpxKmacbw4lwSR/8PvHlPHP9YSig5vtCShUkVrQ7r8xPGtMbC
+         AfvWZRcMeQReyuY6liRa/cC/2QRF6qpi23wgJb5J0Zq+8JMvhIoajnAXsFqUeQc9LR/5
+         kISXhkFLOXMomikkJw9RF1PyE+Qv74R3jy2zgFSvNS5WffCWJSGvnph6CCxW/oQ1vWiu
+         IshvHByQqgK8SGcGRUXrcWe+Ziej+GQUEMN61Dsx4ixF2V4AdNzVus0GMc14aiIhJb6F
+         75DJHvOuHH0qVHBQSBFU8qmrg+Ov2+sDH/lijLDZJWzJ5vRqjxvWiWuWen4ye70udrUL
+         abSQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=nvAt0IyB;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=OiP5F+uO;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6c340dbe798si130073126d6.551.2024.09.03.09.09.54
+        by mx.google.com with ESMTPS id 6a1803df08f44-6c364f31b8bsi55237096d6.3.2024.09.03.09.09.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 03 Sep 2024 09:09:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 03 Sep 2024 09:09:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=nvAt0IyB;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=OiP5F+uO;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1slW5c-0001cr-JA; Tue, 03 Sep 2024 12:09:08 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1slW4W-0004Su-1Y; Tue, 03 Sep 2024 12:08:00 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1slW5Z-0001QB-Ru
- for qemu-arm@nongnu.org; Tue, 03 Sep 2024 12:09:05 -0400
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
+ id 1slW4U-0004OS-UA
+ for qemu-devel@nongnu.org; Tue, 03 Sep 2024 12:07:58 -0400
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1slW5W-0002yK-Em
- for qemu-arm@nongnu.org; Tue, 03 Sep 2024 12:09:05 -0400
-Received: by mail-wm1-x32a.google.com with SMTP id
- 5b1f17b1804b1-4280ca0791bso48029005e9.1
- for <qemu-arm@nongnu.org>; Tue, 03 Sep 2024 09:09:01 -0700 (PDT)
+ id 1slW4S-0002eH-9N
+ for qemu-devel@nongnu.org; Tue, 03 Sep 2024 12:07:58 -0400
+Received: by mail-wm1-x334.google.com with SMTP id
+ 5b1f17b1804b1-428e0d184b4so46210835e9.2
+ for <qemu-devel@nongnu.org>; Tue, 03 Sep 2024 09:07:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1725379741; x=1725984541; darn=nongnu.org;
+ d=linaro.org; s=google; t=1725379674; x=1725984474; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=slM94TULEewYKeVq6sh2hQIHzbNpZcOVLQjaenOMVd4=;
- b=nvAt0IyBHNVh0Z+Y8z46IQSp0kHC5eh8yNE68f/sLeL1nJAg2L13hteRB4Yy3UdZUd
- YUiW8Md3IAHb2cIlZC7pdA79OdQakme/xFORRKjxgfmwGBKFdba5C+NNgD3mdpi4EeO+
- EBWJv3ahplbNBcqK/IKgzeW1CwHMtnsNVvRTnBWar3HhDh6f1sILTIDDf2gkbst9BWYc
- SLHrMPVx7VK0UZukOFEPNIf2/F/wdznT0BZomALjPZS+nzxJhGJ6c+vBTeTHLE6r0XHc
- qzA7rP2TInxoX6Qbva35DnUShA3hg/avgj7irobqXAsUYg4sANqY2a0UGHSWjPZ+R09z
- laAg==
+ :reply-to; bh=THIrIBfM4vzOfJ3nHM2ubG7+E5S52F8G9as4tfAXnnQ=;
+ b=OiP5F+uOFDoaoEmh/UEQI1EfponDU6E+/CRPFjFx6el6fuNV8s+xuYnA5vvRuAMdiR
+ IG01rjLjN3ZE1N4RXliSY+40FFx1zbYCWmKeHsKtT/ShiBtgbWJFxVwx+xm8Q3oncs8X
+ VmGyA67E9o4AcMkbW3JYXTSOyy/JfjUTV6BJ86KdeFvmS7rtIDq7MC/BOh1y0FM/b179
+ CBvn2QH80GXsWWfM2GLoWnHO8KZ5K6BIs+1uhaGaDJRMBtlwAeE+DslVd4dwYplkpVkU
+ BOIqfVU3QVZRv1JygTGzr0YGinDfICXX/Mpwiy1FqVpQwg7Cq6HzJ5arevNYA8UKssIW
+ c7TA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1725379741; x=1725984541;
+ d=1e100.net; s=20230601; t=1725379674; x=1725984474;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=slM94TULEewYKeVq6sh2hQIHzbNpZcOVLQjaenOMVd4=;
- b=t1SA6kqIewAITKQMDH+QVBDKl3s5Xu9ekE4utHnqzfT0ohERlXGCqj7waCoOaXMdEb
- P8yEfD7O+wTjgYBIQWgAD+3MkR06YjlpOMYxig0lpjxiolAxz82/xOldEnFmm6ih233s
- AnjKtNKNNqHQchTVhxYc+azvmfC1zhbmnKAe4gddteglN6h4SDCN5sDQEkiwFhldnVtc
- dgACTA1GN0xLiPxtoymnCcgyoJm5BfotKGGxK919XmvlNhzR3Yj4RwhGeQnNtZqtYxTy
- duicR0PHAmgv9BTu2i5PK81R8xuwy9/k1Qhvpc+q2JbuPDcAIq0LM1Qs1ecz0ZkWNzkE
- YV9g==
-X-Gm-Message-State: AOJu0YxPclby9at+4tFoDKzXnyn1cyVkgUJWwIL5rQT40VUKn7ikHW8X
- oxVl6FSWEOkcglqTcn9dZrFO86pOpI4HjIWqTUznkV6D8Lo7fFcOqKA3RthxiKzGhFocuU5JKeg
- q
-X-Received: by 2002:a05:600c:3b85:b0:426:602d:a246 with SMTP id
- 5b1f17b1804b1-42c8dea66b1mr10526295e9.32.1725379740805; 
- Tue, 03 Sep 2024 09:09:00 -0700 (PDT)
+ bh=THIrIBfM4vzOfJ3nHM2ubG7+E5S52F8G9as4tfAXnnQ=;
+ b=vCPUOmHc06xQJY0oycpbHoSUWiB62mWcXuoKjKAlK4TIStAW1PHDwioe55UtIXW3Ri
+ AYS2av1ZJ8ozPkUiJvVVZAY4+we3v6hXoLtooJvlsKccegE0Hxlyxjg1kdqvjdpip47m
+ sgnQG49S5ZHTXr7Iy/AVaKsj9Rvcl6veV/dbvJduTzgV7L7P2nczyZkHTw47/Wm+liSw
+ JYphpAzry2CCnwD/YZIvYfSzlVnKpEpOjnUCKZNKLalGhXerO6MlllBRn3MlChswtITd
+ 7j0Tc7NAd9j2hgq2e00dlmxI71RMdVKJnG2J/yEI7Lfoc2MQKDkIr5FMW1DW8+SzMAWk
+ FzxQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWmFgoFsn38gLJgKipYAiUysaVzzMqCo8p0xptkuU0L4ixDMbPqz9Jb9Db/lj0AsL8TNyWCW0ZXjRTR@nongnu.org
+X-Gm-Message-State: AOJu0YzURZf22x1vb4RkJPeaHYsweT1csWKJlufIoSGImaqulnwG3cTW
+ 0B34POCmElrIIp0tXz5BOfS/tIyqFBTkUBnBylRPf/epWgDrXybUzhkqiocn4vUIWGoDSytDNVH
+ +
+X-Received: by 2002:a05:600c:1d16:b0:42b:892d:54c0 with SMTP id
+ 5b1f17b1804b1-42c7b5a8db6mr72483765e9.12.1725379674527; 
+ Tue, 03 Sep 2024 09:07:54 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-42bb6df1066sm175123065e9.18.2024.09.03.09.09.00
+ 5b1f17b1804b1-42bb6df1066sm175123065e9.18.2024.09.03.09.07.54
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 03 Sep 2024 09:09:00 -0700 (PDT)
+ Tue, 03 Sep 2024 09:07:54 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH for-9.2 46/53] hw/block: Remove ecc
-Date: Tue,  3 Sep 2024 17:07:44 +0100
-Message-Id: <20240903160751.4100218-47-peter.maydell@linaro.org>
+Subject: [PATCH for-9.2 02/53] hw/input: Drop ADS7846 device
+Date: Tue,  3 Sep 2024 17:07:00 +0100
+Message-Id: <20240903160751.4100218-3-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240903160751.4100218-1-peter.maydell@linaro.org>
 References: <20240903160751.4100218-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::334;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x334.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: HffQffppCmty
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: wyBADIvD02+O
 
-The ecc.c code was used only by the PXA2xx and OMAP2 SoC devices,
-which we have removed, so it is now completely unused.
-
-Note that hw/misc/eccmemctl.c does not in fact use any of the
-code frome ecc.c, so that KConfig dependency was incorrect.
+The ADS7846 touchscreen controller device was used only by
+the XScale-based PDA machine types. Now that they have been
+removed, this device is not used in the tree and can be
+deleted.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- include/hw/block/flash.h | 11 -----
- hw/block/ecc.c           | 91 ----------------------------------------
- hw/arm/Kconfig           |  1 -
- hw/block/Kconfig         |  3 --
- hw/block/meson.build     |  1 -
- hw/misc/Kconfig          |  1 -
- 6 files changed, 108 deletions(-)
- delete mode 100644 hw/block/ecc.c
+ MAINTAINERS          |   1 -
+ hw/input/ads7846.c   | 186 -------------------------------------------
+ hw/input/Kconfig     |   3 -
+ hw/input/meson.build |   1 -
+ 4 files changed, 191 deletions(-)
+ delete mode 100644 hw/input/ads7846.c
 
-diff --git a/include/hw/block/flash.h b/include/hw/block/flash.h
-index b985c825a01..5fd67f5bb79 100644
---- a/include/hw/block/flash.h
-+++ b/include/hw/block/flash.h
-@@ -62,17 +62,6 @@ uint32_t nand_getbuswidth(DeviceState *dev);
- #define NAND_MFR_HYNIX      0xad
- #define NAND_MFR_MICRON     0x2c
- 
--/* ecc.c */
--typedef struct {
--    uint8_t cp;     /* Column parity */
--    uint16_t lp[2]; /* Line parity */
--    uint16_t count;
--} ECCState;
--
--uint8_t ecc_digest(ECCState *s, uint8_t sample);
--void ecc_reset(ECCState *s);
--extern const VMStateDescription vmstate_ecc_state;
--
- /* m25p80.c */
- 
- #define TYPE_M25P80 "m25p80-generic"
-diff --git a/hw/block/ecc.c b/hw/block/ecc.c
+diff --git a/MAINTAINERS b/MAINTAINERS
+index bcd84582099..4f00c7a3427 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -929,7 +929,6 @@ F: hw/*/pxa2xx*
+ F: hw/display/tc6393xb.c
+ F: hw/gpio/max7310.c
+ F: hw/gpio/zaurus.c
+-F: hw/input/ads7846.c
+ F: hw/misc/mst_fpga.c
+ F: hw/adc/max111x.c
+ F: include/hw/adc/max111x.h
+diff --git a/hw/input/ads7846.c b/hw/input/ads7846.c
 deleted file mode 100644
-index ed889a4184f..00000000000
---- a/hw/block/ecc.c
+index cde38922165..00000000000
+--- a/hw/input/ads7846.c
 +++ /dev/null
-@@ -1,91 +0,0 @@
+@@ -1,186 +0,0 @@
 -/*
-- * Calculate Error-correcting Codes. Used by NAND Flash controllers
-- * (not by NAND chips).
+- * TI ADS7846 / TSC2046 chip emulation.
 - *
 - * Copyright (c) 2006 Openedhand Ltd.
 - * Written by Andrzej Zaborowski <balrog@zabor.org>
@@ -189,133 +177,204 @@ index ed889a4184f..00000000000
 - */
 -
 -#include "qemu/osdep.h"
+-#include "hw/irq.h"
+-#include "hw/ssi/ssi.h"
 -#include "migration/vmstate.h"
--#include "hw/block/flash.h"
+-#include "qemu/module.h"
+-#include "ui/console.h"
+-#include "qom/object.h"
 -
--/*
-- * Pre-calculated 256-way 1 byte column parity.  Table borrowed from Linux.
-- */
--static const uint8_t nand_ecc_precalc_table[] = {
--    0x00, 0x55, 0x56, 0x03, 0x59, 0x0c, 0x0f, 0x5a,
--    0x5a, 0x0f, 0x0c, 0x59, 0x03, 0x56, 0x55, 0x00,
--    0x65, 0x30, 0x33, 0x66, 0x3c, 0x69, 0x6a, 0x3f,
--    0x3f, 0x6a, 0x69, 0x3c, 0x66, 0x33, 0x30, 0x65,
--    0x66, 0x33, 0x30, 0x65, 0x3f, 0x6a, 0x69, 0x3c,
--    0x3c, 0x69, 0x6a, 0x3f, 0x65, 0x30, 0x33, 0x66,
--    0x03, 0x56, 0x55, 0x00, 0x5a, 0x0f, 0x0c, 0x59,
--    0x59, 0x0c, 0x0f, 0x5a, 0x00, 0x55, 0x56, 0x03,
--    0x69, 0x3c, 0x3f, 0x6a, 0x30, 0x65, 0x66, 0x33,
--    0x33, 0x66, 0x65, 0x30, 0x6a, 0x3f, 0x3c, 0x69,
--    0x0c, 0x59, 0x5a, 0x0f, 0x55, 0x00, 0x03, 0x56,
--    0x56, 0x03, 0x00, 0x55, 0x0f, 0x5a, 0x59, 0x0c,
--    0x0f, 0x5a, 0x59, 0x0c, 0x56, 0x03, 0x00, 0x55,
--    0x55, 0x00, 0x03, 0x56, 0x0c, 0x59, 0x5a, 0x0f,
--    0x6a, 0x3f, 0x3c, 0x69, 0x33, 0x66, 0x65, 0x30,
--    0x30, 0x65, 0x66, 0x33, 0x69, 0x3c, 0x3f, 0x6a,
--    0x6a, 0x3f, 0x3c, 0x69, 0x33, 0x66, 0x65, 0x30,
--    0x30, 0x65, 0x66, 0x33, 0x69, 0x3c, 0x3f, 0x6a,
--    0x0f, 0x5a, 0x59, 0x0c, 0x56, 0x03, 0x00, 0x55,
--    0x55, 0x00, 0x03, 0x56, 0x0c, 0x59, 0x5a, 0x0f,
--    0x0c, 0x59, 0x5a, 0x0f, 0x55, 0x00, 0x03, 0x56,
--    0x56, 0x03, 0x00, 0x55, 0x0f, 0x5a, 0x59, 0x0c,
--    0x69, 0x3c, 0x3f, 0x6a, 0x30, 0x65, 0x66, 0x33,
--    0x33, 0x66, 0x65, 0x30, 0x6a, 0x3f, 0x3c, 0x69,
--    0x03, 0x56, 0x55, 0x00, 0x5a, 0x0f, 0x0c, 0x59,
--    0x59, 0x0c, 0x0f, 0x5a, 0x00, 0x55, 0x56, 0x03,
--    0x66, 0x33, 0x30, 0x65, 0x3f, 0x6a, 0x69, 0x3c,
--    0x3c, 0x69, 0x6a, 0x3f, 0x65, 0x30, 0x33, 0x66,
--    0x65, 0x30, 0x33, 0x66, 0x3c, 0x69, 0x6a, 0x3f,
--    0x3f, 0x6a, 0x69, 0x3c, 0x66, 0x33, 0x30, 0x65,
--    0x00, 0x55, 0x56, 0x03, 0x59, 0x0c, 0x0f, 0x5a,
--    0x5a, 0x0f, 0x0c, 0x59, 0x03, 0x56, 0x55, 0x00,
+-struct ADS7846State {
+-    SSIPeripheral ssidev;
+-    qemu_irq interrupt;
+-
+-    int input[8];
+-    int pressure;
+-    int noise;
+-
+-    int cycle;
+-    int output;
 -};
 -
--/* Update ECC parity count.  */
--uint8_t ecc_digest(ECCState *s, uint8_t sample)
--{
--    uint8_t idx = nand_ecc_precalc_table[sample];
+-#define TYPE_ADS7846 "ads7846"
+-OBJECT_DECLARE_SIMPLE_TYPE(ADS7846State, ADS7846)
 -
--    s->cp ^= idx & 0x3f;
--    if (idx & 0x40) {
--        s->lp[0] ^= ~s->count;
--        s->lp[1] ^= s->count;
+-/* Control-byte bitfields */
+-#define CB_PD0          (1 << 0)
+-#define CB_PD1          (1 << 1)
+-#define CB_SER          (1 << 2)
+-#define CB_MODE         (1 << 3)
+-#define CB_A0           (1 << 4)
+-#define CB_A1           (1 << 5)
+-#define CB_A2           (1 << 6)
+-#define CB_START        (1 << 7)
+-
+-#define X_AXIS_DMAX     3470
+-#define X_AXIS_MIN      290
+-#define Y_AXIS_DMAX     3450
+-#define Y_AXIS_MIN      200
+-
+-#define ADS_VBAT        2000
+-#define ADS_VAUX        2000
+-#define ADS_TEMP0       2000
+-#define ADS_TEMP1       3000
+-#define ADS_XPOS(x, y)  (X_AXIS_MIN + ((X_AXIS_DMAX * (x)) >> 15))
+-#define ADS_YPOS(x, y)  (Y_AXIS_MIN + ((Y_AXIS_DMAX * (y)) >> 15))
+-#define ADS_Z1POS(x, y) 600
+-#define ADS_Z2POS(x, y) (600 + 6000 / ADS_XPOS(x, y))
+-
+-static void ads7846_int_update(ADS7846State *s)
+-{
+-    if (s->interrupt)
+-        qemu_set_irq(s->interrupt, s->pressure == 0);
+-}
+-
+-static uint32_t ads7846_transfer(SSIPeripheral *dev, uint32_t value)
+-{
+-    ADS7846State *s = ADS7846(dev);
+-
+-    switch (s->cycle ++) {
+-    case 0:
+-        if (!(value & CB_START)) {
+-            s->cycle = 0;
+-            break;
+-        }
+-
+-        s->output = s->input[(value >> 4) & 7];
+-
+-        /* Imitate the ADC noise, some drivers expect this.  */
+-        s->noise = (s->noise + 3) & 7;
+-        switch ((value >> 4) & 7) {
+-        case 1: s->output += s->noise ^ 2; break;
+-        case 3: s->output += s->noise ^ 0; break;
+-        case 4: s->output += s->noise ^ 7; break;
+-        case 5: s->output += s->noise ^ 5; break;
+-        }
+-
+-        if (value & CB_MODE)
+-            s->output >>= 4;    /* 8 bits instead of 12 */
+-
+-        break;
+-    case 1:
+-        s->cycle = 0;
+-        break;
 -    }
--    s->count ++;
--
--    return sample;
+-    return s->output;
 -}
 -
--/* Reinitialise the counters.  */
--void ecc_reset(ECCState *s)
+-static void ads7846_ts_event(void *opaque,
+-                int x, int y, int z, int buttons_state)
 -{
--    s->lp[0] = 0x0000;
--    s->lp[1] = 0x0000;
--    s->cp = 0x00;
--    s->count = 0;
+-    ADS7846State *s = opaque;
+-
+-    if (buttons_state) {
+-        x = 0x7fff - x;
+-        s->input[1] = ADS_XPOS(x, y);
+-        s->input[3] = ADS_Z1POS(x, y);
+-        s->input[4] = ADS_Z2POS(x, y);
+-        s->input[5] = ADS_YPOS(x, y);
+-    }
+-
+-    if (s->pressure == !buttons_state) {
+-        s->pressure = !!buttons_state;
+-
+-        ads7846_int_update(s);
+-    }
 -}
 -
--/* Save/restore */
--const VMStateDescription vmstate_ecc_state = {
--    .name = "ecc-state",
--    .version_id = 0,
--    .minimum_version_id = 0,
+-static int ads7856_post_load(void *opaque, int version_id)
+-{
+-    ADS7846State *s = opaque;
+-
+-    s->pressure = 0;
+-    ads7846_int_update(s);
+-    return 0;
+-}
+-
+-static const VMStateDescription vmstate_ads7846 = {
+-    .name = "ads7846",
+-    .version_id = 1,
+-    .minimum_version_id = 1,
+-    .post_load = ads7856_post_load,
 -    .fields = (const VMStateField[]) {
--        VMSTATE_UINT8(cp, ECCState),
--        VMSTATE_UINT16_ARRAY(lp, ECCState, 2),
--        VMSTATE_UINT16(count, ECCState),
--        VMSTATE_END_OF_LIST(),
--    },
+-        VMSTATE_SSI_PERIPHERAL(ssidev, ADS7846State),
+-        VMSTATE_INT32_ARRAY(input, ADS7846State, 8),
+-        VMSTATE_INT32(noise, ADS7846State),
+-        VMSTATE_INT32(cycle, ADS7846State),
+-        VMSTATE_INT32(output, ADS7846State),
+-        VMSTATE_END_OF_LIST()
+-    }
 -};
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index a70ceff504b..7b19a9559f6 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -146,7 +146,6 @@ config OMAP
-     bool
-     select FRAMEBUFFER
-     select I2C
--    select ECC
-     select NAND
-     select PFLASH_CFI01
-     select SD
-diff --git a/hw/block/Kconfig b/hw/block/Kconfig
-index 002d255dced..741390742c2 100644
---- a/hw/block/Kconfig
-+++ b/hw/block/Kconfig
-@@ -22,9 +22,6 @@ config PFLASH_CFI01
- config PFLASH_CFI02
+-
+-static void ads7846_realize(SSIPeripheral *d, Error **errp)
+-{
+-    DeviceState *dev = DEVICE(d);
+-    ADS7846State *s = ADS7846(d);
+-
+-    qdev_init_gpio_out(dev, &s->interrupt, 1);
+-
+-    s->input[0] = ADS_TEMP0;    /* TEMP0 */
+-    s->input[2] = ADS_VBAT;     /* VBAT */
+-    s->input[6] = ADS_VAUX;     /* VAUX */
+-    s->input[7] = ADS_TEMP1;    /* TEMP1 */
+-
+-    /* We want absolute coordinates */
+-    qemu_add_mouse_event_handler(ads7846_ts_event, s, 1,
+-                    "QEMU ADS7846-driven Touchscreen");
+-
+-    ads7846_int_update(s);
+-
+-    vmstate_register_any(NULL, &vmstate_ads7846, s);
+-}
+-
+-static void ads7846_class_init(ObjectClass *klass, void *data)
+-{
+-    DeviceClass *dc = DEVICE_CLASS(klass);
+-    SSIPeripheralClass *k = SSI_PERIPHERAL_CLASS(klass);
+-
+-    k->realize = ads7846_realize;
+-    k->transfer = ads7846_transfer;
+-    set_bit(DEVICE_CATEGORY_INPUT, dc->categories);
+-}
+-
+-static const TypeInfo ads7846_info = {
+-    .name          = TYPE_ADS7846,
+-    .parent        = TYPE_SSI_PERIPHERAL,
+-    .instance_size = sizeof(ADS7846State),
+-    .class_init    = ads7846_class_init,
+-};
+-
+-static void ads7846_register_types(void)
+-{
+-    type_register_static(&ads7846_info);
+-}
+-
+-type_init(ads7846_register_types)
+diff --git a/hw/input/Kconfig b/hw/input/Kconfig
+index f86e98c8293..acfdba5c4ca 100644
+--- a/hw/input/Kconfig
++++ b/hw/input/Kconfig
+@@ -1,9 +1,6 @@
+ config ADB
      bool
  
--config ECC
+-config ADS7846
 -    bool
 -
- config TC58128
+ config LM832X
      bool
- 
-diff --git a/hw/block/meson.build b/hw/block/meson.build
-index 74c8eb9e735..3735065631a 100644
---- a/hw/block/meson.build
-+++ b/hw/block/meson.build
-@@ -3,7 +3,6 @@ system_ss.add(files(
-   'cdrom.c',
-   'hd-geometry.c'
- ))
--system_ss.add(when: 'CONFIG_ECC', if_true: files('ecc.c'))
- system_ss.add(when: 'CONFIG_FDC', if_true: files('fdc.c'))
- system_ss.add(when: 'CONFIG_FDC_ISA', if_true: files('fdc-isa.c'))
- system_ss.add(when: 'CONFIG_FDC_SYSBUS', if_true: files('fdc-sysbus.c'))
-diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
-index 1e08785b832..8568aaa2293 100644
---- a/hw/misc/Kconfig
-+++ b/hw/misc/Kconfig
-@@ -74,7 +74,6 @@ config IVSHMEM_DEVICE
- 
- config ECCMEMCTL
-     bool
--    select ECC
- 
- config IMX
-     bool
+     depends on I2C
+diff --git a/hw/input/meson.build b/hw/input/meson.build
+index 3cc8ab85f0c..07a28c2c01c 100644
+--- a/hw/input/meson.build
++++ b/hw/input/meson.build
+@@ -1,6 +1,5 @@
+ system_ss.add(files('hid.c'))
+ system_ss.add(when: 'CONFIG_ADB', if_true: files('adb.c', 'adb-mouse.c', 'adb-kbd.c'))
+-system_ss.add(when: 'CONFIG_ADS7846', if_true: files('ads7846.c'))
+ system_ss.add(when: 'CONFIG_LM832X', if_true: files('lm832x.c'))
+ system_ss.add(when: 'CONFIG_PCKBD', if_true: files('pckbd.c'))
+ system_ss.add(when: 'CONFIG_PL050', if_true: files('pl050.c'))
 -- 
 2.34.1
 

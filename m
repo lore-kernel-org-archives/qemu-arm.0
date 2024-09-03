@@ -1,131 +1,119 @@
-Received: by 2002:a17:504:3a8f:b0:1be9:327d:8ee3 with SMTP id g15csp1502911njf;
-        Tue, 3 Sep 2024 09:15:44 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVWGVwA32kBSbGBm6RvP5LVYvRU3cz8MDUFlk20Tc+pIltVmLcu6UQ3wuhtmNu7MMQ/fYCNPKxkIAuleA==@linaro.org
-X-Google-Smtp-Source: AGHT+IFxkz93A7c2UjRnvnQ+rAdqe7hYJpbNoDn2y7mD36BNoD5Fvw6/LF/F7XcI7WwCXO/b+xhM
-X-Received: by 2002:a05:6122:3c8f:b0:4fc:eb15:b0f6 with SMTP id 71dfb90a1353d-500de193cdbmr3125936e0c.8.1725380143960;
-        Tue, 03 Sep 2024 09:15:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1725380143; cv=none;
+Received: by 2002:a17:504:3a8f:b0:1be9:327d:8ee3 with SMTP id g15csp1502947njf;
+        Tue, 3 Sep 2024 09:15:47 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVEqhk9xUMPKKHN3klgnRGKOdShDKcyZBFXXORkSUhJ4tDObzgf7UH4XIkWITrawPEwIcwB0xvDpiNZFQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IEbeboLC3nKMiEGLRqrLallYMF6DbjdhagXBF+IcrKzejvcjDalL26FO6BWKdojVHlNlDiy
+X-Received: by 2002:a05:622a:250c:b0:455:b3d2:fce0 with SMTP id d75a77b69052e-45756a293c0mr201353051cf.32.1725380147432;
+        Tue, 03 Sep 2024 09:15:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1725380147; cv=none;
         d=google.com; s=arc-20160816;
-        b=E0wIUoWNYlbf3P5CEKRCrd8TqJPu0ThM645A2Hi0J02tSbbS8vVtcjwJtwYV/ZQD9L
-         toe5rli1szctOn8NiggsqJg3psvGN5ImUS5H2CStYgYFQ3wKLmHPUV/Ue0kjBxvNmxmx
-         VYz6feyixq6I4IGSsPvSVYz1xDvqJJ0L+fE8+y+9kqXReYBOF1Btc5xiZvosGgxN7vaN
-         oVTA6cRnfqBj++pMvK7hTdcpyaaErHtH4TdbDjamRwNzWyD/ajOgXauzY9S1E4v1pLee
-         MgZIE0INv2Ve8hn3XO5Mso4tNUwbbmAMEWDqlUFAyMbiaVqU3+5gJdV4TWIZr6nEKFqZ
-         u4+A==
+        b=hZM1b9GzJ3qq9fI2aqVIXP20/4V3IvRgq1UrcZgrPrDJLuN98l6ThpoSTn3hszPN8i
+         S6vdP/yew274luqJcgqCiqjjLHSJbttiLGhHVnHDjtxjvV203yFuoP0XBSzlNNCRleyn
+         KmWbs7P+89TpsSGFgNJuNem8lO0VogAeT20knA465lbT4uN2R9bSyGE+fzlJwNvfWtBx
+         93g6W30tJFKaFOUJ8np9EKvr0DL72+jUS+vAwO0DUUdmddXkoLc7UwhhVGWjtWejccrQ
+         KFdnr4ppM747Jty7j1k4BaBnAFPb3m5VSeMh5wiOzwiqzg1Jy3qPMkEyg2rvMSx9H3B/
+         8B0g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=ykliaL/XK30BSEzZ2oj0js9SO5y8TWJz0kgfGbTOjRg=;
-        fh=opgTvHQoky1RJeXC5tMRgWTwQIAayvL83mET9eMyDqg=;
-        b=mvPQknXYa0nt2u2+dLA+LC9Oy9dXjCsH6u9r2cGCR/bYY9mkAdGILW/BmwBC+aqsNW
-         8m6FUVT1dCMjOtMtJ4+iekLDgEDRNGM3CqXIleTUVvau1KNt25edp7NitY+mhuBE2JC5
-         1E+Pa8NzsP4quDXdmQYifFSuplKjc9JJ8E2qIYxUEqzjqCv58fawzGPRJXV+jWN2rcMO
-         ueL5oaXKYCxHheExvpEWMhn2orAqpD1QCJAWIbMt86uutACSwf/BuZnhcnTP0XL59GOo
-         nSdfjGsJerzI61KzYeEHJHlTw3fMDkVKmcDO5CqvAFwAnnmgxLJu0JSvLhJg//2hozVQ
-         PcHA==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=BHpxQn1TGhAqZw6zjbWv+7WsRHUItP5jTjUdlJjduF0=;
+        fh=H2AmuqulvQE+T5zu97MCEUC3z9wF9NssS7895NhR/+c=;
+        b=odiaj2zLJsK+l5reW4aM3aHOODDefIIasBOv+lgdH//REMdSFk1FF0p0vNFMwQ6+DB
+         fuggTV8L4gWzSEzsHv4+v1pFSigoyTNnetBWPj1n1whYXBqa596dwFhRHwP+2svvXiPL
+         Z4PbtGSrbxiLHypsSk5Ir7AIs4/zFTPEkDBLCP8eiYtPXTSL5/WXQKqCPxTVE0uMhcr4
+         85S/Odd68FQR90zsY2fGvFr2xyaXFUx1SAewbXkS1W0DsWCaupZtNn4QdKlADGRdXnhu
+         OwUzpsq8cnVRAY//AWMlTY9ZHOMqv49G5iEMhKIZUYflFZ8TMTufDysI/7gkPg4e1Ekd
+         UinA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=Zl0a0x7T;
+       dkim=pass header.i=@linaro.org header.s=google header.b="l8/AWBYH";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 71dfb90a1353d-5007123f206si3054209e0c.9.2024.09.03.09.15.43
+        by mx.google.com with ESMTPS id d75a77b69052e-45682dfdaadsi132702611cf.652.2024.09.03.09.15.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 03 Sep 2024 09:15:43 -0700 (PDT)
+        Tue, 03 Sep 2024 09:15:47 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=Zl0a0x7T;
+       dkim=pass header.i=@linaro.org header.s=google header.b="l8/AWBYH";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1slWAH-0006lR-BT; Tue, 03 Sep 2024 12:13:58 -0400
+	id 1slW5l-0002a9-JD; Tue, 03 Sep 2024 12:09:17 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marietto2008@gmail.com>)
- id 1slWA9-0005tl-R0; Tue, 03 Sep 2024 12:13:50 -0400
-Received: from mail-pf1-x433.google.com ([2607:f8b0:4864:20::433])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1slW5i-0002GU-Bj
+ for qemu-arm@nongnu.org; Tue, 03 Sep 2024 12:09:14 -0400
+Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <marietto2008@gmail.com>)
- id 1slWA6-0003ff-28; Tue, 03 Sep 2024 12:13:48 -0400
-Received: by mail-pf1-x433.google.com with SMTP id
- d2e1a72fcca58-714186ce2f2so4559606b3a.0; 
- Tue, 03 Sep 2024 09:13:42 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1slW5e-000311-MY
+ for qemu-arm@nongnu.org; Tue, 03 Sep 2024 12:09:14 -0400
+Received: by mail-wr1-x435.google.com with SMTP id
+ ffacd0b85a97d-374bb1a3addso2247965f8f.1
+ for <qemu-arm@nongnu.org>; Tue, 03 Sep 2024 09:09:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1725380022; x=1725984822; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=ykliaL/XK30BSEzZ2oj0js9SO5y8TWJz0kgfGbTOjRg=;
- b=Zl0a0x7TAg0zyRXUxadiOIOoQH7ZnRymPXIHO5CtMsvBXHZ1RQTeMAYMhEvHrU6/lv
- BzEEcJ+bcmLJW23XKausT27U+xumlb+YRNCqP3AMQvt3d4g9j/9PwNyaa0/wYGvNVBwg
- NZf/RxZx6qmU/s1IA1XHzgWhHQDaJ+z0MaP+B05GpVC5i5+L7UBsajXpkmh1cEAjWaZs
- //yfARfWuEvhM9B6qj1uis0AwLGvjxL8/gK5G2vsxca06kHLGlDvE4nCoZzzRHfBH378
- kZ9w5XPqRaJrVe2HGGdRIRP2OYWQAl2AFcfAfyD8jnd9rMlVZsy11P6FAzOS/Ku1wT0v
- yvvg==
+ d=linaro.org; s=google; t=1725379749; x=1725984549; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
+ :reply-to; bh=BHpxQn1TGhAqZw6zjbWv+7WsRHUItP5jTjUdlJjduF0=;
+ b=l8/AWBYHV0nvJ1zAFJP472lk4t36hiBCg5e4v/GsdOzeGFjuc7eXMx99MQfcGEz1sb
+ jdDun4t2t0TiS2x5GEWxJ1ywF2HiEHDpsLxYUqPMCTLg7hZWtYholTRSM1FN0eLXxWi6
+ v8XpfVCYJBEedxrLMkQQvVx218Fzwu1u2RoZZAlkTlglgsGaJJwTNSv7XMiAutoKsULh
+ WFKeep/WfZktUYqk/x6qhZo+v9PZ6FzCoXtVH5mPHhp48PQ/a7u6FAO2+yHqox66gBxc
+ TyC6x9+36YwvS+2N89/MhUihDp78sOZaLGnoGuSow1M0PI1gjzMHCUoHsWySAp51o03R
+ 3xLw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1725380022; x=1725984822;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=ykliaL/XK30BSEzZ2oj0js9SO5y8TWJz0kgfGbTOjRg=;
- b=ARbBeYOmKIiCrasLibVQuoY1ePt/LHyvkenSYBtpMIXu2EjpxzNL+td9o9jhzvI5Us
- iyWMAgG0YHWMy9IuUwW4Gfa6qxPNo007EbNOBY6NxJKd0RcCtcQ6NtsIpAghhyiFjgcd
- CzcK191HOVoziu1rOxuKrzNEEOpriduEoIydZx+tCxO9O5kv3YcQ9X//7ePUrUjeCEy8
- d7sXKxDGi2Rc8nSkHqBBmo9FSQxKhcQiyWOuusrGIi5yRbUH/wshnaO1oZx8d3HrmBIh
- XGrV3GS2X/nS/xpXy6InUTIOpOykE9CQIitBTrNB8va1vbxz9SySQ7DvVHRihXG738DG
- tcDg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUh7xNwQfSfVXeXMHFS1fUBzGUR+putRD2eiALVsPEsZAaAuxdxJF8/1++1So3SMmEr4gPhOLlosw==@nongnu.org,
- AJvYcCVY3n8hT0vKbKvPV42a7gsGf+E6mUvzSwYh8CF9ORgLOBQ2W/Km9GRqbXNz6AFTjAj4IOagKm/TM5g+luKa@nongnu.org
-X-Gm-Message-State: AOJu0YxIVHJRp8/5EtzCeWyus+u8HoePaSyzsUeYnxP3bHNcU1H02+P4
- IJST9AQVy9fl1UqwbL9rtW5AHg7PwlXakSfN8phLtzA1OEhCIzEkxEmwNvd8mfskDrQAdLzPNsp
- mhZkArYZmAVo2W6lgWPzE/WVtnXoEco4uaks=
-X-Received: by 2002:a17:90b:1a8e:b0:2d8:8fe9:b00f with SMTP id
- 98e67ed59e1d1-2da630e835emr2553551a91.13.1725380021572; Tue, 03 Sep 2024
- 09:13:41 -0700 (PDT)
+ d=1e100.net; s=20230601; t=1725379749; x=1725984549;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=BHpxQn1TGhAqZw6zjbWv+7WsRHUItP5jTjUdlJjduF0=;
+ b=BIn+MnlIGuDUJNXGG7bf2qC6lj4kV/9QPIWwsZnMQfula0YeDmo34dNYgthGDQqIo9
+ rTBLAx4lP7rMg10sEOngalWmbBSW+iJTQqTAltSozhPyIn0lGHlN4nIDUT/aqawmKNhr
+ bEVxxFp/FaYMGgqB1dLmzpBQm2oRgpbJVw3ckP7DfrwdsZ0s7wBkhHgpfJid0oAq13ad
+ N4wFUE2gv7k98vFreoxWWlEW1/kjkfXzsFpq+HwFlHOBpRyjEfh2dr+W5WVQxIw75mwM
+ 7qJYoq727obVzg7QN87pRcesNR9yehsy7lp6OusMMpz+IpfH9/80OAfNXtTwYlbW8BpE
+ PfuA==
+X-Gm-Message-State: AOJu0YwpBfxuDZDQqz2VgK6JhWAaI+1GFIQ5nxc9kOrU+s9RxEpcftVa
+ xxEQi0oFzGt42DRc8LkFalqOZdSqVtxGQwHSb3+1K4UueuLeKh/YNgll3qpzGlmKSI7I+jl9nZ9
+ J
+X-Received: by 2002:a5d:5f93:0:b0:374:c7a3:3349 with SMTP id
+ ffacd0b85a97d-376df004a84mr1104975f8f.51.1725379749202; 
+ Tue, 03 Sep 2024 09:09:09 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-42bb6df1066sm175123065e9.18.2024.09.03.09.09.08
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 03 Sep 2024 09:09:08 -0700 (PDT)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH for-9.2 53/53] hw: Remove omap2 specific defines and enums
+Date: Tue,  3 Sep 2024 17:07:51 +0100
+Message-Id: <20240903160751.4100218-54-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20240903160751.4100218-1-peter.maydell@linaro.org>
+References: <20240903160751.4100218-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
-References: <CA+1FSiirzpq4wjcKTLSexiOWtv26sgD37h=wA2qxv8Qh5MW_-w@mail.gmail.com>
- <23d60255-614a-4a06-b449-644f215555d0@linaro.org>
- <CA+1FSiitcSBa3JZaAZMGkdB356d2M0rPqscwFnNXGML5HghVCQ@mail.gmail.com>
- <c80e855a-ac1c-40b6-8a76-966e53c0b7d7@linaro.org>
- <4cbc21b0-0634-445d-8a67-7705a4e186d8@linaro.org>
- <CA+1FSigiu8xXF1OPs1oSPS7LiGe23gsN73RwPpJUYH=X5EkTRQ@mail.gmail.com>
- <CA+1FSiiH9LP-7UupNLjDyZJGqJAHAjN2nSLFm9fCx=ZNphxGoQ@mail.gmail.com>
- <CA+1FSih6t-Ccnxh1GvOFMf9pMjcfV1V+yyJHV=ZH0c2RY0Kjng@mail.gmail.com>
- <268989a3-cd5c-41fc-ba0d-5eb71bc6e9dc@linaro.org>
- <CA+1FSijygoVZmTkYR8Xoob4yQQdf9o3CZ2-LmzDrBh2e0VaerQ@mail.gmail.com>
- <CA+1FSigOmKen0QPKSEQqt15Zzrx4UFSCpj+5DJMCJtGnFcE+Hw@mail.gmail.com>
- <CA+1FSijfe+5V4RHs-1ow2JwAeiKcmW31V2Ddx9a9zxb_kybDFg@mail.gmail.com>
- <CAFEAcA-U5DpXysVoVQLAJzEKQ17TL82UiRXHH=q+chxwcubOJA@mail.gmail.com>
- <CA+1FSij0=6Zn_3HHq1njZgwjYDbopGe5ReUvjXkfHaD2_dCYzA@mail.gmail.com>
- <CAFEAcA_dprs9NhEZBd=BhMYwm4Aah7kRA_hhrbbh7Num4dH94A@mail.gmail.com>
-In-Reply-To: <CAFEAcA_dprs9NhEZBd=BhMYwm4Aah7kRA_hhrbbh7Num4dH94A@mail.gmail.com>
-From: Mario Marietto <marietto2008@gmail.com>
-Date: Tue, 3 Sep 2024 18:13:05 +0200
-Message-ID: <CA+1FSihVmn9PAQ=18-RfhJ5Gz3hMeVTLh4qqamf_FG94gCoFDg@mail.gmail.com>
-Subject: Re: Error : init: partition(s) not found in /sys, waiting for their
- uevent(s): mmcblk0p2, mmcblk0p3 while trying to emulate Android 14 on Ubuntu
- 24.04 X64 bit using qemu-system-aarch64.
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-discuss@nongnu.org, 
- qemu-arm <qemu-arm@nongnu.org>
-Content-Type: multipart/alternative; boundary="00000000000049ddb20621395798"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::433;
- envelope-from=marietto2008@gmail.com; helo=mail-pf1-x433.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::435;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x435.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, HTML_MESSAGE=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -140,75 +128,287 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: tlvswPdLbKEs
+X-TUID: LONqVdQxAF4P
 
---00000000000049ddb20621395798
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Remove some defines and enums that are OMAP2 specific and
+no longer used anywhere.
 
-It was only an hypothesis :
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ include/hw/arm/omap.h | 207 ------------------------------------------
+ 1 file changed, 207 deletions(-)
 
-https://pastebin.ubuntu.com/p/zjjgXf8xXM/
+diff --git a/include/hw/arm/omap.h b/include/hw/arm/omap.h
+index 3f9860070b9..cf5f0219a2f 100644
+--- a/include/hw/arm/omap.h
++++ b/include/hw/arm/omap.h
+@@ -26,7 +26,6 @@
+ #include "qom/object.h"
+ 
+ # define OMAP_EMIFS_BASE	0x00000000
+-# define OMAP2_Q0_BASE		0x00000000
+ # define OMAP_CS0_BASE		0x00000000
+ # define OMAP_CS1_BASE		0x04000000
+ # define OMAP_CS2_BASE		0x08000000
+@@ -34,20 +33,12 @@
+ # define OMAP_EMIFF_BASE	0x10000000
+ # define OMAP_IMIF_BASE		0x20000000
+ # define OMAP_LOCALBUS_BASE	0x30000000
+-# define OMAP2_Q1_BASE		0x40000000
+-# define OMAP2_L4_BASE		0x48000000
+-# define OMAP2_SRAM_BASE	0x40200000
+-# define OMAP2_L3_BASE		0x68000000
+-# define OMAP2_Q2_BASE		0x80000000
+-# define OMAP2_Q3_BASE		0xc0000000
+ # define OMAP_MPUI_BASE		0xe1000000
+ 
+ # define OMAP730_SRAM_SIZE	0x00032000
+ # define OMAP15XX_SRAM_SIZE	0x00030000
+ # define OMAP16XX_SRAM_SIZE	0x00004000
+ # define OMAP1611_SRAM_SIZE	0x0003e800
+-# define OMAP242X_SRAM_SIZE	0x000a0000
+-# define OMAP243X_SRAM_SIZE	0x00010000
+ # define OMAP_CS0_SIZE		0x04000000
+ # define OMAP_CS1_SIZE		0x04000000
+ # define OMAP_CS2_SIZE		0x04000000
+@@ -335,87 +326,6 @@ void omap_gpio_set_clk(Omap1GpioState *gpio, omap_clk clk);
+ # define OMAP_INT_730_DMA_CH15		62
+ # define OMAP_INT_730_NAND		63
+ 
+-/*
+- * OMAP-24xx common IRQ numbers
+- */
+-# define OMAP_INT_24XX_STI		4
+-# define OMAP_INT_24XX_SYS_NIRQ		7
+-# define OMAP_INT_24XX_L3_IRQ		10
+-# define OMAP_INT_24XX_PRCM_MPU_IRQ	11
+-# define OMAP_INT_24XX_SDMA_IRQ0	12
+-# define OMAP_INT_24XX_SDMA_IRQ1	13
+-# define OMAP_INT_24XX_SDMA_IRQ2	14
+-# define OMAP_INT_24XX_SDMA_IRQ3	15
+-# define OMAP_INT_243X_MCBSP2_IRQ	16
+-# define OMAP_INT_243X_MCBSP3_IRQ	17
+-# define OMAP_INT_243X_MCBSP4_IRQ	18
+-# define OMAP_INT_243X_MCBSP5_IRQ	19
+-# define OMAP_INT_24XX_GPMC_IRQ		20
+-# define OMAP_INT_24XX_GUFFAW_IRQ	21
+-# define OMAP_INT_24XX_IVA_IRQ		22
+-# define OMAP_INT_24XX_EAC_IRQ		23
+-# define OMAP_INT_24XX_CAM_IRQ		24
+-# define OMAP_INT_24XX_DSS_IRQ		25
+-# define OMAP_INT_24XX_MAIL_U0_MPU	26
+-# define OMAP_INT_24XX_DSP_UMA		27
+-# define OMAP_INT_24XX_DSP_MMU		28
+-# define OMAP_INT_24XX_GPIO_BANK1	29
+-# define OMAP_INT_24XX_GPIO_BANK2	30
+-# define OMAP_INT_24XX_GPIO_BANK3	31
+-# define OMAP_INT_24XX_GPIO_BANK4	32
+-# define OMAP_INT_243X_GPIO_BANK5	33
+-# define OMAP_INT_24XX_MAIL_U3_MPU	34
+-# define OMAP_INT_24XX_WDT3		35
+-# define OMAP_INT_24XX_WDT4		36
+-# define OMAP_INT_24XX_GPTIMER1		37
+-# define OMAP_INT_24XX_GPTIMER2		38
+-# define OMAP_INT_24XX_GPTIMER3		39
+-# define OMAP_INT_24XX_GPTIMER4		40
+-# define OMAP_INT_24XX_GPTIMER5		41
+-# define OMAP_INT_24XX_GPTIMER6		42
+-# define OMAP_INT_24XX_GPTIMER7		43
+-# define OMAP_INT_24XX_GPTIMER8		44
+-# define OMAP_INT_24XX_GPTIMER9		45
+-# define OMAP_INT_24XX_GPTIMER10	46
+-# define OMAP_INT_24XX_GPTIMER11	47
+-# define OMAP_INT_24XX_GPTIMER12	48
+-# define OMAP_INT_24XX_PKA_IRQ		50
+-# define OMAP_INT_24XX_SHA1MD5_IRQ	51
+-# define OMAP_INT_24XX_RNG_IRQ		52
+-# define OMAP_INT_24XX_MG_IRQ		53
+-# define OMAP_INT_24XX_I2C1_IRQ		56
+-# define OMAP_INT_24XX_I2C2_IRQ		57
+-# define OMAP_INT_24XX_MCBSP1_IRQ_TX	59
+-# define OMAP_INT_24XX_MCBSP1_IRQ_RX	60
+-# define OMAP_INT_24XX_MCBSP2_IRQ_TX	62
+-# define OMAP_INT_24XX_MCBSP2_IRQ_RX	63
+-# define OMAP_INT_243X_MCBSP1_IRQ	64
+-# define OMAP_INT_24XX_MCSPI1_IRQ	65
+-# define OMAP_INT_24XX_MCSPI2_IRQ	66
+-# define OMAP_INT_24XX_SSI1_IRQ0	67
+-# define OMAP_INT_24XX_SSI1_IRQ1	68
+-# define OMAP_INT_24XX_SSI2_IRQ0	69
+-# define OMAP_INT_24XX_SSI2_IRQ1	70
+-# define OMAP_INT_24XX_SSI_GDD_IRQ	71
+-# define OMAP_INT_24XX_UART1_IRQ	72
+-# define OMAP_INT_24XX_UART2_IRQ	73
+-# define OMAP_INT_24XX_UART3_IRQ	74
+-# define OMAP_INT_24XX_USB_IRQ_GEN	75
+-# define OMAP_INT_24XX_USB_IRQ_NISO	76
+-# define OMAP_INT_24XX_USB_IRQ_ISO	77
+-# define OMAP_INT_24XX_USB_IRQ_HGEN	78
+-# define OMAP_INT_24XX_USB_IRQ_HSOF	79
+-# define OMAP_INT_24XX_USB_IRQ_OTG	80
+-# define OMAP_INT_24XX_VLYNQ_IRQ	81
+-# define OMAP_INT_24XX_MMC_IRQ		83
+-# define OMAP_INT_24XX_MS_IRQ		84
+-# define OMAP_INT_24XX_FAC_IRQ		85
+-# define OMAP_INT_24XX_MCSPI3_IRQ	91
+-# define OMAP_INT_243X_HS_USB_MC	92
+-# define OMAP_INT_243X_HS_USB_DMA	93
+-# define OMAP_INT_243X_CARKIT		94
+-# define OMAP_INT_34XX_GPTIMER12	95
+-
+ /* omap_dma.c */
+ enum omap_dma_model {
+     omap_dma_3_0,
+@@ -568,74 +478,6 @@ struct omap_dma_lcd_channel_s {
+ # define OMAP_DMA_MMC2_RX		55
+ # define OMAP_DMA_CRYPTO_DES_OUT	56
+ 
+-/*
+- * DMA request numbers for the OMAP2
+- */
+-# define OMAP24XX_DMA_NO_DEVICE		0
+-# define OMAP24XX_DMA_XTI_DMA		1	/* Not in OMAP2420 */
+-# define OMAP24XX_DMA_EXT_DMAREQ0	2
+-# define OMAP24XX_DMA_EXT_DMAREQ1	3
+-# define OMAP24XX_DMA_GPMC		4
+-# define OMAP24XX_DMA_GFX		5	/* Not in OMAP2420 */
+-# define OMAP24XX_DMA_DSS		6
+-# define OMAP24XX_DMA_VLYNQ_TX		7	/* Not in OMAP2420 */
+-# define OMAP24XX_DMA_CWT		8	/* Not in OMAP2420 */
+-# define OMAP24XX_DMA_AES_TX		9	/* Not in OMAP2420 */
+-# define OMAP24XX_DMA_AES_RX		10	/* Not in OMAP2420 */
+-# define OMAP24XX_DMA_DES_TX		11	/* Not in OMAP2420 */
+-# define OMAP24XX_DMA_DES_RX		12	/* Not in OMAP2420 */
+-# define OMAP24XX_DMA_SHA1MD5_RX	13	/* Not in OMAP2420 */
+-# define OMAP24XX_DMA_EXT_DMAREQ2	14
+-# define OMAP24XX_DMA_EXT_DMAREQ3	15
+-# define OMAP24XX_DMA_EXT_DMAREQ4	16
+-# define OMAP24XX_DMA_EAC_AC_RD		17
+-# define OMAP24XX_DMA_EAC_AC_WR		18
+-# define OMAP24XX_DMA_EAC_MD_UL_RD	19
+-# define OMAP24XX_DMA_EAC_MD_UL_WR	20
+-# define OMAP24XX_DMA_EAC_MD_DL_RD	21
+-# define OMAP24XX_DMA_EAC_MD_DL_WR	22
+-# define OMAP24XX_DMA_EAC_BT_UL_RD	23
+-# define OMAP24XX_DMA_EAC_BT_UL_WR	24
+-# define OMAP24XX_DMA_EAC_BT_DL_RD	25
+-# define OMAP24XX_DMA_EAC_BT_DL_WR	26
+-# define OMAP24XX_DMA_I2C1_TX		27
+-# define OMAP24XX_DMA_I2C1_RX		28
+-# define OMAP24XX_DMA_I2C2_TX		29
+-# define OMAP24XX_DMA_I2C2_RX		30
+-# define OMAP24XX_DMA_MCBSP1_TX		31
+-# define OMAP24XX_DMA_MCBSP1_RX		32
+-# define OMAP24XX_DMA_MCBSP2_TX		33
+-# define OMAP24XX_DMA_MCBSP2_RX		34
+-# define OMAP24XX_DMA_SPI1_TX0		35
+-# define OMAP24XX_DMA_SPI1_RX0		36
+-# define OMAP24XX_DMA_SPI1_TX1		37
+-# define OMAP24XX_DMA_SPI1_RX1		38
+-# define OMAP24XX_DMA_SPI1_TX2		39
+-# define OMAP24XX_DMA_SPI1_RX2		40
+-# define OMAP24XX_DMA_SPI1_TX3		41
+-# define OMAP24XX_DMA_SPI1_RX3		42
+-# define OMAP24XX_DMA_SPI2_TX0		43
+-# define OMAP24XX_DMA_SPI2_RX0		44
+-# define OMAP24XX_DMA_SPI2_TX1		45
+-# define OMAP24XX_DMA_SPI2_RX1		46
+-
+-# define OMAP24XX_DMA_UART1_TX		49
+-# define OMAP24XX_DMA_UART1_RX		50
+-# define OMAP24XX_DMA_UART2_TX		51
+-# define OMAP24XX_DMA_UART2_RX		52
+-# define OMAP24XX_DMA_UART3_TX		53
+-# define OMAP24XX_DMA_UART3_RX		54
+-# define OMAP24XX_DMA_USB_W2FC_TX0	55
+-# define OMAP24XX_DMA_USB_W2FC_RX0	56
+-# define OMAP24XX_DMA_USB_W2FC_TX1	57
+-# define OMAP24XX_DMA_USB_W2FC_RX1	58
+-# define OMAP24XX_DMA_USB_W2FC_TX2	59
+-# define OMAP24XX_DMA_USB_W2FC_RX2	60
+-# define OMAP24XX_DMA_MMC1_TX		61
+-# define OMAP24XX_DMA_MMC1_RX		62
+-# define OMAP24XX_DMA_MS		63	/* Not in OMAP2420 */
+-# define OMAP24XX_DMA_EXT_DMAREQ5	64
+-
+ struct omap_uart_s;
+ struct omap_uart_s *omap_uart_init(hwaddr base,
+                 qemu_irq irq, omap_clk fclk, omap_clk iclk,
+@@ -709,24 +551,11 @@ I2CBus *omap_i2c_bus(DeviceState *omap_i2c);
+ # define cpu_is_omap1510(cpu)		(cpu->mpu_model == omap1510)
+ # define cpu_is_omap1610(cpu)		(cpu->mpu_model == omap1610)
+ # define cpu_is_omap1710(cpu)		(cpu->mpu_model == omap1710)
+-# define cpu_is_omap2410(cpu)		(cpu->mpu_model == omap2410)
+-# define cpu_is_omap2420(cpu)		(cpu->mpu_model == omap2420)
+-# define cpu_is_omap2430(cpu)		(cpu->mpu_model == omap2430)
+-# define cpu_is_omap3430(cpu)		(cpu->mpu_model == omap3430)
+-# define cpu_is_omap3630(cpu)           (cpu->mpu_model == omap3630)
+ 
+ # define cpu_is_omap15xx(cpu)		\
+         (cpu_is_omap310(cpu) || cpu_is_omap1510(cpu))
+ # define cpu_is_omap16xx(cpu)		\
+         (cpu_is_omap1610(cpu) || cpu_is_omap1710(cpu))
+-# define cpu_is_omap24xx(cpu)		\
+-        (cpu_is_omap2410(cpu) || cpu_is_omap2420(cpu) || cpu_is_omap2430(cpu))
+-
+-# define cpu_class_omap1(cpu)		\
+-        (cpu_is_omap15xx(cpu) || cpu_is_omap16xx(cpu))
+-# define cpu_class_omap2(cpu)		cpu_is_omap24xx(cpu)
+-# define cpu_class_omap3(cpu) \
+-        (cpu_is_omap3430(cpu) || cpu_is_omap3630(cpu))
+ 
+ struct omap_mpu_state_s {
+     enum omap_mpu_model {
+@@ -734,13 +563,6 @@ struct omap_mpu_state_s {
+         omap1510,
+         omap1610,
+         omap1710,
+-        omap2410,
+-        omap2420,
+-        omap2422,
+-        omap2423,
+-        omap2430,
+-        omap3430,
+-        omap3630,
+     } mpu_model;
+ 
+     ARMCPU *cpu;
+@@ -876,35 +698,6 @@ void omap_mpu_wakeup(void *opaque, int irq, int req);
+                                        HWADDR_PRIx "\n", \
+                       __func__, paddr)
+ 
+-/* OMAP-specific Linux bootloader tags for the ATAG_BOARD area
+- * (Board-specific tags are not here)
+- */
+-#define OMAP_TAG_CLOCK		0x4f01
+-#define OMAP_TAG_MMC		0x4f02
+-#define OMAP_TAG_SERIAL_CONSOLE	0x4f03
+-#define OMAP_TAG_USB		0x4f04
+-#define OMAP_TAG_LCD		0x4f05
+-#define OMAP_TAG_GPIO_SWITCH	0x4f06
+-#define OMAP_TAG_UART		0x4f07
+-#define OMAP_TAG_FBMEM		0x4f08
+-#define OMAP_TAG_STI_CONSOLE	0x4f09
+-#define OMAP_TAG_CAMERA_SENSOR	0x4f0a
+-#define OMAP_TAG_PARTITION	0x4f0b
+-#define OMAP_TAG_TEA5761	0x4f10
+-#define OMAP_TAG_TMP105		0x4f11
+-#define OMAP_TAG_BOOT_REASON	0x4f80
+-#define OMAP_TAG_FLASH_PART_STR	0x4f81
+-#define OMAP_TAG_VERSION_STR	0x4f82
+-
+-enum {
+-    OMAP_GPIOSW_TYPE_COVER	= 0 << 4,
+-    OMAP_GPIOSW_TYPE_CONNECTION	= 1 << 4,
+-    OMAP_GPIOSW_TYPE_ACTIVITY	= 2 << 4,
+-};
+-
+-#define OMAP_GPIOSW_INVERTED	0x0001
+-#define OMAP_GPIOSW_OUTPUT	0x0002
+-
+ # define OMAP_MPUI_REG_MASK		0x000007ff
+ 
+ #endif
+-- 
+2.34.1
 
-On Tue, Sep 3, 2024 at 5:56=E2=80=AFPM Peter Maydell <peter.maydell@linaro.=
-org>
-wrote:
-
-> On Tue, 3 Sept 2024 at 16:46, Mario Marietto <marietto2008@gmail.com>
-> wrote:
-> >
-> > Nope,I don't need 9pfs. I'm trying to understand what parameter I had
-> enabled when it worked. Is there a parameter to pass to enable the suppor=
-t
-> for "virtio-blk-pci" ? (as I said,I'm on the Jetson Nano now). Is
-> virtio-blk-pci enabled by default ? If I should not enable anything relat=
-ed
-> to that,the last chance I have is to try qemu 5.1.0 instead of 5.0.
->
-> virtio-blk-pci should be being built by default, and you seem
-> to have multiple examples of commandlines and logs in this
-> thread where it was working. So I'm confused about
-> in what way you think it isn't working or isn't enabled.
-> What error message are you getting?
->
-> -- PMM
->
-
-
---=20
-Mario.
-
---00000000000049ddb20621395798
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div>It was only an hypothesis :</div><div><br></div><div>=
-<a href=3D"https://pastebin.ubuntu.com/p/zjjgXf8xXM/">https://pastebin.ubun=
-tu.com/p/zjjgXf8xXM/</a></div></div><br><div class=3D"gmail_quote"><div dir=
-=3D"ltr" class=3D"gmail_attr">On Tue, Sep 3, 2024 at 5:56=E2=80=AFPM Peter =
-Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.org">peter.maydell@linar=
-o.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"ma=
-rgin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:=
-1ex">On Tue, 3 Sept 2024 at 16:46, Mario Marietto &lt;<a href=3D"mailto:mar=
-ietto2008@gmail.com" target=3D"_blank">marietto2008@gmail.com</a>&gt; wrote=
-:<br>
-&gt;<br>
-&gt; Nope,I don&#39;t need 9pfs. I&#39;m trying to understand what paramete=
-r I had enabled when it worked. Is there a parameter to pass to enable the =
-support for &quot;virtio-blk-pci&quot; ? (as I said,I&#39;m on the Jetson N=
-ano now). Is virtio-blk-pci enabled by default ? If I should not enable any=
-thing related to that,the last chance I have is to try qemu 5.1.0 instead o=
-f 5.0.<br>
-<br>
-virtio-blk-pci should be being built by default, and you seem<br>
-to have multiple examples of commandlines and logs in this<br>
-thread where it was working. So I&#39;m confused about<br>
-in what way you think it isn&#39;t working or isn&#39;t enabled.<br>
-What error message are you getting?<br>
-<br>
--- PMM<br>
-</blockquote></div><br clear=3D"all"><br><span class=3D"gmail_signature_pre=
-fix">-- </span><br><div dir=3D"ltr" class=3D"gmail_signature">Mario.<br></d=
-iv>
-
---00000000000049ddb20621395798--

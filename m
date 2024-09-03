@@ -1,40 +1,40 @@
-Received: by 2002:a17:504:3a8f:b0:1be9:327d:8ee3 with SMTP id g15csp1355413njf;
-        Tue, 3 Sep 2024 01:36:22 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCX8bbXbqBlSNd7cHQDedUWJlxmws8xiN9aLZiVeTvjMo9QL7lKdQ8fzgI5Ce3V0LWsJWjgNl0X/vznhbw==@linaro.org
-X-Google-Smtp-Source: AGHT+IEyygX5Ox7HFZpOIjORBKEPkCu5awxXtULgsDEIcfPVVGxkYR9c4kTPYEEPNG4NV5KXd1n6
-X-Received: by 2002:a05:620a:4724:b0:7a7:f932:8e37 with SMTP id af79cd13be357-7a9787fda8bmr261754285a.21.1725352582464;
-        Tue, 03 Sep 2024 01:36:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1725352582; cv=none;
+Received: by 2002:a17:504:3a8f:b0:1be9:327d:8ee3 with SMTP id g15csp1355458njf;
+        Tue, 3 Sep 2024 01:36:33 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUdY5hou5FDfeiEz6+LdYH5XcwjrNEb3+rkfJuPKHN4ZHaYgWiREx/lwPBQOnS0lKUop9WJXN2/AF3H9g==@linaro.org
+X-Google-Smtp-Source: AGHT+IGMo1wMg0FefM3Lasj1JjEZJQlMJ0MvOCX7nUJ4bFGLdJsb33j55hjkjxGIqfyYlSzPVQVU
+X-Received: by 2002:a05:6122:3c51:b0:4f5:1978:d228 with SMTP id 71dfb90a1353d-500aaafe575mr9138831e0c.0.1725352593286;
+        Tue, 03 Sep 2024 01:36:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1725352593; cv=none;
         d=google.com; s=arc-20160816;
-        b=lNBR3omuwRaEPfvNL4PA2iL3Wbj+nhksYmUC5xbT06jNnvqLTwch+l8TheWIRb+yHe
-         w4ld8P8XRUOEu2M4DZbAqLURken5ueoZxeFzIxkQvCioAq9YOjWo+SAKdEJui0lUiHjk
-         O9bCTmRifjcwvZj8fk5C1QsGpdD75gmXQEYSt8DgAwkMdgU21jxcC9W+5gOENXfmAYyn
-         FwoD/0GpzksGjr70uEfBpLcthhdWDQqKLTSb8NJX6zFGy55hv4bsNcMhaD6JhvZ6UA4Z
-         wOOranVPppeam7ic0zgm1W9vUYZwg6aH7I1GwGmK8fy/GUJvMOM3CroKCZZimKj4XvwZ
-         0OdQ==
+        b=l/7s2jH3YYMlL+VROiLXWR0CVqA90g9t1WzrD0OpvYUG1s6IqE6wQ6YQ1mMcebSvlv
+         SYWedAjAP89mi2wEBwNjaNef8ne4NkFPXywbT4U7LGJXxhQ4tHuGO+3/VoC8TnspK0TK
+         iFfCsquOrgCE0S/v+d5N5sP4Cykjw0o8sb1c0SHRrDUQ02BXxWlVC96Pvcu/5/uVNQYA
+         EQVq1oXrJa0thsVMTneACQq94TihOgh1Mv4+nlevT5sp5SevGFjITY8Zu7/jyHj1+tut
+         Bvg3MU2NwH+TmJqgKqn4qPKR73qIT9v5eXeIU+57zNQnADMGSFGkRMQfBiSmz9dngbxp
+         jeBQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to;
-        bh=gqkQ1cy5zmSWrjG3XMcGqJVkyPLkEyw/bMYYzuVrHaY=;
-        fh=sVs3p8gbptRv32z9lLYpJL2ORX7RrMh6U4eLBNuVM2U=;
-        b=jhC9Uq/AThma98xNxfjZ7fQKGAUFj/KkfY5Q5QBGsY4eY4nMO9DCMvm/g6YLNbo8oZ
-         L5TJxkYGcRbJfxsstPhY/CwVMWyaSkOd3Gg7f5njgVVrxt0eK6xzePWUnafe31XgBYlZ
-         wVipjyyd2p3t0IV+0R+KNb6/Z2Aq2yL4e+BKJ/478H1aj/Mm5TF4AR1mO+0BF4Pg2Whz
-         6CkTM1rx3qqmnzOV4QIffyMPPF6V7l6PbWlFfe37cXW5BO+yR8MPrm0wEN6dHnMLmYBf
-         X4B3Fk8MDo38IDKNzhQIZjT3Ka57RYXMNt/00cVy1w49S4bCu5i9G9Y2T5ed7NGsyTCn
-         Ry/A==;
+        bh=IoFArrzEF1O9hytsI4svwp5vJaSMIgtyHGVdV2HZgx4=;
+        fh=FCtYWwOtEgMeIuI7wG7f687kK1NW14MjWu/nT+chD9o=;
+        b=nd8my/hCybvPuZlFq0Sczue8WwlHYLBXMsb8r1LkBgxBTlOB0NK9IC4AmG477k7/r6
+         jWKNjKOyukuHa+WI/iMI6+vEZ+OakBCxj41310KCEtO3WmVgI2EJvA0auP87B7Hfb1HF
+         ETGs1W9dVxJLuNaRbvy4uLLYDeOGLsLe9EzOn9PBxEoyZlg6aJ8/Lj7GAi5P4fIOwff+
+         2t2xzy++CkyoUQvDLsvmZmozGWrPSBq9cGD6Bwzrcqd+PCzgaFxL7OWU9Dp3Hji8pswQ
+         gxniBTAl5HjY4wdgIzQrmIqPC6YJP7gRmmi0sGdk9524xGpKo/QjaHFtN017MkiOMmww
+         loug==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7a806d50feasi1049081585a.314.2024.09.03.01.36.22
+        by mx.google.com with ESMTPS id d75a77b69052e-45721e645bbsi90490971cf.750.2024.09.03.01.36.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 03 Sep 2024 01:36:22 -0700 (PDT)
+        Tue, 03 Sep 2024 01:36:33 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
@@ -42,22 +42,22 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1slP0o-0002qG-Rd; Tue, 03 Sep 2024 04:35:42 -0400
+	id 1slP16-0004B1-Cq; Tue, 03 Sep 2024 04:36:00 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1slP0n-0002ki-ID; Tue, 03 Sep 2024 04:35:41 -0400
+ id 1slP13-0003wv-0R; Tue, 03 Sep 2024 04:35:58 -0400
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1slP0m-00084x-00; Tue, 03 Sep 2024 04:35:41 -0400
+ id 1slP11-00084x-EY; Tue, 03 Sep 2024 04:35:56 -0400
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.12; Tue, 3 Sep
- 2024 16:35:28 +0800
+ 2024 16:35:30 +0800
 Received: from localhost.localdomain (192.168.10.10) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server id 15.2.1258.12 via Frontend
- Transport; Tue, 3 Sep 2024 16:35:28 +0800
+ Transport; Tue, 3 Sep 2024 16:35:30 +0800
 To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
  <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
@@ -67,12 +67,10 @@ To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC
  here" <qemu-devel@nongnu.org>
 CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
- <yunlin.tang@aspeedtech.com>, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?=
- <clg@redhat.com>
-Subject: [PATCH v3 01/11] hw/i2c/aspeed: Support discontinuous register memory
- region of I2C bus
-Date: Tue, 3 Sep 2024 16:35:18 +0800
-Message-ID: <20240903083528.2182190-2-jamin_lin@aspeedtech.com>
+ <yunlin.tang@aspeedtech.com>
+Subject: [PATCH v3 07/11] hw/i2c/aspeed: Add support for 64 bit addresses
+Date: Tue, 3 Sep 2024 16:35:24 +0800
+Message-ID: <20240903083528.2182190-8-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20240903083528.2182190-1-jamin_lin@aspeedtech.com>
 References: <20240903083528.2182190-1-jamin_lin@aspeedtech.com>
@@ -104,73 +102,77 @@ Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
 From:  Jamin Lin via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: uEnoTLxzcUT6
+X-TUID: P9K/M6iq+0jw
 
-It only support continuous register memory region for all I2C bus.
-However, the register address of all I2c bus are discontinuous
-for AST2700.
+ASPEED AST2700 SOC is a 64 bits quad core CPUs (Cortex-a35)
+and the base address of dram is "0x4 00000000" which
+is 64bits address.
 
-Ex: the register address of I2C bus for ast2700 as following.
-0x100 - 0x17F: Device 0
-0x200 - 0x27F: Device 1
-0x300 - 0x37F: Device 2
-0x400 - 0x47F: Device 3
-0x500 - 0x57F: Device 4
-0x600 - 0x67F: Device 5
-0x700 - 0x77F: Device 6
-0x800 - 0x87F: Device 7
-0x900 - 0x97F: Device 8
-0xA00 - 0xA7F: Device 9
-0xB00 - 0xB7F: Device 10
-0xC00 - 0xC7F: Device 11
-0xD00 - 0xD7F: Device 12
-0xE00 - 0xE7F: Device 13
-0xF00 – 0xF7F: Device 14
-0x1000 – 0x107F: Device 15
+The AST2700 support the maximum DRAM size is 8 GB.
+The DRAM physical address range is from "0x4_0000_0000" to
+"0x5_FFFF_FFFF".
 
-Introduce a new class attribute to make user set each I2C bus gap size.
-Update formula to create all I2C bus register memory regions.
+The DRAM offset range is from "0x0_0000_0000" to
+"0x1_FFFF_FFFF" and it is enough to use bits [33:0]
+saving the dram offset.
+
+Therefore, save the high part physical address bit[1:0]
+of Tx/Rx buffer address as dma_dram_offset bit[33:32].
+It does not need to decrease the dram physical
+high part address for DMA operation.
+(high part physical address bit[7:0] – 4)
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
 ---
- hw/i2c/aspeed_i2c.c         | 3 ++-
- include/hw/i2c/aspeed_i2c.h | 1 +
- 2 files changed, 3 insertions(+), 1 deletion(-)
+ hw/i2c/aspeed_i2c.c | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
 
 diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
-index b52a99896c..9c222a02fe 100644
+index c1ff80b1cf..44c3c39233 100644
 --- a/hw/i2c/aspeed_i2c.c
 +++ b/hw/i2c/aspeed_i2c.c
-@@ -1012,6 +1012,7 @@ static void aspeed_i2c_realize(DeviceState *dev, Error **errp)
-     SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
-     AspeedI2CState *s = ASPEED_I2C(dev);
-     AspeedI2CClass *aic = ASPEED_I2C_GET_CLASS(s);
-+    uint32_t reg_offset = aic->reg_size + aic->reg_gap_size;
+@@ -743,6 +743,14 @@ static void aspeed_i2c_bus_new_write(AspeedI2CBus *bus, hwaddr offset,
+                       __func__);
+         break;
  
-     sysbus_init_irq(sbd, &s->irq);
-     memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_i2c_ctrl_ops, s,
-@@ -1034,7 +1035,7 @@ static void aspeed_i2c_realize(DeviceState *dev, Error **errp)
-             return;
-         }
- 
--        memory_region_add_subregion(&s->iomem, aic->reg_size * (i + offset),
-+        memory_region_add_subregion(&s->iomem, reg_offset * (i + offset),
-                                     &s->busses[i].mr);
-     }
- 
-diff --git a/include/hw/i2c/aspeed_i2c.h b/include/hw/i2c/aspeed_i2c.h
-index fad5e9259a..02ede85906 100644
---- a/include/hw/i2c/aspeed_i2c.h
-+++ b/include/hw/i2c/aspeed_i2c.h
-@@ -275,6 +275,7 @@ struct AspeedI2CClass {
- 
-     uint8_t num_busses;
-     uint8_t reg_size;
-+    uint32_t reg_gap_size;
-     uint8_t gap;
-     qemu_irq (*bus_get_irq)(AspeedI2CBus *);
- 
++    /*
++     * The AST2700 support the maximum DRAM size is 8 GB.
++     * The DRAM offset range is from 0x0_0000_0000 to
++     * 0x1_FFFF_FFFF and it is enough to use bits [33:0]
++     * saving the dram offset.
++     * Therefore, save the high part physical address bit[1:0]
++     * of Tx/Rx buffer address as dma_dram_offset bit[33:32].
++     */
+     case A_I2CM_DMA_TX_ADDR_HI:
+         if (!aic->has_dma64) {
+             qemu_log_mask(LOG_GUEST_ERROR, "%s: No DMA 64 bits support\n",
+@@ -752,6 +760,8 @@ static void aspeed_i2c_bus_new_write(AspeedI2CBus *bus, hwaddr offset,
+         bus->regs[R_I2CM_DMA_TX_ADDR_HI] = FIELD_EX32(value,
+                                                       I2CM_DMA_TX_ADDR_HI,
+                                                       ADDR_HI);
++        bus->dma_dram_offset = deposit64(bus->dma_dram_offset, 32, 32,
++                                         extract32(value, 0, 2));
+         break;
+     case A_I2CM_DMA_RX_ADDR_HI:
+         if (!aic->has_dma64) {
+@@ -762,6 +772,8 @@ static void aspeed_i2c_bus_new_write(AspeedI2CBus *bus, hwaddr offset,
+         bus->regs[R_I2CM_DMA_RX_ADDR_HI] = FIELD_EX32(value,
+                                                       I2CM_DMA_RX_ADDR_HI,
+                                                       ADDR_HI);
++        bus->dma_dram_offset = deposit64(bus->dma_dram_offset, 32, 32,
++                                         extract32(value, 0, 2));
+         break;
+     case A_I2CS_DMA_TX_ADDR_HI:
+         qemu_log_mask(LOG_UNIMP,
+@@ -777,6 +789,8 @@ static void aspeed_i2c_bus_new_write(AspeedI2CBus *bus, hwaddr offset,
+         bus->regs[R_I2CS_DMA_RX_ADDR_HI] = FIELD_EX32(value,
+                                                       I2CS_DMA_RX_ADDR_HI,
+                                                       ADDR_HI);
++        bus->dma_dram_offset = deposit64(bus->dma_dram_offset, 32, 32,
++                                         extract32(value, 0, 2));
+         break;
+     default:
+         qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset 0x%" HWADDR_PRIx "\n",
 -- 
 2.34.1
 

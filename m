@@ -1,92 +1,94 @@
-Received: by 2002:a17:504:3a8f:b0:1be9:327d:8ee3 with SMTP id g15csp1355725njf;
-        Tue, 3 Sep 2024 01:37:46 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVzL73MePWsy5iUnMlYckbs4V2i9eP2F79TZJAyqyXztHOiywCb4qXpnXqQb5JMrsW3/3dEIv115PtdXQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IEtg5JS6BuGqgRlT6f9NXXpBTTYxbtHUxQAGLEvPT86TZmnVrjAiWLAeMd5CA3gHw9KcKbI
-X-Received: by 2002:a05:622a:408d:b0:447:eb16:2e54 with SMTP id d75a77b69052e-456fd789719mr144643311cf.22.1725352666323;
-        Tue, 03 Sep 2024 01:37:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1725352666; cv=none;
+Received: by 2002:a17:504:3a8f:b0:1be9:327d:8ee3 with SMTP id g15csp1359065njf;
+        Tue, 3 Sep 2024 01:54:45 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCV6aAVUAIxkATuXI4FseOBk82c2fNKPlI2QGuYGoTM57Bjw6FvzKillGrkFsp7AhV7miK+PQOpKrLjWAw==@linaro.org
+X-Google-Smtp-Source: AGHT+IEjfgKrgIuhkUN8JPcC0nj6D7ffgF2VJb73t1QEl5vfkeZxxN0zHk5n/aa/LsgME0UY1hy2
+X-Received: by 2002:a05:622a:428b:b0:456:7fb4:f42b with SMTP id d75a77b69052e-457e2c67da4mr30308401cf.0.1725353685415;
+        Tue, 03 Sep 2024 01:54:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1725353685; cv=none;
         d=google.com; s=arc-20160816;
-        b=UnMqUgdvXBb0apw3rYDGz9EqDJ6X7QNOFxpeyY0TMg54ZWH3IRoyUvsOqd8fU55rKV
-         CCslWbOIKIVJsg+krkUEFp2tRbfHVR33Z9yEGKJqpt/zoMRN+OGwXMhW4QVtLGO9fzHM
-         i9ZtA1FlY2LcEO+UcnK6LWEZCD7VKhaxVrNR8L6E5LI0MMkQAe++4wHnO+e4OALlLcoA
-         pNHhYaBqt4n1ravFyqMg8TauDEx+z2LOWMo9V3M18SYbrqW6Lvta2eU/VI+vLBCq/qEE
-         5kkZEVITMXs5MKfayq86Lffhoy/qG2ls1BzLQJ/K+leD9LDjvcUIZ+M9oLRCQpgwNN+F
-         CU1Q==
+        b=FTI2FWjby8LxyUY00hebtGuataVesqltQOkVQF98r+Bp7nPlcKPO9DUVW6qsswfHEU
+         rdezHOFOb3zqlM8QXQjD27iriva7GaNoUwkwjorahQyIoSSrBiyuTkP83Fpsu1+Ugkuc
+         Ww7yonwMhvPLIW7BqmZOKDX6MHkfz+ktn80yIyyal46+cEbeAcJ/T4s/HPbac2s8sdQe
+         AtV37T8ewUmGVLNNKiqA5xLpY0iPtDyqSycA+cnsvNjb4JeYxKcDjsh4m4ayBx9b38+R
+         EbA14h/fq3IjBWDPqzB9FuSw+JIfK9bhLP4DZfUlUF+WGf2SleRxwnxdaOkJOwxQtc19
+         4ktg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to;
-        bh=osgR4I11O5GplA/Bl4W13p+zaWCPC5DXRxXc36t+SZU=;
-        fh=sVs3p8gbptRv32z9lLYpJL2ORX7RrMh6U4eLBNuVM2U=;
-        b=q2pn4hGOnBg39tNHZPpRbTyIi1h4maZwnlx41gKIpoUbCySXizFCiKnooqnZZhyJRq
-         4KHRmuCEDQEnHhWJgJBJ6tS8IJHzzKfLs/+3Hu7rFNEHKAXm819tQ0KsztGNTBJvW3Ph
-         /pCluK/NZeBO8XM+bp0qhgWteKgFlUyZd1gEes11kAeXoiMU4p2oPtaitGjiWa62lDSl
-         4iY/pQuBlGRqW+C4MTYd1nRSF2SMGCf0fifljHsZ72gcy0jXrTMRpGWP7YHpZ+rJptu0
-         Df11Pn3ZKVcwho3xDdcYPLd3TzHjJHwtjuQatREDXZgph87Vc7+g5xcOA+qzFO2Ydj/T
-         ZhLA==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id;
+        bh=a9Du7cFTxnZzmL80Y09vOOYpMuFnT1+l6ym8zk0j2hI=;
+        fh=P9eF86Qai1jM7EkBuFwf50J/wVjW4uTYQ/nRQ7unStY=;
+        b=0PbzGlFQhO9y2FQ/maZ6dnyZsSNQJYbmd6oUOwT+6O3IEOMM6kaG27wffM3Mzn/i4y
+         4b+/dS2wkC7nfsCtV/Ou10DP05+42OgioRXcVSKV5KEoXeucP1N4r5mwADAvzIa6dODq
+         ePQVD7td25rB4sU2mlpTWMkxjrCnX7/H3fKx0iYcnZ33v7K/HkAUkfK4eHc0u1xy52RP
+         dKBuhC38+ZKeSzQDE+Ht5JyjYTLPssmF6ch60H5IMX+9N4nOqXFThueFePRjGXMl+1y7
+         UqN/YFmVUILj7zNeZPOWdc9f3JtszdhLKw2SJ24Mlsso6rc085/QVyiicUZhz9Zi5QYf
+         wtpg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-45682dae11esi116739251cf.530.2024.09.03.01.37.46
+        by mx.google.com with ESMTPS id d75a77b69052e-45682c86a47si121728041cf.15.2024.09.03.01.54.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 03 Sep 2024 01:37:46 -0700 (PDT)
+        Tue, 03 Sep 2024 01:54:45 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1slP0u-0003IB-2w; Tue, 03 Sep 2024 04:35:48 -0400
+	id 1slPJ5-0001IL-UD; Tue, 03 Sep 2024 04:54:35 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1slP0s-0003Bz-NO; Tue, 03 Sep 2024 04:35:46 -0400
-Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
+ (Exim 4.90_1) (envelope-from <SRS0=Bo9S=QB=kaod.org=clg@ozlabs.org>)
+ id 1slPJ4-0001EB-Un; Tue, 03 Sep 2024 04:54:34 -0400
+Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1slP0r-00084x-7Q; Tue, 03 Sep 2024 04:35:46 -0400
-Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
- (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.12; Tue, 3 Sep
- 2024 16:35:29 +0800
-Received: from localhost.localdomain (192.168.10.10) by TWMBX01.aspeed.com
- (192.168.0.62) with Microsoft SMTP Server id 15.2.1258.12 via Frontend
- Transport; Tue, 3 Sep 2024 16:35:29 +0800
-To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
- <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
- <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
- Stanley" <joel@jms.id.au>, Cleber Rosa <crosa@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>, "Wainer dos
- Santos Moschetta" <wainersm@redhat.com>, Beraldo Leal <bleal@redhat.com>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC
- here" <qemu-devel@nongnu.org>
-CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
- <yunlin.tang@aspeedtech.com>, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?=
- <clg@redhat.com>
-Subject: [PATCH v3 03/11] hw/i2c/aspeed: Support discontinuous poll buffer
- memory region of I2C bus
-Date: Tue, 3 Sep 2024 16:35:20 +0800
-Message-ID: <20240903083528.2182190-4-jamin_lin@aspeedtech.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20240903083528.2182190-1-jamin_lin@aspeedtech.com>
-References: <20240903083528.2182190-1-jamin_lin@aspeedtech.com>
+ (Exim 4.90_1) (envelope-from <SRS0=Bo9S=QB=kaod.org=clg@ozlabs.org>)
+ id 1slPJ2-0001HS-Ut; Tue, 03 Sep 2024 04:54:34 -0400
+Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4WyfZG4bm8z4x1V;
+ Tue,  3 Sep 2024 18:54:30 +1000 (AEST)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (Client did not present a certificate)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4WyfZ9522Pz4wZx;
+ Tue,  3 Sep 2024 18:54:25 +1000 (AEST)
+Message-ID: <f12272cb-6a9b-4ae6-9a32-3cfe934b3e9c@kaod.org>
+Date: Tue, 3 Sep 2024 10:54:24 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+User-Agent: Mozilla Thunderbird
+Subject: Re: [SPAM] [PATCH v3 09/11] aspeed/soc: Support I2C for AST2700
+To: Jamin Lin <jamin_lin@aspeedtech.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ Cleber Rosa <crosa@redhat.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
+ <philmd@linaro.org>, Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ Beraldo Leal <bleal@redhat.com>, "open list:ASPEED BMCs"
+ <qemu-arm@nongnu.org>, "open list:All patches CC here"
+ <qemu-devel@nongnu.org>
+Cc: troy_lee@aspeedtech.com, yunlin.tang@aspeedtech.com
+References: <20240903083528.2182190-1-jamin_lin@aspeedtech.com>
+ <20240903083528.2182190-10-jamin_lin@aspeedtech.com>
+Content-Language: en-US, fr
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <20240903083528.2182190-10-jamin_lin@aspeedtech.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=211.20.114.72;
- envelope-from=jamin_lin@aspeedtech.com; helo=TWMBX01.aspeed.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
+Received-SPF: pass client-ip=150.107.74.76;
+ envelope-from=SRS0=Bo9S=QB=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
+X-Spam_score_int: -39
+X-Spam_score: -4.0
+X-Spam_bar: ----
+X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.25, RCVD_IN_DNSWL_MED=-2.3,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_FAIL=0.001, SPF_PASS=-0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -100,78 +102,89 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
-From:  Jamin Lin via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Bi00QJ4dHtXG
+X-TUID: KaQqLZgk+jLD
 
-It only support continuous pool buffer memory region for all I2C bus.
-However, the pool buffer address of all I2c bus are discontinuous
-for AST2700.
+On 9/3/24 10:35, Jamin Lin wrote:
+> Add I2C model for AST2700 I2C support.
+> The I2C controller registers base address is start at
+> 0x14C0_F000 and its address space is 0x2000.
+> 
+> The AST2700 I2C controller has one source INTC per bus.
+> I2C buses interrupt are connected to GICINT130_INTC
+> from bit 0 to bit 15.
+> I2C bus 0 is connected to GICINT130_INTC at bit 0.
+> I2C bus 15 is connected to GICINT130_INTC at bit 15.
+> 
+> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 
-Ex: the pool buffer address of I2C bus for ast2700 as following.
-0x1A0 - 0x1BF: Device 0 buffer
-0x2A0 - 0x2BF: Device 1 buffer
-0x3A0 - 0x3BF: Device 2 buffer
-0x4A0 - 0x4BF: Device 3 buffer
-0x5A0 - 0x5BF: Device 4 buffer
-0x6A0 - 0x6BF: Device 5 buffer
-0x7A0 - 0x7BF: Device 6 buffer
-0x8A0 - 0x8BF: Device 7 buffer
-0x9A0 - 0x9BF: Device 8 buffer
-0xAA0 - 0xABF: Device 9 buffer
-0xBA0 - 0xBBF: Device 10 buffer
-0xCA0 - 0xCBF: Device 11 buffer
-0xDA0 - 0xDBF: Device 12 buffer
-0xEA0 - 0xEBF: Device 13 buffer
-0xFA0 – 0xFBF: Device 14 buffer
-0x10A0 – 0x10BF: Device 15 buffer
 
-Introduce a new class attribute to make user set each I2C bus
-pool buffer gap size. Update formula to create all I2C bus
-pool buffer memory regions.
-
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
----
- hw/i2c/aspeed_i2c.c         | 3 ++-
- include/hw/i2c/aspeed_i2c.h | 1 +
- 2 files changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
-index d3d49340ea..abcb1d5330 100644
---- a/hw/i2c/aspeed_i2c.c
-+++ b/hw/i2c/aspeed_i2c.c
-@@ -1098,6 +1098,7 @@ static void aspeed_i2c_realize(DeviceState *dev, Error **errp)
-     AspeedI2CState *s = ASPEED_I2C(dev);
-     AspeedI2CClass *aic = ASPEED_I2C_GET_CLASS(s);
-     uint32_t reg_offset = aic->reg_size + aic->reg_gap_size;
-+    uint32_t pool_offset = aic->pool_size + aic->pool_gap_size;
- 
-     sysbus_init_irq(sbd, &s->irq);
-     memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_i2c_ctrl_ops, s,
-@@ -1133,7 +1134,7 @@ static void aspeed_i2c_realize(DeviceState *dev, Error **errp)
-     } else {
-         for (i = 0; i < aic->num_busses; i++) {
-             memory_region_add_subregion(&s->iomem,
--                                        aic->pool_base + (aic->pool_size * i),
-+                                        aic->pool_base + (pool_offset * i),
-                                         &s->busses[i].mr_pool);
-         }
-     }
-diff --git a/include/hw/i2c/aspeed_i2c.h b/include/hw/i2c/aspeed_i2c.h
-index 8e62ec64f8..b42c4dc584 100644
---- a/include/hw/i2c/aspeed_i2c.h
-+++ b/include/hw/i2c/aspeed_i2c.h
-@@ -284,6 +284,7 @@ struct AspeedI2CClass {
- 
-     uint64_t pool_size;
-     hwaddr pool_base;
-+    uint32_t pool_gap_size;
-     uint8_t *(*bus_pool_base)(AspeedI2CBus *);
-     bool check_sram;
-     bool has_dma;
--- 
-2.34.1
+Thanks,
+
+C.
+
+
+> ---
+>   hw/arm/aspeed_ast27x0.c | 24 ++++++++++++++++++++++++
+>   1 file changed, 24 insertions(+)
+> 
+> diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
+> index a5eb78524f..761ee11657 100644
+> --- a/hw/arm/aspeed_ast27x0.c
+> +++ b/hw/arm/aspeed_ast27x0.c
+> @@ -61,6 +61,7 @@ static const hwaddr aspeed_soc_ast2700_memmap[] = {
+>       [ASPEED_GIC_DIST]      =  0x12200000,
+>       [ASPEED_GIC_REDIST]    =  0x12280000,
+>       [ASPEED_DEV_ADC]       =  0x14C00000,
+> +    [ASPEED_DEV_I2C]       =  0x14C0F000,
+>   };
+>   
+>   #define AST2700_MAX_IRQ 288
+> @@ -369,6 +370,9 @@ static void aspeed_soc_ast2700_init(Object *obj)
+>   
+>       snprintf(typename, sizeof(typename), "aspeed.adc-%s", socname);
+>       object_initialize_child(obj, "adc", &s->adc, typename);
+> +
+> +    snprintf(typename, sizeof(typename), "aspeed.i2c-%s", socname);
+> +    object_initialize_child(obj, "i2c", &s->i2c, typename);
+>   }
+>   
+>   /*
+> @@ -452,6 +456,7 @@ static void aspeed_soc_ast2700_realize(DeviceState *dev, Error **errp)
+>       AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
+>       AspeedINTCClass *ic = ASPEED_INTC_GET_CLASS(&a->intc);
+>       g_autofree char *sram_name = NULL;
+> +    qemu_irq irq;
+>   
+>       /* Default boot region (SPI memory or ROMs) */
+>       memory_region_init(&s->spi_boot_container, OBJECT(s),
+> @@ -634,6 +639,25 @@ static void aspeed_soc_ast2700_realize(DeviceState *dev, Error **errp)
+>       sysbus_connect_irq(SYS_BUS_DEVICE(&s->adc), 0,
+>                          aspeed_soc_get_irq(s, ASPEED_DEV_ADC));
+>   
+> +    /* I2C */
+> +    object_property_set_link(OBJECT(&s->i2c), "dram", OBJECT(s->dram_mr),
+> +                             &error_abort);
+> +    if (!sysbus_realize(SYS_BUS_DEVICE(&s->i2c), errp)) {
+> +        return;
+> +    }
+> +    aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->i2c), 0, sc->memmap[ASPEED_DEV_I2C]);
+> +    for (i = 0; i < ASPEED_I2C_GET_CLASS(&s->i2c)->num_busses; i++) {
+> +        /*
+> +         * The AST2700 I2C controller has one source INTC per bus.
+> +         * I2C buses interrupt are connected to GICINT130_INTC
+> +         * from bit 0 to bit 15.
+> +         * I2C bus 0 is connected to GICINT130_INTC at bit 0.
+> +         * I2C bus 15 is connected to GICINT130_INTC at bit 15.
+> +         */
+> +        irq = aspeed_soc_ast2700_get_irq_index(s, ASPEED_DEV_I2C, i);
+> +        sysbus_connect_irq(SYS_BUS_DEVICE(&s->i2c.busses[i]), 0, irq);
+> +    }
+> +
+>       create_unimplemented_device("ast2700.dpmcu", 0x11000000, 0x40000);
+>       create_unimplemented_device("ast2700.iomem0", 0x12000000, 0x01000000);
+>       create_unimplemented_device("ast2700.iomem1", 0x14000000, 0x01000000);
 

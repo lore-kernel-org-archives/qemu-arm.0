@@ -1,126 +1,113 @@
-Received: by 2002:a17:504:3a8f:b0:1be9:327d:8ee3 with SMTP id g15csp1494807njf;
-        Tue, 3 Sep 2024 08:57:05 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWvbFW5sgnB6+EQq8JFfc0GmMQnCxKLnlSejsVc6xnlxOnAOMxSKi8g4TN9xf5vt9xN+Yz6OASlPvYpCA==@linaro.org
-X-Google-Smtp-Source: AGHT+IEJ+TChjh6Sl3F4yW7ywcdGHpU7QOEOJkMfRzKKNF/C0bLBaXoPRRBKhBseUY/C47+g5/YR
-X-Received: by 2002:a05:6122:1312:b0:4f6:b320:d3ee with SMTP id 71dfb90a1353d-50084a803a8mr10714758e0c.2.1725379025354;
-        Tue, 03 Sep 2024 08:57:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1725379025; cv=none;
+Received: by 2002:a17:504:3a8f:b0:1be9:327d:8ee3 with SMTP id g15csp1499946njf;
+        Tue, 3 Sep 2024 09:08:47 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWlv9TJFNzHWNTdM/sDkBkOJaOO19M6Mub/rWoMh/xMwMhszy4lS9YIT/STQQIYYYWfdg7i2TjCuTwT4w==@linaro.org
+X-Google-Smtp-Source: AGHT+IG5ojl+nb27+iLfYR4KcSdbeEmDAaT92RIZvRijK8mfcI1aj7jz26vFI8X4xyQbbBQbha9p
+X-Received: by 2002:a05:6214:3285:b0:6c3:69f6:4049 with SMTP id 6a1803df08f44-6c369f641b0mr82285596d6.20.1725379727159;
+        Tue, 03 Sep 2024 09:08:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1725379727; cv=none;
         d=google.com; s=arc-20160816;
-        b=mvaoZJsGlvv4qV994jlg/f0/IvhXQhVL7yoHHpoFuctQ/3TIOChZLeqfmRZq74rR56
-         rwrvqt1WG43XYarU6tyzsdK1sPQnRA+692FvWklMsUhY2LfOj5JNQ4ZIym1hzj3TqUr0
-         6FQpf4QJ9hBvU2xBnS0u8NI6X/6jInwuNtoT6kXJ5algbBBJc+wEzrtAAKoD/ZIuaeeR
-         cqjuF4SxxUM/sw3uTJi9YOtguWYtz7LniG8kp955EqvfaF0qvK73G5/NL88THGAyXexJ
-         ZxZnC8jyD2gnJXVnNWSf8o8+aLFRGFtAP+t3NmVVR1ReRhB7HIXnpQ4ES908P7Gq8UQg
-         na5g==
+        b=wbn9v5QYb+wVMQx2/nalzqXe+e/gX+PCgjeTBGTC8dojLJNKjZbxXkJSFP60RShZXX
+         pZYVENh23NOfbYRKbWt9PxcIGOW0QxcvBY6MhDbSK4L3V7QZnEoNKWU488ABFQzR7Rm7
+         XZHPPmOBK+t1En01mS1mFt21o2N7eWt5+m9e91d88HtceHLjkCS7C/d2qJD7uG4yb5gd
+         2oYACezLKWHTNtN5pDf92+EOuxPgUiLuw10trl4mBQVCnb+sY30raXOSmNDJXbOmkmXj
+         KzQ3YCRCSVuo1RgH+8Sp3HwivBlS+dIroz/72AbW+na4Q83X0vn7UlLzIALCMgVmei1E
+         /pIw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=bqa1CDeIRVZqsjFO/tctUbiQ4eOvTcz/vQ4hi7emskQ=;
-        fh=XXqTYUi2a0aNDpVZxR3dZ/aNIris9tjXpCMcoiX9i6E=;
-        b=lioqj3Iwxo4uM+mwp3c3bJiSV51SaROY2e5LrxRaWCIA06cmC8RyReeJx+1WPY+uhO
-         sIVbAI4ioT0mmyblfhftxQDEB16sAvArHDxblNoB+5/HOuoljkee2qgDZ218QdsCgvs5
-         IwzlSBygzUWr539Fq+c/4R8W9Js6NndAfLg/jX24NGLW1JiypgFH+qI260tePfa6JvGr
-         jTWmAEwDHW2P1HIAkBvJknujlf4JvA+le/6sSSlDsMp97FGNc2amagtzTXiatmze+MLT
-         3OXQm9Nj2NOc2BG4nFP3ZaAjNOvMBOZuRJKYM6yWKgkSA/zJo4ku9Od/m4bAmUcOmh7P
-         gFhg==;
+        bh=//18DX/tJu3GZ+9rNZdx8aIF+3uXMvFlCeIlcm3UhX0=;
+        fh=MUyqww9qjjk915pPt6uJFtmPmzj4I4j0okd1eRB3TBw=;
+        b=cTnIBDS0oB05QqdVJVp6M9UIG+/WHdv4C8MIVWN4TUhw5YreeOcQGk21A80nek84xF
+         btaLOvEfEZkf1bwd+ZWut7G7ctarwhctE+fS357r78Kb4Qx2wn7CEStdcsOV9U8OYPyE
+         dxPIa+3WLIH64ugfaSQ9uBHJj4XxDv0Sc5hYMOtMgCMcZdEHTh9Kpvs3GrZ20UXPJm/u
+         5R6H425GGUgbNl0GvCZCsyx29nQKSAwBMMaFfcJFBYzxpyGu1JdVDnVMcdEItN6PMIov
+         ILzM7uXbpOQXcXcC7bG1enXOP4Xho5VjNpbrIkX0aSql/pC5Fpjv7TM1QOwNZSWaosB2
+         tDXQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=wXCxkY7w;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=PSdEA8RA;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 71dfb90a1353d-5007127c648si3258129e0c.99.2024.09.03.08.57.05
+        by mx.google.com with ESMTPS id 6a1803df08f44-6c35400c7fbsi94398476d6.330.2024.09.03.09.08.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 03 Sep 2024 08:57:05 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 03 Sep 2024 09:08:47 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=wXCxkY7w;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=PSdEA8RA;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1slVtp-0003F3-7Y; Tue, 03 Sep 2024 11:56:57 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1slW4k-0005M0-3I; Tue, 03 Sep 2024 12:08:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1slVto-0003Du-D6
- for qemu-arm@nongnu.org; Tue, 03 Sep 2024 11:56:56 -0400
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+ id 1slW4i-0005HF-LU
+ for qemu-devel@nongnu.org; Tue, 03 Sep 2024 12:08:12 -0400
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1slVtm-0000yY-Ms
- for qemu-arm@nongnu.org; Tue, 03 Sep 2024 11:56:56 -0400
-Received: by mail-wm1-x334.google.com with SMTP id
- 5b1f17b1804b1-42bbdf7f860so37544385e9.3
- for <qemu-arm@nongnu.org>; Tue, 03 Sep 2024 08:56:54 -0700 (PDT)
+ id 1slW4g-0002ik-OR
+ for qemu-devel@nongnu.org; Tue, 03 Sep 2024 12:08:12 -0400
+Received: by mail-wm1-x329.google.com with SMTP id
+ 5b1f17b1804b1-42bb8cf8abeso44412905e9.2
+ for <qemu-devel@nongnu.org>; Tue, 03 Sep 2024 09:08:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1725379013; x=1725983813; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=bqa1CDeIRVZqsjFO/tctUbiQ4eOvTcz/vQ4hi7emskQ=;
- b=wXCxkY7wrw38xLrnYj60cBt4RzPLJ/fkHeAGxtQYNYxarZKzrbJvGs02Asrd/kcvtc
- nlWa6r9XgD6DBg3OavihztuIpP1oU9nSEydr7ZTJPk8c0BOVfOKuTb+Lm6pG2tYH829F
- RXmQvO31tFlKo1yrQtMDuTXKt8P3zqu4iQ2SXMIjc7d8koY2ef9G2D8b3OMpgvRD+e2a
- 1D5Hss41yF5+bI110m5rr0lFTsoXXKA2KPKDl6+LmAHJo8RRzEBz1sY1MukeGDC44Z4V
- Q7KbPUdlkoH1J8wdMvhstrfRdVALE6ApF9f3IX1ce8WDAVnDQzMnXxr8o1HjZbPRm1Zi
- uCnw==
+ d=linaro.org; s=google; t=1725379689; x=1725984489; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
+ :reply-to; bh=//18DX/tJu3GZ+9rNZdx8aIF+3uXMvFlCeIlcm3UhX0=;
+ b=PSdEA8RA3LImBJX/jC1fHZ0i6jkngFOvM4WNeLCylbzpit7WQZ+XpMd1R7kVd4Jr/j
+ n749+1c1qnLgzBWM5fgCj10nJoML+/anzmon1nQqArlvYhAdDNhTnQPhSRtjMdxqQz9c
+ XiFRn+8OA5Qw0XvRArHTy4d1hL0avN7pI36zjbW0vFV/QguwV2Zsu3qUBy48YbbX8B79
+ U8UyNrlDpVTWystXVk+2iuGk2gs6HO7qY4BjFvH5edgi7/rgZ0fmnA10ZpWBxnmDiVTE
+ E/W0oGQyU8myrUC4dTX93/EleO/oUFrF/b3Pr2MyBIW8rEnOkj0ZzTNfhaCA6lhRJMYR
+ DgCA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1725379013; x=1725983813;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ d=1e100.net; s=20230601; t=1725379689; x=1725984489;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=bqa1CDeIRVZqsjFO/tctUbiQ4eOvTcz/vQ4hi7emskQ=;
- b=q5Cz9h1DxzUIVugVwJfvls1id3NHVujsqtG1PFmyUCeCvP2PSz7jCl3zwalXsEWl6E
- 8iql6rltx4rOZYwbT79bsISDb+LLOhV9rNedHkk1nlB0kAAA7qKCtMFcVR8/wCTk0MG5
- DADWlslNV0Kr422pZhRXKvWLW9XMgwgv1RocWfJNPBQutjzweLd0PRIFTRo4nKW2QRpx
- cs/4V0XYgf7tv/dx9U25li4jBG77VdpbUL6RHsHJjMUEHqtIfnn4dBW4MwsM+U8lek1i
- fujKHGtJH40q9HFb/lvIvXO5BBUvxke79k7DNbP+BwNFQZpvti7YUx+EKg6kdy/XsdCX
- rD6w==
+ bh=//18DX/tJu3GZ+9rNZdx8aIF+3uXMvFlCeIlcm3UhX0=;
+ b=nfTvIZzg86OY4p5JxXdEqVqnGQR+JDH6Sjm+xBp6H2Ujrd+GIMKdO7YVCIslEQnWhS
+ InTR6DF71L+61P/+rR9lNw7NZpOHDuDwSQvQtsWwtlUS2X/7LSvPNEXQaOy5vnioad48
+ 6b8ngsvjY4LdCDf69P0BZzSko/x3yoqLr7G2rKgl4R0nPl1Lh7Smv8Zs5FiA+jITpxii
+ +Ad1U7Nmo4ro/avPqVxdrcH1PC/DmeEwEq02Cxmx6qn7o43ei3RYklybLvjTa9wmLB+G
+ yAGDRjImnyej/zXT6gV5v1Xz3LTg6PKzCMbwa3XGnrpaJMYv583nme5K2gjeo45cAqGS
+ qnEw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVF1bTI0CZCsbKrF3R+81dl5fVKTyG1/uYmLcd8fDOmCuXqfOh6iFjO+qgfkLJseIf+kuS0usjM2w==@nongnu.org
-X-Gm-Message-State: AOJu0YyeYKvKoxB14yBhxVOrKu76wy/VunNnF8ngYPhfMcHWCrWh4D8F
- CokMxLqPLwMlJscAoZnmb0kprI+f48tupDBGHEiS+VpZEPpINOfEToQT5kZUIR8WbARuXFdAuMW
- TduJn7/dRNtRtY6ncdTbgCFbmEd4zct1NHF1pfw==
-X-Received: by 2002:adf:e5ce:0:b0:374:c712:507a with SMTP id
- ffacd0b85a97d-374c71250b6mr4918940f8f.32.1725379012560; Tue, 03 Sep 2024
- 08:56:52 -0700 (PDT)
-MIME-Version: 1.0
-References: <CA+1FSiirzpq4wjcKTLSexiOWtv26sgD37h=wA2qxv8Qh5MW_-w@mail.gmail.com>
- <23d60255-614a-4a06-b449-644f215555d0@linaro.org>
- <CA+1FSiitcSBa3JZaAZMGkdB356d2M0rPqscwFnNXGML5HghVCQ@mail.gmail.com>
- <c80e855a-ac1c-40b6-8a76-966e53c0b7d7@linaro.org>
- <4cbc21b0-0634-445d-8a67-7705a4e186d8@linaro.org>
- <CA+1FSigiu8xXF1OPs1oSPS7LiGe23gsN73RwPpJUYH=X5EkTRQ@mail.gmail.com>
- <CA+1FSiiH9LP-7UupNLjDyZJGqJAHAjN2nSLFm9fCx=ZNphxGoQ@mail.gmail.com>
- <CA+1FSih6t-Ccnxh1GvOFMf9pMjcfV1V+yyJHV=ZH0c2RY0Kjng@mail.gmail.com>
- <268989a3-cd5c-41fc-ba0d-5eb71bc6e9dc@linaro.org>
- <CA+1FSijygoVZmTkYR8Xoob4yQQdf9o3CZ2-LmzDrBh2e0VaerQ@mail.gmail.com>
- <CA+1FSigOmKen0QPKSEQqt15Zzrx4UFSCpj+5DJMCJtGnFcE+Hw@mail.gmail.com>
- <CA+1FSijfe+5V4RHs-1ow2JwAeiKcmW31V2Ddx9a9zxb_kybDFg@mail.gmail.com>
- <CAFEAcA-U5DpXysVoVQLAJzEKQ17TL82UiRXHH=q+chxwcubOJA@mail.gmail.com>
- <CA+1FSij0=6Zn_3HHq1njZgwjYDbopGe5ReUvjXkfHaD2_dCYzA@mail.gmail.com>
-In-Reply-To: <CA+1FSij0=6Zn_3HHq1njZgwjYDbopGe5ReUvjXkfHaD2_dCYzA@mail.gmail.com>
+ AJvYcCXXucuthyBIVa4c8glAkrhdLeJu0cT7/Ar6o9BHFySSAv++rSUZIaAojN+guGLabzkiuT3WBEijVo3+@nongnu.org
+X-Gm-Message-State: AOJu0YyJ6XQ1Mo8seSCncZkl4d1mtSuS89l4riAIaKWRVeyJlbOnP61o
+ 9d7eDbC+zRyxZfmC2iFlonsXJZ4qxd+UyQl8rGP0Lf1tEPi8fUxaVbXcyEMdH3Y=
+X-Received: by 2002:a05:600c:4d97:b0:426:6320:7ddf with SMTP id
+ 5b1f17b1804b1-42c8dea6913mr8609635e9.35.1725379689187; 
+ Tue, 03 Sep 2024 09:08:09 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-42bb6df1066sm175123065e9.18.2024.09.03.09.07.59
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 03 Sep 2024 09:07:59 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 3 Sep 2024 16:56:36 +0100
-Message-ID: <CAFEAcA_dprs9NhEZBd=BhMYwm4Aah7kRA_hhrbbh7Num4dH94A@mail.gmail.com>
-Subject: Re: Error : init: partition(s) not found in /sys, waiting for their
- uevent(s): mmcblk0p2, mmcblk0p3 while trying to emulate Android 14 on Ubuntu
- 24.04 X64 bit using qemu-system-aarch64.
-To: Mario Marietto <marietto2008@gmail.com>
-Cc: Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-discuss@nongnu.org, 
- qemu-arm <qemu-arm@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::334;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x334.google.com
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH for-9.2 07/53] hw/arm/KConfig: Replace ZAURUS with ZAURUS_SCOOP
+Date: Tue,  3 Sep 2024 17:07:05 +0100
+Message-Id: <20240903160751.4100218-8-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20240903160751.4100218-1-peter.maydell@linaro.org>
+References: <20240903160751.4100218-1-peter.maydell@linaro.org>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::329;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x329.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -129,34 +116,120 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: xFEeUWWeEA8Y
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 9to+xVnDeBNt
 
-On Tue, 3 Sept 2024 at 16:46, Mario Marietto <marietto2008@gmail.com> wrote=
-:
->
-> Nope,I don't need 9pfs. I'm trying to understand what parameter I had ena=
-bled when it worked. Is there a parameter to pass to enable the support for=
- "virtio-blk-pci" ? (as I said,I'm on the Jetson Nano now). Is virtio-blk-p=
-ci enabled by default ? If I should not enable anything related to that,the=
- last chance I have is to try qemu 5.1.0 instead of 5.0.
+The ZAURUS KConfig symbol used to do multiple things:
+ * pull in the tc6393xb display device
+ * pull in the Zaurus SCOOP GPIO device
+ * pull in hw/block/nand.c code
+ * pull in hw/block/ecc.c code
+and was used by multiple machine types in the Zaurus family.
 
-virtio-blk-pci should be being built by default, and you seem
-to have multiple examples of commandlines and logs in this
-thread where it was working. So I'm confused about
-in what way you think it isn't working or isn't enabled.
-What error message are you getting?
+Now that we've removed all the Zaurus machine types except
+"collie" (which is not currently deprecated), we can simplify
+this. "collie" doesn't need any of the above things except
+for the SCOOP GPIO device.
 
--- PMM
+Remove the does-lots-of-things ZAURUS KConfig symbol and instead have
+collie pull in ZAURUS_SCOOP, a new KConfig symbol which exists only
+to control the presence of the SCOOP GPIO device.  Move the
+associated source file lines in MAINTAINERS into the Collie
+subsection, since this is now its only user.
+
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ MAINTAINERS         | 4 ++--
+ hw/arm/Kconfig      | 7 +------
+ hw/gpio/Kconfig     | 3 +++
+ hw/gpio/meson.build | 2 +-
+ 4 files changed, 7 insertions(+), 9 deletions(-)
+
+diff --git a/MAINTAINERS b/MAINTAINERS
+index c40f4f91e9c..52bf3a22e01 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -926,10 +926,8 @@ S: Odd Fixes
+ F: hw/arm/mainstone.c
+ F: hw/arm/z2.c
+ F: hw/*/pxa2xx*
+-F: hw/gpio/zaurus.c
+ F: hw/misc/mst_fpga.c
+ F: include/hw/arm/pxa.h
+-F: include/hw/arm/sharpsl.h
+ F: docs/system/arm/mainstone.rst
+ 
+ SABRELITE / i.MX6
+@@ -968,6 +966,8 @@ L: qemu-arm@nongnu.org
+ S: Odd Fixes
+ F: hw/arm/collie.c
+ F: hw/arm/strongarm*
++F: hw/gpio/zaurus.c
++F: include/hw/arm/sharpsl.h
+ F: docs/system/arm/collie.rst
+ 
+ Stellaris
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index 32c5e601d1c..c8c57497c5b 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -300,7 +300,7 @@ config COLLIE
+     default y
+     depends on TCG && ARM
+     select PFLASH_CFI01
+-    select ZAURUS  # scoop
++    select ZAURUS_SCOOP
+     select STRONGARM
+ 
+ config SX1
+@@ -662,11 +662,6 @@ config MSF2
+     select SSI
+     select UNIMP
+ 
+-config ZAURUS
+-    bool
+-    select NAND
+-    select ECC
+-
+ config ARMSSE
+     bool
+     select ARM_V7M
+diff --git a/hw/gpio/Kconfig b/hw/gpio/Kconfig
+index c9c340f6eb4..c423e10f59f 100644
+--- a/hw/gpio/Kconfig
++++ b/hw/gpio/Kconfig
+@@ -19,3 +19,6 @@ config STM32L4X5_GPIO
+ config PCF8574
+     bool
+     depends on I2C
++
++config ZAURUS_SCOOP
++    bool
+diff --git a/hw/gpio/meson.build b/hw/gpio/meson.build
+index 010ad3bf5a7..74840619c01 100644
+--- a/hw/gpio/meson.build
++++ b/hw/gpio/meson.build
+@@ -4,7 +4,7 @@ system_ss.add(when: 'CONFIG_GPIO_PWR', if_true: files('gpio_pwr.c'))
+ system_ss.add(when: 'CONFIG_PCA9552', if_true: files('pca9552.c'))
+ system_ss.add(when: 'CONFIG_PCA9554', if_true: files('pca9554.c'))
+ system_ss.add(when: 'CONFIG_PL061', if_true: files('pl061.c'))
+-system_ss.add(when: 'CONFIG_ZAURUS', if_true: files('zaurus.c'))
++system_ss.add(when: 'CONFIG_ZAURUS_SCOOP', if_true: files('zaurus.c'))
+ 
+ system_ss.add(when: 'CONFIG_IMX', if_true: files('imx_gpio.c'))
+ system_ss.add(when: 'CONFIG_NPCM7XX', if_true: files('npcm7xx_gpio.c'))
+-- 
+2.34.1
+

@@ -1,112 +1,112 @@
-Received: by 2002:a17:504:3a8f:b0:1be9:327d:8ee3 with SMTP id g15csp1502321njf;
-        Tue, 3 Sep 2024 09:14:19 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUiMASwK9zWYMjA6H5pbC8+cC4qhTmdItxrsCgLubnskChnFePwDAA1fpFMWNZIolrvtspLx/3JFuHNZA==@linaro.org
-X-Google-Smtp-Source: AGHT+IG34WbXai8seyH5GEjnuqTvMjthiN5aIldJbbIH+SHYXJ6xwKmJ7Obvohy/rUbdTCW7Ptn6
-X-Received: by 2002:a05:6102:3ed5:b0:494:5b9d:529e with SMTP id ada2fe7eead31-49a7785acd6mr15179851137.26.1725380059388;
-        Tue, 03 Sep 2024 09:14:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1725380059; cv=none;
+Received: by 2002:a17:504:3a8f:b0:1be9:327d:8ee3 with SMTP id g15csp1502461njf;
+        Tue, 3 Sep 2024 09:14:41 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWRuFW1qaerbuKGHnMLbz2LzK6amDl/5J7OE6gXhU6KUTQ2aIvGn/8uvwBtHSPfmRvmcv7gzZUvftmsqQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IFr0ob/rPnmi6Rh4Q6JaWwhc7DYCAXfCrbr6dyuMEZkax2lTW1948I98znKcbAGLaxT2gyY
+X-Received: by 2002:ac5:c4d2:0:b0:4f9:a30:d855 with SMTP id 71dfb90a1353d-5003b09d2f7mr12912404e0c.3.1725380081298;
+        Tue, 03 Sep 2024 09:14:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1725380081; cv=none;
         d=google.com; s=arc-20160816;
-        b=GVcUB2D5WKCaz/lwmNKpZ1fsbdT9KzGwBZeqcrQa055MUisvvM+NfOJqoJtUP1oVrO
-         Ef6/oe6F1Dzq9wkY/4P4AIsxh2T6a+3lKaYIYBJAonH7CeZjBaAjYaYaMvwi9zkURar+
-         RvmKRKqrG0zb9vHFK3FDsplz8nGFzLvf1pOQCk1F4bPr1XlyA4jq4YOd0ETWzlFP/y/3
-         DEkQ2XxLb8f75RtBqzqAdgeoZDiu7WXppL9NTmn3xWdRD7xJcvTaGQyhj3dmZ4DrMFyI
-         P9kMZU82z0Y12t+5c3xZOhe0S93AF4EAl6DHd3hDzqcJVr4agLVqvzgJqBucPyZI1FKQ
-         ofGA==
+        b=nEJ9tMiXYb/lfSufKV3qL+GJ8qToABAxpKJkMJJSUCARAUN0HhZocER2ZK5AEkjvwC
+         UbEju2IwnsfjuIzs+j3DhUezfRdzSvD7+NjpTzAv+UPLw6DiGHD4XXfZYPOBHOMjCMk/
+         QsGwMd2mSbna8GsdtD6DBeo58ovL6OmK8AOVEdEiDzZgpU0SCbqTBaZmMVpJlqvMqQ2t
+         D5/32l/V/zG1YNf34zVfWhysJnoK8mrRW02s8SomzsbQF7VFNZrnS9ZB3lbexYyxF6VO
+         4+0KR1fcnEBUYs/RkTzQ9JSuGzSeFP38SllLyZp7f2z71KMCFaU8rdm9o9iYuJiPCZee
+         MUsA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=sWgTKWF1q/iwi0Dju64WKpJXH7pPPy5M/YmPdvCvrb0=;
+        bh=yX4S0pP3h3jdQcEcaWDgh1yRRNrnCz47HM7ku5iBKjE=;
         fh=H2AmuqulvQE+T5zu97MCEUC3z9wF9NssS7895NhR/+c=;
-        b=k9BDed7xEPOdmV4KBQ16OesT9yonHOUeNlcvVShHR+LBQYTnUR8s1VdsJiCU2UWDjN
-         1nRllM+EQNLChOtZ8l5LuCnnfXdHI5AnEQmc1/xMwBxwprtiVRjuZQ+RR2PRqxBogG/L
-         0XsVVRJoSYZjXuDj/wYNSKgX1pBN7WvugJEuVxrtFCf2XYKDZoUfUyiJxNRLU4pIuRLR
-         4x9HA7qwQvdehbLJaSg5jMLRQVY61AGd5LaefBBK1qjL/qSw8SSiwpBhdQAun0N+pnYk
-         szRMBArnK7fSm8j0UC+LF+Of6lfHZusS25MYMfE3h72cV78ztWitcWxodwcuZu63OWsP
-         wTqg==;
+        b=0Yp2r9LddMFIyrb6XJ5z2ZvAynoj7i2s3E2X8cFt04WrUYs2UM/93XoebL89wa/X4Q
+         +pXgZh/wMYESCWd2+T+Aar5sJr3y4FOFnnaJmNzKMe6nrU3OchBmqtoXJdvIWZ5Zhuxw
+         mYghrElEEo1VHtv0CGJu7iYFy3Gmf7ns4eM1vBUW/gd4R3nREq5SQv0owYDgLBQtbDh2
+         teFAozyHUTLxDGWYbeamSRlXOJsd4LANNsO2ZFa/Libnatv4D6YfKgIQDcvbeAi8XiDZ
+         pMz64oRMLuktXVP1Ds9J3k2s5HYUVS6RE7nr5QoPL6P8Bvn7j7dMptkS/RozZoJaEBF8
+         YnIQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=mjWgLpiO;
+       dkim=pass header.i=@linaro.org header.s=google header.b=jFLTxEon;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ada2fe7eead31-49a5f4fb0a2si2686983137.295.2024.09.03.09.14.19
+        by mx.google.com with ESMTPS id ada2fe7eead31-49a5f5a0fb9si2660756137.764.2024.09.03.09.14.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 03 Sep 2024 09:14:19 -0700 (PDT)
+        Tue, 03 Sep 2024 09:14:41 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=mjWgLpiO;
+       dkim=pass header.i=@linaro.org header.s=google header.b=jFLTxEon;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1slW5L-000076-4u; Tue, 03 Sep 2024 12:08:51 -0400
+	id 1slW55-0006vy-1j; Tue, 03 Sep 2024 12:08:35 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1slW5I-0008C2-2p
- for qemu-arm@nongnu.org; Tue, 03 Sep 2024 12:08:48 -0400
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+ id 1slW53-0006nD-2x
+ for qemu-arm@nongnu.org; Tue, 03 Sep 2024 12:08:33 -0400
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1slW59-0002qt-5K
- for qemu-arm@nongnu.org; Tue, 03 Sep 2024 12:08:47 -0400
-Received: by mail-wm1-x336.google.com with SMTP id
- 5b1f17b1804b1-42bbd0a40faso36618855e9.1
- for <qemu-arm@nongnu.org>; Tue, 03 Sep 2024 09:08:38 -0700 (PDT)
+ id 1slW4y-0002nl-SS
+ for qemu-arm@nongnu.org; Tue, 03 Sep 2024 12:08:32 -0400
+Received: by mail-wm1-x32b.google.com with SMTP id
+ 5b1f17b1804b1-42c79deb7c4so26690025e9.3
+ for <qemu-arm@nongnu.org>; Tue, 03 Sep 2024 09:08:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1725379718; x=1725984518; darn=nongnu.org;
+ d=linaro.org; s=google; t=1725379706; x=1725984506; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=sWgTKWF1q/iwi0Dju64WKpJXH7pPPy5M/YmPdvCvrb0=;
- b=mjWgLpiOIlFkdbDwyz1fWReSALmiC1BXCLxUsmtMe3NDLK59eEZv6Bsd4U5maHSbgd
- 74ZWGTR4xqHy+DaRTcJ7PLEsIRR24HIfR0MvQJdlh25yGI/htkRCn8HKAbUWgPsRSntc
- ebdDtvwYPgD/jv7lcyQd04+vi5lUtjFO0G6+kIW6P+Z0o8aC34b821t7Lt5QnUpA0yba
- KJT80oy7QL8UJki/vjcN1lBbKyjGi111wFslh1Mq4P2/CpAKu4guuBYDbhPyHWAI/nhN
- dQGxdU8qPTGo2P2/Ayh2OO+ooYW59EsM4RWBoy5Q8edirNPPEV3Qnal0YlKOPc/zBPhH
- rTdg==
+ :reply-to; bh=yX4S0pP3h3jdQcEcaWDgh1yRRNrnCz47HM7ku5iBKjE=;
+ b=jFLTxEon1AGQSocWc2JjBY6vRltZSNp4MoyIniKYnlX7pzNJV3UElaYo88aoO6lTs0
+ BYHrWM27wwZbiIH9bAQSXDfjpp9JJgBSoJoBHqdZ4k4tA7Q+y6HGTda4iVsemIKnZt50
+ fHWc+rDG/j5/G7DqA1qgwNpoHn/Y5bfB3rgVs9USCPnCK9epxMiVQzxqli2z1aS+xLYi
+ OC0DbrEXQe0cF6xHAvdHJoZHWd1RXYwRMjYEj9T1fN9gy9km6X4pGimpL/+jQFedHYlW
+ ZLK6KpqMpVRVkOAbyFsadbfbTY8AjpgXaGYvqQ8UTcq2Rsn9QoMSGGlcrYyI/1NF4jPK
+ yHNg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1725379718; x=1725984518;
+ d=1e100.net; s=20230601; t=1725379706; x=1725984506;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=sWgTKWF1q/iwi0Dju64WKpJXH7pPPy5M/YmPdvCvrb0=;
- b=TZO6zvp5jwQjkCiyWQDgHEwfZZ9N76Yvq1MU7XcqlNyZdPpZbiFwIYZp/WQRbucmYE
- +KdzxWITCobKdWzGXcMQuImRZzCPD1zJWAF6Qj37SvzoCkFL6eaX3kXc252cQV+OcBGz
- ObaMsgBos2ZUjnpnyFJRym0VdBJVd8ARvz9yOWYgP6MpAOFxn8Nab/wo4+NzRCJJegYb
- q/toPaR/fg6f3LIh/2iOc5txZWyLC1q85l2pIILl5CiM0hl+os6dciAxdTqkHObcx84m
- 5CXv2AX7ZVf9oqBbV0v3YV0009HAVthUxDhXBAOg+e/Q3m1tFa61eqU7rderwJpBmiWD
- lwxw==
-X-Gm-Message-State: AOJu0YzCAhBSQ5Pf+KlaAXJY9xYpa02EdW+f0g2RAuzIH/8ITB3BuDX9
- X51lFLcLcaJ7ZOIhkklgacHOQ4MJRGU9EOBZOrOEk2MfIFi+wt/lI9iofE4icu4d8AYAxF5AZS4
- I
-X-Received: by 2002:a05:600c:3ba6:b0:426:647b:1bf7 with SMTP id
- 5b1f17b1804b1-42c88108625mr33785575e9.32.1725379717608; 
- Tue, 03 Sep 2024 09:08:37 -0700 (PDT)
+ bh=yX4S0pP3h3jdQcEcaWDgh1yRRNrnCz47HM7ku5iBKjE=;
+ b=hrHeQJdoOhuY5Xsw2qyei5z+ulzcsSrxV1acKeeWOo9Hgy1ftyolUN3Y9bngK6yosK
+ h4eIWv0LDpQvJQQ9YFsLxqPO8pB3Au/mSoFP6kJqxaRsdvGutbwv2w2nr3NEdW5rPy7g
+ /oC3C0fwVzv/o25ksh+hy0iBzw79c6UFQOE2o0gRWvIclljmYRBPIjh2C1Fnm+r2Et5L
+ JlTNmVUMJVZjFylsezBn4m0PIfKX5ygDABNgcvUjVli8MCpRco2xI7lg/ROefa1rq9rD
+ fqPzvi7Cm7JzgYD/+g35gMhPRsKldu+pbZbQ50r1S1oaLOBQoRXre73ssO8fEVfFh0u8
+ pIwA==
+X-Gm-Message-State: AOJu0YzuydmJVkk+WjL2/O5fmWoFze+pPEzMtlaiJMk3kv9Sm5EK22jV
+ mhfM4YerViopLVE81/SwdecAOQ4alRPbe9xS2IoZimZh8h9wE6LymHyJzBTL7ZrsYb3/QP2UREH
+ /
+X-Received: by 2002:a05:600c:3d18:b0:426:5c9b:dee6 with SMTP id
+ 5b1f17b1804b1-42c7b5d8f7fmr62584125e9.26.1725379706304; 
+ Tue, 03 Sep 2024 09:08:26 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-42bb6df1066sm175123065e9.18.2024.09.03.09.08.37
+ 5b1f17b1804b1-42bb6df1066sm175123065e9.18.2024.09.03.09.08.18
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 03 Sep 2024 09:08:37 -0700 (PDT)
+ Tue, 03 Sep 2024 09:08:18 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH for-9.2 30/53] hw/rtc: Remove twl92230 device
-Date: Tue,  3 Sep 2024 17:07:28 +0100
-Message-Id: <20240903160751.4100218-31-peter.maydell@linaro.org>
+Subject: [PATCH for-9.2 18/53] hw/display: Remove pxa2xx_lcd.c
+Date: Tue,  3 Sep 2024 17:07:16 +0100
+Message-Id: <20240903160751.4100218-19-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240903160751.4100218-1-peter.maydell@linaro.org>
 References: <20240903160751.4100218-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::336;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x336.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -128,946 +128,1504 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: I4u1sngmly5P
+X-TUID: aXOACKmbAzIO
 
-Remove the TWL92230 RTC device, which was used only by the n800 and n810.
+Remove the pxa2xx-specific pxa2xx_lcd device.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- MAINTAINERS        |   1 -
- hw/rtc/twl92230.c  | 882 ---------------------------------------------
- hw/rtc/Kconfig     |   4 -
- hw/rtc/meson.build |   1 -
- 4 files changed, 888 deletions(-)
- delete mode 100644 hw/rtc/twl92230.c
+ include/hw/arm/pxa.h    |    6 -
+ hw/display/pxa2xx_lcd.c | 1451 ---------------------------------------
+ hw/display/meson.build  |    1 -
+ 3 files changed, 1458 deletions(-)
+ delete mode 100644 hw/display/pxa2xx_lcd.c
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index e44b6eb38b0..7ae424fbf9f 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -868,7 +868,6 @@ M: Peter Maydell <peter.maydell@linaro.org>
- L: qemu-arm@nongnu.org
- S: Odd Fixes
- F: hw/input/lm832x.c
--F: hw/rtc/twl92230.c
- F: include/hw/input/lm832x.h
+diff --git a/include/hw/arm/pxa.h b/include/hw/arm/pxa.h
+index 40f9356b226..ef7976e1821 100644
+--- a/include/hw/arm/pxa.h
++++ b/include/hw/arm/pxa.h
+@@ -80,12 +80,6 @@ void pxa2xx_gpio_read_notifier(DeviceState *dev, qemu_irq handler);
+ DeviceState *pxa255_dma_init(hwaddr base, qemu_irq irq);
+ DeviceState *pxa27x_dma_init(hwaddr base, qemu_irq irq);
  
- Raspberry Pi
-diff --git a/hw/rtc/twl92230.c b/hw/rtc/twl92230.c
+-/* pxa2xx_lcd.c */
+-typedef struct PXA2xxLCDState PXA2xxLCDState;
+-PXA2xxLCDState *pxa2xx_lcdc_init(MemoryRegion *sysmem,
+-                hwaddr base, qemu_irq irq);
+-void pxa2xx_lcd_vsync_notifier(PXA2xxLCDState *s, qemu_irq handler);
+-
+ /* pxa2xx_pcmcia.c */
+ #define TYPE_PXA2XX_PCMCIA "pxa2xx-pcmcia"
+ OBJECT_DECLARE_SIMPLE_TYPE(PXA2xxPCMCIAState, PXA2XX_PCMCIA)
+diff --git a/hw/display/pxa2xx_lcd.c b/hw/display/pxa2xx_lcd.c
 deleted file mode 100644
-index efd19a76e61..00000000000
---- a/hw/rtc/twl92230.c
+index a9d0d981a08..00000000000
+--- a/hw/display/pxa2xx_lcd.c
 +++ /dev/null
-@@ -1,882 +0,0 @@
+@@ -1,1451 +0,0 @@
 -/*
-- * TI TWL92230C energy-management companion device for the OMAP24xx.
-- * Aka. Menelaus (N4200 MENELAUS1_V2.2)
+- * Intel XScale PXA255/270 LCDC emulation.
 - *
-- * Copyright (C) 2008 Nokia Corporation
-- * Written by Andrzej Zaborowski <andrew@openedhand.com>
+- * Copyright (c) 2006 Openedhand Ltd.
+- * Written by Andrzej Zaborowski <balrog@zabor.org>
 - *
-- * This program is free software; you can redistribute it and/or
-- * modify it under the terms of the GNU General Public License as
-- * published by the Free Software Foundation; either version 2 or
-- * (at your option) version 3 of the License.
+- * This code is licensed under the GPLv2.
 - *
-- * This program is distributed in the hope that it will be useful,
-- * but WITHOUT ANY WARRANTY; without even the implied warranty of
-- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-- * GNU General Public License for more details.
-- *
-- * You should have received a copy of the GNU General Public License along
-- * with this program; if not, see <http://www.gnu.org/licenses/>.
+- * Contributions after 2012-01-13 are licensed under the terms of the
+- * GNU GPL, version 2 or (at your option) any later version.
 - */
 -
 -#include "qemu/osdep.h"
--#include "qemu/timer.h"
--#include "hw/i2c/i2c.h"
+-#include "qemu/log.h"
 -#include "hw/irq.h"
--#include "migration/qemu-file-types.h"
 -#include "migration/vmstate.h"
+-#include "ui/console.h"
+-#include "hw/arm/pxa.h"
+-#include "ui/pixel_ops.h"
+-#include "hw/boards.h"
+-/* FIXME: For graphic_rotate. Should probably be done in common code.  */
 -#include "sysemu/sysemu.h"
--#include "sysemu/rtc.h"
--#include "qemu/bcd.h"
--#include "qemu/module.h"
--#include "qom/object.h"
+-#include "framebuffer.h"
 -
--#define VERBOSE 1
+-struct DMAChannel {
+-    uint32_t branch;
+-    uint8_t up;
+-    uint8_t palette[1024];
+-    uint8_t pbuffer[1024];
+-    void (*redraw)(PXA2xxLCDState *s, hwaddr addr,
+-                   int *miny, int *maxy);
 -
--#define TYPE_TWL92230 "twl92230"
--OBJECT_DECLARE_SIMPLE_TYPE(MenelausState, TWL92230)
--
--struct MenelausState {
--    I2CSlave parent_obj;
--
--    int firstbyte;
--    uint8_t reg;
--
--    uint8_t vcore[5];
--    uint8_t dcdc[3];
--    uint8_t ldo[8];
--    uint8_t sleep[2];
--    uint8_t osc;
--    uint8_t detect;
--    uint16_t mask;
--    uint16_t status;
--    uint8_t dir;
--    uint8_t inputs;
--    uint8_t outputs;
--    uint8_t bbsms;
--    uint8_t pull[4];
--    uint8_t mmc_ctrl[3];
--    uint8_t mmc_debounce;
--    struct {
--        uint8_t ctrl;
--        uint16_t comp;
--        QEMUTimer *hz_tm;
--        int64_t next;
--        struct tm tm;
--        struct tm new;
--        struct tm alm;
--        int64_t sec_offset;
--        int64_t alm_sec;
--        int next_comp;
--    } rtc;
--    uint16_t rtc_next_vmstate;
--    qemu_irq out[4];
--    uint8_t pwrbtn_state;
+-    uint32_t descriptor;
+-    uint32_t source;
+-    uint32_t id;
+-    uint32_t command;
 -};
 -
--static inline void menelaus_update(MenelausState *s)
--{
--    qemu_set_irq(s->out[3], s->status & ~s->mask);
--}
+-struct PXA2xxLCDState {
+-    MemoryRegion *sysmem;
+-    MemoryRegion iomem;
+-    MemoryRegionSection fbsection;
+-    qemu_irq irq;
+-    int irqlevel;
 -
--static inline void menelaus_rtc_start(MenelausState *s)
--{
--    s->rtc.next += qemu_clock_get_ms(rtc_clock);
--    timer_mod(s->rtc.hz_tm, s->rtc.next);
--}
+-    int invalidated;
+-    QemuConsole *con;
+-    int dest_width;
+-    int xres, yres;
+-    int pal_for;
+-    int transp;
+-    enum {
+-        pxa_lcdc_2bpp = 1,
+-        pxa_lcdc_4bpp = 2,
+-        pxa_lcdc_8bpp = 3,
+-        pxa_lcdc_16bpp = 4,
+-        pxa_lcdc_18bpp = 5,
+-        pxa_lcdc_18pbpp = 6,
+-        pxa_lcdc_19bpp = 7,
+-        pxa_lcdc_19pbpp = 8,
+-        pxa_lcdc_24bpp = 9,
+-        pxa_lcdc_25bpp = 10,
+-    } bpp;
 -
--static inline void menelaus_rtc_stop(MenelausState *s)
--{
--    timer_del(s->rtc.hz_tm);
--    s->rtc.next -= qemu_clock_get_ms(rtc_clock);
--    if (s->rtc.next < 1)
--        s->rtc.next = 1;
--}
+-    uint32_t control[6];
+-    uint32_t status[2];
+-    uint32_t ovl1c[2];
+-    uint32_t ovl2c[2];
+-    uint32_t ccr;
+-    uint32_t cmdcr;
+-    uint32_t trgbr;
+-    uint32_t tcr;
+-    uint32_t liidr;
+-    uint8_t bscntr;
 -
--static void menelaus_rtc_update(MenelausState *s)
--{
--    qemu_get_timedate(&s->rtc.tm, s->rtc.sec_offset);
--}
+-    struct DMAChannel dma_ch[7];
 -
--static void menelaus_alm_update(MenelausState *s)
--{
--    if ((s->rtc.ctrl & 3) == 3)
--        s->rtc.alm_sec = qemu_timedate_diff(&s->rtc.alm) - s->rtc.sec_offset;
--}
+-    qemu_irq vsync_cb;
+-    int orientation;
+-};
 -
--static void menelaus_rtc_hz(void *opaque)
--{
--    MenelausState *s = (MenelausState *) opaque;
+-typedef struct QEMU_PACKED {
+-    uint32_t fdaddr;
+-    uint32_t fsaddr;
+-    uint32_t fidr;
+-    uint32_t ldcmd;
+-} PXAFrameDescriptor;
 -
--    s->rtc.next_comp --;
--    s->rtc.alm_sec --;
--    s->rtc.next += 1000;
--    timer_mod(s->rtc.hz_tm, s->rtc.next);
--    if ((s->rtc.ctrl >> 3) & 3) {               /* EVERY */
--        menelaus_rtc_update(s);
--        if (((s->rtc.ctrl >> 3) & 3) == 1 && !s->rtc.tm.tm_sec)
--            s->status |= 1 << 8;                /* RTCTMR */
--        else if (((s->rtc.ctrl >> 3) & 3) == 2 && !s->rtc.tm.tm_min)
--            s->status |= 1 << 8;                /* RTCTMR */
--        else if (!s->rtc.tm.tm_hour)
--            s->status |= 1 << 8;                /* RTCTMR */
--    } else
--        s->status |= 1 << 8;                    /* RTCTMR */
--    if ((s->rtc.ctrl >> 1) & 1) {               /* RTC_AL_EN */
--        if (s->rtc.alm_sec == 0)
--            s->status |= 1 << 9;                /* RTCALM */
--        /* TODO: wake-up */
+-#define LCCR0   0x000   /* LCD Controller Control register 0 */
+-#define LCCR1   0x004   /* LCD Controller Control register 1 */
+-#define LCCR2   0x008   /* LCD Controller Control register 2 */
+-#define LCCR3   0x00c   /* LCD Controller Control register 3 */
+-#define LCCR4   0x010   /* LCD Controller Control register 4 */
+-#define LCCR5   0x014   /* LCD Controller Control register 5 */
+-
+-#define FBR0    0x020   /* DMA Channel 0 Frame Branch register */
+-#define FBR1    0x024   /* DMA Channel 1 Frame Branch register */
+-#define FBR2    0x028   /* DMA Channel 2 Frame Branch register */
+-#define FBR3    0x02c   /* DMA Channel 3 Frame Branch register */
+-#define FBR4    0x030   /* DMA Channel 4 Frame Branch register */
+-#define FBR5    0x110   /* DMA Channel 5 Frame Branch register */
+-#define FBR6    0x114   /* DMA Channel 6 Frame Branch register */
+-
+-#define LCSR1   0x034   /* LCD Controller Status register 1 */
+-#define LCSR0   0x038   /* LCD Controller Status register 0 */
+-#define LIIDR   0x03c   /* LCD Controller Interrupt ID register */
+-
+-#define TRGBR   0x040   /* TMED RGB Seed register */
+-#define TCR     0x044   /* TMED Control register */
+-
+-#define OVL1C1  0x050   /* Overlay 1 Control register 1 */
+-#define OVL1C2  0x060   /* Overlay 1 Control register 2 */
+-#define OVL2C1  0x070   /* Overlay 2 Control register 1 */
+-#define OVL2C2  0x080   /* Overlay 2 Control register 2 */
+-#define CCR     0x090   /* Cursor Control register */
+-
+-#define CMDCR   0x100   /* Command Control register */
+-#define PRSR    0x104   /* Panel Read Status register */
+-
+-#define PXA_LCDDMA_CHANS        7
+-#define DMA_FDADR               0x00    /* Frame Descriptor Address register */
+-#define DMA_FSADR               0x04    /* Frame Source Address register */
+-#define DMA_FIDR                0x08    /* Frame ID register */
+-#define DMA_LDCMD               0x0c    /* Command register */
+-
+-/* LCD Buffer Strength Control register */
+-#define BSCNTR  0x04000054
+-
+-/* Bitfield masks */
+-#define LCCR0_ENB       (1 << 0)
+-#define LCCR0_CMS       (1 << 1)
+-#define LCCR0_SDS       (1 << 2)
+-#define LCCR0_LDM       (1 << 3)
+-#define LCCR0_SOFM0     (1 << 4)
+-#define LCCR0_IUM       (1 << 5)
+-#define LCCR0_EOFM0     (1 << 6)
+-#define LCCR0_PAS       (1 << 7)
+-#define LCCR0_DPD       (1 << 9)
+-#define LCCR0_DIS       (1 << 10)
+-#define LCCR0_QDM       (1 << 11)
+-#define LCCR0_PDD       (0xff << 12)
+-#define LCCR0_BSM0      (1 << 20)
+-#define LCCR0_OUM       (1 << 21)
+-#define LCCR0_LCDT      (1 << 22)
+-#define LCCR0_RDSTM     (1 << 23)
+-#define LCCR0_CMDIM     (1 << 24)
+-#define LCCR0_OUC       (1 << 25)
+-#define LCCR0_LDDALT    (1 << 26)
+-#define LCCR1_PPL(x)    ((x) & 0x3ff)
+-#define LCCR2_LPP(x)    ((x) & 0x3ff)
+-#define LCCR3_API       (15 << 16)
+-#define LCCR3_BPP(x)    ((((x) >> 24) & 7) | (((x) >> 26) & 8))
+-#define LCCR3_PDFOR(x)  (((x) >> 30) & 3)
+-#define LCCR4_K1(x)     (((x) >> 0) & 7)
+-#define LCCR4_K2(x)     (((x) >> 3) & 7)
+-#define LCCR4_K3(x)     (((x) >> 6) & 7)
+-#define LCCR4_PALFOR(x) (((x) >> 15) & 3)
+-#define LCCR5_SOFM(ch)  (1 << (ch - 1))
+-#define LCCR5_EOFM(ch)  (1 << (ch + 7))
+-#define LCCR5_BSM(ch)   (1 << (ch + 15))
+-#define LCCR5_IUM(ch)   (1 << (ch + 23))
+-#define OVLC1_EN        (1 << 31)
+-#define CCR_CEN         (1 << 31)
+-#define FBR_BRA         (1 << 0)
+-#define FBR_BINT        (1 << 1)
+-#define FBR_SRCADDR     (0xfffffff << 4)
+-#define LCSR0_LDD       (1 << 0)
+-#define LCSR0_SOF0      (1 << 1)
+-#define LCSR0_BER       (1 << 2)
+-#define LCSR0_ABC       (1 << 3)
+-#define LCSR0_IU0       (1 << 4)
+-#define LCSR0_IU1       (1 << 5)
+-#define LCSR0_OU        (1 << 6)
+-#define LCSR0_QD        (1 << 7)
+-#define LCSR0_EOF0      (1 << 8)
+-#define LCSR0_BS0       (1 << 9)
+-#define LCSR0_SINT      (1 << 10)
+-#define LCSR0_RDST      (1 << 11)
+-#define LCSR0_CMDINT    (1 << 12)
+-#define LCSR0_BERCH(x)  (((x) & 7) << 28)
+-#define LCSR1_SOF(ch)   (1 << (ch - 1))
+-#define LCSR1_EOF(ch)   (1 << (ch + 7))
+-#define LCSR1_BS(ch)    (1 << (ch + 15))
+-#define LCSR1_IU(ch)    (1 << (ch + 23))
+-#define LDCMD_LENGTH(x) ((x) & 0x001ffffc)
+-#define LDCMD_EOFINT    (1 << 21)
+-#define LDCMD_SOFINT    (1 << 22)
+-#define LDCMD_PAL       (1 << 26)
+-
+-/* Size of a pixel in the QEMU UI output surface, in bytes */
+-#define DEST_PIXEL_WIDTH 4
+-
+-/* Line drawing code to handle the various possible guest pixel formats */
+-
+-# define SKIP_PIXEL(to) do { to += deststep; } while (0)
+-# define COPY_PIXEL(to, from)    \
+-    do {                         \
+-        *(uint32_t *) to = from; \
+-        SKIP_PIXEL(to);          \
+-    } while (0)
+-
+-#if HOST_BIG_ENDIAN
+-# define SWAP_WORDS 1
+-#endif
+-
+-#define FN_2(x) FN(x + 1) FN(x)
+-#define FN_4(x) FN_2(x + 2) FN_2(x)
+-
+-static void pxa2xx_draw_line2(void *opaque, uint8_t *dest, const uint8_t *src,
+-                              int width, int deststep)
+-{
+-    uint32_t *palette = opaque;
+-    uint32_t data;
+-    while (width > 0) {
+-        data = *(uint32_t *) src;
+-#define FN(x) COPY_PIXEL(dest, palette[(data >> ((x) * 2)) & 3]);
+-#ifdef SWAP_WORDS
+-        FN_4(12)
+-        FN_4(8)
+-        FN_4(4)
+-        FN_4(0)
+-#else
+-        FN_4(0)
+-        FN_4(4)
+-        FN_4(8)
+-        FN_4(12)
+-#endif
+-#undef FN
+-        width -= 16;
+-        src += 4;
 -    }
--    if (s->rtc.next_comp <= 0) {
--        s->rtc.next -= muldiv64((int16_t) s->rtc.comp, 1000, 0x8000);
--        s->rtc.next_comp = 3600;
+-}
+-
+-static void pxa2xx_draw_line4(void *opaque, uint8_t *dest, const uint8_t *src,
+-                              int width, int deststep)
+-{
+-    uint32_t *palette = opaque;
+-    uint32_t data;
+-    while (width > 0) {
+-        data = *(uint32_t *) src;
+-#define FN(x) COPY_PIXEL(dest, palette[(data >> ((x) * 4)) & 0xf]);
+-#ifdef SWAP_WORDS
+-        FN_2(6)
+-        FN_2(4)
+-        FN_2(2)
+-        FN_2(0)
+-#else
+-        FN_2(0)
+-        FN_2(2)
+-        FN_2(4)
+-        FN_2(6)
+-#endif
+-#undef FN
+-        width -= 8;
+-        src += 4;
 -    }
--    menelaus_update(s);
 -}
 -
--static void menelaus_reset(I2CSlave *i2c)
+-static void pxa2xx_draw_line8(void *opaque, uint8_t *dest, const uint8_t *src,
+-                              int width, int deststep)
 -{
--    MenelausState *s = TWL92230(i2c);
--
--    s->reg = 0x00;
--
--    s->vcore[0] = 0x0c; /* XXX: X-loader needs 0x8c? check!  */
--    s->vcore[1] = 0x05;
--    s->vcore[2] = 0x02;
--    s->vcore[3] = 0x0c;
--    s->vcore[4] = 0x03;
--    s->dcdc[0] = 0x33;  /* Depends on wiring */
--    s->dcdc[1] = 0x03;
--    s->dcdc[2] = 0x00;
--    s->ldo[0] = 0x95;
--    s->ldo[1] = 0x7e;
--    s->ldo[2] = 0x00;
--    s->ldo[3] = 0x00;   /* Depends on wiring */
--    s->ldo[4] = 0x03;   /* Depends on wiring */
--    s->ldo[5] = 0x00;
--    s->ldo[6] = 0x00;
--    s->ldo[7] = 0x00;
--    s->sleep[0] = 0x00;
--    s->sleep[1] = 0x00;
--    s->osc = 0x01;
--    s->detect = 0x09;
--    s->mask = 0x0fff;
--    s->status = 0;
--    s->dir = 0x07;
--    s->outputs = 0x00;
--    s->bbsms = 0x00;
--    s->pull[0] = 0x00;
--    s->pull[1] = 0x00;
--    s->pull[2] = 0x00;
--    s->pull[3] = 0x00;
--    s->mmc_ctrl[0] = 0x03;
--    s->mmc_ctrl[1] = 0xc0;
--    s->mmc_ctrl[2] = 0x00;
--    s->mmc_debounce = 0x05;
--
--    if (s->rtc.ctrl & 1)
--        menelaus_rtc_stop(s);
--    s->rtc.ctrl = 0x00;
--    s->rtc.comp = 0x0000;
--    s->rtc.next = 1000;
--    s->rtc.sec_offset = 0;
--    s->rtc.next_comp = 1800;
--    s->rtc.alm_sec = 1800;
--    s->rtc.alm.tm_sec = 0x00;
--    s->rtc.alm.tm_min = 0x00;
--    s->rtc.alm.tm_hour = 0x00;
--    s->rtc.alm.tm_mday = 0x01;
--    s->rtc.alm.tm_mon = 0x00;
--    s->rtc.alm.tm_year = 2004;
--    menelaus_update(s);
+-    uint32_t *palette = opaque;
+-    uint32_t data;
+-    while (width > 0) {
+-        data = *(uint32_t *) src;
+-#define FN(x) COPY_PIXEL(dest, palette[(data >> (x)) & 0xff]);
+-#ifdef SWAP_WORDS
+-        FN(24)
+-        FN(16)
+-        FN(8)
+-        FN(0)
+-#else
+-        FN(0)
+-        FN(8)
+-        FN(16)
+-        FN(24)
+-#endif
+-#undef FN
+-        width -= 4;
+-        src += 4;
+-    }
 -}
 -
--static void menelaus_gpio_set(void *opaque, int line, int level)
+-static void pxa2xx_draw_line16(void *opaque, uint8_t *dest, const uint8_t *src,
+-                               int width, int deststep)
 -{
--    MenelausState *s = (MenelausState *) opaque;
+-    uint32_t data;
+-    unsigned int r, g, b;
+-    while (width > 0) {
+-        data = *(uint32_t *) src;
+-#ifdef SWAP_WORDS
+-        data = bswap32(data);
+-#endif
+-        b = (data & 0x1f) << 3;
+-        data >>= 5;
+-        g = (data & 0x3f) << 2;
+-        data >>= 6;
+-        r = (data & 0x1f) << 3;
+-        data >>= 5;
+-        COPY_PIXEL(dest, rgb_to_pixel32(r, g, b));
+-        b = (data & 0x1f) << 3;
+-        data >>= 5;
+-        g = (data & 0x3f) << 2;
+-        data >>= 6;
+-        r = (data & 0x1f) << 3;
+-        COPY_PIXEL(dest, rgb_to_pixel32(r, g, b));
+-        width -= 2;
+-        src += 4;
+-    }
+-}
 -
--    if (line < 3) {
--        /* No interrupt generated */
--        s->inputs &= ~(1 << line);
--        s->inputs |= level << line;
+-static void pxa2xx_draw_line16t(void *opaque, uint8_t *dest, const uint8_t *src,
+-                                int width, int deststep)
+-{
+-    uint32_t data;
+-    unsigned int r, g, b;
+-    while (width > 0) {
+-        data = *(uint32_t *) src;
+-#ifdef SWAP_WORDS
+-        data = bswap32(data);
+-#endif
+-        b = (data & 0x1f) << 3;
+-        data >>= 5;
+-        g = (data & 0x1f) << 3;
+-        data >>= 5;
+-        r = (data & 0x1f) << 3;
+-        data >>= 5;
+-        if (data & 1) {
+-            SKIP_PIXEL(dest);
+-        } else {
+-            COPY_PIXEL(dest, rgb_to_pixel32(r, g, b));
+-        }
+-        data >>= 1;
+-        b = (data & 0x1f) << 3;
+-        data >>= 5;
+-        g = (data & 0x1f) << 3;
+-        data >>= 5;
+-        r = (data & 0x1f) << 3;
+-        data >>= 5;
+-        if (data & 1) {
+-            SKIP_PIXEL(dest);
+-        } else {
+-            COPY_PIXEL(dest, rgb_to_pixel32(r, g, b));
+-        }
+-        width -= 2;
+-        src += 4;
+-    }
+-}
+-
+-static void pxa2xx_draw_line18(void *opaque, uint8_t *dest, const uint8_t *src,
+-                               int width, int deststep)
+-{
+-    uint32_t data;
+-    unsigned int r, g, b;
+-    while (width > 0) {
+-        data = *(uint32_t *) src;
+-#ifdef SWAP_WORDS
+-        data = bswap32(data);
+-#endif
+-        b = (data & 0x3f) << 2;
+-        data >>= 6;
+-        g = (data & 0x3f) << 2;
+-        data >>= 6;
+-        r = (data & 0x3f) << 2;
+-        COPY_PIXEL(dest, rgb_to_pixel32(r, g, b));
+-        width -= 1;
+-        src += 4;
+-    }
+-}
+-
+-/* The wicked packed format */
+-static void pxa2xx_draw_line18p(void *opaque, uint8_t *dest, const uint8_t *src,
+-                                int width, int deststep)
+-{
+-    uint32_t data[3];
+-    unsigned int r, g, b;
+-    while (width > 0) {
+-        data[0] = *(uint32_t *) src;
+-        src += 4;
+-        data[1] = *(uint32_t *) src;
+-        src += 4;
+-        data[2] = *(uint32_t *) src;
+-        src += 4;
+-#ifdef SWAP_WORDS
+-        data[0] = bswap32(data[0]);
+-        data[1] = bswap32(data[1]);
+-        data[2] = bswap32(data[2]);
+-#endif
+-        b = (data[0] & 0x3f) << 2;
+-        data[0] >>= 6;
+-        g = (data[0] & 0x3f) << 2;
+-        data[0] >>= 6;
+-        r = (data[0] & 0x3f) << 2;
+-        data[0] >>= 12;
+-        COPY_PIXEL(dest, rgb_to_pixel32(r, g, b));
+-        b = (data[0] & 0x3f) << 2;
+-        data[0] >>= 6;
+-        g = ((data[1] & 0xf) << 4) | (data[0] << 2);
+-        data[1] >>= 4;
+-        r = (data[1] & 0x3f) << 2;
+-        data[1] >>= 12;
+-        COPY_PIXEL(dest, rgb_to_pixel32(r, g, b));
+-        b = (data[1] & 0x3f) << 2;
+-        data[1] >>= 6;
+-        g = (data[1] & 0x3f) << 2;
+-        data[1] >>= 6;
+-        r = ((data[2] & 0x3) << 6) | (data[1] << 2);
+-        data[2] >>= 8;
+-        COPY_PIXEL(dest, rgb_to_pixel32(r, g, b));
+-        b = (data[2] & 0x3f) << 2;
+-        data[2] >>= 6;
+-        g = (data[2] & 0x3f) << 2;
+-        data[2] >>= 6;
+-        r = data[2] << 2;
+-        COPY_PIXEL(dest, rgb_to_pixel32(r, g, b));
+-        width -= 4;
+-    }
+-}
+-
+-static void pxa2xx_draw_line19(void *opaque, uint8_t *dest, const uint8_t *src,
+-                               int width, int deststep)
+-{
+-    uint32_t data;
+-    unsigned int r, g, b;
+-    while (width > 0) {
+-        data = *(uint32_t *) src;
+-#ifdef SWAP_WORDS
+-        data = bswap32(data);
+-#endif
+-        b = (data & 0x3f) << 2;
+-        data >>= 6;
+-        g = (data & 0x3f) << 2;
+-        data >>= 6;
+-        r = (data & 0x3f) << 2;
+-        data >>= 6;
+-        if (data & 1) {
+-            SKIP_PIXEL(dest);
+-        } else {
+-            COPY_PIXEL(dest, rgb_to_pixel32(r, g, b));
+-        }
+-        width -= 1;
+-        src += 4;
+-    }
+-}
+-
+-/* The wicked packed format */
+-static void pxa2xx_draw_line19p(void *opaque, uint8_t *dest, const uint8_t *src,
+-                                int width, int deststep)
+-{
+-    uint32_t data[3];
+-    unsigned int r, g, b;
+-    while (width > 0) {
+-        data[0] = *(uint32_t *) src;
+-        src += 4;
+-        data[1] = *(uint32_t *) src;
+-        src += 4;
+-        data[2] = *(uint32_t *) src;
+-        src += 4;
+-# ifdef SWAP_WORDS
+-        data[0] = bswap32(data[0]);
+-        data[1] = bswap32(data[1]);
+-        data[2] = bswap32(data[2]);
+-# endif
+-        b = (data[0] & 0x3f) << 2;
+-        data[0] >>= 6;
+-        g = (data[0] & 0x3f) << 2;
+-        data[0] >>= 6;
+-        r = (data[0] & 0x3f) << 2;
+-        data[0] >>= 6;
+-        if (data[0] & 1) {
+-            SKIP_PIXEL(dest);
+-        } else {
+-            COPY_PIXEL(dest, rgb_to_pixel32(r, g, b));
+-        }
+-        data[0] >>= 6;
+-        b = (data[0] & 0x3f) << 2;
+-        data[0] >>= 6;
+-        g = ((data[1] & 0xf) << 4) | (data[0] << 2);
+-        data[1] >>= 4;
+-        r = (data[1] & 0x3f) << 2;
+-        data[1] >>= 6;
+-        if (data[1] & 1) {
+-            SKIP_PIXEL(dest);
+-        } else {
+-            COPY_PIXEL(dest, rgb_to_pixel32(r, g, b));
+-        }
+-        data[1] >>= 6;
+-        b = (data[1] & 0x3f) << 2;
+-        data[1] >>= 6;
+-        g = (data[1] & 0x3f) << 2;
+-        data[1] >>= 6;
+-        r = ((data[2] & 0x3) << 6) | (data[1] << 2);
+-        data[2] >>= 2;
+-        if (data[2] & 1) {
+-            SKIP_PIXEL(dest);
+-        } else {
+-            COPY_PIXEL(dest, rgb_to_pixel32(r, g, b));
+-        }
+-        data[2] >>= 6;
+-        b = (data[2] & 0x3f) << 2;
+-        data[2] >>= 6;
+-        g = (data[2] & 0x3f) << 2;
+-        data[2] >>= 6;
+-        r = data[2] << 2;
+-        data[2] >>= 6;
+-        if (data[2] & 1) {
+-            SKIP_PIXEL(dest);
+-        } else {
+-            COPY_PIXEL(dest, rgb_to_pixel32(r, g, b));
+-        }
+-        width -= 4;
+-    }
+-}
+-
+-static void pxa2xx_draw_line24(void *opaque, uint8_t *dest, const uint8_t *src,
+-                               int width, int deststep)
+-{
+-    uint32_t data;
+-    unsigned int r, g, b;
+-    while (width > 0) {
+-        data = *(uint32_t *) src;
+-#ifdef SWAP_WORDS
+-        data = bswap32(data);
+-#endif
+-        b = data & 0xff;
+-        data >>= 8;
+-        g = data & 0xff;
+-        data >>= 8;
+-        r = data & 0xff;
+-        COPY_PIXEL(dest, rgb_to_pixel32(r, g, b));
+-        width -= 1;
+-        src += 4;
+-    }
+-}
+-
+-static void pxa2xx_draw_line24t(void *opaque, uint8_t *dest, const uint8_t *src,
+-                                int width, int deststep)
+-{
+-    uint32_t data;
+-    unsigned int r, g, b;
+-    while (width > 0) {
+-        data = *(uint32_t *) src;
+-#ifdef SWAP_WORDS
+-        data = bswap32(data);
+-#endif
+-        b = (data & 0x7f) << 1;
+-        data >>= 7;
+-        g = data & 0xff;
+-        data >>= 8;
+-        r = data & 0xff;
+-        data >>= 8;
+-        if (data & 1) {
+-            SKIP_PIXEL(dest);
+-        } else {
+-            COPY_PIXEL(dest, rgb_to_pixel32(r, g, b));
+-        }
+-        width -= 1;
+-        src += 4;
+-    }
+-}
+-
+-static void pxa2xx_draw_line25(void *opaque, uint8_t *dest, const uint8_t *src,
+-                               int width, int deststep)
+-{
+-    uint32_t data;
+-    unsigned int r, g, b;
+-    while (width > 0) {
+-        data = *(uint32_t *) src;
+-#ifdef SWAP_WORDS
+-        data = bswap32(data);
+-#endif
+-        b = data & 0xff;
+-        data >>= 8;
+-        g = data & 0xff;
+-        data >>= 8;
+-        r = data & 0xff;
+-        data >>= 8;
+-        if (data & 1) {
+-            SKIP_PIXEL(dest);
+-        } else {
+-            COPY_PIXEL(dest, rgb_to_pixel32(r, g, b));
+-        }
+-        width -= 1;
+-        src += 4;
+-    }
+-}
+-
+-/* Overlay planes disabled, no transparency */
+-static drawfn pxa2xx_draw_fn_32[16] = {
+-    [0 ... 0xf]       = NULL,
+-    [pxa_lcdc_2bpp]   = pxa2xx_draw_line2,
+-    [pxa_lcdc_4bpp]   = pxa2xx_draw_line4,
+-    [pxa_lcdc_8bpp]   = pxa2xx_draw_line8,
+-    [pxa_lcdc_16bpp]  = pxa2xx_draw_line16,
+-    [pxa_lcdc_18bpp]  = pxa2xx_draw_line18,
+-    [pxa_lcdc_18pbpp] = pxa2xx_draw_line18p,
+-    [pxa_lcdc_24bpp]  = pxa2xx_draw_line24,
+-};
+-
+-/* Overlay planes enabled, transparency used */
+-static drawfn pxa2xx_draw_fn_32t[16] = {
+-    [0 ... 0xf]       = NULL,
+-    [pxa_lcdc_4bpp]   = pxa2xx_draw_line4,
+-    [pxa_lcdc_8bpp]   = pxa2xx_draw_line8,
+-    [pxa_lcdc_16bpp]  = pxa2xx_draw_line16t,
+-    [pxa_lcdc_19bpp]  = pxa2xx_draw_line19,
+-    [pxa_lcdc_19pbpp] = pxa2xx_draw_line19p,
+-    [pxa_lcdc_24bpp]  = pxa2xx_draw_line24t,
+-    [pxa_lcdc_25bpp]  = pxa2xx_draw_line25,
+-};
+-
+-#undef COPY_PIXEL
+-#undef SKIP_PIXEL
+-
+-#ifdef SWAP_WORDS
+-# undef SWAP_WORDS
+-#endif
+-
+-/* Route internal interrupt lines to the global IC */
+-static void pxa2xx_lcdc_int_update(PXA2xxLCDState *s)
+-{
+-    int level = 0;
+-    level |= (s->status[0] & LCSR0_LDD)    && !(s->control[0] & LCCR0_LDM);
+-    level |= (s->status[0] & LCSR0_SOF0)   && !(s->control[0] & LCCR0_SOFM0);
+-    level |= (s->status[0] & LCSR0_IU0)    && !(s->control[0] & LCCR0_IUM);
+-    level |= (s->status[0] & LCSR0_IU1)    && !(s->control[5] & LCCR5_IUM(1));
+-    level |= (s->status[0] & LCSR0_OU)     && !(s->control[0] & LCCR0_OUM);
+-    level |= (s->status[0] & LCSR0_QD)     && !(s->control[0] & LCCR0_QDM);
+-    level |= (s->status[0] & LCSR0_EOF0)   && !(s->control[0] & LCCR0_EOFM0);
+-    level |= (s->status[0] & LCSR0_BS0)    && !(s->control[0] & LCCR0_BSM0);
+-    level |= (s->status[0] & LCSR0_RDST)   && !(s->control[0] & LCCR0_RDSTM);
+-    level |= (s->status[0] & LCSR0_CMDINT) && !(s->control[0] & LCCR0_CMDIM);
+-    level |= (s->status[1] & ~s->control[5]);
+-
+-    qemu_set_irq(s->irq, !!level);
+-    s->irqlevel = level;
+-}
+-
+-/* Set Branch Status interrupt high and poke associated registers */
+-static inline void pxa2xx_dma_bs_set(PXA2xxLCDState *s, int ch)
+-{
+-    int unmasked;
+-    if (ch == 0) {
+-        s->status[0] |= LCSR0_BS0;
+-        unmasked = !(s->control[0] & LCCR0_BSM0);
+-    } else {
+-        s->status[1] |= LCSR1_BS(ch);
+-        unmasked = !(s->control[5] & LCCR5_BSM(ch));
+-    }
+-
+-    if (unmasked) {
+-        if (s->irqlevel)
+-            s->status[0] |= LCSR0_SINT;
+-        else
+-            s->liidr = s->dma_ch[ch].id;
+-    }
+-}
+-
+-/* Set Start Of Frame Status interrupt high and poke associated registers */
+-static inline void pxa2xx_dma_sof_set(PXA2xxLCDState *s, int ch)
+-{
+-    int unmasked;
+-    if (!(s->dma_ch[ch].command & LDCMD_SOFINT))
+-        return;
+-
+-    if (ch == 0) {
+-        s->status[0] |= LCSR0_SOF0;
+-        unmasked = !(s->control[0] & LCCR0_SOFM0);
+-    } else {
+-        s->status[1] |= LCSR1_SOF(ch);
+-        unmasked = !(s->control[5] & LCCR5_SOFM(ch));
+-    }
+-
+-    if (unmasked) {
+-        if (s->irqlevel)
+-            s->status[0] |= LCSR0_SINT;
+-        else
+-            s->liidr = s->dma_ch[ch].id;
+-    }
+-}
+-
+-/* Set End Of Frame Status interrupt high and poke associated registers */
+-static inline void pxa2xx_dma_eof_set(PXA2xxLCDState *s, int ch)
+-{
+-    int unmasked;
+-    if (!(s->dma_ch[ch].command & LDCMD_EOFINT))
+-        return;
+-
+-    if (ch == 0) {
+-        s->status[0] |= LCSR0_EOF0;
+-        unmasked = !(s->control[0] & LCCR0_EOFM0);
+-    } else {
+-        s->status[1] |= LCSR1_EOF(ch);
+-        unmasked = !(s->control[5] & LCCR5_EOFM(ch));
+-    }
+-
+-    if (unmasked) {
+-        if (s->irqlevel)
+-            s->status[0] |= LCSR0_SINT;
+-        else
+-            s->liidr = s->dma_ch[ch].id;
+-    }
+-}
+-
+-/* Set Bus Error Status interrupt high and poke associated registers */
+-static inline void pxa2xx_dma_ber_set(PXA2xxLCDState *s, int ch)
+-{
+-    s->status[0] |= LCSR0_BERCH(ch) | LCSR0_BER;
+-    if (s->irqlevel)
+-        s->status[0] |= LCSR0_SINT;
+-    else
+-        s->liidr = s->dma_ch[ch].id;
+-}
+-
+-/* Load new Frame Descriptors from DMA */
+-static void pxa2xx_descriptor_load(PXA2xxLCDState *s)
+-{
+-    PXAFrameDescriptor desc;
+-    hwaddr descptr;
+-    int i;
+-
+-    for (i = 0; i < PXA_LCDDMA_CHANS; i ++) {
+-        s->dma_ch[i].source = 0;
+-
+-        if (!s->dma_ch[i].up)
+-            continue;
+-
+-        if (s->dma_ch[i].branch & FBR_BRA) {
+-            descptr = s->dma_ch[i].branch & FBR_SRCADDR;
+-            if (s->dma_ch[i].branch & FBR_BINT)
+-                pxa2xx_dma_bs_set(s, i);
+-            s->dma_ch[i].branch &= ~FBR_BRA;
+-        } else
+-            descptr = s->dma_ch[i].descriptor;
+-
+-        if (!((descptr >= PXA2XX_SDRAM_BASE && descptr +
+-                 sizeof(desc) <= PXA2XX_SDRAM_BASE + current_machine->ram_size) ||
+-                (descptr >= PXA2XX_INTERNAL_BASE && descptr + sizeof(desc) <=
+-                 PXA2XX_INTERNAL_BASE + PXA2XX_INTERNAL_SIZE))) {
+-            continue;
+-        }
+-
+-        cpu_physical_memory_read(descptr, &desc, sizeof(desc));
+-        s->dma_ch[i].descriptor = le32_to_cpu(desc.fdaddr);
+-        s->dma_ch[i].source = le32_to_cpu(desc.fsaddr);
+-        s->dma_ch[i].id = le32_to_cpu(desc.fidr);
+-        s->dma_ch[i].command = le32_to_cpu(desc.ldcmd);
+-    }
+-}
+-
+-static uint64_t pxa2xx_lcdc_read(void *opaque, hwaddr offset,
+-                                 unsigned size)
+-{
+-    PXA2xxLCDState *s = (PXA2xxLCDState *) opaque;
+-    int ch;
+-
+-    switch (offset) {
+-    case LCCR0:
+-        return s->control[0];
+-    case LCCR1:
+-        return s->control[1];
+-    case LCCR2:
+-        return s->control[2];
+-    case LCCR3:
+-        return s->control[3];
+-    case LCCR4:
+-        return s->control[4];
+-    case LCCR5:
+-        return s->control[5];
+-
+-    case OVL1C1:
+-        return s->ovl1c[0];
+-    case OVL1C2:
+-        return s->ovl1c[1];
+-    case OVL2C1:
+-        return s->ovl2c[0];
+-    case OVL2C2:
+-        return s->ovl2c[1];
+-
+-    case CCR:
+-        return s->ccr;
+-
+-    case CMDCR:
+-        return s->cmdcr;
+-
+-    case TRGBR:
+-        return s->trgbr;
+-    case TCR:
+-        return s->tcr;
+-
+-    case 0x200 ... 0x1000:      /* DMA per-channel registers */
+-        ch = (offset - 0x200) >> 4;
+-        if (!(ch >= 0 && ch < PXA_LCDDMA_CHANS))
+-            goto fail;
+-
+-        switch (offset & 0xf) {
+-        case DMA_FDADR:
+-            return s->dma_ch[ch].descriptor;
+-        case DMA_FSADR:
+-            return s->dma_ch[ch].source;
+-        case DMA_FIDR:
+-            return s->dma_ch[ch].id;
+-        case DMA_LDCMD:
+-            return s->dma_ch[ch].command;
+-        default:
+-            goto fail;
+-        }
+-
+-    case FBR0:
+-        return s->dma_ch[0].branch;
+-    case FBR1:
+-        return s->dma_ch[1].branch;
+-    case FBR2:
+-        return s->dma_ch[2].branch;
+-    case FBR3:
+-        return s->dma_ch[3].branch;
+-    case FBR4:
+-        return s->dma_ch[4].branch;
+-    case FBR5:
+-        return s->dma_ch[5].branch;
+-    case FBR6:
+-        return s->dma_ch[6].branch;
+-
+-    case BSCNTR:
+-        return s->bscntr;
+-
+-    case PRSR:
+-        return 0;
+-
+-    case LCSR0:
+-        return s->status[0];
+-    case LCSR1:
+-        return s->status[1];
+-    case LIIDR:
+-        return s->liidr;
+-
+-    default:
+-    fail:
+-        qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset 0x%" HWADDR_PRIX "\n",
+-                      __func__, offset);
+-    }
+-
+-    return 0;
+-}
+-
+-static void pxa2xx_lcdc_write(void *opaque, hwaddr offset,
+-                              uint64_t value, unsigned size)
+-{
+-    PXA2xxLCDState *s = (PXA2xxLCDState *) opaque;
+-    int ch;
+-
+-    switch (offset) {
+-    case LCCR0:
+-        /* ACK Quick Disable done */
+-        if ((s->control[0] & LCCR0_ENB) && !(value & LCCR0_ENB))
+-            s->status[0] |= LCSR0_QD;
+-
+-        if (!(s->control[0] & LCCR0_LCDT) && (value & LCCR0_LCDT)) {
+-            qemu_log_mask(LOG_UNIMP,
+-                          "%s: internal frame buffer unsupported\n", __func__);
+-        }
+-        if ((s->control[3] & LCCR3_API) &&
+-                (value & LCCR0_ENB) && !(value & LCCR0_LCDT))
+-            s->status[0] |= LCSR0_ABC;
+-
+-        s->control[0] = value & 0x07ffffff;
+-        pxa2xx_lcdc_int_update(s);
+-
+-        s->dma_ch[0].up = !!(value & LCCR0_ENB);
+-        s->dma_ch[1].up = (s->ovl1c[0] & OVLC1_EN) || (value & LCCR0_SDS);
+-        break;
+-
+-    case LCCR1:
+-        s->control[1] = value;
+-        break;
+-
+-    case LCCR2:
+-        s->control[2] = value;
+-        break;
+-
+-    case LCCR3:
+-        s->control[3] = value & 0xefffffff;
+-        s->bpp = LCCR3_BPP(value);
+-        break;
+-
+-    case LCCR4:
+-        s->control[4] = value & 0x83ff81ff;
+-        break;
+-
+-    case LCCR5:
+-        s->control[5] = value & 0x3f3f3f3f;
+-        break;
+-
+-    case OVL1C1:
+-        if (!(s->ovl1c[0] & OVLC1_EN) && (value & OVLC1_EN)) {
+-            qemu_log_mask(LOG_UNIMP, "%s: Overlay 1 not supported\n", __func__);
+-        }
+-        s->ovl1c[0] = value & 0x80ffffff;
+-        s->dma_ch[1].up = (value & OVLC1_EN) || (s->control[0] & LCCR0_SDS);
+-        break;
+-
+-    case OVL1C2:
+-        s->ovl1c[1] = value & 0x000fffff;
+-        break;
+-
+-    case OVL2C1:
+-        if (!(s->ovl2c[0] & OVLC1_EN) && (value & OVLC1_EN)) {
+-            qemu_log_mask(LOG_UNIMP, "%s: Overlay 2 not supported\n", __func__);
+-        }
+-        s->ovl2c[0] = value & 0x80ffffff;
+-        s->dma_ch[2].up = !!(value & OVLC1_EN);
+-        s->dma_ch[3].up = !!(value & OVLC1_EN);
+-        s->dma_ch[4].up = !!(value & OVLC1_EN);
+-        break;
+-
+-    case OVL2C2:
+-        s->ovl2c[1] = value & 0x007fffff;
+-        break;
+-
+-    case CCR:
+-        if (!(s->ccr & CCR_CEN) && (value & CCR_CEN)) {
+-            qemu_log_mask(LOG_UNIMP,
+-                          "%s: Hardware cursor unimplemented\n", __func__);
+-        }
+-        s->ccr = value & 0x81ffffe7;
+-        s->dma_ch[5].up = !!(value & CCR_CEN);
+-        break;
+-
+-    case CMDCR:
+-        s->cmdcr = value & 0xff;
+-        break;
+-
+-    case TRGBR:
+-        s->trgbr = value & 0x00ffffff;
+-        break;
+-
+-    case TCR:
+-        s->tcr = value & 0x7fff;
+-        break;
+-
+-    case 0x200 ... 0x1000:      /* DMA per-channel registers */
+-        ch = (offset - 0x200) >> 4;
+-        if (!(ch >= 0 && ch < PXA_LCDDMA_CHANS))
+-            goto fail;
+-
+-        switch (offset & 0xf) {
+-        case DMA_FDADR:
+-            s->dma_ch[ch].descriptor = value & 0xfffffff0;
+-            break;
+-
+-        default:
+-            goto fail;
+-        }
+-        break;
+-
+-    case FBR0:
+-        s->dma_ch[0].branch = value & 0xfffffff3;
+-        break;
+-    case FBR1:
+-        s->dma_ch[1].branch = value & 0xfffffff3;
+-        break;
+-    case FBR2:
+-        s->dma_ch[2].branch = value & 0xfffffff3;
+-        break;
+-    case FBR3:
+-        s->dma_ch[3].branch = value & 0xfffffff3;
+-        break;
+-    case FBR4:
+-        s->dma_ch[4].branch = value & 0xfffffff3;
+-        break;
+-    case FBR5:
+-        s->dma_ch[5].branch = value & 0xfffffff3;
+-        break;
+-    case FBR6:
+-        s->dma_ch[6].branch = value & 0xfffffff3;
+-        break;
+-
+-    case BSCNTR:
+-        s->bscntr = value & 0xf;
+-        break;
+-
+-    case PRSR:
+-        break;
+-
+-    case LCSR0:
+-        s->status[0] &= ~(value & 0xfff);
+-        if (value & LCSR0_BER)
+-            s->status[0] &= ~LCSR0_BERCH(7);
+-        break;
+-
+-    case LCSR1:
+-        s->status[1] &= ~(value & 0x3e3f3f);
+-        break;
+-
+-    default:
+-    fail:
+-        qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset 0x%" HWADDR_PRIX "\n",
+-                      __func__, offset);
+-    }
+-}
+-
+-static const MemoryRegionOps pxa2xx_lcdc_ops = {
+-    .read = pxa2xx_lcdc_read,
+-    .write = pxa2xx_lcdc_write,
+-    .endianness = DEVICE_NATIVE_ENDIAN,
+-};
+-
+-/* Load new palette for a given DMA channel, convert to internal format */
+-static void pxa2xx_palette_parse(PXA2xxLCDState *s, int ch, int bpp)
+-{
+-    DisplaySurface *surface = qemu_console_surface(s->con);
+-    int i, n, format, r, g, b, alpha;
+-    uint32_t *dest;
+-    uint8_t *src;
+-    s->pal_for = LCCR4_PALFOR(s->control[4]);
+-    format = s->pal_for;
+-
+-    switch (bpp) {
+-    case pxa_lcdc_2bpp:
+-        n = 4;
+-        break;
+-    case pxa_lcdc_4bpp:
+-        n = 16;
+-        break;
+-    case pxa_lcdc_8bpp:
+-        n = 256;
+-        break;
+-    default:
 -        return;
 -    }
 -
--    if (!s->pwrbtn_state && level) {
--        s->status |= 1 << 11;               /* PSHBTN */
--        menelaus_update(s);
--    }
--    s->pwrbtn_state = level;
--}
+-    src = (uint8_t *) s->dma_ch[ch].pbuffer;
+-    dest = (uint32_t *) s->dma_ch[ch].palette;
+-    alpha = r = g = b = 0;
 -
--#define MENELAUS_REV            0x01
--#define MENELAUS_VCORE_CTRL1    0x02
--#define MENELAUS_VCORE_CTRL2    0x03
--#define MENELAUS_VCORE_CTRL3    0x04
--#define MENELAUS_VCORE_CTRL4    0x05
--#define MENELAUS_VCORE_CTRL5    0x06
--#define MENELAUS_DCDC_CTRL1     0x07
--#define MENELAUS_DCDC_CTRL2     0x08
--#define MENELAUS_DCDC_CTRL3     0x09
--#define MENELAUS_LDO_CTRL1      0x0a
--#define MENELAUS_LDO_CTRL2      0x0b
--#define MENELAUS_LDO_CTRL3      0x0c
--#define MENELAUS_LDO_CTRL4      0x0d
--#define MENELAUS_LDO_CTRL5      0x0e
--#define MENELAUS_LDO_CTRL6      0x0f
--#define MENELAUS_LDO_CTRL7      0x10
--#define MENELAUS_LDO_CTRL8      0x11
--#define MENELAUS_SLEEP_CTRL1    0x12
--#define MENELAUS_SLEEP_CTRL2    0x13
--#define MENELAUS_DEVICE_OFF     0x14
--#define MENELAUS_OSC_CTRL       0x15
--#define MENELAUS_DETECT_CTRL    0x16
--#define MENELAUS_INT_MASK1      0x17
--#define MENELAUS_INT_MASK2      0x18
--#define MENELAUS_INT_STATUS1    0x19
--#define MENELAUS_INT_STATUS2    0x1a
--#define MENELAUS_INT_ACK1       0x1b
--#define MENELAUS_INT_ACK2       0x1c
--#define MENELAUS_GPIO_CTRL      0x1d
--#define MENELAUS_GPIO_IN        0x1e
--#define MENELAUS_GPIO_OUT       0x1f
--#define MENELAUS_BBSMS          0x20
--#define MENELAUS_RTC_CTRL       0x21
--#define MENELAUS_RTC_UPDATE     0x22
--#define MENELAUS_RTC_SEC        0x23
--#define MENELAUS_RTC_MIN        0x24
--#define MENELAUS_RTC_HR         0x25
--#define MENELAUS_RTC_DAY        0x26
--#define MENELAUS_RTC_MON        0x27
--#define MENELAUS_RTC_YR         0x28
--#define MENELAUS_RTC_WKDAY      0x29
--#define MENELAUS_RTC_AL_SEC     0x2a
--#define MENELAUS_RTC_AL_MIN     0x2b
--#define MENELAUS_RTC_AL_HR      0x2c
--#define MENELAUS_RTC_AL_DAY     0x2d
--#define MENELAUS_RTC_AL_MON     0x2e
--#define MENELAUS_RTC_AL_YR      0x2f
--#define MENELAUS_RTC_COMP_MSB   0x30
--#define MENELAUS_RTC_COMP_LSB   0x31
--#define MENELAUS_S1_PULL_EN     0x32
--#define MENELAUS_S1_PULL_DIR    0x33
--#define MENELAUS_S2_PULL_EN     0x34
--#define MENELAUS_S2_PULL_DIR    0x35
--#define MENELAUS_MCT_CTRL1      0x36
--#define MENELAUS_MCT_CTRL2      0x37
--#define MENELAUS_MCT_CTRL3      0x38
--#define MENELAUS_MCT_PIN_ST     0x39
--#define MENELAUS_DEBOUNCE1      0x3a
--
--static uint8_t menelaus_read(void *opaque, uint8_t addr)
--{
--    MenelausState *s = (MenelausState *) opaque;
--
--    switch (addr) {
--    case MENELAUS_REV:
--        return 0x22;
--
--    case MENELAUS_VCORE_CTRL1 ... MENELAUS_VCORE_CTRL5:
--        return s->vcore[addr - MENELAUS_VCORE_CTRL1];
--
--    case MENELAUS_DCDC_CTRL1 ... MENELAUS_DCDC_CTRL3:
--        return s->dcdc[addr - MENELAUS_DCDC_CTRL1];
--
--    case MENELAUS_LDO_CTRL1 ... MENELAUS_LDO_CTRL8:
--        return s->ldo[addr - MENELAUS_LDO_CTRL1];
--
--    case MENELAUS_SLEEP_CTRL1:
--    case MENELAUS_SLEEP_CTRL2:
--        return s->sleep[addr - MENELAUS_SLEEP_CTRL1];
--
--    case MENELAUS_DEVICE_OFF:
--        return 0;
--
--    case MENELAUS_OSC_CTRL:
--        return s->osc | (1 << 7);           /* CLK32K_GOOD */
--
--    case MENELAUS_DETECT_CTRL:
--        return s->detect;
--
--    case MENELAUS_INT_MASK1:
--        return (s->mask >> 0) & 0xff;
--    case MENELAUS_INT_MASK2:
--        return (s->mask >> 8) & 0xff;
--
--    case MENELAUS_INT_STATUS1:
--        return (s->status >> 0) & 0xff;
--    case MENELAUS_INT_STATUS2:
--        return (s->status >> 8) & 0xff;
--
--    case MENELAUS_INT_ACK1:
--    case MENELAUS_INT_ACK2:
--        return 0;
--
--    case MENELAUS_GPIO_CTRL:
--        return s->dir;
--    case MENELAUS_GPIO_IN:
--        return s->inputs | (~s->dir & s->outputs);
--    case MENELAUS_GPIO_OUT:
--        return s->outputs;
--
--    case MENELAUS_BBSMS:
--        return s->bbsms;
--
--    case MENELAUS_RTC_CTRL:
--        return s->rtc.ctrl;
--    case MENELAUS_RTC_UPDATE:
--        return 0x00;
--    case MENELAUS_RTC_SEC:
--        menelaus_rtc_update(s);
--        return to_bcd(s->rtc.tm.tm_sec);
--    case MENELAUS_RTC_MIN:
--        menelaus_rtc_update(s);
--        return to_bcd(s->rtc.tm.tm_min);
--    case MENELAUS_RTC_HR:
--        menelaus_rtc_update(s);
--        if ((s->rtc.ctrl >> 2) & 1)         /* MODE12_n24 */
--            return to_bcd((s->rtc.tm.tm_hour % 12) + 1) |
--                    (!!(s->rtc.tm.tm_hour >= 12) << 7); /* PM_nAM */
--        else
--            return to_bcd(s->rtc.tm.tm_hour);
--    case MENELAUS_RTC_DAY:
--        menelaus_rtc_update(s);
--        return to_bcd(s->rtc.tm.tm_mday);
--    case MENELAUS_RTC_MON:
--        menelaus_rtc_update(s);
--        return to_bcd(s->rtc.tm.tm_mon + 1);
--    case MENELAUS_RTC_YR:
--        menelaus_rtc_update(s);
--        return to_bcd(s->rtc.tm.tm_year - 2000);
--    case MENELAUS_RTC_WKDAY:
--        menelaus_rtc_update(s);
--        return to_bcd(s->rtc.tm.tm_wday);
--    case MENELAUS_RTC_AL_SEC:
--        return to_bcd(s->rtc.alm.tm_sec);
--    case MENELAUS_RTC_AL_MIN:
--        return to_bcd(s->rtc.alm.tm_min);
--    case MENELAUS_RTC_AL_HR:
--        if ((s->rtc.ctrl >> 2) & 1)         /* MODE12_n24 */
--            return to_bcd((s->rtc.alm.tm_hour % 12) + 1) |
--                    (!!(s->rtc.alm.tm_hour >= 12) << 7);/* AL_PM_nAM */
--        else
--            return to_bcd(s->rtc.alm.tm_hour);
--    case MENELAUS_RTC_AL_DAY:
--        return to_bcd(s->rtc.alm.tm_mday);
--    case MENELAUS_RTC_AL_MON:
--        return to_bcd(s->rtc.alm.tm_mon + 1);
--    case MENELAUS_RTC_AL_YR:
--        return to_bcd(s->rtc.alm.tm_year - 2000);
--    case MENELAUS_RTC_COMP_MSB:
--        return (s->rtc.comp >> 8) & 0xff;
--    case MENELAUS_RTC_COMP_LSB:
--        return (s->rtc.comp >> 0) & 0xff;
--
--    case MENELAUS_S1_PULL_EN:
--        return s->pull[0];
--    case MENELAUS_S1_PULL_DIR:
--        return s->pull[1];
--    case MENELAUS_S2_PULL_EN:
--        return s->pull[2];
--    case MENELAUS_S2_PULL_DIR:
--        return s->pull[3];
--
--    case MENELAUS_MCT_CTRL1 ... MENELAUS_MCT_CTRL3:
--        return s->mmc_ctrl[addr - MENELAUS_MCT_CTRL1];
--    case MENELAUS_MCT_PIN_ST:
--        /* TODO: return the real Card Detect */
--        return 0;
--    case MENELAUS_DEBOUNCE1:
--        return s->mmc_debounce;
--
--    default:
--#ifdef VERBOSE
--        printf("%s: unknown register %02x\n", __func__, addr);
--#endif
--        break;
--    }
--    return 0;
--}
--
--static void menelaus_write(void *opaque, uint8_t addr, uint8_t value)
--{
--    MenelausState *s = (MenelausState *) opaque;
--    int line;
--    struct tm tm;
--
--    switch (addr) {
--    case MENELAUS_VCORE_CTRL1:
--        s->vcore[0] = (value & 0xe) | MIN(value & 0x1f, 0x12);
--        break;
--    case MENELAUS_VCORE_CTRL2:
--        s->vcore[1] = value;
--        break;
--    case MENELAUS_VCORE_CTRL3:
--        s->vcore[2] = MIN(value & 0x1f, 0x12);
--        break;
--    case MENELAUS_VCORE_CTRL4:
--        s->vcore[3] = MIN(value & 0x1f, 0x12);
--        break;
--    case MENELAUS_VCORE_CTRL5:
--        s->vcore[4] = value & 3;
--        /* XXX
--         * auto set to 3 on M_Active, nRESWARM
--         * auto set to 0 on M_WaitOn, M_Backup
--         */
--        break;
--
--    case MENELAUS_DCDC_CTRL1:
--        s->dcdc[0] = value & 0x3f;
--        break;
--    case MENELAUS_DCDC_CTRL2:
--        s->dcdc[1] = value & 0x07;
--        /* XXX
--         * auto set to 3 on M_Active, nRESWARM
--         * auto set to 0 on M_WaitOn, M_Backup
--         */
--        break;
--    case MENELAUS_DCDC_CTRL3:
--        s->dcdc[2] = value & 0x07;
--        break;
--
--    case MENELAUS_LDO_CTRL1:
--        s->ldo[0] = value;
--        break;
--    case MENELAUS_LDO_CTRL2:
--        s->ldo[1] = value & 0x7f;
--        /* XXX
--         * auto set to 0x7e on M_WaitOn, M_Backup
--         */
--        break;
--    case MENELAUS_LDO_CTRL3:
--        s->ldo[2] = value & 3;
--        /* XXX
--         * auto set to 3 on M_Active, nRESWARM
--         * auto set to 0 on M_WaitOn, M_Backup
--         */
--        break;
--    case MENELAUS_LDO_CTRL4:
--        s->ldo[3] = value & 3;
--        /* XXX
--         * auto set to 3 on M_Active, nRESWARM
--         * auto set to 0 on M_WaitOn, M_Backup
--         */
--        break;
--    case MENELAUS_LDO_CTRL5:
--        s->ldo[4] = value & 3;
--        /* XXX
--         * auto set to 3 on M_Active, nRESWARM
--         * auto set to 0 on M_WaitOn, M_Backup
--         */
--        break;
--    case MENELAUS_LDO_CTRL6:
--        s->ldo[5] = value & 3;
--        break;
--    case MENELAUS_LDO_CTRL7:
--        s->ldo[6] = value & 3;
--        break;
--    case MENELAUS_LDO_CTRL8:
--        s->ldo[7] = value & 3;
--        break;
--
--    case MENELAUS_SLEEP_CTRL1:
--    case MENELAUS_SLEEP_CTRL2:
--        s->sleep[addr - MENELAUS_SLEEP_CTRL1] = value;
--        break;
--
--    case MENELAUS_DEVICE_OFF:
--        if (value & 1) {
--            menelaus_reset(I2C_SLAVE(s));
--        }
--        break;
--
--    case MENELAUS_OSC_CTRL:
--        s->osc = value & 7;
--        break;
--
--    case MENELAUS_DETECT_CTRL:
--        s->detect = value & 0x7f;
--        break;
--
--    case MENELAUS_INT_MASK1:
--        s->mask &= 0xf00;
--        s->mask |= value << 0;
--        menelaus_update(s);
--        break;
--    case MENELAUS_INT_MASK2:
--        s->mask &= 0x0ff;
--        s->mask |= value << 8;
--        menelaus_update(s);
--        break;
--
--    case MENELAUS_INT_ACK1:
--        s->status &= ~(((uint16_t) value) << 0);
--        menelaus_update(s);
--        break;
--    case MENELAUS_INT_ACK2:
--        s->status &= ~(((uint16_t) value) << 8);
--        menelaus_update(s);
--        break;
--
--    case MENELAUS_GPIO_CTRL:
--        for (line = 0; line < 3; line ++) {
--            if (((s->dir ^ value) >> line) & 1) {
--                qemu_set_irq(s->out[line],
--                             ((s->outputs & ~s->dir) >> line) & 1);
+-    for (i = 0; i < n; i ++) {
+-        switch (format) {
+-        case 0: /* 16 bpp, no transparency */
+-            alpha = 0;
+-            if (s->control[0] & LCCR0_CMS) {
+-                r = g = b = *(uint16_t *) src & 0xff;
 -            }
--        }
--        s->dir = value & 0x67;
--        break;
--    case MENELAUS_GPIO_OUT:
--        for (line = 0; line < 3; line ++) {
--            if ((((s->outputs ^ value) & ~s->dir) >> line) & 1) {
--                qemu_set_irq(s->out[line], (s->outputs >> line) & 1);
+-            else {
+-                r = (*(uint16_t *) src & 0xf800) >> 8;
+-                g = (*(uint16_t *) src & 0x07e0) >> 3;
+-                b = (*(uint16_t *) src & 0x001f) << 3;
 -            }
+-            src += 2;
+-            break;
+-        case 1: /* 16 bpp plus transparency */
+-            alpha = *(uint32_t *) src & (1 << 24);
+-            if (s->control[0] & LCCR0_CMS)
+-                r = g = b = *(uint32_t *) src & 0xff;
+-            else {
+-                r = (*(uint32_t *) src & 0xf80000) >> 16;
+-                g = (*(uint32_t *) src & 0x00fc00) >> 8;
+-                b = (*(uint32_t *) src & 0x0000f8);
+-            }
+-            src += 4;
+-            break;
+-        case 2: /* 18 bpp plus transparency */
+-            alpha = *(uint32_t *) src & (1 << 24);
+-            if (s->control[0] & LCCR0_CMS)
+-                r = g = b = *(uint32_t *) src & 0xff;
+-            else {
+-                r = (*(uint32_t *) src & 0xfc0000) >> 16;
+-                g = (*(uint32_t *) src & 0x00fc00) >> 8;
+-                b = (*(uint32_t *) src & 0x0000fc);
+-            }
+-            src += 4;
+-            break;
+-        case 3: /* 24 bpp plus transparency */
+-            alpha = *(uint32_t *) src & (1 << 24);
+-            if (s->control[0] & LCCR0_CMS)
+-                r = g = b = *(uint32_t *) src & 0xff;
+-            else {
+-                r = (*(uint32_t *) src & 0xff0000) >> 16;
+-                g = (*(uint32_t *) src & 0x00ff00) >> 8;
+-                b = (*(uint32_t *) src & 0x0000ff);
+-            }
+-            src += 4;
+-            break;
 -        }
--        s->outputs = value & 0x07;
--        break;
--
--    case MENELAUS_BBSMS:
--        s->bbsms = 0x0d;
--        break;
--
--    case MENELAUS_RTC_CTRL:
--        if ((s->rtc.ctrl ^ value) & 1) {    /* RTC_EN */
--            if (value & 1)
--                menelaus_rtc_start(s);
--            else
--                menelaus_rtc_stop(s);
--        }
--        s->rtc.ctrl = value & 0x1f;
--        menelaus_alm_update(s);
--        break;
--    case MENELAUS_RTC_UPDATE:
--        menelaus_rtc_update(s);
--        memcpy(&tm, &s->rtc.tm, sizeof(tm));
--        switch (value & 0xf) {
--        case 0:
--            break;
--        case 1:
--            tm.tm_sec = s->rtc.new.tm_sec;
--            break;
--        case 2:
--            tm.tm_min = s->rtc.new.tm_min;
--            break;
--        case 3:
--            if (s->rtc.new.tm_hour > 23)
--                goto rtc_badness;
--            tm.tm_hour = s->rtc.new.tm_hour;
--            break;
--        case 4:
--            if (s->rtc.new.tm_mday < 1)
--                goto rtc_badness;
--            /* TODO check range */
--            tm.tm_mday = s->rtc.new.tm_mday;
--            break;
--        case 5:
--            if (s->rtc.new.tm_mon < 0 || s->rtc.new.tm_mon > 11)
--                goto rtc_badness;
--            tm.tm_mon = s->rtc.new.tm_mon;
--            break;
--        case 6:
--            tm.tm_year = s->rtc.new.tm_year;
--            break;
--        case 7:
--            /* TODO set .tm_mday instead */
--            tm.tm_wday = s->rtc.new.tm_wday;
--            break;
+-        switch (surface_bits_per_pixel(surface)) {
 -        case 8:
--            if (s->rtc.new.tm_hour > 23)
--                goto rtc_badness;
--            if (s->rtc.new.tm_mday < 1)
--                goto rtc_badness;
--            if (s->rtc.new.tm_mon < 0 || s->rtc.new.tm_mon > 11)
--                goto rtc_badness;
--            tm.tm_sec = s->rtc.new.tm_sec;
--            tm.tm_min = s->rtc.new.tm_min;
--            tm.tm_hour = s->rtc.new.tm_hour;
--            tm.tm_mday = s->rtc.new.tm_mday;
--            tm.tm_mon = s->rtc.new.tm_mon;
--            tm.tm_year = s->rtc.new.tm_year;
+-            *dest = rgb_to_pixel8(r, g, b) | alpha;
 -            break;
--        rtc_badness:
--        default:
--            fprintf(stderr, "%s: bad RTC_UPDATE value %02x\n",
--                            __func__, value);
--            s->status |= 1 << 10;           /* RTCERR */
--            menelaus_update(s);
+-        case 15:
+-            *dest = rgb_to_pixel15(r, g, b) | alpha;
+-            break;
+-        case 16:
+-            *dest = rgb_to_pixel16(r, g, b) | alpha;
+-            break;
+-        case 24:
+-            *dest = rgb_to_pixel24(r, g, b) | alpha;
+-            break;
+-        case 32:
+-            *dest = rgb_to_pixel32(r, g, b) | alpha;
+-            break;
 -        }
--        s->rtc.sec_offset = qemu_timedate_diff(&tm);
--        break;
--    case MENELAUS_RTC_SEC:
--        s->rtc.tm.tm_sec = from_bcd(value & 0x7f);
--        break;
--    case MENELAUS_RTC_MIN:
--        s->rtc.tm.tm_min = from_bcd(value & 0x7f);
--        break;
--    case MENELAUS_RTC_HR:
--        s->rtc.tm.tm_hour = (s->rtc.ctrl & (1 << 2)) ?  /* MODE12_n24 */
--                MIN(from_bcd(value & 0x3f), 12) + ((value >> 7) ? 11 : -1) :
--                from_bcd(value & 0x3f);
--        break;
--    case MENELAUS_RTC_DAY:
--        s->rtc.tm.tm_mday = from_bcd(value);
--        break;
--    case MENELAUS_RTC_MON:
--        s->rtc.tm.tm_mon = MAX(1, from_bcd(value)) - 1;
--        break;
--    case MENELAUS_RTC_YR:
--        s->rtc.tm.tm_year = 2000 + from_bcd(value);
--        break;
--    case MENELAUS_RTC_WKDAY:
--        s->rtc.tm.tm_mday = from_bcd(value);
--        break;
--    case MENELAUS_RTC_AL_SEC:
--        s->rtc.alm.tm_sec = from_bcd(value & 0x7f);
--        menelaus_alm_update(s);
--        break;
--    case MENELAUS_RTC_AL_MIN:
--        s->rtc.alm.tm_min = from_bcd(value & 0x7f);
--        menelaus_alm_update(s);
--        break;
--    case MENELAUS_RTC_AL_HR:
--        s->rtc.alm.tm_hour = (s->rtc.ctrl & (1 << 2)) ? /* MODE12_n24 */
--                MIN(from_bcd(value & 0x3f), 12) + ((value >> 7) ? 11 : -1) :
--                from_bcd(value & 0x3f);
--        menelaus_alm_update(s);
--        break;
--    case MENELAUS_RTC_AL_DAY:
--        s->rtc.alm.tm_mday = from_bcd(value);
--        menelaus_alm_update(s);
--        break;
--    case MENELAUS_RTC_AL_MON:
--        s->rtc.alm.tm_mon = MAX(1, from_bcd(value)) - 1;
--        menelaus_alm_update(s);
--        break;
--    case MENELAUS_RTC_AL_YR:
--        s->rtc.alm.tm_year = 2000 + from_bcd(value);
--        menelaus_alm_update(s);
--        break;
--    case MENELAUS_RTC_COMP_MSB:
--        s->rtc.comp &= 0xff;
--        s->rtc.comp |= value << 8;
--        break;
--    case MENELAUS_RTC_COMP_LSB:
--        s->rtc.comp &= 0xff << 8;
--        s->rtc.comp |= value;
--        break;
--
--    case MENELAUS_S1_PULL_EN:
--        s->pull[0] = value;
--        break;
--    case MENELAUS_S1_PULL_DIR:
--        s->pull[1] = value & 0x1f;
--        break;
--    case MENELAUS_S2_PULL_EN:
--        s->pull[2] = value;
--        break;
--    case MENELAUS_S2_PULL_DIR:
--        s->pull[3] = value & 0x1f;
--        break;
--
--    case MENELAUS_MCT_CTRL1:
--        s->mmc_ctrl[0] = value & 0x7f;
--        break;
--    case MENELAUS_MCT_CTRL2:
--        s->mmc_ctrl[1] = value;
--        /* TODO update Card Detect interrupts */
--        break;
--    case MENELAUS_MCT_CTRL3:
--        s->mmc_ctrl[2] = value & 0xf;
--        break;
--    case MENELAUS_DEBOUNCE1:
--        s->mmc_debounce = value & 0x3f;
--        break;
--
--    default:
--#ifdef VERBOSE
--        printf("%s: unknown register %02x\n", __func__, addr);
--#endif
--        break;
+-        dest ++;
 -    }
 -}
 -
--static int menelaus_event(I2CSlave *i2c, enum i2c_event event)
+-static inline drawfn pxa2xx_drawfn(PXA2xxLCDState *s)
 -{
--    MenelausState *s = TWL92230(i2c);
--
--    if (event == I2C_START_SEND)
--        s->firstbyte = 1;
--
--    return 0;
+-    if (s->transp) {
+-        return pxa2xx_draw_fn_32t[s->bpp];
+-    } else {
+-        return pxa2xx_draw_fn_32[s->bpp];
+-    }
 -}
 -
--static int menelaus_tx(I2CSlave *i2c, uint8_t data)
+-static void pxa2xx_lcdc_dma0_redraw_rot0(PXA2xxLCDState *s,
+-                hwaddr addr, int *miny, int *maxy)
 -{
--    MenelausState *s = TWL92230(i2c);
+-    DisplaySurface *surface = qemu_console_surface(s->con);
+-    int src_width, dest_width;
+-    drawfn fn = pxa2xx_drawfn(s);
+-    if (!fn)
+-        return;
 -
--    /* Interpret register address byte */
--    if (s->firstbyte) {
--        s->reg = data;
--        s->firstbyte = 0;
--    } else
--        menelaus_write(s, s->reg ++, data);
+-    src_width = (s->xres + 3) & ~3;     /* Pad to a 4 pixels multiple */
+-    if (s->bpp == pxa_lcdc_19pbpp || s->bpp == pxa_lcdc_18pbpp)
+-        src_width *= 3;
+-    else if (s->bpp > pxa_lcdc_16bpp)
+-        src_width *= 4;
+-    else if (s->bpp > pxa_lcdc_8bpp)
+-        src_width *= 2;
 -
--    return 0;
+-    dest_width = s->xres * DEST_PIXEL_WIDTH;
+-    *miny = 0;
+-    if (s->invalidated) {
+-        framebuffer_update_memory_section(&s->fbsection, s->sysmem,
+-                                          addr, s->yres, src_width);
+-    }
+-    framebuffer_update_display(surface, &s->fbsection, s->xres, s->yres,
+-                               src_width, dest_width, DEST_PIXEL_WIDTH,
+-                               s->invalidated,
+-                               fn, s->dma_ch[0].palette, miny, maxy);
 -}
 -
--static uint8_t menelaus_rx(I2CSlave *i2c)
+-static void pxa2xx_lcdc_dma0_redraw_rot90(PXA2xxLCDState *s,
+-               hwaddr addr, int *miny, int *maxy)
 -{
--    MenelausState *s = TWL92230(i2c);
+-    DisplaySurface *surface = qemu_console_surface(s->con);
+-    int src_width, dest_width;
+-    drawfn fn = pxa2xx_drawfn(s);
+-    if (!fn)
+-        return;
 -
--    return menelaus_read(s, s->reg ++);
+-    src_width = (s->xres + 3) & ~3;     /* Pad to a 4 pixels multiple */
+-    if (s->bpp == pxa_lcdc_19pbpp || s->bpp == pxa_lcdc_18pbpp)
+-        src_width *= 3;
+-    else if (s->bpp > pxa_lcdc_16bpp)
+-        src_width *= 4;
+-    else if (s->bpp > pxa_lcdc_8bpp)
+-        src_width *= 2;
+-
+-    dest_width = s->yres * DEST_PIXEL_WIDTH;
+-    *miny = 0;
+-    if (s->invalidated) {
+-        framebuffer_update_memory_section(&s->fbsection, s->sysmem,
+-                                          addr, s->yres, src_width);
+-    }
+-    framebuffer_update_display(surface, &s->fbsection, s->xres, s->yres,
+-                               src_width, DEST_PIXEL_WIDTH, -dest_width,
+-                               s->invalidated,
+-                               fn, s->dma_ch[0].palette,
+-                               miny, maxy);
 -}
 -
--/* Save restore 32 bit int as uint16_t
--   This is a Big hack, but it is how the old state did it.
--   Or we broke compatibility in the state, or we can't use struct tm
-- */
--
--static int get_int32_as_uint16(QEMUFile *f, void *pv, size_t size,
--                               const VMStateField *field)
+-static void pxa2xx_lcdc_dma0_redraw_rot180(PXA2xxLCDState *s,
+-                hwaddr addr, int *miny, int *maxy)
 -{
--    int *v = pv;
--    *v = qemu_get_be16(f);
--    return 0;
+-    DisplaySurface *surface = qemu_console_surface(s->con);
+-    int src_width, dest_width;
+-    drawfn fn = pxa2xx_drawfn(s);
+-    if (!fn) {
+-        return;
+-    }
+-
+-    src_width = (s->xres + 3) & ~3;     /* Pad to a 4 pixels multiple */
+-    if (s->bpp == pxa_lcdc_19pbpp || s->bpp == pxa_lcdc_18pbpp) {
+-        src_width *= 3;
+-    } else if (s->bpp > pxa_lcdc_16bpp) {
+-        src_width *= 4;
+-    } else if (s->bpp > pxa_lcdc_8bpp) {
+-        src_width *= 2;
+-    }
+-
+-    dest_width = s->xres * DEST_PIXEL_WIDTH;
+-    *miny = 0;
+-    if (s->invalidated) {
+-        framebuffer_update_memory_section(&s->fbsection, s->sysmem,
+-                                          addr, s->yres, src_width);
+-    }
+-    framebuffer_update_display(surface, &s->fbsection, s->xres, s->yres,
+-                               src_width, -dest_width, -DEST_PIXEL_WIDTH,
+-                               s->invalidated,
+-                               fn, s->dma_ch[0].palette, miny, maxy);
 -}
 -
--static int put_int32_as_uint16(QEMUFile *f, void *pv, size_t size,
--                               const VMStateField *field, JSONWriter *vmdesc)
+-static void pxa2xx_lcdc_dma0_redraw_rot270(PXA2xxLCDState *s,
+-               hwaddr addr, int *miny, int *maxy)
 -{
--    int *v = pv;
--    qemu_put_be16(f, *v);
+-    DisplaySurface *surface = qemu_console_surface(s->con);
+-    int src_width, dest_width;
+-    drawfn fn = pxa2xx_drawfn(s);
+-    if (!fn) {
+-        return;
+-    }
 -
--    return 0;
+-    src_width = (s->xres + 3) & ~3;     /* Pad to a 4 pixels multiple */
+-    if (s->bpp == pxa_lcdc_19pbpp || s->bpp == pxa_lcdc_18pbpp) {
+-        src_width *= 3;
+-    } else if (s->bpp > pxa_lcdc_16bpp) {
+-        src_width *= 4;
+-    } else if (s->bpp > pxa_lcdc_8bpp) {
+-        src_width *= 2;
+-    }
+-
+-    dest_width = s->yres * DEST_PIXEL_WIDTH;
+-    *miny = 0;
+-    if (s->invalidated) {
+-        framebuffer_update_memory_section(&s->fbsection, s->sysmem,
+-                                          addr, s->yres, src_width);
+-    }
+-    framebuffer_update_display(surface, &s->fbsection, s->xres, s->yres,
+-                               src_width, -DEST_PIXEL_WIDTH, dest_width,
+-                               s->invalidated,
+-                               fn, s->dma_ch[0].palette,
+-                               miny, maxy);
 -}
 -
--static const VMStateInfo vmstate_hack_int32_as_uint16 = {
--    .name = "int32_as_uint16",
--    .get  = get_int32_as_uint16,
--    .put  = put_int32_as_uint16,
--};
+-static void pxa2xx_lcdc_resize(PXA2xxLCDState *s)
+-{
+-    int width, height;
+-    if (!(s->control[0] & LCCR0_ENB))
+-        return;
 -
--#define VMSTATE_UINT16_HACK(_f, _s)                                  \
--    VMSTATE_SINGLE(_f, _s, 0, vmstate_hack_int32_as_uint16, int32_t)
+-    width = LCCR1_PPL(s->control[1]) + 1;
+-    height = LCCR2_LPP(s->control[2]) + 1;
 -
+-    if (width != s->xres || height != s->yres) {
+-        if (s->orientation == 90 || s->orientation == 270) {
+-            qemu_console_resize(s->con, height, width);
+-        } else {
+-            qemu_console_resize(s->con, width, height);
+-        }
+-        s->invalidated = 1;
+-        s->xres = width;
+-        s->yres = height;
+-    }
+-}
 -
--static const VMStateDescription vmstate_menelaus_tm = {
--    .name = "menelaus_tm",
+-static void pxa2xx_update_display(void *opaque)
+-{
+-    PXA2xxLCDState *s = (PXA2xxLCDState *) opaque;
+-    hwaddr fbptr;
+-    int miny, maxy;
+-    int ch;
+-    if (!(s->control[0] & LCCR0_ENB))
+-        return;
+-
+-    pxa2xx_descriptor_load(s);
+-
+-    pxa2xx_lcdc_resize(s);
+-    miny = s->yres;
+-    maxy = 0;
+-    s->transp = s->dma_ch[2].up || s->dma_ch[3].up;
+-    /* Note: With overlay planes the order depends on LCCR0 bit 25.  */
+-    for (ch = 0; ch < PXA_LCDDMA_CHANS; ch ++)
+-        if (s->dma_ch[ch].up) {
+-            if (!s->dma_ch[ch].source) {
+-                pxa2xx_dma_ber_set(s, ch);
+-                continue;
+-            }
+-            fbptr = s->dma_ch[ch].source;
+-            if (!((fbptr >= PXA2XX_SDRAM_BASE &&
+-                     fbptr <= PXA2XX_SDRAM_BASE + current_machine->ram_size) ||
+-                    (fbptr >= PXA2XX_INTERNAL_BASE &&
+-                     fbptr <= PXA2XX_INTERNAL_BASE + PXA2XX_INTERNAL_SIZE))) {
+-                pxa2xx_dma_ber_set(s, ch);
+-                continue;
+-            }
+-
+-            if (s->dma_ch[ch].command & LDCMD_PAL) {
+-                cpu_physical_memory_read(fbptr, s->dma_ch[ch].pbuffer,
+-                    MAX(LDCMD_LENGTH(s->dma_ch[ch].command),
+-                        sizeof(s->dma_ch[ch].pbuffer)));
+-                pxa2xx_palette_parse(s, ch, s->bpp);
+-            } else {
+-                /* Do we need to reparse palette */
+-                if (LCCR4_PALFOR(s->control[4]) != s->pal_for)
+-                    pxa2xx_palette_parse(s, ch, s->bpp);
+-
+-                /* ACK frame start */
+-                pxa2xx_dma_sof_set(s, ch);
+-
+-                s->dma_ch[ch].redraw(s, fbptr, &miny, &maxy);
+-                s->invalidated = 0;
+-
+-                /* ACK frame completed */
+-                pxa2xx_dma_eof_set(s, ch);
+-            }
+-        }
+-
+-    if (s->control[0] & LCCR0_DIS) {
+-        /* ACK last frame completed */
+-        s->control[0] &= ~LCCR0_ENB;
+-        s->status[0] |= LCSR0_LDD;
+-    }
+-
+-    if (miny >= 0) {
+-        switch (s->orientation) {
+-        case 0:
+-            dpy_gfx_update(s->con, 0, miny, s->xres, maxy - miny + 1);
+-            break;
+-        case 90:
+-            dpy_gfx_update(s->con, miny, 0, maxy - miny + 1, s->xres);
+-            break;
+-        case 180:
+-            maxy = s->yres - maxy - 1;
+-            miny = s->yres - miny - 1;
+-            dpy_gfx_update(s->con, 0, maxy, s->xres, miny - maxy + 1);
+-            break;
+-        case 270:
+-            maxy = s->yres - maxy - 1;
+-            miny = s->yres - miny - 1;
+-            dpy_gfx_update(s->con, maxy, 0, miny - maxy + 1, s->xres);
+-            break;
+-        }
+-    }
+-    pxa2xx_lcdc_int_update(s);
+-
+-    qemu_irq_raise(s->vsync_cb);
+-}
+-
+-static void pxa2xx_invalidate_display(void *opaque)
+-{
+-    PXA2xxLCDState *s = (PXA2xxLCDState *) opaque;
+-    s->invalidated = 1;
+-}
+-
+-static void pxa2xx_lcdc_orientation(void *opaque, int angle)
+-{
+-    PXA2xxLCDState *s = (PXA2xxLCDState *) opaque;
+-
+-    switch (angle) {
+-    case 0:
+-        s->dma_ch[0].redraw = pxa2xx_lcdc_dma0_redraw_rot0;
+-        break;
+-    case 90:
+-        s->dma_ch[0].redraw = pxa2xx_lcdc_dma0_redraw_rot90;
+-        break;
+-    case 180:
+-        s->dma_ch[0].redraw = pxa2xx_lcdc_dma0_redraw_rot180;
+-        break;
+-    case 270:
+-        s->dma_ch[0].redraw = pxa2xx_lcdc_dma0_redraw_rot270;
+-        break;
+-    }
+-
+-    s->orientation = angle;
+-    s->xres = s->yres = -1;
+-    pxa2xx_lcdc_resize(s);
+-}
+-
+-static const VMStateDescription vmstate_dma_channel = {
+-    .name = "dma_channel",
 -    .version_id = 0,
 -    .minimum_version_id = 0,
 -    .fields = (const VMStateField[]) {
--        VMSTATE_UINT16_HACK(tm_sec, struct tm),
--        VMSTATE_UINT16_HACK(tm_min, struct tm),
--        VMSTATE_UINT16_HACK(tm_hour, struct tm),
--        VMSTATE_UINT16_HACK(tm_mday, struct tm),
--        VMSTATE_UINT16_HACK(tm_min, struct tm),
--        VMSTATE_UINT16_HACK(tm_year, struct tm),
+-        VMSTATE_UINT32(branch, struct DMAChannel),
+-        VMSTATE_UINT8(up, struct DMAChannel),
+-        VMSTATE_BUFFER(pbuffer, struct DMAChannel),
+-        VMSTATE_UINT32(descriptor, struct DMAChannel),
+-        VMSTATE_UINT32(source, struct DMAChannel),
+-        VMSTATE_UINT32(id, struct DMAChannel),
+-        VMSTATE_UINT32(command, struct DMAChannel),
 -        VMSTATE_END_OF_LIST()
 -    }
 -};
 -
--static int menelaus_pre_save(void *opaque)
+-static int pxa2xx_lcdc_post_load(void *opaque, int version_id)
 -{
--    MenelausState *s = opaque;
--    /* Should be <= 1000 */
--    s->rtc_next_vmstate =  s->rtc.next - qemu_clock_get_ms(rtc_clock);
+-    PXA2xxLCDState *s = opaque;
+-
+-    s->bpp = LCCR3_BPP(s->control[3]);
+-    s->xres = s->yres = s->pal_for = -1;
 -
 -    return 0;
 -}
 -
--static int menelaus_post_load(void *opaque, int version_id)
--{
--    MenelausState *s = opaque;
--
--    if (s->rtc.ctrl & 1)                    /* RTC_EN */
--        menelaus_rtc_stop(s);
--
--    s->rtc.next = s->rtc_next_vmstate;
--
--    menelaus_alm_update(s);
--    menelaus_update(s);
--    if (s->rtc.ctrl & 1)                    /* RTC_EN */
--        menelaus_rtc_start(s);
--    return 0;
--}
--
--static const VMStateDescription vmstate_menelaus = {
--    .name = "menelaus",
+-static const VMStateDescription vmstate_pxa2xx_lcdc = {
+-    .name = "pxa2xx_lcdc",
 -    .version_id = 0,
 -    .minimum_version_id = 0,
--    .pre_save = menelaus_pre_save,
--    .post_load = menelaus_post_load,
+-    .post_load = pxa2xx_lcdc_post_load,
 -    .fields = (const VMStateField[]) {
--        VMSTATE_INT32(firstbyte, MenelausState),
--        VMSTATE_UINT8(reg, MenelausState),
--        VMSTATE_UINT8_ARRAY(vcore, MenelausState, 5),
--        VMSTATE_UINT8_ARRAY(dcdc, MenelausState, 3),
--        VMSTATE_UINT8_ARRAY(ldo, MenelausState, 8),
--        VMSTATE_UINT8_ARRAY(sleep, MenelausState, 2),
--        VMSTATE_UINT8(osc, MenelausState),
--        VMSTATE_UINT8(detect, MenelausState),
--        VMSTATE_UINT16(mask, MenelausState),
--        VMSTATE_UINT16(status, MenelausState),
--        VMSTATE_UINT8(dir, MenelausState),
--        VMSTATE_UINT8(inputs, MenelausState),
--        VMSTATE_UINT8(outputs, MenelausState),
--        VMSTATE_UINT8(bbsms, MenelausState),
--        VMSTATE_UINT8_ARRAY(pull, MenelausState, 4),
--        VMSTATE_UINT8_ARRAY(mmc_ctrl, MenelausState, 3),
--        VMSTATE_UINT8(mmc_debounce, MenelausState),
--        VMSTATE_UINT8(rtc.ctrl, MenelausState),
--        VMSTATE_UINT16(rtc.comp, MenelausState),
--        VMSTATE_UINT16(rtc_next_vmstate, MenelausState),
--        VMSTATE_STRUCT(rtc.new, MenelausState, 0, vmstate_menelaus_tm,
--                       struct tm),
--        VMSTATE_STRUCT(rtc.alm, MenelausState, 0, vmstate_menelaus_tm,
--                       struct tm),
--        VMSTATE_UINT8(pwrbtn_state, MenelausState),
--        VMSTATE_I2C_SLAVE(parent_obj, MenelausState),
+-        VMSTATE_INT32(irqlevel, PXA2xxLCDState),
+-        VMSTATE_INT32(transp, PXA2xxLCDState),
+-        VMSTATE_UINT32_ARRAY(control, PXA2xxLCDState, 6),
+-        VMSTATE_UINT32_ARRAY(status, PXA2xxLCDState, 2),
+-        VMSTATE_UINT32_ARRAY(ovl1c, PXA2xxLCDState, 2),
+-        VMSTATE_UINT32_ARRAY(ovl2c, PXA2xxLCDState, 2),
+-        VMSTATE_UINT32(ccr, PXA2xxLCDState),
+-        VMSTATE_UINT32(cmdcr, PXA2xxLCDState),
+-        VMSTATE_UINT32(trgbr, PXA2xxLCDState),
+-        VMSTATE_UINT32(tcr, PXA2xxLCDState),
+-        VMSTATE_UINT32(liidr, PXA2xxLCDState),
+-        VMSTATE_UINT8(bscntr, PXA2xxLCDState),
+-        VMSTATE_STRUCT_ARRAY(dma_ch, PXA2xxLCDState, 7, 0,
+-                             vmstate_dma_channel, struct DMAChannel),
 -        VMSTATE_END_OF_LIST()
 -    }
 -};
 -
--static void twl92230_realize(DeviceState *dev, Error **errp)
--{
--    MenelausState *s = TWL92230(dev);
--
--    s->rtc.hz_tm = timer_new_ms(rtc_clock, menelaus_rtc_hz, s);
--    /* Three output pins plus one interrupt pin.  */
--    qdev_init_gpio_out(dev, s->out, 4);
--
--    /* Three input pins plus one power-button pin.  */
--    qdev_init_gpio_in(dev, menelaus_gpio_set, 4);
--
--    menelaus_reset(I2C_SLAVE(dev));
--}
--
--static void twl92230_class_init(ObjectClass *klass, void *data)
--{
--    DeviceClass *dc = DEVICE_CLASS(klass);
--    I2CSlaveClass *sc = I2C_SLAVE_CLASS(klass);
--
--    dc->realize = twl92230_realize;
--    sc->event = menelaus_event;
--    sc->recv = menelaus_rx;
--    sc->send = menelaus_tx;
--    dc->vmsd = &vmstate_menelaus;
--}
--
--static const TypeInfo twl92230_info = {
--    .name          = TYPE_TWL92230,
--    .parent        = TYPE_I2C_SLAVE,
--    .instance_size = sizeof(MenelausState),
--    .class_init    = twl92230_class_init,
+-static const GraphicHwOps pxa2xx_ops = {
+-    .invalidate  = pxa2xx_invalidate_display,
+-    .gfx_update  = pxa2xx_update_display,
 -};
 -
--static void twl92230_register_types(void)
+-PXA2xxLCDState *pxa2xx_lcdc_init(MemoryRegion *sysmem,
+-                                 hwaddr base, qemu_irq irq)
 -{
--    type_register_static(&twl92230_info);
+-    PXA2xxLCDState *s;
+-
+-    s = g_new0(PXA2xxLCDState, 1);
+-    s->invalidated = 1;
+-    s->irq = irq;
+-    s->sysmem = sysmem;
+-
+-    pxa2xx_lcdc_orientation(s, graphic_rotate);
+-
+-    memory_region_init_io(&s->iomem, NULL, &pxa2xx_lcdc_ops, s,
+-                          "pxa2xx-lcd-controller", 0x00100000);
+-    memory_region_add_subregion(sysmem, base, &s->iomem);
+-
+-    s->con = graphic_console_init(NULL, 0, &pxa2xx_ops, s);
+-
+-    vmstate_register(NULL, 0, &vmstate_pxa2xx_lcdc, s);
+-
+-    return s;
 -}
 -
--type_init(twl92230_register_types)
-diff --git a/hw/rtc/Kconfig b/hw/rtc/Kconfig
-index d0d8dda0840..2fe04ec1d04 100644
---- a/hw/rtc/Kconfig
-+++ b/hw/rtc/Kconfig
-@@ -14,10 +14,6 @@ config M48T59
- config PL031
-     bool
+-void pxa2xx_lcd_vsync_notifier(PXA2xxLCDState *s, qemu_irq handler)
+-{
+-    s->vsync_cb = handler;
+-}
+diff --git a/hw/display/meson.build b/hw/display/meson.build
+index dabc0d1da6b..1f965a1be84 100644
+--- a/hw/display/meson.build
++++ b/hw/display/meson.build
+@@ -27,7 +27,6 @@ system_ss.add(when: 'CONFIG_EXYNOS4', if_true: files('exynos4210_fimd.c'))
+ system_ss.add(when: 'CONFIG_FRAMEBUFFER', if_true: files('framebuffer.c'))
  
--config TWL92230
--    bool
--    depends on I2C
--
- config MC146818RTC
-     depends on ISA_BUS
-     bool
-diff --git a/hw/rtc/meson.build b/hw/rtc/meson.build
-index 3ea2affe0b9..8ecc2d792c1 100644
---- a/hw/rtc/meson.build
-+++ b/hw/rtc/meson.build
-@@ -3,7 +3,6 @@ system_ss.add(when: 'CONFIG_DS1338', if_true: files('ds1338.c'))
- system_ss.add(when: 'CONFIG_M41T80', if_true: files('m41t80.c'))
- system_ss.add(when: 'CONFIG_M48T59', if_true: files('m48t59.c'))
- system_ss.add(when: 'CONFIG_PL031', if_true: files('pl031.c'))
--system_ss.add(when: 'CONFIG_TWL92230', if_true: files('twl92230.c'))
- system_ss.add(when: ['CONFIG_ISA_BUS', 'CONFIG_M48T59'], if_true: files('m48t59-isa.c'))
- system_ss.add(when: 'CONFIG_XLNX_ZYNQMP', if_true: files('xlnx-zynqmp-rtc.c'))
- 
+ system_ss.add(when: 'CONFIG_OMAP', if_true: files('omap_dss.c'))
+-system_ss.add(when: 'CONFIG_PXA2XX', if_true: files('pxa2xx_lcd.c'))
+ system_ss.add(when: 'CONFIG_RASPI', if_true: files('bcm2835_fb.c'))
+ system_ss.add(when: 'CONFIG_SM501', if_true: files('sm501.c'))
+ system_ss.add(when: 'CONFIG_TCX', if_true: files('tcx.c'))
 -- 
 2.34.1
 

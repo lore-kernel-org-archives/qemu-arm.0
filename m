@@ -1,114 +1,113 @@
-Received: by 2002:a17:504:3a8f:b0:1be9:327d:8ee3 with SMTP id g15csp1502042njf;
-        Tue, 3 Sep 2024 09:13:40 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWhxX2oAoJHcOu3OMoSJe/MGisURwirsQiHpBNVMBMC6ZECxyyxi4BtBfgWI3DosGKQjim4WIvrnaa2fw==@linaro.org
-X-Google-Smtp-Source: AGHT+IEITWEwWMP2e7Rx0fEHXKxMrL2N9gX/4/kStDTv/c57leW1QCMYarnLwvJofXdI048jUzSX
-X-Received: by 2002:a05:620a:458e:b0:79f:89c:6c8 with SMTP id af79cd13be357-7a902e873a3mr1214914985a.39.1725380020266;
-        Tue, 03 Sep 2024 09:13:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1725380020; cv=none;
+Received: by 2002:a17:504:3a8f:b0:1be9:327d:8ee3 with SMTP id g15csp1502279njf;
+        Tue, 3 Sep 2024 09:14:12 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCV36Sct0K4zzUdn2Xw86mGgL76/WRFwDCZtyEzLEnnC60uNHX3KpVBgjaVI9bPMAMT+mKT8yYHChGbEvQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IEAOwgh87kW+5Gi/wh8fYzeHNyzxnU7ypK1SI59D24IARlI+2KSzShi4DK1UJb05IcGSYbE
+X-Received: by 2002:a05:620a:1926:b0:79f:e7c:f012 with SMTP id af79cd13be357-7a8120147bdmr2532116385a.22.1725380052466;
+        Tue, 03 Sep 2024 09:14:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1725380052; cv=none;
         d=google.com; s=arc-20160816;
-        b=vyS3dJHPSKSk9umSlWaV5OpWA06FoAer6/NalyThfbrS5CrjcF6TgGRR55NbAKngfp
-         bKWG+zyiNVTVJy6MbPNjS8fBDdu2s64QSY+XwSETwrmb1iMldPt1zG3x7QMbjtkGROu2
-         BrMxVKHQRAH7/XdjqwbEpVvGRZre1S65Nd+S9sPZvC5AEfg9Qc2BT+EMqbWyOu15vHF9
-         m6BMPMVzBKYGZ8DLNPeV+o7kFO1e4Om/TV6W600KWn/AMcrpSG93uaEbEb9WuF9vZUa2
-         8NgyrOFzOd1A307mHHDhB5aAq0yAkjQtPGdX5rWIeD06aBl1hKqypBVeIQPs80j2qGSL
-         lvgw==
+        b=MwLoNVeab0B53TfySqy8tcTLMS0iwcWO6A1olvksqzhktCCj41t4Lm79NQEIsIgmxW
+         7JasAV08AgWkx44vpI/0gExjlzx5EoKd5T/J3pcznpZTWXps/uOdOKF0iciqQdiM8Z22
+         DYomlokkwzCF2+Xrc9/aqhFQdxwTfSvvEuVjtbmE1t2Kz2FK3S4HsUYqwflVS2XwbZru
+         BPMctVJh7pPcSl9EZeRm/4TX5rG/++1ScqplEjnZy3QPZp2GuKDrW5TcOVwgt4tPCEAu
+         JnmNXqVApjU59/wWcYzseh8a3WHHzenUZ0wf2P8t0jRuFWdHv9w7S2QFrWj9Y+530qNX
+         kuJw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=4XZ7NOx/WtVIQqrk01ux4dOB629Yo/Ds1l4cW4PljMY=;
-        fh=76nqOXruOt3eJ/+9iUYEf9YwQMsTXqfm34nlupnKWZY=;
-        b=dz6x9sHnORd5oSBAlEjorZeYsaHEHHXQVnwUZIc8NjZ7NQVQx/qekc04bpMMAveqY4
-         mf3DG4OTqrMJ7K7pAh3xAuf/vbbua3nNpsSQanDOiE2RLU6XT+e6KWAtIWmO+HrKb5qB
-         GO5/oGMGoRgfsLTqZKrCRHfTMJD4Qnmo87HilDpghy+y70cKsey6ZzfTvMIbOsC5KSM3
-         dNgXIFlqEUG/Er24IiqFIQejqXixt9TXTX2nWN/l9Cog7IMBHbYwDn0DxzF6zb436tyx
-         SL6vOIEq/GFt3R47Guw2/DCxYfM6dRax9Wihx7XJLgbxeRAa1CPIOqAJC3+PDJPXQlKi
-         /94Q==;
+        bh=Os3YhyiW8VMzPrtnmmu8UU2yYR4LaZN1PsZhbc3wwCA=;
+        fh=IpHFcCZaTmbNeTHW87Ej35NDOn+m7ufwKItsTqGqU2Q=;
+        b=N3XazHgQfP1HxQgYKUtxhaXxa27wckU7NhSzV1b+DmUn6UCcEu8x1QgUJxBiGqkXd7
+         KwD68kOn8IjxR+mRfBC9rQ9EtxXSL8l8+rLV4xK6fmPx0GiVutaZLmBU2ZiFOaPVgAxr
+         SwzloDyABxy7AV2IfLtfhXNYlrId2xAZVzB3E+kcMnbbBblrWMmWM/UrxQr3HSjdYn2j
+         6mt2aDI6fMgiZcQg/94C7czD9KCH+qlrdwjfVuWEOyqm2TFxZ47gRxjUjQL6ophzwnEx
+         FRhSOphVXu6ou0fNjq3H/7Kmb0565uSdizCh0crPUIW8nheNpEkg6h9KvcWMgR+USUys
+         9dMw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=DW+3XEP1;
+       dkim=pass header.i=@linaro.org header.s=google header.b="azWv/6gu";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-45682d404b1si98995691cf.332.2024.09.03.09.13.40
+        by mx.google.com with ESMTPS id d75a77b69052e-45682d3d96fsi131793791cf.299.2024.09.03.09.14.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 03 Sep 2024 09:13:40 -0700 (PDT)
+        Tue, 03 Sep 2024 09:14:12 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=DW+3XEP1;
+       dkim=pass header.i=@linaro.org header.s=google header.b="azWv/6gu";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1slW4r-00062P-RQ; Tue, 03 Sep 2024 12:08:21 -0400
+	id 1slW5K-0008W8-Qh; Tue, 03 Sep 2024 12:08:50 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1slW4p-0005ru-Rg
- for qemu-devel@nongnu.org; Tue, 03 Sep 2024 12:08:19 -0400
-Received: from mail-lf1-x12f.google.com ([2a00:1450:4864:20::12f])
+ id 1slW5I-0008F8-EB
+ for qemu-devel@nongnu.org; Tue, 03 Sep 2024 12:08:48 -0400
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1slW4l-0002k3-6o
- for qemu-devel@nongnu.org; Tue, 03 Sep 2024 12:08:19 -0400
-Received: by mail-lf1-x12f.google.com with SMTP id
- 2adb3069b0e04-533496017f8so7423055e87.0
- for <qemu-devel@nongnu.org>; Tue, 03 Sep 2024 09:08:14 -0700 (PDT)
+ id 1slW58-0002qh-OO
+ for qemu-devel@nongnu.org; Tue, 03 Sep 2024 12:08:48 -0400
+Received: by mail-wm1-x335.google.com with SMTP id
+ 5b1f17b1804b1-42c7a384b18so26507075e9.0
+ for <qemu-devel@nongnu.org>; Tue, 03 Sep 2024 09:08:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1725379692; x=1725984492; darn=nongnu.org;
+ d=linaro.org; s=google; t=1725379717; x=1725984517; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=4XZ7NOx/WtVIQqrk01ux4dOB629Yo/Ds1l4cW4PljMY=;
- b=DW+3XEP1Pi9Us1XjOb7IFupTSqr5qPoVI5Uz9nguQWNLwlFR5k9gvgEgGFuTYPJIYD
- Cj8tbPCAYoPV13GArvW3Vj0vUyYdunWwqNEH7XHG69UqYesW5HLn9B0D96L8tBENQqx1
- u9H4vpH3k7uv+QTSbre2nf0FdLcf1Ryfcz9oTE4lQzSnB8Dv7Hwrjwm1MzGucnYOcsdO
- YmAXbs/n1AB10tcQXBnw5z9cM8feCZs/3s174Syhudy9mOUtsd7jw8pawZ5JQoWKcWXZ
- U95Jh9NNbdvChFYux9F8OPa5FEc638stnXQmrqWjrVCdWUb6fPPANGiRsqmHAGTv5+0O
- wtgA==
+ :reply-to; bh=Os3YhyiW8VMzPrtnmmu8UU2yYR4LaZN1PsZhbc3wwCA=;
+ b=azWv/6gufRXvBd0wir0p0dejLgcCEyFDevD0xsI3/V/ct6mz7M+bjNHMvfNkVEzl9x
+ z8N2SSIg/FDqUmnBFP/CG46EzKxUqMm9xoIUueaCvUjD/u9m18HjX3bzA8gO3EkuR0HW
+ zpUG5ZFg5KFDMrF9K9UeeHH0erfGuzmtpUoI/UY+RpHbceQ+nOjBjbsuxfLzm4ZjuorO
+ L5rd1s+P9C/msRx8eqoc1YyRBU0UwAgYJxn8xPG5uG45ThNj1uR9Wc36ROLu25BJf318
+ IAwzuRZ8daeNRL2PztMFxjMY9C0cvgP++2zZ0Oj6JccWoD1WBEijz4riM3AumMYg91Fc
+ 9Obw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1725379692; x=1725984492;
+ d=1e100.net; s=20230601; t=1725379717; x=1725984517;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=4XZ7NOx/WtVIQqrk01ux4dOB629Yo/Ds1l4cW4PljMY=;
- b=k75g6kuDeebdTeZWUiUPzXQrKP7p5ELbkc4eZewuYAxWVSiQYWnSmBOd76agKm6njC
- Zzj5/1bJvw8bFRNY3SsPY8E986Pb2xZK67KZhZ9gq4tMrJN+mYuYw/B+MjfLk51c+E0B
- CHT9HsMuZQrlt54/6XN2mdhib9YiocE47eXbO1oDT38LcWuQOzo7Z4SHXLVfrYQ4KDzn
- YKWfPYWWluebL4XqbO48AMqx69jbGUAsFEjOKJciiIvQMnGAeJsfsO+bg6Qai0wodNl7
- fXGc98Q/hDuGWVaKrnkh0Ggdol9rEaaRNIbYYx9TZczxML2oXqrozKLeZKDy+Fr1En3K
- kUug==
+ bh=Os3YhyiW8VMzPrtnmmu8UU2yYR4LaZN1PsZhbc3wwCA=;
+ b=GvGoIayihoGwZZQQ7WefkQeSNNy944+hC/YmxU9vAqeievL9oyCrm9vb/FxpkV0e82
+ qMxnQKwGbHDU71U6oxpBJJ0ssACWAZZA5KVzBr7Fc21pGbUaP8l4P45m0ZJLqO/s0V1F
+ hnmm6nxA9P6H8JD5v6mi23pesVmrhRjW5slhPaGuKNE9yZyizp/Y9THll/EptTCZUxDn
+ EKxIY+qtdVF7gM4uTJ2r7TFxf2qQ8Da3xiO2NU4RTVakvsPIg7l0l/2/RcJseNlIg4R3
+ 1lineiMh7D1BLt22SfQICJI0R4FNUohf7LTx5jNoPyNj3dl4xyCoO/+qO+8zHdnJsqeN
+ 4m8Q==
 X-Forwarded-Encrypted: i=1;
- AJvYcCX5sciJTVbbuF/uiuTZxLDApRieStxfQ8agKpx/8D10kVzLkA077SJjvukosoA7fZnexVLSnGsiwm9z@nongnu.org
-X-Gm-Message-State: AOJu0YzROOM6Z7sN46WtzpN1oTkGYVPL66Jzp8bMls3rmbLqa7I5lOEM
- EgWsV2ge5bcd8MhvWYVWZW27ORVKDwEM0uVOFYyq/JuxS/dqwBQkrbVmJFKZ3Ev0ETf9TTfX8YQ
- F
-X-Received: by 2002:a05:6512:138d:b0:533:4bd0:df69 with SMTP id
- 2adb3069b0e04-53546b9cdcbmr9082639e87.55.1725379692364; 
- Tue, 03 Sep 2024 09:08:12 -0700 (PDT)
+ AJvYcCWu8HZGocaW0gQeQWENftfWDQRUqakYmk2yeerVGbHxgSIO1NKcxufHpndamnXr305kCJaZCtWKPdtj@nongnu.org
+X-Gm-Message-State: AOJu0YwL/u5ipjESGjUF2rXgyg4TQ8UfDuTvyWUffdgkq817jh/foTao
+ +I997bOqIn0TTjBkA8sE4FPgRloOl9/VLCctHNrQsCKERPWP7Z7m5flmb/MXNBM=
+X-Received: by 2002:a05:600c:5124:b0:42a:a70e:30fb with SMTP id
+ 5b1f17b1804b1-42bdc633480mr93973745e9.15.1725379716951; 
+ Tue, 03 Sep 2024 09:08:36 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-42bb6df1066sm175123065e9.18.2024.09.03.09.08.11
+ 5b1f17b1804b1-42bb6df1066sm175123065e9.18.2024.09.03.09.08.35
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 03 Sep 2024 09:08:12 -0700 (PDT)
+ Tue, 03 Sep 2024 09:08:35 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH for-9.2 12/53] hw/arm: Remove 'z2' machine
-Date: Tue,  3 Sep 2024 17:07:10 +0100
-Message-Id: <20240903160751.4100218-13-peter.maydell@linaro.org>
+Subject: [PATCH for-9.2 29/53] hw/input: Remove tsc210x device
+Date: Tue,  3 Sep 2024 17:07:27 +0100
+Message-Id: <20240903160751.4100218-30-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240903160751.4100218-1-peter.maydell@linaro.org>
 References: <20240903160751.4100218-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::12f;
- envelope-from=peter.maydell@linaro.org; helo=mail-lf1-x12f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::335;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x335.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -130,437 +129,1380 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: AI79LQlW8VnF
+X-TUID: fLDr7w+BewSs
 
-The 'z2' machine was deprecated in 9.0, so we can remove it for
-9.2.
+Remove the tsc210x touchscreen controller device, which was
+only used by the n800 and n810.
+
+The uWireSlave struct is still used in omap1.c (at least for
+compilation purposes -- nothing any longer calls omap_uwire_attach()
+and so the struct's members will not be used at runtime), so
+we move it into omap.h so we can delete tsc2xxx.h.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- MAINTAINERS                             |   1 -
- configs/devices/arm-softmmu/default.mak |   1 -
- hw/arm/z2.c                             | 355 ------------------------
- hw/arm/Kconfig                          |   9 -
- hw/arm/meson.build                      |   1 -
- 5 files changed, 367 deletions(-)
- delete mode 100644 hw/arm/z2.c
+ MAINTAINERS                |    2 -
+ include/hw/arm/omap.h      |    7 +-
+ include/hw/input/tsc2xxx.h |   36 --
+ hw/input/tsc210x.c         | 1241 ------------------------------------
+ hw/input/Kconfig           |    3 -
+ hw/input/meson.build       |    1 -
+ 6 files changed, 6 insertions(+), 1284 deletions(-)
+ delete mode 100644 include/hw/input/tsc2xxx.h
+ delete mode 100644 hw/input/tsc210x.c
 
 diff --git a/MAINTAINERS b/MAINTAINERS
-index fd4e8b0d705..8ca445ad5a0 100644
+index 6d7248ad022..e44b6eb38b0 100644
 --- a/MAINTAINERS
 +++ b/MAINTAINERS
-@@ -907,7 +907,6 @@ PXA2XX
- M: Peter Maydell <peter.maydell@linaro.org>
+@@ -868,10 +868,8 @@ M: Peter Maydell <peter.maydell@linaro.org>
  L: qemu-arm@nongnu.org
  S: Odd Fixes
--F: hw/arm/z2.c
- F: hw/*/pxa2xx*
- F: include/hw/arm/pxa.h
+ F: hw/input/lm832x.c
+-F: hw/input/tsc210x.c
+ F: hw/rtc/twl92230.c
+ F: include/hw/input/lm832x.h
+-F: include/hw/input/tsc2xxx.h
  
-diff --git a/configs/devices/arm-softmmu/default.mak b/configs/devices/arm-softmmu/default.mak
-index 547100a06f3..260b0cf9772 100644
---- a/configs/devices/arm-softmmu/default.mak
-+++ b/configs/devices/arm-softmmu/default.mak
-@@ -27,7 +27,6 @@
- # CONFIG_VERSATILE=n
- # CONFIG_VEXPRESS=n
- # CONFIG_ZYNQ=n
--# CONFIG_Z2=n
- # CONFIG_NPCM7XX=n
- # CONFIG_COLLIE=n
- # CONFIG_ASPEED_SOC=n
-diff --git a/hw/arm/z2.c b/hw/arm/z2.c
+ Raspberry Pi
+ M: Peter Maydell <peter.maydell@linaro.org>
+diff --git a/include/hw/arm/omap.h b/include/hw/arm/omap.h
+index 40ee8ea9e56..0ca7c9604e7 100644
+--- a/include/hw/arm/omap.h
++++ b/include/hw/arm/omap.h
+@@ -21,7 +21,6 @@
+ #define HW_ARM_OMAP_H
+ 
+ #include "exec/memory.h"
+-#include "hw/input/tsc2xxx.h"
+ #include "target/arm/cpu-qom.h"
+ #include "qemu/log.h"
+ #include "qom/object.h"
+@@ -730,6 +729,12 @@ qemu_irq *omap_mpuio_in_get(struct omap_mpuio_s *s);
+ void omap_mpuio_out_set(struct omap_mpuio_s *s, int line, qemu_irq handler);
+ void omap_mpuio_key(struct omap_mpuio_s *s, int row, int col, int down);
+ 
++typedef struct uWireSlave {
++    uint16_t (*receive)(void *opaque);
++    void (*send)(void *opaque, uint16_t data);
++    void *opaque;
++} uWireSlave;
++
+ struct omap_uwire_s;
+ void omap_uwire_attach(struct omap_uwire_s *s,
+                 uWireSlave *slave, int chipselect);
+diff --git a/include/hw/input/tsc2xxx.h b/include/hw/input/tsc2xxx.h
 deleted file mode 100644
-index fc5672e7ab2..00000000000
---- a/hw/arm/z2.c
+index dcd4fa7faed..00000000000
+--- a/include/hw/input/tsc2xxx.h
 +++ /dev/null
-@@ -1,355 +0,0 @@
+@@ -1,36 +0,0 @@
 -/*
-- * PXA270-based Zipit Z2 device
+- * TI touchscreen controller
 - *
-- * Copyright (c) 2011 by Vasily Khoruzhick <anarsoul@gmail.com>
+- * Copyright (c) 2006 Andrzej Zaborowski
+- * Copyright (C) 2008 Nokia Corporation
 - *
-- * Code is based on mainstone platform.
+- * This work is licensed under the terms of the GNU GPL, version 2 or later.
+- * See the COPYING file in the top-level directory.
+- */
+-
+-#ifndef HW_INPUT_TSC2XXX_H
+-#define HW_INPUT_TSC2XXX_H
+-
+-typedef struct MouseTransformInfo {
+-    /* Touchscreen resolution */
+-    int x;
+-    int y;
+-    /* Calibration values as used/generated by tslib */
+-    int a[7];
+-} MouseTransformInfo;
+-
+-typedef struct uWireSlave {
+-    uint16_t (*receive)(void *opaque);
+-    void (*send)(void *opaque, uint16_t data);
+-    void *opaque;
+-} uWireSlave;
+-
+-/* tsc210x.c */
+-uWireSlave *tsc2102_init(qemu_irq pint);
+-uWireSlave *tsc2301_init(qemu_irq penirq, qemu_irq kbirq, qemu_irq dav);
+-I2SCodec *tsc210x_codec(uWireSlave *chip);
+-uint32_t tsc210x_txrx(void *opaque, uint32_t value, int len);
+-void tsc210x_set_transform(uWireSlave *chip, const MouseTransformInfo *info);
+-void tsc210x_key_event(uWireSlave *chip, int key, int down);
+-
+-#endif
+diff --git a/hw/input/tsc210x.c b/hw/input/tsc210x.c
+deleted file mode 100644
+index c4e32c7a42f..00000000000
+--- a/hw/input/tsc210x.c
++++ /dev/null
+@@ -1,1241 +0,0 @@
+-/*
+- * TI TSC2102 (touchscreen/sensors/audio controller) emulator.
+- * TI TSC2301 (touchscreen/sensors/keypad).
 - *
-- * This code is licensed under the GNU GPL v2.
+- * Copyright (c) 2006 Andrzej Zaborowski  <balrog@zabor.org>
+- * Copyright (C) 2008 Nokia Corporation
 - *
-- * Contributions after 2012-01-13 are licensed under the terms of the
-- * GNU GPL, version 2 or (at your option) any later version.
+- * This program is free software; you can redistribute it and/or
+- * modify it under the terms of the GNU General Public License as
+- * published by the Free Software Foundation; either version 2 or
+- * (at your option) version 3 of the License.
+- *
+- * This program is distributed in the hope that it will be useful,
+- * but WITHOUT ANY WARRANTY; without even the implied warranty of
+- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+- * GNU General Public License for more details.
+- *
+- * You should have received a copy of the GNU General Public License along
+- * with this program; if not, see <http://www.gnu.org/licenses/>.
 - */
 -
 -#include "qemu/osdep.h"
--#include "qemu/units.h"
--#include "hw/arm/pxa.h"
--#include "hw/arm/boot.h"
--#include "hw/i2c/i2c.h"
--#include "hw/irq.h"
--#include "hw/ssi/ssi.h"
--#include "migration/vmstate.h"
--#include "hw/boards.h"
--#include "hw/block/flash.h"
--#include "ui/console.h"
--#include "hw/audio/wm8750.h"
+-#include "hw/hw.h"
 -#include "audio/audio.h"
--#include "exec/address-spaces.h"
--#include "qom/object.h"
+-#include "qemu/timer.h"
+-#include "qemu/log.h"
+-#include "sysemu/reset.h"
+-#include "ui/console.h"
+-#include "hw/arm/omap.h"            /* For I2SCodec */
+-#include "hw/boards.h"              /* for current_machine */
+-#include "hw/input/tsc2xxx.h"
+-#include "hw/irq.h"
+-#include "migration/vmstate.h"
 -#include "qapi/error.h"
--#include "trace.h"
 -
--static const struct keymap map[0x100] = {
--    [0 ... 0xff] = { -1, -1 },
--    [0x3b] = {0, 0}, /* Option = F1 */
--    [0xc8] = {0, 1}, /* Up */
--    [0xd0] = {0, 2}, /* Down */
--    [0xcb] = {0, 3}, /* Left */
--    [0xcd] = {0, 4}, /* Right */
--    [0xcf] = {0, 5}, /* End */
--    [0x0d] = {0, 6}, /* KPPLUS */
--    [0xc7] = {1, 0}, /* Home */
--    [0x10] = {1, 1}, /* Q */
--    [0x17] = {1, 2}, /* I */
--    [0x22] = {1, 3}, /* G */
--    [0x2d] = {1, 4}, /* X */
--    [0x1c] = {1, 5}, /* Enter */
--    [0x0c] = {1, 6}, /* KPMINUS */
--    [0xc9] = {2, 0}, /* PageUp */
--    [0x11] = {2, 1}, /* W */
--    [0x18] = {2, 2}, /* O */
--    [0x23] = {2, 3}, /* H */
--    [0x2e] = {2, 4}, /* C */
--    [0x38] = {2, 5}, /* LeftAlt */
--    [0xd1] = {3, 0}, /* PageDown */
--    [0x12] = {3, 1}, /* E */
--    [0x19] = {3, 2}, /* P */
--    [0x24] = {3, 3}, /* J */
--    [0x2f] = {3, 4}, /* V */
--    [0x2a] = {3, 5}, /* LeftShift */
--    [0x01] = {4, 0}, /* Esc */
--    [0x13] = {4, 1}, /* R */
--    [0x1e] = {4, 2}, /* A */
--    [0x25] = {4, 3}, /* K */
--    [0x30] = {4, 4}, /* B */
--    [0x1d] = {4, 5}, /* LeftCtrl */
--    [0x0f] = {5, 0}, /* Tab */
--    [0x14] = {5, 1}, /* T */
--    [0x1f] = {5, 2}, /* S */
--    [0x26] = {5, 3}, /* L */
--    [0x31] = {5, 4}, /* N */
--    [0x39] = {5, 5}, /* Space */
--    [0x3c] = {6, 0}, /* Stop = F2 */
--    [0x15] = {6, 1}, /* Y */
--    [0x20] = {6, 2}, /* D */
--    [0x0e] = {6, 3}, /* Backspace */
--    [0x32] = {6, 4}, /* M */
--    [0x33] = {6, 5}, /* Comma */
--    [0x3d] = {7, 0}, /* Play = F3 */
--    [0x16] = {7, 1}, /* U */
--    [0x21] = {7, 2}, /* F */
--    [0x2c] = {7, 3}, /* Z */
--    [0x27] = {7, 4}, /* Semicolon */
--    [0x34] = {7, 5}, /* Dot */
+-#define TSC_DATA_REGISTERS_PAGE		0x0
+-#define TSC_CONTROL_REGISTERS_PAGE	0x1
+-#define TSC_AUDIO_REGISTERS_PAGE	0x2
+-
+-#define TSC_VERBOSE
+-
+-#define TSC_CUT_RESOLUTION(value, p)	((value) >> (16 - resolution[p]))
+-
+-typedef struct {
+-    qemu_irq pint;
+-    qemu_irq kbint;
+-    qemu_irq davint;
+-    QEMUTimer *timer;
+-    QEMUSoundCard card;
+-    uWireSlave chip;
+-    I2SCodec codec;
+-    uint8_t in_fifo[16384];
+-    uint8_t out_fifo[16384];
+-    uint16_t model;
+-
+-    int32_t x, y;
+-    bool pressure;
+-
+-    uint8_t page, offset;
+-    uint16_t dav;
+-
+-    bool state;
+-    bool irq;
+-    bool command;
+-    bool busy;
+-    bool enabled;
+-    bool host_mode;
+-    uint8_t function, nextfunction;
+-    uint8_t precision, nextprecision;
+-    uint8_t filter;
+-    uint8_t pin_func;
+-    uint8_t ref;
+-    uint8_t timing;
+-    uint8_t noise;
+-
+-    uint16_t audio_ctrl1;
+-    uint16_t audio_ctrl2;
+-    uint16_t audio_ctrl3;
+-    uint16_t pll[3];
+-    uint16_t volume;
+-    int64_t volume_change;
+-    bool softstep;
+-    uint16_t dac_power;
+-    int64_t powerdown;
+-    uint16_t filter_data[0x14];
+-
+-    const char *name;
+-    SWVoiceIn *adc_voice[1];
+-    SWVoiceOut *dac_voice[1];
+-    int i2s_rx_rate;
+-    int i2s_tx_rate;
+-
+-    int tr[8];
+-
+-    struct {
+-        uint16_t down;
+-        uint16_t mask;
+-        int scan;
+-        int debounce;
+-        int mode;
+-        int intr;
+-    } kb;
+-    int64_t now; /* Time at migration */
+-} TSC210xState;
+-
+-static const int resolution[4] = { 12, 8, 10, 12 };
+-
+-#define TSC_MODE_NO_SCAN	0x0
+-#define TSC_MODE_XY_SCAN	0x1
+-#define TSC_MODE_XYZ_SCAN	0x2
+-#define TSC_MODE_X		0x3
+-#define TSC_MODE_Y		0x4
+-#define TSC_MODE_Z		0x5
+-#define TSC_MODE_BAT1		0x6
+-#define TSC_MODE_BAT2		0x7
+-#define TSC_MODE_AUX		0x8
+-#define TSC_MODE_AUX_SCAN	0x9
+-#define TSC_MODE_TEMP1		0xa
+-#define TSC_MODE_PORT_SCAN	0xb
+-#define TSC_MODE_TEMP2		0xc
+-#define TSC_MODE_XX_DRV		0xd
+-#define TSC_MODE_YY_DRV		0xe
+-#define TSC_MODE_YX_DRV		0xf
+-
+-static const uint16_t mode_regs[16] = {
+-    0x0000,	/* No scan */
+-    0x0600,	/* X, Y scan */
+-    0x0780,	/* X, Y, Z scan */
+-    0x0400,	/* X */
+-    0x0200,	/* Y */
+-    0x0180,	/* Z */
+-    0x0040,	/* BAT1 */
+-    0x0030,	/* BAT2 */
+-    0x0010,	/* AUX */
+-    0x0010,	/* AUX scan */
+-    0x0004,	/* TEMP1 */
+-    0x0070,	/* Port scan */
+-    0x0002,	/* TEMP2 */
+-    0x0000,	/* X+, X- drivers */
+-    0x0000,	/* Y+, Y- drivers */
+-    0x0000,	/* Y+, X- drivers */
 -};
 -
--#define Z2_RAM_SIZE     0x02000000
--#define Z2_FLASH_BASE   0x00000000
--#define Z2_FLASH_SIZE   0x00800000
+-#define X_TRANSFORM(s)			\
+-    ((s->y * s->tr[0] - s->x * s->tr[1]) / s->tr[2] + s->tr[3])
+-#define Y_TRANSFORM(s)			\
+-    ((s->y * s->tr[4] - s->x * s->tr[5]) / s->tr[6] + s->tr[7])
+-#define Z1_TRANSFORM(s)			\
+-    ((400 - ((s)->x >> 7) + ((s)->pressure << 10)) << 4)
+-#define Z2_TRANSFORM(s)			\
+-    ((4000 + ((s)->y >> 7) - ((s)->pressure << 10)) << 4)
 -
--static struct arm_boot_info z2_binfo = {
--    .loader_start   = PXA2XX_SDRAM_BASE,
--    .ram_size       = Z2_RAM_SIZE,
--};
+-#define BAT1_VAL			0x8660
+-#define BAT2_VAL			0x0000
+-#define AUX1_VAL			0x35c0
+-#define AUX2_VAL			0xffff
+-#define TEMP1_VAL			0x8c70
+-#define TEMP2_VAL			0xa5b0
 -
--#define Z2_GPIO_SD_DETECT   96
--#define Z2_GPIO_AC_IN       0
--#define Z2_GPIO_KEY_ON      1
--#define Z2_GPIO_LCD_CS      88
+-#define TSC_POWEROFF_DELAY		50
+-#define TSC_SOFTSTEP_DELAY		50
 -
--struct ZipitLCD {
--    SSIPeripheral ssidev;
--    int32_t selected;
--    int32_t enabled;
--    uint8_t buf[3];
--    uint32_t cur_reg;
--    int pos;
--};
--
--#define TYPE_ZIPIT_LCD "zipit-lcd"
--OBJECT_DECLARE_SIMPLE_TYPE(ZipitLCD, ZIPIT_LCD)
--
--static uint32_t zipit_lcd_transfer(SSIPeripheral *dev, uint32_t value)
+-static void tsc210x_reset(TSC210xState *s)
 -{
--    ZipitLCD *z = ZIPIT_LCD(dev);
+-    s->state = false;
+-    s->pin_func = 2;
+-    s->enabled = false;
+-    s->busy = false;
+-    s->nextfunction = 0;
+-    s->ref = 0;
+-    s->timing = 0;
+-    s->irq = false;
+-    s->dav = 0;
+-
+-    s->audio_ctrl1 = 0x0000;
+-    s->audio_ctrl2 = 0x4410;
+-    s->audio_ctrl3 = 0x0000;
+-    s->pll[0] = 0x1004;
+-    s->pll[1] = 0x0000;
+-    s->pll[2] = 0x1fff;
+-    s->volume = 0xffff;
+-    s->dac_power = 0x8540;
+-    s->softstep = true;
+-    s->volume_change = 0;
+-    s->powerdown = 0;
+-    s->filter_data[0x00] = 0x6be3;
+-    s->filter_data[0x01] = 0x9666;
+-    s->filter_data[0x02] = 0x675d;
+-    s->filter_data[0x03] = 0x6be3;
+-    s->filter_data[0x04] = 0x9666;
+-    s->filter_data[0x05] = 0x675d;
+-    s->filter_data[0x06] = 0x7d83;
+-    s->filter_data[0x07] = 0x84ee;
+-    s->filter_data[0x08] = 0x7d83;
+-    s->filter_data[0x09] = 0x84ee;
+-    s->filter_data[0x0a] = 0x6be3;
+-    s->filter_data[0x0b] = 0x9666;
+-    s->filter_data[0x0c] = 0x675d;
+-    s->filter_data[0x0d] = 0x6be3;
+-    s->filter_data[0x0e] = 0x9666;
+-    s->filter_data[0x0f] = 0x675d;
+-    s->filter_data[0x10] = 0x7d83;
+-    s->filter_data[0x11] = 0x84ee;
+-    s->filter_data[0x12] = 0x7d83;
+-    s->filter_data[0x13] = 0x84ee;
+-
+-    s->i2s_tx_rate = 0;
+-    s->i2s_rx_rate = 0;
+-
+-    s->kb.scan = 1;
+-    s->kb.debounce = 0;
+-    s->kb.mask = 0x0000;
+-    s->kb.mode = 3;
+-    s->kb.intr = 0;
+-
+-    qemu_set_irq(s->pint, !s->irq);
+-    qemu_set_irq(s->davint, !s->dav);
+-    qemu_irq_raise(s->kbint);
+-}
+-
+-typedef struct {
+-    int rate;
+-    int dsor;
+-    int fsref;
+-} TSC210xRateInfo;
+-
+-/*  { rate,   dsor, fsref }	*/
+-static const TSC210xRateInfo tsc2102_rates[] = {
+-    /* Fsref / 6.0 */
+-    { 7350,	63,	1 },
+-    { 8000,	63,	0 },
+-    /* Fsref / 6.0 */
+-    { 7350,	54,	1 },
+-    { 8000,	54,	0 },
+-    /* Fsref / 5.0 */
+-    { 8820,	45,	1 },
+-    { 9600,	45,	0 },
+-    /* Fsref / 4.0 */
+-    { 11025,	36,	1 },
+-    { 12000,	36,	0 },
+-    /* Fsref / 3.0 */
+-    { 14700,	27,	1 },
+-    { 16000,	27,	0 },
+-    /* Fsref / 2.0 */
+-    { 22050,	18,	1 },
+-    { 24000,	18,	0 },
+-    /* Fsref / 1.5 */
+-    { 29400,	9,	1 },
+-    { 32000,	9,	0 },
+-    /* Fsref */
+-    { 44100,	0,	1 },
+-    { 48000,	0,	0 },
+-
+-    { 0,	0, 	0 },
+-};
+-
+-static inline void tsc210x_out_flush(TSC210xState *s, int len)
+-{
+-    uint8_t *data = s->codec.out.fifo + s->codec.out.start;
+-    uint8_t *end = data + len;
+-
+-    while (data < end)
+-        data += AUD_write(s->dac_voice[0], data, end - data) ?: (end - data);
+-
+-    s->codec.out.len -= len;
+-    if (s->codec.out.len)
+-        memmove(s->codec.out.fifo, end, s->codec.out.len);
+-    s->codec.out.start = 0;
+-}
+-
+-static void tsc210x_audio_out_cb(TSC210xState *s, int free_b)
+-{
+-    if (s->codec.out.len >= free_b) {
+-        tsc210x_out_flush(s, free_b);
+-        return;
+-    }
+-
+-    s->codec.out.size = MIN(free_b, 16384);
+-    qemu_irq_raise(s->codec.tx_start);
+-}
+-
+-static void tsc2102_audio_rate_update(TSC210xState *s)
+-{
+-    const TSC210xRateInfo *rate;
+-
+-    s->codec.tx_rate = 0;
+-    s->codec.rx_rate = 0;
+-    if (s->dac_power & (1 << 15))				/* PWDNC */
+-        return;
+-
+-    for (rate = tsc2102_rates; rate->rate; rate ++)
+-        if (rate->dsor == (s->audio_ctrl1 & 0x3f) &&		/* DACFS */
+-                        rate->fsref == ((s->audio_ctrl3 >> 13) & 1))/* REFFS */
+-            break;
+-    if (!rate->rate) {
+-        printf("%s: unknown sampling rate configured\n", __func__);
+-        return;
+-    }
+-
+-    s->codec.tx_rate = rate->rate;
+-}
+-
+-static void tsc2102_audio_output_update(TSC210xState *s)
+-{
+-    int enable;
+-    struct audsettings fmt;
+-
+-    if (s->dac_voice[0]) {
+-        tsc210x_out_flush(s, s->codec.out.len);
+-        s->codec.out.size = 0;
+-        AUD_set_active_out(s->dac_voice[0], 0);
+-        AUD_close_out(&s->card, s->dac_voice[0]);
+-        s->dac_voice[0] = NULL;
+-    }
+-    s->codec.cts = 0;
+-
+-    enable =
+-            (~s->dac_power & (1 << 15)) &&			/* PWDNC */
+-            (~s->dac_power & (1 << 10));			/* DAPWDN */
+-    if (!enable || !s->codec.tx_rate)
+-        return;
+-
+-    /* Force our own sampling rate even in slave DAC mode */
+-    fmt.endianness = 0;
+-    fmt.nchannels = 2;
+-    fmt.freq = s->codec.tx_rate;
+-    fmt.fmt = AUDIO_FORMAT_S16;
+-
+-    s->dac_voice[0] = AUD_open_out(&s->card, s->dac_voice[0],
+-                    "tsc2102.sink", s, (void *) tsc210x_audio_out_cb, &fmt);
+-    if (s->dac_voice[0]) {
+-        s->codec.cts = 1;
+-        AUD_set_active_out(s->dac_voice[0], 1);
+-    }
+-}
+-
+-static uint16_t tsc2102_data_register_read(TSC210xState *s, int reg)
+-{
+-    switch (reg) {
+-    case 0x00:	/* X */
+-        s->dav &= 0xfbff;
+-        return TSC_CUT_RESOLUTION(X_TRANSFORM(s), s->precision) +
+-                (s->noise & 3);
+-
+-    case 0x01:	/* Y */
+-        s->noise ++;
+-        s->dav &= 0xfdff;
+-        return TSC_CUT_RESOLUTION(Y_TRANSFORM(s), s->precision) ^
+-                (s->noise & 3);
+-
+-    case 0x02:	/* Z1 */
+-        s->dav &= 0xfeff;
+-        return TSC_CUT_RESOLUTION(Z1_TRANSFORM(s), s->precision) -
+-                (s->noise & 3);
+-
+-    case 0x03:	/* Z2 */
+-        s->dav &= 0xff7f;
+-        return TSC_CUT_RESOLUTION(Z2_TRANSFORM(s), s->precision) |
+-                (s->noise & 3);
+-
+-    case 0x04:	/* KPData */
+-        if ((s->model & 0xff00) == 0x2300) {
+-            if (s->kb.intr && (s->kb.mode & 2)) {
+-                s->kb.intr = 0;
+-                qemu_irq_raise(s->kbint);
+-            }
+-            return s->kb.down;
+-        }
+-
+-        return 0xffff;
+-
+-    case 0x05:	/* BAT1 */
+-        s->dav &= 0xffbf;
+-        return TSC_CUT_RESOLUTION(BAT1_VAL, s->precision) +
+-                (s->noise & 6);
+-
+-    case 0x06:	/* BAT2 */
+-        s->dav &= 0xffdf;
+-        return TSC_CUT_RESOLUTION(BAT2_VAL, s->precision);
+-
+-    case 0x07:	/* AUX1 */
+-        s->dav &= 0xffef;
+-        return TSC_CUT_RESOLUTION(AUX1_VAL, s->precision);
+-
+-    case 0x08:	/* AUX2 */
+-        s->dav &= 0xfff7;
+-        return 0xffff;
+-
+-    case 0x09:	/* TEMP1 */
+-        s->dav &= 0xfffb;
+-        return TSC_CUT_RESOLUTION(TEMP1_VAL, s->precision) -
+-                (s->noise & 5);
+-
+-    case 0x0a:	/* TEMP2 */
+-        s->dav &= 0xfffd;
+-        return TSC_CUT_RESOLUTION(TEMP2_VAL, s->precision) ^
+-                (s->noise & 3);
+-
+-    case 0x0b:	/* DAC */
+-        s->dav &= 0xfffe;
+-        return 0xffff;
+-
+-    default:
+-#ifdef TSC_VERBOSE
+-        fprintf(stderr, "tsc2102_data_register_read: "
+-                        "no such register: 0x%02x\n", reg);
+-#endif
+-        return 0xffff;
+-    }
+-}
+-
+-static uint16_t tsc2102_control_register_read(
+-                TSC210xState *s, int reg)
+-{
+-    switch (reg) {
+-    case 0x00:	/* TSC ADC */
+-        return (s->pressure << 15) | ((!s->busy) << 14) |
+-                (s->nextfunction << 10) | (s->nextprecision << 8) | s->filter; 
+-
+-    case 0x01:	/* Status / Keypad Control */
+-        if ((s->model & 0xff00) == 0x2100)
+-            return (s->pin_func << 14) | ((!s->enabled) << 13) |
+-                    (s->host_mode << 12) | ((!!s->dav) << 11) | s->dav;
+-        else
+-            return (s->kb.intr << 15) | ((s->kb.scan || !s->kb.down) << 14) |
+-                    (s->kb.debounce << 11);
+-
+-    case 0x02:	/* DAC Control */
+-        if ((s->model & 0xff00) == 0x2300)
+-            return s->dac_power & 0x8000;
+-        else
+-            goto bad_reg;
+-
+-    case 0x03:	/* Reference */
+-        return s->ref;
+-
+-    case 0x04:	/* Reset */
+-        return 0xffff;
+-
+-    case 0x05:	/* Configuration */
+-        return s->timing;
+-
+-    case 0x06:	/* Secondary configuration */
+-        if ((s->model & 0xff00) == 0x2100)
+-            goto bad_reg;
+-        return ((!s->dav) << 15) | ((s->kb.mode & 1) << 14) | s->pll[2];
+-
+-    case 0x10:	/* Keypad Mask */
+-        if ((s->model & 0xff00) == 0x2100)
+-            goto bad_reg;
+-        return s->kb.mask;
+-
+-    default:
+-    bad_reg:
+-#ifdef TSC_VERBOSE
+-        fprintf(stderr, "tsc2102_control_register_read: "
+-                        "no such register: 0x%02x\n", reg);
+-#endif
+-        return 0xffff;
+-    }
+-}
+-
+-static uint16_t tsc2102_audio_register_read(TSC210xState *s, int reg)
+-{
+-    int l_ch, r_ch;
 -    uint16_t val;
 -
--    trace_z2_lcd_reg_update(z->cur_reg, z->buf[0], z->buf[1], z->buf[2], value);
--    if (z->selected) {
--        z->buf[z->pos] = value & 0xff;
--        z->pos++;
--    }
--    if (z->pos == 3) {
--        switch (z->buf[0]) {
--        case 0x74:
--            z->cur_reg = z->buf[2];
--            break;
--        case 0x76:
--            val = z->buf[1] << 8 | z->buf[2];
--            if (z->cur_reg == 0x22 && val == 0x0000) {
--                z->enabled = 1;
--                trace_z2_lcd_enable_disable_result("enabled");
--            } else if (z->cur_reg == 0x10 && val == 0x0000) {
--                z->enabled = 0;
--                trace_z2_lcd_enable_disable_result("disabled");
--            }
--            break;
--        default:
--            break;
+-    switch (reg) {
+-    case 0x00:	/* Audio Control 1 */
+-        return s->audio_ctrl1;
+-
+-    case 0x01:
+-        return 0xff00;
+-
+-    case 0x02:	/* DAC Volume Control */
+-        return s->volume;
+-
+-    case 0x03:
+-        return 0x8b00;
+-
+-    case 0x04:	/* Audio Control 2 */
+-        l_ch = 1;
+-        r_ch = 1;
+-        if (s->softstep && !(s->dac_power & (1 << 10))) {
+-            l_ch = (qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) >
+-                            s->volume_change + TSC_SOFTSTEP_DELAY);
+-            r_ch = (qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) >
+-                            s->volume_change + TSC_SOFTSTEP_DELAY);
 -        }
--        z->pos = 0;
+-
+-        return s->audio_ctrl2 | (l_ch << 3) | (r_ch << 2);
+-
+-    case 0x05:	/* Stereo DAC Power Control */
+-        return 0x2aa0 | s->dac_power |
+-                (((s->dac_power & (1 << 10)) &&
+-                  (qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) >
+-                   s->powerdown + TSC_POWEROFF_DELAY)) << 6);
+-
+-    case 0x06:	/* Audio Control 3 */
+-        val = s->audio_ctrl3 | 0x0001;
+-        s->audio_ctrl3 &= 0xff3f;
+-        return val;
+-
+-    case 0x07:	/* LCH_BASS_BOOST_N0 */
+-    case 0x08:	/* LCH_BASS_BOOST_N1 */
+-    case 0x09:	/* LCH_BASS_BOOST_N2 */
+-    case 0x0a:	/* LCH_BASS_BOOST_N3 */
+-    case 0x0b:	/* LCH_BASS_BOOST_N4 */
+-    case 0x0c:	/* LCH_BASS_BOOST_N5 */
+-    case 0x0d:	/* LCH_BASS_BOOST_D1 */
+-    case 0x0e:	/* LCH_BASS_BOOST_D2 */
+-    case 0x0f:	/* LCH_BASS_BOOST_D4 */
+-    case 0x10:	/* LCH_BASS_BOOST_D5 */
+-    case 0x11:	/* RCH_BASS_BOOST_N0 */
+-    case 0x12:	/* RCH_BASS_BOOST_N1 */
+-    case 0x13:	/* RCH_BASS_BOOST_N2 */
+-    case 0x14:	/* RCH_BASS_BOOST_N3 */
+-    case 0x15:	/* RCH_BASS_BOOST_N4 */
+-    case 0x16:	/* RCH_BASS_BOOST_N5 */
+-    case 0x17:	/* RCH_BASS_BOOST_D1 */
+-    case 0x18:	/* RCH_BASS_BOOST_D2 */
+-    case 0x19:	/* RCH_BASS_BOOST_D4 */
+-    case 0x1a:	/* RCH_BASS_BOOST_D5 */
+-        return s->filter_data[reg - 0x07];
+-
+-    case 0x1b:	/* PLL Programmability 1 */
+-        return s->pll[0];
+-
+-    case 0x1c:	/* PLL Programmability 2 */
+-        return s->pll[1];
+-
+-    case 0x1d:	/* Audio Control 4 */
+-        return (!s->softstep) << 14;
+-
+-    default:
+-#ifdef TSC_VERBOSE
+-        fprintf(stderr, "tsc2102_audio_register_read: "
+-                        "no such register: 0x%02x\n", reg);
+-#endif
+-        return 0xffff;
 -    }
--    return 0;
 -}
 -
--static void z2_lcd_cs(void *opaque, int line, int level)
+-static void tsc2102_data_register_write(
+-                TSC210xState *s, int reg, uint16_t value)
 -{
--    ZipitLCD *z2_lcd = opaque;
--    z2_lcd->selected = !level;
--}
+-    switch (reg) {
+-    case 0x00:	/* X */
+-    case 0x01:	/* Y */
+-    case 0x02:	/* Z1 */
+-    case 0x03:	/* Z2 */
+-    case 0x05:	/* BAT1 */
+-    case 0x06:	/* BAT2 */
+-    case 0x07:	/* AUX1 */
+-    case 0x08:	/* AUX2 */
+-    case 0x09:	/* TEMP1 */
+-    case 0x0a:	/* TEMP2 */
+-        return;
 -
--static void zipit_lcd_realize(SSIPeripheral *dev, Error **errp)
--{
--    ZipitLCD *z = ZIPIT_LCD(dev);
--    z->selected = 0;
--    z->enabled = 0;
--    z->pos = 0;
--}
--
--static const VMStateDescription vmstate_zipit_lcd_state = {
--    .name = "zipit-lcd",
--    .version_id = 2,
--    .minimum_version_id = 2,
--    .fields = (const VMStateField[]) {
--        VMSTATE_SSI_PERIPHERAL(ssidev, ZipitLCD),
--        VMSTATE_INT32(selected, ZipitLCD),
--        VMSTATE_INT32(enabled, ZipitLCD),
--        VMSTATE_BUFFER(buf, ZipitLCD),
--        VMSTATE_UINT32(cur_reg, ZipitLCD),
--        VMSTATE_INT32(pos, ZipitLCD),
--        VMSTATE_END_OF_LIST(),
+-    default:
+-        qemu_log_mask(LOG_GUEST_ERROR, "tsc2102_data_register_write: "
+-                                       "no such register: 0x%02x\n", reg);
 -    }
--};
--
--static void zipit_lcd_class_init(ObjectClass *klass, void *data)
--{
--    DeviceClass *dc = DEVICE_CLASS(klass);
--    SSIPeripheralClass *k = SSI_PERIPHERAL_CLASS(klass);
--
--    k->realize = zipit_lcd_realize;
--    k->transfer = zipit_lcd_transfer;
--    dc->vmsd = &vmstate_zipit_lcd_state;
 -}
 -
--static const TypeInfo zipit_lcd_info = {
--    .name          = TYPE_ZIPIT_LCD,
--    .parent        = TYPE_SSI_PERIPHERAL,
--    .instance_size = sizeof(ZipitLCD),
--    .class_init    = zipit_lcd_class_init,
--};
--
--#define TYPE_AER915 "aer915"
--OBJECT_DECLARE_SIMPLE_TYPE(AER915State, AER915)
--
--struct AER915State {
--    I2CSlave parent_obj;
--
--    int len;
--    uint8_t buf[3];
--};
--
--static int aer915_send(I2CSlave *i2c, uint8_t data)
+-static void tsc2102_control_register_write(
+-                TSC210xState *s, int reg, uint16_t value)
 -{
--    AER915State *s = AER915(i2c);
+-    switch (reg) {
+-    case 0x00:	/* TSC ADC */
+-        s->host_mode = value >> 15;
+-        s->enabled = !(value & 0x4000);
+-        if (s->busy && !s->enabled)
+-            timer_del(s->timer);
+-        s->busy = s->busy && s->enabled;
+-        s->nextfunction = (value >> 10) & 0xf;
+-        s->nextprecision = (value >> 8) & 3;
+-        s->filter = value & 0xff;
+-        return;
 -
--    s->buf[s->len] = data;
--    if (s->len++ > 2) {
--        trace_z2_aer915_send_too_long(s->len);
--        return 1;
--    }
+-    case 0x01:	/* Status / Keypad Control */
+-        if ((s->model & 0xff00) == 0x2100)
+-            s->pin_func = value >> 14;
+-        else {
+-            s->kb.scan = (value >> 14) & 1;
+-            s->kb.debounce = (value >> 11) & 7;
+-            if (s->kb.intr && s->kb.scan) {
+-                s->kb.intr = 0;
+-                qemu_irq_raise(s->kbint);
+-            }
+-        }
+-        return;
 -
--    if (s->len == 2) {
--        trace_z2_aer915_send(s->buf[0], s->buf[1]);
--    }
--
--    return 0;
--}
--
--static int aer915_event(I2CSlave *i2c, enum i2c_event event)
--{
--    AER915State *s = AER915(i2c);
--
--    trace_z2_aer915_event(s->len, event);
--    switch (event) {
--    case I2C_START_SEND:
--        s->len = 0;
+-    case 0x02:	/* DAC Control */
+-        if ((s->model & 0xff00) == 0x2300) {
+-            s->dac_power &= 0x7fff;
+-            s->dac_power |= 0x8000 & value;
+-        } else
+-            goto bad_reg;
 -        break;
--    case I2C_START_RECV:
+-
+-    case 0x03:	/* Reference */
+-        s->ref = value & 0x1f;
+-        return;
+-
+-    case 0x04:	/* Reset */
+-        if (value == 0xbb00) {
+-            if (s->busy)
+-                timer_del(s->timer);
+-            tsc210x_reset(s);
+-#ifdef TSC_VERBOSE
+-        } else {
+-            fprintf(stderr, "tsc2102_control_register_write: "
+-                            "wrong value written into RESET\n");
+-#endif
+-        }
+-        return;
+-
+-    case 0x05:	/* Configuration */
+-        s->timing = value & 0x3f;
+-#ifdef TSC_VERBOSE
+-        if (value & ~0x3f)
+-            fprintf(stderr, "tsc2102_control_register_write: "
+-                            "wrong value written into CONFIG\n");
+-#endif
+-        return;
+-
+-    case 0x06:	/* Secondary configuration */
+-        if ((s->model & 0xff00) == 0x2100)
+-            goto bad_reg;
+-        s->kb.mode = value >> 14;
+-        s->pll[2] = value & 0x3ffff;
+-        return;
+-
+-    case 0x10:	/* Keypad Mask */
+-        if ((s->model & 0xff00) == 0x2100)
+-            goto bad_reg;
+-        s->kb.mask = value;
+-        return;
+-
+-    default:
+-    bad_reg:
+-        qemu_log_mask(LOG_GUEST_ERROR, "tsc2102_control_register_write: "
+-                                       "no such register: 0x%02x\n", reg);
+-    }
+-}
+-
+-static void tsc2102_audio_register_write(
+-                TSC210xState *s, int reg, uint16_t value)
+-{
+-    switch (reg) {
+-    case 0x00:	/* Audio Control 1 */
+-        s->audio_ctrl1 = value & 0x0f3f;
+-#ifdef TSC_VERBOSE
+-        if ((value & ~0x0f3f) || ((value & 7) != ((value >> 3) & 7)))
+-            fprintf(stderr, "tsc2102_audio_register_write: "
+-                            "wrong value written into Audio 1\n");
+-#endif
+-        tsc2102_audio_rate_update(s);
+-        tsc2102_audio_output_update(s);
+-        return;
+-
+-    case 0x01:
+-#ifdef TSC_VERBOSE
+-        if (value != 0xff00)
+-            fprintf(stderr, "tsc2102_audio_register_write: "
+-                            "wrong value written into reg 0x01\n");
+-#endif
+-        return;
+-
+-    case 0x02:	/* DAC Volume Control */
+-        s->volume = value;
+-        s->volume_change = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
+-        return;
+-
+-    case 0x03:
+-#ifdef TSC_VERBOSE
+-        if (value != 0x8b00)
+-            fprintf(stderr, "tsc2102_audio_register_write: "
+-                            "wrong value written into reg 0x03\n");
+-#endif
+-        return;
+-
+-    case 0x04:	/* Audio Control 2 */
+-        s->audio_ctrl2 = value & 0xf7f2;
+-#ifdef TSC_VERBOSE
+-        if (value & ~0xf7fd)
+-            fprintf(stderr, "tsc2102_audio_register_write: "
+-                            "wrong value written into Audio 2\n");
+-#endif
+-        return;
+-
+-    case 0x05:	/* Stereo DAC Power Control */
+-        if ((value & ~s->dac_power) & (1 << 10))
+-            s->powerdown = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
+-
+-        s->dac_power = value & 0x9543;
+-#ifdef TSC_VERBOSE
+-        if ((value & ~0x9543) != 0x2aa0)
+-            fprintf(stderr, "tsc2102_audio_register_write: "
+-                            "wrong value written into Power\n");
+-#endif
+-        tsc2102_audio_rate_update(s);
+-        tsc2102_audio_output_update(s);
+-        return;
+-
+-    case 0x06:	/* Audio Control 3 */
+-        s->audio_ctrl3 &= 0x00c0;
+-        s->audio_ctrl3 |= value & 0xf800;
+-#ifdef TSC_VERBOSE
+-        if (value & ~0xf8c7)
+-            fprintf(stderr, "tsc2102_audio_register_write: "
+-                            "wrong value written into Audio 3\n");
+-#endif
+-        tsc2102_audio_output_update(s);
+-        return;
+-
+-    case 0x07:	/* LCH_BASS_BOOST_N0 */
+-    case 0x08:	/* LCH_BASS_BOOST_N1 */
+-    case 0x09:	/* LCH_BASS_BOOST_N2 */
+-    case 0x0a:	/* LCH_BASS_BOOST_N3 */
+-    case 0x0b:	/* LCH_BASS_BOOST_N4 */
+-    case 0x0c:	/* LCH_BASS_BOOST_N5 */
+-    case 0x0d:	/* LCH_BASS_BOOST_D1 */
+-    case 0x0e:	/* LCH_BASS_BOOST_D2 */
+-    case 0x0f:	/* LCH_BASS_BOOST_D4 */
+-    case 0x10:	/* LCH_BASS_BOOST_D5 */
+-    case 0x11:	/* RCH_BASS_BOOST_N0 */
+-    case 0x12:	/* RCH_BASS_BOOST_N1 */
+-    case 0x13:	/* RCH_BASS_BOOST_N2 */
+-    case 0x14:	/* RCH_BASS_BOOST_N3 */
+-    case 0x15:	/* RCH_BASS_BOOST_N4 */
+-    case 0x16:	/* RCH_BASS_BOOST_N5 */
+-    case 0x17:	/* RCH_BASS_BOOST_D1 */
+-    case 0x18:	/* RCH_BASS_BOOST_D2 */
+-    case 0x19:	/* RCH_BASS_BOOST_D4 */
+-    case 0x1a:	/* RCH_BASS_BOOST_D5 */
+-        s->filter_data[reg - 0x07] = value;
+-        return;
+-
+-    case 0x1b:	/* PLL Programmability 1 */
+-        s->pll[0] = value & 0xfffc;
+-#ifdef TSC_VERBOSE
+-        if (value & ~0xfffc)
+-            fprintf(stderr, "tsc2102_audio_register_write: "
+-                            "wrong value written into PLL 1\n");
+-#endif
+-        return;
+-
+-    case 0x1c:	/* PLL Programmability 2 */
+-        s->pll[1] = value & 0xfffc;
+-#ifdef TSC_VERBOSE
+-        if (value & ~0xfffc)
+-            fprintf(stderr, "tsc2102_audio_register_write: "
+-                            "wrong value written into PLL 2\n");
+-#endif
+-        return;
+-
+-    case 0x1d:	/* Audio Control 4 */
+-        s->softstep = !(value & 0x4000);
+-#ifdef TSC_VERBOSE
+-        if (value & ~0x4000)
+-            fprintf(stderr, "tsc2102_audio_register_write: "
+-                            "wrong value written into Audio 4\n");
+-#endif
+-        return;
+-
+-    default:
+-        qemu_log_mask(LOG_GUEST_ERROR, "tsc2102_audio_register_write: "
+-                                       "no such register: 0x%02x\n", reg);
+-    }
+-}
+-
+-/* This handles most of the chip logic.  */
+-static void tsc210x_pin_update(TSC210xState *s)
+-{
+-    int64_t expires;
+-    bool pin_state;
+-
+-    switch (s->pin_func) {
+-    case 0:
+-        pin_state = s->pressure;
 -        break;
--    case I2C_FINISH:
+-    case 1:
+-        pin_state = !!s->dav;
+-        break;
+-    case 2:
+-    default:
+-        pin_state = s->pressure && !s->dav;
+-    }
+-
+-    if (!s->enabled)
+-        pin_state = false;
+-
+-    if (pin_state != s->irq) {
+-        s->irq = pin_state;
+-        qemu_set_irq(s->pint, !s->irq);
+-    }
+-
+-    switch (s->nextfunction) {
+-    case TSC_MODE_XY_SCAN:
+-    case TSC_MODE_XYZ_SCAN:
+-        if (!s->pressure)
+-            return;
+-        break;
+-
+-    case TSC_MODE_X:
+-    case TSC_MODE_Y:
+-    case TSC_MODE_Z:
+-        if (!s->pressure)
+-            return;
+-        /* Fall through */
+-    case TSC_MODE_BAT1:
+-    case TSC_MODE_BAT2:
+-    case TSC_MODE_AUX:
+-    case TSC_MODE_TEMP1:
+-    case TSC_MODE_TEMP2:
+-        if (s->dav)
+-            s->enabled = false;
+-        break;
+-
+-    case TSC_MODE_AUX_SCAN:
+-    case TSC_MODE_PORT_SCAN:
+-        break;
+-
+-    case TSC_MODE_NO_SCAN:
+-    case TSC_MODE_XX_DRV:
+-    case TSC_MODE_YY_DRV:
+-    case TSC_MODE_YX_DRV:
+-    default:
+-        return;
+-    }
+-
+-    if (!s->enabled || s->busy || s->dav)
+-        return;
+-
+-    s->busy = true;
+-    s->precision = s->nextprecision;
+-    s->function = s->nextfunction;
+-    expires = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) +
+-        (NANOSECONDS_PER_SECOND >> 10);
+-    timer_mod(s->timer, expires);
+-}
+-
+-static uint16_t tsc210x_read(TSC210xState *s)
+-{
+-    uint16_t ret = 0x0000;
+-
+-    if (!s->command)
+-        fprintf(stderr, "tsc210x_read: SPI underrun!\n");
+-
+-    switch (s->page) {
+-    case TSC_DATA_REGISTERS_PAGE:
+-        ret = tsc2102_data_register_read(s, s->offset);
+-        if (!s->dav)
+-            qemu_irq_raise(s->davint);
+-        break;
+-    case TSC_CONTROL_REGISTERS_PAGE:
+-        ret = tsc2102_control_register_read(s, s->offset);
+-        break;
+-    case TSC_AUDIO_REGISTERS_PAGE:
+-        ret = tsc2102_audio_register_read(s, s->offset);
 -        break;
 -    default:
--        break;
+-        hw_error("tsc210x_read: wrong memory page\n");
 -    }
+-
+-    tsc210x_pin_update(s);
+-
+-    /* Allow sequential reads.  */
+-    s->offset ++;
+-    s->state = false;
+-    return ret;
+-}
+-
+-static void tsc210x_write(TSC210xState *s, uint16_t value)
+-{
+-    /*
+-     * This is a two-state state machine for reading
+-     * command and data every second time.
+-     */
+-    if (!s->state) {
+-        s->command = (value >> 15) != 0;
+-        s->page = (value >> 11) & 0x0f;
+-        s->offset = (value >> 5) & 0x3f;
+-        s->state = true;
+-    } else {
+-        if (s->command)
+-            fprintf(stderr, "tsc210x_write: SPI overrun!\n");
+-        else
+-            switch (s->page) {
+-            case TSC_DATA_REGISTERS_PAGE:
+-                tsc2102_data_register_write(s, s->offset, value);
+-                break;
+-            case TSC_CONTROL_REGISTERS_PAGE:
+-                tsc2102_control_register_write(s, s->offset, value);
+-                break;
+-            case TSC_AUDIO_REGISTERS_PAGE:
+-                tsc2102_audio_register_write(s, s->offset, value);
+-                break;
+-            default:
+-                hw_error("tsc210x_write: wrong memory page\n");
+-            }
+-
+-        tsc210x_pin_update(s);
+-        s->state = false;
+-    }
+-}
+-
+-uint32_t tsc210x_txrx(void *opaque, uint32_t value, int len)
+-{
+-    TSC210xState *s = opaque;
+-    uint32_t ret = 0;
+-
+-    if (len != 16) {
+-        qemu_log_mask(LOG_GUEST_ERROR,
+-                      "%s: bad SPI word width %i\n", __func__, len);
+-        return 0;
+-    }
+-
+-    /* TODO: sequential reads etc - how do we make sure the host doesn't
+-     * unintentionally read out a conversion result from a register while
+-     * transmitting the command word of the next command?  */
+-    if (!value || (s->state && s->command))
+-        ret = tsc210x_read(s);
+-    if (value || (s->state && !s->command))
+-        tsc210x_write(s, value);
+-
+-    return ret;
+-}
+-
+-static void tsc210x_timer_tick(void *opaque)
+-{
+-    TSC210xState *s = opaque;
+-
+-    /* Timer ticked -- a set of conversions has been finished.  */
+-
+-    if (!s->busy)
+-        return;
+-
+-    s->busy = false;
+-    s->dav |= mode_regs[s->function];
+-    tsc210x_pin_update(s);
+-    qemu_irq_lower(s->davint);
+-}
+-
+-static void tsc210x_touchscreen_event(void *opaque,
+-                int x, int y, int z, int buttons_state)
+-{
+-    TSC210xState *s = opaque;
+-    int p = s->pressure;
+-
+-    if (buttons_state) {
+-        s->x = x;
+-        s->y = y;
+-    }
+-    s->pressure = !!buttons_state;
+-
+-    /*
+-     * Note: We would get better responsiveness in the guest by
+-     * signaling TS events immediately, but for now we simulate
+-     * the first conversion delay for sake of correctness.
+-     */
+-    if (p != s->pressure)
+-        tsc210x_pin_update(s);
+-}
+-
+-static void tsc210x_i2s_swallow(TSC210xState *s)
+-{
+-    if (s->dac_voice[0])
+-        tsc210x_out_flush(s, s->codec.out.len);
+-    else
+-        s->codec.out.len = 0;
+-}
+-
+-static void tsc210x_i2s_set_rate(TSC210xState *s, int in, int out)
+-{
+-    s->i2s_tx_rate = out;
+-    s->i2s_rx_rate = in;
+-}
+-
+-static int tsc210x_pre_save(void *opaque)
+-{
+-    TSC210xState *s = (TSC210xState *) opaque;
+-    s->now = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
 -
 -    return 0;
 -}
 -
--static uint8_t aer915_recv(I2CSlave *slave)
+-static int tsc210x_post_load(void *opaque, int version_id)
 -{
--    AER915State *s = AER915(slave);
--    int retval = 0x00;
+-    TSC210xState *s = (TSC210xState *) opaque;
+-    int64_t now = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
 -
--    switch (s->buf[0]) {
--    /* Return hardcoded battery voltage,
--     * 0xf0 means ~4.1V
--     */
--    case 0x02:
--        retval = 0xf0;
--        break;
--    /* Return 0x00 for other regs,
--     * we don't know what they are for,
--     * anyway they return 0x00 on real hardware.
--     */
--    default:
--        break;
+-    if (s->function >= ARRAY_SIZE(mode_regs)) {
+-        return -EINVAL;
+-    }
+-    if (s->nextfunction >= ARRAY_SIZE(mode_regs)) {
+-        return -EINVAL;
+-    }
+-    if (s->precision >= ARRAY_SIZE(resolution)) {
+-        return -EINVAL;
+-    }
+-    if (s->nextprecision >= ARRAY_SIZE(resolution)) {
+-        return -EINVAL;
 -    }
 -
--    return retval;
+-    s->volume_change -= s->now;
+-    s->volume_change += now;
+-    s->powerdown -= s->now;
+-    s->powerdown += now;
+-
+-    s->busy = timer_pending(s->timer);
+-    qemu_set_irq(s->pint, !s->irq);
+-    qemu_set_irq(s->davint, !s->dav);
+-
+-    return 0;
 -}
 -
--static const VMStateDescription vmstate_aer915_state = {
--    .name = "aer915",
+-static const VMStateField vmstatefields_tsc210x[] = {
+-    VMSTATE_BOOL(enabled, TSC210xState),
+-    VMSTATE_BOOL(host_mode, TSC210xState),
+-    VMSTATE_BOOL(irq, TSC210xState),
+-    VMSTATE_BOOL(command, TSC210xState),
+-    VMSTATE_BOOL(pressure, TSC210xState),
+-    VMSTATE_BOOL(softstep, TSC210xState),
+-    VMSTATE_BOOL(state, TSC210xState),
+-    VMSTATE_UINT16(dav, TSC210xState),
+-    VMSTATE_INT32(x, TSC210xState),
+-    VMSTATE_INT32(y, TSC210xState),
+-    VMSTATE_UINT8(offset, TSC210xState),
+-    VMSTATE_UINT8(page, TSC210xState),
+-    VMSTATE_UINT8(filter, TSC210xState),
+-    VMSTATE_UINT8(pin_func, TSC210xState),
+-    VMSTATE_UINT8(ref, TSC210xState),
+-    VMSTATE_UINT8(timing, TSC210xState),
+-    VMSTATE_UINT8(noise, TSC210xState),
+-    VMSTATE_UINT8(function, TSC210xState),
+-    VMSTATE_UINT8(nextfunction, TSC210xState),
+-    VMSTATE_UINT8(precision, TSC210xState),
+-    VMSTATE_UINT8(nextprecision, TSC210xState),
+-    VMSTATE_UINT16(audio_ctrl1, TSC210xState),
+-    VMSTATE_UINT16(audio_ctrl2, TSC210xState),
+-    VMSTATE_UINT16(audio_ctrl3, TSC210xState),
+-    VMSTATE_UINT16_ARRAY(pll, TSC210xState, 3),
+-    VMSTATE_UINT16(volume, TSC210xState),
+-    VMSTATE_UINT16(dac_power, TSC210xState),
+-    VMSTATE_INT64(volume_change, TSC210xState),
+-    VMSTATE_INT64(powerdown, TSC210xState),
+-    VMSTATE_INT64(now, TSC210xState),
+-    VMSTATE_UINT16_ARRAY(filter_data, TSC210xState, 0x14),
+-    VMSTATE_TIMER_PTR(timer, TSC210xState),
+-    VMSTATE_END_OF_LIST()
+-};
+-
+-static const VMStateDescription vmstate_tsc2102 = {
+-    .name = "tsc2102",
 -    .version_id = 1,
 -    .minimum_version_id = 1,
--    .fields = (const VMStateField[]) {
--        VMSTATE_INT32(len, AER915State),
--        VMSTATE_BUFFER(buf, AER915State),
--        VMSTATE_END_OF_LIST(),
--    }
+-    .pre_save = tsc210x_pre_save,
+-    .post_load = tsc210x_post_load,
+-    .fields = vmstatefields_tsc210x,
 -};
 -
--static void aer915_class_init(ObjectClass *klass, void *data)
--{
--    DeviceClass *dc = DEVICE_CLASS(klass);
--    I2CSlaveClass *k = I2C_SLAVE_CLASS(klass);
--
--    k->event = aer915_event;
--    k->recv = aer915_recv;
--    k->send = aer915_send;
--    dc->vmsd = &vmstate_aer915_state;
--}
--
--static const TypeInfo aer915_info = {
--    .name          = TYPE_AER915,
--    .parent        = TYPE_I2C_SLAVE,
--    .instance_size = sizeof(AER915State),
--    .class_init    = aer915_class_init,
+-static const VMStateDescription vmstate_tsc2301 = {
+-    .name = "tsc2301",
+-    .version_id = 1,
+-    .minimum_version_id = 1,
+-    .pre_save = tsc210x_pre_save,
+-    .post_load = tsc210x_post_load,
+-    .fields = vmstatefields_tsc210x,
 -};
 -
--#define FLASH_SECTOR_SIZE   (64 * KiB)
--
--static void z2_init(MachineState *machine)
+-static void tsc210x_init(TSC210xState *s,
+-                         const char *name,
+-                         const VMStateDescription *vmsd)
 -{
--    PXA2xxState *mpu;
--    DriveInfo *dinfo;
--    void *z2_lcd;
--    I2CBus *bus;
--    DeviceState *wm;
--    I2CSlave *i2c_dev;
+-    s->tr[0] = 0;
+-    s->tr[1] = 1;
+-    s->tr[2] = 1;
+-    s->tr[3] = 0;
+-    s->tr[4] = 1;
+-    s->tr[5] = 0;
+-    s->tr[6] = 1;
+-    s->tr[7] = 0;
 -
--    /* Setup CPU & memory */
--    mpu = pxa270_init(z2_binfo.ram_size, machine->cpu_type);
+-    s->chip.opaque = s;
+-    s->chip.send = (void *) tsc210x_write;
+-    s->chip.receive = (void *) tsc210x_read;
 -
--    dinfo = drive_get(IF_PFLASH, 0, 0);
--    pflash_cfi01_register(Z2_FLASH_BASE, "z2.flash0", Z2_FLASH_SIZE,
--                          dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
--                          FLASH_SECTOR_SIZE, 4, 0, 0, 0, 0, 0);
+-    s->codec.opaque = s;
+-    s->codec.tx_swallow = (void *) tsc210x_i2s_swallow;
+-    s->codec.set_rate = (void *) tsc210x_i2s_set_rate;
+-    s->codec.in.fifo = s->in_fifo;
+-    s->codec.out.fifo = s->out_fifo;
 -
--    /* setup keypad */
--    pxa27x_register_keypad(mpu->kp, map, 0x100);
+-    tsc210x_reset(s);
 -
--    /* MMC/SD host */
--    pxa2xx_mmci_handlers(mpu->mmc,
--        NULL,
--        qdev_get_gpio_in(mpu->gpio, Z2_GPIO_SD_DETECT));
+-    qemu_add_mouse_event_handler(tsc210x_touchscreen_event, s, 1, name);
 -
--    type_register_static(&zipit_lcd_info);
--    type_register_static(&aer915_info);
--    z2_lcd = ssi_create_peripheral(mpu->ssp[1], TYPE_ZIPIT_LCD);
--    bus = pxa2xx_i2c_bus(mpu->i2c[0]);
--
--    i2c_slave_create_simple(bus, TYPE_AER915, 0x55);
--
--    i2c_dev = i2c_slave_new(TYPE_WM8750, 0x1b);
--    wm = DEVICE(i2c_dev);
--
--    if (machine->audiodev) {
--        qdev_prop_set_string(wm, "audiodev", machine->audiodev);
+-    if (current_machine->audiodev) {
+-        s->card.name = g_strdup(current_machine->audiodev);
+-        s->card.state = audio_state_by_name(s->card.name, &error_fatal);
 -    }
--    i2c_slave_realize_and_unref(i2c_dev, bus, &error_abort);
+-    AUD_register_card(s->name, &s->card, &error_fatal);
 -
--    mpu->i2s->opaque = wm;
--    mpu->i2s->codec_out = wm8750_dac_dat;
--    mpu->i2s->codec_in = wm8750_adc_dat;
--    wm8750_data_req_set(wm, mpu->i2s->data_req, mpu->i2s);
--
--    qdev_connect_gpio_out(mpu->gpio, Z2_GPIO_LCD_CS,
--                          qemu_allocate_irq(z2_lcd_cs, z2_lcd, 0));
--
--    z2_binfo.board_id = 0x6dd;
--    arm_load_kernel(mpu->cpu, machine, &z2_binfo);
+-    qemu_register_reset((void *) tsc210x_reset, s);
+-    vmstate_register(NULL, 0, vmsd, s);
 -}
 -
--static void z2_machine_init(MachineClass *mc)
+-uWireSlave *tsc2102_init(qemu_irq pint)
 -{
--    mc->desc = "Zipit Z2 (PXA27x)";
--    mc->init = z2_init;
--    mc->ignore_memory_transaction_failures = true;
--    mc->default_cpu_type = ARM_CPU_TYPE_NAME("pxa270-c5");
--    mc->deprecation_reason = "machine is old and unmaintained";
+-    TSC210xState *s;
 -
--    machine_add_audiodev_property(mc);
+-    s = g_new0(TSC210xState, 1);
+-    s->x = 160;
+-    s->y = 160;
+-    s->pressure = 0;
+-    s->precision = s->nextprecision = 0;
+-    s->timer = timer_new_ns(QEMU_CLOCK_VIRTUAL, tsc210x_timer_tick, s);
+-    s->pint = pint;
+-    s->model = 0x2102;
+-    s->name = "tsc2102";
+-
+-    tsc210x_init(s, "QEMU TSC2102-driven Touchscreen", &vmstate_tsc2102);
+-
+-    return &s->chip;
 -}
 -
--DEFINE_MACHINE("z2", z2_machine_init)
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index 84cc34f016c..c2452bd7b91 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -176,15 +176,6 @@ config PXA2XX
-     select USB_OHCI_SYSBUS
-     select PCMCIA
- 
--config Z2
--    bool
--    default y
--    depends on TCG && ARM
--    select PFLASH_CFI01
--    select WM8750
--    select PL011 # UART
--    select PXA2XX
+-uWireSlave *tsc2301_init(qemu_irq penirq, qemu_irq kbirq, qemu_irq dav)
+-{
+-    TSC210xState *s;
 -
- config REALVIEW
-     bool
+-    s = g_new0(TSC210xState, 1);
+-    s->x = 400;
+-    s->y = 240;
+-    s->pressure = 0;
+-    s->precision = s->nextprecision = 0;
+-    s->timer = timer_new_ns(QEMU_CLOCK_VIRTUAL, tsc210x_timer_tick, s);
+-    s->pint = penirq;
+-    s->kbint = kbirq;
+-    s->davint = dav;
+-    s->model = 0x2301;
+-    s->name = "tsc2301";
+-
+-    tsc210x_init(s, "QEMU TSC2301-driven Touchscreen", &vmstate_tsc2301);
+-
+-    return &s->chip;
+-}
+-
+-I2SCodec *tsc210x_codec(uWireSlave *chip)
+-{
+-    TSC210xState *s = (TSC210xState *) chip->opaque;
+-
+-    return &s->codec;
+-}
+-
+-/*
+- * Use tslib generated calibration data to generate ADC input values
+- * from the touchscreen.  Assuming 12-bit precision was used during
+- * tslib calibration.
+- */
+-void tsc210x_set_transform(uWireSlave *chip, const MouseTransformInfo *info)
+-{
+-    TSC210xState *s = (TSC210xState *) chip->opaque;
+-#if 0
+-    int64_t ltr[8];
+-
+-    ltr[0] = (int64_t) info->a[1] * info->y;
+-    ltr[1] = (int64_t) info->a[4] * info->x;
+-    ltr[2] = (int64_t) info->a[1] * info->a[3] -
+-            (int64_t) info->a[4] * info->a[0];
+-    ltr[3] = (int64_t) info->a[2] * info->a[4] -
+-            (int64_t) info->a[5] * info->a[1];
+-    ltr[4] = (int64_t) info->a[0] * info->y;
+-    ltr[5] = (int64_t) info->a[3] * info->x;
+-    ltr[6] = (int64_t) info->a[4] * info->a[0] -
+-            (int64_t) info->a[1] * info->a[3];
+-    ltr[7] = (int64_t) info->a[2] * info->a[3] -
+-            (int64_t) info->a[5] * info->a[0];
+-
+-    /* Avoid integer overflow */
+-    s->tr[0] = ltr[0] >> 11;
+-    s->tr[1] = ltr[1] >> 11;
+-    s->tr[2] = muldiv64(ltr[2], 1, info->a[6]);
+-    s->tr[3] = muldiv64(ltr[3], 1 << 4, ltr[2]);
+-    s->tr[4] = ltr[4] >> 11;
+-    s->tr[5] = ltr[5] >> 11;
+-    s->tr[6] = muldiv64(ltr[6], 1, info->a[6]);
+-    s->tr[7] = muldiv64(ltr[7], 1 << 4, ltr[6]);
+-#else
+-
+-    /* This version assumes touchscreen X & Y axis are parallel or
+-     * perpendicular to LCD's  X & Y axis in some way.  */
+-    if (abs(info->a[0]) > abs(info->a[1])) {
+-        s->tr[0] = 0;
+-        s->tr[1] = -info->a[6] * info->x;
+-        s->tr[2] = info->a[0];
+-        s->tr[3] = -info->a[2] / info->a[0];
+-        s->tr[4] = info->a[6] * info->y;
+-        s->tr[5] = 0;
+-        s->tr[6] = info->a[4];
+-        s->tr[7] = -info->a[5] / info->a[4];
+-    } else {
+-        s->tr[0] = info->a[6] * info->y;
+-        s->tr[1] = 0;
+-        s->tr[2] = info->a[1];
+-        s->tr[3] = -info->a[2] / info->a[1];
+-        s->tr[4] = 0;
+-        s->tr[5] = -info->a[6] * info->x;
+-        s->tr[6] = info->a[3];
+-        s->tr[7] = -info->a[5] / info->a[3];
+-    }
+-
+-    s->tr[0] >>= 11;
+-    s->tr[1] >>= 11;
+-    s->tr[3] <<= 4;
+-    s->tr[4] >>= 11;
+-    s->tr[5] >>= 11;
+-    s->tr[7] <<= 4;
+-#endif
+-}
+-
+-void tsc210x_key_event(uWireSlave *chip, int key, int down)
+-{
+-    TSC210xState *s = (TSC210xState *) chip->opaque;
+-
+-    if (down)
+-        s->kb.down |= 1 << key;
+-    else
+-        s->kb.down &= ~(1 << key);
+-
+-    if (down && (s->kb.down & ~s->kb.mask) && !s->kb.intr) {
+-        s->kb.intr = 1;
+-        qemu_irq_lower(s->kbint);
+-    } else if (s->kb.intr && !(s->kb.down & ~s->kb.mask) &&
+-                    !(s->kb.mode & 1)) {
+-        s->kb.intr = 0;
+-        qemu_irq_raise(s->kbint);
+-    }
+-}
+diff --git a/hw/input/Kconfig b/hw/input/Kconfig
+index 01a64a9aa7e..6f3ffbc5aa1 100644
+--- a/hw/input/Kconfig
++++ b/hw/input/Kconfig
+@@ -35,8 +35,5 @@ config VHOST_USER_INPUT
      default y
-diff --git a/hw/arm/meson.build b/hw/arm/meson.build
-index 72afb9e62a7..1a4a51d6302 100644
---- a/hw/arm/meson.build
-+++ b/hw/arm/meson.build
-@@ -71,6 +71,5 @@ system_ss.add(when: 'CONFIG_STRONGARM', if_true: files('strongarm.c'))
- system_ss.add(when: 'CONFIG_SX1', if_true: files('omap_sx1.c'))
- system_ss.add(when: 'CONFIG_VERSATILE', if_true: files('versatilepb.c'))
- system_ss.add(when: 'CONFIG_VEXPRESS', if_true: files('vexpress.c'))
--system_ss.add(when: 'CONFIG_Z2', if_true: files('z2.c'))
+     depends on VIRTIO_INPUT && VHOST_USER
  
- hw_arch += {'arm': arm_ss}
+-config TSC210X
+-    bool
+-
+ config LASIPS2
+     select PS2
+diff --git a/hw/input/meson.build b/hw/input/meson.build
+index 064d1e47802..f12796fb695 100644
+--- a/hw/input/meson.build
++++ b/hw/input/meson.build
+@@ -10,5 +10,4 @@ system_ss.add(when: 'CONFIG_VIRTIO_INPUT', if_true: files('virtio-input.c'))
+ system_ss.add(when: 'CONFIG_VIRTIO_INPUT', if_true: files('virtio-input-hid.c'))
+ system_ss.add(when: 'CONFIG_VIRTIO_INPUT_HOST', if_true: files('virtio-input-host.c'))
+ 
+-system_ss.add(when: 'CONFIG_TSC210X', if_true: files('tsc210x.c'))
+ system_ss.add(when: 'CONFIG_LASIPS2', if_true: files('lasips2.c'))
 -- 
 2.34.1
 

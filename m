@@ -1,407 +1,150 @@
-Received: by 2002:a17:504:3a8f:b0:1be9:327d:8ee3 with SMTP id g15csp1500048njf;
-        Tue, 3 Sep 2024 09:08:59 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXXgQd96paF6KfsfwOJVlV4a/D79j6i9NOm+DI7pXLsR6yd1EurWJAlXGmvZAFmoV/gjJMwe6f5EPu0hA==@linaro.org
-X-Google-Smtp-Source: AGHT+IGmC18t8YMHcLXof9x6ElQYXv0KGTgtgoJOunM484kN9MvGWMeNzrCm3YxDiwbTDtlZLARa
-X-Received: by 2002:a05:620a:4250:b0:79e:f851:66ec with SMTP id af79cd13be357-7a8a3dc6c7cmr1488463485a.61.1725379739754;
-        Tue, 03 Sep 2024 09:08:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1725379739; cv=none;
+Received: by 2002:a17:504:3a8f:b0:1be9:327d:8ee3 with SMTP id g15csp1581049njf;
+        Tue, 3 Sep 2024 13:32:50 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUTZ+XbwgMdZrGlib7OjhQCMmR6s3Xvp8eMCL7AqkNAXPRPmk7A2rY9Z43t487/YDUevSc0lOTas0p34w==@linaro.org
+X-Google-Smtp-Source: AGHT+IGBC5YKEvwUHp6S26uMc55nteRWMgUUfdf4zYNr3Azs5U2OylxyZYLbtiy+qBjon5qYr1us
+X-Received: by 2002:a05:622a:5109:b0:456:6f5f:f211 with SMTP id d75a77b69052e-4575661d025mr125557091cf.21.1725395570070;
+        Tue, 03 Sep 2024 13:32:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1725395570; cv=none;
         d=google.com; s=arc-20160816;
-        b=fi4P3m8lRos4k2Bnv0OU/LNy4TcVSvQPKkmG/uMnxEp/fDf0OgSw0a42IfosNo/GQ5
-         sBRlMWHnVqO4520b4sBnrxZEsFrctS5WUgjlS5W3F7FRWH3rhCGFk3wg0gY1bhKDreZT
-         3dIrd/AqzC5JSS+6M+h6E8OnyazUparws2gnFMNdMrRBKyMUpTVRlgfMkPtDD08KtlzJ
-         h2hjW8CdRHs4Y17y2/NHm7tVBFmaqCGBzagHTubEPb7LLX3yzkTkFfcK4cFUVcopX6LT
-         5xuxMbxYoc0lCc3+MDRpcbFNznHrVl4LZHDtbdBl75QcPQa4sb7+9F1Wm+nzwHmHsEHz
-         49Pw==
+        b=V/eMgNMTDkL5kPRgc1GRQ5dw3USTZAjC3S7a1cS3tPneFR5LBpndLAXvdKkZoSkK+s
+         1i5qC9xH3shotUdw9gZOfxBiKCtrgK8rHsLA3bOeJeJuQsJO8gx7vPZGJxvRn6Bfzb+Y
+         GP3biQ+4PTl9/Gp41MX1fLvpojpiNqOsuA2RaLLGYF23B2EaGtzPc2Bf0/nL3n8VmypV
+         PwOQseWEuOCU8uvjCooDlLm66rldwrLwMhShGNwcUtauln5oyL+yIHycryso1vL34YuQ
+         r74xH4g8qPfavVqHTuW3ynaeNdi6XtiscjsTtXYt9aOBBrWpRcG2yhjbO434/uNhsKNq
+         1YrA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=13B8gTkbbPzY+9dN2IYKPXcaRCE8IIQJPQasX/L66Ag=;
-        fh=H2AmuqulvQE+T5zu97MCEUC3z9wF9NssS7895NhR/+c=;
-        b=ovynaQNalQF8HFa0GXPqGTQYFRmtGcP82A5fiTre5n3hOoFh0v3acApTLlgHJUEEpp
-         ptI8i0XL0krON2txPSC3mFOidaOLzGtdAwxcAL+iJLLSKcf4mc/dWnrS8MtIkQPImhbc
-         1ocApLqSeDYhyVb7MnbdBHVYN0mPEHR3WbuN/dXL5ajkCg321HCg7z6E2lp7EGT2n2a5
-         c7NQDH9ISnCrWqHdQP2pDQ+euRW/ErJEOINPbDcAYO8jIreYHvvDoa++iYdSyEzjZ2iZ
-         /kuVVyw8L24c0hmSSkD8NQep6wz5CxXQ4sCo4r5lex8/D1KnuRHIWFh7FuyZqcJDKdPh
-         8y1w==;
+         :in-reply-to:from:content-language:references:to:subject:user-agent
+         :mime-version:date:message-id:dkim-signature;
+        bh=k9ZZDqkXRrBX3cIiEQ5oaFl+1xbjoRaGz/6+rV3zlFc=;
+        fh=OYa16dMj57zNUaWA1+HZE9HpmDtfIu5eCcItUj9pGmw=;
+        b=hykZfMwabmAKtUUiDMaUXCQPwF+AnUqojLm6eEsGL9eVhiLRY5GE2WIXzgRakro8ve
+         eIm41JaWGeBcj9P1CkY4tF/eFWLDG3Smc/XnRgwfnFqCITRP4/lsZ2gXWrrUtWo/LqfG
+         ZsO7qaXeOfTAtp98s/ksjc8mSVrjHS++q3LHh+xCv9unD1EGpMJw4G843kyt/C/qgJD/
+         M6Z7pCi6DMplLViHwsm486X6scl/LsrEmHEBSliY0F+bnsgH4PCXjb3L0+cvBbXuxfMN
+         nCEVfL7ZpU9Z266Am3wh3KHCEVGkAbsDdaOSizKtmEl6JsJ5P9LK21myZBM3oYrkcNWf
+         daFg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=gesrq2ff;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=EW9t5NSQ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7a9782651fcsi281912185a.59.2024.09.03.09.08.59
+        by mx.google.com with ESMTPS id d75a77b69052e-45682e27f02si26742141cf.724.2024.09.03.13.32.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 03 Sep 2024 09:08:59 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 03 Sep 2024 13:32:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=gesrq2ff;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=EW9t5NSQ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1slW4b-0004pT-FA; Tue, 03 Sep 2024 12:08:05 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1slaCm-0007X6-1D; Tue, 03 Sep 2024 16:32:48 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1slW4Y-0004bp-6P
- for qemu-arm@nongnu.org; Tue, 03 Sep 2024 12:08:02 -0400
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1slaCk-0007T6-O8
+ for qemu-devel@nongnu.org; Tue, 03 Sep 2024 16:32:46 -0400
+Received: from mail-lf1-x12b.google.com ([2a00:1450:4864:20::12b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1slW4T-0002ej-6C
- for qemu-arm@nongnu.org; Tue, 03 Sep 2024 12:08:01 -0400
-Received: by mail-wm1-x330.google.com with SMTP id
- 5b1f17b1804b1-42bb4f8a4bfso30254645e9.1
- for <qemu-arm@nongnu.org>; Tue, 03 Sep 2024 09:07:56 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1slaCj-0006Mu-0a
+ for qemu-devel@nongnu.org; Tue, 03 Sep 2024 16:32:46 -0400
+Received: by mail-lf1-x12b.google.com with SMTP id
+ 2adb3069b0e04-5334a8a1af7so6233073e87.2
+ for <qemu-devel@nongnu.org>; Tue, 03 Sep 2024 13:32:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1725379676; x=1725984476; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=13B8gTkbbPzY+9dN2IYKPXcaRCE8IIQJPQasX/L66Ag=;
- b=gesrq2ff+aip66eNU4we3mDNnCHo6feNOYt11YrbYVWo3WqVQBcUy7lTcD5XPSrOjv
- wdQHFKA3xKTjNqTLrUKmc7q60n6O1imgLVvNKE0hVOuYdqkpG2PReOcZAuZ4+Og5b5nt
- CUT4BhpjvNScHfr3NCgSQvJAS5REeVraMzD79KU+Vt69U8kHFRROQfv/tgKQ2yTNI3k7
- ha4ebBq5EiTpD72kmDgJZyyCkq+/qqGjYvwM1S9OkEl7IfCDD8GsiR4spGpwiXa3HxBZ
- REApKWQCijt8ongDg6xxXtRicLSOAUzUA6UFJbP8Ux8jUBtWso9aTx4LCAEOb1rBlcRG
- rUtw==
+ d=linaro.org; s=google; t=1725395563; x=1726000363; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:to:subject:user-agent:mime-version:date:message-id:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=k9ZZDqkXRrBX3cIiEQ5oaFl+1xbjoRaGz/6+rV3zlFc=;
+ b=EW9t5NSQQUonfNbE1KIF8rPPdm2Sp6tLD3pC9LWU21XYQ4RWyvZ61ECujvAgGM/4oG
+ 1tgmmEImwWHDrAB4cxOIH67lBtQWHJGdzPpGD/6gdYOS9GSMxXZUGKZr22jyi1rkuCNG
+ S5CLFe35CEUjEI0mk1NSZKqnWIc7i+94FSZO4Dp6DqPzYN6VcaFgjBoqs/Qg1pSRqJcG
+ 5Xkujy7G+bLnclv7IdxFs47Ex0z4ZW91u+nl9TG2JZpOpQje2T+p+iyp9Eop9fE2W4mm
+ fQq/JP/E/MCbfXZtVbXNCvXcna5MCoYoE9V/fsSDhYFZ5BCdHDBY0bwg3OdhdAG7V5g/
+ MheQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1725379676; x=1725984476;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=13B8gTkbbPzY+9dN2IYKPXcaRCE8IIQJPQasX/L66Ag=;
- b=GL/UOfi2Fde3YM+FzFssr7NUNoWdOToCupz3hVyLNt1H/GpDz1LlZAC1AgebfpUTvi
- Qq7zPnaPj5GXG6ri8VNhX9FZuduVyCk6L23vUQEob5BE20ODE2RWO9yqbq+aIlIr/Dhh
- AF25gR2Ix7dTBZNjg32SDSeaLMrm6/cuPhdHPdGvAtDiFrsNM7BWQpKEu+zVFZnVa3PC
- d1ttccf+/Pk33h5vLQHDBYQwYvK8W0aHYYzHK5DJDQibHCktjED6xfCgG3GmHZMNjn++
- LSyx0KLYJhIQTHnh8B/T6q2+14LUKpMwqUqsNc98KmJMRTDFS6qfEwflcqieFH6CDgi4
- bI4Q==
-X-Gm-Message-State: AOJu0Yy8E7Rd9Fbw697hbPJ2V84lEo76R+M9Zc17f09ofodqOm/caARp
- EBzbFcP4iE/uYs9pu6snrcWgkLJ5Pctz8+xoHmRAoX6XFg0d2JYvz0VTTeD4y4Uy6oIXSOH+Hoz
- u
-X-Received: by 2002:a05:600c:3ba1:b0:42a:a6dc:3083 with SMTP id
- 5b1f17b1804b1-42bbb692e8fmr84195735e9.13.1725379675604; 
- Tue, 03 Sep 2024 09:07:55 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+ d=1e100.net; s=20230601; t=1725395563; x=1726000363;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=k9ZZDqkXRrBX3cIiEQ5oaFl+1xbjoRaGz/6+rV3zlFc=;
+ b=hYRXzDg3yT1r5YydzaWorOnIMKpLF3DwrRM08Mn1s2kIKu8BMkvd5ijpDWYtqo0L/E
+ AMoh/3G1oYGVMERWQT9Tknupmxa2hGoGfg0xB01vvi07U5h7aYMt6Bd1m4kV6D6sT2D6
+ 7z9wlcS9CwaSXzZHsYrcEt9FnXx38wUwRiokxXdUwgDstrOBy1mQZiE5YlfEdfzquhJT
+ yO9kleCeCvDQll9fCMSZzUqrBvp+19JLsXMeoH0jQimuqD3a60pL3XK+24Fx2E26F12M
+ Ot1xMdzdm8Wq8j6PXXUVToEBwv/mzoONODkoFAhWDmWUmcSKf3iswvbbL3Gaw8cBPBPd
+ V4Vg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWTnWdFvzpk7Mk8jiBokKuJdKEs7d1Ga+X3tGjqh3JSk12k8KbOyfQtzK3CPNwOi6KSjMHZfrnFW2aW@nongnu.org
+X-Gm-Message-State: AOJu0Yx0ZPvSZVdHjwtp5iHduqebKjkrzVSuxkOrnY2J66zRbVtBbb3+
+ VR4RPIATHFYCnl57n46fzChKZha9Hi08597tLU8f+h4jDbCs0hcywDexyH74pOI=
+X-Received: by 2002:a05:6512:3f11:b0:52e:fa6b:e54a with SMTP id
+ 2adb3069b0e04-53546b335a8mr10941985e87.30.1725395563002; 
+ Tue, 03 Sep 2024 13:32:43 -0700 (PDT)
+Received: from [192.168.1.67] ([78.196.4.158])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-42bb6df1066sm175123065e9.18.2024.09.03.09.07.55
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 03 Sep 2024 09:07:55 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH for-9.2 04/53] hw/gpio: Remove MAX7310 device
-Date: Tue,  3 Sep 2024 17:07:02 +0100
-Message-Id: <20240903160751.4100218-5-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20240903160751.4100218-1-peter.maydell@linaro.org>
-References: <20240903160751.4100218-1-peter.maydell@linaro.org>
+ 5b1f17b1804b1-42bb6e33f5esm179460215e9.39.2024.09.03.13.32.42
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 03 Sep 2024 13:32:42 -0700 (PDT)
+Message-ID: <c53ff339-ee90-4e87-92ac-1bad5b68889e@linaro.org>
+Date: Tue, 3 Sep 2024 22:32:41 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH for-9.2 16/53] hw/sd: Remove pxa2xx_mmci.c
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20240903160751.4100218-1-peter.maydell@linaro.org>
+ <20240903160751.4100218-17-peter.maydell@linaro.org>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20240903160751.4100218-17-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::330;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x330.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::12b;
+ envelope-from=philmd@linaro.org; helo=mail-lf1-x12b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: zC6Xp2hlmSUH
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 6iDQ8bhdZluu
 
-The MAX7310 GPIO controller was used only by the XScale-based Zaurus
-machine types.  Now they have been removed we can remove this device
-model as well.
+On 3/9/24 18:07, Peter Maydell wrote:
+> Remove the pxa2xx-specific pxa2xx_mmci device.
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>   include/hw/arm/pxa.h |  10 -
+>   hw/sd/pxa2xx_mmci.c  | 594 -------------------------------------------
+>   hw/sd/meson.build    |   1 -
+>   hw/sd/trace-events   |   4 -
+>   4 files changed, 609 deletions(-)
+>   delete mode 100644 hw/sd/pxa2xx_mmci.c
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- MAINTAINERS         |   1 -
- hw/gpio/max7310.c   | 217 --------------------------------------------
- hw/gpio/Kconfig     |   4 -
- hw/gpio/meson.build |   1 -
- 4 files changed, 223 deletions(-)
- delete mode 100644 hw/gpio/max7310.c
-
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 7873350f6ef..e9ce1e2e051 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -927,7 +927,6 @@ F: hw/arm/mainstone.c
- F: hw/arm/z2.c
- F: hw/*/pxa2xx*
- F: hw/display/tc6393xb.c
--F: hw/gpio/max7310.c
- F: hw/gpio/zaurus.c
- F: hw/misc/mst_fpga.c
- F: include/hw/arm/pxa.h
-diff --git a/hw/gpio/max7310.c b/hw/gpio/max7310.c
-deleted file mode 100644
-index 86315714fbd..00000000000
---- a/hw/gpio/max7310.c
-+++ /dev/null
-@@ -1,217 +0,0 @@
--/*
-- * MAX7310 8-port GPIO expansion chip.
-- *
-- * Copyright (c) 2006 Openedhand Ltd.
-- * Written by Andrzej Zaborowski <balrog@zabor.org>
-- *
-- * This file is licensed under GNU GPL.
-- */
--
--#include "qemu/osdep.h"
--#include "hw/i2c/i2c.h"
--#include "hw/irq.h"
--#include "migration/vmstate.h"
--#include "qemu/log.h"
--#include "qemu/module.h"
--#include "qom/object.h"
--
--#define TYPE_MAX7310 "max7310"
--OBJECT_DECLARE_SIMPLE_TYPE(MAX7310State, MAX7310)
--
--struct MAX7310State {
--    I2CSlave parent_obj;
--
--    int i2c_command_byte;
--    int len;
--
--    uint8_t level;
--    uint8_t direction;
--    uint8_t polarity;
--    uint8_t status;
--    uint8_t command;
--    qemu_irq handler[8];
--    qemu_irq *gpio_in;
--};
--
--static void max7310_reset(DeviceState *dev)
--{
--    MAX7310State *s = MAX7310(dev);
--
--    s->level &= s->direction;
--    s->direction = 0xff;
--    s->polarity = 0xf0;
--    s->status = 0x01;
--    s->command = 0x00;
--}
--
--static uint8_t max7310_rx(I2CSlave *i2c)
--{
--    MAX7310State *s = MAX7310(i2c);
--
--    switch (s->command) {
--    case 0x00:  /* Input port */
--        return s->level ^ s->polarity;
--
--    case 0x01:  /* Output port */
--        return s->level & ~s->direction;
--
--    case 0x02:  /* Polarity inversion */
--        return s->polarity;
--
--    case 0x03:  /* Configuration */
--        return s->direction;
--
--    case 0x04:  /* Timeout */
--        return s->status;
--
--    case 0xff:  /* Reserved */
--        return 0xff;
--
--    default:
--        qemu_log_mask(LOG_UNIMP, "%s: Unsupported register 0x02%" PRIx8 "\n",
--                      __func__, s->command);
--        break;
--    }
--    return 0xff;
--}
--
--static int max7310_tx(I2CSlave *i2c, uint8_t data)
--{
--    MAX7310State *s = MAX7310(i2c);
--    uint8_t diff;
--    int line;
--
--    if (s->len ++ > 1) {
--#ifdef VERBOSE
--        printf("%s: message too long (%i bytes)\n", __func__, s->len);
--#endif
--        return 1;
--    }
--
--    if (s->i2c_command_byte) {
--        s->command = data;
--        s->i2c_command_byte = 0;
--        return 0;
--    }
--
--    switch (s->command) {
--    case 0x01:  /* Output port */
--        for (diff = (data ^ s->level) & ~s->direction; diff;
--                        diff &= ~(1 << line)) {
--            line = ctz32(diff);
--            if (s->handler[line])
--                qemu_set_irq(s->handler[line], (data >> line) & 1);
--        }
--        s->level = (s->level & s->direction) | (data & ~s->direction);
--        break;
--
--    case 0x02:  /* Polarity inversion */
--        s->polarity = data;
--        break;
--
--    case 0x03:  /* Configuration */
--        s->level &= ~(s->direction ^ data);
--        s->direction = data;
--        break;
--
--    case 0x04:  /* Timeout */
--        s->status = data;
--        break;
--
--    case 0x00:  /* Input port - ignore writes */
--        break;
--    default:
--        qemu_log_mask(LOG_UNIMP, "%s: Unsupported register 0x02%" PRIx8 "\n",
--                      __func__, s->command);
--        return 1;
--    }
--
--    return 0;
--}
--
--static int max7310_event(I2CSlave *i2c, enum i2c_event event)
--{
--    MAX7310State *s = MAX7310(i2c);
--    s->len = 0;
--
--    switch (event) {
--    case I2C_START_SEND:
--        s->i2c_command_byte = 1;
--        break;
--    case I2C_FINISH:
--#ifdef VERBOSE
--        if (s->len == 1)
--            printf("%s: message too short (%i bytes)\n", __func__, s->len);
--#endif
--        break;
--    default:
--        break;
--    }
--
--    return 0;
--}
--
--static const VMStateDescription vmstate_max7310 = {
--    .name = "max7310",
--    .version_id = 0,
--    .minimum_version_id = 0,
--    .fields = (const VMStateField[]) {
--        VMSTATE_INT32(i2c_command_byte, MAX7310State),
--        VMSTATE_INT32(len, MAX7310State),
--        VMSTATE_UINT8(level, MAX7310State),
--        VMSTATE_UINT8(direction, MAX7310State),
--        VMSTATE_UINT8(polarity, MAX7310State),
--        VMSTATE_UINT8(status, MAX7310State),
--        VMSTATE_UINT8(command, MAX7310State),
--        VMSTATE_I2C_SLAVE(parent_obj, MAX7310State),
--        VMSTATE_END_OF_LIST()
--    }
--};
--
--static void max7310_gpio_set(void *opaque, int line, int level)
--{
--    MAX7310State *s = (MAX7310State *) opaque;
--    assert(line >= 0 && line < ARRAY_SIZE(s->handler));
--
--    if (level)
--        s->level |= s->direction & (1 << line);
--    else
--        s->level &= ~(s->direction & (1 << line));
--}
--
--/* MAX7310 is SMBus-compatible (can be used with only SMBus protocols),
-- * but also accepts sequences that are not SMBus so return an I2C device.  */
--static void max7310_realize(DeviceState *dev, Error **errp)
--{
--    MAX7310State *s = MAX7310(dev);
--
--    qdev_init_gpio_in(dev, max7310_gpio_set, ARRAY_SIZE(s->handler));
--    qdev_init_gpio_out(dev, s->handler, ARRAY_SIZE(s->handler));
--}
--
--static void max7310_class_init(ObjectClass *klass, void *data)
--{
--    DeviceClass *dc = DEVICE_CLASS(klass);
--    I2CSlaveClass *k = I2C_SLAVE_CLASS(klass);
--
--    dc->realize = max7310_realize;
--    k->event = max7310_event;
--    k->recv = max7310_rx;
--    k->send = max7310_tx;
--    dc->reset = max7310_reset;
--    dc->vmsd = &vmstate_max7310;
--}
--
--static const TypeInfo max7310_info = {
--    .name          = TYPE_MAX7310,
--    .parent        = TYPE_I2C_SLAVE,
--    .instance_size = sizeof(MAX7310State),
--    .class_init    = max7310_class_init,
--};
--
--static void max7310_register_types(void)
--{
--    type_register_static(&max7310_info);
--}
--
--type_init(max7310_register_types)
-diff --git a/hw/gpio/Kconfig b/hw/gpio/Kconfig
-index 19c97cc823f..c9c340f6eb4 100644
---- a/hw/gpio/Kconfig
-+++ b/hw/gpio/Kconfig
-@@ -1,7 +1,3 @@
--config MAX7310
--    bool
--    depends on I2C
--
- config PL061
-     bool
- 
-diff --git a/hw/gpio/meson.build b/hw/gpio/meson.build
-index a7495d196ae..010ad3bf5a7 100644
---- a/hw/gpio/meson.build
-+++ b/hw/gpio/meson.build
-@@ -1,7 +1,6 @@
- system_ss.add(when: 'CONFIG_GPIO_KEY', if_true: files('gpio_key.c'))
- system_ss.add(when: 'CONFIG_GPIO_MPC8XXX', if_true: files('mpc8xxx.c'))
- system_ss.add(when: 'CONFIG_GPIO_PWR', if_true: files('gpio_pwr.c'))
--system_ss.add(when: 'CONFIG_MAX7310', if_true: files('max7310.c'))
- system_ss.add(when: 'CONFIG_PCA9552', if_true: files('pca9552.c'))
- system_ss.add(when: 'CONFIG_PCA9554', if_true: files('pca9554.c'))
- system_ss.add(when: 'CONFIG_PL061', if_true: files('pl061.c'))
--- 
-2.34.1
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Tested-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 

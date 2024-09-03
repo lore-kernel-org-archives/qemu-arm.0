@@ -1,206 +1,153 @@
-Received: by 2002:a17:504:3a8f:b0:1be9:327d:8ee3 with SMTP id g15csp1355879njf;
-        Tue, 3 Sep 2024 01:38:27 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUztFVaQ9QTd7Ov6Ggs+KXMntgK7QqCRotssZQYBQXSqhGfPFLEiIHciijdnE0aUq8sG7f4NjWubvbJKA==@linaro.org
-X-Google-Smtp-Source: AGHT+IEydZPBieDzyhz9tIzK7hb8owzjiig0q787FsTONFYuq9HQ7gnQSubu0k9+BsIJZwZUI07Y
-X-Received: by 2002:a5d:668c:0:b0:368:334d:aad4 with SMTP id ffacd0b85a97d-374bef3976cmr5987551f8f.4.1725352707246;
-        Tue, 03 Sep 2024 01:38:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1725352707; cv=none;
-        d=google.com; s=arc-20240605;
-        b=bDLM5oxOyxV5QnwPuCbGHOXowl91xqcHUKy3uWl8OWM1zXzVJ6EIHomqzPeolfJrJa
-         9nku7ohCArR2SXNYP2NDS+AdP52zNgG56jnGegFATlkC9dRflIgzT//aMoxBsooA9Ycx
-         Eq8T/22wX6fKCboauIqifGgZ3c+CqEqqPTPWCCSwA82TPSFtJxYDZCPmJgWmwRgi2SNR
-         swvdglTpJNJsHKMwXO/p8qXUW1ff/F0UxvbJ0CIXSYL5HBhq6vDO0zWxP04LUWQyNOs4
-         Oa1mGssqErGmzwDWHPcWQe2wJBxXdy9iQZRxXKAZKThyLYRAa+OjGIMmOZfEAJ8+SYPj
-         xfKQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:subject:cc:to:from:date;
-        bh=aEPkLNAcgnmubYJSR5YTs4wZt9rM0CAZImbU2NdHADs=;
-        fh=GbFg9YhPvCwUhVCv2YdN6dppB5x2+2lAvigvlqX8Qkk=;
-        b=Y/8IBdvfJ/9Vz7agT94XKF1TDu7bDCLEcWa6DtWYveFgPV80Lgc22OJX9ZBm44phgN
-         kTN/ySU3yfdhVkkWJbMvduPOTT4lGnFphrfn2V0gMaLpjYcRIkhuA9X5txei357aZZr9
-         xg04XcxY0eLeJJcRlDDN+aEJL8Rq0MizhkJRfPiVt9zm/3svo3SpTxFKCu3MtfBMlsni
-         /A5nGLiG2iOMkaEig7STMfjZsnhGmQlrflaob6wGBf+6Pxter//MD0MA8ePnKm3H8Vmf
-         sJJRRqXzH09MacETWj6GpB0pg0EJ8z/+rcCnKSkL6TIoUbqN/DnnEsTSnLNLJ06fNuFj
-         7jAA==;
+Received: by 2002:a17:504:3a8f:b0:1be9:327d:8ee3 with SMTP id g15csp1433296njf;
+        Tue, 3 Sep 2024 06:18:43 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCW8U2p2DYiRcqbO6gurHatFMrej9lIZ0xeA7n/kT4JdiLfx+1S8DFvl8s1JdCbCLDaUfhu63jW13cRc4A==@linaro.org
+X-Received: by 2002:a5d:5586:0:b0:371:844f:e0c with SMTP id ffacd0b85a97d-374bce97a99mr7919781f8f.10.1725369523436;
+        Tue, 03 Sep 2024 06:18:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1725369523; cv=none;
+        d=google.com; s=arc-20160816;
+        b=qfL0SVh8p4VME/oPRJBw3SlvSvyJtF7xwmKboTMMzw9tcROCGa+UETA6yu1Mr4oT4y
+         B8KVLXuBPcjfI8Q8D0RRvDlYFG2YIgAv+5aDX0LYYbokNyAVelCX/Ybl7TpA+P7+jW5h
+         zz/0xyP3NTQyRMR6zi67iRj097TWoburmGsSYAjdzjhPizWEb+FyTny5rPP9mDXrkyFR
+         7EHCDX+/Z8IbMVJIfZ24IHxr0xCAFrAC+UEWaiTz7v7q4XqT9c623BuJIKkc0kIcHyXQ
+         BYrpXTCbIDFMv+CYS73VrHWXD/3aw3smBaJqJDatOGHTy2dJvpe4lpuCeBHuHFxF7B5Z
+         J59Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=NKCLUNEmRz23/+dRcGIxS6GdAtfM6ay5Pf5/UaZssMo=;
+        fh=y5UsI3eCfhVpLTF8Vpgu8s52j88Zc8VvqStf8O0zp1U=;
+        b=H8qIeO/VLgtoii9okjGb/QPfXPz3k+JvJoCKT9iAOXH74ydtPBcCPT0Y4FhOcZcAt0
+         AzUpOk3Z907YpPtQ8CSN+YTE0zajPkx13I8vU5brG57asIHaGzg5OMnml7PZ5oK5m/Ds
+         DX2KHEB9oWBnApuPNq92eCJ7M5V8YWT9wWqddKkS3AYCoM2tebx3OIB7tZgd4pdU+4SW
+         G1kHikDA1VB5tKcFkJXJxTHpTAGKyezX2qFKKa/1dBVNgg3id1jwmrl+kEVx1tzfv4dj
+         8MUKPy3CYasun1x9COkJ/P1YUWnEKqtIEDTXrKPlQBNNJJvxDWf31oneP9Q2ifd5k0Mr
+         ItAw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of alireza.sanaee@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=alireza.sanaee@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Return-Path: <alireza.sanaee@huawei.com>
-Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id 5b1f17b1804b1-42bba8fb485si47817875e9.57.2024.09.03.01.38.27
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 03 Sep 2024 01:38:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of alireza.sanaee@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
+       dkim=pass header.i=@linaro.org header.s=google header.b=YMYyJTIx;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <philmd@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 5b1f17b1804b1-42c878efbcbsor10575555e9.2.2024.09.03.06.18.43
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Tue, 03 Sep 2024 06:18:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of alireza.sanaee@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=alireza.sanaee@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from mail.maildlp.com (unknown [172.18.186.231])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4Wyf7Z4NT3z6K8WL;
-	Tue,  3 Sep 2024 16:34:50 +0800 (CST)
-Received: from lhrpeml500006.china.huawei.com (unknown [7.191.161.198])
-	by mail.maildlp.com (Postfix) with ESMTPS id 36AC1140B63;
-	Tue,  3 Sep 2024 16:38:26 +0800 (CST)
-Received: from localhost (10.47.30.99) by lhrpeml500006.china.huawei.com
- (7.191.161.198) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Tue, 3 Sep
- 2024 09:38:25 +0100
-Date: Tue, 3 Sep 2024 09:38:20 +0100
-From: Alireza Sanaee <alireza.sanaee@huawei.com>
-To: Philippe =?ISO-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>
-CC: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <linuxarm@huawei.com>,
-	<peter.maydell@linaro.org>, <richard.henderson@linaro.org>,
-	<shameerali.kolothum.thodi@huawei.com>, <Jonathan.Cameron@Huawei.com>,
-	<alex.bennee@linaro.org>, <jiangkunkun@huawei.com>
-Subject: Re: [PATCH v3] target/arm/tcg: refine cache descriptions with a
- wrapper
-Message-ID: <20240903093820.00004693@huawei.com>
-In-Reply-To: <f4cd3718-5775-4d88-92f4-48427895d4f2@linaro.org>
-References: <20240902203211.270-1-alireza.sanaee@huawei.com>
-	<f4cd3718-5775-4d88-92f4-48427895d4f2@linaro.org>
-Organization: Huawei
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
+       dkim=pass header.i=@linaro.org header.s=google header.b=YMYyJTIx;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1725369523; x=1725974323; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=NKCLUNEmRz23/+dRcGIxS6GdAtfM6ay5Pf5/UaZssMo=;
+        b=YMYyJTIxE32EfDP0gWovD2TBEZJdcUVPQUniguR3ovUu0BnSL8ffUZwG1C5yGHgxSQ
+         6h5xbGqG19sqXMkYJjaGpmadvc904l7S6t7xxXDjpqbfq3JEVwk+ODWLBPN/kQsikEjZ
+         7SyMzuwsC94W6VOtwKQn5WH1C2mj5DijSQf0R6JXFC0a7MLVL6LQX0GUDOXA5y7nxitN
+         XythP81+mlnFgzbpdlz82yOEyDMj77L000CRBHH74VeuGQfhZaUXWYA0yb61Kz7alouF
+         /V1gMyGVwG/TD+PO6hDrTdXgsATTn+45qojkaKOyEPUvplhbayCSLYIrorHhMwv/lU4+
+         t45Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1725369523; x=1725974323;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=NKCLUNEmRz23/+dRcGIxS6GdAtfM6ay5Pf5/UaZssMo=;
+        b=CqvuAuxtFrDq6MKBnCt347sgvBkUxzABq9UphhzV6lKWc5Ys9qip7bPsk3eY84Sv+2
+         kEAiOf7QcsqWRaICBnZ4NuZvqPJv4cS0vFUUHNSnmM2Mz0F9aC1+0jmc8kcUjiXB8kHS
+         epLF4GNhW3PfgO/FPJn5XWhNzMR46hFfDy3R0ty/T06ikm+YKQepdchefZsDP2Q0srR0
+         vVC3I6WWSE4hmpon8CD34EAK6Wrwywg2LLYp8dBMJ1iO+aWiRKYu9gVo6pfTpbOgLEcj
+         DkrFOJRFro6isDWlL7zllIkNWetf/3wxbkNKHuC1Yy05i9ROsRvsFODwvdJvI3jSMY63
+         O6cA==
+X-Forwarded-Encrypted: i=1; AJvYcCVx/n1lDuOIhGJQeT6N3ZNJ+2i1Y2sxJpyXnvD8UUjjXyVFV88ibvRkcymXsKKB/MS2Smy9AjPpWFsOeA==@linaro.org
+X-Gm-Message-State: AOJu0YzVmDgPE2IzICJPt1zc4rTMw0Fa5Hw3cnbnnkwgDVp2yWKvVvfa
+	k2h6eoESDRJ/6wQa9reduQprqQV27WVXhNzYzHgvvJ0xHUO1kzl5RP9DghcsihfQ+A==
+X-Google-Smtp-Source: AGHT+IGILYaDUbIE03G7aTho502+vRVy2GX2F5LCnL6nHSHaX4rsDujyzv//R6HTG/DFgVv1xaXPgA==
+X-Received: by 2002:a05:600c:3c8b:b0:426:5e91:391e with SMTP id 5b1f17b1804b1-42bdc64e46dmr68489655e9.26.1725369522570;
+        Tue, 03 Sep 2024 06:18:42 -0700 (PDT)
+Return-Path: <philmd@linaro.org>
+Received: from [192.168.1.67] ([78.196.4.158])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-42bb6df936dsm170731555e9.28.2024.09.03.06.18.41
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 03 Sep 2024 06:18:41 -0700 (PDT)
+Message-ID: <7fda2f7c-091f-4b8b-bd61-5f8fcbbcf8ba@linaro.org>
+Date: Tue, 3 Sep 2024 15:18:41 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset="ISO-8859-1"
-Content-Transfer-Encoding: quoted-printable
-X-Originating-IP: [10.47.30.99]
-X-ClientProxiedBy: lhrpeml100001.china.huawei.com (7.191.160.183) To
- lhrpeml500006.china.huawei.com (7.191.161.198)
-X-TUID: YN+kwH6WYX1C
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4] target/arm/tcg: refine cache descriptions with a
+ wrapper
+To: Alireza Sanaee <alireza.sanaee@huawei.com>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org
+Cc: linuxarm@huawei.com, peter.maydell@linaro.org,
+ richard.henderson@linaro.org, shameerali.kolothum.thodi@huawei.com,
+ Jonathan.Cameron@Huawei.com, alex.bennee@linaro.org, jiangkunkun@huawei.com
+References: <20240903083520.209-1-alireza.sanaee@huawei.com>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20240903083520.209-1-alireza.sanaee@huawei.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-TUID: aY5qMmvCNj3b
 
-On Tue, 3 Sep 2024 00:11:04 +0200
-Philippe Mathieu-Daud=E9 <philmd@linaro.org> wrote:
+On 3/9/24 10:35, Alireza Sanaee wrote:
+> This patch allows for easier manipulation of the cache description
+> register, CCSIDR. Which is helpful for testing as well. Currently,
+> numbers get hard-coded and might be prone to errors.
+> 
+> Therefore, this patch adds a wrapper for different types of CPUs
+> available in tcg to decribe caches. One function `make_ccsidr` supports
+> two cases by carrying a parameter as FORMAT that can be LEGACY and
+> CCIDX which determines the specification of the register.
+> 
+> For CCSIDR register, 32 bit version follows specification [1].
+> Conversely, 64 bit version follows specification [2].
 
-> Hi Alireza,
->=20
-> On 2/9/24 22:32, Alireza Sanaee wrote:
-> > This patch allows for easier manipulation of the cache description
-> > register, CCSIDR. Which is helpful for testing as well. Currently,
-> > numbers get hard-coded and might be prone to errors.
-> >=20
-> > Therefore, this patch adds a wrapper for different types of CPUs
-> > available in tcg to decribe caches. One function `make_ccsidr`
-> > supports two cases by carrying a parameter as FORMAT that can be
-> > LEGACY and CCIDX which determines the specification of the register.
-> >=20
-> > For CCSIDR register, 32 bit version follows specification [1].
-> > Conversely, 64 bit version follows specification [2]. =20
->=20
-> ---
->=20
-> [cut]
->=20
-> > Changes from v2 [3] -> v3:
-> >=20
-> > 1) add only one function instead of ccsidr32 and ccsidr64
-> > 2) use deposit32 and deposit64 in ccsidr function
-> >  =20
-> ---
->=20
-> > [1] B4.1.19, ARM Architecture Reference Manual ARMv7-A and ARMv7-R
-> > edition, https://developer.arm.com/documentation/ddi0406
-> > [2] D23.2.29, ARM Architecture Reference Manual for A-profile
-> > Architecture, https://developer.arm.com/documentation/ddi0487/latest/ =
-=20
->=20
-> ---
->=20
-> [cut]
->=20
-> > [3] https://lore.kernel.org/qemu-devel/20240830184713.224-1-alireza.san=
-aee@huawei.com/
-> >  =20
->=20
-> ---
->=20
-> > Signed-off-by: Alireza Sanaee <alireza.sanaee@huawei.com>
-> > ---
-> >   target/arm/cpu-features.h |  50 ++++++++++++++++++
-> >   target/arm/cpu64.c        |  19 ++++---
-> >   target/arm/tcg/cpu64.c    | 108
-> > +++++++++++++++++++------------------- 3 files changed, 117
-> > insertions(+), 60 deletions(-)
-> >=20
-> > diff --git a/target/arm/cpu-features.h b/target/arm/cpu-features.h
-> > index c59ca104fe..ef40b0dfdc 100644
-> > --- a/target/arm/cpu-features.h
-> > +++ b/target/arm/cpu-features.h
-> > @@ -1022,6 +1022,56 @@ static inline bool
-> > isar_feature_any_evt(const ARMISARegisters *id) return
-> > isar_feature_aa64_evt(id) || isar_feature_aa32_evt(id); }
-> >  =20
-> > +typedef enum {
-> > +    CCSIDR_FORMAT_LEGACY,
-> > +    CCSIDR_FORMAT_CCIDX,
-> > +} CCSIDRFormat;
-> > +
-> > +static inline uint64_t make_ccsidr(CCSIDRFormat format, unsigned
-> > assoc,
-> > +                                   unsigned linesize, unsigned
-> > cachesize,
-> > +                                   uint8_t flags)
-> > +{
-> > +    unsigned lg_linesize =3D ctz32(linesize);
-> > +    unsigned sets;
-> > +    uint32_t ccsidr32 =3D 0;
-> > +    uint64_t ccsidr64 =3D 0; =20
->=20
-> deposit32() works with unsigned so you can use 'uint64_t ccsidr' for
-> both cases and return once.
->=20
-> > +
-> > +    assert(assoc !=3D 0);
-> > +    assert(is_power_of_2(linesize)); =20
->=20
-> As mentioned in v2, if you insist in using an inlined method, you have
-> to include "qemu/host-utils.h" to get is_power_of_2() declaration.
->=20
-> If the inlining is proven problematic later we can still un-inline
-> it, so as this is an useful cleanup (preferably with one 'ccsidr'
-> variable and the include):
->=20
+This is the commit description,
 
-Hi. sure! that makes sense. applied those two changes in v4. sorry for
-missing out the comment on v2.
+---
 
-> Reviewed-by: Philippe Mathieu-Daud=E9 <philmd@linaro.org>
->=20
-> > +    assert(lg_linesize >=3D 4 && lg_linesize <=3D 7 + 4);
-> > +
-> > +    /* sets * associativity * linesie =3D=3D cachesize. */
-> > +    sets =3D cachesize / (assoc * linesize);
-> > +    assert(cachesize % (assoc * linesize) =3D=3D 0);
-> > +
-> > +    if (format =3D=3D CCSIDR_FORMAT_LEGACY) {
-> > +        /*
-> > +         * The 32-bit CCSIDR format is:
-> > +         *   [27:13] number of sets - 1
-> > +         *   [12:3]  associativity - 1
-> > +         *   [2:0]   log2(linesize) - 4
-> > +         *           so 0 =3D=3D 16 bytes, 1 =3D=3D 32 bytes, 2 =3D=3D=
- 64
-> > bytes, etc
-> > +         */
-> > +        ccsidr32 =3D deposit32(ccsidr32, 28,  4, flags);
-> > +        ccsidr32 =3D deposit32(ccsidr32, 13, 15, sets - 1);
-> > +        ccsidr32 =3D deposit32(ccsidr32,  3, 10, assoc - 1);
-> > +        ccsidr32 =3D deposit32(ccsidr32,  0,  3, lg_linesize - 4);
-> > +        return (uint64_t)ccsidr32;
-> > +    } else {
-> > +        /*
-> > +         * The 64-bit CCSIDR_EL1 format is:
-> > +         *   [55:32] number of sets - 1
-> > +         *   [23:3]  associativity - 1
-> > +         *   [2:0]   log2(linesize) - 4
-> > +         *           so 0 =3D=3D 16 bytes, 1 =3D=3D 32 bytes, 2 =3D=3D=
- 64
-> > bytes, etc
-> > +         */
-> > +        ccsidr64 =3D deposit64(ccsidr64, 32, 24, sets - 1);
-> > +        ccsidr64 =3D deposit64(ccsidr64,  3, 21, assoc - 1);
-> > +        ccsidr64 =3D deposit64(ccsidr64,  0,  3, lg_linesize - 4);
-> > +        return ccsidr64;
-> > +    }
-> > +} =20
->=20
+this part is not relevant in the git history and can go
+(hopefully the maintainer can do that for you),
+
+> 
+> Changes from v2 [3] -> v3:
+> 
+> 1) add only one function instead of ccsidr32 and ccsidr64
+> 2) use deposit32 and deposit64 in ccsidr function
+> 
+> Chnages from v3 [4] -> v4:
+> 1) Use only one variable in the make_ccsidr function.
+> 2) Include qemu/host-utils.h to get is_power_of_2() declaration.
+> 
+---
+
+keeping these references,
+
+> [1] B4.1.19, ARM Architecture Reference Manual ARMv7-A and ARMv7-R
+> edition, https://developer.arm.com/documentation/ddi0406
+> [2] D23.2.29, ARM Architecture Reference Manual for A-profile Architecture,
+> https://developer.arm.com/documentation/ddi0487/latest/
+
+---
+
+and dropping these ones.
+
+> [3] https://lore.kernel.org/qemu-devel/20240830184713.224-1-alireza.sanaee@huawei.com/
+> [4] https://lore.kernel.org/qemu-devel/20240902203211.270-1-alireza.sanaee@huawei.com/
+> 
+> Signed-off-by: Alireza Sanaee <alireza.sanaee@huawei.com>
+> ---
+>   target/arm/cpu-features.h |  50 ++++++++++++++++++
+>   target/arm/cpu64.c        |  19 ++++---
+>   target/arm/tcg/cpu64.c    | 108 +++++++++++++++++++-------------------
+>   3 files changed, 117 insertions(+), 60 deletions(-)
+
+Thanks for the iterations.
+
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>

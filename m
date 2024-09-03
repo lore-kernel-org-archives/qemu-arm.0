@@ -1,156 +1,152 @@
-Received: by 2002:a17:504:3a8f:b0:1be9:327d:8ee3 with SMTP id g15csp1451522njf;
-        Tue, 3 Sep 2024 07:06:55 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCULFSTF7ExDD3DLd3vxuzfIbfzsHjA+5UVdc9LsX3sVaqSC8n4h8dD1zLefLI57PNJhw9zkwieeqnjfew==@linaro.org
-X-Google-Smtp-Source: AGHT+IHNAeiQdI97BL6m0zXbRbGKBgIXrFIY/rTo9ER+fO4ABFr3bz2d52UZCETh+cYVeKsuHiLZ
-X-Received: by 2002:a05:622a:1820:b0:44f:fb6d:4b2f with SMTP id d75a77b69052e-456802be9d9mr326922221cf.23.1725372415196;
-        Tue, 03 Sep 2024 07:06:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1725372415; cv=none;
+Received: by 2002:a17:504:3a8f:b0:1be9:327d:8ee3 with SMTP id g15csp1454196njf;
+        Tue, 3 Sep 2024 07:12:28 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXMcRcgY9yd+of/EYFJCCxG2Uc/MgwUmjhsRtuDIEjpwMJN4TbVLKKQukJQ05Yd0M0zXyFqIh0DQL4r2w==@linaro.org
+X-Google-Smtp-Source: AGHT+IFubwUGFBW5N+/kxzUZlMpSDF/4oX1NykKBw6zBgR33bRA8xIPL3YaZzwqnZ2Fi7OD5J/qn
+X-Received: by 2002:a05:6808:178c:b0:3db:2070:909d with SMTP id 5614622812f47-3df05d7b3bdmr22089054b6e.19.1725372748124;
+        Tue, 03 Sep 2024 07:12:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1725372748; cv=none;
         d=google.com; s=arc-20160816;
-        b=jp/13Caa6iPUDPCQn6d+pI+jKngOpDZ30qeGadbTcAEOE72a7VdC/1uNwB61naF/r0
-         ykQrd1Qcf6QbOL7DYx+ZTLK1MEHcxFZEeWfx13PuX/Xz0gGxEfIku0bl2L0mxx2aOeTl
-         qoFWIEVy2GZQe3W4YZTQQqE7sY/ARn3CrelMAgOX+0nHwqx6kR6zwIC5jDlQ3Zi8G90K
-         xXX0KcQELP25ZsPRDpRzLoUq1B/E2bescLfVJaiNf4dMyLmI+fazNDZ9og6JmIGltxkv
-         OWjK823zCqJAv8wrGvcWkikjsLviyW0yiuzE59ftjaE8CnSEufweLdP3Oag7gWTjJsBX
-         Ob7g==
+        b=lNMphn76gphK8Ppq3xiz7LmkIuWmDCTT3jxDFCVgEwoFk4BvQShfMyCyGYU1cy0Sij
+         MUX8ldhLc5nm1wRK5bu7PBFkJ6KQgP4275f8AxdtIr6tP+2kRDmqNm0E6V1wyIlarGFB
+         lKunka3RSAlGJbftVm1DVqKleRu0KCzKrWvWZh2T1WOCytHkDEvQAcwOAMXvHQ4ZTeqB
+         tj2E90r3vOSHfkcQirAzB+QVaA85ILrytgUZTm9fqRX3p70veRySdLZEVlAvbwSmLKJq
+         u+NEoJXQ/Sxq/mqOL7MPr7UJYlYh3WoMa4s7yXzFZmAWnYNZvgeoyIczpTmGStO1N5/Y
+         cROA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-id:content-language
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:subject:cc:to;
-        bh=sApQje3Icqwn6nIF+PeaE9JcdPnM3+u22LjpLVFXZXQ=;
-        fh=9ZuLkicXnzL6XDO6LbDH5iQxiaPiCCrJzRMr94dP+4M=;
-        b=gCQm3WzgfDMeLLizLxjOvzrPNQD5zCLWw9pD1VGslCYXvDNnoWQZnhVps/5bNNBPjA
-         jImkaNzF9dCu22sKJV4kamefk34JFarnIdbIi7jdpkSgF8bquxsXzoovFotLygXtxt46
-         4ux8bRkbEUS0H7rYKG0vmR/Xd4kgEvJYKqTkcSSXj0R4vGJpFTxMNGKEniMrom+drsKV
-         Xf6Tv/RS1DRb73JIp/eofPgnmurzszfDOVySV67ooB1RCAN6/AN/utP3c2wo6I4Xv/cy
-         WiTY+3hnlyZ06YiQqGjdQzM3wfSlWyx0vLxQ4tnajFzAdphr9xKRgXomeCZ3xck3yDo/
-         hO7g==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id;
+        bh=yx7fxRPLmaet30aC2tXRtQyru9Fi6QfLzKDKUTI0a18=;
+        fh=P9eF86Qai1jM7EkBuFwf50J/wVjW4uTYQ/nRQ7unStY=;
+        b=A+grsVLMbedcy843cpxMEkvLlsCh8wySUstsdW8FoA2sKzDNFo1IWCfOEjE2Rpk5TW
+         nOf406LLUSG4T1xqTuN4sgLCU+/UF403hMSowaeACZ4v1BsMJlHw40T+RkKVIuzvTeXm
+         DJQryQTANqGn0LEIPShaQa19nFuwKoCuSqfTE+qBCb1joFOgm5k9OqD3LH3fxsD+2r6w
+         vF+nQPpKiCpFUDeLetwORnm4NoTu+p+EBl0WYzMZssPHj84KQNEiMp/b6J53NiHNY4Wx
+         e6uF8UN1yWX7WXLkogRuSKi1EAdTQ3lIsvO0Kb3dMZ0sdssv86wH/YE4oN5IVJyZPRHj
+         mdhw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ada2fe7eead31-49a5f4fb278si2510481137.399.2024.09.03.07.06.55
+        by mx.google.com with ESMTPS id a1e0cc1a2514c-846d5b16d39si870740241.171.2024.09.03.07.12.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 03 Sep 2024 07:06:55 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 03 Sep 2024 07:12:28 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1slU5c-0000eV-Bh; Tue, 03 Sep 2024 10:01:01 -0400
-Received: from eggs.gnu.org ([209.51.188.92])
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1slUGc-0004mc-Ql; Tue, 03 Sep 2024 10:12:23 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <changbin.du@huawei.com>)
- id 1slU5G-0000Ua-Pq
- for qemu-devel@nongnu.org; Tue, 03 Sep 2024 10:00:42 -0400
-Received: from [45.249.212.191] (helo=szxga05-in.huawei.com)
+ (Exim 4.90_1) (envelope-from <SRS0=Bo9S=QB=kaod.org=clg@ozlabs.org>)
+ id 1slUGa-0004cG-8G; Tue, 03 Sep 2024 10:12:20 -0400
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <changbin.du@huawei.com>)
- id 1slU4P-0006iU-A6
- for qemu-devel@nongnu.org; Tue, 03 Sep 2024 10:00:21 -0400
-Received: from mail.maildlp.com (unknown [172.19.163.44])
- by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4Wymq44wrzz1HJCP;
- Tue,  3 Sep 2024 21:36:00 +0800 (CST)
-Received: from kwepemd100011.china.huawei.com (unknown [7.221.188.204])
- by mail.maildlp.com (Postfix) with ESMTPS id 321F51400D7;
- Tue,  3 Sep 2024 21:39:27 +0800 (CST)
-Received: from kwepemd100011.china.huawei.com (7.221.188.204) by
- kwepemd100011.china.huawei.com (7.221.188.204) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.34; Tue, 3 Sep 2024 21:39:26 +0800
-Received: from kwepemd100011.china.huawei.com ([7.221.188.204]) by
- kwepemd100011.china.huawei.com ([7.221.188.204]) with mapi id 15.02.1258.034; 
- Tue, 3 Sep 2024 21:39:26 +0800
-To: =?utf-8?B?UGhpbGlwcGUgTWF0aGlldS1EYXVkw6k=?= <philmd@linaro.org>
-CC: duchangbin <changbin.du@huawei.com>, Peter Maydell
- <peter.maydell@linaro.org>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Subject: Re: [PATCH v2] hw/arm/boot: Report error msg if loading elf/dtb failed
-Thread-Topic: [PATCH v2] hw/arm/boot: Report error msg if loading elf/dtb
- failed
-Thread-Index: AQHa+srYcUaTo3na7EqowavTo5/fzrJEaGGAgAGu7IA=
-Date: Tue, 3 Sep 2024 13:39:26 +0000
-Message-ID: <263aa8df87ff461d96fdc55763aeac79@huawei.com>
-References: <20240830105304.2547406-1-changbin.du@huawei.com>
- <7c67704e-a067-4b6e-8acb-51b33cf17ee0@linaro.org>
-In-Reply-To: <7c67704e-a067-4b6e-8acb-51b33cf17ee0@linaro.org>
-Accept-Language: en-US
-Content-Language: zh-CN
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-exchange-imapappendstamp: kwepemd100011.china.huawei.com (15.02.1258.034)
-x-ms-exchange-messagesentrepresentingtype: 1
-x-originating-ip: [10.110.54.75]
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <86EEC0691B7FFA40A984F4780746E21C@huawei.com>
-Content-Transfer-Encoding: base64
+ (Exim 4.90_1) (envelope-from <SRS0=Bo9S=QB=kaod.org=clg@ozlabs.org>)
+ id 1slUGY-0000Vm-65; Tue, 03 Sep 2024 10:12:19 -0400
+Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4Wyncr1lj9z4x8F;
+ Wed,  4 Sep 2024 00:12:12 +1000 (AEST)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (Client did not present a certificate)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4Wynck74PCz4wxx;
+ Wed,  4 Sep 2024 00:11:47 +1000 (AEST)
+Message-ID: <00aac81e-ff43-4526-960c-782e27ae043f@kaod.org>
+Date: Tue, 3 Sep 2024 16:11:42 +0200
 MIME-Version: 1.0
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 45.249.212.191 (deferred)
-Received-SPF: pass client-ip=45.249.212.191;
- envelope-from=changbin.du@huawei.com; helo=szxga05-in.huawei.com
-X-Spam_score_int: -10
-X-Spam_score: -1.1
-X-Spam_bar: -
-X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, RDNS_NONE=0.793,
- SPF_HELO_NONE=0.001, T_SCC_BODY_TEXT_LINE=-0.01,
- T_SPF_TEMPERROR=0.01 autolearn=no autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [SPAM] [PATCH v3 00/11] support I2C for AST2700
+To: Jamin Lin <jamin_lin@aspeedtech.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ Cleber Rosa <crosa@redhat.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
+ <philmd@linaro.org>, Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ Beraldo Leal <bleal@redhat.com>, "open list:ASPEED BMCs"
+ <qemu-arm@nongnu.org>, "open list:All patches CC here"
+ <qemu-devel@nongnu.org>
+Cc: troy_lee@aspeedtech.com, yunlin.tang@aspeedtech.com
+References: <20240903083528.2182190-1-jamin_lin@aspeedtech.com>
+Content-Language: en-US, fr
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <20240903083528.2182190-1-jamin_lin@aspeedtech.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
+ envelope-from=SRS0=Bo9S=QB=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
+X-Spam_score_int: -39
+X-Spam_score: -4.0
+X-Spam_bar: ----
+X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.25, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-to:  duchangbin <changbin.du@huawei.com>
-From:  duchangbin via <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: KzB8Tfyz3XAw
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 1t5C6Qbz25VB
 
-T24gTW9uLCBTZXAgMDIsIDIwMjQgYXQgMDk6NTU6MTlQTSArMDIwMCwgUGhpbGlwcGUgTWF0aGll
-dS1EYXVkw6kgd3JvdGU6DQo+IEhpIENoYW5nYmluLA0KPiANCj4gT24gMzAvOC8yNCAxMjo1Mywg
-Q2hhbmdiaW4gRHUgdmlhIHdyb3RlOg0KPiA+IFByaW50IGVycm9ycyBiZWZvcmUgZXhpdC4gRG8g
-bm90IGV4aXQgc2lsZW50bHkuDQo+ID4gDQo+ID4gU2lnbmVkLW9mZi1ieTogQ2hhbmdiaW4gRHUg
-PGNoYW5nYmluLmR1QGh1YXdlaS5jb20+DQo+ID4gDQo+ID4gLS0tDQo+ID4gdjI6IHJlbW92ZSBt
-c2cgZm9yIGFybV9sb2FkX2R0Yi4NCj4gPiAtLS0NCj4gPiAgIGh3L2FybS9ib290LmMgfCAxICsN
-Cj4gPiAgIDEgZmlsZSBjaGFuZ2VkLCAxIGluc2VydGlvbigrKQ0KPiA+IA0KPiA+IGRpZmYgLS1n
-aXQgYS9ody9hcm0vYm9vdC5jIGIvaHcvYXJtL2Jvb3QuYw0KPiA+IGluZGV4IGQ0ODBhN2RhMDJj
-Zi4uZTE1YmYwOTdhNTU5IDEwMDY0NA0KPiA+IC0tLSBhL2h3L2FybS9ib290LmMNCj4gPiArKysg
-Yi9ody9hcm0vYm9vdC5jDQo+ID4gQEAgLTgzOSw2ICs4MzksNyBAQCBzdGF0aWMgc3NpemVfdCBh
-cm1fbG9hZF9lbGYoc3RydWN0IGFybV9ib290X2luZm8gKmluZm8sIHVpbnQ2NF90ICpwZW50cnks
-DQo+ID4gICAgICAgICAgICAgICAgICAgICAgICAgMSwgZGF0YV9zd2FiLCBhcyk7DQo+ID4gICAg
-ICAgaWYgKHJldCA8PSAwKSB7DQo+ID4gICAgICAgICAgIC8qIFRoZSBoZWFkZXIgbG9hZGVkIGJ1
-dCB0aGUgaW1hZ2UgZGlkbid0ICovDQo+ID4gKyAgICAgICAgZXJyb3JfcmVwb3J0KCJjb3VsZCBu
-b3QgbG9hZCBlbGYgJyVzJyIsIGluZm8tPmtlcm5lbF9maWxlbmFtZSk7DQo+IA0KPiAiQ291bGQg
-Li4uIiAoY2FwcykNCj4gDQo+ICJody9sb2FkZXIuaCIgaXMgbm90IHdlbGwgZG9jdW1lbnRlZCwg
-YnV0IGl0IHNlZW1zIGxvYWRfZWxmKigpIHJldHVybnM6DQo+IA0KPiAgICNkZWZpbmUgRUxGX0xP
-QURfRkFJTEVEICAgICAgIC0xDQo+ICAgI2RlZmluZSBFTEZfTE9BRF9OT1RfRUxGICAgICAgLTIN
-Cj4gICAjZGVmaW5lIEVMRl9MT0FEX1dST05HX0FSQ0ggICAtMw0KPiAgICNkZWZpbmUgRUxGX0xP
-QURfV1JPTkdfRU5ESUFOIC00DQo+ICAgI2RlZmluZSBFTEZfTE9BRF9UT09fQklHICAgICAgLTUN
-Cj4gDQo+IEFuZCB3ZSBjYW4gZGlzcGxheSB0aGlzIGVycm9yIGNhbGxpbmc6DQo+IA0KPiAgIGNv
-bnN0IGNoYXIgKmxvYWRfZWxmX3N0cmVycm9yKHNzaXplX3QgZXJyb3IpOw0KPiANCj4gU28gd2Ug
-Y2FuIGJlIG1vcmUgcHJlY2lzZSBoZXJlIHVzaW5nOg0KPiANCj4gICBlcnJvcl9yZXBvcnQoIkNv
-dWxkIG5vdCBsb2FkIGVsZiAnJXMnIiwgaW5mby0+a2VybmVsX2ZpbGVuYW1lLA0KPiAgICAgICAg
-ICAgICAgICBsb2FkX2VsZl9zdHJlcnJvcihyZXQpKTsNCj4gDQo+ID4gICAgICAgICAgIGV4aXQo
-MSk7DQo+ID4gICAgICAgfQ0KPiANCj4gQmV0dGVyIChidXQgb3V0IG9mIHNjb3BlIG9mIHRoaXMg
-cGF0Y2gpIGNvdWxkIGJlIHRvIHBhc3MgYW4gRXJyb3IgKmVycnANCj4gYXJndW1lbnQgdG8gdGhl
-IGxvYWRfZWxmKigpIGZhbWlseSBvZiBmdW5jdGlvbnMsIGFuZCBmaWxsIGl0IHdpdGggdGhlDQo+
-IGFwcHJvcHJpYXRlIGVycm9yIG1lc3NhZ2UuDQo+DQpUaGFua3MgZm9yIHlvdXIgc3VnZ2VzdGlv
-bi4gSSBjaGFuZ2VkIGl0IGFzIGJlbG93Og0KKyAgICAgICAgZXJyb3JfcmVwb3J0KCJDb3VsZG4n
-dCBsb2FkIGVsZiAnJXMnOiAlcyIsDQorICAgICAgICAgICAgICAgICAgICAgaW5mby0+a2VybmVs
-X2ZpbGVuYW1lLCBsb2FkX2VsZl9zdHJlcnJvcihyZXQpKTsNCg0KJCBxZW11LXN5c3RlbS1hYXJj
-aDY0IC1NIHZpcnQgLWtlcm5lbCAvd29yay9saW51eC92bWxpbnV4DQpxZW11LXN5c3RlbS1hYXJj
-aDY0OiBDb3VsZG4ndCBsb2FkIGVsZiAnL3dvcmsvbGludXgvdm1saW51eCc6IFRoZSBpbWFnZSBp
-cyBmcm9tIGluY29tcGF0aWJsZSBhcmNoaXRlY3R1cmUNCg0KPiBSZWdhcmRzLA0KPiANCj4gUGhp
-bC4NCg0KLS0gDQpDaGVlcnMsDQpDaGFuZ2JpbiBEdQ0K
+On 9/3/24 10:35, Jamin Lin wrote:
+> v1:
+> - support I2C for AST2700
+> 
+> v2:
+> - fix review issues and add reviewer suggestion
+> - update avocado test case for AST2700 I2C
+> - support i2c bus pool
+> 
+> v3:
+> - update commit messages and commit title
+> - update API to get the device irq
+> 
+> Jamin Lin (11):
+>    hw/i2c/aspeed: Support discontinuous register memory region of I2C bus
+>    hw/i2c/aspeed: Introduce a new bus pool buffer attribute in
+>      AspeedI2Cbus
+>    hw/i2c/aspeed: Support discontinuous poll buffer memory region of I2C
+>      bus
+>    hw/i2c/aspeed: Introduce a new dma_dram_offset attribute in
+>      AspeedI2Cbus
+>    hw/i2c/aspeed: Add AST2700 support
+>    hw/i2c/aspeed: Add support for Tx/Rx buffer 64 bit addresses
+>    hw/i2c/aspeed: Add support for 64 bit addresses
+>    aspeed/soc: Introduce a new API to get the device irq
+>    aspeed/soc: Support I2C for AST2700
+>    aspeed: Add tmp105 in i2c bus 0 for AST2700
+>    machine_aspeed.py: Update to test I2C for AST2700
+> 
+>   hw/arm/aspeed.c                 |  10 ++
+>   hw/arm/aspeed_ast27x0.c         |  45 +++++
+>   hw/i2c/aspeed_i2c.c             | 310 ++++++++++++++++++++++++++++----
+>   include/hw/i2c/aspeed_i2c.h     |  28 ++-
+>   tests/avocado/machine_aspeed.py |  16 ++
+>   5 files changed, 362 insertions(+), 47 deletions(-)
+> 
+
+
+
+Applied to aspeed-next.
+
+Thanks,
+
+C.
+
+

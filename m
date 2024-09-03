@@ -1,112 +1,113 @@
-Received: by 2002:a17:504:3a8f:b0:1be9:327d:8ee3 with SMTP id g15csp1500391njf;
-        Tue, 3 Sep 2024 09:09:39 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCW7jSiVvpF7O7wTeJJiOGrLJFFPLVZmj5HcBILzN8FZsk4mCS7JW89lz51gbxrFKiQWp2S0lR/UBh3jRQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IFdHkaJy63NH5/XdjeeOsoQWr/BE6CnqLPd5n6IQXFpBmjhTHGDJt/WwItPxPdp7hBjlb9q
-X-Received: by 2002:a05:622a:1dc9:b0:456:8170:bfa5 with SMTP id d75a77b69052e-4574e7e95c2mr136933351cf.1.1725379779001;
-        Tue, 03 Sep 2024 09:09:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1725379777; cv=none;
+Received: by 2002:a17:504:3a8f:b0:1be9:327d:8ee3 with SMTP id g15csp1500402njf;
+        Tue, 3 Sep 2024 09:09:42 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVeQ58YOS6mxyYCsoTmYlb1Euc8+6J864fWkQpJVKX+Z0kBjNJkdxXxDje00b04oAkwF00IhPnBor7rCw==@linaro.org
+X-Google-Smtp-Source: AGHT+IEnGEw84VJv8Vl2YUMb1WJz6oAxTiNhC1mzn4fUJp1qb0c0rCXigSKaexjBQPovf8MkAM8j
+X-Received: by 2002:a05:6358:528e:b0:1b5:f923:33d2 with SMTP id e5c5f4694b2df-1b7f193398fmr1329037455d.1.1725379782415;
+        Tue, 03 Sep 2024 09:09:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1725379782; cv=none;
         d=google.com; s=arc-20160816;
-        b=x5U2hixGbTVCkxnN7tghaguidpoYYW3auhIaC9Zq+SsEgiJTVFIPvD6arOYDoe4W0x
-         v2C8eRkOvxyFz1XNedyPYLcG7y75Lbbidhz/NHfGS99W/3VkS8sUM+V7AIQ10qcWApDP
-         Ko6v3jM87FfzLWApSrS20KnmhfIlTHbMxcAtO49sMQgE6Aq85UvvmpgJIbCwvm86jD10
-         rCys1wf9gf6OVzAd8ifMH9E+U97CzJfCIzFdtabaWvMs70MXEDy1ivKKsfbOUk6DHCB9
-         85/BSCOaMKt53DrTOE6ZWOUNnJiclb/L9sZnpK028gCc3g2ZHnrREw3OQGK/YB/TSZr3
-         tHlQ==
+        b=APF99jlgAh1JZ6J6HaWiDhEANTPsCuQB3Nyq3K0CRNQvRfaP8zaMSsmnnHv9zOqcQR
+         nSw9oxUS6j7wo1gR5n8vjF+ZCqfN/gza7UWuriGxV3kWVfuLiDpFgjoC9o/0cR9TV+Pk
+         FClA/Gordu93q9JxxMf919eb9hqhtLCZFdh60ewFBnCjrkJwALtnnA2l/t9Jxt7Y90vg
+         Gh6+zlq6FVl63ZJEUNMw4Em+AN+JLXr8bSAh2whfzuR7DAtP/sLm+s9awLwm5NZlH8n2
+         jrmzXz2eD8Ry9HERPcRhsu54nCevdERcCkUn6Q4XSbmn/mqxPrQS5JzDDNN79kflSXQq
+         D5xw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=R0zus/hmvStD9AYmM67FwIfGoLe+e4E5KWQsKxXQpy0=;
+        bh=fmDEQAHR61WT1tBB8RVs6stzaZ4Kwf55ODK6be7k5N4=;
         fh=H2AmuqulvQE+T5zu97MCEUC3z9wF9NssS7895NhR/+c=;
-        b=BIwrZ4JW1wMHF9wUGrl5zd2MUiVarhCTgbxkVx5APU1zFqDbuHSvbFiCDONNkoWSWV
-         FGTKtJlRnAjxZYQYcQ6fBdtYNZiPWOlppuouIwc5Lo53bDwTm6ZNu7uBjPonbWeC9HU1
-         86cDL2YTg9VWwYwahBW8S0QcrWd1oTht7GoQmYlv3FJdMyHvLve528mv4y3jkO/DkC4B
-         bt1oGwMtUc1PvI09+q32kwEGORbT+S5iwPYi8ZDZ1qfB15oVEh28gCCGA26sMHK6a/0I
-         hQlkcSpH1QQkkv5zCYacYAZHBqhcY3GzqKOXzPfTBOzNajp+vOIV0HJJ7j2U8h3TURsW
-         k91A==;
+        b=kLY4MucU0s/DcLPxtVUIA72zjiSVsufVibEJU6kHamGinJoYHwoRI9q03zEiC/0MdG
+         H2Yz7NKP0l44afPkXJszhh2QwLAElY2X6wRk8+GdqXhK494Gnw1SRbKRrukkeidB4jJ0
+         4pZCRMdyhk5CXA1yDmTQOOHpHS+vsqciEKw2Uhg5cstn0nfR8TKjim3urOL4uhefEdyq
+         8h1uYKpoTMTmtUQnSffm3kwTbqToRSrZ5g8nD+VCsCTSA9EuNB+caVCtJM3ND22MRNFE
+         /jW1VNIpV9joDHjvUqstMuiXIo+TxLUcui8R72vTmBVtR6yG8Cc8JXFFrni5WimQ8Bxt
+         GrDA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="uMW/jxGG";
+       dkim=pass header.i=@linaro.org header.s=google header.b=VYlUeRNs;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-45682dc1b74si126982241cf.577.2024.09.03.09.09.37
+        by mx.google.com with ESMTPS id 6a1803df08f44-6c3552cb6f8si88264846d6.444.2024.09.03.09.09.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 03 Sep 2024 09:09:37 -0700 (PDT)
+        Tue, 03 Sep 2024 09:09:42 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="uMW/jxGG";
+       dkim=pass header.i=@linaro.org header.s=google header.b=VYlUeRNs;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1slW5Q-0000cY-WF; Tue, 03 Sep 2024 12:08:57 -0400
+	id 1slW4c-0004t3-B4; Tue, 03 Sep 2024 12:08:06 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1slW5Q-0000XZ-0E
- for qemu-arm@nongnu.org; Tue, 03 Sep 2024 12:08:56 -0400
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+ id 1slW4a-0004nA-Vt
+ for qemu-arm@nongnu.org; Tue, 03 Sep 2024 12:08:05 -0400
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1slW5C-0002sF-Tj
- for qemu-arm@nongnu.org; Tue, 03 Sep 2024 12:08:55 -0400
-Received: by mail-wm1-x32c.google.com with SMTP id
- 5b1f17b1804b1-42c7a49152aso36169005e9.2
- for <qemu-arm@nongnu.org>; Tue, 03 Sep 2024 09:08:42 -0700 (PDT)
+ id 1slW4U-0002f6-1B
+ for qemu-arm@nongnu.org; Tue, 03 Sep 2024 12:08:04 -0400
+Received: by mail-wm1-x336.google.com with SMTP id
+ 5b1f17b1804b1-42c7b5b2d01so35247175e9.3
+ for <qemu-arm@nongnu.org>; Tue, 03 Sep 2024 09:07:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1725379721; x=1725984521; darn=nongnu.org;
+ d=linaro.org; s=google; t=1725379676; x=1725984476; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=R0zus/hmvStD9AYmM67FwIfGoLe+e4E5KWQsKxXQpy0=;
- b=uMW/jxGGe80dPtd4M2jeIvAycm5ooCA1vO/Kg9TdcW15jXkbXggPDC+sY+E564PWqt
- B2/rW6iFPQGRTx9A99JHEE2WvvfCTS6hjmb9ugvScf2//bS4T/ciKjH7fVhXq3kuD65O
- uLuh2CgAQqY8ItbCUVJBsI9BEhqweRWJRO+Tvc+w56YdsXGDVvVI8vMV5L2A2CFrl44n
- 0Ib+hh6n7eMoM5gplBwCeC+v4hIte4aToU/1M6sW0rsbDYDe54DdrhLhed7C8dx6wPIG
- VoFMx0gByUjjr1Sjm8eV6dNc7X1pR9SF56Qrh/Og4ozdN45HCa2oEaegoNm6kSSTtmtS
- T0Vw==
+ :reply-to; bh=fmDEQAHR61WT1tBB8RVs6stzaZ4Kwf55ODK6be7k5N4=;
+ b=VYlUeRNs/VA+lob0HIcuxhHMKTXfPidW5eqLlk4EoVXWDtxyX1jX2HP5847KY9u9KO
+ 6nLlsJ6fQq4cbjJ/DCwFu6s1D37cg+TUHh6sXVD+ZhIK4LkbT5BBIGZOOyR9go+w/qSR
+ tctX6tIvBjZlQOupCMqPDhDeX42aIu2xeDcSjVXWDvyMoNqUNiSdyIOqeM9ZotwXdTTx
+ YBdOhmK/tGFUI/FhuA4CFxkAi0FyZFGkywgbygOmYzAA2SLkOeBarc/mqECWpmHVNpsp
+ Ne+Vp1//mNsYgnsLmcs/GDzoQ1+0bhMC4FEeZdzosD+xn5Hl+AdPeNwnIS55HSMJhKB9
+ IPjA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1725379721; x=1725984521;
+ d=1e100.net; s=20230601; t=1725379676; x=1725984476;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=R0zus/hmvStD9AYmM67FwIfGoLe+e4E5KWQsKxXQpy0=;
- b=hn9+PRSil5icZOoOrR/hVYpWPZD/uSOtL09yhZUvPft9Hxrt1lsVybzJA46GuWgxOS
- JW9HI9wpHtlNf0TS48jpxfCI3ms9YndgIVfx+C+/LWFScg8Qo4a6p+hYX0ry3AWhCske
- IOXJ3/ZAfsueHvHddX/rZsArUIqXpmjyjIQeXLo3A5lqYzn5Ajie37jRg8SObzkGmGCT
- h2+su70bJmMEBOZiegx4LDwNFglLxMWuxC1GHGtNwveXIwLT+oqTD6TLuZcUhC0RSGEV
- FQ3sO06OMl5E3gbyqrVCCjwta0eweBxcTE8bbUQphdDwdbCh+qfg+nazIaBoDhSj91x1
- 7Lbg==
-X-Gm-Message-State: AOJu0YwN0InHrBogiFzYdaFMcfQRCmVZnoRgRIZv7ArJ0JQWfDErWhoj
- wjTbZb1Y9qL1bywhZUyazNOtBOyNiYO3ybbzhLBbrgpPnRcsDMdpe0nrn7C2+PslVLGpvBXJHWD
- U
-X-Received: by 2002:a05:600c:3c9f:b0:426:5b44:2be7 with SMTP id
- 5b1f17b1804b1-42bb01b5f50mr145191715e9.10.1725379720931; 
- Tue, 03 Sep 2024 09:08:40 -0700 (PDT)
+ bh=fmDEQAHR61WT1tBB8RVs6stzaZ4Kwf55ODK6be7k5N4=;
+ b=q2xdsSm53cjxVRFpCev5xKSb83IdZhZQNJ2aNB+GgmSx8knh88lUON5aKv6Mp9chxt
+ EOxO3YD0W9Ab/d1trtuWd5rl2Mt2D69Uhg1FniiMy82FVpXLJLWSP559nl6XkEHfkTeQ
+ zj0R1xNaboWlo0A2f+LMWNZ6dRAMFhDFLrk3Ex5/mBL9yyHvNVq+eqdTYfjYhZUgeb1y
+ VHQNBs0HwM5pwbSXgdhLVgj6ZbVS944fGx2ZTJOz9pKex888HuIO4fJRYCWrLOFUE20d
+ lHxe9Xmv3nTaU2DX9c9CPwXUQ0g5x66EgC9lnrTz4JoLSe4WO6lZWpUSpdU9IFuUrVXV
+ BqGg==
+X-Gm-Message-State: AOJu0YxjzoLCO5x7ESY/jbrnbwlbNpyqTg9q/16r4QB1mY8MMIwU/7bP
+ iY1BllUtLXuyM/7v3GrS1kkxAlrefcBUY8SpZY5d4Ji6v19jBVuwo5zYnGzr/aiF95aGsmLL3js
+ q
+X-Received: by 2002:a05:600c:a01:b0:426:6857:3156 with SMTP id
+ 5b1f17b1804b1-42bb01edd50mr169493835e9.27.1725379676341; 
+ Tue, 03 Sep 2024 09:07:56 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-42bb6df1066sm175123065e9.18.2024.09.03.09.08.39
+ 5b1f17b1804b1-42bb6df1066sm175123065e9.18.2024.09.03.09.07.55
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 03 Sep 2024 09:08:40 -0700 (PDT)
+ Tue, 03 Sep 2024 09:07:55 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH for-9.2 34/53] hw/usb: Remove MUSB USB host controller
-Date: Tue,  3 Sep 2024 17:07:32 +0100
-Message-Id: <20240903160751.4100218-35-peter.maydell@linaro.org>
+Subject: [PATCH for-9.2 05/53] hw/ide: Remove DSCM-1XXXX microdrive device
+ model
+Date: Tue,  3 Sep 2024 17:07:03 +0100
+Message-Id: <20240903160751.4100218-6-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240903160751.4100218-1-peter.maydell@linaro.org>
 References: <20240903160751.4100218-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::336;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x336.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -128,1663 +129,709 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: BD8NvD07fJ4D
+X-TUID: QFGK5YQ+gGv6
 
-Remove the MUSB USB2.0 OTG-compliant USB host controller
-device model. This was only used by the tusb6010 USB
-controller in the n800/n810 machines.
+The DSCM-1XXXX microdrive device model was used only by the
+XScale-based Zaurus machine types.  Now they have been removed, we
+can delete this device too.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- include/hw/usb/hcd-musb.h |   49 --
- hw/usb/hcd-musb.c         | 1553 -------------------------------------
- hw/usb/Kconfig            |    4 -
- hw/usb/meson.build        |    1 -
- 4 files changed, 1607 deletions(-)
- delete mode 100644 include/hw/usb/hcd-musb.h
- delete mode 100644 hw/usb/hcd-musb.c
+ include/hw/pcmcia.h |   3 -
+ hw/ide/microdrive.c | 644 --------------------------------------------
+ hw/ide/Kconfig      |   6 -
+ hw/ide/meson.build  |   1 -
+ 4 files changed, 654 deletions(-)
+ delete mode 100644 hw/ide/microdrive.c
 
-diff --git a/include/hw/usb/hcd-musb.h b/include/hw/usb/hcd-musb.h
+diff --git a/include/hw/pcmcia.h b/include/hw/pcmcia.h
+index ab268027511..6c08ad616a5 100644
+--- a/include/hw/pcmcia.h
++++ b/include/hw/pcmcia.h
+@@ -60,7 +60,4 @@ struct PCMCIACardClass {
+ #define CISTPL_END            0xff  /* Tuple End */
+ #define CISTPL_ENDMARK        0xff
+ 
+-/* dscm1xxxx.c */
+-PCMCIACardState *dscm1xxxx_init(DriveInfo *bdrv);
+-
+ #endif
+diff --git a/hw/ide/microdrive.c b/hw/ide/microdrive.c
 deleted file mode 100644
-index 4d4b1ec0fc2..00000000000
---- a/include/hw/usb/hcd-musb.h
+index 3bb152b5d33..00000000000
+--- a/hw/ide/microdrive.c
 +++ /dev/null
-@@ -1,49 +0,0 @@
+@@ -1,644 +0,0 @@
 -/*
-- * "Inventra" High-speed Dual-Role Controller (MUSB-HDRC), Mentor Graphics,
-- * USB2.0 OTG compliant core used in various chips.
+- * QEMU IDE Emulation: microdrive (CF / PCMCIA)
 - *
-- * Only host-mode and non-DMA accesses are currently supported.
+- * Copyright (c) 2003 Fabrice Bellard
+- * Copyright (c) 2006 Openedhand Ltd.
 - *
-- * Copyright (C) 2008 Nokia Corporation
-- * Written by Andrzej Zaborowski <balrog@zabor.org>
+- * Permission is hereby granted, free of charge, to any person obtaining a copy
+- * of this software and associated documentation files (the "Software"), to deal
+- * in the Software without restriction, including without limitation the rights
+- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+- * copies of the Software, and to permit persons to whom the Software is
+- * furnished to do so, subject to the following conditions:
 - *
-- * SPDX-License-Identifier: GPL-2.0-or-later
+- * The above copyright notice and this permission notice shall be included in
+- * all copies or substantial portions of the Software.
+- *
+- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+- * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+- * THE SOFTWARE.
 - */
 -
--#ifndef HW_USB_HCD_MUSB_H
--#define HW_USB_HCD_MUSB_H
--
--#include "exec/hwaddr.h"
--
--enum musb_irq_source_e {
--    musb_irq_suspend = 0,
--    musb_irq_resume,
--    musb_irq_rst_babble,
--    musb_irq_sof,
--    musb_irq_connect,
--    musb_irq_disconnect,
--    musb_irq_vbus_request,
--    musb_irq_vbus_error,
--    musb_irq_rx,
--    musb_irq_tx,
--    musb_set_vbus,
--    musb_set_session,
--    /* Add new interrupts here */
--    musb_irq_max /* total number of interrupts defined */
--};
--
--/* TODO convert hcd-musb to QOM/qdev and remove MUSBReadFunc/MUSBWriteFunc */
--typedef void MUSBWriteFunc(void *opaque, hwaddr addr, uint32_t value);
--typedef uint32_t MUSBReadFunc(void *opaque, hwaddr addr);
--extern MUSBReadFunc * const musb_read[];
--extern MUSBWriteFunc * const musb_write[];
--
--typedef struct MUSBState MUSBState;
--
--MUSBState *musb_init(DeviceState *parent_device, int gpio_base);
--void musb_reset(MUSBState *s);
--uint32_t musb_core_intr_get(MUSBState *s);
--void musb_core_intr_clear(MUSBState *s, uint32_t mask);
--void musb_set_size(MUSBState *s, int epnum, int size, int is_tx);
--
--#endif
-diff --git a/hw/usb/hcd-musb.c b/hw/usb/hcd-musb.c
-deleted file mode 100644
-index 6dca373cb1f..00000000000
---- a/hw/usb/hcd-musb.c
-+++ /dev/null
-@@ -1,1553 +0,0 @@
--/*
-- * "Inventra" High-speed Dual-Role Controller (MUSB-HDRC), Mentor Graphics,
-- * USB2.0 OTG compliant core used in various chips.
-- *
-- * Copyright (C) 2008 Nokia Corporation
-- * Written by Andrzej Zaborowski <andrew@openedhand.com>
-- *
-- * This program is free software; you can redistribute it and/or
-- * modify it under the terms of the GNU General Public License as
-- * published by the Free Software Foundation; either version 2 or
-- * (at your option) version 3 of the License.
-- *
-- * This program is distributed in the hope that it will be useful,
-- * but WITHOUT ANY WARRANTY; without even the implied warranty of
-- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-- * GNU General Public License for more details.
-- *
-- * You should have received a copy of the GNU General Public License along
-- * with this program; if not, see <http://www.gnu.org/licenses/>.
-- *
-- * Only host-mode and non-DMA accesses are currently supported.
-- */
 -#include "qemu/osdep.h"
--#include "qemu/timer.h"
--#include "hw/usb.h"
--#include "hw/usb/hcd-musb.h"
+-#include "hw/pcmcia.h"
+-#include "migration/vmstate.h"
+-#include "qapi/error.h"
+-#include "qemu/module.h"
+-#include "sysemu/dma.h"
 -#include "hw/irq.h"
--#include "hw/hw.h"
 -
--/* Common USB registers */
--#define MUSB_HDRC_FADDR         0x00    /* 8-bit */
--#define MUSB_HDRC_POWER         0x01    /* 8-bit */
+-#include "qom/object.h"
+-#include "ide-internal.h"
 -
--#define MUSB_HDRC_INTRTX        0x02    /* 16-bit */
--#define MUSB_HDRC_INTRRX        0x04
--#define MUSB_HDRC_INTRTXE       0x06
--#define MUSB_HDRC_INTRRXE       0x08
--#define MUSB_HDRC_INTRUSB       0x0a    /* 8 bit */
--#define MUSB_HDRC_INTRUSBE      0x0b    /* 8 bit */
--#define MUSB_HDRC_FRAME         0x0c    /* 16-bit */
--#define MUSB_HDRC_INDEX         0x0e    /* 8 bit */
--#define MUSB_HDRC_TESTMODE      0x0f    /* 8 bit */
+-#define TYPE_MICRODRIVE "microdrive"
+-OBJECT_DECLARE_SIMPLE_TYPE(MicroDriveState, MICRODRIVE)
 -
--/* Per-EP registers in indexed mode */
--#define MUSB_HDRC_EP_IDX        0x10    /* 8-bit */
+-/***********************************************************/
+-/* CF-ATA Microdrive */
 -
--/* EP FIFOs */
--#define MUSB_HDRC_FIFO          0x20
+-#define METADATA_SIZE   0x20
 -
--/* Additional Control Registers */
--#define MUSB_HDRC_DEVCTL        0x60    /* 8 bit */
+-/* DSCM-1XXXX Microdrive hard disk with CF+ II / PCMCIA interface.  */
 -
--/* These are indexed */
--#define MUSB_HDRC_TXFIFOSZ      0x62    /* 8 bit (see masks) */
--#define MUSB_HDRC_RXFIFOSZ      0x63    /* 8 bit (see masks) */
--#define MUSB_HDRC_TXFIFOADDR    0x64    /* 16 bit offset shifted right 3 */
--#define MUSB_HDRC_RXFIFOADDR    0x66    /* 16 bit offset shifted right 3 */
+-struct MicroDriveState {
+-    /*< private >*/
+-    PCMCIACardState parent_obj;
+-    /*< public >*/
 -
--/* Some more registers */
--#define MUSB_HDRC_VCTRL         0x68    /* 8 bit */
--#define MUSB_HDRC_HWVERS        0x6c    /* 8 bit */
+-    IDEBus bus;
+-    uint32_t attr_base;
+-    uint32_t io_base;
 -
--/* Added in HDRC 1.9(?) & MHDRC 1.4 */
--/* ULPI pass-through */
--#define MUSB_HDRC_ULPI_VBUSCTL  0x70
--#define MUSB_HDRC_ULPI_REGDATA  0x74
--#define MUSB_HDRC_ULPI_REGADDR  0x75
--#define MUSB_HDRC_ULPI_REGCTL   0x76
+-    /* Card state */
+-    uint8_t opt;
+-    uint8_t stat;
+-    uint8_t pins;
 -
--/* Extended config & PHY control */
--#define MUSB_HDRC_ENDCOUNT      0x78    /* 8 bit */
--#define MUSB_HDRC_DMARAMCFG     0x79    /* 8 bit */
--#define MUSB_HDRC_PHYWAIT       0x7a    /* 8 bit */
--#define MUSB_HDRC_PHYVPLEN      0x7b    /* 8 bit */
--#define MUSB_HDRC_HS_EOF1       0x7c    /* 8 bit, units of 546.1 us */
--#define MUSB_HDRC_FS_EOF1       0x7d    /* 8 bit, units of 533.3 ns */
--#define MUSB_HDRC_LS_EOF1       0x7e    /* 8 bit, units of 1.067 us */
--
--/* Per-EP BUSCTL registers */
--#define MUSB_HDRC_BUSCTL        0x80
--
--/* Per-EP registers in flat mode */
--#define MUSB_HDRC_EP            0x100
--
--/* offsets to registers in flat model */
--#define MUSB_HDRC_TXMAXP        0x00    /* 16 bit apparently */
--#define MUSB_HDRC_TXCSR         0x02    /* 16 bit apparently */
--#define MUSB_HDRC_CSR0          MUSB_HDRC_TXCSR         /* re-used for EP0 */
--#define MUSB_HDRC_RXMAXP        0x04    /* 16 bit apparently */
--#define MUSB_HDRC_RXCSR         0x06    /* 16 bit apparently */
--#define MUSB_HDRC_RXCOUNT       0x08    /* 16 bit apparently */
--#define MUSB_HDRC_COUNT0        MUSB_HDRC_RXCOUNT       /* re-used for EP0 */
--#define MUSB_HDRC_TXTYPE        0x0a    /* 8 bit apparently */
--#define MUSB_HDRC_TYPE0         MUSB_HDRC_TXTYPE        /* re-used for EP0 */
--#define MUSB_HDRC_TXINTERVAL    0x0b    /* 8 bit apparently */
--#define MUSB_HDRC_NAKLIMIT0     MUSB_HDRC_TXINTERVAL    /* re-used for EP0 */
--#define MUSB_HDRC_RXTYPE        0x0c    /* 8 bit apparently */
--#define MUSB_HDRC_RXINTERVAL    0x0d    /* 8 bit apparently */
--#define MUSB_HDRC_FIFOSIZE      0x0f    /* 8 bit apparently */
--#define MUSB_HDRC_CONFIGDATA    MGC_O_HDRC_FIFOSIZE     /* re-used for EP0 */
--
--/* "Bus control" registers */
--#define MUSB_HDRC_TXFUNCADDR    0x00
--#define MUSB_HDRC_TXHUBADDR     0x02
--#define MUSB_HDRC_TXHUBPORT     0x03
--
--#define MUSB_HDRC_RXFUNCADDR    0x04
--#define MUSB_HDRC_RXHUBADDR     0x06
--#define MUSB_HDRC_RXHUBPORT     0x07
--
--/*
-- * MUSBHDRC Register bit masks
-- */
--
--/* POWER */
--#define MGC_M_POWER_ISOUPDATE           0x80
--#define MGC_M_POWER_SOFTCONN            0x40
--#define MGC_M_POWER_HSENAB              0x20
--#define MGC_M_POWER_HSMODE              0x10
--#define MGC_M_POWER_RESET               0x08
--#define MGC_M_POWER_RESUME              0x04
--#define MGC_M_POWER_SUSPENDM            0x02
--#define MGC_M_POWER_ENSUSPEND           0x01
--
--/* INTRUSB */
--#define MGC_M_INTR_SUSPEND              0x01
--#define MGC_M_INTR_RESUME               0x02
--#define MGC_M_INTR_RESET                0x04
--#define MGC_M_INTR_BABBLE               0x04
--#define MGC_M_INTR_SOF                  0x08
--#define MGC_M_INTR_CONNECT              0x10
--#define MGC_M_INTR_DISCONNECT           0x20
--#define MGC_M_INTR_SESSREQ              0x40
--#define MGC_M_INTR_VBUSERROR            0x80    /* FOR SESSION END */
--#define MGC_M_INTR_EP0                  0x01    /* FOR EP0 INTERRUPT */
--
--/* DEVCTL */
--#define MGC_M_DEVCTL_BDEVICE            0x80
--#define MGC_M_DEVCTL_FSDEV              0x40
--#define MGC_M_DEVCTL_LSDEV              0x20
--#define MGC_M_DEVCTL_VBUS               0x18
--#define MGC_S_DEVCTL_VBUS               3
--#define MGC_M_DEVCTL_HM                 0x04
--#define MGC_M_DEVCTL_HR                 0x02
--#define MGC_M_DEVCTL_SESSION            0x01
--
--/* TESTMODE */
--#define MGC_M_TEST_FORCE_HOST           0x80
--#define MGC_M_TEST_FIFO_ACCESS          0x40
--#define MGC_M_TEST_FORCE_FS             0x20
--#define MGC_M_TEST_FORCE_HS             0x10
--#define MGC_M_TEST_PACKET               0x08
--#define MGC_M_TEST_K                    0x04
--#define MGC_M_TEST_J                    0x02
--#define MGC_M_TEST_SE0_NAK              0x01
--
--/* CSR0 */
--#define MGC_M_CSR0_FLUSHFIFO            0x0100
--#define MGC_M_CSR0_TXPKTRDY             0x0002
--#define MGC_M_CSR0_RXPKTRDY             0x0001
--
--/* CSR0 in Peripheral mode */
--#define MGC_M_CSR0_P_SVDSETUPEND        0x0080
--#define MGC_M_CSR0_P_SVDRXPKTRDY        0x0040
--#define MGC_M_CSR0_P_SENDSTALL          0x0020
--#define MGC_M_CSR0_P_SETUPEND           0x0010
--#define MGC_M_CSR0_P_DATAEND            0x0008
--#define MGC_M_CSR0_P_SENTSTALL          0x0004
--
--/* CSR0 in Host mode */
--#define MGC_M_CSR0_H_NO_PING            0x0800
--#define MGC_M_CSR0_H_WR_DATATOGGLE      0x0400  /* set to allow setting: */
--#define MGC_M_CSR0_H_DATATOGGLE         0x0200  /* data toggle control */
--#define MGC_M_CSR0_H_NAKTIMEOUT         0x0080
--#define MGC_M_CSR0_H_STATUSPKT          0x0040
--#define MGC_M_CSR0_H_REQPKT             0x0020
--#define MGC_M_CSR0_H_ERROR              0x0010
--#define MGC_M_CSR0_H_SETUPPKT           0x0008
--#define MGC_M_CSR0_H_RXSTALL            0x0004
--
--/* CONFIGDATA */
--#define MGC_M_CONFIGDATA_MPRXE          0x80    /* auto bulk pkt combining */
--#define MGC_M_CONFIGDATA_MPTXE          0x40    /* auto bulk pkt splitting */
--#define MGC_M_CONFIGDATA_BIGENDIAN      0x20
--#define MGC_M_CONFIGDATA_HBRXE          0x10    /* HB-ISO for RX */
--#define MGC_M_CONFIGDATA_HBTXE          0x08    /* HB-ISO for TX */
--#define MGC_M_CONFIGDATA_DYNFIFO        0x04    /* dynamic FIFO sizing */
--#define MGC_M_CONFIGDATA_SOFTCONE       0x02    /* SoftConnect */
--#define MGC_M_CONFIGDATA_UTMIDW         0x01    /* Width, 0 => 8b, 1 => 16b */
--
--/* TXCSR in Peripheral and Host mode */
--#define MGC_M_TXCSR_AUTOSET             0x8000
--#define MGC_M_TXCSR_ISO                 0x4000
--#define MGC_M_TXCSR_MODE                0x2000
--#define MGC_M_TXCSR_DMAENAB             0x1000
--#define MGC_M_TXCSR_FRCDATATOG          0x0800
--#define MGC_M_TXCSR_DMAMODE             0x0400
--#define MGC_M_TXCSR_CLRDATATOG          0x0040
--#define MGC_M_TXCSR_FLUSHFIFO           0x0008
--#define MGC_M_TXCSR_FIFONOTEMPTY        0x0002
--#define MGC_M_TXCSR_TXPKTRDY            0x0001
--
--/* TXCSR in Peripheral mode */
--#define MGC_M_TXCSR_P_INCOMPTX          0x0080
--#define MGC_M_TXCSR_P_SENTSTALL         0x0020
--#define MGC_M_TXCSR_P_SENDSTALL         0x0010
--#define MGC_M_TXCSR_P_UNDERRUN          0x0004
--
--/* TXCSR in Host mode */
--#define MGC_M_TXCSR_H_WR_DATATOGGLE     0x0200
--#define MGC_M_TXCSR_H_DATATOGGLE        0x0100
--#define MGC_M_TXCSR_H_NAKTIMEOUT        0x0080
--#define MGC_M_TXCSR_H_RXSTALL           0x0020
--#define MGC_M_TXCSR_H_ERROR             0x0004
--
--/* RXCSR in Peripheral and Host mode */
--#define MGC_M_RXCSR_AUTOCLEAR           0x8000
--#define MGC_M_RXCSR_DMAENAB             0x2000
--#define MGC_M_RXCSR_DISNYET             0x1000
--#define MGC_M_RXCSR_DMAMODE             0x0800
--#define MGC_M_RXCSR_INCOMPRX            0x0100
--#define MGC_M_RXCSR_CLRDATATOG          0x0080
--#define MGC_M_RXCSR_FLUSHFIFO           0x0010
--#define MGC_M_RXCSR_DATAERROR           0x0008
--#define MGC_M_RXCSR_FIFOFULL            0x0002
--#define MGC_M_RXCSR_RXPKTRDY            0x0001
--
--/* RXCSR in Peripheral mode */
--#define MGC_M_RXCSR_P_ISO               0x4000
--#define MGC_M_RXCSR_P_SENTSTALL         0x0040
--#define MGC_M_RXCSR_P_SENDSTALL         0x0020
--#define MGC_M_RXCSR_P_OVERRUN           0x0004
--
--/* RXCSR in Host mode */
--#define MGC_M_RXCSR_H_AUTOREQ           0x4000
--#define MGC_M_RXCSR_H_WR_DATATOGGLE     0x0400
--#define MGC_M_RXCSR_H_DATATOGGLE        0x0200
--#define MGC_M_RXCSR_H_RXSTALL           0x0040
--#define MGC_M_RXCSR_H_REQPKT            0x0020
--#define MGC_M_RXCSR_H_ERROR             0x0004
--
--/* HUBADDR */
--#define MGC_M_HUBADDR_MULTI_TT          0x80
--
--/* ULPI: Added in HDRC 1.9(?) & MHDRC 1.4 */
--#define MGC_M_ULPI_VBCTL_USEEXTVBUSIND  0x02
--#define MGC_M_ULPI_VBCTL_USEEXTVBUS     0x01
--#define MGC_M_ULPI_REGCTL_INT_ENABLE    0x08
--#define MGC_M_ULPI_REGCTL_READNOTWRITE  0x04
--#define MGC_M_ULPI_REGCTL_COMPLETE      0x02
--#define MGC_M_ULPI_REGCTL_REG           0x01
--
--/* #define MUSB_DEBUG */
--
--#ifdef MUSB_DEBUG
--#define TRACE(fmt, ...) fprintf(stderr, "%s@%d: " fmt "\n", __func__, \
--                                __LINE__, ##__VA_ARGS__)
--#else
--#define TRACE(...)
--#endif
--
--
--static void musb_attach(USBPort *port);
--static void musb_detach(USBPort *port);
--static void musb_child_detach(USBPort *port, USBDevice *child);
--static void musb_schedule_cb(USBPort *port, USBPacket *p);
--static void musb_async_cancel_device(MUSBState *s, USBDevice *dev);
--
--static USBPortOps musb_port_ops = {
--    .attach = musb_attach,
--    .detach = musb_detach,
--    .child_detach = musb_child_detach,
--    .complete = musb_schedule_cb,
+-    uint8_t ctrl;
+-    uint16_t io;
+-    uint8_t cycle;
 -};
 -
--static USBBusOps musb_bus_ops = {
+-/* Register bitfields */
+-enum md_opt {
+-    OPT_MODE_MMAP    = 0,
+-    OPT_MODE_IOMAP16 = 1,
+-    OPT_MODE_IOMAP1  = 2,
+-    OPT_MODE_IOMAP2  = 3,
+-    OPT_MODE         = 0x3f,
+-    OPT_LEVIREQ      = 0x40,
+-    OPT_SRESET       = 0x80,
+-};
+-enum md_cstat {
+-    STAT_INT        = 0x02,
+-    STAT_PWRDWN     = 0x04,
+-    STAT_XE         = 0x10,
+-    STAT_IOIS8      = 0x20,
+-    STAT_SIGCHG     = 0x40,
+-    STAT_CHANGED    = 0x80,
+-};
+-enum md_pins {
+-    PINS_MRDY       = 0x02,
+-    PINS_CRDY       = 0x20,
+-};
+-enum md_ctrl {
+-    CTRL_IEN        = 0x02,
+-    CTRL_SRST       = 0x04,
 -};
 -
--typedef struct MUSBPacket MUSBPacket;
--typedef struct MUSBEndPoint MUSBEndPoint;
--
--struct MUSBPacket {
--    USBPacket p;
--    MUSBEndPoint *ep;
--    int dir;
--};
--
--struct MUSBEndPoint {
--    uint16_t faddr[2];
--    uint8_t haddr[2];
--    uint8_t hport[2];
--    uint16_t csr[2];
--    uint16_t maxp[2];
--    uint16_t rxcount;
--    uint8_t type[2];
--    uint8_t interval[2];
--    uint8_t config;
--    uint8_t fifosize;
--    int timeout[2];     /* Always in microframes */
--
--    uint8_t *buf[2];
--    int fifolen[2];
--    int fifostart[2];
--    int fifoaddr[2];
--    MUSBPacket packey[2];
--    int status[2];
--    int ext_size[2];
--
--    /* For callbacks' use */
--    int epnum;
--    int interrupt[2];
--    MUSBState *musb;
--    USBCallback *delayed_cb[2];
--    QEMUTimer *intv_timer[2];
--};
--
--struct MUSBState {
--    qemu_irq irqs[musb_irq_max];
--    USBBus bus;
--    USBPort port;
--
--    int idx;
--    uint8_t devctl;
--    uint8_t power;
--    uint8_t faddr;
--
--    uint8_t intr;
--    uint8_t mask;
--    uint16_t tx_intr;
--    uint16_t tx_mask;
--    uint16_t rx_intr;
--    uint16_t rx_mask;
--
--    int setup_len;
--    int session;
--
--    uint8_t buf[0x8000];
--
--        /* Duplicating the world since 2008!...  probably we should have 32
--         * logical, single endpoints instead.  */
--    MUSBEndPoint ep[16];
--};
--
--void musb_reset(MUSBState *s)
+-static inline void md_interrupt_update(MicroDriveState *s)
 -{
--    int i;
+-    PCMCIACardState *card = PCMCIA_CARD(s);
 -
--    s->faddr = 0x00;
--    s->devctl = 0;
--    s->power = MGC_M_POWER_HSENAB;
--    s->tx_intr = 0x0000;
--    s->rx_intr = 0x0000;
--    s->tx_mask = 0xffff;
--    s->rx_mask = 0xffff;
--    s->intr = 0x00;
--    s->mask = 0x06;
--    s->idx = 0;
--
--    s->setup_len = 0;
--    s->session = 0;
--    memset(s->buf, 0, sizeof(s->buf));
--
--    /* TODO: _DW */
--    s->ep[0].config = MGC_M_CONFIGDATA_SOFTCONE | MGC_M_CONFIGDATA_DYNFIFO;
--    for (i = 0; i < 16; i ++) {
--        s->ep[i].fifosize = 64;
--        s->ep[i].maxp[0] = 0x40;
--        s->ep[i].maxp[1] = 0x40;
--        s->ep[i].musb = s;
--        s->ep[i].epnum = i;
--        usb_packet_init(&s->ep[i].packey[0].p);
--        usb_packet_init(&s->ep[i].packey[1].p);
--    }
--}
--
--struct MUSBState *musb_init(DeviceState *parent_device, int gpio_base)
--{
--    MUSBState *s = g_malloc0(sizeof(*s));
--    int i;
--
--    for (i = 0; i < musb_irq_max; i++) {
--        s->irqs[i] = qdev_get_gpio_in(parent_device, gpio_base + i);
--    }
--
--    musb_reset(s);
--
--    usb_bus_new(&s->bus, sizeof(s->bus), &musb_bus_ops, parent_device);
--    usb_register_port(&s->bus, &s->port, s, 0, &musb_port_ops,
--                      USB_SPEED_MASK_LOW | USB_SPEED_MASK_FULL);
--
--    return s;
--}
--
--static void musb_vbus_set(MUSBState *s, int level)
--{
--    if (level)
--        s->devctl |= 3 << MGC_S_DEVCTL_VBUS;
--    else
--        s->devctl &= ~MGC_M_DEVCTL_VBUS;
--
--    qemu_set_irq(s->irqs[musb_set_vbus], level);
--}
--
--static void musb_intr_set(MUSBState *s, int line, int level)
--{
--    if (!level) {
--        s->intr &= ~(1 << line);
--        qemu_irq_lower(s->irqs[line]);
--    } else if (s->mask & (1 << line)) {
--        s->intr |= 1 << line;
--        qemu_irq_raise(s->irqs[line]);
--    }
--}
--
--static void musb_tx_intr_set(MUSBState *s, int line, int level)
--{
--    if (!level) {
--        s->tx_intr &= ~(1 << line);
--        if (!s->tx_intr)
--            qemu_irq_lower(s->irqs[musb_irq_tx]);
--    } else if (s->tx_mask & (1 << line)) {
--        s->tx_intr |= 1 << line;
--        qemu_irq_raise(s->irqs[musb_irq_tx]);
--    }
--}
--
--static void musb_rx_intr_set(MUSBState *s, int line, int level)
--{
--    if (line) {
--        if (!level) {
--            s->rx_intr &= ~(1 << line);
--            if (!s->rx_intr)
--                qemu_irq_lower(s->irqs[musb_irq_rx]);
--        } else if (s->rx_mask & (1 << line)) {
--            s->rx_intr |= 1 << line;
--            qemu_irq_raise(s->irqs[musb_irq_rx]);
--        }
--    } else
--        musb_tx_intr_set(s, line, level);
--}
--
--uint32_t musb_core_intr_get(MUSBState *s)
--{
--    return (s->rx_intr << 15) | s->tx_intr;
--}
--
--void musb_core_intr_clear(MUSBState *s, uint32_t mask)
--{
--    if (s->rx_intr) {
--        s->rx_intr &= mask >> 15;
--        if (!s->rx_intr)
--            qemu_irq_lower(s->irqs[musb_irq_rx]);
--    }
--
--    if (s->tx_intr) {
--        s->tx_intr &= mask & 0xffff;
--        if (!s->tx_intr)
--            qemu_irq_lower(s->irqs[musb_irq_tx]);
--    }
--}
--
--void musb_set_size(MUSBState *s, int epnum, int size, int is_tx)
--{
--    s->ep[epnum].ext_size[!is_tx] = size;
--    s->ep[epnum].fifostart[0] = 0;
--    s->ep[epnum].fifostart[1] = 0;
--    s->ep[epnum].fifolen[0] = 0;
--    s->ep[epnum].fifolen[1] = 0;
--}
--
--static void musb_session_update(MUSBState *s, int prev_dev, int prev_sess)
--{
--    int detect_prev = prev_dev && prev_sess;
--    int detect = !!s->port.dev && s->session;
--
--    if (detect && !detect_prev) {
--        /* Let's skip the ID pin sense and VBUS sense formalities and
--         * and signal a successful SRP directly.  This should work at least
--         * for the Linux driver stack.  */
--        musb_intr_set(s, musb_irq_connect, 1);
--
--        if (s->port.dev->speed == USB_SPEED_LOW) {
--            s->devctl &= ~MGC_M_DEVCTL_FSDEV;
--            s->devctl |= MGC_M_DEVCTL_LSDEV;
--        } else {
--            s->devctl |= MGC_M_DEVCTL_FSDEV;
--            s->devctl &= ~MGC_M_DEVCTL_LSDEV;
--        }
--
--        /* A-mode?  */
--        s->devctl &= ~MGC_M_DEVCTL_BDEVICE;
--
--        /* Host-mode bit?  */
--        s->devctl |= MGC_M_DEVCTL_HM;
--#if 1
--        musb_vbus_set(s, 1);
--#endif
--    } else if (!detect && detect_prev) {
--#if 1
--        musb_vbus_set(s, 0);
--#endif
--    }
--}
--
--/* Attach or detach a device on our only port.  */
--static void musb_attach(USBPort *port)
--{
--    MUSBState *s = (MUSBState *) port->opaque;
--
--    musb_intr_set(s, musb_irq_vbus_request, 1);
--    musb_session_update(s, 0, s->session);
--}
--
--static void musb_detach(USBPort *port)
--{
--    MUSBState *s = (MUSBState *) port->opaque;
--
--    musb_async_cancel_device(s, port->dev);
--
--    musb_intr_set(s, musb_irq_disconnect, 1);
--    musb_session_update(s, 1, s->session);
--}
--
--static void musb_child_detach(USBPort *port, USBDevice *child)
--{
--    MUSBState *s = (MUSBState *) port->opaque;
--
--    musb_async_cancel_device(s, child);
--}
--
--static void musb_cb_tick0(void *opaque)
--{
--    MUSBEndPoint *ep = (MUSBEndPoint *) opaque;
--
--    ep->delayed_cb[0](&ep->packey[0].p, opaque);
--}
--
--static void musb_cb_tick1(void *opaque)
--{
--    MUSBEndPoint *ep = (MUSBEndPoint *) opaque;
--
--    ep->delayed_cb[1](&ep->packey[1].p, opaque);
--}
--
--#define musb_cb_tick    (dir ? musb_cb_tick1 : musb_cb_tick0)
--
--static void musb_schedule_cb(USBPort *port, USBPacket *packey)
--{
--    MUSBPacket *p = container_of(packey, MUSBPacket, p);
--    MUSBEndPoint *ep = p->ep;
--    int dir = p->dir;
--    int timeout = 0;
--
--    if (ep->status[dir] == USB_RET_NAK)
--        timeout = ep->timeout[dir];
--    else if (ep->interrupt[dir])
--        timeout = 8;
--    else {
--        musb_cb_tick(ep);
+-    if (card->slot == NULL) {
 -        return;
 -    }
 -
--    if (!ep->intv_timer[dir])
--        ep->intv_timer[dir] = timer_new_ns(QEMU_CLOCK_VIRTUAL, musb_cb_tick, ep);
--
--    timer_mod(ep->intv_timer[dir], qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) +
--                   muldiv64(timeout, NANOSECONDS_PER_SECOND, 8000));
+-    qemu_set_irq(card->slot->irq,
+-                    !(s->stat & STAT_INT) &&    /* Inverted */
+-                    !(s->ctrl & (CTRL_IEN | CTRL_SRST)) &&
+-                    !(s->opt & OPT_SRESET));
 -}
 -
--static int musb_timeout(int ttype, int speed, int val)
+-static void md_set_irq(void *opaque, int irq, int level)
 -{
--#if 1
--    return val << 3;
--#endif
+-    MicroDriveState *s = opaque;
 -
--    switch (ttype) {
--    case USB_ENDPOINT_XFER_CONTROL:
--        if (val < 2)
--            return 0;
--        else if (speed == USB_SPEED_HIGH)
--            return 1 << (val - 1);
--        else
--            return 8 << (val - 1);
--
--    case USB_ENDPOINT_XFER_INT:
--        if (speed == USB_SPEED_HIGH)
--            if (val < 2)
--                return 0;
--            else
--                return 1 << (val - 1);
--        else
--            return val << 3;
--
--    case USB_ENDPOINT_XFER_BULK:
--    case USB_ENDPOINT_XFER_ISOC:
--        if (val < 2)
--            return 0;
--        else if (speed == USB_SPEED_HIGH)
--            return 1 << (val - 1);
--        else
--            return 8 << (val - 1);
--        /* TODO: what with low-speed Bulk and Isochronous?  */
--    }
--
--    hw_error("bad interval\n");
--}
--
--static void musb_packet(MUSBState *s, MUSBEndPoint *ep,
--                int epnum, int pid, int len, USBCallback cb, int dir)
--{
--    USBDevice *dev;
--    USBEndpoint *uep;
--    int idx = epnum && dir;
--    int id;
--    int ttype;
--
--    /* ep->type[0,1] contains:
--     * in bits 7:6 the speed (0 - invalid, 1 - high, 2 - full, 3 - slow)
--     * in bits 5:4 the transfer type (BULK / INT)
--     * in bits 3:0 the EP num
--     */
--    ttype = epnum ? (ep->type[idx] >> 4) & 3 : 0;
--
--    ep->timeout[dir] = musb_timeout(ttype,
--                    ep->type[idx] >> 6, ep->interval[idx]);
--    ep->interrupt[dir] = ttype == USB_ENDPOINT_XFER_INT;
--    ep->delayed_cb[dir] = cb;
--
--    /* A wild guess on the FADDR semantics... */
--    dev = usb_find_device(&s->port, ep->faddr[idx]);
--    if (dev == NULL) {
--        return;
--    }
--    uep = usb_ep_get(dev, pid, ep->type[idx] & 0xf);
--    id = pid | (dev->addr << 16) | (uep->nr << 8);
--    usb_packet_setup(&ep->packey[dir].p, pid, uep, 0, id, false, true);
--    usb_packet_addbuf(&ep->packey[dir].p, ep->buf[idx], len);
--    ep->packey[dir].ep = ep;
--    ep->packey[dir].dir = dir;
--
--    usb_handle_packet(dev, &ep->packey[dir].p);
--
--    if (ep->packey[dir].p.status == USB_RET_ASYNC) {
--        usb_device_flush_ep_queue(dev, uep);
--        ep->status[dir] = len;
--        return;
--    }
--
--    if (ep->packey[dir].p.status == USB_RET_SUCCESS) {
--        ep->status[dir] = ep->packey[dir].p.actual_length;
+-    if (level) {
+-        s->stat |= STAT_INT;
 -    } else {
--        ep->status[dir] = ep->packey[dir].p.status;
+-        s->stat &= ~STAT_INT;
 -    }
--    musb_schedule_cb(&s->port, &ep->packey[dir].p);
+-
+-    md_interrupt_update(s);
 -}
 -
--static void musb_tx_packet_complete(USBPacket *packey, void *opaque)
+-static void md_reset(DeviceState *dev)
 -{
--    /* Unfortunately we can't use packey->devep because that's the remote
--     * endpoint number and may be different than our local.  */
--    MUSBEndPoint *ep = (MUSBEndPoint *) opaque;
--    int epnum = ep->epnum;
--    MUSBState *s = ep->musb;
+-    MicroDriveState *s = MICRODRIVE(dev);
 -
--    ep->fifostart[0] = 0;
--    ep->fifolen[0] = 0;
--#ifdef CLEAR_NAK
--    if (ep->status[0] != USB_RET_NAK) {
--#endif
--        if (epnum)
--            ep->csr[0] &= ~(MGC_M_TXCSR_FIFONOTEMPTY | MGC_M_TXCSR_TXPKTRDY);
--        else
--            ep->csr[0] &= ~MGC_M_CSR0_TXPKTRDY;
--#ifdef CLEAR_NAK
--    }
--#endif
--
--    /* Clear all of the error bits first */
--    if (epnum)
--        ep->csr[0] &= ~(MGC_M_TXCSR_H_ERROR | MGC_M_TXCSR_H_RXSTALL |
--                        MGC_M_TXCSR_H_NAKTIMEOUT);
--    else
--        ep->csr[0] &= ~(MGC_M_CSR0_H_ERROR | MGC_M_CSR0_H_RXSTALL |
--                        MGC_M_CSR0_H_NAKTIMEOUT | MGC_M_CSR0_H_NO_PING);
--
--    if (ep->status[0] == USB_RET_STALL) {
--        /* Command not supported by target! */
--        ep->status[0] = 0;
--
--        if (epnum)
--            ep->csr[0] |= MGC_M_TXCSR_H_RXSTALL;
--        else
--            ep->csr[0] |= MGC_M_CSR0_H_RXSTALL;
--    }
--
--    if (ep->status[0] == USB_RET_NAK) {
--        ep->status[0] = 0;
--
--        /* NAK timeouts are only generated in Bulk transfers and
--         * Data-errors in Isochronous.  */
--        if (ep->interrupt[0]) {
--            return;
--        }
--
--        if (epnum)
--            ep->csr[0] |= MGC_M_TXCSR_H_NAKTIMEOUT;
--        else
--            ep->csr[0] |= MGC_M_CSR0_H_NAKTIMEOUT;
--    }
--
--    if (ep->status[0] < 0) {
--        if (ep->status[0] == USB_RET_BABBLE)
--            musb_intr_set(s, musb_irq_rst_babble, 1);
--
--        /* Pretend we've tried three times already and failed (in
--         * case of USB_TOKEN_SETUP).  */
--        if (epnum)
--            ep->csr[0] |= MGC_M_TXCSR_H_ERROR;
--        else
--            ep->csr[0] |= MGC_M_CSR0_H_ERROR;
--
--        musb_tx_intr_set(s, epnum, 1);
--        return;
--    }
--    /* TODO: check len for over/underruns of an OUT packet?  */
--
--#ifdef SETUPLEN_HACK
--    if (!epnum && ep->packey[0].pid == USB_TOKEN_SETUP)
--        s->setup_len = ep->packey[0].data[6];
--#endif
--
--    /* In DMA mode: if no error, assert DMA request for this EP,
--     * and skip the interrupt.  */
--    musb_tx_intr_set(s, epnum, 1);
+-    s->opt = OPT_MODE_MMAP;
+-    s->stat = 0;
+-    s->pins = 0;
+-    s->cycle = 0;
+-    s->ctrl = 0;
+-    ide_bus_reset(&s->bus);
 -}
 -
--static void musb_rx_packet_complete(USBPacket *packey, void *opaque)
+-static uint8_t md_attr_read(PCMCIACardState *card, uint32_t at)
 -{
--    /* Unfortunately we can't use packey->devep because that's the remote
--     * endpoint number and may be different than our local.  */
--    MUSBEndPoint *ep = (MUSBEndPoint *) opaque;
--    int epnum = ep->epnum;
--    MUSBState *s = ep->musb;
+-    MicroDriveState *s = MICRODRIVE(card);
+-    PCMCIACardClass *pcc = PCMCIA_CARD_GET_CLASS(card);
 -
--    ep->fifostart[1] = 0;
--    ep->fifolen[1] = 0;
--
--#ifdef CLEAR_NAK
--    if (ep->status[1] != USB_RET_NAK) {
--#endif
--        ep->csr[1] &= ~MGC_M_RXCSR_H_REQPKT;
--        if (!epnum)
--            ep->csr[0] &= ~MGC_M_CSR0_H_REQPKT;
--#ifdef CLEAR_NAK
--    }
--#endif
--
--    /* Clear all of the imaginable error bits first */
--    ep->csr[1] &= ~(MGC_M_RXCSR_H_ERROR | MGC_M_RXCSR_H_RXSTALL |
--                    MGC_M_RXCSR_DATAERROR);
--    if (!epnum)
--        ep->csr[0] &= ~(MGC_M_CSR0_H_ERROR | MGC_M_CSR0_H_RXSTALL |
--                        MGC_M_CSR0_H_NAKTIMEOUT | MGC_M_CSR0_H_NO_PING);
--
--    if (ep->status[1] == USB_RET_STALL) {
--        ep->status[1] = 0;
--
--        ep->csr[1] |= MGC_M_RXCSR_H_RXSTALL;
--        if (!epnum)
--            ep->csr[0] |= MGC_M_CSR0_H_RXSTALL;
--    }
--
--    if (ep->status[1] == USB_RET_NAK) {
--        ep->status[1] = 0;
--
--        /* NAK timeouts are only generated in Bulk transfers and
--         * Data-errors in Isochronous.  */
--        if (ep->interrupt[1]) {
--            musb_packet(s, ep, epnum, USB_TOKEN_IN,
--                        packey->iov.size, musb_rx_packet_complete, 1);
--            return;
--        }
--
--        ep->csr[1] |= MGC_M_RXCSR_DATAERROR;
--        if (!epnum)
--            ep->csr[0] |= MGC_M_CSR0_H_NAKTIMEOUT;
--    }
--
--    if (ep->status[1] < 0) {
--        if (ep->status[1] == USB_RET_BABBLE) {
--            musb_intr_set(s, musb_irq_rst_babble, 1);
--            return;
--        }
--
--        /* Pretend we've tried three times already and failed (in
--         * case of a control transfer).  */
--        ep->csr[1] |= MGC_M_RXCSR_H_ERROR;
--        if (!epnum)
--            ep->csr[0] |= MGC_M_CSR0_H_ERROR;
--
--        musb_rx_intr_set(s, epnum, 1);
--        return;
--    }
--    /* TODO: check len for over/underruns of an OUT packet?  */
--    /* TODO: perhaps make use of e->ext_size[1] here.  */
--
--    if (!(ep->csr[1] & (MGC_M_RXCSR_H_RXSTALL | MGC_M_RXCSR_DATAERROR))) {
--        ep->csr[1] |= MGC_M_RXCSR_FIFOFULL | MGC_M_RXCSR_RXPKTRDY;
--        if (!epnum)
--            ep->csr[0] |= MGC_M_CSR0_RXPKTRDY;
--
--        ep->rxcount = ep->status[1]; /* XXX: MIN(packey->len, ep->maxp[1]); */
--        /* In DMA mode: assert DMA request for this EP */
--    }
--
--    /* Only if DMA has not been asserted */
--    musb_rx_intr_set(s, epnum, 1);
--}
--
--static void musb_async_cancel_device(MUSBState *s, USBDevice *dev)
--{
--    int ep, dir;
--
--    for (ep = 0; ep < 16; ep++) {
--        for (dir = 0; dir < 2; dir++) {
--            if (!usb_packet_is_inflight(&s->ep[ep].packey[dir].p) ||
--                s->ep[ep].packey[dir].p.ep->dev != dev) {
--                continue;
--            }
--            usb_cancel_packet(&s->ep[ep].packey[dir].p);
--            /* status updates needed here? */
--        }
--    }
--}
--
--static void musb_tx_rdy(MUSBState *s, int epnum)
--{
--    MUSBEndPoint *ep = s->ep + epnum;
--    int pid;
--    int total, valid = 0;
--    TRACE("start %d, len %d",  ep->fifostart[0], ep->fifolen[0] );
--    ep->fifostart[0] += ep->fifolen[0];
--    ep->fifolen[0] = 0;
--
--    /* XXX: how's the total size of the packet retrieved exactly in
--     * the generic case?  */
--    total = ep->maxp[0] & 0x3ff;
--
--    if (ep->ext_size[0]) {
--        total = ep->ext_size[0];
--        ep->ext_size[0] = 0;
--        valid = 1;
--    }
--
--    /* If the packet is not fully ready yet, wait for a next segment.  */
--    if (epnum && (ep->fifostart[0]) < total)
--        return;
--
--    if (!valid)
--        total = ep->fifostart[0];
--
--    pid = USB_TOKEN_OUT;
--    if (!epnum && (ep->csr[0] & MGC_M_CSR0_H_SETUPPKT)) {
--        pid = USB_TOKEN_SETUP;
--        if (total != 8) {
--            TRACE("illegal SETUPPKT length of %i bytes", total);
--        }
--        /* Controller should retry SETUP packets three times on errors
--         * but it doesn't make sense for us to do that.  */
--    }
--
--    musb_packet(s, ep, epnum, pid, total, musb_tx_packet_complete, 0);
--}
--
--static void musb_rx_req(MUSBState *s, int epnum)
--{
--    MUSBEndPoint *ep = s->ep + epnum;
--    int total;
--
--    /* If we already have a packet, which didn't fit into the
--     * 64 bytes of the FIFO, only move the FIFO start and return. (Obsolete) */
--    if (ep->packey[1].p.pid == USB_TOKEN_IN && ep->status[1] >= 0 &&
--                    (ep->fifostart[1]) + ep->rxcount <
--                    ep->packey[1].p.iov.size) {
--        TRACE("0x%08x, %d",  ep->fifostart[1], ep->rxcount );
--        ep->fifostart[1] += ep->rxcount;
--        ep->fifolen[1] = 0;
--
--        ep->rxcount = MIN(ep->packey[0].p.iov.size - (ep->fifostart[1]),
--                        ep->maxp[1]);
--
--        ep->csr[1] &= ~MGC_M_RXCSR_H_REQPKT;
--        if (!epnum)
--            ep->csr[0] &= ~MGC_M_CSR0_H_REQPKT;
--
--        /* Clear all of the error bits first */
--        ep->csr[1] &= ~(MGC_M_RXCSR_H_ERROR | MGC_M_RXCSR_H_RXSTALL |
--                        MGC_M_RXCSR_DATAERROR);
--        if (!epnum)
--            ep->csr[0] &= ~(MGC_M_CSR0_H_ERROR | MGC_M_CSR0_H_RXSTALL |
--                            MGC_M_CSR0_H_NAKTIMEOUT | MGC_M_CSR0_H_NO_PING);
--
--        ep->csr[1] |= MGC_M_RXCSR_FIFOFULL | MGC_M_RXCSR_RXPKTRDY;
--        if (!epnum)
--            ep->csr[0] |= MGC_M_CSR0_RXPKTRDY;
--        musb_rx_intr_set(s, epnum, 1);
--        return;
--    }
--
--    /* The driver sets maxp[1] to 64 or less because it knows the hardware
--     * FIFO is this deep.  Bigger packets get split in
--     * usb_generic_handle_packet but we can also do the splitting locally
--     * for performance.  It turns out we can also have a bigger FIFO and
--     * ignore the limit set in ep->maxp[1].  The Linux MUSB driver deals
--     * OK with single packets of even 32KB and we avoid splitting, however
--     * usb_msd.c sometimes sends a packet bigger than what Linux expects
--     * (e.g. 8192 bytes instead of 4096) and we get an OVERRUN.  Splitting
--     * hides this overrun from Linux.  Up to 4096 everything is fine
--     * though.  Currently this is disabled.
--     *
--     * XXX: mind ep->fifosize.  */
--    total = MIN(ep->maxp[1] & 0x3ff, sizeof(s->buf));
--
--#ifdef SETUPLEN_HACK
--    /* Why should *we* do that instead of Linux?  */
--    if (!epnum) {
--        if (ep->packey[0].p.devaddr == 2) {
--            total = MIN(s->setup_len, 8);
+-    if (at < s->attr_base) {
+-        if (at < pcc->cis_len) {
+-            return pcc->cis[at];
 -        } else {
--            total = MIN(s->setup_len, 64);
+-            return 0x00;
 -        }
--        s->setup_len -= total;
 -    }
--#endif
 -
--    musb_packet(s, ep, epnum, USB_TOKEN_IN, total, musb_rx_packet_complete, 1);
--}
+-    at -= s->attr_base;
 -
--static uint8_t musb_read_fifo(MUSBEndPoint *ep)
--{
--    uint8_t value;
--    if (ep->fifolen[1] >= 64) {
--        /* We have a FIFO underrun */
--        TRACE("EP%d FIFO is now empty, stop reading", ep->epnum);
--        return 0x00000000;
--    }
--    /* In DMA mode clear RXPKTRDY and set REQPKT automatically
--     * (if AUTOREQ is set) */
--
--    ep->csr[1] &= ~MGC_M_RXCSR_FIFOFULL;
--    value=ep->buf[1][ep->fifostart[1] + ep->fifolen[1] ++];
--    TRACE("EP%d 0x%02x, %d", ep->epnum, value, ep->fifolen[1] );
--    return value;
--}
--
--static void musb_write_fifo(MUSBEndPoint *ep, uint8_t value)
--{
--    TRACE("EP%d = %02x", ep->epnum, value);
--    if (ep->fifolen[0] >= 64) {
--        /* We have a FIFO overrun */
--        TRACE("EP%d FIFO exceeded 64 bytes, stop feeding data", ep->epnum);
--        return;
--     }
--
--     ep->buf[0][ep->fifostart[0] + ep->fifolen[0] ++] = value;
--     ep->csr[0] |= MGC_M_TXCSR_FIFONOTEMPTY;
--}
--
--static void musb_ep_frame_cancel(MUSBEndPoint *ep, int dir)
--{
--    if (ep->intv_timer[dir])
--        timer_del(ep->intv_timer[dir]);
--}
--
--/* Bus control */
--static uint8_t musb_busctl_readb(void *opaque, int ep, int addr)
--{
--    MUSBState *s = (MUSBState *) opaque;
--
--    switch (addr) {
--    /* For USB2.0 HS hubs only */
--    case MUSB_HDRC_TXHUBADDR:
--        return s->ep[ep].haddr[0];
--    case MUSB_HDRC_TXHUBPORT:
--        return s->ep[ep].hport[0];
--    case MUSB_HDRC_RXHUBADDR:
--        return s->ep[ep].haddr[1];
--    case MUSB_HDRC_RXHUBPORT:
--        return s->ep[ep].hport[1];
--
--    default:
--        TRACE("unknown register 0x%02x", addr);
--        return 0x00;
--    };
--}
--
--static void musb_busctl_writeb(void *opaque, int ep, int addr, uint8_t value)
--{
--    MUSBState *s = (MUSBState *) opaque;
--
--    switch (addr) {
--    case MUSB_HDRC_TXFUNCADDR:
--        s->ep[ep].faddr[0] = value;
--        break;
--    case MUSB_HDRC_RXFUNCADDR:
--        s->ep[ep].faddr[1] = value;
--        break;
--    case MUSB_HDRC_TXHUBADDR:
--        s->ep[ep].haddr[0] = value;
--        break;
--    case MUSB_HDRC_TXHUBPORT:
--        s->ep[ep].hport[0] = value;
--        break;
--    case MUSB_HDRC_RXHUBADDR:
--        s->ep[ep].haddr[1] = value;
--        break;
--    case MUSB_HDRC_RXHUBPORT:
--        s->ep[ep].hport[1] = value;
--        break;
--
--    default:
--        TRACE("unknown register 0x%02x", addr);
--        break;
--    };
--}
--
--static uint16_t musb_busctl_readh(void *opaque, int ep, int addr)
--{
--    MUSBState *s = (MUSBState *) opaque;
--
--    switch (addr) {
--    case MUSB_HDRC_TXFUNCADDR:
--        return s->ep[ep].faddr[0];
--    case MUSB_HDRC_RXFUNCADDR:
--        return s->ep[ep].faddr[1];
--
--    default:
--        return musb_busctl_readb(s, ep, addr) |
--                (musb_busctl_readb(s, ep, addr | 1) << 8);
--    };
--}
--
--static void musb_busctl_writeh(void *opaque, int ep, int addr, uint16_t value)
--{
--    MUSBState *s = (MUSBState *) opaque;
--
--    switch (addr) {
--    case MUSB_HDRC_TXFUNCADDR:
--        s->ep[ep].faddr[0] = value;
--        break;
--    case MUSB_HDRC_RXFUNCADDR:
--        s->ep[ep].faddr[1] = value;
--        break;
--
--    default:
--        musb_busctl_writeb(s, ep, addr, value & 0xff);
--        musb_busctl_writeb(s, ep, addr | 1, value >> 8);
--    };
--}
--
--/* Endpoint control */
--static uint8_t musb_ep_readb(void *opaque, int ep, int addr)
--{
--    MUSBState *s = (MUSBState *) opaque;
--
--    switch (addr) {
--    case MUSB_HDRC_TXTYPE:
--        return s->ep[ep].type[0];
--    case MUSB_HDRC_TXINTERVAL:
--        return s->ep[ep].interval[0];
--    case MUSB_HDRC_RXTYPE:
--        return s->ep[ep].type[1];
--    case MUSB_HDRC_RXINTERVAL:
--        return s->ep[ep].interval[1];
--    case (MUSB_HDRC_FIFOSIZE & ~1):
--        return 0x00;
--    case MUSB_HDRC_FIFOSIZE:
--        return ep ? s->ep[ep].fifosize : s->ep[ep].config;
--    case MUSB_HDRC_RXCOUNT:
--        return s->ep[ep].rxcount;
--
--    default:
--        TRACE("unknown register 0x%02x", addr);
--        return 0x00;
--    };
--}
--
--static void musb_ep_writeb(void *opaque, int ep, int addr, uint8_t value)
--{
--    MUSBState *s = (MUSBState *) opaque;
--
--    switch (addr) {
--    case MUSB_HDRC_TXTYPE:
--        s->ep[ep].type[0] = value;
--        break;
--    case MUSB_HDRC_TXINTERVAL:
--        s->ep[ep].interval[0] = value;
--        musb_ep_frame_cancel(&s->ep[ep], 0);
--        break;
--    case MUSB_HDRC_RXTYPE:
--        s->ep[ep].type[1] = value;
--        break;
--    case MUSB_HDRC_RXINTERVAL:
--        s->ep[ep].interval[1] = value;
--        musb_ep_frame_cancel(&s->ep[ep], 1);
--        break;
--    case (MUSB_HDRC_FIFOSIZE & ~1):
--        break;
--    case MUSB_HDRC_FIFOSIZE:
--        TRACE("somebody messes with fifosize (now %i bytes)", value);
--        s->ep[ep].fifosize = value;
--        break;
--    default:
--        TRACE("unknown register 0x%02x", addr);
--        break;
--    };
--}
--
--static uint16_t musb_ep_readh(void *opaque, int ep, int addr)
--{
--    MUSBState *s = (MUSBState *) opaque;
--    uint16_t ret;
--
--    switch (addr) {
--    case MUSB_HDRC_TXMAXP:
--        return s->ep[ep].maxp[0];
--    case MUSB_HDRC_TXCSR:
--        return s->ep[ep].csr[0];
--    case MUSB_HDRC_RXMAXP:
--        return s->ep[ep].maxp[1];
--    case MUSB_HDRC_RXCSR:
--        ret = s->ep[ep].csr[1];
--
--        /* TODO: This and other bits probably depend on
--         * ep->csr[1] & MGC_M_RXCSR_AUTOCLEAR.  */
--        if (s->ep[ep].csr[1] & MGC_M_RXCSR_AUTOCLEAR)
--            s->ep[ep].csr[1] &= ~MGC_M_RXCSR_RXPKTRDY;
--
--        return ret;
--    case MUSB_HDRC_RXCOUNT:
--        return s->ep[ep].rxcount;
--
--    default:
--        return musb_ep_readb(s, ep, addr) |
--                (musb_ep_readb(s, ep, addr | 1) << 8);
--    };
--}
--
--static void musb_ep_writeh(void *opaque, int ep, int addr, uint16_t value)
--{
--    MUSBState *s = (MUSBState *) opaque;
--
--    switch (addr) {
--    case MUSB_HDRC_TXMAXP:
--        s->ep[ep].maxp[0] = value;
--        break;
--    case MUSB_HDRC_TXCSR:
--        if (ep) {
--            s->ep[ep].csr[0] &= value & 0xa6;
--            s->ep[ep].csr[0] |= value & 0xff59;
+-    switch (at) {
+-    case 0x00:  /* Configuration Option Register */
+-        return s->opt;
+-    case 0x02:  /* Card Configuration Status Register */
+-        if (s->ctrl & CTRL_IEN) {
+-            return s->stat & ~STAT_INT;
 -        } else {
--            s->ep[ep].csr[0] &= value & 0x85;
--            s->ep[ep].csr[0] |= value & 0xf7a;
+-            return s->stat;
 -        }
--
--        musb_ep_frame_cancel(&s->ep[ep], 0);
--
--        if ((ep && (value & MGC_M_TXCSR_FLUSHFIFO)) ||
--                        (!ep && (value & MGC_M_CSR0_FLUSHFIFO))) {
--            s->ep[ep].fifolen[0] = 0;
--            s->ep[ep].fifostart[0] = 0;
--            if (ep)
--                s->ep[ep].csr[0] &=
--                        ~(MGC_M_TXCSR_FIFONOTEMPTY | MGC_M_TXCSR_TXPKTRDY);
--            else
--                s->ep[ep].csr[0] &=
--                        ~(MGC_M_CSR0_TXPKTRDY | MGC_M_CSR0_RXPKTRDY);
--        }
--        if (
--                        (ep &&
--#ifdef CLEAR_NAK
--                         (value & MGC_M_TXCSR_TXPKTRDY) &&
--                         !(value & MGC_M_TXCSR_H_NAKTIMEOUT)) ||
--#else
--                         (value & MGC_M_TXCSR_TXPKTRDY)) ||
--#endif
--                        (!ep &&
--#ifdef CLEAR_NAK
--                         (value & MGC_M_CSR0_TXPKTRDY) &&
--                         !(value & MGC_M_CSR0_H_NAKTIMEOUT)))
--#else
--                         (value & MGC_M_CSR0_TXPKTRDY)))
--#endif
--            musb_tx_rdy(s, ep);
--        if (!ep &&
--                        (value & MGC_M_CSR0_H_REQPKT) &&
--#ifdef CLEAR_NAK
--                        !(value & (MGC_M_CSR0_H_NAKTIMEOUT |
--                                        MGC_M_CSR0_RXPKTRDY)))
--#else
--                        !(value & MGC_M_CSR0_RXPKTRDY))
--#endif
--            musb_rx_req(s, ep);
--        break;
--
--    case MUSB_HDRC_RXMAXP:
--        s->ep[ep].maxp[1] = value;
--        break;
--    case MUSB_HDRC_RXCSR:
--        /* (DMA mode only) */
--        if (
--                (value & MGC_M_RXCSR_H_AUTOREQ) &&
--                !(value & MGC_M_RXCSR_RXPKTRDY) &&
--                (s->ep[ep].csr[1] & MGC_M_RXCSR_RXPKTRDY))
--            value |= MGC_M_RXCSR_H_REQPKT;
--
--        s->ep[ep].csr[1] &= 0x102 | (value & 0x4d);
--        s->ep[ep].csr[1] |= value & 0xfeb0;
--
--        musb_ep_frame_cancel(&s->ep[ep], 1);
--
--        if (value & MGC_M_RXCSR_FLUSHFIFO) {
--            s->ep[ep].fifolen[1] = 0;
--            s->ep[ep].fifostart[1] = 0;
--            s->ep[ep].csr[1] &= ~(MGC_M_RXCSR_FIFOFULL | MGC_M_RXCSR_RXPKTRDY);
--            /* If double buffering and we have two packets ready, flush
--             * only the first one and set up the fifo at the second packet.  */
--        }
--#ifdef CLEAR_NAK
--        if ((value & MGC_M_RXCSR_H_REQPKT) && !(value & MGC_M_RXCSR_DATAERROR))
--#else
--        if (value & MGC_M_RXCSR_H_REQPKT)
--#endif
--            musb_rx_req(s, ep);
--        break;
--    case MUSB_HDRC_RXCOUNT:
--        s->ep[ep].rxcount = value;
--        break;
--
+-    case 0x04:  /* Pin Replacement Register */
+-        return (s->pins & PINS_CRDY) | 0x0c;
+-    case 0x06:  /* Socket and Copy Register */
+-        return 0x00;
+-#ifdef VERBOSE
 -    default:
--        musb_ep_writeb(s, ep, addr, value & 0xff);
--        musb_ep_writeb(s, ep, addr | 1, value >> 8);
--    };
+-        printf("%s: Bad attribute space register %02x\n", __func__, at);
+-#endif
+-    }
+-
+-    return 0;
 -}
 -
--/* Generic control */
--static uint32_t musb_readb(void *opaque, hwaddr addr)
+-static void md_attr_write(PCMCIACardState *card, uint32_t at, uint8_t value)
 -{
--    MUSBState *s = (MUSBState *) opaque;
--    int ep, i;
--    uint8_t ret;
+-    MicroDriveState *s = MICRODRIVE(card);
 -
--    switch (addr) {
--    case MUSB_HDRC_FADDR:
--        return s->faddr;
--    case MUSB_HDRC_POWER:
--        return s->power;
--    case MUSB_HDRC_INTRUSB:
--        ret = s->intr;
--        for (i = 0; i < sizeof(ret) * 8; i ++)
--            if (ret & (1 << i))
--                musb_intr_set(s, i, 0);
--        return ret;
--    case MUSB_HDRC_INTRUSBE:
--        return s->mask;
--    case MUSB_HDRC_INDEX:
--        return s->idx;
--    case MUSB_HDRC_TESTMODE:
--        return 0x00;
+-    at -= s->attr_base;
 -
--    case MUSB_HDRC_EP_IDX ... (MUSB_HDRC_EP_IDX + 0xf):
--        return musb_ep_readb(s, s->idx, addr & 0xf);
--
--    case MUSB_HDRC_DEVCTL:
--        return s->devctl;
--
--    case MUSB_HDRC_TXFIFOSZ:
--    case MUSB_HDRC_RXFIFOSZ:
--    case MUSB_HDRC_VCTRL:
--        /* TODO */
--        return 0x00;
--
--    case MUSB_HDRC_HWVERS:
--        return (1 << 10) | 400;
--
--    case (MUSB_HDRC_VCTRL | 1):
--    case (MUSB_HDRC_HWVERS | 1):
--    case (MUSB_HDRC_DEVCTL | 1):
--        return 0x00;
--
--    case MUSB_HDRC_BUSCTL ... (MUSB_HDRC_BUSCTL + 0x7f):
--        ep = (addr >> 3) & 0xf;
--        return musb_busctl_readb(s, ep, addr & 0x7);
--
--    case MUSB_HDRC_EP ... (MUSB_HDRC_EP + 0xff):
--        ep = (addr >> 4) & 0xf;
--        return musb_ep_readb(s, ep, addr & 0xf);
--
--    case MUSB_HDRC_FIFO ... (MUSB_HDRC_FIFO + 0x3f):
--        ep = ((addr - MUSB_HDRC_FIFO) >> 2) & 0xf;
--        return musb_read_fifo(s->ep + ep);
--
+-    switch (at) {
+-    case 0x00:  /* Configuration Option Register */
+-        s->opt = value & 0xcf;
+-        if (value & OPT_SRESET) {
+-            device_cold_reset(DEVICE(s));
+-        }
+-        md_interrupt_update(s);
+-        break;
+-    case 0x02:  /* Card Configuration Status Register */
+-        if ((s->stat ^ value) & STAT_PWRDWN) {
+-            s->pins |= PINS_CRDY;
+-        }
+-        s->stat &= 0x82;
+-        s->stat |= value & 0x74;
+-        md_interrupt_update(s);
+-        /* Word 170 in Identify Device must be equal to STAT_XE */
+-        break;
+-    case 0x04:  /* Pin Replacement Register */
+-        s->pins &= PINS_CRDY;
+-        s->pins |= value & PINS_MRDY;
+-        break;
+-    case 0x06:  /* Socket and Copy Register */
+-        break;
 -    default:
--        TRACE("unknown register 0x%02x", (int) addr);
--        return 0x00;
--    };
+-        printf("%s: Bad attribute space register %02x\n", __func__, at);
+-    }
 -}
 -
--static void musb_writeb(void *opaque, hwaddr addr, uint32_t value)
+-static uint16_t md_common_read(PCMCIACardState *card, uint32_t at)
 -{
--    MUSBState *s = (MUSBState *) opaque;
--    int ep;
--
--    switch (addr) {
--    case MUSB_HDRC_FADDR:
--        s->faddr = value & 0x7f;
--        break;
--    case MUSB_HDRC_POWER:
--        s->power = (value & 0xef) | (s->power & 0x10);
--        /* MGC_M_POWER_RESET is also read-only in Peripheral Mode */
--        if ((value & MGC_M_POWER_RESET) && s->port.dev) {
--            usb_device_reset(s->port.dev);
--            /* Negotiate high-speed operation if MGC_M_POWER_HSENAB is set.  */
--            if ((value & MGC_M_POWER_HSENAB) &&
--                            s->port.dev->speed == USB_SPEED_HIGH)
--                s->power |= MGC_M_POWER_HSMODE; /* Success */
--            /* Restart frame counting.  */
--        }
--        if (value & MGC_M_POWER_SUSPENDM) {
--            /* When all transfers finish, suspend and if MGC_M_POWER_ENSUSPEND
--             * is set, also go into low power mode.  Frame counting stops.  */
--            /* XXX: Cleared when the interrupt register is read */
--        }
--        if (value & MGC_M_POWER_RESUME) {
--            /* Wait 20ms and signal resuming on the bus.  Frame counting
--             * restarts.  */
--        }
--        break;
--    case MUSB_HDRC_INTRUSB:
--        break;
--    case MUSB_HDRC_INTRUSBE:
--        s->mask = value & 0xff;
--        break;
--    case MUSB_HDRC_INDEX:
--        s->idx = value & 0xf;
--        break;
--    case MUSB_HDRC_TESTMODE:
--        break;
--
--    case MUSB_HDRC_EP_IDX ... (MUSB_HDRC_EP_IDX + 0xf):
--        musb_ep_writeb(s, s->idx, addr & 0xf, value);
--        break;
--
--    case MUSB_HDRC_DEVCTL:
--        s->session = !!(value & MGC_M_DEVCTL_SESSION);
--        musb_session_update(s,
--                        !!s->port.dev,
--                        !!(s->devctl & MGC_M_DEVCTL_SESSION));
--
--        /* It seems this is the only R/W bit in this register?  */
--        s->devctl &= ~MGC_M_DEVCTL_SESSION;
--        s->devctl |= value & MGC_M_DEVCTL_SESSION;
--        break;
--
--    case MUSB_HDRC_TXFIFOSZ:
--    case MUSB_HDRC_RXFIFOSZ:
--    case MUSB_HDRC_VCTRL:
--        /* TODO */
--        break;
--
--    case (MUSB_HDRC_VCTRL | 1):
--    case (MUSB_HDRC_DEVCTL | 1):
--        break;
--
--    case MUSB_HDRC_BUSCTL ... (MUSB_HDRC_BUSCTL + 0x7f):
--        ep = (addr >> 3) & 0xf;
--        musb_busctl_writeb(s, ep, addr & 0x7, value);
--        break;
--
--    case MUSB_HDRC_EP ... (MUSB_HDRC_EP + 0xff):
--        ep = (addr >> 4) & 0xf;
--        musb_ep_writeb(s, ep, addr & 0xf, value);
--        break;
--
--    case MUSB_HDRC_FIFO ... (MUSB_HDRC_FIFO + 0x3f):
--        ep = ((addr - MUSB_HDRC_FIFO) >> 2) & 0xf;
--        musb_write_fifo(s->ep + ep, value & 0xff);
--        break;
--
--    default:
--        TRACE("unknown register 0x%02x", (int) addr);
--        break;
--    };
--}
--
--static uint32_t musb_readh(void *opaque, hwaddr addr)
--{
--    MUSBState *s = (MUSBState *) opaque;
--    int ep, i;
+-    MicroDriveState *s = MICRODRIVE(card);
+-    IDEState *ifs;
 -    uint16_t ret;
+-    at -= s->io_base;
 -
--    switch (addr) {
--    case MUSB_HDRC_INTRTX:
--        ret = s->tx_intr;
--        /* Auto clear */
--        for (i = 0; i < sizeof(ret) * 8; i ++)
--            if (ret & (1 << i))
--                musb_tx_intr_set(s, i, 0);
+-    switch (s->opt & OPT_MODE) {
+-    case OPT_MODE_MMAP:
+-        if ((at & ~0x3ff) == 0x400) {
+-            at = 0;
+-        }
+-        break;
+-    case OPT_MODE_IOMAP16:
+-        at &= 0xf;
+-        break;
+-    case OPT_MODE_IOMAP1:
+-        if ((at & ~0xf) == 0x3f0) {
+-            at -= 0x3e8;
+-        } else if ((at & ~0xf) == 0x1f0) {
+-            at -= 0x1f0;
+-        }
+-        break;
+-    case OPT_MODE_IOMAP2:
+-        if ((at & ~0xf) == 0x370) {
+-            at -= 0x368;
+-        } else if ((at & ~0xf) == 0x170) {
+-            at -= 0x170;
+-        }
+-    }
+-
+-    switch (at) {
+-    case 0x0:  /* Even RD Data */
+-    case 0x8:
+-        return ide_data_readw(&s->bus, 0);
+-
+-        /* TODO: 8-bit accesses */
+-        if (s->cycle) {
+-            ret = s->io >> 8;
+-        } else {
+-            s->io = ide_data_readw(&s->bus, 0);
+-            ret = s->io & 0xff;
+-        }
+-        s->cycle = !s->cycle;
 -        return ret;
--    case MUSB_HDRC_INTRRX:
--        ret = s->rx_intr;
--        /* Auto clear */
--        for (i = 0; i < sizeof(ret) * 8; i ++)
--            if (ret & (1 << i))
--                musb_rx_intr_set(s, i, 0);
--        return ret;
--    case MUSB_HDRC_INTRTXE:
--        return s->tx_mask;
--    case MUSB_HDRC_INTRRXE:
--        return s->rx_mask;
--
--    case MUSB_HDRC_FRAME:
--        /* TODO */
--        return 0x0000;
--    case MUSB_HDRC_TXFIFOADDR:
--        return s->ep[s->idx].fifoaddr[0];
--    case MUSB_HDRC_RXFIFOADDR:
--        return s->ep[s->idx].fifoaddr[1];
--
--    case MUSB_HDRC_EP_IDX ... (MUSB_HDRC_EP_IDX + 0xf):
--        return musb_ep_readh(s, s->idx, addr & 0xf);
--
--    case MUSB_HDRC_BUSCTL ... (MUSB_HDRC_BUSCTL + 0x7f):
--        ep = (addr >> 3) & 0xf;
--        return musb_busctl_readh(s, ep, addr & 0x7);
--
--    case MUSB_HDRC_EP ... (MUSB_HDRC_EP + 0xff):
--        ep = (addr >> 4) & 0xf;
--        return musb_ep_readh(s, ep, addr & 0xf);
--
--    case MUSB_HDRC_FIFO ... (MUSB_HDRC_FIFO + 0x3f):
--        ep = ((addr - MUSB_HDRC_FIFO) >> 2) & 0xf;
--        return (musb_read_fifo(s->ep + ep) | musb_read_fifo(s->ep + ep) << 8);
--
+-    case 0x9:  /* Odd RD Data */
+-        return s->io >> 8;
+-    case 0xd:  /* Error */
+-        return ide_ioport_read(&s->bus, 0x1);
+-    case 0xe:  /* Alternate Status */
+-        ifs = ide_bus_active_if(&s->bus);
+-        if (ifs->blk) {
+-            return ifs->status;
+-        } else {
+-            return 0;
+-        }
+-    case 0xf:  /* Device Address */
+-        ifs = ide_bus_active_if(&s->bus);
+-        return 0xc2 | ((~ifs->select << 2) & 0x3c);
 -    default:
--        return musb_readb(s, addr) | (musb_readb(s, addr | 1) << 8);
--    };
+-        return ide_ioport_read(&s->bus, at);
+-    }
+-
+-    return 0;
 -}
 -
--static void musb_writeh(void *opaque, hwaddr addr, uint32_t value)
+-static void md_common_write(PCMCIACardState *card, uint32_t at, uint16_t value)
 -{
--    MUSBState *s = (MUSBState *) opaque;
--    int ep;
+-    MicroDriveState *s = MICRODRIVE(card);
+-    at -= s->io_base;
 -
--    switch (addr) {
--    case MUSB_HDRC_INTRTXE:
--        s->tx_mask = value;
--        /* XXX: the masks seem to apply on the raising edge like with
--         * edge-triggered interrupts, thus no need to update.  I may be
--         * wrong though.  */
+-    switch (s->opt & OPT_MODE) {
+-    case OPT_MODE_MMAP:
+-        if ((at & ~0x3ff) == 0x400) {
+-            at = 0;
+-        }
 -        break;
--    case MUSB_HDRC_INTRRXE:
--        s->rx_mask = value;
+-    case OPT_MODE_IOMAP16:
+-        at &= 0xf;
 -        break;
+-    case OPT_MODE_IOMAP1:
+-        if ((at & ~0xf) == 0x3f0) {
+-            at -= 0x3e8;
+-        } else if ((at & ~0xf) == 0x1f0) {
+-            at -= 0x1f0;
+-        }
+-        break;
+-    case OPT_MODE_IOMAP2:
+-        if ((at & ~0xf) == 0x370) {
+-            at -= 0x368;
+-        } else if ((at & ~0xf) == 0x170) {
+-            at -= 0x170;
+-        }
+-    }
 -
--    case MUSB_HDRC_FRAME:
--        /* TODO */
--        break;
--    case MUSB_HDRC_TXFIFOADDR:
--        s->ep[s->idx].fifoaddr[0] = value;
--        s->ep[s->idx].buf[0] =
--                s->buf + ((value << 3) & 0x7ff );
--        break;
--    case MUSB_HDRC_RXFIFOADDR:
--        s->ep[s->idx].fifoaddr[1] = value;
--        s->ep[s->idx].buf[1] =
--                s->buf + ((value << 3) & 0x7ff);
--        break;
--
--    case MUSB_HDRC_EP_IDX ... (MUSB_HDRC_EP_IDX + 0xf):
--        musb_ep_writeh(s, s->idx, addr & 0xf, value);
--        break;
--
--    case MUSB_HDRC_BUSCTL ... (MUSB_HDRC_BUSCTL + 0x7f):
--        ep = (addr >> 3) & 0xf;
--        musb_busctl_writeh(s, ep, addr & 0x7, value);
+-    switch (at) {
+-    case 0x0:  /* Even WR Data */
+-    case 0x8:
+-        ide_data_writew(&s->bus, 0, value);
 -        break;
 -
--    case MUSB_HDRC_EP ... (MUSB_HDRC_EP + 0xff):
--        ep = (addr >> 4) & 0xf;
--        musb_ep_writeh(s, ep, addr & 0xf, value);
+-        /* TODO: 8-bit accesses */
+-        if (s->cycle) {
+-            ide_data_writew(&s->bus, 0, s->io | (value << 8));
+-        } else {
+-            s->io = value & 0xff;
+-        }
+-        s->cycle = !s->cycle;
 -        break;
--
--    case MUSB_HDRC_FIFO ... (MUSB_HDRC_FIFO + 0x3f):
--        ep = ((addr - MUSB_HDRC_FIFO) >> 2) & 0xf;
--        musb_write_fifo(s->ep + ep, value & 0xff);
--        musb_write_fifo(s->ep + ep, (value >> 8) & 0xff);
+-    case 0x9:
+-        s->io = value & 0xff;
+-        s->cycle = !s->cycle;
 -        break;
--
+-    case 0xd:  /* Features */
+-        ide_ioport_write(&s->bus, 0x1, value);
+-        break;
+-    case 0xe:  /* Device Control */
+-        s->ctrl = value;
+-        if (value & CTRL_SRST) {
+-            device_cold_reset(DEVICE(s));
+-        }
+-        md_interrupt_update(s);
+-        break;
 -    default:
--        musb_writeb(s, addr, value & 0xff);
--        musb_writeb(s, addr | 1, value >> 8);
--    };
+-        if (s->stat & STAT_PWRDWN) {
+-            s->pins |= PINS_CRDY;
+-            s->stat &= ~STAT_PWRDWN;
+-        }
+-        ide_ioport_write(&s->bus, at, value);
+-    }
 -}
 -
--static uint32_t musb_readw(void *opaque, hwaddr addr)
--{
--    MUSBState *s = (MUSBState *) opaque;
--    int ep;
--
--    switch (addr) {
--    case MUSB_HDRC_FIFO ... (MUSB_HDRC_FIFO + 0x3f):
--        ep = ((addr - MUSB_HDRC_FIFO) >> 2) & 0xf;
--        return ( musb_read_fifo(s->ep + ep)       |
--                 musb_read_fifo(s->ep + ep) << 8  |
--                 musb_read_fifo(s->ep + ep) << 16 |
--                 musb_read_fifo(s->ep + ep) << 24 );
--    default:
--        TRACE("unknown register 0x%02x", (int) addr);
--        return 0x00000000;
--    };
--}
--
--static void musb_writew(void *opaque, hwaddr addr, uint32_t value)
--{
--    MUSBState *s = (MUSBState *) opaque;
--    int ep;
--
--    switch (addr) {
--    case MUSB_HDRC_FIFO ... (MUSB_HDRC_FIFO + 0x3f):
--        ep = ((addr - MUSB_HDRC_FIFO) >> 2) & 0xf;
--        musb_write_fifo(s->ep + ep, value & 0xff);
--        musb_write_fifo(s->ep + ep, (value >> 8 ) & 0xff);
--        musb_write_fifo(s->ep + ep, (value >> 16) & 0xff);
--        musb_write_fifo(s->ep + ep, (value >> 24) & 0xff);
--            break;
--    default:
--        TRACE("unknown register 0x%02x", (int) addr);
--        break;
--    };
--}
--
--MUSBReadFunc * const musb_read[] = {
--    musb_readb,
--    musb_readh,
--    musb_readw,
+-static const VMStateDescription vmstate_microdrive = {
+-    .name = "microdrive",
+-    .version_id = 3,
+-    .minimum_version_id = 0,
+-    .fields = (const VMStateField[]) {
+-        VMSTATE_UINT8(opt, MicroDriveState),
+-        VMSTATE_UINT8(stat, MicroDriveState),
+-        VMSTATE_UINT8(pins, MicroDriveState),
+-        VMSTATE_UINT8(ctrl, MicroDriveState),
+-        VMSTATE_UINT16(io, MicroDriveState),
+-        VMSTATE_UINT8(cycle, MicroDriveState),
+-        VMSTATE_IDE_BUS(bus, MicroDriveState),
+-        VMSTATE_IDE_DRIVES(bus.ifs, MicroDriveState),
+-        VMSTATE_END_OF_LIST()
+-    }
 -};
 -
--MUSBWriteFunc * const musb_write[] = {
--    musb_writeb,
--    musb_writeh,
--    musb_writew,
+-static const uint8_t dscm1xxxx_cis[0x14a] = {
+-    [0x000] = CISTPL_DEVICE,    /* 5V Device Information */
+-    [0x002] = 0x03,             /* Tuple length = 4 bytes */
+-    [0x004] = 0xdb,             /* ID: DTYPE_FUNCSPEC, non WP, DSPEED_150NS */
+-    [0x006] = 0x01,             /* Size = 2K bytes */
+-    [0x008] = CISTPL_ENDMARK,
+-
+-    [0x00a] = CISTPL_DEVICE_OC, /* Additional Device Information */
+-    [0x00c] = 0x04,             /* Tuple length = 4 byest */
+-    [0x00e] = 0x03,             /* Conditions: Ext = 0, Vcc 3.3V, MWAIT = 1 */
+-    [0x010] = 0xdb,             /* ID: DTYPE_FUNCSPEC, non WP, DSPEED_150NS */
+-    [0x012] = 0x01,             /* Size = 2K bytes */
+-    [0x014] = CISTPL_ENDMARK,
+-
+-    [0x016] = CISTPL_JEDEC_C,   /* JEDEC ID */
+-    [0x018] = 0x02,             /* Tuple length = 2 bytes */
+-    [0x01a] = 0xdf,             /* PC Card ATA with no Vpp required */
+-    [0x01c] = 0x01,
+-
+-    [0x01e] = CISTPL_MANFID,    /* Manufacture ID */
+-    [0x020] = 0x04,             /* Tuple length = 4 bytes */
+-    [0x022] = 0xa4,             /* TPLMID_MANF = 00a4 (IBM) */
+-    [0x024] = 0x00,
+-    [0x026] = 0x00,             /* PLMID_CARD = 0000 */
+-    [0x028] = 0x00,
+-
+-    [0x02a] = CISTPL_VERS_1,    /* Level 1 Version */
+-    [0x02c] = 0x12,             /* Tuple length = 23 bytes */
+-    [0x02e] = 0x04,             /* Major Version = JEIDA 4.2 / PCMCIA 2.1 */
+-    [0x030] = 0x01,             /* Minor Version = 1 */
+-    [0x032] = 'I',
+-    [0x034] = 'B',
+-    [0x036] = 'M',
+-    [0x038] = 0x00,
+-    [0x03a] = 'm',
+-    [0x03c] = 'i',
+-    [0x03e] = 'c',
+-    [0x040] = 'r',
+-    [0x042] = 'o',
+-    [0x044] = 'd',
+-    [0x046] = 'r',
+-    [0x048] = 'i',
+-    [0x04a] = 'v',
+-    [0x04c] = 'e',
+-    [0x04e] = 0x00,
+-    [0x050] = CISTPL_ENDMARK,
+-
+-    [0x052] = CISTPL_FUNCID,    /* Function ID */
+-    [0x054] = 0x02,             /* Tuple length = 2 bytes */
+-    [0x056] = 0x04,             /* TPLFID_FUNCTION = Fixed Disk */
+-    [0x058] = 0x01,             /* TPLFID_SYSINIT: POST = 1, ROM = 0 */
+-
+-    [0x05a] = CISTPL_FUNCE,     /* Function Extension */
+-    [0x05c] = 0x02,             /* Tuple length = 2 bytes */
+-    [0x05e] = 0x01,             /* TPLFE_TYPE = Disk Device Interface */
+-    [0x060] = 0x01,             /* TPLFE_DATA = PC Card ATA Interface */
+-
+-    [0x062] = CISTPL_FUNCE,     /* Function Extension */
+-    [0x064] = 0x03,             /* Tuple length = 3 bytes */
+-    [0x066] = 0x02,             /* TPLFE_TYPE = Basic PC Card ATA Interface */
+-    [0x068] = 0x08,             /* TPLFE_DATA: Rotating, Unique, Single */
+-    [0x06a] = 0x0f,             /* TPLFE_DATA: Sleep, Standby, Idle, Auto */
+-
+-    [0x06c] = CISTPL_CONFIG,    /* Configuration */
+-    [0x06e] = 0x05,             /* Tuple length = 5 bytes */
+-    [0x070] = 0x01,             /* TPCC_RASZ = 2 bytes, TPCC_RMSZ = 1 byte */
+-    [0x072] = 0x07,             /* TPCC_LAST = 7 */
+-    [0x074] = 0x00,             /* TPCC_RADR = 0200 */
+-    [0x076] = 0x02,
+-    [0x078] = 0x0f,             /* TPCC_RMSK = 200, 202, 204, 206 */
+-
+-    [0x07a] = CISTPL_CFTABLE_ENTRY, /* 16-bit PC Card Configuration */
+-    [0x07c] = 0x0b,             /* Tuple length = 11 bytes */
+-    [0x07e] = 0xc0,             /* TPCE_INDX = Memory Mode, Default, Iface */
+-    [0x080] = 0xc0,             /* TPCE_IF = Memory, no BVDs, no WP, READY */
+-    [0x082] = 0xa1,             /* TPCE_FS = Vcc only, no I/O, Memory, Misc */
+-    [0x084] = 0x27,             /* NomV = 1, MinV = 1, MaxV = 1, Peakl = 1 */
+-    [0x086] = 0x55,             /* NomV: 5.0 V */
+-    [0x088] = 0x4d,             /* MinV: 4.5 V */
+-    [0x08a] = 0x5d,             /* MaxV: 5.5 V */
+-    [0x08c] = 0x4e,             /* Peakl: 450 mA */
+-    [0x08e] = 0x08,             /* TPCE_MS = 1 window, 1 byte, Host address */
+-    [0x090] = 0x00,             /* Window descriptor: Window length = 0 */
+-    [0x092] = 0x20,             /* TPCE_MI: support power down mode, RW */
+-
+-    [0x094] = CISTPL_CFTABLE_ENTRY, /* 16-bit PC Card Configuration */
+-    [0x096] = 0x06,             /* Tuple length = 6 bytes */
+-    [0x098] = 0x00,             /* TPCE_INDX = Memory Mode, no Default */
+-    [0x09a] = 0x01,             /* TPCE_FS = Vcc only, no I/O, no Memory */
+-    [0x09c] = 0x21,             /* NomV = 1, MinV = 0, MaxV = 0, Peakl = 1 */
+-    [0x09e] = 0xb5,             /* NomV: 3.3 V */
+-    [0x0a0] = 0x1e,
+-    [0x0a2] = 0x3e,             /* Peakl: 350 mA */
+-
+-    [0x0a4] = CISTPL_CFTABLE_ENTRY, /* 16-bit PC Card Configuration */
+-    [0x0a6] = 0x0d,             /* Tuple length = 13 bytes */
+-    [0x0a8] = 0xc1,             /* TPCE_INDX = I/O and Memory Mode, Default */
+-    [0x0aa] = 0x41,             /* TPCE_IF = I/O and Memory, no BVD, no WP */
+-    [0x0ac] = 0x99,             /* TPCE_FS = Vcc only, I/O, Interrupt, Misc */
+-    [0x0ae] = 0x27,             /* NomV = 1, MinV = 1, MaxV = 1, Peakl = 1 */
+-    [0x0b0] = 0x55,             /* NomV: 5.0 V */
+-    [0x0b2] = 0x4d,             /* MinV: 4.5 V */
+-    [0x0b4] = 0x5d,             /* MaxV: 5.5 V */
+-    [0x0b6] = 0x4e,             /* Peakl: 450 mA */
+-    [0x0b8] = 0x64,             /* TPCE_IO = 16-byte boundary, 16/8 accesses */
+-    [0x0ba] = 0xf0,             /* TPCE_IR =  MASK, Level, Pulse, Share */
+-    [0x0bc] = 0xff,             /* IRQ0..IRQ7 supported */
+-    [0x0be] = 0xff,             /* IRQ8..IRQ15 supported */
+-    [0x0c0] = 0x20,             /* TPCE_MI = support power down mode */
+-
+-    [0x0c2] = CISTPL_CFTABLE_ENTRY, /* 16-bit PC Card Configuration */
+-    [0x0c4] = 0x06,             /* Tuple length = 6 bytes */
+-    [0x0c6] = 0x01,             /* TPCE_INDX = I/O and Memory Mode */
+-    [0x0c8] = 0x01,             /* TPCE_FS = Vcc only, no I/O, no Memory */
+-    [0x0ca] = 0x21,             /* NomV = 1, MinV = 0, MaxV = 0, Peakl = 1 */
+-    [0x0cc] = 0xb5,             /* NomV: 3.3 V */
+-    [0x0ce] = 0x1e,
+-    [0x0d0] = 0x3e,             /* Peakl: 350 mA */
+-
+-    [0x0d2] = CISTPL_CFTABLE_ENTRY, /* 16-bit PC Card Configuration */
+-    [0x0d4] = 0x12,             /* Tuple length = 18 bytes */
+-    [0x0d6] = 0xc2,             /* TPCE_INDX = I/O Primary Mode */
+-    [0x0d8] = 0x41,             /* TPCE_IF = I/O and Memory, no BVD, no WP */
+-    [0x0da] = 0x99,             /* TPCE_FS = Vcc only, I/O, Interrupt, Misc */
+-    [0x0dc] = 0x27,             /* NomV = 1, MinV = 1, MaxV = 1, Peakl = 1 */
+-    [0x0de] = 0x55,             /* NomV: 5.0 V */
+-    [0x0e0] = 0x4d,             /* MinV: 4.5 V */
+-    [0x0e2] = 0x5d,             /* MaxV: 5.5 V */
+-    [0x0e4] = 0x4e,             /* Peakl: 450 mA */
+-    [0x0e6] = 0xea,             /* TPCE_IO = 1K boundary, 16/8 access, Range */
+-    [0x0e8] = 0x61,             /* Range: 2 fields, 2 bytes addr, 1 byte len */
+-    [0x0ea] = 0xf0,             /* Field 1 address = 0x01f0 */
+-    [0x0ec] = 0x01,
+-    [0x0ee] = 0x07,             /* Address block length = 8 */
+-    [0x0f0] = 0xf6,             /* Field 2 address = 0x03f6 */
+-    [0x0f2] = 0x03,
+-    [0x0f4] = 0x01,             /* Address block length = 2 */
+-    [0x0f6] = 0xee,             /* TPCE_IR = IRQ E, Level, Pulse, Share */
+-    [0x0f8] = 0x20,             /* TPCE_MI = support power down mode */
+-
+-    [0x0fa] = CISTPL_CFTABLE_ENTRY, /* 16-bit PC Card Configuration */
+-    [0x0fc] = 0x06,             /* Tuple length = 6 bytes */
+-    [0x0fe] = 0x02,             /* TPCE_INDX = I/O Primary Mode, no Default */
+-    [0x100] = 0x01,             /* TPCE_FS = Vcc only, no I/O, no Memory */
+-    [0x102] = 0x21,             /* NomV = 1, MinV = 0, MaxV = 0, Peakl = 1 */
+-    [0x104] = 0xb5,             /* NomV: 3.3 V */
+-    [0x106] = 0x1e,
+-    [0x108] = 0x3e,             /* Peakl: 350 mA */
+-
+-    [0x10a] = CISTPL_CFTABLE_ENTRY, /* 16-bit PC Card Configuration */
+-    [0x10c] = 0x12,             /* Tuple length = 18 bytes */
+-    [0x10e] = 0xc3,             /* TPCE_INDX = I/O Secondary Mode, Default */
+-    [0x110] = 0x41,             /* TPCE_IF = I/O and Memory, no BVD, no WP */
+-    [0x112] = 0x99,             /* TPCE_FS = Vcc only, I/O, Interrupt, Misc */
+-    [0x114] = 0x27,             /* NomV = 1, MinV = 1, MaxV = 1, Peakl = 1 */
+-    [0x116] = 0x55,             /* NomV: 5.0 V */
+-    [0x118] = 0x4d,             /* MinV: 4.5 V */
+-    [0x11a] = 0x5d,             /* MaxV: 5.5 V */
+-    [0x11c] = 0x4e,             /* Peakl: 450 mA */
+-    [0x11e] = 0xea,             /* TPCE_IO = 1K boundary, 16/8 access, Range */
+-    [0x120] = 0x61,             /* Range: 2 fields, 2 byte addr, 1 byte len */
+-    [0x122] = 0x70,             /* Field 1 address = 0x0170 */
+-    [0x124] = 0x01,
+-    [0x126] = 0x07,             /* Address block length = 8 */
+-    [0x128] = 0x76,             /* Field 2 address = 0x0376 */
+-    [0x12a] = 0x03,
+-    [0x12c] = 0x01,             /* Address block length = 2 */
+-    [0x12e] = 0xee,             /* TPCE_IR = IRQ E, Level, Pulse, Share */
+-    [0x130] = 0x20,             /* TPCE_MI = support power down mode */
+-
+-    [0x132] = CISTPL_CFTABLE_ENTRY, /* 16-bit PC Card Configuration */
+-    [0x134] = 0x06,             /* Tuple length = 6 bytes */
+-    [0x136] = 0x03,             /* TPCE_INDX = I/O Secondary Mode */
+-    [0x138] = 0x01,             /* TPCE_FS = Vcc only, no I/O, no Memory */
+-    [0x13a] = 0x21,             /* NomV = 1, MinV = 0, MaxV = 0, Peakl = 1 */
+-    [0x13c] = 0xb5,             /* NomV: 3.3 V */
+-    [0x13e] = 0x1e,
+-    [0x140] = 0x3e,             /* Peakl: 350 mA */
+-
+-    [0x142] = CISTPL_NO_LINK,   /* No Link */
+-    [0x144] = 0x00,             /* Tuple length = 0 bytes */
+-
+-    [0x146] = CISTPL_END,       /* Tuple End */
 -};
-diff --git a/hw/usb/Kconfig b/hw/usb/Kconfig
-index 0bffcda1b19..5fbecd2f43b 100644
---- a/hw/usb/Kconfig
-+++ b/hw/usb/Kconfig
-@@ -53,10 +53,6 @@ config USB_XHCI_SYSBUS
+-
+-#define TYPE_DSCM1XXXX "dscm1xxxx"
+-
+-static int dscm1xxxx_attach(PCMCIACardState *card)
+-{
+-    MicroDriveState *md = MICRODRIVE(card);
+-    PCMCIACardClass *pcc = PCMCIA_CARD_GET_CLASS(card);
+-
+-    md->attr_base = pcc->cis[0x74] | (pcc->cis[0x76] << 8);
+-    md->io_base = 0x0;
+-
+-    device_cold_reset(DEVICE(md));
+-    md_interrupt_update(md);
+-
+-    return 0;
+-}
+-
+-static int dscm1xxxx_detach(PCMCIACardState *card)
+-{
+-    MicroDriveState *md = MICRODRIVE(card);
+-
+-    device_cold_reset(DEVICE(md));
+-    return 0;
+-}
+-
+-PCMCIACardState *dscm1xxxx_init(DriveInfo *dinfo)
+-{
+-    MicroDriveState *md;
+-
+-    md = MICRODRIVE(object_new(TYPE_DSCM1XXXX));
+-    qdev_realize(DEVICE(md), NULL, &error_fatal);
+-
+-    if (dinfo != NULL) {
+-        ide_bus_create_drive(&md->bus, 0, dinfo);
+-    }
+-    md->bus.ifs[0].drive_kind = IDE_CFATA;
+-    md->bus.ifs[0].mdata_size = METADATA_SIZE;
+-    md->bus.ifs[0].mdata_storage = g_malloc0(METADATA_SIZE);
+-
+-    return PCMCIA_CARD(md);
+-}
+-
+-static void dscm1xxxx_class_init(ObjectClass *oc, void *data)
+-{
+-    PCMCIACardClass *pcc = PCMCIA_CARD_CLASS(oc);
+-    DeviceClass *dc = DEVICE_CLASS(oc);
+-
+-    pcc->cis = dscm1xxxx_cis;
+-    pcc->cis_len = sizeof(dscm1xxxx_cis);
+-
+-    pcc->attach = dscm1xxxx_attach;
+-    pcc->detach = dscm1xxxx_detach;
+-    /* Reason: Needs to be wired-up in code, see dscm1xxxx_init() */
+-    dc->user_creatable = false;
+-}
+-
+-static const TypeInfo dscm1xxxx_type_info = {
+-    .name = TYPE_DSCM1XXXX,
+-    .parent = TYPE_MICRODRIVE,
+-    .class_init = dscm1xxxx_class_init,
+-};
+-
+-static void microdrive_realize(DeviceState *dev, Error **errp)
+-{
+-    MicroDriveState *md = MICRODRIVE(dev);
+-
+-    ide_bus_init_output_irq(&md->bus, qemu_allocate_irq(md_set_irq, md, 0));
+-}
+-
+-static void microdrive_init(Object *obj)
+-{
+-    MicroDriveState *md = MICRODRIVE(obj);
+-
+-    ide_bus_init(&md->bus, sizeof(md->bus), DEVICE(obj), 0, 1);
+-}
+-
+-static void microdrive_class_init(ObjectClass *oc, void *data)
+-{
+-    DeviceClass *dc = DEVICE_CLASS(oc);
+-    PCMCIACardClass *pcc = PCMCIA_CARD_CLASS(oc);
+-
+-    pcc->attr_read = md_attr_read;
+-    pcc->attr_write = md_attr_write;
+-    pcc->common_read = md_common_read;
+-    pcc->common_write = md_common_write;
+-    pcc->io_read = md_common_read;
+-    pcc->io_write = md_common_write;
+-
+-    dc->realize = microdrive_realize;
+-    dc->reset = md_reset;
+-    dc->vmsd = &vmstate_microdrive;
+-}
+-
+-static const TypeInfo microdrive_type_info = {
+-    .name = TYPE_MICRODRIVE,
+-    .parent = TYPE_PCMCIA_CARD,
+-    .instance_size = sizeof(MicroDriveState),
+-    .instance_init = microdrive_init,
+-    .abstract = true,
+-    .class_init = microdrive_class_init,
+-};
+-
+-static void microdrive_register_types(void)
+-{
+-    type_register_static(&microdrive_type_info);
+-    type_register_static(&dscm1xxxx_type_info);
+-}
+-
+-type_init(microdrive_register_types)
+diff --git a/hw/ide/Kconfig b/hw/ide/Kconfig
+index 6dfc5a21292..2e22b677da3 100644
+--- a/hw/ide/Kconfig
++++ b/hw/ide/Kconfig
+@@ -43,12 +43,6 @@ config IDE_VIA
      bool
-     select USB_XHCI
+     select IDE_PCI
  
--config USB_MUSB
+-config MICRODRIVE
 -    bool
--    select USB
+-    select IDE_BUS
+-    select IDE_DEV
+-    depends on PCMCIA
 -
- config USB_DWC2
+ config AHCI
      bool
-     select USB
-diff --git a/hw/usb/meson.build b/hw/usb/meson.build
-index ae901481597..1b4d1507e41 100644
---- a/hw/usb/meson.build
-+++ b/hw/usb/meson.build
-@@ -23,7 +23,6 @@ system_ss.add(when: 'CONFIG_USB_XHCI', if_true: files('hcd-xhci.c'))
- system_ss.add(when: 'CONFIG_USB_XHCI_PCI', if_true: files('hcd-xhci-pci.c'))
- system_ss.add(when: 'CONFIG_USB_XHCI_SYSBUS', if_true: files('hcd-xhci-sysbus.c'))
- system_ss.add(when: 'CONFIG_USB_XHCI_NEC', if_true: files('hcd-xhci-nec.c'))
--system_ss.add(when: 'CONFIG_USB_MUSB', if_true: files('hcd-musb.c'))
- system_ss.add(when: 'CONFIG_USB_DWC2', if_true: files('hcd-dwc2.c'))
- system_ss.add(when: 'CONFIG_USB_DWC3', if_true: files('hcd-dwc3.c'))
- 
+     select IDE_BUS
+diff --git a/hw/ide/meson.build b/hw/ide/meson.build
+index d09705cac03..90ea8614233 100644
+--- a/hw/ide/meson.build
++++ b/hw/ide/meson.build
+@@ -13,4 +13,3 @@ system_ss.add(when: 'CONFIG_IDE_PCI', if_true: files('pci.c'))
+ system_ss.add(when: 'CONFIG_IDE_PIIX', if_true: files('piix.c', 'ioport.c'))
+ system_ss.add(when: 'CONFIG_IDE_SII3112', if_true: files('sii3112.c'))
+ system_ss.add(when: 'CONFIG_IDE_VIA', if_true: files('via.c'))
+-system_ss.add(when: 'CONFIG_MICRODRIVE', if_true: files('microdrive.c'))
 -- 
 2.34.1
 

@@ -1,114 +1,125 @@
-Received: by 2002:a17:504:3a8f:b0:1be9:327d:8ee3 with SMTP id g15csp1503508njf;
-        Tue, 3 Sep 2024 09:17:00 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVdTf0pvwWVhWW95pgNs6w7kgwGnvijJfeWNEYB8yJlCj3UVU9AEFUjGSGFilpMoaJycHFvi9jmTR0kpg==@linaro.org
-X-Google-Smtp-Source: AGHT+IG5PuDX+orLOcy/SbB+AAAQ+obcEnL6YP/D6EqcZaqM7zZy4eEPPBjG3gaFKx/GPXkc3P2X
-X-Received: by 2002:a05:622a:993:b0:456:7fb5:1bdb with SMTP id d75a77b69052e-4573b3af330mr180962671cf.0.1725380220530;
-        Tue, 03 Sep 2024 09:17:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1725380220; cv=none;
+Received: by 2002:a17:504:3a8f:b0:1be9:327d:8ee3 with SMTP id g15csp1504183njf;
+        Tue, 3 Sep 2024 09:18:44 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCX+xC0bOuLWiHOICH/AXfKb9G3KMaWoVkD9gsWkMKkCAK3YHHgn2PffWUXl4HgzaiDdzQcL4ZTzkIKb4A==@linaro.org
+X-Google-Smtp-Source: AGHT+IHzxja5pfgSK6UakRCB2g2zaP7n2wXppvuYhPExrAINcA5/tzAz9d5a9IAmIIAhUv+6xc6Z
+X-Received: by 2002:a05:620a:4006:b0:79f:aa9:b3a0 with SMTP id af79cd13be357-7a804bbed56mr3536841785a.13.1725380324497;
+        Tue, 03 Sep 2024 09:18:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1725380324; cv=none;
         d=google.com; s=arc-20160816;
-        b=H+lChT0AuQOwHjDq4Iez5w75R6gcC+uLnVyWphZw6rX1GjrYgBZHOqeRmXHqCTTUj0
-         KrGDwBtt/81/qGzIR3Nx/Fx4QoHH7Kx6uCKQjuxC/kBZ36ewJgIGBp1h0mrP+ASk4XUV
-         +vbIxCX/39uDm4py8zdgmtmYjYkMyK4lAhd8YMM6SBgseoiapClf0FdNLiPRh71hXcCc
-         X1qyktmtwM4hBRSddyJ06paT4/CxOB7kOm7fjZALAKHtyMLrln1WyZtX9PGyO9qu6zbH
-         1QXzTVZHxcuka61KZGAJaIR7CV86m99W7ow6oE8qP6zM4291Jh0/nbr+gO6TXYE6Ruo+
-         uvyQ==
+        b=DXUPzKhCNUZmr3/vco6QgY7hFAAnVIMcxrRNx61ghH8I4DLTVfj2jwZN5kBuidrCpa
+         IcTNTQRWAt7EpZ7oatSZHk6uFOeLBeR9XUSaW+ScPdZLljBp0NOPpW8FIWykBCQHgwzf
+         Zzs1NSpng4vLc4ma9PXTU8YqgvvAbX33NUbDRymnRnOObdCq8b2WGBxQv37V+w4TCXUE
+         8Xs/bOji/KvVIZtvo+pO+b4GPHcp8IQKnbLbFTp5aIWN1SIG4dqhcKEgXPo8YSYkdL1G
+         Ghy7zYLXFo2vIcYtB3TXgJIUN4FxC9Sif3dINn4hXpgma9u4jwmQgruQ0gaOVJeyea5h
+         MLvg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=fBVF/JugwgOMfdgy7gC72oIyysi6l06cymbWqbyXhO0=;
-        fh=2DaMKfSux4w6YTsHRLDgY+kyH8HcXxSnuCbrZRM5Cyk=;
-        b=nEIk/ZsIBNPdznqsG0cFvwMmvHOlxJMn/S/AEQV6koNzXyf09e32tP+0JZfoO57WEg
-         VX8fB3hwYa59UQVzXAZD12k9myy0VsitOqgZIbGXd4CyHgUG46Xhf50Jh3xEQaCuqd0T
-         1yz/yNAMhVJaZWDaj1T+Uz5y8FPtrkoOtAK3sijDaPXR0OMTLOWifbQEmbiutKeLZB+p
-         K18mbaCS5STv2IFXcRNhyVJaUn8kZ/jMnChy1bub15QVFxE8BxBrLMLsNPL44N6n2bO7
-         1MwG2GFNDW0K2a3TN/29QRnUi+LMKcKkPNeazGAnTXwg9oOAmctEjW2siARGBzMAWsaE
-         7kRg==;
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=dZETiYGcWh6PLfnPhF+BBHsRqTE81ai2WgRVYRqFS8U=;
+        fh=e/zMl7veFQ4JL6q3TZSBJTf3AMq/hM3Z9nHdMogST1E=;
+        b=yWyaWoN1p8Qz/n1GVOPCj05r56ZlNjOU6WAUNwE7GV+QTZpxyWGSL0G6w28NSJxMGe
+         8AXajUHmngngCmrAHKZtSHZxvNO8y456+PFb6J8D/lgqIa8Csd09eBiRCIlS39RYhyZI
+         7q1jVcxCupB8LkkMD3ZnX5C1bwtRyskyLDVlWZCkjXJ7g/w4eSs+jGiarJh6gbqGX4iM
+         2Q4GRoHZrM7qZOtKASSm/Pgnbj5kWfh5TcGekn39FonEYWdtVe+6R3NoRmfqe8EjcOB9
+         Y5IkbS6BXz/PrHm1O91KKlyqPoXISqYIST0OuPgmIKd+oSchqaAV129iCDC+nm/une9T
+         eCjw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="I/J82syt";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=PfVfZRGG;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-45682c86442si129104021cf.116.2024.09.03.09.17.00
+        by mx.google.com with ESMTPS id a1e0cc1a2514c-846c942d9adsi1265546241.35.2024.09.03.09.18.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 03 Sep 2024 09:17:00 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 03 Sep 2024 09:18:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="I/J82syt";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=PfVfZRGG;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1slW4p-0005m7-0p; Tue, 03 Sep 2024 12:08:19 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1slWEo-0001F9-AG; Tue, 03 Sep 2024 12:18:38 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1slW4l-0005VT-EJ
- for qemu-devel@nongnu.org; Tue, 03 Sep 2024 12:08:15 -0400
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
+ id 1slWEk-0000xb-AH
+ for qemu-arm@nongnu.org; Tue, 03 Sep 2024 12:18:35 -0400
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1slW4h-0002ix-Nn
- for qemu-devel@nongnu.org; Tue, 03 Sep 2024 12:08:14 -0400
-Received: by mail-wm1-x32a.google.com with SMTP id
- 5b1f17b1804b1-42bb81e795bso45456515e9.1
- for <qemu-devel@nongnu.org>; Tue, 03 Sep 2024 09:08:11 -0700 (PDT)
+ id 1slWEi-0004LV-Ip
+ for qemu-arm@nongnu.org; Tue, 03 Sep 2024 12:18:33 -0400
+Received: by mail-wm1-x32b.google.com with SMTP id
+ 5b1f17b1804b1-428e1915e18so46351415e9.1
+ for <qemu-arm@nongnu.org>; Tue, 03 Sep 2024 09:18:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1725379690; x=1725984490; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=fBVF/JugwgOMfdgy7gC72oIyysi6l06cymbWqbyXhO0=;
- b=I/J82sytc0i0+/OOdtG1BcW/+LXPg/QJGdmx8OQZ6IHI6UfRaJFaGt2OVdEklLmyLv
- 8h97DQplhNPOK38d8A111sgcTCZrf6zvVaKaJYIE16pIKLuWXiT3P1WzRvAEPSKYbbkn
- HuaDafltVw+rahHKN86q+cKqaNNS7g8PUfeNteW5BushwiNthNSkIoMJ2Dpl0T43b31r
- G/CCZEvju9d4lN+a5ZYxhSg7ypVOEpmjeYqXY0Fqen7ttyEhZKL3jzcHbqsnKBMJGyyY
- 4XHEc40d1CZLOA9wtj+ZGhQ/1C/LHncxfKXw6+oXHo6pVViKEcUkLv8KGvUA5ROy1U7i
- ACxQ==
+ d=linaro.org; s=google; t=1725380309; x=1725985109; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=dZETiYGcWh6PLfnPhF+BBHsRqTE81ai2WgRVYRqFS8U=;
+ b=PfVfZRGG19PlIQ8f+6MN0bCyuE0339jEjWZI3ZIWuTkFK3c9r+CUmI1Fl8IElQAX5e
+ PbpgYdNB52fVmrZTkRpDaA1XqQFw9aTMzXQRyTVIaB2yHnzWpFSd/qfeT38VqCF0TxG0
+ SN8mvBRK708RaZzpMy0CSmy3fvtbMem16h5IsrFF3XUtRcW92/bRr6uAVCxaNo3Ex1HV
+ j0qRnb3R5xJ5lxJbZbMNyGvPckbrKpE7ehYV8aBdW+sFjMxzvBMsD5iUGSNVZ9U6E2Zg
+ 1qqaP0GkloqbPUKzpCKBp27uAzrO5InFfanop3TtCaToV8zT04CitnOqGSrI4ROxTyzK
+ 9V0w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1725379690; x=1725984490;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=fBVF/JugwgOMfdgy7gC72oIyysi6l06cymbWqbyXhO0=;
- b=DjCx+DJZzUD4bw+O7nxNjtbHDWlkI3S8wNq/F0nIQxup9pTZtFrU4bG9NqcCVH5z0b
- k4Ri50Txh7wuUOT5HWwj1ejJP4TEF7tSiE7VYy3fK5yUnZ9y1fb3xVfivGyuUkxfNaFA
- YZ45WWynZE77mZ9N1y7IxJeSF/LHlx2IqK7XHT3i5EOdpeSZBjwsDlY7bpF+tktm7hx2
- k4XtjzWmCwXHcX9K+G/r2RAFTGyVY+ZzUbUu70Uwr2hhUZs5mL8aX8aUpblBt2S+PO3z
- vu8sOKzpXuJVgots7m4CJ/BBzh/pEfVEBxOchsbnjx2SGp3gnH1c4wyuXb64gTGGR5J9
- V55Q==
+ d=1e100.net; s=20230601; t=1725380309; x=1725985109;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=dZETiYGcWh6PLfnPhF+BBHsRqTE81ai2WgRVYRqFS8U=;
+ b=UtWGat5ynviEkOw2xoXzWSBKA5usQ063LsIA8xgyTYC04WieY9s0Feq3yMQwLvGsYl
+ r0XioBODe/unEyTJaGWDI7VP2XYXHHSyY0vRyUj9OJhJvF8tyDKp4knHC1dMbGVHT/UB
+ 4JPuHs9ixs42uzhxuMy4eahlnqy/55jDKr32RDqUeIAV4Z4iVTlBmOe9BZDlvSbxJ2YJ
+ MjR2725VzxbrDEKHhNo+lPVI/+y7HcO9Q2Rnq2PSwUDhq4uFEbbGGsbVkqEYW5I7G6VF
+ AGRK2dN1EA7QZxChJFd9VgVB0O/cOfSFGogEcsI60+9BCHZjp7v5eHio09wLE5ML8vXY
+ BgLw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCV3LMZWehClwY62hlJ3zWXtzYdgrDOkocfY4mYUgGSO4oANEYdXlJVjralfybSMLGV8oFrb99pHDR4K@nongnu.org
-X-Gm-Message-State: AOJu0Yya1d6UTFXocpAOZ4+ybWxwm0IGLXqWoIyqqlEzS78c/z0GQoBh
- oavg0PqYB4euCAs01VtxrxSfAl5TSVgNlzTXmLi3V8wAIgp/DrBmGrG9G/rgCaI=
-X-Received: by 2002:a05:600c:3c9e:b0:426:627e:37af with SMTP id
- 5b1f17b1804b1-42bbb10d2d5mr98667595e9.3.1725379689902; 
- Tue, 03 Sep 2024 09:08:09 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-42bb6df1066sm175123065e9.18.2024.09.03.09.08.09
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 03 Sep 2024 09:08:09 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH for-9.2 08/53] hw/arm: Remove 'cheetah' machine
-Date: Tue,  3 Sep 2024 17:07:06 +0100
-Message-Id: <20240903160751.4100218-9-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20240903160751.4100218-1-peter.maydell@linaro.org>
-References: <20240903160751.4100218-1-peter.maydell@linaro.org>
+ AJvYcCVvAIpWXcM3kY7jp9iSOqgytFtQ40Wz2RWi9s/cvl1F6NafTAjbzvPmYuNfrrvCzOr7fAAL49mwow==@nongnu.org
+X-Gm-Message-State: AOJu0YwxXYxi0VJ1lNc9CBeXKAOmeB0WWWm+kLGxeucu45h8GNTmK5sX
+ 4ybm391tC+BQ3XWIa7xJfdIN1N6qeA3HgWCiMN91NymoAFGWb7t4R4hxuRSPXimwnDbZirY1NQ4
+ CNkM9juh3r+GbD7a/1eM/5aY+psEW70Dw1qpKbg==
+X-Received: by 2002:a5d:50ce:0:b0:374:bde6:bff5 with SMTP id
+ ffacd0b85a97d-374bf1c94aemr6278935f8f.46.1725380309360; Tue, 03 Sep 2024
+ 09:18:29 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32a.google.com
+References: <CA+1FSiirzpq4wjcKTLSexiOWtv26sgD37h=wA2qxv8Qh5MW_-w@mail.gmail.com>
+ <23d60255-614a-4a06-b449-644f215555d0@linaro.org>
+ <CA+1FSiitcSBa3JZaAZMGkdB356d2M0rPqscwFnNXGML5HghVCQ@mail.gmail.com>
+ <c80e855a-ac1c-40b6-8a76-966e53c0b7d7@linaro.org>
+ <4cbc21b0-0634-445d-8a67-7705a4e186d8@linaro.org>
+ <CA+1FSigiu8xXF1OPs1oSPS7LiGe23gsN73RwPpJUYH=X5EkTRQ@mail.gmail.com>
+ <CA+1FSiiH9LP-7UupNLjDyZJGqJAHAjN2nSLFm9fCx=ZNphxGoQ@mail.gmail.com>
+ <CA+1FSih6t-Ccnxh1GvOFMf9pMjcfV1V+yyJHV=ZH0c2RY0Kjng@mail.gmail.com>
+ <268989a3-cd5c-41fc-ba0d-5eb71bc6e9dc@linaro.org>
+ <CA+1FSijygoVZmTkYR8Xoob4yQQdf9o3CZ2-LmzDrBh2e0VaerQ@mail.gmail.com>
+ <CA+1FSigOmKen0QPKSEQqt15Zzrx4UFSCpj+5DJMCJtGnFcE+Hw@mail.gmail.com>
+ <CA+1FSijfe+5V4RHs-1ow2JwAeiKcmW31V2Ddx9a9zxb_kybDFg@mail.gmail.com>
+ <CAFEAcA-U5DpXysVoVQLAJzEKQ17TL82UiRXHH=q+chxwcubOJA@mail.gmail.com>
+ <CA+1FSij0=6Zn_3HHq1njZgwjYDbopGe5ReUvjXkfHaD2_dCYzA@mail.gmail.com>
+ <CAFEAcA_dprs9NhEZBd=BhMYwm4Aah7kRA_hhrbbh7Num4dH94A@mail.gmail.com>
+ <CA+1FSihVmn9PAQ=18-RfhJ5Gz3hMeVTLh4qqamf_FG94gCoFDg@mail.gmail.com>
+In-Reply-To: <CA+1FSihVmn9PAQ=18-RfhJ5Gz3hMeVTLh4qqamf_FG94gCoFDg@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 3 Sep 2024 17:18:17 +0100
+Message-ID: <CAFEAcA9uffuCA_uQ3cZnPsTWXppNXdi-MqaGFZUeZrDKCbX0ug@mail.gmail.com>
+Subject: Re: Error : init: partition(s) not found in /sys, waiting for their
+ uevent(s): mmcblk0p2, mmcblk0p3 while trying to emulate Android 14 on Ubuntu
+ 24.04 X64 bit using qemu-system-aarch64.
+To: Mario Marietto <marietto2008@gmail.com>
+Cc: Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-discuss@nongnu.org, 
+ qemu-arm <qemu-arm@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -117,481 +128,32 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: RdgCoREn1+4f
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: KA1Z7dktoHiM
 
-The 'cheetah' machine has been deprecated since 9.0, so we can
-remove it for the 9.2 release.
+On Tue, 3 Sept 2024 at 17:13, Mario Marietto <marietto2008@gmail.com> wrote:
+>
+> It was only an hypothesis :
+>
+> https://pastebin.ubuntu.com/p/zjjgXf8xXM/
 
-(tsc210x.c is also used by nseries, so move its MAINTAINER file
-line there; the nseries boards are also about to be removed.)
+That log shows that QEMU starts (if the virtio-blk-pci
+wasn't built in it would give you an error message instead)
+and that the guest has managed to access vda/vdb/vdc
+at least to the point of running e2fsck on them. So the
+QEMU side of the virtio-blk-pci stuff is working fine.
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- MAINTAINERS                             |  10 +-
- docs/system/arm/palm.rst                |  23 --
- docs/system/target-arm.rst              |   1 -
- configs/devices/arm-softmmu/default.mak |   1 -
- hw/arm/palm.c                           | 324 ------------------------
- hw/arm/Kconfig                          |   7 -
- hw/arm/meson.build                      |   1 -
- 7 files changed, 1 insertion(+), 366 deletions(-)
- delete mode 100644 docs/system/arm/palm.rst
- delete mode 100644 hw/arm/palm.c
-
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 52bf3a22e01..cf297e6d626 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -879,6 +879,7 @@ F: hw/arm/nseries.c
- F: hw/display/blizzard.c
- F: hw/input/lm832x.c
- F: hw/input/tsc2005.c
-+F: hw/input/tsc210x.c
- F: hw/misc/cbus.c
- F: hw/rtc/twl92230.c
- F: include/hw/display/blizzard.h
-@@ -888,15 +889,6 @@ F: include/hw/misc/cbus.h
- F: tests/avocado/machine_arm_n8x0.py
- F: docs/system/arm/nseries.rst
- 
--Palm
--M: Peter Maydell <peter.maydell@linaro.org>
--L: qemu-arm@nongnu.org
--S: Odd Fixes
--F: hw/arm/palm.c
--F: hw/input/tsc210x.c
--F: include/hw/input/tsc2xxx.h
--F: docs/system/arm/palm.rst
--
- Raspberry Pi
- M: Peter Maydell <peter.maydell@linaro.org>
- R: Philippe Mathieu-Daudé <philmd@linaro.org>
-diff --git a/docs/system/arm/palm.rst b/docs/system/arm/palm.rst
-deleted file mode 100644
-index 61bc8d34f40..00000000000
---- a/docs/system/arm/palm.rst
-+++ /dev/null
-@@ -1,23 +0,0 @@
--Palm Tungsten|E PDA (``cheetah``)
--=================================
--
--The Palm Tungsten|E PDA (codename \"Cheetah\") emulation includes the
--following elements:
--
---  Texas Instruments OMAP310 System-on-chip (ARM925T core)
--
---  ROM and RAM memories (ROM firmware image can be loaded with
--   -option-rom)
--
---  On-chip LCD controller
--
---  On-chip Real Time Clock
--
---  TI TSC2102i touchscreen controller / analog-digital converter /
--   Audio CODEC, connected through MicroWire and |I2S| buses
--
---  GPIO-connected matrix keypad
--
---  Secure Digital card connected to OMAP MMC/SD host
--
---  Three on-chip UARTs
-diff --git a/docs/system/target-arm.rst b/docs/system/target-arm.rst
-index 326b69502b5..fde37385224 100644
---- a/docs/system/target-arm.rst
-+++ b/docs/system/target-arm.rst
-@@ -99,7 +99,6 @@ undocumented; you can get a complete list by running
-    arm/nuvoton
-    arm/imx25-pdk
-    arm/orangepi
--   arm/palm
-    arm/raspi
-    arm/collie
-    arm/sx1
-diff --git a/configs/devices/arm-softmmu/default.mak b/configs/devices/arm-softmmu/default.mak
-index 4cbe04ffbf1..6ed821be220 100644
---- a/configs/devices/arm-softmmu/default.mak
-+++ b/configs/devices/arm-softmmu/default.mak
-@@ -18,7 +18,6 @@
- # CONFIG_MUSICPAL=n
- # CONFIG_MPS3R=n
- # CONFIG_MUSCA=n
--# CONFIG_CHEETAH=n
- # CONFIG_SX1=n
- # CONFIG_NSERIES=n
- # CONFIG_STELLARIS=n
-diff --git a/hw/arm/palm.c b/hw/arm/palm.c
-deleted file mode 100644
-index e04ac92eb7f..00000000000
---- a/hw/arm/palm.c
-+++ /dev/null
-@@ -1,324 +0,0 @@
--/*
-- * PalmOne's (TM) PDAs.
-- *
-- * Copyright (C) 2006-2007 Andrzej Zaborowski  <balrog@zabor.org>
-- *
-- * This program is free software; you can redistribute it and/or
-- * modify it under the terms of the GNU General Public License as
-- * published by the Free Software Foundation; either version 2 or
-- * (at your option) version 3 of the License.
-- *
-- * This program is distributed in the hope that it will be useful,
-- * but WITHOUT ANY WARRANTY; without even the implied warranty of
-- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-- * GNU General Public License for more details.
-- *
-- * You should have received a copy of the GNU General Public License along
-- * with this program; if not, see <http://www.gnu.org/licenses/>.
-- */
--
--#include "qemu/osdep.h"
--#include "qapi/error.h"
--#include "audio/audio.h"
--#include "sysemu/sysemu.h"
--#include "sysemu/qtest.h"
--#include "ui/console.h"
--#include "hw/arm/omap.h"
--#include "hw/boards.h"
--#include "hw/arm/boot.h"
--#include "hw/input/tsc2xxx.h"
--#include "hw/irq.h"
--#include "hw/loader.h"
--#include "qemu/cutils.h"
--#include "qom/object.h"
--#include "qemu/error-report.h"
--
--
--static uint64_t static_read(void *opaque, hwaddr offset, unsigned size)
--{
--    uint32_t *val = (uint32_t *)opaque;
--    uint32_t sizemask = 7 >> size;
--
--    return *val >> ((offset & sizemask) << 3);
--}
--
--static void static_write(void *opaque, hwaddr offset, uint64_t value,
--                         unsigned size)
--{
--#ifdef SPY
--    printf("%s: value %08lx written at " PA_FMT "\n",
--                    __func__, value, offset);
--#endif
--}
--
--static const MemoryRegionOps static_ops = {
--    .read = static_read,
--    .write = static_write,
--    .valid.min_access_size = 1,
--    .valid.max_access_size = 4,
--    .endianness = DEVICE_NATIVE_ENDIAN,
--};
--
--/* Palm Tunsgten|E support */
--
--/* Shared GPIOs */
--#define PALMTE_USBDETECT_GPIO   0
--#define PALMTE_USB_OR_DC_GPIO   1
--#define PALMTE_TSC_GPIO                 4
--#define PALMTE_PINTDAV_GPIO     6
--#define PALMTE_MMC_WP_GPIO      8
--#define PALMTE_MMC_POWER_GPIO   9
--#define PALMTE_HDQ_GPIO                 11
--#define PALMTE_HEADPHONES_GPIO  14
--#define PALMTE_SPEAKER_GPIO     15
--/* MPU private GPIOs */
--#define PALMTE_DC_GPIO          2
--#define PALMTE_MMC_SWITCH_GPIO  4
--#define PALMTE_MMC1_GPIO        6
--#define PALMTE_MMC2_GPIO        7
--#define PALMTE_MMC3_GPIO        11
--
--static MouseTransformInfo palmte_pointercal = {
--    .x = 320,
--    .y = 320,
--    .a = { -5909, 8, 22465308, 104, 7644, -1219972, 65536 },
--};
--
--static void palmte_microwire_setup(struct omap_mpu_state_s *cpu)
--{
--    uWireSlave *tsc;
--
--    tsc = tsc2102_init(qdev_get_gpio_in(cpu->gpio, PALMTE_PINTDAV_GPIO));
--
--    omap_uwire_attach(cpu->microwire, tsc, 0);
--    omap_mcbsp_i2s_attach(cpu->mcbsp1, tsc210x_codec(tsc));
--
--    tsc210x_set_transform(tsc, &palmte_pointercal);
--}
--
--static struct {
--    int row;
--    int column;
--} palmte_keymap[0x80] = {
--    [0 ... 0x7f] = { -1, -1 },
--    [0x3b] = { 0, 0 },  /* F1   -> Calendar */
--    [0x3c] = { 1, 0 },  /* F2   -> Contacts */
--    [0x3d] = { 2, 0 },  /* F3   -> Tasks List */
--    [0x3e] = { 3, 0 },  /* F4   -> Note Pad */
--    [0x01] = { 4, 0 },  /* Esc  -> Power */
--    [0x4b] = { 0, 1 },  /*         Left */
--    [0x50] = { 1, 1 },  /*         Down */
--    [0x48] = { 2, 1 },  /*         Up */
--    [0x4d] = { 3, 1 },  /*         Right */
--    [0x4c] = { 4, 1 },  /*         Centre */
--    [0x39] = { 4, 1 },  /* Spc  -> Centre */
--};
--
--static void palmte_button_event(void *opaque, int keycode)
--{
--    struct omap_mpu_state_s *cpu = opaque;
--
--    if (palmte_keymap[keycode & 0x7f].row != -1)
--        omap_mpuio_key(cpu->mpuio,
--                        palmte_keymap[keycode & 0x7f].row,
--                        palmte_keymap[keycode & 0x7f].column,
--                        !(keycode & 0x80));
--}
--
--/*
-- * Encapsulation of some GPIO line behaviour for the Palm board
-- *
-- * QEMU interface:
-- *  + unnamed GPIO inputs 0..6: for the various miscellaneous input lines
-- */
--
--#define TYPE_PALM_MISC_GPIO "palm-misc-gpio"
--OBJECT_DECLARE_SIMPLE_TYPE(PalmMiscGPIOState, PALM_MISC_GPIO)
--
--struct PalmMiscGPIOState {
--    SysBusDevice parent_obj;
--};
--
--static void palmte_onoff_gpios(void *opaque, int line, int level)
--{
--    switch (line) {
--    case 0:
--        printf("%s: current to MMC/SD card %sabled.\n",
--                        __func__, level ? "dis" : "en");
--        break;
--    case 1:
--        printf("%s: internal speaker amplifier %s.\n",
--                        __func__, level ? "down" : "on");
--        break;
--
--    /* These LCD & Audio output signals have not been identified yet.  */
--    case 2:
--    case 3:
--    case 4:
--        printf("%s: LCD GPIO%i %s.\n",
--                        __func__, line - 1, level ? "high" : "low");
--        break;
--    case 5:
--    case 6:
--        printf("%s: Audio GPIO%i %s.\n",
--                        __func__, line - 4, level ? "high" : "low");
--        break;
--    }
--}
--
--static void palm_misc_gpio_init(Object *obj)
--{
--    DeviceState *dev = DEVICE(obj);
--
--    qdev_init_gpio_in(dev, palmte_onoff_gpios, 7);
--}
--
--static const TypeInfo palm_misc_gpio_info = {
--    .name = TYPE_PALM_MISC_GPIO,
--    .parent = TYPE_SYS_BUS_DEVICE,
--    .instance_size = sizeof(PalmMiscGPIOState),
--    .instance_init = palm_misc_gpio_init,
--    /*
--     * No class init required: device has no internal state so does not
--     * need to set up reset or vmstate, and has no realize method.
--     */
--};
--
--static void palmte_gpio_setup(struct omap_mpu_state_s *cpu)
--{
--    DeviceState *misc_gpio;
--
--    misc_gpio = sysbus_create_simple(TYPE_PALM_MISC_GPIO, -1, NULL);
--
--    omap_mmc_handlers(cpu->mmc,
--                    qdev_get_gpio_in(cpu->gpio, PALMTE_MMC_WP_GPIO),
--                    qemu_irq_invert(omap_mpuio_in_get(cpu->mpuio)
--                            [PALMTE_MMC_SWITCH_GPIO]));
--
--    qdev_connect_gpio_out(cpu->gpio, PALMTE_MMC_POWER_GPIO,
--                          qdev_get_gpio_in(misc_gpio, 0));
--    qdev_connect_gpio_out(cpu->gpio, PALMTE_SPEAKER_GPIO,
--                          qdev_get_gpio_in(misc_gpio, 1));
--    qdev_connect_gpio_out(cpu->gpio, 11, qdev_get_gpio_in(misc_gpio, 2));
--    qdev_connect_gpio_out(cpu->gpio, 12, qdev_get_gpio_in(misc_gpio, 3));
--    qdev_connect_gpio_out(cpu->gpio, 13, qdev_get_gpio_in(misc_gpio, 4));
--    omap_mpuio_out_set(cpu->mpuio, 1, qdev_get_gpio_in(misc_gpio, 5));
--    omap_mpuio_out_set(cpu->mpuio, 3, qdev_get_gpio_in(misc_gpio, 6));
--
--    /* Reset some inputs to initial state.  */
--    qemu_irq_lower(qdev_get_gpio_in(cpu->gpio, PALMTE_USBDETECT_GPIO));
--    qemu_irq_lower(qdev_get_gpio_in(cpu->gpio, PALMTE_USB_OR_DC_GPIO));
--    qemu_irq_lower(qdev_get_gpio_in(cpu->gpio, 4));
--    qemu_irq_lower(qdev_get_gpio_in(cpu->gpio, PALMTE_HEADPHONES_GPIO));
--    qemu_irq_lower(omap_mpuio_in_get(cpu->mpuio)[PALMTE_DC_GPIO]);
--    qemu_irq_raise(omap_mpuio_in_get(cpu->mpuio)[6]);
--    qemu_irq_raise(omap_mpuio_in_get(cpu->mpuio)[7]);
--    qemu_irq_raise(omap_mpuio_in_get(cpu->mpuio)[11]);
--}
--
--static struct arm_boot_info palmte_binfo = {
--    .loader_start = OMAP_EMIFF_BASE,
--    .ram_size = 0x02000000,
--    .board_id = 0x331,
--};
--
--static void palmte_init(MachineState *machine)
--{
--    MemoryRegion *address_space_mem = get_system_memory();
--    struct omap_mpu_state_s *mpu;
--    int flash_size = 0x00800000;
--    static uint32_t cs0val = 0xffffffff;
--    static uint32_t cs1val = 0x0000e1a0;
--    static uint32_t cs2val = 0x0000e1a0;
--    static uint32_t cs3val = 0xe1a0e1a0;
--    int rom_size, rom_loaded = 0;
--    MachineClass *mc = MACHINE_GET_CLASS(machine);
--    MemoryRegion *flash = g_new(MemoryRegion, 1);
--    MemoryRegion *cs = g_new(MemoryRegion, 4);
--
--    if (machine->ram_size != mc->default_ram_size) {
--        char *sz = size_to_str(mc->default_ram_size);
--        error_report("Invalid RAM size, should be %s", sz);
--        g_free(sz);
--        exit(EXIT_FAILURE);
--    }
--
--    memory_region_add_subregion(address_space_mem, OMAP_EMIFF_BASE,
--                                machine->ram);
--
--    mpu = omap310_mpu_init(machine->ram, machine->cpu_type);
--
--    /* External Flash (EMIFS) */
--    memory_region_init_rom(flash, NULL, "palmte.flash", flash_size,
--                           &error_fatal);
--    memory_region_add_subregion(address_space_mem, OMAP_CS0_BASE, flash);
--
--    memory_region_init_io(&cs[0], NULL, &static_ops, &cs0val, "palmte-cs0",
--                          OMAP_CS0_SIZE - flash_size);
--    memory_region_add_subregion(address_space_mem, OMAP_CS0_BASE + flash_size,
--                                &cs[0]);
--    memory_region_init_io(&cs[1], NULL, &static_ops, &cs1val, "palmte-cs1",
--                          OMAP_CS1_SIZE);
--    memory_region_add_subregion(address_space_mem, OMAP_CS1_BASE, &cs[1]);
--    memory_region_init_io(&cs[2], NULL, &static_ops, &cs2val, "palmte-cs2",
--                          OMAP_CS2_SIZE);
--    memory_region_add_subregion(address_space_mem, OMAP_CS2_BASE, &cs[2]);
--    memory_region_init_io(&cs[3], NULL, &static_ops, &cs3val, "palmte-cs3",
--                          OMAP_CS3_SIZE);
--    memory_region_add_subregion(address_space_mem, OMAP_CS3_BASE, &cs[3]);
--
--    palmte_microwire_setup(mpu);
--
--    qemu_add_kbd_event_handler(palmte_button_event, mpu);
--
--    palmte_gpio_setup(mpu);
--
--    /* Setup initial (reset) machine state */
--    if (nb_option_roms) {
--        rom_size = get_image_size(option_rom[0].name);
--        if (rom_size > flash_size) {
--            fprintf(stderr, "%s: ROM image too big (%x > %x)\n",
--                            __func__, rom_size, flash_size);
--            rom_size = 0;
--        }
--        if (rom_size > 0) {
--            rom_size = load_image_targphys(option_rom[0].name, OMAP_CS0_BASE,
--                                           flash_size);
--            rom_loaded = 1;
--        }
--        if (rom_size < 0) {
--            fprintf(stderr, "%s: error loading '%s'\n",
--                            __func__, option_rom[0].name);
--        }
--    }
--
--    if (!rom_loaded && !machine->kernel_filename && !qtest_enabled()) {
--        fprintf(stderr, "Kernel or ROM image must be specified\n");
--        exit(1);
--    }
--
--    /* Load the kernel.  */
--    arm_load_kernel(mpu->cpu, machine, &palmte_binfo);
--}
--
--static void palmte_machine_init(MachineClass *mc)
--{
--    mc->desc = "Palm Tungsten|E aka. Cheetah PDA (OMAP310)";
--    mc->init = palmte_init;
--    mc->ignore_memory_transaction_failures = true;
--    mc->default_cpu_type = ARM_CPU_TYPE_NAME("ti925t");
--    mc->default_ram_size = 0x02000000;
--    mc->default_ram_id = "omap1.dram";
--    mc->deprecation_reason = "machine is old and unmaintained";
--
--    machine_add_audiodev_property(mc);
--}
--
--DEFINE_MACHINE("cheetah", palmte_machine_init)
--
--static void palm_register_types(void)
--{
--    type_register_static(&palm_misc_gpio_info);
--}
--
--type_init(palm_register_types)
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index c8c57497c5b..3261618ea74 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -37,13 +37,6 @@ config ARM_VIRT
-     select ACPI_CXL
-     select ACPI_HMAT
- 
--config CHEETAH
--    bool
--    default y
--    depends on TCG && ARM
--    select OMAP
--    select TSC210X
--
- config CUBIEBOARD
-     bool
-     default y
-diff --git a/hw/arm/meson.build b/hw/arm/meson.build
-index b099319a223..4a8fd54586b 100644
---- a/hw/arm/meson.build
-+++ b/hw/arm/meson.build
-@@ -62,7 +62,6 @@ arm_ss.add(when: 'CONFIG_NRF51_SOC', if_true: files('nrf51_soc.c'))
- arm_ss.add(when: 'CONFIG_XEN', if_true: files('xen_arm.c'))
- 
- system_ss.add(when: 'CONFIG_ARM_SMMUV3', if_true: files('smmu-common.c'))
--system_ss.add(when: 'CONFIG_CHEETAH', if_true: files('palm.c'))
- system_ss.add(when: 'CONFIG_COLLIE', if_true: files('collie.c'))
- system_ss.add(when: 'CONFIG_EXYNOS4', if_true: files('exynos4_boards.c'))
- system_ss.add(when: 'CONFIG_GUMSTIX', if_true: files('gumstix.c'))
--- 
-2.34.1
-
+thanks
+-- PMM

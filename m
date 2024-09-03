@@ -1,115 +1,112 @@
-Received: by 2002:a17:504:3a8f:b0:1be9:327d:8ee3 with SMTP id g15csp1501593njf;
-        Tue, 3 Sep 2024 09:12:30 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUIPzMLT7St7krmZL/9TYmcW6ZdSjqPh419H3FcTOzfbDDD8lZlRCAAoq9VAwqORs8B9XcuV8MNwPp5MQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IG9nUOOJAtyyzm2XOIdno/RFIwR4tnUWAokyA0wIyHe7pr844vD3BHv3QSom9AN/DZc35h4
-X-Received: by 2002:a05:6102:32d5:b0:497:7ba6:6bc with SMTP id ada2fe7eead31-49a5cd2b7a1mr13132848137.12.1725379950192;
-        Tue, 03 Sep 2024 09:12:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1725379950; cv=none;
+Received: by 2002:a17:504:3a8f:b0:1be9:327d:8ee3 with SMTP id g15csp1501741njf;
+        Tue, 3 Sep 2024 09:12:54 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXSSB4A6JYhLSXshSYxHIqKkU9AZ1Y93wWhYCIV7WDqay+INhjzJl0dtQ7JDJLrfZ8h5GkejKgoE4h3hQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IF3XNJYJB0U1zZ6RBrB4PMALjT6Lm1aeQLZpPSl7hj276RjfTuZP6B1NZCm63YzNQOHmbeU
+X-Received: by 2002:a05:6808:2f1a:b0:3e0:3ff:807c with SMTP id 5614622812f47-3e003ff84fbmr10835576b6e.41.1725379973849;
+        Tue, 03 Sep 2024 09:12:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1725379973; cv=none;
         d=google.com; s=arc-20160816;
-        b=qBZb/ghTfCEPXxAoTKMO0DcZvYTusG+WJGRx6Em1I4rkCAvK7KLpHOFfpNfTF0M5V3
-         v6iVzdR4bD+ScQqwzI5LS0hRdou92P7Nk3J55Lxm+ETP8YkhA9fJA9KSTOcg09DnHtcR
-         3MaM73QXG9B98DXUIESZJrD1P899sVBrw5zvKxXtCQZADmWSI8ypoWeqLUSJ/TQly8CC
-         PNM6MRg4fyLW/fSaJtrGeSwTZ42CrncEhzZKs4s6YUBFm8t2HMS4rwSS6CxRpY5vyvTo
-         rwlhR15I7gzY1PLALK7mDxCFy4AIIg6b7BCPate6mjbA+euQAVupdaUVGvqSkkF27xhO
-         Q7VQ==
+        b=Fq9ijA9Deo1/PO8FgnlgjFuMWBPQ6Xov/nU9Ya3+vDK67ZYOwHfP4vM4+ONbEsFnRH
+         y5uwCkKkna7D9sOUa8sjNusyscV4r6FFAxD9vanEphVeSGULIXFk8Ojfq6HtWsNzZbPW
+         u7xC4XB343lwEHveICJwQczFeOZl31Lv+U6dog413PW1jY5hVn2b3xBv9/Vku2h1XeLh
+         QAgf3SziEsyQB0Cz9D7CLAfnQTy24B5zbDFwJwUCdy2zvpnsuiYdgoTeJ/01wjCMx/2O
+         n0nRFCmc3pwKYGtE7spFZkV6DqqT+QKgSl6eeLMRmeCpblEXskWzvY6LPFOHUDSeDZpI
+         +PJA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=Kb2hlNOkuGqsXxdmbrthsU/1g1vBxCB4j6840EtQwyY=;
-        fh=iw6RJ4cf9bmAXXqDorcli7eFCT/JYKN83zTBlLLKIMo=;
-        b=n76eR+x5M4uRsZnPZgNdWc7YK5PERnSOnoqzbP+llTCZesdvRR/9iZ3hNKBljPlYP4
-         /9BHafvnVE//ecJkM1Q0w5sgarWHw78KR151KIzm+PpGu9oak5bNSUNNglqvabSqwc4Z
-         LkdfmWBNPmVpk/FkpHVmf03exXS7at5zKcqM2ZjUXTK+QQRebOQfCXAozICZFHke/1FE
-         I38bRz0MIPTdME7O7VSE51iXVgTcg79ENr9PVnroELOgL9Oh3l2Cn1+O6LoVNUlaXTbJ
-         a1LEs+YbFTyeW4X5f4pHkOj/SsjLLgOE7k0Wedx2AKVUFtr1PWWfHX8FOJgUkrtPfx8t
-         z8eg==;
+        bh=XSUXLx8RymjZoH3CUxgDuuHRurRfQuokj7VlT6LUHv4=;
+        fh=H2AmuqulvQE+T5zu97MCEUC3z9wF9NssS7895NhR/+c=;
+        b=NbE4O07zp+W1FHD+HsfTG7oYYomFQtCJXFLE1lyQxVADa/xnav5k/QjrwvZma/o/oR
+         6KBgbYtVtFbMBOnJlVCoP90s0hy+8FxffMAGr1zRkF5iS8XRL4lFB6ZcxQc+0DvP0o4z
+         GB0Pqe/DjsrRmy0gBQpvxUPAJ0fksAAkfIfEZhhm0B9rky8/Rc/8kP9v1h6rv0VulsMh
+         uGipu54Wr/QG5SG0PtNJix5wD1cIU97oytbZGcp6nDnALSyPmF9wwJCnllvakeBQ3KHy
+         rqFa+dRvHjGsAboOfNvTeFwHqT2+riqJOC04rVur50Dy74Dx26SPQjVJfZjEqi8ES403
+         W4tg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=WajZzY5n;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=rTL7waw7;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ada2fe7eead31-49a5f577243si3234141137.571.2024.09.03.09.12.30
+        by mx.google.com with ESMTPS id ada2fe7eead31-49a5f4fae5dsi2735635137.287.2024.09.03.09.12.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 03 Sep 2024 09:12:30 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 03 Sep 2024 09:12:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=WajZzY5n;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=rTL7waw7;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1slW4z-0006RD-H6; Tue, 03 Sep 2024 12:08:29 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1slW5d-0001kY-Uv; Tue, 03 Sep 2024 12:09:10 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1slW4n-0005ep-EQ
- for qemu-devel@nongnu.org; Tue, 03 Sep 2024 12:08:18 -0400
-Received: from mail-lf1-x133.google.com ([2a00:1450:4864:20::133])
+ id 1slW5c-0001bo-Db
+ for qemu-arm@nongnu.org; Tue, 03 Sep 2024 12:09:08 -0400
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1slW4i-0002jI-PZ
- for qemu-devel@nongnu.org; Tue, 03 Sep 2024 12:08:16 -0400
-Received: by mail-lf1-x133.google.com with SMTP id
- 2adb3069b0e04-53438aa64a4so6717039e87.3
- for <qemu-devel@nongnu.org>; Tue, 03 Sep 2024 09:08:12 -0700 (PDT)
+ id 1slW5Z-0002zE-Rx
+ for qemu-arm@nongnu.org; Tue, 03 Sep 2024 12:09:07 -0400
+Received: by mail-wm1-x32c.google.com with SMTP id
+ 5b1f17b1804b1-42bb4f8a4bfso30263715e9.1
+ for <qemu-arm@nongnu.org>; Tue, 03 Sep 2024 09:09:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1725379691; x=1725984491; darn=nongnu.org;
+ d=linaro.org; s=google; t=1725379744; x=1725984544; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=Kb2hlNOkuGqsXxdmbrthsU/1g1vBxCB4j6840EtQwyY=;
- b=WajZzY5nG4iXstZ2ezhqOrVe+NcVtzKL5TnaWGFCyKsC1q9SCkubW+dlonKU9nLIWK
- diObgU0h2ggcJv6HffYAdYdDS0k1kjbqmq7fmjU7nfns0Y2vUBlEOTmjwlWe6WSpccDs
- Xy5pO89bWSgQTIgSSzT2K752vYCb6APYzlO9hyRu5EcRDRj0tjCxo3veOY07tJzFry86
- TChXbm85RHInX0BSkS9YY8odgC4qQu8GMq4/g/taxddkUVhM/eVvDo33eHL90AUMQ14k
- fdwn3FlIWpFqe1XLdCYvrQIC6Mvr2qHflpcYY+4l32LWLb4W+5wmuZqv14HLpg1FllQq
- C2YA==
+ :reply-to; bh=XSUXLx8RymjZoH3CUxgDuuHRurRfQuokj7VlT6LUHv4=;
+ b=rTL7waw7sFmpNRf9INKP5bxBEcy9CAA5ggb0MpdAS+tMjg1oQY00hP8T6riRZTs9sc
+ 3XwYUJc9eIRtI652Te0Fjfgv7ofQLTWW81SL0/DJxsbjVyEY8e2gpZuf1QkmUfbu8QBo
+ ePQfUnY5qLEDd3jG8Uarj8s1llJ7bW11ZSnzHTNEWbBbwC6W7cRQuSrRcSE3V+gWPsb7
+ icANAlpjbEQMSa9b7V4yiCfuUHXaqGlpK+1F8XM1eaBjK45RRRTAAQKOYkUkOxSWOU87
+ Ce86kh6+gKZiOViIMc6fqEGu6HYFWpsFyMUzNP5xoh0i7pEG3BclCZTOgcEgCtyydJ57
+ b/1A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1725379691; x=1725984491;
+ d=1e100.net; s=20230601; t=1725379744; x=1725984544;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=Kb2hlNOkuGqsXxdmbrthsU/1g1vBxCB4j6840EtQwyY=;
- b=dhOYl3Kmpa1/dUkgynv/llRZ90ZD+LdYQ2Mt4sD3im2TMqm9eEBOg1FG/lglL4DNtj
- oShqG4xi8fcBEOgx966TQDBKbG9nJJY+dYbV3xa82dmx4cCK1eAJCBT5Dus5GbRHEJZu
- 5Ur5G5gSMcGwQYRaOPQoupGgk5oIdirCpTnJw6bsXcHtK5gmJmWZrfZ5pk2C6rQR0+48
- FlefGmu4VCfSeb3WNreIURS3q1o+Qypi3IHBi5uZwQcedQNE/48CIzsfAoj+13wDoxEM
- 9s8j9ipPtx27V1lhhULCjzbBnf0LpCfo9dFt2yBo4u48vhaaAjH+TYUGU6Zvjs3rQUtp
- kqHQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVF4WUE3ELbXeLwcsOiCMlRI1s2YrNVrncUZAvfhLL8cqHyA9fA9FrNwkLBf2uUUr7rCRsHgUcRdmG/@nongnu.org
-X-Gm-Message-State: AOJu0Yyd4YHcSwAq8+y9gOBg55aCkdvDFOIGypzviX5+hzyXIbH/Z2Gf
- kwdyR9pDWcj8qhmu8+OwGK54Ba7L9clCDtsCYGsobraFpp5Na46JdThpAbc1v5e0hvovIBwFgE8
- C
-X-Received: by 2002:a05:6512:2346:b0:52c:dc25:d706 with SMTP id
- 2adb3069b0e04-53546b9b8e8mr10968870e87.52.1725379690624; 
- Tue, 03 Sep 2024 09:08:10 -0700 (PDT)
+ bh=XSUXLx8RymjZoH3CUxgDuuHRurRfQuokj7VlT6LUHv4=;
+ b=U9n/xiokNjCKBtoO0U6vn+OeBkmQXLkhkDZUXd7v0urVdcgRGPB0y2/N8/6/vwlaRY
+ DaH8t3wJOj3d1CrG1wJTlJB+roVime6+Jzyx7dNPc32ZapUMPNj65NpWmfxIS1fgyMCb
+ 9w68OqjC3eTg3GP9cCWw+Zw/u4MJ7wzU8kqVHnJ5+AHi7dJwRWW+IoX6N/HTCycqwX9p
+ nglAoUPxelNgfnUKe6pw4k8X4cYTwc3Kaik8oDqOuD1OKDGtO+FU2a9F5J81oBwUrLjw
+ aMaHYfCdrZ5WXwdHRVTpb7CYegkA4CXFqNrQO+0Q5lNjIlUcVh9hR2vBMgQlIoK7Haeh
+ H9qA==
+X-Gm-Message-State: AOJu0Yw1EdjbxnMGMdsMQKRKxyLiaxan+cFigOorFSbyvWemEq9FBWUj
+ RNLCZaAC/tXwpfYXftwTdyg4ElTkon3u++UX5eILCk1PjjO+FzAs212aymXbHQd5jFAA2pPJ1Gv
+ W
+X-Received: by 2002:a05:600c:3510:b0:429:ea2e:36e1 with SMTP id
+ 5b1f17b1804b1-42bb4caa0c2mr106323075e9.13.1725379744333; 
+ Tue, 03 Sep 2024 09:09:04 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-42bb6df1066sm175123065e9.18.2024.09.03.09.08.10
+ 5b1f17b1804b1-42bb6df1066sm175123065e9.18.2024.09.03.09.09.00
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 03 Sep 2024 09:08:10 -0700 (PDT)
+ Tue, 03 Sep 2024 09:09:01 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH for-9.2 09/53] hw/arm: Remove 'connex' and 'verdex' machines
-Date: Tue,  3 Sep 2024 17:07:07 +0100
-Message-Id: <20240903160751.4100218-10-peter.maydell@linaro.org>
+Subject: [PATCH for-9.2 47/53] hw/ssi: Remove omap_mcspi
+Date: Tue,  3 Sep 2024 17:07:45 +0100
+Message-Id: <20240903160751.4100218-48-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240903160751.4100218-1-peter.maydell@linaro.org>
 References: <20240903160751.4100218-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::133;
- envelope-from=peter.maydell@linaro.org; helo=mail-lf1-x133.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -118,285 +115,459 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: jzNtmIjQspkk
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: mO3PSnRXxCj6
 
-The connex and verdex machines have been deprecated since
-9.0 and so can be removed for the 9.2 release.
+The omap_mcspi device is used only in the OMAP2 SoC, which we
+are removing.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- MAINTAINERS                             |   8 --
- docs/system/arm/gumstix.rst             |  21 ----
- docs/system/target-arm.rst              |   1 -
- configs/devices/arm-softmmu/default.mak |   1 -
- hw/arm/gumstix.c                        | 141 ------------------------
- hw/arm/Kconfig                          |   8 --
- hw/arm/meson.build                      |   1 -
- 7 files changed, 181 deletions(-)
- delete mode 100644 docs/system/arm/gumstix.rst
- delete mode 100644 hw/arm/gumstix.c
+ include/hw/arm/omap.h |  11 --
+ hw/ssi/omap_spi.c     | 380 ------------------------------------------
+ hw/ssi/meson.build    |   1 -
+ 3 files changed, 392 deletions(-)
+ delete mode 100644 hw/ssi/omap_spi.c
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index cf297e6d626..13685711f61 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -743,14 +743,6 @@ S: Maintained
- F: hw/rtc/goldfish_rtc.c
- F: include/hw/rtc/goldfish_rtc.h
+diff --git a/include/hw/arm/omap.h b/include/hw/arm/omap.h
+index 982341d0079..118874d8775 100644
+--- a/include/hw/arm/omap.h
++++ b/include/hw/arm/omap.h
+@@ -698,15 +698,6 @@ struct omap_uwire_s;
+ void omap_uwire_attach(struct omap_uwire_s *s,
+                 uWireSlave *slave, int chipselect);
  
--Gumstix
--M: Peter Maydell <peter.maydell@linaro.org>
--R: Philippe Mathieu-Daudé <philmd@linaro.org>
--L: qemu-arm@nongnu.org
--S: Odd Fixes
--F: hw/arm/gumstix.c
--F: docs/system/arm/gumstix.rst
+-/* OMAP2 spi */
+-struct omap_mcspi_s;
+-struct omap_mcspi_s *omap_mcspi_init(struct omap_target_agent_s *ta, int chnum,
+-                qemu_irq irq, qemu_irq *drq, omap_clk fclk, omap_clk iclk);
+-void omap_mcspi_attach(struct omap_mcspi_s *s,
+-                uint32_t (*txrx)(void *opaque, uint32_t, int), void *opaque,
+-                int chipselect);
+-void omap_mcspi_reset(struct omap_mcspi_s *s);
 -
- i.MX25 PDK
- M: Peter Maydell <peter.maydell@linaro.org>
- R: Jean-Christophe Dubois <jcd@tribudubois.net>
-diff --git a/docs/system/arm/gumstix.rst b/docs/system/arm/gumstix.rst
+ struct I2SCodec {
+     void *opaque;
+ 
+@@ -923,8 +914,6 @@ struct omap_mpu_state_s {
+     /* OMAP2-only peripherals */
+     struct omap_l4_s *l4;
+ 
+-    struct omap_mcspi_s *mcspi[2];
+-
+     struct omap_dss_s *dss;
+ };
+ 
+diff --git a/hw/ssi/omap_spi.c b/hw/ssi/omap_spi.c
 deleted file mode 100644
-index cb373139dcb..00000000000
---- a/docs/system/arm/gumstix.rst
+index 8f85c3e3918..00000000000
+--- a/hw/ssi/omap_spi.c
 +++ /dev/null
-@@ -1,21 +0,0 @@
--Gumstix Connex and Verdex (``connex``, ``verdex``)
--==================================================
--
--These machines model the Gumstix Connex and Verdex boards.
--The Connex has a PXA255 CPU and the Verdex has a PXA270.
--
--Implemented devices:
--
-- * NOR flash
-- * SMC91C111 ethernet
-- * Interrupt controller
-- * DMA
-- * Timer
-- * GPIO
-- * MMC/SD card
-- * Fast infra-red communications port (FIR)
-- * LCD controller
-- * Synchronous serial ports (SPI)
-- * PCMCIA interface
-- * I2C
-- * I2S
-diff --git a/docs/system/target-arm.rst b/docs/system/target-arm.rst
-index fde37385224..ddaf1675dcc 100644
---- a/docs/system/target-arm.rst
-+++ b/docs/system/target-arm.rst
-@@ -91,7 +91,6 @@ undocumented; you can get a complete list by running
-    arm/cubieboard
-    arm/emcraft-sf2
-    arm/musicpal
--   arm/gumstix
-    arm/mainstone
-    arm/kzm
-    arm/nseries
-diff --git a/configs/devices/arm-softmmu/default.mak b/configs/devices/arm-softmmu/default.mak
-index 6ed821be220..490ef4b3943 100644
---- a/configs/devices/arm-softmmu/default.mak
-+++ b/configs/devices/arm-softmmu/default.mak
-@@ -28,7 +28,6 @@
- # CONFIG_VEXPRESS=n
- # CONFIG_ZYNQ=n
- # CONFIG_MAINSTONE=n
--# CONFIG_GUMSTIX=n
- # CONFIG_Z2=n
- # CONFIG_NPCM7XX=n
- # CONFIG_COLLIE=n
-diff --git a/hw/arm/gumstix.c b/hw/arm/gumstix.c
-deleted file mode 100644
-index 91462691531..00000000000
---- a/hw/arm/gumstix.c
-+++ /dev/null
-@@ -1,141 +0,0 @@
+@@ -1,380 +0,0 @@
 -/*
-- * Gumstix Platforms
+- * TI OMAP processor's Multichannel SPI emulation.
 - *
-- * Copyright (c) 2007 by Thorsten Zitterell <info@bitmux.org>
+- * Copyright (C) 2007-2009 Nokia Corporation
 - *
-- * Code based on spitz platform by Andrzej Zaborowski <balrog@zabor.org>
+- * Original code for OMAP2 by Andrzej Zaborowski <andrew@openedhand.com>
 - *
-- * This code is licensed under the GNU GPL v2.
+- * This program is free software; you can redistribute it and/or
+- * modify it under the terms of the GNU General Public License as
+- * published by the Free Software Foundation; either version 2 or
+- * (at your option) any later version of the License.
 - *
-- * Contributions after 2012-01-13 are licensed under the terms of the
-- * GNU GPL, version 2 or (at your option) any later version.
-- */
--
--/* 
-- * Example usage:
-- * 
-- * connex:
-- * =======
-- * create image:
-- * # dd of=flash bs=1k count=16k if=/dev/zero
-- * # dd of=flash bs=1k conv=notrunc if=u-boot.bin
-- * # dd of=flash bs=1k conv=notrunc seek=256 if=rootfs.arm_nofpu.jffs2
-- * start it:
-- * # qemu-system-arm -M connex -pflash flash -monitor null -nographic
+- * This program is distributed in the hope that it will be useful,
+- * but WITHOUT ANY WARRANTY; without even the implied warranty of
+- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+- * GNU General Public License for more details.
 - *
-- * verdex:
-- * =======
-- * create image:
-- * # dd of=flash bs=1k count=32k if=/dev/zero
-- * # dd of=flash bs=1k conv=notrunc if=u-boot.bin
-- * # dd of=flash bs=1k conv=notrunc seek=256 if=rootfs.arm_nofpu.jffs2
-- * # dd of=flash bs=1k conv=notrunc seek=31744 if=uImage
-- * start it:
-- * # qemu-system-arm -M verdex -pflash flash -monitor null -nographic -m 289
+- * You should have received a copy of the GNU General Public License along
+- * with this program; if not, write to the Free Software Foundation, Inc.,
+- * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 - */
 -
 -#include "qemu/osdep.h"
--#include "qemu/units.h"
--#include "qemu/error-report.h"
--#include "hw/arm/pxa.h"
--#include "net/net.h"
--#include "hw/block/flash.h"
--#include "hw/net/smc91c111.h"
--#include "hw/boards.h"
--#include "exec/address-spaces.h"
--#include "sysemu/qtest.h"
+-#include "qemu/log.h"
+-#include "hw/hw.h"
+-#include "hw/irq.h"
+-#include "hw/arm/omap.h"
 -
--#define CONNEX_FLASH_SIZE   (16 * MiB)
--#define CONNEX_RAM_SIZE     (64 * MiB)
+-/* Multichannel SPI */
+-struct omap_mcspi_s {
+-    MemoryRegion iomem;
+-    qemu_irq irq;
+-    int chnum;
 -
--#define VERDEX_FLASH_SIZE   (32 * MiB)
--#define VERDEX_RAM_SIZE     (256 * MiB)
+-    uint32_t sysconfig;
+-    uint32_t systest;
+-    uint32_t irqst;
+-    uint32_t irqen;
+-    uint32_t wken;
+-    uint32_t control;
 -
--#define FLASH_SECTOR_SIZE   (128 * KiB)
+-    struct omap_mcspi_ch_s {
+-        qemu_irq txdrq;
+-        qemu_irq rxdrq;
+-        uint32_t (*txrx)(void *opaque, uint32_t, int);
+-        void *opaque;
 -
--static void connex_init(MachineState *machine)
--{
--    PXA2xxState *cpu;
--    DriveInfo *dinfo;
+-        uint32_t tx;
+-        uint32_t rx;
 -
--    cpu = pxa255_init(CONNEX_RAM_SIZE);
--
--    dinfo = drive_get(IF_PFLASH, 0, 0);
--    if (!dinfo && !qtest_enabled()) {
--        error_report("A flash image must be given with the "
--                     "'pflash' parameter");
--        exit(1);
--    }
--
--    /* Numonyx RC28F128J3F75 */
--    pflash_cfi01_register(0x00000000, "connext.rom", CONNEX_FLASH_SIZE,
--                          dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
--                          FLASH_SECTOR_SIZE, 2, 0, 0, 0, 0, 0);
--
--    /* Interrupt line of NIC is connected to GPIO line 36 */
--    smc91c111_init(0x04000300, qdev_get_gpio_in(cpu->gpio, 36));
--}
--
--static void verdex_init(MachineState *machine)
--{
--    PXA2xxState *cpu;
--    DriveInfo *dinfo;
--
--    cpu = pxa270_init(VERDEX_RAM_SIZE, machine->cpu_type);
--
--    dinfo = drive_get(IF_PFLASH, 0, 0);
--    if (!dinfo && !qtest_enabled()) {
--        error_report("A flash image must be given with the "
--                     "'pflash' parameter");
--        exit(1);
--    }
--
--    /* Micron RC28F256P30TFA */
--    pflash_cfi01_register(0x00000000, "verdex.rom", VERDEX_FLASH_SIZE,
--                          dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
--                          FLASH_SECTOR_SIZE, 2, 0, 0, 0, 0, 0);
--
--    /* Interrupt line of NIC is connected to GPIO line 99 */
--    smc91c111_init(0x04000300, qdev_get_gpio_in(cpu->gpio, 99));
--}
--
--static void connex_class_init(ObjectClass *oc, void *data)
--{
--    MachineClass *mc = MACHINE_CLASS(oc);
--
--    mc->desc = "Gumstix Connex (PXA255)";
--    mc->init = connex_init;
--    mc->ignore_memory_transaction_failures = true;
--    mc->deprecation_reason = "machine is old and unmaintained";
--}
--
--static const TypeInfo connex_type = {
--    .name = MACHINE_TYPE_NAME("connex"),
--    .parent = TYPE_MACHINE,
--    .class_init = connex_class_init,
+-        uint32_t config;
+-        uint32_t status;
+-        uint32_t control;
+-    } ch[4];
 -};
 -
--static void verdex_class_init(ObjectClass *oc, void *data)
+-static inline void omap_mcspi_interrupt_update(struct omap_mcspi_s *s)
 -{
--    MachineClass *mc = MACHINE_CLASS(oc);
--
--    mc->desc = "Gumstix Verdex Pro XL6P COMs (PXA270)";
--    mc->init = verdex_init;
--    mc->ignore_memory_transaction_failures = true;
--    mc->deprecation_reason = "machine is old and unmaintained";
--    mc->default_cpu_type = ARM_CPU_TYPE_NAME("pxa270-c0");
+-    qemu_set_irq(s->irq, s->irqst & s->irqen);
 -}
 -
--static const TypeInfo verdex_type = {
--    .name = MACHINE_TYPE_NAME("verdex"),
--    .parent = TYPE_MACHINE,
--    .class_init = verdex_class_init,
+-static inline void omap_mcspi_dmarequest_update(struct omap_mcspi_ch_s *ch)
+-{
+-    qemu_set_irq(ch->txdrq,
+-                    (ch->control & 1) &&		/* EN */
+-                    (ch->config & (1 << 14)) &&		/* DMAW */
+-                    (ch->status & (1 << 1)) &&		/* TXS */
+-                    ((ch->config >> 12) & 3) != 1);	/* TRM */
+-    qemu_set_irq(ch->rxdrq,
+-                    (ch->control & 1) &&		/* EN */
+-                    (ch->config & (1 << 15)) &&		/* DMAW */
+-                    (ch->status & (1 << 0)) &&		/* RXS */
+-                    ((ch->config >> 12) & 3) != 2);	/* TRM */
+-}
+-
+-static void omap_mcspi_transfer_run(struct omap_mcspi_s *s, int chnum)
+-{
+-    struct omap_mcspi_ch_s *ch = s->ch + chnum;
+-
+-    if (!(ch->control & 1))				/* EN */
+-        return;
+-    if ((ch->status & (1 << 0)) &&			/* RXS */
+-                    ((ch->config >> 12) & 3) != 2 &&	/* TRM */
+-                    !(ch->config & (1 << 19)))		/* TURBO */
+-        goto intr_update;
+-    if ((ch->status & (1 << 1)) &&			/* TXS */
+-                    ((ch->config >> 12) & 3) != 1)	/* TRM */
+-        goto intr_update;
+-
+-    if (!(s->control & 1) ||				/* SINGLE */
+-                    (ch->config & (1 << 20))) {		/* FORCE */
+-        if (ch->txrx)
+-            ch->rx = ch->txrx(ch->opaque, ch->tx,	/* WL */
+-                            1 + (0x1f & (ch->config >> 7)));
+-    }
+-
+-    ch->tx = 0;
+-    ch->status |= 1 << 2;				/* EOT */
+-    ch->status |= 1 << 1;				/* TXS */
+-    if (((ch->config >> 12) & 3) != 2)			/* TRM */
+-        ch->status |= 1 << 0;				/* RXS */
+-
+-intr_update:
+-    if ((ch->status & (1 << 0)) &&			/* RXS */
+-                    ((ch->config >> 12) & 3) != 2 &&	/* TRM */
+-                    !(ch->config & (1 << 19)))		/* TURBO */
+-        s->irqst |= 1 << (2 + 4 * chnum);		/* RX_FULL */
+-    if ((ch->status & (1 << 1)) &&			/* TXS */
+-                    ((ch->config >> 12) & 3) != 1)	/* TRM */
+-        s->irqst |= 1 << (0 + 4 * chnum);		/* TX_EMPTY */
+-    omap_mcspi_interrupt_update(s);
+-    omap_mcspi_dmarequest_update(ch);
+-}
+-
+-void omap_mcspi_reset(struct omap_mcspi_s *s)
+-{
+-    int ch;
+-
+-    s->sysconfig = 0;
+-    s->systest = 0;
+-    s->irqst = 0;
+-    s->irqen = 0;
+-    s->wken = 0;
+-    s->control = 4;
+-
+-    for (ch = 0; ch < 4; ch ++) {
+-        s->ch[ch].config = 0x060000;
+-        s->ch[ch].status = 2;				/* TXS */
+-        s->ch[ch].control = 0;
+-
+-        omap_mcspi_dmarequest_update(s->ch + ch);
+-    }
+-
+-    omap_mcspi_interrupt_update(s);
+-}
+-
+-static uint64_t omap_mcspi_read(void *opaque, hwaddr addr, unsigned size)
+-{
+-    struct omap_mcspi_s *s = opaque;
+-    int ch = 0;
+-    uint32_t ret;
+-
+-    if (size != 4) {
+-        return omap_badwidth_read32(opaque, addr);
+-    }
+-
+-    switch (addr) {
+-    case 0x00:	/* MCSPI_REVISION */
+-        return 0x91;
+-
+-    case 0x10:	/* MCSPI_SYSCONFIG */
+-        return s->sysconfig;
+-
+-    case 0x14:	/* MCSPI_SYSSTATUS */
+-        return 1;					/* RESETDONE */
+-
+-    case 0x18:	/* MCSPI_IRQSTATUS */
+-        return s->irqst;
+-
+-    case 0x1c:	/* MCSPI_IRQENABLE */
+-        return s->irqen;
+-
+-    case 0x20:	/* MCSPI_WAKEUPENABLE */
+-        return s->wken;
+-
+-    case 0x24:	/* MCSPI_SYST */
+-        return s->systest;
+-
+-    case 0x28:	/* MCSPI_MODULCTRL */
+-        return s->control;
+-
+-    case 0x68: ch ++;
+-        /* fall through */
+-    case 0x54: ch ++;
+-        /* fall through */
+-    case 0x40: ch ++;
+-        /* fall through */
+-    case 0x2c:	/* MCSPI_CHCONF */
+-        return s->ch[ch].config;
+-
+-    case 0x6c: ch ++;
+-        /* fall through */
+-    case 0x58: ch ++;
+-        /* fall through */
+-    case 0x44: ch ++;
+-        /* fall through */
+-    case 0x30:	/* MCSPI_CHSTAT */
+-        return s->ch[ch].status;
+-
+-    case 0x70: ch ++;
+-        /* fall through */
+-    case 0x5c: ch ++;
+-        /* fall through */
+-    case 0x48: ch ++;
+-        /* fall through */
+-    case 0x34:	/* MCSPI_CHCTRL */
+-        return s->ch[ch].control;
+-
+-    case 0x74: ch ++;
+-        /* fall through */
+-    case 0x60: ch ++;
+-        /* fall through */
+-    case 0x4c: ch ++;
+-        /* fall through */
+-    case 0x38:	/* MCSPI_TX */
+-        return s->ch[ch].tx;
+-
+-    case 0x78: ch ++;
+-        /* fall through */
+-    case 0x64: ch ++;
+-        /* fall through */
+-    case 0x50: ch ++;
+-        /* fall through */
+-    case 0x3c:	/* MCSPI_RX */
+-        s->ch[ch].status &= ~(1 << 0);			/* RXS */
+-        ret = s->ch[ch].rx;
+-        omap_mcspi_transfer_run(s, ch);
+-        return ret;
+-    }
+-
+-    OMAP_BAD_REG(addr);
+-    return 0;
+-}
+-
+-static void omap_mcspi_write(void *opaque, hwaddr addr,
+-                             uint64_t value, unsigned size)
+-{
+-    struct omap_mcspi_s *s = opaque;
+-    int ch = 0;
+-
+-    if (size != 4) {
+-        omap_badwidth_write32(opaque, addr, value);
+-        return;
+-    }
+-
+-    switch (addr) {
+-    case 0x00:	/* MCSPI_REVISION */
+-    case 0x14:	/* MCSPI_SYSSTATUS */
+-    case 0x30:	/* MCSPI_CHSTAT0 */
+-    case 0x3c:	/* MCSPI_RX0 */
+-    case 0x44:	/* MCSPI_CHSTAT1 */
+-    case 0x50:	/* MCSPI_RX1 */
+-    case 0x58:	/* MCSPI_CHSTAT2 */
+-    case 0x64:	/* MCSPI_RX2 */
+-    case 0x6c:	/* MCSPI_CHSTAT3 */
+-    case 0x78:	/* MCSPI_RX3 */
+-        OMAP_RO_REG(addr);
+-        return;
+-
+-    case 0x10:	/* MCSPI_SYSCONFIG */
+-        if (value & (1 << 1))				/* SOFTRESET */
+-            omap_mcspi_reset(s);
+-        s->sysconfig = value & 0x31d;
+-        break;
+-
+-    case 0x18:	/* MCSPI_IRQSTATUS */
+-        if (!((s->control & (1 << 3)) && (s->systest & (1 << 11)))) {
+-            s->irqst &= ~value;
+-            omap_mcspi_interrupt_update(s);
+-        }
+-        break;
+-
+-    case 0x1c:	/* MCSPI_IRQENABLE */
+-        s->irqen = value & 0x1777f;
+-        omap_mcspi_interrupt_update(s);
+-        break;
+-
+-    case 0x20:	/* MCSPI_WAKEUPENABLE */
+-        s->wken = value & 1;
+-        break;
+-
+-    case 0x24:	/* MCSPI_SYST */
+-        if (s->control & (1 << 3))			/* SYSTEM_TEST */
+-            if (value & (1 << 11)) {			/* SSB */
+-                s->irqst |= 0x1777f;
+-                omap_mcspi_interrupt_update(s);
+-            }
+-        s->systest = value & 0xfff;
+-        break;
+-
+-    case 0x28:	/* MCSPI_MODULCTRL */
+-        if (value & (1 << 3))				/* SYSTEM_TEST */
+-            if (s->systest & (1 << 11)) {		/* SSB */
+-                s->irqst |= 0x1777f;
+-                omap_mcspi_interrupt_update(s);
+-            }
+-        s->control = value & 0xf;
+-        break;
+-
+-    case 0x68: ch ++;
+-        /* fall through */
+-    case 0x54: ch ++;
+-        /* fall through */
+-    case 0x40: ch ++;
+-        /* fall through */
+-    case 0x2c:	/* MCSPI_CHCONF */
+-        if ((value ^ s->ch[ch].config) & (3 << 14))	/* DMAR | DMAW */
+-            omap_mcspi_dmarequest_update(s->ch + ch);
+-        if (((value >> 12) & 3) == 3) { /* TRM */
+-            qemu_log_mask(LOG_GUEST_ERROR, "%s: invalid TRM value (3)\n",
+-                          __func__);
+-        }
+-        if (((value >> 7) & 0x1f) < 3) { /* WL */
+-            qemu_log_mask(LOG_GUEST_ERROR,
+-                          "%s: invalid WL value (%" PRIx64 ")\n",
+-                          __func__, (value >> 7) & 0x1f);
+-        }
+-        s->ch[ch].config = value & 0x7fffff;
+-        break;
+-
+-    case 0x70: ch ++;
+-        /* fall through */
+-    case 0x5c: ch ++;
+-        /* fall through */
+-    case 0x48: ch ++;
+-        /* fall through */
+-    case 0x34:	/* MCSPI_CHCTRL */
+-        if (value & ~s->ch[ch].control & 1) {		/* EN */
+-            s->ch[ch].control |= 1;
+-            omap_mcspi_transfer_run(s, ch);
+-        } else
+-            s->ch[ch].control = value & 1;
+-        break;
+-
+-    case 0x74: ch ++;
+-        /* fall through */
+-    case 0x60: ch ++;
+-        /* fall through */
+-    case 0x4c: ch ++;
+-        /* fall through */
+-    case 0x38:	/* MCSPI_TX */
+-        s->ch[ch].tx = value;
+-        s->ch[ch].status &= ~(1 << 1);			/* TXS */
+-        omap_mcspi_transfer_run(s, ch);
+-        break;
+-
+-    default:
+-        OMAP_BAD_REG(addr);
+-        return;
+-    }
+-}
+-
+-static const MemoryRegionOps omap_mcspi_ops = {
+-    .read = omap_mcspi_read,
+-    .write = omap_mcspi_write,
+-    .endianness = DEVICE_NATIVE_ENDIAN,
 -};
 -
--static void gumstix_machine_init(void)
+-struct omap_mcspi_s *omap_mcspi_init(struct omap_target_agent_s *ta, int chnum,
+-                qemu_irq irq, qemu_irq *drq, omap_clk fclk, omap_clk iclk)
 -{
--    type_register_static(&connex_type);
--    type_register_static(&verdex_type);
+-    struct omap_mcspi_s *s = g_new0(struct omap_mcspi_s, 1);
+-    struct omap_mcspi_ch_s *ch = s->ch;
+-
+-    s->irq = irq;
+-    s->chnum = chnum;
+-    while (chnum --) {
+-        ch->txdrq = *drq ++;
+-        ch->rxdrq = *drq ++;
+-        ch ++;
+-    }
+-    omap_mcspi_reset(s);
+-
+-    memory_region_init_io(&s->iomem, NULL, &omap_mcspi_ops, s, "omap.mcspi",
+-                          omap_l4_region_size(ta, 0));
+-    omap_l4_attach(ta, 0, &s->iomem);
+-
+-    return s;
 -}
 -
--type_init(gumstix_machine_init)
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index 3261618ea74..d3e07262b14 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -184,14 +184,6 @@ config PXA2XX
-     select USB_OHCI_SYSBUS
-     select PCMCIA
- 
--config GUMSTIX
--    bool
--    default y
--    depends on TCG && ARM
--    select PFLASH_CFI01
--    select SMC91C111
--    select PXA2XX
+-void omap_mcspi_attach(struct omap_mcspi_s *s,
+-                uint32_t (*txrx)(void *opaque, uint32_t, int), void *opaque,
+-                int chipselect)
+-{
+-    if (chipselect < 0 || chipselect >= s->chnum)
+-        hw_error("%s: Bad chipselect %i\n", __func__, chipselect);
 -
- config Z2
-     bool
-     default y
-diff --git a/hw/arm/meson.build b/hw/arm/meson.build
-index 4a8fd54586b..7b474ad518b 100644
---- a/hw/arm/meson.build
-+++ b/hw/arm/meson.build
-@@ -64,7 +64,6 @@ arm_ss.add(when: 'CONFIG_XEN', if_true: files('xen_arm.c'))
- system_ss.add(when: 'CONFIG_ARM_SMMUV3', if_true: files('smmu-common.c'))
- system_ss.add(when: 'CONFIG_COLLIE', if_true: files('collie.c'))
- system_ss.add(when: 'CONFIG_EXYNOS4', if_true: files('exynos4_boards.c'))
--system_ss.add(when: 'CONFIG_GUMSTIX', if_true: files('gumstix.c'))
- system_ss.add(when: 'CONFIG_NETDUINO2', if_true: files('netduino2.c'))
- system_ss.add(when: 'CONFIG_OMAP', if_true: files('omap2.c'))
- system_ss.add(when: 'CONFIG_RASPI', if_true: files('bcm2835_peripherals.c'))
+-    s->ch[chipselect].txrx = txrx;
+-    s->ch[chipselect].opaque = opaque;
+-}
+diff --git a/hw/ssi/meson.build b/hw/ssi/meson.build
+index b7ad7fca3b3..23cd425ab00 100644
+--- a/hw/ssi/meson.build
++++ b/hw/ssi/meson.build
+@@ -9,7 +9,6 @@ system_ss.add(when: 'CONFIG_XILINX_SPI', if_true: files('xilinx_spi.c'))
+ system_ss.add(when: 'CONFIG_XILINX_SPIPS', if_true: files('xilinx_spips.c'))
+ system_ss.add(when: 'CONFIG_XLNX_VERSAL', if_true: files('xlnx-versal-ospi.c'))
+ system_ss.add(when: 'CONFIG_IMX', if_true: files('imx_spi.c'))
+-system_ss.add(when: 'CONFIG_OMAP', if_true: files('omap_spi.c'))
+ system_ss.add(when: 'CONFIG_IBEX', if_true: files('ibex_spi_host.c'))
+ system_ss.add(when: 'CONFIG_BCM2835_SPI', if_true: files('bcm2835_spi.c'))
+ system_ss.add(when: 'CONFIG_PNV_SPI', if_true: files('pnv_spi.c'))
 -- 
 2.34.1
 

@@ -1,107 +1,107 @@
-Received: by 2002:a17:504:3a8f:b0:1be9:327d:8ee3 with SMTP id g15csp1501462njf;
-        Tue, 3 Sep 2024 09:12:11 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXYcErbgvrlIkeLRrMfW+KbY8zdeEDg3uV9/bcjLOwDlJ8CXlISvG5iylT6WBKhbceO55FHiWxzf4j3Tg==@linaro.org
-X-Google-Smtp-Source: AGHT+IG2qq6pxVRf6JHjVSJS4nFGYVbrEJkpY8eL4/ROD6AepXnzWfo1HAcfxdOtl7TEj21jaQ53
-X-Received: by 2002:a05:6808:1811:b0:3de:218f:b60 with SMTP id 5614622812f47-3df220f1a8cmr12894184b6e.17.1725379931484;
-        Tue, 03 Sep 2024 09:12:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1725379931; cv=none;
+Received: by 2002:a17:504:3a8f:b0:1be9:327d:8ee3 with SMTP id g15csp1501581njf;
+        Tue, 3 Sep 2024 09:12:29 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVVjVUnvXpSn9bge+pvA/o76/2m8aD8huP4EvQ1mELuBgvwyWL4KyMnloREvWb9ulk7jB9wAhe+j/u8dQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IGbCj2k+2cEL2Y4fZhx1+geuM6jWHTuWV5dZFIEKk0pJsAQ2DMYMroVJUfxc3DWmwEtpCRO
+X-Received: by 2002:a05:6102:3a13:b0:48f:db67:16ee with SMTP id ada2fe7eead31-49a5cc1c668mr13929457137.2.1725379948980;
+        Tue, 03 Sep 2024 09:12:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1725379948; cv=none;
         d=google.com; s=arc-20160816;
-        b=0BCeGDoPeKPpODM7G7jkIcDaMW8WbcQbnL/q74/74nqCJA6DYbyCDYHA4VLfVnIBaG
-         mQaannXmPs8PDqTrQpWXkIeH4+kzNX6pAIb5m6unZK5xR70Rp9vHjUgG9tYU0AC2FPSI
-         8QA/ecK1eebWhSuvHHwsutcottwWPCmvDabpYyMaaqf/8mIi4a7GoMhwMtKCQTwM6Jfx
-         BvDRh9/mWNrVGmpJoCOO5HgxWRPe9no16EhFwaoF7c1J6beuUSqYRN4fbUnM/c/SpR/j
-         n4rAjAdCEj2MeRQ2SFh/stisqOD2Vs0J0TPgbLLukDhhflpppQVv0pjSDLIcoQvtdE16
-         cDzw==
+        b=mzjV+tOOHZB37rl8KJIkCXS1h18SiL39mDYKC3EffB+w4PvlXGSiVh8CHweJHnT9t8
+         izcUv6ItyUQikFL0wdsls22FRH9m6Ej3jA+R6SyF5g28V8PZxNoQzQWB7twn+Y5gFcx5
+         t22qK5IXuC7XQ1uvy42m+Qxc3O+AaUGbjT5L3I4XpKtn/vFkXqL1n+674HH8FscY9xP8
+         wEdCbdmdjNqBW+1oPYdL61EaCHuElHlxFzYScHSFJrWNFy3vHcQD5x/cnw2Ou6L6gddT
+         Jhh6f+7VMQhlSBKS8g5NLoHMl3EJSgwCWUcyFa1WMfVgPgm/dIKz3F4B+OLpZbUnZ45C
+         z1hg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=woCPrbI3R+Np+REB27zbFUXCAusB9NajxbY/iA0dKFE=;
-        fh=xkttUBj7c52SbtHnJzh+W7/WF7kXJTPASg+TzK9usGE=;
-        b=AUdqECGXb20/PxZb2D+FYNRTON68+5cryPWyKbCPM/w1S1AO57bi3JRicTCb4GGPW0
-         m6Tha69yorOmL7fSrprCsmXFk5m4ZyH4Z6yMtnEvTFMTPyn82+688SJCBJBHCD1HVhGi
-         AktRaABlLIgU2soebR2iqtZxrJSFDJYCRIkxyDJFnUhNf+W9pK61NBbYqCwfY8V/ZvLf
-         r43aP9Z3sZ9iCrmZDyyLX6j1D9m5hqbQ/+Lnr8mkaQQ/PCCw79LdZR7I511NW1V9OyGC
-         x6eBRlJvdjvWIdYhkUX/yGQMtM72JVPuh+kN57DiKhVERWjMmnRjyPGszRJyTQAjTX4v
-         3hFQ==;
+        bh=Ke08yY4/dopOYtA2QapUAC0xejTJLaqgAeW0nPXO+d4=;
+        fh=/DaFiTg1RsI0hll7fthWBXwFoHUQe6HQBHKjY9qRSeU=;
+        b=WBjnSgZsLsFRzAfynHhFop/sm+n+T64sbyXYpk6v5U/0fbOMC4qk0aXlphFdLEpbdV
+         Vjx5yyUYlwBcLaMSis629TqyPnSsu89Jrcyot2p7ufasKhyQ3jmcS/vXmhEIX7rTerow
+         hFa2GlVan1cwRbz+P8fxTyKNMm1uHeosmHwn3ZEhDoeOaA/Qs/QQwnQf//D9HPBPizzm
+         L2HvotCDgHuR/t+4CwavzBAeSzxHQ474aSB/WpdoFNP1V6HtQK3cRefyZRL0SJcEBYu6
+         NTaMqRAsO+AMtu96q7hGLM1D4b5cAItcxDEGKbp1csLOxl+I+gNPUcx4wN9hdSomWxvK
+         MDUg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ZRZd1242;
+       dkim=pass header.i=@linaro.org header.s=google header.b=f1gtZ1nr;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a1e0cc1a2514c-846a9e02aaesi2483620241.205.2024.09.03.09.12.11
+        by mx.google.com with ESMTPS id ada2fe7eead31-49ba98b107csi659832137.780.2024.09.03.09.12.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 03 Sep 2024 09:12:11 -0700 (PDT)
+        Tue, 03 Sep 2024 09:12:28 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ZRZd1242;
+       dkim=pass header.i=@linaro.org header.s=google header.b=f1gtZ1nr;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1slW5l-0002Zr-Kf; Tue, 03 Sep 2024 12:09:17 -0400
+	id 1slW5e-0001qA-W4; Tue, 03 Sep 2024 12:09:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1slW5i-0002Ec-50
- for qemu-devel@nongnu.org; Tue, 03 Sep 2024 12:09:14 -0400
+ id 1slW5Z-0001Pl-P6
+ for qemu-devel@nongnu.org; Tue, 03 Sep 2024 12:09:05 -0400
 Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1slW5d-00030c-BS
- for qemu-devel@nongnu.org; Tue, 03 Sep 2024 12:09:13 -0400
+ id 1slW5V-0002xt-KZ
+ for qemu-devel@nongnu.org; Tue, 03 Sep 2024 12:09:05 -0400
 Received: by mail-wr1-x429.google.com with SMTP id
- ffacd0b85a97d-374bd0da617so2184754f8f.3
- for <qemu-devel@nongnu.org>; Tue, 03 Sep 2024 09:09:08 -0700 (PDT)
+ ffacd0b85a97d-374c84dcc90so1626730f8f.1
+ for <qemu-devel@nongnu.org>; Tue, 03 Sep 2024 09:09:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1725379748; x=1725984548; darn=nongnu.org;
+ d=linaro.org; s=google; t=1725379740; x=1725984540; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=woCPrbI3R+Np+REB27zbFUXCAusB9NajxbY/iA0dKFE=;
- b=ZRZd12420MUjICp9gGRsXXE3oN9UlHq6Ab1nC620GaILCLPawCUuZK/2Blrox9MS9O
- PkjizQtu8z4/D0nz8dqF/CaNsBmf9BM2KFZV6f88jOQqW1OcEuF1amSUXQH5lubnpONp
- MfvWL4Uiq43d0cYSzbjymClnGrs2FGID8NflL0jt27Eh4GibrWdbUCqUNLqpyU+WLFmJ
- SCwweolBQqgUrkZ1vpdDgJG+ezI+P/p6NdvPJ0hQiMDtKGvn8+L3tOO0BDK+Udd29VyB
- Ogjyrv2+CGyfDiC8WFwp4XcRY1HHDVynPLjXsy+EIFsyWroxuv2zGONCjtJGJXlRGA0h
- XrtQ==
+ :reply-to; bh=Ke08yY4/dopOYtA2QapUAC0xejTJLaqgAeW0nPXO+d4=;
+ b=f1gtZ1nrWpZ70GVrb/EJx00c/7VxiK+4R1AIK9Z9sUv5REtGjJEKAKOOXFP1nfqJq9
+ zKTSRFLbbA/UJQSweilHP5PNEz+dMKHEAu2SZm4Y64ZCdZh7s+XJUVjeZD+scGwR5WMo
+ 7xqzqjs3pLwtFBvApH0Sv/XHW5/CHQ1WY9btHpFpj+U560gc4sheNBiaIPLZTDVnkS7t
+ 74om1KN1QriDnrk1eaUrkWGQO4CP92JQj3DA94sWMS4mleRZ2/ynKKhrEHwhLLclILY5
+ ofY+j1dfPeBNBDBG9RXJri1Te4bv7TL8SrBC3hLnwZ59XPrYhckHmFxl53XZXLQKTffG
+ m49A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1725379748; x=1725984548;
+ d=1e100.net; s=20230601; t=1725379740; x=1725984540;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=woCPrbI3R+Np+REB27zbFUXCAusB9NajxbY/iA0dKFE=;
- b=JrdqWQp9tty3o8xkNdQ8qSWweivfVyuP0Ibzki6RRZxil3IisP8bYTjpagV9AFbgkV
- Yju1k+3KXoryygWrdjV9q1vcf7KNCq03OmhTI0UBsQvLpquT9GppdmS9jYLh5p4NbYSU
- 7HFEEAmrVZrx1LGVcaWSQ8oGjEl06hprCytEhMsnxxweWnCckxxvOpCAxsD8MLvZ5Ybh
- 27T+t1f5ivyW8vDmRy+8DXWLUWCuIzEM6QqkVj2l+XeTotjAFXkxRxzRRAu1H0dB835v
- MbskKOMTbqTgXd2tT5KlpXOczHlQU10GyNKzA7kIMPDB5SgNtEfuFyKWbp2ONr3+lFH4
- c6dw==
+ bh=Ke08yY4/dopOYtA2QapUAC0xejTJLaqgAeW0nPXO+d4=;
+ b=ipbsf++Bl9zt5Xbo5vGN9Ydik09mMLu3abtAHz8Aanwivx85HTMmXkAMnqtHOlfbQ6
+ q2J08OCbbV03R6b9GRDrn6klgp8n1wwJwr71bYUQCR00S++/J560XPxb6wEH6Kfj7TDT
+ /fG6iVbkcTzH4tRHHp0/5XlexVQ8qdtYlbzuLKsssy7B+K9l5OwtpmqugI+bXxgNYu+X
+ 0oQ7wsd6xGWYTOfTnW39JjjQJJjDgl6w/fAEOSApuk/zJ+KtG2X9R/Lm3UrYbrGfsf5D
+ lYOXPzwbyBYUKIRM8EGP0fuyxAW8U7yRbzsDEOtC8LdEHmMg59jNsLuLY9JKnWkB4Bwp
+ 2V1Q==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWARcgrNFia8rQ90sa49Tn0cNCic+0NMzCxCboXo8/yGxgL8VaBsrAwuiVyTKg10/QqaVYxF4aou1tX@nongnu.org
-X-Gm-Message-State: AOJu0Yw0ksC8Px+dV4LrTRn8CgXLOb7Qvlkk7MIGfniUFKEDbMXq08yd
- QqPxjeI6o8pnbZtoBbOz+9FhKVCQagCIxpt/HAHgBTs6YCNMJtT1XUZOr56YN2Jfkjs5bjwkkgD
- w
-X-Received: by 2002:adf:978c:0:b0:371:8dcc:7f9e with SMTP id
- ffacd0b85a97d-374bce9864bmr10164712f8f.2.1725379747771; 
- Tue, 03 Sep 2024 09:09:07 -0700 (PDT)
+ AJvYcCVDg90N1Fu+bt+A5RokA8w78aStROY2v5IQa0uRmYeGsc3KANfgbj4hAOwC5pFj0wiAKGZnJ888fkkd@nongnu.org
+X-Gm-Message-State: AOJu0YzmBz2GRJPwkaexqHD335B6rz0Q7ZWujLri2/A5dPyoEczvgAK2
+ to6Kcuoa0ObgFnPtzDw/9BsY8HAwkl//CAHp8SCvf2VzTfS+sFZVInlKJuPdeDFULOPC4y9Qcxw
+ C
+X-Received: by 2002:a5d:40c5:0:b0:371:87d4:8f12 with SMTP id
+ ffacd0b85a97d-374c945c787mr5338156f8f.17.1725379739932; 
+ Tue, 03 Sep 2024 09:08:59 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-42bb6df1066sm175123065e9.18.2024.09.03.09.09.07
+ 5b1f17b1804b1-42bb6df1066sm175123065e9.18.2024.09.03.09.08.59
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 03 Sep 2024 09:09:07 -0700 (PDT)
+ Tue, 03 Sep 2024 09:08:59 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH for-9.2 51/53] hw/misc/omap_clk: Remove OMAP2-specifics
-Date: Tue,  3 Sep 2024 17:07:49 +0100
-Message-Id: <20240903160751.4100218-52-peter.maydell@linaro.org>
+Subject: [PATCH for-9.2 45/53] hw/timer: Remove omap_synctimer
+Date: Tue,  3 Sep 2024 17:07:43 +0100
+Message-Id: <20240903160751.4100218-46-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240903160751.4100218-1-peter.maydell@linaro.org>
 References: <20240903160751.4100218-1-peter.maydell@linaro.org>
@@ -130,584 +130,172 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: seYda+1+HpHr
+X-TUID: csqHVQYDxVu9
 
-Remove the handling for all non-OMAP1 SoCs.
+Remove the omap_synctimer device, which is only in the OMAP2 SoC.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/misc/omap_clk.c | 527 +--------------------------------------------
- 1 file changed, 2 insertions(+), 525 deletions(-)
+ include/hw/arm/omap.h     |   8 ---
+ hw/timer/omap_synctimer.c | 110 --------------------------------------
+ hw/timer/meson.build      |   1 -
+ 3 files changed, 119 deletions(-)
+ delete mode 100644 hw/timer/omap_synctimer.c
 
-diff --git a/hw/misc/omap_clk.c b/hw/misc/omap_clk.c
-index c77ca2fc74e..0157c9be759 100644
---- a/hw/misc/omap_clk.c
-+++ b/hw/misc/omap_clk.c
-@@ -35,9 +35,6 @@ struct clk {
- #define CLOCK_IN_OMAP730	(1 << 11)
- #define CLOCK_IN_OMAP1510	(1 << 12)
- #define CLOCK_IN_OMAP16XX	(1 << 13)
--#define CLOCK_IN_OMAP242X	(1 << 14)
--#define CLOCK_IN_OMAP243X	(1 << 15)
--#define CLOCK_IN_OMAP343X	(1 << 16)
-     uint32_t flags;
-     int id;
+diff --git a/include/hw/arm/omap.h b/include/hw/arm/omap.h
+index cced3d28605..982341d0079 100644
+--- a/include/hw/arm/omap.h
++++ b/include/hw/arm/omap.h
+@@ -676,12 +676,6 @@ struct omap_dma_lcd_channel_s {
+ # define OMAP24XX_DMA_MS		63	/* Not in OMAP2420 */
+ # define OMAP24XX_DMA_EXT_DMAREQ5	64
  
-@@ -59,8 +56,7 @@ static struct clk xtal_osc12m = {
- static struct clk xtal_osc32k = {
-     .name	= "xtal_osc_32k",
-     .rate	= 32768,
--    .flags	= CLOCK_IN_OMAP1510 | CLOCK_IN_OMAP16XX | CLOCK_IN_OMAP310 |
--            CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
-+    .flags	= CLOCK_IN_OMAP1510 | CLOCK_IN_OMAP16XX | CLOCK_IN_OMAP310,
- };
+-/* OMAP2 sysctimer */
+-struct omap_synctimer_s;
+-struct omap_synctimer_s *omap_synctimer_init(struct omap_target_agent_s *ta,
+-                struct omap_mpu_state_s *mpu, omap_clk fclk, omap_clk iclk);
+-void omap_synctimer_reset(struct omap_synctimer_s *s);
+-
+ struct omap_uart_s;
+ struct omap_uart_s *omap_uart_init(hwaddr base,
+                 qemu_irq irq, omap_clk fclk, omap_clk iclk,
+@@ -929,8 +923,6 @@ struct omap_mpu_state_s {
+     /* OMAP2-only peripherals */
+     struct omap_l4_s *l4;
  
- static struct clk ck_ref = {
-@@ -507,449 +503,10 @@ static struct clk i2c_ick = {
- static struct clk clk32k = {
-     .name	= "clk32-kHz",
-     .flags	= CLOCK_IN_OMAP310 | CLOCK_IN_OMAP1510 | CLOCK_IN_OMAP16XX |
--            CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X | ALWAYS_ENABLED,
-+            ALWAYS_ENABLED,
-     .parent	= &xtal_osc32k,
- };
+-    struct omap_synctimer_s *synctimer;
+-
+     struct omap_mcspi_s *mcspi[2];
  
--static struct clk ref_clk = {
--    .name	= "ref_clk",
--    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X | ALWAYS_ENABLED,
--    .rate	= 12000000,	/* 12 MHz or 13 MHz or 19.2 MHz */
--    /*.parent	= sys.xtalin */
+     struct omap_dss_s *dss;
+diff --git a/hw/timer/omap_synctimer.c b/hw/timer/omap_synctimer.c
+deleted file mode 100644
+index d93a9344ede..00000000000
+--- a/hw/timer/omap_synctimer.c
++++ /dev/null
+@@ -1,110 +0,0 @@
+-/*
+- * TI OMAP2 32kHz sync timer emulation.
+- *
+- * Copyright (C) 2007-2008 Nokia Corporation
+- * Written by Andrzej Zaborowski <andrew@openedhand.com>
+- *
+- * This program is free software; you can redistribute it and/or
+- * modify it under the terms of the GNU General Public License as
+- * published by the Free Software Foundation; either version 2 or
+- * (at your option) any later version of the License.
+- *
+- * This program is distributed in the hope that it will be useful,
+- * but WITHOUT ANY WARRANTY; without even the implied warranty of
+- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+- * GNU General Public License for more details.
+- *
+- * You should have received a copy of the GNU General Public License along
+- * with this program; if not, see <http://www.gnu.org/licenses/>.
+- */
+-#include "qemu/osdep.h"
+-#include "qemu/timer.h"
+-#include "hw/arm/omap.h"
+-struct omap_synctimer_s {
+-    MemoryRegion iomem;
+-    uint32_t val;
+-    uint16_t readh;
 -};
 -
--static struct clk apll_96m = {
--    .name	= "apll_96m",
--    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X | ALWAYS_ENABLED,
--    .rate	= 96000000,
--    /*.parent	= ref_clk */
+-/* 32-kHz Sync Timer of the OMAP2 */
+-static uint32_t omap_synctimer_read(struct omap_synctimer_s *s) {
+-    return muldiv64(qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL), 0x8000,
+-                    NANOSECONDS_PER_SECOND);
+-}
+-
+-void omap_synctimer_reset(struct omap_synctimer_s *s)
+-{
+-    s->val = omap_synctimer_read(s);
+-}
+-
+-static uint32_t omap_synctimer_readw(void *opaque, hwaddr addr)
+-{
+-    struct omap_synctimer_s *s = opaque;
+-
+-    switch (addr) {
+-    case 0x00:	/* 32KSYNCNT_REV */
+-        return 0x21;
+-
+-    case 0x10:	/* CR */
+-        return omap_synctimer_read(s) - s->val;
+-    }
+-
+-    OMAP_BAD_REG(addr);
+-    return 0;
+-}
+-
+-static uint32_t omap_synctimer_readh(void *opaque, hwaddr addr)
+-{
+-    struct omap_synctimer_s *s = opaque;
+-    uint32_t ret;
+-
+-    if (addr & 2)
+-        return s->readh;
+-    else {
+-        ret = omap_synctimer_readw(opaque, addr);
+-        s->readh = ret >> 16;
+-        return ret & 0xffff;
+-    }
+-}
+-
+-static uint64_t omap_synctimer_readfn(void *opaque, hwaddr addr,
+-                                      unsigned size)
+-{
+-    switch (size) {
+-    case 1:
+-        return omap_badwidth_read32(opaque, addr);
+-    case 2:
+-        return omap_synctimer_readh(opaque, addr);
+-    case 4:
+-        return omap_synctimer_readw(opaque, addr);
+-    default:
+-        g_assert_not_reached();
+-    }
+-}
+-
+-static void omap_synctimer_writefn(void *opaque, hwaddr addr,
+-                                   uint64_t value, unsigned size)
+-{
+-    OMAP_BAD_REG(addr);
+-}
+-
+-static const MemoryRegionOps omap_synctimer_ops = {
+-    .read = omap_synctimer_readfn,
+-    .write = omap_synctimer_writefn,
+-    .valid.min_access_size = 1,
+-    .valid.max_access_size = 4,
+-    .endianness = DEVICE_NATIVE_ENDIAN,
 -};
 -
--static struct clk apll_54m = {
--    .name	= "apll_54m",
--    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X | ALWAYS_ENABLED,
--    .rate	= 54000000,
--    /*.parent	= ref_clk */
--};
+-struct omap_synctimer_s *omap_synctimer_init(struct omap_target_agent_s *ta,
+-                struct omap_mpu_state_s *mpu, omap_clk fclk, omap_clk iclk)
+-{
+-    struct omap_synctimer_s *s = g_malloc0(sizeof(*s));
 -
--static struct clk sys_clk = {
--    .name	= "sys_clk",
--    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X | ALWAYS_ENABLED,
--    .rate	= 32768,
--    /*.parent	= sys.xtalin */
--};
+-    omap_synctimer_reset(s);
+-    memory_region_init_io(&s->iomem, NULL, &omap_synctimer_ops, s, "omap.synctimer",
+-                          omap_l4_region_size(ta, 0));
+-    omap_l4_attach(ta, 0, &s->iomem);
 -
--static struct clk sleep_clk = {
--    .name	= "sleep_clk",
--    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X | ALWAYS_ENABLED,
--    .rate	= 32768,
--    /*.parent	= sys.xtalin */
--};
--
--static struct clk dpll_ck = {
--    .name	= "dpll",
--    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X | ALWAYS_ENABLED,
--    .parent	= &ref_clk,
--};
--
--static struct clk dpll_x2_ck = {
--    .name	= "dpll_x2",
--    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X | ALWAYS_ENABLED,
--    .parent	= &ref_clk,
--};
--
--static struct clk wdt1_sys_clk = {
--    .name	= "wdt1_sys_clk",
--    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X | ALWAYS_ENABLED,
--    .rate	= 32768,
--    /*.parent	= sys.xtalin */
--};
--
--static struct clk func_96m_clk = {
--    .name	= "func_96m_clk",
--    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
--    .divisor	= 1,
--    .parent	= &apll_96m,
--};
--
--static struct clk func_48m_clk = {
--    .name	= "func_48m_clk",
--    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
--    .divisor	= 2,
--    .parent	= &apll_96m,
--};
--
--static struct clk func_12m_clk = {
--    .name	= "func_12m_clk",
--    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
--    .divisor	= 8,
--    .parent	= &apll_96m,
--};
--
--static struct clk func_54m_clk = {
--    .name	= "func_54m_clk",
--    .flags	= CLOCK_IN_OMAP242X,
--    .divisor	= 1,
--    .parent	= &apll_54m,
--};
--
--static struct clk sys_clkout = {
--    .name	= "clkout",
--    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
--    .parent	= &sys_clk,
--};
--
--static struct clk sys_clkout2 = {
--    .name	= "clkout2",
--    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
--    .parent	= &sys_clk,
--};
--
--static struct clk core_clk = {
--    .name	= "core_clk",
--    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
--    .parent	= &dpll_x2_ck,	/* Switchable between dpll_ck and clk32k */
--};
--
--static struct clk l3_clk = {
--    .name	= "l3_clk",
--    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
--    .parent	= &core_clk,
--};
--
--static struct clk core_l4_iclk = {
--    .name	= "core_l4_iclk",
--    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
--    .parent	= &l3_clk,
--};
--
--static struct clk wu_l4_iclk = {
--    .name	= "wu_l4_iclk",
--    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
--    .parent	= &l3_clk,
--};
--
--static struct clk core_l3_iclk = {
--    .name	= "core_l3_iclk",
--    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
--    .parent	= &core_clk,
--};
--
--static struct clk core_l4_usb_clk = {
--    .name	= "core_l4_usb_clk",
--    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
--    .parent	= &l3_clk,
--};
--
--static struct clk wu_gpt1_clk = {
--    .name	= "wu_gpt1_clk",
--    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
--    .parent	= &sys_clk,
--};
--
--static struct clk wu_32k_clk = {
--    .name	= "wu_32k_clk",
--    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
--    .parent	= &sys_clk,
--};
--
--static struct clk uart1_fclk = {
--    .name	= "uart1_fclk",
--    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
--    .parent	= &func_48m_clk,
--};
--
--static struct clk uart1_iclk = {
--    .name	= "uart1_iclk",
--    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
--    .parent	= &core_l4_iclk,
--};
--
--static struct clk uart2_fclk = {
--    .name	= "uart2_fclk",
--    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
--    .parent	= &func_48m_clk,
--};
--
--static struct clk uart2_iclk = {
--    .name	= "uart2_iclk",
--    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
--    .parent	= &core_l4_iclk,
--};
--
--static struct clk uart3_fclk = {
--    .name	= "uart3_fclk",
--    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
--    .parent	= &func_48m_clk,
--};
--
--static struct clk uart3_iclk = {
--    .name	= "uart3_iclk",
--    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
--    .parent	= &core_l4_iclk,
--};
--
--static struct clk mpu_fclk = {
--    .name	= "mpu_fclk",
--    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
--    .parent	= &core_clk,
--};
--
--static struct clk mpu_iclk = {
--    .name	= "mpu_iclk",
--    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
--    .parent	= &core_clk,
--};
--
--static struct clk int_m_fclk = {
--    .name	= "int_m_fclk",
--    .alias	= "mpu_intc_fclk",
--    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
--    .parent	= &core_clk,
--};
--
--static struct clk int_m_iclk = {
--    .name	= "int_m_iclk",
--    .alias	= "mpu_intc_iclk",
--    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
--    .parent	= &core_clk,
--};
--
--static struct clk core_gpt2_clk = {
--    .name	= "core_gpt2_clk",
--    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
--    .parent	= &sys_clk,
--};
--
--static struct clk core_gpt3_clk = {
--    .name	= "core_gpt3_clk",
--    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
--    .parent	= &sys_clk,
--};
--
--static struct clk core_gpt4_clk = {
--    .name	= "core_gpt4_clk",
--    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
--    .parent	= &sys_clk,
--};
--
--static struct clk core_gpt5_clk = {
--    .name	= "core_gpt5_clk",
--    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
--    .parent	= &sys_clk,
--};
--
--static struct clk core_gpt6_clk = {
--    .name	= "core_gpt6_clk",
--    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
--    .parent	= &sys_clk,
--};
--
--static struct clk core_gpt7_clk = {
--    .name	= "core_gpt7_clk",
--    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
--    .parent	= &sys_clk,
--};
--
--static struct clk core_gpt8_clk = {
--    .name	= "core_gpt8_clk",
--    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
--    .parent	= &sys_clk,
--};
--
--static struct clk core_gpt9_clk = {
--    .name	= "core_gpt9_clk",
--    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
--    .parent	= &sys_clk,
--};
--
--static struct clk core_gpt10_clk = {
--    .name	= "core_gpt10_clk",
--    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
--    .parent	= &sys_clk,
--};
--
--static struct clk core_gpt11_clk = {
--    .name	= "core_gpt11_clk",
--    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
--    .parent	= &sys_clk,
--};
--
--static struct clk core_gpt12_clk = {
--    .name	= "core_gpt12_clk",
--    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
--    .parent	= &sys_clk,
--};
--
--static struct clk mcbsp1_clk = {
--    .name	= "mcbsp1_cg",
--    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
--    .divisor	= 2,
--    .parent	= &func_96m_clk,
--};
--
--static struct clk mcbsp2_clk = {
--    .name	= "mcbsp2_cg",
--    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
--    .divisor	= 2,
--    .parent	= &func_96m_clk,
--};
--
--static struct clk emul_clk = {
--    .name	= "emul_ck",
--    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
--    .parent	= &func_54m_clk,
--};
--
--static struct clk sdma_fclk = {
--    .name	= "sdma_fclk",
--    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
--    .parent	= &l3_clk,
--};
--
--static struct clk sdma_iclk = {
--    .name	= "sdma_iclk",
--    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
--    .parent	= &core_l3_iclk, /* core_l4_iclk for the configuration port */
--};
--
--static struct clk i2c1_fclk = {
--    .name	= "i2c1.fclk",
--    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
--    .parent	= &func_12m_clk,
--    .divisor	= 1,
--};
--
--static struct clk i2c1_iclk = {
--    .name	= "i2c1.iclk",
--    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
--    .parent	= &core_l4_iclk,
--};
--
--static struct clk i2c2_fclk = {
--    .name	= "i2c2.fclk",
--    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
--    .parent	= &func_12m_clk,
--    .divisor	= 1,
--};
--
--static struct clk i2c2_iclk = {
--    .name	= "i2c2.iclk",
--    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
--    .parent	= &core_l4_iclk,
--};
--
--static struct clk gpio_dbclk[5] = {
--    {
--        .name	= "gpio1_dbclk",
--        .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
--        .parent	= &wu_32k_clk,
--    }, {
--        .name	= "gpio2_dbclk",
--        .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
--        .parent	= &wu_32k_clk,
--    }, {
--        .name	= "gpio3_dbclk",
--        .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
--        .parent	= &wu_32k_clk,
--    }, {
--        .name	= "gpio4_dbclk",
--        .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
--        .parent	= &wu_32k_clk,
--    }, {
--        .name   = "gpio5_dbclk",
--        .flags  = CLOCK_IN_OMAP243X,
--        .parent = &wu_32k_clk,
--    },
--};
--
--static struct clk gpio_iclk = {
--    .name	= "gpio_iclk",
--    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
--    .parent	= &wu_l4_iclk,
--};
--
--static struct clk mmc_fck = {
--    .name	= "mmc_fclk",
--    .flags	= CLOCK_IN_OMAP242X,
--    .parent	= &func_96m_clk,
--};
--
--static struct clk mmc_ick = {
--    .name	= "mmc_iclk",
--    .flags	= CLOCK_IN_OMAP242X,
--    .parent	= &core_l4_iclk,
--};
--
--static struct clk spi_fclk[3] = {
--    {
--        .name	= "spi1_fclk",
--        .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
--        .parent	= &func_48m_clk,
--    }, {
--        .name	= "spi2_fclk",
--        .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
--        .parent	= &func_48m_clk,
--    }, {
--        .name	= "spi3_fclk",
--        .flags	= CLOCK_IN_OMAP243X,
--        .parent	= &func_48m_clk,
--    },
--};
--
--static struct clk dss_clk[2] = {
--    {
--        .name	= "dss_clk1",
--        .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
--        .parent	= &core_clk,
--    }, {
--        .name	= "dss_clk2",
--        .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
--        .parent	= &sys_clk,
--    },
--};
--
--static struct clk dss_54m_clk = {
--    .name	= "dss_54m_clk",
--    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
--    .parent	= &func_54m_clk,
--};
--
--static struct clk dss_l3_iclk = {
--    .name	= "dss_l3_iclk",
--    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
--    .parent	= &core_l3_iclk,
--};
--
--static struct clk dss_l4_iclk = {
--    .name	= "dss_l4_iclk",
--    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
--    .parent	= &core_l4_iclk,
--};
--
--static struct clk spi_iclk[3] = {
--    {
--        .name	= "spi1_iclk",
--        .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
--        .parent	= &core_l4_iclk,
--    }, {
--        .name	= "spi2_iclk",
--        .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
--        .parent	= &core_l4_iclk,
--    }, {
--        .name	= "spi3_iclk",
--        .flags	= CLOCK_IN_OMAP243X,
--        .parent	= &core_l4_iclk,
--    },
--};
--
--static struct clk omapctrl_clk = {
--    .name	= "omapctrl_iclk",
--    .flags	= CLOCK_IN_OMAP242X | CLOCK_IN_OMAP243X,
--    /* XXX Should be in WKUP domain */
--    .parent	= &core_l4_iclk,
--};
--
- static struct clk *onchip_clks[] = {
-     /* OMAP 1 */
- 
-@@ -1019,80 +576,6 @@ static struct clk *onchip_clks[] = {
-     &i2c_fck,
-     &i2c_ick,
- 
--    /* OMAP 2 */
--
--    &ref_clk,
--    &apll_96m,
--    &apll_54m,
--    &sys_clk,
--    &sleep_clk,
--    &dpll_ck,
--    &dpll_x2_ck,
--    &wdt1_sys_clk,
--    &func_96m_clk,
--    &func_48m_clk,
--    &func_12m_clk,
--    &func_54m_clk,
--    &sys_clkout,
--    &sys_clkout2,
--    &core_clk,
--    &l3_clk,
--    &core_l4_iclk,
--    &wu_l4_iclk,
--    &core_l3_iclk,
--    &core_l4_usb_clk,
--    &wu_gpt1_clk,
--    &wu_32k_clk,
--    &uart1_fclk,
--    &uart1_iclk,
--    &uart2_fclk,
--    &uart2_iclk,
--    &uart3_fclk,
--    &uart3_iclk,
--    &mpu_fclk,
--    &mpu_iclk,
--    &int_m_fclk,
--    &int_m_iclk,
--    &core_gpt2_clk,
--    &core_gpt3_clk,
--    &core_gpt4_clk,
--    &core_gpt5_clk,
--    &core_gpt6_clk,
--    &core_gpt7_clk,
--    &core_gpt8_clk,
--    &core_gpt9_clk,
--    &core_gpt10_clk,
--    &core_gpt11_clk,
--    &core_gpt12_clk,
--    &mcbsp1_clk,
--    &mcbsp2_clk,
--    &emul_clk,
--    &sdma_fclk,
--    &sdma_iclk,
--    &i2c1_fclk,
--    &i2c1_iclk,
--    &i2c2_fclk,
--    &i2c2_iclk,
--    &gpio_dbclk[0],
--    &gpio_dbclk[1],
--    &gpio_dbclk[2],
--    &gpio_dbclk[3],
--    &gpio_iclk,
--    &mmc_fck,
--    &mmc_ick,
--    &spi_fclk[0],
--    &spi_iclk[0],
--    &spi_fclk[1],
--    &spi_iclk[1],
--    &spi_fclk[2],
--    &spi_iclk[2],
--    &dss_clk[0],
--    &dss_clk[1],
--    &dss_54m_clk,
--    &dss_l3_iclk,
--    &dss_l4_iclk,
--    &omapctrl_clk,
--
-     NULL
- };
- 
-@@ -1230,12 +713,6 @@ void omap_clk_init(struct omap_mpu_state_s *mpu)
-         flag = CLOCK_IN_OMAP310;
-     else if (cpu_is_omap1510(mpu))
-         flag = CLOCK_IN_OMAP1510;
--    else if (cpu_is_omap2410(mpu) || cpu_is_omap2420(mpu))
--        flag = CLOCK_IN_OMAP242X;
--    else if (cpu_is_omap2430(mpu))
--        flag = CLOCK_IN_OMAP243X;
--    else if (cpu_is_omap3430(mpu))
--        flag = CLOCK_IN_OMAP243X;
-     else
-         return;
- 
+-    return s;
+-}
+diff --git a/hw/timer/meson.build b/hw/timer/meson.build
+index 1292d9530ca..fe131666b17 100644
+--- a/hw/timer/meson.build
++++ b/hw/timer/meson.build
+@@ -22,7 +22,6 @@ system_ss.add(when: 'CONFIG_MIPS_CPS', if_true: files('mips_gictimer.c'))
+ system_ss.add(when: 'CONFIG_MSF2', if_true: files('mss-timer.c'))
+ system_ss.add(when: 'CONFIG_NPCM7XX', if_true: files('npcm7xx_timer.c'))
+ system_ss.add(when: 'CONFIG_NRF51_SOC', if_true: files('nrf51_timer.c'))
+-system_ss.add(when: 'CONFIG_OMAP', if_true: files('omap_synctimer.c'))
+ system_ss.add(when: 'CONFIG_PXA2XX_TIMER', if_true: files('pxa2xx_timer.c'))
+ system_ss.add(when: 'CONFIG_RASPI', if_true: files('bcm2835_systmr.c'))
+ system_ss.add(when: 'CONFIG_SH_TIMER', if_true: files('sh_timer.c'))
 -- 
 2.34.1
 

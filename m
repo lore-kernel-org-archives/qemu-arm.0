@@ -1,113 +1,112 @@
-Received: by 2002:a17:504:3a8f:b0:1be9:327d:8ee3 with SMTP id g15csp1501449njf;
-        Tue, 3 Sep 2024 09:12:09 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUE3+BO0IPQpoK3K1KOYyLdAr9t7xhB3DbpaXl0AG+Oyl/fDnezd6M8/kclxr9M3gQSR9xJHKTEbLw9ng==@linaro.org
-X-Google-Smtp-Source: AGHT+IENC6AMiHEZAIwchb52Jqc7J4MR5otnzqldYC+qsneq/uoxpQX8VE1Q1pDCHeg9ODGsurhF
-X-Received: by 2002:a05:6830:438c:b0:703:651b:382f with SMTP id 46e09a7af769-710aad8c1dcmr3635067a34.3.1725379929505;
-        Tue, 03 Sep 2024 09:12:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1725379929; cv=none;
+Received: by 2002:a17:504:3a8f:b0:1be9:327d:8ee3 with SMTP id g15csp1501460njf;
+        Tue, 3 Sep 2024 09:12:11 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVuhdNgobfKPafbDzrV7WTMarOxr5q8HnSUwhPieRH0iTsVa0MEMRszqXC0mGXl+aO5Th/C95pOZl4/4w==@linaro.org
+X-Google-Smtp-Source: AGHT+IGKBS8TZPzkceoi23QeWSy4vOBeegvjdWNeiNlU6C57l88UNJah66XXJVUYzW9hVAYstliH
+X-Received: by 2002:a05:6122:29cb:b0:4f5:254e:e111 with SMTP id 71dfb90a1353d-5009b07f31fmr11800544e0c.7.1725379931255;
+        Tue, 03 Sep 2024 09:12:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1725379931; cv=none;
         d=google.com; s=arc-20160816;
-        b=xFgFiiue9EJqJENV9RIlx4S9pdT3J9DyAn1FD1ufzB0wLc9KtPMyXvgLrt8e/+dnEr
-         TX1VD1XwNsMKsBd35kEaWbvCpe7gJM7NPnKCT3+Dic7XioX9wDaWxPydvom0XE+CiD7E
-         w6VN6vdt4ljyDtsvdIKQHZuCYk9BObJR/dp9TD4t1TVReITAD0ej6hfgxrRmnuGXIadX
-         ANE8tTgCjY1DA9ELF+AI2YTUs9PlNMMPy+Txw0KHNeXH0x8cwLlNZVZOTkFMFXqTNBcv
-         Bftj5RFDCzbwAoVnbrAtndHcLP7R5dp1KMasjiI0Io7tWigNioMXYEA6gtEEyTuYWnts
-         e95A==
+        b=bNjG+NO+bkTIbFk1VifBQe7ukjxOsXEFLqTHLln29F2Xu9Cd7XwD2NSONcZtJE2Va4
+         Lmxzf9EJ9xjPL/X3yk/lHpa/HffnZsg6eiS+ZjrvoFAnP9HODJtjGlfHzZGyV9HxgQ6D
+         XjJSiqsIZaomVr8jCwXS1qgmsNEyMqHlhHrmuQezvA6NXvg9cKMBLv/Z0lfW94fc73FU
+         ZLVDu7QKGVIKD14+5F+dI/4cKYH0V8ni5dFyPJxOgZsy7dHCIBU4TsREFK/iBDLhBWeM
+         K/9u84SquNa2Kap7kFjfXQh9+1JN3hZ2aSbGCBCV247tZkhNP0Ic++8v1Q/pW1DVdugk
+         tbSg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=rihrsQN7vHYWozjlruoyN2+CRkb9ZEkHhz2ABxkI9sY=;
-        fh=9d3kCNoqPJZeelkBMIcGXu3g4WwNb6o1K0dE8v/vHuk=;
-        b=xrm70+AOaT/0vdELjEa1XLSzGsa1gXKENxLLanrxy6GcUlopOGiXx3A3LY2Zb7Ib9i
-         Hs//LZEcAeta+/Q6mozDZH787khaKB3ripcBgz3ka5OYKcXqaNFzO+9amit5pGr2je+K
-         1+Dpn6PjdLEgG3+RfVOMQ7j0OM/V5Itl2kWNI+V6Xlg79kRF5W7vxWZ5NPVxDF7/oF59
-         uhMWoLDraHNp2zwFdJw/t7jQk3IveEkWZ1LeRhGlgTCNAh/DiTQ2XLafhZZCzUHoEkwS
-         dif1VtMPemf7+piXTXgaL3PFBy2EaxVWK1o/LiIuBhganCBQYzNUEIQ7a92fzxf9boQe
-         QbTQ==;
+        bh=IiCawLw2POwTZcTTAV1P3hhlN4KcpW1sTG7Gg9YSIJ8=;
+        fh=H2AmuqulvQE+T5zu97MCEUC3z9wF9NssS7895NhR/+c=;
+        b=1BYMrmjjVPhTxfXTOgKtKaxH81QvwxP5hKPM8H3DICeOMK0OCSN9YPONW0/cduOs8P
+         tOFSKDoWQda2YS8yVRompwx5lFE3SjVzfwPPdYtKwqmh3a7IHNMn2IEVKMffhpPcps5a
+         rr7fdBAeENJfVQ4gSWeFp5rhL8c+xyKP7ox5bCTGHHRD1Opu5RzGgsQZsSQaTKwUlbNm
+         phECq1AcJjBI8/bXnSQ27vKznGpwN2QUUJylVD2kQdX04n3NUIEbfpHg385pAaCDvvwS
+         q83JlJzwK0AtPzQqJLRqXKtIMvL5ZnXBb3mpcklU9LbMK6uc+I2RV8J2ZgvMppvfJQGs
+         /Y9w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=FitB9r94;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=E71722J+;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 71dfb90a1353d-5007163c6f1si3164086e0c.163.2024.09.03.09.12.09
+        by mx.google.com with ESMTPS id 71dfb90a1353d-5007167883dsi2764990e0c.242.2024.09.03.09.12.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 03 Sep 2024 09:12:09 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 03 Sep 2024 09:12:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=FitB9r94;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=E71722J+;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1slW5k-0002Ui-Jc; Tue, 03 Sep 2024 12:09:16 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1slW4u-0006CK-3f; Tue, 03 Sep 2024 12:08:25 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1slW5g-0001wo-4v
- for qemu-devel@nongnu.org; Tue, 03 Sep 2024 12:09:12 -0400
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+ id 1slW4q-0005y8-SK
+ for qemu-arm@nongnu.org; Tue, 03 Sep 2024 12:08:20 -0400
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1slW5b-000303-Ii
- for qemu-devel@nongnu.org; Tue, 03 Sep 2024 12:09:11 -0400
-Received: by mail-wm1-x336.google.com with SMTP id
- 5b1f17b1804b1-42bbe908380so34442285e9.2
- for <qemu-devel@nongnu.org>; Tue, 03 Sep 2024 09:09:07 -0700 (PDT)
+ id 1slW4n-0002ky-5g
+ for qemu-arm@nongnu.org; Tue, 03 Sep 2024 12:08:20 -0400
+Received: by mail-wm1-x32c.google.com with SMTP id
+ 5b1f17b1804b1-42bb8cf8abeso44414125e9.2
+ for <qemu-arm@nongnu.org>; Tue, 03 Sep 2024 09:08:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1725379746; x=1725984546; darn=nongnu.org;
+ d=linaro.org; s=google; t=1725379695; x=1725984495; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=rihrsQN7vHYWozjlruoyN2+CRkb9ZEkHhz2ABxkI9sY=;
- b=FitB9r94frm5QQN2wYLNHgGcP36A35XT6Y6MaSaqXGC3eLAUYJ778w1L90fUJs54pP
- KmadgAgC6W8RA7rE/b/LPwL+XKpln1NUTNd4inL7w9cVcHb01UtRj9QrkTAix1MemTX5
- f2dGUyZn+aKFGnYH2ESVB4lBPUBbivYNxNbZuQoDIzUP9izHkgQcgdZF0tLwxEr2Qj+7
- A7Ud9aBJovuz79mCGrIx1ZCeQfGVBbsunc/3iUFbN+jMZh3flikTOk4O4MODYZ2QkLXO
- 6eP7k1KCa4MvYkeuM0YsOEJC7yanfHooNKBFsUL75YRpSv8RqxeS2L5Xu9cT3cxl3tKW
- Ul9w==
+ :reply-to; bh=IiCawLw2POwTZcTTAV1P3hhlN4KcpW1sTG7Gg9YSIJ8=;
+ b=E71722J+A2oxs2CDlUza/NiZQaTO4DHYQNSuEIlSjuTA6HGFjYpMIxVFGAc3x8Tq1c
+ j3+jls8D0rF5KdvN0PM8ltEVFC1N08POx+63K2Ufd4wN9U42GUdX39tElnPYvtDg6ksn
+ hAkeozhp0txHTeDlIOvSqUoz0ZywqGRjEarlAH+cNNEXijOdwZqrTcIt+zPZQTAKhgu/
+ 6FVdDLq2RnhpYjUBOlxvk7F3RDWQbRE5aF7Ly+eDRNQQI822oP3WoWAanw8gRvDLUPgl
+ ubxAV9Jdoeaig3Wmzhmzp7zLHbI48eU7OzyIdSAx75+PmRqncW2XoKecR6EQoTJPLg3n
+ 6JkQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1725379746; x=1725984546;
+ d=1e100.net; s=20230601; t=1725379695; x=1725984495;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=rihrsQN7vHYWozjlruoyN2+CRkb9ZEkHhz2ABxkI9sY=;
- b=OxDZ0LmG3u1jpM9ek6iliT3QmwQT3tEhDlpRfcW1OjRz70aLgxeU+AxLcal9rdzNN6
- MJ/8tOijygiVXKYji1qhrrLSdIq48SQ5+lT1f6qZJaAqsI1+2vWxB0f7rWhBKt49uk8e
- rnGKrFzs67yyPaLXzac2vTKPHEFI47J9EepSKbzXS4IhT7wejkOXsSfaSvpaQGvsKr5O
- L5wojUxgFaYLkEeWw/pTMcOPjmVmzwP/2I3y3QXaRWzTB3mtyXiIFS4XKtaKDncX7YEY
- pe6XyRbFWew2tG3rwvrBO5AZ1RWS1OqCzraglt9H9yVlJiJr+N372+wS4Zzk3YNLLOmk
- uDGQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWksAS9SO7bt8hGkd61xbjvLrDOIHZ+NmNiiHeDE1oVFoM7qgzLBmRr8abUM639KLVZYASA6w2e0fem@nongnu.org
-X-Gm-Message-State: AOJu0YxqAUUXkEHBRznQd6A2rMMpfm3549dIAYTeS9/uBUMuTrNAFoaA
- Lg0oyPp2r9QxTGtq5bouEIDkrvCtkkGOZtCajPwi3vb6ojSVUFAPG97pQ9bwGdA=
-X-Received: by 2002:a5d:5487:0:b0:371:941f:48f2 with SMTP id
- ffacd0b85a97d-374bcebfdddmr7043883f8f.32.1725379745888; 
- Tue, 03 Sep 2024 09:09:05 -0700 (PDT)
+ bh=IiCawLw2POwTZcTTAV1P3hhlN4KcpW1sTG7Gg9YSIJ8=;
+ b=DcuDvtgxL4hTrvfeOqTlgMzuK2xmQQEBB9LsZzWru+DMXuo4gzZgm6bS6B957OlX4a
+ e1cVaZ8/a1t721COHQJMLBQO1fpZUqhYfqfj1+Wwk2ilf6zuM8n94dI6yU1b+40GOuWY
+ 8C1UejNBh1s0GyjFBZNp9Dek4Y7Bi1gkFEguowRmHFkP4lapA2y3yQwEjaB7IWpanTAW
+ IvS5HEihMIkE58qvSUGwstqdmT8CWPsDBwggxN1bw5YvBP3RR5ag6LnJaCHjs44zilQB
+ s4vJGRzGiHVF46KlDEvf7VtwgS153w3jKMjKIkITT7uC4h3zuCXE/ItETPx6f5CjWtyL
+ UMzA==
+X-Gm-Message-State: AOJu0YwCjcjx+CmSKZtRHZrjaRdAwiSZcTce6ewEmhQ5/OJxvSfe9EkK
+ CTRWgZ0VGqpyfdWcX+a8/diRSSPJqoejYYez67yNM819ORm6PO0vFWkNY/Balh0r0G6rmpo89Co
+ 2
+X-Received: by 2002:a05:600c:4f47:b0:427:ff7a:79e with SMTP id
+ 5b1f17b1804b1-42c8de7b311mr11314135e9.16.1725379694990; 
+ Tue, 03 Sep 2024 09:08:14 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-42bb6df1066sm175123065e9.18.2024.09.03.09.09.05
+ 5b1f17b1804b1-42bb6df1066sm175123065e9.18.2024.09.03.09.08.14
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 03 Sep 2024 09:09:05 -0700 (PDT)
+ Tue, 03 Sep 2024 09:08:14 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH for-9.2 49/53] hw/display: Remove omap_dss
-Date: Tue,  3 Sep 2024 17:07:47 +0100
-Message-Id: <20240903160751.4100218-50-peter.maydell@linaro.org>
+Subject: [PATCH for-9.2 16/53] hw/sd: Remove pxa2xx_mmci.c
+Date: Tue,  3 Sep 2024 17:07:14 +0100
+Message-Id: <20240903160751.4100218-17-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240903160751.4100218-1-peter.maydell@linaro.org>
 References: <20240903160751.4100218-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::336;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x336.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -116,1179 +115,680 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: SyEsSAghP/+v
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 0uz+kLQ9nW5h
 
-The omap_dss device is OMAP2 only, and we are removing it.
+Remove the pxa2xx-specific pxa2xx_mmci device.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- include/hw/arm/omap.h  |   19 -
- hw/display/omap_dss.c  | 1093 ----------------------------------------
- hw/display/meson.build |    1 -
- 3 files changed, 1113 deletions(-)
- delete mode 100644 hw/display/omap_dss.c
+ include/hw/arm/pxa.h |  10 -
+ hw/sd/pxa2xx_mmci.c  | 594 -------------------------------------------
+ hw/sd/meson.build    |   1 -
+ hw/sd/trace-events   |   4 -
+ 4 files changed, 609 deletions(-)
+ delete mode 100644 hw/sd/pxa2xx_mmci.c
 
-diff --git a/include/hw/arm/omap.h b/include/hw/arm/omap.h
-index 82721b46fa0..2300b97716d 100644
---- a/include/hw/arm/omap.h
-+++ b/include/hw/arm/omap.h
-@@ -734,23 +734,6 @@ struct omap_lcd_panel_s *omap_lcdc_init(MemoryRegion *sysmem,
-                                         struct omap_dma_lcd_channel_s *dma,
-                                         omap_clk clk);
+diff --git a/include/hw/arm/pxa.h b/include/hw/arm/pxa.h
+index bf7f868700a..cc4de0750af 100644
+--- a/include/hw/arm/pxa.h
++++ b/include/hw/arm/pxa.h
+@@ -86,16 +86,6 @@ PXA2xxLCDState *pxa2xx_lcdc_init(MemoryRegion *sysmem,
+                 hwaddr base, qemu_irq irq);
+ void pxa2xx_lcd_vsync_notifier(PXA2xxLCDState *s, qemu_irq handler);
  
--/* omap_dss.c */
--struct rfbi_chip_s {
--    void *opaque;
--    void (*write)(void *opaque, int dc, uint16_t value);
--    void (*block)(void *opaque, int dc, void *buf, size_t len, int pitch);
--    uint16_t (*read)(void *opaque, int dc);
--};
--struct omap_dss_s;
--void omap_dss_reset(struct omap_dss_s *s);
--struct omap_dss_s *omap_dss_init(struct omap_target_agent_s *ta,
--                MemoryRegion *sysmem,
--                hwaddr l3_base,
--                qemu_irq irq, qemu_irq drq,
--                omap_clk fck1, omap_clk fck2, omap_clk ck54m,
--                omap_clk ick1, omap_clk ick2);
--void omap_rfbi_attach(struct omap_dss_s *s, int cs, struct rfbi_chip_s *chip);
+-/* pxa2xx_mmci.c */
+-#define TYPE_PXA2XX_MMCI "pxa2xx-mmci"
+-OBJECT_DECLARE_SIMPLE_TYPE(PXA2xxMMCIState, PXA2XX_MMCI)
 -
- /* omap_mmc.c */
- struct omap_mmc_s;
- struct omap_mmc_s *omap_mmc_init(hwaddr base,
-@@ -910,8 +893,6 @@ struct omap_mpu_state_s {
- 
-     /* OMAP2-only peripherals */
-     struct omap_l4_s *l4;
+-PXA2xxMMCIState *pxa2xx_mmci_init(MemoryRegion *sysmem,
+-                hwaddr base,
+-                qemu_irq irq, qemu_irq rx_dma, qemu_irq tx_dma);
+-void pxa2xx_mmci_handlers(PXA2xxMMCIState *s, qemu_irq readonly,
+-                qemu_irq coverswitch);
 -
--    struct omap_dss_s *dss;
- };
- 
- /* omap1.c */
-diff --git a/hw/display/omap_dss.c b/hw/display/omap_dss.c
+ /* pxa2xx_pcmcia.c */
+ #define TYPE_PXA2XX_PCMCIA "pxa2xx-pcmcia"
+ OBJECT_DECLARE_SIMPLE_TYPE(PXA2xxPCMCIAState, PXA2XX_PCMCIA)
+diff --git a/hw/sd/pxa2xx_mmci.c b/hw/sd/pxa2xx_mmci.c
 deleted file mode 100644
-index f33fc7606d3..00000000000
---- a/hw/display/omap_dss.c
+index 82529708c8a..00000000000
+--- a/hw/sd/pxa2xx_mmci.c
 +++ /dev/null
-@@ -1,1093 +0,0 @@
+@@ -1,594 +0,0 @@
 -/*
-- * OMAP2 Display Subsystem.
+- * Intel XScale PXA255/270 MultiMediaCard/SD/SDIO Controller emulation.
 - *
-- * Copyright (C) 2008 Nokia Corporation
-- * Written by Andrzej Zaborowski <andrew@openedhand.com>
+- * Copyright (c) 2006 Openedhand Ltd.
+- * Written by Andrzej Zaborowski <balrog@zabor.org>
 - *
-- * This program is free software; you can redistribute it and/or
-- * modify it under the terms of the GNU General Public License as
-- * published by the Free Software Foundation; either version 2 or
-- * (at your option) version 3 of the License.
+- * This code is licensed under the GPLv2.
 - *
-- * This program is distributed in the hope that it will be useful,
-- * but WITHOUT ANY WARRANTY; without even the implied warranty of
-- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-- * GNU General Public License for more details.
-- *
-- * You should have received a copy of the GNU General Public License along
-- * with this program; if not, see <http://www.gnu.org/licenses/>.
+- * Contributions after 2012-01-13 are licensed under the terms of the
+- * GNU GPL, version 2 or (at your option) any later version.
 - */
 -
 -#include "qemu/osdep.h"
--#include "qemu/log.h"
--#include "hw/hw.h"
+-#include "qapi/error.h"
 -#include "hw/irq.h"
--#include "ui/console.h"
--#include "hw/arm/omap.h"
+-#include "hw/sysbus.h"
+-#include "migration/vmstate.h"
+-#include "hw/arm/pxa.h"
+-#include "hw/sd/sd.h"
+-#include "hw/qdev-properties.h"
+-#include "qemu/log.h"
+-#include "qemu/module.h"
+-#include "trace.h"
+-#include "qom/object.h"
 -
--struct omap_dss_s {
+-#define TYPE_PXA2XX_MMCI_BUS "pxa2xx-mmci-bus"
+-/* This is reusing the SDBus typedef from SD_BUS */
+-DECLARE_INSTANCE_CHECKER(SDBus, PXA2XX_MMCI_BUS,
+-                         TYPE_PXA2XX_MMCI_BUS)
+-
+-struct PXA2xxMMCIState {
+-    SysBusDevice parent_obj;
+-
+-    MemoryRegion iomem;
 -    qemu_irq irq;
--    qemu_irq drq;
--    DisplayState *state;
--    MemoryRegion iomem_diss1, iomem_disc1, iomem_rfbi1, iomem_venc1, iomem_im3;
+-    qemu_irq rx_dma;
+-    qemu_irq tx_dma;
+-    qemu_irq inserted;
+-    qemu_irq readonly;
 -
--    int autoidle;
--    int control;
--    int enable;
+-    BlockBackend *blk;
+-    SDBus sdbus;
 -
--    struct omap_dss_panel_s {
--        int enable;
--        int nx;
--        int ny;
+-    uint32_t status;
+-    uint32_t clkrt;
+-    uint32_t spi;
+-    uint32_t cmdat;
+-    uint32_t resp_tout;
+-    uint32_t read_tout;
+-    int32_t blklen;
+-    int32_t numblk;
+-    uint32_t intmask;
+-    uint32_t intreq;
+-    int32_t cmd;
+-    uint32_t arg;
 -
--        int x;
--        int y;
--    } dig, lcd;
+-    int32_t active;
+-    int32_t bytesleft;
+-    uint8_t tx_fifo[64];
+-    uint32_t tx_start;
+-    uint32_t tx_len;
+-    uint8_t rx_fifo[32];
+-    uint32_t rx_start;
+-    uint32_t rx_len;
+-    uint16_t resp_fifo[9];
+-    uint32_t resp_len;
 -
--    struct {
--        uint32_t idlemode;
--        uint32_t irqst;
--        uint32_t irqen;
--        uint32_t control;
--        uint32_t config;
--        uint32_t capable;
--        uint32_t timing[4];
--        int line;
--        uint32_t bg[2];
--        uint32_t trans[2];
--
--        struct omap_dss_plane_s {
--            int enable;
--            int bpp;
--            int posx;
--            int posy;
--            int nx;
--            int ny;
--
--            hwaddr addr[3];
--
--            uint32_t attr;
--            uint32_t tresh;
--            int rowinc;
--            int colinc;
--            int wininc;
--        } l[3];
--
--        int invalidate;
--        uint16_t palette[256];
--    } dispc;
--
--    struct {
--        int idlemode;
--        uint32_t control;
--        int enable;
--        int pixels;
--        int busy;
--        int skiplines;
--        uint16_t rxbuf;
--        uint32_t config[2];
--        uint32_t time[4];
--        uint32_t data[6];
--        uint16_t vsync;
--        uint16_t hsync;
--        struct rfbi_chip_s *chip[2];
--    } rfbi;
+-    int32_t cmdreq;
 -};
 -
--static void omap_dispc_interrupt_update(struct omap_dss_s *s)
+-static bool pxa2xx_mmci_vmstate_validate(void *opaque, int version_id)
 -{
--    qemu_set_irq(s->irq, s->dispc.irqst & s->dispc.irqen);
+-    PXA2xxMMCIState *s = opaque;
+-
+-    return s->tx_start < ARRAY_SIZE(s->tx_fifo)
+-        && s->rx_start < ARRAY_SIZE(s->rx_fifo)
+-        && s->tx_len <= ARRAY_SIZE(s->tx_fifo)
+-        && s->rx_len <= ARRAY_SIZE(s->rx_fifo)
+-        && s->resp_len <= ARRAY_SIZE(s->resp_fifo);
 -}
 -
--static void omap_rfbi_reset(struct omap_dss_s *s)
--{
--    s->rfbi.idlemode = 0;
--    s->rfbi.control = 2;
--    s->rfbi.enable = 0;
--    s->rfbi.pixels = 0;
--    s->rfbi.skiplines = 0;
--    s->rfbi.busy = 0;
--    s->rfbi.config[0] = 0x00310000;
--    s->rfbi.config[1] = 0x00310000;
--    s->rfbi.time[0] = 0;
--    s->rfbi.time[1] = 0;
--    s->rfbi.time[2] = 0;
--    s->rfbi.time[3] = 0;
--    s->rfbi.data[0] = 0;
--    s->rfbi.data[1] = 0;
--    s->rfbi.data[2] = 0;
--    s->rfbi.data[3] = 0;
--    s->rfbi.data[4] = 0;
--    s->rfbi.data[5] = 0;
--    s->rfbi.vsync = 0;
--    s->rfbi.hsync = 0;
--}
 -
--void omap_dss_reset(struct omap_dss_s *s)
--{
--    s->autoidle = 0;
--    s->control = 0;
--    s->enable = 0;
--
--    s->dig.enable = 0;
--    s->dig.nx = 1;
--    s->dig.ny = 1;
--
--    s->lcd.enable = 0;
--    s->lcd.nx = 1;
--    s->lcd.ny = 1;
--
--    s->dispc.idlemode = 0;
--    s->dispc.irqst = 0;
--    s->dispc.irqen = 0;
--    s->dispc.control = 0;
--    s->dispc.config = 0;
--    s->dispc.capable = 0x161;
--    s->dispc.timing[0] = 0;
--    s->dispc.timing[1] = 0;
--    s->dispc.timing[2] = 0;
--    s->dispc.timing[3] = 0;
--    s->dispc.line = 0;
--    s->dispc.bg[0] = 0;
--    s->dispc.bg[1] = 0;
--    s->dispc.trans[0] = 0;
--    s->dispc.trans[1] = 0;
--
--    s->dispc.l[0].enable = 0;
--    s->dispc.l[0].bpp = 0;
--    s->dispc.l[0].addr[0] = 0;
--    s->dispc.l[0].addr[1] = 0;
--    s->dispc.l[0].addr[2] = 0;
--    s->dispc.l[0].posx = 0;
--    s->dispc.l[0].posy = 0;
--    s->dispc.l[0].nx = 1;
--    s->dispc.l[0].ny = 1;
--    s->dispc.l[0].attr = 0;
--    s->dispc.l[0].tresh = 0;
--    s->dispc.l[0].rowinc = 1;
--    s->dispc.l[0].colinc = 1;
--    s->dispc.l[0].wininc = 0;
--
--    omap_rfbi_reset(s);
--    omap_dispc_interrupt_update(s);
--}
--
--static uint64_t omap_diss_read(void *opaque, hwaddr addr,
--                               unsigned size)
--{
--    struct omap_dss_s *s = opaque;
--
--    if (size != 4) {
--        return omap_badwidth_read32(opaque, addr);
+-static const VMStateDescription vmstate_pxa2xx_mmci = {
+-    .name = "pxa2xx-mmci",
+-    .version_id = 2,
+-    .minimum_version_id = 2,
+-    .fields = (const VMStateField[]) {
+-        VMSTATE_UINT32(status, PXA2xxMMCIState),
+-        VMSTATE_UINT32(clkrt, PXA2xxMMCIState),
+-        VMSTATE_UINT32(spi, PXA2xxMMCIState),
+-        VMSTATE_UINT32(cmdat, PXA2xxMMCIState),
+-        VMSTATE_UINT32(resp_tout, PXA2xxMMCIState),
+-        VMSTATE_UINT32(read_tout, PXA2xxMMCIState),
+-        VMSTATE_INT32(blklen, PXA2xxMMCIState),
+-        VMSTATE_INT32(numblk, PXA2xxMMCIState),
+-        VMSTATE_UINT32(intmask, PXA2xxMMCIState),
+-        VMSTATE_UINT32(intreq, PXA2xxMMCIState),
+-        VMSTATE_INT32(cmd, PXA2xxMMCIState),
+-        VMSTATE_UINT32(arg, PXA2xxMMCIState),
+-        VMSTATE_INT32(cmdreq, PXA2xxMMCIState),
+-        VMSTATE_INT32(active, PXA2xxMMCIState),
+-        VMSTATE_INT32(bytesleft, PXA2xxMMCIState),
+-        VMSTATE_UINT32(tx_start, PXA2xxMMCIState),
+-        VMSTATE_UINT32(tx_len, PXA2xxMMCIState),
+-        VMSTATE_UINT32(rx_start, PXA2xxMMCIState),
+-        VMSTATE_UINT32(rx_len, PXA2xxMMCIState),
+-        VMSTATE_UINT32(resp_len, PXA2xxMMCIState),
+-        VMSTATE_VALIDATE("fifo size incorrect", pxa2xx_mmci_vmstate_validate),
+-        VMSTATE_UINT8_ARRAY(tx_fifo, PXA2xxMMCIState, 64),
+-        VMSTATE_UINT8_ARRAY(rx_fifo, PXA2xxMMCIState, 32),
+-        VMSTATE_UINT16_ARRAY(resp_fifo, PXA2xxMMCIState, 9),
+-        VMSTATE_END_OF_LIST()
 -    }
--
--    switch (addr) {
--    case 0x00:  /* DSS_REVISIONNUMBER */
--        return 0x20;
--
--    case 0x10:  /* DSS_SYSCONFIG */
--        return s->autoidle;
--
--    case 0x14:  /* DSS_SYSSTATUS */
--        return 1;                       /* RESETDONE */
--
--    case 0x40:  /* DSS_CONTROL */
--        return s->control;
--
--    case 0x50:  /* DSS_PSA_LCD_REG_1 */
--    case 0x54:  /* DSS_PSA_LCD_REG_2 */
--    case 0x58:  /* DSS_PSA_VIDEO_REG */
--        /* TODO: fake some values when appropriate s->control bits are set */
--        return 0;
--
--    case 0x5c:  /* DSS_STATUS */
--        return 1 + (s->control & 1);
--
--    default:
--        break;
--    }
--    OMAP_BAD_REG(addr);
--    return 0;
--}
--
--static void omap_diss_write(void *opaque, hwaddr addr,
--                            uint64_t value, unsigned size)
--{
--    struct omap_dss_s *s = opaque;
--
--    if (size != 4) {
--        omap_badwidth_write32(opaque, addr, value);
--        return;
--    }
--
--    switch (addr) {
--    case 0x00:  /* DSS_REVISIONNUMBER */
--    case 0x14:  /* DSS_SYSSTATUS */
--    case 0x50:  /* DSS_PSA_LCD_REG_1 */
--    case 0x54:  /* DSS_PSA_LCD_REG_2 */
--    case 0x58:  /* DSS_PSA_VIDEO_REG */
--    case 0x5c:  /* DSS_STATUS */
--        OMAP_RO_REG(addr);
--        break;
--
--    case 0x10:  /* DSS_SYSCONFIG */
--        if (value & 2)                      /* SOFTRESET */
--            omap_dss_reset(s);
--        s->autoidle = value & 1;
--        break;
--
--    case 0x40:  /* DSS_CONTROL */
--        s->control = value & 0x3dd;
--        break;
--
--    default:
--        OMAP_BAD_REG(addr);
--    }
--}
--
--static const MemoryRegionOps omap_diss_ops = {
--    .read = omap_diss_read,
--    .write = omap_diss_write,
--    .endianness = DEVICE_NATIVE_ENDIAN,
 -};
 -
--static uint64_t omap_disc_read(void *opaque, hwaddr addr,
--                               unsigned size)
+-#define MMC_STRPCL	0x00	/* MMC Clock Start/Stop register */
+-#define MMC_STAT	0x04	/* MMC Status register */
+-#define MMC_CLKRT	0x08	/* MMC Clock Rate register */
+-#define MMC_SPI		0x0c	/* MMC SPI Mode register */
+-#define MMC_CMDAT	0x10	/* MMC Command/Data register */
+-#define MMC_RESTO	0x14	/* MMC Response Time-Out register */
+-#define MMC_RDTO	0x18	/* MMC Read Time-Out register */
+-#define MMC_BLKLEN	0x1c	/* MMC Block Length register */
+-#define MMC_NUMBLK	0x20	/* MMC Number of Blocks register */
+-#define MMC_PRTBUF	0x24	/* MMC Buffer Partly Full register */
+-#define MMC_I_MASK	0x28	/* MMC Interrupt Mask register */
+-#define MMC_I_REG	0x2c	/* MMC Interrupt Request register */
+-#define MMC_CMD		0x30	/* MMC Command register */
+-#define MMC_ARGH	0x34	/* MMC Argument High register */
+-#define MMC_ARGL	0x38	/* MMC Argument Low register */
+-#define MMC_RES		0x3c	/* MMC Response FIFO */
+-#define MMC_RXFIFO	0x40	/* MMC Receive FIFO */
+-#define MMC_TXFIFO	0x44	/* MMC Transmit FIFO */
+-#define MMC_RDWAIT	0x48	/* MMC RD_WAIT register */
+-#define MMC_BLKS_REM	0x4c	/* MMC Blocks Remaining register */
+-
+-/* Bitfield masks */
+-#define STRPCL_STOP_CLK	(1 << 0)
+-#define STRPCL_STRT_CLK	(1 << 1)
+-#define STAT_TOUT_RES	(1 << 1)
+-#define STAT_CLK_EN	(1 << 8)
+-#define STAT_DATA_DONE	(1 << 11)
+-#define STAT_PRG_DONE	(1 << 12)
+-#define STAT_END_CMDRES	(1 << 13)
+-#define SPI_SPI_MODE	(1 << 0)
+-#define CMDAT_RES_TYPE	(3 << 0)
+-#define CMDAT_DATA_EN	(1 << 2)
+-#define CMDAT_WR_RD	(1 << 3)
+-#define CMDAT_DMA_EN	(1 << 7)
+-#define CMDAT_STOP_TRAN	(1 << 10)
+-#define INT_DATA_DONE	(1 << 0)
+-#define INT_PRG_DONE	(1 << 1)
+-#define INT_END_CMD	(1 << 2)
+-#define INT_STOP_CMD	(1 << 3)
+-#define INT_CLK_OFF	(1 << 4)
+-#define INT_RXFIFO_REQ	(1 << 5)
+-#define INT_TXFIFO_REQ	(1 << 6)
+-#define INT_TINT	(1 << 7)
+-#define INT_DAT_ERR	(1 << 8)
+-#define INT_RES_ERR	(1 << 9)
+-#define INT_RD_STALLED	(1 << 10)
+-#define INT_SDIO_INT	(1 << 11)
+-#define INT_SDIO_SACK	(1 << 12)
+-#define PRTBUF_PRT_BUF	(1 << 0)
+-
+-/* Route internal interrupt lines to the global IC and DMA */
+-static void pxa2xx_mmci_int_update(PXA2xxMMCIState *s)
 -{
--    struct omap_dss_s *s = opaque;
+-    uint32_t mask = s->intmask;
+-    if (s->cmdat & CMDAT_DMA_EN) {
+-        mask |= INT_RXFIFO_REQ | INT_TXFIFO_REQ;
 -
--    if (size != 4) {
--        return omap_badwidth_read32(opaque, addr);
+-        qemu_set_irq(s->rx_dma, !!(s->intreq & INT_RXFIFO_REQ));
+-        qemu_set_irq(s->tx_dma, !!(s->intreq & INT_TXFIFO_REQ));
 -    }
 -
--    switch (addr) {
--    case 0x000: /* DISPC_REVISION */
--        return 0x20;
--
--    case 0x010: /* DISPC_SYSCONFIG */
--        return s->dispc.idlemode;
--
--    case 0x014: /* DISPC_SYSSTATUS */
--        return 1;                       /* RESETDONE */
--
--    case 0x018: /* DISPC_IRQSTATUS */
--        return s->dispc.irqst;
--
--    case 0x01c: /* DISPC_IRQENABLE */
--        return s->dispc.irqen;
--
--    case 0x040: /* DISPC_CONTROL */
--        return s->dispc.control;
--
--    case 0x044: /* DISPC_CONFIG */
--        return s->dispc.config;
--
--    case 0x048: /* DISPC_CAPABLE */
--        return s->dispc.capable;
--
--    case 0x04c: /* DISPC_DEFAULT_COLOR0 */
--        return s->dispc.bg[0];
--    case 0x050: /* DISPC_DEFAULT_COLOR1 */
--        return s->dispc.bg[1];
--    case 0x054: /* DISPC_TRANS_COLOR0 */
--        return s->dispc.trans[0];
--    case 0x058: /* DISPC_TRANS_COLOR1 */
--        return s->dispc.trans[1];
--
--    case 0x05c: /* DISPC_LINE_STATUS */
--        return 0x7ff;
--    case 0x060: /* DISPC_LINE_NUMBER */
--        return s->dispc.line;
--
--    case 0x064: /* DISPC_TIMING_H */
--        return s->dispc.timing[0];
--    case 0x068: /* DISPC_TIMING_V */
--        return s->dispc.timing[1];
--    case 0x06c: /* DISPC_POL_FREQ */
--        return s->dispc.timing[2];
--    case 0x070: /* DISPC_DIVISOR */
--        return s->dispc.timing[3];
--
--    case 0x078: /* DISPC_SIZE_DIG */
--        return ((s->dig.ny - 1) << 16) | (s->dig.nx - 1);
--    case 0x07c: /* DISPC_SIZE_LCD */
--        return ((s->lcd.ny - 1) << 16) | (s->lcd.nx - 1);
--
--    case 0x080: /* DISPC_GFX_BA0 */
--        return s->dispc.l[0].addr[0];
--    case 0x084: /* DISPC_GFX_BA1 */
--        return s->dispc.l[0].addr[1];
--    case 0x088: /* DISPC_GFX_POSITION */
--        return (s->dispc.l[0].posy << 16) | s->dispc.l[0].posx;
--    case 0x08c: /* DISPC_GFX_SIZE */
--        return ((s->dispc.l[0].ny - 1) << 16) | (s->dispc.l[0].nx - 1);
--    case 0x0a0: /* DISPC_GFX_ATTRIBUTES */
--        return s->dispc.l[0].attr;
--    case 0x0a4: /* DISPC_GFX_FIFO_TRESHOLD */
--        return s->dispc.l[0].tresh;
--    case 0x0a8: /* DISPC_GFX_FIFO_SIZE_STATUS */
--        return 256;
--    case 0x0ac: /* DISPC_GFX_ROW_INC */
--        return s->dispc.l[0].rowinc;
--    case 0x0b0: /* DISPC_GFX_PIXEL_INC */
--        return s->dispc.l[0].colinc;
--    case 0x0b4: /* DISPC_GFX_WINDOW_SKIP */
--        return s->dispc.l[0].wininc;
--    case 0x0b8: /* DISPC_GFX_TABLE_BA */
--        return s->dispc.l[0].addr[2];
--
--    case 0x0bc: /* DISPC_VID1_BA0 */
--    case 0x0c0: /* DISPC_VID1_BA1 */
--    case 0x0c4: /* DISPC_VID1_POSITION */
--    case 0x0c8: /* DISPC_VID1_SIZE */
--    case 0x0cc: /* DISPC_VID1_ATTRIBUTES */
--    case 0x0d0: /* DISPC_VID1_FIFO_TRESHOLD */
--    case 0x0d4: /* DISPC_VID1_FIFO_SIZE_STATUS */
--    case 0x0d8: /* DISPC_VID1_ROW_INC */
--    case 0x0dc: /* DISPC_VID1_PIXEL_INC */
--    case 0x0e0: /* DISPC_VID1_FIR */
--    case 0x0e4: /* DISPC_VID1_PICTURE_SIZE */
--    case 0x0e8: /* DISPC_VID1_ACCU0 */
--    case 0x0ec: /* DISPC_VID1_ACCU1 */
--    case 0x0f0 ... 0x140:   /* DISPC_VID1_FIR_COEF, DISPC_VID1_CONV_COEF */
--    case 0x14c: /* DISPC_VID2_BA0 */
--    case 0x150: /* DISPC_VID2_BA1 */
--    case 0x154: /* DISPC_VID2_POSITION */
--    case 0x158: /* DISPC_VID2_SIZE */
--    case 0x15c: /* DISPC_VID2_ATTRIBUTES */
--    case 0x160: /* DISPC_VID2_FIFO_TRESHOLD */
--    case 0x164: /* DISPC_VID2_FIFO_SIZE_STATUS */
--    case 0x168: /* DISPC_VID2_ROW_INC */
--    case 0x16c: /* DISPC_VID2_PIXEL_INC */
--    case 0x170: /* DISPC_VID2_FIR */
--    case 0x174: /* DISPC_VID2_PICTURE_SIZE */
--    case 0x178: /* DISPC_VID2_ACCU0 */
--    case 0x17c: /* DISPC_VID2_ACCU1 */
--    case 0x180 ... 0x1d0:   /* DISPC_VID2_FIR_COEF, DISPC_VID2_CONV_COEF */
--    case 0x1d4: /* DISPC_DATA_CYCLE1 */
--    case 0x1d8: /* DISPC_DATA_CYCLE2 */
--    case 0x1dc: /* DISPC_DATA_CYCLE3 */
--        return 0;
--
--    default:
--        break;
--    }
--    OMAP_BAD_REG(addr);
--    return 0;
+-    qemu_set_irq(s->irq, !!(s->intreq & ~mask));
 -}
 -
--static void omap_disc_write(void *opaque, hwaddr addr,
--                            uint64_t value, unsigned size)
+-static void pxa2xx_mmci_fifo_update(PXA2xxMMCIState *s)
 -{
--    struct omap_dss_s *s = opaque;
--
--    if (size != 4) {
--        omap_badwidth_write32(opaque, addr, value);
+-    if (!s->active)
 -        return;
+-
+-    if (s->cmdat & CMDAT_WR_RD) {
+-        while (s->bytesleft && s->tx_len) {
+-            sdbus_write_byte(&s->sdbus, s->tx_fifo[s->tx_start++]);
+-            s->tx_start &= 0x1f;
+-            s->tx_len --;
+-            s->bytesleft --;
+-        }
+-        if (s->bytesleft)
+-            s->intreq |= INT_TXFIFO_REQ;
+-    } else
+-        while (s->bytesleft && s->rx_len < 32) {
+-            s->rx_fifo[(s->rx_start + (s->rx_len ++)) & 0x1f] =
+-                sdbus_read_byte(&s->sdbus);
+-            s->bytesleft --;
+-            s->intreq |= INT_RXFIFO_REQ;
+-        }
+-
+-    if (!s->bytesleft) {
+-        s->active = 0;
+-        s->intreq |= INT_DATA_DONE;
+-        s->status |= STAT_DATA_DONE;
+-
+-        if (s->cmdat & CMDAT_WR_RD) {
+-            s->intreq |= INT_PRG_DONE;
+-            s->status |= STAT_PRG_DONE;
+-        }
 -    }
 -
--    switch (addr) {
--    case 0x010: /* DISPC_SYSCONFIG */
--        if (value & 2)                      /* SOFTRESET */
--            omap_dss_reset(s);
--        s->dispc.idlemode = value & 0x301b;
+-    pxa2xx_mmci_int_update(s);
+-}
+-
+-static void pxa2xx_mmci_wakequeues(PXA2xxMMCIState *s)
+-{
+-    int rsplen, i;
+-    SDRequest request;
+-    uint8_t response[16];
+-
+-    s->active = 1;
+-    s->rx_len = 0;
+-    s->tx_len = 0;
+-    s->cmdreq = 0;
+-
+-    request.cmd = s->cmd;
+-    request.arg = s->arg;
+-    request.crc = 0;	/* FIXME */
+-
+-    rsplen = sdbus_do_command(&s->sdbus, &request, response);
+-    s->intreq |= INT_END_CMD;
+-
+-    memset(s->resp_fifo, 0, sizeof(s->resp_fifo));
+-    switch (s->cmdat & CMDAT_RES_TYPE) {
+-#define PXAMMCI_RESP(wd, value0, value1)	\
+-        s->resp_fifo[(wd) + 0] |= (value0);	\
+-        s->resp_fifo[(wd) + 1] |= (value1) << 8;
+-    case 0:	/* No response */
+-        goto complete;
+-
+-    case 1:	/* R1, R4, R5 or R6 */
+-        if (rsplen < 4)
+-            goto timeout;
+-        goto complete;
+-
+-    case 2:	/* R2 */
+-        if (rsplen < 16)
+-            goto timeout;
+-        goto complete;
+-
+-    case 3:	/* R3 */
+-        if (rsplen < 4)
+-            goto timeout;
+-        goto complete;
+-
+-    complete:
+-        for (i = 0; rsplen > 0; i ++, rsplen -= 2) {
+-            PXAMMCI_RESP(i, response[i * 2], response[i * 2 + 1]);
+-        }
+-        s->status |= STAT_END_CMDRES;
+-
+-        if (!(s->cmdat & CMDAT_DATA_EN))
+-            s->active = 0;
+-        else
+-            s->bytesleft = s->numblk * s->blklen;
+-
+-        s->resp_len = 0;
 -        break;
 -
--    case 0x018: /* DISPC_IRQSTATUS */
--        s->dispc.irqst &= ~value;
--        omap_dispc_interrupt_update(s);
+-    timeout:
+-        s->active = 0;
+-        s->status |= STAT_TOUT_RES;
 -        break;
+-    }
 -
--    case 0x01c: /* DISPC_IRQENABLE */
--        s->dispc.irqen = value & 0xffff;
--        omap_dispc_interrupt_update(s);
+-    pxa2xx_mmci_fifo_update(s);
+-}
+-
+-static uint64_t pxa2xx_mmci_read(void *opaque, hwaddr offset, unsigned size)
+-{
+-    PXA2xxMMCIState *s = (PXA2xxMMCIState *) opaque;
+-    uint32_t ret = 0;
+-
+-    switch (offset) {
+-    case MMC_STRPCL:
 -        break;
+-    case MMC_STAT:
+-        ret = s->status;
+-        break;
+-    case MMC_CLKRT:
+-        ret = s->clkrt;
+-        break;
+-    case MMC_SPI:
+-        ret = s->spi;
+-        break;
+-    case MMC_CMDAT:
+-        ret = s->cmdat;
+-        break;
+-    case MMC_RESTO:
+-        ret = s->resp_tout;
+-        break;
+-    case MMC_RDTO:
+-        ret = s->read_tout;
+-        break;
+-    case MMC_BLKLEN:
+-        ret = s->blklen;
+-        break;
+-    case MMC_NUMBLK:
+-        ret = s->numblk;
+-        break;
+-    case MMC_PRTBUF:
+-        break;
+-    case MMC_I_MASK:
+-        ret = s->intmask;
+-        break;
+-    case MMC_I_REG:
+-        ret = s->intreq;
+-        break;
+-    case MMC_CMD:
+-        ret = s->cmd | 0x40;
+-        break;
+-    case MMC_ARGH:
+-        ret = s->arg >> 16;
+-        break;
+-    case MMC_ARGL:
+-        ret = s->arg & 0xffff;
+-        break;
+-    case MMC_RES:
+-        ret = (s->resp_len < 9) ? s->resp_fifo[s->resp_len++] : 0;
+-        break;
+-    case MMC_RXFIFO:
+-        while (size-- && s->rx_len) {
+-            ret |= s->rx_fifo[s->rx_start++] << (size << 3);
+-            s->rx_start &= 0x1f;
+-            s->rx_len --;
+-        }
+-        s->intreq &= ~INT_RXFIFO_REQ;
+-        pxa2xx_mmci_fifo_update(s);
+-        break;
+-    case MMC_RDWAIT:
+-        break;
+-    case MMC_BLKS_REM:
+-        ret = s->numblk;
+-        break;
+-    default:
+-        qemu_log_mask(LOG_GUEST_ERROR,
+-                      "%s: incorrect register 0x%02" HWADDR_PRIx "\n",
+-                      __func__, offset);
+-    }
+-    trace_pxa2xx_mmci_read(size, offset, ret);
 -
--    case 0x040: /* DISPC_CONTROL */
--        s->dispc.control = value & 0x07ff9fff;
--        s->dig.enable = (value >> 1) & 1;
--        s->lcd.enable = (value >> 0) & 1;
--        if (value & (1 << 12))          /* OVERLAY_OPTIMIZATION */
--            if (!((s->dispc.l[1].attr | s->dispc.l[2].attr) & 1)) {
--                fprintf(stderr, "%s: Overlay Optimization when no overlay "
--                        "region effectively exists leads to "
--                        "unpredictable behaviour!\n", __func__);
+-    return ret;
+-}
+-
+-static void pxa2xx_mmci_write(void *opaque,
+-                              hwaddr offset, uint64_t value, unsigned size)
+-{
+-    PXA2xxMMCIState *s = (PXA2xxMMCIState *) opaque;
+-
+-    trace_pxa2xx_mmci_write(size, offset, value);
+-    switch (offset) {
+-    case MMC_STRPCL:
+-        if (value & STRPCL_STRT_CLK) {
+-            s->status |= STAT_CLK_EN;
+-            s->intreq &= ~INT_CLK_OFF;
+-
+-            if (s->cmdreq && !(s->cmdat & CMDAT_STOP_TRAN)) {
+-                s->status &= STAT_CLK_EN;
+-                pxa2xx_mmci_wakequeues(s);
 -            }
--        if (value & (1 << 6)) {             /* GODIGITAL */
--            /* XXX: Shadowed fields are:
--             * s->dispc.config
--             * s->dispc.capable
--             * s->dispc.bg[0]
--             * s->dispc.bg[1]
--             * s->dispc.trans[0]
--             * s->dispc.trans[1]
--             * s->dispc.line
--             * s->dispc.timing[0]
--             * s->dispc.timing[1]
--             * s->dispc.timing[2]
--             * s->dispc.timing[3]
--             * s->lcd.nx
--             * s->lcd.ny
--             * s->dig.nx
--             * s->dig.ny
--             * s->dispc.l[0].addr[0]
--             * s->dispc.l[0].addr[1]
--             * s->dispc.l[0].addr[2]
--             * s->dispc.l[0].posx
--             * s->dispc.l[0].posy
--             * s->dispc.l[0].nx
--             * s->dispc.l[0].ny
--             * s->dispc.l[0].tresh
--             * s->dispc.l[0].rowinc
--             * s->dispc.l[0].colinc
--             * s->dispc.l[0].wininc
--             * All they need to be loaded here from their shadow registers.
--             */
 -        }
--        if (value & (1 << 5)) {             /* GOLCD */
--             /* XXX: Likewise for LCD here.  */
+-
+-        if (value & STRPCL_STOP_CLK) {
+-            s->status &= ~STAT_CLK_EN;
+-            s->intreq |= INT_CLK_OFF;
+-            s->active = 0;
 -        }
--        s->dispc.invalidate = 1;
+-
+-        pxa2xx_mmci_int_update(s);
 -        break;
 -
--    case 0x044: /* DISPC_CONFIG */
--        s->dispc.config = value & 0x3fff;
--        /* XXX:
--         * bits 2:1 (LOADMODE) reset to 0 after set to 1 and palette loaded
--         * bits 2:1 (LOADMODE) reset to 2 after set to 3 and palette loaded
--         */
--        s->dispc.invalidate = 1;
+-    case MMC_CLKRT:
+-        s->clkrt = value & 7;
 -        break;
 -
--    case 0x048: /* DISPC_CAPABLE */
--        s->dispc.capable = value & 0x3ff;
+-    case MMC_SPI:
+-        s->spi = value & 0xf;
+-        if (value & SPI_SPI_MODE) {
+-            qemu_log_mask(LOG_GUEST_ERROR,
+-                          "%s: attempted to use card in SPI mode\n", __func__);
+-        }
 -        break;
 -
--    case 0x04c: /* DISPC_DEFAULT_COLOR0 */
--        s->dispc.bg[0] = value & 0xffffff;
--        s->dispc.invalidate = 1;
--        break;
--    case 0x050: /* DISPC_DEFAULT_COLOR1 */
--        s->dispc.bg[1] = value & 0xffffff;
--        s->dispc.invalidate = 1;
--        break;
--    case 0x054: /* DISPC_TRANS_COLOR0 */
--        s->dispc.trans[0] = value & 0xffffff;
--        s->dispc.invalidate = 1;
--        break;
--    case 0x058: /* DISPC_TRANS_COLOR1 */
--        s->dispc.trans[1] = value & 0xffffff;
--        s->dispc.invalidate = 1;
+-    case MMC_CMDAT:
+-        s->cmdat = value & 0x3dff;
+-        s->active = 0;
+-        s->cmdreq = 1;
+-        if (!(value & CMDAT_STOP_TRAN)) {
+-            s->status &= STAT_CLK_EN;
+-
+-            if (s->status & STAT_CLK_EN)
+-                pxa2xx_mmci_wakequeues(s);
+-        }
+-
+-        pxa2xx_mmci_int_update(s);
 -        break;
 -
--    case 0x060: /* DISPC_LINE_NUMBER */
--        s->dispc.line = value & 0x7ff;
+-    case MMC_RESTO:
+-        s->resp_tout = value & 0x7f;
 -        break;
 -
--    case 0x064: /* DISPC_TIMING_H */
--        s->dispc.timing[0] = value & 0x0ff0ff3f;
--        break;
--    case 0x068: /* DISPC_TIMING_V */
--        s->dispc.timing[1] = value & 0x0ff0ff3f;
--        break;
--    case 0x06c: /* DISPC_POL_FREQ */
--        s->dispc.timing[2] = value & 0x0003ffff;
--        break;
--    case 0x070: /* DISPC_DIVISOR */
--        s->dispc.timing[3] = value & 0x00ff00ff;
+-    case MMC_RDTO:
+-        s->read_tout = value & 0xffff;
 -        break;
 -
--    case 0x078: /* DISPC_SIZE_DIG */
--        s->dig.nx = ((value >>  0) & 0x7ff) + 1;        /* PPL */
--        s->dig.ny = ((value >> 16) & 0x7ff) + 1;        /* LPP */
--        s->dispc.invalidate = 1;
--        break;
--    case 0x07c: /* DISPC_SIZE_LCD */
--        s->lcd.nx = ((value >>  0) & 0x7ff) + 1;        /* PPL */
--        s->lcd.ny = ((value >> 16) & 0x7ff) + 1;        /* LPP */
--        s->dispc.invalidate = 1;
--        break;
--    case 0x080: /* DISPC_GFX_BA0 */
--        s->dispc.l[0].addr[0] = (hwaddr) value;
--        s->dispc.invalidate = 1;
--        break;
--    case 0x084: /* DISPC_GFX_BA1 */
--        s->dispc.l[0].addr[1] = (hwaddr) value;
--        s->dispc.invalidate = 1;
--        break;
--    case 0x088: /* DISPC_GFX_POSITION */
--        s->dispc.l[0].posx = ((value >>  0) & 0x7ff);       /* GFXPOSX */
--        s->dispc.l[0].posy = ((value >> 16) & 0x7ff);       /* GFXPOSY */
--        s->dispc.invalidate = 1;
--        break;
--    case 0x08c: /* DISPC_GFX_SIZE */
--        s->dispc.l[0].nx = ((value >>  0) & 0x7ff) + 1;     /* GFXSIZEX */
--        s->dispc.l[0].ny = ((value >> 16) & 0x7ff) + 1;     /* GFXSIZEY */
--        s->dispc.invalidate = 1;
--        break;
--    case 0x0a0: /* DISPC_GFX_ATTRIBUTES */
--        s->dispc.l[0].attr = value & 0x7ff;
--        if (value & (3 << 9))
--            fprintf(stderr, "%s: Big-endian pixel format not supported\n",
--                            __func__);
--        s->dispc.l[0].enable = value & 1;
--        s->dispc.l[0].bpp = (value >> 1) & 0xf;
--        s->dispc.invalidate = 1;
--        break;
--    case 0x0a4: /* DISPC_GFX_FIFO_TRESHOLD */
--        s->dispc.l[0].tresh = value & 0x01ff01ff;
--        break;
--    case 0x0ac: /* DISPC_GFX_ROW_INC */
--        s->dispc.l[0].rowinc = value;
--        s->dispc.invalidate = 1;
--        break;
--    case 0x0b0: /* DISPC_GFX_PIXEL_INC */
--        s->dispc.l[0].colinc = value;
--        s->dispc.invalidate = 1;
--        break;
--    case 0x0b4: /* DISPC_GFX_WINDOW_SKIP */
--        s->dispc.l[0].wininc = value;
--        break;
--    case 0x0b8: /* DISPC_GFX_TABLE_BA */
--        s->dispc.l[0].addr[2] = (hwaddr) value;
--        s->dispc.invalidate = 1;
+-    case MMC_BLKLEN:
+-        s->blklen = value & 0xfff;
 -        break;
 -
--    case 0x0bc: /* DISPC_VID1_BA0 */
--    case 0x0c0: /* DISPC_VID1_BA1 */
--    case 0x0c4: /* DISPC_VID1_POSITION */
--    case 0x0c8: /* DISPC_VID1_SIZE */
--    case 0x0cc: /* DISPC_VID1_ATTRIBUTES */
--    case 0x0d0: /* DISPC_VID1_FIFO_TRESHOLD */
--    case 0x0d8: /* DISPC_VID1_ROW_INC */
--    case 0x0dc: /* DISPC_VID1_PIXEL_INC */
--    case 0x0e0: /* DISPC_VID1_FIR */
--    case 0x0e4: /* DISPC_VID1_PICTURE_SIZE */
--    case 0x0e8: /* DISPC_VID1_ACCU0 */
--    case 0x0ec: /* DISPC_VID1_ACCU1 */
--    case 0x0f0 ... 0x140:   /* DISPC_VID1_FIR_COEF, DISPC_VID1_CONV_COEF */
--    case 0x14c: /* DISPC_VID2_BA0 */
--    case 0x150: /* DISPC_VID2_BA1 */
--    case 0x154: /* DISPC_VID2_POSITION */
--    case 0x158: /* DISPC_VID2_SIZE */
--    case 0x15c: /* DISPC_VID2_ATTRIBUTES */
--    case 0x160: /* DISPC_VID2_FIFO_TRESHOLD */
--    case 0x168: /* DISPC_VID2_ROW_INC */
--    case 0x16c: /* DISPC_VID2_PIXEL_INC */
--    case 0x170: /* DISPC_VID2_FIR */
--    case 0x174: /* DISPC_VID2_PICTURE_SIZE */
--    case 0x178: /* DISPC_VID2_ACCU0 */
--    case 0x17c: /* DISPC_VID2_ACCU1 */
--    case 0x180 ... 0x1d0:   /* DISPC_VID2_FIR_COEF, DISPC_VID2_CONV_COEF */
--    case 0x1d4: /* DISPC_DATA_CYCLE1 */
--    case 0x1d8: /* DISPC_DATA_CYCLE2 */
--    case 0x1dc: /* DISPC_DATA_CYCLE3 */
+-    case MMC_NUMBLK:
+-        s->numblk = value & 0xffff;
+-        break;
+-
+-    case MMC_PRTBUF:
+-        if (value & PRTBUF_PRT_BUF) {
+-            s->tx_start ^= 32;
+-            s->tx_len = 0;
+-        }
+-        pxa2xx_mmci_fifo_update(s);
+-        break;
+-
+-    case MMC_I_MASK:
+-        s->intmask = value & 0x1fff;
+-        pxa2xx_mmci_int_update(s);
+-        break;
+-
+-    case MMC_CMD:
+-        s->cmd = value & 0x3f;
+-        break;
+-
+-    case MMC_ARGH:
+-        s->arg &= 0x0000ffff;
+-        s->arg |= value << 16;
+-        break;
+-
+-    case MMC_ARGL:
+-        s->arg &= 0xffff0000;
+-        s->arg |= value & 0x0000ffff;
+-        break;
+-
+-    case MMC_TXFIFO:
+-        while (size-- && s->tx_len < 0x20)
+-            s->tx_fifo[(s->tx_start + (s->tx_len ++)) & 0x1f] =
+-                    (value >> (size << 3)) & 0xff;
+-        s->intreq &= ~INT_TXFIFO_REQ;
+-        pxa2xx_mmci_fifo_update(s);
+-        break;
+-
+-    case MMC_RDWAIT:
+-    case MMC_BLKS_REM:
 -        break;
 -
 -    default:
--        OMAP_BAD_REG(addr);
+-        qemu_log_mask(LOG_GUEST_ERROR,
+-                      "%s: incorrect reg 0x%02" HWADDR_PRIx " "
+-                      "(value 0x%08" PRIx64 ")\n", __func__, offset, value);
 -    }
 -}
 -
--static const MemoryRegionOps omap_disc_ops = {
--    .read = omap_disc_read,
--    .write = omap_disc_write,
+-static const MemoryRegionOps pxa2xx_mmci_ops = {
+-    .read = pxa2xx_mmci_read,
+-    .write = pxa2xx_mmci_write,
 -    .endianness = DEVICE_NATIVE_ENDIAN,
 -};
 -
--static void omap_rfbi_transfer_stop(struct omap_dss_s *s)
+-PXA2xxMMCIState *pxa2xx_mmci_init(MemoryRegion *sysmem,
+-                hwaddr base,
+-                qemu_irq irq, qemu_irq rx_dma, qemu_irq tx_dma)
 -{
--    if (!s->rfbi.busy)
--        return;
+-    DeviceState *dev;
 -
--    /* TODO: in non-Bypass mode we probably need to just deassert the DRQ.  */
+-    dev = sysbus_create_simple(TYPE_PXA2XX_MMCI, base, irq);
+-    qdev_connect_gpio_out_named(dev, "rx-dma", 0, rx_dma);
+-    qdev_connect_gpio_out_named(dev, "tx-dma", 0, tx_dma);
 -
--    s->rfbi.busy = 0;
+-    return PXA2XX_MMCI(dev);
 -}
 -
--static void omap_rfbi_transfer_start(struct omap_dss_s *s)
+-static void pxa2xx_mmci_set_inserted(DeviceState *dev, bool inserted)
 -{
--    void *data;
--    hwaddr len;
--    hwaddr data_addr;
--    int pitch;
--    static void *bounce_buffer;
--    static hwaddr bounce_len;
+-    PXA2xxMMCIState *s = PXA2XX_MMCI(dev);
 -
--    if (!s->rfbi.enable || s->rfbi.busy)
--        return;
--
--    if (s->rfbi.control & (1 << 1)) {               /* BYPASS */
--        /* TODO: in non-Bypass mode we probably need to just assert the
--         * DRQ and wait for DMA to write the pixels.  */
--        qemu_log_mask(LOG_UNIMP, "%s: Bypass mode unimplemented\n", __func__);
--        return;
--    }
--
--    if (!(s->dispc.control & (1 << 11)))            /* RFBIMODE */
--        return;
--    /* TODO: check that LCD output is enabled in DISPC.  */
--
--    s->rfbi.busy = 1;
--
--    len = s->rfbi.pixels * 2;
--
--    data_addr = s->dispc.l[0].addr[0];
--    data = cpu_physical_memory_map(data_addr, &len, false);
--    if (data && len != s->rfbi.pixels * 2) {
--        cpu_physical_memory_unmap(data, len, 0, 0);
--        data = NULL;
--        len = s->rfbi.pixels * 2;
--    }
--    if (!data) {
--        if (len > bounce_len) {
--            bounce_buffer = g_realloc(bounce_buffer, len);
--        }
--        data = bounce_buffer;
--        cpu_physical_memory_read(data_addr, data, len);
--    }
--
--    /* TODO bpp */
--    s->rfbi.pixels = 0;
--
--    /* TODO: negative values */
--    pitch = s->dispc.l[0].nx + (s->dispc.l[0].rowinc - 1) / 2;
--
--    if ((s->rfbi.control & (1 << 2)) && s->rfbi.chip[0])
--        s->rfbi.chip[0]->block(s->rfbi.chip[0]->opaque, 1, data, len, pitch);
--    if ((s->rfbi.control & (1 << 3)) && s->rfbi.chip[1])
--        s->rfbi.chip[1]->block(s->rfbi.chip[1]->opaque, 1, data, len, pitch);
--
--    if (data != bounce_buffer) {
--        cpu_physical_memory_unmap(data, len, 0, len);
--    }
--
--    omap_rfbi_transfer_stop(s);
--
--    /* TODO */
--    s->dispc.irqst |= 1;                    /* FRAMEDONE */
--    omap_dispc_interrupt_update(s);
+-    qemu_set_irq(s->inserted, inserted);
 -}
 -
--static uint64_t omap_rfbi_read(void *opaque, hwaddr addr, unsigned size)
+-static void pxa2xx_mmci_set_readonly(DeviceState *dev, bool readonly)
 -{
--    struct omap_dss_s *s = opaque;
+-    PXA2xxMMCIState *s = PXA2XX_MMCI(dev);
 -
--    if (size != 4) {
--        return omap_badwidth_read32(opaque, addr);
--    }
--
--    switch (addr) {
--    case 0x00:  /* RFBI_REVISION */
--        return 0x10;
--
--    case 0x10:  /* RFBI_SYSCONFIG */
--        return s->rfbi.idlemode;
--
--    case 0x14:  /* RFBI_SYSSTATUS */
--        return 1 | (s->rfbi.busy << 8);             /* RESETDONE */
--
--    case 0x40:  /* RFBI_CONTROL */
--        return s->rfbi.control;
--
--    case 0x44:  /* RFBI_PIXELCNT */
--        return s->rfbi.pixels;
--
--    case 0x48:  /* RFBI_LINE_NUMBER */
--        return s->rfbi.skiplines;
--
--    case 0x58:  /* RFBI_READ */
--    case 0x5c:  /* RFBI_STATUS */
--        return s->rfbi.rxbuf;
--
--    case 0x60:  /* RFBI_CONFIG0 */
--        return s->rfbi.config[0];
--    case 0x64:  /* RFBI_ONOFF_TIME0 */
--        return s->rfbi.time[0];
--    case 0x68:  /* RFBI_CYCLE_TIME0 */
--        return s->rfbi.time[1];
--    case 0x6c:  /* RFBI_DATA_CYCLE1_0 */
--        return s->rfbi.data[0];
--    case 0x70:  /* RFBI_DATA_CYCLE2_0 */
--        return s->rfbi.data[1];
--    case 0x74:  /* RFBI_DATA_CYCLE3_0 */
--        return s->rfbi.data[2];
--
--    case 0x78:  /* RFBI_CONFIG1 */
--        return s->rfbi.config[1];
--    case 0x7c:  /* RFBI_ONOFF_TIME1 */
--        return s->rfbi.time[2];
--    case 0x80:  /* RFBI_CYCLE_TIME1 */
--        return s->rfbi.time[3];
--    case 0x84:  /* RFBI_DATA_CYCLE1_1 */
--        return s->rfbi.data[3];
--    case 0x88:  /* RFBI_DATA_CYCLE2_1 */
--        return s->rfbi.data[4];
--    case 0x8c:  /* RFBI_DATA_CYCLE3_1 */
--        return s->rfbi.data[5];
--
--    case 0x90:  /* RFBI_VSYNC_WIDTH */
--        return s->rfbi.vsync;
--    case 0x94:  /* RFBI_HSYNC_WIDTH */
--        return s->rfbi.hsync;
--    }
--    OMAP_BAD_REG(addr);
--    return 0;
+-    qemu_set_irq(s->readonly, readonly);
 -}
 -
--static void omap_rfbi_write(void *opaque, hwaddr addr,
--                            uint64_t value, unsigned size)
+-void pxa2xx_mmci_handlers(PXA2xxMMCIState *s, qemu_irq readonly,
+-                          qemu_irq coverswitch)
 -{
--    struct omap_dss_s *s = opaque;
+-    DeviceState *dev = DEVICE(s);
 -
--    if (size != 4) {
--        omap_badwidth_write32(opaque, addr, value);
--        return;
--    }
+-    s->readonly = readonly;
+-    s->inserted = coverswitch;
 -
--    switch (addr) {
--    case 0x10:  /* RFBI_SYSCONFIG */
--        if (value & 2)                      /* SOFTRESET */
--            omap_rfbi_reset(s);
--        s->rfbi.idlemode = value & 0x19;
--        break;
--
--    case 0x40:  /* RFBI_CONTROL */
--        s->rfbi.control = value & 0xf;
--        s->rfbi.enable = value & 1;
--        if (value & (1 << 4) &&                 /* ITE */
--                        !(s->rfbi.config[0] & s->rfbi.config[1] & 0xc))
--            omap_rfbi_transfer_start(s);
--        break;
--
--    case 0x44:  /* RFBI_PIXELCNT */
--        s->rfbi.pixels = value;
--        break;
--
--    case 0x48:  /* RFBI_LINE_NUMBER */
--        s->rfbi.skiplines = value & 0x7ff;
--        break;
--
--    case 0x4c:  /* RFBI_CMD */
--        if ((s->rfbi.control & (1 << 2)) && s->rfbi.chip[0])
--            s->rfbi.chip[0]->write(s->rfbi.chip[0]->opaque, 0, value & 0xffff);
--        if ((s->rfbi.control & (1 << 3)) && s->rfbi.chip[1])
--            s->rfbi.chip[1]->write(s->rfbi.chip[1]->opaque, 0, value & 0xffff);
--        break;
--    case 0x50:  /* RFBI_PARAM */
--        if ((s->rfbi.control & (1 << 2)) && s->rfbi.chip[0])
--            s->rfbi.chip[0]->write(s->rfbi.chip[0]->opaque, 1, value & 0xffff);
--        if ((s->rfbi.control & (1 << 3)) && s->rfbi.chip[1])
--            s->rfbi.chip[1]->write(s->rfbi.chip[1]->opaque, 1, value & 0xffff);
--        break;
--    case 0x54:  /* RFBI_DATA */
--        /* TODO: take into account the format set up in s->rfbi.config[?] and
--         * s->rfbi.data[?], but special-case the most usual scenario so that
--         * speed doesn't suffer.  */
--        if ((s->rfbi.control & (1 << 2)) && s->rfbi.chip[0]) {
--            s->rfbi.chip[0]->write(s->rfbi.chip[0]->opaque, 1, value & 0xffff);
--            s->rfbi.chip[0]->write(s->rfbi.chip[0]->opaque, 1, value >> 16);
--        }
--        if ((s->rfbi.control & (1 << 3)) && s->rfbi.chip[1]) {
--            s->rfbi.chip[1]->write(s->rfbi.chip[1]->opaque, 1, value & 0xffff);
--            s->rfbi.chip[1]->write(s->rfbi.chip[1]->opaque, 1, value >> 16);
--        }
--        if (!-- s->rfbi.pixels)
--            omap_rfbi_transfer_stop(s);
--        break;
--    case 0x58:  /* RFBI_READ */
--        if ((s->rfbi.control & (1 << 2)) && s->rfbi.chip[0])
--            s->rfbi.rxbuf = s->rfbi.chip[0]->read(s->rfbi.chip[0]->opaque, 1);
--        else if ((s->rfbi.control & (1 << 3)) && s->rfbi.chip[1])
--            s->rfbi.rxbuf = s->rfbi.chip[1]->read(s->rfbi.chip[1]->opaque, 1);
--        if (!-- s->rfbi.pixels)
--            omap_rfbi_transfer_stop(s);
--        break;
--
--    case 0x5c:  /* RFBI_STATUS */
--        if ((s->rfbi.control & (1 << 2)) && s->rfbi.chip[0])
--            s->rfbi.rxbuf = s->rfbi.chip[0]->read(s->rfbi.chip[0]->opaque, 0);
--        else if ((s->rfbi.control & (1 << 3)) && s->rfbi.chip[1])
--            s->rfbi.rxbuf = s->rfbi.chip[1]->read(s->rfbi.chip[1]->opaque, 0);
--        if (!-- s->rfbi.pixels)
--            omap_rfbi_transfer_stop(s);
--        break;
--
--    case 0x60:  /* RFBI_CONFIG0 */
--        s->rfbi.config[0] = value & 0x003f1fff;
--        break;
--
--    case 0x64:  /* RFBI_ONOFF_TIME0 */
--        s->rfbi.time[0] = value & 0x3fffffff;
--        break;
--    case 0x68:  /* RFBI_CYCLE_TIME0 */
--        s->rfbi.time[1] = value & 0x0fffffff;
--        break;
--    case 0x6c:  /* RFBI_DATA_CYCLE1_0 */
--        s->rfbi.data[0] = value & 0x0f1f0f1f;
--        break;
--    case 0x70:  /* RFBI_DATA_CYCLE2_0 */
--        s->rfbi.data[1] = value & 0x0f1f0f1f;
--        break;
--    case 0x74:  /* RFBI_DATA_CYCLE3_0 */
--        s->rfbi.data[2] = value & 0x0f1f0f1f;
--        break;
--    case 0x78:  /* RFBI_CONFIG1 */
--        s->rfbi.config[1] = value & 0x003f1fff;
--        break;
--
--    case 0x7c:  /* RFBI_ONOFF_TIME1 */
--        s->rfbi.time[2] = value & 0x3fffffff;
--        break;
--    case 0x80:  /* RFBI_CYCLE_TIME1 */
--        s->rfbi.time[3] = value & 0x0fffffff;
--        break;
--    case 0x84:  /* RFBI_DATA_CYCLE1_1 */
--        s->rfbi.data[3] = value & 0x0f1f0f1f;
--        break;
--    case 0x88:  /* RFBI_DATA_CYCLE2_1 */
--        s->rfbi.data[4] = value & 0x0f1f0f1f;
--        break;
--    case 0x8c:  /* RFBI_DATA_CYCLE3_1 */
--        s->rfbi.data[5] = value & 0x0f1f0f1f;
--        break;
--
--    case 0x90:  /* RFBI_VSYNC_WIDTH */
--        s->rfbi.vsync = value & 0xffff;
--        break;
--    case 0x94:  /* RFBI_HSYNC_WIDTH */
--        s->rfbi.hsync = value & 0xffff;
--        break;
--
--    default:
--        OMAP_BAD_REG(addr);
--    }
+-    pxa2xx_mmci_set_inserted(dev, sdbus_get_inserted(&s->sdbus));
+-    pxa2xx_mmci_set_readonly(dev, sdbus_get_readonly(&s->sdbus));
 -}
 -
--static const MemoryRegionOps omap_rfbi_ops = {
--    .read = omap_rfbi_read,
--    .write = omap_rfbi_write,
--    .endianness = DEVICE_NATIVE_ENDIAN,
+-static void pxa2xx_mmci_reset(DeviceState *d)
+-{
+-    PXA2xxMMCIState *s = PXA2XX_MMCI(d);
+-
+-    s->status = 0;
+-    s->clkrt = 0;
+-    s->spi = 0;
+-    s->cmdat = 0;
+-    s->resp_tout = 0;
+-    s->read_tout = 0;
+-    s->blklen = 0;
+-    s->numblk = 0;
+-    s->intmask = 0;
+-    s->intreq = 0;
+-    s->cmd = 0;
+-    s->arg = 0;
+-    s->active = 0;
+-    s->bytesleft = 0;
+-    s->tx_start = 0;
+-    s->tx_len = 0;
+-    s->rx_start = 0;
+-    s->rx_len = 0;
+-    s->resp_len = 0;
+-    s->cmdreq = 0;
+-    memset(s->tx_fifo, 0, sizeof(s->tx_fifo));
+-    memset(s->rx_fifo, 0, sizeof(s->rx_fifo));
+-    memset(s->resp_fifo, 0, sizeof(s->resp_fifo));
+-}
+-
+-static void pxa2xx_mmci_instance_init(Object *obj)
+-{
+-    PXA2xxMMCIState *s = PXA2XX_MMCI(obj);
+-    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
+-    DeviceState *dev = DEVICE(obj);
+-
+-    memory_region_init_io(&s->iomem, obj, &pxa2xx_mmci_ops, s,
+-                          "pxa2xx-mmci", 0x00100000);
+-    sysbus_init_mmio(sbd, &s->iomem);
+-    sysbus_init_irq(sbd, &s->irq);
+-    qdev_init_gpio_out_named(dev, &s->rx_dma, "rx-dma", 1);
+-    qdev_init_gpio_out_named(dev, &s->tx_dma, "tx-dma", 1);
+-
+-    qbus_init(&s->sdbus, sizeof(s->sdbus),
+-              TYPE_PXA2XX_MMCI_BUS, DEVICE(obj), "sd-bus");
+-}
+-
+-static void pxa2xx_mmci_class_init(ObjectClass *klass, void *data)
+-{
+-    DeviceClass *dc = DEVICE_CLASS(klass);
+-
+-    dc->vmsd = &vmstate_pxa2xx_mmci;
+-    dc->reset = pxa2xx_mmci_reset;
+-}
+-
+-static void pxa2xx_mmci_bus_class_init(ObjectClass *klass, void *data)
+-{
+-    SDBusClass *sbc = SD_BUS_CLASS(klass);
+-
+-    sbc->set_inserted = pxa2xx_mmci_set_inserted;
+-    sbc->set_readonly = pxa2xx_mmci_set_readonly;
+-}
+-
+-static const TypeInfo pxa2xx_mmci_types[] = {
+-    {
+-        .name           = TYPE_PXA2XX_MMCI,
+-        .parent         = TYPE_SYS_BUS_DEVICE,
+-        .instance_size  = sizeof(PXA2xxMMCIState),
+-        .instance_init  = pxa2xx_mmci_instance_init,
+-        .class_init     = pxa2xx_mmci_class_init,
+-    },
+-    {
+-        .name           = TYPE_PXA2XX_MMCI_BUS,
+-        .parent         = TYPE_SD_BUS,
+-        .instance_size  = sizeof(SDBus),
+-        .class_init     = pxa2xx_mmci_bus_class_init,
+-    },
 -};
 -
--static uint64_t omap_venc_read(void *opaque, hwaddr addr,
--                               unsigned size)
--{
--    if (size != 4) {
--        return omap_badwidth_read32(opaque, addr);
--    }
--
--    switch (addr) {
--    case 0x00:  /* REV_ID */
--    case 0x04:  /* STATUS */
--    case 0x08:  /* F_CONTROL */
--    case 0x10:  /* VIDOUT_CTRL */
--    case 0x14:  /* SYNC_CTRL */
--    case 0x1c:  /* LLEN */
--    case 0x20:  /* FLENS */
--    case 0x24:  /* HFLTR_CTRL */
--    case 0x28:  /* CC_CARR_WSS_CARR */
--    case 0x2c:  /* C_PHASE */
--    case 0x30:  /* GAIN_U */
--    case 0x34:  /* GAIN_V */
--    case 0x38:  /* GAIN_Y */
--    case 0x3c:  /* BLACK_LEVEL */
--    case 0x40:  /* BLANK_LEVEL */
--    case 0x44:  /* X_COLOR */
--    case 0x48:  /* M_CONTROL */
--    case 0x4c:  /* BSTAMP_WSS_DATA */
--    case 0x50:  /* S_CARR */
--    case 0x54:  /* LINE21 */
--    case 0x58:  /* LN_SEL */
--    case 0x5c:  /* L21__WC_CTL */
--    case 0x60:  /* HTRIGGER_VTRIGGER */
--    case 0x64:  /* SAVID__EAVID */
--    case 0x68:  /* FLEN__FAL */
--    case 0x6c:  /* LAL__PHASE_RESET */
--    case 0x70:  /* HS_INT_START_STOP_X */
--    case 0x74:  /* HS_EXT_START_STOP_X */
--    case 0x78:  /* VS_INT_START_X */
--    case 0x7c:  /* VS_INT_STOP_X__VS_INT_START_Y */
--    case 0x80:  /* VS_INT_STOP_Y__VS_INT_START_X */
--    case 0x84:  /* VS_EXT_STOP_X__VS_EXT_START_Y */
--    case 0x88:  /* VS_EXT_STOP_Y */
--    case 0x90:  /* AVID_START_STOP_X */
--    case 0x94:  /* AVID_START_STOP_Y */
--    case 0xa0:  /* FID_INT_START_X__FID_INT_START_Y */
--    case 0xa4:  /* FID_INT_OFFSET_Y__FID_EXT_START_X */
--    case 0xa8:  /* FID_EXT_START_Y__FID_EXT_OFFSET_Y */
--    case 0xb0:  /* TVDETGP_INT_START_STOP_X */
--    case 0xb4:  /* TVDETGP_INT_START_STOP_Y */
--    case 0xb8:  /* GEN_CTRL */
--    case 0xc4:  /* DAC_TST__DAC_A */
--    case 0xc8:  /* DAC_B__DAC_C */
--        return 0;
--
--    default:
--        break;
--    }
--    OMAP_BAD_REG(addr);
--    return 0;
--}
--
--static void omap_venc_write(void *opaque, hwaddr addr,
--                            uint64_t value, unsigned size)
--{
--    if (size != 4) {
--        omap_badwidth_write32(opaque, addr, size);
--        return;
--    }
--
--    switch (addr) {
--    case 0x08:  /* F_CONTROL */
--    case 0x10:  /* VIDOUT_CTRL */
--    case 0x14:  /* SYNC_CTRL */
--    case 0x1c:  /* LLEN */
--    case 0x20:  /* FLENS */
--    case 0x24:  /* HFLTR_CTRL */
--    case 0x28:  /* CC_CARR_WSS_CARR */
--    case 0x2c:  /* C_PHASE */
--    case 0x30:  /* GAIN_U */
--    case 0x34:  /* GAIN_V */
--    case 0x38:  /* GAIN_Y */
--    case 0x3c:  /* BLACK_LEVEL */
--    case 0x40:  /* BLANK_LEVEL */
--    case 0x44:  /* X_COLOR */
--    case 0x48:  /* M_CONTROL */
--    case 0x4c:  /* BSTAMP_WSS_DATA */
--    case 0x50:  /* S_CARR */
--    case 0x54:  /* LINE21 */
--    case 0x58:  /* LN_SEL */
--    case 0x5c:  /* L21__WC_CTL */
--    case 0x60:  /* HTRIGGER_VTRIGGER */
--    case 0x64:  /* SAVID__EAVID */
--    case 0x68:  /* FLEN__FAL */
--    case 0x6c:  /* LAL__PHASE_RESET */
--    case 0x70:  /* HS_INT_START_STOP_X */
--    case 0x74:  /* HS_EXT_START_STOP_X */
--    case 0x78:  /* VS_INT_START_X */
--    case 0x7c:  /* VS_INT_STOP_X__VS_INT_START_Y */
--    case 0x80:  /* VS_INT_STOP_Y__VS_INT_START_X */
--    case 0x84:  /* VS_EXT_STOP_X__VS_EXT_START_Y */
--    case 0x88:  /* VS_EXT_STOP_Y */
--    case 0x90:  /* AVID_START_STOP_X */
--    case 0x94:  /* AVID_START_STOP_Y */
--    case 0xa0:  /* FID_INT_START_X__FID_INT_START_Y */
--    case 0xa4:  /* FID_INT_OFFSET_Y__FID_EXT_START_X */
--    case 0xa8:  /* FID_EXT_START_Y__FID_EXT_OFFSET_Y */
--    case 0xb0:  /* TVDETGP_INT_START_STOP_X */
--    case 0xb4:  /* TVDETGP_INT_START_STOP_Y */
--    case 0xb8:  /* GEN_CTRL */
--    case 0xc4:  /* DAC_TST__DAC_A */
--    case 0xc8:  /* DAC_B__DAC_C */
--        break;
--
--    default:
--        OMAP_BAD_REG(addr);
--    }
--}
--
--static const MemoryRegionOps omap_venc_ops = {
--    .read = omap_venc_read,
--    .write = omap_venc_write,
--    .endianness = DEVICE_NATIVE_ENDIAN,
--};
--
--static uint64_t omap_im3_read(void *opaque, hwaddr addr,
--                              unsigned size)
--{
--    if (size != 4) {
--        return omap_badwidth_read32(opaque, addr);
--    }
--
--    switch (addr) {
--    case 0x0a8: /* SBIMERRLOGA */
--    case 0x0b0: /* SBIMERRLOG */
--    case 0x190: /* SBIMSTATE */
--    case 0x198: /* SBTMSTATE_L */
--    case 0x19c: /* SBTMSTATE_H */
--    case 0x1a8: /* SBIMCONFIG_L */
--    case 0x1ac: /* SBIMCONFIG_H */
--    case 0x1f8: /* SBID_L */
--    case 0x1fc: /* SBID_H */
--        return 0;
--
--    default:
--        break;
--    }
--    OMAP_BAD_REG(addr);
--    return 0;
--}
--
--static void omap_im3_write(void *opaque, hwaddr addr,
--                           uint64_t value, unsigned size)
--{
--    if (size != 4) {
--        omap_badwidth_write32(opaque, addr, value);
--        return;
--    }
--
--    switch (addr) {
--    case 0x0b0: /* SBIMERRLOG */
--    case 0x190: /* SBIMSTATE */
--    case 0x198: /* SBTMSTATE_L */
--    case 0x19c: /* SBTMSTATE_H */
--    case 0x1a8: /* SBIMCONFIG_L */
--    case 0x1ac: /* SBIMCONFIG_H */
--        break;
--
--    default:
--        OMAP_BAD_REG(addr);
--    }
--}
--
--static const MemoryRegionOps omap_im3_ops = {
--    .read = omap_im3_read,
--    .write = omap_im3_write,
--    .endianness = DEVICE_NATIVE_ENDIAN,
--};
--
--struct omap_dss_s *omap_dss_init(struct omap_target_agent_s *ta,
--                MemoryRegion *sysmem,
--                hwaddr l3_base,
--                qemu_irq irq, qemu_irq drq,
--                omap_clk fck1, omap_clk fck2, omap_clk ck54m,
--                omap_clk ick1, omap_clk ick2)
--{
--    struct omap_dss_s *s = g_new0(struct omap_dss_s, 1);
--
--    s->irq = irq;
--    s->drq = drq;
--    omap_dss_reset(s);
--
--    memory_region_init_io(&s->iomem_diss1, NULL, &omap_diss_ops, s, "omap.diss1",
--                          omap_l4_region_size(ta, 0));
--    memory_region_init_io(&s->iomem_disc1, NULL, &omap_disc_ops, s, "omap.disc1",
--                          omap_l4_region_size(ta, 1));
--    memory_region_init_io(&s->iomem_rfbi1, NULL, &omap_rfbi_ops, s, "omap.rfbi1",
--                          omap_l4_region_size(ta, 2));
--    memory_region_init_io(&s->iomem_venc1, NULL, &omap_venc_ops, s, "omap.venc1",
--                          omap_l4_region_size(ta, 3));
--    memory_region_init_io(&s->iomem_im3, NULL, &omap_im3_ops, s,
--                          "omap.im3", 0x1000);
--
--    omap_l4_attach(ta, 0, &s->iomem_diss1);
--    omap_l4_attach(ta, 1, &s->iomem_disc1);
--    omap_l4_attach(ta, 2, &s->iomem_rfbi1);
--    omap_l4_attach(ta, 3, &s->iomem_venc1);
--    memory_region_add_subregion(sysmem, l3_base, &s->iomem_im3);
--
--#if 0
--    s->state = graphic_console_init(omap_update_display,
--                                    omap_invalidate_display, omap_screen_dump, s);
--#endif
--
--    return s;
--}
--
--void omap_rfbi_attach(struct omap_dss_s *s, int cs, struct rfbi_chip_s *chip)
--{
--    if (cs < 0 || cs > 1)
--        hw_error("%s: wrong CS %i\n", __func__, cs);
--    s->rfbi.chip[cs] = chip;
--}
-diff --git a/hw/display/meson.build b/hw/display/meson.build
-index 2b1693ad728..20a94973fa2 100644
---- a/hw/display/meson.build
-+++ b/hw/display/meson.build
-@@ -25,7 +25,6 @@ system_ss.add(when: 'CONFIG_BOCHS_DISPLAY', if_true: files('bochs-display.c'))
- system_ss.add(when: 'CONFIG_EXYNOS4', if_true: files('exynos4210_fimd.c'))
- system_ss.add(when: 'CONFIG_FRAMEBUFFER', if_true: files('framebuffer.c'))
+-DEFINE_TYPES(pxa2xx_mmci_types)
+diff --git a/hw/sd/meson.build b/hw/sd/meson.build
+index bbb75af0c9b..b43d45bc564 100644
+--- a/hw/sd/meson.build
++++ b/hw/sd/meson.build
+@@ -5,7 +5,6 @@ system_ss.add(when: 'CONFIG_SDHCI_PCI', if_true: files('sdhci-pci.c'))
+ system_ss.add(when: 'CONFIG_SSI_SD', if_true: files('ssi-sd.c'))
  
--system_ss.add(when: 'CONFIG_OMAP', if_true: files('omap_dss.c'))
- system_ss.add(when: 'CONFIG_RASPI', if_true: files('bcm2835_fb.c'))
- system_ss.add(when: 'CONFIG_SM501', if_true: files('sm501.c'))
- system_ss.add(when: 'CONFIG_TCX', if_true: files('tcx.c'))
+ system_ss.add(when: 'CONFIG_OMAP', if_true: files('omap_mmc.c'))
+-system_ss.add(when: 'CONFIG_PXA2XX', if_true: files('pxa2xx_mmci.c'))
+ system_ss.add(when: 'CONFIG_RASPI', if_true: files('bcm2835_sdhost.c'))
+ system_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files('aspeed_sdhci.c'))
+ system_ss.add(when: 'CONFIG_ALLWINNER_H3', if_true: files('allwinner-sdhost.c'))
+diff --git a/hw/sd/trace-events b/hw/sd/trace-events
+index 43671dc7912..db0644256d9 100644
+--- a/hw/sd/trace-events
++++ b/hw/sd/trace-events
+@@ -60,10 +60,6 @@ sdcard_set_voltage(uint16_t millivolts) "%u mV"
+ sdcard_ext_csd_update(unsigned index, uint8_t oval, uint8_t nval) "index %u: 0x%02x -> 0x%02x"
+ sdcard_switch(unsigned access, unsigned index, unsigned value, unsigned set) "SWITCH acc:%u idx:%u val:%u set:%u"
+ 
+-# pxa2xx_mmci.c
+-pxa2xx_mmci_read(uint8_t size, uint32_t addr, uint32_t value) "size %d addr 0x%02x value 0x%08x"
+-pxa2xx_mmci_write(uint8_t size, uint32_t addr, uint32_t value) "size %d addr 0x%02x value 0x%08x"
+-
+ # pl181.c
+ pl181_command_send(uint8_t cmd, uint32_t arg) "sending CMD%02d arg 0x%08" PRIx32
+ pl181_command_sent(void) "command sent"
 -- 
 2.34.1
 

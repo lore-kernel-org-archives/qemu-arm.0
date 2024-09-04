@@ -1,225 +1,169 @@
-Received: by 2002:a17:505:1f8d:b0:1be9:327d:8ee3 with SMTP id pt13csp91267njb;
-        Wed, 4 Sep 2024 04:59:41 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCXtJKv8Wj7NNj85QyBg2xvqPzQXZjM2cSPCvoJO9lOiWKpKRSj6NXdqs1BCKEq/Uv+PeE7QNolxWNLlzg==@linaro.org
-X-Google-Smtp-Source: AGHT+IFP7NmgOOmhY/SyUvU6mWlML4Ud0ZXFrOAgD9uMCs+/ZYei9TcW/iBk25j8yfmRuPH1r3cM
-X-Received: by 2002:a17:902:d507:b0:206:c675:66d5 with SMTP id d9443c01a7336-206c6756979mr5092615ad.15.1725451181080;
-        Wed, 04 Sep 2024 04:59:41 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1725451181; cv=pass;
-        d=google.com; s=arc-20240605;
-        b=LLexZNu0M+/3/M4delhyvNfliK44wSTudX88n+0nrtsRA+YMnZO+86nkFS3XGrFV16
-         ewUmmuG1yJpsO3X9GWmEANzy+iuNkFrByAeaDXuI8Q/o+fdM7Hf9XksBft78xYrZDKcn
-         PiRVHvS4se+RXVLL+7VpEmfV9cQmCncZEbkWRUn+Zu3E3/b+ZUwfjvXXWrbCcVBSlg++
-         0tCCdyX6nSKXYvg151hp9OFcpZk02iv8bU4NvPYJ66fjZ+HvzeZQ9NKJxt/W8MTy5FRO
-         OKfGkaSDkWzUA1yEBaQbqZVIY315fL84oQ78fw0OyrTNWqDSSgFDCwBwnhpSNH670f7u
-         eC2A==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:date:message-id:dkim-signature;
-        bh=dBW9QyBTPJ2vPf7oNy3xBpLtcKazFBxSJAYyxXMm5To=;
-        fh=dByUCJOpFCudFilcSv8JwyBIil34j7/q+S8grL3/F/I=;
-        b=SBziPETMgGOsebs92XFVA9CeM7uk5M+crMwiiTHeOdeajV5RRx5vDA6IE+bPBizr7v
-         bcl7kSL7aKqT4PgzPsRh0GXoXsr5ojXkuzmn33KflAlN0nyvgTOiV0ow6ximjiXivZKV
-         pWkgtHcKTn92YpOLP7xolHeQaQvzA6ai95zMNzcuR0a3bRvX5Ca5u8sXrP4ayBec8BdN
-         7nD3aiuu57gKZ45BjOehiN4Qj8cx83smJTJgzF2jitXOJVWZoexSuiG7lKIEDI58vZrB
-         fABeP8C2gBXj6g808wyuSAhQQ79YjBpGJLAUjmzsuWUxSsvUwUOU5xBgzcTOEkwT4mbD
-         Qgpg==;
+Received: by 2002:a17:505:1f8d:b0:1be9:327d:8ee3 with SMTP id pt13csp98849njb;
+        Wed, 4 Sep 2024 05:19:06 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCV8f+ulhXa69HK97gXV7pG3Havi97AVaRaLrtlmTDvWRs+/5y+r3halopSfFkjytQEd2zL8EJBnF63vKQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IH/4ayn4x4ccT5QzZbBe+siaQ2NAUezihosVQcie6EoYE8NxNCY8YtAQEjECLFdM7Tmv5kt
+X-Received: by 2002:a05:6808:1209:b0:3d9:2562:7541 with SMTP id 5614622812f47-3df1c98710dmr14580349b6e.24.1725452346283;
+        Wed, 04 Sep 2024 05:19:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1725452346; cv=none;
+        d=google.com; s=arc-20160816;
+        b=mtwBUleQIE6Y05/ZytSp8+cZQei+0ISlgCOi2H2QyMvGY256HeOAxTCZ22gEu4hutW
+         rTxjIvEphrIdu8VC+zEKQULcAbgoj6Pq/geLwJtXPBIm7H2CC6usJSO2MofIMY6ovq3Q
+         F6uqr3+N1STBVGIu3tAGia0UrPasnY0WClI3KDlWlsUgkFgTbjqYWA5WoLGXgdqIJqqz
+         UTf/LqTYOF9cpQNYcxr4ghBlQS2FoAlkXlagprej+IhKMaWnWw2fAtAaU/eBcQbi6baL
+         H9gyAsNPu0ykxJF558l1WSi0UzCO4C+0NVg1DiXe3xMsXhXQAdmYTevYbRsmudIeawzK
+         mHEA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:user-agent
+         :in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=korUTP+HCBQ6KCsSiUoKtmxBEXQeAeQ/fUEKPp+Syos=;
+        fh=1kxlNH7ZEhlthR0nQjkCDwEu/Tl22ME6M2v7WCfkHoM=;
+        b=nTr2FMpVLqT4yeujjxGKmHV8TTQ+8ZK3GfQkrXa6oXOzcCReby5+R5Tom24OfRW6Fm
+         nXaIO4BNiVwH6GvlTWTnw7oHihGKXXhcyzg46y5rVnqS7fFOt8Arf3NmmfvEPREBzv7q
+         EWVgaYwF3EqiXCCWUUNOhdBcdjwvmS7bAMe7t1qDQXIfC7nE1PbRIj+UOdHnGE03ilJx
+         NEdgJE0JansUVPbVVsk2fCiL43vX934VoVU0YLi3ALb3g91lf8qrtMfJpY0sId4IKQ/k
+         CmS0lMkZ3I3LHDkJ4oU6DPMGn7+QZ6yzJhSCTc9K18KtKQYFw52XV8Q44SpRmnhmcdS0
+         uHLA==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=WLh0bkU7;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-25873-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="kvm+bounces-25873-alex.bennee=linaro.org@vger.kernel.org";
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=icLWnRYk;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm+bounces-25873-alex.bennee=linaro.org@vger.kernel.org>
-Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [2604:1380:45e3:2400::1])
-        by mx.google.com with ESMTPS id d9443c01a7336-206ae8bdc20si20591535ad.64.2024.09.04.04.59.40
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d75a77b69052e-45682d81513si144119371cf.392.2024.09.04.05.19.06
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 04 Sep 2024 04:59:41 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm+bounces-25873-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) client-ip=2604:1380:45e3:2400::1;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 04 Sep 2024 05:19:06 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=WLh0bkU7;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-25873-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="kvm+bounces-25873-alex.bennee=linaro.org@vger.kernel.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=icLWnRYk;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by sv.mirrors.kernel.org (Postfix) with ESMTPS id 94F99284D04
-	for <alex.bennee@linaro.org>; Wed,  4 Sep 2024 11:59:40 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 6B03C1D096C;
-	Wed,  4 Sep 2024 11:59:26 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="WLh0bkU7"
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 928581D45FA
-	for <kvm@vger.kernel.org>; Wed,  4 Sep 2024 11:59:24 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.133.124
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1725451166; cv=none; b=BRTjZv+fQGFk+MI0J41YuA3Am+FwPOPLbjRKGHQA5pyI4cy1EXY0z0nYuX87wGEvrf81617xiIE3CVoq3Vhznon2U0ZhW1QRsqd7aBtckhS69nbacc0Gw5XVCNxygt8f6k5Y8rvc3OF6UHqlb87CpQcDOyuT/b3ZM2YCbPeqtZk=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1725451166; c=relaxed/simple;
-	bh=qic7WnFphvxImhlZq2xJgj/uL6OD1DNHtFw7bFhP0m8=;
-	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:
-	 In-Reply-To:Content-Type; b=nE1LRjnYv7KwkzPregrDj/AZt5hMLS6SVV7NlCkhEUkMTUG/8zAf6V9/gNCu0luhYsNfMl8qoLPqnaoUAwn3/JBAbKo6jWBDcqNU2qebcu6W5a1nDULz2spAZvbIh6Z2mdrf8XjP0jOdYZezJhvtSWAGLZh7ivwCtuFPIbw2LeU=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=WLh0bkU7; arc=none smtp.client-ip=170.10.133.124
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1sloyD-0006Ho-VU; Wed, 04 Sep 2024 08:18:45 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1sloyB-0006Ec-RL
+ for qemu-devel@nongnu.org; Wed, 04 Sep 2024 08:18:43 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1sloyA-00038V-3y
+ for qemu-devel@nongnu.org; Wed, 04 Sep 2024 08:18:43 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1725451163;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=dBW9QyBTPJ2vPf7oNy3xBpLtcKazFBxSJAYyxXMm5To=;
-	b=WLh0bkU7XsEqQM0Uc2sE+TtND/Q3cqNJT5EuVRRH+PnpPcM7ovVLyWibt70CaHW2OfN0Hx
-	qGah8S+xki6uSIM3/aOW3Mmh+lgfHf89YfH19UFtZgi1iHg2anqbubLXJDGCPBvuuIOlRH
-	dYkvP2A/4hLGRYyrUTW0VEaOVpORPMY=
-Received: from mail-yw1-f199.google.com (mail-yw1-f199.google.com
- [209.85.128.199]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-588-Rewt6gsHMLi0NCLkRIg9_Q-1; Wed, 04 Sep 2024 07:59:22 -0400
-X-MC-Unique: Rewt6gsHMLi0NCLkRIg9_Q-1
-Received: by mail-yw1-f199.google.com with SMTP id 00721157ae682-6db2a306480so11465437b3.3
-        for <kvm@vger.kernel.org>; Wed, 04 Sep 2024 04:59:22 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1725451162; x=1726055962;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=dBW9QyBTPJ2vPf7oNy3xBpLtcKazFBxSJAYyxXMm5To=;
-        b=tbSOIgpI2XQA0lSDLPvTxQtuaieJYmLavLf6vZQsPCTX+oSq49zdH5MjmSuPG+O7w/
-         ig54oIMmOHdCm76t0Fr/SqbkyiITXj/22qO+xNfVd70SMh8gHSskexyWmZ1l+XulDaXF
-         bwLMCAhcVhppdyFRxO1Z7L8xSra1ubUfCpqkCONEVXvG2IGOSUIAQJfnrBuR6Isl+uVM
-         oQ+dJtVO9Sq2tV0aYSLf51Ezl0Nx8n8+gg63cPatuw9syF8kN9zY/EeFd4U9+Tk8J8G6
-         wWbZWXHIPXK3XHcx8ZObSbvsEKBd0B3CTaqaXsvkW5CrJB/uMbaECcFBNyGFLT7GqcJD
-         PtXQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVyACLqhlDxHCi2YXbfoeQsCkqNkwF7v9GUa+9U1cq8GDQo0vp6K6aUiTNtTRkTCRiIIgY=@vger.kernel.org
-X-Gm-Message-State: AOJu0Ywu+Mab2D7LHGuyEvZrg1LXt4ymep5Xta+kpbm4f/ffSOs5PG+1
-	EDt0oNphLUFzSugBv11UVv4XhdSRo69zdq5K8T7jtbBdodBnREPMLwLsAlxVIBxErQvPebEtFaA
-	rwCfqvkeTjHkSZvsLGlnw6neo1r9xjK5EJLwC4xlLp648NxtY7A==
-X-Received: by 2002:a05:690c:6785:b0:630:f7c9:80d6 with SMTP id 00721157ae682-6d40fe0f6f3mr192366257b3.27.1725451161921;
-        Wed, 04 Sep 2024 04:59:21 -0700 (PDT)
-X-Received: by 2002:a05:690c:6785:b0:630:f7c9:80d6 with SMTP id 00721157ae682-6d40fe0f6f3mr192365827b3.27.1725451161569;
-        Wed, 04 Sep 2024 04:59:21 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:280:24f0:9db0:474c:ff43:9f5c? ([2a01:e0a:280:24f0:9db0:474c:ff43:9f5c])
-        by smtp.gmail.com with ESMTPSA id af79cd13be357-7a806d5b0easm611441485a.100.2024.09.04.04.59.15
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 04 Sep 2024 04:59:21 -0700 (PDT)
-Message-ID: <1a4270a7-212e-4651-a720-913b3dd11296@redhat.com>
-Date: Wed, 4 Sep 2024 13:59:14 +0200
-Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 19/19] qapi/vfio: Rename VfioMigrationState to Qapi*,
- and drop prefix
-To: Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org
-Cc: alex.williamson@redhat.com, andrew@codeconstruct.com.au,
- andrew@daynix.com, arei.gonglei@huawei.com, berrange@redhat.com,
- berto@igalia.com, borntraeger@linux.ibm.com, clg@kaod.org, david@redhat.com,
+ s=mimecast20190719; t=1725452321;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:in-reply-to:in-reply-to:  references:references;
+ bh=korUTP+HCBQ6KCsSiUoKtmxBEXQeAeQ/fUEKPp+Syos=;
+ b=icLWnRYkuu378Opj9zzuHE8krz1fVo1D6w56Xma7eGYYg3TpzTcs5PdbPKq2fKzgsq+umu
+ erE4kbevPCpFUmlIFhYHmflqwwumMiTijN3GgdvvKN6Pmp1ocFwPPturFwMVTqjsF+h5TI
+ ReUWwKuNvC01fkkivPE94cV+JO/DzHw=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-497-SOGPfLUGMfqFewYt7YJ0bw-1; Wed,
+ 04 Sep 2024 08:18:39 -0400
+X-MC-Unique: SOGPfLUGMfqFewYt7YJ0bw-1
+Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 22E751955F10; Wed,  4 Sep 2024 12:18:32 +0000 (UTC)
+Received: from redhat.com (unknown [10.42.28.53])
+ by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 4D62B19560A3; Wed,  4 Sep 2024 12:18:13 +0000 (UTC)
+Date: Wed, 4 Sep 2024 13:18:10 +0100
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Markus Armbruster <armbru@redhat.com>
+Cc: qemu-devel@nongnu.org, alex.williamson@redhat.com,
+ andrew@codeconstruct.com.au, andrew@daynix.com,
+ arei.gonglei@huawei.com, berto@igalia.com,
+ borntraeger@linux.ibm.com, clg@kaod.org, david@redhat.com,
  den@openvz.org, eblake@redhat.com, eduardo@habkost.net,
  farman@linux.ibm.com, farosas@suse.de, hreitz@redhat.com,
  idryomov@gmail.com, iii@linux.ibm.com, jamin_lin@aspeedtech.com,
- jasowang@redhat.com, joel@jms.id.au, jsnow@redhat.com, kwolf@redhat.com,
- leetroy@gmail.com, marcandre.lureau@redhat.com, marcel.apfelbaum@gmail.com,
- michael.roth@amd.com, mst@redhat.com, mtosatti@redhat.com,
- nsg@linux.ibm.com, pasic@linux.ibm.com, pbonzini@redhat.com,
- peter.maydell@linaro.org, peterx@redhat.com, philmd@linaro.org,
- pizhenwei@bytedance.com, pl@dlhnet.de, richard.henderson@linaro.org,
- stefanha@redhat.com, steven_lee@aspeedtech.com, thuth@redhat.com,
+ jasowang@redhat.com, joel@jms.id.au, jsnow@redhat.com,
+ kwolf@redhat.com, leetroy@gmail.com, marcandre.lureau@redhat.com,
+ marcel.apfelbaum@gmail.com, michael.roth@amd.com, mst@redhat.com,
+ mtosatti@redhat.com, nsg@linux.ibm.com, pasic@linux.ibm.com,
+ pbonzini@redhat.com, peter.maydell@linaro.org, peterx@redhat.com,
+ philmd@linaro.org, pizhenwei@bytedance.com, pl@dlhnet.de,
+ richard.henderson@linaro.org, stefanha@redhat.com,
+ steven_lee@aspeedtech.com, thuth@redhat.com,
  vsementsov@yandex-team.ru, wangyanan55@huawei.com,
- yuri.benditovich@daynix.com, zhao1.liu@intel.com, qemu-block@nongnu.org,
- qemu-arm@nongnu.org, qemu-s390x@nongnu.org, kvm@vger.kernel.org,
- avihaih@nvidia.com
+ yuri.benditovich@daynix.com, zhao1.liu@intel.com,
+ qemu-block@nongnu.org, qemu-arm@nongnu.org, qemu-s390x@nongnu.org,
+ kvm@vger.kernel.org, avihaih@nvidia.com
+Subject: Re: [PATCH v2 01/19] qapi: Smarter camel_to_upper() to reduce need
+ for 'prefix'
+Message-ID: <ZthQAr7Mpd0utBD9@redhat.com>
 References: <20240904111836.3273842-1-armbru@redhat.com>
- <20240904111836.3273842-20-armbru@redhat.com>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clegoate@redhat.com>
-In-Reply-To: <20240904111836.3273842-20-armbru@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: viKQ3jnWrQ44
+ <20240904111836.3273842-2-armbru@redhat.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <20240904111836.3273842-2-armbru@redhat.com>
+User-Agent: Mutt/2.2.12 (2023-09-09)
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: 11
+X-Spam_score: 1.1
+X-Spam_bar: +
+X-Spam_report: (1.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.142,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: klCCvns1vUzc
 
-On 9/4/24 13:18, Markus Armbruster wrote:
-> QAPI's 'prefix' feature can make the connection between enumeration
-> type and its constants less than obvious.  It's best used with
-> restraint.
-> 
-> VfioMigrationState has a 'prefix' that overrides the generated
-> enumeration constants' prefix to QAPI_VFIO_MIGRATION_STATE.
-> 
-> We could simply drop 'prefix', but then the enumeration constants
-> would look as if they came from kernel header linux/vfio.h.
-> 
-> Rename the type to QapiVfioMigrationState instead, so that 'prefix' is
-> not needed.
+On Wed, Sep 04, 2024 at 01:18:18PM +0200, Markus Armbruster wrote:
+> camel_to_upper() converts its argument from camel case to upper case
+> with '_' between words.  Used for generated enumeration constant
+> prefixes.
+
+
 > 
 > Signed-off-by: Markus Armbruster <armbru@redhat.com>
+> Reviewed-by: Daniel P. Berrang?? <berrange@redhat.com>
 
+The accent in my name is getting mangled in this series.
 
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
+IIRC your mail client (git send-email ?) needs to be explicitly
+setting a chardset eg
 
-Thanks,
+  Content-type: text/plain; charset=utf8
 
-C.
+so that mail clients & intermediate servers know how to interpret
+the 8bit data.
 
-
-> ---
->   qapi/vfio.json      | 9 ++++-----
->   hw/vfio/migration.c | 2 +-
->   2 files changed, 5 insertions(+), 6 deletions(-)
-> 
-> diff --git a/qapi/vfio.json b/qapi/vfio.json
-> index eccca82068..b53b7caecd 100644
-> --- a/qapi/vfio.json
-> +++ b/qapi/vfio.json
-> @@ -7,7 +7,7 @@
->   ##
->   
->   ##
-> -# @VfioMigrationState:
-> +# @QapiVfioMigrationState:
->   #
->   # An enumeration of the VFIO device migration states.
->   #
-> @@ -32,10 +32,9 @@
->   #
->   # Since: 9.1
->   ##
-> -{ 'enum': 'VfioMigrationState',
-> +{ 'enum': 'QapiVfioMigrationState',
->     'data': [ 'stop', 'running', 'stop-copy', 'resuming', 'running-p2p',
-> -            'pre-copy', 'pre-copy-p2p' ],
-> -  'prefix': 'QAPI_VFIO_MIGRATION_STATE' }
-> +            'pre-copy', 'pre-copy-p2p' ] }
->   
->   ##
->   # @VFIO_MIGRATION:
-> @@ -63,5 +62,5 @@
->     'data': {
->         'device-id': 'str',
->         'qom-path': 'str',
-> -      'device-state': 'VfioMigrationState'
-> +      'device-state': 'QapiVfioMigrationState'
->     } }
-> diff --git a/hw/vfio/migration.c b/hw/vfio/migration.c
-> index 262d42a46e..17199b73ae 100644
-> --- a/hw/vfio/migration.c
-> +++ b/hw/vfio/migration.c
-> @@ -81,7 +81,7 @@ static const char *mig_state_to_str(enum vfio_device_mig_state state)
->       }
->   }
->   
-> -static VfioMigrationState
-> +static QapiVfioMigrationState
->   mig_state_to_qapi_state(enum vfio_device_mig_state state)
->   {
->       switch (state) {
+With regards,
+Daniel
+-- 
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
 

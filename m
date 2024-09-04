@@ -1,100 +1,98 @@
-Received: by 2002:a17:505:1f8d:b0:1be9:327d:8ee3 with SMTP id pt13csp81276njb;
-        Wed, 4 Sep 2024 04:23:20 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCVOZi1C0jqQz8KMzGTSD2my6qzn91T2Veo1TXR0CKn4bLUUJj2oWy4Li6IpCPeXHZat8m/SFKl11rwevA==@linaro.org
-X-Google-Smtp-Source: AGHT+IFdP9jhXFnMqReAd+pn13CSmf2JpzakBeErJybsPCdyqwYuZnVJcuFRjYe9gbS3sdMGjZEA
-X-Received: by 2002:a05:620a:2801:b0:7a1:d431:8408 with SMTP id af79cd13be357-7a8fa610857mr1679065485a.37.1725448999904;
-        Wed, 04 Sep 2024 04:23:19 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1725448999; cv=pass;
-        d=google.com; s=arc-20160816;
-        b=a3XaRtbJEwJRemGvicgj3zUu0Ts8TjFCDsr0eaXnit56P9/st5kM4gCM41JjkvX4z3
-         gP9hsoXwSHd0cgmPvWlrIUWnxKk1cfjCU2WS2RPD31WtS341Zhh/wQXujpdqEDamVadF
-         Q6NI5Kk1/9FfFIBY6c9kATbbzgBY9PUPAIN2HjSM0Y9x28qMnRfu6OcliwYHjxxgb0Sc
-         BOqDBeCmCEU/vROwScZSuMxo3ZFdUm89Qhs+VD/ryJpkoIvhmiJuhVWHU+hu5yrmP43y
-         gOWkzOcQbqHH8I2LuF0xqr2EZdQvwMUKP/y7r8tE9if5IQfhxFJ3+G5jD/iRc7BHRU05
-         RXeA==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+Received: by 2002:a17:505:1f8d:b0:1be9:327d:8ee3 with SMTP id pt13csp81292njb;
+        Wed, 4 Sep 2024 04:23:26 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCVaF6u2HRBUj932jbIhomMFOGfy46Fhgu1Hm1I84VAvo3LTodCPi79NJdBYmWb92Mll8l4If1arFHKpdg==@linaro.org
+X-Google-Smtp-Source: AGHT+IHxBp1KwT/ucTDqfCgPZk/XccSeYKL2q8V6iV5DpctVyQ91vNCruNvh8n020uZpdHdnKK77
+X-Received: by 2002:a05:6a21:3a44:b0:1c4:a49b:403 with SMTP id adf61e73a8af0-1cece5e24c1mr12814390637.46.1725449006722;
+        Wed, 04 Sep 2024 04:23:26 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1725449006; cv=pass;
+        d=google.com; s=arc-20240605;
+        b=iGRN+K8fVj8rjhcCdyT982y76eK6BQQQokAlNS0TSdBM8MnDL82Wsdp1m1wh9PJoPQ
+         9jg1EputYr0CI7weV4EQqqfAjYMePbiFnZeHIvcqa6nGH8qgYCFK1jUD90Z2HGXnPcLV
+         0oqiR3TqBzjuZINp63iHN5C1GAL/sp0Lyk+QnKiv0YutUSz6j9Mtj+T6Zwo80cw9nd3w
+         E8GaXb1jvg2roQ+EE4Vi2XD3TR4tZ+JJqI7JznehlypgGwxjtlu5tVXjMZmx179JdCxx
+         sE0unISvOl9zG3GLmQ34SxzRqRuznAqfVEeowSlMCJrjRG5LrIIXsrnLeKstrXXaFV6M
+         tLJQ==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
-         :date:subject:cc:to:from:dkim-signature;
-        bh=u8HGx870TvahmH1JUtPzVJvMkaa7TMgcPX/CncVr9MI=;
+         :list-subscribe:list-id:precedence:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=Oj50cX47ZUUAPXZ4RaZWe5IBh9JPe1rg3vGEm4x1p00=;
         fh=2RgeqnAYDZ5qP2GVxxraMbOq0lVKWzwDqa5qVTK9BeQ=;
-        b=mszoE1hbhqqSCr5gEDyxbpSe9qLYMGFl7FyBezee5nPR+WGE3MVX2oxu3FTUwIvblw
-         lZCN6WRIgqPb0XapBspakU0uCOE23YQE4wQ7puvlUoHKkqYqH3qjNDyCnnXfCxZkNlf+
-         kKxZmsVHE2y951eURknOwveHn9ISi4JO+Z/jAYQeRiKstd79cu2aYvpuqpQ1mbDCKk9b
-         NcNYGHSW8yK9UFgDtBgZCrMAf4hfkHzzmIgQhKBt7sckj7k6i8TDulFoZGlEjjtwuLni
-         voPuPYj8YrwxTc+m2Je4exd8F2rD7CijZ41eXq3cCAzzE6ATUownfsfiArNh4iHYJQCo
-         0x6g==;
+        b=CYDsj5alroIy65zUOpNiT7tl9Cdp5Gq1kp/ymx33a9MdH9ED0PFiNHYTDH2euaAaRI
+         lFMTxZQZQz/jm296Ofkql7B+CnCcf9BrPAg951EERUgdk9i/hjX/UPxH9KaNrqrDMeip
+         lWMx6RUicoUHsruF/8r8sTLDhTz/uAZCkZanLHWmWdxSKx2JMoKfmaSdlaE3lB7b4M4x
+         sbK+ouapK9iC/CD4hR/MzvjcLve+2x7BrvihN9eE2rNWOPUwIMNSi35C9+bleqKjd2bo
+         +vXGiqjyHqpuLM4Hqmv5G6EPcz8lseWilCf/JUjhq8Qq81F2TAksILxfe5k1OXjKfaA9
+         +2gQ==;
         dara=google.com
 ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fItLyyIK;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Ig75jF5i;
        arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-25855-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="kvm+bounces-25855-alex.bennee=linaro.org@vger.kernel.org";
+       spf=pass (google.com: domain of kvm+bounces-25856-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) smtp.mailfrom="kvm+bounces-25856-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm+bounces-25855-alex.bennee=linaro.org@vger.kernel.org>
-Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [147.75.199.223])
-        by mx.google.com with ESMTPS id af79cd13be357-7a806d8308dsi1466448085a.387.2024.09.04.04.23.19
+Return-Path: <kvm+bounces-25856-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sy.mirrors.kernel.org (sy.mirrors.kernel.org. [2604:1380:40f1:3f00::1])
+        by mx.google.com with ESMTPS id d9443c01a7336-206ae9eca3csi20444005ad.236.2024.09.04.04.23.26
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 04 Sep 2024 04:23:19 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm+bounces-25855-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) client-ip=147.75.199.223;
+        Wed, 04 Sep 2024 04:23:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm+bounces-25856-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) client-ip=2604:1380:40f1:3f00::1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fItLyyIK;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Ig75jF5i;
        arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-25855-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="kvm+bounces-25855-alex.bennee=linaro.org@vger.kernel.org";
+       spf=pass (google.com: domain of kvm+bounces-25856-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) smtp.mailfrom="kvm+bounces-25856-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ny.mirrors.kernel.org (Postfix) with ESMTPS id 99AAB1C223CD
-	for <alex.bennee@linaro.org>; Wed,  4 Sep 2024 11:23:19 +0000 (UTC)
+	by sy.mirrors.kernel.org (Postfix) with ESMTPS id 7390EB26B0D
+	for <alex.bennee@linaro.org>; Wed,  4 Sep 2024 11:23:24 +0000 (UTC)
 Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id AC4391DA0F7;
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id DC3CA1DA104;
 	Wed,  4 Sep 2024 11:18:57 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="fItLyyIK"
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="Ig75jF5i"
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9F69C1CF7AC
-	for <kvm@vger.kernel.org>; Wed,  4 Sep 2024 11:18:53 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.129.124
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CE2DD1D0965
+	for <kvm@vger.kernel.org>; Wed,  4 Sep 2024 11:18:55 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.133.124
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1725448737; cv=none; b=LCPCIjNxSTvjKbPW4GCnOqOSHj6C8MORi7plnicrMa8ee5GPrKQkcvn/xoXgcPfQDSvj6dwlsn5lPEB6vGCgQwtbiGvkMja57mVWIbBQyB5BWGwicmJRg55aS9KBYovN/Y/GHFthv7xpuhjrG3PGaI0Ech+mjKfrR1b0l3uEVXE=
+	t=1725448737; cv=none; b=cgy1Fdj11hzWq40nhxKn07R/CX11qRggjhpSWchC5J7SppeAbOMNGBEMNa0KjfE20OoRllX8kqErkcm+Gi5bHoY9aGRnfZVrJP1pKLZiRkkGYunbTdgLdSZi+3n5X87sZKnIBbObQzS5SGZHsFXHYnAhAzczMgiqtEy3osFRsHE=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
 	s=arc-20240116; t=1725448737; c=relaxed/simple;
-	bh=7umYFkrqB0aOyE1OYiqdbbd+1oL4ufSCPqsef9TliNQ=;
-	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:
-	 MIME-Version:Content-type; b=Syu9pRmcFTRfyUd1svmxKtxUl4FUzxZJf0FqnryFufNhB4MmgWIfZN0c1Y/xeV8HoPZq5Tv22lSqTDZTHI94PT63mobb54OeVdTnHWmpHVVPb9gnR9pMowJInbyjcWBgU78uwC1EKElqhcmsDw7nuPN73J413VGCJlfNCxmZzPk=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=fItLyyIK; arc=none smtp.client-ip=170.10.129.124
+	bh=oUxNlC8AOpcmsC9qZnBMVkjQSPFsx3xCtYkWbIXjyqE=;
+	h=From:To:Cc:Subject:Date:Message-ID:MIME-Version:Content-Type; b=JeujUrQfbF9CwCRe3KGQVXhJOqTWqhVytQDHa6RFqQZgTFaMmetmvp6N12R5TbMeuV0HYdEaVMxUH+8IMuFZ5ldypbT7jFX4yyvGdpbDNeOc7Oxlg4b/pS+GrMZbAtVXk9gOSGknqwDnHblbym79gnAsi0qqzWfFf97ObzH0vu0=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=Ig75jF5i; arc=none smtp.client-ip=170.10.133.124
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1725448732;
+	s=mimecast20190719; t=1725448734;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=u8HGx870TvahmH1JUtPzVJvMkaa7TMgcPX/CncVr9MI=;
-	b=fItLyyIKNNEcu8ooloHu1t5H6qN5y+d4WxQ4/O3KQXeDwmGOMCZDu2K1lxyEOXJbEcFwg7
-	xlo65giuU10bRZ2imhIAG+Xnm3lR19fekpmooyIqKV/3YukE91V6bNzxFp3K4vHvRcD/6a
-	p5bvAf3Zx2xjB8Kjwb5+TxDGUHKOfVE=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=Oj50cX47ZUUAPXZ4RaZWe5IBh9JPe1rg3vGEm4x1p00=;
+	b=Ig75jF5iNCUYEmNU3HSgzzlEu2HCW3iQnXso9sF2ZC2uBJU1Erjgo7rtvhRYwrNcjD03Mk
+	rYiFUpN+Uz/ZkXwuHuRI9ZD0zUfCtp/Euh5yeHnO5zJLo1N3F3Rjgojw8UpaUjTv5ute24
+	NnhcYW36dxoFO/zG/UawSiLuYAmOID0=
+Received: from mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-669-8yEoSOX5PNa8sItUOf5ZuQ-1; Wed,
- 04 Sep 2024 07:18:47 -0400
-X-MC-Unique: 8yEoSOX5PNa8sItUOf5ZuQ-1
-Received: from mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.15])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-584--Z0rh6IuPzelXwf7F63SzA-1; Wed,
+ 04 Sep 2024 07:18:51 -0400
+X-MC-Unique: -Z0rh6IuPzelXwf7F63SzA-1
+Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 1BD001956048;
-	Wed,  4 Sep 2024 11:18:42 +0000 (UTC)
+	by mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id D65811953943;
+	Wed,  4 Sep 2024 11:18:45 +0000 (UTC)
 Received: from blackfin.pond.sub.org (unknown [10.39.192.112])
-	by mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id B01361956086;
+	by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 977801956056;
 	Wed,  4 Sep 2024 11:18:38 +0000 (UTC)
 Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 937AE21E692E; Wed,  4 Sep 2024 13:18:36 +0200 (CEST)
+	id 8B3F221E6A28; Wed,  4 Sep 2024 13:18:36 +0200 (CEST)
 From: Markus Armbruster <armbru@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: alex.williamson@redhat.com,
@@ -146,106 +144,201 @@ Cc: alex.williamson@redhat.com,
 	qemu-s390x@nongnu.org,
 	kvm@vger.kernel.org,
 	avihaih@nvidia.com
-Subject: [PATCH v2 02/19] tests/qapi-schema: Drop temporary 'prefix'
-Date: Wed,  4 Sep 2024 13:18:19 +0200
-Message-ID: <20240904111836.3273842-3-armbru@redhat.com>
-In-Reply-To: <20240904111836.3273842-1-armbru@redhat.com>
-References: <20240904111836.3273842-1-armbru@redhat.com>
+Subject: [PATCH v2 00/19] qapi: Reduce use of 'prefix'
+Date: Wed,  4 Sep 2024 13:18:17 +0200
+Message-ID: <20240904111836.3273842-1-armbru@redhat.com>
 Precedence: bulk
 X-Mailing-List: kvm@vger.kernel.org
 List-Id: <kvm.vger.kernel.org>
 List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
 List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-Content-type: text/plain
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.15
-X-TUID: 03kUE4+CYSid
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
+X-TUID: zCdfAf3ZEypj
 
-Recent commit "qapi: Smarter camel_to_upper() to reduce need for
-'prefix'" added a temporary 'prefix' to delay changing the generated
-code.
+QAPI's 'prefix' feature can make the connection between enumeration
+type and its constants less than obvious.  It's best used with
+restraint.
 
-Revert it.  This changes TestUnionEnumA's generated enumeration
-constant prefix from TEST_UNION_ENUMA to TEST_UNION_ENUM_A.
+We use 'prefix' for a number of reasons:
 
-Signed-off-by: Markus Armbruster <armbru@redhat.com>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
----
- tests/unit/test-qobject-input-visitor.c  | 4 ++--
- tests/unit/test-qobject-output-visitor.c | 4 ++--
- tests/qapi-schema/qapi-schema-test.json  | 1 -
- tests/qapi-schema/qapi-schema-test.out   | 1 -
- 4 files changed, 4 insertions(+), 6 deletions(-)
+* To override an ugly default.
 
-diff --git a/tests/unit/test-qobject-input-visitor.c b/tests/unit/test-qobject-input-visitor.c
-index 024e26c49e..5479e68237 100644
---- a/tests/unit/test-qobject-input-visitor.c
-+++ b/tests/unit/test-qobject-input-visitor.c
-@@ -720,7 +720,7 @@ static void test_visitor_in_union_in_union(TestInputVisitorData *data,
- 
-     visit_type_TestUnionInUnion(v, NULL, &tmp, &error_abort);
-     g_assert_cmpint(tmp->type, ==, TEST_UNION_ENUM_VALUE_A);
--    g_assert_cmpint(tmp->u.value_a.type_a, ==, TEST_UNION_ENUMA_VALUE_A1);
-+    g_assert_cmpint(tmp->u.value_a.type_a, ==, TEST_UNION_ENUM_A_VALUE_A1);
-     g_assert_cmpint(tmp->u.value_a.u.value_a1.integer, ==, 2);
-     g_assert_cmpint(strcmp(tmp->u.value_a.u.value_a1.name, "fish"), ==, 0);
- 
-@@ -734,7 +734,7 @@ static void test_visitor_in_union_in_union(TestInputVisitorData *data,
- 
-     visit_type_TestUnionInUnion(v, NULL, &tmp, &error_abort);
-     g_assert_cmpint(tmp->type, ==, TEST_UNION_ENUM_VALUE_A);
--    g_assert_cmpint(tmp->u.value_a.type_a, ==, TEST_UNION_ENUMA_VALUE_A2);
-+    g_assert_cmpint(tmp->u.value_a.type_a, ==, TEST_UNION_ENUM_A_VALUE_A2);
-     g_assert_cmpint(tmp->u.value_a.u.value_a2.integer, ==, 1729);
-     g_assert_cmpint(tmp->u.value_a.u.value_a2.size, ==, 87539319);
- 
-diff --git a/tests/unit/test-qobject-output-visitor.c b/tests/unit/test-qobject-output-visitor.c
-index 1535b3ad17..3455f3b107 100644
---- a/tests/unit/test-qobject-output-visitor.c
-+++ b/tests/unit/test-qobject-output-visitor.c
-@@ -359,7 +359,7 @@ static void test_visitor_out_union_in_union(TestOutputVisitorData *data,
- 
-     TestUnionInUnion *tmp = g_new0(TestUnionInUnion, 1);
-     tmp->type = TEST_UNION_ENUM_VALUE_A;
--    tmp->u.value_a.type_a = TEST_UNION_ENUMA_VALUE_A1;
-+    tmp->u.value_a.type_a = TEST_UNION_ENUM_A_VALUE_A1;
-     tmp->u.value_a.u.value_a1.integer = 42;
-     tmp->u.value_a.u.value_a1.name = g_strdup("fish");
- 
-@@ -377,7 +377,7 @@ static void test_visitor_out_union_in_union(TestOutputVisitorData *data,
-     visitor_reset(data);
-     tmp = g_new0(TestUnionInUnion, 1);
-     tmp->type = TEST_UNION_ENUM_VALUE_A;
--    tmp->u.value_a.type_a = TEST_UNION_ENUMA_VALUE_A2;
-+    tmp->u.value_a.type_a = TEST_UNION_ENUM_A_VALUE_A2;
-     tmp->u.value_a.u.value_a2.integer = 1729;
-     tmp->u.value_a.u.value_a2.size = 87539319;
- 
-diff --git a/tests/qapi-schema/qapi-schema-test.json b/tests/qapi-schema/qapi-schema-test.json
-index 0f5f54e621..8ca977c49d 100644
---- a/tests/qapi-schema/qapi-schema-test.json
-+++ b/tests/qapi-schema/qapi-schema-test.json
-@@ -119,7 +119,6 @@
-   'data': [ 'value-a', 'value-b' ] }
- 
- { 'enum': 'TestUnionEnumA',
--  'prefix': 'TEST_UNION_ENUMA', # TODO drop
-   'data': [ 'value-a1', 'value-a2' ] }
- 
- { 'struct': 'TestUnionTypeA1',
-diff --git a/tests/qapi-schema/qapi-schema-test.out b/tests/qapi-schema/qapi-schema-test.out
-index add7346f49..4617eb4e98 100644
---- a/tests/qapi-schema/qapi-schema-test.out
-+++ b/tests/qapi-schema/qapi-schema-test.out
-@@ -108,7 +108,6 @@ enum TestUnionEnum
-     member value-a
-     member value-b
- enum TestUnionEnumA
--    prefix TEST_UNION_ENUMA
-     member value-a1
-     member value-a2
- object TestUnionTypeA1
+* To shorten the prefix.
+
+* To work around name clashes.
+
+This series attacks the first two.  It additionally improves a number
+of ugly prefixes we don't override.
+
+PATCH 01 improves the default prefix, and drops 'prefix' where it is
+now redundant.  The patch adds temporary 'prefix' to not change
+generated code.
+
+PATCH 02-08 revert the temporary 'prefix'.
+
+PATCH 10,17 drop 'prefix' where the default is now better.
+
+PATCH 09,11-15,18,19 rename QAPI types, and drop their 'prefix'.  I'm
+prepared to adjust the renames according to maintainers' preference.
+
+PATCH 16 renames a non-QAPI type for consistency.
+
+v2:
+* PATCH 01: Fix camel_to_upper() to avoid '__' and leading '_'.
+* PATCH 01+07: Actually add a 'prefix' to HmatLBMemoryHierarchy in
+  PATCH 01, as the commit message advertizes.  Remove it in PATCH 07,
+  and adjust the commit message.
+* PATCH 09: Keep pragma documentation-exceptions sorted.
+* PATCH 04+09+18: Fix commit message typos.
+* PATCH 19: New.
+
+Markus Armbruster (19):
+  qapi: Smarter camel_to_upper() to reduce need for 'prefix'
+  tests/qapi-schema: Drop temporary 'prefix'
+  qapi/block-core: Drop temporary 'prefix'
+  qapi/common: Drop temporary 'prefix'
+  qapi/crypto: Drop temporary 'prefix'
+  qapi/ebpf: Drop temporary 'prefix'
+  qapi/machine: Drop temporary 'prefix'
+  qapi/ui: Drop temporary 'prefix'
+  qapi/machine: Rename CpuS390* to S390Cpu*, and drop 'prefix'
+  qapi/crypto: Drop unwanted 'prefix'
+  qapi/crypto: Rename QCryptoHashAlgorithm to *Algo, and drop prefix
+  qapi/crypto: Rename QCryptoCipherAlgorithm to *Algo, and drop prefix
+  qapi/crypto: Rename QCryptoIVGenAlgorithm to *Algo, and drop prefix
+  qapi/crypto: Rename QCryptoAkCipherAlgorithm to *Algo, and drop prefix
+  qapi/crypto: Rename QCryptoRSAPaddingAlgorithm to *Algo, and drop
+    prefix
+  qapi/crypto: Rename QCryptoAFAlg to QCryptoAFAlgo
+  qapi/cryptodev: Drop unwanted 'prefix'
+  qapi/cryptodev: Rename QCryptodevBackendAlgType to *Algo, and drop
+    prefix
+  qapi/vfio: Rename VfioMigrationState to Qapi*, and drop prefix
+
+ qapi/block-core.json                     |   4 +-
+ qapi/crypto.json                         |  56 ++++------
+ qapi/cryptodev.json                      |   7 +-
+ qapi/machine-common.json                 |   5 +-
+ qapi/machine-target.json                 |  11 +-
+ qapi/machine.json                        |   9 +-
+ qapi/migration.json                      |   1 +
+ qapi/pragma.json                         |   6 +-
+ qapi/ui.json                             |   1 +
+ qapi/vfio.json                           |   9 +-
+ crypto/afalgpriv.h                       |  14 +--
+ crypto/akcipherpriv.h                    |   2 +-
+ crypto/blockpriv.h                       |   6 +-
+ crypto/cipherpriv.h                      |   2 +-
+ crypto/hashpriv.h                        |   2 +-
+ crypto/hmacpriv.h                        |   4 +-
+ crypto/ivgenpriv.h                       |   6 +-
+ include/crypto/afsplit.h                 |   8 +-
+ include/crypto/block.h                   |   2 +-
+ include/crypto/cipher.h                  |  18 ++--
+ include/crypto/hash.h                    |  18 ++--
+ include/crypto/hmac.h                    |   6 +-
+ include/crypto/ivgen.h                   |  30 +++---
+ include/crypto/pbkdf.h                   |  14 +--
+ include/hw/qdev-properties-system.h      |   2 +-
+ include/hw/s390x/cpu-topology.h          |   2 +-
+ include/sysemu/cryptodev.h               |   2 +-
+ target/s390x/cpu.h                       |   2 +-
+ backends/cryptodev-builtin.c             |  52 ++++-----
+ backends/cryptodev-lkcf.c                |  36 +++----
+ backends/cryptodev-vhost-user.c          |   6 +-
+ backends/cryptodev.c                     |  12 +--
+ block.c                                  |   6 +-
+ block/crypto.c                           |  10 +-
+ block/parallels-ext.c                    |   2 +-
+ block/qcow.c                             |   2 +-
+ block/qcow2.c                            |  10 +-
+ block/quorum.c                           |   4 +-
+ block/rbd.c                              |   4 +-
+ crypto/afalg.c                           |   8 +-
+ crypto/afsplit.c                         |   6 +-
+ crypto/akcipher.c                        |   2 +-
+ crypto/block-luks.c                      | 128 +++++++++++------------
+ crypto/block-qcow.c                      |   6 +-
+ crypto/block.c                           |   8 +-
+ crypto/cipher-afalg.c                    |  36 +++----
+ crypto/cipher.c                          |  72 ++++++-------
+ crypto/hash-afalg.c                      |  40 +++----
+ crypto/hash-gcrypt.c                     |  20 ++--
+ crypto/hash-glib.c                       |  20 ++--
+ crypto/hash-gnutls.c                     |  20 ++--
+ crypto/hash-nettle.c                     |  18 ++--
+ crypto/hash.c                            |  30 +++---
+ crypto/hmac-gcrypt.c                     |  22 ++--
+ crypto/hmac-glib.c                       |  22 ++--
+ crypto/hmac-gnutls.c                     |  22 ++--
+ crypto/hmac-nettle.c                     |  22 ++--
+ crypto/hmac.c                            |   2 +-
+ crypto/ivgen.c                           |  18 ++--
+ crypto/pbkdf-gcrypt.c                    |  36 +++----
+ crypto/pbkdf-gnutls.c                    |  36 +++----
+ crypto/pbkdf-nettle.c                    |  32 +++---
+ crypto/pbkdf-stub.c                      |   4 +-
+ crypto/pbkdf.c                           |   2 +-
+ crypto/secret_common.c                   |   2 +-
+ ebpf/ebpf_rss.c                          |   2 +-
+ hw/core/numa.c                           |   4 +-
+ hw/core/qdev-properties-system.c         |   6 +-
+ hw/misc/aspeed_hace.c                    |  16 +--
+ hw/pci-bridge/cxl_upstream.c             |   4 +-
+ hw/s390x/cpu-topology.c                  |   6 +-
+ hw/vfio/migration.c                      |   2 +-
+ hw/vfio/pci.c                            |  10 +-
+ hw/virtio/virtio-crypto.c                |  24 ++---
+ io/channel-websock.c                     |   2 +-
+ system/vl.c                              |   2 +-
+ target/i386/sev.c                        |   6 +-
+ tests/bench/benchmark-crypto-akcipher.c  |  28 ++---
+ tests/bench/benchmark-crypto-cipher.c    |  22 ++--
+ tests/bench/benchmark-crypto-hash.c      |  10 +-
+ tests/bench/benchmark-crypto-hmac.c      |   6 +-
+ tests/unit/test-crypto-afsplit.c         |  10 +-
+ tests/unit/test-crypto-akcipher.c        |  54 +++++-----
+ tests/unit/test-crypto-block.c           |  58 +++++-----
+ tests/unit/test-crypto-cipher.c          |  66 ++++++------
+ tests/unit/test-crypto-hash.c            |  42 ++++----
+ tests/unit/test-crypto-hmac.c            |  16 +--
+ tests/unit/test-crypto-ivgen.c           |  38 +++----
+ tests/unit/test-crypto-pbkdf.c           |  44 ++++----
+ tests/unit/test-qobject-input-visitor.c  |   4 +-
+ tests/unit/test-qobject-output-visitor.c |   4 +-
+ ui/dbus.c                                |   8 +-
+ ui/egl-context.c                         |   2 +-
+ ui/egl-headless.c                        |   2 +-
+ ui/egl-helpers.c                         |  12 +--
+ ui/gtk.c                                 |   4 +-
+ ui/sdl2-gl.c                             |   8 +-
+ ui/sdl2.c                                |   2 +-
+ ui/spice-core.c                          |   2 +-
+ ui/vnc.c                                 |   6 +-
+ util/hbitmap.c                           |   2 +-
+ crypto/akcipher-gcrypt.c.inc             |  44 ++++----
+ crypto/akcipher-nettle.c.inc             |  56 +++++-----
+ crypto/cipher-builtin.c.inc              |  18 ++--
+ crypto/cipher-gcrypt.c.inc               |  56 +++++-----
+ crypto/cipher-gnutls.c.inc               |  38 +++----
+ crypto/cipher-nettle.c.inc               |  58 +++++-----
+ crypto/rsakey-builtin.c.inc              |   4 +-
+ crypto/rsakey-nettle.c.inc               |   4 +-
+ scripts/qapi/common.py                   |  42 ++++----
+ scripts/qapi/schema.py                   |   2 +-
+ tests/qapi-schema/alternate-array.out    |   1 -
+ tests/qapi-schema/comments.out           |   1 -
+ tests/qapi-schema/doc-good.out           |   1 -
+ tests/qapi-schema/empty.out              |   1 -
+ tests/qapi-schema/include-repetition.out |   1 -
+ tests/qapi-schema/include-simple.out     |   1 -
+ tests/qapi-schema/indented-expr.out      |   1 -
+ tests/qapi-schema/qapi-schema-test.out   |   1 -
+ 119 files changed, 937 insertions(+), 954 deletions(-)
+
 -- 
 2.46.0
 

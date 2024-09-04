@@ -1,172 +1,132 @@
-Received: by 2002:a17:505:1f8d:b0:1be9:327d:8ee3 with SMTP id pt13csp62315njb;
-        Wed, 4 Sep 2024 03:11:49 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVESiKGP6Albxvx4W6DsiFy8FJbAIUBBSAda9iJz0k2/7M2mnXJD1y0Pul5WsR8NtbUaq2+qzsOO2AQEg==@linaro.org
-X-Google-Smtp-Source: AGHT+IGYKYa28KIkWaNuY4IeRCp89tc9Umj4LNzBah8wxY6UeJE9HIv0rrkxHVH2s1KKmjgKp0aC
-X-Received: by 2002:a05:622a:400e:b0:43f:edde:7a55 with SMTP id d75a77b69052e-4570ec43629mr162936881cf.28.1725444709514;
-        Wed, 04 Sep 2024 03:11:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1725444709; cv=none;
+Received: by 2002:a17:505:1f8d:b0:1be9:327d:8ee3 with SMTP id pt13csp62858njb;
+        Wed, 4 Sep 2024 03:14:10 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVuS7ELwrMNtBuB+QXsJjNDw5GrlwRpT1H0OBb3eETZ5M6Iti2ReJhD3zRUtH6LC2S2oB/bvaBoQkkbkA==@linaro.org
+X-Google-Smtp-Source: AGHT+IFTRTezJSYdeRjjk09xoCbVG3Mbonx+b9q30Pe1Rwbk9lh1hv/ToVATjsd2txrYAdciMdqZ
+X-Received: by 2002:a05:620a:2f4:b0:7a7:d6db:4016 with SMTP id af79cd13be357-7a98889f94dmr227926185a.18.1725444849988;
+        Wed, 04 Sep 2024 03:14:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1725444849; cv=none;
         d=google.com; s=arc-20160816;
-        b=qmtGy4hLgZHV4FQHCf9WYjIS34PWsJ/2csZ0kUFLWO0lgr1nn0YU1akDrRwfgdgh+b
-         FEqHqcE/jY7VfzoMyjhaUQ7qTBuug3VMsOfgTYEj1C5uOSBe7Pd2O9I54PM9/wqVKFXY
-         mslghElVSl52NKjoac+rUAbrg8L4hwnfhu3dcg2BzR0PQQa/vcdfCvtwx7epgZ04witf
-         7YAa78IhngCt+7bcFseV3c8XGZtMzRSMexD8ReXY68yLDQ/cm4OPnAQHtw4OQniRzLYZ
-         h0kQccBS6VzMHz6wHdCyPv92nAPToWuPThrwWMLJKpewZTcfko3MRDY/+egpfS717zr8
-         hN/Q==
+        b=ZeI9/urv5g//x//qzbAbkPrkAsLhvK3eYvO3Jr7Y3mfa1NaBv6xLi+23W8sU4rpJFV
+         0lTY/j3MX8Ur6Ubx7d4yRsX9DNyNunCxuIF9pJQnDTBZFUYGWwLrsnX3fd0uR7FsDwnm
+         g9v0O0122agp3B+6Ak9L+OTyEUE6Z6tAuXi5avv3knJAxsWeB5Sxjy3rSFmz9HDl7Eal
+         muWARDFaGlFYyNE/Enam2fzpUKWVL3hFQkqN9rNMwWbwwF4zdEpBK6XhLtunjeVKZB2h
+         WMmN6rmPoEK5zSJA/M8i/3hnOKu5omjTvIkwQiZCxZDYR3gP0Y6T3QAMyeH5LtAgMBDa
+         lngA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:autocrypt:from:references:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=2ZPdNciBE65ElgRIxJc7LxDi4AspYkkrfuaGnmXwUQE=;
-        fh=hfb0j9ySj4YdMGUJZyoLGb4sdcqriCrn/q1BgLluqrM=;
-        b=LH8cF0ZoBCJZHhyUJ/hfzEjxZmGtVN9RlAOjDtC2vUCdEAxGY9ugU4FcC2tBlq1gRP
-         sHyHLlgi2+9H4yMAsK0lqOkqz1sY/Q6VbUwGrzD4VfKDzPrfvRSA3gE2CVi12x1BWqJx
-         vkYDV4WqrVujSrqtkCg5/Zrx6boQdu04fmoU2v3Vr8xpwYMG5j3pdpCDZUAxPphW7gEp
-         j2tpkFiruYxDnyzD6jqPXOacMqTPKgvstD0P3KB274DKf2XcMaD2Y16m0CssUCovv2Lw
-         vptjYv8kD2V4tJWa+PE3Sn3JDCmw9ARc/WfqZ+jj7JQ9+MtrHQRpYgd4GH1RMkvjuy1G
-         eLcg==;
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=SazIJTIecdyJvBZe0ZZhDbZonR5qrYKQbkiwH788/DM=;
+        fh=evJQLQpibKMQm55pibu+AafhkP99QjW/vKyFNR8VFt8=;
+        b=mlMxAbpGglDiFi42UGr9KU1ao+nH8oKdHTp2iiVCm3OD/qyvZKkE4FdpMlnccGlJ+L
+         hmjjKYXcYklIPzL2o1JYk/3rJUvgdoli8RDO8I529hfgXaoEH+jiwZPN6Yq4P9a1+vT/
+         5dr+geLlG7//aXBqAbDqSJSMKG8IepsImII7JCohKL+0vKp3iv/xzionlOHVJ25pLKCU
+         LXVQEwAF3nH0rBiQxnyKw9TxviDQGFaN3cncYBrF38DmUUrfpN5VmGml5W0ss2/BAv2m
+         asK/3gOBnvUBKVcUe2d0juvQRysv30OepndspreLeIDHDDH5/uXGVIdvHveX2jZg+nC9
+         S2wQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=gk+LWuwN;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=Iz4JpUUE;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-456866a2040si139505521cf.752.2024.09.04.03.11.49
+        by mx.google.com with ESMTPS id af79cd13be357-7a806db3d53si1477485685a.566.2024.09.04.03.14.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 04 Sep 2024 03:11:49 -0700 (PDT)
+        Wed, 04 Sep 2024 03:14:09 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=gk+LWuwN;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=Iz4JpUUE;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1slmyw-0006Rk-Tv; Wed, 04 Sep 2024 06:11:23 -0400
+	id 1sln1K-0007zw-Jv; Wed, 04 Sep 2024 06:13:50 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1slmyq-00061l-L3
- for qemu-arm@nongnu.org; Wed, 04 Sep 2024 06:11:17 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1slmyp-0001S9-2L
- for qemu-arm@nongnu.org; Wed, 04 Sep 2024 06:11:16 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1725444673;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=2ZPdNciBE65ElgRIxJc7LxDi4AspYkkrfuaGnmXwUQE=;
- b=gk+LWuwNBIYfi+jTwH/v3KbqXQJt2tuj9b4T4VOjbdYVor7UryhgkNM9Xf4TuY+nNGi2fZ
- IZGBObIa+/JlxpDofuvAgFnVCPP1c/h9yUHN0SleJ9kO92IzS66ATPVPP90fwUptEOQKaq
- Mg+Y1kpmQXA54Q/+oclj8wXN0v1Omjs=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-435-AkPVCfhzPECHvaEH9wENnA-1; Wed, 04 Sep 2024 06:11:12 -0400
-X-MC-Unique: AkPVCfhzPECHvaEH9wENnA-1
-Received: by mail-wr1-f72.google.com with SMTP id
- ffacd0b85a97d-374c9b0daf3so1897852f8f.1
- for <qemu-arm@nongnu.org>; Wed, 04 Sep 2024 03:11:12 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <marietto2008@gmail.com>)
+ id 1sln1G-0007kU-PZ; Wed, 04 Sep 2024 06:13:46 -0400
+Received: from mail-pj1-x102f.google.com ([2607:f8b0:4864:20::102f])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <marietto2008@gmail.com>)
+ id 1sln1B-0002Oo-CW; Wed, 04 Sep 2024 06:13:45 -0400
+Received: by mail-pj1-x102f.google.com with SMTP id
+ 98e67ed59e1d1-2d87176316eso437411a91.0; 
+ Wed, 04 Sep 2024 03:13:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1725444819; x=1726049619; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=SazIJTIecdyJvBZe0ZZhDbZonR5qrYKQbkiwH788/DM=;
+ b=Iz4JpUUEJ7KFmUTLOf+E3ZRfFKq3qcUGEJDsGulFDyS6EAsjCbM7WjnfALgi2y6a8Q
+ QGcJvE26DoDkx7B20uqOgY3S2wTeej+61KmIZndS5Omk1sTVPrDwFR4bIc+iWbZW9eDK
+ Gs3R8BZkWWnh7Q7p7R0J63v6Xlt4LLsvn1f9RZL0pV1hb3AGI8MQ/DVo2cHmLXKGzqHq
+ AZ8cN5t+cSx+bCt8ZhlUi22hpzh4H+WS7JopZo14dv1c7C9nKOTNvxi8yD/uF+/bBM1K
+ pa0WElXrW5O5mmcNqhTQIFbOiwCegLICkADXiJFCY3iba8QJG9b4lRm2OfLFz1uoD+MG
+ AqeA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1725444671; x=1726049471;
- h=content-transfer-encoding:in-reply-to:autocrypt:content-language
- :from:references:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=2ZPdNciBE65ElgRIxJc7LxDi4AspYkkrfuaGnmXwUQE=;
- b=Y8Gn3dt+ICXfK/5Qi7Rhdm3OO8vXELUjDOX3y2wFchW2eY2+osop9KAiLioOBkrc5a
- ipSTOGNq7ph6ncXJdhdYLScfUd5kuOC4H7Tc/1IEegq0Wz7w+xGDBnFHoxQr/Fvpo33y
- uNlNU57dA1D3zMfEUVQqphHjnO8drcLj3ZNEs0+FwVG8nwyow12fneQEI4SkqclWdil+
- U+s0xYzmOwJLvPHgxFqYaIunRmP5jEzimK9wm0ahtioEjJ14YSdppA4dWsea8dKFX6aw
- LgpG88gkW7AsmnO661Db88P+TCNQiWYU67YFs/ioRVsVMyF7zax3yVvHbu9ZoQ2p5OCV
- XDIw==
+ d=1e100.net; s=20230601; t=1725444819; x=1726049619;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=SazIJTIecdyJvBZe0ZZhDbZonR5qrYKQbkiwH788/DM=;
+ b=H8PDYevXzGBRewbYz77tt3Y/HvfqPB9SDAlRB55rf+5htUrKI1dEb2rMx8+EWWyOjB
+ ioEN0IP7vlka6KG2s3WaQ7SamS5gbwxgUrOIM6CwJhdN3W7TTENTpTE6LGa8Df9y8x7G
+ aQqv7qM2GPO8vTUL85WiTGdLDdZqkk8DaPYSaRqWDqXtUz4ZvMffhzCYDMkvQuLZLa+v
+ FnjbfDW0xwDRlliRIikgA01QTMhuzKoXB4BfzOwR5EuhrLwrMHDOutmfMKVzhMLBQ3aA
+ DGWhLqUnlmt+b7k1VKbu7uqVrX/ySIUOKb35Oe+KG+yQlAGm33f8QBkfR5SxO6fpMDdG
+ 8fLw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCV8j06AIhqOVgA+4QH+cqvmNgDlZPLWc4mOQCjr+9D+1NewML8HVGDd9n+mQQk0dzIKSTw0LvQ/Xw==@nongnu.org
-X-Gm-Message-State: AOJu0YxnI1K2T71MRILbWSBrPpXNOFZMDDTz0qGiYxEFKfqbzjLlbI9b
- akHxbeEMOeCX2UIvmcQBRoaV5BVwy5mBvbYof7R9CWzhWsJTd+2lEQH1706IFkG5hBM5u8pWmTr
- vx1qSew7+Un1+IbwpHAIuRQLdISjdPJOZAkBH8RQmR5JcpCzbpA==
-X-Received: by 2002:adf:f7c8:0:b0:374:c122:e8b8 with SMTP id
- ffacd0b85a97d-374c122e9e6mr7834459f8f.11.1725444671513; 
- Wed, 04 Sep 2024 03:11:11 -0700 (PDT)
-X-Received: by 2002:adf:f7c8:0:b0:374:c122:e8b8 with SMTP id
- ffacd0b85a97d-374c122e9e6mr7834435f8f.11.1725444670975; 
- Wed, 04 Sep 2024 03:11:10 -0700 (PDT)
-Received: from [192.168.0.6] (ip-109-43-176-181.web.vodafone.de.
- [109.43.176.181]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-375f59f3d5esm4537053f8f.96.2024.09.04.03.11.10
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 04 Sep 2024 03:11:10 -0700 (PDT)
-Message-ID: <c63302c2-be1d-498d-8d81-fce6d068e08b@redhat.com>
-Date: Wed, 4 Sep 2024 12:11:09 +0200
+ AJvYcCUwuJogY6BH61C87+FeTXZxQynv11XUSrTQQO4wr46Ug8o1lrV1f/IeeSa04k3YgRpiGBnmcasJ/L/38aCx@nongnu.org,
+ AJvYcCXFh6onoEse99HegSuzZNoOLuebWOadDYv25y9uwOC3B9x/n2ZTFOubwTp8mz3URlTxsgoVp+XC5Q==@nongnu.org
+X-Gm-Message-State: AOJu0Yy+BMdP/xkYKTBt32UH/NQnOpT1dIbnFGZpBYyqj+JWjoNWLGQF
+ A4QZAuqiUuPd6PpfwFQNaNiQlqa3JUaK4g9Wk1XS+FycCjLm3amrN5MYkkSO3SM6eF85fJz1uS8
+ 5NiS4CJWiZE6yxABBDMxVDbT7hF0XO7Lyz0Q=
+X-Received: by 2002:a17:90a:bc95:b0:2d8:7c44:487c with SMTP id
+ 98e67ed59e1d1-2da8eef0349mr2638430a91.12.1725444819505; Wed, 04 Sep 2024
+ 03:13:39 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH for-9.2 34/53] hw/usb: Remove MUSB USB host controller
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-References: <20240903160751.4100218-1-peter.maydell@linaro.org>
- <20240903160751.4100218-35-peter.maydell@linaro.org>
-From: Thomas Huth <thuth@redhat.com>
-Autocrypt: addr=thuth@redhat.com; keydata=
- xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
- yYkTm9+7zBUc0sW5AuPGR/dp3pSLX/yFWsA/UB4nJsHqgDvDU7BImSeiTrnpMOTXb7Arw2a2
- 4CflIyFqjCpfDM4MuTmzTjXq4Uov1giGE9X6viNo1pxyEpd7PanlKNnf4PqEQp06X4IgUacW
- tSGj6Gcns1bCuHV8OPWLkf4hkRnu8hdL6i60Yxz4E6TqlrpxsfYwLXgEeswPHOA6Mn4Cso9O
- 0lewVYfFfsmokfAVMKWzOl1Sr0KGI5T9CpmRfAiSHpthhHWnECcJFwl72NTi6kUcUzG4se81
- O6n9d/kTj7pzTmBdfwuOZ0YUSqcqs0W+l1NcASSYZQaDoD3/SLk+nqVeCBB4OnYOGhgmIHNW
- 0CwMRO/GK+20alxzk//V9GmIM2ACElbfF8+Uug3pqiHkVnKqM7W9/S1NH2qmxB6zMiJUHlTH
- gnVeZX0dgH27mzstcF786uPcdEqS0KJuxh2kk5IvUSL3Qn3ZgmgdxBMyCPciD/1cb7/Ahazr
- 3ThHQXSHXkH/aDXdfLsKVuwDzHLVSkdSnZdt5HHh75/NFHxwaTlydgfHmFFwodK8y/TjyiGZ
- zg2Kje38xnz8zKn9iesFBCcONXS7txENTzX0z80WKBhK+XSFJwARAQABzR5UaG9tYXMgSHV0
- aCA8dGh1dGhAcmVkaGF0LmNvbT7CwXgEEwECACIFAlVgX6oCGwMGCwkIBwMCBhUIAgkKCwQW
- AgMBAh4BAheAAAoJEC7Z13T+cC21EbIP/ii9cvT2HHGbFRl8HqGT6+7Wkb+XLMqJBMAIGiQK
- QIP3xk1HPTsLfVG0ao4hy/oYkGNOP8+ubLnZen6Yq3zAFiMhQ44lvgigDYJo3Ve59gfe99KX
- EbtB+X95ODARkq0McR6OAsPNJ7gpEUzfkQUUJTXRDQXfG/FX303Gvk+YU0spm2tsIKPl6AmV
- 1CegDljzjycyfJbk418MQmMu2T82kjrkEofUO2a24ed3VGC0/Uz//XCR2ZTo+vBoBUQl41BD
- eFFtoCSrzo3yPFS+w5fkH9NT8ChdpSlbNS32NhYQhJtr9zjWyFRf0Zk+T/1P7ECn6gTEkp5k
- ofFIA4MFBc/fXbaDRtBmPB0N9pqTFApIUI4vuFPPO0JDrII9dLwZ6lO9EKiwuVlvr1wwzsgq
- zJTPBU3qHaUO4d/8G+gD7AL/6T4zi8Jo/GmjBsnYaTzbm94lf0CjXjsOX3seMhaE6WAZOQQG
- tZHAO1kAPWpaxne+wtgMKthyPLNwelLf+xzGvrIKvLX6QuLoWMnWldu22z2ICVnLQChlR9d6
- WW8QFEpo/FK7omuS8KvvopFcOOdlbFMM8Y/8vBgVMSsK6fsYUhruny/PahprPbYGiNIhKqz7
- UvgyZVl4pBFjTaz/SbimTk210vIlkDyy1WuS8Zsn0htv4+jQPgo9rqFE4mipJjy/iboDzsFN
- BFH7eUwBEAC2nzfUeeI8dv0C4qrfCPze6NkryUflEut9WwHhfXCLjtvCjnoGqFelH/PE9NF4
- 4VPSCdvD1SSmFVzu6T9qWdcwMSaC+e7G/z0/AhBfqTeosAF5XvKQlAb9ZPkdDr7YN0a1XDfa
- +NgA+JZB4ROyBZFFAwNHT+HCnyzy0v9Sh3BgJJwfpXHH2l3LfncvV8rgFv0bvdr70U+On2XH
- 5bApOyW1WpIG5KPJlDdzcQTyptOJ1dnEHfwnABEfzI3dNf63rlxsGouX/NFRRRNqkdClQR3K
- gCwciaXfZ7ir7fF0u1N2UuLsWA8Ei1JrNypk+MRxhbvdQC4tyZCZ8mVDk+QOK6pyK2f4rMf/
- WmqxNTtAVmNuZIwnJdjRMMSs4W4w6N/bRvpqtykSqx7VXcgqtv6eqoDZrNuhGbekQA0sAnCJ
- VPArerAZGArm63o39me/bRUQeQVSxEBmg66yshF9HkcUPGVeC4B0TPwz+HFcVhheo6hoJjLq
- knFOPLRj+0h+ZL+D0GenyqD3CyuyeTT5dGcNU9qT74bdSr20k/CklvI7S9yoQje8BeQAHtdV
- cvO8XCLrpGuw9SgOS7OP5oI26a0548M4KldAY+kqX6XVphEw3/6U1KTf7WxW5zYLTtadjISB
- X9xsRWSU+Yqs3C7oN5TIPSoj9tXMoxZkCIHWvnqGwZ7JhwARAQABwsFfBBgBAgAJBQJR+3lM
- AhsMAAoJEC7Z13T+cC21hPAQAIsBL9MdGpdEpvXs9CYrBkd6tS9mbaSWj6XBDfA1AEdQkBOn
- ZH1Qt7HJesk+qNSnLv6+jP4VwqK5AFMrKJ6IjE7jqgzGxtcZnvSjeDGPF1h2CKZQPpTw890k
- fy18AvgFHkVk2Oylyexw3aOBsXg6ukN44vIFqPoc+YSU0+0QIdYJp/XFsgWxnFIMYwDpxSHS
- 5fdDxUjsk3UBHZx+IhFjs2siVZi5wnHIqM7eK9abr2cK2weInTBwXwqVWjsXZ4tq5+jQrwDK
- cvxIcwXdUTLGxc4/Z/VRH1PZSvfQxdxMGmNTGaXVNfdFZjm4fz0mz+OUi6AHC4CZpwnsliGV
- ODqwX8Y1zic9viSTbKS01ZNp175POyWViUk9qisPZB7ypfSIVSEULrL347qY/hm9ahhqmn17
- Ng255syASv3ehvX7iwWDfzXbA0/TVaqwa1YIkec+/8miicV0zMP9siRcYQkyTqSzaTFBBmqD
- oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
- IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
- yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <20240903160751.4100218-35-peter.maydell@linaro.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
-X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.142,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+References: <CA+1FSiirzpq4wjcKTLSexiOWtv26sgD37h=wA2qxv8Qh5MW_-w@mail.gmail.com>
+ <c80e855a-ac1c-40b6-8a76-966e53c0b7d7@linaro.org>
+ <4cbc21b0-0634-445d-8a67-7705a4e186d8@linaro.org>
+ <CA+1FSigiu8xXF1OPs1oSPS7LiGe23gsN73RwPpJUYH=X5EkTRQ@mail.gmail.com>
+ <CA+1FSiiH9LP-7UupNLjDyZJGqJAHAjN2nSLFm9fCx=ZNphxGoQ@mail.gmail.com>
+ <CA+1FSih6t-Ccnxh1GvOFMf9pMjcfV1V+yyJHV=ZH0c2RY0Kjng@mail.gmail.com>
+ <268989a3-cd5c-41fc-ba0d-5eb71bc6e9dc@linaro.org>
+ <CA+1FSijygoVZmTkYR8Xoob4yQQdf9o3CZ2-LmzDrBh2e0VaerQ@mail.gmail.com>
+ <CA+1FSigOmKen0QPKSEQqt15Zzrx4UFSCpj+5DJMCJtGnFcE+Hw@mail.gmail.com>
+ <CA+1FSijfe+5V4RHs-1ow2JwAeiKcmW31V2Ddx9a9zxb_kybDFg@mail.gmail.com>
+ <70b240aa-98de-4998-8c1b-34349fc831ba@linaro.org>
+ <CA+1FSiiyb2v7oy43exRuY7kQpLgUcEifAE2zrEtpYPkgAY+TRw@mail.gmail.com>
+ <6eac1f19-59a2-440a-a5b3-f4d9654ba539@linaro.org>
+ <CA+1FSigjog5DO4UJ4bjo+rvtRc2ih+yJF0q9HM7y6N=aSg6w=A@mail.gmail.com>
+ <CA+1FSijxZ5Ocic-aGTikNxr_faS54fP=P+2uuCxfypMJKEE2aQ@mail.gmail.com>
+ <2eeb9049-3444-49e0-892e-7022ab045647@linaro.org>
+In-Reply-To: <2eeb9049-3444-49e0-892e-7022ab045647@linaro.org>
+From: Mario Marietto <marietto2008@gmail.com>
+Date: Wed, 4 Sep 2024 12:13:02 +0200
+Message-ID: <CA+1FSigoFF_FSKSGbs4jOyya6DJrEH9O0MMV84+XowZ7RkmFNw@mail.gmail.com>
+Subject: Re: Error : init: partition(s) not found in /sys, waiting for their
+ uevent(s): mmcblk0p2, mmcblk0p3 while trying to emulate Android 14 on Ubuntu
+ 24.04 X64 bit using qemu-system-aarch64.
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Cc: Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>, 
+ qemu-discuss@nongnu.org, qemu-arm <qemu-arm@nongnu.org>
+Content-Type: multipart/alternative; boundary="0000000000008bd97c0621486d9c"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102f;
+ envelope-from=marietto2008@gmail.com; helo=mail-pj1-x102f.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, HTML_MESSAGE=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -182,23 +142,78 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 4i8VUHPDBL71
+X-TUID: bUJ4MM3UmuXE
 
-On 03/09/2024 18.07, Peter Maydell wrote:
-> Remove the MUSB USB2.0 OTG-compliant USB host controller
-> device model. This was only used by the tusb6010 USB
-> controller in the n800/n810 machines.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->   include/hw/usb/hcd-musb.h |   49 --
->   hw/usb/hcd-musb.c         | 1553 -------------------------------------
->   hw/usb/Kconfig            |    4 -
->   hw/usb/meson.build        |    1 -
->   4 files changed, 1607 deletions(-)
->   delete mode 100644 include/hw/usb/hcd-musb.h
->   delete mode 100644 hw/usb/hcd-musb.c
+--0000000000008bd97c0621486d9c
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+-> What do you mean by "qemu patched"?
+
+Isn't this version of qemu :
+
+https://github.com/antmicro/kvm-aosp-qemu/releases/tag/5.0.0-kvm-aosp
+
+properly patched or adapted,I don't know how to define it,to boot Android
+10 on the Jetson Nano ?
+
+-> Hopefully you are right, but unlikely:
+>
+https://github.com/antmicro/kvm-aosp-qemu/compare/fdd76fecdd...5.0.0-kvm-ao=
+sp
+<https://github.com/antmicro/kvm-aosp-qemu/compare/fdd76fecdd...5.0.0-kvm-a=
+osp>
+
+What do you mean with "Hopefully you are right,but unlikely" ?
 
 
+On Wed, Sep 4, 2024 at 11:54=E2=80=AFAM Philippe Mathieu-Daud=C3=A9 <philmd=
+@linaro.org>
+wrote:
+
+> On 3/9/24 22:52, Mario Marietto wrote:
+> > Unfortunately the usage of qemu patched to boot Android 10 on the Jetso=
+n
+> > nano didn't change anything. I get the same exact errors as before. :(
+>
+> What do you mean by "qemu patched"?
+>
+>
+
+--=20
+Mario.
+
+--0000000000008bd97c0621486d9c
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div><span class=3D"gmail-im">-&gt; </span>What do you mea=
+n by &quot;qemu patched&quot;?</div><div><br></div><div>Isn&#39;t this vers=
+ion of qemu :<br></div><div><br></div><div><a href=3D"https://github.com/an=
+tmicro/kvm-aosp-qemu/releases/tag/5.0.0-kvm-aosp" target=3D"_blank">https:/=
+/github.com/antmicro/kvm-aosp-qemu/releases/tag/5.0.0-kvm-aosp</a></div><di=
+v><br></div><div>properly patched or adapted,I don&#39;t know how to define=
+ it,to boot Android 10 on the Jetson Nano ?</div><div><br></div><div>-&gt; =
+Hopefully you are right, but unlikely:<br>
+<a href=3D"https://github.com/antmicro/kvm-aosp-qemu/compare/fdd76fecdd...5=
+.0.0-kvm-aosp" rel=3D"noreferrer" target=3D"_blank">&gt; https://github.com=
+/antmicro/kvm-aosp-qemu/compare/fdd76fecdd...5.0.0-kvm-aosp</a></div><div><=
+br></div><div>What do you mean with &quot;Hopefully you are right,but unlik=
+ely&quot; ?<br></div><div><br></div></div><br><div class=3D"gmail_quote"><d=
+iv dir=3D"ltr" class=3D"gmail_attr">On Wed, Sep 4, 2024 at 11:54=E2=80=AFAM=
+ Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@linaro.org">philm=
+d@linaro.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" styl=
+e=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);paddin=
+g-left:1ex">On 3/9/24 22:52, Mario Marietto wrote:<br>
+&gt; Unfortunately the usage of qemu patched to boot Android 10 on the Jets=
+on <br>
+&gt; nano didn&#39;t change anything. I get the same exact errors as before=
+. :(<br>
+<br>
+What do you mean by &quot;qemu patched&quot;?<br>
+<br>
+</blockquote></div><br clear=3D"all"><br><span class=3D"gmail_signature_pre=
+fix">-- </span><br><div dir=3D"ltr" class=3D"gmail_signature">Mario.<br></d=
+iv>
+
+--0000000000008bd97c0621486d9c--

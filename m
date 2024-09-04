@@ -1,163 +1,184 @@
-Received: by 2002:a17:505:1f8d:b0:1be9:327d:8ee3 with SMTP id pt13csp117245njb;
-        Wed, 4 Sep 2024 06:11:56 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUW2yQDwtz2y3FszbJPahb/iZg6ahIamPty4uOPzex7KWw+yq5foqvYZedwCuYojVK3Ur9uLe1AlHiF7w==@linaro.org
-X-Google-Smtp-Source: AGHT+IHnqNlT40WD+e0pfJliLJioeZwwERFR+L4M/PFA3S1griTAkBkIPZSJkpzsvVKnrJwxaJ5G
-X-Received: by 2002:a05:622a:1f90:b0:456:8860:9e80 with SMTP id d75a77b69052e-4568860a028mr184341861cf.64.1725455516773;
-        Wed, 04 Sep 2024 06:11:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1725455516; cv=none;
+Received: by 2002:a17:505:1f8d:b0:1be9:327d:8ee3 with SMTP id pt13csp146958njb;
+        Wed, 4 Sep 2024 07:26:48 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCV1Lzi3xhooOH4JlIx0n/t5A30U4+S1ggnIFOMr2HtogCEvPPKwkyBx4cINUMzdPoetOSu8NViKesnSfQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IEeISzvKpvgeMe+IkiUtbk3proqkggEZ89o1fMf5GonpRJaBtFbiYwYJAvTHWtU8We26pVg
+X-Received: by 2002:a05:6214:4498:b0:6c5:1666:e43 with SMTP id 6a1803df08f44-6c516660e61mr34687526d6.21.1725460008398;
+        Wed, 04 Sep 2024 07:26:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1725460008; cv=none;
         d=google.com; s=arc-20160816;
-        b=h0BFgprYLUkv93s9o9XvLvccVmP89vhiqsjQk5D5Xjrfh7HbA2Mz8LmzNta/oQ+pEK
-         TO8rh6JXK1OjfNv/mS8VecYDJs3MYYdc0CgORD7fqm6iQu+8Z3958F8d5GY4RMHbRA2Z
-         ZYBhTyYz1OMjRAsOCGp6H1SKEvnXYbEnGGJ81uZdHj2kpZUXrjcm9lf4k+4j/Z0xCV+v
-         Wa9V0jJERgbfATqOgbmUUPZSBE86B3Qx0nLAmvK7jDp9OLKxsWnnJh+lJHv9vsJO2fvk
-         kzVjVPHvGCBB/KfNI5cz63YzID/J2shLwyAWXQsi7mlOXhdwJWSJT3/3GDmMxMyy1fh2
-         XP9w==
+        b=f6rIInO6zfKdn0pIRrKrUITPZNl+goO3al386K2ylqbSxwYOeb89PKKn0GwTQC7ekQ
+         sHKoPSQ5Yj5AzyGmtAXE0mFP4FbdI0/JEHmj+8KJGm/LLuBi7WLd9X8FFttGGCkqiGiX
+         g6BTGSfQi81fmtRri5TlnqpTCm1GZY77mXRJYhsnNbX0RxXl7Py9fWwOpYKWXDnH0tup
+         jQI1djstX+HQBKPvy5eBtdcdAjlkvuApHeF2zSM+dshk/CEIABUA37iEN7TYMW05CXUK
+         ULEh/NueoFOIswCkmsnRwpT03c42NddGIObXuH2zIH+ccAh2XPDsIUpcRdo/0I/Nsu1b
+         AQJA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:to:subject:user-agent
-         :mime-version:date:message-id:dkim-signature;
-        bh=Lydw0gRhTGX+NYirz2VKthLPBJw5sipMFb9tROKJomQ=;
-        fh=0Rt4Og+ZHYhm1FnmHG20fcl+LeXJb+GWarnlSi1zEEo=;
-        b=favOwTA3T+70PnyiXriav2/LkkXil+8PO0zVc1UqkoBWT1/PkeFpbOWAhcTReYZgOK
-         uNr3eIB4B/VfsmgPMD4e0pSGGc+K+elCjELHDDA520aEqXwZF3ud/Yen3iZsNmJqavKO
-         o24h1L3MNTboSHTnlZ/FTeH8G5Mc/aZgDqLA3kwuQRGoalBxigZ5GRhWy+8keQn8qbM+
-         DtI0TFiKn+LCYlWWU651uFaKIacLdVi+raGNNXs3n+wQo3OXBPQoHE8ZgVP8dE4Rfhc7
-         V6EaGk74JNHLwk/NElgn8I6AxzCnN3cMtoSsUlDxjl5VFgWAx8AFEaVUyHZtLynNuyEQ
-         hGdA==;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=zhH1JQtb6GZiEh4v6/v7jO4Y2uoHEDGgiCdEveTOXNI=;
+        fh=mIR4h+MeeAVffyD/dkjXm4B+LSd2PEd07cWUa3fidLY=;
+        b=QCj05dWn2Fj+0DGGFSPgtzYiDpbG/SeDWNSo6iYB3ivxw1pvQNKu3napjpE0SPJvdF
+         8gktAbtHtF6SbYWMbk+pBO0IPeSHuCusG/mpDr9R+bYmaOI1+KGEKPo8HPxzNrVwe4PQ
+         24Tuyx1cr8gSkMcdKzab21UgbiHBKMppVBuH2HgzByjL0TRIisAewfXQfahhGwLeL9Tz
+         Ho7D+oDj9NzuVsjH+qvc5VqJRd78qqDiQUMXijMOGlBJ2/sNlDGGRr47x0VAphyo5ddJ
+         bsDLVfCBUX3Aug2n8s0ydb6+6hF1vQQw6ET1PE1p1buow6Nbo102impZCu/NRUQBh3Ba
+         ry5A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ldMgOOsP;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-45682d3e9a3si149543471cf.241.2024.09.04.06.11.56
-        for <alex.bennee@linaro.org>
+       dkim=pass header.i=@intel.com header.s=Intel header.b=mAyxzJy2;
+       spf=pass (google.com: domain of zhao1.liu@intel.com designates 192.198.163.16 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Return-Path: <zhao1.liu@intel.com>
+Received: from mgamail.intel.com (mgamail.intel.com. [192.198.163.16])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6c340dc10absi154771906d6.562.2024.09.04.07.26.47
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 04 Sep 2024 06:11:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 04 Sep 2024 07:26:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of zhao1.liu@intel.com designates 192.198.163.16 as permitted sender) client-ip=192.198.163.16;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ldMgOOsP;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1slpn7-0005Tu-Bk; Wed, 04 Sep 2024 09:11:22 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1slpmz-0004wU-0a
- for qemu-arm@nongnu.org; Wed, 04 Sep 2024 09:11:14 -0400
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1slpmr-0001tg-U2
- for qemu-arm@nongnu.org; Wed, 04 Sep 2024 09:11:12 -0400
-Received: by mail-wr1-x42d.google.com with SMTP id
- ffacd0b85a97d-374b25263a3so2906685f8f.0
- for <qemu-arm@nongnu.org>; Wed, 04 Sep 2024 06:11:03 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1725455462; x=1726060262; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:to:subject:user-agent:mime-version:date:message-id:from
- :to:cc:subject:date:message-id:reply-to;
- bh=Lydw0gRhTGX+NYirz2VKthLPBJw5sipMFb9tROKJomQ=;
- b=ldMgOOsPc+6k5f54vCnDutrJc/bIRCCVDyNPKQI3UiHeKtznxtoziXEsbnWxIIFfXY
- 1sX90xwAmoUCv2d9jH7/ftIS+RkMK+1/ZgY+1hlpHa7C+NZKKVxW6pn7FxSs3Xv981lm
- 8iDqMWy5GcX7dTsU6ITh0bJEJi6veolTbvPyDDBWkh33B1XeP54N/QskYP0LWMhl4uqG
- Tb9giZ+ErYQfdCvCc2rpdrUZBwn7Z2hSyz6224C5MSna+t44ovj4Qp3wYQZkOmojaBYl
- GVwHkV3rb1+4ZCZAexmkPQ6v6T0M3jgclDNl5h7Msvp/+T+zT50ardFHcEJOPLQkQ5Ra
- Q6hw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1725455462; x=1726060262;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=Lydw0gRhTGX+NYirz2VKthLPBJw5sipMFb9tROKJomQ=;
- b=ftGabkfhbVfsUADShgC5Ux/qOpGjCGUspJs8Coed2vNV1wTmILwQp3B8cAatMc9AXs
- Z1X3l6YOBCRBh4QCKVLMV3deY63rGnfXiEE1f00VzQ1TqJQcc8dbWhbNOaNoaGg2D6Qq
- 1r19WwypusXjKQsYryDD6UrafWP/XfNgxvPqsEQSAmJ1Smq7g/1JXlEYOy6t2wmjJ4r+
- peCbfm/rXEqDaGowmMGHjgTKu/LyrAmYju7fTX/08JGwanCISLJyNZuPx+ADnaUpFPTe
- B9jioEjbgUv4sIqzsUU035CkqMuWvnrPe9Yx9kPZ1unrGQeD5wVJv7C1vd6l7h+ZTYWa
- oq8w==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVZfPqCmBe7EI4Tpt9NIEkSOZy8b0RXkwvXBqhv8MHPCr6mt+2VV/2LOo+AjmguQoRCr/jWmunAWA==@nongnu.org
-X-Gm-Message-State: AOJu0YyIo63AsTsuVQsfh0ZCd/179Kqe18Yvx5W1lcQELlg0SpVA78TY
- Bj52IEW1PMJXq6alm4Vp+DJoPGV4p7oVWxNmnoO0ULI/gfBbYXJvrb1NFB6xKoo=
-X-Received: by 2002:a5d:6d08:0:b0:374:cd1b:e10d with SMTP id
- ffacd0b85a97d-374cd1be31bmr5317776f8f.61.1725455462334; 
- Wed, 04 Sep 2024 06:11:02 -0700 (PDT)
-Received: from [192.168.1.67] ([78.196.4.158])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3749ee4d391sm17015443f8f.3.2024.09.04.06.11.01
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 04 Sep 2024 06:11:01 -0700 (PDT)
-Message-ID: <8c723f1a-a337-46bb-bf6b-2bc3c4c6824e@linaro.org>
-Date: Wed, 4 Sep 2024 15:11:00 +0200
+       dkim=pass header.i=@intel.com header.s=Intel header.b=mAyxzJy2;
+       spf=pass (google.com: domain of zhao1.liu@intel.com designates 192.198.163.16 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1725460008; x=1756996008;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=J/O7jPR+9LMp4leGzo9biNFU02/Xi7Y+x90LmMp/+oQ=;
+  b=mAyxzJy2/xCR70jABAJShveri1k4K0cl2L9jUYAmHbBu0r2nALjk+hs7
+   JCdQutsQd+chHouGAT9g/AKqreLBy6nRxpbNLJRjQ1obA12e47vna/EC8
+   6yhvEQdBqaALFcdScYQ0d47FWrRngtJTW0J7uKRGu/gafZhMUUi9W5Cjl
+   JzmdyhIbIJPpvSsiihhcN0Dj+65yaDgJ+D8a15AwHR2RG0gZ6LqYF3wTN
+   +Jb9o1gFQ3+i263CcKGoXECE4Q/lNB47CIWzI4q+X/J8qnlHazS47/52A
+   dyyXOM7n2/fl95As1ELHVUPSiHNvlhcB9c7bp1N9ezNjW4ZbTAJZx902F
+   A==;
+X-CSE-ConnectionGUID: Nxsl0z8OS2yGrmKC3tS0BA==
+X-CSE-MsgGUID: +Du8gjFKS5GIAy0ETldxTw==
+X-IronPort-AV: E=McAfee;i="6700,10204,11185"; a="13369163"
+X-IronPort-AV: E=Sophos;i="6.10,202,1719903600"; 
+   d="scan'208";a="13369163"
+Received: from orviesa006.jf.intel.com ([10.64.159.146])
+  by fmvoesa110.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 04 Sep 2024 07:26:46 -0700
+X-CSE-ConnectionGUID: RUJj5sxSTWmFraLN1vMKgw==
+X-CSE-MsgGUID: g0AsuLfnSkSb7p1sEfRpPQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.10,202,1719903600"; 
+   d="scan'208";a="65626630"
+Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost) ([10.239.160.36])
+  by orviesa006.jf.intel.com with ESMTP; 04 Sep 2024 07:26:37 -0700
+Date: Wed, 4 Sep 2024 22:42:37 +0800
+From: "zhao1.liu@intel.com" <zhao1.liu@intel.com>
+To: Salil Mehta <salil.mehta@huawei.com>
+Cc: Gavin Shan <gshan@redhat.com>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+	"mst@redhat.com" <mst@redhat.com>,
+	"maz@kernel.org" <maz@kernel.org>,
+	"jean-philippe@linaro.org" <jean-philippe@linaro.org>,
+	Jonathan Cameron <jonathan.cameron@huawei.com>,
+	"lpieralisi@kernel.org" <lpieralisi@kernel.org>,
+	"peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+	"richard.henderson@linaro.org" <richard.henderson@linaro.org>,
+	"imammedo@redhat.com" <imammedo@redhat.com>,
+	"andrew.jones@linux.dev" <andrew.jones@linux.dev>,
+	"david@redhat.com" <david@redhat.com>,
+	"philmd@linaro.org" <philmd@linaro.org>,
+	"eric.auger@redhat.com" <eric.auger@redhat.com>,
+	"will@kernel.org" <will@kernel.org>,
+	"ardb@kernel.org" <ardb@kernel.org>,
+	"oliver.upton@linux.dev" <oliver.upton@linux.dev>,
+	"pbonzini@redhat.com" <pbonzini@redhat.com>,
+	"rafael@kernel.org" <rafael@kernel.org>,
+	"borntraeger@linux.ibm.com" <borntraeger@linux.ibm.com>,
+	"alex.bennee@linaro.org" <alex.bennee@linaro.org>,
+	"npiggin@gmail.com" <npiggin@gmail.com>,
+	"harshpb@linux.ibm.com" <harshpb@linux.ibm.com>,
+	"linux@armlinux.org.uk" <linux@armlinux.org.uk>,
+	"darren@os.amperecomputing.com" <darren@os.amperecomputing.com>,
+	"ilkka@os.amperecomputing.com" <ilkka@os.amperecomputing.com>,
+	"vishnu@os.amperecomputing.com" <vishnu@os.amperecomputing.com>,
+	"karl.heubaum@oracle.com" <karl.heubaum@oracle.com>,
+	"miguel.luis@oracle.com" <miguel.luis@oracle.com>,
+	"salil.mehta@opnsrc.net" <salil.mehta@opnsrc.net>,
+	zhukeqian <zhukeqian1@huawei.com>,
+	"wangxiongfeng (C)" <wangxiongfeng2@huawei.com>,
+	"wangyanan (Y)" <wangyanan55@huawei.com>,
+	"jiakernel2@gmail.com" <jiakernel2@gmail.com>,
+	"maobibo@loongson.cn" <maobibo@loongson.cn>,
+	"lixianglai@loongson.cn" <lixianglai@loongson.cn>,
+	"shahuang@redhat.com" <shahuang@redhat.com>,
+	Linuxarm <linuxarm@huawei.com>
+Subject: Re: [PATCH RFC V3 01/29] arm/virt,target/arm: Add new ARMCPU
+ {socket,cluster,core,thread}-id property
+Message-ID: <Zthx3dQInrcgly6+@intel.com>
+References: <20240613233639.202896-1-salil.mehta@huawei.com>
+ <20240613233639.202896-2-salil.mehta@huawei.com>
+ <11e627ef-d75e-4114-9b93-14d80ec0526b@redhat.com>
+ <c889781d3eb048d19bae4ceff8646a4e@huawei.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH for-9.2 35/53] hw: Remove PCMCIA subsystem
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-References: <20240903160751.4100218-1-peter.maydell@linaro.org>
- <20240903160751.4100218-36-peter.maydell@linaro.org>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20240903160751.4100218-36-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42d.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ZbBe4sN1Ks+u
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <c889781d3eb048d19bae4ceff8646a4e@huawei.com>
+X-TUID: qY0qGf8BLQTi
 
-On 3/9/24 18:07, Peter Maydell wrote:
-> The only PCMCIA subsystem was the PXA2xx SoC and the machines
-> using it, which have now been removed. Although in theory
-> we have a few machine types which have PCMCIA (e.g. kzm,
-> the strongarm machines, sh4's sh7750), none of those machines
-> implement their PCMCIA controller, and they're all old and
-> no longer very interesting machine types.
+Hi Salil,
+
+On Mon, Aug 19, 2024 at 11:53:52AM +0000, Salil Mehta wrote:
+> Date: Mon, 19 Aug 2024 11:53:52 +0000
+> From: Salil Mehta <salil.mehta@huawei.com>
+> Subject: RE: [PATCH RFC V3 01/29] arm/virt,target/arm: Add new ARMCPU
+>  {socket,cluster,core,thread}-id property
+
+[snip]
+
+> >  > NULL); @@ -2708,6 +2716,7 @@ static const CPUArchIdList
+> >  *virt_possible_cpu_arch_ids(MachineState *ms)
+> >  >   {
+> >  >       int n;
+> >  >       unsigned int max_cpus = ms->smp.max_cpus;
+> >  > +    unsigned int smp_threads = ms->smp.threads;
+> >  >       VirtMachineState *vms = VIRT_MACHINE(ms);
+> >  >       MachineClass *mc = MACHINE_GET_CLASS(vms);
+> >  >
+> >  > @@ -2721,6 +2730,7 @@ static const CPUArchIdList
+> >  *virt_possible_cpu_arch_ids(MachineState *ms)
+> >  >       ms->possible_cpus->len = max_cpus;
+> >  >       for (n = 0; n < ms->possible_cpus->len; n++) {
+> >  >           ms->possible_cpus->cpus[n].type = ms->cpu_type;
+> >  > +        ms->possible_cpus->cpus[n].vcpus_count = smp_threads;
+> >  >           ms->possible_cpus->cpus[n].arch_id =
+> >  >               virt_cpu_mp_affinity(vms, n);
+> >  >
+> >  
+> >  Why @vcpus_count is initialized to @smp_threads? it needs to be
+> >  documented in the commit log.
 > 
-> Rather than keeping all the PCMCIA code in-tree without any
-> active users of it, delete it. If we need PCMCIA in future
-> we can always resurrect it.
 > 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->   include/hw/pcmcia.h   | 63 -------------------------------------------
->   hw/pcmcia/pcmcia.c    | 24 -----------------
->   hw/Kconfig            |  1 -
->   hw/meson.build        |  1 -
->   hw/pcmcia/Kconfig     |  2 --
->   hw/pcmcia/meson.build |  1 -
->   6 files changed, 92 deletions(-)
->   delete mode 100644 include/hw/pcmcia.h
->   delete mode 100644 hw/pcmcia/pcmcia.c
->   delete mode 100644 hw/pcmcia/Kconfig
->   delete mode 100644 hw/pcmcia/meson.build
+> Because every thread internally amounts to a vCPU in QOM and which
+> is in 1:1 relationship with KVM vCPU. AFAIK, QOM does not strictly follows
+> any architecture. Once you start to get into details of threads there
+> are many aspects of shared resources one will have to consider and
+> these can vary across different implementations of architecture.
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+For SPAPR CPU, the granularity of >possible_cpus->cpus[] is "core", and
+for x86, it's "thread" granularity.
 
+And smp.threads means how many threads in one core, so for x86, the
+vcpus_count of a "thread" is 1, and for spapr, the vcpus_count of a
+"core" equals to smp.threads.
+
+IIUC, your granularity is still "thread", so that this filed should be 1.
+
+-Zhao
+
+> It is a bigger problem than you think, which I've touched at very nascent
+> stages while doing POC of vCPU hotplug but tried to avoid till now. 
+> 
+> 
+> But I would like to hear other community members views on this.
+> 
+> Hi Igor/Peter,
+> 
+> What is your take on this?
+> 
+> Thanks
+> Salil.

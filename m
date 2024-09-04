@@ -1,154 +1,161 @@
-Received: by 2002:a17:505:1f8d:b0:1be9:327d:8ee3 with SMTP id pt13csp146145njb;
-        Wed, 4 Sep 2024 07:24:33 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHp1zCYvzmRqr8+cZ7ARDviRoEt+mRaCbC0CbPiNxUjbmscF1T4lrTEuBXjcysxeHPbhE5m
-X-Received: by 2002:a17:90b:3b41:b0:2cf:c972:7c22 with SMTP id 98e67ed59e1d1-2d89348df51mr14318875a91.10.1725459873477;
-        Wed, 04 Sep 2024 07:24:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1725459873; cv=none;
-        d=google.com; s=arc-20240605;
-        b=UqyL3jyGUkSBMT74affQQlU5FYjO7huEBA5mn6mx3/NSXNHaUULS9yzpqgTzef+h84
-         dvDvqo/vAi6E5jAEtmsvtpgj6v9SrAtsaLGqU1JjfxIsp8RKAaNKbexHRp5Yy7F3D4b7
-         W0SkRldJ4AdzwjyBI+QzW7K3eCKvSnXubssAuNRKKYlvbStJ84ok7Dy/eWtEGLuO08fy
-         FpGRqhOQsyypWTWX6DnhAIr5Hi5AObKI9jPOQiyXYZT0tt1qQMmMdpTdff74BIcCtJqI
-         Vl7C4R+7YprxIG1gnien9QAW6/fWyjI+yGkxpKhSTcDTXJXpERjWNau1Id3o/cQVF1hu
-         IuzA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=mime-version:content-transfer-encoding:content-language
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:subject:cc:to:from;
-        bh=Q8teS1HRJtnt6J9KtwRHLMCzBuxPodQqN7B4KpI/po4=;
-        fh=OvEjCUdIhOXwejZu8qmlx4GDrE3VFLlMGnG0zk3kA1c=;
-        b=jK27CEdxaBHKQl34KkAQMk51+O5B++UOj3i/Vg+ZrQ9CvH9kBV8atnimRQ0DSdwjmj
-         n3/xjGUHu3nP0crjhu9sLaSEb3TyLhxvRHOOAcj3C8H/0bXedNpl+536EnIwXjYryR9a
-         k+avaVYTMRoq/tFhzhCvq9jbWK3g825e7ZV27bNdtWY1gaGdTLPCaI1R7XZaLh5DOycB
-         ZKcJgUZqqPxEGuIQaeqGJGmChkvYyjGompPgxHr/u12dLIY5hJG1T88Q5DvRlRicOxEK
-         R3G5vTMlPaG+peCxzvWmLty119ZXQXvW13EvvjhbQUQ26I54v8kynejCAV5xiZW02Eck
-         mKCw==;
-        dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Return-Path: <salil.mehta@huawei.com>
-Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id 98e67ed59e1d1-2d8bf479540si8660554a91.90.2024.09.04.07.24.31
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 04 Sep 2024 07:24:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
-Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from mail.maildlp.com (unknown [172.18.186.231])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4WzPlP4kGqz6K5vF;
-	Wed,  4 Sep 2024 22:20:01 +0800 (CST)
-Received: from lhrpeml500006.china.huawei.com (unknown [7.191.161.198])
-	by mail.maildlp.com (Postfix) with ESMTPS id 7CBB2140B55;
-	Wed,  4 Sep 2024 22:24:26 +0800 (CST)
-Received: from lhrpeml500001.china.huawei.com (7.191.163.213) by
- lhrpeml500006.china.huawei.com (7.191.161.198) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Wed, 4 Sep 2024 15:24:26 +0100
-Received: from lhrpeml500001.china.huawei.com ([7.191.163.213]) by
- lhrpeml500001.china.huawei.com ([7.191.163.213]) with mapi id 15.01.2507.039;
- Wed, 4 Sep 2024 15:24:26 +0100
-From: Salil Mehta <salil.mehta@huawei.com>
-To: =?utf-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, Gustavo Romero
-	<gustavo.romero@linaro.org>
-CC: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org"
-	<qemu-arm@nongnu.org>, "mst@redhat.com" <mst@redhat.com>, "maz@kernel.org"
-	<maz@kernel.org>, "jean-philippe@linaro.org" <jean-philippe@linaro.org>,
-	Jonathan Cameron <jonathan.cameron@huawei.com>, "lpieralisi@kernel.org"
-	<lpieralisi@kernel.org>, "peter.maydell@linaro.org"
-	<peter.maydell@linaro.org>, "richard.henderson@linaro.org"
-	<richard.henderson@linaro.org>, "imammedo@redhat.com" <imammedo@redhat.com>,
-	"andrew.jones@linux.dev" <andrew.jones@linux.dev>, "david@redhat.com"
-	<david@redhat.com>, "philmd@linaro.org" <philmd@linaro.org>,
-	"eric.auger@redhat.com" <eric.auger@redhat.com>, "will@kernel.org"
-	<will@kernel.org>, "ardb@kernel.org" <ardb@kernel.org>,
-	"oliver.upton@linux.dev" <oliver.upton@linux.dev>, "pbonzini@redhat.com"
-	<pbonzini@redhat.com>, "gshan@redhat.com" <gshan@redhat.com>,
-	"rafael@kernel.org" <rafael@kernel.org>, "borntraeger@linux.ibm.com"
-	<borntraeger@linux.ibm.com>, "npiggin@gmail.com" <npiggin@gmail.com>,
-	"harshpb@linux.ibm.com" <harshpb@linux.ibm.com>, "linux@armlinux.org.uk"
-	<linux@armlinux.org.uk>, "darren@os.amperecomputing.com"
-	<darren@os.amperecomputing.com>, "ilkka@os.amperecomputing.com"
-	<ilkka@os.amperecomputing.com>, "vishnu@os.amperecomputing.com"
-	<vishnu@os.amperecomputing.com>, "karl.heubaum@oracle.com"
-	<karl.heubaum@oracle.com>, "miguel.luis@oracle.com" <miguel.luis@oracle.com>,
-	"salil.mehta@opnsrc.net" <salil.mehta@opnsrc.net>, zhukeqian
-	<zhukeqian1@huawei.com>, "wangxiongfeng (C)" <wangxiongfeng2@huawei.com>,
-	"wangyanan (Y)" <wangyanan55@huawei.com>, "jiakernel2@gmail.com"
-	<jiakernel2@gmail.com>, "maobibo@loongson.cn" <maobibo@loongson.cn>,
-	"lixianglai@loongson.cn" <lixianglai@loongson.cn>, "shahuang@redhat.com"
-	<shahuang@redhat.com>, "zhao1.liu@intel.com" <zhao1.liu@intel.com>, Linuxarm
-	<linuxarm@huawei.com>
-Subject: RE: [PATCH RFC V3 00/29] Support of Virtual CPU Hotplug for ARMv8
- Arch
-Thread-Topic: [PATCH RFC V3 00/29] Support of Virtual CPU Hotplug for ARMv8
- Arch
-Thread-Index: AQHaveq2F6TAeAWelEWGVYAetyN5RLI9hyQAgADxfM+ACbIgYA==
-Date: Wed, 4 Sep 2024 14:24:26 +0000
-Message-ID: <a874e995c188480fb08deac3ccf0cc2d@huawei.com>
+Return-Path: <alex.bennee@linaro.org>
+Received: from draig.lan ([85.9.250.243])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a8a62045d2fsm7420066b.76.2024.09.04.08.45.53
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 04 Sep 2024 08:45:53 -0700 (PDT)
+Received: from draig (localhost [IPv6:::1])
+	by draig.lan (Postfix) with ESMTP id 7E46B5FA1C;
+	Wed,  4 Sep 2024 16:45:52 +0100 (BST)
+From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Salil Mehta <salil.mehta@huawei.com>
+Cc: Gustavo Romero <gustavo.romero@linaro.org>,  "qemu-devel@nongnu.org"
+ <qemu-devel@nongnu.org>,  "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+  "mst@redhat.com" <mst@redhat.com>,  "maz@kernel.org" <maz@kernel.org>,
+  "jean-philippe@linaro.org" <jean-philippe@linaro.org>,  Jonathan Cameron
+ <jonathan.cameron@huawei.com>,  "lpieralisi@kernel.org"
+ <lpieralisi@kernel.org>,  "peter.maydell@linaro.org"
+ <peter.maydell@linaro.org>,  "richard.henderson@linaro.org"
+ <richard.henderson@linaro.org>,  "imammedo@redhat.com"
+ <imammedo@redhat.com>,  "andrew.jones@linux.dev" <andrew.jones@linux.dev>,
+  "david@redhat.com" <david@redhat.com>,  "philmd@linaro.org"
+ <philmd@linaro.org>,  "eric.auger@redhat.com" <eric.auger@redhat.com>,
+  "will@kernel.org" <will@kernel.org>,  "ardb@kernel.org"
+ <ardb@kernel.org>,  "oliver.upton@linux.dev" <oliver.upton@linux.dev>,
+  "pbonzini@redhat.com" <pbonzini@redhat.com>,  "gshan@redhat.com"
+ <gshan@redhat.com>,  "rafael@kernel.org" <rafael@kernel.org>,
+  "borntraeger@linux.ibm.com" <borntraeger@linux.ibm.com>,
+  "npiggin@gmail.com" <npiggin@gmail.com>,  "harshpb@linux.ibm.com"
+ <harshpb@linux.ibm.com>,  "linux@armlinux.org.uk" <linux@armlinux.org.uk>,
+  "darren@os.amperecomputing.com" <darren@os.amperecomputing.com>,
+  "ilkka@os.amperecomputing.com" <ilkka@os.amperecomputing.com>,
+  "vishnu@os.amperecomputing.com" <vishnu@os.amperecomputing.com>,
+  "karl.heubaum@oracle.com" <karl.heubaum@oracle.com>,
+  "miguel.luis@oracle.com" <miguel.luis@oracle.com>,
+  "salil.mehta@opnsrc.net" <salil.mehta@opnsrc.net>,  zhukeqian
+ <zhukeqian1@huawei.com>,  "wangxiongfeng (C)" <wangxiongfeng2@huawei.com>,
+  "wangyanan (Y)" <wangyanan55@huawei.com>,  "jiakernel2@gmail.com"
+ <jiakernel2@gmail.com>,  "maobibo@loongson.cn" <maobibo@loongson.cn>,
+  "lixianglai@loongson.cn" <lixianglai@loongson.cn>,  "shahuang@redhat.com"
+ <shahuang@redhat.com>,  "zhao1.liu@intel.com" <zhao1.liu@intel.com>,
+  Linuxarm <linuxarm@huawei.com>
+Subject: Re: [PATCH RFC V3 00/29] Support of Virtual CPU Hotplug for ARMv8 Arch
+In-Reply-To: <a874e995c188480fb08deac3ccf0cc2d@huawei.com> (Salil Mehta's
+	message of "Wed, 4 Sep 2024 14:24:26 +0000")
 References: <20240613233639.202896-1-salil.mehta@huawei.com>
 	<9227bac3-aecd-fbde-3691-5e949373fad0@linaro.org>
- <87bk1b3azm.fsf@draig.linaro.org>
-In-Reply-To: <87bk1b3azm.fsf@draig.linaro.org>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach:
-X-MS-TNEF-Correlator:
-x-originating-ip: [10.126.171.6]
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+	<87bk1b3azm.fsf@draig.linaro.org>
+	<a874e995c188480fb08deac3ccf0cc2d@huawei.com>
+User-Agent: mu4e 1.12.6; emacs 29.4
+Date: Wed, 04 Sep 2024 16:45:52 +0100
+Message-ID: <87o753tob3.fsf@draig.linaro.org>
 MIME-Version: 1.0
-X-TUID: ojylBxStqvQU
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: YKtkdaQlTaVg
 
-SGkgQWxleCwNCg0KPiAgLS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0NCj4gIEZyb206IEFsZXgg
-QmVubsOpZSA8YWxleC5iZW5uZWVAbGluYXJvLm9yZz4NCj4gIFNlbnQ6IFRodXJzZGF5LCBBdWd1
-c3QgMjksIDIwMjQgMTE6MDAgQU0NCj4gIFRvOiBHdXN0YXZvIFJvbWVybyA8Z3VzdGF2by5yb21l
-cm9AbGluYXJvLm9yZz4NCj4gIA0KPiAgR3VzdGF2byBSb21lcm8gPGd1c3Rhdm8ucm9tZXJvQGxp
-bmFyby5vcmc+IHdyaXRlczoNCj4gIA0KPiAgPiBIaSBTYWxpbCwNCj4gID4NCj4gID4gT24gNi8x
-My8yNCA4OjM2IFBNLCBTYWxpbCBNZWh0YSB2aWEgd3JvdGU6DQo+ICA8c25pcD4NCj4gID4+IChW
-SSkgQ29tbWFuZHMgVXNlZA0KPiAgPj4gPT09PT09PT09PT09PT09PT09DQo+ICA+PiBBLiBRZW11
-IGxhdW5jaCBjb21tYW5kcyB0byBpbml0IHRoZSBtYWNoaW5lOg0KPiAgPj4gICAgICAkIHFlbXUt
-c3lzdGVtLWFhcmNoNjQgLS1lbmFibGUta3ZtIC1tYWNoaW5lIHZpcnQsZ2ljLXZlcnNpb249MyBc
-DQo+ICA+PiAgICAgICAgLWNwdSBob3N0IC1zbXAgY3B1cz00LG1heGNwdXM9NiBcDQo+ICA+PiAg
-ICAgICAgLW0gMzAwTSBcDQo+ICA+PiAgICAgICAgLWtlcm5lbCBJbWFnZSBcDQo+ICA+PiAgICAg
-ICAgLWluaXRyZCByb290ZnMuY3Bpby5neiBcDQo+ICA+PiAgICAgICAgLWFwcGVuZCAiY29uc29s
-ZT10dHlBTUEwIHJvb3Q9L2Rldi9yYW0gcmRpbml0PS9pbml0IG1heGNwdXM9Mg0KPiAgYWNwaT1m
-b3JjZSIgXA0KPiAgPj4gICAgICAgIC1ub2dyYXBoaWMgXA0KPiAgPj4gICAgICAgIC1iaW9zIFFF
-TVVfRUZJLmZkIFwNCj4gID4+IEIuIEhvdC0odW4pcGx1ZyByZWxhdGVkIGNvbW1hbmRzOg0KPiAg
-Pj4gICAgIyBIb3RwbHVnIGEgaG9zdCB2Q1BVIChhY2NlbD1rdm0pOg0KPiAgPj4gICAgICAkIGRl
-dmljZV9hZGQgaG9zdC1hcm0tY3B1LGlkPWNvcmU0LGNvcmUtaWQ9NA0KPiAgPj4gICAgIyBIb3Rw
-bHVnIGEgdkNQVSAoYWNjZWw9dGNnKToNCj4gID4+ICAgICAgJCBkZXZpY2VfYWRkIGNvcnRleC1h
-NTctYXJtLWNwdSxpZD1jb3JlNCxjb3JlLWlkPTQNCj4gID4NCj4gID4gU2luY2Ugc3VwcG9ydCBm
-b3IgaG90cGx1ZyBpcyBkaXNhYmxlZCBvbiBUQ0csIHJlbW92ZSB0aGVzZSB0d28gbGluZXMNCj4g
-ID4gaW4gdjQgY292ZXIgbGV0dGVyPw0KPiAgDQo+ICBXaHkgaXMgaXQgZGlzYWJsZWQgZm9yIFRD
-Rz8gV2Ugc2hvdWxkIGFpbSBmb3IgVENHIGJlaW5nIGFzIGNsb3NlIHRvIEtWTSBhcw0KPiAgcG9z
-c2libGUgZm9yIGRldmVsb3BlcnMgZXZlbiBpZiBpdCBpcyBub3QgYSBwcm9kdWN0aW9uIHNvbHV0
-aW9uLg0KDQpBZ3JlZWQgSW4gcHJpbmNpcGxlLiBZZXMsIHRoYXQgd291bGQgYmUgb2YgaGVscC4N
-Cg0KDQpDb250ZXh0IHdoeSBpdCB3YXMgZGlzYWJsZWQgYWx0aG91Z2ggbW9zdCBjb2RlIHRvIHN1
-cHBvcnQgVENHIGV4aXN0Og0KDQpJIGhhZCByZXBvcnRlZCBhIGNyYXNoIGluIHRoZSBSRkMgVjEg
-KEp1bmUgMjAyMCkgYWJvdXQgVENHQ29udGV4dCBjb3VudGVyDQpvdmVyZmxvdyBhc3NlcnRpb24g
-ZHVyaW5nIHJlcGVhdGVkIGhvdCh1bilwbHVnIG9wZXJhdGlvbi4gTWlndWVsIGZyb20gT3JhY2xl
-DQp3YXMgYWJsZSB0byByZXByb2R1Y2UgdGhpcyBwcm9ibGVtIGxhc3QgeWVhciBpbiBGZWIgYW5k
-IGFsc28gc3VnZ2VzdGVkIGEgZml4IGJ1dCBoZQ0KbGF0ZXIgZm91bmQgb3V0IGluIGhpcyB0ZXN0
-aW5nIHRoYXQgdGhlcmUgd2FzIGEgcHJvYmxlbSBkdXJpbmcgbWlncmF0aW9uLg0KDQpSRkMgVjEg
-SnVuZSAyMDIwOg0KaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvcWVtdS1kZXZlbC8yMDIwMDYxMzIx
-MzYyOS4yMTk4NC0xLXNhbGlsLm1laHRhQGh1YXdlaS5jb20vDQpTY3JvbGwgdG8gYmVsb3c6DQpb
-Li4uXQ0KVEhJTkdTIFRPIERPOg0KICgqKSBNaWdyYXRpb24gc3VwcG9ydCANCiAoKikgVENHL0Vt
-dWxhdGlvbiBzdXBwb3J0IGlzIG5vdCBwcm9wZXIgcmlnaHQgbm93LiBXb3JrcyB0byBhIGNlcnRh
-aW4gZXh0ZW50DQogICAgIGJ1dCBpcyBub3QgY29tcGxldGUuIGVzcGVjaWFsbHkgdGhlIHVucmVh
-bGl6ZSBwYXJ0IGluIHdoaWNoIHRoZXJlIGlzIGENCiAgICAgb3ZlcmZsb3cgb2YgdGNnIGNvbnRl
-eHRzLiBUaGUgbGFzdCBpcyBkdWUgdG8gdGhlIGZhY3QgdGNnIG1haW50YWlucyBhIA0KICAgICBj
-b3VudCBvbiBudW1iZXIgb2YgY29udGV4dChwZXIgdGhyZWFkIGluc3RhbmNlKSBzbyBhcyB3ZSBo
-b3RwbHVnIHRoZSB2Y3B1cw0KICAgICB0aGlzIGNvdW50ZXIga2VlcHMgb24gaW5jcmVtZW50aW5n
-LiBCdXQgZHVyaW5nIGhvdC11bnBsdWcgdGhlIGNvdW50ZXIgaXMNCiAgICAgbm90IGRlY3JlbWVu
-dGVkLg0KDQpAIEZlYiAyMDIzLCBbTGluYXJvLW9wZW4tZGlzY3Vzc2lvbnNdIFJlOiBRZW11IFRD
-RyBzdXBwb3J0IGZvciB2aXJ0dWFsLWNwdWhvdHBsdWcvb25saW5lLXBvbGljeSANCg0KaHR0cHM6
-Ly9vcC1saXN0cy5saW5hcm8ub3JnL2FyY2hpdmVzL2xpc3QvbGluYXJvLW9wZW4tZGlzY3Vzc2lv
-bnNAb3AtbGlzdHMubGluYXJvLm9yZy9tZXNzYWdlL0dNREZURVpFNldVVUk3TFpBWU9XTFhGSEFQ
-WExDTkQ1Lw0KDQpMYXN0IHN0YXR1cyByZXBvcnRlZCBieSBNaWd1ZWwgd2FzIHRoYXQgdGhlcmUg
-d2FzIHByb2JsZW0gd2l0aCB0aGUgVENHIGFuZCBoZSBpbnRlbmRlZA0KdG8gZml4IHRoaXMuIEhl
-IHdhcyBvbiBwYXRlcm5pdHkgbGVhdmUgc28gSSB3aWxsIHRyeSB0byBnYXRoZXIgdGhlIGV4YWN0
-IHN0YXR1cyBvZiB0aGUgVENHIHRvZGF5Lg0KDQpUaGFua3MNClNhbGlsDQoNCg0KPiAgDQo+ICAt
-LQ0KPiAgQWxleCBCZW5uw6llDQo+ICBWaXJ0dWFsaXNhdGlvbiBUZWNoIExlYWQgQCBMaW5hcm8N
-Cg==
+Salil Mehta <salil.mehta@huawei.com> writes:
+
+> Hi Alex,
+>
+>>  -----Original Message-----
+>>  From: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+>>  Sent: Thursday, August 29, 2024 11:00 AM
+>>  To: Gustavo Romero <gustavo.romero@linaro.org>
+>>=20=20
+>>  Gustavo Romero <gustavo.romero@linaro.org> writes:
+>>=20=20
+>>  > Hi Salil,
+>>  >
+>>  > On 6/13/24 8:36 PM, Salil Mehta via wrote:
+>>  <snip>
+>>  >> (VI) Commands Used
+>>  >> =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+>>  >> A. Qemu launch commands to init the machine:
+>>  >>      $ qemu-system-aarch64 --enable-kvm -machine virt,gic-version=3D=
+3 \
+>>  >>        -cpu host -smp cpus=3D4,maxcpus=3D6 \
+>>  >>        -m 300M \
+>>  >>        -kernel Image \
+>>  >>        -initrd rootfs.cpio.gz \
+>>  >>        -append "console=3DttyAMA0 root=3D/dev/ram rdinit=3D/init max=
+cpus=3D2
+>>  acpi=3Dforce" \
+>>  >>        -nographic \
+>>  >>        -bios QEMU_EFI.fd \
+>>  >> B. Hot-(un)plug related commands:
+>>  >>    # Hotplug a host vCPU (accel=3Dkvm):
+>>  >>      $ device_add host-arm-cpu,id=3Dcore4,core-id=3D4
+>>  >>    # Hotplug a vCPU (accel=3Dtcg):
+>>  >>      $ device_add cortex-a57-arm-cpu,id=3Dcore4,core-id=3D4
+>>  >
+>>  > Since support for hotplug is disabled on TCG, remove these two lines
+>>  > in v4 cover letter?
+>>=20=20
+>>  Why is it disabled for TCG? We should aim for TCG being as close to KVM=
+ as
+>>  possible for developers even if it is not a production solution.
+>
+> Agreed In principle. Yes, that would be of help.
+>
+>
+> Context why it was disabled although most code to support TCG exist:
+>
+> I had reported a crash in the RFC V1 (June 2020) about TCGContext counter
+> overflow assertion during repeated hot(un)plug operation. Miguel from Ora=
+cle
+> was able to reproduce this problem last year in Feb and also suggested a =
+fix but he
+> later found out in his testing that there was a problem during migration.
+>
+> RFC V1 June 2020:
+> https://lore.kernel.org/qemu-devel/20200613213629.21984-1-salil.mehta@hua=
+wei.com/
+> Scroll to below:
+> [...]
+> THINGS TO DO:
+>  (*) Migration support=20
+>  (*) TCG/Emulation support is not proper right now. Works to a certain ex=
+tent
+>      but is not complete. especially the unrealize part in which there is=
+ a
+>      overflow of tcg contexts. The last is due to the fact tcg maintains =
+a=20
+>      count on number of context(per thread instance) so as we hotplug the=
+ vcpus
+>      this counter keeps on incrementing. But during hot-unplug the counte=
+r is
+>      not decremented.
+
+Right so the translation cache is segmented by vCPU to support parallel
+JIT operations. The easiest solution would be to ensure we dimension for
+the maximum number of vCPUs, which it should already, see tcg_init_machine(=
+):
+
+  unsigned max_cpus =3D ms->smp.max_cpus;
+  ...
+  tcg_init(s->tb_size * MiB, s->splitwx_enabled, max_cpus);
+
+>
+> @ Feb 2023, [Linaro-open-discussions] Re: Qemu TCG support for virtual-cp=
+uhotplug/online-policy=20
+>
+> https://op-lists.linaro.org/archives/list/linaro-open-discussions@op-list=
+s.linaro.org/message/GMDFTEZE6WUUI7LZAYOWLXFHAPXLCND5/
+>
+> Last status reported by Miguel was that there was problem with the TCG an=
+d he intended
+> to fix this. He was on paternity leave so I will try to gather the exact =
+status of the TCG today.
+>
+> Thanks
+> Salil
+>
+>
+>>=20=20
+>>  --
+>>  Alex Benn=C3=A9e
+>>  Virtualisation Tech Lead @ Linaro
+
+--=20
+Alex Benn=C3=A9e
+Virtualisation Tech Lead @ Linaro

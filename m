@@ -1,283 +1,225 @@
-Received: by 2002:a17:505:1f8d:b0:1be9:327d:8ee3 with SMTP id pt13csp80434njb;
-        Wed, 4 Sep 2024 04:20:14 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUsBQc4RizlWb4QHQkVvRnxRXBT1+hF+AmXA21WF+JwBYC3hT5eT5f85waBWkbv2VC5csLJLClMcaa4+g==@linaro.org
-X-Google-Smtp-Source: AGHT+IEdzh1InZb+JmsRcHPTuZczcqiUzvSaUikYE6wuHlFfo1TKxzyzo9/7PEhNMjQ4LjTthd2U
-X-Received: by 2002:a05:6214:3283:b0:6c3:64ec:fe4d with SMTP id 6a1803df08f44-6c364ed0052mr99623986d6.42.1725448813897;
-        Wed, 04 Sep 2024 04:20:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1725448813; cv=none;
-        d=google.com; s=arc-20160816;
-        b=h9W4ZJnS0XFmOnnLB9rr2h3THgqeioRtB7fquKWqMc0LXZOzdVspCOekeAc2GnmBeW
-         4ZQpOmYzTqi0uk+9tZEBIhi0AmWMTeaiay6oy4jkWSWbylf4dMzYQI/xaf8rYfuQUDQD
-         dM2OCXZzmiAM5MSP0oaf50npLGfB2QGvQZWvODm3UnDbNEGcNznxfGKXIYiSHSssnWeq
-         dtuLRKgAfuCTtvlZjMgNJ6SjNZ0oaU5rJmnCYNkGYQFr+KZ3RoedlYraSAbmlAWYIGb5
-         PDaBeK33VAOPgunF2YcJuZuWTCEmSHCRoKElFW+qZbbP8ZTh+Yuso72jCNHUBROhMKdn
-         Bh/w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=4aVXANGKcY1vRL0Aj3+SYG7ovQJCNC4fljz9df9NtVk=;
-        fh=rpzeOfm9IFHZcKRY7+Fmxyjswk6pT/Ul+6bpb+rjg/o=;
-        b=e54PvLpNnQGF4XNtVYuo5qwm7cvo87grjAUmN13vf5A2mLFzmNoljz6inWJAYdGxCP
-         JHCEkpTWQaE0D4clTn7JKn+NMRn/ypr9BY0tRqa7o4Qsc/wYwMxauP1+OqnVRPf3RZod
-         Q4512/j5oMh1CDze9krkE3KEYhXD1TQXeitkJ3RlPqvTnd81d9K1rslyq5WNaFl0cfpZ
-         d/yWdNYZgQw4iG1sh3Wh9Cg/bXZYY5i73WGLvQzQNDumRM4+QCbMd+ILLeSUFoqXoW3L
-         GxByc3LgvpDEUIvBzA0QpuYGobK5TtWEvZ0qryd+RWeMdmMJ+UnAqS0ySNqK6/fWrSkl
-         n6lw==;
+Received: by 2002:a17:505:1f8d:b0:1be9:327d:8ee3 with SMTP id pt13csp81165njb;
+        Wed, 4 Sep 2024 04:22:54 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCWH0UOl0Yp13V9BUJYyoB2MgnCFHPpVKNv8JGx/vFntEJuyeHnKGDIPaOTswq6kVrxqbw7u0L7k4gEirA==@linaro.org
+X-Google-Smtp-Source: AGHT+IEScFVIZvEV/wF3oPzoSHEzGytsub0OelcP3anmyxFzl+bzpBEuFZcveg/AjOMi8wDCJbY/
+X-Received: by 2002:a05:6358:5498:b0:1b5:eda9:963f with SMTP id e5c5f4694b2df-1b603ccaed3mr2263810555d.29.1725448974740;
+        Wed, 04 Sep 2024 04:22:54 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1725448974; cv=pass;
+        d=google.com; s=arc-20240605;
+        b=OgPBOHcSNejEIxCgWglE7T4Lb7Wct7ktLHOq3ggMjfBjGfU7ILXXux20RL8q+d4VLQ
+         vjALprMWpKY5cFvPLAwpfXwgszdXezVGtWaOsafKwWssKyL+5UsWVVYwsOv+faeWJz+Z
+         1f5eRK/pCkw50loSXWHf6YDZYT5vQrZVHU3irEsSxnuSS7FT8U7edy6XJHJnzn9W+Gkc
+         BrIJSIrjt2bQpIvFNQizfhD2DI2hwOnqhY0S6GdWvbzyWmzucYcdCyEBVpbjm0nJuHNt
+         GUxL2FJ8AnUJBWD5MKftWsyHdmHnvoL4iXMIWEUeKlgVcGD+aCIeCN6C5nZJ1L03cAUM
+         pRGw==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
+         :date:subject:cc:to:from:dkim-signature;
+        bh=60/S7nrmH8dWcOxOWOtd93pxbq0cOxGZapRifYABfNs=;
+        fh=2RgeqnAYDZ5qP2GVxxraMbOq0lVKWzwDqa5qVTK9BeQ=;
+        b=iwu98o1p9wuQmRYsbO/amTdCRcLbVH82LqPvjxctzl1lEDpzqJq9Z81V+OUUAP2Ozm
+         ALw1u7hT7GbnMFwnMujyjA+OiSdRHxOn4WzlW0DtsPf/U/EQ5NlANpK1MdVccvJvODUD
+         x0m8+vPBqIckwWkWaAXLp4xxlzB0DFAaZzRY45tQuvhefOSup3hns6B6Vb/TP/XfiMTK
+         Svct2x9hTGZhc14iPjf9TM1qc5iTBCvjG2su27EVUQ/EXUnMEGoHXct0bjfqeNuX/S5N
+         MRPddWcuJ2M5fUSFuuJkwy/JFRbFA9ChZbvQbQhfzsgsEah1A4rvhIzDuDLupLWBxOdD
+         F/Tg==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=YOQuFyum;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-45682d3d549si147689521cf.292.2024.09.04.04.20.13
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DQcGWjYY;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of kvm+bounces-25850-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="kvm+bounces-25850-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kvm+bounces-25850-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [2604:1380:45e3:2400::1])
+        by mx.google.com with ESMTPS id 41be03b00d2f7-7d4fbd807b8si2125235a12.66.2024.09.04.04.22.54
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 04 Sep 2024 04:20:13 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 04 Sep 2024 04:22:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm+bounces-25850-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) client-ip=2604:1380:45e3:2400::1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=YOQuFyum;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1slo3R-00019b-Qa; Wed, 04 Sep 2024 07:20:05 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marietto2008@gmail.com>)
- id 1slo3K-0000jb-OH; Wed, 04 Sep 2024 07:20:00 -0400
-Received: from mail-pf1-x42f.google.com ([2607:f8b0:4864:20::42f])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <marietto2008@gmail.com>)
- id 1slo3I-0008LD-Ha; Wed, 04 Sep 2024 07:19:58 -0400
-Received: by mail-pf1-x42f.google.com with SMTP id
- d2e1a72fcca58-7143165f23fso5126252b3a.1; 
- Wed, 04 Sep 2024 04:19:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1725448794; x=1726053594; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=4aVXANGKcY1vRL0Aj3+SYG7ovQJCNC4fljz9df9NtVk=;
- b=YOQuFyumDrZdCAdJMBJ3GfXV3SGbIf7N708FpyER/vAiTW3c1+wLQOT2DM38XUTPFe
- q6hml4wBV0r3WqEu/9OswPmrOQA4WU1CZNgDGGfLecQsviWFabqVCrpXVrjD3UWtEUjC
- PbCYfAJQnyKq+lG9HrzmfRjbdivJV0ay+IUxrsjSKUaGA46T5wLXr4yl8CfXDfp1g9j5
- 7UnTF3ByGt39CyRaIwJaz7G2FI0YfknuVMr1pOuRMK+4myVt6mRHJnsalOPNUPVEQaUD
- do+/0+IcxPA0wFssOvSMImIbukWV8y7kkJ0NneYYxYl2ZqpP+wZDTZVMjEy7ar7V9wWO
- gL+Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1725448794; x=1726053594;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=4aVXANGKcY1vRL0Aj3+SYG7ovQJCNC4fljz9df9NtVk=;
- b=gdShiv71RHQM0Gr0Yx2q1wTmeHVAT186KlrUePSJY+M0J8pIQ6yaTgiMeVubeZPs3p
- 3h/f9OD2m5KesPoxc0aXIRV06g/OqeLgrSCbm5wQEPk5VOSbGT6LbKy1Jg9aLwG4W/bK
- Iib2s0JvQu8rqTiOarCCFtRtXoA+p0ui7HbXgiwkBPkxtsbuq6pauFfULkQrM3WH/F3N
- k3Pz9vYFY/ALE5jbGRyRLuzROrnL14RU7mtqSjBDxRKZ81BI5wivZBDFP1huzpgHfX+9
- UqcEcCj/TSTujwdiUm+zUYUnFKhschezGbP/Izs5uSZPthbVsZ9VKv+VMiJBLD9Xmumz
- SnRg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCU1T1x9AE8MfIUlG0Vg9cPUtwYL3rBNb2YxWu43KOspDvyAkYdN7tNjrLfgskWe4EKGLzEM90L1tg==@nongnu.org,
- AJvYcCVVYw9muLA5YYiU4wI0Xs28OIzJjVZN4NV2x0GyI6U2WvBcjYUpG2pHewjtFRWbn/MW0u2Z+7GHIY3GXEQJ@nongnu.org
-X-Gm-Message-State: AOJu0Yx/4IsI13jn9hPMhvTc235tmHxphVjGTAZx6hXfBncUOu7DMfMK
- 897dn5vg8FHSlg9Y99uEeTle9j/hqg6xdcS9R4CAplMM1vkHDTRj9UeYJ/WOoYfeYJ/bBGSiFy1
- nxavRQlYbAVuDWf7KK5qn7jtD3EALzfnaAn8=
-X-Received: by 2002:a05:6a20:9f08:b0:1c0:ec1c:f4a5 with SMTP id
- adf61e73a8af0-1ced04bd8aamr13997975637.25.1725448794108; Wed, 04 Sep 2024
- 04:19:54 -0700 (PDT)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DQcGWjYY;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of kvm+bounces-25850-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="kvm+bounces-25850-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by sv.mirrors.kernel.org (Postfix) with ESMTPS id 3748A28165B
+	for <alex.bennee@linaro.org>; Wed,  4 Sep 2024 11:22:54 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id E1BDE522F;
+	Wed,  4 Sep 2024 11:18:52 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="DQcGWjYY"
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 191881CF7DA
+	for <kvm@vger.kernel.org>; Wed,  4 Sep 2024 11:18:50 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.133.124
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1725448732; cv=none; b=hjEHeo88vy29knVL8H1dYa0Tql62pKpLHF4+E3KbjcuNC9TDDN2RMkoCjcdaLFVez4X8cjF+tBxZmmVteYcvOHh663lRzwBA0CbOQA4NHTbMLeRP8vx+DvDSNkWiNcYQWlfSq7MHWYGDLWnEqmBliHX3Xox7Z9ClaQAITvrFvPI=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1725448732; c=relaxed/simple;
+	bh=rz6wNtjI6EAnAbpnIHz2TpGU//T4hwN2jOndCFi3guo=;
+	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:
+	 MIME-Version:Content-type; b=E9qnIwEzoKDH/KB2EnYV50ZaPM60y9rd7+CUQfYi3KvHu5jqz7FTi4Hy9guCMjqXqJyIyiL7p6dF1G26luyZDxE27UfX9HKtWHzmiMqV24WtjVpA4bsmfErv5L+4iWl8evmySplLf2VHC9xXAq40P4G44UnPgjoeD8j23Oec1EY=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=DQcGWjYY; arc=none smtp.client-ip=170.10.133.124
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1725448729;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=60/S7nrmH8dWcOxOWOtd93pxbq0cOxGZapRifYABfNs=;
+	b=DQcGWjYYr8lUzgA1lCi7K0At/9t4ekyuBZtMT8jIzTUFRQK9zBjerSVD+SCNT2mFp+qZ0Y
+	yWAKZvTx4EuA+Y7ZU9OMUPDNqzNiv2VQZyLtUyUFsR9wDaYXxT1J2F19J+s04T6oGWZjjH
+	fcLWR5QRU8n6hp2w9FAXDiPExzdnXV8=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-640-sjpFcQu1MvupF4SYoECIcA-1; Wed,
+ 04 Sep 2024 07:18:46 -0400
+X-MC-Unique: sjpFcQu1MvupF4SYoECIcA-1
+Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id D3DE71955F56;
+	Wed,  4 Sep 2024 11:18:41 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.39.192.112])
+	by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id AA1FB19560AA;
+	Wed,  4 Sep 2024 11:18:38 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 97E0921E6939; Wed,  4 Sep 2024 13:18:36 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: alex.williamson@redhat.com,
+	andrew@codeconstruct.com.au,
+	andrew@daynix.com,
+	arei.gonglei@huawei.com,
+	berrange@redhat.com,
+	berto@igalia.com,
+	borntraeger@linux.ibm.com,
+	clg@kaod.org,
+	david@redhat.com,
+	den@openvz.org,
+	eblake@redhat.com,
+	eduardo@habkost.net,
+	farman@linux.ibm.com,
+	farosas@suse.de,
+	hreitz@redhat.com,
+	idryomov@gmail.com,
+	iii@linux.ibm.com,
+	jamin_lin@aspeedtech.com,
+	jasowang@redhat.com,
+	joel@jms.id.au,
+	jsnow@redhat.com,
+	kwolf@redhat.com,
+	leetroy@gmail.com,
+	marcandre.lureau@redhat.com,
+	marcel.apfelbaum@gmail.com,
+	michael.roth@amd.com,
+	mst@redhat.com,
+	mtosatti@redhat.com,
+	nsg@linux.ibm.com,
+	pasic@linux.ibm.com,
+	pbonzini@redhat.com,
+	peter.maydell@linaro.org,
+	peterx@redhat.com,
+	philmd@linaro.org,
+	pizhenwei@bytedance.com,
+	pl@dlhnet.de,
+	richard.henderson@linaro.org,
+	stefanha@redhat.com,
+	steven_lee@aspeedtech.com,
+	thuth@redhat.com,
+	vsementsov@yandex-team.ru,
+	wangyanan55@huawei.com,
+	yuri.benditovich@daynix.com,
+	zhao1.liu@intel.com,
+	qemu-block@nongnu.org,
+	qemu-arm@nongnu.org,
+	qemu-s390x@nongnu.org,
+	kvm@vger.kernel.org,
+	avihaih@nvidia.com
+Subject: [PATCH v2 03/19] qapi/block-core: Drop temporary 'prefix'
+Date: Wed,  4 Sep 2024 13:18:20 +0200
+Message-ID: <20240904111836.3273842-4-armbru@redhat.com>
+In-Reply-To: <20240904111836.3273842-1-armbru@redhat.com>
+References: <20240904111836.3273842-1-armbru@redhat.com>
+Precedence: bulk
+X-Mailing-List: kvm@vger.kernel.org
+List-Id: <kvm.vger.kernel.org>
+List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-References: <CA+1FSiirzpq4wjcKTLSexiOWtv26sgD37h=wA2qxv8Qh5MW_-w@mail.gmail.com>
- <CA+1FSigiu8xXF1OPs1oSPS7LiGe23gsN73RwPpJUYH=X5EkTRQ@mail.gmail.com>
- <CA+1FSiiH9LP-7UupNLjDyZJGqJAHAjN2nSLFm9fCx=ZNphxGoQ@mail.gmail.com>
- <CA+1FSih6t-Ccnxh1GvOFMf9pMjcfV1V+yyJHV=ZH0c2RY0Kjng@mail.gmail.com>
- <268989a3-cd5c-41fc-ba0d-5eb71bc6e9dc@linaro.org>
- <CA+1FSijygoVZmTkYR8Xoob4yQQdf9o3CZ2-LmzDrBh2e0VaerQ@mail.gmail.com>
- <CA+1FSigOmKen0QPKSEQqt15Zzrx4UFSCpj+5DJMCJtGnFcE+Hw@mail.gmail.com>
- <CA+1FSijfe+5V4RHs-1ow2JwAeiKcmW31V2Ddx9a9zxb_kybDFg@mail.gmail.com>
- <70b240aa-98de-4998-8c1b-34349fc831ba@linaro.org>
- <CA+1FSiiyb2v7oy43exRuY7kQpLgUcEifAE2zrEtpYPkgAY+TRw@mail.gmail.com>
- <6eac1f19-59a2-440a-a5b3-f4d9654ba539@linaro.org>
- <CA+1FSigjog5DO4UJ4bjo+rvtRc2ih+yJF0q9HM7y6N=aSg6w=A@mail.gmail.com>
- <CA+1FSijxZ5Ocic-aGTikNxr_faS54fP=P+2uuCxfypMJKEE2aQ@mail.gmail.com>
- <2eeb9049-3444-49e0-892e-7022ab045647@linaro.org>
- <CA+1FSigoFF_FSKSGbs4jOyya6DJrEH9O0MMV84+XowZ7RkmFNw@mail.gmail.com>
- <faf8ceb4-d04f-45d8-85e3-5cfa09747b1c@linaro.org>
-In-Reply-To: <faf8ceb4-d04f-45d8-85e3-5cfa09747b1c@linaro.org>
-From: Mario Marietto <marietto2008@gmail.com>
-Date: Wed, 4 Sep 2024 13:19:17 +0200
-Message-ID: <CA+1FSijORakuqhwiU-juACBtgbgQKHwV7sd+1Fd6vsBA1TtZ-Q@mail.gmail.com>
-Subject: Re: Error : init: partition(s) not found in /sys, waiting for their
- uevent(s): mmcblk0p2, mmcblk0p3 while trying to emulate Android 14 on Ubuntu
- 24.04 X64 bit using qemu-system-aarch64.
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Cc: Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>, 
- qemu-discuss@nongnu.org, qemu-arm <qemu-arm@nongnu.org>
-Content-Type: multipart/alternative; boundary="000000000000737e280621495ab9"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42f;
- envelope-from=marietto2008@gmail.com; helo=mail-pf1-x42f.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, HTML_MESSAGE=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: gulVobxotunS
+Content-type: text/plain
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
+X-TUID: 1g73hYxxfXma
 
---000000000000737e280621495ab9
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Recent commit "qapi: Smarter camel_to_upper() to reduce need for
+'prefix'" added a temporary 'prefix' to delay changing the generated
+code.
 
-> There are only 3 small patches, barely changing UI size and buttons.
+Revert it.  This improves XDbgBlockGraphNodeType's generated
+enumeration constant prefix from
+X_DBG_BLOCK_GRAPH_NODE_TYPE_BLOCK_BACKEND to
+XDBG_BLOCK_GRAPH_NODE_TYPE_BLOCK_BACKEND.
 
-Are you sure ? I see a lot of modifications :
+Signed-off-by: Markus Armbruster <armbru@redhat.com>
+---
+ qapi/block-core.json | 1 -
+ block.c              | 6 +++---
+ 2 files changed, 3 insertions(+), 4 deletions(-)
 
-https://github.com/antmicro/kvm-aosp-qemu/commit/5c24bce3056ff209a1ecc50ff4=
-b7e65b85ad8e74
+diff --git a/qapi/block-core.json b/qapi/block-core.json
+index 452047102a..a7ae2da47b 100644
+--- a/qapi/block-core.json
++++ b/qapi/block-core.json
+@@ -2011,7 +2011,6 @@
+ # Since: 4.0
+ ##
+ { 'enum': 'XDbgBlockGraphNodeType',
+-  'prefix': 'X_DBG_BLOCK_GRAPH_NODE_TYPE', # TODO drop
+   'data': [ 'block-backend', 'block-job', 'block-driver' ] }
+ 
+ ##
+diff --git a/block.c b/block.c
+index c317de9eaa..7d90007cae 100644
+--- a/block.c
++++ b/block.c
+@@ -6351,7 +6351,7 @@ XDbgBlockGraph *bdrv_get_xdbg_block_graph(Error **errp)
+         if (!*name) {
+             name = allocated_name = blk_get_attached_dev_id(blk);
+         }
+-        xdbg_graph_add_node(gr, blk, X_DBG_BLOCK_GRAPH_NODE_TYPE_BLOCK_BACKEND,
++        xdbg_graph_add_node(gr, blk, XDBG_BLOCK_GRAPH_NODE_TYPE_BLOCK_BACKEND,
+                            name);
+         g_free(allocated_name);
+         if (blk_root(blk)) {
+@@ -6364,7 +6364,7 @@ XDbgBlockGraph *bdrv_get_xdbg_block_graph(Error **errp)
+              job = block_job_next_locked(job)) {
+             GSList *el;
+ 
+-            xdbg_graph_add_node(gr, job, X_DBG_BLOCK_GRAPH_NODE_TYPE_BLOCK_JOB,
++            xdbg_graph_add_node(gr, job, XDBG_BLOCK_GRAPH_NODE_TYPE_BLOCK_JOB,
+                                 job->job.id);
+             for (el = job->nodes; el; el = el->next) {
+                 xdbg_graph_add_edge(gr, job, (BdrvChild *)el->data);
+@@ -6373,7 +6373,7 @@ XDbgBlockGraph *bdrv_get_xdbg_block_graph(Error **errp)
+     }
+ 
+     QTAILQ_FOREACH(bs, &graph_bdrv_states, node_list) {
+-        xdbg_graph_add_node(gr, bs, X_DBG_BLOCK_GRAPH_NODE_TYPE_BLOCK_DRIVER,
++        xdbg_graph_add_node(gr, bs, XDBG_BLOCK_GRAPH_NODE_TYPE_BLOCK_DRIVER,
+                            bs->node_name);
+         QLIST_FOREACH(child, &bs->children, next) {
+             xdbg_graph_add_edge(gr, bs, child);
+-- 
+2.46.0
 
-On Wed, Sep 4, 2024 at 12:47=E2=80=AFPM Philippe Mathieu-Daud=C3=A9 <philmd=
-@linaro.org>
-wrote:
-
-> On 4/9/24 12:13, Mario Marietto wrote:
-> > -> What do you mean by "qemu patched"?
-> >
-> > Isn't this version of qemu :
-> >
-> > https://github.com/antmicro/kvm-aosp-qemu/releases/tag/5.0.0-kvm-aosp
-> > <https://github.com/antmicro/kvm-aosp-qemu/releases/tag/5.0.0-kvm-aosp>
-> >
-> > properly patched or adapted,I don't know how to define it,to boot
-> > Android 10 on the Jetson Nano ?
-> >
-> > -> Hopefully you are right, but unlikely:
-> >  >
-> >
-> https://github.com/antmicro/kvm-aosp-qemu/compare/fdd76fecdd...5.0.0-kvm-=
-aosp
-> <
-> https://github.com/antmicro/kvm-aosp-qemu/compare/fdd76fecdd...5.0.0-kvm-=
-aosp
-> >
-> >
-> > What do you mean with "Hopefully you are right,but unlikely" ?
->
-> There are only 3 small patches, barely changing UI size and buttons.
->
-> >
-> >
-> > On Wed, Sep 4, 2024 at 11:54=E2=80=AFAM Philippe Mathieu-Daud=C3=A9
-> > <philmd@linaro.org <mailto:philmd@linaro.org>> wrote:
-> >
-> >     On 3/9/24 22:52, Mario Marietto wrote:
-> >      > Unfortunately the usage of qemu patched to boot Android 10 on th=
-e
-> >     Jetson
-> >      > nano didn't change anything. I get the same exact errors as
-> >     before. :(
-> >
-> >     What do you mean by "qemu patched"?
-> >
-> >
-> >
-> > --
-> > Mario.
->
->
-
---=20
-Mario.
-
---000000000000737e280621495ab9
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div><span class=3D"gmail-im">&gt; </span>
-There are only 3 small patches, barely changing UI size and buttons.</div><=
-div><br></div><div>Are you sure ? I see a lot of modifications :<br></div><=
-div><br></div><div><a href=3D"https://github.com/antmicro/kvm-aosp-qemu/com=
-mit/5c24bce3056ff209a1ecc50ff4b7e65b85ad8e74">https://github.com/antmicro/k=
-vm-aosp-qemu/commit/5c24bce3056ff209a1ecc50ff4b7e65b85ad8e74</a></div></div=
-><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On We=
-d, Sep 4, 2024 at 12:47=E2=80=AFPM Philippe Mathieu-Daud=C3=A9 &lt;<a href=
-=3D"mailto:philmd@linaro.org">philmd@linaro.org</a>&gt; wrote:<br></div><bl=
-ockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-lef=
-t:1px solid rgb(204,204,204);padding-left:1ex">On 4/9/24 12:13, Mario Marie=
-tto wrote:<br>
-&gt; -&gt; What do you mean by &quot;qemu patched&quot;?<br>
-&gt; <br>
-&gt; Isn&#39;t this version of qemu :<br>
-&gt; <br>
-&gt; <a href=3D"https://github.com/antmicro/kvm-aosp-qemu/releases/tag/5.0.=
-0-kvm-aosp" rel=3D"noreferrer" target=3D"_blank">https://github.com/antmicr=
-o/kvm-aosp-qemu/releases/tag/5.0.0-kvm-aosp</a> <br>
-&gt; &lt;<a href=3D"https://github.com/antmicro/kvm-aosp-qemu/releases/tag/=
-5.0.0-kvm-aosp" rel=3D"noreferrer" target=3D"_blank">https://github.com/ant=
-micro/kvm-aosp-qemu/releases/tag/5.0.0-kvm-aosp</a>&gt;<br>
-&gt; <br>
-&gt; properly patched or adapted,I don&#39;t know how to define it,to boot =
-<br>
-&gt; Android 10 on the Jetson Nano ?<br>
-&gt; <br>
-&gt; -&gt; Hopefully you are right, but unlikely:<br>
-&gt;=C2=A0 &gt; <br>
-&gt; <a href=3D"https://github.com/antmicro/kvm-aosp-qemu/compare/fdd76fecd=
-d...5.0.0-kvm-aosp" rel=3D"noreferrer" target=3D"_blank">https://github.com=
-/antmicro/kvm-aosp-qemu/compare/fdd76fecdd...5.0.0-kvm-aosp</a> &lt;<a href=
-=3D"https://github.com/antmicro/kvm-aosp-qemu/compare/fdd76fecdd...5.0.0-kv=
-m-aosp" rel=3D"noreferrer" target=3D"_blank">https://github.com/antmicro/kv=
-m-aosp-qemu/compare/fdd76fecdd...5.0.0-kvm-aosp</a>&gt;<br>
-&gt; <br>
-&gt; What do you mean with &quot;Hopefully you are right,but unlikely&quot;=
- ?<br>
-<br>
-There are only 3 small patches, barely changing UI size and buttons.<br>
-<br>
-&gt; <br>
-&gt; <br>
-&gt; On Wed, Sep 4, 2024 at 11:54=E2=80=AFAM Philippe Mathieu-Daud=C3=A9 <b=
-r>
-&gt; &lt;<a href=3D"mailto:philmd@linaro.org" target=3D"_blank">philmd@lina=
-ro.org</a> &lt;mailto:<a href=3D"mailto:philmd@linaro.org" target=3D"_blank=
-">philmd@linaro.org</a>&gt;&gt; wrote:<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0On 3/9/24 22:52, Mario Marietto wrote:<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; Unfortunately the usage of qemu patched to bo=
-ot Android 10 on the<br>
-&gt;=C2=A0 =C2=A0 =C2=A0Jetson<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; nano didn&#39;t change anything. I get the sa=
-me exact errors as<br>
-&gt;=C2=A0 =C2=A0 =C2=A0before. :(<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0What do you mean by &quot;qemu patched&quot;?<br>
-&gt; <br>
-&gt; <br>
-&gt; <br>
-&gt; -- <br>
-&gt; Mario.<br>
-<br>
-</blockquote></div><br clear=3D"all"><br><span class=3D"gmail_signature_pre=
-fix">-- </span><br><div dir=3D"ltr" class=3D"gmail_signature">Mario.<br></d=
-iv>
-
---000000000000737e280621495ab9--

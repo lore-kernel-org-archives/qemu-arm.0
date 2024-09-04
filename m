@@ -1,79 +1,79 @@
-Received: by 2002:a17:505:1f8d:b0:1be9:327d:8ee3 with SMTP id pt13csp189211njb;
-        Wed, 4 Sep 2024 09:15:44 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVyCKs8se/m701CuBmd+GBanaMs5S7iuYwa5iFCoiR+ke77RlMF0q7v8jhD4UWwYZMluGeE+4naOkGGhg==@linaro.org
-X-Received: by 2002:a05:6512:3a89:b0:530:ab68:25c5 with SMTP id 2adb3069b0e04-53546b1e1d7mr15258269e87.2.1725466544252;
-        Wed, 04 Sep 2024 09:15:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1725466544; cv=none;
+Received: by 2002:a17:505:1f8d:b0:1be9:327d:8ee3 with SMTP id pt13csp189224njb;
+        Wed, 4 Sep 2024 09:15:46 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUsWwLVhp8lA1LETqMK2k3TqoVDfi+J/JKA+JqT5l8abposdq5Sp1kCC+PAFzs12Gtj5u0Be/1j+m6enw==@linaro.org
+X-Received: by 2002:a2e:4e0a:0:b0:2f3:f82d:bb21 with SMTP id 38308e7fff4ca-2f64d4b59dbmr30731301fa.29.1725466546669;
+        Wed, 04 Sep 2024 09:15:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1725466546; cv=none;
         d=google.com; s=arc-20160816;
-        b=vqo3HE65YeHh8KYOs9MUTuYtJ9AERbZU/+AvNUyxaoh0ibb81GOIfnjdCw+eXVa2S3
-         5wo7ErLSkmWXecb2J2s+P/NAfRmYvXBTUrTG2Psu2SMdEpkHVAq4N3bjpMTdApiWZNkK
-         /FDmpMKUDNuoDE4s6zCxSJGxZR9+vO6s3X7AdIkpf4Kk0AEY0rLDKQEZvPAWfSw+TICf
-         9CqJmW5Q+iebPTHwDilVhNE9fZgVrqUHIfkjdP8tTcozLd7OHbMDO3x/8wUVr7c/PdDG
-         7jXt0Q/SJriUuf5TSGZhPXdmSAkCdZuCFkpOSX64+hRKOhfkDq/Bx3aoEE5Qccjd1fr7
-         amYQ==
+        b=U+h7C9NCVFdJW6K4nHd/f4rWykwX3rak7I9nIc2yYBsDCHJcIiXUayFXw91GrvpKYQ
+         7NZME8CUjeoTNhMz5yq6IRzZayEU8svwnjjOZrMnxu+k7tXsURV7PwNyy7W+/kwdP9sZ
+         SLAdao7tAf4HXfZ4eQrscjlK8HFrWMwQchZcnqkPNhrrFIPSz19rXXksI792oVXS8s5r
+         fyQp82bGmV2WUofBaYsCSR0WJ6BNWNDNrJr6DXgHKy/nJ5/CfnKS6ZELFcNS3pZItwiD
+         a8OMpx/4ir56uWg8FbT9sqC6LUnBKbQjOYUilrd6ww4QcBviVDUaVfAmGP7ChV99o4XN
+         b+VA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=N6K1JnQDB3GxWbgLc2L3O0RRJjZo+EVTDK5d5nCO5jo=;
-        fh=F6cBGQm6qPrkWsaNOCgRfoDa0/iTrG/2cT6w0rZO6Z0=;
-        b=ktcQEF+gUU6/eA/2xJ9f6monRtvaHLqNYKiKbjHnIDUFF44cK+jmZeIykCrN3PsAMo
-         QMPsQtfalC+YAb5numiSJr6mf2W9DtOXId3xEgrdaXWd407Pzr3UgYkvrQURUsHzpOdT
-         NIpgA021pN/EQ1tCSMgTqi2JrkbIECZSyZ9tnWkiQr8OtEhpOrcSCFyy8rCFoF23Ijvc
-         Q2DjruLz4zaxRIPyJnXOKiPy7dl/hx2mVmooYqubfqzCqKlD6ayBBP9FiSWdtV0U7Ft2
-         TGwr3nQLH0YhI5eIJMXiGp4Ut6ml54RiEhLQZkWCyOdMWiEz4diUEdqVq8lWQsn60Z+z
-         9eyQ==;
+        bh=cXrv0E3MFlFU+ItFyAOjyjeGygFPyj9i38Ckg44wQ0M=;
+        fh=yo5dzPvVBVjyLqWVGRiDtCigJGsC+R/zx1AVq/6fTXw=;
+        b=iNEmgHM4VJ+iCGY2+KrafluBQXcPQdnaIAdITOkcKy91GfJqGRWJAVVu6an2naQx8l
+         Sin4uqHZ0chtT+K8qd6U1nctIetoYtzDaKoT4USqo+d4UYOWQuy0yZFgeVqj9z+QhvWf
+         fDzYoQ2F9L2+Vy91+plA6Stsw4WUWVmq8nhm3cIC48B5aENbow7lzY7lFyENXhx8g4Cd
+         HOGKwRkngJ8JcGEvYuPVzlw1YCH5lt83LUL4CxXCjsNa3Rmlcub0lhST2zNZ2D2N7Iig
+         pLpJiFS/PsB3vUK1VUNWNii+RMhS1a+wxCCbPCwvhaAJlwZUu88Wbv1n0PpTxbQVfCxi
+         rqTg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=F7ThivWP;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=hprWNLd8;
        spf=pass (google.com: domain of edgar.iglesias@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=edgar.iglesias@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Return-Path: <edgar.iglesias@gmail.com>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 2adb3069b0e04-53540776377sor5327358e87.3.2024.09.04.09.15.44
+        by mx.google.com with SMTPS id 38308e7fff4ca-2f6151743d8sor24475091fa.13.2024.09.04.09.15.46
         (Google Transport Security);
-        Wed, 04 Sep 2024 09:15:44 -0700 (PDT)
+        Wed, 04 Sep 2024 09:15:46 -0700 (PDT)
 Received-SPF: pass (google.com: domain of edgar.iglesias@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=F7ThivWP;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=hprWNLd8;
        spf=pass (google.com: domain of edgar.iglesias@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=edgar.iglesias@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1725466544; x=1726071344; darn=linaro.org;
+        d=gmail.com; s=20230601; t=1725466546; x=1726071346; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=N6K1JnQDB3GxWbgLc2L3O0RRJjZo+EVTDK5d5nCO5jo=;
-        b=F7ThivWP4JVBc1SFqbFWRiZIt88/oxi45PHKQnPtSuxgehfBfEMZX/B0xQ4SrZNxX4
-         /vxPrVQ2vK8cBjDpqscvsoxENvLN/JxYrXIIur4So+j737dedDjQVxOfSdg5gcvHtBs3
-         woqHS28U0J64nt7PvJpBVJz4sQJClgkMOrNT7Hz4OZc0S09ldqdLYfdhQz2KVwd+tXmd
-         wVzJwtDFnvcx7CG+Tn2v5AAgh+j7KLVePqphwezYxFFTKpqTIe3Rg4t1jAMlDjOM7bsq
-         3NZtfwd8H42EXB6ALfJsEop9/FaBzrt53bCgaZm7BoWK2RoSCoZNaXV0oOWIQtumJhMm
-         wHaQ==
+        bh=cXrv0E3MFlFU+ItFyAOjyjeGygFPyj9i38Ckg44wQ0M=;
+        b=hprWNLd8SdiiU63PbwUVAsB2cTAYXtQxXhFdJP/cdQykUyLKixlo9D4T1SfTuJ14Ba
+         mDBgNKPiVQcJG+i0WgRJhXcSFbkqZfdVFg28CFTOeWCKludTrb+Of4ipNibQduyxiG0P
+         Fbtm9gcaBgJInM/tqpEUO46+cJ20kJzXFf4c2VymVW1QGf+iabIPomqvSVkuGeh73+wl
+         RZBCOCEwpNRGzUqKsVXbVfSaFIjBbq/+R7OrJk3gy6DYp5hprpvrPXEHEHbiVpQ5YUdQ
+         FNX6f4rCcRu2H1jX+jhwr2HxzpT5t57rliDRO2yaStw6cn++CrUxQSXiNfEUkSspUnpH
+         eCCA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1725466544; x=1726071344;
+        d=1e100.net; s=20230601; t=1725466546; x=1726071346;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=N6K1JnQDB3GxWbgLc2L3O0RRJjZo+EVTDK5d5nCO5jo=;
-        b=qCG8UtXfL8r4cuzn5t9eUOtTqd+52UpB2ShEe+JvsgiQbqH42Ow2/QQZF89IicxubB
-         AFwrf8Rdp2P4DbSNDZpr30hp0VVMHET87NJXMl1HHgRDaIHIvk9/8BHzKahQDNuEcsvQ
-         mM2te+kYiXphbAJlLthAGmRRPLc7csNIok+KCbgRWMtfPNhRBk319uvTgjvrAt5I9nqa
-         Y8LNrTRDklJEKyvICJjjJ+YwJR0gyEHfkgAWXifA37PG+uf7hpb0s1JZsBGnyOzNOPss
-         fxvyb0Mut2/oEUqaLcn9gCBcs69hU/wVi1KwC448D6vZUZzCapQPIld9Q8TAfo0t/IAi
-         yuYA==
-X-Forwarded-Encrypted: i=1; AJvYcCUQiEjPdp2gjnKUF9l5xNIVikwzumeVsL0DUn6aUMQBidPyx3VYQnn0hPPYuXsrV46GXJOp0Ydev9YbKw==@linaro.org, AJvYcCXlQGsV2OEl5rWz/puMVEyeG9pzzMAnoxa+8GilnibaPZAu4NZHhJ9QhF0FwD5royJV+q5CP+EqT4mTaVnnZw==@linaro.org
-X-Gm-Message-State: AOJu0Yy8TpLuvQe4E0tj77hzeE8GemWsrCoqNIknlBEhAEVFX9n2PpGO
-	8CHu1d07C3u59nPFEniAe2gM7jrYFpFTWPpPF8AEgdfSGY03blEr
-X-Google-Smtp-Source: AGHT+IFom4VEXuZYnoDrA4HGURvL615ZNQmYPSqV45hP6uADwmwNAHyfJ2jP5ftIt03oSUiu6NVu1A==
-X-Received: by 2002:ac2:4e06:0:b0:533:483f:9562 with SMTP id 2adb3069b0e04-53546bde03emr15776888e87.42.1725466543416;
-        Wed, 04 Sep 2024 09:15:43 -0700 (PDT)
+        bh=cXrv0E3MFlFU+ItFyAOjyjeGygFPyj9i38Ckg44wQ0M=;
+        b=DDEmqIleQ1lrn6RGDaOB0o9SQ7NkwOfYlGkKdNLHK9RtRTqstdNOO62jOvaHmkP0uH
+         6oqlgSaqyqppXE5HPnL8Nsewrq4w2467m24I+WIlg48E+um1rp2Wl3fbVjdqQdJ1B2//
+         rNyk14o4ra55QX7WeRxrt4K2bDCnbfGwgMRY2z1zZUQwFyLuNAutWwyAz7SEiD6CPsML
+         +Isw7++P0IphC/gWQr/uQJ3HKgHUoiPAWn0gQ3gCqYfUFjuhPxKcOXlpxKlwE/ODc3Bp
+         ObrwsLXX0TFbgpWVxEoC15WqvzCk9Nr1hmdJYm4Xm+BPf74bUJnErc6fjZFGQEVG+3Xz
+         J9Bw==
+X-Forwarded-Encrypted: i=1; AJvYcCVvqOJu9KiWm7zYZfOr0dYKBv71rkOy2Cb7IG++2Ym09b48RvONM2HlIiYcVeWGxndarEy11HIrfSvwgqreqQ==@linaro.org, AJvYcCW2UdtGlTScVY8TmfN+17A3vnw7bwhCKODzRJCHAb7xV55IgKgl3jsvoZXhvmdu8wgsUcvOrIUGmtroBw==@linaro.org
+X-Gm-Message-State: AOJu0Yx+a4GREYsTMz+mSxUDZ9hXGHqWA33EeI66bO2ANFS+rWNMjjEN
+	gvmlPbL4gEhBxf13C/7/rw4gFU2eGcGhcx3gdiJvECXQPLY/m87D
+X-Google-Smtp-Source: AGHT+IGAyh4WUxY9AfkVPMwTqyaGKO5sye5d21g+iPTe1bXZL4tYnRRSXSRVmyNk0vZJE9XGQJOMBA==
+X-Received: by 2002:a2e:a586:0:b0:2f3:f4e2:869c with SMTP id 38308e7fff4ca-2f64d570e98mr37440521fa.44.1725466545191;
+        Wed, 04 Sep 2024 09:15:45 -0700 (PDT)
 Return-Path: <edgar.iglesias@gmail.com>
 Received: from gmail.com (213-67-3-247-no600.tbcn.telia.com. [213.67.3.247])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-535692d9bf6sm176315e87.41.2024.09.04.09.15.42
+        by smtp.gmail.com with ESMTPSA id 38308e7fff4ca-2f614f0079fsm25852041fa.37.2024.09.04.09.15.44
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 04 Sep 2024 09:15:42 -0700 (PDT)
+        Wed, 04 Sep 2024 09:15:44 -0700 (PDT)
 From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: sstabellini@kernel.org,
@@ -86,58 +86,39 @@ Cc: sstabellini@kernel.org,
 	edgar.iglesias@amd.com,
 	xen-devel@lists.xenproject.org,
 	qemu-arm@nongnu.org
-Subject: [PULL v1 02/12] hw/arm: xenpvh: Update file header to use SPDX
-Date: Wed,  4 Sep 2024 18:15:26 +0200
-Message-ID: <20240904161537.664189-3-edgar.iglesias@gmail.com>
+Subject: [PULL v1 03/12] hw/arm: xenpvh: Tweak machine description
+Date: Wed,  4 Sep 2024 18:15:27 +0200
+Message-ID: <20240904161537.664189-4-edgar.iglesias@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20240904161537.664189-1-edgar.iglesias@gmail.com>
 References: <20240904161537.664189-1-edgar.iglesias@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: rg0X7wb0oql2
+X-TUID: 2si4cpleXKmN
 
 From: "Edgar E. Iglesias" <edgar.iglesias@amd.com>
 
-Update file header to use SPDX and remove stray empty
-comment line.
-
-No functional changes.
+Tweak machine description to better express that this is
+a Xen PVH machine for ARM.
 
 Signed-off-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
-Acked-by: Stefano Stabellini <sstabellini@kernel.org>
+Reviewed-by: Stefano Stabellini <sstabellini@kernel.org>
 ---
- hw/arm/xen_arm.c | 19 +------------------
- 1 file changed, 1 insertion(+), 18 deletions(-)
+ hw/arm/xen_arm.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/hw/arm/xen_arm.c b/hw/arm/xen_arm.c
-index 6fad829ede..766a194fa1 100644
+index 766a194fa1..5f75cc3779 100644
 --- a/hw/arm/xen_arm.c
 +++ b/hw/arm/xen_arm.c
-@@ -1,24 +1,7 @@
- /*
-  * QEMU ARM Xen PVH Machine
-  *
-- *
-- * Permission is hereby granted, free of charge, to any person obtaining a copy
-- * of this software and associated documentation files (the "Software"), to deal
-- * in the Software without restriction, including without limitation the rights
-- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-- * copies of the Software, and to permit persons to whom the Software is
-- * furnished to do so, subject to the following conditions:
-- *
-- * The above copyright notice and this permission notice shall be included in
-- * all copies or substantial portions of the Software.
-- *
-- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-- * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-- * THE SOFTWARE.
-+ * SPDX-License-Identifier: MIT
-  */
+@@ -216,7 +216,7 @@ static void xen_arm_machine_class_init(ObjectClass *oc, void *data)
+ {
  
- #include "qemu/osdep.h"
+     MachineClass *mc = MACHINE_CLASS(oc);
+-    mc->desc = "Xen Para-virtualized PC";
++    mc->desc = "Xen PVH ARM machine";
+     mc->init = xen_arm_init;
+     mc->max_cpus = 1;
+     mc->default_machine_opts = "accel=xen";
 -- 
 2.43.0

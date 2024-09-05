@@ -1,213 +1,235 @@
-Received: by 2002:a17:505:1f8d:b0:1be9:327d:8ee3 with SMTP id pt13csp554000njb;
-        Thu, 5 Sep 2024 09:07:40 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCXx/mcUmDXv43NvEAnYm/EvlibqabTrZSEetll7ox6S8QkvBEO5HtIG5GhQDWeY/oKRgmbQED+xc8mw7w==@linaro.org
-X-Google-Smtp-Source: AGHT+IHYfIPVTf6a8306BDnDdvINph3G67h/eSe/j0Zr8lqYTTCuWeYHm+YkLBfh9jVceg195dDo
-X-Received: by 2002:a17:903:18a:b0:206:8f25:a3e with SMTP id d9443c01a7336-2068f250da6mr134827265ad.53.1725552460494;
-        Thu, 05 Sep 2024 09:07:40 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1725552460; cv=pass;
+Received: by 2002:a17:505:1f8d:b0:1be9:327d:8ee3 with SMTP id pt13csp607349njb;
+        Thu, 5 Sep 2024 11:51:03 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUmsAIlVaTpxqI9vvh5CiydVmOTmEcKcH419MGRNgXf9hKxDUCu2seVLi6kCWLP03Iaq36620nN00u16Q==@linaro.org
+X-Google-Smtp-Source: AGHT+IFZpgBu54Sn/SQXqrEEhbEyuGaZwTMPIuLY1RMkFKZrwYyxI6cTwpt6s273jz30TSBP1qL0
+X-Received: by 2002:ac8:588a:0:b0:44f:e905:e5f7 with SMTP id d75a77b69052e-4580c7a1cc4mr2710341cf.51.1725562263447;
+        Thu, 05 Sep 2024 11:51:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1725562263; cv=none;
         d=google.com; s=arc-20240605;
-        b=idUN9/9gS4h5IwFfU6pAXDnesb3qwmCo7FprL631XpL7s775nFhd9WggAF8fc9B02j
-         8hZt2V4fz4CcuBJyQ/GtEXVbTaeJwmuibIwee4T0y1QGMKxZLQh48h68D/JvXxwmOV7r
-         elP+b675DEV+Nbt6IrfbQN1S5c8Y/CopfzesMo8o0NCTa+Uq6sfZ34DJKAN2SuPWgSZm
-         5kOQnYNXnl5jvzKycY+H0nFc1vBPZ7DXL8XczLxJazwjqbR9d23xbUFJGZLrT1QyC7cq
-         LzByxj1PTuhk3W26YdG0SvmPTNbCRnXWuXbHMfWdXUolDoGZdyurs4DmIYpvdPk4oL2L
-         fImw==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:list-unsubscribe:list-subscribe:list-id:precedence
-         :references:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=jp345HzFmHJEwidIfoXQdHcIH1v2W8J0QUu4Wb8LVnY=;
-        fh=3MVXx5lIVjIoxMSJGjAlRheDPavO/r0ncOo6xHl2xl4=;
-        b=k0AmGkcQoaX5Jye52YJ9ySL5Q9BE5ajDE63cR7S4tXVu3uXTW+FR6k/q8JkqgChB2J
-         UunLWAxghpa2rMCSDRRzz6y9hozTynusykQoPmMwdQm90fGsT8vSfs4pwrbfyRACmChC
-         r5EOF+h8X8Bg2bzIHlvhbyQY25oXO0vyFXB4dOPUUX6DXslOqd4aigUOX3x/DRNWphim
-         ONuLDc5E0KV37U6woHsiBTmZdo2CbX2nn8b4GucQwJnsTZaieHd3tv+7NBE6HLjweeGE
-         ctuZLFOWPf6/ENlrHQgZLwVzOzxtICI6j9JcZmNTjsagMu2VKyTRZqAjYLY98eGNTeSE
-         Zu6Q==;
+        b=D7TBwPMdPXrBc1BLMhs06JVKHrret2BHeWB7hxFVXZ4wm/tx5NY+hgATkeNQSHnRQY
+         +cN7ylSEY5l2KevcirXfZfd5pxdliEaQ6ELF8jZJ0qS/IL7MmkR+krn4T0L+JNq2YBsK
+         fSXRmcZ2UKCYRqWQt+2gRq3XnYrt1ZGDV+W4hcA7Y0mXDENzcdAIlLTlAkRrvihnYaFN
+         9cgM5KDw3mWr+YKrpYps8zEdBqzc48KZZ7IlHlKsu4zLOjy1U/l3KRY+krVcBIEt+J7h
+         j/rVIFOiqMW8vzqWgWmqFSCDCecpQQBtF6vUPxX76hhgBRUdnZBkNG8za2vHbemA9MYQ
+         pICA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:references:to:cc:in-reply-to
+         :date:subject:mime-version:message-id:from:dkim-signature;
+        bh=+0blcSRINR1pnTYnuB5827l0WZi6OXvie7l6yLXwfgY=;
+        fh=qJ9onPhxuJvKavxolNC2mYGQba5PpR+0LDyzhwHoIoE=;
+        b=QP2XKl9nCRrU1Rf2lDCsM/sSA1FP0SXepV7EmYQVXS+3T/AYwuLpbDq4sv/YdnuBwH
+         Lb/RdOebd4OJs+s9T2SqciH2K1Y1F+V2xzRBCTfcDRTCZQ00+XrwmFZfxFDqxD31nkEb
+         mlRXv138VYHPj1XTcRM6ajmKvHKTiFKBI70+vXVM9v+wDdlfQN2a3AKg3yU8SZhJaVJj
+         xBYhYKzjC3VqSdFVPaxoAK8nRaGs4e65jnrwO1wO61NbSUqpYguZyJkKIatlt2GSHw6v
+         2Riwar48JnEVRstrmkf0wInQEowstjhD5mE2LyZZmwARlR1uuCHTs1dwJGVrQ/UEi0D1
+         rJcg==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hjWxxkBW;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-25961-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="kvm+bounces-25961-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm+bounces-25961-alex.bennee=linaro.org@vger.kernel.org>
-Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [139.178.88.99])
-        by mx.google.com with ESMTPS id d9443c01a7336-206ae913107si49031975ad.168.2024.09.05.09.07.40
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@apple.com header.s=20180706 header.b=l1kqgZrV;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=REJECT dis=NONE) header.from=apple.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d75a77b69052e-45809c85174si11179991cf.351.2024.09.05.11.51.03
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 05 Sep 2024 09:07:40 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm+bounces-25961-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) client-ip=139.178.88.99;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 05 Sep 2024 11:51:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hjWxxkBW;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-25961-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="kvm+bounces-25961-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by sv.mirrors.kernel.org (Postfix) with ESMTPS id DB7D2283203
-	for <alex.bennee@linaro.org>; Thu,  5 Sep 2024 16:07:39 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 23B9819E7D8;
-	Thu,  5 Sep 2024 16:07:37 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="hjWxxkBW"
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3D2E819DF5B
-	for <kvm@vger.kernel.org>; Thu,  5 Sep 2024 16:07:34 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.133.124
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1725552456; cv=none; b=XtDgfHpGVxlgAaJdcYDkYXO5d3mYYmUT16Y6q9XsW/MPDigjV54XyNcR8QLMBJ7JI/npYLysOhuM4+6mQCYCQtlJB/qf8JWWUmvvXDDN7vS+sxohhZ+SzMR9lXRzxT1h9o3EowelZXmmeqxJPY4F8uo7Zn0T7xekH9fjgRw5yqw=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1725552456; c=relaxed/simple;
-	bh=B7Hg5Mvh5FgNI234xWuwat/0R2ezwN45gVUjyNVeeP0=;
-	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
-	 Content-Type:Content-Disposition:In-Reply-To; b=SMvD7JlhQ+KTfIOqThll1JzeEefYl6ccAjibYwOWrBds+UbLex+gUDtrWreWIukMrPsbQkp0G1j4wMVlg0wX5MmtxHytmOKBAjNJG0sXctsAohwBSYJ/mZOIpMT0HEMq1DExkPduJQHXzT2T4r+MFhYXl3wH35eluEILhr0zZJo=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=hjWxxkBW; arc=none smtp.client-ip=170.10.133.124
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1725552454;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=jp345HzFmHJEwidIfoXQdHcIH1v2W8J0QUu4Wb8LVnY=;
-	b=hjWxxkBWJakUQ9TJEJPc023hFtTfGI3R8y7CP97SWwwFuwA4LugUUZkpnz25Dt2NGa4aSV
-	9ZjjznoDlCNLZ9RU9dDMK8yYYROSOUZL6y9Lgcvwt7LLk/atS6Bd0nPpwB97W4cDMnYJg9
-	GZt1qeVzon3JTycn1NjaKaaD3NqWoak=
-Received: from mail-qv1-f70.google.com (mail-qv1-f70.google.com
- [209.85.219.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-12-Vsp5dNE-Nye8VHEsd-YA2A-1; Thu, 05 Sep 2024 12:07:32 -0400
-X-MC-Unique: Vsp5dNE-Nye8VHEsd-YA2A-1
-Received: by mail-qv1-f70.google.com with SMTP id 6a1803df08f44-6c35b2ccf3cso14979876d6.2
-        for <kvm@vger.kernel.org>; Thu, 05 Sep 2024 09:07:32 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1725552452; x=1726157252;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=jp345HzFmHJEwidIfoXQdHcIH1v2W8J0QUu4Wb8LVnY=;
-        b=Hj9RfHJhQvM//1Wp6a1apJ/rzvTg7Jd7SrLQ0ow8VerxVVuMaHJWPIKc+vjqwyrAda
-         +70kuhQYkFUhhx3TPtV6des6e5pqjW5Cr94EsaA+h1Y+2sKcyhl+CnKFvLQAQoQw56OU
-         3v11U1qytaywhGrTsnnxuYC6fBI+vzGCQYES5rLC9PSB4n/uoUw9J1PQmkvud5BYNfwH
-         y8j21ZQ4W2Uc4ryluaaCPWl2jo/MJbqa7LTZC4bu4WIlyTM6f/1WXrZMePLtb35y3mhW
-         p6yjinyHB5GZoHEV08UY9GKOEe/92MQ80JtqaStYbzBRKxEXsIkv4TqYqctKFXT9HlT7
-         e4Wg==
-X-Forwarded-Encrypted: i=1; AJvYcCVkqxC/WpeUHRTKPR5ja9VESY8yy35VWqJ+SUGnqHxc36rBX1GAw4P5yrLv9cb+LD89ESc=@vger.kernel.org
-X-Gm-Message-State: AOJu0YwEBbFFvY12MDr/jN9nt/Ej/mnp7m1kHrtyD/omEZ/iYjA+tzzM
-	d6n2+4DRNl33TTf/Xju8MVI/fvHGe7+mG0PBZZymmdd2/o1sOHOCeMkKToVWCyg5RKhwycU1ZKZ
-	2Er3pkmulQn7Q2hnQuEqrRrFjcYIzVyC/1KX8jVuue97Jp4sZ3w==
-X-Received: by 2002:a05:6214:4413:b0:6c1:77ca:66e6 with SMTP id 6a1803df08f44-6c3c62b3173mr102114196d6.32.1725552452190;
-        Thu, 05 Sep 2024 09:07:32 -0700 (PDT)
-X-Received: by 2002:a05:6214:4413:b0:6c1:77ca:66e6 with SMTP id 6a1803df08f44-6c3c62b3173mr102113566d6.32.1725552451795;
-        Thu, 05 Sep 2024 09:07:31 -0700 (PDT)
-Received: from x1n (pool-99-254-121-117.cpe.net.cable.rogers.com. [99.254.121.117])
-        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-6c5201e42a5sm8659686d6.36.2024.09.05.09.07.28
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 05 Sep 2024 09:07:31 -0700 (PDT)
-Date: Thu, 5 Sep 2024 12:07:27 -0400
-From: Peter Xu <peterx@redhat.com>
-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-Cc: Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org,
-	alex.williamson@redhat.com, andrew@codeconstruct.com.au,
-	andrew@daynix.com, arei.gonglei@huawei.com, berto@igalia.com,
-	borntraeger@linux.ibm.com, clg@kaod.org, david@redhat.com,
-	den@openvz.org, eblake@redhat.com, eduardo@habkost.net,
-	farman@linux.ibm.com, farosas@suse.de, hreitz@redhat.com,
-	idryomov@gmail.com, iii@linux.ibm.com, jamin_lin@aspeedtech.com,
-	jasowang@redhat.com, joel@jms.id.au, jsnow@redhat.com,
-	kwolf@redhat.com, leetroy@gmail.com, marcandre.lureau@redhat.com,
-	marcel.apfelbaum@gmail.com, michael.roth@amd.com, mst@redhat.com,
-	mtosatti@redhat.com, nsg@linux.ibm.com, pasic@linux.ibm.com,
-	pbonzini@redhat.com, peter.maydell@linaro.org, philmd@linaro.org,
-	pizhenwei@bytedance.com, pl@dlhnet.de, richard.henderson@linaro.org,
-	stefanha@redhat.com, steven_lee@aspeedtech.com, thuth@redhat.com,
-	vsementsov@yandex-team.ru, wangyanan55@huawei.com,
-	yuri.benditovich@daynix.com, zhao1.liu@intel.com,
-	qemu-block@nongnu.org, qemu-arm@nongnu.org, qemu-s390x@nongnu.org,
-	kvm@vger.kernel.org, avihaih@nvidia.com
-Subject: Re: [PATCH v2 01/19] qapi: Smarter camel_to_upper() to reduce need
- for 'prefix'
-Message-ID: <ZtnXP3_nB0vS5Ts8@x1n>
-References: <20240904111836.3273842-1-armbru@redhat.com>
- <20240904111836.3273842-2-armbru@redhat.com>
- <ZthQAr7Mpd0utBD9@redhat.com>
- <87o75263pq.fsf@pond.sub.org>
- <ZtnTxNFmgJlaeLZy@redhat.com>
-Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <ZtnTxNFmgJlaeLZy@redhat.com>
-X-TUID: FFoM4JdVnuRA
+       dkim=pass header.i=@apple.com header.s=20180706 header.b=l1kqgZrV;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=REJECT dis=NONE) header.from=apple.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1smHYx-0001Tt-4g; Thu, 05 Sep 2024 14:50:35 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <danny_canter@apple.com>)
+ id 1smHYp-0001T8-Mo
+ for qemu-devel@nongnu.org; Thu, 05 Sep 2024 14:50:29 -0400
+Received: from ma-mailsvcp-mx-lapp01.apple.com ([17.32.222.22])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <danny_canter@apple.com>)
+ id 1smHYn-0005m7-T7
+ for qemu-devel@nongnu.org; Thu, 05 Sep 2024 14:50:27 -0400
+Received: from rn-mailsvcp-mta-lapp01.rno.apple.com
+ (rn-mailsvcp-mta-lapp01.rno.apple.com [10.225.203.149])
+ by ma-mailsvcp-mx-lapp01.apple.com
+ (Oracle Communications Messaging Server 8.1.0.23.20230328 64bit (built Mar 28
+ 2023)) with ESMTPS id <0SJC00E9OS3JAB10@ma-mailsvcp-mx-lapp01.apple.com> for
+ qemu-devel@nongnu.org; Thu, 05 Sep 2024 11:45:19 -0700 (PDT)
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1039,Hydra:6.0.680,FMLib:17.12.60.29
+ definitions=2024-09-05_13,2024-09-05_01,2024-09-02_01
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=apple.com; h=cc :
+ content-type : date : from : in-reply-to : message-id : mime-version :
+ references : subject : to; s=20180706;
+ bh=+0blcSRINR1pnTYnuB5827l0WZi6OXvie7l6yLXwfgY=;
+ b=l1kqgZrV7Hl9oX6+g3EbexZq0VbXHoBmfmaimK1ljmaiX9MbBIqfI63GubHUATP5a1dZ
+ yG4cSPa0a6GWaHj/FuZNKoDeejVzqURejkXXGjSIukn6aDxMDwiTUbBhfFqZV0wdabaW
+ vLLg63hM6QPPWYX3qIrBvz0pKJtx5T6at+qk2w+/1zyzgkZLKH1unbEjjpNMeGNvPcBa
+ fOpFAH3iBlhWmptpVk3IsrfSosn7uP5jNsEsg5YobsipZ+elRCIUR1lG0UBt5dV637EH
+ 8NniXzAiy/WGChJwxvIbTXBb0zvJcp+QKo5eqcCVmM9MzouFlbYPoAbip0KEeQbFr1ua Ew==
+Received: from mr55p01nt-mmpp05.apple.com
+ (mr55p01nt-mmpp05.apple.com [10.170.185.201])
+ by rn-mailsvcp-mta-lapp01.rno.apple.com
+ (Oracle Communications Messaging Server 8.1.0.23.20230328 64bit (built Mar 28
+ 2023)) with ESMTPS id <0SJC0018ES3INTM0@rn-mailsvcp-mta-lapp01.rno.apple.com>; 
+ Thu, 05 Sep 2024 11:45:19 -0700 (PDT)
+Received: from process_milters-daemon.mr55p01nt-mmpp05.apple.com by
+ mr55p01nt-mmpp05.apple.com
+ (Oracle Communications Messaging Server 8.1.0.23.20230328 64bit (built Mar 28
+ 2023)) id <0SJC2FV00RK0GJ00@mr55p01nt-mmpp05.apple.com>; Thu,
+ 05 Sep 2024 18:45:18 +0000 (GMT)
+X-Va-A: 
+X-Va-T-CD: 9be860c946f6cbc0801dd392535b1c06
+X-Va-E-CD: 6e8d677d3901fd5b58b190047ca79016
+X-Va-R-CD: 4206bda14c83e153d471243933acbb53
+X-Va-ID: 6287912f-55b9-4e8d-82b7-b6141a875afa
+X-Va-CD: 0
+X-V-A: 
+X-V-T-CD: 9be860c946f6cbc0801dd392535b1c06
+X-V-E-CD: 6e8d677d3901fd5b58b190047ca79016
+X-V-R-CD: 4206bda14c83e153d471243933acbb53
+X-V-ID: 53283d84-6094-45c1-9937-dfa5ce4905f4
+X-V-CD: 0
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1039,Hydra:6.0.680,FMLib:17.12.60.29
+ definitions=2024-09-05_13,2024-09-05_01,2024-09-02_01
+Received: from smtpclient.apple (unknown [17.243.242.205])
+ by mr55p01nt-mmpp05.apple.com
+ (Oracle Communications Messaging Server 8.1.0.23.20230328 64bit (built Mar 28
+ 2023)) with ESMTPSA id <0SJC2G0AAS3GC300@mr55p01nt-mmpp05.apple.com>; Thu,
+ 05 Sep 2024 18:45:18 +0000 (GMT)
+From: Danny Canter <danny_canter@apple.com>
+Message-id: <65DA78B3-BA47-4C4E-80DE-F4B8B60A14B7@apple.com>
+Content-type: multipart/alternative;
+ boundary="Apple-Mail=_C71342DE-4ECD-4706-890E-E43BFA71A686"
+MIME-version: 1.0 (Mac OS X Mail 16.0 \(3776.700.51\))
+Subject: Re: [PATCH] hvf: arm: Allow creating VMs with > 63GB of RAM on macOS
+ 15+
+Date: Thu, 05 Sep 2024 11:45:06 -0700
+In-reply-to: <CAFEAcA9XXhsUeHNjsVkjhjO2_Njkk=L00BG+24xtXWWKgJayRw@mail.gmail.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ Cameron Esfahani <dirty@apple.com>, rbolshakov@ddn.com, agraf@csgraf.de
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <20240718230031.69641-1-danny_canter@apple.com>
+ <CAFEAcA__WZ=uw0VLcP0fLbUTwmctsZ1y=FRf9bXMT9WJC2sRFA@mail.gmail.com>
+ <E03A8C36-4079-468F-9596-328D713C3611@apple.com>
+ <CAFEAcA9XXhsUeHNjsVkjhjO2_Njkk=L00BG+24xtXWWKgJayRw@mail.gmail.com>
+X-Mailer: Apple Mail (2.3776.700.51)
+Received-SPF: pass client-ip=17.32.222.22; envelope-from=danny_canter@apple.com;
+ helo=ma-mailsvcp-mx-lapp01.apple.com
+X-Spam_score_int: -22
+X-Spam_score: -2.3
+X-Spam_bar: --
+X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.142,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: dCqhQCnYj3zN
 
-On Thu, Sep 05, 2024 at 04:52:36PM +0100, Daniel P. Berrangé wrote:
-> On Thu, Sep 05, 2024 at 07:59:13AM +0200, Markus Armbruster wrote:
-> > Daniel P. Berrangé <berrange@redhat.com> writes:
-> > 
-> > > On Wed, Sep 04, 2024 at 01:18:18PM +0200, Markus Armbruster wrote:
-> > >> camel_to_upper() converts its argument from camel case to upper case
-> > >> with '_' between words.  Used for generated enumeration constant
-> > >> prefixes.
-> > >
-> > >
-> > >> 
-> > >> Signed-off-by: Markus Armbruster <armbru@redhat.com>
-> > >> Reviewed-by: Daniel P. Berrang?? <berrange@redhat.com>
-> > >
-> > > The accent in my name is getting mangled in this series.
-> > 
-> > Uh-oh!
-> > 
-> > Checking...  Hmm.  It's correct in git, correct in output of
-> > git-format-patch, correct in the copy I got from git-send-email --bcc
-> > armbru via localhost MTA, and the copy I got from --to
-> > qemu-devel@nongnu.org, correct in lore.kernel.org[*], correct in an mbox
-> > downloaded from patchew.
-> > 
-> > Could the culprit be on your side?
-> 
-> I compared my received mail vs the mbox archive on nongnu.org for
-> qemu-devel.
-> 
-> In both cases the actual mail body seems to be valid UTF-8 and is
-> identical. The message in the nongnu.org archive, however, has
-> 
->   Content-Type: text/plain; charset=UTF-8
-> 
-> while the copy I got in my inbox has merely
-> 
->   Content-Type: text/plain
-> 
-> What I can't determine is whether your original sent message
-> had "charset=UTF-8" which then got stripped by redhat's incoming
-> mail server, or whether your original lacked 'charset=UTF8' and
-> it got added by mailman when saving the message to the mbox archives ?
 
-I didn't read into details of what Markus hit, but I just remembered I hit
-similar things before and Dan reported similar issue.  At that time (which
-I tried to recall..) was because I used git-publish sending patches, in
-which there is an encoding issue. I tried to fix with this branch:
+--Apple-Mail=_C71342DE-4ECD-4706-890E-E43BFA71A686
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain;
+	charset=utf-8
 
-https://github.com/xzpeter/git-publish/commits/fix-print-2/
+Forgot to leave a trail here :). V2 is posted =
+https://lists.gnu.org/archive/html/qemu-devel/2024-08/msg04016.html
 
-I also remember I tried to upstream that to Stefan's repo but I totally
-forgot what happened later, but the result is I am still using this branch
-internally (which I completely forgot which version I'm using... but I
-found that until I see this discussion and checked..).
+Thanks again for review Peter!
 
-Please ignore everything if git-publish is not used at all.. but just in
-case helpful..
+> On Aug 13, 2024, at 2:31=E2=80=AFAM, Peter Maydell =
+<peter.maydell@linaro.org> wrote:
+>=20
+> On Mon, 12 Aug 2024 at 23:18, Danny Canter <danny_canter@apple.com> =
+wrote:
+>> On Aug 12, 2024, at 10:52=E2=80=AFAM, Peter Maydell =
+<peter.maydell@linaro.org> wrote:
+>>> This is unfortunately probably going to imply a bit of extra
+>>> plumbing to be implemented for hvf -- that MachineClass::kvm_type
+>>> method is (as the name suggests) KVM specific. (Multi-patch
+>>> patchset for that, where we add the plumbing in as its own
+>>> separate patch (and/or whatever other split of functionality
+>>> into coherent chunks makes sense), rather than one-big-patch, =
+please.)
+>>=20
+>> That=E2=80=99s perfectly fine, I=E2=80=99ll try and see how the =
+plumbing was done
+>> for KVM and try and emulate where it makes sense
+>> for HVF. Agree though, that=E2=80=99d definitely push this into =
+multi-patch
+>> territory. Curious if you think what=E2=80=99s here today should
+>> be multiple patches or the current work seems fine in one?
+>=20
+> I think it was fine as one patch. My personal preference
+> when I write code tends to go for more-smaller-patches
+> over fewer-larger-patches, so I might have for example
+> split out "Add hvf_arch_vm_create()" into its own
+> patch, but that's very borderline, and I wouldn't ask for
+> that change at code review time unless the patch as a whole
+> was too big and unwieldy and I was looking for places to
+> suggest a split into multiple patches.
+>=20
+> -- PMM
 
--- 
-Peter Xu
 
+--Apple-Mail=_C71342DE-4ECD-4706-890E-E43BFA71A686
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html;
+	charset=utf-8
+
+<html><head><meta http-equiv=3D"content-type" content=3D"text/html; =
+charset=3Dutf-8"></head><body style=3D"overflow-wrap: break-word; =
+-webkit-nbsp-mode: space; line-break: after-white-space;">Forgot to =
+leave a trail here :). V2 is posted&nbsp;<a =
+href=3D"https://lists.gnu.org/archive/html/qemu-devel/2024-08/msg04016.htm=
+l">https://lists.gnu.org/archive/html/qemu-devel/2024-08/msg04016.html</a>=
+<div><br></div><div>Thanks again for review Peter!<br =
+id=3D"lineBreakAtBeginningOfMessage"><div><br><blockquote =
+type=3D"cite"><div>On Aug 13, 2024, at 2:31=E2=80=AFAM, Peter Maydell =
+&lt;peter.maydell@linaro.org&gt; wrote:</div><br =
+class=3D"Apple-interchange-newline"><div><div>On Mon, 12 Aug 2024 at =
+23:18, Danny Canter &lt;danny_canter@apple.com&gt; wrote:<br><blockquote =
+type=3D"cite">On Aug 12, 2024, at 10:52=E2=80=AFAM, Peter Maydell =
+&lt;peter.maydell@linaro.org&gt; wrote:<br><blockquote type=3D"cite">This =
+is unfortunately probably going to imply a bit of extra<br>plumbing to =
+be implemented for hvf -- that MachineClass::kvm_type<br>method is (as =
+the name suggests) KVM specific. (Multi-patch<br>patchset for that, =
+where we add the plumbing in as its own<br>separate patch (and/or =
+whatever other split of functionality<br>into coherent chunks makes =
+sense), rather than one-big-patch, please.)<br></blockquote><br>That=E2=80=
+=99s perfectly fine, I=E2=80=99ll try and see how the plumbing was =
+done<br>for KVM and try and emulate where it makes sense<br>for HVF. =
+Agree though, that=E2=80=99d definitely push this into =
+multi-patch<br>territory. Curious if you think what=E2=80=99s here today =
+should<br>be multiple patches or the current work seems fine in =
+one?<br></blockquote><br>I think it was fine as one patch. My personal =
+preference<br>when I write code tends to go for =
+more-smaller-patches<br>over fewer-larger-patches, so I might have for =
+example<br>split out "Add hvf_arch_vm_create()" into its own<br>patch, =
+but that's very borderline, and I wouldn't ask for<br>that change at =
+code review time unless the patch as a whole<br>was too big and unwieldy =
+and I was looking for places to<br>suggest a split into multiple =
+patches.<br><br>-- =
+PMM<br></div></div></blockquote></div><br></div></body></html>=
+
+--Apple-Mail=_C71342DE-4ECD-4706-890E-E43BFA71A686--

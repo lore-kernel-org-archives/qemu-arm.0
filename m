@@ -1,121 +1,102 @@
-Received: by 2002:a17:505:1f8d:b0:1be9:327d:8ee3 with SMTP id pt13csp470187njb;
-        Thu, 5 Sep 2024 05:27:05 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXexP0LC5pjzjA9sWjHOWoEPmrYsIAFQDhHkQDFmyvmCyb9WwpcxLCA0Gq8ugKqrKcAEU9H4vsm1TMF8g==@linaro.org
-X-Google-Smtp-Source: AGHT+IG+/ciMXAHDnxVfbaplaNLAXd0+HidKBqkJIe4nryFUysNjILR/SHpBD5Y0lhug7fxAiHqS
-X-Received: by 2002:a05:622a:1e8c:b0:456:952d:9bba with SMTP id d75a77b69052e-4571a018c0fmr203408611cf.59.1725539224853;
-        Thu, 05 Sep 2024 05:27:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1725539224; cv=none;
+Received: by 2002:a17:505:1f8d:b0:1be9:327d:8ee3 with SMTP id pt13csp478929njb;
+        Thu, 5 Sep 2024 05:56:33 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUTdWsl5+QKSMAL30cWUJwqwyd0O7LkHHSqbo+rHiSnjn6ohP5mi6wgxe9Bk7x8dRN5t8KLaH2Ii1TsNg==@linaro.org
+X-Google-Smtp-Source: AGHT+IHQM5shdcprtdQJ+AeSufb9nufR+lejUcHfyrmd1gVycV5obaN3xP1RR0X3xubEcAh/EfW7
+X-Received: by 2002:a05:620a:4481:b0:7a7:dd0f:649d with SMTP id af79cd13be357-7a97bd2a6e6mr1157758685a.57.1725540993553;
+        Thu, 05 Sep 2024 05:56:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1725540993; cv=none;
         d=google.com; s=arc-20240605;
-        b=HzzDFLeUBpdR4cgtzHVCv+RIxzqAbuSOdY0VBgpat6mM/oKWmdvuRfNjkttsAsLkXW
-         Kj2szxf5WC2+8GLn3CIIPE/yZECfkrrWMljZd4K8+E3MlGUoy2dmzfDcsaArswu9+Dvo
-         SG97ccp2ms9+GbY7tQcDIwBR4fZPDr77w+TbD/BW5D7O85+kv34Z3g1Akq9bctLzeEJP
-         p3WsHyMTi4UgEGjwLdaFqIz3S5kGU1UzB+0td2ZIjWG/i2NdtHDa5kaUEr7QKshPhZbM
-         V9ij/ZFqT8t4U03MgZ1waROfyckEBM9IYSXl+N75YuC0wat7gc0tdw41lclOnBxUkIPn
-         Ojog==
+        b=la6GMBus0l4VteRfxI34G+np0RNoN5gQ/qpHEl5ouD2eCeDB1NdV/QAO6kL9/SErd2
+         XKVXVv8TxRrhU4LhTWqGEGydONoR4NIvZYz1uyWbqMZAPpng8+Gqn203eWQpCa9B4vhC
+         E/zd/jymu06r9s6NU+Mvf7PqXgRLUIAEav5uSdEdwi9EC5Ye92K5IBM9x0ta8zz5j6/s
+         VB+c8PV9M0iicZtSdJGy8b5wnO92F0TGPIjeTX6vSrJzwBPxy9ONAEhOENsDX0JU3u/z
+         M/3E8dY0VtreunChZBxTHoKkMF/HOdQRZ6dWO+STdat7PqfK6UwF0TFDMiTMnF/nPCML
+         VkJw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:references
-         :message-id:in-reply-to:subject:cc:to:from:date;
-        bh=NG+btcPWaGB+drdHmHDKf3czAzw53AwZldX5h86v/K0=;
-        fh=s9SOpezquCHmksYoTw597I0urVhmPhQHRF8OMUi2MJ8=;
-        b=WB5KjtrDfsXsADFqAJ/8mybZERSKiuTbp0UTRJovv07WjJrIRpo7iR30jiY484hwj4
-         m+R1SMJYfDZ9LxLEIeuTLVwVPXqGYLRzVJXpWlwvyqTNDFD13hv/rp14KF/NVrwPHcOw
-         iI+0NDb4cC5c1M+an2bNIPpYttWdu/fD1Y/CO/At8I8l2rMmgkjFshBRUDP3WHMFLoKi
-         P5fiwJmGX0mZz87ub9H6/FtpPvwYo2u6rFN1hiF+9uvdlaNtjMhUgLATqEdbXkRX2J/s
-         ZQLcDx7iL9PpYfNcVKAhc7NIs4KoGPyeLyRz+CiIEH1CGtn5TWHLk/Kx+ZTsvf34Bvfw
-         7TLA==;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :in-reply-to:references:message-id:date:thread-index:thread-topic
+         :subject:cc:to;
+        bh=RmFLeo2c5SQuxEh+4BhGv3dlCaHol8qwgLRCjc6wTqY=;
+        fh=+60g8FpImUNL39aK87kixDC+gS8dF+7QrRKJIIkxFgE=;
+        b=gUiOLWGWtz+/JmA6gVM8h2BSJP3mDBHcADy22peTCVqCcM3E3GQeviOg8MZhfrwU+2
+         Vqgw7alsaTrgQ+rgkA382Ud6Hf8QzYXPb92rqiPsRAuxtT4/3NnoaTcTQxBylBJoOrlM
+         Jbm/HrLVcqfOk393yJAUlCegsl6HvvMDRfaMcAhyuonYwXB1H6XnpKJqNwM4uoOR/A7t
+         F4ZA4/yoHNI876pLCjSjEGcAlT2m96j+Z9Q18UHCGZnUHRNB6kc+oRwIFzpGlleKXWlE
+         KCFx/ASRQyyBDxwMl2ShdNhdpVNU+1tfekRsAQ0OYAj4yVfFuHE1s+Wg882vrIaVnCTo
+         LoMw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-45809c99409si3096991cf.608.2024.09.05.05.27.04
+        by mx.google.com with ESMTPS id af79cd13be357-7a98f00fb9fsi209951485a.528.2024.09.05.05.56.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 05 Sep 2024 05:27:04 -0700 (PDT)
+        Thu, 05 Sep 2024 05:56:33 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1smBZZ-00051v-NH; Thu, 05 Sep 2024 08:26:50 -0400
+	id 1smC1z-00033V-NN; Thu, 05 Sep 2024 08:56:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1smBZX-0004z8-R6; Thu, 05 Sep 2024 08:26:47 -0400
-Received: from zero.eik.bme.hu ([2001:738:2001:2001::2001])
+ (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1smC1y-00031y-Mi; Thu, 05 Sep 2024 08:56:10 -0400
+Received: from frasgout.his.huawei.com ([185.176.79.56])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1smBZV-00032U-GC; Thu, 05 Sep 2024 08:26:47 -0400
-Received: from zero.eik.bme.hu (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id 071624E6004;
- Thu, 05 Sep 2024 14:26:38 +0200 (CEST)
-X-Virus-Scanned: amavisd-new at eik.bme.hu
-Received: from zero.eik.bme.hu ([127.0.0.1])
- by zero.eik.bme.hu (zero.eik.bme.hu [127.0.0.1]) (amavisd-new, port 10028)
- with ESMTP id xoMHgmzaeXOz; Thu,  5 Sep 2024 14:26:36 +0200 (CEST)
-Received: by zero.eik.bme.hu (Postfix, from userid 432)
- id EEF7F4E6000; Thu, 05 Sep 2024 14:26:35 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id EB522746F60;
- Thu, 05 Sep 2024 14:26:35 +0200 (CEST)
-Date: Thu, 5 Sep 2024 14:26:35 +0200 (CEST)
-From: BALATON Zoltan <balaton@eik.bme.hu>
-To: Bernhard Beschow <shentey@gmail.com>
-cc: qemu-devel@nongnu.org, Jamin Lin <jamin_lin@aspeedtech.com>, 
- Helge Deller <deller@gmx.de>, Song Gao <gaosong@loongson.cn>, 
- Stafford Horne <shorne@gmail.com>, 
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>, 
- Joel Stanley <joel@jms.id.au>, Troy Lee <leetroy@gmail.com>, 
- Nicholas Piggin <npiggin@gmail.com>, Bin Meng <bmeng.cn@gmail.com>, 
- Jiaxun Yang <jiaxun.yang@flygoat.com>, Paolo Bonzini <pbonzini@redhat.com>, 
- Max Filippov <jcmvbkbc@gmail.com>, 
- Richard Henderson <richard.henderson@linaro.org>, 
- Artyom Tarasenko <atar4qemu@gmail.com>, 
- Aurelien Jarno <aurelien@aurel32.net>, qemu-riscv@nongnu.org, 
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
- Weiwei Li <liwei1518@gmail.com>, 
- =?ISO-8859-15?Q?C=E9dric_Le_Goater?= <clg@kaod.org>, 
- "Michael S. Tsirkin" <mst@redhat.com>, Hao Wu <wuhaotsh@google.com>, 
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, 
- Steven Lee <steven_lee@aspeedtech.com>, 
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, 
- Andrew Jeffery <andrew@codeconstruct.com.au>, 
- Alistair Francis <Alistair.Francis@wdc.com>, 
- Beniamino Galvani <b.galvani@gmail.com>, 
- Subbaraya Sundeep <sundeep.lkml@gmail.com>, 
- =?ISO-8859-15?Q?Fr=E9d=E9ric_Barrat?= <fbarrat@linux.ibm.com>, 
- =?ISO-8859-15?Q?Marc-Andr=E9_Lureau?= <marcandre.lureau@redhat.com>, 
- Peter Maydell <peter.maydell@linaro.org>, Tyrone Ting <kfting@nuvoton.com>, 
- Strahinja Jankovic <strahinja.p.jankovic@gmail.com>, qemu-arm@nongnu.org, 
- Sergio Lopez <slp@redhat.com>, Jan Kiszka <jan.kiszka@web.de>, 
- qemu-ppc@nongnu.org, Eduardo Habkost <eduardo@habkost.net>, 
- =?ISO-8859-15?Q?Herv=E9_Poussineau?= <hpoussin@reactos.org>, 
- Alistair Francis <alistair.francis@wdc.com>, 
- Aleksandar Rikalo <arikalo@gmail.com>, Jia Liu <proljc@gmail.com>, 
- Huacai Chen <chenhuacai@kernel.org>, 
- Niek Linnenbank <nieklinnenbank@gmail.com>, 
- Paul Burton <paulburton@kernel.org>, 
- =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>, 
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, 
- Palmer Dabbelt <palmer@dabbelt.com>
-Subject: Re: [PATCH v2 3/3] hw/char: Extract serial-mm
-In-Reply-To: <20240905073832.16222-4-shentey@gmail.com>
-Message-ID: <b80ddcfd-bd02-8ebd-315f-285c533aaf81@eik.bme.hu>
-References: <20240905073832.16222-1-shentey@gmail.com>
- <20240905073832.16222-4-shentey@gmail.com>
+ (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1smC1u-000135-Lo; Thu, 05 Sep 2024 08:56:10 -0400
+Received: from mail.maildlp.com (unknown [172.18.186.231])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4Wzzlb2CdJz6K98K;
+ Thu,  5 Sep 2024 20:52:11 +0800 (CST)
+Received: from lhrpeml100001.china.huawei.com (unknown [7.191.160.183])
+ by mail.maildlp.com (Postfix) with ESMTPS id 508741400CA;
+ Thu,  5 Sep 2024 20:55:53 +0800 (CST)
+Received: from lhrpeml500005.china.huawei.com (7.191.163.240) by
+ lhrpeml100001.china.huawei.com (7.191.160.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.39; Thu, 5 Sep 2024 13:55:53 +0100
+Received: from lhrpeml500005.china.huawei.com ([7.191.163.240]) by
+ lhrpeml500005.china.huawei.com ([7.191.163.240]) with mapi id 15.01.2507.039; 
+ Thu, 5 Sep 2024 13:55:52 +0100
+To: Nicolin Chen <nicolinc@nvidia.com>, Eric Auger <eric.auger@redhat.com>,
+ Mostafa Saleh <smostafa@google.com>
+CC: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org"
+ <qemu-devel@nongnu.org>, Peter Maydell <peter.maydell@linaro.org>, "Jason
+ Gunthorpe" <jgg@nvidia.com>, Jean-Philippe Brucker
+ <jean-philippe@linaro.org>, Moritz Fischer <mdf@kernel.org>, Michael Shavit
+ <mshavit@google.com>, "Andrea Bolognani" <abologna@redhat.com>, "Michael S.
+ Tsirkin" <mst@redhat.com>, "Peter Xu" <peterx@redhat.com>
+Subject: RE: nested-smmuv3 topic, Sep 2024
+Thread-Topic: nested-smmuv3 topic, Sep 2024
+Thread-Index: AQHa/21fMRq+vkBZBEO3I0aIbruIbrJJJAMQ
+Date: Thu, 5 Sep 2024 12:55:52 +0000
+Message-ID: <d0e3a60713da4ff1bb10245e789ecf24@huawei.com>
+References: <ZtlrLJzZqpnUrZQf@Asurada-Nvidia>
+In-Reply-To: <ZtlrLJzZqpnUrZQf@Asurada-Nvidia>
+Accept-Language: en-GB, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.203.177.241]
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII; format=flowed
-Received-SPF: pass client-ip=2001:738:2001:2001::2001;
- envelope-from=balaton@eik.bme.hu; helo=zero.eik.bme.hu
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=shameerali.kolothum.thodi@huawei.com;
+ helo=frasgout.his.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -128,132 +109,97 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
+From:  Shameerali Kolothum Thodi via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: KK/nuv1AyPsd
+X-TUID: dHvNq4l5BJMT
 
-On Thu, 5 Sep 2024, Bernhard Beschow wrote:
-> hw/char/serial currently contains the implementation of both TYPE_SERIAL and
-> TYPE_SERIAL_MM. According to serial_class_init(), TYPE_SERIAL is an internal
-> class while TYPE_SERIAL_MM is used by numerous machine types directly. Let's
-> move the latter into its own module which makes the dependencies more obvious
-> and the code more tidy.
->
-> The includes and the dependencies have been converted mechanically except in the
-> hw/char directories which were updated manually. The result was compile-tested.
-> Now, only hw/char makes direct use of TYPE_SERIAL:
->
->  # grep -r -e "select SERIAL" | grep -v SERIAL_
->  hw/char/Kconfig:    select SERIAL
->  hw/char/Kconfig:    select SERIAL
->  hw/char/Kconfig:    select SERIAL
->  hw/char/Kconfig:    select SERIAL
->  hw/char/Kconfig:    select SERIAL
->
->  # grep -r -e "/serial\\.h"
->  include/hw/char/serial-mm.h:#include "hw/char/serial.h"
->  hw/char/serial-pci-multi.c:#include "hw/char/serial.h"
->  hw/char/serial.c:#include "hw/char/serial.h"
->  hw/char/serial-isa.c:#include "hw/char/serial.h"
->  hw/char/serial-pci.c:#include "hw/char/serial.h"
->
-> Tested-by: Andrew Jeffery <andrew@codeconstruct.com.au>
-> Reviewed-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
-> ---
-> include/hw/arm/aspeed_soc.h         |   2 +-
-> include/hw/char/mchp_pfsoc_mmuart.h |   2 +-
-> include/hw/char/serial-mm.h         |  52 +++++++++
-> include/hw/char/serial.h            |  19 ----
-> hw/arm/allwinner-a10.c              |   2 +-
-> hw/arm/allwinner-h3.c               |   2 +-
-> hw/arm/allwinner-r40.c              |   2 +-
-> hw/arm/aspeed_ast2400.c             |   2 +-
-> hw/arm/aspeed_soc_common.c          |   2 +-
-> hw/arm/kzm.c                        |   2 +-
-> hw/arm/msf2-soc.c                   |   2 +-
-> hw/arm/musicpal.c                   |   2 +-
-> hw/arm/npcm7xx.c                    |   2 +-
-> hw/arm/pxa2xx.c                     |   2 +-
-> hw/char/omap_uart.c                 |   2 +-
-> hw/char/serial-mm.c                 | 157 ++++++++++++++++++++++++++++
-> hw/char/serial.c                    | 126 ----------------------
-> hw/display/sm501.c                  |   2 +-
-> hw/hppa/machine.c                   |   2 +-
-> hw/loongarch/virt.c                 |   2 +-
-> hw/microblaze/petalogix_ml605_mmu.c |   2 +-
-> hw/mips/boston.c                    |   2 +-
-> hw/mips/jazz.c                      |   2 +-
-> hw/mips/loongson3_virt.c            |   2 +-
-> hw/mips/malta.c                     |   2 +-
-> hw/mips/mipssim.c                   |   2 +-
-> hw/openrisc/openrisc_sim.c          |   2 +-
-> hw/openrisc/virt.c                  |   2 +-
-> hw/ppc/e500.c                       |   2 +-
-> hw/ppc/ppc405_uc.c                  |   2 +-
-> hw/ppc/ppc440_bamboo.c              |   2 +-
-> hw/ppc/sam460ex.c                   |   2 +-
-> hw/ppc/virtex_ml507.c               |   2 +-
-> hw/riscv/virt.c                     |   2 +-
-> hw/sparc64/niagara.c                |   2 +-
-> hw/sparc64/sun4u.c                  |   2 +-
-> hw/xtensa/xtfpga.c                  |   2 +-
-> hw/arm/Kconfig                      |  20 ++--
-> hw/char/Kconfig                     |   4 +
-> hw/char/meson.build                 |   1 +
-> hw/display/Kconfig                  |   2 +-
-> hw/hppa/Kconfig                     |   2 +-
-> hw/loongarch/Kconfig                |   2 +-
-> hw/microblaze/Kconfig               |   2 +-
-> hw/mips/Kconfig                     |  10 +-
-> hw/openrisc/Kconfig                 |   4 +-
-> hw/ppc/Kconfig                      |  10 +-
-> hw/riscv/Kconfig                    |   2 +-
-> hw/sparc64/Kconfig                  |   1 +
-> hw/xtensa/Kconfig                   |   2 +-
-> 50 files changed, 276 insertions(+), 206 deletions(-)
-> create mode 100644 include/hw/char/serial-mm.h
-> create mode 100644 hw/char/serial-mm.c
->
-> diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
-> index 624d489e0d..689f52dae8 100644
-> --- a/include/hw/arm/aspeed_soc.h
-> +++ b/include/hw/arm/aspeed_soc.h
-> @@ -39,7 +39,7 @@
-> #include "hw/misc/unimp.h"
-> #include "hw/misc/aspeed_peci.h"
-> #include "hw/fsi/aspeed_apb2opb.h"
-> -#include "hw/char/serial.h"
-> +#include "hw/char/serial-mm.h"
-> #include "hw/intc/arm_gicv3.h"
->
-> #define ASPEED_SPIS_NUM  2
-> diff --git a/include/hw/char/mchp_pfsoc_mmuart.h b/include/hw/char/mchp_pfsoc_mmuart.h
-> index b0e14ca355..a7b8b1b08b 100644
-> --- a/include/hw/char/mchp_pfsoc_mmuart.h
-> +++ b/include/hw/char/mchp_pfsoc_mmuart.h
-> @@ -29,7 +29,7 @@
-> #define HW_MCHP_PFSOC_MMUART_H
->
-> #include "hw/sysbus.h"
-> -#include "hw/char/serial.h"
-> +#include "hw/char/serial-mm.h"
->
-> #define MCHP_PFSOC_MMUART_REG_COUNT 13
->
-> diff --git a/include/hw/char/serial-mm.h b/include/hw/char/serial-mm.h
-> new file mode 100644
-> index 0000000000..62a8489d69
-> --- /dev/null
-> +++ b/include/hw/char/serial-mm.h
-> @@ -0,0 +1,52 @@
-> +/*
-> + * QEMU 16550A UART emulation
+Hi Nicolin,
 
-This is now only "memory mapped 16550A compatible UART emulation" or 
-something like that, the actual 16550A emulation is in serial.c where this 
-was moved from. Maybe worth making it clear in this comment and in 
-serial-mm.c as well.
+Thanks for the write up and task progress status.
 
-Regards,
-BALATON Zoltan
+> -----Original Message-----
+> From: Nicolin Chen <nicolinc@nvidia.com>
+> Sent: Thursday, September 5, 2024 9:26 AM
+> To: Eric Auger <eric.auger@redhat.com>; Shameerali Kolothum Thodi
+> <shameerali.kolothum.thodi@huawei.com>; Mostafa Saleh
+> <smostafa@google.com>
+> Cc: qemu-arm@nongnu.org; qemu-devel@nongnu.org; Peter Maydell
+> <peter.maydell@linaro.org>; Jason Gunthorpe <jgg@nvidia.com>; Jean-
+> Philippe Brucker <jean-philippe@linaro.org>; Moritz Fischer
+> <mdf@kernel.org>; Michael Shavit <mshavit@google.com>; Andrea
+> Bolognani <abologna@redhat.com>; Michael S. Tsirkin <mst@redhat.com>;
+> Peter Xu <peterx@redhat.com>
+> Subject: nested-smmuv3 topic, Sep 2024
+>=20
+> Hi all,
+>=20
+> Hope I didn't miss anybody who is related to the topic. Please,
+> feel free to add!
+>=20
+> <--- Background --->
+> As some of you know, there is an ongoing effort for nested-smmuv3
+> support in QEMU on ARM, working with the kernel IOMMUFD uAPIs:
+> [Nesting for vSTE]
+> https://lore.kernel.org/linux-iommu/0-v2-621370057090+91fec-
+> smmuv3_nesting_jgg@nvidia.com/
+> [Nesting for invalidations]
+> https://lore.kernel.org/linux-
+> iommu/cover.1724776335.git.nicolinc@nvidia.com/
+>=20
+> The kernel patches are still under review. Jason and I are hoping
+> them to get merged at next cycle for v6.13, which means the QEMU
+> patches might start a review process as early as Nov/Dec?
+>=20
+> That being said, I think we are way behind the point that patches
+> can get reviewed: most of the QEMU patches on my branches weren't
+> touched very often, but merely updated to the latest kernel uAPIs
+> for verification. So, I feel this might be a good point to gather
+> folks together to discuss about the possible timeline and ask for
+> help. I think this would potentially help folks who are going to
+> attend the KVM forum (or LPC) to carry out a discussion. (Sorry,
+> I won't make it due to some conflict..)
+>=20
+> <-- Task Breakdown --->
+> I previously sent a RFCv1 series collecting comments/suggestions,
+> for multi-vSMMU instance design in ARM Virt code:
+> https://lore.kernel.org/qemu-
+> devel/cover.1719361174.git.nicolinc@nvidia.com/
+> (And thanks again for all the inputs!)
+>=20
+> The main takeaway from the discussion is to
+> 1) Turn the vSMMU module into a pluggable one, like intel-iommu
+> 2) Move the per-SMMU pxb bus and device auto-assign into libvirt
+>=20
+> Apart from the multi-vSMMU thing, there's basic nesting series:
+> 0) Keep updating to the latest kernel uAPIs to support nesting
+
+By this you mean the old HWPT based nested-smmuv3 support?
+
+>=20
+> I was trying to do all these three, but apparently too ambitious.
+> The kernel side of work is still taking a lot of my bandwidth. So
+> far I had almost-zero progress on task (1) and completely-zero on
+> task (2).
+>=20
+> <-- Help Needed --->
+> So, I'm wondering if anyone(s) might have some extra bandwidth in
+> the following months helping these two tasks, either of which can
+> be a standalone project I think.
+>=20
+> For task (0), I think I can keep updating the uAPI part, although
+> it'd need some help for reviews, which I was hoping to occur after
+> Intel sends the QEMU nesting backend patches. Once we know how big
+> the rework is going to be, we may need to borrow some help at that
+> point once again..
+
+I might have some bandwidth starting October and can take a look at=20
+task 1 above. I haven't gone through the VIOMMU API model completely
+yet and plan to do that soon.
+
+Also I am planning to attend KVM forum, so if there are anyone interested
+to have  a chat on this, please let me know.
+
+Thanks,
+Shameer

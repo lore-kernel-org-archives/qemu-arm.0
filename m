@@ -1,227 +1,174 @@
-Received: by 2002:a17:505:1f8d:b0:1be9:327d:8ee3 with SMTP id pt13csp764323njb;
-        Fri, 6 Sep 2024 01:05:51 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUVy6GwCYbDorX68Apa42S8RHj90sx5PiaK/jY2dn2PTs5sVFoJeQLFAhOmyDsi0ygyczMoYPwogK7WJg==@linaro.org
-X-Google-Smtp-Source: AGHT+IFRwalQIJVeU83sKSthcXNPJ+jZK+FbpmZTQWn9cghIVVZfDLgtFHe+GVQjc12SGATz/Vdh
-X-Received: by 2002:a05:620a:2484:b0:7a4:dfd6:5fb8 with SMTP id af79cd13be357-7a997333cd9mr183350485a.23.1725609951310;
-        Fri, 06 Sep 2024 01:05:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1725609951; cv=none;
+Received: by 2002:a17:505:1909:b0:1be9:327d:8ee3 with SMTP id az9csp126646njb;
+        Fri, 6 Sep 2024 08:31:58 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCU8oOjzcUVcK536jMt7SZp2gLfiEpPKzdxAWHYoQkbDYCpzjLIN6YgMsEX3is7XD+q/+kxy9gDcOQpU0g==@linaro.org
+X-Google-Smtp-Source: AGHT+IGx5+wQw6P43vTJsMZjkDJNCkkfzMXEXJ6rhc/seNDnGTzdJ5NxvOXGD2PPcWdlX0m30gQQ
+X-Received: by 2002:a05:622a:90a:b0:456:7d2e:c901 with SMTP id d75a77b69052e-4567f6e999fmr369018621cf.57.1725636718367;
+        Fri, 06 Sep 2024 08:31:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1725636718; cv=none;
         d=google.com; s=arc-20240605;
-        b=Gow1uOgbv6bV9LTN5odQfPUTBYT36/mASHXbLnwYdmBMxTJv/x6admWUbSNejPrM21
-         vTEbaTE2wQlE2Zcini1MxSsYfGRO1VlEHlmv//fIPfos/xLsQwe0Y07fqlB+24zQMMgN
-         6LK1Hhfe8wA4FIe2Hj2UhPPcOMeehQiftV9+0gBhv/6dLhHUBllrNMVXEsFWr2+VpMiM
-         X5Xe115HDFiSdgN2cqVJ+1SsKisGaeV/lxNFMxZwKBCMRsV/djpEb1iZVG+fB0SlfXHu
-         1PBN1uQGX0gLvl/ZbrFM1pgl78AN/tksarBQ3S8s5NDOk3b/JVi2G5IsyX1wBwJVB2sj
-         tyaA==
+        b=KVVpNWlvqwHoMy89I+bGCunludhC/D/XocMeFDryPiOOwbad2Jih9LSCuQc/v9gi+Q
+         ZA6f++s9zyEaDZIi/qdABmEYQK4K2H+RmwG2M71io/iYHs88ZlIn5RTOs34sPVUop59w
+         uYsfLmbTy0NzsLSKFT0Dr/zrUVELExIzgFLb1HVcPeqJkzIw1CvISM3NnJ6R6uF4b8Rh
+         68vksnuXaU2xRCPT+SmAcsPNA8wVMSI/bVCH/J8WjfOTZMgxJzlhcO6rtn9UYG2hBJeR
+         iPx1wDjyO3Me7pKlRV7Aj3kvLi3/BfRiKquYB5ZGvr1cAS9kGUTIt0qPrKwhh64fbx2N
+         u7rw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:user-agent
-         :in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=b2Z8vDLtxvOwVz/1/J0e/jbknfGPmCb71D3+u6PQgWw=;
-        fh=MSXx3/f76VBDSIqjUjASUTosLueICKiQ6SjAWjuHdEM=;
-        b=ijxwUQqkifdj/fq4qcVevc5e4GGg2657EGnvURJniwk2Wlwjsij5JNfQbm8NcV6CLM
-         FB4QsU9FWuU7Ltx4+aBm8WmX81vlZ0ZpSUaYWHWZ8Us0RiRuN5LThSipoPcC6wlboCzT
-         5JXgiBU5h+zFs7U3JRrrCF3vo3HgxATAbJWi9zjOVCz5G/LyMdaoOhqSLJuGk1fZTgHu
-         19zFtMDx9JZ0Axy/hcMMi7DT7MSS9+nDv/kE1H7Kd9lLZQwEANvzDU68qRREzIH3dv2w
-         e5nn0+pFGICxDz8SLAhmBNDj4svuMkTYXutl9Qqdqw+SpNds3mfiTt/dPb2FRJxyyACX
-         2vWg==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=FSMFPCKRM72gF/O6rl0xrBVl8EAYOMwC35frHo9+pq8=;
+        fh=m8VTiiH39OepxlMilkLPn1FhGRjvBypUBLwEmUIitqA=;
+        b=O4zzx8jiVej/hlXyVu3Nds16MJuQXWADFFbbEC9xlMk6ZV9UfxS8FQiJ3oOx4WJTFC
+         tIg3+88niO4aZaAeUDcaNM4ewsMEEOvfSxMqEGJ7An6RQsqLezuZpsdaqNu06gBa0y8z
+         tka3owLo84U1QxYV4ndVW+nKpqx0U6fFXHryLWeiUsa8FCVunFzdKjY0GOkpc159Hrkt
+         Z8OXGdRMXkVYA731Rn6OGAYkYm6sLLqTLyxDdCDaAM0BKeKOj92ZIudVUwzAep2z7zFW
+         qCLYCYM8/LwJegWXaSNpgZnZJDwcfXwBdhzD00iyUuORhgjSW1XQLho9pBSLE2g4wZpm
+         rxcw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cURkoN9t;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b="F7Ng0//8";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7a98f00a154si418328085a.452.2024.09.06.01.05.51
+        by mx.google.com with ESMTPS id d75a77b69052e-45809c4cea0si28955971cf.13.2024.09.06.08.31.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 06 Sep 2024 01:05:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 06 Sep 2024 08:31:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cURkoN9t;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=pass header.i=@linaro.org header.s=google header.b="F7Ng0//8";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1smTyL-0006uc-Kr; Fri, 06 Sep 2024 04:05:37 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1smavf-0000li-Ck; Fri, 06 Sep 2024 11:31:19 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1smTyJ-0006mj-LD
- for qemu-arm@nongnu.org; Fri, 06 Sep 2024 04:05:35 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1smTyH-0003Tb-TX
- for qemu-arm@nongnu.org; Fri, 06 Sep 2024 04:05:35 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1725609932;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=b2Z8vDLtxvOwVz/1/J0e/jbknfGPmCb71D3+u6PQgWw=;
- b=cURkoN9t1YkLx7bU5pkTIK0wDmXnrVtgnz+IBOlGIoKSbxQFlccM27VqREGdEZqUXF+zB9
- GG8FRVFazrpQdFvRo3ePRVjdiIJxQMe7rA+KwY68RNavo5Ek08UEK050+FvKGdoluBBvab
- O2z+cHS3iYB8cTciESIV2al6ihojirw=
-Received: from mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-473-af-HXlhEMk6jyJKElEwrpw-1; Fri,
- 06 Sep 2024 04:05:27 -0400
-X-MC-Unique: af-HXlhEMk6jyJKElEwrpw-1
-Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 110AB1953963; Fri,  6 Sep 2024 08:05:23 +0000 (UTC)
-Received: from redhat.com (unknown [10.42.28.57])
- by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 6C9AD19560AA; Fri,  6 Sep 2024 08:05:13 +0000 (UTC)
-Date: Fri, 6 Sep 2024 09:05:10 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Cornelia Huck <cohuck@redhat.com>, Eduardo Habkost <eduardo@habkost.net>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Yanan Wang <wangyanan55@huawei.com>, Zhao Liu <zhao1.liu@intel.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
- Nicholas Piggin <npiggin@gmail.com>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- David Gibson <david@gibson.dropbear.id.au>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>,
- Thomas Huth <thuth@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- Eric Farman <farman@linux.ibm.com>, David Hildenbrand <david@redhat.com>,
- Ilya Leoshkevich <iii@linux.ibm.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, qemu-ppc@nongnu.org, qemu-s390x@nongnu.org
-Subject: Re: [PATCH for-9.2] hw: add compat machines for 9.2
-Message-ID: <Ztq3tosWzSZ8pIL8@redhat.com>
-References: <20240816103723.2325982-1-cohuck@redhat.com>
- <Zr8uNB8gaJTroMBU@redhat.com> <Ztn21z0ZR3_MiVQJ@redhat.com>
- <CAFEAcA9ToJuZwGkJr2gCRf63uJom0b0QpdVv-OrAVVUGwB_2wQ@mail.gmail.com>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1smavY-0000k2-KE
+ for qemu-devel@nongnu.org; Fri, 06 Sep 2024 11:31:14 -0400
+Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1smavU-0005sb-R7
+ for qemu-devel@nongnu.org; Fri, 06 Sep 2024 11:31:12 -0400
+Received: by mail-ed1-x533.google.com with SMTP id
+ 4fb4d7f45d1cf-5c3cdbe4728so2337698a12.2
+ for <qemu-devel@nongnu.org>; Fri, 06 Sep 2024 08:31:08 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1725636667; x=1726241467; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=FSMFPCKRM72gF/O6rl0xrBVl8EAYOMwC35frHo9+pq8=;
+ b=F7Ng0//8CFWv+HaQSb8+6q7U6FAebDtB/OpSHH+eqN3wb7B5WwDnpsfwArYTbD+U7D
+ 1yqsmr6N1AtwN+GdGc1kiSOdMDqgOSEMLiwsQVYQRo+EdnC3P2gWw3URCWXnpR3AkUPY
+ oDlzfJOLDpr7QKUg4xQ6dRJ1bzeqBRxbxhlWtyc5EliiZ5CCVYa8pSa4EHt1/Hvwzy58
+ uDy/kNijPvkx2DP1XeoANwKoZ+KtsIt02nY4bUHUfuLJJ62PEU87/O3qs2JmuZRw+eXi
+ YbUb3/PdBZLhKisvrSgFdXZInAwWz168MQcPjSvxTCqSFXwqRdcjSJi+DFI1qriM2bfx
+ hLgg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1725636667; x=1726241467;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=FSMFPCKRM72gF/O6rl0xrBVl8EAYOMwC35frHo9+pq8=;
+ b=XiyxpBXKsLroXSvLK9wajdODjz0ECg9a2XkR7QYPTWvKrrdr/i3Gog1r57H2mAomtl
+ GZ6qi3SSwkveuCXz5aZ8NNoHApL5spvf64Wwl86I3KqS3phE2Yy7JHGOjSiDjhvvZDA+
+ /jex/dxaZZK6OCOsxK8L4uIBiA9W52e+Wp52DN/dMqGePu1TIJEsgrBmffMMyTSUV3fl
+ 0Wm2YXrpUNBmQRhCD2UVqambJlLE+f6Aujj0AjFMwkuu6ggmR3tDY3a9T3S8pVef/4cl
+ oGWv2gCehgPJirfaQFb6dzrFFipUonX0Spll2fmdHep1NEPAgzf2kJUQ48BzqdNOzs2Y
+ qhRA==
+X-Gm-Message-State: AOJu0YwXPXZhFTEItB1+wKxPLs+92itG02y0FCcAhKN4QfA80nDuVxg5
+ qugMa0QwzMuMeGOhlUOd6E6ISXZArAP9/qx5Cbk02PcO15hdnZdmjiIXrhMLiY6NSB42tc41s+0
+ WrjB2YdXUCCe6JeZXTb6Llja37Bl4u1VXNgg8sA==
+X-Received: by 2002:a05:6402:5246:b0:5c3:5423:3d10 with SMTP id
+ 4fb4d7f45d1cf-5c354233f35mr6627677a12.5.1725636666944; Fri, 06 Sep 2024
+ 08:31:06 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <CAFEAcA9ToJuZwGkJr2gCRf63uJom0b0QpdVv-OrAVVUGwB_2wQ@mail.gmail.com>
-User-Agent: Mutt/2.2.12 (2023-09-09)
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 11
-X-Spam_score: 1.1
-X-Spam_bar: +
-X-Spam_report: (1.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.142,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_SBL_CSS=3.335, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+References: <20240828111552.93482-1-danny_canter@apple.com>
+ <20240828111552.93482-2-danny_canter@apple.com>
+In-Reply-To: <20240828111552.93482-2-danny_canter@apple.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 6 Sep 2024 16:30:56 +0100
+Message-ID: <CAFEAcA9MWgPaJvPpvaQwRApa8NoKpUo-ozzBmKuPGREbkUhyUw@mail.gmail.com>
+Subject: Re: [PATCH v2 1/3] hw/boards: Add hvf_get_physical_address_range to
+ MachineClass
+To: Danny Canter <danny_canter@apple.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, dirty@apple.com, 
+ rbolshakov@ddn.com, agraf@csgraf.de, pbonzini@redhat.com, 
+ richard.henderson@linaro.org, eduardo@habkost.net, mst@redhat.com, 
+ marcel.apfelbaum@gmail.com, philmd@linaro.org, wangyanan55@huawei.com, 
+ zhao1.liu@intel.com
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::533;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x533.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: E7xbtPGuPzcO
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: sSFSMCAkYz4U
 
-On Thu, Sep 05, 2024 at 08:05:14PM +0100, Peter Maydell wrote:
-> On Thu, 5 Sept 2024 at 19:22, Daniel P. Berrangé <berrange@redhat.com> wrote:
-> >
-> > On Fri, Aug 16, 2024 at 11:47:16AM +0100, Daniel P. Berrangé wrote:
-> > > On Fri, Aug 16, 2024 at 12:37:23PM +0200, Cornelia Huck wrote:
-> > > > Add 9.2 machine types for arm/i440fx/m68k/q35/s390x/spapr.
-> > > >
-> > > > Signed-off-by: Cornelia Huck <cohuck@redhat.com>
-> > > > ---
-> > > >  hw/arm/virt.c              |  9 ++++++++-
-> > > >  hw/core/machine.c          |  3 +++
-> > > >  hw/i386/pc.c               |  3 +++
-> > > >  hw/i386/pc_piix.c          | 15 ++++++++++++---
-> > > >  hw/i386/pc_q35.c           | 13 +++++++++++--
-> > > >  hw/m68k/virt.c             |  9 ++++++++-
-> > > >  hw/ppc/spapr.c             | 15 +++++++++++++--
-> > > >  hw/s390x/s390-virtio-ccw.c | 14 +++++++++++++-
-> > > >  include/hw/boards.h        |  3 +++
-> > > >  include/hw/i386/pc.h       |  3 +++
-> > > >  10 files changed, 77 insertions(+), 10 deletions(-)
-> > >
-> > > Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
-> > >
-> > >
-> > > > diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
-> > > > index d9e69243b4a7..746bfe05d386 100644
-> > > > --- a/hw/i386/pc_piix.c
-> > > > +++ b/hw/i386/pc_piix.c
-> > > > @@ -479,13 +479,24 @@ static void pc_i440fx_machine_options(MachineClass *m)
-> > > >                                       "Use a different south bridge than PIIX3");
-> > > >  }
-> > > >
-> > > > -static void pc_i440fx_machine_9_1_options(MachineClass *m)
-> > > > +static void pc_i440fx_machine_9_2_options(MachineClass *m)
-> > > >  {
-> > > >      pc_i440fx_machine_options(m);
-> > > >      m->alias = "pc";
-> > > >      m->is_default = true;
-> > > >  }
-> > > >
-> > > > +DEFINE_I440FX_MACHINE(9, 2);
-> > > > +
-> > > > +static void pc_i440fx_machine_9_1_options(MachineClass *m)
-> > > > +{
-> > > > +    pc_i440fx_machine_9_2_options(m);
-> > > > +    m->alias = NULL;
-> > > > +    m->is_default = false;
-> > > > +    compat_props_add(m->compat_props, hw_compat_9_1, hw_compat_9_1_len);
-> > > > +    compat_props_add(m->compat_props, pc_compat_9_1, pc_compat_9_1_len);
-> > > > +}
-> > > > +
-> > > >  DEFINE_I440FX_MACHINE(9, 1);
-> > > >
-> > > >  static void pc_i440fx_machine_9_0_options(MachineClass *m)
-> > > > @@ -493,8 +504,6 @@ static void pc_i440fx_machine_9_0_options(MachineClass *m)
-> > > >      PCMachineClass *pcmc = PC_MACHINE_CLASS(m);
-> > > >
-> > > >      pc_i440fx_machine_9_1_options(m);
-> > > > -    m->alias = NULL;
-> > > > -    m->is_default = false;
-> > > >      m->smbios_memory_device_size = 16 * GiB;
-> > >
-> > > Feels like we should be adding an "_AS_LATEST" macro
-> > > variant for piix/q35 too, so it matches the pattern
-> > > in other targets for handling alias & is_default.
-> > >
-> > > Not a thing your patch needs todo though.
-> >
-> > I've just a patch that does that now. If it looks good & you want to include
-> > it as a pre-requisite for your patch here feel free to grab, otherwise I can
-> > rebase it after your patch merges.
-> 
-> I have this patch in my target-arm pullreq that's currently posted
-> and pending merge, by the way.
+On Wed, 28 Aug 2024 at 12:16, Danny Canter <danny_canter@apple.com> wrote:
+>
+> This addition will be necessary for some HVF related work to follow.
+> For HVF on ARM there exists a set of APIs in macOS 13 to be able to
+> adjust the IPA size for a given VM. This is useful as by default HVF
+> uses 36 bits as the IPA size, so to support guests with > 64GB of RAM
+> we'll need to reach for this.
+>
+> To have all the info necessary to carry this out however, we need some
+> plumbing to be able to grab the memory map and compute the highest GPA
+> prior to creating the VM. This is almost exactly like what kvm_type is
+> used for on ARM today, and is also what this will be used for. We will
+> compute the highest GPA and find what IPA size we'd need to satisfy this,
+> and if it's valid (macOS today caps at 40b) we'll set this to be the IPA
+> size in coming patches. This new method is only needed (today at least)
+> on ARM, and obviously only for HVF/macOS, so admittedly it is much less
+> generic than kvm_type today, but it seemed a somewhat sane way to get
+> the information we need from the memmap at VM creation time.
+>
+> Signed-off-by: Danny Canter <danny_canter@apple.com>
 
-Ah ok, i'll rebase on top of that. then
+> diff --git a/hw/i386/x86.c b/hw/i386/x86.c
+> index 01fc5e6562..fa7a0f6b98 100644
+> --- a/hw/i386/x86.c
+> +++ b/hw/i386/x86.c
+> @@ -382,6 +382,8 @@ static void x86_machine_class_init(ObjectClass *oc, void *data)
+>      mc->get_default_cpu_node_id = x86_get_default_cpu_node_id;
+>      mc->possible_cpu_arch_ids = x86_possible_cpu_arch_ids;
+>      mc->kvm_type = x86_kvm_type;
+> +    /* Not needed for x86 */
+> +    mc->hvf_get_physical_address_range = NULL;
+>      x86mc->save_tsc_khz = true;
+>      x86mc->fwcfg_dma_enabled = true;
+>      nc->nmi_monitor_handler = x86_nmi;
 
-With regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+We guarantee that object and class structs are zero-initialized,
+so we don't need to explicitly set this field to NULL.
 
+Otherwise
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+
+thanks
+-- PMM

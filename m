@@ -1,97 +1,97 @@
-Received: by 2002:a17:505:1909:b0:1be9:327d:8ee3 with SMTP id az9csp59173njb;
-        Fri, 6 Sep 2024 05:27:11 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXa/zCXhrmIzmENm346VuY+n3QxFO3xx2NEmdEtlt05+m0DnYmMXx+W5+TuiyPwJrz1HILPqL7y4XJOlw==@linaro.org
-X-Google-Smtp-Source: AGHT+IE6JQntQMwKy/nbxMLX7H3uZJl6EX0+whfM1jIIHC5afXdNMn+YRBicOytav5QFiW8Rv6ga
-X-Received: by 2002:a05:6214:3b81:b0:6c3:53a9:d610 with SMTP id 6a1803df08f44-6c528508b89mr28010766d6.38.1725625631803;
-        Fri, 06 Sep 2024 05:27:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1725625631; cv=none;
+Received: by 2002:a17:505:1909:b0:1be9:327d:8ee3 with SMTP id az9csp59192njb;
+        Fri, 6 Sep 2024 05:27:14 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWW9yL3TxsC+fdgJMNk99D6rsK+WlpGxqMRiurgrkTRmqiC+ESFl8OXhcPLJbr+TZ1S8RSMNRNtE9u7dQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IHk3GkGGK4/nY52j33GcJbUSc0pg/7CgEPDZOChvF2a2eEJLe34cOZIEFlPPm61dwEJ0QHo
+X-Received: by 2002:a05:620a:170d:b0:79d:7cfb:884e with SMTP id af79cd13be357-7a9973284efmr259570385a.4.1725625634426;
+        Fri, 06 Sep 2024 05:27:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1725625634; cv=none;
         d=google.com; s=arc-20240605;
-        b=N3fmoE/F9gDT0YiF9KJOnOHjGLS6XzuTEbDGpnG/xDYDm4g/HT2CKyr2u0OEc2tGnm
-         cjyRKbe8MDOEl3VWjNCSLDGWHNY/rwvqGAkBLkWymC9m/YcesEkhyNw7QWVSOTQjXt3M
-         QFiyiCsjz1dETgf7Ycjhjy+ODeYed619HeZNwHdfYAMekbgzQQn6KoRuBjT1MLv+wezR
-         T1Va3OfGqoHb8S2yopqIX4gphPoTuzuI+A4cYd7wxmZZiGmTNTJ14fiR4/Q3bPG24A9k
-         zjf6sIn0UroNcrp83fuFobeo83rDqv366nktxZZZPhAU0z6cnX/yU/8j7KSULQXJj9Dp
-         aOMw==
+        b=fV05gK0iM0B/EQ7xDB2Vlmy6BfqpZs8t50C7U1G8jTzjvjokMdYjKgdk4/7YNBy1Az
+         tlavTn51SwxB9EMBux42Vd735V8nsKvm+mB4hq8Y0JQmoIu94GtbrRAh+wIUm15CoQcn
+         jzByW+ns7dE4rd6VXuo3DtGZ058x8bkQQJ2U63fdp38jH3zSG2WjX5MKsNr+gTGFooDL
+         4NfUAmlXV170V9Y6amg4T+R5oGwuYW3U/+uTISzfiR3TuMVyRbdFR031myUBio+E98Av
+         0kvjFxeYd0XBfWlCi6KgKU96gXgwJTg393cbT/CymZGn29wX4Altkbb56jGp/kT7Wc7x
+         9ZTg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=T/CG8oTE97MQ3mzxYzcnj6JCXco3Y8qe4hbK/c5UiUk=;
-        fh=fibJ2F5fF0i3Berugx1xeWJnkpvG+u45RMlIGTpUrfY=;
-        b=F3QIBMMcSmpFxYgFLhVxre0zlci5puNsVtgIGS4guYD8C76O6LJNQTQ9HeUBz7SKja
-         LM6Artww/NjtM/OiZ1S6BDbfbyTj9r8avot90QcCkLhHDsvBnpJ6Yo6buiqy8CY8zHUL
-         7yCqAiP9GE+tK+SJLzPi4JH3h6Pz5BeJ1mgIex1Gpoe6HuEvkY7cn8qtzMVOGixQuGyq
-         vHz1UtuF4Tei7HbjaUJ8Z4VP5fagxowdO2WP4oAGZ8OlUDHOSwtHu1j2S9xLmU8arouT
-         z/8qkG5yZmCzNkT1PfBHT2vZrcQeP4bUV5k6NkZ6jIYgf6cQ25yYaR8G2I7YbsPc70eo
-         8EAA==;
+        bh=JENbbTmp0ErxcaPJIt5HfkB82B17/9dJt6qjK1TiuG8=;
+        fh=MJNguGbhQwbe2wh67cWGD0t5jdF9jTiLMP7m2HQlG80=;
+        b=GsA7kzDtvM49VXWv0+pN2mAVV22o3jsvgu0FkZggbLxVHJRY2QMpbwWIfb1wy1LJve
+         8wIKaxjl5/FvZAnxvrl19KZOHxeC2F+vgZHnOzABazskoGXdQdemZUmuKB+CQdlDm7Ur
+         X/GGhI+HlHr0FhmwjRq6KZPn1EoIBqQ+GhK9uyLicQlnS+q2R94NyQ33k4VZGEwk0I6m
+         RkegcOdfkNviGDkBMpOhYY68hWejk0I1J6TgI/LpzPtIH8PtvanuVLXq1wt0FDcLVmBT
+         z56KLrdkh8IDIy04jmZNWgKOwRz2iImNsKGaLiKH2ufag53rk1TpzaOxS2tSGlMBZ5OC
+         T7HQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20230601 header.b=ZecGtxnj;
+       dkim=fail header.i=@gmail.com header.s=20230601 header.b=OUbTWr0M;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dara=fail header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6c530629b77si1861196d6.30.2024.09.06.05.27.11
+        by mx.google.com with ESMTPS id d75a77b69052e-45809c8c37fsi28604641cf.407.2024.09.06.05.27.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 06 Sep 2024 05:27:11 -0700 (PDT)
+        Fri, 06 Sep 2024 05:27:14 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20230601 header.b=ZecGtxnj;
+       dkim=fail header.i=@gmail.com header.s=20230601 header.b=OUbTWr0M;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dara=fail header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1smY2m-0002ev-Jm; Fri, 06 Sep 2024 08:26:28 -0400
+	id 1smY2T-0001PT-DD; Fri, 06 Sep 2024 08:26:09 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
- id 1smY2O-00016O-Ia; Fri, 06 Sep 2024 08:26:05 -0400
-Received: from mail-pg1-x529.google.com ([2607:f8b0:4864:20::529])
+ id 1smY2H-0000e8-8V; Fri, 06 Sep 2024 08:25:59 -0400
+Received: from mail-pf1-x435.google.com ([2607:f8b0:4864:20::435])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
- id 1smY2M-00024R-Up; Fri, 06 Sep 2024 08:26:04 -0400
-Received: by mail-pg1-x529.google.com with SMTP id
- 41be03b00d2f7-7c6aee8e8daso1451812a12.0; 
- Fri, 06 Sep 2024 05:26:02 -0700 (PDT)
+ id 1smY2F-00023T-OR; Fri, 06 Sep 2024 08:25:56 -0400
+Received: by mail-pf1-x435.google.com with SMTP id
+ d2e1a72fcca58-715abede256so1593260b3a.3; 
+ Fri, 06 Sep 2024 05:25:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1725625560; x=1726230360; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1725625553; x=1726230353; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:sender:from:to:cc:subject:date
  :message-id:reply-to;
- bh=T/CG8oTE97MQ3mzxYzcnj6JCXco3Y8qe4hbK/c5UiUk=;
- b=ZecGtxnjVmkBONNyQavxipqkT8rvW3mPfx4EDvFwUGJLfoKI/ioIqaE1zC+DjFdBoh
- 2dpWq1FDoV0A0qPU7bhpUkEiUoDIRPHi27vR98tFBklreMFafMi4L0uOWYkvHjf+/LM5
- cIWx8hrWjmRGBj8M6lCAs43H2kCz90M+rRarlM0RABb+cJM2OqsV4JriTCYPXgkRJLv6
- zctCVEI0uq553rs6VruJyoewqOhgFYJ9jXctL9SK2Cf47p3Ummekg5278HOdC0svlzw0
- D5/gKBpOiIz2MDz7EI7Sho0KJ/Xgxj3zvNpc6LeZ6mh2XrHzH/BlZnuJDMV1Xu+3NBic
- y8Eg==
+ bh=JENbbTmp0ErxcaPJIt5HfkB82B17/9dJt6qjK1TiuG8=;
+ b=OUbTWr0MNgceh3DF+or4WtDwE3a/25+fJczozx0RANRFTqkXeXeeANoM+e18tvlF5E
+ rcSVCCju+klwvjrukpU5U3E4IMVvQy3Bpa8OdLGihra2oRgrz5tBWkEjhzt4vTxpTEul
+ BWMEZVWu+JfTgxTg7Xht07MGr6yxa0SoVNgfFmoGKg9EWFWFLnSc2RufPhArumxg9YLg
+ GuK9BWf/bVJxszHTJJ3vZTjoAG4oT+TAy0SFX3SndMvubZqbePdtSpwNq6vZ22i4nU+V
+ Yee/2QonY9EGsTBY3BPDAU5IhlXK+o+Gy3V8Wg9w6Y04pjiA32qAce5snMesjqasbvO1
+ 30Qw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1725625560; x=1726230360;
+ d=1e100.net; s=20230601; t=1725625553; x=1726230353;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:sender:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=T/CG8oTE97MQ3mzxYzcnj6JCXco3Y8qe4hbK/c5UiUk=;
- b=oeH201ld8WCNp1SYj/umeDwpWGQLlzsTz2ZE+GD7fHJTnrtQAEcfNp2k36I59BNRrh
- t+dc+rew7JZf92SJA6Epr5Z2h6EcCgSmp0OwWqwFYGE2XDubsj8zhOLDNX6VAqB7RHvu
- GEz12QQywjdorKnc3d+26d9IQJNasyR8syc5mK/lqwbHi9SM5dMec3IJFYGnN4HzJvJs
- wmSfsRsbpEb8Lc1im6VHRkSwREpW9H+YEIBHvT2BmL3yvd6TMce9x0vhvVO7bkm6YMwA
- WP9V1sDb6CGpqpUfoRkwzuqOkRQURokd61bX7cag7Aat2YH6BzvWRXq+Otoed/eqPqrs
- GmLw==
+ bh=JENbbTmp0ErxcaPJIt5HfkB82B17/9dJt6qjK1TiuG8=;
+ b=ibDHeIIwGgqSRWje4oFy+UVoNV5S2TXeHzdwRMI3lcW0KRCNLOia41x/qNQ3pjiqLv
+ BuY65YiwZJmxBbI6cB8nYehEY0aXSMSwqlaQNGQkvGgY4NwFqxKM8mRqbM3dz1k0GgPk
+ 05GNtM7yvCCXOob7EwvaAP3uSh9+qB/HsGOczBcM/e5T/ypnjc/99MO/HDS44NJ8sl8I
+ zeA7ErtgW9/mgiaOA0fxfc6QqYdkxkGvp/WbH4RRLxLauUHRW+TGoYnq+HCvKM3Jc8dP
+ v6CYc2Rq9OJGdsFd216P8UbPyLP12lcpSbP1fu+bKqLvE8kAIpFNBeprcrL6YLQlAN88
+ WDYg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXrGf6vhdQR3mIq09WDRWskd/9jxzcH7zkGu0LmtGwBRlaxZ8eYNU2vPH8jsfPe4T25My4DXx/sKw==@nongnu.org
-X-Gm-Message-State: AOJu0YzZYpGPIAAPiPzeqjHGtZDGVQPKP9CptvipwEbt9LTPMjOYSkkE
- dSbrIeNk5JAbms6uLM8RsAdkaBoqxgmMDcFxvusPU8GZAwduOL5AITeCEA==
-X-Received: by 2002:a17:90b:4a89:b0:2d3:df93:1e5f with SMTP id
- 98e67ed59e1d1-2dad4dddd89mr2666007a91.6.1725625560566; 
- Fri, 06 Sep 2024 05:26:00 -0700 (PDT)
+ AJvYcCUHmyGLku/xm2ASsiMwHarlTXIt8TG7fPzN8SkhvyT0Oe7ldi3g7p4cWfOGKl1HOsYcOJFfC3nEZw==@nongnu.org
+X-Gm-Message-State: AOJu0YxHWaSHw4s4cY9ZXxZvnK4ofTjwV+3IbYUZlHoPPazgH7s+wwep
+ TACiT4YMuhMJFyAm6QlN5DL3lM2Trc84X69BmX2XklELYVr7V+tCnj1VyA==
+X-Received: by 2002:a05:6a20:d98:b0:1cf:1a3a:9016 with SMTP id
+ adf61e73a8af0-1cf1d1f86e1mr2314817637.47.1725625553609; 
+ Fri, 06 Sep 2024 05:25:53 -0700 (PDT)
 Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
  by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-2dadc1105fesm1412060a91.43.2024.09.06.05.25.59
+ d2e1a72fcca58-718de738bacsm314951b3a.105.2024.09.06.05.25.52
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 06 Sep 2024 05:26:00 -0700 (PDT)
+ Fri, 06 Sep 2024 05:25:53 -0700 (PDT)
 From: Guenter Roeck <linux@roeck-us.net>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
@@ -106,16 +106,16 @@ Cc: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
  Guenter Roeck <linux@roeck-us.net>
-Subject: [RFC PATCH 8/8] aspeed: Add uhci support for ast2400 and ast2500
-Date: Fri,  6 Sep 2024 05:25:42 -0700
-Message-ID: <20240906122542.3808997-9-linux@roeck-us.net>
+Subject: [RFC PATCH 4/8] usb/uhci: enlarge uhci memory space
+Date: Fri,  6 Sep 2024 05:25:38 -0700
+Message-ID: <20240906122542.3808997-5-linux@roeck-us.net>
 X-Mailer: git-send-email 2.45.2
 In-Reply-To: <20240906122542.3808997-1-linux@roeck-us.net>
 References: <20240906122542.3808997-1-linux@roeck-us.net>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::529;
- envelope-from=groeck7@gmail.com; helo=mail-pg1-x529.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::435;
+ envelope-from=groeck7@gmail.com; helo=mail-pf1-x435.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
@@ -139,69 +139,30 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 5WZQtUwscqYD
+X-TUID: 5vIasu2c7NkI
 
-Enable UHCI support for ast2400 and ast2500 SoCs. With this patch,
-the UHCI port is successfully instantiated on the ast2500-evb machine.
+hcd-uhci-sysbus will require more memory than hcd-uhci-pci
+since registers for some hardware (specifically Aspeed) don't
+map 1:1.
 
 Signed-off-by: Guenter Roeck <linux@roeck-us.net>
 ---
- hw/arm/aspeed_ast2400.c | 14 ++++++++++++++
- 1 file changed, 14 insertions(+)
+ hw/usb/hcd-uhci.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/arm/aspeed_ast2400.c b/hw/arm/aspeed_ast2400.c
-index d125886207..93bfe3e3dd 100644
---- a/hw/arm/aspeed_ast2400.c
-+++ b/hw/arm/aspeed_ast2400.c
-@@ -31,6 +31,7 @@ static const hwaddr aspeed_soc_ast2400_memmap[] = {
-     [ASPEED_DEV_FMC]    = 0x1E620000,
-     [ASPEED_DEV_SPI1]   = 0x1E630000,
-     [ASPEED_DEV_EHCI1]  = 0x1E6A1000,
-+    [ASPEED_DEV_UHCI]   = 0x1E6B0000,
-     [ASPEED_DEV_VIC]    = 0x1E6C0000,
-     [ASPEED_DEV_SDMC]   = 0x1E6E0000,
-     [ASPEED_DEV_SCU]    = 0x1E6E2000,
-@@ -68,6 +69,7 @@ static const hwaddr aspeed_soc_ast2500_memmap[] = {
-     [ASPEED_DEV_SPI2]   = 0x1E631000,
-     [ASPEED_DEV_EHCI1]  = 0x1E6A1000,
-     [ASPEED_DEV_EHCI2]  = 0x1E6A3000,
-+    [ASPEED_DEV_UHCI]   = 0x1E6B0000,
-     [ASPEED_DEV_VIC]    = 0x1E6C0000,
-     [ASPEED_DEV_SDMC]   = 0x1E6E0000,
-     [ASPEED_DEV_SCU]    = 0x1E6E2000,
-@@ -107,6 +109,7 @@ static const int aspeed_soc_ast2400_irqmap[] = {
-     [ASPEED_DEV_FMC]    = 19,
-     [ASPEED_DEV_EHCI1]  = 5,
-     [ASPEED_DEV_EHCI2]  = 13,
-+    [ASPEED_DEV_UHCI]   = 14,
-     [ASPEED_DEV_SDMC]   = 0,
-     [ASPEED_DEV_SCU]    = 21,
-     [ASPEED_DEV_ADC]    = 31,
-@@ -199,6 +202,8 @@ static void aspeed_ast2400_soc_init(Object *obj)
-                                 TYPE_PLATFORM_EHCI);
-     }
+diff --git a/hw/usb/hcd-uhci.c b/hw/usb/hcd-uhci.c
+index 68b72f8d3b..d2993a98b8 100644
+--- a/hw/usb/hcd-uhci.c
++++ b/hw/usb/hcd-uhci.c
+@@ -1212,7 +1212,7 @@ void usb_uhci_init(UHCIState *s, DeviceState *dev, Error **errp)
+     QTAILQ_INIT(&s->queues);
  
-+    object_initialize_child(obj, "uhci", &s->uhci, TYPE_ASPEED_UHCI);
-+
-     snprintf(typename, sizeof(typename), "aspeed.sdmc-%s", socname);
-     object_initialize_child(obj, "sdmc", &s->sdmc, typename);
-     object_property_add_alias(obj, "ram-size", OBJECT(&s->sdmc),
-@@ -393,6 +398,15 @@ static void aspeed_ast2400_soc_realize(DeviceState *dev, Error **errp)
-                            aspeed_soc_get_irq(s, ASPEED_DEV_EHCI1 + i));
-     }
+     memory_region_init_io(&s->mem, OBJECT(s), &uhci_ioport_ops, s,
+-                          "uhci", 0x20);
++                          "uhci", 0x100);
+ }
  
-+    /* UHCI */
-+    if (!sysbus_realize(SYS_BUS_DEVICE(&s->uhci), errp)) {
-+        return;
-+    }
-+    aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->uhci), 0,
-+                    sc->memmap[ASPEED_DEV_UHCI]);
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->uhci), 0,
-+                       aspeed_soc_get_irq(s, ASPEED_DEV_UHCI));
-+
-     /* SDMC - SDRAM Memory Controller */
-     if (!sysbus_realize(SYS_BUS_DEVICE(&s->sdmc), errp)) {
-         return;
+ void usb_uhci_exit(UHCIState *s)
 -- 
 2.45.2
 

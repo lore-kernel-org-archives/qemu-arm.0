@@ -1,124 +1,130 @@
-Received: by 2002:a17:505:1909:b0:1be9:327d:8ee3 with SMTP id az9csp47300njb;
-        Fri, 6 Sep 2024 04:53:40 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVCkDrwiCeTQ9iqauoYdbg1WB/lxYT0mRLgP+E0NuHqSz8RY1prbtojrqJ9S4CSQnr7/tSQA3vslESq3A==@linaro.org
-X-Google-Smtp-Source: AGHT+IESHY8ukNcASFdseVmp9yZMeORc1YoP9/8fS1KTZRQngJohUqcwt9L7pcQoX4qjFt0tSQsV
-X-Received: by 2002:a05:690c:350a:b0:6b2:7ff8:ca1 with SMTP id 00721157ae682-6db4515443dmr26631287b3.22.1725623620078;
-        Fri, 06 Sep 2024 04:53:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1725623620; cv=none;
+Received: by 2002:a17:505:1909:b0:1be9:327d:8ee3 with SMTP id az9csp59114njb;
+        Fri, 6 Sep 2024 05:26:59 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUxL23ow+AiyRBU00YKN/5yWPFzBnnC7XWYoCyATIfr8VrNEaQsBKGmf34Uwmc3y7rUd0mzt/SHIsM7RA==@linaro.org
+X-Google-Smtp-Source: AGHT+IHoRRSKV1lBWy3+O8iknjUCzaHrFtH6LO+40JK+5xKvJRvqeeiB+d2TjVk40Qi4mZ5ydr7X
+X-Received: by 2002:a05:622a:88:b0:456:839d:6267 with SMTP id d75a77b69052e-4580c6e2502mr31401131cf.31.1725625618919;
+        Fri, 06 Sep 2024 05:26:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1725625618; cv=none;
         d=google.com; s=arc-20240605;
-        b=U4XEgsZTUmXM3aKkPR87IN2RQh07pvUYg3drao1YOab0rCzc9yDEQyoxccSFckqWaD
-         XSrKLPVPNzxz7tPbU/vIeCsZWyGuY2ZDsx5Wa2gSGqDY83uuSshBxAMSohqDIzkio8BT
-         LHJcQLGNT3tKFckmx83we0BC2qTt+AWjgdd+xeOZfHQOzypYUQ7Dm+ECrUCK2mvAICW1
-         v6HF3hDB3sFWb0LKOMnszlZ4pTPTaofFV9ldcSJTHR8EZLLzuD+wfB15v2P+6MSQHPfj
-         81aXVHl6YKbDgOYWj4AkcXkof37oa3lLFsuPv4vdT85ItSqruTbABx0qTghwQ6WVid29
-         Dp9A==
+        b=NxiXnI2/P3aCi2H/p0VIGP6mwKiYrJ/s9zBALr7Bi+K6oL2UZYaFV+nInMmEn5yCSH
+         US/C3VVPouRn4akONS6sfYlOEeeH/rfL8o16mE6TeW5CbVDZ7PGRZ+u2ISqRBVWxn4aR
+         Nz8ufl8PN83WGKNe+BI7kEjRLCa0aQDT9uC1tS5dKaFGFZ8/Uac0SpC5zUTp7xbxDZ9s
+         AsT+KkDyC/fj9HqqyyCO67oPAvxmfwwvg6xTLjrYcQZNyDJfzgyRQlEtcQ0oBHuxF6sE
+         jTxSB9C+f8YX69NfJcEs8BAgxliFfpKklxWu88Blx9vSQ7Dnl47r4NEaNzML855N6mGt
+         QzlA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=2tKmW5gOZezfkPf6H5O6iVC54IjBwBT81yUC/ENPlNE=;
-        fh=WezTar76MRiMZDeKg4TAidzyswwNYSf/r1YvcRHlekc=;
-        b=iLLyMth8dfa5WnUhtuCHNl/8V9KYvkZDJTnEW9GQq8GzD4Q4SCQ/9fEdn8Mow7JwqC
-         hsNuO13GMqX+p+7OjnEEkwY98zO+GM2sj5CJIgvfGQIwIrwU9UNDW0Yt8KUm2jdROqQQ
-         sZ2IBlmmT1DF+43fU4k221MU1bAEtXUIWMyMbGig7Kxwy+Pl/6oTA8SE2GiAzbBu5k0K
-         +233YRVlZfWuv2QO5b6ZVNOykEmMgy50L3Vl03I6gsCFMNyoti+kgSdVbY31NcdwQCNs
-         Xlb7Pack/ZrVlcutic8xyiBXD4fNi2ty4F1pbWNRu4NhFA3qjvcBgiOdL1SQs7cApzQU
-         v8Gw==;
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=QEZSNiMltBd9mK+kQBlirKk2ymnhJmgw43ZBARc5nKQ=;
+        fh=0s8J1hagOXj1OHxJwpaLcf56DEnG7TaejhyqloOmMDw=;
+        b=JtZUqSB8MsCkIiH7sQFC7FZGECaiOMjPYBVkl79X9EPqm/eBsCbJ7286e4VUlLr3TD
+         dfkCxXJZACMOeSl4Bw/SI4tGj6h3UJg9yQUlGdVDZfXqgFH7HpzfaqkXU2VwRqZVhjv/
+         69bnyX4fzMNUrK0KhTllUxe8v+ctZRkat7+2WW2LfYU8GqEiQgsNmvKkLkNEwCrOf4M1
+         NPzQ2njl1mGLIjwJLvJvps1gnU2PS3uUx8HCjWKO7ybo014Sk3QUWYZY6LvoadUVCFtd
+         YZB32MkDC8TWjaL77xakoDmmLI7KwotKWvVK7GLBzQbLSMbb7BtEpZkPBgS/xDUExYnO
+         ANBQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=OImhnmS0;
+       dkim=fail header.i=@gmail.com header.s=20230601 header.b=R3VVVlX8;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       dara=fail header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7a9a101caf6si13612885a.16.2024.09.06.04.53.39
+        by mx.google.com with ESMTPS id d75a77b69052e-45809c4d0d7si25603181cf.50.2024.09.06.05.26.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 06 Sep 2024 04:53:40 -0700 (PDT)
+        Fri, 06 Sep 2024 05:26:58 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=OImhnmS0;
+       dkim=fail header.i=@gmail.com header.s=20230601 header.b=R3VVVlX8;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       dara=fail header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1smXWs-0007G6-QV; Fri, 06 Sep 2024 07:53:31 -0400
+	id 1smY2m-0002d6-7r; Fri, 06 Sep 2024 08:26:28 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1smXWm-0006q6-Bm
- for qemu-arm@nongnu.org; Fri, 06 Sep 2024 07:53:24 -0400
-Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
+ (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
+ id 1smY2L-0000vJ-P7; Fri, 06 Sep 2024 08:26:01 -0400
+Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1smXWj-00077Y-QR
- for qemu-arm@nongnu.org; Fri, 06 Sep 2024 07:53:24 -0400
-Received: by mail-ej1-x636.google.com with SMTP id
- a640c23a62f3a-a8a7596b7dfso288332166b.0
- for <qemu-arm@nongnu.org>; Fri, 06 Sep 2024 04:53:20 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
+ id 1smY2J-00023z-UR; Fri, 06 Sep 2024 08:26:01 -0400
+Received: by mail-pl1-x635.google.com with SMTP id
+ d9443c01a7336-205659dc63aso19560465ad.1; 
+ Fri, 06 Sep 2024 05:25:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1725623599; x=1726228399; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=2tKmW5gOZezfkPf6H5O6iVC54IjBwBT81yUC/ENPlNE=;
- b=OImhnmS0oe/4J6wXj3lN5jnJCiMrJwNyrOfWp3GGlj0oieSIk7VxHmS6JfUclouvSY
- J1kWR9NFElQIp8uhlsfONtxDyCHuU0OYR8+zQa4NhE9j55z0UKeJvnTgVmMKycPlWv7N
- nLpfrHgfPZD1w7L2hTn/SFGh61IBeivDGOZr7uahspdYbMaLDaUVG5ZFjmieX57pf1+S
- pK7UOewhT7cp6nXXyANW4U8S20JyytbWLqRIiKw+6OJUlXfPbjRbNNZqlG4ZxgNrqWiD
- izDH5S5ur7+jao8HlZW/g9dqoFFIzI884a8W72ai7WXK7AhzLeOedUIMEwHmIrEWww3A
- IWmA==
+ d=gmail.com; s=20230601; t=1725625557; x=1726230357; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:sender:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=QEZSNiMltBd9mK+kQBlirKk2ymnhJmgw43ZBARc5nKQ=;
+ b=R3VVVlX8St562LhYuMYLArze3kicEFbq7hD1tmVi16bzmsuDOYxJkVHGRRNo5Bnbk4
+ ZVcPVlSbhMEKzpjznITszmVoDxtV53Rw2aNtvkmGVUosyH1BI1AmPEKkC/Nqi6DeDbJg
+ Jtkz2BV08fB75sZwsRAnqS3DtIy5co+dzTbBK1P9oiU9IBSSl4n9HL0ezvDSSj8kQAcl
+ U08ZAbJJXKtatTv6TTevSNv5faY0hPgRlqHiOnwMySYfMHXYxonsjxwzGcK9DL3Q700c
+ yR7FmBqZ27IYV2fPbpm0QzBGM0J6GyAN39ePa1ZAlZn5WpFRl8lxAw7VB4GAonoupbv+
+ Hk6g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1725623599; x=1726228399;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=2tKmW5gOZezfkPf6H5O6iVC54IjBwBT81yUC/ENPlNE=;
- b=PvlLgMiVwFndoZ40OCesIpj/Qv9QEoQWjl/BhyGRk/ZQgt/tD5J/Dl9YLUp9uDHMrk
- fUa1dJLYd14p5IGlo6RB5UyUa3ZHhHmAG5o2hSJ0PiMoh873pbbFByjgQ2Zh4UiSa41g
- dHHs9UrK51nP4VcZ6AFoaii4a7+CkXfVSuKaqh0kXvXBd1XX3cNjkbQqfJTeO4v7g0eV
- uGWHFHTBh2ylvuQEeWFGhDmt0kM1BNyi4q5lB4uyLQUGnxygmu02Cio0c0+CRq5UozAD
- 3UQcFULetbp6h1qkRGyqkzVZKNNK1C+ADsVu07a1ZSq+Uk63pqTcPE9wy4rRWqucb/TO
- Sgkw==
-X-Gm-Message-State: AOJu0Yzifa4YV7GJkRIyBI64rYb1Si/QSknLzqyzZT7K8YWsjK98QkjE
- ZJ102fF1dRYLSlj/yh9uH3WG27XD/dX+lawCKnbNnrvbHsM4AZF47+M0atQSbcQ=
-X-Received: by 2002:a17:906:4789:b0:a80:9c1b:554f with SMTP id
- a640c23a62f3a-a8a86442be2mr289007266b.27.1725623599156; 
- Fri, 06 Sep 2024 04:53:19 -0700 (PDT)
-Received: from [192.168.55.118] ([80.215.236.92])
+ d=1e100.net; s=20230601; t=1725625557; x=1726230357;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:sender:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=QEZSNiMltBd9mK+kQBlirKk2ymnhJmgw43ZBARc5nKQ=;
+ b=dD+iylvhS5s1JJ7dUXjcKq7kfCwmC1NcEd2Uh8nKzpk91ZIwUw/xD1HmiiYDqbsJ1F
+ 0OKM8DaqSR5nhAYZbMf/2Blm64l4NvkS30qaECtEH5f1ebhl1NF7Q+x6kqBZvx2WQJ9b
+ A1EyKPCm1eHdYK1AXjsjEL7GsWk5w0Ax/lHxeTNZ2KX2qfuwR2f5kujJljZ8U4+29duj
+ 80vo0ihcuIjD83KjJaaECEipFL/vCdzdTDf6+5T63SywU61V5h5SBkSVHsAkxQUvD395
+ WOL/MxHDPxTrmhCmdzftzS1+Km1WDxGUrm+Fsuv4N6fktD3Cft/8VeJQPf2ijcnG6sV7
+ S8Qw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXc5aFiMrC3i+XYCltxXl19BInTphD+fHR9yXqzA8Db/vRUwGhni2sFV3OxO5aKwPI7K98PH9sChQ==@nongnu.org
+X-Gm-Message-State: AOJu0YyIQEeUNXlccgLGHn5LCoK+5Ao8LBmlh4yEQqOZHs9fdFeg9G98
+ F8E4PFWMBkcie1Pu118x2Xi6Hj4jXFDWHk+eefO/oTx2WO4E0lVXrGZXpQ==
+X-Received: by 2002:a17:903:22c1:b0:1fd:5eab:8c76 with SMTP id
+ d9443c01a7336-206f05e7881mr22132985ad.41.1725625556946; 
+ Fri, 06 Sep 2024 05:25:56 -0700 (PDT)
+Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
  by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-a8a6236d61csm265884166b.125.2024.09.06.04.53.17
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 06 Sep 2024 04:53:18 -0700 (PDT)
-Message-ID: <0fa93707-d092-4db5-a4a4-f000df881ccd@linaro.org>
-Date: Fri, 6 Sep 2024 13:53:16 +0200
+ d9443c01a7336-206aea351a3sm42738875ad.162.2024.09.06.05.25.56
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 06 Sep 2024 05:25:56 -0700 (PDT)
+From: Guenter Roeck <linux@roeck-us.net>
+To: qemu-devel@nongnu.org
+Cc: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Joel Stanley <joel@jms.id.au>, BALATON Zoltan <balaton@eik.bme.hu>,
+ "Michael S . Tsirkin" <mst@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
+ Guenter Roeck <linux@roeck-us.net>
+Subject: [RFC PATCH 6/8] usb/uhci: Add aspeed specific read and write functions
+Date: Fri,  6 Sep 2024 05:25:40 -0700
+Message-ID: <20240906122542.3808997-7-linux@roeck-us.net>
+X-Mailer: git-send-email 2.45.2
+In-Reply-To: <20240906122542.3808997-1-linux@roeck-us.net>
+References: <20240906122542.3808997-1-linux@roeck-us.net>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH v3 01/24] fifo32: add peek function
-To: Octavian Purdila <tavip@google.com>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, stefanst@google.com, pbonzini@redhat.com,
- peter.maydell@linaro.org, marcandre.lureau@redhat.com, berrange@redhat.com,
- eduardo@habkost.net, luc@lmichel.fr, damien.hedde@dahe.fr,
- alistair@alistair23.me, thuth@redhat.com, jsnow@redhat.com,
- crosa@redhat.com, lvivier@redhat.com
-References: <20240827064529.1246786-1-tavip@google.com>
- <20240827064529.1246786-2-tavip@google.com>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20240827064529.1246786-2-tavip@google.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::636;
- envelope-from=philmd@linaro.org; helo=mail-ej1-x636.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::635;
+ envelope-from=groeck7@gmail.com; helo=mail-pl1-x635.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_ENVFROM_END_DIGIT=0.25,
+ FREEMAIL_FORGED_FROMDOMAIN=0.001, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.25, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -133,39 +139,174 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 1b0CrvFY5xCX
+X-TUID: zep41E7LbZS+
 
-Hi Octavian,
+Aspeed uses non-standard UHCI register addresses. On top of that,
+registers are 32 bit wide instead of 16 bit.
 
-On 27/8/24 08:45, Octavian Purdila wrote:
-> Add fifo32_peek() that returns the first element from the queue
-> without popping it.
-> 
-> Signed-off-by: Octavian Purdila <tavip@google.com>
-> ---
->   include/qemu/fifo32.h | 28 ++++++++++++++++++++++++++++
->   1 file changed, 28 insertions(+)
-> 
-> diff --git a/include/qemu/fifo32.h b/include/qemu/fifo32.h
-> index 4e9fd1b5ef..77aab488ae 100644
-> --- a/include/qemu/fifo32.h
-> +++ b/include/qemu/fifo32.h
-> @@ -140,6 +140,34 @@ static inline uint32_t fifo32_pop(Fifo32 *fifo)
->       return ret;
->   }
->   
-> +/**
-> + * fifo32_peek:
-> + * @fifo: fifo to peek at
-> + *
-> + * Returns the value from the FIFO's head without poping it. Behaviour
-> + * is undefined if the FIFO is empty. Clients are responsible for
-> + * checking for emptiness using fifo32_is_empty().
-> + *
-> + * Returns: the value from the FIFO's head
-> + */
-> +
-> +static inline uint32_t fifo32_peek(Fifo32 *fifo)
+Map Aspeed UHCI addresses to standard UHCI addresses and where needed
+combine/split 32 bit accesses to solve the problem.
 
-When respinning on top of Mark's Fifo8 work, please un-inline.
+Signed-off-by: Guenter Roeck <linux@roeck-us.net>
+---
+ hw/usb/hcd-uhci-sysbus.c | 101 +++++++++++++++++++++++++++++++++++++++
+ hw/usb/hcd-uhci-sysbus.h |  11 +++++
+ 2 files changed, 112 insertions(+)
+
+diff --git a/hw/usb/hcd-uhci-sysbus.c b/hw/usb/hcd-uhci-sysbus.c
+index 6f2428cc15..ba5398beeb 100644
+--- a/hw/usb/hcd-uhci-sysbus.c
++++ b/hw/usb/hcd-uhci-sysbus.c
+@@ -20,7 +20,9 @@
+ 
+ #include "qemu/osdep.h"
+ #include "hw/irq.h"
++#include "hw/usb/uhci-regs.h"
+ #include "qapi/error.h"
++#include "qemu/log.h"
+ #include "qemu/module.h"
+ #include "qemu/timer.h"
+ #include "hw/usb.h"
+@@ -88,6 +90,99 @@ static void uhci_sysbus_class_init(ObjectClass *klass, void *data)
+     dc->reset = uhci_sysbus_reset_sysbus;
+ }
+ 
++static hwaddr aspeed_uhci_chip_to_uhci(hwaddr addr)
++{
++    switch (addr) {
++    case 0x00:
++        return UHCI_USBCMD;
++    case 0x04:
++        return UHCI_USBSTS;
++    case 0x08:
++        return UHCI_USBINTR;
++    case 0x0c:
++        return UHCI_USBFLBASEADD;
++    case 0x80:
++        return UHCI_USBFRNUM;
++    case 0x84:
++        return UHCI_USBSOF;
++    case 0x88:
++        return UHCI_USBPORTSC1;
++    case 0x8c:
++        return UHCI_USBPORTSC2;
++    case 0x90:
++        return UHCI_USBPORTSC3;
++    case 0x94:
++        return UHCI_USBPORTSC4;
++    default:        /* unimplemented */
++        qemu_log_mask(LOG_UNIMP, "Unimplemented Aspeed UHCI register 0x%lx\n",
++                      addr);
++        return 0x20;
++    }
++}
++
++/*
++ * Aspeed UHCI registers are 32 bit wide.
++ * Convert to 16 bit to access standard UHCI code.
++ */
++static uint64_t aspeed_uhci_port_read(void *opaque, hwaddr addr, unsigned size)
++{
++    UHCIState *uhci = opaque;
++    MemoryRegion *mr = &uhci->mem;
++    hwaddr uaddr = aspeed_uhci_chip_to_uhci(addr);
++
++    if (uaddr == UHCI_USBFLBASEADD) {
++        return mr->ops->read(opaque, uaddr, 2) |
++               mr->ops->read(opaque, uaddr + 2, 2) << 16;
++    }
++    return mr->ops->read(opaque, uaddr, 2);
++}
++
++static void aspeed_uhci_port_write(void *opaque, hwaddr addr, uint64_t val,
++                                   unsigned size)
++{
++    UHCIState *uhci = opaque;
++    MemoryRegion *mr = &uhci->mem;
++    hwaddr uaddr = aspeed_uhci_chip_to_uhci(addr);
++
++    if (uaddr == UHCI_USBFLBASEADD) {
++        mr->ops->write(opaque, uaddr, val & 0xffff, 2);
++        mr->ops->write(opaque, uaddr + 2, val >> 16, 2);
++    } else {
++        mr->ops->write(opaque, uaddr, val, 2);
++    }
++}
++
++static const MemoryRegionOps aspeed_uhci_mmio_ops = {
++    .read = aspeed_uhci_port_read,
++    .write = aspeed_uhci_port_write,
++    .valid.min_access_size = 4,
++    .valid.max_access_size = 4,
++    .endianness = DEVICE_LITTLE_ENDIAN,
++};
++
++static void uhci_sysbus_aspeed_realize(DeviceState *dev, Error **errp)
++{
++    UHCISysBusState *s = SYSBUS_UHCI(dev);
++    ASPEEDUHCIState *f = ASPEED_UHCI(dev);
++    UHCIState *uhci = &s->uhci;
++
++    uhci_sysbus_realize(dev, errp);
++
++    memory_region_init_io(&f->mem_aspeed, OBJECT(f), &aspeed_uhci_mmio_ops,
++                          uhci, "aspeed", 0x100);
++    memory_region_add_subregion(&uhci->mem, 0, &f->mem_aspeed);
++}
++
++static void uhci_sysbus_aspeed_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++
++    dc->realize = uhci_sysbus_aspeed_realize;
++    set_bit(DEVICE_CATEGORY_USB, dc->categories);
++    dc->desc = "ASPEED UHCI USB Controller";
++    dc->reset = uhci_sysbus_reset_sysbus;
++}
++
+ static const TypeInfo uhci_sysbus_types[] = {
+     {
+         .name          = TYPE_SYSBUS_UHCI,
+@@ -95,6 +190,12 @@ static const TypeInfo uhci_sysbus_types[] = {
+         .instance_size = sizeof(UHCISysBusState),
+         .class_init    = uhci_sysbus_class_init,
+     },
++    {
++        .name          = TYPE_ASPEED_UHCI,
++        .parent        = TYPE_SYSBUS_UHCI,
++        .instance_size = sizeof(ASPEEDUHCIState),
++        .class_init    = uhci_sysbus_aspeed_class_init,
++    },
+ };
+ 
+ DEFINE_TYPES(uhci_sysbus_types);
+diff --git a/hw/usb/hcd-uhci-sysbus.h b/hw/usb/hcd-uhci-sysbus.h
+index c491b9fc92..75c4716c40 100644
+--- a/hw/usb/hcd-uhci-sysbus.h
++++ b/hw/usb/hcd-uhci-sysbus.h
+@@ -4,6 +4,7 @@
+ #include "hcd-uhci.h"
+ 
+ #define TYPE_SYSBUS_UHCI "sysbus-uhci"
++#define TYPE_ASPEED_UHCI "aspeed-uhci"
+ 
+ OBJECT_DECLARE_SIMPLE_TYPE(UHCISysBusState, SYSBUS_UHCI)
+ 
+@@ -20,4 +21,14 @@ struct UHCISysBusState {
+     uint32_t num_ports;
+ };
+ 
++OBJECT_DECLARE_SIMPLE_TYPE(ASPEEDUHCIState, ASPEED_UHCI)
++
++struct ASPEEDUHCIState {
++    /*< private >*/
++    UHCISysBusState parent_obj;
++    /*< public >*/
++
++    MemoryRegion mem_aspeed;
++};
++
+ #endif /* HW_USB_HCD_UHCI_SYSBUS_H */
+-- 
+2.45.2
 

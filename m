@@ -1,150 +1,99 @@
-Received: by 2002:a17:505:1f8d:b0:1be9:327d:8ee3 with SMTP id pt13csp680042njb;
-        Thu, 5 Sep 2024 16:41:46 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXL78AJcHYPffm9JWhjZoF+1ec1OMTNEjEJS/OvLuexJ6JWc6OAPcZNOWHaYl4gXk+e3j3Yr+AZthmSdA==@linaro.org
-X-Google-Smtp-Source: AGHT+IHNW+PWUDFCVPUFUffzNI+t0TNwExtaTmf8Kl1OgRqdV2+/PSjsdbAu3qIF5lNlFp6gOke2
-X-Received: by 2002:a05:6902:118b:b0:e1d:1d19:edf2 with SMTP id 3f1490d57ef6-e1d349db0e9mr1179048276.46.1725579706562;
-        Thu, 05 Sep 2024 16:41:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1725579706; cv=none;
+Received: by 2002:a17:505:1f8d:b0:1be9:327d:8ee3 with SMTP id pt13csp761107njb;
+        Fri, 6 Sep 2024 00:49:59 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWe+8AV9D7VTYfh47KfS3NBgmAPPR2QeM092PiCi5gn+Rzat9ztRMDZ0THAfv/6jBABb1Evtx5azl89ZQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IFoUUrnTDUeo6jNnwn8uqA8OpVvHB4gbFJFRvM4egOj70ZBjNxhq92uhLPT3d4+GIvyNBRQ
+X-Received: by 2002:a05:620a:424a:b0:7a8:325:5309 with SMTP id af79cd13be357-7a99731e33dmr187506585a.12.1725608998851;
+        Fri, 06 Sep 2024 00:49:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1725608998; cv=none;
         d=google.com; s=arc-20240605;
-        b=fVxnUSCltnVzVg9FD1p3DTyDM79Do3MgxcBZfEV9cUXg0CEa7SQnPeMLwZGtg/z3C9
-         uPMsmBtL/HaOXlPiidNHklpP32nE2W88MUZ7jHZE5LKyAzmXC2hzCOId9NuHOPw8LGeN
-         d6btfH8KOmTIz2CHF1gCTNJrXwJ6nbp2h8YVN8BXRmyTHe4nvnGfQoPnUwKLXKRzbuu7
-         9pkAVVr9KPjnUwjshxu5c1uSa8Awowq+W0LIgU23OjMCroInkUoArhBH3Bz7dMirM78H
-         CWWNujb//jg6lXUgOfVC7NR4d3XWIb6CZaSx2ny2bJpH5Llbpk0kTybwYjIcIyK6OQbo
-         AvnA==
+        b=H41CGGKirC+B4U3By7hc1TeVVRVZgjzKQN5Jlxd5qIjUrdY8JWtys2E0vRmwXEDat/
+         p4hDUppXVV1WZ9ijtqoROtQ2gDPItOxOW5Bv+Xj2UK5UuFAL8VgS3WX8CcFcr2YO45ic
+         EFFtFmXI+2ppqdHxoAQMyz12ASsNsFGFO84E14EuWQP2/HACZHmMgn1b124RUs0yr/hD
+         JSWfLddd9LQyHBNt35Zr3X1LyFGVlMxrqC2zq+OALkjBFd02V3g5SdnLQm79xhaigk3F
+         zU/t7Nyb6xpgAfrzBhAvh6t07iRVQnfH4tx3qPeC3cesU24gOGUsF4JxDe1aVWvLYfHh
+         aAAw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=aliWrq2cb0vbBWecsfUMonOxJVnwaOBuwxLBop/4zeE=;
-        fh=LHS01N209k39DusoYsXUP4mBx6AgxIOTmAVCFq/5DnU=;
-        b=knXUJZRtFUb5BIaXknTCTq+qOBooY0RTKPHgCE9bwRPE+NAFWOgBHv8eNFWjaqQvF4
-         IFRio062Sio0VZJi51quIg41Cl0dnvs9M+zIGMwPH/puRraY1RpJJ7PmBx5ynyQdiLY2
-         PdiJU06iCmI9/FRWaj5Ra4FtfnTijIJ1yCrUbC9fcn3UVrlD247tL6BqQL/PFciisIin
-         B094H85gtJczJmLV1LwBdw0/4ksgkrkNo19zH9Z9gV3V/5bQk0yV407K1XMXSQe0dZZW
-         w1EQnPex4L3WpLfv4SGn/3kUiyL/GOMmofcfZnJloDhENqwsKJEPdozY8j43PjfzNoWu
-         xSGw==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id;
+        bh=5kuyjbA4NGJ6/GkJNzULBitdfwivpZIKlkNXmQITNLA=;
+        fh=xde4RztPxS75EYq3tRm9hzFj1q3vkWnyous7srlSAL8=;
+        b=gdKjPEOXXQKZOxo9h5GbWhbnGU+Wr5SI2L4MDQJ9TppHOZxlmGHF49f8o6p3BJiYBH
+         8wZj+CR46zuTSK9FKGQWQrdh9oTsiN5GvjEOLQV7Nk2MsJvX4svWij1ZjxeWRq1p+Nyr
+         2yp1ZuySm4s6smVEg2/AR6+Pd0LJf0g+hpHDiK2xA0m8oqJq0ZApBdHkFb8I7jLGmfrN
+         EfsLK+6ZCa4tizL24h64wzjX4cpAqbiaCOG/oZMjZKYLBrRyXG8sv37g4a4AuPHzWBze
+         hvIt7mgvrwy7eBlp/WPAZAxWYZKe365aZYe4e+OJhe4SZhp8ZlfapkGCRRDb1tHx+RD+
+         ILbQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b="YLP7BT7/";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6c52031eefesi30729776d6.280.2024.09.05.16.41.46
+        by mx.google.com with ESMTPS id af79cd13be357-7a9959b7d84si185925985a.403.2024.09.06.00.49.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 05 Sep 2024 16:41:46 -0700 (PDT)
+        Fri, 06 Sep 2024 00:49:58 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b="YLP7BT7/";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1smM69-0001jo-Hs; Thu, 05 Sep 2024 19:41:09 -0400
+	id 1smTiw-0000l8-KX; Fri, 06 Sep 2024 03:49:42 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1smM68-0001hy-9t; Thu, 05 Sep 2024 19:41:08 -0400
-Received: from mail-vs1-xe2b.google.com ([2607:f8b0:4864:20::e2b])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1smM63-0003Bl-8F; Thu, 05 Sep 2024 19:41:08 -0400
-Received: by mail-vs1-xe2b.google.com with SMTP id
- ada2fe7eead31-49bd3bf3b4cso450235137.3; 
- Thu, 05 Sep 2024 16:41:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1725579661; x=1726184461; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=aliWrq2cb0vbBWecsfUMonOxJVnwaOBuwxLBop/4zeE=;
- b=YLP7BT7/b2S3fLviIJEqzNUBgkmHQknY48lTpyaEx51Djex7oEuWhegI8tsF4TW+SV
- IQAeh8W5QJbttQLINgnrEEaf8s5x2yLXu7R7lzJcbe03cNXDkybKVfsErUb1OGrqDUa+
- x6Q21pSdWAEPfge3WcVpovb+htaDl/I/geq1kXdjz7AKQ5tsJN5DrRdCO3FBOHWmIsuK
- 8quRMimb2wcCv4+1inSaPM7cWBCEQ0PX5AAFNGQ9JjRK9X1yVKtLQZCvPY7+vbPBHEeE
- jFEYSW8wf/S4CSjcsJ6i1F85fZ8WgSHS5Uh2XqnDcDDnIah96S2K5Wb+96r7+2s6B8nM
- XDTw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1725579661; x=1726184461;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=aliWrq2cb0vbBWecsfUMonOxJVnwaOBuwxLBop/4zeE=;
- b=Tl+KQJ36+Jan2zrBUDE2XBIJMF4AYHQVmdROd9tvzYv1MuuiRsTgrHSxrrOnLBGmFB
- Atu2YDrJIXhh76K4nh0JICey3uMMkRow1Cs7sW8IjeYDrWNDL0I6IwMtdocjPvU5456h
- xNQW18YqHUTOuhRtDyUEUOCyC/vzV1jnyqit2nGR2GwZSoPyTLTsI9S+iJIPP5T1I1la
- wFcOEDLgFWYdJbXu/XD95Q1K3rI6zmlHKgon9loUac/k3NCUv73X195LHBkE6URFgaDz
- 52jwqAyxu7qfsBB3CzSaF+CGSTnQJMVWWc1HdcEviXSkfjB4ewkw9m2ducZ2LOAiWk2Y
- N7Gg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCU4iiTU0EagwMiJAhLihNz8ERrHcxauvA2eha1cPvIL53nKCSc3iHuKIY9Z0yGMVfui6AyTRwV0DrU=@nongnu.org,
- AJvYcCUESFF7qpnoOlG43OVwWeMsVvpTVLa+bydc3gdhOutQuJLs317usXx/tYfaHggSdNnB7+Jh4o7QMo7VjQ==@nongnu.org,
- AJvYcCV9trc2LHrrUQoE6so46Nya811kd7x4fwhCvoY/WGv9VWRTPm/1W+wSV2Bh3ooAAFx7LShTkt1ORw==@nongnu.org
-X-Gm-Message-State: AOJu0Yyq5CFoci3lPjhiZSRp4qCfRrIy3bC1efyZ78OjTy8yn50Tdjsn
- cer5v+iAIuKunDVYR1UrRGEFgQ8bPIhqRhKt1ccFDuX9shQc3Bz2JRkhyvUeUiTXJneI58tQxU+
- kwXcHV5VRYpAg9GYZrfWb/H5xaxo=
-X-Received: by 2002:a05:6102:2aca:b0:493:b9ae:3208 with SMTP id
- ada2fe7eead31-49a5af48ac5mr30295616137.24.1725579660625; Thu, 05 Sep 2024
- 16:41:00 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <SRS0=ncBN=QE=kaod.org=clg@ozlabs.org>)
+ id 1smTiv-0000fG-AS; Fri, 06 Sep 2024 03:49:41 -0400
+Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=ncBN=QE=kaod.org=clg@ozlabs.org>)
+ id 1smTit-0001io-6Q; Fri, 06 Sep 2024 03:49:41 -0400
+Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4X0Szv1bsWz4x8c;
+ Fri,  6 Sep 2024 17:49:31 +1000 (AEST)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (Client did not present a certificate)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4X0Szk4TzQz4x7F;
+ Fri,  6 Sep 2024 17:49:22 +1000 (AEST)
+Message-ID: <73b7ffba-f2ae-415e-9aa6-793480c08f67@kaod.org>
+Date: Fri, 6 Sep 2024 09:49:17 +0200
 MIME-Version: 1.0
-References: <20240905073832.16222-1-shentey@gmail.com>
- <20240905073832.16222-2-shentey@gmail.com>
-In-Reply-To: <20240905073832.16222-2-shentey@gmail.com>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Fri, 6 Sep 2024 09:40:34 +1000
-Message-ID: <CAKmqyKNtNB3Nc3tqCR3mvcd+40Mwx8=mRjWAnjhpvyOYyC4Z8A@mail.gmail.com>
-Subject: Re: [PATCH v2 1/3] hw: Remove unused inclusion of hw/char/serial.h
-To: Bernhard Beschow <shentey@gmail.com>
-Cc: qemu-devel@nongnu.org, Jamin Lin <jamin_lin@aspeedtech.com>, 
- Helge Deller <deller@gmx.de>, Song Gao <gaosong@loongson.cn>,
- Stafford Horne <shorne@gmail.com>, 
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
- Joel Stanley <joel@jms.id.au>, Troy Lee <leetroy@gmail.com>, 
- Nicholas Piggin <npiggin@gmail.com>, Bin Meng <bmeng.cn@gmail.com>, 
- Jiaxun Yang <jiaxun.yang@flygoat.com>, Paolo Bonzini <pbonzini@redhat.com>, 
- Max Filippov <jcmvbkbc@gmail.com>,
- Richard Henderson <richard.henderson@linaro.org>, 
- Artyom Tarasenko <atar4qemu@gmail.com>, Aurelien Jarno <aurelien@aurel32.net>,
- qemu-riscv@nongnu.org, 
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, Weiwei Li <liwei1518@gmail.com>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
- "Michael S. Tsirkin" <mst@redhat.com>, Hao Wu <wuhaotsh@google.com>, 
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Steven Lee <steven_lee@aspeedtech.com>, 
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, 
- Alistair Francis <Alistair.Francis@wdc.com>,
- Beniamino Galvani <b.galvani@gmail.com>, 
- Subbaraya Sundeep <sundeep.lkml@gmail.com>,
- =?UTF-8?B?RnLDqWTDqXJpYyBCYXJyYXQ=?= <fbarrat@linux.ibm.com>, 
- =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
- Peter Maydell <peter.maydell@linaro.org>, Tyrone Ting <kfting@nuvoton.com>, 
- Strahinja Jankovic <strahinja.p.jankovic@gmail.com>, qemu-arm@nongnu.org, 
- Sergio Lopez <slp@redhat.com>, Jan Kiszka <jan.kiszka@web.de>,
- qemu-ppc@nongnu.org, Eduardo Habkost <eduardo@habkost.net>,
- =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>, 
- Aleksandar Rikalo <arikalo@gmail.com>, Jia Liu <proljc@gmail.com>, 
- Huacai Chen <chenhuacai@kernel.org>, BALATON Zoltan <balaton@eik.bme.hu>, 
- Niek Linnenbank <nieklinnenbank@gmail.com>, Paul Burton <paulburton@kernel.org>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, Palmer Dabbelt <palmer@dabbelt.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::e2b;
- envelope-from=alistair23@gmail.com; helo=mail-vs1-xe2b.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+User-Agent: Mozilla Thunderbird
+Subject: Re: [SPAM] [PATCH v3 00/11] support I2C for AST2700
+To: Troy Lee <leetroy@gmail.com>
+Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ Cleber Rosa <crosa@redhat.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
+ <philmd@linaro.org>, Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ Beraldo Leal <bleal@redhat.com>, "open list:ASPEED BMCs"
+ <qemu-arm@nongnu.org>, "open list:All patches CC here"
+ <qemu-devel@nongnu.org>, Troy Lee <troy_lee@aspeedtech.com>,
+ Yunlin Tang <yunlin.tang@aspeedtech.com>,
+ Gustavo Romero <gustavo.romero@linaro.org>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>
+References: <20240903083528.2182190-1-jamin_lin@aspeedtech.com>
+ <00aac81e-ff43-4526-960c-782e27ae043f@kaod.org>
+ <SI2PR06MB50418DD956AC152E4E0911CDFC9C2@SI2PR06MB5041.apcprd06.prod.outlook.com>
+ <c418168b-eb5c-459c-85b1-c7766102e558@kaod.org>
+ <CAN9Jwz0cRRb308_ZOuwOsJsPLiKp3sugGJ-YzhvALv3-f+yaCQ@mail.gmail.com>
+Content-Language: en-US, fr
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <CAN9Jwz0cRRb308_ZOuwOsJsPLiKp3sugGJ-YzhvALv3-f+yaCQ@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=150.107.74.76;
+ envelope-from=SRS0=ncBN=QE=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
+X-Spam_score_int: -39
+X-Spam_score: -4.0
+X-Spam_bar: ----
+X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.25, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -160,74 +109,41 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ZdkjsiIcVhjl
+X-TUID: l8QNulCzcEIa
 
-On Thu, Sep 5, 2024 at 5:40=E2=80=AFPM Bernhard Beschow <shentey@gmail.com>=
- wrote:
->
-> Reviewed-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+Hello,
 
-Acked-by: Alistair Francis <alistair.francis@wdc.com>
 
-Alistair
+On 9/4/24 11:01, Troy Lee wrote:
+> Hi Cédric,
+> 
+> On Wed, Sep 4, 2024 at 3:29 PM Cédric Le Goater <clg@kaod.org> wrote:
+>>
+>> Hello Jamin,
+>>
+>>> Just want you to know that I and Troy are working on the following tasks for AST2700.
+>>> 1. Support boot from bootmcu(riscv32) instead of u-boot(Cortex-A35)
+>>
+>> Oh nice. This is a good topic for heterogeneous machines !
+> 
+> The basic model for bootmcu(risc-v) is working now, 
 
-> ---
->  hw/char/riscv_htif.c | 1 -
->  hw/ppc/prep.c        | 1 -
->  hw/riscv/sifive_e.c  | 1 -
->  hw/riscv/sifive_u.c  | 1 -
->  4 files changed, 4 deletions(-)
->
-> diff --git a/hw/char/riscv_htif.c b/hw/char/riscv_htif.c
-> index 9bef60def1..54fd55c3e6 100644
-> --- a/hw/char/riscv_htif.c
-> +++ b/hw/char/riscv_htif.c
-> @@ -24,7 +24,6 @@
->  #include "qapi/error.h"
->  #include "qemu/log.h"
->  #include "hw/char/riscv_htif.h"
-> -#include "hw/char/serial.h"
->  #include "chardev/char.h"
->  #include "chardev/char-fe.h"
->  #include "qemu/timer.h"
-> diff --git a/hw/ppc/prep.c b/hw/ppc/prep.c
-> index 4eb5477069..fb58c312ac 100644
-> --- a/hw/ppc/prep.c
-> +++ b/hw/ppc/prep.c
-> @@ -25,7 +25,6 @@
->
->  #include "qemu/osdep.h"
->  #include "hw/rtc/m48t59.h"
-> -#include "hw/char/serial.h"
->  #include "hw/block/fdc.h"
->  #include "net/net.h"
->  #include "hw/isa/isa.h"
-> diff --git a/hw/riscv/sifive_e.c b/hw/riscv/sifive_e.c
-> index 87d9602383..5a1959f2a9 100644
-> --- a/hw/riscv/sifive_e.c
-> +++ b/hw/riscv/sifive_e.c
-> @@ -35,7 +35,6 @@
->  #include "hw/boards.h"
->  #include "hw/loader.h"
->  #include "hw/sysbus.h"
-> -#include "hw/char/serial.h"
->  #include "hw/misc/unimp.h"
->  #include "target/riscv/cpu.h"
->  #include "hw/riscv/riscv_hart.h"
-> diff --git a/hw/riscv/sifive_u.c b/hw/riscv/sifive_u.c
-> index af5f923f54..efc8443c84 100644
-> --- a/hw/riscv/sifive_u.c
-> +++ b/hw/riscv/sifive_u.c
-> @@ -43,7 +43,6 @@
->  #include "hw/irq.h"
->  #include "hw/loader.h"
->  #include "hw/sysbus.h"
-> -#include "hw/char/serial.h"
->  #include "hw/cpu/cluster.h"
->  #include "hw/misc/unimp.h"
->  #include "hw/sd/sd.h"
-> --
-> 2.46.0
->
->
+May be send that first.
+
+> but we're looking for a way
+> to integrate sram/mmio/dram together.  
+Unfortunately, QEMU is not yet ready for heterogeneous architectures.
+
+> The ivshmem requires PCI, it might be
+> too complicate for our use case.  There is an ivshmem-flat probably more
+> sutiable for us.
+> 
+> [PATCH 0/4] Add ivshmem-flat device - Gustavo Romero (kernel.org)
+> https://lore.kernel.org/qemu-devel/20231127052024.435743-1-gustavo.romero@linaro.org/
+
+I lack expertise in that area. Adding Gustavo.
+
+Thanks,
+
+C.
+

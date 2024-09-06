@@ -1,121 +1,109 @@
-Received: by 2002:a17:505:1909:b0:1be9:327d:8ee3 with SMTP id az9csp59566njb;
-        Fri, 6 Sep 2024 05:28:30 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCU88KxgpewuoqgcZnMuBgWRqAJJzJBeTCnnn6NGwv8XUS7YSwDzcp0IAH324V5oFaDuZmBuU46UDx/BnQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IEGUBpkJ/L5MUOAZtiE8Ej8EgcTZ78C3oXODVcy3H1SXxE6IrQdbuDi8+I9nbpok8IwvKyX
-X-Received: by 2002:a05:6214:438a:b0:6bf:6375:397f with SMTP id 6a1803df08f44-6c528506a0bmr30092376d6.25.1725625710081;
-        Fri, 06 Sep 2024 05:28:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1725625710; cv=none;
+Received: by 2002:a17:505:1909:b0:1be9:327d:8ee3 with SMTP id az9csp61918njb;
+        Fri, 6 Sep 2024 05:35:44 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXTxoq3aIHt6qxPRvYjQjQo3ep0xM1XgNHTj7ucTS5JpaGTzzUpiqoINlPVgUnEOpRRbKon4vIcOe7mRA==@linaro.org
+X-Google-Smtp-Source: AGHT+IHLuU9/E2Plhj8BJTnA1T1h1iLPavO69pahpD5QHT7N3N3LUCG8zhy9J5VU4ZYgn/3LyJZt
+X-Received: by 2002:a05:620a:45a2:b0:7a9:868a:3ab3 with SMTP id af79cd13be357-7a997321cd8mr317719985a.13.1725626144571;
+        Fri, 06 Sep 2024 05:35:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1725626144; cv=none;
         d=google.com; s=arc-20240605;
-        b=GSWOMBW+JC7qVlLKwzpQ9MWEPxXOlHVzZSuHSfn78Y9DY8qK+QHPZOzL+gf57BsalZ
-         qlYBRL2WygD3uh/4RH4zXDtxIjiAuXPU/gqqJ5PMgM1ObIJvAWVXVR35p8B37Sw/TrIz
-         /hNQO1X7HI0fLPexMl/saW5KVbM5Jq/ewrgbyR9BskiowWmc79Eb17oqYi9gp7cUnLje
-         B3DZ0bnmBjXPicQgsum/M9cl2JQxQDy8HbacVJ9gzgz5Ed9jV/gxj2rv6P7ZRoBW33YP
-         LIaAsV2zh1Jgir/iv4n6eTP7RepI3wQFgYNpZTrqaEMUZfYkZIEzWXQUvEW278iYFWlV
-         XayA==
+        b=azjN8ZgVoBf9F+prhRS0G/GFJCg1vlNI+6qSGg9O0thwL3oVgPa9vh6pk/ECH6w0FC
+         Wravfom0ZgRRCeXx5WtQraZZfgNEwBRAAOQxkXgRyfTSW+4hs6hX650N5OMEPvF8PAsv
+         hSnwNLQw0ukV+TjTraz6jN/PvLRAv8JBsnSs/qdH8q/vAhFNvmNeNbGHWvBbvlpinOs8
+         Kk/1BmZ9ylmnhBxAlYef704H0n2TT0JweE6yi6OfBNdVqcoBdwDqD5a0EKYc1KZwEfto
+         ANhFT35jR0rDU1bX1AHU5/sIwGDgM/XwebLRYurtEKu/grwdlXPvbLCfnqLsPamYjFfd
+         hT2A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=GbQ46H6zsgGVOuoM37E/78s+2ytMVMhlJsHBTOeVrp8=;
-        fh=vDIQq1e2PEEQu+gruxea8ORAwC3lLGFEOkkXnB/bYMI=;
-        b=IgxrV6U3ZChsr3DFBi1ansL3KZUJS/jgAA+BXaFsVml6DvPTQRJ8LFvddpr76gR19P
-         n0sUxwxuNPkhKkh62nRbN5Fi/5AfCe0QwuXFA9/6CPDU9psiY166cwUA2Htsd8FEzNN2
-         59B/ueVB2LouRlBP4Iniwnx241qzAFu4MXIkQ11ZBdIl2a0fH64bKIIu90PUwIRsW2/L
-         hOMGEVQHwIiFR9o+USJKLZCdaAP4EVQSzNGhg4O/J9MinSV3d2pu9OsQJjP5LTJscZ77
-         5xpve6QRwnRpBrfnDgKANua6AoTQKWbDWmLPaHg6OR1iQhBFOwE/d90rvLu8COGVJJf8
-         UTgQ==;
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=GVVkZzwkzUs6gDsLPFI57UR7P7EQchhmcx5HHq82jrU=;
+        fh=mVAPaaM6E1ekxUjUKawZYYneF57fDZJ17nYilhcWE/o=;
+        b=dRcyAMDvrtRfcMzo9rwW/PiHch3O+l1s+h0po7fa/SlXiRx0T9MI1FDNDuPxxJM17j
+         k01NjvVgoUr47Z3Y4vhJhk8n2a1BhgdYs+KFVlYT1JzDVWhyURqNgRzjBD0HWFSFWxm4
+         iBcD84VC8euiqeFR0oVx1V0jLptrYX9/VIzOZofcnTDHzAV77wRIHAhR9Yuvhzd0G4c7
+         jWR2+CqQmkEAI9oyIqUZY0Kgp+JXbrqlzj9H2EmP1JXs/l0uAOQi208WgFFmS+JxZmCJ
+         9SRaJz1u2wXBfEaHmTRDD1Eal+qwBATOQNQu2bb3NdmKxb4UCP7TvFpIm10fTfAAaCtg
+         kzMA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20230601 header.b=OZcFcs9u;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20230601 header.b=JDBnhZua;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dara=fail header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6c530674323si1764086d6.369.2024.09.06.05.28.29
+        by mx.google.com with ESMTPS id af79cd13be357-7a9a106a6a4si18581785a.285.2024.09.06.05.35.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 06 Sep 2024 05:28:30 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 06 Sep 2024 05:35:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20230601 header.b=OZcFcs9u;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20230601 header.b=JDBnhZua;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dara=fail header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1smY2V-0001Yu-Ty; Fri, 06 Sep 2024 08:26:11 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1smYBJ-0001SM-Jg; Fri, 06 Sep 2024 08:35:18 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
- id 1smY2J-0000o4-SR; Fri, 06 Sep 2024 08:26:01 -0400
-Received: from mail-pf1-x42b.google.com ([2607:f8b0:4864:20::42b])
+ id 1smYBG-0001Dn-IW; Fri, 06 Sep 2024 08:35:14 -0400
+Received: from mail-pf1-x42e.google.com ([2607:f8b0:4864:20::42e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
- id 1smY2H-00023m-Kx; Fri, 06 Sep 2024 08:25:59 -0400
-Received: by mail-pf1-x42b.google.com with SMTP id
- d2e1a72fcca58-718d79fb6f7so564817b3a.3; 
- Fri, 06 Sep 2024 05:25:56 -0700 (PDT)
+ id 1smYBE-00034y-BF; Fri, 06 Sep 2024 08:35:14 -0400
+Received: by mail-pf1-x42e.google.com with SMTP id
+ d2e1a72fcca58-7178cab62e6so1683277b3a.2; 
+ Fri, 06 Sep 2024 05:35:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1725625555; x=1726230355; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:sender:from:to:cc:subject:date
- :message-id:reply-to;
- bh=GbQ46H6zsgGVOuoM37E/78s+2ytMVMhlJsHBTOeVrp8=;
- b=OZcFcs9uS+yImDhsBr9FzzAo+TB39qfQh+06nFjoFOsSx/W1RTSxdckjTVcHcXCnnq
- btBWLi5EfRbXKWJSAZzuVICAzbpY5eY0BXojyXVOQAbhFZEStflw3Xju1sK3kOrnQyFC
- ebqu98jYx2KNO9RU0142ZzXzhL0h9fyFwPFTvhTMqeZgSwVoUiWi+vnPcfEqYTQGXlL4
- B2aWCFwauMUy9xQsDs1AVUFMyV6u5Aq1Qu/q3zB71VwhvBPGr8qbWeCgK5XxPwUoMq2Q
- kMiJwYQjMf5cBpbTvqBEAGXybOzxbCllfl4Dl4Ti2z8j7eViGm2ehzcrRZTEcRJNegKJ
- 4+Aw==
+ d=gmail.com; s=20230601; t=1725626110; x=1726230910; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:sender:from:to:cc:subject:date:message-id:reply-to;
+ bh=GVVkZzwkzUs6gDsLPFI57UR7P7EQchhmcx5HHq82jrU=;
+ b=JDBnhZua/dhTB9pp+7lJ60skLsF7np1MqOR/Ql3D6Pa4IKi2EuQOzjdHX17++X92ou
+ CffblhqV0J5UROMcepsO6dC0jasV/LJFNij5OiW8V4Wjgs1MO7WBViKzn+1A+ORpc29B
+ p1rts6HYD+3njgQ01oL3s8gF54JNTulFhKzWQ2+iyWiJiXWlK70GBRcSdr0V748tSgKs
+ W2S7rFGZmCie5gCWJ5aGJAvxTF2BgUdaMPYSqe5tbagrFObZzRhuTu0XLlT0tuKXGuWD
+ pfu4UFJpxNKQqPtwEXxRiM3FP6k2eNqGHy68Hkup61rdFXJRcrCL9DsQ4ySFbIwrQgN5
+ 6xGQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1725625555; x=1726230355;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:sender:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=GbQ46H6zsgGVOuoM37E/78s+2ytMVMhlJsHBTOeVrp8=;
- b=qdnyNiTo6VJqTGmebRLSS9lnany35/8wxxgq75wqT00sdBI1kPA1tgxYwC5Z2aM7SN
- BoxbShOxFMEU6413/g9lLmcvtty+mkzdE4TfuaJhp5Vf5dci+6DxHqHY1ZDhxQp9gT+2
- 27rpEXvXeIxLQSH1qS2G3F2XGNwvtgo0TdJbAgccf9aTkcjq8RjFFo8RDDdrzlS4dd2i
- c2QrxOaNYVnpgurygBuol8a8/+hC3me+VvUDIai9ZH7/Rc/6NBGcrJo0NTMsMr77gjuR
- kXwfiYpPiEgctZTkAtuXCeQdpIDaIs4RlnehwAnc2hAwQHc53VOToEIbcANoCfviq1Jc
- 1f/Q==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXW05sPwQhE99IOXjT3AO2lVayBOyP/q3EGqNEeQF4k0XJTcXnVp+eMBdfUph5FV6MrFVRQ0j2DIg==@nongnu.org
-X-Gm-Message-State: AOJu0YxaRPcuMVhOlkJes7WabmAWq1e44/Xv1Ze3oBIrLG9O2ieS8aYx
- ntxkm0vS5fi7E7XmsAh6cNe1x1WoC7H2BX4AeczIP1W4pBjKzwZ9DdFVFw==
-X-Received: by 2002:a05:6a00:9194:b0:717:8dd1:c309 with SMTP id
- d2e1a72fcca58-718d5e1d033mr2413268b3a.9.1725625555302; 
- Fri, 06 Sep 2024 05:25:55 -0700 (PDT)
+ d=1e100.net; s=20230601; t=1725626110; x=1726230910;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:sender:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=GVVkZzwkzUs6gDsLPFI57UR7P7EQchhmcx5HHq82jrU=;
+ b=HHofnF8K333QXNTcQLBkx1Dh42rpa1mKCwXQcdrDcKKtYBjfiEYSr2VX4UZsg3oHDp
+ 36i74NZMM+n0VH3kmpeFY0DVO/yVvFLJu3D0VcbI2STVxuqjdLiets0dgDOg1FDiHW1A
+ ym3CRv0vmvOq7eW7KhXDOkv2avYLLoDRFpVr9HqzSuinY9t7ulkGvfOrejnGgaOjNOyG
+ 3LReo6rgw4JqVk4bfzlT9KuL6dWweiuZ9Png1rupbfdU46NtQCfjsjLKKELIGcPdqUW/
+ wNUmlChN4jKlYcIx4XRtUnF/XPn+4D4Txn2pCGVUiiVe8wQE6dVzu+kr5ahIOokXFroN
+ Lisw==
+X-Gm-Message-State: AOJu0Yxqax5y+vl29ZB2rx+FtLn2fW/pGRie6S4qbIsaqDwbEPGouxVC
+ S9vgg4JYs0o8Phu6oZSWa6g3ApYggDea1WNRudWaUEwUK5HuADcXIxwKuA==
+X-Received: by 2002:a05:6a00:6f6a:b0:70e:8d38:2845 with SMTP id
+ d2e1a72fcca58-718d5ded075mr2603514b3a.1.1725626109738; 
+ Fri, 06 Sep 2024 05:35:09 -0700 (PDT)
 Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
  by smtp.gmail.com with ESMTPSA id
- 41be03b00d2f7-7d50f75678bsm2066515a12.22.2024.09.06.05.25.54
+ d2e1a72fcca58-717785b4b4bsm4752170b3a.199.2024.09.06.05.35.08
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 06 Sep 2024 05:25:54 -0700 (PDT)
+ Fri, 06 Sep 2024 05:35:09 -0700 (PDT)
 From: Guenter Roeck <linux@roeck-us.net>
 To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+Cc: qemu-arm@nongnu.org, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Peter Maydell <peter.maydell@linaro.org>,
  Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
  Jamin Lin <jamin_lin@aspeedtech.com>,
- Peter Maydell <peter.maydell@linaro.org>,
  Andrew Jeffery <andrew@codeconstruct.com.au>,
- Joel Stanley <joel@jms.id.au>, BALATON Zoltan <balaton@eik.bme.hu>,
- "Michael S . Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
- Guenter Roeck <linux@roeck-us.net>
-Subject: [RFC PATCH 5/8] usb/uhci: Add support for usb-uhci-sysbus
-Date: Fri,  6 Sep 2024 05:25:39 -0700
-Message-ID: <20240906122542.3808997-6-linux@roeck-us.net>
+ Joel Stanley <joel@jms.id.au>, Guenter Roeck <linux@roeck-us.net>
+Subject: [PATCH] aspeed: Add support for IBM Bonnell
+Date: Fri,  6 Sep 2024 05:35:05 -0700
+Message-ID: <20240906123505.3818154-1-linux@roeck-us.net>
 X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20240906122542.3808997-1-linux@roeck-us.net>
-References: <20240906122542.3808997-1-linux@roeck-us.net>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42b;
- envelope-from=groeck7@gmail.com; helo=mail-pf1-x42b.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42e;
+ envelope-from=groeck7@gmail.com; helo=mail-pf1-x42e.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
@@ -126,206 +114,149 @@ X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: kuxwY6tcnv7w
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: RaRRsteb6Sz3
+
+Introduce support for the IBM Bonnell BMC.
+
+Use Rainier machine information for HW strapping and other machine details
+since the actual hardware configuration is unknown. I2C device
+instantiation is based on the devicetree file in the upstream Linux kernel.
+
+Major difference to Rainier is that the Bonnell devicetree file
+instantiates a TPM. It is therefore possible to test TPM functionality
+without having to instantiate the TPM manually from the Linux command
+line.
 
 Signed-off-by: Guenter Roeck <linux@roeck-us.net>
 ---
- hw/arm/Kconfig           |   1 +
- hw/usb/Kconfig           |   4 ++
- hw/usb/hcd-uhci-sysbus.c | 100 +++++++++++++++++++++++++++++++++++++++
- hw/usb/hcd-uhci-sysbus.h |  23 +++++++++
- hw/usb/meson.build       |   1 +
- 5 files changed, 129 insertions(+)
- create mode 100644 hw/usb/hcd-uhci-sysbus.c
- create mode 100644 hw/usb/hcd-uhci-sysbus.h
+ hw/arm/aspeed.c | 87 +++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 87 insertions(+)
 
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index 1ad60da7aa..8b1253fae5 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -606,6 +606,7 @@ config ASPEED_SOC
-     select PMBUS
-     select MAX31785
-     select FSI_APB2OPB_ASPEED
-+    select USB_UHCI_SYSBUS
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index fd5603f7aa..4f833c5708 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -865,6 +865,70 @@ static void rainier_bmc_i2c_init(AspeedMachineState *bmc)
+     create_pca9552(soc, 15, 0x60);
+ }
  
- config MPS2
-     bool
-diff --git a/hw/usb/Kconfig b/hw/usb/Kconfig
-index 7d034738ce..fe5375050c 100644
---- a/hw/usb/Kconfig
-+++ b/hw/usb/Kconfig
-@@ -11,6 +11,10 @@ config USB_UHCI_PCI
-     depends on PCI
-     select USB_UHCI
++static void bonnell_bmc_i2c_init(AspeedMachineState *bmc)
++{
++    AspeedSoCState *soc = bmc->soc;
++    I2CBus *bus;
++
++    bus = aspeed_i2c_get_bus(&soc->i2c, 0);
++
++    at24c_eeprom_init(bus, 0x51, 8 * KiB);      /* atmel,24c64 */
++    /* tca9554@11:20 */
++    i2c_slave_create_simple(bus, "pca9554", 0x20);
++
++    /* ucd90160@2:64 */
++
++    /* fsg032@3:5a */
++    /* fsg032@3:5b */
++
++    bus = aspeed_i2c_get_bus(&soc->i2c, 7);
++
++    /* si7020@7:40 */
++
++    /* Bonnell expects a TMP275 but a TMP105 is compatible */
++    i2c_slave_create_simple(bus, TYPE_TMP105, 0x48);
++    at24c_eeprom_init(bus, 0x50, 8 * KiB);      /* atmel,24c64 */
++    at24c_eeprom_init(bus, 0x51, 8 * KiB);      /* atmel,24c64 */
++    i2c_slave_create_simple(bus, "max31785", 0x52);
++
++    /* pca9551; assume/hope pca9552 is compatible enough */
++    create_pca9552(soc, 7, 0x60);
++
++    /* ibm,op-panel@7:62 */
++    /* dps310@7:76 */
++
++    bus = aspeed_i2c_get_bus(&soc->i2c, 8);
++
++    /* rx8900@8:32 */
++
++    /* Bonnell expects a TMP275 but a TMP105 is compatible */
++    i2c_slave_create_simple(bus, TYPE_TMP105, 0x48);
++    at24c_eeprom_init(bus, 0x51, 16 * KiB);      /* atmel,24c128 */
++
++    /* pca9551@8:60 */
++    create_pca9552(soc, 8, 0x60);
++
++    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 9), "tmp423", 0x4c);
++
++    bus = aspeed_i2c_get_bus(&soc->i2c, 11);
++
++    /* tca9554@11:20 */
++    i2c_slave_create_simple(bus, "pca9554", 0x20);
++    i2c_slave_create_simple(bus, "tmp423", 0x4c);
++    /* pca9849@11:75 */
++    i2c_slave_create_simple(bus, "pca9546", 0x75);
++
++    /* npct75x@12:2e (tpm) */
++
++    /* atmel,24c64 */
++    at24c_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 12), 0x50, 8 * KiB);
++
++    /* atmel,24c64 */
++    at24c_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 13), 0x50, 8 * KiB);
++    /* pca9551@13:60 */
++    create_pca9552(soc, 13, 0x60);
++}
++
+ static void get_pca9548_channels(I2CBus *bus, uint8_t mux_addr,
+                                  I2CBus **channels)
+ {
+@@ -1488,6 +1552,25 @@ static void aspeed_machine_rainier_class_init(ObjectClass *oc, void *data)
+     aspeed_machine_ast2600_class_emmc_init(oc);
+ };
  
-+config USB_UHCI_SYSBUS
-+    bool
-+    select USB_UHCI
-+
- config USB_OHCI
-     bool
-     select USB
-diff --git a/hw/usb/hcd-uhci-sysbus.c b/hw/usb/hcd-uhci-sysbus.c
-new file mode 100644
-index 0000000000..6f2428cc15
---- /dev/null
-+++ b/hw/usb/hcd-uhci-sysbus.c
-@@ -0,0 +1,100 @@
-+/*
-+ * QEMU USB UHCI Emulation
-+ * Copyright (c) 2006 Openedhand Ltd.
-+ * Copyright (c) 2010 CodeSourcery
-+ * Copyright (c) 2024 Red Hat, Inc.
-+ *
-+ * This library is free software; you can redistribute it and/or
-+ * modify it under the terms of the GNU Lesser General Public
-+ * License as published by the Free Software Foundation; either
-+ * version 2.1 of the License, or (at your option) any later version.
-+ *
-+ * This library is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-+ * Lesser General Public License for more details.
-+ *
-+ * You should have received a copy of the GNU Lesser General Public
-+ * License along with this library; if not, see <http://www.gnu.org/licenses/>.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "hw/irq.h"
-+#include "qapi/error.h"
-+#include "qemu/module.h"
-+#include "qemu/timer.h"
-+#include "hw/usb.h"
-+#include "migration/vmstate.h"
-+#include "hw/sysbus.h"
-+#include "hw/qdev-dma.h"
-+#include "hw/qdev-properties.h"
-+#include "trace.h"
-+#include "hcd-uhci.h"
-+#include "hcd-uhci-sysbus.h"
-+
-+static void uhci_sysbus_reset(UHCIState *uhci)
++static void aspeed_machine_bonnell_class_init(ObjectClass *oc, void *data)
 +{
-+    uhci_state_reset(uhci);
-+}
++    MachineClass *mc = MACHINE_CLASS(oc);
++    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
 +
-+static void uhci_sysbus_realize(DeviceState *dev, Error **errp)
-+{
-+    UHCISysBusState *s = SYSBUS_UHCI(dev);
-+    UHCIState *uhci = &s->uhci;
-+    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
-+    Error *err = NULL;
-+
-+    uhci->masterbus = s->masterbus;
-+    uhci->firstport = s->firstport;
-+    uhci->maxframes = s->maxframes;
-+    uhci->frame_bandwidth = s->frame_bandwidth;
-+    uhci->as = &address_space_memory;
-+    uhci->uhci_reset = uhci_sysbus_reset;
-+
-+    usb_uhci_init(uhci, dev, &err);
-+
-+    if (err) {
-+        error_propagate(errp, err);
-+        return;
-+    }
-+    sysbus_init_irq(sbd, &uhci->irq);
-+    sysbus_init_mmio(sbd, &uhci->mem);
-+}
-+
-+static void uhci_sysbus_reset_sysbus(DeviceState *dev)
-+{
-+    UHCISysBusState *s = SYSBUS_UHCI(dev);
-+    UHCIState *uhci = &s->uhci;
-+
-+    uhci_sysbus_reset(uhci);
-+}
-+
-+static Property uhci_sysbus_properties[] = {
-+    DEFINE_PROP_STRING("masterbus", UHCISysBusState, masterbus),
-+    DEFINE_PROP_UINT32("firstport", UHCISysBusState, firstport, 0),
-+    DEFINE_PROP_UINT32("bandwidth", UHCISysBusState, frame_bandwidth, 1280),
-+    DEFINE_PROP_UINT32("maxframes", UHCISysBusState, maxframes, 128),
-+    DEFINE_PROP_END_OF_LIST(),
++    mc->desc       = "IBM Bonnell BMC (Cortex-A7)";
++    amc->soc_name  = "ast2600-a3";
++    amc->hw_strap1 = RAINIER_BMC_HW_STRAP1;
++    amc->hw_strap2 = RAINIER_BMC_HW_STRAP2;
++    amc->fmc_model = "mx66l1g45g";
++    amc->spi_model = "mx66l1g45g";
++    amc->num_cs    = 2;
++    amc->macs_mask  = ASPEED_MAC2_ON | ASPEED_MAC3_ON;
++    amc->i2c_init  = bonnell_bmc_i2c_init;
++    mc->default_ram_size = 1 * GiB;
++    aspeed_machine_class_init_cpus_defaults(mc);
++    aspeed_machine_ast2600_class_emmc_init(oc);
 +};
 +
-+static void uhci_sysbus_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+
-+    dc->realize = uhci_sysbus_realize;
-+    set_bit(DEVICE_CATEGORY_USB, dc->categories);
-+    dc->desc = "UHCI USB Controller";
-+    device_class_set_props(dc, uhci_sysbus_properties);
-+    dc->reset = uhci_sysbus_reset_sysbus;
-+}
-+
-+static const TypeInfo uhci_sysbus_types[] = {
-+    {
-+        .name          = TYPE_SYSBUS_UHCI,
-+        .parent        = TYPE_SYS_BUS_DEVICE,
-+        .instance_size = sizeof(UHCISysBusState),
-+        .class_init    = uhci_sysbus_class_init,
-+    },
-+};
-+
-+DEFINE_TYPES(uhci_sysbus_types);
-diff --git a/hw/usb/hcd-uhci-sysbus.h b/hw/usb/hcd-uhci-sysbus.h
-new file mode 100644
-index 0000000000..c491b9fc92
---- /dev/null
-+++ b/hw/usb/hcd-uhci-sysbus.h
-@@ -0,0 +1,23 @@
-+#ifndef HW_USB_HCD_UHCI_SYSBUS_H
-+#define HW_USB_HCD_UHCI_SYSBUS_H
-+
-+#include "hcd-uhci.h"
-+
-+#define TYPE_SYSBUS_UHCI "sysbus-uhci"
-+
-+OBJECT_DECLARE_SIMPLE_TYPE(UHCISysBusState, SYSBUS_UHCI)
-+
-+struct UHCISysBusState {
-+    /*< private >*/
-+    SysBusDevice parent_obj;
-+    /*< public >*/
-+    UHCIState uhci;
-+
-+    char *masterbus;
-+    uint32_t firstport;
-+    uint32_t frame_bandwidth;
-+    uint32_t maxframes;
-+    uint32_t num_ports;
-+};
-+
-+#endif /* HW_USB_HCD_UHCI_SYSBUS_H */
-diff --git a/hw/usb/meson.build b/hw/usb/meson.build
-index a41b54ac02..b0dd4b5169 100644
---- a/hw/usb/meson.build
-+++ b/hw/usb/meson.build
-@@ -14,6 +14,7 @@ system_ss.add(when: 'CONFIG_USB', if_true: files(
- # usb host adapters
- system_ss.add(when: 'CONFIG_USB_UHCI', if_true: files('hcd-uhci.c'))
- system_ss.add(when: 'CONFIG_USB_UHCI_PCI', if_true: files('hcd-uhci-pci.c'))
-+system_ss.add(when: 'CONFIG_USB_UHCI_SYSBUS', if_true: files('hcd-uhci-sysbus.c'))
- system_ss.add(when: 'CONFIG_USB_OHCI', if_true: files('hcd-ohci.c'))
- system_ss.add(when: 'CONFIG_USB_OHCI_PCI', if_true: files('hcd-ohci-pci.c'))
- system_ss.add(when: 'CONFIG_USB_OHCI_SYSBUS', if_true: files('hcd-ohci-sysbus.c'))
+ #define FUJI_BMC_RAM_SIZE ASPEED_RAM_SIZE(2 * GiB)
+ 
+ static void aspeed_machine_fuji_class_init(ObjectClass *oc, void *data)
+@@ -1776,6 +1859,10 @@ static const TypeInfo aspeed_machine_types[] = {
+         .name          = MACHINE_TYPE_NAME("rainier-bmc"),
+         .parent        = TYPE_ASPEED_MACHINE,
+         .class_init    = aspeed_machine_rainier_class_init,
++    }, {
++        .name          = MACHINE_TYPE_NAME("bonnell-bmc"),
++        .parent        = TYPE_ASPEED_MACHINE,
++        .class_init    = aspeed_machine_bonnell_class_init,
+     }, {
+         .name          = MACHINE_TYPE_NAME("fuji-bmc"),
+         .parent        = TYPE_ASPEED_MACHINE,
 -- 
 2.45.2
 

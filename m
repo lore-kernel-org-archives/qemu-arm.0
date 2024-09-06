@@ -1,100 +1,130 @@
-Received: by 2002:a17:505:1f8d:b0:1be9:327d:8ee3 with SMTP id pt13csp761107njb;
-        Fri, 6 Sep 2024 00:49:59 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWe+8AV9D7VTYfh47KfS3NBgmAPPR2QeM092PiCi5gn+Rzat9ztRMDZ0THAfv/6jBABb1Evtx5azl89ZQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IFoUUrnTDUeo6jNnwn8uqA8OpVvHB4gbFJFRvM4egOj70ZBjNxhq92uhLPT3d4+GIvyNBRQ
-X-Received: by 2002:a05:620a:424a:b0:7a8:325:5309 with SMTP id af79cd13be357-7a99731e33dmr187506585a.12.1725608998851;
-        Fri, 06 Sep 2024 00:49:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1725608998; cv=none;
+Received: by 2002:a17:505:1909:b0:1be9:327d:8ee3 with SMTP id az9csp46642njb;
+        Fri, 6 Sep 2024 04:51:02 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXxNEJMCbx0TTKwbkw3rIubJnMn0rgQvgKGkLxo6PB+TVEQ4nDbNn2GdOUTr/dr/Asi2N5tmsz6VjOtqw==@linaro.org
+X-Google-Smtp-Source: AGHT+IFoEs+bXEFIrNkHDuAMY4Vo6V13LM9NJ96BJ3rRw8YJ+eL3r75Z6kqM6426yfXVw80sv8Xd
+X-Received: by 2002:a05:690c:2707:b0:6b1:61e0:5359 with SMTP id 00721157ae682-6db44f1ac20mr21453597b3.21.1725623461941;
+        Fri, 06 Sep 2024 04:51:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1725623461; cv=none;
         d=google.com; s=arc-20240605;
-        b=H41CGGKirC+B4U3By7hc1TeVVRVZgjzKQN5Jlxd5qIjUrdY8JWtys2E0vRmwXEDat/
-         p4hDUppXVV1WZ9ijtqoROtQ2gDPItOxOW5Bv+Xj2UK5UuFAL8VgS3WX8CcFcr2YO45ic
-         EFFtFmXI+2ppqdHxoAQMyz12ASsNsFGFO84E14EuWQP2/HACZHmMgn1b124RUs0yr/hD
-         JSWfLddd9LQyHBNt35Zr3X1LyFGVlMxrqC2zq+OALkjBFd02V3g5SdnLQm79xhaigk3F
-         zU/t7Nyb6xpgAfrzBhAvh6t07iRVQnfH4tx3qPeC3cesU24gOGUsF4JxDe1aVWvLYfHh
-         aAAw==
+        b=eXBK8CV0lmLiCID0itJ9misbIa6eWB5xmpEGhMQ7PKQptsbGPz52VOpSqlhUv8K9+y
+         MNct3WMO8LyzckkX07QCtS4ZMChD9lRrvcnxk9+vwLrNnArZUwkl1nOXguUiEz0FSrKl
+         uP8MV+jiG8CrPJJkIm8D5Kp8FeoRavnT8mPdOIkXuNm4jvYuTkOi48f7e8E2VpPNynTW
+         cUhtY9vayi2wNxZs0ANFFQDWneP29QF78tt7UiwVQwqs+zG21kzOUK95qi7Ul1jWf9v7
+         WqjJsfdoJM4xgiXJ1Fouvx31XPIFDEt1Q5iHeuIT4lVXmKjt6Rd9A+Hi0ulh8aNIyL7L
+         L9iQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id;
-        bh=5kuyjbA4NGJ6/GkJNzULBitdfwivpZIKlkNXmQITNLA=;
-        fh=xde4RztPxS75EYq3tRm9hzFj1q3vkWnyous7srlSAL8=;
-        b=gdKjPEOXXQKZOxo9h5GbWhbnGU+Wr5SI2L4MDQJ9TppHOZxlmGHF49f8o6p3BJiYBH
-         8wZj+CR46zuTSK9FKGQWQrdh9oTsiN5GvjEOLQV7Nk2MsJvX4svWij1ZjxeWRq1p+Nyr
-         2yp1ZuySm4s6smVEg2/AR6+Pd0LJf0g+hpHDiK2xA0m8oqJq0ZApBdHkFb8I7jLGmfrN
-         EfsLK+6ZCa4tizL24h64wzjX4cpAqbiaCOG/oZMjZKYLBrRyXG8sv37g4a4AuPHzWBze
-         hvIt7mgvrwy7eBlp/WPAZAxWYZKe365aZYe4e+OJhe4SZhp8ZlfapkGCRRDb1tHx+RD+
-         ILbQ==;
+         :list-unsubscribe:list-id:precedence:in-reply-to
+         :content-transfer-encoding:content-disposition:mime-version
+         :references:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=yD9ZKDvPHEMBvsnNFGn3/vFLSBz7HgG50uElQpcLwtY=;
+        fh=p+pS5pXnUAkaqAYuB2y/UsN9Gheva0qYanZqnzXaJYE=;
+        b=GyTYWqc6CVdDxrEk50MBZJLGqq6tVC0YI0QH6pwV3WVsRz/ddlf/gkL994pjJW+OnG
+         RLsiG/HrBNQf59Oq5dGR7Z1xvUFGiBbSDqcYNJ/JWdmke1RxVaaAjl+r8WvkjSlvapWU
+         wjr09X0dyJbGGN1SYo53qZKsUFfViQxbkuUr4cCk9r+ArHIbs2T4XYPL8EwnJN4B9aKS
+         ObZkeE+kEC59bw1CsZwHHSAPffRr3POWwocZaU30eJV0eRnobfmOfyghgcK8P/eWyPp6
+         5LolHHjUsHjPAmAxyFPTMfJ2JdndfgdVJvURpD/Pjv6ukNpFhddTfs5djz66Q5bxoQX4
+         /5/Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@google.com header.s=20230601 header.b=zZLcOW47;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
+       dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7a9959b7d84si185925985a.403.2024.09.06.00.49.58
+        by mx.google.com with ESMTPS id af79cd13be357-7a9a10265cbsi12048485a.164.2024.09.06.04.51.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 06 Sep 2024 00:49:58 -0700 (PDT)
+        Fri, 06 Sep 2024 04:51:01 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@google.com header.s=20230601 header.b=zZLcOW47;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
+       dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1smTiw-0000l8-KX; Fri, 06 Sep 2024 03:49:42 -0400
+	id 1smXUH-0004KW-E0; Fri, 06 Sep 2024 07:50:49 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=ncBN=QE=kaod.org=clg@ozlabs.org>)
- id 1smTiv-0000fG-AS; Fri, 06 Sep 2024 03:49:41 -0400
-Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=ncBN=QE=kaod.org=clg@ozlabs.org>)
- id 1smTit-0001io-6Q; Fri, 06 Sep 2024 03:49:41 -0400
-Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4X0Szv1bsWz4x8c;
- Fri,  6 Sep 2024 17:49:31 +1000 (AEST)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4X0Szk4TzQz4x7F;
- Fri,  6 Sep 2024 17:49:22 +1000 (AEST)
-Message-ID: <73b7ffba-f2ae-415e-9aa6-793480c08f67@kaod.org>
-Date: Fri, 6 Sep 2024 09:49:17 +0200
+ (Exim 4.90_1) (envelope-from <smostafa@google.com>)
+ id 1smXUF-00048y-IW
+ for qemu-arm@nongnu.org; Fri, 06 Sep 2024 07:50:47 -0400
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <smostafa@google.com>)
+ id 1smXUD-0006wx-Av
+ for qemu-arm@nongnu.org; Fri, 06 Sep 2024 07:50:47 -0400
+Received: by mail-wm1-x329.google.com with SMTP id
+ 5b1f17b1804b1-42bba6a003bso38375e9.0
+ for <qemu-arm@nongnu.org>; Fri, 06 Sep 2024 04:50:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=google.com; s=20230601; t=1725623443; x=1726228243; darn=nongnu.org;
+ h=in-reply-to:content-transfer-encoding:content-disposition
+ :mime-version:references:message-id:subject:cc:to:from:date:from:to
+ :cc:subject:date:message-id:reply-to;
+ bh=yD9ZKDvPHEMBvsnNFGn3/vFLSBz7HgG50uElQpcLwtY=;
+ b=zZLcOW47Rpl2StItzg1AxM0bPxAKyJot4NpyB3vXmVfTHrwV5toQdP68TuqIj3iCry
+ he/L5PuyBs6DC0W779cMxFjqgchStUi12Hsm/mp+RvZhudELD57m3wxz/A6Jn9PUFS+/
+ I1fxRm5wtxw2RowdQ6IdnP5P7y9jFDVvr7HWOrGOnXG8NbJAyFf+IM35pnFY/EZ49qXn
+ GoJuVcyHklE2SAwnIuD4Z6axWcNOCB5bt5vY5DVzSKDy0hdUs/FKJITuFKHBD9KijrgP
+ 4HL6xvGkplTzCu7puTnE9zAX023AtmEO6iXSM88RA6A22jjEKz96r/OWS8q0n1FRlgu3
+ FULg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1725623443; x=1726228243;
+ h=in-reply-to:content-transfer-encoding:content-disposition
+ :mime-version:references:message-id:subject:cc:to:from:date
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=yD9ZKDvPHEMBvsnNFGn3/vFLSBz7HgG50uElQpcLwtY=;
+ b=VWa/Mq3bVyK5VrTWn7a7JpEeJe+7W+20eTpxJ4EAhAqmlx/mu9r2W0NYr44QtWCzJI
+ YeDcZNec6ilIv3CMUklNks+/Ji6pKJId4VulIFQKY4byb7LDTCnBAfGXnstPQ+iyT0Lh
+ +V7rv4ghXTysDa+6L/b2H1K3HADpkUE8/K6WgSqc5EOBrYHHfOnF6jaEDksJ8+tn3/lK
+ uo+TMksW65Hg+Fya6UgZKIL+1gRXBIDfDvh/bkFP8ouFO0AsExfX6y+czfoqBGro8SZe
+ f5gYuzKTZyMPSQHbi38guNchg72bFwlG79vJcWE6oSoVEB3wdekaIBzdd4GDfbfZVeTv
+ SXQw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUfcu+hwSMNmSvimSIPSACUoB0XnqXe/B+BL0AGxiAyXeOD71T2FxMYRM13aVO8IoPT/cn0y9Jaew==@nongnu.org
+X-Gm-Message-State: AOJu0YzWOyJXKijqXMe5NsNHK4eq2GkI/qfBp35X1mkHwoqIW/fDyCAC
+ 6g1i25gAIV3dKNC/trOX9i8FYdI1xwuJ96JceqTzOT9FEoKwjm46oZDvTHOlxA==
+X-Received: by 2002:a05:600c:1e10:b0:42b:a04f:6eca with SMTP id
+ 5b1f17b1804b1-42ca0610155mr757205e9.6.1725623442563; 
+ Fri, 06 Sep 2024 04:50:42 -0700 (PDT)
+Received: from google.com (109.36.187.35.bc.googleusercontent.com.
+ [35.187.36.109]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-42ca05c6fcesm18230355e9.3.2024.09.06.04.50.41
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 06 Sep 2024 04:50:42 -0700 (PDT)
+Date: Fri, 6 Sep 2024 11:50:38 +0000
+From: Mostafa Saleh <smostafa@google.com>
+To: Nicolin Chen <nicolinc@nvidia.com>
+Cc: Eric Auger <eric.auger@redhat.com>,
+ Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>, Jason Gunthorpe <jgg@nvidia.com>,
+ Jean-Philippe Brucker <jean-philippe@linaro.org>,
+ Moritz Fischer <mdf@kernel.org>, Michael Shavit <mshavit@google.com>,
+ Andrea Bolognani <abologna@redhat.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Peter Xu <peterx@redhat.com>
+Subject: Re: nested-smmuv3 topic, Sep 2024
+Message-ID: <ZtrsjoCvwZFYFEjS@google.com>
+References: <ZtlrLJzZqpnUrZQf@Asurada-Nvidia>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [SPAM] [PATCH v3 00/11] support I2C for AST2700
-To: Troy Lee <leetroy@gmail.com>
-Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- Cleber Rosa <crosa@redhat.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
- <philmd@linaro.org>, Wainer dos Santos Moschetta <wainersm@redhat.com>,
- Beraldo Leal <bleal@redhat.com>, "open list:ASPEED BMCs"
- <qemu-arm@nongnu.org>, "open list:All patches CC here"
- <qemu-devel@nongnu.org>, Troy Lee <troy_lee@aspeedtech.com>,
- Yunlin Tang <yunlin.tang@aspeedtech.com>,
- Gustavo Romero <gustavo.romero@linaro.org>,
- Daniel Henrique Barboza <danielhb413@gmail.com>
-References: <20240903083528.2182190-1-jamin_lin@aspeedtech.com>
- <00aac81e-ff43-4526-960c-782e27ae043f@kaod.org>
- <SI2PR06MB50418DD956AC152E4E0911CDFC9C2@SI2PR06MB5041.apcprd06.prod.outlook.com>
- <c418168b-eb5c-459c-85b1-c7766102e558@kaod.org>
- <CAN9Jwz0cRRb308_ZOuwOsJsPLiKp3sugGJ-YzhvALv3-f+yaCQ@mail.gmail.com>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <CAN9Jwz0cRRb308_ZOuwOsJsPLiKp3sugGJ-YzhvALv3-f+yaCQ@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=150.107.74.76;
- envelope-from=SRS0=ncBN=QE=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
-X-Spam_score_int: -39
-X-Spam_score: -4.0
-X-Spam_bar: ----
-X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.25, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+In-Reply-To: <ZtlrLJzZqpnUrZQf@Asurada-Nvidia>
+Received-SPF: pass client-ip=2a00:1450:4864:20::329;
+ envelope-from=smostafa@google.com; helo=mail-wm1-x329.google.com
+X-Spam_score_int: -175
+X-Spam_score: -17.6
+X-Spam_bar: -----------------
+X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ ENV_AND_HDR_SPF_MATCH=-0.5, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01, USER_IN_DEF_DKIM_WL=-7.5,
+ USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -109,41 +139,77 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: l8QNulCzcEIa
+X-TUID: ytrmfZ8Hso8+
 
-Hello,
+Hi Nicolin,
 
-
-On 9/4/24 11:01, Troy Lee wrote:
-> Hi Cédric,
+On Thu, Sep 05, 2024 at 01:26:20AM -0700, Nicolin Chen wrote:
+> Hi all,
 > 
-> On Wed, Sep 4, 2024 at 3:29 PM Cédric Le Goater <clg@kaod.org> wrote:
->>
->> Hello Jamin,
->>
->>> Just want you to know that I and Troy are working on the following tasks for AST2700.
->>> 1. Support boot from bootmcu(riscv32) instead of u-boot(Cortex-A35)
->>
->> Oh nice. This is a good topic for heterogeneous machines !
+> Hope I didn't miss anybody who is related to the topic. Please,
+> feel free to add!
 > 
-> The basic model for bootmcu(risc-v) is working now, 
-
-May be send that first.
-
-> but we're looking for a way
-> to integrate sram/mmio/dram together.  
-Unfortunately, QEMU is not yet ready for heterogeneous architectures.
-
-> The ivshmem requires PCI, it might be
-> too complicate for our use case.  There is an ivshmem-flat probably more
-> sutiable for us.
+> <--- Background --->
+> As some of you know, there is an ongoing effort for nested-smmuv3
+> support in QEMU on ARM, working with the kernel IOMMUFD uAPIs:
+> [Nesting for vSTE]
+> https://lore.kernel.org/linux-iommu/0-v2-621370057090+91fec-smmuv3_nesting_jgg@nvidia.com/
+> [Nesting for invalidations]
+> https://lore.kernel.org/linux-iommu/cover.1724776335.git.nicolinc@nvidia.com/
 > 
-> [PATCH 0/4] Add ivshmem-flat device - Gustavo Romero (kernel.org)
-> https://lore.kernel.org/qemu-devel/20231127052024.435743-1-gustavo.romero@linaro.org/
+> The kernel patches are still under review. Jason and I are hoping
+> them to get merged at next cycle for v6.13, which means the QEMU
+> patches might start a review process as early as Nov/Dec?
+> 
+> That being said, I think we are way behind the point that patches
+> can get reviewed: most of the QEMU patches on my branches weren't
+> touched very often, but merely updated to the latest kernel uAPIs
+> for verification. So, I feel this might be a good point to gather
+> folks together to discuss about the possible timeline and ask for
+> help. I think this would potentially help folks who are going to
+> attend the KVM forum (or LPC) to carry out a discussion. (Sorry,
+> I won't make it due to some conflict..)
+> 
+> <-- Task Breakdown --->
+> I previously sent a RFCv1 series collecting comments/suggestions,
+> for multi-vSMMU instance design in ARM Virt code:
+> https://lore.kernel.org/qemu-devel/cover.1719361174.git.nicolinc@nvidia.com/
+> (And thanks again for all the inputs!)
+> 
+> The main takeaway from the discussion is to
+> 1) Turn the vSMMU module into a pluggable one, like intel-iommu
+> 2) Move the per-SMMU pxb bus and device auto-assign into libvirt
+> 
+> Apart from the multi-vSMMU thing, there's basic nesting series:
+> 0) Keep updating to the latest kernel uAPIs to support nesting
+> 
+> I was trying to do all these three, but apparently too ambitious.
+> The kernel side of work is still taking a lot of my bandwidth. So
+> far I had almost-zero progress on task (1) and completely-zero on
+> task (2).
+> 
+> <-- Help Needed --->
+> So, I'm wondering if anyone(s) might have some extra bandwidth in
+> the following months helping these two tasks, either of which can
+> be a standalone project I think.
 
-I lack expertise in that area. Adding Gustavo.
+I don’t have plans to work on qemu in the next months, most of my
+upstream focus will be on pKVM SMMUv3 support[1] in Linux which might
+overlap with some of the vSMMU work but in the kernel side.
+
+Otherwise, I’d be happy to review patches.
+
+[1] https://lore.kernel.org/kvmarm/20230201125328.2186498-1-jean-philippe@linaro.org/
 
 Thanks,
+Mostafa
 
-C.
-
+> 
+> For task (0), I think I can keep updating the uAPI part, although
+> it'd need some help for reviews, which I was hoping to occur after
+> Intel sends the QEMU nesting backend patches. Once we know how big
+> the rework is going to be, we may need to borrow some help at that
+> point once again..
+> 
+> Thank you
+> Nicolin

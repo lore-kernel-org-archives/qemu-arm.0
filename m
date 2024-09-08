@@ -1,70 +1,70 @@
-Received: by 2002:a17:505:1909:b0:1be9:327d:8ee3 with SMTP id az9csp625150njb;
-        Sun, 8 Sep 2024 05:43:49 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUDqMZKgyK+/BKctwjKfvmJ6qn6waZJdps5UoYEEoG+GYvVEeTsRZNPIEvpidxK0UNJsGJAZvlIIqZNNA==@linaro.org
-X-Google-Smtp-Source: AGHT+IG2PyuLgYP7oDACQDX+JPWNkB3v7Cu41y6FkVeqAyOvv/Fcm7qGxekke3RWt/gL5MjAZ4bC
-X-Received: by 2002:a05:6214:3205:b0:6c3:5b9e:699d with SMTP id 6a1803df08f44-6c5282fa26bmr106648786d6.2.1725799429814;
-        Sun, 08 Sep 2024 05:43:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1725799429; cv=none;
+Received: by 2002:a17:505:1909:b0:1be9:327d:8ee3 with SMTP id az9csp625165njb;
+        Sun, 8 Sep 2024 05:43:55 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXxLmrpN+DmgQ26DFPafrBOYa7/4VuQCHUZFqzn/QqvOQjpX4Vf4KqDgocSa7MLj4VAN6Cwnz45dtW/mg==@linaro.org
+X-Google-Smtp-Source: AGHT+IGyomvPwt0HVfGwEy03sUd59Z4ACHq4/wh718Dic1mU/clmmAB/AO7fW0LuZOQcWRMaPhWS
+X-Received: by 2002:a05:6214:4289:b0:6b5:e895:82f0 with SMTP id 6a1803df08f44-6c52851331amr117348666d6.43.1725799435376;
+        Sun, 08 Sep 2024 05:43:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1725799435; cv=none;
         d=google.com; s=arc-20240605;
-        b=Z4J84bJx9hXniPK501CTdKkeQY8YL0M2dRC8uo0ai1u2nBsWFMcISPRLlbyO0ciEkP
-         yKa0UT6lbdQvcPlAVenh9hqIoF5dXyowDi+1N+tiFIge0mfjRA76gXcL7W2Dis4ERfnS
-         ydlQd8cHLBrtc0KAl4cubOq1bjAR3d4GfsOjdyeKg6CgBI+7spVbpVcMGdvbrvmsmm0G
-         pKeD2OII9275fyktqsKLevnb8JRtDhRJLDeiPjbina5EyhExZ8QZacfDD9cjlhFe1G1w
-         hYBvuf/TiLj9zwbCA8vzZHFPmv9I9vXyhwYTKuLsKt4SNrlOq68EB8XwfZW3gEEYG7Qy
-         GVUA==
+        b=R8UUh1HFhEjn149ZPXCcGxvvrf21zfq6sDPQh158xBWC9QaZNVw6X9B1/Bh8Kel1KH
+         x5GK2Ddv+CfIOdrTy38T1xfnnRPdKQcAosJ7Wh/IPCGRtVl/58dE5ivnW09rWyHqMIOb
+         QL+fRtSpqykPOJg2MJ52zivsg1THu3/MAr8Gi0rQZQIBRf4ShL/3KKEGiSJEQuQ+QS9w
+         wxdQx92VWz4BA07OcAJuQ3TD7MAltYQ7vJ8eoOE1Vv5aOukcTIm00He1nDhrSlDW+htF
+         jxQTRs+aXfdjpiC1xpiD02jdL6aUBQhBAOPeWU7+4Rs3V+UGWY9N25JpIFNuAyfM00Ks
+         fnWA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=AmAkDe65mvRR5LBnNPE7sNGbYpAIzWcBzQKiQQW1FgU=;
+        bh=GFxqLV1efGvT9TFAtDWeI9PELZ4RuiNB68H+0tpYDH4=;
         fh=0cJcinrZnucqYjSNYncb6+eMGja84j/gs35YiXtiMHU=;
-        b=NZ9oxRMj+PkXgk/b5JhArnP8HX5fIYlQHzgZoxkk7JHqNGdT6o0Rs4zwp84DrGEnoe
-         zkGunZOaqj4u7+k5BD7Ky78pUVvBVbMaMkUIfF7FTO2F+CF620cmawukP1OFU/FAb7kt
-         lLK/l26kkj37EVKSA0w3t/g2kUwSooueGmRXjc6m26qIwkzUlLNSO41Gw3vTBaOhlHD5
-         gQ4x8VmhEDfK92wKaRSXtaqtVDCBSXYUT3w2fraUs+N71aMP+c37aYiLfBa+VFwrD78Z
-         BrL7HN29SIK6qKpkUF2I3BRmogRP0z1U9witGVrl9DJiSDt296neBOUlwUrITfE/906I
-         orRw==;
+        b=gI5qnFDTSDaZtTPoYhwh4sLcondCW6q2MfMd/IspMAAfYhor3PMEM02e4OU/+fTVbM
+         81paKhz+YAFkCgN4dq5xp0avhRJfch0cKexz0h1cJXpWnt1uOVVbAJQZesoY7Z8xKgmW
+         3n6i1v3Eg/17nVgFgi28KOnjW+009kgogq3G7ZainrFZRD7kqaYKJXX1J92VDr7Xa7WT
+         KaSOJKMyqhgS9bwamnziKWZvAZK9plIa8pQi/hudnd3CqzDaNOa11rTuLcwlkRG+gKrP
+         mVgvmauaVFr4gyWH93Yd6rkvDPAkNADBaupKLNziTUKoxo0RDvxqf0L0O+1BzqQHnRW8
+         JeSw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=F6Uv4NeH;
+       dkim=pass header.i=@intel.com header.s=Intel header.b=Jxnsmv8V;
        spf=pass (google.com: domain of zhao1.liu@intel.com designates 198.175.65.15 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 Return-Path: <zhao1.liu@intel.com>
 Received: from mgamail.intel.com (mgamail.intel.com. [198.175.65.15])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6c534787b9dsi31732186d6.435.2024.09.08.05.43.48
+        by mx.google.com with ESMTPS id 6a1803df08f44-6c534787b9dsi31732186d6.435.2024.09.08.05.43.54
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 08 Sep 2024 05:43:49 -0700 (PDT)
+        Sun, 08 Sep 2024 05:43:55 -0700 (PDT)
 Received-SPF: pass (google.com: domain of zhao1.liu@intel.com designates 198.175.65.15 as permitted sender) client-ip=198.175.65.15;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=F6Uv4NeH;
+       dkim=pass header.i=@intel.com header.s=Intel header.b=Jxnsmv8V;
        spf=pass (google.com: domain of zhao1.liu@intel.com designates 198.175.65.15 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1725799430; x=1757335430;
+  t=1725799436; x=1757335436;
   h=from:to:cc:subject:date:message-id:in-reply-to:
    references:mime-version:content-transfer-encoding;
-  bh=fLVPMHMbGbgr75ZVdN2bSb3F9f9e89UFzrkPV2gAPm8=;
-  b=F6Uv4NeHRoL5qtoL7uvPuk2O7epuyeB1Rpz27cqMZNmiqnyw4KQNJGdE
-   y4vFwNDKrZNABswy4Lm0BhAeiz9GhXdjk/nskKUbmUmcZ4EUIKwdqbnm2
-   nBoeHvtELhP+7cyN9JfkG78052wQIFFd8rREhiqmkh6KlueYB1jEegGYZ
-   MM0qGGfdce/85B3NTQrCbQVc1P0yHyDL16iOIlFV6CP/FK9bBdhnfyLrs
-   wHYAlltdj2QAxW3sulUweQyPhvwXlkOVDpf2JopgZ7h3pElcWEAtIbETZ
-   zoS9y2tT5ujg10hCu5H5wVtmugh1P93BvsL+OIFe5MMDxKhLP926iSoaJ
-   A==;
-X-CSE-ConnectionGUID: zJPE3DjDTeKX/XLX95CpbQ==
-X-CSE-MsgGUID: Mp1HlRfgQC6UUEVo3A43Vg==
-X-IronPort-AV: E=McAfee;i="6700,10204,11189"; a="28238182"
+  bh=mnsZhLOSkIt6OGn4y2rRLWIdhUwNFa/JuPtwCtNqbec=;
+  b=Jxnsmv8VXeM6Cqoa5BflNvWXnkD9h5tziOFg1mYfrEgZnylA25pQjsdZ
+   QBNkQ6RmAD1Oqp+MKYPblC6lyucMhViqQxnDHSk0hXuSPcCo/ZlUKwdcx
+   ThKPNLdRBPKbIhr9+uM5K2J2JAWw3g5ZRVH2TPZUqD3iRde5SGLzGO4Lb
+   qAByaNJy5r7Ef7sa1MBpkKymFs6YFQ6fy2A25LHM3JxKnNZjNzkUmOCH2
+   wjZYxTqSV3yScQYhWSLXkrse+K5Ri5uLdgjjnQ53j2KIDmwLavSl2vbv5
+   j6mYY5ZTDP/i8SOYKI8K7DM+PTJoConcy6WWBh5J9ODjluZk5QP1nNmaY
+   Q==;
+X-CSE-ConnectionGUID: 0S7RpfleRZeyUFOr4aaKLA==
+X-CSE-MsgGUID: E1Vqi8HGTFCCHpB8OSwjpw==
+X-IronPort-AV: E=McAfee;i="6700,10204,11189"; a="28238213"
 X-IronPort-AV: E=Sophos;i="6.10,212,1719903600"; 
-   d="scan'208";a="28238182"
+   d="scan'208";a="28238213"
 Received: from fmviesa001.fm.intel.com ([10.60.135.141])
-  by orvoesa107.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 08 Sep 2024 05:43:49 -0700
-X-CSE-ConnectionGUID: diEO//HXSLaEty83F5KDtQ==
-X-CSE-MsgGUID: 5rBdS2Y5RB28Y9qO0dYIpQ==
+  by orvoesa107.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 08 Sep 2024 05:43:54 -0700
+X-CSE-ConnectionGUID: bvTZQcDaRguVcTIRDYQTng==
+X-CSE-MsgGUID: KH+c+HSBRdiHXCVmCm6NkQ==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.10,212,1719903600"; 
-   d="scan'208";a="97196586"
+   d="scan'208";a="97196618"
 Received: from liuzhao-optiplex-7080.sh.intel.com ([10.239.160.36])
-  by fmviesa001.fm.intel.com with ESMTP; 08 Sep 2024 05:43:43 -0700
+  by fmviesa001.fm.intel.com with ESMTP; 08 Sep 2024 05:43:48 -0700
 From: Zhao Liu <zhao1.liu@intel.com>
 To: =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
 	Igor Mammedov <imammedo@redhat.com>,
@@ -91,159 +91,55 @@ Cc: qemu-devel@nongnu.org,
 	Dapeng Mi <dapeng1.mi@linux.intel.com>,
 	Yongwei Ma <yongwei.ma@intel.com>,
 	Zhao Liu <zhao1.liu@intel.com>
-Subject: [PATCH v2 4/7] hw/core: Check smp cache topology support for machine
-Date: Sun,  8 Sep 2024 20:59:17 +0800
-Message-Id: <20240908125920.1160236-5-zhao1.liu@intel.com>
+Subject: [PATCH v2 5/7] i386/cpu: Support thread and module level cache topology
+Date: Sun,  8 Sep 2024 20:59:18 +0800
+Message-Id: <20240908125920.1160236-6-zhao1.liu@intel.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240908125920.1160236-1-zhao1.liu@intel.com>
 References: <20240908125920.1160236-1-zhao1.liu@intel.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: Nq5QncnWIEQv
+X-TUID: HdbhKs9i931K
 
-Add cache_supported flags in SMPCompatProps to allow machines to
-configure various caches support.
-
-And check the compatibility of the cache properties with the
-machine support in machine_parse_smp_cache().
+Allow cache to be defined at the thread and module level. This
+increases flexibility for x86 users to customize their cache topology.
 
 Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
 Tested-by: Yongwei Ma <yongwei.ma@intel.com>
 ---
-Changes since Patch v1:
- * Dropped machine_check_smp_cache_support() and did the check when
-   -machine parses smp-cache in machine_parse_smp_cache().
+ target/i386/cpu.c | 10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
 
-Changes since RFC v2:
- * Split as a separate commit to just include compatibility checking and
-   topology checking.
- * Allow setting "default" topology level even though the cache
-   isn't supported by machine. (Daniel)
----
- hw/core/machine-smp.c | 78 +++++++++++++++++++++++++++++++++++++++++++
- include/hw/boards.h   |  3 ++
- 2 files changed, 81 insertions(+)
-
-diff --git a/hw/core/machine-smp.c b/hw/core/machine-smp.c
-index b517c3471d1a..9a281946762f 100644
---- a/hw/core/machine-smp.c
-+++ b/hw/core/machine-smp.c
-@@ -261,10 +261,47 @@ void machine_parse_smp_config(MachineState *ms,
-     }
- }
+diff --git a/target/i386/cpu.c b/target/i386/cpu.c
+index e3a81bc64922..e9f755000356 100644
+--- a/target/i386/cpu.c
++++ b/target/i386/cpu.c
+@@ -241,9 +241,15 @@ static uint32_t max_thread_ids_for_cache(X86CPUTopoInfo *topo_info,
+     uint32_t num_ids = 0;
  
-+static bool machine_check_topo_support(MachineState *ms,
-+                                       CpuTopologyLevel topo,
-+                                       Error **errp)
-+{
-+    MachineClass *mc = MACHINE_GET_CLASS(ms);
-+
-+    if ((topo == CPU_TOPOLOGY_LEVEL_MODULE && !mc->smp_props.modules_supported) ||
-+        (topo == CPU_TOPOLOGY_LEVEL_CLUSTER && !mc->smp_props.clusters_supported) ||
-+        (topo == CPU_TOPOLOGY_LEVEL_DIE && !mc->smp_props.dies_supported) ||
-+        (topo == CPU_TOPOLOGY_LEVEL_BOOK && !mc->smp_props.books_supported) ||
-+        (topo == CPU_TOPOLOGY_LEVEL_DRAWER && !mc->smp_props.drawers_supported)) {
-+        error_setg(errp,
-+                   "Invalid topology level: %s. "
-+                   "The topology level is not supported by this machine",
-+                   CpuTopologyLevel_str(topo));
-+        return false;
-+    }
-+
-+    return true;
-+}
-+
-+/*
-+ * When both cache1 and cache2 are configured with specific topology levels
-+ * (not default level), is cache1's topology level higher than cache2?
-+ */
-+static bool smp_cache_topo_cmp(const SmpCache *smp_cache,
-+                               CacheLevelAndType cache1,
-+                               CacheLevelAndType cache2)
-+{
-+    if (smp_cache->props[cache1].topology != CPU_TOPOLOGY_LEVEL_DEFAULT &&
-+        smp_cache->props[cache1].topology > smp_cache->props[cache2].topology) {
-+        return true;
-+    }
-+    return false;
-+}
-+
- bool machine_parse_smp_cache(MachineState *ms,
-                              const SmpCachePropertiesList *caches,
-                              Error **errp)
- {
-+    MachineClass *mc = MACHINE_GET_CLASS(ms);
-     const SmpCachePropertiesList *node;
-     DECLARE_BITMAP(caches_bitmap, CACHE_LEVEL_AND_TYPE__MAX);
- 
-@@ -293,6 +330,47 @@ bool machine_parse_smp_cache(MachineState *ms,
-         }
+     switch (share_level) {
++    case CPU_TOPOLOGY_LEVEL_THREAD:
++        num_ids = 1;
++        break;
+     case CPU_TOPOLOGY_LEVEL_CORE:
+         num_ids = 1 << apicid_core_offset(topo_info);
+         break;
++    case CPU_TOPOLOGY_LEVEL_MODULE:
++        num_ids = 1 << apicid_module_offset(topo_info);
++        break;
+     case CPU_TOPOLOGY_LEVEL_DIE:
+         num_ids = 1 << apicid_die_offset(topo_info);
+         break;
+@@ -251,10 +257,6 @@ static uint32_t max_thread_ids_for_cache(X86CPUTopoInfo *topo_info,
+         num_ids = 1 << apicid_pkg_offset(topo_info);
+         break;
+     default:
+-        /*
+-         * Currently there is no use case for THREAD and MODULE, so use
+-         * assert directly to facilitate debugging.
+-         */
+         g_assert_not_reached();
      }
  
-+    for (int i = 0; i < CACHE_LEVEL_AND_TYPE__MAX; i++) {
-+        const SmpCacheProperties *props = &ms->smp_cache.props[i];
-+
-+        /*
-+         * Allow setting "default" topology level even though the cache
-+         * isn't supported by machine.
-+         */
-+        if (props->topology != CPU_TOPOLOGY_LEVEL_DEFAULT &&
-+            !mc->smp_props.cache_supported[props->cache]) {
-+            error_setg(errp,
-+                       "%s cache topology not supported by this machine",
-+                       CacheLevelAndType_str(node->value->cache));
-+            return false;
-+        }
-+
-+        if (!machine_check_topo_support(ms, props->topology, errp)) {
-+            return false;
-+        }
-+    }
-+
-+    if (smp_cache_topo_cmp(&ms->smp_cache,
-+                           CACHE_LEVEL_AND_TYPE_L1D,
-+                           CACHE_LEVEL_AND_TYPE_L2) ||
-+        smp_cache_topo_cmp(&ms->smp_cache,
-+                           CACHE_LEVEL_AND_TYPE_L1I,
-+                           CACHE_LEVEL_AND_TYPE_L2)) {
-+        error_setg(errp,
-+                   "Invalid smp cache topology. "
-+                   "L2 cache topology level shouldn't be lower than L1 cache");
-+        return false;
-+    }
-+
-+    if (smp_cache_topo_cmp(&ms->smp_cache,
-+                           CACHE_LEVEL_AND_TYPE_L2,
-+                           CACHE_LEVEL_AND_TYPE_L3)) {
-+        error_setg(errp,
-+                   "Invalid smp cache topology. "
-+                   "L3 cache topology level shouldn't be lower than L2 cache");
-+        return false;
-+    }
-+
-     return true;
- }
- 
-diff --git a/include/hw/boards.h b/include/hw/boards.h
-index 64439dc7da2c..6c3cdfa15f50 100644
---- a/include/hw/boards.h
-+++ b/include/hw/boards.h
-@@ -150,6 +150,8 @@ typedef struct {
-  * @books_supported - whether books are supported by the machine
-  * @drawers_supported - whether drawers are supported by the machine
-  * @modules_supported - whether modules are supported by the machine
-+ * @cache_supported - whether cache topologies (l1d, l1i, l2 and l3) are
-+ *                    supported by the machine
-  */
- typedef struct {
-     bool prefer_sockets;
-@@ -159,6 +161,7 @@ typedef struct {
-     bool books_supported;
-     bool drawers_supported;
-     bool modules_supported;
-+    bool cache_supported[CACHE_LEVEL_AND_TYPE__MAX];
- } SMPCompatProps;
- 
- /**
 -- 
 2.34.1

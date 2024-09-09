@@ -1,113 +1,116 @@
-Received: by 2002:a17:505:1909:b0:1be9:327d:8ee3 with SMTP id az9csp985228njb;
-        Mon, 9 Sep 2024 09:27:34 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWcuO4olbaKGDg9eOORfqnBKmkQTToZvksB998DZn+LOUN7bXljXOv3oubcgiIIkP+gE0XQODLypha4ng==@linaro.org
-X-Google-Smtp-Source: AGHT+IEsftvexPfcCnW3nBWz56cxaaXT+fAgZI9FlaA/TQh+OJ4TWCT4KPvQ0sAVWGVgv+0IwK9d
-X-Received: by 2002:a05:6214:328e:b0:6c5:537a:ce43 with SMTP id 6a1803df08f44-6c5537ace86mr12332756d6.26.1725899254540;
-        Mon, 09 Sep 2024 09:27:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1725899254; cv=none;
+Received: by 2002:a17:505:1909:b0:1be9:327d:8ee3 with SMTP id az9csp1004660njb;
+        Mon, 9 Sep 2024 10:26:16 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWnbczeZFkTMk6upv7OaT34NAVxSehVtW5DslcSUmqZ4+fX/q+G42yAUEfhhOBEkv4DU8yb5KV9mpqkQQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IHDXg+rOl3B31UhtdX0v0USa7YN0ida+nCnVtKTMDUnsJOmT7n/PVbQNNxfxlF+nxFsHyDl
+X-Received: by 2002:a05:6214:4a01:b0:6c3:5f65:f9d7 with SMTP id 6a1803df08f44-6c528511416mr139053036d6.36.1725902776248;
+        Mon, 09 Sep 2024 10:26:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1725902776; cv=none;
         d=google.com; s=arc-20240605;
-        b=CjhY5nSsp4TYKqPY3JFtMR4CKqX0szQvFlrPcLp+pbkwiYKbRzY29FepTuTt88zGQs
-         TDneuNvj+CIxFFSBFK23oBueQO/lCcpqU0K4ZIyo/xfHjH8hoJAAN99LO4OQZSL+zrbS
-         3VC7qyldNuX9rIpKhYbLpKwKTu60cvoex/rzZeMHjReg2cp9eKQmrjdw2t/ZSg3I/b3h
-         HkSBxLqFUfLV277h1ftnbaZteX7/s2TBKtRi6LXhnzNpDWlrVm3qmyOpwPqApmeoapwE
-         WgfJNhBWP0KOFrU4TqdPe+wO5ZuxkWYwG/2Jy/CZSa6dE3lsHX13AASaJjpTpcz/umg5
-         qGTw==
+        b=NwFQV3aANUycGb9xzR8MS/sZJfaQas3XVFBuwNagjwBS6SQloHFfDzr3mgA/zlNBAR
+         tUghXTWFzk+LKhTMfLFkzxsfATZg8MauOzOfTDCLdkchY1NztK/j5v+CGzBW2zQqJPN9
+         r/3orcKwU2lHRhzJbvySlsc2qREn6pVkO54PoTZX+Wmx1+b2DFksNgpEN5piVdEhBQB/
+         mAFZxFzQt1hKEffMjO3ai9yf96ukB8lD+tGDtDOyzBOAfMFU0LHNSObUe1tPiA5tsJcq
+         zV6ECoKmYVrfcJ8VXTm3wSEwufZ8IbajNbfzp83NSqaI7pSwW8RQg22sbsOz6pxL9hXo
+         jQaA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=GWjrw04iELmAczfBPyWyqBTlFr8LUX7vWfkc1TSxNTY=;
-        fh=ZhBia3nL9o1nuf7SbgdYn/0pDmAeja6gisyWXi2cqYE=;
-        b=cBYkcesOn8o5yyDuVMbggCn2MWlejl5eDjIppTqg8kMtpq8NBCKee1DkljIMIq1NB1
-         HO2pvRjh39fGtSzuszMlhZQ0ffi64JVwgx63i/YIiAmCsfVMgGawyUvkYsvnqc97xwNl
-         xeBZ2fsKhM0hr4NatawNhxgVqiNxjjFXoPWctD1/KuE0vAhZbGUdULQ1HGM5UdD48jV1
-         WR8huZ8ONbjJnSDWDwWBakFPnaJnKFeYYHjnnUKFcFKSd+v5LELb5yb5/BLq7jhdDpCy
-         ZTPp6tdelhSdEBx4psB23L5Pm96CVu2DQlV/f/Bv0B+yW83JVobvVuLzSdBslR9YNWAw
-         wDcg==;
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=2QJFqvmVgOo0PF4qWFgpFcH+z+LPlJIUOsg1OJnLygU=;
+        fh=89FQ3fGsFr+Y9Wwp9kI2J5gwvw7LdcklqvmRyi4kGrQ=;
+        b=LNXcQKu9qvluLPwoKuhfQeqFxJXsk9uFRA6NDVofqlz1hq/yvsCAPJNtOG3dJwT3Xv
+         Vo+lbv4ofOSRjkmxL5QaLLwwwvivyI24QwmX2lzFxxQhgJTQuM62t1ivLux3/UzyBGvN
+         y28zaqKa/N2vL/WeXegRYDsv5LB95LMopNi0b+sgJU0UvISqBBCg9Tvxg4laUJOYpByF
+         1d9u6Qxg3uXvCBy1GtbKBsB3cZ/emxgfooT3cnqqKbG6dnNjRw7+PlMq4Ib4kx7Ofvio
+         LkIlKh9axrGFNbbDOonXRiyQYBXjOXIgim2Q+TlzaJOlvLEReTOTfZmmutr3cq+jig+7
+         7W5A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=YD3Tbsa7;
+       dkim=pass header.i=@linaro.org header.s=google header.b=cjl8KSRm;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6c5348dbf2fsi57375106d6.602.2024.09.09.09.27.34
+        by mx.google.com with ESMTPS id 6a1803df08f44-6c5347702e8si58854346d6.224.2024.09.09.10.26.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 09 Sep 2024 09:27:34 -0700 (PDT)
+        Mon, 09 Sep 2024 10:26:16 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=YD3Tbsa7;
+       dkim=pass header.i=@linaro.org header.s=google header.b=cjl8KSRm;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1snhAD-0002RH-EH; Mon, 09 Sep 2024 12:22:53 -0400
+	id 1sni90-0007Od-5r; Mon, 09 Sep 2024 13:25:42 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1snhAC-0002Nk-L1
- for qemu-arm@nongnu.org; Mon, 09 Sep 2024 12:22:52 -0400
-Received: from mail-pl1-x62d.google.com ([2607:f8b0:4864:20::62d])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sni8y-0007Ld-Pe
+ for qemu-arm@nongnu.org; Mon, 09 Sep 2024 13:25:40 -0400
+Received: from mail-lj1-x233.google.com ([2a00:1450:4864:20::233])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1snhAA-0007hZ-UK
- for qemu-arm@nongnu.org; Mon, 09 Sep 2024 12:22:52 -0400
-Received: by mail-pl1-x62d.google.com with SMTP id
- d9443c01a7336-2068acc8b98so41329625ad.3
- for <qemu-arm@nongnu.org>; Mon, 09 Sep 2024 09:22:50 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sni8w-0005sR-0b
+ for qemu-arm@nongnu.org; Mon, 09 Sep 2024 13:25:40 -0400
+Received: by mail-lj1-x233.google.com with SMTP id
+ 38308e7fff4ca-2f75428b9f8so33813741fa.3
+ for <qemu-arm@nongnu.org>; Mon, 09 Sep 2024 10:25:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1725898969; x=1726503769; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=GWjrw04iELmAczfBPyWyqBTlFr8LUX7vWfkc1TSxNTY=;
- b=YD3Tbsa7uCGX/CpiyTNNO9U98+cWuuDOXSNPTu9vRcQMVfuLS5HX86rq6BnaH9rPg1
- Crd4/HFt92kGPhWug4hL9pcE2SKDpWqgcnpOVLNPnmKz8aqfFMI8i54LsE2f50rF10ck
- AuKhTAjbE9fyS3sVACxHv3oHS1tewjLqMuPSZDKNDyNBxh4dLz8DPg9lCtwk4KTZKfV+
- QLtpGjf+zmFfPjrrmzHWrbVMJrdoNsb6OeWuDHyVC9L5AVMJtVdDrioHSi4OgU75TE6a
- apvg0zmioxld3Df0nNadRGLqq61t3GXxGvhxSxwHZ5HkGEbtSTjn5nwqUwKpHsQH0KPX
- aHhQ==
+ d=linaro.org; s=google; t=1725902735; x=1726507535; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=2QJFqvmVgOo0PF4qWFgpFcH+z+LPlJIUOsg1OJnLygU=;
+ b=cjl8KSRm9n7SVUcmdQuOMpyJAyca3xY+ZqjqCAu4kE2ZA94xAljUppPCgeBZbF6ENq
+ LwPg9Ieq12ALYYNcK6FnrFwzv9YbPco3Pwg+oNGdx03R9r5rLV0dbgSq6zCvnuAmyjTx
+ EBLr82UFYvGLczrsKJKkTJTPyktmwBfBD20kBREahiSmAH7+7x9ZALm7EGP44jnZVcLY
+ pSft+l+9z/5idE/lkQbrFj1Fj92/KemQvCNx/ho9JuYJ6ajh4TvBFO9rjbthrUeTe+/N
+ 9gudpjWzeu6xhVHzxAmxJ9IjxrKWOy/gA92he80cwG02G1VJoyZKzvj3T1pmrMqujOWl
+ TLvA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1725898969; x=1726503769;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=GWjrw04iELmAczfBPyWyqBTlFr8LUX7vWfkc1TSxNTY=;
- b=mAdrlQsK3fDqNTCENFHeZ1JAAmn9G98nXK5oh5RoqMnQm3DeMjabyAHF2GTptPWJCy
- HCTF1r/C96ed3Ndt6WBpkBH701lZUUE/jnMKf88YyolXXuDFp9ekB6sjLzG4hrDBp4Xu
- IW2MaeaKQ+6DJeit/2p+CpLFeCbe6CPyGE7wGuSWJ8QC6kv70gqe8tJ+X0JqCtTz8Kg/
- jmhOqnR/vIC3b2b23WS5lLxwdrbOSTXHe3IbvESTftHGiQwlUfEoxz262t7ouxrUI6UP
- 1+dMTsAO1ktWdoZmTQH2zgyGsXhXngs2fOccSAoff3NCF6NSxG4XlsgTAdjapdXgfiKo
- mVmQ==
-X-Gm-Message-State: AOJu0Yy6Ip0OmcM8Gfaz4aC+hyJ4AuEpQQ8tRRmBbTyAk1THEzMXcS1b
- iIFo6jQUzun32eqNx6B5umtN3Yo++gUQ2ix/5yUcqQFU2Xnk8q2Ahtt1V23uWog=
-X-Received: by 2002:a17:903:1211:b0:207:14e9:eb22 with SMTP id
- d9443c01a7336-20714e9eb35mr107820135ad.6.1725898968888; 
- Mon, 09 Sep 2024 09:22:48 -0700 (PDT)
-Received: from stoup.. (174-21-81-121.tukw.qwest.net. [174.21.81.121])
- by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-20710f35d79sm35753305ad.288.2024.09.09.09.22.48
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 09 Sep 2024 09:22:48 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v2 07/29] target/arm: Convert TBL, TBX to decodetree
-Date: Mon,  9 Sep 2024 09:22:17 -0700
-Message-ID: <20240909162240.647173-8-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20240909162240.647173-1-richard.henderson@linaro.org>
-References: <20240909162240.647173-1-richard.henderson@linaro.org>
+ d=1e100.net; s=20230601; t=1725902735; x=1726507535;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=2QJFqvmVgOo0PF4qWFgpFcH+z+LPlJIUOsg1OJnLygU=;
+ b=Yz0MI7/Z5XQEW0v+VCnHV/wteW+FMnNBJHszfmcXTyttWW47oBT/bsaeHcK2zpQ9Xd
+ C1wB7qMR7zwPA36Aa9u1yVRkceKCbWLVYRE5w2O/6ORWqlzUuZtPgPdaTwDU3cX7qVL1
+ A/25EeU+xd0+YuUDDDfvWthA6pHqev0fSG+iS8yc3+S/JJ/vfZvjagsMNrA8DrjaQ46D
+ orAN/nSxurQnrUrPtuMDrskfOoapZ4I4b4dKITjPUBznJH0XR5QUF/1otYYD6IQJp5nm
+ 1j8Umm3UJbmNEx2d4EOONtst1hIriHr/u7n2eHR2A94U/GFhlC33ruvv2++gLYaf4psH
+ FZCg==
+X-Gm-Message-State: AOJu0YzV9ebUp9MdMcRhxNBDCYfRywEq/1RqLrMxh+s09PU/RoWyv4d0
+ VjQUvsSG4f1f1dx8jjUhTRSVNwhdfup+a6OLaU3DV0uj4hu0AinHQQpzFMSMVd0=
+X-Received: by 2002:a05:6512:3a84:b0:530:dfab:9315 with SMTP id
+ 2adb3069b0e04-536587a67b6mr8043914e87.10.1725902735150; 
+ Mon, 09 Sep 2024 10:25:35 -0700 (PDT)
+Received: from [192.168.69.100] (nsg93-h02-176-184-54-166.dsl.sta.abo.bbox.fr.
+ [176.184.54.166]) by smtp.gmail.com with ESMTPSA id
+ a640c23a62f3a-a8d25835d31sm369665166b.10.2024.09.09.10.25.33
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 09 Sep 2024 10:25:34 -0700 (PDT)
+Message-ID: <3d622822-b4a9-49b1-950e-8f33b6532d8f@linaro.org>
+Date: Mon, 9 Sep 2024 19:25:32 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH for-9.2 00/53] arm: Drop deprecated boards
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, Thomas Huth
+ <thuth@redhat.com>, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
+ <berrange@redhat.com>, Guenter Roeck <linux@roeck-us.net>
+References: <20240903160751.4100218-1-peter.maydell@linaro.org>
+ <fabedae0-d748-4a9d-b802-14d15f3cd44a@linaro.org>
+ <CAFEAcA9z9Mf52pOVCHv_Y1hvPPWt7Me5CDcxYS_cXvj7OFDuSw@mail.gmail.com>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <CAFEAcA9z9Mf52pOVCHv_Y1hvPPWt7Me5CDcxYS_cXvj7OFDuSw@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62d;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::233;
+ envelope-from=philmd@linaro.org; helo=mail-lj1-x233.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -129,99 +132,75 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: JdPUIZJd5VRQ
+X-TUID: DG5Mper04ZwN
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- target/arm/tcg/translate-a64.c | 47 ++++++++++------------------------
- target/arm/tcg/a64.decode      |  4 +++
- 2 files changed, 18 insertions(+), 33 deletions(-)
+Hi Peter,
 
-diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
-index 48188d4116..70173c67c2 100644
---- a/target/arm/tcg/translate-a64.c
-+++ b/target/arm/tcg/translate-a64.c
-@@ -4680,6 +4680,20 @@ static bool trans_EXTR(DisasContext *s, arg_extract *a)
-     return true;
- }
- 
-+static bool trans_TBL_TBX(DisasContext *s, arg_TBL_TBX *a)
-+{
-+    if (fp_access_check(s)) {
-+        int len = (a->len + 1) * 16;
-+
-+        tcg_gen_gvec_2_ptr(vec_full_reg_offset(s, a->rd),
-+                           vec_full_reg_offset(s, a->rm), tcg_env,
-+                           a->q ? 16 : 8, vec_full_reg_size(s),
-+                           (len << 6) | (a->tbx << 5) | a->rn,
-+                           gen_helper_simd_tblx);
-+    }
-+    return true;
-+}
-+
- /*
-  * Cryptographic AES, SHA, SHA512
-  */
-@@ -8938,38 +8952,6 @@ static void disas_data_proc_fp(DisasContext *s, uint32_t insn)
-     }
- }
- 
--/* TBL/TBX
-- *   31  30 29         24 23 22  21 20  16 15  14 13  12  11 10 9    5 4    0
-- * +---+---+-------------+-----+---+------+---+-----+----+-----+------+------+
-- * | 0 | Q | 0 0 1 1 1 0 | op2 | 0 |  Rm  | 0 | len | op | 0 0 |  Rn  |  Rd  |
-- * +---+---+-------------+-----+---+------+---+-----+----+-----+------+------+
-- */
--static void disas_simd_tb(DisasContext *s, uint32_t insn)
--{
--    int op2 = extract32(insn, 22, 2);
--    int is_q = extract32(insn, 30, 1);
--    int rm = extract32(insn, 16, 5);
--    int rn = extract32(insn, 5, 5);
--    int rd = extract32(insn, 0, 5);
--    int is_tbx = extract32(insn, 12, 1);
--    int len = (extract32(insn, 13, 2) + 1) * 16;
--
--    if (op2 != 0) {
--        unallocated_encoding(s);
--        return;
--    }
--
--    if (!fp_access_check(s)) {
--        return;
--    }
--
--    tcg_gen_gvec_2_ptr(vec_full_reg_offset(s, rd),
--                       vec_full_reg_offset(s, rm), tcg_env,
--                       is_q ? 16 : 8, vec_full_reg_size(s),
--                       (len << 6) | (is_tbx << 5) | rn,
--                       gen_helper_simd_tblx);
--}
--
- /* ZIP/UZP/TRN
-  *   31  30 29         24 23  22  21 20   16 15 14 12 11 10 9    5 4    0
-  * +---+---+-------------+------+---+------+---+------------------+------+
-@@ -11834,7 +11816,6 @@ static const AArch64DecodeTable data_proc_simd[] = {
-     /* simd_mod_imm decode is a subset of simd_shift_imm, so must precede it */
-     { 0x0f000400, 0x9ff80400, disas_simd_mod_imm },
-     { 0x0f000400, 0x9f800400, disas_simd_shift_imm },
--    { 0x0e000000, 0xbf208c00, disas_simd_tb },
-     { 0x0e000800, 0xbf208c00, disas_simd_zip_trn },
-     { 0x5e200800, 0xdf3e0c00, disas_simd_scalar_two_reg_misc },
-     { 0x5f000400, 0xdf800400, disas_simd_scalar_shift_imm },
-diff --git a/target/arm/tcg/a64.decode b/target/arm/tcg/a64.decode
-index f72f95865f..e2a3ef62ef 100644
---- a/target/arm/tcg/a64.decode
-+++ b/target/arm/tcg/a64.decode
-@@ -1141,3 +1141,7 @@ FNMSUB          0001 1111 .. 1 ..... 1 ..... ..... .....    @rrrr_hsd
- 
- EXT_d           0010 1110 00 0 rm:5 00 imm:3 0 rn:5 rd:5
- EXT_q           0110 1110 00 0 rm:5 0  imm:4 0 rn:5 rd:5
-+
-+# Advanced SIMD Table Lookup
-+
-+TBL_TBX         0 q:1 00 1110 000 rm:5 0 len:2 tbx:1 00 rn:5 rd:5
--- 
-2.43.0
+On 9/9/24 15:44, Peter Maydell wrote:
+> On Mon, 9 Sept 2024 at 14:41, Philippe Mathieu-Daudé <philmd@linaro.org> wrote:
+>>
+>> Hi,
+>>
+>> On 3/9/24 18:06, Peter Maydell wrote:
+>>> This patchset removes the various Arm machines which we deprecated
+>>> for the 9.0 release and are therefore allowed to remove for the 9.2
+>>> release:
+>>>    akita, borzoi, cheetah, connex, mainstone, n800, n810,
+>>>    spitz, terrier, tosa, verdex, z2
+>>
+>>> The series includes removal of some code which while not strictly
+>>> specific to these machines was in practice used only by them:
+>>>    * the OneNAND flash memory device
+>>>    * the PCMCIA subsystem
+>>>    * the MUSB USB2.0 OTG USB controller chip (hcd-musb)
+>>
+>>> thanks
+>>> -- PMM
+>>>
+>>> Peter Maydell (53):
+>>>     hw/input: Drop ADS7846 device
+>>>     hw/adc: Remove MAX111X device
+>>>     hw/gpio: Remove MAX7310 device
+>>>     hw/input: Remove tsc2005 touchscreen controller
+>>>     hw/input: Remove tsc210x device
+>>>     hw/rtc: Remove twl92230 device
+>>>     hw/input: Remove lm832x device
+>>>     hw/usb: Remove tusb6010 USB controller
+>>>     hw/usb: Remove MUSB USB host controller
+>>
+>> Some of these devices are user-creatable and only rely on a bus
+>> (not a particular removed machine), so could potentially be used
+>> on other maintained machines which expose a similar bus.
+> 
+> Which ones in particular? Almost all of them are sysbus.
+> At least one of them that I looked at (lm832x) is an I2C
+> device but it also requires the board to wire up a GPIO line
+> and to call a specific C function to inject key events, so it's
+> not actually generally usable.
+> 
+>> We don't have in-tree (tests/) examples, but I wonder if it is OK
+>> to remove them without first explicitly deprecating them in
+>> docs/about/deprecated.rst. I wouldn't surprise users when 9.2 is
+>> release. Maybe this isn't an issue, but I prefer to mention it
+>> now to be sure.
+> 
+> I think this is unlikely to be a problem, but if you have
+> a specific device you think might be a problem we can
+> look at whether it seems likely (e.g. whether a web search
+> turns up users using it in odd ways).
 
+I don't have specific example and am happy to remove these
+legacy devices.
+
+I'm wondering more generically about removing user-creatable &
+on-bus devices, when explicit use is removed (deprecated board
+removed), but we can still use them elsewhere. IMHO for clarity
+in the future we should list them in deprecated.rst along with
+some lines like "this device is explicitly used by the FOO machine which
+is being deprecated; if you want to keep them, provide test cases".
+
+(To be clear, I'm not asking we do that for this devices set.)
+
+Regards,
+
+Phil.

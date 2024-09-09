@@ -1,123 +1,122 @@
-Received: by 2002:a17:505:1909:b0:1be9:327d:8ee3 with SMTP id az9csp1011932njb;
-        Mon, 9 Sep 2024 10:50:56 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUoeWZx2iTtOBNJrKjzoQUp3Ei92deUAbNAj7n0TAgLBWbHGxuGzbcuJd38GmKjmHoLSKwiYQoy3YHcIg==@linaro.org
-X-Google-Smtp-Source: AGHT+IGxvKYxVxemK4xwBVXbnlQClZOVGBV7t0U/uJDAQAjG3GzK2aQD9i3G4/eY10bYjd1VqMq3
-X-Received: by 2002:a05:622a:1b90:b0:458:2a4f:c204 with SMTP id d75a77b69052e-4582a4fcc2amr63804231cf.39.1725904256798;
-        Mon, 09 Sep 2024 10:50:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1725904256; cv=none;
+Received: by 2002:a17:505:1909:b0:1be9:327d:8ee3 with SMTP id az9csp1012292njb;
+        Mon, 9 Sep 2024 10:52:16 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVNNbjR9aeWBd0RDh2HAMLSgt9U4Yg3CDRdUVn+QukHlsYCEydsCSHKT2I1FA23QVnxaRO7p1xf1Pz5pw==@linaro.org
+X-Google-Smtp-Source: AGHT+IFeujLXCSv2sIO6I2qCwg7Q23LwDRHQriF+HV4OxjYIs01r7zAU7yHtX5OScErOMdUYYbhz
+X-Received: by 2002:a05:622a:1887:b0:458:26ef:6c with SMTP id d75a77b69052e-45826ef080emr87165071cf.13.1725904335829;
+        Mon, 09 Sep 2024 10:52:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1725904335; cv=none;
         d=google.com; s=arc-20240605;
-        b=jXGgJQyVVw+1tz/Oi2UIrXo/JIxznlVwwFjHOLxVHfiaO8o0xlNvZ45YcOV2zoQWMv
-         Ovk0GHNalyBvCQMwTJy5csJImlrBjUDTnsdn0+p169JsK5XMPW7xOHIrVurWG4QRvlfg
-         We51pYmpYqnShFPh4t2wrOZIQcH4VzY1Lu6Ti7ZRLQ7AzH5/Pfl8dKdpoeO4WfNjj6nr
-         ymKd8bsuSzpz52F0AciJr9raui4QNmjctkc3nF+TtReDDYEuQSmqemxE49KrlFpfRtoe
-         RygbxT5prveYOh7TeoGSiZx+uwZ7CV5bdveumqp5a4UPShVy/nnw1wSRT+UDAlgiU0mz
-         3VUg==
+        b=KNxSgnbbQUcGjM6R7f9f3ARn0udaOwqp9eJk/fFRGzaHUEjdNRkpQvGz01FriRiJz+
+         PkkWTuSA1w+TJmE4HhUMW3H+x4VNwyjFX3l6dChhD9YbWjPYhcwGB/y64IMzpeQTSFPJ
+         InH8InMo4dt3HRkh3eaU1Oi2icC7Ki8tpZhBDyaeWF8k7ZonlkP3RNWvparTja1PlY2H
+         0dGJxtX05vohsogXqeRj/HouYJmMwfwsI1BfXrdwY9go0zy7B8K7+BHZavGsQMq1uzYF
+         XCyjCvHgGcHF/qN/gklp1ADiA1gujOlf0NG5MVmQlSp0kzuYqoiOFjyot7W9RBBaBIdN
+         FiPg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:content-language:references:to:subject:user-agent
          :mime-version:date:message-id:dkim-signature;
-        bh=eAUOxZe966TlxARsKeOC4lr7RqNe2cdFRFO3nUSWr6w=;
-        fh=Y7aTa0W8AE0K8HcklGesvKbzfun8MmM7taVi7ou2+40=;
-        b=YIuQMW5+2gG8pzHJa2VuCCbHT+2s1kEB9DaXBMmjoUNgVhQ1fLzYmb7teKYFom/kcn
-         qqd+fa5AG4DtpMeN2UwDHwy9MML1LyswtU2tqD/RpjHBy8LzRMtqZFbVJh0n5XDv+kFW
-         C+LzsFvC6yWhcaWevHn+zK5HNXLXFa3Yv7/hVul2LNQ1SDjezGKakuYQ7ks9llT16N19
-         F9Taq25H0cQlIyAHOppWU+DxEIgRno/eW6bXexgrJvrJO3sRVaRu3VMKQmsVX8/RdpiC
-         M8YEEaMIgOTS9eYeIiULpzPWEDrAmVADTL7DMsmreWeNlHFe/AlxPnIgxxNupKlXSqfB
-         QE0A==;
+        bh=valE2ooTflmcoTlMFRDa9BC5mo6aZUfVEoFZJsfXN5c=;
+        fh=5b58MMyG8VfzJdB4weDyQKibWCd3gWrPpAr+CJiL8nw=;
+        b=EmFGtZCX4Ng6T5baDKwTGBEuV4dtjTLgI1pCdLIZAZnojOQCaqKnZWbq5aUcwDbqgD
+         j3jjShYoFwC0Ls3StStFFGJ3vpOnbmYNLPXrOVqbfyzpet1aboXKnlRvrN+U4SKTbGI9
+         w+26V6vVavJ9Iazrw1Fr0PULCdjdkRAqlmgsm8e6OknwWcfUEcnUKeA5COL3q4aLuS70
+         2lErfvsNK9OiJNeruzyJ8ckG0CHiEGqDGOlASQpfKKtOmblNeJ4WSUa4cJnATyMO/WWt
+         UZ2z+m2Ebd4i7+Q/0hQSQSVKRFjQfmmVOcIVE9t062YPS8fbYObbhnmyCU1bBMHK8Uyp
+         kAGg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=w4lVuWTn;
+       dkim=pass header.i=@linaro.org header.s=google header.b=sYgDzmRx;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-45822f3ea10si56788261cf.357.2024.09.09.10.50.56
+        by mx.google.com with ESMTPS id d75a77b69052e-45822e62d00si59003061cf.122.2024.09.09.10.52.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 09 Sep 2024 10:50:56 -0700 (PDT)
+        Mon, 09 Sep 2024 10:52:15 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=w4lVuWTn;
+       dkim=pass header.i=@linaro.org header.s=google header.b=sYgDzmRx;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sniX7-00076o-48; Mon, 09 Sep 2024 13:50:37 -0400
+	id 1sniYb-0005C9-U1; Mon, 09 Sep 2024 13:52:09 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sniX5-00071H-QS
- for qemu-arm@nongnu.org; Mon, 09 Sep 2024 13:50:35 -0400
-Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sniYX-0004uK-Mq
+ for qemu-arm@nongnu.org; Mon, 09 Sep 2024 13:52:07 -0400
+Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sniX4-0008Oa-1v
- for qemu-arm@nongnu.org; Mon, 09 Sep 2024 13:50:35 -0400
-Received: by mail-ej1-x629.google.com with SMTP id
- a640c23a62f3a-a8a789c4fc5so692299366b.0
- for <qemu-arm@nongnu.org>; Mon, 09 Sep 2024 10:50:33 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sniYS-0008RX-Cd
+ for qemu-arm@nongnu.org; Mon, 09 Sep 2024 13:52:05 -0400
+Received: by mail-ej1-x631.google.com with SMTP id
+ a640c23a62f3a-a8d24f98215so302353966b.1
+ for <qemu-arm@nongnu.org>; Mon, 09 Sep 2024 10:51:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1725904232; x=1726509032; darn=nongnu.org;
+ d=linaro.org; s=google; t=1725904319; x=1726509119; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:to:subject:user-agent:mime-version:date:message-id:from
  :to:cc:subject:date:message-id:reply-to;
- bh=eAUOxZe966TlxARsKeOC4lr7RqNe2cdFRFO3nUSWr6w=;
- b=w4lVuWTnERO7mszwAmUAzJ2VcJrurRngjYtmj2blk3ZtjHqfls5PKr0B0OPC9XJLxr
- BwPOolBr2LnyNoMM3vxy0k9YcvWVlt/gQAuAIXaewDrA/hA3GLReiRgtQFF/9L+rm64N
- mhyBbhxiFZtL7mqITpTHm3cxS7bP9wRPdG4AgyuZ6KuZIoOF/QLxVb4Q9mGavDTmbw/N
- f5V1xbHekhPp9J5k3Vu5YcA6HTHgLCyUOflzlyHtOCkp/qd8Qxxw3iZ1wmEubW4W2/Lv
- moBkyS4/BKmZekGQ+IAowvSocSx2ymA1PsAng8Xhx8cgSqNNdL/yhH1AwWi/U/7yUBtk
- 5BiA==
+ bh=valE2ooTflmcoTlMFRDa9BC5mo6aZUfVEoFZJsfXN5c=;
+ b=sYgDzmRxNrGzxD2/NSMfK6lzsw43UhKWzIDpjp8euEXIDu7Y6jkAYR6mdimW8dnCfr
+ iYEL/vQ81GZBPuHlzNRrqpXzS4KvYtLhMEViu0H+mvL3KsYhllXAzfujfDLREsG4nNqL
+ slxfq/ySN2vTXg46wz7Wg81ON2Y1Nsfvgwa3CmQe+dgPKjZ9VNhEFVQ/wx6GVDhs7K0/
+ Xn/enFEcnp0nJdwoUQiLQGbFwgR1c1O5HiVSODHQTszP9o35CHIno2uLEdkSKzOcgGwh
+ nJvz5pZrwarZ02PxLz+N0c+na01GDZMkoILSQsHhJEBNePkX+QIMcuDVDUg7WcaOcjP6
+ fHFg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1725904232; x=1726509032;
+ d=1e100.net; s=20230601; t=1725904319; x=1726509119;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:to:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=eAUOxZe966TlxARsKeOC4lr7RqNe2cdFRFO3nUSWr6w=;
- b=jCFmSl5UcjH+T1NJ8Ys0rYimkuJCnzNXhLEO9M+2iIBdS2lPjbGCkt+kdGPkaOHX+V
- 9iV5avnWTzkDbEr2Pm12oncacazUP80E+cgp9bC4ctG2QE2DVOxUfJS1ulaCrKma7mDP
- dRfOTyoaipjfl1HYn3XXerRXqjVVX3x0RKnfKvfzUvjo/aM1M/XZ9ITLmICgLzHNsu/Q
- GPInPw2yCy+Gk3u7QZStolNkusrxZcYJj7TkFd98V3H+iE/uA6g7rLip1SydakVxvsX3
- zNGVMi8ppEo1GbLkCzzVv04RkCBiHwX89EQBlo+eAk7KP8J99zHM/squIuIqwt02+9WC
- Qtag==
+ bh=valE2ooTflmcoTlMFRDa9BC5mo6aZUfVEoFZJsfXN5c=;
+ b=gq2zwkVoOzXHG7u8+dm9Lgvele2HXDcfc6XWFTsF9mXu//XblFmWgvsrvwpSDDTYMs
+ 5PqIs0O4ZLRcVtKOpQSYkeFUmCwGHoCBWWaCmRWQvgkqp8f1bsi2Rf8cHlbDoBcqxbWy
+ O7G44N2tcvB+FDPeVyoGvDSrpgbEya7feJUo5S4KZtub+bLjW+Onk8jq5dMgPWKidShq
+ 2VKvD0ATGDRIptvHrAeQbJOyK+wVm2cv5Rth9dvhlL4KsZ3EPFvaT2W7roCA+p56FkcK
+ zI0DtDKqsTPAv2BhPuc0lPt/w7S/LF6nAdNmHTfOeEl4k6UZ8I9ysQzi8LeyHfiuXdFe
+ n9gw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXG2Ib04TjB57P7WGWbgsN3PAnIC2TVQsD4HgOy1O5F9hLCKI5NqYJV+yNkFOAR2oFMIlNcP/9eiw==@nongnu.org
-X-Gm-Message-State: AOJu0YwGWrrSAgSfnQ+XBoycBNor7y50n8lPqadgJFwE5V9zYip/wviO
- xo1npiY2913KJOsLJg7LKxa8V0zADcCyaprGBk6cMFC8PiMv7qL+O1riIcHQY1iy5rtxefKPtN9
- L
-X-Received: by 2002:a17:907:7d8b:b0:a8a:754a:e1c1 with SMTP id
- a640c23a62f3a-a8d72c08cbemr51158266b.8.1725904231583; 
- Mon, 09 Sep 2024 10:50:31 -0700 (PDT)
+ AJvYcCXYDFFRj4Qx7MnSxfS/tJFUNenK3rSStgX9HFKNkyB/1BHajWzU7SbVmHdylE+rhDOyQQuFFqxLHw==@nongnu.org
+X-Gm-Message-State: AOJu0YwP5gJKB802khkKhE/8WkYZQk5bcOJXCw2z4T9LJXHCgI7fkmO8
+ B7x6RzRwfG+M+bmgStwF4KOXFtfFm0DuGvarghMAlwGKhfdTgR4/j6MUtyHInUQ=
+X-Received: by 2002:a17:907:6d0b:b0:a8d:25d3:65e4 with SMTP id
+ a640c23a62f3a-a8d25d3ef49mr607626366b.36.1725904318491; 
+ Mon, 09 Sep 2024 10:51:58 -0700 (PDT)
 Received: from [192.168.69.100] (nsg93-h02-176-184-54-166.dsl.sta.abo.bbox.fr.
  [176.184.54.166]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-a8d25d66ba1sm369859766b.223.2024.09.09.10.50.30
+ a640c23a62f3a-a8d25c74286sm370505866b.123.2024.09.09.10.51.57
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 09 Sep 2024 10:50:31 -0700 (PDT)
-Message-ID: <f870b3f6-0a75-43fa-a65a-e681174e340d@linaro.org>
-Date: Mon, 9 Sep 2024 19:50:29 +0200
+ Mon, 09 Sep 2024 10:51:58 -0700 (PDT)
+Message-ID: <671feaa9-06cc-414c-a8d9-c8275a304e98@linaro.org>
+Date: Mon, 9 Sep 2024 19:51:56 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH for-9.2 23/53] hw/timer: Remove pxa27x-timer
+Subject: Re: [PATCH for-9.2 37/53] hw/arm: Remove omap2.c
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 References: <20240903160751.4100218-1-peter.maydell@linaro.org>
- <20240903160751.4100218-24-peter.maydell@linaro.org>
+ <20240903160751.4100218-38-peter.maydell@linaro.org>
 Content-Language: en-US
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20240903160751.4100218-24-peter.maydell@linaro.org>
+In-Reply-To: <20240903160751.4100218-38-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::629;
- envelope-from=philmd@linaro.org; helo=mail-ej1-x629.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::631;
+ envelope-from=philmd@linaro.org; helo=mail-ej1-x631.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -132,130 +131,21 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: JPbdyUWOpBf2
+X-TUID: +SFmUxtGcZMU
 
 On 3/9/24 18:07, Peter Maydell wrote:
-> The pxa27x-timer can be removed now we have removed the PXA2xx
-> SoC models. The pxa25x-timer device must remain as it is still
-> used by strongarm.
+> The users of the OMAP2 SoC emulation have been removed, so we can
+> delete omap2.c.
 > 
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->   hw/timer/pxa2xx_timer.c | 24 ------------------------
->   1 file changed, 24 deletions(-)
-> 
-> diff --git a/hw/timer/pxa2xx_timer.c b/hw/timer/pxa2xx_timer.c
-> index d1a3ecac2b5..3234bbb1f4a 100644
-> --- a/hw/timer/pxa2xx_timer.c
-> +++ b/hw/timer/pxa2xx_timer.c
-> @@ -54,7 +54,6 @@
->   #define OSNR	0x20
->   
->   #define PXA25X_FREQ	3686400	/* 3.6864 MHz */
-> -#define PXA27X_FREQ	3250000	/* 3.25 MHz */
->   
->   static int pxa2xx_timer4_freq[8] = {
->       [0] = 0,
-> @@ -572,28 +571,6 @@ static const TypeInfo pxa25x_timer_dev_info = {
->       .class_init    = pxa25x_timer_dev_class_init,
->   };
->   
-> -static Property pxa27x_timer_dev_properties[] = {
-> -    DEFINE_PROP_UINT32("freq", PXA2xxTimerInfo, freq, PXA27X_FREQ),
-> -    DEFINE_PROP_BIT("tm4", PXA2xxTimerInfo, flags,
-> -                    PXA2XX_TIMER_HAVE_TM4, true),
-> -    DEFINE_PROP_END_OF_LIST(),
-> -};
-> -
-> -static void pxa27x_timer_dev_class_init(ObjectClass *klass, void *data)
-> -{
-> -    DeviceClass *dc = DEVICE_CLASS(klass);
-> -
-> -    dc->desc = "PXA27x timer";
-> -    device_class_set_props(dc, pxa27x_timer_dev_properties);
-> -}
-> -
-> -static const TypeInfo pxa27x_timer_dev_info = {
-> -    .name          = "pxa27x-timer",
-> -    .parent        = TYPE_PXA2XX_TIMER,
-> -    .instance_size = sizeof(PXA2xxTimerInfo),
-> -    .class_init    = pxa27x_timer_dev_class_init,
-> -};
-> -
->   static void pxa2xx_timer_class_init(ObjectClass *oc, void *data)
->   {
->       DeviceClass *dc = DEVICE_CLASS(oc);
-> @@ -615,7 +592,6 @@ static void pxa2xx_timer_register_types(void)
->   {
->       type_register_static(&pxa2xx_timer_type_info);
->       type_register_static(&pxa25x_timer_dev_info);
-> -    type_register_static(&pxa27x_timer_dev_info);
->   }
->   
->   type_init(pxa2xx_timer_register_types)
+>   include/hw/arm/omap.h |    8 -
+>   hw/arm/omap2.c        | 2715 -----------------------------------------
+>   hw/arm/meson.build    |    1 -
+>   3 files changed, 2724 deletions(-)
+>   delete mode 100644 hw/arm/omap2.c
 
-We could also remove the abstract parent:
-
--- >8 --
-diff --git a/hw/timer/pxa2xx_timer.c b/hw/timer/pxa2xx_timer.c
-index 3234bbb1f4..b379b621cc 100644
---- a/hw/timer/pxa2xx_timer.c
-+++ b/hw/timer/pxa2xx_timer.c
-@@ -65,7 +65,7 @@ static int pxa2xx_timer4_freq[8] = {
-      [5 ... 7] = 0,
-  };
-
--#define TYPE_PXA2XX_TIMER "pxa2xx-timer"
-+#define TYPE_PXA2XX_TIMER "pxa25x-timer"
-  OBJECT_DECLARE_SIMPLE_TYPE(PXA2xxTimerInfo, PXA2XX_TIMER)
-
-
-@@ -561,36 +561,21 @@ static void 
-pxa25x_timer_dev_class_init(ObjectClass *klass, void *data)
-      DeviceClass *dc = DEVICE_CLASS(klass);
-
-      dc->desc = "PXA25x timer";
-+    dc->realize  = pxa2xx_timer_realize;
-+    dc->vmsd = &vmstate_pxa2xx_timer_regs;
-      device_class_set_props(dc, pxa25x_timer_dev_properties);
-  }
-
-  static const TypeInfo pxa25x_timer_dev_info = {
-      .name          = "pxa25x-timer",
--    .parent        = TYPE_PXA2XX_TIMER,
--    .instance_size = sizeof(PXA2xxTimerInfo),
--    .class_init    = pxa25x_timer_dev_class_init,
--};
--
--static void pxa2xx_timer_class_init(ObjectClass *oc, void *data)
--{
--    DeviceClass *dc = DEVICE_CLASS(oc);
--
--    dc->realize  = pxa2xx_timer_realize;
--    dc->vmsd = &vmstate_pxa2xx_timer_regs;
--}
--
--static const TypeInfo pxa2xx_timer_type_info = {
--    .name          = TYPE_PXA2XX_TIMER,
-      .parent        = TYPE_SYS_BUS_DEVICE,
-      .instance_size = sizeof(PXA2xxTimerInfo),
-      .instance_init = pxa2xx_timer_init,
--    .abstract      = true,
--    .class_init    = pxa2xx_timer_class_init,
-+    .class_init    = pxa25x_timer_dev_class_init,
-  };
-
-  static void pxa2xx_timer_register_types(void)
-  {
--    type_register_static(&pxa2xx_timer_type_info);
-      type_register_static(&pxa25x_timer_dev_info);
-  }
-
----
-
-I can post a follow-up patch but not sure it is worth it.
-
-Regardless,
+Yay!
 
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Tested-by: Philippe Mathieu-Daudé <philmd@linaro.org>

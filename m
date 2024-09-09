@@ -1,250 +1,178 @@
-Received: by 2002:a17:505:1909:b0:1be9:327d:8ee3 with SMTP id az9csp958023njb;
-        Mon, 9 Sep 2024 08:12:35 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUWgvFKzJYsP9QTaberECCWZpkzSx4FlZagGeXB1T4uBIpWBsVBb1pRrlgSfEmMFYv50fgpKTYQ/YGU8A==@linaro.org
-X-Google-Smtp-Source: AGHT+IEcHcSJBRI7M7bhDpOkZ+bREPopJaxjR2E4nZJX8BXogLEEunXWjZvCf2MiEhV5nNJzE62o
-X-Received: by 2002:a05:620a:2903:b0:7a9:bc1c:10b9 with SMTP id af79cd13be357-7a9bc1c113dmr272739085a.33.1725894755146;
-        Mon, 09 Sep 2024 08:12:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1725894755; cv=none;
+Received: by 2002:a17:505:1909:b0:1be9:327d:8ee3 with SMTP id az9csp996664njb;
+        Mon, 9 Sep 2024 10:03:25 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUpmR94h6yOFYvAL/JXbggMiGnwgBnTw/jmgWcdhZ4OgMg0aGQk7CK++d/nQi6864ZIDhajukFnS6kg2A==@linaro.org
+X-Google-Smtp-Source: AGHT+IEngChDLPufcwJBgiKZ/PkH4pU85jFupBkWq7WGNeimU4x45AdhVkZfwi7zaBB8+6Q8e3vR
+X-Received: by 2002:a05:620a:170f:b0:7a9:bc9b:b38 with SMTP id af79cd13be357-7a9bc9b0f1bmr240485685a.66.1725901405197;
+        Mon, 09 Sep 2024 10:03:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1725901405; cv=none;
         d=google.com; s=arc-20240605;
-        b=kmWOB9jbTQoh32Kpw4PDEJQ9xcnEI6wzdWR1T/tUqAdUB0x6Px5qxa2yGgj80SJMSc
-         sPiuPMQjfd/jNMRT1vhXuxIfR1YidVEp1SiJoOMDW1lRjoRuFH+9ixIGSIXDoJaocQUD
-         BbhSAnz8rD5+cYLSnUHtSBFaH1to4YCkEvnNK05HaM+Yq8tIsjrgv/zjeaiERf6ysXrq
-         zTr5b5/souevyLQLQjR+lxYyvQpwoh3RJ7d+/gqS3y8PPMjMg6gtkCvWJ+dMb3ceQwIY
-         IKYAlAXyTBIP0jj2kjhqRBN9gdDn6EgnHqn8gYzhWK5WWNHB+bhMEMuVEMpNaYUiuj08
-         k+Wg==
+        b=MkcZvnqNsN7hM1Ri8LU4Eyr/4gNiDxfspCFLf9QSH0hAhrb1YWfuomo3god0rmd6cL
+         1UbehVV+bNwADvgU8Z9kLtf0HCHR/uZ7fWE5y9q1Xm9XK2wZJZTrxOQwCAHxFhUjg3UC
+         cqxCSHU8K3YJ5BprIqLN50VtwC0I145uX4hGuo6Iz4OJ10L7PYOs5eFuIW2JXjVEwliZ
+         cXQZYluRiDp492jwFLjgWmphl4/L6LITNvM+wYPhbGbhQO4vtUrIK6fn8vfGet2y5IoM
+         P+kKBufqwr3+ei8cj5FOjyP9WbnD5dC2OdU5Zui1Wqv2CXifuQ5KCn3MEIQBHZHG85qh
+         VUVQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=xqME3WRGuhLpWHTehWG2v+JciYMJkgfei2jRU0uzBTM=;
-        fh=g2Mhjm8eSEHhFyv59DK2PcPlcgmjr5ZamRn+1m/NgG0=;
-        b=Qi9/7PeWRcf6wWLFHAfVGXEDd2FgYZbQ4z74D5Uiml/Ax9Au1nNn57AYMn+oaelOpM
-         HEWH8S2dDL6ojUO/jr52Qd58VRrpWiDHAfYK7gL33yPCn+wg4+s6pvBncnYRNdMpUS5P
-         8N58hDyIfqt+rGw023grLXRrgkDUM0qhmOtRRryIJ4qGCldNgx4jhTIHUVZz/8ukOGEu
-         83P2XHgkVGoLWLShcAqEIwtHumOCZcQEN4tGyn6Q/B16JHesHcPVZLkbGjyoGP1jzV+a
-         zh3KEYDei7fXgHQ1ipGvD/gEt3+SK3Y4LNqr7w+GDpYnLFZp3+NINTaZQbRYxE3MkG6f
-         jklQ==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:in-reply-to
+         :content-transfer-encoding:content-disposition:mime-version
+         :references:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=jsQk7psHLZeXi9JkqGSxvjJf/lWFhEOuCfTBEowo7t4=;
+        fh=bGv3yPQYXfnluH5VDCEaDclDYMREc5z/xpkUw2Q7/uE=;
+        b=lc/qEFdL5GCwTk73htat8KfvT0VFKZN6IadVbdqrocyuMYO8sLgg/GOftRLIIe28NJ
+         QCHO/d1VXqruVFs7SyLJejYAlFRgbAE6L9lIpQR5i83kiQqwT1JMMWkMtpGXkAvIcs1Q
+         IM/CyRHDES+BdTx27VYAg/7YkC4UQCo2G4/OYBvB+F5g83pY7q9QFqVR3cZnAVCIBPC6
+         BgZhMs0CsRsQNpwoYiKt/JomZOuHbGCP0x03QuWvLCb2Jls++7xfi4U7+/jO2wnaxu6C
+         GOBTzwyvLKp3kLoN7hX5lUJIAuD748+MOVnO08E0IuL64n34rrOqi8WuJ+yGJJ1LnHTQ
+         M+zg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=TYYOvrfJ;
-       spf=pass (google.com: domain of zhao1.liu@intel.com designates 198.175.65.9 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Return-Path: <zhao1.liu@intel.com>
-Received: from mgamail.intel.com (mgamail.intel.com. [198.175.65.9])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6c53432f267si56032706d6.58.2024.09.09.08.12.33
+       dkim=fail header.i=@gmail.com header.s=20230601 header.b=VEEw2LPR;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dara=fail header.i=@linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id af79cd13be357-7a9a7a8293fsi572665585a.779.2024.09.09.10.03.25
+        for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 09 Sep 2024 08:12:35 -0700 (PDT)
-Received-SPF: pass (google.com: domain of zhao1.liu@intel.com designates 198.175.65.9 as permitted sender) client-ip=198.175.65.9;
+        Mon, 09 Sep 2024 10:03:25 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=TYYOvrfJ;
-       spf=pass (google.com: domain of zhao1.liu@intel.com designates 198.175.65.9 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1725894755; x=1757430755;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:content-transfer-encoding:in-reply-to;
-  bh=OsmWfy9/jM7Y8SvKhoiJatJA7t9PpOrU8ixthkRiaSA=;
-  b=TYYOvrfJgjqkOfG/2HBPzL1i0BhLJtZXAB6v1MhFuukfOGcsxf5bOphl
-   VFIV4I89Ka6p9Hi8GY7zx3zwyqqr8fSnGvgN6LxUha9IABr67n0cZO7ul
-   QmOfbAtT5vEgUYyVSSql8dMJEynAnBXub3dJo8DVhwxeF0tstp4/l7X3o
-   XnYbA4dnNp/bmvnLCl9y8g17yh+v9dH0V2VZuVYnvW7IjH1kZZAFYDC+P
-   Yvyrk6EAKP5LTJmEZIQdirnvfmVWH+cfRjnT8euO/P5oRih2fF50m4lN5
-   OqDjD+iNpOntmQszUsUDzr0y9Bifg5eF/9Viqrp4Ze1SFUZHKCVMYnlnw
-   g==;
-X-CSE-ConnectionGUID: aSHFsdG7QTGNLEhBIoRZug==
-X-CSE-MsgGUID: oyG12LtNQeKUHQjk7cKhWQ==
-X-IronPort-AV: E=McAfee;i="6700,10204,11190"; a="47118324"
-X-IronPort-AV: E=Sophos;i="6.10,214,1719903600"; 
-   d="scan'208";a="47118324"
-Received: from orviesa009.jf.intel.com ([10.64.159.149])
-  by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 09 Sep 2024 08:12:33 -0700
-X-CSE-ConnectionGUID: e4fSfRdoRLOxMd5nb7V/nw==
-X-CSE-MsgGUID: JHBQ9hB6SkuuWTp2ZI+N7Q==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.10,214,1719903600"; 
-   d="scan'208";a="66673173"
-Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost) ([10.239.160.36])
-  by orviesa009.jf.intel.com with ESMTP; 09 Sep 2024 08:12:24 -0700
-Date: Mon, 9 Sep 2024 23:28:25 +0800
-From: Zhao Liu <zhao1.liu@intel.com>
-To: Salil Mehta <salil.mehta@huawei.com>
-Cc: Gavin Shan <gshan@redhat.com>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
-	"mst@redhat.com" <mst@redhat.com>,
-	"maz@kernel.org" <maz@kernel.org>,
-	"jean-philippe@linaro.org" <jean-philippe@linaro.org>,
-	Jonathan Cameron <jonathan.cameron@huawei.com>,
-	"lpieralisi@kernel.org" <lpieralisi@kernel.org>,
-	"peter.maydell@linaro.org" <peter.maydell@linaro.org>,
-	"richard.henderson@linaro.org" <richard.henderson@linaro.org>,
-	"imammedo@redhat.com" <imammedo@redhat.com>,
-	"andrew.jones@linux.dev" <andrew.jones@linux.dev>,
-	"david@redhat.com" <david@redhat.com>,
-	"philmd@linaro.org" <philmd@linaro.org>,
-	"eric.auger@redhat.com" <eric.auger@redhat.com>,
-	"will@kernel.org" <will@kernel.org>,
-	"ardb@kernel.org" <ardb@kernel.org>,
-	"oliver.upton@linux.dev" <oliver.upton@linux.dev>,
-	"pbonzini@redhat.com" <pbonzini@redhat.com>,
-	"rafael@kernel.org" <rafael@kernel.org>,
-	"borntraeger@linux.ibm.com" <borntraeger@linux.ibm.com>,
-	"alex.bennee@linaro.org" <alex.bennee@linaro.org>,
-	"npiggin@gmail.com" <npiggin@gmail.com>,
-	"harshpb@linux.ibm.com" <harshpb@linux.ibm.com>,
-	"linux@armlinux.org.uk" <linux@armlinux.org.uk>,
-	"darren@os.amperecomputing.com" <darren@os.amperecomputing.com>,
-	"ilkka@os.amperecomputing.com" <ilkka@os.amperecomputing.com>,
-	"vishnu@os.amperecomputing.com" <vishnu@os.amperecomputing.com>,
-	"karl.heubaum@oracle.com" <karl.heubaum@oracle.com>,
-	"miguel.luis@oracle.com" <miguel.luis@oracle.com>,
-	"salil.mehta@opnsrc.net" <salil.mehta@opnsrc.net>,
-	zhukeqian <zhukeqian1@huawei.com>,
-	"wangxiongfeng (C)" <wangxiongfeng2@huawei.com>,
-	"wangyanan (Y)" <wangyanan55@huawei.com>,
-	"jiakernel2@gmail.com" <jiakernel2@gmail.com>,
-	"maobibo@loongson.cn" <maobibo@loongson.cn>,
-	"lixianglai@loongson.cn" <lixianglai@loongson.cn>,
-	"shahuang@redhat.com" <shahuang@redhat.com>,
-	Linuxarm <linuxarm@huawei.com>, Zhao Liu <zhao1.liu@intel.com>
-Subject: Re: [PATCH RFC V3 01/29] arm/virt,target/arm: Add new ARMCPU
- {socket,cluster,core,thread}-id property
-Message-ID: <Zt8UGd9YRANnBPVT@intel.com>
-References: <20240613233639.202896-1-salil.mehta@huawei.com>
- <20240613233639.202896-2-salil.mehta@huawei.com>
- <11e627ef-d75e-4114-9b93-14d80ec0526b@redhat.com>
- <c889781d3eb048d19bae4ceff8646a4e@huawei.com>
- <Zthx3dQInrcgly6+@intel.com>
- <9376341923d94a2bbd8d24f4f6844585@huawei.com>
+       dkim=fail header.i=@gmail.com header.s=20230601 header.b=VEEw2LPR;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dara=fail header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1snhmo-0006mW-Sf; Mon, 09 Sep 2024 13:02:46 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
+ id 1snhmm-0006kd-Cc; Mon, 09 Sep 2024 13:02:44 -0400
+Received: from mail-pj1-x102b.google.com ([2607:f8b0:4864:20::102b])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
+ id 1snhmj-0003WI-On; Mon, 09 Sep 2024 13:02:44 -0400
+Received: by mail-pj1-x102b.google.com with SMTP id
+ 98e67ed59e1d1-2d87a0bfaa7so3263380a91.2; 
+ Mon, 09 Sep 2024 10:02:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1725901359; x=1726506159; darn=nongnu.org;
+ h=in-reply-to:content-transfer-encoding:content-disposition
+ :mime-version:references:message-id:subject:cc:to:from:date:sender
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=jsQk7psHLZeXi9JkqGSxvjJf/lWFhEOuCfTBEowo7t4=;
+ b=VEEw2LPRrMPfpl6wXS3j/hIY7K432O+WvVFG6OUHjLy6TGu1m9fnawl0g26D9oOuMW
+ 33+3eabK0jnIbWBg0c0y3dtojWGP7/X3iCudMheD3UQRdnVPvvmfhHhmYX7H3DEzS9ct
+ E60pYMLR4NjKDGvDdKNtWFCluo7jlH4Km2lLBIDYVyaKOJk+inx4lioSyp/OzbKRIlQH
+ G93f77kv7GNQWEKrropgrHQUu9w1dkzZvBpORf4fjj7t1NkXWm9t8ewovtXzHVPy7Xqo
+ dxp4R41QsbPHlf7MyOdKzdPQpuVZvij2Vbaog2fm5IndeofPCwMYAymx6Gk0L3wfj26M
+ T6bg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1725901359; x=1726506159;
+ h=in-reply-to:content-transfer-encoding:content-disposition
+ :mime-version:references:message-id:subject:cc:to:from:date:sender
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=jsQk7psHLZeXi9JkqGSxvjJf/lWFhEOuCfTBEowo7t4=;
+ b=EawQpDYNnkj3TPlHEFHuvRIgppl/0Mv6tlysl8dUzHSNKI88hcefujNtQvVoH2fNWo
+ fxJ1kWje6nOrEL5tO9MjI4uIM6MoFPfqElIfdwdR64ZjeFnoK/7UcaMu55M2ZwrGFZRq
+ MwxpGnDg5u5BdX9MWLm37vekLGSJM7hc8hWxrussSJAkN04RfPL9fCA6l9V+8C6sITZw
+ GPSISpj+nUKiTkEja+VNjzSbnr2hHfeOrUYzlTydTrxFs5AQ/vuix7+rL4do44iO7IGG
+ B3OoDYJiRlf/0rDGqL43KJ4onghXBC4QtH4fWd9xtbJdk+f2BQT2WjNDrixYG3XnPUbh
+ LeLA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUHrmnvQuogoddUj7u3kAIqKxjvmB+zSvW2jixfduxhfz8JTVvXSiXggfc1hfLGdrR1FdnxZk4KtA==@nongnu.org,
+ AJvYcCXnrPILhiU3Qz8e22CtwY3WC0o0WxGxnkGb6btOE4yNv/6Ca/16kY4J4VkfRaWQl0NAxQ5hWluoWsSVsA==@nongnu.org
+X-Gm-Message-State: AOJu0YwGO4DLmwzf19+P7qKrAAYSDFok4VoBnatXgmdh64mPtK3OT3Wf
+ ii5NK74x4JqMUZEyNRIQgLCdEz0X+oFpiwyZukVch6u+H/57u1D+erMvSg==
+X-Received: by 2002:a17:90a:6b46:b0:2d3:cd27:c480 with SMTP id
+ 98e67ed59e1d1-2dad50f2233mr13896170a91.33.1725901359431; 
+ Mon, 09 Sep 2024 10:02:39 -0700 (PDT)
+Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
+ by smtp.gmail.com with ESMTPSA id
+ 98e67ed59e1d1-2dadbfe471asm6953946a91.9.2024.09.09.10.02.38
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 09 Sep 2024 10:02:38 -0700 (PDT)
+Date: Mon, 9 Sep 2024 10:02:37 -0700
+From: Guenter Roeck <linux@roeck-us.net>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, Thomas Huth <thuth@redhat.com>,
+ Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>
+Subject: Re: [PATCH for-9.2 00/53] arm: Drop deprecated boards
+Message-ID: <bea6396b-b87a-4314-808a-7d440a96ac4b@roeck-us.net>
+References: <20240903160751.4100218-1-peter.maydell@linaro.org>
+ <fabedae0-d748-4a9d-b802-14d15f3cd44a@linaro.org>
+ <3f4ce380-0c0b-48ad-9752-c72f5aeac754@roeck-us.net>
+ <CAFEAcA_ETkWY=AaPWti8KwO0awdxWqkO4CLAwxaGVr+i4yFz-Q@mail.gmail.com>
+ <6e238c93-631a-4686-9e5a-e169ce082b17@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=gb2312
+Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <9376341923d94a2bbd8d24f4f6844585@huawei.com>
-X-TUID: n98z95Jzan0T
+In-Reply-To: <6e238c93-631a-4686-9e5a-e169ce082b17@linaro.org>
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102b;
+ envelope-from=groeck7@gmail.com; helo=mail-pj1-x102b.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_ENVFROM_END_DIGIT=0.25,
+ FREEMAIL_FORGED_FROMDOMAIN=0.001, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 4QRhVqP1EYhA
 
-On Wed, Sep 04, 2024 at 05:37:21PM +0000, Salil Mehta wrote:
-> Date: Wed, 4 Sep 2024 17:37:21 +0000
-> From: Salil Mehta <salil.mehta@huawei.com>
-> Subject: RE: [PATCH RFC V3 01/29] arm/virt,target/arm: Add new ARMCPU
->  {socket,cluster,core,thread}-id property
+On Mon, Sep 09, 2024 at 05:45:35PM +0200, Philippe Mathieu-Daudé wrote:
+> On 9/9/24 17:02, Peter Maydell wrote:
+> > On Mon, 9 Sept 2024 at 15:55, Guenter Roeck <linux@roeck-us.net> wrote:
+> > > 
+> > > On 9/9/24 06:40, Philippe Mathieu-Daudé wrote:
+> > > > Hi,
+> > > > 
+> > > > On 3/9/24 18:06, Peter Maydell wrote:
+> > > > > This patchset removes the various Arm machines which we deprecated
+> > > > > for the 9.0 release and are therefore allowed to remove for the 9.2
+> > > > > release:
+> > > > >    akita, borzoi, cheetah, connex, mainstone, n800, n810,
+> > > > >    spitz, terrier, tosa, verdex, z2
+> > > > 
+> > > > > The series includes removal of some code which while not strictly
+> > > > > specific to these machines was in practice used only by them:
+> > > > >    * the OneNAND flash memory device
+> > > > >    * the PCMCIA subsystem
+> > > > >    * the MUSB USB2.0 OTG USB controller chip (hcd-musb)
+> > > > 
+> > > > > thanks
+> > > > > -- PMM
+> > > > > 
+> > > > > Peter Maydell (53):
+> > > > >     hw/input: Drop ADS7846 device
+> > > > >     hw/adc: Remove MAX111X device
+> > > > >     hw/gpio: Remove MAX7310 device
+> > > 
+> > > max7310 is a gpio controller which is at least somewhat compatible
+> > > to pca953x. It is used on imx6qdl-sabreauto, and also instantiated
+> > > by Linux with the INT3491 ACPI ID.
 > 
-> Hi Zhao,
-> 
-> >  From: zhao1.liu@intel.com <zhao1.liu@intel.com>
-> >  Sent: Wednesday, September 4, 2024 3:43 PM
-> >  To: Salil Mehta <salil.mehta@huawei.com>
-> >  
-> >  Hi Salil,
-> >  
-> >  On Mon, Aug 19, 2024 at 11:53:52AM +0000, Salil Mehta wrote:
-> >  > Date: Mon, 19 Aug 2024 11:53:52 +0000
-> >  > From: Salil Mehta <salil.mehta@huawei.com>
-> >  > Subject: RE: [PATCH RFC V3 01/29] arm/virt,target/arm: Add new ARMCPU
-> >  > {socket,cluster,core,thread}-id property
-> >  
-> >  [snip]
-> >  
-> >  > >  > NULL); @@ -2708,6 +2716,7 @@ static const CPUArchIdList
-> >  > > *virt_possible_cpu_arch_ids(MachineState *ms)
-> >  > >  >   {
-> >  > >  >       int n;
-> >  > >  >       unsigned int max_cpus = ms->smp.max_cpus;
-> >  > >  > +    unsigned int smp_threads = ms->smp.threads;
-> >  > >  >       VirtMachineState *vms = VIRT_MACHINE(ms);
-> >  > >  >       MachineClass *mc = MACHINE_GET_CLASS(vms);
-> >  > >  >
-> >  > >  > @@ -2721,6 +2730,7 @@ static const CPUArchIdList
-> >  > > *virt_possible_cpu_arch_ids(MachineState *ms)
-> >  > >  >       ms->possible_cpus->len = max_cpus;
-> >  > >  >       for (n = 0; n < ms->possible_cpus->len; n++) {
-> >  > >  >           ms->possible_cpus->cpus[n].type = ms->cpu_type;
-> >  > >  > +        ms->possible_cpus->cpus[n].vcpus_count = smp_threads;
-> >  > >  >           ms->possible_cpus->cpus[n].arch_id =
-> >  > >  >               virt_cpu_mp_affinity(vms, n);
-> >  > >  >
-> >  > >
-> >  > >  Why @vcpus_count is initialized to @smp_threads? it needs to be
-> >  > > documented in the commit log.
-> >  >
-> >  >
-> >  > Because every thread internally amounts to a vCPU in QOM and which is
-> >  > in 1:1 relationship with KVM vCPU. AFAIK, QOM does not strictly
-> >  > follows any architecture. Once you start to get into details of
-> >  > threads there are many aspects of shared resources one will have to
-> >  > consider and these can vary across different implementations of
-> >  architecture.
-> >  
-> >  For SPAPR CPU, the granularity of >possible_cpus->cpus[] is "core", and for
-> >  x86, it's "thread" granularity.
-> 
-> 
-> We have threads per-core at microarchitecture level in ARM as well. But each
-> thread appears like a vCPU to OS and AFAICS there are no special attributes
-> attached to it. SMT can be enabled/disabled at firmware and should get
-> reflected in the configuration accordingly i.e. value of *threads-per-core* 
-> changes between 1 and 'N'.  This means 'vcpus_count' has to reflect the
-> correct configuration. But I think threads lack proper representation
-> in Qemu QOM.
-
-In topology related part, SMT (of x86) usually represents the logical
-processor level. And thread has the same meaning. To change these
-meanings is also possible, but I think it should be based on the actual
-use case. we can consider the complexity of the implementation when
-there is a need.
-
-> In Qemu, each vCPU reflects an execution context (which gets uniquely mapped
-> to KVM vCPU). AFAICS, we only have *CPUState* (Struct ArchCPU) as a placeholder
-> for this execution context and there is no *ThreadState* (derived out of
-> Struct CPUState). Hence, we've  to map all the threads as QOM vCPUs. This means
-> the array of present or possible CPUs represented by 'struct CPUArchIdList' contains
-> all execution contexts which actually might be vCPU or a thread. Hence, usage of
-> *vcpus_count* seems quite superficial to me frankly.
->
-> Also, AFAICS, KVM does not have the concept of the threads and only has
-> KVM vCPUs, but you are still allowed to specify the topology with sockets, dies,
-> clusters, cores, threads in most architectures.  
- 
-There are some uses for topology, such as it affects scheduling behavior,
-and it affects feature emulation, etc.
-  
-> >  And smp.threads means how many threads in one core, so for x86, the
-> >  vcpus_count of a "thread" is 1, and for spapr, the vcpus_count of a "core"
-> >  equals to smp.threads.
-> 
-> 
-> Sure, but does the KVM specifies this? 
-
-At least as you said, KVM (for x86) doesn't consider higher-level topologies
-at the moment, but that's not to say that it won't in the future, as certain
-registers do have topology dependencies.
-
-> and how does these threads map to the QOM vCPU objects or execution context?
-
-Each CPU object will create a (software) thread, you can refer the
-function "kvm_start_vcpu_thread(CPUState *cpu)", which will be called
-when CPU object realizes.
-
-> AFAICS there is nothing but 'CPUState'
-> which will be made part of the  possible vCPU list 'struct CPUArchIdList'.
- 
-As I said, an example is spapr ("spapr_possible_cpu_arch_ids()"), which
-maps possible_cpu to core object. However, this is a very specific
-example, and like Igor's slides said, I understand it's an architectural
-requirement.
-
-> >  
-> >  IIUC, your granularity is still "thread", so that this filed should be 1.
-> 
-> 
-> Well, again we need more discussion on this. I've stated my concerns against
-> doing this. User should be allowed to create virtual topology which will
-> include 'threads' as one of the parameter.
+> Can you use the PCF8574 port expander instead? It uses more recent
+> QEMU design model.
 > 
 
-I don't seem to understand...There is a ¡°threads¡± parameter in -smp, does
-this not satisfy your use case?
+Ok with me.
 
-Regards,
-Zhao
+Guenter

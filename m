@@ -1,177 +1,127 @@
-Received: by 2002:a17:505:1909:b0:1be9:327d:8ee3 with SMTP id az9csp923831njb;
-        Mon, 9 Sep 2024 06:41:40 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUABqYeT5gweDjoyNCpYgC4JfIVF98bzWwWS+ctWibzZx5M118xIlDd9Gau0D/hvubi4q/lunROdIN3tg==@linaro.org
-X-Google-Smtp-Source: AGHT+IE0xqVY0uOos77A1psbsQA+2ubw7drKRBq8W/0FrIgnIjcIWs4hZK1JtAM9IhKWMwuTzuTT
-X-Received: by 2002:a05:620a:31a9:b0:7a9:bd93:ac57 with SMTP id af79cd13be357-7a9bd93b011mr191263785a.3.1725889299626;
-        Mon, 09 Sep 2024 06:41:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1725889299; cv=none;
-        d=google.com; s=arc-20240605;
-        b=W9X1sxXgD53dSZebnaIy68cZweI3ehTr6cL48VgqVpGBtxTSXKxPrHIy3FnIX3Tt75
-         9HN0xdzHkJzltU9t7uxfAr+8oF5GFiP88t0sUVvArrvuahNHV1p+V/qtpxzIt4AGdTR3
-         H8C3FG7/kfgk5neA3UhLwDIJhzhYfslxkl6ycFHmbA1W8I2O7Vh7I/K9ERjxg2uYJqer
-         8zfy3uJChLzzSomsnSWbopjkuPnHpld4KvonPKRMhnB9z6PIKABiCuMlEcqgr4mg3Tg9
-         G93cdYU0h7/oRau3qDXqQ3O6lAhd72u9A7aknlVe0VEa6Vw1oRB53y45xMsMNLzjRpgT
-         OItA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:cc:content-language:references:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=dNaok0/389JuNyOt2LzZ4r2pSU2fDk+h6HXAOu16lR8=;
-        fh=AxSZt//D1t/t682h2Gbd/4cfQdzSC/BCQbi411Eeg7k=;
-        b=KEE66R5ssRMbcOmh5NxwVllhWFdDPjk7b7Cl48hXNGxKu2rZHJe95M+5FhSgo/4wdI
-         BUYaKynMZbgcSJ7f1qhiD3HhXJw/lPrMfCbrgVh4Km3+jUkvxbpfmGupLXt5JU07JBqJ
-         SwdtVGYiMzM0ZJJl9I/Mtao7l1J0NOZwfK1yAZjzNAaQkRgeqtFeB+ZqAk8FEOlrZDml
-         n9fF6Kd2+nvebQhIAAE5DePf41hNNeA16uWAaVBQcLYmpWH+X9JD8njWuOaUTs04kpTV
-         PrAVj0JkaSdPPqHXZveWm6+RYM7Hzr0MWK6IXlDIBJaRe7nvBTFP62zwl6pwKo+S+uAZ
-         1x9g==;
+Received: by 2002:a17:505:1909:b0:1be9:327d:8ee3 with SMTP id az9csp919056njb;
+        Mon, 9 Sep 2024 06:27:49 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXWVlsGGjoj1LSCo85is6Sfq2HI6j8fSPdPIxJEev2ccq4s4B/lV7nUUBGWbE144QOxdLBRDuqcWnmymg==@linaro.org
+X-Received: by 2002:a17:907:3f8a:b0:a8d:2d2e:90f3 with SMTP id a640c23a62f3a-a8d2d2e9318mr586515466b.55.1725888468749;
+        Mon, 09 Sep 2024 06:27:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1725888468; cv=none;
+        d=google.com; s=arc-20160816;
+        b=RTM99JWbwi0zY5HposPxAu9Gn6eSsjjPT0OIAe+EDEW/zyDpTcEqtdOPr880gT6vtj
+         LnBnF3BxICeZbxewPKhzxVzTeKSL2n3lsk+Y/Lv2xLUkg0yh5VW+UwnAUfItipkEI+OV
+         0hJesrC8QDiKdaLgZ6RCSd7dK2K4q8iZ/Wu6sf6wN1biuoQNufQVt+ZVHZVJ2poGFqF0
+         EgTIcbbf7/N6KcV3yZHXK/WYzfh6UGhZh2Zhz/bPshGyfmUseFaUezzFLAhwWvjjAUM4
+         TArhxzw2VnYk5yPXMv1kCucPl8dAhkHOBovI8NjKbPjr45OxLVRWdN6oMjhxm2Lqdb9h
+         cg5w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=lwbiLqDAs21UIo/+lcO0DfO38fNxtDnmTM45HG+vtNQ=;
+        fh=EWL+Akm2g5f5BTLvekqncmMwZEHCyZnAVXM6AfuO7Ok=;
+        b=CUKhSnjM/gXm8i5+Kh3ekIgD0vQrDW6/+tqxZAeXooUGQM+vnCsKLmNvWtfLQ3HLzH
+         TjZSrDzpLLwDAOcFud5+VkkhUUj+mx68doTkCWKlcirv00tVPxqt/jt0waFHkIG0JfHr
+         u6lJi4mbzNgWOawHRIUeAtDyPbhZ+ZJC4rc/CFSXXCUB/Rjlfzabb2Ivz6CCU9WkAofA
+         RXQ81yAiWbwaFOF5jabThQJ5HzFaneJdpaBM5PkGM8Y8byKdsnptp203ES/p7eJRlkt5
+         pN1P+xMM2TfYnBh61WZbpsVyGtSqIacXQPEBJESYRhns+gYFM46l+LzU8sgo/5tinN/y
+         +Cbg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=bq3J1HmQ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=HOFsLAl9;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7a9a7a379aesi553831885a.307.2024.09.09.06.41.39
+Return-Path: <philmd@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id a640c23a62f3a-a8d25a28430sor153096966b.11.2024.09.09.06.27.48
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 09 Sep 2024 06:41:39 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Mon, 09 Sep 2024 06:27:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=bq3J1HmQ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=HOFsLAl9;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1snedh-0002MX-6m; Mon, 09 Sep 2024 09:41:09 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1snedf-0002E5-Ch
- for qemu-arm@nongnu.org; Mon, 09 Sep 2024 09:41:07 -0400
-Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1snedb-0007wp-Fp
- for qemu-arm@nongnu.org; Mon, 09 Sep 2024 09:41:07 -0400
-Received: by mail-ej1-x62d.google.com with SMTP id
- a640c23a62f3a-a8d60e23b33so104617566b.0
- for <qemu-arm@nongnu.org>; Mon, 09 Sep 2024 06:41:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1725889261; x=1726494061; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:cc:content-language
- :references:to:subject:user-agent:mime-version:date:message-id:from
- :to:cc:subject:date:message-id:reply-to;
- bh=dNaok0/389JuNyOt2LzZ4r2pSU2fDk+h6HXAOu16lR8=;
- b=bq3J1HmQq3WPtVi32ivb8IhRD7+70hEC0AzXaaiNbIyVEmI+BrNh1JtSvqDRK0sn7S
- mwueP/+HRCqvlldSdfJ9uz/wrsdm08FXuZJoy0i/fHoRBqoMT+MzsDoEghY26zrKtg+l
- rReP+eM54rxc1IvaN/uhoS69TAhhN+7IEmn8u2g+OE4gM6NrMwoTpmR1M010g47ZAHFs
- bntIVlPmif7hOIvOfIwgB0WRtS0c3ct2gqHVIhEgft4NDxd8I1C98mjLTKDCH5hFLVVp
- wEVogPeEo9HhYWGCiJ48p5Oa8692u2e2Hrr/jIm5LMmMEJhWpg8G3Pu7bVHpXwSJf9dT
- +eaQ==
+        d=linaro.org; s=google; t=1725888468; x=1726493268; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=lwbiLqDAs21UIo/+lcO0DfO38fNxtDnmTM45HG+vtNQ=;
+        b=HOFsLAl990IJkJ0nsyK6sifaC1qj0ejBWDyyCViE+At6aRS6XJJqaX9z7s4bew+pIi
+         TeAg+LB3YGGl5UOV3dxwN6nprXmE5AAYQVxAQsY5uVSEIyhO2tLVtDpYYg2VKFQdgpDf
+         Zz4bcjAb3XmH+H8u71sPntIL9nkxyOOxWVRnrr98mIfHq+npH8CotXD37LZYjK30v+5v
+         OR0826eSxxFnhjnDRabuKLIEKFIGAEL3d+0rc1wAqYTZQgzLEv5cswUmiOi+JG5xnCDK
+         44IvEoC89adOMFqxU8LtNZgp/w8KY8Mod6QWlCJPc0U5FogBlTFNUp5V2fZh9Pe1dZEw
+         JWdQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1725889261; x=1726494061;
- h=content-transfer-encoding:in-reply-to:from:cc:content-language
- :references:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=dNaok0/389JuNyOt2LzZ4r2pSU2fDk+h6HXAOu16lR8=;
- b=R+9ip3E8SevILRcSuvEV/gIjz29mtODxA9RPMwZ2ndosMF1er8vgntRSJ8IuDf6aIO
- kIfhvj62t4lJJDzh8MpYczbwyBmULPcQ2LtqzM+6asJzvsv2zxYbRz5vkcpghJ6ntsIl
- AI7g2qXfmYLUZZQU/mwAPEY6Td3n6aa0EEpXxvj7g/GtJghO8u5E1474gS1Mph1TSzSb
- OHOcUk8dmav/bpvUTihixkj+nTfEXPA2yRp9O6ikpi6SFU0fnOO9Bi4es/NB8O9mfGRF
- uAe8rEvgEQRL6PkOLJLWlCPD/qv1WBOufgG9dydadhsYgGYROaL5hIBACiyhHEvaN2Mb
- cstA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVax9letxYjHMJi1AJqR4e/ZtDCnJKTbM6uw/+jM7oQk7wPCVtTEGMm4dVyGsBXMXnIkfKc2cByow==@nongnu.org
-X-Gm-Message-State: AOJu0YwY7c3Ylh10IoTiuvnOW30lbeF0RtD+2O9sMSFP6QdbdJ/dlsUL
- tgQUmfD8kd24pbwPR0o6lzXDxwCzJWdwj2rZYpXxKALWcQ0p/SqjoTswTiYMvgc=
-X-Received: by 2002:a17:907:9628:b0:a8b:6ee7:ba25 with SMTP id
- a640c23a62f3a-a8b70ee944emr940646666b.47.1725889261042; 
- Mon, 09 Sep 2024 06:41:01 -0700 (PDT)
-Received: from [192.168.69.100] (nsg93-h02-176-184-54-166.dsl.sta.abo.bbox.fr.
- [176.184.54.166]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-a8d25ced1bfsm343371466b.154.2024.09.09.06.40.59
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 09 Sep 2024 06:41:00 -0700 (PDT)
-Message-ID: <fabedae0-d748-4a9d-b802-14d15f3cd44a@linaro.org>
-Date: Mon, 9 Sep 2024 15:40:58 +0200
+        d=1e100.net; s=20230601; t=1725888468; x=1726493268;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=lwbiLqDAs21UIo/+lcO0DfO38fNxtDnmTM45HG+vtNQ=;
+        b=SvzoKkxsXjd2erLzFTzPvBMPKWhlgHA9m6nagwLHui6fMnjhRSJQGaOIHc3hVBVtfj
+         vIlHM2QI7vk0P4ZAfBh0hB5lPVyTIlk4KuHCmt3sqJD1o8q6NW2bA2yEXAEJuat49JkN
+         9q0JyiV9FjLgnKvDnoAmE0KbHFmzm6TBk7CsKLhRcqxHEDJPbH/DvhiTah2S3B4Ip4W1
+         tD5fWoeFhEL7FujLWof8g+LSgqMdBn08OMTUkBP4Ls5cf5q5RhPa1jKaM4ScGUjPsghC
+         OUov8dS9LD98mr0Vwfc4oyNWytQCPx0KlLcZTZezeNIka+Ott0knvMy4/WIRce18ROCV
+         Q2DQ==
+X-Forwarded-Encrypted: i=1; AJvYcCWmbxjgC2/EBSRj+1OE7J5HCfQjF1OQjjxCaKRVgk00ZagdnhRH7bpsnl4ZDzJ64ABX4vLC3YtbQtkGPw==@linaro.org
+X-Gm-Message-State: AOJu0YywMMNxlXySavQuD4szaU/3kV8NjFMor1KXIp9yQ0ROJhLIEcyC
+	1RhFYTDdVpPgI4GnkIIfwfYo0PFgksAT8id1ejqK1KCZNM9bAviDcNX+ikDRsxK2OQ==
+X-Google-Smtp-Source: AGHT+IGsvvtZ+fYyWG8LfK57boEZU5Z3ysge5KDFTVpy6QAWAJ3LNXjVpNCSfUwyRV6fDvtkXLx7fA==
+X-Received: by 2002:a17:907:7f03:b0:a8d:5e1a:8d7b with SMTP id a640c23a62f3a-a8d5e1a9021mr240840666b.43.1725888468039;
+        Mon, 09 Sep 2024 06:27:48 -0700 (PDT)
+Return-Path: <philmd@linaro.org>
+Received: from [192.168.69.100] (nsg93-h02-176-184-54-166.dsl.sta.abo.bbox.fr. [176.184.54.166])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a8d25cee72bsm346735566b.173.2024.09.09.06.27.46
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 09 Sep 2024 06:27:47 -0700 (PDT)
+Message-ID: <a75781ff-9798-44fc-90e8-0581dabc8677@linaro.org>
+Date: Mon, 9 Sep 2024 15:27:45 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH for-9.2 00/53] arm: Drop deprecated boards
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-References: <20240903160751.4100218-1-peter.maydell@linaro.org>
+Subject: Re: [PATCH v5 00/16] hw/char/pl011: Implement TX (async) FIFO to
+ avoid blocking the main loop
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?=
+ <marcandre.lureau@redhat.com>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
+ <alex.bennee@linaro.org>, qemu-arm@nongnu.org,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, Tong Ho <tong.ho@amd.com>,
+ Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+References: <20240719181041.49545-1-philmd@linaro.org>
+ <4bc83012-3b9c-4b99-8b6b-65f041652540@linaro.org>
+ <CAFEAcA-x_avaFQcrWQj=-e8-5_C4NeWUNxgRqLqKbrJ2HpK4pA@mail.gmail.com>
 Content-Language: en-US
-Cc: Thomas Huth <thuth@redhat.com>, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
- <berrange@redhat.com>, Guenter Roeck <linux@roeck-us.net>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20240903160751.4100218-1-peter.maydell@linaro.org>
+In-Reply-To: <CAFEAcA-x_avaFQcrWQj=-e8-5_C4NeWUNxgRqLqKbrJ2HpK4pA@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::62d;
- envelope-from=philmd@linaro.org; helo=mail-ej1-x62d.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: umzyVdfEeM8X
+Content-Transfer-Encoding: 8bit
+X-TUID: sUI0ZegypL9j
 
-Hi,
-
-On 3/9/24 18:06, Peter Maydell wrote:
-> This patchset removes the various Arm machines which we deprecated
-> for the 9.0 release and are therefore allowed to remove for the 9.2
-> release:
->   akita, borzoi, cheetah, connex, mainstone, n800, n810,
->   spitz, terrier, tosa, verdex, z2
-
-> The series includes removal of some code which while not strictly
-> specific to these machines was in practice used only by them:
->   * the OneNAND flash memory device
->   * the PCMCIA subsystem
->   * the MUSB USB2.0 OTG USB controller chip (hcd-musb)
-
-> thanks
-> -- PMM
+On 7/9/24 12:38, Peter Maydell wrote:
+> On Sat, 7 Sept 2024 at 06:42, Philippe Mathieu-Daudé <philmd@linaro.org> wrote:
+>>
+>> Hi Peter,
+>>
+>> On 19/7/24 20:10, Philippe Mathieu-Daudé wrote:
+>>
+>>> Philippe Mathieu-Daudé (16):
+>>
+>>>     hw/char/pl011: Remove unused 'readbuff' field
+>>>     hw/char/pl011: Move pl011_put_fifo() earlier
+>>>     hw/char/pl011: Move pl011_loopback_enabled|tx() around
+>>>     hw/char/pl011: Split RX/TX path of pl011_reset_fifo()
+>>>     hw/char/pl011: Extract pl011_write_txdata() from pl011_write()
+>>>     hw/char/pl011: Extract pl011_read_rxdata() from pl011_read()
+>>>     hw/char/pl011: Warn when using disabled transmitter
+>>
+>>>     hw/char/pl011: Rename RX FIFO methods
+>>
+>>
+>> If you don't mind I'll queue the reviewed 2-8 & 11 to ease my workflow,
+>> before respining the next version.
 > 
-> Peter Maydell (53):
->    hw/input: Drop ADS7846 device
->    hw/adc: Remove MAX111X device
->    hw/gpio: Remove MAX7310 device
->    hw/input: Remove tsc2005 touchscreen controller
->    hw/input: Remove tsc210x device
->    hw/rtc: Remove twl92230 device
->    hw/input: Remove lm832x device
->    hw/usb: Remove tusb6010 USB controller
->    hw/usb: Remove MUSB USB host controller
+> Sure, that's fine. I don't have anything pl011 related in
+> my queue that would conflict.
 
-Some of these devices are user-creatable and only rely on a bus
-(not a particular removed machine), so could potentially be used
-on other maintained machines which expose a similar bus.
-We don't have in-tree (tests/) examples, but I wonder if it is OK
-to remove them without first explicitly deprecating them in
-docs/about/deprecated.rst. I wouldn't surprise users when 9.2 is
-release. Maybe this isn't an issue, but I prefer to mention it
-now to be sure.
-
-Regards,
-
-Phil.
+Great, thank you!

@@ -1,93 +1,126 @@
-Received: by 2002:a17:505:1909:b0:1be9:327d:8ee3 with SMTP id az9csp831160njb;
-        Mon, 9 Sep 2024 00:50:34 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWt1MHD3IK/N5FTfvgaZ30fnQQmyUVmSrpOj3av/2hnpuV5TRn4T/PfydHghPwBaOGQbj0SacEaJj0pxg==@linaro.org
-X-Google-Smtp-Source: AGHT+IH8MxrqFzN/9Kvy8fBz3P9ueNUT411GOZo4GzYAib1URsNubP0lcIXeMtCcdkGYoHm6OCyT
-X-Received: by 2002:a05:6214:4883:b0:6c5:f46:ced2 with SMTP id 6a1803df08f44-6c532b2cab5mr111422286d6.35.1725868233994;
-        Mon, 09 Sep 2024 00:50:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1725868233; cv=none;
+Received: by 2002:a17:505:1909:b0:1be9:327d:8ee3 with SMTP id az9csp859713njb;
+        Mon, 9 Sep 2024 03:05:51 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWKVrT7EIylODxyPcJjNIXN+f86fTIexTaS4cic3mYrV0AqJLR1dQIJDUrckNzGT00bcbTlH/IdHruO3A==@linaro.org
+X-Google-Smtp-Source: AGHT+IHck6TgUiLkw1oWyDPIkNviJ3/GQfn7g3fX26Q7PzesTCkbxNNA26ryDPfwYHqeCg1gDbD5
+X-Received: by 2002:a05:6102:5488:b0:493:b006:e1a with SMTP id ada2fe7eead31-49bde172061mr12790152137.7.1725876351540;
+        Mon, 09 Sep 2024 03:05:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1725876351; cv=none;
         d=google.com; s=arc-20240605;
-        b=SqZxcVzIiSR3KyaFjgo23zSHQUvcXGwLqstt/E7iJ/Yo1o/DvW8fBSBnItzwfLAvI6
-         hl/MNw80fgJZmeovz9OE5fC3zHPACvHZzfc/7FWVeyDtH83owVA4PZLzg814nLn/E5cL
-         qy67t2603v8c2f6FXsE+dbay4N2sidfqJucldASmpddGuagrCn4IdyXHP+cHz6MhM9gm
-         vTspikby0d/PG6wtgRm7heTmb4G/lrBcK0rsdVi0dR59Cr/qF0uNTgfdMV6RSNNrHMv2
-         n4Pb+4cKOl2qPJMYCMSMMaDiWVT4l2wmR+dt36MTvUfa1H2tQtFtWfRPkR6DIPQrv85m
-         HIOQ==
+        b=NOw2+gmdyTHuXUyvWPdm8DnxS26Bpy/eJu7PtJvdvbJQF8lYIACK0PDr5pbQfZ/EZJ
+         2MBKZLw8K8y90iV3aqwUZ+o2OP5H/9hUc/y+HZ3AhchiukFHxS7abEm5G6c82WqjmPmD
+         GtGZyDmVGxiVlf7hpSpFnyuG0RbElOdGzOAlr0X+jeHaR8eIYJNh2mYxwBJQ36QQnsuK
+         C/D/KsvJKINLal16Fv0AqKbE+Kb0YhSM1RhArkWAEq1qEFP3H7FOdeSMlPXHE2OZOoEz
+         yg5XUsW7XgQnte9wTvth4u22HBJbETkuuPoGVW3Rm7OwuG1/uXi6Pux2gduIdKfkBx2W
+         L0+Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id;
-        bh=mPLqAhDPKgEBkMKkvknXnA9TfdLIEoVKPVMDd+khuLo=;
-        fh=d/0nsYogqU7TFAjCQGeGTuSM+v6jKn8miLrQjACEyDs=;
-        b=LDv9m7FGeK4Q0C3HcDadFRtYEKAhOr1eYp3cN3truqXsa/SCeMH9MPHnZpFhQrKNQ2
-         Yf4A1nGFbKbEybXKNxD8ivduP+PvgYe7kwSb/ByO5rR12o/+X/pO2CQpUWPZIp+6d5fS
-         y0+QezMgcC0x+kIZT8BkGObXuTWCWvo2CZ0CExHLsBHAxlewTHoJwXGEfJkD4GLqGytM
-         ZqzCcdeYyRCQNqyreytvY7VFBUdP4tQwHSl6uddNRw/2iXFukYMu2XVLeXQOgY6QxTEG
-         p92VudluYOzsV47tJiuTc5K0tlNzY/X3PU4Tb5dv+zjgojSfguU2g+u7VPP7hQ8hQke7
-         P5Hg==;
+         :in-reply-to:organization:content-language:from:references:cc:to
+         :subject:user-agent:mime-version:date:message-id:dkim-signature;
+        bh=UDW7Y/FkHlm7foc3nBKUG2Quqbrny0XbGq22zLlogVQ=;
+        fh=1/TKMSb3KxzxyrWQilHqzGZc+5/AgIlyZMZPSSvFe1U=;
+        b=lS3ZLBeAMwmnYWyzjaokMbfzPgGI5sNVpUZ0AgdHLZ+QKx/D+kP4kzsdkZFhLdiDcu
+         bUIXYG4L8EJvxa4mxWKY5DOgVOLA1jToYmXba581TQdeanHjRX9+urhcGIr5zrPZSS2p
+         xgUFe4sXudS72CqXti5PCCfbmO0BnSkd96d+zQLZWs6Pw68uHVVq39+jiGM4xqGZJs8j
+         SZXm8OBk3tzQ1k1EDoodUsqT+vu8qgx5ylzcvAmx+Ii9AM61ce04+nl8AwnkXCdnhNP3
+         n7y+vre3Mpx6Yhz5Z8Z2aN+3jYOwR+Jv2SpTTKjBUEo7mpZaiY0epxX6bFMtiZNAJWdR
+         FUSw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=r64LMMAA;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6c534330a6dsi50017036d6.100.2024.09.09.00.50.33
+        by mx.google.com with ESMTPS id 6a1803df08f44-6c5347cb586si51070466d6.555.2024.09.09.03.05.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 09 Sep 2024 00:50:33 -0700 (PDT)
+        Mon, 09 Sep 2024 03:05:51 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=r64LMMAA;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1snZAJ-0001Gq-U3; Mon, 09 Sep 2024 03:50:28 -0400
+	id 1snbH4-0004bV-OL; Mon, 09 Sep 2024 06:05:34 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=Li2i=QH=kaod.org=clg@ozlabs.org>)
- id 1snZ9s-0008GF-UT; Mon, 09 Sep 2024 03:50:07 -0400
-Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=Li2i=QH=kaod.org=clg@ozlabs.org>)
- id 1snZ9q-0004CX-Q5; Mon, 09 Sep 2024 03:50:00 -0400
-Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4X2Js03lmdz4x21;
- Mon,  9 Sep 2024 17:49:56 +1000 (AEST)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits))
- (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4X2Jrt70z4z4w2L;
- Mon,  9 Sep 2024 17:49:50 +1000 (AEST)
-Message-ID: <58d936b4-8e3e-4867-b478-8341987c400e@kaod.org>
-Date: Mon, 9 Sep 2024 09:49:48 +0200
+ (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
+ id 1snbGu-0004YZ-Ff
+ for qemu-devel@nongnu.org; Mon, 09 Sep 2024 06:05:26 -0400
+Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
+ id 1snbGs-00088G-Pn
+ for qemu-devel@nongnu.org; Mon, 09 Sep 2024 06:05:24 -0400
+Received: by mail-ej1-x62d.google.com with SMTP id
+ a640c23a62f3a-a8d100e9ce0so326990466b.2
+ for <qemu-devel@nongnu.org>; Mon, 09 Sep 2024 03:05:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1725876320; x=1726481120; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:organization:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:from:to:cc:subject:date:message-id:reply-to;
+ bh=UDW7Y/FkHlm7foc3nBKUG2Quqbrny0XbGq22zLlogVQ=;
+ b=r64LMMAArInyrGT4P3In8+PQT5dUvYv4vBoP1bBvfLvnaSsfpqS49kxOmFoOVOidnx
+ NBCfCuXaOzqNesbF05WhI5UfDEeg9TlP3T6zSdG89jioIuEMN06XUmyfzK5OXIoIQb/7
+ cwzenLquzo7FpqFXqyBtx7mnMU61jtV8/p53Exgy3xjr9pkx8+tezcVChssdmPcFTY/k
+ 72wUBWuBRvVFKFm2OjIgK55UhUcTej2BqNBl0w92fkmjqItQsaY1HvjhB/e2PVeE4n+X
+ NUK6IX0Xaq/7i8HiUYav77pdGLRmjY6z7iYXjgDAvqO8beSo/0fbEzUI4156WdAAZp4+
+ ETVw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1725876320; x=1726481120;
+ h=content-transfer-encoding:in-reply-to:organization:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=UDW7Y/FkHlm7foc3nBKUG2Quqbrny0XbGq22zLlogVQ=;
+ b=fEDttgJvpkG1KMGnX23ih9Qnm9dI0zu+LqfLsEiOLRpOJNlhqcbseddTvucx+BSEGO
+ h0QkAaSdPA7WyqkB7uFLFWPJ1xK348DHcJjX7C8tjv70g5TOotAyKNvdRwNF0MeG7N/n
+ TQsMF0IklaEfa4gGyFhh0vbGYVNTHNt8G79MPMegl5aQG+ZRvqbX4Ef59Fcep4xc+sL9
+ 2gNbgqNmjIlFdPsqlEuJjswY4wavR2eLR0N1P6hu0T8/HeUZ59DH7iyASK1MAXWTb/Fg
+ IDABePDuXLWji9FnB+gnDW/oxi+SG0pGS6Glm/Ohq6D0YBwAfeHGD1rwbJyXy7+t9uYt
+ VP/Q==
+X-Gm-Message-State: AOJu0Yy0WGizDKhHw3sTEES74/CIOaal1B/UF1+D7AttgIFhqHhuIksW
+ 529W9aKnlGUngV3GBnilH0hIJi+pApxJLOZ1IXGY/e/6EXr6Cxj3m4LIhqOgFpI=
+X-Received: by 2002:a17:907:801:b0:a77:b4e3:4fca with SMTP id
+ a640c23a62f3a-a8a885bfbe1mr1131892566b.9.1725876319229; 
+ Mon, 09 Sep 2024 03:05:19 -0700 (PDT)
+Received: from [192.168.200.25] (83.11.24.101.ipv4.supernova.orange.pl.
+ [83.11.24.101]) by smtp.gmail.com with ESMTPSA id
+ a640c23a62f3a-a8d25c61258sm317749066b.116.2024.09.09.03.05.18
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 09 Sep 2024 03:05:18 -0700 (PDT)
+Message-ID: <e632758d-893f-4a44-b081-9fdd92c19548@linaro.org>
+Date: Mon, 9 Sep 2024 12:05:17 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH 7/8] aspeed: Add uhci support for ast2600
-To: Guenter Roeck <linux@roeck-us.net>, qemu-devel@nongnu.org
-Cc: Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Jamin Lin <jamin_lin@aspeedtech.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- BALATON Zoltan <balaton@eik.bme.hu>, "Michael S . Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org
-References: <20240906122542.3808997-1-linux@roeck-us.net>
- <20240906122542.3808997-8-linux@roeck-us.net>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20240906122542.3808997-8-linux@roeck-us.net>
+Subject: Re: [RFC PATCH 1/2] hw/arm/sbsa-ref: Enable CXL Host Bridge by pxb-cxl
+To: Yuquan Wang <wangyuquan1236@phytium.com.cn>, Jonathan.Cameron@Huawei.com, 
+ quic_llindhol@quicinc.com, peter.maydell@linaro.org
+Cc: qemu-devel@nongnu.org, linux-cxl@vger.kernel.org, qemu-arm@nongnu.org,
+ chenbaozi@phytium.com.cn, wangyinfeng@phytium.com.cn, shuyiqi@phytium.com.cn
+References: <20240830041557.600607-1-wangyuquan1236@phytium.com.cn>
+ <20240830041557.600607-2-wangyuquan1236@phytium.com.cn>
+From: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+Content-Language: pl-PL, en-GB
+Organization: Linaro
+In-Reply-To: <20240830041557.600607-2-wangyuquan1236@phytium.com.cn>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
- envelope-from=SRS0=Li2i=QH=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
-X-Spam_score_int: -39
-X-Spam_score: -4.0
-X-Spam_bar: ----
-X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.25, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::62d;
+ envelope-from=marcin.juszkiewicz@linaro.org; helo=mail-ej1-x62d.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -102,98 +135,20 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 5PP3t3aw0Mzn
+X-TUID: H97Bz4me4loh
 
-On 9/6/24 14:25, Guenter Roeck wrote:
-> Enable UHCO support for the ast2600 SoC. With this patch, the UHCI port
-> is successfully instantiated on the rainier-bmc and ast2600-evb machines.
-> 
-> Signed-off-by: Guenter Roeck <linux@roeck-us.net>
+On 30.08.2024 06:15, Yuquan Wang wrote:
+> The memory layout places 1M space for 16 host bridge register regions
+> in the sbsa-ref memmap. In addition, this creates a default pxb-cxl
+> (bus_nr=0xfe) bridge with one cxl-rp on sbsa-ref.
 
+With this patchset applied I no longer can add pcie devices to sbsa-ref.
 
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
+-device nvme,serial=deadbeef,bus=root_port_for_nvme1,drive=hdd
+-drive file=disks/full-debian.hddimg,format=raw,id=hdd,if=none
 
-Thanks,
+Normally this adds NVME as pcie device but now it probably ends on 
+pxb-cxl bus instead.
 
-C.
-
-
-> ---
->   hw/arm/aspeed_ast2600.c     | 13 +++++++++++++
->   include/hw/arm/aspeed_soc.h |  3 +++
->   2 files changed, 16 insertions(+)
-> 
-> diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
-> index be3eb70cdd..cd7e4ae6c9 100644
-> --- a/hw/arm/aspeed_ast2600.c
-> +++ b/hw/arm/aspeed_ast2600.c
-> @@ -33,6 +33,7 @@ static const hwaddr aspeed_soc_ast2600_memmap[] = {
->       [ASPEED_DEV_SPI2]      = 0x1E631000,
->       [ASPEED_DEV_EHCI1]     = 0x1E6A1000,
->       [ASPEED_DEV_EHCI2]     = 0x1E6A3000,
-> +    [ASPEED_DEV_UHCI]      = 0x1E6B0000,
->       [ASPEED_DEV_MII1]      = 0x1E650000,
->       [ASPEED_DEV_MII2]      = 0x1E650008,
->       [ASPEED_DEV_MII3]      = 0x1E650010,
-> @@ -110,6 +111,7 @@ static const int aspeed_soc_ast2600_irqmap[] = {
->       [ASPEED_DEV_SDHCI]     = 43,
->       [ASPEED_DEV_EHCI1]     = 5,
->       [ASPEED_DEV_EHCI2]     = 9,
-> +    [ASPEED_DEV_UHCI]      = 10,
->       [ASPEED_DEV_EMMC]      = 15,
->       [ASPEED_DEV_GPIO]      = 40,
->       [ASPEED_DEV_GPIO_1_8V] = 11,
-> @@ -206,6 +208,8 @@ static void aspeed_soc_ast2600_init(Object *obj)
->                                   TYPE_PLATFORM_EHCI);
->       }
->   
-> +    object_initialize_child(obj, "uhci", &s->uhci, TYPE_ASPEED_UHCI);
-> +
->       snprintf(typename, sizeof(typename), "aspeed.sdmc-%s", socname);
->       object_initialize_child(obj, "sdmc", &s->sdmc, typename);
->       object_property_add_alias(obj, "ram-size", OBJECT(&s->sdmc),
-> @@ -481,6 +485,15 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
->                              aspeed_soc_get_irq(s, ASPEED_DEV_EHCI1 + i));
->       }
->   
-> +    /* UHCI */
-> +    if (!sysbus_realize(SYS_BUS_DEVICE(&s->uhci), errp)) {
-> +        return;
-> +    }
-> +    aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->uhci), 0,
-> +                    sc->memmap[ASPEED_DEV_UHCI]);
-> +    sysbus_connect_irq(SYS_BUS_DEVICE(&s->uhci), 0,
-> +                       aspeed_soc_get_irq(s, ASPEED_DEV_UHCI));
-> +
->       /* SDMC - SDRAM Memory Controller */
->       if (!sysbus_realize(SYS_BUS_DEVICE(&s->sdmc), errp)) {
->           return;
-> diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
-> index 624d489e0d..b54849db72 100644
-> --- a/include/hw/arm/aspeed_soc.h
-> +++ b/include/hw/arm/aspeed_soc.h
-> @@ -34,6 +34,7 @@
->   #include "hw/gpio/aspeed_gpio.h"
->   #include "hw/sd/aspeed_sdhci.h"
->   #include "hw/usb/hcd-ehci.h"
-> +#include "hw/usb/hcd-uhci-sysbus.h"
->   #include "qom/object.h"
->   #include "hw/misc/aspeed_lpc.h"
->   #include "hw/misc/unimp.h"
-> @@ -72,6 +73,7 @@ struct AspeedSoCState {
->       AspeedSMCState fmc;
->       AspeedSMCState spi[ASPEED_SPIS_NUM];
->       EHCISysBusState ehci[ASPEED_EHCIS_NUM];
-> +    ASPEEDUHCIState uhci;
->       AspeedSBCState sbc;
->       AspeedSLIState sli;
->       AspeedSLIState sliio;
-> @@ -193,6 +195,7 @@ enum {
->       ASPEED_DEV_SPI2,
->       ASPEED_DEV_EHCI1,
->       ASPEED_DEV_EHCI2,
-> +    ASPEED_DEV_UHCI,
->       ASPEED_DEV_VIC,
->       ASPEED_DEV_INTC,
->       ASPEED_DEV_SDMC,
-
+Also please bump platform_version.minor and document adding CXL in 
+docs/system/arm/sbsa.rst file.

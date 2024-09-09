@@ -1,185 +1,243 @@
-Received: by 2002:a17:505:1909:b0:1be9:327d:8ee3 with SMTP id az9csp625207njb;
-        Sun, 8 Sep 2024 05:44:06 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUii4zSRRORIrxvAT7aWrxW4XwS1eC9sTbia8uSlxNHxVptH+ERdr+Oy0TTJ3Y5QkvJ1nQUyzbSy0dC0Q==@linaro.org
-X-Google-Smtp-Source: AGHT+IG1NLW6f1VnSOGTU7qxqRA2aqIc5L/h7VNkbU1P5OdbHpMvyUrjyDbje/+Qf1V7JyFEgpcg
-X-Received: by 2002:a05:6214:3a02:b0:6bf:9076:3315 with SMTP id 6a1803df08f44-6c52830034bmr119976026d6.13.1725799446153;
-        Sun, 08 Sep 2024 05:44:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1725799446; cv=none;
+Received: by 2002:a17:505:1909:b0:1be9:327d:8ee3 with SMTP id az9csp831077njb;
+        Mon, 9 Sep 2024 00:50:07 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXoAtxIfc2mr9bEJHwnR2/p9I7vDgyBWCXd0k5n6HwILNnzTNIfvACTbcTbntxp2fGBomjH5z8upqHdYw==@linaro.org
+X-Google-Smtp-Source: AGHT+IGbtRMg6cMUr30buv7nzQMPlcHNpZqEd7TJPH8pxyiX2YgbFdP1IEzZJauHyKi1gzCZung6
+X-Received: by 2002:a05:6122:45aa:b0:501:309:5b0b with SMTP id 71dfb90a1353d-5021438a59bmr11903069e0c.12.1725868207309;
+        Mon, 09 Sep 2024 00:50:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1725868207; cv=none;
         d=google.com; s=arc-20240605;
-        b=Zw8SDZwDzQ1zP9/aCdF0wyWCdA1qZCWC70gNHNF+STbuvOhdoTUl6syo6ydxr+7Gns
-         r+NLdH+fZulRY5Op+3tFmnPJeM1kJwt3DBaijQ8Vidk1/y0jzee1Ia7KKsGdJ9I3ZAYU
-         gG5cEU1APH6QJ5yOb14FgKWokgwwMDN01OrY75AOoAk6dsWDOLr4wU093Wiiyxu2C7Zd
-         TmAaRwh8xLHijCFK64YUgc92Kr1B81tibntg6TsRFC7X+l22IcTc5g39q/3sRUJpFeAZ
-         UPURTkg3zKjzHwPUo6czwpE1Sl8sZAcuKEahfyZpXe1604MGOdR66A5zPNneQjwaPhQm
-         r6hw==
+        b=hSGhkfINrmPisiV4hej0sWv5z1LOIpoEaQQDtX2sHqtMmyYm3zObhlBbmSG5DwAPYH
+         +MxIIEppJEm5qsbJgZFMoMe+Dyl5Zo/gtMBnDU7Xb3fKoUk8g1jGhVOiAxKC/jPwFkrx
+         c42SiM4yYvKQst8s3L71MO9heL4fXkX4BW4gfqV1cDNcnaod5vcrHx1S9WYWokvbIehq
+         +D1VXma9C7r2AmuR93qKUFh6/GpxTFlpeee0yULIqxer2uClsV4kErtY1dTzlzLB3UNh
+         YhZ6PQVZIXqEWb2wRqKBPQ7XdBoJvDZcT8PuqRHsspz0NWhBLJhWfo0Lsn1BNLFkX0MV
+         Rv+g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=18RPvmNbwVAJ6DZU8THD0edaJscZ5kKTl3d1m3AKJyg=;
-        fh=0cJcinrZnucqYjSNYncb6+eMGja84j/gs35YiXtiMHU=;
-        b=D1KX7MUGEPbT2gfcMy20LdimgxAgXymH6kRzzTak39gPSIeTndRR9QRS/Aprc1pzjy
-         GxXS8O6dd97fBSITtARUnS6KE/dcDIoJWpT66KCAaFJWnzAsDHvpqzYkeC5vvzHp4O3P
-         Ppt69/JN/AEhl5OiYDqmuzgQqp5iP0X4yx4LgDDLuGQPYiIWMPxXz97Vq3Mcvy9SW2wT
-         kUdO2yJaJNIZJz3JgUxeLSkBHmMP1t0pkCsy0wN6YsK05J6ywu2dvqLzJjMWNwIZLRbf
-         ev2PLP+uWeS5G0tHmdCu70+lyRyaImLn3hQTvIXpG/0bPhSbarb9SqhrjgrxJvu2nldJ
-         uTqA==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id;
+        bh=1+eXY/PmhTEbcFHkK3UK7Y8s5PRmQnct8b199jIAjIY=;
+        fh=d/0nsYogqU7TFAjCQGeGTuSM+v6jKn8miLrQjACEyDs=;
+        b=YD9qhbkiEIYIR5skLCbbNWhwaS7PhgV/m0taehvRyaArairLe10XXFVm3haLJUJlrd
+         tIsjG7FxVhkAxlGHWpPudQ1rHLaXuQeryxnrURXrOnJODe9Vd67y7yow0qnk7MePfiVH
+         xXA/RxSIafvu8f1UwfSIohYuwrahlWFS+zy8Os/Uai2zouYiYMFzAgPU/xgS1oXOycyH
+         2sHPi7tK5t89MbQV8R9a8dgePeRbzJ/+UPcXHLP8Bji3I0Y0WFJWCTJFTstGjsepmhSN
+         fnMChSlpMGOJCj3Z7Ejxoi1wDUSfPM4Z0Amz5KWatj20CuqnreaqqMH2ydFwdU48JqgA
+         t1RA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=BsJiihWo;
-       spf=pass (google.com: domain of zhao1.liu@intel.com designates 198.175.65.15 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Return-Path: <zhao1.liu@intel.com>
-Received: from mgamail.intel.com (mgamail.intel.com. [198.175.65.15])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6c534787b9dsi31732186d6.435.2024.09.08.05.44.05
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d75a77b69052e-45822f3e3c4si48477051cf.336.2024.09.09.00.50.07
+        for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 08 Sep 2024 05:44:06 -0700 (PDT)
-Received-SPF: pass (google.com: domain of zhao1.liu@intel.com designates 198.175.65.15 as permitted sender) client-ip=198.175.65.15;
+        Mon, 09 Sep 2024 00:50:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=BsJiihWo;
-       spf=pass (google.com: domain of zhao1.liu@intel.com designates 198.175.65.15 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1725799446; x=1757335446;
-  h=from:to:cc:subject:date:message-id:in-reply-to:
-   references:mime-version:content-transfer-encoding;
-  bh=hMYhnFWxXSsAfwWdeOKrX4i9zZGtjRAXTsthyts1mB0=;
-  b=BsJiihWoHJVx8H2ZP3vo7hEB6f2GXThlc/DIxsVeZejaesWNYymwaGx4
-   k9J7GFwOyiXwAD7auoP2aAw1UJDcqdcTapcrB5c61BX60QTzIot49ILvX
-   v5uHMVnt2RrO/JiME0fxfRINeBOw+RVtiFAfSpcl5bMTsDb4cl0O3FPcA
-   JVDEuYhPoN1aEszyuF5ek8WEcY0vc9dfSuFFNnntykOjdMXP7cIegWkSG
-   M5HMm9PbeveWLcMa57vLp183h4nE4rar8yLyeFTBRG6L+TjxCj2nUyY5m
-   czZqkHvaSGAsQ4FfdPrWhbQnYOSPEKuIJ9XOm0CIDJZOR6j7sbmxJi7aD
-   Q==;
-X-CSE-ConnectionGUID: k3KhLlH7TPmHbmfBre2rSA==
-X-CSE-MsgGUID: Oy5/pMMJTsOQbRt08spsnQ==
-X-IronPort-AV: E=McAfee;i="6700,10204,11189"; a="28238285"
-X-IronPort-AV: E=Sophos;i="6.10,212,1719903600"; 
-   d="scan'208";a="28238285"
-Received: from fmviesa001.fm.intel.com ([10.60.135.141])
-  by orvoesa107.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 08 Sep 2024 05:44:05 -0700
-X-CSE-ConnectionGUID: EjDF+9ZNR2CHqN/InLQCtw==
-X-CSE-MsgGUID: RyU6ZH3iQmq7EhvumKf80A==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.10,212,1719903600"; 
-   d="scan'208";a="97196680"
-Received: from liuzhao-optiplex-7080.sh.intel.com ([10.239.160.36])
-  by fmviesa001.fm.intel.com with ESMTP; 08 Sep 2024 05:43:59 -0700
-From: Zhao Liu <zhao1.liu@intel.com>
-To: =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
-	Igor Mammedov <imammedo@redhat.com>,
-	Eduardo Habkost <eduardo@habkost.net>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Yanan Wang <wangyanan55@huawei.com>,
-	"Michael S . Tsirkin" <mst@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Eric Blake <eblake@redhat.com>,
-	Markus Armbruster <armbru@redhat.com>,
-	Marcelo Tosatti <mtosatti@redhat.com>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Jonathan Cameron <Jonathan.Cameron@huawei.com>,
-	Sia Jee Heng <jeeheng.sia@starfivetech.com>,
-	Alireza Sanaee <alireza.sanaee@huawei.com>
-Cc: qemu-devel@nongnu.org,
-	kvm@vger.kernel.org,
-	qemu-riscv@nongnu.org,
-	qemu-arm@nongnu.org,
-	Zhenyu Wang <zhenyu.z.wang@intel.com>,
-	Dapeng Mi <dapeng1.mi@linux.intel.com>,
-	Yongwei Ma <yongwei.ma@intel.com>,
-	Zhao Liu <zhao1.liu@intel.com>
-Subject: [PATCH v2 7/7] i386/pc: Support cache topology in -machine for PC machine
-Date: Sun,  8 Sep 2024 20:59:20 +0800
-Message-Id: <20240908125920.1160236-8-zhao1.liu@intel.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20240908125920.1160236-1-zhao1.liu@intel.com>
-References: <20240908125920.1160236-1-zhao1.liu@intel.com>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1snZ8s-0006yE-6w; Mon, 09 Sep 2024 03:48:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=Li2i=QH=kaod.org=clg@ozlabs.org>)
+ id 1snZ8p-0006qZ-G9; Mon, 09 Sep 2024 03:48:55 -0400
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=Li2i=QH=kaod.org=clg@ozlabs.org>)
+ id 1snZ8n-00044d-Gq; Mon, 09 Sep 2024 03:48:55 -0400
+Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4X2Jqk5nFzz4x11;
+ Mon,  9 Sep 2024 17:48:50 +1000 (AEST)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (Client did not present a certificate)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4X2Jqd3FLYz4wb0;
+ Mon,  9 Sep 2024 17:48:45 +1000 (AEST)
+Message-ID: <d2e07e85-97a0-4151-9349-3f989cdafad2@kaod.org>
+Date: Mon, 9 Sep 2024 09:48:44 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [RFC PATCH 2/8] usb/uhci: Introduce and use register defines
+To: Guenter Roeck <linux@roeck-us.net>, qemu-devel@nongnu.org
+Cc: Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ BALATON Zoltan <balaton@eik.bme.hu>, "Michael S . Tsirkin" <mst@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org
+References: <20240906122542.3808997-1-linux@roeck-us.net>
+ <20240906122542.3808997-3-linux@roeck-us.net>
+Content-Language: en-US, fr
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <20240906122542.3808997-3-linux@roeck-us.net>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: JRC7LJbBsTYE
+Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
+ envelope-from=SRS0=Li2i=QH=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
+X-Spam_score_int: -39
+X-Spam_score: -4.0
+X-Spam_bar: ----
+X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.25, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: qorFLqc4AZy2
 
-Allow user to configure l1d, l1i, l2 and l3 cache topologies for PC
-machine.
+On 9/6/24 14:25, Guenter Roeck wrote:
+> Introduce defines for UHCI registers to simplify adding register access
+> in subsequent patches of the series.
+> 
+> No functional change.
+> 
+> Signed-off-by: Guenter Roeck <linux@roeck-us.net>
 
-Additionally, add the document of "-machine smp-cache" in
-qemu-options.hx.
 
-Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
-Tested-by: Yongwei Ma <yongwei.ma@intel.com>
----
-Changes since Patch v1:
- * Merged document into this patch. (Markus)
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
 
-Changes since RFC v2:
- * Used cache_supported array.
----
- hw/i386/pc.c    |  4 ++++
- qemu-options.hx | 28 +++++++++++++++++++++++++++-
- 2 files changed, 31 insertions(+), 1 deletion(-)
+Thanks,
 
-diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-index ba0ff511836c..d562fd25aad2 100644
---- a/hw/i386/pc.c
-+++ b/hw/i386/pc.c
-@@ -1788,6 +1788,10 @@ static void pc_machine_class_init(ObjectClass *oc, void *data)
-     mc->nvdimm_supported = true;
-     mc->smp_props.dies_supported = true;
-     mc->smp_props.modules_supported = true;
-+    mc->smp_props.cache_supported[CACHE_LEVEL_AND_TYPE_L1D] = true;
-+    mc->smp_props.cache_supported[CACHE_LEVEL_AND_TYPE_L1I] = true;
-+    mc->smp_props.cache_supported[CACHE_LEVEL_AND_TYPE_L2] = true;
-+    mc->smp_props.cache_supported[CACHE_LEVEL_AND_TYPE_L3] = true;
-     mc->default_ram_id = "pc.ram";
-     pcmc->default_smbios_ep_type = SMBIOS_ENTRY_POINT_TYPE_AUTO;
- 
-diff --git a/qemu-options.hx b/qemu-options.hx
-index d94e2cbbaeb1..3936ff3e77f9 100644
---- a/qemu-options.hx
-+++ b/qemu-options.hx
-@@ -39,7 +39,8 @@ DEF("machine", HAS_ARG, QEMU_OPTION_machine, \
-     "                memory-encryption=@var{} memory encryption object to use (default=none)\n"
-     "                hmat=on|off controls ACPI HMAT support (default=off)\n"
-     "                memory-backend='backend-id' specifies explicitly provided backend for main RAM (default=none)\n"
--    "                cxl-fmw.0.targets.0=firsttarget,cxl-fmw.0.targets.1=secondtarget,cxl-fmw.0.size=size[,cxl-fmw.0.interleave-granularity=granularity]\n",
-+    "                cxl-fmw.0.targets.0=firsttarget,cxl-fmw.0.targets.1=secondtarget,cxl-fmw.0.size=size[,cxl-fmw.0.interleave-granularity=granularity]\n"
-+    "                smp-cache.0.cache=cachename,smp-cache.0.topology=topologylevel\n",
-     QEMU_ARCH_ALL)
- SRST
- ``-machine [type=]name[,prop=value[,...]]``
-@@ -159,6 +160,31 @@ SRST
-         ::
- 
-             -machine cxl-fmw.0.targets.0=cxl.0,cxl-fmw.0.targets.1=cxl.1,cxl-fmw.0.size=128G,cxl-fmw.0.interleave-granularity=512
-+
-+    ``smp-cache.0.cache=cachename,smp-cache.0.topology=topologylevel``
-+        Define cache properties (now only the cache topology level) for SMP
-+        system.
-+
-+        ``cache=cachename`` specifies the cache that the properties will be
-+        applied on. This field is the combination of cache level and cache
-+        type. Currently it supports ``l1d`` (L1 data cache), ``l1i`` (L1
-+        instruction cache), ``l2`` (L2 unified cache) and ``l3`` (L3 unified
-+        cache).
-+
-+        ``topology=topologylevel`` sets the cache topology level. It accepts
-+        CPU topology levels including ``thread``, ``core``, ``module``,
-+        ``cluster``, ``die``, ``socket``, ``book``, ``drawer`` and a special
-+        value ``default``. If ``default`` is set, then the cache topology will
-+        follow the architecture's default cache topology model. If other CPU
-+        topology level is set, the cache will be shared at corresponding CPU
-+        topology level. For example, ``topology=core`` makes the cache shared
-+        in a core.
-+
-+        Example:
-+
-+        ::
-+
-+            -machine smp-cache.0.cache=l1d,smp-cache.0.topology=core,smp-cache.1.cache=l1i,smp-cache.1.topology=core
- ERST
- 
- DEF("M", HAS_ARG, QEMU_OPTION_M,
--- 
-2.34.1
+C.
+
+
+> ---
+>   hw/usb/hcd-uhci.c          | 32 ++++++++++++++++----------------
+>   include/hw/usb/uhci-regs.h | 11 +++++++++++
+>   2 files changed, 27 insertions(+), 16 deletions(-)
+> 
+> diff --git a/hw/usb/hcd-uhci.c b/hw/usb/hcd-uhci.c
+> index dfcc3e05c0..8bc163f688 100644
+> --- a/hw/usb/hcd-uhci.c
+> +++ b/hw/usb/hcd-uhci.c
+> @@ -389,7 +389,7 @@ static void uhci_port_write(void *opaque, hwaddr addr,
+>       trace_usb_uhci_mmio_writew(addr, val);
+>   
+>       switch (addr) {
+> -    case 0x00:
+> +    case UHCI_USBCMD:
+>           if ((val & UHCI_CMD_RS) && !(s->cmd & UHCI_CMD_RS)) {
+>               /* start frame processing */
+>               trace_usb_uhci_schedule_start();
+> @@ -424,7 +424,7 @@ static void uhci_port_write(void *opaque, hwaddr addr,
+>               }
+>           }
+>           break;
+> -    case 0x02:
+> +    case UHCI_USBSTS:
+>           s->status &= ~val;
+>           /*
+>            * XXX: the chip spec is not coherent, so we add a hidden
+> @@ -435,27 +435,27 @@ static void uhci_port_write(void *opaque, hwaddr addr,
+>           }
+>           uhci_update_irq(s);
+>           break;
+> -    case 0x04:
+> +    case UHCI_USBINTR:
+>           s->intr = val;
+>           uhci_update_irq(s);
+>           break;
+> -    case 0x06:
+> +    case UHCI_USBFRNUM:
+>           if (s->status & UHCI_STS_HCHALTED) {
+>               s->frnum = val & 0x7ff;
+>           }
+>           break;
+> -    case 0x08:
+> +    case UHCI_USBFLBASEADD:
+>           s->fl_base_addr &= 0xffff0000;
+>           s->fl_base_addr |= val & ~0xfff;
+>           break;
+> -    case 0x0a:
+> +    case UHCI_USBFLBASEADD + 2:
+>           s->fl_base_addr &= 0x0000ffff;
+>           s->fl_base_addr |= (val << 16);
+>           break;
+> -    case 0x0c:
+> +    case UHCI_USBSOF:
+>           s->sof_timing = val & 0xff;
+>           break;
+> -    case 0x10 ... 0x1f:
+> +    case UHCI_USBPORTSC1 ... UHCI_USBPORTSC4:
+>           {
+>               UHCIPort *port;
+>               USBDevice *dev;
+> @@ -493,28 +493,28 @@ static uint64_t uhci_port_read(void *opaque, hwaddr addr, unsigned size)
+>       uint32_t val;
+>   
+>       switch (addr) {
+> -    case 0x00:
+> +    case UHCI_USBCMD:
+>           val = s->cmd;
+>           break;
+> -    case 0x02:
+> +    case UHCI_USBSTS:
+>           val = s->status;
+>           break;
+> -    case 0x04:
+> +    case UHCI_USBINTR:
+>           val = s->intr;
+>           break;
+> -    case 0x06:
+> +    case UHCI_USBFRNUM:
+>           val = s->frnum;
+>           break;
+> -    case 0x08:
+> +    case UHCI_USBFLBASEADD:
+>           val = s->fl_base_addr & 0xffff;
+>           break;
+> -    case 0x0a:
+> +    case UHCI_USBFLBASEADD + 2:
+>           val = (s->fl_base_addr >> 16) & 0xffff;
+>           break;
+> -    case 0x0c:
+> +    case UHCI_USBSOF:
+>           val = s->sof_timing;
+>           break;
+> -    case 0x10 ... 0x1f:
+> +    case UHCI_USBPORTSC1 ... UHCI_USBPORTSC4:
+>           {
+>               UHCIPort *port;
+>               int n;
+> diff --git a/include/hw/usb/uhci-regs.h b/include/hw/usb/uhci-regs.h
+> index fd45d29db0..5b81714e5c 100644
+> --- a/include/hw/usb/uhci-regs.h
+> +++ b/include/hw/usb/uhci-regs.h
+> @@ -1,6 +1,17 @@
+>   #ifndef HW_USB_UHCI_REGS_H
+>   #define HW_USB_UHCI_REGS_H
+>   
+> +#define UHCI_USBCMD       0
+> +#define UHCI_USBSTS       2
+> +#define UHCI_USBINTR      4
+> +#define UHCI_USBFRNUM     6
+> +#define UHCI_USBFLBASEADD 8
+> +#define UHCI_USBSOF       0x0c
+> +#define UHCI_USBPORTSC1   0x10
+> +#define UHCI_USBPORTSC2   0x12
+> +#define UHCI_USBPORTSC3   0x14
+> +#define UHCI_USBPORTSC4   0x16
+> +
+>   #define UHCI_CMD_FGR      (1 << 4)
+>   #define UHCI_CMD_EGSM     (1 << 3)
+>   #define UHCI_CMD_GRESET   (1 << 2)
+

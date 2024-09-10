@@ -1,39 +1,39 @@
-Received: by 2002:a17:505:1909:b0:1be9:327d:8ee3 with SMTP id az9csp1208726njb;
-        Tue, 10 Sep 2024 02:49:17 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXyKYunpaPGVP5L0Q5S1VDqJF42kJQ2ZSB2a+jvMb4ui+5So2u0d+9LOajh2uYeWduM7nxh5bucNJq9SQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IECbXQIiF80Cmv70PM/KLEjJ2j3z4zGJfaGR7RZ7aD7UcBwN/gWIdh0fD5bRQvh0YryykGn
-X-Received: by 2002:a05:6214:268d:b0:6b5:1584:62bf with SMTP id 6a1803df08f44-6c554d1e20fmr44970936d6.6.1725961757314;
-        Tue, 10 Sep 2024 02:49:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1725961757; cv=none;
+Received: by 2002:a17:505:1909:b0:1be9:327d:8ee3 with SMTP id az9csp1208772njb;
+        Tue, 10 Sep 2024 02:49:29 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCULoTdUNvd5BXUxIMMvGCCq00+oM7dfpjbtwx9FgltO0uP9AnHkCbqupKftJZrrhJcBVn7h1RlqSJwDRA==@linaro.org
+X-Google-Smtp-Source: AGHT+IHIwVsEAgEvR0VEol0rYPaVa5q9UVPu6xqlD2DDYQtBbqcumolRTQLJc+HUY39nQTOvMO2X
+X-Received: by 2002:a05:620a:4156:b0:79f:73d:d2e with SMTP id af79cd13be357-7a9a38a9484mr1370917385a.24.1725961769080;
+        Tue, 10 Sep 2024 02:49:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1725961769; cv=none;
         d=google.com; s=arc-20240605;
-        b=drM/cVWkFQO6x1A7qawl/OHWMbXaNfNtQP1G+zbx5YTwScVmxC1mlbacVFw42afaPK
-         nmUHrTN89IawAkbnYnYCeoEEhjSA5BujK2fapptK+QQmNOuz69M0TildTWW9ORNVNo52
-         Co8sxnt1UY/rFV3m7RcN4Zl2z8OWTtClKHqVvCw80Z1S1hSAfwrODf/w90XK3m+loLK0
-         t89UBwA+C2YJuaOmo2sKnfHLQrapL0TTRO0yfg7gwFDffNX7OfmoTER7H2c60B+OvCXS
-         NGoQOMlnkuEKDKS0wrB9/rlTnGdq1lWt0mzUKD+3nR9XXrrZ+EUNLHg3zR0/yOTYWLiA
-         UtFw==
+        b=R10lsS5IF/LyJjeWj6Z1tr76ioYNLTbaoBIDN7IKciTGBF5E5xhhe9PeAJR6iUKvcS
+         n+kxazM8TSTclk4rIYBbAyl4VwMos5BUrLy1nlJFbqotuIpEpBjwPatof7sUHdGyqQxx
+         CgS8S+ROBTJDN8wOYIUps7QFV3ZHsWlqg//oHZjOtvRGc4YbeVZbhuX0qhiIoXy93bAy
+         SELA8Pvpa2o/QrrzeMAvv1xT7ZcsdaQx/xzeyumPD2mOJIZKVEsxv278zvS0aBhNHLC/
+         H7aKca8m9BHxjqVnSAEi+C8KlpFmS6FrLfRAgCa02G98qh3sZ08xUyIm/MqLw8ylnleN
+         7/oA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:in-reply-to:references
          :message-id:content-transfer-encoding:mime-version:subject:date:from;
-        bh=wonZRhVlCmJ3rfx64ZLoYDJJXRR6B3NB/kzu6AICag4=;
+        bh=yh9GxmubUyFGB63mn3Axka9/QO8bEHIzTKPlGxFGdZQ=;
         fh=2XNni5tFqqNsYuVOJGxzVTMSzHzZnaSMOOPrr5cXMU4=;
-        b=CS6tU+0r4HoxqrgEY0X3wIGZMvO1yAEPKbin3BwDqBgPvxGzYzoORWB6qqwbaJzhlK
-         shLxOYgqRQSlRFEXdA8TV7BZckP/+LPnusYAeIAWAE2YWmp7m8mBPFqek9Du9TlFyW4o
-         Xr4dgaWklJO4gjAcDct8QqHog03M3dAdqjCPZu96P4+/CAv1rECOQbnHwx1mTMpM7CNy
-         7RxIsKPrawm365vEN/PMX7fch+oVBtbNmARAIJ/V5vkXET0go13VXguQmcdFjqybFTNO
-         HZXjl/y+r0MuOCMqLU2VTOCfelCqLuSOcVa0INXmF7MvubqG1zy13xIn0r31gCSWvnpp
-         99ww==;
+        b=F7gRoMbT79wV5gVTxWwARkinzqYTIZuljklGYTIrGRSD2MTr5JYFxkuxJOjSniwa0w
+         rxcrxxochlRxQ0XEebn4gJQ7dyvpEmd9lBaMEdNP6b9ZrmKhwYxsuQ/rfhvphkS4iAjN
+         s1TbWzAz5g007W6F4lnOW5lD+n3h6T9qXTEapW5v+lPUIaYjZubDho7BSf2bHimR9BhL
+         8r1AZx3doWVUtJW9eGAhc57zr+dpLLyhjv39i7NX6/w4aaGwMUgTfbkh8ZpT4jNhfa/I
+         l6M/yB0TYMt7ND/ONTzSNZ7qrM7XVxkcW4k6ES5CCPqGPspwG32YEG7fJvnwxDjDFhcE
+         dIHg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6c534784e56si76057886d6.428.2024.09.10.02.49.17
+        by mx.google.com with ESMTPS id d75a77b69052e-45822e62ffcsi72095351cf.36.2024.09.10.02.49.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 10 Sep 2024 02:49:17 -0700 (PDT)
+        Tue, 10 Sep 2024 02:49:29 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
@@ -41,33 +41,33 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1snxUF-0006cj-Da; Tue, 10 Sep 2024 05:48:39 -0400
+	id 1snxUH-0006nV-LU; Tue, 10 Sep 2024 05:48:41 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
- id 1snxUD-0006VZ-LO; Tue, 10 Sep 2024 05:48:37 -0400
+ id 1snxUF-0006c9-5B; Tue, 10 Sep 2024 05:48:39 -0400
 Received: from muminek.juszkiewicz.com.pl ([213.251.184.221])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
- id 1snxUC-0000MT-45; Tue, 10 Sep 2024 05:48:37 -0400
+ id 1snxUD-0000Mq-FQ; Tue, 10 Sep 2024 05:48:38 -0400
 Received: from localhost (localhost [127.0.0.1])
- by muminek.juszkiewicz.com.pl (Postfix) with ESMTP id 0FD35260836;
- Tue, 10 Sep 2024 11:48:34 +0200 (CEST)
+ by muminek.juszkiewicz.com.pl (Postfix) with ESMTP id 8B550260BB4;
+ Tue, 10 Sep 2024 11:48:35 +0200 (CEST)
 X-Virus-Scanned: Debian amavis at juszkiewicz.com.pl
 Received: from muminek.juszkiewicz.com.pl ([127.0.0.1])
  by localhost (muminek.juszkiewicz.com.pl [127.0.0.1]) (amavis, port 10024)
- with ESMTP id JbCQcShU0BRq; Tue, 10 Sep 2024 11:48:32 +0200 (CEST)
+ with ESMTP id 8iP37E5UKAXf; Tue, 10 Sep 2024 11:48:33 +0200 (CEST)
 Received: from applejack.lan (83.11.24.101.ipv4.supernova.orange.pl
  [83.11.24.101])
- by muminek.juszkiewicz.com.pl (Postfix) with ESMTPSA id 6BAA0260BB4;
- Tue, 10 Sep 2024 11:48:31 +0200 (CEST)
+ by muminek.juszkiewicz.com.pl (Postfix) with ESMTPSA id 5360A260898;
+ Tue, 10 Sep 2024 11:48:32 +0200 (CEST)
 From: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
-Date: Tue, 10 Sep 2024 11:48:10 +0200
-Subject: [PATCH v5 3/4] tests: expand timeout information for aarch64/sbsa-ref
+Date: Tue, 10 Sep 2024 11:48:11 +0200
+Subject: [PATCH v5 4/4] tests: drop OpenBSD tests for aarch64/sbsa-ref
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20240910-b4-move-to-freebsd-v5-3-0fb66d803c93@linaro.org>
+Message-Id: <20240910-b4-move-to-freebsd-v5-4-0fb66d803c93@linaro.org>
 References: <20240910-b4-move-to-freebsd-v5-0-0fb66d803c93@linaro.org>
 In-Reply-To: <20240910-b4-move-to-freebsd-v5-0-0fb66d803c93@linaro.org>
 To: qemu-devel@nongnu.org
@@ -100,63 +100,75 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: VQYFcROCgtxy
+X-TUID: BBgUj2kCZs+t
 
-'Test might timeout' means nothing. Replace it with useful information
-that it is emulation of pointer authentication what makes this test run
-too long.
+OpenBSD 7.3 we use is EoL. Both 7.4 and 7.5 releases do not work on
+anything above Neoverse-N1 due to PAC emulation:
+
+https://marc.info/?l=openbsd-arm&m=171050428327850&w=2
+
+OpenBSD 7.6 is not yet released.
 
 Signed-off-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
 ---
- tests/functional/test_aarch64_sbsaref.py | 15 ++++++++++-----
- 1 file changed, 10 insertions(+), 5 deletions(-)
+ tests/functional/test_aarch64_sbsaref.py | 44 --------------------------------
+ 1 file changed, 44 deletions(-)
 
 diff --git a/tests/functional/test_aarch64_sbsaref.py b/tests/functional/test_aarch64_sbsaref.py
-index 89d0b9587a..1648e8ceb6 100755
+index 1648e8ceb6..b50e1a5965 100755
 --- a/tests/functional/test_aarch64_sbsaref.py
 +++ b/tests/functional/test_aarch64_sbsaref.py
-@@ -137,7 +137,8 @@ def test_sbsaref_alpine_linux_max_pauth_off(self):
-     def test_sbsaref_alpine_linux_max_pauth_impdef(self):
-         self.boot_alpine_linux("max,pauth-impdef=on")
- 
--    @skipUnless(os.getenv('QEMU_TEST_TIMEOUT_EXPECTED'), 'Test might timeout')
-+    @skipUnless(os.getenv('QEMU_TEST_TIMEOUT_EXPECTED'),
-+                'Test might timeout due to PAuth emulation')
-     def test_sbsaref_alpine_linux_max(self):
+@@ -143,50 +143,6 @@ def test_sbsaref_alpine_linux_max(self):
          self.boot_alpine_linux("max")
  
-@@ -175,11 +176,13 @@ def test_sbsaref_openbsd73_default_cpu(self):
-     def test_sbsaref_openbsd73_max_pauth_off(self):
-         self.boot_openbsd73("max,pauth=off")
  
--    @skipUnless(os.getenv('QEMU_TEST_TIMEOUT_EXPECTED'), 'Test might timeout')
-+    @skipUnless(os.getenv('QEMU_TEST_TIMEOUT_EXPECTED'),
-+                'Test might timeout due to PAuth emulation')
-     def test_sbsaref_openbsd73_max_pauth_impdef(self):
-         self.boot_openbsd73("max,pauth-impdef=on")
- 
--    @skipUnless(os.getenv('QEMU_TEST_TIMEOUT_EXPECTED'), 'Test might timeout')
-+    @skipUnless(os.getenv('QEMU_TEST_TIMEOUT_EXPECTED'),
-+                'Test might timeout due to PAuth emulation')
-     def test_sbsaref_openbsd73_max(self):
-         self.boot_openbsd73("max")
- 
-@@ -216,11 +219,13 @@ def test_sbsaref_freebsd14_default_cpu(self):
-     def test_sbsaref_freebsd14_max_pauth_off(self):
-         self.boot_freebsd14("max,pauth=off")
- 
--    @skipUnless(os.getenv('QEMU_TEST_TIMEOUT_EXPECTED'), 'Test might timeout')
-+    @skipUnless(os.getenv('QEMU_TEST_TIMEOUT_EXPECTED'),
-+                'Test might timeout due to PAuth emulation')
-     def test_sbsaref_freebsd14_max_pauth_impdef(self):
-         self.boot_freebsd14("max,pauth-impdef=on")
- 
--    @skipUnless(os.getenv('QEMU_TEST_TIMEOUT_EXPECTED'), 'Test might timeout')
-+    @skipUnless(os.getenv('QEMU_TEST_TIMEOUT_EXPECTED'),
-+                'Test might timeout due to PAuth emulation')
-     def test_sbsaref_freebsd14_max(self):
-         self.boot_freebsd14("max")
- 
+-    ASSET_OPENBSD_ISO = Asset(
+-        ('https://cdn.openbsd.org/pub/OpenBSD/7.3/arm64/miniroot73.img'),
+-        '7fc2c75401d6f01fbfa25f4953f72ad7d7c18650056d30755c44b9c129b707e5')
+-
+-    # This tests the whole boot chain from EFI to Userspace
+-    # We only boot a whole OS for the current top level CPU and GIC
+-    # Other test profiles should use more minimal boots
+-    def boot_openbsd73(self, cpu=None):
+-        self.fetch_firmware()
+-
+-        img_path = self.ASSET_OPENBSD_ISO.fetch()
+-
+-        self.vm.set_console()
+-        self.vm.add_args(
+-            "-drive", f"file={img_path},format=raw,snapshot=on",
+-        )
+-        if cpu:
+-            self.vm.add_args("-cpu", cpu)
+-
+-        self.vm.launch()
+-        wait_for_console_pattern(self,
+-                                 "Welcome to the OpenBSD/arm64"
+-                                 " 7.3 installation program.")
+-
+-    def test_sbsaref_openbsd73_cortex_a57(self):
+-        self.boot_openbsd73("cortex-a57")
+-
+-    def test_sbsaref_openbsd73_default_cpu(self):
+-        self.boot_openbsd73()
+-
+-    def test_sbsaref_openbsd73_max_pauth_off(self):
+-        self.boot_openbsd73("max,pauth=off")
+-
+-    @skipUnless(os.getenv('QEMU_TEST_TIMEOUT_EXPECTED'),
+-                'Test might timeout due to PAuth emulation')
+-    def test_sbsaref_openbsd73_max_pauth_impdef(self):
+-        self.boot_openbsd73("max,pauth-impdef=on")
+-
+-    @skipUnless(os.getenv('QEMU_TEST_TIMEOUT_EXPECTED'),
+-                'Test might timeout due to PAuth emulation')
+-    def test_sbsaref_openbsd73_max(self):
+-        self.boot_openbsd73("max")
+-
+-
+     ASSET_FREEBSD_ISO = Asset(
+         ('https://download.freebsd.org/releases/arm64/aarch64/ISO-IMAGES/'
+          '14.1/FreeBSD-14.1-RELEASE-arm64-aarch64-bootonly.iso'),
 
 -- 
 2.46.0

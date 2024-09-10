@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5c3ebd41c36sm4512760a12.2.2024.09.10.10.39.01
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a8d2592647esm508348266b.48.2024.09.10.10.39.02
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 10 Sep 2024 10:39:01 -0700 (PDT)
+        Tue, 10 Sep 2024 10:39:04 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 9CFDA5F7B4;
+	by draig.lan (Postfix) with ESMTP id E07665F9CE;
 	Tue, 10 Sep 2024 18:39:00 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -26,155 +26,95 @@ Cc: Thomas Huth <thuth@redhat.com>,
 	Mahmoud Mandour <ma.mandourr@gmail.com>,
 	Yanan Wang <wangyanan55@huawei.com>,
 	Wainer dos Santos Moschetta <wainersm@redhat.com>
-Subject: [PATCH v2 02/10] tests/docker: update debian i686 and mipsel images to bookworm
-Date: Tue, 10 Sep 2024 18:38:52 +0100
-Message-Id: <20240910173900.4154726-3-alex.bennee@linaro.org>
+Subject: [PATCH v2 05/10] scripts/ci: update the gitlab-runner playbook
+Date: Tue, 10 Sep 2024 18:38:55 +0100
+Message-Id: <20240910173900.4154726-6-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240910173900.4154726-1-alex.bennee@linaro.org>
 References: <20240910173900.4154726-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 4bqnWIH3OYtP
+X-TUID: W4J0rSbXSvDV
 
-Whatever issues there were which stopped these being updates when the
-rest were have now been resolved. However mips64el continues to be
-broken so don't update it here.
+The upstream install instructions:
 
-Message-Id: <20240910140733.4007719-3-alex.bennee@linaro.org>
+  https://docs.gitlab.com/runner/install/linux-repository.html
+
+Now refer to repositories and a setup script. Modernise the playbook
+to use the preferred delivery method.
+
+Message-Id: <20240910140733.4007719-5-alex.bennee@linaro.org>
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- tests/docker/dockerfiles/debian-i686-cross.docker   | 10 ++++------
- tests/docker/dockerfiles/debian-mipsel-cross.docker | 10 ++++------
- tests/lcitool/refresh                               |  4 ++--
- 3 files changed, 10 insertions(+), 14 deletions(-)
+ scripts/ci/setup/gitlab-runner.yml | 39 +++++++++++++++++++++++-------
+ 1 file changed, 30 insertions(+), 9 deletions(-)
 
-diff --git a/tests/docker/dockerfiles/debian-i686-cross.docker b/tests/docker/dockerfiles/debian-i686-cross.docker
-index 3fe8ee623d..2328ee1732 100644
---- a/tests/docker/dockerfiles/debian-i686-cross.docker
-+++ b/tests/docker/dockerfiles/debian-i686-cross.docker
-@@ -1,10 +1,10 @@
- # THIS FILE WAS AUTO-GENERATED
- #
--#  $ lcitool dockerfile --layers all --cross-arch i686 debian-11 qemu
-+#  $ lcitool dockerfile --layers all --cross-arch i686 debian-12 qemu
- #
- # https://gitlab.com/libvirt/libvirt-ci
+diff --git a/scripts/ci/setup/gitlab-runner.yml b/scripts/ci/setup/gitlab-runner.yml
+index 7bdafab511..57e7faebf1 100644
+--- a/scripts/ci/setup/gitlab-runner.yml
++++ b/scripts/ci/setup/gitlab-runner.yml
+@@ -49,30 +49,51 @@
+     - debug:
+         msg: gitlab-runner arch is {{ gitlab_runner_arch }}
  
--FROM docker.io/library/debian:11-slim
-+FROM docker.io/library/debian:12-slim
+-    - name: Download the matching gitlab-runner (DEB)
++    # Debian/Ubuntu setup
++    - name: Get gitlab-runner repo setup script (DEB)
+       get_url:
+         dest: "/root/"
+-        url: "https://gitlab-runner-downloads.s3.amazonaws.com/latest/deb/gitlab-runner_{{ gitlab_runner_arch }}.deb"
++        url: "https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.deb.sh"
++        mode: 0755
+       when:
+         - ansible_facts['distribution'] == 'Ubuntu'
  
- RUN export DEBIAN_FRONTEND=noninteractive && \
-     apt-get update && \
-@@ -48,16 +48,15 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
-                       python3-opencv \
-                       python3-pillow \
-                       python3-pip \
--                      python3-setuptools \
-                       python3-sphinx \
-                       python3-sphinx-rtd-theme \
-                       python3-venv \
--                      python3-wheel \
-                       python3-yaml \
-                       rpm2cpio \
-                       sed \
-                       socat \
-                       sparse \
-+                      swtpm \
-                       tar \
-                       tesseract-ocr \
-                       tesseract-ocr-eng \
-@@ -69,8 +68,6 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
-     dpkg-reconfigure locales && \
-     rm -f /usr/lib*/python3*/EXTERNALLY-MANAGED
+-    - name: Download the matching gitlab-runner (RPM)
++    - name: Run gitlab-runner repo setup script (DEB)
++      shell: "/root/script.deb.sh"
++      when:
++        - ansible_facts['distribution'] == 'Ubuntu'
++
++    - name: Install gitlab-runner (DEB)
++      ansible.builtin.apt:
++          name: gitlab-runner
++          update_cache: yes
++          state: present
++      when:
++        - ansible_facts['distribution'] == 'Ubuntu'
++
++    # RPM setup
++    - name: Get gitlab-runner repo setup script (RPM)
+       get_url:
+         dest: "/root/"
+-        url: "https://gitlab-runner-downloads.s3.amazonaws.com/latest/rpm/gitlab-runner_{{ gitlab_runner_arch }}.rpm"
++        url: "https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.rpm.sh"
++        mode: 0755
+       when:
+         - ansible_facts['distribution'] == 'CentOS'
  
--RUN /usr/bin/pip3 install tomli
--
- ENV CCACHE_WRAPPERSDIR "/usr/libexec/ccache-wrappers"
- ENV LANG "en_US.UTF-8"
- ENV MAKE "/usr/bin/make"
-@@ -145,6 +142,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
-                       libvdeplug-dev:i386 \
-                       libvirglrenderer-dev:i386 \
-                       libvte-2.91-dev:i386 \
-+                      libxdp-dev:i386 \
-                       libzstd-dev:i386 \
-                       nettle-dev:i386 \
-                       systemtap-sdt-dev:i386 \
-diff --git a/tests/docker/dockerfiles/debian-mipsel-cross.docker b/tests/docker/dockerfiles/debian-mipsel-cross.docker
-index 0d559ae4ba..4ac314e22e 100644
---- a/tests/docker/dockerfiles/debian-mipsel-cross.docker
-+++ b/tests/docker/dockerfiles/debian-mipsel-cross.docker
-@@ -1,10 +1,10 @@
- # THIS FILE WAS AUTO-GENERATED
- #
--#  $ lcitool dockerfile --layers all --cross-arch mipsel debian-11 qemu
-+#  $ lcitool dockerfile --layers all --cross-arch mipsel debian-12 qemu
- #
- # https://gitlab.com/libvirt/libvirt-ci
+-    - name: Install gitlab-runner via package manager (DEB)
+-      apt: deb="/root/gitlab-runner_{{ gitlab_runner_arch }}.deb"
++    - name: Run gitlab-runner repo setup script (RPM)
++      shell: "/root/script.rpm.sh"
+       when:
+-        - ansible_facts['distribution'] == 'Ubuntu'
++        - ansible_facts['distribution'] == 'CentOS'
  
--FROM docker.io/library/debian:11-slim
-+FROM docker.io/library/debian:12-slim
+-    - name: Install gitlab-runner via package manager (RPM)
+-      yum: name="/root/gitlab-runner_{{ gitlab_runner_arch }}.rpm"
++    - name: Install gitlab-runner (RPM)
++      yum:
++        name: gitlab-runner
++        update_cache: yes
++        state: present
+       when:
+         - ansible_facts['distribution'] == 'CentOS'
  
- RUN export DEBIAN_FRONTEND=noninteractive && \
-     apt-get update && \
-@@ -48,16 +48,15 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
-                       python3-opencv \
-                       python3-pillow \
-                       python3-pip \
--                      python3-setuptools \
-                       python3-sphinx \
-                       python3-sphinx-rtd-theme \
-                       python3-venv \
--                      python3-wheel \
-                       python3-yaml \
-                       rpm2cpio \
-                       sed \
-                       socat \
-                       sparse \
-+                      swtpm \
-                       tar \
-                       tesseract-ocr \
-                       tesseract-ocr-eng \
-@@ -69,8 +68,6 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
-     dpkg-reconfigure locales && \
-     rm -f /usr/lib*/python3*/EXTERNALLY-MANAGED
++    # Register Runners
+     - name: Register the gitlab-runner
+       command: "/usr/bin/gitlab-runner register --non-interactive --url {{ gitlab_runner_server_url }} --registration-token {{ gitlab_runner_registration_token }} --executor shell --tag-list {{ ansible_facts[\"architecture\"] }},{{ ansible_facts[\"distribution\"]|lower }}_{{ ansible_facts[\"distribution_version\"] }} --description '{{ ansible_facts[\"distribution\"] }} {{ ansible_facts[\"distribution_version\"] }} {{ ansible_facts[\"architecture\"] }} ({{ ansible_facts[\"os_family\"] }})'"
  
--RUN /usr/bin/pip3 install tomli
--
- ENV CCACHE_WRAPPERSDIR "/usr/libexec/ccache-wrappers"
- ENV LANG "en_US.UTF-8"
- ENV MAKE "/usr/bin/make"
-@@ -143,6 +140,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
-                       libvdeplug-dev:mipsel \
-                       libvirglrenderer-dev:mipsel \
-                       libvte-2.91-dev:mipsel \
-+                      libxdp-dev:mipsel \
-                       libzstd-dev:mipsel \
-                       nettle-dev:mipsel \
-                       systemtap-sdt-dev:mipsel \
-diff --git a/tests/lcitool/refresh b/tests/lcitool/refresh
-index 199d5fad87..c60490a7fa 100755
---- a/tests/lcitool/refresh
-+++ b/tests/lcitool/refresh
-@@ -159,7 +159,7 @@ try:
-                         trailer=cross_build("arm-linux-gnueabihf-",
-                                             "arm-softmmu,arm-linux-user"))
- 
--    generate_dockerfile("debian-i686-cross", "debian-11",
-+    generate_dockerfile("debian-i686-cross", "debian-12",
-                         cross="i686",
-                         trailer=cross_build("i686-linux-gnu-",
-                                             "x86_64-softmmu,"
-@@ -171,7 +171,7 @@ try:
-                         trailer=cross_build("mips64el-linux-gnuabi64-",
-                                             "mips64el-softmmu,mips64el-linux-user"))
- 
--    generate_dockerfile("debian-mipsel-cross", "debian-11",
-+    generate_dockerfile("debian-mipsel-cross", "debian-12",
-                         cross="mipsel",
-                         trailer=cross_build("mipsel-linux-gnu-",
-                                             "mipsel-softmmu,mipsel-linux-user"))
 -- 
 2.39.2

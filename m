@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5c3ebd424dasm4338661a12.9.2024.09.10.07.07.36
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a8d25c7286esm481008866b.138.2024.09.10.07.07.35
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Tue, 10 Sep 2024 07:07:36 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 5342A5FA0E;
+	by draig.lan (Postfix) with ESMTP id 22ADC5F9CE;
 	Tue, 10 Sep 2024 15:07:34 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -27,97 +27,103 @@ Cc: Eduardo Habkost <eduardo@habkost.net>,
 	Richard Henderson <richard.henderson@linaro.org>,
 	Wainer dos Santos Moschetta <wainersm@redhat.com>,
 	Gustavo Romero <gustavo.romero@linaro.org>
-Subject: [PATCH 07/26] tests/guest-debug: Support passing arguments to the GDB test script
-Date: Tue, 10 Sep 2024 15:07:14 +0100
-Message-Id: <20240910140733.4007719-8-alex.bennee@linaro.org>
+Subject: [PATCH 05/26] gdbstub: Use specific MMU index when probing MTE addresses
+Date: Tue, 10 Sep 2024 15:07:12 +0100
+Message-Id: <20240910140733.4007719-6-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240910140733.4007719-1-alex.bennee@linaro.org>
 References: <20240910140733.4007719-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: u0KyZ/8GRLpq
+X-TUID: Y6nPrE8TnDD4
 
 From: Gustavo Romero <gustavo.romero@linaro.org>
 
-This commit adds support for passing arguments to the GDB test scripts
-so it's possible to parse the args in an "argparse way" in the test
-scripts launched by the runner. The arguments should be preceded by --
-when passed to the runner. For example, passing "--help" arg to the
-GDB_TEST_SCRIPT:
+Use cpu_mmu_index() to determine the specific translation regime (MMU
+index) before probing addresses using allocation_tag_mem_probe().
 
-run-test.py [...] --test <GDB_TEST_SCRIPT> -- --help
+Currently, the MMU index is hardcoded to 0 and only works for user mode.
+By obtaining the specific MMU index according to the translation regime,
+future use of the stubs relying on allocation_tag_mem_probe in other
+regimes will be possible, like in EL1.
 
-The test script should not use the argparse module directly but import
-arg_parser from test_gdbstub module. arg_parser then can be used just
-like the argparse.ArgumentParser class:
-
-from test_gdbstub import arg_parser
-
-p = arg_parser(prog="test-mytest.py", description="My test.")
-p.add_argument("--vowel", help="Select vowel",
-               required=True, choices=['a','e','i','o','u'])
-[...]
-
-The arg_parser allows a smooth and informative exit if, for instance,
-the caller of the runner script passes an invalid argument or misses a
-required argument by the test script.
+This commit also changes the ptr_size value passed to
+allocation_tag_mem_probe() from 8 to 1. The ptr_size parameter actually
+represents the number of bytes in the memory access (which can be as
+small as 1 byte), rather than the number of bits used in the address
+space pointed to by ptr.
 
 Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
-Message-Id: <20240906143316.657436-4-gustavo.romero@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Message-Id: <20240906143316.657436-2-gustavo.romero@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- tests/guest-debug/run-test.py     | 6 ++++++
- tests/guest-debug/test_gdbstub.py | 5 +++++
- 2 files changed, 11 insertions(+)
+ target/arm/gdbstub64.c | 17 +++++++++++++----
+ 1 file changed, 13 insertions(+), 4 deletions(-)
 
-diff --git a/tests/guest-debug/run-test.py b/tests/guest-debug/run-test.py
-index 368ff8a890..5a091db8be 100755
---- a/tests/guest-debug/run-test.py
-+++ b/tests/guest-debug/run-test.py
-@@ -27,6 +27,10 @@ def get_args():
-     parser.add_argument("--binary", help="Binary to debug",
-                         required=True)
-     parser.add_argument("--test", help="GDB test script")
-+    parser.add_argument('test_args', nargs='*',
-+                        help="Additional args for GDB test script. "
-+                        "The args should be preceded by -- to avoid confusion "
-+                        "with flags for runner script")
-     parser.add_argument("--gdb", help="The gdb binary to use",
-                         default=None)
-     parser.add_argument("--gdb-args", help="Additional gdb arguments")
-@@ -91,6 +95,8 @@ def log(output, msg):
-     gdb_cmd += " -ex 'target remote %s'" % (socket_name)
-     # finally the test script itself
-     if args.test:
-+        if args.test_args:
-+            gdb_cmd += f" -ex \"py sys.argv={args.test_args}\""
-         gdb_cmd += " -x %s" % (args.test)
+diff --git a/target/arm/gdbstub64.c b/target/arm/gdbstub64.c
+index 5221381cc8..85a19c14c7 100644
+--- a/target/arm/gdbstub64.c
++++ b/target/arm/gdbstub64.c
+@@ -435,6 +435,7 @@ static void handle_q_memtag(GArray *params, void *user_ctx)
+ {
+     ARMCPU *cpu = ARM_CPU(user_ctx);
+     CPUARMState *env = &cpu->env;
++    uint32_t mmu_index;
  
+     uint64_t addr = gdb_get_cmd_param(params, 0)->val_ull;
+     uint64_t len = gdb_get_cmd_param(params, 1)->val_ul;
+@@ -458,8 +459,10 @@ static void handle_q_memtag(GArray *params, void *user_ctx)
+         gdb_put_packet("E03");
+     }
  
-diff --git a/tests/guest-debug/test_gdbstub.py b/tests/guest-debug/test_gdbstub.py
-index 46fbf98f0c..a715c0e3f5 100644
---- a/tests/guest-debug/test_gdbstub.py
-+++ b/tests/guest-debug/test_gdbstub.py
-@@ -2,6 +2,7 @@
++    /* Find out the current translation regime for probe. */
++    mmu_index = cpu_mmu_index(env_cpu(env), false);
+     /* Note that tags are packed here (2 tags packed in one byte). */
+-    tags = allocation_tag_mem_probe(env, 0, addr, MMU_DATA_LOAD, 8 /* 64-bit */,
++    tags = allocation_tag_mem_probe(env, mmu_index, addr, MMU_DATA_LOAD, 1,
+                                     MMU_DATA_LOAD, true, 0);
+     if (!tags) {
+         /* Address is not in a tagged region. */
+@@ -478,13 +481,16 @@ static void handle_q_isaddresstagged(GArray *params, void *user_ctx)
+ {
+     ARMCPU *cpu = ARM_CPU(user_ctx);
+     CPUARMState *env = &cpu->env;
++    uint32_t mmu_index;
  
- """
- from __future__ import print_function
-+import argparse
- import gdb
- import os
- import sys
-@@ -9,6 +10,10 @@
+     uint64_t addr = gdb_get_cmd_param(params, 0)->val_ull;
  
- fail_count = 0
+     uint8_t *tags;
+     const char *reply;
  
-+class arg_parser(argparse.ArgumentParser):
-+    def exit(self, status=None, message=""):
-+        print("Wrong GDB script test argument! " + message)
-+        gdb.execute("exit 1")
+-    tags = allocation_tag_mem_probe(env, 0, addr, MMU_DATA_LOAD, 8 /* 64-bit */,
++    /* Find out the current translation regime for probe. */
++    mmu_index = cpu_mmu_index(env_cpu(env), false);
++    tags = allocation_tag_mem_probe(env, mmu_index, addr, MMU_DATA_LOAD, 1,
+                                     MMU_DATA_LOAD, true, 0);
+     reply = tags ? "01" : "00";
  
- def report(cond, msg):
-     """Report success/fail of a test"""
+@@ -495,6 +501,7 @@ static void handle_Q_memtag(GArray *params, void *user_ctx)
+ {
+     ARMCPU *cpu = ARM_CPU(user_ctx);
+     CPUARMState *env = &cpu->env;
++    uint32_t mmu_index;
+ 
+     uint64_t start_addr = gdb_get_cmd_param(params, 0)->val_ull;
+     uint64_t len = gdb_get_cmd_param(params, 1)->val_ul;
+@@ -527,8 +534,10 @@ static void handle_Q_memtag(GArray *params, void *user_ctx)
+      * Get all tags in the page starting from the tag of the start address.
+      * Note that there are two tags packed into a single byte here.
+      */
+-    tags = allocation_tag_mem_probe(env, 0, start_addr, MMU_DATA_STORE,
+-                                    8 /* 64-bit */, MMU_DATA_STORE, true, 0);
++    /* Find out the current translation regime for probe. */
++    mmu_index = cpu_mmu_index(env_cpu(env), false);
++    tags = allocation_tag_mem_probe(env, mmu_index, start_addr, MMU_DATA_STORE,
++                                    1, MMU_DATA_STORE, true, 0);
+     if (!tags) {
+         /* Address is not in a tagged region. */
+         gdb_put_packet("E04");
 -- 
 2.39.2

@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a8d25cea3e1sm482519066b.167.2024.09.10.07.07.42
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5c3ebd41cd7sm4339984a12.3.2024.09.10.07.13.47
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 10 Sep 2024 07:07:42 -0700 (PDT)
+        Tue, 10 Sep 2024 07:13:47 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 515645F9CC;
-	Tue, 10 Sep 2024 15:07:36 +0100 (BST)
+	by draig.lan (Postfix) with ESMTP id 8E34C6343F;
+	Tue, 10 Sep 2024 15:07:35 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Eduardo Habkost <eduardo@habkost.net>,
@@ -26,235 +26,197 @@ Cc: Eduardo Habkost <eduardo@habkost.net>,
 	Paolo Bonzini <pbonzini@redhat.com>,
 	Richard Henderson <richard.henderson@linaro.org>,
 	Wainer dos Santos Moschetta <wainersm@redhat.com>
-Subject: [PATCH 26/26] plugins: add ability to register a GDB triggered callback
-Date: Tue, 10 Sep 2024 15:07:33 +0100
-Message-Id: <20240910140733.4007719-27-alex.bennee@linaro.org>
+Subject: [PATCH 19/26] tests/tcg: clean up output of memory system test
+Date: Tue, 10 Sep 2024 15:07:26 +0100
+Message-Id: <20240910140733.4007719-20-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240910140733.4007719-1-alex.bennee@linaro.org>
 References: <20240910140733.4007719-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: njZFmu7uJhb0
+X-TUID: 1KcjiJkBtSRb
 
-Now gdbstub has gained the ability to extend its command tables we can
-allow it to trigger plugin callbacks. This is probably most useful for
-QEMU developers debugging plugins themselves but might be useful for
-other stuff.
+This is useful information when debugging memory issues so lets
+improve by:
 
-Trigger the callback by sending:
-
-  maintenance packet Qqemu.plugin_cb
-
-I've extended the memory plugin to report on the packet.
+  - include the ptr address for u8 fills (like the others)
+  - indicate the number of operations for reads and writes
+  - explicitly note when we are flushing
+  - move the fill printf to after the reset
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- include/qemu/plugin-event.h  |  1 +
- include/qemu/qemu-plugin.h   | 16 ++++++++++++++++
- plugins/plugin.h             |  9 +++++++++
- plugins/api.c                | 18 ++++++++++++++++++
- plugins/core.c               | 37 ++++++++++++++++++++++++++++++++++++
- tests/tcg/plugins/mem.c      | 11 +++++++++--
- plugins/qemu-plugins.symbols |  1 +
- 7 files changed, 91 insertions(+), 2 deletions(-)
+ tests/tcg/multiarch/system/memory.c | 47 ++++++++++++++++++-----------
+ 1 file changed, 29 insertions(+), 18 deletions(-)
 
-diff --git a/include/qemu/plugin-event.h b/include/qemu/plugin-event.h
-index 7056d8427b..d9aa56cf4f 100644
---- a/include/qemu/plugin-event.h
-+++ b/include/qemu/plugin-event.h
-@@ -20,6 +20,7 @@ enum qemu_plugin_event {
-     QEMU_PLUGIN_EV_VCPU_SYSCALL_RET,
-     QEMU_PLUGIN_EV_FLUSH,
-     QEMU_PLUGIN_EV_ATEXIT,
-+    QEMU_PLUGIN_EV_GDBSTUB,
-     QEMU_PLUGIN_EV_MAX, /* total number of plugin events we support */
- };
+diff --git a/tests/tcg/multiarch/system/memory.c b/tests/tcg/multiarch/system/memory.c
+index 6eb2eb16f7..8f2371975d 100644
+--- a/tests/tcg/multiarch/system/memory.c
++++ b/tests/tcg/multiarch/system/memory.c
+@@ -63,12 +63,14 @@ static void init_test_data_u8(int unused_offset)
+     int i;
+     (void)(unused_offset);
  
-diff --git a/include/qemu/qemu-plugin.h b/include/qemu/qemu-plugin.h
-index 2015d6b409..3592e142f8 100644
---- a/include/qemu/qemu-plugin.h
-+++ b/include/qemu/qemu-plugin.h
-@@ -802,6 +802,22 @@ QEMU_PLUGIN_API
- void qemu_plugin_register_atexit_cb(qemu_plugin_id_t id,
-                                     qemu_plugin_udata_cb_t cb, void *userdata);
- 
+-    ml_printf("Filling test area with u8:");
++    ml_printf("Filling test area with u8 (%p):", ptr);
 +
-+/**
-+ * qemu_plugin_register_gdb_cb() - register a gdb callback
-+ * @id: plugin ID
-+ * @cb: callback
-+ * @userdata: user data for callback
-+ *
-+ * When using the gdbstub to debug a guest you can send a command that
-+ * will trigger the callback. This is useful if you want the plugin to
-+ * print out collected state at particular points when debugging a
-+ * program.
-+ */
-+QEMU_PLUGIN_API
-+void qemu_plugin_register_gdb_cb(qemu_plugin_id_t id,
-+                                 qemu_plugin_udata_cb_t cb, void *userdata);
-+
- /* returns how many vcpus were started at this point */
- int qemu_plugin_num_vcpus(void);
- 
-diff --git a/plugins/plugin.h b/plugins/plugin.h
-index 30e2299a54..f37667c9fb 100644
---- a/plugins/plugin.h
-+++ b/plugins/plugin.h
-@@ -118,4 +118,13 @@ struct qemu_plugin_scoreboard *plugin_scoreboard_new(size_t element_size);
- 
- void plugin_scoreboard_free(struct qemu_plugin_scoreboard *score);
- 
-+/**
-+ * plugin_register_gdbstub_commands - register gdbstub commands
-+ *
-+ * This should only be called once to register gdbstub commands so we
-+ * can trigger callbacks if needed.
-+ */
-+void plugin_register_gdbstub_commands(void);
-+
-+
- #endif /* PLUGIN_H */
-diff --git a/plugins/api.c b/plugins/api.c
-index 24ea64e2de..62141616f4 100644
---- a/plugins/api.c
-+++ b/plugins/api.c
-@@ -681,3 +681,21 @@ void qemu_plugin_update_ns(const void *handle, int64_t new_time)
+     for (i = 0; i < TEST_SIZE; i++) {
+         *ptr++ = BYTE_NEXT(count);
+         pdot(i);
      }
- #endif
- }
+-    ml_printf("done\n");
 +
-+/*
-+ * gdbstub hooks
-+ */
-+
-+static bool gdbstub_callbacks;
-+
-+void qemu_plugin_register_gdb_cb(qemu_plugin_id_t id,
-+                                 qemu_plugin_udata_cb_t cb,
-+                                 void *udata)
-+{
-+    plugin_register_cb_udata(id, QEMU_PLUGIN_EV_GDBSTUB, cb, udata);
-+
-+    if (!gdbstub_callbacks) {
-+        plugin_register_gdbstub_commands();
-+        gdbstub_callbacks = true;
-+    }
-+}
-diff --git a/plugins/core.c b/plugins/core.c
-index bb105e8e68..e7fce08799 100644
---- a/plugins/core.c
-+++ b/plugins/core.c
-@@ -23,6 +23,7 @@
- #include "qemu/xxhash.h"
- #include "qemu/rcu.h"
- #include "hw/core/cpu.h"
-+#include "gdbstub/commands.h"
- 
- #include "exec/exec-all.h"
- #include "exec/tb-flush.h"
-@@ -147,6 +148,7 @@ static void plugin_cb__udata(enum qemu_plugin_event ev)
- 
-     switch (ev) {
-     case QEMU_PLUGIN_EV_ATEXIT:
-+    case QEMU_PLUGIN_EV_GDBSTUB:
-         QLIST_FOREACH_SAFE_RCU(cb, &plugin.cb_lists[ev], entry, next) {
-             qemu_plugin_udata_cb_t func = cb->f.udata;
- 
-@@ -768,3 +770,38 @@ void plugin_scoreboard_free(struct qemu_plugin_scoreboard *score)
-     g_array_free(score->data, TRUE);
-     g_free(score);
- }
-+
-+/*
-+ * gdbstub integration
-+ */
-+
-+static void handle_plugin_cb(GArray *params, void *user_ctx)
-+{
-+    plugin_cb__udata(QEMU_PLUGIN_EV_GDBSTUB);
-+    gdb_put_packet("OK");
-+}
-+
-+enum Command {
-+    PluginCallback,
-+    NUM_GDB_CMDS
-+};
-+
-+static const GdbCmdParseEntry cmd_handler_table[NUM_GDB_CMDS] = {
-+    [PluginCallback] = {
-+        .handler = handle_plugin_cb,
-+        .cmd_startswith = true,
-+        .cmd = "qemu.plugin_cb",
-+        .schema = "s?",
-+    },
-+};
-+
-+void plugin_register_gdbstub_commands(void)
-+{
-+    g_autoptr(GPtrArray) set_table = g_ptr_array_new();
-+
-+    for (int i = 0; i < NUM_GDB_CMDS; i++) {
-+        g_ptr_array_add(set_table, (gpointer) &cmd_handler_table[PluginCallback]);
-+    }
-+
-+    gdb_extend_set_table(set_table);
-+}
-diff --git a/tests/tcg/plugins/mem.c b/tests/tcg/plugins/mem.c
-index 42d735d5c8..ee71bd02c9 100644
---- a/tests/tcg/plugins/mem.c
-+++ b/tests/tcg/plugins/mem.c
-@@ -66,8 +66,7 @@ static gint addr_order(gconstpointer a, gconstpointer b)
-     return na->region_address > nb->region_address ? 1 : -1;
++    ml_printf("done %d @ %p\n", i, ptr);
  }
  
--
--static void plugin_exit(qemu_plugin_id_t id, void *p)
-+static void plugin_report(qemu_plugin_id_t id, void *p)
+ /*
+@@ -94,7 +96,7 @@ static void init_test_data_s8(bool neg_first)
+         *ptr++ = get_byte(i, !neg_first);
+         pdot(i);
+     }
+-    ml_printf("done\n");
++    ml_printf("done %d @ %p\n", i * 2, ptr);
+ }
+ 
+ /*
+@@ -105,9 +107,18 @@ static void reset_start_data(int offset)
  {
-     g_autoptr(GString) out = g_string_new("");
- 
-@@ -81,6 +80,7 @@ static void plugin_exit(qemu_plugin_id_t id, void *p)
-     }
-     qemu_plugin_outs(out->str);
- 
-+    g_mutex_lock(&lock);
- 
-     if (do_region_summary) {
-         GList *counts = g_hash_table_get_values(regions);
-@@ -105,6 +105,12 @@ static void plugin_exit(qemu_plugin_id_t id, void *p)
-         qemu_plugin_outs(out->str);
-     }
- 
-+    g_mutex_unlock(&lock);
-+}
+     uint32_t *ptr = (uint32_t *) &test_data[0];
+     int i;
 +
-+static void plugin_exit(qemu_plugin_id_t id, void *p)
-+{
-+    plugin_report(id, p);
-     qemu_plugin_scoreboard_free(counts);
++    if (!offset) {
++        return;
++    }
++
++    ml_printf("Flushing %d bytes from %p: ", offset, ptr);
++
+     for (i = 0; i < offset; i++) {
+         *ptr++ = 0;
+     }
++
++    ml_printf("done %d @ %p\n", i, ptr);
  }
  
-@@ -375,6 +381,7 @@ QEMU_PLUGIN_EXPORT int qemu_plugin_install(qemu_plugin_id_t id,
-         counts, CPUCount, mem_count);
-     io_count = qemu_plugin_scoreboard_u64_in_struct(counts, CPUCount, io_count);
-     qemu_plugin_register_vcpu_tb_trans_cb(id, vcpu_tb_trans);
-+    qemu_plugin_register_gdb_cb(id, plugin_report, NULL);
-     qemu_plugin_register_atexit_cb(id, plugin_exit, NULL);
-     return 0;
+ static void init_test_data_u16(int offset)
+@@ -117,17 +128,17 @@ static void init_test_data_u16(int offset)
+     const int max = (TEST_SIZE - offset) / sizeof(word);
+     int i;
+ 
+-    ml_printf("Filling test area with u16 (offset %d, %p):", offset, ptr);
+-
+     reset_start_data(offset);
+ 
++    ml_printf("Filling test area with u16 (offset %d, %p):", offset, ptr);
++
+     for (i = 0; i < max; i++) {
+         uint16_t low = BYTE_NEXT(count), high = BYTE_NEXT(count);
+         word = BYTE_SHIFT(high, 1) | BYTE_SHIFT(low, 0);
+         *ptr++ = word;
+         pdot(i);
+     }
+-    ml_printf("done @ %p\n", ptr);
++    ml_printf("done %d @ %p\n", i, ptr);
  }
-diff --git a/plugins/qemu-plugins.symbols b/plugins/qemu-plugins.symbols
-index 032661f9ea..d272e8e0f3 100644
---- a/plugins/qemu-plugins.symbols
-+++ b/plugins/qemu-plugins.symbols
-@@ -25,6 +25,7 @@
-   qemu_plugin_read_register;
-   qemu_plugin_register_atexit_cb;
-   qemu_plugin_register_flush_cb;
-+  qemu_plugin_register_gdb_cb;
-   qemu_plugin_register_vcpu_exit_cb;
-   qemu_plugin_register_vcpu_idle_cb;
-   qemu_plugin_register_vcpu_init_cb;
+ 
+ static void init_test_data_u32(int offset)
+@@ -137,10 +148,10 @@ static void init_test_data_u32(int offset)
+     const int max = (TEST_SIZE - offset) / sizeof(word);
+     int i;
+ 
+-    ml_printf("Filling test area with u32 (offset %d, %p):", offset, ptr);
+-
+     reset_start_data(offset);
+ 
++    ml_printf("Filling test area with u32 (offset %d, %p):", offset, ptr);
++
+     for (i = 0; i < max; i++) {
+         uint32_t b4 = BYTE_NEXT(count), b3 = BYTE_NEXT(count);
+         uint32_t b2 = BYTE_NEXT(count), b1 = BYTE_NEXT(count);
+@@ -149,7 +160,7 @@ static void init_test_data_u32(int offset)
+         *ptr++ = word;
+         pdot(i);
+     }
+-    ml_printf("done @ %p\n", ptr);
++    ml_printf("done %d @ %p\n", i, ptr);
+ }
+ 
+ static void init_test_data_u64(int offset)
+@@ -159,10 +170,10 @@ static void init_test_data_u64(int offset)
+     const int max = (TEST_SIZE - offset) / sizeof(word);
+     int i;
+ 
+-    ml_printf("Filling test area with u64 (offset %d, %p):", offset, ptr);
+-
+     reset_start_data(offset);
+ 
++    ml_printf("Filling test area with u64 (offset %d, %p):", offset, ptr);
++
+     for (i = 0; i < max; i++) {
+         uint64_t b8 = BYTE_NEXT(count), b7 = BYTE_NEXT(count);
+         uint64_t b6 = BYTE_NEXT(count), b5 = BYTE_NEXT(count);
+@@ -174,7 +185,7 @@ static void init_test_data_u64(int offset)
+         *ptr++ = word;
+         pdot(i);
+     }
+-    ml_printf("done @ %p\n", ptr);
++    ml_printf("done %d @ %p\n", i, ptr);
+ }
+ 
+ static bool read_test_data_u16(int offset)
+@@ -198,7 +209,7 @@ static bool read_test_data_u16(int offset)
+         }
+ 
+     }
+-    ml_printf("done @ %p\n", ptr);
++    ml_printf("done %d @ %p\n", i, ptr);
+     return true;
+ }
+ 
+@@ -239,7 +250,7 @@ static bool read_test_data_u32(int offset)
+             pdot(i);
+         }
+     }
+-    ml_printf("done @ %p\n", ptr);
++    ml_printf("done %d @ %p\n", i, ptr);
+     return true;
+ }
+ 
+@@ -293,7 +304,7 @@ static bool read_test_data_u64(int offset)
+             pdot(i);
+         }
+     }
+-    ml_printf("done @ %p\n", ptr);
++    ml_printf("done %d @ %p\n", i, ptr);
+     return true;
+ }
+ 
+@@ -365,7 +376,7 @@ static bool read_test_data_s8(int offset, bool neg_first)
+             return false;
+         }
+     }
+-    ml_printf("done @ %p\n", ptr);
++    ml_printf("done %d @ %p\n", i * 2, ptr);
+     return true;
+ }
+ 
+@@ -398,7 +409,7 @@ static bool read_test_data_s16(int offset, bool neg_first)
+             return false;
+         }
+     }
+-    ml_printf("done @ %p\n", ptr);
++    ml_printf("done %d @ %p\n", i, ptr);
+     return true;
+ }
+ 
+@@ -431,7 +442,7 @@ static bool read_test_data_s32(int offset, bool neg_first)
+             return false;
+         }
+     }
+-    ml_printf("done @ %p\n", ptr);
++    ml_printf("done %d @ %p\n", i, ptr);
+     return true;
+ }
+ 
 -- 
 2.39.2

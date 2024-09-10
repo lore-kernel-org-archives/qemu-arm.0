@@ -1,254 +1,209 @@
-Received: by 2002:a17:505:1909:b0:1be9:327d:8ee3 with SMTP id az9csp1444298njb;
-        Tue, 10 Sep 2024 15:16:11 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVqxUtphbqOJrc+3HMKtMBmlT8z4Jof8YjsoNiBJhdiVDEUcBAVCkZCguWHvrtAHnkZAko2t7EPuSKffQ==@linaro.org
-X-Received: by 2002:a05:6a00:2f9b:b0:718:d4e4:a10a with SMTP id d2e1a72fcca58-71907ea941emr6541935b3a.4.1726006571148;
-        Tue, 10 Sep 2024 15:16:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1726006571; cv=none;
-        d=google.com; s=arc-20160816;
-        b=akpsnGKBMJLQbqVTCttKQX+7J/ou/55HmGP/SJZNNwfTQzUHgwAjkhpE6iki4pipHC
-         G2at3JRmvDNnwg+EZoU9FYqZVaufXqhuwnFlyDZVTAFqkA+OEL4GSrrxabsy2Wwal3Ds
-         I7xIZOgANvRVM5nYukX+Rn/UKMedtuHMK1iJPFyWAMLL4vv6Zmjmewxqz/0yPj9OPP/x
-         Ll1Gg57MSnntzdPUlqX/FW199qEjwTNRL0kz5RQbGhwtjz842NYKNgSDvDUKwX+X2YR3
-         LpfravFcuLzkUi1mCPMpM88MhY8buaTH04sJe0lZ1MCHWimHtbZbp1HooQAejq3b3YMS
-         xRNg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=YSyqJppZZS4UpzgxKNiY6ieJzLYfceDr8xhPE0xjFbI=;
-        fh=0mfrAVO+RmyK3+HCFbKcz0sQBfbx1g0f2+eygiae/58=;
-        b=z6M6JRX7QSUpi0CQO1AR1gZoMtPl2AeS13EyuifMqNM0k/Z5hXKqOs7aWKNemyF/V/
-         XggXrERYwrJoIH1mhfaag+FQWt9AAV5gxAVL78+ulH/IjLF1kA4OTN8PDOcUwUlUy7X5
-         4G4i2R4tJWDeAz/ZF7GotxXaK4awNHcrVrQHduL7/ozeLRGJn7ExC1gZWHcjGBxCpmHC
-         iBdC/buSupwL7+yxKava2uijtTykwaB/cz5eBGw38Q3RSeZwJ5gxPKSrOhoabkJ3nrR/
-         eycUy6dBlkBHf3qwaFZ7Pjrz0l9OkPhi5jISo4c0YI+zPuFq1ob2VRMe5JSxq0mh22KA
-         weFA==;
+Received: by 2002:a17:505:1909:b0:1be9:327d:8ee3 with SMTP id az9csp1446686njb;
+        Tue, 10 Sep 2024 15:26:06 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWwN3TGiZFbPwDn+DbXvSobc5BA/ktNk7qGyOKSgjk37Uv2OUQdTfC1AxqbWtZ8z9iWDeecrEywtCbJuA==@linaro.org
+X-Google-Smtp-Source: AGHT+IEGeQj7gvL1YVPZD9HGpvniUUniYehCZ9fpEMXpYdCiGGQXTvdxtNJ34hVYuZTYZTKCSXOp
+X-Received: by 2002:a05:6402:270b:b0:5c2:7002:7cf8 with SMTP id 4fb4d7f45d1cf-5c3dc798be7mr9699220a12.17.1726007166317;
+        Tue, 10 Sep 2024 15:26:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1726007166; cv=none;
+        d=google.com; s=arc-20240605;
+        b=iRnzFsP20T/ZSaVvZySVg+i09Cdr3x8Xsk4Iydzcujz1aaI0mSVPE51jfzgtB+9K7b
+         ahOpeZIEL4MXDc0tvFzTNgt2nQFK8bLLGOGCQQrbuR5ErGMWiOSqGcsxcJsyXZhcFNdV
+         QYbt1hTzYBjaE2LItXPo9u55WCuYaQQaQwTa6Ky+l0WOz+hIq0h9mrmy8cz2kQgxZQE4
+         9N+IYAkPjKTovIqOP1Ze5ojWyXffnE9s5z6vXDwrwFqSkxnlSSYAydnVvtpXr9mGAA4c
+         PWwtCH3trqAmq+Lga7Po2m5UCqep7Ls1WeR5a47yKj2jMSRfNc0S1+5FNbpbCyhC3QoO
+         EWuQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=mime-version:message-id:date:references:in-reply-to:subject:cc:to
+         :from:dkim-signature:dkim-signature:dkim-signature:dkim-signature;
+        bh=xyKU/vmnk31FcTe/MsOvbzJI78hDjVUhHHGOtjP8OL4=;
+        fh=4DezfWhVwJveMjkLpX2jRIyNz5YoWNhxHlCeAMbUros=;
+        b=QcSV4Tixlo8gKn3PBfnypa+IqTU/fnrV3Mac/wpHg+LTT5ZL/Gf9UlT1Q8hw8b6U24
+         L+C5r7/gkdIHz5+I0ZFcHmUiAR+TfFwVZaqzhqV4n7TG28WcyQ8qFs2fF8ZXAqYBfyXp
+         pSLwFqDvYA0OxcVp8U4lFksVOPA6l3np6uLQ2Tx3dEsuaYQXr4xHM+A3bUOMHje+NWuF
+         iJ25gE5ZQpwRluv25vxUAqoI1yb131X+OW4gCdNVM8Med8WDdAW6W427iWwDDu3iob2r
+         F7rDrR3+i44I4B6vrSIPRNCC6OiDXo2IJxi5eP5R5z0i7LYyAuRGQr2sdT9AdJoghiXS
+         Jdtg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="O/LMF8dJ";
-       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <pierrick.bouvier@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d2e1a72fcca58-718e571b037sor4017428b3a.1.2024.09.10.15.16.11
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 10 Sep 2024 15:16:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="O/LMF8dJ";
-       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1726006571; x=1726611371; darn=linaro.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=YSyqJppZZS4UpzgxKNiY6ieJzLYfceDr8xhPE0xjFbI=;
-        b=O/LMF8dJQKzKgHN2rwKGdv1DVWi2CgIaX4B6eGJTnQwnynwvn0sA6AWbRVrZg6v9AX
-         5cuaxIFPstkLbwFjGnGWq3NyJdsQXl0rnKqyKJkzdiANZzdrXDygZ5fHXRWyKbH4q1P1
-         KeLMc0/j7uHsK24Jnu1jG7fRPS3PyNl+1X97RIjRAoDfQ1iG3GNwGITS/3YThNQgKB2Y
-         qgBrlnQvvpcuii3gRovZgCLBRjVg6iPuofHhKrz7gl4fBLwLeHszJ5OOV0Z5ntjEezKt
-         /IG4t4v/EtwIJZpckD+3fxBJGaRX0wmAOvC2v+pGkhDrdB2VKVwlNCBsHOfUcqU+ijkY
-         ZrtQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1726006571; x=1726611371;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=YSyqJppZZS4UpzgxKNiY6ieJzLYfceDr8xhPE0xjFbI=;
-        b=sgGSN1i6HTuFYCzRFUq9XZdc8M+FIQtAv0AQ1u2CGgmNj4NmUJwnclk2BLrEAUkMGO
-         29l18PqfL4pgvcELQ/ebAIIr+vBEUgEnH4h/BS+RapS3+gmOVgengwq8aNtO/NmVx9Td
-         zFsgd52FvflmqjHfEVaw22Fah52pbsVzbUys0C5xCKYrCGIkdvplRGhrGq08tR6FNdnP
-         XRuq8hM3UV4/d+HkWbHDNqfgC1v9rN1MvHXhi0Fouzs2H4WR1Y2O9iDNgzC+kPIncUX+
-         4d/90kraLcSBI3g6AmYa8jITO3zKeim7uFfFWkfbJ6MAOJHZffT62b1r/UHSGoIJBbYL
-         ftgQ==
-X-Forwarded-Encrypted: i=1; AJvYcCXfHtsr6YLO5Lb1wonHBLenxoDBODQDMBwOBZrPd7ZndC9M7d02qTav7CeD+nA8rnbAuZNjlfWfTwoJtA==@linaro.org
-X-Gm-Message-State: AOJu0YzTQg/hsaSRqh9QBJLbGbE/j1irZpy0KjZpMXJgXfs2y1Dv8URX
-	MLNG6QrJNIEvyVrTd8xuo/mf63ESF70G/45NAUmjj9f8jYgeICIXujde4b/YJ4Ltpw==
-X-Google-Smtp-Source: AGHT+IFq8D12w3lrLR9iZPp9dBLWaCbloOusYWBwljwNqw7WFauubajh8SDyD921iLBgiiedqovYTQ==
-X-Received: by 2002:a05:6a00:9484:b0:712:7512:add9 with SMTP id d2e1a72fcca58-71907f2dc50mr6196737b3a.13.1726006570484;
-        Tue, 10 Sep 2024 15:16:10 -0700 (PDT)
-Return-Path: <pierrick.bouvier@linaro.org>
-Received: from linaro.vn.shawcable.net ([2604:3d08:9384:1d00::9633])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-71909003d0esm1884055b3a.93.2024.09.10.15.16.08
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=Uw2TIwur;
+       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=OfGUfAHm;
+       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
+       spf=pass (google.com: domain of farosas@suse.de designates 2a07:de40:b251:101:10:150:64:2 as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
+Return-Path: <farosas@suse.de>
+Received: from smtp-out2.suse.de (smtp-out2.suse.de. [2a07:de40:b251:101:10:150:64:2])
+        by mx.google.com with ESMTPS id 4fb4d7f45d1cf-5c3ebd42e89si6022571a12.133.2024.09.10.15.26.06
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 10 Sep 2024 15:16:10 -0700 (PDT)
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Zhao Liu <zhao1.liu@intel.com>,
-	"Richard W.M. Jones" <rjones@redhat.com>,
-	Joel Stanley <joel@jms.id.au>,
-	Kevin Wolf <kwolf@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	qemu-arm@nongnu.org,
-	Corey Minyard <minyard@acm.org>,
-	Eric Farman <farman@linux.ibm.com>,
-	Thomas Huth <thuth@redhat.com>,
-	Keith Busch <kbusch@kernel.org>,
-	WANG Xuerui <git@xen0n.name>,
-	Hyman Huang <yong.huang@smartx.com>,
-	Stefan Berger <stefanb@linux.vnet.ibm.com>,
-	Michael Rolnik <mrolnik@gmail.com>,
-	Alistair Francis <alistair.francis@wdc.com>,
-	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
-	Markus Armbruster <armbru@redhat.com>,
-	Sriram Yagnaraman <sriram.yagnaraman@ericsson.com>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	qemu-riscv@nongnu.org,
-	Ani Sinha <anisinha@redhat.com>,
-	Halil Pasic <pasic@linux.ibm.com>,
-	Jesper Devantier <foss@defmacro.it>,
-	Laurent Vivier <laurent@vivier.eu>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Igor Mammedov <imammedo@redhat.com>,
-	kvm@vger.kernel.org,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Fam Zheng <fam@euphon.net>,
-	qemu-s390x@nongnu.org,
-	Hanna Reitz <hreitz@redhat.com>,
-	Nicholas Piggin <npiggin@gmail.com>,
-	Eduardo Habkost <eduardo@habkost.net>,
-	Laurent Vivier <lvivier@redhat.com>,
-	Rob Herring <robh@kernel.org>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	qemu-block@nongnu.org,
-	"Maciej S. Szmigiero" <maciej.szmigiero@oracle.com>,
-	qemu-ppc@nongnu.org,
-	Daniel Henrique Barboza <danielhb413@gmail.com>,
-	Christian Borntraeger <borntraeger@linux.ibm.com>,
-	Harsh Prateek Bora <harshpb@linux.ibm.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Nina Schoetterl-Glausch <nsg@linux.ibm.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	Fabiano Rosas <farosas@suse.de>,
-	Helge Deller <deller@gmx.de>,
-	Dmitry Fleytman <dmitry.fleytman@gmail.com>,
-	Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
-	Akihiko Odaki <akihiko.odaki@daynix.com>,
-	Marcelo Tosatti <mtosatti@redhat.com>,
-	David Gibson <david@gibson.dropbear.id.au>,
-	Aurelien Jarno <aurelien@aurel32.net>,
-	Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
-	Yanan Wang <wangyanan55@huawei.com>,
-	Peter Xu <peterx@redhat.com>,
-	Bin Meng <bmeng.cn@gmail.com>,
-	Weiwei Li <liwei1518@gmail.com>,
-	Klaus Jensen <its@irrelevant.dk>,
-	Jean-Christophe Dubois <jcd@tribudubois.net>,
-	Jason Wang <jasowang@redhat.com>,
-	Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH 00/39] Use g_assert_not_reached instead of (g_)assert(0,false)
-Date: Tue, 10 Sep 2024 15:15:27 -0700
-Message-Id: <20240910221606.1817478-1-pierrick.bouvier@linaro.org>
-X-Mailer: git-send-email 2.39.2
-Content-Type: text/plain; charset="utf-8"
+        Tue, 10 Sep 2024 15:26:06 -0700 (PDT)
+Received-SPF: pass (google.com: domain of farosas@suse.de designates 2a07:de40:b251:101:10:150:64:2 as permitted sender) client-ip=2a07:de40:b251:101:10:150:64:2;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=Uw2TIwur;
+       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=OfGUfAHm;
+       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
+       spf=pass (google.com: domain of farosas@suse.de designates 2a07:de40:b251:101:10:150:64:2 as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
+Received: from imap1.dmz-prg2.suse.org (imap1.dmz-prg2.suse.org [IPv6:2a07:de40:b281:104:10:150:64:97])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	by smtp-out2.suse.de (Postfix) with ESMTPS id 97CEE1F837;
+	Tue, 10 Sep 2024 22:26:04 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+	t=1726007165; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=xyKU/vmnk31FcTe/MsOvbzJI78hDjVUhHHGOtjP8OL4=;
+	b=Uw2TIwurMWwrXhFc8ZEDLaHSFKjWsOWdy5g4ZfwyzXlyZJIX0QbJ2JjXnutnFeFqkkDheX
+	LboU7fwlbdqoxeBXZWm9i6uy71vhiFM+caKc1ypvV/uLEakczT10a0Fvpgo1V8NEDn6MWJ
+	oPtxW+eqcgWIELFiduuueQ7Rqp79LNU=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+	s=susede2_ed25519; t=1726007165;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=xyKU/vmnk31FcTe/MsOvbzJI78hDjVUhHHGOtjP8OL4=;
+	b=thBj5R5tCaylH/cQy9u92YD6gqaoN8WJKCM0oO2+EyrNIkTqb2W6TCv1pm2194xDQ5846w
+	1AzHpA3lY2Y59uBg==
+Authentication-Results: smtp-out2.suse.de;
+	dkim=pass header.d=suse.de header.s=susede2_rsa header.b=OfGUfAHm;
+	dkim=pass header.d=suse.de header.s=susede2_ed25519 header.b=GFI0CEfj
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+	t=1726007164; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=xyKU/vmnk31FcTe/MsOvbzJI78hDjVUhHHGOtjP8OL4=;
+	b=OfGUfAHm/MLJluU8DNo+wJZ3HR15vrr4c1nygO9wkcAxfKNV/yzIfg3U25Gbn1M9WMwJp3
+	pr3OzD1ncXh41vRKYO7Z/8DQsDb5e1CkS4loYWgEKvpt9CUU0XULBnd2g3hsyhP8ya3MwI
+	P3in5dibnETCM0FR1FujLFLD4dTWsDY=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+	s=susede2_ed25519; t=1726007164;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=xyKU/vmnk31FcTe/MsOvbzJI78hDjVUhHHGOtjP8OL4=;
+	b=GFI0CEfjgoLr2GcKjjlN24Y5lwQdxzsjekbGhLNFdLG7ZrNABA8Xf2mDv72hG5LnRfmijp
+	FOzcuqyVVH4o5gAw==
+Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id AD6FC132CB;
+	Tue, 10 Sep 2024 22:26:03 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
+	by imap1.dmz-prg2.suse.org with ESMTPSA
+	id 7OZUKnvH4GYbOgAAD6G6ig
+	(envelope-from <farosas@suse.de>); Tue, 10 Sep 2024 22:26:03 +0000
+From: Fabiano Rosas <farosas@suse.de>
+To: Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-devel@nongnu.org
+Cc: Zhao Liu <zhao1.liu@intel.com>, "Richard W.M. Jones"
+ <rjones@redhat.com>, Joel Stanley <joel@jms.id.au>, Kevin Wolf
+ <kwolf@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ qemu-arm@nongnu.org, Corey Minyard <minyard@acm.org>, Eric Farman
+ <farman@linux.ibm.com>, Thomas Huth <thuth@redhat.com>, Keith Busch
+ <kbusch@kernel.org>, WANG Xuerui <git@xen0n.name>, Hyman Huang
+ <yong.huang@smartx.com>, Stefan Berger <stefanb@linux.vnet.ibm.com>,
+ Michael Rolnik <mrolnik@gmail.com>, Alistair Francis
+ <alistair.francis@wdc.com>, =?utf-8?Q?Marc-Andr=C3=A9?= Lureau
+ <marcandre.lureau@redhat.com>, Markus Armbruster <armbru@redhat.com>,
+ Sriram Yagnaraman <sriram.yagnaraman@ericsson.com>, Palmer Dabbelt
+ <palmer@dabbelt.com>, qemu-riscv@nongnu.org, Ani Sinha
+ <anisinha@redhat.com>, Halil Pasic <pasic@linux.ibm.com>, Jesper Devantier
+ <foss@defmacro.it>, Laurent Vivier <laurent@vivier.eu>, Peter Maydell
+ <peter.maydell@linaro.org>, Igor Mammedov <imammedo@redhat.com>,
+ kvm@vger.kernel.org, Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Richard
+ Henderson <richard.henderson@linaro.org>, Fam Zheng <fam@euphon.net>,
+ qemu-s390x@nongnu.org, Hanna Reitz <hreitz@redhat.com>, Nicholas Piggin
+ <npiggin@gmail.com>, Eduardo Habkost <eduardo@habkost.net>, Laurent Vivier
+ <lvivier@redhat.com>, Rob Herring <robh@kernel.org>, Marcel Apfelbaum
+ <marcel.apfelbaum@gmail.com>, qemu-block@nongnu.org, "Maciej S. Szmigiero"
+ <maciej.szmigiero@oracle.com>, qemu-ppc@nongnu.org, Daniel Henrique
+ Barboza <danielhb413@gmail.com>, Christian Borntraeger
+ <borntraeger@linux.ibm.com>, Harsh Prateek Bora <harshpb@linux.ibm.com>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>, Nina
+ Schoetterl-Glausch
+ <nsg@linux.ibm.com>, "Michael S. Tsirkin" <mst@redhat.com>, Helge Deller
+ <deller@gmx.de>, Dmitry Fleytman <dmitry.fleytman@gmail.com>, Daniel
+ Henrique Barboza <dbarboza@ventanamicro.com>, Akihiko Odaki
+ <akihiko.odaki@daynix.com>, Marcelo Tosatti <mtosatti@redhat.com>, David
+ Gibson <david@gibson.dropbear.id.au>, Aurelien Jarno
+ <aurelien@aurel32.net>, Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, Yanan
+ Wang <wangyanan55@huawei.com>, Peter Xu <peterx@redhat.com>, Bin Meng
+ <bmeng.cn@gmail.com>, Weiwei Li <liwei1518@gmail.com>, Klaus Jensen
+ <its@irrelevant.dk>, Jean-Christophe Dubois <jcd@tribudubois.net>, Jason
+ Wang <jasowang@redhat.com>, Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Subject: Re: [PATCH 21/39] migration: replace assert(false) with
+ g_assert_not_reached()
+In-Reply-To: <20240910221606.1817478-22-pierrick.bouvier@linaro.org>
+References: <20240910221606.1817478-1-pierrick.bouvier@linaro.org>
+ <20240910221606.1817478-22-pierrick.bouvier@linaro.org>
+Date: Tue, 10 Sep 2024 19:26:01 -0300
+Message-ID: <87mskfqh6u.fsf@suse.de>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-TUID: LyZ2gpUc9hRo
+Content-Type: text/plain
+X-Rspamd-Queue-Id: 97CEE1F837
+X-Spam-Score: -5.00
+X-Rspamd-Action: no action
+X-Spamd-Result: default: False [-5.00 / 50.00];
+	BAYES_HAM(-2.99)[99.94%];
+	DWL_DNSWL_MED(-2.00)[suse.de:dkim];
+	SUSPICIOUS_RECIPS(1.50)[];
+	NEURAL_HAM_LONG(-1.00)[-1.000];
+	R_DKIM_ALLOW(-0.20)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
+	NEURAL_HAM_SHORT(-0.20)[-1.000];
+	MIME_GOOD(-0.10)[text/plain];
+	MX_GOOD(-0.01)[];
+	FREEMAIL_ENVRCPT(0.00)[gmail.com,gmx.de];
+	DKIM_SIGNED(0.00)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
+	FUZZY_BLOCKED(0.00)[rspamd.com];
+	RBL_SPAMHAUS_BLOCKED_OPENRESOLVER(0.00)[2a07:de40:b281:104:10:150:64:97:from];
+	TO_DN_SOME(0.00)[];
+	FREEMAIL_CC(0.00)[intel.com,redhat.com,jms.id.au,nongnu.org,acm.org,linux.ibm.com,kernel.org,xen0n.name,smartx.com,linux.vnet.ibm.com,gmail.com,wdc.com,ericsson.com,dabbelt.com,defmacro.it,vivier.eu,linaro.org,vger.kernel.org,euphon.net,habkost.net,oracle.com,gmx.de,ventanamicro.com,daynix.com,gibson.dropbear.id.au,aurel32.net,linux.alibaba.com,huawei.com,irrelevant.dk,tribudubois.net];
+	MIME_TRACE(0.00)[0:+];
+	ARC_NA(0.00)[];
+	RCVD_TLS_ALL(0.00)[];
+	DKIM_TRACE(0.00)[suse.de:+];
+	R_RATELIMIT(0.00)[to_ip_from(RLwj7s7tgqfu86bszdfmfm6eyh)];
+	RCVD_COUNT_TWO(0.00)[2];
+	TO_MATCH_ENVRCPT_SOME(0.00)[];
+	FROM_EQ_ENVFROM(0.00)[];
+	FROM_HAS_DN(0.00)[];
+	SPAMHAUS_XBL(0.00)[2a07:de40:b281:104:10:150:64:97:from];
+	RCPT_COUNT_GT_50(0.00)[64];
+	RECEIVED_SPAMHAUS_BLOCKED_OPENRESOLVER(0.00)[2a07:de40:b281:106:10:150:64:167:received];
+	MISSING_XM_UA(0.00)[];
+	MID_RHS_MATCH_FROM(0.00)[];
+	RCVD_VIA_SMTP_AUTH(0.00)[];
+	TAGGED_RCPT(0.00)[];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[linaro.org:email,imap1.dmz-prg2.suse.org:rdns,imap1.dmz-prg2.suse.org:helo,suse.de:dkim,suse.de:mid,suse.de:email]
+X-Rspamd-Server: rspamd1.dmz-prg2.suse.org
+X-Spam-Flag: NO
+X-Spam-Level: 
+X-TUID: 5doqHol7yiZZ
 
-This series cleans up all usages of assert/g_assert who are supposed to stop
-execution of QEMU. We replace those by g_assert_not_reached().
-It was suggested recently when cleaning codebase to build QEMU with gcc
-and tsan: https://lore.kernel.org/qemu-devel/54bb02a6-1b12-460a-97f6-3f478ef766c6@linaro.org/.
+Pierrick Bouvier <pierrick.bouvier@linaro.org> writes:
 
-In more, cleanup useless break after g_assert_not_reached();
+> Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+> ---
+>  migration/dirtyrate.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/migration/dirtyrate.c b/migration/dirtyrate.c
+> index 1d9db812990..a28c07327e8 100644
+> --- a/migration/dirtyrate.c
+> +++ b/migration/dirtyrate.c
+> @@ -228,7 +228,7 @@ static int time_unit_to_power(TimeUnit time_unit)
+>      case TIME_UNIT_MILLISECOND:
+>          return -3;
+>      default:
+> -        assert(false); /* unreachable */
+> +        g_assert_not_reached(); /* unreachable */
+>          return 0;
+>      }
+>  }
 
-And finally, ensure with scripts/checkpatch.pl that we don't reintroduce
-(g_)assert(false) in the future.
+You could drop the comment that's now redundant.
 
-Pierrick Bouvier (39):
-  docs/spin: replace assert(0) with g_assert_not_reached()
-  hw/acpi: replace assert(0) with g_assert_not_reached()
-  hw/arm: replace assert(0) with g_assert_not_reached()
-  hw/char: replace assert(0) with g_assert_not_reached()
-  hw/core: replace assert(0) with g_assert_not_reached()
-  hw/net: replace assert(0) with g_assert_not_reached()
-  hw/watchdog: replace assert(0) with g_assert_not_reached()
-  migration: replace assert(0) with g_assert_not_reached()
-  qobject: replace assert(0) with g_assert_not_reached()
-  system: replace assert(0) with g_assert_not_reached()
-  target/ppc: replace assert(0) with g_assert_not_reached()
-  tests/qtest: replace assert(0) with g_assert_not_reached()
-  tests/unit: replace assert(0) with g_assert_not_reached()
-  include/hw/s390x: replace assert(false) with g_assert_not_reached()
-  block: replace assert(false) with g_assert_not_reached()
-  hw/hyperv: replace assert(false) with g_assert_not_reached()
-  hw/net: replace assert(false) with g_assert_not_reached()
-  hw/nvme: replace assert(false) with g_assert_not_reached()
-  hw/pci: replace assert(false) with g_assert_not_reached()
-  hw/ppc: replace assert(false) with g_assert_not_reached()
-  migration: replace assert(false) with g_assert_not_reached()
-  target/i386/kvm: replace assert(false) with g_assert_not_reached()
-  tests/qtest: replace assert(false) with g_assert_not_reached()
-  accel/tcg: remove break after g_assert_not_reached()
-  block: remove break after g_assert_not_reached()
-  hw/acpi: remove break after g_assert_not_reached()
-  hw/gpio: remove break after g_assert_not_reached()
-  hw/misc: remove break after g_assert_not_reached()
-  hw/net: remove break after g_assert_not_reached()
-  hw/pci-host: remove break after g_assert_not_reached()
-  hw/scsi: remove break after g_assert_not_reached()
-  hw/tpm: remove break after g_assert_not_reached()
-  target/arm: remove break after g_assert_not_reached()
-  target/riscv: remove break after g_assert_not_reached()
-  tests/qtest: remove break after g_assert_not_reached()
-  ui: remove break after g_assert_not_reached()
-  fpu: remove break after g_assert_not_reached()
-  tcg/loongarch64: remove break after g_assert_not_reached()
-  scripts/checkpatch.pl: emit error when using assert(false)
-
- docs/spin/aio_notify_accept.promela     |  6 +++---
- docs/spin/aio_notify_bug.promela        |  6 +++---
- include/hw/s390x/cpu-topology.h         |  2 +-
- accel/tcg/plugin-gen.c                  |  1 -
- block/qcow2.c                           |  2 +-
- block/ssh.c                             |  1 -
- hw/acpi/aml-build.c                     |  3 +--
- hw/arm/highbank.c                       |  2 +-
- hw/char/avr_usart.c                     |  2 +-
- hw/core/numa.c                          |  2 +-
- hw/gpio/nrf51_gpio.c                    |  1 -
- hw/hyperv/hyperv_testdev.c              |  6 +++---
- hw/hyperv/vmbus.c                       | 12 ++++++------
- hw/misc/imx6_ccm.c                      |  1 -
- hw/misc/mac_via.c                       |  2 --
- hw/net/e1000e_core.c                    |  2 +-
- hw/net/i82596.c                         |  2 +-
- hw/net/igb_core.c                       |  2 +-
- hw/net/net_rx_pkt.c                     |  3 +--
- hw/nvme/ctrl.c                          |  8 ++++----
- hw/pci-host/gt64120.c                   |  2 --
- hw/pci/pci-stub.c                       |  4 ++--
- hw/ppc/spapr_events.c                   |  2 +-
- hw/scsi/virtio-scsi.c                   |  1 -
- hw/tpm/tpm_spapr.c                      |  1 -
- hw/watchdog/watchdog.c                  |  2 +-
- migration/dirtyrate.c                   |  2 +-
- migration/migration-hmp-cmds.c          |  2 +-
- migration/postcopy-ram.c                | 14 +++++++-------
- migration/ram.c                         |  6 +++---
- qobject/qlit.c                          |  2 +-
- qobject/qnum.c                          |  8 ++++----
- system/rtc.c                            |  2 +-
- target/arm/hyp_gdbstub.c                |  1 -
- target/i386/kvm/kvm.c                   |  4 ++--
- target/ppc/dfp_helper.c                 |  8 ++++----
- target/ppc/mmu_helper.c                 |  2 +-
- target/riscv/monitor.c                  |  1 -
- tests/qtest/ipmi-bt-test.c              |  2 +-
- tests/qtest/ipmi-kcs-test.c             |  4 ++--
- tests/qtest/migration-helpers.c         |  1 -
- tests/qtest/numa-test.c                 | 10 +++++-----
- tests/qtest/rtl8139-test.c              |  2 +-
- tests/unit/test-xs-node.c               |  4 ++--
- ui/qemu-pixman.c                        |  1 -
- fpu/softfloat-parts.c.inc               |  2 --
- target/riscv/insn_trans/trans_rvv.c.inc |  2 --
- tcg/loongarch64/tcg-target.c.inc        |  1 -
- scripts/checkpatch.pl                   |  3 +++
- 49 files changed, 72 insertions(+), 90 deletions(-)
-
--- 
-2.39.2
+Reviewed-by: Fabiano Rosas <farosas@suse.de>

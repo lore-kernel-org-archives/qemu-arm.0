@@ -1,177 +1,227 @@
-Received: by 2002:a17:505:1909:b0:1be9:327d:8ee3 with SMTP id az9csp957451njb;
-        Mon, 9 Sep 2024 08:11:11 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCW0CfnVkJruuP+/lsqt6or1UryG97esq6w3cYqX80rryDsfzSxNymuT4BN2rGOTM0ktw+GegeZqhxRYhQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IGYpv8jIpx/EVplExCc649UFuwFpyrBZZ97YngzN7DXI9lcvCEV/VWq0fk/4gwAZeJFxABf
-X-Received: by 2002:a05:6214:3d03:b0:6bf:7fba:c829 with SMTP id 6a1803df08f44-6c528513326mr168893186d6.42.1725894671046;
-        Mon, 09 Sep 2024 08:11:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1725894671; cv=none;
+Received: by 2002:a17:505:1909:b0:1be9:327d:8ee3 with SMTP id az9csp1211659njb;
+        Tue, 10 Sep 2024 03:02:42 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCWHkm5BsnxasIzic+kkNDrGi/uWSV+vgGA54R3dmQk9bMSQDuS1OVvy8u7OcK1z5bFeoRifmtKya7yndg==@linaro.org
+X-Google-Smtp-Source: AGHT+IGn8eDBJx/cEPb/YCaG83XrIYOh9lQxcIXnJoln+wbgXgvitOnNWwDMmn56NvxA4Fys6XFk
+X-Received: by 2002:a05:6122:1e0c:b0:4ef:54dd:c806 with SMTP id 71dfb90a1353d-502f76a276fmr1668870e0c.7.1725962562714;
+        Tue, 10 Sep 2024 03:02:42 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1725962562; cv=pass;
         d=google.com; s=arc-20240605;
-        b=UMW+s4q/R3mpfDCpzvV9kWy2Kwt/nBrT8/CM7mynnl8w6YTFP81EPPa2vQBYUU1tM3
-         fsNVX9eBBZODnyvjHgzkP1bKEc5Poixv9vtfPvr9U0P79FV+MoJbmdSlx3iddNFl3ghA
-         86crl6LBwp8ydJlbWvzQHo25KvTm+hPMKlKxGiRg86GnNmnLuIVz3R/osPbd+YVcwTOI
-         Xbit5R8n1NOYx22zfOGJvgdDXH3e5hFd6JPZDZxggBinOldlL+gFEHSGfP9JjFx7/Iae
-         6EKi/04rwHD0UbooSgcwhLlE8bI0YGMs3zpwhPHxYhMC0vfLDVfO7PfK0knwyEi5Q+KP
-         CF4w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        b=EhoVishHiqqkBRqCIXagdF1DSMPrYle7MvRi/RtzY/oAI3YaLYWcQNK7Tw8W50Ucus
+         ZBOce+wLLA6ReO63atmXLAIk9fco8FqCTXZ5mrd0YPCYSqnxVL8Y+TtiMx2i2+mvojeo
+         Ym5vUfZH6v+/DgW9qLLmWrTLz5wCF3+Tt6qjPZcAuT2ZZtejBJsDcZMDUfpIezh77pwd
+         BUPVbKS8L/aE8pV9HtpXI6E7xfHK7fFeVofHir5cV1MVDviqi3K5LtGKKe24c92QXwno
+         b7gduXxNgZ2vf3+ngWr8a4itFbUCR1r4VvVuswcqudRFmbPF34m3O4U0vEFQb9Gs6Wjb
+         eG/A==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:autocrypt:from:content-language:references:cc:to
-         :subject:user-agent:mime-version:date:message-id:dkim-signature;
-        bh=U1+vlid6UHCsrNdIiEYfIUROmFerL4//2tz/VNqUp5o=;
-        fh=MnQXkzxjVa1W6QnCXRkIIL/SezwsBSC85fC2hyzJdD8=;
-        b=d68LjzhHaFZagr9vz+kMAebJbo5Sme4cRWP1rMzvTwaCEzwAZsjcjnW74jUwnkk/wc
-         +eMejWVf1keHn/9iNY+s5/0AztPk7JeqP6qqh4+dn4Hyd/V761cndCuhJFZR6sjAj5G3
-         ItomipvLxRBUE2IvNvGr6do4kwv0STP594XHI2WvD8JuotqsesEVweOfyEO9QH1skohd
-         s926of5GsbJT4Hdt+rZcY6eo0rcN+inOMIDzUtYQnCIO9WgbHRz0KQzm0NGXI5NZySj6
-         VmZDGnBPwEZvWnPWYO25LjAjzxzBnLt5EW9KJ4mSL43p44xXxlZXlNhadQ4RxBP4E28o
-         qtXg==;
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:references:in-reply-to:message-id:date
+         :subject:cc:to:from:dkim-signature:dkim-signature;
+        bh=Vo2fFx1ohejTAXLPbUW6VkXu/DbA/g86PRRbuTEgISs=;
+        fh=bJyx0GIygJJ7mZ8POOZTcS7Rg6xJihq9RUXNSf7abkk=;
+        b=K6ci3tFMTzPXud0IiZwfknDvcnTYA3173udC7c7XQbP8o6fFghYGYXuExE54GYOr4S
+         5F3J/oeZRJ1XuWPXTu+LLWEFK6bClwKe77H/1a5ECdsqcc2PUgWh1O4QFClvrtZjjTeN
+         sbf5KqiNdNzanQVqY25SiJPc/GRZc5jbCrZE+lESBuSVLGhTJltnIVshQJaj3E+BlOMx
+         RmJfgS2ojEhfeafoH5CbMV6yOoXwPFcwE+ySmwuQzZcCSYRjzUKLCqtjRyrsHI+/5JjX
+         KZrmyrwOlZqzfODHtltGPV/M17VBZcjADqOg0UD5SsxCWy0Hkl7T5mAFvnfX5+Uabh50
+         SlZA==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20230601 header.b=aP3I91sM;
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@oracle.com header.s=corp-2023-11-20 header.b=CMFbuPYM;
+       dkim=pass header.i=@oracle.onmicrosoft.com header.s=selector2-oracle-onmicrosoft-com header.b=MDEi9zct;
+       arc=pass (i=1 spf=pass spfdomain=oracle.com dkim=pass dkdomain=oracle.com dmarc=pass fromdomain=oracle.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dara=fail header.i=@linaro.org
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=oracle.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6c53432fcedsi57051876d6.91.2024.09.09.08.11.10
+        by mx.google.com with ESMTPS id ada2fe7eead31-49c16ca887bsi226709137.98.2024.09.10.03.02.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 09 Sep 2024 08:11:11 -0700 (PDT)
+        Tue, 10 Sep 2024 03:02:42 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20230601 header.b=aP3I91sM;
+       dkim=pass header.i=@oracle.com header.s=corp-2023-11-20 header.b=CMFbuPYM;
+       dkim=pass header.i=@oracle.onmicrosoft.com header.s=selector2-oracle-onmicrosoft-com header.b=MDEi9zct;
+       arc=pass (i=1 spf=pass spfdomain=oracle.com dkim=pass dkdomain=oracle.com dmarc=pass fromdomain=oracle.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dara=fail header.i=@linaro.org
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=oracle.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sng2C-0001FV-LF; Mon, 09 Sep 2024 11:10:33 -0400
+	id 1snxhf-0006OH-JU; Tue, 10 Sep 2024 06:02:31 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
- id 1sng29-0001EF-Jf; Mon, 09 Sep 2024 11:10:29 -0400
-Received: from mail-pj1-x102f.google.com ([2607:f8b0:4864:20::102f])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
- id 1sng27-0000XK-JS; Mon, 09 Sep 2024 11:10:29 -0400
-Received: by mail-pj1-x102f.google.com with SMTP id
- 98e67ed59e1d1-2d86f713557so2910015a91.2; 
- Mon, 09 Sep 2024 08:10:26 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <william.roche@oracle.com>)
+ id 1snxhd-0006LY-Il; Tue, 10 Sep 2024 06:02:30 -0400
+Received: from mx0b-00069f02.pphosted.com ([205.220.177.32])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <william.roche@oracle.com>)
+ id 1snxha-0001jN-V1; Tue, 10 Sep 2024 06:02:28 -0400
+Received: from pps.filterd (m0246631.ppops.net [127.0.0.1])
+ by mx0b-00069f02.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 48A9QTZ8009091;
+ Tue, 10 Sep 2024 10:02:23 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=
+ from:to:cc:subject:date:message-id:in-reply-to:references
+ :content-transfer-encoding:content-type:mime-version; s=
+ corp-2023-11-20; bh=Vo2fFx1ohejTAXLPbUW6VkXu/DbA/g86PRRbuTEgISs=; b=
+ CMFbuPYMx9WCrsV6S1qg731o1wDRllhaPJ5EaryUOWCUUKt8r5JH+wj+Wx0/OojU
+ xqmEakLEQzqDVj7oq9J8c4yit1Y4+zD/Emudt2QGaXsw2TFuaiBgEcCMvM4VSmuZ
+ 2c6IgMypGjkuBH/RIdfMShAEGTvPK/Sbe/ovYSgm/af0jIxF6hfyqncUJPV6h89t
+ vdtpohmx1IKKXwviBJ9GJwhsr7liet9AF9wsQqrCuGOMoOmmvXFFPEuea4OIiQ6J
+ 2UlVe1B/kTct1729Pt2dj2+jH9KQ8qZxXuMZqk6nLBSpqhX4zNp0zb4FsPTANHCL
+ 8Knshv9qUaMDgvXf+jLSLQ==
+Received: from phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com
+ (phxpaimrmta02.appoci.oracle.com [147.154.114.232])
+ by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 41gdm2n4kr-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 10 Sep 2024 10:02:23 +0000 (GMT)
+Received: from pps.filterd
+ (phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
+ by phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com (8.18.1.2/8.18.1.2)
+ with ESMTP id 48A8eATB034126; Tue, 10 Sep 2024 10:02:22 GMT
+Received: from nam11-co1-obe.outbound.protection.outlook.com
+ (mail-co1nam11lp2175.outbound.protection.outlook.com [104.47.56.175])
+ by phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com (PPS) with ESMTPS id
+ 41gd98u2nf-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 10 Sep 2024 10:02:22 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=FPr3rn3jLbsSdn2pDf2NPV1CsDCyC9vrX7Lg14bxMNrsgUGJhG5zzM96b9dJfs88VanLdtKsj1bPEvFs5D9GYBLz5Hc06RcQKW9XgRwJgWQ7platwqf49lCpTN+Nx/D348P+qlLqKblREFHBUyT5wfVPLdu7RVJ4y1cTld7lN6Qo/crAm1tfzLRrCEaT6fex9wmtCZKv/pk7CKP20IfzKLyJ3dT8u+A3M6npmIcL4P7wn65SqrGVw2G+AIoBI7I7q09q6fIqsCKAA7mZZLiO7mnhkuUteLTazQqbufrMjHmT2VfJxX3xw0HLEL5/+vwBf77DJ5oUylKuuwnjsJgpWA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=Vo2fFx1ohejTAXLPbUW6VkXu/DbA/g86PRRbuTEgISs=;
+ b=obZPPasIlHLjML76ilNsBDBB49DI4XTC/FQBoKYQQIQyAlDAGfIkAJ+4SsrG1jEkfFnVGtl59w8N94+KgEo/hdRFpd09XHyIXphMiJ5I3aL0USqXXF9cQo1APyVN14mupg847xmkeazYFufVcof5TLlexsZZEHRL0JBslyJpc01Ygi73ioG/OuFmdXLdNHw+hw33pjI73aXWU4+CxcezSLx68zlFkJB6dpSGNi5xBRssa6vbz3ej/+u9oun6fG/ND+519zUI9f0vaFObU+643Gr9bmiMEVjEQb5wqy3iE+PG2QY0fPhujwxBdpO+b9TVtKgxgdrk95p0mc/jhtlReg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
+ dkim=pass header.d=oracle.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1725894625; x=1726499425; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:autocrypt:from
- :content-language:references:cc:to:subject:user-agent:mime-version
- :date:message-id:sender:from:to:cc:subject:date:message-id:reply-to;
- bh=U1+vlid6UHCsrNdIiEYfIUROmFerL4//2tz/VNqUp5o=;
- b=aP3I91sMVHOVKQJ9jzoXD7gYM95NU9dOgifbfIVvVmg3ZuLdrjM3mYEpHfjubRdgcy
- rsEP46qS3JGw4BOstNsnvAJfP/Qiw+Gn3mLyKNo/i822kPJzhDBZoxfCuAk6loJGmVjj
- Qs5B3pnESP0FSQgLlW1DKkLn9IWkl4sca79k3MNUvXP7mybiC/d/7kBnxahHuabT1aaw
- Ertnz+FqMTOcE/XP5uzXYuhheCiew1mpo6hHdyHl3wbmeBf34DXxCjg7410fbZnF1P2b
- D87KsdwNAGExt5s+AlG0cABx6VkRytrXgPi49nPf4pux08/9q8zTR7ijLygzS1VlSMos
- E5wA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1725894625; x=1726499425;
- h=content-transfer-encoding:in-reply-to:autocrypt:from
- :content-language:references:cc:to:subject:user-agent:mime-version
- :date:message-id:sender:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=U1+vlid6UHCsrNdIiEYfIUROmFerL4//2tz/VNqUp5o=;
- b=u7BeiSGBiOTwCmKf9swAtuMS4AgFvso8h5tefuSnR/0zYx2N2aFoW9NwdQixBZxe/I
- EZTe8YZjQUKe3MoAa6L4yZ8v4BfmNLA8bM/VjeGNqbeUdAFkSsCbQdqnwu3lZOtPIgAt
- Y+cjs9y4o3FYum+G3bCJVCC84srbXQSSi1JyqMBBPzSqjV/6HHQVhJC6r3eB0PHO3nDj
- xlX6QwtDRCqCq8iylatgPjJLnU3iPx9PZbdJ4H/nNonYh5zi/GSnUhzdDR4OFdojdbkp
- sx9h+uTh9Hupke/GFLnx2A8mxD/wq4jxlyFf6RuKPYoKWLiaX7BKXwt4SyYTOWpPQ5lD
- Lnig==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVfjV2oP/JWm39jwiFv6MHhPsGmXcg0Hxzc8VzTkwOCxt9B6c1ZAfN9mb8mUOrsSG1BMuTRFq+juDmjoQ==@nongnu.org,
- AJvYcCVnhXyDdBw5Ham69CUiF4XGCcTJttcyoqomKJkmLBdSLB5SAQVbdb5QY0LC/0R7ua/B0YGV4mw9FA==@nongnu.org
-X-Gm-Message-State: AOJu0YyqLqVgZyYSrPbkSzBQjh9aM8Q3bcezYYVOcnnn67fpJUrfax92
- nbV3loHKE+Y3LtM42CQPY6cbuBANYHTq4bSEZxjq05RMRwCUzjw5
-X-Received: by 2002:a17:90a:12ce:b0:2d8:8eee:ccab with SMTP id
- 98e67ed59e1d1-2dad50140c9mr13773889a91.22.1725894625337; 
- Mon, 09 Sep 2024 08:10:25 -0700 (PDT)
-Received: from ?IPV6:2600:1700:e321:62f0:329c:23ff:fee3:9d7c?
- ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
- by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-2db043c4107sm4688377a91.28.2024.09.09.08.10.24
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 09 Sep 2024 08:10:24 -0700 (PDT)
-Message-ID: <b9b2d800-38d6-4fa6-9ac3-9604fb6f9ff2@roeck-us.net>
-Date: Mon, 9 Sep 2024 08:10:23 -0700
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] aspeed: Deprecate the tacoma-bmc machine
-To: Joel Stanley <joel@jms.id.au>
-Cc: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- Andrew Jeffery <andrew@codeconstruct.com.au>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-References: <20240625070830.492251-1-clg@redhat.com>
- <4e04f930-e7af-4084-99a8-2a3139e2bf43@roeck-us.net>
- <5fb7342b-fa67-4cb2-b6fd-2241b7b76d03@redhat.com>
- <f70cb39f-3567-4322-b1c4-1bc5991d91fa@roeck-us.net>
- <8d1fd867-647b-4827-a2b2-a239618a7743@redhat.com>
- <014b83a8-d733-442b-ba33-a24c35e46f3f@roeck-us.net>
- <bdb443f9-376e-4d4e-8c06-9ba0c5482c5e@redhat.com>
- <09457da7-e692-4d9f-92b8-361f14b7a1c2@roeck-us.net>
- <CACPK8XfqOE-GJWgUwC+Kh5r9nT2Jo42R2zdka54sURDiR70j5A@mail.gmail.com>
-Content-Language: en-US
-From: Guenter Roeck <linux@roeck-us.net>
-Autocrypt: addr=linux@roeck-us.net; keydata=
- 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
- mDW4+i+XlNFUPUYMrIKi9joBhu18ssf5i5Q=
-In-Reply-To: <CACPK8XfqOE-GJWgUwC+Kh5r9nT2Jo42R2zdka54sURDiR70j5A@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+ d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=Vo2fFx1ohejTAXLPbUW6VkXu/DbA/g86PRRbuTEgISs=;
+ b=MDEi9zctHhpNEf06DGxAHANn7ymy6wdkR3fDR8mF3JlTru5mgd+I7mkxjjnr1wov0NHTtgOkzlhhq3pfeDrtwqbSv6/6bB6ByFcIefg2HKgakkC5w91o28Um52SuHf8rTGaqAM16aZq9WVejVn8zBDt06S377HforZBSiCZ4d3M=
+Received: from CH3PR10MB7329.namprd10.prod.outlook.com (2603:10b6:610:12c::16)
+ by PH0PR10MB5894.namprd10.prod.outlook.com (2603:10b6:510:14b::22)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7939.10; Tue, 10 Sep
+ 2024 10:02:19 +0000
+Received: from CH3PR10MB7329.namprd10.prod.outlook.com
+ ([fe80::f238:6143:104c:da23]) by CH3PR10MB7329.namprd10.prod.outlook.com
+ ([fe80::f238:6143:104c:da23%5]) with mapi id 15.20.7939.010; Tue, 10 Sep 2024
+ 10:02:19 +0000
+From: =?UTF-8?q?=E2=80=9CWilliam=20Roche?= <william.roche@oracle.com>
+To: pbonzini@redhat.com, peterx@redhat.com, david@redhat.com,
+ philmd@linaro.org, marcandre.lureau@redhat.com, berrange@redhat.com,
+ thuth@redhat.com, richard.henderson@linaro.org,
+ peter.maydell@linaro.org, mtosatti@redhat.com, qemu-devel@nongnu.org
+Cc: kvm@vger.kernel.org, qemu-arm@nongnu.org, william.roche@oracle.com,
+ joao.m.martins@oracle.com
+Subject: [RFC RESEND 0/6] hugetlbfs largepage RAS project
+Date: Tue, 10 Sep 2024 10:02:10 +0000
+Message-ID: <20240910100216.2744078-1-william.roche@oracle.com>
+X-Mailer: git-send-email 2.43.5
+In-Reply-To: <20240910090747.2741475-1-william.roche@oracle.com>
+References: <20240910090747.2741475-1-william.roche@oracle.com>
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102f;
- envelope-from=groeck7@gmail.com; helo=mail-pj1-x102f.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_ENVFROM_END_DIGIT=0.25,
- FREEMAIL_FORGED_FROMDOMAIN=0.001, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Content-Type: text/plain
+X-ClientProxiedBy: BYAPR07CA0106.namprd07.prod.outlook.com
+ (2603:10b6:a03:12b::47) To CH3PR10MB7329.namprd10.prod.outlook.com
+ (2603:10b6:610:12c::16)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: CH3PR10MB7329:EE_|PH0PR10MB5894:EE_
+X-MS-Office365-Filtering-Correlation-Id: 54d13ace-08c4-4848-7499-08dcd17fa7e5
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+ ARA:13230040|7416014|376014|1800799024|366016|921020; 
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?FrB82j+WAHMXSXQcWNm5SYY1XS+nHQiV0aiDXcikNed6j0XtzzIRyWkAKoNJ?=
+ =?us-ascii?Q?BW0IjX/Gy/WCfXUyGZ4m62k/XM1IvWtSEboVuD4IPHA5Z1p4gpRWk5cG4OMY?=
+ =?us-ascii?Q?9u6BWe5dr72nGHCja16gfB5l3M0ayMGiJOy6GkvEVyM63QU5WMGEGhqSDEAS?=
+ =?us-ascii?Q?YI6ErMMWPnHLtXSVqNQYGVZAgKb/dgXuZbFwMiNZCEVDPZ/wusuBhHME+K2r?=
+ =?us-ascii?Q?RjbQWK9fm7ylNE5IVhMVdU1hpq551tLWGfCa/sHsb0wa2hU9Q4DebTTGuA/J?=
+ =?us-ascii?Q?56FbmxYhH4bVKzYKO/Ty2jpH9HaZYQCWF7IBjAIGyuUDVjhtcfBfRX5NFact?=
+ =?us-ascii?Q?RTKxoo5qCgjZpwUwAaYatzDvIgrqgP9n/iJkaqWqHBa890uf56OwMf+eXQ2Q?=
+ =?us-ascii?Q?AZFEuzIVqzfbLkqUWkOXlEfqwvNIu9q3q6lTY6gy4WvJdQcmhZGiwtHbjR15?=
+ =?us-ascii?Q?LaJNv3F3NLb6xBxOr2sRVl0FNk0SxyeakkCOKYVaE2jU1zleBS85g63++Zns?=
+ =?us-ascii?Q?h99wIaHWwP3Cf5aFXmCR42A0h8huWQt9GyKrLStAeAVOdjw/rEHglEyXKZY6?=
+ =?us-ascii?Q?TkVZsMIAFeKr2ehyQOUKYSIhMqdbNDaCPgL+Ry0uSpm0ZWwjCcBp/2LPcGE5?=
+ =?us-ascii?Q?t+h8FDRmjRRvC5ir8kNUyk7i7UWUo6370iTQi0rHey9Sh2FJEAs2v8VVUMSw?=
+ =?us-ascii?Q?5KodvkXF3hOQD0LCw3bKC3yaMZmpYWTA8Sm5qgZ23JwOa+aClvajPfnkjqEz?=
+ =?us-ascii?Q?af3x2mHQZzFIt4Vijrf6yGDRMWNUXbDKMGtOKNfT6QbJfZWlRninvTHzDLuV?=
+ =?us-ascii?Q?P5LdIMM/RyOjtcE3d22FTfHPxe227VZAMqJfQFUIZ88+kff+BUYy5DOlAU6P?=
+ =?us-ascii?Q?hguAcOezygKsJyaMUfy60J6hKrz2mvtxwEbVh1D1uYVz17Cu4ZLK09ln+bCn?=
+ =?us-ascii?Q?I8n7Qa/TYnd52EqXmkxkyXua2wNi4xWvVXnSVuwHq+Vi2GgfIH8N2sT8QaPF?=
+ =?us-ascii?Q?UxZgD/dEl0fQUWYzLH3qelVdkmid4y4R0kW56TicBiGYzCWjvtin6e05Bc8D?=
+ =?us-ascii?Q?eXrl8HnuzXS+CmEMoD1Mak3a2FYsq8Dt3iD9n9fm1LntqCpExN1HiUe7mYrj?=
+ =?us-ascii?Q?agMTMsjkS/NLF9q+kfVTTPSsO14DfHxtlrPTHOtV55v+TvtOXMEDWARhyYQO?=
+ =?us-ascii?Q?O/ElzW2KBikIh7fU60Yl15QJ/NOxYSsyOMBNML7UnGMbWnWj5qmIvaiXxfhs?=
+ =?us-ascii?Q?3oGJdWIi3nKnQlYAcax0BPnjKDmbW+bPzAiN4LLX4y1YDIWbhvZfDVqQuT/9?=
+ =?us-ascii?Q?P299Wm3pbtg0kHZpqHmlIYTFy1aroJm05wYYZ16QvTXwX62k/dHwmzJ7I2us?=
+ =?us-ascii?Q?8ZimFnLEkRjIDNrLAYr3a0T2EWqw?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:CH3PR10MB7329.namprd10.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(7416014)(376014)(1800799024)(366016)(921020); DIR:OUT; SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?80Koi3mDvOC207u+I0Yq3VrBaJSpXyF7ZM8pgcrXgimwEa37O57CGWBBQfFy?=
+ =?us-ascii?Q?P/CsGCuI/I7ZguzAQep0kJj+ifcQ5pR12DLuRXuJ0A/SgQOkA7hRYhgvntkZ?=
+ =?us-ascii?Q?kLKnqJpBMsCP/Ztuc6t377/4Wdb+t9bM+EVvyAiPxTGgb6kLExkHZzuxmWnT?=
+ =?us-ascii?Q?r8KoQa1ypH/mw1vhQjOVVemiI9jHchzGIpEcxCDgUF4m4Axw/fYHciA+L6hT?=
+ =?us-ascii?Q?EP2dtgH7GrHPzkXxsx0jZFhGGPcp5sksa7Q9bYQig4K5/1f5VF8gLaX+UCBY?=
+ =?us-ascii?Q?1ITa9zzioNJ/AiJthiKSh3NdGmtvvfxYy711LgoK1ghKaUzlPgsFU1p3q+bx?=
+ =?us-ascii?Q?qWdcJDd5tVhFAbX7KvUrwHJC78oPG2wXf44jBgIPJizU7tjeFazTOyqr/Ulr?=
+ =?us-ascii?Q?jjD9ODYzZvJbG5VZFI5VXQVyBl9pdwpa6aQcHPUn78/wXw1GMg/0h9y9Dk8u?=
+ =?us-ascii?Q?U1pNygICRZnaNe+wYOjZv8xGpYc2nbJHOjugfNyEu3nKY+e7cL9mrAgDeogb?=
+ =?us-ascii?Q?UHizzxg7mREpchdDQZxFqVy0cDTXf02PGB1d+ca0OgcukMYWNQGQH/1rgohI?=
+ =?us-ascii?Q?btjF9HaD1olKdxejgku5EZdpS6X8547N1ZGf2C9ePMXBbCCHiH2dMDbEJRpL?=
+ =?us-ascii?Q?sCcZDh+dtS9lrXpQJwKb/DSSEfFphXXZtodG1GxHN91x8HpDH2ixVXeEJ6zt?=
+ =?us-ascii?Q?bUKLHsqpwrbYkh4oa9DJ6a2M1j2TZOkd3aZ5sEu1H4AQbc9JYO6m0ieB7HZ9?=
+ =?us-ascii?Q?UUWaLbzSd8mD/8oF5BUe2ITzRAG/fziQ1hbDEe9lbu1Ivarxsj5vwLK7E4Ku?=
+ =?us-ascii?Q?ATTmbWcwILskeK3z0G/L4jDwPL+wlO8PgDXOk1W+LfiZ7uQEnW0Cse6IuRU8?=
+ =?us-ascii?Q?BUJjgj6Pq/d9NyeHqYq6mgnbV3Z8Z1MLIpmmLNZpBackOaovfhj1yE65icNu?=
+ =?us-ascii?Q?tT33dcDbDf9hP/4WPkoOJV2y2h5ODO9Rl8QhS+zrwbdvyYrlJejIJyc+KwYw?=
+ =?us-ascii?Q?rgNa72j6UudFE3mFj7CmlXcgKZjd7n3VlyCh4kMYejR6YKf9KqCY/wNXsmKR?=
+ =?us-ascii?Q?HO/bjmJzXlMAFIKcdZfnPR6Z38PbcHPyIJFXxQSw8pXhcTr8ztUkNNh4zA9a?=
+ =?us-ascii?Q?8C86y7IJeOl8WZG+oZpdZYI5dcrEE0WrFYaPj/fYaTJC3g2djAhd86Ueagch?=
+ =?us-ascii?Q?BqCnspZ6mQ/pw2ced3HSr1Pe/odM+xLdm/4t3UDs2MWt9XIlZcpvvtZNTB3P?=
+ =?us-ascii?Q?mOb2OP3KyKrOAU9Gu5kJGDznK5ToWS1FfTgnlaT3f0ji/Jm/SH8fHG9WkrYd?=
+ =?us-ascii?Q?xei7aSWnVNoWBZAIpD+G5AxkaX4LxbdycaxVG8qojaDHJ6/mgDptWTahCKs0?=
+ =?us-ascii?Q?3/VPO9plPxc6aFoYcWZypAvvyb30lM/E0CVGLc7C+IeMDcnP7Pw5ps+UbOjL?=
+ =?us-ascii?Q?VIR0o3NZYZC20OHh226OGOvzAZAjqAtbSdaGMy8CtnUxATIocAkIpoqAMbdK?=
+ =?us-ascii?Q?4TONaAHjyKHfRFJLlNQAg6MvuJvqb4H4D9Q5s4o6xpeZPef0/UBo4J8Op6lv?=
+ =?us-ascii?Q?YVFwVZjqQL07vrBZMkq/VO/N9dgQZrJ+kymkvWJf3SdbBERgLrL8AkPhcjLw?=
+ =?us-ascii?Q?Hw=3D=3D?=
+X-MS-Exchange-AntiSpam-ExternalHop-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-ExternalHop-MessageData-0: 3MRBgS125UwfB3xnm2ciz4pIQnG3bdobpHXQWSVpWneVQsWqVh26y+HTrVmOTAn2EbXVbUt9jBueB9A1b9ZJwgtD22WsItW4cg7G1lrhHd4c/34aBrN1qUvcYnB6qhkWUsz/40E4jC2M46x2rEp1TXveczUQp6adkLwk5vb/0K4Mg0IJVrSR9kLIG9LQs/JzY0smVLRirtAxEAYIXswZvZJIyU/u58hBBnrKBFbpatVgDs/l5F7lREQPuUqscAX+wX4kVG2Wn/PU94/YtGnwxFp9Rvrk5yNBv9VmI174Nco5LhgIFneXQmW66/wJugfbrg1vrNfHQNVgy+6MQZ35eSBeJUieyJG81YnM+GRzl2kHz925FjnDitgZHcWyhOcSGArwQmiiVV7zdRawFrSHSuTwgYY6TZ8R7BMFk6FNgxTUSo5jNHihAzfdjzHZa6K5b8x6WIN7zpwBhT5YyKTiKuC9clP2mhRLohjA+MMTPJh4y7xocxBgSWjjdbsqmR/twKpNqAIP2UQIfM/ygyfe/gUkM6e3VND/4A+R/iubGBnrJPZKJr7sikF0vkTQcUpfQU62pntQPlqALxKGNFWP2ryglxIB4OuRIUKgcRDpgtk=
+X-OriginatorOrg: oracle.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 54d13ace-08c4-4848-7499-08dcd17fa7e5
+X-MS-Exchange-CrossTenant-AuthSource: CH3PR10MB7329.namprd10.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 10 Sep 2024 10:02:18.9459 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: 566UtNvSQO62xG2qYLRbYeWkWg1Z2FswT0KqLrK/sHmOwgKSAjs9va3sJayC8/pEzYOCLXMnEp9O0AygSqV6Xb8vxzSe9xxL9n5Qsq9rUyY=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH0PR10MB5894
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1039,Hydra:6.0.680,FMLib:17.12.60.29
+ definitions=2024-09-10_02,2024-09-09_02,2024-09-02_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
+ mlxlogscore=999 bulkscore=0
+ suspectscore=0 phishscore=0 mlxscore=0 adultscore=0 malwarescore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2408220000
+ definitions=main-2409100075
+X-Proofpoint-GUID: 2Ru5X-FP9ye6OyShJlbrdtK0m2S2agKk
+X-Proofpoint-ORIG-GUID: 2Ru5X-FP9ye6OyShJlbrdtK0m2S2agKk
+Received-SPF: pass client-ip=205.220.177.32;
+ envelope-from=william.roche@oracle.com; helo=mx0b-00069f02.pphosted.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -186,39 +236,163 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: lVV9z+gkR4xC
+X-TUID: 8crS5XtYVUF9
 
-On 9/9/24 04:20, Joel Stanley wrote:
-> On Sat, 31 Aug 2024 at 05:41, Guenter Roeck <linux@roeck-us.net> wrote:
->>
->> On Fri, Aug 30, 2024 at 10:09:25AM +0200, Cédric Le Goater wrote:
->>> Hello,
->>>
->>>
->>>>>> I solved the problem by adding support for IBM Bonnell (which instantiates
->>>>>> the TPM chip through its devicetree file, similar to tacoma-bmc) to my local
->>>>>> copy of qemu.
->>>>>
->>>>> Hmm, did you copy the rainier-bmc machine definition ?
->>>>>
->>>> For aspeed_machine_bonnell_class_init(), pretty much yes, since I don't know
->>>> the actual hardware. For I2C initialization I used the devicetree file.
->>>> You can find the patch in the master-local or v9.1.0-local branches
->>>> of my qemu clone at https://github.com/groeck/qemu if you are interested.
->>>
->>> Oh nice ! Let's merge the IBM Bonnell machine. We can ask IBM to help fixing
->>> the definitions (strapping). Enabling the PCA9554 is good to have too.
-> 
-> Instead of adding Bonnell to qemu, could we use the Rainier machine? I
-> know the kernel device tree removed the i2c tpm, but there's no harm
-> in it being present in the qemu machine.
-> 
-> The bonnell device tree should boot fine on the rainier machine for
-> your purposes.
-> 
+From: William Roche <william.roche@oracle.com>
 
-Yes, I confirmed that works. Ok, I'll do that.
 
-Thanks,
-Guenter
+Apologies for the noise; resending as I missed CC'ing the maintainers of the
+changed files
 
+
+Hello,
+
+This is a Qemu RFC to introduce the possibility to deal with hardware
+memory errors impacting hugetlbfs memory backed VMs. When using
+hugetlbfs large pages, any large page location being impacted by an
+HW memory error results in poisoning the entire page, suddenly making
+a large chunk of the VM memory unusable.
+
+The implemented proposal is simply a memory mapping change when an HW error
+is reported to Qemu, to transform a hugetlbfs large page into a set of
+standard sized pages. The failed large page is unmapped and a set of
+standard sized pages are mapped in place.
+This mechanism is triggered when a SIGBUS/MCE_MCEERR_Ax signal is received
+by qemu and the reported location corresponds to a large page.
+
+This gives the possibility to:
+- Take advantage of newer hypervisor kernel providing a way to retrieve
+still valid data on the impacted hugetlbfs poisoned large page.
+If the backend file is MAP_SHARED, we can copy the valid data into the
+set of standard sized pages. But if an error is returned when accessing
+a location we consider it poisoned and mark the corresponding standard sized
+memory page as poisoned with a MADV_HWPOISON madvise call. Hence, the VM
+can also continue to use the possible valid pieces of information retrieved.
+- Adjust the poison address information. When accessing a poison location,
+an older Kernel version may only provide the address of the beginning of
+the poisoned large page in the associated SIGBUS siginfo data. Pointing to
+a more accurate touched poison location allows the VM kernel to trigger
+the right memory error reaction.
+
+A warning is given for hugetlbfs backed memory-regions that are mapped
+without the 'share=on' option.
+(This warning is also given when using the deprecated "-mem-path" option)
+
+The hugetlbfs memory mapping option should look like that
+(with XXX replaced with the actual size):
+  -object memory-backend-file,id=pc.ram,mem-path=/dev/hugepages,prealloc=on,share=on,size=XXX -machine memory-backend=pc.ram
+
+I'm introducing new system/hugetlbfs_ras.[ch] files to separate the specific
+code for this feature. It's only compiled on Linux versions.
+
+Note that we have to be able to mark as "poison" a replacing valid standard
+sized page. We currently do that calling madvise(..., MADV_HWPOISON).
+But this requires qemu process to have CAP_SYS_ADMIN priviledge.
+Using userfaultfd instead of madvise() to mark the pages as poison could
+remove this constraint, and complicating the code adding thread(s) dealing
+with the user page faults service.
+
+
+It's also worth mentioning the IO memory, vfio configured memory buffers
+case. The Qemu memory remapping (if it succeeds) will not reconfigure any
+device IO buffers locations (no dma unmap/remap is performed) and if an
+hardware IO is supposed to access (read or write) a poisoned hugetlbfs
+page, I would expect it to fail the same way as before (as its location
+hasn't been updated to take into account the new mapping).
+But can someone confirm this possible behavior ? Or indicate me what should
+be done to deal with this type of memory buffers ?
+
+Details:
+--------
+The following problems had to be considered:
+
+. kvm dealing with memory faults:
+ - Address space mapping changes can't be handled in a signal handler (mmap
+   is not async signal safe for example)
+     We have a separate listener thread (only created when we use hugetlbfs)
+     to deal with the mapping changes.
+ - If a memory is not mapped when accessed, kvm fails with
+   (exit_reason: KVM_EXIT_UNKNOWN)
+     To avoid that, I needed to prevent the access to a changing memory
+     region: pausing the VM is used to do so.
+ - A fault on a poisoned hugetlbfs large page will report a hardcoded page
+   size of 4k (See kernel kvm_send_hwpoison_signal() function)
+     When a SIGBUS is received with a page size indication of 4k we have to
+     verify if the impacted page is not a hugetlbfs page.
+ - Asynchronous SIGBUS/BUS_MCEERR_AO signals provide the right page size,
+   but the current Qemu version needs to take the information into account.
+
+. system/physmem needed fixes:
+ - When recreating the memory mapping on VM reset, we have to consider the
+   memory size impacted.
+ - In the case of a mapped file, punching a hole is necessary to clean the
+   poison.
+
+. Implementation details:
+ - SIGBUS signal received for a large page will trigger the page modification,
+   but in order to pause the VM, the signal handers have to terminate.
+     So we return from the SIGBUS signal handler(s) when a VM has to be stopped.
+     A memory access that generated a SIGBUS/BUS_MCEERR_AR signals before the
+     VM pause, will be repeated when the VM resumes. If the memory is still
+     not accessible (poisoned) the signal will be generated again by the
+     hypervisor kernel.
+     In the case of an asyncrounous SIGBUS/BUS_MCEERR_AO signal, the signal is
+     not repeated by the kernel and will be recorded by qemu in order to be
+     replayed when the VM resumes.
+ - Poisoning a memory page with MADV_HWPOISON can generate a SIGBUS when
+   called. The listener thread taking care of the memory modification needs
+   to deal with this case. To do so, it sets a thread specific variable
+   that is recognized by the sigbus handler.
+
+
+Some questions:
+---------------
+. Should we take extra care for IO memory, vfio configured memory buffers ?
+
+. My feature code is enclosed within "ifdef CONFIG_HUGETLBFS_RAS" and is only
+  compiled on linux versions
+  Should we have a configure option to prevent the introduction of this
+  feature in the code (turning off CONFIG_HUGETLBFS_RAS) ?
+
+. Should I include the content of my system/hugetlbfs_ras.[ch] files into
+  another existing file ?
+
+. Should we force 'sharing' when using "-mem-path" option, instead of the
+  -object memory-backend-file,share=on,... ?
+
+
+This prototype is scripts/checkpatch.pl clean (except for the MAINTAINERS
+update for the 2 added files).
+'make check' runs fine on both x86 and ARM
+Units tests have been done on Intel, AMD and ARM platforms.
+
+
+
+William Roche (6):
+  accel/kvm: SIGBUS handler should also deal with si_addr_lsb
+  accel/kvm: Keep track of the HWPoisonPage sizes
+  system/physmem: Remap memory pages on reset based on the page size
+  system: Introducing hugetlbfs largepage RAS feature
+  system/hugetlb_ras: Handle madvise SIGBUS signal on listener
+  system/hugetlb_ras: Replay lost BUS_MCEERR_AO signals on VM resume
+
+ accel/kvm/kvm-all.c      |  24 +-
+ accel/stubs/kvm-stub.c   |   4 +-
+ include/qemu/osdep.h     |   5 +-
+ include/sysemu/kvm.h     |   7 +-
+ include/sysemu/kvm_int.h |   3 +-
+ meson.build              |   2 +
+ system/cpus.c            |  15 +-
+ system/hugetlbfs_ras.c   | 645 +++++++++++++++++++++++++++++++++++++++
+ system/hugetlbfs_ras.h   |   4 +
+ system/meson.build       |   1 +
+ system/physmem.c         |  30 ++
+ target/arm/kvm.c         |  15 +-
+ target/i386/kvm/kvm.c    |  15 +-
+ util/oslib-posix.c       |   3 +
+ 14 files changed, 753 insertions(+), 20 deletions(-)
+ create mode 100644 system/hugetlbfs_ras.c
+ create mode 100644 system/hugetlbfs_ras.h
+
+-- 
+2.43.5

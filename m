@@ -1,80 +1,80 @@
-Received: by 2002:a17:505:1909:b0:1be9:327d:8ee3 with SMTP id az9csp1444915njb;
-        Tue, 10 Sep 2024 15:18:07 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVVgd7wzNS8JzbNUp+iYlHJgXCE6KK6dfKogenTfOTgHUU5R1dGcsFNbbZErx6ooTDHlUv8AsblixqgMg==@linaro.org
-X-Received: by 2002:a05:6a00:1402:b0:714:3a4b:f78f with SMTP id d2e1a72fcca58-719171225c4mr973580b3a.20.1726006686743;
-        Tue, 10 Sep 2024 15:18:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1726006686; cv=none;
+Received: by 2002:a17:505:1909:b0:1be9:327d:8ee3 with SMTP id az9csp1444926njb;
+        Tue, 10 Sep 2024 15:18:09 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXfG7q2XVKPY/UxfVH7tTxw5g4EWKnw2+UWoB2/yKivK5AEQOxM0hOQgRyVVjcSELp/GuVjyRzwSd6Enw==@linaro.org
+X-Received: by 2002:a05:6a20:d503:b0:1cf:305c:675c with SMTP id adf61e73a8af0-1cf5e033153mr3055667637.8.1726006689372;
+        Tue, 10 Sep 2024 15:18:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1726006689; cv=none;
         d=google.com; s=arc-20160816;
-        b=agwkxmwAVlB1MNOGZGRRRQf6qTw/oDWr67iN/m/j0k/RmMnI0yD1nL9zt5+Zi+4mPL
-         ntvNMkQQf2TbBmF5k7XSIZkg3Hh1WjlsYa4DR4DnFiXdmiNft15yRTzQITAxD3AdQj1y
-         GhUKVII9DsoadZi1uPbbraO1lIIfEV/0xhT2blDi9l8dQKdDrQ3lWjXE47T2AjTzkvWr
-         plDNW2w35OhPvw9hd17mo2M8aKOGkLDV9WoiXyQNpFdsXhjMhKU9+HEgAH/tFHdNkwy/
-         ZmJoCTNWoB+SXNGt8kGvJ9RRhHg4BX/cpJ9lt3CZAi8JHGHX69Cy+uYzH9SBMMyPE405
-         0zmg==
+        b=uGS4mcohm0cDzt/aAKQ0x1sUmKZZ8xIzzrSAob3qZpF2QjWCr2Dwsvx1wI96JE9oHP
+         QWgla4DA7Lx/bvCz1DD8FY/aE8jS3vDxiFohKAUgB6eQ0oOU7BBC9FTSEt0DJsN4aFZ0
+         sNhzY5du5wVm9utwgIZQj4zkJWN0ZNmr2ogsbkslK3sHqvWLOBNPq+sKL5ILLCUWECm6
+         6KvIlD9HMQMfNL3SWDIV0JBkTHOnICnJqj6ulZYJdmIjJxA/sT+eA1K+Cf7mZlyPS/wr
+         5lN7XoAL1QahJy75BpfY16GtVopr1D6jCkMue8zWLD6cHexZipTTJeWKQvRDpaxxCGi9
+         7asQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=ilTWC8SUeBuQoT7BUDbD2Q85sEksALIaITVdH6ynhyQ=;
-        fh=jZeOMUTUrzHWANwV+6wNiOZd3P4ncuQseH9/0xvdyFY=;
-        b=Lb/wrM4nLPsfDW1d1bxSG1wnPvDdDpzhA6w8QyslrATdEsy4FVSEGHWvk9u4RF1R/6
-         c2drwL2tajDDkmbvDcEZiXsuK2Ikxbrvxfxie/tZS/e5/RHdvlFlMIrTQdANmFzbIuKH
-         Nc+3skH5rkCeJQe5JsXqiFCgoZ52DZpvZDQjYkpfklZN2CxkfPUV29oQCwuUx/3yzMLr
-         RVP6zBvUVnjoOHI4dJFY9IunEHnYUdWNySHAj1N3MRuT1y5y735mGbC+tTs2TMxnjwt8
-         6FBldwwe2gU7NWGlYSE2GIiECI0r0QoAKMRUXlu+lyvW0m1VuLgmAu1bx+TCZwJ8O5/h
-         gxsg==;
+        bh=w3yhi+ZDTWCfsZmUwBuf/pfnGgC91a9e/gCoVrv3y5U=;
+        fh=gk6B6OcaFr1ybMoPuv63t4jc//4Adx3NbFkDGYAT1D4=;
+        b=ZSQgofsfNeB3dkilx2Nh3JHN23oowob6XBqynB+sCFruFgKXRSeHkZk4DsWY7ksHhr
+         tsAMY/cB4LJKL8UG587WLoQuYFfBhIH/X7IsXu0TZEJViIrqP33Yt+OpXmGM2bnc5/1g
+         SI5/Mmn37UTo7dHrKO68rYRyIZpH3jQx51iquiGNjObnHvgv2kGSDx6RvXrPo18V+xJb
+         UWN7S2JX+hm7wkeNeHlbLYoIX0cwtzMwbcbEH15pUpkR9z2KMn1ChX5IRoUrZyDKf6BS
+         /P/iC05NzFkUnV/hhaRMeEuwa26OMKGuoCDX24yiq08kOkDhK51v5lB3qRvMuilGMMVx
+         j09Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=RLsIxGjN;
+       dkim=pass header.i=@linaro.org header.s=google header.b=PJyE6oAY;
        spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <pierrick.bouvier@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d2e1a72fcca58-718e58acd7asor4722754b3a.3.2024.09.10.15.18.06
+        by mx.google.com with SMTPS id d2e1a72fcca58-718e5978aa6sor4636287b3a.7.2024.09.10.15.18.09
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Tue, 10 Sep 2024 15:18:06 -0700 (PDT)
+        Tue, 10 Sep 2024 15:18:09 -0700 (PDT)
 Received-SPF: pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=RLsIxGjN;
+       dkim=pass header.i=@linaro.org header.s=google header.b=PJyE6oAY;
        spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1726006686; x=1726611486; darn=linaro.org;
+        d=linaro.org; s=google; t=1726006689; x=1726611489; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=ilTWC8SUeBuQoT7BUDbD2Q85sEksALIaITVdH6ynhyQ=;
-        b=RLsIxGjNeXdwvA3/F3Wjto5LXsZWO3byCjrLElvEJHznnvQXTNuhIqTX+YQdN2B+JP
-         DXBNxZqwOeSad0HAmoEqWhkdg3RvpMgIHoqFcmGVOXh1aHi2v6ONP+AYFYEPHUI5r/vb
-         TAkY7S9AkY/E4D2lDWhTq2zq7LDJ0H0pqTnk0BSrdSVrASR7VAdbbRpltx6phXADPXbx
-         OjEz3StYfmytedPMLbBAPulur3iXkhn6S0GmWn+q1+sJKnUhPPtpPeFWRkXA7ml2OwWp
-         7he5wEXeUwymdvTYo4ikiCbg8QpP5/j/UKCOwUUhUkZjePD4WZ54xtaaNL4Bcw056Nnq
-         uPRg==
+        bh=w3yhi+ZDTWCfsZmUwBuf/pfnGgC91a9e/gCoVrv3y5U=;
+        b=PJyE6oAY2OLkmBw/31UK2sECnAfOJmOCRs3OolnpgiVOYIrZyg1brRASzxLNmxL1in
+         hBVf4y0AjliomIYCfDU+ioWylVfLROS3vUKFh+jNl4c5fqNTaNFir2/7ph7Ub8qGbiVQ
+         61LgtFFUl/SiKNX4heHeRk7zYoMVlsCJjZfmHMmbjmFXoBI5KULY8jGCLNCBi3bo6ZV5
+         9MDXGWzvIsjUGskX8L80XHEjEsbZuZyGe7BXbLB89U5zPJYu/ikFFLP1zotECQQI/56p
+         RoKTwCxfnErnDzi2+yw2ro+CwoBaOVXonfYjHUJcbGLclOCR5MreQMH2lczjxzY6VWU4
+         vaAA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1726006686; x=1726611486;
+        d=1e100.net; s=20230601; t=1726006689; x=1726611489;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=ilTWC8SUeBuQoT7BUDbD2Q85sEksALIaITVdH6ynhyQ=;
-        b=JDgpDXTgAYxCHQykSh36G1yftshNH8xt+5aKHvShpyYmWkgwaJrU1xaZWbbLLodHON
-         CTQbsAwvO/Q8jBFZdKxDxID8VC7P+0Keb9fbyTF18AQGGu+VYrHuPYVNO1I7pqWxnPqe
-         OllIKtJPmfnNy5F6eSRW4pQljQP26Ha/w6uCSPwB091ZW7RYz+8cY5fQHaEDjw491/Ag
-         bqsfbW8P/qCZwXv3dGBzNt5Z5zYhKIBBaEst8edaRReUXVPZTKhSUbzEzzttyEjtG+te
-         zRBBF1ao9JhTVRMe4rmFTU6buq285f0n+RyyClRj3xjIrOVetHiE72WcqXZYz9g0VZXO
-         9KOA==
-X-Forwarded-Encrypted: i=1; AJvYcCXAGk2R1b07H5McRmWx6ScINAS/WrqZ8jgtafEoqh98J7E7SgGxYAEwSxeLKryMR5972jbMB83/no8zhQ==@linaro.org
-X-Gm-Message-State: AOJu0YxYyv2iNflOsKgnFXuc+PeIoqFPIpcNXdSwh6QaPbd0EMZ29/b/
-	L9VKJcxzwh/FuuVriyXvozUlkkgnJRPhlLqM/TsILtw9x6bRZHbAvLXrptaukuO0Ig==
-X-Google-Smtp-Source: AGHT+IFCrp/2O2fWq/sOFJdW2m0YIC6PP34v266qfmkWHzxnSrAINIAZCxBzCzEo5+wVOk3yz3M+wg==
-X-Received: by 2002:a05:6a00:1799:b0:706:5dab:83c4 with SMTP id d2e1a72fcca58-71916e7d1bdmr1330581b3a.14.1726006686207;
-        Tue, 10 Sep 2024 15:18:06 -0700 (PDT)
+        bh=w3yhi+ZDTWCfsZmUwBuf/pfnGgC91a9e/gCoVrv3y5U=;
+        b=toR+P7FZ2P54NlSFBYeFRkTsp5krcnRocbPYFqCpmcTcyLDZqa8fkBW6deN2xRILKw
+         GNDKYvRQZYr9p5DB8YmAGy2Vn4QGgFI8xJY0kdy7dx6uBnE+say30mC/ZNQEQawqEKZO
+         ekZGhoe6CZoINKai8mr+NNM0P1D4ChuGvS47hVdyGHfp2Dm3x8UJYTIUHHzJ9YlmBGs2
+         g23B6UoeTTB/XrU8U0uEgnRvvPxIFpRyCuH0oUTRyFU9OAi8Kiw9Mt/vs7jXp1/qGDNY
+         LppshixhezlfeNAb23zNATiI1qBU2Wm6UxjK6u/8e2wB14qdYcpBTla0wDDdane7gK3L
+         5Zuw==
+X-Forwarded-Encrypted: i=1; AJvYcCULln4G5vVy0oJAx4K0Ev45fYBXH37TvkUYjqcvHuuhajLcFTy+W4NYa11rOgmqQCGzmhVSkcGqDapRGg==@linaro.org
+X-Gm-Message-State: AOJu0YzeD8udwnhe//t3K6TiITarvmGU9Ax84Y59iV1VDr/SV3BEAltp
+	KsLH6NBD5RkPsi5HnsCOh5+UhFXdU/qVNBw+4LfP+xqLtJtkl5MCL8zbrK+i6kVOyQ==
+X-Google-Smtp-Source: AGHT+IFWVQXCFJBuiwg4sJ6d5t1Y5jRczP6OzJP2N7AUafUaS1UpRZkOWeoH/e+NIJwWwR2fc3KdxA==
+X-Received: by 2002:a05:6a00:218e:b0:717:9768:a4e7 with SMTP id d2e1a72fcca58-718d5ded0acmr15828847b3a.2.1726006688573;
+        Tue, 10 Sep 2024 15:18:08 -0700 (PDT)
 Return-Path: <pierrick.bouvier@linaro.org>
 Received: from linaro.vn.shawcable.net ([2604:3d08:9384:1d00::9633])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-71909003d0esm1884055b3a.93.2024.09.10.15.18.03
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-71909003d0esm1884055b3a.93.2024.09.10.15.18.06
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 10 Sep 2024 15:18:05 -0700 (PDT)
+        Tue, 10 Sep 2024 15:18:08 -0700 (PDT)
 From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Zhao Liu <zhao1.liu@intel.com>,
@@ -140,32 +140,40 @@ Cc: Zhao Liu <zhao1.liu@intel.com>,
 	Jean-Christophe Dubois <jcd@tribudubois.net>,
 	Jason Wang <jasowang@redhat.com>,
 	Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH 36/39] ui: remove break after g_assert_not_reached()
-Date: Tue, 10 Sep 2024 15:16:03 -0700
-Message-Id: <20240910221606.1817478-37-pierrick.bouvier@linaro.org>
+Subject: [PATCH 37/39] fpu: remove break after g_assert_not_reached()
+Date: Tue, 10 Sep 2024 15:16:04 -0700
+Message-Id: <20240910221606.1817478-38-pierrick.bouvier@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240910221606.1817478-1-pierrick.bouvier@linaro.org>
 References: <20240910221606.1817478-1-pierrick.bouvier@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: T9up8q5QqWNQ
+X-TUID: kPxlJV7utYyG
 
 Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 ---
- ui/qemu-pixman.c | 1 -
- 1 file changed, 1 deletion(-)
+ fpu/softfloat-parts.c.inc | 2 --
+ 1 file changed, 2 deletions(-)
 
-diff --git a/ui/qemu-pixman.c b/ui/qemu-pixman.c
-index 5ca55dd1998..6cada8b45e1 100644
---- a/ui/qemu-pixman.c
-+++ b/ui/qemu-pixman.c
-@@ -49,7 +49,6 @@ PixelFormat qemu_pixelformat_from_pixman(pixman_format_code_t format)
-         break;
-     default:
-         g_assert_not_reached();
--        break;
+diff --git a/fpu/softfloat-parts.c.inc b/fpu/softfloat-parts.c.inc
+index a44649f4f4a..cc6e06b9761 100644
+--- a/fpu/softfloat-parts.c.inc
++++ b/fpu/softfloat-parts.c.inc
+@@ -1373,7 +1373,6 @@ static FloatPartsN *partsN(minmax)(FloatPartsN *a, FloatPartsN *b,
+             break;
+         default:
+             g_assert_not_reached();
+-            break;
+         }
+         switch (b->cls) {
+         case float_class_normal:
+@@ -1386,7 +1385,6 @@ static FloatPartsN *partsN(minmax)(FloatPartsN *a, FloatPartsN *b,
+             break;
+         default:
+             g_assert_not_reached();
+-            break;
+         }
      }
  
-     pf.amax = (1 << pf.abits) - 1;
 -- 
 2.39.2

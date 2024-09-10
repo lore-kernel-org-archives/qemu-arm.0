@@ -1,228 +1,122 @@
-Received: by 2002:a17:505:1909:b0:1be9:327d:8ee3 with SMTP id az9csp1212128njb;
-        Tue, 10 Sep 2024 03:04:03 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCWKlkWQb7GDQH7PgMhe3Kh0/U9LBCsod0UxkvFv55hVBFEDr6EeD25De8sWPWMkRZpyKneUcXdjhwSVpA==@linaro.org
-X-Google-Smtp-Source: AGHT+IHQyFWZKbsUavki1b7Eyk600B6d0hOZPIdYO/ieRZtbjWKbRPdk+evcn4JVduo1NZj4mCuO
-X-Received: by 2002:a05:622a:51:b0:454:f3ce:66c1 with SMTP id d75a77b69052e-4580c6748f0mr169503511cf.11.1725962643368;
-        Tue, 10 Sep 2024 03:04:03 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1725962643; cv=pass;
+Received: by 2002:a17:505:1909:b0:1be9:327d:8ee3 with SMTP id az9csp1215908njb;
+        Tue, 10 Sep 2024 03:17:45 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCULcVd9409t3fvHS8iyhqXsCh7lvfzfvl/zcZ9SX2R/IcmnQBPiGn9qnn7/4iSA9nYPgGZekMNTQz9XnA==@linaro.org
+X-Google-Smtp-Source: AGHT+IE9fckABV2zxetKsmG7nc6p8h3Vx2+j4y3uzZ3UfgpbATiLyQCVKeZacV5P+lzlRBKyK4HX
+X-Received: by 2002:ac8:5a43:0:b0:458:3850:c7aa with SMTP id d75a77b69052e-4583850ca21mr75582211cf.15.1725963464882;
+        Tue, 10 Sep 2024 03:17:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1725963464; cv=none;
         d=google.com; s=arc-20240605;
-        b=iuIozG9E4vhBJRr5kmHYKkISqMHMUJum864NClVGP0AColm9zZjF2FTxP0SeNXGrsL
-         lf2z0oMSsviNwYitVadRsctxsTU6wfweHVTPi9vJwNCt94R8fJPPSexORu1U17evbS+Q
-         CcYwje+TVfU+pXaMqZNXdFz6/msa8mQGSPoD5vFbB5w/7O/Y61VHlEGYvCOlxMF2Boru
-         pYrHxjGz1Dnh/hB10mibBkho4xyef/xSybYmYSuWax6GaBkyUg1ximJlUtd7HtUE7Vmz
-         WCRpcWwRBRT3t47tfxPANcw1QNZ4GOe5TV9stqUk+v6+gfEGNRFcOj0pppyr/3f4OIyM
-         drVA==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        b=d9YSfubMcO700wP7RxXaRAHeT7maoHS1K53NnrktJYLBW6gjKG6xO8lYvXZkoMCahg
+         dz5UmNiMYB2CL26ntrocI9Bge3BZsFDY/PTGRgovKGNcmMwlPtTKJDC6sIXs64rbyXtW
+         8gixtRCs6WryC1Pynu9IMJR71+4pTzN6e+++vurljc0+dv94usxVr/4E3ohwGnDRyDDE
+         zlWjIsTD/sCsSjATvd5q+kCa6Ob0QdFllIQLgBkm8a9ahFDvl7iGlA6fjB6OQ4aHBkom
+         89TffcYdD+tIpFETY14L1oUYCwR1rWJ4xNmL90Sdqaz5hcTWtZRkLv3T9AfnqnH7XgRc
+         77Og==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:references:in-reply-to:message-id:date
-         :subject:cc:to:from:dkim-signature:dkim-signature;
-        bh=lTEL6i972hm0brpxKiBCC5Jh/AaomVcIwAnTkmwuThc=;
-        fh=bJyx0GIygJJ7mZ8POOZTcS7Rg6xJihq9RUXNSf7abkk=;
-        b=ji1QJLU5Tn221kiuD/lrxPs4rCrlSYU7Z3BnX7BiZZzT0QQwgXURU33kEkUzRyj7HJ
-         fn0NRLF/CwVLlnQI1EUkb1kPcwTcF4rCDPhBHLCQR35VUKogDeDf5+iI3zOWNJTAwD5P
-         Cd0iEzcN9kk8QU/qhN6YCJiM+n0a7xgOyIctzxNCL41KbPYY6jk9s5BC/0Eskr7Hd/je
-         DqYVM/B+fDzD6yU33HKhE50/L0hkJ5c40qbe18iGyJg4V5AnGDiztLwv1izFFpLvzK0h
-         CWjieaClzFAspqcZNUAbUYGXTcIWX+lsZs/cMFjKPWfsAhZvtqohnWAc5sjPr0UvdIHD
-         4OAA==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=adMeFvNai4sKgpq/l2xsJ3FjCurUnP6RSssiorm3uis=;
+        fh=Wfq/7lIriO9ufKDSwV29gABL/TXNcY3Eo92iTQ+vizE=;
+        b=UkSLRke5xIyHxz4+NZcEQIb4KYDz5I+og3np81QIDaQAzWwywSKetidGIDJ67E1uiR
+         F3+BKsJS+URpMyCT9bAl2n7NnmkGrBAkY0IqVTadqYkphcvT8VHa09QnhlnafPDkthAx
+         bX/WAFDC33zmMGY+li6R7yqfFFdAYT1TQnJ+RP2WdQfqGx0T6qNKX+pEBbOgA5GIWrTk
+         Oq1SGY3jse3kOt/uY5RoUDrld6HlmPSzoPc3vi3pY8kbaAQxd/U6PIthZU1QXBVS1Ezm
+         j3eQYTRnCwR6GB9cmHynKDDSFbZ49RLed2SHzYD+zH7faHuU0lxbHZb2Lg/EezEL2i8c
+         Fc3A==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@oracle.com header.s=corp-2023-11-20 header.b=h5jTwveO;
-       dkim=pass header.i=@oracle.onmicrosoft.com header.s=selector2-oracle-onmicrosoft-com header.b=CKy6czpe;
-       arc=pass (i=1 spf=pass spfdomain=oracle.com dkim=pass dkdomain=oracle.com dmarc=pass fromdomain=oracle.com);
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=JaE+v8sP;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=oracle.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-45822f3e3adsi75759781cf.266.2024.09.10.03.04.03
+        by mx.google.com with ESMTPS id d75a77b69052e-45822e7ee32si74195061cf.197.2024.09.10.03.17.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 10 Sep 2024 03:04:03 -0700 (PDT)
+        Tue, 10 Sep 2024 03:17:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@oracle.com header.s=corp-2023-11-20 header.b=h5jTwveO;
-       dkim=pass header.i=@oracle.onmicrosoft.com header.s=selector2-oracle-onmicrosoft-com header.b=CKy6czpe;
-       arc=pass (i=1 spf=pass spfdomain=oracle.com dkim=pass dkdomain=oracle.com dmarc=pass fromdomain=oracle.com);
+       dkim=pass header.i=@linaro.org header.s=google header.b=JaE+v8sP;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=oracle.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1snxhg-0006Ry-IK; Tue, 10 Sep 2024 06:02:32 -0400
+	id 1snxvz-0008Hh-Nv; Tue, 10 Sep 2024 06:17:19 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <william.roche@oracle.com>)
- id 1snxhf-0006NS-EF; Tue, 10 Sep 2024 06:02:31 -0400
-Received: from mx0b-00069f02.pphosted.com ([205.220.177.32])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <william.roche@oracle.com>)
- id 1snxhc-0001l9-RE; Tue, 10 Sep 2024 06:02:31 -0400
-Received: from pps.filterd (m0333520.ppops.net [127.0.0.1])
- by mx0b-00069f02.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 48A9QnDn024802;
- Tue, 10 Sep 2024 10:02:26 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=
- from:to:cc:subject:date:message-id:in-reply-to:references
- :content-transfer-encoding:content-type:mime-version; s=
- corp-2023-11-20; bh=lTEL6i972hm0brpxKiBCC5Jh/AaomVcIwAnTkmwuThc=; b=
- h5jTwveO8V5SUyzI5wwUJgAZGFDkQ2ORqLXPbxuSeJSHQtFRjvPNQbJVONaG76/8
- iqlyvVm0b+TURu+7Bd3/krCXRGS+lEZJ7FAP/iuF9u1Qk5rpIPCnBLUhepZ+HvsA
- cDsa7YKczjtsbcwJNY9pTa/WYMZeIy3TLccJHxo2WJ1yYzNyyfzkPEkcevOjc+UT
- E7asMADCJILln90SHC67msBktYvkXXuSsH33bVsWOXQm32YB1Qi5Pt9RQKy8pA2l
- zxAlgc3iunbjsmLoAJzMDD/dpSPHauB+Bkkx8sGiRqRaUlLQcYPDe1axzRPH4eiC
- wg1eapkuFzyOH00W1uABvA==
-Received: from iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com
- (iadpaimrmta03.appoci.oracle.com [130.35.103.27])
- by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 41gevcn4cs-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 10 Sep 2024 10:02:26 +0000 (GMT)
-Received: from pps.filterd
- (iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
- by iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (8.18.1.2/8.18.1.2)
- with ESMTP id 48A8jrVF006304; Tue, 10 Sep 2024 10:02:26 GMT
-Received: from nam11-dm6-obe.outbound.protection.outlook.com
- (mail-dm6nam11lp2174.outbound.protection.outlook.com [104.47.57.174])
- by iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTPS id
- 41gd98ba8k-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 10 Sep 2024 10:02:25 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=s6vQv/KdvSdP22n5b7T0YdXIPaqBNfYtrTyFplKbRA2rPEMPdJWut5py3JKzOKzQaiuB9NiHSJWCZaN102WO8abIu6Sjcm1MpplPUxixEqCWgIKSiYFl99WDH/uMpFjWIw2qXRMi6uaRVtmBhvxYwEniL4rTfIAGhhgUwxWvvyMWQxsYik8oqu1BW7zwmOiup3gGTwq5Kilyj1KvjIybCh/JPNzk0tlxDx8BU7KeNviQMnfsDFRxzacfa0jQp/PkDCIzFTgup5ICVB/iR6emgAeCwdPJz2ORW82kU4ezFi9tCwu0GrwQdbZ5vF6auudctuPn+ZaLAt0qG2iQDxmzZw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=lTEL6i972hm0brpxKiBCC5Jh/AaomVcIwAnTkmwuThc=;
- b=XxkqVcMxeVx5+DEudTMEZt6mGO3V4xnwf8mRR2pqWjw8NDGhqSwEsRRzoFnO5xef4YX1Op0MlLR4OrTzdVSL+WMNoKN76FNo0WGeGvnke0qzqlJuR9L5i216AG5Pz6JfJxTQhg2jVeF1csVKFkeGnjd1ZTLgntuU7pBrYz06gYu7NbQ7KEx3d1isceOPgJ+NyqUdaOY/jJBdkIhafpH54vsjUTuYSyjEKi6P6ahBJk2pBSXNtfvA0lSZxo9U2q6yQN/Io+LrFFs89JKLfkJwdmERVb5jG48HegpJD5krOYWb6tq5G0uMElPmhEzwo4j3OdDJC9zRzGkh3xDVCEM10Q==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
- dkim=pass header.d=oracle.com; arc=none
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1snxvy-0008H8-Ko
+ for qemu-arm@nongnu.org; Tue, 10 Sep 2024 06:17:18 -0400
+Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1snxvw-00039q-Vs
+ for qemu-arm@nongnu.org; Tue, 10 Sep 2024 06:17:18 -0400
+Received: by mail-ed1-x52c.google.com with SMTP id
+ 4fb4d7f45d1cf-5becfd14353so5115218a12.1
+ for <qemu-arm@nongnu.org>; Tue, 10 Sep 2024 03:17:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=lTEL6i972hm0brpxKiBCC5Jh/AaomVcIwAnTkmwuThc=;
- b=CKy6czpejbytM9dTSyhWMy5w1vm/XB5Jb6Hth+U5zF+LOiQJzHUGWQTri23hodZ/3j9wShhvKIS7aH9Gk+W0JdWlG7xTjBUScn/uUfV/klgzDng6wEq95rFKyCZX3FWvgxRaTbzVhse6IO7Nccw360p6+QmQFvhPbM9xgrjbKCw=
-Received: from CH3PR10MB7329.namprd10.prod.outlook.com (2603:10b6:610:12c::16)
- by PH0PR10MB5894.namprd10.prod.outlook.com (2603:10b6:510:14b::22)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7939.10; Tue, 10 Sep
- 2024 10:02:23 +0000
-Received: from CH3PR10MB7329.namprd10.prod.outlook.com
- ([fe80::f238:6143:104c:da23]) by CH3PR10MB7329.namprd10.prod.outlook.com
- ([fe80::f238:6143:104c:da23%5]) with mapi id 15.20.7939.010; Tue, 10 Sep 2024
- 10:02:23 +0000
-From: =?UTF-8?q?=E2=80=9CWilliam=20Roche?= <william.roche@oracle.com>
-To: pbonzini@redhat.com, peterx@redhat.com, david@redhat.com,
- philmd@linaro.org, marcandre.lureau@redhat.com, berrange@redhat.com,
- thuth@redhat.com, richard.henderson@linaro.org,
- peter.maydell@linaro.org, mtosatti@redhat.com, qemu-devel@nongnu.org
-Cc: kvm@vger.kernel.org, qemu-arm@nongnu.org, william.roche@oracle.com,
- joao.m.martins@oracle.com
-Subject: [RFC RESEND 2/6] accel/kvm: Keep track of the HWPoisonPage sizes
-Date: Tue, 10 Sep 2024 10:02:12 +0000
-Message-ID: <20240910100216.2744078-3-william.roche@oracle.com>
-X-Mailer: git-send-email 2.43.5
-In-Reply-To: <20240910100216.2744078-1-william.roche@oracle.com>
-References: <20240910090747.2741475-1-william.roche@oracle.com>
- <20240910100216.2744078-1-william.roche@oracle.com>
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-ClientProxiedBy: BY1P220CA0001.NAMP220.PROD.OUTLOOK.COM
- (2603:10b6:a03:59d::14) To CH3PR10MB7329.namprd10.prod.outlook.com
- (2603:10b6:610:12c::16)
+ d=linaro.org; s=google; t=1725963435; x=1726568235; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=adMeFvNai4sKgpq/l2xsJ3FjCurUnP6RSssiorm3uis=;
+ b=JaE+v8sPsD1qauisOz2HK2DX4iaiPhxLL1CiSJspcLdQXgX1i9egvs0FxUcVuG67OU
+ K//I6ROjz1Ppz5eH6wtdzXRkIjTCK9TJ1J9zYLyEgz+KXYL9d7nh5HnPv8ge6tfN+MRZ
+ PhR+Vv9vPIY90WW4gqoCBZfioxTUbIm1Gt/vUakOILpH5KIu0obouhOYAHiA3tF7Vtkv
+ pwg7uH2VCI/ntW84ub5sBD4MnATpnxg/mZpog66rZnlduAGtorHhoS0Oj2HEJJgAZMpS
+ QqqHRKT7oMBq7CKcpPyqgadKWdh1nkKT4QfNS5n5p8X1KRjkxlswTVxkty/u76yd/syo
+ 7Dcg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1725963435; x=1726568235;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=adMeFvNai4sKgpq/l2xsJ3FjCurUnP6RSssiorm3uis=;
+ b=fAR27LQjgi7ILh2Cs+1Oh3TfJfi7k8W53/ymyp5DB+Xn1fe+nT5Sfh1SRSkmapmdbm
+ xM0nXqAKUSgF7s/nevee1mRzzXoYhOdqH/8t0c3bfkRETWz7ZpIC0dt6cT8SA63hqQH3
+ kCDrMHKFTwhD9IMiST4g8AudaNocxUOVT4S+SJrPCF6gjr7AJZrEO7UfjQ5tBA6AwrFE
+ O7LT9B1+2yrVQEp6uffqGo6YsK98Jt66/1kP6grBCwXB6wx/RwFlo0KLr6KiQCYlKKsi
+ lNsfi+9mLtROdehGz8g1uq9Za6NbJggKlmLDUMM/vvZ9FSaZcJJxhfWwv5GJB5rLnRhC
+ lLag==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCW8AFtHFnoprBzmTiWXDJc6D3uo7ctTgSdsn8onBVL8WE8h95T5m2rkItsacr9Zj+YNtHlXvqlcpw==@nongnu.org
+X-Gm-Message-State: AOJu0Yxo0K83qsKEggwuU74iy9hnGn4qjf+quAK1jiVBRpmk+c5Fty29
+ 1W+I/2OggrdHpGAS6BvlFwVQqnOSCz52RIzJs5xgRi8M+AiCieHQD8i258LR5BFpevR40QvAXB0
+ /jtg7BI2wNHeZj51aSjZMW/tVLECp24eoRo9E5g==
+X-Received: by 2002:a05:6402:530b:b0:5c0:b33d:5fcc with SMTP id
+ 4fb4d7f45d1cf-5c3eac09850mr6486603a12.20.1725963434666; Tue, 10 Sep 2024
+ 03:17:14 -0700 (PDT)
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: CH3PR10MB7329:EE_|PH0PR10MB5894:EE_
-X-MS-Office365-Filtering-Correlation-Id: da1e888c-2ac1-4ec0-a7ee-08dcd17faa80
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
- ARA:13230040|7416014|376014|1800799024|366016|921020; 
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?NT9waOgBSNseEpv7xU8F/FZ3jDam3pnjwlMod4jrIEA60HgNrP+d/AHrQ8Ma?=
- =?us-ascii?Q?5AKZpB2gr3ozLcj1d8uorvAn2UpHGFi+DT+sgHWyrRpqeF9Bn4Rph1CtDqS3?=
- =?us-ascii?Q?5vFmfjAIgDJIUIgGDV/ocAv2jg3SlF/8oxn+ehRzbZ63nEpMGXB69ATbccZg?=
- =?us-ascii?Q?xGZupqs8QZOnY2WgK5iukcBC2V/yCde61ckoQGuiOrcp3JNRk2HlUrZlvjre?=
- =?us-ascii?Q?REeUxDwh23M8EFQ4AT9kWRl6CcaXY+h0kxSiulDDgXOiUSQw1HxedrLFKJuX?=
- =?us-ascii?Q?aGOOY30lQNpGLu89aOExeWFQDeMwtWcrR7wg0ytqPkwzEbxjjonAKlJMxpjg?=
- =?us-ascii?Q?p+NvY8GfrN/29S0lAWP70VV7wb9eU+X21twBMoACBRdMVfYyc+5JH+C1yZPU?=
- =?us-ascii?Q?epnTSGhj1zcT/tKD1/VGpHDO7LWYxwwO16dqJ1KG0qV9PJ6nK1PnzHfa+Zr4?=
- =?us-ascii?Q?1iHsrkxiM1G1bKdIKU3W9LJDDuCPEGbjqFnjFllo8TOJF+SD2PN62GgFN1T5?=
- =?us-ascii?Q?Nd0B2RCdeJEJphJSnj3WjGw35EUnbHT4qnIqgjMYIStCDvkxT+SAclgjN+he?=
- =?us-ascii?Q?CW++MwiSvtjSpRWaXlV0+mGVS350K2d8yYPXwwitNUNO3ufyn8ABp37vS3ON?=
- =?us-ascii?Q?ICsP/f+kCoKk56U9Vz7fPrmteBKAdwneF4Y2g3ZblZHBRbRSBjmTjx+tQ+Im?=
- =?us-ascii?Q?GcyJvJI2oia+sykmktqW7Aiaj4FMgxe79iQZF0f6ZtYtLLvXzzOZa3QMoyW4?=
- =?us-ascii?Q?geyItyndwQfeZlMKUk6XzP/jjNHDQMBxnOHaHb3qUNDf3hJsW+ol+vuSuGEn?=
- =?us-ascii?Q?nd7mM0znRX0mJPetCfDalyt6+zjavy1hyy358I1+h2ZTYtSzapnM3TeJrLKM?=
- =?us-ascii?Q?IFmBv1GgZVNmkFN+CW2qi+/AT6kwTvIn+Swokas1KFBmnunI2BqRGLShRO8J?=
- =?us-ascii?Q?Q6guoXZa4LKOQuGEgi6JmeKA+mRjiSlrjz/mEmawrxdhb6jGcltenwUD4iVK?=
- =?us-ascii?Q?EwhbAxbgYq9rm4P6gsfGm3C6kcsoTGczmI8dBuHxS4lXDmT8jhVX215zTfmq?=
- =?us-ascii?Q?KjBx81Xz31xp79Kjt46NMCZJJfObqzmKCeuC/v6H+TaK0ht0aZmYKqIONepE?=
- =?us-ascii?Q?hnX8XpKZBKuc39qZLbPBifdkYrreFfV0N6cqept/ev0foOajsMaCiPZ2TqBS?=
- =?us-ascii?Q?P06sRfQqPzogCcOaNJzPEKzYafhkJ6xG/UghdF8K1R+MBDEQwBekv9BEp3gv?=
- =?us-ascii?Q?ydoj+McnNZE7BDMAqIcHKPxYoM0E4Z4ASy7RsPtonnu9QfWhrCtl6Cp9hWRJ?=
- =?us-ascii?Q?CCObDqbZP7zO5CxJ35RwLeMGh3cDQwH60dMJQ4MWZbb2N7PjxHBqodGxZT9j?=
- =?us-ascii?Q?jMFZ+A+lYtQDgUHDfYW0zG8ARKb0?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:CH3PR10MB7329.namprd10.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(7416014)(376014)(1800799024)(366016)(921020); DIR:OUT; SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?1/F8jMERj0t2eWXh6pRJm9RI+hd+Oiq/cezG0gDzo5kmgWhIi9wVgSDtLTUu?=
- =?us-ascii?Q?Sm53RtWjjKUj6u3Q7Xk4DyJENGkXJigeNVWnNOqTMTPfmJ7lAdPaGWf23hAp?=
- =?us-ascii?Q?TJ+gZj6Na6ETvjLwemJxlVDNIY6NkGFeunSJoCVvKsg/9uyKTEPf0OeapW2c?=
- =?us-ascii?Q?5UYAN5CI++CoFJ/ITQhelCxyO4JmP+KXWWyMT0Pq7ywrI7rSxL7F0kw0tMZB?=
- =?us-ascii?Q?6QjyRK1SyMTDrAxJdMPGnLokNPOwuUbaJHMURDh1uj9OOEUtegj4GLVM9nQj?=
- =?us-ascii?Q?aJwaxcpPHFFXyRF3A7yfpmnwgZI6AgGTsHXbJqcXlkG9IkWpZRnrHUjsX5xk?=
- =?us-ascii?Q?Bpbxt5RCyTlrRBvfh3tXiAyB9wb9F0xTaVbIxS0xwBOrHs/UMBL7CdgPHRJ6?=
- =?us-ascii?Q?uVWIesw+DPTD1Ypeq7pxDAL9ok88NAI44MTxTW1sfJ6ZbKIv0+l2ewi7GP2S?=
- =?us-ascii?Q?kXq6CoQWCRD1b0na6FZIQVrZqP3Fc/T/FXreMWCVRdbwUnUBw3kE13gAHMdQ?=
- =?us-ascii?Q?8A/7Ey4v0f/dPbQBQ79L8SOsF1HUwyHq9hSP5do7Yv4stn7JIqDjRZZlMNDp?=
- =?us-ascii?Q?gyNoV8HAPlqR/J7dPKmzxktEIMbYa0de8gtej69Lk9I+jm5w3gP9p11O9TB1?=
- =?us-ascii?Q?He+wKlWFUBbNm1/bSfHMW3sh0uKiJ+Q3D0WHgs211Tfzubb0FKSupUwOAL1l?=
- =?us-ascii?Q?EEoeZUWwH4OndqzRjQr+MIX6/uHH2LhxMeAWPmc2E2wfVosmQZ/8DCriG12q?=
- =?us-ascii?Q?m5ETHfpYc2a2F72Nobg6u8bSui882dQY4Rm9Dx6szYDK8GGJISJUksRqufP/?=
- =?us-ascii?Q?KdfNoge0oXhunc0uhvV7RiRbuXYsHLEWNWaxaNQ5uZxxhy7z//HXwma2Kfl8?=
- =?us-ascii?Q?QvWw+ZDl4k5GaYXh3PzE6KBFwMgVzWHqnvdN310POW7sxjJv8OY0Tumq7pFZ?=
- =?us-ascii?Q?3KsL3iAMGUwxxbsNcKGXvgdEKrqIzjyuk1xWam73CJ3sgLPMyPpSnieiDP8d?=
- =?us-ascii?Q?vcIhbD3a1JJudrjsogPQ6d8hUDbV9WkfZP3gyk7tZCVAADS/GbuWRlNR1ty5?=
- =?us-ascii?Q?vScCPon+F0LpEr1d/TFKWfD8QLFF+4YlFl1m7JGorT6jbm+O+eVEBqpZLjBy?=
- =?us-ascii?Q?btNgzdBh9YTxmPD9+1vfhz6eMtuFH35eX21tjzWIGvkBMNA439uJXuvA8oEY?=
- =?us-ascii?Q?RolO5dwRErpawFZr+rJt2SnVC9eP/8P5LgsXrCYRzbtItn+WCpBZfa0ZV/mb?=
- =?us-ascii?Q?1oGyBg3W+JmTC3fxaVHcZAQBKIhhm+Tp8u6A4dPbp+LOgD4abe6N8ELxhbuY?=
- =?us-ascii?Q?MuIIEBY9F4sCi2bikc2IplQgXPvKNqSBwodpdu2jv8PqFdjbap7MD8GN66Bh?=
- =?us-ascii?Q?MqiPzvlyCiSaJgBtd9Z7VZ9Uv+pTT+rF5L5DGjYbe4y2F8mC9LyHkltN8v85?=
- =?us-ascii?Q?84dpaqFykVDn7TNdNNpXT8T4HsTT5LzU5Bk3jXQ+APrbTQchI7kTTPVftX+L?=
- =?us-ascii?Q?g79WG8+kDwao2v6Et41tyVscFrUNUjHiLfinfTL8yEbTNP8BufwOc1t6kICq?=
- =?us-ascii?Q?xhZ29GIFf64xQGwRFClHmwSPKx8IYX6YBsyTajUYCKfLClFwKnRVAjEW4tqV?=
- =?us-ascii?Q?gg=3D=3D?=
-X-MS-Exchange-AntiSpam-ExternalHop-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-ExternalHop-MessageData-0: x2i+4vedCq3w9wQe6riH6E08BGqvCU9Bjs7FvyGF/75LbB1o937uOwYmii4e/uGCSn8zlE0hknT9RBMwCIOdDeRXmbNFHxo89c+UaIDMJmkHgOy1h4UrIFUi3cqWb63o6CHHZKlxKkZciznuQEOqF3TRqAU6E9Bu9AcHWzOhUH13kj3i9VTGL65FlMhWNqU5VggaKYLTToHVJRj7RJRzV1fsyuYULRX59P2P2eosOIiZEJ877Ai05OleoBl4G7OLRdOPW5DQo17UXpSxURqr5dLlZ7L9IMFjorJVzjTHcJ4MeSK9GS1s9kfhJ/EDunOG8+qjwEk72kFR9ifkIhqLc1U+xa4/hp3YepQOp+GMo4wHAAh7V/eQe9tuHplb2prEitWZWmn4EhzHsTeVxDcRgnhw/IYS0/7FX/vNRnxhnxiFZYFmbCWYevYDXcTGVjuuFJcNuKpmX053bXhEuMJ4CzKxR+of+q0Z3s0HLLJIAh9oOfOQedFQlKLW5DWlMVW9OALoywje7C6QLYcaTT3K/6G8RUvcpeMWvjfqCg7ce16fq8WUKVvH7vTNDihf0SnNGJWc0e25UJp1sFsRzUezjaczctZerCl/bmXDO8wfeSw=
-X-OriginatorOrg: oracle.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: da1e888c-2ac1-4ec0-a7ee-08dcd17faa80
-X-MS-Exchange-CrossTenant-AuthSource: CH3PR10MB7329.namprd10.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 10 Sep 2024 10:02:23.3072 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 24ixVMRJ6ZGPZ5oTOrjWzTvmg1jvNB3ZX5kSl9enMmR+oMnUQG+O2RPmgu2eCkf4VIGPIZutRuz9bMbmTD9tKRVGE1bPFn8Y/Zm1WSeuRlQ=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH0PR10MB5894
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1039,Hydra:6.0.680,FMLib:17.12.60.29
- definitions=2024-09-10_02,2024-09-09_02,2024-09-02_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
- malwarescore=0
- mlxlogscore=999 bulkscore=0 adultscore=0 phishscore=0 suspectscore=0
- mlxscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2408220000 definitions=main-2409100075
-X-Proofpoint-ORIG-GUID: nOW8GYwFTndQ6XtbnFeOHta8a2f5iM_u
-X-Proofpoint-GUID: nOW8GYwFTndQ6XtbnFeOHta8a2f5iM_u
-Received-SPF: pass client-ip=205.220.177.32;
- envelope-from=william.roche@oracle.com; helo=mx0b-00069f02.pphosted.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+References: <20240903160751.4100218-1-peter.maydell@linaro.org>
+ <fabedae0-d748-4a9d-b802-14d15f3cd44a@linaro.org>
+ <3f4ce380-0c0b-48ad-9752-c72f5aeac754@roeck-us.net>
+ <CAFEAcA_ETkWY=AaPWti8KwO0awdxWqkO4CLAwxaGVr+i4yFz-Q@mail.gmail.com>
+In-Reply-To: <CAFEAcA_ETkWY=AaPWti8KwO0awdxWqkO4CLAwxaGVr+i4yFz-Q@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 10 Sep 2024 11:17:03 +0100
+Message-ID: <CAFEAcA9==ZeDbhod1zs6JNftvT3owjQe17VQ3Y_5iPN01Oh3-w@mail.gmail.com>
+Subject: Re: [PATCH for-9.2 00/53] arm: Drop deprecated boards
+To: Guenter Roeck <linux@roeck-us.net>
+Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org, Thomas Huth <thuth@redhat.com>, 
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::52c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52c.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -237,160 +131,57 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: WrKIHcb4837N
+X-TUID: SaNGd4V6kkAs
 
-From: William Roche <william.roche@oracle.com>
+On Mon, 9 Sept 2024 at 16:02, Peter Maydell <peter.maydell@linaro.org> wrot=
+e:
+>
+> On Mon, 9 Sept 2024 at 15:55, Guenter Roeck <linux@roeck-us.net> wrote:
+> >
+> > On 9/9/24 06:40, Philippe Mathieu-Daud=C3=A9 wrote:
+> > > Hi,
+> > >
+> > > On 3/9/24 18:06, Peter Maydell wrote:
+> > >> This patchset removes the various Arm machines which we deprecated
+> > >> for the 9.0 release and are therefore allowed to remove for the 9.2
+> > >> release:
+> > >>   akita, borzoi, cheetah, connex, mainstone, n800, n810,
+> > >>   spitz, terrier, tosa, verdex, z2
+> > >
+> > >> The series includes removal of some code which while not strictly
+> > >> specific to these machines was in practice used only by them:
+> > >>   * the OneNAND flash memory device
+> > >>   * the PCMCIA subsystem
+> > >>   * the MUSB USB2.0 OTG USB controller chip (hcd-musb)
+> > >
+> > >> thanks
+> > >> -- PMM
+> > >>
+> > >> Peter Maydell (53):
+> > >>    hw/input: Drop ADS7846 device
+> > >>    hw/adc: Remove MAX111X device
+> > >>    hw/gpio: Remove MAX7310 device
+> >
+> > max7310 is a gpio controller which is at least somewhat compatible
+> > to pca953x. It is used on imx6qdl-sabreauto, and also instantiated
+> > by Linux with the INT3491 ACPI ID.
+> >
+> > Is there real pressure to remove support for such devices ?
+>
+> "git grep" says the only place we use our max7310 device is
+> on the "spitz" board. The point of removing all those
+> elderly Arm boards is that all this code is ancient and
+> unmaintained. If we were using this device on the imx6
+> boards I would have kept it, but we aren't. I don't want
+> to keep old, unmaintained, untested, dead code in the tree.
 
-Add the page size information to the hwpoison_page_list elements.
+I should clarify here that if anybody is actually using
+these devices with some other board model today, then
+that would be a good reason to keep them. The situations
+that I don't think justify retaining them are "in theory
+somebody could create this device on the command line
+with some other board" and "some future machine or SoC
+model that we don't yet have might want this device".
 
-Signed-off-by: William Roche <william.roche@oracle.com>
----
- accel/kvm/kvm-all.c      | 11 +++++++----
- include/sysemu/kvm.h     |  3 ++-
- include/sysemu/kvm_int.h |  3 ++-
- target/arm/kvm.c         |  5 +++--
- target/i386/kvm/kvm.c    |  5 +++--
- 5 files changed, 17 insertions(+), 10 deletions(-)
-
-diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
-index 409c5d3ce6..bcccf80bd7 100644
---- a/accel/kvm/kvm-all.c
-+++ b/accel/kvm/kvm-all.c
-@@ -1200,6 +1200,7 @@ int kvm_vm_check_extension(KVMState *s, unsigned int extension)
-  */
- typedef struct HWPoisonPage {
-     ram_addr_t ram_addr;
-+    size_t     page_size;
-     QLIST_ENTRY(HWPoisonPage) list;
- } HWPoisonPage;
- 
-@@ -1212,12 +1213,12 @@ static void kvm_unpoison_all(void *param)
- 
-     QLIST_FOREACH_SAFE(page, &hwpoison_page_list, list, next_page) {
-         QLIST_REMOVE(page, list);
--        qemu_ram_remap(page->ram_addr, TARGET_PAGE_SIZE);
-+        qemu_ram_remap(page->ram_addr, page->page_size);
-         g_free(page);
-     }
- }
- 
--void kvm_hwpoison_page_add(ram_addr_t ram_addr)
-+void kvm_hwpoison_page_add(ram_addr_t ram_addr, size_t sz)
- {
-     HWPoisonPage *page;
- 
-@@ -1228,6 +1229,7 @@ void kvm_hwpoison_page_add(ram_addr_t ram_addr)
-     }
-     page = g_new(HWPoisonPage, 1);
-     page->ram_addr = ram_addr;
-+    page->page_size = sz;
-     QLIST_INSERT_HEAD(&hwpoison_page_list, page, list);
- }
- 
-@@ -3031,7 +3033,8 @@ int kvm_cpu_exec(CPUState *cpu)
-         if (unlikely(have_sigbus_pending)) {
-             bql_lock();
-             kvm_arch_on_sigbus_vcpu(cpu, pending_sigbus_code,
--                                    pending_sigbus_addr);
-+                                    pending_sigbus_addr,
-+                                    pending_sigbus_addr_lsb);
-             have_sigbus_pending = false;
-             bql_unlock();
-         }
-@@ -3569,7 +3572,7 @@ int kvm_on_sigbus(int code, void *addr, short addr_lsb)
-      * we can only get action optional here.
-      */
-     assert(code != BUS_MCEERR_AR);
--    kvm_arch_on_sigbus_vcpu(first_cpu, code, addr);
-+    kvm_arch_on_sigbus_vcpu(first_cpu, code, addr, addr_lsb);
-     return 0;
- #else
-     return 1;
-diff --git a/include/sysemu/kvm.h b/include/sysemu/kvm.h
-index 21262eb970..c8c0d52bed 100644
---- a/include/sysemu/kvm.h
-+++ b/include/sysemu/kvm.h
-@@ -383,7 +383,8 @@ bool kvm_vcpu_id_is_valid(int vcpu_id);
- unsigned long kvm_arch_vcpu_id(CPUState *cpu);
- 
- #ifdef KVM_HAVE_MCE_INJECTION
--void kvm_arch_on_sigbus_vcpu(CPUState *cpu, int code, void *addr);
-+void kvm_arch_on_sigbus_vcpu(CPUState *cpu, int code, void *addr,
-+                             short addr_lsb);
- #endif
- 
- void kvm_arch_init_irq_routing(KVMState *s);
-diff --git a/include/sysemu/kvm_int.h b/include/sysemu/kvm_int.h
-index 1d8fb1473b..753e4bc6ef 100644
---- a/include/sysemu/kvm_int.h
-+++ b/include/sysemu/kvm_int.h
-@@ -168,10 +168,11 @@ void kvm_set_max_memslot_size(hwaddr max_slot_size);
-  *
-  * Parameters:
-  *  @ram_addr: the address in the RAM for the poisoned page
-+ *  @sz: size of the poison page as reported by the kernel
-  *
-  * Add a poisoned page to the list
-  *
-  * Return: None.
-  */
--void kvm_hwpoison_page_add(ram_addr_t ram_addr);
-+void kvm_hwpoison_page_add(ram_addr_t ram_addr, size_t sz);
- #endif
-diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index 849e2e21b3..f62e53e423 100644
---- a/target/arm/kvm.c
-+++ b/target/arm/kvm.c
-@@ -2348,10 +2348,11 @@ int kvm_arch_get_registers(CPUState *cs)
-     return ret;
- }
- 
--void kvm_arch_on_sigbus_vcpu(CPUState *c, int code, void *addr)
-+void kvm_arch_on_sigbus_vcpu(CPUState *c, int code, void *addr, short addr_lsb)
- {
-     ram_addr_t ram_addr;
-     hwaddr paddr;
-+    size_t sz = (addr_lsb > 0) ? (1 << addr_lsb) : TARGET_PAGE_SIZE;
- 
-     assert(code == BUS_MCEERR_AR || code == BUS_MCEERR_AO);
- 
-@@ -2359,7 +2360,7 @@ void kvm_arch_on_sigbus_vcpu(CPUState *c, int code, void *addr)
-         ram_addr = qemu_ram_addr_from_host(addr);
-         if (ram_addr != RAM_ADDR_INVALID &&
-             kvm_physical_memory_addr_from_host(c->kvm_state, addr, &paddr)) {
--            kvm_hwpoison_page_add(ram_addr);
-+            kvm_hwpoison_page_add(ram_addr, sz);
-             /*
-              * If this is a BUS_MCEERR_AR, we know we have been called
-              * synchronously from the vCPU thread, so we can easily
-diff --git a/target/i386/kvm/kvm.c b/target/i386/kvm/kvm.c
-index 2fa88ef1e3..99b87140cc 100644
---- a/target/i386/kvm/kvm.c
-+++ b/target/i386/kvm/kvm.c
-@@ -714,12 +714,13 @@ static void hardware_memory_error(void *host_addr)
-     exit(1);
- }
- 
--void kvm_arch_on_sigbus_vcpu(CPUState *c, int code, void *addr)
-+void kvm_arch_on_sigbus_vcpu(CPUState *c, int code, void *addr, short addr_lsb)
- {
-     X86CPU *cpu = X86_CPU(c);
-     CPUX86State *env = &cpu->env;
-     ram_addr_t ram_addr;
-     hwaddr paddr;
-+    size_t sz = (addr_lsb > 0) ? (1 << addr_lsb) : TARGET_PAGE_SIZE;
- 
-     /* If we get an action required MCE, it has been injected by KVM
-      * while the VM was running.  An action optional MCE instead should
-@@ -732,7 +733,7 @@ void kvm_arch_on_sigbus_vcpu(CPUState *c, int code, void *addr)
-         ram_addr = qemu_ram_addr_from_host(addr);
-         if (ram_addr != RAM_ADDR_INVALID &&
-             kvm_physical_memory_addr_from_host(c->kvm_state, addr, &paddr)) {
--            kvm_hwpoison_page_add(ram_addr);
-+            kvm_hwpoison_page_add(ram_addr, sz);
-             kvm_mce_inject(cpu, paddr, code);
- 
-             /*
--- 
-2.43.5
-
+thanks
+-- PMM

@@ -1,121 +1,93 @@
-Received: by 2002:a17:505:1909:b0:1be9:327d:8ee3 with SMTP id az9csp1081269njb;
-        Mon, 9 Sep 2024 15:25:13 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWhKW7vyMorYEjcRZpdV/Z84O+INLaGa5Dda+0yt7Tn3od0pOxdrzcG75pzFCzUu8FqbLiRELczFBpU4g==@linaro.org
-X-Google-Smtp-Source: AGHT+IG3QaW2kL5CtKVhpw7JzJ0C+sqeABnxVTjnKQCmny24mq4vMiyDoP+inaokQRvtNrkHB9s6
-X-Received: by 2002:a05:622a:447:b0:453:74cc:ce09 with SMTP id d75a77b69052e-4580c66c164mr185218281cf.8.1725920713248;
-        Mon, 09 Sep 2024 15:25:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1725920713; cv=none;
+Received: by 2002:a17:505:1909:b0:1be9:327d:8ee3 with SMTP id az9csp1116976njb;
+        Mon, 9 Sep 2024 18:24:42 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVRSa2qfkfMIvliBoLzYECndK/jInEO6AcBG0CB1OKvnKwizMGQUr1tOq3uq6Wb2yDDwS69Ctyp11fp0Q==@linaro.org
+X-Google-Smtp-Source: AGHT+IFlycMGQHziKigO7icUtj2o3ISp0JL9y7yCHKxkZl2jT9t1eUGXkXd3vDwfpvtaWJqULq8Y
+X-Received: by 2002:a05:6214:4385:b0:6b0:75bd:7fb with SMTP id 6a1803df08f44-6c52850dcbamr134290796d6.40.1725931482353;
+        Mon, 09 Sep 2024 18:24:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1725931482; cv=none;
         d=google.com; s=arc-20240605;
-        b=UST6IYYWFSE3Ht5grmQqTd91Ghk1fj5VJVtU0x3HNpvlt9DDV4FgQ2RgHqHK/+844r
-         aGGzK6WlQ4Q+D/uodqibaG5udCpYVw5UnV+PtTwLd3qrcIC/OQthOn6ysBc+/LpRg/9z
-         tmm/fI7Afc7FpIrGmQcREcS7HSZRO0qgiLgpEIvz6G26aeYv5KGU2pzcElraN3WghNpF
-         J3ffy5Pcjx+ZJmbKCHqckcjnknfLlaPmOTtZhNCzCqe6ccS5DpQxZ47YEPwbZxJj7LpD
-         YQQMX7ZmaljLXb7upN8gksOay7tvdGrPz3bSaLRje8mo32H0QXvlkYhXXD0Cd9yR9d5S
-         iJ0A==
+        b=aFsIhucXQ16g4td/ckoBNAhTMr3z3Xnd2oQ0RxdkpfFn3QQA5eRMtB7O0U0De3Pm3D
+         xiTKiLPaVlk/Sy0HQnao30a4beQXEJq3o9FrPR1czpVHXkl+8lnKe6U4N+h/Wo4ZjO6W
+         z7Iptb66ZIg3Y+ux1/DlfYosOvCu2lWYPG7sqRDn8hEEzaTvJMwi9JiQW3+4mh6EfH+T
+         4+uD9JvJOFNthkOgcqMdS4SPUB9KicKfkm/rPt2P+LbX+x91S+MB/ZIrNzbiDrbK3J6/
+         kTndbXai3d7+8v09rvZWPHIX9zIgiUKH+618Qsy7KiWrqEmePc6vpR4M8vitEXpQAwpy
+         7n/Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=s3nccRPp9XSZgrwaQxSVXpKvn0JnR3Q7NoUBJkM8qqA=;
-        fh=6kRp3K1jVRJe/0go9qIIcZsa+Wj5WXzmWLQ1QEnOntI=;
-        b=d42wLSDrC1M2mHdQXSfrrqDmGUPfShmt3Fr2rb3K9lYBNc2K//IP8sndbWESCyiUs1
-         nHa17qv5rdMi7ngTIw247jUpm8CyWcz4RjOrto8Bdnmc5ixXVc2J/EEN7zq2N1Ou1Ic3
-         IKSv7kTYH4YhOaSIw9xFd2P5U3ixBrAfNvBEmAmcL7GFLcv0pqxSj/yFwctnEXuTjrV5
-         +G5va9W99ClhoqnCSYjJLWzK34bfOB17zqJKX8m0cE9KFv1hbHECkzGpLxALaGg0gtiC
-         aPaIv0mYzbhpX0vDMHHDFB1Io4osbq5GxToJPLRQwLXPS19AKBdP/sJzhxWBnnhStH0M
-         lFng==;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:in-reply-to:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id;
+        bh=TDfXKmUosdJdcIm16ZiiqM/Y9J7wRbYZsk2hv/TLUa4=;
+        fh=nY41NCIXejMsTt1rb+BjUxGabsIe7BsR++0fw0+iVzg=;
+        b=MKvgKOnmhKjGRfmyh3Il+3S7Gxdv7B16wub1VqNY7KYSpIbMPS1zWpa4Ys7OBO4TH/
+         EVVHjtjjlWXL58VWjzGg5XJ2C33pALIarl4OAg0azetaa0F6uFxlkm9+vCikyr1tjzdq
+         Xg9BhjPXZxKgP0TKROlQobY3XGYPVPMXoKFqx12MVk+hq0ZA+hOFGq7DvxK1VdozRjNC
+         OjEzzWn4j2bLPSnsidgzOXOal1e3PBbU3uyveflUp3HIWZgpJdrkQmVUJ2S6qoUcvkNC
+         9R6gh/Qdg821YsW0xeDshq3QPnk8BhwlKsnSO8w+syIDgGqGXbBSI2YCmYkZqHo0lTqF
+         mVWA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=LSrDtPJ3;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-45822e63a68si65582721cf.93.2024.09.09.15.25.13
+        by mx.google.com with ESMTPS id 6a1803df08f44-6c53476fb8fsi66886436d6.217.2024.09.09.18.24.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 09 Sep 2024 15:25:13 -0700 (PDT)
+        Mon, 09 Sep 2024 18:24:42 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=LSrDtPJ3;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1snmoo-0008B9-P0; Mon, 09 Sep 2024 18:25:11 -0400
+	id 1snpcN-000089-Qq; Mon, 09 Sep 2024 21:24:32 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1snmom-00080q-9u
- for qemu-arm@nongnu.org; Mon, 09 Sep 2024 18:25:08 -0400
-Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1snmog-0000nY-9z
- for qemu-arm@nongnu.org; Mon, 09 Sep 2024 18:25:04 -0400
-Received: by mail-ej1-x630.google.com with SMTP id
- a640c23a62f3a-a8a789c4fc5so726254266b.0
- for <qemu-arm@nongnu.org>; Mon, 09 Sep 2024 15:24:53 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1725920692; x=1726525492; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=s3nccRPp9XSZgrwaQxSVXpKvn0JnR3Q7NoUBJkM8qqA=;
- b=LSrDtPJ37dxTpyaaYdoHh3/jV/dzwJE2zi68KH23kCeevMl9o2VcV//+NQrUafiv7e
- kmLYJ6DIIBVoeT3/wGWUG0gNR7m0SyWvKEwT9PhqJxj/ryDYEcW8A8ynk+CH3EPZeoAP
- svY4Q5x/Wm02qzcspFtLrXtSahACMZJvKMBPAyOSuaJBoeB/O4whISLA1RelFmD0z73t
- SAn7VmXCv2LnrBBHNN6ESt5ZwmgQHpXsmmulRpEJUjxHT1beOU/3mQLODVRd3NLfKqyY
- YXhkMzhIcgaiRSwNb2KGu3Dz60MQmLNDEsmlJnvT23P3x6ujDQ9yg/svjsXCj3PNOWj0
- B5JQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1725920692; x=1726525492;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=s3nccRPp9XSZgrwaQxSVXpKvn0JnR3Q7NoUBJkM8qqA=;
- b=lJ2WoGpOijcyZ4ckYZ7WjAFtun4n/EFDH9Y8qvnIDbOfUds2NYRldqWvMyvJlO+ilf
- 7a2qSwXFBiktWfxJd9v6R5Qmvu6yoSiSpLyCGMKAfkCAZzQQ2tou3/wivGkgf0zEw2Zf
- fGhSgG1iFp1uOUkimE4KJ7joVlSS23qCi8+S6P6nsaFtSCn5YLBOpOie0Q33KdtTJdhI
- FnXfsN6kI7ByD3BATR44/FCRajT1rs1C4maIRnGu2XZTztSq0cgOZvo9jv/yT4gVQaN8
- 3HDZdDA0VQPjZW3FRoq2C69TuxMAAsHzzi74eZgZW+hWefe55i2cusuExMDw6DOIfee2
- JkAw==
-X-Gm-Message-State: AOJu0Yx/YB2V4sUT4bF0lj/ZQ0lo4BaV4/0bLCLkw8nvvKAt/H4guoEY
- JxL9rqAv+wZmp2M2u+1ooiS+77SAxysLUCbVG1N4WJAkEu0yTkblPfds3TvJu1I=
-X-Received: by 2002:a17:907:6ea6:b0:a8d:498f:640 with SMTP id
- a640c23a62f3a-a8d731a7c8cmr86405466b.21.1725920691977; 
- Mon, 09 Sep 2024 15:24:51 -0700 (PDT)
-Received: from [192.168.69.100] (nsg93-h02-176-184-54-166.dsl.sta.abo.bbox.fr.
- [176.184.54.166]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-a8d25c6126esm392591766b.120.2024.09.09.15.24.50
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 09 Sep 2024 15:24:51 -0700 (PDT)
-Message-ID: <678932dd-02e3-488d-8cb1-6f3d37c112ab@linaro.org>
-Date: Tue, 10 Sep 2024 00:24:49 +0200
+ (Exim 4.90_1) (envelope-from <wangzhou1@hisilicon.com>)
+ id 1snpcL-00006x-Ax; Mon, 09 Sep 2024 21:24:29 -0400
+Received: from szxga04-in.huawei.com ([45.249.212.190])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <wangzhou1@hisilicon.com>)
+ id 1snpcI-0007xT-8r; Mon, 09 Sep 2024 21:24:28 -0400
+Received: from mail.maildlp.com (unknown [172.19.88.234])
+ by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4X2mF403LBz2DbxW;
+ Tue, 10 Sep 2024 09:23:52 +0800 (CST)
+Received: from kwepemd200012.china.huawei.com (unknown [7.221.188.145])
+ by mail.maildlp.com (Postfix) with ESMTPS id 88BB91401F0;
+ Tue, 10 Sep 2024 09:24:19 +0800 (CST)
+Received: from [10.67.121.115] (10.67.121.115) by
+ kwepemd200012.china.huawei.com (7.221.188.145) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.34; Tue, 10 Sep 2024 09:24:18 +0800
+Message-ID: <cbd29bc4-c5ab-22d7-8a3e-fd7646f16fd5@hisilicon.com>
+Date: Tue, 10 Sep 2024 09:24:18 +0800
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 12/29] target/arm: Convert FMOVI (scalar, immediate) to
- decodetree
-To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>
-References: <20240909162240.647173-1-richard.henderson@linaro.org>
- <20240909162240.647173-13-richard.henderson@linaro.org>
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101
+ Thunderbird/91.8.0
+Subject: Re: [Bug Report] smmuv3 event 0x10 report when running virtio-blk-pci
 Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20240909162240.647173-13-richard.henderson@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+To: Peter Maydell <peter.maydell@linaro.org>
+CC: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, Shameer Kolothum
+ <shameerali.kolothum.thodi@huawei.com>, Eric Auger <eric.auger@redhat.com>,
+ Mostafa Saleh <smostafa@google.com>
+References: <447984db-8c52-c911-d7bd-6616edaaefa5@hisilicon.com>
+ <CAFEAcA-qBKn=42SYwU1X_7QrwWZYA1G1Hbf-iUP4GOFu0LwLzw@mail.gmail.com>
+In-Reply-To: <CAFEAcA-qBKn=42SYwU1X_7QrwWZYA1G1Hbf-iUP4GOFu0LwLzw@mail.gmail.com>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::630;
- envelope-from=philmd@linaro.org; helo=mail-ej1-x630.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Originating-IP: [10.67.121.115]
+X-ClientProxiedBy: dggems706-chm.china.huawei.com (10.3.19.183) To
+ kwepemd200012.china.huawei.com (7.221.188.145)
+Received-SPF: pass client-ip=45.249.212.190;
+ envelope-from=wangzhou1@hisilicon.com; helo=szxga04-in.huawei.com
+X-Spam_score_int: -75
+X-Spam_score: -7.6
+X-Spam_bar: -------
+X-Spam_report: (-7.6 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-3.396,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -128,20 +100,83 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Zhou Wang <wangzhou1@hisilicon.com>
+From:  Zhou Wang via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: bBjR22qLTVFk
+X-TUID: NIJedByETCCH
 
-On 9/9/24 18:22, Richard Henderson wrote:
-> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+On 2024/9/9 22:31, Peter Maydell wrote:
+> On Mon, 9 Sept 2024 at 15:22, Zhou Wang via <qemu-devel@nongnu.org> wrote:
+>>
+>> Hi All,
+>>
+>> When I tested mainline qemu(commit 7b87a25f49), it reports smmuv3 event 0x10
+>> during kernel booting up.
+> 
+> Does it still do this if you either:
+>  (1) use the v9.1.0 release (commit fd1952d814da)
+>  (2) use "-machine virt-9.1" instead of "-machine virt"
 
-I wonder, maybe you mispasted my previous R-b tags
-with Peter's?
-https://lore.kernel.org/qemu-devel/37096dc8-7827-4a4c-a27b-4f8343aa9c6c@linaro.org/
+I tested above two cases, the problem is still there.
 
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
->   target/arm/tcg/translate-a64.c | 74 ++++++++++++----------------------
->   target/arm/tcg/a64.decode      |  4 ++
->   2 files changed, 30 insertions(+), 48 deletions(-)
-
+> 
+> ?
+> 
+> My suspicion is that this will have started happening now that
+> we expose an SMMU with two-stage translation support to the guest
+> in the "virt" machine type (which we do not if you either
+> use virt-9.1 or in the v9.1.0 release).
+> 
+> I've cc'd Eric (smmuv3 maintainer) and Mostafa (author of
+> the two-stage support).
+> 
+>> qemu command which I use is as below:
+>>
+>> qemu-system-aarch64 -machine virt,kernel_irqchip=on,gic-version=3,iommu=smmuv3 \
+>> -kernel Image -initrd minifs.cpio.gz \
+>> -enable-kvm -net none -nographic -m 3G -smp 6 -cpu host \
+>> -append 'rdinit=init console=ttyAMA0 ealycon=pl0ll,0x90000000 maxcpus=3' \
+>> -device pcie-root-port,port=0x8,chassis=0,id=pci.0,bus=pcie.0,multifunction=on,addr=0x2 \
+>> -device pcie-root-port,port=0x9,chassis=1,id=pci.1,bus=pcie.0,addr=0x2.0x1 \
+>> -device virtio-blk-pci,drive=drive0,id=virtblk0,num-queues=8,packed=on,bus=pci.1 \
+>> -drive file=/home/boot.img,if=none,id=drive0,format=raw
+>>
+>> smmuv3 event 0x10 log:
+>> [...]
+>> [    1.962656] virtio-pci 0000:02:00.0: Adding to iommu group 0
+>> [    1.963150] virtio-pci 0000:02:00.0: enabling device (0000 -> 0002)
+>> [    1.964707] virtio_blk virtio0: 6/0/0 default/read/poll queues
+>> [    1.965759] virtio_blk virtio0: [vda] 2097152 512-byte logical blocks (1.07 GB/1.00 GiB)
+>> [    1.966934] arm-smmu-v3 9050000.smmuv3: event 0x10 received:
+>> [    1.967442] input: gpio-keys as /devices/platform/gpio-keys/input/input0
+>> [    1.967478] arm-smmu-v3 9050000.smmuv3:      0x0000020000000010
+>> [    1.968381] clk: Disabling unused clocks
+>> [    1.968677] arm-smmu-v3 9050000.smmuv3:      0x0000020000000000
+>> [    1.968990] PM: genpd: Disabling unused power domains
+>> [    1.969424] arm-smmu-v3 9050000.smmuv3:      0x0000000000000000
+>> [    1.969814] ALSA device list:
+>> [    1.970240] arm-smmu-v3 9050000.smmuv3:      0x0000000000000000
+>> [    1.970471]   No soundcards found.
+>> [    1.970902] arm-smmu-v3 9050000.smmuv3: event 0x10 received:
+>> [    1.971600] arm-smmu-v3 9050000.smmuv3:      0x0000020000000010
+>> [    1.971601] arm-smmu-v3 9050000.smmuv3:      0x0000020000000000
+>> [    1.971601] arm-smmu-v3 9050000.smmuv3:      0x0000000000000000
+>> [    1.971602] arm-smmu-v3 9050000.smmuv3:      0x0000000000000000
+>> [    1.971606] arm-smmu-v3 9050000.smmuv3: event 0x10 received:
+>> [    1.971607] arm-smmu-v3 9050000.smmuv3:      0x0000020000000010
+>> [    1.974202] arm-smmu-v3 9050000.smmuv3:      0x0000020000000000
+>> [    1.974634] arm-smmu-v3 9050000.smmuv3:      0x0000000000000000
+>> [    1.975005] Freeing unused kernel memory: 10112K
+>> [    1.975062] arm-smmu-v3 9050000.smmuv3:      0x0000000000000000
+>> [    1.975442] Run init as init process
+>>
+>> Another information is that if "maxcpus=3" is removed from the kernel command line,
+>> it will be OK.
+>>
+>> I am not sure if there is a bug about vsmmu. It will be very appreciated if anyone
+>> know this issue or can take a look at it.
+> 
+> thanks
+> -- PMM
+> .

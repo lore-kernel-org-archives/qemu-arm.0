@@ -1,189 +1,307 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a8d25ced1bfsm485811966b.154.2024.09.10.07.07.34
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 10 Sep 2024 07:07:34 -0700 (PDT)
-Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 9B51C5F762;
-	Tue, 10 Sep 2024 15:07:33 +0100 (BST)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Eduardo Habkost <eduardo@habkost.net>,
-	Zhao Liu <zhao1.liu@intel.com>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Beraldo Leal <bleal@redhat.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Alexandre Iooss <erdnaxe@crans.org>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Pierrick Bouvier <pierrick.bouvier@linaro.org>,
-	Yanan Wang <wangyanan55@huawei.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Mahmoud Mandour <ma.mandourr@gmail.com>,
-	Thomas Huth <thuth@redhat.com>,
-	qemu-arm@nongnu.org,
-	devel@lists.libvirt.org,
-	Jiaxun Yang <jiaxun.yang@flygoat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Wainer dos Santos Moschetta <wainersm@redhat.com>
-Subject: [PATCH 00/26] Maintainer updates (testing, gdbstub, plugins)
-Date: Tue, 10 Sep 2024 15:07:07 +0100
-Message-Id: <20240910140733.4007719-1-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.39.2
+Received: by 2002:a05:7022:6591:b0:89:eff1:5568 with SMTP id bd17csp1250731dlb;
+        Tue, 10 Sep 2024 07:42:05 -0700 (PDT)
+X-Received: by 2002:a17:902:e88f:b0:206:add9:624 with SMTP id d9443c01a7336-2074c6819eemr14368715ad.36.1725979325672;
+        Tue, 10 Sep 2024 07:42:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1725979325; cv=none;
+        d=google.com; s=arc-20160816;
+        b=B05GW3hYjjg+p6dCf5ar19C3A5FNHyOUPQAm436g5uQ5Oe7HEeG4BA+50mpTlHrg+m
+         UKkF4tUuctzrySUdP9i562jL/SU/eOh3t4kcYk7poNk536HnL1of161CdL1Monn20337
+         FWO+4Z3ZAjmN0LydmfYWv/bv+0EQIrvzXRB4RuQBjVh5A47elgEdyohLGpKcQHAYNJe9
+         t2AV6WI/9rwV8gGnrVx/MwXWaw5/0Jmb6waqr7IdvHViuRYZoJiXA6u5R0c+L/0kiXQS
+         voYwl27IwkULbxM+PJhx97nXxG+GZryZI5tdhFAoiMprfwfQxR+nhVYdTaeJjIOKM2Uj
+         1UDw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=U8SwFD5a7eKbrEOICpgW7KADF+UW0U6HNN/bIjrKkKI=;
+        fh=FLkZ1UhBvtv+NiZhvZkAdPJmE6xJU+OCqlRQdD0wjog=;
+        b=pSqRoJ0mp2/Ru/e0xFD7KMKj7iJi6GecE4JHchp0C4o3KHWrIfu9sVOcP4zf++HAnx
+         Wkrnn0n4gF/RKS0H8LgjPErYS+UDBzx46JyLSzjiAq/zBXdjZjlQKi0d7Uo72J1DEbjc
+         oen1fCfbLlqsv0WmP5Gk2KpAn1Q1WGV4Zkrpv/1ewx6WuP48A3cPXnWRbe6oIHPmpV8J
+         RuOILZeW5RPgOtZvGP18ExGi5gJl6+TSGpkZzOxSESRJEI9f3ripBLw+5vV63KzVuxX4
+         1qlMLkZVI1VhAmC29epltyS5JQYAJTUjF7EYzGn0H0eB3RAQ44PlJ/Py8CxAM7Eqhuf6
+         dnDQ==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=XBZFKJhg;
+       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <pierrick.bouvier@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d9443c01a7336-207110634bfsor49107035ad.20.2024.09.10.07.42.05
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Tue, 10 Sep 2024 07:42:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=XBZFKJhg;
+       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1725979325; x=1726584125; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=U8SwFD5a7eKbrEOICpgW7KADF+UW0U6HNN/bIjrKkKI=;
+        b=XBZFKJhgWeETetq/eC2fKNnPlv91Ip/vn2TJG1hQr5KsbNZQcQfDL5ZtgtM86tN1Mv
+         exXKIwqXK+33J+cJ5adiojKiDfxjL0DoFEq7hVrSyvBV2G7msf7qHnXWc4bXivDVq0pO
+         AsnupPz8vMVRtpfBNbcc7rDQ4nVlv4DAIYQ9pHzBvX6cSqW0Xe8ADE4yKWF9QP9fkyEX
+         22WvdBid1/427HRKr4ITZAAx1D7HnEw0OpYqO5CRi47TdhmXP5+La+qVASE+V9jaa2YI
+         fqo8cIVGOZD/v4H3C/UXNJX/5cBc/1QHu869Bo37qt3MU28wMNFTEGkuG8JPbyqFCK25
+         FOBA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1725979325; x=1726584125;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=U8SwFD5a7eKbrEOICpgW7KADF+UW0U6HNN/bIjrKkKI=;
+        b=PUeCX+MhuiFsy4/CV1a/VTUBjKw52WCu9KQKqta89FO2ZUPLlL08W8HVN9BirzQNGm
+         DCURO3XgyJDD3E39w+wiKByPWkY5LQknvqMbcySHu7LZmqNmvR8J/+UTw0McYvjG/2Cq
+         ZwCPey+bmmVgSu0RjFSHZgINo8HqQMiKaxZxx+z+3Jy3hLW/vW+nQpWAKomz7iHL91g+
+         MVNomS8uS76TILPMoOt/T6nhl/ROEjGDkt4zohI2sRgNEBMke/aLeVPj5cDfZcb4jOJ1
+         uCIL1SWVebloU8MdOKortbTSKGx4qjZG1DvIwWXAdi3D4b4vQKDQ+BtA6rZ/Kj7vqMrz
+         904Q==
+X-Gm-Message-State: AOJu0YzLPe72cERNpYm7YP07aK4a68qMDlNROjX/rFDTH03jepNaBDt1
+	yL23futEqx3b/T+7b9nArLht4ZFknB1vVFwF78b0PzZr5SdtEZRnvyxWoC8inWqws0uoEtHl/Fe
+	T6yBrbVuh
+X-Google-Smtp-Source: AGHT+IHx81EfTF+WVnNr/Rh0AvksN86GsWEeIpkLsUXBJwHWY4opgCahJ3+BgIWsMPV+f7lm5YvmMg==
+X-Received: by 2002:a17:902:f545:b0:207:146f:b35a with SMTP id d9443c01a7336-2074c6db468mr14040085ad.46.1725979325151;
+        Tue, 10 Sep 2024 07:42:05 -0700 (PDT)
+Return-Path: <pierrick.bouvier@linaro.org>
+Received: from ?IPV6:2604:3d08:9384:1d00::9633? ([2604:3d08:9384:1d00::9633])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-20710f3414fsm49456105ad.280.2024.09.10.07.42.03
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 10 Sep 2024 07:42:04 -0700 (PDT)
+Message-ID: <e63fd699-3d29-44fd-85c6-23468aa6adc7@linaro.org>
+Date: Tue, 10 Sep 2024 07:42:02 -0700
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-X-TUID: Ax1tqVNXrhC9
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 01/26] tests/docker: remove debian-armel-cross
+To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Eduardo Habkost <eduardo@habkost.net>, Zhao Liu <zhao1.liu@intel.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Beraldo Leal <bleal@redhat.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
+ <philmd@linaro.org>, Alexandre Iooss <erdnaxe@crans.org>,
+ Yanan Wang <wangyanan55@huawei.com>, Peter Maydell
+ <peter.maydell@linaro.org>, Mahmoud Mandour <ma.mandourr@gmail.com>,
+ Thomas Huth <thuth@redhat.com>, qemu-arm@nongnu.org,
+ devel@lists.libvirt.org, Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>
+References: <20240910140733.4007719-1-alex.bennee@linaro.org>
+ <20240910140733.4007719-2-alex.bennee@linaro.org>
+Content-Language: en-US
+From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+In-Reply-To: <20240910140733.4007719-2-alex.bennee@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: base64
+X-TUID: 2MnIOIqlUkus
 
-Hi,
-
-Here is the current state of my maintainer trees.
-
-Testing
-
-I've updated a number of the docker containers to deal with breakages
-in the crossdev environments as bullseye moves to LTS. I've dropped
-the armel environment which doesn't really add much to the armhf cross
-build we have that works. i686 and mipsel cross containers are bumped
-up to bookworm. Currently mips64el is still broken.
-
-gdbstub
-
-This brings in Gustavo's patches to support MTE for system mode
-expanding on the previously implemented user mode support.
-
-plugins
-
-I start by deprecating some options that don't make much sense for
-instrumentation including 32 bit and TCI support. They will still work
-but there are caveats and it doesn't seem worth wasting CI time
-keeping track of them.
-
-There are a couple of new plugins including some useful analysis ones.
-The bbv plugin can generate files that can be fed into simpoint. The
-cflow plugin I've posted before separately but takes advantage of the
-new conditional and store helpers to try and be more efficient tracing
-control flow.
-
-Finally there is not one but two memory APIs. Pierrick's updates to
-the main memory instrumentation now makes values available to the
-plugins and should be used if you absolutely want to track what value
-was read or stored. I've added a softmmu test case building on
-memory.c and I'll merge the updated linux-user test case once its been
-re-spun.
-
-Rowan's API provides a more direct access through the existing debug
-API but comes with the caveats that it should only used on memory you
-don't expect to be changing. The example provided allows for the
-contents of syscalls to be probed at the syscall point.
-
-Finally there is a RFC for a gdbstub hook which I mostly wrote while I
-was debugging weirdness in the memory stuff. I'll probably drop it
-before the PR and let it cook a bit more on plugins/next.
-
-The following still need review:
-
-  plugins: add ability to register a GDB triggered callback
-  util/timer: avoid deadlock when shutting down
-  tests/tcg: add a system test to check memory instrumentation
-  tests/tcg: only read/write 64 bit words on 64 bit systems
-  tests/tcg: clean up output of memory system test
-  contrib/plugins: control flow plugin
-  deprecation: don't enable TCG plugins by default with TCI
-  deprecation: don't enable TCG plugins by default on 32 bit hosts
-  scripts/ci: update the gitlab-runner playbook
-  docs/devel: fix duplicate line
-  tests/docker: update debian i686 and mipsel images to bookworm
-  tests/docker: remove debian-armel-cross
-
-Akihiko Odaki (1):
-  contrib/plugins: Add a plugin to generate basic block vectors
-
-Alex Bennée (12):
-  tests/docker: remove debian-armel-cross
-  tests/docker: update debian i686 and mipsel images to bookworm
-  docs/devel: fix duplicate line
-  scripts/ci: update the gitlab-runner playbook
-  deprecation: don't enable TCG plugins by default on 32 bit hosts
-  deprecation: don't enable TCG plugins by default with TCI
-  contrib/plugins: control flow plugin
-  tests/tcg: clean up output of memory system test
-  tests/tcg: only read/write 64 bit words on 64 bit systems
-  tests/tcg: add a system test to check memory instrumentation
-  util/timer: avoid deadlock when shutting down
-  plugins: add ability to register a GDB triggered callback
-
-Gustavo Romero (5):
-  gdbstub: Use specific MMU index when probing MTE addresses
-  gdbstub: Add support for MTE in system mode
-  tests/guest-debug: Support passing arguments to the GDB test script
-  tests/tcg/aarch64: Improve linker script organization
-  tests/tcg/aarch64: Extend MTE gdbstub tests to system mode
-
-Pierrick Bouvier (5):
-  plugins: save value during memory accesses
-  plugins: extend API to get latest memory value accessed
-  tests/tcg: add mechanism to run specific tests with plugins
-  tests/tcg: allow to check output of plugins
-  tests/plugin/mem: add option to print memory accesses
-
-Rowan Hart (2):
-  plugins: add plugin API to read guest memory
-  plugins: add option to dump write argument to syscall plugin
-
-Thomas Huth (1):
-  contrib/plugins/Makefile: Add a 'distclean' target
-
- docs/about/deprecated.rst                     |  19 +
- docs/about/emulation.rst                      |  44 +-
- docs/devel/testing/main.rst                   |   6 -
- configure                                     |  37 +-
- accel/tcg/atomic_template.h                   |  66 ++-
- include/hw/core/cpu.h                         |   4 +
- include/qemu/plugin-event.h                   |   1 +
- include/qemu/plugin.h                         |   4 +
- include/qemu/qemu-plugin.h                    |  80 +++-
- plugins/plugin.h                              |   9 +
- contrib/plugins/bbv.c                         | 158 +++++++
- contrib/plugins/cflow.c                       | 413 ++++++++++++++++++
- plugins/api.c                                 |  71 +++
- plugins/core.c                                |  43 ++
- target/arm/gdbstub64.c                        |  21 +-
- tcg/tcg-op-ldst.c                             |  66 ++-
- tests/tcg/multiarch/system/memory.c           | 123 ++++--
- tests/tcg/plugins/mem.c                       | 254 ++++++++++-
- tests/tcg/plugins/syscall.c                   | 117 +++++
- util/qemu-timer.c                             |  14 +-
- accel/tcg/atomic_common.c.inc                 |  13 +-
- accel/tcg/ldst_common.c.inc                   |  38 +-
- .gitlab-ci.d/buildtest.yml                    |   2 +
- .gitlab-ci.d/container-cross.yml              |   6 -
- .gitlab-ci.d/crossbuilds.yml                  |   7 -
- contrib/plugins/Makefile                      |   4 +-
- plugins/qemu-plugins.symbols                  |   3 +
- scripts/ci/setup/gitlab-runner.yml            |  39 +-
- .../dockerfiles/debian-armel-cross.docker     | 179 --------
- .../dockerfiles/debian-i686-cross.docker      |  10 +-
- .../dockerfiles/debian-mipsel-cross.docker    |  10 +-
- tests/guest-debug/run-test.py                 |   6 +
- tests/guest-debug/test_gdbstub.py             |   5 +
- tests/lcitool/refresh                         |  10 +-
- tests/tcg/Makefile.target                     |  12 +-
- tests/tcg/aarch64/Makefile.softmmu-target     |  49 ++-
- tests/tcg/aarch64/Makefile.target             |   3 +-
- tests/tcg/aarch64/gdbstub/test-mte.py         |  71 ++-
- tests/tcg/aarch64/system/boot.S               |  11 +
- tests/tcg/aarch64/system/kernel.ld            |  33 +-
- tests/tcg/aarch64/system/mte.S                | 109 +++++
- tests/tcg/alpha/Makefile.softmmu-target       |   2 +-
- .../multiarch/system/Makefile.softmmu-target  |   6 +
- .../system/validate-memory-counts.py          | 115 +++++
- 44 files changed, 1935 insertions(+), 358 deletions(-)
- create mode 100644 contrib/plugins/bbv.c
- create mode 100644 contrib/plugins/cflow.c
- delete mode 100644 tests/docker/dockerfiles/debian-armel-cross.docker
- create mode 100644 tests/tcg/aarch64/system/mte.S
- create mode 100755 tests/tcg/multiarch/system/validate-memory-counts.py
-
--- 
-2.39.2
+T24gOS8xMC8yNCAwNzowNywgQWxleCBCZW5uw6llIHdyb3RlOg0KPiBBcyBkZWJpYW4tMTEg
+dHJhbnNpdGlvbnMgdG8gTFRTIHdlIGFyZSBzdGFydGluZyB0byBoYXZlIHByb2JsZW1zDQo+
+IGJ1aWxkaW5nIHRoZSBpbWFnZS4gV2hpbGUgd2UgY291bGQgdXBkYXRlIHRvIGEgbGF0ZXIg
+RGViaWFuIGJ1aWxkaW5nIGENCj4gMzIgYml0IFFFTVUgd2l0aG91dCBtb2Rlcm4gZmxvYXRp
+bmcgcG9pbnQgaXMgbmljaGUgaG9zdCBhbW9uZ3N0IHRoZQ0KPiBmZXcgcmVtYWluaW5nIDMy
+IGJpdCBob3N0cyB3ZSByZWd1bGFybHkgYnVpbGQgZm9yLiBGb3Igbm93IHdlIHN0aWxsDQo+
+IGhhdmUgYXJtaGYtZGViaWFuLWNyb3NzLWNvbnRhaW5lciB3aGljaCBpcyBjdXJyZW50bHkg
+YnVpbHQgZnJvbSB0aGUNCj4gbW9yZSByZWNlbnQgZGViaWFuLTEyLg0KPiANCj4gU2lnbmVk
+LW9mZi1ieTogQWxleCBCZW5uw6llIDxhbGV4LmJlbm5lZUBsaW5hcm8ub3JnPg0KPiAtLS0N
+Cj4gICAuZ2l0bGFiLWNpLmQvY29udGFpbmVyLWNyb3NzLnltbCAgICAgICAgICAgICAgfCAg
+IDYgLQ0KPiAgIC5naXRsYWItY2kuZC9jcm9zc2J1aWxkcy55bWwgICAgICAgICAgICAgICAg
+ICB8ICAgNyAtDQo+ICAgLi4uL2RvY2tlcmZpbGVzL2RlYmlhbi1hcm1lbC1jcm9zcy5kb2Nr
+ZXIgICAgIHwgMTc5IC0tLS0tLS0tLS0tLS0tLS0tLQ0KPiAgIHRlc3RzL2xjaXRvb2wvcmVm
+cmVzaCAgICAgICAgICAgICAgICAgICAgICAgICB8ICAgNiAtDQo+ICAgNCBmaWxlcyBjaGFu
+Z2VkLCAxOTggZGVsZXRpb25zKC0pDQo+ICAgZGVsZXRlIG1vZGUgMTAwNjQ0IHRlc3RzL2Rv
+Y2tlci9kb2NrZXJmaWxlcy9kZWJpYW4tYXJtZWwtY3Jvc3MuZG9ja2VyDQo+IA0KPiBkaWZm
+IC0tZ2l0IGEvLmdpdGxhYi1jaS5kL2NvbnRhaW5lci1jcm9zcy55bWwgYi8uZ2l0bGFiLWNp
+LmQvY29udGFpbmVyLWNyb3NzLnltbA0KPiBpbmRleCBlMzEwMzk0MGEwLi45YTNlYmQ4ODVl
+IDEwMDY0NA0KPiAtLS0gYS8uZ2l0bGFiLWNpLmQvY29udGFpbmVyLWNyb3NzLnltbA0KPiAr
+KysgYi8uZ2l0bGFiLWNpLmQvY29udGFpbmVyLWNyb3NzLnltbA0KPiBAQCAtMjIsMTIgKzIy
+LDYgQEAgYXJtNjQtZGViaWFuLWNyb3NzLWNvbnRhaW5lcjoNCj4gICAgIHZhcmlhYmxlczoN
+Cj4gICAgICAgTkFNRTogZGViaWFuLWFybTY0LWNyb3NzDQo+ICAgDQo+IC1hcm1lbC1kZWJp
+YW4tY3Jvc3MtY29udGFpbmVyOg0KPiAtICBleHRlbmRzOiAuY29udGFpbmVyX2pvYl90ZW1w
+bGF0ZQ0KPiAtICBzdGFnZTogY29udGFpbmVycw0KPiAtICB2YXJpYWJsZXM6DQo+IC0gICAg
+TkFNRTogZGViaWFuLWFybWVsLWNyb3NzDQo+IC0NCj4gICBhcm1oZi1kZWJpYW4tY3Jvc3Mt
+Y29udGFpbmVyOg0KPiAgICAgZXh0ZW5kczogLmNvbnRhaW5lcl9qb2JfdGVtcGxhdGUNCj4g
+ICAgIHN0YWdlOiBjb250YWluZXJzDQo+IGRpZmYgLS1naXQgYS8uZ2l0bGFiLWNpLmQvY3Jv
+c3NidWlsZHMueW1sIGIvLmdpdGxhYi1jaS5kL2Nyb3NzYnVpbGRzLnltbA0KPiBpbmRleCBj
+YjQ5OWU0ZWUwLi40NTkyNzNmOWRhIDEwMDY0NA0KPiAtLS0gYS8uZ2l0bGFiLWNpLmQvY3Jv
+c3NidWlsZHMueW1sDQo+ICsrKyBiLy5naXRsYWItY2kuZC9jcm9zc2J1aWxkcy55bWwNCj4g
+QEAgLTEsMTMgKzEsNiBAQA0KPiAgIGluY2x1ZGU6DQo+ICAgICAtIGxvY2FsOiAnLy5naXRs
+YWItY2kuZC9jcm9zc2J1aWxkLXRlbXBsYXRlLnltbCcNCj4gICANCj4gLWNyb3NzLWFybWVs
+LXVzZXI6DQo+IC0gIGV4dGVuZHM6IC5jcm9zc191c2VyX2J1aWxkX2pvYg0KPiAtICBuZWVk
+czoNCj4gLSAgICBqb2I6IGFybWVsLWRlYmlhbi1jcm9zcy1jb250YWluZXINCj4gLSAgdmFy
+aWFibGVzOg0KPiAtICAgIElNQUdFOiBkZWJpYW4tYXJtZWwtY3Jvc3MNCj4gLQ0KPiAgIGNy
+b3NzLWFybWhmLXVzZXI6DQo+ICAgICBleHRlbmRzOiAuY3Jvc3NfdXNlcl9idWlsZF9qb2IN
+Cj4gICAgIG5lZWRzOg0KPiBkaWZmIC0tZ2l0IGEvdGVzdHMvZG9ja2VyL2RvY2tlcmZpbGVz
+L2RlYmlhbi1hcm1lbC1jcm9zcy5kb2NrZXIgYi90ZXN0cy9kb2NrZXIvZG9ja2VyZmlsZXMv
+ZGViaWFuLWFybWVsLWNyb3NzLmRvY2tlcg0KPiBkZWxldGVkIGZpbGUgbW9kZSAxMDA2NDQN
+Cj4gaW5kZXggODQ3NmZjOGNjZS4uMDAwMDAwMDAwMA0KPiAtLS0gYS90ZXN0cy9kb2NrZXIv
+ZG9ja2VyZmlsZXMvZGViaWFuLWFybWVsLWNyb3NzLmRvY2tlcg0KPiArKysgL2Rldi9udWxs
+DQo+IEBAIC0xLDE3OSArMCwwIEBADQo+IC0jIFRISVMgRklMRSBXQVMgQVVUTy1HRU5FUkFU
+RUQNCj4gLSMNCj4gLSMgICQgbGNpdG9vbCBkb2NrZXJmaWxlIC0tbGF5ZXJzIGFsbCAtLWNy
+b3NzLWFyY2ggYXJtdjZsIGRlYmlhbi0xMSBxZW11DQo+IC0jDQo+IC0jIGh0dHBzOi8vZ2l0
+bGFiLmNvbS9saWJ2aXJ0L2xpYnZpcnQtY2kNCj4gLQ0KPiAtRlJPTSBkb2NrZXIuaW8vbGli
+cmFyeS9kZWJpYW46MTEtc2xpbQ0KPiAtDQo+IC1SVU4gZXhwb3J0IERFQklBTl9GUk9OVEVO
+RD1ub25pbnRlcmFjdGl2ZSAmJiBcDQo+IC0gICAgYXB0LWdldCB1cGRhdGUgJiYgXA0KPiAt
+ICAgIGFwdC1nZXQgaW5zdGFsbCAteSBlYXRteWRhdGEgJiYgXA0KPiAtICAgIGVhdG15ZGF0
+YSBhcHQtZ2V0IGRpc3QtdXBncmFkZSAteSAmJiBcDQo+IC0gICAgZWF0bXlkYXRhIGFwdC1n
+ZXQgaW5zdGFsbCAtLW5vLWluc3RhbGwtcmVjb21tZW5kcyAteSBcDQo+IC0gICAgICAgICAg
+ICAgICAgICAgICAgYmFzaCBcDQo+IC0gICAgICAgICAgICAgICAgICAgICAgYmMgXA0KPiAt
+ICAgICAgICAgICAgICAgICAgICAgIGJpc29uIFwNCj4gLSAgICAgICAgICAgICAgICAgICAg
+ICBic2RleHRyYXV0aWxzIFwNCj4gLSAgICAgICAgICAgICAgICAgICAgICBiemlwMiBcDQo+
+IC0gICAgICAgICAgICAgICAgICAgICAgY2EtY2VydGlmaWNhdGVzIFwNCj4gLSAgICAgICAg
+ICAgICAgICAgICAgICBjY2FjaGUgXA0KPiAtICAgICAgICAgICAgICAgICAgICAgIGRidXMg
+XA0KPiAtICAgICAgICAgICAgICAgICAgICAgIGRlYmlhbnV0aWxzIFwNCj4gLSAgICAgICAg
+ICAgICAgICAgICAgICBkaWZmdXRpbHMgXA0KPiAtICAgICAgICAgICAgICAgICAgICAgIGV4
+dWJlcmFudC1jdGFncyBcDQo+IC0gICAgICAgICAgICAgICAgICAgICAgZmluZHV0aWxzIFwN
+Cj4gLSAgICAgICAgICAgICAgICAgICAgICBmbGV4IFwNCj4gLSAgICAgICAgICAgICAgICAg
+ICAgICBnY2MgXA0KPiAtICAgICAgICAgICAgICAgICAgICAgIGdjb3ZyIFwNCj4gLSAgICAg
+ICAgICAgICAgICAgICAgICBnZXR0ZXh0IFwNCj4gLSAgICAgICAgICAgICAgICAgICAgICBn
+aXQgXA0KPiAtICAgICAgICAgICAgICAgICAgICAgIGhvc3RuYW1lIFwNCj4gLSAgICAgICAg
+ICAgICAgICAgICAgICBsaWJnbGliMi4wLWRldiBcDQo+IC0gICAgICAgICAgICAgICAgICAg
+ICAgbGliZ3RrLXZuYy0yLjAtZGV2IFwNCj4gLSAgICAgICAgICAgICAgICAgICAgICBsaWJw
+Y3JlMi1kZXYgXA0KPiAtICAgICAgICAgICAgICAgICAgICAgIGxpYnNuZGlvLWRldiBcDQo+
+IC0gICAgICAgICAgICAgICAgICAgICAgbGlic3BpY2UtcHJvdG9jb2wtZGV2IFwNCj4gLSAg
+ICAgICAgICAgICAgICAgICAgICBsbHZtIFwNCj4gLSAgICAgICAgICAgICAgICAgICAgICBs
+b2NhbGVzIFwNCj4gLSAgICAgICAgICAgICAgICAgICAgICBtYWtlIFwNCj4gLSAgICAgICAg
+ICAgICAgICAgICAgICBtZXNvbiBcDQo+IC0gICAgICAgICAgICAgICAgICAgICAgbXRvb2xz
+IFwNCj4gLSAgICAgICAgICAgICAgICAgICAgICBuY2F0IFwNCj4gLSAgICAgICAgICAgICAg
+ICAgICAgICBuaW5qYS1idWlsZCBcDQo+IC0gICAgICAgICAgICAgICAgICAgICAgb3BlbnNz
+aC1jbGllbnQgXA0KPiAtICAgICAgICAgICAgICAgICAgICAgIHBrZ2NvbmYgXA0KPiAtICAg
+ICAgICAgICAgICAgICAgICAgIHB5dGhvbjMgXA0KPiAtICAgICAgICAgICAgICAgICAgICAg
+IHB5dGhvbjMtbnVtcHkgXA0KPiAtICAgICAgICAgICAgICAgICAgICAgIHB5dGhvbjMtb3Bl
+bmN2IFwNCj4gLSAgICAgICAgICAgICAgICAgICAgICBweXRob24zLXBpbGxvdyBcDQo+IC0g
+ICAgICAgICAgICAgICAgICAgICAgcHl0aG9uMy1waXAgXA0KPiAtICAgICAgICAgICAgICAg
+ICAgICAgIHB5dGhvbjMtc2V0dXB0b29scyBcDQo+IC0gICAgICAgICAgICAgICAgICAgICAg
+cHl0aG9uMy1zcGhpbnggXA0KPiAtICAgICAgICAgICAgICAgICAgICAgIHB5dGhvbjMtc3Bo
+aW54LXJ0ZC10aGVtZSBcDQo+IC0gICAgICAgICAgICAgICAgICAgICAgcHl0aG9uMy12ZW52
+IFwNCj4gLSAgICAgICAgICAgICAgICAgICAgICBweXRob24zLXdoZWVsIFwNCj4gLSAgICAg
+ICAgICAgICAgICAgICAgICBweXRob24zLXlhbWwgXA0KPiAtICAgICAgICAgICAgICAgICAg
+ICAgIHJwbTJjcGlvIFwNCj4gLSAgICAgICAgICAgICAgICAgICAgICBzZWQgXA0KPiAtICAg
+ICAgICAgICAgICAgICAgICAgIHNvY2F0IFwNCj4gLSAgICAgICAgICAgICAgICAgICAgICBz
+cGFyc2UgXA0KPiAtICAgICAgICAgICAgICAgICAgICAgIHRhciBcDQo+IC0gICAgICAgICAg
+ICAgICAgICAgICAgdGVzc2VyYWN0LW9jciBcDQo+IC0gICAgICAgICAgICAgICAgICAgICAg
+dGVzc2VyYWN0LW9jci1lbmcgXA0KPiAtICAgICAgICAgICAgICAgICAgICAgIHhvcnJpc28g
+XA0KPiAtICAgICAgICAgICAgICAgICAgICAgIHpzdGQgJiYgXA0KPiAtICAgIGVhdG15ZGF0
+YSBhcHQtZ2V0IGF1dG9yZW1vdmUgLXkgJiYgXA0KPiAtICAgIGVhdG15ZGF0YSBhcHQtZ2V0
+IGF1dG9jbGVhbiAteSAmJiBcDQo+IC0gICAgc2VkIC1FaSAncyxeIyAoZW5fVVNcLlVURi04
+IC4qKSQsXDEsJyAvZXRjL2xvY2FsZS5nZW4gJiYgXA0KPiAtICAgIGRwa2ctcmVjb25maWd1
+cmUgbG9jYWxlcyAmJiBcDQo+IC0gICAgcm0gLWYgL3Vzci9saWIqL3B5dGhvbjMqL0VYVEVS
+TkFMTFktTUFOQUdFRA0KPiAtDQo+IC1SVU4gL3Vzci9iaW4vcGlwMyBpbnN0YWxsIHRvbWxp
+DQo+IC0NCj4gLUVOViBDQ0FDSEVfV1JBUFBFUlNESVIgIi91c3IvbGliZXhlYy9jY2FjaGUt
+d3JhcHBlcnMiDQo+IC1FTlYgTEFORyAiZW5fVVMuVVRGLTgiDQo+IC1FTlYgTUFLRSAiL3Vz
+ci9iaW4vbWFrZSINCj4gLUVOViBOSU5KQSAiL3Vzci9iaW4vbmluamEiDQo+IC1FTlYgUFlU
+SE9OICIvdXNyL2Jpbi9weXRob24zIg0KPiAtDQo+IC1SVU4gZXhwb3J0IERFQklBTl9GUk9O
+VEVORD1ub25pbnRlcmFjdGl2ZSAmJiBcDQo+IC0gICAgZHBrZyAtLWFkZC1hcmNoaXRlY3R1
+cmUgYXJtZWwgJiYgXA0KPiAtICAgIGVhdG15ZGF0YSBhcHQtZ2V0IHVwZGF0ZSAmJiBcDQo+
+IC0gICAgZWF0bXlkYXRhIGFwdC1nZXQgZGlzdC11cGdyYWRlIC15ICYmIFwNCj4gLSAgICBl
+YXRteWRhdGEgYXB0LWdldCBpbnN0YWxsIC0tbm8taW5zdGFsbC1yZWNvbW1lbmRzIC15IGRw
+a2ctZGV2ICYmIFwNCj4gLSAgICBlYXRteWRhdGEgYXB0LWdldCBpbnN0YWxsIC0tbm8taW5z
+dGFsbC1yZWNvbW1lbmRzIC15IFwNCj4gLSAgICAgICAgICAgICAgICAgICAgICBnY2MtYXJt
+LWxpbnV4LWdudWVhYmkgXA0KPiAtICAgICAgICAgICAgICAgICAgICAgIGxpYmFpby1kZXY6
+YXJtZWwgXA0KPiAtICAgICAgICAgICAgICAgICAgICAgIGxpYmFzYW42OmFybWVsIFwNCj4g
+LSAgICAgICAgICAgICAgICAgICAgICBsaWJhc291bmQyLWRldjphcm1lbCBcDQo+IC0gICAg
+ICAgICAgICAgICAgICAgICAgbGliYXR0cjEtZGV2OmFybWVsIFwNCj4gLSAgICAgICAgICAg
+ICAgICAgICAgICBsaWJicGYtZGV2OmFybWVsIFwNCj4gLSAgICAgICAgICAgICAgICAgICAg
+ICBsaWJicmxhcGktZGV2OmFybWVsIFwNCj4gLSAgICAgICAgICAgICAgICAgICAgICBsaWJi
+ejItZGV2OmFybWVsIFwNCj4gLSAgICAgICAgICAgICAgICAgICAgICBsaWJjNi1kZXY6YXJt
+ZWwgXA0KPiAtICAgICAgICAgICAgICAgICAgICAgIGxpYmNhY2FyZC1kZXY6YXJtZWwgXA0K
+PiAtICAgICAgICAgICAgICAgICAgICAgIGxpYmNhcC1uZy1kZXY6YXJtZWwgXA0KPiAtICAg
+ICAgICAgICAgICAgICAgICAgIGxpYmNhcHN0b25lLWRldjphcm1lbCBcDQo+IC0gICAgICAg
+ICAgICAgICAgICAgICAgbGliY21vY2thLWRldjphcm1lbCBcDQo+IC0gICAgICAgICAgICAg
+ICAgICAgICAgbGliY3VybDQtZ251dGxzLWRldjphcm1lbCBcDQo+IC0gICAgICAgICAgICAg
+ICAgICAgICAgbGliZGF4Y3RsLWRldjphcm1lbCBcDQo+IC0gICAgICAgICAgICAgICAgICAg
+ICAgbGliZHJtLWRldjphcm1lbCBcDQo+IC0gICAgICAgICAgICAgICAgICAgICAgbGliZXBv
+eHktZGV2OmFybWVsIFwNCj4gLSAgICAgICAgICAgICAgICAgICAgICBsaWJmZHQtZGV2OmFy
+bWVsIFwNCj4gLSAgICAgICAgICAgICAgICAgICAgICBsaWJmZmktZGV2OmFybWVsIFwNCj4g
+LSAgICAgICAgICAgICAgICAgICAgICBsaWJmdXNlMy1kZXY6YXJtZWwgXA0KPiAtICAgICAg
+ICAgICAgICAgICAgICAgIGxpYmdibS1kZXY6YXJtZWwgXA0KPiAtICAgICAgICAgICAgICAg
+ICAgICAgIGxpYmdjcnlwdDIwLWRldjphcm1lbCBcDQo+IC0gICAgICAgICAgICAgICAgICAg
+ICAgbGliZ2xpYjIuMC1kZXY6YXJtZWwgXA0KPiAtICAgICAgICAgICAgICAgICAgICAgIGxp
+YmdsdXN0ZXJmcy1kZXY6YXJtZWwgXA0KPiAtICAgICAgICAgICAgICAgICAgICAgIGxpYmdu
+dXRsczI4LWRldjphcm1lbCBcDQo+IC0gICAgICAgICAgICAgICAgICAgICAgbGliZ3RrLTMt
+ZGV2OmFybWVsIFwNCj4gLSAgICAgICAgICAgICAgICAgICAgICBsaWJpYnZlcmJzLWRldjph
+cm1lbCBcDQo+IC0gICAgICAgICAgICAgICAgICAgICAgbGliaXNjc2ktZGV2OmFybWVsIFwN
+Cj4gLSAgICAgICAgICAgICAgICAgICAgICBsaWJqZW1hbGxvYy1kZXY6YXJtZWwgXA0KPiAt
+ICAgICAgICAgICAgICAgICAgICAgIGxpYmpwZWc2Mi10dXJiby1kZXY6YXJtZWwgXA0KPiAt
+ICAgICAgICAgICAgICAgICAgICAgIGxpYmpzb24tYy1kZXY6YXJtZWwgXA0KPiAtICAgICAg
+ICAgICAgICAgICAgICAgIGxpYmx0dG5nLXVzdC1kZXY6YXJtZWwgXA0KPiAtICAgICAgICAg
+ICAgICAgICAgICAgIGxpYmx6bzItZGV2OmFybWVsIFwNCj4gLSAgICAgICAgICAgICAgICAg
+ICAgICBsaWJuY3Vyc2VzdzUtZGV2OmFybWVsIFwNCj4gLSAgICAgICAgICAgICAgICAgICAg
+ICBsaWJuZnMtZGV2OmFybWVsIFwNCj4gLSAgICAgICAgICAgICAgICAgICAgICBsaWJudW1h
+LWRldjphcm1lbCBcDQo+IC0gICAgICAgICAgICAgICAgICAgICAgbGlicGFtMGctZGV2OmFy
+bWVsIFwNCj4gLSAgICAgICAgICAgICAgICAgICAgICBsaWJwaXBld2lyZS0wLjMtZGV2OmFy
+bWVsIFwNCj4gLSAgICAgICAgICAgICAgICAgICAgICBsaWJwaXhtYW4tMS1kZXY6YXJtZWwg
+XA0KPiAtICAgICAgICAgICAgICAgICAgICAgIGxpYnBuZy1kZXY6YXJtZWwgXA0KPiAtICAg
+ICAgICAgICAgICAgICAgICAgIGxpYnB1bHNlLWRldjphcm1lbCBcDQo+IC0gICAgICAgICAg
+ICAgICAgICAgICAgbGlicmJkLWRldjphcm1lbCBcDQo+IC0gICAgICAgICAgICAgICAgICAg
+ICAgbGlicmRtYWNtLWRldjphcm1lbCBcDQo+IC0gICAgICAgICAgICAgICAgICAgICAgbGli
+c2FzbDItZGV2OmFybWVsIFwNCj4gLSAgICAgICAgICAgICAgICAgICAgICBsaWJzZGwyLWRl
+djphcm1lbCBcDQo+IC0gICAgICAgICAgICAgICAgICAgICAgbGlic2RsMi1pbWFnZS1kZXY6
+YXJtZWwgXA0KPiAtICAgICAgICAgICAgICAgICAgICAgIGxpYnNlY2NvbXAtZGV2OmFybWVs
+IFwNCj4gLSAgICAgICAgICAgICAgICAgICAgICBsaWJzZWxpbnV4MS1kZXY6YXJtZWwgXA0K
+PiAtICAgICAgICAgICAgICAgICAgICAgIGxpYnNsaXJwLWRldjphcm1lbCBcDQo+IC0gICAg
+ICAgICAgICAgICAgICAgICAgbGlic25hcHB5LWRldjphcm1lbCBcDQo+IC0gICAgICAgICAg
+ICAgICAgICAgICAgbGlic3BpY2Utc2VydmVyLWRldjphcm1lbCBcDQo+IC0gICAgICAgICAg
+ICAgICAgICAgICAgbGlic3NoLWdjcnlwdC1kZXY6YXJtZWwgXA0KPiAtICAgICAgICAgICAg
+ICAgICAgICAgIGxpYnN5c3RlbWQtZGV2OmFybWVsIFwNCj4gLSAgICAgICAgICAgICAgICAg
+ICAgICBsaWJ0YXNuMS02LWRldjphcm1lbCBcDQo+IC0gICAgICAgICAgICAgICAgICAgICAg
+bGlidWJzYW4xOmFybWVsIFwNCj4gLSAgICAgICAgICAgICAgICAgICAgICBsaWJ1ZGV2LWRl
+djphcm1lbCBcDQo+IC0gICAgICAgICAgICAgICAgICAgICAgbGlidXJpbmctZGV2OmFybWVs
+IFwNCj4gLSAgICAgICAgICAgICAgICAgICAgICBsaWJ1c2ItMS4wLTAtZGV2OmFybWVsIFwN
+Cj4gLSAgICAgICAgICAgICAgICAgICAgICBsaWJ1c2JyZWRpcmhvc3QtZGV2OmFybWVsIFwN
+Cj4gLSAgICAgICAgICAgICAgICAgICAgICBsaWJ2ZGVwbHVnLWRldjphcm1lbCBcDQo+IC0g
+ICAgICAgICAgICAgICAgICAgICAgbGlidmlyZ2xyZW5kZXJlci1kZXY6YXJtZWwgXA0KPiAt
+ICAgICAgICAgICAgICAgICAgICAgIGxpYnZ0ZS0yLjkxLWRldjphcm1lbCBcDQo+IC0gICAg
+ICAgICAgICAgICAgICAgICAgbGlienN0ZC1kZXY6YXJtZWwgXA0KPiAtICAgICAgICAgICAg
+ICAgICAgICAgIG5ldHRsZS1kZXY6YXJtZWwgXA0KPiAtICAgICAgICAgICAgICAgICAgICAg
+IHN5c3RlbXRhcC1zZHQtZGV2OmFybWVsIFwNCj4gLSAgICAgICAgICAgICAgICAgICAgICB6
+bGliMWctZGV2OmFybWVsICYmIFwNCj4gLSAgICBlYXRteWRhdGEgYXB0LWdldCBhdXRvcmVt
+b3ZlIC15ICYmIFwNCj4gLSAgICBlYXRteWRhdGEgYXB0LWdldCBhdXRvY2xlYW4gLXkgJiYg
+XA0KPiAtICAgIG1rZGlyIC1wIC91c3IvbG9jYWwvc2hhcmUvbWVzb24vY3Jvc3MgJiYgXA0K
+PiAtICAgIHByaW50ZiAiW2JpbmFyaWVzXVxuXA0KPiAtYyA9ICcvdXNyL2Jpbi9hcm0tbGlu
+dXgtZ251ZWFiaS1nY2MnXG5cDQo+IC1hciA9ICcvdXNyL2Jpbi9hcm0tbGludXgtZ251ZWFi
+aS1nY2MtYXInXG5cDQo+IC1zdHJpcCA9ICcvdXNyL2Jpbi9hcm0tbGludXgtZ251ZWFiaS1z
+dHJpcCdcblwNCj4gLXBrZ2NvbmZpZyA9ICcvdXNyL2Jpbi9hcm0tbGludXgtZ251ZWFiaS1w
+a2ctY29uZmlnJ1xuXA0KPiAtXG5cDQo+IC1baG9zdF9tYWNoaW5lXVxuXA0KPiAtc3lzdGVt
+ID0gJ2xpbnV4J1xuXA0KPiAtY3B1X2ZhbWlseSA9ICdhcm0nXG5cDQo+IC1jcHUgPSAnYXJt
+J1xuXA0KPiAtZW5kaWFuID0gJ2xpdHRsZSdcbiIgPiAvdXNyL2xvY2FsL3NoYXJlL21lc29u
+L2Nyb3NzL2FybS1saW51eC1nbnVlYWJpICYmIFwNCj4gLSAgICBkcGtnLXF1ZXJ5IC0tc2hv
+d2Zvcm1hdCAnJHtQYWNrYWdlfV8ke1ZlcnNpb259XyR7QXJjaGl0ZWN0dXJlfVxuJyAtLXNo
+b3cgPiAvcGFja2FnZXMudHh0ICYmIFwNCj4gLSAgICBta2RpciAtcCAvdXNyL2xpYmV4ZWMv
+Y2NhY2hlLXdyYXBwZXJzICYmIFwNCj4gLSAgICBsbiAtcyAvdXNyL2Jpbi9jY2FjaGUgL3Vz
+ci9saWJleGVjL2NjYWNoZS13cmFwcGVycy9hcm0tbGludXgtZ251ZWFiaS1jYyAmJiBcDQo+
+IC0gICAgbG4gLXMgL3Vzci9iaW4vY2NhY2hlIC91c3IvbGliZXhlYy9jY2FjaGUtd3JhcHBl
+cnMvYXJtLWxpbnV4LWdudWVhYmktZ2NjDQo+IC0NCj4gLUVOViBBQkkgImFybS1saW51eC1n
+bnVlYWJpIg0KPiAtRU5WIE1FU09OX09QVFMgIi0tY3Jvc3MtZmlsZT1hcm0tbGludXgtZ251
+ZWFiaSINCj4gLUVOViBRRU1VX0NPTkZJR1VSRV9PUFRTIC0tY3Jvc3MtcHJlZml4PWFybS1s
+aW51eC1nbnVlYWJpLQ0KPiAtRU5WIERFRl9UQVJHRVRfTElTVCBhcm0tc29mdG1tdSxhcm0t
+bGludXgtdXNlcixhcm1lYi1saW51eC11c2VyDQo+IC0jIEFzIGEgZmluYWwgc3RlcCBjb25m
+aWd1cmUgdGhlIHVzZXIgKGlmIGVudiBpcyBkZWZpbmVkKQ0KPiAtQVJHIFVTRVINCj4gLUFS
+RyBVSUQNCj4gLVJVTiBpZiBbICIke1VTRVJ9IiBdOyB0aGVuIFwNCj4gLSAgaWQgJHtVU0VS
+fSAyPi9kZXYvbnVsbCB8fCB1c2VyYWRkIC11ICR7VUlEfSAtVSAke1VTRVJ9OyBmaQ0KPiBk
+aWZmIC0tZ2l0IGEvdGVzdHMvbGNpdG9vbC9yZWZyZXNoIGIvdGVzdHMvbGNpdG9vbC9yZWZy
+ZXNoDQo+IGluZGV4IGFjODAzZTM0ZjEuLjE5OWQ1ZmFkODcgMTAwNzU1DQo+IC0tLSBhL3Rl
+c3RzL2xjaXRvb2wvcmVmcmVzaA0KPiArKysgYi90ZXN0cy9sY2l0b29sL3JlZnJlc2gNCj4g
+QEAgLTE1NCwxMiArMTU0LDYgQEAgdHJ5Og0KPiAgICAgICAgICAgICAgICAgICAgICAgICAg
+IHRyYWlsZXI9Y3Jvc3NfYnVpbGQoImFhcmNoNjQtbGludXgtZ251LSIsDQo+ICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAiYWFyY2g2NC1zb2Z0bW11
+LGFhcmNoNjQtbGludXgtdXNlciIpKQ0KPiAgIA0KPiAtICAgICMgbWlncmF0aW9uIHRvIGJv
+b2t3b3JtIHN0YWxsZWQ6IGh0dHBzOi8vbGlzdHMuZGViaWFuLm9yZy9kZWJpYW4tYXJtLzIw
+MjMvMDkvbXNnMDAwMDYuaHRtbA0KPiAtICAgIGdlbmVyYXRlX2RvY2tlcmZpbGUoImRlYmlh
+bi1hcm1lbC1jcm9zcyIsICJkZWJpYW4tMTEiLA0KPiAtICAgICAgICAgICAgICAgICAgICAg
+ICAgY3Jvc3M9ImFybXY2bCIsDQo+IC0gICAgICAgICAgICAgICAgICAgICAgICB0cmFpbGVy
+PWNyb3NzX2J1aWxkKCJhcm0tbGludXgtZ251ZWFiaS0iLA0KPiAtICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAiYXJtLXNvZnRtbXUsYXJtLWxpbnV4LXVz
+ZXIsYXJtZWItbGludXgtdXNlciIpKQ0KPiAtDQo+ICAgICAgIGdlbmVyYXRlX2RvY2tlcmZp
+bGUoImRlYmlhbi1hcm1oZi1jcm9zcyIsICJkZWJpYW4tMTIiLA0KPiAgICAgICAgICAgICAg
+ICAgICAgICAgICAgIGNyb3NzPSJhcm12N2wiLA0KPiAgICAgICAgICAgICAgICAgICAgICAg
+ICAgIHRyYWlsZXI9Y3Jvc3NfYnVpbGQoImFybS1saW51eC1nbnVlYWJpaGYtIiwNCg0KUmV2
+aWV3ZWQtYnk6IFBpZXJyaWNrIEJvdXZpZXIgPHBpZXJyaWNrLmJvdXZpZXJAbGluYXJvLm9y
+Zz4NCg==

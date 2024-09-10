@@ -1,151 +1,189 @@
-Received: by 2002:a17:505:1909:b0:1be9:327d:8ee3 with SMTP id az9csp1250608njb;
-        Tue, 10 Sep 2024 05:23:31 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWd2RAkM/9t/i9B1ggwmnArcq5Er5gKjbNpRfvYbS3lg9DSd8nibI1uB2mjhXnYy4q+FjNxpmOgGRLmnw==@linaro.org
-X-Google-Smtp-Source: AGHT+IE4qztXoZGImIhimz2PNOtLtY0d20mXzl/jg32AnsUoVS899He1qlEyLbc2/o8YvlfE5K6o
-X-Received: by 2002:a05:620a:4510:b0:7a9:ac2d:5962 with SMTP id af79cd13be357-7a9ac2d5e2emr1284221885a.8.1725971011639;
-        Tue, 10 Sep 2024 05:23:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1725971011; cv=none;
-        d=google.com; s=arc-20240605;
-        b=Pbdj36Taf5it6sys+8BsseAOrWT2nL7K804T/JNzrv8Gxi065UvgVNrO9H7YoKxBON
-         slnf3xlmr+IPOvhttUvVRzUxGZU8q/r/nYtoimsoHrSU0mWjwvidDZcbLpdOVJFxmGrI
-         pTWZzOJqCjG0n1tY5OuaudWDU0Uz5fhQBDcWcwp6K71YUO3GBAzumhtiHO/B55Mug2XV
-         ygIjfk+fV7EV4Or9os2m1+XMNviRcA3os7nYIqESMVzuoyfogcA/fCjI6AthpaF9QcWI
-         h7I+ujJTrKshGEuspN15d9scHc1/jczO7Fs86k97xida/I3BBQ9zML6nMuN8KSheisas
-         YYyQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=xIt2jVQ8+nSY6T72AcewDyD/i8OcbuRqdJvmc5AcVvk=;
-        fh=jaxEjGvEsT/tsPzEU9AHpdpo/scr9Qu4rZZi7gC93aY=;
-        b=L4bZJp/YlaXTHaA1K8qmvWrTv7uZHPc1WlksqEKgrd+2RslLNc+duZSnXhR4XY8bVE
-         ue+GDlkIJRQaQeErDX/KKYhAP+Y9wybhc29V+rfBqmAUgMiDskDBaBZ1i16Hugt1SnWd
-         C5u/lyyFZeJC1tP9hPvZ40E5LaV0TcmiECZjb/vHDOC+2a7Ev4mx/3/xWcDXQ97l1AE/
-         LMyswf4V2lYv3WD+yWMv1ZKcDAJNR/50CgMkBI9Ui5c0huXZfCdWsZOGGe43+JKOlqS0
-         4alEicpoK8QmGDfC9C1+ID9YdpgS483OdXi++T7sfDNbANCvknl8guUowMufdAQyCCcL
-         LOCA==;
-        dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=f79bFm+5;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7a9a79c5f41si774729685a.84.2024.09.10.05.23.31
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 10 Sep 2024 05:23:31 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=f79bFm+5;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1snztz-00023A-8r; Tue, 10 Sep 2024 08:23:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1snztw-0001zf-Du
- for qemu-devel@nongnu.org; Tue, 10 Sep 2024 08:23:20 -0400
-Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1snztt-00036x-H9
- for qemu-devel@nongnu.org; Tue, 10 Sep 2024 08:23:20 -0400
-Received: by mail-ed1-x535.google.com with SMTP id
- 4fb4d7f45d1cf-5c3ca32971cso1040686a12.0
- for <qemu-devel@nongnu.org>; Tue, 10 Sep 2024 05:23:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1725970995; x=1726575795; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=xIt2jVQ8+nSY6T72AcewDyD/i8OcbuRqdJvmc5AcVvk=;
- b=f79bFm+55K2WIl9dEuLRZ54067DQP9+iL2u2bnLEKsSTst4LpF1xWg+/0awuDr8Yrt
- XCZyGSlaIylqfiXof/AZcJLSbxaNFEehWpkOqqL/W84TgV2FyXKL9PUmtPps1DLCeawi
- n+4cbXRhjaW3+Pmd76Vhi9DN3X8n7cjh0U4MgDZNDN+xvlcBWEKMB77ImMsGbV/I5lyJ
- XiDAxYw97uzEFfF7r7oWE9M9pfd7ZuRmmqesUY1HPh+sdv7sy1Yv/VW95jsoYQRcIkTP
- n8TzmLzgQ2VDlLF5qkohfAmsnUtsoqgvFuGwsXjMkHQr1NDWeJJHme+DJYc2ACgBaYk7
- QZZw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1725970995; x=1726575795;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=xIt2jVQ8+nSY6T72AcewDyD/i8OcbuRqdJvmc5AcVvk=;
- b=d5pfF8EyzfY7JBzLewkrEAJb8qmyiRNzgKkWOm4h5b62bCjQNzr5CpHQLDC2KdGfvp
- R1LbSI610QSpVGtNm+c+THbeDfiaKZFy3UglYe9G0Osu2aho8ijdKneuoAHyhaz9k+Wx
- fp13EVxuW6uGtmzBIY6rx4Az+CIxLFat9cXnZ8fC0iLgmf0Kijf+BCicC1l0k3XKY0di
- xnIKlk0FIAf4SV+r2JHM4bim0drNlhP4gDXh2/mKxW5XKOq9j+tFGgZUbRXXkJIfkQ21
- CKmdDExBBFoupGuLBkKSHDqGYEiJSbZc1wG9+Z67905sRHEAU/zKxi4d02ZnFoome02i
- zr6Q==
-X-Forwarded-Encrypted: i=1;
- AJvYcCW+NSmij1t/9T/J5+vnxLUKNJTTXNQVNK1rgjeur3CYmNxoA2g3lKIGel0I1JaO0XQsSIZP6YD3pIl+@nongnu.org
-X-Gm-Message-State: AOJu0YyvMKpcd4YsBeTHJrrUxYhGmyXX6LGp/MTvaR92Eh90Y8jTq7Qc
- FPHSzwogjpZ8PlExa5Ew/lhIuNT8EFsB/c24Nr3HfQZlepCyg2SBBLx1aqJ4atQaVII6MoVMzgA
- +R6wG0ERsNNUH81qhUz4q2xT1axylnrUdb7errA==
-X-Received: by 2002:a05:6402:42cb:b0:5a3:a4d7:caf5 with SMTP id
- 4fb4d7f45d1cf-5c3dc7c9cc1mr7526277a12.36.1725970995389; Tue, 10 Sep 2024
- 05:23:15 -0700 (PDT)
+Return-Path: <alex.bennee@linaro.org>
+Received: from draig.lan ([85.9.250.243])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a8d25ced1bfsm485811966b.154.2024.09.10.07.07.34
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 10 Sep 2024 07:07:34 -0700 (PDT)
+Received: from draig.lan (localhost [IPv6:::1])
+	by draig.lan (Postfix) with ESMTP id 9B51C5F762;
+	Tue, 10 Sep 2024 15:07:33 +0100 (BST)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Eduardo Habkost <eduardo@habkost.net>,
+	Zhao Liu <zhao1.liu@intel.com>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Beraldo Leal <bleal@redhat.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Alexandre Iooss <erdnaxe@crans.org>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+	Yanan Wang <wangyanan55@huawei.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Mahmoud Mandour <ma.mandourr@gmail.com>,
+	Thomas Huth <thuth@redhat.com>,
+	qemu-arm@nongnu.org,
+	devel@lists.libvirt.org,
+	Jiaxun Yang <jiaxun.yang@flygoat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Wainer dos Santos Moschetta <wainersm@redhat.com>
+Subject: [PATCH 00/26] Maintainer updates (testing, gdbstub, plugins)
+Date: Tue, 10 Sep 2024 15:07:07 +0100
+Message-Id: <20240910140733.4007719-1-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.39.2
 MIME-Version: 1.0
-References: <20240709060448.251881-1-gankulkarni@os.amperecomputing.com>
- <CAFEAcA_7BOXSLXJ=VV0pWDvrN=2dWrM3bRTG+31ivPjeVbWGKQ@mail.gmail.com>
- <0b5764d4-fd63-4779-a22a-8e10ebafbcc7@os.amperecomputing.com>
-In-Reply-To: <0b5764d4-fd63-4779-a22a-8e10ebafbcc7@os.amperecomputing.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 10 Sep 2024 13:23:03 +0100
-Message-ID: <CAFEAcA9oP5HNYK=HFazBU8M9eaGN8sFhAvLFQvcy36Xf+Tm+7A@mail.gmail.com>
-Subject: Re: [PATCH] arm/kvm: add support for MTE
-To: Ganapatrao Kulkarni <gankulkarni@os.amperecomputing.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, richard.henderson@linaro.org, 
- darren@os.amperecomputing.com
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::535;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x535.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: e78R8/lfgYlV
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-TUID: Ax1tqVNXrhC9
 
-On Tue, 10 Sept 2024 at 12:57, Ganapatrao Kulkarni
-<gankulkarni@os.amperecomputing.com> wrote:
-> On 16-07-2024 09:15 pm, Peter Maydell wrote:
-> > Since Cornelia first wrote the patch this is based on, we've
-> > landed gdbstub support for MTE (so gdb can find out which
-> > addresses in the memory map have tags and read and write
-> > those tags). So I think the KVM MTE support now also needs to
-> > handle that. (See aarch64_cpu_register_gdb_commands() in
-> > target/arm/gdbstub64.c.)
->
-> I looked at this code and it looks like, complete code is under
-> ifdef CONFIG_USER_ONLY and for kvm(target aarch64-softmmu) this is not
-> getting enabled. Are you asking to remove these ifdef and make
-> mte-gdbstub commands available for the KVM mode as well?
+Hi,
 
-The system mode support for mte gdbstub is just about
-to land. The current patchset is this one:
-https://patchew.org/QEMU/20240906143316.657436-1-gustavo.romero@linaro.org/
+Here is the current state of my maintainer trees.
 
-thanks
--- PMM
+Testing
+
+I've updated a number of the docker containers to deal with breakages
+in the crossdev environments as bullseye moves to LTS. I've dropped
+the armel environment which doesn't really add much to the armhf cross
+build we have that works. i686 and mipsel cross containers are bumped
+up to bookworm. Currently mips64el is still broken.
+
+gdbstub
+
+This brings in Gustavo's patches to support MTE for system mode
+expanding on the previously implemented user mode support.
+
+plugins
+
+I start by deprecating some options that don't make much sense for
+instrumentation including 32 bit and TCI support. They will still work
+but there are caveats and it doesn't seem worth wasting CI time
+keeping track of them.
+
+There are a couple of new plugins including some useful analysis ones.
+The bbv plugin can generate files that can be fed into simpoint. The
+cflow plugin I've posted before separately but takes advantage of the
+new conditional and store helpers to try and be more efficient tracing
+control flow.
+
+Finally there is not one but two memory APIs. Pierrick's updates to
+the main memory instrumentation now makes values available to the
+plugins and should be used if you absolutely want to track what value
+was read or stored. I've added a softmmu test case building on
+memory.c and I'll merge the updated linux-user test case once its been
+re-spun.
+
+Rowan's API provides a more direct access through the existing debug
+API but comes with the caveats that it should only used on memory you
+don't expect to be changing. The example provided allows for the
+contents of syscalls to be probed at the syscall point.
+
+Finally there is a RFC for a gdbstub hook which I mostly wrote while I
+was debugging weirdness in the memory stuff. I'll probably drop it
+before the PR and let it cook a bit more on plugins/next.
+
+The following still need review:
+
+  plugins: add ability to register a GDB triggered callback
+  util/timer: avoid deadlock when shutting down
+  tests/tcg: add a system test to check memory instrumentation
+  tests/tcg: only read/write 64 bit words on 64 bit systems
+  tests/tcg: clean up output of memory system test
+  contrib/plugins: control flow plugin
+  deprecation: don't enable TCG plugins by default with TCI
+  deprecation: don't enable TCG plugins by default on 32 bit hosts
+  scripts/ci: update the gitlab-runner playbook
+  docs/devel: fix duplicate line
+  tests/docker: update debian i686 and mipsel images to bookworm
+  tests/docker: remove debian-armel-cross
+
+Akihiko Odaki (1):
+  contrib/plugins: Add a plugin to generate basic block vectors
+
+Alex Bennée (12):
+  tests/docker: remove debian-armel-cross
+  tests/docker: update debian i686 and mipsel images to bookworm
+  docs/devel: fix duplicate line
+  scripts/ci: update the gitlab-runner playbook
+  deprecation: don't enable TCG plugins by default on 32 bit hosts
+  deprecation: don't enable TCG plugins by default with TCI
+  contrib/plugins: control flow plugin
+  tests/tcg: clean up output of memory system test
+  tests/tcg: only read/write 64 bit words on 64 bit systems
+  tests/tcg: add a system test to check memory instrumentation
+  util/timer: avoid deadlock when shutting down
+  plugins: add ability to register a GDB triggered callback
+
+Gustavo Romero (5):
+  gdbstub: Use specific MMU index when probing MTE addresses
+  gdbstub: Add support for MTE in system mode
+  tests/guest-debug: Support passing arguments to the GDB test script
+  tests/tcg/aarch64: Improve linker script organization
+  tests/tcg/aarch64: Extend MTE gdbstub tests to system mode
+
+Pierrick Bouvier (5):
+  plugins: save value during memory accesses
+  plugins: extend API to get latest memory value accessed
+  tests/tcg: add mechanism to run specific tests with plugins
+  tests/tcg: allow to check output of plugins
+  tests/plugin/mem: add option to print memory accesses
+
+Rowan Hart (2):
+  plugins: add plugin API to read guest memory
+  plugins: add option to dump write argument to syscall plugin
+
+Thomas Huth (1):
+  contrib/plugins/Makefile: Add a 'distclean' target
+
+ docs/about/deprecated.rst                     |  19 +
+ docs/about/emulation.rst                      |  44 +-
+ docs/devel/testing/main.rst                   |   6 -
+ configure                                     |  37 +-
+ accel/tcg/atomic_template.h                   |  66 ++-
+ include/hw/core/cpu.h                         |   4 +
+ include/qemu/plugin-event.h                   |   1 +
+ include/qemu/plugin.h                         |   4 +
+ include/qemu/qemu-plugin.h                    |  80 +++-
+ plugins/plugin.h                              |   9 +
+ contrib/plugins/bbv.c                         | 158 +++++++
+ contrib/plugins/cflow.c                       | 413 ++++++++++++++++++
+ plugins/api.c                                 |  71 +++
+ plugins/core.c                                |  43 ++
+ target/arm/gdbstub64.c                        |  21 +-
+ tcg/tcg-op-ldst.c                             |  66 ++-
+ tests/tcg/multiarch/system/memory.c           | 123 ++++--
+ tests/tcg/plugins/mem.c                       | 254 ++++++++++-
+ tests/tcg/plugins/syscall.c                   | 117 +++++
+ util/qemu-timer.c                             |  14 +-
+ accel/tcg/atomic_common.c.inc                 |  13 +-
+ accel/tcg/ldst_common.c.inc                   |  38 +-
+ .gitlab-ci.d/buildtest.yml                    |   2 +
+ .gitlab-ci.d/container-cross.yml              |   6 -
+ .gitlab-ci.d/crossbuilds.yml                  |   7 -
+ contrib/plugins/Makefile                      |   4 +-
+ plugins/qemu-plugins.symbols                  |   3 +
+ scripts/ci/setup/gitlab-runner.yml            |  39 +-
+ .../dockerfiles/debian-armel-cross.docker     | 179 --------
+ .../dockerfiles/debian-i686-cross.docker      |  10 +-
+ .../dockerfiles/debian-mipsel-cross.docker    |  10 +-
+ tests/guest-debug/run-test.py                 |   6 +
+ tests/guest-debug/test_gdbstub.py             |   5 +
+ tests/lcitool/refresh                         |  10 +-
+ tests/tcg/Makefile.target                     |  12 +-
+ tests/tcg/aarch64/Makefile.softmmu-target     |  49 ++-
+ tests/tcg/aarch64/Makefile.target             |   3 +-
+ tests/tcg/aarch64/gdbstub/test-mte.py         |  71 ++-
+ tests/tcg/aarch64/system/boot.S               |  11 +
+ tests/tcg/aarch64/system/kernel.ld            |  33 +-
+ tests/tcg/aarch64/system/mte.S                | 109 +++++
+ tests/tcg/alpha/Makefile.softmmu-target       |   2 +-
+ .../multiarch/system/Makefile.softmmu-target  |   6 +
+ .../system/validate-memory-counts.py          | 115 +++++
+ 44 files changed, 1935 insertions(+), 358 deletions(-)
+ create mode 100644 contrib/plugins/bbv.c
+ create mode 100644 contrib/plugins/cflow.c
+ delete mode 100644 tests/docker/dockerfiles/debian-armel-cross.docker
+ create mode 100644 tests/tcg/aarch64/system/mte.S
+ create mode 100755 tests/tcg/multiarch/system/validate-memory-counts.py
+
+-- 
+2.39.2

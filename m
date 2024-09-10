@@ -1,186 +1,122 @@
-Received: by 2002:a05:7022:6591:b0:89:eff1:5568 with SMTP id bd17csp1236263dlb;
-        Tue, 10 Sep 2024 07:20:25 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUJ4TwBrq6Qq2Bmad2UQ+3V+DbmfAwoJSnfBcozvQ/bPG9rs4+B++E6k5nxAl259RwtZixvfpTjB6RVhw==@linaro.org
-X-Google-Smtp-Source: AGHT+IGh+9lKHbkpQbXkgwcwbysKwm2Q0g153hV8okMybJYRweNSuoEqKoKJtLXmzXnXfsWjXE2U
-X-Received: by 2002:a05:6808:22a2:b0:3e0:4f79:8426 with SMTP id 5614622812f47-3e04f798eebmr1628856b6e.32.1725978024946;
-        Tue, 10 Sep 2024 07:20:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1725978024; cv=none;
-        d=google.com; s=arc-20240605;
-        b=U4atGqgOjykaRxDI+Jjuo2XbeHUYghwbpyD1mjwWYpE05vK0EOB1yTMGp3AXhlc3U9
-         Hm0dkMLXJfRZrcj9U2/R+MLDV5qiNWaAVD61AszT05xTZO/c06aYV2ohB5so7RKHIwgI
-         pjbu3NgkvcSJpARAXFPC1nTPPYIFfOyu+2Ws4Cq3u/tOB/0IT5KbIPk/wEtmfpWBKH84
-         cvQDv06Lut1QZ0bQbWTMEHfWT3uALGJn316TlD3y5LMiUUpY2fUkkQWs1J067IcsQRzd
-         m3I53TlJZJCN+0YYBV0AN+2yd63jK3RhjxpksJSfHWmOPVCAqdkDHHHaMQqvB9a/QfBo
-         N3Pg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=1FREOUDCx1VLyhPhrv1zXf/ZT0CjpOXI1qZs1mxDi4w=;
-        fh=2P/OYZFUs5hZpwVfAErcD7iYN4gs6rWU34SVi3uRgFI=;
-        b=GRc6APnCq0E0MWpWZ/diyrTK6at8u2Ph1JN7F4D0ChWTJKQDJmp3mDSZW+35D33P71
-         lgys1qhpYV+k+VPRv5V0+e0tVPY9ij28Ra9dx32qu7hqL3O15TXWf3DvrZNuZ7hyvOVI
-         6kMJ+WqsDcw6WewSmDWlC7gJ2cqiJw0SCIcgR/Lpswx8h8ydC5lyV6gzl/iP4gjXaCop
-         X+evdnP0GN/WsnKCNbzIdGyUxuW7vq2+I8uDY4yGKy1IATVCnbUEmgD0z9s7h7GgmYT6
-         +lHOQFxMHPmDv2NO94uUQCPK+C0MEA7OyO0JqccB85MvqFJ18+nGFD1gWGApuiIiSFh9
-         Ydxg==;
+Received: by 2002:a05:7022:6591:b0:89:eff1:5568 with SMTP id bd17csp1245176dlb;
+        Tue, 10 Sep 2024 07:34:00 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCX1pt1G9EXvm60mKSKX+bFq3TFasRQ/j928PG4Go6warqr4dZnixdtkRjjtjaz+2OtOy4y2XJq/dRbjRg==@linaro.org
+X-Received: by 2002:a05:6512:4028:b0:52c:d905:9645 with SMTP id 2adb3069b0e04-536587aaf0cmr8911320e87.13.1725978840197;
+        Tue, 10 Sep 2024 07:34:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1725978840; cv=none;
+        d=google.com; s=arc-20160816;
+        b=Ru7nQae/1h66w+xMFWi0MGWA8Su96BtP/jTtVzXhsWqPWLN6J5EU+0Oe2HAzCxJfuV
+         cpFJ/gbkLQ+Cv2JKAKs6YetWXFCGNUBt043nsBJ8l68spbz3RCfJ/HrJn3aFM56b1sit
+         KEcgR4G648FZjKNE+eLQHHonqL1HIowmt69PrNc+3IH/wEewbFSowhMPWqA+mt/XsUIg
+         MLC/dtEoB4Wg7NkhnV2h9uGI1OCd12IkLDovbSA0k3d0Y1BT1dXp9SRak0JGqjSYQH9S
+         nS/oRzImCiAifTYkc0FbQL5sYLcW7UrHbeAuCy7zFK/nllg7kxbRwwk7h8bRQAqNdYwO
+         EuZQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=LuQOXsZmhBvhlFdXkQhwG9jubmnqYTr/GtKVU1B7PsQ=;
+        fh=TiqnTJ6gH0bo+zAA+iKftR+qualuiOfcukShTU5Lz18=;
+        b=K0SQ06CLjX03tOOR5pKRZmZmH9llKxRwCZY6FVl4JHNsDLzCGiWbLoWsJSXCayGklh
+         3ehs7h5OjtQcur9zE7pOId2gOOKsfeH5KeFs3xdy/81t7U/Ua2nHxeN3hcCxu+65+WGt
+         5jdCtbBirWWWMQBxFelXBM+TrRBy+56LCIlm5aIzvsL4k7SqgM+4tuf1ZAAhqSUQmGcR
+         asSpuGFnib+ZKqbRz4doPNGbp2B4Dm09x2uhqdHDLvhwcg9Vz0q9oy4RV8lIzhk7oz3a
+         2UbLX06CXrJb+N9sA4wf2BZ9ZXCRvXNGp8EatubsIPLBQ3xxZDbJJSfQuhm6IEU6+b5R
+         5ydA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=jt5vGjDY;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=S+yoEmrt;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a1e0cc1a2514c-8489ad76fa4si1320023241.157.2024.09.10.07.20.24
+Return-Path: <philmd@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id a640c23a62f3a-a8d258f2d61sor242251666b.5.2024.09.10.07.33.59
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 10 Sep 2024 07:20:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Tue, 10 Sep 2024 07:33:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=jt5vGjDY;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=S+yoEmrt;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1so1iV-0004ON-1u; Tue, 10 Sep 2024 10:19:39 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1so1iT-0004I8-JC
- for qemu-arm@nongnu.org; Tue, 10 Sep 2024 10:19:37 -0400
-Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1so1iR-0008DC-Up
- for qemu-arm@nongnu.org; Tue, 10 Sep 2024 10:19:37 -0400
-Received: by mail-ed1-x52d.google.com with SMTP id
- 4fb4d7f45d1cf-5c3c30e663fso932183a12.1
- for <qemu-arm@nongnu.org>; Tue, 10 Sep 2024 07:19:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1725977974; x=1726582774; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=1FREOUDCx1VLyhPhrv1zXf/ZT0CjpOXI1qZs1mxDi4w=;
- b=jt5vGjDYecgBROxTYNJh41S4m/USeT0ALbpGy3ebdWYa+AoVDmW8ZmrSlXOnd8NM/B
- iX8OCHMAyaCF03t2/RauzpE74sqYBqjei9HRzICcsdNwN8aru6pxXnpoceGLNUvK4GZ+
- czh7cHioV1L99cAcuaGcwLfRe8rZOdh02w7hoRN3KhwMQvhFh+V25UvRl8m+OjkNS9Ed
- HUJVPeKAAovLO1ouJc5CB+AJ6IDpNcW5dceP91tj7iVQ/9wVcFBPL/PPRgQenoAUuNSZ
- SvyzEH0mCskN1L63QlwPpB7Zya2NUDTAEvdJViPwYnxsjNNwsHVjmOReS7C/RUQGcP9b
- IQWg==
+        d=linaro.org; s=google; t=1725978839; x=1726583639; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=LuQOXsZmhBvhlFdXkQhwG9jubmnqYTr/GtKVU1B7PsQ=;
+        b=S+yoEmrtWgB/NKGL2slFZVBoVlGWmN0DDBlPOmZlhC7ZJg1ypuj6Rk+L+bS+4dOYbG
+         KZTFdiZ91gY0GXgZtZAib69d41ynrc1GFQR85f3MID5R3YqBVZTIynP3tCPd/zsFtOms
+         Kob8pLk2EN084KdinMZAH2UUXSqo4hslNfydiR0dFL+ag4M19V5jpfhlbddQ+lvES8it
+         NdTVSFm9C1DCBNMTZRM16NIZsMtQu6gVXki7fRgDGOYuV9nVEe6vi9nu8zpLKhrkOlsi
+         z+4p11jg+Q9CkevX6Ok5hqpWlYXrEx/hyAdH6NC6cRTVdTjuXWmOaM6+j8UyRQwuM7UP
+         XDDQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1725977974; x=1726582774;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=1FREOUDCx1VLyhPhrv1zXf/ZT0CjpOXI1qZs1mxDi4w=;
- b=DX1yUbWkk5u4k3LcTIJ1+HrAK/vDDBCUbzqKbOBy/1UozkIFgUByXon20BC1kPci6O
- sWn009DyGsPU1KEFO3PwAsYk+hI1CgQvtkIfJI7qxSndtxn1BNXkue9+JD6uP1NW4FIH
- gO7wR0257d4+eyAVHYdYuX/RCWOytAqfyZXYZ0CiVTwhptrevG6kRiaaheFrR1ueNa3T
- vaaiJhHwhHJuz6lcVENDgE9kvlx1QaSoiusPq5q+7X28HmevC/Yu4GWMkARd6TY72Fa7
- e+1uoqvbYydksRWJFXXpBA4BVUB8JIURHd9cZgaDVAwNV1fNOn8TTM8VG8Juof9sH0Bp
- eHug==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXqXxBrV0YNXWtxQ9AiMhhlXTr28K26hHTHVryqGoA1ozm8rETpBiXw53CEt9G6Jkf0qrIfqLnsTw==@nongnu.org
-X-Gm-Message-State: AOJu0YzDZaxJZQu0kiZXcBnEvylWHntSG3BuLfRqeKs605TWmqMQ2NF5
- Jm+ygHQ8nPEYjonsPeebeCjZFrg/We7k779h+XqUlgq0FSPHBPjyMUGxZWs3TNEaRA7DJnyJA3H
- nyOFCMA9GclcTmFlG71iKF5O6K9Um6NjwWfmSYt3b6L+DCeoe
-X-Received: by 2002:a05:6402:4312:b0:5c2:18fd:8a27 with SMTP id
- 4fb4d7f45d1cf-5c3dc7b8016mr11653356a12.25.1725977974156; Tue, 10 Sep 2024
- 07:19:34 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1725978839; x=1726583639;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=LuQOXsZmhBvhlFdXkQhwG9jubmnqYTr/GtKVU1B7PsQ=;
+        b=mJU6uMW94tV7ztby1ToH7HC6o5QGmlARy8GnOXr6/503BhkdiqlpqVn2vbdJPtO5Za
+         AZZFxPepCXi+llpAhGYjueEvkkKvdwt0aH5Fg/zp3Dtk5uUbroTe74znp9YH25dgXsQ+
+         cnsB9AeFCwWOAiscFtTUcewEUeRTbdyjy+XwJAKxxXOnYJZOQ9sgoBXyHtP0HjIsDQzD
+         NqkRIbKBwMb3iS1xHpflu6EujG3UnMOIffP6SUJOdz97NdfVS+dgWEkyzuVQGOQlT2N2
+         xwwvkThC5EHAVUyf52PbEuer1M2ziSDDMPzzt3FHnVoJMHV+48OWpAHDdisNTKhQR/R8
+         dpoQ==
+X-Forwarded-Encrypted: i=1; AJvYcCWsGhN6/4bOSsTldLXBvq5JGm/xFOFyx/8OZRl4UMFxU9egGLnYM4Hczgca0yl29e1uEcDm9TLK5JypxA==@linaro.org
+X-Gm-Message-State: AOJu0YzlmyVg0xwzd/m/aKjn4KEsSw8JncnCuXIBh8leD5iT+D1tyjXP
+	n1MbFZxIs134k39iLZAcdjOmXajnmFkOEN5gILAGGUv//O9mnMBBYlA8wXAA55AguA==
+X-Google-Smtp-Source: AGHT+IHBXyYofeLN0dABoGVXGBAABn/FFxzf9QVFO9ZDv+bxiXNtgmjH1D0BT36yjfmtpzYjmOHGcA==
+X-Received: by 2002:a17:907:869f:b0:a86:78fd:1df0 with SMTP id a640c23a62f3a-a8ffab8353amr86117466b.34.1725978838480;
+        Tue, 10 Sep 2024 07:33:58 -0700 (PDT)
+Return-Path: <philmd@linaro.org>
+Received: from [192.168.69.100] ([176.187.217.32])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a8d25ceaf86sm487678966b.155.2024.09.10.07.33.54
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 10 Sep 2024 07:33:57 -0700 (PDT)
+Message-ID: <0a00b59d-fdd7-47de-b3bd-62aed07d295e@linaro.org>
+Date: Tue, 10 Sep 2024 16:33:53 +0200
 MIME-Version: 1.0
-References: <20240909162240.647173-1-richard.henderson@linaro.org>
- <20240909162240.647173-27-richard.henderson@linaro.org>
-In-Reply-To: <20240909162240.647173-27-richard.henderson@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 10 Sep 2024 15:19:23 +0100
-Message-ID: <CAFEAcA_L06h8M1fUSs1aoOzvyuF4Qb94bzTYT9Ohkr=kY4Jqvg@mail.gmail.com>
-Subject: Re: [PATCH v2 26/29] target/arm: Widen NeonGenNarrowEnvFn return to
- 64 bits
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::52d;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52d.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: t6AKRuFZlHYL
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/8] hw/pci-host/designware: Declare CPU QOM types using
+ DEFINE_TYPES() macro
+To: Gustavo Romero <gustavo.romero@linaro.org>, qemu-devel@nongnu.org
+Cc: Andrey Smirnov <andrew.smirnov@gmail.com>, qemu-arm@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+References: <20231012121857.31873-1-philmd@linaro.org>
+ <20231012121857.31873-2-philmd@linaro.org>
+ <2f3df725-0d99-97d0-af7b-7054036e4228@linaro.org>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <2f3df725-0d99-97d0-af7b-7054036e4228@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-TUID: GuoeMHgagifr
 
-On Mon, 9 Sept 2024 at 17:25, Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> While these functions really do return a 32-bit value,
-> widening the return type means that we need do less
-> marshalling between TCG types.
->
-> Remove NeonGenNarrowEnvFn typedef; add NeonGenOne64OpEnvFn.
->
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+On 19/8/24 06:21, Gustavo Romero wrote:
+> Hi Phil,
+> 
+> On 10/12/23 9:18 AM, Philippe Mathieu-Daudé wrote:
+>> When multiple QOM types are registered in the same file,
+>> it is simpler to use the the DEFINE_TYPES() macro. In
+>> particular because type array declared with such macro
+>> are easier to review.
+>>
+>> Remove a pointless structure declaration in "designware.h".
+>>
+>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+>> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+>> ---
+>>   include/hw/pci-host/designware.h |  2 --
+>>   hw/pci-host/designware.c         | 39 ++++++++++++++------------------
+>>   2 files changed, 17 insertions(+), 24 deletions(-)
 
-> --- a/target/arm/tcg/neon_helper.c
-> +++ b/target/arm/tcg/neon_helper.c
-> @@ -598,13 +598,13 @@ NEON_VOP_ENV(qrdmulh_s32, neon_s32, 1)
->  #undef NEON_FN
->  #undef NEON_QDMULH32
->
-> -uint32_t HELPER(neon_narrow_u8)(uint64_t x)
-> +uint64_t HELPER(neon_narrow_u8)(uint64_t x)
->  {
->      return (x & 0xffu) | ((x >> 8) & 0xff00u) | ((x >> 16) & 0xff0000u)
->             | ((x >> 24) & 0xff000000u);
->  }
 
-For almost all of these helper functions where we change the return
-type, we return the same value we used to return, but zero extended
-from 32 to 64 bits.
+> Reviewed-by: Gustavo Romero <gustavo.romero@linaro.org>
+> 
+> This patch can get merged independently of this series.
 
-> -uint32_t HELPER(neon_narrow_sat_s32)(CPUARMState *env, uint64_t x)
-> +uint64_t HELPER(neon_narrow_sat_s32)(CPUARMState *env, uint64_t x)
->  {
->      if ((int64_t)x != (int32_t)x) {
->          SET_QC();
-
-But for this one we don't. e.g. if the input is 0xffff0000ffff0000
-then the old output was 0x80000000 and the new output is
-0xffffffff80000000.
-
-Presumably we're effectively ignoring the high 32 bits in
-the caller, but this seems inconsistent.
-
-It might also be helpful to have a comment describing what
-the semantics of the return value is for this class of helpers.
-
-I suspect also that coverity may complain about the
-    return (uint16_t)low | (high << 16);
-in neon_unarrow_sat16, neon_narrow_sat_u16 and neon_narrow_sat_s16,
-which have the desired semantics but look suspiciously like
-somebody forgot to do the shift of 'high' as a 64-bit shift.
-I guess we could write them as
-    return deposit32(low, 16, 16, high);
-or maybe
-    return (uint16_t)low | (uint32_t)(high << 16);
-to avoid that.
-
-thanks
--- PMM
+OK, thank you!

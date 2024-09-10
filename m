@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a8d2592647esm508348266b.48.2024.09.10.10.39.02
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a8d25ce970csm505277266b.159.2024.09.10.10.39.02
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Tue, 10 Sep 2024 10:39:04 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id E07665F9CE;
-	Tue, 10 Sep 2024 18:39:00 +0100 (BST)
+	by draig.lan (Postfix) with ESMTP id 335A35FA11;
+	Tue, 10 Sep 2024 18:39:01 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Thomas Huth <thuth@redhat.com>,
@@ -25,96 +25,99 @@ Cc: Thomas Huth <thuth@redhat.com>,
 	Richard Henderson <richard.henderson@linaro.org>,
 	Mahmoud Mandour <ma.mandourr@gmail.com>,
 	Yanan Wang <wangyanan55@huawei.com>,
-	Wainer dos Santos Moschetta <wainersm@redhat.com>
-Subject: [PATCH v2 05/10] scripts/ci: update the gitlab-runner playbook
-Date: Tue, 10 Sep 2024 18:38:55 +0100
-Message-Id: <20240910173900.4154726-6-alex.bennee@linaro.org>
+	Wainer dos Santos Moschetta <wainersm@redhat.com>,
+	Gustavo Romero <gustavo.romero@linaro.org>
+Subject: [PATCH v2 08/10] tests/guest-debug: Support passing arguments to the GDB test script
+Date: Tue, 10 Sep 2024 18:38:58 +0100
+Message-Id: <20240910173900.4154726-9-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240910173900.4154726-1-alex.bennee@linaro.org>
 References: <20240910173900.4154726-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: W4J0rSbXSvDV
+X-TUID: EQfVhIVar/6o
 
-The upstream install instructions:
+From: Gustavo Romero <gustavo.romero@linaro.org>
 
-  https://docs.gitlab.com/runner/install/linux-repository.html
+This commit adds support for passing arguments to the GDB test scripts
+so it's possible to parse the args in an "argparse way" in the test
+scripts launched by the runner. The arguments should be preceded by --
+when passed to the runner. For example, passing "--help" arg to the
+GDB_TEST_SCRIPT:
 
-Now refer to repositories and a setup script. Modernise the playbook
-to use the preferred delivery method.
+run-test.py [...] --test <GDB_TEST_SCRIPT> -- --help
 
-Message-Id: <20240910140733.4007719-5-alex.bennee@linaro.org>
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+The test script should not use the argparse module directly but import
+arg_parser from test_gdbstub module. arg_parser then can be used just
+like the argparse.ArgumentParser class:
+
+from test_gdbstub import arg_parser
+
+p = arg_parser(prog="test-mytest.py", description="My test.")
+p.add_argument("--vowel", help="Select vowel",
+               required=True, choices=['a','e','i','o','u'])
+[...]
+
+The arg_parser allows a smooth and informative exit if, for instance,
+the caller of the runner script passes an invalid argument or misses a
+required argument by the test script.
+
+Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+Message-Id: <20240906143316.657436-4-gustavo.romero@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- scripts/ci/setup/gitlab-runner.yml | 39 +++++++++++++++++++++++-------
- 1 file changed, 30 insertions(+), 9 deletions(-)
+ tests/guest-debug/run-test.py     | 6 ++++++
+ tests/guest-debug/test_gdbstub.py | 5 +++++
+ 2 files changed, 11 insertions(+)
 
-diff --git a/scripts/ci/setup/gitlab-runner.yml b/scripts/ci/setup/gitlab-runner.yml
-index 7bdafab511..57e7faebf1 100644
---- a/scripts/ci/setup/gitlab-runner.yml
-+++ b/scripts/ci/setup/gitlab-runner.yml
-@@ -49,30 +49,51 @@
-     - debug:
-         msg: gitlab-runner arch is {{ gitlab_runner_arch }}
+diff --git a/tests/guest-debug/run-test.py b/tests/guest-debug/run-test.py
+index 368ff8a890..5a091db8be 100755
+--- a/tests/guest-debug/run-test.py
++++ b/tests/guest-debug/run-test.py
+@@ -27,6 +27,10 @@ def get_args():
+     parser.add_argument("--binary", help="Binary to debug",
+                         required=True)
+     parser.add_argument("--test", help="GDB test script")
++    parser.add_argument('test_args', nargs='*',
++                        help="Additional args for GDB test script. "
++                        "The args should be preceded by -- to avoid confusion "
++                        "with flags for runner script")
+     parser.add_argument("--gdb", help="The gdb binary to use",
+                         default=None)
+     parser.add_argument("--gdb-args", help="Additional gdb arguments")
+@@ -91,6 +95,8 @@ def log(output, msg):
+     gdb_cmd += " -ex 'target remote %s'" % (socket_name)
+     # finally the test script itself
+     if args.test:
++        if args.test_args:
++            gdb_cmd += f" -ex \"py sys.argv={args.test_args}\""
+         gdb_cmd += " -x %s" % (args.test)
  
--    - name: Download the matching gitlab-runner (DEB)
-+    # Debian/Ubuntu setup
-+    - name: Get gitlab-runner repo setup script (DEB)
-       get_url:
-         dest: "/root/"
--        url: "https://gitlab-runner-downloads.s3.amazonaws.com/latest/deb/gitlab-runner_{{ gitlab_runner_arch }}.deb"
-+        url: "https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.deb.sh"
-+        mode: 0755
-       when:
-         - ansible_facts['distribution'] == 'Ubuntu'
  
--    - name: Download the matching gitlab-runner (RPM)
-+    - name: Run gitlab-runner repo setup script (DEB)
-+      shell: "/root/script.deb.sh"
-+      when:
-+        - ansible_facts['distribution'] == 'Ubuntu'
-+
-+    - name: Install gitlab-runner (DEB)
-+      ansible.builtin.apt:
-+          name: gitlab-runner
-+          update_cache: yes
-+          state: present
-+      when:
-+        - ansible_facts['distribution'] == 'Ubuntu'
-+
-+    # RPM setup
-+    - name: Get gitlab-runner repo setup script (RPM)
-       get_url:
-         dest: "/root/"
--        url: "https://gitlab-runner-downloads.s3.amazonaws.com/latest/rpm/gitlab-runner_{{ gitlab_runner_arch }}.rpm"
-+        url: "https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.rpm.sh"
-+        mode: 0755
-       when:
-         - ansible_facts['distribution'] == 'CentOS'
+diff --git a/tests/guest-debug/test_gdbstub.py b/tests/guest-debug/test_gdbstub.py
+index 46fbf98f0c..a715c0e3f5 100644
+--- a/tests/guest-debug/test_gdbstub.py
++++ b/tests/guest-debug/test_gdbstub.py
+@@ -2,6 +2,7 @@
  
--    - name: Install gitlab-runner via package manager (DEB)
--      apt: deb="/root/gitlab-runner_{{ gitlab_runner_arch }}.deb"
-+    - name: Run gitlab-runner repo setup script (RPM)
-+      shell: "/root/script.rpm.sh"
-       when:
--        - ansible_facts['distribution'] == 'Ubuntu'
-+        - ansible_facts['distribution'] == 'CentOS'
+ """
+ from __future__ import print_function
++import argparse
+ import gdb
+ import os
+ import sys
+@@ -9,6 +10,10 @@
  
--    - name: Install gitlab-runner via package manager (RPM)
--      yum: name="/root/gitlab-runner_{{ gitlab_runner_arch }}.rpm"
-+    - name: Install gitlab-runner (RPM)
-+      yum:
-+        name: gitlab-runner
-+        update_cache: yes
-+        state: present
-       when:
-         - ansible_facts['distribution'] == 'CentOS'
+ fail_count = 0
  
-+    # Register Runners
-     - name: Register the gitlab-runner
-       command: "/usr/bin/gitlab-runner register --non-interactive --url {{ gitlab_runner_server_url }} --registration-token {{ gitlab_runner_registration_token }} --executor shell --tag-list {{ ansible_facts[\"architecture\"] }},{{ ansible_facts[\"distribution\"]|lower }}_{{ ansible_facts[\"distribution_version\"] }} --description '{{ ansible_facts[\"distribution\"] }} {{ ansible_facts[\"distribution_version\"] }} {{ ansible_facts[\"architecture\"] }} ({{ ansible_facts[\"os_family\"] }})'"
++class arg_parser(argparse.ArgumentParser):
++    def exit(self, status=None, message=""):
++        print("Wrong GDB script test argument! " + message)
++        gdb.execute("exit 1")
  
+ def report(cond, msg):
+     """Report success/fail of a test"""
 -- 
 2.39.2

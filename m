@@ -1,187 +1,334 @@
-Received: by 2002:a17:505:1909:b0:1be9:327d:8ee3 with SMTP id az9csp1215908njb;
-        Tue, 10 Sep 2024 03:17:45 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCULcVd9409t3fvHS8iyhqXsCh7lvfzfvl/zcZ9SX2R/IcmnQBPiGn9qnn7/4iSA9nYPgGZekMNTQz9XnA==@linaro.org
-X-Google-Smtp-Source: AGHT+IE9fckABV2zxetKsmG7nc6p8h3Vx2+j4y3uzZ3UfgpbATiLyQCVKeZacV5P+lzlRBKyK4HX
-X-Received: by 2002:ac8:5a43:0:b0:458:3850:c7aa with SMTP id d75a77b69052e-4583850ca21mr75582211cf.15.1725963464882;
-        Tue, 10 Sep 2024 03:17:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1725963464; cv=none;
+Received: by 2002:a17:505:1909:b0:1be9:327d:8ee3 with SMTP id az9csp1225734njb;
+        Tue, 10 Sep 2024 04:01:07 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXrqnFbm9QfXuGBDV+W0LHbvamZsVN81j3mE5Ivbd22f7F7/tNNDsDncLTyo9+eoZZyPZPJ1IEjskP6JQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IGeoMI/x70pt39gy5hPKwswm0SF8eEbBrnTPBvsDp7oKTs8YsrlarvLZNQfU/2i2BAOO0CJ
+X-Received: by 2002:a5d:6290:0:b0:374:c847:852 with SMTP id ffacd0b85a97d-378895de57fmr7402074f8f.29.1725966067434;
+        Tue, 10 Sep 2024 04:01:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1725966067; cv=none;
         d=google.com; s=arc-20240605;
-        b=d9YSfubMcO700wP7RxXaRAHeT7maoHS1K53NnrktJYLBW6gjKG6xO8lYvXZkoMCahg
-         dz5UmNiMYB2CL26ntrocI9Bge3BZsFDY/PTGRgovKGNcmMwlPtTKJDC6sIXs64rbyXtW
-         8gixtRCs6WryC1Pynu9IMJR71+4pTzN6e+++vurljc0+dv94usxVr/4E3ohwGnDRyDDE
-         zlWjIsTD/sCsSjATvd5q+kCa6Ob0QdFllIQLgBkm8a9ahFDvl7iGlA6fjB6OQ4aHBkom
-         89TffcYdD+tIpFETY14L1oUYCwR1rWJ4xNmL90Sdqaz5hcTWtZRkLv3T9AfnqnH7XgRc
-         77Og==
+        b=Za+u/6Tv6peULaUZxaOLYDHiErLO7zaSw3uuZBR4V+euYqyRgHL5q42ppewCCfL2mD
+         t6ag38wFnHbKz+lrCoa4Uap5Z8ML2UK23UcCt81q2wTktX0dNOwBWNNFEokOAurRr0Wo
+         /0KXwHOCrs0Rtm2DKlfGu8gzCAtCfZuS7+pt60VV0jOJEsJVwaCvfVLWNZurmb5ULU77
+         hp9wM6HAQhSF6vmXQ4StIrmHYql9MomMhQpz/2ZdSiOZP8QJA2eVP6Ch1EgdmJMTxN+p
+         Y4Y+zQW7BlvXKFWfFxuFGrpuvhuWnr2eJIM+9xF09LarFw8KBbjVY4D2JaK23nNaLq5O
+         739A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=adMeFvNai4sKgpq/l2xsJ3FjCurUnP6RSssiorm3uis=;
-        fh=Wfq/7lIriO9ufKDSwV29gABL/TXNcY3Eo92iTQ+vizE=;
-        b=UkSLRke5xIyHxz4+NZcEQIb4KYDz5I+og3np81QIDaQAzWwywSKetidGIDJ67E1uiR
-         F3+BKsJS+URpMyCT9bAl2n7NnmkGrBAkY0IqVTadqYkphcvT8VHa09QnhlnafPDkthAx
-         bX/WAFDC33zmMGY+li6R7yqfFFdAYT1TQnJ+RP2WdQfqGx0T6qNKX+pEBbOgA5GIWrTk
-         Oq1SGY3jse3kOt/uY5RoUDrld6HlmPSzoPc3vi3pY8kbaAQxd/U6PIthZU1QXBVS1Ezm
-         j3eQYTRnCwR6GB9cmHynKDDSFbZ49RLed2SHzYD+zH7faHuU0lxbHZb2Lg/EezEL2i8c
-         Fc3A==;
+        h=mime-version:content-transfer-encoding:content-language
+         :accept-language:in-reply-to:references:message-id:date:thread-index
+         :thread-topic:subject:cc:to:from;
+        bh=95+Pto1IwH8y1N4qLvq+bnzhS8XMLrJ3eeuB6U/8qTM=;
+        fh=kfteraPgKZQ5W8MYqUf1JnHLJ4iGbtY5JpV1C+7UgZ4=;
+        b=X/HFLO+HqGiYetXg79hGSPDpefXrXkQwdV3t6Qw0V7N2vQppxRVaJwTQPj0Jt6UKRP
+         nIuC4QESYqxZrGssOpoYudv609o9pk/1X6IDSV5BIdSW/FGWtt/NcUFFYqDvxUMwhHT6
+         WrubfFgLfCcEnjZXL7SnRhamZ+MhFWkVkv+GxDvkyVAj3vX/jhtXysKvhO9m0a1OgekH
+         sMSDf1WA1fOT+kcrIdLFg6Lbq641desuqIvJuvxgobgiuL+LRYc3rTPCCJTfcfbB5Qgo
+         pe+ilemHSNr2hwlbRJD9pWf7LYXS5qi0h3IOnHGpa/KdMaVaow4fUy71ZFSXaMgUl11f
+         J+qg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=JaE+v8sP;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-45822e7ee32si74195061cf.197.2024.09.10.03.17.44
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 10 Sep 2024 03:17:44 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Return-Path: <salil.mehta@huawei.com>
+Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
+        by mx.google.com with ESMTPS id ffacd0b85a97d-378956d8451si2827267f8f.968.2024.09.10.04.01.07
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 10 Sep 2024 04:01:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=JaE+v8sP;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1snxvz-0008Hh-Nv; Tue, 10 Sep 2024 06:17:19 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1snxvy-0008H8-Ko
- for qemu-arm@nongnu.org; Tue, 10 Sep 2024 06:17:18 -0400
-Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1snxvw-00039q-Vs
- for qemu-arm@nongnu.org; Tue, 10 Sep 2024 06:17:18 -0400
-Received: by mail-ed1-x52c.google.com with SMTP id
- 4fb4d7f45d1cf-5becfd14353so5115218a12.1
- for <qemu-arm@nongnu.org>; Tue, 10 Sep 2024 03:17:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1725963435; x=1726568235; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=adMeFvNai4sKgpq/l2xsJ3FjCurUnP6RSssiorm3uis=;
- b=JaE+v8sPsD1qauisOz2HK2DX4iaiPhxLL1CiSJspcLdQXgX1i9egvs0FxUcVuG67OU
- K//I6ROjz1Ppz5eH6wtdzXRkIjTCK9TJ1J9zYLyEgz+KXYL9d7nh5HnPv8ge6tfN+MRZ
- PhR+Vv9vPIY90WW4gqoCBZfioxTUbIm1Gt/vUakOILpH5KIu0obouhOYAHiA3tF7Vtkv
- pwg7uH2VCI/ntW84ub5sBD4MnATpnxg/mZpog66rZnlduAGtorHhoS0Oj2HEJJgAZMpS
- QqqHRKT7oMBq7CKcpPyqgadKWdh1nkKT4QfNS5n5p8X1KRjkxlswTVxkty/u76yd/syo
- 7Dcg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1725963435; x=1726568235;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=adMeFvNai4sKgpq/l2xsJ3FjCurUnP6RSssiorm3uis=;
- b=fAR27LQjgi7ILh2Cs+1Oh3TfJfi7k8W53/ymyp5DB+Xn1fe+nT5Sfh1SRSkmapmdbm
- xM0nXqAKUSgF7s/nevee1mRzzXoYhOdqH/8t0c3bfkRETWz7ZpIC0dt6cT8SA63hqQH3
- kCDrMHKFTwhD9IMiST4g8AudaNocxUOVT4S+SJrPCF6gjr7AJZrEO7UfjQ5tBA6AwrFE
- O7LT9B1+2yrVQEp6uffqGo6YsK98Jt66/1kP6grBCwXB6wx/RwFlo0KLr6KiQCYlKKsi
- lNsfi+9mLtROdehGz8g1uq9Za6NbJggKlmLDUMM/vvZ9FSaZcJJxhfWwv5GJB5rLnRhC
- lLag==
-X-Forwarded-Encrypted: i=1;
- AJvYcCW8AFtHFnoprBzmTiWXDJc6D3uo7ctTgSdsn8onBVL8WE8h95T5m2rkItsacr9Zj+YNtHlXvqlcpw==@nongnu.org
-X-Gm-Message-State: AOJu0Yxo0K83qsKEggwuU74iy9hnGn4qjf+quAK1jiVBRpmk+c5Fty29
- 1W+I/2OggrdHpGAS6BvlFwVQqnOSCz52RIzJs5xgRi8M+AiCieHQD8i258LR5BFpevR40QvAXB0
- /jtg7BI2wNHeZj51aSjZMW/tVLECp24eoRo9E5g==
-X-Received: by 2002:a05:6402:530b:b0:5c0:b33d:5fcc with SMTP id
- 4fb4d7f45d1cf-5c3eac09850mr6486603a12.20.1725963434666; Tue, 10 Sep 2024
- 03:17:14 -0700 (PDT)
-MIME-Version: 1.0
-References: <20240903160751.4100218-1-peter.maydell@linaro.org>
- <fabedae0-d748-4a9d-b802-14d15f3cd44a@linaro.org>
- <3f4ce380-0c0b-48ad-9752-c72f5aeac754@roeck-us.net>
- <CAFEAcA_ETkWY=AaPWti8KwO0awdxWqkO4CLAwxaGVr+i4yFz-Q@mail.gmail.com>
-In-Reply-To: <CAFEAcA_ETkWY=AaPWti8KwO0awdxWqkO4CLAwxaGVr+i4yFz-Q@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 10 Sep 2024 11:17:03 +0100
-Message-ID: <CAFEAcA9==ZeDbhod1zs6JNftvT3owjQe17VQ3Y_5iPN01Oh3-w@mail.gmail.com>
-Subject: Re: [PATCH for-9.2 00/53] arm: Drop deprecated boards
-To: Guenter Roeck <linux@roeck-us.net>
-Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
- qemu-arm@nongnu.org, qemu-devel@nongnu.org, Thomas Huth <thuth@redhat.com>, 
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
+       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Received: from mail.maildlp.com (unknown [172.18.186.216])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4X30yb1Bwkz6K9BJ;
+	Tue, 10 Sep 2024 18:57:11 +0800 (CST)
+Received: from frapeml500005.china.huawei.com (unknown [7.182.85.13])
+	by mail.maildlp.com (Postfix) with ESMTPS id 6980E140A36;
+	Tue, 10 Sep 2024 19:01:06 +0800 (CST)
+Received: from lhrpeml500001.china.huawei.com (7.191.163.213) by
+ frapeml500005.china.huawei.com (7.182.85.13) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.39; Tue, 10 Sep 2024 13:01:06 +0200
+Received: from lhrpeml500001.china.huawei.com ([7.191.163.213]) by
+ lhrpeml500001.china.huawei.com ([7.191.163.213]) with mapi id 15.01.2507.039;
+ Tue, 10 Sep 2024 12:01:05 +0100
+From: Salil Mehta <salil.mehta@huawei.com>
+To: Zhao Liu <zhao1.liu@intel.com>
+CC: Gavin Shan <gshan@redhat.com>, "qemu-devel@nongnu.org"
+	<qemu-devel@nongnu.org>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+	"mst@redhat.com" <mst@redhat.com>, "maz@kernel.org" <maz@kernel.org>,
+	"jean-philippe@linaro.org" <jean-philippe@linaro.org>, Jonathan Cameron
+	<jonathan.cameron@huawei.com>, "lpieralisi@kernel.org"
+	<lpieralisi@kernel.org>, "peter.maydell@linaro.org"
+	<peter.maydell@linaro.org>, "richard.henderson@linaro.org"
+	<richard.henderson@linaro.org>, "imammedo@redhat.com" <imammedo@redhat.com>,
+	"andrew.jones@linux.dev" <andrew.jones@linux.dev>, "david@redhat.com"
+	<david@redhat.com>, "philmd@linaro.org" <philmd@linaro.org>,
+	"eric.auger@redhat.com" <eric.auger@redhat.com>, "will@kernel.org"
+	<will@kernel.org>, "ardb@kernel.org" <ardb@kernel.org>,
+	"oliver.upton@linux.dev" <oliver.upton@linux.dev>, "pbonzini@redhat.com"
+	<pbonzini@redhat.com>, "rafael@kernel.org" <rafael@kernel.org>,
+	"borntraeger@linux.ibm.com" <borntraeger@linux.ibm.com>,
+	"alex.bennee@linaro.org" <alex.bennee@linaro.org>, "npiggin@gmail.com"
+	<npiggin@gmail.com>, "harshpb@linux.ibm.com" <harshpb@linux.ibm.com>,
+	"linux@armlinux.org.uk" <linux@armlinux.org.uk>,
+	"darren@os.amperecomputing.com" <darren@os.amperecomputing.com>,
+	"ilkka@os.amperecomputing.com" <ilkka@os.amperecomputing.com>,
+	"vishnu@os.amperecomputing.com" <vishnu@os.amperecomputing.com>,
+	"karl.heubaum@oracle.com" <karl.heubaum@oracle.com>, "miguel.luis@oracle.com"
+	<miguel.luis@oracle.com>, "salil.mehta@opnsrc.net" <salil.mehta@opnsrc.net>,
+	zhukeqian <zhukeqian1@huawei.com>, "wangxiongfeng (C)"
+	<wangxiongfeng2@huawei.com>, "wangyanan (Y)" <wangyanan55@huawei.com>,
+	"jiakernel2@gmail.com" <jiakernel2@gmail.com>, "maobibo@loongson.cn"
+	<maobibo@loongson.cn>, "lixianglai@loongson.cn" <lixianglai@loongson.cn>,
+	"shahuang@redhat.com" <shahuang@redhat.com>, Linuxarm <linuxarm@huawei.com>
+Subject: RE: [PATCH RFC V3 01/29] arm/virt,target/arm: Add new ARMCPU
+ {socket,cluster,core,thread}-id property
+Thread-Topic: [PATCH RFC V3 01/29] arm/virt,target/arm: Add new ARMCPU
+ {socket,cluster,core,thread}-id property
+Thread-Index: AQHaverDPpQr1lKFK0SrrcqBF6W41rIjVaUAgAuCoZCAGUx/gIAAE3TggAfVAICAAA0+UA==
+Date: Tue, 10 Sep 2024 11:01:05 +0000
+Message-ID: <cff9b8f407044deb8ed4b1aa5acea5f4@huawei.com>
+References: <20240613233639.202896-1-salil.mehta@huawei.com>
+	<20240613233639.202896-2-salil.mehta@huawei.com>
+	<11e627ef-d75e-4114-9b93-14d80ec0526b@redhat.com>
+	<c889781d3eb048d19bae4ceff8646a4e@huawei.com> <Zthx3dQInrcgly6+@intel.com>
+	<9376341923d94a2bbd8d24f4f6844585@huawei.com> <Zt8UGd9YRANnBPVT@intel.com>
+In-Reply-To: <Zt8UGd9YRANnBPVT@intel.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach:
+X-MS-TNEF-Correlator:
+x-originating-ip: [10.48.149.160]
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::52c;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52c.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: SaNGd4V6kkAs
+MIME-Version: 1.0
+X-TUID: 82xEBTUDU0nq
 
-On Mon, 9 Sept 2024 at 16:02, Peter Maydell <peter.maydell@linaro.org> wrot=
-e:
->
-> On Mon, 9 Sept 2024 at 15:55, Guenter Roeck <linux@roeck-us.net> wrote:
-> >
-> > On 9/9/24 06:40, Philippe Mathieu-Daud=C3=A9 wrote:
-> > > Hi,
-> > >
-> > > On 3/9/24 18:06, Peter Maydell wrote:
-> > >> This patchset removes the various Arm machines which we deprecated
-> > >> for the 9.0 release and are therefore allowed to remove for the 9.2
-> > >> release:
-> > >>   akita, borzoi, cheetah, connex, mainstone, n800, n810,
-> > >>   spitz, terrier, tosa, verdex, z2
-> > >
-> > >> The series includes removal of some code which while not strictly
-> > >> specific to these machines was in practice used only by them:
-> > >>   * the OneNAND flash memory device
-> > >>   * the PCMCIA subsystem
-> > >>   * the MUSB USB2.0 OTG USB controller chip (hcd-musb)
-> > >
-> > >> thanks
-> > >> -- PMM
-> > >>
-> > >> Peter Maydell (53):
-> > >>    hw/input: Drop ADS7846 device
-> > >>    hw/adc: Remove MAX111X device
-> > >>    hw/gpio: Remove MAX7310 device
-> >
-> > max7310 is a gpio controller which is at least somewhat compatible
-> > to pca953x. It is used on imx6qdl-sabreauto, and also instantiated
-> > by Linux with the INT3491 ACPI ID.
-> >
-> > Is there real pressure to remove support for such devices ?
->
-> "git grep" says the only place we use our max7310 device is
-> on the "spitz" board. The point of removing all those
-> elderly Arm boards is that all this code is ancient and
-> unmaintained. If we were using this device on the imx6
-> boards I would have kept it, but we aren't. I don't want
-> to keep old, unmaintained, untested, dead code in the tree.
+HI Zhao,
 
-I should clarify here that if anybody is actually using
-these devices with some other board model today, then
-that would be a good reason to keep them. The situations
-that I don't think justify retaining them are "in theory
-somebody could create this device on the command line
-with some other board" and "some future machine or SoC
-model that we don't yet have might want this device".
+>  From: Zhao Liu <zhao1.liu@intel.com>
+>  Sent: Monday, September 9, 2024 4:28 PM
+>  To: Salil Mehta <salil.mehta@huawei.com>
+> =20
+>  On Wed, Sep 04, 2024 at 05:37:21PM +0000, Salil Mehta wrote:
+>  > Date: Wed, 4 Sep 2024 17:37:21 +0000
+>  > From: Salil Mehta <salil.mehta@huawei.com>
+>  > Subject: RE: [PATCH RFC V3 01/29] arm/virt,target/arm: Add new ARMCPU
+>  > {socket,cluster,core,thread}-id property
+>  >
+>  > Hi Zhao,
+>  >
+>  > >  From: zhao1.liu@intel.com <zhao1.liu@intel.com>
+>  > >  Sent: Wednesday, September 4, 2024 3:43 PM
+>  > >  To: Salil Mehta <salil.mehta@huawei.com>
+>  > >
+>  > >  Hi Salil,
+>  > >
+>  > >  On Mon, Aug 19, 2024 at 11:53:52AM +0000, Salil Mehta wrote:
+>  > >  > Date: Mon, 19 Aug 2024 11:53:52 +0000  > From: Salil Mehta
+>  > > <salil.mehta@huawei.com>  > Subject: RE: [PATCH RFC V3 01/29]
+>  > > arm/virt,target/arm: Add new ARMCPU  >
+>  > > {socket,cluster,core,thread}-id property
+>  > >
+>  > >  [snip]
+>  > >
+>  > >  > >  > NULL); @@ -2708,6 +2716,7 @@ static const CPUArchIdList  > >
+>  > > *virt_possible_cpu_arch_ids(MachineState *ms)
+>  > >  > >  >   {
+>  > >  > >  >       int n;
+>  > >  > >  >       unsigned int max_cpus =3D ms->smp.max_cpus;
+>  > >  > >  > +    unsigned int smp_threads =3D ms->smp.threads;
+>  > >  > >  >       VirtMachineState *vms =3D VIRT_MACHINE(ms);
+>  > >  > >  >       MachineClass *mc =3D MACHINE_GET_CLASS(vms);
+>  > >  > >  >
+>  > >  > >  > @@ -2721,6 +2730,7 @@ static const CPUArchIdList  > >
+>  > > *virt_possible_cpu_arch_ids(MachineState *ms)
+>  > >  > >  >       ms->possible_cpus->len =3D max_cpus;
+>  > >  > >  >       for (n =3D 0; n < ms->possible_cpus->len; n++) {
+>  > >  > >  >           ms->possible_cpus->cpus[n].type =3D ms->cpu_type;
+>  > >  > >  > +        ms->possible_cpus->cpus[n].vcpus_count =3D smp_thre=
+ads;
+>  > >  > >  >           ms->possible_cpus->cpus[n].arch_id =3D
+>  > >  > >  >               virt_cpu_mp_affinity(vms, n);
+>  > >  > >  >
+>  > >  > >
+>  > >  > >  Why @vcpus_count is initialized to @smp_threads? it needs to
+>  > > be  > > documented in the commit log.
+>  > >  >
+>  > >  >
+>  > >  > Because every thread internally amounts to a vCPU in QOM and
+>  > > which is  > in 1:1 relationship with KVM vCPU. AFAIK, QOM does not
+>  > > strictly  > follows any architecture. Once you start to get into
+>  > > details of  > threads there are many aspects of shared resources one
+>  > > will have to  > consider and these can vary across different
+>  > > implementations of  architecture.
+>  > >
+>  > >  For SPAPR CPU, the granularity of >possible_cpus->cpus[] is "core",
+>  > > and for  x86, it's "thread" granularity.
+>  >
+>  >
+>  > We have threads per-core at microarchitecture level in ARM as well.
+>  > But each thread appears like a vCPU to OS and AFAICS there are no
+>  > special attributes attached to it. SMT can be enabled/disabled at
+>  > firmware and should get reflected in the configuration accordingly
+>  > i.e. value of *threads-per-core* changes between 1 and 'N'.  This
+>  > means 'vcpus_count' has to reflect the correct configuration. But I
+>  > think threads lack proper representation in Qemu QOM.
+> =20
+>  In topology related part, SMT (of x86) usually represents the logical
+>  processor level. And thread has the same meaning.
 
-thanks
--- PMM
+
+Agreed. It is same in ARM as well. The difference could be in how hardware
+threads are implemented at microarchitecture level.  Nevertheless, we do
+have such virtual configurations, and the meaning of *threads* as-in QOM
+topology (socket,cluster,core,thread) is virtualized similar to the hardwar=
+e
+threads in host. And One should be able to configure threads support in the
+virtual environment,  regardless whether or not underlying hardware
+supports threads. That's my take.
+
+Other aspect is how we then expose these threads to the guest. The guest
+kernel (just like host kernel) should gather topology information using
+ACPI PPTT Table (This is ARM specific?). Later is populated by the Qemu
+(just like by firmware for the host kernel) by making use of the virtual
+topology. ARM guest kernel, in absence of PPTT support can detect
+presence of hardware threads by reading MT Bit within the MPIDR_EL1
+register.
+
+Every property in 'ms->possible_cpus->cpus[n].props should be exactly
+same as finalized and part of the MachineState::CpuTopology.
+Hence, number of threads-per-core 'vcpus_count'  should not be treated
+differently.=20
+
+But there is  a catch! (I explained that earlier)
+
+
+ To change these
+>  meanings is also possible, but I think it should be based on the actual =
+use
+>  case. we can consider the complexity of the implementation when there is=
+ a
+>  need.
+
+
+Agreed. There is no ambiguity in the meaning of hardware threads or the=20
+virtualized MachineState::CpuTopology. Properties of all the possible vCPUs
+should exactly be same as part of MachineState. This includes the number
+of threads-per-core.
+
+You mentioned 'vcpus_count' should be 1 but does that mean user can never
+specify threads > 1 in virtual configuration for x86?
+
+
+> =20
+>  > In Qemu, each vCPU reflects an execution context (which gets uniquely
+>  > mapped to KVM vCPU). AFAICS, we only have *CPUState* (Struct
+>  ArchCPU)
+>  > as a placeholder for this execution context and there is no
+>  > *ThreadState* (derived out of Struct CPUState). Hence, we've  to map
+>  > all the threads as QOM vCPUs. This means the array of present or
+>  > possible CPUs represented by 'struct CPUArchIdList' contains all
+>  > execution contexts which actually might be vCPU or a thread. Hence,
+>  > usage of
+>  > *vcpus_count* seems quite superficial to me frankly.
+>  >
+>  > Also, AFAICS, KVM does not have the concept of the threads and only
+>  > has KVM vCPUs, but you are still allowed to specify the topology with
+>  > sockets, dies, clusters, cores, threads in most architectures.
+> =20
+>  There are some uses for topology, such as it affects scheduling behavior=
+,
+>  and it affects feature emulation, etc.
+
+
+True. And we should be flexible at the VMM level. We should let Admin of
+the VMM control how he creates the virtual topology which best fits
+on the underlying hardware features of the host. This includes, NUMA,
+sub-NUMA, cores, hardware, threads, cache topology etc.=20
+
+
+> =20
+>  > >  And smp.threads means how many threads in one core, so for x86, the
+>  > > vcpus_count of a "thread" is 1, and for spapr, the vcpus_count of a
+>  "core" equals to smp.threads.
+>  >
+>  >
+>  > Sure, but does the KVM specifies this?
+> =20
+>  At least as you said, KVM (for x86) doesn't consider higher-level topolo=
+gies
+>  at the moment, but that's not to say that it won't in the future, as cer=
+tain
+>  registers do have topology dependencies.
+
+
+sure. so you mean for x86 virtual topology, smp.threads =3D 1 always?
+
+
+> =20
+>  > and how does these threads map to the QOM vCPU objects or execution
+>  context?
+> =20
+>  Each CPU object will create a (software) thread, you can refer the funct=
+ion
+>  "kvm_start_vcpu_thread(CPUState *cpu)", which will be called when CPU
+>  object realizes.
+
+
+Yes, sure, and each such QOM vCPU thread and 'struct CPUState' is mapped to
+the lowest granularity of execution specified within the QOM virtual topolo=
+gy.
+It could be a 'thread' or a 'core'. And all these will run as a KVM vCPU sc=
+heduled
+on some hardware core and maybe hardware thread (if enabled).
+
+So there is no difference across architectures regarding this part. I was t=
+rying
+to point that in QOM, even the threads will have their own 'struct CPUState=
+'
+and each one will be part of the "CPUArchIdList *possible_cpus" maintained
+at the MachineState. At this level we loose the relationship information of
+the cores and their corresponding threads (given by 'vcpus_count').
+
+
+>  > AFAICS there is nothing but 'CPUState'
+>  > which will be made part of the  possible vCPU list 'struct CPUArchIdLi=
+st'.
+> =20
+>  As I said, an example is spapr ("spapr_possible_cpu_arch_ids()"), which
+>  maps possible_cpu to core object. However, this is a very specific examp=
+le,
+>  and like Igor's slides said, I understand it's an architectural requirem=
+ent.
+
+
+I'm sure there must have been some. I'm trying to understand it. Can you
+share the slides?
+
+
+> =20
+>  > >
+>  > >  IIUC, your granularity is still "thread", so that this filed should=
+ be 1.
+>  >
+>  >
+>  > Well, again we need more discussion on this. I've stated my concerns
+>  > against doing this. User should be allowed to create virtual topology
+>  > which will include 'threads' as one of the parameter.
+>  >
+> =20
+>  I don't seem to understand...There is a "threads" parameter in -smp, doe=
+s
+>  this not satisfy your use case?
+
+It certainly does. But this is what should get reflected in the 'vcpus_coun=
+t' as well?=20
+
+
+Best regards
+Salil
+
+> =20
+>  Regards,
+>  Zhao
+> =20

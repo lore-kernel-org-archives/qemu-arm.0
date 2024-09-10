@@ -1,80 +1,80 @@
-Received: by 2002:a17:505:1909:b0:1be9:327d:8ee3 with SMTP id az9csp1444530njb;
-        Tue, 10 Sep 2024 15:16:49 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWlcy2UP69Dhsgosj/EOzcqRMRbgYN0OiGE1QxH0WujtUySradiZX925ZjTPumeWPLGE6NfADvA1jz/Mg==@linaro.org
-X-Received: by 2002:a05:6a21:1707:b0:1ce:cbcf:aaa9 with SMTP id adf61e73a8af0-1cf5e1b62f3mr2805640637.36.1726006609524;
-        Tue, 10 Sep 2024 15:16:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1726006609; cv=none;
+Received: by 2002:a17:505:1909:b0:1be9:327d:8ee3 with SMTP id az9csp1444546njb;
+        Tue, 10 Sep 2024 15:16:52 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVMjv1TvhhHA0pX177AW68TNksdE26x8O1kmrqbXQUHhUAXpBPvIc1O7IeMiDYOO6JyDDPzubg9fXRZcA==@linaro.org
+X-Received: by 2002:a05:6a00:6f4d:b0:718:eeab:97ca with SMTP id d2e1a72fcca58-71907d98483mr7997573b3a.2.1726006611955;
+        Tue, 10 Sep 2024 15:16:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1726006611; cv=none;
         d=google.com; s=arc-20160816;
-        b=CpGMmlWQbc41xg1HcyEqircLPZwMpLfszB4XnkgtTRWtnd50ckgnX9pIzB0TfSwo7T
-         46C7ONWsOVQljOwJdT7KDBOeJYdFFTNwPgRGC6ap6bKkiuscgxC9NIJz57vDyWewlX83
-         cCzg0gyRtJBnMg1FN0HUbPZAWHpwmjRQ3hUHZFS8PGMKjANTAWsXm/9tzV9DEyTJDya3
-         86YxBQkrrS3nwF93EIwuIW22meMGxm+E5WXzkMK8QHSo2VLJp2BjzGNugvlbAk72nCBb
-         X2jQvFYMwXTwvXJ4TzxUULp2TBJmV0MEkrTiSI2xNILrvZCv4Wfp3GY6ukB0yeqa7ew7
-         0F6Q==
+        b=AuCFFsWK87LykbUCAlAZWRI5Z6qfvCU60dSn+QXm6eADrKRfeGLXQZ61MhNiC04kCP
+         3tDdjX6qyvy/MteuvY5KN0n2zcBcCBWyjwF97pY6zF4Rbx6lH3KFShDgFl4LS2rMnpul
+         kb0+BE74wuL/VgS6JupyTJx5PP1+S3MygPVunCU0O1omFX6LFzR+Jz06JmLQgDfbQk4l
+         LfY39nX8897fqwfuK01yfAeCL9NVIrjLtFNDoyE67vaAmvvUWBEwyGKiGy9vXKuvPLNS
+         uSV1u6P/u8kEI98QJqqe+1L6XbCtz6w7h3apf82mz5OdDdLmEfdSvT+wMS0I7ZCU7+18
+         6T3g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=wo4Kwhe0+9wossg0r5F+dnO1+KIF5dbmiqLxu6TdKHE=;
-        fh=YlfwfKsEI/AM5HJRwIEzGLzlcOiwDoUZ5w8gIhGifHM=;
-        b=Y16Ao24k7BPCVzn7lC55cUmH2hL852VmfyErhJ/rGalXsBfeAqhq8ZzseuHCaYjYFr
-         7pU1YBrH0VJ5qkgH7GmuglaJ2zYQjZalVE/+KDe5aAZuZQfZMqcB3Fj4mYZSzO997Tuz
-         DZZFy+qZ6xtfo6588Hi6cTmNUJBdKrSvGVfw5tcm0/OGs1twHz4gIuh6t49j9kHMgMLa
-         XqC3iYSuEJlsUjbpnKi9Y+1z8na6Z25rvTTS2gbwn+CnjfxrV77r/Fz1W1AcQAVkHIk3
-         6fFkr8VjVM34xDfkswZ/247JJ/CO3F6LW8/gLxRIASOFv1IxpghDHwQWgmulMoraC7Wp
-         AWTg==;
+        bh=agjxPNPZhkjhF3pYgx+4YrvSC0QezaRTWh5rzAMbA6c=;
+        fh=SdlVHvaQIfGQv/aJ8GKks0zlO3eIXSNzbvpiMmfVjeo=;
+        b=N0B7SxTqx7b6jD5UFKJf+mNwQEFhHhR77W4h0kAY53jcMgXubZNTSafCIKVFPWWXiS
+         QXhRsoTpKH1MC/b0Y1pkqhUk+lbecLFU6Bt0WIw/+bIgYephbSjO49jgGSWJFOmUZYMc
+         ZjmesK8ACOaMtL9gWOE7vXtD7MDCiTK8CAZrxHztre/KEO2ygAnVF8SHd4W99cvgyF7i
+         H84EalBhYNClIXyka47GMDsmLHPSxM6XvgfgWjWEs7GzVofc1Mp1mySFCObHr9za7cN4
+         gPj+5E3Ane3oioEW3uiLwGBjAmAc60h+8+4VupLrY9mvpHtOyk127tMYr3rrqFI5Bd80
+         F3Tw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="GjUED+9/";
+       dkim=pass header.i=@linaro.org header.s=google header.b=WS7b2CaR;
        spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <pierrick.bouvier@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 41be03b00d2f7-7d823458d2esor3278556a12.2.2024.09.10.15.16.49
+        by mx.google.com with SMTPS id d2e1a72fcca58-718e5829c07sor3618407b3a.6.2024.09.10.15.16.51
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Tue, 10 Sep 2024 15:16:49 -0700 (PDT)
+        Tue, 10 Sep 2024 15:16:51 -0700 (PDT)
 Received-SPF: pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="GjUED+9/";
+       dkim=pass header.i=@linaro.org header.s=google header.b=WS7b2CaR;
        spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1726006609; x=1726611409; darn=linaro.org;
+        d=linaro.org; s=google; t=1726006611; x=1726611411; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=wo4Kwhe0+9wossg0r5F+dnO1+KIF5dbmiqLxu6TdKHE=;
-        b=GjUED+9/mSV/2zdg3aVsQ8iIsG7Z72uHo1C6JUk4+ynJsULOnzma2ESeBa7nuKm7yy
-         DynZVfsU9tzE6Aaae9+eKw5OQTZvIjQUAQYvvF8lL4hOqsv1o4YwKtn2494id1mqKXMi
-         LXu0s/FzwbROjalDXtWmnlLFocUu9zDmYM4+lR0/gEJnqMEZx8xv8wg4JJYM1cYouohd
-         XgrG0t7JU3/HAWepNZh6QwzAJKVSpr35ZffbcQq9mDS6PHthutcx81FlyekncA6DMwvG
-         ZtJ5p4/RAq5FnJMm2rFARJPChAUVqgL2el+yvUP8zWoQptPoqJGiTsPMPFHt+3D+2xIV
-         j1VA==
+        bh=agjxPNPZhkjhF3pYgx+4YrvSC0QezaRTWh5rzAMbA6c=;
+        b=WS7b2CaRc4kKC47ceQ3Dv6O7KzGYwxCyQA4STuBLr457hXYKHzts9i1ckgP/Zqcl7j
+         R1GmvJ16Xd9tgvU4eXRWWlU1B9n3OMi9tmfqLNXgmbL6lgUELGf3os0xUHPmZ6psVE2m
+         Arre4D+DZK4OoEqGJoQmoJxzHhT0xrS2eJjHV6QZOKvRN+ORiMkqr6+AtnPu/IO9bT/j
+         6+6ew4FfH7tdE1PyAxG4oBRIfQVpAGItMNUrRRCnQZSPzwDyHOL4sEZaBtE8ko10qirt
+         XDV+3HPKKFCHSPU0iRulGUXLnedEzCBXQf83BzEDVFI26EcAx7AWpQ4T3x4wD7bnwEtg
+         zJrA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1726006609; x=1726611409;
+        d=1e100.net; s=20230601; t=1726006611; x=1726611411;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=wo4Kwhe0+9wossg0r5F+dnO1+KIF5dbmiqLxu6TdKHE=;
-        b=RHcY26kQ/LPU5H1QOYFORv8+0NOcMowvDzXziNqDc3EqGyF/q5IvCRhZ/JvPkQhVXP
-         j5IEm+fOELuNVY2omSvetmO1SkqQbPeRY9jibRPgZQxPuyjB/Hz9CitYLxTiXjlnrVu9
-         kcAF1dCa/MTt/aeiPysAsWOhiRznguxtalPcVxDU01YExw4u+IF5sGaFpLJfHd3ToJse
-         13+8SH4F83fOOwO+YblDZ31rLuDmEq3Wui6qvOu0BoVI/5GiJ+RowLGy7suTnJalKPRJ
-         O7gOCRSnzm2mQc34JvIqvIfEdrFRsFqWlX0Yvt+3M3mZD+twGPkcXJY2SR0Sy0aHcqyc
-         I7iQ==
-X-Forwarded-Encrypted: i=1; AJvYcCUdRxcgqFljakgU+1/PMWXabGl2u8EFFibalZAmR01N1iVzUqg8MwrkF8IdzHjHi8hCqxbW9qyDNpQbNw==@linaro.org
-X-Gm-Message-State: AOJu0YxkPeXQ8L+7Nezq7cl0tFBFKkZRC1XSrenQqYvwXNG3vbSCK06h
-	Xs/0nKqutLFIKrEKlBVWD+fQwM/PM+1jEEVtN29g+fMeUeu22sNYxPcOsakPZXjamQ==
-X-Google-Smtp-Source: AGHT+IFtMirXMv4Fe5jm8EjT5naiSbZE3xCYCvlUGLPtdk4/tytoT9EI8pJfvAZvF8ck1TGbfKyzfw==
-X-Received: by 2002:a05:6a20:ac43:b0:1cf:374f:40c9 with SMTP id adf61e73a8af0-1cf5e1b7fe7mr3167936637.38.1726006609032;
-        Tue, 10 Sep 2024 15:16:49 -0700 (PDT)
+        bh=agjxPNPZhkjhF3pYgx+4YrvSC0QezaRTWh5rzAMbA6c=;
+        b=WPUawKHBWcJsoDghAeCjzGeQelAMpxJJYpIyYW+SNyZDOSZdZeAIoUdpznEdbjPJJ5
+         IcD7T/JC5cW2ycem6pqFlmMObKrbAjTEbDvd2RFcy7aBCkj2iDMdpY0gl9Oiezvd+PyF
+         67G4CLkD9wG6f9rlVGqdWpROYb3qs3Z0ZW2i7/XzXqUl5DVIp1MUbQWsOouZTp2e5wmh
+         Owvopm6+yPbTrg0kkQuUFAI0mcG3p9vXstgc70ntcFPeddWLEgRzSwAvpohP/DCeppzG
+         mn0ltjPoJ3gKMPcUAhMBHuiatU2nwDXkBOFt+KvePTYcTvn/KuqOPcWAcsi1/l+WrDeQ
+         0ZSw==
+X-Forwarded-Encrypted: i=1; AJvYcCVmiTbC3hyw4Ac0QhBR6ZcQ1DqFCMWmDLFXFSR7XCxabH4IkaqnlqC/f73QP3l7ucXDtHveMs07WCf8WA==@linaro.org
+X-Gm-Message-State: AOJu0YxpIWfpwotsngDcMzMUhObrfrXHDAI4ZjExoiQOvg91W/zux/k+
+	9b2UTHOz93l800zVy+k/3eKr2WCQRQ4nP7omyvebiwTBoB3bJq7Wjb9y7RnO1BRsDA==
+X-Google-Smtp-Source: AGHT+IE1NeVPxPuTLt1hWZFnlbeldnxIM0Z4VwcI8eWqQlrC+NfwnNfuoOxOt9dZvUfA9IM8krjmMw==
+X-Received: by 2002:a05:6a00:6f4d:b0:718:eeab:97ca with SMTP id d2e1a72fcca58-71907d98483mr7997533b3a.2.1726006611406;
+        Tue, 10 Sep 2024 15:16:51 -0700 (PDT)
 Return-Path: <pierrick.bouvier@linaro.org>
 Received: from linaro.vn.shawcable.net ([2604:3d08:9384:1d00::9633])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-71909003d0esm1884055b3a.93.2024.09.10.15.16.45
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-71909003d0esm1884055b3a.93.2024.09.10.15.16.49
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 10 Sep 2024 15:16:48 -0700 (PDT)
+        Tue, 10 Sep 2024 15:16:50 -0700 (PDT)
 From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Zhao Liu <zhao1.liu@intel.com>,
@@ -140,110 +140,61 @@ Cc: Zhao Liu <zhao1.liu@intel.com>,
 	Jean-Christophe Dubois <jcd@tribudubois.net>,
 	Jason Wang <jasowang@redhat.com>,
 	Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH 16/39] hw/hyperv: replace assert(false) with g_assert_not_reached()
-Date: Tue, 10 Sep 2024 15:15:43 -0700
-Message-Id: <20240910221606.1817478-17-pierrick.bouvier@linaro.org>
+Subject: [PATCH 17/39] hw/net: replace assert(false) with g_assert_not_reached()
+Date: Tue, 10 Sep 2024 15:15:44 -0700
+Message-Id: <20240910221606.1817478-18-pierrick.bouvier@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240910221606.1817478-1-pierrick.bouvier@linaro.org>
 References: <20240910221606.1817478-1-pierrick.bouvier@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: iaOr4qQcMCEQ
+X-TUID: 4Rjn475iQDRK
 
 Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 ---
- hw/hyperv/hyperv_testdev.c |  6 +++---
- hw/hyperv/vmbus.c          | 12 ++++++------
- 2 files changed, 9 insertions(+), 9 deletions(-)
+ hw/net/e1000e_core.c | 2 +-
+ hw/net/igb_core.c    | 2 +-
+ hw/net/net_rx_pkt.c  | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/hw/hyperv/hyperv_testdev.c b/hw/hyperv/hyperv_testdev.c
-index 9a56ddf83fe..ef50e490c4e 100644
---- a/hw/hyperv/hyperv_testdev.c
-+++ b/hw/hyperv/hyperv_testdev.c
-@@ -88,7 +88,7 @@ static TestSintRoute *sint_route_find(HypervTestDev *dev,
-             return sint_route;
-         }
-     }
--    assert(false);
-+    g_assert_not_reached();
-     return NULL;
- }
- 
-@@ -187,7 +187,7 @@ static void msg_conn_destroy(HypervTestDev *dev, uint8_t conn_id)
-             return;
-         }
-     }
--    assert(false);
-+    g_assert_not_reached();
- }
- 
- static void evt_conn_handler(EventNotifier *notifier)
-@@ -237,7 +237,7 @@ static void evt_conn_destroy(HypervTestDev *dev, uint8_t conn_id)
-             return;
-         }
-     }
--    assert(false);
-+    g_assert_not_reached();
- }
- 
- static uint64_t hv_test_dev_read(void *opaque, hwaddr addr, unsigned size)
-diff --git a/hw/hyperv/vmbus.c b/hw/hyperv/vmbus.c
-index 490d805d298..df47aae72b8 100644
---- a/hw/hyperv/vmbus.c
-+++ b/hw/hyperv/vmbus.c
-@@ -1874,7 +1874,7 @@ static void send_create_gpadl(VMBus *vmbus)
-         }
+diff --git a/hw/net/e1000e_core.c b/hw/net/e1000e_core.c
+index 3ae2a184d5d..248381f9766 100644
+--- a/hw/net/e1000e_core.c
++++ b/hw/net/e1000e_core.c
+@@ -561,7 +561,7 @@ e1000e_rss_calc_hash(E1000ECore *core,
+         type = NetPktRssIpV6Ex;
+         break;
+     default:
+-        assert(false);
++        g_assert_not_reached();
+         return 0;
      }
  
--    assert(false);
-+    g_assert_not_reached();
- }
- 
- static bool complete_create_gpadl(VMBus *vmbus)
-@@ -1889,7 +1889,7 @@ static bool complete_create_gpadl(VMBus *vmbus)
-         }
+diff --git a/hw/net/igb_core.c b/hw/net/igb_core.c
+index bcd5f6cd9cd..6be61407715 100644
+--- a/hw/net/igb_core.c
++++ b/hw/net/igb_core.c
+@@ -397,7 +397,7 @@ igb_rss_calc_hash(IGBCore *core, struct NetRxPkt *pkt, E1000E_RSSInfo *info)
+         type = NetPktRssIpV6Udp;
+         break;
+     default:
+-        assert(false);
++        g_assert_not_reached();
+         return 0;
      }
  
--    assert(false);
-+    g_assert_not_reached();
-     return false;
- }
- 
-@@ -1931,7 +1931,7 @@ static void send_teardown_gpadl(VMBus *vmbus)
-         }
+diff --git a/hw/net/net_rx_pkt.c b/hw/net/net_rx_pkt.c
+index 32e5f3f9cf7..6b9c4c9559d 100644
+--- a/hw/net/net_rx_pkt.c
++++ b/hw/net/net_rx_pkt.c
+@@ -375,7 +375,7 @@ net_rx_pkt_calc_rss_hash(struct NetRxPkt *pkt,
+         _net_rx_rss_prepare_udp(&rss_input[0], pkt, &rss_length);
+         break;
+     default:
+-        assert(false);
++        g_assert_not_reached();
+         break;
      }
- 
--    assert(false);
-+    g_assert_not_reached();
- }
- 
- static bool complete_teardown_gpadl(VMBus *vmbus)
-@@ -1946,7 +1946,7 @@ static bool complete_teardown_gpadl(VMBus *vmbus)
-         }
-     }
- 
--    assert(false);
-+    g_assert_not_reached();
-     return false;
- }
- 
-@@ -1996,7 +1996,7 @@ static void send_open_channel(VMBus *vmbus)
-         }
-     }
- 
--    assert(false);
-+    g_assert_not_reached();
- }
- 
- static bool complete_open_channel(VMBus *vmbus)
-@@ -2020,7 +2020,7 @@ static bool complete_open_channel(VMBus *vmbus)
-         }
-     }
- 
--    assert(false);
-+    g_assert_not_reached();
-     return false;
- }
  
 -- 
 2.39.2

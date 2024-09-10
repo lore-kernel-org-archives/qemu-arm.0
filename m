@@ -1,39 +1,39 @@
-Received: by 2002:a17:505:1909:b0:1be9:327d:8ee3 with SMTP id az9csp1208626njb;
-        Tue, 10 Sep 2024 02:48:48 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUu3fXhOc3yck7KTDZWBjXi8vvTqN5IBxJZa9KT8CrNQBU9TRFhtC+Ob+ETbqv5i2GPeGqEQ5d0L+r3lA==@linaro.org
-X-Google-Smtp-Source: AGHT+IER9kP5dffOqK+nYBCKM1DtOAKzwV9Y575FFC04R30EWgkJaP0pGGs91zKr9KT3mbz3QX7X
-X-Received: by 2002:a05:6214:5411:b0:6c4:79df:a2e5 with SMTP id 6a1803df08f44-6c5283f96c5mr147536646d6.20.1725961728249;
-        Tue, 10 Sep 2024 02:48:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1725961728; cv=none;
+Received: by 2002:a17:505:1909:b0:1be9:327d:8ee3 with SMTP id az9csp1208649njb;
+        Tue, 10 Sep 2024 02:48:55 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXVpzcZfVLTs4jIE7UK5kWs8cXnhNI5wY3AZMfGiKkIrpi6xp2mwaSXNd4wiOVk4b9ekyj3g9R5STwUuw==@linaro.org
+X-Google-Smtp-Source: AGHT+IHO99otxEGV8DurDpZszoBLpf1a1qLGlcb7NqssL/t6MX7RDcvth5q9oskQRBar7H+85oEi
+X-Received: by 2002:a05:6214:4389:b0:6c3:6712:ded8 with SMTP id 6a1803df08f44-6c532410c9fmr126728466d6.25.1725961735496;
+        Tue, 10 Sep 2024 02:48:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1725961735; cv=none;
         d=google.com; s=arc-20240605;
-        b=HV6LUskVoc3OMIRJ7AxlHzulQpy6oH5KoXF95piqKNgW9pJiVWZD3030imEnktY4yr
-         9eHnSGkZcF73qSIeayDyugCXgW3DfuQqYkDyPKWcPnKnFXkKgfO2Smxvci8FlYV82Ftp
-         tlvABnaWFZuniQGn4B4+pPBwC26j3uF4+sLo3vFYGfoVy812srRCQor67EPBpfKSVY2S
-         MXH8xxYEvnNMehL52RfNp7476mg0JmKM1l/eKNPW/s6hsTemma42E2oZW2eaC3aQ2CWj
-         gzYdSF8Io0rzkoeFNPwR4zBqthxp+6Z4bdJ2vwo/3QJx5GvrJXvAsMdmMgbK8+lbZKF/
-         pq2w==
+        b=Ms3wqDAB+OshEk7MOcj2JmCC7WxspscDCb1wpvlZaqjDDT79z9hWuRjNc9UjlJH7w1
+         aEskiRZS/LlUJCNr/Kgf7GENl/wduOudNJZz3Gwyftu1ejbNL1xGhe+nm+rNiTa1/Zsw
+         gyNY4qzUMvc23My4JA/WLZuUU34rWq6Bpq0Qu9UmVyXc5q6xE96271JDS7EFroFdHwl4
+         uqRUv1UfLyQ0qqXHwilRByfmdrvXBrDm7f3/cz3I8AUoYgTf5vF2kGP/3HoGE7X8vwz/
+         ReLWMiQSV1BjtuZQ9fMbORFZyN/Bp6/dX/cPnS5/fs7lY+cF2DIOv0yxbAVWji5gx+1Y
+         dbHA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:content-transfer-encoding
-         :mime-version:message-id:date:subject:from;
-        bh=ur0/kwNxSD+kuAV/sTsqKX2Fogf3Q+p/AjmDkJYS/q4=;
+         :list-unsubscribe:list-id:precedence:cc:to:in-reply-to:references
+         :message-id:content-transfer-encoding:mime-version:subject:date:from;
+        bh=l6ZQE5ZWtT7OXRfOnOCNpDXHWa4sj8xB7xQMOguStzs=;
         fh=2XNni5tFqqNsYuVOJGxzVTMSzHzZnaSMOOPrr5cXMU4=;
-        b=CHw0nuT9uZk9hR+ACz7dwhlz6KX2IW7uy+dJ4GFmwtBLL31OOTkvk0ld+s38rVVoMH
-         N4XsRn6WcfDd+VIt7j+mlW1IxiOl+czaLJkTUJbdNOXMMVrslceWR+i1FEMudhafgbe3
-         4IH0LlE6g7+NXEqaj7IXtzb2qij5I+48BZa5JDVZVUXgmVJzuFNIyLA5P6aKjsS04aIO
-         c7AWJUGAubd0uzbmQ1erGX3DdGTTXjrb7wERB8wfdUXPqbvSJNozxokyoKG9OiDyQ5m6
-         hpuataZ6V3eFZh2/DsD/KN5lSj1NC93P3lmqIxZQiFLYvd0BfwcsUI46UMtRZV5LHCks
-         vYaQ==;
+        b=WGM7NXls+YHeQap8UXg8q+tufQikVpDXfI8ahGEmuYL2j+HRNjcXImdPLZwTfnHNpV
+         756R+EuIgIS8RNSX2DkNLak8DGVUDgJk2Wzx+ErMeJ5zeYYDMFz+koP22m8MnjvqVmXB
+         l92vcN2iAYGGSVSAM6ChRXPG/5mZLYXtt58kjJ5Kgd1CxIXlMXEPKF07X0SJnH9j7ret
+         Yt5TWvZNoTF2wI+UeZl3oE9+nIa3A0bogpbqNkxxPfWHtSorEQC0h8egHxQI9pP81SPX
+         48bQ3HbV6oUmc5FPSoDb0VE1U/D994m6I/4MQm/6Qor3r7MSrJy/oG+OF0u+cdMBAXBc
+         tGdw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6c5348ca096si72871206d6.595.2024.09.10.02.48.48
+        by mx.google.com with ESMTPS id 6a1803df08f44-6c534330118si74011716d6.8.2024.09.10.02.48.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 10 Sep 2024 02:48:48 -0700 (PDT)
+        Tue, 10 Sep 2024 02:48:55 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
@@ -41,37 +41,35 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1snxUD-0006VT-J0; Tue, 10 Sep 2024 05:48:37 -0400
+	id 1snxUD-0006W0-Ny; Tue, 10 Sep 2024 05:48:37 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
- id 1snxUB-0006TV-Ju; Tue, 10 Sep 2024 05:48:35 -0400
+ id 1snxUB-0006TU-NS; Tue, 10 Sep 2024 05:48:35 -0400
 Received: from muminek.juszkiewicz.com.pl ([213.251.184.221])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
- id 1snxU9-0000M9-TM; Tue, 10 Sep 2024 05:48:35 -0400
+ id 1snxU9-0000M8-TU; Tue, 10 Sep 2024 05:48:35 -0400
 Received: from localhost (localhost [127.0.0.1])
- by muminek.juszkiewicz.com.pl (Postfix) with ESMTP id D349A260BA2;
- Tue, 10 Sep 2024 11:48:30 +0200 (CEST)
+ by muminek.juszkiewicz.com.pl (Postfix) with ESMTP id 7D7422602C9;
+ Tue, 10 Sep 2024 11:48:31 +0200 (CEST)
 X-Virus-Scanned: Debian amavis at juszkiewicz.com.pl
 Received: from muminek.juszkiewicz.com.pl ([127.0.0.1])
  by localhost (muminek.juszkiewicz.com.pl [127.0.0.1]) (amavis, port 10024)
- with ESMTP id X2CWEUwOFf_u; Tue, 10 Sep 2024 11:48:28 +0200 (CEST)
+ with ESMTP id gcrsLz_4zubZ; Tue, 10 Sep 2024 11:48:29 +0200 (CEST)
 Received: from applejack.lan (83.11.24.101.ipv4.supernova.orange.pl
  [83.11.24.101])
- by muminek.juszkiewicz.com.pl (Postfix) with ESMTPSA id BD1552602C9;
- Tue, 10 Sep 2024 11:48:17 +0200 (CEST)
+ by muminek.juszkiewicz.com.pl (Postfix) with ESMTPSA id C4026260898;
+ Tue, 10 Sep 2024 11:48:28 +0200 (CEST)
 From: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
-Subject: [PATCH v5 0/4] tests: updates for aarch64/sbsa-ref
-Date: Tue, 10 Sep 2024 11:48:07 +0200
-Message-Id: <20240910-b4-move-to-freebsd-v5-0-0fb66d803c93@linaro.org>
+Date: Tue, 10 Sep 2024 11:48:08 +0200
+Subject: [PATCH v5 1/4] tests: use default cpu for aarch64/sbsa-ref
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-B4-Tracking: v=1; b=H4sIANcV4GYC/4XNTQrCMBCG4atI1kbyM20aV95DXCR20ga0kaQEp
- fTupt2IKLp8P5hnJpIwekxkv5lIxOyTD0OJarsh594MHVLfliaCCWC1AGqBXkNGOgbqIqJNLTX
- GtWhVhU42pBzeIjp/X9HjqXTv0xjiY/2RxbL+5LKgjNaARlkGWjfucPGDiWEXYkcWL8v/hiyG4
- qBr6zjXLXwY8DIUk18NKAZTXHOnq6aS7M2Y5/kJcm/hlj0BAAA=
+Message-Id: <20240910-b4-move-to-freebsd-v5-1-0fb66d803c93@linaro.org>
+References: <20240910-b4-move-to-freebsd-v5-0-0fb66d803c93@linaro.org>
+In-Reply-To: <20240910-b4-move-to-freebsd-v5-0-0fb66d803c93@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Leif Lindholm <quic_llindhol@quicinc.com>, 
  Radoslaw Biernacki <rad@semihalf.com>, 
@@ -102,47 +100,86 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: jgz9xvhuJwn8
+X-TUID: PR18GcpyVnTw
 
-We want test to run on default cpu settings. For now it is plain
-Neoverse-N2 but we are considering either disabling PAuth or going with
-'impdef' way.
+We want to run tests using default cpu without having to remember which
+Arm core is it.
 
-We want to have some non-Linux OS in testing in case one of changes keep
-Linux booting but crash elsewhere. So far OpenBSD was used for it but we
-move to FreeBSD 14.x due to longer support cycles (OpenBSD 7.3 we use is
-already EoL).
+Change Neoverse-N1 (old default) test to use default cpu (Neoverse-N2 at
+the moment).
 
 Signed-off-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
-
 ---
-Changes in v5:
-- update to post-avocado system
-- drop all OpenBSD tests
-- Link to v4: https://lore.kernel.org/r/20240703-b4-move-to-freebsd-v4-0-07191f958530@linaro.org
+ tests/functional/test_aarch64_sbsaref.py | 18 ++++++++++--------
+ 1 file changed, 10 insertions(+), 8 deletions(-)
 
-Changes in v4:
-- hide OpenBSD test behind AVOCADO_TEST_LEGACY_OS switch
-- Link to v3: https://lore.kernel.org/r/20240624-b4-move-to-freebsd-v3-0-71496bf119d4@linaro.org
+diff --git a/tests/functional/test_aarch64_sbsaref.py b/tests/functional/test_aarch64_sbsaref.py
+index f31c2a60b6..528882f4fa 100755
+--- a/tests/functional/test_aarch64_sbsaref.py
++++ b/tests/functional/test_aarch64_sbsaref.py
+@@ -110,16 +110,17 @@ def test_sbsaref_edk2_firmware(self):
+     # This tests the whole boot chain from EFI to Userspace
+     # We only boot a whole OS for the current top level CPU and GIC
+     # Other test profiles should use more minimal boots
+-    def boot_alpine_linux(self, cpu):
++    def boot_alpine_linux(self, cpu=None):
+         self.fetch_firmware()
+ 
+         iso_path = self.ASSET_ALPINE_ISO.fetch()
+ 
+         self.vm.set_console()
+         self.vm.add_args(
+-            "-cpu", cpu,
+             "-drive", f"file={iso_path},media=cdrom,format=raw",
+         )
++        if cpu:
++            self.vm.add_args("-cpu", cpu)
+ 
+         self.vm.launch()
+         wait_for_console_pattern(self, "Welcome to Alpine Linux 3.17")
+@@ -127,8 +128,8 @@ def boot_alpine_linux(self, cpu):
+     def test_sbsaref_alpine_linux_cortex_a57(self):
+         self.boot_alpine_linux("cortex-a57")
+ 
+-    def test_sbsaref_alpine_linux_neoverse_n1(self):
+-        self.boot_alpine_linux("neoverse-n1")
++    def test_sbsaref_alpine_linux_default_cpu(self):
++        self.boot_alpine_linux()
+ 
+     def test_sbsaref_alpine_linux_max_pauth_off(self):
+         self.boot_alpine_linux("max,pauth=off")
+@@ -148,16 +149,17 @@ def test_sbsaref_alpine_linux_max(self):
+     # This tests the whole boot chain from EFI to Userspace
+     # We only boot a whole OS for the current top level CPU and GIC
+     # Other test profiles should use more minimal boots
+-    def boot_openbsd73(self, cpu):
++    def boot_openbsd73(self, cpu=None):
+         self.fetch_firmware()
+ 
+         img_path = self.ASSET_OPENBSD_ISO.fetch()
+ 
+         self.vm.set_console()
+         self.vm.add_args(
+-            "-cpu", cpu,
+             "-drive", f"file={img_path},format=raw,snapshot=on",
+         )
++        if cpu:
++            self.vm.add_args("-cpu", cpu)
+ 
+         self.vm.launch()
+         wait_for_console_pattern(self,
+@@ -167,8 +169,8 @@ def boot_openbsd73(self, cpu):
+     def test_sbsaref_openbsd73_cortex_a57(self):
+         self.boot_openbsd73("cortex-a57")
+ 
+-    def test_sbsaref_openbsd73_neoverse_n1(self):
+-        self.boot_openbsd73("neoverse-n1")
++    def test_sbsaref_openbsd73_default_cpu(self):
++        self.boot_openbsd73()
+ 
+     def test_sbsaref_openbsd73_max_pauth_off(self):
+         self.boot_openbsd73("max,pauth=off")
 
-Changes in v3:
-- kept OpenBSD/Cortex-A57 test for local runs (by request of Philippe)
-- Link to v2: https://lore.kernel.org/r/20240624-b4-move-to-freebsd-v2-0-64ea7b04998f@linaro.org
-
----
-Marcin Juszkiewicz (4):
-      tests: use default cpu for aarch64/sbsa-ref
-      tests: add FreeBSD tests for aarch64/sbsa-ref
-      tests: expand timeout information for aarch64/sbsa-ref
-      tests: drop OpenBSD tests for aarch64/sbsa-ref
-
- tests/functional/test_aarch64_sbsaref.py | 58 +++++++++++++++++---------------
- 1 file changed, 31 insertions(+), 27 deletions(-)
----
-base-commit: 1581a0bc928d61230ed6e43bcb83f2f6737d0bc0
-change-id: 20240624-b4-move-to-freebsd-aafdeb75ef38
-
-Best regards,
 -- 
-Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+2.46.0
 

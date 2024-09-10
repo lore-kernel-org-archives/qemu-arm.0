@@ -1,80 +1,80 @@
-Received: by 2002:a17:505:1909:b0:1be9:327d:8ee3 with SMTP id az9csp1444551njb;
-        Tue, 10 Sep 2024 15:16:54 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXXcDyqItA36/pKr+jlkRlRGvebhhQ7fO8+H6qi3LwnjZynMU9qax/TdWZoUlmiNoOnrvnoejP7EKr5XQ==@linaro.org
-X-Received: by 2002:a05:6a21:6e41:b0:1c8:fe09:f8cd with SMTP id adf61e73a8af0-1cf62cdcbaamr1458155637.24.1726006614274;
-        Tue, 10 Sep 2024 15:16:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1726006614; cv=none;
+Received: by 2002:a17:505:1909:b0:1be9:327d:8ee3 with SMTP id az9csp1444562njb;
+        Tue, 10 Sep 2024 15:16:56 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWKD5IE8Bbvef6RGIS7gmkWvcJG4UNO/7eWJHm4ZgHVTWRhP68elXM+AarSFnsAbF66FARAP0Co8fvkQA==@linaro.org
+X-Received: by 2002:a05:6a20:d525:b0:1cf:58e3:2d1 with SMTP id adf61e73a8af0-1cf5e197fecmr2960310637.47.1726006616391;
+        Tue, 10 Sep 2024 15:16:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1726006616; cv=none;
         d=google.com; s=arc-20160816;
-        b=NKP/Mr1gpbNak1uI1nVTGV3iEIn1iEpZGoowK6ZcDce0sXEo43JTs4S1iD5sS37mlD
-         Pwpxjhz1vqAIg4DYzBXjFixb4bmLqOAcL+LOqL4lwC0wcPJYnO6U1x8KKHTQmjr0hmGJ
-         L1vZnRAHGaAzem7GHVmJ1X+g8VFo9YOqSGRg9bkfYrWM9xRpJd7exetEvLmux8Z4oG6M
-         tc0qO8Rbv35Oy4zD/ND4vFGdZvmxSLx+f+3YhtCAHx3Q8+iwobntj/HNhygfBVzb2wDS
-         7u1PuvaYsnTHM4yblqKL529TG4/DMRm33OpnYTBjG6GAEdSwJUQS99Faw1z9selRRBab
-         YpOw==
+        b=nCLBwC7GprWeoPfkRbDSPTbJf3qDm7PYWlm4RSCH4aLq+nP4FTgSYgzAcCy1qbB8Ri
+         fvDj8Xiu8kq+1lrDbfzvT0GKHVEXr+UBQcz8QjTlVk1T/ExC9Z2G5bqQETZgjlQkvF3k
+         pIprUDo9aEOrsjB5Dv9yV0CgUefFdgyV3zAQ+prURFWqUCwznTNOi/Pde/N11U7PsIKC
+         yWBliazRRr0Wb/I0AP+79ysIaXlZcsuaogQWeEsBCXzfJYGFWVgXzjkrmPb/Z7FI1A4g
+         PVSYdkPIBRg80uaZYjkoEFYndxkSe+YC3XlUB2OdtJXBs0oxB/kO0HNy1h8azQQpF3EM
+         5rfA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=g94oM2AdOrkhIM0zmQXs6BZslT0T+3A9bvoVuc5szJw=;
-        fh=DnaQsO/cgTx3l5jzhFF26mIE43SE6V87bx0J/iTIDas=;
-        b=PLu68dUsTqwu3uKypSTkTSl8AjF1aJ38MeHEdPMTUHqTSjMiNayqibYC2NhOSEvAZd
-         Vs3xFzFh8cwpcn/abMdlapAMuB4q3jCXVAprS2QY6SzhHhXKR472+YB+cIZObIFHfxvJ
-         ZM4bf5nd7X8Dewvel6VtXcvZpafwy/fiFdiVunumavQiu3RCeW7jVIsT3o6ut9zgj592
-         47uMylUKecYuLKXlXYu7sfXe7QOBxKsxj5tUpxLkI8OL4g0pHvf/0Kw7K2O1EEe7kqdI
-         x/POZ+1prfdhS6hbORHTC3QJpZre6e2Jm2ZwwUnS9B7AL84HHHjvjuolzgMnwdqSAFkx
-         QniA==;
+        bh=cAvzQslJtfBcWM7NZQthMrKt0WkAdMSo8X/GFMOx7xk=;
+        fh=VroRd4X2ys7KAuhGqlvs+/Qjat+wpCsuMen0z5dBV90=;
+        b=VamiJBvybobSUSgww9bQxm7CnAykKQx+BSgIGXUtmffjsV5viYiO2p8FFErwCH1g9O
+         8fN77uILkPymq8sVQa0MjBYe6HMjvrI2aluBiMN+5ujXuTIR8fXgePAAhb2n5vmCzps9
+         3D3Pb8imLxle48zJmwNAGG+EfPL/InET05jPlIWdQgCyRZCFicSa1gV1YI7LHi1Ud5/P
+         ZDCV8agwzcVNhbBM25KvOGPAYNLqopOo5JYp60hIsKFwfJuZZEYAP60wEADLL3LxzaQJ
+         O+VTX8uIfUC6xvPgJerFlOKOwRY93a9WhbwmzfEsXAA1ulW+TpFt9S3DCNla35vE60cp
+         Ou6w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=E4ehYAY3;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Wa7QwfU0;
        spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <pierrick.bouvier@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d2e1a72fcca58-718e58db505sor4209726b3a.4.2024.09.10.15.16.54
+        by mx.google.com with SMTPS id 41be03b00d2f7-7d823b096edsor2820876a12.3.2024.09.10.15.16.56
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Tue, 10 Sep 2024 15:16:54 -0700 (PDT)
+        Tue, 10 Sep 2024 15:16:56 -0700 (PDT)
 Received-SPF: pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=E4ehYAY3;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Wa7QwfU0;
        spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1726006614; x=1726611414; darn=linaro.org;
+        d=linaro.org; s=google; t=1726006616; x=1726611416; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=g94oM2AdOrkhIM0zmQXs6BZslT0T+3A9bvoVuc5szJw=;
-        b=E4ehYAY3ncn5B1KvenXvr4Sp2JZFFL+yF51FTNJFR1hPt6t/QnCSNdgCTBO9nsrpqh
-         5lkpFIy539tBmAA+lHNXh5d16VSoqEArUkklUqIE8UOBuhZ0pWqFB+aiJutHwRJFDVJy
-         GB+LbvDHkh59YPs+lxtPwNXhxUNfdfN432x5xiGQYtvHMaTdvmYG4UL4/Kg7NwcrPCSv
-         uGLbA//U3ENInS3zlINN9umetT+Sn9jsJbyOrxzdepqC6mBoOYbxnFU1nA1JodQEqoBZ
-         nK7LnTyuB0DSJTMmPSRA0ZVM1BiUoNRRJmzmXwNBaUSyJ/OvD4MW0z7ZOyYWIGb/w+Sw
-         brWA==
+        bh=cAvzQslJtfBcWM7NZQthMrKt0WkAdMSo8X/GFMOx7xk=;
+        b=Wa7QwfU0NnFhZ8HASdMuUuWqdAJMRlezi0DaAkaTW/qJWXwPD599oWsn95j9GIIvoT
+         3woa0h+jqfTox6yg6J6ePMq89ohGiJEsHZuBR6xFK74OsSX0j9u46GeOP4p8hSjXs7Lg
+         zs2YQRp31QLGhpfBl4cI1DrTbQMxpcb9SVR2Oxo8PaCbG9v6YGCRD0vTh6OiJBnGXEN7
+         DcowcbSzBwoiMWqTZE0Sw0rHzm7crpoZy9X+8+JRbBQVO4rHAjzvmg787c7WgnahNp8z
+         98xYTv86UGKHadUMbqZetmBMker2JKQYezb0hS+aRrDuM9j7JRtdxue/hqvr6WAxZ2Pu
+         JfXA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1726006614; x=1726611414;
+        d=1e100.net; s=20230601; t=1726006616; x=1726611416;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=g94oM2AdOrkhIM0zmQXs6BZslT0T+3A9bvoVuc5szJw=;
-        b=j7dRAX2DFt9XJcR+cjlc/hFahL8wjM2I0Q4z4AeTtl0HwoucAfeIfq+ll+3CvfoI5g
-         RJ+vFIVOz+1IIaiEETmiVSFpjBfgegtqOacSmrBoy+q4iAJMZqvwIJHFSmstyV0B49k/
-         aWJfbc5SVO2PxExcTa5vp9T5HUbWXLR5no2dAqSDbE6QgyvDydo84UhPnif5SNlidRhQ
-         A+GRwu1woSnX9IgHaSz0R/jSrl0crgNdXTpSXAqoPT3F13SSAquwNkEuGyzGKm6hM6Qi
-         riG1+Ht2S1BxfjlSigb7l05ldmydmgEGyvE1+4scDdntqIdGFK/K3OOSLxbGIQnb6GVU
-         pWEw==
-X-Forwarded-Encrypted: i=1; AJvYcCVlORXFqgMQt+ykoKaX/SUpZtR14SaAxNeS/wveIZ3Pc13bDO9vRNLIp6lDi4pm7KQfW/WneiSu3/3OHA==@linaro.org
-X-Gm-Message-State: AOJu0YxbDJOxSDinu0UqnnSaWjmgTgjjWgWaywS1W1JNXWSILxx5EHPW
-	352FJX1grtUQpaggtVsFJ3CfgD1oFZpgoiDR542Q9sFQE9Y+jDVInUoHZv+4CR2IpQ==
-X-Google-Smtp-Source: AGHT+IHL2ZH6nUBIcX/D81YvSHijd2PVp9cRI7IyORN5V83dLkzGAu93AwGsK5Tkm+BoWZtfm/pR4A==
-X-Received: by 2002:a05:6a00:1803:b0:714:2cea:1473 with SMTP id d2e1a72fcca58-7191723a295mr1055728b3a.23.1726006613650;
-        Tue, 10 Sep 2024 15:16:53 -0700 (PDT)
+        bh=cAvzQslJtfBcWM7NZQthMrKt0WkAdMSo8X/GFMOx7xk=;
+        b=Ss2QKcx9GTk6kXCc8jD/hZ8/6l4qzHoh+HDMeGmd8hSURFPlhjB7PP04X0dthi2BkE
+         v2T87kCMhI0Kd+2LKRwk2pfHAR88K1Mb5sQpm/6jRZm3gDYxwMtlH4+OeHsbZjJcQVYe
+         II9KBb0kyNvqKImeGd7LPUI7SEthRrjBVB9n6rjMhWRcLIsub0iJHc0n8Ii7TbZQnt+U
+         b4mhk8WXz/JLLQ7MxWFqVtU5dBcFvR5RLJd0RWtQdpswBHcELK0qy0Fv+AzTdgPGR5q7
+         pOT/Oj+jTjRceTbj/8NeSmZfJMzCJuT8ncAz6QbrHu8RhQ+xAXXykHM4eHyB7/wBzWN+
+         M4/g==
+X-Forwarded-Encrypted: i=1; AJvYcCXnW82SxS+Zsvj0J6H0x10WyZ3CJAnQpO2V1Pa6yaiqRv5ChOf/Gk0xAOBI89H23G1QCEB+FTw3NpbDeQ==@linaro.org
+X-Gm-Message-State: AOJu0YxyNN27fgdZkcVtlhe+UcdO9XU81a79bVj/7a80Rabup2vqWUd/
+	UUGy9k54vWyN5yWitDh9L6IrJGNsEXv8B3lhq5eG0lpkYijHrMFlCiy9YKaTV66Tfw==
+X-Google-Smtp-Source: AGHT+IE5hbdWS6CdkvBpTkLF73V6YsXkK3hpqDmltB7qoc29jRaoBm1Er3LHFhYvvN88E1vHLvAbAQ==
+X-Received: by 2002:a05:6a20:cf8c:b0:1cf:3a0a:ae45 with SMTP id adf61e73a8af0-1cf5e156d0fmr3746837637.35.1726006615860;
+        Tue, 10 Sep 2024 15:16:55 -0700 (PDT)
 Return-Path: <pierrick.bouvier@linaro.org>
 Received: from linaro.vn.shawcable.net ([2604:3d08:9384:1d00::9633])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-71909003d0esm1884055b3a.93.2024.09.10.15.16.51
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-71909003d0esm1884055b3a.93.2024.09.10.15.16.53
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 10 Sep 2024 15:16:53 -0700 (PDT)
+        Tue, 10 Sep 2024 15:16:55 -0700 (PDT)
 From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Zhao Liu <zhao1.liu@intel.com>,
@@ -140,60 +140,40 @@ Cc: Zhao Liu <zhao1.liu@intel.com>,
 	Jean-Christophe Dubois <jcd@tribudubois.net>,
 	Jason Wang <jasowang@redhat.com>,
 	Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH 18/39] hw/nvme: replace assert(false) with g_assert_not_reached()
-Date: Tue, 10 Sep 2024 15:15:45 -0700
-Message-Id: <20240910221606.1817478-19-pierrick.bouvier@linaro.org>
+Subject: [PATCH 19/39] hw/pci: replace assert(false) with g_assert_not_reached()
+Date: Tue, 10 Sep 2024 15:15:46 -0700
+Message-Id: <20240910221606.1817478-20-pierrick.bouvier@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240910221606.1817478-1-pierrick.bouvier@linaro.org>
 References: <20240910221606.1817478-1-pierrick.bouvier@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: FyxgvzDRc2UP
+X-TUID: 5A3+59OFfCVN
 
 Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 ---
- hw/nvme/ctrl.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ hw/pci/pci-stub.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/hw/nvme/ctrl.c b/hw/nvme/ctrl.c
-index 9f277b81d83..fc3b27c031e 100644
---- a/hw/nvme/ctrl.c
-+++ b/hw/nvme/ctrl.c
-@@ -1816,7 +1816,7 @@ static uint16_t nvme_check_zone_state_for_write(NvmeZone *zone)
-         trace_pci_nvme_err_zone_is_read_only(zslba);
-         return NVME_ZONE_READ_ONLY;
-     default:
--        assert(false);
-+        g_assert_not_reached();
-     }
+diff --git a/hw/pci/pci-stub.c b/hw/pci/pci-stub.c
+index f0508682d2b..c6950e21bd4 100644
+--- a/hw/pci/pci-stub.c
++++ b/hw/pci/pci-stub.c
+@@ -46,13 +46,13 @@ void hmp_pcie_aer_inject_error(Monitor *mon, const QDict *qdict)
+ /* kvm-all wants this */
+ MSIMessage pci_get_msi_message(PCIDevice *dev, int vector)
+ {
+-    g_assert(false);
++    g_assert_not_reached();
+     return (MSIMessage){};
+ }
  
-     return NVME_INTERNAL_DEV_ERROR;
-@@ -1870,7 +1870,7 @@ static uint16_t nvme_check_zone_state_for_read(NvmeZone *zone)
-         trace_pci_nvme_err_zone_is_offline(zone->d.zslba);
-         return NVME_ZONE_OFFLINE;
-     default:
--        assert(false);
-+        g_assert_not_reached();
-     }
+ uint16_t pci_requester_id(PCIDevice *dev)
+ {
+-    g_assert(false);
++    g_assert_not_reached();
+     return 0;
+ }
  
-     return NVME_INTERNAL_DEV_ERROR;
-@@ -4654,7 +4654,7 @@ static uint16_t nvme_io_cmd(NvmeCtrl *n, NvmeRequest *req)
-     case NVME_CMD_IO_MGMT_SEND:
-         return nvme_io_mgmt_send(n, req);
-     default:
--        assert(false);
-+        g_assert_not_reached();
-     }
- 
-     return NVME_INVALID_OPCODE | NVME_DNR;
-@@ -7205,7 +7205,7 @@ static uint16_t nvme_admin_cmd(NvmeCtrl *n, NvmeRequest *req)
-     case NVME_ADM_CMD_DIRECTIVE_RECV:
-         return nvme_directive_receive(n, req);
-     default:
--        assert(false);
-+        g_assert_not_reached();
-     }
- 
-     return NVME_INVALID_OPCODE | NVME_DNR;
 -- 
 2.39.2

@@ -1,187 +1,176 @@
-Received: by 2002:a17:504:928f:b0:1be9:327d:8ee3 with SMTP id d15csp158783nji;
-        Wed, 11 Sep 2024 06:28:08 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCUQgmKEyB5TeqJmFxLjE2ExtnTHbY0pYOZUK4+PZvHPF5Bn4RI9anEjJwea9fawd5X+FUouL07zhpdnlQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IGEJ+3tgSlsqsZ5+UPjoae2maUs6XTZhYWGUDbOOcOc97yG//ewYfOBavMF6uEyKDE0vkiV
-X-Received: by 2002:a17:90b:2348:b0:2db:89f0:99a3 with SMTP id 98e67ed59e1d1-2db89f09e56mr2152978a91.26.1726061287758;
-        Wed, 11 Sep 2024 06:28:07 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1726061287; cv=pass;
+Received: by 2002:a17:504:928f:b0:1be9:327d:8ee3 with SMTP id d15csp145312nji;
+        Wed, 11 Sep 2024 05:51:42 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUCe+lO5Tf9r8Y/d1Ie1rbZ/j6vv2Po20M+mXCRWticI175MlhIZgnvQynURAyXuxQhu3cY449SnVezjQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IEUR1Pfa4/UF+24NUozU2Xy5fOx4sIroXq4k3uotiEFPKAAoTqd1wSdK+N0QrmUhIr8Af6i
+X-Received: by 2002:a05:6102:e07:b0:49b:dfaa:c76a with SMTP id ada2fe7eead31-49bedb74571mr13021034137.4.1726059101776;
+        Wed, 11 Sep 2024 05:51:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1726059101; cv=none;
         d=google.com; s=arc-20240605;
-        b=JqtiYBteUrZI3YCYgDnPMGUaB4pe244TDIhfeFi/I++voGKKwKzRnoR0msK+2Ae7OQ
-         8uFme1cQw4WWwXY7YljF1OUxfa1On5BsI8DCQhdG6me4ZVtQxs51aVZQNin4rOM30ypw
-         AB6GAw6BwNvgaTumdzkNieUIOWivq6tW/DGtB0O46ft5aEZ6AN0gi7kwQtctFfOFoYf+
-         ssrFMFksFzUTNMVGLFJhToB7gUw310Q1mfvsXUsqaoU5g1eUpzxdjv5sxPmMhLR/H2Lb
-         baOV+soxehbOybLuAvN6dinThbQ8NGhtaFD70rsLgXaTrhFlIHiHyyOGkyEsZCDP4ycb
-         nrvw==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=lUp0+vKj46QzTJpymXewxcq+r1OcyQKVigOaH5OB8Rg=;
-        fh=eU2H95dJ6voHQkNQFKRB5XuJL/g9Nab+h+OxHy4bu9o=;
-        b=Nrik4IpA1MLcYulcuFRxKwSQSrT76Ek+vuKgLvq8RnFGOHBqhgtt9CT1/GIcJNpG4p
-         wbWm30URDMSLb2uEqWK/AFN1e5XxiFOPFin424hCUzkrEo9EuU9LE229uIPyD8ZxH/5W
-         DFSdSk5rBmZFP0BdrhmbU+QccMIkhHt56pS8rCPRIkqh+ax/n1Vkgx3ZU76DNGYpfqic
-         DZttnHwQZqjOBAsQQGHj6uYFGHiTMsx5Gx6ahwgXxCgTH62iAmyBFdreKzXFOwgAngnV
-         LFHDyhpH/QOJ/BsVSGWkLxT9n+Dnix7oMi33/X66s/orfSNiKUUThQdCqljKMwsMeBk5
-         rXBQ==;
+        b=TNwPGJan6AWqgA1FH5e7qOZAKHlaTDbJluPqF8XshsJOejipIv2VkMdLN/YKNv0L5U
+         XWVhy5I74b6wqVwhnrF6YTq7TJ1AXIIEagdzm4/AYULrJ0YmzUQSKyGdAYNUNMU90nmG
+         Iocmtah7EvWXkNGm/GVKRrHnfY5kFFI3wPAbrI+3h/uCl4f/TOo+k/hg8arJBNwScKd1
+         cga83svpm5dXPsl8MeYzIZC0SoLLYy/+Y2DUxz53g45Xik0v1AXc+FUM32Z7kGjQ7j1X
+         S0ohs3qiBPildN1Q8OfIFfyvDfho1hVAfwtN1WLORrLxutlUk+6g+B/ASfJYFtk4SJI1
+         bNOA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=mFTkfxZe8Y3KC8+GnCo7YhR64xl+MhtnbrQRYDpeikY=;
+        fh=IZ3/yjsSQj5+8tXCaBXT/xFoSWKQ6B57xSNl4CPgR+s=;
+        b=fyKTAi7Db/BKdE/i0nbmuBTfhETgIihM9qKCDS+llLnCpl7UTlh8ZoWuVZa6G+WG9W
+         WfJGpf9g3QTBhB/yyhEwVTtf57lwswKd+cRwcgHBVrlpaga0i74GFhpt3D5ePxXlOkx7
+         YSvA8aM6jYgeMAqDYSzCYubiVgRMQ+h3+a5MtjaVWqEVTU31GRnxhiHGtaTDO0QZGIgV
+         X/qgdl7uSi+i5fk8XTvCjyxwpN55WFyUkEfdMhG0WD+542xSGEdII0lC9t1qj43HgbSd
+         Fz5lQwVnT7F0OV0YACgdgkbURniEVDwvqCdlNYPBzQLCiQDNAM4kdbrAym3GBv8s07DI
+         v5Mw==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FwzVRlPz;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of linux-kernel+bounces-325007-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-325007-alex.bennee=linaro.org@vger.kernel.org";
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=WnCuUegk;
+       spf=pass (google.com: domain of rjones@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=rjones@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <linux-kernel+bounces-325007-alex.bennee=linaro.org@vger.kernel.org>
-Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [2604:1380:45e3:2400::1])
-        by mx.google.com with ESMTPS id 98e67ed59e1d1-2dadc0403f9si12444914a91.85.2024.09.11.06.28.07
+Return-Path: <rjones@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6c53433deecsi101673956d6.165.2024.09.11.05.51.41
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 11 Sep 2024 06:28:07 -0700 (PDT)
-Received-SPF: pass (google.com: domain of linux-kernel+bounces-325007-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) client-ip=2604:1380:45e3:2400::1;
+        Wed, 11 Sep 2024 05:51:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of rjones@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FwzVRlPz;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of linux-kernel+bounces-325007-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-325007-alex.bennee=linaro.org@vger.kernel.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=WnCuUegk;
+       spf=pass (google.com: domain of rjones@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=rjones@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by sv.mirrors.kernel.org (Postfix) with ESMTPS id 4B4AA281463
-	for <alex.bennee@linaro.org>; Wed, 11 Sep 2024 13:28:07 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 9CC6B1A2C01;
-	Wed, 11 Sep 2024 13:21:40 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="FwzVRlPz"
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id BA17B1A257F
-	for <linux-kernel@vger.kernel.org>; Wed, 11 Sep 2024 13:21:38 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.129.124
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1726060900; cv=none; b=q7MLS5X7RXOrv7gjGN/MesyK72OcmJl8sS5pS12JD0KRvyH2LfLoK4kRy2oVZDVVJO2RbOOY2z/D/sUpJDgUO7TRiFRiec1QXnc+anXPLGDZl3OxnNv/HKcEuXsRlxOzYiO4nDM19VrUJ05AvmhDwDEEWFuHsJ92zQBEFPSWs64=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1726060900; c=relaxed/simple;
-	bh=uzgBwk8fDv4vrbhQ6JMRScWSxp9E+Y7lOeqjN7i0Hmk=;
-	h=Date:From:To:Cc:Subject:Message-ID:In-Reply-To:References:
-	 MIME-Version:Content-Type; b=hpUx6shwyh9dU/Bv7lCT/5bOElNj7n5KHIRnYkRxP5mn+Nz+2Qdk2eAiRHyZZ9im/L8IlYphlFyt3osAb5pCnlR/42ModFqw5X0JqOaInHqwFgww8LLOzjHOwjEAADg/O2UlL9bbcE6y8XOAmMRQ22tVbHo580VVAR2xHvQ704A=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=FwzVRlPz; arc=none smtp.client-ip=170.10.129.124
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1726060897;
+	s=mimecast20190719; t=1726059101;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=lUp0+vKj46QzTJpymXewxcq+r1OcyQKVigOaH5OB8Rg=;
-	b=FwzVRlPzClYWO9w9ZJvcY/R17Z/q4tk4g09CJVTkL9IvCuhLcyOcsGi9F3cuvA9Ox7baUJ
-	T4+CRpRh74Qutsr5jMcxAtbSqs9ASGQBO5Ll9fhTgNunhNHEkFloE1nZNlcLxgMq4B2uai
-	bkwkIVr1x+P/Mv7z+AkQ5oaRWVYg7S0=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-463-8-6LycMsOU6R4iVC4IyqzA-1; Wed, 11 Sep 2024 09:21:36 -0400
-X-MC-Unique: 8-6LycMsOU6R4iVC4IyqzA-1
-Received: by mail-wm1-f69.google.com with SMTP id 5b1f17b1804b1-42cb830ea86so15632665e9.3
-        for <linux-kernel@vger.kernel.org>; Wed, 11 Sep 2024 06:21:35 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1726060895; x=1726665695;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=lUp0+vKj46QzTJpymXewxcq+r1OcyQKVigOaH5OB8Rg=;
-        b=JILG12kGeCX5sjS6td+2cRTMKj5Yt2xX6Tu90FQ2KyS8J8psyEHtObim3xJ5AU21T8
-         MJcMTzEnjPZ6cd9dAwDnEIv4rnv+C2OzdRY0jR5kujXhczAh/Paw++aWLw+0SxspWYFR
-         7QIRYlSjogfH4Pm7vK9NRFH+T8oWbm0jMj8HBbUiX4nKtMKODifwhrh1YrcD5Zb/OymL
-         E4ap7CwYt5rX6OG+sdfVCxIfQKINIw97oOb4RS8FH9iiUvbhatmiQNLRqCmUgmbDtne9
-         S2jDLnNQP3EkBSl/J708cJzamfIUqhyDl7kNrXtA4zjhe+WAD/vI6/H8hJ2tVmFEN/FQ
-         BJlg==
-X-Forwarded-Encrypted: i=1; AJvYcCVQDmsbVIzlaYrKtCH/Xcw/LJABazPJNgZgy7T5ZP4pFyfK34b6CkG3rS2SusNs1DvlXZdMaDUFAJRGsuY=@vger.kernel.org
-X-Gm-Message-State: AOJu0Yyb9W1hTsoE+2pso8IYLOUnDKLCogEcTuMhsUWrPSp1axKah+ak
-	5tqE3dGYUu385qVUAPfDyeEm1dxKaJ4o5R4i8MSrGuKi2UQ3CdNO6cfocS+ECFDaCQ+t1L8luKM
-	ABm5KN2AoGFsLY11Rw2WFmKWGaN0afAUCcvPbsFG2W50af++czeLxOZRCsd4TAw==
-X-Received: by 2002:a05:600c:1c06:b0:42b:a9d7:93 with SMTP id 5b1f17b1804b1-42ccd35ad4fmr23464795e9.28.1726060894865;
-        Wed, 11 Sep 2024 06:21:34 -0700 (PDT)
-X-Received: by 2002:a05:600c:1c06:b0:42b:a9d7:93 with SMTP id 5b1f17b1804b1-42ccd35ad4fmr23464235e9.28.1726060893936;
-        Wed, 11 Sep 2024 06:21:33 -0700 (PDT)
-Received: from imammedo.users.ipa.redhat.com (nat-pool-brq-t.redhat.com. [213.175.37.10])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-378956e8644sm11551998f8f.114.2024.09.11.06.21.33
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 11 Sep 2024 06:21:33 -0700 (PDT)
-Date: Wed, 11 Sep 2024 15:21:32 +0200
-From: Igor Mammedov <imammedo@redhat.com>
-To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>, Shiju Jose
- <shiju.jose@huawei.com>, "Michael S. Tsirkin" <mst@redhat.com>, Ani Sinha
- <anisinha@redhat.com>, Dongjiu Geng <gengdongjiu1@gmail.com>,
- linux-kernel@vger.kernel.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [PATCH v8 06/13] acpi/ghes: add support for generic error
- injection via QAPI
-Message-ID: <20240911152132.65a7a219@imammedo.users.ipa.redhat.com>
-In-Reply-To: <20240825052923.715f88bc@sal.lan>
-References: <cover.1723793768.git.mchehab+huawei@kernel.org>
-	<2c8970b5d54d17b601dc65d778cc8b5fb288984b.1723793768.git.mchehab+huawei@kernel.org>
-	<20240819145136.0452ff2b@imammedo.users.ipa.redhat.com>
-	<20240825052923.715f88bc@sal.lan>
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
-Precedence: bulk
-X-Mailing-List: linux-kernel@vger.kernel.org
-List-Id: <linux-kernel.vger.kernel.org>
-List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
+	bh=mFTkfxZe8Y3KC8+GnCo7YhR64xl+MhtnbrQRYDpeikY=;
+	b=WnCuUegknep5HUo4gzjiXh2YieF6mAPvg86y+eWZH/sSAyIktS6Wb+HTJ4gBiKpskkmC68
+	6/6OHH3xg+GbJc88WjphSFCpPiUhToJKm6JpfwT85kB8dajaKaqk5cmS9RW4V8Fd/3/EHp
+	0BaW3o5SspEFfrFptR+TtqscOi27WVo=
+Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-632-iUWjuNGROCO2yRVTK23Trg-1; Wed,
+ 11 Sep 2024 08:51:40 -0400
+X-MC-Unique: iUWjuNGROCO2yRVTK23Trg-1
+Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 8F906193584D;
+	Wed, 11 Sep 2024 12:51:31 +0000 (UTC)
+Received: from localhost (unknown [10.42.28.10])
+	by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP id E3A1319560AB;
+	Wed, 11 Sep 2024 12:51:27 +0000 (UTC)
+Date: Wed, 11 Sep 2024 13:51:26 +0100
+From: "Richard W.M. Jones" <rjones@redhat.com>
+To: "Maciej S. Szmigiero" <mail@maciej.szmigiero.name>
+Cc: Eric Blake <eblake@redhat.com>,
+	Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+	qemu-devel@nongnu.org, Zhao Liu <zhao1.liu@intel.com>,
+	Joel Stanley <joel@jms.id.au>, Kevin Wolf <kwolf@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
+	Corey Minyard <minyard@acm.org>, Eric Farman <farman@linux.ibm.com>,
+	Thomas Huth <thuth@redhat.com>, Keith Busch <kbusch@kernel.org>,
+	WANG Xuerui <git@xen0n.name>, Hyman Huang <yong.huang@smartx.com>,
+	Stefan Berger <stefanb@linux.vnet.ibm.com>,
+	Michael Rolnik <mrolnik@gmail.com>,
+	Alistair Francis <alistair.francis@wdc.com>,
+	=?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
+	Markus Armbruster <armbru@redhat.com>,
+	Sriram Yagnaraman <sriram.yagnaraman@ericsson.com>,
+	Palmer Dabbelt <palmer@dabbelt.com>, qemu-riscv@nongnu.org,
+	Ani Sinha <anisinha@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
+	Jesper Devantier <foss@defmacro.it>,
+	Laurent Vivier <laurent@vivier.eu>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Igor Mammedov <imammedo@redhat.com>, kvm@vger.kernel.org,
+	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Fam Zheng <fam@euphon.net>, qemu-s390x@nongnu.org,
+	Hanna Reitz <hreitz@redhat.com>,
+	Nicholas Piggin <npiggin@gmail.com>,
+	Eduardo Habkost <eduardo@habkost.net>,
+	Laurent Vivier <lvivier@redhat.com>, Rob Herring <robh@kernel.org>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	qemu-block@nongnu.org, qemu-ppc@nongnu.org,
+	Daniel Henrique Barboza <danielhb413@gmail.com>,
+	Christian Borntraeger <borntraeger@linux.ibm.com>,
+	Harsh Prateek Bora <harshpb@linux.ibm.com>,
+	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
+	Nina Schoetterl-Glausch <nsg@linux.ibm.com>,
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	Fabiano Rosas <farosas@suse.de>, Helge Deller <deller@gmx.de>,
+	Dmitry Fleytman <dmitry.fleytman@gmail.com>,
+	Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+	Akihiko Odaki <akihiko.odaki@daynix.com>,
+	Marcelo Tosatti <mtosatti@redhat.com>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	Aurelien Jarno <aurelien@aurel32.net>,
+	Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+	Yanan Wang <wangyanan55@huawei.com>, Peter Xu <peterx@redhat.com>,
+	Bin Meng <bmeng.cn@gmail.com>, Weiwei Li <liwei1518@gmail.com>,
+	Klaus Jensen <its@irrelevant.dk>,
+	Jean-Christophe Dubois <jcd@tribudubois.net>,
+	Jason Wang <jasowang@redhat.com>
+Subject: Re: [PATCH 01/39] docs/spin: replace assert(0) with
+ g_assert_not_reached()
+Message-ID: <20240911125126.GS1450@redhat.com>
+References: <20240910221606.1817478-1-pierrick.bouvier@linaro.org>
+ <20240910221606.1817478-2-pierrick.bouvier@linaro.org>
+ <zkyoryho5alnyirnl7ulvh5y6tkty6koccgeygmve42uml7glu@37rkdodtlx4f>
+ <bwo43ms2wi6vbeqhlc7qjwmw5jyt2btxvpph3lqn7tfol4srjf@77yusngzs6wh>
+ <10d6d67a-32f6-40fc-aba9-c62a74d9d98d@maciej.szmigiero.name>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: TKWNU7XXp4lY
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <10d6d67a-32f6-40fc-aba9-c62a74d9d98d@maciej.szmigiero.name>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
+X-TUID: Fy/PdQQ6uuCC
 
-On Sun, 25 Aug 2024 05:29:23 +0200
-Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
+On Wed, Sep 11, 2024 at 02:46:18PM +0200, Maciej S. Szmigiero wrote:
+> On 11.09.2024 14:37, Eric Blake wrote:
+> >On Wed, Sep 11, 2024 at 07:33:59AM GMT, Eric Blake wrote:
+> >>On Tue, Sep 10, 2024 at 03:15:28PM GMT, Pierrick Bouvier wrote:
+> >>>Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+> >>>---
+> >>
+> >>A general suggestion for the entire series: please use a commit
+> >>message that explains why this is a good idea.  Even something as
+> >>boiler-plate as "refer to commit XXX for rationale" that can be
+> >>copy-pasted into all the other commits is better than nothing,
+> >>although a self-contained message is best.  Maybe:
+> >>
+> >>This patch is part of a series that moves towards a consistent use of
+> >>g_assert_not_reached() rather than an ad hoc mix of different
+> >>assertion mechanisms.
+> >
+> >Or summarize your cover letter:
+> >
+> >Use of assert(false) can trip spurious control flow warnings from some
+> >versions of gcc:
+> >https://lore.kernel.org/qemu-devel/54bb02a6-1b12-460a-97f6-3f478ef766c6@linaro.org/
+> >Solve that by unifying the code base on g_assert_not_reached()
+> >instead.
+> >
+> 
+> If using g_assert_not_reached() instead of assert(false) silences
+> the warning about missing return value in such impossible to reach
+> locations should we also be deleting the now-unnecessary "return"
+> statements after g_assert_not_reached()?
 
-> Em Mon, 19 Aug 2024 14:51:36 +0200
-> Igor Mammedov <imammedo@redhat.com> escreveu:
->=20
-> > > +        read_ack =3D 1;
-> > > +        cpu_physical_memory_write(read_ack_start_addr,
-> > > +                                  &read_ack, (uint64_t));   =20
-> > we don't do this for SEV so, why are you setting it to 1 here? =20
->=20
-> According with:
-> https://uefi.org/specs/ACPI/6.5/18_Platform_Error_Interfaces.html#generic=
--hardware-error-source-version-2-ghesv2-type-10
->=20
->    "These are the steps the OS must take once detecting an error from a p=
-articular GHESv2 error source:
->=20
->     OSPM detects error (via interrupt/exception or polling the block stat=
-us)
->=20
->     OSPM copies the error status block
->=20
->     OSPM clears the block status field of the error status block
->=20
->     OSPM acknowledges the error via Read Ack register. For example:
->=20
->         OSPM reads the Read Ack register =E2=80=93> X
->=20
->         OSPM writes =E2=80=93> (( X & ReadAckPreserve) | ReadAckWrite)"
->=20
->=20
-> So, basically the guest OS takes some time to detect that an error
-> is raised. When it detects, it needs to mark that the error was
-> handled.
+Although it's unlikely to be used on any compiler that can also
+compile qemu, there is a third implementation of g_assert_not_reached
+that does nothing, see:
 
-what you are doing here by setting read_ack =3D 1,
-is making ack on behalf of OSPM when OSPM haven't handled existing error ye=
-t.
+https://gitlab.gnome.org/GNOME/glib/-/blob/927683ebd94eb66c0d7868b77863f57ce9c5bc76/glib/gtestutils.h#L269
 
-Essentially making HW/FW do the job of OSPM. That looks wrong to me.
-=46rom HW/FW side read_ack register should be thought as read-only.
+Rich.
 
->=20
-> IMO, this is needed, independently of the notification mechanism.
->=20
-> Regards,
-> Mauro
->=20
-
+-- 
+Richard Jones, Virtualization Group, Red Hat http://people.redhat.com/~rjones
+Read my programming and virtualization blog: http://rwmj.wordpress.com
+virt-builder quickly builds VMs from scratch
+http://libguestfs.org/virt-builder.1.html

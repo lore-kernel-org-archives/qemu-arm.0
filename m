@@ -1,285 +1,234 @@
-Received: by 2002:a17:504:928f:b0:1be9:327d:8ee3 with SMTP id d15csp104375nji;
-        Wed, 11 Sep 2024 03:31:06 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXmYe5ePXCG5pqJtZQ1mdXc6PAfJ12IaMPMxA84SchpftjfNogsdFr/Kk0jHP2LyEg9XB/RWg9gas6+jA==@linaro.org
-X-Google-Smtp-Source: AGHT+IGCLoc985Oq1WH43KZjUFSHCVx2hNldiK16tyr8rQ9pIFhTrYZixz7yUfkWyffQ58ssXTi9
-X-Received: by 2002:a05:622a:1306:b0:458:2dcf:c769 with SMTP id d75a77b69052e-4582dcfc932mr144421701cf.30.1726050666676;
-        Wed, 11 Sep 2024 03:31:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1726050666; cv=none;
-        d=google.com; s=arc-20240605;
-        b=Lsak2KzN0TZeB+YwN0f3frJCTO4fxCy+ndemMV9JSCn0GMNCXDCFRViCyhD4pGjWLh
-         R9MKAjRC8VAC/BXC5cf+o1Sv0lfVDsWin3/XaCOOjm2YuvBmNU5G8/0sdtSaraKvA5pe
-         S/5nRW0fGAj93wVSKYvhwpk3k/sBjC3tV86vWXJ3t4fmQNbVEhkWJx0icXcNisPyeJBm
-         ZNZs7faO5vo/d7B1KXliOYQsJh32TZmFvPJWcuDe2r5HlbaRrmh3NWfzuUgQuvxtKUfc
-         Dyn43zCSHOaya/Py7L0OL4MDhl7jg64eoE8yQ7cIC0205RXKP5YKC1CMZS5HhB9FvzB/
-         Py+Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=O6YScidXs4ZruwMChjgg9F5p8Y1MF+KvzXWEwgzH/vs=;
-        fh=5BpfkyWU7pQLf5cHKmL1tvIdcoWEyHP0IJbMAa+QrgM=;
-        b=B5in0fRk9dlqsRbieeqIdbVQTg+VlIa938nqleX0RlFWaByLbwN9LLLsjl4Zv5crJr
-         /Wy6eJK7X7yNEB0tLZGzsEQekLxYC9YQwMvPimmuoqRsACrG+ro9p0+N3urLbqwWWqJG
-         p640XUkziyCt0bSosIc520Wa+IST3v/c9mKKa4mFjomnnlLaMWxHHVT7b/Js25hVgrb1
-         HDPGtQbvrdvR7Mz+1oJeJrmyYROO5839+jlo3AM0g2zJmZUzdfyIjGA63U0PQi2VXI+5
-         kH4p1nbihC77n+wYKH/b0e5gSdlu+bt4puSceRK21EzQdKbkBqCPnd8WYgwGw+0r9UgO
-         rlDg==;
+Received: by 2002:a05:7022:439e:b0:89:eff1:5568 with SMTP id bo30csp188491dlb;
+        Wed, 11 Sep 2024 05:13:29 -0700 (PDT)
+X-Received: by 2002:a05:6808:19a7:b0:3e0:4758:8ed5 with SMTP id 5614622812f47-3e047589095mr7110031b6e.10.1726056809220;
+        Wed, 11 Sep 2024 05:13:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1726056809; cv=none;
+        d=google.com; s=arc-20160816;
+        b=gvZeUPtV7jMdOuGVd8oVIgy9oZhK7yDmLjW8Xd2QUHGIfkDn1rM35/8N7TkS1bO+Gx
+         j0y0759NGmHpmvd1auWp7Wx1J3fjRchsiwSUQKLId2xGc1TszwT4pLhxbAzKZZ5xXXv8
+         vmPGngm+crpwe2Vrv2+wl0U9VFPPu4Z2wfXsuH70whOmmAoW0Br/CheczS+uYKLV2rk4
+         xtzW1YAoRwcDRNCk7KR9VIsSxbjA2hWxLHg6R5K51noWUl0D/X0CIv+3sShc2hzwIrif
+         VBoHlbnensa5MnWrIWOaNEqP5FUjmpcrB99WP9l9GJj8/rL6hZHFCc5kML8Zh96nIcXw
+         Kzdg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=B4zJTe1HjensxJkepgTLoCaShkon96OYhwrjOcteWeY=;
+        fh=yxBwRMsmHw2JziOEKN4hctj4TlZ1NjURzFcQtZVeTAI=;
+        b=HOkYAxsG0mJMfJmUk5n2zdnoyO9+cZayQBqAqdgqWC+V4kTM//hJ/+lOC710aw+2u9
+         DqZpJaJzPogJJAUg5d8vr3RNcKIuSiFtBPfy1EJDMwXiLjgD1Agoxs1x/Q2ZXCQjT7Fi
+         xjOdTkCAMo5zGJXF7eJUjO5hK/Y10Dg2etpjQ+x8U7yha4ik1VwC9H5bQ0FLrnKz09C1
+         ee/HEAM8uVnfOpHkdHJH1kgW655szXM/BxUwGQMiQU4oyJ6AFWpImuGpOlibbcVAQJa/
+         +HxBLAsZ2DEy4fjFg905Ytmhqa7AHwJJkba8FIB+tXNmitbbfrBRU1ox98+LTDHL9JpQ
+         951g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=VBtfjQXt;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=TerIWFkn;
+       spf=pass (google.com: domain of marietto2008@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=marietto2008@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-45822e6151fsi97215871cf.77.2024.09.11.03.31.06
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 11 Sep 2024 03:31:06 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Return-Path: <marietto2008@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 41be03b00d2f7-7db18fc3230sor368394a12.4.2024.09.11.05.13.28
+        (Google Transport Security);
+        Wed, 11 Sep 2024 05:13:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of marietto2008@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=VBtfjQXt;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=TerIWFkn;
+       spf=pass (google.com: domain of marietto2008@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=marietto2008@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1soKcd-0008RH-Mr; Wed, 11 Sep 2024 06:30:51 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1soKcc-0008Ow-4w
- for qemu-devel@nongnu.org; Wed, 11 Sep 2024 06:30:50 -0400
-Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1soKcZ-000332-LN
- for qemu-devel@nongnu.org; Wed, 11 Sep 2024 06:30:49 -0400
-Received: by mail-ed1-x52a.google.com with SMTP id
- 4fb4d7f45d1cf-5c26b5f1ea6so8349398a12.0
- for <qemu-devel@nongnu.org>; Wed, 11 Sep 2024 03:30:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1726050646; x=1726655446; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=O6YScidXs4ZruwMChjgg9F5p8Y1MF+KvzXWEwgzH/vs=;
- b=VBtfjQXtep9Qaf56Q6t7Uk9HUUv7J0SnL7L1JXoukpLfVV0wO9js89hZKwvTi9qOQM
- y90H0mROG6cE9JVsCxChoQv0bST5VdYXdmYH2pWddARKOdQzq2SS5ALVmkLjlE0WMWak
- UKixfYpKQjZLkxCULaZtnOZ3bBz6Ta9IXM2tJzM4fKhyOPlOlCkf0VmMET9wi4g2lo1I
- lhr6/fhAvQLjfmsIdxQbslTB2lKoCGIkfEN+HmB80gSbK9y7D0KlW5mRZKdngsw72fTl
- CUSIHK0vfBsOLBhShm1P+9dOrr82qs92vUCJD7TtMeL3oLitlKpkuQ92ImBxbQKbg9XQ
- vZOg==
+        d=gmail.com; s=20230601; t=1726056808; x=1726661608; darn=linaro.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=B4zJTe1HjensxJkepgTLoCaShkon96OYhwrjOcteWeY=;
+        b=TerIWFkn/iSdEz2jdYbTXY8/gprpnM37I4GupNQqHd9W48dcFnfW6QoykwcqVyEQ85
+         5Z3w0CiFsh6bSue1ph/csUHddPZfHJot77YxdFTN0J4GN7nhJkNaE8/VQ/0yPMTAF03C
+         lj62KE6ABtUmKSQBcSvUsXlqfYdXTVxdYBF3jfpdItIL5zjNHlVgp5O6GSXPJ8MgQzFV
+         mP7j1vPEOi7G9MRe9qjx+ejuxf76168w6tr4Gh+nKk/+Z4n/629k/iU3SEqqRE7O+GnP
+         hk0bl/HF9cZNLhKqB6WhqwriZYg4LMaViHTVX1Syl59eGpDV7lS2li0FOR+7pqIjGSdN
+         pVBw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1726050646; x=1726655446;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=O6YScidXs4ZruwMChjgg9F5p8Y1MF+KvzXWEwgzH/vs=;
- b=RZFV4cDlWI7CzMAnVYjWaRtJn5L60KkJj8NYEdwORs/OIS7WDfSUHwtr5ZC8c8tKey
- 1vk52d/sEnespiP19sGqKpiWo7LRdvzTnGcVqQO4j3mSqZLPs4gByHBaPaAfLOsXgNPT
- feOe5w7DN1a0NwA+83VeE4Ii3sWXHsxb4QcrNxVm8xsAwnXMP5oGz594vxmT2cxm8XEA
- 4IW1335A8VM5PbGl/210E1QKua24cnSd6nK7+rfJYXZx2NuJG9YRekeo31UvRqZko+4v
- Vn4np6L7sHb9/jIF+6/MWhVjQoJxrHISZ32K9XCGr2Wy1UfTGTod7IkQzrBbWu0GlfBk
- O2hw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVDdfd3LQWdUqXedgM3ANdUk8rA+WEyrv27p4hTLIJBaG2Eu7asHASav88mKwhkL8HErCughDMQftZy@nongnu.org
-X-Gm-Message-State: AOJu0YxmyD0qt01bGpDy6vrgK0NhpLpW72sNSwlcVDWoZ/u3chh3sEpE
- OOH7+1+qThhW4soMsnUN6iaUQtkwhMXRpFluWOku1bWjsRHzETLGfYJWVrH2YUn+uhDZqiudeQf
- vftfFFk7txwhaHTndFXM1hbUQMxFvkzIovL6iiQ==
-X-Received: by 2002:a05:6402:51ca:b0:5c4:1244:6a08 with SMTP id
- 4fb4d7f45d1cf-5c412446a85mr267470a12.8.1726050645825; Wed, 11 Sep 2024
- 03:30:45 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1726056808; x=1726661608;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=B4zJTe1HjensxJkepgTLoCaShkon96OYhwrjOcteWeY=;
+        b=kawevvnxmIjbiTbW0OnWqzSpOnqI/5VzNeGqNEjki4YYUOPF3t+x5QT0F2m2ZSTX5Y
+         upDkrQB76zeVzZp4dRr2QnVoJG+5C56RkQd9FVreq486z6Xm0gwAPABwCVSbd+TIYF/R
+         EKCZHJpnQOCEz0KAfOBqwt3GZBasrizTMA05pExuCZD3/M5aaoZf2t8+MlJLbqkHF1ou
+         vWfGSsxt4+XQ1iJmGPJwqqnwwK7AYghU24Ls29XSNYaARjLEJiBczK/lk5ngx085VzZ/
+         1es1Oukhi7ymgEsPtmm2Q05WQNcgx3fRQPEDHBLYtGdNs+67kRWuSq2xZW0IsUcGkL/8
+         IOCw==
+X-Forwarded-Encrypted: i=1; AJvYcCW+PWiitR63ZGHgc+qq4n82+aJgdttALvqy0LTwU4qXlJsvPggfhjc3YRgQlu5x+wE2mXq+/RQ=@linaro.org
+X-Gm-Message-State: AOJu0YzSa5fZFS8QNMRuuMgvqwPdRxufNbccEwsabjUro9hGVcIVe6oT
+	Ta0zMbVkh4RzadBtCauXS2H2I+nVQX07KCl7GLZgQK5gDi0pZEHWM9JQ1YALj9adMPAO+o6pA/c
+	pUZyN8sMDmAH5iIO9JHEdEDhdMT5reezJtRU=
+X-Google-Smtp-Source: AGHT+IH0A/Jb7Ib0wPPtCOi/7KA9dojZuII7UTAR9JImr72wk5XCYNzN/1HlArKm8K6WqVdXxtQ0W4x7i2ljIfWQnN4=
+X-Received: by 2002:a17:90b:380a:b0:2d8:f12f:6bed with SMTP id
+ 98e67ed59e1d1-2dad4efdcd7mr15871219a91.3.1726056808115; Wed, 11 Sep 2024
+ 05:13:28 -0700 (PDT)
 MIME-Version: 1.0
-References: <20240709060448.251881-1-gankulkarni@os.amperecomputing.com>
- <CAFEAcA_7BOXSLXJ=VV0pWDvrN=2dWrM3bRTG+31ivPjeVbWGKQ@mail.gmail.com>
- <0b5764d4-fd63-4779-a22a-8e10ebafbcc7@os.amperecomputing.com>
- <CAFEAcA9oP5HNYK=HFazBU8M9eaGN8sFhAvLFQvcy36Xf+Tm+7A@mail.gmail.com>
- <db36a703-1330-44dc-a80f-57903fbb305f@os.amperecomputing.com>
-In-Reply-To: <db36a703-1330-44dc-a80f-57903fbb305f@os.amperecomputing.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 11 Sep 2024 11:30:34 +0100
-Message-ID: <CAFEAcA-6z82LPVY-pWSCyvJdPKg5BZK3ZTEywyJzznjTNomPSA@mail.gmail.com>
-Subject: Re: [PATCH] arm/kvm: add support for MTE
-To: Ganapatrao Kulkarni <gankulkarni@os.amperecomputing.com>
-Cc: richard.henderson@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
- darren@os.amperecomputing.com, 
- Gustavo Bueno Romero <gustavo.romero@linaro.org>
+References: <CA+1FSiiUFeXRvyCk3KK7XfmUjLzOvBLo=VhcQDiZ1z8kgfpjyw@mail.gmail.com>
+ <CAFEAcA8J18z8WubfzLu-DmTp6vGwcy4D652ib-KReqNS0whMVA@mail.gmail.com>
+ <CA+1FSiir=RG1BTKF29BKxmO+GWDieyW6TxzWtdEX-CYu7a+z5g@mail.gmail.com>
+ <CA+1FSij3LJc9S2ChBY-pHZ8QacFt2P0ygsr9LRK9FXLyMJrorQ@mail.gmail.com>
+ <CA+1FSiikkAg=41EYfbfPe08uBHkP_FJ9Y2j6ocqChor_92TWig@mail.gmail.com>
+ <CA+1FSijGTTt6YvRss9cDSOP5iOMCDmScpxP9ALJRJ19Vsjr6LA@mail.gmail.com>
+ <CAFEAcA_zRSgFhs+kauEfkyzAYg2RwSBrkagDEoj5OCgm5j6=iQ@mail.gmail.com>
+ <CA+1FSigzZxzdgTCWNRz3UGgTH5mRN8XTWWkeTU20N2ey4a+i+Q@mail.gmail.com>
+ <CA+1FSigqsAx_s+-_eP0GtSi7Qq6Vcou12gHcGZwqPk1hhnXXwg@mail.gmail.com>
+ <CA+1FSiiYm03SmjMaR0dLKye7j+LR4V-=u=nQu66=_aTrLVUpPg@mail.gmail.com>
+ <CA+1FSigvsXe7eo17_qdKaY0Uo68u7Ep3UacooHZDNCnWJHD4+w@mail.gmail.com>
+ <CA+1FSiiFFjp8O_D=PaGuZMj8oPYLdx5i-+Aq=S7=AZjZmb_aOw@mail.gmail.com>
+ <CA+1FSih1Yv+-Cjj0rfnnV4CkLum4RESun2UiUoZm=Lfsa=PkhA@mail.gmail.com>
+ <CA+1FSih+6cHb5c9pA-79ZP1Qvd=xTTNuVZm+Q66be3NuM8gCJQ@mail.gmail.com>
+ <CA+1FSiitCXFhbdWH15razOYyXp7xAY5ScmV3ZRCePqrZ_FdaNg@mail.gmail.com>
+ <CA+1FSihfdrfth=+5xgmmsr_4uOEgm-hhB7i6_8mMeby4OKbC7w@mail.gmail.com> <CAFEAcA9rHJLqi7CxhNkAz+wwFmkKnmVUCHJmkp_8Vnu=OQh=Rg@mail.gmail.com>
+In-Reply-To: <CAFEAcA9rHJLqi7CxhNkAz+wwFmkKnmVUCHJmkp_8Vnu=OQh=Rg@mail.gmail.com>
+From: Mario Marietto <marietto2008@gmail.com>
+Date: Wed, 11 Sep 2024 14:12:51 +0200
+Message-ID: <CA+1FSigUhkCz=rSPc6QLSuWWUX2Zxev5ja54+hprP+uSphOnZg@mail.gmail.com>
+Subject: Re: Kernel panic - not syncing: Unable to initialise architected
+ timer : unable to boot Android 14 with qemu-system-aarch64 on Ubuntu 24.04
+ X64 bit
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: alex.bennee@linaro.org, =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+	qemu-arm <qemu-arm@nongnu.org>, "cc: Sergey Kambalin" <sergey.kambalin@auriga.com>, 
+	qemu-discuss@nongnu.org
+Content-Type: multipart/alternative; boundary="000000000000e8f5ee0621d6eaf4"
+X-TUID: P1IsUhnWrcj3
+
+--000000000000e8f5ee0621d6eaf4
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::52a;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52a.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 4VTwoQ+145BN
 
-On Wed, 11 Sept 2024 at 07:50, Ganapatrao Kulkarni
-<gankulkarni@os.amperecomputing.com> wrote:
->
->
->
-> On 10-09-2024 05:53 pm, Peter Maydell wrote:
-> > On Tue, 10 Sept 2024 at 12:57, Ganapatrao Kulkarni
-> > <gankulkarni@os.amperecomputing.com> wrote:
-> >> On 16-07-2024 09:15 pm, Peter Maydell wrote:
-> >>> Since Cornelia first wrote the patch this is based on, we've
-> >>> landed gdbstub support for MTE (so gdb can find out which
-> >>> addresses in the memory map have tags and read and write
-> >>> those tags). So I think the KVM MTE support now also needs to
-> >>> handle that. (See aarch64_cpu_register_gdb_commands() in
-> >>> target/arm/gdbstub64.c.)
-> >>
-> >> I looked at this code and it looks like, complete code is under
-> >> ifdef CONFIG_USER_ONLY and for kvm(target aarch64-softmmu) this is not
-> >> getting enabled. Are you asking to remove these ifdef and make
-> >> mte-gdbstub commands available for the KVM mode as well?
+> This suggests your host kernel is either too old or does not have the VGI=
+C support compiled into it.
+> (QEMU produces this message if it asks the host kernel "please create a v=
+GICv3" and that fails and then
+> it asks "please create a vGICv2" and that also fails.)
+
+
+Ok, it seems that the emulator should be launched using this command :
+
+/opt/android-sdk/emulator/emulator @MyAVD -cores 4 -lowram -memory
+2048 -gpu swiftshader_indirect -ports 5554,5555 -skip-adb-auth
+-no-boot-anim -no-snapshot -no-metrics -qemu -machine gic-version=3D2
+
+or
+
+/opt/android-sdk/emulator/emulator @MyAVD -cores 4 -lowram -memory
+2048 -gpu host -ports 5554,5555 -skip-adb-auth -no-boot-anim
+-no-snapshot -no-metrics -qemu -machine gic-version=3D2
+
+Regarding Cuttlefish,maybe the error that I get can be solved in the
+same way,declaring -qemu -machine gic-version=3D2...
+
+The tutorial says to use :
+
+HOME=3D$(pwd) ./bin/launch_cvd -vm_manager qemu_cli
+-report_anonymous_usage_stats=3Dn --start_webrtc=3Dfalse
+
+So maybe it should be something like this ?
+
+HOME=3D$(pwd) ./bin/launch_cvd -vm_manager qemu_cli
+-report_anonymous_usage_stats=3Dn --start_webrtc=3Dfalse -cores 4 -lowram
+-memory 2048 -gpu host -ports 5554,5555 -skip-adb-auth -no-boot-anim
+-no-snapshot -no-metrics -qemu -machine gic-version=3D2
+
+or similar...
+
+
+On Wed, Sep 11, 2024 at 12:19=E2=80=AFPM Peter Maydell <peter.maydell@linar=
+o.org>
+wrote:
+
+> On Wed, 11 Sept 2024 at 01:02, Mario Marietto <marietto2008@gmail.com>
+> wrote:
 > >
-> > The system mode support for mte gdbstub is just about
-> > to land. The current patchset is this one:
-> > https://patchew.org/QEMU/20240906143316.657436-1-gustavo.romero@linaro.=
-org/
-> >
+> > Hello to everyone.
 >
-> Thanks.
-> I applied these patches to qemu and compiled gdb as said in the
-> cover-letter. Below is the log of the run, help me to interpret the logs.
+> (Please trim your quoted text and don't top-post: it makes emails
+> a pain to read.)
+>
+> > qemu-system-aarch64-headless: Unable to determine GIC version supported
+> by host
+>
+> This suggests your host kernel is either too old or does not have the
+> VGIC support compiled into it. (QEMU produces this message if it
+> asks the host kernel "please create a vGICv3" and that fails and
+> then it asks "please create a vGICv2" and that also fails.)
+>
+> -- PMM
+>
 
-I've cc'd Gustavo since he's the author of the patches.
 
-> [root@sut01sys-r214 mte-qemu]# make -C build -j 32
-> run-tcg-tests-aarch64-softmmu
-> make: Entering directory '/home/ganapat/upstream/mte-qemu/build'
->    BUILD   aarch64-softmmu guest-tests
->    RUN     aarch64-softmmu guest-tests
->    TEST    mte on aarch64
->    TEST    hello on aarch64
->    TEST    interrupt on aarch64
->    TEST    memory on aarch64
->    TEST    memory-sve on aarch64
->    TEST    hello-with-libbb.so on aarch64
->    TEST    interrupt-with-libbb.so on aarch64
->    TEST    memory-with-libbb.so on aarch64
->    TEST    hello-with-libempty.so on aarch64
->    TEST    interrupt-with-libempty.so on aarch64
->    TEST    memory-with-libempty.so on aarch64
->    TEST    interrupt-with-libinline.so on aarch64
->    TEST    hello-with-libinline.so on aarch64
->    TEST    memory-with-libinline.so on aarch64
->    TEST    hello-with-libinsn.so on aarch64
->    TEST    memory-with-libinsn.so on aarch64
->    TEST    interrupt-with-libinsn.so on aarch64
->    TEST    hello-with-libmem.so on aarch64
->    TEST    interrupt-with-libmem.so on aarch64
->    TEST    hello-with-libsyscall.so on aarch64
->    TEST    memory-with-libmem.so on aarch64
->    TEST    interrupt-with-libsyscall.so on aarch64
->    TEST    softmmu gdbstub support on aarch64
->    TEST    memory-with-libsyscall.so on aarch64
->    TEST    softmmu gdbstub support on aarch64
->    TEST    softmmu gdbstub untimely packets on aarch64
->    TEST    softmmu gdbstub support on aarch64
->    TEST    gdbstub MTE support on aarch64
->    TEST    memory-record on aarch64
-> qemu-system-aarch64: -gdb
-> unix:path=3D/tmp/tmp80lbp057qemu-gdbstub/gdbstub.socket,server=3Don: info=
-:
-> QEMU waiting for connection on:
-> disconnected:unix:/tmp/tmp80lbp057qemu-gdbstub/gdbstub.socket,server=3Don
-> qemu-system-aarch64: -gdb
-> unix:path=3D/tmp/tmp8h7kx8kyqemu-gdbstub/gdbstub.socket,server=3Don: info=
-:
-> QEMU waiting for connection on:
-> disconnected:unix:/tmp/tmp8h7kx8kyqemu-gdbstub/gdbstub.socket,server=3Don
-> qemu-system-aarch64: -gdb
-> unix:path=3D/tmp/tmpo0448vk6qemu-gdbstub/gdbstub.socket,server=3Don: info=
-:
-> QEMU waiting for connection on:
-> disconnected:unix:/tmp/tmpo0448vk6qemu-gdbstub/gdbstub.socket,server=3Don
-> qemu-system-aarch64: -gdb
-> unix:path=3D/tmp/tmplvwd79e3qemu-gdbstub/gdbstub.socket,server=3Don: info=
-:
-> QEMU waiting for connection on:
-> disconnected:unix:/tmp/tmplvwd79e3qemu-gdbstub/gdbstub.socket,server=3Don
-> qemu-system-aarch64: -gdb
-> unix:path=3D/tmp/tmpv1t2ffjfqemu-gdbstub/gdbstub.socket,server=3Don: info=
-:
-> QEMU waiting for connection on:
-> disconnected:unix:/tmp/tmpv1t2ffjfqemu-gdbstub/gdbstub.socket,server=3Don
->    TEST    memory-replay on aarch64
-> qemu-system-aarch64: QEMU: Terminated via GDBstub
-> qemu-system-aarch64: QEMU: Terminated via GDBstub
->    GREP    file untimely-packet.gdb.err
-> qemu-system-aarch64: QEMU: Terminated via GDBstub
-> qemu-system-aarch64: QEMU: Terminated via GDBstub
-> make: Leaving directory '/home/ganapat/upstream/mte-qemu/build'
-> [root@sut01sys-r214 mte-qemu]#
->
-> Last few lines of untimely-packet.gdb.err below:
->
->   [remote] Packet received:
-> 0000000000000000000000000000000000000000000000000000000000000000000000000=
-000000000000000000000000000000000000000000000000000000000000000000000000000=
-000000000000000000000000000000000000000000000000000000000000000000000000000=
-000000000000000000000000000000000000000000000000000000000000000000000000000=
-000000000000000000000000000000000000000000000000000000000000000000000000000=
-000000000000000000000000000000000000000000000000000000000000000000000000000=
-0000000000000000000000000000000000000000000000000000000000000000
-> [24 bytes omitted]
->    [remote] Sending packet: $qfThreadInfo#bb
->    [remote] Received Ack
->    [remote] Packet received: mp01.01
->    [remote] Sending packet: $qsThreadInfo#c8
->    [remote] Received Ack
->    [remote] Packet received: l
->    [remote] Sending packet: $p56#db
->    [remote] Received Ack
->    [remote] Packet received: 000000000000ffff
->    [remote] packet_ok: Packet p (fetch-register) is supported
->    [remote] Sending packet: $p57#dc
->    [remote] Received Ack
->    [remote] Packet received: 000000000000ffff
->    [remote] Sending packet: $m400027b0,4#8c
->    [remote] Received Ack
->    [remote] Packet received: 80c2ff10
->    [remote] Sending packet: $m400027ac,4#be
->    [remote] Received Ack
->    [remote] Packet received: 1f2003d5
->    [remote] Sending packet: $m400027b0,4#8c
->    [remote] Received Ack
->    [remote] Packet received: 80c2ff10
->    [remote] Sending packet: $qSymbol::#5b
->    [remote] Received Ack
->    [remote] Packet received:
->    [remote] packet_ok: Packet qSymbol (symbol-lookup) is NOT supported
-> [remote] start_remote_1: exit
-> [remote] Sending packet: $D;1#b0
-> [remote] Received Ack
-> [remote] Packet received: OK
->
->
-> --
-> Thanks,
-> Ganapat/GK
+--=20
+Mario.
 
--- PMM
+--000000000000e8f5ee0621d6eaf4
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><pre>&gt; This suggests your host kernel is either too old=
+ or does not have the VGIC support compiled into it. <br>&gt; (QEMU produce=
+s this message if it asks the host kernel &quot;please create a vGICv3&quot=
+; and that fails and then <br>&gt; it asks &quot;please create a vGICv2&quo=
+t; and that also fails.)<br><br><br>Ok, it seems that the emulator should b=
+e launched using this command :<br><br>/opt/android-sdk/emulator/emulator @=
+MyAVD -cores 4 -lowram -memory 2048 -gpu swiftshader_indirect -ports 5554,5=
+555 -skip-adb-auth -no-boot-anim -no-snapshot -no-metrics -qemu -machine gi=
+c-version=3D2<br><br></pre><pre>or <br><br>/opt/android-sdk/emulator/emulat=
+or @MyAVD -cores 4 -lowram -memory 2048 -gpu host -ports 5554,5555 -skip-ad=
+b-auth -no-boot-anim -no-snapshot -no-metrics -qemu -machine gic-version=3D=
+2<br><br></pre><pre>Regarding Cuttlefish,maybe the error that I get can be =
+solved in the same way,declaring -qemu -machine gic-version=3D2...<br><br><=
+code class=3D"gmail-hljs gmail-language-swift"><span class=3D"gmail-hljs-re=
+gexp">The tutorial says to use :<br><br></span><span class=3D"gmail-hljs-re=
+gexp">HOME=3D$(pwd) ./</span>bin<span class=3D"gmail-hljs-operator">/</span=
+>launch_cvd <span class=3D"gmail-hljs-operator">-</span>vm_manager qemu_cli=
+ <span class=3D"gmail-hljs-operator">-</span>report_anonymous_usage_stats<s=
+pan class=3D"gmail-hljs-operator">=3D</span>n <span class=3D"gmail-hljs-ope=
+rator">--</span>start_webrtc<span class=3D"gmail-hljs-operator">=3D</span><=
+span class=3D"gmail-hljs-literal">false</span></code><br><br></pre><pre>So =
+maybe it should be something like this ?<br><br><code class=3D"gmail-hljs g=
+mail-language-swift"><span class=3D"gmail-hljs-regexp">HOME=3D$(pwd) ./</sp=
+an>bin<span class=3D"gmail-hljs-operator">/</span>launch_cvd </code><code c=
+lass=3D"gmail-hljs gmail-language-swift"><span class=3D"gmail-hljs-operator=
+">-</span>vm_manager qemu_cli <span class=3D"gmail-hljs-operator">-</span>r=
+eport_anonymous_usage_stats<span class=3D"gmail-hljs-operator">=3D</span>n =
+<span class=3D"gmail-hljs-operator">--</span>start_webrtc<span class=3D"gma=
+il-hljs-operator">=3D</span><span class=3D"gmail-hljs-literal">false </span=
+></code>-cores 4 -lowram -memory 2048 -gpu host -ports 5554,5555 -skip-adb-=
+auth -no-boot-anim -no-snapshot -no-metrics -qemu -machine gic-version=3D2<=
+br><br></pre><pre>or similar...<br></pre></div><br><div class=3D"gmail_quot=
+e"><div dir=3D"ltr" class=3D"gmail_attr">On Wed, Sep 11, 2024 at 12:19=E2=
+=80=AFPM Peter Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.org" targ=
+et=3D"_blank">peter.maydell@linaro.org</a>&gt; wrote:<br></div><blockquote =
+class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px sol=
+id rgb(204,204,204);padding-left:1ex">On Wed, 11 Sept 2024 at 01:02, Mario =
+Marietto &lt;<a href=3D"mailto:marietto2008@gmail.com" target=3D"_blank">ma=
+rietto2008@gmail.com</a>&gt; wrote:<br>
+&gt;<br>
+&gt; Hello to everyone.<br>
+<br>
+(Please trim your quoted text and don&#39;t top-post: it makes emails<br>
+a pain to read.)<br>
+<br>
+&gt; qemu-system-aarch64-headless: Unable to determine GIC version supporte=
+d by host<br>
+<br>
+This suggests your host kernel is either too old or does not have the<br>
+VGIC support compiled into it. (QEMU produces this message if it<br>
+asks the host kernel &quot;please create a vGICv3&quot; and that fails and<=
+br>
+then it asks &quot;please create a vGICv2&quot; and that also fails.)<br>
+<br>
+-- PMM<br>
+</blockquote></div><br clear=3D"all"><br><span class=3D"gmail_signature_pre=
+fix">-- </span><br><div dir=3D"ltr" class=3D"gmail_signature">Mario.<br></d=
+iv>
+
+--000000000000e8f5ee0621d6eaf4--

@@ -1,141 +1,156 @@
-Received: by 2002:a17:504:928f:b0:1be9:327d:8ee3 with SMTP id d15csp48343nji;
-        Tue, 10 Sep 2024 23:13:38 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUfdO+UxlH9QIKJlSteo3xOhkxnsHLHJaL7/Zj5FW0dBVYFNl7zMl5I2Y86Ux/2sCybxkQXmWMZbeVqVA==@linaro.org
-X-Received: by 2002:a17:907:7b89:b0:a8a:71d5:109a with SMTP id a640c23a62f3a-a8ffaae0c5dmr342413966b.22.1726035217823;
-        Tue, 10 Sep 2024 23:13:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1726035217; cv=none;
-        d=google.com; s=arc-20160816;
-        b=LmV7jLEHk0h0yU8wJuQoZ3ULuqW6QbSDWBkMVOrN0/q9NZqEHDUWx0jIJ3qfHxwu/T
-         JS1JbRiQ6AeIbk9PkoJD3fkRrWl7pGqZmO5rvP0zZzJJvaCYajhBj/PP0xGg+aXtcwbC
-         c7W8rXpjAW8jyFXNFum7MPoeou9B7oqCk6KwkqAVhplyldIi+JZrvTjUenimWrskoXmX
-         whfkzX8LSkh+n0cfbz1P+9Q6k9tajLsX3Azbry7p4HwYz9G97joBETvVq4Kp6ctrdojJ
-         q7QtK1FL3JNr/OCMN6osQ+VXx/b0zxTSpbCphMyYF7o5oqfK6llK5TzKlmNPKULaI4DZ
-         6PLw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=poAudXl/SIIw/XPRvz0lT3oV27sGXK44B6oZsCmnODk=;
-        fh=ncV8lwMqyeSz7Tm2yRrzaU9jiQJYfYpY8k+Qzg0BMo0=;
-        b=rWOwssHc/QubS7BVVjdFLM1yCAyoGgowZN2AGP9omD3MDr/PEpRMiZeAoZynau+MC9
-         Fb9dAc4rgMj9kyeONYr6W5Ais9/esL7qksEKXkP5BOZ2F0kBPjZtKqbgpexq9JwTn30a
-         nYldx4qfAh3xTHenTRlKkOT+nEc85WKFn9041F1M0BUR+rE3Lte+14wxmPceagvtq9av
-         tt6CybMSgkLHpgKiMtFUZCzeJUOJvFpIYSM+NsW3Y8ZGaWso5uH3JrA5cDPn+k9KCPPZ
-         ZwoUGoGp0anL1V1UwqBpG8dlA2CTh82EGDPsGDIrLfeiGQZpuYMq2PlMydBSdQd7g11j
-         3U8w==;
+Received: by 2002:a17:504:928f:b0:1be9:327d:8ee3 with SMTP id d15csp76346nji;
+        Wed, 11 Sep 2024 01:35:22 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVe3aOF50gblKvzQH27MYYeVGUJZE4y2D4cjk1gAdjSdAp1rIc4a4QKa34xjjGVegKECWrmDAkYd7jhnw==@linaro.org
+X-Google-Smtp-Source: AGHT+IH6fi5p2zEuOOFCPiOE/FTgbx7Ns+yD8+sLo/8gIatc5pfUt1wYM2/DCiDlKk1nwIJ61DE/
+X-Received: by 2002:a05:622a:4e8a:b0:458:1957:b925 with SMTP id d75a77b69052e-4581957c29cmr221304151cf.8.1726043722577;
+        Wed, 11 Sep 2024 01:35:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1726043722; cv=none;
+        d=google.com; s=arc-20240605;
+        b=e3wEI4yQG2UG0kSZY8hiPUeoMdVHBXsq3B3V3iRrQl0mQC8VnW/yFB8J0ire+DCmok
+         KCgpGBem7Qn5iR7R1HmupRgemwTyrqHtoXxrNzhjQobFzg/EyiAegC/fzHSzk+MPfe0K
+         eWifwuNtZ6s/btcKdJvVPIErY07yIZptIXDNTdPBjMNlGpkYSojvRBzhwFYQdzNt0a/K
+         4GQCyTOKi3EHZ1+LjC4Z7j3DbjKpn4LGus8uE0J1mtK6ckYCQT9/WzddJYUZ9Cd4799F
+         fz8qmiG1Y3HmeC6QMPa7CjQ2/KSiRzqPKFfRnJ3gN4ac2N2hRqS7Ehdtg1l2iDKSopjb
+         vlQg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=re2cfP3YBaOsffor8m/DNC1HDSaHt4Pl1sDqo5GtM5Q=;
+        fh=PRmnkhgnm8JqA1gAULy6PMbnznkOtF4flgaVCIvunxw=;
+        b=BCK96uV30KVhsvGLksufiLLeZ657HBMF/Caq3l+WTxvbv/VQQNtn1lOIAkyfxMLQOI
+         Y1EAvjS43iru9zwncqgHPQLeezqI3PTF16MNVf2rf+NxQ6YY6r95zeAPglAgtOfKQDu8
+         okWlruEAlvgDxJJRap74uF0D8xyfvocBdQuRxZWAGIWahniKD2K5oh0qRPNTBluAAs5v
+         MaGBOQjkA7izkRQTVMay5Gg6JC8r3gW/8EW5PzM9QrxmEeb1L8OqDjUGrgLB2Vld8/uX
+         nxcqQ0YOd5uPbvtBBFSR7xmdJiWjUhXBLcph6dHZbEphznCKUiCzw5mG7DjyL8p3t+ZN
+         CwNw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=hkad1hee;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <philmd@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id a640c23a62f3a-a8d25c4177fsor257541566b.13.2024.09.10.23.13.37
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="W3mCr5J/";
+       spf=pass (google.com: domain of rjones@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=rjones@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <rjones@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id d75a77b69052e-458296e972csi83645401cf.481.2024.09.11.01.35.22
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 10 Sep 2024 23:13:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 11 Sep 2024 01:35:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of rjones@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=hkad1hee;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1726035217; x=1726640017; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=poAudXl/SIIw/XPRvz0lT3oV27sGXK44B6oZsCmnODk=;
-        b=hkad1heeicKQmGr1RWQq/9lcGykqvl06czEWhwfSPpoBjdKYHos8LgLAOcCGfX7hJE
-         yQZTX5O4GJHDScsXHVlZpPy82WM8hbBk+IM4xw0x9PBBqlyCk2SYaXxk865huq4OcVhb
-         5REXs882HgaO1B7O+OpQ+jL1cpPM7b1uRRjsx6NSU+RrHurea3DGWLxdYbrekZhWAIdc
-         KyJmqjZIJj3v9TBBWWpy5mNY5TdPwrqzuzGPPcJ8eNFPa44EXIEtQTsvkbNcbyuIyBnQ
-         jo3IV7IBcm+h3TX51rge5VWxhfqm7PVx5zm9PPldFlS5VScqm4VyqhSR4MRhJMvfzJE4
-         lGMw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1726035217; x=1726640017;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=poAudXl/SIIw/XPRvz0lT3oV27sGXK44B6oZsCmnODk=;
-        b=eNlEwAhZxPAqzgwzFPWMzEKQq+oX8NKHHJIoF/Vuw+nQ80uASnaJKrJd+a4nXZrQGt
-         GdyPogSz1a8J3O90vvMmn7w6CcFMr4LKScnmY7LTaWsfNMt++CP/Xnc4Eo9yFiH59qiL
-         ghphLsNMdHRNhuPKWIA5KXgnL3CB3qdxqOQz/LUwG1XkhqJwgxoJNPvHNTNGc9Y+Kyxk
-         DQ5zTWl9wnuBbARgPytiEvPaUNf4yHi26ChhuCYrk0pvdUB445AhTl6hJjw3MEFxiskj
-         e5mF9CPmWokpXcZz1Nouu0NNzgzYkf/hyBdQDhlM0n/hp424jdSbr5WIoAMM0qP7Cy1u
-         nXIQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVcYCW6/cPBbSUrnYMoklwI4PMNOdbj3ja9PQCBjOYd8CboMDToSp7pN9RTuBLozLdTLKSBK3aLsABUIg==@linaro.org
-X-Gm-Message-State: AOJu0Yxv1FxQPbmfD9oyrNvFOvNHAAyWp9Ziunrx8+USbfnJFrcWZkug
-	cr853dJa45mMnNTsowReaIpcM7c69yzrpGgvZyqZU6vFJth40I+aU3mlrMBTh4CWPg==
-X-Google-Smtp-Source: AGHT+IGxSIV12l24qw5tuVF8BHzeUm7qf/id1NqLdpbzEe6nCFQXxSFQeScbp7YFg/szcxgjwvBm3A==
-X-Received: by 2002:a17:907:60cb:b0:a86:799d:f8d1 with SMTP id a640c23a62f3a-a8ffad97d26mr288054766b.47.1726035217121;
-        Tue, 10 Sep 2024 23:13:37 -0700 (PDT)
-Return-Path: <philmd@linaro.org>
-Received: from [192.168.69.100] ([176.187.196.107])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a8d25ced1e0sm570162366b.164.2024.09.10.23.13.29
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 10 Sep 2024 23:13:36 -0700 (PDT)
-Message-ID: <2993dcdf-b8b8-48f3-b322-a121989559a7@linaro.org>
-Date: Wed, 11 Sep 2024 08:13:28 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 36/39] ui: remove break after g_assert_not_reached()
-To: Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-devel@nongnu.org
-Cc: Zhao Liu <zhao1.liu@intel.com>, "Richard W.M. Jones" <rjones@redhat.com>,
- Joel Stanley <joel@jms.id.au>, Kevin Wolf <kwolf@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
- Corey Minyard <minyard@acm.org>, Eric Farman <farman@linux.ibm.com>,
- Thomas Huth <thuth@redhat.com>, Keith Busch <kbusch@kernel.org>,
- WANG Xuerui <git@xen0n.name>, Hyman Huang <yong.huang@smartx.com>,
- Stefan Berger <stefanb@linux.vnet.ibm.com>,
- Michael Rolnik <mrolnik@gmail.com>,
- Alistair Francis <alistair.francis@wdc.com>,
- =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- Markus Armbruster <armbru@redhat.com>,
- Sriram Yagnaraman <sriram.yagnaraman@ericsson.com>,
- Palmer Dabbelt <palmer@dabbelt.com>, qemu-riscv@nongnu.org,
- Ani Sinha <anisinha@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
- Jesper Devantier <foss@defmacro.it>, Laurent Vivier <laurent@vivier.eu>,
- Peter Maydell <peter.maydell@linaro.org>, Igor Mammedov
- <imammedo@redhat.com>, kvm@vger.kernel.org,
- =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>, Fam Zheng
- <fam@euphon.net>, qemu-s390x@nongnu.org, Hanna Reitz <hreitz@redhat.com>,
- Nicholas Piggin <npiggin@gmail.com>, Eduardo Habkost <eduardo@habkost.net>,
- Laurent Vivier <lvivier@redhat.com>, Rob Herring <robh@kernel.org>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, qemu-block@nongnu.org,
- "Maciej S. Szmigiero" <maciej.szmigiero@oracle.com>, qemu-ppc@nongnu.org,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>,
- Nina Schoetterl-Glausch <nsg@linux.ibm.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Fabiano Rosas <farosas@suse.de>,
- Helge Deller <deller@gmx.de>, Dmitry Fleytman <dmitry.fleytman@gmail.com>,
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
- Akihiko Odaki <akihiko.odaki@daynix.com>,
- Marcelo Tosatti <mtosatti@redhat.com>,
- David Gibson <david@gibson.dropbear.id.au>,
- Aurelien Jarno <aurelien@aurel32.net>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Yanan Wang <wangyanan55@huawei.com>, Peter Xu <peterx@redhat.com>,
- Bin Meng <bmeng.cn@gmail.com>, Weiwei Li <liwei1518@gmail.com>,
- Klaus Jensen <its@irrelevant.dk>,
- Jean-Christophe Dubois <jcd@tribudubois.net>,
- Jason Wang <jasowang@redhat.com>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="W3mCr5J/";
+       spf=pass (google.com: domain of rjones@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=rjones@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1726043722;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=re2cfP3YBaOsffor8m/DNC1HDSaHt4Pl1sDqo5GtM5Q=;
+	b=W3mCr5J/TnIzUKp+w62R/+sMtQK+5sAsYsvE/2o4+LTycwa8aZDf+jnWlUuoRpx10cWaHT
+	tzkRgQ1U0zoUnrUqG+q+mM+rbkcz0X1vWnmKnJkQSBc8SbpTuVbjN8caKUArSSw3JcXlsK
+	Y+MK7xAbdRMco/Qqcltf21yXW/Pxvks=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-287-yhLa1sOFO3SH99DZG1JDMg-1; Wed,
+ 11 Sep 2024 04:35:20 -0400
+X-MC-Unique: yhLa1sOFO3SH99DZG1JDMg-1
+Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 75E151944D39;
+	Wed, 11 Sep 2024 08:35:11 +0000 (UTC)
+Received: from localhost (unknown [10.42.28.10])
+	by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP id 5F32719560A3;
+	Wed, 11 Sep 2024 08:35:06 +0000 (UTC)
+Date: Wed, 11 Sep 2024 09:35:05 +0100
+From: "Richard W.M. Jones" <rjones@redhat.com>
+To: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Cc: qemu-devel@nongnu.org, Zhao Liu <zhao1.liu@intel.com>,
+	Joel Stanley <joel@jms.id.au>, Kevin Wolf <kwolf@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
+	Corey Minyard <minyard@acm.org>, Eric Farman <farman@linux.ibm.com>,
+	Thomas Huth <thuth@redhat.com>, Keith Busch <kbusch@kernel.org>,
+	WANG Xuerui <git@xen0n.name>, Hyman Huang <yong.huang@smartx.com>,
+	Stefan Berger <stefanb@linux.vnet.ibm.com>,
+	Michael Rolnik <mrolnik@gmail.com>,
+	Alistair Francis <alistair.francis@wdc.com>,
+	=?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
+	Markus Armbruster <armbru@redhat.com>,
+	Sriram Yagnaraman <sriram.yagnaraman@ericsson.com>,
+	Palmer Dabbelt <palmer@dabbelt.com>, qemu-riscv@nongnu.org,
+	Ani Sinha <anisinha@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
+	Jesper Devantier <foss@defmacro.it>,
+	Laurent Vivier <laurent@vivier.eu>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Igor Mammedov <imammedo@redhat.com>, kvm@vger.kernel.org,
+	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Fam Zheng <fam@euphon.net>, qemu-s390x@nongnu.org,
+	Hanna Reitz <hreitz@redhat.com>,
+	Nicholas Piggin <npiggin@gmail.com>,
+	Eduardo Habkost <eduardo@habkost.net>,
+	Laurent Vivier <lvivier@redhat.com>, Rob Herring <robh@kernel.org>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	qemu-block@nongnu.org,
+	"Maciej S. Szmigiero" <maciej.szmigiero@oracle.com>,
+	qemu-ppc@nongnu.org,
+	Daniel Henrique Barboza <danielhb413@gmail.com>,
+	Christian Borntraeger <borntraeger@linux.ibm.com>,
+	Harsh Prateek Bora <harshpb@linux.ibm.com>,
+	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
+	Nina Schoetterl-Glausch <nsg@linux.ibm.com>,
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	Fabiano Rosas <farosas@suse.de>, Helge Deller <deller@gmx.de>,
+	Dmitry Fleytman <dmitry.fleytman@gmail.com>,
+	Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+	Akihiko Odaki <akihiko.odaki@daynix.com>,
+	Marcelo Tosatti <mtosatti@redhat.com>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	Aurelien Jarno <aurelien@aurel32.net>,
+	Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+	Yanan Wang <wangyanan55@huawei.com>, Peter Xu <peterx@redhat.com>,
+	Bin Meng <bmeng.cn@gmail.com>, Weiwei Li <liwei1518@gmail.com>,
+	Klaus Jensen <its@irrelevant.dk>,
+	Jean-Christophe Dubois <jcd@tribudubois.net>,
+	Jason Wang <jasowang@redhat.com>
+Subject: Re: [PATCH 07/39] hw/watchdog: replace assert(0) with
+ g_assert_not_reached()
+Message-ID: <20240911083310.GO1450@redhat.com>
 References: <20240910221606.1817478-1-pierrick.bouvier@linaro.org>
- <20240910221606.1817478-37-pierrick.bouvier@linaro.org>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20240910221606.1817478-37-pierrick.bouvier@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: RbLNQAfotIa3
+ <20240910221606.1817478-8-pierrick.bouvier@linaro.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240910221606.1817478-8-pierrick.bouvier@linaro.org>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
+X-TUID: Mx0CzxGiVigg
 
-On 11/9/24 00:16, Pierrick Bouvier wrote:
+On Tue, Sep 10, 2024 at 03:15:34PM -0700, Pierrick Bouvier wrote:
 > Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 > ---
->   ui/qemu-pixman.c | 1 -
->   1 file changed, 1 deletion(-)
+>  hw/watchdog/watchdog.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/hw/watchdog/watchdog.c b/hw/watchdog/watchdog.c
+> index 955046161bf..d0ce3c4ac55 100644
+> --- a/hw/watchdog/watchdog.c
+> +++ b/hw/watchdog/watchdog.c
+> @@ -85,7 +85,7 @@ void watchdog_perform_action(void)
+>          break;
+>  
+>      default:
+> -        assert(0);
+> +        g_assert_not_reached();
+>      }
+>  }
+>  
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Richard W.M. Jones <rjones@redhat.com>
+
+-- 
+Richard Jones, Virtualization Group, Red Hat http://people.redhat.com/~rjones
+Read my programming and virtualization blog: http://rwmj.wordpress.com
+nbdkit - Flexible, fast NBD server with plugins
+https://gitlab.com/nbdkit/nbdkit

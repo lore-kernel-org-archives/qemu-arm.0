@@ -1,488 +1,187 @@
-Received: by 2002:a17:504:928f:b0:1be9:327d:8ee3 with SMTP id d15csp137574nji;
-        Wed, 11 Sep 2024 05:25:54 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXdVzS/UKBm7zKclvTBb+2jZpP+VJ5khTr7O6E47QDaxnyp3NSsj44p+MvbjvnAlTj0b1gmJ6npJCJ2RQ==@linaro.org
-X-Received: by 2002:a05:6402:1f0c:b0:5be:f5b0:fc38 with SMTP id 4fb4d7f45d1cf-5c4015e5da3mr8226234a12.10.1726057553852;
-        Wed, 11 Sep 2024 05:25:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1726057553; cv=none;
-        d=google.com; s=arc-20160816;
-        b=sQRNydn5ceB9qeL7lftIXBMALS9kaW0cRINQAAb47qdHEDt0qP0CNzKjJSZLP2O35N
-         EU1rt8Qbz2VfjA1X/zyQwiHJFQkeJv27a469VkIqqhU+n8h4F/++uN2UsOIgQcK93Xxd
-         r0ykeLH7yR5MI6kpSUYME53bV+4XyoYxgNwTHGG/W21gOt7sbzxs+A19BFaetQjpGdHU
-         YhQq8qzqUQb33oxw11EqFGnJzqP1blAPFJkplT7z95vTsRwTgEVN8jyAOId5IidAS6MI
-         5KrZNhc4UaAbXMscJQfXjnGEFIQ9obN0bRndvX5VRmyVBZprQHD+I0jggR5lZxQEjI3D
-         aKiw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=C0flz3BOAVW+SipOgDwY35TpZ6l1/7Fs1KgpV09Lmhw=;
-        fh=NbjxS5g5ougtrn2SDNmWemqpp9xpK227GGGSrV5U5bg=;
-        b=bZqwjYPb/3kP9CIyKQDyJk7D2+6CzEF1JsR9lV/WydHLWGTcUQzNlA34v3vB6Q93el
-         /Wk+ylpaZ+cXhe7Ds4vrjqq1sbk9B1Hi3JTIY4/pNrFpntCm6iydMODmfUGPc5JdgCKl
-         rzVj9rsyO4/+4eQtosnddxulqWR+/klmQuO+uqVvhOSCe4PkXgf67iiW2ieGLnvi08HS
-         5eXa9TyMcfRNVrlSGLJpx9u5HsHqatVQm4UzgGcTK01Sm5qjmpd0HL1WCv9cvDtmzJrl
-         1NaxF/fiRF1tFFFGwQIF6zFQLeuUFlotOxh/Cq7zxdA2BQZMNZKK7UyjMEDuHhOsoRje
-         Gxwg==;
+Received: by 2002:a17:504:928f:b0:1be9:327d:8ee3 with SMTP id d15csp158783nji;
+        Wed, 11 Sep 2024 06:28:08 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCUQgmKEyB5TeqJmFxLjE2ExtnTHbY0pYOZUK4+PZvHPF5Bn4RI9anEjJwea9fawd5X+FUouL07zhpdnlQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IGEJ+3tgSlsqsZ5+UPjoae2maUs6XTZhYWGUDbOOcOc97yG//ewYfOBavMF6uEyKDE0vkiV
+X-Received: by 2002:a17:90b:2348:b0:2db:89f0:99a3 with SMTP id 98e67ed59e1d1-2db89f09e56mr2152978a91.26.1726061287758;
+        Wed, 11 Sep 2024 06:28:07 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1726061287; cv=pass;
+        d=google.com; s=arc-20240605;
+        b=JqtiYBteUrZI3YCYgDnPMGUaB4pe244TDIhfeFi/I++voGKKwKzRnoR0msK+2Ae7OQ
+         8uFme1cQw4WWwXY7YljF1OUxfa1On5BsI8DCQhdG6me4ZVtQxs51aVZQNin4rOM30ypw
+         AB6GAw6BwNvgaTumdzkNieUIOWivq6tW/DGtB0O46ft5aEZ6AN0gi7kwQtctFfOFoYf+
+         ssrFMFksFzUTNMVGLFJhToB7gUw310Q1mfvsXUsqaoU5g1eUpzxdjv5sxPmMhLR/H2Lb
+         baOV+soxehbOybLuAvN6dinThbQ8NGhtaFD70rsLgXaTrhFlIHiHyyOGkyEsZCDP4ycb
+         nrvw==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=lUp0+vKj46QzTJpymXewxcq+r1OcyQKVigOaH5OB8Rg=;
+        fh=eU2H95dJ6voHQkNQFKRB5XuJL/g9Nab+h+OxHy4bu9o=;
+        b=Nrik4IpA1MLcYulcuFRxKwSQSrT76Ek+vuKgLvq8RnFGOHBqhgtt9CT1/GIcJNpG4p
+         wbWm30URDMSLb2uEqWK/AFN1e5XxiFOPFin424hCUzkrEo9EuU9LE229uIPyD8ZxH/5W
+         DFSdSk5rBmZFP0BdrhmbU+QccMIkhHt56pS8rCPRIkqh+ax/n1Vkgx3ZU76DNGYpfqic
+         DZttnHwQZqjOBAsQQGHj6uYFGHiTMsx5Gx6ahwgXxCgTH62iAmyBFdreKzXFOwgAngnV
+         LFHDyhpH/QOJ/BsVSGWkLxT9n+Dnix7oMi33/X66s/orfSNiKUUThQdCqljKMwsMeBk5
+         rXBQ==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@opnsrc.net header.s=google header.b=V+S3dUal;
-       spf=pass (google.com: domain of salil.mehta@opnsrc.net designates 209.85.220.41 as permitted sender) smtp.mailfrom=salil.mehta@opnsrc.net;
-       dara=neutral header.i=@linaro.org
-Return-Path: <salil.mehta@opnsrc.net>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 4fb4d7f45d1cf-5c3de3d16afsor5466480a12.1.2024.09.11.05.25.53
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FwzVRlPz;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of linux-kernel+bounces-325007-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-325007-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <linux-kernel+bounces-325007-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [2604:1380:45e3:2400::1])
+        by mx.google.com with ESMTPS id 98e67ed59e1d1-2dadc0403f9si12444914a91.85.2024.09.11.06.28.07
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Wed, 11 Sep 2024 05:25:53 -0700 (PDT)
-Received-SPF: pass (google.com: domain of salil.mehta@opnsrc.net designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 11 Sep 2024 06:28:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of linux-kernel+bounces-325007-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) client-ip=2604:1380:45e3:2400::1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@opnsrc.net header.s=google header.b=V+S3dUal;
-       spf=pass (google.com: domain of salil.mehta@opnsrc.net designates 209.85.220.41 as permitted sender) smtp.mailfrom=salil.mehta@opnsrc.net;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=opnsrc.net; s=google; t=1726057553; x=1726662353; darn=linaro.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=C0flz3BOAVW+SipOgDwY35TpZ6l1/7Fs1KgpV09Lmhw=;
-        b=V+S3dUalxPEYe4+qEo8ysAaLCkKKidOMeXKUGZTpzEHw6ANfavWfHUNLi6eQmUNG0H
-         NAhU2E7i22oLfzRWd0y+R+R0XaEJzxa10+9DVQAcgApGRr9xamINlsPPwUGLHLJntqLW
-         smsI6vmN/Fm7cxR+GdAz00lCUgKm0/yfTpPLrkaO22PD1iOkHuSnM7g/aY3ZH4f9VVAD
-         P+dz8JIxH6t1dvbgMyj0uM+nFou+IwDaPxLwHs/sWa1ba2QuLz1RAG21w0B84ikor3eU
-         nTlf3VMo4iS1tUshJ0bIIf5v3mbBLwLHr4o1WCmvPTVouT1Lcr6hqcUpAkfmkyy3rpV+
-         1OTw==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FwzVRlPz;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of linux-kernel+bounces-325007-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-325007-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by sv.mirrors.kernel.org (Postfix) with ESMTPS id 4B4AA281463
+	for <alex.bennee@linaro.org>; Wed, 11 Sep 2024 13:28:07 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 9CC6B1A2C01;
+	Wed, 11 Sep 2024 13:21:40 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="FwzVRlPz"
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id BA17B1A257F
+	for <linux-kernel@vger.kernel.org>; Wed, 11 Sep 2024 13:21:38 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.129.124
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1726060900; cv=none; b=q7MLS5X7RXOrv7gjGN/MesyK72OcmJl8sS5pS12JD0KRvyH2LfLoK4kRy2oVZDVVJO2RbOOY2z/D/sUpJDgUO7TRiFRiec1QXnc+anXPLGDZl3OxnNv/HKcEuXsRlxOzYiO4nDM19VrUJ05AvmhDwDEEWFuHsJ92zQBEFPSWs64=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1726060900; c=relaxed/simple;
+	bh=uzgBwk8fDv4vrbhQ6JMRScWSxp9E+Y7lOeqjN7i0Hmk=;
+	h=Date:From:To:Cc:Subject:Message-ID:In-Reply-To:References:
+	 MIME-Version:Content-Type; b=hpUx6shwyh9dU/Bv7lCT/5bOElNj7n5KHIRnYkRxP5mn+Nz+2Qdk2eAiRHyZZ9im/L8IlYphlFyt3osAb5pCnlR/42ModFqw5X0JqOaInHqwFgww8LLOzjHOwjEAADg/O2UlL9bbcE6y8XOAmMRQ22tVbHo580VVAR2xHvQ704A=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=FwzVRlPz; arc=none smtp.client-ip=170.10.129.124
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1726060897;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=lUp0+vKj46QzTJpymXewxcq+r1OcyQKVigOaH5OB8Rg=;
+	b=FwzVRlPzClYWO9w9ZJvcY/R17Z/q4tk4g09CJVTkL9IvCuhLcyOcsGi9F3cuvA9Ox7baUJ
+	T4+CRpRh74Qutsr5jMcxAtbSqs9ASGQBO5Ll9fhTgNunhNHEkFloE1nZNlcLxgMq4B2uai
+	bkwkIVr1x+P/Mv7z+AkQ5oaRWVYg7S0=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-463-8-6LycMsOU6R4iVC4IyqzA-1; Wed, 11 Sep 2024 09:21:36 -0400
+X-MC-Unique: 8-6LycMsOU6R4iVC4IyqzA-1
+Received: by mail-wm1-f69.google.com with SMTP id 5b1f17b1804b1-42cb830ea86so15632665e9.3
+        for <linux-kernel@vger.kernel.org>; Wed, 11 Sep 2024 06:21:35 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1726057553; x=1726662353;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=C0flz3BOAVW+SipOgDwY35TpZ6l1/7Fs1KgpV09Lmhw=;
-        b=QPV0iPA3QDTvf9gikkYpG4M+OHrxINjPxLctXzsiJkHtrm/HkAo+u5y3q6bl0JcPsp
-         i/a5nvihIeW/13R0+YGTbguoGY4yL1Y9XYcqNHiCHnxxPhljrOO9Bjv33cFBZzzv2tAw
-         BQG7Ex607BtLrE/L60WyNprkJtB+QICIDby6tLYA2Gky5AFM9Itc9+mjbYGxyFi8eSLo
-         EO9BYyMGKjq4Ejmw9sNxacAbFO2PXErLy0Y2HntfmEU4wpFSm7cYAF0m4VD2XATYPySf
-         OzCdt2UmKpkZhOsk2kVLqhCJZYjp88jUYVqaOkPQl37irmYkGwL3Rw6mD8F7nG8lpaEv
-         gqog==
-X-Forwarded-Encrypted: i=1; AJvYcCV557Ky/SvIXx5vKZ4oZODK5QLD7xjB6lifc1DObxZG7ijq6f9HF5FaRJYypD6nKWh13wtkpJzDUwP79Q==@linaro.org
-X-Gm-Message-State: AOJu0Yzq0zkt6r83gxbgV9hDdnF8LKANFz/CJ/dBuYEY8txNFFE0b8hq
-	ohbpMaQ36jqcQ4PzH+J2siN4NzMcP7VVFLipKHc+hSD9Mbn6RbImvtptbf6FNAeuvlKpeK66AcP
-	tAZZVNjZwNELs201GmEhj8rJs+h5w/kHzcMG+Mw==
-X-Google-Smtp-Source: AGHT+IGsaWE0jCK4Q95FzxoUsGfIrdrLWHYwhlhWH/evnwEkWjihjDBe7M41KAFrYl720+63KmW123RpXSuk+lPLE4s=
-X-Received: by 2002:a05:6402:401d:b0:5be:c8ad:afd0 with SMTP id
- 4fb4d7f45d1cf-5c4015e5dbcmr7145915a12.9.1726057552919; Wed, 11 Sep 2024
- 05:25:52 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1726060895; x=1726665695;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=lUp0+vKj46QzTJpymXewxcq+r1OcyQKVigOaH5OB8Rg=;
+        b=JILG12kGeCX5sjS6td+2cRTMKj5Yt2xX6Tu90FQ2KyS8J8psyEHtObim3xJ5AU21T8
+         MJcMTzEnjPZ6cd9dAwDnEIv4rnv+C2OzdRY0jR5kujXhczAh/Paw++aWLw+0SxspWYFR
+         7QIRYlSjogfH4Pm7vK9NRFH+T8oWbm0jMj8HBbUiX4nKtMKODifwhrh1YrcD5Zb/OymL
+         E4ap7CwYt5rX6OG+sdfVCxIfQKINIw97oOb4RS8FH9iiUvbhatmiQNLRqCmUgmbDtne9
+         S2jDLnNQP3EkBSl/J708cJzamfIUqhyDl7kNrXtA4zjhe+WAD/vI6/H8hJ2tVmFEN/FQ
+         BJlg==
+X-Forwarded-Encrypted: i=1; AJvYcCVQDmsbVIzlaYrKtCH/Xcw/LJABazPJNgZgy7T5ZP4pFyfK34b6CkG3rS2SusNs1DvlXZdMaDUFAJRGsuY=@vger.kernel.org
+X-Gm-Message-State: AOJu0Yyb9W1hTsoE+2pso8IYLOUnDKLCogEcTuMhsUWrPSp1axKah+ak
+	5tqE3dGYUu385qVUAPfDyeEm1dxKaJ4o5R4i8MSrGuKi2UQ3CdNO6cfocS+ECFDaCQ+t1L8luKM
+	ABm5KN2AoGFsLY11Rw2WFmKWGaN0afAUCcvPbsFG2W50af++czeLxOZRCsd4TAw==
+X-Received: by 2002:a05:600c:1c06:b0:42b:a9d7:93 with SMTP id 5b1f17b1804b1-42ccd35ad4fmr23464795e9.28.1726060894865;
+        Wed, 11 Sep 2024 06:21:34 -0700 (PDT)
+X-Received: by 2002:a05:600c:1c06:b0:42b:a9d7:93 with SMTP id 5b1f17b1804b1-42ccd35ad4fmr23464235e9.28.1726060893936;
+        Wed, 11 Sep 2024 06:21:33 -0700 (PDT)
+Received: from imammedo.users.ipa.redhat.com (nat-pool-brq-t.redhat.com. [213.175.37.10])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-378956e8644sm11551998f8f.114.2024.09.11.06.21.33
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 11 Sep 2024 06:21:33 -0700 (PDT)
+Date: Wed, 11 Sep 2024 15:21:32 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>, Shiju Jose
+ <shiju.jose@huawei.com>, "Michael S. Tsirkin" <mst@redhat.com>, Ani Sinha
+ <anisinha@redhat.com>, Dongjiu Geng <gengdongjiu1@gmail.com>,
+ linux-kernel@vger.kernel.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [PATCH v8 06/13] acpi/ghes: add support for generic error
+ injection via QAPI
+Message-ID: <20240911152132.65a7a219@imammedo.users.ipa.redhat.com>
+In-Reply-To: <20240825052923.715f88bc@sal.lan>
+References: <cover.1723793768.git.mchehab+huawei@kernel.org>
+	<2c8970b5d54d17b601dc65d778cc8b5fb288984b.1723793768.git.mchehab+huawei@kernel.org>
+	<20240819145136.0452ff2b@imammedo.users.ipa.redhat.com>
+	<20240825052923.715f88bc@sal.lan>
+X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
+Precedence: bulk
+X-Mailing-List: linux-kernel@vger.kernel.org
+List-Id: <linux-kernel.vger.kernel.org>
+List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-References: <20240613233639.202896-1-salil.mehta@huawei.com>
- <20240613233639.202896-2-salil.mehta@huawei.com> <11e627ef-d75e-4114-9b93-14d80ec0526b@redhat.com>
- <c889781d3eb048d19bae4ceff8646a4e@huawei.com> <Zthx3dQInrcgly6+@intel.com>
- <9376341923d94a2bbd8d24f4f6844585@huawei.com> <Zt8UGd9YRANnBPVT@intel.com>
- <cff9b8f407044deb8ed4b1aa5acea5f4@huawei.com> <20240911123510.00004557@Huawei.com>
-In-Reply-To: <20240911123510.00004557@Huawei.com>
-From: Salil Mehta <salil.mehta@opnsrc.net>
-Date: Wed, 11 Sep 2024 12:25:40 +0000
-Message-ID: <CAJ7pxebQwihKVoXuXxyZ4HPZJxu-PnH1MJKZ8c9MotVc__o4xQ@mail.gmail.com>
-Subject: Re: [PATCH RFC V3 01/29] arm/virt,target/arm: Add new ARMCPU
- {socket,cluster,core,thread}-id property
-To: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-Cc: Salil Mehta <salil.mehta@huawei.com>, Zhao Liu <zhao1.liu@intel.com>, 
-	Gavin Shan <gshan@redhat.com>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, 
-	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "mst@redhat.com" <mst@redhat.com>, "maz@kernel.org" <maz@kernel.org>, 
-	"jean-philippe@linaro.org" <jean-philippe@linaro.org>, "lpieralisi@kernel.org" <lpieralisi@kernel.org>, 
-	"peter.maydell@linaro.org" <peter.maydell@linaro.org>, 
-	"richard.henderson@linaro.org" <richard.henderson@linaro.org>, "imammedo@redhat.com" <imammedo@redhat.com>, 
-	"andrew.jones@linux.dev" <andrew.jones@linux.dev>, "david@redhat.com" <david@redhat.com>, 
-	"philmd@linaro.org" <philmd@linaro.org>, "eric.auger@redhat.com" <eric.auger@redhat.com>, 
-	"will@kernel.org" <will@kernel.org>, "ardb@kernel.org" <ardb@kernel.org>, 
-	"oliver.upton@linux.dev" <oliver.upton@linux.dev>, "pbonzini@redhat.com" <pbonzini@redhat.com>, 
-	"rafael@kernel.org" <rafael@kernel.org>, "borntraeger@linux.ibm.com" <borntraeger@linux.ibm.com>, 
-	"alex.bennee@linaro.org" <alex.bennee@linaro.org>, "npiggin@gmail.com" <npiggin@gmail.com>, 
-	"harshpb@linux.ibm.com" <harshpb@linux.ibm.com>, "linux@armlinux.org.uk" <linux@armlinux.org.uk>, 
-	"darren@os.amperecomputing.com" <darren@os.amperecomputing.com>, 
-	"ilkka@os.amperecomputing.com" <ilkka@os.amperecomputing.com>, 
-	"vishnu@os.amperecomputing.com" <vishnu@os.amperecomputing.com>, 
-	"karl.heubaum@oracle.com" <karl.heubaum@oracle.com>, "miguel.luis@oracle.com" <miguel.luis@oracle.com>, 
-	zhukeqian <zhukeqian1@huawei.com>, "wangxiongfeng (C)" <wangxiongfeng2@huawei.com>, 
-	"wangyanan (Y)" <wangyanan55@huawei.com>, "jiakernel2@gmail.com" <jiakernel2@gmail.com>, 
-	"maobibo@loongson.cn" <maobibo@loongson.cn>, "lixianglai@loongson.cn" <lixianglai@loongson.cn>, 
-	"shahuang@redhat.com" <shahuang@redhat.com>, Linuxarm <linuxarm@huawei.com>
-Content-Type: multipart/alternative; boundary="0000000000004de4e20621d71713"
-X-TUID: e/at4tjI7qxJ
-
---0000000000004de4e20621d71713
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
+X-TUID: TKWNU7XXp4lY
 
-On Wed, Sep 11, 2024 at 11:35=E2=80=AFAM Jonathan Cameron <
-Jonathan.Cameron@huawei.com> wrote:
+On Sun, 25 Aug 2024 05:29:23 +0200
+Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
 
-> On Tue, 10 Sep 2024 12:01:05 +0100
-> Salil Mehta <salil.mehta@huawei.com> wrote:
->
-> > HI Zhao,
->
-> A few trivial comments inline.
->
-> >
-> > >  From: Zhao Liu <zhao1.liu@intel.com>
-> > >  Sent: Monday, September 9, 2024 4:28 PM
-> > >  To: Salil Mehta <salil.mehta@huawei.com>
-> > >
-> > >  On Wed, Sep 04, 2024 at 05:37:21PM +0000, Salil Mehta wrote:
-> > >  > Date: Wed, 4 Sep 2024 17:37:21 +0000
-> > >  > From: Salil Mehta <salil.mehta@huawei.com>
-> > >  > Subject: RE: [PATCH RFC V3 01/29] arm/virt,target/arm: Add new
-> ARMCPU
-> > >  > {socket,cluster,core,thread}-id property
-> > >  >
-> > >  > Hi Zhao,
-> > >  >
-> > >  > >  From: zhao1.liu@intel.com <zhao1.liu@intel.com>
-> > >  > >  Sent: Wednesday, September 4, 2024 3:43 PM
-> > >  > >  To: Salil Mehta <salil.mehta@huawei.com>
-> > >  > >
-> > >  > >  Hi Salil,
-> > >  > >
-> > >  > >  On Mon, Aug 19, 2024 at 11:53:52AM +0000, Salil Mehta wrote:
-> > >  > >  > Date: Mon, 19 Aug 2024 11:53:52 +0000  > From: Salil Mehta
-> > >  > > <salil.mehta@huawei.com>  > Subject: RE: [PATCH RFC V3 01/29]
-> > >  > > arm/virt,target/arm: Add new ARMCPU  >
-> > >  > > {socket,cluster,core,thread}-id property
-> > >  > >
-> > >  > >  [snip]
-> > >  > >
-> > >  > >  > >  > NULL); @@ -2708,6 +2716,7 @@ static const CPUArchIdList
-> > >
-> > >  > > *virt_possible_cpu_arch_ids(MachineState *ms)
-> > >  > >  > >  >   {
-> > >  > >  > >  >       int n;
-> > >  > >  > >  >       unsigned int max_cpus =3D ms->smp.max_cpus;
-> > >  > >  > >  > +    unsigned int smp_threads =3D ms->smp.threads;
-> > >  > >  > >  >       VirtMachineState *vms =3D VIRT_MACHINE(ms);
-> > >  > >  > >  >       MachineClass *mc =3D MACHINE_GET_CLASS(vms);
-> > >  > >  > >  >
-> > >  > >  > >  > @@ -2721,6 +2730,7 @@ static const CPUArchIdList  > >
-> > >  > > *virt_possible_cpu_arch_ids(MachineState *ms)
-> > >  > >  > >  >       ms->possible_cpus->len =3D max_cpus;
-> > >  > >  > >  >       for (n =3D 0; n < ms->possible_cpus->len; n++) {
-> > >  > >  > >  >           ms->possible_cpus->cpus[n].type =3D ms->cpu_ty=
-pe;
-> > >  > >  > >  > +        ms->possible_cpus->cpus[n].vcpus_count =3D
-> smp_threads;
-> > >  > >  > >  >           ms->possible_cpus->cpus[n].arch_id =3D
-> > >  > >  > >  >               virt_cpu_mp_affinity(vms, n);
-> > >  > >  > >  >
-> > >  > >  > >
-> > >  > >  > >  Why @vcpus_count is initialized to @smp_threads? it needs
-> to
-> > >  > > be  > > documented in the commit log.
-> > >  > >  >
-> > >  > >  >
-> > >  > >  > Because every thread internally amounts to a vCPU in QOM and
-> > >  > > which is  > in 1:1 relationship with KVM vCPU. AFAIK, QOM does n=
-ot
-> > >  > > strictly  > follows any architecture. Once you start to get into
-> > >  > > details of  > threads there are many aspects of shared resources
-> one
-> > >  > > will have to  > consider and these can vary across different
-> > >  > > implementations of  architecture.
-> > >  > >
-> > >  > >  For SPAPR CPU, the granularity of >possible_cpus->cpus[] is
-> "core",
-> > >  > > and for  x86, it's "thread" granularity.
-> > >  >
-> > >  >
-> > >  > We have threads per-core at microarchitecture level in ARM as well=
-.
-> > >  > But each thread appears like a vCPU to OS and AFAICS there are no
-> > >  > special attributes attached to it. SMT can be enabled/disabled at
-> > >  > firmware and should get reflected in the configuration accordingly
-> > >  > i.e. value of *threads-per-core* changes between 1 and 'N'.  This
-> > >  > means 'vcpus_count' has to reflect the correct configuration. But =
-I
-> > >  > think threads lack proper representation in Qemu QOM.
-> > >
-> > >  In topology related part, SMT (of x86) usually represents the logica=
-l
-> > >  processor level. And thread has the same meaning.
-> >
-> >
-> > Agreed. It is same in ARM as well. The difference could be in how
-> hardware
-> > threads are implemented at microarchitecture level.  Nevertheless, we d=
-o
-> > have such virtual configurations, and the meaning of *threads* as-in QO=
-M
-> > topology (socket,cluster,core,thread) is virtualized similar to the
-> hardware
-> > threads in host. And One should be able to configure threads support in
-> the
-> > virtual environment,  regardless whether or not underlying hardware
-> > supports threads. That's my take.
-> >
-> > Other aspect is how we then expose these threads to the guest. The gues=
-t
-> > kernel (just like host kernel) should gather topology information using
-> > ACPI PPTT Table (This is ARM specific?).
->
-> Not ARM specific, but not used by x86 in practice (I believe some risc-v
-> boards
-> use it).
->
-> https://lore.kernel.org/linux-riscv/20240617131425.7526-3-cuiyunhui@byted=
-ance.com/
->
-> > Later is populated by the Qemu
-> > (just like by firmware for the host kernel) by making use of the virtua=
-l
-> > topology. ARM guest kernel, in absence of PPTT support can detect
-> > presence of hardware threads by reading MT Bit within the MPIDR_EL1
-> > register.
->
-> Sadly no it can't.  Lots of CPUs cores that are single thread set that
-> bit anyway (so it's garbage and PPTT / DT is the only source of truth)
->
-> https://lore.kernel.org/all/CAFfO_h7vUEhqV15epf+_zVrbDhc3JrejkkOVsHzHgCXN=
-k+nDdg@mail.gmail.com/T/
+> Em Mon, 19 Aug 2024 14:51:36 +0200
+> Igor Mammedov <imammedo@redhat.com> escreveu:
+>=20
+> > > +        read_ack =3D 1;
+> > > +        cpu_physical_memory_write(read_ack_start_addr,
+> > > +                                  &read_ack, (uint64_t));   =20
+> > we don't do this for SEV so, why are you setting it to 1 here? =20
+>=20
+> According with:
+> https://uefi.org/specs/ACPI/6.5/18_Platform_Error_Interfaces.html#generic=
+-hardware-error-source-version-2-ghesv2-type-10
+>=20
+>    "These are the steps the OS must take once detecting an error from a p=
+articular GHESv2 error source:
+>=20
+>     OSPM detects error (via interrupt/exception or polling the block stat=
+us)
+>=20
+>     OSPM copies the error status block
+>=20
+>     OSPM clears the block status field of the error status block
+>=20
+>     OSPM acknowledges the error via Read Ack register. For example:
+>=20
+>         OSPM reads the Read Ack register =E2=80=93> X
+>=20
+>         OSPM writes =E2=80=93> (( X & ReadAckPreserve) | ReadAckWrite)"
+>=20
+>=20
+> So, basically the guest OS takes some time to detect that an error
+> is raised. When it detects, it needs to mark that the error was
+> handled.
 
+what you are doing here by setting read_ack =3D 1,
+is making ack on behalf of OSPM when OSPM haven't handled existing error ye=
+t.
 
+Essentially making HW/FW do the job of OSPM. That looks wrong to me.
+=46rom HW/FW side read_ack register should be thought as read-only.
 
-Yes, agreed, this last explanation was not completely correct.
-IICRC, Marc did point out in RFC V1 of June 2020 that value  MT=3D0 is set =
-by
-KVM to tell the guest kernel that vCPUs at the same affinity-1 fields are
-independent.
-Problem was with the interpretation of non-zero MT Bit  and it was not
-consistent.
-The key thing is we should not rely on the value of the MT Bit in MPIDR to
-know
-if multithreading exists. So yes, to know the exact status of the
-multithreading
-on ARM systems parsing PPTT Table is the only way.
+>=20
+> IMO, this is needed, independently of the notification mechanism.
+>=20
+> Regards,
+> Mauro
+>=20
 
-I mentioned that because handling still exists in the kernel code but I
-think it exists
-for handling those other cases. Maybe a comment is required here (?):
-
-https://elixir.bootlin.com/linux/v6.11-rc7/source/arch/arm64/kernel/topolog=
-y.c#L34
-
-Thanks for pointing this out.
-
-
-Thanks
-Salil.
-
-
-
-
->
->
-> Jonathan
->
->
-
---0000000000004de4e20621d71713
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div dir=3D"ltr"><div dir=3D"ltr"><div dir=3D"ltr"><div di=
-r=3D"ltr"><div dir=3D"ltr"><div dir=3D"ltr"><div dir=3D"ltr"><br></div><br>=
-<div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Wed, Se=
-p 11, 2024 at 11:35=E2=80=AFAM Jonathan Cameron &lt;<a href=3D"mailto:Jonat=
-han.Cameron@huawei.com">Jonathan.Cameron@huawei.com</a>&gt; wrote:<br></div=
-><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border=
--left:1px solid rgb(204,204,204);padding-left:1ex">On Tue, 10 Sep 2024 12:0=
-1:05 +0100<br>
-Salil Mehta &lt;<a href=3D"mailto:salil.mehta@huawei.com" target=3D"_blank"=
->salil.mehta@huawei.com</a>&gt; wrote:<br>
-<br>
-&gt; HI Zhao,<br>
-<br>
-A few trivial comments inline.<br>
-<br>
-&gt; <br>
-&gt; &gt;=C2=A0 From: Zhao Liu &lt;<a href=3D"mailto:zhao1.liu@intel.com" t=
-arget=3D"_blank">zhao1.liu@intel.com</a>&gt;<br>
-&gt; &gt;=C2=A0 Sent: Monday, September 9, 2024 4:28 PM<br>
-&gt; &gt;=C2=A0 To: Salil Mehta &lt;<a href=3D"mailto:salil.mehta@huawei.co=
-m" target=3D"_blank">salil.mehta@huawei.com</a>&gt;<br>
-&gt; &gt;=C2=A0 <br>
-&gt; &gt;=C2=A0 On Wed, Sep 04, 2024 at 05:37:21PM +0000, Salil Mehta wrote=
-:=C2=A0 <br>
-&gt; &gt;=C2=A0 &gt; Date: Wed, 4 Sep 2024 17:37:21 +0000<br>
-&gt; &gt;=C2=A0 &gt; From: Salil Mehta &lt;<a href=3D"mailto:salil.mehta@hu=
-awei.com" target=3D"_blank">salil.mehta@huawei.com</a>&gt;<br>
-&gt; &gt;=C2=A0 &gt; Subject: RE: [PATCH RFC V3 01/29] arm/virt,target/arm:=
- Add new ARMCPU<br>
-&gt; &gt;=C2=A0 &gt; {socket,cluster,core,thread}-id property<br>
-&gt; &gt;=C2=A0 &gt;<br>
-&gt; &gt;=C2=A0 &gt; Hi Zhao,<br>
-&gt; &gt;=C2=A0 &gt;=C2=A0 <br>
-&gt; &gt;=C2=A0 &gt; &gt;=C2=A0 From: <a href=3D"mailto:zhao1.liu@intel.com=
-" target=3D"_blank">zhao1.liu@intel.com</a> &lt;<a href=3D"mailto:zhao1.liu=
-@intel.com" target=3D"_blank">zhao1.liu@intel.com</a>&gt;<br>
-&gt; &gt;=C2=A0 &gt; &gt;=C2=A0 Sent: Wednesday, September 4, 2024 3:43 PM<=
-br>
-&gt; &gt;=C2=A0 &gt; &gt;=C2=A0 To: Salil Mehta &lt;<a href=3D"mailto:salil=
-.mehta@huawei.com" target=3D"_blank">salil.mehta@huawei.com</a>&gt;<br>
-&gt; &gt;=C2=A0 &gt; &gt;<br>
-&gt; &gt;=C2=A0 &gt; &gt;=C2=A0 Hi Salil,<br>
-&gt; &gt;=C2=A0 &gt; &gt;<br>
-&gt; &gt;=C2=A0 &gt; &gt;=C2=A0 On Mon, Aug 19, 2024 at 11:53:52AM +0000, S=
-alil Mehta wrote:=C2=A0 <br>
-&gt; &gt;=C2=A0 &gt; &gt;=C2=A0 &gt; Date: Mon, 19 Aug 2024 11:53:52 +0000=
-=C2=A0 &gt; From: Salil Mehta=C2=A0 <br>
-&gt; &gt;=C2=A0 &gt; &gt; &lt;<a href=3D"mailto:salil.mehta@huawei.com" tar=
-get=3D"_blank">salil.mehta@huawei.com</a>&gt;=C2=A0 &gt; Subject: RE: [PATC=
-H RFC V3 01/29]<br>
-&gt; &gt;=C2=A0 &gt; &gt; arm/virt,target/arm: Add new ARMCPU=C2=A0 &gt;<br=
->
-&gt; &gt;=C2=A0 &gt; &gt; {socket,cluster,core,thread}-id property<br>
-&gt; &gt;=C2=A0 &gt; &gt;<br>
-&gt; &gt;=C2=A0 &gt; &gt;=C2=A0 [snip]<br>
-&gt; &gt;=C2=A0 &gt; &gt;=C2=A0 <br>
-&gt; &gt;=C2=A0 &gt; &gt;=C2=A0 &gt; &gt;=C2=A0 &gt; NULL); @@ -2708,6 +271=
-6,7 @@ static const CPUArchIdList=C2=A0 &gt; &gt;=C2=A0 <br>
-&gt; &gt;=C2=A0 &gt; &gt; *virt_possible_cpu_arch_ids(MachineState *ms)=C2=
-=A0 <br>
-&gt; &gt;=C2=A0 &gt; &gt;=C2=A0 &gt; &gt;=C2=A0 &gt;=C2=A0 =C2=A0{<br>
-&gt; &gt;=C2=A0 &gt; &gt;=C2=A0 &gt; &gt;=C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =
-=C2=A0int n;<br>
-&gt; &gt;=C2=A0 &gt; &gt;=C2=A0 &gt; &gt;=C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =
-=C2=A0unsigned int max_cpus =3D ms-&gt;smp.max_cpus;<br>
-&gt; &gt;=C2=A0 &gt; &gt;=C2=A0 &gt; &gt;=C2=A0 &gt; +=C2=A0 =C2=A0 unsigne=
-d int smp_threads =3D ms-&gt;smp.threads;<br>
-&gt; &gt;=C2=A0 &gt; &gt;=C2=A0 &gt; &gt;=C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =
-=C2=A0VirtMachineState *vms =3D VIRT_MACHINE(ms);<br>
-&gt; &gt;=C2=A0 &gt; &gt;=C2=A0 &gt; &gt;=C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =
-=C2=A0MachineClass *mc =3D MACHINE_GET_CLASS(vms);<br>
-&gt; &gt;=C2=A0 &gt; &gt;=C2=A0 &gt; &gt;=C2=A0 &gt;<br>
-&gt; &gt;=C2=A0 &gt; &gt;=C2=A0 &gt; &gt;=C2=A0 &gt; @@ -2721,6 +2730,7 @@ =
-static const CPUArchIdList=C2=A0 &gt; &gt;=C2=A0 <br>
-&gt; &gt;=C2=A0 &gt; &gt; *virt_possible_cpu_arch_ids(MachineState *ms)=C2=
-=A0 <br>
-&gt; &gt;=C2=A0 &gt; &gt;=C2=A0 &gt; &gt;=C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =
-=C2=A0ms-&gt;possible_cpus-&gt;len =3D max_cpus;<br>
-&gt; &gt;=C2=A0 &gt; &gt;=C2=A0 &gt; &gt;=C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =
-=C2=A0for (n =3D 0; n &lt; ms-&gt;possible_cpus-&gt;len; n++) {<br>
-&gt; &gt;=C2=A0 &gt; &gt;=C2=A0 &gt; &gt;=C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0ms-&gt;possible_cpus-&gt;cpus[n].type =3D ms-&gt;cpu_ty=
-pe;<br>
-&gt; &gt;=C2=A0 &gt; &gt;=C2=A0 &gt; &gt;=C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 ms-&gt;possible_cpus-&gt;cpus[n].vcpus_count =3D smp_threads;<br>
-&gt; &gt;=C2=A0 &gt; &gt;=C2=A0 &gt; &gt;=C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0ms-&gt;possible_cpus-&gt;cpus[n].arch_id =3D<br>
-&gt; &gt;=C2=A0 &gt; &gt;=C2=A0 &gt; &gt;=C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0virt_cpu_mp_affinity(vms, n);<br>
-&gt; &gt;=C2=A0 &gt; &gt;=C2=A0 &gt; &gt;=C2=A0 &gt;=C2=A0 <br>
-&gt; &gt;=C2=A0 &gt; &gt;=C2=A0 &gt; &gt;<br>
-&gt; &gt;=C2=A0 &gt; &gt;=C2=A0 &gt; &gt;=C2=A0 Why @vcpus_count is initial=
-ized to @smp_threads? it needs to=C2=A0 <br>
-&gt; &gt;=C2=A0 &gt; &gt; be=C2=A0 &gt; &gt; documented in the commit log.=
-=C2=A0 <br>
-&gt; &gt;=C2=A0 &gt; &gt;=C2=A0 &gt;<br>
-&gt; &gt;=C2=A0 &gt; &gt;=C2=A0 &gt;<br>
-&gt; &gt;=C2=A0 &gt; &gt;=C2=A0 &gt; Because every thread internally amount=
-s to a vCPU in QOM and=C2=A0 <br>
-&gt; &gt;=C2=A0 &gt; &gt; which is=C2=A0 &gt; in 1:1 relationship with KVM =
-vCPU. AFAIK, QOM does not<br>
-&gt; &gt;=C2=A0 &gt; &gt; strictly=C2=A0 &gt; follows any architecture. Onc=
-e you start to get into<br>
-&gt; &gt;=C2=A0 &gt; &gt; details of=C2=A0 &gt; threads there are many aspe=
-cts of shared resources one<br>
-&gt; &gt;=C2=A0 &gt; &gt; will have to=C2=A0 &gt; consider and these can va=
-ry across different<br>
-&gt; &gt;=C2=A0 &gt; &gt; implementations of=C2=A0 architecture.<br>
-&gt; &gt;=C2=A0 &gt; &gt;<br>
-&gt; &gt;=C2=A0 &gt; &gt;=C2=A0 For SPAPR CPU, the granularity of &gt;possi=
-ble_cpus-&gt;cpus[] is &quot;core&quot;,<br>
-&gt; &gt;=C2=A0 &gt; &gt; and for=C2=A0 x86, it&#39;s &quot;thread&quot; gr=
-anularity.=C2=A0 <br>
-&gt; &gt;=C2=A0 &gt;<br>
-&gt; &gt;=C2=A0 &gt;<br>
-&gt; &gt;=C2=A0 &gt; We have threads per-core at microarchitecture level in=
- ARM as well.<br>
-&gt; &gt;=C2=A0 &gt; But each thread appears like a vCPU to OS and AFAICS t=
-here are no<br>
-&gt; &gt;=C2=A0 &gt; special attributes attached to it. SMT can be enabled/=
-disabled at<br>
-&gt; &gt;=C2=A0 &gt; firmware and should get reflected in the configuration=
- accordingly<br>
-&gt; &gt;=C2=A0 &gt; i.e. value of *threads-per-core* changes between 1 and=
- &#39;N&#39;.=C2=A0 This<br>
-&gt; &gt;=C2=A0 &gt; means &#39;vcpus_count&#39; has to reflect the correct=
- configuration. But I<br>
-&gt; &gt;=C2=A0 &gt; think threads lack proper representation in Qemu QOM.=
-=C2=A0 <br>
-&gt; &gt;=C2=A0 <br>
-&gt; &gt;=C2=A0 In topology related part, SMT (of x86) usually represents t=
-he logical<br>
-&gt; &gt;=C2=A0 processor level. And thread has the same meaning.=C2=A0 <br=
->
-&gt; <br>
-&gt; <br>
-&gt; Agreed. It is same in ARM as well. The difference could be in how hard=
-ware<br>
-&gt; threads are implemented at microarchitecture level.=C2=A0 Nevertheless=
-, we do<br>
-&gt; have such virtual configurations, and the meaning of *threads* as-in Q=
-OM<br>
-&gt; topology (socket,cluster,core,thread) is virtualized similar to the ha=
-rdware<br>
-&gt; threads in host. And One should be able to configure threads support i=
-n the<br>
-&gt; virtual environment,=C2=A0 regardless whether or not underlying hardwa=
-re<br>
-&gt; supports threads. That&#39;s my take.<br>
-&gt; <br>
-&gt; Other aspect is how we then expose these threads to the guest. The gue=
-st<br>
-&gt; kernel (just like host kernel) should gather topology information usin=
-g<br>
-&gt; ACPI PPTT Table (This is ARM specific?). <br>
-<br>
-Not ARM specific, but not used by x86 in practice (I believe some risc-v bo=
-ards<br>
-use it).<br>
-<a href=3D"https://lore.kernel.org/linux-riscv/20240617131425.7526-3-cuiyun=
-hui@bytedance.com/" rel=3D"noreferrer" target=3D"_blank">https://lore.kerne=
-l.org/linux-riscv/20240617131425.7526-3-cuiyunhui@bytedance.com/</a><br>
-<br>
-&gt; Later is populated by the Qemu<br>
-&gt; (just like by firmware for the host kernel) by making use of the virtu=
-al<br>
-&gt; topology. ARM guest kernel, in absence of PPTT support can detect<br>
-&gt; presence of hardware threads by reading MT Bit within the MPIDR_EL1<br=
->
-&gt; register.<br>
-<br>
-Sadly no it can&#39;t.=C2=A0 Lots of CPUs cores that are single thread set =
-that<br>
-bit anyway (so it&#39;s garbage and PPTT / DT is the only source of truth)<=
-br>
-<a href=3D"https://lore.kernel.org/all/CAFfO_h7vUEhqV15epf+_zVrbDhc3JrejkkO=
-VsHzHgCXNk+nDdg@mail.gmail.com/T/" rel=3D"noreferrer" target=3D"_blank">htt=
-ps://lore.kernel.org/all/CAFfO_h7vUEhqV15epf+_zVrbDhc3JrejkkOVsHzHgCXNk+nDd=
-g@mail.gmail.com/T/</a></blockquote><div><br></div><div><br></div><div>Yes,=
- agreed, this last explanation was not completely correct.=C2=A0</div><div>=
-IICRC, Marc did point out in RFC V1 of June 2020 that value=C2=A0 MT=3D0 is=
- set by</div><div>KVM to tell the guest=C2=A0kernel that vCPUs at the same=
-=C2=A0affinity-1=C2=A0fields are independent.</div><div>Problem was with th=
-e interpretation of non-zero MT Bit=C2=A0 and it was not consistent.</div><=
-div>The key thing is we should not rely on the value of the MT Bit in MPIDR=
- to know</div><div>if multithreading exists. So yes, to know the exact stat=
-us of the multithreading</div><div>on ARM systems parsing PPTT Table is the=
- only way.</div><div><br></div><div>I mentioned that because handling still=
- exists in the kernel code but I think it exists</div><div>for handling=C2=
-=A0those other cases. Maybe a comment is required here (?):</div><div><br><=
-/div><div><div><a href=3D"https://elixir.bootlin.com/linux/v6.11-rc7/source=
-/arch/arm64/kernel/topology.c#L34">https://elixir.bootlin.com/linux/v6.11-r=
-c7/source/arch/arm64/kernel/topology.c#L34</a></div></div><div><br></div><d=
-iv>Thanks for pointing=C2=A0this out.</div><div><br></div><div><br></div><d=
-iv>Thanks<br></div><div>Salil.</div><div><br></div><div><br></div><div>=C2=
-=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8e=
-x;border-left:1px solid rgb(204,204,204);padding-left:1ex"><br>
-<br>
-Jonathan<br>
-<br>
-</blockquote></div></div></div></div></div></div></div></div>
-
---0000000000004de4e20621d71713--

@@ -1,209 +1,116 @@
-Received: by 2002:a17:505:1909:b0:1be9:327d:8ee3 with SMTP id az9csp1446686njb;
-        Tue, 10 Sep 2024 15:26:06 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWwN3TGiZFbPwDn+DbXvSobc5BA/ktNk7qGyOKSgjk37Uv2OUQdTfC1AxqbWtZ8z9iWDeecrEywtCbJuA==@linaro.org
-X-Google-Smtp-Source: AGHT+IEGeQj7gvL1YVPZD9HGpvniUUniYehCZ9fpEMXpYdCiGGQXTvdxtNJ34hVYuZTYZTKCSXOp
-X-Received: by 2002:a05:6402:270b:b0:5c2:7002:7cf8 with SMTP id 4fb4d7f45d1cf-5c3dc798be7mr9699220a12.17.1726007166317;
-        Tue, 10 Sep 2024 15:26:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1726007166; cv=none;
-        d=google.com; s=arc-20240605;
-        b=iRnzFsP20T/ZSaVvZySVg+i09Cdr3x8Xsk4Iydzcujz1aaI0mSVPE51jfzgtB+9K7b
-         ahOpeZIEL4MXDc0tvFzTNgt2nQFK8bLLGOGCQQrbuR5ErGMWiOSqGcsxcJsyXZhcFNdV
-         QYbt1hTzYBjaE2LItXPo9u55WCuYaQQaQwTa6Ky+l0WOz+hIq0h9mrmy8cz2kQgxZQE4
-         9N+IYAkPjKTovIqOP1Ze5ojWyXffnE9s5z6vXDwrwFqSkxnlSSYAydnVvtpXr9mGAA4c
-         PWwtCH3trqAmq+Lga7Po2m5UCqep7Ls1WeR5a47yKj2jMSRfNc0S1+5FNbpbCyhC3QoO
-         EWuQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=mime-version:message-id:date:references:in-reply-to:subject:cc:to
-         :from:dkim-signature:dkim-signature:dkim-signature:dkim-signature;
-        bh=xyKU/vmnk31FcTe/MsOvbzJI78hDjVUhHHGOtjP8OL4=;
-        fh=4DezfWhVwJveMjkLpX2jRIyNz5YoWNhxHlCeAMbUros=;
-        b=QcSV4Tixlo8gKn3PBfnypa+IqTU/fnrV3Mac/wpHg+LTT5ZL/Gf9UlT1Q8hw8b6U24
-         L+C5r7/gkdIHz5+I0ZFcHmUiAR+TfFwVZaqzhqV4n7TG28WcyQ8qFs2fF8ZXAqYBfyXp
-         pSLwFqDvYA0OxcVp8U4lFksVOPA6l3np6uLQ2Tx3dEsuaYQXr4xHM+A3bUOMHje+NWuF
-         iJ25gE5ZQpwRluv25vxUAqoI1yb131X+OW4gCdNVM8Med8WDdAW6W427iWwDDu3iob2r
-         F7rDrR3+i44I4B6vrSIPRNCC6OiDXo2IJxi5eP5R5z0i7LYyAuRGQr2sdT9AdJoghiXS
-         Jdtg==;
+Received: by 2002:a17:504:928f:b0:1be9:327d:8ee3 with SMTP id d15csp101548nji;
+        Wed, 11 Sep 2024 03:19:37 -0700 (PDT)
+X-Received: by 2002:a05:6402:360a:b0:5c2:6a73:d13b with SMTP id 4fb4d7f45d1cf-5c3dc7c02d8mr16277225a12.34.1726049977695;
+        Wed, 11 Sep 2024 03:19:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1726049977; cv=none;
+        d=google.com; s=arc-20160816;
+        b=akjqIl6MbeD6STh8xBEJkZMu0oPeUF+orMo+7TEc3UlHtK0jAhqRdWxyeMugQ8dyEC
+         Om9iTkAefOaL9hOvvr2HmBsew/R+wdBPu3hpIdadvtlN5lnCCC/L6PNoptzX+2dpZGL7
+         CEeK2TKk6sxYCfvVxanqYj/Q4SIfxYfyb0IT+dC/xHY3hGXNAvnLkt8DKGiFfxMCX9IO
+         L8viBI7llEzvleBs4HBMM8lS9ZdEkRSDK7uDwZU2gUny33+UdRUgfs3a8gA4YvS+0NTm
+         w/0IDTuQBICJzsMrJob+MINTUbgtGoF/63+s2wghmi5mGcTnjp6RkNzrt2QrnwwrVff7
+         cLLQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=RJ9Rnud9ZGrPX9HKlWsgEFwrznga+AkXAbAK1v3BN6c=;
+        fh=JtSB0LkbSaXiNrhJoxy/vkOfGlTYCBqabcuo3taEAos=;
+        b=HbmcVXYIfR31ZaqiTjEc6ZolT4oYNVFP6uOODfpmfZAVmFuEj3R+0ENhRJXXsZn5HL
+         loDRg5Oju5/xonBLl9o5vWvjyMkE2CWRMuDZIpYbamfc+Jwkc/MkpLOq2mkjrSrTY8E0
+         ntg9o4jlytQ1lgveBXZ60I7zJ5UTUiN7V7BfZcBmgufmc/9Q5rnbevyNEidgalfLuQId
+         KEWZngR3AsSbjNGQMDB5alJBsCBWxPk1y1GpNe/bwLSIkZMGWHswr2n9FwFX8PYb1Z8P
+         V+hfsTaFOkgwgQNAIG2qToyt09iqyjEyRS3w4SaJGXdBxzymCmutTtKzBIWWkuYoCYVG
+         0m7w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=Uw2TIwur;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=OfGUfAHm;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
-       spf=pass (google.com: domain of farosas@suse.de designates 2a07:de40:b251:101:10:150:64:2 as permitted sender) smtp.mailfrom=farosas@suse.de;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Return-Path: <farosas@suse.de>
-Received: from smtp-out2.suse.de (smtp-out2.suse.de. [2a07:de40:b251:101:10:150:64:2])
-        by mx.google.com with ESMTPS id 4fb4d7f45d1cf-5c3ebd42e89si6022571a12.133.2024.09.10.15.26.06
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 10 Sep 2024 15:26:06 -0700 (PDT)
-Received-SPF: pass (google.com: domain of farosas@suse.de designates 2a07:de40:b251:101:10:150:64:2 as permitted sender) client-ip=2a07:de40:b251:101:10:150:64:2;
+       dkim=pass header.i=@linaro.org header.s=google header.b=gpK3NUvn;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 4fb4d7f45d1cf-5c3ebd44b2csor915846a12.5.2024.09.11.03.19.37
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Wed, 11 Sep 2024 03:19:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=Uw2TIwur;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=OfGUfAHm;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
-       spf=pass (google.com: domain of farosas@suse.de designates 2a07:de40:b251:101:10:150:64:2 as permitted sender) smtp.mailfrom=farosas@suse.de;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Received: from imap1.dmz-prg2.suse.org (imap1.dmz-prg2.suse.org [IPv6:2a07:de40:b281:104:10:150:64:97])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	by smtp-out2.suse.de (Postfix) with ESMTPS id 97CEE1F837;
-	Tue, 10 Sep 2024 22:26:04 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1726007165; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=xyKU/vmnk31FcTe/MsOvbzJI78hDjVUhHHGOtjP8OL4=;
-	b=Uw2TIwurMWwrXhFc8ZEDLaHSFKjWsOWdy5g4ZfwyzXlyZJIX0QbJ2JjXnutnFeFqkkDheX
-	LboU7fwlbdqoxeBXZWm9i6uy71vhiFM+caKc1ypvV/uLEakczT10a0Fvpgo1V8NEDn6MWJ
-	oPtxW+eqcgWIELFiduuueQ7Rqp79LNU=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1726007165;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=xyKU/vmnk31FcTe/MsOvbzJI78hDjVUhHHGOtjP8OL4=;
-	b=thBj5R5tCaylH/cQy9u92YD6gqaoN8WJKCM0oO2+EyrNIkTqb2W6TCv1pm2194xDQ5846w
-	1AzHpA3lY2Y59uBg==
-Authentication-Results: smtp-out2.suse.de;
-	dkim=pass header.d=suse.de header.s=susede2_rsa header.b=OfGUfAHm;
-	dkim=pass header.d=suse.de header.s=susede2_ed25519 header.b=GFI0CEfj
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1726007164; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=xyKU/vmnk31FcTe/MsOvbzJI78hDjVUhHHGOtjP8OL4=;
-	b=OfGUfAHm/MLJluU8DNo+wJZ3HR15vrr4c1nygO9wkcAxfKNV/yzIfg3U25Gbn1M9WMwJp3
-	pr3OzD1ncXh41vRKYO7Z/8DQsDb5e1CkS4loYWgEKvpt9CUU0XULBnd2g3hsyhP8ya3MwI
-	P3in5dibnETCM0FR1FujLFLD4dTWsDY=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1726007164;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=xyKU/vmnk31FcTe/MsOvbzJI78hDjVUhHHGOtjP8OL4=;
-	b=GFI0CEfjgoLr2GcKjjlN24Y5lwQdxzsjekbGhLNFdLG7ZrNABA8Xf2mDv72hG5LnRfmijp
-	FOzcuqyVVH4o5gAw==
-Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id AD6FC132CB;
-	Tue, 10 Sep 2024 22:26:03 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
-	by imap1.dmz-prg2.suse.org with ESMTPSA
-	id 7OZUKnvH4GYbOgAAD6G6ig
-	(envelope-from <farosas@suse.de>); Tue, 10 Sep 2024 22:26:03 +0000
-From: Fabiano Rosas <farosas@suse.de>
-To: Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-devel@nongnu.org
-Cc: Zhao Liu <zhao1.liu@intel.com>, "Richard W.M. Jones"
- <rjones@redhat.com>, Joel Stanley <joel@jms.id.au>, Kevin Wolf
- <kwolf@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- qemu-arm@nongnu.org, Corey Minyard <minyard@acm.org>, Eric Farman
- <farman@linux.ibm.com>, Thomas Huth <thuth@redhat.com>, Keith Busch
- <kbusch@kernel.org>, WANG Xuerui <git@xen0n.name>, Hyman Huang
- <yong.huang@smartx.com>, Stefan Berger <stefanb@linux.vnet.ibm.com>,
- Michael Rolnik <mrolnik@gmail.com>, Alistair Francis
- <alistair.francis@wdc.com>, =?utf-8?Q?Marc-Andr=C3=A9?= Lureau
- <marcandre.lureau@redhat.com>, Markus Armbruster <armbru@redhat.com>,
- Sriram Yagnaraman <sriram.yagnaraman@ericsson.com>, Palmer Dabbelt
- <palmer@dabbelt.com>, qemu-riscv@nongnu.org, Ani Sinha
- <anisinha@redhat.com>, Halil Pasic <pasic@linux.ibm.com>, Jesper Devantier
- <foss@defmacro.it>, Laurent Vivier <laurent@vivier.eu>, Peter Maydell
- <peter.maydell@linaro.org>, Igor Mammedov <imammedo@redhat.com>,
- kvm@vger.kernel.org, Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Richard
- Henderson <richard.henderson@linaro.org>, Fam Zheng <fam@euphon.net>,
- qemu-s390x@nongnu.org, Hanna Reitz <hreitz@redhat.com>, Nicholas Piggin
- <npiggin@gmail.com>, Eduardo Habkost <eduardo@habkost.net>, Laurent Vivier
- <lvivier@redhat.com>, Rob Herring <robh@kernel.org>, Marcel Apfelbaum
- <marcel.apfelbaum@gmail.com>, qemu-block@nongnu.org, "Maciej S. Szmigiero"
- <maciej.szmigiero@oracle.com>, qemu-ppc@nongnu.org, Daniel Henrique
- Barboza <danielhb413@gmail.com>, Christian Borntraeger
- <borntraeger@linux.ibm.com>, Harsh Prateek Bora <harshpb@linux.ibm.com>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>, Nina
- Schoetterl-Glausch
- <nsg@linux.ibm.com>, "Michael S. Tsirkin" <mst@redhat.com>, Helge Deller
- <deller@gmx.de>, Dmitry Fleytman <dmitry.fleytman@gmail.com>, Daniel
- Henrique Barboza <dbarboza@ventanamicro.com>, Akihiko Odaki
- <akihiko.odaki@daynix.com>, Marcelo Tosatti <mtosatti@redhat.com>, David
- Gibson <david@gibson.dropbear.id.au>, Aurelien Jarno
- <aurelien@aurel32.net>, Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, Yanan
- Wang <wangyanan55@huawei.com>, Peter Xu <peterx@redhat.com>, Bin Meng
- <bmeng.cn@gmail.com>, Weiwei Li <liwei1518@gmail.com>, Klaus Jensen
- <its@irrelevant.dk>, Jean-Christophe Dubois <jcd@tribudubois.net>, Jason
- Wang <jasowang@redhat.com>, Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: Re: [PATCH 21/39] migration: replace assert(false) with
- g_assert_not_reached()
-In-Reply-To: <20240910221606.1817478-22-pierrick.bouvier@linaro.org>
-References: <20240910221606.1817478-1-pierrick.bouvier@linaro.org>
- <20240910221606.1817478-22-pierrick.bouvier@linaro.org>
-Date: Tue, 10 Sep 2024 19:26:01 -0300
-Message-ID: <87mskfqh6u.fsf@suse.de>
+       dkim=pass header.i=@linaro.org header.s=google header.b=gpK3NUvn;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1726049977; x=1726654777; darn=linaro.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=RJ9Rnud9ZGrPX9HKlWsgEFwrznga+AkXAbAK1v3BN6c=;
+        b=gpK3NUvnTb4MnYX6nDF2+b23etSSVwIWuG65bErgWZ87vk2FfjtjzdQCDrdXPbsIr6
+         i1tcALHykuM0eGQOP5V+XeADYgwvip9J1ePSLtXMFVgCiVC6bTagFXg2FqyJpWmLRfd5
+         GdyDSu326J4ikdT54nJ93CfiSlzwrnNnwaX43B4sCqsWTqaaMijIqu15ohcye645wxQK
+         ix1AEoOw5RE0DqMURMTLfEaLf/x56ao106/99xxXQQkdr9tffVibcLpSnW5FcB9PLfe+
+         82XwuWIQ4b087c7OEABpyWFd01E58MqiBvKPJ/y5pIdeIlhwGJ24BCsgMvnbyjPkRcgd
+         JJNA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1726049977; x=1726654777;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=RJ9Rnud9ZGrPX9HKlWsgEFwrznga+AkXAbAK1v3BN6c=;
+        b=TVr+aOIZDiXBPX3IJQ8A/daxZvHs3HBdgd8bYo318gj2zSf0dFFvscAMiNhUhLI8Pa
+         I0uYb9Vmsu3Ih/Y0HhZ9HcMY8l43LOcgnbBAlaMulcAbK6ip8r70obhG8F5NXEbtmGrw
+         V4ZkFZ1lpBBU2lfje34mfaLEzU5Wx58mzZpL+Ydz7SHhC/XGDP8fdWFW2H4BKkDr111R
+         o16C7rOiFKDXZXlcX6Tuu+nZ9v0E4/fFVgrrZB2SvMSxoPkZrSlyY1ZaJAvpU5xkKB3x
+         EdcYAJuqVbs3fhZv1B4dp7G7W2TJtYtV9M+uUQUF6E0vvwzm4sMnAwJ978ymQQD+aYL3
+         pJUA==
+X-Gm-Message-State: AOJu0Yxq+ya9CDkgaX0J5Q7rmrKE4DX9S25Xn25itZFLILc/tfDLU9a3
+	IVJ2xS99Ll9Lyne1AFYvMxKv9A2VMpIbimxjeKQvImR8XliiICgUchJhpX0ex5EfD9F8zajBkoR
+	/CZgO+L1TkYnnxuVO976cphU8zM8iq+EM3B0UPE1l
+X-Google-Smtp-Source: AGHT+IH5NeluPI86CQV9NpcDpivwCARU1eNdE6f3GaRJf9ZtztSoAtNIqT0mCrzMXSj8FTOhD3pH7sSBR3pT75SieEs=
+X-Received: by 2002:a05:6402:210d:b0:5c2:5f24:98bd with SMTP id
+ 4fb4d7f45d1cf-5c3dc78b665mr18465692a12.10.1726049976913; Wed, 11 Sep 2024
+ 03:19:36 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Rspamd-Queue-Id: 97CEE1F837
-X-Spam-Score: -5.00
-X-Rspamd-Action: no action
-X-Spamd-Result: default: False [-5.00 / 50.00];
-	BAYES_HAM(-2.99)[99.94%];
-	DWL_DNSWL_MED(-2.00)[suse.de:dkim];
-	SUSPICIOUS_RECIPS(1.50)[];
-	NEURAL_HAM_LONG(-1.00)[-1.000];
-	R_DKIM_ALLOW(-0.20)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
-	NEURAL_HAM_SHORT(-0.20)[-1.000];
-	MIME_GOOD(-0.10)[text/plain];
-	MX_GOOD(-0.01)[];
-	FREEMAIL_ENVRCPT(0.00)[gmail.com,gmx.de];
-	DKIM_SIGNED(0.00)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
-	FUZZY_BLOCKED(0.00)[rspamd.com];
-	RBL_SPAMHAUS_BLOCKED_OPENRESOLVER(0.00)[2a07:de40:b281:104:10:150:64:97:from];
-	TO_DN_SOME(0.00)[];
-	FREEMAIL_CC(0.00)[intel.com,redhat.com,jms.id.au,nongnu.org,acm.org,linux.ibm.com,kernel.org,xen0n.name,smartx.com,linux.vnet.ibm.com,gmail.com,wdc.com,ericsson.com,dabbelt.com,defmacro.it,vivier.eu,linaro.org,vger.kernel.org,euphon.net,habkost.net,oracle.com,gmx.de,ventanamicro.com,daynix.com,gibson.dropbear.id.au,aurel32.net,linux.alibaba.com,huawei.com,irrelevant.dk,tribudubois.net];
-	MIME_TRACE(0.00)[0:+];
-	ARC_NA(0.00)[];
-	RCVD_TLS_ALL(0.00)[];
-	DKIM_TRACE(0.00)[suse.de:+];
-	R_RATELIMIT(0.00)[to_ip_from(RLwj7s7tgqfu86bszdfmfm6eyh)];
-	RCVD_COUNT_TWO(0.00)[2];
-	TO_MATCH_ENVRCPT_SOME(0.00)[];
-	FROM_EQ_ENVFROM(0.00)[];
-	FROM_HAS_DN(0.00)[];
-	SPAMHAUS_XBL(0.00)[2a07:de40:b281:104:10:150:64:97:from];
-	RCPT_COUNT_GT_50(0.00)[64];
-	RECEIVED_SPAMHAUS_BLOCKED_OPENRESOLVER(0.00)[2a07:de40:b281:106:10:150:64:167:received];
-	MISSING_XM_UA(0.00)[];
-	MID_RHS_MATCH_FROM(0.00)[];
-	RCVD_VIA_SMTP_AUTH(0.00)[];
-	TAGGED_RCPT(0.00)[];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[linaro.org:email,imap1.dmz-prg2.suse.org:rdns,imap1.dmz-prg2.suse.org:helo,suse.de:dkim,suse.de:mid,suse.de:email]
-X-Rspamd-Server: rspamd1.dmz-prg2.suse.org
-X-Spam-Flag: NO
-X-Spam-Level: 
-X-TUID: 5doqHol7yiZZ
+References: <CA+1FSiiUFeXRvyCk3KK7XfmUjLzOvBLo=VhcQDiZ1z8kgfpjyw@mail.gmail.com>
+ <CAFEAcA8J18z8WubfzLu-DmTp6vGwcy4D652ib-KReqNS0whMVA@mail.gmail.com>
+ <CA+1FSiir=RG1BTKF29BKxmO+GWDieyW6TxzWtdEX-CYu7a+z5g@mail.gmail.com>
+ <CA+1FSij3LJc9S2ChBY-pHZ8QacFt2P0ygsr9LRK9FXLyMJrorQ@mail.gmail.com>
+ <CA+1FSiikkAg=41EYfbfPe08uBHkP_FJ9Y2j6ocqChor_92TWig@mail.gmail.com>
+ <CA+1FSijGTTt6YvRss9cDSOP5iOMCDmScpxP9ALJRJ19Vsjr6LA@mail.gmail.com>
+ <CAFEAcA_zRSgFhs+kauEfkyzAYg2RwSBrkagDEoj5OCgm5j6=iQ@mail.gmail.com>
+ <CA+1FSigzZxzdgTCWNRz3UGgTH5mRN8XTWWkeTU20N2ey4a+i+Q@mail.gmail.com>
+ <CA+1FSigqsAx_s+-_eP0GtSi7Qq6Vcou12gHcGZwqPk1hhnXXwg@mail.gmail.com>
+ <CA+1FSiiYm03SmjMaR0dLKye7j+LR4V-=u=nQu66=_aTrLVUpPg@mail.gmail.com>
+ <CA+1FSigvsXe7eo17_qdKaY0Uo68u7Ep3UacooHZDNCnWJHD4+w@mail.gmail.com>
+ <CA+1FSiiFFjp8O_D=PaGuZMj8oPYLdx5i-+Aq=S7=AZjZmb_aOw@mail.gmail.com>
+ <CA+1FSih1Yv+-Cjj0rfnnV4CkLum4RESun2UiUoZm=Lfsa=PkhA@mail.gmail.com>
+ <CA+1FSih+6cHb5c9pA-79ZP1Qvd=xTTNuVZm+Q66be3NuM8gCJQ@mail.gmail.com>
+ <CA+1FSiitCXFhbdWH15razOYyXp7xAY5ScmV3ZRCePqrZ_FdaNg@mail.gmail.com> <CA+1FSihfdrfth=+5xgmmsr_4uOEgm-hhB7i6_8mMeby4OKbC7w@mail.gmail.com>
+In-Reply-To: <CA+1FSihfdrfth=+5xgmmsr_4uOEgm-hhB7i6_8mMeby4OKbC7w@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 11 Sep 2024 11:19:25 +0100
+Message-ID: <CAFEAcA9rHJLqi7CxhNkAz+wwFmkKnmVUCHJmkp_8Vnu=OQh=Rg@mail.gmail.com>
+Subject: Re: Kernel panic - not syncing: Unable to initialise architected
+ timer : unable to boot Android 14 with qemu-system-aarch64 on Ubuntu 24.04
+ X64 bit
+To: Mario Marietto <marietto2008@gmail.com>
+Cc: alex.bennee@linaro.org, =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+	qemu-arm <qemu-arm@nongnu.org>, "cc: Sergey Kambalin" <sergey.kambalin@auriga.com>, 
+	qemu-discuss@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+X-TUID: nLVMTN5gQie0
 
-Pierrick Bouvier <pierrick.bouvier@linaro.org> writes:
-
-> Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-> ---
->  migration/dirtyrate.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+On Wed, 11 Sept 2024 at 01:02, Mario Marietto <marietto2008@gmail.com> wrote:
 >
-> diff --git a/migration/dirtyrate.c b/migration/dirtyrate.c
-> index 1d9db812990..a28c07327e8 100644
-> --- a/migration/dirtyrate.c
-> +++ b/migration/dirtyrate.c
-> @@ -228,7 +228,7 @@ static int time_unit_to_power(TimeUnit time_unit)
->      case TIME_UNIT_MILLISECOND:
->          return -3;
->      default:
-> -        assert(false); /* unreachable */
-> +        g_assert_not_reached(); /* unreachable */
->          return 0;
->      }
->  }
+> Hello to everyone.
 
-You could drop the comment that's now redundant.
+(Please trim your quoted text and don't top-post: it makes emails
+a pain to read.)
 
-Reviewed-by: Fabiano Rosas <farosas@suse.de>
+> qemu-system-aarch64-headless: Unable to determine GIC version supported by host
+
+This suggests your host kernel is either too old or does not have the
+VGIC support compiled into it. (QEMU produces this message if it
+asks the host kernel "please create a vGICv3" and that fails and
+then it asks "please create a vGICv2" and that also fails.)
+
+-- PMM

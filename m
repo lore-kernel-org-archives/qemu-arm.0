@@ -1,207 +1,488 @@
-Received: by 2002:a17:504:928f:b0:1be9:327d:8ee3 with SMTP id d15csp121407nji;
-        Wed, 11 Sep 2024 04:35:14 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUvcqbOaUKE8NKsV7lmLjLzL3se3+LK/1Xkn4X7ib+NIX13YBmIB1lTj4ZQ+0HOt1Qbq8fK66Wf7YF01A==@linaro.org
-X-Google-Smtp-Source: AGHT+IHW42/sH2bD06zuOVRBnf+MlDN67clveo/AkNv/DtYRJXJO8Nwc4SO8IRzf6z5MZLdQThQY
-X-Received: by 2002:a05:600c:54c6:b0:42c:b22e:fbfa with SMTP id 5b1f17b1804b1-42cb22effb5mr94434555e9.21.1726054514588;
-        Wed, 11 Sep 2024 04:35:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1726054514; cv=none;
-        d=google.com; s=arc-20240605;
-        b=LEfXwJPoPN0Twwp4rYtxL0VNnKHRhElJjxqADQYETGZmAQdou6ihCulak2MXYT5ZIp
-         lnetPaw5PotJfGETYQi9coBAlIbMrVOacp4fA+EGW9V2dSJwKVr+PqPuZPTMAtXPllNE
-         xwASOkDItYgkFBtF2H83iB+b2ULw09+X1pVoff1k6z7rlupJFbdre60IM4YpmtUwGzPD
-         Dl0rdWa2bjeo3jnQELpaLDT4yOYi2DkmMu6UFg07UffHL8hm7BGSHT6UVoJFPtnUEyFi
-         ukcR0k/X/gghcwZQz3IbN7fW4ogxmw+V/D+67d/lUwz3Wfwyuec1Zq//2ZkTsQVE7+eW
-         Pe3w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:subject:cc:to:from:date;
-        bh=Lt5cLad+vy+8ZSxWxYV9vogzuDhGaE3jqH6m4qvuPhk=;
-        fh=XBBJTrvtIfjFRm5H8+uLj2VA4L0zsaIUSwfJuuF1WHg=;
-        b=BmLQbJbAGiX/TFfc+1Tl5FxzQ3OrXxbYynrXAs4726lDPJEwG4k9tbDL3Uc2Wk+V12
-         bCUJH2DF0/5z3PGIhZ011ra6IZVmko5klCRqthzs5e2xgro/HT4x4gBOYG4KaceQOUJm
-         jnDeK6BWvZYuflWZEoWjxWE6nHGhTVXaJ5vkuTmnggvzIUUJGxPFY4cpNKJkXBzWnOY8
-         G9hX5IznvrNNDkYZCNBseu6XeCm9ozWYPop3IFu/aNlw/lXpBE0QHgMelAP1guvMHtsq
-         QHeJ5PmlQVfQXfjUfRyRFLJW5UyQmqyEhS1tkVdeiza0kFB33cLmBvjWncyp08Nn4ey+
-         gxhA==;
+Received: by 2002:a17:504:928f:b0:1be9:327d:8ee3 with SMTP id d15csp137574nji;
+        Wed, 11 Sep 2024 05:25:54 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXdVzS/UKBm7zKclvTBb+2jZpP+VJ5khTr7O6E47QDaxnyp3NSsj44p+MvbjvnAlTj0b1gmJ6npJCJ2RQ==@linaro.org
+X-Received: by 2002:a05:6402:1f0c:b0:5be:f5b0:fc38 with SMTP id 4fb4d7f45d1cf-5c4015e5da3mr8226234a12.10.1726057553852;
+        Wed, 11 Sep 2024 05:25:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1726057553; cv=none;
+        d=google.com; s=arc-20160816;
+        b=sQRNydn5ceB9qeL7lftIXBMALS9kaW0cRINQAAb47qdHEDt0qP0CNzKjJSZLP2O35N
+         EU1rt8Qbz2VfjA1X/zyQwiHJFQkeJv27a469VkIqqhU+n8h4F/++uN2UsOIgQcK93Xxd
+         r0ykeLH7yR5MI6kpSUYME53bV+4XyoYxgNwTHGG/W21gOt7sbzxs+A19BFaetQjpGdHU
+         YhQq8qzqUQb33oxw11EqFGnJzqP1blAPFJkplT7z95vTsRwTgEVN8jyAOId5IidAS6MI
+         5KrZNhc4UaAbXMscJQfXjnGEFIQ9obN0bRndvX5VRmyVBZprQHD+I0jggR5lZxQEjI3D
+         aKiw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=C0flz3BOAVW+SipOgDwY35TpZ6l1/7Fs1KgpV09Lmhw=;
+        fh=NbjxS5g5ougtrn2SDNmWemqpp9xpK227GGGSrV5U5bg=;
+        b=bZqwjYPb/3kP9CIyKQDyJk7D2+6CzEF1JsR9lV/WydHLWGTcUQzNlA34v3vB6Q93el
+         /Wk+ylpaZ+cXhe7Ds4vrjqq1sbk9B1Hi3JTIY4/pNrFpntCm6iydMODmfUGPc5JdgCKl
+         rzVj9rsyO4/+4eQtosnddxulqWR+/klmQuO+uqVvhOSCe4PkXgf67iiW2ieGLnvi08HS
+         5eXa9TyMcfRNVrlSGLJpx9u5HsHqatVQm4UzgGcTK01Sm5qjmpd0HL1WCv9cvDtmzJrl
+         1NaxF/fiRF1tFFFGwQIF6zFQLeuUFlotOxh/Cq7zxdA2BQZMNZKK7UyjMEDuHhOsoRje
+         Gxwg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=jonathan.cameron@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Return-Path: <jonathan.cameron@huawei.com>
-Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id ffacd0b85a97d-378956b9f12si3889085f8f.711.2024.09.11.04.35.13
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 11 Sep 2024 04:35:14 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
+       dkim=pass header.i=@opnsrc.net header.s=google header.b=V+S3dUal;
+       spf=pass (google.com: domain of salil.mehta@opnsrc.net designates 209.85.220.41 as permitted sender) smtp.mailfrom=salil.mehta@opnsrc.net;
+       dara=neutral header.i=@linaro.org
+Return-Path: <salil.mehta@opnsrc.net>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 4fb4d7f45d1cf-5c3de3d16afsor5466480a12.1.2024.09.11.05.25.53
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Wed, 11 Sep 2024 05:25:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of salil.mehta@opnsrc.net designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=jonathan.cameron@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from mail.maildlp.com (unknown [172.18.186.216])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4X3dgq6XQSz6L7Fb;
-	Wed, 11 Sep 2024 19:31:35 +0800 (CST)
-Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
-	by mail.maildlp.com (Postfix) with ESMTPS id E5B6A1400C9;
-	Wed, 11 Sep 2024 19:35:12 +0800 (CST)
-Received: from localhost (10.203.177.66) by frapeml500008.china.huawei.com
- (7.182.85.71) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Wed, 11 Sep
- 2024 13:35:11 +0200
-Date: Wed, 11 Sep 2024 12:35:10 +0100
-From: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
-To: Salil Mehta <salil.mehta@huawei.com>
-CC: Zhao Liu <zhao1.liu@intel.com>, Gavin Shan <gshan@redhat.com>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org"
-	<qemu-arm@nongnu.org>, "mst@redhat.com" <mst@redhat.com>, "maz@kernel.org"
-	<maz@kernel.org>, "jean-philippe@linaro.org" <jean-philippe@linaro.org>,
-	"lpieralisi@kernel.org" <lpieralisi@kernel.org>, "peter.maydell@linaro.org"
-	<peter.maydell@linaro.org>, "richard.henderson@linaro.org"
-	<richard.henderson@linaro.org>, "imammedo@redhat.com" <imammedo@redhat.com>,
-	"andrew.jones@linux.dev" <andrew.jones@linux.dev>, "david@redhat.com"
-	<david@redhat.com>, "philmd@linaro.org" <philmd@linaro.org>,
-	"eric.auger@redhat.com" <eric.auger@redhat.com>, "will@kernel.org"
-	<will@kernel.org>, "ardb@kernel.org" <ardb@kernel.org>,
-	"oliver.upton@linux.dev" <oliver.upton@linux.dev>, "pbonzini@redhat.com"
-	<pbonzini@redhat.com>, "rafael@kernel.org" <rafael@kernel.org>,
-	"borntraeger@linux.ibm.com" <borntraeger@linux.ibm.com>,
-	"alex.bennee@linaro.org" <alex.bennee@linaro.org>, "npiggin@gmail.com"
-	<npiggin@gmail.com>, "harshpb@linux.ibm.com" <harshpb@linux.ibm.com>,
-	"linux@armlinux.org.uk" <linux@armlinux.org.uk>,
-	"darren@os.amperecomputing.com" <darren@os.amperecomputing.com>,
-	"ilkka@os.amperecomputing.com" <ilkka@os.amperecomputing.com>,
-	"vishnu@os.amperecomputing.com" <vishnu@os.amperecomputing.com>,
-	"karl.heubaum@oracle.com" <karl.heubaum@oracle.com>, "miguel.luis@oracle.com"
-	<miguel.luis@oracle.com>, "salil.mehta@opnsrc.net" <salil.mehta@opnsrc.net>,
-	zhukeqian <zhukeqian1@huawei.com>, "wangxiongfeng (C)"
-	<wangxiongfeng2@huawei.com>, "wangyanan (Y)" <wangyanan55@huawei.com>,
-	"jiakernel2@gmail.com" <jiakernel2@gmail.com>, "maobibo@loongson.cn"
-	<maobibo@loongson.cn>, "lixianglai@loongson.cn" <lixianglai@loongson.cn>,
-	"shahuang@redhat.com" <shahuang@redhat.com>, Linuxarm <linuxarm@huawei.com>
+       dkim=pass header.i=@opnsrc.net header.s=google header.b=V+S3dUal;
+       spf=pass (google.com: domain of salil.mehta@opnsrc.net designates 209.85.220.41 as permitted sender) smtp.mailfrom=salil.mehta@opnsrc.net;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=opnsrc.net; s=google; t=1726057553; x=1726662353; darn=linaro.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=C0flz3BOAVW+SipOgDwY35TpZ6l1/7Fs1KgpV09Lmhw=;
+        b=V+S3dUalxPEYe4+qEo8ysAaLCkKKidOMeXKUGZTpzEHw6ANfavWfHUNLi6eQmUNG0H
+         NAhU2E7i22oLfzRWd0y+R+R0XaEJzxa10+9DVQAcgApGRr9xamINlsPPwUGLHLJntqLW
+         smsI6vmN/Fm7cxR+GdAz00lCUgKm0/yfTpPLrkaO22PD1iOkHuSnM7g/aY3ZH4f9VVAD
+         P+dz8JIxH6t1dvbgMyj0uM+nFou+IwDaPxLwHs/sWa1ba2QuLz1RAG21w0B84ikor3eU
+         nTlf3VMo4iS1tUshJ0bIIf5v3mbBLwLHr4o1WCmvPTVouT1Lcr6hqcUpAkfmkyy3rpV+
+         1OTw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1726057553; x=1726662353;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=C0flz3BOAVW+SipOgDwY35TpZ6l1/7Fs1KgpV09Lmhw=;
+        b=QPV0iPA3QDTvf9gikkYpG4M+OHrxINjPxLctXzsiJkHtrm/HkAo+u5y3q6bl0JcPsp
+         i/a5nvihIeW/13R0+YGTbguoGY4yL1Y9XYcqNHiCHnxxPhljrOO9Bjv33cFBZzzv2tAw
+         BQG7Ex607BtLrE/L60WyNprkJtB+QICIDby6tLYA2Gky5AFM9Itc9+mjbYGxyFi8eSLo
+         EO9BYyMGKjq4Ejmw9sNxacAbFO2PXErLy0Y2HntfmEU4wpFSm7cYAF0m4VD2XATYPySf
+         OzCdt2UmKpkZhOsk2kVLqhCJZYjp88jUYVqaOkPQl37irmYkGwL3Rw6mD8F7nG8lpaEv
+         gqog==
+X-Forwarded-Encrypted: i=1; AJvYcCV557Ky/SvIXx5vKZ4oZODK5QLD7xjB6lifc1DObxZG7ijq6f9HF5FaRJYypD6nKWh13wtkpJzDUwP79Q==@linaro.org
+X-Gm-Message-State: AOJu0Yzq0zkt6r83gxbgV9hDdnF8LKANFz/CJ/dBuYEY8txNFFE0b8hq
+	ohbpMaQ36jqcQ4PzH+J2siN4NzMcP7VVFLipKHc+hSD9Mbn6RbImvtptbf6FNAeuvlKpeK66AcP
+	tAZZVNjZwNELs201GmEhj8rJs+h5w/kHzcMG+Mw==
+X-Google-Smtp-Source: AGHT+IGsaWE0jCK4Q95FzxoUsGfIrdrLWHYwhlhWH/evnwEkWjihjDBe7M41KAFrYl720+63KmW123RpXSuk+lPLE4s=
+X-Received: by 2002:a05:6402:401d:b0:5be:c8ad:afd0 with SMTP id
+ 4fb4d7f45d1cf-5c4015e5dbcmr7145915a12.9.1726057552919; Wed, 11 Sep 2024
+ 05:25:52 -0700 (PDT)
+MIME-Version: 1.0
+References: <20240613233639.202896-1-salil.mehta@huawei.com>
+ <20240613233639.202896-2-salil.mehta@huawei.com> <11e627ef-d75e-4114-9b93-14d80ec0526b@redhat.com>
+ <c889781d3eb048d19bae4ceff8646a4e@huawei.com> <Zthx3dQInrcgly6+@intel.com>
+ <9376341923d94a2bbd8d24f4f6844585@huawei.com> <Zt8UGd9YRANnBPVT@intel.com>
+ <cff9b8f407044deb8ed4b1aa5acea5f4@huawei.com> <20240911123510.00004557@Huawei.com>
+In-Reply-To: <20240911123510.00004557@Huawei.com>
+From: Salil Mehta <salil.mehta@opnsrc.net>
+Date: Wed, 11 Sep 2024 12:25:40 +0000
+Message-ID: <CAJ7pxebQwihKVoXuXxyZ4HPZJxu-PnH1MJKZ8c9MotVc__o4xQ@mail.gmail.com>
 Subject: Re: [PATCH RFC V3 01/29] arm/virt,target/arm: Add new ARMCPU
  {socket,cluster,core,thread}-id property
-Message-ID: <20240911123510.00004557@Huawei.com>
-In-Reply-To: <cff9b8f407044deb8ed4b1aa5acea5f4@huawei.com>
-References: <20240613233639.202896-1-salil.mehta@huawei.com>
-	<20240613233639.202896-2-salil.mehta@huawei.com>
-	<11e627ef-d75e-4114-9b93-14d80ec0526b@redhat.com>
-	<c889781d3eb048d19bae4ceff8646a4e@huawei.com>
-	<Zthx3dQInrcgly6+@intel.com>
-	<9376341923d94a2bbd8d24f4f6844585@huawei.com>
-	<Zt8UGd9YRANnBPVT@intel.com>
-	<cff9b8f407044deb8ed4b1aa5acea5f4@huawei.com>
-Organization: Huawei Technologies Research and Development (UK) Ltd.
-X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
-MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.203.177.66]
-X-ClientProxiedBy: lhrpeml100001.china.huawei.com (7.191.160.183) To
- frapeml500008.china.huawei.com (7.182.85.71)
-X-TUID: ocD/N2F9bx3V
+To: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Cc: Salil Mehta <salil.mehta@huawei.com>, Zhao Liu <zhao1.liu@intel.com>, 
+	Gavin Shan <gshan@redhat.com>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, 
+	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "mst@redhat.com" <mst@redhat.com>, "maz@kernel.org" <maz@kernel.org>, 
+	"jean-philippe@linaro.org" <jean-philippe@linaro.org>, "lpieralisi@kernel.org" <lpieralisi@kernel.org>, 
+	"peter.maydell@linaro.org" <peter.maydell@linaro.org>, 
+	"richard.henderson@linaro.org" <richard.henderson@linaro.org>, "imammedo@redhat.com" <imammedo@redhat.com>, 
+	"andrew.jones@linux.dev" <andrew.jones@linux.dev>, "david@redhat.com" <david@redhat.com>, 
+	"philmd@linaro.org" <philmd@linaro.org>, "eric.auger@redhat.com" <eric.auger@redhat.com>, 
+	"will@kernel.org" <will@kernel.org>, "ardb@kernel.org" <ardb@kernel.org>, 
+	"oliver.upton@linux.dev" <oliver.upton@linux.dev>, "pbonzini@redhat.com" <pbonzini@redhat.com>, 
+	"rafael@kernel.org" <rafael@kernel.org>, "borntraeger@linux.ibm.com" <borntraeger@linux.ibm.com>, 
+	"alex.bennee@linaro.org" <alex.bennee@linaro.org>, "npiggin@gmail.com" <npiggin@gmail.com>, 
+	"harshpb@linux.ibm.com" <harshpb@linux.ibm.com>, "linux@armlinux.org.uk" <linux@armlinux.org.uk>, 
+	"darren@os.amperecomputing.com" <darren@os.amperecomputing.com>, 
+	"ilkka@os.amperecomputing.com" <ilkka@os.amperecomputing.com>, 
+	"vishnu@os.amperecomputing.com" <vishnu@os.amperecomputing.com>, 
+	"karl.heubaum@oracle.com" <karl.heubaum@oracle.com>, "miguel.luis@oracle.com" <miguel.luis@oracle.com>, 
+	zhukeqian <zhukeqian1@huawei.com>, "wangxiongfeng (C)" <wangxiongfeng2@huawei.com>, 
+	"wangyanan (Y)" <wangyanan55@huawei.com>, "jiakernel2@gmail.com" <jiakernel2@gmail.com>, 
+	"maobibo@loongson.cn" <maobibo@loongson.cn>, "lixianglai@loongson.cn" <lixianglai@loongson.cn>, 
+	"shahuang@redhat.com" <shahuang@redhat.com>, Linuxarm <linuxarm@huawei.com>
+Content-Type: multipart/alternative; boundary="0000000000004de4e20621d71713"
+X-TUID: e/at4tjI7qxJ
 
-On Tue, 10 Sep 2024 12:01:05 +0100
-Salil Mehta <salil.mehta@huawei.com> wrote:
+--0000000000004de4e20621d71713
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-> HI Zhao,
+On Wed, Sep 11, 2024 at 11:35=E2=80=AFAM Jonathan Cameron <
+Jonathan.Cameron@huawei.com> wrote:
 
-A few trivial comments inline.
+> On Tue, 10 Sep 2024 12:01:05 +0100
+> Salil Mehta <salil.mehta@huawei.com> wrote:
+>
+> > HI Zhao,
+>
+> A few trivial comments inline.
+>
+> >
+> > >  From: Zhao Liu <zhao1.liu@intel.com>
+> > >  Sent: Monday, September 9, 2024 4:28 PM
+> > >  To: Salil Mehta <salil.mehta@huawei.com>
+> > >
+> > >  On Wed, Sep 04, 2024 at 05:37:21PM +0000, Salil Mehta wrote:
+> > >  > Date: Wed, 4 Sep 2024 17:37:21 +0000
+> > >  > From: Salil Mehta <salil.mehta@huawei.com>
+> > >  > Subject: RE: [PATCH RFC V3 01/29] arm/virt,target/arm: Add new
+> ARMCPU
+> > >  > {socket,cluster,core,thread}-id property
+> > >  >
+> > >  > Hi Zhao,
+> > >  >
+> > >  > >  From: zhao1.liu@intel.com <zhao1.liu@intel.com>
+> > >  > >  Sent: Wednesday, September 4, 2024 3:43 PM
+> > >  > >  To: Salil Mehta <salil.mehta@huawei.com>
+> > >  > >
+> > >  > >  Hi Salil,
+> > >  > >
+> > >  > >  On Mon, Aug 19, 2024 at 11:53:52AM +0000, Salil Mehta wrote:
+> > >  > >  > Date: Mon, 19 Aug 2024 11:53:52 +0000  > From: Salil Mehta
+> > >  > > <salil.mehta@huawei.com>  > Subject: RE: [PATCH RFC V3 01/29]
+> > >  > > arm/virt,target/arm: Add new ARMCPU  >
+> > >  > > {socket,cluster,core,thread}-id property
+> > >  > >
+> > >  > >  [snip]
+> > >  > >
+> > >  > >  > >  > NULL); @@ -2708,6 +2716,7 @@ static const CPUArchIdList
+> > >
+> > >  > > *virt_possible_cpu_arch_ids(MachineState *ms)
+> > >  > >  > >  >   {
+> > >  > >  > >  >       int n;
+> > >  > >  > >  >       unsigned int max_cpus =3D ms->smp.max_cpus;
+> > >  > >  > >  > +    unsigned int smp_threads =3D ms->smp.threads;
+> > >  > >  > >  >       VirtMachineState *vms =3D VIRT_MACHINE(ms);
+> > >  > >  > >  >       MachineClass *mc =3D MACHINE_GET_CLASS(vms);
+> > >  > >  > >  >
+> > >  > >  > >  > @@ -2721,6 +2730,7 @@ static const CPUArchIdList  > >
+> > >  > > *virt_possible_cpu_arch_ids(MachineState *ms)
+> > >  > >  > >  >       ms->possible_cpus->len =3D max_cpus;
+> > >  > >  > >  >       for (n =3D 0; n < ms->possible_cpus->len; n++) {
+> > >  > >  > >  >           ms->possible_cpus->cpus[n].type =3D ms->cpu_ty=
+pe;
+> > >  > >  > >  > +        ms->possible_cpus->cpus[n].vcpus_count =3D
+> smp_threads;
+> > >  > >  > >  >           ms->possible_cpus->cpus[n].arch_id =3D
+> > >  > >  > >  >               virt_cpu_mp_affinity(vms, n);
+> > >  > >  > >  >
+> > >  > >  > >
+> > >  > >  > >  Why @vcpus_count is initialized to @smp_threads? it needs
+> to
+> > >  > > be  > > documented in the commit log.
+> > >  > >  >
+> > >  > >  >
+> > >  > >  > Because every thread internally amounts to a vCPU in QOM and
+> > >  > > which is  > in 1:1 relationship with KVM vCPU. AFAIK, QOM does n=
+ot
+> > >  > > strictly  > follows any architecture. Once you start to get into
+> > >  > > details of  > threads there are many aspects of shared resources
+> one
+> > >  > > will have to  > consider and these can vary across different
+> > >  > > implementations of  architecture.
+> > >  > >
+> > >  > >  For SPAPR CPU, the granularity of >possible_cpus->cpus[] is
+> "core",
+> > >  > > and for  x86, it's "thread" granularity.
+> > >  >
+> > >  >
+> > >  > We have threads per-core at microarchitecture level in ARM as well=
+.
+> > >  > But each thread appears like a vCPU to OS and AFAICS there are no
+> > >  > special attributes attached to it. SMT can be enabled/disabled at
+> > >  > firmware and should get reflected in the configuration accordingly
+> > >  > i.e. value of *threads-per-core* changes between 1 and 'N'.  This
+> > >  > means 'vcpus_count' has to reflect the correct configuration. But =
+I
+> > >  > think threads lack proper representation in Qemu QOM.
+> > >
+> > >  In topology related part, SMT (of x86) usually represents the logica=
+l
+> > >  processor level. And thread has the same meaning.
+> >
+> >
+> > Agreed. It is same in ARM as well. The difference could be in how
+> hardware
+> > threads are implemented at microarchitecture level.  Nevertheless, we d=
+o
+> > have such virtual configurations, and the meaning of *threads* as-in QO=
+M
+> > topology (socket,cluster,core,thread) is virtualized similar to the
+> hardware
+> > threads in host. And One should be able to configure threads support in
+> the
+> > virtual environment,  regardless whether or not underlying hardware
+> > supports threads. That's my take.
+> >
+> > Other aspect is how we then expose these threads to the guest. The gues=
+t
+> > kernel (just like host kernel) should gather topology information using
+> > ACPI PPTT Table (This is ARM specific?).
+>
+> Not ARM specific, but not used by x86 in practice (I believe some risc-v
+> boards
+> use it).
+>
+> https://lore.kernel.org/linux-riscv/20240617131425.7526-3-cuiyunhui@byted=
+ance.com/
+>
+> > Later is populated by the Qemu
+> > (just like by firmware for the host kernel) by making use of the virtua=
+l
+> > topology. ARM guest kernel, in absence of PPTT support can detect
+> > presence of hardware threads by reading MT Bit within the MPIDR_EL1
+> > register.
+>
+> Sadly no it can't.  Lots of CPUs cores that are single thread set that
+> bit anyway (so it's garbage and PPTT / DT is the only source of truth)
+>
+> https://lore.kernel.org/all/CAFfO_h7vUEhqV15epf+_zVrbDhc3JrejkkOVsHzHgCXN=
+k+nDdg@mail.gmail.com/T/
 
-> 
-> >  From: Zhao Liu <zhao1.liu@intel.com>
-> >  Sent: Monday, September 9, 2024 4:28 PM
-> >  To: Salil Mehta <salil.mehta@huawei.com>
-> >  
-> >  On Wed, Sep 04, 2024 at 05:37:21PM +0000, Salil Mehta wrote:  
-> >  > Date: Wed, 4 Sep 2024 17:37:21 +0000
-> >  > From: Salil Mehta <salil.mehta@huawei.com>
-> >  > Subject: RE: [PATCH RFC V3 01/29] arm/virt,target/arm: Add new ARMCPU
-> >  > {socket,cluster,core,thread}-id property
-> >  >
-> >  > Hi Zhao,
-> >  >  
-> >  > >  From: zhao1.liu@intel.com <zhao1.liu@intel.com>
-> >  > >  Sent: Wednesday, September 4, 2024 3:43 PM
-> >  > >  To: Salil Mehta <salil.mehta@huawei.com>
-> >  > >
-> >  > >  Hi Salil,
-> >  > >
-> >  > >  On Mon, Aug 19, 2024 at 11:53:52AM +0000, Salil Mehta wrote:  
-> >  > >  > Date: Mon, 19 Aug 2024 11:53:52 +0000  > From: Salil Mehta  
-> >  > > <salil.mehta@huawei.com>  > Subject: RE: [PATCH RFC V3 01/29]
-> >  > > arm/virt,target/arm: Add new ARMCPU  >
-> >  > > {socket,cluster,core,thread}-id property
-> >  > >
-> >  > >  [snip]
-> >  > >  
-> >  > >  > >  > NULL); @@ -2708,6 +2716,7 @@ static const CPUArchIdList  > >  
-> >  > > *virt_possible_cpu_arch_ids(MachineState *ms)  
-> >  > >  > >  >   {
-> >  > >  > >  >       int n;
-> >  > >  > >  >       unsigned int max_cpus = ms->smp.max_cpus;
-> >  > >  > >  > +    unsigned int smp_threads = ms->smp.threads;
-> >  > >  > >  >       VirtMachineState *vms = VIRT_MACHINE(ms);
-> >  > >  > >  >       MachineClass *mc = MACHINE_GET_CLASS(vms);
-> >  > >  > >  >
-> >  > >  > >  > @@ -2721,6 +2730,7 @@ static const CPUArchIdList  > >  
-> >  > > *virt_possible_cpu_arch_ids(MachineState *ms)  
-> >  > >  > >  >       ms->possible_cpus->len = max_cpus;
-> >  > >  > >  >       for (n = 0; n < ms->possible_cpus->len; n++) {
-> >  > >  > >  >           ms->possible_cpus->cpus[n].type = ms->cpu_type;
-> >  > >  > >  > +        ms->possible_cpus->cpus[n].vcpus_count = smp_threads;
-> >  > >  > >  >           ms->possible_cpus->cpus[n].arch_id =
-> >  > >  > >  >               virt_cpu_mp_affinity(vms, n);
-> >  > >  > >  >  
-> >  > >  > >
-> >  > >  > >  Why @vcpus_count is initialized to @smp_threads? it needs to  
-> >  > > be  > > documented in the commit log.  
-> >  > >  >
-> >  > >  >
-> >  > >  > Because every thread internally amounts to a vCPU in QOM and  
-> >  > > which is  > in 1:1 relationship with KVM vCPU. AFAIK, QOM does not
-> >  > > strictly  > follows any architecture. Once you start to get into
-> >  > > details of  > threads there are many aspects of shared resources one
-> >  > > will have to  > consider and these can vary across different
-> >  > > implementations of  architecture.
-> >  > >
-> >  > >  For SPAPR CPU, the granularity of >possible_cpus->cpus[] is "core",
-> >  > > and for  x86, it's "thread" granularity.  
-> >  >
-> >  >
-> >  > We have threads per-core at microarchitecture level in ARM as well.
-> >  > But each thread appears like a vCPU to OS and AFAICS there are no
-> >  > special attributes attached to it. SMT can be enabled/disabled at
-> >  > firmware and should get reflected in the configuration accordingly
-> >  > i.e. value of *threads-per-core* changes between 1 and 'N'.  This
-> >  > means 'vcpus_count' has to reflect the correct configuration. But I
-> >  > think threads lack proper representation in Qemu QOM.  
-> >  
-> >  In topology related part, SMT (of x86) usually represents the logical
-> >  processor level. And thread has the same meaning.  
-> 
-> 
-> Agreed. It is same in ARM as well. The difference could be in how hardware
-> threads are implemented at microarchitecture level.  Nevertheless, we do
-> have such virtual configurations, and the meaning of *threads* as-in QOM
-> topology (socket,cluster,core,thread) is virtualized similar to the hardware
-> threads in host. And One should be able to configure threads support in the
-> virtual environment,  regardless whether or not underlying hardware
-> supports threads. That's my take.
-> 
-> Other aspect is how we then expose these threads to the guest. The guest
-> kernel (just like host kernel) should gather topology information using
-> ACPI PPTT Table (This is ARM specific?). 
 
-Not ARM specific, but not used by x86 in practice (I believe some risc-v boards
-use it).
-https://lore.kernel.org/linux-riscv/20240617131425.7526-3-cuiyunhui@bytedance.com/
 
-> Later is populated by the Qemu
-> (just like by firmware for the host kernel) by making use of the virtual
-> topology. ARM guest kernel, in absence of PPTT support can detect
-> presence of hardware threads by reading MT Bit within the MPIDR_EL1
-> register.
+Yes, agreed, this last explanation was not completely correct.
+IICRC, Marc did point out in RFC V1 of June 2020 that value  MT=3D0 is set =
+by
+KVM to tell the guest kernel that vCPUs at the same affinity-1 fields are
+independent.
+Problem was with the interpretation of non-zero MT Bit  and it was not
+consistent.
+The key thing is we should not rely on the value of the MT Bit in MPIDR to
+know
+if multithreading exists. So yes, to know the exact status of the
+multithreading
+on ARM systems parsing PPTT Table is the only way.
 
-Sadly no it can't.  Lots of CPUs cores that are single thread set that
-bit anyway (so it's garbage and PPTT / DT is the only source of truth)
-https://lore.kernel.org/all/CAFfO_h7vUEhqV15epf+_zVrbDhc3JrejkkOVsHzHgCXNk+nDdg@mail.gmail.com/T/
+I mentioned that because handling still exists in the kernel code but I
+think it exists
+for handling those other cases. Maybe a comment is required here (?):
 
-Jonathan
+https://elixir.bootlin.com/linux/v6.11-rc7/source/arch/arm64/kernel/topolog=
+y.c#L34
+
+Thanks for pointing this out.
+
+
+Thanks
+Salil.
+
+
+
+
+>
+>
+> Jonathan
+>
+>
+
+--0000000000004de4e20621d71713
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr"><div dir=3D"ltr"><div dir=3D"ltr"><div di=
+r=3D"ltr"><div dir=3D"ltr"><div dir=3D"ltr"><div dir=3D"ltr"><br></div><br>=
+<div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Wed, Se=
+p 11, 2024 at 11:35=E2=80=AFAM Jonathan Cameron &lt;<a href=3D"mailto:Jonat=
+han.Cameron@huawei.com">Jonathan.Cameron@huawei.com</a>&gt; wrote:<br></div=
+><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border=
+-left:1px solid rgb(204,204,204);padding-left:1ex">On Tue, 10 Sep 2024 12:0=
+1:05 +0100<br>
+Salil Mehta &lt;<a href=3D"mailto:salil.mehta@huawei.com" target=3D"_blank"=
+>salil.mehta@huawei.com</a>&gt; wrote:<br>
+<br>
+&gt; HI Zhao,<br>
+<br>
+A few trivial comments inline.<br>
+<br>
+&gt; <br>
+&gt; &gt;=C2=A0 From: Zhao Liu &lt;<a href=3D"mailto:zhao1.liu@intel.com" t=
+arget=3D"_blank">zhao1.liu@intel.com</a>&gt;<br>
+&gt; &gt;=C2=A0 Sent: Monday, September 9, 2024 4:28 PM<br>
+&gt; &gt;=C2=A0 To: Salil Mehta &lt;<a href=3D"mailto:salil.mehta@huawei.co=
+m" target=3D"_blank">salil.mehta@huawei.com</a>&gt;<br>
+&gt; &gt;=C2=A0 <br>
+&gt; &gt;=C2=A0 On Wed, Sep 04, 2024 at 05:37:21PM +0000, Salil Mehta wrote=
+:=C2=A0 <br>
+&gt; &gt;=C2=A0 &gt; Date: Wed, 4 Sep 2024 17:37:21 +0000<br>
+&gt; &gt;=C2=A0 &gt; From: Salil Mehta &lt;<a href=3D"mailto:salil.mehta@hu=
+awei.com" target=3D"_blank">salil.mehta@huawei.com</a>&gt;<br>
+&gt; &gt;=C2=A0 &gt; Subject: RE: [PATCH RFC V3 01/29] arm/virt,target/arm:=
+ Add new ARMCPU<br>
+&gt; &gt;=C2=A0 &gt; {socket,cluster,core,thread}-id property<br>
+&gt; &gt;=C2=A0 &gt;<br>
+&gt; &gt;=C2=A0 &gt; Hi Zhao,<br>
+&gt; &gt;=C2=A0 &gt;=C2=A0 <br>
+&gt; &gt;=C2=A0 &gt; &gt;=C2=A0 From: <a href=3D"mailto:zhao1.liu@intel.com=
+" target=3D"_blank">zhao1.liu@intel.com</a> &lt;<a href=3D"mailto:zhao1.liu=
+@intel.com" target=3D"_blank">zhao1.liu@intel.com</a>&gt;<br>
+&gt; &gt;=C2=A0 &gt; &gt;=C2=A0 Sent: Wednesday, September 4, 2024 3:43 PM<=
+br>
+&gt; &gt;=C2=A0 &gt; &gt;=C2=A0 To: Salil Mehta &lt;<a href=3D"mailto:salil=
+.mehta@huawei.com" target=3D"_blank">salil.mehta@huawei.com</a>&gt;<br>
+&gt; &gt;=C2=A0 &gt; &gt;<br>
+&gt; &gt;=C2=A0 &gt; &gt;=C2=A0 Hi Salil,<br>
+&gt; &gt;=C2=A0 &gt; &gt;<br>
+&gt; &gt;=C2=A0 &gt; &gt;=C2=A0 On Mon, Aug 19, 2024 at 11:53:52AM +0000, S=
+alil Mehta wrote:=C2=A0 <br>
+&gt; &gt;=C2=A0 &gt; &gt;=C2=A0 &gt; Date: Mon, 19 Aug 2024 11:53:52 +0000=
+=C2=A0 &gt; From: Salil Mehta=C2=A0 <br>
+&gt; &gt;=C2=A0 &gt; &gt; &lt;<a href=3D"mailto:salil.mehta@huawei.com" tar=
+get=3D"_blank">salil.mehta@huawei.com</a>&gt;=C2=A0 &gt; Subject: RE: [PATC=
+H RFC V3 01/29]<br>
+&gt; &gt;=C2=A0 &gt; &gt; arm/virt,target/arm: Add new ARMCPU=C2=A0 &gt;<br=
+>
+&gt; &gt;=C2=A0 &gt; &gt; {socket,cluster,core,thread}-id property<br>
+&gt; &gt;=C2=A0 &gt; &gt;<br>
+&gt; &gt;=C2=A0 &gt; &gt;=C2=A0 [snip]<br>
+&gt; &gt;=C2=A0 &gt; &gt;=C2=A0 <br>
+&gt; &gt;=C2=A0 &gt; &gt;=C2=A0 &gt; &gt;=C2=A0 &gt; NULL); @@ -2708,6 +271=
+6,7 @@ static const CPUArchIdList=C2=A0 &gt; &gt;=C2=A0 <br>
+&gt; &gt;=C2=A0 &gt; &gt; *virt_possible_cpu_arch_ids(MachineState *ms)=C2=
+=A0 <br>
+&gt; &gt;=C2=A0 &gt; &gt;=C2=A0 &gt; &gt;=C2=A0 &gt;=C2=A0 =C2=A0{<br>
+&gt; &gt;=C2=A0 &gt; &gt;=C2=A0 &gt; &gt;=C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =
+=C2=A0int n;<br>
+&gt; &gt;=C2=A0 &gt; &gt;=C2=A0 &gt; &gt;=C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =
+=C2=A0unsigned int max_cpus =3D ms-&gt;smp.max_cpus;<br>
+&gt; &gt;=C2=A0 &gt; &gt;=C2=A0 &gt; &gt;=C2=A0 &gt; +=C2=A0 =C2=A0 unsigne=
+d int smp_threads =3D ms-&gt;smp.threads;<br>
+&gt; &gt;=C2=A0 &gt; &gt;=C2=A0 &gt; &gt;=C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =
+=C2=A0VirtMachineState *vms =3D VIRT_MACHINE(ms);<br>
+&gt; &gt;=C2=A0 &gt; &gt;=C2=A0 &gt; &gt;=C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =
+=C2=A0MachineClass *mc =3D MACHINE_GET_CLASS(vms);<br>
+&gt; &gt;=C2=A0 &gt; &gt;=C2=A0 &gt; &gt;=C2=A0 &gt;<br>
+&gt; &gt;=C2=A0 &gt; &gt;=C2=A0 &gt; &gt;=C2=A0 &gt; @@ -2721,6 +2730,7 @@ =
+static const CPUArchIdList=C2=A0 &gt; &gt;=C2=A0 <br>
+&gt; &gt;=C2=A0 &gt; &gt; *virt_possible_cpu_arch_ids(MachineState *ms)=C2=
+=A0 <br>
+&gt; &gt;=C2=A0 &gt; &gt;=C2=A0 &gt; &gt;=C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =
+=C2=A0ms-&gt;possible_cpus-&gt;len =3D max_cpus;<br>
+&gt; &gt;=C2=A0 &gt; &gt;=C2=A0 &gt; &gt;=C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =
+=C2=A0for (n =3D 0; n &lt; ms-&gt;possible_cpus-&gt;len; n++) {<br>
+&gt; &gt;=C2=A0 &gt; &gt;=C2=A0 &gt; &gt;=C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0ms-&gt;possible_cpus-&gt;cpus[n].type =3D ms-&gt;cpu_ty=
+pe;<br>
+&gt; &gt;=C2=A0 &gt; &gt;=C2=A0 &gt; &gt;=C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 ms-&gt;possible_cpus-&gt;cpus[n].vcpus_count =3D smp_threads;<br>
+&gt; &gt;=C2=A0 &gt; &gt;=C2=A0 &gt; &gt;=C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0ms-&gt;possible_cpus-&gt;cpus[n].arch_id =3D<br>
+&gt; &gt;=C2=A0 &gt; &gt;=C2=A0 &gt; &gt;=C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0virt_cpu_mp_affinity(vms, n);<br>
+&gt; &gt;=C2=A0 &gt; &gt;=C2=A0 &gt; &gt;=C2=A0 &gt;=C2=A0 <br>
+&gt; &gt;=C2=A0 &gt; &gt;=C2=A0 &gt; &gt;<br>
+&gt; &gt;=C2=A0 &gt; &gt;=C2=A0 &gt; &gt;=C2=A0 Why @vcpus_count is initial=
+ized to @smp_threads? it needs to=C2=A0 <br>
+&gt; &gt;=C2=A0 &gt; &gt; be=C2=A0 &gt; &gt; documented in the commit log.=
+=C2=A0 <br>
+&gt; &gt;=C2=A0 &gt; &gt;=C2=A0 &gt;<br>
+&gt; &gt;=C2=A0 &gt; &gt;=C2=A0 &gt;<br>
+&gt; &gt;=C2=A0 &gt; &gt;=C2=A0 &gt; Because every thread internally amount=
+s to a vCPU in QOM and=C2=A0 <br>
+&gt; &gt;=C2=A0 &gt; &gt; which is=C2=A0 &gt; in 1:1 relationship with KVM =
+vCPU. AFAIK, QOM does not<br>
+&gt; &gt;=C2=A0 &gt; &gt; strictly=C2=A0 &gt; follows any architecture. Onc=
+e you start to get into<br>
+&gt; &gt;=C2=A0 &gt; &gt; details of=C2=A0 &gt; threads there are many aspe=
+cts of shared resources one<br>
+&gt; &gt;=C2=A0 &gt; &gt; will have to=C2=A0 &gt; consider and these can va=
+ry across different<br>
+&gt; &gt;=C2=A0 &gt; &gt; implementations of=C2=A0 architecture.<br>
+&gt; &gt;=C2=A0 &gt; &gt;<br>
+&gt; &gt;=C2=A0 &gt; &gt;=C2=A0 For SPAPR CPU, the granularity of &gt;possi=
+ble_cpus-&gt;cpus[] is &quot;core&quot;,<br>
+&gt; &gt;=C2=A0 &gt; &gt; and for=C2=A0 x86, it&#39;s &quot;thread&quot; gr=
+anularity.=C2=A0 <br>
+&gt; &gt;=C2=A0 &gt;<br>
+&gt; &gt;=C2=A0 &gt;<br>
+&gt; &gt;=C2=A0 &gt; We have threads per-core at microarchitecture level in=
+ ARM as well.<br>
+&gt; &gt;=C2=A0 &gt; But each thread appears like a vCPU to OS and AFAICS t=
+here are no<br>
+&gt; &gt;=C2=A0 &gt; special attributes attached to it. SMT can be enabled/=
+disabled at<br>
+&gt; &gt;=C2=A0 &gt; firmware and should get reflected in the configuration=
+ accordingly<br>
+&gt; &gt;=C2=A0 &gt; i.e. value of *threads-per-core* changes between 1 and=
+ &#39;N&#39;.=C2=A0 This<br>
+&gt; &gt;=C2=A0 &gt; means &#39;vcpus_count&#39; has to reflect the correct=
+ configuration. But I<br>
+&gt; &gt;=C2=A0 &gt; think threads lack proper representation in Qemu QOM.=
+=C2=A0 <br>
+&gt; &gt;=C2=A0 <br>
+&gt; &gt;=C2=A0 In topology related part, SMT (of x86) usually represents t=
+he logical<br>
+&gt; &gt;=C2=A0 processor level. And thread has the same meaning.=C2=A0 <br=
+>
+&gt; <br>
+&gt; <br>
+&gt; Agreed. It is same in ARM as well. The difference could be in how hard=
+ware<br>
+&gt; threads are implemented at microarchitecture level.=C2=A0 Nevertheless=
+, we do<br>
+&gt; have such virtual configurations, and the meaning of *threads* as-in Q=
+OM<br>
+&gt; topology (socket,cluster,core,thread) is virtualized similar to the ha=
+rdware<br>
+&gt; threads in host. And One should be able to configure threads support i=
+n the<br>
+&gt; virtual environment,=C2=A0 regardless whether or not underlying hardwa=
+re<br>
+&gt; supports threads. That&#39;s my take.<br>
+&gt; <br>
+&gt; Other aspect is how we then expose these threads to the guest. The gue=
+st<br>
+&gt; kernel (just like host kernel) should gather topology information usin=
+g<br>
+&gt; ACPI PPTT Table (This is ARM specific?). <br>
+<br>
+Not ARM specific, but not used by x86 in practice (I believe some risc-v bo=
+ards<br>
+use it).<br>
+<a href=3D"https://lore.kernel.org/linux-riscv/20240617131425.7526-3-cuiyun=
+hui@bytedance.com/" rel=3D"noreferrer" target=3D"_blank">https://lore.kerne=
+l.org/linux-riscv/20240617131425.7526-3-cuiyunhui@bytedance.com/</a><br>
+<br>
+&gt; Later is populated by the Qemu<br>
+&gt; (just like by firmware for the host kernel) by making use of the virtu=
+al<br>
+&gt; topology. ARM guest kernel, in absence of PPTT support can detect<br>
+&gt; presence of hardware threads by reading MT Bit within the MPIDR_EL1<br=
+>
+&gt; register.<br>
+<br>
+Sadly no it can&#39;t.=C2=A0 Lots of CPUs cores that are single thread set =
+that<br>
+bit anyway (so it&#39;s garbage and PPTT / DT is the only source of truth)<=
+br>
+<a href=3D"https://lore.kernel.org/all/CAFfO_h7vUEhqV15epf+_zVrbDhc3JrejkkO=
+VsHzHgCXNk+nDdg@mail.gmail.com/T/" rel=3D"noreferrer" target=3D"_blank">htt=
+ps://lore.kernel.org/all/CAFfO_h7vUEhqV15epf+_zVrbDhc3JrejkkOVsHzHgCXNk+nDd=
+g@mail.gmail.com/T/</a></blockquote><div><br></div><div><br></div><div>Yes,=
+ agreed, this last explanation was not completely correct.=C2=A0</div><div>=
+IICRC, Marc did point out in RFC V1 of June 2020 that value=C2=A0 MT=3D0 is=
+ set by</div><div>KVM to tell the guest=C2=A0kernel that vCPUs at the same=
+=C2=A0affinity-1=C2=A0fields are independent.</div><div>Problem was with th=
+e interpretation of non-zero MT Bit=C2=A0 and it was not consistent.</div><=
+div>The key thing is we should not rely on the value of the MT Bit in MPIDR=
+ to know</div><div>if multithreading exists. So yes, to know the exact stat=
+us of the multithreading</div><div>on ARM systems parsing PPTT Table is the=
+ only way.</div><div><br></div><div>I mentioned that because handling still=
+ exists in the kernel code but I think it exists</div><div>for handling=C2=
+=A0those other cases. Maybe a comment is required here (?):</div><div><br><=
+/div><div><div><a href=3D"https://elixir.bootlin.com/linux/v6.11-rc7/source=
+/arch/arm64/kernel/topology.c#L34">https://elixir.bootlin.com/linux/v6.11-r=
+c7/source/arch/arm64/kernel/topology.c#L34</a></div></div><div><br></div><d=
+iv>Thanks for pointing=C2=A0this out.</div><div><br></div><div><br></div><d=
+iv>Thanks<br></div><div>Salil.</div><div><br></div><div><br></div><div>=C2=
+=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8e=
+x;border-left:1px solid rgb(204,204,204);padding-left:1ex"><br>
+<br>
+Jonathan<br>
+<br>
+</blockquote></div></div></div></div></div></div></div></div>
+
+--0000000000004de4e20621d71713--

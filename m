@@ -1,250 +1,177 @@
-Received: by 2002:a17:504:928f:b0:1be9:327d:8ee3 with SMTP id d15csp86420nji;
-        Wed, 11 Sep 2024 02:18:34 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCV4yF2jxSAyrOd/tjPdXNM125JLFuS6CsvwnxY6VUgRbslznvoL32FfjQUmCnHvf5H1SNr8Wxk73yDLHw==@linaro.org
-X-Google-Smtp-Source: AGHT+IE0ek+RyecOTDOoaFBzFiyFvLxs6euu2s6azILdbq57llVSh2gQLpj2bmtxkjv+0DmolDCg
-X-Received: by 2002:a05:622a:1481:b0:456:87c1:59c7 with SMTP id d75a77b69052e-4580c791c1emr312810881cf.57.1726046314324;
-        Wed, 11 Sep 2024 02:18:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1726046314; cv=none;
-        d=google.com; s=arc-20240605;
-        b=NBlJ6osE9pmc7K/PN9mu/yE/tDUCxkY5dTGuHHUknSdGS6GNFkNbOXPtdVhiODwPIW
-         2jRUmjSV/pIHUWr7Xy/J67dZbeSyWOc4rW37fZ4Rw/GiBd5T6UsPodTnMa+C4BRx3jTJ
-         LuOEUyrrj1Meo1SaVRjEeepdJ6tfQ1xygK7+ZCMzscErsDXEzo+4QUfqgU7qL+JOUw13
-         vBuBFORqrCY8Xh8F6LZaqRHioNhTbxpJI+f4UQ5oOBfakLA7pHid+SpKWldvrJqJoW1Y
-         TmdmZSUCJbVcll4EeVzhbZxI8tiOZ/dZhaU+U8vtvOtiZX4KFi/jd41+MpyYn9yQO8uV
-         jp/A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
+Received: by 2002:a17:504:928f:b0:1be9:327d:8ee3 with SMTP id d15csp90309nji;
+        Wed, 11 Sep 2024 02:35:40 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUsDvhKOJGrcVLXM+QiXjptElWdYPKpBXXuHZD6kz4WWsARK13D2wYMbkgqULZJH3DXsYRd84oexXUYIQ==@linaro.org
+X-Received: by 2002:a17:903:24f:b0:203:a046:c666 with SMTP id d9443c01a7336-2074c4b35f5mr59741545ad.3.1726047340551;
+        Wed, 11 Sep 2024 02:35:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1726047340; cv=none;
+        d=google.com; s=arc-20160816;
+        b=Ph0JAkatcikSpQ2gnghKqS/yQH8z18TZhRpHOwx+Fru/SzQ7W6Z/TxD3+mh6nUBkHH
+         YsXLG4fpuVcUBrnjfIysaH+6LWNpAWWvm5Kx2K2QaQc/eadFT9iHJR8EEPzXkxZtNyqB
+         pWat9d7KUMW0R4h66a6pn5rue5wIsPWxr14kU+WFhIAddChho68rHLIiR/ACpIohf0bW
+         RTTK2pS5bY5emLKCqQhUnvfDqOfo72PsneuEb9xzGZLnn4p08l7ldcwyjgNiRIfGz4Wl
+         METDSM9AxxkEG+P69WXvUxiwpy1RDPzoktrk8Umhd1lN8xEDbzfj0zvbHdlIXHZDhvhA
+         Dl+g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=AVikt7nrco0lbDUD5+4EjEvG23ay5iaE/J1nZ9N0p5M=;
-        fh=QdfAx1VDHJ4qOeEKDdx78FJqyUAac0fY+rBlSEQ72Nc=;
-        b=cU0BCOxnLzWT0HoNHnNBrjgEEHbUN42C7c2XOJ/am85TMRqAT4/cdwExgYc5alOyRh
-         Ul28Aljk2T/xFgh57Cfa3vb/xfpzl+nSjjFaZSE9a/nrtVOgmUOIUmKM47arjq/pmlhL
-         213NXUTyYnIVKewmK6Lit9Y9CkvwkKbUTHbHBXKhrMsQ+tok1OiZwsFTN7lPvcNCDjvm
-         EPkRnkNSojU6mTe+6/hZ/QCkA4aZYXn5Qbmp1rXqjPwf2odZ3jmcTP6iqQ1qVgvIfODq
-         IL1VpcE8gsPKFGJxf6XlxF0mwPduX6VtoGLLpGhIvVvh7JkDY7qVmjyRGRw23OsiawV2
-         cyXA==;
+        bh=1u4hLYLb6JvJyT39AyvjEboo66L18yRm1sqg09O3j9E=;
+        fh=Iyzq9J9UuGpeEWruCoVUjbAUfvhN+Fu0MWJNu81toPc=;
+        b=wTc2Fq6ZzaoPfK3LkxlyLrw5FJj8+eqZlWFacynp+QbQ2wD5kbtPbkKVNuCDKU4jpY
+         E0k1bCPxPbSVNfeELWXMI9YOHzH/uTBHDgX2hk/k93GuZMn8Mu8ylPKj0BkV1nv3LqPy
+         ATyQGAsEM/uV5Ny9S/ZaMA/h24N79YQofZ2ESGp7qlZ1XOjFbk3/F6YrH+7EmzEVgksa
+         5w1gyvFKseucb0Wj24PX/lALkb1dMhaXAxZyj1MdLF5PhlbM7hCOxgemG6yE22XnHVib
+         2YND3727miz7ZqRRgCZUo23gp4Zb5tbuKvfBEQZyyAYENYwusLQs3fRonY3BM+DsP8Xz
+         1NSw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LGvRfX+O;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4582300e633si97966121cf.682.2024.09.11.02.18.34
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=XOstnMv8;
+       spf=pass (google.com: domain of dbarboza@ventanamicro.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=dbarboza@ventanamicro.com;
+       dara=neutral header.i=@linaro.org
+Return-Path: <dbarboza@ventanamicro.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d9443c01a7336-20710e2d8b1sor53786135ad.1.2024.09.11.02.35.40
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 11 Sep 2024 02:18:34 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Wed, 11 Sep 2024 02:35:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of dbarboza@ventanamicro.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LGvRfX+O;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1soJUK-00076d-S4; Wed, 11 Sep 2024 05:18:12 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1soJUD-00075z-Q1
- for qemu-devel@nongnu.org; Wed, 11 Sep 2024 05:18:06 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1soJUB-00040n-6t
- for qemu-devel@nongnu.org; Wed, 11 Sep 2024 05:18:04 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1726046281;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=AVikt7nrco0lbDUD5+4EjEvG23ay5iaE/J1nZ9N0p5M=;
- b=LGvRfX+O7iaH6XtbsOqDQ6DZ4knlApA5l7ZJw2zhO9h2JyCHUR/u4GtgQRZAUdxdrLDaML
- L8MvIKTk7XPAAS+wIDJ1Yal3/s5QZ7S89eWoNIcU9TvbFycoZhzpO0HsspV1TxzFb7NFLd
- +W+gAOqPHzBj0r8B2EC1mXgGPo1I+4Q=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-648-DL4tHTD4OTKlZeoakf5B4A-1; Wed, 11 Sep 2024 05:18:00 -0400
-X-MC-Unique: DL4tHTD4OTKlZeoakf5B4A-1
-Received: by mail-wr1-f72.google.com with SMTP id
- ffacd0b85a97d-374b981dd62so917584f8f.3
- for <qemu-devel@nongnu.org>; Wed, 11 Sep 2024 02:17:59 -0700 (PDT)
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=XOstnMv8;
+       spf=pass (google.com: domain of dbarboza@ventanamicro.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=dbarboza@ventanamicro.com;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=ventanamicro.com; s=google; t=1726047340; x=1726652140; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=1u4hLYLb6JvJyT39AyvjEboo66L18yRm1sqg09O3j9E=;
+        b=XOstnMv8f9FLPdrH9cv4XZFJ1xeUFfI5V+Kja/teOPwdKYdvos64bmYM+C3V0wPumP
+         jVI+kEi2SL7uviqeQi+2+QBF+M73J3yqgkIBlJzbRrL2siTYq9MfpgYUmhcNL2/zNXfu
+         4ur408sAw3GBg54CTUyaw274gPpCYTI6qunigMCLEVb0bV5B4HFd3doQiE0qSFZE4gDV
+         Nf2Zz2jowyxitP+L8qXarwr5OYjg+3hHo4x3jEykxrePBNifqaknG5Kd+93235aWdpm9
+         1G2fie9aHtruSd+ESmI/r8vDFNosopAFbLprk35/w4N/EOkTBfwcZ2rO6F7L+OXS+vTu
+         EV2g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1726046279; x=1726651079;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=AVikt7nrco0lbDUD5+4EjEvG23ay5iaE/J1nZ9N0p5M=;
- b=txyGZBuiU9qYQrHEv13VkeQWrgt1dbmq4KbK5ya1IKeBj1Wdl0/LSZT71v40Mc07hG
- lPlI8edGV/FyNhZ2i8p1ezjuMpUWVJCDAycR3lB2D+P2gdKa7SkG+bdoq/xh3X8KY2IZ
- ysAKHqz41Ay2AEu50Gs4eAcl1Xh+Q/qL00ILNafzUhx34uiT01aABXmFi+2FxXg1KJ+L
- Hjc5smo47nMLlJ6VGB27IDpYwaT2fQ31LxRpxr8BPZ3YKyCM5u4c8Ioj+3ZtKk60Knr0
- Vk23o/7ctgFeRk46z1KYngWltrAW/PLTcNFfkF6p6bjrUTnqgG60ssEUA33IHaXuWKFg
- PTdQ==
-X-Gm-Message-State: AOJu0YyIU+I5Q+bSQBYBhatS+3RRmKrA+6dPg5huXvE0BWtIeHaDndNH
- kvBk99WxbsjKKVbk4zMR5XilOhCCofSlk7YFbnkne3Bh4y/YqD48YwNdMl/Q8OrCz+fFETrLeVO
- V7sieCSKi21LJ8I8TzrAA5vLHNQ5j5edz+2Pdcyqz5Rmlrp5nTXrA
-X-Received: by 2002:adf:e502:0:b0:371:6fba:d555 with SMTP id
- ffacd0b85a97d-378b07a4f81mr1392027f8f.18.1726046278655; 
- Wed, 11 Sep 2024 02:17:58 -0700 (PDT)
-X-Received: by 2002:adf:e502:0:b0:371:6fba:d555 with SMTP id
- ffacd0b85a97d-378b07a4f81mr1392004f8f.18.1726046278096; 
- Wed, 11 Sep 2024 02:17:58 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
- ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-378956de00fsm11008755f8f.99.2024.09.11.02.17.57
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 11 Sep 2024 02:17:57 -0700 (PDT)
-Message-ID: <4b53b635-7ed7-478b-9b53-d27833c03613@redhat.com>
-Date: Wed, 11 Sep 2024 11:17:56 +0200
+        d=1e100.net; s=20230601; t=1726047340; x=1726652140;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=1u4hLYLb6JvJyT39AyvjEboo66L18yRm1sqg09O3j9E=;
+        b=FAyYrB8zFcl0SVNATAVoqPp2r3TuR6zdgJD+Oo/j7T8IqgXxt6RD1AbDofsX8Uifp4
+         JWNfR5xm/dqSnxYr6/kGIi7GevNM/IkrnRFzyzqoeyvgJsfpthtz9GQSO9E5/2qNBf5L
+         QcUH9zMDtVvFBmH6uw/YNVBfgGBmY2MvC94eFeRgszXjTxmZYwRYOx/C7B6Njsm9D7jX
+         QDujylphyOaJh1lMqW4kZ8ogVmk1l4w4jwd92nz7u5Y4BZPG8c2U9/EE7VRHCK6kWe6p
+         oA+B+qWQL6q5R0UQt2PFQcdm2TBtU3aDi1G+igPsKIui/gSwENBEc5cC1Jam2OA14ZZ7
+         Ufvg==
+X-Forwarded-Encrypted: i=1; AJvYcCUFejxbgh8uwx4njjLWTezFWnik4S1Vd8fMPRChNvd9QykHrnKYJym7Vwjhf2k9KeEOuPk1WKu04GIkJw==@linaro.org
+X-Gm-Message-State: AOJu0Yypt0Jy2lhkdJRnqB3YsPqX72H+w50WnpxVFXg6ozkRJt9tYp6I
+	6Rr/z1Jn/Abh/yC1QXRUnjLXLra8ntD7PXNkhopdCgO2/3cwPmZWn3GmPt2s5hk=
+X-Google-Smtp-Source: AGHT+IFUx/BwHC24gWqvFB3GjiXa6Pwl4/OE8FDUMSu9YsViqYb7FQaE3SBpFeH2lAaF7lGvC5UgZA==
+X-Received: by 2002:a17:903:290:b0:207:3a53:fe67 with SMTP id d9443c01a7336-2074c5f7f19mr61649475ad.32.1726047340049;
+        Wed, 11 Sep 2024 02:35:40 -0700 (PDT)
+Return-Path: <dbarboza@ventanamicro.com>
+Received: from [192.168.68.110] (201-68-240-198.dsl.telesp.net.br. [201.68.240.198])
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-7d8255dc0d4sm6861245a12.64.2024.09.11.02.35.26
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 11 Sep 2024 02:35:39 -0700 (PDT)
+Message-ID: <769135e9-c377-461e-86ed-e4e1de6ff0cc@ventanamicro.com>
+Date: Wed, 11 Sep 2024 06:35:23 -0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [Bug Report] smmuv3 event 0x10 report when running virtio-blk-pci
+Subject: Re: [PATCH 34/39] target/riscv: remove break after
+ g_assert_not_reached()
+To: Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-devel@nongnu.org
+Cc: Zhao Liu <zhao1.liu@intel.com>, "Richard W.M. Jones" <rjones@redhat.com>,
+ Joel Stanley <joel@jms.id.au>, Kevin Wolf <kwolf@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
+ Corey Minyard <minyard@acm.org>, Eric Farman <farman@linux.ibm.com>,
+ Thomas Huth <thuth@redhat.com>, Keith Busch <kbusch@kernel.org>,
+ WANG Xuerui <git@xen0n.name>, Hyman Huang <yong.huang@smartx.com>,
+ Stefan Berger <stefanb@linux.vnet.ibm.com>,
+ Michael Rolnik <mrolnik@gmail.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ Markus Armbruster <armbru@redhat.com>,
+ Sriram Yagnaraman <sriram.yagnaraman@ericsson.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>, qemu-riscv@nongnu.org,
+ Ani Sinha <anisinha@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
+ Jesper Devantier <foss@defmacro.it>, Laurent Vivier <laurent@vivier.eu>,
+ Peter Maydell <peter.maydell@linaro.org>, Igor Mammedov
+ <imammedo@redhat.com>, kvm@vger.kernel.org,
+ =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>, Fam Zheng
+ <fam@euphon.net>, qemu-s390x@nongnu.org, Hanna Reitz <hreitz@redhat.com>,
+ Nicholas Piggin <npiggin@gmail.com>, Eduardo Habkost <eduardo@habkost.net>,
+ Laurent Vivier <lvivier@redhat.com>, Rob Herring <robh@kernel.org>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, qemu-block@nongnu.org,
+ "Maciej S. Szmigiero" <maciej.szmigiero@oracle.com>, qemu-ppc@nongnu.org,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,
+ Harsh Prateek Bora <harshpb@linux.ibm.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Nina Schoetterl-Glausch <nsg@linux.ibm.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Fabiano Rosas <farosas@suse.de>,
+ Helge Deller <deller@gmx.de>, Dmitry Fleytman <dmitry.fleytman@gmail.com>,
+ Akihiko Odaki <akihiko.odaki@daynix.com>,
+ Marcelo Tosatti <mtosatti@redhat.com>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ Aurelien Jarno <aurelien@aurel32.net>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ Yanan Wang <wangyanan55@huawei.com>, Peter Xu <peterx@redhat.com>,
+ Bin Meng <bmeng.cn@gmail.com>, Weiwei Li <liwei1518@gmail.com>,
+ Klaus Jensen <its@irrelevant.dk>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Jason Wang <jasowang@redhat.com>
+References: <20240910221606.1817478-1-pierrick.bouvier@linaro.org>
+ <20240910221606.1817478-35-pierrick.bouvier@linaro.org>
 Content-Language: en-US
-To: Zhou Wang <wangzhou1@hisilicon.com>,
- Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
- Mostafa Saleh <smostafa@google.com>
-References: <447984db-8c52-c911-d7bd-6616edaaefa5@hisilicon.com>
- <CAFEAcA-qBKn=42SYwU1X_7QrwWZYA1G1Hbf-iUP4GOFu0LwLzw@mail.gmail.com>
- <cbd29bc4-c5ab-22d7-8a3e-fd7646f16fd5@hisilicon.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <cbd29bc4-c5ab-22d7-8a3e-fd7646f16fd5@hisilicon.com>
-Content-Type: text/plain; charset=UTF-8
+From: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
+In-Reply-To: <20240910221606.1817478-35-pierrick.bouvier@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
-X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.145,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 3/u+neSGogj1
+X-TUID: hAZ+DPwb+8ww
 
-Hi,
 
-On 9/10/24 03:24, Zhou Wang via wrote:
-> On 2024/9/9 22:31, Peter Maydell wrote:
->> On Mon, 9 Sept 2024 at 15:22, Zhou Wang via <qemu-devel@nongnu.org> wrote:
->>> Hi All,
->>>
->>> When I tested mainline qemu(commit 7b87a25f49), it reports smmuv3 event 0x10
->>> during kernel booting up.
->> Does it still do this if you either:
->>  (1) use the v9.1.0 release (commit fd1952d814da)
->>  (2) use "-machine virt-9.1" instead of "-machine virt"
-> I tested above two cases, the problem is still there.
 
-I have not much progressed yet but I see it comes with
-qemu traces.
+On 9/10/24 7:16 PM, Pierrick Bouvier wrote:
+> Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+> ---
 
-smmuv3-iommu-memory-region-0-0 translation failed for iova=0x0
-(SMMU_EVT_F_TRANSLATION)
-../..
-qemu-system-aarch64: virtio-blk failed to set guest notifier (-22),
-ensure -accel kvm is set.
-qemu-system-aarch64: virtio_bus_start_ioeventfd: failed. Fallback to
-userspace (slower).
+Reviewed-by: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
 
-the PCIe Host bridge seems to cause that translation failure at iova=0
-
-Also virtio-iommu has the same issue:
-qemu-system-aarch64: virtio_iommu_translate no mapping for 0x0 for sid=1024
-qemu-system-aarch64: virtio-blk failed to set guest notifier (-22),
-ensure -accel kvm is set.
-qemu-system-aarch64: virtio_bus_start_ioeventfd: failed. Fallback to
-userspace (slower).
-
-Only happens with maxcpus=3. Note the virtio-blk-pci is not protected by
-the vIOMMU in your case.
-
-Thanks
-
-Eric
-
->
->> ?
->>
->> My suspicion is that this will have started happening now that
->> we expose an SMMU with two-stage translation support to the guest
->> in the "virt" machine type (which we do not if you either
->> use virt-9.1 or in the v9.1.0 release).
->>
->> I've cc'd Eric (smmuv3 maintainer) and Mostafa (author of
->> the two-stage support).
->>
->>> qemu command which I use is as below:
->>>
->>> qemu-system-aarch64 -machine virt,kernel_irqchip=on,gic-version=3,iommu=smmuv3 \
->>> -kernel Image -initrd minifs.cpio.gz \
->>> -enable-kvm -net none -nographic -m 3G -smp 6 -cpu host \
->>> -append 'rdinit=init console=ttyAMA0 ealycon=pl0ll,0x90000000 maxcpus=3' \
->>> -device pcie-root-port,port=0x8,chassis=0,id=pci.0,bus=pcie.0,multifunction=on,addr=0x2 \
->>> -device pcie-root-port,port=0x9,chassis=1,id=pci.1,bus=pcie.0,addr=0x2.0x1 \
->>> -device virtio-blk-pci,drive=drive0,id=virtblk0,num-queues=8,packed=on,bus=pci.1 \
->>> -drive file=/home/boot.img,if=none,id=drive0,format=raw
->>>
->>> smmuv3 event 0x10 log:
->>> [...]
->>> [    1.962656] virtio-pci 0000:02:00.0: Adding to iommu group 0
->>> [    1.963150] virtio-pci 0000:02:00.0: enabling device (0000 -> 0002)
->>> [    1.964707] virtio_blk virtio0: 6/0/0 default/read/poll queues
->>> [    1.965759] virtio_blk virtio0: [vda] 2097152 512-byte logical blocks (1.07 GB/1.00 GiB)
->>> [    1.966934] arm-smmu-v3 9050000.smmuv3: event 0x10 received:
->>> [    1.967442] input: gpio-keys as /devices/platform/gpio-keys/input/input0
->>> [    1.967478] arm-smmu-v3 9050000.smmuv3:      0x0000020000000010
->>> [    1.968381] clk: Disabling unused clocks
->>> [    1.968677] arm-smmu-v3 9050000.smmuv3:      0x0000020000000000
->>> [    1.968990] PM: genpd: Disabling unused power domains
->>> [    1.969424] arm-smmu-v3 9050000.smmuv3:      0x0000000000000000
->>> [    1.969814] ALSA device list:
->>> [    1.970240] arm-smmu-v3 9050000.smmuv3:      0x0000000000000000
->>> [    1.970471]   No soundcards found.
->>> [    1.970902] arm-smmu-v3 9050000.smmuv3: event 0x10 received:
->>> [    1.971600] arm-smmu-v3 9050000.smmuv3:      0x0000020000000010
->>> [    1.971601] arm-smmu-v3 9050000.smmuv3:      0x0000020000000000
->>> [    1.971601] arm-smmu-v3 9050000.smmuv3:      0x0000000000000000
->>> [    1.971602] arm-smmu-v3 9050000.smmuv3:      0x0000000000000000
->>> [    1.971606] arm-smmu-v3 9050000.smmuv3: event 0x10 received:
->>> [    1.971607] arm-smmu-v3 9050000.smmuv3:      0x0000020000000010
->>> [    1.974202] arm-smmu-v3 9050000.smmuv3:      0x0000020000000000
->>> [    1.974634] arm-smmu-v3 9050000.smmuv3:      0x0000000000000000
->>> [    1.975005] Freeing unused kernel memory: 10112K
->>> [    1.975062] arm-smmu-v3 9050000.smmuv3:      0x0000000000000000
->>> [    1.975442] Run init as init process
->>>
->>> Another information is that if "maxcpus=3" is removed from the kernel command line,
->>> it will be OK.
->>>
->>> I am not sure if there is a bug about vsmmu. It will be very appreciated if anyone
->>> know this issue or can take a look at it.
->> thanks
->> -- PMM
->> .
-
+>   target/riscv/monitor.c                  | 1 -
+>   target/riscv/insn_trans/trans_rvv.c.inc | 2 --
+>   2 files changed, 3 deletions(-)
+> 
+> diff --git a/target/riscv/monitor.c b/target/riscv/monitor.c
+> index f5b1ffe6c3e..100005ea4e9 100644
+> --- a/target/riscv/monitor.c
+> +++ b/target/riscv/monitor.c
+> @@ -184,7 +184,6 @@ static void mem_info_svxx(Monitor *mon, CPUArchState *env)
+>           break;
+>       default:
+>           g_assert_not_reached();
+> -        break;
+>       }
+>   
+>       /* calculate virtual address bits */
+> diff --git a/target/riscv/insn_trans/trans_rvv.c.inc b/target/riscv/insn_trans/trans_rvv.c.inc
+> index 3a3896ba06c..f8928c44a8b 100644
+> --- a/target/riscv/insn_trans/trans_rvv.c.inc
+> +++ b/target/riscv/insn_trans/trans_rvv.c.inc
+> @@ -3172,7 +3172,6 @@ static void load_element(TCGv_i64 dest, TCGv_ptr base,
+>           break;
+>       default:
+>           g_assert_not_reached();
+> -        break;
+>       }
+>   }
+>   
+> @@ -3257,7 +3256,6 @@ static void store_element(TCGv_i64 val, TCGv_ptr base,
+>           break;
+>       default:
+>           g_assert_not_reached();
+> -        break;
+>       }
+>   }
+>   

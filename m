@@ -1,212 +1,218 @@
-Received: by 2002:a17:504:928f:b0:1be9:327d:8ee3 with SMTP id d15csp144125nji;
-        Wed, 11 Sep 2024 05:47:15 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUWxBn+M7Aml3sfXoSUqvfJS2RhmXtz02yw6cf3zIPoTz9HNURRlbFxQmcnle6xbD1Och7fRYQdPl4BDQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IGAHc1C1mrXG0FHyp4nXFg7neFq1S1MYySUobhrT9We13jq4Csedi6QsT1MKkwA4/J/IkoN
-X-Received: by 2002:a05:620a:404b:b0:79f:182a:d435 with SMTP id af79cd13be357-7a9a3891967mr2460123185a.32.1726058835633;
-        Wed, 11 Sep 2024 05:47:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1726058835; cv=none;
+Received: by 2002:a17:504:928f:b0:1be9:327d:8ee3 with SMTP id d15csp167287nji;
+        Wed, 11 Sep 2024 06:52:52 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCWyLZ97XJrZo82UT+1qE34IVf3QlQRpsZnVkyKldAgTUKPXQwj9/P4eTbKUq6XogvU9Umwv9TNiBvzmqA==@linaro.org
+X-Google-Smtp-Source: AGHT+IGhhxqac2AVRtEExOqRCYEMqxSn9JK+6lGnVPdAVIMAxmSELJZOkR3/5JHLzlJvKWO6fMLW
+X-Received: by 2002:a05:6808:1290:b0:3da:a721:283 with SMTP id 5614622812f47-3e068194086mr2202899b6e.7.1726062772170;
+        Wed, 11 Sep 2024 06:52:52 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1726062772; cv=pass;
         d=google.com; s=arc-20240605;
-        b=iGnX39WSL26jN/RCnWV5wEe/BRcGQs5yYafj80MGMCFXI3XTwV4n4wYp4qaYSi2i3W
-         GbtDsPQK2jeFRWhAAYGezi1A7wdV8JeQ4wgXz5UCEYovTY8l3xxMrOioa9541QPXb2Io
-         AlYsBAUJhkuH6rbOQXXrqAzaTW2ebad+dk/llzKAouyxus2KBqu4sNCwXA3uqdCtRXR5
-         nOGtFWD8DmT0IfK9jpjOZF3DokszVuOBE4Bme0KPep2fRjZthe7f9ab3ywjgDdNQeorR
-         awHWR8EPXOX+SHIdmXeA6f0wsWWoAq8e+4LVnHgklrGCrbBdYC0pIqW9NrwcisurfKWn
-         ZZeA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:autocrypt:from:content-language:references:cc:to
-         :subject:user-agent:mime-version:date:message-id;
-        bh=Vd5BjRfZ+DVGSrdJRILGYkbE3Q4SISxy2rW2QTn1Btw=;
-        fh=dBv7nRsWLqRB3rb+yULwUVjfGR7eHf4BRM0uOOEyTeg=;
-        b=RFNAVNxVHawptH1mThdo6i3gj3lF9L9tENjdf/ZSSN48ohLOAX6Acda7nTD97kMGot
-         QKKBj6/08uIEKR9kV/VbpvqFpN8OV/f+NoN9BjedgsdvI/NPPViM+G5ib1vRRCdTub49
-         GoB+u2qvkq7/xWbChdgmpxTKyvU/qcc5WrgrZ1pX62Qfg7af++/EOqkS+Q+L1hTqgdQu
-         zDo2lOLLtXVk4gMDxGzAqiXfECnMTYChbXJb4f0K2YYwAzLMyDNFZuvkZzS9JsHUbdOy
-         kGjaASwioTu41OCnf3X4CBcAN+dCHBNjD0XfqZ9FLzrh7ISl5L8QlToNIdVlkNhRPBk7
-         QOfg==;
+        b=A8Jw74TbUdyxn0cBeiT/JVP37s9wGZ209K7kDm6qKrkn804tvZubgPH59dy7hnbGvz
+         i+qPB3/mjfrz4/pm+Ig3hbLpiU107Sy83kXWYyd48EouSJXTyDql98nXsO0RNIZDGB3V
+         8oymy5Kz0ih6sAnucR5ti/yUXDvAMWWvRQh0LxE9sR2RETTWf5C68ritOKn5OqKT3XAf
+         APvb6oCcMdn/xNs4x5dSOFFBlVp2a3aurLqMhT3SkU51vYzJpEA+ZQ7OnOub8mKIpxSy
+         5rsR9HVM1evqpiKTm4nWVX0lAXvH7qd8Nmn05EMTQqtYBdjhC+H7EVAoWPFZDFVE0t1m
+         VGAw==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=+GQVE2uuyEK3/RgorpZcN0UGcAeWWEStHDF6T/3/l8s=;
+        fh=XihGf2SpCkhFC3EP8P8Q6J6seXOxSRE4kEjoYHqCv3Q=;
+        b=M22OlUq9Qp9lnT6fKNVmgcRPpGSfdhGbSMd1qPz15mxWdwVwKzEQBUl0PJytTjR3t5
+         oSObs6XFBlXrWKvGGH1gOcWJq8+oTH6MrDNGw+0uyqG6dMd/KXUoNfgL7mfPfv3JoSBT
+         B0Mzr+BzjDuoNZCg9i1tpylhlaBkvK58nZU2DqTxSjIjlK4+oSG90eEVFEnvWNoysLcf
+         T9iHYcstgvymm7Gv6tiKrnULWVxBexdHAPLJl6TgrkpbIq8da0me+0Cd17RH5C3JBD9o
+         ckKXfnI8xYJLbfKyu4rQ4bp8ILSEP4GBNE9i2uAziRNCDdEeGvc1Q/dNM8eAdtHvyZ8x
+         fFmw==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7a9a7a5472bsi1054890785a.543.2024.09.11.05.47.15
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JfmXO2cA;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of linux-kernel+bounces-325075-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-325075-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <linux-kernel+bounces-325075-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [2604:1380:45e3:2400::1])
+        by mx.google.com with ESMTPS id 41be03b00d2f7-7d8253f0e6asi10393359a12.338.2024.09.11.06.52.51
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 11 Sep 2024 05:47:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 11 Sep 2024 06:52:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of linux-kernel+bounces-325075-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) client-ip=2604:1380:45e3:2400::1;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1soMkO-0006fF-QC; Wed, 11 Sep 2024 08:47:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mail@maciej.szmigiero.name>)
- id 1soMkI-0006JW-Ij; Wed, 11 Sep 2024 08:46:54 -0400
-Received: from vps-vb.mhejs.net ([37.28.154.113])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mail@maciej.szmigiero.name>)
- id 1soMkG-0002eX-4S; Wed, 11 Sep 2024 08:46:54 -0400
-Received: from MUA by vps-vb.mhejs.net with esmtps (TLS1.2) tls
- TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 (Exim 4.94.2)
- (envelope-from <mail@maciej.szmigiero.name>)
- id 1soMjp-0003vT-2Y; Wed, 11 Sep 2024 14:46:25 +0200
-Message-ID: <10d6d67a-32f6-40fc-aba9-c62a74d9d98d@maciej.szmigiero.name>
-Date: Wed, 11 Sep 2024 14:46:18 +0200
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JfmXO2cA;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of linux-kernel+bounces-325075-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-325075-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by sv.mirrors.kernel.org (Postfix) with ESMTPS id A3DAD283831
+	for <alex.bennee@linaro.org>; Wed, 11 Sep 2024 13:52:51 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 1948519E992;
+	Wed, 11 Sep 2024 13:51:16 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="JfmXO2cA"
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 20C0219E96A
+	for <linux-kernel@vger.kernel.org>; Wed, 11 Sep 2024 13:51:13 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.133.124
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1726062675; cv=none; b=h2MjaDA4KDVdwJb0wa0wDyd7Jk4Hk9U6X/KXQL17oyzDrD7M5QsSFnwYXQExlUFs+g5DRTe2+CYUZo+SvklCInZ2qPyOGhpYfhp8+CTRbfRkyd/KPjut6guOvAkY29TxoYYDc7D4dEyDlv/lzJpw1vjrWLx1edPhZrAFwo3Z6lM=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1726062675; c=relaxed/simple;
+	bh=3yTd4KdOimHVV/proQ9mzWYCXCNziTwu1Bk0UDD58V0=;
+	h=Date:From:To:Cc:Subject:Message-ID:In-Reply-To:References:
+	 MIME-Version:Content-Type; b=M2hsCrVd8ch9XyN+d5C1aVMqdWkrm4zeBhFvBTD6Hl7yg7tlk8wzeI12vlR5u6ufEF4sFtqbtO7qrLqeqYrOk7N3vHjZv3sxN5ZlMZhbp0VmbtHY6nUXtz9ZKLExLs3CeqW4YqYZIhXWUaPLM1dTW7IPlapA/PxOdPEugou9ZE4=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=JfmXO2cA; arc=none smtp.client-ip=170.10.133.124
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1726062673;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=+GQVE2uuyEK3/RgorpZcN0UGcAeWWEStHDF6T/3/l8s=;
+	b=JfmXO2cABQOV4fUtpJOVa84E2NpBJ8K/VP+J7zpNMNtClHqu2v/j5rG8o0JgWxX8RFUV5Q
+	cTTiYprEt6MxT4Sulb4zIlRW4Npr1iSeL+O53TswaNsmg02VFGgmEbMmBsIOzozsor9sM9
+	rNaj3CjsOt9DqZQHq6g8LpEeX++4kg0=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-358-X-BZ9MF3OZSn9-pbLKELZg-1; Wed, 11 Sep 2024 09:51:11 -0400
+X-MC-Unique: X-BZ9MF3OZSn9-pbLKELZg-1
+Received: by mail-wm1-f69.google.com with SMTP id 5b1f17b1804b1-42cb33e6299so26125815e9.2
+        for <linux-kernel@vger.kernel.org>; Wed, 11 Sep 2024 06:51:11 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1726062670; x=1726667470;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=+GQVE2uuyEK3/RgorpZcN0UGcAeWWEStHDF6T/3/l8s=;
+        b=AeXLq+mUMIQkcnxvUgKWlOnKQOc+nvfOi7RxtFzftxGuupYjAmP32U6eBxYC8/qgdP
+         UD0LPcq92OU4iymS2KlX3yvyqsq7GHKnaQPoJNsZot6wxgss2Rua6Y1Zgi8AsUcVb7Z/
+         /8F97mJotb5k3LS+CnQhhKoyqCq+rjk4oH35/FqZzVFT/Zpnmq/IZ4+MlxP9UiDpTf4b
+         +AuNn6PflcIT/cNC9lXmDfTEXf4NxFT73Pme2M6QRVmeUdght/jWXIVOQH1kjZ1BR6JW
+         oOeLONKIgqzm9ilzhkE2tjVolbrevb3MbS8QGgZ5jxDuhLhb08OYiPWrNFcxFhApQgSW
+         UzFA==
+X-Forwarded-Encrypted: i=1; AJvYcCXcksphVH/ZYDwP4miuGgPtRS+WUOOdcWgvXKuYj3NcY53k6YkE+oUvHQuqqed3W/+CwoUdPXD5zUKE/+o=@vger.kernel.org
+X-Gm-Message-State: AOJu0YxKnf+f1baiXYRe5NfJq4aLXxYXacygFWhW1R5ROEPmh8Jc6yaV
+	xHVQ9rP8FS1p801sEGVFB1V3yQ8R7cnt0q3A8QvBYX1nq6JKr439pw6IXPp45SqSStWXWsz8SBl
+	aU0Q9yYhI3+uZ/Oy+lDEQdL9HAg8u6AUkR7uTIhXnr1TNj9hbDPet3JFi0AEv6Q==
+X-Received: by 2002:a05:600c:3b9a:b0:42c:af06:718 with SMTP id 5b1f17b1804b1-42caf060aa3mr100376835e9.28.1726062670566;
+        Wed, 11 Sep 2024 06:51:10 -0700 (PDT)
+X-Received: by 2002:a05:600c:3b9a:b0:42c:af06:718 with SMTP id 5b1f17b1804b1-42caf060aa3mr100376375e9.28.1726062669558;
+        Wed, 11 Sep 2024 06:51:09 -0700 (PDT)
+Received: from imammedo.users.ipa.redhat.com (nat-pool-brq-t.redhat.com. [213.175.37.10])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-42caeb21a5csm143859255e9.6.2024.09.11.06.51.08
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 11 Sep 2024 06:51:08 -0700 (PDT)
+Date: Wed, 11 Sep 2024 15:51:08 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+Cc: "Michael S. Tsirkin" <mst@redhat.com>, Ani Sinha <anisinha@redhat.com>,
+ Dongjiu Geng <gengdongjiu1@gmail.com>, linux-kernel@vger.kernel.org,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [PATCH v9 01/12] acpi/ghes: add a firmware file with HEST
+ address
+Message-ID: <20240911155108.190f0fdf@imammedo.users.ipa.redhat.com>
+In-Reply-To: <34dd38395f29f57a19aef299bafdff9442830ed3.1724556967.git.mchehab+huawei@kernel.org>
+References: <cover.1724556967.git.mchehab+huawei@kernel.org>
+	<34dd38395f29f57a19aef299bafdff9442830ed3.1724556967.git.mchehab+huawei@kernel.org>
+X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
+Precedence: bulk
+X-Mailing-List: linux-kernel@vger.kernel.org
+List-Id: <linux-kernel.vger.kernel.org>
+List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 01/39] docs/spin: replace assert(0) with
- g_assert_not_reached()
-To: Eric Blake <eblake@redhat.com>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Cc: qemu-devel@nongnu.org, Zhao Liu <zhao1.liu@intel.com>,
- "Richard W.M. Jones" <rjones@redhat.com>, Joel Stanley <joel@jms.id.au>,
- Kevin Wolf <kwolf@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- qemu-arm@nongnu.org, Corey Minyard <minyard@acm.org>,
- Eric Farman <farman@linux.ibm.com>, Thomas Huth <thuth@redhat.com>,
- Keith Busch <kbusch@kernel.org>, WANG Xuerui <git@xen0n.name>,
- Hyman Huang <yong.huang@smartx.com>,
- Stefan Berger <stefanb@linux.vnet.ibm.com>,
- Michael Rolnik <mrolnik@gmail.com>,
- Alistair Francis <alistair.francis@wdc.com>,
- =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- Markus Armbruster <armbru@redhat.com>,
- Sriram Yagnaraman <sriram.yagnaraman@ericsson.com>,
- Palmer Dabbelt <palmer@dabbelt.com>, qemu-riscv@nongnu.org,
- Ani Sinha <anisinha@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
- Jesper Devantier <foss@defmacro.it>, Laurent Vivier <laurent@vivier.eu>,
- Peter Maydell <peter.maydell@linaro.org>, Igor Mammedov
- <imammedo@redhat.com>, kvm@vger.kernel.org,
- =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>, Fam Zheng
- <fam@euphon.net>, qemu-s390x@nongnu.org, Hanna Reitz <hreitz@redhat.com>,
- Nicholas Piggin <npiggin@gmail.com>, Eduardo Habkost <eduardo@habkost.net>,
- Laurent Vivier <lvivier@redhat.com>, Rob Herring <robh@kernel.org>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, qemu-block@nongnu.org,
- qemu-ppc@nongnu.org, Daniel Henrique Barboza <danielhb413@gmail.com>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Nina Schoetterl-Glausch <nsg@linux.ibm.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Fabiano Rosas <farosas@suse.de>,
- Helge Deller <deller@gmx.de>, Dmitry Fleytman <dmitry.fleytman@gmail.com>,
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
- Akihiko Odaki <akihiko.odaki@daynix.com>,
- Marcelo Tosatti <mtosatti@redhat.com>,
- David Gibson <david@gibson.dropbear.id.au>,
- Aurelien Jarno <aurelien@aurel32.net>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Yanan Wang <wangyanan55@huawei.com>, Peter Xu <peterx@redhat.com>,
- Bin Meng <bmeng.cn@gmail.com>, Weiwei Li <liwei1518@gmail.com>,
- Klaus Jensen <its@irrelevant.dk>,
- Jean-Christophe Dubois <jcd@tribudubois.net>,
- Jason Wang <jasowang@redhat.com>
-References: <20240910221606.1817478-1-pierrick.bouvier@linaro.org>
- <20240910221606.1817478-2-pierrick.bouvier@linaro.org>
- <zkyoryho5alnyirnl7ulvh5y6tkty6koccgeygmve42uml7glu@37rkdodtlx4f>
- <bwo43ms2wi6vbeqhlc7qjwmw5jyt2btxvpph3lqn7tfol4srjf@77yusngzs6wh>
-Content-Language: en-US, pl-PL
-From: "Maciej S. Szmigiero" <mail@maciej.szmigiero.name>
-Autocrypt: addr=mail@maciej.szmigiero.name; keydata=
- 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
-In-Reply-To: <bwo43ms2wi6vbeqhlc7qjwmw5jyt2btxvpph3lqn7tfol4srjf@77yusngzs6wh>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=37.28.154.113;
- envelope-from=mail@maciej.szmigiero.name; helo=vps-vb.mhejs.net
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: mgzdVbkQEAc2
+X-TUID: BheduwNLGEtN
 
-On 11.09.2024 14:37, Eric Blake wrote:
-> On Wed, Sep 11, 2024 at 07:33:59AM GMT, Eric Blake wrote:
->> On Tue, Sep 10, 2024 at 03:15:28PM GMT, Pierrick Bouvier wrote:
->>> Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
->>> ---
->>
->> A general suggestion for the entire series: please use a commit
->> message that explains why this is a good idea.  Even something as
->> boiler-plate as "refer to commit XXX for rationale" that can be
->> copy-pasted into all the other commits is better than nothing,
->> although a self-contained message is best.  Maybe:
->>
->> This patch is part of a series that moves towards a consistent use of
->> g_assert_not_reached() rather than an ad hoc mix of different
->> assertion mechanisms.
-> 
-> Or summarize your cover letter:
-> 
-> Use of assert(false) can trip spurious control flow warnings from some
-> versions of gcc:
-> https://lore.kernel.org/qemu-devel/54bb02a6-1b12-460a-97f6-3f478ef766c6@linaro.org/
-> Solve that by unifying the code base on g_assert_not_reached()
-> instead.
-> 
+On Sun, 25 Aug 2024 05:45:56 +0200
+Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
 
-If using g_assert_not_reached() instead of assert(false) silences
-the warning about missing return value in such impossible to reach
-locations should we also be deleting the now-unnecessary "return"
-statements after g_assert_not_reached()?
+> Store HEST table address at GPA, placing its content at
+> hest_addr_le variable.
+> 
+> Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 
-Thanks,
-Maciej
+This looks good to me.
+
+in addition to this, it needs a patch on top to make sure
+that we migrate hest_addr_le.
+See a08a64627b6b 'ACPI: Record the Generic Error Status Block address'
+and fixes on top of that for an example.
+
+> ---
+> 
+> Change from v8:
+> - hest_addr_lr is now pointing to the error source size and data.
+> 
+> Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+> ---
+>  hw/acpi/ghes.c         | 15 +++++++++++++++
+>  include/hw/acpi/ghes.h |  1 +
+>  2 files changed, 16 insertions(+)
+> 
+> diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
+> index e9511d9b8f71..529c14e3289f 100644
+> --- a/hw/acpi/ghes.c
+> +++ b/hw/acpi/ghes.c
+> @@ -30,6 +30,7 @@
+>  
+>  #define ACPI_GHES_ERRORS_FW_CFG_FILE        "etc/hardware_errors"
+>  #define ACPI_GHES_DATA_ADDR_FW_CFG_FILE     "etc/hardware_errors_addr"
+> +#define ACPI_HEST_ADDR_FW_CFG_FILE          "etc/acpi_table_hest_addr"
+>  
+>  /* The max size in bytes for one error block */
+>  #define ACPI_GHES_MAX_RAW_DATA_LENGTH   (1 * KiB)
+> @@ -367,11 +368,22 @@ void acpi_build_hest(GArray *table_data, BIOSLinker *linker,
+>  
+>      acpi_table_begin(&table, table_data);
+>  
+> +    int hest_offset = table_data->len;
+> +
+>      /* Error Source Count */
+>      build_append_int_noprefix(table_data, ACPI_GHES_ERROR_SOURCE_COUNT, 4);
+>      build_ghes_v2(table_data, ACPI_HEST_SRC_ID_SEA, linker);
+>  
+>      acpi_table_end(linker, &table);
+> +
+> +    /*
+> +     * tell firmware to write into GPA the address of HEST via fw_cfg,
+> +     * once initialized.
+> +     */
+> +    bios_linker_loader_write_pointer(linker,
+> +                                     ACPI_HEST_ADDR_FW_CFG_FILE, 0,
+> +                                     sizeof(uint64_t),
+> +                                     ACPI_BUILD_TABLE_FILE, hest_offset);
+>  }
+>  
+>  void acpi_ghes_add_fw_cfg(AcpiGhesState *ags, FWCfgState *s,
+> @@ -385,6 +397,9 @@ void acpi_ghes_add_fw_cfg(AcpiGhesState *ags, FWCfgState *s,
+>      fw_cfg_add_file_callback(s, ACPI_GHES_DATA_ADDR_FW_CFG_FILE, NULL, NULL,
+>          NULL, &(ags->ghes_addr_le), sizeof(ags->ghes_addr_le), false);
+>  
+> +    fw_cfg_add_file_callback(s, ACPI_HEST_ADDR_FW_CFG_FILE, NULL, NULL,
+> +        NULL, &(ags->hest_addr_le), sizeof(ags->hest_addr_le), false);
+> +
+>      ags->present = true;
+>  }
+>  
+> diff --git a/include/hw/acpi/ghes.h b/include/hw/acpi/ghes.h
+> index 674f6958e905..28b956acb19a 100644
+> --- a/include/hw/acpi/ghes.h
+> +++ b/include/hw/acpi/ghes.h
+> @@ -63,6 +63,7 @@ enum {
+>  };
+>  
+>  typedef struct AcpiGhesState {
+> +    uint64_t hest_addr_le;
+>      uint64_t ghes_addr_le;
+>      bool present; /* True if GHES is present at all on this board */
+>  } AcpiGhesState;
 

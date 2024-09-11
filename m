@@ -1,155 +1,153 @@
-Received: by 2002:a17:504:928f:b0:1be9:327d:8ee3 with SMTP id d15csp95704nji;
-        Wed, 11 Sep 2024 03:00:36 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVEenvlRlcAYPnh7F+PfdHkFg5pbejmbZY40fTleFIxJ5begyVv3xbFXjbftwLBs7f6B3OTLxzJ4hYxUg==@linaro.org
-X-Google-Smtp-Source: AGHT+IHLGcIrAVRuqm8jX1aNCHGEKaL0+49F7NirvL6dx6ZhLiBAIwjeOTH0S3wD6wJOr0uiUTKz
-X-Received: by 2002:a05:600c:4706:b0:42c:c401:6d67 with SMTP id 5b1f17b1804b1-42ccd30c292mr18003195e9.6.1726048835823;
-        Wed, 11 Sep 2024 03:00:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1726048835; cv=none;
+Received: by 2002:a17:504:928f:b0:1be9:327d:8ee3 with SMTP id d15csp163314nji;
+        Wed, 11 Sep 2024 06:40:24 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXVPQNJSDGxGFrh61sE/3h0jwHs33tmaMXIaaVEUxol3UJqd93qhm8da06AuZUJ1pYK7jL4EcUL/ttofg==@linaro.org
+X-Google-Smtp-Source: AGHT+IGgRlrQUvutdMLkJJzk9GOuvLD4oNNcPPIg5B3WBJtZqCvneSiSi7VSdILlS29lCNhXP8PJ
+X-Received: by 2002:a05:622a:1898:b0:458:3eb3:748d with SMTP id d75a77b69052e-4584e9449a8mr48284641cf.54.1726062023729;
+        Wed, 11 Sep 2024 06:40:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1726062023; cv=none;
         d=google.com; s=arc-20240605;
-        b=EOFaclSo75UdOXlRb4nFAlEpJVZp/lU1L7jVHxI3QmZ+6o5lo7LIMSbD+rtIoJmyaI
-         v/mFu/2HfEkShX+5hbQGgxgIOFWlLF0UGuSMHJdKagyK8U1M/qmIPxOLakzBhfnrY9n/
-         9ruWl5GRaX7D9R6hXcK1MkGsIkn9ZECzarqNFyRg5op8HbZIM2DLulmajH/CeYXrkTJz
-         OmJM/SjaN9SQqr87+NTnZUN4XFlUQz4I2bMxreEbCPdUlFNMrSKUg2D6rygPte2pOcYe
-         jX/sjdgYvljhNdeZSwXP976+Ka+X9ZmR6NrgAEESU0rw/OHXIt8Q7st9KGSA1RqnFjHL
-         efAQ==
+        b=apMWrpSb5zXPWEAwdcW3YNMHcAldjW6CMUvznrE7EdpWjGr7h+fOsZVvgeUqEJPLZB
+         LC7YcQOcK46TUPEUiaKHj4ujRy1eY4cV+thE9uuV4kNoq9LVorLwgF2QzRYpSf4kJdeL
+         Xjyj7rii7JyirLL6UaXg0JcBuGYRGKjjeAYW+dnf92wbYi98INRcFRLy5DANcu8t2oxq
+         Fv4vFBswTSiWfyed5r2TGn9NpRSDrZH1+fajF69k36Da4tKuTO6YH5EGStMBEE3kSyF0
+         CNE0O7Z5vf0UohEc7W2kyNvjVuToefts8Fi3fxcLasnJOrQLJcuL6PllPOleTAHPN1fy
+         amUA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:subject:cc:to:from:date;
-        bh=rSFc+qe4tFAGB6AeY2pyXQhSgvb0WHqPRqX89CaQH0k=;
-        fh=fBKAgV0VFR+Ei6R5s5VTWgJmJEVL6nWjYl4EAfGjRcA=;
-        b=eAf6yI3AW2R0NV1JJS41s90ruf2JDrTljfih/xlYEmqX/RxnOYxxBUPBNLBZwWf80x
-         aFXtLdBPzQWt7pjgKVzpyGuQMdEtbwbkPWnli8d7fqbO0KgsBY3t1hh6DDawa7I0cw86
-         NmixueN+/UNWOH+3JocGOSW4Z4KAo/6Bf38e5LrrMShmVSHESZv/wKSwEiq9ZXoKo3rm
-         grvfFSxbgDqNX8wfOX7ListvxBZtIo5BgEwJp1z7QE8Ub2NbFKHVL+N/bGw85yjYexr4
-         yWWGriZukscigJY65JNd3FaHwoMuZ/4C1TW+g8zj/rrfkZuiP+SL7nPcr1pF9kJ9fTT+
-         NfuA==;
+        h=content-disposition:in-reply-to:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=ylLQ46RRK0r8akuM+MAjQ7YJk+TYPgJnv3CN/nu5zsE=;
+        fh=7M17qeEJZnEjsSXraXLDca0Z21dnhnQMxNCJ/3o9MgA=;
+        b=R0nLmnA0hfWiJzXgUuD86e2t2ugVCOObRlcVyW56F2UzoBGIctkXvrmC+YNy4jZDVq
+         n/hS787ieA/GhHLGEt39vWOFqB/MpJxM0tHWz04hFpHVqOY+jYjptqmlN1oQ1Byc1kFd
+         3q1CRTqfXAIbPjm4e7AJkUVzGvm3hbCQ3jFM6OzwOolt/Ic6xiXUMKfHMMZ+SCWu/dfu
+         WIvAY14BN2cDiSIlLS8adQbIo2R5ayVU54jtGD+Q9fKWGSOYrrOQ/IPXPydZR7nan8du
+         gEZHhd5QUH47m+NoiFbMo8eKgMoE41DCxEu6eH0KXKJ7bTFNUgKrGMqq9I3Sq8NGQVYI
+         bdbA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of alireza.sanaee@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=alireza.sanaee@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Return-Path: <alireza.sanaee@huawei.com>
-Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id ffacd0b85a97d-378956cffcdsi3870688f8f.891.2024.09.11.03.00.35
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 11 Sep 2024 03:00:35 -0700 (PDT)
-Received-SPF: pass (google.com: domain of alireza.sanaee@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Eb0xVDQU;
+       spf=pass (google.com: domain of peterx@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=peterx@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <peterx@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id d75a77b69052e-45822f8159bsi103267221cf.461.2024.09.11.06.40.23
+        for <alex.bennee@linaro.org>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 11 Sep 2024 06:40:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peterx@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of alireza.sanaee@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=alireza.sanaee@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from mail.maildlp.com (unknown [172.18.186.216])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4X3bYH5mCFz6K6DS;
-	Wed, 11 Sep 2024 17:55:47 +0800 (CST)
-Received: from frapeml500003.china.huawei.com (unknown [7.182.85.28])
-	by mail.maildlp.com (Postfix) with ESMTPS id D4871140CB9;
-	Wed, 11 Sep 2024 18:00:34 +0800 (CST)
-Received: from localhost (10.47.75.248) by frapeml500003.china.huawei.com
- (7.182.85.28) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Wed, 11 Sep
- 2024 12:00:33 +0200
-Date: Wed, 11 Sep 2024 11:00:28 +0100
-From: Alireza Sanaee <alireza.sanaee@huawei.com>
-To: Zhao Liu <zhao1.liu@intel.com>
-CC: "Daniel P .\" =?ISO-8859-1?Q?Berrang=E9?= <berrange@redhat.com>, Igor  Mammedov <imammedo@redhat.com>, Eduardo Habkost <eduardo@habkost.net>, Marcel  Apfelbaum <marcel.apfelbaum@gmail.com>, Philippe =?ISO-8859-1?Q?Ma?=  =?ISO-8859-1?Q?thieu-Daud=E9?= <philmd@linaro.org>, Yanan Wang  <wangyanan55@huawei.com>,  Michael S.Tsirkin  <mst@redhat.com>, Paolo Bonzini  <pbonzini@redhat.com>, Richard Henderson <richard.henderson@linaro.org>, Eric  Blake <eblake@redhat.com>, Markus Armbruster <armbru@redhat.com>, Marcelo  Tosatti <mtosatti@redhat.com>, Alex =?ISO-8859-1?Q?Benn=E9e?=  <alex.bennee@linaro.org>, Peter Maydell <peter.maydell@linaro.org>, Jonathan  Cameron <Jonathan.Cameron@huawei.com>, Sia Jee Heng  <jeeheng.sia@starfivetech.com>, qemu-devel@nongnu.org, kvm@vger.kernel.org,  qemu-riscv@nongnu.org, qemu-arm@nongnu.org, Zhenyu Wang  <zhenyu.z.wang@intel.com>, Dapeng Mi <dapeng1.mi@linux.intel.com>, Yongwei Ma  <yongwei.ma@intel.com>"@domain.invalid
-Subject: Re: [PATCH v2 6/7] i386/cpu: Update cache topology with machine's
- configuration
-Message-ID: <20240911110028.00001d3d@huawei.com>
-In-Reply-To: <20240908125920.1160236-7-zhao1.liu@intel.com>
-References: <20240908125920.1160236-1-zhao1.liu@intel.com>
-	<20240908125920.1160236-7-zhao1.liu@intel.com>
-Organization: Huawei
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Eb0xVDQU;
+       spf=pass (google.com: domain of peterx@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=peterx@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1726062023;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=ylLQ46RRK0r8akuM+MAjQ7YJk+TYPgJnv3CN/nu5zsE=;
+	b=Eb0xVDQUAADQR9BMlNlZjhejsks59Q79UMXRdNE6A/XanvO5XCHRNLS1oIJ+JX2elc8Rv/
+	MblkXdbKmIH/GyJEL0FBOZ40zMby/kPtuLykCnNDKvP3un2epEveJsGrpQsNhPHC6+mr+S
+	YBjTcvAqLR+6x298G1NkGsIC5BmYnWA=
+Received: from mail-qk1-f199.google.com (mail-qk1-f199.google.com
+ [209.85.222.199]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-568-wHLpXE0FPvOqotJwbYb_SQ-1; Wed, 11 Sep 2024 09:40:22 -0400
+X-MC-Unique: wHLpXE0FPvOqotJwbYb_SQ-1
+Received: by mail-qk1-f199.google.com with SMTP id af79cd13be357-7a9b2b3a2bfso459891085a.1
+        for <alex.bennee@linaro.org>; Wed, 11 Sep 2024 06:40:22 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1726062021; x=1726666821;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=ylLQ46RRK0r8akuM+MAjQ7YJk+TYPgJnv3CN/nu5zsE=;
+        b=idcm87T6JSM4FsaoTuiYICCOOp+hygovbJ9W5wyxZM6PMcUxkvR5mmftgmoLzKkbvV
+         K2f1dwlFZDqITRTG0HZxkq5vd6m/hBaAgXxup8crLOY3DHZc4xXcKHCAutaagXFzYecd
+         3uFwvjhW1/lKes0++Y0wY5Tzbr0hMrkIGsBFB8KM+MLkpEko2/s2df1RNuUurxEqyPBx
+         0MfYdnl4sUICdS4zvLuttSglz1P6DBVjACccBZIC3eSpuGZ3Q9C7bmIcO9TXq/0MT3iq
+         +WeBWhDtwt/2kHJU1ukG0SpKnvXw8QHGNwYGaztFjzZzusY1Y2Eo77pxgNYfGZeFZHE1
+         0ixA==
+X-Forwarded-Encrypted: i=1; AJvYcCVEp5X8kjUZJCI2KNGmn+/QMhdeUk1cQ3E2moDxGHnrNJNEjwkbYWng/d5IuVtRNxkFI+xHmCIZympmRA==@linaro.org
+X-Gm-Message-State: AOJu0Yx1S3RrnrzrB7F0i7xaFpDV3EWxe+lY32bqZudixWTOU4//Tomg
+	ZmjCYVaHOM0j/0Pm/aF0gLeWwGR9AnRf6kPNOJurEgxxrfk+fqxN2cPLJ+5Rc5IxVFLWP+l5uvi
+	+o1dxzLDJ09Z83ETI55KsvELcND9DGB3hdFBXYQGSV9PnYUl9t4pvsg==
+X-Received: by 2002:a05:620a:2454:b0:7a9:a6a7:dc2e with SMTP id af79cd13be357-7a9d3a7a33emr403694385a.26.1726062021418;
+        Wed, 11 Sep 2024 06:40:21 -0700 (PDT)
+X-Received: by 2002:a05:620a:2454:b0:7a9:a6a7:dc2e with SMTP id af79cd13be357-7a9d3a7a33emr403689185a.26.1726062020970;
+        Wed, 11 Sep 2024 06:40:20 -0700 (PDT)
+Return-Path: <peterx@redhat.com>
+Received: from x1n (pool-99-254-121-117.cpe.net.cable.rogers.com. [99.254.121.117])
+        by smtp.gmail.com with ESMTPSA id af79cd13be357-7a9a7a1a8d5sm421889085a.116.2024.09.11.06.40.17
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 11 Sep 2024 06:40:20 -0700 (PDT)
+Date: Wed, 11 Sep 2024 09:40:16 -0400
+From: Peter Xu <peterx@redhat.com>
+To: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Cc: qemu-devel@nongnu.org, Zhao Liu <zhao1.liu@intel.com>,
+	"Richard W.M. Jones" <rjones@redhat.com>,
+	Joel Stanley <joel@jms.id.au>, Kevin Wolf <kwolf@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
+	Corey Minyard <minyard@acm.org>, Eric Farman <farman@linux.ibm.com>,
+	Thomas Huth <thuth@redhat.com>, Keith Busch <kbusch@kernel.org>,
+	WANG Xuerui <git@xen0n.name>, Hyman Huang <yong.huang@smartx.com>,
+	Stefan Berger <stefanb@linux.vnet.ibm.com>,
+	Michael Rolnik <mrolnik@gmail.com>,
+	Alistair Francis <alistair.francis@wdc.com>,
+	=?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
+	Markus Armbruster <armbru@redhat.com>,
+	Sriram Yagnaraman <sriram.yagnaraman@ericsson.com>,
+	Palmer Dabbelt <palmer@dabbelt.com>, qemu-riscv@nongnu.org,
+	Ani Sinha <anisinha@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
+	Jesper Devantier <foss@defmacro.it>,
+	Laurent Vivier <laurent@vivier.eu>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Igor Mammedov <imammedo@redhat.com>, kvm@vger.kernel.org,
+	Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Fam Zheng <fam@euphon.net>, qemu-s390x@nongnu.org,
+	Hanna Reitz <hreitz@redhat.com>,
+	Nicholas Piggin <npiggin@gmail.com>,
+	Eduardo Habkost <eduardo@habkost.net>,
+	Laurent Vivier <lvivier@redhat.com>, Rob Herring <robh@kernel.org>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	qemu-block@nongnu.org,
+	"Maciej S. Szmigiero" <maciej.szmigiero@oracle.com>,
+	qemu-ppc@nongnu.org,
+	Daniel Henrique Barboza <danielhb413@gmail.com>,
+	Christian Borntraeger <borntraeger@linux.ibm.com>,
+	Harsh Prateek Bora <harshpb@linux.ibm.com>,
+	Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Nina Schoetterl-Glausch <nsg@linux.ibm.com>,
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	Fabiano Rosas <farosas@suse.de>, Helge Deller <deller@gmx.de>,
+	Dmitry Fleytman <dmitry.fleytman@gmail.com>,
+	Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+	Akihiko Odaki <akihiko.odaki@daynix.com>,
+	Marcelo Tosatti <mtosatti@redhat.com>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	Aurelien Jarno <aurelien@aurel32.net>,
+	Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+	Yanan Wang <wangyanan55@huawei.com>, Bin Meng <bmeng.cn@gmail.com>,
+	Weiwei Li <liwei1518@gmail.com>, Klaus Jensen <its@irrelevant.dk>,
+	Jean-Christophe Dubois <jcd@tribudubois.net>,
+	Jason Wang <jasowang@redhat.com>
+Subject: Re: [PATCH 08/39] migration: replace assert(0) with
+ g_assert_not_reached()
+Message-ID: <ZuGdwMYENxER2r6-@x1n>
+References: <20240910221606.1817478-1-pierrick.bouvier@linaro.org>
+ <20240910221606.1817478-9-pierrick.bouvier@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.47.75.248]
-X-ClientProxiedBy: lhrpeml500006.china.huawei.com (7.191.161.198) To
- frapeml500003.china.huawei.com (7.182.85.28)
-X-TUID: Uk2r2bNREj7v
+In-Reply-To: <20240910221606.1817478-9-pierrick.bouvier@linaro.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+X-TUID: FBrfPbZMhObe
 
-On Sun,  8 Sep 2024 20:59:19 +0800
-Zhao Liu <zhao1.liu@intel.com> wrote:
+On Tue, Sep 10, 2024 at 03:15:35PM -0700, Pierrick Bouvier wrote:
+> Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 
-> User will configure smp cache topology via -machine smp-cache.
-> 
-> For this case, update the x86 CPUs' cache topology with user's
-> configuration in MachineState.
-> 
-> Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
-> Tested-by: Yongwei Ma <yongwei.ma@intel.com>
-> ---
-> Changes since RFC v2:
->  * Used smp_cache array to override cache topology.
->  * Wrapped the updating into a function.
-> ---
->  target/i386/cpu.c | 39 +++++++++++++++++++++++++++++++++++++++
->  1 file changed, 39 insertions(+)
-> 
-> diff --git a/target/i386/cpu.c b/target/i386/cpu.c
-> index e9f755000356..6d9f7dc0872a 100644
-> --- a/target/i386/cpu.c
-> +++ b/target/i386/cpu.c
-> @@ -7597,6 +7597,38 @@ static void x86_cpu_hyperv_realize(X86CPU *cpu)
->      cpu->hyperv_limits[2] = 0;
->  }
->  
-> +#ifndef CONFIG_USER_ONLY
-> +static void x86_cpu_update_smp_cache_topo(MachineState *ms, X86CPU
-> *cpu) +{
-> +    CPUX86State *env = &cpu->env;
-> +    CpuTopologyLevel level;
-> +
-> +    level = machine_get_cache_topo_level(ms,
-> CACHE_LEVEL_AND_TYPE_L1D);
-> +    if (level != CPU_TOPOLOGY_LEVEL_DEFAULT) {
-> +        env->cache_info_cpuid4.l1d_cache->share_level = level;
-> +        env->cache_info_amd.l1d_cache->share_level = level;
-> +    }
-> +
-> +    level = machine_get_cache_topo_level(ms,
-> CACHE_LEVEL_AND_TYPE_L1I);
-> +    if (level != CPU_TOPOLOGY_LEVEL_DEFAULT) {
-> +        env->cache_info_cpuid4.l1i_cache->share_level = level;
-> +        env->cache_info_amd.l1i_cache->share_level = level;
-> +    }
-> +
-> +    level = machine_get_cache_topo_level(ms,
-> CACHE_LEVEL_AND_TYPE_L2);
-> +    if (level != CPU_TOPOLOGY_LEVEL_DEFAULT) {
-> +        env->cache_info_cpuid4.l2_cache->share_level = level;
-> +        env->cache_info_amd.l2_cache->share_level = level;
-> +    }
-> +
-> +    level = machine_get_cache_topo_level(ms,
-> CACHE_LEVEL_AND_TYPE_L3);
-> +    if (level != CPU_TOPOLOGY_LEVEL_DEFAULT) {
-> +        env->cache_info_cpuid4.l3_cache->share_level = level;
-> +        env->cache_info_amd.l3_cache->share_level = level;
-> +    }
-> +}
-> +#endif
-> +
->  static void x86_cpu_realizefn(DeviceState *dev, Error **errp)
->  {
->      CPUState *cs = CPU(dev);
-> @@ -7821,6 +7853,13 @@ static void x86_cpu_realizefn(DeviceState
-> *dev, Error **errp) 
->  #ifndef CONFIG_USER_ONLY
->      MachineState *ms = MACHINE(qdev_get_machine());
-> +
-> +    /*
-> +     * TODO: Add a SMPCompatProps.has_caches flag to avoid useless
-> Updates
-> +     * if user didn't set smp_cache.
-> +     */
-Hi Zhao,
+Reviewed-by: Peter Xu <peterx@redhat.com>
 
-Thanks for sending this patchset so quickly. I really appreciate the
-TODO already :) It also helps me avoid going through every single
-layer, especially when I want to avoid matching system registers in
-ARM, particularly when there's no description in the command line.
-> +    x86_cpu_update_smp_cache_topo(ms, cpu);
-> +
->      qemu_register_reset(x86_cpu_machine_reset_cb, cpu);
->  
->      if (cpu->env.features[FEAT_1_EDX] & CPUID_APIC || ms->smp.cpus >
-> 1) {
+-- 
+Peter Xu

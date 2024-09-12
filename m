@@ -1,204 +1,224 @@
-Received: by 2002:a17:504:928f:b0:1be9:327d:8ee3 with SMTP id d15csp342509nji;
-        Wed, 11 Sep 2024 17:28:30 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXCj5gTopwnTL9rMOvrMPIelJcKykrC+k5b53hUOXcgVA4Mv388XR7Btk/L+gM+vT35Qyq2vb/qPXNoCQ==@linaro.org
-X-Received: by 2002:a05:6a00:218f:b0:70d:2892:402b with SMTP id d2e1a72fcca58-7192608123fmr1572344b3a.7.1726100910258;
-        Wed, 11 Sep 2024 17:28:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1726100910; cv=none;
-        d=google.com; s=arc-20160816;
-        b=eVs0IeD7AFh2uE0ObevnNbmXyCnSltxDxFsA13aN/vuEXs7Wq4I3N69Dk1j6TkCtQL
-         3cfCY3HiEijJw6b0MXVENoalYJtNNGtyPLrIloD/V4QuIQ1D9KFYFkuglA/n107/gvpu
-         /We1gil+qqkP8OkL0pUdpK/FX7aDxnfGklzamncQ6WEEWti0B9ZcDZD9tlHjril+AJKs
-         QbkhcX2XKUNl4GYsyLheXaEJCd04z6cVQu8c8ju4CxqQNSOWN5enVJHtnKsRqwMZ4VNz
-         aOP5gJ5ELh4ILBAjTBWvtr4LinNip7n/0K1zfa9OA4ba2Xze9kFgpT8+XjEdusdd+hHC
-         npXw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=c9o7/Cb/II9t2dUk/lFV7V5FBEJVmX+kPV3LL4olG50=;
-        fh=GCJTyuBEnJEr+LZa7wrBMy9m2+MHJZD6jrXbure55PU=;
-        b=FSEhwSiC2QmL0onwe1rgVxtAjC2k2LV7e9KQyw3HuFxMBwchui2G12FLgRiqe3o0ol
-         u07p06VH6KxT1lN9qAjZ7DrMq82ZHEA0wNPNqy2csuxTJrguWzwqhegTwKGY0/FS3Aao
-         w3j8TGsatM8BXPVfnHwvB0OXHGmjf6y6RBCDSb5s8kCDQ2ZGJBdfMr7KuVUKhnFSS6DC
-         b2AudRNaxboTbNDyiWHn23KqtNVplD87FumFpHqGfAZuZeQ/8PoDi1Rnsd5YuhzmELzT
-         yTCIi5QVTrH1hdT5XJczgOcoKGorRnCew/OnE9w+XzNhrbUHewTwL0s8tfZ/A1LaTLDS
-         jp+w==;
+Received: by 2002:a17:504:928f:b0:1be9:327d:8ee3 with SMTP id d15csp501147nji;
+        Thu, 12 Sep 2024 05:42:46 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCVdasAY2HFGYGw99LLSj6GzS/5UL8w/hqUxuJOkhFPt2aXHjJ95U0h15poCEKx/HbkHyPdnf+y1Wfvy9Q==@linaro.org
+X-Google-Smtp-Source: AGHT+IHILkcytsFPStWnieeG9eo0ZvnHTshNBhX91WmfXwJTf9kMfNcZXL47Ug/7pmnQj+7p9CBf
+X-Received: by 2002:a05:6808:191f:b0:3e0:3d6c:116d with SMTP id 5614622812f47-3e071aad729mr1789225b6e.26.1726144966303;
+        Thu, 12 Sep 2024 05:42:46 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1726144966; cv=pass;
+        d=google.com; s=arc-20240605;
+        b=f65FFmMMUN0dOY/5LaMa5cjBl9yRnnL9pvBrCfVzdYjN912bksCFYIXGR1Sc3cbwaC
+         5//j2YYwYQIcqGV6Od+zcsBQrTB1bFTuI7Zdu95BI0+eJ6au9Nup8mQMraGZ9Uuo6avl
+         LStTTvEcAbt4I6VkcXx67Atw2mx1QNzWq88ZEvyrrvpvGJWe2fjWdDjoQhEoyDQfKs7U
+         2j1SWVtpZHGVMRgukVFIsPLdLMOc4qpBlLwXPLwj1c97LocODvwVZ03a1eEC1/CxAY5k
+         tqjVmKOMW+A96RRA7TuXoSINz6m1dXYWsZ8536rqY5JcUG0x7c9ty+SUYAXLcbdd423S
+         enWQ==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=w8nfejZavA0hL03c+N7MeOGb8mfUCS+H6+ty6eZ3ps4=;
+        fh=uvb+b7H0iDOFcu0aVcddCawuVT3VfWmx9NGS7WEa2YA=;
+        b=eUvGX7J2Cpf0LXX5rf+0rhsYZmyo/j8fCISgceIT0KNIBjTvt+NRRlVSugAhQP712R
+         5QbkpNd4bHl/Y5veTBPD+O5AIvU7UxSUZEVGpkYdjX3G4WbQIInvqIjEz2LKFJYrhdNC
+         PoQqqqpiEb8JxtfvHmBCVl5jH8z4UTeKVe51PvZZZVv0Vp+PDLgWMPn0KzoAARJUnXnF
+         L3Dep/N2DEYKI9YgPRuA9OJu5+5KmDAypUWtLHeC+C+mUPrQn8fQNrPYeHFqqWo7RkJf
+         ZVBUxKmmoW9vJyhu+ZdV4KwGUfaK2P7QBVD3uP06A4QFtXbHMxbNEtlVaHqzaULfPY1w
+         cjMg==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Nkl9Vhfu;
-       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <pierrick.bouvier@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d2e1a72fcca58-718e596f584sor5985162b3a.9.2024.09.11.17.28.30
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NBvOjOA1;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of linux-kernel+bounces-326516-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-326516-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <linux-kernel+bounces-326516-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [2604:1380:45e3:2400::1])
+        by mx.google.com with ESMTPS id 41be03b00d2f7-7db1fbb6881si2199938a12.210.2024.09.12.05.42.46
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Wed, 11 Sep 2024 17:28:30 -0700 (PDT)
-Received-SPF: pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 12 Sep 2024 05:42:46 -0700 (PDT)
+Received-SPF: pass (google.com: domain of linux-kernel+bounces-326516-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) client-ip=2604:1380:45e3:2400::1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Nkl9Vhfu;
-       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1726100910; x=1726705710; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=c9o7/Cb/II9t2dUk/lFV7V5FBEJVmX+kPV3LL4olG50=;
-        b=Nkl9VhfuLpkCwx0SxRBx3ZtAmkrtyGxD5cczRmsISjk/xgrPZP6khmxFXuY+N94np4
-         Z+vnKsp8br0XoytPJ713Jtvpc6AQwRWRg3trutJVWlhwnouKFkOqnGQFvGH4GZYXRRNM
-         YxoFMoDrow1KXY+6CJT8iLIb5xacKEIdUr/hiX0q31E5CyX04RGDRqrxd2bvvu+kJPDS
-         RLu+wmuMdQTXpHYKzwXyq2QVr4ykz0D6a+bzYn0ouYf5Waevhv6xVcgvS1cXfd5jYjjw
-         dV5+YJfHF/3x3nDShcsZmOYcB2IBH8qQhTjFtmN2xdUyjGxI4C3e1jl9GfjcxBrw/Dys
-         BduA==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NBvOjOA1;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of linux-kernel+bounces-326516-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-326516-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by sv.mirrors.kernel.org (Postfix) with ESMTPS id CAEF42854C3
+	for <alex.bennee@linaro.org>; Thu, 12 Sep 2024 12:42:45 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 3CE281A3AA5;
+	Thu, 12 Sep 2024 12:42:41 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="NBvOjOA1"
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 53CA71A3058
+	for <linux-kernel@vger.kernel.org>; Thu, 12 Sep 2024 12:42:39 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.129.124
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1726144961; cv=none; b=dOVjQwZDtzmoP7HOfLGDybm8H/zq4luC/5IqwabH8+TQSl3q29K4sFhisLxVKfQJUFwnzqeFwB9Lhfo3bJH1cfqAbbVHWXZJpEWTkXiGDyp0fAMhnRpJKbjb/xSQXQXqKGfMmlwjZM4TV2d14EuwhC+wbI2KS8xTjapw8lrmqO0=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1726144961; c=relaxed/simple;
+	bh=VYq4xvU4yXtQJ3rBOR+LudQqXvYNFmbEy4t22IVlRrw=;
+	h=Date:From:To:Cc:Subject:Message-ID:In-Reply-To:References:
+	 MIME-Version:Content-Type; b=q0ziSqQ+pn3xtPDn94FlJy1kc3AFIlVaxSDkFaIleebnaES/xeEC4H9Sc6N2gxLIJlRsoR6Ggy/eTRgPQOVM2IsOtx9WEQUoqNBx4GrQ4vUje+skm3qcvRcfK51tl8WMQPpVl4C6XPYx1v10JMZP/XcXVnW0CyjBE1KbNA3F0MI=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=NBvOjOA1; arc=none smtp.client-ip=170.10.129.124
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1726144958;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=w8nfejZavA0hL03c+N7MeOGb8mfUCS+H6+ty6eZ3ps4=;
+	b=NBvOjOA1VCgAN4EJvV2VF6Dz225zYB6BeELMW8AQnA4pIv/yCKS8AZN6fPkHKYjHIe1n3c
+	yQVrCFY4T6lEsEkjB5GCX1ta8wjdy/NuHys+213dbnAYZ9aeXHkzxZKFZOohRBbfQKMebw
+	vWCWNFbzL/gh9nY1xJs9dfX/4VhF52Q=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-495-rxDHA49kMuao0rrkCfThxA-1; Thu, 12 Sep 2024 08:42:37 -0400
+X-MC-Unique: rxDHA49kMuao0rrkCfThxA-1
+Received: by mail-wr1-f72.google.com with SMTP id ffacd0b85a97d-374bb2f100fso430676f8f.0
+        for <linux-kernel@vger.kernel.org>; Thu, 12 Sep 2024 05:42:36 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1726100910; x=1726705710;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=c9o7/Cb/II9t2dUk/lFV7V5FBEJVmX+kPV3LL4olG50=;
-        b=BW707l8KZh+foa5T1P48NIXf8ixdfHhUMjvLDXyk63QVbrkDO4d46rpgzMh40jS+Dy
-         SN8Eys/YkXrVMh8TbupJa92EfWVEabKO1RAFVuAH+lgkbgq/zfipfcPFTegR/C6rNtjA
-         11NWJNoVznd8/EanXnQ6rpNhzD8KI3os/4tHHRSLb7qXpL8hLknZ/APTYr7XTW3wUAQ8
-         ExHQtPvYrED8ik9irQrVUeGIB2+MzubWmnfzdl/qaMugFffiPcf36a7O04NSMXNx4L8j
-         ZoLK5XNYyW4rH9M+iAe5iFLNIvacg1hPuwI85mBh2372hohhkvwiFf6U2pVb2YgIn4mT
-         UMNw==
-X-Forwarded-Encrypted: i=1; AJvYcCXxk1o3kVud0lHTLA4V1BacVJpkONKr8rzh41WdeZFuuakSDs3oTnnGZTgn8s0bPulhxxNPwStoEaulsQ==@linaro.org
-X-Gm-Message-State: AOJu0YyZY32MAkHQckOlPGbansyeth+wfD5CKmab4HIsW+7s78Q3zqE4
-	3M4nL/1WPTQUNYf4EaGdsKLuY9zNK4ISmDzn/cjmxUxIM2YhHfQ4O7mXUNJYs1/YtA==
-X-Google-Smtp-Source: AGHT+IG/+agFR+owCifK6LN7nBFHTLHqk0umycTEk4Q5c9uh7VrVH7bVyDXkjOez5N5fvomBj8Vk0w==
-X-Received: by 2002:a05:6a21:4581:b0:1cf:4458:8b27 with SMTP id adf61e73a8af0-1cf764afde6mr1438134637.46.1726100909723;
-        Wed, 11 Sep 2024 17:28:29 -0700 (PDT)
-Return-Path: <pierrick.bouvier@linaro.org>
-Received: from ?IPV6:2604:3d08:9384:1d00::9633? ([2604:3d08:9384:1d00::9633])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-719090c37efsm3523445b3a.187.2024.09.11.17.28.27
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 11 Sep 2024 17:28:29 -0700 (PDT)
-Message-ID: <7328179f-dbc8-46da-8b87-1077a706acc7@linaro.org>
-Date: Wed, 11 Sep 2024 17:28:26 -0700
+        d=1e100.net; s=20230601; t=1726144956; x=1726749756;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=w8nfejZavA0hL03c+N7MeOGb8mfUCS+H6+ty6eZ3ps4=;
+        b=nc0rPycj/oL9ao054pXE/iXXJ/msIyZNpjtdxsIzCidxwlXj56yfl7qm9uw/YO3JcX
+         HpPlgx2fT1A3JLWfa2UGHecQkKnnYShSYrGIZJ4L+9MnR0nApmyV2wl0SIIaPNln6qa6
+         bxB5cUdVQDRVCk/UMAT8PrcIWj/lJwXhzAIDwlb5X0pqKizNXsaRveLjZ8aIJ7n8cfUv
+         trx5kj1jKjQ4r1gsfPYgxbe+XYV7fRLrwPo3g1cuPiZt3Jq21hcbsjm0jZxsivsi/0wj
+         W0Mrk6h7eD0q/vZlw1f3NOkhUFxtYO7+GuvjaSutOm+tjcc9J2ktgszgh845cmN3rdbk
+         2S/g==
+X-Forwarded-Encrypted: i=1; AJvYcCV5ULWndKnvAU4/zWtn+MPED1p/HPRG1diZ5Vyv+22qe0F03AMLC9c3uWSJifcT/cJaBL6rUeVzrhjp1As=@vger.kernel.org
+X-Gm-Message-State: AOJu0Yx6ZbJv/kBwTM3M8mtMJjMjD0A1X+/V7bg0v/3axvSpwR9ibo1k
+	0BQtG03ICYHr2DFVy8Nrwx4Ss6+h6+VZIccpnTtSpdeqPopyl7lnqwj4mRq2Q0IN4OSyyTCKFP+
+	R3q6ZtFy4b0NmUAiH+dSnsOcKcGvSlQP/JCk8hDeZqe7OIHf8YDtxR5ZY1lt5fA==
+X-Received: by 2002:a5d:42cb:0:b0:371:88e5:6d34 with SMTP id ffacd0b85a97d-378c2cd5f09mr1419773f8f.7.1726144955751;
+        Thu, 12 Sep 2024 05:42:35 -0700 (PDT)
+X-Received: by 2002:a5d:42cb:0:b0:371:88e5:6d34 with SMTP id ffacd0b85a97d-378c2cd5f09mr1419735f8f.7.1726144955123;
+        Thu, 12 Sep 2024 05:42:35 -0700 (PDT)
+Received: from imammedo.users.ipa.redhat.com (nat-pool-brq-t.redhat.com. [213.175.37.10])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-42cb1e3a5fdsm159348345e9.48.2024.09.12.05.42.34
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 12 Sep 2024 05:42:34 -0700 (PDT)
+Date: Thu, 12 Sep 2024 14:42:33 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
+Cc: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>, Shiju Jose
+ <shiju.jose@huawei.com>, "Michael S. Tsirkin" <mst@redhat.com>, Ani Sinha
+ <anisinha@redhat.com>, Dongjiu Geng <gengdongjiu1@gmail.com>,
+ <linux-kernel@vger.kernel.org>, <qemu-arm@nongnu.org>,
+ <qemu-devel@nongnu.org>
+Subject: Re: [PATCH v8 06/13] acpi/ghes: add support for generic error
+ injection via QAPI
+Message-ID: <20240912144233.675d6b63@imammedo.users.ipa.redhat.com>
+In-Reply-To: <20240911163436.00004738@Huawei.com>
+References: <cover.1723793768.git.mchehab+huawei@kernel.org>
+	<2c8970b5d54d17b601dc65d778cc8b5fb288984b.1723793768.git.mchehab+huawei@kernel.org>
+	<20240819145136.0452ff2b@imammedo.users.ipa.redhat.com>
+	<20240825052923.715f88bc@sal.lan>
+	<20240911152132.65a7a219@imammedo.users.ipa.redhat.com>
+	<20240911163436.00004738@Huawei.com>
+X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
+Precedence: bulk
+X-Mailing-List: linux-kernel@vger.kernel.org
+List-Id: <linux-kernel.vger.kernel.org>
+List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 01/39] docs/spin: replace assert(0) with
- g_assert_not_reached()
-Content-Language: en-US
-To: Thomas Huth <thuth@redhat.com>, "Richard W.M. Jones" <rjones@redhat.com>,
- "Maciej S. Szmigiero" <mail@maciej.szmigiero.name>
-Cc: Eric Blake <eblake@redhat.com>, qemu-devel@nongnu.org,
- Zhao Liu <zhao1.liu@intel.com>, Joel Stanley <joel@jms.id.au>,
- Kevin Wolf <kwolf@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- qemu-arm@nongnu.org, Corey Minyard <minyard@acm.org>,
- Eric Farman <farman@linux.ibm.com>, Keith Busch <kbusch@kernel.org>,
- WANG Xuerui <git@xen0n.name>, Hyman Huang <yong.huang@smartx.com>,
- Stefan Berger <stefanb@linux.vnet.ibm.com>,
- Michael Rolnik <mrolnik@gmail.com>,
- Alistair Francis <alistair.francis@wdc.com>,
- =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- Markus Armbruster <armbru@redhat.com>,
- Sriram Yagnaraman <sriram.yagnaraman@ericsson.com>,
- Palmer Dabbelt <palmer@dabbelt.com>, qemu-riscv@nongnu.org,
- Ani Sinha <anisinha@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
- Jesper Devantier <foss@defmacro.it>, Laurent Vivier <laurent@vivier.eu>,
- Peter Maydell <peter.maydell@linaro.org>, Igor Mammedov
- <imammedo@redhat.com>, kvm@vger.kernel.org,
- =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>, Fam Zheng
- <fam@euphon.net>, qemu-s390x@nongnu.org, Hanna Reitz <hreitz@redhat.com>,
- Nicholas Piggin <npiggin@gmail.com>, Eduardo Habkost <eduardo@habkost.net>,
- Laurent Vivier <lvivier@redhat.com>, Rob Herring <robh@kernel.org>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, qemu-block@nongnu.org,
- qemu-ppc@nongnu.org, Daniel Henrique Barboza <danielhb413@gmail.com>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Nina Schoetterl-Glausch <nsg@linux.ibm.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Fabiano Rosas <farosas@suse.de>,
- Helge Deller <deller@gmx.de>, Dmitry Fleytman <dmitry.fleytman@gmail.com>,
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
- Akihiko Odaki <akihiko.odaki@daynix.com>,
- Marcelo Tosatti <mtosatti@redhat.com>,
- David Gibson <david@gibson.dropbear.id.au>,
- Aurelien Jarno <aurelien@aurel32.net>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Yanan Wang <wangyanan55@huawei.com>, Peter Xu <peterx@redhat.com>,
- Bin Meng <bmeng.cn@gmail.com>, Weiwei Li <liwei1518@gmail.com>,
- Klaus Jensen <its@irrelevant.dk>,
- Jean-Christophe Dubois <jcd@tribudubois.net>,
- Jason Wang <jasowang@redhat.com>
-References: <20240910221606.1817478-1-pierrick.bouvier@linaro.org>
- <20240910221606.1817478-2-pierrick.bouvier@linaro.org>
- <zkyoryho5alnyirnl7ulvh5y6tkty6koccgeygmve42uml7glu@37rkdodtlx4f>
- <bwo43ms2wi6vbeqhlc7qjwmw5jyt2btxvpph3lqn7tfol4srjf@77yusngzs6wh>
- <10d6d67a-32f6-40fc-aba9-c62a74d9d98d@maciej.szmigiero.name>
- <20240911125126.GS1450@redhat.com>
- <c62bed1a-a13d-49eb-aec2-54bfe78dd1e5@redhat.com>
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-In-Reply-To: <c62bed1a-a13d-49eb-aec2-54bfe78dd1e5@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-TUID: EJRdoqt/UtPW
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: 7vPTRLbk71nh
 
-On 9/11/24 09:13, Thomas Huth wrote:
-> On 11/09/2024 14.51, Richard W.M. Jones wrote:
->> On Wed, Sep 11, 2024 at 02:46:18PM +0200, Maciej S. Szmigiero wrote:
->>> On 11.09.2024 14:37, Eric Blake wrote:
->>>> On Wed, Sep 11, 2024 at 07:33:59AM GMT, Eric Blake wrote:
->>>>> On Tue, Sep 10, 2024 at 03:15:28PM GMT, Pierrick Bouvier wrote:
->>>>>> Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
->>>>>> ---
->>>>>
->>>>> A general suggestion for the entire series: please use a commit
->>>>> message that explains why this is a good idea.  Even something as
->>>>> boiler-plate as "refer to commit XXX for rationale" that can be
->>>>> copy-pasted into all the other commits is better than nothing,
->>>>> although a self-contained message is best.  Maybe:
->>>>>
->>>>> This patch is part of a series that moves towards a consistent use of
->>>>> g_assert_not_reached() rather than an ad hoc mix of different
->>>>> assertion mechanisms.
->>>>
->>>> Or summarize your cover letter:
->>>>
->>>> Use of assert(false) can trip spurious control flow warnings from some
->>>> versions of gcc:
->>>> https://lore.kernel.org/qemu-devel/54bb02a6-1b12-460a-97f6-3f478ef766c6@linaro.org/
->>>> Solve that by unifying the code base on g_assert_not_reached()
->>>> instead.
->>>>
->>>
->>> If using g_assert_not_reached() instead of assert(false) silences
->>> the warning about missing return value in such impossible to reach
->>> locations should we also be deleting the now-unnecessary "return"
->>> statements after g_assert_not_reached()?
->>
->> Although it's unlikely to be used on any compiler that can also
->> compile qemu, there is a third implementation of g_assert_not_reached
->> that does nothing, see:
->>
->> https://gitlab.gnome.org/GNOME/glib/-/blob/927683ebd94eb66c0d7868b77863f57ce9c5bc76/glib/gtestutils.h#L269
-> 
-> That's only in the #ifdef G_DISABLE_ASSERT case ... and we forbid that in
-> QEMU, see osdep.h:
-> 
-> #ifdef G_DISABLE_ASSERT
-> #error building with G_DISABLE_ASSERT is not supported
-> #endif
-> 
-> So in QEMU, g_assert_not_reached() should always abort.
-> 
->    Thomas
-> 
+On Wed, 11 Sep 2024 16:34:36 +0100
+Jonathan Cameron <Jonathan.Cameron@Huawei.com> wrote:
 
-Yes indeed.
+> On Wed, 11 Sep 2024 15:21:32 +0200
+> Igor Mammedov <imammedo@redhat.com> wrote:
+>=20
+> > On Sun, 25 Aug 2024 05:29:23 +0200
+> > Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
+> >  =20
+> > > Em Mon, 19 Aug 2024 14:51:36 +0200
+> > > Igor Mammedov <imammedo@redhat.com> escreveu:
+> > >    =20
+> > > > > +        read_ack =3D 1;
+> > > > > +        cpu_physical_memory_write(read_ack_start_addr,
+> > > > > +                                  &read_ack, (uint64_t));       =
+=20
+> > > > we don't do this for SEV so, why are you setting it to 1 here?     =
+=20
+> > >=20
+> > > According with:
+> > > https://uefi.org/specs/ACPI/6.5/18_Platform_Error_Interfaces.html#gen=
+eric-hardware-error-source-version-2-ghesv2-type-10
+> > >=20
+> > >    "These are the steps the OS must take once detecting an error from=
+ a particular GHESv2 error source:
+> > >=20
+> > >     OSPM detects error (via interrupt/exception or polling the block =
+status)
+> > >=20
+> > >     OSPM copies the error status block
+> > >=20
+> > >     OSPM clears the block status field of the error status block
+> > >=20
+> > >     OSPM acknowledges the error via Read Ack register. For example:
+> > >=20
+> > >         OSPM reads the Read Ack register =E2=80=93> X
+> > >=20
+> > >         OSPM writes =E2=80=93> (( X & ReadAckPreserve) | ReadAckWrite=
+)"
+> > >=20
+> > >=20
+> > > So, basically the guest OS takes some time to detect that an error
+> > > is raised. When it detects, it needs to mark that the error was
+> > > handled.   =20
+> >=20
+> > what you are doing here by setting read_ack =3D 1,
+> > is making ack on behalf of OSPM when OSPM haven't handled existing erro=
+r yet.
+> >=20
+> > Essentially making HW/FW do the job of OSPM. That looks wrong to me.
+> > From HW/FW side read_ack register should be thought as read-only. =20
+>=20
+> It's not read-only because HW/FW has to clear it so that HW/FW can detect
+> when the OSPM next writes it.
 
-For further information:
+By readonly, I've meant that hw shall not do above mentioned write
+(bad phrasing on my side).
 
-g_assert_not_reached() expand to g_assertion_message_expr(), [1]
-which is a function marked noreturn [2][3], so indeed, it always abort.
+>=20
+> Agreed this write to 1 looks wrong, but the one a few lines further down =
+(to zero
+> it) is correct.
 
-[1] 
-https://gitlab.gnome.org/GNOME/glib/-/blob/927683ebd94eb66c0d7868b77863f57ce9c5bc76/glib/gtestutils.h#L274
-[2] 
-https://gitlab.gnome.org/GNOME/glib/-/blob/927683ebd94eb66c0d7868b77863f57ce9c5bc76/glib/gtestutils.h#L592
-[3] https://docs.gtk.org/glib/macros.html#compiler
+yep, hw should clear register.
+It would be better to so on OSPM ACK, but alas we can't intercept that,
+so the next option would be to do that at the time when we add a new error =
+block
+
+>=20
+> My bug a long time back I think.
+>=20
+> Jonathan
+>=20
+> >  =20
+> > >=20
+> > > IMO, this is needed, independently of the notification mechanism.
+> > >=20
+> > > Regards,
+> > > Mauro
+> > >    =20
+> >=20
+> >  =20
+>=20
+

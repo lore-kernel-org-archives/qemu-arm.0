@@ -1,347 +1,222 @@
-Received: by 2002:a17:504:928f:b0:1be9:327d:8ee3 with SMTP id d15csp313848nji;
-        Wed, 11 Sep 2024 15:08:03 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCV0KExaGvXyQnIveth4q28ANOle7ulT3PZTRJxwhfFAvBtV9EyxVThkNvIrxnRyXuR3o7gLSdDbRgX30w==@linaro.org
-X-Google-Smtp-Source: AGHT+IFNoOZTSc9CJ0kq3vE6y1Rskk++UDcR7eYMiSyIj3sn1MQLXPGVzDNVdm8HQSeEcafwoZcv
-X-Received: by 2002:a05:6a21:a4c2:b0:1cf:42bc:14e0 with SMTP id adf61e73a8af0-1cf7624b477mr775643637.47.1726092483315;
-        Wed, 11 Sep 2024 15:08:03 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1726092483; cv=pass;
-        d=google.com; s=arc-20240605;
-        b=CQ7TDgeWrPgYv9tcw3ije7yYlyUGqaGwDX8vT77/XefEyAvsANkIFO6iSbJKqiVnST
-         pR9ERIQPGfdHJv5BH4qAcLbrkYlv6IUHitEI0CHUWwfrFzo/zH93CrYDt+lOzqfqGba0
-         xjr58upGgWIg/V/RQZhH6M+LXmOgSZz1KGcjDIhq8AoUihw5OLfAxiSZY4ON1+4G8pyH
-         ff2Hlq8OghARLNooOF5C4MlDpNmvSYWvn8AFKG2Ho+r1sF3miNgtp/M5q4TMVTFv4O93
-         PWegwhMxrxBxONQexAo6Z/zKZxflrQah88pf6xTyCMRPbt87MYZkLkj7ax+2OnzITuDd
-         opzQ==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:in-reply-to:organization:autocrypt:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :list-unsubscribe:list-subscribe:list-id:precedence:date:message-id
-         :dkim-signature;
-        bh=qPv18UJlJ1AtcMakcGZBSmFd7ZNQdnu0Fu6/erRRIEI=;
-        fh=tdLty3RcaJP7avZQuuycCSI/edFLTz+MbEe2/vUfXaQ=;
-        b=cxSvxt0l5dRIpHuCH2LWGoNtxwDsksH5WDuvy3k8chjLI72ckjxdhZe9POFlinAU03
-         CELp/YCDCpzSHVK9DQYbb83tFsnGOR8xJhLDad7opeaSMzJnfvqn0vCr4L+4V5ui+0lt
-         HY/HwI5Kku/8EBJNh+K+qwhrau6eEynx6ilckH3QGOb7N6h622e2KR/pqVSRDlaRx3Cq
-         T9c9tjiZwI0AswpBBQby+UDGhn/aljfBV/X4+bmEpV52xoZTchcphPiebkV/ethFHeW/
-         QfL2S/C+HYzMfqgyC/GiXKzrVlaUrwEPoR5Sfp+7+5K99U0X1iuY9MiqfeiILGXWxBmC
-         rltg==;
+Received: by 2002:a17:504:928f:b0:1be9:327d:8ee3 with SMTP id d15csp422447nji;
+        Thu, 12 Sep 2024 00:39:29 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCX/OenMCQEjVxQiWEPLUhfVFBiOH6gDxcoaj9nFx+4eTThxfQVroU/mT3mdCWT4kSMAfaG6R5p2QJ2IGA==@linaro.org
+X-Received: by 2002:a05:6a00:1ac6:b0:714:2198:26bd with SMTP id d2e1a72fcca58-71926081831mr3295754b3a.11.1726126769126;
+        Thu, 12 Sep 2024 00:39:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1726126769; cv=none;
+        d=google.com; s=arc-20160816;
+        b=Avz+g/Q55P4CK1BBBT7G34Wwfyse8GtsO74Oh1b5grXrDFgAA1bKbQgsi2uvl3jkyp
+         D9QEYde9+Gew9aLlv4ldaoTLGRJXFnDvcOT/whQ0ji6W50xVZEo3cqrXhHpH88I0afih
+         EtK5lRN/xXHgizekqChUy4/tTzv638QrApeH7UGcrClnseCt86zdftMCB111p2ScKmBh
+         AlAqFtYZeCfpQT/eJMY3WcJaAHvMFg4JN9NSLeGdBwjk7QFzlchdT1fKWsqG2yGWz9xw
+         e1/KIpjvWJ5Cc3k2G+qP/eMV0JBxpeawP37/SrT+jlu1gXEwtVdN0feKau9UoApIgKVl
+         A5CA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=IRV8cs5vGajAoqqaVP2CMnCi0idLbKzQEkk2XTwPdlU=;
+        fh=xE7xALIJp2cv2sxPF3zFR33lz9kpsEZoB9gDSAQ1lqs=;
+        b=rF9SJlybFDzDXmXlkk3V0Yyquz3KNOHvjDC+8lCdWKXewxPSEfP5YnakCwd3dyTZTA
+         b/hvvgpFwWArfQS878xyLtgmx0wgWyuW5wDmFgIjqggp9XXDdBEjZMn966+6paCJN9Ya
+         9yRbym6cS4pDGnJCvvxhtSQ7flP9CvIpcErxDjsDWS12fh9x3eshbqYnamDS6wb3qbH0
+         g1h1DnIZbrf8OAQAWvg3oeSC3c5relRbWDUfwyDEV+fIEQbeYieV+SkwJa/1EZMDKoAo
+         nmcC3+wRVAKypz/L1OU//G6UyKOZzN2L8H6WmfAapDwt+HkwLBQwMv/f+QtkvtF/0nBx
+         CHPw==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fEeQ1U7G;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-26591-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="kvm+bounces-26591-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm+bounces-26591-alex.bennee=linaro.org@vger.kernel.org>
-Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [139.178.88.99])
-        by mx.google.com with ESMTPS id d2e1a72fcca58-719090e9bd2si5139432b3a.344.2024.09.11.15.08.03
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=aphDUzq+;
+       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <pierrick.bouvier@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d2e1a72fcca58-718e598a435sor9446211b3a.11.2024.09.12.00.39.29
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 11 Sep 2024 15:08:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm+bounces-26591-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) client-ip=139.178.88.99;
+        (Google Transport Security);
+        Thu, 12 Sep 2024 00:39:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fEeQ1U7G;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-26591-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="kvm+bounces-26591-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by sv.mirrors.kernel.org (Postfix) with ESMTPS id C0905285BC6
-	for <alex.bennee@linaro.org>; Wed, 11 Sep 2024 22:08:02 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 74C4714D702;
-	Wed, 11 Sep 2024 22:07:59 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="fEeQ1U7G"
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 87E94273FC
-	for <kvm@vger.kernel.org>; Wed, 11 Sep 2024 22:07:57 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.133.124
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1726092479; cv=none; b=kxMO3s3NNlMo/qltyyNC3qcMWzaeHZQt+zzDj5hLhCiAg8fHFzzjh/BjUIl7gHhQZXbYKJbVPC4VxTeeKVKw1/cbbFX0lu02KBdp9iD4aesyT6+vdw7aklWn4wg/fKaHyU9J21Eiz8B2p/KXqvzuDguA187MaXJ1wiprTVquN9U=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1726092479; c=relaxed/simple;
-	bh=WQ5xUdoURdT7+vK5J20UZjKk+FmJEb9HDmLlurDQLig=;
-	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:
-	 In-Reply-To:Content-Type; b=hY4QjyowCPqduRhscz8OTqVBFDD+YLdsgnww9/C7HURdudFNS+wcQ39qPYvCbm0388svMSDBlubK3SMsLAPCrdXAV8NUrpm+q6c2kiDp+jnF7VjAdd80n8SNkxrXjXzzNJ+DjnychWDLT44U2izGqJFSbQz4GH2etENXE/GA+zk=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=fEeQ1U7G; arc=none smtp.client-ip=170.10.133.124
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1726092476;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=qPv18UJlJ1AtcMakcGZBSmFd7ZNQdnu0Fu6/erRRIEI=;
-	b=fEeQ1U7G/ikqVk4rPfAV/ruOGA+4ElgeaWZ1kcPHDbjtfTqOEVs/JQhB9baRSFJhcVTczS
-	7bgWChOU/u2j+YnbzSVAt6b7hIBXk/op7b55qP3aKNUevb5wtqYjdFxECV5KAuHJySV6mx
-	9eQsxp5p32V7HiUzbUqmA+Cx8N4/B9g=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-634-GrgkS-IOM3iGlwJQKWzpxA-1; Wed, 11 Sep 2024 18:07:55 -0400
-X-MC-Unique: GrgkS-IOM3iGlwJQKWzpxA-1
-Received: by mail-wm1-f71.google.com with SMTP id 5b1f17b1804b1-42cb89fbb8cso1368285e9.0
-        for <kvm@vger.kernel.org>; Wed, 11 Sep 2024 15:07:55 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1726092474; x=1726697274;
-        h=content-transfer-encoding:in-reply-to:organization:autocrypt:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:x-gm-message-state:from:to:cc:subject:date
+       dkim=pass header.i=@linaro.org header.s=google header.b=aphDUzq+;
+       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1726126769; x=1726731569; darn=linaro.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=qPv18UJlJ1AtcMakcGZBSmFd7ZNQdnu0Fu6/erRRIEI=;
-        b=XMFsLQmxqnecpKvvpTfDEEyAieNT9OY5ks8awPKIu54uyd6qjJinRlgNi0AhdQBW0y
-         Vd8f+t3NyMSDyPMhwByhkCdPl7BmTsnYtRhQ6CkMoYjKd7K26+8BtrUzoocMeg20A+u+
-         lomd1ZUDl6o8JK4JlL7uEotRiwY7MrZ1r1+i68kPw+UqMxnyFxVbKuQN8fTnXGj/4brW
-         EIOGmyOJo3vZF7iJQulPuvMcyOgJcIIb9D26kZLHuG+vNlu9M5jjov7d09DRBMfQAyGk
-         OV9eXqANR4xUcJLv35EI0dFbCU4eeDXt1vm0mkuhT9Mskoy2Cr74zwm9PdvX4SlM7BQ4
-         YRxQ==
-X-Gm-Message-State: AOJu0YzK8nXbkZH/LVo5/vowaq5EzdodJoqNGUHxBLfmC+fZgbm10TWN
-	6znktiaqnonq9zfOVgEUgmWg1KO1Kss/F7cu3Jh2FLC6hc/k3xpR3nD6vL7K9J/cQ7I22bNiHgw
-	QFm+UNtfD4axu2RuDNm+RoIt7GPlOJggCl9etSFiAgnWphbd0vw==
-X-Received: by 2002:adf:9b92:0:b0:371:87af:c88a with SMTP id ffacd0b85a97d-378c2d4d7e5mr369985f8f.45.1726092473853;
-        Wed, 11 Sep 2024 15:07:53 -0700 (PDT)
-X-Received: by 2002:adf:9b92:0:b0:371:87af:c88a with SMTP id ffacd0b85a97d-378c2d4d7e5mr369955f8f.45.1726092472849;
-        Wed, 11 Sep 2024 15:07:52 -0700 (PDT)
-Received: from ?IPV6:2003:cb:c700:7e00:c672:608:5b3e:df8c? (p200300cbc7007e00c67206085b3edf8c.dip0.t-ipconnect.de. [2003:cb:c700:7e00:c672:608:5b3e:df8c])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-42caeb4444asm152958595e9.22.2024.09.11.15.07.51
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 11 Sep 2024 15:07:52 -0700 (PDT)
-Message-ID: <cf587c8b-3894-4589-bfea-be5db70e81f3@redhat.com>
-Date: Thu, 12 Sep 2024 00:07:51 +0200
-Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
+        bh=IRV8cs5vGajAoqqaVP2CMnCi0idLbKzQEkk2XTwPdlU=;
+        b=aphDUzq+074c79XPxrhWNJdmYuc4ziah1h1V1GHhTeBBOwTVA7A05Wo0XhceED/Phm
+         w4R7w+/VRM3QCO+6bgc3I8PNTvmlY8wJincOWkzwRcz/4blVR3/h59ajauIggrD4n4kZ
+         vwjDOfvq2T4v1rjE1O0q9Bb6XWmxORF1/BQGJlRw6pwWHnLeUmEGYEc+U/JxoMbgOMes
+         iQytCCiF0RkYJ2w1M/+vKlknzyqiOBZVsAJPkGNufJmYAVEHj1vS0+x3tyYlDnVXtHeu
+         sr/xR1LVuqrlgc5982BGjtamVtThEDtHJKZe7LDGYg0qDEjElvCfLdJ0ZCT4P4ZqPNXa
+         2m2Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1726126769; x=1726731569;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=IRV8cs5vGajAoqqaVP2CMnCi0idLbKzQEkk2XTwPdlU=;
+        b=NEMx5Rb5wWoiu79tRUIE+rclQqycmIaO/ccItefDrBufTnRcsjbjlNUaeA3+B3RXS6
+         7Bj8K5hXNTW4yieB9rhQpPNs5LZmEHTtf/gtmIOh1NtSVaO3HFHlFjaXEXj7DLcSe4jC
+         zjTjcQGtrlpn3h4MQEaAmV8vrK+NoMqJckXNdl4tG66o/eWjoQefjrcIi85JZ1zhOwjj
+         NRMAXSEIYwTMfnIA0sWnYxm4LMBJwIHdto5YwpRX4dSkYgVnVSW9HJ78XRw4wBm3zjQV
+         nSRqAF8/4Q84kS1HivZIojcA3YQ3xKxICCB+DNlwpzrTk4gt2hqOAN+GaCexoi9NrS8W
+         NNGg==
+X-Forwarded-Encrypted: i=1; AJvYcCWh7wOULsnVAIsaE9HhzzjpGaRGcr9A/kiYnAmmM5/tEm5+hZ1myN7Wnb7dJh9ei10bJ5JGHciZ36BNow==@linaro.org
+X-Gm-Message-State: AOJu0YxmQUHGnK/PryTSCtfCG1dtFMyoLbzkqsuIFG2kkdThS4y+HCcG
+	riG03S31GBcXdpV1PAllNdytUYcuA96sp/ZOlgTmA9QJMQgvrorhyJikTlR0Qv8GMg==
+X-Google-Smtp-Source: AGHT+IELQJ4LN1eiiJh78GYcEX/xms21hXHkteEXLmVpd/6Wpu6TPg6l8or6duVIN2euH8mSyIIX7A==
+X-Received: by 2002:a05:6a21:10a:b0:1cf:434d:609 with SMTP id adf61e73a8af0-1cf75ec46b4mr3157664637.6.1726126768552;
+        Thu, 12 Sep 2024 00:39:28 -0700 (PDT)
+Return-Path: <pierrick.bouvier@linaro.org>
+Received: from linaro.vn.shawcable.net ([2604:3d08:9384:1d00::9633])
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-7db1fb9ad87sm983458a12.6.2024.09.12.00.39.26
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 12 Sep 2024 00:39:28 -0700 (PDT)
+From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Jason Wang <jasowang@redhat.com>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Laurent Vivier <lvivier@redhat.com>,
+	Marcelo Tosatti <mtosatti@redhat.com>,
+	Nicholas Piggin <npiggin@gmail.com>,
+	Klaus Jensen <its@irrelevant.dk>,
+	WANG Xuerui <git@xen0n.name>,
+	Halil Pasic <pasic@linux.ibm.com>,
+	Rob Herring <robh@kernel.org>,
+	Michael Rolnik <mrolnik@gmail.com>,
+	Zhao Liu <zhao1.liu@intel.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Fabiano Rosas <farosas@suse.de>,
+	Corey Minyard <minyard@acm.org>,
+	Keith Busch <kbusch@kernel.org>,
+	Thomas Huth <thuth@redhat.com>,
+	"Maciej S. Szmigiero" <maciej.szmigiero@oracle.com>,
+	Harsh Prateek Bora <harshpb@linux.ibm.com>,
+	Kevin Wolf <kwolf@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Jesper Devantier <foss@defmacro.it>,
+	Hyman Huang <yong.huang@smartx.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Palmer Dabbelt <palmer@dabbelt.com>,
+	qemu-s390x@nongnu.org,
+	Laurent Vivier <laurent@vivier.eu>,
+	qemu-riscv@nongnu.org,
+	"Richard W.M. Jones" <rjones@redhat.com>,
+	Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+	Aurelien Jarno <aurelien@aurel32.net>,
+	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	kvm@vger.kernel.org,
+	Christian Borntraeger <borntraeger@linux.ibm.com>,
+	Akihiko Odaki <akihiko.odaki@daynix.com>,
+	Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+	Hanna Reitz <hreitz@redhat.com>,
+	Ani Sinha <anisinha@redhat.com>,
+	qemu-ppc@nongnu.org,
+	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+	Alistair Francis <alistair.francis@wdc.com>,
+	Bin Meng <bmeng.cn@gmail.com>,
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	Helge Deller <deller@gmx.de>,
+	Peter Xu <peterx@redhat.com>,
+	Daniel Henrique Barboza <danielhb413@gmail.com>,
+	Dmitry Fleytman <dmitry.fleytman@gmail.com>,
+	Nina Schoetterl-Glausch <nsg@linux.ibm.com>,
+	Yanan Wang <wangyanan55@huawei.com>,
+	qemu-arm@nongnu.org,
+	Igor Mammedov <imammedo@redhat.com>,
+	Jean-Christophe Dubois <jcd@tribudubois.net>,
+	Eric Farman <farman@linux.ibm.com>,
+	Sriram Yagnaraman <sriram.yagnaraman@ericsson.com>,
+	qemu-block@nongnu.org,
+	Stefan Berger <stefanb@linux.vnet.ibm.com>,
+	Joel Stanley <joel@jms.id.au>,
+	Eduardo Habkost <eduardo@habkost.net>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	Fam Zheng <fam@euphon.net>,
+	Weiwei Li <liwei1518@gmail.com>,
+	Markus Armbruster <armbru@redhat.com>,
+	Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Subject: [PATCH v2 01/48] docs/spin: replace assert(0) with g_assert_not_reached()
+Date: Thu, 12 Sep 2024 00:38:34 -0700
+Message-Id: <20240912073921.453203-2-pierrick.bouvier@linaro.org>
+X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20240912073921.453203-1-pierrick.bouvier@linaro.org>
+References: <20240912073921.453203-1-pierrick.bouvier@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC RESEND 0/6] hugetlbfs largepage RAS project
-To: William Roche <william.roche@oracle.com>, pbonzini@redhat.com,
- peterx@redhat.com, philmd@linaro.org, marcandre.lureau@redhat.com,
- berrange@redhat.com, thuth@redhat.com, richard.henderson@linaro.org,
- peter.maydell@linaro.org, mtosatti@redhat.com, qemu-devel@nongnu.org
-Cc: kvm@vger.kernel.org, qemu-arm@nongnu.org, joao.m.martins@oracle.com
-References: <20240910090747.2741475-1-william.roche@oracle.com>
- <20240910100216.2744078-1-william.roche@oracle.com>
- <ec3337f7-3906-4a1b-b153-e3d5b16685b6@redhat.com>
- <9f9a975e-3a04-4923-b8a5-f1edbed945e6@oracle.com>
-Content-Language: en-US
-From: David Hildenbrand <david@redhat.com>
-Autocrypt: addr=david@redhat.com; keydata=
- xsFNBFXLn5EBEAC+zYvAFJxCBY9Tr1xZgcESmxVNI/0ffzE/ZQOiHJl6mGkmA1R7/uUpiCjJ
- dBrn+lhhOYjjNefFQou6478faXE6o2AhmebqT4KiQoUQFV4R7y1KMEKoSyy8hQaK1umALTdL
- QZLQMzNE74ap+GDK0wnacPQFpcG1AE9RMq3aeErY5tujekBS32jfC/7AnH7I0v1v1TbbK3Gp
- XNeiN4QroO+5qaSr0ID2sz5jtBLRb15RMre27E1ImpaIv2Jw8NJgW0k/D1RyKCwaTsgRdwuK
- Kx/Y91XuSBdz0uOyU/S8kM1+ag0wvsGlpBVxRR/xw/E8M7TEwuCZQArqqTCmkG6HGcXFT0V9
- PXFNNgV5jXMQRwU0O/ztJIQqsE5LsUomE//bLwzj9IVsaQpKDqW6TAPjcdBDPLHvriq7kGjt
- WhVhdl0qEYB8lkBEU7V2Yb+SYhmhpDrti9Fq1EsmhiHSkxJcGREoMK/63r9WLZYI3+4W2rAc
- UucZa4OT27U5ZISjNg3Ev0rxU5UH2/pT4wJCfxwocmqaRr6UYmrtZmND89X0KigoFD/XSeVv
- jwBRNjPAubK9/k5NoRrYqztM9W6sJqrH8+UWZ1Idd/DdmogJh0gNC0+N42Za9yBRURfIdKSb
- B3JfpUqcWwE7vUaYrHG1nw54pLUoPG6sAA7Mehl3nd4pZUALHwARAQABzSREYXZpZCBIaWxk
- ZW5icmFuZCA8ZGF2aWRAcmVkaGF0LmNvbT7CwZgEEwEIAEICGwMGCwkIBwMCBhUIAgkKCwQW
- AgMBAh4BAheAAhkBFiEEG9nKrXNcTDpGDfzKTd4Q9wD/g1oFAl8Ox4kFCRKpKXgACgkQTd4Q
- 9wD/g1oHcA//a6Tj7SBNjFNM1iNhWUo1lxAja0lpSodSnB2g4FCZ4R61SBR4l/psBL73xktp
- rDHrx4aSpwkRP6Epu6mLvhlfjmkRG4OynJ5HG1gfv7RJJfnUdUM1z5kdS8JBrOhMJS2c/gPf
- wv1TGRq2XdMPnfY2o0CxRqpcLkx4vBODvJGl2mQyJF/gPepdDfcT8/PY9BJ7FL6Hrq1gnAo4
- 3Iv9qV0JiT2wmZciNyYQhmA1V6dyTRiQ4YAc31zOo2IM+xisPzeSHgw3ONY/XhYvfZ9r7W1l
- pNQdc2G+o4Di9NPFHQQhDw3YTRR1opJaTlRDzxYxzU6ZnUUBghxt9cwUWTpfCktkMZiPSDGd
- KgQBjnweV2jw9UOTxjb4LXqDjmSNkjDdQUOU69jGMUXgihvo4zhYcMX8F5gWdRtMR7DzW/YE
- BgVcyxNkMIXoY1aYj6npHYiNQesQlqjU6azjbH70/SXKM5tNRplgW8TNprMDuntdvV9wNkFs
- 9TyM02V5aWxFfI42+aivc4KEw69SE9KXwC7FSf5wXzuTot97N9Phj/Z3+jx443jo2NR34XgF
- 89cct7wJMjOF7bBefo0fPPZQuIma0Zym71cP61OP/i11ahNye6HGKfxGCOcs5wW9kRQEk8P9
- M/k2wt3mt/fCQnuP/mWutNPt95w9wSsUyATLmtNrwccz63XOwU0EVcufkQEQAOfX3n0g0fZz
- Bgm/S2zF/kxQKCEKP8ID+Vz8sy2GpDvveBq4H2Y34XWsT1zLJdvqPI4af4ZSMxuerWjXbVWb
- T6d4odQIG0fKx4F8NccDqbgHeZRNajXeeJ3R7gAzvWvQNLz4piHrO/B4tf8svmRBL0ZB5P5A
- 2uhdwLU3NZuK22zpNn4is87BPWF8HhY0L5fafgDMOqnf4guJVJPYNPhUFzXUbPqOKOkL8ojk
- CXxkOFHAbjstSK5Ca3fKquY3rdX3DNo+EL7FvAiw1mUtS+5GeYE+RMnDCsVFm/C7kY8c2d0G
- NWkB9pJM5+mnIoFNxy7YBcldYATVeOHoY4LyaUWNnAvFYWp08dHWfZo9WCiJMuTfgtH9tc75
- 7QanMVdPt6fDK8UUXIBLQ2TWr/sQKE9xtFuEmoQGlE1l6bGaDnnMLcYu+Asp3kDT0w4zYGsx
- 5r6XQVRH4+5N6eHZiaeYtFOujp5n+pjBaQK7wUUjDilPQ5QMzIuCL4YjVoylWiBNknvQWBXS
- lQCWmavOT9sttGQXdPCC5ynI+1ymZC1ORZKANLnRAb0NH/UCzcsstw2TAkFnMEbo9Zu9w7Kv
- AxBQXWeXhJI9XQssfrf4Gusdqx8nPEpfOqCtbbwJMATbHyqLt7/oz/5deGuwxgb65pWIzufa
- N7eop7uh+6bezi+rugUI+w6DABEBAAHCwXwEGAEIACYCGwwWIQQb2cqtc1xMOkYN/MpN3hD3
- AP+DWgUCXw7HsgUJEqkpoQAKCRBN3hD3AP+DWrrpD/4qS3dyVRxDcDHIlmguXjC1Q5tZTwNB
- boaBTPHSy/Nksu0eY7x6HfQJ3xajVH32Ms6t1trDQmPx2iP5+7iDsb7OKAb5eOS8h+BEBDeq
- 3ecsQDv0fFJOA9ag5O3LLNk+3x3q7e0uo06XMaY7UHS341ozXUUI7wC7iKfoUTv03iO9El5f
- XpNMx/YrIMduZ2+nd9Di7o5+KIwlb2mAB9sTNHdMrXesX8eBL6T9b+MZJk+mZuPxKNVfEQMQ
- a5SxUEADIPQTPNvBewdeI80yeOCrN+Zzwy/Mrx9EPeu59Y5vSJOx/z6OUImD/GhX7Xvkt3kq
- Er5KTrJz3++B6SH9pum9PuoE/k+nntJkNMmQpR4MCBaV/J9gIOPGodDKnjdng+mXliF3Ptu6
- 3oxc2RCyGzTlxyMwuc2U5Q7KtUNTdDe8T0uE+9b8BLMVQDDfJjqY0VVqSUwImzTDLX9S4g/8
- kC4HRcclk8hpyhY2jKGluZO0awwTIMgVEzmTyBphDg/Gx7dZU1Xf8HFuE+UZ5UDHDTnwgv7E
- th6RC9+WrhDNspZ9fJjKWRbveQgUFCpe1sa77LAw+XFrKmBHXp9ZVIe90RMe2tRL06BGiRZr
- jPrnvUsUUsjRoRNJjKKA/REq+sAnhkNPPZ/NNMjaZ5b8Tovi8C0tmxiCHaQYqj7G2rgnT0kt
- WNyWQQ==
-Organization: Red Hat
-In-Reply-To: <9f9a975e-3a04-4923-b8a5-f1edbed945e6@oracle.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-TUID: 8Gcl+Qi7nODM
+Content-Transfer-Encoding: 8bit
+X-TUID: GL9FfQnbfayv
 
-Hi again,
+This patch is part of a series that moves towards a consistent use of
+g_assert_not_reached() rather than an ad hoc mix of different
+assertion mechanisms.
 
->>> This is a Qemu RFC to introduce the possibility to deal with hardware
->>> memory errors impacting hugetlbfs memory backed VMs. When using
->>> hugetlbfs large pages, any large page location being impacted by an
->>> HW memory error results in poisoning the entire page, suddenly making
->>> a large chunk of the VM memory unusable.
->>>
->>> The implemented proposal is simply a memory mapping change when an HW
->>> error
->>> is reported to Qemu, to transform a hugetlbfs large page into a set of
->>> standard sized pages. The failed large page is unmapped and a set of
->>> standard sized pages are mapped in place.
->>> This mechanism is triggered when a SIGBUS/MCE_MCEERR_Ax signal is
->>> received
->>> by qemu and the reported location corresponds to a large page.
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+---
+ docs/spin/aio_notify_accept.promela | 6 +++---
+ docs/spin/aio_notify_bug.promela    | 6 +++---
+ 2 files changed, 6 insertions(+), 6 deletions(-)
 
-One clarifying question: you simply replace the hugetlb page by multiple 
-small pages using mmap(MAP_FIXED). So you
-
-(a) are not able to recover any memory of the original page (as of now)
-(b) no longer have a hugetlb page and, therefore, possibly a performance
-     degradation, relevant in low-latency applications that really care
-     about the usage of hugetlb pages.
-(c) run into the described inconsistency issues
-
-Why is what you propose beneficial over just fallocate(PUNCH_HOLE) the 
-full page and get a fresh, non-poisoned page instead?
-
-Sure, you have to reserve some pages if that ever happens, but what is 
-the big selling point over PUNCH_HOLE + realloc? (sorry if I missed it 
-and it was spelled out)
-
->>>
->>> This gives the possibility to:
->>> - Take advantage of newer hypervisor kernel providing a way to retrieve
->>> still valid data on the impacted hugetlbfs poisoned large page.
-
-Reading that again, that shouldn't have to be hypervisor-specific. 
-Really, if someone were to extract data from a poisoned hugetlb folio, 
-it shouldn't be hypervisor-specific. The kernel should be able to know 
-which regions are accessible and could allow ways for reading these, one 
-way or the other.
-
-It could just be a fairly hugetlb-special feature that would replace the 
-poisoned page by a fresh hugetlb page where as much page content as 
-possible has been recoverd from the old one.
-
->>> If the backend file is MAP_SHARED, we can copy the valid data into the
-> 
-> 
-> Thank you David for this first reaction on this proposal.
-> 
-> 
->> How are you dealing with other consumers of the shared memory,
->> such as vhost-user processes,
-> 
-> 
-> In the current proposal, I don't deal with this aspect.
-> In fact, any other process sharing the changed memory will
-> continue to map the poisoned large page. So any access to
-> this page will generate a SIGBUS to this other process.
-> 
-> In this situation vhost-user processes should continue to receive
-> SIGBUS signals (and probably continue to die because of that).
-
-That's ... suboptimal. :)
-
-Assume you have a 1 GiB page. The guest OS can happily allocate buffers 
-in there so they can end up in vhost-user and crash that process. 
-Without any warning.
-
-> 
-> So I do see a real problem if 2 qemu processes are sharing the
-> same hugetlbfs segment -- in this case, error recovery should not
-> occur on this piece of the memory. Maybe dealing with this situation
-> with "ivshmem" options is doable (marking the shared segment
-> "not eligible" to hugetlbfs recovery, just like not "share=on"
-> hugetlbfs entries are not eligible)
-> -- I need to think about this specific case.
-> 
-> Please let me know if there is a better way to deal with this
-> shared memory aspect and have a better system reaction.
-
-Not creating the inconsistency in the first place :)
-
->> vm migration whereby RAM is migrated using file content,
-> 
-> 
-> Migration doesn't currently work with memory poisoning.
-> You can give a look at the already integrated following commit:
-> 
-> 06152b89db64 migration: prevent migration when VM has poisoned memory
-> 
-> This proposal doesn't change anything on this side.
-
-That commit is fairly fresh and likely missed the option to *not* 
-migrate RAM by reading it, but instead by migrating it through a shared 
-file. For example, VM life-upgrade (CPR) wants to use that (or is 
-already using that), to avoid RAM migration completely.
-
-> 
->> vfio that might have these pages pinned?
-> 
-> AFAIK even pinned memory can be impacted by memory error and poisoned
-> by the kernel. Now as I said in the cover letter, I'd like to know if
-> we should take extra care for IO memory, vfio configured memory buffers...
-
-Assume your GPU has a hugetlb folio pinned via vfio. As soon as you make 
-the guest RAM point at anything else as VFIO is aware of, we end up in 
-the same problem we had when we learned about having to disable balloon 
-inflation (MADVISE_DONTNEED) as soon as VFIO pinned pages.
-
-We'd have to inform VFIO that the mapping is now different. Otherwise 
-it's really better to crash the VM than having your GPU read/write 
-different data than your CPU reads/writes,
-
-> 
-> 
->> In general, you cannot simply replace pages by private copies
->> when somebody else might be relying on these pages to go to
->> actual guest RAM.
-> 
-> This is correct, but the current proposal is dealing with a specific
-> shared memory type: poisoned large pages. So any other process mapping
-> this type of page can't access it without generating a SIGBUS.
-
-Right, and that's the issue. Because, for example, how should the VM be 
-aware that this memory is now special and must not be used for some 
-purposes without leading to problems elsewhere?
-
-> 
-> 
->> It sounds very hacky and incomplete at first.
-> 
-> As you can see, RAS features need to be completed.
-> And if this proposal is incomplete, what other changes should be
-> done to complete it ?
-> 
-> I do hope we can discuss this RFC to adapt what is incorrect, or
-> find a better way to address this situation.
-
-One long-term goal people are working on is to allow remapping the 
-hugetlb folios in smaller granularity, such that only a single affected 
-PTE can be marked as poisoned. (used to be called high-granularity-mapping)
-
-However, at the same time, the focus hseems to shift towards using 
-guest_memfd instead of hugetlb, once it supports 1 GiB pages and shared 
-memory. It will likely be easier to support mapping 1 GiB pages using 
-PTEs that way, and there are ongoing discussions how that can be 
-achieved more easily.
-
-There are also discussions [1] about not poisoning the mappings at all 
-and handling it differently. But I haven't yet digested how exactly that 
-could look like in reality.
-
-
-[1] https://lkml.kernel.org/r/20240828234958.GE3773488@nvidia.com
-
+diff --git a/docs/spin/aio_notify_accept.promela b/docs/spin/aio_notify_accept.promela
+index 9cef2c955dd..f929d303281 100644
+--- a/docs/spin/aio_notify_accept.promela
++++ b/docs/spin/aio_notify_accept.promela
+@@ -118,7 +118,7 @@ accept_if_req_not_eventually_false:
+     if
+         :: req -> goto accept_if_req_not_eventually_false;
+     fi;
+-    assert(0);
++    g_assert_not_reached();
+ }
+ 
+ #else
+@@ -141,12 +141,12 @@ accept_if_event_not_eventually_true:
+         :: !event && notifier_done  -> do :: true -> skip; od;
+         :: !event && !notifier_done -> goto accept_if_event_not_eventually_true;
+     fi;
+-    assert(0);
++    g_assert_not_reached();
+ 
+ accept_if_event_not_eventually_false:
+     if
+         :: event     -> goto accept_if_event_not_eventually_false;
+     fi;
+-    assert(0);
++    g_assert_not_reached();
+ }
+ #endif
+diff --git a/docs/spin/aio_notify_bug.promela b/docs/spin/aio_notify_bug.promela
+index b3bfca1ca4f..ce6f5177ed5 100644
+--- a/docs/spin/aio_notify_bug.promela
++++ b/docs/spin/aio_notify_bug.promela
+@@ -106,7 +106,7 @@ accept_if_req_not_eventually_false:
+     if
+         :: req -> goto accept_if_req_not_eventually_false;
+     fi;
+-    assert(0);
++    g_assert_not_reached();
+ }
+ 
+ #else
+@@ -129,12 +129,12 @@ accept_if_event_not_eventually_true:
+         :: !event && notifier_done  -> do :: true -> skip; od;
+         :: !event && !notifier_done -> goto accept_if_event_not_eventually_true;
+     fi;
+-    assert(0);
++    g_assert_not_reached();
+ 
+ accept_if_event_not_eventually_false:
+     if
+         :: event     -> goto accept_if_event_not_eventually_false;
+     fi;
+-    assert(0);
++    g_assert_not_reached();
+ }
+ #endif
 -- 
-Cheers,
-
-David / dhildenb
-
+2.39.2

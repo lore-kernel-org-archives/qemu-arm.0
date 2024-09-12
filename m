@@ -1,40 +1,40 @@
-Received: by 2002:a17:504:928f:b0:1be9:327d:8ee3 with SMTP id d15csp522895nji;
-        Thu, 12 Sep 2024 06:39:58 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXxhzg5lU7QvQKOnCMJjtp5dkPbSKYFBliaJ1XEUI8/9SjqnZn/jENkkKEWmtdPLDn/Jn1ZI/G70oeocQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IHLsbgjjqJabJB6PPPAdR7futNDHGbnW9+NAXV44TiyO5HQfDE1ppn8dkBld5hAEbsXNgfS
-X-Received: by 2002:ac8:5703:0:b0:458:2ce1:26f8 with SMTP id d75a77b69052e-45860464431mr35268481cf.60.1726148397852;
-        Thu, 12 Sep 2024 06:39:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1726148397; cv=none;
+Received: by 2002:a17:504:928f:b0:1be9:327d:8ee3 with SMTP id d15csp523094nji;
+        Thu, 12 Sep 2024 06:40:28 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVsxpyOTnYZX4A1dUKWaD4mJvtvBV4jekFv2seCJw/XGc1CiMZ8JNtXK85eVy21nhUmoQcYY6kE1Ywpug==@linaro.org
+X-Google-Smtp-Source: AGHT+IGEcXG2aHAcj7AalO8R7aGpS2jw2QS7sKz+x0fFYkj7NCi+q/kJPWMAKkZ/8Ae8aAEcrhOU
+X-Received: by 2002:a05:6902:1895:b0:e0b:db13:76bc with SMTP id 3f1490d57ef6-e1d9db92685mr2751779276.12.1726148427896;
+        Thu, 12 Sep 2024 06:40:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1726148427; cv=none;
         d=google.com; s=arc-20240605;
-        b=GV4EQ/IcmKaQJB5JTJ2SiOGS8jXk76NGIzPPJd9oYHajguECf1TZHBLnHHjRDMM/r4
-         MC8CElVlk9zK5heJpNlOAoorFUPTaWIQ9cBMiH3vBA16QxhA2VV/b+cQI46ZEdwazv/o
-         QPIBVnCv9SCLLWQHHkjtWTCRmtIpHyVGGULlf6bvGI8ujzOvyWp1WLY8igpdrtEq+lpq
-         eUuk5CgSz13ck7y5JxV8JeIwVtmeJLGrbs/Qto92cIQ/AZqFdSpZmqmpJyU4Rt3BYMjg
-         03dL2oTMzs7h6UenfrDoLAMMu1fbZKLHgMbgKf1QBJb6vCn4Dpzs9Bp5pCtiKwExqMhf
-         47xg==
+        b=P/zUD4Jat+0AimJoBg9vwyQZaju/VOxzUX0Be85Hn8LbH7EbInYYcKtohtiaYt2uGm
+         aV20OpPjY1mdKLoC79M+MVOxTFzvc2qihy3GO0WW/G1Aa1KGEYK6Adm20UEPWLyiQfqa
+         lRdaFuQEfj98TEoyhpsaKChodybyuTXmqgh7YbuGUN6M1in6/rMiL0p8RrFdk2NDTJsL
+         shBlfWMMSxAbi6S9+rxT2LITYK5F0INZvC/Co35zISqv0R22//ViE+2uk0TTRT1zMCnp
+         dJRZs7Zl5rSFy7ybs2VqMnBFkXrBMdRYdynA68vJhCJ10ElAg/N4NcYdNjBA/Hc84dRH
+         CIMA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to;
-        bh=Lo8RffmdMxwayqakr9LRRD5IPAGPIFeYyOq3H6MR2hQ=;
+        bh=WK/aLF5quu8WNFaLVzI70n56c0XxtB1a/39ry15cjic=;
         fh=FkJWaune7hMuK+jemAGcJmHRm42IOkVpZLD1KexBaC8=;
-        b=LkGry/y3xVWIso74hashsTV3cqsJb01iAGKiRH4/8LGUBnH4qzuLJCdI0GnaK54u22
-         mJC3I6Dw6v8AlPoruvj6pEeC3kZDhPb4G0Kc6cpfteKXV4n38hDfl3/8CxwEhOLNEboQ
-         MT/IttMhltnL9FG2ANoiKEhR+hJrr4rZKNr17QjmNw6ZnFZhjXdy709Ue/7aHcKy2nR6
-         T1SrWD/qoGFsFA5Dyyeg39MSSqKTU8NQ2r9lRgNr5TjFvVyLmXw1ZFDxJMmwA8ayUfZ+
-         YJ5Kmk4oF0Zn5tvLS4dWQbJmxtEGjrZs7Sny9fbUU6sg8uNntngLN/cUxrslQNWt22es
-         nNAw==;
+        b=guGYkiSLHFrJizSjc2RYqomlMDIUETWbKUSCPn1KQr3yGyYfdKwUxAsaQKB+iSsEud
+         Qv0+KvomoDwKQHxtIsyNI+U00Kty9KA2mFBgkvzQqLzJEVerB5NPqGGAprpgkal/Mmxb
+         kD3/HR53YUH9nHcsB65O0vKS5IdMK9kvnRqWZciM8hgQtdgshO+iL80zfoS10YKsOK0m
+         R+wH1RjH1Iq739zaxE0bujfDsnXb5Rcqi8dKZ3bIB7+o9/nwawZiAjlRVTtk91ykWWw9
+         fdceBMsVDnKjG29FkO0kki9IAlWXaSdzKh6CWx8JtlKEa+gPo6zV35WHx/GFA6Rj9v1r
+         Q0Zw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-45822f3e268si131278191cf.382.2024.09.12.06.39.57
+        by mx.google.com with ESMTPS id d75a77b69052e-45822fa6500si124865181cf.539.2024.09.12.06.40.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 12 Sep 2024 06:39:57 -0700 (PDT)
+        Thu, 12 Sep 2024 06:40:27 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
@@ -42,25 +42,25 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sok38-0004JU-II; Thu, 12 Sep 2024 09:39:55 -0400
+	id 1sok3e-0006zb-IK; Thu, 12 Sep 2024 09:40:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alireza.sanaee@huawei.com>)
- id 1sok35-00045a-Ot; Thu, 12 Sep 2024 09:39:52 -0400
+ id 1sok3b-0006jq-Gs; Thu, 12 Sep 2024 09:40:23 -0400
 Received: from frasgout.his.huawei.com ([185.176.79.56])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alireza.sanaee@huawei.com>)
- id 1sok34-00005X-8j; Thu, 12 Sep 2024 09:39:51 -0400
-Received: from mail.maildlp.com (unknown [172.18.186.231])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4X4JMj63RKz6K6lR;
- Thu, 12 Sep 2024 21:34:57 +0800 (CST)
+ id 1sok3a-0000Kw-50; Thu, 12 Sep 2024 09:40:23 -0400
+Received: from mail.maildlp.com (unknown [172.18.186.31])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4X4JNK4Qllz6K6RP;
+ Thu, 12 Sep 2024 21:35:29 +0800 (CST)
 Received: from frapeml500003.china.huawei.com (unknown [7.182.85.28])
- by mail.maildlp.com (Postfix) with ESMTPS id 915F2140B38;
- Thu, 12 Sep 2024 21:39:48 +0800 (CST)
+ by mail.maildlp.com (Postfix) with ESMTPS id 5C5031400C9;
+ Thu, 12 Sep 2024 21:40:20 +0800 (CST)
 Received: from a2303103017.china.huawei.com (10.48.147.42) by
  frapeml500003.china.huawei.com (7.182.85.28) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Thu, 12 Sep 2024 15:39:47 +0200
+ 15.1.2507.39; Thu, 12 Sep 2024 15:40:19 +0200
 To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
 CC: <zhao1.liu@intel.com>, <zhenyu.z.wang@intel.com>,
  <dapeng1.mi@linux.intel.com>, <yongwei.ma@intel.com>, <armbru@redhat.com>,
@@ -69,9 +69,9 @@ CC: <zhao1.liu@intel.com>, <zhenyu.z.wang@intel.com>,
  <mtosatti@redhat.com>, <berrange@redhat.com>, <richard.henderson@linaro.org>, 
  <linuxarm@huwei.com>, <shameerali.kolothum.thodi@huawei.com>,
  <Jonathan.Cameron@Huawei.com>, <jiangkunkun@huawei.com>
-Subject: [PATCH 2/5] i386/cpu: add IsDefined flag to smp-cache property
-Date: Thu, 12 Sep 2024 14:38:26 +0100
-Message-ID: <20240912133829.400-3-alireza.sanaee@huawei.com>
+Subject: [PATCH 3/5] target/arm/tcg: increase cache level for cpu=max
+Date: Thu, 12 Sep 2024 14:38:27 +0100
+Message-ID: <20240912133829.400-4-alireza.sanaee@huawei.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240912133829.400-1-alireza.sanaee@huawei.com>
 References: <20240912133829.400-1-alireza.sanaee@huawei.com>
@@ -105,42 +105,41 @@ Reply-to:  Alireza Sanaee <alireza.sanaee@huawei.com>
 From:  Alireza Sanaee via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ZK+dI8o9hqLf
+X-TUID: mcPgtr4W+j7u
 
-This commit adds IsDefined flag to the object and this helps in avoiding
-extra checks for every single layer of caches in both x86 and ARM.
+This patch addresses cache description in the `aarch64_max_tcg_initfn`
+function for cpu=max. It introduces three layers of caches and modifies
+the cache description registers accordingly.
 
 Signed-off-by: Alireza Sanaee <alireza.sanaee@huawei.com>
 ---
- hw/core/machine-smp.c | 2 ++
- include/hw/boards.h   | 1 +
- 2 files changed, 3 insertions(+)
+ target/arm/tcg/cpu64.c | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
 
-diff --git a/hw/core/machine-smp.c b/hw/core/machine-smp.c
-index 9a28194676..5a02bbf584 100644
---- a/hw/core/machine-smp.c
-+++ b/hw/core/machine-smp.c
-@@ -371,6 +371,8 @@ bool machine_parse_smp_cache(MachineState *ms,
-         return false;
-     }
+diff --git a/target/arm/tcg/cpu64.c b/target/arm/tcg/cpu64.c
+index 904a7e90b4..47d8c9c9ae 100644
+--- a/target/arm/tcg/cpu64.c
++++ b/target/arm/tcg/cpu64.c
+@@ -1086,6 +1086,19 @@ void aarch64_max_tcg_initfn(Object *obj)
+     uint64_t t;
+     uint32_t u;
  
-+    ms->smp_cache.IsDefined = true;
++    /*
++     * Expanded cache set
++     */
++    cpu->clidr = 0x8200123; /* 4 4 3 in 3 bit fields */
++    /* 64KB L1 dcache */
++    cpu->ccsidr[0] = make_ccsidr(CCSIDR_FORMAT_LEGACY, 4, 64, 64 * KiB, 7);
++    /* 64KB L1 icache */
++    cpu->ccsidr[1] = make_ccsidr(CCSIDR_FORMAT_LEGACY, 4, 64, 64 * KiB, 2);
++    /* 1MB L2 unified cache */
++    cpu->ccsidr[2] = make_ccsidr(CCSIDR_FORMAT_LEGACY, 8, 64, 1 * MiB, 7);
++    /* 2MB L3 unified cache */
++    cpu->ccsidr[4] = make_ccsidr(CCSIDR_FORMAT_LEGACY, 8, 64, 2 * MiB, 7);
 +
-     return true;
- }
- 
-diff --git a/include/hw/boards.h b/include/hw/boards.h
-index db2aa2b706..2883a57084 100644
---- a/include/hw/boards.h
-+++ b/include/hw/boards.h
-@@ -373,6 +373,7 @@ typedef struct CpuTopology {
- 
- typedef struct SmpCache {
-     SmpCacheProperties props[CACHE_LEVEL_AND_TYPE__MAX];
-+    bool IsDefined;
- } SmpCache;
- 
- /**
+     /*
+      * Unset ARM_FEATURE_BACKCOMPAT_CNTFRQ, which we would otherwise default
+      * to because we started with aarch64_a57_initfn(). A 'max' CPU might
 -- 
 2.34.1
 

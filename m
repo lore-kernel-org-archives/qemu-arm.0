@@ -1,144 +1,209 @@
-Received: by 2002:a17:504:928f:b0:1be9:327d:8ee3 with SMTP id d15csp502395nji;
-        Thu, 12 Sep 2024 05:46:56 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXotkQtashxgKfEdoz61enlzhpNQ0RLsq/KyUO9JDzNi1rXLung9g7vNZCXuZNvHfMgY1vNJS6h8BA89Q==@linaro.org
-X-Google-Smtp-Source: AGHT+IFnPQomC0b+yXM26P7sXqslQ3NLiNQ3V2XoaWd59gR3MNm5YqNmB0WP8MLceAj+VRaGspra
-X-Received: by 2002:a05:620a:400a:b0:7a9:c298:60ef with SMTP id af79cd13be357-7a9e5ef6749mr343604885a.25.1726145216334;
-        Thu, 12 Sep 2024 05:46:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1726145216; cv=none;
+Received: by 2002:a17:504:928f:b0:1be9:327d:8ee3 with SMTP id d15csp522661nji;
+        Thu, 12 Sep 2024 06:39:19 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCW4lDbkxMPNarf9H3RPWulwzI1fsWfwH+mY1vHA0z59Uv58ODNlLl0hmQYPLNXOHxz6RuHLjmJGeVMc8w==@linaro.org
+X-Google-Smtp-Source: AGHT+IFgQEkkd9pjpwlSCXAoSOGFM3Y4FTZpNVkWa3JxCH0HbcugWFDIGGKLSmAwVGdKem3Zs7bY
+X-Received: by 2002:a05:620a:1a2a:b0:7a9:a6f5:4912 with SMTP id af79cd13be357-7a9e60ef58fmr242465185a.22.1726148358968;
+        Thu, 12 Sep 2024 06:39:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1726148358; cv=none;
         d=google.com; s=arc-20240605;
-        b=XLvZOEAi0mWKGIXkY50g9VpWfSpAG6t+hey45WNC6gMSibUHt8G+xoC7tbhBBtHcc6
-         bQTHt3v4QqezGLUWKKfv2R4ixuYv2PVc40qS5pxf+pYS4iDwkFJV6dVVT4F/5GwuQ+KE
-         Z/vlQp1dGe2XQMX5SgR9hHQp8NAqoq1jC5Nju4vqcq49f3MVqOdCqV0ryfXADaAvtERt
-         4iOx7n+cGDWQ71Uj+XDC3LOHhA+BGMOlBVrF2e4a8VGTIuRaRh67qMbdIt63QdQbRHum
-         eSdHX/WoFRC+rsRnE3/MaH6ShCR4gRkJuqjUHRbFw71nagXth4yqhlFB9p71lYe45wPl
-         LjaQ==
+        b=Lws60XeY0iqScJnG3aDMTjmObSKqfxjhPI3wDK+AD31a/Ed5w0X4QN3N1dZXmsoos8
+         gu+RNd2BQGBIx3O9K6XxpBrd4oFyNKiI60ajMGGdxaDPfw8QW5gNBPzGEhTQqvSEVeun
+         FJoi/9Xrl8u/WkGwfG2yyhHzl8n8vUkzOyGpHf2uOqP5t2bvCsHyj+ozYtmVwG8CPMBF
+         u4LphozNvdo+bApBqN3X0HFie5L8qMMxyNhtz2iCPDD1kDTL3UINzTSfhtjSorgk7X/p
+         XZUifDKAs1aVZR87QsokLZiNTt+p06UcKiOzKerjyAw/BboVq+F6GdRWuQZdfuYvKcZG
+         GNcw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=KoMRi3kCgu/r+16U7v98jk3LR1SD4e42KIxnPWtgzOA=;
-        fh=HOQ6tIHu72P5LDBEwnclP222j86/FexHezLu4bCdrBo=;
-        b=hE22J7R24a7Ci3H7hwP2tPSlDZzKVv8HQwTvpHZWbcRXZgoHEMDYSy7B6JUtHQ9apo
-         mg8ldpYhYhVjtxqDN/yidRVvaTjC7UszmY76Uz08ezkvbdPyMG3YNW1TVC7WhZBLx7yk
-         YsGMJ0p+Mv+XR7KySBMWqbzBEda/Zyi0CeorDff68MlCozZdGnYa+Rsjs8ac5pAYe1YH
-         MUVzkCRr0ZOPt3GtJwvszF0JCx9UsuawjhEKrdHBb9FjUONv5P4sAVDG6aoek/jjhcJv
-         e0Za5HIEMKhuhg2J3m/tJkdWwfDRFjY42DcgyWp51yegdQk8tgwr5ZsSauvz5J4j3j8v
-         fQgA==;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to;
+        bh=Z8e4dK2irsBH5jH2yKTuJEfCkmxnEfpsWNJbs61uZdA=;
+        fh=FkJWaune7hMuK+jemAGcJmHRm42IOkVpZLD1KexBaC8=;
+        b=VX2VjM756b5KyKXVXeclsN5ZWQANTGscN68ecQLtVVyv4vwfOrJrRXgjVlCFvo65AM
+         t0zkmVm6/3qmYRMCT4sZSeyc1HnreWlIdsIkDbupDA1nBD8NO2QBe9xYvUuoE2K6+t8L
+         ozcF5SEeIRisP8EJvdM36W/WDdCe40wPCW4uCvlWb2VL0fZZcwtr/0tS3B0hXZEoEHEc
+         yS4sIgAhUWecAxfwdjgwC6ZrBg08UI9YiyCZuPwAemR5UGMZ9lzCqUtaDKrpZkxKsqQf
+         GYymYcKReplvJht2gWnmst4UNsNC+1H/2XVF6rvOkYUqwUJ9UqzKOfxZXefr7cFspJER
+         aOhw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=S1JBdGh7;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7a9a7a47bf8si1288157185a.503.2024.09.12.05.46.56
+        by mx.google.com with ESMTPS id af79cd13be357-7a9a7a3817csi1265329585a.258.2024.09.12.06.39.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 12 Sep 2024 05:46:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 12 Sep 2024 06:39:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=S1JBdGh7;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sojDf-0006Iy-Ea; Thu, 12 Sep 2024 08:46:43 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1sok2H-0001Vv-RY; Thu, 12 Sep 2024 09:39:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1sojDe-0006I0-03
- for qemu-arm@nongnu.org; Thu, 12 Sep 2024 08:46:42 -0400
-Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1sojDc-00026Z-9B
- for qemu-arm@nongnu.org; Thu, 12 Sep 2024 08:46:41 -0400
-Received: by mail-wr1-x435.google.com with SMTP id
- ffacd0b85a97d-374ba74e9b6so980391f8f.0
- for <qemu-arm@nongnu.org>; Thu, 12 Sep 2024 05:46:39 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1726145198; x=1726749998; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=KoMRi3kCgu/r+16U7v98jk3LR1SD4e42KIxnPWtgzOA=;
- b=S1JBdGh77XAgF96dkhb9ezbHHo3W1qzhnmKOP1DellC1+uo5QSupafKzSVEJXRa66J
- EGd3MKMOiaQ6rId0cQwMPXA3hw1f63dydORX5DyMQKk8AkRljCvs87GVBlxDRng+HQYX
- qMZCZbmsRseqQrw1FoKUyim/2k/KGMYw32YDTsqyQdBv2MCf7ZIG3puxt2722uCoil+7
- fM2DVn9Qwu0l4cXL98skIWr+XmOmHdkJvbyMiSINe6SkkNMMesQDeSaC3OHCPc7B4zsJ
- MbA5idfV4gR0VLL1YlMSmwRlOYgyN/bibK6ZCk6kVCwblmfRnQMbckLzW9QbY3ey4SMP
- rP8w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1726145198; x=1726749998;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=KoMRi3kCgu/r+16U7v98jk3LR1SD4e42KIxnPWtgzOA=;
- b=kz9itMufVy/VfXu5raC8wSUJIJWd7j3/WGtEUS3p6QQoyn647gPnUX8YCZF0bN7U3W
- l6aaTwyG2o9crjrG5vzcMpIvB/g6e4dqnNK6ezC9RWw4Vot+RaLAwGq+Qx77R1VkZCBs
- lW6zzVHiPSjuu5Yx86fGiUq+9PdY08J/0exc9LGlKiWvimbjDowLAAoeArM5to9Sn75I
- Vwykupb34/eOPnQTGE+1lr6eVy2Ecq4bm1l5r8iZ+4bSMEkC7Ri66wFWhrqV/jz2BJib
- CibiRXwMXPqZk2+JrJczvIYaJFwQ3eckdgkS93LMnH2XMyWq4bMGyJi+fvNOSaILMd7d
- 62+w==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUes66PKxI+xwznHTTu8q8oKeiGXdGVcdR/9oHq/AQKS6wku6NJ3Hcoy+hH6YPvurhpZs3/RLDdiQ==@nongnu.org
-X-Gm-Message-State: AOJu0YzPE2MyItbEPTM5bxw7vU1smQc3lOToy78WXFaUeQtI/owW9pRv
- jGPOHZsq+v8N+eTUR/tfPqLn+A4jVl8UYmRtGkb1oq0zcYmxQjVQ312OsnpDIxa3LUXjdEjyYnO
- 5CtQQSA7JdbGm3FLTpXN90DQO9D2ZPoP0D4xh2Q==
-X-Received: by 2002:a5d:62c9:0:b0:374:c11c:c5ca with SMTP id
- ffacd0b85a97d-378c2d4d209mr2006941f8f.46.1726145198290; Thu, 12 Sep 2024
- 05:46:38 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <alireza.sanaee@huawei.com>)
+ id 1sok2G-0001UX-0i; Thu, 12 Sep 2024 09:39:00 -0400
+Received: from frasgout.his.huawei.com ([185.176.79.56])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <alireza.sanaee@huawei.com>)
+ id 1sok2D-0008Pk-Ik; Thu, 12 Sep 2024 09:38:59 -0400
+Received: from mail.maildlp.com (unknown [172.18.186.31])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4X4JLV1hn9z6K6lM;
+ Thu, 12 Sep 2024 21:33:54 +0800 (CST)
+Received: from frapeml500003.china.huawei.com (unknown [7.182.85.28])
+ by mail.maildlp.com (Postfix) with ESMTPS id F149A1400C9;
+ Thu, 12 Sep 2024 21:38:44 +0800 (CST)
+Received: from a2303103017.china.huawei.com (10.48.147.42) by
+ frapeml500003.china.huawei.com (7.182.85.28) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.39; Thu, 12 Sep 2024 15:38:43 +0200
+To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
+CC: <zhao1.liu@intel.com>, <zhenyu.z.wang@intel.com>,
+ <dapeng1.mi@linux.intel.com>, <yongwei.ma@intel.com>, <armbru@redhat.com>,
+ <farman@linux.ibm.com>, <peter.maydell@linaro.org>, <mst@redhat.com>,
+ <anisinha@redhat.com>, <shannon.zhaosl@gmail.com>, <imammedo@redhat.com>,
+ <mtosatti@redhat.com>, <berrange@redhat.com>, <richard.henderson@linaro.org>, 
+ <linuxarm@huwei.com>, <shameerali.kolothum.thodi@huawei.com>,
+ <Jonathan.Cameron@Huawei.com>, <jiangkunkun@huawei.com>
+Subject: [RFC PATCH 0/5] Specifying cache topology on ARM
+Date: Thu, 12 Sep 2024 14:38:24 +0100
+Message-ID: <20240912133829.400-1-alireza.sanaee@huawei.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-References: <20240912024114.1097832-1-richard.henderson@linaro.org>
- <20240912024114.1097832-27-richard.henderson@linaro.org>
-In-Reply-To: <20240912024114.1097832-27-richard.henderson@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 12 Sep 2024 13:46:20 +0100
-Message-ID: <CAFEAcA8g3UbfjZRH0VMX0=owDawvdjp1gUnnK5GoNn7jYK4O8Q@mail.gmail.com>
-Subject: Re: [PATCH v3 26/29] target/arm: Widen NeonGenNarrowEnvFn return to
- 64 bits
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::435;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x435.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-Originating-IP: [10.48.147.42]
+X-ClientProxiedBy: lhrpeml100003.china.huawei.com (7.191.160.210) To
+ frapeml500003.china.huawei.com (7.182.85.28)
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=alireza.sanaee@huawei.com; helo=frasgout.his.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: c8Uf4s9m77Ig
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Reply-to:  Alireza Sanaee <alireza.sanaee@huawei.com>
+From:  Alireza Sanaee via <qemu-devel@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 0vmrHMNgqH/P
 
-On Thu, 12 Sept 2024 at 03:43, Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> While these functions really do return a 32-bit value,
-> widening the return type means that we need do less
-> marshalling between TCG types.
->
-> Remove NeonGenNarrowEnvFn typedef; add NeonGenOne64OpEnvFn.
->
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+Specifying the cache layout in virtual machines is useful for
+applications and operating systems to fetch accurate information about
+the cache structure and make appropriate adjustments. Enforcing correct
+sharing information can lead to better optimizations. This patch enables
+the specification of cache layout through a command line parameter,
+building on a patch set by Intel [1,2]. It uses this set as a foundation.
+The ACPI/PPTT table is populated based on user-provided information and
+CPU topology.
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Example:
 
-thanks
--- PMM
+
++----------------+                            +----------------+
+|    Socket 0    |                            |    Socket 1    |
+|    (L3 Cache)  |                            |    (L3 Cache)  |
++--------+-------+                            +--------+-------+
+         |                                             |
++--------+--------+                            +--------+--------+
+|   Cluster 0     |                            |   Cluster 0     |
+|   (L2 Cache)    |                            |   (L2 Cache)    |
++--------+--------+                            +--------+--------+
+         |                                             |
++--------+--------+  +--------+--------+    +--------+--------+  +--------+----+
+|   Core 0         | |   Core 1        |    |   Core 0        |  |   Core 1    |
+|   (L1i, L1d)     | |   (L1i, L1d)    |    |   (L1i, L1d)    |  |   (L1i, L1d)|
++--------+--------+  +--------+--------+    +--------+--------+  +--------+----+
+         |                   |                       |                   |
++--------+              +--------+              +--------+          +--------+
+|Thread 0|              |Thread 1|              |Thread 1|          |Thread 0|
++--------+              +--------+              +--------+          +--------+
+|Thread 1|              |Thread 0|              |Thread 0|          |Thread 1|
++--------+              +--------+              +--------+          +--------+
+
+
+The following command will represent the system.
+
+./qemu-system-aarch64 \
+ -machine virt,smp-cache.0.cache=l1i,smp-cache.0.topology=core,smp-cache.1.cache=l1d,smp-cache.1.topology=core,smp-cache.2.cache=l2,smp-cache.2.topology=cluseter,smp-cache.3.cache=l3,smp-cache.3.topology=socket \
+ -cpu max \
+ -m 2048 \
+ -smp sockets=2,clusters=1,cores=2,threads=2 \
+ -kernel ./Image.gz \
+ -append "console=ttyAMA0 root=/dev/ram rdinit=/init acpi=force" \
+ -initrd rootfs.cpio.gz \
+ -bios ./edk2-aarch64-code.fd \
+ -nographic
+
+Failure cases:
+    1) there are cases where QEMU might not have any clusters selected in the
+    -smp option, while user specifies caches to be shared at cluster level. In
+    this situations, qemu returns error.
+
+    2) There are other scenarios where caches exist in systems' registers but
+    not left unspecified by users. In this case qemu returns failure.
+
+Currently only three levels of caches are supported to be specified from
+the command line. However, increasing the value does not require
+significant changes. Further, this patch assumes l2 and l3 unified
+caches and does not allow l(2/3)(i/d). The level terminology is
+thread/core/cluster/socket right now.
+
+Here is the hierarchy assumed in this patch:
+Socket level = Cluster level + 1 = Core level + 2 = Thread level + 3;
+
+[1] https://lore.kernel.org/kvm/20240908125920.1160236-1-zhao1.liu@intel.com/
+[2] https://lore.kernel.org/qemu-devel/20240704031603.1744546-1-zhao1.liu@intel.com/
+
+TODO:
+1) Making the code to work with arbitrary levels
+2) Separated data and instruction cache at L2 and L3.
+3) Allow for different Data or Instruction only at a particular level.
+4) Additional cache controls.  e.g. size of L3 may not want to just
+match the underlying system, because only some of the associated host
+CPUs may be bound to this VM.
+5) Add device tree related code to generate info related to caches.
+
+Depends-on: target/arm/tcg: refine cache descriptions with a wrapper
+Depends-on: Msg-id: 20240903144550.280-1-alireza.sanaee@huawei.com
+
+Alireza Sanaee (5):
+  bios-tables-test: prepare to change ARM ACPI virt PPTT
+  i386/cpu: add IsDefined flag to smp-cache property
+  target/arm/tcg: increase cache level for cpu=max
+  hw/acpi: add cache hierarchy node to pptt table
+  tests/acpi/arm/virt/PPTT: update golden masters for PPTT update
+
+ hw/acpi/aml-build.c                           | 312 +++++++++++++++++-
+ hw/arm/virt-acpi-build.c                      | 137 +++++++-
+ hw/arm/virt.c                                 |   5 +
+ hw/core/machine-smp.c                         |   2 +
+ hw/loongarch/acpi-build.c                     |   3 +-
+ include/hw/acpi/aml-build.h                   |  20 +-
+ include/hw/boards.h                           |   1 +
+ target/arm/tcg/cpu64.c                        |  13 +
+ tests/data/acpi/aarch64/virt/PPTT             | Bin 76 -> 76 bytes
+ .../data/acpi/aarch64/virt/PPTT.acpihmatvirt  | Bin 156 -> 156 bytes
+ tests/data/acpi/aarch64/virt/PPTT.topology    | Bin 336 -> 336 bytes
+ 11 files changed, 484 insertions(+), 9 deletions(-)
+
+-- 
+2.34.1
+

@@ -1,375 +1,253 @@
-Received: by 2002:a17:504:1bc1:b0:1be9:327d:8ee3 with SMTP id v1csp1063150njg;
-        Wed, 18 Sep 2024 16:03:41 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWYn2AKfLSV63yn5a1+t45xL2G7Qh8ERDesD7dSHDcwpMNf6xhIbnksLX9GFtbpfmI6nVXtni7e7+SjfQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IE3Y9MS7vaRMBW+AF6KTcDMAbCMcdVW3I3EEH7qPxYNhD3liUy9uy+1+w/JlWz05zIhb+5Z
-X-Received: by 2002:a05:620a:298d:b0:7a9:b425:15 with SMTP id af79cd13be357-7ab30d17afdmr3308805785a.19.1726700621339;
-        Wed, 18 Sep 2024 16:03:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1726700621; cv=none;
+Received: by 2002:a17:504:928f:b0:1be9:327d:8ee3 with SMTP id d15csp830666nji;
+        Fri, 13 Sep 2024 03:13:20 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCX8N4YLIgq1GS2Bij5kQiubM90bisWSbwXzMabP9GAUfIqFIJGh6hAw+udaBkxmRFCStUuzOPVlMisBRQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IEt+q21/tH917aJo9bfYY8lz0VcuUx5xl29R4TT8gVzuY3IwgRZPJre2NhoFzzOXCrV2lnJ
+X-Received: by 2002:a05:6402:358e:b0:5c4:1372:c1ee with SMTP id 4fb4d7f45d1cf-5c41df9e277mr1559862a12.4.1726222400017;
+        Fri, 13 Sep 2024 03:13:20 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1726222400; cv=pass;
         d=google.com; s=arc-20240605;
-        b=i/CMv5YsI9BjLYm/4b+lr8BBBc4P1S9wYcFbMFJna9Twf9oEzKqqmsUNxLc0QDnZTs
-         52dzorrgxiKbH9RUGRe02jtRFWXyTtUDdaSzbuPAZ9Okwy8HNhjVLMcFO+TdkyNPEC6Z
-         IeK7ovIWI6tFN/NuDRpbi7IKVvaSmP3HR4SR/QNvXQNWh/aqKnVBVJi/AOM7T1aWI4qs
-         j6Xw3Am9YVtU4QGScMinCqE3TcYXuGUc/xkxu8oOFtdANHdw6m/FDhuunsWwCB6JYqM8
-         IjGv3OETBJu+1i4avIHDHZGovj1K65CtHjiNGKJKQBsmfBpe5jQpziHgtdrld9L3FhVN
-         K/Iw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=d0XHLnHSYciIA9k4ZqsqHgbNsw+iRtJoHrmtSqO/HIA=;
-        fh=n2VBXYVjtf4gqTv8qQuHAWkU/c7MvA6lGmHyCt7lMzg=;
-        b=UFDElBq7gvbx7meIeRE2fzc9+PmB6+zCNKtS0xChUgEvSikXmOhjjPQ1ZixH1LMG2u
-         nXWsVJ5j+AQDAB4IpJzUcsrqXCUrdnhEhz+IMZ5bT68BUon0XYmHMOS0BwwN0ZzDWAjc
-         1kQOOQzPj6a5+rrlIDtQmUMOmcd6uYqxkm4/lSNIioFWP8VU2mg9NbpWuUW/Jm15HTDY
-         CjwY0LQsRk1s4RvTDN7gzTfbuzGQ6sAZPz191wv0isz3T4RGsmjeDQxd+fSg0MAk2qVN
-         VAim82+tPYyRbE38sgn92aTz3Uz9PUhUUbiGwyOdcD3LJxHA8QVFe4Yps74Uycp1pZUh
-         +fmg==;
+        b=FO7Nywmo7HTdtIsQtMolj4PZzJCAyi3X/pzp8recolU5391jtkd1NMQmWPFC53jSgv
+         j5lY8CGXBv5TnTmmG6tsCHogAep3H4gLC7NZHXGWdX/IyfxRH4CRrjKGFschZz6LsxhE
+         RlCKdB7webKP6Jjebp3xFf+p64pllrFti9GqyFnlLz4F6UyPgRZVw13vBIih085pzK2X
+         HTR0m900sM9Sp9Rx6y6yvqwC1kWZEoeoZcA3k9SJxIe7bTqugvcBdTK+mvAam3z4rYt2
+         uNZwngLQX3E4zjKDF77bDegWVyrAM+oLuzcmvjNO4kCwN0s3EXq9/wGu1u4NCAsn8g1Y
+         lQhA==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:organization:references
+         :in-reply-to:message-id:subject:cc:to:from:date;
+        bh=LGBwxojtOKHr/poGuxUeN+kS/8refd3f2cQvB5DTgOg=;
+        fh=sk20niJjP+LyGcAC6rY5I61AlgNCIPpR6UIhxIWLYTI=;
+        b=KP5PMm5h9ZCOUXunkR9FhvIZTvdF9lfgVQOlD4n0cFRwfgTM+P5yOb2/HXby7OODMN
+         ztORYlcRFoilBqWishEiwFxpKJwGjtgTu9npMDHVQ0IfHrSZVvFdVo7K7Bx8rAuwUnkq
+         NIs60K97EZYAi/XOCwTtvCUolIIAvFOARCrFFX+tthjXthtCFoTyF8llWaT2FzyMM5pa
+         tb2lupQLXHXfen3OWbsLoBX0Q3/ojUZvir9BQnBA1Zwh30Hem51r6P3ICSqJ8HR9ulN0
+         Ml3R65Q1bD+1OQJmIHgJ8GWNhqDYyiml67seYMwxG29Na12mydcEoqr3fKKC+RFEW6YC
+         iPPw==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=N6p7ISje;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-45b1786ad6fsi5206421cf.143.2024.09.18.16.03.41
+ARC-Authentication-Results: i=2; mx.google.com;
+       arc=pass (i=1 spf=pass spfdomain=huawei.com dmarc=pass fromdomain=huawei.com);
+       spf=pass (google.com: domain of linux-kernel+bounces-327948-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) smtp.mailfrom="linux-kernel+bounces-327948-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=fail (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Return-Path: <linux-kernel+bounces-327948-alex.bennee=linaro.org@vger.kernel.org>
+Received: from am.mirrors.kernel.org (am.mirrors.kernel.org. [2604:1380:4601:e00::3])
+        by mx.google.com with ESMTPS id 4fb4d7f45d1cf-5c3ebd46eafsi9838264a12.176.2024.09.13.03.13.19
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 18 Sep 2024 16:03:41 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 13 Sep 2024 03:13:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of linux-kernel+bounces-327948-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) client-ip=2604:1380:4601:e00::3;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=N6p7ISje;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
-       dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sr3hp-0007UF-QI; Wed, 18 Sep 2024 19:03:29 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <tavip@google.com>) id 1sr3ho-0007NY-7J
- for qemu-arm@nongnu.org; Wed, 18 Sep 2024 19:03:28 -0400
-Received: from mail-lf1-x131.google.com ([2a00:1450:4864:20::131])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <tavip@google.com>) id 1sr3hm-0005Hk-2p
- for qemu-arm@nongnu.org; Wed, 18 Sep 2024 19:03:27 -0400
-Received: by mail-lf1-x131.google.com with SMTP id
- 2adb3069b0e04-536552fcc07so41360e87.1
- for <qemu-arm@nongnu.org>; Wed, 18 Sep 2024 16:03:25 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1726700604; x=1727305404; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=d0XHLnHSYciIA9k4ZqsqHgbNsw+iRtJoHrmtSqO/HIA=;
- b=N6p7ISjetoKLPN5Excd0vqA+aqhRyN/uc0QsE674v8wwbFnomRNt638kOMppGqTD98
- DHh3WWdFLRHzdq9W1yk7mL21S/GYyqCjoBh8ewZrrXsnGoViW55Bo4kl0iG0Kl/4BX+Y
- Dzh9M3iAAC7gdY6KLYMPx3Fuwj5RpoNWgTvnH10w32GmNVIs3KiMCtM3QOo18BKWMz2D
- BeF8ShwifhOzSzFmR57+akK0SSJVM9PG3/pOVMuo08DI+4EkPgy62Q/aBOQfysEgNNUG
- 6NommMByBRMBseLjrtDVgD9uGy1NohFpLgWeTl03bQNq/2A+xjRueiTyxKFLnCLvla1z
- 5tzw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1726700604; x=1727305404;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=d0XHLnHSYciIA9k4ZqsqHgbNsw+iRtJoHrmtSqO/HIA=;
- b=Lxd1xhFYhAthY25dmwg/96RtnknqSHDN7Xn8bU5heTz3qbsLq2DVr4PAZF4Rg7Vd3K
- ksUi726UvWSrbM7TwZ0wUuBZ56Q+6Gh0N9fLsdab7yeh8KXJdsuYjW6VstHdSG7i3RuX
- O1Ip3u2x0J+zFZ+XdnC4xc5DLDBucibLjJLr1r4+GAK/HDYi/og6UCZdhDArLHzvg9sV
- sXAnoLwuqx2E63MyPiEeqLu9QoV8V3gjXxdzjwmKJT53UrNPpFc+03BXhUINmFiaJVJJ
- srkst42ns1rRBdNenpldPQNmAwWKrPRzq3bDw3D1RpMsjFC3L/zULWdfzfuVlEzgZayY
- zxVQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCW/iJ+UlSdkbz463oiP6sKMTrIF+LA0583JHXB+fJDXgeRLcpKzgl0K5xevoGJzQgAx3rXfEX7IMQ==@nongnu.org
-X-Gm-Message-State: AOJu0YxHwraP92Cofx1Dx3YIbRcaa9+C7AzKwbBbGCdJ0i9jXA0ROaBA
- GGjvWiKIzi340Vq/SX0dnbEwWjtNdzTHke8XpLZdRXpkJxfHk6Vasa4joLxXcW07sFs2V6CwUGs
- otSMpGHjkb2pJiaMVJuKh12YlHSs9L7idlJ15
-X-Received: by 2002:a05:6512:1395:b0:52e:8475:7c23 with SMTP id
- 2adb3069b0e04-536a7c2e3acmr12906e87.7.1726700603774; Wed, 18 Sep 2024
- 16:03:23 -0700 (PDT)
+       arc=pass (i=1 spf=pass spfdomain=huawei.com dmarc=pass fromdomain=huawei.com);
+       spf=pass (google.com: domain of linux-kernel+bounces-327948-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) smtp.mailfrom="linux-kernel+bounces-327948-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=fail (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by am.mirrors.kernel.org (Postfix) with ESMTPS id 65B811F29640
+	for <alex.bennee@linaro.org>; Fri, 13 Sep 2024 10:13:19 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id EF9A71D7E47;
+	Fri, 13 Sep 2024 10:13:13 +0000 (UTC)
+Received: from frasgout.his.huawei.com (frasgout.his.huawei.com [185.176.79.56])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0774A1BD00C
+	for <linux-kernel@vger.kernel.org>; Fri, 13 Sep 2024 10:13:10 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=185.176.79.56
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1726222393; cv=none; b=q/7NydjMo0G9aR1bdsA2SiGhgFxeDjx9K3GGdbfV3z94+9Qg9cOb32uyPYAco99mvWGFcpRWZTtzUeBVWYD9jwcNDvpdlvGZkjte4szsiT+3NUM7aSbqMOGmdWMaCjbcVfe6lMKQBjM9V1ECV+UQZUD9UUJDToXaT5yp7AaYJhE=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1726222393; c=relaxed/simple;
+	bh=e561I76LFkMwActjOsNc60/xDhpEWKEb2h7xYwmd0Nw=;
+	h=Date:From:To:CC:Subject:Message-ID:In-Reply-To:References:
+	 MIME-Version:Content-Type; b=Ljm/IwsiTMDSxlQzFS1F1hSxE/PvSM4coIt21RfeAOXuDtcupnc5vqnAwl/hZKxrn22tgcWfJtuwa69gujJCc6WkaLAFLLoZ9LcgnM7ShH9SoqAIoLtvXbwA6h9J5ZBmOJGDX13mwA/bQtbdbOF6zxu+Fpb/CId+IUgzmcOLhAQ=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=Huawei.com; spf=pass smtp.mailfrom=huawei.com; arc=none smtp.client-ip=185.176.79.56
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=Huawei.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=huawei.com
+Received: from mail.maildlp.com (unknown [172.18.186.31])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4X4qkd420Qz6GC0R;
+	Fri, 13 Sep 2024 18:08:09 +0800 (CST)
+Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
+	by mail.maildlp.com (Postfix) with ESMTPS id 0E4A11400CD;
+	Fri, 13 Sep 2024 18:13:03 +0800 (CST)
+Received: from localhost (10.203.177.66) by frapeml500008.china.huawei.com
+ (7.182.85.71) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Fri, 13 Sep
+ 2024 12:13:02 +0200
+Date: Fri, 13 Sep 2024 11:13:00 +0100
+From: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
+To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+CC: Igor Mammedov <imammedo@redhat.com>, Shiju Jose <shiju.jose@huawei.com>,
+	"Michael S. Tsirkin" <mst@redhat.com>, Ani Sinha <anisinha@redhat.com>,
+	Dongjiu Geng <gengdongjiu1@gmail.com>, <linux-kernel@vger.kernel.org>,
+	<qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
+Subject: Re: [PATCH v8 06/13] acpi/ghes: add support for generic error
+ injection via QAPI
+Message-ID: <20240913111300.00007a3c@Huawei.com>
+In-Reply-To: <20240913072025.76a329b0@foz.lan>
+References: <cover.1723793768.git.mchehab+huawei@kernel.org>
+	<2c8970b5d54d17b601dc65d778cc8b5fb288984b.1723793768.git.mchehab+huawei@kernel.org>
+	<20240819145136.0452ff2b@imammedo.users.ipa.redhat.com>
+	<20240825052923.715f88bc@sal.lan>
+	<20240911152132.65a7a219@imammedo.users.ipa.redhat.com>
+	<20240911163436.00004738@Huawei.com>
+	<20240912144233.675d6b63@imammedo.users.ipa.redhat.com>
+	<20240913072025.76a329b0@foz.lan>
+Organization: Huawei Technologies Research and Development (UK) Ltd.
+X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
+Precedence: bulk
+X-Mailing-List: linux-kernel@vger.kernel.org
+List-Id: <linux-kernel.vger.kernel.org>
+List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-References: <20240918192254.3136903-1-tavip@google.com>
- <20240918192254.3136903-20-tavip@google.com>
- <Zusypeay8cjjPTn0@mail.minyard.net>
-In-Reply-To: <Zusypeay8cjjPTn0@mail.minyard.net>
-From: Octavian Purdila <tavip@google.com>
-Date: Wed, 18 Sep 2024 16:03:12 -0700
-Message-ID: <CAGWr4cQapNbGZteQYAFYrgDnh3cY0xHnEtAiDW0zuURwZr_V3g@mail.gmail.com>
-Subject: Re: [PATCH 19/25] hw/misc: add i2c-tester
-To: corey@minyard.net
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, stefanst@google.com, 
- pbonzini@redhat.com, peter.maydell@linaro.org, marcandre.lureau@redhat.com, 
- berrange@redhat.com, eduardo@habkost.net, luc@lmichel.fr, 
- damien.hedde@dahe.fr, alistair@alistair23.me, thuth@redhat.com, 
- philmd@linaro.org, jsnow@redhat.com, crosa@redhat.com, lvivier@redhat.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::131;
- envelope-from=tavip@google.com; helo=mail-lf1-x131.google.com
-X-Spam_score_int: -175
-X-Spam_score: -17.6
-X-Spam_bar: -----------------
-X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- ENV_AND_HDR_SPF_MATCH=-0.5, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
- USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 63nxfL0aUXiA
+Content-Type: text/plain; charset="US-ASCII"
+Content-Transfer-Encoding: 7bit
+X-ClientProxiedBy: lhrpeml500006.china.huawei.com (7.191.161.198) To
+ frapeml500008.china.huawei.com (7.182.85.71)
+X-TUID: 2WFYxM7mVMwn
 
-On Wed, Sep 18, 2024 at 1:06=E2=80=AFPM Corey Minyard <corey@minyard.net> w=
-rote:
->
-> On Wed, Sep 18, 2024 at 12:22:47PM -0700, Octavian Purdila wrote:
-> > Add a simple i2c peripheral to be used for testing I2C device
-> > models. The peripheral has a fixed number of registers that can be
-> > read and written.
->
-> Why is this better than just using the eeprom device?
->
+On Fri, 13 Sep 2024 07:20:25 +0200
+Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
 
-The main reason for adding it is that, AFAICT, there is no i2c slave
-device that responds with I2C_NACK during a transaction.
+> Em Thu, 12 Sep 2024 14:42:33 +0200
+> Igor Mammedov <imammedo@redhat.com> escreveu:
+> 
+> > On Wed, 11 Sep 2024 16:34:36 +0100
+> > Jonathan Cameron <Jonathan.Cameron@Huawei.com> wrote:
+> >   
+> > > On Wed, 11 Sep 2024 15:21:32 +0200
+> > > Igor Mammedov <imammedo@redhat.com> wrote:
+> > >   
+> > > > On Sun, 25 Aug 2024 05:29:23 +0200
+> > > > Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
+> > > >     
+> > > > > Em Mon, 19 Aug 2024 14:51:36 +0200
+> > > > > Igor Mammedov <imammedo@redhat.com> escreveu:
+> > > > >       
+> > > > > > > +        read_ack = 1;
+> > > > > > > +        cpu_physical_memory_write(read_ack_start_addr,
+> > > > > > > +                                  &read_ack, (uint64_t));          
+> > > > > > we don't do this for SEV so, why are you setting it to 1 here?      
+> 
+> The diffstat doesn't really help here. The full code is:
+> 
+>     /* zero means OSPM does not acknowledge the error */
+>     if (!read_ack) {
+>         error_setg(errp,
+>                    "Last CPER record was not acknowledged yet");
+>         read_ack = 1;
+>         cpu_physical_memory_write(read_ack_start_addr,
+>                                   &read_ack, sizeof(read_ack));
+>         return;
+>     }
+> 
+> > > > what you are doing here by setting read_ack = 1,
+> > > > is making ack on behalf of OSPM when OSPM haven't handled existing error yet.
+> > > > 
+> > > > Essentially making HW/FW do the job of OSPM. That looks wrong to me.
+> > > > From HW/FW side read_ack register should be thought as read-only.    
+> > > 
+> > > It's not read-only because HW/FW has to clear it so that HW/FW can detect
+> > > when the OSPM next writes it.  
+> > 
+> > By readonly, I've meant that hw shall not do above mentioned write
+> > (bad phrasing on my side).  
+> 
+> The above code is actually an error handling condition: if for some
+> reason errors are triggered too fast, there's a bug on QEMU or there is
+> a bug at the OSPM, an error message is raised and the logic resets the 
+> record to a sane state. So, on a next error, OSPM will get it.
+> 
+> As described at https://uefi.org/specs/ACPI/6.5/18_Platform_Error_Interfaces.html?highlight=asynchronous#generic-hardware-error-source:
+> 
+>    "Some platforms may describe multiple Generic Hardware Error Source
+>     structures with different notification types, as defined in 
+>     Table 18.10. For example, a platform may describe one error source
+>     for the handling of synchronous errors (e.g. MCE or SEA), and a 
+>     second source for handling asynchronous errors (e.g. SCI or
+>     External Interrupt)."
+> 
+> Basically, the error logic there seems to fit for the asynchronous
+> case, detecting if another error happened before OSPM handles the
+> first one.
 
-Also, having a dedicated device for testing purposes makes it easier
-to add new features than adding it to a real device where it might not
-always be possible. I tried to add the NACK functionality but I did
-not find one where the datasheet would confirm the behaviour I was
-looking for.
+Agreed - the error logic to act as backpressure for the tool injecting
+the error makes sense - it's just hardware acknowledging to paper
+over slow software that is an issue.
 
-> This has some uncommon attributes compared to most i2c devices.  For
-> instance, most i2c devices take their address as the first bytes of a
-> write operation, then auto-increment after that for reads and writes.
-> This seems to take one address on a write after a system reset, then use
-> that forever.
->
-> Anyway, unless there is a compelling reason to use this over the eeprom
-> device, I'm going to recommend against it.
->
+> 
+> IMO, there are a couple of alternatives to handle such case:
+> 
+> 1. Keep the code as-is: if this ever happens, an error message will
+>    be issued. If SEA/MCE gets implemented synchronously on HW/FW/OSPM,
+>    the above code will never be called;
+> 2. Change the logic to do that only for asynchronous sources
+>    (currently, only if source ID is QMP);
+> 3. Add a special QMP message to reset the notification ack. Probably
+>    would use Notification type as an input parameter;
+> 4. Have a much more complex code to implement asynchronous notifications,
+>    with a queue to receive HEST errors and a separate thread to deliver
+>    errors to OSPM asynchronously. If we go this way, QMP would be
+>    returning the number of error messages queued, allowing error injection
+>    code to know if OSPM has troubles delivering errors;
 
+Is this not better done in the injection code outside of qemu?
+So detect the error in that and if it happens back off and try again
+later?  Basically EBUSY done in an inelegant way.
 
-> -corey
->
-> >
-> > Signed-off-by: Octavian Purdila <tavip@google.com>
-> > ---
-> >  include/hw/misc/i2c_tester.h |  30 ++++++++++
-> >  hw/misc/i2c_tester.c         | 109 +++++++++++++++++++++++++++++++++++
-> >  hw/misc/Kconfig              |   5 ++
-> >  hw/misc/meson.build          |   2 +
-> >  4 files changed, 146 insertions(+)
-> >  create mode 100644 include/hw/misc/i2c_tester.h
-> >  create mode 100644 hw/misc/i2c_tester.c
-> >
-> > diff --git a/include/hw/misc/i2c_tester.h b/include/hw/misc/i2c_tester.=
-h
-> > new file mode 100644
-> > index 0000000000..f6b6491008
-> > --- /dev/null
-> > +++ b/include/hw/misc/i2c_tester.h
-> > @@ -0,0 +1,30 @@
-> > +/*
-> > + *
-> > + * Copyright (c) 2024 Google LLC
-> > + *
-> > + * SPDX-License-Identifier: GPL-2.0-or-later
-> > + *
-> > + * This work is licensed under the terms of the GNU GPL, version 2 or =
-later.
-> > + * See the COPYING file in the top-level directory.
-> > + */
-> > +
-> > +#ifndef HW_I2C_TESTER_H
-> > +#define HW_I2C_TESTER_H
-> > +
-> > +#include "qemu/osdep.h"
-> > +#include "hw/i2c/i2c.h"
-> > +#include "hw/irq.h"
-> > +
-> > +#define I2C_TESTER_NUM_REGS    0x31
-> > +
-> > +#define TYPE_I2C_TESTER "i2c-tester"
-> > +#define I2C_TESTER(obj) OBJECT_CHECK(I2cTesterState, (obj), TYPE_I2C_T=
-ESTER)
-> > +
-> > +typedef struct {
-> > +    I2CSlave i2c;
-> > +    bool set_reg_idx;
-> > +    uint8_t reg_idx;
-> > +    uint8_t regs[I2C_TESTER_NUM_REGS];
-> > +} I2cTesterState;
-> > +
-> > +#endif /* HW_I2C_TESTER_H */
-> > diff --git a/hw/misc/i2c_tester.c b/hw/misc/i2c_tester.c
-> > new file mode 100644
-> > index 0000000000..77ce8bf91a
-> > --- /dev/null
-> > +++ b/hw/misc/i2c_tester.c
-> > @@ -0,0 +1,109 @@
-> > +/*
-> > + * Simple I2C peripheral for testing I2C device models.
-> > + *
-> > + * Copyright (c) 2024 Google LLC
-> > + *
-> > + * SPDX-License-Identifier: GPL-2.0-or-later
-> > + *
-> > + * This work is licensed under the terms of the GNU GPL, version 2 or =
-later.
-> > + * See the COPYING file in the top-level directory.
-> > + */
-> > +
-> > +#include "hw/misc/i2c_tester.h"
-> > +
-> > +#include "qemu/log.h"
-> > +#include "qemu/module.h"
-> > +#include "migration/vmstate.h"
-> > +
-> > +static void i2c_tester_reset_enter(Object *o, ResetType type)
-> > +{
-> > +    I2cTesterState *s =3D I2C_TESTER(o);
-> > +
-> > +    s->set_reg_idx =3D false;
-> > +    s->reg_idx     =3D 0;
-> > +    memset(s->regs, 0, I2C_TESTER_NUM_REGS);
-> > +}
-> > +
-> > +static int i2c_tester_event(I2CSlave *i2c, enum i2c_event event)
-> > +{
-> > +    I2cTesterState *s =3D I2C_TESTER(i2c);
-> > +
-> > +    if (event =3D=3D I2C_START_SEND) {
-> > +        s->set_reg_idx =3D true;
-> > +    }
-> > +
-> > +    return 0;
-> > +}
-> > +
-> > +static uint8_t i2c_tester_rx(I2CSlave *i2c)
-> > +{
-> > +    I2cTesterState *s =3D I2C_TESTER(i2c);
-> > +
-> > +    if (s->reg_idx >=3D I2C_TESTER_NUM_REGS) {
-> > +        qemu_log_mask(LOG_GUEST_ERROR, "%s: invalid reg 0x%02x\n", __f=
-unc__,
-> > +                      s->reg_idx);
-> > +        return I2C_NACK;
-> > +    }
-> > +
-> > +    return s->regs[s->reg_idx];
-> > +}
-> > +
-> > +static int i2c_tester_tx(I2CSlave *i2c, uint8_t data)
-> > +{
-> > +    I2cTesterState *s =3D I2C_TESTER(i2c);
-> > +
-> > +    if (s->set_reg_idx) {
-> > +        /* Setting the register in which the operation will be done. *=
-/
-> > +        s->reg_idx =3D data;
-> > +        s->set_reg_idx =3D false;
-> > +        return 0;
-> > +    }
-> > +
-> > +    if (s->reg_idx >=3D I2C_TESTER_NUM_REGS) {
-> > +        qemu_log_mask(LOG_GUEST_ERROR, "%s: invalid reg 0x%02x\n", __f=
-unc__,
-> > +                      s->reg_idx);
-> > +        return I2C_NACK;
-> > +    }
-> > +
-> > +    /* Write reg data. */
-> > +    s->regs[s->reg_idx] =3D data;
-> > +
-> > +    return 0;
-> > +}
-> > +
-> > +static const VMStateDescription vmstate_i2c_tester =3D {
-> > +    .name =3D "i2c-tester",
-> > +    .version_id =3D 1,
-> > +    .minimum_version_id =3D 1,
-> > +    .fields =3D (const VMStateField[]) {
-> > +        VMSTATE_I2C_SLAVE(i2c, I2cTesterState),
-> > +        VMSTATE_BOOL(set_reg_idx, I2cTesterState),
-> > +        VMSTATE_UINT8(reg_idx, I2cTesterState),
-> > +        VMSTATE_UINT8_ARRAY(regs, I2cTesterState, I2C_TESTER_NUM_REGS)=
-,
-> > +        VMSTATE_END_OF_LIST()
-> > +    }
-> > +};
-> > +
-> > +static void i2c_tester_class_init(ObjectClass *oc, void *data)
-> > +{
-> > +    DeviceClass *dc =3D DEVICE_CLASS(oc);
-> > +    ResettableClass *rc =3D RESETTABLE_CLASS(oc);
-> > +    I2CSlaveClass *isc =3D I2C_SLAVE_CLASS(oc);
-> > +
-> > +    rc->phases.enter =3D i2c_tester_reset_enter;
-> > +    dc->vmsd =3D &vmstate_i2c_tester;
-> > +    isc->event =3D i2c_tester_event;
-> > +    isc->recv =3D i2c_tester_rx;
-> > +    isc->send =3D i2c_tester_tx;
-> > +}
-> > +
-> > +static const TypeInfo i2c_tester_types[] =3D {
-> > +    {
-> > +        .name =3D TYPE_I2C_TESTER,
-> > +        .parent =3D TYPE_I2C_SLAVE,
-> > +        .instance_size =3D sizeof(I2cTesterState),
-> > +        .class_init =3D i2c_tester_class_init
-> > +    },
-> > +};
-> > +
-> > +DEFINE_TYPES(i2c_tester_types);
-> > diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
-> > index 4b688aead2..3e93c12c8e 100644
-> > --- a/hw/misc/Kconfig
-> > +++ b/hw/misc/Kconfig
-> > @@ -213,6 +213,11 @@ config IOSB
-> >  config XLNX_VERSAL_TRNG
-> >      bool
-> >
-> > +config I2C_TESTER
-> > +    bool
-> > +    default y if TEST_DEVICES
-> > +    depends on I2C
-> > +
-> >  config FLEXCOMM
-> >      bool
-> >      select I2C
-> > diff --git a/hw/misc/meson.build b/hw/misc/meson.build
-> > index faaf2671ba..4f22231fa3 100644
-> > --- a/hw/misc/meson.build
-> > +++ b/hw/misc/meson.build
-> > @@ -158,6 +158,8 @@ system_ss.add(when: 'CONFIG_SBSA_REF', if_true: fil=
-es('sbsa_ec.c'))
-> >  # HPPA devices
-> >  system_ss.add(when: 'CONFIG_LASI', if_true: files('lasi.c'))
-> >
-> > +system_ss.add(when: 'CONFIG_I2C_TESTER', if_true: files('i2c_tester.c'=
-))
-> > +
-> >  system_ss.add(when: 'CONFIG_FLEXCOMM', if_true: files('flexcomm.c'))
-> >  system_ss.add(when: 'CONFIG_RT500_CLKCTL', if_true: files('rt500_clkct=
-l0.c', 'rt500_clkctl1.c'))
-> >  system_ss.add(when: 'CONFIG_RT500_RSTCTL', if_true: files('rt500_rstct=
-l.c'))
-> > --
-> > 2.46.0.662.g92d0881bb0-goog
-> >
-> >
+> 5. Just return an error code without doing any resets. To me, this is 
+>    the worse scenario.
+> 
+> I don't like (5), as if something bad happens, there's nothing to be
+> done.
+
+If it happens on a real system nothing is done either. So I'm not sure
+we need to handle that.  Or maybe real hardware reinjects the interrupt
+if the OSPM hasn't done anything about it for a while.
+
+> 
+> For QMP error injection (4) seems is overkill. It may be needed in the
+> future if we end implementing a logic where host OS informs guest about
+> hardware problems, and such errors use asynchronous notifications.
+> 
+> I would also avoid implementing (3) at least for now, as reporting
+> such error via QMP seems enough for the QMP usecase.
+> 
+> So, if ok for you, I'll change the code to (2).
+
+Whilst I don't feel strongly about it, I think 5 is unfortunately the
+correct option if we aren't going to queue errors in qemu (so make it
+an injection tool problem).
+
+> 
+> 
+> > > Agreed this write to 1 looks wrong, but the one a few lines further down (to zero
+> > > it) is correct.  
+> > 
+> > yep, hw should clear register.
+> > It would be better to so on OSPM ACK, but alas we can't intercept that,
+> > so the next option would be to do that at the time when we add a new error block
+> >   
+> > > 
+> > > My bug a long time back I think.
+> > > 
+> > > Jonathan
+> > >   
+> > > >     
+> > > > > 
+> > > > > IMO, this is needed, independently of the notification mechanism.
+> > > > > 
+> > > > > Regards,
+> > > > > Mauro
+> > > > >       
+> > > > 
+> > > >     
+> > >   
+> >   
+> 
+> 
+> 
+> Thanks,
+> Mauro
+

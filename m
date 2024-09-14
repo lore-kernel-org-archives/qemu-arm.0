@@ -1,293 +1,339 @@
-Received: by 2002:a17:504:2a14:b0:1be9:327d:8ee3 with SMTP id p20csp33508njl;
-        Fri, 13 Sep 2024 15:20:37 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCW5mmhWBpAvpvyR0oiK7iLotr9thlyxga80rCidaOZNnd1DazhzNQ3FXDkq6P2KzNMVgAXEKrePyDfcFQ==@linaro.org
-X-Received: by 2002:a05:6e02:1d88:b0:395:e85e:f2fa with SMTP id e9e14a558f8ab-3a084611b38mr66661755ab.1.1726266037632;
-        Fri, 13 Sep 2024 15:20:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1726266037; cv=none;
-        d=google.com; s=arc-20160816;
-        b=dVfsFvov84LdYWSq3BQoIFKN585NQWJ8g3nsZ5N9bjyRlUU49LsIHCZytfbdIu8141
-         mMKN3CpOqdBw92n34x78Xr4e0ZSW9xwPWMUIyG76E3FfWgbLuZQJFbZ8CCVaOXFRxJZx
-         aCrItQiMqL6mUtpyjT/d31bWsazmE4iIIoRmoF2MmO907eMLw+6by9Ew1ivjT3oZ+53i
-         RCSc6K7jH2Ew+4Sda2pWCVGWRyTWQAt4jvEybNrwvRU2lkQSifRH97RlTC0xIbH+phrH
-         CWOCh21p/oJDal425rdr+RwrbxI7aZR2fvSyc+6nweIIBK/eqYSZpowEwzZUVGWAxec0
-         7hlg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=YDsGym9b/QXE3ReyOcWEB4cWbs8H3bfnKyC0IsIimlc=;
-        fh=SVwx91M84tn47IeN1n5lRW6nvFPHCgrcW/z2hVTTZzg=;
-        b=xDIGFHpoB8PgjVVsSQmiwGyGYgHet2sDqXA/xXk+jSwmZpFdxXAtVVEQw4U6vSf94b
-         5Xge3CX78j7gksh1uAnf18KnfiF7EONXj/jDpwoM1FcxmxOuLtr2azJC01cGYQ5KmAv/
-         ZBBOwByT851EBEcBoavLGW5UlLtU8ZnsEMvYUC+GHFSTQiYAqmIEfY2w7p+Zk7qs62Kl
-         Y8WBukoGNz2A7wpxexbW/lv0A5A5O6+zwWeYxpCIGxlL/hUi67lEsxx9HnGZwSnAWZIq
-         J3yIcWlhD4YnBW8Pa2ahXy8o3fnr0tEA65cS9KP2/XRmEhQRdLxCtDwxLsMsc7b3Yhnu
-         /49g==;
+Received: by 2002:a17:504:2a14:b0:1be9:327d:8ee3 with SMTP id p20csp127742njl;
+        Fri, 13 Sep 2024 22:33:34 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCUYiT2kCqJZiNjn4QK3d0D2CSKHYNtkme+047W7L/YF6Oc3SHp4kEJPm97p3z/UPsyYUQ+mfirN2qkKAg==@linaro.org
+X-Google-Smtp-Source: AGHT+IErq7qQ8RnCZsZf+Hui309gD1X7jti59IvryPlgv0hXowAVBBkTgCRQEdwrbcKMN1eMz7S8
+X-Received: by 2002:a17:907:e29f:b0:a86:7b01:7dcc with SMTP id a640c23a62f3a-a9029435ad1mr790423566b.18.1726292014044;
+        Fri, 13 Sep 2024 22:33:34 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1726292014; cv=pass;
+        d=google.com; s=arc-20240605;
+        b=QCRmLGzeA1kQkr2SVbIyvuY85TmHafgjGk9xxlnT1IpW50uuMcS+U2I4ipm0Cyv1TY
+         qCmK9/RlHbNF38HtSKZ7z7BEyjfzNQXn+qro690eRCQb+3hjXSuCDdr9UIIqChVYKSyv
+         TxNJ5a1sxmfyqst2tYiLu0Hl+5MbFNBAeSkqpuRLgpTdvvc1lejAb/7IsS+u/lQFmpFI
+         87dDmecDlbsr5NFDX2VaE34K7inAesW+PUkVJm4l7LMHO0DWYhYZUD9tCjUd2xe05AC8
+         JTlEoNS21BKQgqH1tn5cFvKGv1OkHYdCDEcrrO8yZbeoDq+qkT3pFRlDX1SxDsxdAT8A
+         MAhA==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=z8wZmsbnfn5bAtMOGoc2H7IJYjuZLtXI9EmFNqVGwQA=;
+        fh=F0R8Ux/Een7ncO8+eMTplVzZSrRgpyxdTV3H6aoeTPo=;
+        b=C07iUwskwpJeeNWAZNjap2YUkESgHxruRpqGlJSsx29ioGj+c+P1lLq9Mq+HdRNGFC
+         HVX7IHTAwlF/6y8xV9zjCpJqAyS118VG5F40SCwpZ5HYyGqFJQy1lOxabScQpSuB9XIW
+         gXH1AKP+nbYfubDchKK9AUMfUuXMoYNqSYeS9kltpGX+UEf/QoU3BKeoH0PSD0a+zK6x
+         TOwUFZcv+F5FrO2z+3CQWIFPQW8YgFlFnm3BmcIolB4kkKo008n3BFSZcW82bANHmRWC
+         P4eWdine1oZLC5ijk/ihNnlVE5ceWXx0XoIKJIppaKYYqOQgEiCEn0TPOG3Ixt895Sbg
+         Zyzw==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=eIsHKrLO;
-       spf=pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=nieklinnenbank@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
-Return-Path: <nieklinnenbank@gmail.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id e9e14a558f8ab-3a08c52734fsor6330455ab.3.2024.09.13.15.20.37
-        (Google Transport Security);
-        Fri, 13 Sep 2024 15:20:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=su4Y9vGE;
+       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
+       spf=pass (google.com: domain of linux-kernel+bounces-329144-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="linux-kernel+bounces-329144-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
+Return-Path: <linux-kernel+bounces-329144-alex.bennee=linaro.org@vger.kernel.org>
+Received: from am.mirrors.kernel.org (am.mirrors.kernel.org. [147.75.80.249])
+        by mx.google.com with ESMTPS id a640c23a62f3a-a90610f67b0si50238566b.265.2024.09.13.22.33.33
+        for <alex.bennee@linaro.org>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 13 Sep 2024 22:33:34 -0700 (PDT)
+Received-SPF: pass (google.com: domain of linux-kernel+bounces-329144-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) client-ip=147.75.80.249;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=eIsHKrLO;
-       spf=pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=nieklinnenbank@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1726266037; x=1726870837; darn=linaro.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=YDsGym9b/QXE3ReyOcWEB4cWbs8H3bfnKyC0IsIimlc=;
-        b=eIsHKrLO5oKyjhJNabmG1zOCv3C4A5b8+SprnrlIODQ/yKMefrFJ9v3tZqA9AGREHx
-         4UE3gvpP7oi2stcgOofyc6adLJwG0WlWTpmuW8TbTMZxtYTlecMB6MZxlF/kL1VbOHJ1
-         2T1W8F62WYnhBTfZVcNfdTLDqKb4HRzpH8iE8MmNx1WHT9QTJVpA2+H/hoaxAjrimQ67
-         /3NFuBtFhePaL4FR+eU5P/DTwhYh4pID7cfedlRlE4OojlRnV7Pceg05+psChdYWfCrv
-         1QUbbg0biMw2QPgrN3r4NqlUDqtUwwU2Z524q/y8F4lLmYH6iJZlZkbQCUpfIMfdOEDR
-         Px8A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1726266037; x=1726870837;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=YDsGym9b/QXE3ReyOcWEB4cWbs8H3bfnKyC0IsIimlc=;
-        b=H0wwQo3aEZyvoIiGuQf4ENXD7Ct73yTGyDuF66t55Ln4mbLpWm0A1CjAZD3yYmhxsk
-         PR9ZPJtp/9DgK3mP4o8nYusDmWCXZ5th6tvwqVe0VkGpvIbMtJ5pbDW+lkKxJQuhg7EF
-         veqVJIkv/wS25afOSOMSWO5/NHS/WEm5yZbDLAO/AJndgWZZjhC1E98vVG/713Lh8ULF
-         26RzkrV5AdxTZUSv2mWmESw6CPjADyH7X6kp2TByLQAiwaJQAgwxKCZHuF5CC/aeaO/x
-         xvyGUUo9KcJARYeBGqrU1JXc+gB1CUe16/dOSkOHGVcYDS8A995M2nOkGyo43hySHXw8
-         Ghhg==
-X-Forwarded-Encrypted: i=1; AJvYcCVnGALchYMq8P0ieYt4pcTikEnxoEb5Jij2kDACR3JVq6ZCy0Hss4ESLav2qTyLLWDNFZYvoXaQ+PQMpCcVbQ==@linaro.org, AJvYcCXIS/EsKAoAaAC38Bs32CGs40mkxh+CBHRdGjxJa7wsSkOoPpXUr+wY2Tdq1N9X+Ol8Z1Cj1YVwZWoEzA==@linaro.org
-X-Gm-Message-State: AOJu0YxGiLw/HGe8TZtPeJhQJJ5XAT73jL5le2lIoayyvzB2zqW0HlSr
-	kRRoeCKTwd8/GEqLqalI296KTQX+7zz9jQpKjSkGpisyXhx2tRGYbhJWQ5wKYdvxwmpBdO0dGvY
-	T+V88u4xmOdBt9c0ppnqrHSSBGUk=
-X-Google-Smtp-Source: AGHT+IFsl9ilmQFtQ0JJ0Zhnw+PDnBjUUcFGFuaDPqmRnlQlArn2rE49cTvMR7m0fwbF0nJKGrc5eZzcbihxaKCR3s8=
-X-Received: by 2002:a05:6e02:3603:b0:39f:6f6c:90ba with SMTP id
- e9e14a558f8ab-3a08461c414mr51086715ab.6.1726266036956; Fri, 13 Sep 2024
- 15:20:36 -0700 (PDT)
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=su4Y9vGE;
+       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
+       spf=pass (google.com: domain of linux-kernel+bounces-329144-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="linux-kernel+bounces-329144-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
+Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by am.mirrors.kernel.org (Postfix) with ESMTPS id 763EC1F254CB
+	for <alex.bennee@linaro.org>; Sat, 14 Sep 2024 05:33:33 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 666E3282F0;
+	Sat, 14 Sep 2024 05:33:20 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="su4Y9vGE"
+Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 19BB517996
+	for <linux-kernel@vger.kernel.org>; Sat, 14 Sep 2024 05:33:19 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=10.30.226.201
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1726292000; cv=none; b=qgqM+Qs6kLSlQvP5wg4VoTr4f5izUw5ZysJNxXaXoQMc+8iLGoqqMV4UFS8xRSBtnBylHjm6WFNpsFN+p8tPiMh603DJmyslIwYyvHiuWlVCmM6q3ThD5Vn+kyw27XCYKfzZtzQjPp1J52H1iWz7rm/ZbFMSisg//x92D2Tryeo=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1726292000; c=relaxed/simple;
+	bh=CFNEyhLfApEzvLmDlCEmRoURoMpdLlzz/GQmI4jYQJ4=;
+	h=Date:From:To:Cc:Subject:Message-ID:In-Reply-To:References:
+	 MIME-Version:Content-Type; b=gsO+FfjOO1xfL08ofZjl7wAphYaxlq3G2Tmrga8A2rUkhg3xE2bjzo7R0ZZV5J+hrs25BMJICZSNUtpdn42B3sPYFnDex9Rx2gJeIeC0a+/WzOZvUf1rDSSAT7l53G/NUO8ofKXWHb1MxzblDlEdfdwJKCqVDDdSLrEVKjbeYz8=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=su4Y9vGE; arc=none smtp.client-ip=10.30.226.201
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 11442C4CEC0;
+	Sat, 14 Sep 2024 05:33:17 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1726291999;
+	bh=CFNEyhLfApEzvLmDlCEmRoURoMpdLlzz/GQmI4jYQJ4=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=su4Y9vGECKrjyou0Wd1VKAgfOszfxjwbUg0Ew4CJBknX32D4YJGc34oWgjoaEAERO
+	 Snd2A4dVbUraP7++Q9xJTEfAd456zkmSLzKPVdSBAHYaZ80p3sEi+QeBi+BeHJogt8
+	 JWz4kxlOjJ7YnJWK2xCpdFj1Lkj0T+9KnSHWqM6fbVWMEnncyYneQ+SmeymSOuNM9Z
+	 x9Wt8dCPvj1BlfBkyriDAmfoQyQodHup/M8GPXt9HKGCeD0tYpUiWLMFLU4AApdFgn
+	 uLnDxYPpcvp442kBN0brpOixGhmiGsMs0VaPw/Df9viaciPGbcqYujGLrG+YsIo3yv
+	 pUia0dlvTPY2A==
+Date: Sat, 14 Sep 2024 07:33:14 +0200
+From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+To: Igor Mammedov <imammedo@redhat.com>
+Cc: "Michael S. Tsirkin" <mst@redhat.com>, Ani Sinha <anisinha@redhat.com>,
+ Dongjiu Geng <gengdongjiu1@gmail.com>, linux-kernel@vger.kernel.org,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [PATCH v9 01/12] acpi/ghes: add a firmware file with HEST
+ address
+Message-ID: <20240914073314.46368ff6@foz.lan>
+In-Reply-To: <20240913152518.2f80ab1e@imammedo.users.ipa.redhat.com>
+References: <cover.1724556967.git.mchehab+huawei@kernel.org>
+	<34dd38395f29f57a19aef299bafdff9442830ed3.1724556967.git.mchehab+huawei@kernel.org>
+	<20240911155108.190f0fdf@imammedo.users.ipa.redhat.com>
+	<20240913074435.0eea2552@foz.lan>
+	<20240913152518.2f80ab1e@imammedo.users.ipa.redhat.com>
+X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
+Precedence: bulk
+X-Mailing-List: linux-kernel@vger.kernel.org
+List-Id: <linux-kernel.vger.kernel.org>
+List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-References: <85f61ad3-da14-43f7-983c-62053ce0cfa6@roeck-us.net> <xgwmp3mjq2vhhwgbkbjr76o3yejkbm2ke7ybfes7xbafmpha53@pihh3myr7h7o>
-In-Reply-To: <xgwmp3mjq2vhhwgbkbjr76o3yejkbm2ke7ybfes7xbafmpha53@pihh3myr7h7o>
-From: Niek Linnenbank <nieklinnenbank@gmail.com>
-Date: Sat, 14 Sep 2024 00:20:25 +0200
-Message-ID: <CAPan3WoqwDaDt8W8vZ7RatL_mjnY_aCA0=REQq=B7ZEebhYAig@mail.gmail.com>
-Subject: Re: qemu emulation for USB ports of Allwinner H3
-To: Gerd Hoffmann <kraxel@redhat.com>
-Cc: Guenter Roeck <linux@roeck-us.net>, =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>, 
-	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Content-Type: multipart/alternative; boundary="000000000000ebb720062207a1e7"
-X-TUID: ICNZi4udGY48
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-TUID: QiU8oFbugV2D
 
---000000000000ebb720062207a1e7
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Hi Igor,
 
-Hello Guenter, Gerd,
+Em Fri, 13 Sep 2024 15:25:18 +0200
+Igor Mammedov <imammedo@redhat.com> escreveu:
 
-Thanks for bringing up the question. To be honest I do not know a lot about
-USB internals.
-When adding the orangepi-pc board emulation, it seemed fairly easy to add
-it, but apart from a few basic tests, I did not use the USB functionality
-extensively.
+> > > in addition to this, it needs a patch on top to make sure
+> > > that we migrate hest_addr_le.
+> > > See a08a64627b6b 'ACPI: Record the Generic Error Status Block address'
+> > > and fixes on top of that for an example.    
+> > 
+> > Hmm... If I understood such change well, vmstate_ghes_state() will
+> > use this structure as basis to do migration:
+> > 
+> > 	/* ghes.h */
+> > 	typedef struct AcpiGhesState {
+> > 	    uint64_t hest_addr_le;
+> > 	    uint64_t ghes_addr_le;
+> > 	    bool present; /* True if GHES is present at all on this board */
+> > 	} AcpiGhesState;
+> > 
+> > 	/* generic_event_device.c */
+> > 	static const VMStateDescription vmstate_ghes_state = {
+> > 	    .name = "acpi-ged/ghes",
+> > 	    .version_id = 1,
+> > 	    .minimum_version_id = 1,
+> > 	    .needed = ghes_needed,
+> > 	    .fields      = (VMStateField[]) {
+> > 	        VMSTATE_STRUCT(ghes_state, AcpiGedState, 1,
+> > 	                       vmstate_ghes_state, AcpiGhesState),
+> > 	        VMSTATE_END_OF_LIST()
+> > 	    }
+> > 	};  
+> 
+> current code looks like that:
+>                                                                                  
+> static const VMStateDescription vmstate_ghes = {                                 
+>     .name = "acpi-ghes",                                                         
+>     .version_id = 1,                                                             
+>     .minimum_version_id = 1,                                                     
+>     .fields = (const VMStateField[]) {                                           
+>         VMSTATE_UINT64(ghes_addr_le, AcpiGhesState),   <<===                         
+>         VMSTATE_END_OF_LIST()                                                    
+>     },                                                                           
+> };                                                                               
+>                                                                                  
+> static bool ghes_needed(void *opaque)                                            
+> {                                                                                
+>     AcpiGedState *s = opaque;                                                    
+>     return s->ghes_state.ghes_addr_le;                                           
+> }                                                                                
+>                                                                                  
+> static const VMStateDescription vmstate_ghes_state = {                           
+>     .name = "acpi-ged/ghes",                                                     
+>     .version_id = 1,                                                             
+>     .minimum_version_id = 1,                                                     
+>     .needed = ghes_needed,                                                       
+>     .fields = (const VMStateField[]) {                                           
+>         VMSTATE_STRUCT(ghes_state, AcpiGedState, 1,                              
+>                        vmstate_ghes, AcpiGhesState),                             
+>         VMSTATE_END_OF_LIST()                                                    
+>     }                                                                            
+> };  
+> 
+> where 
+>     VMSTATE_UINT64(ghes_addr_le, AcpiGhesState),
+> explicitly defines field(s) within structure to be sent over wire.
+> 
+> we need to add a conditional field for ghes_addr_le
+> which will be sent only with new machine types, but not with old ones
+> to avoid migration breakage.
+> 
+> I don't know much about migration, but maybe we can get away with
+> similar condition as in ghes_needed(), or enabling QMP error injection
+> based on machine type version.
+> 
+> Or maybe adding a CLI option to enable QMP error injection in which
+> case the explicit option would serve as a trigger enable QMP command and
+> to migrate hest_addr_le.
+> It might be even better this way, since machine wouldn't need to
+> carry extra error source that will be used only for testing
+> and practically never in production VMs (aka reduced attack surface).
+> 
+> You can easily test it locally:
+>   new-qemu: with your patches
+>   old-qemu: qemu-9.1
+> 
+> and then try to do forth & back migration for following cases:
+>   1. (ping-pong case with OLD firmware/ACPI tables)
+>      start old-qemu with 9.1 machine type ->
+>        migrate to file ->
+>        start new-qemu with 9.1 machine type -> restore from file ->
+>        migrate to file ->
 
-I do own the actual Orange Pi PC board hardware, so I downloaded the
-'Orangepipc_2.0.8_ubuntu_bionic_server_linux5.4.65.7z' image from the
-official page to test:
-http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/service-a=
-nd-support/Orange-Pi-PC.html
+As I never used migration, I'm a little stuck with the command line
+parameters.
 
-After booting that image from an SD card with a serial console, this is the
-output from the same 'lsusb' command:
+I guess I got the one to do the migration at the monitor:
 
-root@orangepipc:~# lsusb
-Bus 008 Device 001: ID 1d6b:0001 Linux Foundation 1.1 root hub
-Bus 005 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
-Bus 007 Device 001: ID 1d6b:0001 Linux Foundation 1.1 root hub
-Bus 004 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
-Bus 006 Device 001: ID 1d6b:0001 Linux Foundation 1.1 root hub
-Bus 003 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
-Bus 002 Device 001: ID 1d6b:0001 Linux Foundation 1.1 root hub
-Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
-Bus 009 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
-root@orangepipc:~# uname -a
-Linux orangepipc 5.4.65-sunxi #2.0.8 SMP Mon Oct 26 10:20:38 CST 2020
-armv7l armv7l armv7l GNU/Linux
-root@orangepipc:~# cat /etc/lsb-release
-DISTRIB_ID=3DUbuntu
-DISTRIB_RELEASE=3D18.04
-DISTRIB_CODENAME=3Dbionic
-DISTRIB_DESCRIPTION=3D"Ubuntu 18.04.5 LTS"
+	(qemu) migrate file://tmp/migrate
 
-It does look like the same output compared to what we see under Qemu. But
-I'm not very sure if this confirms we are emulating correctly or not.
+But no idea how to start a machine using a saved state.
 
-Regards,
-Niek
+>        start old-qemu with 9.1 machine type ->restore from file ->
+>        
+>   2.  (ping-pong case with NEW firmware/ACPI tables)
+>       do the same as #1 but starting with new-qemu binary
+> 
+> (from upstream pov #2 is optional, but not implementing it
+> is pain for downstream so it's better to have it if it's not
+> too much work)
 
-On Mon, Sep 9, 2024 at 11:33=E2=80=AFAM Gerd Hoffmann <kraxel@redhat.com> w=
-rote:
+If I understood the migration documentation, every when new fields
+are added, we should increment .version_id. If new version is
+not backward-compatible, .minimum_version_id is also incremented.
 
-> On Sun, Sep 08, 2024 at 11:36:18AM GMT, Guenter Roeck wrote:
-> > Hi,
-> >
-> > the Allwinner H3 USB port qemu emulation creates separate USB ports
-> > for its EHCI and OHCI controllers, resulting in a total of 8 USB ports.
-> > From the orangepi-pc emulation:
-> >
-> > # lsusb
-> > Bus 005 Device 001: ID 1d6b:0002
-> > Bus 003 Device 001: ID 1d6b:0002
-> > Bus 001 Device 001: ID 1d6b:0002
-> > Bus 008 Device 001: ID 1d6b:0002
-> > Bus 006 Device 001: ID 1d6b:0001
-> > Bus 004 Device 001: ID 1d6b:0001
-> > Bus 002 Device 001: ID 1d6b:0002
-> > Bus 009 Device 001: ID 1d6b:0001
-> > Bus 007 Device 001: ID 1d6b:0001
-> >
-> > The SoC supports EHCI companion interfaces, and my understanding is tha=
-t
-> > it only has four physical USB ports. Does the real hardware instantiate
-> > separate EHCI and OHCI interfaces (for a total of 8 USB ports), or does
-> it
-> > use the companion functionality ?
->
-> Well, on the guest side you'll see 8 ports even when using the companion
-> functionality.  Each physical usb port has one ehci port (used when you
-> plug in usb 2.0+ devices) and one ohci port (used when you plug in usb
-> 1.1 devices).
->
-> The main difference is on the qemu backend side.  When using the
-> companion functionality you have a single qemu usb bus accepting both
-> 1.1 and 2.0+ devices.  When not using the companion functionality you
-> have one usb bus accepting 2.0+ devices and another usb bus accepting
-> usb 1.1 devices ...
->
-> The guest-visible difference is an per-port bit in ehci registers which
-> controls whenever ehci or the companion manages the device plugged in.
-> This bit exists for backward compatibility (guests without ehci driver
-> can manage all devices via ohci, with usb 2.0+ devices being downgraded
-> to 1.1 compatibility mode then).
->
-> > If the real hardware only instantiates four USB ports (or, in other
-> words,
-> > if it utilizes EHCI companion functionality), would it make sense to
-> > reflect that in qemu ?
->
-> Yes.
->
-> take care,
->   Gerd
->
->
+So, for a migration-compatible code with a 9.1 VM, the code needs to
+handle the case where hest_addr_le is not defined, e. g. use offsets
+relative to ghes_addr_le, just like the current version, e.g.:
 
---=20
-Niek Linnenbank
+    uint64_t cper_addr, read_ack_start_addr;
 
---000000000000ebb720062207a1e7
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+    AcpiGedState *acpi_ged_state =
+        ACPI_GED(object_resolve_path_type("", TYPE_ACPI_GED, NULL));
+    AcpiGhesState *ags = &acpi_ged_state->ghes_state;
 
-<div dir=3D"ltr"><div>Hello Guenter, Gerd,</div><div><br></div><div>Thanks =
-for bringing up the question. To be honest I do not know a lot about USB in=
-ternals.</div><div>When adding the orangepi-pc board emulation, it seemed f=
-airly easy to add it, but apart from a few basic tests, I did not use the U=
-SB functionality extensively.</div><div><br></div><div>I do own the actual =
-Orange Pi PC board hardware, so I downloaded the &#39;Orangepipc_2.0.8_ubun=
-tu_bionic_server_linux5.4.65.7z&#39; image from the official page to test:<=
-br></div><div><a href=3D"http://www.orangepi.org/html/hardWare/computerAndM=
-icrocontrollers/service-and-support/Orange-Pi-PC.html">http://www.orangepi.=
-org/html/hardWare/computerAndMicrocontrollers/service-and-support/Orange-Pi=
--PC.html</a></div><div><br></div><div>After booting that image from an SD c=
-ard with a serial console, this is the output from the same &#39;lsusb&#39;=
- command:<br></div><div><br></div><div>root@orangepipc:~# lsusb<br>Bus 008 =
-Device 001: ID 1d6b:0001 Linux Foundation 1.1 root hub<br>Bus 005 Device 00=
-1: ID 1d6b:0002 Linux Foundation 2.0 root hub<br>Bus 007 Device 001: ID 1d6=
-b:0001 Linux Foundation 1.1 root hub<br>Bus 004 Device 001: ID 1d6b:0002 Li=
-nux Foundation 2.0 root hub<br>Bus 006 Device 001: ID 1d6b:0001 Linux Found=
-ation 1.1 root hub<br>Bus 003 Device 001: ID 1d6b:0002 Linux Foundation 2.0=
- root hub<br>Bus 002 Device 001: ID 1d6b:0001 Linux Foundation 1.1 root hub=
-<br>Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub<br>Bus 0=
-09 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub<br>root@orangepip=
-c:~# uname -a<br>Linux orangepipc 5.4.65-sunxi #2.0.8 SMP Mon Oct 26 10:20:=
-38 CST 2020 armv7l armv7l armv7l GNU/Linux<br>root@orangepipc:~# cat /etc/l=
-sb-release <br>DISTRIB_ID=3DUbuntu<br>DISTRIB_RELEASE=3D18.04<br>DISTRIB_CO=
-DENAME=3Dbionic<br>DISTRIB_DESCRIPTION=3D&quot;Ubuntu 18.04.5 LTS&quot;</di=
-v><div><br></div><div>It does look like the same output compared to what we=
- see under Qemu. But I&#39;m not very sure if this confirms we are emulatin=
-g correctly or not.</div><div><br></div><div>Regards,</div><div>Niek<br></d=
-iv><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On =
-Mon, Sep 9, 2024 at 11:33=E2=80=AFAM Gerd Hoffmann &lt;<a href=3D"mailto:kr=
-axel@redhat.com">kraxel@redhat.com</a>&gt; wrote:<br></div><blockquote clas=
-s=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid r=
-gb(204,204,204);padding-left:1ex">On Sun, Sep 08, 2024 at 11:36:18AM GMT, G=
-uenter Roeck wrote:<br>
-&gt; Hi,<br>
-&gt; <br>
-&gt; the Allwinner H3 USB port qemu emulation creates separate USB ports<br=
->
-&gt; for its EHCI and OHCI controllers, resulting in a total of 8 USB ports=
-.<br>
-&gt; From the orangepi-pc emulation:<br>
-&gt; <br>
-&gt; # lsusb<br>
-&gt; Bus 005 Device 001: ID 1d6b:0002<br>
-&gt; Bus 003 Device 001: ID 1d6b:0002<br>
-&gt; Bus 001 Device 001: ID 1d6b:0002<br>
-&gt; Bus 008 Device 001: ID 1d6b:0002<br>
-&gt; Bus 006 Device 001: ID 1d6b:0001<br>
-&gt; Bus 004 Device 001: ID 1d6b:0001<br>
-&gt; Bus 002 Device 001: ID 1d6b:0002<br>
-&gt; Bus 009 Device 001: ID 1d6b:0001<br>
-&gt; Bus 007 Device 001: ID 1d6b:0001<br>
-&gt; <br>
-&gt; The SoC supports EHCI companion interfaces, and my understanding is th=
-at<br>
-&gt; it only has four physical USB ports. Does the real hardware instantiat=
-e<br>
-&gt; separate EHCI and OHCI interfaces (for a total of 8 USB ports), or doe=
-s it<br>
-&gt; use the companion functionality ?<br>
-<br>
-Well, on the guest side you&#39;ll see 8 ports even when using the companio=
-n<br>
-functionality.=C2=A0 Each physical usb port has one ehci port (used when yo=
-u<br>
-plug in usb 2.0+ devices) and one ohci port (used when you plug in usb<br>
-1.1 devices).<br>
-<br>
-The main difference is on the qemu backend side.=C2=A0 When using the<br>
-companion functionality you have a single qemu usb bus accepting both<br>
-1.1 and 2.0+ devices.=C2=A0 When not using the companion functionality you<=
-br>
-have one usb bus accepting 2.0+ devices and another usb bus accepting<br>
-usb 1.1 devices ...<br>
-<br>
-The guest-visible difference is an per-port bit in ehci registers which<br>
-controls whenever ehci or the companion manages the device plugged in.<br>
-This bit exists for backward compatibility (guests without ehci driver<br>
-can manage all devices via ohci, with usb 2.0+ devices being downgraded<br>
-to 1.1 compatibility mode then).<br>
-<br>
-&gt; If the real hardware only instantiates four USB ports (or, in other wo=
-rds,<br>
-&gt; if it utilizes EHCI companion functionality), would it make sense to<b=
-r>
-&gt; reflect that in qemu ?<br>
-<br>
-Yes.<br>
-<br>
-take care,<br>
-=C2=A0 Gerd<br>
-<br>
-</blockquote></div><br clear=3D"all"><br><span class=3D"gmail_signature_pre=
-fix">-- </span><br><div dir=3D"ltr" class=3D"gmail_signature"><div dir=3D"l=
-tr"><div>Niek Linnenbank<br><br></div></div></div></div>
+    if (!ags->hest_addr_le) {
+        // Backward-compatible migration code
+        uint64_t base = le64_to_cpu(ags->ghes_addr_le);
 
---000000000000ebb720062207a1e7--
+        *read_ack_start_addr = base +
+            ACPI_GHES_ERROR_SOURCE_COUNT * sizeof(uint64_t) +
+            error_source_to_index[notify] * sizeof(uint64_t);
+
+        *cper_addr = base +
+            ACPI_GHES_ERROR_SOURCE_COUNT * sizeof(uint64_t) +
+            ACPI_GHES_ERROR_SOURCE_COUNT * sizeof(uint64_t) +
+            error_source_to_index[notify] * ACPI_GHES_MAX_RAW_DATA_LENGTH;
+   } else {
+        // Use the new logic from ags->hest_addr_le
+   }
+
+There are two problems with that:
+
+1. On your reviews, if I understood right, the code above is not
+   migration safe. So, while implementing it would be technically
+   correct, migration still won't work;
+
+2. With the new code, ACPI_GHES_ERROR_SOURCE_COUNT is not
+   defined anymore, as the size of the error source structure can
+   be different on different architectures, being 2 for new
+   VMs and 1 for old ones.
+
+   Basically the new code gets it right because it can see a
+   pointer to the HEST table, so it can get the number from there:
+
+	hest_addr = le64_to_cpu(ags->hest_addr_le);
+	cpu_physical_memory_read(hest_addr, &num_sources, sizeof(num_sources));
+
+   But, without hest_addr_le, getting num_sources is not possible.
+
+   An alternative would be to add a hacky code that works only for
+   arm machines (as new versions may support more archs).
+
+   Something like:
+	#define V1_ARM_ACPI_GHES_ERROR_SOURCE_COUNT 1
+	#define V2_ARM_ACPI_GHES_ERROR_SOURCE_COUNT 2
+
+   And have a hardcoded logic that would work before/after this
+   changeset but may break on newer versions, if the number of
+   source IDs change, if we add other HEST types, etc.
+
+   Now, assuming that such hack would work, it sounds too hacky to 
+   my taste.
+
+So, IMO it is a lot safer to not support migrations from v1 (only
+ghes_addr_le), using a patch like the enclosed one to ensure that.
+
+Btw, checking existing migration structs, it sounds that for almost all
+structures, .version_id is identical to .minimum_version_id, meaning that
+migration between different versions aren't supported on most cases.
+
+Thanks,
+Mauro
+
+---
+
+[PATCH] acpi/generic_event_device: Update GHES migration to cover hest addr
+
+The GHES migration logic at GED should now support HEST table
+location too.
+
+Increase migration version and change needed to check for both
+ghes_addr_le and hest_addr_le.
+
+Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+
+diff --git a/hw/acpi/generic_event_device.c b/hw/acpi/generic_event_device.c
+index b4c83a089a02..efae0ff62c7b 100644
+--- a/hw/acpi/generic_event_device.c
++++ b/hw/acpi/generic_event_device.c
+@@ -351,10 +351,11 @@ static const VMStateDescription vmstate_ged_state = {
+ 
+ static const VMStateDescription vmstate_ghes = {
+     .name = "acpi-ghes",
+-    .version_id = 1,
+-    .minimum_version_id = 1,
++    .version_id = 2,
++    .minimum_version_id = 2,
+     .fields = (const VMStateField[]) {
+         VMSTATE_UINT64(ghes_addr_le, AcpiGhesState),
++        VMSTATE_UINT64(hest_addr_le, AcpiGhesState),
+         VMSTATE_END_OF_LIST()
+     },
+ };
+@@ -362,13 +363,13 @@ static const VMStateDescription vmstate_ghes = {
+ static bool ghes_needed(void *opaque)
+ {
+     AcpiGedState *s = opaque;
+-    return s->ghes_state.ghes_addr_le;
++    return s->ghes_state.ghes_addr_le && s->ghes_state.hest_addr_le;
+ }
+ 
+ static const VMStateDescription vmstate_ghes_state = {
+     .name = "acpi-ged/ghes",
+-    .version_id = 1,
+-    .minimum_version_id = 1,
++    .version_id = 2,
++    .minimum_version_id = 2,
+     .needed = ghes_needed,
+     .fields = (const VMStateField[]) {
+         VMSTATE_STRUCT(ghes_state, AcpiGedState, 1,
+
+

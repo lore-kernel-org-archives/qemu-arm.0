@@ -1,512 +1,190 @@
-Received: by 2002:a17:504:928f:b0:1be9:327d:8ee3 with SMTP id d15csp602832nji;
-        Thu, 12 Sep 2024 10:07:39 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCV9KRcrfl8GYPnJFMuL9jFn7cu+kV3k8n6ji7+Eh7HpyhrUjH8LNn/LKwfETn6u7N3WUUUvFXvTFtHz5g==@linaro.org
-X-Google-Smtp-Source: AGHT+IFSTRo48HRhS0A+DTBOcyZbGBf/aHNi1psNFAiaSKHXmSJ5+XsOG5mKmE2C6BNiPYwHwneI
-X-Received: by 2002:a05:620a:28d4:b0:7a9:dcbc:f82b with SMTP id af79cd13be357-7a9e5f7a9dcmr461040385a.54.1726160859107;
-        Thu, 12 Sep 2024 10:07:39 -0700 (PDT)
-Return-Path: <kvm+bounces-26752-alex.bennee=linaro.org@vger.kernel.org>
-Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [2604:1380:45d1:ec00::1])
-        by mx.google.com with ESMTPS id af79cd13be357-7a9a79c56c3si1306460385a.114.2024.09.12.10.07.38
-        for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 12 Sep 2024 10:07:39 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm+bounces-26752-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) client-ip=2604:1380:45d1:ec00::1;
+Received: by 2002:a17:504:2a14:b0:1be9:327d:8ee3 with SMTP id p20csp129375njl;
+        Fri, 13 Sep 2024 22:42:11 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCVAfoj9jkfa2ivzrouP9QRqt1u0WSP4Qy8Q/KsBM18e/lZwWl09q6PNr//TeXv9HwPX3XgOl6UvZKsjQA==@linaro.org
+X-Google-Smtp-Source: AGHT+IGg6p3M9C3mYhMPj671bm26N1poc86oTxqv+kgwkwlhf+u7yL9r1hi3LHUoREtQgR3eu96+
+X-Received: by 2002:a17:902:f684:b0:1fd:6ca4:f987 with SMTP id d9443c01a7336-2076e592912mr123714515ad.15.1726292530837;
+        Fri, 13 Sep 2024 22:42:10 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1726292530; cv=pass;
+        d=google.com; s=arc-20240605;
+        b=cbSMrBuSct+nQqSIESk8AiyiWBCRp3bwS9QTDXBlQVhs/J2l2fXJPsy0e+G8Kw2m9f
+         NOE2BnEhbQnpv6cLlbgitZ9GQX6pYwfvt/ZO5PffbXnJyCYjFq92O7bbGla4IH21+VSo
+         ix5ys5LC5eQchZ/H1Zv2nFgIgxJ7xRe2oxubePHWkokRi9cd0RN1vCMFc/LBmOvrJMA3
+         3YJQ1C7SziRNF4qKWPGdocD67zj0iR55tR9Uqwr94hLlySZuyc34DmgPuBhUVREz6Hc9
+         xvCu2pOl23lAjxDhBU/otEAe26aRucK4ECOTsEumXFgdHAfH9afwyaKBehNCp1fzq5fa
+         D3uA==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=mime-version:user-agent:message-id:in-reply-to:date:references
+         :subject:cc:to:from:dkim-signature;
+        bh=RrlhA2NYPKDNxxpJDq+PmbQPLDkna++VhF1AuAnw2M8=;
+        fh=l8ugXp631tfmQaOxTGy+NkO/UuLC1ufWZiJhhx8lcqo=;
+        b=Om5gV3+3XWr8O7DI2i0JrSv+OCA6z1BCOS5/FEBWKGQVSLuPu80Lwhei6uhhbPWHyS
+         H3DfI9PWqQH0Z5KteK809kDpJfdU6/MuzsxKy1nlwAr8qXthGA4cGCxNm8aPlpw2L/YN
+         f72E2XGRhBhqYgqe1N2m9b86hpQgAGnyhII4mhIbrDUcQUfBowSxnjftoUsSseDTHjAx
+         lTDD0lEjey5j3cSVYLbyX3cV8rlrk/insG+ZXLhJenxeVXU+IyfjiSx7oMlQHkkm+N3Q
+         ejTUPeNRBK2zKkyrCr1PW6LQLCQ5bD/R2VHwzi0D6aWW/zUPPDJbujBAAYAN3AAODyID
+         9UcQ==;
+        dara=google.com
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@hotmail.com header.s=selector1 header.b=tpkdG9aU;
+       arc=pass (i=1);
+       spf=pass (google.com: domain of junjie.mao@hotmail.com designates 2a01:111:f403:2818::80c as permitted sender) smtp.mailfrom=junjie.mao@hotmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=hotmail.com
+Return-Path: <junjie.mao@hotmail.com>
+Received: from AUS01-ME3-obe.outbound.protection.outlook.com (mail-me3aus01olkn2080c.outbound.protection.outlook.com. [2a01:111:f403:2818::80c])
+        by mx.google.com with ESMTPS id d9443c01a7336-20794719c21si11294155ad.416.2024.09.13.22.42.10
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 13 Sep 2024 22:42:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of junjie.mao@hotmail.com designates 2a01:111:f403:2818::80c as permitted sender) client-ip=2a01:111:f403:2818::80c;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@oracle.com header.s=corp-2023-11-20 header.b=hAmKZA3J;
-       dkim=pass header.i=@oracle.onmicrosoft.com header.s=selector2-oracle-onmicrosoft-com header.b=lhl+fGTQ;
-       arc=fail (signature failed);
-       spf=pass (google.com: domain of kvm+bounces-26752-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="kvm+bounces-26752-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=oracle.com
-Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ny.mirrors.kernel.org (Postfix) with ESMTPS id BFAA61C23C03
-	for <alex.bennee@linaro.org>; Thu, 12 Sep 2024 17:07:38 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 6D6021BF7E0;
-	Thu, 12 Sep 2024 17:07:35 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=oracle.com header.i=@oracle.com header.b="hAmKZA3J";
-	dkim=pass (1024-bit key) header.d=oracle.onmicrosoft.com header.i=@oracle.onmicrosoft.com header.b="lhl+fGTQ"
-Received: from mx0a-00069f02.pphosted.com (mx0a-00069f02.pphosted.com [205.220.165.32])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 061351BD002
-	for <kvm@vger.kernel.org>; Thu, 12 Sep 2024 17:07:32 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=fail smtp.client-ip=205.220.165.32
-ARC-Seal:i=2; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1726160855; cv=fail; b=fue+5PjTkr4bHfDnda7Wy4K4lWDM6ZoNR5ViDeGZFFi6eIjrGUwv+2+Q9DncpUZlUF3l+pMW0BpQTTvr7pCe99elaU+5kb9hW+JIvuG0hvHgggr4udybs3sr6mr4BUntyu3ojmKkVQsOC4mVJ2UlS37KNsE8i9+uJP2UGLLjavg=
-ARC-Message-Signature:i=2; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1726160855; c=relaxed/simple;
-	bh=JLDtEd+7UWMnZ3G+BqojULqFONDRKgZFK0s2OlQh9lc=;
-	h=Message-ID:Date:Subject:To:Cc:References:From:In-Reply-To:
-	 Content-Type:MIME-Version; b=jIMpd1emNRdNV/qPcC9kiD7c7tbwA5YKo0LWqDGgLFM2I+XbfAi9Jy7vSxhX6+flLNdlI0Y+2Uutq1yqqSxm1bOvvKEdq8kgCBT+QSdurB2SjGYqblIOKL9X/g5deM32g7B/zbvY3dYE2mYZdIK2vVvcX4aQBI9cxXcNwWJx5PQ=
-ARC-Authentication-Results:i=2; smtp.subspace.kernel.org; dmarc=pass (p=reject dis=none) header.from=oracle.com; spf=pass smtp.mailfrom=oracle.com; dkim=pass (2048-bit key) header.d=oracle.com header.i=@oracle.com header.b=hAmKZA3J; dkim=pass (1024-bit key) header.d=oracle.onmicrosoft.com header.i=@oracle.onmicrosoft.com header.b=lhl+fGTQ; arc=fail smtp.client-ip=205.220.165.32
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=reject dis=none) header.from=oracle.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=oracle.com
-Received: from pps.filterd (m0246629.ppops.net [127.0.0.1])
-	by mx0b-00069f02.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 48CDtap9015066;
-	Thu, 12 Sep 2024 17:07:18 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=
-	message-id:date:subject:to:cc:references:from:in-reply-to
-	:content-type:content-transfer-encoding:mime-version; s=
-	corp-2023-11-20; bh=CJdpSocsuJOhlA3MPTeCLlohBczjrrDA9e5juNpWwJw=; b=
-	hAmKZA3JWHNmlF+ztmJdJUhLeEEkB6/0wmNCXxcz66nSYAA6OmFF8QK4eE9ia234
-	+wrZ7XAuJvNX/ZsMo5j2KQn0hmAInfgZaCzMrdrCw+UlazaX8tcVjWKORoswGkC9
-	VNxjTJAfNQ4mgv4Lvs2mD+U2HNT0so9AcesMr9U89SfKzhZFo8eY7gU0sxwP6feD
-	CTjFhldaNTXOCeUOzBUQTnh7GJ5wMHIdUJjCpGf+QcSc0AXwPBdLy0JrvT8aexPh
-	X2neP2J6RWo3c62AK1Z+T50KaZEupskpZSih8t9a/N76DjKFI+nHSXgcWEQRb2CD
-	VTlaGG1eRavgzA0Be31AxA==
-Received: from iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (iadpaimrmta03.appoci.oracle.com [130.35.103.27])
-	by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 41geq9ubn4-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Thu, 12 Sep 2024 17:07:17 +0000 (GMT)
-Received: from pps.filterd (iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
-	by iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (8.18.1.2/8.18.1.2) with ESMTP id 48CFtXg3005070;
-	Thu, 12 Sep 2024 17:07:15 GMT
-Received: from nam11-bn8-obe.outbound.protection.outlook.com (mail-bn8nam11lp2172.outbound.protection.outlook.com [104.47.58.172])
-	by iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTPS id 41gd9bkqpp-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Thu, 12 Sep 2024 17:07:15 +0000
+       dkim=pass header.i=@hotmail.com header.s=selector1 header.b=tpkdG9aU;
+       arc=pass (i=1);
+       spf=pass (google.com: domain of junjie.mao@hotmail.com designates 2a01:111:f403:2818::80c as permitted sender) smtp.mailfrom=junjie.mao@hotmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=hotmail.com
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=remZoEZhrKxcN8a3Qjc7w8J/8ToswQsNuYrzHj5emjtUNtsDO7zBfNgJPdHcz2i548+J/9pTK8nHAnw5uMbUp5qyPm0HXGNscdaVVIarJJ8mhU0Jb04wVZCxcyoyWA8D4NnVXIiO1sH5iV+nvicoqGWNAWKb7fIPWjNvHKjOaS9Xfq/CHe7NXRAfl3cuqCz+Hx5XtD0HcYqhgTOu0C80wOyfY9c8ACbWsY3Zd39gAml7a1Y8GvzaP8E4f6oe+aWUgs1sFWrPxLZ7JHfiRwniBD7gxJkyA8DZQ0L/hCiKtICR61rNG/fbfqfJH3ozs+/9lzrtFbqTWl9NROqfOy1WEQ==
+ b=iN3v10rksByaGiY+RxycG0OSzLnAxqn9h8A7IixnbDd91lnOJlwOhjVTBKOqVs5QU+k9fK0gqFVQaQylPNhVCxr2lg2wFtPyYb3ERP7jblJm4oZh6TKoNqn/lF3yJxSlS3R6ltfKn8bzEylyK+4tdyg8VOpTaJWUckrd7hLWh/cQaLcnmazBbQgi3JFRgGEZmIFwhgRrc0kfB6XTm0Qm6U18rcZf4GrNHU2HaVv2TyJ8Y1wX+jjzYkX9oVo3FLef2qeNpyHckE0XyfZdN3UbNq92D00d/2WPoNZLL9HnYu87FNyhA/FLVHaJ1B0KyCfpLuaP4/8rGF5WWMV0i4Idhw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=CJdpSocsuJOhlA3MPTeCLlohBczjrrDA9e5juNpWwJw=;
- b=M7q090FLh1hkml6SZnXT9gwddWBUagpK3JyPora7QOCY80tggYHPAVYPtH7JqHxc7xzXzq9eT6/nkOxK3URMajWxafQFu1ddTwI5zo2Wze5eCxtkAIz0vUrvvk3A6f2I37CF4fRwxB9uZSwOMkuQlzUCTIYGh584i85U4WIbZCScY/KHd0ubkiBriFX9xDaQmgKaGGTnNZuqJz527F7YJN/qdmhKO9m/bj5TNhX/y5wNC4TAzn7ddj0rJFX+nuzUkvbQfUkiyTLsXi0Rc4nrupF8zGrDWCQe01mHBjVwv6U0XOm+Bb1EoBx7bChBwonn5efTCEdpvjH9g+QfNnRSUg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
- dkim=pass header.d=oracle.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
+ bh=RrlhA2NYPKDNxxpJDq+PmbQPLDkna++VhF1AuAnw2M8=;
+ b=hUEw3bdnRXv+0PnkSRk0S7BWjcRwEzygmi/dxI3Mh32JDUE26IsKjeEots8q9pvsv6bfsP42H3CavfGAmdPFQOizjWpVba5TMNwOCBUmslGhf2CU8jZCr30mzWBjE5H5uxlAQeud4k+K3apc7jxoJzdS7ynCqWRrCuiY7MTipA0Bk+Zpu6U/xR4bisU7RkSsab74/n3F+HBm+2Y/BrpxV7TCtQNDUap267fHEmBr5zrN2vJPkXBaqmAVA5NHwg0KCR3+qC6nXS2Ydn8iHEOD71GzBNp/tMm+fywYJuSlqnF9DchhgkImGDwTpIXhVUcDN2hqn6pgwStCLF9oKxIIGg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
+ dkim=none; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=hotmail.com;
+ s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=CJdpSocsuJOhlA3MPTeCLlohBczjrrDA9e5juNpWwJw=;
- b=lhl+fGTQghI+FurTAf+JulbGEJCtj06KrCIIZJ8I+25CGLlX9RsXHqnnfC1rqtrHjo4icus8FocyONakt6IPtv8s3fGiyCRAl/ms76W5tWgW2BMhIaZdHKFLu+HF/Aw5oD8xIbeSijqFql46PJJHSE56HSGxwSOL5e5tk7D6nnw=
-Received: from CH3PR10MB7329.namprd10.prod.outlook.com (2603:10b6:610:12c::16)
- by MW5PR10MB5740.namprd10.prod.outlook.com (2603:10b6:303:19a::15) with
+ bh=RrlhA2NYPKDNxxpJDq+PmbQPLDkna++VhF1AuAnw2M8=;
+ b=tpkdG9aUlXPtEW4iQUZUbXrEZ9JH3/CNWEiaesuTlYr4sG3PLbb72vjZ4Uv3+c79ypjtbwbGM5TZQhEBUnzH9PPBL+4ScN4QM8AbQK7B/UCinsyyZGARaEMfD0Vdzbm4PWgtBIsI5IJg6ib62lNB+qK594hLBlm+tX5DQjMNg9PqgtuVlE1X4Mg8eAa3ZUvXmpFi9a/xOefuFRAHqqgbIIXV4Ct3BWyBhMIMn845JGuYId0BddfInZ+ktf/1N1UHyRdS6zWRoJ56B91hKLiemO/uIIz4LOt9fYC0VARkoFuFB17xDZ6V0dpcIriDyHmFpcowQD/NQrEcTEacRISL2A==
+Received: from SY0P300MB1026.AUSP300.PROD.OUTLOOK.COM (2603:10c6:10:282::22)
+ by SY7P300MB0241.AUSP300.PROD.OUTLOOK.COM (2603:10c6:10:233::6) with
  Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7982.8; Thu, 12 Sep
- 2024 17:07:12 +0000
-Received: from CH3PR10MB7329.namprd10.prod.outlook.com
- ([fe80::f238:6143:104c:da23]) by CH3PR10MB7329.namprd10.prod.outlook.com
- ([fe80::f238:6143:104c:da23%5]) with mapi id 15.20.7962.016; Thu, 12 Sep 2024
- 17:07:12 +0000
-Message-ID: <966bf4bf-6928-44a3-b452-d2847d06bb25@oracle.com>
-Date: Thu, 12 Sep 2024 19:07:08 +0200
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC RESEND 0/6] hugetlbfs largepage RAS project
-To: David Hildenbrand <david@redhat.com>, pbonzini@redhat.com,
-        peterx@redhat.com, philmd@linaro.org, marcandre.lureau@redhat.com,
-        berrange@redhat.com, thuth@redhat.com, richard.henderson@linaro.org,
-        peter.maydell@linaro.org, mtosatti@redhat.com, qemu-devel@nongnu.org
-Cc: kvm@vger.kernel.org, qemu-arm@nongnu.org, joao.m.martins@oracle.com
-References: <20240910090747.2741475-1-william.roche@oracle.com>
- <20240910100216.2744078-1-william.roche@oracle.com>
- <ec3337f7-3906-4a1b-b153-e3d5b16685b6@redhat.com>
- <9f9a975e-3a04-4923-b8a5-f1edbed945e6@oracle.com>
- <cf587c8b-3894-4589-bfea-be5db70e81f3@redhat.com>
-Content-Language: en-US, fr
-From: William Roche <william.roche@oracle.com>
-In-Reply-To: <cf587c8b-3894-4589-bfea-be5db70e81f3@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-ClientProxiedBy: LO4P265CA0161.GBRP265.PROD.OUTLOOK.COM
- (2603:10a6:600:2c7::8) To CH3PR10MB7329.namprd10.prod.outlook.com
- (2603:10b6:610:12c::16)
-Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7962.21; Sat, 14 Sep
+ 2024 05:42:04 +0000
+Received: from SY0P300MB1026.AUSP300.PROD.OUTLOOK.COM
+ ([fe80::aea3:2365:f9e8:5bd]) by SY0P300MB1026.AUSP300.PROD.OUTLOOK.COM
+ ([fe80::aea3:2365:f9e8:5bd%2]) with mapi id 15.20.7962.021; Sat, 14 Sep 2024
+ 05:42:04 +0000
+From: Junjie Mao <junjie.mao@hotmail.com>
+To: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+Cc: qemu-devel@nongnu.org,  Paolo Bonzini <pbonzini@redhat.com>,
+  =?utf-8?Q?Marc-Andr=C3=A9?=
+ Lureau <marcandre.lureau@redhat.com>,  Daniel P. =?utf-8?Q?Berrang=C3=A9?=
+ <berrange@redhat.com>,  Thomas Huth <thuth@redhat.com>,  Philippe
+ =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,  Pierrick Bouvier
+ <pierrick.bouvier@linaro.org>,  Richard Henderson
+ <richard.henderson@linaro.org>,  Gustavo Romero
+ <gustavo.romero@linaro.org>,  Alex =?utf-8?Q?Benn=C3=A9e?=
+ <alex.bennee@linaro.org>,  Peter
+ Maydell <peter.maydell@linaro.org>,  Zhao Liu <zhao1.liu@intel.com>,  John
+ Snow <jsnow@redhat.com>,  Cleber Rosa <crosa@redhat.com>,  Beraldo Leal
+ <bleal@redhat.com>,  Wainer dos Santos Moschetta <wainersm@redhat.com>,
+  qemu-arm@nongnu.org
+Subject: Re: [PATCH v10 7/9] rust: add crate to expose bindings and interfaces
+References: <20240910-rust-pl011-v10-0-85a89ee33c40@linaro.org>
+	<20240910-rust-pl011-v10-7-85a89ee33c40@linaro.org>
+Date: Sat, 14 Sep 2024 13:41:54 +0800
+In-Reply-To: <20240910-rust-pl011-v10-7-85a89ee33c40@linaro.org> (Manos
+	Pitsidianakis's message of "Tue, 10 Sep 2024 15:35:13 +0300")
+Message-ID:
+ <SY0P300MB10267592970B0FCEA04059BA95662@SY0P300MB1026.AUSP300.PROD.OUTLOOK.COM>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.1 (gnu/linux)
+Content-Type: text/plain
+X-ClientProxiedBy: PS2PR01CA0057.apcprd01.prod.exchangelabs.com
+ (2603:1096:300:57::21) To SY0P300MB1026.AUSP300.PROD.OUTLOOK.COM
+ (2603:10c6:10:282::22)
+Return-Path: junjie.mao@hotmail.com
+X-Microsoft-Original-Message-ID: <871q1mkd0d.fsf@hotmail.com>
 MIME-Version: 1.0
+X-MS-Exchange-MessageSentRepresentingType: 1
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: CH3PR10MB7329:EE_|MW5PR10MB5740:EE_
-X-MS-Office365-Filtering-Correlation-Id: ce8ca2a5-74af-42da-4b0f-08dcd34d57e3
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
+X-MS-TrafficTypeDiagnostic: SY0P300MB1026:EE_|SY7P300MB0241:EE_
+X-MS-Office365-Filtering-Correlation-Id: a95b4102-87b8-4962-c218-08dcd47ff68e
 X-Microsoft-Antispam:
-	BCL:0;ARA:13230040|366016|7416014|1800799024|376014|921020;
+	BCL:0;ARA:14566002|8060799006|461199028|19110799003|5072599009|15080799006|7092599003|4302099013|3412199025|440099028|1602099012;
 X-Microsoft-Antispam-Message-Info:
-	=?utf-8?B?Zi9KTGk5d2Y2RFZnblYwRjhEaGdYREwycTFlY0xNMnFoZHppTjhDODk1TWQ2?=
- =?utf-8?B?L3M0c3BhTXc4eFJvTFphbHF5eDlDcm1TNWlnVEVRSE9OS1ZuRmwzSHNtK055?=
- =?utf-8?B?OUU3UjNYZll3dm9NbWwyamcwYVBrNmJ6YTF4bXIyaFV5emRsdDl6VktZTXRN?=
- =?utf-8?B?WmNkMkJ4cDZmc1lhU2twQTh3TEJZbXk2Wmo3em8wMzlyZnhoZHlTRGxlNHVy?=
- =?utf-8?B?NjlEMVFLS2x0bFMzYmhuOFBtd08zOTQvemt3MFc1dm9RRFVxZHBMaVhEM1J2?=
- =?utf-8?B?N0h4UlFjckpLTkpqWnJ6elFJZ3lyK2Y5ekJGYVlPOXoveE5PQWQvVVlyaVlu?=
- =?utf-8?B?Wk9qK0srb0t5WXVtL1FGQ2ZCNzhib1hyWWsydWFVYk5ZQkdwTkhmNXRZRmJx?=
- =?utf-8?B?LzcrTjRzT21sNW9UUFNmc2d0dnBROFBIWUQwQUt3SVZ0Z2Y0VkEvcVdhUEMv?=
- =?utf-8?B?UWNHNEFtblpudzJFSk9wa1EvdkkrT3N5WlRyanJscmtYQjczdDg1L2RFc2tz?=
- =?utf-8?B?dUQyUG94cGVaM1ZFNldvZ0tvT1o0UFdmR1ZRK2FvRUhRTjdxbE5LWUV4enBO?=
- =?utf-8?B?dUgrdGNmUFcwMVk3QmEyNi94ZjVpbUZUOXMrK3FRSzNBaG5wR1dJSzUvK3Fu?=
- =?utf-8?B?QVNzRC9FeEdHdENGUnl1clVtdjJaTlR1QnVRb0FtRXQ2UTBVaWdZNDBIWjBB?=
- =?utf-8?B?WUZWSTlWaGxqY0s4NDZIRkFDc0lIZ3VQamlRYXMvWDBOcExzQi8yT2dhejhr?=
- =?utf-8?B?ajFVQVYwYWFOMDE0UWg2dGloR1hFUlUxMm5sYnRaSEFJZEJxQlpiUjBSVkVI?=
- =?utf-8?B?ejFiT2V3clJDZzh5STdFYW5EU1JHYjJ4bytHaC9TbDVvSmFneEdZMmp1VnZn?=
- =?utf-8?B?c3JrNmh3aXArU1lpQmxhdjNacmdkeGtaYkpZbjNOSVBVUU5mVFhrQjVNejN3?=
- =?utf-8?B?SEdNT3Z6L1Y3YVp0emVMM3F6cVBZZWJ3dEVvMUZVY0xkUmdTVnpMMk5Calpl?=
- =?utf-8?B?VVFHcG9zZGZDVStqcVpqSUs3NnR6dm5DZmwvWDAxK2RDd3hOTW52Y05oaHdP?=
- =?utf-8?B?NVV3NGhiTmJjM004N2lGL3RQYk1ha0lkOGVyWittL0ZCVkFxaTcxMVoyci9E?=
- =?utf-8?B?Z1ZDR3d2Skc5YjBsNlY4UERhVE9neHBRSzlzaVZpZzRvMVNXeHRITWQzSFFE?=
- =?utf-8?B?d3pVaytRMWpUQWRJS0d1bnBRWEZvVno4eWNUYjVlRnZJVS9TeUZWZmhmODl2?=
- =?utf-8?B?eU1IWmZ2Y0ZwRm9CV1pKTzhkN2pmald2ZzdGZzJhVVFzZEhRRjZwQysxbzRZ?=
- =?utf-8?B?UzZncXdxRmNKd1MwUlBQR2N5djhyWFlQaFkzWndjRU1DTmFpRUUzM0VWbjZa?=
- =?utf-8?B?WFNaSk9HcElDOUtGZ001WWNVUHN6REQ1UmQ1T0hQZHJ6MG5lY0dBWmxYcGMw?=
- =?utf-8?B?QVE2STVNS05OMWVSRldSZHZad1g0QkxzbTAxdlFMdFl0Z2ZkbTJGMEx1RXpF?=
- =?utf-8?B?WUtoZzdwTG1qbkJYemJhRFhaM1FTdDBkRWRuR0JyOWdTTTd4YkgyRURpSUZs?=
- =?utf-8?B?U01rNjcwOWlDVm5PZThmamNaNVkyckFES0d3dVVUUmk5emp4OG85RUlEODFl?=
- =?utf-8?B?R2laQXFoSnJuNUw4M0YrSzdzbURBczB1NC9RRWF2OUVrK0RMMzcxS3BhSU5a?=
- =?utf-8?B?MHBmQXhxbUpMYU55TXpaeDVGby8yalNmaW9IWFFCQVVIQ3h5OCtUSzU5aTdn?=
- =?utf-8?B?ZC9PR1IwSU5SR2UrcExTdUVaL09YUnYxVGRycUJPejJtakhmZlA2ellCSnJt?=
- =?utf-8?B?K3F3QmRQZmQzWnhEcHBNdmZMbmh0cTF0RThuR0JRcnhuVjFrMG5ueDRTS1Fy?=
- =?utf-8?Q?H9GZsJVUb+I/O?=
-X-Forefront-Antispam-Report:
-	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:CH3PR10MB7329.namprd10.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(7416014)(1800799024)(376014)(921020);DIR:OUT;SFP:1101;
+	x2vzjMnObisTnPzPUADsInq3lMp5GoUgFdPJeQJqmGOWrw+jX2+1fpGOEX2KzzK++gbdyIXDqe2nUTFL9PW9ETOaJVGv086QqBhtIX9yZxNiq+/HSXzasS2ro88GF4tqRTi1/bBvwDYeGheQfZ5+zFnn6rzZisubUrv9c3k9BdY0KSIc/DA7glB/AMkNKNGGlY75v3GRTJ2Xhof3yExsYCMjMX7uGW7Pp2RLIE/g0za7uIdhQWMmMAGAlvx0jHZ8OcVlrm0fRrvuSQsolZJxHDabU40duQylzuLLWM33i2QbgCJRHkRNS7PPhmq58c8e/owJFAqPyqIj7hSx7F4Z6ybGPOklEdTN5ovTRmJx2/o3I3nTINqNFx6blPb4ScrM1LpZx+xdUVyF2TlY8WToUiHVTGIN4PeQlxD36wbwLlCyKsbNpRI17/PxdmrAnd/NtSn7rRPCNZMgAssnQx6393/LYElbsnysEdvrIEjwH8NmBgswUuXyVJHrvnVuzdVyrXo4sF7xwcjYFq0Vq+CIykRIK1Ha+xgDx1GAV45+mobQ2N139QQMVSV9gxmI249ivvI3V+9KY95GOwuV6xLkYIjo8abF7SDnFgM5+9qpQtMbpA8iZVeZd8jIOC35wzAp+oTOrU8QGf8YnPKhj2ihZLZgWqdA6NLtNVT63e2Jy9OkCP1QZam6glc7lManMZCMK8ygUo1a0PBhZLSTCt5qe6hczRYd1TA2PcOaAf09HOsY6F4fHO7GQZM8EP5sqizMm8C4Pw8+5Dkw+rDzkuUSf2cPU2zcYQqrbQwjbtoKXuVOk418UdBRV0SsrBtqWi+7UaHDWtoL9w/Nlh/KtiV0tC+96qN2aVUIX0SWY3Qtf5JJsnKNAMS2GYLPuLGdeZDy8/slYOjs/fRgSFkXY9wvJQ==
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
 X-MS-Exchange-AntiSpam-MessageData-0:
-	=?utf-8?B?RVF4TERpQXduY0cxV1hERWVUSE1jUUlnbDB0L0MxN1lGYTAyOWNnS3JkTC9m?=
- =?utf-8?B?YW4zYy9MY2J3L0QvclhuNUFSS28zUmswL0VjcUtwUFdmYlNONzBZeDZlTWFh?=
- =?utf-8?B?emJMeFI1K1NlNzVoVEVZaW1jWHNRQlIyRnFDdWY0ZVBoNTNJSERXRHU5RDdu?=
- =?utf-8?B?NVU5Y25PL1VjbVZuQXIzNEpvMUxFVFo3WXVtdTBaR0JIT3BSMzNOelQ2Q3VJ?=
- =?utf-8?B?Uk1UbWF0bndlZWQvU1JLOG5OYUVhVjdQaXBLN3FZWkM4U05uVVQ5MjRBQmhN?=
- =?utf-8?B?bEpQRXlxb1I5em1veUFGSFRCNUM3NmVOZHZsYVFnbFUzN3FPOUo3TmJIRFB3?=
- =?utf-8?B?OElpeVJmZVJGb0lqdDEvMWJZbDFvZXpmajRtcTRPZWFDQWo0SzVTVkErNWVm?=
- =?utf-8?B?aE1VVHE2NnZkQ1BPQ1psRGZPem8yc29UT2sySk55NThmajlpN1JiZzBjcHpW?=
- =?utf-8?B?MWhsTC9WQnY1MFN0Y2czSUN6N2YrbTRKNDFtVm1hNDdtMUovdk5vdWtCdjkz?=
- =?utf-8?B?TFVJYjZyM0NiaXl6eWs3aWgvbWNET1g0OWZRQ01qTE5BVXFDUzMwMk9wbDNR?=
- =?utf-8?B?cC96eVhWbXpHaXZ0VG1wc0NtVnVnUGdQNlZSSkVIcm5tdkdMMWdxbnZoa0g0?=
- =?utf-8?B?Mk4wVjNaQjFRNnh2SlFSd291UThSaDJDR1JsQU9rNmVNOE1uT3YzZXVsenRR?=
- =?utf-8?B?Z3pqSCt3NTUrbUwxRzN4N2xIaVkvekJCNU03S2hTbzJSa2xkTmZnL3pGRGEy?=
- =?utf-8?B?RUI2cWVrZnFsNkxNcXJOTjB1b0FqeEVTb1g0cjVmQmlTSDdINU1rS1g0S2hk?=
- =?utf-8?B?ZDlZa1J0QnZJK1lFYzhyS0VLaDE5N2VoQzhaY2p0K3JFSVdTQVZ6WEZ2V3J5?=
- =?utf-8?B?c213V2RyTVcrNXh2QVNJeXBTZWVuWmJpZGIxcWxOUXZrVVkrQ3hGMTNZc1Yz?=
- =?utf-8?B?T3lCaHVKS1lSLzhwT1VuMnZWbGRhUEpCa05DSzUvN0JkQis1WDJNQ2pVSndL?=
- =?utf-8?B?UDE4RFY4WG9nNjRhaUdjT2N2NC9wKzhCZ1dNMDZLTEd4U2pPdCtKNHE0Zjc0?=
- =?utf-8?B?bldXZjhhTCtUSzJwT0Y4TjN4d0x4Tkszd1dMcXk3WFhLdFFTT24vSVBiL1NN?=
- =?utf-8?B?Wm4vMWNBRGxtL09lbXZEYW5tWWtseSs2VnJKWjl4Nm1sUVNIMWF0bm1DSmM0?=
- =?utf-8?B?bG9hNmlhMmcwS0N6Tytldm5ZTE44angzSktZS1YxU1Y0cVJJSGdZV2VlVGN1?=
- =?utf-8?B?WTloUjhBZXBpYXR3WTYxR1lKLzdkWnNBNGxodjU3QlhwcDJVRHB5QUY0VVFJ?=
- =?utf-8?B?Uko2R2lENmc3WmZUcGZSYzlrMXdFdzgwQmMwb2xPckdPTUh1dkQyTlBHbFBu?=
- =?utf-8?B?SmN3Zms5c1MxQUtjL2QvV0xCa3NvK1NoNmZkbEFyd1FRejl5UWJ1d3VMSDRC?=
- =?utf-8?B?TExxT3Q0N0d5MkVka3YxYkJDSmxrVFEwY0NhMkNGS2tqVy94U0NOTUgyTjVq?=
- =?utf-8?B?WkgvVHcrcWgyRGV5dloyV0hMOURka2tleXYvZURrZnJXbnJTakFUYXVjYVZI?=
- =?utf-8?B?UncxcnJtZlo2d2ZJL1ZwZ3dNMXdyM1JqVCs1SjdUZzlPWTU5MHRseHNzQStE?=
- =?utf-8?B?TlhHNUtDcGNVVWtLTE1waDJJU2N2bGN0YW1MOEV0MDBJSk02Q2xVekd1YXNR?=
- =?utf-8?B?MEozamRBTmZsRHhXdk14eThSUFI3d3JXdTdqTnp1NjFJbzR5RFdYTVczcUhj?=
- =?utf-8?B?eEp4Nms4aUowdjFhbWs4NW52RjVXdHZxdXAwRTVwZ0dLZngxRFNNRFhzaUJ5?=
- =?utf-8?B?bVAzWERzT1BrQTViMEd6NEk3bnlRM1NMdUE3V2s0Y2FjKzJneERjSWE0bHZE?=
- =?utf-8?B?dmNDUi9NUThvaGQ3NEN5S2hEZXAxaStJNTRRVE9EdmYrRW8zb1BhekkySXdO?=
- =?utf-8?B?LzV5Tll6Rm9hM3ZRY3NDLzFoZGYzaitubWVidWt2L0x6L0JwUTVuTGxQeW5P?=
- =?utf-8?B?WC93MzNMVmlJMnpmbUZ0NTM5aGhaTlBNOFpCWWVJNzFxcEcxZW1FSTJMdkZH?=
- =?utf-8?B?eFY0MkZFYnFyTXQrKzFZZFI2UnN0NXQ4S29qQURsMlpiM1JDajhoUzJKTGd0?=
- =?utf-8?B?bkZMdEVyL3lMMUZ2MHd1OWd0Q1pNcmVsL0EzNXBuN1IwRW9LaDdaWDRacmZV?=
- =?utf-8?B?YVE9PQ==?=
-X-MS-Exchange-AntiSpam-ExternalHop-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-ExternalHop-MessageData-0:
-	RVz/ZDtIR1EYKSqnCpIzmPcOnq5yySYsW8zSnEpVCd4Y1HIqiPV35tRY7LdAA4L6cwZVY1DutKHUupJnhAuB5C3KxeDS0Ie9MaRXfjE/JeVYcX5f/MTdr0wQHsMtb1sUZS11bkBJs1uXDTW1ky8kikzH+OSUGhL8Z3WlEnGUWYzY/tIDiZSK75hkPZ83WdscpKOmFTqlmUC1uZHebSP2rABD09XGHhSQ5JR8vSoQ0e/v7LGvlSDsvi8fwunGV65Kd7JhlsLGXqnzGas04cjbHD9my8h4XvvQgfi6F+raWeSVQImpB9leF73OqnctjeXY8Dt2zGEmK+/9I9jS+FzOsX5bruil7lKrCuuGllz8vRfdCVAGhPJarjGQ52Feu4yiDQYeNky5mbKzjISJ1JbHZ0faQYWrYa2ojep2LgEOZQeeJx7i595ef236toOFTyZqZnnM4JURsBC/C+Gd/vjTRmzhMmRPHJUMq6COF7VD5ZvMMcbpeGnjrNdElwSN3+/Lpcc7rLNYy0h6gSkAqBy5xoEcSWKy9CuyLUXZ8H21iHgAWOfDWsr/Suv/zyMVfk8NzLS5vytvfuUBlbdariGCuCYPL460XXrNiZqsFPkODEQ=
-X-OriginatorOrg: oracle.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: ce8ca2a5-74af-42da-4b0f-08dcd34d57e3
-X-MS-Exchange-CrossTenant-AuthSource: CH3PR10MB7329.namprd10.prod.outlook.com
+	=?us-ascii?Q?0A9O+5TcDgpZfFxlzVSizL0pbeJdXfO25Swkw+GPQ71k8mIWfZXnXff27+2N?=
+ =?us-ascii?Q?0JyrJrNQwD+vN5v5Vb6k6hc7GLfxirwkW3HouXPjnb9XaZLqQlIuYR7Vf2cu?=
+ =?us-ascii?Q?Ub2qsmW8d4FaU2RfbOSS9biQDx5NOGJ27WULdO5m3bkSSY72CydYheWLPqjR?=
+ =?us-ascii?Q?Swv7ASSSwqm+kakXCpFLIF3JjKd7XpABBt5dNDlPTDmamoH3OeWpnWTqe+YK?=
+ =?us-ascii?Q?JDyuEDW8uJhXGQiacr0RTuxHBblp+0wpqBZIGH5PoBo3d0Z4Zstp3Ghto1oj?=
+ =?us-ascii?Q?MGolFG4cpBpcYCyoqilr20LqCKA3+VVWmqvCVB4UBHLhKJmQ+SqTrlTLxZKw?=
+ =?us-ascii?Q?4E2k7YSGm5R1ajiGq0wbVCN2n/PRgdqIKwFoJ5veKPollOfJ4HxJDCj1Enqu?=
+ =?us-ascii?Q?oGzEQuc2PkX6QiwO+DP4vX4oQMjSyAeumXilJ6jK86XEpDjzflFH4nfXNL1L?=
+ =?us-ascii?Q?S1aAFxLXwYFuoo32XxT/B/BTQr/4lTOyOnof3KhLk+VoW28Sjark3UWmbhTU?=
+ =?us-ascii?Q?36DWRdKXztN5ehue3XuK1mNnPEhrzWjmvrkxN96zbkX3gZooROSorH9TLtOO?=
+ =?us-ascii?Q?Hr9hwYlQnESp0KcZ0eelekJp/DipRAxViGsV2ZLHfZI7sUPHcmmLN/RgFLz4?=
+ =?us-ascii?Q?nd1POVA4CxElUKOj9ceTopPI8zHFg2NHOAOPgpelBNpemr2pxdgz/lOq9PJx?=
+ =?us-ascii?Q?bGeAg10uhyBuwhrhM6XeopXLWBg3ekGhGjVXLq+OCJP8W4k3I8bpxaiRx/bN?=
+ =?us-ascii?Q?E/tPWbIrdziG5surharkkF7VgIsoqKY3gf2WBJUY0WaWpQo5e8S2fO/KQdcT?=
+ =?us-ascii?Q?G8RmyTvfnqYHR2Q+8sQKaXwTjaD4du57a0VSVkM1Hm8jFgmMorNnq9oKwvZw?=
+ =?us-ascii?Q?yVKVeHiyF7QPC/sciP6W3Q41FmwMPNki2C3WMQ0dQfLXxcpxTMNSOoYVBKND?=
+ =?us-ascii?Q?VwxwnMJWRmJ+iRSU1QD4lS9jZW4qKf0KE0fD7YubH7odN/H51j+TUDPpEPb3?=
+ =?us-ascii?Q?RUpVoOWShD65rPAZAKYwya/7iqIykc0v6BMS0v83m0wz0OB9RFDf4ey+KP6G?=
+ =?us-ascii?Q?82eZD4oz9VgOjeMGPg8Cd+GkgeoU07P+8R3N9cZgNhHltLVhHbXDWUNMvQyw?=
+ =?us-ascii?Q?W5Om8D4kKUMDKrtEmVbCHhqYlED4ZJ0pCAEP1x+tVwsGX5KfWHxEQp8FfXnL?=
+ =?us-ascii?Q?n++Etxbo0UylSDvBqpg9069GkyBghBqlP9arYfcaaD8bAhGRtyu/IO+5R0w?=
+ =?us-ascii?Q?=3D?=
+X-OriginatorOrg: sct-15-20-7719-20-msonline-outlook-448bf.templateTenant
+X-MS-Exchange-CrossTenant-Network-Message-Id: a95b4102-87b8-4962-c218-08dcd47ff68e
+X-MS-Exchange-CrossTenant-AuthSource: SY0P300MB1026.AUSP300.PROD.OUTLOOK.COM
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 12 Sep 2024 17:07:12.2313
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 14 Sep 2024 05:42:04.4738
  (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: uxs5q9N4jD3N0sp2O6WxATuRHhjHEyL0CqrpHeTLMCoj7/VW7+wzpo3sL19cbV7vrMGZ/mESppRFqNJeARcHbnR0CExVyuikHL+hN7S4NQA=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MW5PR10MB5740
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1039,Hydra:6.0.680,FMLib:17.12.60.29
- definitions=2024-09-12_05,2024-09-12_01,2024-09-02_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0 malwarescore=0
- mlxlogscore=999 bulkscore=0 adultscore=0 phishscore=0 suspectscore=0
- mlxscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2408220000 definitions=main-2409120126
-X-Proofpoint-ORIG-GUID: NdCgPGk4L28irvgvJnegSVuEZTViGFKU
-X-Proofpoint-GUID: NdCgPGk4L28irvgvJnegSVuEZTViGFKU
-X-TUID: 0CXNDAk7LXX8
+X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
+X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg:
+	00000000-0000-0000-0000-000000000000
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SY7P300MB0241
+X-TUID: 5neDuWuXJAti
 
-On 9/12/24 00:07, David Hildenbrand wrote:
+Manos Pitsidianakis <manos.pitsidianakis@linaro.org> writes:
 
-> Hi again,
+> Add rust/qemu-api, which exposes rust-bindgen generated FFI bindings and
+> provides some declaration macros for symbols visible to the rest of
+> QEMU.
 >
->>>> This is a Qemu RFC to introduce the possibility to deal with hardware
->>>> memory errors impacting hugetlbfs memory backed VMs. When using
->>>> hugetlbfs large pages, any large page location being impacted by an
->>>> HW memory error results in poisoning the entire page, suddenly making
->>>> a large chunk of the VM memory unusable.
->>>>
->>>> The implemented proposal is simply a memory mapping change when an HW
->>>> error
->>>> is reported to Qemu, to transform a hugetlbfs large page into a set of
->>>> standard sized pages. The failed large page is unmapped and a set of
->>>> standard sized pages are mapped in place.
->>>> This mechanism is triggered when a SIGBUS/MCE_MCEERR_Ax signal is
->>>> received
->>>> by qemu and the reported location corresponds to a large page.
->
-> One clarifying question: you simply replace the hugetlb page by 
-> multiple small pages using mmap(MAP_FIXED).
+> Co-authored-by: Junjie Mao <junjie.mao@intel.com>
+> Co-authored-by: Paolo Bonzini <pbonzini@redhat.com>
+> Signed-off-by: Junjie Mao <junjie.mao@intel.com>
+> Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+> Signed-off-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+> ---
+[snip]
+> diff --git a/rust/qemu-api/src/device_class.rs b/rust/qemu-api/src/device_class.rs
+> new file mode 100644
+> index 0000000000000000000000000000000000000000..69ee912c333c3dce8bc127a286acaadd57ca20b3
+> --- /dev/null
+> +++ b/rust/qemu-api/src/device_class.rs
+> @@ -0,0 +1,128 @@
+> +// Copyright 2024, Linaro Limited
+> +// Author(s): Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+> +// SPDX-License-Identifier: GPL-2.0-or-later
+> +
+> +use std::sync::OnceLock;
+> +
+> +use crate::bindings::Property;
+> +
+> +#[macro_export]
+> +macro_rules! device_class_init {
+> +    ($func:ident, props => $props:ident, realize_fn => $realize_fn:expr, reset_fn => $reset_fn:expr, vmsd => $vmsd:ident$(,)*) => {
+> +        #[no_mangle]
+> +        pub unsafe extern "C" fn $func(
+> +            klass: *mut $crate::bindings::ObjectClass,
+> +            _: *mut ::core::ffi::c_void,
+> +        ) {
+> +            let mut dc =
+> +                ::core::ptr::NonNull::new(klass.cast::<$crate::bindings::DeviceClass>()).unwrap();
+> +            dc.as_mut().realize = $realize_fn;
+> +            dc.as_mut().reset = $reset_fn;
 
-That's right.
+A recent change to qdev-core.h [1] renames reset to legacy_reset. You
+may want to rebase the series and update this to
+dc.as_mut().legacy_reset accordingly.
 
-> So you
->
-> (a) are not able to recover any memory of the original page (as of now)
-Once poisoned by the kernel, the original large page is entirely not 
-accessible
-anymore, but the Kernel can provide what remains from the poisoned hugetlbfs
-page through the backend file.  (When this file was mapped MAP_SHARED)
+[1] https://lore.kernel.org/qemu-devel/20240913151411.2167922-9-peter.maydell@linaro.org/
 
-> (b) no longer have a hugetlb page and, therefore, possibly a performance
->     degradation, relevant in low-latency applications that really care
->     about the usage of hugetlb pages.
-This is correct.
-
-> (c) run into the described inconsistency issues
-The inconsistency I agreed upon is the case of 2 qemu processes sharing 
-a piece of
-the memory (through the ivshmem mechanism) which can be fixed by disabling
-recovery for ivshmem associated hugetlbfs segment.
-
-> Why is what you propose beneficial over just fallocate(PUNCH_HOLE) the 
-> full page and get a fresh, non-poisoned page instead?
->
-> Sure, you have to reserve some pages if that ever happens, but what is 
-> the big selling point over PUNCH_HOLE + realloc? (sorry if I missed it 
-> and it was spelled out)
-This project provides an essential component that can't be done keeping 
-a large
-page to replace a failed large page: an uncorrected memory error on a memory
-page is a lost memory piece and needs to be identified for any user to 
-indicate
-the loss. The kernel granularity for that is the entire page. It marks it
-'poisoned' making it inaccessible (no matter what the page size, or the lost
-memory piece size). So recovering an area of a large page impacted by a 
-memory
-error has to keep track of the lost area, and there is no other way but to
-lower the granularity and split the page into smaller pieces that can be
-marked 'poisoned' for the lost area.
-
-That's the reason why we can't replace a failed large page with another 
-large page.
-
-We need smaller pages.
-
-
->>>>
->>>> This gives the possibility to:
->>>> - Take advantage of newer hypervisor kernel providing a way to 
->>>> retrieve
->>>> still valid data on the impacted hugetlbfs poisoned large page.
->
-> Reading that again, that shouldn't have to be hypervisor-specific. 
-> Really, if someone were to extract data from a poisoned hugetlb folio, 
-> it shouldn't be hypervisor-specific. The kernel should be able to know 
-> which regions are accessible and could allow ways for reading these, 
-> one way or the other.
->
-> It could just be a fairly hugetlb-special feature that would replace 
-> the poisoned page by a fresh hugetlb page where as much page content 
-> as possible has been recoverd from the old one.
-I totally agree with the fact that it should be the Kernel role to split the
-page and keep track of the valid and lost pieces. This was an aspect of the
-high-granularity-mapping (HGM) project you are referring to. But HGM is not
-there yet (and may never be), and currently the only automatic memory split
-done by the kernel occurs when we are using Transparent Huge Pages (THP).
-Unfortunately THP doesn't show (for the moment) all the performance and
-memory optimisation possibilities that hugetlbfs use provides. And it's
-a large topic I'd prefer not to get into.
-
-
->>> How are you dealing with other consumers of the shared memory,
->>> such as vhost-user processes,
->>
->>
->> In the current proposal, I don't deal with this aspect.
->> In fact, any other process sharing the changed memory will
->> continue to map the poisoned large page. So any access to
->> this page will generate a SIGBUS to this other process.
->>
->> In this situation vhost-user processes should continue to receive
->> SIGBUS signals (and probably continue to die because of that).
->
-> That's ... suboptimal. :)
-True.
-
->
-> Assume you have a 1 GiB page. The guest OS can happily allocate 
-> buffers in there so they can end up in vhost-user and crash that 
-> process. Without any warning.
-I confess that I don't know how/when and where vhost-user processes get 
-their
-shared memory locations.
-But I agree that a recovered large page is currently not usable to associate
-new shared buffers between qemu and external processes.
-
-Note that previously allocated buffers that could have been located on this
-page are marked 'poisoned' (after a memory error)on the vhost-user process
-the same way they were before this project . The only difference is that,
-after a recovered memory error, qemu may continue to see the recovered
-address space and use it. But the receiving side (on vhost-user) will fail
-when accessing the location.
-
-Can a vhost-process fail without any warning reported ?
-I hope not.
-
->> So I do see a real problem if 2 qemu processes are sharing the
->> same hugetlbfs segment -- in this case, error recovery should not
->> occur on this piece of the memory. Maybe dealing with this situation
->> with "ivshmem" options is doable (marking the shared segment
->> "not eligible" to hugetlbfs recovery, just like not "share=on"
->> hugetlbfs entries are not eligible)
->> -- I need to think about this specific case.
->>
->> Please let me know if there is a better way to deal with this
->> shared memory aspect and have a better system reaction.
->
-> Not creating the inconsistency in the first place :)
-Yes :)
-Of course I don't want to introduce any inconsistency situation leading to
-a memory corruption.
-But if we consider that 'ivshmem' memory is not eligible for a recovery,
-it means that we still leave the entire large page location poisoned and
-there would not be any inconsistency for this memory component. Other
-hugetlbfs memory componentswould still have the possibility to be
-partially recovered, and give a higher chance to the VM not to crash
-immediately.
-
->>> vm migration whereby RAM is migrated using file content,
->>
->>
->> Migration doesn't currently work with memory poisoning.
->> You can give a look at the already integrated following commit:
->>
->> 06152b89db64 migration: prevent migration when VM has poisoned memory
->>
->> This proposal doesn't change anything on this side.
->
-> That commit is fairly fresh and likely missed the option to *not* 
-> migrate RAM by reading it, but instead by migrating it through a 
-> shared file. For example, VM life-upgrade (CPR) wants to use that (or 
-> is already using that), to avoid RAM migration completely.
-When a memory error occurs on a dirty page used for a mapped file,
-the data is lost and the file synchronisation should fail with EIO.
-You can't rely on the file content to reflect the latest memory content.
-So even a migration using such a file should be avoided according to me.
-
-
->>> vfio that might have these pages pinned?
->>
->> AFAIK even pinned memory can be impacted by memory error and poisoned
->> by the kernel. Now as I said in the cover letter, I'd like to know if
->> we should take extra care for IO memory, vfio configured memory 
->> buffers...
->
-> Assume your GPU has a hugetlb folio pinned via vfio. As soon as you 
-> make the guest RAM point at anything else as VFIO is aware of, we end 
-> up in the same problem we had when we learned about having to disable 
-> balloon inflation (MADVISE_DONTNEED) as soon as VFIO pinned pages.
->
-> We'd have to inform VFIO that the mapping is now different. Otherwise 
-> it's really better to crash the VM than having your GPU read/write 
-> different data than your CPU reads/writes,
-Absolutely true, and fortunately this is not what would happen when the
-large poisoned page is still used by the VFIO. After a successful recovery,
-the CPU may still be able to read/write on a location where we had a vfio
-buffer, but the other side (the device for example) would fail reading or
-writing to any location of the poisoned large page.
-
->>> In general, you cannot simply replace pages by private copies
->>> when somebody else might be relying on these pages to go to
->>> actual guest RAM.
->>
->> This is correct, but the current proposal is dealing with a specific
->> shared memory type: poisoned large pages. So any other process mapping
->> this type of page can't access it without generating a SIGBUS.
->
-> Right, and that's the issue. Because, for example, how should the VM 
-> be aware that this memory is now special and must not be used for some 
-> purposes without leading to problems elsewhere?
-That's an excellent question, that I don't have the full answer to. We are
-dealing here with a hardware fault situation; the hugetlbfs backend file
-still has poisoned large page, so any attempt to map it in a process, or any
-process mapping it before the error will not be able to use the segment. It
-doesn't mean that they get their own private copy of a page. The only one
-getting a private copy (to get what was still valid on the faulted large 
-page)
-is qemu. So if we imagine that ivshmem segments (between 2 qemu processes)
-don't get this recovery, I'm expecting the data exchange on this shared 
-memory
-to fail, just like they do without the recovery mechanism. So I don't expect
-any established communication to continue to work or any new segment using
-the recovered area to successfully being created.
-
-But of course I could be missing something here and be too optimistic...
-
-So let take a step back.
-
-I guess these "sharing" questions would not relate to memory segments that
-are not defined as 'share=on', am I right ?
-
-Do ivshmem, vhost-user processes or even vfio only use 'share=on' memory 
-segments ?
-
-If yes, we could also imagine to only enable recovery for hugetlbfs segments
-that do not have 'share=on' attribute, but we would have to map them 
-MAP_SHARED
-in qemu address space anyway. This can maybe create other kinds of 
-problems (?),
-but if these inconsistency questions would not appear with this approach it
-would be easy to adapt, and still enhance hugetlbfs use. For a first version
-of this feature.
-
->>> It sounds very hacky and incomplete at first.
->>
->> As you can see, RAS features need to be completed.
->> And if this proposal is incomplete, what other changes should be
->> done to complete it ?
->>
->> I do hope we can discuss this RFC to adapt what is incorrect, or
->> find a better way to address this situation.
->
-> One long-term goal people are working on is to allow remapping the 
-> hugetlb folios in smaller granularity, such that only a single 
-> affected PTE can be marked as poisoned. (used to be called 
-> high-granularity-mapping)
-I look forward to seeing this implemented, but it seems that it will 
-take time
-to appear, and if hugetlbfs RAS can be enhanced for qemu it would be 
-very useful.
-
-The day a kernel solution works, we can disable CONFIG_HUGETLBFS_RAS and 
-rely on
-the kernel to provide the appropriate information. The first commits will
-continue to be necessary (dealing with si_addr_lsb value of the SIGBUS 
-signinfo,
-tracking the page size information in the hwpoison_page_list and the memory
-remap on reset with the missing PUNCH_HOLE).
-
-> However, at the same time, the focus hseems to shift towards using 
-> guest_memfd instead of hugetlb, once it supports 1 GiB pages and 
-> shared memory. It will likely be easier to support mapping 1 GiB pages 
-> using PTEs that way, and there are ongoing discussions how that can be 
-> achieved more easily.
->
-> There are also discussions [1] about not poisoning the mappings at all 
-> and handling it differently. But I haven't yet digested how exactly 
-> that could look like in reality.
->
->
-> [1] https://lkml.kernel.org/r/20240828234958.GE3773488@nvidia.com
-
-Thank you very much for this pointer. I hope a kernel solution (this one or
-another) can be implemented and widely adopted before the next 5 to 10 
-years ;)
-
-In the meantime, we can try to enhance qemu using hugetlbfs for VM memory
-which is more and more deployed.
-
-Best regards,
-William.
-
+-- 
+Best Regards
+Junjie Mao

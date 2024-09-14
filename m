@@ -1,98 +1,105 @@
-Received: by 2002:a17:504:2a14:b0:1be9:327d:8ee3 with SMTP id p20csp127742njl;
-        Fri, 13 Sep 2024 22:33:34 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCUYiT2kCqJZiNjn4QK3d0D2CSKHYNtkme+047W7L/YF6Oc3SHp4kEJPm97p3z/UPsyYUQ+mfirN2qkKAg==@linaro.org
-X-Google-Smtp-Source: AGHT+IErq7qQ8RnCZsZf+Hui309gD1X7jti59IvryPlgv0hXowAVBBkTgCRQEdwrbcKMN1eMz7S8
-X-Received: by 2002:a17:907:e29f:b0:a86:7b01:7dcc with SMTP id a640c23a62f3a-a9029435ad1mr790423566b.18.1726292014044;
-        Fri, 13 Sep 2024 22:33:34 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1726292014; cv=pass;
+Received: by 2002:a17:504:2a14:b0:1be9:327d:8ee3 with SMTP id p20csp128767njl;
+        Fri, 13 Sep 2024 22:38:59 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCWAZZJyeqOdp7xfLEsN9GlKt3a4Flrn6iMxWSTyHxRqoGg5hQFmVXVIT9dt/6nhdR8jMrEJG85VUC+0VQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IEaQ13K8EP4MFnA5O3a3u+C5qufAsE+mEeAcKtlV9a9Jm5TEjJKHYSB2bWtHWVQq//IbCWF
+X-Received: by 2002:a05:620a:14c:b0:7a1:e4bf:276 with SMTP id af79cd13be357-7a9e5efa46bmr963062085a.20.1726292338784;
+        Fri, 13 Sep 2024 22:38:58 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1726292338; cv=pass;
         d=google.com; s=arc-20240605;
-        b=QCRmLGzeA1kQkr2SVbIyvuY85TmHafgjGk9xxlnT1IpW50uuMcS+U2I4ipm0Cyv1TY
-         qCmK9/RlHbNF38HtSKZ7z7BEyjfzNQXn+qro690eRCQb+3hjXSuCDdr9UIIqChVYKSyv
-         TxNJ5a1sxmfyqst2tYiLu0Hl+5MbFNBAeSkqpuRLgpTdvvc1lejAb/7IsS+u/lQFmpFI
-         87dDmecDlbsr5NFDX2VaE34K7inAesW+PUkVJm4l7LMHO0DWYhYZUD9tCjUd2xe05AC8
-         JTlEoNS21BKQgqH1tn5cFvKGv1OkHYdCDEcrrO8yZbeoDq+qkT3pFRlDX1SxDsxdAT8A
-         MAhA==
+        b=LcboIZ0j/e+QkgS05vUGkHtbc/Y2YNPV6B8fNI0Y8wo3Y+ccaw5X6b0qJ5pSTErq8c
+         559/5Skvd4rdBxJsamqpIMmIPQhwdm8sNP+oHz6H2JLbIeQ3XrcyuFdohrCoptC0Pm6x
+         i9n2Yy5AE1KxUj20b1wDsDFIKjVudAPNYYadewsPbDfhS1e3G/m4CF2PXbjdmjxIny7H
+         /YIpXO1FHPjR7udNLBgf1YzBfqvRc9IPESEtO1OG7uVp2yAIYB6IZ4WDRElJrKDkfLBF
+         EXBWzqJ9Jxhj1ldkDoQari1t3qVBCjx2Y+Ka89aoR6sfYQSWzHzSRgNK0cFCq5AG2u+6
+         HMpQ==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:list-unsubscribe
          :list-subscribe:list-id:precedence:references:in-reply-to:message-id
          :subject:cc:to:from:date:dkim-signature;
-        bh=z8wZmsbnfn5bAtMOGoc2H7IJYjuZLtXI9EmFNqVGwQA=;
-        fh=F0R8Ux/Een7ncO8+eMTplVzZSrRgpyxdTV3H6aoeTPo=;
-        b=C07iUwskwpJeeNWAZNjap2YUkESgHxruRpqGlJSsx29ioGj+c+P1lLq9Mq+HdRNGFC
-         HVX7IHTAwlF/6y8xV9zjCpJqAyS118VG5F40SCwpZ5HYyGqFJQy1lOxabScQpSuB9XIW
-         gXH1AKP+nbYfubDchKK9AUMfUuXMoYNqSYeS9kltpGX+UEf/QoU3BKeoH0PSD0a+zK6x
-         TOwUFZcv+F5FrO2z+3CQWIFPQW8YgFlFnm3BmcIolB4kkKo008n3BFSZcW82bANHmRWC
-         P4eWdine1oZLC5ijk/ihNnlVE5ceWXx0XoIKJIppaKYYqOQgEiCEn0TPOG3Ixt895Sbg
-         Zyzw==;
+        bh=L+nz9HJ0CxcZB5ArZizghat7kK5gjE2VYF78D4dm01g=;
+        fh=33lchV9jbo6F1fNnffP4idbdCIaYCrmc6nnq6V4oNZ0=;
+        b=GEIEYWSRTWqU6iWT1WZta+IPH0fG7XWVQEoo5GBbsqwdqSb7jmF/vuw/cf7YeOMMJE
+         lB3rjNYkhWWGQcRlvtK/Ly9kbvNRb9RmgHVfXb7RwS4k+meo6l+Juch5X+R0wA4ty6kh
+         NL8gD3nCvx/E3V7Yc/TRiPYzvwoiiu14WOzXCBWSJ2b77Aj9KXRbwbyStu6rPezxHPPR
+         Yn6Ko1Xspbn/um2KL5aT6d5kTrJeHCZnt1pbjmROQ14cLBbQXUigZPueQMQ1WB7qRh90
+         n7tl+4RaApFr1WlqUkJ9/RdaonPWfFDGG1tF3eUk9TvBMjOgrVHjY2T/6MFkwq+6DLKc
+         mRJg==;
         dara=google.com
 ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=su4Y9vGE;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=XpO1WWzY;
        arc=pass (i=1 dkim=pass dkdomain=kernel.org);
-       spf=pass (google.com: domain of linux-kernel+bounces-329144-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="linux-kernel+bounces-329144-alex.bennee=linaro.org@vger.kernel.org";
+       spf=pass (google.com: domain of linux-kernel+bounces-329145-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-329145-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
-Return-Path: <linux-kernel+bounces-329144-alex.bennee=linaro.org@vger.kernel.org>
-Received: from am.mirrors.kernel.org (am.mirrors.kernel.org. [147.75.80.249])
-        by mx.google.com with ESMTPS id a640c23a62f3a-a90610f67b0si50238566b.265.2024.09.13.22.33.33
+Return-Path: <linux-kernel+bounces-329145-alex.bennee=linaro.org@vger.kernel.org>
+Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [2604:1380:45d1:ec00::1])
+        by mx.google.com with ESMTPS id af79cd13be357-7ab3e9aba60si87005685a.169.2024.09.13.22.38.58
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 13 Sep 2024 22:33:34 -0700 (PDT)
-Received-SPF: pass (google.com: domain of linux-kernel+bounces-329144-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) client-ip=147.75.80.249;
+        Fri, 13 Sep 2024 22:38:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of linux-kernel+bounces-329145-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) client-ip=2604:1380:45d1:ec00::1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=su4Y9vGE;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=XpO1WWzY;
        arc=pass (i=1 dkim=pass dkdomain=kernel.org);
-       spf=pass (google.com: domain of linux-kernel+bounces-329144-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="linux-kernel+bounces-329144-alex.bennee=linaro.org@vger.kernel.org";
+       spf=pass (google.com: domain of linux-kernel+bounces-329145-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-329145-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
 Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by am.mirrors.kernel.org (Postfix) with ESMTPS id 763EC1F254CB
-	for <alex.bennee@linaro.org>; Sat, 14 Sep 2024 05:33:33 +0000 (UTC)
+	by ny.mirrors.kernel.org (Postfix) with ESMTPS id 7D1201C2200D
+	for <alex.bennee@linaro.org>; Sat, 14 Sep 2024 05:38:58 +0000 (UTC)
 Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 666E3282F0;
-	Sat, 14 Sep 2024 05:33:20 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 998431CABF;
+	Sat, 14 Sep 2024 05:38:54 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="su4Y9vGE"
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="XpO1WWzY"
 Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 19BB517996
-	for <linux-kernel@vger.kernel.org>; Sat, 14 Sep 2024 05:33:19 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5953D1758E
+	for <linux-kernel@vger.kernel.org>; Sat, 14 Sep 2024 05:38:53 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=10.30.226.201
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1726292000; cv=none; b=qgqM+Qs6kLSlQvP5wg4VoTr4f5izUw5ZysJNxXaXoQMc+8iLGoqqMV4UFS8xRSBtnBylHjm6WFNpsFN+p8tPiMh603DJmyslIwYyvHiuWlVCmM6q3ThD5Vn+kyw27XCYKfzZtzQjPp1J52H1iWz7rm/ZbFMSisg//x92D2Tryeo=
+	t=1726292334; cv=none; b=MJyOIeePhstE5bCMl0ubGseJs2v14IJLrM3tx90gddeZ6Vc74ToJUxbV8R03ujHiz3xMLTYQD9M+uKWR7d0DAuSWv4j5C3prPDL1Z+XGtOhi/eIF0bVb96aDYCP8iYP2UyRQNmJ6kJHia/mBzgzK+TdxQG5jWuaZStPcbNow/UA=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1726292000; c=relaxed/simple;
-	bh=CFNEyhLfApEzvLmDlCEmRoURoMpdLlzz/GQmI4jYQJ4=;
+	s=arc-20240116; t=1726292334; c=relaxed/simple;
+	bh=UlVn8fWFgP8yf3muvfLEqiwH/WZRlUZiVMyShTuifUY=;
 	h=Date:From:To:Cc:Subject:Message-ID:In-Reply-To:References:
-	 MIME-Version:Content-Type; b=gsO+FfjOO1xfL08ofZjl7wAphYaxlq3G2Tmrga8A2rUkhg3xE2bjzo7R0ZZV5J+hrs25BMJICZSNUtpdn42B3sPYFnDex9Rx2gJeIeC0a+/WzOZvUf1rDSSAT7l53G/NUO8ofKXWHb1MxzblDlEdfdwJKCqVDDdSLrEVKjbeYz8=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=su4Y9vGE; arc=none smtp.client-ip=10.30.226.201
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 11442C4CEC0;
-	Sat, 14 Sep 2024 05:33:17 +0000 (UTC)
+	 MIME-Version:Content-Type; b=anJ3jJXVimoeCylhknOrP/zGZpKZ+w52Tmd82DGYOKAnu3lzwJzvlaRKnbOZIbMjkkSFmpRUg6bNLhT4ReJzQ3yGE3MsUcWeqiJZzHZAt/yssT1QkmW0uOPiaEbWnLbdEsb9e4g0g7vw6nyyM4IRPzv9mjb2cv18y+QetwDKS7U=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=XpO1WWzY; arc=none smtp.client-ip=10.30.226.201
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D7547C4CEC0;
+	Sat, 14 Sep 2024 05:38:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1726291999;
-	bh=CFNEyhLfApEzvLmDlCEmRoURoMpdLlzz/GQmI4jYQJ4=;
+	s=k20201202; t=1726292333;
+	bh=UlVn8fWFgP8yf3muvfLEqiwH/WZRlUZiVMyShTuifUY=;
 	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=su4Y9vGECKrjyou0Wd1VKAgfOszfxjwbUg0Ew4CJBknX32D4YJGc34oWgjoaEAERO
-	 Snd2A4dVbUraP7++Q9xJTEfAd456zkmSLzKPVdSBAHYaZ80p3sEi+QeBi+BeHJogt8
-	 JWz4kxlOjJ7YnJWK2xCpdFj1Lkj0T+9KnSHWqM6fbVWMEnncyYneQ+SmeymSOuNM9Z
-	 x9Wt8dCPvj1BlfBkyriDAmfoQyQodHup/M8GPXt9HKGCeD0tYpUiWLMFLU4AApdFgn
-	 uLnDxYPpcvp442kBN0brpOixGhmiGsMs0VaPw/Df9viaciPGbcqYujGLrG+YsIo3yv
-	 pUia0dlvTPY2A==
-Date: Sat, 14 Sep 2024 07:33:14 +0200
+	b=XpO1WWzYHYTwRtLfZGl4iOOc7d+02PCfjEXlKJgaPkkWLX5jvtsyvdEICyVPR88fz
+	 1CLcPeREenOMSbsiVjC1eCVSNLpfRMm6OuAh7FVMzqV6IAj6TPakHA7AByFGg6mO2C
+	 C4eqLv5pOy4s+wcWUiFCgd38TC6kczItyDizuNPEOlAn3KJWn4NyOmyOvQLnFVXGc+
+	 5m2ERtBlScH1IwFeTDHnVF5Uhyoj7uZxI70kwpLOww07a411ZzUpKU8k3QwpVzcefB
+	 2c+eY7LsP/CG6jUGv9zMFt4DzlfCrZKxySKF9JwcKLvFYJbkHgBH2KtcJQ9tIq0isO
+	 Lo9HaYdhEumLg==
+Date: Sat, 14 Sep 2024 07:38:48 +0200
 From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 To: Igor Mammedov <imammedo@redhat.com>
-Cc: "Michael S. Tsirkin" <mst@redhat.com>, Ani Sinha <anisinha@redhat.com>,
- Dongjiu Geng <gengdongjiu1@gmail.com>, linux-kernel@vger.kernel.org,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [PATCH v9 01/12] acpi/ghes: add a firmware file with HEST
- address
-Message-ID: <20240914073314.46368ff6@foz.lan>
-In-Reply-To: <20240913152518.2f80ab1e@imammedo.users.ipa.redhat.com>
-References: <cover.1724556967.git.mchehab+huawei@kernel.org>
-	<34dd38395f29f57a19aef299bafdff9442830ed3.1724556967.git.mchehab+huawei@kernel.org>
-	<20240911155108.190f0fdf@imammedo.users.ipa.redhat.com>
-	<20240913074435.0eea2552@foz.lan>
-	<20240913152518.2f80ab1e@imammedo.users.ipa.redhat.com>
+Cc: Jonathan Cameron <Jonathan.Cameron@Huawei.com>, Shiju Jose
+ <shiju.jose@huawei.com>, "Michael S. Tsirkin" <mst@redhat.com>, Ani Sinha
+ <anisinha@redhat.com>, Dongjiu Geng <gengdongjiu1@gmail.com>,
+ <linux-kernel@vger.kernel.org>, <qemu-arm@nongnu.org>,
+ <qemu-devel@nongnu.org>
+Subject: Re: [PATCH v8 06/13] acpi/ghes: add support for generic error
+ injection via QAPI
+Message-ID: <20240914073848.7b8bd8f0@foz.lan>
+In-Reply-To: <20240913142802.08571a15@imammedo.users.ipa.redhat.com>
+References: <cover.1723793768.git.mchehab+huawei@kernel.org>
+	<2c8970b5d54d17b601dc65d778cc8b5fb288984b.1723793768.git.mchehab+huawei@kernel.org>
+	<20240819145136.0452ff2b@imammedo.users.ipa.redhat.com>
+	<20240825052923.715f88bc@sal.lan>
+	<20240911152132.65a7a219@imammedo.users.ipa.redhat.com>
+	<20240911163436.00004738@Huawei.com>
+	<20240912144233.675d6b63@imammedo.users.ipa.redhat.com>
+	<20240913072025.76a329b0@foz.lan>
+	<20240913111300.00007a3c@Huawei.com>
+	<20240913142802.08571a15@imammedo.users.ipa.redhat.com>
 X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
 Precedence: bulk
 X-Mailing-List: linux-kernel@vger.kernel.org
@@ -102,238 +109,38 @@ List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-X-TUID: QiU8oFbugV2D
+X-TUID: /A3kN9OdAnOM
 
-Hi Igor,
-
-Em Fri, 13 Sep 2024 15:25:18 +0200
+Em Fri, 13 Sep 2024 14:28:02 +0200
 Igor Mammedov <imammedo@redhat.com> escreveu:
 
-> > > in addition to this, it needs a patch on top to make sure
-> > > that we migrate hest_addr_le.
-> > > See a08a64627b6b 'ACPI: Record the Generic Error Status Block address'
-> > > and fixes on top of that for an example.    
+> > > 5. Just return an error code without doing any resets. To me, this is 
+> > >    the worse scenario.
+> > > 
+> > > I don't like (5), as if something bad happens, there's nothing to be
+> > > done.    
 > > 
-> > Hmm... If I understood such change well, vmstate_ghes_state() will
-> > use this structure as basis to do migration:
+> > If it happens on a real system nothing is done either. So I'm not sure
+> > we need to handle that.  Or maybe real hardware reinjects the interrupt
+> > if the OSPM hasn't done anything about it for a while.
+> >   
+> > > 
+> > > For QMP error injection (4) seems is overkill. It may be needed in the
+> > > future if we end implementing a logic where host OS informs guest about
+> > > hardware problems, and such errors use asynchronous notifications.
+> > > 
+> > > I would also avoid implementing (3) at least for now, as reporting
+> > > such error via QMP seems enough for the QMP usecase.
+> > > 
+> > > So, if ok for you, I'll change the code to (2).    
 > > 
-> > 	/* ghes.h */
-> > 	typedef struct AcpiGhesState {
-> > 	    uint64_t hest_addr_le;
-> > 	    uint64_t ghes_addr_le;
-> > 	    bool present; /* True if GHES is present at all on this board */
-> > 	} AcpiGhesState;
-> > 
-> > 	/* generic_event_device.c */
-> > 	static const VMStateDescription vmstate_ghes_state = {
-> > 	    .name = "acpi-ged/ghes",
-> > 	    .version_id = 1,
-> > 	    .minimum_version_id = 1,
-> > 	    .needed = ghes_needed,
-> > 	    .fields      = (VMStateField[]) {
-> > 	        VMSTATE_STRUCT(ghes_state, AcpiGedState, 1,
-> > 	                       vmstate_ghes_state, AcpiGhesState),
-> > 	        VMSTATE_END_OF_LIST()
-> > 	    }
-> > 	};  
+> > Whilst I don't feel strongly about it, I think 5 is unfortunately the
+> > correct option if we aren't going to queue errors in qemu (so make it
+> > an injection tool problem).  
 > 
-> current code looks like that:
->                                                                                  
-> static const VMStateDescription vmstate_ghes = {                                 
->     .name = "acpi-ghes",                                                         
->     .version_id = 1,                                                             
->     .minimum_version_id = 1,                                                     
->     .fields = (const VMStateField[]) {                                           
->         VMSTATE_UINT64(ghes_addr_le, AcpiGhesState),   <<===                         
->         VMSTATE_END_OF_LIST()                                                    
->     },                                                                           
-> };                                                                               
->                                                                                  
-> static bool ghes_needed(void *opaque)                                            
-> {                                                                                
->     AcpiGedState *s = opaque;                                                    
->     return s->ghes_state.ghes_addr_le;                                           
-> }                                                                                
->                                                                                  
-> static const VMStateDescription vmstate_ghes_state = {                           
->     .name = "acpi-ged/ghes",                                                     
->     .version_id = 1,                                                             
->     .minimum_version_id = 1,                                                     
->     .needed = ghes_needed,                                                       
->     .fields = (const VMStateField[]) {                                           
->         VMSTATE_STRUCT(ghes_state, AcpiGedState, 1,                              
->                        vmstate_ghes, AcpiGhesState),                             
->         VMSTATE_END_OF_LIST()                                                    
->     }                                                                            
-> };  
-> 
-> where 
->     VMSTATE_UINT64(ghes_addr_le, AcpiGhesState),
-> explicitly defines field(s) within structure to be sent over wire.
-> 
-> we need to add a conditional field for ghes_addr_le
-> which will be sent only with new machine types, but not with old ones
-> to avoid migration breakage.
-> 
-> I don't know much about migration, but maybe we can get away with
-> similar condition as in ghes_needed(), or enabling QMP error injection
-> based on machine type version.
-> 
-> Or maybe adding a CLI option to enable QMP error injection in which
-> case the explicit option would serve as a trigger enable QMP command and
-> to migrate hest_addr_le.
-> It might be even better this way, since machine wouldn't need to
-> carry extra error source that will be used only for testing
-> and practically never in production VMs (aka reduced attack surface).
-> 
-> You can easily test it locally:
->   new-qemu: with your patches
->   old-qemu: qemu-9.1
-> 
-> and then try to do forth & back migration for following cases:
->   1. (ping-pong case with OLD firmware/ACPI tables)
->      start old-qemu with 9.1 machine type ->
->        migrate to file ->
->        start new-qemu with 9.1 machine type -> restore from file ->
->        migrate to file ->
+> +1 to option (5)
 
-As I never used migration, I'm a little stuck with the command line
-parameters.
-
-I guess I got the one to do the migration at the monitor:
-
-	(qemu) migrate file://tmp/migrate
-
-But no idea how to start a machine using a saved state.
-
->        start old-qemu with 9.1 machine type ->restore from file ->
->        
->   2.  (ping-pong case with NEW firmware/ACPI tables)
->       do the same as #1 but starting with new-qemu binary
-> 
-> (from upstream pov #2 is optional, but not implementing it
-> is pain for downstream so it's better to have it if it's not
-> too much work)
-
-If I understood the migration documentation, every when new fields
-are added, we should increment .version_id. If new version is
-not backward-compatible, .minimum_version_id is also incremented.
-
-So, for a migration-compatible code with a 9.1 VM, the code needs to
-handle the case where hest_addr_le is not defined, e. g. use offsets
-relative to ghes_addr_le, just like the current version, e.g.:
-
-    uint64_t cper_addr, read_ack_start_addr;
-
-    AcpiGedState *acpi_ged_state =
-        ACPI_GED(object_resolve_path_type("", TYPE_ACPI_GED, NULL));
-    AcpiGhesState *ags = &acpi_ged_state->ghes_state;
-
-    if (!ags->hest_addr_le) {
-        // Backward-compatible migration code
-        uint64_t base = le64_to_cpu(ags->ghes_addr_le);
-
-        *read_ack_start_addr = base +
-            ACPI_GHES_ERROR_SOURCE_COUNT * sizeof(uint64_t) +
-            error_source_to_index[notify] * sizeof(uint64_t);
-
-        *cper_addr = base +
-            ACPI_GHES_ERROR_SOURCE_COUNT * sizeof(uint64_t) +
-            ACPI_GHES_ERROR_SOURCE_COUNT * sizeof(uint64_t) +
-            error_source_to_index[notify] * ACPI_GHES_MAX_RAW_DATA_LENGTH;
-   } else {
-        // Use the new logic from ags->hest_addr_le
-   }
-
-There are two problems with that:
-
-1. On your reviews, if I understood right, the code above is not
-   migration safe. So, while implementing it would be technically
-   correct, migration still won't work;
-
-2. With the new code, ACPI_GHES_ERROR_SOURCE_COUNT is not
-   defined anymore, as the size of the error source structure can
-   be different on different architectures, being 2 for new
-   VMs and 1 for old ones.
-
-   Basically the new code gets it right because it can see a
-   pointer to the HEST table, so it can get the number from there:
-
-	hest_addr = le64_to_cpu(ags->hest_addr_le);
-	cpu_physical_memory_read(hest_addr, &num_sources, sizeof(num_sources));
-
-   But, without hest_addr_le, getting num_sources is not possible.
-
-   An alternative would be to add a hacky code that works only for
-   arm machines (as new versions may support more archs).
-
-   Something like:
-	#define V1_ARM_ACPI_GHES_ERROR_SOURCE_COUNT 1
-	#define V2_ARM_ACPI_GHES_ERROR_SOURCE_COUNT 2
-
-   And have a hardcoded logic that would work before/after this
-   changeset but may break on newer versions, if the number of
-   source IDs change, if we add other HEST types, etc.
-
-   Now, assuming that such hack would work, it sounds too hacky to 
-   my taste.
-
-So, IMO it is a lot safer to not support migrations from v1 (only
-ghes_addr_le), using a patch like the enclosed one to ensure that.
-
-Btw, checking existing migration structs, it sounds that for almost all
-structures, .version_id is identical to .minimum_version_id, meaning that
-migration between different versions aren't supported on most cases.
+Ok, will do (5) then.
 
 Thanks,
 Mauro
-
----
-
-[PATCH] acpi/generic_event_device: Update GHES migration to cover hest addr
-
-The GHES migration logic at GED should now support HEST table
-location too.
-
-Increase migration version and change needed to check for both
-ghes_addr_le and hest_addr_le.
-
-Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-
-diff --git a/hw/acpi/generic_event_device.c b/hw/acpi/generic_event_device.c
-index b4c83a089a02..efae0ff62c7b 100644
---- a/hw/acpi/generic_event_device.c
-+++ b/hw/acpi/generic_event_device.c
-@@ -351,10 +351,11 @@ static const VMStateDescription vmstate_ged_state = {
- 
- static const VMStateDescription vmstate_ghes = {
-     .name = "acpi-ghes",
--    .version_id = 1,
--    .minimum_version_id = 1,
-+    .version_id = 2,
-+    .minimum_version_id = 2,
-     .fields = (const VMStateField[]) {
-         VMSTATE_UINT64(ghes_addr_le, AcpiGhesState),
-+        VMSTATE_UINT64(hest_addr_le, AcpiGhesState),
-         VMSTATE_END_OF_LIST()
-     },
- };
-@@ -362,13 +363,13 @@ static const VMStateDescription vmstate_ghes = {
- static bool ghes_needed(void *opaque)
- {
-     AcpiGedState *s = opaque;
--    return s->ghes_state.ghes_addr_le;
-+    return s->ghes_state.ghes_addr_le && s->ghes_state.hest_addr_le;
- }
- 
- static const VMStateDescription vmstate_ghes_state = {
-     .name = "acpi-ged/ghes",
--    .version_id = 1,
--    .minimum_version_id = 1,
-+    .version_id = 2,
-+    .minimum_version_id = 2,
-     .needed = ghes_needed,
-     .fields = (const VMStateField[]) {
-         VMSTATE_STRUCT(ghes_state, AcpiGedState, 1,
-
-

@@ -1,313 +1,456 @@
-Received: by 2002:a05:7022:4195:b0:8a:132c:44a7 with SMTP id i21csp213466dli;
-        Fri, 13 Sep 2024 23:14:07 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCXEEZFsG1lNG9Bx6xBKetybUI4FCyuqh/xuhYlI6MchdXkTtzbxRsDM9SHPf5hLS5vX6AVCHIuG7p8vRQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IFN6k6aAzvw3S7aCDgHSCyLwwB1y4r34nzItt87pQX4ipIkDX/yHG74DOSc8VChYBOLlZ2c
-X-Received: by 2002:a17:90a:560c:b0:2d1:c9c8:301c with SMTP id 98e67ed59e1d1-2dba00659d2mr10468929a91.29.1726294447058;
-        Fri, 13 Sep 2024 23:14:07 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1726294447; cv=pass;
+Received: by 2002:a17:504:2a14:b0:1be9:327d:8ee3 with SMTP id p20csp159070njl;
+        Sat, 14 Sep 2024 01:03:56 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCV02gbzou/qQTQl8U3npo3PIzx/QupCGUsCfiTXXvgTEdI2Te4w58iLlUQBrTDQKR4GmySCwUu9sWqrog==@linaro.org
+X-Google-Smtp-Source: AGHT+IEYCE42pLhQuHnR3Y4MT1BJgtKnQ0t2+zWU4uYnC4TxrNgwDT8EtTUe7wygOGmFbt9uAeme
+X-Received: by 2002:a05:6214:468a:b0:6c3:5db2:d999 with SMTP id 6a1803df08f44-6c573556d57mr125337876d6.9.1726301036077;
+        Sat, 14 Sep 2024 01:03:56 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1726301036; cv=pass;
         d=google.com; s=arc-20240605;
-        b=fVRGrZVSab68//3ZbzMYaIMjj7Heof52hr1LB1nnUob5n7NYVb4BMtGWojv/F9DyGp
-         /pTr3jjuEL5gDgOWze8gXQ/uZwbT8dLLOHRKk6PvxjEkVjhMqSkltPqkAIefWinoDBZk
-         OdTBZnizirWJjqy+Cch9/EUHKe5MFz7QFmWpX2jOcz0mEAh4X0r6/UuSKglgda/swEUK
-         rzCMKImJkXsvQjXjWDaiV2IV9BuJkOyHq8hrK/DpWVL5VTmvuSmPkYrML/OJk+YfdmzS
-         AmUUSnmgGIVgWgEHoBIfXYwIGtP4WBreB98SZGwRNgyB6GylTWG9gcQJR8sSfNQWAyFN
-         e5kA==
+        b=hBJwBryltQiWY1wfJA3ggtGE7gZY13RlepNLTa9fwxR6YIGOsw5Z6Cxw8Wxk7PuKmY
+         TvG6KOz+CiZ/LX3N4O1/Li7qXuVrz8Fs+EayWSJENWQiaPj7EG/fb6XbKXyg/AAwbeOo
+         bkq89v0lQeyCwRE/wUnPTqkpgTHWFZs++gDwXxMuu6ZAT3CeK/83x9Tt1pXFX2NK4mpq
+         r+DGbgriPnT3NYClJFaPQdLGtyBIC7pVzl9tsopQMSqqGJbeW/+6VoPDtYBiRLgll8ic
+         TfDcAJ8NG2TwNdKE1squs6AaLVVF3+Z/LeXOnfun/AbNtvFcTGHo4TagZH3anM3rxi2t
+         nGXQ==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:content-transfer-encoding:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=Wj1w+dQeuQdT7Id8V3Oidshjf7Tf2ic7UZB7zJKT6v4=;
-        fh=i3ndtwgAt7d40Shct6y5IDfA4njX4JPzRyu5vW2UZis=;
-        b=IolkkddA1LgBCsdgOS6O8phfBowv1Asd+HaSKXKNxGisXyMEPUfzI5Gi1KLQpgNXlY
-         B13mxfH7PmMiK8FSv8Pfz0ZsMEBHs7EFiz5ZXCv2bwW3bJFW1yeCRAcuZwBDECC9kB8w
-         CwJpDIJKPLH5Jx4ImJVdj+/oonDhDU3+vAlBnToKqEgbPabZYm7QApPXEcWo0sNr43aa
-         79pRkv2MIXdQLuUOGCYbfOUDfjxipZ417XHUv2Gxv0o0Q6e7y54bAuqhCDe5pgFb+Cpl
-         fkD95MUzYFWF/HwHBuH8dApgrduTGPkKSHDzpxVE/USqOf08ZWGtIGNxQ0SGv5LMrySh
-         VW1g==;
+        h=mime-version:content-transfer-encoding:user-agent:message-id
+         :in-reply-to:date:references:subject:cc:to:from:dkim-signature;
+        bh=RM26O8kcI2NswNvkKVK0yYbdzztlH8oRPM064kH2Lb0=;
+        fh=B6sqipkaAQ+OF2UgK3kcInK4GieGzJrLphHSdvBer70=;
+        b=CceRfOJfKEfGD38thI+7IUJJkGPObCN+Mw0X11HK9F4hJvPJf30f6Rss6DByYYwqDx
+         X3PmcC2FAkBTZpWRTPgz8lGCOoXrB/rzN1npXUu+L95TXLu+Da8PL4bIA/Z3Qix9Z6/o
+         2NKwW3k3ZGFmfz/H/WEWuNuAofU2U5BMwcQpF4jGMmzPQ6fpnyytpR/KJ44k38K2dIoG
+         ly/titl7lGCvDYwI6x9Q/Dou7O8WMuQeG2K1yjaf1/iKxg6K/F+S0CcE288AeFWzYEJ6
+         3XcThdkMwtoC0GsIHyjePbURg17HRXj2h8I+MyzVsXIUyS/7Ug6JihqEGkr4jlQytXP7
+         O0xg==;
         dara=google.com
 ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=oJ8JUqm2;
-       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
-       spf=pass (google.com: domain of kvm+bounces-26893-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) smtp.mailfrom="kvm+bounces-26893-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
-Return-Path: <kvm+bounces-26893-alex.bennee=linaro.org@vger.kernel.org>
-Received: from sy.mirrors.kernel.org (sy.mirrors.kernel.org. [147.75.48.161])
-        by mx.google.com with ESMTPS id d9443c01a7336-20794772690si10414225ad.574.2024.09.13.23.14.06
-        for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 13 Sep 2024 23:14:07 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm+bounces-26893-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) client-ip=147.75.48.161;
+       dkim=pass header.i=@hotmail.com header.s=selector1 header.b=OJbBLKYW;
+       arc=pass (i=1);
+       spf=pass (google.com: domain of junjie.mao@hotmail.com designates 2a01:111:f403:2819::822 as permitted sender) smtp.mailfrom=junjie.mao@hotmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=hotmail.com
+Return-Path: <junjie.mao@hotmail.com>
+Received: from AUS01-SY4-obe.outbound.protection.outlook.com (mail-sy4aus01olkn20822.outbound.protection.outlook.com. [2a01:111:f403:2819::822])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6c58c7da5eesi10260336d6.420.2024.09.14.01.03.55
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 14 Sep 2024 01:03:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of junjie.mao@hotmail.com designates 2a01:111:f403:2819::822 as permitted sender) client-ip=2a01:111:f403:2819::822;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=oJ8JUqm2;
-       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
-       spf=pass (google.com: domain of kvm+bounces-26893-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) smtp.mailfrom="kvm+bounces-26893-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
-Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by sy.mirrors.kernel.org (Postfix) with ESMTPS id CE0C1B242EC
-	for <alex.bennee@linaro.org>; Sat, 14 Sep 2024 06:14:04 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id D8D3C78C89;
-	Sat, 14 Sep 2024 06:13:54 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="oJ8JUqm2"
-Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 924AA4EB5E;
-	Sat, 14 Sep 2024 06:13:54 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=10.30.226.201
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1726294434; cv=none; b=CVyz+kdQ2gv86hY1hl5n8BVvk4Plg0NNvrxLQKN8Wa8ZjYZ9TS76JqjFylzs0uUckrMPefuO21seBMYaQkAwgqdWGUyzx4isV+yXSUKxrbyDD7VoQrbtodXX7ZSMWNXF/GXHged+vSLfRknKQy4CLyZPqazDKDAqKJ0TnPn8uhM=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1726294434; c=relaxed/simple;
-	bh=ho1GkjqYgfLb6Wn3WjhFkRZ3Tu0BWcXl5dAnnC3KX5E=;
-	h=From:To:Cc:Subject:Date:Message-ID:MIME-Version; b=SPllJdSwpOqMigM5IhIfR/Cz1yb6DwpccfdlPYwdY1vX6QD0N5rdn/P2b7FbHNI8pojlKYHd8OnYNFSedqYTxQhp76Q2//mMOWX4oX5QzTgSLennDl2rKuY/0SbUK6nMphyZvrOv7FDE7tlXhEgbXQkrUauqQNmEO3vdZBhoC/A=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=oJ8JUqm2; arc=none smtp.client-ip=10.30.226.201
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id ED497C4CECE;
-	Sat, 14 Sep 2024 06:13:53 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1726294434;
-	bh=ho1GkjqYgfLb6Wn3WjhFkRZ3Tu0BWcXl5dAnnC3KX5E=;
-	h=From:To:Cc:Subject:Date:From;
-	b=oJ8JUqm2e9/APSBpFes514sT+WBUSn8wATDRqYZtupcvGtQRPwxtjHJu7s4aHR09I
-	 Djj+oBPux7/qMkb6ZxoJFYfFjNyE2vDChiJoZhSk46PyTlPfM+qYMUCKylrlqEoEQJ
-	 U+6HYNGKwoy+qiGmu7JoX4iQgSstjvP+ihMWutgC0lpDrbR8pzvmk/QgeJrQcW2gMX
-	 AMQvmcSOL6PUzzqQ2wjmhikRyNXkWgEp+X+fWq/4n8/gyoedBXLqxezyg1jmMMcYnh
-	 nGZDPo6IEbwpeFXa1YssoXjtYUqqHCYTri0FVOoyc+trrUUSMi5SXJvp/QUazrOE73
-	 XXnfX6Iua9CcQ==
-Received: from mchehab by mail.kernel.org with local (Exim 4.98)
-	(envelope-from <mchehab+huawei@kernel.org>)
-	id 1spM2Z-00000003V5Q-3uzV;
-	Sat, 14 Sep 2024 08:13:51 +0200
-From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-To: Igor Mammedov <imammedo@redhat.com>
-Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>,
-	Shiju Jose <shiju.jose@huawei.com>,
-	Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	Ani Sinha <anisinha@redhat.com>,
-	Cleber Rosa <crosa@redhat.com>,
-	Dongjiu Geng <gengdongjiu1@gmail.com>,
-	Eric Blake <eblake@redhat.com>,
-	John Snow <jsnow@redhat.com>,
-	Markus Armbruster <armbru@redhat.com>,
-	Michael Roth <michael.roth@amd.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Shannon Zhao <shannon.zhaosl@gmail.com>,
-	kvm@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH v10 00/21] Add ACPI CPER firmware first error injection on ARM emulation
-Date: Sat, 14 Sep 2024 08:13:21 +0200
-Message-ID: <cover.1726293808.git.mchehab+huawei@kernel.org>
-X-Mailer: git-send-email 2.46.0
-Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
+       dkim=pass header.i=@hotmail.com header.s=selector1 header.b=OJbBLKYW;
+       arc=pass (i=1);
+       spf=pass (google.com: domain of junjie.mao@hotmail.com designates 2a01:111:f403:2819::822 as permitted sender) smtp.mailfrom=junjie.mao@hotmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=hotmail.com
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=PpW7JlL8j25DnIhuiDLBNekC1q++xuZI7EAUMCLSmIiMt0mmumgCI3SFnr1gGgCa/CbBytVYf7TxUESY6HkmRlBuIdDIDsMod/u1l2mi28On0MD9CauKssZs88n8PtpL49Wm0n/c3sGFM5PgftnsQIjiq1KofG66V0fpqLzt7ebcRivJ5dhBG4VPzx2QnNONjuLhkWs24OM7GjsjB8xxX06pGasg/MvkkUSunmvxAaNm3rNEhkzWs327v46i59wGm9YpCSYnwjmmlyjzuTChV3ClAD0aGihEG+E1XnGfAC0rbCO/xppQIwib+bqqMujK2/6UUYcDX+p6IfxZU4GfTw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=RM26O8kcI2NswNvkKVK0yYbdzztlH8oRPM064kH2Lb0=;
+ b=Jk100LruFhwD89PQ1iXUNJOqgnLMpOpfeagXvLRQANe/fs+7zwLkQ0elHSNgWpgqqTzNilETgw+NZ1WyI0Y4GyYCdbbXf9d27FHBRal/FxswjnxpY9wyVydh7CXCYJrZ3DgB9x+vCSSesjJg9fy96FHzS0piE6wOxiRk6/PXJkXoOMPx/HKcyTmFv/P9z7jzmQME3ezZGnCnNdeJYL5W07bfFH9fOpXTs/JEJYCSs3HyblWaHxvrY4cpKL6RNLY8asfVDlhENTjFT4ZcgEChYZKZF/tyWTj+ujfzf53r1ZeFvUKRGCGIos04yxh12zNGEf20XgKxUAGBj6Dx1FAaSw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
+ dkim=none; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=hotmail.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=RM26O8kcI2NswNvkKVK0yYbdzztlH8oRPM064kH2Lb0=;
+ b=OJbBLKYWd6OJqaDryHsocHShRQD0xAyknO5xxi8lSfYuZrUURrQhQrJJqGxyAV3RENxrlFYCP6/53iNnxuw2u0FD1x72muRvt5tgrf2r1C4FTdP+tTJAI4hcIq+D7L39Nf3aoPpx+bJr1fa/BaL+yyZuZKLHHswJgyfd2jgGaLmXqBsXIf3S11DywmEzf5Uzh9g0VCZ6D3CtNtcc8wb9+H1d555vpS1XLRpe2wlezSdAXe5W/Fd2dMrd3OmKoayDkgaKgByKLsk5rBkzepdXZ+bEKjKHFXTUsN91n/WK1dFrEMLk2j6Ux7JOyLCM2IIvmsHa6JdlJbrRgJSD41KkYw==
+Received: from SY0P300MB1026.AUSP300.PROD.OUTLOOK.COM (2603:10c6:10:282::22)
+ by ME0P300MB0581.AUSP300.PROD.OUTLOOK.COM (2603:10c6:220:229::8) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7962.22; Sat, 14 Sep
+ 2024 08:03:48 +0000
+Received: from SY0P300MB1026.AUSP300.PROD.OUTLOOK.COM
+ ([fe80::aea3:2365:f9e8:5bd]) by SY0P300MB1026.AUSP300.PROD.OUTLOOK.COM
+ ([fe80::aea3:2365:f9e8:5bd%2]) with mapi id 15.20.7962.021; Sat, 14 Sep 2024
+ 08:03:48 +0000
+From: Junjie Mao <junjie.mao@hotmail.com>
+To: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+Cc: qemu-devel@nongnu.org,  Paolo Bonzini <pbonzini@redhat.com>,
+  =?utf-8?Q?Marc-Andr=C3=A9?=
+ Lureau <marcandre.lureau@redhat.com>,  Daniel P. =?utf-8?Q?Berrang=C3=A9?=
+ <berrange@redhat.com>,  Thomas Huth <thuth@redhat.com>,  Philippe
+ =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,  Pierrick Bouvier
+ <pierrick.bouvier@linaro.org>,  Richard Henderson
+ <richard.henderson@linaro.org>,  Gustavo Romero
+ <gustavo.romero@linaro.org>,  Alex =?utf-8?Q?Benn=C3=A9e?=
+ <alex.bennee@linaro.org>,  Peter
+ Maydell <peter.maydell@linaro.org>,  Junjie Mao <junjie.mao@intel.com>,
+  Zhao Liu <zhao1.liu@intel.com>,  John Snow <jsnow@redhat.com>,  Cleber
+ Rosa <crosa@redhat.com>,  Beraldo Leal <bleal@redhat.com>,  Wainer dos
+ Santos Moschetta <wainersm@redhat.com>,  qemu-arm@nongnu.org
+Subject: Re: [PATCH v10 9/9] rust: add PL011 device model
+References: <20240910-rust-pl011-v10-0-85a89ee33c40@linaro.org>
+	<20240910-rust-pl011-v10-9-85a89ee33c40@linaro.org>
+Date: Sat, 14 Sep 2024 16:03:40 +0800
+In-Reply-To: <20240910-rust-pl011-v10-9-85a89ee33c40@linaro.org> (Manos
+	Pitsidianakis's message of "Tue, 10 Sep 2024 15:35:15 +0300")
+Message-ID:
+ <SY0P300MB102661760C7F4AC73EDBB70F95662@SY0P300MB1026.AUSP300.PROD.OUTLOOK.COM>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.1 (gnu/linux)
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-ClientProxiedBy: SG2PR04CA0152.apcprd04.prod.outlook.com (2603:1096:4::14)
+ To SY0P300MB1026.AUSP300.PROD.OUTLOOK.COM (2603:10c6:10:282::22)
+Return-Path: junjie.mao@hotmail.com
+X-Microsoft-Original-Message-ID: <87tteiirvn.fsf@hotmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Sender: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-X-TUID: yOiPjBW/tkUj
+X-MS-Exchange-MessageSentRepresentingType: 1
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: SY0P300MB1026:EE_|ME0P300MB0581:EE_
+X-MS-Office365-Filtering-Correlation-Id: c899dec5-0b19-44d9-19b5-08dcd493c352
+X-Microsoft-Antispam:
+	BCL:0;ARA:14566002|19110799003|5072599009|8060799006|461199028|6090799003|15080799006|7092599003|3412199025|440099028;
+X-Microsoft-Antispam-Message-Info:
+	AfTQ4gSZA+CIBRnPbtfFjOiG0Q14dgqCkQY04tg3gqjQPS3tOo3V5UaZFkzCbfORRC3rbfmDVmtRC5xYFOBxDX37MdzvvFYDRftz33/cxhu9lVu9+pLFolbqsxVaCHHLT++ysKBnpMxPgc4SGRY0yXGUpGp3Gz+0Vx3ROL7mP/WU3J0ttYewRSj16MJuNUd6oMVd7IrvaQJ7pH3weYBqrrHeNArk+VuekZb3kDvs4UFRubF2m4mOckgYQKp3IWiG/DaF0aFMSgccwU47J7MeVhwjM8O3iQ+Ca+S0vnYV9ozGq2TUIvjsjLSQXWn17WOsqVTbKNCS+hnuskhFpt63Wnf5LtkPxY/+mtf0G+X8VIeYhKZVnhif84BD4OlnI3Txd8orjZSGDgZQgZO3MMOYT1QVLLdgxETJkdHVRL9818mr6Em8SsaFpfaZ44VDHzDHp0shdQkpET+OmczoU332ySO5lTQTUdPV/Wi+AbdjfR5SWaQ7NmBafR6ITRckYJCLzRAI1eVlaJJp9K3k3iS3ktUJtba9Lm1l17cWCXcS0OWpS78jA7ir8rWduhLQywrHXwBeruxgAJgBQ/d5u9osummzjysv6JIS2ggRj0L0asBT5LB/aFHaoxbLJjKfKSjjmEmlSluPEWgFGb5QWycIgEsxCoiDzh/D304ouBpfpciyUbrZLfB8TpRVVinStGvslxTb4vc4KNS84ZOjWgqA9N7Qdc2TUTXSMQNKpGLB4Vsjbp1XhTEwxOYzZDtCz2r870+XkqoASZrAZ80z3r/WMg==
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0:
+	=?utf-8?B?M3M1aTNQbmZDVzZFUlJWaHFXUUJ0ZkZNTExXOVRPbkJuWWx1eCtYU2lTQlBu?=
+ =?utf-8?B?UmYyM0owRnUvWUJaRXhoQVdsc0RyWmYvZTNQYlhLV3hiM3JSRG1CbzRoOFRI?=
+ =?utf-8?B?MklrcHdLVk0wRjZyeUx2eWQvNExEcXFoY2RNNkxuZ3MxM0lueGZCSk1GNG1h?=
+ =?utf-8?B?QUk0S2JHZUh2SDdpL0NwZVFNVDcxbm1iZGNzcUkwTUtBS2lPcStvbXdPdnB3?=
+ =?utf-8?B?QnIxQUVnU1A4OXZtYlZEdWJtMmNZMEJMcDJ2a2lqQzB5SzA0Ym94eFRpbC9J?=
+ =?utf-8?B?U3FZTmNwYjZoa0VUdWRyMzRjT2wyRithL2pFZzFtbHRITDRaUXMyUWlPSXNG?=
+ =?utf-8?B?NmxoNjhvTVVqUzhVa292WWt1YlQ2aDdESHR4SHZoTHIvZjY3bnYrWnlYZXNr?=
+ =?utf-8?B?YW5JTFk5dStxdGwvL0dwRWJURGwyelIrU0hlOHQ1NCtBcklZNGgyOWFZaXpU?=
+ =?utf-8?B?Q3RlSzg5eTNQcSt1TkJXbEtjU1VkUlZSZEMrUk1HNnk3aU9sNmh6T2h4YlNa?=
+ =?utf-8?B?bnFDT0dPaFQ4OHRSL08wWHRZY2t4NUlTRzgwNVpZVStNN3J1dlh3NXhDTW1r?=
+ =?utf-8?B?czRwRWM0bnVKdUpzc0Y0akZLc2N4L0xVcHhJb0d2R04vZ005bithcWk0SEZx?=
+ =?utf-8?B?Lzl0T2s3cmNtSk9HZDd1TWJxZkFLVkI2SStycVFxeC9ScTN2SWFRdkNqRkpB?=
+ =?utf-8?B?Vm1HcTMxOGxwOHVBc3FKSW9HOVZWQVV0QXJPYm1hNko4K2Z6cG8xUEtyMUNa?=
+ =?utf-8?B?eGtkSVhVLzB3SXkyTjFyVUJQVkNFcGd3T2xBdmhCQ1lTbVo1aldobkhLaEtp?=
+ =?utf-8?B?cTJFaXdqOTQzWWpJYTlIMzE0U1ZwYTdpWHRhODVlNUR5OVlnK0luS3JwTkZl?=
+ =?utf-8?B?bGhBbFlLSHZrY2RRcm1ZRkloY2c3MGZubTVEbUY3NEtCL0YzR3BkOHUwMGZF?=
+ =?utf-8?B?bzVqVWRzd0NrRGZPZ3B0cGJtakUwLzVWWmNFZWNqRHJQcEFEOGNqejN0ODZk?=
+ =?utf-8?B?clAwRVI5cVBXZ2d3RUMvRER2Mnk4WVdsY1lRd1hOSGQvRmdSSVQ4ZXMrYTcv?=
+ =?utf-8?B?aUhjRkpGU09ueHBnQTlSSFZQcHdnclc2MktHZ1huQjhMZ1dsYVA5amlFYjRj?=
+ =?utf-8?B?dEdnSGJ5MGJhS0NlclprbGcvWlo2Tjg1VGlQbndDenlsc1pFV0dqeFJGMklI?=
+ =?utf-8?B?bzJKdCtCazljWHhFZXd0M0tzYzBXUEJ2OWc3VWdzdDFoN1V2UnhVL20xeW9X?=
+ =?utf-8?B?a0NQTE9UZDk3OHQrR1V4RVI2RGdOcnV6Zm9TajZCMlc0andtL0ZRRVo0VnRR?=
+ =?utf-8?B?NmJXMG44dVlxV3JiT0RwbUd2R1RYRFdjNjJ5NmpsOStzTE4yZkdOWlREZzJN?=
+ =?utf-8?B?aldXTVJMSFk5dll2K0hjTWlkM2lUUlEvQi94ZUpTTlkxajZSckEzdE4yL2xN?=
+ =?utf-8?B?c3o4RGNWUnBSY0NkVzNXdjM1QWpUVFBnNy9iZ0RZRmkzZ1JqWDBBa0xkU1FD?=
+ =?utf-8?B?UVNFKzMyanRtVUNBQ0xqcXVBamdDZHRWUy9DWUhVWHZLMUo0NVQ2VVRzNEx0?=
+ =?utf-8?B?Sys0ejNXWjVaWFNFL0xVUEgyRncvZnFUZFU1SjgvbFFtUHFheEJhMVlnS21U?=
+ =?utf-8?Q?ARGG6SZn4IirHvKzae4eKott+Sv3vUINyjVL+j9IxoCo=3D?=
+X-OriginatorOrg: sct-15-20-7719-20-msonline-outlook-448bf.templateTenant
+X-MS-Exchange-CrossTenant-Network-Message-Id: c899dec5-0b19-44d9-19b5-08dcd493c352
+X-MS-Exchange-CrossTenant-AuthSource: SY0P300MB1026.AUSP300.PROD.OUTLOOK.COM
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 14 Sep 2024 08:03:48.4541
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
+X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg:
+	00000000-0000-0000-0000-000000000000
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: ME0P300MB0581
+X-TUID: 8nQjLrTI+nrA
 
-This series add support for injecting generic CPER records.  Such records
-are generated outside QEMU via a provided script.
+Manos Pitsidianakis <manos.pitsidianakis@linaro.org> writes:
 
-On this  version,  the patch reworking the way offsets are calculated were
-split on several other patches, to make one logical change per patch and
-make review easier.
+> This commit adds a re-implementation of hw/char/pl011.c in Rust.
+>
+> How to build:
+>
+> 1. Configure a QEMU build with:
+>    --enable-system --target-list=3Daarch64-softmmu --enable-rust
+> 2. Launching a VM with qemu-system-aarch64 should use the Rust version
+>    of the pl011 device
+>
+> Co-authored-by: Junjie Mao <junjie.mao@intel.com>
+> Co-authored-by: Paolo Bonzini <pbonzini@redhat.com>
+> Signed-off-by: Junjie Mao <junjie.mao@intel.com>
+> Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+> Signed-off-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+> ---
+[snip]
+> diff --git a/rust/hw/char/pl011/src/device.rs b/rust/hw/char/pl011/src/de=
+vice.rs
+> new file mode 100644
+> index 0000000000000000000000000000000000000000..6bd121b83ae831e838b05d83b=
+67c698474b00b4a
+> --- /dev/null
+> +++ b/rust/hw/char/pl011/src/device.rs
+> @@ -0,0 +1,600 @@
+> +// Copyright 2024, Linaro Limited
+> +// Author(s): Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+> +// SPDX-License-Identifier: GPL-2.0-or-later
+> +
+> +use core::{
+> +    ffi::{c_int, c_uchar, c_uint, c_void, CStr},
+> +    ptr::{addr_of, addr_of_mut, NonNull},
+> +};
+> +
+> +use qemu_api::{
+> +    bindings::{self, *},
+> +    definitions::ObjectImpl,
+> +};
+> +
+> +use crate::{
+> +    memory_ops::PL011_OPS,
+> +    registers::{self, Interrupt},
+> +    RegisterOffset,
+> +};
+> +
+> +static PL011_ID_ARM: [c_uchar; 8] =3D [0x11, 0x10, 0x14, 0x00, 0x0d, 0xf=
+0, 0x05, 0xb1];
+> +
+> +const DATA_BREAK: u32 =3D 1 << 10;
+> +
+> +/// QEMU sourced constant.
+> +pub const PL011_FIFO_DEPTH: usize =3D 16_usize;
+> +
+> +#[repr(C)]
+> +#[derive(Debug, qemu_api_macros::Object)]
+> +/// PL011 Device Model in QEMU
+> +pub struct PL011State {
+> +    pub parent_obj: SysBusDevice,
+> +    pub iomem: MemoryRegion,
+> +    #[doc(alias =3D "fr")]
+> +    pub flags: registers::Flags,
+> +    #[doc(alias =3D "lcr")]
+> +    pub line_control: registers::LineControl,
+> +    #[doc(alias =3D "rsr")]
+> +    pub receive_status_error_clear: registers::ReceiveStatusErrorClear,
+> +    #[doc(alias =3D "cr")]
+> +    pub control: registers::Control,
+> +    pub dmacr: u32,
+> +    pub int_enabled: u32,
+> +    pub int_level: u32,
+> +    pub read_fifo: [u32; PL011_FIFO_DEPTH],
+> +    pub ilpr: u32,
+> +    pub ibrd: u32,
+> +    pub fbrd: u32,
+> +    pub ifl: u32,
 
-Despite the number of patches increased from 12 to 21, there is just one
-real new patch (as the other ones are a split from a big change):
+Some of the fields can be private to the implementation of PL011State.
 
-  acpi/generic_event_device: Update GHES migration to cover hest addr
+> +    pub read_pos: usize,
+> +    pub read_count: usize,
+> +    pub read_trigger: usize,
+> +    #[doc(alias =3D "chr")]
+> +    pub char_backend: CharBackend,
+> +    /// QEMU interrupts
+> +    ///
+> +    /// ```text
+> +    ///  * sysbus MMIO region 0: device registers
+> +    ///  * sysbus IRQ 0: `UARTINTR` (combined interrupt line)
+> +    ///  * sysbus IRQ 1: `UARTRXINTR` (receive FIFO interrupt line)
+> +    ///  * sysbus IRQ 2: `UARTTXINTR` (transmit FIFO interrupt line)
+> +    ///  * sysbus IRQ 3: `UARTRTINTR` (receive timeout interrupt line)
+> +    ///  * sysbus IRQ 4: `UARTMSINTR` (momem status interrupt line)
+> +    ///  * sysbus IRQ 5: `UARTEINTR` (error interrupt line)
+> +    /// ```
+> +    #[doc(alias =3D "irq")]
+> +    pub interrupts: [qemu_irq; 6usize],
+> +    #[doc(alias =3D "clk")]
+> +    pub clock: NonNull<Clock>,
+> +    #[doc(alias =3D "migrate_clk")]
+> +    pub migrate_clock: bool,
+> +}
+> +
+> +impl ObjectImpl for PL011State {
+> +    type Class =3D PL011Class;
+> +    const TYPE_INFO: qemu_api::bindings::TypeInfo =3D qemu_api::type_inf=
+o! { Self };
+> +    const TYPE_NAME: &'static CStr =3D c"pl011";
 
----
+Can use crate::definitions::TYPE_PL011 to avoid duplication.
 
-v10:
-- Patch 1 split on several patches to make reviews easier;
-- Added a migration patch;
-- CPER QMP command was renamed;
-- Updated some comments to better reflect exact ACPI version;
-- Removed a code to reset acks when OSPM fails to read records;
-- Removed a duplicated config GHES_CPER symbol;
-- There is  now an arch-independent namespace for GHES source IDs;
-- Fixed the size of hest_ghes_notify array when creating tables;
-- acpi-hest.json is now a section of ACPI;
-- QMP command renamed from @ghes-cper to inject-ghes-error.
+> +    const PARENT_TYPE_NAME: Option<&'static CStr> =3D Some(TYPE_SYS_BUS_=
+DEVICE);
+> +    const ABSTRACT: bool =3D false;
+> +    const INSTANCE_INIT: Option<unsafe extern "C" fn(obj: *mut Object)> =
+=3D Some(pl011_init);
+> +    const INSTANCE_POST_INIT: Option<unsafe extern "C" fn(obj: *mut Obje=
+ct)> =3D None;
+> +    const INSTANCE_FINALIZE: Option<unsafe extern "C" fn(obj: *mut Objec=
+t)> =3D None;
+> +}
+> +
+[snip]
+> +
+> +/// # Safety
+> +///
+> +/// We expect the FFI user of this function to pass a valid pointer, tha=
+t has
+> +/// the same size as [`PL011State`]. We also expect the device is
+> +/// readable/writeable from one thread at any time.
+> +#[no_mangle]
+> +pub unsafe extern "C" fn pl011_can_receive(opaque: *mut c_void) -> c_int=
+ {
+> +    unsafe {
+> +        assert!(!opaque.is_null());
+> +        let state =3D NonNull::new_unchecked(opaque.cast::<PL011State>()=
+);
 
-v9:
-- Patches reorganized to make easier for reviewers;
-- source ID is now guest-OS specific;
-- Some patches got a revision history since v8;
-- Several minor cleanups.
+Those two lines can be combined as:
 
-v8:
-- Fix one of the BIOS links that were incorrect;
-- Changed mem error internal injection to use a common code;
-- No more hardcoded values for CPER: instead of using just the
-  payload at the QAPI, it now has the full raw CPER there;
-- Error injection script now supports changing fields at the
-  Generic Error Data section of the CPER;
-- Several minor cleanups.
+  let state =3D NonNull::new(opaque.cast::<PL011State>()).unwrap();
 
-v7:
-- Change the way offsets are calculated and used on HEST table.
-  Now, it is compatible with migrations as all offsets are relative
-  to the HEST table;
-- GHES interface is now more generic: the entire CPER is sent via
-  QMP, instead of just the payload;
-- Some code cleanups to make the code more robust;
-- The python script now uses QEMUMonitorProtocol class.
+Alternatively, use debug_assert! if the assertion is only meant to be
+active in debug builds.
 
-v6:
-- PNP0C33 device creation moved to aml-build.c;
-- acpi_ghes record functions now use ACPI notify parameter,
-  instead of source ID;
-- the number of source IDs is now automatically calculated;
-- some code cleanups and function/var renames;
-- some fixes and cleanups at the error injection script;
-- ghes cper stub now produces an error if cper JSON is not compiled;
-- Offset calculation logic for GHES was refactored;
-- Updated documentation to reflect the GHES allocated size;
-- Added a x-mpidr object for QOM usage;
-- Added a patch making usage of x-mpidr field at ARM injection
-  script;
+> +        state.as_ref().can_receive().into()
+> +    }
+> +}
+> +
+> +/// # Safety
+> +///
+> +/// We expect the FFI user of this function to pass a valid pointer, tha=
+t has
+> +/// the same size as [`PL011State`]. We also expect the device is
+> +/// readable/writeable from one thread at any time.
+> +///
+> +/// The buffer and size arguments must also be valid.
+> +#[no_mangle]
+> +pub unsafe extern "C" fn pl011_receive(
+> +    opaque: *mut core::ffi::c_void,
+> +    buf: *const u8,
+> +    size: core::ffi::c_int,
+> +) {
+> +    unsafe {
+> +        assert!(!opaque.is_null());
+> +        let mut state =3D NonNull::new_unchecked(opaque.cast::<PL011Stat=
+e>());
+> +        if state.as_ref().loopback_enabled() {
+> +            return;
+> +        }
+> +        if size > 0 {
+> +            assert!(!buf.is_null());
+> +            state.as_mut().put_fifo(c_uint::from(buf.read_volatile()))
+> +        }
+> +    }
+> +}
+> +
+> +/// # Safety
+> +///
+> +/// We expect the FFI user of this function to pass a valid pointer, tha=
+t has
+> +/// the same size as [`PL011State`]. We also expect the device is
+> +/// readable/writeable from one thread at any time.
+> +#[no_mangle]
+> +pub unsafe extern "C" fn pl011_event(opaque: *mut core::ffi::c_void, eve=
+nt: QEMUChrEvent) {
+> +    unsafe {
+> +        assert!(!opaque.is_null());
+> +        let mut state =3D NonNull::new_unchecked(opaque.cast::<PL011Stat=
+e>());
+> +        state.as_mut().event(event)
+> +    }
+> +}
+> +
+> +/// # Safety
+> +///
+> +/// We expect the FFI user of this function to pass a valid pointer for =
+`chr`.
+> +#[no_mangle]
+> +pub unsafe extern "C" fn pl011_create(
+> +    addr: u64,
+> +    irq: qemu_irq,
+> +    chr: *mut Chardev,
+> +) -> *mut DeviceState {
+> +    unsafe {
+> +        let dev: *mut DeviceState =3D qdev_new(PL011State::TYPE_INFO.nam=
+e);
+> +        assert!(!dev.is_null());
 
-v5:
-- CPER guid is now passing as string;
-- raw-data is now passed with base64 encode;
-- Removed several GPIO left-overs from arm/virt.c changes;
-- Lots of cleanups and improvements at the error injection script.
-  It now better handles QMP dialog and doesn't print debug messages.
-  Also, code was split on two modules, to make easier to add more
-  error injection commands.
+qdev_new() aborts on error. So the assert! above is unnecessary.
 
-v4:
-- CPER generation moved to happen outside QEMU;
-- One patch adding support for mpidr query was removed.
+> +        let sysbus: *mut SysBusDevice =3D dev as *mut SysBusDevice;
 
-v3:
-- patch 1 cleanups with some comment changes and adding another place where
-  the poweroff GPIO define should be used. No changes on other patches (except
-  due to conflict resolution).
+In C such casts are typically done using the object checker generated by
+the DECLARE_INSTANCE_CHECKER macro. With qom_cast_debug the checker is
+able to capture casts to wrong types.
 
-v2:
-- added a new patch using a define for GPIO power pin;
-- patch 2 changed to also use a define for generic error GPIO pin;
-- a couple cleanups at patch 2 removing uneeded else clauses.
+As a future work, similar mechanism should be available in Rust for such
+casts.
 
-Example of generating a CPER record:
+> +
+> +        qdev_prop_set_chr(dev, bindings::TYPE_CHARDEV.as_ptr(), chr);
+> +        sysbus_realize_and_unref(sysbus, addr_of!(error_fatal) as *mut *=
+mut Error);
+> +        sysbus_mmio_map(sysbus, 0, addr);
+> +        sysbus_connect_irq(sysbus, 0, irq);
+> +        dev
+> +    }
+> +}
+> +
+> +/// # Safety
+> +///
+> +/// We expect the FFI user of this function to pass a valid pointer, tha=
+t has
+> +/// the same size as [`PL011State`]. We also expect the device is
+> +/// readable/writeable from one thread at any time.
+> +#[no_mangle]
 
-$ scripts/ghes_inject.py -d arm -p 0xdeadbeef
-GUID: e19e3d16-bc11-11e4-9caa-c2051d5d46b0
-Generic Error Status Block (20 bytes):
-      00000000  01 00 00 00 00 00 00 00 00 00 00 00 90 00 00 00   ................
-      00000010  00 00 00 00                                       ....
+I don't think #[no_mangle] is needed for functions being exposed to C
+via function pointers. The annotated function has external linkage,
+while the common practice is to make such callbacks static.
 
-Generic Error Data Entry (72 bytes):
-      00000000  16 3d 9e e1 11 bc e4 11 9c aa c2 05 1d 5d 46 b0   .=...........]F.
-      00000010  00 00 00 00 00 03 00 00 48 00 00 00 00 00 00 00   ........H.......
-      00000020  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   ................
-      00000030  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   ................
-      00000040  00 00 00 00 00 00 00 00                           ........
+> +pub unsafe extern "C" fn pl011_init(obj: *mut Object) {
+> +    unsafe {
+> +        assert!(!obj.is_null());
+> +        let mut state =3D NonNull::new_unchecked(obj.cast::<PL011State>(=
+));
+> +        state.as_mut().init();
+> +    }
+> +}
+[snip]
+> diff --git a/rust/hw/char/pl011/src/lib.rs b/rust/hw/char/pl011/src/lib.r=
+s
+> new file mode 100644
+> index 0000000000000000000000000000000000000000..541109d4d8f87a70748820cec=
+ee24656802a6350
+> --- /dev/null
+> +++ b/rust/hw/char/pl011/src/lib.rs
+> @@ -0,0 +1,586 @@
+> +// Copyright 2024, Linaro Limited
+> +// Author(s): Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+> +// SPDX-License-Identifier: GPL-2.0-or-later
+> +//
+> +// PL011 QEMU Device Model
+> +//
+> +// This library implements a device model for the PrimeCell=C2=AE UART (=
+PL011)
+> +// device in QEMU.
+> +//
+> +#![doc =3D include_str!("../README.md")]
+> +//! # Library crate
+> +//!
+> +//! See [`PL011State`](crate::device::PL011State) for the device model t=
+ype and
+> +//! the [`registers`] module for register types.
+> +
+> +#![deny(
+> +    unsafe_op_in_unsafe_fn,
 
-Payload (72 bytes):
-      00000000  05 00 00 00 01 00 00 00 48 00 00 00 00 00 00 00   ........H.......
-      00000010  00 00 00 80 00 00 00 00 10 05 0f 00 00 00 00 00   ................
-      00000020  00 00 00 00 00 00 00 00 00 20 14 00 02 01 00 03   ......... ......
-      00000030  0f 00 91 00 00 00 00 00 ef be ad de 00 00 00 00   ................
-      00000040  ef be ad de 00 00 00 00                           ........
+Shall we make this builtin lint denied for all crates? That can be done
+by adding '-D unsafe_op_in_unsafe_fn' to rustc argument.
 
-Error injected.
+> +    rustdoc::broken_intra_doc_links,
+> +    rustdoc::redundant_explicit_links,
+> +    clippy::correctness,
+> +    clippy::suspicious,
+> +    clippy::complexity,
+> +    clippy::perf,
+> +    clippy::cargo,
+> +    clippy::nursery,
+> +    clippy::style,
+> +    // restriction group
+> +    clippy::dbg_macro,
+> +    clippy::as_underscore,
+> +    clippy::assertions_on_result_states,
+> +    // pedantic group
+> +    clippy::doc_markdown,
+> +    clippy::borrow_as_ptr,
+> +    clippy::cast_lossless,
+> +    clippy::option_if_let_else,
+> +    clippy::missing_const_for_fn,
+> +    clippy::cognitive_complexity,
+> +    clippy::missing_safety_doc,
+> +    )]
+> +
 
-[    9.358364] {1}[Hardware Error]: Hardware error from APEI Generic Hardware Error Source: 1
-[    9.359027] {1}[Hardware Error]: event severity: recoverable
-[    9.359586] {1}[Hardware Error]:  Error 0, type: recoverable
-[    9.360124] {1}[Hardware Error]:   section_type: ARM processor error
-[    9.360561] {1}[Hardware Error]:   MIDR: 0x00000000000f0510
-[    9.361160] {1}[Hardware Error]:   Multiprocessor Affinity Register (MPIDR): 0x0000000080000000
-[    9.361643] {1}[Hardware Error]:   running state: 0x0
-[    9.362142] {1}[Hardware Error]:   Power State Coordination Interface state: 0
-[    9.362682] {1}[Hardware Error]:   Error info structure 0:
-[    9.363030] {1}[Hardware Error]:   num errors: 2
-[    9.363656] {1}[Hardware Error]:    error_type: 0x02: cache error
-[    9.364163] {1}[Hardware Error]:    error_info: 0x000000000091000f
-[    9.364834] {1}[Hardware Error]:     transaction type: Data Access
-[    9.365599] {1}[Hardware Error]:     cache error, operation type: Data write
-[    9.366441] {1}[Hardware Error]:     cache level: 2
-[    9.367005] {1}[Hardware Error]:     processor context not corrupted
-[    9.367753] {1}[Hardware Error]:    physical fault address: 0x00000000deadbeef
-[    9.374267] Memory failure: 0xdeadb: recovery action for free buddy page: Recovered
-
-Such script currently supports arm processor error CPER, but can easily be
-extended to other GHES notification types.
-
-
-Mauro Carvalho Chehab (21):
-  acpi/ghes: add a firmware file with HEST address
-  acpi/generic_event_device: Update GHES migration to cover hest addr
-  acpi/ghes: get rid of ACPI_HEST_SRC_ID_RESERVED
-  acpi/ghes: simplify acpi_ghes_record_errors() code
-  acpi/ghes: better handle source_id and notification
-  acpi/ghes: Remove a duplicated out of bounds check
-  acpi/ghes: rework the logic to handle HEST source ID
-  acpi/ghes: Change the type for source_id
-  acpi/ghes: Don't hardcode the number of sources on ghes
-  acpi/ghes: make the GHES record generation more generic
-  acpi/ghes: don't crash QEMU if ghes GED is not found
-  acpi/ghes: rename etc/hardware_error file macros
-  acpi/ghes: better name GHES memory error function
-  acpi/ghes: add a notifier to notify when error data is ready
-  acpi/generic_event_device: add an APEI error device
-  arm/virt: Wire up a GED error device for ACPI / GHES
-  qapi/acpi-hest: add an interface to do generic CPER error injection
-  docs: acpi_hest_ghes: fix documentation for CPER size
-  scripts/ghes_inject: add a script to generate GHES error inject
-  target/arm: add an experimental mpidr arm cpu property object
-  scripts/arm_processor_error.py: retrieve mpidr if not filled
-
- MAINTAINERS                            |  10 +
- docs/specs/acpi_hest_ghes.rst          |   6 +-
- hw/acpi/Kconfig                        |   5 +
- hw/acpi/aml-build.c                    |  10 +
- hw/acpi/generic_event_device.c         |  19 +-
- hw/acpi/ghes-stub.c                    |   2 +-
- hw/acpi/ghes.c                         | 312 +++++++----
- hw/acpi/ghes_cper.c                    |  32 ++
- hw/acpi/ghes_cper_stub.c               |  19 +
- hw/acpi/meson.build                    |   2 +
- hw/arm/virt-acpi-build.c               |  12 +-
- hw/arm/virt.c                          |  19 +-
- include/hw/acpi/acpi_dev_interface.h   |   1 +
- include/hw/acpi/aml-build.h            |   2 +
- include/hw/acpi/generic_event_device.h |   1 +
- include/hw/acpi/ghes.h                 |  37 +-
- include/hw/arm/virt.h                  |   2 +
- qapi/acpi-hest.json                    |  35 ++
- qapi/meson.build                       |   1 +
- qapi/qapi-schema.json                  |   1 +
- scripts/arm_processor_error.py         | 388 ++++++++++++++
- scripts/ghes_inject.py                 |  51 ++
- scripts/qmp_helper.py                  | 702 +++++++++++++++++++++++++
- target/arm/cpu.c                       |   1 +
- target/arm/cpu.h                       |   1 +
- target/arm/helper.c                    |  10 +-
- target/arm/kvm.c                       |   3 +-
- 27 files changed, 1552 insertions(+), 132 deletions(-)
- create mode 100644 hw/acpi/ghes_cper.c
- create mode 100644 hw/acpi/ghes_cper_stub.c
- create mode 100644 qapi/acpi-hest.json
- create mode 100644 scripts/arm_processor_error.py
- create mode 100755 scripts/ghes_inject.py
- create mode 100644 scripts/qmp_helper.py
-
--- 
-2.46.0
-
-
+--
+Best Regards
+Junjie Mao

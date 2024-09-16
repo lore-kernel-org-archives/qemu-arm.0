@@ -1,93 +1,92 @@
-Received: by 2002:a17:504:2a14:b0:1be9:327d:8ee3 with SMTP id p20csp1257356njl;
-        Mon, 16 Sep 2024 11:59:38 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUjHYJO3RAIK3TJ5LUzNemUvnNpNfFTtabG+APjkH3FFe3qdrYFc5k0xoGxM1azXQ1ToFx/cNBZlXs5rg==@linaro.org
-X-Google-Smtp-Source: AGHT+IF8Chsl2bOproLwtYLwTwznDvHOtU9vCQk/VuoKuBmZdf30dmrxDXeHhseIuA7N8+NFa6Oo
-X-Received: by 2002:a05:620a:471f:b0:7a9:ab71:f820 with SMTP id af79cd13be357-7a9e5ee011dmr2494096885a.4.1726513178341;
-        Mon, 16 Sep 2024 11:59:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1726513178; cv=none;
+Received: by 2002:a17:504:2a14:b0:1be9:327d:8ee3 with SMTP id p20csp1257402njl;
+        Mon, 16 Sep 2024 11:59:43 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWreSNaupFh+pAJjiAiMj6fxUnB9BWZTMD8RA29hNRiEIVhug+Josb2ro/aO+mOuJrYxelTk5XobxMd3A==@linaro.org
+X-Google-Smtp-Source: AGHT+IGipaUQ9OZgyFnepA3j8KknjD8g5lVlN43hFglux3xChSdqhOBD0JPTyxshVy+6kQFWMuVl
+X-Received: by 2002:a05:6214:540f:b0:6c1:6a91:49b0 with SMTP id 6a1803df08f44-6c5736ebd39mr241495906d6.51.1726513183350;
+        Mon, 16 Sep 2024 11:59:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1726513183; cv=none;
         d=google.com; s=arc-20240605;
-        b=CLaqanWNRllCBvYaegbVdlQMugwatuaMeDgZjYrKmCLihLZlsfbkjQr/a4oUnXCllC
-         TykQJ2qGL7Y0c5/G2D2NL44Jmz+SPVDI8OX/dBAPgfWXE50FE9s6xh1bfUpa61Q8bSWe
-         /GGI+dtaWIFeQyIOI5e5/AZOgWE6NuvEzs9fFHw/bTnNRIT3LTA+tGpbaFVmUlYK0gkx
-         ifIQjHzJjBkuRklLCS0wJkYEKt5rkGpsNknn02QD9oKOi3cxEH3CjJcyyrueQMy4E++s
-         VIVw3a/fmdX3FNSHUgxE9ZvYxX7XJSBwUvg+pIRUABB6UMooQ6J9It4qjdrJYvZ0V43y
-         Z+Lw==
+        b=KdlR+vaA7Ys/VnmLBcSl4XtkwiSWEK/vlQgWCEsBS77kYQuFA+MaqXRbdjGEMxcHJf
+         YWYgJ3yh/S+sS15wKxsttu+sVCxmyeeaNzrDAFsEfAV6tMFuEyX1OYvbFPaJ3J0az4vh
+         zdKRDPZKeuW/wKBfbX/F6PRgyTaWFJWd9JUZffSOuzw8NKBqXfIutgsHLLYapWT806Fm
+         U/XydLiUxNe/JSMm+TTY2uDh+aoPVDjXpZc6DY2SxV2mXhzYwzaVCSpRo0TibwSdC25A
+         YDA/h6DWrHrHymaIhUZn/bACfMHi6NGAFoSnU9gju1lwQF1P6lMJRyn+V41t67nwU5C5
+         tLBA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=KCYSgz/03iLuCf1aK93b7CSgL5Sszq+h+JISch4KYZM=;
+        bh=cJn2I3+FfBTydQ+zXEc7DSErx28NuAP2icLho4kLLm4=;
         fh=i/PI/VfZf54YsTwJ9sJhiHcO+8PSmdTrt3qYCjPMyJY=;
-        b=SpYyZcxIXQL/EgtDW+O/2GoVPVLoaIxUAwhs/+7jSD8wlYeKaNVudQIEQzIuCDwT0G
-         1YkUZm5qWWBNnowGbRwoBGmoPVHcXu7iXHd/OtnE/0liulcoZIxM58GUmSQkJw0JmNui
-         mlKAud6/0X6Uej85g9Up36GIQQbUjyKfvMUnITbvEA/RdnHMmhNQPWT2V+SPnugnI9FM
-         N5wNKut6WGXXbyTm01CckmJfASqLEeVrhX+tfwrlIuaR3U/oXZSre/SY2CLujsqf3SJx
-         OccRc6ofNNhR4UvPw3krWdAS6uWsBmwHKV232Y7FRHkUhiujmC08s8pExdpNohGAJr3r
-         SOrA==;
+        b=N9zBTjHAzA2AU3E7GDBVAGXM+64PkNVgZNeD8GOGZIPmZjKTRsLJK/+vHLhXbEDddL
+         +VbO898omdLeZFLTOtPlw+IPOM8Ke1w73zlnYvRikMq5+W/3TXZQeEDuwt4lzbK9Jw0J
+         i3N0nxpLMIVOFew1PPkIIFPJhVKeCJzt63uhQXKuxeWBHlAFrFz+v7pACdu/UZhQ9hvU
+         zHigte7cePAKedbxdMmsprVqBX1TVSTQZXfdE+dypxuD6ivSdU2hmyBRgX+QyUo8FLnJ
+         rz0Qc2wZ+7QJCfC47kk+USshrRGSMZee3gggiaD9rkbTHQxsoJjPwjyuSnjXqZqcRYgV
+         v4/Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GWHwfZ1e;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GdXBfuEK;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7ab3eb79ba5si696420185a.550.2024.09.16.11.59.38
+        by mx.google.com with ESMTPS id 6a1803df08f44-6c58c632c06si63492916d6.157.2024.09.16.11.59.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 16 Sep 2024 11:59:38 -0700 (PDT)
+        Mon, 16 Sep 2024 11:59:43 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GWHwfZ1e;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GdXBfuEK;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sqGvi-0008RC-2h; Mon, 16 Sep 2024 14:58:34 -0400
+	id 1sqGwn-0003as-9p; Mon, 16 Sep 2024 14:59:41 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1sqGvg-0008LI-KK
- for qemu-arm@nongnu.org; Mon, 16 Sep 2024 14:58:32 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1sqGwJ-0001ck-Q9
+ for qemu-arm@nongnu.org; Mon, 16 Sep 2024 14:59:14 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1sqGve-0003Jz-UO
- for qemu-arm@nongnu.org; Mon, 16 Sep 2024 14:58:32 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1sqGwD-0003Mx-EY
+ for qemu-arm@nongnu.org; Mon, 16 Sep 2024 14:59:10 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1726513110;
+ s=mimecast20190719; t=1726513143;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=KCYSgz/03iLuCf1aK93b7CSgL5Sszq+h+JISch4KYZM=;
- b=GWHwfZ1eo/xL9rAt4lruP8iMONPYwOOMOjijePP86f4vg6eYShSegfTEYW59EHVx74vP5U
- ebwKQiZzdY2l+MAkYNuMeukGQXzIVhQtWvTQXysRov24VA31xI0H0RHjzbr69oN/sL577z
- rZPM2GuexXnbo+JpgR9JmGpmWaiVyKY=
+ bh=cJn2I3+FfBTydQ+zXEc7DSErx28NuAP2icLho4kLLm4=;
+ b=GdXBfuEKuR/RHN1+frrxsapo/1aNvi3a6DIaW1jt0iOWa6Q4T0sJZ6QoxwPAboi835OHC0
+ HBlzNDtuKwSgABZjJg4AiH0cZRFP9DMjEwyTBUFTkLDWF7dfU1p/OlgIMMwnte9+Xuo/S/
+ /xZOfATIza4Kj8utSHIqBJLlndUHlDA=
 Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-610-k2z8cKZoP46pP5Qn0Fp6TQ-1; Mon,
- 16 Sep 2024 14:57:22 -0400
-X-MC-Unique: k2z8cKZoP46pP5Qn0Fp6TQ-1
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-14-QRVwWPZkMe69AsqK5Myf6A-1; Mon,
+ 16 Sep 2024 14:57:38 -0400
+X-MC-Unique: QRVwWPZkMe69AsqK5Myf6A-1
 Received: from mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.40])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id AD8EA1956083; Mon, 16 Sep 2024 18:57:21 +0000 (UTC)
+ id AB95E195608A; Mon, 16 Sep 2024 18:57:37 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.39.192.44])
  by mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 25FC21955D44; Mon, 16 Sep 2024 18:57:19 +0000 (UTC)
+ id 2497C195605A; Mon, 16 Sep 2024 18:57:35 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 04/12] hw/i2c/aspeed: Support discontinuous poll buffer memory
- region of I2C bus
-Date: Mon, 16 Sep 2024 20:57:00 +0200
-Message-ID: <20240916185708.574546-5-clg@redhat.com>
+Subject: [PULL 11/12] aspeed: Add tmp105 in i2c bus 0 for AST2700
+Date: Mon, 16 Sep 2024 20:57:07 +0200
+Message-ID: <20240916185708.574546-12-clg@redhat.com>
 In-Reply-To: <20240916185708.574546-1-clg@redhat.com>
 References: <20240916185708.574546-1-clg@redhat.com>
 MIME-Version: 1.0
@@ -117,76 +116,50 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: JaJPxq97Fr5m
+X-TUID: oFQcHUKZyy/I
 
 From: Jamin Lin <jamin_lin@aspeedtech.com>
 
-It only support continuous pool buffer memory region for all I2C bus.
-However, the pool buffer address of all I2c bus are discontinuous
-for AST2700.
+ASPEED SDK add lm75 in i2c bus 0 for AST2700.
+LM75 is compatible with TMP105 driver.
 
-Ex: the pool buffer address of I2C bus for ast2700 as following.
-0x1A0 - 0x1BF: Device 0 buffer
-0x2A0 - 0x2BF: Device 1 buffer
-0x3A0 - 0x3BF: Device 2 buffer
-0x4A0 - 0x4BF: Device 3 buffer
-0x5A0 - 0x5BF: Device 4 buffer
-0x6A0 - 0x6BF: Device 5 buffer
-0x7A0 - 0x7BF: Device 6 buffer
-0x8A0 - 0x8BF: Device 7 buffer
-0x9A0 - 0x9BF: Device 8 buffer
-0xAA0 - 0xABF: Device 9 buffer
-0xBA0 - 0xBBF: Device 10 buffer
-0xCA0 - 0xCBF: Device 11 buffer
-0xDA0 - 0xDBF: Device 12 buffer
-0xEA0 - 0xEBF: Device 13 buffer
-0xFA0 – 0xFBF: Device 14 buffer
-0x10A0 – 0x10BF: Device 15 buffer
-
-Introduce a new class attribute to make user set each I2C bus
-pool buffer gap size. Update formula to create all I2C bus
-pool buffer memory regions.
+Introduce a new i2c init function and
+add tmp105 device model in i2c bus 0.
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
 ---
- include/hw/i2c/aspeed_i2c.h | 1 +
- hw/i2c/aspeed_i2c.c         | 3 ++-
- 2 files changed, 3 insertions(+), 1 deletion(-)
+ hw/arm/aspeed.c | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
 
-diff --git a/include/hw/i2c/aspeed_i2c.h b/include/hw/i2c/aspeed_i2c.h
-index 8e62ec64f835..b42c4dc5844b 100644
---- a/include/hw/i2c/aspeed_i2c.h
-+++ b/include/hw/i2c/aspeed_i2c.h
-@@ -284,6 +284,7 @@ struct AspeedI2CClass {
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index fd5603f7aa23..3d13b16768f7 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -1650,6 +1650,15 @@ static void aspeed_minibmc_machine_ast1030_evb_class_init(ObjectClass *oc,
+ }
  
-     uint64_t pool_size;
-     hwaddr pool_base;
-+    uint32_t pool_gap_size;
-     uint8_t *(*bus_pool_base)(AspeedI2CBus *);
-     bool check_sram;
-     bool has_dma;
-diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
-index 819f70197369..9fb246ba009e 100644
---- a/hw/i2c/aspeed_i2c.c
-+++ b/hw/i2c/aspeed_i2c.c
-@@ -1098,6 +1098,7 @@ static void aspeed_i2c_realize(DeviceState *dev, Error **errp)
-     AspeedI2CState *s = ASPEED_I2C(dev);
-     AspeedI2CClass *aic = ASPEED_I2C_GET_CLASS(s);
-     uint32_t reg_offset = aic->reg_size + aic->reg_gap_size;
-+    uint32_t pool_offset = aic->pool_size + aic->pool_gap_size;
- 
-     sysbus_init_irq(sbd, &s->irq);
-     memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_i2c_ctrl_ops, s,
-@@ -1133,7 +1134,7 @@ static void aspeed_i2c_realize(DeviceState *dev, Error **errp)
-     } else {
-         for (i = 0; i < aic->num_busses; i++) {
-             memory_region_add_subregion(&s->iomem,
--                                        aic->pool_base + (aic->pool_size * i),
-+                                        aic->pool_base + (pool_offset * i),
-                                         &s->busses[i].mr_pool);
-         }
-     }
+ #ifdef TARGET_AARCH64
++static void ast2700_evb_i2c_init(AspeedMachineState *bmc)
++{
++    AspeedSoCState *soc = bmc->soc;
++
++    /* LM75 is compatible with TMP105 driver */
++    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 0),
++                            TYPE_TMP105, 0x4d);
++}
++
+ static void aspeed_machine_ast2700_evb_class_init(ObjectClass *oc, void *data)
+ {
+     MachineClass *mc = MACHINE_CLASS(oc);
+@@ -1664,6 +1673,7 @@ static void aspeed_machine_ast2700_evb_class_init(ObjectClass *oc, void *data)
+     amc->num_cs    = 2;
+     amc->macs_mask = ASPEED_MAC0_ON | ASPEED_MAC1_ON | ASPEED_MAC2_ON;
+     amc->uart_default = ASPEED_DEV_UART12;
++    amc->i2c_init  = ast2700_evb_i2c_init;
+     mc->default_ram_size = 1 * GiB;
+     aspeed_machine_class_init_cpus_defaults(mc);
+ }
 -- 
 2.46.0
 

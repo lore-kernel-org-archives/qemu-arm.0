@@ -1,92 +1,93 @@
-Received: by 2002:a17:504:2a14:b0:1be9:327d:8ee3 with SMTP id p20csp1257106njl;
+Received: by 2002:a17:504:2a14:b0:1be9:327d:8ee3 with SMTP id p20csp1257104njl;
         Mon, 16 Sep 2024 11:58:59 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVwL4ypbHDxtdhhAiDpqb9khjnJCv5zKNP8FfmkE2SqP4BlVZJc8GSv4VHU+0wXVfYlTIb4MF+HZ8Vz1g==@linaro.org
-X-Google-Smtp-Source: AGHT+IGuP6onHAHlUtqFXH2aYLfIy/kO8AvpD7Vz9Vs86RgR2g85t/OS7iobWw7scUYNnRU52R4H
-X-Received: by 2002:a05:6358:57a2:b0:1bc:57cf:40bd with SMTP id e5c5f4694b2df-1bc57cf4177mr171776255d.0.1726513139440;
+X-Forwarded-Encrypted: i=2; AJvYcCUgBJHaThnTHAqhR3OYT0bPB5D/cL/LFrAJtfuCEk1anUQ63BujacGgu8iC09Zm6eqfUU11GdPraPkyfQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IGSEKcKm5TWFwANL7pTr61nXNb4bcN55XCroDbwDAZkF+EzBjEdVoql/z0gzkTJbagjMGLH
+X-Received: by 2002:a05:6122:1814:b0:4f6:b094:80aa with SMTP id 71dfb90a1353d-5032d4b3688mr11782978e0c.9.1726513139367;
         Mon, 16 Sep 2024 11:58:59 -0700 (PDT)
 ARC-Seal: i=1; a=rsa-sha256; t=1726513139; cv=none;
         d=google.com; s=arc-20240605;
-        b=gm80A1/1ZWfUSy8tsAAzTb9u4Y4qU4yZED5MZdGfSkhJxvNN9VX7vpHxCvHAH9Q92e
-         LSS5z83HRmzle704WGbysoVihj+Fefnj6w0ktIgVLZ2BDPHMxhISk28rEdih68DurHi6
-         xvkg6Jgnd28QbUS3B4aDTQAgkrp2iIoDwCnjO2mWUvJSjfuxIJHxYbsSkt2y9j5/LqAE
-         eeYbdfjnRQT8fG/SFdvsloCDljTwJU9HM6iY7lsYrA3Ca/As0awIZqr8noqm3p8HXFUC
-         oLtaV2WFxgoWBseqnUzBIHcp2aCJvmTI/IJyTghYljcifXvfbfWCzw+YJqmarNSNLDwU
-         1Reg==
+        b=H742MOt5CE2gRAx39XopQMAMH1zNs0PqTREre18JMpnYTBXW4Ml1nGDHcEEDH8A+CA
+         HqIWGhZ3LlABysEkfEAiyVoYrpIjzQJPfm6KRykafZdzdaZJsqZhjKMwtoJOltGPRWbs
+         6k2fvZ4Eew3y5Y0A0vSVilVWDTGVKDGl/XX/gXs9NSp736FA+CXlv+dA+SIdhxtcTinR
+         ETJgLoDg+hPOC0QtV8SSbvrF3jt3lBW+7kSfuYeY0XX5J/Pz82dSgHfCvmcRZ8wwIRxn
+         PtD5P8KwAIopkEieyH8gC96lGAq1HFNQ5JvLBFf8iveUbChj5FPoTeoBttGdumluBgbu
+         9fFg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=WLdnvBXDISfTO2djkiD99UWRW2tZHgFKNtSGKnDQ/jc=;
-        fh=mvwt3L+XMo5CtL3N3qH0hBr334luZSyJ2bqjtJkpouw=;
-        b=XvgjKnBFD0zg0nscuoVdP2sVrsITSep54tnb3+USH7SmP5Rqr5mK+XGcBiFZgBaGdS
-         f5aT49SgJBcz0JW06KqPRqNktP/dxoqOW5LGFwrkxpwVtj8O5CEEW5R4/RzqMpks+9p4
-         8twI8E85ArSB3cycH9Ztsxp6PBcKjPi7auOyFPKqTozXRu8aaa351BNRG22KFOPkkrjX
-         272u1Nm2A98Y1lRUdENumpop00/gqDHTP5OiRD5M2ZaigMhLT3yWQbM23FLlfReZgy1M
-         4WuHoRZxWZx7FTNRELSY61d8RstLMrBFsMie1+VtPHylY+WsK/1p6NfLNK9enLewnWnK
-         EoZA==;
+        bh=LG2mEw1/r4S1WhNW7U+z1sZ5wnGQ4zIP5gZeiXtyUyo=;
+        fh=i/PI/VfZf54YsTwJ9sJhiHcO+8PSmdTrt3qYCjPMyJY=;
+        b=a0lOAawbNn6p6juBOx0etDi3112hVCUTxoR44d78FPEbcux/SpF+ZZvZ9HSOYXmFBn
+         NS/MVN++7INz6/05lZOvRvbq17FkiaYq3ri2vqI6HnBIIKsBy/fumnLAOtdywUNyHrkH
+         CqEkNWBrWIzfx1/Din13UM18r9eyk/0JgrQ9LfVv82oMSOZUz7NAib+jZpeoqarvCogQ
+         amBa4x1pz5ziwlPLgpB/OvEvkLr18nsVhMg7V/ry36bBMcniSA1mkXCfs9yq5IXNpkz4
+         +f65OrY23zl/Zxl+8oWeQQ/nmQPbO6pCXssWG1+B/X5KcTkDMTWLPcaZva80XSkTTnBN
+         bC8A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fZ3W2ufu;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=aOvKvja9;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7ab3e971838si659158385a.66.2024.09.16.11.58.59
+        by mx.google.com with ESMTPS id 6a1803df08f44-6c58c630840si64538736d6.147.2024.09.16.11.58.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Mon, 16 Sep 2024 11:58:59 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fZ3W2ufu;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=aOvKvja9;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sqGve-0008CV-O7; Mon, 16 Sep 2024 14:58:30 -0400
+	id 1sqGvm-0000O6-Up; Mon, 16 Sep 2024 14:58:38 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1sqGvb-00084C-LJ
- for qemu-devel@nongnu.org; Mon, 16 Sep 2024 14:58:27 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1sqGvl-0000G6-Cn
+ for qemu-devel@nongnu.org; Mon, 16 Sep 2024 14:58:37 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1sqGva-0003J0-4u
- for qemu-devel@nongnu.org; Mon, 16 Sep 2024 14:58:27 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1sqGvi-0003KR-5a
+ for qemu-devel@nongnu.org; Mon, 16 Sep 2024 14:58:37 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1726513104;
+ s=mimecast20190719; t=1726513113;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=WLdnvBXDISfTO2djkiD99UWRW2tZHgFKNtSGKnDQ/jc=;
- b=fZ3W2ufuZKc5AN48MvqkS9j5MxYcTHGeywGXW1GgneOxeWcUDsj78KeoDS92uLxkka0Kb/
- lLkmKZ7+NxxyFrhU/nNlbWkgdPAZ0nL423SVoOCXs0UrvwcGTCDJbIrM8idNHlmIzKJq+t
- 0AHuage9Ud7g+FS07BQYCKuRcUOsUCs=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ bh=LG2mEw1/r4S1WhNW7U+z1sZ5wnGQ4zIP5gZeiXtyUyo=;
+ b=aOvKvja9hB/Mwy3nKoF41swRsULGXrys04XHH7UTYC2NUzy+H/ktYI+NUImpeWGGJWBOAt
+ Y2yOp3m8ySPP8zAIDQ5daNonPi0O7rB+yf4xAbtk3xw4gEyLTAZfG0cIj8EGidG22JRvHn
+ aKwqL/f23uJ9248sVwXGzIpeWvg4VXs=
+Received: from mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-690-3-riQchVNuuh2CYeePw13A-1; Mon,
- 16 Sep 2024 14:57:17 -0400
-X-MC-Unique: 3-riQchVNuuh2CYeePw13A-1
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-614-Ve9U0XopNEyrE4_GkGDGRA-1; Mon,
+ 16 Sep 2024 14:57:25 -0400
+X-MC-Unique: Ve9U0XopNEyrE4_GkGDGRA-1
 Received: from mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.40])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 65BC919560BE; Mon, 16 Sep 2024 18:57:15 +0000 (UTC)
+ by mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id D2A711953948; Mon, 16 Sep 2024 18:57:23 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.39.192.44])
  by mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 8852619560AA; Mon, 16 Sep 2024 18:57:13 +0000 (UTC)
+ id 08C6019560AA; Mon, 16 Sep 2024 18:57:21 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
+Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 01/12] hw/gpio/aspeed_gpio: Avoid shift into sign bit
-Date: Mon, 16 Sep 2024 20:56:57 +0200
-Message-ID: <20240916185708.574546-2-clg@redhat.com>
+Subject: [PULL 05/12] hw/i2c/aspeed: Introduce a new dma_dram_offset attribute
+ in AspeedI2Cbus
+Date: Mon, 16 Sep 2024 20:57:01 +0200
+Message-ID: <20240916185708.574546-6-clg@redhat.com>
 In-Reply-To: <20240916185708.574546-1-clg@redhat.com>
 References: <20240916185708.574546-1-clg@redhat.com>
 MIME-Version: 1.0
@@ -101,7 +102,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -116,38 +117,220 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 1zojiIqA5pxR
+X-TUID: ZmYaOmSoExTA
 
-From: Peter Maydell <peter.maydell@linaro.org>
+From: Jamin Lin <jamin_lin@aspeedtech.com>
 
-In aspeed_gpio_update() we calculate "mask = 1 << gpio", where
-gpio can be between 0 and 31. Coverity complains about this
-because 1 << 31 won't fit in a signed integer.
+The "Current DMA Operating Address Status(0x50)" register of
+I2C new mode has been removed in AST2700.
+This register is used for debugging and it is a read only register.
 
-For QEMU this isn't an error because we enable -fwrapv,
-but we can keep Coverity happy by doing the shift on
-unsigned numbers.
+To support AST2700 DMA mode, introduce a new
+dma_dram_offset class attribute in AspeedI2Cbus to save the
+current DMA operating address.
 
-Resolves: Coverity CID 1547742
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+ASPEED AST2700 SOC is a 64 bits quad core CPUs (Cortex-a35)
+And the base address of dram is "0x4 00000000" which
+is 64bits address.
+
+Set the dma_dram_offset data type to uint64_t for
+64 bits dram address DMA support.
+
+Both "DMA Mode Buffer Address Register(I2CD24 old mode)" and
+"DMA Operating Address Status (I2CC50 new mode)" are used for showing the
+low part dram offset bits [31:0], so change to read/write both register bits [31:0] in
+bus register read/write functions.
+
+The aspeed_i2c_bus_vmstate is changed again and version is not increased
+because it was done earlier in the same series.
+
+Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
 ---
- hw/gpio/aspeed_gpio.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ include/hw/i2c/aspeed_i2c.h |  9 +------
+ hw/i2c/aspeed_i2c.c         | 51 +++++++++++++++++++++++--------------
+ 2 files changed, 33 insertions(+), 27 deletions(-)
 
-diff --git a/hw/gpio/aspeed_gpio.c b/hw/gpio/aspeed_gpio.c
-index 3e7b35cf4f54..71756664dd69 100644
---- a/hw/gpio/aspeed_gpio.c
-+++ b/hw/gpio/aspeed_gpio.c
-@@ -281,7 +281,7 @@ static void aspeed_gpio_update(AspeedGPIOState *s, GPIOSets *regs,
-     diff &= mode_mask;
-     if (diff) {
-         for (gpio = 0; gpio < ASPEED_GPIOS_PER_SET; gpio++) {
--            uint32_t mask = 1 << gpio;
-+            uint32_t mask = 1U << gpio;
+diff --git a/include/hw/i2c/aspeed_i2c.h b/include/hw/i2c/aspeed_i2c.h
+index b42c4dc5844b..bdaea3207db2 100644
+--- a/include/hw/i2c/aspeed_i2c.h
++++ b/include/hw/i2c/aspeed_i2c.h
+@@ -248,6 +248,7 @@ struct AspeedI2CBus {
  
-             /* If the gpio needs to be updated... */
-             if (!(diff & mask)) {
+     uint32_t regs[ASPEED_I2C_NEW_NUM_REG];
+     uint8_t pool[ASPEED_I2C_BUS_POOL_SIZE];
++    uint64_t dma_dram_offset;
+ };
+ 
+ struct AspeedI2CState {
+@@ -369,14 +370,6 @@ static inline uint32_t aspeed_i2c_bus_dma_len_offset(AspeedI2CBus *bus)
+     return R_I2CD_DMA_LEN;
+ }
+ 
+-static inline uint32_t aspeed_i2c_bus_dma_addr_offset(AspeedI2CBus *bus)
+-{
+-    if (aspeed_i2c_is_new_mode(bus->controller)) {
+-        return R_I2CC_DMA_ADDR;
+-    }
+-    return R_I2CD_DMA_ADDR;
+-}
+-
+ static inline bool aspeed_i2c_bus_is_master(AspeedI2CBus *bus)
+ {
+     return SHARED_ARRAY_FIELD_EX32(bus->regs, aspeed_i2c_bus_ctrl_offset(bus),
+diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
+index 9fb246ba009e..a17dd2526319 100644
+--- a/hw/i2c/aspeed_i2c.c
++++ b/hw/i2c/aspeed_i2c.c
+@@ -114,7 +114,10 @@ static uint64_t aspeed_i2c_bus_old_read(AspeedI2CBus *bus, hwaddr offset,
+         if (!aic->has_dma) {
+             qemu_log_mask(LOG_GUEST_ERROR, "%s: No DMA support\n",  __func__);
+             value = -1;
++            break;
+         }
++
++        value = extract64(bus->dma_dram_offset, 0, 32);
+         break;
+     case A_I2CD_DMA_LEN:
+         if (!aic->has_dma) {
+@@ -150,9 +153,7 @@ static uint64_t aspeed_i2c_bus_new_read(AspeedI2CBus *bus, hwaddr offset,
+     case A_I2CM_DMA_TX_ADDR:
+     case A_I2CM_DMA_RX_ADDR:
+     case A_I2CM_DMA_LEN_STS:
+-    case A_I2CC_DMA_ADDR:
+     case A_I2CC_DMA_LEN:
+-
+     case A_I2CS_DEV_ADDR:
+     case A_I2CS_DMA_RX_ADDR:
+     case A_I2CS_DMA_LEN:
+@@ -161,6 +162,9 @@ static uint64_t aspeed_i2c_bus_new_read(AspeedI2CBus *bus, hwaddr offset,
+     case A_I2CS_DMA_LEN_STS:
+         /* Value is already set, don't do anything. */
+         break;
++    case A_I2CC_DMA_ADDR:
++        value = extract64(bus->dma_dram_offset, 0, 32);
++        break;
+     case A_I2CS_INTR_STS:
+         break;
+     case A_I2CM_CMD:
+@@ -210,18 +214,18 @@ static int aspeed_i2c_dma_read(AspeedI2CBus *bus, uint8_t *data)
+ {
+     MemTxResult result;
+     AspeedI2CState *s = bus->controller;
+-    uint32_t reg_dma_addr = aspeed_i2c_bus_dma_addr_offset(bus);
+     uint32_t reg_dma_len = aspeed_i2c_bus_dma_len_offset(bus);
+ 
+-    result = address_space_read(&s->dram_as, bus->regs[reg_dma_addr],
++    result = address_space_read(&s->dram_as, bus->dma_dram_offset,
+                                 MEMTXATTRS_UNSPECIFIED, data, 1);
+     if (result != MEMTX_OK) {
+-        qemu_log_mask(LOG_GUEST_ERROR, "%s: DRAM read failed @%08x\n",
+-                      __func__, bus->regs[reg_dma_addr]);
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: DRAM read failed @%" PRIx64 "\n",
++                      __func__, bus->dma_dram_offset);
+         return -1;
+     }
+ 
+-    bus->regs[reg_dma_addr]++;
++    bus->dma_dram_offset++;
+     bus->regs[reg_dma_len]--;
+     return 0;
+ }
+@@ -291,7 +295,6 @@ static void aspeed_i2c_bus_recv(AspeedI2CBus *bus)
+     uint32_t reg_pool_ctrl = aspeed_i2c_bus_pool_ctrl_offset(bus);
+     uint32_t reg_byte_buf = aspeed_i2c_bus_byte_buf_offset(bus);
+     uint32_t reg_dma_len = aspeed_i2c_bus_dma_len_offset(bus);
+-    uint32_t reg_dma_addr = aspeed_i2c_bus_dma_addr_offset(bus);
+     int pool_rx_count = SHARED_ARRAY_FIELD_EX32(bus->regs, reg_pool_ctrl,
+                                                 RX_SIZE) + 1;
+ 
+@@ -323,14 +326,17 @@ static void aspeed_i2c_bus_recv(AspeedI2CBus *bus)
+             data = i2c_recv(bus->bus);
+             trace_aspeed_i2c_bus_recv("DMA", bus->regs[reg_dma_len],
+                                       bus->regs[reg_dma_len], data);
+-            result = address_space_write(&s->dram_as, bus->regs[reg_dma_addr],
++
++            result = address_space_write(&s->dram_as, bus->dma_dram_offset,
+                                          MEMTXATTRS_UNSPECIFIED, &data, 1);
+             if (result != MEMTX_OK) {
+-                qemu_log_mask(LOG_GUEST_ERROR, "%s: DRAM write failed @%08x\n",
+-                              __func__, bus->regs[reg_dma_addr]);
++                qemu_log_mask(LOG_GUEST_ERROR,
++                              "%s: DRAM write failed @%" PRIx64 "\n",
++                              __func__, bus->dma_dram_offset);
+                 return;
+             }
+-            bus->regs[reg_dma_addr]++;
++
++            bus->dma_dram_offset++;
+             bus->regs[reg_dma_len]--;
+             /* In new mode, keep track of how many bytes we RXed */
+             if (aspeed_i2c_is_new_mode(bus->controller)) {
+@@ -636,14 +642,18 @@ static void aspeed_i2c_bus_new_write(AspeedI2CBus *bus, hwaddr offset,
+     case A_I2CM_DMA_TX_ADDR:
+         bus->regs[R_I2CM_DMA_TX_ADDR] = FIELD_EX32(value, I2CM_DMA_TX_ADDR,
+                                                    ADDR);
+-        bus->regs[R_I2CC_DMA_ADDR] = FIELD_EX32(value, I2CM_DMA_TX_ADDR, ADDR);
++        bus->dma_dram_offset =
++            deposit64(bus->dma_dram_offset, 0, 32,
++                      FIELD_EX32(value, I2CM_DMA_TX_ADDR, ADDR));
+         bus->regs[R_I2CC_DMA_LEN] = ARRAY_FIELD_EX32(bus->regs, I2CM_DMA_LEN,
+                                                      TX_BUF_LEN) + 1;
+         break;
+     case A_I2CM_DMA_RX_ADDR:
+         bus->regs[R_I2CM_DMA_RX_ADDR] = FIELD_EX32(value, I2CM_DMA_RX_ADDR,
+                                                    ADDR);
+-        bus->regs[R_I2CC_DMA_ADDR] = FIELD_EX32(value, I2CM_DMA_RX_ADDR, ADDR);
++        bus->dma_dram_offset =
++            deposit64(bus->dma_dram_offset, 0, 32,
++                      FIELD_EX32(value, I2CM_DMA_RX_ADDR, ADDR));
+         bus->regs[R_I2CC_DMA_LEN] = ARRAY_FIELD_EX32(bus->regs, I2CM_DMA_LEN,
+                                                      RX_BUF_LEN) + 1;
+         break;
+@@ -811,7 +821,8 @@ static void aspeed_i2c_bus_old_write(AspeedI2CBus *bus, hwaddr offset,
+             break;
+         }
+ 
+-        bus->regs[R_I2CD_DMA_ADDR] = value & 0x3ffffffc;
++        bus->dma_dram_offset = deposit64(bus->dma_dram_offset, 0, 32,
++                                         value & 0x3ffffffc);
+         break;
+ 
+     case A_I2CD_DMA_LEN:
+@@ -983,6 +994,7 @@ static const VMStateDescription aspeed_i2c_bus_vmstate = {
+     .fields = (const VMStateField[]) {
+         VMSTATE_UINT32_ARRAY(regs, AspeedI2CBus, ASPEED_I2C_NEW_NUM_REG),
+         VMSTATE_UINT8_ARRAY(pool, AspeedI2CBus, ASPEED_I2C_BUS_POOL_SIZE),
++        VMSTATE_UINT64(dma_dram_offset, AspeedI2CBus),
+         VMSTATE_END_OF_LIST()
+     }
+ };
+@@ -1188,8 +1200,9 @@ static int aspeed_i2c_bus_new_slave_event(AspeedI2CBus *bus,
+             return -1;
+         }
+         ARRAY_FIELD_DP32(bus->regs, I2CS_DMA_LEN_STS, RX_LEN, 0);
+-        bus->regs[R_I2CC_DMA_ADDR] =
+-            ARRAY_FIELD_EX32(bus->regs, I2CS_DMA_RX_ADDR, ADDR);
++        bus->dma_dram_offset =
++            deposit64(bus->dma_dram_offset, 0, 32,
++                      ARRAY_FIELD_EX32(bus->regs, I2CS_DMA_RX_ADDR, ADDR));
+         bus->regs[R_I2CC_DMA_LEN] =
+             ARRAY_FIELD_EX32(bus->regs, I2CS_DMA_LEN, RX_BUF_LEN) + 1;
+         i2c_ack(bus->bus);
+@@ -1255,10 +1268,10 @@ static int aspeed_i2c_bus_slave_event(I2CSlave *slave, enum i2c_event event)
+ static void aspeed_i2c_bus_new_slave_send_async(AspeedI2CBus *bus, uint8_t data)
+ {
+     assert(address_space_write(&bus->controller->dram_as,
+-                               bus->regs[R_I2CC_DMA_ADDR],
++                               bus->dma_dram_offset,
+                                MEMTXATTRS_UNSPECIFIED, &data, 1) == MEMTX_OK);
+ 
+-    bus->regs[R_I2CC_DMA_ADDR]++;
++    bus->dma_dram_offset++;
+     bus->regs[R_I2CC_DMA_LEN]--;
+     ARRAY_FIELD_DP32(bus->regs, I2CS_DMA_LEN_STS, RX_LEN,
+                      ARRAY_FIELD_EX32(bus->regs, I2CS_DMA_LEN_STS, RX_LEN) + 1);
 -- 
 2.46.0
 

@@ -1,99 +1,100 @@
-Received: by 2002:a17:504:2a14:b0:1be9:327d:8ee3 with SMTP id p20csp1257632njl;
-        Mon, 16 Sep 2024 12:00:12 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXQ4sy2xD8EEMhgNogJZzJTDfN+KMMNKgS+PACjuaDCEKPcEZjkE2FetMlNLpmoxnwS1tuUk69Fk6FHuw==@linaro.org
-X-Google-Smtp-Source: AGHT+IFbM+9XJ3j2QQ7CbA/lLANqUxOPlSFUcDt9tzu78/jU10xRlGmtibHNm6uuKCYYINhE9fG+
-X-Received: by 2002:a05:6359:4ca8:b0:1b8:21d6:6034 with SMTP id e5c5f4694b2df-1bb14e0a0c4mr776270355d.8.1726513211649;
-        Mon, 16 Sep 2024 12:00:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1726513211; cv=none;
+Received: by 2002:a17:504:660e:b0:1bdf:97ae:c215 with SMTP id h14csp1311261njk;
+        Mon, 16 Sep 2024 12:00:14 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCX44M/IUXYI23wB+ZlzG6VI5OpGY/DAIlIMMGocShccrOiJkaKsttZ4SBtZGwoW/iQk7ReQ9ryK9EZ7FA==@linaro.org
+X-Google-Smtp-Source: AGHT+IFnfxTmJfc662ZI/LjNlrkIR+3ChG7laRTmVJUsZd+ZXXcll8OSd82N2Xpe/zCVYdF/hpWC
+X-Received: by 2002:a05:6358:7016:b0:1bc:573a:4078 with SMTP id e5c5f4694b2df-1bc573a4110mr83783355d.20.1726513214191;
+        Mon, 16 Sep 2024 12:00:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1726513214; cv=none;
         d=google.com; s=arc-20240605;
-        b=POO4S0w8jghwq6VZCEfnKPNMWyfeE8gzGIqk/7G3EFg4fbuW0XIvaK4sAJOohrQnhH
-         InImil7J4P9V+mo6IHe3BnqU9T2EqSW5+qEfIaixnwuN6NLZSyfn/0i+D7QVL7fbyekJ
-         qS7GWNE2V6iPCPIVs3ux0YQDU1VxE/cEnRcP4ibLiR8myfzmq2IchDcMMX6ieLzDqnU5
-         taBpGQ+ZdhlGtadDLNsDZtk4KvVjrEG4kV9EftftKK6irW+kxKZ0euMl471c6SizvEN1
-         A8Rlr7GE3K2AZQT3hel5yqjeSQl1unu1KQ96txfozWEdRYTaZ0pZgJr1Ib1bw1r9apTQ
-         8QXQ==
+        b=ZjNWuSUW3FeLCPFdnzCvAxK6DMLAGmT207d6Tr97y7aJ0EsraWf12KrdyFyNOiBpDQ
+         vASvFt3etbE2a32Pf+61C6dm/7cA8jEOyz3FKiLz2v+Ly2mVXy5OeqyG4Bpgv8WNyDGK
+         E+EpEWwKbCpoiKb2XTr4FngDyqmZGJODPJlt31v2x8JbUp16ZLkZPrGeKlEVL5IADhU6
+         5JZIkU0H4euYuUWOBlnC+F8NhjddNhGwoND6ps2R2v/fS2aOLf0XpAqiYkIvH2LVcdZ6
+         V+AGKYI2Jw6eItiSBfVY0afgjuqOFu7eLYBw0rRs4iF7/FkA8WhftXWgyqIsNr60LRE+
+         T9jA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=wmd7QT230N9aEZZ6r4SGdfPk7kek5VAOcArXcBFKC3c=;
+        bh=7TUWMxNopOC5Sn+N0t1XWP7ZeD9STqgIv8eGWRZi4Vk=;
         fh=i/PI/VfZf54YsTwJ9sJhiHcO+8PSmdTrt3qYCjPMyJY=;
-        b=gjE+Vpt7g0XKzf9/Em5DG7Z2e+xtASO2O5QyWMpwYy2djuOqKtkz5pumyOZH7qPwcY
-         SvscOavbvUbMDiT89QrC1SrrcFOL8ehq6d2aLA9OyybgNnmvfGTlUMT25US61XRHnhPB
-         bVUCxdGkU9gkUMhjObx+vV+D4yX3hJQ/CwNsvAxo4vGjgKjTT4yR8Y+e7yKk3auj3s/U
-         oXPxcwHzhF117uoXreWk2/pSeRHMLvAHIjgbgKnRv8ZXbgjp3l3snSzi4bpzi1gbdZPO
-         7RyUsHiZkl25ecwJwixyhfyU24T4FZGK8hm+q2v7+BugdP8TvA/gE2m/g+sKAN9qOyzn
-         kHaA==;
+        b=i9x75pO1O1oAIOSjiRV6Wf9qaOHgIrfcJVB8EQhL2jrLPW1VqvU1NGPSEmqbD0/dYe
+         +KVdkUfzd9+XMnEVb1it/4CxDh2TS8tnelcegx7d+1zt+8EsV2AqyvFzp+AYj+vazQSy
+         Vj9kxwsyIqqe6oVNymOpLM6LxbUA9FIfvwDk7O3vBWBoDog66z6oTMxS4m4lu5Pl8R0H
+         tfUN+kMMw/crfrqOGZYcxjmLK3ScIbh/DK5nohyCjfKYtz0V0iInKDysTbu9XcHw/wB2
+         eigrLQj4tkvPvXtIxSwojWYY20XUKhR568R/YOXbk1UpZbAr8D5aDC/qAKLWctvUqqw8
+         sU2Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=VQn+Et67;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=axIbc6gX;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7ab3eb7b926si647936785a.615.2024.09.16.12.00.11
+        by mx.google.com with ESMTPS id af79cd13be357-7ab3eb64d3asi635186785a.413.2024.09.16.12.00.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 16 Sep 2024 12:00:11 -0700 (PDT)
+        Mon, 16 Sep 2024 12:00:14 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=VQn+Et67;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=axIbc6gX;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sqGwq-0003xv-Lw; Mon, 16 Sep 2024 14:59:44 -0400
+	id 1sqGvf-0008Go-Iw; Mon, 16 Sep 2024 14:58:31 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1sqGwJ-0001cl-Qj
- for qemu-devel@nongnu.org; Mon, 16 Sep 2024 14:59:15 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1sqGvd-00088T-Ms
+ for qemu-devel@nongnu.org; Mon, 16 Sep 2024 14:58:29 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1sqGwB-0003Mk-Ts
- for qemu-devel@nongnu.org; Mon, 16 Sep 2024 14:59:09 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1sqGvc-0003Jb-5L
+ for qemu-devel@nongnu.org; Mon, 16 Sep 2024 14:58:29 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1726513142;
+ s=mimecast20190719; t=1726513107;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=wmd7QT230N9aEZZ6r4SGdfPk7kek5VAOcArXcBFKC3c=;
- b=VQn+Et67AOCP7eF+O2JhGuGxEAz4IeL4hVA8Chzhy03j5MODSORlTAPfvSRr8UIsfC6KrT
- KHUbwAVporpJgRubWcyWDytFVajDFW5sGLR77bGgFp8XwKGW70JZll0WVZx8rtUIzrjcKn
- Kz7XgVKwRTykw76uFRPQ9zSFk54Q6GQ=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ bh=7TUWMxNopOC5Sn+N0t1XWP7ZeD9STqgIv8eGWRZi4Vk=;
+ b=axIbc6gXdvuL9sMyKs0SAX+VJVNa621UBU19ALJSPi4YYV45GrSKjaaDbF6x7pvq3ffgLD
+ 6A3gj9MIA/6C2chjKJl1dL5njREjoRbpdygQUnE1Qwr+t4utZkIMDcxmd8qR+TFG/98YKu
+ 23KF3sdLtAIDZ/JPMuHpHhwYh5cAiAY=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-645-VtGuevSMOYW0WQKScRNVyA-1; Mon,
- 16 Sep 2024 14:57:34 -0400
-X-MC-Unique: VtGuevSMOYW0WQKScRNVyA-1
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-638-f4ibBwFBPbyMYsI87hrNwA-1; Mon,
+ 16 Sep 2024 14:57:18 -0400
+X-MC-Unique: f4ibBwFBPbyMYsI87hrNwA-1
 Received: from mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.40])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 11DA6195608B; Mon, 16 Sep 2024 18:57:34 +0000 (UTC)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id AB4BA1955F45; Mon, 16 Sep 2024 18:57:17 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.39.192.44])
  by mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 6071E195605A; Mon, 16 Sep 2024 18:57:32 +0000 (UTC)
+ id D3C09195605A; Mon, 16 Sep 2024 18:57:15 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 09/12] aspeed/soc: Introduce a new API to get the device irq
-Date: Mon, 16 Sep 2024 20:57:05 +0200
-Message-ID: <20240916185708.574546-10-clg@redhat.com>
+Subject: [PULL 02/12] hw/i2c/aspeed: Support discontinuous register memory
+ region of I2C bus
+Date: Mon, 16 Sep 2024 20:56:58 +0200
+Message-ID: <20240916185708.574546-3-clg@redhat.com>
 In-Reply-To: <20240916185708.574546-1-clg@redhat.com>
 References: <20240916185708.574546-1-clg@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.40
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -116,55 +117,75 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: qLuTmCzqoKuG
+X-TUID: L61OEACCJzQE
 
 From: Jamin Lin <jamin_lin@aspeedtech.com>
 
-Currently, users can set the INTC mapping table with
-enumerated device id and device irq to get the INTC orgate
-input pins. However, some devices use the continuous source numbers in the
-same INTC orgate. To reduce the enumerated device id definition,
-create a new API to get the INTC orgate input pin
-if users only provide the device id with its bus number index.
+It only support continuous register memory region for all I2C bus.
+However, the register address of all I2c bus are discontinuous
+for AST2700.
+
+Ex: the register address of I2C bus for ast2700 as following.
+0x100 - 0x17F: Device 0
+0x200 - 0x27F: Device 1
+0x300 - 0x37F: Device 2
+0x400 - 0x47F: Device 3
+0x500 - 0x57F: Device 4
+0x600 - 0x67F: Device 5
+0x700 - 0x77F: Device 6
+0x800 - 0x87F: Device 7
+0x900 - 0x97F: Device 8
+0xA00 - 0xA7F: Device 9
+0xB00 - 0xB7F: Device 10
+0xC00 - 0xC7F: Device 11
+0xD00 - 0xD7F: Device 12
+0xE00 - 0xE7F: Device 13
+0xF00 – 0xF7F: Device 14
+0x1000 – 0x107F: Device 15
+
+Introduce a new class attribute to make user set each I2C bus gap size.
+Update formula to create all I2C bus register memory regions.
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
 ---
- hw/arm/aspeed_ast27x0.c | 21 +++++++++++++++++++++
- 1 file changed, 21 insertions(+)
+ include/hw/i2c/aspeed_i2c.h | 1 +
+ hw/i2c/aspeed_i2c.c         | 3 ++-
+ 2 files changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
-index 4257b5e8af82..a5eb78524f6a 100644
---- a/hw/arm/aspeed_ast27x0.c
-+++ b/hw/arm/aspeed_ast27x0.c
-@@ -193,6 +193,27 @@ static qemu_irq aspeed_soc_ast2700_get_irq(AspeedSoCState *s, int dev)
-     return qdev_get_gpio_in(DEVICE(&a->gic), sc->irqmap[dev]);
- }
+diff --git a/include/hw/i2c/aspeed_i2c.h b/include/hw/i2c/aspeed_i2c.h
+index fad5e9259a51..02ede859067e 100644
+--- a/include/hw/i2c/aspeed_i2c.h
++++ b/include/hw/i2c/aspeed_i2c.h
+@@ -275,6 +275,7 @@ struct AspeedI2CClass {
  
-+static qemu_irq aspeed_soc_ast2700_get_irq_index(AspeedSoCState *s, int dev,
-+                                                 int index)
-+{
-+    Aspeed27x0SoCState *a = ASPEED27X0_SOC(s);
-+    AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
-+    int i;
-+
-+    for (i = 0; i < ARRAY_SIZE(aspeed_soc_ast2700_gic_intcmap); i++) {
-+        if (sc->irqmap[dev] == aspeed_soc_ast2700_gic_intcmap[i].irq) {
-+            assert(aspeed_soc_ast2700_gic_intcmap[i].ptr);
-+            return qdev_get_gpio_in(DEVICE(&a->intc.orgates[i]),
-+                aspeed_soc_ast2700_gic_intcmap[i].ptr[dev] + index);
-+        }
-+    }
-+
-+    /*
-+     * Invalid orgate index, device irq should be 128 to 136.
-+     */
-+    g_assert_not_reached();
-+}
-+
- static uint64_t aspeed_ram_capacity_read(void *opaque, hwaddr addr,
-                                                     unsigned int size)
- {
+     uint8_t num_busses;
+     uint8_t reg_size;
++    uint32_t reg_gap_size;
+     uint8_t gap;
+     qemu_irq (*bus_get_irq)(AspeedI2CBus *);
+ 
+diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
+index f19891371426..ee30243c25f9 100644
+--- a/hw/i2c/aspeed_i2c.c
++++ b/hw/i2c/aspeed_i2c.c
+@@ -1012,6 +1012,7 @@ static void aspeed_i2c_realize(DeviceState *dev, Error **errp)
+     SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
+     AspeedI2CState *s = ASPEED_I2C(dev);
+     AspeedI2CClass *aic = ASPEED_I2C_GET_CLASS(s);
++    uint32_t reg_offset = aic->reg_size + aic->reg_gap_size;
+ 
+     sysbus_init_irq(sbd, &s->irq);
+     memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_i2c_ctrl_ops, s,
+@@ -1034,7 +1035,7 @@ static void aspeed_i2c_realize(DeviceState *dev, Error **errp)
+             return;
+         }
+ 
+-        memory_region_add_subregion(&s->iomem, aic->reg_size * (i + offset),
++        memory_region_add_subregion(&s->iomem, reg_offset * (i + offset),
+                                     &s->busses[i].mr);
+     }
+ 
 -- 
 2.46.0
 

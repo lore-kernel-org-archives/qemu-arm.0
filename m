@@ -1,217 +1,88 @@
-Received: by 2002:a17:504:2a14:b0:1be9:327d:8ee3 with SMTP id p20csp1134014njl;
-        Mon, 16 Sep 2024 08:10:09 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVcUXPAhfVumDi95sqZFrVTOS4K7sRhdcYhDbGqYAHE4s8RswxSlLEzQRX3f7Ld4PoRPF9gcWEZAxIhPg==@linaro.org
-X-Google-Smtp-Source: AGHT+IEadKYyg3F5pYpAqca3dcFBx+nqsaLSY8oMB5VFfkOLY39F7eCCZDO0kv+x+lR+X/jwBSBM
-X-Received: by 2002:a05:690c:90:b0:6dd:d0fa:159e with SMTP id 00721157ae682-6ddd0fa2564mr21220357b3.30.1726499409651;
-        Mon, 16 Sep 2024 08:10:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1726499409; cv=none;
+Received: by 2002:a17:504:1bc1:b0:1be9:327d:8ee3 with SMTP id v1csp38687njg;
+        Tue, 17 Sep 2024 01:38:59 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXNQS/NKBl1kuC8QlxsCoNFabPZ890D4995QtC5EE8rQNYYVp+onN8pVTT12APbUWNP8UkZ7Ff1LLr7Gw==@linaro.org
+X-Google-Smtp-Source: AGHT+IGx0XosrqrxPyTKQlp6jZrvh+2CA23zmvTEO0zXZWH9FEefrC7rr6TiaHqmcLAGUNyImgJH
+X-Received: by 2002:a05:600c:1c04:b0:426:6308:e2f0 with SMTP id 5b1f17b1804b1-42d964d8558mr95337915e9.26.1726562339285;
+        Tue, 17 Sep 2024 01:38:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1726562339; cv=none;
         d=google.com; s=arc-20240605;
-        b=KkIL+9Hb0uJqCYoTx862h7cJIba1BS/gx/ajQMmxSVhZwYm7vIqDo4JBBpKi3EMVxo
-         OTmjIqRQZcnFjon1mOE7gvC5MMj1ahp6Aut6txA7RcbrPCJHiiKn6A8uQpRtKnG2+ZZD
-         +LykTFe3eSxyESmM0qxcECFCIdK3xh82Tme9mdq4jco8vnIil9gwHrMEh+8/tSP8QBt0
-         QQNBhBiiGlPOjuCnOaWRw6CIe22O3HQsZJTMw1ePOWdFjsM1M3gQDahj1xHlOeMaTrgO
-         MdgdtUQ0MJqLuxZEJtPNyRXJyeZpf1BJmPgcKLkEDG3RVjtXa8NDeTmLK9gPDuVad2FW
-         wjpQ==
+        b=EyZ/cqN/yVV7Mk3786dqKxTLeiBMmm6xuwYZllyoWR3zN34DKS3VC5Fprel/FVoZgR
+         nfpwkWy6s0RMz2jYREVPzhS1lRJm/l0C3yCkwSvtfUJ/t8ntqkD+zRVOcrqSouxjErUl
+         JE5xNOR0eLVGkwMJRg3csG9TWq+v/tiC4rJS2znRudpUQOuk3jtXBMXljD3apX+2Blxl
+         icr7wPdE/5wqNyU9CgcG3o88qlMkVuiNscI+hfhJoEa4o2HhWiosvIgCWQv1SaUwyjDB
+         IbIUHNeXxMIF/kzWifaYW93+JmpPb9cbJzhgOZgXC4Kau2suBVuDnibS457twoae7DlO
+         CH5g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature:sender:precedence
-         :errors-to:list-subscribe:list-help:list-post:list-unsubscribe
-         :list-id;
-        bh=z9fGayqu8/3BSy8pNgZk7M/4P7YOiJj/gcULOkYYJOg=;
-        fh=TyIRqBslhB7aTQkIr8ffxstcoRpZ8/wIxD1QqftBR7U=;
-        b=EH1Io5Ns0FbzZ5KMRjvuUmH1vehhuHBQfvHy6xjTR6EHryItBh2LwN6HYlqhxgUXlx
-         EFmRUPxmuHaOjwXEdAxiJn3IXSVE0oX0Fgm9822HDtownhmRUuvUhniYi/0mTG/futaV
-         Akm/nfoo4pATaW3S84luHgdlptA/DZ6WV6ldjp42W6UGmPNFfWrjReT4LY5VqzV7G2fV
-         nWhHw6YwylbG0+KcHb/F6Z2g/JAmGNVyEy6UFU3ipppCNQ074zcHZNnTjIycQ/a5Qe12
-         rEbUMrYXpQruay2O6eQgRE36XhVRBVdripTSVtHRBtvGdarJ6WkpzM5EpMRDLYMw3ZBD
-         qeLA==;
+        h=content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:subject:cc:to:from:date;
+        bh=aPbGXfW5Kbc4t/YdoDedtmxDFeGw7XyuKzj6XeGN4uA=;
+        fh=rz0whkzKUoIAfodBYJKNiVKk8Ex0Rrp+MqNzSzdvwN0=;
+        b=J7W2h49o7ALw8diXM7hWYdG6g1QGUZUItsC+3E+bXcfG7xtJXyus/TUKZ3yfHUNZAI
+         +uXGNI4OhALIKQWR+IM6v/32EinpunlPYZQRmvHnT9rKxCjbmoqvX0f3baYn0OW5TvGM
+         qbUJH1YQndzsdZlKdkqiQqwGWZwbDgpp64vNgnlQxbV56w3nZgD9znDVjPMhInlTnapQ
+         LipiogWrgl5hSxKNrepo92vBgwguUE0SnlKEPSslH7f+lRiJIj7kGz/s7XgWtc1k8s2n
+         QRmt2XB8X+2Q7z+gy1oOPFdpB7iS274LqXvYnnUvHuDp+pDCBXsMH6tU2BZcnPFDkfJ5
+         Kysw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=V3FaZAZF;
-       spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
-Return-Path: <xen-devel-bounces@lists.xenproject.org>
-Received: from lists.xenproject.org (lists.xenproject.org. [192.237.175.120])
-        by mx.google.com with ESMTPS id 00721157ae682-6dbe55aa5bbsi24619067b3.550.2024.09.16.08.10.09
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 16 Sep 2024 08:10:09 -0700 (PDT)
-Received-SPF: pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) client-ip=192.237.175.120;
+       spf=pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=jonathan.cameron@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Return-Path: <jonathan.cameron@huawei.com>
+Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
+        by mx.google.com with ESMTPS id 5b1f17b1804b1-42da2438c0asi33112545e9.130.2024.09.17.01.38.59
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 17 Sep 2024 01:38:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=V3FaZAZF;
-       spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
-Received: from list by lists.xenproject.org with outflank-mailman.799581.1209566 (Exim 4.92)
-	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
-	id 1sqDLf-0006DK-SP; Mon, 16 Sep 2024 15:09:07 +0000
-X-Outflank-Mailman: Message body and most headers restored to incoming version
-Received: by outflank-mailman (output) from mailman id 799581.1209566; Mon, 16 Sep 2024 15:09:07 +0000
-Received: from localhost ([127.0.0.1] helo=lists.xenproject.org)
-	by lists.xenproject.org with esmtp (Exim 4.92)
-	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
-	id 1sqDLf-0006DD-O9; Mon, 16 Sep 2024 15:09:07 +0000
-Received: by outflank-mailman (input) for mailman id 799581;
- Mon, 16 Sep 2024 15:09:06 +0000
-Received: from se1-gles-flk1-in.inumbo.com ([94.247.172.50]
- helo=se1-gles-flk1.inumbo.com)
- by lists.xenproject.org with esmtp (Exim 4.92) (envelope-from
- <SRS0=CVXs=QO=gmail.com=edgar.iglesias@srs-se1.protection.inumbo.net>)
- id 1sqDLe-0005jt-EG
- for xen-devel@lists.xenproject.org; Mon, 16 Sep 2024 15:09:06 +0000
-Received: from mail-il1-x12c.google.com (mail-il1-x12c.google.com
- [2607:f8b0:4864:20::12c])
- by se1-gles-flk1.inumbo.com (Halon) with ESMTPS
- id 9c990415-743d-11ef-99a2-01e77a169b0f;
- Mon, 16 Sep 2024 17:09:04 +0200 (CEST)
-Received: by mail-il1-x12c.google.com with SMTP id
- e9e14a558f8ab-39f526fd19bso10278695ab.1
- for <xen-devel@lists.xenproject.org>; Mon, 16 Sep 2024 08:09:04 -0700 (PDT)
-Received: from gmail.com (ip190-5-140-142.intercom.com.sv. [190.5.140.142])
- by smtp.gmail.com with ESMTPSA id
- 8926c6da1cb9f-4d37ec3d0aasm1507302173.84.2024.09.16.08.09.02
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 16 Sep 2024 08:09:02 -0700 (PDT)
-X-BeenThere: xen-devel@lists.xenproject.org
-List-Id: Xen developer discussion <xen-devel.lists.xenproject.org>
-List-Unsubscribe: <https://lists.xenproject.org/mailman/options/xen-devel>,
- <mailto:xen-devel-request@lists.xenproject.org?subject=unsubscribe>
-List-Post: <mailto:xen-devel@lists.xenproject.org>
-List-Help: <mailto:xen-devel-request@lists.xenproject.org?subject=help>
-List-Subscribe: <https://lists.xenproject.org/mailman/listinfo/xen-devel>,
- <mailto:xen-devel-request@lists.xenproject.org?subject=subscribe>
-Errors-To: xen-devel-bounces@lists.xenproject.org
-Precedence: list
-Sender: "Xen-devel" <xen-devel-bounces@lists.xenproject.org>
-X-Inumbo-ID: 9c990415-743d-11ef-99a2-01e77a169b0f
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1726499343; x=1727104143; darn=lists.xenproject.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=z9fGayqu8/3BSy8pNgZk7M/4P7YOiJj/gcULOkYYJOg=;
-        b=V3FaZAZFR6mOelvJJfOo8+gD3EtSRLxaRV5D3ZaPE1gbj7RRCh2/ZM11SjNqGkYPPj
-         QpuW5tmOXxJozOXZ2c1CkzANPK24Leq7OZVNgQZR0l5MrseFxEiuU6GKYjavddClDfvv
-         yqHM4oBFbJCh2gFRXrGSiPwb/1YDUCi2INocjsF50wGCy3mYZfCV5qrIbZvEKJRMUfhF
-         UDsOReqH/VQN7cUQ2sAZYECo8zwdq2H8zYK8nvZqQ5xD3aStcG9AuDKvDyGh8Cg5w+yA
-         /f/Fzwuio0vqGkFpmtaU5YCJSzYn1prmiZsU3jpXkVGZnSmEYGsuM25CsPFXzhnhW9cR
-         QcbA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1726499343; x=1727104143;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=z9fGayqu8/3BSy8pNgZk7M/4P7YOiJj/gcULOkYYJOg=;
-        b=r6eyrm+eSGUegBvSt3Imnf7FVfaihuuEAEY2+OHl4AO/lMjzrGHMw6fbCtIpotS1vA
-         KCazv5g/T3QEbZ1m0rFCDX+rz+tfvFoY1LSlytQHJBjec+g/208E5fHMvqB1QeaJsFrK
-         LAMTimpJUXibmcdx8VbvAqBGjo7MOht8YoZH15+f1vfehCdE6ZRA6HiArLxFHmuh66gQ
-         iFb9LXekrink/rnBuNxsVKsMhOEcY0jYtjrn+CnuujcZmwuSnR89KVyHznaKzd/gobHb
-         4NQ4SEm6EMki/zptYjYliM8uHhHH60Uf/a6YDPY2f4oxZSpsvHQtHOagrLiU7VO8jjFz
-         zj9Q==
-X-Forwarded-Encrypted: i=1; AJvYcCXwv/i3aC1+8qas8x2GcB5kAEK01018yyMF4CTKSppCTrNvQEtlkz7vNueVZKBDV4TPgBbqpOZ/9ew=@lists.xenproject.org
-X-Gm-Message-State: AOJu0Yyax17ep94wugjK7jguxFsSMPh9isEaG9oxylqRPWnHnsDYCYcm
-	8oCPBgJHGMbMUZa8a/WNhaU/J3DId9PVEpQW/eMzq7/yhiqmFuLBS54B75h2
-X-Received: by 2002:a05:6e02:12e7:b0:3a0:8eb3:5160 with SMTP id e9e14a558f8ab-3a08eb35230mr80173955ab.11.1726499343305;
-        Mon, 16 Sep 2024 08:09:03 -0700 (PDT)
-From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: sstabellini@kernel.org,
-	anthony@xenproject.org,
-	paul@xen.org,
-	peter.maydell@linaro.org,
-	alex.bennee@linaro.org,
-	edgar.iglesias@amd.com,
-	xen-devel@lists.xenproject.org,
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Eduardo Habkost <eduardo@habkost.net>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	qemu-arm@nongnu.org
-Subject: [PATCH v1 2/4] hw/xen: xenpvh: Disable buffered IOREQs for ARM
-Date: Mon, 16 Sep 2024 17:08:50 +0200
-Message-ID: <20240916150853.1216703-3-edgar.iglesias@gmail.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20240916150853.1216703-1-edgar.iglesias@gmail.com>
-References: <20240916150853.1216703-1-edgar.iglesias@gmail.com>
+       spf=pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=jonathan.cameron@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Received: from mail.maildlp.com (unknown [172.18.186.231])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4X7FTX3spvz6D9JF;
+	Tue, 17 Sep 2024 16:35:12 +0800 (CST)
+Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
+	by mail.maildlp.com (Postfix) with ESMTPS id 761F0140B55;
+	Tue, 17 Sep 2024 16:38:58 +0800 (CST)
+Received: from localhost (10.48.145.97) by frapeml500008.china.huawei.com
+ (7.182.85.71) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Tue, 17 Sep
+ 2024 10:38:57 +0200
+Date: Tue, 17 Sep 2024 09:38:55 +0100
+From: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
+To: Zhao Liu <zhao1.liu@intel.com>
+CC: "Daniel P .\" =?ISO-8859-1?Q?Berrang=E9?= <berrange@redhat.com>, Igor  Mammedov <imammedo@redhat.com>, Eduardo Habkost <eduardo@habkost.net>, Marcel  Apfelbaum <marcel.apfelbaum@gmail.com>, Philippe =?ISO-8859-1?Q?Ma?=  =?ISO-8859-1?Q?thieu-Daud=E9?= <philmd@linaro.org>, Yanan Wang  <wangyanan55@huawei.com>,  Michael S.Tsirkin  <mst@redhat.com>, Paolo Bonzini  <pbonzini@redhat.com>, Richard Henderson <richard.henderson@linaro.org>, Eric  Blake <eblake@redhat.com>, Markus Armbruster <armbru@redhat.com>, Marcelo  Tosatti <mtosatti@redhat.com>, Alex =?ISO-8859-1?Q?Benn=E9e?=  <alex.bennee@linaro.org>, Peter Maydell <peter.maydell@linaro.org>, Sia Jee  Heng <jeeheng.sia@starfivetech.com>, Alireza Sanaee  <alireza.sanaee@huawei.com>, qemu-devel@nongnu.org, kvm@vger.kernel.org,  qemu-riscv@nongnu.org, qemu-arm@nongnu.org, Zhenyu Wang  <zhenyu.z.wang@intel.com>, Dapeng Mi <dapeng1.mi@linux.intel.com>, Yongwei Ma  <yongwei.ma@intel.com>"@domain.invalid
+Subject: Re: [PATCH v2 1/7] hw/core: Make CPU topology enumeration
+ arch-agnostic
+Message-ID: <20240917093855.00004745@Huawei.com>
+In-Reply-To: <20240908125920.1160236-2-zhao1.liu@intel.com>
+References: <20240908125920.1160236-1-zhao1.liu@intel.com>
+	<20240908125920.1160236-2-zhao1.liu@intel.com>
+Organization: Huawei Technologies Research and Development (UK) Ltd.
+X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-TUID: pZI13Iv0NXkB
+Content-Type: text/plain; charset="US-ASCII"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.48.145.97]
+X-ClientProxiedBy: lhrpeml100002.china.huawei.com (7.191.160.241) To
+ frapeml500008.china.huawei.com (7.182.85.71)
+X-TUID: NSxPRgB7SbY8
 
-From: "Edgar E. Iglesias" <edgar.iglesias@amd.com>
+On Sun,  8 Sep 2024 20:59:14 +0800
+Zhao Liu <zhao1.liu@intel.com> wrote:
 
-Add a way to enable/disable buffered IOREQs for PVH machines
-and disable them for ARM. ARM does not support buffered
-IOREQ's nor the legacy way to map IOREQ info pages.
+> Cache topology needs to be defined based on CPU topology levels. Thus,
+> define CPU topology enumeration in qapi/machine.json to make it generic
+> for all architectures.
+> 
+> To match the general topology naming style, rename CPU_TOPO_LEVEL_* to
+> CPU_TOPOLOGY_LEVEL_*, and rename SMT and package levels to thread and
+> socket.
+> 
+> Also, enumerate additional topology levels for non-i386 arches, and add
+> a CPU_TOPOLOGY_LEVEL_DEFAULT to help future smp-cache object to work
+> with compatibility requirement of arch-specific cache topology models.
+> 
+> Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
+> Tested-by: Yongwei Ma <yongwei.ma@intel.com>
 
-See the following for more details:
-https://xenbits.xen.org/gitweb/?p=xen.git;a=commitdiff;h=2fbd7e609e1803ac5e5c26e22aa8e4b5a6cddbb1
-https://xenbits.xen.org/gitweb/?p=xen.git;a=blob;f=xen/arch/arm/ioreq.c;h=2e829d2e7f3760401b96fa7c930e2015fb1cf463;hb=HEAD#l138
-
-Signed-off-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
----
- hw/arm/xen-pvh.c                | 3 +++
- hw/i386/xen/xen-pvh.c           | 3 +++
- hw/xen/xen-pvh-common.c         | 2 +-
- include/hw/xen/xen-pvh-common.h | 3 +++
- 4 files changed, 10 insertions(+), 1 deletion(-)
-
-diff --git a/hw/arm/xen-pvh.c b/hw/arm/xen-pvh.c
-index 04cb9855af..28af3910ea 100644
---- a/hw/arm/xen-pvh.c
-+++ b/hw/arm/xen-pvh.c
-@@ -66,6 +66,9 @@ static void xen_arm_machine_class_init(ObjectClass *oc, void *data)
-      */
-     mc->max_cpus = GUEST_MAX_VCPUS;
- 
-+    /* Xen/ARM does not use buffered IOREQs.  */
-+    xpc->handle_bufioreq = HVM_IOREQSRV_BUFIOREQ_OFF;
-+
-     /* List of supported features known to work on PVH ARM.  */
-     xpc->has_tpm = true;
-     xpc->has_virtio_mmio = true;
-diff --git a/hw/i386/xen/xen-pvh.c b/hw/i386/xen/xen-pvh.c
-index 45645667e9..f1f02d3311 100644
---- a/hw/i386/xen/xen-pvh.c
-+++ b/hw/i386/xen/xen-pvh.c
-@@ -89,6 +89,9 @@ static void xen_pvh_machine_class_init(ObjectClass *oc, void *data)
-     /* We have an implementation specific init to create CPU objects.  */
-     xpc->init = xen_pvh_init;
- 
-+    /* Enable buffered IOREQs.  */
-+    xpc->handle_bufioreq = HVM_IOREQSRV_BUFIOREQ_ATOMIC;
-+
-     /*
-      * PCI INTX routing.
-      *
-diff --git a/hw/xen/xen-pvh-common.c b/hw/xen/xen-pvh-common.c
-index 08641fdcec..76a9b2b945 100644
---- a/hw/xen/xen-pvh-common.c
-+++ b/hw/xen/xen-pvh-common.c
-@@ -195,7 +195,7 @@ static void xen_pvh_init(MachineState *ms)
- 
-     xen_pvh_init_ram(s, sysmem);
-     xen_register_ioreq(&s->ioreq, ms->smp.max_cpus,
--                       HVM_IOREQSRV_BUFIOREQ_ATOMIC,
-+                       xpc->handle_bufioreq,
-                        &xen_memory_listener);
- 
-     if (s->cfg.virtio_mmio_num) {
-diff --git a/include/hw/xen/xen-pvh-common.h b/include/hw/xen/xen-pvh-common.h
-index bc09eea936..62c44a1ce7 100644
---- a/include/hw/xen/xen-pvh-common.h
-+++ b/include/hw/xen/xen-pvh-common.h
-@@ -43,6 +43,9 @@ struct XenPVHMachineClass {
-      */
-     int (*set_pci_link_route)(uint8_t line, uint8_t irq);
- 
-+    /* Allow implementations to optionally enable buffered ioreqs.  */
-+    int handle_bufioreq;
-+
-     /*
-      * Each implementation can optionally enable features that it
-      * supports and are known to work.
--- 
-2.43.0
-
+LGTM
+Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>

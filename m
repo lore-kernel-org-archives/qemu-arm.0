@@ -1,104 +1,103 @@
-Received: by 2002:a17:504:1bc1:b0:1be9:327d:8ee3 with SMTP id v1csp980284njg;
-        Wed, 18 Sep 2024 12:29:33 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWMQ12a7o0OstHZEASuJvU8hhGRnoryKera/w9iRXo6EBK9968Db8NoSUx3A6g8seg23uCWDuXYB+YQfQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IGrNvgaObs0UYlvfR4X1lHRdYTphY2ZPFyGxf9EkyIV2Xqgn87QFjNY6LwCjmH6dPetKyN9
-X-Received: by 2002:ac8:5802:0:b0:458:3eb3:7496 with SMTP id d75a77b69052e-458603edb1fmr412829771cf.45.1726687773056;
-        Wed, 18 Sep 2024 12:29:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1726687773; cv=none;
+Received: by 2002:a17:504:1bc1:b0:1be9:327d:8ee3 with SMTP id v1csp980367njg;
+        Wed, 18 Sep 2024 12:29:47 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWHJg/TD0aBs6Fstrrioia85RZm46Fss2hA3tYaCA8m/UzWrAGXIfTz0rrLbeb6zptSQHTPfwnTaAuerQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IH1+NMXqB4ifvsVH9ibsc0QYncUMJ7Bjpq5HFzOZ62dwkHd4jxvXOLKTfPyrMBR25NaPaMM
+X-Received: by 2002:ac8:5907:0:b0:457:d1e9:fc1f with SMTP id d75a77b69052e-458603f5479mr376689431cf.40.1726687787658;
+        Wed, 18 Sep 2024 12:29:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1726687787; cv=none;
         d=google.com; s=arc-20240605;
-        b=h3wJRDyr1YvCBdRsjlpe31dhqa/SLsJxYBViBD69N463Ne04k9npnCFXmp/Ig4k6YS
-         WJSM29UvRaFgZR/Yc6cvEcvhi8ld94t+WPwEiCb6RooGeZu6jhjMFyG1ubh5fSYsNy/K
-         Yy7o7Ev8pRq4qlmq+C2mjAMkmh92p0H+yuTq2mOoIZ73rq3d8WcRLs3jNw2mIFmGUpEy
-         YAur62/N8kuknkvhVQN30gv4srYA3UuqFPqUeapM29eE0JTu7jaXLQy0H/rO9IVGEym+
-         U65z9sPfYhyt9HQhK2BG/zCRMS6UzC8Ey8jKsMM7Mc06hG6BfstK0SUidJh161BHvtSs
-         meoQ==
+        b=jjg7QQeev7uS3HfOBAJeCJZP/li5Sao5LLY71CM+of+7hiLfVfpq9X1C9+b7ONNSKs
+         0yOKYPQkrW9zLSvctGh2C7E4Xhxth9PgFN7re2WwrFqh3h2GLzxYa/7M99kDBpy/TktM
+         75VkPfxN6fcURELr9EGZn1W/p5VDFHvUudG20eCs/ZBdsofP6/cysPdAwVlXjGk6pg6o
+         +8YvKqLDgKg7aHI1za3nrIG4ozuj1Nf4139To2fpwMRGVLda2sY0j1oF0LuvSWIng8Ys
+         tXeWu+cVjXX1eZLm3EP+bK7pLNb+yIe3b6VDx9bsgwrpDq1lFVDNOTIvyxiCptau4z3z
+         h+gg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
          :references:mime-version:in-reply-to:date:dkim-signature;
-        bh=j5CsnkrzorKCa1JKdBu6zJdVCIAE7wiQPKdUlC6Xodk=;
+        bh=LH2iO35jx1TQ4g6EFz+L7zqP2G1PAY0VCA+0NbB5ci8=;
         fh=2mssAqYKJuMcD/Ya5YUzhxP7uPixmdZ7O75Bi0gtEhM=;
-        b=h81WHT6ON2p1W8wHveHzN1x+cBat+C6G7MiwQO4m3TPhZOZqOg0kZG2s7E7AuW6/0G
-         16DuOxQ3VrDXOIJPh04+OQdo7YmuE+ILr4qYicD90iVaOrI1J893HZVnatVam81AqpMt
-         DMN4I2HgJMHayoCbQIUmHggK4ibk5ygIRT945fmshosPMEgWtF1r3CnwUH4pyupUBK/D
-         UXQvDyWxOBiKctsMHw4ho9jShfxahUjlhHo18RTdjv9bX7cgU+haEDXXz+Tl1mUYr2aG
-         /IorYLiPoKf3k9bkRIxjVImR5YgHKphopShWwcVuU0FVEg5TRfBOmgkjHwQ8TjLs9n53
-         S2cg==;
+        b=IRUuXIaI+dCxOIdwuTEh9/RRbEzFtJySPEWFfRJgg0N2Nnk2HG+eLd+ANmd3grn4En
+         ApK4gtzPh4vlYwSA6FrWYlSapPe8m+dg9Xvf6glPhGQ+gy2SYrSz3b8KchbZIcveIIdm
+         BxhGtLQBMIwZkeex4jpnJWo0rGGqPJNDn+hHN705nTTL+jhwzJVXGXLL1EP8cgUyD9Fq
+         dEdajDgx6V9xr+xwL5kABpBBi2cy9o8aJ8MuljN1kT9pUMuuYv+ef6soofCSLh4AI3TB
+         /PC6jXdJq8ELfbmfCjky57dIC14ncEnIKZY32B4GQqGLd2zWpAz9xYaO0BAw+NAOeEgf
+         SkEA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=eDl230l9;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@google.com header.s=20230601 header.b=SWNU0u0X;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-45b1790ef67si1014311cf.415.2024.09.18.12.29.32
+        by mx.google.com with ESMTPS id d75a77b69052e-45b178ed76bsi1203351cf.294.2024.09.18.12.29.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 18 Sep 2024 12:29:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 18 Sep 2024 12:29:47 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=eDl230l9;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@google.com header.s=20230601 header.b=SWNU0u0X;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sr0H6-00064v-BU; Wed, 18 Sep 2024 15:23:40 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sr0Gy-0005Yo-IB; Wed, 18 Sep 2024 15:23:32 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <3tSjrZgUKCvAlSnahYggYdW.UgeiWem-VWnWdfgfYfm.gjY@flex--tavip.bounces.google.com>)
- id 1sr0H4-0005wW-7T
- for qemu-devel@nongnu.org; Wed, 18 Sep 2024 15:23:38 -0400
+ <3qyjrZgUKCOYbIdQXOWWOTM.KWUYMUc-IZUVWVOVc.WZO@flex--tavip.bounces.google.com>)
+ id 1sr0Gu-0005IY-UL
+ for qemu-arm@nongnu.org; Wed, 18 Sep 2024 15:23:28 -0400
 Received: from mail-pf1-x44a.google.com ([2607:f8b0:4864:20::44a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from
- <3tSjrZgUKCvAlSnahYggYdW.UgeiWem-VWnWdfgfYfm.gjY@flex--tavip.bounces.google.com>)
- id 1sr0H2-0007Py-EK
- for qemu-devel@nongnu.org; Wed, 18 Sep 2024 15:23:37 -0400
+ <3qyjrZgUKCOYbIdQXOWWOTM.KWUYMUc-IZUVWVOVc.WZO@flex--tavip.bounces.google.com>)
+ id 1sr0Gs-0007NO-9B
+ for qemu-arm@nongnu.org; Wed, 18 Sep 2024 15:23:27 -0400
 Received: by mail-pf1-x44a.google.com with SMTP id
- d2e1a72fcca58-7190c5e73cdso70788b3a.0
- for <qemu-devel@nongnu.org>; Wed, 18 Sep 2024 12:23:35 -0700 (PDT)
+ d2e1a72fcca58-71985a317fcso49526b3a.1
+ for <qemu-arm@nongnu.org>; Wed, 18 Sep 2024 12:23:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1726687415; x=1727292215; darn=nongnu.org;
+ d=google.com; s=20230601; t=1726687404; x=1727292204; darn=nongnu.org;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:from:to:cc:subject:date:message-id:reply-to;
- bh=j5CsnkrzorKCa1JKdBu6zJdVCIAE7wiQPKdUlC6Xodk=;
- b=eDl230l9bIYG93zlieor77rVvz/LSQXHsKjCBmAdj/na7dDSBz9wizbK88eQD0fZVy
- zBRLyy0W0/4i17Vj/vvYkjdR9k5O1xWoTyo6AWP8HaAGKM9wRF4C8xyX4XjsgK5LCn/S
- Z6stsTvMjYdnw3+/PCS3Wiwq5gS8FKr/b/ilx8tpu6TIcx0LJqJEj0P6KgV3EPXQAG8r
- fBut1c6t4e+wJbbntsvaMvX8Kl+4f3X/oBAz9MjFnZ9geEgDOqN++VC4pefe9oTxTSnh
- I1Xl+aKuFWKT0tVqTzSzg772pdu4OeqisbkGr/yWobJfq895D6LgA63OrelzuHteds3t
- UN3g==
+ bh=LH2iO35jx1TQ4g6EFz+L7zqP2G1PAY0VCA+0NbB5ci8=;
+ b=SWNU0u0XM1j05zkWPKa4tq3HAJObz4EacyEiIjLCjZdcgCcRRZBGhY4MvLdd+O5+7l
+ A9flK2I9tl/tW3QxscYh4NrlxrwKJ2R46JDeRX0XbVFopa8OlmOB4Hf5J8IHmAHZPPNV
+ jnC6jCV35oxj9l4lJIjC+YkQVE7dZ9wPxXc0b6NB0hkHvByJAejUuSl/kAtLXFsLI9fI
+ boJDRNGYRNfSAGt80X1pdA0UkDCgvui1alRavuKTZHlMmdtAYjzgM9nsvmPOF+5HWOyd
+ Uy8PEUj9HFY9ml3slB3447oWI/U2vspYTCqRRM0EZuBJ4OnWVMLF/+JQEmpWfy2+oTvb
+ kujQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1726687415; x=1727292215;
+ d=1e100.net; s=20230601; t=1726687404; x=1727292204;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=j5CsnkrzorKCa1JKdBu6zJdVCIAE7wiQPKdUlC6Xodk=;
- b=MRrR5aYbJLcFBWjAWyn2m6FgeSMRxjsnwB0jM5ZqXCpF9xBNpFsAuEydtakW4SUUD1
- BBhNGflc/bbExl3dwkFcxawwe5EpPHacNjJdbCKVQ94bEz27yYAVMnnP9qZRafDZK/fx
- dTmxKQOU/hImO1vaNaaGc8otZejQfHhnDZtDjlFn28eJlPircOm7E8e8Tt5yhHsQhlF5
- 7vGZZnnkSAr/rmcFkOr75vKP5Lv6CeMHJyWq7yNf1USSARFrcDY66KY3TzFXBhpy6DUN
- dPOoD/V1j0jctDVmChzJvLifIda55ItjRVXevt/FnEODGeqBBEcqxIQNVvsApCswOGkL
- Y/eQ==
-X-Gm-Message-State: AOJu0YymOag+KqVYeCMy/YjT8lvXGuY+pmtqGHGq663R5XZAgLPfK/bT
- Sd8k7d4njRDiv3kIAlfjr+dMAfOSaaG1AvP/dwugjyFnpNjBvgTrPy8vOr9Dvff3NQhWorgic9v
- +ZDUhSUG3hJvYvOjpb6ezMEcyWPGtTO7WV5TJnPscAKXeegGVPYrXCt9w7pvWALww27jwRH0gPW
- HDA+MenntcZ9ztRQt6To6Kzlk5hw==
+ bh=LH2iO35jx1TQ4g6EFz+L7zqP2G1PAY0VCA+0NbB5ci8=;
+ b=PHZthtMX2Lka9TZN8/hwzPVsCGsE65NqZglq+1FTNKDh6wOOUuYBvK8Rt40tU7nHo9
+ tjVlFGHAm6DEf+tGhLNHgLB/Tr/RMdKr+AH16b1+fR40CnXO+Wx6uOmBo8C5U4v/v3lW
+ Y8ddhuFhO7eaL00XpDn5K660FiBt3TUIzzJIGAx3Fg1pmtzGcK2cbdGZIJTZkz5Q/EfK
+ bzZXXJE0gLzSSsER1OPp++JUTvg3/oVBmlCfk8ux3Mt5SovMYISs7aBlt+rpZV4RNjX2
+ yxdWEPCJMhZO8Rq0Rqun/HwR6QbaMhpr9sN78L2hNAMyHNig9cFdiJy62OfjIqzbzwuk
+ tSZA==
+X-Gm-Message-State: AOJu0YxWbfj6pJJf6n2nFQDnfFnOre/GFpqHQkU/dLKEPkfEXdhe0wzw
+ QyRplH8UaSR1SGXocOljK6wjyH8eFzyKGXG4syjKRAyc62BDOufHKfso6rHWHsKji7w7pMO9Gg=
+ =
 X-Received: from warp10.c.googlers.com ([fda3:e722:ac3:cc00:24:72f4:c0a8:750])
- (user=tavip job=sendgmr) by 2002:a05:6a00:6419:b0:70d:1285:bbcf
+ (user=tavip job=sendgmr) by 2002:a05:6a00:6f28:b0:70e:9de1:992e
  with SMTP id
- d2e1a72fcca58-71925fa7878mr71729b3a.0.1726687413707; Wed, 18 Sep 2024
- 12:23:33 -0700 (PDT)
-Date: Wed, 18 Sep 2024 12:22:48 -0700
+ d2e1a72fcca58-71926060114mr60644b3a.1.1726687403885; Wed, 18 Sep 2024
+ 12:23:23 -0700 (PDT)
+Date: Wed, 18 Sep 2024 12:22:43 -0700
 In-Reply-To: <20240918192254.3136903-1-tavip@google.com>
 Mime-Version: 1.0
 References: <20240918192254.3136903-1-tavip@google.com>
 X-Mailer: git-send-email 2.46.0.662.g92d0881bb0-goog
-Message-ID: <20240918192254.3136903-21-tavip@google.com>
-Subject: [PATCH 20/25] tests/qtest: add tests for flexcomm i2c
+Message-ID: <20240918192254.3136903-16-tavip@google.com>
+Subject: [PATCH 15/25] tests/qtest: add register access macros and functions
 From: Octavian Purdila <tavip@google.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, stefanst@google.com, pbonzini@redhat.com, 
@@ -108,7 +107,7 @@ Cc: qemu-arm@nongnu.org, stefanst@google.com, pbonzini@redhat.com,
  crosa@redhat.com, lvivier@redhat.com
 Content-Type: text/plain; charset="UTF-8"
 Received-SPF: pass client-ip=2607:f8b0:4864:20::44a;
- envelope-from=3tSjrZgUKCvAlSnahYggYdW.UgeiWem-VWnWdfgfYfm.gjY@flex--tavip.bounces.google.com;
+ envelope-from=3qyjrZgUKCOYbIdQXOWWOTM.KWUYMUc-IZUVWVOVc.WZO@flex--tavip.bounces.google.com;
  helo=mail-pf1-x44a.google.com
 X-Spam_score_int: -95
 X-Spam_score: -9.6
@@ -116,221 +115,111 @@ X-Spam_bar: ---------
 X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=unavailable autolearn_force=no
+ USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: kSzajIsnrO3Z
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 5YrP+gAOvBW7
 
-Add master mode tests for flexcomm i2c.
+Add utility macros for accessing register or register bit fields in
+tests, e.g.:
+
+  REG32_WRITE(FLEXCOMM, PSELID, persel);
+  g_assert(REG32_READ_FIELD(FLEXCOMM, PSELID, PERSEL) == persel);
 
 Signed-off-by: Octavian Purdila <tavip@google.com>
 ---
- tests/qtest/flexcomm-i2c-test.c | 170 ++++++++++++++++++++++++++++++++
- tests/qtest/meson.build         |   2 +-
- 2 files changed, 171 insertions(+), 1 deletion(-)
- create mode 100644 tests/qtest/flexcomm-i2c-test.c
+ tests/qtest/reg-utils.h | 70 +++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 70 insertions(+)
+ create mode 100644 tests/qtest/reg-utils.h
 
-diff --git a/tests/qtest/flexcomm-i2c-test.c b/tests/qtest/flexcomm-i2c-test.c
+diff --git a/tests/qtest/reg-utils.h b/tests/qtest/reg-utils.h
 new file mode 100644
-index 0000000000..45f31da7de
+index 0000000000..e09aaf3333
 --- /dev/null
-+++ b/tests/qtest/flexcomm-i2c-test.c
-@@ -0,0 +1,170 @@
++++ b/tests/qtest/reg-utils.h
+@@ -0,0 +1,70 @@
 +/*
-+ * Copyright (c) 2024 Google LLC.
++ * Register access utilities for device tests.
++ *
++ * Copyright (C) 2024 Google LLC
 + *
 + * SPDX-License-Identifier: GPL-2.0-or-later
 + *
 + * This work is licensed under the terms of the GNU GPL, version 2 or later.
 + * See the COPYING file in the top-level directory.
 + */
++#ifndef _REG_UTILS_H
++#define _REG_UTILS_H
 +
-+#include "qemu/osdep.h"
++#include "libqtest-single.h"
++#include "hw/registerfields.h"
 +
-+#include "qemu/config-file.h"
-+#include "qemu/log.h"
-+#include "qemu/module.h"
-+#include "qapi/error.h"
-+#include "qemu/sockets.h"
-+#include "sysemu/sysemu.h"
-+#include "qemu/main-loop.h"
-+#include "qemu/option.h"
-+#include "exec/memory.h"
-+#include "hw/irq.h"
-+#include "hw/qdev-properties.h"
-+#include "hw/qdev-core.h"
++#ifdef DEBUG_REG
++#define debug(fmt, args...) fprintf(stderr, fmt, ## args)
++#else
++#define debug(fmt, args...)
++#endif
 +
-+#include "hw/misc/flexcomm.h"
-+#include "hw/arm/svd/flexcomm_i2c.h"
-+#include "hw/arm/svd/rt500.h"
-+#include "hw/misc/i2c_tester.h"
-+#include "reg-utils.h"
++#define _REG_OFF(mod, reg) (A_##mod##_##reg)
 +
-+#define PERIPH_ADDR (0x50)
-+#define INVALID_ADDR (0x10)
++#define REG32_READ(mod, reg)                                            \
++    ({                                                                  \
++        uint32_t value;                                                 \
++        value = readl(mod##_BASE + _REG_OFF(mod, reg));                 \
++        debug("[%s] -> %08x\n", #reg, value);                           \
++        value;                                                          \
++    })
 +
-+#define REG_ADDR 11
-+#define REG_VALUE 0xAA
++#define REG32_WRITE(mod, reg, value)                                    \
++    do {                                                                \
++        debug("[%s] <- %08x\n", #reg, value);                           \
++        writel(mod##_BASE + _REG_OFF(mod, reg), value);                 \
++    } while (0)
 +
-+#define FLEXCOMM_BASE RT500_FLEXCOMM0_BASE
-+#define FLEXCOMM_I2C_BASE RT500_FLEXCOMM0_BASE
-+#define DEVICE_NAME "/machine/soc/flexcomm0"
++#define REG_FIELD_VAL(v, mod, reg, field)                               \
++    FIELD_EX32(v, mod##_##reg, field)                                   \
 +
-+struct TestState {
-+    QTestState *qtest;
-+};
++#define REG32_READ_FIELD(mod, reg, field)                   \
++    REG_FIELD_VAL(REG32_READ(mod, reg), mod, reg, field)
 +
-+static void master_test(gconstpointer user_data)
-+{
-+    struct TestState *t = (struct TestState *)user_data;
-+    uint32_t tmp;
++#define REG32_WRITE_FIELD(mod, reg, field, val)                         \
++    do {                                                                \
++        uint32_t _tmp = REG32_READ(mod, reg);                           \
++        _tmp = FIELD_DP32(_tmp, mod##_##reg, field, val);               \
++        REG32_WRITE(mod, reg, _tmp);                                    \
++    } while (0)
 +
-+    qtest_irq_intercept_out_named(t->qtest, DEVICE_NAME,
-+                                  SYSBUS_DEVICE_GPIO_IRQ);
++#define REG32_WRITE_FIELD_NOUPDATE(mod, reg, field, val)                \
++    do {                                                                \
++        uint32_t _tmp = FIELD_DP32(0, mod##_##reg, field, val);         \
++        REG32_WRITE(mod, reg, _tmp);                                    \
++    } while (0)
 +
-+    /* Select and lock I2C */
-+    tmp = FLEXCOMM_PERSEL_I2C;
-+    FIELD_DP32(tmp, FLEXCOMM_PSELID, LOCK, 1);
-+    REG32_WRITE(FLEXCOMM, PSELID, tmp);
++#define WAIT_REG32_FIELD(ns, mod, reg, field, val)                      \
++    do {                                                                \
++        clock_step(ns);                                                 \
++        g_assert_cmpuint(REG32_READ_FIELD(mod, reg, field), ==, val);   \
++    } while (0)
 +
-+    /* Enable master mode */
-+    REG32_WRITE_FIELD(FLEXCOMM_I2C, CFG, MSTEN, 1);
-+    g_assert(REG32_READ_FIELD(FLEXCOMM_I2C, CFG, MSTEN) == 1);
++#define REG32_READ_FAIL(mod, reg) \
++    readl_fail(mod##_BASE + _REG_OFF(mod, reg))
 +
-+    g_assert(REG32_READ_FIELD(FLEXCOMM_I2C, STAT, MSTPENDING) == 1);
-+    g_assert(REG32_READ_FIELD(FLEXCOMM_I2C, STAT, MSTSTATE) ==
-+             MSTSTATE_IDLE);
++#define REG32_WRITE_FAIL(mod, reg, value) \
++    writel_fail(mod##_BASE + _REG_OFF(mod, reg), value)
 +
-+    /* Enable interrupts */
-+    REG32_WRITE_FIELD(FLEXCOMM_I2C, INTENSET, MSTPENDINGEN, 1);
-+    g_assert_true(get_irq(0));
-+
-+    /* start for invalid address  */
-+    REG32_WRITE(FLEXCOMM_I2C, MSTDAT, INVALID_ADDR);
-+    REG32_WRITE_FIELD_NOUPDATE(FLEXCOMM_I2C, MSTCTL, MSTSTART, 1);
-+    g_assert(REG32_READ_FIELD(FLEXCOMM_I2C, STAT, MSTSTATE) ==
-+             MSTSTATE_NAKADR);
-+    g_assert_true(get_irq(0));
-+    REG32_WRITE_FIELD_NOUPDATE(FLEXCOMM_I2C, MSTCTL, MSTSTOP, 1);
-+
-+    /* write past the last register */
-+    REG32_WRITE_FIELD(FLEXCOMM_I2C, MSTDAT, DATA, PERIPH_ADDR);
-+    REG32_WRITE_FIELD_NOUPDATE(FLEXCOMM_I2C, MSTCTL, MSTSTART, 1);
-+    g_assert_true(get_irq(0));
-+    g_assert(REG32_READ_FIELD(FLEXCOMM_I2C, STAT, MSTSTATE) ==
-+             MSTSTATE_TXRDY);
-+    REG32_WRITE_FIELD(FLEXCOMM_I2C, MSTDAT, DATA, I2C_TESTER_NUM_REGS + 10);
-+    REG32_WRITE_FIELD_NOUPDATE(FLEXCOMM_I2C, MSTCTL, MSTCONTINUE, 1);
-+    g_assert_true(get_irq(0));
-+    g_assert(REG32_READ_FIELD(FLEXCOMM_I2C, STAT, MSTSTATE) ==
-+             MSTSTATE_TXRDY);
-+    REG32_WRITE_FIELD_NOUPDATE(FLEXCOMM_I2C, MSTCTL, MSTCONTINUE, 1);
-+    g_assert_true(get_irq(0));
-+    g_assert(REG32_READ_FIELD(FLEXCOMM_I2C, STAT, MSTSTATE) ==
-+             MSTSTATE_NAKDAT);
-+    REG32_WRITE_FIELD_NOUPDATE(FLEXCOMM_I2C, MSTCTL, MSTSTOP, 1);
-+
-+    /* write value to register */
-+    REG32_WRITE_FIELD(FLEXCOMM_I2C, MSTDAT, DATA, PERIPH_ADDR);
-+    REG32_WRITE_FIELD_NOUPDATE(FLEXCOMM_I2C, MSTCTL, MSTSTART, 1);
-+    g_assert_true(get_irq(0));
-+    g_assert(REG32_READ_FIELD(FLEXCOMM_I2C, STAT, MSTSTATE) ==
-+             MSTSTATE_TXRDY);
-+    REG32_WRITE_FIELD(FLEXCOMM_I2C, MSTDAT, DATA, REG_ADDR);
-+    REG32_WRITE_FIELD_NOUPDATE(FLEXCOMM_I2C, MSTCTL, MSTCONTINUE, 1);
-+    g_assert_true(get_irq(0));
-+    g_assert(REG32_READ_FIELD(FLEXCOMM_I2C, STAT, MSTSTATE) ==
-+             MSTSTATE_TXRDY);
-+    REG32_WRITE_FIELD(FLEXCOMM_I2C, MSTDAT, DATA, REG_VALUE);
-+    REG32_WRITE_FIELD_NOUPDATE(FLEXCOMM_I2C, MSTCTL, MSTCONTINUE, 1);
-+    g_assert_true(get_irq(0));
-+    g_assert(REG32_READ_FIELD(FLEXCOMM_I2C, STAT, MSTSTATE) ==
-+             MSTSTATE_TXRDY);
-+    REG32_WRITE_FIELD_NOUPDATE(FLEXCOMM_I2C, MSTCTL, MSTSTOP, 1);
-+    g_assert_true(get_irq(0));
-+    g_assert(REG32_READ_FIELD(FLEXCOMM_I2C, STAT, MSTSTATE) ==
-+             MSTSTATE_IDLE);
-+
-+    /* read value back from register */
-+    REG32_WRITE_FIELD(FLEXCOMM_I2C, MSTDAT, DATA, PERIPH_ADDR);
-+    REG32_WRITE_FIELD_NOUPDATE(FLEXCOMM_I2C, MSTCTL, MSTSTART, 1);
-+    g_assert_true(get_irq(0));
-+    g_assert(REG32_READ_FIELD(FLEXCOMM_I2C, STAT, MSTSTATE) ==
-+             MSTSTATE_TXRDY);
-+    REG32_WRITE_FIELD(FLEXCOMM_I2C, MSTDAT, DATA, REG_ADDR);
-+    REG32_WRITE_FIELD_NOUPDATE(FLEXCOMM_I2C, MSTCTL, MSTCONTINUE, 1);
-+    g_assert_true(get_irq(0));
-+    g_assert(REG32_READ_FIELD(FLEXCOMM_I2C, STAT, MSTSTATE) ==
-+             MSTSTATE_TXRDY);
-+    REG32_WRITE_FIELD(FLEXCOMM_I2C, MSTDAT, DATA, (PERIPH_ADDR + 1));
-+    REG32_WRITE_FIELD_NOUPDATE(FLEXCOMM_I2C, MSTCTL, MSTSTART, 1);
-+    g_assert_true(get_irq(0));
-+    g_assert(REG32_READ_FIELD(FLEXCOMM_I2C, STAT, MSTSTATE) ==
-+             MSTSTATE_RXRDY);
-+    g_assert_cmpuint(REG32_READ_FIELD(FLEXCOMM_I2C, MSTDAT, DATA), ==,
-+                     REG_VALUE);
-+    REG32_WRITE_FIELD_NOUPDATE(FLEXCOMM_I2C, MSTCTL, MSTSTOP, 1);
-+
-+    /*
-+     * Check that the master ended the transaction (i.e. i2c_end_transfer was
-+     * called). If the master does not properly end the transaction this would
-+     * be seen as a restart and it would not be NACKed.
-+     */
-+    REG32_WRITE_FIELD(FLEXCOMM_I2C, MSTDAT, DATA, INVALID_ADDR);
-+    REG32_WRITE_FIELD_NOUPDATE(FLEXCOMM_I2C, MSTCTL, MSTSTART, 1);
-+
-+    g_assert(REG32_READ_FIELD(FLEXCOMM_I2C, STAT, MSTSTATE) ==
-+             MSTSTATE_NAKADR);
-+    g_assert_true(get_irq(0));
-+    REG32_WRITE_FIELD_NOUPDATE(FLEXCOMM_I2C, MSTCTL, MSTSTOP, 1);
-+
-+    /* Disable interrupts */
-+    REG32_WRITE_FIELD(FLEXCOMM_I2C, INTENCLR, MSTPENDINGCLR, 1);
-+    g_assert_false(get_irq(0));
-+}
-+
-+int main(int argc, char **argv)
-+{
-+    int ret;
-+    struct TestState test;
-+
-+    module_call_init(MODULE_INIT_QOM);
-+    g_test_init(&argc, &argv, NULL);
-+
-+    qtest_add_data_func("/flexcomm-i2c/master", &test, master_test);
-+
-+    test.qtest = qtest_start("-M rt595-evk "
-+                          "-device i2c-tester,address=0x50,bus=/flexcomm0-i2c");
-+    ret = g_test_run();
-+    qtest_end();
-+
-+    return ret;
-+}
-diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-index 663e44f3c6..74fef28551 100644
---- a/tests/qtest/meson.build
-+++ b/tests/qtest/meson.build
-@@ -231,7 +231,7 @@ qtests_arm = \
-   (config_all_devices.has_key('CONFIG_FSI_APB2OPB_ASPEED') ? ['aspeed_fsi-test'] : []) + \
-   (config_all_devices.has_key('CONFIG_STM32L4X5_SOC') and
-    config_all_devices.has_key('CONFIG_DM163')? ['dm163-test'] : []) + \
--  (config_all_devices.has_key('CONFIG_FLEXCOMM') ? ['flexcomm-test', 'flexcomm-usart-test'] : []) + \
-+  (config_all_devices.has_key('CONFIG_FLEXCOMM') ? ['flexcomm-test', 'flexcomm-usart-test', 'flexcomm-i2c-test'] : []) + \
-   ['arm-cpu-features',
-    'boot-serial-test']
- 
++#endif /* _REG_UTILS_H */
 -- 
 2.46.0.662.g92d0881bb0-goog
 

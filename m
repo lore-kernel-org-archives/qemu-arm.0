@@ -1,330 +1,389 @@
-Received: by 2002:a17:504:1bc1:b0:1be9:327d:8ee3 with SMTP id v1csp1036962njg;
-        Wed, 18 Sep 2024 14:48:30 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXn8yC0Pt28wEcTAwMTkJQ7kFEIR5CmWzys8Ry+QXe0I6cYjpkkC//ONu1lRMMMXhaO7bAgn7/r62Sw6Q==@linaro.org
-X-Received: by 2002:a17:903:32c7:b0:205:4bc0:1993 with SMTP id d9443c01a7336-2076e36cb34mr338272645ad.6.1726696110494;
-        Wed, 18 Sep 2024 14:48:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1726696110; cv=none;
-        d=google.com; s=arc-20160816;
-        b=TaFx7NHwNjLCoogkA2xGsohVUIjNJ0v+rnFKBeQJnoPXyCM9DzAe0d78lr8FoZ4Cd8
-         +i5aCLo7p8JihYatdXRIQ8ztaXOzOYtApk3KtsdjXdj4D/Y/qzgIbr3/PeXlfzYa2gNQ
-         NsgPz/pApuWC/M0kEX/mFe8FMzSNFwUmarUaz4zTObkcFk7tDb+n9Ltizb/K9vIVnlpd
-         ndiPcqw9EBmDpLHb0iEtn2kacYdkYGDLBYDZCJLQpAIKCsr8KdMuNXzG3702/IciFy0v
-         t9nYMZSQmCJa0RtFHvABtIpIyvXfzcegWuRy6BHvx3npt2rvhfQ0z9keSbo9zrG3T5WS
-         T7UA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=56eFY0PPKbojN9iHiuO5E17taMmpX3hGYkXam5W4kI8=;
-        fh=mIobgmiFUM0DFO+y7jR/BH1xc9IVbzvFt5YhfgVSb0I=;
-        b=k7nRIVta4RVBOAAYE49N5SSiMw2eXiWL44rZZQTV1NepF1rIuGv3r0EBiFvpAvluch
-         mCaJkNvdbRcdA8hGyATUyMVdHK3yDmhWKuUdc6jzKFF+hPL7wtZe289dzdhEUxRZgTDY
-         kyVa0VbnXQm3K8gSyBF7sx9SSkP2584C9RjS7AdOAReYvgPTMQ6aNuAZonABSxk9fK5M
-         8ykT8UwcscJslyLgbCmCtXMFKVQzE/OgzxYWJ/DhvvT3W0FZKqE3sdb60xU8m/8wuR3e
-         2zv26GgWKNjuKQNe69nZsaQE7DgiXeNiSyZsKTQrpJrVz/vyi/dOo7sxsR+p39ugb8sE
-         hJJA==;
+Received: by 2002:a17:504:1bc1:b0:1be9:327d:8ee3 with SMTP id v1csp1079185njg;
+        Wed, 18 Sep 2024 16:52:55 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVsFSQB4gzbXMWoryiAh8Ir8J8x1ywNBra2tV5xU9MC8o1/UqnsluQZh8JpekGsnWBf4Bsl17UE86SSDA==@linaro.org
+X-Google-Smtp-Source: AGHT+IGX+R4nAHDDA41wmBvS+7WP8WMoseIn5pmcrWqYqMdhR2VVl7vCsepnOPn4wFcWUz1Ep3b8
+X-Received: by 2002:ac8:7f4e:0:b0:458:326d:8995 with SMTP id d75a77b69052e-45860442bb4mr419128031cf.54.1726703575312;
+        Wed, 18 Sep 2024 16:52:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1726703575; cv=none;
+        d=google.com; s=arc-20240605;
+        b=FIY4u/rUl3aJCX3gjZDCXhoLVraDxuWgtT/N5X3ML3TAUIsdmweg6lsR35K1ZjsEXw
+         2mG/qR+u57ZPR0vbgs6Uym9KjGoL3PZQO+215dVnachzb+i2EkUiE0YNf/nJ2lKRad7F
+         hGQhaVNO5QT7cxWwreBzP0ZgudijuIEruUHtNIM5d5ctWIInhBdnaHNeu0JHPx4jfcYo
+         CGUCnZRHISVPb36c9bLFU4pdcyWAKQ6qkbhaVDv5/QSNkAP9DO5+5LkR5DP3ItciO0Am
+         9AYRZMkATYs/0Nyam8CUAtiiFA34pdLU1Mk2NDKAr/tlRoeJWVTDXYbWN5ulAf3zljA+
+         iTWQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:in-reply-to
+         :content-transfer-encoding:content-disposition:mime-version
+         :references:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=evL+cL1zIXxUOEc73t8qN29EBvw/0BYeyTuo8tg+3zM=;
+        fh=r9N72Dyb9PCwxI0x4DwLhOjMuOP/caluBIt3nUZfj3M=;
+        b=I6tT0asbzgc9lPGobUinG9JEqGJ7m5qRg/vuVKnqMS8IvB1PiaakzxPd9YL87QXOqc
+         pnxh1ACJZFGuBLdHaKwq1VFrxCws9wQFopiUZkUfyIBlfmisuXYUyAdrM+u3kUoT1/4j
+         P7A+2fmEVgYt60sFoi4Zn/En4XVoMfwf8Rxo3kTBI2bYGyaveDfMiKTNKmsM2+vNyLbn
+         EAWba2lqH/v3u0o45T+a4rDc0SWKtyT3nh4DmpVHN7n8v5jIb02AhLdHO3ePsWRrhiQH
+         XD4UXUeVZUxjRpcIZpwVLQmG1mkCLXuwjZP08eXqgcThpgbR0P1Iecg13qNjHKj+ZEaj
+         L7hg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=NFyDz9ir;
-       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dkim=pass header.i=@minyard-net.20230601.gappssmtp.com header.s=20230601 header.b=n6WRp1Rf;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dara=neutral header.i=@linaro.org
-Return-Path: <pierrick.bouvier@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d9443c01a7336-2079470f554sor74666025ad.17.2024.09.18.14.48.30
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d75a77b69052e-45b1786b141si5973451cf.160.2024.09.18.16.52.55
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Wed, 18 Sep 2024 14:48:30 -0700 (PDT)
-Received-SPF: pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 18 Sep 2024 16:52:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=NFyDz9ir;
-       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dkim=pass header.i=@minyard-net.20230601.gappssmtp.com header.s=20230601 header.b=n6WRp1Rf;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sr4TG-0002M5-96; Wed, 18 Sep 2024 19:52:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <corey@minyard.net>) id 1sr4TE-0002GW-FS
+ for qemu-arm@nongnu.org; Wed, 18 Sep 2024 19:52:28 -0400
+Received: from mail-oo1-xc2d.google.com ([2607:f8b0:4864:20::c2d])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <corey@minyard.net>) id 1sr4TC-0002LN-5N
+ for qemu-arm@nongnu.org; Wed, 18 Sep 2024 19:52:28 -0400
+Received: by mail-oo1-xc2d.google.com with SMTP id
+ 006d021491bc7-5e56759e6d7so184333eaf.3
+ for <qemu-arm@nongnu.org>; Wed, 18 Sep 2024 16:52:25 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1726696110; x=1727300910; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=56eFY0PPKbojN9iHiuO5E17taMmpX3hGYkXam5W4kI8=;
-        b=NFyDz9irnkyAQCM3UrNk/ig7PucMHsFclHTCGs8NBLNf2ZMB7c3WArkcmqFv/jYnkf
-         3cGBp2JLzhgsVB3+yICPzeLmHV+7XJIhGFsZ3/8n2ilrm7+FM6JEgJSug19KiXP6hUqa
-         /825eRtVzl1NcNoF1YDZoJdwyAMhRrzT5kGsCgIcyX9D6R00FXeU9miLW1PlmisZvLsd
-         YDJ5JsbSd52EcX0p4+3HAIhTuNpPcsRYG9YhenDyvlsrbDyYWzxCIuiNj54eBErQeRRs
-         dswGw7cUx8J0TeSLtf40ICCIEZKsaTf45PuA5XQ8mPLTyHoH0pjIDcugQAjkFORKweNx
-         qFGA==
+ d=minyard-net.20230601.gappssmtp.com; s=20230601; t=1726703545; x=1727308345;
+ darn=nongnu.org; 
+ h=in-reply-to:content-transfer-encoding:content-disposition
+ :mime-version:references:reply-to:message-id:subject:cc:to:from:date
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=evL+cL1zIXxUOEc73t8qN29EBvw/0BYeyTuo8tg+3zM=;
+ b=n6WRp1RfoGNImpWiwTBnXIsuC9WoBIA23jocwgDJE+aEobdU87Y3KNgysOSJBB7wo0
+ i0XoTk6o/LO6r54FcKYwkWAIDSDLnuHRcCbeE/AlrFAFuz/WAxhTuRo/2BoQ+buN89op
+ q4RpfTw5NVi4TrBnWz708lJ9z8ZEb94fE5iOLVB7vXWlkAkuCww9a9uQn6VAZFqrtjuC
+ yQd5QNmUT3GHNc8Hs9emY17+qHkHRJFKbalZc4H4L3n3cbih3P5Sd7wNwGg8MxT6niC1
+ NEEz4SFthVA3HdNfGDyI8JlnZe+63/rlYjG/kdMro8s3yYFeq5MdDe9YSzM9RQBM8gL9
+ taRg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1726696110; x=1727300910;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=56eFY0PPKbojN9iHiuO5E17taMmpX3hGYkXam5W4kI8=;
-        b=iE7cc1FD/wpB7d6d/FNOf9K4i057G5BthmkhFUvTA0TydvAiMPAgv+EaOOEAllD10T
-         wKVEm5nCHI4rUjMRTpZt0z/VGxrVPU0B6WTlnl1RkO+jDnp2Xs1r0LG/c7NA2gXal7cA
-         OeMo5u5MvjPoaXk7ljuuVvpKpUxJ/NjS1tgSbfDth8FJip3kpG0CCBImR2ExJqoKFINX
-         fDuJFjr6KD+tWV0Vko8wnZnVt/lZA2QYp5+pb59+gwvSudFh0LVJnDZQ+JaeIzFJqKSp
-         oSnJ3MShLc8YkIFIe6Bx4rcR+A1VYGRWk3h2HzTY2jCuRdNuM+XEYU4UXfLxe9RSsCRh
-         Wmig==
-X-Forwarded-Encrypted: i=1; AJvYcCUve+A3L/9LyO9OYIkGrL9OYpRWz/sB8MsLDmFkM1FYTs3bbnMzAH0jCRspAnz9CpDcMTwtNL/mKol9dw==@linaro.org
-X-Gm-Message-State: AOJu0YzrC6UOzV5EX6cwbpghdQ0c8onBHYm2RGDwDFxi+g1Pqw27wFRF
-	TIFOpMoEQd6cCb5CEqe9JTSRC6yfm7hbWtbGifdMPMK8DqZXqp5uF3YIqEeyEk6b1w==
-X-Google-Smtp-Source: AGHT+IG+xzYa/L8bq7kWZz9TpyKRRVs2FqZ8wnJP63m6mKS5eGogLn32uep1trP6iXzOGJjIS59+EQ==
-X-Received: by 2002:a17:903:189:b0:205:500f:5dcc with SMTP id d9443c01a7336-2076e4612e7mr333975395ad.40.1726696109758;
-        Wed, 18 Sep 2024 14:48:29 -0700 (PDT)
-Return-Path: <pierrick.bouvier@linaro.org>
-Received: from [192.168.1.67] (216-180-64-156.dyn.novuscom.net. [216.180.64.156])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-20794735728sm69387345ad.271.2024.09.18.14.48.27
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 18 Sep 2024 14:48:29 -0700 (PDT)
-Message-ID: <fada9192-1f49-4ccc-a3e0-30f17459eb31@linaro.org>
-Date: Wed, 18 Sep 2024 14:48:26 -0700
+ d=1e100.net; s=20230601; t=1726703545; x=1727308345;
+ h=in-reply-to:content-transfer-encoding:content-disposition
+ :mime-version:references:reply-to:message-id:subject:cc:to:from:date
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=evL+cL1zIXxUOEc73t8qN29EBvw/0BYeyTuo8tg+3zM=;
+ b=KCcwg24eEY1h5dOkI8Od0wNlRLUMDGWIy2o+0V1ZeQEGeGrQKs3E3tb0ZGZn7BLRe9
+ ZtVONpg4mUhUvQ67hjxJPgjI8MpUyyl3k+36ylNP1nQETUThfJwfaJee5152NiTSdTh9
+ qJhfmCOB+YTxgiBzIG6hK+hkrjw1ivTqahTWxZMDggkZ7Tam31avx7pT01gSfB9a7DBf
+ xp0fE7OZU6629o3D+khEEBZZFWNAvdf011Tmzx83W/vovm2Wf0XBWnknZ/OP6BQ06diM
+ oStsR0kvQc8hSu8J5u7ZweY4fawMNGEW1OhTDRaT3Dh/5d0j+lyAkROY5hcIONCC2mpU
+ oWeg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCW5wgHcl7QPtNSS+rDXR3s4sCkBBrdaXJDfc2TzsSskHfivo5INzZtryZceMg9DBrhtztiAt87fmQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yx4YCaxx/eyDeZlc++OlKqlaKTdeEW0pW9A0DdXvUAw77aySz/h
+ seJ+85ZCIEW+ETl7M5UnMLP7nhZmBKXFLya4X6eWqc/WKL5vLa+G3I1f/JIl1/8=
+X-Received: by 2002:a05:6808:1405:b0:3d9:35df:8f2 with SMTP id
+ 5614622812f47-3e071ac5783mr12814631b6e.28.1726703544699; 
+ Wed, 18 Sep 2024 16:52:24 -0700 (PDT)
+Received: from mail.minyard.net ([2001:470:b8f6:1b:bfe4:2aee:929f:be5])
+ by smtp.gmail.com with ESMTPSA id
+ 5614622812f47-3e26b73c931sm120451b6e.44.2024.09.18.16.52.21
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 18 Sep 2024 16:52:23 -0700 (PDT)
+Date: Wed, 18 Sep 2024 18:52:17 -0500
+From: Corey Minyard <corey@minyard.net>
+To: Octavian Purdila <tavip@google.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, stefanst@google.com,
+ pbonzini@redhat.com, peter.maydell@linaro.org,
+ marcandre.lureau@redhat.com, berrange@redhat.com,
+ eduardo@habkost.net, luc@lmichel.fr, damien.hedde@dahe.fr,
+ alistair@alistair23.me, thuth@redhat.com, philmd@linaro.org,
+ jsnow@redhat.com, crosa@redhat.com, lvivier@redhat.com
+Subject: Re: [PATCH 19/25] hw/misc: add i2c-tester
+Message-ID: <ZutnsQIEQNo9icnX@mail.minyard.net>
+References: <20240918192254.3136903-1-tavip@google.com>
+ <20240918192254.3136903-20-tavip@google.com>
+ <Zusypeay8cjjPTn0@mail.minyard.net>
+ <CAGWr4cQapNbGZteQYAFYrgDnh3cY0xHnEtAiDW0zuURwZr_V3g@mail.gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 00/48] Use g_assert_not_reached instead of
- (g_)assert(0, false)
-To: "Xingtao Yao (Fujitsu)" <yaoxt.fnst@fujitsu.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Cc: Jason Wang <jasowang@redhat.com>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
- <alex.bennee@linaro.org>, Laurent Vivier <lvivier@redhat.com>,
- Marcelo Tosatti <mtosatti@redhat.com>, Nicholas Piggin <npiggin@gmail.com>,
- Klaus Jensen <its@irrelevant.dk>, WANG Xuerui <git@xen0n.name>,
- Halil Pasic <pasic@linux.ibm.com>, Rob Herring <robh@kernel.org>,
- Michael Rolnik <mrolnik@gmail.com>, Zhao Liu <zhao1.liu@intel.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- Fabiano Rosas <farosas@suse.de>, Corey Minyard <minyard@acm.org>,
- Keith Busch <kbusch@kernel.org>, Thomas Huth <thuth@redhat.com>,
- "Maciej S. Szmigiero" <maciej.szmigiero@oracle.com>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>, Kevin Wolf <kwolf@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Jesper Devantier <foss@defmacro.it>,
- Hyman Huang <yong.huang@smartx.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Palmer Dabbelt <palmer@dabbelt.com>,
- "qemu-s390x@nongnu.org" <qemu-s390x@nongnu.org>,
- Laurent Vivier <laurent@vivier.eu>,
- "qemu-riscv@nongnu.org" <qemu-riscv@nongnu.org>,
- "Richard W.M. Jones" <rjones@redhat.com>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Aurelien Jarno <aurelien@aurel32.net>,
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- Akihiko Odaki <akihiko.odaki@daynix.com>,
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
- Hanna Reitz <hreitz@redhat.com>, Ani Sinha <anisinha@redhat.com>,
- "qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
- =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- Alistair Francis <alistair.francis@wdc.com>, Bin Meng <bmeng.cn@gmail.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Helge Deller <deller@gmx.de>,
- Peter Xu <peterx@redhat.com>, Daniel Henrique Barboza
- <danielhb413@gmail.com>, Dmitry Fleytman <dmitry.fleytman@gmail.com>,
- Nina Schoetterl-Glausch <nsg@linux.ibm.com>,
- Yanan Wang <wangyanan55@huawei.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- Igor Mammedov <imammedo@redhat.com>,
- Jean-Christophe Dubois <jcd@tribudubois.net>,
- Eric Farman <farman@linux.ibm.com>,
- Sriram Yagnaraman <sriram.yagnaraman@ericsson.com>,
- "qemu-block@nongnu.org" <qemu-block@nongnu.org>,
- Stefan Berger <stefanb@linux.vnet.ibm.com>, Joel Stanley <joel@jms.id.au>,
- Eduardo Habkost <eduardo@habkost.net>,
- David Gibson <david@gibson.dropbear.id.au>, Fam Zheng <fam@euphon.net>,
- Weiwei Li <liwei1518@gmail.com>, Markus Armbruster <armbru@redhat.com>
-References: <20240912073921.453203-1-pierrick.bouvier@linaro.org>
- <OSZPR01MB6453486D937E15FBF6AEAD018D652@OSZPR01MB6453.jpnprd01.prod.outlook.com>
-Content-Language: en-US
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-In-Reply-To: <OSZPR01MB6453486D937E15FBF6AEAD018D652@OSZPR01MB6453.jpnprd01.prod.outlook.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: base64
-X-TUID: E3KMWwYEJjYs
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <CAGWr4cQapNbGZteQYAFYrgDnh3cY0xHnEtAiDW0zuURwZr_V3g@mail.gmail.com>
+Received-SPF: none client-ip=2607:f8b0:4864:20::c2d;
+ envelope-from=corey@minyard.net; helo=mail-oo1-xc2d.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: corey@minyard.net
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: EJLm/AhboV0D
 
-T24gOS8xMi8yNCAxODozNywgWGluZ3RhbyBZYW8gKEZ1aml0c3UpIHdyb3RlOg0KPiANCj4g
-DQo+PiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KPj4gRnJvbTogcWVtdS1kZXZlbC1i
-b3VuY2VzK3lhb3h0LmZuc3Q9ZnVqaXRzdS5jb21Abm9uZ251Lm9yZw0KPj4gPHFlbXUtZGV2
-ZWwtYm91bmNlcyt5YW94dC5mbnN0PWZ1aml0c3UuY29tQG5vbmdudS5vcmc+IE9uIEJlaGFs
-ZiBPZg0KPj4gUGllcnJpY2sgQm91dmllcg0KPj4gU2VudDogVGh1cnNkYXksIFNlcHRlbWJl
-ciAxMiwgMjAyNCAzOjM5IFBNDQo+PiBUbzogcWVtdS1kZXZlbEBub25nbnUub3JnDQo+PiBD
-YzogSmFzb24gV2FuZyA8amFzb3dhbmdAcmVkaGF0LmNvbT47IEFsZXggQmVubsOpZSA8YWxl
-eC5iZW5uZWVAbGluYXJvLm9yZz47DQo+PiBMYXVyZW50IFZpdmllciA8bHZpdmllckByZWRo
-YXQuY29tPjsgTWFyY2VsbyBUb3NhdHRpIDxtdG9zYXR0aUByZWRoYXQuY29tPjsNCj4+IE5p
-Y2hvbGFzIFBpZ2dpbiA8bnBpZ2dpbkBnbWFpbC5jb20+OyBLbGF1cyBKZW5zZW4gPGl0c0Bp
-cnJlbGV2YW50LmRrPjsgV0FORw0KPj4gWHVlcnVpIDxnaXRAeGVuMG4ubmFtZT47IEhhbGls
-IFBhc2ljIDxwYXNpY0BsaW51eC5pYm0uY29tPjsgUm9iIEhlcnJpbmcNCj4+IDxyb2JoQGtl
-cm5lbC5vcmc+OyBNaWNoYWVsIFJvbG5payA8bXJvbG5pa0BnbWFpbC5jb20+OyBaaGFvIExp
-dQ0KPj4gPHpoYW8xLmxpdUBpbnRlbC5jb20+OyBQZXRlciBNYXlkZWxsIDxwZXRlci5tYXlk
-ZWxsQGxpbmFyby5vcmc+OyBSaWNoYXJkDQo+PiBIZW5kZXJzb24gPHJpY2hhcmQuaGVuZGVy
-c29uQGxpbmFyby5vcmc+OyBGYWJpYW5vIFJvc2FzIDxmYXJvc2FzQHN1c2UuZGU+Ow0KPj4g
-Q29yZXkgTWlueWFyZCA8bWlueWFyZEBhY20ub3JnPjsgS2VpdGggQnVzY2ggPGtidXNjaEBr
-ZXJuZWwub3JnPjsgVGhvbWFzDQo+PiBIdXRoIDx0aHV0aEByZWRoYXQuY29tPjsgTWFjaWVq
-IFMuIFN6bWlnaWVybyA8bWFjaWVqLnN6bWlnaWVyb0BvcmFjbGUuY29tPjsNCj4+IEhhcnNo
-IFByYXRlZWsgQm9yYSA8aGFyc2hwYkBsaW51eC5pYm0uY29tPjsgS2V2aW4gV29sZiA8a3dv
-bGZAcmVkaGF0LmNvbT47DQo+PiBQYW9sbyBCb256aW5pIDxwYm9uemluaUByZWRoYXQuY29t
-PjsgSmVzcGVyIERldmFudGllciA8Zm9zc0BkZWZtYWNyby5pdD47DQo+PiBIeW1hbiBIdWFu
-ZyA8eW9uZy5odWFuZ0BzbWFydHguY29tPjsgUGhpbGlwcGUgTWF0aGlldS1EYXVkw6kNCj4+
-IDxwaGlsbWRAbGluYXJvLm9yZz47IFBhbG1lciBEYWJiZWx0IDxwYWxtZXJAZGFiYmVsdC5j
-b20+Ow0KPj4gcWVtdS1zMzkweEBub25nbnUub3JnOyBMYXVyZW50IFZpdmllciA8bGF1cmVu
-dEB2aXZpZXIuZXU+Ow0KPj4gcWVtdS1yaXNjdkBub25nbnUub3JnOyBSaWNoYXJkIFcuTS4g
-Sm9uZXMgPHJqb25lc0ByZWRoYXQuY29tPjsgTGl1IFpoaXdlaQ0KPj4gPHpoaXdlaV9saXVA
-bGludXguYWxpYmFiYS5jb20+OyBBdXJlbGllbiBKYXJubyA8YXVyZWxpZW5AYXVyZWwzMi5u
-ZXQ+OyBEYW5pZWwgUC4NCj4+IEJlcnJhbmfDqSA8YmVycmFuZ2VAcmVkaGF0LmNvbT47IE1h
-cmNlbCBBcGZlbGJhdW0NCj4+IDxtYXJjZWwuYXBmZWxiYXVtQGdtYWlsLmNvbT47IGt2bUB2
-Z2VyLmtlcm5lbC5vcmc7IENocmlzdGlhbiBCb3JudHJhZWdlcg0KPj4gPGJvcm50cmFlZ2Vy
-QGxpbnV4LmlibS5jb20+OyBBa2loaWtvIE9kYWtpIDxha2loaWtvLm9kYWtpQGRheW5peC5j
-b20+Ow0KPj4gRGFuaWVsIEhlbnJpcXVlIEJhcmJvemEgPGRiYXJib3phQHZlbnRhbmFtaWNy
-by5jb20+OyBIYW5uYSBSZWl0eg0KPj4gPGhyZWl0ekByZWRoYXQuY29tPjsgQW5pIFNpbmhh
-IDxhbmlzaW5oYUByZWRoYXQuY29tPjsNCj4+IHFlbXUtcHBjQG5vbmdudS5vcmc7IE1hcmMt
-QW5kcsOpIEx1cmVhdSA8bWFyY2FuZHJlLmx1cmVhdUByZWRoYXQuY29tPjsNCj4+IEFsaXN0
-YWlyIEZyYW5jaXMgPGFsaXN0YWlyLmZyYW5jaXNAd2RjLmNvbT47IEJpbiBNZW5nIDxibWVu
-Zy5jbkBnbWFpbC5jb20+Ow0KPj4gTWljaGFlbCBTLiBUc2lya2luIDxtc3RAcmVkaGF0LmNv
-bT47IEhlbGdlIERlbGxlciA8ZGVsbGVyQGdteC5kZT47IFBldGVyIFh1DQo+PiA8cGV0ZXJ4
-QHJlZGhhdC5jb20+OyBEYW5pZWwgSGVucmlxdWUgQmFyYm96YSA8ZGFuaWVsaGI0MTNAZ21h
-aWwuY29tPjsNCj4+IERtaXRyeSBGbGV5dG1hbiA8ZG1pdHJ5LmZsZXl0bWFuQGdtYWlsLmNv
-bT47IE5pbmEgU2Nob2V0dGVybC1HbGF1c2NoDQo+PiA8bnNnQGxpbnV4LmlibS5jb20+OyBZ
-YW5hbiBXYW5nIDx3YW5neWFuYW41NUBodWF3ZWkuY29tPjsNCj4+IHFlbXUtYXJtQG5vbmdu
-dS5vcmc7IElnb3IgTWFtbWVkb3YgPGltYW1tZWRvQHJlZGhhdC5jb20+Ow0KPj4gSmVhbi1D
-aHJpc3RvcGhlIER1Ym9pcyA8amNkQHRyaWJ1ZHVib2lzLm5ldD47IEVyaWMgRmFybWFuDQo+
-PiA8ZmFybWFuQGxpbnV4LmlibS5jb20+OyBTcmlyYW0gWWFnbmFyYW1hbg0KPj4gPHNyaXJh
-bS55YWduYXJhbWFuQGVyaWNzc29uLmNvbT47IHFlbXUtYmxvY2tAbm9uZ251Lm9yZzsgU3Rl
-ZmFuIEJlcmdlcg0KPj4gPHN0ZWZhbmJAbGludXgudm5ldC5pYm0uY29tPjsgSm9lbCBTdGFu
-bGV5IDxqb2VsQGptcy5pZC5hdT47IEVkdWFyZG8gSGFia29zdA0KPj4gPGVkdWFyZG9AaGFi
-a29zdC5uZXQ+OyBEYXZpZCBHaWJzb24gPGRhdmlkQGdpYnNvbi5kcm9wYmVhci5pZC5hdT47
-IEZhbQ0KPj4gWmhlbmcgPGZhbUBldXBob24ubmV0PjsgV2Vpd2VpIExpIDxsaXdlaTE1MThA
-Z21haWwuY29tPjsgTWFya3VzDQo+PiBBcm1icnVzdGVyIDxhcm1icnVAcmVkaGF0LmNvbT47
-IFBpZXJyaWNrIEJvdXZpZXIgPHBpZXJyaWNrLmJvdXZpZXJAbGluYXJvLm9yZz4NCj4+IFN1
-YmplY3Q6IFtQQVRDSCB2MiAwMC80OF0gVXNlIGdfYXNzZXJ0X25vdF9yZWFjaGVkIGluc3Rl
-YWQgb2YgKGdfKWFzc2VydCgwLA0KPj4gZmFsc2UpDQo+Pg0KPj4gVGhpcyBzZXJpZXMgY2xl
-YW5zIHVwIGFsbCB1c2FnZXMgb2YgYXNzZXJ0L2dfYXNzZXJ0IHdobyBhcmUgc3VwcG9zZWQg
-dG8gc3RvcA0KPj4gZXhlY3V0aW9uIG9mIFFFTVUuIFdlIHJlcGxhY2UgdGhvc2UgYnkgZ19h
-c3NlcnRfbm90X3JlYWNoZWQoKS4NCj4+IEl0IHdhcyBzdWdnZXN0ZWQgcmVjZW50bHkgd2hl
-biBjbGVhbmluZyBjb2RlYmFzZSB0byBidWlsZCBRRU1VIHdpdGggZ2NjDQo+PiBhbmQgdHNh
-bjoNCj4+IGh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL3FlbXUtZGV2ZWwvNTRiYjAyYTYtMWIx
-Mi00NjBhLTk3ZjYtM2Y0NzhlZjc2NmM2QGxpbg0KPj4gYXJvLm9yZy8uDQo+Pg0KPj4gSW4g
-bW9yZSwgY2xlYW51cCB1c2VsZXNzIGJyZWFrIGFuZCByZXR1cm4gYWZ0ZXIgZ19hc3NlcnRf
-bm90X3JlYWNoZWQoKTsNCj4gSSBmb3VuZCB0aGF0IG5vdCBhbGwgb2YgdGhlIGJyZWFrIG9y
-IHJldHVybiBhZnRlciBnX2Fzc2VydF9ub3RfcmVhY2hlZCgpIHdlcmUgY2xlYW5lZCB1cCwg
-ZG9uJ3QgdGhleSBuZWVkIHRvIGJlIGNsZWFuZWQgdXA/DQo+Pg0KPj4gQW5kIGZpbmFsbHks
-IGVuc3VyZSB3aXRoIHNjcmlwdHMvY2hlY2twYXRjaC5wbCB0aGF0IHdlIGRvbid0IHJlaW50
-cm9kdWNlDQo+PiAoZ18pYXNzZXJ0KGZhbHNlKSBpbiB0aGUgZnV0dXJlLg0KPj4NCj4+IE5l
-dyBjb21taXRzIChyZW1vdmluZyByZXR1cm4pIG5lZWQgcmV2aWV3Lg0KPj4NCj4+IFRlc3Rl
-ZCB0aGF0IGl0IGJ1aWxkIHdhcm5pbmcgZnJlZSB3aXRoIGdjYyBhbmQgY2xhbmcuDQo+Pg0K
-Pj4gdjINCj4+IC0gYWxpZ24gYmFja3NsYXNoZXMgZm9yIHNvbWUgY2hhbmdlcw0KPj4gLSBh
-ZGQgc3VtbWFyeSBpbiBhbGwgY29tbWl0cyBtZXNzYWdlDQo+PiAtIHJlbW92ZSByZWR1bmRh
-bnQgY29tbWVudA0KPj4NCj4+IHYxDQo+PiBodHRwczovL2xvcmUua2VybmVsLm9yZy9xZW11
-LWRldmVsLzIwMjQwOTEwMjIxNjA2LjE4MTc0NzgtMS1waWVycmljay5ib3V2aWVyQA0KPj4g
-bGluYXJvLm9yZy9ULyN0DQo+Pg0KPj4gUGllcnJpY2sgQm91dmllciAoNDgpOg0KPj4gICAg
-ZG9jcy9zcGluOiByZXBsYWNlIGFzc2VydCgwKSB3aXRoIGdfYXNzZXJ0X25vdF9yZWFjaGVk
-KCkNCj4+ICAgIGh3L2FjcGk6IHJlcGxhY2UgYXNzZXJ0KDApIHdpdGggZ19hc3NlcnRfbm90
-X3JlYWNoZWQoKQ0KPj4gICAgaHcvYXJtOiByZXBsYWNlIGFzc2VydCgwKSB3aXRoIGdfYXNz
-ZXJ0X25vdF9yZWFjaGVkKCkNCj4+ICAgIGh3L2NoYXI6IHJlcGxhY2UgYXNzZXJ0KDApIHdp
-dGggZ19hc3NlcnRfbm90X3JlYWNoZWQoKQ0KPj4gICAgaHcvY29yZTogcmVwbGFjZSBhc3Nl
-cnQoMCkgd2l0aCBnX2Fzc2VydF9ub3RfcmVhY2hlZCgpDQo+PiAgICBody9uZXQ6IHJlcGxh
-Y2UgYXNzZXJ0KDApIHdpdGggZ19hc3NlcnRfbm90X3JlYWNoZWQoKQ0KPj4gICAgaHcvd2F0
-Y2hkb2c6IHJlcGxhY2UgYXNzZXJ0KDApIHdpdGggZ19hc3NlcnRfbm90X3JlYWNoZWQoKQ0K
-Pj4gICAgbWlncmF0aW9uOiByZXBsYWNlIGFzc2VydCgwKSB3aXRoIGdfYXNzZXJ0X25vdF9y
-ZWFjaGVkKCkNCj4+ICAgIHFvYmplY3Q6IHJlcGxhY2UgYXNzZXJ0KDApIHdpdGggZ19hc3Nl
-cnRfbm90X3JlYWNoZWQoKQ0KPj4gICAgc3lzdGVtOiByZXBsYWNlIGFzc2VydCgwKSB3aXRo
-IGdfYXNzZXJ0X25vdF9yZWFjaGVkKCkNCj4+ICAgIHRhcmdldC9wcGM6IHJlcGxhY2UgYXNz
-ZXJ0KDApIHdpdGggZ19hc3NlcnRfbm90X3JlYWNoZWQoKQ0KPj4gICAgdGVzdHMvcXRlc3Q6
-IHJlcGxhY2UgYXNzZXJ0KDApIHdpdGggZ19hc3NlcnRfbm90X3JlYWNoZWQoKQ0KPj4gICAg
-dGVzdHMvdW5pdDogcmVwbGFjZSBhc3NlcnQoMCkgd2l0aCBnX2Fzc2VydF9ub3RfcmVhY2hl
-ZCgpDQo+PiAgICBpbmNsdWRlL2h3L3MzOTB4OiByZXBsYWNlIGFzc2VydChmYWxzZSkgd2l0
-aCBnX2Fzc2VydF9ub3RfcmVhY2hlZCgpDQo+PiAgICBibG9jazogcmVwbGFjZSBhc3NlcnQo
-ZmFsc2UpIHdpdGggZ19hc3NlcnRfbm90X3JlYWNoZWQoKQ0KPj4gICAgaHcvaHlwZXJ2OiBy
-ZXBsYWNlIGFzc2VydChmYWxzZSkgd2l0aCBnX2Fzc2VydF9ub3RfcmVhY2hlZCgpDQo+PiAg
-ICBody9uZXQ6IHJlcGxhY2UgYXNzZXJ0KGZhbHNlKSB3aXRoIGdfYXNzZXJ0X25vdF9yZWFj
-aGVkKCkNCj4+ICAgIGh3L252bWU6IHJlcGxhY2UgYXNzZXJ0KGZhbHNlKSB3aXRoIGdfYXNz
-ZXJ0X25vdF9yZWFjaGVkKCkNCj4+ICAgIGh3L3BjaTogcmVwbGFjZSBhc3NlcnQoZmFsc2Up
-IHdpdGggZ19hc3NlcnRfbm90X3JlYWNoZWQoKQ0KPj4gICAgaHcvcHBjOiByZXBsYWNlIGFz
-c2VydChmYWxzZSkgd2l0aCBnX2Fzc2VydF9ub3RfcmVhY2hlZCgpDQo+PiAgICBtaWdyYXRp
-b246IHJlcGxhY2UgYXNzZXJ0KGZhbHNlKSB3aXRoIGdfYXNzZXJ0X25vdF9yZWFjaGVkKCkN
-Cj4+ICAgIHRhcmdldC9pMzg2L2t2bTogcmVwbGFjZSBhc3NlcnQoZmFsc2UpIHdpdGggZ19h
-c3NlcnRfbm90X3JlYWNoZWQoKQ0KPj4gICAgdGVzdHMvcXRlc3Q6IHJlcGxhY2UgYXNzZXJ0
-KGZhbHNlKSB3aXRoIGdfYXNzZXJ0X25vdF9yZWFjaGVkKCkNCj4+ICAgIGFjY2VsL3RjZzog
-cmVtb3ZlIGJyZWFrIGFmdGVyIGdfYXNzZXJ0X25vdF9yZWFjaGVkKCkNCj4+ICAgIGJsb2Nr
-OiByZW1vdmUgYnJlYWsgYWZ0ZXIgZ19hc3NlcnRfbm90X3JlYWNoZWQoKQ0KPj4gICAgaHcv
-YWNwaTogcmVtb3ZlIGJyZWFrIGFmdGVyIGdfYXNzZXJ0X25vdF9yZWFjaGVkKCkNCj4+ICAg
-IGh3L2dwaW86IHJlbW92ZSBicmVhayBhZnRlciBnX2Fzc2VydF9ub3RfcmVhY2hlZCgpDQo+
-PiAgICBody9taXNjOiByZW1vdmUgYnJlYWsgYWZ0ZXIgZ19hc3NlcnRfbm90X3JlYWNoZWQo
-KQ0KPj4gICAgaHcvbmV0OiByZW1vdmUgYnJlYWsgYWZ0ZXIgZ19hc3NlcnRfbm90X3JlYWNo
-ZWQoKQ0KPj4gICAgaHcvcGNpLWhvc3Q6IHJlbW92ZSBicmVhayBhZnRlciBnX2Fzc2VydF9u
-b3RfcmVhY2hlZCgpDQo+PiAgICBody9zY3NpOiByZW1vdmUgYnJlYWsgYWZ0ZXIgZ19hc3Nl
-cnRfbm90X3JlYWNoZWQoKQ0KPj4gICAgaHcvdHBtOiByZW1vdmUgYnJlYWsgYWZ0ZXIgZ19h
-c3NlcnRfbm90X3JlYWNoZWQoKQ0KPj4gICAgdGFyZ2V0L2FybTogcmVtb3ZlIGJyZWFrIGFm
-dGVyIGdfYXNzZXJ0X25vdF9yZWFjaGVkKCkNCj4+ICAgIHRhcmdldC9yaXNjdjogcmVtb3Zl
-IGJyZWFrIGFmdGVyIGdfYXNzZXJ0X25vdF9yZWFjaGVkKCkNCj4+ICAgIHRlc3RzL3F0ZXN0
-OiByZW1vdmUgYnJlYWsgYWZ0ZXIgZ19hc3NlcnRfbm90X3JlYWNoZWQoKQ0KPj4gICAgdWk6
-IHJlbW92ZSBicmVhayBhZnRlciBnX2Fzc2VydF9ub3RfcmVhY2hlZCgpDQo+PiAgICBmcHU6
-IHJlbW92ZSBicmVhayBhZnRlciBnX2Fzc2VydF9ub3RfcmVhY2hlZCgpDQo+PiAgICB0Y2cv
-bG9vbmdhcmNoNjQ6IHJlbW92ZSBicmVhayBhZnRlciBnX2Fzc2VydF9ub3RfcmVhY2hlZCgp
-DQo+PiAgICBpbmNsdWRlL3FlbXU6IHJlbW92ZSByZXR1cm4gYWZ0ZXIgZ19hc3NlcnRfbm90
-X3JlYWNoZWQoKQ0KPj4gICAgaHcvaHlwZXJ2OiByZW1vdmUgcmV0dXJuIGFmdGVyIGdfYXNz
-ZXJ0X25vdF9yZWFjaGVkKCkNCj4+ICAgIGh3L25ldDogcmVtb3ZlIHJldHVybiBhZnRlciBn
-X2Fzc2VydF9ub3RfcmVhY2hlZCgpDQo+PiAgICBody9wY2k6IHJlbW92ZSByZXR1cm4gYWZ0
-ZXIgZ19hc3NlcnRfbm90X3JlYWNoZWQoKQ0KPj4gICAgaHcvcHBjOiByZW1vdmUgcmV0dXJu
-IGFmdGVyIGdfYXNzZXJ0X25vdF9yZWFjaGVkKCkNCj4+ICAgIG1pZ3JhdGlvbjogcmVtb3Zl
-IHJldHVybiBhZnRlciBnX2Fzc2VydF9ub3RfcmVhY2hlZCgpDQo+PiAgICBxb2JqZWN0OiBy
-ZW1vdmUgcmV0dXJuIGFmdGVyIGdfYXNzZXJ0X25vdF9yZWFjaGVkKCkNCj4+ICAgIHFvbTog
-cmVtb3ZlIHJldHVybiBhZnRlciBnX2Fzc2VydF9ub3RfcmVhY2hlZCgpDQo+PiAgICB0ZXN0
-cy9xdGVzdDogcmVtb3ZlIHJldHVybiBhZnRlciBnX2Fzc2VydF9ub3RfcmVhY2hlZCgpDQo+
-PiAgICBzY3JpcHRzL2NoZWNrcGF0Y2gucGw6IGVtaXQgZXJyb3Igd2hlbiB1c2luZyBhc3Nl
-cnQoZmFsc2UpDQo+Pg0KPj4gICBkb2NzL3NwaW4vYWlvX25vdGlmeV9hY2NlcHQucHJvbWVs
-YSAgICAgfCAgNiArKystLS0NCj4+ICAgZG9jcy9zcGluL2Fpb19ub3RpZnlfYnVnLnByb21l
-bGEgICAgICAgIHwgIDYgKysrLS0tDQo+PiAgIGluY2x1ZGUvaHcvczM5MHgvY3B1LXRvcG9s
-b2d5LmggICAgICAgICB8ICAyICstDQo+PiAgIGluY2x1ZGUvcWVtdS9wbWVtLmggICAgICAg
-ICAgICAgICAgICAgICB8ICAxIC0NCj4+ICAgYWNjZWwvdGNnL3BsdWdpbi1nZW4uYyAgICAg
-ICAgICAgICAgICAgIHwgIDEgLQ0KPj4gICBibG9jay9xY293Mi5jICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgfCAgMiArLQ0KPj4gICBibG9jay9zc2guYyAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgfCAgMSAtDQo+PiAgIGh3L2FjcGkvYW1sLWJ1aWxkLmMgICAgICAgICAg
-ICAgICAgICAgICB8ICAzICstLQ0KPj4gICBody9hcm0vaGlnaGJhbmsuYyAgICAgICAgICAg
-ICAgICAgICAgICAgfCAgMiArLQ0KPj4gICBody9jaGFyL2F2cl91c2FydC5jICAgICAgICAg
-ICAgICAgICAgICAgfCAgMiArLQ0KPj4gICBody9jb3JlL251bWEuYyAgICAgICAgICAgICAg
-ICAgICAgICAgICAgfCAgMiArLQ0KPj4gICBody9ncGlvL25yZjUxX2dwaW8uYyAgICAgICAg
-ICAgICAgICAgICAgfCAgMSAtDQo+PiAgIGh3L2h5cGVydi9oeXBlcnZfdGVzdGRldi5jICAg
-ICAgICAgICAgICB8ICA3ICsrKy0tLS0NCj4+ICAgaHcvaHlwZXJ2L3ZtYnVzLmMgICAgICAg
-ICAgICAgICAgICAgICAgIHwgMTUgKysrKysrLS0tLS0tLS0tDQo+PiAgIGh3L21pc2MvaW14
-Nl9jY20uYyAgICAgICAgICAgICAgICAgICAgICB8ICAxIC0NCj4+ICAgaHcvbWlzYy9tYWNf
-dmlhLmMgICAgICAgICAgICAgICAgICAgICAgIHwgIDIgLS0NCj4+ICAgaHcvbmV0L2UxMDAw
-ZV9jb3JlLmMgICAgICAgICAgICAgICAgICAgIHwgIDQgKy0tLQ0KPj4gICBody9uZXQvaTgy
-NTk2LmMgICAgICAgICAgICAgICAgICAgICAgICAgfCAgMiArLQ0KPj4gICBody9uZXQvaWdi
-X2NvcmUuYyAgICAgICAgICAgICAgICAgICAgICAgfCAgNCArLS0tDQo+PiAgIGh3L25ldC9u
-ZXRfcnhfcGt0LmMgICAgICAgICAgICAgICAgICAgICB8ICAzICstLQ0KPj4gICBody9uZXQv
-dm14bmV0My5jICAgICAgICAgICAgICAgICAgICAgICAgfCAgMSAtDQo+PiAgIGh3L252bWUv
-Y3RybC5jICAgICAgICAgICAgICAgICAgICAgICAgICB8ICA4ICsrKystLS0tDQo+PiAgIGh3
-L3BjaS1ob3N0L2d0NjQxMjAuYyAgICAgICAgICAgICAgICAgICB8ICAyIC0tDQo+PiAgIGh3
-L3BjaS9wY2ktc3R1Yi5jICAgICAgICAgICAgICAgICAgICAgICB8ICA2ICsrLS0tLQ0KPj4g
-ICBody9wcGMvcHBjLmMgICAgICAgICAgICAgICAgICAgICAgICAgICAgfCAgMSAtDQo+PiAg
-IGh3L3BwYy9zcGFwcl9ldmVudHMuYyAgICAgICAgICAgICAgICAgICB8ICAzICstLQ0KPj4g
-ICBody9zY3NpL3ZpcnRpby1zY3NpLmMgICAgICAgICAgICAgICAgICAgfCAgMSAtDQo+PiAg
-IGh3L3RwbS90cG1fc3BhcHIuYyAgICAgICAgICAgICAgICAgICAgICB8ICAxIC0NCj4+ICAg
-aHcvd2F0Y2hkb2cvd2F0Y2hkb2cuYyAgICAgICAgICAgICAgICAgIHwgIDIgKy0NCj4+ICAg
-bWlncmF0aW9uL2RpcnR5cmF0ZS5jICAgICAgICAgICAgICAgICAgIHwgIDMgKy0tDQo+PiAg
-IG1pZ3JhdGlvbi9taWdyYXRpb24taG1wLWNtZHMuYyAgICAgICAgICB8ICAyICstDQo+PiAg
-IG1pZ3JhdGlvbi9wb3N0Y29weS1yYW0uYyAgICAgICAgICAgICAgICB8IDIxICsrKysrKyst
-LS0tLS0tLS0tLS0tLQ0KPj4gICBtaWdyYXRpb24vcmFtLmMgICAgICAgICAgICAgICAgICAg
-ICAgICAgfCAgOCArKystLS0tLQ0KPj4gICBxb2JqZWN0L3FsaXQuYyAgICAgICAgICAgICAg
-ICAgICAgICAgICAgfCAgMiArLQ0KPj4gICBxb2JqZWN0L3FudW0uYyAgICAgICAgICAgICAg
-ICAgICAgICAgICAgfCAxMiArKysrLS0tLS0tLS0NCj4+ICAgcW9tL29iamVjdC5jICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgIHwgIDEgLQ0KPj4gICBzeXN0ZW0vcnRjLmMgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgfCAgMiArLQ0KPj4gICB0YXJnZXQvYXJtL2h5cF9nZGJz
-dHViLmMgICAgICAgICAgICAgICAgfCAgMSAtDQo+PiAgIHRhcmdldC9pMzg2L2t2bS9rdm0u
-YyAgICAgICAgICAgICAgICAgICB8ICA0ICsrLS0NCj4+ICAgdGFyZ2V0L3BwYy9kZnBfaGVs
-cGVyLmMgICAgICAgICAgICAgICAgIHwgIDggKysrKy0tLS0NCj4+ICAgdGFyZ2V0L3BwYy9t
-bXVfaGVscGVyLmMgICAgICAgICAgICAgICAgIHwgIDIgKy0NCj4+ICAgdGFyZ2V0L3Jpc2N2
-L21vbml0b3IuYyAgICAgICAgICAgICAgICAgIHwgIDEgLQ0KPj4gICB0ZXN0cy9xdGVzdC9h
-Y3BpLXV0aWxzLmMgICAgICAgICAgICAgICAgfCAgMSAtDQo+PiAgIHRlc3RzL3F0ZXN0L2lw
-bWktYnQtdGVzdC5jICAgICAgICAgICAgICB8ICAyICstDQo+PiAgIHRlc3RzL3F0ZXN0L2lw
-bWkta2NzLXRlc3QuYyAgICAgICAgICAgICB8ICA0ICsrLS0NCj4+ICAgdGVzdHMvcXRlc3Qv
-bWlncmF0aW9uLWhlbHBlcnMuYyAgICAgICAgIHwgIDEgLQ0KPj4gICB0ZXN0cy9xdGVzdC9u
-dW1hLXRlc3QuYyAgICAgICAgICAgICAgICAgfCAxMCArKysrKy0tLS0tDQo+PiAgIHRlc3Rz
-L3F0ZXN0L3J0bDgxMzktdGVzdC5jICAgICAgICAgICAgICB8ICAyICstDQo+PiAgIHRlc3Rz
-L3VuaXQvdGVzdC14cy1ub2RlLmMgICAgICAgICAgICAgICB8ICA0ICsrLS0NCj4+ICAgdWkv
-cWVtdS1waXhtYW4uYyAgICAgICAgICAgICAgICAgICAgICAgIHwgIDEgLQ0KPj4gICBmcHUv
-c29mdGZsb2F0LXBhcnRzLmMuaW5jICAgICAgICAgICAgICAgfCAgMiAtLQ0KPj4gICB0YXJn
-ZXQvcmlzY3YvaW5zbl90cmFucy90cmFuc19ydnYuYy5pbmMgfCAgMiAtLQ0KPj4gICB0Y2cv
-bG9vbmdhcmNoNjQvdGNnLXRhcmdldC5jLmluYyAgICAgICAgfCAgMSAtDQo+PiAgIHNjcmlw
-dHMvY2hlY2twYXRjaC5wbCAgICAgICAgICAgICAgICAgICB8ICAzICsrKw0KPj4gICA1NCBm
-aWxlcyBjaGFuZ2VkLCA3MiBpbnNlcnRpb25zKCspLCAxMjAgZGVsZXRpb25zKC0pDQo+Pg0K
-Pj4gLS0NCj4+IDIuMzkuMg0KPj4NCj4gDQoNCldoaWNoIG9uZSBkaWQgeW91IGZpbmQ/IFVz
-aW5nIHdoaWNoIGdyZXAgY29tbWFuZD8NCg==
+On Wed, Sep 18, 2024 at 04:03:12PM -0700, Octavian Purdila wrote:
+> On Wed, Sep 18, 2024 at 1:06 PM Corey Minyard <corey@minyard.net> wrote:
+> >
+> > On Wed, Sep 18, 2024 at 12:22:47PM -0700, Octavian Purdila wrote:
+> > > Add a simple i2c peripheral to be used for testing I2C device
+> > > models. The peripheral has a fixed number of registers that can be
+> > > read and written.
+> >
+> > Why is this better than just using the eeprom device?
+> >
+> 
+> The main reason for adding it is that, AFAICT, there is no i2c slave
+> device that responds with I2C_NACK during a transaction.
+> 
+> Also, having a dedicated device for testing purposes makes it easier
+> to add new features than adding it to a real device where it might not
+> always be possible. I tried to add the NACK functionality but I did
+> not find one where the datasheet would confirm the behaviour I was
+> looking for.
+
+SMBUS devices (like the eeprom) use NACKs as part of the protocol, to
+mark the end of a transfer, but that's probably not what you are looking
+for.  You are using it to signal an error, which I don't think any
+existing device will do.  Real devices, in general, don't NACK anything
+for errors, but the protocol allows it.
+
+Somehow in my previous look I completely missed i2c_tester_event(), so
+this works like a normal I2C device, except that most of them
+auto-increment the index register.  But some don't, so it's fine.
+
+If you could document the rationale for this, it would help a lot, for
+others that might want to use it.  Also, I would expect people might
+add their own test code to this.  I'm not sure what you can do at the
+moment about that, but just a heads up that people will probably hack on
+this in the future.
+
+So this is good.
+
+-corey
+
+> 
+> > This has some uncommon attributes compared to most i2c devices.  For
+> > instance, most i2c devices take their address as the first bytes of a
+> > write operation, then auto-increment after that for reads and writes.
+> > This seems to take one address on a write after a system reset, then use
+> > that forever.
+> >
+> > Anyway, unless there is a compelling reason to use this over the eeprom
+> > device, I'm going to recommend against it.
+> >
+> 
+> 
+> > -corey
+> >
+> > >
+> > > Signed-off-by: Octavian Purdila <tavip@google.com>
+> > > ---
+> > >  include/hw/misc/i2c_tester.h |  30 ++++++++++
+> > >  hw/misc/i2c_tester.c         | 109 +++++++++++++++++++++++++++++++++++
+> > >  hw/misc/Kconfig              |   5 ++
+> > >  hw/misc/meson.build          |   2 +
+> > >  4 files changed, 146 insertions(+)
+> > >  create mode 100644 include/hw/misc/i2c_tester.h
+> > >  create mode 100644 hw/misc/i2c_tester.c
+> > >
+> > > diff --git a/include/hw/misc/i2c_tester.h b/include/hw/misc/i2c_tester.h
+> > > new file mode 100644
+> > > index 0000000000..f6b6491008
+> > > --- /dev/null
+> > > +++ b/include/hw/misc/i2c_tester.h
+> > > @@ -0,0 +1,30 @@
+> > > +/*
+> > > + *
+> > > + * Copyright (c) 2024 Google LLC
+> > > + *
+> > > + * SPDX-License-Identifier: GPL-2.0-or-later
+> > > + *
+> > > + * This work is licensed under the terms of the GNU GPL, version 2 or later.
+> > > + * See the COPYING file in the top-level directory.
+> > > + */
+> > > +
+> > > +#ifndef HW_I2C_TESTER_H
+> > > +#define HW_I2C_TESTER_H
+> > > +
+> > > +#include "qemu/osdep.h"
+> > > +#include "hw/i2c/i2c.h"
+> > > +#include "hw/irq.h"
+> > > +
+> > > +#define I2C_TESTER_NUM_REGS    0x31
+> > > +
+> > > +#define TYPE_I2C_TESTER "i2c-tester"
+> > > +#define I2C_TESTER(obj) OBJECT_CHECK(I2cTesterState, (obj), TYPE_I2C_TESTER)
+> > > +
+> > > +typedef struct {
+> > > +    I2CSlave i2c;
+> > > +    bool set_reg_idx;
+> > > +    uint8_t reg_idx;
+> > > +    uint8_t regs[I2C_TESTER_NUM_REGS];
+> > > +} I2cTesterState;
+> > > +
+> > > +#endif /* HW_I2C_TESTER_H */
+> > > diff --git a/hw/misc/i2c_tester.c b/hw/misc/i2c_tester.c
+> > > new file mode 100644
+> > > index 0000000000..77ce8bf91a
+> > > --- /dev/null
+> > > +++ b/hw/misc/i2c_tester.c
+> > > @@ -0,0 +1,109 @@
+> > > +/*
+> > > + * Simple I2C peripheral for testing I2C device models.
+> > > + *
+> > > + * Copyright (c) 2024 Google LLC
+> > > + *
+> > > + * SPDX-License-Identifier: GPL-2.0-or-later
+> > > + *
+> > > + * This work is licensed under the terms of the GNU GPL, version 2 or later.
+> > > + * See the COPYING file in the top-level directory.
+> > > + */
+> > > +
+> > > +#include "hw/misc/i2c_tester.h"
+> > > +
+> > > +#include "qemu/log.h"
+> > > +#include "qemu/module.h"
+> > > +#include "migration/vmstate.h"
+> > > +
+> > > +static void i2c_tester_reset_enter(Object *o, ResetType type)
+> > > +{
+> > > +    I2cTesterState *s = I2C_TESTER(o);
+> > > +
+> > > +    s->set_reg_idx = false;
+> > > +    s->reg_idx     = 0;
+> > > +    memset(s->regs, 0, I2C_TESTER_NUM_REGS);
+> > > +}
+> > > +
+> > > +static int i2c_tester_event(I2CSlave *i2c, enum i2c_event event)
+> > > +{
+> > > +    I2cTesterState *s = I2C_TESTER(i2c);
+> > > +
+> > > +    if (event == I2C_START_SEND) {
+> > > +        s->set_reg_idx = true;
+> > > +    }
+> > > +
+> > > +    return 0;
+> > > +}
+> > > +
+> > > +static uint8_t i2c_tester_rx(I2CSlave *i2c)
+> > > +{
+> > > +    I2cTesterState *s = I2C_TESTER(i2c);
+> > > +
+> > > +    if (s->reg_idx >= I2C_TESTER_NUM_REGS) {
+> > > +        qemu_log_mask(LOG_GUEST_ERROR, "%s: invalid reg 0x%02x\n", __func__,
+> > > +                      s->reg_idx);
+> > > +        return I2C_NACK;
+> > > +    }
+> > > +
+> > > +    return s->regs[s->reg_idx];
+> > > +}
+> > > +
+> > > +static int i2c_tester_tx(I2CSlave *i2c, uint8_t data)
+> > > +{
+> > > +    I2cTesterState *s = I2C_TESTER(i2c);
+> > > +
+> > > +    if (s->set_reg_idx) {
+> > > +        /* Setting the register in which the operation will be done. */
+> > > +        s->reg_idx = data;
+> > > +        s->set_reg_idx = false;
+> > > +        return 0;
+> > > +    }
+> > > +
+> > > +    if (s->reg_idx >= I2C_TESTER_NUM_REGS) {
+> > > +        qemu_log_mask(LOG_GUEST_ERROR, "%s: invalid reg 0x%02x\n", __func__,
+> > > +                      s->reg_idx);
+> > > +        return I2C_NACK;
+> > > +    }
+> > > +
+> > > +    /* Write reg data. */
+> > > +    s->regs[s->reg_idx] = data;
+> > > +
+> > > +    return 0;
+> > > +}
+> > > +
+> > > +static const VMStateDescription vmstate_i2c_tester = {
+> > > +    .name = "i2c-tester",
+> > > +    .version_id = 1,
+> > > +    .minimum_version_id = 1,
+> > > +    .fields = (const VMStateField[]) {
+> > > +        VMSTATE_I2C_SLAVE(i2c, I2cTesterState),
+> > > +        VMSTATE_BOOL(set_reg_idx, I2cTesterState),
+> > > +        VMSTATE_UINT8(reg_idx, I2cTesterState),
+> > > +        VMSTATE_UINT8_ARRAY(regs, I2cTesterState, I2C_TESTER_NUM_REGS),
+> > > +        VMSTATE_END_OF_LIST()
+> > > +    }
+> > > +};
+> > > +
+> > > +static void i2c_tester_class_init(ObjectClass *oc, void *data)
+> > > +{
+> > > +    DeviceClass *dc = DEVICE_CLASS(oc);
+> > > +    ResettableClass *rc = RESETTABLE_CLASS(oc);
+> > > +    I2CSlaveClass *isc = I2C_SLAVE_CLASS(oc);
+> > > +
+> > > +    rc->phases.enter = i2c_tester_reset_enter;
+> > > +    dc->vmsd = &vmstate_i2c_tester;
+> > > +    isc->event = i2c_tester_event;
+> > > +    isc->recv = i2c_tester_rx;
+> > > +    isc->send = i2c_tester_tx;
+> > > +}
+> > > +
+> > > +static const TypeInfo i2c_tester_types[] = {
+> > > +    {
+> > > +        .name = TYPE_I2C_TESTER,
+> > > +        .parent = TYPE_I2C_SLAVE,
+> > > +        .instance_size = sizeof(I2cTesterState),
+> > > +        .class_init = i2c_tester_class_init
+> > > +    },
+> > > +};
+> > > +
+> > > +DEFINE_TYPES(i2c_tester_types);
+> > > diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
+> > > index 4b688aead2..3e93c12c8e 100644
+> > > --- a/hw/misc/Kconfig
+> > > +++ b/hw/misc/Kconfig
+> > > @@ -213,6 +213,11 @@ config IOSB
+> > >  config XLNX_VERSAL_TRNG
+> > >      bool
+> > >
+> > > +config I2C_TESTER
+> > > +    bool
+> > > +    default y if TEST_DEVICES
+> > > +    depends on I2C
+> > > +
+> > >  config FLEXCOMM
+> > >      bool
+> > >      select I2C
+> > > diff --git a/hw/misc/meson.build b/hw/misc/meson.build
+> > > index faaf2671ba..4f22231fa3 100644
+> > > --- a/hw/misc/meson.build
+> > > +++ b/hw/misc/meson.build
+> > > @@ -158,6 +158,8 @@ system_ss.add(when: 'CONFIG_SBSA_REF', if_true: files('sbsa_ec.c'))
+> > >  # HPPA devices
+> > >  system_ss.add(when: 'CONFIG_LASI', if_true: files('lasi.c'))
+> > >
+> > > +system_ss.add(when: 'CONFIG_I2C_TESTER', if_true: files('i2c_tester.c'))
+> > > +
+> > >  system_ss.add(when: 'CONFIG_FLEXCOMM', if_true: files('flexcomm.c'))
+> > >  system_ss.add(when: 'CONFIG_RT500_CLKCTL', if_true: files('rt500_clkctl0.c', 'rt500_clkctl1.c'))
+> > >  system_ss.add(when: 'CONFIG_RT500_RSTCTL', if_true: files('rt500_rstctl.c'))
+> > > --
+> > > 2.46.0.662.g92d0881bb0-goog
+> > >
+> > >

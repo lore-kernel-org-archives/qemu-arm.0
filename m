@@ -1,105 +1,103 @@
-Received: by 2002:a17:504:1bc1:b0:1be9:327d:8ee3 with SMTP id v1csp978921njg;
-        Wed, 18 Sep 2024 12:26:01 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUYUnO66keIcVRqtqbnNH+d97fAjW4ABUq3Zn5MSLyn8SKyyEpIddytqdOPAFEUvM7Q6YhKIT+yev94kg==@linaro.org
-X-Google-Smtp-Source: AGHT+IHZWOp+1/25EZd8K1uVmbSuufGkt8ENhukcr3dv/gpl424dud1LnL517B8d50Z1EI5L5SiQ
-X-Received: by 2002:a05:6102:a4b:b0:48f:e62f:8863 with SMTP id ada2fe7eead31-49d4147e9cbmr18927933137.2.1726687561033;
-        Wed, 18 Sep 2024 12:26:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1726687561; cv=none;
+Received: by 2002:a17:504:1bc1:b0:1be9:327d:8ee3 with SMTP id v1csp979016njg;
+        Wed, 18 Sep 2024 12:26:14 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVkXtMREvE+A/zPiY/TNmcuNQxz9yq6Uwf2sR88BsCnSanZxAItRPmwcsIQOf0AXTXXKBHYoK+ulEScBw==@linaro.org
+X-Google-Smtp-Source: AGHT+IHzA/h6iGAagC/VqfLtpLRPCUCIhP8eavNShM5/T5Crrg+lAGVfEZ4DWHYPT9IBLM+a98Si
+X-Received: by 2002:a05:6214:4188:b0:6c1:6a71:970e with SMTP id 6a1803df08f44-6c57df771cbmr286062896d6.5.1726687574324;
+        Wed, 18 Sep 2024 12:26:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1726687574; cv=none;
         d=google.com; s=arc-20240605;
-        b=P7S3veVDd4B1600nHKMSed7kf/w2D0n70KsL/MJpjhsT76H4WmK6D41mLYXwg4TEra
-         TnZmokL1fXYI+lZkN44NkhNGm1YFLxPl+oL8aiT+GGY6hlUsJCA1DLgjglpAl2B78F8z
-         w76Z4zZxuL371pK6Vk3laa0zFupVUdI1cgxA6DOiaxsD3Bz8Ke7ZkmYA01cvfQKJ6txg
-         1yTy5Hx70R7rvcSDHKzb5sbkGtr1NZr1+kDw3qcRLIZYp2FiE+n6/ez3vnAkFdtb5Lnl
-         f+LA/JaYV223LmFHG1GWI2qXP7y20LDDgF26OCln1GXwra55GGQbbn3VfwHQDiM+LYYQ
-         F/Hg==
+        b=YymZPiNzUv2kG+H6Kj88PB96DYsmpk5Xxm5sSHxSZBkG2N/H52zPUKabtfgAlgLRBL
+         otHSaZaDOV/ixJXFX0BL7po667kRLnkZ3obpTDgo76DZOnMClTcYtmY3luWP1hjdYPvr
+         ls7F4Ox4i600thl+nsIpbqfDyr7EDd1ZhgJWw6k5F3ClHbb8qaILKKr3u1wrtkR7RDXi
+         UV9wZI3DysVxuowL4etWestIFHlnj8Epy3fnfo4nRWs9jiSLiqq4OsjPlKr+RtFOZG/W
+         K9piypnYy7b9S1/iQgO4WZZny6YCeAX2Xmj+aRUJrA3bJv8RB+7wo6pInaDxkk1djTH1
+         XH+g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
          :references:mime-version:in-reply-to:date:dkim-signature;
-        bh=zkqCq3UBOk2L0o2tmmbXwYQ/qvmJvwtlw+/zSEQNzWA=;
+        bh=Is1Pe9Ut7+FUOXRSBGio99L8BWy9EslIqrLBu7QfCA8=;
         fh=2mssAqYKJuMcD/Ya5YUzhxP7uPixmdZ7O75Bi0gtEhM=;
-        b=JdTL3nHXMjQoxe/MELEMGDig/uBtL2/bOYHmcpJB4M+j/Z3FnLwIoYCDDQEh5OrzO4
-         xL5CMg4e2N0bELmU/CIqhjwJukA8qAqZ2bPtmOvBzXin5u3/bDk/L++iNRnheaN+oYVO
-         f9YZdg2GbtJr1jQPfNOXt/88Af82rY2pv6djHZqH9FNv8L3Pv82Mkkf+J3BGQrSJufZZ
-         EtyPqofVLC5EjgkXTKCAMqkEMJXyOFLIiZ3F04C3y9mR/f2x46d1eMICPY56hrPyATx5
-         cRynkIP1WvTd/KXkvK7hYmjzqdFXYg0rqsZM+7erYNNlyYq4RLTk/OYbJKHdj5jrnPIk
-         1OSw==;
+        b=UdW9qpCqXdMbF44e1fuWlL/wOoe0ZLL0hXDrrcddL0ra47D4vizp7Gsik2m2+kARmv
+         Qx5Edy+Z9rzfgmIIoj13gaj/T1zJ0DlaUEm3lrKzoZw9eQ1n8lmyyrY+eCHuEPV2eIXh
+         xJxQ6cNou6uMGVnuISUgvRdJr7orsKj+Ff3DceyXgAmsd+cOizK9KZhelRk1xhJt4a6T
+         gAoB+fvHer+6mc+trUhUHnu0HRkfAA1LKel9vvKxZ4UIZNW8YRe/7a+Ddem7YBnfECKA
+         hlRbj78U6FTno/p55OmHhL2vWPl3iSIF8jU9GMzyZyUrHrCNO8bFeHtO2Qg4wY8ulqyy
+         cdHQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=GUrodj3S;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@google.com header.s=20230601 header.b=WjILLj7R;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6c75e487c91si1194466d6.140.2024.09.18.12.26.00
+        by mx.google.com with ESMTPS id 6a1803df08f44-6c75e47cf90si1188396d6.142.2024.09.18.12.26.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 18 Sep 2024 12:26:01 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 18 Sep 2024 12:26:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=GUrodj3S;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@google.com header.s=20230601 header.b=WjILLj7R;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sr0H3-0005ua-RB; Wed, 18 Sep 2024 15:23:37 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sr0Gm-0004iU-GE; Wed, 18 Sep 2024 15:23:20 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <3rSjrZgUKCugdKfSZQYYQVO.MYWaOWe-NOfOVXYXQXe.YbQ@flex--tavip.bounces.google.com>)
- id 1sr0Gz-0005e0-Ty
- for qemu-devel@nongnu.org; Wed, 18 Sep 2024 15:23:34 -0400
-Received: from mail-pg1-x549.google.com ([2607:f8b0:4864:20::549])
+ <3kyjrZgUKCM4DuF2908805y.w86Ay6E-uB678707E.8B0@flex--tavip.bounces.google.com>)
+ id 1sr0GW-0004S7-3u
+ for qemu-arm@nongnu.org; Wed, 18 Sep 2024 15:23:04 -0400
+Received: from mail-yb1-xb49.google.com ([2607:f8b0:4864:20::b49])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from
- <3rSjrZgUKCugdKfSZQYYQVO.MYWaOWe-NOfOVXYXQXe.YbQ@flex--tavip.bounces.google.com>)
- id 1sr0Gw-0007OI-SN
- for qemu-devel@nongnu.org; Wed, 18 Sep 2024 15:23:33 -0400
-Received: by mail-pg1-x549.google.com with SMTP id
- 41be03b00d2f7-7db0c10238eso243a12.1
- for <qemu-devel@nongnu.org>; Wed, 18 Sep 2024 12:23:29 -0700 (PDT)
+ <3kyjrZgUKCM4DuF2908805y.w86Ay6E-uB678707E.8B0@flex--tavip.bounces.google.com>)
+ id 1sr0GU-0007I7-Cv
+ for qemu-arm@nongnu.org; Wed, 18 Sep 2024 15:23:03 -0400
+Received: by mail-yb1-xb49.google.com with SMTP id
+ 3f1490d57ef6-e1a91576564so175389276.0
+ for <qemu-arm@nongnu.org>; Wed, 18 Sep 2024 12:23:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1726687407; x=1727292207; darn=nongnu.org;
+ d=google.com; s=20230601; t=1726687379; x=1727292179; darn=nongnu.org;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:from:to:cc:subject:date:message-id:reply-to;
- bh=zkqCq3UBOk2L0o2tmmbXwYQ/qvmJvwtlw+/zSEQNzWA=;
- b=GUrodj3Ss+XC+4y9ux3iEhUWHNcJXyTpCK2grQI8ff/c23if+7QzZU7EAeU4gP0Slp
- MdRwZX8bWFQUsFEmxcPDud1pihuN59DZc0OXzE+xjTgXIWhIFwmIPDh0WclGbeZdwa2R
- o9QZE/KjpBcOOjYr/u976y+8ctPch2MTH603Mtcus/TapkgrHIfSFIkVV7EyJ1Abr3pY
- 5NBvZhHLF4eQ5EsPzpaZfR3QfKTeix6p9D3kMwDsFo12fobwVBITCWlXjxTJfjzSi96B
- k4a9U/KUSkwVL5wKqMS0eBIjClHQu5RdE81/gm4IpAzFA/P+rW8JSRuTeyoRu5xpACFg
- AXOA==
+ bh=Is1Pe9Ut7+FUOXRSBGio99L8BWy9EslIqrLBu7QfCA8=;
+ b=WjILLj7Ruw/JJSrQodORkveUsYfBJWbnaR3rnO8uAMBYXfxvSGJ/6vV0n8uCPN9qyE
+ zKw3FWgWhHUEWKlfmr1rmRMaeshZbKXVN+4CFImJPwK2mKqDzlWgU32mgRlqSeS1P0xE
+ bwN25QkZ8Az8W7w+qs3mMrsIJt/OHg1pxt3awmxEBYbcobF3wwCdwC9yytCTawtCCZq4
+ Cz6ibBSQYrBqJycBLTbVTKMfFp0MbCSYNoFfZDN2gEsT9kLm/KQT3LuW6hBz9VdH6zTT
+ ZzNFdh+1CHiTUqc6WWKJstbxvgwYT0v2ABzftjb9NZ+/6hyN4mwtFrU8TGc500HFmQwo
+ aOJA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1726687407; x=1727292207;
+ d=1e100.net; s=20230601; t=1726687379; x=1727292179;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=zkqCq3UBOk2L0o2tmmbXwYQ/qvmJvwtlw+/zSEQNzWA=;
- b=kFJIFj8eh5e0jUL6dkRWg6nxNK4ruwBHmFw8KS+JD7Pd12ROmwC5Yipb2t9PxP4Ns7
- 6ViRZhhEcsn0k4XIxJzoMg/udoF+plGxsFpiPQq5Bx3clgBu8nhgnwPGl1iCrNDQhYWn
- pSMpSLZYt6uL24A1ritEgqHoOmVneyKB6uHeSWQAsoGGdyhCedlZGzWqrcVR4eKZGwHM
- ohcJNoh8XDBqenlsqeWBgpHacwIROncqJrwrjChyAkJmVIiaX6T9N0/Y8n5/XHxRr/p2
- 51fygYM80Ajio00dOq72oQVqdtABFxlb/WEKFP1fEY/VLlgvcCEKBICL7ZNghc4DKHg7
- BTJA==
-X-Gm-Message-State: AOJu0YzTkeK/2Mymrx9LMHrWBDUrbC+eOqKDEvQPn3fEt9YUPYEgseno
- fnoh9c8UMe3q2k41gxwix5zWKanTcmkZ6fknlG6pQzeRcS3Y1rXprAUdgPsjhCLYte4kV3KNQ9K
- HQKBViDtSzK0Mw5JnNwS6Ivsw2Olnkai3A308Pgtl3ninWOXadGpQesWCEn4KPCkADaF+yPLyl6
- YQfZld9MUFB8dsbFtNamywsLtyOQ==
+ bh=Is1Pe9Ut7+FUOXRSBGio99L8BWy9EslIqrLBu7QfCA8=;
+ b=Wm3t/A9V+zD16cgp7pmhVG7TgpeZoxbUq7Vwmg/lUQFcserxZgTPzyaaQXDFVepnuP
+ 7HWATUJ7jiWRvglYwBrJqnTjT3BHZdHjO5No4aggGwnZ4KfkVSCeN7v6yDtb35/lslGi
+ V37E0JFvSh7cQMq5+pSE8HKkRBQXy4B2R7Q3fl9YEwOHDRR6REj/fDP//XsUZCj4TW/G
+ yvKoYBux+4zy0OdKZNhboAvW40kKbqw3FPH54jG5DmihqnJ/s9uE2SckFLga5Ng8j8DM
+ zQRLJc89jvhpqTHWPaxg4PGFg4awgyFnC8OBULZtjRWUJJP0d2PaoLNUMbbJclPfyfZT
+ ckdA==
+X-Gm-Message-State: AOJu0YxknAwHyKUYOlpyCyteqSgwNuWioMjxMc0b5Kxezj4mF0ATe/J1
+ vZvcN3zvB9LAePWCJe7lR5agdYwYuc3MfFP6oyWatX0pdWoCwK+r1rHJKEcx+/OUuuGDHy+0Dg=
+ =
 X-Received: from warp10.c.googlers.com ([fda3:e722:ac3:cc00:24:72f4:c0a8:750])
- (user=tavip job=sendgmr) by 2002:a63:1916:0:b0:7a1:f561:8c99 with
+ (user=tavip job=sendgmr) by 2002:a25:e090:0:b0:e11:584f:c2ca with
  SMTP id
- 41be03b00d2f7-7db2f8517dbmr37036a12.6.1726687405779; Wed, 18 Sep 2024
- 12:23:25 -0700 (PDT)
-Date: Wed, 18 Sep 2024 12:22:44 -0700
+ 3f1490d57ef6-e1d9dc3c15bmr55129276.6.1726687379366; Wed, 18 Sep 2024 12:22:59
+ -0700 (PDT)
+Date: Wed, 18 Sep 2024 12:22:30 -0700
 In-Reply-To: <20240918192254.3136903-1-tavip@google.com>
 Mime-Version: 1.0
 References: <20240918192254.3136903-1-tavip@google.com>
 X-Mailer: git-send-email 2.46.0.662.g92d0881bb0-goog
-Message-ID: <20240918192254.3136903-17-tavip@google.com>
-Subject: [PATCH 16/25] system/qtest: add APIS to check for memory access
- failures
+Message-ID: <20240918192254.3136903-3-tavip@google.com>
+Subject: [PATCH 02/25] tests/unit: add fifo32 tests
 From: Octavian Purdila <tavip@google.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, stefanst@google.com, pbonzini@redhat.com, 
@@ -108,9 +106,9 @@ Cc: qemu-arm@nongnu.org, stefanst@google.com, pbonzini@redhat.com,
  alistair@alistair23.me, thuth@redhat.com, philmd@linaro.org, jsnow@redhat.com, 
  crosa@redhat.com, lvivier@redhat.com
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::549;
- envelope-from=3rSjrZgUKCugdKfSZQYYQVO.MYWaOWe-NOfOVXYXQXe.YbQ@flex--tavip.bounces.google.com;
- helo=mail-pg1-x549.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b49;
+ envelope-from=3kyjrZgUKCM4DuF2908805y.w86Ay6E-uB678707E.8B0@flex--tavip.bounces.google.com;
+ helo=mail-yb1-xb49.google.com
 X-Spam_score_int: -95
 X-Spam_score: -9.6
 X-Spam_bar: ---------
@@ -119,438 +117,102 @@ X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  USER_IN_DEF_DKIM_WL=-7.5 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: CctJLSVar/1y
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: uDzvnPsbQakB
 
-Add read*/write*_fail qtest APIs to check for memory access failures.
+Add push/pop and peek tests for fifo32.
 
 Signed-off-by: Octavian Purdila <tavip@google.com>
 ---
- tests/qtest/libqtest-single.h | 92 +++++++++++++++++++++++++++++++++++
- tests/qtest/libqtest.h        | 76 +++++++++++++++++++++++++++++
- system/qtest.c                | 44 ++++++++++-------
- tests/qtest/libqtest.c        | 73 ++++++++++++++++++++++++++-
- 4 files changed, 265 insertions(+), 20 deletions(-)
+ tests/unit/test-fifo.c | 50 ++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 50 insertions(+)
 
-diff --git a/tests/qtest/libqtest-single.h b/tests/qtest/libqtest-single.h
-index 851724cbcb..c22037c8b2 100644
---- a/tests/qtest/libqtest-single.h
-+++ b/tests/qtest/libqtest-single.h
-@@ -265,6 +265,98 @@ static inline uint64_t readq(uint64_t addr)
-     return qtest_readq(global_qtest, addr);
+diff --git a/tests/unit/test-fifo.c b/tests/unit/test-fifo.c
+index 14153c41fa..d0e05ba95c 100644
+--- a/tests/unit/test-fifo.c
++++ b/tests/unit/test-fifo.c
+@@ -13,6 +13,7 @@
+ #include "qemu/osdep.h"
+ #include "migration/vmstate.h"
+ #include "qemu/fifo8.h"
++#include "qemu/fifo32.h"
+ 
+ const VMStateInfo vmstate_info_uint32;
+ const VMStateInfo vmstate_info_buffer;
+@@ -432,6 +433,53 @@ static void test_fifo8_pushpop(void)
+     fifo8_destroy(&fifo);
  }
  
-+/**
-+ * writeb_fail:
-+ * @addr: Guest address to write to.
-+ * @value: Value being written.
-+ *
-+ * Writes an 8-bit value to memory expecting a failure.
-+ */
-+static inline void writeb_fail(uint64_t addr, uint8_t value)
++static void test_fifo32_pushpop(void)
 +{
-+    qtest_writeb_fail(global_qtest, addr, value);
++    Fifo32 fifo;
++    uint32_t e;
++
++    fifo32_create(&fifo, 2);
++    fifo32_push(&fifo, 0x11121314);
++    fifo32_push(&fifo, 0x21222324);
++    g_assert(fifo32_num_used(&fifo) == 2);
++
++    e = fifo32_pop(&fifo);
++    g_assert(e == 0x11121314);
++    g_assert(fifo32_num_used(&fifo) == 1);
++
++    e = fifo32_peek(&fifo);
++    g_assert(e == 0x21222324);
++
++    g_assert(fifo32_num_used(&fifo) == 1);
++    fifo32_destroy(&fifo);
 +}
 +
-+/**
-+ * writew_fail:
-+ * @addr: Guest address to write to.
-+ * @value: Value being written.
-+ *
-+ * Writes a 16-bit value to memory expecting a failure.
-+ */
-+static inline void writew_fail(uint64_t addr, uint16_t value)
++static void test_fifo32_peek(void)
 +{
-+    qtest_writew_fail(global_qtest, addr, value);
++    Fifo32 fifo;
++    uint32_t e;
++
++    fifo32_create(&fifo, 2);
++    fifo32_push(&fifo, 0x11121314);
++    fifo32_push(&fifo, 0x21222324);
++    g_assert(fifo32_num_used(&fifo) == 2);
++
++    e = fifo32_peek(&fifo);
++    g_assert(e == 0x11121314);
++    g_assert(fifo32_num_used(&fifo) == 2);
++
++    e = fifo32_pop(&fifo);
++    g_assert(e == 0x11121314);
++    g_assert(fifo32_num_used(&fifo) == 1);
++
++    e = fifo32_peek(&fifo);
++    g_assert(e == 0x21222324);
++    g_assert(fifo32_num_used(&fifo) == 1);
++
++    fifo32_destroy(&fifo);
 +}
 +
-+/**
-+ * writel_fail:
-+ * @addr: Guest address to write to.
-+ * @value: Value being written.
-+ *
-+ * Writes a 32-bit value to memory expecting a failure.
-+ */
-+static inline void writel_fail(uint64_t addr, uint32_t value)
-+{
-+    qtest_writel_fail(global_qtest, addr, value);
-+}
 +
-+/**
-+ * writeq_fail:
-+ * @addr: Guest address to write to.
-+ * @value: Value being written.
-+ *
-+ * Writes a 64-bit value to memory expecting a failure.
-+ */
-+static inline void writeq_fail(uint64_t addr, uint64_t value)
-+{
-+    qtest_writeq_fail(global_qtest, addr, value);
-+}
-+
-+/**
-+ * readb_fail:
-+ * @addr: Guest address to read from.
-+ *
-+ * Reads an 8-bit value from memory expecting a failure.
-+ */
-+static inline void readb_fail(uint64_t addr)
-+{
-+    qtest_readb_fail(global_qtest, addr);
-+}
-+
-+/**
-+ * readw_fail:
-+ * @addr: Guest address to read from.
-+ *
-+ * Reads a 16-bit value from memory expecting a failure.
-+ */
-+static inline void readw_fail(uint64_t addr)
-+{
-+    qtest_readw_fail(global_qtest, addr);
-+}
-+
-+/**
-+ * readl_fail:
-+ * @addr: Guest address to read from.
-+ *
-+ * Reads a 32-bit value from memory expecting a failure.
-+ */
-+static inline void readl_fail(uint64_t addr)
-+{
-+    qtest_readl_fail(global_qtest, addr);
-+}
-+
-+/**
-+ * readq_fail:
-+ * @addr: Guest address to read from.
-+ *
-+ * Reads a 64-bit value from memory expecting a failure.
-+ */
-+static inline void readq_fail(uint64_t addr)
-+{
-+    qtest_readq_fail(global_qtest, addr);
-+}
-+
- /**
-  * memread:
-  * @addr: Guest address to read from.
-diff --git a/tests/qtest/libqtest.h b/tests/qtest/libqtest.h
-index beb96b18eb..f9bbeb2e60 100644
---- a/tests/qtest/libqtest.h
-+++ b/tests/qtest/libqtest.h
-@@ -549,6 +549,82 @@ uint32_t qtest_readl(QTestState *s, uint64_t addr);
-  */
- uint64_t qtest_readq(QTestState *s, uint64_t addr);
- 
-+/**
-+ * qtest_writeb_fail:
-+ * @s: #QTestState instance to operate on.
-+ * @addr: Guest address to write to.
-+ * @value: Value being written.
-+ *
-+ * Writes an 8-bit value to memory expecting a failure.
-+ */
-+void qtest_writeb_fail(QTestState *s, uint64_t addr, uint8_t value);
-+
-+/**
-+ * qtest_writew_fail:
-+ * @s: #QTestState instance to operate on.
-+ * @addr: Guest address to write to.
-+ * @value: Value being written.
-+ *
-+ * Writes a 16-bit value to memory expecting a failure.
-+ */
-+void qtest_writew_fail(QTestState *s, uint64_t addr, uint16_t value);
-+
-+/**
-+ * qtest_writel_fail:
-+ * @s: #QTestState instance to operate on.
-+ * @addr: Guest address to write to.
-+ * @value: Value being written.
-+ *
-+ * Writes a 32-bit value to memory expecting a failure.
-+ */
-+void qtest_writel_fail(QTestState *s, uint64_t addr, uint32_t value);
-+
-+/**
-+ * qtest_writeq_fail:
-+ * @s: #QTestState instance to operate on.
-+ * @addr: Guest address to write to.
-+ * @value: Value being written.
-+ *
-+ * Writes a 64-bit value to memory expecting a failure.
-+ */
-+void qtest_writeq_fail(QTestState *s, uint64_t addr, uint64_t value);
-+
-+/**
-+ * qtest_readb_fail:
-+ * @s: #QTestState instance to operate on.
-+ * @addr: Guest address to read from.
-+ *
-+ * Reads an 8-bit value from memory expecting a failure.
-+ */
-+void qtest_readb_fail(QTestState *s, uint64_t addr);
-+
-+/**
-+ * qtest_readw_fail:
-+ * @s: #QTestState instance to operate on.
-+ * @addr: Guest address to read from.
-+ *
-+ * Reads a 16-bit value from memory expecting a failure.
-+ */
-+void qtest_readw_fail(QTestState *s, uint64_t addr);
-+
-+/**
-+ * qtest_readl_fail:
-+ * @s: #QTestState instance to operate on.
-+ * @addr: Guest address to read from.
-+ *
-+ * Reads a 32-bit value from memory expecting a failure.
-+ */
-+void qtest_readl_fail(QTestState *s, uint64_t addr);
-+
-+/**
-+ * qtest_readq_fail:
-+ * @s: #QTestState instance to operate on.
-+ * @addr: Guest address to read from.
-+ *
-+ * Reads a 64-bit value from memory expecting a failure.
-+ */
-+void qtest_readq_fail(QTestState *s, uint64_t addr);
-+
- /**
-  * qtest_memread:
-  * @s: #QTestState instance to operate on.
-diff --git a/system/qtest.c b/system/qtest.c
-index 12703a2045..95bb80a2bc 100644
---- a/system/qtest.c
-+++ b/system/qtest.c
-@@ -514,26 +514,30 @@ static void qtest_process_command(CharBackend *chr, gchar **words)
- 
-         if (words[0][5] == 'b') {
-             uint8_t data = value;
--            address_space_write(first_cpu->as, addr, MEMTXATTRS_UNSPECIFIED,
--                                &data, 1);
-+            ret = address_space_write(first_cpu->as, addr,
-+                                      MEMTXATTRS_UNSPECIFIED, &data, 1);
-         } else if (words[0][5] == 'w') {
-             uint16_t data = value;
-             tswap16s(&data);
--            address_space_write(first_cpu->as, addr, MEMTXATTRS_UNSPECIFIED,
--                                &data, 2);
-+            ret = address_space_write(first_cpu->as, addr,
-+                                      MEMTXATTRS_UNSPECIFIED, &data, 2);
-         } else if (words[0][5] == 'l') {
-             uint32_t data = value;
-             tswap32s(&data);
--            address_space_write(first_cpu->as, addr, MEMTXATTRS_UNSPECIFIED,
--                                &data, 4);
-+            ret = address_space_write(first_cpu->as, addr,
-+                                      MEMTXATTRS_UNSPECIFIED, &data, 4);
-         } else if (words[0][5] == 'q') {
-             uint64_t data = value;
-             tswap64s(&data);
--            address_space_write(first_cpu->as, addr, MEMTXATTRS_UNSPECIFIED,
--                                &data, 8);
-+            ret = address_space_write(first_cpu->as, addr,
-+                                      MEMTXATTRS_UNSPECIFIED, &data, 8);
-         }
-         qtest_send_prefix(chr);
--        qtest_send(chr, "OK\n");
-+        if (ret == MEMTX_OK) {
-+            qtest_send(chr, "OK\n");
-+        } else {
-+            qtest_send(chr, "FAIL\n");
-+        }
-     } else if (strcmp(words[0], "readb") == 0 ||
-                strcmp(words[0], "readw") == 0 ||
-                strcmp(words[0], "readl") == 0 ||
-@@ -548,26 +552,30 @@ static void qtest_process_command(CharBackend *chr, gchar **words)
- 
-         if (words[0][4] == 'b') {
-             uint8_t data;
--            address_space_read(first_cpu->as, addr, MEMTXATTRS_UNSPECIFIED,
--                               &data, 1);
-+            ret = address_space_read(first_cpu->as, addr,
-+                                     MEMTXATTRS_UNSPECIFIED, &data, 1);
-             value = data;
-         } else if (words[0][4] == 'w') {
-             uint16_t data;
--            address_space_read(first_cpu->as, addr, MEMTXATTRS_UNSPECIFIED,
--                               &data, 2);
-+            ret = address_space_read(first_cpu->as, addr,
-+                                     MEMTXATTRS_UNSPECIFIED, &data, 2);
-             value = tswap16(data);
-         } else if (words[0][4] == 'l') {
-             uint32_t data;
--            address_space_read(first_cpu->as, addr, MEMTXATTRS_UNSPECIFIED,
--                               &data, 4);
-+            ret = address_space_read(first_cpu->as, addr,
-+                                     MEMTXATTRS_UNSPECIFIED, &data, 4);
-             value = tswap32(data);
-         } else if (words[0][4] == 'q') {
--            address_space_read(first_cpu->as, addr, MEMTXATTRS_UNSPECIFIED,
--                               &value, 8);
-+            ret = address_space_read(first_cpu->as, addr,
-+                                     MEMTXATTRS_UNSPECIFIED, &value, 8);
-             tswap64s(&value);
-         }
-         qtest_send_prefix(chr);
--        qtest_sendf(chr, "OK 0x%016" PRIx64 "\n", value);
-+        if (ret == MEMTX_OK) {
-+            qtest_sendf(chr, "OK 0x%016" PRIx64 "\n", value);
-+        } else {
-+            qtest_sendf(chr, "FAIL\n");
-+        }
-     } else if (strcmp(words[0], "read") == 0) {
-         g_autoptr(GString) enc = NULL;
-         uint64_t addr, len;
-diff --git a/tests/qtest/libqtest.c b/tests/qtest/libqtest.c
-index 9d07de1fbd..4055d6b953 100644
---- a/tests/qtest/libqtest.c
-+++ b/tests/qtest/libqtest.c
-@@ -666,7 +666,7 @@ static GString *qtest_client_socket_recv_line(QTestState *s)
-     return line;
- }
- 
--static gchar **qtest_rsp_args(QTestState *s, int expected_args)
-+static gchar **_qtest_rsp_args(QTestState *s, int expected_args, bool fail)
+ int main(int argc, char *argv[])
  {
-     GString *line;
-     gchar **words;
-@@ -700,7 +700,11 @@ redo:
-     }
- 
-     g_assert(words[0] != NULL);
--    g_assert_cmpstr(words[0], ==, "OK");
-+    if (fail) {
-+        g_assert_cmpstr(words[0], ==, "FAIL");
-+    } else {
-+        g_assert_cmpstr(words[0], ==, "OK");
-+    }
- 
-     for (i = 0; i < expected_args; i++) {
-         g_assert(words[i] != NULL);
-@@ -709,6 +713,11 @@ redo:
-     return words;
+     g_test_init(&argc, &argv, NULL);
+@@ -445,5 +493,7 @@ int main(int argc, char *argv[])
+     g_test_add_func("/fifo8/peek_bufptr_wrap", test_fifo8_peek_bufptr_wrap);
+     g_test_add_func("/fifo8/pop_bufptr", test_fifo8_pop_bufptr);
+     g_test_add_func("/fifo8/pop_bufptr_wrap", test_fifo8_pop_bufptr_wrap);
++    g_test_add_func("/fifo32/pushpop", test_fifo32_pushpop);
++    g_test_add_func("/fifo32/peek", test_fifo32_peek);
+     return g_test_run();
  }
- 
-+static gchar **qtest_rsp_args(QTestState *s, int expected_args)
-+{
-+    return _qtest_rsp_args(s, expected_args, false);
-+}
-+
- static void qtest_rsp(QTestState *s)
- {
-     gchar **words = qtest_rsp_args(s, 0);
-@@ -716,6 +725,13 @@ static void qtest_rsp(QTestState *s)
-     g_strfreev(words);
- }
- 
-+static void qtest_rsp_fail(QTestState *s)
-+{
-+    gchar **words = _qtest_rsp_args(s, 0, true);
-+
-+    g_strfreev(words);
-+}
-+
- static int qtest_query_target_endianness(QTestState *s)
- {
-     gchar **args;
-@@ -1103,6 +1119,13 @@ static void qtest_write(QTestState *s, const char *cmd, uint64_t addr,
-     qtest_rsp(s);
- }
- 
-+static void qtest_write_fail(QTestState *s, const char *cmd, uint64_t addr,
-+                             uint64_t value)
-+{
-+    qtest_sendf(s, "%s 0x%" PRIx64 " 0x%" PRIx64 "\n", cmd, addr, value);
-+    qtest_rsp_fail(s);
-+}
-+
- void qtest_writeb(QTestState *s, uint64_t addr, uint8_t value)
- {
-     qtest_write(s, "writeb", addr, value);
-@@ -1123,6 +1146,26 @@ void qtest_writeq(QTestState *s, uint64_t addr, uint64_t value)
-     qtest_write(s, "writeq", addr, value);
- }
- 
-+void qtest_writeb_fail(QTestState *s, uint64_t addr, uint8_t value)
-+{
-+    qtest_write_fail(s, "writeb", addr, value);
-+}
-+
-+void qtest_writew_fail(QTestState *s, uint64_t addr, uint16_t value)
-+{
-+    qtest_write_fail(s, "writew", addr, value);
-+}
-+
-+void qtest_writel_fail(QTestState *s, uint64_t addr, uint32_t value)
-+{
-+    qtest_write_fail(s, "writel", addr, value);
-+}
-+
-+void qtest_writeq_fail(QTestState *s, uint64_t addr, uint64_t value)
-+{
-+    qtest_write_fail(s, "writeq", addr, value);
-+}
-+
- static uint64_t qtest_read(QTestState *s, const char *cmd, uint64_t addr)
- {
-     gchar **args;
-@@ -1138,6 +1181,12 @@ static uint64_t qtest_read(QTestState *s, const char *cmd, uint64_t addr)
-     return value;
- }
- 
-+static void qtest_read_fail(QTestState *s, const char *cmd, uint64_t addr)
-+{
-+    qtest_sendf(s, "%s 0x%" PRIx64 "\n", cmd, addr);
-+    qtest_rsp_fail(s);
-+}
-+
- uint8_t qtest_readb(QTestState *s, uint64_t addr)
- {
-     return qtest_read(s, "readb", addr);
-@@ -1158,6 +1207,26 @@ uint64_t qtest_readq(QTestState *s, uint64_t addr)
-     return qtest_read(s, "readq", addr);
- }
- 
-+void qtest_readb_fail(QTestState *s, uint64_t addr)
-+{
-+    qtest_read_fail(s, "readb", addr);
-+}
-+
-+void qtest_readw_fail(QTestState *s, uint64_t addr)
-+{
-+    qtest_read_fail(s, "readw", addr);
-+}
-+
-+void qtest_readl_fail(QTestState *s, uint64_t addr)
-+{
-+    qtest_read_fail(s, "readl", addr);
-+}
-+
-+void qtest_readq_fail(QTestState *s, uint64_t addr)
-+{
-+    qtest_read(s, "readq", addr);
-+}
-+
- static int hex2nib(char ch)
- {
-     if (ch >= '0' && ch <= '9') {
 -- 
 2.46.0.662.g92d0881bb0-goog
 

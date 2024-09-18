@@ -1,424 +1,330 @@
-Received: by 2002:a05:7022:f8d:b0:8a:132c:44a7 with SMTP id eg13csp85709dlb;
-        Wed, 18 Sep 2024 22:55:32 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWFdozp6cbX5JC4QXyAz4dirbhBudIcWgPEysQ6p0zqeAngXG+r/sIJWdP4XM3LGHz58uyzrFrbbfFY0w==@linaro.org
-X-Google-Smtp-Source: AGHT+IGqUhu/HIV9SrtjMn7TPeYosjV2PoQ3OVyztdRtAZ+Q80azrTYvTbrs2DAQDkiiQ9kyLj3H
-X-Received: by 2002:a05:622a:56:b0:458:3ac9:11f2 with SMTP id d75a77b69052e-45860311b4bmr385023671cf.31.1726725332250;
-        Wed, 18 Sep 2024 22:55:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1726725332; cv=none;
-        d=google.com; s=arc-20240605;
-        b=Rz+kW+m5jHRYZRyEVL5KAe7ChDcGCZoUxaq9V+HewE5eHDNcpICPqNC56zH2TVoXNA
-         ug9bNpiKfdH8u/ZfHNEAfQ5ejF5MyH7WbtmrI8ml79LTmgEPYxrgGEGjbuwligxeu5a6
-         etAAM8AOHfg5A+iOu0J2zXPdO+Gku2yH8+sBFDp3BVm/Vo+ibx7+jjx3TGGTxX5If7eh
-         D5dvJd9mD9MSEyJw6iG/Ail0ZeEreks0ySRe4f0iGkTRoKfdj0m9atvqUaPMkGqe3MX2
-         iwV3IjLqY9r6qfFXJ7dwWHJYJNjM21oUK2vk0RjbDaF/IzvfDTg6CrtvWBUSR64mkXPt
-         LX3w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=xIgFgg6EuVoT2DcYFZWXAN//r+jS78fauMKG+MdB1PY=;
-        fh=33vV7fdwuF57f9/cQTMVCjJLx99l6PrD70Pt7L6JrPg=;
-        b=OEvTTbYDPRgHOPp8Qf48hFr9EKeSPwNz2qkGId3o9MfKsKHR+JJlcDk8MuALC6rOus
-         2JWHqjRRhpSpZ8MTVrf+Hol+Q15ouACtsiQ4xfZXfKmhrDrTsKyktvdmeQOq04tyzVWN
-         JLprUEljeTEHePdMsFgqwCxGhSMQZsEm2VQWbwXXijCyZ9R/xRTTy6NU8cgiyrQo6f+O
-         Zsj0ItDoB1Xn9cwFufgEZBZPLkYNvr61Qj0KoZ8lzeHE1xW8BDT9pYo1W28zg1reXekF
-         IVnhO0/jQz/lt184hxF03+2fhBszOEDxPOGmmE/s/C2hKyEGH7Yx7MisEP4fKd62/6ft
-         97zg==;
+Received: by 2002:a17:504:1bc1:b0:1be9:327d:8ee3 with SMTP id v1csp1036962njg;
+        Wed, 18 Sep 2024 14:48:30 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXn8yC0Pt28wEcTAwMTkJQ7kFEIR5CmWzys8Ry+QXe0I6cYjpkkC//ONu1lRMMMXhaO7bAgn7/r62Sw6Q==@linaro.org
+X-Received: by 2002:a17:903:32c7:b0:205:4bc0:1993 with SMTP id d9443c01a7336-2076e36cb34mr338272645ad.6.1726696110494;
+        Wed, 18 Sep 2024 14:48:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1726696110; cv=none;
+        d=google.com; s=arc-20160816;
+        b=TaFx7NHwNjLCoogkA2xGsohVUIjNJ0v+rnFKBeQJnoPXyCM9DzAe0d78lr8FoZ4Cd8
+         +i5aCLo7p8JihYatdXRIQ8ztaXOzOYtApk3KtsdjXdj4D/Y/qzgIbr3/PeXlfzYa2gNQ
+         NsgPz/pApuWC/M0kEX/mFe8FMzSNFwUmarUaz4zTObkcFk7tDb+n9Ltizb/K9vIVnlpd
+         ndiPcqw9EBmDpLHb0iEtn2kacYdkYGDLBYDZCJLQpAIKCsr8KdMuNXzG3702/IciFy0v
+         t9nYMZSQmCJa0RtFHvABtIpIyvXfzcegWuRy6BHvx3npt2rvhfQ0z9keSbo9zrG3T5WS
+         T7UA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=56eFY0PPKbojN9iHiuO5E17taMmpX3hGYkXam5W4kI8=;
+        fh=mIobgmiFUM0DFO+y7jR/BH1xc9IVbzvFt5YhfgVSb0I=;
+        b=k7nRIVta4RVBOAAYE49N5SSiMw2eXiWL44rZZQTV1NepF1rIuGv3r0EBiFvpAvluch
+         mCaJkNvdbRcdA8hGyATUyMVdHK3yDmhWKuUdc6jzKFF+hPL7wtZe289dzdhEUxRZgTDY
+         kyVa0VbnXQm3K8gSyBF7sx9SSkP2584C9RjS7AdOAReYvgPTMQ6aNuAZonABSxk9fK5M
+         8ykT8UwcscJslyLgbCmCtXMFKVQzE/OgzxYWJ/DhvvT3W0FZKqE3sdb60xU8m/8wuR3e
+         2zv26GgWKNjuKQNe69nZsaQE7DgiXeNiSyZsKTQrpJrVz/vyi/dOo7sxsR+p39ugb8sE
+         hJJA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=VPunPyg8;
-       spf=pass (google.com: domain of zhao1.liu@intel.com designates 192.198.163.15 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Return-Path: <zhao1.liu@intel.com>
-Received: from mgamail.intel.com (mgamail.intel.com. [192.198.163.15])
-        by mx.google.com with ESMTPS id d75a77b69052e-45b17931f19si12134001cf.562.2024.09.18.22.55.31
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 18 Sep 2024 22:55:32 -0700 (PDT)
-Received-SPF: pass (google.com: domain of zhao1.liu@intel.com designates 192.198.163.15 as permitted sender) client-ip=192.198.163.15;
+       dkim=pass header.i=@linaro.org header.s=google header.b=NFyDz9ir;
+       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <pierrick.bouvier@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d9443c01a7336-2079470f554sor74666025ad.17.2024.09.18.14.48.30
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Wed, 18 Sep 2024 14:48:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=VPunPyg8;
-       spf=pass (google.com: domain of zhao1.liu@intel.com designates 192.198.163.15 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1726725332; x=1758261332;
-  h=from:to:cc:subject:date:message-id:mime-version:
-   content-transfer-encoding;
-  bh=PP14MTETZAEuYjWGx085fi3OdTPqIiN84cU4cQZb8Eo=;
-  b=VPunPyg8xpje1cFj/sJ2oWpJE4Q81bJ9FtxC7nLiv+A/yME5wqua7rmq
-   oRg+LYDFfj3Z53SFquI5XPNm78yRsrhitGtkkeHXUfGLLS7ILQ2fhn1AR
-   fkwbz0DuWbR+niXH1w0Ya1YlPMbx1cJK9BZUPhiTdJbC7TztKJ4HFCdJ4
-   Q7SzulvXzbs/6VdYcsl34FXYCwpIxcb4MInwPj5+IiHd+o1aslpFmbkPq
-   mLvhAG9LiTTuXDxtIt0VggEwzDeK4W3qYCXFwtYvwYjZ7Tzl2T3EFTEui
-   BEKDP4wvnVySSmA8Svht0Zqdkhf30LlZ4d5XYEoAABtOjkit+O8V2RcUy
-   w==;
-X-CSE-ConnectionGUID: NDHOepDXS4CDiywtCyfCOw==
-X-CSE-MsgGUID: Cc3HqjTwS/G8GsevefRhOQ==
-X-IronPort-AV: E=McAfee;i="6700,10204,11199"; a="25813422"
-X-IronPort-AV: E=Sophos;i="6.10,240,1719903600"; 
-   d="scan'208";a="25813422"
-Received: from fmviesa006.fm.intel.com ([10.60.135.146])
-  by fmvoesa109.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Sep 2024 22:55:31 -0700
-X-CSE-ConnectionGUID: zWu8KgaJTxSF9BuQDcV04A==
-X-CSE-MsgGUID: MEiInIrHSAyTNt8ZxgEoGA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.10,240,1719903600"; 
-   d="scan'208";a="69418595"
-Received: from liuzhao-optiplex-7080.sh.intel.com ([10.239.160.36])
-  by fmviesa006.fm.intel.com with ESMTP; 18 Sep 2024 22:55:24 -0700
-From: Zhao Liu <zhao1.liu@intel.com>
-To: =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
-	Igor Mammedov <imammedo@redhat.com>,
-	Eduardo Habkost <eduardo@habkost.net>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Yanan Wang <wangyanan55@huawei.com>,
-	"Michael S . Tsirkin" <mst@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Sergio Lopez <slp@redhat.com>,
-	Jason Wang <jasowang@redhat.com>,
-	Stefano Stabellini <sstabellini@kernel.org>,
-	Anthony PERARD <anthony@xenproject.org>,
-	Paul Durrant <paul@xen.org>,
-	"Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
-	Eric Blake <eblake@redhat.com>,
-	Markus Armbruster <armbru@redhat.com>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org,
-	kvm@vger.kernel.org,
-	qemu-arm@nongnu.org,
-	Zhenyu Wang <zhenyu.z.wang@intel.com>,
-	Dapeng Mi <dapeng1.mi@linux.intel.com>,
-	Yongwei Ma <yongwei.ma@intel.com>,
-	Zhao Liu <zhao1.liu@intel.com>
-Subject: [RFC v2 00/12] Introduce Hybrid CPU Topology via Custom Topology Tree
-Date: Thu, 19 Sep 2024 14:11:16 +0800
-Message-Id: <20240919061128.769139-1-zhao1.liu@intel.com>
-X-Mailer: git-send-email 2.34.1
+       dkim=pass header.i=@linaro.org header.s=google header.b=NFyDz9ir;
+       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1726696110; x=1727300910; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=56eFY0PPKbojN9iHiuO5E17taMmpX3hGYkXam5W4kI8=;
+        b=NFyDz9irnkyAQCM3UrNk/ig7PucMHsFclHTCGs8NBLNf2ZMB7c3WArkcmqFv/jYnkf
+         3cGBp2JLzhgsVB3+yICPzeLmHV+7XJIhGFsZ3/8n2ilrm7+FM6JEgJSug19KiXP6hUqa
+         /825eRtVzl1NcNoF1YDZoJdwyAMhRrzT5kGsCgIcyX9D6R00FXeU9miLW1PlmisZvLsd
+         YDJ5JsbSd52EcX0p4+3HAIhTuNpPcsRYG9YhenDyvlsrbDyYWzxCIuiNj54eBErQeRRs
+         dswGw7cUx8J0TeSLtf40ICCIEZKsaTf45PuA5XQ8mPLTyHoH0pjIDcugQAjkFORKweNx
+         qFGA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1726696110; x=1727300910;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=56eFY0PPKbojN9iHiuO5E17taMmpX3hGYkXam5W4kI8=;
+        b=iE7cc1FD/wpB7d6d/FNOf9K4i057G5BthmkhFUvTA0TydvAiMPAgv+EaOOEAllD10T
+         wKVEm5nCHI4rUjMRTpZt0z/VGxrVPU0B6WTlnl1RkO+jDnp2Xs1r0LG/c7NA2gXal7cA
+         OeMo5u5MvjPoaXk7ljuuVvpKpUxJ/NjS1tgSbfDth8FJip3kpG0CCBImR2ExJqoKFINX
+         fDuJFjr6KD+tWV0Vko8wnZnVt/lZA2QYp5+pb59+gwvSudFh0LVJnDZQ+JaeIzFJqKSp
+         oSnJ3MShLc8YkIFIe6Bx4rcR+A1VYGRWk3h2HzTY2jCuRdNuM+XEYU4UXfLxe9RSsCRh
+         Wmig==
+X-Forwarded-Encrypted: i=1; AJvYcCUve+A3L/9LyO9OYIkGrL9OYpRWz/sB8MsLDmFkM1FYTs3bbnMzAH0jCRspAnz9CpDcMTwtNL/mKol9dw==@linaro.org
+X-Gm-Message-State: AOJu0YzrC6UOzV5EX6cwbpghdQ0c8onBHYm2RGDwDFxi+g1Pqw27wFRF
+	TIFOpMoEQd6cCb5CEqe9JTSRC6yfm7hbWtbGifdMPMK8DqZXqp5uF3YIqEeyEk6b1w==
+X-Google-Smtp-Source: AGHT+IG+xzYa/L8bq7kWZz9TpyKRRVs2FqZ8wnJP63m6mKS5eGogLn32uep1trP6iXzOGJjIS59+EQ==
+X-Received: by 2002:a17:903:189:b0:205:500f:5dcc with SMTP id d9443c01a7336-2076e4612e7mr333975395ad.40.1726696109758;
+        Wed, 18 Sep 2024 14:48:29 -0700 (PDT)
+Return-Path: <pierrick.bouvier@linaro.org>
+Received: from [192.168.1.67] (216-180-64-156.dyn.novuscom.net. [216.180.64.156])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-20794735728sm69387345ad.271.2024.09.18.14.48.27
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 18 Sep 2024 14:48:29 -0700 (PDT)
+Message-ID: <fada9192-1f49-4ccc-a3e0-30f17459eb31@linaro.org>
+Date: Wed, 18 Sep 2024 14:48:26 -0700
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: F75mqD6r+A/Y
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 00/48] Use g_assert_not_reached instead of
+ (g_)assert(0, false)
+To: "Xingtao Yao (Fujitsu)" <yaoxt.fnst@fujitsu.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Cc: Jason Wang <jasowang@redhat.com>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
+ <alex.bennee@linaro.org>, Laurent Vivier <lvivier@redhat.com>,
+ Marcelo Tosatti <mtosatti@redhat.com>, Nicholas Piggin <npiggin@gmail.com>,
+ Klaus Jensen <its@irrelevant.dk>, WANG Xuerui <git@xen0n.name>,
+ Halil Pasic <pasic@linux.ibm.com>, Rob Herring <robh@kernel.org>,
+ Michael Rolnik <mrolnik@gmail.com>, Zhao Liu <zhao1.liu@intel.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Fabiano Rosas <farosas@suse.de>, Corey Minyard <minyard@acm.org>,
+ Keith Busch <kbusch@kernel.org>, Thomas Huth <thuth@redhat.com>,
+ "Maciej S. Szmigiero" <maciej.szmigiero@oracle.com>,
+ Harsh Prateek Bora <harshpb@linux.ibm.com>, Kevin Wolf <kwolf@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Jesper Devantier <foss@defmacro.it>,
+ Hyman Huang <yong.huang@smartx.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ "qemu-s390x@nongnu.org" <qemu-s390x@nongnu.org>,
+ Laurent Vivier <laurent@vivier.eu>,
+ "qemu-riscv@nongnu.org" <qemu-riscv@nongnu.org>,
+ "Richard W.M. Jones" <rjones@redhat.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ Aurelien Jarno <aurelien@aurel32.net>,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,
+ Akihiko Odaki <akihiko.odaki@daynix.com>,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Hanna Reitz <hreitz@redhat.com>, Ani Sinha <anisinha@redhat.com>,
+ "qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ Alistair Francis <alistair.francis@wdc.com>, Bin Meng <bmeng.cn@gmail.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Helge Deller <deller@gmx.de>,
+ Peter Xu <peterx@redhat.com>, Daniel Henrique Barboza
+ <danielhb413@gmail.com>, Dmitry Fleytman <dmitry.fleytman@gmail.com>,
+ Nina Schoetterl-Glausch <nsg@linux.ibm.com>,
+ Yanan Wang <wangyanan55@huawei.com>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ Igor Mammedov <imammedo@redhat.com>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Eric Farman <farman@linux.ibm.com>,
+ Sriram Yagnaraman <sriram.yagnaraman@ericsson.com>,
+ "qemu-block@nongnu.org" <qemu-block@nongnu.org>,
+ Stefan Berger <stefanb@linux.vnet.ibm.com>, Joel Stanley <joel@jms.id.au>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ David Gibson <david@gibson.dropbear.id.au>, Fam Zheng <fam@euphon.net>,
+ Weiwei Li <liwei1518@gmail.com>, Markus Armbruster <armbru@redhat.com>
+References: <20240912073921.453203-1-pierrick.bouvier@linaro.org>
+ <OSZPR01MB6453486D937E15FBF6AEAD018D652@OSZPR01MB6453.jpnprd01.prod.outlook.com>
+Content-Language: en-US
+From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+In-Reply-To: <OSZPR01MB6453486D937E15FBF6AEAD018D652@OSZPR01MB6453.jpnprd01.prod.outlook.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: base64
+X-TUID: E3KMWwYEJjYs
 
-Hi all,
-
-This our v2 RFC trying to introduce hyrbid (aka, heterogeneous) CPU
-topology into QEMU. This series focuses on the heterogeneous CPUs with
-same ISA, like Intel client hybrid architecture.
-
-Comparing with v1 [1], v2 totally re-designs the topology architecture
-and based on QOM (CPU) topology [2], unleashes the ability to customize
-CPU topology tree by -device from CLI.
-
-For example, a PC machine with 1 Intel Core (P-core) with 2 threads and
-2 Intel Atoms (E core) with single thread can be defined like:
-
--smp maxsockets=1,maxdies=1,maxmodules=2,maxcores=2,maxthreads=2
--machine pc,custom-topo=on \
--device cpu-socket,id=sock0 \
--device cpu-die,id=die0,bus=sock0 \
--device cpu-module,id=mod0,bus=die0 \
--device cpu-module,id=mod1,bus=die0 \
--device x86-intel-core,id=core0,bus=mod0 \
--device x86-intel-atom,id=core1,bus=mod1 \
--device x86-intel-atom,id=core2,bus=mod1 \
--device host-x86_64-cpu,id=cpu0,socket-id=0,die-id=0,module-id=0,core-id=0,thread-id=0 \
--device host-x86_64-cpu,id=cpu1,socket-id=0,die-id=0,module-id=0,core-id=0,thread-id=1 \
--device host-x86_64-cpu,id=cpu2,socket-id=0,die-id=0,module-id=1,core-id=0,thread-id=0 \
--device host-x86_64-cpu,id=cpu3,socket-id=0,die-id=0,module-id=1,core-id=1,thread-id=0
-
-The example above has some difference from the v1 qom-topo example [3]:
- * new max* parameter in -smp and,
- * new custom-topo option in -machine,
- * no "parent" parameter to create child<>, instead there's a bus to
-   specify parent bus of parent topology device.
-
-The design of such command line is related to the machine/CPU
-initialization process, and I'll explain in more detail later the
-reasons for this (pls refer section 2. "Design Overview").
-
-This series is based on previous v2 QOM topology series [2].
-
-Welcome your feedback and comments!
-
-
-1. Background
-=============
-
-About why we need hybrid CPU topology, pls refer the cover letter of
-QOM-topo v2 RFC [2], "What's the Problem?" :-).
-
-With CPU topology related devices introduced by QOM-topo v2 RFC [2],
-then we have the chance to allow user to customize CPU topology from
-CLI.
-
-There is no need to deliberately emphasize the hybrid topology here, as
-the custom topology can be either SMP or hybrid, and custom-topo is
-generic and flexible enough.
-
-
-2. Design Overview
-==================
-
-2.1. How to Initialize possible_cpus[] for Custom Topology from CLI
-===================================================================
-
-At present (QEMU master and QOM topo v2 [2]), possible_cpus[] is
-initialized with -smp parameters.
-
-For user custom topology, a previous attempt (in QOM topo v1 [3]) tried
-to create topology devices (CPU/core/module/die...) from CLI in advance,
-and built a complete topology tree, then used the globle topology
-informantion (something similar to smp.max_cpus/threads/cores/sockets...)
-to create possible_cpus[] and initialize archid (for x86, it's APIC ID).
-
-Figure 1: Previous attempt to create topology devices before
-          possible_cpus[] initialization (in QOM-topo v1 [3])
-                                                         
-    qmp_x_exit_preconfig()                               
-    │                                                    
-    ├───(?)qemu_create_cli_base_devices()                
-    │    │                                               
-    │    └───(?)Create CPU topology devices              
-    │           including CPUs                           
-    │                                                    
-    ├─── qemu_init_board()                               
-    │    │                                               
-    │    └── machine_run_board_init()                    
-    │        │                                           
-    │        └─── machine_class->init(machine)           
-    │             │                                      
-    │             └─── x86_cpus_init()                   
-    │                  │                                 
-    │                  └─── mc->possible_cpu_arch_ids(ms)
-    │                                                    
-    └─── qemu_create_cli_devices()                       
-
-The "(?)" marked qemu_create_cli_base_devices() (added in previous
-approach) would create topology devices.
-
-But this approach has the drawback: when topology tree is completed,
-especially for the levels higher than possible_cpus[], it's impossible
-to hotplug other topology devices (higher than possble_cpus[]). This is
-because the length of possible_cpus[] is computed by those higher
-topology levels and this length cannot change at runtime.
-
-This would prevent future support and exploration of larger granularity
-hotplugs.
-
-Thus, in this RFC, we create topology devices after possible_cpus[]
-creation.
-
-But the question that arises is how to get the topology information
-needed for the initialization of possible_cpus[] and its archid.
-
-The current -smp parameters (cores/modules/clusters/dies/sockets/books/
-drawers) require the machine to create a corresponding number of
-topology instances for SMP systems.
-
-This does not accommodate hybrid topologies. Therefore, we introduce
-max* parameters: maxthreads/maxcores/maxmodules/maxdies/maxsockets
-(for x86), to predefine the topology framework for the machine. These
-parameters also constrain subsequent custom topologies, ensuring the
-number of child devices under each parent device does not exceed the
-specified max limits.
-
-The actual number of child instances is determined by the user. Maybe
-user defines a SMP topology, or maybe a hybrid topology.
-
-Not only can the length of possible_cpus[] continue to be defined via
--smp, but its internal archid can also be set using max parameters. In
-the case of x86, the bit width of the sub-topology ID in the APIC ID
-will be determined by these max parameters. In fact, actual x86 hardware
-uses the similar approach, including hybrid platforms.
-
-Setting SMP max limits for custom topologies is semantically meaningful.
-Regardless of how heterogeneous the CPU topology is, there will always
-be a corresponding superset in the SMP structure.
-
-
-2.2. How to Address CPU Dependencies in Machine Initialization
-==============================================================
-
-A coming question is whether the machine continues to initialize the
-default CPUs from "-smp cpus=*", when the user needs custom topology
-from the CLI.
-
-In qom-topo v2, machine creates a symmetric topology tree from -smp by
-default, and it's clear that customizing again based on an existing
-topology tree won't work.
-
-Therefore, once user wants to customize topology by "-machine
-custom-topo=on", the machine, that supports custom topology, will skip
-the default topology creation as well as the default CPU creation.
-
-In the following figure, just as the "(X)" marked
-machine_create_topo_tree() and x86_cpu_new() should be skipped.
-
-Figure 2: Original machine initialization process (in QOM-topo v2 [2])
-
-    qmp_x_exit_preconfig()                               
-    │                                                    
-    ├─── qemu_init_board()                               
-    │    │                                               
-    │    └── machine_run_board_init()                    
-    │        │                                           
-    │        ├───(*)machine_create_topo_tree()           
-    │        │                                           
-    │        └─── machine_class->init(machine)           
-    │             │                                      
-    │             ├─── x86_cpus_init()                   
-    │             │    │                                 
-    │             │    ├─── mc->possible_cpu_arch_ids(ms)
-    │             │    │                                 
-    │             │    └───(*)x86_cpu_new()              
-    │             │                                      
-    │             └───(*)Other initialization steps       
-    │                    with CPU dependencies           
-    │                                                    
-    └─── qemu_create_cli_devices()                      
-
-
-However, machine initialization may have some followup steps with CPU
-dependencies after the default CPU initialization. If the default CPU
-creation is skipped, such CPU-dependent steps will fail.
-
-Therefore, to address these annoying CPU dependencies, and to replace
-the default topology tree creation (machine_create_topo_tree() and
-x86_cpu_new()) with CPU topology creation from CLI, this series reorders
-the machine initialization steps and topology device creation from CLI
-for the custom topology case:
-
-Figure 3: New machine initialization process (in this series)
-
-    qmp_x_exit_preconfig()                                  
-    │                                                       
-    ├─── qemu_init_board()                                  
-    │    │                                                  
-    │    ┼──── machine_run_board_init()                     
-    │    │     │                                            
-    │    │     ├───(X)machine_create_topo_tree()            
-    │    │     │                                            
-    │    │     └─── machine_class->init(machine)            
-    │    │          │                                       
-    │    │          ├─── x86_cpus_init()                    
-    │    │          │    │                                  
-    │    │          │    ┼─── mc->possible_cpu_arch_ids(ms) 
-    │    │          │    │                                  
-    │    │          │    └───(X)x86_cpu_new()               
-    │    │          │                                       
-    │    │          └───(X)Other initialization steps        
-    │    │                 with CPU dependencies            
-    │    │                                                  
-    │    ├────(*)qemu_add_cli_devices_early()               
-    │    │     │                                            
-    │    │     └───(*)Create CPU topology devices          
-    │    │            including CPUs                       
-    │    │                                                  
-    │    └────(*)machine_run_board_post_init()                
-    │          │                                            
-    │          └───(*)machine_class->post_init(machine)       
-    │               │                                       
-    │               └───(*)Other initialization steps        
-    │                      with CPU dependencies            
-    │                                                       
-    └─── qemu_create_cli_devices()                          
-
-
-As the above figure, "(*)" indicates the new interface/hook added in
-this series:
-
-  * (For the machine supports custom topology) split CPU dependent
-    initialization setps into machine_class->post_init().
-
-    - For example, in q35 machine, all the logic after x86_cpu_new() is
-      placed in machine_class->post_init().
-
-  * Between machine_class->init() and machine_class->post_init(),
-    create CPU topology devices (including CPUs) from CLI early.
-
-This effectively replaces the default CPU creation (as well as topology
-tree creation) in the original initialization process with
-qemu_add_cli_devices_early().
-
-
-3. Patch Summary
-================
-
-Patch 01-03: Create topology device from CLI early.
-Ptach 04,11: Separate the part following CPU creation from the machine
-             initialization process into MachineClass.post_init().
-Patch 05-08: Implement max parameters in -smp and use max limitations
-             to initialize possible_cpus[].
-Patch 09-10: Add Intel hybrid CPU support.
-Patch    12: Allow user to customize topology tree for x86 machines.
-
-
-4. Reference
-============
-
-[1]: [RFC 00/52] Introduce hybrid CPU topology
-     https://lore.kernel.org/qemu-devel/20230213095035.158240-1-zhao1.liu@linux.intel.com/
-[2]: [RFC v2 00/15] qom-topo: Abstract CPU Topology Level to Topology Device
-     https://lore.kernel.org/qemu-devel/20240919015533.766754-1-zhao1.liu@intel.com/
-[3]: [RFC 00/41] qom-topo: Abstract Everything about CPU Topology
-     https://lore.kernel.org/qemu-devel/20231130144203.2307629-1-zhao1.liu@linux.intel.com/
-
-
-Thanks and Best Regards,
-Zhao
----
-Zhao Liu (12):
-  qdev: Allow qdev_device_add() to add specific category device
-  qdev: Introduce new device category to cover basic topology device
-  system/vl: Create CPU topology devices from CLI early
-  hw/core/machine: Split machine initialization around
-    qemu_add_cli_devices_early()
-  hw/core/machine: Introduce custom CPU topology with max limitations
-  hw/cpu: Constrain CPU topology tree with max_limit
-  hw/core: Re-implement topology helpers to honor max limitations
-  hw/i386: Use get_max_topo_by_level() to get topology information
-  i386: Introduce x86 CPU core abstractions
-  i386/cpu: Support Intel hybrid CPUID
-  i386/machine: Split machine initialization after CPU creation into
-    post_init()
-  i386: Support custom topology for microvm, pc-i440fx and pc-q35
-
- MAINTAINERS                 |   1 +
- hw/core/machine-smp.c       |  10 ++-
- hw/core/machine.c           |  47 ++++++++++
- hw/core/meson.build         |   2 +-
- hw/cpu/cpu-slot.c           | 168 ++++++++++++++++++++++++++++++++++++
- hw/cpu/cpu-topology.c       |   2 +-
- hw/i386/microvm.c           |   8 ++
- hw/i386/pc_piix.c           |  41 +++++----
- hw/i386/pc_q35.c            |  37 +++++---
- hw/i386/x86-common.c        |  25 ++++--
- hw/i386/x86.c               |  20 +++--
- hw/net/virtio-net.c         |   2 +-
- hw/usb/xen-usb.c            |   3 +-
- include/hw/boards.h         |  13 ++-
- include/hw/cpu/cpu-slot.h   |  12 +++
- include/hw/i386/pc.h        |   3 +
- include/hw/qdev-core.h      |   6 ++
- include/monitor/qdev.h      |   4 +-
- qapi/machine.json           |  22 ++++-
- stubs/machine-stubs.c       |  21 +++++
- stubs/meson.build           |   1 +
- system/cpus.c               |   2 +-
- system/qdev-monitor.c       |  13 ++-
- system/vl.c                 |  59 ++++++++-----
- target/i386/core.c          |  56 ++++++++++++
- target/i386/core.h          |  53 ++++++++++++
- target/i386/cpu.c           |  58 +++++++++++++
- target/i386/cpu.h           |   5 ++
- target/i386/meson.build     |   1 +
- tests/unit/test-smp-parse.c |   4 +-
- 30 files changed, 618 insertions(+), 81 deletions(-)
- create mode 100644 stubs/machine-stubs.c
- create mode 100644 target/i386/core.c
- create mode 100644 target/i386/core.h
-
--- 
-2.34.1
+T24gOS8xMi8yNCAxODozNywgWGluZ3RhbyBZYW8gKEZ1aml0c3UpIHdyb3RlOg0KPiANCj4g
+DQo+PiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KPj4gRnJvbTogcWVtdS1kZXZlbC1i
+b3VuY2VzK3lhb3h0LmZuc3Q9ZnVqaXRzdS5jb21Abm9uZ251Lm9yZw0KPj4gPHFlbXUtZGV2
+ZWwtYm91bmNlcyt5YW94dC5mbnN0PWZ1aml0c3UuY29tQG5vbmdudS5vcmc+IE9uIEJlaGFs
+ZiBPZg0KPj4gUGllcnJpY2sgQm91dmllcg0KPj4gU2VudDogVGh1cnNkYXksIFNlcHRlbWJl
+ciAxMiwgMjAyNCAzOjM5IFBNDQo+PiBUbzogcWVtdS1kZXZlbEBub25nbnUub3JnDQo+PiBD
+YzogSmFzb24gV2FuZyA8amFzb3dhbmdAcmVkaGF0LmNvbT47IEFsZXggQmVubsOpZSA8YWxl
+eC5iZW5uZWVAbGluYXJvLm9yZz47DQo+PiBMYXVyZW50IFZpdmllciA8bHZpdmllckByZWRo
+YXQuY29tPjsgTWFyY2VsbyBUb3NhdHRpIDxtdG9zYXR0aUByZWRoYXQuY29tPjsNCj4+IE5p
+Y2hvbGFzIFBpZ2dpbiA8bnBpZ2dpbkBnbWFpbC5jb20+OyBLbGF1cyBKZW5zZW4gPGl0c0Bp
+cnJlbGV2YW50LmRrPjsgV0FORw0KPj4gWHVlcnVpIDxnaXRAeGVuMG4ubmFtZT47IEhhbGls
+IFBhc2ljIDxwYXNpY0BsaW51eC5pYm0uY29tPjsgUm9iIEhlcnJpbmcNCj4+IDxyb2JoQGtl
+cm5lbC5vcmc+OyBNaWNoYWVsIFJvbG5payA8bXJvbG5pa0BnbWFpbC5jb20+OyBaaGFvIExp
+dQ0KPj4gPHpoYW8xLmxpdUBpbnRlbC5jb20+OyBQZXRlciBNYXlkZWxsIDxwZXRlci5tYXlk
+ZWxsQGxpbmFyby5vcmc+OyBSaWNoYXJkDQo+PiBIZW5kZXJzb24gPHJpY2hhcmQuaGVuZGVy
+c29uQGxpbmFyby5vcmc+OyBGYWJpYW5vIFJvc2FzIDxmYXJvc2FzQHN1c2UuZGU+Ow0KPj4g
+Q29yZXkgTWlueWFyZCA8bWlueWFyZEBhY20ub3JnPjsgS2VpdGggQnVzY2ggPGtidXNjaEBr
+ZXJuZWwub3JnPjsgVGhvbWFzDQo+PiBIdXRoIDx0aHV0aEByZWRoYXQuY29tPjsgTWFjaWVq
+IFMuIFN6bWlnaWVybyA8bWFjaWVqLnN6bWlnaWVyb0BvcmFjbGUuY29tPjsNCj4+IEhhcnNo
+IFByYXRlZWsgQm9yYSA8aGFyc2hwYkBsaW51eC5pYm0uY29tPjsgS2V2aW4gV29sZiA8a3dv
+bGZAcmVkaGF0LmNvbT47DQo+PiBQYW9sbyBCb256aW5pIDxwYm9uemluaUByZWRoYXQuY29t
+PjsgSmVzcGVyIERldmFudGllciA8Zm9zc0BkZWZtYWNyby5pdD47DQo+PiBIeW1hbiBIdWFu
+ZyA8eW9uZy5odWFuZ0BzbWFydHguY29tPjsgUGhpbGlwcGUgTWF0aGlldS1EYXVkw6kNCj4+
+IDxwaGlsbWRAbGluYXJvLm9yZz47IFBhbG1lciBEYWJiZWx0IDxwYWxtZXJAZGFiYmVsdC5j
+b20+Ow0KPj4gcWVtdS1zMzkweEBub25nbnUub3JnOyBMYXVyZW50IFZpdmllciA8bGF1cmVu
+dEB2aXZpZXIuZXU+Ow0KPj4gcWVtdS1yaXNjdkBub25nbnUub3JnOyBSaWNoYXJkIFcuTS4g
+Sm9uZXMgPHJqb25lc0ByZWRoYXQuY29tPjsgTGl1IFpoaXdlaQ0KPj4gPHpoaXdlaV9saXVA
+bGludXguYWxpYmFiYS5jb20+OyBBdXJlbGllbiBKYXJubyA8YXVyZWxpZW5AYXVyZWwzMi5u
+ZXQ+OyBEYW5pZWwgUC4NCj4+IEJlcnJhbmfDqSA8YmVycmFuZ2VAcmVkaGF0LmNvbT47IE1h
+cmNlbCBBcGZlbGJhdW0NCj4+IDxtYXJjZWwuYXBmZWxiYXVtQGdtYWlsLmNvbT47IGt2bUB2
+Z2VyLmtlcm5lbC5vcmc7IENocmlzdGlhbiBCb3JudHJhZWdlcg0KPj4gPGJvcm50cmFlZ2Vy
+QGxpbnV4LmlibS5jb20+OyBBa2loaWtvIE9kYWtpIDxha2loaWtvLm9kYWtpQGRheW5peC5j
+b20+Ow0KPj4gRGFuaWVsIEhlbnJpcXVlIEJhcmJvemEgPGRiYXJib3phQHZlbnRhbmFtaWNy
+by5jb20+OyBIYW5uYSBSZWl0eg0KPj4gPGhyZWl0ekByZWRoYXQuY29tPjsgQW5pIFNpbmhh
+IDxhbmlzaW5oYUByZWRoYXQuY29tPjsNCj4+IHFlbXUtcHBjQG5vbmdudS5vcmc7IE1hcmMt
+QW5kcsOpIEx1cmVhdSA8bWFyY2FuZHJlLmx1cmVhdUByZWRoYXQuY29tPjsNCj4+IEFsaXN0
+YWlyIEZyYW5jaXMgPGFsaXN0YWlyLmZyYW5jaXNAd2RjLmNvbT47IEJpbiBNZW5nIDxibWVu
+Zy5jbkBnbWFpbC5jb20+Ow0KPj4gTWljaGFlbCBTLiBUc2lya2luIDxtc3RAcmVkaGF0LmNv
+bT47IEhlbGdlIERlbGxlciA8ZGVsbGVyQGdteC5kZT47IFBldGVyIFh1DQo+PiA8cGV0ZXJ4
+QHJlZGhhdC5jb20+OyBEYW5pZWwgSGVucmlxdWUgQmFyYm96YSA8ZGFuaWVsaGI0MTNAZ21h
+aWwuY29tPjsNCj4+IERtaXRyeSBGbGV5dG1hbiA8ZG1pdHJ5LmZsZXl0bWFuQGdtYWlsLmNv
+bT47IE5pbmEgU2Nob2V0dGVybC1HbGF1c2NoDQo+PiA8bnNnQGxpbnV4LmlibS5jb20+OyBZ
+YW5hbiBXYW5nIDx3YW5neWFuYW41NUBodWF3ZWkuY29tPjsNCj4+IHFlbXUtYXJtQG5vbmdu
+dS5vcmc7IElnb3IgTWFtbWVkb3YgPGltYW1tZWRvQHJlZGhhdC5jb20+Ow0KPj4gSmVhbi1D
+aHJpc3RvcGhlIER1Ym9pcyA8amNkQHRyaWJ1ZHVib2lzLm5ldD47IEVyaWMgRmFybWFuDQo+
+PiA8ZmFybWFuQGxpbnV4LmlibS5jb20+OyBTcmlyYW0gWWFnbmFyYW1hbg0KPj4gPHNyaXJh
+bS55YWduYXJhbWFuQGVyaWNzc29uLmNvbT47IHFlbXUtYmxvY2tAbm9uZ251Lm9yZzsgU3Rl
+ZmFuIEJlcmdlcg0KPj4gPHN0ZWZhbmJAbGludXgudm5ldC5pYm0uY29tPjsgSm9lbCBTdGFu
+bGV5IDxqb2VsQGptcy5pZC5hdT47IEVkdWFyZG8gSGFia29zdA0KPj4gPGVkdWFyZG9AaGFi
+a29zdC5uZXQ+OyBEYXZpZCBHaWJzb24gPGRhdmlkQGdpYnNvbi5kcm9wYmVhci5pZC5hdT47
+IEZhbQ0KPj4gWmhlbmcgPGZhbUBldXBob24ubmV0PjsgV2Vpd2VpIExpIDxsaXdlaTE1MThA
+Z21haWwuY29tPjsgTWFya3VzDQo+PiBBcm1icnVzdGVyIDxhcm1icnVAcmVkaGF0LmNvbT47
+IFBpZXJyaWNrIEJvdXZpZXIgPHBpZXJyaWNrLmJvdXZpZXJAbGluYXJvLm9yZz4NCj4+IFN1
+YmplY3Q6IFtQQVRDSCB2MiAwMC80OF0gVXNlIGdfYXNzZXJ0X25vdF9yZWFjaGVkIGluc3Rl
+YWQgb2YgKGdfKWFzc2VydCgwLA0KPj4gZmFsc2UpDQo+Pg0KPj4gVGhpcyBzZXJpZXMgY2xl
+YW5zIHVwIGFsbCB1c2FnZXMgb2YgYXNzZXJ0L2dfYXNzZXJ0IHdobyBhcmUgc3VwcG9zZWQg
+dG8gc3RvcA0KPj4gZXhlY3V0aW9uIG9mIFFFTVUuIFdlIHJlcGxhY2UgdGhvc2UgYnkgZ19h
+c3NlcnRfbm90X3JlYWNoZWQoKS4NCj4+IEl0IHdhcyBzdWdnZXN0ZWQgcmVjZW50bHkgd2hl
+biBjbGVhbmluZyBjb2RlYmFzZSB0byBidWlsZCBRRU1VIHdpdGggZ2NjDQo+PiBhbmQgdHNh
+bjoNCj4+IGh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL3FlbXUtZGV2ZWwvNTRiYjAyYTYtMWIx
+Mi00NjBhLTk3ZjYtM2Y0NzhlZjc2NmM2QGxpbg0KPj4gYXJvLm9yZy8uDQo+Pg0KPj4gSW4g
+bW9yZSwgY2xlYW51cCB1c2VsZXNzIGJyZWFrIGFuZCByZXR1cm4gYWZ0ZXIgZ19hc3NlcnRf
+bm90X3JlYWNoZWQoKTsNCj4gSSBmb3VuZCB0aGF0IG5vdCBhbGwgb2YgdGhlIGJyZWFrIG9y
+IHJldHVybiBhZnRlciBnX2Fzc2VydF9ub3RfcmVhY2hlZCgpIHdlcmUgY2xlYW5lZCB1cCwg
+ZG9uJ3QgdGhleSBuZWVkIHRvIGJlIGNsZWFuZWQgdXA/DQo+Pg0KPj4gQW5kIGZpbmFsbHks
+IGVuc3VyZSB3aXRoIHNjcmlwdHMvY2hlY2twYXRjaC5wbCB0aGF0IHdlIGRvbid0IHJlaW50
+cm9kdWNlDQo+PiAoZ18pYXNzZXJ0KGZhbHNlKSBpbiB0aGUgZnV0dXJlLg0KPj4NCj4+IE5l
+dyBjb21taXRzIChyZW1vdmluZyByZXR1cm4pIG5lZWQgcmV2aWV3Lg0KPj4NCj4+IFRlc3Rl
+ZCB0aGF0IGl0IGJ1aWxkIHdhcm5pbmcgZnJlZSB3aXRoIGdjYyBhbmQgY2xhbmcuDQo+Pg0K
+Pj4gdjINCj4+IC0gYWxpZ24gYmFja3NsYXNoZXMgZm9yIHNvbWUgY2hhbmdlcw0KPj4gLSBh
+ZGQgc3VtbWFyeSBpbiBhbGwgY29tbWl0cyBtZXNzYWdlDQo+PiAtIHJlbW92ZSByZWR1bmRh
+bnQgY29tbWVudA0KPj4NCj4+IHYxDQo+PiBodHRwczovL2xvcmUua2VybmVsLm9yZy9xZW11
+LWRldmVsLzIwMjQwOTEwMjIxNjA2LjE4MTc0NzgtMS1waWVycmljay5ib3V2aWVyQA0KPj4g
+bGluYXJvLm9yZy9ULyN0DQo+Pg0KPj4gUGllcnJpY2sgQm91dmllciAoNDgpOg0KPj4gICAg
+ZG9jcy9zcGluOiByZXBsYWNlIGFzc2VydCgwKSB3aXRoIGdfYXNzZXJ0X25vdF9yZWFjaGVk
+KCkNCj4+ICAgIGh3L2FjcGk6IHJlcGxhY2UgYXNzZXJ0KDApIHdpdGggZ19hc3NlcnRfbm90
+X3JlYWNoZWQoKQ0KPj4gICAgaHcvYXJtOiByZXBsYWNlIGFzc2VydCgwKSB3aXRoIGdfYXNz
+ZXJ0X25vdF9yZWFjaGVkKCkNCj4+ICAgIGh3L2NoYXI6IHJlcGxhY2UgYXNzZXJ0KDApIHdp
+dGggZ19hc3NlcnRfbm90X3JlYWNoZWQoKQ0KPj4gICAgaHcvY29yZTogcmVwbGFjZSBhc3Nl
+cnQoMCkgd2l0aCBnX2Fzc2VydF9ub3RfcmVhY2hlZCgpDQo+PiAgICBody9uZXQ6IHJlcGxh
+Y2UgYXNzZXJ0KDApIHdpdGggZ19hc3NlcnRfbm90X3JlYWNoZWQoKQ0KPj4gICAgaHcvd2F0
+Y2hkb2c6IHJlcGxhY2UgYXNzZXJ0KDApIHdpdGggZ19hc3NlcnRfbm90X3JlYWNoZWQoKQ0K
+Pj4gICAgbWlncmF0aW9uOiByZXBsYWNlIGFzc2VydCgwKSB3aXRoIGdfYXNzZXJ0X25vdF9y
+ZWFjaGVkKCkNCj4+ICAgIHFvYmplY3Q6IHJlcGxhY2UgYXNzZXJ0KDApIHdpdGggZ19hc3Nl
+cnRfbm90X3JlYWNoZWQoKQ0KPj4gICAgc3lzdGVtOiByZXBsYWNlIGFzc2VydCgwKSB3aXRo
+IGdfYXNzZXJ0X25vdF9yZWFjaGVkKCkNCj4+ICAgIHRhcmdldC9wcGM6IHJlcGxhY2UgYXNz
+ZXJ0KDApIHdpdGggZ19hc3NlcnRfbm90X3JlYWNoZWQoKQ0KPj4gICAgdGVzdHMvcXRlc3Q6
+IHJlcGxhY2UgYXNzZXJ0KDApIHdpdGggZ19hc3NlcnRfbm90X3JlYWNoZWQoKQ0KPj4gICAg
+dGVzdHMvdW5pdDogcmVwbGFjZSBhc3NlcnQoMCkgd2l0aCBnX2Fzc2VydF9ub3RfcmVhY2hl
+ZCgpDQo+PiAgICBpbmNsdWRlL2h3L3MzOTB4OiByZXBsYWNlIGFzc2VydChmYWxzZSkgd2l0
+aCBnX2Fzc2VydF9ub3RfcmVhY2hlZCgpDQo+PiAgICBibG9jazogcmVwbGFjZSBhc3NlcnQo
+ZmFsc2UpIHdpdGggZ19hc3NlcnRfbm90X3JlYWNoZWQoKQ0KPj4gICAgaHcvaHlwZXJ2OiBy
+ZXBsYWNlIGFzc2VydChmYWxzZSkgd2l0aCBnX2Fzc2VydF9ub3RfcmVhY2hlZCgpDQo+PiAg
+ICBody9uZXQ6IHJlcGxhY2UgYXNzZXJ0KGZhbHNlKSB3aXRoIGdfYXNzZXJ0X25vdF9yZWFj
+aGVkKCkNCj4+ICAgIGh3L252bWU6IHJlcGxhY2UgYXNzZXJ0KGZhbHNlKSB3aXRoIGdfYXNz
+ZXJ0X25vdF9yZWFjaGVkKCkNCj4+ICAgIGh3L3BjaTogcmVwbGFjZSBhc3NlcnQoZmFsc2Up
+IHdpdGggZ19hc3NlcnRfbm90X3JlYWNoZWQoKQ0KPj4gICAgaHcvcHBjOiByZXBsYWNlIGFz
+c2VydChmYWxzZSkgd2l0aCBnX2Fzc2VydF9ub3RfcmVhY2hlZCgpDQo+PiAgICBtaWdyYXRp
+b246IHJlcGxhY2UgYXNzZXJ0KGZhbHNlKSB3aXRoIGdfYXNzZXJ0X25vdF9yZWFjaGVkKCkN
+Cj4+ICAgIHRhcmdldC9pMzg2L2t2bTogcmVwbGFjZSBhc3NlcnQoZmFsc2UpIHdpdGggZ19h
+c3NlcnRfbm90X3JlYWNoZWQoKQ0KPj4gICAgdGVzdHMvcXRlc3Q6IHJlcGxhY2UgYXNzZXJ0
+KGZhbHNlKSB3aXRoIGdfYXNzZXJ0X25vdF9yZWFjaGVkKCkNCj4+ICAgIGFjY2VsL3RjZzog
+cmVtb3ZlIGJyZWFrIGFmdGVyIGdfYXNzZXJ0X25vdF9yZWFjaGVkKCkNCj4+ICAgIGJsb2Nr
+OiByZW1vdmUgYnJlYWsgYWZ0ZXIgZ19hc3NlcnRfbm90X3JlYWNoZWQoKQ0KPj4gICAgaHcv
+YWNwaTogcmVtb3ZlIGJyZWFrIGFmdGVyIGdfYXNzZXJ0X25vdF9yZWFjaGVkKCkNCj4+ICAg
+IGh3L2dwaW86IHJlbW92ZSBicmVhayBhZnRlciBnX2Fzc2VydF9ub3RfcmVhY2hlZCgpDQo+
+PiAgICBody9taXNjOiByZW1vdmUgYnJlYWsgYWZ0ZXIgZ19hc3NlcnRfbm90X3JlYWNoZWQo
+KQ0KPj4gICAgaHcvbmV0OiByZW1vdmUgYnJlYWsgYWZ0ZXIgZ19hc3NlcnRfbm90X3JlYWNo
+ZWQoKQ0KPj4gICAgaHcvcGNpLWhvc3Q6IHJlbW92ZSBicmVhayBhZnRlciBnX2Fzc2VydF9u
+b3RfcmVhY2hlZCgpDQo+PiAgICBody9zY3NpOiByZW1vdmUgYnJlYWsgYWZ0ZXIgZ19hc3Nl
+cnRfbm90X3JlYWNoZWQoKQ0KPj4gICAgaHcvdHBtOiByZW1vdmUgYnJlYWsgYWZ0ZXIgZ19h
+c3NlcnRfbm90X3JlYWNoZWQoKQ0KPj4gICAgdGFyZ2V0L2FybTogcmVtb3ZlIGJyZWFrIGFm
+dGVyIGdfYXNzZXJ0X25vdF9yZWFjaGVkKCkNCj4+ICAgIHRhcmdldC9yaXNjdjogcmVtb3Zl
+IGJyZWFrIGFmdGVyIGdfYXNzZXJ0X25vdF9yZWFjaGVkKCkNCj4+ICAgIHRlc3RzL3F0ZXN0
+OiByZW1vdmUgYnJlYWsgYWZ0ZXIgZ19hc3NlcnRfbm90X3JlYWNoZWQoKQ0KPj4gICAgdWk6
+IHJlbW92ZSBicmVhayBhZnRlciBnX2Fzc2VydF9ub3RfcmVhY2hlZCgpDQo+PiAgICBmcHU6
+IHJlbW92ZSBicmVhayBhZnRlciBnX2Fzc2VydF9ub3RfcmVhY2hlZCgpDQo+PiAgICB0Y2cv
+bG9vbmdhcmNoNjQ6IHJlbW92ZSBicmVhayBhZnRlciBnX2Fzc2VydF9ub3RfcmVhY2hlZCgp
+DQo+PiAgICBpbmNsdWRlL3FlbXU6IHJlbW92ZSByZXR1cm4gYWZ0ZXIgZ19hc3NlcnRfbm90
+X3JlYWNoZWQoKQ0KPj4gICAgaHcvaHlwZXJ2OiByZW1vdmUgcmV0dXJuIGFmdGVyIGdfYXNz
+ZXJ0X25vdF9yZWFjaGVkKCkNCj4+ICAgIGh3L25ldDogcmVtb3ZlIHJldHVybiBhZnRlciBn
+X2Fzc2VydF9ub3RfcmVhY2hlZCgpDQo+PiAgICBody9wY2k6IHJlbW92ZSByZXR1cm4gYWZ0
+ZXIgZ19hc3NlcnRfbm90X3JlYWNoZWQoKQ0KPj4gICAgaHcvcHBjOiByZW1vdmUgcmV0dXJu
+IGFmdGVyIGdfYXNzZXJ0X25vdF9yZWFjaGVkKCkNCj4+ICAgIG1pZ3JhdGlvbjogcmVtb3Zl
+IHJldHVybiBhZnRlciBnX2Fzc2VydF9ub3RfcmVhY2hlZCgpDQo+PiAgICBxb2JqZWN0OiBy
+ZW1vdmUgcmV0dXJuIGFmdGVyIGdfYXNzZXJ0X25vdF9yZWFjaGVkKCkNCj4+ICAgIHFvbTog
+cmVtb3ZlIHJldHVybiBhZnRlciBnX2Fzc2VydF9ub3RfcmVhY2hlZCgpDQo+PiAgICB0ZXN0
+cy9xdGVzdDogcmVtb3ZlIHJldHVybiBhZnRlciBnX2Fzc2VydF9ub3RfcmVhY2hlZCgpDQo+
+PiAgICBzY3JpcHRzL2NoZWNrcGF0Y2gucGw6IGVtaXQgZXJyb3Igd2hlbiB1c2luZyBhc3Nl
+cnQoZmFsc2UpDQo+Pg0KPj4gICBkb2NzL3NwaW4vYWlvX25vdGlmeV9hY2NlcHQucHJvbWVs
+YSAgICAgfCAgNiArKystLS0NCj4+ICAgZG9jcy9zcGluL2Fpb19ub3RpZnlfYnVnLnByb21l
+bGEgICAgICAgIHwgIDYgKysrLS0tDQo+PiAgIGluY2x1ZGUvaHcvczM5MHgvY3B1LXRvcG9s
+b2d5LmggICAgICAgICB8ICAyICstDQo+PiAgIGluY2x1ZGUvcWVtdS9wbWVtLmggICAgICAg
+ICAgICAgICAgICAgICB8ICAxIC0NCj4+ICAgYWNjZWwvdGNnL3BsdWdpbi1nZW4uYyAgICAg
+ICAgICAgICAgICAgIHwgIDEgLQ0KPj4gICBibG9jay9xY293Mi5jICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgfCAgMiArLQ0KPj4gICBibG9jay9zc2guYyAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgfCAgMSAtDQo+PiAgIGh3L2FjcGkvYW1sLWJ1aWxkLmMgICAgICAgICAg
+ICAgICAgICAgICB8ICAzICstLQ0KPj4gICBody9hcm0vaGlnaGJhbmsuYyAgICAgICAgICAg
+ICAgICAgICAgICAgfCAgMiArLQ0KPj4gICBody9jaGFyL2F2cl91c2FydC5jICAgICAgICAg
+ICAgICAgICAgICAgfCAgMiArLQ0KPj4gICBody9jb3JlL251bWEuYyAgICAgICAgICAgICAg
+ICAgICAgICAgICAgfCAgMiArLQ0KPj4gICBody9ncGlvL25yZjUxX2dwaW8uYyAgICAgICAg
+ICAgICAgICAgICAgfCAgMSAtDQo+PiAgIGh3L2h5cGVydi9oeXBlcnZfdGVzdGRldi5jICAg
+ICAgICAgICAgICB8ICA3ICsrKy0tLS0NCj4+ICAgaHcvaHlwZXJ2L3ZtYnVzLmMgICAgICAg
+ICAgICAgICAgICAgICAgIHwgMTUgKysrKysrLS0tLS0tLS0tDQo+PiAgIGh3L21pc2MvaW14
+Nl9jY20uYyAgICAgICAgICAgICAgICAgICAgICB8ICAxIC0NCj4+ICAgaHcvbWlzYy9tYWNf
+dmlhLmMgICAgICAgICAgICAgICAgICAgICAgIHwgIDIgLS0NCj4+ICAgaHcvbmV0L2UxMDAw
+ZV9jb3JlLmMgICAgICAgICAgICAgICAgICAgIHwgIDQgKy0tLQ0KPj4gICBody9uZXQvaTgy
+NTk2LmMgICAgICAgICAgICAgICAgICAgICAgICAgfCAgMiArLQ0KPj4gICBody9uZXQvaWdi
+X2NvcmUuYyAgICAgICAgICAgICAgICAgICAgICAgfCAgNCArLS0tDQo+PiAgIGh3L25ldC9u
+ZXRfcnhfcGt0LmMgICAgICAgICAgICAgICAgICAgICB8ICAzICstLQ0KPj4gICBody9uZXQv
+dm14bmV0My5jICAgICAgICAgICAgICAgICAgICAgICAgfCAgMSAtDQo+PiAgIGh3L252bWUv
+Y3RybC5jICAgICAgICAgICAgICAgICAgICAgICAgICB8ICA4ICsrKystLS0tDQo+PiAgIGh3
+L3BjaS1ob3N0L2d0NjQxMjAuYyAgICAgICAgICAgICAgICAgICB8ICAyIC0tDQo+PiAgIGh3
+L3BjaS9wY2ktc3R1Yi5jICAgICAgICAgICAgICAgICAgICAgICB8ICA2ICsrLS0tLQ0KPj4g
+ICBody9wcGMvcHBjLmMgICAgICAgICAgICAgICAgICAgICAgICAgICAgfCAgMSAtDQo+PiAg
+IGh3L3BwYy9zcGFwcl9ldmVudHMuYyAgICAgICAgICAgICAgICAgICB8ICAzICstLQ0KPj4g
+ICBody9zY3NpL3ZpcnRpby1zY3NpLmMgICAgICAgICAgICAgICAgICAgfCAgMSAtDQo+PiAg
+IGh3L3RwbS90cG1fc3BhcHIuYyAgICAgICAgICAgICAgICAgICAgICB8ICAxIC0NCj4+ICAg
+aHcvd2F0Y2hkb2cvd2F0Y2hkb2cuYyAgICAgICAgICAgICAgICAgIHwgIDIgKy0NCj4+ICAg
+bWlncmF0aW9uL2RpcnR5cmF0ZS5jICAgICAgICAgICAgICAgICAgIHwgIDMgKy0tDQo+PiAg
+IG1pZ3JhdGlvbi9taWdyYXRpb24taG1wLWNtZHMuYyAgICAgICAgICB8ICAyICstDQo+PiAg
+IG1pZ3JhdGlvbi9wb3N0Y29weS1yYW0uYyAgICAgICAgICAgICAgICB8IDIxICsrKysrKyst
+LS0tLS0tLS0tLS0tLQ0KPj4gICBtaWdyYXRpb24vcmFtLmMgICAgICAgICAgICAgICAgICAg
+ICAgICAgfCAgOCArKystLS0tLQ0KPj4gICBxb2JqZWN0L3FsaXQuYyAgICAgICAgICAgICAg
+ICAgICAgICAgICAgfCAgMiArLQ0KPj4gICBxb2JqZWN0L3FudW0uYyAgICAgICAgICAgICAg
+ICAgICAgICAgICAgfCAxMiArKysrLS0tLS0tLS0NCj4+ICAgcW9tL29iamVjdC5jICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgIHwgIDEgLQ0KPj4gICBzeXN0ZW0vcnRjLmMgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgfCAgMiArLQ0KPj4gICB0YXJnZXQvYXJtL2h5cF9nZGJz
+dHViLmMgICAgICAgICAgICAgICAgfCAgMSAtDQo+PiAgIHRhcmdldC9pMzg2L2t2bS9rdm0u
+YyAgICAgICAgICAgICAgICAgICB8ICA0ICsrLS0NCj4+ICAgdGFyZ2V0L3BwYy9kZnBfaGVs
+cGVyLmMgICAgICAgICAgICAgICAgIHwgIDggKysrKy0tLS0NCj4+ICAgdGFyZ2V0L3BwYy9t
+bXVfaGVscGVyLmMgICAgICAgICAgICAgICAgIHwgIDIgKy0NCj4+ICAgdGFyZ2V0L3Jpc2N2
+L21vbml0b3IuYyAgICAgICAgICAgICAgICAgIHwgIDEgLQ0KPj4gICB0ZXN0cy9xdGVzdC9h
+Y3BpLXV0aWxzLmMgICAgICAgICAgICAgICAgfCAgMSAtDQo+PiAgIHRlc3RzL3F0ZXN0L2lw
+bWktYnQtdGVzdC5jICAgICAgICAgICAgICB8ICAyICstDQo+PiAgIHRlc3RzL3F0ZXN0L2lw
+bWkta2NzLXRlc3QuYyAgICAgICAgICAgICB8ICA0ICsrLS0NCj4+ICAgdGVzdHMvcXRlc3Qv
+bWlncmF0aW9uLWhlbHBlcnMuYyAgICAgICAgIHwgIDEgLQ0KPj4gICB0ZXN0cy9xdGVzdC9u
+dW1hLXRlc3QuYyAgICAgICAgICAgICAgICAgfCAxMCArKysrKy0tLS0tDQo+PiAgIHRlc3Rz
+L3F0ZXN0L3J0bDgxMzktdGVzdC5jICAgICAgICAgICAgICB8ICAyICstDQo+PiAgIHRlc3Rz
+L3VuaXQvdGVzdC14cy1ub2RlLmMgICAgICAgICAgICAgICB8ICA0ICsrLS0NCj4+ICAgdWkv
+cWVtdS1waXhtYW4uYyAgICAgICAgICAgICAgICAgICAgICAgIHwgIDEgLQ0KPj4gICBmcHUv
+c29mdGZsb2F0LXBhcnRzLmMuaW5jICAgICAgICAgICAgICAgfCAgMiAtLQ0KPj4gICB0YXJn
+ZXQvcmlzY3YvaW5zbl90cmFucy90cmFuc19ydnYuYy5pbmMgfCAgMiAtLQ0KPj4gICB0Y2cv
+bG9vbmdhcmNoNjQvdGNnLXRhcmdldC5jLmluYyAgICAgICAgfCAgMSAtDQo+PiAgIHNjcmlw
+dHMvY2hlY2twYXRjaC5wbCAgICAgICAgICAgICAgICAgICB8ICAzICsrKw0KPj4gICA1NCBm
+aWxlcyBjaGFuZ2VkLCA3MiBpbnNlcnRpb25zKCspLCAxMjAgZGVsZXRpb25zKC0pDQo+Pg0K
+Pj4gLS0NCj4+IDIuMzkuMg0KPj4NCj4gDQoNCldoaWNoIG9uZSBkaWQgeW91IGZpbmQ/IFVz
+aW5nIHdoaWNoIGdyZXAgY29tbWFuZD8NCg==

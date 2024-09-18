@@ -1,105 +1,104 @@
-Received: by 2002:a17:504:1bc1:b0:1be9:327d:8ee3 with SMTP id v1csp979066njg;
-        Wed, 18 Sep 2024 12:26:21 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVic6m8R5Df9owId+vHhP3n5si3Jx/nRai3oJcUmFWGzYil8oNsjV8IVg0JLxcN0ycUAz1R8VHB3WzcLg==@linaro.org
-X-Google-Smtp-Source: AGHT+IF/+2gaDgaZKFCaUX2GgkFme1pfUTmggeDWcz0kK6aMpjztwEvscEzbD9YJGQ73rSbEN/GQ
-X-Received: by 2002:a05:6358:2783:b0:1b8:2cf8:cf5 with SMTP id e5c5f4694b2df-1bb14dc309bmr1038248155d.3.1726687581559;
-        Wed, 18 Sep 2024 12:26:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1726687581; cv=none;
+Received: by 2002:a17:504:1bc1:b0:1be9:327d:8ee3 with SMTP id v1csp979234njg;
+        Wed, 18 Sep 2024 12:26:47 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXJvlW2hULWxNpeasXH/zabnZMmRE9Mg0f0MTFjACFrRvA4oLew0foR/cPtBJc2sKjgeTkzQU3mnE1Oug==@linaro.org
+X-Google-Smtp-Source: AGHT+IHTjDgPER7g2zTbCUcMHhwdE6yjoWxpRqxAHMr3Vsjhy3rCMRq2hT7B4jqOs3Yvd1rrXG+X
+X-Received: by 2002:ac8:58d1:0:b0:458:2214:9c88 with SMTP id d75a77b69052e-458602b4f7dmr341765091cf.2.1726687607632;
+        Wed, 18 Sep 2024 12:26:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1726687607; cv=none;
         d=google.com; s=arc-20240605;
-        b=K7kLG4TDTQkijn6daZI5wwDyhYqQaxMwJtKo2uuJAfV+E2ILQyBIhJ91vnHNniRLGH
-         XyahKRrrfn1t1X0Wbj7vGEsohrLCh+fmLZZ8fUewtUdsWv99cNOM6COqerdSf8Yag9VS
-         cpc8hd3wSRwgBRjVK/CdyaJH1y1rd/Xm7soM6a6DAAsNyaIwiO1/4I3Hmkx61DEfqa8v
-         empj3E4mjquN9nHYx5zeL0BeHdHW8tdnwtKhdA3h07+u/d7Bt3umOpMAMZLvGxmzBBR+
-         ZfqxYxO9Grd73TAhGO//f35w2YqbYfUTxg71TiIQP0MZ6idO4OI6rfch1QcDizqOt7e9
-         0qAw==
+        b=MegmQdYBNF+GrG8mTDpVkpV355+lHSkx53Rxni6v6QPu6pCwnVfI1bsED13Fm2YZ9f
+         IHZckhxnyRrgW7w0IBgw+BZK2+yVRE9ZiftCNdR0ty9InCiurrJbGLRDnpB7/zYPvQu8
+         bXBFUeiDOyhjydywP5as5hHUQYVmn1gMNjV7WlaeE3Tm+AhuzDA8JmASOqifjdmmXHDI
+         FrPRLs1hWGE7j4s5x5jXxdsHUgKuygOJsUqfdz8yy+0FwFQJwTSdkv3hF5YCxLq51pch
+         grO3PLXYeMvtkGvy11BtE7gCtgAA0xEVc7hFGsSQErwIFsXRnfmu8kGj3e6K+9mqW/g3
+         tiZA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
          :references:mime-version:in-reply-to:date:dkim-signature;
-        bh=C6JTu3BP64DCbGkO2oFE0GHtGHDLxSzLQw77GKNg3jc=;
+        bh=lEVtRqlZJene7dTeaWQA40okr0fqxtlzPIuT5Zal7q4=;
         fh=2mssAqYKJuMcD/Ya5YUzhxP7uPixmdZ7O75Bi0gtEhM=;
-        b=CgWHZ/2qnOZP2kXxifezSqcqyeTXMhFXiSXXwOzgrN7bxUL89Rxb5X/jw8RG3AMMOz
-         2HgH+cQju6FrHvdjn0fgivBo+HkkmBuvbi+NDmgZF478tStLxFI1kq7NXk6S2DQhBBqv
-         q3t3+O/4vhvOLJHWn2dh1YAXjA7isfb0tVmpdiCkPBOn9RJz+4OemTaYRX1slpoddfnu
-         yrpjSunHSdBMTnJezt++hxdSQUHxzEWYlQ6h+/chYxj9jeYEas2B2s/U7M9cgz4h7VNZ
-         sJ7w9DHts1CsENbI/Ncw+G3ZjJz+UTlnKQgq1mY578rwIk/RGHSru0ozWdTFuNl0V36A
-         PJzA==;
+        b=Ngo9EN4mL4066jMPC4I008oe/sUrPc8ZWNTF5Yn7mKqLLIWlo1Kaygg1dQksv1eIV/
+         fU3gJQfmKHck9fs3CltQtlV4k50MdAu5y4tcwEP/uEjFakZBLfhw1J4JfCmXzYRSDidu
+         SfhRRld5GuHrcRPTh61D/oRgGhPar7kqxY3IUjg+KfcZi5AB9NLiR/y2rW3h8nMGIBfa
+         YhCppMv7FM146o4m44DZupl9fnWuyQH35WPVlGN/nRsVFOGptkgOZwB1aDYOMOAiw6rK
+         oTVUuqdS6AGeNPjuLhClazzyL/PLk2Hp/FXgYvamFHYKa5FxTHXvl2N6XcEBTddnaFC1
+         s8hg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=k5LGqpuT;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=BSHaJpsV;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7acb08c6b15si10928385a.314.2024.09.18.12.26.21
+        by mx.google.com with ESMTPS id d75a77b69052e-45b17909062si985791cf.410.2024.09.18.12.26.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 18 Sep 2024 12:26:21 -0700 (PDT)
+        Wed, 18 Sep 2024 12:26:47 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=k5LGqpuT;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=BSHaJpsV;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sr0Gm-0004gu-5J; Wed, 18 Sep 2024 15:23:20 -0400
+	id 1sr0Gr-00054r-Pq; Wed, 18 Sep 2024 15:23:25 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <3lSjrZgUKCtAFwH4B2AA270.yA8C08G-z0H079A929G.AD2@flex--tavip.bounces.google.com>)
- id 1sr0Gb-0004V1-IG
- for qemu-devel@nongnu.org; Wed, 18 Sep 2024 15:23:10 -0400
-Received: from mail-pf1-x44a.google.com ([2607:f8b0:4864:20::44a])
+ <3mSjrZgUKCtQJ0L8F6EE6B4.2ECG4CK-34L4BDED6DK.EH6@flex--tavip.bounces.google.com>)
+ id 1sr0Gc-0004Vh-N5
+ for qemu-devel@nongnu.org; Wed, 18 Sep 2024 15:23:13 -0400
+Received: from mail-yw1-x1149.google.com ([2607:f8b0:4864:20::1149])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from
- <3lSjrZgUKCtAFwH4B2AA270.yA8C08G-z0H079A929G.AD2@flex--tavip.bounces.google.com>)
- id 1sr0GX-0007Iy-QZ
- for qemu-devel@nongnu.org; Wed, 18 Sep 2024 15:23:08 -0400
-Received: by mail-pf1-x44a.google.com with SMTP id
- d2e1a72fcca58-718d7ec6ff8so78917b3a.1
- for <qemu-devel@nongnu.org>; Wed, 18 Sep 2024 12:23:04 -0700 (PDT)
+ <3mSjrZgUKCtQJ0L8F6EE6B4.2ECG4CK-34L4BDED6DK.EH6@flex--tavip.bounces.google.com>)
+ id 1sr0GZ-0007JM-Rx
+ for qemu-devel@nongnu.org; Wed, 18 Sep 2024 15:23:10 -0400
+Received: by mail-yw1-x1149.google.com with SMTP id
+ 00721157ae682-6ddd980af81so866567b3.2
+ for <qemu-devel@nongnu.org>; Wed, 18 Sep 2024 12:23:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1726687383; x=1727292183; darn=nongnu.org;
+ d=google.com; s=20230601; t=1726687386; x=1727292186; darn=nongnu.org;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:from:to:cc:subject:date:message-id:reply-to;
- bh=C6JTu3BP64DCbGkO2oFE0GHtGHDLxSzLQw77GKNg3jc=;
- b=k5LGqpuTIRabb5brQSdi03BE+gCh23Rl3if6MT4DVibKrDmSgXirC0F19sGMVz9lLB
- uWkrPI4i4uNG+yZMyBxf2/wPxZwk1CuvuOnAbJFVhzsyl439SpwFjitzKmcPcP6wsjm6
- ORweoJPn4JdKfBmoq5/IgfxRBEfUyk7njfbVVIsYGUHvVPl+T8WPo1/T/fQfK8+duksr
- hh5rX8jcVAVcdEe6I86/JCthD1weeipVVGd98aiCBeIDM3ON+/6eL00pi7NRWQWflozq
- zmUPmeybtGHUetCbRvp/C7kvIFhcidyYLZOtqunx0Sew3cJ42kpBF4hgDsmfXlGuildz
- UxgQ==
+ bh=lEVtRqlZJene7dTeaWQA40okr0fqxtlzPIuT5Zal7q4=;
+ b=BSHaJpsVkuWnn8mLgtpOPzEg6yxaajQKvMUCpHEw2S8SE+gsspM2cS1XZE7hJmglgV
+ SjT5MiPoq/256lLYf8yOAjTBVhmJMshl/JzYd5n80/9odWyS7ZhL+mBTJmXd6vFB0e+L
+ 13OSNx8bcfLjq1Q/CC2By1UR7ZUfzmDaZFkKShSPERqvhCQ6i+/xtWRGLw0td+9F6fLk
+ 5aCBwtw2dLi1hjr7Nz5/JOYMyh87O7d/cNakOscE6Dd0FWit9+kE4ftTX+umDGNY+DTV
+ YNzQmspgWEArYWNTBjmmUVUruwvnHkrDkJbGDTMDzifv+pOEUIkb3aLFEI+wVeHNpluj
+ xTcQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1726687383; x=1727292183;
+ d=1e100.net; s=20230601; t=1726687386; x=1727292186;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=C6JTu3BP64DCbGkO2oFE0GHtGHDLxSzLQw77GKNg3jc=;
- b=kjbtqjzAAvnqtJEZXzI4RiHi+4hRwoLUjIgnb/f65lCO2Z5R90eG2Gp+D1HlMiwZFR
- /qFI0CKmgTq/MDCGeW03sMEsRuyZcLClLw6B6zdvzsb1iYFXAadF5SKMUacKuXlMNxBa
- hCRsyw8Qswz5q+El+01o6aurDLYAiLMOztVVdHdbHoZD1sTeD99WlCEvf6xPLY/sCyww
- HABk+l+EYpnzPdQtB5oDjLm3MYP4d7jMgFHPbGCgFxy0fOzePPBrOLbdOJs2AZsVxY10
- jVzx3MAHS4DyLjmviOuOiMcEdxT2qw+3dPxHOeOwEn5VQygaXV2JnuBGLXP1RbYAsowz
- SXKQ==
-X-Gm-Message-State: AOJu0Yx+3HOXSzRc/skPLZEefCdA/NK1p9ihj7p8ObRlhZ04v/3D9G41
- f10SuxS9FgRtztOGhXBJHP/eDHYr0mmo79gxB0r8m8jvvgIMMcKl9ULp48ZJkkZ7c2lorZFmqJq
- TrkZabVovi1xWqTKHbmL+uGX71Wjl6GyBIF72mmGZTYUJwpIuwgOzrhuztN9RYjvkluIYrhTmqn
- m82niWD52WaNg/gEb46roOIm27NA==
+ bh=lEVtRqlZJene7dTeaWQA40okr0fqxtlzPIuT5Zal7q4=;
+ b=Ii3jnPmXnC1XPu+yR9BNrYmOjZLaDwmZ9EaW03t6TiyWXdeGsWnIR29RdI5HwhAg7v
+ W7wa/52heZLUDD64SYnfqFd7MNCyLUnt2OCA0O7LCdqwYqpr8LG58awy2jXRBA6PiILe
+ WZ7EKbywEDmJE6CdjMjzycFGqUAvg5tFX04Ac8HqpLGYR+gAw2aeP3lLJ57VEW1BCqc9
+ HaufBVpf4QbzHvDwjwsNUIDRKT0de+7veIf5ZGUO1qpSiMl5HNoBHwuy8Z430vkvw1QD
+ cWlI31hQ/GAnEyv+bfttXxuBQmkhIITq3ktJEXTr+nrORrixyVeNPCHyGzjXkT7aJtsH
+ on5Q==
+X-Gm-Message-State: AOJu0YxDmvN12QgoAYZs6OBj5dzipFRuQANMDQJX8A1m5CD2mL+XxzWM
+ IwGkIF7mJv6M5TfZZbqYVSdNv2vq8D+BrHbeSBkUdMcM43NLW7wkggIobYulaR4bg6StNkk2pyV
+ KoubR0nYmCivl8CWcSRLm6oHlyDIcR4XL5bRkXEQyl5getiTqHL3j7BsDbrmA8ra1vNDyL5/2mD
+ ycbaby74tPCmUK4n/DYFNih4oC/A==
 X-Received: from warp10.c.googlers.com ([fda3:e722:ac3:cc00:24:72f4:c0a8:750])
- (user=tavip job=sendgmr) by 2002:a05:6a00:8a84:b0:718:3270:24b1
- with SMTP id
- d2e1a72fcca58-7198e12d13emr879b3a.0.1726687381167; Wed, 18 Sep 2024 12:23:01
- -0700 (PDT)
-Date: Wed, 18 Sep 2024 12:22:31 -0700
+ (user=tavip job=sendgmr) by 2002:a81:b302:0:b0:6dd:b9bb:360a with
+ SMTP id
+ 00721157ae682-6ddb9bb38e2mr4274627b3.1.1726687385354; Wed, 18 Sep 2024
+ 12:23:05 -0700 (PDT)
+Date: Wed, 18 Sep 2024 12:22:33 -0700
 In-Reply-To: <20240918192254.3136903-1-tavip@google.com>
 Mime-Version: 1.0
 References: <20240918192254.3136903-1-tavip@google.com>
 X-Mailer: git-send-email 2.46.0.662.g92d0881bb0-goog
-Message-ID: <20240918192254.3136903-4-tavip@google.com>
-Subject: [PATCH 03/25] scripts: add script to generate C header files from SVD
- XML files
+Message-ID: <20240918192254.3136903-6-tavip@google.com>
+Subject: [PATCH 05/25] hw/misc: add support for flexcomm
 From: Octavian Purdila <tavip@google.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, stefanst@google.com, pbonzini@redhat.com, 
@@ -108,9 +107,9 @@ Cc: qemu-arm@nongnu.org, stefanst@google.com, pbonzini@redhat.com,
  alistair@alistair23.me, thuth@redhat.com, philmd@linaro.org, jsnow@redhat.com, 
  crosa@redhat.com, lvivier@redhat.com
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::44a;
- envelope-from=3lSjrZgUKCtAFwH4B2AA270.yA8C08G-z0H079A929G.AD2@flex--tavip.bounces.google.com;
- helo=mail-pf1-x44a.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1149;
+ envelope-from=3mSjrZgUKCtQJ0L8F6EE6B4.2ECG4CK-34L4BDED6DK.EH6@flex--tavip.bounces.google.com;
+ helo=mail-yw1-x1149.google.com
 X-Spam_score_int: -95
 X-Spam_score: -9.6
 X-Spam_bar: ---------
@@ -132,438 +131,657 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: DdLBSPdi5O7L
+X-TUID: 50KtrPmZNO13
 
-From: Stefan Stanacar <stefanst@google.com>
+Add support for NXP's FLEXCOMM device model.
 
-The CMSIS System View Description format(CMSIS-SVD) is an XML based
-description of Arm Cortex-M microcontrollers provided and maintained
-by sillicon vendors. It includes details such as peripherals registers
-(down to bitfields), peripheral register block addresses, reset
-values, etc.
+FLEXCOMM is a generic serial communication module which support
+multiple functions: UART, SPI and I2C. These are configurable at
+runtime.
 
-This script uses this information to create header files that makes it
-easier to emulate peripherals.
+An abstract FlexcomFunction class is created that will be extended for
+specific functions. Each function has a dedicated overlapped
+MemoryRegion that it is going to be activated when that particular
+function is selected.
 
-The script can be used to create either peripheral specific headers or
-board / system specific information.
+A generic MemoryRegion is used to map generic registers (PSELID, PID)
+that is always active but has a lower priority. The function memory
+region is trimed to not include the generic registers.
 
-Peripheral specific headers contains information such as register
-layout (using the qemu register fields infrastructure), register
-names, register write masks and register reset values, the latter
-using RegisterAccessInfo.
+The FlexcommFunction object also gets access to the (non-concurrently)
+shared register backstore.
 
-Here is an excerpt from a generated header:
+The patch includes an automatically generated header which contains
+the register layout and helpers.
 
-  #pragma once
+The header can be regenerated with the svd-flexcomm target when the
+build is configured with --enable-mcux-soc-svd.
 
-  #include "hw/registerfields.h"
-
-  /* Flexcomm */
-  #define FLEXCOMM_REGS_NO (1024)
-
-  /* Peripheral Select and Flexcomm module ID */
-  REG32(FLEXCOMM_PSELID, 4088);
-  /* Peripheral Select */
-  FIELD(FLEXCOMM_PSELID, PERSEL, 0, 3);
-  /* Lock the peripheral select */
-  FIELD(FLEXCOMM_PSELID, LOCK, 3, 1);
-  /* USART present indicator */
-  FIELD(FLEXCOMM_PSELID, USARTPRESENT, 4, 1);
-  ...
-
-  typedef enum {                /* FLEXCOMM_PSELID_LOCK */
-    /* Peripheral select can be changed by software. */
-    FLEXCOMM_PSELID_LOCK_UNLOCKED = 0,
-    /* Peripheral select is locked and cannot be changed until this
-     * Flexcomm module or the entire device is reset. */
-    FLEXCOMM_PSELID_LOCK_LOCKED = 1,
-  } FLEXCOMM_PSELID_LOCK_Enum;
-  ...
-
-  #define FLEXCOMM_REGISTER_ACCESS_INFO_ARRAY(_name) \
-    struct RegisterAccessInfo _name[FLEXCOMM_REGS_NO] = { \
-      [0 ... FLEXCOMM_REGS_NO -1] = { \
-        .name = "", \
-        .addr = -1, \
-      }, \
-      [R_FLEXCOMM_PSELID] = { \
-        .name = "PSELID", \
-        .addr = 0xFF8, \
-        .ro = 0xFFFFFFF0, \
-        .reset = 0x101000, \
-      }, \
-      [R_FLEXCOMM_PID] = { \
-        .name = "PID", \
-        .addr = 0xFFC, \
-        .ro = 0xFFFFFFFF, \
-        .reset = 0x0, \
-      }, \
-    }
-
-Board specific headers contains information about peripheral base
-register addresses.
-
-Signed-off-by: Stefan Stanacar <stefanst@google.com>
-[tavip: pylint fixes, generate layout with qemu register fields
-instead of bitfields, generate register names, romask and reset values]
 Signed-off-by: Octavian Purdila <tavip@google.com>
 ---
- meson.build               |   4 +
- scripts/svd-gen-header.py | 329 ++++++++++++++++++++++++++++++++++++++
- 2 files changed, 333 insertions(+)
- create mode 100755 scripts/svd-gen-header.py
+ include/hw/arm/svd/flexcomm.h       | 112 ++++++++++
+ include/hw/misc/flexcomm.h          |  49 +++++
+ include/hw/misc/flexcomm_function.h |  47 ++++
+ hw/misc/flexcomm.c                  | 319 ++++++++++++++++++++++++++++
+ hw/arm/meson.build                  |   2 +
+ hw/arm/svd/meson.build              |   3 +
+ hw/misc/Kconfig                     |   3 +
+ hw/misc/meson.build                 |   2 +
+ hw/misc/trace-events                |   5 +
+ 9 files changed, 542 insertions(+)
+ create mode 100644 include/hw/arm/svd/flexcomm.h
+ create mode 100644 include/hw/misc/flexcomm.h
+ create mode 100644 include/hw/misc/flexcomm_function.h
+ create mode 100644 hw/misc/flexcomm.c
 
-diff --git a/meson.build b/meson.build
-index 2d4bf71b24..57d0119733 100644
---- a/meson.build
-+++ b/meson.build
-@@ -3338,6 +3338,10 @@ tracetool_depends = files(
-   'scripts/tracetool/__init__.py',
- )
- 
-+svd_gen_header = [
-+  python, files('scripts/svd-gen-header.py')
-+]
-+
- qemu_version_cmd = [find_program('scripts/qemu-version.sh'),
-                     meson.current_source_dir(),
-                     get_option('pkgversion'), meson.project_version()]
-diff --git a/scripts/svd-gen-header.py b/scripts/svd-gen-header.py
-new file mode 100755
-index 0000000000..2ddcc65b5a
+diff --git a/include/hw/arm/svd/flexcomm.h b/include/hw/arm/svd/flexcomm.h
+new file mode 100644
+index 0000000000..4639722bc7
 --- /dev/null
-+++ b/scripts/svd-gen-header.py
-@@ -0,0 +1,329 @@
-+#!/usr/bin/env python3
++++ b/include/hw/arm/svd/flexcomm.h
+@@ -0,0 +1,112 @@
++/*
++ * Copyright 2016-2023 NXP SPDX-License-Identifier: BSD-3-Clause
++ *
++ * Automatically generated by svd-gen-header.py from MIMXRT595S_cm33.xml
++ */
++#pragma once
 +
-+# Copyright 2024 Google LLC
-+#
-+# This work is licensed under the terms of the GNU GPL, version 2 or later.
-+# See the COPYING file in the top-level directory.
-+#
-+# Use this script to generate a C header file from an SVD xml
-+#
-+# Two mode of operations are supported: peripheral and system.
-+#
-+# When running in peripheral mode a header for a specific peripheral
-+# is going to be generated. It will define a type and structure with
-+# all of the available registers at the bitfield level. An array that
-+# contains the reigster names indexed by address is also going to be
-+# generated as well as a function to initialize registers to their
-+# reset values.
-+#
-+# Invocation example:
-+#
-+# svd_gen_header -i MIMXRT595S_cm33.xml -o flexcomm.h -p FLEXCOMM0 -t FLEXCOMM
-+#
-+# When running in system mode a header for a specific system /
-+# platform will be generated. It will define register base addresses
-+# and interrupt numbers for selected peripherals.
-+#
-+# Invocation example:
-+#
-+# svd_gen_header -i MIMXRT595S_cm33.xml -o rt500.h -s RT500 -p FLEXCOMM0 \
-+#                -p CLKCTL0 -p CLKCTL1
-+#
++#include "hw/register.h"
 +
-+import argparse
-+import re
-+import os
-+import sys
-+import xml.etree.ElementTree
-+import pysvd
++/* Flexcomm */
++#define FLEXCOMM_REGS_NO (1024)
 +
-+data_type_by_bits = {
-+    8: "uint8_t",
-+    16: "uint16_t",
-+    32: "uint32_t",
++/* Peripheral Select and Flexcomm module ID */
++REG32(FLEXCOMM_PSELID, 4088);
++/* Peripheral Select */
++FIELD(FLEXCOMM_PSELID, PERSEL, 0, 3);
++/* Lock the peripheral select */
++FIELD(FLEXCOMM_PSELID, LOCK, 3, 1);
++/* USART present indicator */
++FIELD(FLEXCOMM_PSELID, USARTPRESENT, 4, 1);
++/* SPI present indicator */
++FIELD(FLEXCOMM_PSELID, SPIPRESENT, 5, 1);
++/* I2C present indicator */
++FIELD(FLEXCOMM_PSELID, I2CPRESENT, 6, 1);
++/* I2S Present */
++FIELD(FLEXCOMM_PSELID, I2SPRESENT, 7, 1);
++/* Flexcomm ID */
++FIELD(FLEXCOMM_PSELID, ID, 12, 20);
++
++/* Peripheral Identification */
++REG32(FLEXCOMM_PID, 4092);
++/* Minor revision of module implementation */
++FIELD(FLEXCOMM_PID, Minor_Rev, 8, 4);
++/* Major revision of module implementation */
++FIELD(FLEXCOMM_PID, Major_Rev, 12, 4);
++/* Module identifier for the selected function */
++FIELD(FLEXCOMM_PID, ID, 16, 16);
++
++
++typedef enum {
++    /* No peripheral selected. */
++    FLEXCOMM_PSELID_PERSEL_NO_PERIPH_SELECTED = 0,
++    /* USART function selected */
++    FLEXCOMM_PSELID_PERSEL_USART = 1,
++    /* SPI function selected */
++    FLEXCOMM_PSELID_PERSEL_SPI = 2,
++    /* I2C */
++    FLEXCOMM_PSELID_PERSEL_I2C = 3,
++    /* I2S Transmit */
++    FLEXCOMM_PSELID_PERSEL_I2S_TRANSMIT = 4,
++    /* I2S Receive */
++    FLEXCOMM_PSELID_PERSEL_I2S_RECEIVE = 5,
++} FLEXCOMM_PSELID_PERSEL_Enum;
++
++typedef enum {
++    /* Peripheral select can be changed by software. */
++    FLEXCOMM_PSELID_LOCK_UNLOCKED = 0,
++    /*
++     * Peripheral select is locked and cannot be changed until this Flexcomm
++     * module or the entire device is reset.
++     */
++    FLEXCOMM_PSELID_LOCK_LOCKED = 1,
++} FLEXCOMM_PSELID_LOCK_Enum;
++
++typedef enum {
++    /* This Flexcomm module does not include the USART function. */
++    FLEXCOMM_PSELID_USARTPRESENT_NOT_PRESENT = 0,
++    /* This Flexcomm module includes the USART function. */
++    FLEXCOMM_PSELID_USARTPRESENT_PRESENT = 1,
++} FLEXCOMM_PSELID_USARTPRESENT_Enum;
++
++typedef enum {
++    /* This Flexcomm module does not include the SPI function. */
++    FLEXCOMM_PSELID_SPIPRESENT_NOT_PRESENT = 0,
++    /* This Flexcomm module includes the SPI function. */
++    FLEXCOMM_PSELID_SPIPRESENT_PRESENT = 1,
++} FLEXCOMM_PSELID_SPIPRESENT_Enum;
++
++typedef enum {
++    /* I2C Not Present */
++    FLEXCOMM_PSELID_I2CPRESENT_NOT_PRESENT = 0,
++    /* I2C Present */
++    FLEXCOMM_PSELID_I2CPRESENT_PRESENT = 1,
++} FLEXCOMM_PSELID_I2CPRESENT_Enum;
++
++typedef enum {
++    /* I2S Not Present */
++    FLEXCOMM_PSELID_I2SPRESENT_NOT_PRESENT = 0,
++    /* I2S Present */
++    FLEXCOMM_PSELID_I2SPRESENT_PRESENT = 1,
++} FLEXCOMM_PSELID_I2SPRESENT_Enum;
++
++
++#define FLEXCOMM_REGISTER_ACCESS_INFO_ARRAY(_name) \
++    struct RegisterAccessInfo _name[FLEXCOMM_REGS_NO] = { \
++        [0 ... FLEXCOMM_REGS_NO - 1] = { \
++            .name = "", \
++            .addr = -1, \
++        }, \
++        [R_FLEXCOMM_PSELID] = { \
++            .name = "PSELID", \
++            .addr = 0xFF8, \
++            .ro = 0xFFFFFFF0, \
++            .reset = 0x101000, \
++        }, \
++        [R_FLEXCOMM_PID] = { \
++            .name = "PID", \
++            .addr = 0xFFC, \
++            .ro = 0xFFFFFFFF, \
++            .reset = 0x0, \
++        }, \
++    }
+diff --git a/include/hw/misc/flexcomm.h b/include/hw/misc/flexcomm.h
+new file mode 100644
+index 0000000000..ea0fe77f26
+--- /dev/null
++++ b/include/hw/misc/flexcomm.h
+@@ -0,0 +1,49 @@
++/*
++ * QEMU model for NXP's FLEXCOMM
++ *
++ * Copyright (c) 2024 Google LLC
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ *
++ * This work is licensed under the terms of the GNU GPL, version 2 or later.
++ * See the COPYING file in the top-level directory.
++ */
++
++#ifndef HW_FLEXCOMM_H
++#define HW_FLEXCOMM_H
++
++#include "hw/sysbus.h"
++#include "hw/arm/svd/flexcomm.h"
++#include "qemu/fifo32.h"
++
++#define FLEXCOMM_FUNC_USART     0
++#define FLEXCOMM_FUNC_SPI       1
++#define FLEXCOMM_FUNC_I2C       2
++#define FLEXCOMM_FUNC_I2S       3
++#define FLEXCOMM_FUNCTIONS 4
++
++#define FLEXCOMM_FULL    0xF
++#define FLEXCOMM_HSSPI   (1 << FLEXCOMM_FUNC_SPI)
++#define FLEXCOMM_PMICI2C (1 << FLEXCOMM_FUNC_I2C)
++
++#define FLEXCOMM_PERSEL_USART  1
++#define FLEXCOMM_PERSEL_SPI    2
++#define FLEXCOMM_PERSEL_I2C    3
++#define FLEXCOMM_PERSEL_I2S_TX 4
++#define FLEXCOMM_PERSEL_I2S_RX 5
++
++#define TYPE_FLEXCOMM "flexcomm"
++OBJECT_DECLARE_SIMPLE_TYPE(FlexcommState, FLEXCOMM);
++
++struct FlexcommState {
++    SysBusDevice parent_obj;
++
++    MemoryRegion container;
++    MemoryRegion mmio;
++    uint32_t regs[FLEXCOMM_REGS_NO];
++    uint32_t functions;
++    qemu_irq irq;
++    bool irq_state;
++};
++
++#endif /* HW_FLEXCOMM_H */
+diff --git a/include/hw/misc/flexcomm_function.h b/include/hw/misc/flexcomm_function.h
+new file mode 100644
+index 0000000000..e498976927
+--- /dev/null
++++ b/include/hw/misc/flexcomm_function.h
+@@ -0,0 +1,47 @@
++/*
++ * QEMU model for NXP's FLEXCOMM
++ *
++ * Copyright (c) 2024 Google LLC
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ *
++ * This work is licensed under the terms of the GNU GPL, version 2 or later.
++ * See the COPYING file in the top-level directory.
++ */
++
++#ifndef HW_FLEXCOMM_FUNCTION_H
++#define HW_FLEXCOMM_FUNCTION_H
++
++#include "qemu/fifo32.h"
++#include "hw/sysbus.h"
++
++#define TYPE_FLEXCOMM_FUNCTION "flexcomm-function"
++OBJECT_DECLARE_TYPE(FlexcommFunction, FlexcommFunctionClass, FLEXCOMM_FUNCTION);
++
++struct FlexcommFunction {
++    SysBusDevice parent_obj;
++
++    MemoryRegion mmio;
++    uint32_t *regs;
++};
++
++typedef void (*FlexcommFunctionSelect)(FlexcommFunction *f, bool selected);
++
++struct FlexcommFunctionClass {
++    SysBusDeviceClass parent_class;
++
++    const MemoryRegionOps *mmio_ops;
++    const char *name;
++    FlexcommFunctionSelect select;
++};
++
++static inline void flexcomm_select(FlexcommFunction *obj, bool selected)
++{
++    FlexcommFunctionClass *klass = FLEXCOMM_FUNCTION_GET_CLASS(obj);
++
++    klass->select(obj, selected);
++}
++
++void flexcomm_set_irq(FlexcommFunction *f, bool irq);
++
++#endif /* HW_FLEXCOMM_FUNCTION_H */
+diff --git a/hw/misc/flexcomm.c b/hw/misc/flexcomm.c
+new file mode 100644
+index 0000000000..2337fb814c
+--- /dev/null
++++ b/hw/misc/flexcomm.c
+@@ -0,0 +1,319 @@
++/*
++ * QEMU model for NXP's FLEXCOMM
++ *
++ * Copyright (c) 2024 Google LLC
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ *
++ * This work is licensed under the terms of the GNU GPL, version 2 or later.
++ * See the COPYING file in the top-level directory.
++ */
++
++#include "qemu/osdep.h"
++#include "qemu/mmap-alloc.h"
++#include "qemu/log.h"
++#include "qemu/module.h"
++#include "hw/irq.h"
++#include "hw/qdev-properties.h"
++#include "hw/qdev-properties-system.h"
++#include "migration/vmstate.h"
++#include "exec/address-spaces.h"
++#include "qapi/error.h"
++#include "trace.h"
++#include "migration/vmstate.h"
++#include "hw/misc/flexcomm.h"
++
++#define REG(s, reg) (s->regs[R_FLEXCOMM_##reg])
++#define RF_WR(s, reg, field, val) \
++    ARRAY_FIELD_DP32(s->regs, FLEXCOMM_##reg, field, val)
++#define RF_RD(s, reg, field) \
++    ARRAY_FIELD_EX32(s->regs, FLEXCOMM_##reg, field)
++
++#define modname "FLEXCOMM"
++
++#define FLEXCOMM_FUNC_MMIO_SIZE \
++    ((FLEXCOMM_REGS_NO - 2) * sizeof(uint32_t))
++
++static const FLEXCOMM_REGISTER_ACCESS_INFO_ARRAY(reg_info);
++
++static inline bool has_function(FlexcommState *s, int function)
++{
++    return s->functions & (1 << function);
++}
++
++static inline int persel_to_function(FlexcommState *s)
++{
++    switch (RF_RD(s, PSELID, PERSEL)) {
++    case FLEXCOMM_PERSEL_USART:
++        return FLEXCOMM_FUNC_USART;
++    case FLEXCOMM_PERSEL_SPI:
++        return FLEXCOMM_FUNC_SPI;
++    case FLEXCOMM_PERSEL_I2C:
++        return FLEXCOMM_FUNC_I2C;
++    case FLEXCOMM_PERSEL_I2S_TX:
++    case FLEXCOMM_PERSEL_I2S_RX:
++        return FLEXCOMM_FUNC_I2S;
++    default:
++        return -1;
++    }
++}
++
++static void flexcomm_func_select(FlexcommState *s, bool selected)
++{
++    FlexcommFunction *obj[] = {
++        FLEXCOMM_FUNCTION(&s->usart),
++        FLEXCOMM_FUNCTION(&s->spi),
++        FLEXCOMM_FUNCTION(&s->i2c),
++    };
++    int f = persel_to_function(s);
++
++    if (f >= 0 && f < ARRAY_SIZE(obj)) {
++        flexcomm_select(obj[f], selected);
++    }
++}
++
++static void flexcomm_reset_enter(Object *o, ResetType type)
++{
++    FlexcommState *s = FLEXCOMM(o);
++
++    trace_flexcomm_reset();
++
++    flexcomm_func_select(s, false);
++
++    for (int i = 0; i < FLEXCOMM_REGS_NO; i++) {
++        hwaddr addr = reg_info[i].addr;
++
++        if (addr != -1) {
++            struct RegisterInfo ri = {
++                .data = &s->regs[addr / 4],
++                .data_size = 4,
++                .access = &reg_info[i],
++            };
++
++            register_reset(&ri);
++        }
++    }
++
++    RF_WR(s, PSELID, USARTPRESENT, has_function(s, FLEXCOMM_FUNC_USART));
++    RF_WR(s, PSELID, SPIPRESENT, has_function(s, FLEXCOMM_FUNC_SPI));
++    RF_WR(s, PSELID, I2CPRESENT, has_function(s, FLEXCOMM_FUNC_I2C));
++    RF_WR(s, PSELID, I2SPRESENT, has_function(s, FLEXCOMM_FUNC_I2S));
++
++    s->irq_state = false;
++}
++
++static void flexcomm_reset_exit(Object *o, ResetType type)
++{
++    FlexcommState *s = FLEXCOMM(o);
++
++    qemu_set_irq(s->irq, s->irq_state);
 +}
 +
 +
-+def get_register_array_name_and_size(reg):
-+    """Return register name and register array size.
-+
-+    The SVD can define register arrays and pysvd encodes the whole set
-+    as as regular register with their name prepended by [<array size>].
-+
-+    Returns a tuple with the register name and the size of the array or
-+    zero if this is not a register set.
-+
-+    """
-+
-+    split = re.split(r"[\[\]]", reg.name)
-+    return (split[0], int(split[1]) if len(split) > 1 else 0)
-+
-+
-+def generate_comment(indent, text):
-+    """Generate a comment block with for the given text with the given
-+    indentation level.
-+
-+    If possible, use a single line /* */ comment block, otherwise use
-+    a multiline comment block.
-+
-+    Newlines are preseved but tabs are not.
-+
-+    """
-+
-+    # preserve new lines
-+    text = text.replace("\n", " \n ")
-+    text = text.replace("  ", " ")
-+
-+    if len(text) + len("/*  */") + len(" " * indent) <= 80 and "\n" not in text:
-+        return f"{' '* indent}/* {text} */\n"
-+
-+    out = " " * indent + "/*\n"
-+    line = " " * indent + " *"
-+    for word in re.split(r"[ ]", text):
-+        if len(line) + len(word) >= 79 or word == "\n":
-+            out += line + "\n"
-+            line = " " * indent + " *"
-+            if word != "\n":
-+                line += " " + word
-+        else:
-+            line += " " + word
-+
-+    out += line + "\n"
-+
-+    out += " " * indent + " */\n"
-+    return out
-+
-+
-+def generate_registers(name, periph):
-+    """Generate register offsets and fields
-+
-+    Use registerfield macros to define register offsets and fields for
-+    a given peripheral.
-+
-+    """
-+
-+    regs = sorted(periph.registers, key=lambda reg: reg.addressOffset)
-+    out = generate_comment(0, periph.description)
-+    out += f"#define {name}_REGS_NO ({regs[-1].addressOffset // 4 + 1})\n\n"
-+    for reg in regs:
-+        out += generate_comment(0, reg.description)
-+        reg_name, reg_array_size = get_register_array_name_and_size(reg)
-+        if reg_array_size > 1:
-+            for idx in range(0, reg_array_size):
-+                addr = reg.addressOffset + idx * reg.size // 8
-+                out += f"REG32({name}_{reg_name}{idx}, {addr});\n"
-+        else:
-+            addr = reg.addressOffset
-+            out += f"REG32({name}_{reg_name}, {addr});\n"
-+        for field in reg.fields:
-+            out += generate_comment(0, field.description)
-+            if reg_array_size > 1:
-+                out += f"SHARED_FIELD({name}_{reg_name}_{field.name}, "
-+                out += f"{field.bitOffset}, {field.bitWidth});\n"
-+            else:
-+                out += f"FIELD({name}_{reg_name}, {field.name}, "
-+                out += f"{field.bitOffset}, {field.bitWidth});\n"
-+        out += "\n"
-+
-+    return out
-+
-+
-+def generate_enum_values(name, periph):
-+    """Generate enum values"""
-+
-+    out = "\n"
-+    for reg in periph.registers:
-+        reg_name, _ = get_register_array_name_and_size(reg)
-+        for field in reg.fields:
-+            if hasattr(field, "enumeratedValues"):
-+                out += "typedef enum {\n"
-+                for enum in field.enumeratedValues.enumeratedValues:
-+                    enum_name = f"{name}_{reg_name}_{field.name}_{enum.name}"
-+                    out += generate_comment(4, enum.description)
-+                    out += f"    {enum_name} = {enum.value},\n"
-+                out += f"}} {name}_{reg_name}_{field.name}_Enum;\n"
-+                out += "\n"
-+
-+    return out
-+
-+
-+def create_wmask(reg):
-+    """Generate write mask for a register.
-+
-+    Generate a mask with all bits that are writable set to 1
-+    """
-+
-+    wmask = 0
-+    fields = sorted(reg.fields, key=lambda field: field.bitOffset)
-+    if len(fields) > 0:
-+        for field in fields:
-+            if field.access != pysvd.type.access.read_only:
-+                wmask |= ((1 << field.bitWidth) - 1) << field.bitOffset
-+    else:
-+        if reg.access != pysvd.type.access.read_only:
-+            wmask = 0xFFFFFFFF
-+    return wmask
-+
-+
-+def create_romask(reg):
-+    """Generate write mask for a register.
-+
-+    Generate a mask with all bits that are readonly set to 1
-+    """
-+
-+    return ~create_wmask(reg) & 0xFFFFFFFF
-+
-+
-+def generate_register_access_info(name, periph):
-+    """Generate RegisterAccessInfo array macro"""
-+
-+    out = f"\n#define {name}_REGISTER_ACCESS_INFO_ARRAY(_name) \\\n"
-+    out += f"    struct RegisterAccessInfo _name[{name}_REGS_NO] = {{ \\\n"
-+    out += f"        [0 ... {name}_REGS_NO - 1] = {{ \\\n"
-+    out += '            .name = "", \\\n'
-+    out += "            .addr = -1, \\\n"
-+    out += "        }, \\\n"
-+    for reg in periph.registers:
-+        reg_name, reg_array_size = get_register_array_name_and_size(reg)
-+        if reg_array_size > 1:
-+            for idx in range(0, reg_array_size):
-+                out += f"        [R_{name}_{reg_name}{idx}] = {{ \\\n"
-+                addr = reg.addressOffset + idx * reg.size // 8
-+                out += f'            .name = "{reg_name}{idx}", \\\n'
-+                out += f"            .addr = 0x{addr:X}, \\\n"
-+                out += f"            .ro = 0x{create_romask(reg):X}, \\\n"
-+                out += f"            .reset = 0x{reg.resetValue:X}, \\\n"
-+                out += "        }, \\\n"
-+        else:
-+            out += f"        [R_{name}_{reg_name}] = {{ \\\n"
-+            out += f'            .name = "{reg_name}", \\\n'
-+            out += f"            .addr = 0x{reg.addressOffset:X}, \\\n"
-+            out += f"            .ro = 0x{create_romask(reg):X}, \\\n"
-+            out += f"            .reset = 0x{reg.resetValue:X}, \\\n"
-+            out += "        }, \\\n"
-+    out += "    }\n"
-+
-+    return out
-+
-+
-+def generate_peripheral_header(periph, name):
-+    """Generate peripheral header
-+
-+    The following information is generated:
-+
-+    * typedef with all of the available registers and register fields,
-+    position and mask defines for register fields.
-+
-+    * enum values that encode register fields options.
-+
-+    * a macro that defines the register names indexed by the relative
-+    address of the register.
-+
-+    * a function that sets the registers to their reset values
-+
-+    """
-+
-+    out = generate_registers(name, periph)
-+
-+    out += generate_enum_values(name, periph)
-+
-+    out += generate_register_access_info(name, periph)
-+
-+    return out
-+
-+
-+def get_same_class_peripherals(svd, periph):
-+    """Get a list of peripherals that are instances of the same class."""
-+
-+    return [periph] + [
-+        p
-+        for p in svd.peripherals
-+        if p.derivedFrom and p.derivedFrom.name == periph.name
-+    ]
-+
-+
-+def generate_system_header(system, svd, periph):
-+    """Generate base and irq defines for given list of peripherals"""
-+
-+    out = ""
-+
-+    for p in get_same_class_peripherals(svd, periph):
-+        out += f"#define {system}_{p.name}_BASE 0x{p.baseAddress:X}UL\n"
-+    out += "\n"
-+
-+    for p in get_same_class_peripherals(svd, periph):
-+        for irq in p.interrupts:
-+            out += f"#define {system}_{irq.name}_IRQn 0x{irq.value}UL\n"
-+    out += "\n"
-+
-+    return out
-+
-+
-+def main():
-+    """Script to generate C header file from an SVD file"""
-+
-+    parser = argparse.ArgumentParser()
-+    parser.add_argument(
-+        "-i", "--input", type=str, help="Input SVD file", required=True
-+    )
-+    parser.add_argument(
-+        "-o", "--output", type=str, help="Output .h file", required=True
-+    )
-+    parser.add_argument(
-+        "-p",
-+        "--peripheral",
-+        action="append",
-+        help="peripheral name from the SVD file",
-+        required=True,
-+    )
-+    parser.add_argument(
-+        "-t",
-+        "--type-name",
-+        type=str,
-+        help="name to be used for peripheral definitions",
-+        required=False,
-+    )
-+    parser.add_argument(
-+        "-s",
-+        "--system",
-+        type=str,
-+        help="name to be used for the system definitions",
-+        required=False,
-+    )
-+
-+    args = parser.parse_args()
-+
-+    node = xml.etree.ElementTree.parse(args.input).getroot()
-+    svd = pysvd.element.Device(node)
-+
-+    # Write license header
-+    header = svd.licenseText.strip()
-+    header += f"\n\nAutomatically generated by {os.path.basename(__file__)} "
-+    header += f"from {os.path.basename(args.input)}"
-+    out = generate_comment(0, header)
-+
-+    # Write some generic defines
-+    out += "#pragma once\n\n"
-+
-+    for name in args.peripheral:
-+        periph = svd.find(name)
-+        if periph:
-+            if args.system:
-+                out += generate_system_header(args.system, svd, periph)
-+            else:
-+                out += '#include "hw/register.h"\n\n'
-+                out += generate_peripheral_header(
-+                    periph, args.type_name if args.type_name else periph.name
-+                )
-+        else:
-+            print(f"No such peripheral: {name}")
-+            return 1
-+
-+    with open(args.output, "w", encoding="ascii") as output:
-+        output.write(out)
-+
-+    return 0
-+
-+
-+if __name__ == "__main__":
-+    sys.exit(main())
++static MemTxResult flexcomm_reg_read(void *opaque, hwaddr addr,
++                                    uint64_t *data, unsigned size,
++                                    MemTxAttrs attrs)
++{
++    FlexcommState *s = opaque;
++    MemTxResult ret = MEMTX_OK;
++    const struct RegisterAccessInfo *rai = &reg_info[addr / 4];
++
++    switch (addr) {
++    case A_FLEXCOMM_PSELID:
++    case A_FLEXCOMM_PID:
++    {
++        *data = s->regs[addr / 4];
++        break;
++    }
++    default:
++        return MEMTX_ERROR;
++    }
++
++    trace_flexcomm_reg_read(DEVICE(s)->id, rai->name, addr, *data);
++    return ret;
++}
++
++static int flexcomm_check_function(FlexcommState *s)
++{
++    int f = persel_to_function(s);
++
++    if (f < 0 || !has_function(s, f)) {
++        return -1;
++    }
++
++    return f;
++}
++
++static MemTxResult flexcomm_reg_write(void *opaque, hwaddr addr,
++                                     uint64_t value, unsigned size,
++                                     MemTxAttrs attrs)
++{
++    FlexcommState *s = opaque;
++    MemTxResult ret = MEMTX_OK;
++    const struct RegisterAccessInfo *rai = &reg_info[addr / 4];
++    struct RegisterInfo ri = {
++        .data = &s->regs[addr / 4],
++        .data_size = 4,
++        .access = rai,
++    };
++
++    trace_flexcomm_reg_write(DEVICE(s)->id, rai->name, addr, value);
++
++    switch (addr) {
++    case A_FLEXCOMM_PID:
++        /* RO register, nothing do to */
++        break;
++    case A_FLEXCOMM_PSELID:
++    {
++        if (RF_RD(s, PSELID, LOCK)) {
++            break;
++        }
++
++        flexcomm_func_select(s, false);
++
++        register_write(&ri, value, ~0, modname, false);
++
++        if (flexcomm_check_function(s) < 0) {
++            RF_WR(s, PSELID, PERSEL, 0);
++            break;
++        }
++
++        flexcomm_func_select(s, true);
++        break;
++    }
++    default:
++        return MEMTX_ERROR;
++    }
++
++    return ret;
++}
++
++
++static const MemoryRegionOps flexcomm_ops = {
++    .read_with_attrs = flexcomm_reg_read,
++    .write_with_attrs = flexcomm_reg_write,
++    .endianness = DEVICE_NATIVE_ENDIAN,
++    .valid = {
++        .min_access_size = 4,
++        .max_access_size = 4,
++        .unaligned = false,
++    },
++};
++
++static Property flexcomm_properties[] = {
++    DEFINE_PROP_UINT32("functions", FlexcommState, functions,
++                       FLEXCOMM_FULL),
++    DEFINE_PROP_END_OF_LIST(),
++};
++
++static void flexcomm_init(Object *obj)
++{
++    FlexcommState *s = FLEXCOMM(obj);
++    DeviceState *dev = DEVICE(obj);
++    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
++
++    memory_region_init(&s->container, obj, "container", sizeof(s->regs));
++    memory_region_init_io(&s->mmio, obj, &flexcomm_ops, s,
++                          TYPE_FLEXCOMM, sizeof(s->regs));
++    sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->container);
++    sysbus_init_irq(sbd, &s->irq);
++}
++
++static void flexcomm_func_realize_and_unref(FlexcommFunction *f, Error **errp)
++{
++    FlexcommState *s = FLEXCOMM(OBJECT(f)->parent);
++    FlexcommFunctionClass *fc = FLEXCOMM_FUNCTION_GET_CLASS(f);
++
++    f->regs = s->regs;
++    memory_region_add_subregion_overlap(&s->container, 0, &f->mmio, 0);
++    DEVICE(f)->id = g_strdup_printf("%s-%s", DEVICE(s)->id, fc->name);
++    sysbus_realize_and_unref(SYS_BUS_DEVICE(f), errp);
++    memory_region_set_enabled(&f->mmio, false);
++}
++
++static void flexcomm_realize(DeviceState *dev, Error **errp)
++{
++    FlexcommState *s = FLEXCOMM(dev);
++
++    memory_region_add_subregion_overlap(&s->container, 0, &s->mmio, -1);
++}
++
++static const VMStateDescription vmstate_flexcomm = {
++    .name = "flexcomm",
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .fields = (const VMStateField[]) {
++        VMSTATE_UINT32_ARRAY(regs, FlexcommState, FLEXCOMM_REGS_NO),
++        VMSTATE_BOOL(irq_state, FlexcommState),
++        VMSTATE_FIFO32(rx_fifo, FlexcommState),
++        VMSTATE_FIFO32(tx_fifo, FlexcommState),
++        VMSTATE_END_OF_LIST()
++    }
++};
++
++static void flexcomm_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++    ResettableClass *rc = RESETTABLE_CLASS(klass);
++
++    rc->phases.enter = flexcomm_reset_enter;
++    rc->phases.exit = flexcomm_reset_exit;
++    device_class_set_props(dc, flexcomm_properties);
++    dc->realize = flexcomm_realize;
++    dc->vmsd = &vmstate_flexcomm;
++}
++
++void flexcomm_set_irq(FlexcommFunction *f, bool irq)
++{
++    FlexcommState *s = FLEXCOMM(OBJECT(f)->parent);
++
++    if (s->irq_state != irq) {
++        trace_flexcomm_irq(DEVICE(s)->id, irq);
++        qemu_set_irq(s->irq, irq);
++        s->irq_state = irq;
++    }
++}
++
++static void flexcomm_function_select(FlexcommFunction *f, bool selected)
++{
++    FlexcommFunctionClass *fc = FLEXCOMM_FUNCTION_GET_CLASS(f);
++
++    memory_region_set_enabled(&f->mmio, selected);
++}
++
++static void flexcomm_function_init(Object *obj)
++{
++    FlexcommFunctionClass *fc = FLEXCOMM_FUNCTION_GET_CLASS(obj);
++    FlexcommFunction *f = FLEXCOMM_FUNCTION(obj);
++
++    memory_region_init_io(&f->mmio, obj, fc->mmio_ops, obj, fc->name,
++                          FLEXCOMM_FUNC_MMIO_SIZE);
++}
++
++static void flexcomm_function_class_init(ObjectClass *klass, void *data)
++{
++    FlexcommFunctionClass *fc = FLEXCOMM_FUNCTION_CLASS(klass);
++
++    fc->select = flexcomm_function_select;
++}
++
++static const TypeInfo flexcomm_types[] = {
++    {
++        .name          = TYPE_FLEXCOMM,
++        .parent        = TYPE_SYS_BUS_DEVICE,
++        .instance_size = sizeof(FlexcommState),
++        .instance_init = flexcomm_init,
++        .class_init    = flexcomm_class_init,
++    },
++    {
++        .name          = TYPE_FLEXCOMM_FUNCTION,
++        .parent        = TYPE_SYS_BUS_DEVICE,
++        .instance_size = sizeof(FlexcommFunction),
++        .abstract      = true,
++        .class_size    = sizeof(FlexcommFunctionClass),
++        .instance_init = flexcomm_function_init,
++        .class_init    = flexcomm_function_class_init,
++    },
++};
++
++DEFINE_TYPES(flexcomm_types);
+diff --git a/hw/arm/meson.build b/hw/arm/meson.build
+index 4059d0be2e..fdfd083f75 100644
+--- a/hw/arm/meson.build
++++ b/hw/arm/meson.build
+@@ -82,3 +82,5 @@ system_ss.add(when: 'CONFIG_VEXPRESS', if_true: files('vexpress.c'))
+ system_ss.add(when: 'CONFIG_Z2', if_true: files('z2.c'))
+ 
+ hw_arch += {'arm': arm_ss}
++
++subdir('svd')
+diff --git a/hw/arm/svd/meson.build b/hw/arm/svd/meson.build
+index 7d83d2ccbc..4b0bbbbbdc 100644
+--- a/hw/arm/svd/meson.build
++++ b/hw/arm/svd/meson.build
+@@ -1,4 +1,7 @@
+ if get_option('mcux-soc-svd')
+   mcux_soc_svd = subproject('mcux-soc-svd')
+   rt595 = mcux_soc_svd.get_variable('rt595')
++  run_target('svd-flexcomm', command: svd_gen_header +
++    [ '-i', rt595, '-o', '@SOURCE_ROOT@/include/hw/arm/svd/flexcomm.h',
++    '-p', 'FLEXCOMM0', '-t', 'FLEXCOMM'])
+ endif
+diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
+index 1e08785b83..14167ae9e8 100644
+--- a/hw/misc/Kconfig
++++ b/hw/misc/Kconfig
+@@ -213,4 +213,7 @@ config IOSB
+ config XLNX_VERSAL_TRNG
+     bool
+ 
++config FLEXCOMM
++    bool
++
+ source macio/Kconfig
+diff --git a/hw/misc/meson.build b/hw/misc/meson.build
+index 2ca8717be2..749f688e84 100644
+--- a/hw/misc/meson.build
++++ b/hw/misc/meson.build
+@@ -157,3 +157,5 @@ system_ss.add(when: 'CONFIG_SBSA_REF', if_true: files('sbsa_ec.c'))
+ 
+ # HPPA devices
+ system_ss.add(when: 'CONFIG_LASI', if_true: files('lasi.c'))
++
++system_ss.add(when: 'CONFIG_FLEXCOMM', if_true: files('flexcomm.c'))
+diff --git a/hw/misc/trace-events b/hw/misc/trace-events
+index 1be0717c0c..419879fd65 100644
+--- a/hw/misc/trace-events
++++ b/hw/misc/trace-events
+@@ -362,3 +362,8 @@ aspeed_sli_read(uint64_t offset, unsigned int size, uint32_t data) "To 0x%" PRIx
+ aspeed_sliio_write(uint64_t offset, unsigned int size, uint32_t data) "To 0x%" PRIx64 " of size %u: 0x%" PRIx32
+ aspeed_sliio_read(uint64_t offset, unsigned int size, uint32_t data) "To 0x%" PRIx64 " of size %u: 0x%" PRIx32
+ 
++# flexcomm
++flexcomm_reset(void) ""
++flexcomm_irq(const char *id, uint8_t irq) "%s %d"
++flexcomm_reg_read(const char *devname, const char *regname, uint32_t addr, uint32_t val) "%s: %s[0x%04x] -> 0x%08x"
++flexcomm_reg_write(const char *dename, const char *regname, uint32_t addr, uint32_t val) "%s: %s[0x%04x] <- 0x%08x"
 -- 
 2.46.0.662.g92d0881bb0-goog
 

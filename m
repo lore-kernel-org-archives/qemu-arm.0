@@ -1,70 +1,70 @@
-Received: by 2002:a17:504:1bc1:b0:1be9:327d:8ee3 with SMTP id v1csp1112976njg;
-        Wed, 18 Sep 2024 18:41:06 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWAujy++j1Lpl1UqK5YqFN9P+uKhd5Z1PiyvPBHaA7MCUvmZM2gg6byVB0Hb5RUIgdnO62wMnfsrOQz5Q==@linaro.org
-X-Google-Smtp-Source: AGHT+IFQJ7zD3qiL9SoVYGnUyCDGIhbKn4xzt/EGyq0xhwkHES1TP9ccMfXI7FK1UPfkVY1EhSRE
-X-Received: by 2002:a05:622a:1103:b0:458:1f80:67d2 with SMTP id d75a77b69052e-45860316084mr314038761cf.33.1726710066314;
-        Wed, 18 Sep 2024 18:41:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1726710066; cv=none;
+Received: by 2002:a17:504:1bc1:b0:1be9:327d:8ee3 with SMTP id v1csp1113010njg;
+        Wed, 18 Sep 2024 18:41:12 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCU7UfzeUqcsqmKQs6sk+v7+TqMdc08s9nH/C2h4nsHbX5Pjhmz+NXMHRC8/o9qPlXZqCLJXrsPPXYmc3A==@linaro.org
+X-Google-Smtp-Source: AGHT+IFI2cUL4r0s67YZicT4jKw+05kYIw4ehnHJLO8VGIlI3Pav2gplgomF2YhkqYHv4c+axFlo
+X-Received: by 2002:ac8:5810:0:b0:458:355c:362c with SMTP id d75a77b69052e-4599d24c15bmr306457981cf.28.1726710072278;
+        Wed, 18 Sep 2024 18:41:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1726710072; cv=none;
         d=google.com; s=arc-20240605;
-        b=a02IWCY2kpMheH415lh3w9JP0sqN2sEK7xGunHfvIwDDgoXc1ssqFu1SCo5LbAB6Dw
-         n5sR+S2bfcSXpFBukcCS5Fo6H+jSxRL3SZ+7HYQMbCLB5p2X3FjG4SyocWbSy21FugWx
-         Six4gnJIIeoeKaX6ohH2iGwFFnMlHRCiG01SCWi0VswCIn+xMmx3XDqznNPyOTc9brC/
-         VHL4ayo+DsaNIOxpR4eC1Oi5KTcHRI9DYYTCIifTc1hZ8nZeJXOkJVSnzaRp/rrRQB3P
-         MuIwOOs0t0LsXXKzdny7swjNxvI6iiX2ExGyCbnQfWdFsGACDp4c/FUxLae/Fn+c4vRN
-         P5BA==
+        b=lAhqA9gnZYl26wAdTt03cELUyiJGADd9aapqTwYXFSwbnhERX95n3KD50OpCu/lux6
+         YHnEU+20wBNm/pgG7LEW20t5vK4cDA1JNkPttaaiK1GekTDytPPdVy1ebdCMWzF3+Xd5
+         25D7Fml3WmQ9cQQ/Spt9Wqd1FGtlTfYdBDRCcyoYrPtcWvIXp4WRWdHHGHNYEM4KcOrc
+         +qpRV0O1XCSlYNIICmUWYyI5v5s/wqElds8Y+AFTq4sUtaOZxUGNrWfIwenr5wmNMU32
+         naE5ersy1VF3VhAxOJERLxtRO235baA8siCFbIXrQM8PRowMmPAwQwjdq/0UaxY1bJeh
+         gH0Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=LjLY12BDDhqnKVVmfaqFrJ2OMiaMxVd9oNdkDhquPyE=;
+        bh=xeZBD1bhaPXXfpVBl6bXO9+N8o8sSsJomZIJ+mvOhMg=;
         fh=N9JXs6UlidM8EsUInW73fWjlYrhprlUzJ9DsuKSk+BQ=;
-        b=g2MRUB5wv2WB3basOGd41N+ZuBHCJU0dPE+K8XTAMXEiyAW2SlToc+SE6hzX+CTQMN
-         dBJQetBu1nil0Wqc8tib7WBIRBpoXZDWbXLXKyAQln14PV/6lhYHxpH0bITvJ94rCEmL
-         d400bqcvLBEOugafzN3j6duEz9SWO3b/QaStIph6kK842Ii+QLCN8iLw/KKNEQHGQIlW
-         UvyR5m3ot/+8I6owjMlMzBdKeLAi2ilONUUHk48eNY0DBnWNu7eba6x3cbDS7nHvBVLC
-         nq8YzQTF8M40uNwB0Qs3K/0ylw9kSVIf6sfWQ2ekaTNltv77juEhalbYw4BD/gqVk9Xg
-         tDRA==;
+        b=JCxpf4i9oxgX8vZ4FQPTpznTgsLVfo/g8r5WfiVZGhJ2c24ebP006SrtpRviT6ZYpO
+         NvbQppiTCN9Sna05jPqa+t9MrBbcPNWZL7gsSFrKfkvNoNfnNeP/k9RuY4/9jLmBo+ef
+         F7IJWad7tpm0ZhRG1FVkKwNVfzOHeUSqUxHx5ORl5MKwP19Ec4T9mgx9Mx8WoN+F1hSN
+         DbsKvbiiIH4EWkXRpETYgvqrQo/U62mlJyk1gdBaxdzYDNNmiAZc8VmtALeGAq4e+WnH
+         4Q5Kv62dwIpG5haKcRXHgKPP9k1zpnnE802oAOsjUnFWTenlZS5sVT1qaExB/86Qdrli
+         tp1w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b="H4sg3J7/";
+       dkim=pass header.i=@intel.com header.s=Intel header.b=WKFOLiAz;
        spf=pass (google.com: domain of zhao1.liu@intel.com designates 192.198.163.15 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 Return-Path: <zhao1.liu@intel.com>
 Received: from mgamail.intel.com (mgamail.intel.com. [192.198.163.15])
-        by mx.google.com with ESMTPS id d75a77b69052e-45b178ed4c3si7793001cf.389.2024.09.18.18.41.05
+        by mx.google.com with ESMTPS id d75a77b69052e-45b178ed4c3si7793001cf.389.2024.09.18.18.41.11
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 18 Sep 2024 18:41:06 -0700 (PDT)
+        Wed, 18 Sep 2024 18:41:12 -0700 (PDT)
 Received-SPF: pass (google.com: domain of zhao1.liu@intel.com designates 192.198.163.15 as permitted sender) client-ip=192.198.163.15;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b="H4sg3J7/";
+       dkim=pass header.i=@intel.com header.s=Intel header.b=WKFOLiAz;
        spf=pass (google.com: domain of zhao1.liu@intel.com designates 192.198.163.15 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1726710066; x=1758246066;
+  t=1726710072; x=1758246072;
   h=from:to:cc:subject:date:message-id:in-reply-to:
    references:mime-version:content-transfer-encoding;
-  bh=wx8cdMXy87jbp3iDhkGcf2ZrKApAXiC+ip9Awek7e04=;
-  b=H4sg3J7/8h9fIOrQXZ2gqJiz2lje4MubItHOAGLd8F4Q1A8DovnyhDp/
-   7oFqISUPnYDfbUna4SnTwwgIU5KioshijN9azLA0YJWZF7gS04M5M1D+a
-   ouLa7xYnEZ68mYR/L7F8q1Bx2b0g2ch6sKbUOCOJfzS7x+j390WwJHHpI
-   esObkElxFt+bPYeWadBJNo4afAZZwo2D0tIWx1eoZj2BftDK/2iQL1UFU
-   LuQUg53kwclYdMFRnYeVL081UCU5Le3153m3SfibQiHZcG1FVJcE228sf
-   SSS2UowoQM8QuHuaNHt8IWpmL0qgBGUUQPdmvdZ2+B8qvHdkF5wikIkOe
-   Q==;
-X-CSE-ConnectionGUID: wZyTTX58S6uzA5TApqUrCg==
-X-CSE-MsgGUID: xFnCmuQ9Qpm1djARxaw6og==
-X-IronPort-AV: E=McAfee;i="6700,10204,11199"; a="25798060"
+  bh=XSgqmMkHJizZc4N1izUEEkjh5Xf8Kwzu+lddFS/lH2U=;
+  b=WKFOLiAzje+bXnFYA98FVvjD7RCbpGoNuUA+yD4LrszRhxQ0GVJCpK6o
+   xk8EQXtP/3RooH2RwnwBDmkOL5YOSEYgvR4L/FvD9Qs7J8IVOdefanc8d
+   GhRs3cys1gwtlhJDmQYx+vNu6g/7TK2ewBxRp7JKNSuXW54dFe8fjeAbr
+   JQjJprlo3wECQyAA255v3+OfGWwtFZEft3n5Gr2ZFRrFI9+TFkQadQMln
+   /VpCjKWAfsmG3swX/ve0OWT6gylYStVkBLVcTYKpnAhRAa03zeYnRk4ht
+   ZcTXdR9oiPL9hNvvSCyG0aHRuCNc+zVNbD6QKkrQlJaTjNAqEhNcwoOg/
+   g==;
+X-CSE-ConnectionGUID: /vDre+B5TYOxmBQ5eEPm+w==
+X-CSE-MsgGUID: UIWM1gHJQgag7PBODg5Sqg==
+X-IronPort-AV: E=McAfee;i="6700,10204,11199"; a="25798076"
 X-IronPort-AV: E=Sophos;i="6.10,240,1719903600"; 
-   d="scan'208";a="25798060"
+   d="scan'208";a="25798076"
 Received: from orviesa006.jf.intel.com ([10.64.159.146])
-  by fmvoesa109.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Sep 2024 18:41:04 -0700
-X-CSE-ConnectionGUID: /9zU/3CdSJut5CeCqd6www==
-X-CSE-MsgGUID: 6BJoj00JRPy92lBgaz2/QQ==
+  by fmvoesa109.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Sep 2024 18:41:11 -0700
+X-CSE-ConnectionGUID: S1ZKAEwsS6+xTFUMRz/CIg==
+X-CSE-MsgGUID: 8BpNMzORS9K4jxsU5BqXGQ==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.10,240,1719903600"; 
-   d="scan'208";a="70058955"
+   d="scan'208";a="70058972"
 Received: from liuzhao-optiplex-7080.sh.intel.com ([10.239.160.36])
-  by orviesa006.jf.intel.com with ESMTP; 18 Sep 2024 18:40:58 -0700
+  by orviesa006.jf.intel.com with ESMTP; 18 Sep 2024 18:41:05 -0700
 From: Zhao Liu <zhao1.liu@intel.com>
 To: =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
 	Igor Mammedov <imammedo@redhat.com>,
@@ -93,153 +93,248 @@ Cc: qemu-devel@nongnu.org,
 	Dapeng Mi <dapeng1.mi@linux.intel.com>,
 	Yongwei Ma <yongwei.ma@intel.com>,
 	Zhao Liu <zhao1.liu@intel.com>
-Subject: [RFC v2 12/15] hw/i386: Allow i386 to create new CPUs in topology tree
-Date: Thu, 19 Sep 2024 09:55:30 +0800
-Message-Id: <20240919015533.766754-13-zhao1.liu@intel.com>
+Subject: [RFC v2 13/15] system/qdev-monitor: Introduce bus-finder interface for compatibility with bus-less plug behavior
+Date: Thu, 19 Sep 2024 09:55:31 +0800
+Message-Id: <20240919015533.766754-14-zhao1.liu@intel.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240919015533.766754-1-zhao1.liu@intel.com>
 References: <20240919015533.766754-1-zhao1.liu@intel.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: mRtT0Nrxv2yN
+X-TUID: dZXLqLYoxhCb
 
-For x86, CPU's apic ID represent its topology path and is the
-combination of topology sub IDs in each leavl.
+Currently, cpu and core is located by topology IDs when plugging.
 
-When x86 machine creates CPUs, to insert the CPU into topology tree, use
-apic ID to get topology sub IDs.
+On a topology tree, each topology device will has a CPU bus. Once cpu
+and core specify the bus_type, it's necessary to find accurate buses
+for them based on topology IDs (if bus=* is not set in -device).
 
-Then search the topology tree for the corresponding parent topology
-device and insert the CPU into the CPU bus of the parent device.
+Therefore, we need a way to use traditional topology IDs for locating
+specific bus in the topology tree. This is the bus-finder interface.
+
+With bus-finder, qdev-monitor can locate the bus based on device
+properties when "bus=*" is not specified.
 
 Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
 ---
- hw/i386/x86-common.c | 101 +++++++++++++++++++++++++++++++++++++++++--
- 1 file changed, 97 insertions(+), 4 deletions(-)
+ MAINTAINERS                  |  2 ++
+ include/monitor/bus-finder.h | 41 ++++++++++++++++++++++++++++++++
+ system/bus-finder.c          | 46 ++++++++++++++++++++++++++++++++++++
+ system/meson.build           |  1 +
+ system/qdev-monitor.c        | 41 ++++++++++++++++++++++++++++----
+ 5 files changed, 126 insertions(+), 5 deletions(-)
+ create mode 100644 include/monitor/bus-finder.h
+ create mode 100644 system/bus-finder.c
 
-diff --git a/hw/i386/x86-common.c b/hw/i386/x86-common.c
-index b21d2ab97349..a7f082b0a90b 100644
---- a/hw/i386/x86-common.c
-+++ b/hw/i386/x86-common.c
-@@ -53,14 +53,107 @@
- /* Physical Address of PVH entry point read from kernel ELF NOTE */
- static size_t pvh_start_addr;
- 
--static void x86_cpu_new(X86MachineState *x86ms, int64_t apic_id, Error **errp)
-+static int x86_cpu_get_topo_id(const X86CPUTopoIDs *topo_ids,
-+                               CpuTopologyLevel level)
- {
--    Object *cpu = object_new(MACHINE(x86ms)->cpu_type);
-+    switch (level) {
-+    case CPU_TOPOLOGY_LEVEL_THREAD:
-+        return topo_ids->smt_id;
-+    case CPU_TOPOLOGY_LEVEL_CORE:
-+        return topo_ids->core_id;
-+    case CPU_TOPOLOGY_LEVEL_MODULE:
-+        return topo_ids->module_id;
-+    case CPU_TOPOLOGY_LEVEL_DIE:
-+        return topo_ids->die_id;
-+    case CPU_TOPOLOGY_LEVEL_SOCKET:
-+        return topo_ids->pkg_id;
-+    default:
-+        g_assert_not_reached();
-+    }
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 03c1a13de074..4608c3c6db8c 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -3281,12 +3281,14 @@ F: hw/core/qdev*
+ F: hw/core/bus.c
+ F: hw/core/sysbus.c
+ F: include/hw/qdev*
++F: include/monitor/bus-finder.h
+ F: include/monitor/qdev.h
+ F: include/qom/
+ F: qapi/qom.json
+ F: qapi/qdev.json
+ F: scripts/coccinelle/qom-parent-type.cocci
+ F: scripts/qom-cast-macro-clean-cocci-gen.py
++F: system/bus-finder.c
+ F: system/qdev-monitor.c
+ F: stubs/qdev.c
+ F: qom/
+diff --git a/include/monitor/bus-finder.h b/include/monitor/bus-finder.h
+new file mode 100644
+index 000000000000..56f1e4791b66
+--- /dev/null
++++ b/include/monitor/bus-finder.h
+@@ -0,0 +1,41 @@
++/*
++ * Bus finder interface header
++ *
++ * Copyright (C) 2024 Intel Corporation.
++ *
++ * Author: Zhao Liu <zhao1.liu@intel.com>
++ *
++ * This work is licensed under the terms of the GNU GPL, version 2 or
++ * later.  See the COPYING file in the top-level directory.
++ */
 +
-+    return -1;
++#ifndef BUS_FINDER_H
++#define BUS_FINDER_H
++
++#include "hw/qdev-core.h"
++#include "qom/object.h"
++
++#define TYPE_BUS_FINDER "bus-finder"
++
++typedef struct BusFinderClass BusFinderClass;
++DECLARE_CLASS_CHECKERS(BusFinderClass, BUS_FINDER, TYPE_BUS_FINDER)
++#define BUS_FINDER(obj) INTERFACE_CHECK(BusFinder, (obj), TYPE_BUS_FINDER)
++
++typedef struct BusFinder BusFinder;
++
++/**
++ * BusFinderClass:
++ * @find_bus: Method to find bus.
++ */
++struct BusFinderClass {
++    /* <private> */
++    InterfaceClass parent_class;
++
++    /* <public> */
++    BusState *(*find_bus)(DeviceState *dev);
++};
++
++bool is_bus_finder_type(DeviceClass *dc);
++BusState *bus_finder_select_bus(DeviceState *dev);
++
++#endif /* BUS_FINDER_H */
+diff --git a/system/bus-finder.c b/system/bus-finder.c
+new file mode 100644
+index 000000000000..097291a96bf3
+--- /dev/null
++++ b/system/bus-finder.c
+@@ -0,0 +1,46 @@
++/*
++ * Bus finder interface
++ *
++ * Copyright (C) 2024 Intel Corporation.
++ *
++ * Author: Zhao Liu <zhao1.liu@intel.com>
++ *
++ * This work is licensed under the terms of the GNU GPL, version 2 or
++ * later.  See the COPYING file in the top-level directory.
++ */
++
++#include "qemu/osdep.h"
++
++#include "hw/qdev-core.h"
++#include "monitor/bus-finder.h"
++#include "qom/object.h"
++
++bool is_bus_finder_type(DeviceClass *dc)
++{
++    return !!object_class_dynamic_cast(OBJECT_CLASS(dc), TYPE_BUS_FINDER);
 +}
 +
-+typedef struct SearchCoreCb {
-+    const X86CPUTopoIDs *topo_ids;
-+    const CPUTopoState *parent;
-+} SearchCoreCb;
-+
-+static int x86_search_topo_parent(DeviceState *dev, void *opaque)
++BusState *bus_finder_select_bus(DeviceState *dev)
 +{
-+    CPUTopoState *topo = CPU_TOPO(dev);
-+    CpuTopologyLevel level = GET_CPU_TOPO_LEVEL(topo);
-+    SearchCoreCb *cb = opaque;
-+    int topo_id, index;
++    BusFinder *bf = BUS_FINDER(dev);
++    BusFinderClass *bfc = BUS_FINDER_GET_CLASS(bf);
 +
-+    topo_id = x86_cpu_get_topo_id(cb->topo_ids, level);
-+    index = cpu_topo_get_index(topo);
-+
-+    if (topo_id < 0) {
-+        error_report("Invalid %s-id: %d",
-+                     CpuTopologyLevel_str(level), topo_id);
-+        error_printf("Try to set the %s-id in [0-%d].\n",
-+                     CpuTopologyLevel_str(level),
-+                     cpu_topo_get_instances_num(topo) - 1);
-+        return TOPO_FOREACH_ERR;
++    if (bfc->find_bus) {
++        return bfc->find_bus(dev);
 +    }
 +
-+    if (topo_id == index) {
-+        if (level == CPU_TOPOLOGY_LEVEL_CORE) {
-+            cb->parent = topo;
-+            /* The error result could exit directly. */
-+            return TOPO_FOREACH_ERR;
-+        }
-+        return TOPO_FOREACH_CONTINUE;
-+    }
-+    return TOPO_FOREACH_END;
++    return NULL;
 +}
 +
-+static BusState *x86_find_topo_bus(MachineState *ms, X86CPUTopoIDs *topo_ids)
++static const TypeInfo bus_finder_interface_info = {
++    .name          = TYPE_BUS_FINDER,
++    .parent        = TYPE_INTERFACE,
++    .class_size = sizeof(BusFinderClass),
++};
++
++static void bus_finder_register_types(void)
 +{
-+    SearchCoreCb cb;
-+
-+    cb.topo_ids = topo_ids;
-+    cb.parent = NULL;
-+    qbus_walk_children(BUS(&ms->topo->bus), x86_search_topo_parent,
-+                       NULL, NULL, NULL, &cb);
-+
-+    if (!cb.parent) {
-+        return NULL;
-+    }
-+
-+    return BUS(cb.parent->bus);
++    type_register_static(&bus_finder_interface_info);
 +}
 +
-+static void x86_cpu_new(X86MachineState *x86ms, int index,
-+                        int64_t apic_id, Error **errp)
-+{
-+    MachineState *ms = MACHINE(x86ms);
-+    MachineClass *mc = MACHINE_GET_CLASS(ms);
-+    Object *cpu = object_new(ms->cpu_type);
-+    DeviceState *dev = DEVICE(cpu);
-+    BusState *bus = NULL;
-+
-+    /*
-+     * Once x86 machine supports topo_tree_supported, x86 CPU would
-+     * also have bus_type.
-+     */
-+    if (mc->smp_props.topo_tree_supported) {
-+        X86CPUTopoIDs topo_ids;
-+        X86CPUTopoInfo topo_info;
-+
-+        init_topo_info(&topo_info, x86ms);
-+        x86_topo_ids_from_apicid(apic_id, &topo_info, &topo_ids);
-+        bus = x86_find_topo_bus(ms, &topo_ids);
-+
-+        /* Only with dev->id, CPU can be inserted into topology tree. */
-+        dev->id = g_strdup_printf("%s[%d]", ms->cpu_type, index);
-+    }
++type_init(bus_finder_register_types)
+diff --git a/system/meson.build b/system/meson.build
+index a296270cb005..090716b81abd 100644
+--- a/system/meson.build
++++ b/system/meson.build
+@@ -9,6 +9,7 @@ specific_ss.add(when: 'CONFIG_SYSTEM_ONLY', if_true: [files(
+ system_ss.add(files(
+   'balloon.c',
+   'bootdevice.c',
++  'bus-finder.c',
+   'cpus.c',
+   'cpu-throttle.c',
+   'cpu-timers.c',
+diff --git a/system/qdev-monitor.c b/system/qdev-monitor.c
+index 44994ea0e160..457dfd05115e 100644
+--- a/system/qdev-monitor.c
++++ b/system/qdev-monitor.c
+@@ -19,6 +19,7 @@
  
-     if (!object_property_set_uint(cpu, "apic-id", apic_id, errp)) {
-         goto out;
-     }
--    qdev_realize(DEVICE(cpu), NULL, errp);
-+    qdev_realize(dev, bus, errp);
- 
- out:
-     object_unref(cpu);
-@@ -111,7 +204,7 @@ void x86_cpus_init(X86MachineState *x86ms, int default_cpu_version)
- 
-     possible_cpus = mc->possible_cpu_arch_ids(ms);
-     for (i = 0; i < ms->smp.cpus; i++) {
--        x86_cpu_new(x86ms, possible_cpus->cpus[i].arch_id, &error_fatal);
-+        x86_cpu_new(x86ms, i, possible_cpus->cpus[i].arch_id, &error_fatal);
-     }
+ #include "qemu/osdep.h"
+ #include "hw/sysbus.h"
++#include "monitor/bus-finder.h"
+ #include "monitor/hmp.h"
+ #include "monitor/monitor.h"
+ #include "monitor/qdev.h"
+@@ -589,6 +590,16 @@ static BusState *qbus_find(const char *path, Error **errp)
+     return bus;
  }
  
++static inline bool qdev_post_find_bus(DeviceClass *dc)
++{
++    return is_bus_finder_type(dc);
++}
++
++static inline BusState *qdev_find_bus_post_device(DeviceState *dev)
++{
++    return bus_finder_select_bus(dev);
++}
++
+ /* Takes ownership of @id, will be freed when deleting the device */
+ const char *qdev_set_id(DeviceState *dev, char *id, Error **errp)
+ {
+@@ -630,6 +641,7 @@ DeviceState *qdev_device_add_from_qdict(const QDict *opts,
+     char *id;
+     DeviceState *dev = NULL;
+     BusState *bus = NULL;
++    bool post_bus = false;
+ 
+     driver = qdict_get_try_str(opts, "driver");
+     if (!driver) {
+@@ -656,11 +668,15 @@ DeviceState *qdev_device_add_from_qdict(const QDict *opts,
+             return NULL;
+         }
+     } else if (dc->bus_type != NULL) {
+-        bus = qbus_find_recursive(sysbus_get_default(), NULL, dc->bus_type);
+-        if (!bus || qbus_is_full(bus)) {
+-            error_setg(errp, "No '%s' bus found for device '%s'",
+-                       dc->bus_type, driver);
+-            return NULL;
++        if (qdev_post_find_bus(dc)) {
++            post_bus = true;             /* Wait for bus-finder to arbitrate. */
++        } else {
++            bus = qbus_find_recursive(sysbus_get_default(), NULL, dc->bus_type);
++            if (!bus || qbus_is_full(bus)) {
++                error_setg(errp, "No '%s' bus found for device '%s'",
++                           dc->bus_type, driver);
++                return NULL;
++            }
+         }
+     }
+ 
+@@ -722,6 +738,21 @@ DeviceState *qdev_device_add_from_qdict(const QDict *opts,
+         goto err_del_dev;
+     }
+ 
++    if (post_bus) {
++        bus = qdev_find_bus_post_device(dev);
++        if (!bus) {
++            error_setg(errp, "No proper '%s' bus found for device '%s'",
++                       dc->bus_type, driver);
++            goto err_del_dev;
++        }
++
++        if (phase_check(PHASE_MACHINE_READY) && !qbus_is_hotpluggable(bus)) {
++            error_setg(errp, "Bus '%s' does not support hotplugging",
++                       bus->name);
++            goto err_del_dev;
++        }
++    }
++
+     if (!qdev_realize(dev, bus, errp)) {
+         goto err_del_dev;
+     }
 -- 
 2.34.1

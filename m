@@ -1,250 +1,876 @@
-Received: by 2002:a17:505:42a7:b0:1be9:327d:8ee3 with SMTP id rt7csp322979njb;
-        Thu, 19 Sep 2024 09:53:11 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCXAjUpKLEYqZ2njF8bgpDKK4VL5eFCT7dS5Qis5+mvdswVUvIr4+VTIePXAy6ffRjGJvSdT8OvHfNsEeA==@linaro.org
-X-Google-Smtp-Source: AGHT+IFMGtQxysX8lTXdgZSPffA3SltHKgRsRDuSEfkk7ZbVYfnWp/3A4OCeYPBYDeb2cq9H/Gfb
-X-Received: by 2002:a05:690c:6a03:b0:6d3:be51:6d03 with SMTP id 00721157ae682-6dfeed8e97fmr2110907b3.23.1726764791317;
-        Thu, 19 Sep 2024 09:53:11 -0700 (PDT)
-Return-Path: <kvm+bounces-27182-alex.bennee=linaro.org@vger.kernel.org>
-Received: from am.mirrors.kernel.org (am.mirrors.kernel.org. [147.75.80.249])
-        by mx.google.com with ESMTPS id af79cd13be357-7acb091142bsi222929685a.786.2024.09.19.09.53.10
+Received: by 2002:a17:505:42a7:b0:1be9:327d:8ee3 with SMTP id rt7csp464268njb;
+        Thu, 19 Sep 2024 14:56:02 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUXIQjAZPx4nX7gEkaAT/PgDHxiovl8wwTgybE4m1oOeQWaPUYTvjZfLIqGp37hfqxFDXmQD/b4BP+YRw==@linaro.org
+X-Google-Smtp-Source: AGHT+IGmJYW1Ixm1Dc/34Fyqn3EBYNypQnH3uXIcpfwj8Hfy+bFoWJTCQUO6On9doYVjz4cCiSbz
+X-Received: by 2002:ac8:5792:0:b0:44f:fb77:74ce with SMTP id d75a77b69052e-45b20555e22mr13094021cf.47.1726782962659;
+        Thu, 19 Sep 2024 14:56:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1726782962; cv=none;
+        d=google.com; s=arc-20240605;
+        b=Xu+m0g+aYKHGDENUyiSKP/PFCdHhj1vnE3e07n/uZjJ5t4aHKwEoRtDlgiP4hfvPlh
+         bV7Skc0m793nyGV6bRf39BHn4NR0HL4lbzDx9yCJu0dIvizkWyiKWTsIzpCTcwhAq+yt
+         NXnfCdPeiftWSz8KZ1SgniRmv1LJJfz0qAn1tqDiX3VZYtHj95mzjCHJw8w0a70OPCBc
+         8tDiE8ayO3GD8QlpEyDsW7DDISJ6ppwIZEO9ebNrjA2ixi7er2/jYviPqyKaYWuPh+b5
+         FOa9ED2zlumPKz7Md+PvH+1aTYvYKBUGUdJAB5IOk56Dn0xL93DRaj4gWaV3g/SrOFTq
+         Rw8w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=wOZKPsLQhjVmA/ktzeb0fPOUMvgu/CM8Woz9bkG0fLo=;
+        fh=es1JgkpFRDmmY9P13QrzwgPQpKz2xvCFArAP5qRiBOw=;
+        b=dbAxt2W7WcFgumBLbnT1TGht4mPS/i2oRBgfuIHbtpro6nv/CiIRssgHU7nzQFijGs
+         U0bEInAhNHF3zbg4k44cMy65fNTdsSKkTPwd6Gu3/jQJo1h7GQXCgTAsnkNNnULFkOLm
+         /uku56BV98MH1raQPjfOdy1Vc7QFBOP3KdNrMiPlZypUGEW+C1JH4fQ9VkhWcA3CcR9F
+         wJWZK+Af7HRNG7MGA5aaYSjEr9iRUwww7I+uDSBrN0lE88WWolhlHgqKcLfzrXS3FBCg
+         MTcmrL9g6SdomCdsnfsKF1GsEWk1W7Er7RM+tHKPXDmI9cD+eNHvl/q2BUZU+W0piDT1
+         zp5A==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=mayIddGt;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d75a77b69052e-45b1786ad4csi26938561cf.150.2024.09.19.14.56.02
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 19 Sep 2024 09:53:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm+bounces-27182-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) client-ip=147.75.80.249;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 19 Sep 2024 14:56:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@oracle.com header.s=corp-2023-11-20 header.b=WKkvD0u9;
-       dkim=pass header.i=@oracle.onmicrosoft.com header.s=selector2-oracle-onmicrosoft-com header.b=bCC4LJC7;
-       arc=fail (signature failed);
-       spf=pass (google.com: domain of kvm+bounces-27182-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="kvm+bounces-27182-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=oracle.com
-Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by am.mirrors.kernel.org (Postfix) with ESMTPS id C66841F23E18
-	for <alex.bennee@linaro.org>; Thu, 19 Sep 2024 16:53:09 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 665C81A0AE0;
-	Thu, 19 Sep 2024 16:53:08 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=oracle.com header.i=@oracle.com header.b="WKkvD0u9";
-	dkim=pass (1024-bit key) header.d=oracle.onmicrosoft.com header.i=@oracle.onmicrosoft.com header.b="bCC4LJC7"
-Received: from mx0b-00069f02.pphosted.com (mx0b-00069f02.pphosted.com [205.220.177.32])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 52B94194C8D
-	for <kvm@vger.kernel.org>; Thu, 19 Sep 2024 16:53:06 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=fail smtp.client-ip=205.220.177.32
-ARC-Seal:i=2; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1726764788; cv=fail; b=nixuQP+MjbIHnZ8xmV9hm1iLi0F7poeS2HbtrSAA48imAhQWHP0fGQgsUAL/ASeFxkHubARRtBynmpPIw/KsV2AEs18wLXYSTwkYVSoJ6o3IKbAYRAkbTA7wfj1BTwmSv9bnqA3+6kA28Na058n3BRSaKLslnIbI4ovq3CvQ2bM=
-ARC-Message-Signature:i=2; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1726764788; c=relaxed/simple;
-	bh=faypXQfRjjKo7nSmC3roCfOMFOgVUJIGUIAswE120x8=;
-	h=Message-ID:Date:From:Subject:To:Cc:References:In-Reply-To:
-	 Content-Type:MIME-Version; b=kTJ+EnSLX20/Fs+iBl8eF4RC6bLZ05k/t3xkn8pYngo1lslfZCF09eMTVoU4eg4qgd6m2NRnnRoky7PYmA1UZ8OMXEDZxlLwoE37ZUzGt65NeV4wb56XxCypa7QSLDi4gBeWM5NC1M9nCuHvFu4Q58cU9MjplGoFlKMRmVqNPwQ=
-ARC-Authentication-Results:i=2; smtp.subspace.kernel.org; dmarc=pass (p=reject dis=none) header.from=oracle.com; spf=pass smtp.mailfrom=oracle.com; dkim=pass (2048-bit key) header.d=oracle.com header.i=@oracle.com header.b=WKkvD0u9; dkim=pass (1024-bit key) header.d=oracle.onmicrosoft.com header.i=@oracle.onmicrosoft.com header.b=bCC4LJC7; arc=fail smtp.client-ip=205.220.177.32
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=reject dis=none) header.from=oracle.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=oracle.com
-Received: from pps.filterd (m0246631.ppops.net [127.0.0.1])
-	by mx0b-00069f02.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 48JEr6bA001479;
-	Thu, 19 Sep 2024 16:52:47 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=
-	message-id:date:from:subject:to:cc:references:in-reply-to
-	:content-type:content-transfer-encoding:mime-version; s=
-	corp-2023-11-20; bh=c7XjqE/0UN2GXbpfV3mmNT7XJdmBnNJ6bnfSAYbUfok=; b=
-	WKkvD0u9p9MRf9Ds9xtXqEP9WqfXSoybAAVrtA2tXCH30m8m8Ntp9uNQeQiM2tyi
-	zBIJK8csGSMqsNLV3Bel9cR38pJjhPeB9MnTCXZG7POCCf/5y02PhTqFaDXUWl5L
-	6Jqa3OS0T4NWCQpGLkyWHA8D2RQJzB/5hifs21uLoU5DO2uIydEMYP/AkpK6mb4/
-	Oso1malX67GVL7/d9dH6a5yFiPYCJrXrUYqdzAxyXC6RMfx1vD/WXB6G1i/RBrkh
-	RVF5OW0gE2toiQakJCA+H0tGFJtqrmPnzWvPhqF4qsooRyKS57NUKxBdi5BgPqIK
-	SLAluFK5i7H6Qp8yAuFlWQ==
-Received: from iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (iadpaimrmta03.appoci.oracle.com [130.35.103.27])
-	by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 41n3rx4hgy-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Thu, 19 Sep 2024 16:52:46 +0000 (GMT)
-Received: from pps.filterd (iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
-	by iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (8.18.1.2/8.18.1.2) with ESMTP id 48JGcO7H014907;
-	Thu, 19 Sep 2024 16:52:46 GMT
-Received: from nam02-sn1-obe.outbound.protection.outlook.com (mail-sn1nam02lp2040.outbound.protection.outlook.com [104.47.57.40])
-	by iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTPS id 41nyg6br04-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Thu, 19 Sep 2024 16:52:46 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=AHYGpgeAOPIdGuIMXvss+piTGl9/vcTfOqcR2DpfHDNWauCB2gIhrldmRZLGcxaCMlW73TdP4ATriKaD+0+0LS69LyDc9QwC650kImWLraqY4e0TIo+IelcYVa12XfQVW0TvrJ/eGWMYzJLX4jme0CrkXjWBy0Fv6kSbiXuyWfQ/uUgDQZA8N9RW12rjDHlORKTnT5KCPfq0CIBkxB4njdY7MofEpLU7tLI7zHoum+J0wSO0YvWcld9ZFK7Cq1GfijxMKbmMPaTESURxldE6Fqmy+x++hrlRST2+L5NoJg/MsysiLps0TdmLDklDRrTEzkXe8oBLHUYNl+5JZ3gCsA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=c7XjqE/0UN2GXbpfV3mmNT7XJdmBnNJ6bnfSAYbUfok=;
- b=UQOTJnvDhypv8i0l6hYGPkpKzf8RxHDCbjU2R6tq8au/vpObJp+Q4bQb71wZankBAfroa4/A2MnbKFAat815OsHKQNxyDQqXpaG5IdRjsRej7lcg5SBsTtV6zr/uu00iAKkcq7G+sWirY3O4bBmNRnq1/uJfpgcomL55Uyqxb/H0GfP2DkTG6OFbDqtzgWJPNB28gDyq/uqcOo+mSCcHwxeZFyHRSnmTdkOA4zp+pv/NvmMsozQBPfonPaVqkwYeTTCWiObx9p5XcWlWD1ziC2hW6G9O5FSDx9cLaIhAXt7dukNKkuXmo9G0YLuHGwYEuvzDAt7pN2tSoHrDhJ9SKg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
- dkim=pass header.d=oracle.com; arc=none
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=mayIddGt;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1srP7v-0004O8-39; Thu, 19 Sep 2024 17:55:51 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <strahinjapjankovic@gmail.com>)
+ id 1srP7r-0004MV-8C; Thu, 19 Sep 2024 17:55:47 -0400
+Received: from mail-lf1-x12c.google.com ([2a00:1450:4864:20::12c])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <strahinjapjankovic@gmail.com>)
+ id 1srP7n-0005fd-Tb; Thu, 19 Sep 2024 17:55:46 -0400
+Received: by mail-lf1-x12c.google.com with SMTP id
+ 2adb3069b0e04-5365c512b00so1673665e87.3; 
+ Thu, 19 Sep 2024 14:55:41 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=c7XjqE/0UN2GXbpfV3mmNT7XJdmBnNJ6bnfSAYbUfok=;
- b=bCC4LJC7iLmNDflam8+xP+rFL5HR1GTR0kJOUEIGEAhGZQwjzR7nL4rvSJMpLe4UGP1aJFRBcb2PnkuP/idm0UWbNtkjc8R7SjpN7oncneg6+hp2gIv/YF4Ps4vWp/mqGyo9lP8HDkPMnySR/VVdVZjT8/VdLCfRPghaVFqDIHw=
-Received: from CH3PR10MB7329.namprd10.prod.outlook.com (2603:10b6:610:12c::16)
- by SN4PR10MB5576.namprd10.prod.outlook.com (2603:10b6:806:207::9) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7982.22; Thu, 19 Sep
- 2024 16:52:43 +0000
-Received: from CH3PR10MB7329.namprd10.prod.outlook.com
- ([fe80::f238:6143:104c:da23]) by CH3PR10MB7329.namprd10.prod.outlook.com
- ([fe80::f238:6143:104c:da23%4]) with mapi id 15.20.8005.006; Thu, 19 Sep 2024
- 16:52:43 +0000
-Message-ID: <0ef808b0-839d-4078-90cb-d3d56c1f4a71@oracle.com>
-Date: Thu, 19 Sep 2024 18:52:37 +0200
-User-Agent: Mozilla Thunderbird
-From: William Roche <william.roche@oracle.com>
-Subject: Re: [RFC RESEND 0/6] hugetlbfs largepage RAS project
-To: David Hildenbrand <david@redhat.com>, pbonzini@redhat.com,
-        peterx@redhat.com, philmd@linaro.org, marcandre.lureau@redhat.com,
-        berrange@redhat.com, thuth@redhat.com, richard.henderson@linaro.org,
-        peter.maydell@linaro.org, mtosatti@redhat.com, qemu-devel@nongnu.org
-Cc: kvm@vger.kernel.org, qemu-arm@nongnu.org, joao.m.martins@oracle.com
-References: <20240910090747.2741475-1-william.roche@oracle.com>
- <20240910100216.2744078-1-william.roche@oracle.com>
- <ec3337f7-3906-4a1b-b153-e3d5b16685b6@redhat.com>
- <9f9a975e-3a04-4923-b8a5-f1edbed945e6@oracle.com>
- <cf587c8b-3894-4589-bfea-be5db70e81f3@redhat.com>
- <966bf4bf-6928-44a3-b452-d2847d06bb25@oracle.com>
-Content-Language: en-US, fr
-In-Reply-To: <966bf4bf-6928-44a3-b452-d2847d06bb25@oracle.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-ClientProxiedBy: LO4P123CA0104.GBRP123.PROD.OUTLOOK.COM
- (2603:10a6:600:191::19) To CH3PR10MB7329.namprd10.prod.outlook.com
- (2603:10b6:610:12c::16)
-Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
+ d=gmail.com; s=20230601; t=1726782940; x=1727387740; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=wOZKPsLQhjVmA/ktzeb0fPOUMvgu/CM8Woz9bkG0fLo=;
+ b=mayIddGtLnZreae7nJyp5yKi2K0cOnzb+5e+zB9EO8rReM/D9raRM0Hd0OFvO6QQ15
+ XSGtsmeVY3ffBThkvqPgHKjQbYRRsdVVMDHfy2LhPlACKtdR3EZWwSXivm8OOdPEunn6
+ iHuO5ROiW0fh/7wJjVOrHV1RlJNiFdmnf5xSobG3BLZn5gEyvlUOyKzHfT7Adc7jDbRK
+ +qAddzJPWW4YNUNnBcwgf96X79IWS/Hk1cM2F0mPZeQVsKjRKuPKl24X8MW2FR6PJZxj
+ DN3A+QTT4dYr1LLBcIwfhNNZopLhfCGLahUDXtGaoeFtpI9HrPoylrfVDA8tqGN0cerQ
+ paIA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1726782940; x=1727387740;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=wOZKPsLQhjVmA/ktzeb0fPOUMvgu/CM8Woz9bkG0fLo=;
+ b=XHLVL0DRObLiJDHtX8ScYztCGR1xdcoJisiWL+2kTpxul6GkyR0a/aZBDLr6ZqZmQd
+ PCzzJ5/lf8gcFcAk4TvDgOhrFUp0I9/OgxHU+aFhyjvFOdMKZLOWW/nrGUwtfxhFBkGQ
+ AX8KPJBJNAAOCF7V9WLVrZxummjdJgy4QQHrLEx/R/EpaHWHQu3hBMLIATuY/3kAqs6U
+ 8Ek8vSNnoRb13TylelofKokmAt9msrAq5z6O1XLOFmwodlIqiIwx36XvFVQpWyJb80h6
+ lTxWJ9kOHRSRqMWIZzP2gOvuOJsfgBs0oPteGhneyJKYNSJE8jc5piNrRT4Kse0FkoxL
+ Os3w==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUWnbNRP18R3NYHPwCzNWEyTgS3T5aI1BaKI3kUZ/Le0hM1up/fGhJe2VNrFRz34LI238N9+SuPNw==@nongnu.org
+X-Gm-Message-State: AOJu0YyxslHa2MyI6vkc1mumI3gXJB32J0X2U5masyOzi48cDEsXADoa
+ 7P6JWd0m4Cxqw2gBkxiRddpy4PxZAij6DTeCrDm4Dq+JXShFsiCj
+X-Received: by 2002:a05:6512:32c8:b0:536:54db:ddd0 with SMTP id
+ 2adb3069b0e04-536ac179fdamr495126e87.0.1726782939435; 
+ Thu, 19 Sep 2024 14:55:39 -0700 (PDT)
+Received: from penguin.lxd (c-d17271d5.018-186-73746f22.bbcust.telenor.se.
+ [213.113.114.209]) by smtp.gmail.com with ESMTPSA id
+ 2adb3069b0e04-536870969e7sm1940056e87.123.2024.09.19.14.55.38
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 19 Sep 2024 14:55:38 -0700 (PDT)
+From: Strahinja Jankovic <strahinjapjankovic@gmail.com>
+X-Google-Original-From: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
+To: Beniamino Galvani <b.galvani@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>, qemu-arm@nongnu.org
+Cc: qemu-devel@nongnu.org, Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
+Subject: [PATCH] {hw/ssi,docs/system/arm}: Allwinner A10 SPI emulation
+Date: Thu, 19 Sep 2024 23:55:25 +0200
+Message-Id: <20240919215525.22398-1-strahinja.p.jankovic@gmail.com>
+X-Mailer: git-send-email 2.39.5
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: CH3PR10MB7329:EE_|SN4PR10MB5576:EE_
-X-MS-Office365-Filtering-Correlation-Id: 6a82550e-7beb-43a5-fe4a-08dcd8cb7ae1
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam:
-	BCL:0;ARA:13230040|366016|376014|7416014|1800799024|921020;
-X-Microsoft-Antispam-Message-Info:
-	=?utf-8?B?R3YwbGdBRVprb0J3WWpTdlh2OVdnN2h1SXpXVmlqTytzU3IyTFl2OFIwWWZT?=
- =?utf-8?B?WHlFQmFFcXh4RUhnUm41VWh2elRNM2F0aDljaTRybHJHZGFCVTNWOU5yajk5?=
- =?utf-8?B?Szl3aVI1ZTkwVnlrTGZmY05YUWtpTzRpR3dnZThlMUdZWCtpeDRIeGs0Vk0v?=
- =?utf-8?B?THRNWjMxZ3oyakk3Rk95b3R6RFZ6elkvV3lOUUZaeWl0bnp1LzJhNFlUTUZW?=
- =?utf-8?B?ZjRiQWR5bFpEd0hNK000c1NBM04xMG5STGgvenh0Uk9tK0Rtc2RyUmF3amJz?=
- =?utf-8?B?YTVIYUh4dkplZlBVR1pmcjFRNmJWbnFxR0xvZUhLd2tRWXdhWkwvVDFzY29C?=
- =?utf-8?B?K3RhRkh5TlVaQVFETFozOFdPYk1veVZIVTYvaFZoTE1XRWVRM1JONFAvV2xt?=
- =?utf-8?B?b3FuZGh1T0U5VXF6SS9iT2dlWHZkWFk1ZU1GWkYwbTFOM0RlaUNnV3J0UVMz?=
- =?utf-8?B?ZkttN0tUOUFMbTU4c1B3ZmY5cGxYVE8wTVhGTWhRZWZCampKOVdFanVsdHBL?=
- =?utf-8?B?L3oxTTRSRzZsR1d1OE1xNkhIdjh2RGtFckV2UGZGajNGWGxROFpkdE5SYUNH?=
- =?utf-8?B?cHZ5YnBCS2VYS3BkaDhyT0JKWC9KVlBnbXdnVjlsVHR2UUFtNGRpNHBZN0ZS?=
- =?utf-8?B?eEQ1RnV1VjBJcG1WU1p6bndaaVpBc0NrNGtuZmE0MzJJLzV5QVpCcW1IK0FY?=
- =?utf-8?B?TTQzNU02VDFjbFE4bjEyUjljRFA2dE85bUpyb0NjVW1SK2lZUEFQbnpZTWtT?=
- =?utf-8?B?eFV5NmpYZ3FFNDFoc1FyaytuNmJrRFJ4T3hWUDJsQk52anRVNXZJSHA4U05y?=
- =?utf-8?B?b2xsREdGRFpnQ3N0WkU4enJ5N2pOWjlybkttc3R4bUQyVkZ2YTZrWnFJSE9D?=
- =?utf-8?B?bE5GdFNQeFh1MjlJMWwvRExuYUdpVDRNL2JKeE9GVGtGWVJMUDc1YUhvTHNx?=
- =?utf-8?B?LzVmbDVrYTRJOCsxZklCZldWSm9lSWZiMlZFWFI0a1dJZG1neW0xMHBRZ1g0?=
- =?utf-8?B?ekRZMExQTElGdmJieHQxTk5UVGRGOXBKYzcrU0syamdqV2hyV0phaUpLK09a?=
- =?utf-8?B?ZGt1MGVlZlprT3NOOUZvU2VxM0phRnZ2NnlmSGs2bTJqdlFTbU9jYVlZTUp0?=
- =?utf-8?B?SGVMY3BWVm9WbkJySG82VVY4SDNvNlNMdGZwUjVHMXpyNmx4WGYwZHZFSTVn?=
- =?utf-8?B?VjlZYy95QTJoWlFFWnhOY2RJTk5FMVN1UXA0ckM3Rm16S28zQVVUZjNjTkgz?=
- =?utf-8?B?aGdZNFBWcXpYYUJzNmNhUFExdnJMcSs5ZTI0RnVnK3RwZkNUU29GZTZZK0oz?=
- =?utf-8?B?WFNQMXlmWDBTTFl2WjZJOE5MamlPVkx6cHdvQ0YwZGNkb2VXTm1MczJ2R1JE?=
- =?utf-8?B?Q3JjVVdiNThmSmJpQTlCbFE1b1VDMCtIK1Iyb0ZWMlJJbEdVMFJkMHcxZ0Ix?=
- =?utf-8?B?TGMvN0wzS2kvYXZaWEZ0T1BFcE1RT1pSdzJPSndvVzJibmVhYTBDVEF0bzVs?=
- =?utf-8?B?TnNvZnpQNkpUbGY3UmtzdDJBc2E0OUtyUytWcWVrcTBhaUgwV0xxSUJ3ZWhs?=
- =?utf-8?B?VDI1UEh0WEgxMkZmUDhYRlhPUEY1d2NlRFhRQ2Q5bit5cWg5TlhUTDkrcERn?=
- =?utf-8?B?aUNOb00vanRWdmY0V0VPSnM4R0M5RVFsSkJNSkpJM2p3TzlyN1Q1ZkxEMnYv?=
- =?utf-8?B?dTBMd1VwT0phUkxwZ0JjRmRaamlkUUJ1QXVpZ2I5QUwya0VQRi9Ea2I2cUVl?=
- =?utf-8?Q?YclUy6BK8PQcbGYlqbYV4f4Gfj6kz0FSdOnhtIG?=
-X-Forefront-Antispam-Report:
-	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:CH3PR10MB7329.namprd10.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(376014)(7416014)(1800799024)(921020);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0:
-	=?utf-8?B?SWJTK2c3U1NwR00wY2VDUi9GbFhNa1JEQ2dwUlhoWjd0K1BCRk1ZdTRqNUpa?=
- =?utf-8?B?ZGhJUCtxZithckVvQkFCcmoxcmhrN1ZabCtuRlM4WU5EOGpVYW4xY21qQTRp?=
- =?utf-8?B?eG9zamhBcnNieUhJbjM4cjJOYlNhbzRyUEV3QVlhQ21RdXZmWXFWSUlFNEQv?=
- =?utf-8?B?Y1VPTFk5RG9EMXkyU2tUa0JZVFFMdVRkU09hOTQ5VWx2ZzQwd012Qi85cnFH?=
- =?utf-8?B?WUpEcWx6c2ZYT2xvdGJXcmE2MFUrcGZwS1l0RjdWOEhrdWMwSlpKd09FUGRR?=
- =?utf-8?B?K0dIQTVLdFVEUnozMGZZazc1TzVJOElKaTkzZkJyRFI3RkI2Rk0zV1pQSEg2?=
- =?utf-8?B?ejI3VWszVms0dGxnMW1aVS9ONmZKYVZDQ3lFUXhmWGpDa0J2emdnZHhLSjFV?=
- =?utf-8?B?djlHNmJ6bi9IWWVqS1hmN2t2Z1VaQ0xTM1NZT3FyODl1U1h0c0JHakNlLzk3?=
- =?utf-8?B?TW9FTlM0K2J4YjJWZlBaRWVteWE2L3NrbVpHYXB1TllsUHpReHRNdDNqZlJr?=
- =?utf-8?B?cnhiMmRLOGFQM1JQVXJxNGNWMzJ2aFgydWhFNHEvZU5jNUdJakZZeWpHb0xa?=
- =?utf-8?B?cVJHeWtTS2o3eVJmdHRTM3hNTzFuMVlyaG9RSXI1Y0ZXWkdCaVdmRXRUTUs3?=
- =?utf-8?B?ZjJXQy8vaG5SeENnSXBZSENWSTNKV3ZieDh1dHdGa2YwRlhuR1hYdlpqNkpF?=
- =?utf-8?B?U08yZ3BlSUxnUjJRT2kzSlFPUU5NakxJcVg5ZzRjWVAwU3cram9adVFyaXRq?=
- =?utf-8?B?VkFNMU1lRGl1VFV0S05BdlZ6TFV2S0hNWXc3d1Q5N1BWK1dGUXd2aEtDeG5x?=
- =?utf-8?B?eVVpS3VGSVdTOGNpdTFSWGwwcE9SS3dvNXpSSDd1OFVZSkRHZE5lVHpiSWpK?=
- =?utf-8?B?UEs5blNZSVFUMi8xcjdlck9hOTFJL0gyZlZhdGpYOUNaeHBCbUpKandYWkJw?=
- =?utf-8?B?T0lEOTA5NXZlZk1CYWE2OGxkcW96Nlpjc3k2NytnM0JPTXVkRjYxakM4bkxE?=
- =?utf-8?B?b1N1NmZpVjA1M2VZWjlTM2VMWngvT1FFNkpaNGJLRzZvRU12MFQ3VzBRNFJ3?=
- =?utf-8?B?d0FzMGVMSVlmeXluVTFFVGxEbThaK2dTRGlOdmthK0s3UVhxdU1CRFBkOThJ?=
- =?utf-8?B?SFBEVldxbmxZMUluQWxjUUJlcmhOb0pQRmZmNUZReEUxOTAvejJHS1ljUUFP?=
- =?utf-8?B?Y280QzZ2TFBub3ZlM0dWRkNHZlFwa2lKSGxCSXR4RDF5RXJqVXZRbkcwOVZn?=
- =?utf-8?B?SWhxY29YcWUyUm90cnBEQzNDSnhoSXFjOTVFdW9ROGljV2NnMW9vYTB0dUtF?=
- =?utf-8?B?aDYxUHN2eWxXbzBIRFVvZUxEU3VjMmtqYnRlMTRINHZISnJxaUFVeiswL1lS?=
- =?utf-8?B?R2N6aXp4VkdPd0lBdis1ZlNRVDQ5SG5IRkpVcGpFbDRUN05kZE80VGJrZGl5?=
- =?utf-8?B?cXlQbjNLOC9PRTNRUDFSZTVGNjdacytweVhQTW44Snd0T1plU3NKenc1RDlr?=
- =?utf-8?B?Vm9vYWkrS291SzF0djF5R2hMdXRsU0FBa21VVVNCY2Y5bWRhV3FWWmROcll3?=
- =?utf-8?B?T0p4RkpNVGxHeEROdW8vaCtOSDlQeXhNTlhySG0zaXhmSnpXTFlkMVNDeW1r?=
- =?utf-8?B?ZkhGcFBJOWsxdWxNeEYyRDFNKzI0aGFaZEpTbE5BUTVqQkQrblBxTG9VN3U2?=
- =?utf-8?B?NWM1eDhTSk9XdmNlR0JXY3hKd042dnpFcjg0MFVTeFJwajdMZFU0YmQwNWtH?=
- =?utf-8?B?RmZDbUxvZWFGczUwRElDMjZrNEdkcUZlUm5oSzFsY0hvQzZiSzBiUVh6NGZQ?=
- =?utf-8?B?WGw1RmY1aXF2WlZ6WXZzRmNtaEpVNWhSU0dFczNJdlJQWlJNdnd0VHAxczU3?=
- =?utf-8?B?ODdGZngzZ1FoSzNoazBqL1h6aVdMY1hVRlE1YnEyeXdJVHJSbEViVDdDNG1j?=
- =?utf-8?B?NEs1Z01DMVhuSGJMdmZiMWNpaGNQYmJ3dkYvaXBTNkNUUE1zV2FaR2Z5aEVu?=
- =?utf-8?B?aUUzYy8wd3FOOUxMaUhJWmF0RkJzMCtzTlVWaHNWK2FqczRzUENZdFAxc2NQ?=
- =?utf-8?B?Y1YxeVhrNTcwL2loWG1iRnh0aXRtYWY3KzhMdXNkOU5PRlh4S0lteVIzTVRM?=
- =?utf-8?Q?LcvWZTMCOqqUA84Ckea33GbkW?=
-X-MS-Exchange-AntiSpam-ExternalHop-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-ExternalHop-MessageData-0:
-	o9wQWl3Hvznem3hHmvXCWnSkPrAu57kcvWjwDSO2gA8rngC8Y52uyNjX/jOheN5nhYMGginaZEdvSJTwJnowbVr6AIxtihmO7AUThpkCx5R5K+O2YmV4lLw5IUgln6cUWW4dJ9pI9JmZ/udmBCz1NUCpTRENOVS83KmIv/WuS1CLxqtofqBr4Orw3fhtZ+syAfmEgs4kr9UWOk7K+a6sw8PXe0MdECrVX0QMLmy+WD8UbNahYgfhZf2s0a+Kht35be66r1OhJrZN9V5wPw84O9+jjfG69X7Q8Rv4qBC6ehQ6swyj6OUKEdmqqrx2cehlyf6Xi+7VBlEqxuaI7nKK3VOe+ZIEJewelucWP9WoKhqokP49DsT5WWaiBWbz6GgMltZVZ/tcUFzE2o9ZWJO8b0joxf5p70LGgTavTsjKDfueZQOMOoqy8CUs1sU9hzjJa0FSPleA1ZISH2z5aVGtORNtrRQsgDNRqVt29bOKsfuWfk69nv3kaHESvcR1zZZPXI19c9ssFEDfyZ1IBgcRXeqUF+5tQgDiVQuQYXPznf0FROfaRmTNr40v3zsMuS3pZiDaei8v9V4T+/T94Q2qiYQh7RGJPFZLPEy6Ct247I4=
-X-OriginatorOrg: oracle.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 6a82550e-7beb-43a5-fe4a-08dcd8cb7ae1
-X-MS-Exchange-CrossTenant-AuthSource: CH3PR10MB7329.namprd10.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 19 Sep 2024 16:52:43.3872
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: eQMXeudDJJSCbREdPO/CioXPo3aPh2QiFEUJLp2aKJUSmu+8BzlyGDmkeAeSQaMzViYwcuhdXToIDH8SVB6qczps/4DyjYJhoBO/oJhlOGM=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN4PR10MB5576
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1051,Hydra:6.0.680,FMLib:17.12.60.29
- definitions=2024-09-19_14,2024-09-19_01,2024-09-02_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0 bulkscore=0 adultscore=0
- suspectscore=0 mlxlogscore=999 phishscore=0 malwarescore=0 mlxscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2408220000
- definitions=main-2409190111
-X-Proofpoint-GUID: v5MGujXWxfVxnohx3sttuxlBprkglymJ
-X-Proofpoint-ORIG-GUID: v5MGujXWxfVxnohx3sttuxlBprkglymJ
-X-TUID: Ih8Bm6UslSaL
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::12c;
+ envelope-from=strahinjapjankovic@gmail.com; helo=mail-lf1-x12c.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: MrOH8ajgE/J7
 
-Hello David,
+This patch implements Allwinner A10 SPI controller emulation.
+Only master-mode functionality is implemented.
 
-I hope my last week email answered your interrogations about:
-     - retrieving the valid data from the lost hugepage
-     - the need of smaller pages to replace a failed large page
-     - the interaction of memory error and VM migration
-     - the non-symmetrical access to a poisoned memory area after a recovery
-       Qemu would be able to continue to access the still valid data
-       location of the formerly poisoned hugepage, but any other entity
-       mapping the large page would not be allowed to use the location.
+Since U-Boot and Linux SPI drivers for Allwinner A10 perform only
+byte-wide CPU access (no DMA) to the peripheral, the emulated
+controller does not implement DMA control and supports only byte-wide
+access.
 
-I understand that this last item _is_ some kind of "inconsistency".
-So if I want to make sure that a "shared" memory region (used for vhost-user
-processes, vfio or ivshmem) is not recovered, how can I identify what 
-region(s)
-of a guest memory could be used for such a shared location ?
-Is there a way for qemu to identify the memory locations that have been 
-shared ?
+Docs are also updated for Cubieboard to indicate SPI availability.
 
-Could you please let me know if there is an entry point I should consider ?
+Signed-off-by: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
+---
+ docs/system/arm/cubieboard.rst     |   1 +
+ hw/arm/Kconfig                     |   1 +
+ hw/arm/allwinner-a10.c             |   8 +
+ hw/ssi/Kconfig                     |   4 +
+ hw/ssi/allwinner-a10-spi.c         | 534 +++++++++++++++++++++++++++++
+ hw/ssi/meson.build                 |   1 +
+ hw/ssi/trace-events                |  10 +
+ include/hw/arm/allwinner-a10.h     |   2 +
+ include/hw/ssi/allwinner-a10-spi.h |  56 +++
+ 9 files changed, 617 insertions(+)
+ create mode 100644 hw/ssi/allwinner-a10-spi.c
+ create mode 100644 include/hw/ssi/allwinner-a10-spi.h
 
-Thanks in advance for your feedback.
-William.
+diff --git a/docs/system/arm/cubieboard.rst b/docs/system/arm/cubieboard.rst
+index 58c4a2d3ea..90d24c73a1 100644
+--- a/docs/system/arm/cubieboard.rst
++++ b/docs/system/arm/cubieboard.rst
+@@ -15,4 +15,5 @@ Emulated devices:
+ - USB controller
+ - SATA controller
+ - TWI (I2C) controller
++- SPI controller
+ - Watchdog timer
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index 1ad60da7aa..933b0a059c 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -398,6 +398,7 @@ config ALLWINNER_A10
+     select ALLWINNER_WDT
+     select ALLWINNER_EMAC
+     select ALLWINNER_I2C
++    select ALLWINNER_A10_SPI
+     select AXP2XX_PMU
+     select SERIAL
+     select UNIMP
+diff --git a/hw/arm/allwinner-a10.c b/hw/arm/allwinner-a10.c
+index 57d5d80159..30852dd038 100644
+--- a/hw/arm/allwinner-a10.c
++++ b/hw/arm/allwinner-a10.c
+@@ -35,6 +35,7 @@
+ #define AW_A10_PIC_REG_BASE     0x01c20400
+ #define AW_A10_PIT_REG_BASE     0x01c20c00
+ #define AW_A10_UART0_REG_BASE   0x01c28000
++#define AW_A10_SPI0_BASE        0x01c05000
+ #define AW_A10_EMAC_BASE        0x01c0b000
+ #define AW_A10_EHCI_BASE        0x01c14000
+ #define AW_A10_OHCI_BASE        0x01c14400
+@@ -80,6 +81,8 @@ static void aw_a10_init(Object *obj)
+ 
+     object_initialize_child(obj, "i2c0", &s->i2c0, TYPE_AW_I2C);
+ 
++    object_initialize_child(obj, "spi0", &s->spi0, TYPE_AW_A10_SPI);
++
+     for (size_t i = 0; i < AW_A10_NUM_USB; i++) {
+         object_initialize_child(obj, "ehci[*]", &s->ehci[i],
+                                 TYPE_PLATFORM_EHCI);
+@@ -195,6 +198,11 @@ static void aw_a10_realize(DeviceState *dev, Error **errp)
+     sysbus_mmio_map(SYS_BUS_DEVICE(&s->i2c0), 0, AW_A10_I2C0_BASE);
+     sysbus_connect_irq(SYS_BUS_DEVICE(&s->i2c0), 0, qdev_get_gpio_in(dev, 7));
+ 
++    /* SPI */
++    sysbus_realize(SYS_BUS_DEVICE(&s->spi0), &error_fatal);
++    sysbus_mmio_map(SYS_BUS_DEVICE(&s->spi0), 0, AW_A10_SPI0_BASE);
++    sysbus_connect_irq(SYS_BUS_DEVICE(&s->spi0), 0, qdev_get_gpio_in(dev, 10));
++
+     /* WDT */
+     sysbus_realize(SYS_BUS_DEVICE(&s->wdt), &error_fatal);
+     sysbus_mmio_map_overlap(SYS_BUS_DEVICE(&s->wdt), 0, AW_A10_WDT_BASE, 1);
+diff --git a/hw/ssi/Kconfig b/hw/ssi/Kconfig
+index 8d180de7cf..1bd56463c1 100644
+--- a/hw/ssi/Kconfig
++++ b/hw/ssi/Kconfig
+@@ -28,3 +28,7 @@ config BCM2835_SPI
+ config PNV_SPI
+     bool
+     select SSI
++
++config ALLWINNER_A10_SPI
++    bool
++    select SSI
+diff --git a/hw/ssi/allwinner-a10-spi.c b/hw/ssi/allwinner-a10-spi.c
+new file mode 100644
+index 0000000000..ea44ae46a3
+--- /dev/null
++++ b/hw/ssi/allwinner-a10-spi.c
+@@ -0,0 +1,534 @@
++/*
++ *  Allwinner SPI Bus Serial Interface Emulation
++ *
++ *  Copyright (C) 2024 Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
++ *
++ *  This program is free software; you can redistribute it and/or modify it
++ *  under the terms of the GNU General Public License as published by the
++ *  Free Software Foundation; either version 2 of the License, or
++ *  (at your option) any later version.
++ *
++ *  This program is distributed in the hope that it will be useful, but WITHOUT
++ *  ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ *  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
++ *  for more details.
++ *
++ *  You should have received a copy of the GNU General Public License along
++ *  with this program; if not, see <http://www.gnu.org/licenses/>.
++ *
++ * SPDX-License-Identifier: MIT
++ */
++
++#include "qemu/osdep.h"
++#include "hw/irq.h"
++#include "hw/ssi/allwinner-a10-spi.h"
++#include "migration/vmstate.h"
++#include "qemu/log.h"
++#include "qemu/module.h"
++#include "trace.h"
++
++/* Allwinner SPI memory map */
++#define SPI_RXDATA_REG   0x00 /* receive data register */
++#define SPI_TXDATA_REG   0x04 /* transmit data register */
++#define SPI_CTL_REG      0x08 /* control register */
++#define SPI_INTCTL_REG   0x0c /* interrupt control register */
++#define SPI_INT_STA_REG  0x10 /* interrupt status register */
++#define SPI_DMACTL_REG   0x14 /* DMA control register */
++#define SPI_WAIT_REG     0x18 /* wait clock counter register */
++#define SPI_CCTL_REG     0x1c /* clock rate control register */
++#define SPI_BC_REG       0x20 /* burst control register */
++#define SPI_TC_REG       0x24 /* transmit counter register */
++#define SPI_FIFO_STA_REG 0x28 /* FIFO status register */
++
++/* Data register */
++#define SPI_DATA_RESET 0
++
++/* Control register */
++#define SPI_CTL_SDC      (1 << 19)
++#define SPI_CTL_TP_EN    (1 << 18)
++#define SPI_CTL_SS_LEVEL (1 << 17)
++#define SPI_CTL_SS_CTRL  (1 << 16)
++#define SPI_CTL_DHB      (1 << 15)
++#define SPI_CTL_DDB      (1 << 14)
++#define SPI_CTL_SS       (3 << 12)
++#define SPI_CTL_SS_SHIFT (12)
++#define SPI_CTL_RPSM     (1 << 11)
++#define SPI_CTL_XCH      (1 << 10)
++#define SPI_CTL_RF_RST   (1 << 9)
++#define SPI_CTL_TF_RST   (1 << 8)
++#define SPI_CTL_SSCTL    (1 << 7)
++#define SPI_CTL_LMTF     (1 << 6)
++#define SPI_CTL_DMAMC    (1 << 5)
++#define SPI_CTL_SSPOL    (1 << 4)
++#define SPI_CTL_POL      (1 << 3)
++#define SPI_CTL_PHA      (1 << 2)
++#define SPI_CTL_MODE     (1 << 1)
++#define SPI_CTL_EN       (1 << 0)
++#define SPI_CTL_MASK     (0xFFFFFu)
++#define SPI_CTL_RESET    (0x0002001Cu)
++
++/* Interrupt control register */
++#define SPI_INTCTL_SS_INT_EN          (1 << 17)
++#define SPI_INTCTL_TX_INT_EN          (1 << 16)
++#define SPI_INTCTL_TF_UR_INT_EN       (1 << 14)
++#define SPI_INTCTL_TF_OF_INT_EN       (1 << 13)
++#define SPI_INTCTL_TF_E34_INT_EN      (1 << 12)
++#define SPI_INTCTL_TF_E14_INT_EN      (1 << 11)
++#define SPI_INTCTL_TF_FL_INT_EN       (1 << 10)
++#define SPI_INTCTL_TF_HALF_EMP_INT_EN (1 << 9)
++#define SPI_INTCTL_TF_EMP_INT_EN      (1 << 8)
++#define SPI_INTCTL_RF_UR_INT_EN       (1 << 6)
++#define SPI_INTCTL_RF_OF_INT_EN       (1 << 5)
++#define SPI_INTCTL_RF_E34_INT_EN      (1 << 4)
++#define SPI_INTCTL_RF_E14_INT_EN      (1 << 3)
++#define SPI_INTCTL_RF_FU_INT_EN       (1 << 2)
++#define SPI_INTCTL_RF_HALF_FU_INT_EN  (1 << 1)
++#define SPI_INTCTL_RF_RDY_INT_EN      (1 << 0)
++#define SPI_INTCTL_MASK               (0x37F7Fu)
++#define SPI_INTCTL_RESET              (0)
++
++/* Interrupt status register */
++#define SPI_INT_STA_INT_CBF (1 << 31)
++#define SPI_INT_STA_SSI     (1 << 17)
++#define SPI_INT_STA_TC      (1 << 16)
++#define SPI_INT_STA_TU      (1 << 14)
++#define SPI_INT_STA_TO      (1 << 13)
++#define SPI_INT_STA_TE34    (1 << 12)
++#define SPI_INT_STA_TE14    (1 << 11)
++#define SPI_INT_STA_TF      (1 << 10)
++#define SPI_INT_STA_THE     (1 << 9)
++#define SPI_INT_STA_TE      (1 << 8)
++#define SPI_INT_STA_RU      (1 << 6)
++#define SPI_INT_STA_RO      (1 << 5)
++#define SPI_INT_STA_RF34    (1 << 4)
++#define SPI_INT_STA_RF14    (1 << 3)
++#define SPI_INT_STA_RF      (1 << 2)
++#define SPI_INT_STA_RHF     (1 << 1)
++#define SPI_INT_STA_RR      (1 << 0)
++#define SPI_INT_STA_MASK    (0x80037F7Fu)
++#define SPI_INT_STA_RESET   (0x00001B00u)
++
++/* DMA control register - not implemented */
++#define SPI_DMACTL_RESET (0)
++
++/* Wait clock register */
++#define SPI_WAIT_REG_WCC_MASK (0xFFFFu)
++#define SPI_WAIT_RESET        (0)
++
++/* Clock control register - not implemented */
++#define SPI_CCTL_RESET (2)
++
++/* Burst count register */
++#define SPI_BC_BC_MASK (0xFFFFFFu)
++#define SPI_BC_RESET   (0)
++
++/* Transmi counter register */
++#define SPI_TC_WTC_MASK (0xFFFFFFu)
++#define SPI_TC_RESET    (0)
++
++/* FIFO status register */
++#define SPI_FIFO_STA_CNT_MASK     (0x7F)
++#define SPI_FIFO_STA_TF_CNT_SHIFT (16)
++#define SPI_FIFO_STA_RF_CNT_SHIFT (0)
++#define SPI_FIFO_STA_RESET        (0)
++
++#define REG_INDEX(offset)         (offset / sizeof(uint32_t))
++
++
++static const char *allwinner_a10_spi_get_regname(unsigned offset)
++{
++    switch (offset) {
++    case SPI_RXDATA_REG:
++        return "RXDATA";
++    case SPI_TXDATA_REG:
++        return "TXDATA";
++    case SPI_CTL_REG:
++        return "CTL";
++    case SPI_INTCTL_REG:
++        return "INTCTL";
++    case SPI_INT_STA_REG:
++        return "INT_STA";
++    case SPI_DMACTL_REG:
++        return "DMACTL";
++    case SPI_WAIT_REG:
++        return "WAIT";
++    case SPI_CCTL_REG:
++        return "CCTL";
++    case SPI_BC_REG:
++        return "BC";
++    case SPI_TC_REG:
++        return "TC";
++    case SPI_FIFO_STA_REG:
++        return "FIFO_STA";
++    default:
++        return "[?]";
++    }
++}
++
++static bool allwinner_a10_spi_is_enabled(AWA10SPIState *s)
++{
++    return s->regs[REG_INDEX(SPI_CTL_REG)] & SPI_CTL_EN;
++}
++
++static void allwinner_a10_spi_txfifo_reset(AWA10SPIState *s)
++{
++    fifo8_reset(&s->tx_fifo);
++    s->regs[REG_INDEX(SPI_INT_STA_REG)] |= (SPI_INT_STA_TE | SPI_INT_STA_TE14 |
++                                            SPI_INT_STA_THE | SPI_INT_STA_TE34);
++    s->regs[REG_INDEX(SPI_INT_STA_REG)] &= ~(SPI_INT_STA_TU | SPI_INT_STA_TO);
++}
++
++static void allwinner_a10_spi_rxfifo_reset(AWA10SPIState *s)
++{
++    fifo8_reset(&s->rx_fifo);
++    s->regs[REG_INDEX(SPI_INT_STA_REG)] &=
++        ~(SPI_INT_STA_RU | SPI_INT_STA_RO | SPI_INT_STA_RF | SPI_INT_STA_RR |
++          SPI_INT_STA_RHF | SPI_INT_STA_RF14 | SPI_INT_STA_RF34);
++}
++
++static uint8_t allwinner_a10_spi_selected_channel(AWA10SPIState *s)
++{
++    return (s->regs[REG_INDEX(SPI_CTL_REG)] & SPI_CTL_SS) >> SPI_CTL_SS_SHIFT;
++}
++
++static void allwinner_a10_spi_reset_hold(Object *obj, ResetType type)
++{
++    AWA10SPIState *s = AW_A10_SPI(obj);
++
++    s->regs[REG_INDEX(SPI_RXDATA_REG)] = SPI_DATA_RESET;
++    s->regs[REG_INDEX(SPI_TXDATA_REG)] = SPI_DATA_RESET;
++    s->regs[REG_INDEX(SPI_CTL_REG)] = SPI_CTL_RESET;
++    s->regs[REG_INDEX(SPI_INTCTL_REG)] = SPI_INTCTL_RESET;
++    s->regs[REG_INDEX(SPI_INT_STA_REG)] = SPI_INT_STA_RESET;
++    s->regs[REG_INDEX(SPI_DMACTL_REG)] = SPI_DMACTL_RESET;
++    s->regs[REG_INDEX(SPI_WAIT_REG)] = SPI_WAIT_RESET;
++    s->regs[REG_INDEX(SPI_CCTL_REG)] = SPI_CCTL_RESET;
++    s->regs[REG_INDEX(SPI_BC_REG)] = SPI_BC_RESET;
++    s->regs[REG_INDEX(SPI_TC_REG)] = SPI_TC_RESET;
++    s->regs[REG_INDEX(SPI_FIFO_STA_REG)] = SPI_FIFO_STA_RESET;
++
++    allwinner_a10_spi_txfifo_reset(s);
++    allwinner_a10_spi_rxfifo_reset(s);
++}
++
++static void allwinner_a10_spi_update_irq(AWA10SPIState *s)
++{
++    int level;
++
++    if (fifo8_is_empty(&s->rx_fifo)) {
++        s->regs[REG_INDEX(SPI_INT_STA_REG)] &= ~SPI_INT_STA_RR;
++    } else {
++        s->regs[REG_INDEX(SPI_INT_STA_REG)] |= SPI_INT_STA_RR;
++    }
++
++    if (fifo8_num_used(&s->rx_fifo) >= (AW_A10_SPI_FIFO_SIZE >> 2)) {
++        s->regs[REG_INDEX(SPI_INT_STA_REG)] |= SPI_INT_STA_RF14;
++    } else {
++        s->regs[REG_INDEX(SPI_INT_STA_REG)] &= ~SPI_INT_STA_RF14;
++    }
++
++    if (fifo8_num_used(&s->rx_fifo) >= (AW_A10_SPI_FIFO_SIZE >> 1)) {
++        s->regs[REG_INDEX(SPI_INT_STA_REG)] |= SPI_INT_STA_RHF;
++    } else {
++        s->regs[REG_INDEX(SPI_INT_STA_REG)] &= ~SPI_INT_STA_RHF;
++    }
++
++    if (fifo8_num_free(&s->rx_fifo) <= (AW_A10_SPI_FIFO_SIZE >> 2)) {
++        s->regs[REG_INDEX(SPI_INT_STA_REG)] |= SPI_INT_STA_RF34;
++    } else {
++        s->regs[REG_INDEX(SPI_INT_STA_REG)] &= ~SPI_INT_STA_RF34;
++    }
++
++    if (fifo8_is_full(&s->rx_fifo)) {
++        s->regs[REG_INDEX(SPI_INT_STA_REG)] |= SPI_INT_STA_RF;
++    } else {
++        s->regs[REG_INDEX(SPI_INT_STA_REG)] &= ~SPI_INT_STA_RF;
++    }
++
++    if (fifo8_is_empty(&s->tx_fifo)) {
++        s->regs[REG_INDEX(SPI_INT_STA_REG)] |= SPI_INT_STA_TE;
++    } else {
++        s->regs[REG_INDEX(SPI_INT_STA_REG)] &= ~SPI_INT_STA_TE;
++    }
++
++    if (fifo8_num_free(&s->tx_fifo) >= (AW_A10_SPI_FIFO_SIZE >> 2)) {
++        s->regs[REG_INDEX(SPI_INT_STA_REG)] |= SPI_INT_STA_TE14;
++    } else {
++        s->regs[REG_INDEX(SPI_INT_STA_REG)] &= ~SPI_INT_STA_TE14;
++    }
++
++    if (fifo8_num_free(&s->tx_fifo) >= (AW_A10_SPI_FIFO_SIZE >> 1)) {
++        s->regs[REG_INDEX(SPI_INT_STA_REG)] |= SPI_INT_STA_THE;
++    } else {
++        s->regs[REG_INDEX(SPI_INT_STA_REG)] &= ~SPI_INT_STA_THE;
++    }
++
++    if (fifo8_num_used(&s->tx_fifo) <= (AW_A10_SPI_FIFO_SIZE >> 2)) {
++        s->regs[REG_INDEX(SPI_INT_STA_REG)] |= SPI_INT_STA_TE34;
++    } else {
++        s->regs[REG_INDEX(SPI_INT_STA_REG)] &= ~SPI_INT_STA_TE34;
++    }
++
++    if (fifo8_is_full(&s->rx_fifo)) {
++        s->regs[REG_INDEX(SPI_INT_STA_REG)] |= SPI_INT_STA_TF;
++    } else {
++        s->regs[REG_INDEX(SPI_INT_STA_REG)] &= ~SPI_INT_STA_TF;
++    }
++
++    level = s->regs[REG_INDEX(SPI_INT_STA_REG)] &
++                    s->regs[REG_INDEX(SPI_INTCTL_REG)] ?
++                1 :
++                0;
++
++    qemu_set_irq(s->irq, level);
++
++    trace_allwinner_a10_spi_update_irq(level);
++}
++
++static void allwinner_a10_spi_flush_txfifo(AWA10SPIState *s)
++{
++    uint8_t tx;
++    uint8_t rx;
++    uint32_t burst_count = s->regs[REG_INDEX(SPI_BC_REG)];
++    uint32_t tx_burst = s->regs[REG_INDEX(SPI_TC_REG)];
++    trace_allwinner_a10_spi_burst_length(tx_burst);
++
++    trace_allwinner_a10_spi_flush_txfifo_begin(fifo8_num_used(&s->tx_fifo),
++                                               fifo8_num_used(&s->rx_fifo));
++
++    while (!fifo8_is_empty(&s->tx_fifo)) {
++        tx = fifo8_pop(&s->tx_fifo);
++        rx = 0;
++        bool fill_rx = true;
++
++        trace_allwinner_a10_spi_tx(tx);
++
++        /* Write one byte at a time */
++        rx = ssi_transfer(s->bus, tx);
++
++        trace_allwinner_a10_spi_rx(rx);
++
++        /* Check DHB here to determing if RX bytes should be stored */
++        if (s->regs[REG_INDEX(SPI_CTL_REG)] & SPI_CTL_DHB) {
++            /* Store rx bytes only after WTC transfers */
++            if (tx_burst > 0u) {
++                fill_rx = false;
++                tx_burst--;
++            }
++        }
++
++        if (fill_rx) {
++            if (fifo8_is_full(&s->rx_fifo)) {
++                s->regs[REG_INDEX(SPI_INT_STA_REG)] |= SPI_INT_STA_RF;
++            } else {
++                fifo8_push(&s->rx_fifo, rx);
++            }
++        }
++
++        allwinner_a10_spi_update_irq(s);
++
++        burst_count--;
++
++        if (burst_count == 0) {
++            s->regs[REG_INDEX(SPI_INT_STA_REG)] |= SPI_INT_STA_TC;
++            s->regs[REG_INDEX(SPI_CTL_REG)] &= ~SPI_CTL_XCH;
++            break;
++        }
++    }
++
++    if (fifo8_is_empty(&s->tx_fifo)) {
++        s->regs[REG_INDEX(SPI_INT_STA_REG)] |= SPI_INT_STA_TC;
++        s->regs[REG_INDEX(SPI_CTL_REG)] &= ~SPI_CTL_XCH;
++    }
++
++    trace_allwinner_a10_spi_flush_txfifo_end(fifo8_num_used(&s->tx_fifo),
++                                             fifo8_num_used(&s->rx_fifo));
++}
++
++static uint64_t allwinner_a10_spi_read(void *opaque, hwaddr offset,
++                                       unsigned size)
++{
++    uint32_t value = 0;
++    AWA10SPIState *s = opaque;
++    uint32_t index = offset >> 2;
++
++    if (offset > SPI_FIFO_STA_REG) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "[%s]%s: Bad register at offset 0x%" HWADDR_PRIx "\n",
++                      TYPE_AW_A10_SPI, __func__, offset);
++        return 0;
++    }
++
++    value = s->regs[index];
++
++    if (allwinner_a10_spi_is_enabled(s)) {
++        switch (offset) {
++        case SPI_RXDATA_REG:
++            if (fifo8_is_empty(&s->rx_fifo)) {
++                /* value is undefined */
++                value = 0xdeadbeef;
++            } else {
++                /* read from the RX FIFO */
++                value = fifo8_pop(&s->rx_fifo);
++            }
++            break;
++        case SPI_TXDATA_REG:
++            qemu_log_mask(LOG_GUEST_ERROR,
++                          "[%s]%s: Trying to read from TX FIFO\n",
++                          TYPE_AW_A10_SPI, __func__);
++
++            /* Reading from TXDATA gives 0 */
++            break;
++        case SPI_FIFO_STA_REG:
++            /* Read current tx/rx fifo data count */
++            value = fifo8_num_used(&s->tx_fifo) << SPI_FIFO_STA_TF_CNT_SHIFT |
++                    fifo8_num_used(&s->rx_fifo) << SPI_FIFO_STA_RF_CNT_SHIFT;
++        default:
++            break;
++        }
++
++        allwinner_a10_spi_update_irq(s);
++    }
++    trace_allwinner_a10_spi_read(allwinner_a10_spi_get_regname(offset), value);
++
++    return (uint64_t)value;
++}
++
++static void allwinner_a10_spi_write(void *opaque, hwaddr offset, uint64_t value,
++                                    unsigned size)
++{
++    AWA10SPIState *s = opaque;
++    uint32_t index = offset >> 2;
++    int i = 0;
++
++    if (offset > SPI_FIFO_STA_REG) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "[%s]%s: Bad register at offset 0x%" HWADDR_PRIx "\n",
++                      TYPE_AW_A10_SPI, __func__, offset);
++        return;
++    }
++
++    trace_allwinner_a10_spi_write(allwinner_a10_spi_get_regname(offset),
++                                  (uint32_t)value);
++
++    if (!allwinner_a10_spi_is_enabled(s)) {
++        /* Block is disabled */
++        if (offset != SPI_CTL_REG) {
++            /* Ignore access */
++            return;
++        }
++    }
++
++    switch (offset) {
++    case SPI_RXDATA_REG:
++        qemu_log_mask(LOG_GUEST_ERROR, "[%s]%s: Trying to write to RX FIFO\n",
++                      TYPE_AW_A10_SPI, __func__);
++        break;
++    case SPI_TXDATA_REG:
++        if (fifo8_is_full(&s->tx_fifo)) {
++            /* Ignore writes if queue is full */
++            break;
++        }
++
++        fifo8_push(&s->tx_fifo, (uint8_t)value);
++
++        break;
++    case SPI_INT_STA_REG:
++        /* Handle W1C bits - everything except SPI_INT_STA_INT_CBF. */
++        value &= ~SPI_INT_STA_INT_CBF;
++        s->regs[REG_INDEX(SPI_INT_STA_REG)] &= ~(value & SPI_INT_STA_MASK);
++        break;
++    case SPI_CTL_REG:
++        s->regs[REG_INDEX(SPI_CTL_REG)] = value;
++
++        for (i = 0; i < AW_A10_SPI_CS_LINES_NR; i++) {
++            qemu_set_irq(
++                s->cs_lines[i],
++                i == allwinner_a10_spi_selected_channel(s) ?
++                    !!(s->regs[REG_INDEX(SPI_CTL_REG)] & SPI_CTL_SS_LEVEL) :
++                    !(s->regs[REG_INDEX(SPI_CTL_REG)] & SPI_CTL_SSPOL));
++        }
++
++        if (s->regs[REG_INDEX(SPI_CTL_REG)] & SPI_CTL_XCH) {
++            /* Request to start emitting */
++            allwinner_a10_spi_flush_txfifo(s);
++        }
++        if (s->regs[REG_INDEX(SPI_CTL_REG)] & SPI_CTL_TF_RST) {
++            allwinner_a10_spi_txfifo_reset(s);
++            s->regs[REG_INDEX(SPI_CTL_REG)] &= ~SPI_CTL_TF_RST;
++        }
++        if (s->regs[REG_INDEX(SPI_CTL_REG)] & SPI_CTL_RF_RST) {
++            allwinner_a10_spi_rxfifo_reset(s);
++            s->regs[REG_INDEX(SPI_CTL_REG)] &= ~SPI_CTL_RF_RST;
++        }
++        break;
++    default:
++        s->regs[index] = value;
++        break;
++    }
++
++    allwinner_a10_spi_update_irq(s);
++}
++
++static const MemoryRegionOps allwinner_a10_spi_ops = {
++    .read = allwinner_a10_spi_read,
++    .write = allwinner_a10_spi_write,
++    .valid.min_access_size = 1,
++    .valid.max_access_size = 4,
++    .endianness = DEVICE_NATIVE_ENDIAN,
++};
++
++static const VMStateDescription allwinner_a10_spi_vmstate = {
++    .name = TYPE_AW_A10_SPI,
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .fields =
++        (const VMStateField[]){
++            VMSTATE_FIFO8(tx_fifo, AWA10SPIState),
++            VMSTATE_FIFO8(rx_fifo, AWA10SPIState),
++            VMSTATE_UINT32_ARRAY(regs, AWA10SPIState, AW_A10_SPI_REGS_NUM),
++            VMSTATE_END_OF_LIST() }
++};
++
++static void allwinner_a10_spi_realize(DeviceState *dev, Error **errp)
++{
++    AWA10SPIState *s = AW_A10_SPI(dev);
++    int i = 0;
++
++    memory_region_init_io(&s->iomem, OBJECT(s), &allwinner_a10_spi_ops, s,
++                          TYPE_AW_A10_SPI, AW_A10_SPI_IOSIZE);
++    sysbus_init_mmio(SYS_BUS_DEVICE(dev), &s->iomem);
++    sysbus_init_irq(SYS_BUS_DEVICE(dev), &s->irq);
++
++    s->bus = ssi_create_bus(dev, "spi");
++    for (i = 0; i < AW_A10_SPI_CS_LINES_NR; i++) {
++        sysbus_init_irq(SYS_BUS_DEVICE(dev), &s->cs_lines[i]);
++    }
++    fifo8_create(&s->tx_fifo, AW_A10_SPI_FIFO_SIZE);
++    fifo8_create(&s->rx_fifo, AW_A10_SPI_FIFO_SIZE);
++}
++
++static void allwinner_a10_spi_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++    ResettableClass *rc = RESETTABLE_CLASS(klass);
++
++    rc->phases.hold = allwinner_a10_spi_reset_hold;
++    dc->vmsd = &allwinner_a10_spi_vmstate;
++    dc->realize = allwinner_a10_spi_realize;
++    dc->desc = "Allwinner A10 SPI Controller";
++}
++
++static const TypeInfo allwinner_a10_spi_type_info = {
++    .name = TYPE_AW_A10_SPI,
++    .parent = TYPE_SYS_BUS_DEVICE,
++    .instance_size = sizeof(AWA10SPIState),
++    .class_init = allwinner_a10_spi_class_init,
++};
++
++static void allwinner_a10_spi_register_types(void)
++{
++    type_register_static(&allwinner_a10_spi_type_info);
++}
++
++type_init(allwinner_a10_spi_register_types)
+diff --git a/hw/ssi/meson.build b/hw/ssi/meson.build
+index b7ad7fca3b..0fb0b68617 100644
+--- a/hw/ssi/meson.build
++++ b/hw/ssi/meson.build
+@@ -1,3 +1,4 @@
++system_ss.add(when: 'CONFIG_ALLWINNER_A10_SPI', if_true: files('allwinner-a10-spi.c'))
+ system_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files('aspeed_smc.c'))
+ system_ss.add(when: 'CONFIG_MSF2', if_true: files('mss-spi.c'))
+ system_ss.add(when: 'CONFIG_NPCM7XX', if_true: files('npcm7xx_fiu.c', 'npcm_pspi.c'))
+diff --git a/hw/ssi/trace-events b/hw/ssi/trace-events
+index 089d269994..6c81d0b291 100644
+--- a/hw/ssi/trace-events
++++ b/hw/ssi/trace-events
+@@ -53,3 +53,13 @@ pnv_spi_rx_read_N2frame(void) ""
+ pnv_spi_shift_rx(uint8_t byte, uint32_t index) "byte = 0x%2.2x into RDR from payload index %d"
+ pnv_spi_sequencer_stop_requested(const char* reason) "due to %s"
+ pnv_spi_RDR_match(const char* result) "%s"
++
++# allwinner_a10_spi.c
++allwinner_a10_spi_update_irq(uint32_t level) "IRQ level is %d"
++allwinner_a10_spi_flush_txfifo_begin(uint32_t tx, uint32_t rx) "Begin: TX Fifo Size = %d, RX Fifo Size = %d"
++allwinner_a10_spi_flush_txfifo_end(uint32_t tx, uint32_t rx) "End: TX Fifo Size = %d, RX Fifo Size = %d"
++allwinner_a10_spi_burst_length(uint32_t len) "Burst length = %d"
++allwinner_a10_spi_tx(uint8_t byte) "write 0x%02x"
++allwinner_a10_spi_rx(uint8_t byte) "read 0x%02x"
++allwinner_a10_spi_read(const char* regname, uint32_t value) "reg[%s] => 0x%" PRIx32
++allwinner_a10_spi_write(const char* regname, uint32_t value) "reg[%s] <= 0x%" PRIx32
+diff --git a/include/hw/arm/allwinner-a10.h b/include/hw/arm/allwinner-a10.h
+index 67a9a17b86..e5815b0d12 100644
+--- a/include/hw/arm/allwinner-a10.h
++++ b/include/hw/arm/allwinner-a10.h
+@@ -12,6 +12,7 @@
+ #include "hw/misc/allwinner-a10-ccm.h"
+ #include "hw/misc/allwinner-a10-dramc.h"
+ #include "hw/i2c/allwinner-i2c.h"
++#include "hw/ssi/allwinner-a10-spi.h"
+ #include "hw/watchdog/allwinner-wdt.h"
+ #include "sysemu/block-backend.h"
+ 
+@@ -40,6 +41,7 @@ struct AwA10State {
+     AllwinnerAHCIState sata;
+     AwSdHostState mmc0;
+     AWI2CState i2c0;
++    AWA10SPIState spi0;
+     AwRtcState rtc;
+     AwWdtState wdt;
+     MemoryRegion sram_a;
+diff --git a/include/hw/ssi/allwinner-a10-spi.h b/include/hw/ssi/allwinner-a10-spi.h
+new file mode 100644
+index 0000000000..01ddbf74ab
+--- /dev/null
++++ b/include/hw/ssi/allwinner-a10-spi.h
+@@ -0,0 +1,56 @@
++/*
++ *  Allwinner SPI Bus Serial Interface registers definition
++ *
++ *  Copyright (C) 2024 Strahinja Jankovic. <strahinja.p.jankovic@gmail.com>
++ *
++ *  This program is free software; you can redistribute it and/or modify it
++ *  under the terms of the GNU General Public License as published by the
++ *  Free Software Foundation; either version 2 of the License, or
++ *  (at your option) any later version.
++ *
++ *  This program is distributed in the hope that it will be useful, but WITHOUT
++ *  ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ *  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
++ *  for more details.
++ *
++ *  You should have received a copy of the GNU General Public License along
++ *  with this program; if not, see <http://www.gnu.org/licenses/>.
++ *
++ */
++
++#ifndef ALLWINNER_A10_SPI_H
++#define ALLWINNER_A10_SPI_H
++
++#include "hw/ssi/ssi.h"
++#include "hw/sysbus.h"
++#include "qemu/fifo8.h"
++#include "qom/object.h"
++
++/** Size of register I/O address space used by SPI device */
++#define AW_A10_SPI_IOSIZE (0x1000)
++
++/** Total number of known registers */
++#define AW_A10_SPI_REGS_NUM    (AW_A10_SPI_IOSIZE / sizeof(uint32_t))
++#define AW_A10_SPI_FIFO_SIZE   (64)
++#define AW_A10_SPI_CS_LINES_NR (4)
++
++#define TYPE_AW_A10_SPI        "allwinner.spi"
++OBJECT_DECLARE_SIMPLE_TYPE(AWA10SPIState, AW_A10_SPI)
++
++struct AWA10SPIState {
++    /*< private >*/
++    SysBusDevice parent_obj;
++
++    /*< public >*/
++    MemoryRegion iomem;
++    SSIBus *bus;
++    qemu_irq irq;
++    qemu_irq cs_lines[AW_A10_SPI_CS_LINES_NR];
++
++    uint32_t regs[AW_A10_SPI_REGS_NUM];
++
++    Fifo8 rx_fifo;
++    Fifo8 tx_fifo;
++};
++
++#endif /* ALLWINNER_A10_SPI_H */
+-- 
+2.39.5
 

@@ -1,187 +1,174 @@
-Received: by 2002:a05:7022:f8d:b0:8a:132c:44a7 with SMTP id eg13csp86025dlb;
-        Wed, 18 Sep 2024 22:56:49 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCW5iHhG5vXPxDNCSTrmu5KlDC5A1R3CUFb3L1axhfLki9EoDWE3vLkQU+IQd6KyZ6/qssI0UtTMlnP8QQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IGY2TSKHqk5Q1yXLYkyEEiFy0AsyAiLtbFdcxIty1TnQkpALiI4YcdbqBHFIqo5Z53tTUYh
-X-Received: by 2002:ac8:7d02:0:b0:458:3ac9:11ed with SMTP id d75a77b69052e-45b1609a3dcmr32343861cf.25.1726725408735;
-        Wed, 18 Sep 2024 22:56:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1726725408; cv=none;
+Received: by 2002:a17:505:42a7:b0:1be9:327d:8ee3 with SMTP id rt7csp77621njb;
+        Thu, 19 Sep 2024 02:36:39 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWSAQbGAYbbhbxsvApMSeTyEYVyQBVDgZSdrUQhv8BkYQuAFfuLhaYIpMUmrAzGoi3i/QtHCBEAgtrdug==@linaro.org
+X-Google-Smtp-Source: AGHT+IHkn+W7Rn4auWra2uHNm5tp+uhPx7wzIvnTCUQqFKvavUFEv0kwZoGx/rlwJyuhfCYCT2dS
+X-Received: by 2002:a05:620a:2953:b0:7a9:c0f2:86c9 with SMTP id af79cd13be357-7a9e5ee22a8mr3487653585a.5.1726738599198;
+        Thu, 19 Sep 2024 02:36:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1726738599; cv=none;
         d=google.com; s=arc-20240605;
-        b=JGp2AsixqjV9t34+bTJ7weqzCzY+SsgO5WdaUpx1J8C+AY2HE4ogspNJTgBPkSv/K6
-         8Bd7KKp/9/+6nWpaVxmrQsl9ruDMJ/81dpm0+rE7MeBvBCCbGDyYUaUheELeUpDGwtGP
-         /r3GN+HJaIIEIkidE+d4Y5A/YKESnQQ47OinZn3lk77dv2z5sgTkHHe5t41uD0R/jkUu
-         byzYKYodZNhrPprbuONcRRp4bJyoXsgTPbqmgV2anDRhahj7Bpn7mHe483fwfNh/qPFA
-         rMgAZZnCbgLskLNDXUSX5CYWGyjcaatDnGtJnlZlle6l/SyI9+PjH4A1uKEymnbJlLL0
-         k+Lg==
+        b=Eb3xmqnpNhSiKEeGJWCdj47XuV2SrcaTgR6HXDibfIDrtqS+pQkVr2wi04NU7zN8Ut
+         oVIyOR36bbd69jfCYpYpqjnrtfEkse+KPBPEA9iWGNhX8dQqWRAjHtjfT7aCj4A6vxXY
+         17y0bFfgCG57BeldfWUZ2YqMfbG4flaO4h9H75UP+jXhjlF9gE2He63iCbkvZSRESfNQ
+         iAPZ7ALq+ECRIbn9DlkZrR2FDM5IcHDQlLO7T9q49QfefE+U0Jb4bHOH2UZq9kmPRnRo
+         4jz9kvaA9pbaYwdesAdorQ7yPGTTjd19KUHsXvNKKaTEZIVAQKKfzkoo6jkDPCnmQsMG
+         JrQg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=jYgY0be/ZfMboV1+zQaGeOUzGOdOxSNvqP3OXcgmMng=;
-        fh=33vV7fdwuF57f9/cQTMVCjJLx99l6PrD70Pt7L6JrPg=;
-        b=JOsUbF2L8rzI3eXjRNLlXYapnoeVAp3fz853tWfOQ95uNcJHXIA+Bz1d5aiHRDhGPP
-         QKuRXEhxobrZ8/XwN32ciVt3h853dHLi0KhKSFK7aOHkySCyvmE1AEx/LSicqvH5Ns6d
-         BIO9v4QSuOn59LjU4CBNeY7CgwfHBCUDJGBFxYBA2JldB2IzpS/Af84X/xF+Hbsy5sdD
-         KmfjPMT2zXU4X2+p+yl8zhLYwDQTRVSVVshVxx9RatgKH/ZSmHa2HKaGXaUlDWa4kgEI
-         5d7/7yIqfMg0kUOh/9prc7tEUg2JvV9P6Pe0QXlRH4WGPHGhWQCN23erP4DGjPGKmxhm
-         WwWg==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=lQk3wNDz3JKiyjh8ZbhDK1G2OFwi/dMyBXNc4TF75Ak=;
+        fh=3Iu91n8Rib5wGmtm5wC2aW5FPaj5ejjvkQfkCeF98oE=;
+        b=f6E4yWP9eu5EltISzw0MFI3iZ3vRNPjKANKyg76otAk/7kfjkkB8Kqg2waRBUoKDBT
+         JMEXEDKEXQflGVF9Vd7WepHLRkF8uS1daeHn/zOFCajYaUeQ+ANnLc654RFuB4MzISH0
+         IlAAkDPdlQzAmxymD9sdMnkIp1VQ19EOzuBhRt2sL5H5WJ/poqFqYR2OMZZC+GaAC1Ez
+         SLlo1OalxCKL4Kja8G4jZ0m3myInR8GbLtlEgKBwZ0Hq5eRgnFs2FMqS2iGkG+Ft1BNg
+         oGNyNLUqxmSx3Q9M+s6FOqcimqTT84doQHED2yAk8jrDuKl0KcSZq6fAMu1AHRu5CFzm
+         u0tg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=SwTwys4l;
-       spf=pass (google.com: domain of zhao1.liu@intel.com designates 192.198.163.15 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Return-Path: <zhao1.liu@intel.com>
-Received: from mgamail.intel.com (mgamail.intel.com. [192.198.163.15])
-        by mx.google.com with ESMTPS id d75a77b69052e-45b17878befsi11303901cf.163.2024.09.18.22.56.47
+       dkim=pass header.i=@linaro.org header.s=google header.b=O9pRIOY3;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id af79cd13be357-7acb07f8913si146137385a.134.2024.09.19.02.36.39
+        for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 18 Sep 2024 22:56:48 -0700 (PDT)
-Received-SPF: pass (google.com: domain of zhao1.liu@intel.com designates 192.198.163.15 as permitted sender) client-ip=192.198.163.15;
+        Thu, 19 Sep 2024 02:36:39 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=SwTwys4l;
-       spf=pass (google.com: domain of zhao1.liu@intel.com designates 192.198.163.15 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1726725409; x=1758261409;
-  h=from:to:cc:subject:date:message-id:in-reply-to:
-   references:mime-version:content-transfer-encoding;
-  bh=cQ08ivvbyToxE/NhN3+dCAQERQMlDYEq9vSrgiTrea4=;
-  b=SwTwys4lQdupoEm7YRdBLe6RnhtPjAoysi8gt1QBkmwXZ5D//FRnup/8
-   GOVs6UQm8yMcRQlYuZfKFQU4evY/AOsB0tx/fB0KnkHDAIHpxly2pv9ST
-   9sSjhGy32LGAIT8/lOVYovtPRc6dUIaKQ6pb25WfSR8Q7/n3e6QQ0YG8w
-   MoWqh7ikvV+ARBasRc3tHmzKvv1P+Ihuy3llydZn97ix/xDpHJtNYqZqT
-   aN/+5G+F0Ql59upV8b1JVNDXE9vvppLpg6Cl4s+i9wo/Pf9lp0+h3gqiz
-   +AYZ340cubu5uLgyXa3jv6eVmmWTCXrht8dQOJVBF55TStN+K9OaZry83
-   g==;
-X-CSE-ConnectionGUID: +qqg7egVTm6ioydQIoftlg==
-X-CSE-MsgGUID: OySC4nPVTPihg1brt+cENA==
-X-IronPort-AV: E=McAfee;i="6700,10204,11199"; a="25813792"
-X-IronPort-AV: E=Sophos;i="6.10,240,1719903600"; 
-   d="scan'208";a="25813792"
-Received: from fmviesa006.fm.intel.com ([10.60.135.146])
-  by fmvoesa109.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Sep 2024 22:56:47 -0700
-X-CSE-ConnectionGUID: rMNYl1sATnOo2bqgjGFlQw==
-X-CSE-MsgGUID: V3LeJGc2RIC+vnG1nDqGFA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.10,240,1719903600"; 
-   d="scan'208";a="69418845"
-Received: from liuzhao-optiplex-7080.sh.intel.com ([10.239.160.36])
-  by fmviesa006.fm.intel.com with ESMTP; 18 Sep 2024 22:56:41 -0700
-From: Zhao Liu <zhao1.liu@intel.com>
-To: =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
-	Igor Mammedov <imammedo@redhat.com>,
-	Eduardo Habkost <eduardo@habkost.net>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Yanan Wang <wangyanan55@huawei.com>,
-	"Michael S . Tsirkin" <mst@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Sergio Lopez <slp@redhat.com>,
-	Jason Wang <jasowang@redhat.com>,
-	Stefano Stabellini <sstabellini@kernel.org>,
-	Anthony PERARD <anthony@xenproject.org>,
-	Paul Durrant <paul@xen.org>,
-	"Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
-	Eric Blake <eblake@redhat.com>,
-	Markus Armbruster <armbru@redhat.com>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org,
-	kvm@vger.kernel.org,
-	qemu-arm@nongnu.org,
-	Zhenyu Wang <zhenyu.z.wang@intel.com>,
-	Dapeng Mi <dapeng1.mi@linux.intel.com>,
-	Yongwei Ma <yongwei.ma@intel.com>,
-	Zhao Liu <zhao1.liu@intel.com>
-Subject: [RFC v2 12/12] i386: Support custom topology for microvm, pc-i440fx and pc-q35
-Date: Thu, 19 Sep 2024 14:11:28 +0800
-Message-Id: <20240919061128.769139-13-zhao1.liu@intel.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20240919061128.769139-1-zhao1.liu@intel.com>
-References: <20240919061128.769139-1-zhao1.liu@intel.com>
+       dkim=pass header.i=@linaro.org header.s=google header.b=O9pRIOY3;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1srDaH-0000sX-Gd; Thu, 19 Sep 2024 05:36:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1srDaG-0000mK-0S
+ for qemu-arm@nongnu.org; Thu, 19 Sep 2024 05:36:20 -0400
+Received: from mail-lj1-x22b.google.com ([2a00:1450:4864:20::22b])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1srDaB-0007Jc-1M
+ for qemu-arm@nongnu.org; Thu, 19 Sep 2024 05:36:19 -0400
+Received: by mail-lj1-x22b.google.com with SMTP id
+ 38308e7fff4ca-2f74b6e1810so5215211fa.2
+ for <qemu-arm@nongnu.org>; Thu, 19 Sep 2024 02:36:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1726738572; x=1727343372; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=lQk3wNDz3JKiyjh8ZbhDK1G2OFwi/dMyBXNc4TF75Ak=;
+ b=O9pRIOY3Igm+0ZRZQqehu1U2bFkSHyUGoIFLPOTMVAtq8dYYyXR4jBCNZS7Eue8WXl
+ EVQla2fKOJnlpUXipUEdnMe2lW9tzhjO4jzFmCweTJa1LgZw7J0mpP2jPsaH++uuqFox
+ K7S96txrJS2TvHOrQ52oyeXsX+EY6h8cLX7ywt+86JE3NZFagH8yOqXWitgF5NbBU2Vw
+ E3o71hC3aaVdtPW+UtWv7FXrrIr8pvylRvqeB2H+BFMiNWWnT2U9zYZU2bzRUYOgfBFv
+ Au8ooq47HBriqAQNmQ5ye+b1pAPotFWT7seDK2A/KasjtrFwvzN63OvROa0dkAFzYRDp
+ Lu0w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1726738572; x=1727343372;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=lQk3wNDz3JKiyjh8ZbhDK1G2OFwi/dMyBXNc4TF75Ak=;
+ b=bJpcA/Pxpb1u87m/+5Sw1Vr2hkY1lRWY6sIUxjH4PjJ5UvFvIeIW7acFMBSCaQfOEE
+ Uchfkq7zgEBuTh/XtFzN7t95VYu5ercB757XqxMHlwNNnHwT5sPZLK+JthXeVYUEhg5i
+ sbTuYOZ1phCxjfmaslW1k9bgHArYe3N+7mh1ra33Abn+MZvy3YXv0jcMV4BnN9wnyKDR
+ t0lljXFbf6WcwWUYCsBKSK+bX9g8wsJxykyKs7BLfmAoDeYatjZRPeV34UVgWwEGrcQv
+ ZfRbS6+XnScHXM2QILTCGpAL55RKRZKboPpGKt3hRQQf7SMj2KThE7b35ZscDPbTQ/zR
+ MgmA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUTPxKJF2u4u7yASJ23l5GEfs33xj8owBdyIJ492i+jVwCWJ/yBr+q9FJyjaH8idLF72p6lxoMNVQ==@nongnu.org
+X-Gm-Message-State: AOJu0YyXPlk9apJAnjAETaTPBxYNw1QZlEkwAAr6M8OrxGDg7MCSqpLO
+ qPQQXVK2p2Dedmj8Kq9xQ2yn0F78cvTsWmXDUT+tdV3MJmD3Wak8YCWJvLmbO3H/FCOCaxdgC+1
+ csh1Reca5vS+DWaRGRYLPx+yUo+ZAYd5IQ6UHSQ==
+X-Received: by 2002:a05:6512:2345:b0:533:4689:973c with SMTP id
+ 2adb3069b0e04-53678fbaf3cmr11818141e87.23.1726738571865; Thu, 19 Sep 2024
+ 02:36:11 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-TUID: xG105WcuCN4b
+References: <20240918192254.3136903-1-tavip@google.com>
+ <20240918192254.3136903-9-tavip@google.com>
+ <Zus1YzMOZD1ppO-2@mail.minyard.net>
+ <CAGWr4cSvq+WnUQO3-8jyasQPhKGQCvzOYqRm5W8vRdhW9iU=xw@mail.gmail.com>
+ <ZutGsQglLtK7MtRB@mail.minyard.net>
+In-Reply-To: <ZutGsQglLtK7MtRB@mail.minyard.net>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 19 Sep 2024 10:36:00 +0100
+Message-ID: <CAFEAcA_ZUkz8xv_PP27nD_eRL18v0cU6A7K+K57b8ML-9pmodQ@mail.gmail.com>
+Subject: Re: [PATCH 08/25] hw/i2c: add support for flexcomm i2c
+To: corey@minyard.net
+Cc: Octavian Purdila <tavip@google.com>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, 
+ stefanst@google.com, pbonzini@redhat.com, marcandre.lureau@redhat.com, 
+ berrange@redhat.com, eduardo@habkost.net, luc@lmichel.fr, 
+ damien.hedde@dahe.fr, alistair@alistair23.me, thuth@redhat.com, 
+ philmd@linaro.org, jsnow@redhat.com, crosa@redhat.com, lvivier@redhat.com
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::22b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-lj1-x22b.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
+ T_SPF_HELO_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: TcwrKcmhmTJK
 
-With custom topology enabling, user could configure hyrid CPU topology
-from CLI.
+On Wed, 18 Sept 2024 at 22:31, Corey Minyard <corey@minyard.net> wrote:
+> Generally it's frowned upon to have a ton of extra stuff that's not
+> used.  I would think some is ok, like defining bits in registers that
+> aren't used yet, but I have no idea how all the enums below here
+> actually tie into anything.  I'm guessing these are just bitmasks into
+> registers, but really, it's a lot easier to read if you have something
+> like:
+>
+> /*
+>  * The I2C Master function enable. When disabled, the Master
+>  * configuration settings are not changed, but the Master function is
+>  * internally reset.
+>  */
+> #define FLEXCOMM_I2C_CFG_MSTEN (1 << 4)
 
-For example, create a Intel Core (P core) with 2 threads and 2 Intel
-Atom (E core) with single thread for PC machine:
+The FIELD macro already gives you that:
+  FIELD(FLEXCOMM_I2C_CFG, MSTEN, startbit, len);
+will define an R_FLEXCOMM_I2C_CFG_MSTEN_MASK (which is
+(1 << startbit) for the 'len == 1' case).
 
--smp maxsockets=1,maxdies=1,maxmodules=2,maxcores=2,maxthreads=2
--machine pc,custom-topo=on \
--device cpu-socket,id=sock0 \
--device cpu-die,id=die0,bus=sock0 \
--device cpu-module,id=mod0,bus=die0 \
--device cpu-module,id=mod1,bus=die0 \
--device x86-intel-core,id=core0,bus=mod0 \
--device x86-intel-atom,id=core1,bus=mod1 \
--device x86-intel-atom,id=core2,bus=mod1 \
--device host-x86_64-cpu,id=cpu0,socket-id=0,die-id=0,module-id=0,core-id=0,thread-id=0 \
--device host-x86_64-cpu,id=cpu1,socket-id=0,die-id=0,module-id=0,core-id=0,thread-id=1 \
--device host-x86_64-cpu,id=cpu2,socket-id=0,die-id=0,module-id=1,core-id=0,thread-id=0 \
--device host-x86_64-cpu,id=cpu3,socket-id=0,die-id=0,module-id=1,core-id=1,thread-id=0
+You can also set and read a 1 bit field the same as
+any other, with the FIELD_DP32/FIELD_EX32 macros, so
+you don't often need to directly use the MASK macro:
+  s->cfg = FIELD_DP32(s->cfg, CFG, MSTEN, 1);
+and
+  if (FIELD_EX32(s->cfg, CFG, MSTEN)) {
+     ...
+  }
 
-Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
----
- hw/i386/microvm.c    | 1 +
- hw/i386/pc_piix.c    | 1 +
- hw/i386/pc_q35.c     | 1 +
- hw/i386/x86-common.c | 6 ++++++
- 4 files changed, 9 insertions(+)
+The FIELD() macros are a bit unwieldy sometimes but the
+advantage over ad-hoc #defines is that they're consistent
+for every field in every register.
 
-diff --git a/hw/i386/microvm.c b/hw/i386/microvm.c
-index dc9b21a34230..bd03b6946e6c 100644
---- a/hw/i386/microvm.c
-+++ b/hw/i386/microvm.c
-@@ -671,6 +671,7 @@ static void microvm_class_init(ObjectClass *oc, void *data)
-     mc->reset = microvm_machine_reset;
- 
-     mc->post_init = microvm_machine_state_post_init;
-+    mc->smp_props.custom_topo_supported = true;
- 
-     /* hotplug (for cpu coldplug) */
-     mc->get_hotplug_handler = microvm_get_hotplug_handler;
-diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
-index c1db2f3129cf..9c696a226858 100644
---- a/hw/i386/pc_piix.c
-+++ b/hw/i386/pc_piix.c
-@@ -473,6 +473,7 @@ static void pc_i440fx_machine_options(MachineClass *m)
-     m->no_floppy = !module_object_class_by_name(TYPE_ISA_FDC);
-     m->no_parallel = !module_object_class_by_name(TYPE_ISA_PARALLEL);
-     m->post_init = pc_post_init1;
-+    m->smp_props.custom_topo_supported = true;
-     machine_class_allow_dynamic_sysbus_dev(m, TYPE_RAMFB_DEVICE);
-     machine_class_allow_dynamic_sysbus_dev(m, TYPE_VMBUS_BRIDGE);
- 
-diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
-index 9ce3e65d7182..9241366ff351 100644
---- a/hw/i386/pc_q35.c
-+++ b/hw/i386/pc_q35.c
-@@ -356,6 +356,7 @@ static void pc_q35_machine_options(MachineClass *m)
-     m->max_cpus = 4096;
-     m->no_parallel = !module_object_class_by_name(TYPE_ISA_PARALLEL);
-     m->post_init = pc_q35_post_init;
-+    m->smp_props.custom_topo_supported = true;
-     machine_class_allow_dynamic_sysbus_dev(m, TYPE_AMD_IOMMU_DEVICE);
-     machine_class_allow_dynamic_sysbus_dev(m, TYPE_INTEL_IOMMU_DEVICE);
-     machine_class_allow_dynamic_sysbus_dev(m, TYPE_RAMFB_DEVICE);
-diff --git a/hw/i386/x86-common.c b/hw/i386/x86-common.c
-index 58591e015569..2995eed5d670 100644
---- a/hw/i386/x86-common.c
-+++ b/hw/i386/x86-common.c
-@@ -195,6 +195,12 @@ void x86_cpus_init(X86MachineState *x86ms, int default_cpu_version)
-     }
- 
-     possible_cpus = mc->possible_cpu_arch_ids(ms);
-+
-+    /* Leave user to add CPUs. */
-+    if (ms->topo->custom_topo_enabled) {
-+        return;
-+    }
-+
-     for (i = 0; i < ms->smp.cpus; i++) {
-         x86_cpu_new(x86ms, i, possible_cpus->cpus[i].arch_id, &error_fatal);
-     }
--- 
-2.34.1
+I agree that providing enums for the possible values for 1-bit
+fields is a bit superfluous.
+
+thanks
+-- PMM

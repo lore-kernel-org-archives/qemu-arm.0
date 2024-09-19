@@ -1,519 +1,186 @@
-Received: by 2002:a17:505:42a7:b0:1be9:327d:8ee3 with SMTP id rt7csp99106njb;
-        Thu, 19 Sep 2024 03:31:51 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCVSjR087VJaHKIsHJxhD5ouChw963j6x2tN/+CW+dXT1m+GgAYSGkFKYowlLY+IzNYk19Q0pjJOS+cU1A==@linaro.org
-X-Google-Smtp-Source: AGHT+IHwLqbsrFuvteOC3u6/cjvB6VuGQF7wg/mobX6oIYZ2eaYutbdTldRsMM/CjI+jEiGSq/DY
-X-Received: by 2002:a05:6a21:1646:b0:1cf:3ec5:e779 with SMTP id adf61e73a8af0-1cf75d7fc8emr35097754637.5.1726741911490;
-        Thu, 19 Sep 2024 03:31:51 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1726741911; cv=pass;
-        d=google.com; s=arc-20240605;
-        b=gjwqWHNSZ85Xycz9pvpK8sYecgHG6EQcDzPPVc/z402tc2p8UCJodfDHaL/vAS6BlQ
-         f1C44Xo4XFuw/XsAf13l8tmo5zY6cAU+am09l7s9kBKqD4i3dkY378MzK7YD/Udqr31y
-         tK9HhEfosKuG5jln2Ncp8xaBBEqOCG5BRnzg2FEdG1yvLvBz9asNGI4Nnq/bJqXZLl1C
-         EdTmhUywJoNWzycynrW8ixMecMILs2YJEUIz3Kj5QI2keC1c5vidAaXqjIzmwpsZxFP0
-         0eKvam5OeJhRcv0jDOel3Z403AJjG6HnSWBSvO4zwNjUb0hahpQsli8KrtCYOF1xZpfY
-         zweQ==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=mime-version:content-transfer-encoding:in-reply-to:from
-         :content-language:references:cc:to:subject:user-agent:date
-         :message-id:dkim-signature;
-        bh=xbaKrDg+CqT4sSVBW9y2Y8m+HtOykOYd/yhYDznEsw4=;
-        fh=GuMuoQblzj8AnjPDv5qfNhXM6emLtNDWfKTVchnbqq4=;
-        b=HZ414QCccy6Im4UKPXp4Z3/+sgv9zScjs1fz0nv+QOCDRtZfATEzqQGGIsd+k/Kdah
-         5PXbKFsYc1ftVAbAlpPtyfPWTOAcH2sAoprALCikTBB+fyaJM8MScEda1qeoFG0cXXAo
-         4q39E4mwaHAvteYkNOAscyV9yI/o9y19ZMkkggjwjG07KhG1Mex4FTwmxn0PPB8xO8Iw
-         D5QSC0IM82hzp62pjQ3pneD5wTOvOnGAufvqo5JfkYd3ZB+CbLUYN7NY7vwEtv2oG7YF
-         xYdQTT4BhdgQAKq7MqN5KO/u0IZJ2LsYnC1Euyuo83Fh4/DEpMtyPbddy0yj4+5t/+Xp
-         L4nw==;
+Received: by 2002:a17:505:42a7:b0:1be9:327d:8ee3 with SMTP id rt7csp273498njb;
+        Thu, 19 Sep 2024 08:34:21 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXvadeGMDUGWouYOzuUC3VhCpXzX7DzfUbkh44ONVXn+E0nadEEzPhjKOD5JRMGlqS4SPeyMGP7QIQYNg==@linaro.org
+X-Received: by 2002:a05:6808:2e96:b0:3e0:7d4f:e34d with SMTP id 5614622812f47-3e07d4fe52dmr17090857b6e.3.1726760061739;
+        Thu, 19 Sep 2024 08:34:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1726760061; cv=none;
+        d=google.com; s=arc-20160816;
+        b=RC5Abn+VStJtlDoPW4M28AEmqk4W+b7Cs8Rt+iibASo5iRtPKWP2VsqG9Vztlo00ZL
+         oykD/x68A3B8emnuBRHz7B5vLQF6jD5TTHwJ56JGhmWwk8vonLEegzO/gyRcyb4yWGZ9
+         yfqfYXEC//kxT5JqH2UK/wsZZywGYnbDu6u5ftyCyUo5bqL5IZu5zor4g29vDxxj39ou
+         ttf8/UNMe21LQOCQqzL+Q9q6GQuGLAw6rYp2YTrUUDCDoRfxdvCkHR+pa4RZ+DnsFmuL
+         HMh7tdgDAN3eBmAw1D51naMdbq4YVO6CJqTq9IMCrA9gC+/pXTXkE6jm8uKG9jdO1XG7
+         yVvQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=tjDhq7+1RdYCrJ1i4TPTaRAHhdYLbWjdVx3paSErPag=;
+        fh=FK3UTVBMZPhmb9P2WflVfBfyq3DSRzUSeRy2jt90olw=;
+        b=es/xCFasrFIjjVZAfjcoC3dv5bUq9DjQAn83MuY50kqSIElRmCXZZ5TZvgNgFwlYkH
+         4HE/hcs6en9twgcGWDCmY5laBCmfu62mDClPeJY2wJnpzr5Nqrf0woaoguyUY8vtyFXm
+         K1f2boOLmwbc8sh+U60Qk45A9/ADNE9Dda565cUfseZ0v5DkMettNUBI67GsKR8Aw3hd
+         9EtPW59Tpf7y5xPSvJAaaz9IaBqne116lbP1WmrYnOY+Hp8KZb167nTXLjUp3tbeb55z
+         e+M4SU9+thf6qon6vLQrRogoTEZDlFXavXZnco+1wf3dKb2hY9kXz6HM4elCWi+sY2S4
+         eILQ==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@os.amperecomputing.com header.s=selector2 header.b=Luvhmqgt;
-       arc=pass (i=1 spf=pass spfdomain=os.amperecomputing.com dkim=pass dkdomain=os.amperecomputing.com dmarc=pass fromdomain=os.amperecomputing.com);
-       spf=pass (google.com: domain of gankulkarni@os.amperecomputing.com designates 2a01:111:f403:c101:: as permitted sender) smtp.mailfrom=gankulkarni@os.amperecomputing.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amperecomputing.com
-Return-Path: <gankulkarni@os.amperecomputing.com>
-Received: from BL2PR02CU003.outbound.protection.outlook.com (mail-eastusazlp170100000.outbound.protection.outlook.com. [2a01:111:f403:c101::])
-        by mx.google.com with ESMTPS id 41be03b00d2f7-7db4a962c0esi11719338a12.799.2024.09.19.03.31.50
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 19 Sep 2024 03:31:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gankulkarni@os.amperecomputing.com designates 2a01:111:f403:c101:: as permitted sender) client-ip=2a01:111:f403:c101::;
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=kC96LKyl;
+       spf=pass (google.com: domain of edgar.iglesias@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=edgar.iglesias@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=neutral header.i=@linaro.org
+Return-Path: <edgar.iglesias@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 5614622812f47-3e170658f4bsor1834882b6e.1.2024.09.19.08.34.21
+        (Google Transport Security);
+        Thu, 19 Sep 2024 08:34:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of edgar.iglesias@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@os.amperecomputing.com header.s=selector2 header.b=Luvhmqgt;
-       arc=pass (i=1 spf=pass spfdomain=os.amperecomputing.com dkim=pass dkdomain=os.amperecomputing.com dmarc=pass fromdomain=os.amperecomputing.com);
-       spf=pass (google.com: domain of gankulkarni@os.amperecomputing.com designates 2a01:111:f403:c101:: as permitted sender) smtp.mailfrom=gankulkarni@os.amperecomputing.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amperecomputing.com
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=tV0pQH5QASYN+diK0g0TBBDOmPHVke0T85tiQ5dsmLS6QDADjwgKuFGaEsp3lZC9q5tPcPL3HQ8l6C+K/b82q51ugYnOpGFf+hcHy89KCuL8ylrcLZodUNnsNBHg7nw9uaJv4h1kGZYCDK6xneVURQSsvIYYRkJwokKy4Cf+206DDfbXKqMTbAoiak7ys3dDdj8F2gXQFpFvVEqc3GnhHt3HzKAilj0BuTjli/7p+Yt038bePnNxsrDbJa0zh51mFe1TfcuSAFsHvcyau+xAelggBWJrZVcUROj7wk4LACwsufgnnh9xlkWRG3q991CV+r7Cp7Kw+BDzUBJ13EtUhw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=xbaKrDg+CqT4sSVBW9y2Y8m+HtOykOYd/yhYDznEsw4=;
- b=EUCS6ePeUP/87DLA1fhYngNsD5yzbvyN7QByXFzXv0v4xVKNHjY8n/Z+i0Q/FhthCeiIl69a27eizbzdO4HsaltAcQETWY4hzMJ9KELRGBhKQqGzwdgAKzj2YuyB3Key2RppTQ2frkYdl4zc6pWP8Mu7DDdGnTH8t39shqH09Z0lTMl8VPUqX+D8YT7QQK9At7I0p39iGhoUwZQmgSKFFvViOAgxBfkbJe2VEwqTlUOWFQdctl0Q+1YjeWaSPA+j/AMqA52lwVq0Dj9nStaxO/Erlluo8Bminvlb1UODPGp5mIIsvpBLNOw3ExHDvdngfzGrnw9zlWNFcFm7sknfpA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=os.amperecomputing.com; dmarc=pass action=none
- header.from=os.amperecomputing.com; dkim=pass
- header.d=os.amperecomputing.com; arc=none
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=kC96LKyl;
+       spf=pass (google.com: domain of edgar.iglesias@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=edgar.iglesias@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=os.amperecomputing.com; s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=xbaKrDg+CqT4sSVBW9y2Y8m+HtOykOYd/yhYDznEsw4=;
- b=LuvhmqgtkiAPEY5XJ/+bVkv+WDnwcFfFgHrwVPxFUp+OIt4R7jezkDWFktWbZmBMwBy9ISb0ZJFvsA96Y+sV3fV8yzDaGSg/hE+7Hkbqi5fiK5K5fPeXDUEtf7YNrr9gW0NWECFfDIXKepLVn6Iyn0NYFyTyQRLrvg1lHbUOZxk=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=os.amperecomputing.com;
-Received: from SJ2PR01MB8101.prod.exchangelabs.com (2603:10b6:a03:4f6::10) by
- SJ2PR01MB8620.prod.exchangelabs.com (2603:10b6:a03:543::17) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.7982.21; Thu, 19 Sep 2024 10:31:47 +0000
-Received: from SJ2PR01MB8101.prod.exchangelabs.com
- ([fe80::292:6d9c:eb9a:95c9]) by SJ2PR01MB8101.prod.exchangelabs.com
- ([fe80::292:6d9c:eb9a:95c9%4]) with mapi id 15.20.7962.022; Thu, 19 Sep 2024
- 10:31:47 +0000
-Message-ID: <879f7e65-070a-4d9b-b70f-60576b7b5319@os.amperecomputing.com>
-Date: Thu, 19 Sep 2024 16:01:39 +0530
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH V2] arm/kvm: add support for MTE
-To: Gustavo Romero <gustavo.romero@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, richard.henderson@linaro.org,
- alex.bennee@linaro.org, darren@os.amperecomputing.com
-References: <20240912091616.393685-1-gankulkarni@os.amperecomputing.com>
- <0faf9a7c-0400-482c-974f-7b70e1d58202@linaro.org>
-Content-Language: en-US
-From: Ganapatrao Kulkarni <gankulkarni@os.amperecomputing.com>
-In-Reply-To: <0faf9a7c-0400-482c-974f-7b70e1d58202@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-ClientProxiedBy: SG2P153CA0003.APCP153.PROD.OUTLOOK.COM (2603:1096::13) To
- SJ2PR01MB8101.prod.exchangelabs.com (2603:10b6:a03:4f6::10)
-Return-Path: gankulkarni@os.amperecomputing.com
+        d=gmail.com; s=20230601; t=1726760061; x=1727364861; darn=linaro.org;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=tjDhq7+1RdYCrJ1i4TPTaRAHhdYLbWjdVx3paSErPag=;
+        b=kC96LKylKkrJ+e1zpGw+Mw0PND032MHE3qSmrLz7O9vaSM9eLsPNz9pkt7MyNDUxjc
+         ILTK51uCxhkFAj4JhfQw2AAvapUFKRjEznK5+1jw4xOMT/Y4+BdgwcZC3j3YJZ6HabGa
+         Xo5XLTS3srQVlHJA2Xpsglar8LFRG7EbY4Bk4ZdAN0jhpACOqKE/M1OrpjnyGkLI2Voc
+         y+PYlKl/Eq1xBLeygAewXCJayOjr5IAwAu1tVI53ZChB/JGdJQpeWWqjkpuiWpOkrGKo
+         iqdMo5LCoDUvEsMQRlPENQr1hEqsFTfHi14POPU81ldj8LIK/pm5IxmrqI2mY8I1iGMh
+         0T/w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1726760061; x=1727364861;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=tjDhq7+1RdYCrJ1i4TPTaRAHhdYLbWjdVx3paSErPag=;
+        b=i5rfq5hnRj7Q6sLKXfxuIb6ekuTyCjBpo8XHVRGVOEab3IP+sAl5RwVyHAo58uH+1K
+         SFLo0oeKtE2JkOIbHMfFBZ1wi4kCfMLcxuDitKA3i6iaLMuFoA5zh3VXmk/sRKPq0IaO
+         IXwDSBfvyuKkj0jFWERxO0ZnvdfIzsvLZNSf4/k0gPq9Vi2C/ye0HlblTHn84FWR1XXq
+         75kIaVruf8o/NT6cr+Uc68owOQjbLOBw/lG0kWcadzUHD7mySXZYuFeaZMDTpv6ofZRV
+         TeUG71kFoEclU+AJyH1ETIyf6xP3o1GRTzFbn2nxiFBpZMUUPREwxTVbnXGliokHTOaZ
+         jVbA==
+X-Forwarded-Encrypted: i=1; AJvYcCU/Xvkv8piOdH1z6RtUgYcxMEjyXacjo90x8DkSdKUyHBYadjPmos+RbHot+ZT/UkAq/GCy2JdlFQSKa9wZG0a7Rq4=@linaro.org, AJvYcCVPLZGeXlhVREy3pE8jRSTIDDwmKiQLGf70TyG6/S2raPdGtICVPpg6mZMhCGOSKyBMxVjc78WgR09EyQ==@linaro.org, AJvYcCXkOZiC9ho+VrDaTfRfMPSimHkgcFzeyMpRkZav5bf2rUBboYNsCJdLRpmT49ikV3tIXjwvK4ekCobx0F1faw==@linaro.org
+X-Gm-Message-State: AOJu0YxH/v06VeS78SXLDphvc7mkSEU8USXwy5rXY6bsfK4BUnHQJs8S
+	tnFpZ+o39ogeMfX7gKyQPjeWabCv/8Ecq59Nv/bwToOA1+MoyTQS
+X-Google-Smtp-Source: AGHT+IGkPtGASlsN1mWnU/lPiOwMx8LXKTp+l3V1wEIIDvN6gyZZ5xYjRG3djb2ALL6FjuDV5gqYKg==
+X-Received: by 2002:a05:6808:211d:b0:3e0:451b:d029 with SMTP id 5614622812f47-3e07a107173mr14248840b6e.15.1726760061048;
+        Thu, 19 Sep 2024 08:34:21 -0700 (PDT)
+Return-Path: <edgar.iglesias@gmail.com>
+Received: from gmail.com (ip190-5-140-142.intercom.com.sv. [190.5.140.142])
+        by smtp.gmail.com with ESMTPSA id a1e0cc1a2514c-84939994e8dsm1436459241.27.2024.09.19.08.34.18
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 19 Sep 2024 08:34:19 -0700 (PDT)
+Date: Thu, 19 Sep 2024 17:34:17 +0200
+From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+To: Stefano Stabellini <sstabellini@kernel.org>
+Cc: qemu-devel@nongnu.org, anthony@xenproject.org, paul@xen.org,
+	peter.maydell@linaro.org, alex.bennee@linaro.org,
+	edgar.iglesias@amd.com, xen-devel@lists.xenproject.org,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Eduardo Habkost <eduardo@habkost.net>,
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, qemu-arm@nongnu.org
+Subject: Re: [PATCH v1 2/4] hw/xen: xenpvh: Disable buffered IOREQs for ARM
+Message-ID: <ZuxEedSaR4fLKvrn@zapote>
+References: <20240916150853.1216703-1-edgar.iglesias@gmail.com>
+ <20240916150853.1216703-3-edgar.iglesias@gmail.com>
+ <alpine.DEB.2.22.394.2409161646360.1417852@ubuntu-linux-20-04-desktop>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: SJ2PR01MB8101:EE_|SJ2PR01MB8620:EE_
-X-MS-Office365-Filtering-Correlation-Id: f76c46a8-e3f7-4596-9714-08dcd89643ab
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|366016|376014;
-X-Microsoft-Antispam-Message-Info:
-	=?utf-8?B?RTdLWGQ1VEVWMUwzZjUxYkptcTVHS1ZYcWN2TjlXY2lDUEZGUVorZnR5WFE5?=
- =?utf-8?B?aWlSWHVMemR3M1ZSQVp4OEYxeU5pU3FxelRCTnhhMlhKTjJSODJrY0VrZVB6?=
- =?utf-8?B?NVpHMGV6azVSMmNSb0hiUDVnYkNIQm02eEFHQ1VMUm9rc0t3L3ptTlhGSzZw?=
- =?utf-8?B?SmxhVU5POFhQdWtjZzdQYnlFM2xVem1Ja0c2ekZ1dDg0OFdiaTVzSmZ3UjNZ?=
- =?utf-8?B?TEZ4NzJvSy96VGx4RDZRZzdZV1RCekRxOTl4dHFPK1dVQ0tkRVcrQ2tDbFB5?=
- =?utf-8?B?OGh6SG9Wd1RwaEszZkd1VDRIa1lpSWxWZ2VWenpaMU42NDl4Tzg1MDZLTFFL?=
- =?utf-8?B?WmZsbXE4SnBMRFp2czFoK0lMdUJkWVFkQ1BORi84S0tUN25oT05vSDdhYld4?=
- =?utf-8?B?VlQvK0toM2pkVTJhMG1yVmZvd2h5Y2Y4NGlVSlBwVEQxbkZROWRuVkNFWHhn?=
- =?utf-8?B?bmtTdm1DZ3FqeXVJbTdjSTlVdjF0KzduN2FUVElxYkhRQXdZVFkyaVF3Rkt1?=
- =?utf-8?B?UHBxSFlJNWhjM0I4R0dUTmZRNWZsWEh0Z0JQT3NLRTZQeFhiSERvM0YvTzlq?=
- =?utf-8?B?Tmx1citsOFBEcWdGTVpxaE53cDg0OVY5SnFkNUxOelBPWWF3SDFPSEY0OU1j?=
- =?utf-8?B?UEtDZW10SXBhT21CS3pQWTd2UTNYbHNSQzdFMVAweFVheHgxRVVlOTF1cFVG?=
- =?utf-8?B?cDNFN240aVlVSDNUa0J5ODd2SGpFbE9jaGhQcmw3azB0WnlNL25mOXY1azZT?=
- =?utf-8?B?cVlYenZmVjNSZHF6N2QwYm8ySXUzNUZ5bkpubEZRdUFMeE52NDE3azFSR2xk?=
- =?utf-8?B?QWkvVll5VStUVzFKWC85SVVrUVh6TXY2SHgvVWlPKy9ZOE4rNEFMQVZXajV2?=
- =?utf-8?B?dkl3NEVRZ1p0b0lpcitkTGREL3BqL1JVQ1Z3Zm1YamV5bWp5TWFPMGJBaFlr?=
- =?utf-8?B?QnpDaXhKUjlyeGp3bnBEamJyUmc3QUwydUhrdHFaTG43RldadTFTUmpFdmpZ?=
- =?utf-8?B?UnB1bHV1em5KMlFUYjBCQStWNi9CeVZvMmFMVGhpZzM5ZzZsUEpYS3lmQktR?=
- =?utf-8?B?MmtMS3Npa08yanlrbTZOalRNemtNNTBKd2VVZ3lLeFRxM1ZWRlZSU21aMktT?=
- =?utf-8?B?SXVSMU5mMkdLRDhsc1pUQWw4L2I2QXQzWEdFRGt2ZUZmbEk4bm5vUldBNjNw?=
- =?utf-8?B?eVY1RkxTOERyc0RPMFNxcWtOZVAzVHBLVnEyUFJYZ0srYlVhNUd5MWJsbnd1?=
- =?utf-8?B?d0hBYnlPRndhbDRiV2RvaHY4bUN1dUl1V01Hd0U4dm9uUWFPeGlHbXhpYmZK?=
- =?utf-8?B?bytRd3ZJdElYeEhPaFlGemZTK0tWeHlJaWxqSHh4WVFUTE9kYVlraDMyVm02?=
- =?utf-8?B?KzhvNEgxeXRKNE1udldXSHJLS1pWS1dxY1UxcXVwaXhQRHJrMFJLRlhWRnhQ?=
- =?utf-8?B?QS9SMDVtTElDL2RYWFNjbjdZSURXaS9BNUFGeTlLMmh6R2pkV04vaHZ1Mm5B?=
- =?utf-8?B?UGM0dXJCUXp0OTl4N1dLS243b1ZQZWNIRzNSeW5MVVREWVZ5VmdNaE5NNWpO?=
- =?utf-8?B?TXBYR1lCS09LRkhIeTFXd25DM1NGQlo1RTJMQjVtV2Z6cEJ0clRKMXJoOXdj?=
- =?utf-8?B?cXFlejd3NVpBOGdINW5UTElWczIxcFppQ0FDbHpIMnlHV09BWFc5bEF5b3BV?=
- =?utf-8?B?eGl4THMzZCtTLzMreFRBRWEwd1VCWXA5TU90TUluWmNiVlhnSGs5TmRSR3RJ?=
- =?utf-8?B?QzJTdFBKekNzMFRmOU9CakdPU3BGWDZ4SjFIcW1qZEFhSkVlbHlIOXFpNWhN?=
- =?utf-8?B?ek5HWmNBVjc3YWtuTWdRZz09?=
-X-Forefront-Antispam-Report:
-	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SJ2PR01MB8101.prod.exchangelabs.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(366016)(376014);DIR:OUT;SFP:1102;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0:
-	=?utf-8?B?alhreG91TUtHcWVQUkE4RURDVFdhUmVNQlhXaUhPd3JFMElMMzdWVTVjN0pJ?=
- =?utf-8?B?bFduOVFRMm9Oei9OYWt4dFZTZEt5NDNZRUxFNzZVQUJBT3N5Yks0S09la3lX?=
- =?utf-8?B?ckxZb2VXS1ZUcG91NVJqK1FTdnM1Qm85MEtZeHpjc0ZabXE2OHl4R0todjEw?=
- =?utf-8?B?UXJ5d3lvREpUWTBLYnZjVmNiUDlhT1RMaFZVdFNNNzJ3alhsOW8xODZvOVVj?=
- =?utf-8?B?dW80aGxYWGFMbGZPNnFRdjRtTUxpZUJFUTVYTVVqb2hFVWU0aFZwZmpRZmxF?=
- =?utf-8?B?TWF4cjh1elNMTTMyR2VhSHp1Tm5yOUIyMmZzczU3MWZhUlgvNGpWRW5jSjFB?=
- =?utf-8?B?UWY4R29UWEZYYmI3Tkh1Zmx6MEJCbTdUY2Y0TDZMcS9ybVNKNDR4T3NUbWhJ?=
- =?utf-8?B?SFpIdStQQUxySU9Xenk3RXc3RVdwRHUwdkVOTnBJZFhqSS9lS3JsVnZIOUNX?=
- =?utf-8?B?NVRGaXRwanFBZVEwZ0ltdlpEaGNOMXBlY0VVejhvZHhlemt1b3RTL0Y4cFV3?=
- =?utf-8?B?L3o2RHdxQnE4YUIvNFlobDE4Q25OTGU0NUIyVFZoZTZTYW14WFBkamEvK1hi?=
- =?utf-8?B?UngyRS9rSHhydDJ2SDVCUXdocWZUWmsxQWs4ZHNva0xENG1reXR6WFpvbkU0?=
- =?utf-8?B?U0duTlJLdk43MXlOUllCUHJsSmpxdnVheGR6RnZpNy95WjUrRzI4bjFjZFdU?=
- =?utf-8?B?L1dMNzVCbS8xbVd0VldZQ1RtK1h5eksxclJlT091aURPcnRRVjMrbVBtNWEy?=
- =?utf-8?B?M2VqVFl4VGpwZVZpdHhSSUhqSzdvWHdBNDJ6MHl0cXJuamgvRGdXd2hoRS9R?=
- =?utf-8?B?R2lVTHJSM2RZRC9Uby9PMmJuUmxxU0lqZ1FBVUxhT3lkQVZsWjlnaVBtcEht?=
- =?utf-8?B?YUNQdDJsTFhKcitPakFibnM1aGhYdnZiYmVvVktCNlVBNmlqc2s0N053UHE5?=
- =?utf-8?B?TDR3cjhzSHMwYzQ0OTgxTDlMTkx2STJpdXBRUUl3d01CaU9uRjZIQjBack8z?=
- =?utf-8?B?YU9IMzNDRys1eHo0UndDclR2aGJ6ci8zOElyYjlNZXJaSEVTVm11ZEZhMmNq?=
- =?utf-8?B?MWpPbXNONWxIQVRWaFBrRUc3c2ZsOExoZ290MXlSdnlPZCtiMDd5eHJDYzdn?=
- =?utf-8?B?UnFuQjJPQTNERHJBK1Y1ejluUUNqRnpSdmI2V0JMbnVpT0lWWnFqTnNEc2ZP?=
- =?utf-8?B?VjhXYU9CNC9aVVJnSWdVTlU3U1BPcjhqeWNqanJheGFHTVpUTjdjSDVQR1R6?=
- =?utf-8?B?VlRuZHl6UlNPV3ZSaFZuMVh6TzJpOGlLTmJPRjNiRzdZS1RTNDFSNTZmcHB0?=
- =?utf-8?B?eVYrcUZGWmo0ODk5YjRLTDRmYjlhZzRBU3NiaWIrRUw0cEQwdDRjR1NPeldj?=
- =?utf-8?B?UE9LWUh3UC9namtHWHlUNDdKVmpGNnZnL0RvNVdneTlRM0RNMWo2WWV0Rytp?=
- =?utf-8?B?NmMzM3haVmpxVG8zaEVTNkxPNjNPVTJVNE9wellEamVPbm5xVXVvQVE3cjNG?=
- =?utf-8?B?eldRUkRVWXpUbGttcFE3K01IKzI5YXJXZ0lXMWlsajE0NnZ6L1Fwekl1UHdS?=
- =?utf-8?B?R3RDclZCZTJ2Mjlmc1NFMzl4NmlSZDNjL0VKU3J4OW4vRWVRTHdjNnNOWms3?=
- =?utf-8?B?M3FwVmpOUk1sanNwSEhkekUyT01tYlZlSTc0cHdBZnA0UlZSSU5NMUZIU0N4?=
- =?utf-8?B?eG9zSS9SWldaNVRxNk5pWnFwQmtrN0JJY0pTaTVsWmVqbXQ0aEhXS0F4djZt?=
- =?utf-8?B?eVNxWE9ZRDFHSnRyZVc2ZTNjdS9rb2prdUlCcmlMd0p5YkhOSnNxdU1SbGFv?=
- =?utf-8?B?VTNtNlpRWmFDbWNaUEcwbis2Q2NKOXBtQWlTN3BMbUI2cWxqR3Q3bXJ1MlpP?=
- =?utf-8?B?azRjbU9kTyt3bXdkM0JDNW41YmNKK0gyY1k5bHNUNmYwKzJzTTRmRTFCTDZE?=
- =?utf-8?B?YXVyMGtBWHV6RkxvbnE4UzU4QXdQTmVNeW4wT1JybTEvcTg1bEhja25ZTEhj?=
- =?utf-8?B?WnZOSEZhcU5qWHpOYlk4NU8xbTBaMVBTYjM4T1owUWl6VGgxSmpkWUFiOXow?=
- =?utf-8?B?WVZ0YmZnU3ZlYnZWamcxaTdmQlFmOEx5OTF0STRMR3JBanpYdUZoUGR5NXNI?=
- =?utf-8?B?Y3k2b09NS2FBbTVIN3VhR1U5cUpiVzB5cWxkQ1NwSUhsYlRpaXRDQUhFREVw?=
- =?utf-8?Q?xWmQBruR8KEApdp8z+ODdk3D3dOefYJ9B0YdrzLu6bw3?=
-X-OriginatorOrg: os.amperecomputing.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: f76c46a8-e3f7-4596-9714-08dcd89643ab
-X-MS-Exchange-CrossTenant-AuthSource: SJ2PR01MB8101.prod.exchangelabs.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 19 Sep 2024 10:31:47.2436
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 3bc2b170-fd94-476d-b0ce-4229bdc904a7
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: /lRmbTjgjtfMbWUDaoLo8FQvAGdtJol9JqsOmMxFAed7PZBDMaXUeInOV+nBu0xgnGGXKIteSTOa1mtd3YfyOk1eXrBlOtSLBV4O98Yd5nE0AHD+fVlumvvRLJVfuSUP
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ2PR01MB8620
-X-TUID: mUUI4idrE8ix
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <alpine.DEB.2.22.394.2409161646360.1417852@ubuntu-linux-20-04-desktop>
+User-Agent: Mutt/2.2.12 (2023-09-09)
+X-TUID: AZ0mKOTRkWis
 
+On Mon, Sep 16, 2024 at 04:47:43PM -0700, Stefano Stabellini wrote:
+> On Mon, 16 Sep 2024, Edgar E. Iglesias wrote:
+> > From: "Edgar E. Iglesias" <edgar.iglesias@amd.com>
+> > 
+> > Add a way to enable/disable buffered IOREQs for PVH machines
+> > and disable them for ARM. ARM does not support buffered
+> > IOREQ's nor the legacy way to map IOREQ info pages.
+> > 
+> > See the following for more details:
+> > https://xenbits.xen.org/gitweb/?p=xen.git;a=commitdiff;h=2fbd7e609e1803ac5e5c26e22aa8e4b5a6cddbb1
+> > https://xenbits.xen.org/gitweb/?p=xen.git;a=blob;f=xen/arch/arm/ioreq.c;h=2e829d2e7f3760401b96fa7c930e2015fb1cf463;hb=HEAD#l138
+> > 
+> > Signed-off-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
+> > ---
+> >  hw/arm/xen-pvh.c                | 3 +++
+> >  hw/i386/xen/xen-pvh.c           | 3 +++
+> >  hw/xen/xen-pvh-common.c         | 2 +-
+> >  include/hw/xen/xen-pvh-common.h | 3 +++
+> >  4 files changed, 10 insertions(+), 1 deletion(-)
+> > 
+> > diff --git a/hw/arm/xen-pvh.c b/hw/arm/xen-pvh.c
+> > index 04cb9855af..28af3910ea 100644
+> > --- a/hw/arm/xen-pvh.c
+> > +++ b/hw/arm/xen-pvh.c
+> > @@ -66,6 +66,9 @@ static void xen_arm_machine_class_init(ObjectClass *oc, void *data)
+> >       */
+> >      mc->max_cpus = GUEST_MAX_VCPUS;
+> >  
+> > +    /* Xen/ARM does not use buffered IOREQs.  */
+> > +    xpc->handle_bufioreq = HVM_IOREQSRV_BUFIOREQ_OFF;
+> > +
+> >      /* List of supported features known to work on PVH ARM.  */
+> >      xpc->has_tpm = true;
+> >      xpc->has_virtio_mmio = true;
+> > diff --git a/hw/i386/xen/xen-pvh.c b/hw/i386/xen/xen-pvh.c
+> > index 45645667e9..f1f02d3311 100644
+> > --- a/hw/i386/xen/xen-pvh.c
+> > +++ b/hw/i386/xen/xen-pvh.c
+> > @@ -89,6 +89,9 @@ static void xen_pvh_machine_class_init(ObjectClass *oc, void *data)
+> >      /* We have an implementation specific init to create CPU objects.  */
+> >      xpc->init = xen_pvh_init;
+> >  
+> > +    /* Enable buffered IOREQs.  */
+> > +    xpc->handle_bufioreq = HVM_IOREQSRV_BUFIOREQ_ATOMIC;
+> > +
+> >      /*
+> >       * PCI INTX routing.
+> >       *
+> > diff --git a/hw/xen/xen-pvh-common.c b/hw/xen/xen-pvh-common.c
+> > index 08641fdcec..76a9b2b945 100644
+> > --- a/hw/xen/xen-pvh-common.c
+> > +++ b/hw/xen/xen-pvh-common.c
+> > @@ -195,7 +195,7 @@ static void xen_pvh_init(MachineState *ms)
+> >  
+> >      xen_pvh_init_ram(s, sysmem);
+> >      xen_register_ioreq(&s->ioreq, ms->smp.max_cpus,
+> > -                       HVM_IOREQSRV_BUFIOREQ_ATOMIC,
+> > +                       xpc->handle_bufioreq,
+> >                         &xen_memory_listener);
+> >  
+> >      if (s->cfg.virtio_mmio_num) {
+> > diff --git a/include/hw/xen/xen-pvh-common.h b/include/hw/xen/xen-pvh-common.h
+> > index bc09eea936..62c44a1ce7 100644
+> > --- a/include/hw/xen/xen-pvh-common.h
+> > +++ b/include/hw/xen/xen-pvh-common.h
+> > @@ -43,6 +43,9 @@ struct XenPVHMachineClass {
+> >       */
+> >      int (*set_pci_link_route)(uint8_t line, uint8_t irq);
+> >  
+> > +    /* Allow implementations to optionally enable buffered ioreqs.  */
+> > +    int handle_bufioreq;
+> 
+> Looking at the corresponding Xen interface this field is uint8_t. I
+> think it would be better to use the same type here and also as a
+> parameter to xen_register_ioreq in QEMU
+>
 
+Thanks Stefano,
 
-On 19-09-2024 08:52 am, Gustavo Romero wrote:
-> Hi Ganapatrao,
-> 
-> On 9/12/24 06:16, Ganapatrao Kulkarni wrote:
->> Extend the 'mte' property for the virt machine to cover KVM as
->> well. For KVM, we don't allocate tag memory, but instead enable
->> the capability.
->>
->> If MTE has been enabled, we need to disable migration, as we do not
->> yet have a way to migrate the tags as well. Therefore, MTE will stay
->> off with KVM unless requested explicitly.
->>
->> This patch is rework of commit b320e21c48ce64853904bea6631c0158cc2ef227
->> which broke TCG since it made the TCG -cpu max
->> report the presence of MTE to the guest even if the board hadn't
->> enabled MTE by wiring up the tag RAM. This meant that if the guest
->> then tried to use MTE QEMU would segfault accessing the
->> non-existent tag RAM.
->>
->> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
->> Signed-off-by: Ganapatrao Kulkarni <gankulkarni@os.amperecomputing.com>
->> ---
->> Changes since V1:
->>     Added code to enable MTE before reading register
->> id_aa64pfr1 (unmasked MTE bits).
->>
->> This patch is boot tested on ARM64 with KVM and on X86 with TCG for 
->> mte=on
->> and default case(i.e, no mte).
->>
->>   hw/arm/virt.c        | 72 ++++++++++++++++++++++++++------------------
->>   target/arm/cpu.c     |  7 +++--
->>   target/arm/cpu.h     |  2 ++
->>   target/arm/kvm.c     | 59 ++++++++++++++++++++++++++++++++++++
->>   target/arm/kvm_arm.h | 19 ++++++++++++
->>   5 files changed, 126 insertions(+), 33 deletions(-)
-> 
-> Overall the patch looks good. I just have a couple of questions.
-> 
-> 
->> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
->> index 7934b23651..a33af7d996 100644
->> --- a/hw/arm/virt.c
->> +++ b/hw/arm/virt.c
->> @@ -2211,7 +2211,7 @@ static void machvirt_init(MachineState *machine)
->>           exit(1);
->>       }
->> -    if (vms->mte && (kvm_enabled() || hvf_enabled())) {
->> +    if (vms->mte && hvf_enabled()) {
->>           error_report("mach-virt: %s does not support providing "
->>                        "MTE to the guest CPU",
->>                        current_accel_name());
->> @@ -2281,39 +2281,51 @@ static void machvirt_init(MachineState *machine)
->>           }
->>           if (vms->mte) {
->> -            /* Create the memory region only once, but link to all 
->> cpus. */
->> -            if (!tag_sysmem) {
->> -                /*
->> -                 * The property exists only if MemTag is supported.
->> -                 * If it is, we must allocate the ram to back that up.
->> -                 */
->> -                if (!object_property_find(cpuobj, "tag-memory")) {
->> -                    error_report("MTE requested, but not supported "
->> -                                 "by the guest CPU");
->> -                    exit(1);
->> +            if (tcg_enabled()) {
->> +                /* Create the memory region only once, but link to 
->> all cpus. */
->> +                if (!tag_sysmem) {
->> +                    /*
->> +                     * The property exists only if MemTag is supported.
->> +                     * If it is, we must allocate the ram to back 
->> that up.
->> +                     */
->> +                    if (!object_property_find(cpuobj, "tag-memory")) {
->> +                        error_report("MTE requested, but not supported "
->> +                                     "by the guest CPU");
->> +                        exit(1);
->> +                    }
->> +
->> +                    tag_sysmem = g_new(MemoryRegion, 1);
->> +                    memory_region_init(tag_sysmem, OBJECT(machine),
->> +                                       "tag-memory", UINT64_MAX / 32);
->> +
->> +                    if (vms->secure) {
->> +                        secure_tag_sysmem = g_new(MemoryRegion, 1);
->> +                        memory_region_init(secure_tag_sysmem, 
->> OBJECT(machine),
->> +                                           "secure-tag-memory",
->> +                                           UINT64_MAX / 32);
->> +
->> +                        /* As with ram, secure-tag takes precedence 
->> over tag. */
->> +                        
->> memory_region_add_subregion_overlap(secure_tag_sysmem,
->> +                                                            0, 
->> tag_sysmem, -1);
->> +                    }
->>                   }
->> -                tag_sysmem = g_new(MemoryRegion, 1);
->> -                memory_region_init(tag_sysmem, OBJECT(machine),
->> -                                   "tag-memory", UINT64_MAX / 32);
->> -
->> +                object_property_set_link(cpuobj, "tag-memory",
->> +                                         OBJECT(tag_sysmem), 
->> &error_abort);
->>                   if (vms->secure) {
->> -                    secure_tag_sysmem = g_new(MemoryRegion, 1);
->> -                    memory_region_init(secure_tag_sysmem, 
->> OBJECT(machine),
->> -                                       "secure-tag-memory", 
->> UINT64_MAX / 32);
->> -
->> -                    /* As with ram, secure-tag takes precedence over 
->> tag.  */
->> -                    
->> memory_region_add_subregion_overlap(secure_tag_sysmem, 0,
->> -                                                        tag_sysmem, -1);
->> +                    object_property_set_link(cpuobj, 
->> "secure-tag-memory",
->> +                                             OBJECT(secure_tag_sysmem),
->> +                                             &error_abort);
->>                   }
->> -            }
->> -
->> -            object_property_set_link(cpuobj, "tag-memory", 
->> OBJECT(tag_sysmem),
->> -                                     &error_abort);
->> -            if (vms->secure) {
->> -                object_property_set_link(cpuobj, "secure-tag-memory",
->> -                                         OBJECT(secure_tag_sysmem),
->> -                                         &error_abort);
->> +            } else if (kvm_enabled()) {
->> +                if (!kvm_arm_mte_supported()) {
->> +                    error_report("MTE requested, but not supported by 
->> KVM");
->> +                    exit(1);
->> +                }
->> +                kvm_arm_enable_mte(cpuobj, &error_abort);
->> +            } else {
->> +                    error_report("MTE requested, but not supported ");
->> +                    exit(1);
->>               }
->>           }
->> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
->> index 19191c2391..a59417aac8 100644
->> --- a/target/arm/cpu.c
->> +++ b/target/arm/cpu.c
->> @@ -2390,11 +2390,12 @@ static void arm_cpu_realizefn(DeviceState 
->> *dev, Error **errp)
->>   #ifndef CONFIG_USER_ONLY
->>           /*
->> -         * If we do not have tag-memory provided by the machine,
->> -         * reduce MTE support to instructions enabled at EL0.
->> +         * If we do not have tag-memory provided by the TCG
->> +         * nor MTE at KVM enabled, reduce MTE support to
->> +         * instructions enabled at EL0.
-> 
-> What controls if MTE insns. (stg, etc.) are enabled on EL0 and EL1
-> 
-> are the ATA and ATA0 bits in SCTRL register. Also, AA64PFR1 is a
-> 
-> register just to report the features available on the CPU, so I
-> 
-> wonder if that comment is indeed correct.
-> 
-> @rth: what do you think?
-> 
-> 
->>            * This matches Cortex-A710 BROADCASTMTE input being LOW.
->>            */
->> -        if (cpu->tag_memory == NULL) {
->> +        if (cpu->tag_memory == NULL && !cpu->kvm_mte) {
->>               cpu->isar.id_aa64pfr1 =
->>                   FIELD_DP64(cpu->isar.id_aa64pfr1, ID_AA64PFR1, MTE, 1);
->>           }
-> 
-> If MTE is off on TGC and on KVM, then we're actually setting (deposit) MTE
-> 
-> field in AA64PFR1, meaning that MTE is implemented? or am I missing
-> 
-> something?
+I chose int because the interface to the Xen libs uses int:
+https://xenbits.xen.org/gitweb/?p=xen.git;a=blob;f=tools/include/xendevicemodel.h;h=797e0c6b2961926a68cd96b8ff5e1627067903ac;hb=HEAD#l40
 
-Thanks for the comment.
+But yes, the hypercall interface uses uint8_t, I'm happy to change it to
+uint8_t in the next version!
 
-Looks like I did a mistake by mixing the TCG and KVM.
-
-I have modified as below diff to keep TCG if loop as it is and adding if 
-for KVM case to clear/mask the MTE bits if MTE in KVM mode is not 
-enabled by user command(if no mte=on).
-
-Is below diff makes sense?
-
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index a59417aac8..523996576d 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -2390,15 +2390,20 @@ static void arm_cpu_realizefn(DeviceState *dev, 
-Error **errp)
-
-  #ifndef CONFIG_USER_ONLY
-          /*
--         * If we do not have tag-memory provided by the TCG
--         * nor MTE at KVM enabled, reduce MTE support to
--         * instructions enabled at EL0.
-+         * If we do not have tag-memory provided by the TCG,
-+         * reduce MTE support to instructions enabled at EL0.
-           * This matches Cortex-A710 BROADCASTMTE input being LOW.
-           */
--        if (cpu->tag_memory == NULL && !cpu->kvm_mte) {
-+        if (tcg_enabled() && cpu->tag_memory == NULL) {
-              cpu->isar.id_aa64pfr1 =
-                  FIELD_DP64(cpu->isar.id_aa64pfr1, ID_AA64PFR1, MTE, 1);
-          }
-+
-+        /* Disable MTE, if it is not enabled by the user for KVM mode.
-+         */
-+        if (kvm_enabled() && !cpu->kvm_mte) {
-+                FIELD_DP64(cpu->isar.id_aa64pfr1, ID_AA64PFR1, MTE, 0);
-+        }
-  #endif
-      }
-
-
-> 
-> 
->> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
->> index f065756c5c..8fc8b6398f 100644
->> --- a/target/arm/cpu.h
->> +++ b/target/arm/cpu.h
->> @@ -922,6 +922,8 @@ struct ArchCPU {
->>       /* CPU has memory protection unit */
->>       bool has_mpu;
->> +    /* CPU has MTE enabled in KVM mode */
->> +    bool kvm_mte;
->>       /* PMSAv7 MPU number of supported regions */
->>       uint32_t pmsav7_dregion;
->>       /* PMSAv8 MPU number of supported hyp regions */
->> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
->> index 849e2e21b3..29865609fb 100644
->> --- a/target/arm/kvm.c
->> +++ b/target/arm/kvm.c
->> @@ -39,6 +39,7 @@
->>   #include "hw/acpi/acpi.h"
->>   #include "hw/acpi/ghes.h"
->>   #include "target/arm/gtimer.h"
->> +#include "migration/blocker.h"
->>   const KVMCapabilityInfo kvm_arch_required_capabilities[] = {
->>       KVM_CAP_LAST_INFO
->> @@ -119,6 +120,21 @@ bool kvm_arm_create_scratch_host_vcpu(const 
->> uint32_t *cpus_to_try,
->>       if (vmfd < 0) {
->>           goto err;
->>       }
->> +
->> +    /*
->> +     * MTE bits of register id_aa64pfr1 are masked if MTE is
->> +     * not enabled and required to enable before VCPU
->> +     * is created. Hence enable MTE(if supported) before VCPU
->> +     * is created to read unmasked MTE bits.
->> +     */
->> +    if (kvm_arm_mte_supported()) {
->> +        KVMState kvm_state;
->> +
->> +        kvm_state.fd = kvmfd;
->> +        kvm_state.vmfd = vmfd;
->> +        kvm_vm_enable_cap(&kvm_state, KVM_CAP_ARM_MTE, 0);
->> +    }
->> +
->>       cpufd = ioctl(vmfd, KVM_CREATE_VCPU, 0);
->>       if (cpufd < 0) {
->>           goto err;
->> @@ -1793,6 +1809,11 @@ bool kvm_arm_sve_supported(void)
->>       return kvm_check_extension(kvm_state, KVM_CAP_ARM_SVE);
->>   }
->> +bool kvm_arm_mte_supported(void)
->> +{
->> +    return kvm_check_extension(kvm_state, KVM_CAP_ARM_MTE);
->> +}
->> +
->>   QEMU_BUILD_BUG_ON(KVM_ARM64_SVE_VQ_MIN != 1);
->>   uint32_t kvm_arm_sve_get_vls(ARMCPU *cpu)
->> @@ -2417,3 +2438,41 @@ int kvm_arch_remove_sw_breakpoint(CPUState *cs, 
->> struct kvm_sw_breakpoint *bp)
->>       }
->>       return 0;
->>   }
->> +
->> +void kvm_arm_enable_mte(Object *cpuobj, Error **errp)
->> +{
->> +    static bool tried_to_enable;
->> +    static bool succeeded_to_enable;
->> +    Error *mte_migration_blocker = NULL;
->> +    ARMCPU *cpu = ARM_CPU(cpuobj);
->> +    int ret;
->> +
->> +    if (!tried_to_enable) {
->> +        /*
->> +         * MTE on KVM is enabled on a per-VM basis (and retrying 
->> doesn't make
->> +         * sense), and we only want a single migration blocker as well.
->> +         */
->> +        tried_to_enable = true;
->> +
->> +        ret = kvm_vm_enable_cap(kvm_state, KVM_CAP_ARM_MTE, 0);
->> +        if (ret) {
->> +            error_setg_errno(errp, -ret, "Failed to enable 
->> KVM_CAP_ARM_MTE");
->> +            return;
->> +        }
->> +
->> +        /* TODO: Add migration support with MTE enabled */
->> +        error_setg(&mte_migration_blocker,
->> +                   "Live migration disabled due to MTE enabled");
->> +        if (migrate_add_blocker(&mte_migration_blocker, errp)) {
->> +            error_free(mte_migration_blocker);
->> +            return;
->> +        }
->> +
->> +        succeeded_to_enable = true;
->> +    }
->> +
->> +    if (succeeded_to_enable) {
->> +        cpu->kvm_mte = true;
->> +    }
->> +}
->> +
-> 
-> nit: remove ending blank line here.
-> 
-
-Sure, thanks.
-
--- 
-Thanks,
-Ganapat/GK
+Cheers,
+Edgar

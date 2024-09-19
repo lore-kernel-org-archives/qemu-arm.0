@@ -1,179 +1,233 @@
-Received: by 2002:a17:504:1bc1:b0:1be9:327d:8ee3 with SMTP id v1csp1161560njg;
-        Wed, 18 Sep 2024 21:47:54 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUEI0De353nL4ferTPsnAYNhUBWQ57Ia4loPsGcZVfejAfBaFDwjLmFt4eW2b2GuJH0tvr9mqY0+KkcoA==@linaro.org
-X-Received: by 2002:a05:6a20:b40a:b0:1c0:ef24:4125 with SMTP id adf61e73a8af0-1cf75f006f3mr32505177637.26.1726721274320;
-        Wed, 18 Sep 2024 21:47:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1726721274; cv=none;
-        d=google.com; s=arc-20160816;
-        b=Y1+Ow9V4hLazTpS7Dlio2rFgJCn6GSz9na6V/pf2QX4wrnN0tc/NzLTkJfwjoUEN4Y
-         dcuXumNUryjMbuhrKftjotjTH+zlRE1ljH+IqLtL5/Ib7UM989oTPVrxuv06VjDK8cpr
-         ybYOcP8i4sWABt+iUWysIczUxBk+4fz8pPUJlprwlPhMfDdgNSls8wvJ0Talii23ftOz
-         oeSsVVz9AeeACrFjaBrnlxKNwxjYGCA/d8nQWB8H0TlxHOx+UtfqiWJpzHYb2pq6wbzF
-         4h0hoco2PKzhrLbc27Yvv7XRRIRGV46ajKTz775pvULhvieSlynRAmh/l/KM9AevBSor
-         07Hw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+Received: by 2002:a05:7022:f8d:b0:8a:132c:44a7 with SMTP id eg13csp85735dlb;
+        Wed, 18 Sep 2024 22:55:38 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVVs0AYxu6ayP1i7BHkoJP1KwEl24QQP/gTizO+fjgb1WFj3kW5l1X21fhuYOGMs193u6BRuxZMpYxo8Q==@linaro.org
+X-Google-Smtp-Source: AGHT+IGbCpyfK93jDX5sRG6E5Xrz8sKKd70+LvP2CilEFxR0ustYzup3JnwXxQDb6RPIoRKBnZT0
+X-Received: by 2002:a05:622a:5291:b0:458:38cf:410e with SMTP id d75a77b69052e-4599d23e041mr312178841cf.22.1726725338280;
+        Wed, 18 Sep 2024 22:55:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1726725338; cv=none;
+        d=google.com; s=arc-20240605;
+        b=XMZkJuQubOtuG+aSwNFhzeTzKy5+0frA9JCDGVwNen5lPOxd7jPBPrdd4PAqmVuvas
+         xtmnkcM6x6ixMxH7SpL3XQxIRDSOKPxIpEyo2I5vGUB2F/6Lhv5NTatFDC/PosSyhMYs
+         2XWgT2sHAqBo9GOTP3Sa7h8P+WG1SlJ+mlgO0rt3DuopROOC9iKtICHEEeKcRxS65gjX
+         fVH1SVpHJtaFC0BAr9A6u7Fq4U17j5zE3a7s+uqOm5mrfxLZzvRIRD5yXZGgXjIbC5np
+         Fd/f7F24gimY62SpopvzfzTj1ChIrSWfuCXafwDD0zF5TqPsrrVQsdGRZwaXEIODfs6s
+         j7xQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=tx1S3zr1/95ZbSlSEpzuV5Mw8JtyoYuXcwzt94aV9gc=;
-        fh=xTwy9h/9AuJU2fvELynKihlwTmbulSUhXeGcNqgXfaQ=;
-        b=S07gtkIY06GqiWp/ph44QdMY1D3K0h02QonKztY/JUP1x4s5rhjbRpDG+ABitFr6zv
-         1ONfQ6AEVQka8tqSPbZxBQWVwo7CYnPX9+5V83EOpQfMr3+549d0pP75tCmV1YpmbBLq
-         PNLA4WDxxFq2Nwba3FtQzlMluIUalo8qfF4CTtUfdgc4CrRz6STgf1LTg41dolN2iTsN
-         AMvzIqGLGboadIn38p8op9bG6wRxAZri/O6Q3tKikUKiWeWmuNGAdzZqs8oROrymUE6x
-         GCLDgG/hazSgjDHn/5fOR+1NdCZ7s7HsGpawjz0wd6Pgpm99LE6U4OL9XPZNMUgyisBM
-         Ukzg==;
+        bh=PzpT6+aTdwyBbXmISyMnjylr9Tqo17Pen5GywsaZS64=;
+        fh=33vV7fdwuF57f9/cQTMVCjJLx99l6PrD70Pt7L6JrPg=;
+        b=U8ZOy45avZVpEwDAVL2zQXGu7nl04G/iOMABI5CF/FhBkgd3PpRoQK+9w8V8/yl1hs
+         BuV9R5cjlI+t3ICtsnJMCvJMUmyhkX8fCfunZcUCR5Jl5SzO+Yy2LhXaCu5dh0284zPq
+         Bk1PY16Z8ucdf/ZcgY1PCo152ju23fKNpNQGCVQIANGUxZbv6Zr3EPhTeTqfveTR4gG8
+         Ix8zWXvsQNFeDKh4XoUqLvIIK15ZZgbz25jGuEmXU6rPp9yXGz4ORd8ouRJXOocrSAUO
+         P3+1c76JwJOcbhPSL7is8/v7Kwo9E//mp5+oaP3fGdM1kR6VM2Piuu6Y52Y82ulv+9EQ
+         GBhw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=osVsBFlQ;
-       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <pierrick.bouvier@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d2e1a72fcca58-71944aca9c1sor5923863b3a.6.2024.09.18.21.47.54
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Wed, 18 Sep 2024 21:47:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+       dkim=pass header.i=@intel.com header.s=Intel header.b=A9VGJkm2;
+       spf=pass (google.com: domain of zhao1.liu@intel.com designates 192.198.163.15 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Return-Path: <zhao1.liu@intel.com>
+Received: from mgamail.intel.com (mgamail.intel.com. [192.198.163.15])
+        by mx.google.com with ESMTPS id d75a77b69052e-45b17931f19si12134001cf.562.2024.09.18.22.55.37
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 18 Sep 2024 22:55:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of zhao1.liu@intel.com designates 192.198.163.15 as permitted sender) client-ip=192.198.163.15;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=osVsBFlQ;
-       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1726721274; x=1727326074; darn=linaro.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=tx1S3zr1/95ZbSlSEpzuV5Mw8JtyoYuXcwzt94aV9gc=;
-        b=osVsBFlQOoCLoyNapVOCpAvTABPON2db2/FxOzhuRRYpzVhyg6tHzc4yxc/PsqOd5s
-         RsZIKSvRtcAH8GM18N0uiWn9qrqjupm2Wm2v+DNoN80cFa27Av6Rym32S9tdDE1Nzlnu
-         0zvlKWMKKVuBxCiaXDGIVWFzf945bosCzMhaTXQlYVq5E1iUzQQHHXANxXf3PmzSzQ9z
-         K8FHQ2ie6AMrQ07pr3EGxTKwEKWdD44lad/3QPpZYTnmtTkqYjRew9Gk6uWnhkLLYujF
-         TlgdSIj9JSxAB3vL/lYa+cEhAGDOXghQPUW2FUmOy5VfHF4KmenaSOuz2p2eng3buly7
-         rAbg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1726721274; x=1727326074;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=tx1S3zr1/95ZbSlSEpzuV5Mw8JtyoYuXcwzt94aV9gc=;
-        b=L/Uan0YQ2x8VsU0ndctE0//Aa9TVkgIgWFuSOhVuARMwhr+wEkRLfAKb3a6xrkR2i0
-         Zd83GYlmG4CG+GGLkMSTNBf1IXgP9PmsNq8CtEkLJnJdID7/8QPtFefAHdgcmOj4nJmS
-         N6SJkiEup+tZgREhBH9VDfKz2Wf6fm8KQBgx1w0Xo9EiZmEFuH8vNCnX1Drgs6YSWt5X
-         rU1ba1UMW4l+U3W+I6jDr6ca57q+FalR+Z0VSy3J7n9dkH/FNpCJF949XgXAr6uSraxy
-         v7t4tqHR/NwddV/rLOGJy5DAamJe9pRf7m1gQEjosf8iggIKwqQMVrNEdZZl+Kl+dFGC
-         53gw==
-X-Forwarded-Encrypted: i=1; AJvYcCV3SHZLoLyYVtLmXwMBpnwmp74b40HJTCRUK82sKYfHVWS5coTzudHRnEzbXckzABt0hfVCQ+PkU97UsQ==@linaro.org
-X-Gm-Message-State: AOJu0YyZjCVcwtuqx3imlabIFwvcJ45dOA+pZKkzzKc4Lb/n5FThJ2IY
-	vnu2ke+dEp94+0hKwYRITf6RvVDLxTWvMwt7eO6ayBXm/wv71j8aGf2C3ajlr4mzog==
-X-Google-Smtp-Source: AGHT+IGxUDLX/EdmxHd8lBwEQSgvpOMo5EV+rxbHrbQJ6oH4Ek//dhdYk+b8MbHM5eBQ51CMojJGfw==
-X-Received: by 2002:a05:6a00:190d:b0:714:1e36:3bcb with SMTP id d2e1a72fcca58-7192606bcb9mr34659991b3a.9.1726721273726;
-        Wed, 18 Sep 2024 21:47:53 -0700 (PDT)
-Return-Path: <pierrick.bouvier@linaro.org>
-Received: from linaro.. (216-180-64-156.dyn.novuscom.net. [216.180.64.156])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-71944bc279csm7478601b3a.188.2024.09.18.21.47.52
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 18 Sep 2024 21:47:53 -0700 (PDT)
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Palmer Dabbelt <palmer@dabbelt.com>,
-	Alistair Francis <alistair.francis@wdc.com>,
-	Hyman Huang <yong.huang@smartx.com>,
-	Halil Pasic <pasic@linux.ibm.com>,
-	kvm@vger.kernel.org,
-	Bin Meng <bmeng.cn@gmail.com>,
-	Peter Xu <peterx@redhat.com>,
-	Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
-	David Gibson <david@gibson.dropbear.id.au>,
-	Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
-	qemu-s390x@nongnu.org,
-	Dmitry Fleytman <dmitry.fleytman@gmail.com>,
-	Hanna Reitz <hreitz@redhat.com>,
-	Klaus Jensen <its@irrelevant.dk>,
-	Corey Minyard <minyard@acm.org>,
-	Laurent Vivier <laurent@vivier.eu>,
-	WANG Xuerui <git@xen0n.name>,
-	Thomas Huth <thuth@redhat.com>,
-	Rob Herring <robh@kernel.org>,
-	Eduardo Habkost <eduardo@habkost.net>,
-	Nicholas Piggin <npiggin@gmail.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	Harsh Prateek Bora <harshpb@linux.ibm.com>,
-	"Maciej S. Szmigiero" <maciej.szmigiero@oracle.com>,
-	Ani Sinha <anisinha@redhat.com>,
-	Stefan Berger <stefanb@linux.vnet.ibm.com>,
-	Fam Zheng <fam@euphon.net>,
-	Laurent Vivier <lvivier@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Keith Busch <kbusch@kernel.org>,
-	Jean-Christophe Dubois <jcd@tribudubois.net>,
-	qemu-riscv@nongnu.org,
+       dkim=pass header.i=@intel.com header.s=Intel header.b=A9VGJkm2;
+       spf=pass (google.com: domain of zhao1.liu@intel.com designates 192.198.163.15 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1726725338; x=1758261338;
+  h=from:to:cc:subject:date:message-id:in-reply-to:
+   references:mime-version:content-transfer-encoding;
+  bh=8vg6cBFZQesBlTuKocwFM3B2ozeoI/WHoRcB8vhHX3k=;
+  b=A9VGJkm2dEYQKjCeC5POKwV3dJ1hEXzHOD0KBu80NjX9lP0XxhrLpo9O
+   hSNgG9OTQBpmqWXj9LFoHUZ+wSIWNjPzO767XrhULfrK4tmKnkoKKFjCT
+   qKBtCi3oMZAVomUPNicpeE5GPfVQ0WjQpc5Pj7dD1cqJEohJ9xNLDmbQx
+   Jh+SLYDMfjk/oFFlJRf60WL/6snSXkj8ZsuZIXo5AHCJvSivqcLIZwoQs
+   u6OXxOGQNB82Ud1G3ccWo5j9rHgUHyBiLVRoKFTXCFDatOfbsVvsrTwKR
+   VPiYxu6z6vx6eoWlCvSmjJNXHfg/2AUO0g+rp5kZw9HzjzYiYse57hRio
+   A==;
+X-CSE-ConnectionGUID: t9yQjkXtSXyG19otwtzzfw==
+X-CSE-MsgGUID: yRj7vQVxSR2B/rLPVjVpXQ==
+X-IronPort-AV: E=McAfee;i="6700,10204,11199"; a="25813443"
+X-IronPort-AV: E=Sophos;i="6.10,240,1719903600"; 
+   d="scan'208";a="25813443"
+Received: from fmviesa006.fm.intel.com ([10.60.135.146])
+  by fmvoesa109.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Sep 2024 22:55:37 -0700
+X-CSE-ConnectionGUID: bQQEQDoBRhGmcoS6NdtmMA==
+X-CSE-MsgGUID: oV7dFcGcTuSTNDb8wim0HA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.10,240,1719903600"; 
+   d="scan'208";a="69418610"
+Received: from liuzhao-optiplex-7080.sh.intel.com ([10.239.160.36])
+  by fmviesa006.fm.intel.com with ESMTP; 18 Sep 2024 22:55:31 -0700
+From: Zhao Liu <zhao1.liu@intel.com>
+To: =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
 	Igor Mammedov <imammedo@redhat.com>,
-	Akihiko Odaki <akihiko.odaki@daynix.com>,
-	Sriram Yagnaraman <sriram.yagnaraman@ericsson.com>,
+	Eduardo Habkost <eduardo@habkost.net>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Yanan Wang <wangyanan55@huawei.com>,
+	"Michael S . Tsirkin" <mst@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Sergio Lopez <slp@redhat.com>,
 	Jason Wang <jasowang@redhat.com>,
-	Eric Farman <farman@linux.ibm.com>,
-	"Richard W.M. Jones" <rjones@redhat.com>,
-	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
-	Nina Schoetterl-Glausch <nsg@linux.ibm.com>,
-	Aurelien Jarno <aurelien@aurel32.net>,
+	Stefano Stabellini <sstabellini@kernel.org>,
+	Anthony PERARD <anthony@xenproject.org>,
+	Paul Durrant <paul@xen.org>,
+	"Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
+	Eric Blake <eblake@redhat.com>,
 	Markus Armbruster <armbru@redhat.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Fabiano Rosas <farosas@suse.de>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org,
+	kvm@vger.kernel.org,
 	qemu-arm@nongnu.org,
-	Christian Borntraeger <borntraeger@linux.ibm.com>,
-	qemu-ppc@nongnu.org,
-	Zhao Liu <zhao1.liu@intel.com>,
-	Daniel Henrique Barboza <danielhb413@gmail.com>,
-	qemu-block@nongnu.org,
-	Joel Stanley <joel@jms.id.au>,
-	Weiwei Li <liwei1518@gmail.com>,
-	Kevin Wolf <kwolf@redhat.com>,
-	Helge Deller <deller@gmx.de>,
-	Yanan Wang <wangyanan55@huawei.com>,
-	Michael Rolnik <mrolnik@gmail.com>,
-	Jesper Devantier <foss@defmacro.it>,
-	Marcelo Tosatti <mtosatti@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v3 34/34] scripts/checkpatch.pl: emit error when using assert(false)
-Date: Wed, 18 Sep 2024 21:46:41 -0700
-Message-Id: <20240919044641.386068-35-pierrick.bouvier@linaro.org>
-X-Mailer: git-send-email 2.39.5
-In-Reply-To: <20240919044641.386068-1-pierrick.bouvier@linaro.org>
-References: <20240919044641.386068-1-pierrick.bouvier@linaro.org>
+	Zhenyu Wang <zhenyu.z.wang@intel.com>,
+	Dapeng Mi <dapeng1.mi@linux.intel.com>,
+	Yongwei Ma <yongwei.ma@intel.com>,
+	Zhao Liu <zhao1.liu@intel.com>
+Subject: [RFC v2 01/12] qdev: Allow qdev_device_add() to add specific category device
+Date: Thu, 19 Sep 2024 14:11:17 +0800
+Message-Id: <20240919061128.769139-2-zhao1.liu@intel.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20240919061128.769139-1-zhao1.liu@intel.com>
+References: <20240919061128.769139-1-zhao1.liu@intel.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: WPFtLrH+lM4k
+X-TUID: DTelSlJu+l5V
 
-This patch is part of a series that moves towards a consistent use of
-g_assert_not_reached() rather than an ad hoc mix of different
-assertion mechanisms.
+Topology devices need to be created and realized before board
+initialization.
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Allow qdev_device_add() to specify category to help create topology
+devices early.
+
+Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
 ---
- scripts/checkpatch.pl | 3 +++
- 1 file changed, 3 insertions(+)
+ hw/net/virtio-net.c    |  2 +-
+ hw/usb/xen-usb.c       |  3 ++-
+ include/monitor/qdev.h |  4 ++--
+ system/qdev-monitor.c  | 12 ++++++++----
+ system/vl.c            |  4 ++--
+ 5 files changed, 15 insertions(+), 10 deletions(-)
 
-diff --git a/scripts/checkpatch.pl b/scripts/checkpatch.pl
-index 65b6f46f905..fa9c12230eb 100755
---- a/scripts/checkpatch.pl
-+++ b/scripts/checkpatch.pl
-@@ -3102,6 +3102,9 @@ sub process {
- 		if ($line =~ /\b(g_)?assert\(0\)/) {
- 			ERROR("use g_assert_not_reached() instead of assert(0)\n" . $herecurr);
- 		}
-+		if ($line =~ /\b(g_)?assert\(false\)/) {
-+			ERROR("use g_assert_not_reached() instead of assert(false)\n" . $herecurr);
-+		}
- 		if ($line =~ /\bstrerrorname_np\(/) {
- 			ERROR("use strerror() instead of strerrorname_np()\n" . $herecurr);
- 		}
+diff --git a/hw/net/virtio-net.c b/hw/net/virtio-net.c
+index fb84d142ee29..0d92e09e9076 100644
+--- a/hw/net/virtio-net.c
++++ b/hw/net/virtio-net.c
+@@ -935,7 +935,7 @@ static void failover_add_primary(VirtIONet *n, Error **errp)
+         return;
+     }
+ 
+-    dev = qdev_device_add_from_qdict(n->primary_opts,
++    dev = qdev_device_add_from_qdict(n->primary_opts, NULL,
+                                      n->primary_opts_from_json,
+                                      &err);
+     if (err) {
+diff --git a/hw/usb/xen-usb.c b/hw/usb/xen-usb.c
+index 13901625c0c8..e4168b1fec7e 100644
+--- a/hw/usb/xen-usb.c
++++ b/hw/usb/xen-usb.c
+@@ -766,7 +766,8 @@ static void usbback_portid_add(struct usbback_info *usbif, unsigned port,
+     qdict_put_str(qdict, "hostport", portname);
+     opts = qemu_opts_from_qdict(qemu_find_opts("device"), qdict,
+                                 &error_abort);
+-    usbif->ports[port - 1].dev = USB_DEVICE(qdev_device_add(opts, &local_err));
++    usbif->ports[port - 1].dev = USB_DEVICE(
++                                     qdev_device_add(opts, NULL, &local_err));
+     if (!usbif->ports[port - 1].dev) {
+         qobject_unref(qdict);
+         xen_pv_printf(&usbif->xendev, 0,
+diff --git a/include/monitor/qdev.h b/include/monitor/qdev.h
+index 1d57bf657794..f5fd6e6c1ffc 100644
+--- a/include/monitor/qdev.h
++++ b/include/monitor/qdev.h
+@@ -8,8 +8,8 @@ void hmp_info_qdm(Monitor *mon, const QDict *qdict);
+ void qmp_device_add(QDict *qdict, QObject **ret_data, Error **errp);
+ 
+ int qdev_device_help(QemuOpts *opts);
+-DeviceState *qdev_device_add(QemuOpts *opts, Error **errp);
+-DeviceState *qdev_device_add_from_qdict(const QDict *opts,
++DeviceState *qdev_device_add(QemuOpts *opts, long *category, Error **errp);
++DeviceState *qdev_device_add_from_qdict(const QDict *opts, long *category,
+                                         bool from_json, Error **errp);
+ 
+ /**
+diff --git a/system/qdev-monitor.c b/system/qdev-monitor.c
+index 457dfd05115e..fe120353fedc 100644
+--- a/system/qdev-monitor.c
++++ b/system/qdev-monitor.c
+@@ -632,7 +632,7 @@ const char *qdev_set_id(DeviceState *dev, char *id, Error **errp)
+     return prop->name;
+ }
+ 
+-DeviceState *qdev_device_add_from_qdict(const QDict *opts,
++DeviceState *qdev_device_add_from_qdict(const QDict *opts, long *category,
+                                         bool from_json, Error **errp)
+ {
+     ERRP_GUARD();
+@@ -655,6 +655,10 @@ DeviceState *qdev_device_add_from_qdict(const QDict *opts,
+         return NULL;
+     }
+ 
++    if (category && !test_bit(*category, dc->categories)) {
++        return NULL;
++    }
++
+     /* find bus */
+     path = qdict_get_try_str(opts, "bus");
+     if (path != NULL) {
+@@ -767,12 +771,12 @@ err_del_dev:
+ }
+ 
+ /* Takes ownership of @opts on success */
+-DeviceState *qdev_device_add(QemuOpts *opts, Error **errp)
++DeviceState *qdev_device_add(QemuOpts *opts, long *category, Error **errp)
+ {
+     QDict *qdict = qemu_opts_to_qdict(opts, NULL);
+     DeviceState *ret;
+ 
+-    ret = qdev_device_add_from_qdict(qdict, false, errp);
++    ret = qdev_device_add_from_qdict(qdict, category, false, errp);
+     if (ret) {
+         qemu_opts_del(opts);
+     }
+@@ -897,7 +901,7 @@ void qmp_device_add(QDict *qdict, QObject **ret_data, Error **errp)
+         qemu_opts_del(opts);
+         return;
+     }
+-    dev = qdev_device_add(opts, errp);
++    dev = qdev_device_add(opts, NULL, errp);
+     if (!dev) {
+         /*
+          * Drain all pending RCU callbacks. This is done because
+diff --git a/system/vl.c b/system/vl.c
+index 193e7049ccbe..c40364e2f091 100644
+--- a/system/vl.c
++++ b/system/vl.c
+@@ -1212,7 +1212,7 @@ static int device_init_func(void *opaque, QemuOpts *opts, Error **errp)
+ {
+     DeviceState *dev;
+ 
+-    dev = qdev_device_add(opts, errp);
++    dev = qdev_device_add(opts, NULL, errp);
+     if (!dev && *errp) {
+         error_report_err(*errp);
+         return -1;
+@@ -2665,7 +2665,7 @@ static void qemu_create_cli_devices(void)
+          * from the start, so call qdev_device_add_from_qdict() directly for
+          * now.
+          */
+-        dev = qdev_device_add_from_qdict(opt->opts, true, &error_fatal);
++        dev = qdev_device_add_from_qdict(opt->opts, NULL, true, &error_fatal);
+         object_unref(OBJECT(dev));
+         loc_pop(&opt->loc);
+     }
 -- 
-2.39.5
+2.34.1

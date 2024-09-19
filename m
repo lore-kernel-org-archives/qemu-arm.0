@@ -1,70 +1,70 @@
-Received: by 2002:a05:7022:f8d:b0:8a:132c:44a7 with SMTP id eg13csp85831dlb;
-        Wed, 18 Sep 2024 22:56:03 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUAUh2aU9eKDf5tH089Kr7MQn6lbA7KhEiPZfftrdu4T6bNEVjl3vCJCpJJCdgASIBQM6WlxeKyVT44ZA==@linaro.org
-X-Google-Smtp-Source: AGHT+IGag8YMD1NkLF17D3xEcYayaGIxDC0nb/Peq9hINufb5Lv/O7YBREKMrh4cAuWUuLeYvPHO
-X-Received: by 2002:a05:6214:5c06:b0:6c1:6ed9:24bf with SMTP id 6a1803df08f44-6c57df226b4mr276120996d6.17.1726725363377;
-        Wed, 18 Sep 2024 22:56:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1726725363; cv=none;
+Received: by 2002:a05:7022:f8d:b0:8a:132c:44a7 with SMTP id eg13csp85850dlb;
+        Wed, 18 Sep 2024 22:56:08 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVEAg4GCY89Oodg88fINJDzSvGT2NsXP7iF9N9gbtjsRrd9hKf7vvKTG2+xfNTNRC/wpiylJfMBY7pcaw==@linaro.org
+X-Google-Smtp-Source: AGHT+IH/doYt68toBGb1dEZWd9VxLGSyPeEEmoWypYVONyxD2UYZlLG0TWTZPXtJRRrp2MdJnWBu
+X-Received: by 2002:a05:6214:5983:b0:6c5:13f0:e2bf with SMTP id 6a1803df08f44-6c5735624c9mr400743146d6.19.1726725368654;
+        Wed, 18 Sep 2024 22:56:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1726725368; cv=none;
         d=google.com; s=arc-20240605;
-        b=AdUIri24D9IA4xlokU6wMEcaPeAqxxkiI+aSsfvqpt2IwV1K6grrcIJzugdN0Mjhu+
-         VbD+i5ccwFvRLx38tUKWpQdT6anSxumTzEDGy11oyrO0fMygbCq8Aw6m2R85tI/iSATi
-         kJmUXG0b+gj62axy49st8GyBDcZUtAxQoMeMIQQFfL6h4gPgx2NdeRvBGyvmxK11we7G
-         XYqSsX8K0DtVpL3Y0Jn85ZuqziUlewDzgPEkuf5UFMrYHOH5mCQVIl2W81VdtVs0fP6Y
-         TfGRVIZMRmJr4Gliu92UeIxtKdu/khTfjgkEvrbSZxX3OF8ZOa/deJW7/wtQVbPAZEzH
-         HR2A==
+        b=cZ3ocLLwZaECXcNpYYxW3cbnU+Dq+5asOOTzfctiIlPzHXFEd0d+cYRxDYEbFjrxl7
+         iRx8ZlUCiGuuN+motBjwrhhBguSgbDIlombTh6CZyJQ9B/zd4ngVozdv0yBnBH4StACf
+         nclNtmJCPyBA+pgN79yS8ebhDf6aRe3H3yE+seSPRbhUkvINgw3Gjm5qpahszIoXkAdf
+         Hfv3xIH4SH+mrlCmbZlVxTaCABE7LePkTx2cF1AKvIc+C+gIiRzpn/nRdxA6NWVvwLhu
+         ZoXcAJkjBT/EYnR3pcbCaIakbP/xaJfr7unNiiWhByhh7PW32atfsNQORuObLWOTuUEo
+         Imkg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=CWI9DPiHqFijnBWXjrLZ4p/m/zEeiyUK3KoFC8NxZn0=;
+        bh=xXR3XGGYXWS+TpLAPs/Qt834zvnQSu+nJ0ihF3QdWh8=;
         fh=33vV7fdwuF57f9/cQTMVCjJLx99l6PrD70Pt7L6JrPg=;
-        b=Yt2k7CCXFFmJCEYX/2wLiuTjxEO2p7j5gZGHSUh92Ux+pbIx8TfLHKevRnNxqLUzEs
-         okmSFaV20yD1AcEfaQ3oulS04E8ShIUDAvWpjF28vwpklVl9ASp+KpRLZZSyOR9W3JB7
-         ZZQ2Pp1a6y7FqLu+RqftFK9Nyy8KvY+CCqgdPXwloprIesyboSrxdAZF6xmLQd/97VQ+
-         wYc7PQeOagXw5N/hDARKqABfK650eIAk6c2gYLg3CFnFIvecXHeaBk5X4G8FDVkczRws
-         9+bDTsYDvPioXuzmlTYhzKPoaUeQMUxy5U/yVLM10tckgHa4v1+t2t0oQ3xmadqXqnl0
-         DwWQ==;
+        b=a/WO3Vz3E2wfdJnAS9/WwbUdNjBvGOeqByvvkHJdptGkp9IH/K3WvUgiY3ujGD/nHa
+         z/eufLFMiiSl0lA83R7VLWKyOS+kzNItFATEe0RyUMUAos/0gg6pomkx/tLKYSUF0cmw
+         OJR8wqVnYy+2mBWRIfT78K2qPGkIBSyPHpialrxDyN0FRcbG/uc74AfWsZToObIcmG4k
+         HcY0o1IA+pXyx47gDYwH0v+FEKNR8IHGLsfa/21Y4RsAnc/5iugpwwhWy1w0z2DfHBOR
+         N0mYLyYXxUCGBUZahnIFCQzFeKv3u4HgnzXDywCGA9Oz9bHd74k/cFN7ox/am4uanx6u
+         vy9Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=H5hgsLbh;
+       dkim=pass header.i=@intel.com header.s=Intel header.b=gLMNdSB+;
        spf=pass (google.com: domain of zhao1.liu@intel.com designates 192.198.163.15 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 Return-Path: <zhao1.liu@intel.com>
 Received: from mgamail.intel.com (mgamail.intel.com. [192.198.163.15])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6c75e561fefsi11380346d6.306.2024.09.18.22.56.02
+        by mx.google.com with ESMTPS id 6a1803df08f44-6c75e561fefsi11380346d6.306.2024.09.18.22.56.07
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 18 Sep 2024 22:56:03 -0700 (PDT)
+        Wed, 18 Sep 2024 22:56:08 -0700 (PDT)
 Received-SPF: pass (google.com: domain of zhao1.liu@intel.com designates 192.198.163.15 as permitted sender) client-ip=192.198.163.15;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=H5hgsLbh;
+       dkim=pass header.i=@intel.com header.s=Intel header.b=gLMNdSB+;
        spf=pass (google.com: domain of zhao1.liu@intel.com designates 192.198.163.15 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1726725363; x=1758261363;
+  t=1726725369; x=1758261369;
   h=from:to:cc:subject:date:message-id:in-reply-to:
    references:mime-version:content-transfer-encoding;
-  bh=aVNIbnJK5KhK/Y9DAm3101ZCx3EUgwFmVyZZJiTVby0=;
-  b=H5hgsLbhOxFVear6Ryk1Esm3v6lGFpvzYhAyS7oIxI430q+ldTZZmay3
-   1pZv21IuLOafMlaO5PKe2T8RWfG7QwLt0sXCyB2OFPePGInbI/R9unuIl
-   T43t4nhNWUgOBkptcimLewv5KR1oWJ+M5Qbh9egARxqX8pVq4Wt7zDQ0d
-   3msgV/zdQAYw0EOkEpIMRy6Y+C0WCxfOJQhLtN64FphjexwhNkVL1O3dG
-   S5zCFIHGnuRrFYD0/fmP6uOwReF9ptI1q9uwjZ6q5nRcTKl0ux5tSuR7+
-   k8N9je26yMj6ZZrsG56dYjBqPaeY/Vq987YcWHKvrvsFfXW5BK5JAbfh+
-   g==;
-X-CSE-ConnectionGUID: i9u5oYgbSq+YbTXX8GUMrw==
-X-CSE-MsgGUID: XH7PHJrSQg628plmCpOWmw==
-X-IronPort-AV: E=McAfee;i="6700,10204,11199"; a="25813564"
+  bh=8gzS+6OwF3KgPtXFuFeQ8LrUaVl5pHIgZpajPFYb5x4=;
+  b=gLMNdSB+hEjWahiu/nabJN0euvoI5jMBX8n5tMX7TEU5iYlc0SUCfxYp
+   OLenCyHTqGxkojVqLCJIovgaJ+71btDV9rroNXvqAp5WOC7V/pwBJop1D
+   Kd7zEn1Yk+EGxYsHE86axjVwrGxLL9gMHGH7q94orkEwpPxJqEr7QjqCr
+   O7Hp7eStwTuq0d0OhBxXOrJGCP2Z2uEwrIH9jy59SfilR9n+T9yIZSMsE
+   ODjizIk9ZiwqBK11S6Wvj6R+mQOYHBLt/sQrlBWH9gYN77dxY+IuBnopW
+   PDr56AYr9jbqU6p9mrRoyYNbcL96cwYhVijnAhSZvU40Ik4/uc8HI09XB
+   Q==;
+X-CSE-ConnectionGUID: +Y1Sff2dQYa/DbHFMliIWA==
+X-CSE-MsgGUID: vYzbtQtGRFGuErrzH6ZAow==
+X-IronPort-AV: E=McAfee;i="6700,10204,11199"; a="25813604"
 X-IronPort-AV: E=Sophos;i="6.10,240,1719903600"; 
-   d="scan'208";a="25813564"
+   d="scan'208";a="25813604"
 Received: from fmviesa006.fm.intel.com ([10.60.135.146])
-  by fmvoesa109.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Sep 2024 22:56:02 -0700
-X-CSE-ConnectionGUID: RP7k4QczQ6OpLTckpSW2EA==
-X-CSE-MsgGUID: Wf2WQRXTTnqA5CBJWbJoEA==
+  by fmvoesa109.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Sep 2024 22:56:07 -0700
+X-CSE-ConnectionGUID: gUHshS+6Qa+f/5DU/ygquA==
+X-CSE-MsgGUID: cvkL99LVRG6pb7HnWQ57VQ==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.10,240,1719903600"; 
-   d="scan'208";a="69418694"
+   d="scan'208";a="69418731"
 Received: from liuzhao-optiplex-7080.sh.intel.com ([10.239.160.36])
-  by fmviesa006.fm.intel.com with ESMTP; 18 Sep 2024 22:55:55 -0700
+  by fmviesa006.fm.intel.com with ESMTP; 18 Sep 2024 22:56:01 -0700
 From: Zhao Liu <zhao1.liu@intel.com>
 To: =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
 	Igor Mammedov <imammedo@redhat.com>,
@@ -92,436 +92,133 @@ Cc: qemu-devel@nongnu.org,
 	Dapeng Mi <dapeng1.mi@linux.intel.com>,
 	Yongwei Ma <yongwei.ma@intel.com>,
 	Zhao Liu <zhao1.liu@intel.com>
-Subject: [RFC v2 05/12] hw/core/machine: Introduce custom CPU topology with max limitations
-Date: Thu, 19 Sep 2024 14:11:21 +0800
-Message-Id: <20240919061128.769139-6-zhao1.liu@intel.com>
+Subject: [RFC v2 06/12] hw/cpu: Constrain CPU topology tree with max_limit
+Date: Thu, 19 Sep 2024 14:11:22 +0800
+Message-Id: <20240919061128.769139-7-zhao1.liu@intel.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240919061128.769139-1-zhao1.liu@intel.com>
 References: <20240919061128.769139-1-zhao1.liu@intel.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: NEEXdgFMYAly
+X-TUID: SjtyEqBXqU2C
 
-Custom topology allows user to create CPU topology totally via -device
-from CLI.
+Apply max_limit to CPU topology and prevent the number of topology
+devices from exceeding the max limitation configured by user.
 
-Once custom topology is enabled, machine will stop the default CPU
-creation and expect user's CPU topology tree built from CLI.
-
-With custom topology, any CPU topology, whether symmetric or hybrid
-(aka, heterogeneous), can be created naturally.
-
-However, custom topology also needs to be restricted because
-possible_cpus[] requires some preliminary topology information for
-initialization, which is the max limitation (the new max parameters in
--smp). Custom topology will be subject to this max limitation.
-
-Max limitations are necessary because creating custom topology before
-initializing possible_cpus[] would compromise future hotplug scalability.
-
-Max limitations are placed in -smp, even though custom topology can be
-defined as hybrid. From an implementation perspective, any hybrid
-topology can be considered a subset of a complete SMP structure.
-Therefore, semantically, using max limitations to constrain hybrid
-topology is consistent.
-
-Introduce custom CPU topology related properties in MachineClass. At the
-same time, add and parse max parameters from -smp, and store the max
-limitations in CPUSlot.
+Additionally, ensure that CPUs created from the CLI via custom topology
+meet at least the requirements of smp.cpus. This guarantees that custom
+topology will always have CPUs.
 
 Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
 ---
- MAINTAINERS               |   1 +
- hw/core/machine-smp.c     |   2 +
- hw/core/machine.c         |  33 +++++++++++
- hw/core/meson.build       |   2 +-
- hw/cpu/cpu-slot.c         | 118 ++++++++++++++++++++++++++++++++++++++
- include/hw/boards.h       |   2 +
- include/hw/cpu/cpu-slot.h |   9 +++
- qapi/machine.json         |  22 ++++++-
- stubs/machine-stubs.c     |  21 +++++++
- stubs/meson.build         |   1 +
- 10 files changed, 209 insertions(+), 2 deletions(-)
- create mode 100644 stubs/machine-stubs.c
+ hw/core/machine.c         |  4 ++++
+ hw/cpu/cpu-slot.c         | 32 ++++++++++++++++++++++++++++++++
+ include/hw/cpu/cpu-slot.h |  1 +
+ include/hw/qdev-core.h    |  5 +++++
+ 4 files changed, 42 insertions(+)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 4608c3c6db8c..5ea739f12857 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -1901,6 +1901,7 @@ F: include/hw/cpu/die.h
- F: include/hw/cpu/module.h
- F: include/hw/cpu/socket.h
- F: include/sysemu/numa.h
-+F: stubs/machine-stubs.c
- F: tests/functional/test_cpu_queries.py
- F: tests/functional/test_empty_cpu_model.py
- F: tests/unit/test-smp-parse.c
-diff --git a/hw/core/machine-smp.c b/hw/core/machine-smp.c
-index 9a281946762f..d3be4352267d 100644
---- a/hw/core/machine-smp.c
-+++ b/hw/core/machine-smp.c
-@@ -259,6 +259,8 @@ void machine_parse_smp_config(MachineState *ms,
-                    mc->name, mc->max_cpus);
-         return;
-     }
-+
-+    machine_parse_custom_topo_config(ms, config, errp);
- }
- 
- static bool machine_check_topo_support(MachineState *ms,
 diff --git a/hw/core/machine.c b/hw/core/machine.c
-index 7b4ac5ac52b2..dedabd75c825 100644
+index dedabd75c825..54fca9eb7265 100644
 --- a/hw/core/machine.c
 +++ b/hw/core/machine.c
-@@ -966,6 +966,30 @@ static void machine_set_smp_cache(Object *obj, Visitor *v, const char *name,
-     qapi_free_SmpCachePropertiesList(caches);
- }
+@@ -1684,6 +1684,10 @@ void machine_run_board_post_init(MachineState *machine, Error **errp)
+ {
+     MachineClass *machine_class = MACHINE_GET_CLASS(machine);
  
-+static bool machine_get_custom_topo(Object *obj, Error **errp)
-+{
-+    MachineState *ms = MACHINE(obj);
-+
-+    if (!ms->topo) {
-+        error_setg(errp, "machine doesn't support custom topology");
-+        return false;
-+    }
-+
-+    return ms->topo->custom_topo_enabled;
-+}
-+
-+static void machine_set_custom_topo(Object *obj, bool value, Error **errp)
-+{
-+    MachineState *ms = MACHINE(obj);
-+
-+    if (!ms->topo) {
-+        error_setg(errp, "machine doesn't support custom topology");
++    if (!machine_validate_topo_tree(machine, errp)) {
 +        return;
 +    }
 +
-+    ms->topo->custom_topo_enabled = value;
-+}
-+
- static void machine_get_boot(Object *obj, Visitor *v, const char *name,
-                             void *opaque, Error **errp)
- {
-@@ -1240,6 +1264,15 @@ static void machine_initfn(Object *obj)
+     if (machine_class->post_init) {
+         machine_class->post_init(machine);
      }
- 
-     ms->topo = NULL;
-+    if (mc->smp_props.topo_tree_supported &&
-+        mc->smp_props.custom_topo_supported) {
-+        object_property_add_bool(obj, "custom-topo",
-+                                 machine_get_custom_topo,
-+                                 machine_set_custom_topo);
-+        object_property_set_description(obj, "custom-topo",
-+                                        "Set on/off to enable/disable "
-+                                        "user custom CPU topology tree");
-+    }
- 
-     machine_copy_boot_config(ms, &(BootConfiguration){ 0 });
- }
-diff --git a/hw/core/meson.build b/hw/core/meson.build
-index a3d9bab9f42a..f70d6104a00d 100644
---- a/hw/core/meson.build
-+++ b/hw/core/meson.build
-@@ -13,7 +13,6 @@ hwcore_ss.add(files(
- ))
- 
- common_ss.add(files('cpu-common.c'))
--common_ss.add(files('machine-smp.c'))
- system_ss.add(when: 'CONFIG_FITLOADER', if_true: files('loader-fit.c'))
- system_ss.add(when: 'CONFIG_GENERIC_LOADER', if_true: files('generic-loader.c'))
- system_ss.add(when: 'CONFIG_GUEST_LOADER', if_true: files('guest-loader.c'))
-@@ -33,6 +32,7 @@ system_ss.add(files(
-   'loader.c',
-   'machine-hmp-cmds.c',
-   'machine-qmp-cmds.c',
-+  'machine-smp.c',
-   'machine.c',
-   'nmi.c',
-   'null-machine.c',
 diff --git a/hw/cpu/cpu-slot.c b/hw/cpu/cpu-slot.c
-index 1cc3b32ed675..2d16a2729501 100644
+index 2d16a2729501..f2b9c412926f 100644
 --- a/hw/cpu/cpu-slot.c
 +++ b/hw/cpu/cpu-slot.c
-@@ -165,6 +165,11 @@ void machine_plug_cpu_slot(MachineState *ms)
-         set_bit(CPU_TOPOLOGY_LEVEL_DIE, slot->supported_levels);
-     }
+@@ -47,6 +47,7 @@ static void cpu_slot_device_realize(DeviceListener *listener,
+ {
+     CPUSlot *slot = container_of(listener, CPUSlot, listener);
+     CPUTopoState *topo;
++    int max_children;
  
-+    /* Initizlize max_limit to 1, as members of CpuTopology. */
-+    for (int i = 0; i < CPU_TOPOLOGY_LEVEL__MAX; i++) {
-+        slot->stat.entries[i].max_limit = 1;
-+    }
-+
-     ms->topo = slot;
-     object_property_add_child(container_get(OBJECT(ms), "/peripheral"),
-                               "cpu-slot", OBJECT(ms->topo));
-@@ -295,6 +300,11 @@ bool machine_create_topo_tree(MachineState *ms, Error **errp)
-         return false;
-     }
+     if (!object_dynamic_cast(OBJECT(dev), TYPE_CPU_TOPO)) {
+         return;
+@@ -54,6 +55,13 @@ static void cpu_slot_device_realize(DeviceListener *listener,
  
-+    /* User will customize topology tree. */
-+    if (slot->custom_topo_enabled) {
-+        return true;
-+    }
+     topo = CPU_TOPO(dev);
+     cpu_slot_add_topo_info(slot, topo);
 +
-     /*
-      * Don't support full topology tree.
-      * Just use slot to collect topology device.
-@@ -325,3 +335,111 @@ bool machine_create_topo_tree(MachineState *ms, Error **errp)
++    if (dev->parent_bus) {
++        max_children = slot->stat.entries[GET_CPU_TOPO_LEVEL(topo)].max_limit;
++        if (dev->parent_bus->num_children == max_children) {
++            qbus_mark_full(dev->parent_bus);
++        }
++    }
+ }
+ 
+ static void cpu_slot_del_topo_info(CPUSlot *slot, CPUTopoState *topo)
+@@ -79,6 +87,10 @@ static void cpu_slot_device_unrealize(DeviceListener *listener,
+ 
+     topo = CPU_TOPO(dev);
+     cpu_slot_del_topo_info(slot, topo);
++
++    if (dev->parent_bus) {
++        qbus_mask_full(dev->parent_bus);
++    }
+ }
+ 
+ DeviceListener cpu_slot_device_listener = {
+@@ -443,3 +455,23 @@ bool machine_parse_custom_topo_config(MachineState *ms,
  
      return true;
  }
 +
-+int get_max_topo_by_level(const MachineState *ms, CpuTopologyLevel level)
++bool machine_validate_topo_tree(MachineState *ms, Error **errp)
 +{
++    int cpus;
++
 +    if (!ms->topo || !ms->topo->custom_topo_enabled) {
-+        return get_smp_info_by_level(&ms->smp, level);
-+    }
-+    return ms->topo->stat.entries[level].max_limit;
-+}
-+
-+bool machine_parse_custom_topo_config(MachineState *ms,
-+                                      const SMPConfiguration *config,
-+                                      Error **errp)
-+{
-+    MachineClass *mc = MACHINE_GET_CLASS(ms);
-+    CPUSlot *slot = ms->topo;
-+    bool is_valid;
-+    int maxcpus;
-+
-+    if (!slot) {
 +        return true;
 +    }
 +
-+    is_valid = config->has_maxsockets && config->maxsockets;
-+    if (mc->smp_props.custom_topo_supported) {
-+        slot->stat.entries[CPU_TOPOLOGY_LEVEL_SOCKET].max_limit =
-+            is_valid ? config->maxsockets : ms->smp.sockets;
-+    } else if (is_valid) {
-+        error_setg(errp, "maxsockets > 0 not supported "
-+                   "by this machine's CPU topology");
++    cpus = ms->topo->stat.entries[CPU_TOPOLOGY_LEVEL_THREAD].total_instances;
++    if (cpus < ms->smp.cpus) {
++        error_setg(errp, "machine requires at least %d online CPUs, "
++                   "but currently only %d CPUs",
++                   ms->smp.cpus, cpus);
 +        return false;
-+    } else {
-+        slot->stat.entries[CPU_TOPOLOGY_LEVEL_SOCKET].max_limit =
-+            ms->smp.sockets;
 +    }
 +
-+    is_valid = config->has_maxdies && config->maxdies;
-+    if (mc->smp_props.custom_topo_supported &&
-+        mc->smp_props.dies_supported) {
-+        slot->stat.entries[CPU_TOPOLOGY_LEVEL_DIE].max_limit =
-+            is_valid ? config->maxdies : ms->smp.dies;
-+    } else if (is_valid) {
-+        error_setg(errp, "maxdies > 0 not supported "
-+                   "by this machine's CPU topology");
-+        return false;
-+    } else {
-+        slot->stat.entries[CPU_TOPOLOGY_LEVEL_DIE].max_limit =
-+            ms->smp.dies;
-+    }
-+
-+    is_valid = config->has_maxmodules && config->maxmodules;
-+    if (mc->smp_props.custom_topo_supported &&
-+        mc->smp_props.modules_supported) {
-+        slot->stat.entries[CPU_TOPOLOGY_LEVEL_MODULE].max_limit =
-+            is_valid ? config->maxmodules : ms->smp.modules;
-+    } else if (is_valid) {
-+        error_setg(errp, "maxmodules > 0 not supported "
-+                   "by this machine's CPU topology");
-+        return false;
-+    } else {
-+        slot->stat.entries[CPU_TOPOLOGY_LEVEL_MODULE].max_limit =
-+            ms->smp.modules;
-+    }
-+
-+    is_valid = config->has_maxcores && config->maxcores;
-+    if (mc->smp_props.custom_topo_supported) {
-+        slot->stat.entries[CPU_TOPOLOGY_LEVEL_CORE].max_limit =
-+            is_valid ? config->maxcores : ms->smp.cores;
-+    } else if (is_valid) {
-+        error_setg(errp, "maxcores > 0 not supported "
-+                   "by this machine's CPU topology");
-+        return false;
-+    } else {
-+        slot->stat.entries[CPU_TOPOLOGY_LEVEL_CORE].max_limit =
-+            ms->smp.cores;
-+    }
-+
-+    is_valid = config->has_maxthreads && config->maxthreads;
-+    if (mc->smp_props.custom_topo_supported) {
-+        slot->stat.entries[CPU_TOPOLOGY_LEVEL_THREAD].max_limit =
-+            is_valid ? config->maxthreads : ms->smp.threads;
-+    } else if (is_valid) {
-+        error_setg(errp, "maxthreads > 0 not supported "
-+                   "by this machine's CPU topology");
-+        return false;
-+    } else {
-+        slot->stat.entries[CPU_TOPOLOGY_LEVEL_THREAD].max_limit =
-+            ms->smp.threads;
-+    }
-+
-+    maxcpus = 1;
-+    /* Initizlize max_limit to 1, as members of CpuTopology. */
-+    for (int i = 0; i < CPU_TOPOLOGY_LEVEL__MAX; i++) {
-+        maxcpus *= slot->stat.entries[i].max_limit;
-+    }
-+
-+    if (!config->has_maxcpus) {
-+        ms->smp.max_cpus = maxcpus;
-+    } else {
-+        if (maxcpus != ms->smp.max_cpus) {
-+            error_setg(errp, "maxcpus (%d) should be equal to "
-+                       "the product of the remaining max parameters (%d)",
-+                       ms->smp.max_cpus, maxcpus);
-+            return false;
-+        }
-+    }
-+
++    /* TODO: Add checks for other levels to honor more -smp parameters. */
 +    return true;
 +}
-diff --git a/include/hw/boards.h b/include/hw/boards.h
-index 9f706223e848..6ef4ea322590 100644
---- a/include/hw/boards.h
-+++ b/include/hw/boards.h
-@@ -157,6 +157,7 @@ typedef struct {
-  * @topo_tree_supported - whether QOM topology tree is supported by the
-  *                        machine
-  * @arch_id_topo_level - topology granularity for possible_cpus[]
-+ * @custom_topo_supported - whether custom topology tree is supported
-  */
- typedef struct {
-     bool prefer_sockets;
-@@ -169,6 +170,7 @@ typedef struct {
-     bool cache_supported[CACHE_LEVEL_AND_TYPE__MAX];
-     bool topo_tree_supported;
-     CpuTopologyLevel arch_id_topo_level;
-+    bool custom_topo_supported;
- } SMPCompatProps;
- 
- /**
 diff --git a/include/hw/cpu/cpu-slot.h b/include/hw/cpu/cpu-slot.h
-index 1838e8c0c3f9..8d7e35aa1851 100644
+index 8d7e35aa1851..f56a0b08dca4 100644
 --- a/include/hw/cpu/cpu-slot.h
 +++ b/include/hw/cpu/cpu-slot.h
-@@ -24,10 +24,13 @@
-  *                   that are currently inserted in CPU slot
-  * @max_instances: Maximum number of topological instances at the same level
-  *                 under the parent topological container
-+ * @max_limit: Maximum limitation of topological instances at the same level
-+ *             under the parent topological container
-  */
- typedef struct CPUTopoStatEntry {
-     int total_instances;
-     int max_instances;
-+    int max_limit;
- } CPUTopoStatEntry;
- 
- /**
-@@ -54,6 +57,7 @@ OBJECT_DECLARE_SIMPLE_TYPE(CPUSlot, CPU_SLOT)
-  * @stat: Topological statistics for topology tree.
-  * @bus: CPU bus to add the children topology device.
-  * @supported_levels: Supported topology levels for topology tree.
-+ * @custom_topo_enabled: Whether user to create custom topology tree.
-  * @listener: Hooks to listen realize() and unrealize() of topology
-  *            device.
-  */
-@@ -65,6 +69,7 @@ struct CPUSlot {
-     CPUBusState bus;
-     CPUTopoStat stat;
-     DECLARE_BITMAP(supported_levels, CPU_TOPOLOGY_LEVEL__MAX);
-+    bool custom_topo_enabled;
- 
-     DeviceListener listener;
- };
-@@ -75,5 +80,9 @@ struct CPUSlot {
- 
- void machine_plug_cpu_slot(MachineState *ms);
- bool machine_create_topo_tree(MachineState *ms, Error **errp);
-+int get_max_topo_by_level(const MachineState *ms, CpuTopologyLevel level);
-+bool machine_parse_custom_topo_config(MachineState *ms,
-+                                      const SMPConfiguration *config,
-+                                      Error **errp);
+@@ -84,5 +84,6 @@ int get_max_topo_by_level(const MachineState *ms, CpuTopologyLevel level);
+ bool machine_parse_custom_topo_config(MachineState *ms,
+                                       const SMPConfiguration *config,
+                                       Error **errp);
++bool machine_validate_topo_tree(MachineState *ms, Error **errp);
  
  #endif /* CPU_SLOT_H */
-diff --git a/qapi/machine.json b/qapi/machine.json
-index a6b8795b09ed..2d5c6e4becd1 100644
---- a/qapi/machine.json
-+++ b/qapi/machine.json
-@@ -1695,6 +1695,21 @@
- #
- # @threads: number of threads per core
- #
-+# @maxsockets: maximum number of sockets allowed to be created per
-+#     parent container in custom CPU topology tree (since 10.0)
-+#
-+# @maxdies: maximum number of dies allowed to be created per parent
-+#     container in custom CPU topology tree (since 10.0)
-+#
-+# @maxmodules: maximum number of modules allowed to be created per
-+#     parent container in custom CPU topology tree (since 10.0)
-+#
-+# @maxcores: maximum number of cores allowed to be created per parent
-+#     container in custom CPU topology tree (since 10.0)
-+#
-+# @maxthreads: maximum number of threads allowed to be created per
-+#     parent container in custom CPU topology tree (since 10.0)
-+#
- # Since: 6.1
- ##
- { 'struct': 'SMPConfiguration', 'data': {
-@@ -1707,7 +1722,12 @@
-      '*modules': 'int',
-      '*cores': 'int',
-      '*threads': 'int',
--     '*maxcpus': 'int' } }
-+     '*maxcpus': 'int',
-+     '*maxsockets': 'int',
-+     '*maxdies': 'int',
-+     '*maxmodules': 'int',
-+     '*maxcores': 'int',
-+     '*maxthreads': 'int' } }
+diff --git a/include/hw/qdev-core.h b/include/hw/qdev-core.h
+index ddcaa329e3ec..3f2117e08774 100644
+--- a/include/hw/qdev-core.h
++++ b/include/hw/qdev-core.h
+@@ -1063,6 +1063,11 @@ static inline void qbus_mark_full(BusState *bus)
+     bus->full = true;
+ }
  
- ##
- # @x-query-irq:
-diff --git a/stubs/machine-stubs.c b/stubs/machine-stubs.c
-new file mode 100644
-index 000000000000..e592504fef6b
---- /dev/null
-+++ b/stubs/machine-stubs.c
-@@ -0,0 +1,21 @@
-+/*
-+ * Machine stubs
-+ *
-+ * Copyright (C) 2024 Intel Corporation.
-+ *
-+ * Author: Zhao Liu <zhao1.liu@intel.com>
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or
-+ * later.  See the COPYING file in the top-level directory.
-+ */
-+
-+#include "qemu/osdep.h"
-+
-+#include "hw/boards.h"
-+
-+bool machine_parse_custom_topo_config(MachineState *ms,
-+                                      const SMPConfiguration *config,
-+                                      Error **errp)
++static inline void qbus_mask_full(BusState *bus)
 +{
-+    return true;
++    bus->full = false;
 +}
-diff --git a/stubs/meson.build b/stubs/meson.build
-index 772a3e817df2..406a7efc5bcb 100644
---- a/stubs/meson.build
-+++ b/stubs/meson.build
-@@ -66,6 +66,7 @@ if have_system
-   stub_ss.add(files('dump.c'))
-   stub_ss.add(files('cmos.c'))
-   stub_ss.add(files('fw_cfg.c'))
-+  stub_ss.add(files('machine-stubs.c'))
-   stub_ss.add(files('target-get-monitor-def.c'))
-   stub_ss.add(files('target-monitor-defs.c'))
-   stub_ss.add(files('win32-kbd-hook.c'))
++
+ void device_listener_register(DeviceListener *listener);
+ void device_listener_unregister(DeviceListener *listener);
+ 
 -- 
 2.34.1

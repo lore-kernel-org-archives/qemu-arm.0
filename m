@@ -1,70 +1,70 @@
-Received: by 2002:a17:504:1bc1:b0:1be9:327d:8ee3 with SMTP id v1csp1112933njg;
-        Wed, 18 Sep 2024 18:40:59 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWituCSCfNa/mW0EjL7PL4bTXHOhzu0dd5zvc4wKkSBtUkmtZK5kf7Tg3Tc6xkBj/FI6FKeoYSeng2fnw==@linaro.org
-X-Google-Smtp-Source: AGHT+IGS1eYgsqdTjVN3NqIyDmCIMX9hkBPNXkiF45BP3Pj4GdJE77v+5pKlWA2S8syuv+ltOIid
-X-Received: by 2002:ac8:7d41:0:b0:458:3a65:1d14 with SMTP id d75a77b69052e-458602b9513mr446784301cf.6.1726710059167;
-        Wed, 18 Sep 2024 18:40:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1726710059; cv=none;
+Received: by 2002:a17:504:1bc1:b0:1be9:327d:8ee3 with SMTP id v1csp1112976njg;
+        Wed, 18 Sep 2024 18:41:06 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWAujy++j1Lpl1UqK5YqFN9P+uKhd5Z1PiyvPBHaA7MCUvmZM2gg6byVB0Hb5RUIgdnO62wMnfsrOQz5Q==@linaro.org
+X-Google-Smtp-Source: AGHT+IFQJ7zD3qiL9SoVYGnUyCDGIhbKn4xzt/EGyq0xhwkHES1TP9ccMfXI7FK1UPfkVY1EhSRE
+X-Received: by 2002:a05:622a:1103:b0:458:1f80:67d2 with SMTP id d75a77b69052e-45860316084mr314038761cf.33.1726710066314;
+        Wed, 18 Sep 2024 18:41:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1726710066; cv=none;
         d=google.com; s=arc-20240605;
-        b=W98ia1uZuSNWUXSSe01DSlXQyMkV84R9pP0Eux7X4xHx2fIfVbIoUuJyjDE3pDdfSl
-         QdK4FERwYwz4nSxJ7wj2z36sgdJl/xzvtfKGJ6G093MnbVftNsrSNMvlBPOBhVjJ0I7J
-         IwssScEF00rSzjFSyY5RIukmbUBZ8j4Gj7a2JrV1Wv4xg5EA1dnQ5iy2sWwd8a0+LvrX
-         sGXNH1RUwCRKZKpGMxowal7BLExzbozMPUDRaO98xlOS6VEe8xYAK+iK2quC4FdJuhFe
-         i9bHg4LF0fMKzQlSSmnXtYm2dWw/okGE3SP5iyzwarvLLI1kkoOLw5okkv8HrXvN39ed
-         eNuQ==
+        b=a02IWCY2kpMheH415lh3w9JP0sqN2sEK7xGunHfvIwDDgoXc1ssqFu1SCo5LbAB6Dw
+         n5sR+S2bfcSXpFBukcCS5Fo6H+jSxRL3SZ+7HYQMbCLB5p2X3FjG4SyocWbSy21FugWx
+         Six4gnJIIeoeKaX6ohH2iGwFFnMlHRCiG01SCWi0VswCIn+xMmx3XDqznNPyOTc9brC/
+         VHL4ayo+DsaNIOxpR4eC1Oi5KTcHRI9DYYTCIifTc1hZ8nZeJXOkJVSnzaRp/rrRQB3P
+         MuIwOOs0t0LsXXKzdny7swjNxvI6iiX2ExGyCbnQfWdFsGACDp4c/FUxLae/Fn+c4vRN
+         P5BA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=AU6jgFDO6r5hz5BmlviESp13WRPd5XDRhS03Dc9ot0Q=;
+        bh=LjLY12BDDhqnKVVmfaqFrJ2OMiaMxVd9oNdkDhquPyE=;
         fh=N9JXs6UlidM8EsUInW73fWjlYrhprlUzJ9DsuKSk+BQ=;
-        b=ZLzpcQ5KCUvsnISl6Xici1N2dobHD27mSlwWN4s038HeRoNn1FUo63saUQv9mUZR5W
-         ujVOugTld7JuIIo2Kp8FdqNgf8rjiU0idRxBrIpo3O1dKSkg15Vi8E2/cetxN8i0Iv0g
-         At9CPTM4EM7TmXDIx0t134lSiY9nnlDvANiOgoCjnPbhPeOlcasZ9FECr13/8VRYsVu3
-         iv3Cl5o9TvR/Cn5bNvk2kLUh6kpCRXJ+UfVtst1/uhfbSKcYcNRaGvIqxJ8iDUwziPCu
-         WWVxA/8/ePKVQCueKdBLl7wOqH1i12gQ9wurG/UwbYV47IfRmm+303EyEDTJWvT2dfpt
-         6OYA==;
+        b=g2MRUB5wv2WB3basOGd41N+ZuBHCJU0dPE+K8XTAMXEiyAW2SlToc+SE6hzX+CTQMN
+         dBJQetBu1nil0Wqc8tib7WBIRBpoXZDWbXLXKyAQln14PV/6lhYHxpH0bITvJ94rCEmL
+         d400bqcvLBEOugafzN3j6duEz9SWO3b/QaStIph6kK842Ii+QLCN8iLw/KKNEQHGQIlW
+         UvyR5m3ot/+8I6owjMlMzBdKeLAi2ilONUUHk48eNY0DBnWNu7eba6x3cbDS7nHvBVLC
+         nq8YzQTF8M40uNwB0Qs3K/0ylw9kSVIf6sfWQ2ekaTNltv77juEhalbYw4BD/gqVk9Xg
+         tDRA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=heY2zlvo;
+       dkim=pass header.i=@intel.com header.s=Intel header.b="H4sg3J7/";
        spf=pass (google.com: domain of zhao1.liu@intel.com designates 192.198.163.15 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 Return-Path: <zhao1.liu@intel.com>
 Received: from mgamail.intel.com (mgamail.intel.com. [192.198.163.15])
-        by mx.google.com with ESMTPS id d75a77b69052e-45b1795df30si8300841cf.730.2024.09.18.18.40.58
+        by mx.google.com with ESMTPS id d75a77b69052e-45b178ed4c3si7793001cf.389.2024.09.18.18.41.05
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 18 Sep 2024 18:40:59 -0700 (PDT)
+        Wed, 18 Sep 2024 18:41:06 -0700 (PDT)
 Received-SPF: pass (google.com: domain of zhao1.liu@intel.com designates 192.198.163.15 as permitted sender) client-ip=192.198.163.15;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=heY2zlvo;
+       dkim=pass header.i=@intel.com header.s=Intel header.b="H4sg3J7/";
        spf=pass (google.com: domain of zhao1.liu@intel.com designates 192.198.163.15 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1726710059; x=1758246059;
+  t=1726710066; x=1758246066;
   h=from:to:cc:subject:date:message-id:in-reply-to:
    references:mime-version:content-transfer-encoding;
-  bh=yof4pkElgDw/rHKl12O9snBHTn5fw7x3AIk3IaZiwVQ=;
-  b=heY2zlvoe0J+UMULvBIP+iAuaSOmQr50A+nULomSaF2Xb/5UfbD1rmkY
-   h88/lUSki2Un2h5KIj+yuSMYrCFBxzxlR62/jw9JWwtj6SxlyDpSxrb4+
-   ncZZsS8ec/IlIc4xdIK7W9g+KVYXkcm0WWyXdWmm0psHu25sVfDrBbgZH
-   n+r3ncBFoNgN0HNkIAGb/D3Tb92pzfh/rl98cM2N1/0SS1uj2f2XQLgeU
-   uK1hH4xzItLVLStxjqgt7ILaSBdh4pNdYvnBhdKaNB1V7Pg97PbzkwKyZ
-   sQHrjptxZmymWa1oNIaIKKDa2lseLHl1FGfxLFr8SNzGo5fwbUjXGZEqX
+  bh=wx8cdMXy87jbp3iDhkGcf2ZrKApAXiC+ip9Awek7e04=;
+  b=H4sg3J7/8h9fIOrQXZ2gqJiz2lje4MubItHOAGLd8F4Q1A8DovnyhDp/
+   7oFqISUPnYDfbUna4SnTwwgIU5KioshijN9azLA0YJWZF7gS04M5M1D+a
+   ouLa7xYnEZ68mYR/L7F8q1Bx2b0g2ch6sKbUOCOJfzS7x+j390WwJHHpI
+   esObkElxFt+bPYeWadBJNo4afAZZwo2D0tIWx1eoZj2BftDK/2iQL1UFU
+   LuQUg53kwclYdMFRnYeVL081UCU5Le3153m3SfibQiHZcG1FVJcE228sf
+   SSS2UowoQM8QuHuaNHt8IWpmL0qgBGUUQPdmvdZ2+B8qvHdkF5wikIkOe
    Q==;
-X-CSE-ConnectionGUID: J9JcvqfsR62116UGCQUguw==
-X-CSE-MsgGUID: Cry/voXYTC6KTNZFLsApEw==
-X-IronPort-AV: E=McAfee;i="6700,10204,11199"; a="25798037"
+X-CSE-ConnectionGUID: wZyTTX58S6uzA5TApqUrCg==
+X-CSE-MsgGUID: xFnCmuQ9Qpm1djARxaw6og==
+X-IronPort-AV: E=McAfee;i="6700,10204,11199"; a="25798060"
 X-IronPort-AV: E=Sophos;i="6.10,240,1719903600"; 
-   d="scan'208";a="25798037"
+   d="scan'208";a="25798060"
 Received: from orviesa006.jf.intel.com ([10.64.159.146])
-  by fmvoesa109.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Sep 2024 18:40:58 -0700
-X-CSE-ConnectionGUID: nl6/vbvKRUyF+/RLJLKJoA==
-X-CSE-MsgGUID: zZt2sOthQ+SFZ3bJiPNv0Q==
+  by fmvoesa109.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Sep 2024 18:41:04 -0700
+X-CSE-ConnectionGUID: /9zU/3CdSJut5CeCqd6www==
+X-CSE-MsgGUID: 6BJoj00JRPy92lBgaz2/QQ==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.10,240,1719903600"; 
-   d="scan'208";a="70058946"
+   d="scan'208";a="70058955"
 Received: from liuzhao-optiplex-7080.sh.intel.com ([10.239.160.36])
-  by orviesa006.jf.intel.com with ESMTP; 18 Sep 2024 18:40:52 -0700
+  by orviesa006.jf.intel.com with ESMTP; 18 Sep 2024 18:40:58 -0700
 From: Zhao Liu <zhao1.liu@intel.com>
 To: =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
 	Igor Mammedov <imammedo@redhat.com>,
@@ -93,49 +93,153 @@ Cc: qemu-devel@nongnu.org,
 	Dapeng Mi <dapeng1.mi@linux.intel.com>,
 	Yongwei Ma <yongwei.ma@intel.com>,
 	Zhao Liu <zhao1.liu@intel.com>
-Subject: [RFC v2 11/15] hw/core: Support topology tree in none machine for compatibility
-Date: Thu, 19 Sep 2024 09:55:29 +0800
-Message-Id: <20240919015533.766754-12-zhao1.liu@intel.com>
+Subject: [RFC v2 12/15] hw/i386: Allow i386 to create new CPUs in topology tree
+Date: Thu, 19 Sep 2024 09:55:30 +0800
+Message-Id: <20240919015533.766754-13-zhao1.liu@intel.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240919015533.766754-1-zhao1.liu@intel.com>
 References: <20240919015533.766754-1-zhao1.liu@intel.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: CpQfZxvMSeAe
+X-TUID: mRtT0Nrxv2yN
 
-None machine accepts any CPU types, even some CPUs may have the
-bus_type.
+For x86, CPU's apic ID represent its topology path and is the
+combination of topology sub IDs in each leavl.
 
-To address this, set topo_tree_supported as true for none machine, then
-none machine will have a CPU slot with CPU bus to collect any topology
-device with bus_type specified.
+When x86 machine creates CPUs, to insert the CPU into topology tree, use
+apic ID to get topology sub IDs.
 
-And since arch_id_topo_level is not set, the topology devices will be
-directly inserted under the CPU slot without being organized into a tree
-structure.
-
-For the CPUs without bus_type, topo_tree_supported will not affect them.
+Then search the topology tree for the corresponding parent topology
+device and insert the CPU into the CPU bus of the parent device.
 
 Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
 ---
- hw/core/null-machine.c | 5 +++++
- 1 file changed, 5 insertions(+)
+ hw/i386/x86-common.c | 101 +++++++++++++++++++++++++++++++++++++++++--
+ 1 file changed, 97 insertions(+), 4 deletions(-)
 
-diff --git a/hw/core/null-machine.c b/hw/core/null-machine.c
-index f586a4bef543..101649f3e8c1 100644
---- a/hw/core/null-machine.c
-+++ b/hw/core/null-machine.c
-@@ -54,6 +54,11 @@ static void machine_none_machine_init(MachineClass *mc)
-     mc->no_floppy = 1;
-     mc->no_cdrom = 1;
-     mc->no_sdcard = 1;
+diff --git a/hw/i386/x86-common.c b/hw/i386/x86-common.c
+index b21d2ab97349..a7f082b0a90b 100644
+--- a/hw/i386/x86-common.c
++++ b/hw/i386/x86-common.c
+@@ -53,14 +53,107 @@
+ /* Physical Address of PVH entry point read from kernel ELF NOTE */
+ static size_t pvh_start_addr;
+ 
+-static void x86_cpu_new(X86MachineState *x86ms, int64_t apic_id, Error **errp)
++static int x86_cpu_get_topo_id(const X86CPUTopoIDs *topo_ids,
++                               CpuTopologyLevel level)
+ {
+-    Object *cpu = object_new(MACHINE(x86ms)->cpu_type);
++    switch (level) {
++    case CPU_TOPOLOGY_LEVEL_THREAD:
++        return topo_ids->smt_id;
++    case CPU_TOPOLOGY_LEVEL_CORE:
++        return topo_ids->core_id;
++    case CPU_TOPOLOGY_LEVEL_MODULE:
++        return topo_ids->module_id;
++    case CPU_TOPOLOGY_LEVEL_DIE:
++        return topo_ids->die_id;
++    case CPU_TOPOLOGY_LEVEL_SOCKET:
++        return topo_ids->pkg_id;
++    default:
++        g_assert_not_reached();
++    }
++
++    return -1;
++}
++
++typedef struct SearchCoreCb {
++    const X86CPUTopoIDs *topo_ids;
++    const CPUTopoState *parent;
++} SearchCoreCb;
++
++static int x86_search_topo_parent(DeviceState *dev, void *opaque)
++{
++    CPUTopoState *topo = CPU_TOPO(dev);
++    CpuTopologyLevel level = GET_CPU_TOPO_LEVEL(topo);
++    SearchCoreCb *cb = opaque;
++    int topo_id, index;
++
++    topo_id = x86_cpu_get_topo_id(cb->topo_ids, level);
++    index = cpu_topo_get_index(topo);
++
++    if (topo_id < 0) {
++        error_report("Invalid %s-id: %d",
++                     CpuTopologyLevel_str(level), topo_id);
++        error_printf("Try to set the %s-id in [0-%d].\n",
++                     CpuTopologyLevel_str(level),
++                     cpu_topo_get_instances_num(topo) - 1);
++        return TOPO_FOREACH_ERR;
++    }
++
++    if (topo_id == index) {
++        if (level == CPU_TOPOLOGY_LEVEL_CORE) {
++            cb->parent = topo;
++            /* The error result could exit directly. */
++            return TOPO_FOREACH_ERR;
++        }
++        return TOPO_FOREACH_CONTINUE;
++    }
++    return TOPO_FOREACH_END;
++}
++
++static BusState *x86_find_topo_bus(MachineState *ms, X86CPUTopoIDs *topo_ids)
++{
++    SearchCoreCb cb;
++
++    cb.topo_ids = topo_ids;
++    cb.parent = NULL;
++    qbus_walk_children(BUS(&ms->topo->bus), x86_search_topo_parent,
++                       NULL, NULL, NULL, &cb);
++
++    if (!cb.parent) {
++        return NULL;
++    }
++
++    return BUS(cb.parent->bus);
++}
++
++static void x86_cpu_new(X86MachineState *x86ms, int index,
++                        int64_t apic_id, Error **errp)
++{
++    MachineState *ms = MACHINE(x86ms);
++    MachineClass *mc = MACHINE_GET_CLASS(ms);
++    Object *cpu = object_new(ms->cpu_type);
++    DeviceState *dev = DEVICE(cpu);
++    BusState *bus = NULL;
++
 +    /*
-+     * For compatibility with arches and CPUs that already
-+     * support topology tree.
++     * Once x86 machine supports topo_tree_supported, x86 CPU would
++     * also have bus_type.
 +     */
-+    mc->smp_props.topo_tree_supported = true;
++    if (mc->smp_props.topo_tree_supported) {
++        X86CPUTopoIDs topo_ids;
++        X86CPUTopoInfo topo_info;
++
++        init_topo_info(&topo_info, x86ms);
++        x86_topo_ids_from_apicid(apic_id, &topo_info, &topo_ids);
++        bus = x86_find_topo_bus(ms, &topo_ids);
++
++        /* Only with dev->id, CPU can be inserted into topology tree. */
++        dev->id = g_strdup_printf("%s[%d]", ms->cpu_type, index);
++    }
+ 
+     if (!object_property_set_uint(cpu, "apic-id", apic_id, errp)) {
+         goto out;
+     }
+-    qdev_realize(DEVICE(cpu), NULL, errp);
++    qdev_realize(dev, bus, errp);
+ 
+ out:
+     object_unref(cpu);
+@@ -111,7 +204,7 @@ void x86_cpus_init(X86MachineState *x86ms, int default_cpu_version)
+ 
+     possible_cpus = mc->possible_cpu_arch_ids(ms);
+     for (i = 0; i < ms->smp.cpus; i++) {
+-        x86_cpu_new(x86ms, possible_cpus->cpus[i].arch_id, &error_fatal);
++        x86_cpu_new(x86ms, i, possible_cpus->cpus[i].arch_id, &error_fatal);
+     }
  }
  
- DEFINE_MACHINE("none", machine_none_machine_init)
 -- 
 2.34.1

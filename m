@@ -1,53 +1,53 @@
-Received: by 2002:a17:505:42a7:b0:1be9:327d:8ee3 with SMTP id rt7csp91089njb;
-        Thu, 19 Sep 2024 03:11:30 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCUWgi498f93jcVsEiC9+DH1YBHfRrz90Ws1mbrowGGD/oweRqcYQrW2Mjf8iBA1fJubdg3ornvOmQUfDg==@linaro.org
-X-Google-Smtp-Source: AGHT+IF/3fk+1HZwbyNUWNR4BkgMvTJCXkSttnOvQ84uPJBbpDe72CXEawLuYjTcVR9WzhZpoJPG
-X-Received: by 2002:a05:6a21:164a:b0:1cf:3461:2970 with SMTP id adf61e73a8af0-1d112eaaf50mr33585495637.41.1726740689820;
-        Thu, 19 Sep 2024 03:11:29 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1726740689; cv=pass;
+Received: by 2002:a17:505:42a7:b0:1be9:327d:8ee3 with SMTP id rt7csp99106njb;
+        Thu, 19 Sep 2024 03:31:51 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCVSjR087VJaHKIsHJxhD5ouChw963j6x2tN/+CW+dXT1m+GgAYSGkFKYowlLY+IzNYk19Q0pjJOS+cU1A==@linaro.org
+X-Google-Smtp-Source: AGHT+IHwLqbsrFuvteOC3u6/cjvB6VuGQF7wg/mobX6oIYZ2eaYutbdTldRsMM/CjI+jEiGSq/DY
+X-Received: by 2002:a05:6a21:1646:b0:1cf:3ec5:e779 with SMTP id adf61e73a8af0-1cf75d7fc8emr35097754637.5.1726741911490;
+        Thu, 19 Sep 2024 03:31:51 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1726741911; cv=pass;
         d=google.com; s=arc-20240605;
-        b=L4Gt5GcpYSXp2bZkzCzngQkBFJ0/tQpDzGxtUak2Gvi6q0oqmiIfaI+aSyrONHE+GT
-         eQaCuG7ohXb1hSFafMe5mSr9KjZqGMVZfPrSAq7gN42V50419JgQo7ss4mzPTUhj5xOO
-         MXdOyNEvXJHOnhi+VmKWpl5Aty13F+zGA9jy32p+brx2OlVCvvyHCmvkE9JQNbVcKsJW
-         qh5DgoApYRe4j+E0ZYhxBlBrogatpVHLjB4jsN4OMVe1ztD2olsP9GfMcheMhBdzsmXi
-         1leRp4KMiINb4p1icTbz/2Q0+Sw4c4NFN4QoHACaUa+dJIDu9Qq3Ffwyom7vLLPWahpT
-         YCIA==
+        b=gjwqWHNSZ85Xycz9pvpK8sYecgHG6EQcDzPPVc/z402tc2p8UCJodfDHaL/vAS6BlQ
+         f1C44Xo4XFuw/XsAf13l8tmo5zY6cAU+am09l7s9kBKqD4i3dkY378MzK7YD/Udqr31y
+         tK9HhEfosKuG5jln2Ncp8xaBBEqOCG5BRnzg2FEdG1yvLvBz9asNGI4Nnq/bJqXZLl1C
+         EdTmhUywJoNWzycynrW8ixMecMILs2YJEUIz3Kj5QI2keC1c5vidAaXqjIzmwpsZxFP0
+         0eKvam5OeJhRcv0jDOel3Z403AJjG6HnSWBSvO4zwNjUb0hahpQsli8KrtCYOF1xZpfY
+         zweQ==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=mime-version:content-transfer-encoding:in-reply-to:from
          :content-language:references:cc:to:subject:user-agent:date
          :message-id:dkim-signature;
-        bh=hT/Mp0N9VYna3PfiNrohvn6e0iuVBB1XuJtAAkSvb3U=;
-        fh=MKhFJWd2xNARcdHQ77UO7XiMxQnssJnHEshjaavlATo=;
-        b=Ct/0ylmuoMtA9b72uSwuUP5hBZ1aWgPEn2dKsF7+hbs7ccKHbZMulvWKn9q18kuMqf
-         xDVLVHmfpwPAa6VaR3cKyu4wNwJ240o6ZKncfMH3LNZ+V6TJtIWlv4W//UDLXTkMqLjF
-         5zbS5h6Ea6ktN6XeUB6Nzsg6msDnHTiprmDxJ8qcUtRi+b1SpZZXCYOlf05rOTsgBXwR
-         8gjq1j1qEUnO/4KqYKHJP53YUqkZA1gAPDuW45R7g91OSVLHuumb60npENkvB/spO+kj
-         dqNAfnR/gHn9nF+67GzORxTSkNw5oRv2zO80JzGacM48zjzZnctWqpJnfkw6KkBC6RQj
-         WksA==;
+        bh=xbaKrDg+CqT4sSVBW9y2Y8m+HtOykOYd/yhYDznEsw4=;
+        fh=GuMuoQblzj8AnjPDv5qfNhXM6emLtNDWfKTVchnbqq4=;
+        b=HZ414QCccy6Im4UKPXp4Z3/+sgv9zScjs1fz0nv+QOCDRtZfATEzqQGGIsd+k/Kdah
+         5PXbKFsYc1ftVAbAlpPtyfPWTOAcH2sAoprALCikTBB+fyaJM8MScEda1qeoFG0cXXAo
+         4q39E4mwaHAvteYkNOAscyV9yI/o9y19ZMkkggjwjG07KhG1Mex4FTwmxn0PPB8xO8Iw
+         D5QSC0IM82hzp62pjQ3pneD5wTOvOnGAufvqo5JfkYd3ZB+CbLUYN7NY7vwEtv2oG7YF
+         xYdQTT4BhdgQAKq7MqN5KO/u0IZJ2LsYnC1Euyuo83Fh4/DEpMtyPbddy0yj4+5t/+Xp
+         L4nw==;
         dara=google.com
 ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@os.amperecomputing.com header.s=selector2 header.b=tun63q8H;
+       dkim=pass header.i=@os.amperecomputing.com header.s=selector2 header.b=Luvhmqgt;
        arc=pass (i=1 spf=pass spfdomain=os.amperecomputing.com dkim=pass dkdomain=os.amperecomputing.com dmarc=pass fromdomain=os.amperecomputing.com);
-       spf=pass (google.com: domain of gankulkarni@os.amperecomputing.com designates 2a01:111:f403:2009::70f as permitted sender) smtp.mailfrom=gankulkarni@os.amperecomputing.com;
+       spf=pass (google.com: domain of gankulkarni@os.amperecomputing.com designates 2a01:111:f403:c101:: as permitted sender) smtp.mailfrom=gankulkarni@os.amperecomputing.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amperecomputing.com
 Return-Path: <gankulkarni@os.amperecomputing.com>
-Received: from NAM10-BN7-obe.outbound.protection.outlook.com (mail-bn7nam10on2070f.outbound.protection.outlook.com. [2a01:111:f403:2009::70f])
-        by mx.google.com with ESMTPS id d2e1a72fcca58-71944bce617si12437098b3a.338.2024.09.19.03.11.29
+Received: from BL2PR02CU003.outbound.protection.outlook.com (mail-eastusazlp170100000.outbound.protection.outlook.com. [2a01:111:f403:c101::])
+        by mx.google.com with ESMTPS id 41be03b00d2f7-7db4a962c0esi11719338a12.799.2024.09.19.03.31.50
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 19 Sep 2024 03:11:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gankulkarni@os.amperecomputing.com designates 2a01:111:f403:2009::70f as permitted sender) client-ip=2a01:111:f403:2009::70f;
+        Thu, 19 Sep 2024 03:31:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gankulkarni@os.amperecomputing.com designates 2a01:111:f403:c101:: as permitted sender) client-ip=2a01:111:f403:c101::;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@os.amperecomputing.com header.s=selector2 header.b=tun63q8H;
+       dkim=pass header.i=@os.amperecomputing.com header.s=selector2 header.b=Luvhmqgt;
        arc=pass (i=1 spf=pass spfdomain=os.amperecomputing.com dkim=pass dkdomain=os.amperecomputing.com dmarc=pass fromdomain=os.amperecomputing.com);
-       spf=pass (google.com: domain of gankulkarni@os.amperecomputing.com designates 2a01:111:f403:2009::70f as permitted sender) smtp.mailfrom=gankulkarni@os.amperecomputing.com;
+       spf=pass (google.com: domain of gankulkarni@os.amperecomputing.com designates 2a01:111:f403:c101:: as permitted sender) smtp.mailfrom=gankulkarni@os.amperecomputing.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amperecomputing.com
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=kw4u/IOiFHO/g1FWibJnN4txCl1xgt3gPi6/s0l+V0ZzlxoVhcd9hq7wbMYxJe8OEyJEsB5v2SJEgW24oR3ybwPbt/Kmo98jPS9Sfu9DcrT3o1LINkYPv6pL5QmWKUEjGXpyb6hb+wm8KDChO6srfNdoPv4vhktvKLVgbIodld8GTg1/Slf6gYEsuVWxT3Es/zOVL/aw5YIsmB7jT/08KKutAOrTYkS/g23781YYE7cCZyOVaoGFp3UKinYJPx0Re34X76tw/78u1ec2/cCBBJgOj20+B75sokaYSFDkwKdImRj0UPWiwJ8XdphLqTE2NP4ampsa6BvjMD3cLsSM5w==
+ b=tV0pQH5QASYN+diK0g0TBBDOmPHVke0T85tiQ5dsmLS6QDADjwgKuFGaEsp3lZC9q5tPcPL3HQ8l6C+K/b82q51ugYnOpGFf+hcHy89KCuL8ylrcLZodUNnsNBHg7nw9uaJv4h1kGZYCDK6xneVURQSsvIYYRkJwokKy4Cf+206DDfbXKqMTbAoiak7ys3dDdj8F2gXQFpFvVEqc3GnhHt3HzKAilj0BuTjli/7p+Yt038bePnNxsrDbJa0zh51mFe1TfcuSAFsHvcyau+xAelggBWJrZVcUROj7wk4LACwsufgnnh9xlkWRG3q991CV+r7Cp7Kw+BDzUBJ13EtUhw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=hT/Mp0N9VYna3PfiNrohvn6e0iuVBB1XuJtAAkSvb3U=;
- b=oxxyM8/7dUAWlnvrVN3JYSO/ZHjzDe598JbUIM1ym7CWQxDG6GCE+EN8fETwso3k/nqsY363JZDsusaaruW42QH2z/UTbQOTDWZ3xbS1YN40DrwytBhjUCOLOFxW806S/5WXrOJbpJEy/2/iMrPO8Ay2LgIyQ/lckanWWyXgaFleJHNP9fWRAOifl9VCtQB98dr2afuzeEiUCAg9kh19x3gzn9uhP37WK5nj2U2xEQqZ2jH5DqMUuSUrnvCVPjq9nQiFsIFv7W4M1PWCO4xkUU9tTuQGMYr3Tei4+d8pyb4jI/lnlcUIrjd1XD3tasi2+aQtxITJp0J9jnI09FnqfA==
+ bh=xbaKrDg+CqT4sSVBW9y2Y8m+HtOykOYd/yhYDznEsw4=;
+ b=EUCS6ePeUP/87DLA1fhYngNsD5yzbvyN7QByXFzXv0v4xVKNHjY8n/Z+i0Q/FhthCeiIl69a27eizbzdO4HsaltAcQETWY4hzMJ9KELRGBhKQqGzwdgAKzj2YuyB3Key2RppTQ2frkYdl4zc6pWP8Mu7DDdGnTH8t39shqH09Z0lTMl8VPUqX+D8YT7QQK9At7I0p39iGhoUwZQmgSKFFvViOAgxBfkbJe2VEwqTlUOWFQdctl0Q+1YjeWaSPA+j/AMqA52lwVq0Dj9nStaxO/Erlluo8Bminvlb1UODPGp5mIIsvpBLNOw3ExHDvdngfzGrnw9zlWNFcFm7sknfpA==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=os.amperecomputing.com; dmarc=pass action=none
  header.from=os.amperecomputing.com; dkim=pass
@@ -55,226 +55,464 @@ ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=os.amperecomputing.com; s=selector2;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=hT/Mp0N9VYna3PfiNrohvn6e0iuVBB1XuJtAAkSvb3U=;
- b=tun63q8HK+z33LE/5yEG6Wym3WeZPPTqB4CAA2PpCpe8UwabzCZdofOdjVPBEUtuP76mqwJ6EjZPx3mVOyxToKM+sQDmzv3E0gEEC+4rTL+/bzX/BE7gd01IJEDVv3tYqy4AWWAtPv3/K9w1Tyb41k3kU7XnEeU7hB1uc+Jw8Ds=
+ bh=xbaKrDg+CqT4sSVBW9y2Y8m+HtOykOYd/yhYDznEsw4=;
+ b=LuvhmqgtkiAPEY5XJ/+bVkv+WDnwcFfFgHrwVPxFUp+OIt4R7jezkDWFktWbZmBMwBy9ISb0ZJFvsA96Y+sV3fV8yzDaGSg/hE+7Hkbqi5fiK5K5fPeXDUEtf7YNrr9gW0NWECFfDIXKepLVn6Iyn0NYFyTyQRLrvg1lHbUOZxk=
 Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=os.amperecomputing.com;
 Received: from SJ2PR01MB8101.prod.exchangelabs.com (2603:10b6:a03:4f6::10) by
- SJ2PR01MB8658.prod.exchangelabs.com (2603:10b6:a03:56f::8) with Microsoft
+ SJ2PR01MB8620.prod.exchangelabs.com (2603:10b6:a03:543::17) with Microsoft
  SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.7982.22; Thu, 19 Sep 2024 10:11:25 +0000
+ 15.20.7982.21; Thu, 19 Sep 2024 10:31:47 +0000
 Received: from SJ2PR01MB8101.prod.exchangelabs.com
  ([fe80::292:6d9c:eb9a:95c9]) by SJ2PR01MB8101.prod.exchangelabs.com
  ([fe80::292:6d9c:eb9a:95c9%4]) with mapi id 15.20.7962.022; Thu, 19 Sep 2024
- 10:11:25 +0000
-Message-ID: <9a4db4c1-a5ea-4375-b5a0-592ec597567c@os.amperecomputing.com>
-Date: Thu, 19 Sep 2024 15:41:15 +0530
+ 10:31:47 +0000
+Message-ID: <879f7e65-070a-4d9b-b70f-60576b7b5319@os.amperecomputing.com>
+Date: Thu, 19 Sep 2024 16:01:39 +0530
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH V2] arm/kvm: add support for MTE
-To: Gustavo Romero <gustavo.romero@linaro.org>,
- Cornelia Huck <cohuck@redhat.com>, qemu-arm@nongnu.org, qemu-devel@nongnu.org
+To: Gustavo Romero <gustavo.romero@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
 Cc: peter.maydell@linaro.org, richard.henderson@linaro.org,
  alex.bennee@linaro.org, darren@os.amperecomputing.com
 References: <20240912091616.393685-1-gankulkarni@os.amperecomputing.com>
- <87bk0mtljv.fsf@redhat.com> <5a2696fe-7f11-4b4d-89cc-5763dc95a677@linaro.org>
+ <0faf9a7c-0400-482c-974f-7b70e1d58202@linaro.org>
 Content-Language: en-US
 From: Ganapatrao Kulkarni <gankulkarni@os.amperecomputing.com>
-In-Reply-To: <5a2696fe-7f11-4b4d-89cc-5763dc95a677@linaro.org>
+In-Reply-To: <0faf9a7c-0400-482c-974f-7b70e1d58202@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-ClientProxiedBy: MA0PR01CA0109.INDPRD01.PROD.OUTLOOK.COM
- (2603:1096:a01:11d::8) To SJ2PR01MB8101.prod.exchangelabs.com
- (2603:10b6:a03:4f6::10)
+X-ClientProxiedBy: SG2P153CA0003.APCP153.PROD.OUTLOOK.COM (2603:1096::13) To
+ SJ2PR01MB8101.prod.exchangelabs.com (2603:10b6:a03:4f6::10)
 Return-Path: gankulkarni@os.amperecomputing.com
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: SJ2PR01MB8101:EE_|SJ2PR01MB8658:EE_
-X-MS-Office365-Filtering-Correlation-Id: 34873171-d8b0-4670-3470-08dcd8936b5b
+X-MS-TrafficTypeDiagnostic: SJ2PR01MB8101:EE_|SJ2PR01MB8620:EE_
+X-MS-Office365-Filtering-Correlation-Id: f76c46a8-e3f7-4596-9714-08dcd89643ab
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|376014|366016;
+X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|366016|376014;
 X-Microsoft-Antispam-Message-Info:
-	=?utf-8?B?OUJtaVhEWGhpc3paODF3WVB2RXN5WW9ueTludWlqbEdGWTdXWnUyWUV5TG9z?=
- =?utf-8?B?TVJjN0FxYmJWOStxeHA2aldNV3liTzVFRzZkajlDMlYvUUtzdk9BdldMQXYr?=
- =?utf-8?B?TUlhSkF1cnFvTmFVeUNJeFJKRnVLelg1NThmMWRDWTJYdm9VS3ByWDFaQzJm?=
- =?utf-8?B?blpxbWRLNkRsQ3E4QVpScWt2YUNNYTRKVXlVL3VNSEhMWWZWVlh6ekg0UnJF?=
- =?utf-8?B?TGtFU0tycE1DNDE5SWtrNzdnemovcXVFdmtsL3NJTTVJOUVRelBia1RuVk5a?=
- =?utf-8?B?YUduVUJ2b241bHo0QmZqWHdseTNDSWMwQjFCT3lzNUhZTUdkVHAwMUFrVFg0?=
- =?utf-8?B?amJ5N0QyS1JGUHpzN0dtZ2xRUnRIaFhSRmNYY0l1ZkpRZFlWUTVSbVMxQmxs?=
- =?utf-8?B?UlV4dW5PT1ZFa3VPOFJDNG9iRzUwVFJZd0VoWkxIOGtrT0pqZzJyRzB1elNk?=
- =?utf-8?B?bTM2OWRPOGRUQk5VMmltSTRUS20zV3EvWmFyeFJ3bmExRTRIUjc3SUl2TXlz?=
- =?utf-8?B?Q3V3cm5qb3RpSmc5U2t4c3huVkxkWVIxbVZrcy9TWG9MUWJHaE04bXZ6Y0R4?=
- =?utf-8?B?a09DeTF0R1VKL2ZBR3lYRVpKWkNjbE9qWDhwdGwrelhXbFJMZmtLWFdVWitV?=
- =?utf-8?B?L3lFMnlLSDNZTnlsK1hLVGlFOWZPb3I1VGZPQlJDT1BwZGhGNjlRUlZJOEtU?=
- =?utf-8?B?bFdMTDU1TG9EbGdnK2dWR2FvQXVZQ201NmhUc1YrOHFxSzNwZGhSaVJiVXZW?=
- =?utf-8?B?SUJBbWxjR0FmalhSZjNDS1ZoSEh0clI5cWRlVlJFNFU1UkNQWU5kYTNoZkJR?=
- =?utf-8?B?VkpSMUFEYXRDN2M4Mmxnc2lKV2o1K01lTUMrUWUyT2FyZ0wzR3hIMktHUlhy?=
- =?utf-8?B?T2ZIUTlJZWNrKzB6Nm8zMndDOCtMS1J2bUthNjhJai81MzMzVXdMd2s1cHpB?=
- =?utf-8?B?SS9PMWVZR001bGp0UUZZZmR3dzVpT3dIVGdjVEVpMVhLd1hoeWdBME1PZXkz?=
- =?utf-8?B?Y3JMbkRUdkIwN0hUS2VzZXlzWUJYcDdVTGhwcUgzQUlEVHdHREkzMTM3cFQv?=
- =?utf-8?B?M1Ryelhsb3hQM0tZcXc3R0txcFhrVmlzdEhWQ1lObFdGd3hTaXcrYnZFN3d6?=
- =?utf-8?B?Q3FXT1huY0xTdW9sTi82Q05kdDBUSThMZEhKaXhBa2tNNjJVdTJ3V20wZkli?=
- =?utf-8?B?WGdZTzMxeS9OOGpTVEt5dXoxSW5HRUhYcFdFVUltVGZHOGozY0xoSHhydHUz?=
- =?utf-8?B?Y013UmdIMkpoZHJmamdhSEYzTjN2YmtuOE5yY242QkF0TXRDY05KeGx3elNK?=
- =?utf-8?B?cXdoU3N3UVRuRGVJekVQUVZ2V1cyOVJhb1Z3TzhGK3VwdndWODcwS2swdEF3?=
- =?utf-8?B?RTh1RXlYeWtYaVB4aG12NDFTZkVKeWx4anQ0N2g2aW9BVnNvWGtLbnR2MUQ4?=
- =?utf-8?B?Tmc3bnQ0TGdBZmVSYjJXOEtIaHovcVRyRTl4ZS85citpT2w2c0ZUZTVIbU9j?=
- =?utf-8?B?N2VreGtaZkpBUjZ5QVE5dkczd21Gc050NEoxbVFROXltMUdyMGtRcWdJLzhK?=
- =?utf-8?B?UFR2U2tJWTk0NkZBMmJDTWQwRmFKditXWnJmTXNxYnRSRXVEMzdnZ3FCa0NU?=
- =?utf-8?B?ZVhRaG81VDJXazZVYlk3NWZWUS9qMzRnVmZHUG5NWTRONHZ4MkFtdGhzUkJh?=
- =?utf-8?B?QmdlV2EyaHUvZGNhYUNSYzAvTTdVZmRLZG1sQW5xWm1RYUpBUXhzNnRZY3FL?=
- =?utf-8?B?VlZmbCsvTFlRNUNwY3FTTXpXYlRHdjV2dGlDWEk0ZDNJWE9Fbk12QlNjSyt2?=
- =?utf-8?B?T2NrUDVNZ1Q4OHB5RjkzUT09?=
+	=?utf-8?B?RTdLWGQ1VEVWMUwzZjUxYkptcTVHS1ZYcWN2TjlXY2lDUEZGUVorZnR5WFE5?=
+ =?utf-8?B?aWlSWHVMemR3M1ZSQVp4OEYxeU5pU3FxelRCTnhhMlhKTjJSODJrY0VrZVB6?=
+ =?utf-8?B?NVpHMGV6azVSMmNSb0hiUDVnYkNIQm02eEFHQ1VMUm9rc0t3L3ptTlhGSzZw?=
+ =?utf-8?B?SmxhVU5POFhQdWtjZzdQYnlFM2xVem1Ja0c2ekZ1dDg0OFdiaTVzSmZ3UjNZ?=
+ =?utf-8?B?TEZ4NzJvSy96VGx4RDZRZzdZV1RCekRxOTl4dHFPK1dVQ0tkRVcrQ2tDbFB5?=
+ =?utf-8?B?OGh6SG9Wd1RwaEszZkd1VDRIa1lpSWxWZ2VWenpaMU42NDl4Tzg1MDZLTFFL?=
+ =?utf-8?B?WmZsbXE4SnBMRFp2czFoK0lMdUJkWVFkQ1BORi84S0tUN25oT05vSDdhYld4?=
+ =?utf-8?B?VlQvK0toM2pkVTJhMG1yVmZvd2h5Y2Y4NGlVSlBwVEQxbkZROWRuVkNFWHhn?=
+ =?utf-8?B?bmtTdm1DZ3FqeXVJbTdjSTlVdjF0KzduN2FUVElxYkhRQXdZVFkyaVF3Rkt1?=
+ =?utf-8?B?UHBxSFlJNWhjM0I4R0dUTmZRNWZsWEh0Z0JQT3NLRTZQeFhiSERvM0YvTzlq?=
+ =?utf-8?B?Tmx1citsOFBEcWdGTVpxaE53cDg0OVY5SnFkNUxOelBPWWF3SDFPSEY0OU1j?=
+ =?utf-8?B?UEtDZW10SXBhT21CS3pQWTd2UTNYbHNSQzdFMVAweFVheHgxRVVlOTF1cFVG?=
+ =?utf-8?B?cDNFN240aVlVSDNUa0J5ODd2SGpFbE9jaGhQcmw3azB0WnlNL25mOXY1azZT?=
+ =?utf-8?B?cVlYenZmVjNSZHF6N2QwYm8ySXUzNUZ5bkpubEZRdUFMeE52NDE3azFSR2xk?=
+ =?utf-8?B?QWkvVll5VStUVzFKWC85SVVrUVh6TXY2SHgvVWlPKy9ZOE4rNEFMQVZXajV2?=
+ =?utf-8?B?dkl3NEVRZ1p0b0lpcitkTGREL3BqL1JVQ1Z3Zm1YamV5bWp5TWFPMGJBaFlr?=
+ =?utf-8?B?QnpDaXhKUjlyeGp3bnBEamJyUmc3QUwydUhrdHFaTG43RldadTFTUmpFdmpZ?=
+ =?utf-8?B?UnB1bHV1em5KMlFUYjBCQStWNi9CeVZvMmFMVGhpZzM5ZzZsUEpYS3lmQktR?=
+ =?utf-8?B?MmtMS3Npa08yanlrbTZOalRNemtNNTBKd2VVZ3lLeFRxM1ZWRlZSU21aMktT?=
+ =?utf-8?B?SXVSMU5mMkdLRDhsc1pUQWw4L2I2QXQzWEdFRGt2ZUZmbEk4bm5vUldBNjNw?=
+ =?utf-8?B?eVY1RkxTOERyc0RPMFNxcWtOZVAzVHBLVnEyUFJYZ0srYlVhNUd5MWJsbnd1?=
+ =?utf-8?B?d0hBYnlPRndhbDRiV2RvaHY4bUN1dUl1V01Hd0U4dm9uUWFPeGlHbXhpYmZK?=
+ =?utf-8?B?bytRd3ZJdElYeEhPaFlGemZTK0tWeHlJaWxqSHh4WVFUTE9kYVlraDMyVm02?=
+ =?utf-8?B?KzhvNEgxeXRKNE1udldXSHJLS1pWS1dxY1UxcXVwaXhQRHJrMFJLRlhWRnhQ?=
+ =?utf-8?B?QS9SMDVtTElDL2RYWFNjbjdZSURXaS9BNUFGeTlLMmh6R2pkV04vaHZ1Mm5B?=
+ =?utf-8?B?UGM0dXJCUXp0OTl4N1dLS243b1ZQZWNIRzNSeW5MVVREWVZ5VmdNaE5NNWpO?=
+ =?utf-8?B?TXBYR1lCS09LRkhIeTFXd25DM1NGQlo1RTJMQjVtV2Z6cEJ0clRKMXJoOXdj?=
+ =?utf-8?B?cXFlejd3NVpBOGdINW5UTElWczIxcFppQ0FDbHpIMnlHV09BWFc5bEF5b3BV?=
+ =?utf-8?B?eGl4THMzZCtTLzMreFRBRWEwd1VCWXA5TU90TUluWmNiVlhnSGs5TmRSR3RJ?=
+ =?utf-8?B?QzJTdFBKekNzMFRmOU9CakdPU3BGWDZ4SjFIcW1qZEFhSkVlbHlIOXFpNWhN?=
+ =?utf-8?B?ek5HWmNBVjc3YWtuTWdRZz09?=
 X-Forefront-Antispam-Report:
-	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SJ2PR01MB8101.prod.exchangelabs.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(376014)(366016);DIR:OUT;SFP:1102;
+	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SJ2PR01MB8101.prod.exchangelabs.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(366016)(376014);DIR:OUT;SFP:1102;
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
 X-MS-Exchange-AntiSpam-MessageData-0:
-	=?utf-8?B?cXhRQTQ5Nm9ZN3JJSnIrY0dDNThiUFZ3Y2pia0gyT0NibG9VREJoRlk5VnlP?=
- =?utf-8?B?NEgremVpSm5RZi9ZRXBzVTNnZDBnWENNSHMwU2VHTjVIVC8vaU10SUxmT2lw?=
- =?utf-8?B?VUNvMWVtbzZNOXNFbmtoWWJjR1lBeG4zY0lLSHdEUEJUeGRiNUhKRHQwbUlU?=
- =?utf-8?B?cUdVUE5Qb3RJaTBBYURSVU5TWTJFd1lnQlQrMGJMRjhwdXJoZXBZL2VhTzQ5?=
- =?utf-8?B?SEx3UldJdEhqT1pKZnZQZzB2K3Q3dCt1ZURoQ3BiRmptcmhMa0VIWkpNUGJW?=
- =?utf-8?B?SkxOOC9HNU5DVzFhaXM1RHZ5cWJUTGM2QWl6N3JCR3VUQ2o0VkhqT3lyMGhl?=
- =?utf-8?B?RU8zL2NCZ2VrU1Z2dnFYMFdsZ1AyNXdaTmxZSFZ6Z3FXVzhiQUR2MEcwc0hG?=
- =?utf-8?B?RDl6b1g4Q3RIRE5panRORDdTVmhyT25kSGV2OHllTWxSeWhyMVZqeTEyRitl?=
- =?utf-8?B?OGdRbnJnQk9EVG9GR1NmQzI2ay94UjN6RzZHWXdzbUFWbjE3azVnejFmNGpT?=
- =?utf-8?B?ZnhyVUM2MmoydExWMHZNN1Y5cFRtZW9DRjZtbW5aVUxFTjYvbmtWQjhZU2kz?=
- =?utf-8?B?aTRmUmxGbElYVUpVY3FNS1RxR21YZEs4TnNiNDVzNFlNOXZndE1JNllOTjVH?=
- =?utf-8?B?RzRRR1J1SENpY2VEVlBjY1BCMkxXRFBERXhSZGJ2TkQzeXA3S1NxcTJDVUpx?=
- =?utf-8?B?bEJFRmxjSHpYTDZWdWlWeE81M0NSUWNTK28rYkE1ZG5taXJUZWg0dGI2VVVM?=
- =?utf-8?B?YUc1dm5BM0NCMGVWWXhHYk1FeWlwUDVPZWZubGdtM1RNV1hUSk43YW8yaUFT?=
- =?utf-8?B?KzVacTZaUTRpR0txUzh2OStlazU4OW1kUmo1ZzJGNzRSd2p0RWdQNUZURUgx?=
- =?utf-8?B?NmNXS2IxbnNiekhjM3pvbGxubzRqK25mMFpmNUt3R0daRmMwaG0vd1BBU3Fq?=
- =?utf-8?B?R0dCemZWMThuQmRqbUt4R1RjUGp6eHEyWnptMzM2a3orYWM2YmpKTVhLSzFK?=
- =?utf-8?B?VDcyVGFQMlZ1dWpEZ2d2aU01RlVmaERhKzN0MWxJTlhSZUxRNkdzOFMyUStB?=
- =?utf-8?B?bVJYVWJUbkpKVm1BU0NiTUFBZGdNQU9PNzk1SXZZc29IdW94OU0zbXpJeDBU?=
- =?utf-8?B?ZTdDNmtnRkNobUt2dGZMdnNWMUNiNllTTGpZOGtiWndpUFE4b1Y5dVBXME1a?=
- =?utf-8?B?Q0NVQytVL3hzRkM1a044alBseW1SaEo0Qjhkb29DcVRKWGJHNlpDTm9qdlZU?=
- =?utf-8?B?QjJJMnkxeHowSFRsUmRDNlc5UHhod1ZYR1JrMWJGMlJ1cEFDU3h4YTJNQVRZ?=
- =?utf-8?B?Rk8yVjVscTQvamsrUUpUTjh0QlZxdklwb1BPL1VmZXB4TDdDQkZvYmpoazhC?=
- =?utf-8?B?REN1d1NZangwb1RUeXVrdXl1c3U1emVlcVZKcXZ5UjJQU2k5MHJrN2NNbmRn?=
- =?utf-8?B?MmozYzk5anZRN1BjVCtyQjU5dStEbHZ3MzcwMTNOYldtMjNFcUxxSHFHSE91?=
- =?utf-8?B?MFJ0YStvaHJRMlk1MXpNbXJlblF4S0x5ZWJHZElYQ2NpSVVjMW0rUHZoVE9z?=
- =?utf-8?B?R1I0MEthYWxyMFdvMzUwVlRrNzk3QWRJT0tqckJhTG9tVVY3NWVyakVqU1ZJ?=
- =?utf-8?B?YU9wcUZlUHZzYTBCWmJVbDNKMUE5cFZSejAzeGN5Ukt2R204WTdPbERxTFoz?=
- =?utf-8?B?TVZnK3JWOEx1aS9UczlRa0N3TnFsSS9CaGpnVU51SmpUeHMxTkw1UzRhQzNM?=
- =?utf-8?B?T0R3REoycU5YL01RYzN3M0w0SU80RGtpMUx4Z3VYTXVYKzc2dEdhYTJpRytJ?=
- =?utf-8?B?VSsyM0ZiZWczK3V1cVFpTjZ0dEgrOG9yWUk5dFMvcGY1VVoyRWpjc1hNT2Z3?=
- =?utf-8?B?a3ZwWmVIWkM4U1c3dkQ1c0F5S21SUGY3dnN5cUpSYnExZ2w2dUlNS0hlS21s?=
- =?utf-8?B?TmUrQ2c2d0xmQklSbFljT0lLSHBvYko2NTVFSlBTcTgzZ1ZtRVBLZlBObUQ4?=
- =?utf-8?B?cExHejVlanF2WlA5RHk3TnV0OUlKRHV2bDhtZVhMWEEvbVFGRU1JSnEzWUp4?=
- =?utf-8?B?cDJMamZKNS9ZdXN4R3FDUmlDWVhuNDhUVFdubHRzbWVmblZycFo5dUNyN3N5?=
- =?utf-8?B?cTZMbVZmQXo0T2tjaktVQ25XZnZIRlZSbitIOHdxWm5Qbk1IV0c2bVg5WlZn?=
- =?utf-8?Q?rsc35QrRPp53BYwfocIPUHw=3D?=
+	=?utf-8?B?alhreG91TUtHcWVQUkE4RURDVFdhUmVNQlhXaUhPd3JFMElMMzdWVTVjN0pJ?=
+ =?utf-8?B?bFduOVFRMm9Oei9OYWt4dFZTZEt5NDNZRUxFNzZVQUJBT3N5Yks0S09la3lX?=
+ =?utf-8?B?ckxZb2VXS1ZUcG91NVJqK1FTdnM1Qm85MEtZeHpjc0ZabXE2OHl4R0todjEw?=
+ =?utf-8?B?UXJ5d3lvREpUWTBLYnZjVmNiUDlhT1RMaFZVdFNNNzJ3alhsOW8xODZvOVVj?=
+ =?utf-8?B?dW80aGxYWGFMbGZPNnFRdjRtTUxpZUJFUTVYTVVqb2hFVWU0aFZwZmpRZmxF?=
+ =?utf-8?B?TWF4cjh1elNMTTMyR2VhSHp1Tm5yOUIyMmZzczU3MWZhUlgvNGpWRW5jSjFB?=
+ =?utf-8?B?UWY4R29UWEZYYmI3Tkh1Zmx6MEJCbTdUY2Y0TDZMcS9ybVNKNDR4T3NUbWhJ?=
+ =?utf-8?B?SFpIdStQQUxySU9Xenk3RXc3RVdwRHUwdkVOTnBJZFhqSS9lS3JsVnZIOUNX?=
+ =?utf-8?B?NVRGaXRwanFBZVEwZ0ltdlpEaGNOMXBlY0VVejhvZHhlemt1b3RTL0Y4cFV3?=
+ =?utf-8?B?L3o2RHdxQnE4YUIvNFlobDE4Q25OTGU0NUIyVFZoZTZTYW14WFBkamEvK1hi?=
+ =?utf-8?B?UngyRS9rSHhydDJ2SDVCUXdocWZUWmsxQWs4ZHNva0xENG1reXR6WFpvbkU0?=
+ =?utf-8?B?U0duTlJLdk43MXlOUllCUHJsSmpxdnVheGR6RnZpNy95WjUrRzI4bjFjZFdU?=
+ =?utf-8?B?L1dMNzVCbS8xbVd0VldZQ1RtK1h5eksxclJlT091aURPcnRRVjMrbVBtNWEy?=
+ =?utf-8?B?M2VqVFl4VGpwZVZpdHhSSUhqSzdvWHdBNDJ6MHl0cXJuamgvRGdXd2hoRS9R?=
+ =?utf-8?B?R2lVTHJSM2RZRC9Uby9PMmJuUmxxU0lqZ1FBVUxhT3lkQVZsWjlnaVBtcEht?=
+ =?utf-8?B?YUNQdDJsTFhKcitPakFibnM1aGhYdnZiYmVvVktCNlVBNmlqc2s0N053UHE5?=
+ =?utf-8?B?TDR3cjhzSHMwYzQ0OTgxTDlMTkx2STJpdXBRUUl3d01CaU9uRjZIQjBack8z?=
+ =?utf-8?B?YU9IMzNDRys1eHo0UndDclR2aGJ6ci8zOElyYjlNZXJaSEVTVm11ZEZhMmNq?=
+ =?utf-8?B?MWpPbXNONWxIQVRWaFBrRUc3c2ZsOExoZ290MXlSdnlPZCtiMDd5eHJDYzdn?=
+ =?utf-8?B?UnFuQjJPQTNERHJBK1Y1ejluUUNqRnpSdmI2V0JMbnVpT0lWWnFqTnNEc2ZP?=
+ =?utf-8?B?VjhXYU9CNC9aVVJnSWdVTlU3U1BPcjhqeWNqanJheGFHTVpUTjdjSDVQR1R6?=
+ =?utf-8?B?VlRuZHl6UlNPV3ZSaFZuMVh6TzJpOGlLTmJPRjNiRzdZS1RTNDFSNTZmcHB0?=
+ =?utf-8?B?eVYrcUZGWmo0ODk5YjRLTDRmYjlhZzRBU3NiaWIrRUw0cEQwdDRjR1NPeldj?=
+ =?utf-8?B?UE9LWUh3UC9namtHWHlUNDdKVmpGNnZnL0RvNVdneTlRM0RNMWo2WWV0Rytp?=
+ =?utf-8?B?NmMzM3haVmpxVG8zaEVTNkxPNjNPVTJVNE9wellEamVPbm5xVXVvQVE3cjNG?=
+ =?utf-8?B?eldRUkRVWXpUbGttcFE3K01IKzI5YXJXZ0lXMWlsajE0NnZ6L1Fwekl1UHdS?=
+ =?utf-8?B?R3RDclZCZTJ2Mjlmc1NFMzl4NmlSZDNjL0VKU3J4OW4vRWVRTHdjNnNOWms3?=
+ =?utf-8?B?M3FwVmpOUk1sanNwSEhkekUyT01tYlZlSTc0cHdBZnA0UlZSSU5NMUZIU0N4?=
+ =?utf-8?B?eG9zSS9SWldaNVRxNk5pWnFwQmtrN0JJY0pTaTVsWmVqbXQ0aEhXS0F4djZt?=
+ =?utf-8?B?eVNxWE9ZRDFHSnRyZVc2ZTNjdS9rb2prdUlCcmlMd0p5YkhOSnNxdU1SbGFv?=
+ =?utf-8?B?VTNtNlpRWmFDbWNaUEcwbis2Q2NKOXBtQWlTN3BMbUI2cWxqR3Q3bXJ1MlpP?=
+ =?utf-8?B?azRjbU9kTyt3bXdkM0JDNW41YmNKK0gyY1k5bHNUNmYwKzJzTTRmRTFCTDZE?=
+ =?utf-8?B?YXVyMGtBWHV6RkxvbnE4UzU4QXdQTmVNeW4wT1JybTEvcTg1bEhja25ZTEhj?=
+ =?utf-8?B?WnZOSEZhcU5qWHpOYlk4NU8xbTBaMVBTYjM4T1owUWl6VGgxSmpkWUFiOXow?=
+ =?utf-8?B?WVZ0YmZnU3ZlYnZWamcxaTdmQlFmOEx5OTF0STRMR3JBanpYdUZoUGR5NXNI?=
+ =?utf-8?B?Y3k2b09NS2FBbTVIN3VhR1U5cUpiVzB5cWxkQ1NwSUhsYlRpaXRDQUhFREVw?=
+ =?utf-8?Q?xWmQBruR8KEApdp8z+ODdk3D3dOefYJ9B0YdrzLu6bw3?=
 X-OriginatorOrg: os.amperecomputing.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 34873171-d8b0-4670-3470-08dcd8936b5b
+X-MS-Exchange-CrossTenant-Network-Message-Id: f76c46a8-e3f7-4596-9714-08dcd89643ab
 X-MS-Exchange-CrossTenant-AuthSource: SJ2PR01MB8101.prod.exchangelabs.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 19 Sep 2024 10:11:25.3810
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 19 Sep 2024 10:31:47.2436
  (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 3bc2b170-fd94-476d-b0ce-4229bdc904a7
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 3iDgt2B1DRKcNQqSsuNQnVum+hKlL1v/WzO2xxtXkM40jfFmCUdeM+Nf3ttg1RAZewbnA2OU+uYxkMBWjvIaYtZnIpEQnroVmfQ6vBihZFiQxsMrIYlPy5GCHwqEO0j4
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ2PR01MB8658
-X-TUID: NgA7HGss2Mfl
+X-MS-Exchange-CrossTenant-UserPrincipalName: /lRmbTjgjtfMbWUDaoLo8FQvAGdtJol9JqsOmMxFAed7PZBDMaXUeInOV+nBu0xgnGGXKIteSTOa1mtd3YfyOk1eXrBlOtSLBV4O98Yd5nE0AHD+fVlumvvRLJVfuSUP
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ2PR01MB8620
+X-TUID: mUUI4idrE8ix
 
 
-Hi Gustavo,
 
-On 19-09-2024 08:31 am, Gustavo Romero wrote:
-> Hi Cornelia and Ganapatrao,
+On 19-09-2024 08:52 am, Gustavo Romero wrote:
+> Hi Ganapatrao,
 > 
-> On 9/17/24 11:13, Cornelia Huck wrote:
->> On Thu, Sep 12 2024, Ganapatrao Kulkarni 
->> <gankulkarni@os.amperecomputing.com> wrote:
+> On 9/12/24 06:16, Ganapatrao Kulkarni wrote:
+>> Extend the 'mte' property for the virt machine to cover KVM as
+>> well. For KVM, we don't allocate tag memory, but instead enable
+>> the capability.
 >>
->>> Extend the 'mte' property for the virt machine to cover KVM as
->>> well. For KVM, we don't allocate tag memory, but instead enable
->>> the capability.
->>>
->>> If MTE has been enabled, we need to disable migration, as we do not
->>> yet have a way to migrate the tags as well. Therefore, MTE will stay
->>> off with KVM unless requested explicitly.
->>>
->>> This patch is rework of commit b320e21c48ce64853904bea6631c0158cc2ef227
->>> which broke TCG since it made the TCG -cpu max
->>> report the presence of MTE to the guest even if the board hadn't
->>> enabled MTE by wiring up the tag RAM. This meant that if the guest
->>> then tried to use MTE QEMU would segfault accessing the
->>> non-existent tag RAM.
->>>
->>> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
->>> Signed-off-by: Ganapatrao Kulkarni <gankulkarni@os.amperecomputing.com>
->>> ---
->>> Changes since V1:
->>>     Added code to enable MTE before reading register
->>> id_aa64pfr1 (unmasked MTE bits).
->>>
->>> This patch is boot tested on ARM64 with KVM and on X86 with TCG for 
->>> mte=on
->>> and default case(i.e, no mte).
->>>
->>>   hw/arm/virt.c        | 72 ++++++++++++++++++++++++++------------------
->>>   target/arm/cpu.c     |  7 +++--
->>>   target/arm/cpu.h     |  2 ++
->>>   target/arm/kvm.c     | 59 ++++++++++++++++++++++++++++++++++++
->>>   target/arm/kvm_arm.h | 19 ++++++++++++
->>>   5 files changed, 126 insertions(+), 33 deletions(-)
->>>
->> (...)
+>> If MTE has been enabled, we need to disable migration, as we do not
+>> yet have a way to migrate the tags as well. Therefore, MTE will stay
+>> off with KVM unless requested explicitly.
 >>
->>> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
->>> index 849e2e21b3..29865609fb 100644
->>> --- a/target/arm/kvm.c
->>> +++ b/target/arm/kvm.c
->>> @@ -39,6 +39,7 @@
->>>   #include "hw/acpi/acpi.h"
->>>   #include "hw/acpi/ghes.h"
->>>   #include "target/arm/gtimer.h"
->>> +#include "migration/blocker.h"
->>>   const KVMCapabilityInfo kvm_arch_required_capabilities[] = {
->>>       KVM_CAP_LAST_INFO
->>> @@ -119,6 +120,21 @@ bool kvm_arm_create_scratch_host_vcpu(const 
->>> uint32_t *cpus_to_try,
->>>       if (vmfd < 0) {
->>>           goto err;
->>>       }
->>> +
->>> +    /*
->>> +     * MTE bits of register id_aa64pfr1 are masked if MTE is
->>> +     * not enabled and required to enable before VCPU
->>> +     * is created. Hence enable MTE(if supported) before VCPU
->>> +     * is created to read unmasked MTE bits.
->>> +     */
->> Maybe
+>> This patch is rework of commit b320e21c48ce64853904bea6631c0158cc2ef227
+>> which broke TCG since it made the TCG -cpu max
+>> report the presence of MTE to the guest even if the board hadn't
+>> enabled MTE by wiring up the tag RAM. This meant that if the guest
+>> then tried to use MTE QEMU would segfault accessing the
+>> non-existent tag RAM.
 >>
->> "KVM will mask the MTE bits in id_aa64pfr1 unless the VMM has enabled
->> the MTE KVM capability, so do it here for probing."
+>> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
+>> Signed-off-by: Ganapatrao Kulkarni <gankulkarni@os.amperecomputing.com>
+>> ---
+>> Changes since V1:
+>>     Added code to enable MTE before reading register
+>> id_aa64pfr1 (unmasked MTE bits).
 >>
->> ?
+>> This patch is boot tested on ARM64 with KVM and on X86 with TCG for 
+>> mte=on
+>> and default case(i.e, no mte).
+>>
+>>   hw/arm/virt.c        | 72 ++++++++++++++++++++++++++------------------
+>>   target/arm/cpu.c     |  7 +++--
+>>   target/arm/cpu.h     |  2 ++
+>>   target/arm/kvm.c     | 59 ++++++++++++++++++++++++++++++++++++
+>>   target/arm/kvm_arm.h | 19 ++++++++++++
+>>   5 files changed, 126 insertions(+), 33 deletions(-)
 > 
-> KVM_CAP_ARM_MTE must be set before creating the VCPUs, as
+> Overall the patch looks good. I just have a couple of questions.
 > 
-> stated in the KVM API docs, so enabling this cap. here for later
 > 
-> probing the MTE bits correctly feels more like a consequence. So
+>> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+>> index 7934b23651..a33af7d996 100644
+>> --- a/hw/arm/virt.c
+>> +++ b/hw/arm/virt.c
+>> @@ -2211,7 +2211,7 @@ static void machvirt_init(MachineState *machine)
+>>           exit(1);
+>>       }
+>> -    if (vms->mte && (kvm_enabled() || hvf_enabled())) {
+>> +    if (vms->mte && hvf_enabled()) {
+>>           error_report("mach-virt: %s does not support providing "
+>>                        "MTE to the guest CPU",
+>>                        current_accel_name());
+>> @@ -2281,39 +2281,51 @@ static void machvirt_init(MachineState *machine)
+>>           }
+>>           if (vms->mte) {
+>> -            /* Create the memory region only once, but link to all 
+>> cpus. */
+>> -            if (!tag_sysmem) {
+>> -                /*
+>> -                 * The property exists only if MemTag is supported.
+>> -                 * If it is, we must allocate the ram to back that up.
+>> -                 */
+>> -                if (!object_property_find(cpuobj, "tag-memory")) {
+>> -                    error_report("MTE requested, but not supported "
+>> -                                 "by the guest CPU");
+>> -                    exit(1);
+>> +            if (tcg_enabled()) {
+>> +                /* Create the memory region only once, but link to 
+>> all cpus. */
+>> +                if (!tag_sysmem) {
+>> +                    /*
+>> +                     * The property exists only if MemTag is supported.
+>> +                     * If it is, we must allocate the ram to back 
+>> that up.
+>> +                     */
+>> +                    if (!object_property_find(cpuobj, "tag-memory")) {
+>> +                        error_report("MTE requested, but not supported "
+>> +                                     "by the guest CPU");
+>> +                        exit(1);
+>> +                    }
+>> +
+>> +                    tag_sysmem = g_new(MemoryRegion, 1);
+>> +                    memory_region_init(tag_sysmem, OBJECT(machine),
+>> +                                       "tag-memory", UINT64_MAX / 32);
+>> +
+>> +                    if (vms->secure) {
+>> +                        secure_tag_sysmem = g_new(MemoryRegion, 1);
+>> +                        memory_region_init(secure_tag_sysmem, 
+>> OBJECT(machine),
+>> +                                           "secure-tag-memory",
+>> +                                           UINT64_MAX / 32);
+>> +
+>> +                        /* As with ram, secure-tag takes precedence 
+>> over tag. */
+>> +                        
+>> memory_region_add_subregion_overlap(secure_tag_sysmem,
+>> +                                                            0, 
+>> tag_sysmem, -1);
+>> +                    }
+>>                   }
+>> -                tag_sysmem = g_new(MemoryRegion, 1);
+>> -                memory_region_init(tag_sysmem, OBJECT(machine),
+>> -                                   "tag-memory", UINT64_MAX / 32);
+>> -
+>> +                object_property_set_link(cpuobj, "tag-memory",
+>> +                                         OBJECT(tag_sysmem), 
+>> &error_abort);
+>>                   if (vms->secure) {
+>> -                    secure_tag_sysmem = g_new(MemoryRegion, 1);
+>> -                    memory_region_init(secure_tag_sysmem, 
+>> OBJECT(machine),
+>> -                                       "secure-tag-memory", 
+>> UINT64_MAX / 32);
+>> -
+>> -                    /* As with ram, secure-tag takes precedence over 
+>> tag.  */
+>> -                    
+>> memory_region_add_subregion_overlap(secure_tag_sysmem, 0,
+>> -                                                        tag_sysmem, -1);
+>> +                    object_property_set_link(cpuobj, 
+>> "secure-tag-memory",
+>> +                                             OBJECT(secure_tag_sysmem),
+>> +                                             &error_abort);
+>>                   }
+>> -            }
+>> -
+>> -            object_property_set_link(cpuobj, "tag-memory", 
+>> OBJECT(tag_sysmem),
+>> -                                     &error_abort);
+>> -            if (vms->secure) {
+>> -                object_property_set_link(cpuobj, "secure-tag-memory",
+>> -                                         OBJECT(secure_tag_sysmem),
+>> -                                         &error_abort);
+>> +            } else if (kvm_enabled()) {
+>> +                if (!kvm_arm_mte_supported()) {
+>> +                    error_report("MTE requested, but not supported by 
+>> KVM");
+>> +                    exit(1);
+>> +                }
+>> +                kvm_arm_enable_mte(cpuobj, &error_abort);
+>> +            } else {
+>> +                    error_report("MTE requested, but not supported ");
+>> +                    exit(1);
+>>               }
+>>           }
+>> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+>> index 19191c2391..a59417aac8 100644
+>> --- a/target/arm/cpu.c
+>> +++ b/target/arm/cpu.c
+>> @@ -2390,11 +2390,12 @@ static void arm_cpu_realizefn(DeviceState 
+>> *dev, Error **errp)
+>>   #ifndef CONFIG_USER_ONLY
+>>           /*
+>> -         * If we do not have tag-memory provided by the machine,
+>> -         * reduce MTE support to instructions enabled at EL0.
+>> +         * If we do not have tag-memory provided by the TCG
+>> +         * nor MTE at KVM enabled, reduce MTE support to
+>> +         * instructions enabled at EL0.
 > 
-> I prefer the the original comment, which mentions that
+> What controls if MTE insns. (stg, etc.) are enabled on EL0 and EL1
 > 
-> requirement. But I think something shorter like the following
+> are the ATA and ATA0 bits in SCTRL register. Also, AA64PFR1 is a
 > 
-> would work too:
+> register just to report the features available on the CPU, so I
 > 
-> "MTE capability must be enabled by the VMM before creating
+> wonder if that comment is indeed correct.
 > 
-> any VCPUs. The MTE bits of the ID_AA64PFR1 register are masked
+> @rth: what do you think?
 > 
-> if MTE is not enabled, allowing them to be probed correctly."
 > 
+>>            * This matches Cortex-A710 BROADCASTMTE input being LOW.
+>>            */
+>> -        if (cpu->tag_memory == NULL) {
+>> +        if (cpu->tag_memory == NULL && !cpu->kvm_mte) {
+>>               cpu->isar.id_aa64pfr1 =
+>>                   FIELD_DP64(cpu->isar.id_aa64pfr1, ID_AA64PFR1, MTE, 1);
+>>           }
+> 
+> If MTE is off on TGC and on KVM, then we're actually setting (deposit) MTE
+> 
+> field in AA64PFR1, meaning that MTE is implemented? or am I missing
+> 
+> something?
+
+Thanks for the comment.
+
+Looks like I did a mistake by mixing the TCG and KVM.
+
+I have modified as below diff to keep TCG if loop as it is and adding if 
+for KVM case to clear/mask the MTE bits if MTE in KVM mode is not 
+enabled by user command(if no mte=on).
+
+Is below diff makes sense?
+
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index a59417aac8..523996576d 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -2390,15 +2390,20 @@ static void arm_cpu_realizefn(DeviceState *dev, 
+Error **errp)
+
+  #ifndef CONFIG_USER_ONLY
+          /*
+-         * If we do not have tag-memory provided by the TCG
+-         * nor MTE at KVM enabled, reduce MTE support to
+-         * instructions enabled at EL0.
++         * If we do not have tag-memory provided by the TCG,
++         * reduce MTE support to instructions enabled at EL0.
+           * This matches Cortex-A710 BROADCASTMTE input being LOW.
+           */
+-        if (cpu->tag_memory == NULL && !cpu->kvm_mte) {
++        if (tcg_enabled() && cpu->tag_memory == NULL) {
+              cpu->isar.id_aa64pfr1 =
+                  FIELD_DP64(cpu->isar.id_aa64pfr1, ID_AA64PFR1, MTE, 1);
+          }
++
++        /* Disable MTE, if it is not enabled by the user for KVM mode.
++         */
++        if (kvm_enabled() && !cpu->kvm_mte) {
++                FIELD_DP64(cpu->isar.id_aa64pfr1, ID_AA64PFR1, MTE, 0);
++        }
+  #endif
+      }
+
+
+> 
+> 
+>> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+>> index f065756c5c..8fc8b6398f 100644
+>> --- a/target/arm/cpu.h
+>> +++ b/target/arm/cpu.h
+>> @@ -922,6 +922,8 @@ struct ArchCPU {
+>>       /* CPU has memory protection unit */
+>>       bool has_mpu;
+>> +    /* CPU has MTE enabled in KVM mode */
+>> +    bool kvm_mte;
+>>       /* PMSAv7 MPU number of supported regions */
+>>       uint32_t pmsav7_dregion;
+>>       /* PMSAv8 MPU number of supported hyp regions */
+>> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+>> index 849e2e21b3..29865609fb 100644
+>> --- a/target/arm/kvm.c
+>> +++ b/target/arm/kvm.c
+>> @@ -39,6 +39,7 @@
+>>   #include "hw/acpi/acpi.h"
+>>   #include "hw/acpi/ghes.h"
+>>   #include "target/arm/gtimer.h"
+>> +#include "migration/blocker.h"
+>>   const KVMCapabilityInfo kvm_arch_required_capabilities[] = {
+>>       KVM_CAP_LAST_INFO
+>> @@ -119,6 +120,21 @@ bool kvm_arm_create_scratch_host_vcpu(const 
+>> uint32_t *cpus_to_try,
+>>       if (vmfd < 0) {
+>>           goto err;
+>>       }
+>> +
+>> +    /*
+>> +     * MTE bits of register id_aa64pfr1 are masked if MTE is
+>> +     * not enabled and required to enable before VCPU
+>> +     * is created. Hence enable MTE(if supported) before VCPU
+>> +     * is created to read unmasked MTE bits.
+>> +     */
+>> +    if (kvm_arm_mte_supported()) {
+>> +        KVMState kvm_state;
+>> +
+>> +        kvm_state.fd = kvmfd;
+>> +        kvm_state.vmfd = vmfd;
+>> +        kvm_vm_enable_cap(&kvm_state, KVM_CAP_ARM_MTE, 0);
+>> +    }
+>> +
+>>       cpufd = ioctl(vmfd, KVM_CREATE_VCPU, 0);
+>>       if (cpufd < 0) {
+>>           goto err;
+>> @@ -1793,6 +1809,11 @@ bool kvm_arm_sve_supported(void)
+>>       return kvm_check_extension(kvm_state, KVM_CAP_ARM_SVE);
+>>   }
+>> +bool kvm_arm_mte_supported(void)
+>> +{
+>> +    return kvm_check_extension(kvm_state, KVM_CAP_ARM_MTE);
+>> +}
+>> +
+>>   QEMU_BUILD_BUG_ON(KVM_ARM64_SVE_VQ_MIN != 1);
+>>   uint32_t kvm_arm_sve_get_vls(ARMCPU *cpu)
+>> @@ -2417,3 +2438,41 @@ int kvm_arch_remove_sw_breakpoint(CPUState *cs, 
+>> struct kvm_sw_breakpoint *bp)
+>>       }
+>>       return 0;
+>>   }
+>> +
+>> +void kvm_arm_enable_mte(Object *cpuobj, Error **errp)
+>> +{
+>> +    static bool tried_to_enable;
+>> +    static bool succeeded_to_enable;
+>> +    Error *mte_migration_blocker = NULL;
+>> +    ARMCPU *cpu = ARM_CPU(cpuobj);
+>> +    int ret;
+>> +
+>> +    if (!tried_to_enable) {
+>> +        /*
+>> +         * MTE on KVM is enabled on a per-VM basis (and retrying 
+>> doesn't make
+>> +         * sense), and we only want a single migration blocker as well.
+>> +         */
+>> +        tried_to_enable = true;
+>> +
+>> +        ret = kvm_vm_enable_cap(kvm_state, KVM_CAP_ARM_MTE, 0);
+>> +        if (ret) {
+>> +            error_setg_errno(errp, -ret, "Failed to enable 
+>> KVM_CAP_ARM_MTE");
+>> +            return;
+>> +        }
+>> +
+>> +        /* TODO: Add migration support with MTE enabled */
+>> +        error_setg(&mte_migration_blocker,
+>> +                   "Live migration disabled due to MTE enabled");
+>> +        if (migrate_add_blocker(&mte_migration_blocker, errp)) {
+>> +            error_free(mte_migration_blocker);
+>> +            return;
+>> +        }
+>> +
+>> +        succeeded_to_enable = true;
+>> +    }
+>> +
+>> +    if (succeeded_to_enable) {
+>> +        cpu->kvm_mte = true;
+>> +    }
+>> +}
+>> +
+> 
+> nit: remove ending blank line here.
 > 
 
-Thanks, this comment seems more precise.
+Sure, thanks.
 
 -- 
 Thanks,

@@ -1,292 +1,428 @@
-Received: by 2002:a17:504:1bc1:b0:1be9:327d:8ee3 with SMTP id v1csp1113081njg;
-        Wed, 18 Sep 2024 18:41:27 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWNJ2TFmlcrxwDmG8oH/femtWEaRDoWwR7js8RjBwZIx3ME4jcvJneFr5z+ccbEZpricVNa20xrO1CoHg==@linaro.org
-X-Google-Smtp-Source: AGHT+IFopFq1pZVi7AwQGpkHKPFb3XVZUrd+GQ7REJTR/sDyfKmp0Yt6z6V3cQ2w6gTunInaO+Bt
-X-Received: by 2002:a05:620a:28d4:b0:7a6:5cb3:8794 with SMTP id af79cd13be357-7ab30dc42cdmr3314437785a.62.1726710087049;
-        Wed, 18 Sep 2024 18:41:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1726710087; cv=none;
-        d=google.com; s=arc-20240605;
-        b=gIVHLkUKffy+FSxmvvxtb7PDdTESfJATylgTwIGA+zabaU4FNmIYmgW16s7PZdOKyM
-         BLMNtL1In1Us1u65TeIABkiFX6rYlP2hIQ+FOraJzFohuWHCVUhy965dalKujmSPivEZ
-         yIY0j7tjC9KMkxdjdcK1VkNpab/RNm9R0Gc0o6n2B1JU2Kv5ZjmMRvIh/EvEoR9Twon3
-         QIY/sdUlKJQXhUxkwW2M0TXqX7dnGgNu6dKl5gR6lg/eX9E6LuBO1baO7WJFqP39NV/v
-         TgGyb8glftZqOwUDBalsMrIZCpnov/XOMwLkoR7Q6ELsh5H4u+CVw5q8k8K/pEFLM4Yi
-         qPrw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=JkD60/JH0Tp2VzzsL+xBzLrW6ct/fu4Il1prS5IUdvk=;
-        fh=N9JXs6UlidM8EsUInW73fWjlYrhprlUzJ9DsuKSk+BQ=;
-        b=PlZVHE9/w04X+I7CG/bHkDK3BF+x/mctuQScCjYHn87CbuFEdoaRNBOubycNY3RFk9
-         g3ztl3m6NtNtQ7XY51EmvHkwP/lFTkttkboYjNmjVPy6+aixvcN3oy4suFK1INk47wCr
-         dlSjv6FxnHuKTo7ccJCfzTS5WSNQtkWYw2jEN2CbXyTMFeDRxKZPi3Ya7/I3rDEPhVMC
-         nk/EzlY8WfXhgaDwU4IpmRYYHrCbjDviJZ8egQrzwwE1cfDA8H/Cf6gX1RiuwGqiHgGW
-         R0LLdKPfMS/5SLuvUCFm/0qOVKzsFOhTLMnYTVo6SKz4O0Ey3tUoNz78dSklscxGVR4y
-         laiw==;
+Received: by 2002:a17:504:1bc1:b0:1be9:327d:8ee3 with SMTP id v1csp1140993njg;
+        Wed, 18 Sep 2024 20:22:59 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUQIEg1PJ8d/joA0Scl37UfbcAf6ZCyfStyUU6hP03aDIMZo2DBn6YQcBvG7Gay4UyyxZ4qDVCUYlcxCw==@linaro.org
+X-Received: by 2002:a05:6a20:e687:b0:1c6:fb2a:4696 with SMTP id adf61e73a8af0-1cf75eefa0cmr39953307637.19.1726716179197;
+        Wed, 18 Sep 2024 20:22:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1726716179; cv=none;
+        d=google.com; s=arc-20160816;
+        b=QRcm83jJ9wabuLCwZyRa70vv9hloTNS/LUN49drgO4s1LXLL5EGberAy7s60wzoLHb
+         2HMFdpDKkLu45OXne2NqYKcG09TLiCRZP5gFKwJCEtInJwhXIxcaMkhAMdkTOI2fUYLb
+         L/yaJdFVGVIQgLQ3BCx3dAj1gXu3YWJ2m11Ojc9euJ1ix1nEWKlfr9lfBOE7KJMceuoj
+         6b/Bu2UkN48aYdVB+YJb752XU/mXypLalNw5z3s8egykDfWT0aU6eZOPhEoUdr3ZJyYQ
+         jj5EWDDHxE9/c5LaBosPh0YKSTLvY+894FyCJusjr0nQ8AWuiJxDqgpgFE5/2rIhZwHY
+         oZHw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=q4JlnRf+sH8eouq6eUmmXaWchAjLldxPWsjwU8cMKxg=;
+        fh=aycRh6bH70yDU4CO/lbuD9bEQc/dF7n+mNxDj5SSsJs=;
+        b=HVGqZUGZIhy1JlUPPQjrLCAPyabrmQgJCOGFSE4eh+fKeh+vu8ao5mxr2y7ADe5rAJ
+         k0+NJnGH7/JXlCwjMSH47CSJR4GXxjaeksA0nD0V6cKJvVPBG+RbPqaIMDfEny7dD8Go
+         3KY7uPQ+xVAgBY04IAddkCfnCVLMYMpHE/Qut0lc8I1iwP/Y9jyUG2YuosPLh7URNqg9
+         PzeQUXQh+xWtOtxKlaBWcjw6/fE3LMSKaKY+O4vxzzHxNsGSEKvZmojsiicRH51M3Wf2
+         M8+/4ZjETbvnPspT+wHwc3iPtRRcsY7LHb7zKw/loLpVsixIaMEV/sAHk43eHIO7xzzM
+         /yxA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=XRiBW6Th;
-       spf=pass (google.com: domain of zhao1.liu@intel.com designates 192.198.163.15 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Return-Path: <zhao1.liu@intel.com>
-Received: from mgamail.intel.com (mgamail.intel.com. [192.198.163.15])
-        by mx.google.com with ESMTPS id af79cd13be357-7acb08c8da3si79123185a.259.2024.09.18.18.41.25
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 18 Sep 2024 18:41:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of zhao1.liu@intel.com designates 192.198.163.15 as permitted sender) client-ip=192.198.163.15;
+       dkim=pass header.i=@linaro.org header.s=google header.b=tIYiw5mU;
+       spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <gustavo.romero@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d2e1a72fcca58-71944b7e5c6sor6422437b3a.8.2024.09.18.20.22.59
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Wed, 18 Sep 2024 20:22:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=XRiBW6Th;
-       spf=pass (google.com: domain of zhao1.liu@intel.com designates 192.198.163.15 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1726710087; x=1758246087;
-  h=from:to:cc:subject:date:message-id:in-reply-to:
-   references:mime-version:content-transfer-encoding;
-  bh=R/RyqBpSFLfGANKmP2zWrU5SVWm2/qn58wOc7/+Iwms=;
-  b=XRiBW6ThyhwYtqtWmCat7Nkuhj9Q1bXN9eTlg4EL5iKAbFzOTk0r3KTO
-   xJn/HYJaSEgfDDTlNF035HVY+j8rISVETTbFRvQtYIGztjC376yygHSud
-   yJbtU4sggvLsMdQE/nvHrvlVejCyqqghVbyZTmvfdVqaTdHIk8AZ1MWs0
-   3tC6a+QHQoeJVgnkFm3ISmF7pcD8KPL2+w74/R3RY5VA9QgCMNFFrQM00
-   f0ORavhaXIZdFeBBbZ9eYUw476raJ4bIv3ImFlRQU4uCjAvN6Bc2KWJRT
-   L1JRBDBm7m3gSBPfDuF+vay7eLo1pIBSNsESE3uIYfR6EvgIlKfLJPOjL
-   Q==;
-X-CSE-ConnectionGUID: jtXEGmowSiuhTLOdFU4jRw==
-X-CSE-MsgGUID: +cTuBsfWRtOHMjufwGLCXA==
-X-IronPort-AV: E=McAfee;i="6700,10204,11199"; a="25798137"
-X-IronPort-AV: E=Sophos;i="6.10,240,1719903600"; 
-   d="scan'208";a="25798137"
-Received: from orviesa006.jf.intel.com ([10.64.159.146])
-  by fmvoesa109.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Sep 2024 18:41:25 -0700
-X-CSE-ConnectionGUID: szNCjQVpTIWjD4Z0T6eu4A==
-X-CSE-MsgGUID: 4gQNKxRUT0GdnsrB0gseZg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.10,240,1719903600"; 
-   d="scan'208";a="70059004"
-Received: from liuzhao-optiplex-7080.sh.intel.com ([10.239.160.36])
-  by orviesa006.jf.intel.com with ESMTP; 18 Sep 2024 18:41:18 -0700
-From: Zhao Liu <zhao1.liu@intel.com>
-To: =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
-	Igor Mammedov <imammedo@redhat.com>,
-	Eduardo Habkost <eduardo@habkost.net>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Yanan Wang <wangyanan55@huawei.com>,
-	"Michael S . Tsirkin" <mst@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
-	Nicholas Piggin <npiggin@gmail.com>,
-	=?UTF-8?q?Fr=C3=A9d=C3=A9ric=20Barrat?= <fbarrat@linux.ibm.com>,
-	Daniel Henrique Barboza <danielhb413@gmail.com>,
-	David Gibson <david@gibson.dropbear.id.au>,
-	Harsh Prateek Bora <harshpb@linux.ibm.com>,
-	Markus Armbruster <armbru@redhat.com>,
-	Marcelo Tosatti <mtosatti@redhat.com>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org,
-	kvm@vger.kernel.org,
-	qemu-ppc@nongnu.org,
-	qemu-arm@nongnu.org,
-	Zhenyu Wang <zhenyu.z.wang@intel.com>,
-	Dapeng Mi <dapeng1.mi@linux.intel.com>,
-	Yongwei Ma <yongwei.ma@intel.com>,
-	Zhao Liu <zhao1.liu@intel.com>
-Subject: [RFC v2 15/15] i386: Support topology device tree
-Date: Thu, 19 Sep 2024 09:55:33 +0800
-Message-Id: <20240919015533.766754-16-zhao1.liu@intel.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20240919015533.766754-1-zhao1.liu@intel.com>
-References: <20240919015533.766754-1-zhao1.liu@intel.com>
+       dkim=pass header.i=@linaro.org header.s=google header.b=tIYiw5mU;
+       spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1726716179; x=1727320979; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=q4JlnRf+sH8eouq6eUmmXaWchAjLldxPWsjwU8cMKxg=;
+        b=tIYiw5mUUDvk9RHmhlaPpzo/YD4cqumClrOC7djUHUSiywGOBzkVTBBwM/GMsHj/F0
+         ApI3zBxAGbIcwvhsZe+9e+EKrEFbFn+CHHebdu41DKZy2SA5IMzh9e0kZL2E/thKwzxF
+         wPSewkyWG5uXMWZkeGxhQdceGP5sLVBdhtyJu04EFp+AyjG+MGvFszGz2DWcScQp+ryn
+         CKiHFU03XxM8AaulIShATx3uoZ8xhHYPGvXKaH2LOeLnZuJ+PqHOrOkuxvFyaL0DKhYo
+         DjwJHgSu7qpJ92tOcU5GyMZlsh4tkWnO2wDfOl1mro6taes/OjKFc2rN+f8UqzGcda7L
+         Y66Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1726716179; x=1727320979;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=q4JlnRf+sH8eouq6eUmmXaWchAjLldxPWsjwU8cMKxg=;
+        b=rh1+2cZIJaPLMKjNw+pBWAMj/U5b6DmokEOR7HA7fiN9mlss56b9JGp50MXvYd81Pj
+         8KkqpsElPMTS3t9JRvAgzR83pouL+X72J/VZRRQZXGF50iLb2gE9N6FQ5RIpa6wjOwCj
+         rCRsebUNVb7Sl/Vr8o1UhlKz6JYApp/bl6brWs2r/R8b4Ocus/x0eA6rC8ef2mijdRrj
+         3ZLcETDfYWjWF72JOIveCsrKQqB5zKNEzwNay7U1yRo9e/8OjK7DU2nPWqfeA+1L8INF
+         I9NR/W4oFEuqbIgRP5N/eosUnnHtD1EXHfaLq8wsa9ND5Ja01drcgfSWNJulZRqT93cL
+         7XEA==
+X-Forwarded-Encrypted: i=1; AJvYcCVLDGcA0iEclfTFv7EljW8m8FR9AXq8zKO/3dBS+lQBRAES3lEQvBsmBVY5swsqZEJtVHSWKsc3udQPNw==@linaro.org
+X-Gm-Message-State: AOJu0Yy9mYSKm9sEG00ERc4xTU/9JQc88cHx5FAnLEz8NyrTdqicsJPI
+	Ddx6So83dVim6yBN5NQp3JR5m9tQYJ+HOdvo0SYHSO4gpT4psv/FVvm2zM3vzNjwog==
+X-Google-Smtp-Source: AGHT+IER8vk7VNwH0jakUaiaKB5bHqzns1GxQE7Z/Bxv2Y4wh0eEixI3JmItxHLLPwPvFbdzocsz3g==
+X-Received: by 2002:a05:6a00:2daa:b0:717:9154:b5b6 with SMTP id d2e1a72fcca58-7192606ce9emr38653960b3a.7.1726716178457;
+        Wed, 18 Sep 2024 20:22:58 -0700 (PDT)
+Return-Path: <gustavo.romero@linaro.org>
+Received: from [192.168.0.101] ([187.75.38.19])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-71944b7afaesm7349289b3a.130.2024.09.18.20.22.55
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 18 Sep 2024 20:22:57 -0700 (PDT)
+Message-ID: <0faf9a7c-0400-482c-974f-7b70e1d58202@linaro.org>
+Date: Thu, 19 Sep 2024 00:22:54 -0300
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-TUID: LVqZ4vob4IS1
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH V2] arm/kvm: add support for MTE
+To: Ganapatrao Kulkarni <gankulkarni@os.amperecomputing.com>,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, richard.henderson@linaro.org,
+ alex.bennee@linaro.org, darren@os.amperecomputing.com
+References: <20240912091616.393685-1-gankulkarni@os.amperecomputing.com>
+Content-Language: en-US
+From: Gustavo Romero <gustavo.romero@linaro.org>
+In-Reply-To: <20240912091616.393685-1-gankulkarni@os.amperecomputing.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-TUID: VSUjrAlajlq7
 
-Support complete QOM CPu topology tree for x86 machine, and specify
-bus_type for x86 CPU so that all x86 CPUs will be added in the topology
-tree.
+Hi Ganapatrao,
 
-Since the CPU slot make the machine as the hotplug handler for all
-topology devices, hotplug related hooks may used to handle other
-topology devices besides the CPU. Thus, make microvm not assume that
-the device is only a CPU when implementing the relevant hooks.
+On 9/12/24 06:16, Ganapatrao Kulkarni wrote:
+> Extend the 'mte' property for the virt machine to cover KVM as
+> well. For KVM, we don't allocate tag memory, but instead enable
+> the capability.
+>
+> If MTE has been enabled, we need to disable migration, as we do not
+> yet have a way to migrate the tags as well. Therefore, MTE will stay
+> off with KVM unless requested explicitly.
+>
+> This patch is rework of commit b320e21c48ce64853904bea6631c0158cc2ef227
+> which broke TCG since it made the TCG -cpu max
+> report the presence of MTE to the guest even if the board hadn't
+> enabled MTE by wiring up the tag RAM. This meant that if the guest
+> then tried to use MTE QEMU would segfault accessing the
+> non-existent tag RAM.
+>
+> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
+> Signed-off-by: Ganapatrao Kulkarni <gankulkarni@os.amperecomputing.com>
+> ---
+> Changes since V1:
+> 	Added code to enable MTE before reading register
+> id_aa64pfr1 (unmasked MTE bits).
+>
+> This patch is boot tested on ARM64 with KVM and on X86 with TCG for mte=on
+> and default case(i.e, no mte).
+>
+>   hw/arm/virt.c        | 72 ++++++++++++++++++++++++++------------------
+>   target/arm/cpu.c     |  7 +++--
+>   target/arm/cpu.h     |  2 ++
+>   target/arm/kvm.c     | 59 ++++++++++++++++++++++++++++++++++++
+>   target/arm/kvm_arm.h | 19 ++++++++++++
+>   5 files changed, 126 insertions(+), 33 deletions(-)
 
-Additionally, drop code paths that are not needed by the topology tree
-implementation.
+Overall the patch looks good. I just have a couple of questions.
 
-Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
----
- hw/i386/microvm.c    | 13 +++++---
- hw/i386/x86-common.c | 78 +++++---------------------------------------
- hw/i386/x86.c        |  2 ++
- target/i386/cpu.c    |  2 ++
- 4 files changed, 21 insertions(+), 74 deletions(-)
 
-diff --git a/hw/i386/microvm.c b/hw/i386/microvm.c
-index 40edcee7af29..49a897db50fc 100644
---- a/hw/i386/microvm.c
-+++ b/hw/i386/microvm.c
-@@ -417,16 +417,21 @@ static void microvm_fix_kernel_cmdline(MachineState *machine)
- static void microvm_device_pre_plug_cb(HotplugHandler *hotplug_dev,
-                                        DeviceState *dev, Error **errp)
- {
--    X86CPU *cpu = X86_CPU(dev);
-+    if (object_dynamic_cast(OBJECT(dev), TYPE_CPU)) {
-+        X86CPU *cpu;
-+        cpu = X86_CPU(dev);
- 
--    cpu->host_phys_bits = true; /* need reliable phys-bits */
--    x86_cpu_pre_plug(hotplug_dev, dev, errp);
-+        cpu->host_phys_bits = true; /* need reliable phys-bits */
-+        x86_cpu_pre_plug(hotplug_dev, dev, errp);
-+    }
- }
- 
- static void microvm_device_plug_cb(HotplugHandler *hotplug_dev,
-                                    DeviceState *dev, Error **errp)
- {
--    x86_cpu_plug(hotplug_dev, dev, errp);
-+    if (object_dynamic_cast(OBJECT(dev), TYPE_CPU)) {
-+        x86_cpu_plug(hotplug_dev, dev, errp);
-+    }
- }
- 
- static void microvm_device_unplug_request_cb(HotplugHandler *hotplug_dev,
-diff --git a/hw/i386/x86-common.c b/hw/i386/x86-common.c
-index d837aadc9dea..75d4b2f3d43a 100644
---- a/hw/i386/x86-common.c
-+++ b/hw/i386/x86-common.c
-@@ -129,26 +129,18 @@ static void x86_cpu_new(X86MachineState *x86ms, int index,
-                         int64_t apic_id, Error **errp)
- {
-     MachineState *ms = MACHINE(x86ms);
--    MachineClass *mc = MACHINE_GET_CLASS(ms);
-     Object *cpu = object_new(ms->cpu_type);
-     DeviceState *dev = DEVICE(cpu);
-     BusState *bus = NULL;
-+    X86CPUTopoIDs topo_ids;
-+    X86CPUTopoInfo topo_info;
- 
--    /*
--     * Once x86 machine supports topo_tree_supported, x86 CPU would
--     * also have bus_type.
--     */
--    if (mc->smp_props.topo_tree_supported) {
--        X86CPUTopoIDs topo_ids;
--        X86CPUTopoInfo topo_info;
--
--        init_topo_info(&topo_info, x86ms);
--        x86_topo_ids_from_apicid(apic_id, &topo_info, &topo_ids);
--        bus = x86_find_topo_bus(ms, &topo_ids);
-+    init_topo_info(&topo_info, x86ms);
-+    x86_topo_ids_from_apicid(apic_id, &topo_info, &topo_ids);
-+    bus = x86_find_topo_bus(ms, &topo_ids);
- 
--        /* Only with dev->id, CPU can be inserted into topology tree. */
--        dev->id = g_strdup_printf("%s[%d]", ms->cpu_type, index);
--    }
-+    /* Only with dev->id, CPU can be inserted into topology tree. */
-+    dev->id = g_strdup_printf("%s[%d]", ms->cpu_type, index);
- 
-     if (!object_property_set_uint(cpu, "apic-id", apic_id, errp)) {
-         goto out;
-@@ -399,10 +391,7 @@ void x86_cpu_pre_plug(HotplugHandler *hotplug_dev,
-     X86CPU *cpu = X86_CPU(dev);
-     CPUX86State *env = &cpu->env;
-     MachineState *ms = MACHINE(hotplug_dev);
--    MachineClass *mc = MACHINE_GET_CLASS(ms);
-     X86MachineState *x86ms = X86_MACHINE(hotplug_dev);
--    unsigned int smp_cores = ms->smp.cores;
--    unsigned int smp_threads = ms->smp.threads;
-     X86CPUTopoInfo topo_info;
- 
-     if (!object_dynamic_cast(OBJECT(cpu), ms->cpu_type)) {
-@@ -434,58 +423,7 @@ void x86_cpu_pre_plug(HotplugHandler *hotplug_dev,
-         set_bit(CPU_TOPOLOGY_LEVEL_DIE, env->avail_cpu_topo);
-     }
- 
--    if (cpu->apic_id == UNASSIGNED_APIC_ID &&
--        !mc->smp_props.topo_tree_supported) {
--        x86_fixup_topo_ids(ms, cpu);
--
--        if (cpu->socket_id < 0) {
--            error_setg(errp, "CPU socket-id is not set");
--            return;
--        } else if (cpu->socket_id > ms->smp.sockets - 1) {
--            error_setg(errp, "Invalid CPU socket-id: %u must be in range 0:%u",
--                       cpu->socket_id, ms->smp.sockets - 1);
--            return;
--        }
--        if (cpu->die_id < 0) {
--            error_setg(errp, "CPU die-id is not set");
--            return;
--        } else if (cpu->die_id > ms->smp.dies - 1) {
--            error_setg(errp, "Invalid CPU die-id: %u must be in range 0:%u",
--                       cpu->die_id, ms->smp.dies - 1);
--        }
--        if (cpu->module_id < 0) {
--            error_setg(errp, "CPU module-id is not set");
--            return;
--        } else if (cpu->module_id > ms->smp.modules - 1) {
--            error_setg(errp, "Invalid CPU module-id: %u must be in range 0:%u",
--                       cpu->module_id, ms->smp.modules - 1);
--            return;
--        }
--        if (cpu->core_id < 0) {
--            error_setg(errp, "CPU core-id is not set");
--            return;
--        } else if (cpu->core_id > (smp_cores - 1)) {
--            error_setg(errp, "Invalid CPU core-id: %u must be in range 0:%u",
--                       cpu->core_id, smp_cores - 1);
--            return;
--        }
--        if (cpu->thread_id < 0) {
--            error_setg(errp, "CPU thread-id is not set");
--            return;
--        } else if (cpu->thread_id > (smp_threads - 1)) {
--            error_setg(errp, "Invalid CPU thread-id: %u must be in range 0:%u",
--                       cpu->thread_id, smp_threads - 1);
--            return;
--        }
--
--        topo_ids.pkg_id = cpu->socket_id;
--        topo_ids.die_id = cpu->die_id;
--        topo_ids.module_id = cpu->module_id;
--        topo_ids.core_id = cpu->core_id;
--        topo_ids.smt_id = cpu->thread_id;
--        cpu->apic_id = x86_apicid_from_topo_ids(&topo_info, &topo_ids);
--    } else if (cpu->apic_id == UNASSIGNED_APIC_ID &&
--               mc->smp_props.topo_tree_supported) {
-+    if (cpu->apic_id == UNASSIGNED_APIC_ID) {
-         /*
-          * For this case, CPU is added by specifying the bus. Under the
-          * topology tree, specifying only the bus should be feasible, but
-diff --git a/hw/i386/x86.c b/hw/i386/x86.c
-index 01fc5e656272..cdf7b81ad0e3 100644
---- a/hw/i386/x86.c
-+++ b/hw/i386/x86.c
-@@ -381,6 +381,8 @@ static void x86_machine_class_init(ObjectClass *oc, void *data)
-     mc->cpu_index_to_instance_props = x86_cpu_index_to_props;
-     mc->get_default_cpu_node_id = x86_get_default_cpu_node_id;
-     mc->possible_cpu_arch_ids = x86_possible_cpu_arch_ids;
-+    mc->smp_props.arch_id_topo_level = CPU_TOPOLOGY_LEVEL_THREAD;
-+    mc->smp_props.topo_tree_supported = true;
-     mc->kvm_type = x86_kvm_type;
-     x86mc->save_tsc_khz = true;
-     x86mc->fwcfg_dma_enabled = true;
-diff --git a/target/i386/cpu.c b/target/i386/cpu.c
-index 90221ceb7313..fb54c2c100a0 100644
---- a/target/i386/cpu.c
-+++ b/target/i386/cpu.c
-@@ -8473,6 +8473,8 @@ static void x86_cpu_common_class_init(ObjectClass *oc, void *data)
- #ifndef CONFIG_USER_ONLY
-     BusFinderClass *bfc = BUS_FINDER_CLASS(oc);
-     bfc->find_bus = x86_cpu_get_parent_bus;
-+
-+    dc->bus_type = TYPE_CPU_BUS;
- #endif
- 
-     object_class_property_add(oc, "family", "int",
--- 
-2.34.1
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index 7934b23651..a33af7d996 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -2211,7 +2211,7 @@ static void machvirt_init(MachineState *machine)
+>           exit(1);
+>       }
+>   
+> -    if (vms->mte && (kvm_enabled() || hvf_enabled())) {
+> +    if (vms->mte && hvf_enabled()) {
+>           error_report("mach-virt: %s does not support providing "
+>                        "MTE to the guest CPU",
+>                        current_accel_name());
+> @@ -2281,39 +2281,51 @@ static void machvirt_init(MachineState *machine)
+>           }
+>   
+>           if (vms->mte) {
+> -            /* Create the memory region only once, but link to all cpus. */
+> -            if (!tag_sysmem) {
+> -                /*
+> -                 * The property exists only if MemTag is supported.
+> -                 * If it is, we must allocate the ram to back that up.
+> -                 */
+> -                if (!object_property_find(cpuobj, "tag-memory")) {
+> -                    error_report("MTE requested, but not supported "
+> -                                 "by the guest CPU");
+> -                    exit(1);
+> +            if (tcg_enabled()) {
+> +                /* Create the memory region only once, but link to all cpus. */
+> +                if (!tag_sysmem) {
+> +                    /*
+> +                     * The property exists only if MemTag is supported.
+> +                     * If it is, we must allocate the ram to back that up.
+> +                     */
+> +                    if (!object_property_find(cpuobj, "tag-memory")) {
+> +                        error_report("MTE requested, but not supported "
+> +                                     "by the guest CPU");
+> +                        exit(1);
+> +                    }
+> +
+> +                    tag_sysmem = g_new(MemoryRegion, 1);
+> +                    memory_region_init(tag_sysmem, OBJECT(machine),
+> +                                       "tag-memory", UINT64_MAX / 32);
+> +
+> +                    if (vms->secure) {
+> +                        secure_tag_sysmem = g_new(MemoryRegion, 1);
+> +                        memory_region_init(secure_tag_sysmem, OBJECT(machine),
+> +                                           "secure-tag-memory",
+> +                                           UINT64_MAX / 32);
+> +
+> +                        /* As with ram, secure-tag takes precedence over tag. */
+> +                        memory_region_add_subregion_overlap(secure_tag_sysmem,
+> +                                                            0, tag_sysmem, -1);
+> +                    }
+>                   }
+>   
+> -                tag_sysmem = g_new(MemoryRegion, 1);
+> -                memory_region_init(tag_sysmem, OBJECT(machine),
+> -                                   "tag-memory", UINT64_MAX / 32);
+> -
+> +                object_property_set_link(cpuobj, "tag-memory",
+> +                                         OBJECT(tag_sysmem), &error_abort);
+>                   if (vms->secure) {
+> -                    secure_tag_sysmem = g_new(MemoryRegion, 1);
+> -                    memory_region_init(secure_tag_sysmem, OBJECT(machine),
+> -                                       "secure-tag-memory", UINT64_MAX / 32);
+> -
+> -                    /* As with ram, secure-tag takes precedence over tag.  */
+> -                    memory_region_add_subregion_overlap(secure_tag_sysmem, 0,
+> -                                                        tag_sysmem, -1);
+> +                    object_property_set_link(cpuobj, "secure-tag-memory",
+> +                                             OBJECT(secure_tag_sysmem),
+> +                                             &error_abort);
+>                   }
+> -            }
+> -
+> -            object_property_set_link(cpuobj, "tag-memory", OBJECT(tag_sysmem),
+> -                                     &error_abort);
+> -            if (vms->secure) {
+> -                object_property_set_link(cpuobj, "secure-tag-memory",
+> -                                         OBJECT(secure_tag_sysmem),
+> -                                         &error_abort);
+> +            } else if (kvm_enabled()) {
+> +                if (!kvm_arm_mte_supported()) {
+> +                    error_report("MTE requested, but not supported by KVM");
+> +                    exit(1);
+> +                }
+> +                kvm_arm_enable_mte(cpuobj, &error_abort);
+> +            } else {
+> +                    error_report("MTE requested, but not supported ");
+> +                    exit(1);
+>               }
+>           }
+>   
+> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+> index 19191c2391..a59417aac8 100644
+> --- a/target/arm/cpu.c
+> +++ b/target/arm/cpu.c
+> @@ -2390,11 +2390,12 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+>   
+>   #ifndef CONFIG_USER_ONLY
+>           /*
+> -         * If we do not have tag-memory provided by the machine,
+> -         * reduce MTE support to instructions enabled at EL0.
+> +         * If we do not have tag-memory provided by the TCG
+> +         * nor MTE at KVM enabled, reduce MTE support to
+> +         * instructions enabled at EL0.
+
+What controls if MTE insns. (stg, etc.) are enabled on EL0 and EL1
+
+are the ATA and ATA0 bits in SCTRL register. Also, AA64PFR1 is a
+
+register just to report the features available on the CPU, so I
+
+wonder if that comment is indeed correct.
+
+@rth: what do you think?
+
+
+>            * This matches Cortex-A710 BROADCASTMTE input being LOW.
+>            */
+> -        if (cpu->tag_memory == NULL) {
+> +        if (cpu->tag_memory == NULL && !cpu->kvm_mte) {
+>               cpu->isar.id_aa64pfr1 =
+>                   FIELD_DP64(cpu->isar.id_aa64pfr1, ID_AA64PFR1, MTE, 1);
+>           }
+
+If MTE is off on TGC and on KVM, then we're actually setting (deposit) MTE
+
+field in AA64PFR1, meaning that MTE is implemented? or am I missing
+
+something?
+
+
+> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> index f065756c5c..8fc8b6398f 100644
+> --- a/target/arm/cpu.h
+> +++ b/target/arm/cpu.h
+> @@ -922,6 +922,8 @@ struct ArchCPU {
+>   
+>       /* CPU has memory protection unit */
+>       bool has_mpu;
+> +    /* CPU has MTE enabled in KVM mode */
+> +    bool kvm_mte;
+>       /* PMSAv7 MPU number of supported regions */
+>       uint32_t pmsav7_dregion;
+>       /* PMSAv8 MPU number of supported hyp regions */
+> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+> index 849e2e21b3..29865609fb 100644
+> --- a/target/arm/kvm.c
+> +++ b/target/arm/kvm.c
+> @@ -39,6 +39,7 @@
+>   #include "hw/acpi/acpi.h"
+>   #include "hw/acpi/ghes.h"
+>   #include "target/arm/gtimer.h"
+> +#include "migration/blocker.h"
+>   
+>   const KVMCapabilityInfo kvm_arch_required_capabilities[] = {
+>       KVM_CAP_LAST_INFO
+> @@ -119,6 +120,21 @@ bool kvm_arm_create_scratch_host_vcpu(const uint32_t *cpus_to_try,
+>       if (vmfd < 0) {
+>           goto err;
+>       }
+> +
+> +    /*
+> +     * MTE bits of register id_aa64pfr1 are masked if MTE is
+> +     * not enabled and required to enable before VCPU
+> +     * is created. Hence enable MTE(if supported) before VCPU
+> +     * is created to read unmasked MTE bits.
+> +     */
+> +    if (kvm_arm_mte_supported()) {
+> +        KVMState kvm_state;
+> +
+> +        kvm_state.fd = kvmfd;
+> +        kvm_state.vmfd = vmfd;
+> +        kvm_vm_enable_cap(&kvm_state, KVM_CAP_ARM_MTE, 0);
+> +    }
+> +
+>       cpufd = ioctl(vmfd, KVM_CREATE_VCPU, 0);
+>       if (cpufd < 0) {
+>           goto err;
+> @@ -1793,6 +1809,11 @@ bool kvm_arm_sve_supported(void)
+>       return kvm_check_extension(kvm_state, KVM_CAP_ARM_SVE);
+>   }
+>   
+> +bool kvm_arm_mte_supported(void)
+> +{
+> +    return kvm_check_extension(kvm_state, KVM_CAP_ARM_MTE);
+> +}
+> +
+>   QEMU_BUILD_BUG_ON(KVM_ARM64_SVE_VQ_MIN != 1);
+>   
+>   uint32_t kvm_arm_sve_get_vls(ARMCPU *cpu)
+> @@ -2417,3 +2438,41 @@ int kvm_arch_remove_sw_breakpoint(CPUState *cs, struct kvm_sw_breakpoint *bp)
+>       }
+>       return 0;
+>   }
+> +
+> +void kvm_arm_enable_mte(Object *cpuobj, Error **errp)
+> +{
+> +    static bool tried_to_enable;
+> +    static bool succeeded_to_enable;
+> +    Error *mte_migration_blocker = NULL;
+> +    ARMCPU *cpu = ARM_CPU(cpuobj);
+> +    int ret;
+> +
+> +    if (!tried_to_enable) {
+> +        /*
+> +         * MTE on KVM is enabled on a per-VM basis (and retrying doesn't make
+> +         * sense), and we only want a single migration blocker as well.
+> +         */
+> +        tried_to_enable = true;
+> +
+> +        ret = kvm_vm_enable_cap(kvm_state, KVM_CAP_ARM_MTE, 0);
+> +        if (ret) {
+> +            error_setg_errno(errp, -ret, "Failed to enable KVM_CAP_ARM_MTE");
+> +            return;
+> +        }
+> +
+> +        /* TODO: Add migration support with MTE enabled */
+> +        error_setg(&mte_migration_blocker,
+> +                   "Live migration disabled due to MTE enabled");
+> +        if (migrate_add_blocker(&mte_migration_blocker, errp)) {
+> +            error_free(mte_migration_blocker);
+> +            return;
+> +        }
+> +
+> +        succeeded_to_enable = true;
+> +    }
+> +
+> +    if (succeeded_to_enable) {
+> +        cpu->kvm_mte = true;
+> +    }
+> +}
+> +
+
+nit: remove ending blank line here.
+
+
+Cheers,
+
+Gustavo
+
+
+> diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
+> index cfaa0d9bc7..4d293618a7 100644
+> --- a/target/arm/kvm_arm.h
+> +++ b/target/arm/kvm_arm.h
+> @@ -188,6 +188,13 @@ bool kvm_arm_pmu_supported(void);
+>    */
+>   bool kvm_arm_sve_supported(void);
+>   
+> +/**
+> + * kvm_arm_mte_supported:
+> + *
+> + * Returns: true if KVM can enable MTE, and false otherwise.
+> + */
+> +bool kvm_arm_mte_supported(void);
+> +
+>   /**
+>    * kvm_arm_get_max_vm_ipa_size:
+>    * @ms: Machine state handle
+> @@ -214,6 +221,8 @@ void kvm_arm_pvtime_init(ARMCPU *cpu, uint64_t ipa);
+>   
+>   int kvm_arm_set_irq(int cpu, int irqtype, int irq, int level);
+>   
+> +void kvm_arm_enable_mte(Object *cpuobj, Error **errp);
+> +
+>   #else
+>   
+>   /*
+> @@ -235,6 +244,11 @@ static inline bool kvm_arm_sve_supported(void)
+>       return false;
+>   }
+>   
+> +static inline bool kvm_arm_mte_supported(void)
+> +{
+> +    return false;
+> +}
+> +
+>   /*
+>    * These functions should never actually be called without KVM support.
+>    */
+> @@ -283,6 +297,11 @@ static inline uint32_t kvm_arm_sve_get_vls(ARMCPU *cpu)
+>       g_assert_not_reached();
+>   }
+>   
+> +static inline void kvm_arm_enable_mte(Object *cpuobj, Error **errp)
+> +{
+> +    g_assert_not_reached();
+> +}
+> +
+>   #endif
+>   
+>   #endif

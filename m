@@ -1,70 +1,70 @@
-Received: by 2002:a17:504:1bc1:b0:1be9:327d:8ee3 with SMTP id v1csp1112625njg;
-        Wed, 18 Sep 2024 18:39:59 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXNeDPWfSvEm+aSpR4jEx7Vbk/jmYk4I0s8R8eQK5u7N+UjTcIcIWVfMJl+byiwPzLEHagpwZpVAHNSsA==@linaro.org
-X-Google-Smtp-Source: AGHT+IE0tvQMxv+Xg/TAFqMvL2PNYj+wp/QsvaHwIasUtXsPzndpPa+KCGMvLozvP/YDpb6yMRCF
-X-Received: by 2002:ac8:5f08:0:b0:458:429a:4d76 with SMTP id d75a77b69052e-45860329286mr344689641cf.28.1726709999137;
-        Wed, 18 Sep 2024 18:39:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1726709999; cv=none;
+Received: by 2002:a17:504:1bc1:b0:1be9:327d:8ee3 with SMTP id v1csp1112670njg;
+        Wed, 18 Sep 2024 18:40:07 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUWKw7vOU9Q9OanuQzTGI9lbB1+rYtKvInWKpZT1y8LBm6igG6MKrf5j18rL1Nj8qH1mZaI978uoN66zg==@linaro.org
+X-Google-Smtp-Source: AGHT+IHVM2GInOQZuqxc9VWwx2FdRqjrMdwjuZS9pA6cVrQ/YJFWzCcl44BkK0KqCFsM9gzZ9wGq
+X-Received: by 2002:a05:6214:5984:b0:6c3:5dcf:bf5a with SMTP id 6a1803df08f44-6c5735940b9mr454505776d6.37.1726710007303;
+        Wed, 18 Sep 2024 18:40:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1726710007; cv=none;
         d=google.com; s=arc-20240605;
-        b=dk+UyhL9wnMJoi3lm/P+khHnQYd7pDAAuC8G8MbZNGWWF8uRTxU+hUthgU6rD2Jtw3
-         Dtb2qLKJFI2kgI3ZQyh5RQfO4JgIdJFxL526VYPQfxHOXVxdIM88JvvVyyc5sDQbd6z2
-         FckIZ1G3FbmN86i71jzV8ClYd7m8bVLBGvF6YlaHZnbwITdNwYtxKrhkouZDDZVrBehB
-         xu8MGnP7IWAXSeW30xAWhJX//OU0NO8uYgYceC9KcE6s9mW6C+BoYjju6XNc+IWF7zmC
-         T53Fhh/AGL14f7P12qKLJLKEGHW9oFyrtEtou43kWMJ546jszy9e3WVJYHx1ZnD07bcV
-         eMpw==
+        b=S8dbGQuWRDEAt24jYp5/aC5AvsupoHwQ0QbSEZfeVvgPmhSvIV51onlCTY7vwEl9K7
+         ym40B7Xla9sIt8ZLU/ssFOtKzCiG518TmGRupAXLCOyoXrjjlUSg6WEFx++UEzfkdxCn
+         0cnev1Ej4LQbBiPDUwyrPwJ+MM2dPFmnLhRqUW/VbIfGETR+3QvyJq/FHp73hCkxs0VZ
+         ZAHFdZDunF2/7Ct44Wk+zZ4zsos4crDiuqwIZJfl9l9HbxySz2nW8Qx+BUudIAcwThwP
+         zA/Xp9Zgo/KCX04BNnHhA3fhzJtnpS1Gb5ivf5nwwRcygQtnIHHTqGww1kkZ2jA7ElF/
+         qzPA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=X10jQlTYpcxg9AXNQn62SdrpQH11nnZd311IskdLLH0=;
+        bh=ygQBO8E36hVzUysn0u/NkAelz1CpWFkLmgYSgnZbvv4=;
         fh=N9JXs6UlidM8EsUInW73fWjlYrhprlUzJ9DsuKSk+BQ=;
-        b=UQgGQRlZ8tc482CuJS88dnuIyWxdgTe3c3nbrNTHX+quOLtBBB+d5tdawjbh2bXwjz
-         Ao1huSr8wA4ShYkOp6su7DOcSJOpDCoEXB/P8/Pk+pLK3uYlcrWe1mH+mJ5EzEXv7MLu
-         xBndX4P272JwaWYfodFOzDeFTSaghWq4azuwjcBl4N9z2+hyoIFuAVT/fM6F/HSCZS/1
-         XPz86fxOwwzcJJOekns9lFrl6EVDZIGLXP+67JWU9bPiY7ieypKuvufrn1PYv21oD82X
-         z6l9zaKPc1tAKwPvxOlwv5P3c2jtqeRqFa6Rk7bBmQOJONxdpjKcS6si9N86AIDtKcEM
-         qlKA==;
+        b=VgyTi1+dyNPDfwsHEbkDvC2HX5f6wgqNgR8OuIRPkxL/Ou8gydnPyaqdRs3cc6k/SA
+         znHGOhaGQ3G5sorIKz2t789FxvFAsQMBFWdZ+9OGFGlF3gUv2hjg/3VP6H+AFnpttWd1
+         3Oe25rD79NkIGMuopuKHMq/7J93RGsD/DpfTP5Op5FCCLMW8iVBIIJAa2SejINf7XWmM
+         GgeOCu/rCqu+ffr4mkJH5okXsmRgAB/6JjU7XW3NnRUXULAAOGYOupu25ZX0iy+ClyTk
+         s0KSTh59mxrCdJ5DOSIpBnzFbL3Y2WxkZyAMUPMHARIfUJA/wKti8NNbzJs98wCi1iX5
+         f5cg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b="kHdg/piR";
+       dkim=pass header.i=@intel.com header.s=Intel header.b=c6C7PWmS;
        spf=pass (google.com: domain of zhao1.liu@intel.com designates 192.198.163.15 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 Return-Path: <zhao1.liu@intel.com>
 Received: from mgamail.intel.com (mgamail.intel.com. [192.198.163.15])
-        by mx.google.com with ESMTPS id d75a77b69052e-45b1786bff5si7491951cf.99.2024.09.18.18.39.58
+        by mx.google.com with ESMTPS id 6a1803df08f44-6c75e453925si8109156d6.10.2024.09.18.18.40.06
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 18 Sep 2024 18:39:59 -0700 (PDT)
+        Wed, 18 Sep 2024 18:40:07 -0700 (PDT)
 Received-SPF: pass (google.com: domain of zhao1.liu@intel.com designates 192.198.163.15 as permitted sender) client-ip=192.198.163.15;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b="kHdg/piR";
+       dkim=pass header.i=@intel.com header.s=Intel header.b=c6C7PWmS;
        spf=pass (google.com: domain of zhao1.liu@intel.com designates 192.198.163.15 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1726709999; x=1758245999;
+  t=1726710007; x=1758246007;
   h=from:to:cc:subject:date:message-id:in-reply-to:
    references:mime-version:content-transfer-encoding;
-  bh=GTUQ019BfwQpkrJFj+VNn+W9sPDXxvfUxmbaNbsBlZw=;
-  b=kHdg/piR6khov4QszD7VMPwuoKWL7b6nIXqhjfq+wEhaMFoFB7Ffju4d
-   MKE1g3+637Vsnz+ssonaWqMU4qH6AGT77VbGN0+SmZktEGn5blt9YPXd9
-   U3cfgsa8ueJkGg13uB3TlwdEdZNNAxLMHcW9x4sCpR2YtuwBZ3ub68SxS
-   itqc00Fkvq3efP63VEloUlot6YSnrJPeSuuliqOZ2/9amaCykl6LwU9ao
-   US/bbWyoHsTYE9DG2xlEaBQf4gFfRrob5YjIdKO6aWyOWXdJqarhOqhd2
-   EHPEsvEb1VU+wLzUol1zpXAOoG+FxON5RKN/k7UxV/4FIYT0eD7s1rv75
+  bh=pjDCYfWGmtcfHCeQzycylmOPTR/6NQwIB6dWf4c73R0=;
+  b=c6C7PWmS8ISxG+CKi6FNNG9l2nZy98ivxl/B/sUSvcaLndqs+g2qt8GP
+   0/PzkYh3IOgmAl1N4vphSsm1+lgvWlwYKda58s8/WF6iuNvyXkVyQJqFQ
+   6YO2f5xsFo0a8md4owGajA9JlA1eEGSW3TYoPM/sJU6vPqh89Z8c2BMFb
+   ztForJ9nTCPQHZv3pv3z0/UXjRaQdUOD1N1ssmk8WtJ4ZThh1ZT3sQfqu
+   cLWDwwyM95Lt+zp1GuejeJHaQeIyrXibMz3DZ9yb8RpHr1X6AoTpMCKb1
+   sEbDe0gnJAqqltrWJMlHYpViNen5O85dsWIe+ImbbdUgfKPSm45belTS6
    Q==;
-X-CSE-ConnectionGUID: CcmVCOSpQ++jXOaBKPMErQ==
-X-CSE-MsgGUID: J7J0uS5jScu+hEE4Arcfcw==
-X-IronPort-AV: E=McAfee;i="6700,10204,11199"; a="25797820"
+X-CSE-ConnectionGUID: rSIx1InmReSF5Zf0tb2d0A==
+X-CSE-MsgGUID: M1xBmUlPSPGRWGoJopQcJw==
+X-IronPort-AV: E=McAfee;i="6700,10204,11199"; a="25797842"
 X-IronPort-AV: E=Sophos;i="6.10,240,1719903600"; 
-   d="scan'208";a="25797820"
+   d="scan'208";a="25797842"
 Received: from orviesa006.jf.intel.com ([10.64.159.146])
-  by fmvoesa109.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Sep 2024 18:39:58 -0700
-X-CSE-ConnectionGUID: I3knkL/jSee7aLywlolMUQ==
-X-CSE-MsgGUID: yWAY1M6kTXWufBZ8mK+FLw==
+  by fmvoesa109.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Sep 2024 18:40:05 -0700
+X-CSE-ConnectionGUID: XUKsPmtXTHeJZs8nwwQdZA==
+X-CSE-MsgGUID: 3BLglI8fRXKMxyszbBq4aA==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.10,240,1719903600"; 
-   d="scan'208";a="70058495"
+   d="scan'208";a="70058586"
 Received: from liuzhao-optiplex-7080.sh.intel.com ([10.239.160.36])
-  by orviesa006.jf.intel.com with ESMTP; 18 Sep 2024 18:39:52 -0700
+  by orviesa006.jf.intel.com with ESMTP; 18 Sep 2024 18:39:58 -0700
 From: Zhao Liu <zhao1.liu@intel.com>
 To: =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
 	Igor Mammedov <imammedo@redhat.com>,
@@ -93,213 +93,372 @@ Cc: qemu-devel@nongnu.org,
 	Dapeng Mi <dapeng1.mi@linux.intel.com>,
 	Yongwei Ma <yongwei.ma@intel.com>,
 	Zhao Liu <zhao1.liu@intel.com>
-Subject: [RFC v2 02/15] qdev: Add the interface to reparent the device
-Date: Thu, 19 Sep 2024 09:55:20 +0800
-Message-Id: <20240919015533.766754-3-zhao1.liu@intel.com>
+Subject: [RFC v2 03/15] hw/cpu: Introduce CPU topology device and CPU bus
+Date: Thu, 19 Sep 2024 09:55:21 +0800
+Message-Id: <20240919015533.766754-4-zhao1.liu@intel.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240919015533.766754-1-zhao1.liu@intel.com>
 References: <20240919015533.766754-1-zhao1.liu@intel.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: Ll5K1grt8leC
+X-TUID: xDvkbCD3AfRV
 
-User created devices may need to adjust their default object parent or
-parent bus.
+Hybrid (or heterogeneous) CPU topology needs to be expressed as
+a topology tree, which requires to abstract all the CPU topology
+level as the objects.
 
-User created devices are QOM parented to one of the peripheral
-containers ("/peripheral" or "/peripheral-anon") in qdev_set_id() by
-default. Sometimes, it is necessary to reparent a device to another
-object to express the more accurate child<> relationship, as in the
-cases of the PnvPHBRootPort device or subsequent topology devices.
+At present, QEMU already has the CPU device, core device and cluster
+device (for TCG), so that it's natual to introduce more topology
+related devices instead of abstractong native QEMU objects.
 
-The current pnv_phb_user_get_parent() implements such reparenting logic.
-To allow it to be used by topology devices as well, transform it into a
-generic qdev interface with custom device id ("default_id" parameter).
+To make it easier to deal with topological relationships, introduce
+the general and abstract CPU topology device, and also introduce the
+CPU bus to connect such CPU topology devices.
 
-And add the code to handle the failure of object_property_add_child().
+With the underlying CPU topology device abstraction, all the CPU
+topology levels could be derived from it as subclasses. Then the
+specific devices, such as CPU, core, or future module/die/socket devices
+etc, don't have to care about topology relationship, and the underlying
+CPU topology abstraction and CPU bus will take care of everything and
+build the topology tree.
+
+Note, for the user created topology devices, they are specified the
+default object parent (one of the peripheral containers: "/peripheral"
+or "/peripheral-anon"). It's necessary to fixup their parent object
+to correct topology parent, so that it can make their canonical path
+in qtree match the actual topological hierarchies relationship. This
+is done by cpu_topo_set_parent() when topology device realizes.
 
 Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
 ---
- hw/core/qdev.c         | 52 +++++++++++++++++++++++++++++++++++++
- hw/pci-host/pnv_phb.c  | 59 +++++++++---------------------------------
- include/hw/qdev-core.h |  3 +++
- 3 files changed, 67 insertions(+), 47 deletions(-)
+ MAINTAINERS                   |   2 +
+ hw/cpu/cpu-topology.c         | 179 ++++++++++++++++++++++++++++++++++
+ hw/cpu/meson.build            |   2 +
+ include/hw/cpu/cpu-topology.h |  68 +++++++++++++
+ include/qemu/typedefs.h       |   2 +
+ stubs/hotplug-stubs.c         |   5 +
+ 6 files changed, 258 insertions(+)
+ create mode 100644 hw/cpu/cpu-topology.c
+ create mode 100644 include/hw/cpu/cpu-topology.h
 
-diff --git a/hw/core/qdev.c b/hw/core/qdev.c
-index 4429856eaddd..ff073cbff56d 100644
---- a/hw/core/qdev.c
-+++ b/hw/core/qdev.c
-@@ -143,6 +143,58 @@ bool qdev_set_parent_bus(DeviceState *dev, BusState *bus, Error **errp)
-     return true;
- }
- 
+diff --git a/MAINTAINERS b/MAINTAINERS
+index ffacd60f4075..230267597b5f 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -1884,12 +1884,14 @@ F: hw/core/machine-smp.c
+ F: hw/core/null-machine.c
+ F: hw/core/numa.c
+ F: hw/cpu/cluster.c
++F: hw/cpu/cpu-topology.c
+ F: qapi/machine.json
+ F: qapi/machine-common.json
+ F: qapi/machine-target.json
+ F: include/hw/boards.h
+ F: include/hw/core/cpu.h
+ F: include/hw/cpu/cluster.h
++F: include/hw/cpu/cpu-topology.h
+ F: include/sysemu/numa.h
+ F: tests/functional/test_cpu_queries.py
+ F: tests/functional/test_empty_cpu_model.py
+diff --git a/hw/cpu/cpu-topology.c b/hw/cpu/cpu-topology.c
+new file mode 100644
+index 000000000000..e68c06132e7d
+--- /dev/null
++++ b/hw/cpu/cpu-topology.c
+@@ -0,0 +1,179 @@
 +/*
-+ * Set the QOM parent and parent bus of an object child. If the device
-+ * state associated with the child has an id, use it as QOM id.
-+ * Otherwise use default_id as QOM id.
++ * General CPU topology device abstraction
 + *
-+ * This helper does both operations at the same time because setting
-+ * a new QOM child will erase the bus parent of the device. This happens
-+ * because object_unparent() will call object_property_del_child(),
-+ * which in turn calls the property release callback prop->release if
-+ * it's defined. In our case this callback is set to
-+ * object_finalize_child_property(), which was assigned during the
-+ * first object_property_add_child() call. This callback will end up
-+ * calling device_unparent(), and this function removes the device
-+ * from its parent bus.
++ * Copyright (C) 2024 Intel Corporation.
 + *
-+ * The QOM and parent bus to be set aren't necessarily related, so
-+ * let's receive both as arguments.
++ * Author: Zhao Liu <zhao1.liu@intel.com>
++ *
++ * This work is licensed under the terms of the GNU GPL, version 2 or
++ * later.  See the COPYING file in the top-level directory.
 + */
-+bool qdev_set_parent(DeviceState *dev, BusState *bus, Object *parent,
-+                     char *default_id, Error **errp)
++
++#include "qemu/osdep.h"
++
++#include "hw/cpu/cpu-topology.h"
++#include "hw/qdev-core.h"
++#include "hw/qdev-properties.h"
++#include "hw/sysbus.h"
++#include "qapi/error.h"
++
++/* Roll up until topology root to check. */
++static bool cpu_parent_check_topology(DeviceState *parent,
++                                      DeviceState *dev,
++                                      Error **errp)
 +{
-+    Object *child = OBJECT(dev);
-+    ObjectProperty *prop;
++    BusClass *bc;
 +
-+    if (!dev->id && !default_id) {
-+        error_setg(errp, "unknown device id");
-+        return false;
-+    }
-+
-+    if (child->parent == parent) {
++    if (!parent || !parent->parent_bus ||
++        object_dynamic_cast(OBJECT(parent->parent_bus), TYPE_CPU_BUS)) {
 +        return true;
 +    }
 +
-+    object_ref(child);
-+    object_unparent(child);
-+    prop =  object_property_add_child(parent,
-+                                      dev->id ? dev->id : default_id,
-+                                      child);
-+    object_unref(child);
-+
-+    if (!prop) {
-+        error_setg(errp, "couldn't change parent");
-+        return false;
-+    }
-+
-+    if (!qdev_set_parent_bus(dev, bus, errp)) {
-+        return false;
++    bc = BUS_GET_CLASS(parent->parent_bus);
++    if (bc->check_address) {
++        return bc->check_address(parent->parent_bus, dev, errp);
 +    }
 +
 +    return true;
 +}
 +
- DeviceState *qdev_new(const char *name)
- {
-     ObjectClass *oc = object_class_by_name(name);
-diff --git a/hw/pci-host/pnv_phb.c b/hw/pci-host/pnv_phb.c
-index d4c118d44362..a26e7b7aec5c 100644
---- a/hw/pci-host/pnv_phb.c
-+++ b/hw/pci-host/pnv_phb.c
-@@ -19,49 +19,6 @@
- #include "qom/object.h"
- #include "sysemu/sysemu.h"
- 
--
--/*
-- * Set the QOM parent and parent bus of an object child. If the device
-- * state associated with the child has an id, use it as QOM id.
-- * Otherwise use object_typename[index] as QOM id.
-- *
-- * This helper does both operations at the same time because setting
-- * a new QOM child will erase the bus parent of the device. This happens
-- * because object_unparent() will call object_property_del_child(),
-- * which in turn calls the property release callback prop->release if
-- * it's defined. In our case this callback is set to
-- * object_finalize_child_property(), which was assigned during the
-- * first object_property_add_child() call. This callback will end up
-- * calling device_unparent(), and this function removes the device
-- * from its parent bus.
-- *
-- * The QOM and parent bus to be set aren´t necessarily related, so
-- * let's receive both as arguments.
-- */
--static bool pnv_parent_fixup(Object *parent, BusState *parent_bus,
--                             Object *child, int index,
--                             Error **errp)
--{
--    g_autofree char *default_id =
--        g_strdup_printf("%s[%d]", object_get_typename(child), index);
--    const char *dev_id = DEVICE(child)->id;
--
--    if (child->parent == parent) {
--        return true;
--    }
--
--    object_ref(child);
--    object_unparent(child);
--    object_property_add_child(parent, dev_id ? dev_id : default_id, child);
--    object_unref(child);
--
--    if (!qdev_set_parent_bus(DEVICE(child), parent_bus, errp)) {
--        return false;
--    }
--
--    return true;
--}
--
- static Object *pnv_phb_user_get_parent(PnvChip *chip, PnvPHB *phb, Error **errp)
- {
-     if (phb->version == 3) {
-@@ -82,6 +39,7 @@ static bool pnv_phb_user_device_init(PnvPHB *phb, Error **errp)
-     PnvMachineState *pnv = PNV_MACHINE(qdev_get_machine());
-     PnvChip *chip = pnv_get_chip(pnv, phb->chip_id);
-     Object *parent = NULL;
-+    g_autofree char *default_id = NULL;
- 
-     if (!chip) {
-         error_setg(errp, "invalid chip id: %d", phb->chip_id);
-@@ -98,8 +56,11 @@ static bool pnv_phb_user_device_init(PnvPHB *phb, Error **errp)
-      * correctly the device tree. pnv_xscom_dt() needs every
-      * PHB to be a child of the chip to build the DT correctly.
-      */
--    if (!pnv_parent_fixup(parent, qdev_get_parent_bus(DEVICE(chip)),
--                          OBJECT(phb), phb->phb_id, errp)) {
-+    default_id = g_strdup_printf("%s[%d]",
-+                                 object_get_typename(OBJECT(phb)),
-+                                 phb->phb_id);
-+    if (!qdev_set_parent(DEVICE(phb), qdev_get_parent_bus(DEVICE(chip)),
-+                         parent, default_id, errp)) {
-         return false;
-     }
- 
-@@ -246,6 +207,7 @@ static void pnv_phb_root_port_realize(DeviceState *dev, Error **errp)
-     uint16_t device_id = 0;
-     Error *local_err = NULL;
-     int chip_id, index;
-+    g_autofree char *default_id = NULL;
- 
-     /*
-      * 'index' will be used both as a PCIE slot value and to calculate
-@@ -273,8 +235,11 @@ static void pnv_phb_root_port_realize(DeviceState *dev, Error **errp)
-      * parent bus. Change the QOM parent to be the same as the
-      * parent bus it's already assigned to.
-      */
--    if (!pnv_parent_fixup(OBJECT(bus), BUS(bus), OBJECT(dev),
--                          index, errp)) {
-+    default_id = g_strdup_printf("%s[%d]",
-+                                 object_get_typename(OBJECT(dev)),
-+                                 index);
-+    if (!qdev_set_parent(dev, BUS(bus), OBJECT(bus),
-+                         default_id, errp)) {
-         return;
-     }
- 
-diff --git a/include/hw/qdev-core.h b/include/hw/qdev-core.h
-index 85c7d462dfba..7cbc5fb97298 100644
---- a/include/hw/qdev-core.h
-+++ b/include/hw/qdev-core.h
-@@ -1011,6 +1011,9 @@ char *qdev_get_human_name(DeviceState *dev);
- /* FIXME: make this a link<> */
- bool qdev_set_parent_bus(DeviceState *dev, BusState *bus, Error **errp);
- 
-+bool qdev_set_parent(DeviceState *dev, BusState *bus, Object *parent,
-+                     char *default_id, Error **errp);
++static bool cpu_bus_check_address(BusState *bus, DeviceState *dev,
++                                  Error **errp)
++{
++    CPUBusState *cbus = CPU_BUS(bus);
 +
- extern bool qdev_hot_removed;
++    if (cbus->check_topology) {
++        return cbus->check_topology(CPU_BUS(bus), CPU_TOPO(dev), errp);
++    }
++
++    return cpu_parent_check_topology(bus->parent, dev, errp);
++}
++
++static void cpu_bus_class_init(ObjectClass *oc, void *data)
++{
++    BusClass *bc = BUS_CLASS(oc);
++
++    bc->check_address = cpu_bus_check_address;
++}
++
++static const TypeInfo cpu_bus_type_info = {
++    .name = TYPE_CPU_BUS,
++    .parent = TYPE_BUS,
++    .class_init = cpu_bus_class_init,
++    .instance_size = sizeof(CPUBusState),
++};
++
++static bool cpu_topo_set_parent(CPUTopoState *topo, Error **errp)
++{
++    DeviceState *dev = DEVICE(topo);
++    BusState *bus = dev->parent_bus;
++    CPUTopoState *parent_topo = NULL;
++    Object *parent;
++
++    if (!bus || !bus->parent) {
++        return true;
++    }
++
++    if (topo->parent) {
++        error_setg(errp, "cpu topo: %s already have the parent?",
++                   object_get_typename(OBJECT(topo)));
++        return false;
++    }
++
++    parent = OBJECT(bus->parent);
++    if (object_dynamic_cast(parent, TYPE_CPU_TOPO)) {
++        parent_topo = CPU_TOPO(parent);
++
++        if (GET_CPU_TOPO_LEVEL(topo) >= GET_CPU_TOPO_LEVEL(parent_topo)) {
++            error_setg(errp, "cpu topo: current level (%s) should be "
++                       "lower than parent (%s) level",
++                       object_get_typename(OBJECT(topo)),
++                       object_get_typename(parent));
++            return false;
++        }
++    }
++
++    if (dev->id) {
++        /*
++         * Reparent topology device to make child<> match topological
++         * relationship.
++         */
++        if (!qdev_set_parent(dev, bus, parent, NULL, errp)) {
++            return false;
++        }
++    }
++
++    topo->parent = parent_topo;
++    return true;
++}
++
++static void cpu_topo_realize(DeviceState *dev, Error **errp)
++{
++    CPUTopoState *topo = CPU_TOPO(dev);
++    CPUTopoClass *tc = CPU_TOPO_GET_CLASS(topo);
++    HotplugHandler *hotplug_handler;
++
++    if (tc->level == CPU_TOPOLOGY_LEVEL_INVALID) {
++        error_setg(errp, "cpu topo: no level specified type: %s",
++                   object_get_typename(OBJECT(dev)));
++        return;
++    }
++
++    if (!cpu_topo_set_parent(topo, errp)) {
++        return;
++    }
++
++    topo->bus = CPU_BUS(qbus_new(TYPE_CPU_BUS, dev, dev->id));
++    hotplug_handler = qdev_get_bus_hotplug_handler(dev);
++    if (hotplug_handler) {
++        qbus_set_hotplug_handler(BUS(topo->bus), OBJECT(hotplug_handler));
++    }
++}
++
++static void cpu_topo_class_init(ObjectClass *oc, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(oc);
++    CPUTopoClass *tc = CPU_TOPO_CLASS(oc);
++
++    set_bit(DEVICE_CATEGORY_CPU, dc->categories);
++    dc->realize = cpu_topo_realize;
++
++    /*
++     * If people doesn't want a topology tree, it's necessary to
++     * derive a child class and override this as NULL.
++     */
++    dc->bus_type = TYPE_CPU_BUS;
++
++    /*
++     * The general topo device is not hotpluggable by default.
++     * If any topo device needs hotplug support, this flag must be
++     * overridden.
++     */
++    dc->hotpluggable = false;
++
++    tc->level = CPU_TOPOLOGY_LEVEL_INVALID;
++}
++
++static const TypeInfo cpu_topo_type_info = {
++    .name = TYPE_CPU_TOPO,
++    .parent = TYPE_DEVICE,
++    .abstract = true,
++    .class_size = sizeof(CPUTopoClass),
++    .class_init = cpu_topo_class_init,
++    .instance_size = sizeof(CPUTopoState),
++};
++
++static void cpu_topo_register_types(void)
++{
++    type_register_static(&cpu_bus_type_info);
++    type_register_static(&cpu_topo_type_info);
++}
++
++type_init(cpu_topo_register_types)
++
++int cpu_topo_get_instances_num(CPUTopoState *topo)
++{
++    BusState *bus = DEVICE(topo)->parent_bus;
++
++    return bus ? bus->num_children : 1;
++}
+diff --git a/hw/cpu/meson.build b/hw/cpu/meson.build
+index 9d36bf8ae2c1..6c6546646608 100644
+--- a/hw/cpu/meson.build
++++ b/hw/cpu/meson.build
+@@ -1,3 +1,5 @@
++common_ss.add(files('cpu-topology.c'))
++
+ system_ss.add(files('core.c'))
+ system_ss.add(when: 'CONFIG_CPU_CLUSTER', if_true: files('cluster.c'))
  
- char *qdev_get_dev_path(DeviceState *dev);
+diff --git a/include/hw/cpu/cpu-topology.h b/include/hw/cpu/cpu-topology.h
+new file mode 100644
+index 000000000000..7a447ad16ee7
+--- /dev/null
++++ b/include/hw/cpu/cpu-topology.h
+@@ -0,0 +1,68 @@
++/*
++ * General CPU topology device abstraction
++ *
++ * Copyright (C) 2024 Intel Corporation.
++ *
++ * Author: Zhao Liu <zhao1.liu@intel.com>
++ *
++ * This work is licensed under the terms of the GNU GPL, version 2 or
++ * later.  See the COPYING file in the top-level directory.
++ */
++
++#ifndef CPU_TOPO_H
++#define CPU_TOPO_H
++
++#include "hw/qdev-core.h"
++#include "qapi/qapi-types-machine-common.h"
++#include "qom/object.h"
++
++#define TYPE_CPU_BUS "cpu-bus"
++OBJECT_DECLARE_SIMPLE_TYPE(CPUBusState, CPU_BUS)
++
++/**
++ * CPUBusState:
++ * @check_topology: Method to check if @topo is supported by @cbus.
++ */
++struct CPUBusState {
++    /*< private >*/
++    BusState parent_obj;
++
++    /*< public >*/
++    bool (*check_topology)(CPUBusState *cbus, CPUTopoState *topo,
++                           Error **errp);
++};
++
++#define TYPE_CPU_TOPO "cpu-topo"
++OBJECT_DECLARE_TYPE(CPUTopoState, CPUTopoClass, CPU_TOPO)
++
++/**
++ * CPUTopoClass:
++ * @level: Topology level for this CPUTopoClass.
++ */
++struct CPUTopoClass {
++    /*< private >*/
++    DeviceClass parent_class;
++
++    /*< public >*/
++    CpuTopologyLevel level;
++};
++
++/**
++ * CPUTopoState:
++ * @parent: Topology parent of this topology device.
++ * @bus: The CPU bus to add the children device.
++ */
++struct CPUTopoState {
++    /*< private >*/
++    DeviceState parent_obj;
++
++    /*< public >*/
++    struct CPUTopoState *parent;
++    CPUBusState *bus;
++};
++
++#define GET_CPU_TOPO_LEVEL(topo)    (CPU_TOPO_GET_CLASS(topo)->level)
++
++int cpu_topo_get_instances_num(CPUTopoState *topo);
++
++#endif /* CPU_TOPO_H */
+diff --git a/include/qemu/typedefs.h b/include/qemu/typedefs.h
+index aef41c4e67ce..d62d8687403f 100644
+--- a/include/qemu/typedefs.h
++++ b/include/qemu/typedefs.h
+@@ -39,8 +39,10 @@ typedef struct Chardev Chardev;
+ typedef struct Clock Clock;
+ typedef struct ConfidentialGuestSupport ConfidentialGuestSupport;
+ typedef struct CPUArchState CPUArchState;
++typedef struct CPUBusState CPUBusState;
+ typedef struct CPUPluginState CPUPluginState;
+ typedef struct CPUState CPUState;
++typedef struct CPUTopoState CPUTopoState;
+ typedef struct DeviceState DeviceState;
+ typedef struct DirtyBitmapSnapshot DirtyBitmapSnapshot;
+ typedef struct DisasContextBase DisasContextBase;
+diff --git a/stubs/hotplug-stubs.c b/stubs/hotplug-stubs.c
+index 7aadaa29bd57..791fae079d6d 100644
+--- a/stubs/hotplug-stubs.c
++++ b/stubs/hotplug-stubs.c
+@@ -19,6 +19,11 @@ HotplugHandler *qdev_get_hotplug_handler(DeviceState *dev)
+     return NULL;
+ }
+ 
++HotplugHandler *qdev_get_bus_hotplug_handler(DeviceState *dev)
++{
++    return NULL;
++}
++
+ void hotplug_handler_pre_plug(HotplugHandler *plug_handler,
+                               DeviceState *plugged_dev,
+                               Error **errp)
 -- 
 2.34.1

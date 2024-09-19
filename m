@@ -1,2006 +1,424 @@
-Received: by 2002:a17:504:1bc1:b0:1be9:327d:8ee3 with SMTP id v1csp1050936njg;
-        Wed, 18 Sep 2024 15:26:06 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUfrPixwXqbe6MkrU2I705G3xsgVILPRcu1VI4j6oRVv/Cy74RCharH0ohTWdf0WrFaVqOVXWk1SItj8A==@linaro.org
-X-Google-Smtp-Source: AGHT+IF9IH/OBSH6GKoq1kybxfz8FZ3NNSg+jKsG0axMb095K8WFRIgtogidEX1R8CM++TjbZiOG
-X-Received: by 2002:a05:620a:640c:b0:7ac:a0a5:9be6 with SMTP id af79cd13be357-7aca0a59f36mr932422385a.19.1726698366709;
-        Wed, 18 Sep 2024 15:26:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1726698366; cv=none;
+Received: by 2002:a05:7022:f8d:b0:8a:132c:44a7 with SMTP id eg13csp85709dlb;
+        Wed, 18 Sep 2024 22:55:32 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWFdozp6cbX5JC4QXyAz4dirbhBudIcWgPEysQ6p0zqeAngXG+r/sIJWdP4XM3LGHz58uyzrFrbbfFY0w==@linaro.org
+X-Google-Smtp-Source: AGHT+IGqUhu/HIV9SrtjMn7TPeYosjV2PoQ3OVyztdRtAZ+Q80azrTYvTbrs2DAQDkiiQ9kyLj3H
+X-Received: by 2002:a05:622a:56:b0:458:3ac9:11f2 with SMTP id d75a77b69052e-45860311b4bmr385023671cf.31.1726725332250;
+        Wed, 18 Sep 2024 22:55:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1726725332; cv=none;
         d=google.com; s=arc-20240605;
-        b=bOoPARcD3kt8W8zoDx+n1QIbU/Y1j5H33yspIWn5Xr0fM0YmeaScp9eReaB8CSHxYG
-         YMBBNSm4GiPa65ohx8hJ3WSZch7NZ2eRRqmBDST0fa5AVGbyCjl12yK5E02CrKDgKHKY
-         Iw8C20hD75IfILEX+Dc3gIuajCae78dCkubXGUDUxDXms3LiLWP1PDXxjyD17OrmWB3l
-         M++BHNXbpZb9U+Mjywm1V2axGfcL1WbSFmhgLKtskWP0r0ohnawIp0uW8ziiZKVQxzK6
-         /XZGOE0/IU31ZEnw019bD7migq7rx2V3JT2MBDM0r2pQrncT3FWl39soASGUWrXfMU/P
-         3IBQ==
+        b=Rz+kW+m5jHRYZRyEVL5KAe7ChDcGCZoUxaq9V+HewE5eHDNcpICPqNC56zH2TVoXNA
+         ug9bNpiKfdH8u/ZfHNEAfQ5ejF5MyH7WbtmrI8ml79LTmgEPYxrgGEGjbuwligxeu5a6
+         etAAM8AOHfg5A+iOu0J2zXPdO+Gku2yH8+sBFDp3BVm/Vo+ibx7+jjx3TGGTxX5If7eh
+         D5dvJd9mD9MSEyJw6iG/Ail0ZeEreks0ySRe4f0iGkTRoKfdj0m9atvqUaPMkGqe3MX2
+         iwV3IjLqY9r6qfFXJ7dwWHJYJNjM21oUK2vk0RjbDaF/IzvfDTg6CrtvWBUSR64mkXPt
+         LX3w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=7tKiC6OryOG723Qb5i0R4XJX8OZZDkjDR6RxjWE52FU=;
-        fh=ieWU8u/5kRqGF442sZXI7IPP3shLGxfcLc8hj8itqII=;
-        b=BsOxLVPKP258BwmiD41AczvKbQOPq9SG1DoQjicw9Gnr9AcaGJCX4WowFP4myD/pTv
-         7vtul8LX8UnT5D5xQBlJrmRzFmjRqUTPCp8X6ifTzHZQSA9vlSH5BXSDWApyE3ss+4/n
-         uRECUUbZfR0hfA2PcDXHevU+T5er+48no+/gEnyTo02CHNbr3THZPBQoXE2aU6fyNKTy
-         ATxk4n7YWyB/luQBkNHQM9sNdMLQdJGJIE+pzTfnn/JiWlG+UmHiEAcHY9g6zFEZHxl+
-         47DWf8YDoQzxpMvoRERqN+/MvA8M5rxUIBxpDXg0a+UCtnNjfeoLU7VGj8jSOB1C8F+W
-         IHiQ==;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=xIgFgg6EuVoT2DcYFZWXAN//r+jS78fauMKG+MdB1PY=;
+        fh=33vV7fdwuF57f9/cQTMVCjJLx99l6PrD70Pt7L6JrPg=;
+        b=OEvTTbYDPRgHOPp8Qf48hFr9EKeSPwNz2qkGId3o9MfKsKHR+JJlcDk8MuALC6rOus
+         2JWHqjRRhpSpZ8MTVrf+Hol+Q15ouACtsiQ4xfZXfKmhrDrTsKyktvdmeQOq04tyzVWN
+         JLprUEljeTEHePdMsFgqwCxGhSMQZsEm2VQWbwXXijCyZ9R/xRTTy6NU8cgiyrQo6f+O
+         Zsj0ItDoB1Xn9cwFufgEZBZPLkYNvr61Qj0KoZ8lzeHE1xW8BDT9pYo1W28zg1reXekF
+         IVnhO0/jQz/lt184hxF03+2fhBszOEDxPOGmmE/s/C2hKyEGH7Yx7MisEP4fKd62/6ft
+         97zg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=wrh2wapU;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7acb09117dbsi43180585a.725.2024.09.18.15.26.06
-        for <alex.bennee@linaro.org>
+       dkim=pass header.i=@intel.com header.s=Intel header.b=VPunPyg8;
+       spf=pass (google.com: domain of zhao1.liu@intel.com designates 192.198.163.15 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Return-Path: <zhao1.liu@intel.com>
+Received: from mgamail.intel.com (mgamail.intel.com. [192.198.163.15])
+        by mx.google.com with ESMTPS id d75a77b69052e-45b17931f19si12134001cf.562.2024.09.18.22.55.31
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 18 Sep 2024 15:26:06 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 18 Sep 2024 22:55:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of zhao1.liu@intel.com designates 192.198.163.15 as permitted sender) client-ip=192.198.163.15;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=wrh2wapU;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
-       dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sr37F-0003ht-G2; Wed, 18 Sep 2024 18:25:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <tavip@google.com>) id 1sr37D-0003go-DV
- for qemu-arm@nongnu.org; Wed, 18 Sep 2024 18:25:39 -0400
-Received: from mail-lf1-x136.google.com ([2a00:1450:4864:20::136])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <tavip@google.com>) id 1sr377-0001bf-MS
- for qemu-arm@nongnu.org; Wed, 18 Sep 2024 18:25:39 -0400
-Received: by mail-lf1-x136.google.com with SMTP id
- 2adb3069b0e04-53690eb134bso35718e87.0
- for <qemu-arm@nongnu.org>; Wed, 18 Sep 2024 15:25:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1726698330; x=1727303130; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=7tKiC6OryOG723Qb5i0R4XJX8OZZDkjDR6RxjWE52FU=;
- b=wrh2wapUQc3Q7cm6ejWZ81BrYDYjwgCbQf3JYp9UgO8fkG+kwJeDugY54QIP0hkugZ
- japzc4R30ALrh+Kmo/wX8q1klZgM7C2RNgCuTfKMg0fQA5Htp1AGCIHlTkd0sdX20fNi
- jOQ6d2rjcW94UsysvEvWPklRIuSvovISIrd5CGnl+4W264kz0vaaU7ERd3ZSsy5hVJGv
- lCHmozRxi5W9leIIIIbJWIIfhnd+PLZrLjpOb/G+03E8WL4o+ak0PU0cH6XacB7l5KwR
- rT3I+ezTRx1Y3fESRhFmXFj32dVSB1Ykw+X4VRpLFRAshkw5Z/Fc5OusWexSPthYM+l3
- jmyA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1726698330; x=1727303130;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=7tKiC6OryOG723Qb5i0R4XJX8OZZDkjDR6RxjWE52FU=;
- b=b+rlWJ5kZzsmKcUeWrvMfsZGHZ29DFYwwxr0jTvq+sQzdpQETbl+60Ywz6PFsZHDgs
- LkSoU42L1k5KlyVA6Mu8X1mTNNMqTu+6woSeGY4VEVa0slEcgIPA08zE+I6OM6ZQaL5o
- d77uV5cukIsJ89dNlHeP187CyQgYfc0R5JEbWLsiD/TA19IMmcRAd3+cQvShw7iXuoqu
- TFy+2ulxvI1HO/lkxnYNL+nmp6emZPm99YQu0vm+VmIhd7cEzGHG/SVlL2gFT0i7Yga2
- 1dcZqhp0lM/kaOHj3ef1xKbGWPohTvad0dKdE5KoXAH+zmvkWzc4To23mtlctNZsc20P
- ltZA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCW2USavhbUhJl4HQpMQRCk925CLdn+r+jGOeBDfEFQQyh02fOy0ghvMTEtjqdq5DwsIxhvMWzj4Hg==@nongnu.org
-X-Gm-Message-State: AOJu0YyecEDWufNOsuJjM3lQtROtAx4oj97FXIcHFAnO6n4MK5ZAyxx3
- FnY2a6WXKRC5KqvUk1U2dhyf3HiAIyN8TdOJTMeoAVStTqLsCNJfWnFoinEii4PxlwBV2IgRY7f
- Q24pHDzMoXZ8hkO52KrRmyj/FA6tUA9pjdG+S
-X-Received: by 2002:a05:6512:3d9e:b0:535:3d14:1313 with SMTP id
- 2adb3069b0e04-536a6931d76mr129372e87.0.1726698328971; Wed, 18 Sep 2024
- 15:25:28 -0700 (PDT)
+       dkim=pass header.i=@intel.com header.s=Intel header.b=VPunPyg8;
+       spf=pass (google.com: domain of zhao1.liu@intel.com designates 192.198.163.15 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1726725332; x=1758261332;
+  h=from:to:cc:subject:date:message-id:mime-version:
+   content-transfer-encoding;
+  bh=PP14MTETZAEuYjWGx085fi3OdTPqIiN84cU4cQZb8Eo=;
+  b=VPunPyg8xpje1cFj/sJ2oWpJE4Q81bJ9FtxC7nLiv+A/yME5wqua7rmq
+   oRg+LYDFfj3Z53SFquI5XPNm78yRsrhitGtkkeHXUfGLLS7ILQ2fhn1AR
+   fkwbz0DuWbR+niXH1w0Ya1YlPMbx1cJK9BZUPhiTdJbC7TztKJ4HFCdJ4
+   Q7SzulvXzbs/6VdYcsl34FXYCwpIxcb4MInwPj5+IiHd+o1aslpFmbkPq
+   mLvhAG9LiTTuXDxtIt0VggEwzDeK4W3qYCXFwtYvwYjZ7Tzl2T3EFTEui
+   BEKDP4wvnVySSmA8Svht0Zqdkhf30LlZ4d5XYEoAABtOjkit+O8V2RcUy
+   w==;
+X-CSE-ConnectionGUID: NDHOepDXS4CDiywtCyfCOw==
+X-CSE-MsgGUID: Cc3HqjTwS/G8GsevefRhOQ==
+X-IronPort-AV: E=McAfee;i="6700,10204,11199"; a="25813422"
+X-IronPort-AV: E=Sophos;i="6.10,240,1719903600"; 
+   d="scan'208";a="25813422"
+Received: from fmviesa006.fm.intel.com ([10.60.135.146])
+  by fmvoesa109.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Sep 2024 22:55:31 -0700
+X-CSE-ConnectionGUID: zWu8KgaJTxSF9BuQDcV04A==
+X-CSE-MsgGUID: MEiInIrHSAyTNt8ZxgEoGA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.10,240,1719903600"; 
+   d="scan'208";a="69418595"
+Received: from liuzhao-optiplex-7080.sh.intel.com ([10.239.160.36])
+  by fmviesa006.fm.intel.com with ESMTP; 18 Sep 2024 22:55:24 -0700
+From: Zhao Liu <zhao1.liu@intel.com>
+To: =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+	Igor Mammedov <imammedo@redhat.com>,
+	Eduardo Habkost <eduardo@habkost.net>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Yanan Wang <wangyanan55@huawei.com>,
+	"Michael S . Tsirkin" <mst@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Sergio Lopez <slp@redhat.com>,
+	Jason Wang <jasowang@redhat.com>,
+	Stefano Stabellini <sstabellini@kernel.org>,
+	Anthony PERARD <anthony@xenproject.org>,
+	Paul Durrant <paul@xen.org>,
+	"Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
+	Eric Blake <eblake@redhat.com>,
+	Markus Armbruster <armbru@redhat.com>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org,
+	kvm@vger.kernel.org,
+	qemu-arm@nongnu.org,
+	Zhenyu Wang <zhenyu.z.wang@intel.com>,
+	Dapeng Mi <dapeng1.mi@linux.intel.com>,
+	Yongwei Ma <yongwei.ma@intel.com>,
+	Zhao Liu <zhao1.liu@intel.com>
+Subject: [RFC v2 00/12] Introduce Hybrid CPU Topology via Custom Topology Tree
+Date: Thu, 19 Sep 2024 14:11:16 +0800
+Message-Id: <20240919061128.769139-1-zhao1.liu@intel.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-References: <20240918192254.3136903-1-tavip@google.com>
- <20240918192254.3136903-9-tavip@google.com>
- <Zus1YzMOZD1ppO-2@mail.minyard.net>
- <CAGWr4cSvq+WnUQO3-8jyasQPhKGQCvzOYqRm5W8vRdhW9iU=xw@mail.gmail.com>
- <ZutGsQglLtK7MtRB@mail.minyard.net>
-In-Reply-To: <ZutGsQglLtK7MtRB@mail.minyard.net>
-From: Octavian Purdila <tavip@google.com>
-Date: Wed, 18 Sep 2024 15:25:16 -0700
-Message-ID: <CAGWr4cQhyH2ygyxzs_TaVPRdmG_s-hFnLXsR2dC6NcP-c1fNFg@mail.gmail.com>
-Subject: Re: [PATCH 08/25] hw/i2c: add support for flexcomm i2c
-To: corey@minyard.net
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, stefanst@google.com, 
- pbonzini@redhat.com, peter.maydell@linaro.org, marcandre.lureau@redhat.com, 
- berrange@redhat.com, eduardo@habkost.net, luc@lmichel.fr, 
- damien.hedde@dahe.fr, alistair@alistair23.me, thuth@redhat.com, 
- philmd@linaro.org, jsnow@redhat.com, crosa@redhat.com, lvivier@redhat.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::136;
- envelope-from=tavip@google.com; helo=mail-lf1-x136.google.com
-X-Spam_score_int: -175
-X-Spam_score: -17.6
-X-Spam_bar: -----------------
-X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- ENV_AND_HDR_SPF_MATCH=-0.5, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
- USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: pZ9fIObOwFCv
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: F75mqD6r+A/Y
 
-On Wed, Sep 18, 2024 at 2:31=E2=80=AFPM Corey Minyard <corey@minyard.net> w=
-rote:
->
-> On Wed, Sep 18, 2024 at 02:04:58PM -0700, Octavian Purdila wrote:
-> > On Wed, Sep 18, 2024 at 1:17???PM Corey Minyard <corey@minyard.net> wro=
-te:
-> > >
-> > > On Wed, Sep 18, 2024 at 12:22:36PM -0700, Octavian Purdila wrote:
-> > > > Add support for NXP's flexcomm i2c. It does not support slave mode =
-or
-> > > > DMA.
-> > > >
-> > > > The patch includes an automatically generated header which contains
-> > > > the register layout and helpers.
-> > > >
-> > > > The header can be regenerated with the svd-flexcomm-i2c target when
-> > > > the build is configured with --enable-mcux-soc-svd.
-> > > >
-> > > > Signed-off-by: Octavian Purdila <tavip@google.com>
-> > > > ---
-> > > >  include/hw/arm/svd/flexcomm_i2c.h | 1190 +++++++++++++++++++++++++=
-++++
-> > > >  include/hw/i2c/flexcomm_i2c.h     |   40 +
-> > > >  include/hw/misc/flexcomm.h        |    2 +
-> > > >  hw/i2c/flexcomm_i2c.c             |  250 ++++++
-> > > >  hw/misc/flexcomm.c                |    3 +
-> > > >  hw/arm/svd/meson.build            |    3 +
-> > > >  hw/i2c/meson.build                |    1 +
-> > > >  hw/i2c/trace-events               |   10 +
-> > > >  hw/misc/Kconfig                   |    1 +
-> > > >  9 files changed, 1500 insertions(+)
-> > > >  create mode 100644 include/hw/arm/svd/flexcomm_i2c.h
-> > > >  create mode 100644 include/hw/i2c/flexcomm_i2c.h
-> > > >  create mode 100644 hw/i2c/flexcomm_i2c.c
-> > > >
-> > > > diff --git a/include/hw/arm/svd/flexcomm_i2c.h b/include/hw/arm/svd=
-/flexcomm_i2c.h
-> > > > new file mode 100644
-> > > > index 0000000000..9017d48446
-> > > > --- /dev/null
-> > > > +++ b/include/hw/arm/svd/flexcomm_i2c.h
-> > > > @@ -0,0 +1,1190 @@
-> > > > +/*
-> > > > + * Copyright 2016-2023 NXP SPDX-License-Identifier: BSD-3-Clause
-> > > > + *
-> > > > + * Automatically generated by svd-gen-header.py from MIMXRT595S_cm=
-33.xml
-> > > > + */
-> > > > +#pragma once
-> > > > +
-> > > > +#include "hw/register.h"
-> > > > +
-> > > > +/* I2C Bus Interface */
-> > > > +#define FLEXCOMM_I2C_REGS_NO (1024)
-> > > > +
-> > > > +/* Configuration Register */
-> > > > +REG32(FLEXCOMM_I2C_CFG, 2048);
-> > > > +/* Master Enable */
-> > > > +FIELD(FLEXCOMM_I2C_CFG, MSTEN, 0, 1);
-> > > > +/* Slave Enable */
-> > > > +FIELD(FLEXCOMM_I2C_CFG, SLVEN, 1, 1);
-> > > > +/* Monitor Enable */
-> > > > +FIELD(FLEXCOMM_I2C_CFG, MONEN, 2, 1);
-> > > > +/* I2C bus Time-out Enable */
-> > > > +FIELD(FLEXCOMM_I2C_CFG, TIMEOUTEN, 3, 1);
-> > > > +/* Monitor function Clock Stretching */
-> > > > +FIELD(FLEXCOMM_I2C_CFG, MONCLKSTR, 4, 1);
-> > > > +/* High Speed mode Capable enable */
-> > > > +FIELD(FLEXCOMM_I2C_CFG, HSCAPABLE, 5, 1);
-> > > > +
-> > > > +/* Status Register */
-> > > > +REG32(FLEXCOMM_I2C_STAT, 2052);
-> > > > +/* Master Pending */
-> > > > +FIELD(FLEXCOMM_I2C_STAT, MSTPENDING, 0, 1);
-> > > > +/* Master State code */
-> > > > +FIELD(FLEXCOMM_I2C_STAT, MSTSTATE, 1, 3);
-> > > > +/* Master Arbitration Loss flag */
-> > > > +FIELD(FLEXCOMM_I2C_STAT, MSTARBLOSS, 4, 1);
-> > > > +/* Master Start/Stop Error flag */
-> > > > +FIELD(FLEXCOMM_I2C_STAT, MSTSTSTPERR, 6, 1);
-> > > > +/* Slave Pending */
-> > > > +FIELD(FLEXCOMM_I2C_STAT, SLVPENDING, 8, 1);
-> > > > +/* Slave State */
-> > > > +FIELD(FLEXCOMM_I2C_STAT, SLVSTATE, 9, 2);
-> > > > +/* Slave Not Stretching */
-> > > > +FIELD(FLEXCOMM_I2C_STAT, SLVNOTSTR, 11, 1);
-> > > > +/* Slave address match Index T */
-> > > > +FIELD(FLEXCOMM_I2C_STAT, SLVIDX, 12, 2);
-> > > > +/* Slave selected flag */
-> > > > +FIELD(FLEXCOMM_I2C_STAT, SLVSEL, 14, 1);
-> > > > +/* Slave Deselected flag */
-> > > > +FIELD(FLEXCOMM_I2C_STAT, SLVDESEL, 15, 1);
-> > > > +/* Monitor Ready */
-> > > > +FIELD(FLEXCOMM_I2C_STAT, MONRDY, 16, 1);
-> > > > +/* Monitor Overflow flag */
-> > > > +FIELD(FLEXCOMM_I2C_STAT, MONOV, 17, 1);
-> > > > +/* Monitor Active flag */
-> > > > +FIELD(FLEXCOMM_I2C_STAT, MONACTIVE, 18, 1);
-> > > > +/* Monitor Idle flag */
-> > > > +FIELD(FLEXCOMM_I2C_STAT, MONIDLE, 19, 1);
-> > > > +/* Event Time-out Interrupt flag */
-> > > > +FIELD(FLEXCOMM_I2C_STAT, EVENTTIMEOUT, 24, 1);
-> > > > +/* SCL Time-out Interrupt flag */
-> > > > +FIELD(FLEXCOMM_I2C_STAT, SCLTIMEOUT, 25, 1);
-> > > > +
-> > > > +/* Interrupt Enable Set Register */
-> > > > +REG32(FLEXCOMM_I2C_INTENSET, 2056);
-> > > > +/* Master Pending interrupt Enable */
-> > > > +FIELD(FLEXCOMM_I2C_INTENSET, MSTPENDINGEN, 0, 1);
-> > > > +/* Master Arbitration Loss interrupt Enable */
-> > > > +FIELD(FLEXCOMM_I2C_INTENSET, MSTARBLOSSEN, 4, 1);
-> > > > +/* Master Start/Stop Error interrupt Enable */
-> > > > +FIELD(FLEXCOMM_I2C_INTENSET, MSTSTSTPERREN, 6, 1);
-> > > > +/* Slave Pending interrupt Enable */
-> > > > +FIELD(FLEXCOMM_I2C_INTENSET, SLVPENDINGEN, 8, 1);
-> > > > +/* Slave Not Stretching interrupt Enable */
-> > > > +FIELD(FLEXCOMM_I2C_INTENSET, SLVNOTSTREN, 11, 1);
-> > > > +/* Slave Deselect interrupt Enable */
-> > > > +FIELD(FLEXCOMM_I2C_INTENSET, SLVDESELEN, 15, 1);
-> > > > +/* Monitor data Ready interrupt Enable */
-> > > > +FIELD(FLEXCOMM_I2C_INTENSET, MONRDYEN, 16, 1);
-> > > > +/* Monitor Overrun interrupt Enable */
-> > > > +FIELD(FLEXCOMM_I2C_INTENSET, MONOVEN, 17, 1);
-> > > > +/* Monitor Idle interrupt Enable */
-> > > > +FIELD(FLEXCOMM_I2C_INTENSET, MONIDLEEN, 19, 1);
-> > > > +/* Event Time-out interrupt Enable */
-> > > > +FIELD(FLEXCOMM_I2C_INTENSET, EVENTTIMEOUTEN, 24, 1);
-> > > > +/* SCL Time-out interrupt Enable */
-> > > > +FIELD(FLEXCOMM_I2C_INTENSET, SCLTIMEOUTEN, 25, 1);
-> > > > +
-> > > > +/* Interrupt Enable Clear Register */
-> > > > +REG32(FLEXCOMM_I2C_INTENCLR, 2060);
-> > > > +/* Master Pending interrupt clear */
-> > > > +FIELD(FLEXCOMM_I2C_INTENCLR, MSTPENDINGCLR, 0, 1);
-> > > > +/* Master Arbitration Loss interrupt clear */
-> > > > +FIELD(FLEXCOMM_I2C_INTENCLR, MSTARBLOSSCLR, 4, 1);
-> > > > +/* Master Start/Stop Error interrupt clear */
-> > > > +FIELD(FLEXCOMM_I2C_INTENCLR, MSTSTSTPERRCLR, 6, 1);
-> > > > +/* Slave Pending interrupt clear */
-> > > > +FIELD(FLEXCOMM_I2C_INTENCLR, SLVPENDINGCLR, 8, 1);
-> > > > +/* Slave Not Stretching interrupt clear */
-> > > > +FIELD(FLEXCOMM_I2C_INTENCLR, SLVNOTSTRCLR, 11, 1);
-> > > > +/* Slave Deselect interrupt clear */
-> > > > +FIELD(FLEXCOMM_I2C_INTENCLR, SLVDESELCLR, 15, 1);
-> > > > +/* Monitor data Ready interrupt clear */
-> > > > +FIELD(FLEXCOMM_I2C_INTENCLR, MONRDYCLR, 16, 1);
-> > > > +/* Monitor Overrun interrupt clear */
-> > > > +FIELD(FLEXCOMM_I2C_INTENCLR, MONOVCLR, 17, 1);
-> > > > +/* Monitor Idle interrupt clear */
-> > > > +FIELD(FLEXCOMM_I2C_INTENCLR, MONIDLECLR, 19, 1);
-> > > > +/* Event time-out interrupt clear */
-> > > > +FIELD(FLEXCOMM_I2C_INTENCLR, EVENTTIMEOUTCLR, 24, 1);
-> > > > +/* SCL time-out interrupt clear */
-> > > > +FIELD(FLEXCOMM_I2C_INTENCLR, SCLTIMEOUTCLR, 25, 1);
-> > > > +
-> > > > +/* Time-out Register */
-> > > > +REG32(FLEXCOMM_I2C_TIMEOUT, 2064);
-> > > > +/* Time-out time value, the bottom 4 bits */
-> > > > +FIELD(FLEXCOMM_I2C_TIMEOUT, TOMIN, 0, 4);
-> > > > +/* Time-out time value */
-> > > > +FIELD(FLEXCOMM_I2C_TIMEOUT, TO, 4, 12);
-> > > > +
-> > > > +/* Clock Divider Register */
-> > > > +REG32(FLEXCOMM_I2C_CLKDIV, 2068);
-> > > > +/* Divider Value */
-> > > > +FIELD(FLEXCOMM_I2C_CLKDIV, DIVVAL, 0, 16);
-> > > > +
-> > > > +/* Interrupt Status Register */
-> > > > +REG32(FLEXCOMM_I2C_INTSTAT, 2072);
-> > > > +/* Master Pending */
-> > > > +FIELD(FLEXCOMM_I2C_INTSTAT, MSTPENDING, 0, 1);
-> > > > +/* Master Arbitration Loss flag */
-> > > > +FIELD(FLEXCOMM_I2C_INTSTAT, MSTARBLOSS, 4, 1);
-> > > > +/* Master Start/Stop Error flag */
-> > > > +FIELD(FLEXCOMM_I2C_INTSTAT, MSTSTSTPERR, 6, 1);
-> > > > +/* Slave Pending */
-> > > > +FIELD(FLEXCOMM_I2C_INTSTAT, SLVPENDING, 8, 1);
-> > > > +/* Slave Not Stretching status */
-> > > > +FIELD(FLEXCOMM_I2C_INTSTAT, SLVNOTSTR, 11, 1);
-> > > > +/* Slave Deselected flag */
-> > > > +FIELD(FLEXCOMM_I2C_INTSTAT, SLVDESEL, 15, 1);
-> > > > +/* Monitor Ready */
-> > > > +FIELD(FLEXCOMM_I2C_INTSTAT, MONRDY, 16, 1);
-> > > > +/* Monitor Overflow flag */
-> > > > +FIELD(FLEXCOMM_I2C_INTSTAT, MONOV, 17, 1);
-> > > > +/* Monitor Idle flag */
-> > > > +FIELD(FLEXCOMM_I2C_INTSTAT, MONIDLE, 19, 1);
-> > > > +/* Event Time-out Interrupt flag */
-> > > > +FIELD(FLEXCOMM_I2C_INTSTAT, EVENTTIMEOUT, 24, 1);
-> > > > +/* SCL Time-out Interrupt flag */
-> > > > +FIELD(FLEXCOMM_I2C_INTSTAT, SCLTIMEOUT, 25, 1);
-> > > > +
-> > > > +/* Master Control Register */
-> > > > +REG32(FLEXCOMM_I2C_MSTCTL, 2080);
-> > > > +/* Master Continue(write-only) */
-> > > > +FIELD(FLEXCOMM_I2C_MSTCTL, MSTCONTINUE, 0, 1);
-> > > > +/* Master Start control(write-only) */
-> > > > +FIELD(FLEXCOMM_I2C_MSTCTL, MSTSTART, 1, 1);
-> > > > +/* Master Stop control(write-only) */
-> > > > +FIELD(FLEXCOMM_I2C_MSTCTL, MSTSTOP, 2, 1);
-> > > > +/* Master DMA enable */
-> > > > +FIELD(FLEXCOMM_I2C_MSTCTL, MSTDMA, 3, 1);
-> > > > +
-> > > > +/* Master Timing Register */
-> > > > +REG32(FLEXCOMM_I2C_MSTTIME, 2084);
-> > > > +/* Master SCL Low time */
-> > > > +FIELD(FLEXCOMM_I2C_MSTTIME, MSTSCLLOW, 0, 3);
-> > > > +/* Master SCL High time */
-> > > > +FIELD(FLEXCOMM_I2C_MSTTIME, MSTSCLHIGH, 4, 3);
-> > > > +
-> > > > +/* Master Data Register */
-> > > > +REG32(FLEXCOMM_I2C_MSTDAT, 2088);
-> > > > +/* Master function data register */
-> > > > +FIELD(FLEXCOMM_I2C_MSTDAT, DATA, 0, 8);
-> > > > +
-> > > > +/* Slave Control Register */
-> > > > +REG32(FLEXCOMM_I2C_SLVCTL, 2112);
-> > > > +/* Slave Continue */
-> > > > +FIELD(FLEXCOMM_I2C_SLVCTL, SLVCONTINUE, 0, 1);
-> > > > +/* Slave NACK */
-> > > > +FIELD(FLEXCOMM_I2C_SLVCTL, SLVNACK, 1, 1);
-> > > > +/* Slave DMA enable */
-> > > > +FIELD(FLEXCOMM_I2C_SLVCTL, SLVDMA, 3, 1);
-> > > > +/* Automatic Acknowledge */
-> > > > +FIELD(FLEXCOMM_I2C_SLVCTL, AUTOACK, 8, 1);
-> > > > +/* Automatic Match Read */
-> > > > +FIELD(FLEXCOMM_I2C_SLVCTL, AUTOMATCHREAD, 9, 1);
-> > > > +
-> > > > +/* Slave Data Register */
-> > > > +REG32(FLEXCOMM_I2C_SLVDAT, 2116);
-> > > > +/* Slave function data register */
-> > > > +FIELD(FLEXCOMM_I2C_SLVDAT, DATA, 0, 8);
-> > > > +
-> > > > +/* Slave Address Register */
-> > > > +REG32(FLEXCOMM_I2C_SLVADR0, 2120);
-> > > > +/* Slave Address n Disable */
-> > > > +FIELD(FLEXCOMM_I2C_SLVADR0, SADISABLE, 0, 1);
-> > > > +/* Slave Address. */
-> > > > +FIELD(FLEXCOMM_I2C_SLVADR0, SLVADR, 1, 7);
-> > > > +/* Automatic NACK operation */
-> > > > +FIELD(FLEXCOMM_I2C_SLVADR0, AUTONACK, 15, 1);
-> > > > +
-> > > > +/* Slave Address Register */
-> > > > +REG32(FLEXCOMM_I2C_SLVADR1, 2124);
-> > > > +/* Slave Address n Disable */
-> > > > +FIELD(FLEXCOMM_I2C_SLVADR1, SADISABLE, 0, 1);
-> > > > +/* Slave Address. */
-> > > > +FIELD(FLEXCOMM_I2C_SLVADR1, SLVADR, 1, 7);
-> > > > +/* Automatic NACK operation */
-> > > > +FIELD(FLEXCOMM_I2C_SLVADR1, AUTONACK, 15, 1);
-> > > > +
-> > > > +/* Slave Address Register */
-> > > > +REG32(FLEXCOMM_I2C_SLVADR2, 2128);
-> > > > +/* Slave Address n Disable */
-> > > > +FIELD(FLEXCOMM_I2C_SLVADR2, SADISABLE, 0, 1);
-> > > > +/* Slave Address. */
-> > > > +FIELD(FLEXCOMM_I2C_SLVADR2, SLVADR, 1, 7);
-> > > > +/* Automatic NACK operation */
-> > > > +FIELD(FLEXCOMM_I2C_SLVADR2, AUTONACK, 15, 1);
-> > > > +
-> > > > +/* Slave Address Register */
-> > > > +REG32(FLEXCOMM_I2C_SLVADR3, 2132);
-> > > > +/* Slave Address n Disable */
-> > > > +FIELD(FLEXCOMM_I2C_SLVADR3, SADISABLE, 0, 1);
-> > > > +/* Slave Address. */
-> > > > +FIELD(FLEXCOMM_I2C_SLVADR3, SLVADR, 1, 7);
-> > > > +/* Automatic NACK operation */
-> > > > +FIELD(FLEXCOMM_I2C_SLVADR3, AUTONACK, 15, 1);
-> > > > +
-> > > > +/* Slave Qualification for Address 0 Register */
-> > > > +REG32(FLEXCOMM_I2C_SLVQUAL0, 2136);
-> > > > +/* Qualify mode for slave address 0 */
-> > > > +FIELD(FLEXCOMM_I2C_SLVQUAL0, QUALMODE0, 0, 1);
-> > > > +/* Slave address Qualifier for address 0 */
-> > > > +FIELD(FLEXCOMM_I2C_SLVQUAL0, SLVQUAL0, 1, 7);
-> > > > +
-> > > > +/* Monitor Receiver Data Register */
-> > > > +REG32(FLEXCOMM_I2C_MONRXDAT, 2176);
-> > > > +/* Monitor function Receiver Data */
-> > > > +FIELD(FLEXCOMM_I2C_MONRXDAT, MONRXDAT, 0, 8);
-> > > > +/* Monitor Received Start */
-> > > > +FIELD(FLEXCOMM_I2C_MONRXDAT, MONSTART, 8, 1);
-> > > > +/* Monitor Received Repeated Start */
-> > > > +FIELD(FLEXCOMM_I2C_MONRXDAT, MONRESTART, 9, 1);
-> > > > +/* Monitor Received NACK */
-> > > > +FIELD(FLEXCOMM_I2C_MONRXDAT, MONNACK, 10, 1);
-> > > > +
-> > > > +/* Peripheral Identification Register */
-> > > > +REG32(FLEXCOMM_I2C_ID, 4092);
-> > > > +/* Aperture */
-> > > > +FIELD(FLEXCOMM_I2C_ID, APERTURE, 0, 8);
-> > > > +/* Minor revision of module implementation */
-> > > > +FIELD(FLEXCOMM_I2C_ID, MINOR_REV, 8, 4);
-> > > > +/* Major revision of module implementation */
-> > > > +FIELD(FLEXCOMM_I2C_ID, MAJOR_REV, 12, 4);
-> > > > +/* Module identifier for the selected function */
-> > > > +FIELD(FLEXCOMM_I2C_ID, ID, 16, 16);
-> > > > +
-> > >
-> > > Are any of the below enums even used?  Or for that matter, most of th=
-e
-> > > above fields?
-> > >
-> > > If these are just here for documentation, I would prefer English text=
-;
-> > > it's more dense and easier to read.  It's very difficult to tie all t=
-his
-> > > together into a cohesive view of the device registers.
-> > >
-> >
-> > Since this is autogenerated for the full set of the device registers
-> > there will be fields that are not used either because the emulation is
-> > incomplete or because they don't have effect for emulation.
-> >
-> > I think it is still valuable to have this generated automatically
-> > instead of doing it by hand.
-> >
-> > Would adding options to only generate certain definitions help? As
-> > long as we are reasonable with the granularity (e.g. register level) I
-> > think it could trim *most* of the unused generated code without
-> > becoming too tedious on how to instruct the tool to generate the code.
-> > However, I expect to still have *some* unused generated code.
->
-> Generally it's frowned upon to have a ton of extra stuff that's not
-> used.  I would think some is ok, like defining bits in registers that
-> aren't used yet, but I have no idea how all the enums below here
-> actually tie into anything.  I'm guessing these are just bitmasks into
-> registers, but really, it's a lot easier to read if you have something
-> like:
->
-> /*
->  * The I2C Master function enable. When disabled, the Master
->  * configuration settings are not changed, but the Master function is
->  * internally reset.
->  */
-> #define FLEXCOMM_I2C_CFG_MSTEN (1 << 4)
->
-> and them have them grouped together with the register they belong to.  I
-> don't know how you would even use these enums.  AFAICT, none of them are
-> used.
->
+Hi all,
 
-Ah, I see. You are right, it is not useful for 1 bit fields, I'll fix
-the generator to skip these for bits.
+This our v2 RFC trying to introduce hyrbid (aka, heterogeneous) CPU
+topology into QEMU. This series focuses on the heterogeneous CPUs with
+same ISA, like Intel client hybrid architecture.
 
-The purpose of the enums is for the case where a certain field can
-have more than two options. To give an example that is used:
+Comparing with v1 [1], v2 totally re-designs the topology architecture
+and based on QOM (CPU) topology [2], unleashes the ability to customize
+CPU topology tree by -device from CLI.
 
-typedef enum {
-    FLEXCOMM_I2C_STAT_MSTSTATE_IDLE =3D 0,
-    FLEXCOMM_I2C_STAT_MSTSTATE_RECEIVE_READY =3D 1,
-    FLEXCOMM_I2C_STAT_MSTSTATE_TRANSMIT_READY =3D 2,
-    FLEXCOMM_I2C_STAT_MSTSTATE_NACK_ADDRESS =3D 3,
-    FLEXCOMM_I2C_STAT_MSTSTATE_NACK_DATA =3D 4,
-} FLEXCOMM_I2C_STAT_MSTSTATE_Enum;
+For example, a PC machine with 1 Intel Core (P-core) with 2 threads and
+2 Intel Atoms (E core) with single thread can be defined like:
 
-> And the whole idea of this is to make the code more readable.  So if
-> you define these things, you should use them.  Look around through the
-> code of other devices to get a feel of how things are done.
->
+-smp maxsockets=1,maxdies=1,maxmodules=2,maxcores=2,maxthreads=2
+-machine pc,custom-topo=on \
+-device cpu-socket,id=sock0 \
+-device cpu-die,id=die0,bus=sock0 \
+-device cpu-module,id=mod0,bus=die0 \
+-device cpu-module,id=mod1,bus=die0 \
+-device x86-intel-core,id=core0,bus=mod0 \
+-device x86-intel-atom,id=core1,bus=mod1 \
+-device x86-intel-atom,id=core2,bus=mod1 \
+-device host-x86_64-cpu,id=cpu0,socket-id=0,die-id=0,module-id=0,core-id=0,thread-id=0 \
+-device host-x86_64-cpu,id=cpu1,socket-id=0,die-id=0,module-id=0,core-id=0,thread-id=1 \
+-device host-x86_64-cpu,id=cpu2,socket-id=0,die-id=0,module-id=1,core-id=0,thread-id=0 \
+-device host-x86_64-cpu,id=cpu3,socket-id=0,die-id=0,module-id=1,core-id=1,thread-id=0
 
-Thanks for the review and sorry for the rough edges, I should have
-caught the bits enums thing.
+The example above has some difference from the v1 qom-topo example [3]:
+ * new max* parameter in -smp and,
+ * new custom-topo option in -machine,
+ * no "parent" parameter to create child<>, instead there's a bus to
+   specify parent bus of parent topology device.
 
-> -corey
->
-> >
-> >
-> > > The .c file itself seems ok.
-> > >
-> > > -corey
-> > >
-> > > > +
-> > > > +typedef enum {
-> > > > +    /*
-> > > > +     * Disabled. The I2C Master function is disabled. When disable=
-d, the Master
-> > > > +     * configuration settings are not changed, but the Master func=
-tion is
-> > > > +     * internally reset.
-> > > > +     */
-> > > > +    FLEXCOMM_I2C_CFG_MSTEN_DISABLED =3D 0,
-> > > > +    /* Enabled. The I2C Master function is enabled. */
-> > > > +    FLEXCOMM_I2C_CFG_MSTEN_ENABLED =3D 1,
-> > > > +} FLEXCOMM_I2C_CFG_MSTEN_Enum;
-> > > > +
-> > > > +typedef enum {
-> > > > +    /*
-> > > > +     * Disabled. The I2C slave function is disabled. When disabled=
-, the Slave
-> > > > +     * configuration settings are not changed, but the Slave funct=
-ion is
-> > > > +     * internally reset.
-> > > > +     */
-> > > > +    FLEXCOMM_I2C_CFG_SLVEN_DISABLED =3D 0,
-> > > > +    /* Enabled. The I2C slave function is enabled. */
-> > > > +    FLEXCOMM_I2C_CFG_SLVEN_ENABLED =3D 1,
-> > > > +} FLEXCOMM_I2C_CFG_SLVEN_Enum;
-> > > > +
-> > > > +typedef enum {
-> > > > +    /*
-> > > > +     * Disabled. The I2C Monitor function is disabled. When disabl=
-ed, the
-> > > > +     * Monitor function configuration settings are not changed, bu=
-t the Monitor
-> > > > +     * function is internally reset.
-> > > > +     */
-> > > > +    FLEXCOMM_I2C_CFG_MONEN_DISABLED =3D 0,
-> > > > +    /* Enabled. The I2C Monitor function is enabled. */
-> > > > +    FLEXCOMM_I2C_CFG_MONEN_ENABLED =3D 1,
-> > > > +} FLEXCOMM_I2C_CFG_MONEN_Enum;
-> > > > +
-> > > > +typedef enum {
-> > > > +    /*
-> > > > +     * Disabled. The time-out function is disabled. When disabled,=
- the time-out
-> > > > +     * function is internally reset.
-> > > > +     */
-> > > > +    FLEXCOMM_I2C_CFG_TIMEOUTEN_DISABLED =3D 0,
-> > > > +    /*
-> > > > +     * Enabled. The time-out function is enabled. Both types of ti=
-me-out flags
-> > > > +     * will be generated and will cause interrupts if those flags =
-are enabled.
-> > > > +     * Typically, only one time-out flag will be used in a system.
-> > > > +     */
-> > > > +    FLEXCOMM_I2C_CFG_TIMEOUTEN_ENABLED =3D 1,
-> > > > +} FLEXCOMM_I2C_CFG_TIMEOUTEN_Enum;
-> > > > +
-> > > > +typedef enum {
-> > > > +    /*
-> > > > +     * Disabled. The Monitor function will not perform clock stret=
-ching.
-> > > > +     * Software or DMA may not always be able to read data provide=
-d by the
-> > > > +     * Monitor function before it (the data) is overwritten. This =
-mode can be
-> > > > +     * used when non-invasive monitoring is critical.
-> > > > +     */
-> > > > +    FLEXCOMM_I2C_CFG_MONCLKSTR_DISABLED =3D 0,
-> > > > +    /*
-> > > > +     * Enabled. The Monitor function will perform clock stretching=
-, to ensure
-> > > > +     * that the software or DMA can read all incoming data supplie=
-d by the
-> > > > +     * Monitor function.
-> > > > +     */
-> > > > +    FLEXCOMM_I2C_CFG_MONCLKSTR_ENABLED =3D 1,
-> > > > +} FLEXCOMM_I2C_CFG_MONCLKSTR_Enum;
-> > > > +
-> > > > +typedef enum {
-> > > > +    /* Fast mode Plus enable */
-> > > > +    FLEXCOMM_I2C_CFG_HSCAPABLE_FAST_MODE_PLUS =3D 0,
-> > > > +    /* High Speed mode enable */
-> > > > +    FLEXCOMM_I2C_CFG_HSCAPABLE_HIGH_SPEED =3D 1,
-> > > > +} FLEXCOMM_I2C_CFG_HSCAPABLE_Enum;
-> > > > +
-> > > > +typedef enum {
-> > > > +    /*
-> > > > +     * In progress. Communication is in progress and the Master fu=
-nction is
-> > > > +     * busy and cannot currently accept a command.
-> > > > +     */
-> > > > +    FLEXCOMM_I2C_STAT_MSTPENDING_IN_PROGRESS =3D 0,
-> > > > +    /*
-> > > > +     * Pending. The Master function needs software service or is i=
-n the idle
-> > > > +     * state. If the master is not in the idle state, then the mas=
-ter is
-> > > > +     * waiting to receive or transmit data, or is waiting for the =
-NACK bit.
-> > > > +     */
-> > > > +    FLEXCOMM_I2C_STAT_MSTPENDING_PENDING =3D 1,
-> > > > +} FLEXCOMM_I2C_STAT_MSTPENDING_Enum;
-> > > > +
-> > > > +typedef enum {
-> > > > +    /*
-> > > > +     * Idle. The Master function is available to be used for a new=
- transaction.
-> > > > +     */
-> > > > +    FLEXCOMM_I2C_STAT_MSTSTATE_IDLE =3D 0,
-> > > > +    /*
-> > > > +     * Receive ready. Received data is available (in Master Receiv=
-er mode).
-> > > > +     * Address plus Read was previously sent and Acknowledged by a=
- slave.
-> > > > +     */
-> > > > +    FLEXCOMM_I2C_STAT_MSTSTATE_RECEIVE_READY =3D 1,
-> > > > +    /*
-> > > > +     * Transmit ready. Data can be transmitted (in Master Transmit=
-ter mode).
-> > > > +     * Address plus Write was previously sent and Acknowledged by =
-a slave.
-> > > > +     */
-> > > > +    FLEXCOMM_I2C_STAT_MSTSTATE_TRANSMIT_READY =3D 2,
-> > > > +    /* NACK Address. Slave NACKed address. */
-> > > > +    FLEXCOMM_I2C_STAT_MSTSTATE_NACK_ADDRESS =3D 3,
-> > > > +    /* NACK Data. Slave NACKed transmitted data. */
-> > > > +    FLEXCOMM_I2C_STAT_MSTSTATE_NACK_DATA =3D 4,
-> > > > +} FLEXCOMM_I2C_STAT_MSTSTATE_Enum;
-> > > > +
-> > > > +typedef enum {
-> > > > +    /* No Arbitration Loss has occurred */
-> > > > +    FLEXCOMM_I2C_STAT_MSTARBLOSS_NO_LOSS =3D 0,
-> > > > +    /*
-> > > > +     * Arbitration loss. The Master function has experienced an Ar=
-bitration
-> > > > +     * Loss. At this point, the Master function has already stoppe=
-d driving the
-> > > > +     * bus and has gone into an idle state. Software can respond b=
-y doing
-> > > > +     * nothing, or by sending a Start (to attempt to gain control =
-of the bus
-> > > > +     * when the bus next becomes idle).
-> > > > +     */
-> > > > +    FLEXCOMM_I2C_STAT_MSTARBLOSS_ARBITRATION_LOSS =3D 1,
-> > > > +} FLEXCOMM_I2C_STAT_MSTARBLOSS_Enum;
-> > > > +
-> > > > +typedef enum {
-> > > > +    /* No Start/Stop Error has occurred. */
-> > > > +    FLEXCOMM_I2C_STAT_MSTSTSTPERR_NO_ERROR =3D 0,
-> > > > +    /*
-> > > > +     * The Master function has experienced a Start/Stop Error. A S=
-tart or Stop
-> > > > +     * was detected at a time when Start or Stop is not allowed by=
- the I2C
-> > > > +     * specification. The Master interface has stopped driving the=
- bus and gone
-> > > > +     * into an idle state; no action is required. A request for a =
-Start could
-> > > > +     * be made, or software could attempt to make sure that the bu=
-s has not
-> > > > +     * stalled.
-> > > > +     */
-> > > > +    FLEXCOMM_I2C_STAT_MSTSTSTPERR_ERROR =3D 1,
-> > > > +} FLEXCOMM_I2C_STAT_MSTSTSTPERR_Enum;
-> > > > +
-> > > > +typedef enum {
-> > > > +    /*
-> > > > +     * In progress. The Slave function does not currently need sof=
-tware
-> > > > +     * service.
-> > > > +     */
-> > > > +    FLEXCOMM_I2C_STAT_SLVPENDING_IN_PROGRESS =3D 0,
-> > > > +    /*
-> > > > +     * Pending. The Slave function needs software service. Informa=
-tion about
-> > > > +     * what is needed is in the Slave state field (SLVSTATE).
-> > > > +     */
-> > > > +    FLEXCOMM_I2C_STAT_SLVPENDING_PENDING =3D 1,
-> > > > +} FLEXCOMM_I2C_STAT_SLVPENDING_Enum;
-> > > > +
-> > > > +typedef enum {
-> > > > +    /*
-> > > > +     * Slave address. Address plus R/W received. At least one of t=
-he 4 slave
-> > > > +     * addresses has been matched by hardware.
-> > > > +     */
-> > > > +    FLEXCOMM_I2C_STAT_SLVSTATE_SLAVE_ADDRESS =3D 0,
-> > > > +    /* Slave receive. Received data is available (in Slave Receive=
-r mode). */
-> > > > +    FLEXCOMM_I2C_STAT_SLVSTATE_SLAVE_RECEIVE =3D 1,
-> > > > +    /* Slave transmit. Data can be transmitted (in Slave Transmitt=
-er mode). */
-> > > > +    FLEXCOMM_I2C_STAT_SLVSTATE_SLAVE_TRANSMIT =3D 2,
-> > > > +} FLEXCOMM_I2C_STAT_SLVSTATE_Enum;
-> > > > +
-> > > > +typedef enum {
-> > > > +    /*
-> > > > +     * Stretching. The slave function is currently stretching the =
-I2C bus
-> > > > +     * clock. Deep-Sleepmode cannot be entered at this time.
-> > > > +     */
-> > > > +    FLEXCOMM_I2C_STAT_SLVNOTSTR_STRETCHING =3D 0,
-> > > > +    /*
-> > > > +     * Not stretching. The slave function is not currently stretch=
-ing the I2C
-> > > > +     * bus clock. Deep-sleep mode can be entered at this time.
-> > > > +     */
-> > > > +    FLEXCOMM_I2C_STAT_SLVNOTSTR_NOT_STRETCHING =3D 1,
-> > > > +} FLEXCOMM_I2C_STAT_SLVNOTSTR_Enum;
-> > > > +
-> > > > +typedef enum {
-> > > > +    /* Address 0. Slave address 0 was matched. */
-> > > > +    FLEXCOMM_I2C_STAT_SLVIDX_ADDRESS0 =3D 0,
-> > > > +    /* Address 1. Slave address 1 was matched. */
-> > > > +    FLEXCOMM_I2C_STAT_SLVIDX_ADDRESS1 =3D 1,
-> > > > +    /* Address 2. Slave address 2 was matched. */
-> > > > +    FLEXCOMM_I2C_STAT_SLVIDX_ADDRESS2 =3D 2,
-> > > > +    /* Address 3. Slave address 3 was matched. */
-> > > > +    FLEXCOMM_I2C_STAT_SLVIDX_ADDRESS3 =3D 3,
-> > > > +} FLEXCOMM_I2C_STAT_SLVIDX_Enum;
-> > > > +
-> > > > +typedef enum {
-> > > > +    /* Not selected. The Slave function is not currently selected.=
- */
-> > > > +    FLEXCOMM_I2C_STAT_SLVSEL_NOT_SELECTED =3D 0,
-> > > > +    /* Selected. The Slave function is currently selected. */
-> > > > +    FLEXCOMM_I2C_STAT_SLVSEL_SELECTED =3D 1,
-> > > > +} FLEXCOMM_I2C_STAT_SLVSEL_Enum;
-> > > > +
-> > > > +typedef enum {
-> > > > +    /*
-> > > > +     * Not deselected. The Slave function has not become deselecte=
-d. This does
-> > > > +     * not mean that the Slave is currently selected. That informa=
-tion is in
-> > > > +     * the SLVSEL flag.
-> > > > +     */
-> > > > +    FLEXCOMM_I2C_STAT_SLVDESEL_NOT_DESELECTED =3D 0,
-> > > > +    /*
-> > > > +     * Deselected. The Slave function has become deselected. This =
-is
-> > > > +     * specifically caused by the SLVSEL flag changing from 1 to 0=
-. See SLVSEL
-> > > > +     * for details about when that event occurs.
-> > > > +     */
-> > > > +    FLEXCOMM_I2C_STAT_SLVDESEL_DESELECTED =3D 1,
-> > > > +} FLEXCOMM_I2C_STAT_SLVDESEL_Enum;
-> > > > +
-> > > > +typedef enum {
-> > > > +    /* No data. The Monitor function does not currently have data =
-available. */
-> > > > +    FLEXCOMM_I2C_STAT_MONRDY_NO_DATA =3D 0,
-> > > > +    /* Data waiting. The Monitor function has data waiting to be r=
-ead. */
-> > > > +    FLEXCOMM_I2C_STAT_MONRDY_DATA_WAITING =3D 1,
-> > > > +} FLEXCOMM_I2C_STAT_MONRDY_Enum;
-> > > > +
-> > > > +typedef enum {
-> > > > +    /* No overrun. Monitor data has not overrun. */
-> > > > +    FLEXCOMM_I2C_STAT_MONOV_NO_OVERRUN =3D 0,
-> > > > +    /*
-> > > > +     * Overrun. A Monitor data overrun has occurred. An overrun ca=
-n only happen
-> > > > +     * when Monitor clock stretching not enabled via the CFG[MONCL=
-KSTR] bit.
-> > > > +     * Writing 1 to MONOV bit clears the MONOV flag.
-> > > > +     */
-> > > > +    FLEXCOMM_I2C_STAT_MONOV_OVERRUN =3D 1,
-> > > > +} FLEXCOMM_I2C_STAT_MONOV_Enum;
-> > > > +
-> > > > +typedef enum {
-> > > > +    /* Inactive. The Monitor function considers the I2C bus to be =
-inactive. */
-> > > > +    FLEXCOMM_I2C_STAT_MONACTIVE_INACTIVE =3D 0,
-> > > > +    /* Active. The Monitor function considers the I2C bus to be ac=
-tive. */
-> > > > +    FLEXCOMM_I2C_STAT_MONACTIVE_ACTIVE =3D 1,
-> > > > +} FLEXCOMM_I2C_STAT_MONACTIVE_Enum;
-> > > > +
-> > > > +typedef enum {
-> > > > +    /*
-> > > > +     * Not idle. The I2C bus is not idle, or MONIDLE flag has been=
- cleared by
-> > > > +     * software.
-> > > > +     */
-> > > > +    FLEXCOMM_I2C_STAT_MONIDLE_NOT_IDLE =3D 0,
-> > > > +    /*
-> > > > +     * Idle. The I2C bus has gone idle at least once, since the la=
-st time
-> > > > +     * MONIDLE flag was cleared by software.
-> > > > +     */
-> > > > +    FLEXCOMM_I2C_STAT_MONIDLE_IDLE =3D 1,
-> > > > +} FLEXCOMM_I2C_STAT_MONIDLE_Enum;
-> > > > +
-> > > > +typedef enum {
-> > > > +    /* No time-out. I2C bus events have not caused a time-out. */
-> > > > +    FLEXCOMM_I2C_STAT_EVENTTIMEOUT_NO_TIMEOUT =3D 0,
-> > > > +    /*
-> > > > +     * Event time-out. The time between I2C bus events has been lo=
-nger than the
-> > > > +     * time specified by the TIMEOUT register.
-> > > > +     */
-> > > > +    FLEXCOMM_I2C_STAT_EVENTTIMEOUT_EVEN_TIMEOUT =3D 1,
-> > > > +} FLEXCOMM_I2C_STAT_EVENTTIMEOUT_Enum;
-> > > > +
-> > > > +typedef enum {
-> > > > +    /* No time-out. SCL low time has not caused a time-out. */
-> > > > +    FLEXCOMM_I2C_STAT_SCLTIMEOUT_NO_TIMEOUT =3D 0,
-> > > > +    /* Time-out. SCL low time has caused a time-out. */
-> > > > +    FLEXCOMM_I2C_STAT_SCLTIMEOUT_TIMEOUT =3D 1,
-> > > > +} FLEXCOMM_I2C_STAT_SCLTIMEOUT_Enum;
-> > > > +
-> > > > +typedef enum {
-> > > > +    /* Disabled. The MstPending interrupt is disabled. */
-> > > > +    FLEXCOMM_I2C_INTENSET_MSTPENDINGEN_DISABLED =3D 0,
-> > > > +    /* Enabled. The MstPending interrupt is enabled. */
-> > > > +    FLEXCOMM_I2C_INTENSET_MSTPENDINGEN_ENABLED =3D 1,
-> > > > +} FLEXCOMM_I2C_INTENSET_MSTPENDINGEN_Enum;
-> > > > +
-> > > > +typedef enum {
-> > > > +    /* Disabled. The MstArbLoss interrupt is disabled. */
-> > > > +    FLEXCOMM_I2C_INTENSET_MSTARBLOSSEN_DISABLED =3D 0,
-> > > > +    /* Enabled. The MstArbLoss interrupt is enabled. */
-> > > > +    FLEXCOMM_I2C_INTENSET_MSTARBLOSSEN_ENABLED =3D 1,
-> > > > +} FLEXCOMM_I2C_INTENSET_MSTARBLOSSEN_Enum;
-> > > > +
-> > > > +typedef enum {
-> > > > +    /* Disabled. The MstStStpErr interrupt is disabled. */
-> > > > +    FLEXCOMM_I2C_INTENSET_MSTSTSTPERREN_DISABLED =3D 0,
-> > > > +    /* Enabled. The MstStStpErr interrupt is enabled. */
-> > > > +    FLEXCOMM_I2C_INTENSET_MSTSTSTPERREN_ENABLED =3D 1,
-> > > > +} FLEXCOMM_I2C_INTENSET_MSTSTSTPERREN_Enum;
-> > > > +
-> > > > +typedef enum {
-> > > > +    /* Disabled. The SlvPending interrupt is disabled. */
-> > > > +    FLEXCOMM_I2C_INTENSET_SLVPENDINGEN_DISABLED =3D 0,
-> > > > +    /* Enabled. The SlvPending interrupt is enabled. */
-> > > > +    FLEXCOMM_I2C_INTENSET_SLVPENDINGEN_ENABLED =3D 1,
-> > > > +} FLEXCOMM_I2C_INTENSET_SLVPENDINGEN_Enum;
-> > > > +
-> > > > +typedef enum {
-> > > > +    /* Disabled. The SlvNotStr interrupt is disabled. */
-> > > > +    FLEXCOMM_I2C_INTENSET_SLVNOTSTREN_DISABLED =3D 0,
-> > > > +    /* Enabled. The SlvNotStr interrupt is enabled. */
-> > > > +    FLEXCOMM_I2C_INTENSET_SLVNOTSTREN_ENABLED =3D 1,
-> > > > +} FLEXCOMM_I2C_INTENSET_SLVNOTSTREN_Enum;
-> > > > +
-> > > > +typedef enum {
-> > > > +    /* Disabled. The SlvDeSel interrupt is disabled. */
-> > > > +    FLEXCOMM_I2C_INTENSET_SLVDESELEN_DISABLED =3D 0,
-> > > > +    /* Enabled. The SlvDeSel interrupt is enabled. */
-> > > > +    FLEXCOMM_I2C_INTENSET_SLVDESELEN_ENABLED =3D 1,
-> > > > +} FLEXCOMM_I2C_INTENSET_SLVDESELEN_Enum;
-> > > > +
-> > > > +typedef enum {
-> > > > +    /* Disabled. The MonRdy interrupt is disabled. */
-> > > > +    FLEXCOMM_I2C_INTENSET_MONRDYEN_DISABLED =3D 0,
-> > > > +    /* Enabled. The MonRdy interrupt is enabled. */
-> > > > +    FLEXCOMM_I2C_INTENSET_MONRDYEN_ENABLED =3D 1,
-> > > > +} FLEXCOMM_I2C_INTENSET_MONRDYEN_Enum;
-> > > > +
-> > > > +typedef enum {
-> > > > +    /* Disabled. The MonOv interrupt is disabled. */
-> > > > +    FLEXCOMM_I2C_INTENSET_MONOVEN_DISABLED =3D 0,
-> > > > +    /* Enabled. The MonOv interrupt is enabled. */
-> > > > +    FLEXCOMM_I2C_INTENSET_MONOVEN_ENABLED =3D 1,
-> > > > +} FLEXCOMM_I2C_INTENSET_MONOVEN_Enum;
-> > > > +
-> > > > +typedef enum {
-> > > > +    /* Disabled. The MonIdle interrupt is disabled. */
-> > > > +    FLEXCOMM_I2C_INTENSET_MONIDLEEN_DISABLED =3D 0,
-> > > > +    /* Enabled. The MonIdle interrupt is enabled. */
-> > > > +    FLEXCOMM_I2C_INTENSET_MONIDLEEN_ENABLED =3D 1,
-> > > > +} FLEXCOMM_I2C_INTENSET_MONIDLEEN_Enum;
-> > > > +
-> > > > +typedef enum {
-> > > > +    /* Disabled. The Event time-out interrupt is disabled. */
-> > > > +    FLEXCOMM_I2C_INTENSET_EVENTTIMEOUTEN_DISABLED =3D 0,
-> > > > +    /* Enabled. The Event time-out interrupt is enabled. */
-> > > > +    FLEXCOMM_I2C_INTENSET_EVENTTIMEOUTEN_ENABLED =3D 1,
-> > > > +} FLEXCOMM_I2C_INTENSET_EVENTTIMEOUTEN_Enum;
-> > > > +
-> > > > +typedef enum {
-> > > > +    /* Disabled. The SCL time-out interrupt is disabled. */
-> > > > +    FLEXCOMM_I2C_INTENSET_SCLTIMEOUTEN_DISABLED =3D 0,
-> > > > +    /* Enabled. The SCL time-out interrupt is enabled. */
-> > > > +    FLEXCOMM_I2C_INTENSET_SCLTIMEOUTEN_ENABLED =3D 1,
-> > > > +} FLEXCOMM_I2C_INTENSET_SCLTIMEOUTEN_Enum;
-> > > > +
-> > > > +typedef enum {
-> > > > +    /* No effect on interrupt */
-> > > > +    FLEXCOMM_I2C_INTENCLR_MSTPENDINGCLR_NO_EFFECT =3D 0,
-> > > > +    /* Clears the interrupt bit in INTENSET register */
-> > > > +    FLEXCOMM_I2C_INTENCLR_MSTPENDINGCLR_CLEAR_MSTPENDING =3D 1,
-> > > > +} FLEXCOMM_I2C_INTENCLR_MSTPENDINGCLR_Enum;
-> > > > +
-> > > > +typedef enum {
-> > > > +    /* No effect on interrupt */
-> > > > +    FLEXCOMM_I2C_INTENCLR_MSTARBLOSSCLR_NO_EFFECT =3D 0,
-> > > > +    /* Clears the interrupt bit in INTENSET register */
-> > > > +    FLEXCOMM_I2C_INTENCLR_MSTARBLOSSCLR_CLEAR_MSTARBLOSS =3D 1,
-> > > > +} FLEXCOMM_I2C_INTENCLR_MSTARBLOSSCLR_Enum;
-> > > > +
-> > > > +typedef enum {
-> > > > +    /* No effect on interrupt */
-> > > > +    FLEXCOMM_I2C_INTENCLR_MSTSTSTPERRCLR_NO_EFFECT =3D 0,
-> > > > +    /* Clears the interrupt bit in INTENSET register */
-> > > > +    FLEXCOMM_I2C_INTENCLR_MSTSTSTPERRCLR_CLEAR_MSTSTSTPERR =3D 1,
-> > > > +} FLEXCOMM_I2C_INTENCLR_MSTSTSTPERRCLR_Enum;
-> > > > +
-> > > > +typedef enum {
-> > > > +    /* No effect on interrupt */
-> > > > +    FLEXCOMM_I2C_INTENCLR_SLVPENDINGCLR_NO_EFFECT =3D 0,
-> > > > +    /* Clears the interrupt bit in INTENSET register */
-> > > > +    FLEXCOMM_I2C_INTENCLR_SLVPENDINGCLR_CLEAR_SLVPENDING =3D 1,
-> > > > +} FLEXCOMM_I2C_INTENCLR_SLVPENDINGCLR_Enum;
-> > > > +
-> > > > +typedef enum {
-> > > > +    /* No effect on interrupt */
-> > > > +    FLEXCOMM_I2C_INTENCLR_SLVNOTSTRCLR_NO_EFFECT =3D 0,
-> > > > +    /* Clears the interrupt bit in INTENSET register */
-> > > > +    FLEXCOMM_I2C_INTENCLR_SLVNOTSTRCLR_CLEAR_SLVNOTSTR =3D 1,
-> > > > +} FLEXCOMM_I2C_INTENCLR_SLVNOTSTRCLR_Enum;
-> > > > +
-> > > > +typedef enum {
-> > > > +    /* No effect on interrupt */
-> > > > +    FLEXCOMM_I2C_INTENCLR_SLVDESELCLR_NO_EFFECT =3D 0,
-> > > > +    /* Clears the interrupt bit in INTENSET register */
-> > > > +    FLEXCOMM_I2C_INTENCLR_SLVDESELCLR_CLEAR_SLVDESEL =3D 1,
-> > > > +} FLEXCOMM_I2C_INTENCLR_SLVDESELCLR_Enum;
-> > > > +
-> > > > +typedef enum {
-> > > > +    /* No effect on interrupt */
-> > > > +    FLEXCOMM_I2C_INTENCLR_MONRDYCLR_NO_EFFECT =3D 0,
-> > > > +    /* Clears the interrupt bit in INTENSET register */
-> > > > +    FLEXCOMM_I2C_INTENCLR_MONRDYCLR_CLEAR_MONRDY =3D 1,
-> > > > +} FLEXCOMM_I2C_INTENCLR_MONRDYCLR_Enum;
-> > > > +
-> > > > +typedef enum {
-> > > > +    /* No effect on interrupt */
-> > > > +    FLEXCOMM_I2C_INTENCLR_MONOVCLR_NO_EFFECT =3D 0,
-> > > > +    /* Clears the interrupt bit in INTENSET register */
-> > > > +    FLEXCOMM_I2C_INTENCLR_MONOVCLR_CLEAR_MONOV =3D 1,
-> > > > +} FLEXCOMM_I2C_INTENCLR_MONOVCLR_Enum;
-> > > > +
-> > > > +typedef enum {
-> > > > +    /* No effect on interrupt */
-> > > > +    FLEXCOMM_I2C_INTENCLR_MONIDLECLR_NO_EFFECT =3D 0,
-> > > > +    /* Clears the interrupt bit in INTENSET register */
-> > > > +    FLEXCOMM_I2C_INTENCLR_MONIDLECLR_CLEAR_MONIDLE =3D 1,
-> > > > +} FLEXCOMM_I2C_INTENCLR_MONIDLECLR_Enum;
-> > > > +
-> > > > +typedef enum {
-> > > > +    /* No effect on interrupt */
-> > > > +    FLEXCOMM_I2C_INTENCLR_EVENTTIMEOUTCLR_NO_EFFECT =3D 0,
-> > > > +    /* Clears the interrupt bit in INTENSET register */
-> > > > +    FLEXCOMM_I2C_INTENCLR_EVENTTIMEOUTCLR_CLEAR_EVENTTIMEOUT =3D 1=
-,
-> > > > +} FLEXCOMM_I2C_INTENCLR_EVENTTIMEOUTCLR_Enum;
-> > > > +
-> > > > +typedef enum {
-> > > > +    /* No effect on interrupt */
-> > > > +    FLEXCOMM_I2C_INTENCLR_SCLTIMEOUTCLR_NO_EFFECT =3D 0,
-> > > > +    /* Clears the interrupt bit in INTENSET register */
-> > > > +    FLEXCOMM_I2C_INTENCLR_SCLTIMEOUTCLR_CLEAR_SCLTIMEOUT =3D 1,
-> > > > +} FLEXCOMM_I2C_INTENCLR_SCLTIMEOUTCLR_Enum;
-> > > > +
-> > > > +typedef enum {
-> > > > +    /* A time-out will occur after 16 counts of the I2C function c=
-lock. */
-> > > > +    FLEXCOMM_I2C_TIMEOUT_TO_TIMEOUT16 =3D 0,
-> > > > +    /* A time-out will occur after 32 counts of the I2C function c=
-lock. */
-> > > > +    FLEXCOMM_I2C_TIMEOUT_TO_TIMEOUT32 =3D 1,
-> > > > +    /* A time-out will occur after 65,536 counts of the I2C functi=
-on clock. */
-> > > > +    FLEXCOMM_I2C_TIMEOUT_TO_TIMEOUT65K =3D 4095,
-> > > > +} FLEXCOMM_I2C_TIMEOUT_TO_Enum;
-> > > > +
-> > > > +typedef enum {
-> > > > +    /* FCLK is used directly by the I2C. */
-> > > > +    FLEXCOMM_I2C_CLKDIV_DIVVAL_FCLKUNDIVIDED =3D 0,
-> > > > +    /* FCLK is divided by 2 before being used by the I2C. */
-> > > > +    FLEXCOMM_I2C_CLKDIV_DIVVAL_FCLKDIV2 =3D 1,
-> > > > +    /* FCLK is divided by 3 before being used by the I2C. */
-> > > > +    FLEXCOMM_I2C_CLKDIV_DIVVAL_FCLKDIV3 =3D 2,
-> > > > +    /* FCLK is divided by 65,536 before being used by the I2C. */
-> > > > +    FLEXCOMM_I2C_CLKDIV_DIVVAL_FCLKDIV65K =3D 65535,
-> > > > +} FLEXCOMM_I2C_CLKDIV_DIVVAL_Enum;
-> > > > +
-> > > > +typedef enum {
-> > > > +    /* Not active */
-> > > > +    FLEXCOMM_I2C_INTSTAT_MSTPENDING_MSTPENDING_ISNOTACTIVE =3D 0,
-> > > > +    /* Active */
-> > > > +    FLEXCOMM_I2C_INTSTAT_MSTPENDING_MSTPENDING_ISACTIVE =3D 1,
-> > > > +} FLEXCOMM_I2C_INTSTAT_MSTPENDING_Enum;
-> > > > +
-> > > > +typedef enum {
-> > > > +    /* Not active */
-> > > > +    FLEXCOMM_I2C_INTSTAT_MSTARBLOSS_MSTARBLOSS_ISNOTACTIVE =3D 0,
-> > > > +    /* Active */
-> > > > +    FLEXCOMM_I2C_INTSTAT_MSTARBLOSS_MSTARBLOSS_ISACTIVE =3D 1,
-> > > > +} FLEXCOMM_I2C_INTSTAT_MSTARBLOSS_Enum;
-> > > > +
-> > > > +typedef enum {
-> > > > +    /* Not active */
-> > > > +    FLEXCOMM_I2C_INTSTAT_MSTSTSTPERR_MSTSTSTPERR_ISNOTACTIVE =3D 0=
-,
-> > > > +    /* Active */
-> > > > +    FLEXCOMM_I2C_INTSTAT_MSTSTSTPERR_MSTSTSTPERR_ISACTIVE =3D 1,
-> > > > +} FLEXCOMM_I2C_INTSTAT_MSTSTSTPERR_Enum;
-> > > > +
-> > > > +typedef enum {
-> > > > +    /* Not active */
-> > > > +    FLEXCOMM_I2C_INTSTAT_SLVPENDING_SLVPENDING_ISNOTACTIVE =3D 0,
-> > > > +    /* Active */
-> > > > +    FLEXCOMM_I2C_INTSTAT_SLVPENDING_SLVPENDING_ISACTIVE =3D 1,
-> > > > +} FLEXCOMM_I2C_INTSTAT_SLVPENDING_Enum;
-> > > > +
-> > > > +typedef enum {
-> > > > +    /* Not active */
-> > > > +    FLEXCOMM_I2C_INTSTAT_SLVNOTSTR_SLVNOTSTR_ISNOTACTIVE =3D 0,
-> > > > +    /* Active */
-> > > > +    FLEXCOMM_I2C_INTSTAT_SLVNOTSTR_SLVNOTSTR_ISACTIVE =3D 1,
-> > > > +} FLEXCOMM_I2C_INTSTAT_SLVNOTSTR_Enum;
-> > > > +
-> > > > +typedef enum {
-> > > > +    /* Not active */
-> > > > +    FLEXCOMM_I2C_INTSTAT_SLVDESEL_SLVDESEL_ISNOTACTIVE =3D 0,
-> > > > +    /* Active */
-> > > > +    FLEXCOMM_I2C_INTSTAT_SLVDESEL_SLVDESEL_ISACTIVE =3D 1,
-> > > > +} FLEXCOMM_I2C_INTSTAT_SLVDESEL_Enum;
-> > > > +
-> > > > +typedef enum {
-> > > > +    /* Not active */
-> > > > +    FLEXCOMM_I2C_INTSTAT_MONRDY_MONRDY_ISNOTACTIVE =3D 0,
-> > > > +    /* Active */
-> > > > +    FLEXCOMM_I2C_INTSTAT_MONRDY_MONRDY_ISACTIVE =3D 1,
-> > > > +} FLEXCOMM_I2C_INTSTAT_MONRDY_Enum;
-> > > > +
-> > > > +typedef enum {
-> > > > +    /* Not active */
-> > > > +    FLEXCOMM_I2C_INTSTAT_MONOV_MONOV_ISNOTACTIVE =3D 0,
-> > > > +    /* Active */
-> > > > +    FLEXCOMM_I2C_INTSTAT_MONOV_MONOV_ISACTIVE =3D 1,
-> > > > +} FLEXCOMM_I2C_INTSTAT_MONOV_Enum;
-> > > > +
-> > > > +typedef enum {
-> > > > +    /* Not active */
-> > > > +    FLEXCOMM_I2C_INTSTAT_MONIDLE_MONIDLE_ISNOTACTIVE =3D 0,
-> > > > +    /* Active */
-> > > > +    FLEXCOMM_I2C_INTSTAT_MONIDLE_MONIDLE_ISACTIVE =3D 1,
-> > > > +} FLEXCOMM_I2C_INTSTAT_MONIDLE_Enum;
-> > > > +
-> > > > +typedef enum {
-> > > > +    /* Not active */
-> > > > +    FLEXCOMM_I2C_INTSTAT_EVENTTIMEOUT_EVENTTIMEOUT_ISNOTACTIVE =3D=
- 0,
-> > > > +    /* Active */
-> > > > +    FLEXCOMM_I2C_INTSTAT_EVENTTIMEOUT_EVENTTIMEOUT_ISACTIVE =3D 1,
-> > > > +} FLEXCOMM_I2C_INTSTAT_EVENTTIMEOUT_Enum;
-> > > > +
-> > > > +typedef enum {
-> > > > +    /* Not active */
-> > > > +    FLEXCOMM_I2C_INTSTAT_SCLTIMEOUT_SCLTIMEOUT_ISNOTACTIVE =3D 0,
-> > > > +    /* Active */
-> > > > +    FLEXCOMM_I2C_INTSTAT_SCLTIMEOUT_SCLTIMEOUT_ISACTIVE =3D 1,
-> > > > +} FLEXCOMM_I2C_INTSTAT_SCLTIMEOUT_Enum;
-> > > > +
-> > > > +typedef enum {
-> > > > +    /* No effect */
-> > > > +    FLEXCOMM_I2C_MSTCTL_MSTCONTINUE_NO_EFFECT =3D 0,
-> > > > +    /*
-> > > > +     * Continue. Informs the Master function to continue to the ne=
-xt operation.
-> > > > +     * This action must done after writing transmit data, reading =
-received
-> > > > +     * data, or any other housekeeping related to the next bus ope=
-ration.
-> > > > +     */
-> > > > +    FLEXCOMM_I2C_MSTCTL_MSTCONTINUE_CONTINUE =3D 1,
-> > > > +} FLEXCOMM_I2C_MSTCTL_MSTCONTINUE_Enum;
-> > > > +
-> > > > +typedef enum {
-> > > > +    /* No effect */
-> > > > +    FLEXCOMM_I2C_MSTCTL_MSTSTART_NO_EFFECT =3D 0,
-> > > > +    /*
-> > > > +     * Start. A Start will be generated on the I2C bus at the next=
- allowed
-> > > > +     * time.
-> > > > +     */
-> > > > +    FLEXCOMM_I2C_MSTCTL_MSTSTART_START =3D 1,
-> > > > +} FLEXCOMM_I2C_MSTCTL_MSTSTART_Enum;
-> > > > +
-> > > > +typedef enum {
-> > > > +    /* No effect */
-> > > > +    FLEXCOMM_I2C_MSTCTL_MSTSTOP_NO_EFFECT =3D 0,
-> > > > +    /*
-> > > > +     * Stop. A Stop will be generated on the I2C bus at the next a=
-llowed time,
-> > > > +     * preceded by a NACK to the slave if the master is receiving =
-data from the
-> > > > +     * slave (in Master Receiver mode).
-> > > > +     */
-> > > > +    FLEXCOMM_I2C_MSTCTL_MSTSTOP_STOP =3D 1,
-> > > > +} FLEXCOMM_I2C_MSTCTL_MSTSTOP_Enum;
-> > > > +
-> > > > +typedef enum {
-> > > > +    /* Disable. No DMA requests are generated for master operation=
-. */
-> > > > +    FLEXCOMM_I2C_MSTCTL_MSTDMA_DISABLED =3D 0,
-> > > > +    /*
-> > > > +     * Enable. A DMA request is generated for I2C master data oper=
-ations. When
-> > > > +     * this I2C master is generating Acknowledge bits in Master Re=
-ceiver mode,
-> > > > +     * the acknowledge is generated automatically.
-> > > > +     */
-> > > > +    FLEXCOMM_I2C_MSTCTL_MSTDMA_ENABLED =3D 1,
-> > > > +} FLEXCOMM_I2C_MSTCTL_MSTDMA_Enum;
-> > > > +
-> > > > +typedef enum {
-> > > > +    /*
-> > > > +     * 2 clocks. Minimum SCL low time is 2 clocks of the I2C clock=
- pre-divider.
-> > > > +     */
-> > > > +    FLEXCOMM_I2C_MSTTIME_MSTSCLLOW_MSTSCLLOW_2CLOCKS =3D 0,
-> > > > +    /*
-> > > > +     * 3 clocks. Minimum SCL low time is 3 clocks of the I2C clock=
- pre-divider.
-> > > > +     */
-> > > > +    FLEXCOMM_I2C_MSTTIME_MSTSCLLOW_MSTSCLLOW_3CLOCKS =3D 1,
-> > > > +    /*
-> > > > +     * 4 clocks. Minimum SCL low time is 4 clocks of the I2C clock=
- pre-divider.
-> > > > +     */
-> > > > +    FLEXCOMM_I2C_MSTTIME_MSTSCLLOW_MSTSCLLOW_4CLOCKS =3D 2,
-> > > > +    /*
-> > > > +     * 5 clocks. Minimum SCL low time is 5 clocks of the I2C clock=
- pre-divider.
-> > > > +     */
-> > > > +    FLEXCOMM_I2C_MSTTIME_MSTSCLLOW_MSTSCLLOW_5CLOCKS =3D 3,
-> > > > +    /*
-> > > > +     * 6 clocks. Minimum SCL low time is 6 clocks of the I2C clock=
- pre-divider.
-> > > > +     */
-> > > > +    FLEXCOMM_I2C_MSTTIME_MSTSCLLOW_MSTSCLLOW_6CLOCKS =3D 4,
-> > > > +    /*
-> > > > +     * 7 clocks. Minimum SCL low time is 7 clocks of the I2C clock=
- pre-divider.
-> > > > +     */
-> > > > +    FLEXCOMM_I2C_MSTTIME_MSTSCLLOW_MSTSCLLOW_7CLOCKS =3D 5,
-> > > > +    /*
-> > > > +     * 8 clocks. Minimum SCL low time is 8 clocks of the I2C clock=
- pre-divider.
-> > > > +     */
-> > > > +    FLEXCOMM_I2C_MSTTIME_MSTSCLLOW_MSTSCLLOW_8CLOCKS =3D 6,
-> > > > +    /*
-> > > > +     * 9 clocks. Minimum SCL low time is 9 clocks of the I2C clock=
- pre-divider.
-> > > > +     */
-> > > > +    FLEXCOMM_I2C_MSTTIME_MSTSCLLOW_MSTSCLLOW_9CLOCKS =3D 7,
-> > > > +} FLEXCOMM_I2C_MSTTIME_MSTSCLLOW_Enum;
-> > > > +
-> > > > +typedef enum {
-> > > > +    /*
-> > > > +     * 2 clocks. Minimum SCL high time is 2 clocks of the I2C cloc=
-k
-> > > > +     * pre-divider.
-> > > > +     */
-> > > > +    FLEXCOMM_I2C_MSTTIME_MSTSCLHIGH_MSTSCLHIGH_2CLOCKS =3D 0,
-> > > > +    /*
-> > > > +     * 3 clocks. Minimum SCL high time is 3 clocks of the I2C cloc=
-k pre-divider
-> > > > +     * .
-> > > > +     */
-> > > > +    FLEXCOMM_I2C_MSTTIME_MSTSCLHIGH_MSTSCLHIGH_3CLOCKS =3D 1,
-> > > > +    /*
-> > > > +     * 4 clocks. Minimum SCL high time is 4 clocks of the I2C cloc=
-k
-> > > > +     * pre-divider.
-> > > > +     */
-> > > > +    FLEXCOMM_I2C_MSTTIME_MSTSCLHIGH_MSTSCLHIGH_4CLOCKS =3D 2,
-> > > > +    /*
-> > > > +     * 5 clocks. Minimum SCL high time is 5 clocks of the I2C cloc=
-k
-> > > > +     * pre-divider.
-> > > > +     */
-> > > > +    FLEXCOMM_I2C_MSTTIME_MSTSCLHIGH_MSTSCLHIGH_5CLOCKS =3D 3,
-> > > > +    /*
-> > > > +     * 6 clocks. Minimum SCL high time is 6 clocks of the I2C cloc=
-k
-> > > > +     * pre-divider.
-> > > > +     */
-> > > > +    FLEXCOMM_I2C_MSTTIME_MSTSCLHIGH_MSTSCLHIGH_6CLOCKS =3D 4,
-> > > > +    /*
-> > > > +     * 7 clocks. Minimum SCL high time is 7 clocks of the I2C cloc=
-k
-> > > > +     * pre-divider.
-> > > > +     */
-> > > > +    FLEXCOMM_I2C_MSTTIME_MSTSCLHIGH_MSTSCLHIGH_7CLOCKS =3D 5,
-> > > > +    /*
-> > > > +     * 8 clocks. Minimum SCL high time is 8 clocks of the I2C cloc=
-k
-> > > > +     * pre-divider.
-> > > > +     */
-> > > > +    FLEXCOMM_I2C_MSTTIME_MSTSCLHIGH_MSTSCLHIGH_8CLOCKS =3D 6,
-> > > > +    /*
-> > > > +     * 9 clocks. Minimum SCL high time is 9 clocks of the I2C cloc=
-k
-> > > > +     * pre-divider.
-> > > > +     */
-> > > > +    FLEXCOMM_I2C_MSTTIME_MSTSCLHIGH_MSTSCLHIGH_9CLOCKS =3D 7,
-> > > > +} FLEXCOMM_I2C_MSTTIME_MSTSCLHIGH_Enum;
-> > > > +
-> > > > +typedef enum {
-> > > > +    /* No effect */
-> > > > +    FLEXCOMM_I2C_SLVCTL_SLVCONTINUE_NO_EFFECT =3D 0,
-> > > > +    /*
-> > > > +     * Continue. Informs the Slave function to continue to the nex=
-t operation,
-> > > > +     * by clearing the STAT[SLVPENDING] flag. This must be done af=
-ter writing
-> > > > +     * transmit data, reading received data, or any other housekee=
-ping related
-> > > > +     * to the next bus operation. Automatic Operation has differen=
-t
-> > > > +     * requirements. SLVCONTINUE should not be set unless SLVPENDI=
-NG =3D 1.
-> > > > +     */
-> > > > +    FLEXCOMM_I2C_SLVCTL_SLVCONTINUE_CONTINUE =3D 1,
-> > > > +} FLEXCOMM_I2C_SLVCTL_SLVCONTINUE_Enum;
-> > > > +
-> > > > +typedef enum {
-> > > > +    /* No effect */
-> > > > +    FLEXCOMM_I2C_SLVCTL_SLVNACK_NO_EFFECT =3D 0,
-> > > > +    /*
-> > > > +     * NACK. Causes the Slave function to NACK the master when the=
- slave is
-> > > > +     * receiving data from the master (in Slave Receiver mode).
-> > > > +     */
-> > > > +    FLEXCOMM_I2C_SLVCTL_SLVNACK_NACK =3D 1,
-> > > > +} FLEXCOMM_I2C_SLVCTL_SLVNACK_Enum;
-> > > > +
-> > > > +typedef enum {
-> > > > +    /* Disabled. No DMA requests are issued for Slave mode operati=
-on. */
-> > > > +    FLEXCOMM_I2C_SLVCTL_SLVDMA_DISABLED =3D 0,
-> > > > +    /*
-> > > > +     * Enabled. DMA requests are issued for I2C slave data transmi=
-ssion and
-> > > > +     * reception.
-> > > > +     */
-> > > > +    FLEXCOMM_I2C_SLVCTL_SLVDMA_ENABLED =3D 1,
-> > > > +} FLEXCOMM_I2C_SLVCTL_SLVDMA_Enum;
-> > > > +
-> > > > +typedef enum {
-> > > > +    /*
-> > > > +     * Normal, non-automatic operation. If AUTONACK =3D 0, then a =
-SlvPending
-> > > > +     * interrupt is generated when a matching address is received.=
- If AUTONACK
-> > > > +     * =3D 1, then received addresses are NACKed (ignored).
-> > > > +     */
-> > > > +    FLEXCOMM_I2C_SLVCTL_AUTOACK_NORMAL =3D 0,
-> > > > +    /*
-> > > > +     * A header with matching SLVADR0 and matching direction as se=
-t by
-> > > > +     * AUTOMATCHREAD will be ACKed immediately, allowing the maste=
-r to move on
-> > > > +     * to the data bytes. If the address matches SLVADR0, but the =
-direction
-> > > > +     * does not match AUTOMATCHREAD, then the behavior will depend=
- on the
-> > > > +     * SLVADR0[AUTONACK] bit: if AUTONACK is set, then it will be =
-Nacked; if
-> > > > +     * AUTONACK is clear, then a SlvPending interrupt is generated=
-.
-> > > > +     */
-> > > > +    FLEXCOMM_I2C_SLVCTL_AUTOACK_AUTOMATIC_ACK =3D 1,
-> > > > +} FLEXCOMM_I2C_SLVCTL_AUTOACK_Enum;
-> > > > +
-> > > > +typedef enum {
-> > > > +    /* In Automatic Mode, the expected next operation is an I2C wr=
-ite. */
-> > > > +    FLEXCOMM_I2C_SLVCTL_AUTOMATCHREAD_I2C_WRITE =3D 0,
-> > > > +    /* In Automatic Mode, the expected next operation is an I2C re=
-ad. */
-> > > > +    FLEXCOMM_I2C_SLVCTL_AUTOMATCHREAD_I2C_READ =3D 1,
-> > > > +} FLEXCOMM_I2C_SLVCTL_AUTOMATCHREAD_Enum;
-> > > > +
-> > > > +typedef enum {
-> > > > +    /* Enabled. Slave Address n is enabled. */
-> > > > +    FLEXCOMM_I2C_SLVADR0_SADISABLE_ENABLED =3D 0,
-> > > > +    /* Ignored. Slave Address n is ignored. */
-> > > > +    FLEXCOMM_I2C_SLVADR0_SADISABLE_DISABLED =3D 1,
-> > > > +} FLEXCOMM_I2C_SLVADR0_SADISABLE_Enum;
-> > > > +
-> > > > +typedef enum {
-> > > > +    /* Normal operation, matching I2C addresses are not ignored. *=
-/
-> > > > +    FLEXCOMM_I2C_SLVADR0_AUTONACK_NORMAL =3D 0,
-> > > > +    /*
-> > > > +     * Automatic-only mode. All incoming addresses are ignored (NA=
-CKed), unless
-> > > > +     * AUTOACK is set, and the address matches SLVADRn, and AUTOMA=
-TCHREAD
-> > > > +     * matches the direction.
-> > > > +     */
-> > > > +    FLEXCOMM_I2C_SLVADR0_AUTONACK_AUTOMATIC =3D 1,
-> > > > +} FLEXCOMM_I2C_SLVADR0_AUTONACK_Enum;
-> > > > +
-> > > > +typedef enum {
-> > > > +    /* Enabled. Slave Address n is enabled. */
-> > > > +    FLEXCOMM_I2C_SLVADR1_SADISABLE_ENABLED =3D 0,
-> > > > +    /* Ignored. Slave Address n is ignored. */
-> > > > +    FLEXCOMM_I2C_SLVADR1_SADISABLE_DISABLED =3D 1,
-> > > > +} FLEXCOMM_I2C_SLVADR1_SADISABLE_Enum;
-> > > > +
-> > > > +typedef enum {
-> > > > +    /* Normal operation, matching I2C addresses are not ignored. *=
-/
-> > > > +    FLEXCOMM_I2C_SLVADR1_AUTONACK_NORMAL =3D 0,
-> > > > +    /*
-> > > > +     * Automatic-only mode. All incoming addresses are ignored (NA=
-CKed), unless
-> > > > +     * AUTOACK is set, and the address matches SLVADRn, and AUTOMA=
-TCHREAD
-> > > > +     * matches the direction.
-> > > > +     */
-> > > > +    FLEXCOMM_I2C_SLVADR1_AUTONACK_AUTOMATIC =3D 1,
-> > > > +} FLEXCOMM_I2C_SLVADR1_AUTONACK_Enum;
-> > > > +
-> > > > +typedef enum {
-> > > > +    /* Enabled. Slave Address n is enabled. */
-> > > > +    FLEXCOMM_I2C_SLVADR2_SADISABLE_ENABLED =3D 0,
-> > > > +    /* Ignored. Slave Address n is ignored. */
-> > > > +    FLEXCOMM_I2C_SLVADR2_SADISABLE_DISABLED =3D 1,
-> > > > +} FLEXCOMM_I2C_SLVADR2_SADISABLE_Enum;
-> > > > +
-> > > > +typedef enum {
-> > > > +    /* Normal operation, matching I2C addresses are not ignored. *=
-/
-> > > > +    FLEXCOMM_I2C_SLVADR2_AUTONACK_NORMAL =3D 0,
-> > > > +    /*
-> > > > +     * Automatic-only mode. All incoming addresses are ignored (NA=
-CKed), unless
-> > > > +     * AUTOACK is set, and the address matches SLVADRn, and AUTOMA=
-TCHREAD
-> > > > +     * matches the direction.
-> > > > +     */
-> > > > +    FLEXCOMM_I2C_SLVADR2_AUTONACK_AUTOMATIC =3D 1,
-> > > > +} FLEXCOMM_I2C_SLVADR2_AUTONACK_Enum;
-> > > > +
-> > > > +typedef enum {
-> > > > +    /* Enabled. Slave Address n is enabled. */
-> > > > +    FLEXCOMM_I2C_SLVADR3_SADISABLE_ENABLED =3D 0,
-> > > > +    /* Ignored. Slave Address n is ignored. */
-> > > > +    FLEXCOMM_I2C_SLVADR3_SADISABLE_DISABLED =3D 1,
-> > > > +} FLEXCOMM_I2C_SLVADR3_SADISABLE_Enum;
-> > > > +
-> > > > +typedef enum {
-> > > > +    /* Normal operation, matching I2C addresses are not ignored. *=
-/
-> > > > +    FLEXCOMM_I2C_SLVADR3_AUTONACK_NORMAL =3D 0,
-> > > > +    /*
-> > > > +     * Automatic-only mode. All incoming addresses are ignored (NA=
-CKed), unless
-> > > > +     * AUTOACK is set, and the address matches SLVADRn, and AUTOMA=
-TCHREAD
-> > > > +     * matches the direction.
-> > > > +     */
-> > > > +    FLEXCOMM_I2C_SLVADR3_AUTONACK_AUTOMATIC =3D 1,
-> > > > +} FLEXCOMM_I2C_SLVADR3_AUTONACK_Enum;
-> > > > +
-> > > > +typedef enum {
-> > > > +    /*
-> > > > +     * Mask. The SLVQUAL0 field is used as a logical mask for matc=
-hing address
-> > > > +     * 0.
-> > > > +     */
-> > > > +    FLEXCOMM_I2C_SLVQUAL0_QUALMODE0_MASK =3D 0,
-> > > > +    /*
-> > > > +     * Extend. The SLVQUAL0 field is used to extend address 0 matc=
-hing in a
-> > > > +     * range of addresses.
-> > > > +     */
-> > > > +    FLEXCOMM_I2C_SLVQUAL0_QUALMODE0_EXTEND =3D 1,
-> > > > +} FLEXCOMM_I2C_SLVQUAL0_QUALMODE0_Enum;
-> > > > +
-> > > > +typedef enum {
-> > > > +    /*
-> > > > +     * No start detected. The Monitor function has not detected a =
-Start event
-> > > > +     * on the I2C bus.
-> > > > +     */
-> > > > +    FLEXCOMM_I2C_MONRXDAT_MONSTART_NO_START_DETECTED =3D 0,
-> > > > +    /*
-> > > > +     * Start detected. The Monitor function has detected a Start e=
-vent on the
-> > > > +     * I2C bus.
-> > > > +     */
-> > > > +    FLEXCOMM_I2C_MONRXDAT_MONSTART_START_DETECTED =3D 1,
-> > > > +} FLEXCOMM_I2C_MONRXDAT_MONSTART_Enum;
-> > > > +
-> > > > +typedef enum {
-> > > > +    /*
-> > > > +     * No repeated start detected. The Monitor function has not de=
-tected a
-> > > > +     * Repeated Start event on the I2C bus.
-> > > > +     */
-> > > > +    FLEXCOMM_I2C_MONRXDAT_MONRESTART_NOT_DETECTED =3D 0,
-> > > > +    /*
-> > > > +     * Repeated start detected. The Monitor function has detected =
-a Repeated
-> > > > +     * Start event on the I2C bus.
-> > > > +     */
-> > > > +    FLEXCOMM_I2C_MONRXDAT_MONRESTART_DETECTED =3D 1,
-> > > > +} FLEXCOMM_I2C_MONRXDAT_MONRESTART_Enum;
-> > > > +
-> > > > +typedef enum {
-> > > > +    /*
-> > > > +     * Acknowledged. The data currently being provided by the Moni=
-tor function
-> > > > +     * was acknowledged by at least one master or slave receiver.
-> > > > +     */
-> > > > +    FLEXCOMM_I2C_MONRXDAT_MONNACK_ACKNOWLEDGED =3D 0,
-> > > > +    /*
-> > > > +     * Not acknowledged. The data currently being provided by the =
-Monitor
-> > > > +     * function was not acknowledged by any receiver.
-> > > > +     */
-> > > > +    FLEXCOMM_I2C_MONRXDAT_MONNACK_NOT_ACKNOWLEDGED =3D 1,
-> > > > +} FLEXCOMM_I2C_MONRXDAT_MONNACK_Enum;
-> > > > +
-> > > > +
-> > > > +#define FLEXCOMM_I2C_REGISTER_ACCESS_INFO_ARRAY(_name) \
-> > > > +    struct RegisterAccessInfo _name[FLEXCOMM_I2C_REGS_NO] =3D { \
-> > > > +        [0 ... FLEXCOMM_I2C_REGS_NO - 1] =3D { \
-> > > > +            .name =3D "", \
-> > > > +            .addr =3D -1, \
-> > > > +        }, \
-> > > > +        [R_FLEXCOMM_I2C_CFG] =3D { \
-> > > > +            .name =3D "CFG", \
-> > > > +            .addr =3D 0x800, \
-> > > > +            .ro =3D 0xFFFFFFC0, \
-> > > > +            .reset =3D 0x0, \
-> > > > +        }, \
-> > > > +        [R_FLEXCOMM_I2C_STAT] =3D { \
-> > > > +            .name =3D "STAT", \
-> > > > +            .addr =3D 0x804, \
-> > > > +            .ro =3D 0xFCF57FAF, \
-> > > > +            .reset =3D 0x801, \
-> > > > +        }, \
-> > > > +        [R_FLEXCOMM_I2C_INTENSET] =3D { \
-> > > > +            .name =3D "INTENSET", \
-> > > > +            .addr =3D 0x808, \
-> > > > +            .ro =3D 0xFCF476AE, \
-> > > > +            .reset =3D 0x0, \
-> > > > +        }, \
-> > > > +        [R_FLEXCOMM_I2C_INTENCLR] =3D { \
-> > > > +            .name =3D "INTENCLR", \
-> > > > +            .addr =3D 0x80C, \
-> > > > +            .ro =3D 0xFCF476AE, \
-> > > > +            .reset =3D 0x0, \
-> > > > +        }, \
-> > > > +        [R_FLEXCOMM_I2C_TIMEOUT] =3D { \
-> > > > +            .name =3D "TIMEOUT", \
-> > > > +            .addr =3D 0x810, \
-> > > > +            .ro =3D 0xFFFF0000, \
-> > > > +            .reset =3D 0xFFFF, \
-> > > > +        }, \
-> > > > +        [R_FLEXCOMM_I2C_CLKDIV] =3D { \
-> > > > +            .name =3D "CLKDIV", \
-> > > > +            .addr =3D 0x814, \
-> > > > +            .ro =3D 0xFFFF0000, \
-> > > > +            .reset =3D 0x0, \
-> > > > +        }, \
-> > > > +        [R_FLEXCOMM_I2C_INTSTAT] =3D { \
-> > > > +            .name =3D "INTSTAT", \
-> > > > +            .addr =3D 0x818, \
-> > > > +            .ro =3D 0xFFFFFFFF, \
-> > > > +            .reset =3D 0x801, \
-> > > > +        }, \
-> > > > +        [R_FLEXCOMM_I2C_MSTCTL] =3D { \
-> > > > +            .name =3D "MSTCTL", \
-> > > > +            .addr =3D 0x820, \
-> > > > +            .ro =3D 0xFFFFFFF0, \
-> > > > +            .reset =3D 0x0, \
-> > > > +        }, \
-> > > > +        [R_FLEXCOMM_I2C_MSTTIME] =3D { \
-> > > > +            .name =3D "MSTTIME", \
-> > > > +            .addr =3D 0x824, \
-> > > > +            .ro =3D 0xFFFFFF88, \
-> > > > +            .reset =3D 0x77, \
-> > > > +        }, \
-> > > > +        [R_FLEXCOMM_I2C_MSTDAT] =3D { \
-> > > > +            .name =3D "MSTDAT", \
-> > > > +            .addr =3D 0x828, \
-> > > > +            .ro =3D 0xFFFFFF00, \
-> > > > +            .reset =3D 0x0, \
-> > > > +        }, \
-> > > > +        [R_FLEXCOMM_I2C_SLVCTL] =3D { \
-> > > > +            .name =3D "SLVCTL", \
-> > > > +            .addr =3D 0x840, \
-> > > > +            .ro =3D 0xFFFFFCF4, \
-> > > > +            .reset =3D 0x0, \
-> > > > +        }, \
-> > > > +        [R_FLEXCOMM_I2C_SLVDAT] =3D { \
-> > > > +            .name =3D "SLVDAT", \
-> > > > +            .addr =3D 0x844, \
-> > > > +            .ro =3D 0xFFFFFF00, \
-> > > > +            .reset =3D 0x0, \
-> > > > +        }, \
-> > > > +        [R_FLEXCOMM_I2C_SLVADR0] =3D { \
-> > > > +            .name =3D "SLVADR0", \
-> > > > +            .addr =3D 0x848, \
-> > > > +            .ro =3D 0xFFFF7F00, \
-> > > > +            .reset =3D 0x1, \
-> > > > +        }, \
-> > > > +        [R_FLEXCOMM_I2C_SLVADR1] =3D { \
-> > > > +            .name =3D "SLVADR1", \
-> > > > +            .addr =3D 0x84C, \
-> > > > +            .ro =3D 0xFFFF7F00, \
-> > > > +            .reset =3D 0x1, \
-> > > > +        }, \
-> > > > +        [R_FLEXCOMM_I2C_SLVADR2] =3D { \
-> > > > +            .name =3D "SLVADR2", \
-> > > > +            .addr =3D 0x850, \
-> > > > +            .ro =3D 0xFFFF7F00, \
-> > > > +            .reset =3D 0x1, \
-> > > > +        }, \
-> > > > +        [R_FLEXCOMM_I2C_SLVADR3] =3D { \
-> > > > +            .name =3D "SLVADR3", \
-> > > > +            .addr =3D 0x854, \
-> > > > +            .ro =3D 0xFFFF7F00, \
-> > > > +            .reset =3D 0x1, \
-> > > > +        }, \
-> > > > +        [R_FLEXCOMM_I2C_SLVQUAL0] =3D { \
-> > > > +            .name =3D "SLVQUAL0", \
-> > > > +            .addr =3D 0x858, \
-> > > > +            .ro =3D 0xFFFFFF00, \
-> > > > +            .reset =3D 0x0, \
-> > > > +        }, \
-> > > > +        [R_FLEXCOMM_I2C_MONRXDAT] =3D { \
-> > > > +            .name =3D "MONRXDAT", \
-> > > > +            .addr =3D 0x880, \
-> > > > +            .ro =3D 0xFFFFFFFF, \
-> > > > +            .reset =3D 0x0, \
-> > > > +        }, \
-> > > > +        [R_FLEXCOMM_I2C_ID] =3D { \
-> > > > +            .name =3D "ID", \
-> > > > +            .addr =3D 0xFFC, \
-> > > > +            .ro =3D 0xFFFFFFFF, \
-> > > > +            .reset =3D 0xE0301300, \
-> > > > +        }, \
-> > > > +    }
-> > > > diff --git a/include/hw/i2c/flexcomm_i2c.h b/include/hw/i2c/flexcom=
-m_i2c.h
-> > > > new file mode 100644
-> > > > index 0000000000..7b27e333d7
-> > > > --- /dev/null
-> > > > +++ b/include/hw/i2c/flexcomm_i2c.h
-> > > > @@ -0,0 +1,40 @@
-> > > > +/*
-> > > > + * QEMU model for NXP's FLEXCOMM I2C
-> > > > + *
-> > > > + * Copyright (c) 2024 Google LLC
-> > > > + *
-> > > > + * SPDX-License-Identifier: GPL-2.0-or-later
-> > > > + *
-> > > > + * This work is licensed under the terms of the GNU GPL, version 2=
- or later.
-> > > > + * See the COPYING file in the top-level directory.
-> > > > + */
-> > > > +
-> > > > +#ifndef HW_FLEXCOMM_I2C_H
-> > > > +#define HW_FLEXCOMM_I2C_H
-> > > > +
-> > > > +#include "hw/i2c/i2c.h"
-> > > > +#include "hw/misc/flexcomm_function.h"
-> > > > +
-> > > > +#define TYPE_FLEXCOMM_I2C "flexcomm-i2c"
-> > > > +OBJECT_DECLARE_TYPE(FlexcommI2cState, FlexcommI2cClass, FLEXCOMM_I=
-2C);
-> > > > +
-> > > > +struct FlexcommI2cState {
-> > > > +    FlexcommFunction parent_obj;
-> > > > +
-> > > > +    I2CBus *bus;
-> > > > +};
-> > > > +
-> > > > +struct FlexcommI2cClass {
-> > > > +    FlexcommFunctionClass parent_obj;
-> > > > +
-> > > > +    FlexcommFunctionSelect select;
-> > > > +};
-> > > > +
-> > > > +#define MSTSTATE_IDLE 0
-> > > > +#define MSTSTATE_RXRDY 1
-> > > > +#define MSTSTATE_TXRDY 2
-> > > > +#define MSTSTATE_NAKADR 3
-> > > > +#define MSTSTATE_NAKDAT 4
-> > > > +
-> > > > +
-> > > > +#endif /* HW_FLEXCOMM_I2C_H */
-> > > > diff --git a/include/hw/misc/flexcomm.h b/include/hw/misc/flexcomm.=
-h
-> > > > index 679b7ea64d..c9f1cd3890 100644
-> > > > --- a/include/hw/misc/flexcomm.h
-> > > > +++ b/include/hw/misc/flexcomm.h
-> > > > @@ -16,6 +16,7 @@
-> > > >  #include "hw/arm/svd/flexcomm.h"
-> > > >  #include "qemu/fifo32.h"
-> > > >  #include "hw/char/flexcomm_usart.h"
-> > > > +#include "hw/i2c/flexcomm_i2c.h"
-> > > >
-> > > >  #define FLEXCOMM_FUNC_USART     0
-> > > >  #define FLEXCOMM_FUNC_SPI       1
-> > > > @@ -48,6 +49,7 @@ struct FlexcommState {
-> > > >      Fifo32 rx_fifo;
-> > > >      Fifo32 tx_fifo;
-> > > >      FlexcommUsartState usart;
-> > > > +    FlexcommI2cState i2c;
-> > > >  };
-> > > >
-> > > >  #endif /* HW_FLEXCOMM_H */
-> > > > diff --git a/hw/i2c/flexcomm_i2c.c b/hw/i2c/flexcomm_i2c.c
-> > > > new file mode 100644
-> > > > index 0000000000..e5341ec241
-> > > > --- /dev/null
-> > > > +++ b/hw/i2c/flexcomm_i2c.c
-> > > > @@ -0,0 +1,250 @@
-> > > > +/*
-> > > > + * QEMU model for NXP's FLEXCOMM I2C
-> > > > + *
-> > > > + * Copyright (c) 2024 Google LLC
-> > > > + *
-> > > > + * SPDX-License-Identifier: GPL-2.0-or-later
-> > > > + *
-> > > > + * This work is licensed under the terms of the GNU GPL, version 2=
- or later.
-> > > > + * See the COPYING file in the top-level directory.
-> > > > + */
-> > > > +
-> > > > +#include "qemu/osdep.h"
-> > > > +#include "qemu/cutils.h"
-> > > > +#include "hw/irq.h"
-> > > > +#include "hw/qdev-properties.h"
-> > > > +#include "qemu/log.h"
-> > > > +#include "qemu/module.h"
-> > > > +#include "exec/address-spaces.h"
-> > > > +#include "qapi/error.h"
-> > > > +#include "trace.h"
-> > > > +#include "hw/i2c/flexcomm_i2c.h"
-> > > > +#include "hw/arm/svd/flexcomm_i2c.h"
-> > > > +
-> > > > +#define REG(s, reg) (s->regs[R_FLEXCOMM_I2C_##reg])
-> > > > +#define RF_WR(s, reg, field, val) \
-> > > > +    ARRAY_FIELD_DP32(s->regs, FLEXCOMM_I2C_##reg, field, val)
-> > > > +#define RF_RD(s, reg, field) \
-> > > > +    ARRAY_FIELD_EX32(s->regs, FLEXCOMM_I2C_##reg, field)
-> > > > +
-> > > > +static FLEXCOMM_I2C_REGISTER_ACCESS_INFO_ARRAY(reg_info);
-> > > > +
-> > > > +static void flexcomm_i2c_reset(FlexcommFunction *f)
-> > > > +{
-> > > > +    for (int i =3D 0; i < FLEXCOMM_I2C_REGS_NO; i++) {
-> > > > +        hwaddr addr =3D reg_info[i].addr;
-> > > > +
-> > > > +        if (addr !=3D -1) {
-> > > > +            struct RegisterInfo ri =3D {
-> > > > +                .data =3D &f->regs[addr / 4],
-> > > > +                .data_size =3D 4,
-> > > > +                .access =3D &reg_info[i],
-> > > > +            };
-> > > > +
-> > > > +            register_reset(&ri);
-> > > > +        }
-> > > > +    }
-> > > > +}
-> > > > +
-> > > > +static void flexcomm_i2c_irq_update(FlexcommFunction *f)
-> > > > +{
-> > > > +    bool enabled =3D RF_RD(f, CFG, MSTEN);
-> > > > +    bool irq, per_irqs;
-> > > > +
-> > > > +    REG(f, INTSTAT) =3D REG(f, STAT) & REG(f, INTENSET);
-> > > > +    per_irqs =3D REG(f, INTSTAT) !=3D 0;
-> > > > +
-> > > > +    irq =3D enabled && per_irqs;
-> > > > +
-> > > > +    trace_flexcomm_i2c_irq(DEVICE(f)->id, irq, per_irqs, enabled);
-> > > > +    flexcomm_set_irq(f, irq);
-> > > > +}
-> > > > +
-> > > > +static MemTxResult flexcomm_i2c_reg_read(void *opaque, hwaddr addr=
-,
-> > > > +                                         uint64_t *data, unsigned =
-size,
-> > > > +                                         MemTxAttrs attrs)
-> > > > +{
-> > > > +    FlexcommFunction *f =3D FLEXCOMM_FUNCTION(opaque);
-> > > > +    MemTxResult ret =3D MEMTX_OK;
-> > > > +    const struct RegisterAccessInfo *rai =3D &reg_info[addr / 4];
-> > > > +
-> > > > +    if (size !=3D 4) {
-> > > > +        ret =3D MEMTX_ERROR;
-> > > > +        goto out;
-> > > > +    }
-> > > > +
-> > > > +    *data =3D f->regs[addr / 4];
-> > > > +
-> > > > +    flexcomm_i2c_irq_update(f);
-> > > > +
-> > > > +out:
-> > > > +    trace_flexcomm_i2c_reg_read(DEVICE(f)->id, rai->name, addr, *d=
-ata);
-> > > > +    return ret;
-> > > > +}
-> > > > +
-> > > > +static MemTxResult flexcomm_i2c_reg_write(void *opaque, hwaddr add=
-r,
-> > > > +                                          uint64_t value, unsigned=
- size,
-> > > > +                                          MemTxAttrs attrs)
-> > > > +{
-> > > > +    FlexcommFunction *f =3D FLEXCOMM_FUNCTION(opaque);
-> > > > +    FlexcommI2cState *s =3D FLEXCOMM_I2C(opaque);
-> > > > +    const struct RegisterAccessInfo *rai =3D &reg_info[addr / 4];
-> > > > +    struct RegisterInfo ri =3D {
-> > > > +        .data =3D &f->regs[addr / 4],
-> > > > +        .data_size =3D 4,
-> > > > +        .access =3D rai,
-> > > > +    };
-> > > > +
-> > > > +    trace_flexcomm_i2c_reg_write(DEVICE(f)->id, rai->name, addr, v=
-alue);
-> > > > +
-> > > > +    if (size !=3D 4) {
-> > > > +        return MEMTX_ERROR;
-> > > > +    }
-> > > > +
-> > > > +    switch (addr) {
-> > > > +    case A_FLEXCOMM_I2C_CFG:
-> > > > +    {
-> > > > +        register_write(&ri, value, ~0, NULL, false);
-> > > > +        if (RF_RD(f, CFG, SLVEN)) {
-> > > > +            qemu_log_mask(LOG_GUEST_ERROR, "I2C slave not supporte=
-d");
-> > > > +        }
-> > > > +        if (RF_RD(f, CFG, MONEN)) {
-> > > > +            qemu_log_mask(LOG_GUEST_ERROR, "I2C monitoring not sup=
-ported");
-> > > > +        }
-> > > > +        break;
-> > > > +    }
-> > > > +    case A_FLEXCOMM_I2C_INTENCLR:
-> > > > +    {
-> > > > +        REG(f, INTENSET) &=3D ~value;
-> > > > +        break;
-> > > > +    }
-> > > > +    case A_FLEXCOMM_I2C_TIMEOUT:
-> > > > +    {
-> > > > +        register_write(&ri, value, ~0, NULL, false);
-> > > > +        /* The bottom 4 bits are hard-wired to 0xF */
-> > > > +        RF_WR(f, TIMEOUT, TOMIN, 0xf);
-> > > > +        break;
-> > > > +    }
-> > > > +    case A_FLEXCOMM_I2C_MSTCTL:
-> > > > +    {
-> > > > +        register_write(&ri, value, ~0, NULL, false);
-> > > > +        if (RF_RD(f, MSTCTL, MSTSTART)) {
-> > > > +            uint8_t i2c_addr =3D RF_RD(f, MSTDAT, DATA);
-> > > > +            bool recv =3D i2c_addr & 1;
-> > > > +
-> > > > +            trace_flexcomm_i2c_start(DEVICE(s)->id, i2c_addr, recv=
-);
-> > > > +            if (i2c_start_transfer(s->bus, i2c_addr, recv)) {
-> > > > +                RF_WR(f, STAT, MSTSTATE, MSTSTATE_NAKADR);
-> > > > +                trace_flexcomm_i2c_nak(DEVICE(s)->id);
-> > > > +            } else {
-> > > > +                if (recv) {
-> > > > +                    uint8_t data =3D i2c_recv(s->bus);
-> > > > +
-> > > > +                    RF_WR(f, MSTDAT, DATA, data);
-> > > > +                    trace_flexcomm_i2c_rx(DEVICE(s)->id, data);
-> > > > +                    RF_WR(f, STAT, MSTSTATE, MSTSTATE_RXRDY);
-> > > > +                } else {
-> > > > +                    RF_WR(f, STAT, MSTSTATE, MSTSTATE_TXRDY);
-> > > > +                }
-> > > > +            }
-> > > > +        }
-> > > > +        if (RF_RD(f, MSTCTL, MSTSTOP)) {
-> > > > +            RF_WR(f, STAT, MSTSTATE, MSTSTATE_IDLE);
-> > > > +            i2c_end_transfer(s->bus);
-> > > > +        }
-> > > > +        if (RF_RD(f, MSTCTL, MSTCONTINUE)) {
-> > > > +            if (RF_RD(f, STAT, MSTSTATE) =3D=3D MSTSTATE_TXRDY) {
-> > > > +                uint8_t data =3D RF_RD(f, MSTDAT, DATA);
-> > > > +
-> > > > +                trace_flexcomm_i2c_tx(DEVICE(s)->id, data);
-> > > > +                if (i2c_send(s->bus, data)) {
-> > > > +                    RF_WR(f, STAT, MSTSTATE, MSTSTATE_NAKDAT);
-> > > > +                }
-> > > > +            } else if (RF_RD(f, STAT, MSTSTATE) =3D=3D MSTSTATE_RX=
-RDY) {
-> > > > +                uint8_t data =3D i2c_recv(s->bus);
-> > > > +
-> > > > +                RF_WR(f, MSTDAT, DATA, data);
-> > > > +                trace_flexcomm_i2c_rx(DEVICE(s)->id, data);
-> > > > +            }
-> > > > +        }
-> > > > +        break;
-> > > > +    }
-> > > > +    case A_FLEXCOMM_I2C_STAT:
-> > > > +    {
-> > > > +        /* write 1 to clear bits */
-> > > > +        REG(f, STAT) &=3D ~value;
-> > > > +        break;
-> > > > +    }
-> > > > +    case A_FLEXCOMM_I2C_SLVCTL:
-> > > > +    case A_FLEXCOMM_I2C_SLVDAT:
-> > > > +    case A_FLEXCOMM_I2C_SLVADR0:
-> > > > +    case A_FLEXCOMM_I2C_SLVADR1:
-> > > > +    case A_FLEXCOMM_I2C_SLVADR2:
-> > > > +    case A_FLEXCOMM_I2C_SLVADR3:
-> > > > +    case A_FLEXCOMM_I2C_SLVQUAL0:
-> > > > +    {
-> > > > +        qemu_log_mask(LOG_GUEST_ERROR, "I2C slave not supported\n"=
-);
-> > > > +        break;
-> > > > +    }
-> > > > +    default:
-> > > > +        register_write(&ri, value, ~0, NULL, false);
-> > > > +        break;
-> > > > +    }
-> > > > +
-> > > > +    flexcomm_i2c_irq_update(f);
-> > > > +
-> > > > +    return MEMTX_OK;
-> > > > +}
-> > > > +
-> > > > +static void flexcomm_i2c_select(FlexcommFunction *f, bool selected=
-)
-> > > > +{
-> > > > +    FlexcommI2cClass *ic =3D FLEXCOMM_I2C_GET_CLASS(f);
-> > > > +
-> > > > +    if (selected) {
-> > > > +        flexcomm_i2c_reset(f);
-> > > > +    }
-> > > > +    ic->select(f, selected);
-> > > > +}
-> > > > +
-> > > > +static const MemoryRegionOps flexcomm_i2c_ops =3D {
-> > > > +    .read_with_attrs =3D flexcomm_i2c_reg_read,
-> > > > +    .write_with_attrs =3D flexcomm_i2c_reg_write,
-> > > > +    .endianness =3D DEVICE_NATIVE_ENDIAN,
-> > > > +    .valid =3D {
-> > > > +        .min_access_size =3D 4,
-> > > > +        .max_access_size =3D 4,
-> > > > +        .unaligned =3D false,
-> > > > +    },
-> > > > +};
-> > > > +
-> > > > +static void flexcomm_i2c_realize(DeviceState *dev, Error **errp)
-> > > > +{
-> > > > +    FlexcommI2cState *s =3D FLEXCOMM_I2C(dev);
-> > > > +
-> > > > +    s->bus =3D i2c_init_bus(DEVICE(s), "bus");
-> > > > +}
-> > > > +
-> > > > +static void flexcomm_i2c_class_init(ObjectClass *klass, void *data=
-)
-> > > > +{
-> > > > +    DeviceClass *dc =3D DEVICE_CLASS(klass);
-> > > > +    FlexcommFunctionClass *fc =3D FLEXCOMM_FUNCTION_CLASS(klass);
-> > > > +    FlexcommI2cClass *ic =3D FLEXCOMM_I2C_CLASS(klass);
-> > > > +
-> > > > +    dc->realize =3D flexcomm_i2c_realize;
-> > > > +    ic->select =3D fc->select;
-> > > > +    fc->select =3D flexcomm_i2c_select;
-> > > > +    fc->name =3D "i2c";
-> > > > +    fc->mmio_ops =3D &flexcomm_i2c_ops;
-> > > > +}
-> > > > +
-> > > > +static const TypeInfo flexcomm_i2c_types[] =3D {
-> > > > +    {
-> > > > +        .name          =3D TYPE_FLEXCOMM_I2C,
-> > > > +        .parent        =3D TYPE_FLEXCOMM_FUNCTION,
-> > > > +        .instance_size =3D sizeof(FlexcommI2cState),
-> > > > +        .class_init    =3D flexcomm_i2c_class_init,
-> > > > +        .class_size    =3D sizeof(FlexcommI2cClass),
-> > > > +    },
-> > > > +};
-> > > > +
-> > > > +DEFINE_TYPES(flexcomm_i2c_types);
-> > > > diff --git a/hw/misc/flexcomm.c b/hw/misc/flexcomm.c
-> > > > index a291148f27..b1a2f01acf 100644
-> > > > --- a/hw/misc/flexcomm.c
-> > > > +++ b/hw/misc/flexcomm.c
-> > > > @@ -24,6 +24,7 @@
-> > > >  #include "hw/misc/flexcomm.h"
-> > > >  #include "hw/arm/svd/flexcomm_usart.h"
-> > > >  #include "hw/char/flexcomm_usart.h"
-> > > > +#include "hw/i2c/flexcomm_i2c.h"
-> > > >
-> > > >  #define REG(s, reg) (s->regs[R_FLEXCOMM_##reg])
-> > > >  #define RF_WR(s, reg, field, val) \
-> > > > @@ -220,6 +221,7 @@ static void flexcomm_init(Object *obj)
-> > > >      sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->container);
-> > > >      sysbus_init_irq(sbd, &s->irq);
-> > > >      object_initialize_child(obj, "usart", &s->usart, TYPE_FLEXCOMM=
-_USART);
-> > > > +    object_initialize_child(obj, "i2c", &s->i2c, TYPE_FLEXCOMM_I2C=
-);
-> > > >  }
-> > > >
-> > > >  static void flexcomm_finalize(Object *obj)
-> > > > @@ -250,6 +252,7 @@ static void flexcomm_realize(DeviceState *dev, =
-Error **errp)
-> > > >
-> > > >      memory_region_add_subregion_overlap(&s->container, 0, &s->mmio=
-, -1);
-> > > >      flexcomm_func_realize_and_unref(FLEXCOMM_FUNCTION(&s->usart), =
-errp);
-> > > > +    flexcomm_func_realize_and_unref(FLEXCOMM_FUNCTION(&s->i2c), er=
-rp);
-> > > >  }
-> > > >
-> > > >  static const VMStateDescription vmstate_flexcomm =3D {
-> > > > diff --git a/hw/arm/svd/meson.build b/hw/arm/svd/meson.build
-> > > > index 2bde34d15b..417491cd5c 100644
-> > > > --- a/hw/arm/svd/meson.build
-> > > > +++ b/hw/arm/svd/meson.build
-> > > > @@ -7,4 +7,7 @@ if get_option('mcux-soc-svd')
-> > > >    run_target('svd-flexcomm-usart', command: svd_gen_header +
-> > > >      [ '-i', rt595, '-o', '@SOURCE_ROOT@/include/hw/arm/svd/flexcom=
-m_usart.h',
-> > > >      '-p', 'USART0', '-t', 'FLEXCOMM_USART'])
-> > > > +  run_target('svd-flexcomm-i2c', command: svd_gen_header +
-> > > > +    [ '-i', rt595, '-o', '@SOURCE_ROOT@/include/hw/arm/svd/flexcom=
-m_i2c.h',
-> > > > +      '-p', 'I2C0', '-t', 'FLEXCOMM_I2C'])
-> > > >  endif
-> > > > diff --git a/hw/i2c/meson.build b/hw/i2c/meson.build
-> > > > index c459adcb59..e7d79e6938 100644
-> > > > --- a/hw/i2c/meson.build
-> > > > +++ b/hw/i2c/meson.build
-> > > > @@ -18,4 +18,5 @@ i2c_ss.add(when: 'CONFIG_PPC4XX', if_true: files(=
-'ppc4xx_i2c.c'))
-> > > >  i2c_ss.add(when: 'CONFIG_PCA954X', if_true: files('i2c_mux_pca954x=
-.c'))
-> > > >  i2c_ss.add(when: 'CONFIG_PMBUS', if_true: files('pmbus_device.c'))
-> > > >  i2c_ss.add(when: 'CONFIG_BCM2835_I2C', if_true: files('bcm2835_i2c=
-.c'))
-> > > > +i2c_ss.add(when: 'CONFIG_FLEXCOMM', if_true: files('flexcomm_i2c.c=
-'))
-> > > >  system_ss.add_all(when: 'CONFIG_I2C', if_true: i2c_ss)
-> > > > diff --git a/hw/i2c/trace-events b/hw/i2c/trace-events
-> > > > index 6900e06eda..9f0175fab7 100644
-> > > > --- a/hw/i2c/trace-events
-> > > > +++ b/hw/i2c/trace-events
-> > > > @@ -51,3 +51,13 @@ npcm7xx_smbus_recv_fifo(const char *id, uint8_t =
-received, uint8_t expected) "%s
-> > > >
-> > > >  pca954x_write_bytes(uint8_t value) "PCA954X write data: 0x%02x"
-> > > >  pca954x_read_data(uint8_t value) "PCA954X read data: 0x%02x"
-> > > > +
-> > > > +# flexcomm_i2c.c
-> > > > +
-> > > > +flexcomm_i2c_reg_read(const char *id, const char *reg_name, uint32=
-_t addr, uint32_t val) " %s: %s[0x%04x] -> 0x%08x"
-> > > > +flexcomm_i2c_reg_write(const char *id, const char *reg_name, uint3=
-2_t addr, uint32_t val) "%s: %s[0x%04x] <- 0x%08x"
-> > > > +flexcomm_i2c_start(const char *id, uint8_t addr, uint8_t recv) "%s=
-: 0x%02x %d"
-> > > > +flexcomm_i2c_rx(const char *id, uint8_t data) "%s: <- 0x%02x"
-> > > > +flexcomm_i2c_tx(const char *id, uint8_t data) "%s: -> 0x%02x"
-> > > > +flexcomm_i2c_nak(const char *id) "%s: <- nak"
-> > > > +flexcomm_i2c_irq(const char *id, bool irq, bool perirqs, bool enab=
-led) "%s: %d %d %d"
-> > > > diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
-> > > > index 14167ae9e8..9a244fa01d 100644
-> > > > --- a/hw/misc/Kconfig
-> > > > +++ b/hw/misc/Kconfig
-> > > > @@ -215,5 +215,6 @@ config XLNX_VERSAL_TRNG
-> > > >
-> > > >  config FLEXCOMM
-> > > >      bool
-> > > > +    select I2C
-> > > >
-> > > >  source macio/Kconfig
-> > > > --
-> > > > 2.46.0.662.g92d0881bb0-goog
-> > > >
-> > > >
+The design of such command line is related to the machine/CPU
+initialization process, and I'll explain in more detail later the
+reasons for this (pls refer section 2. "Design Overview").
+
+This series is based on previous v2 QOM topology series [2].
+
+Welcome your feedback and comments!
+
+
+1. Background
+=============
+
+About why we need hybrid CPU topology, pls refer the cover letter of
+QOM-topo v2 RFC [2], "What's the Problem?" :-).
+
+With CPU topology related devices introduced by QOM-topo v2 RFC [2],
+then we have the chance to allow user to customize CPU topology from
+CLI.
+
+There is no need to deliberately emphasize the hybrid topology here, as
+the custom topology can be either SMP or hybrid, and custom-topo is
+generic and flexible enough.
+
+
+2. Design Overview
+==================
+
+2.1. How to Initialize possible_cpus[] for Custom Topology from CLI
+===================================================================
+
+At present (QEMU master and QOM topo v2 [2]), possible_cpus[] is
+initialized with -smp parameters.
+
+For user custom topology, a previous attempt (in QOM topo v1 [3]) tried
+to create topology devices (CPU/core/module/die...) from CLI in advance,
+and built a complete topology tree, then used the globle topology
+informantion (something similar to smp.max_cpus/threads/cores/sockets...)
+to create possible_cpus[] and initialize archid (for x86, it's APIC ID).
+
+Figure 1: Previous attempt to create topology devices before
+          possible_cpus[] initialization (in QOM-topo v1 [3])
+                                                         
+    qmp_x_exit_preconfig()                               
+    │                                                    
+    ├───(?)qemu_create_cli_base_devices()                
+    │    │                                               
+    │    └───(?)Create CPU topology devices              
+    │           including CPUs                           
+    │                                                    
+    ├─── qemu_init_board()                               
+    │    │                                               
+    │    └── machine_run_board_init()                    
+    │        │                                           
+    │        └─── machine_class->init(machine)           
+    │             │                                      
+    │             └─── x86_cpus_init()                   
+    │                  │                                 
+    │                  └─── mc->possible_cpu_arch_ids(ms)
+    │                                                    
+    └─── qemu_create_cli_devices()                       
+
+The "(?)" marked qemu_create_cli_base_devices() (added in previous
+approach) would create topology devices.
+
+But this approach has the drawback: when topology tree is completed,
+especially for the levels higher than possible_cpus[], it's impossible
+to hotplug other topology devices (higher than possble_cpus[]). This is
+because the length of possible_cpus[] is computed by those higher
+topology levels and this length cannot change at runtime.
+
+This would prevent future support and exploration of larger granularity
+hotplugs.
+
+Thus, in this RFC, we create topology devices after possible_cpus[]
+creation.
+
+But the question that arises is how to get the topology information
+needed for the initialization of possible_cpus[] and its archid.
+
+The current -smp parameters (cores/modules/clusters/dies/sockets/books/
+drawers) require the machine to create a corresponding number of
+topology instances for SMP systems.
+
+This does not accommodate hybrid topologies. Therefore, we introduce
+max* parameters: maxthreads/maxcores/maxmodules/maxdies/maxsockets
+(for x86), to predefine the topology framework for the machine. These
+parameters also constrain subsequent custom topologies, ensuring the
+number of child devices under each parent device does not exceed the
+specified max limits.
+
+The actual number of child instances is determined by the user. Maybe
+user defines a SMP topology, or maybe a hybrid topology.
+
+Not only can the length of possible_cpus[] continue to be defined via
+-smp, but its internal archid can also be set using max parameters. In
+the case of x86, the bit width of the sub-topology ID in the APIC ID
+will be determined by these max parameters. In fact, actual x86 hardware
+uses the similar approach, including hybrid platforms.
+
+Setting SMP max limits for custom topologies is semantically meaningful.
+Regardless of how heterogeneous the CPU topology is, there will always
+be a corresponding superset in the SMP structure.
+
+
+2.2. How to Address CPU Dependencies in Machine Initialization
+==============================================================
+
+A coming question is whether the machine continues to initialize the
+default CPUs from "-smp cpus=*", when the user needs custom topology
+from the CLI.
+
+In qom-topo v2, machine creates a symmetric topology tree from -smp by
+default, and it's clear that customizing again based on an existing
+topology tree won't work.
+
+Therefore, once user wants to customize topology by "-machine
+custom-topo=on", the machine, that supports custom topology, will skip
+the default topology creation as well as the default CPU creation.
+
+In the following figure, just as the "(X)" marked
+machine_create_topo_tree() and x86_cpu_new() should be skipped.
+
+Figure 2: Original machine initialization process (in QOM-topo v2 [2])
+
+    qmp_x_exit_preconfig()                               
+    │                                                    
+    ├─── qemu_init_board()                               
+    │    │                                               
+    │    └── machine_run_board_init()                    
+    │        │                                           
+    │        ├───(*)machine_create_topo_tree()           
+    │        │                                           
+    │        └─── machine_class->init(machine)           
+    │             │                                      
+    │             ├─── x86_cpus_init()                   
+    │             │    │                                 
+    │             │    ├─── mc->possible_cpu_arch_ids(ms)
+    │             │    │                                 
+    │             │    └───(*)x86_cpu_new()              
+    │             │                                      
+    │             └───(*)Other initialization steps       
+    │                    with CPU dependencies           
+    │                                                    
+    └─── qemu_create_cli_devices()                      
+
+
+However, machine initialization may have some followup steps with CPU
+dependencies after the default CPU initialization. If the default CPU
+creation is skipped, such CPU-dependent steps will fail.
+
+Therefore, to address these annoying CPU dependencies, and to replace
+the default topology tree creation (machine_create_topo_tree() and
+x86_cpu_new()) with CPU topology creation from CLI, this series reorders
+the machine initialization steps and topology device creation from CLI
+for the custom topology case:
+
+Figure 3: New machine initialization process (in this series)
+
+    qmp_x_exit_preconfig()                                  
+    │                                                       
+    ├─── qemu_init_board()                                  
+    │    │                                                  
+    │    ┼──── machine_run_board_init()                     
+    │    │     │                                            
+    │    │     ├───(X)machine_create_topo_tree()            
+    │    │     │                                            
+    │    │     └─── machine_class->init(machine)            
+    │    │          │                                       
+    │    │          ├─── x86_cpus_init()                    
+    │    │          │    │                                  
+    │    │          │    ┼─── mc->possible_cpu_arch_ids(ms) 
+    │    │          │    │                                  
+    │    │          │    └───(X)x86_cpu_new()               
+    │    │          │                                       
+    │    │          └───(X)Other initialization steps        
+    │    │                 with CPU dependencies            
+    │    │                                                  
+    │    ├────(*)qemu_add_cli_devices_early()               
+    │    │     │                                            
+    │    │     └───(*)Create CPU topology devices          
+    │    │            including CPUs                       
+    │    │                                                  
+    │    └────(*)machine_run_board_post_init()                
+    │          │                                            
+    │          └───(*)machine_class->post_init(machine)       
+    │               │                                       
+    │               └───(*)Other initialization steps        
+    │                      with CPU dependencies            
+    │                                                       
+    └─── qemu_create_cli_devices()                          
+
+
+As the above figure, "(*)" indicates the new interface/hook added in
+this series:
+
+  * (For the machine supports custom topology) split CPU dependent
+    initialization setps into machine_class->post_init().
+
+    - For example, in q35 machine, all the logic after x86_cpu_new() is
+      placed in machine_class->post_init().
+
+  * Between machine_class->init() and machine_class->post_init(),
+    create CPU topology devices (including CPUs) from CLI early.
+
+This effectively replaces the default CPU creation (as well as topology
+tree creation) in the original initialization process with
+qemu_add_cli_devices_early().
+
+
+3. Patch Summary
+================
+
+Patch 01-03: Create topology device from CLI early.
+Ptach 04,11: Separate the part following CPU creation from the machine
+             initialization process into MachineClass.post_init().
+Patch 05-08: Implement max parameters in -smp and use max limitations
+             to initialize possible_cpus[].
+Patch 09-10: Add Intel hybrid CPU support.
+Patch    12: Allow user to customize topology tree for x86 machines.
+
+
+4. Reference
+============
+
+[1]: [RFC 00/52] Introduce hybrid CPU topology
+     https://lore.kernel.org/qemu-devel/20230213095035.158240-1-zhao1.liu@linux.intel.com/
+[2]: [RFC v2 00/15] qom-topo: Abstract CPU Topology Level to Topology Device
+     https://lore.kernel.org/qemu-devel/20240919015533.766754-1-zhao1.liu@intel.com/
+[3]: [RFC 00/41] qom-topo: Abstract Everything about CPU Topology
+     https://lore.kernel.org/qemu-devel/20231130144203.2307629-1-zhao1.liu@linux.intel.com/
+
+
+Thanks and Best Regards,
+Zhao
+---
+Zhao Liu (12):
+  qdev: Allow qdev_device_add() to add specific category device
+  qdev: Introduce new device category to cover basic topology device
+  system/vl: Create CPU topology devices from CLI early
+  hw/core/machine: Split machine initialization around
+    qemu_add_cli_devices_early()
+  hw/core/machine: Introduce custom CPU topology with max limitations
+  hw/cpu: Constrain CPU topology tree with max_limit
+  hw/core: Re-implement topology helpers to honor max limitations
+  hw/i386: Use get_max_topo_by_level() to get topology information
+  i386: Introduce x86 CPU core abstractions
+  i386/cpu: Support Intel hybrid CPUID
+  i386/machine: Split machine initialization after CPU creation into
+    post_init()
+  i386: Support custom topology for microvm, pc-i440fx and pc-q35
+
+ MAINTAINERS                 |   1 +
+ hw/core/machine-smp.c       |  10 ++-
+ hw/core/machine.c           |  47 ++++++++++
+ hw/core/meson.build         |   2 +-
+ hw/cpu/cpu-slot.c           | 168 ++++++++++++++++++++++++++++++++++++
+ hw/cpu/cpu-topology.c       |   2 +-
+ hw/i386/microvm.c           |   8 ++
+ hw/i386/pc_piix.c           |  41 +++++----
+ hw/i386/pc_q35.c            |  37 +++++---
+ hw/i386/x86-common.c        |  25 ++++--
+ hw/i386/x86.c               |  20 +++--
+ hw/net/virtio-net.c         |   2 +-
+ hw/usb/xen-usb.c            |   3 +-
+ include/hw/boards.h         |  13 ++-
+ include/hw/cpu/cpu-slot.h   |  12 +++
+ include/hw/i386/pc.h        |   3 +
+ include/hw/qdev-core.h      |   6 ++
+ include/monitor/qdev.h      |   4 +-
+ qapi/machine.json           |  22 ++++-
+ stubs/machine-stubs.c       |  21 +++++
+ stubs/meson.build           |   1 +
+ system/cpus.c               |   2 +-
+ system/qdev-monitor.c       |  13 ++-
+ system/vl.c                 |  59 ++++++++-----
+ target/i386/core.c          |  56 ++++++++++++
+ target/i386/core.h          |  53 ++++++++++++
+ target/i386/cpu.c           |  58 +++++++++++++
+ target/i386/cpu.h           |   5 ++
+ target/i386/meson.build     |   1 +
+ tests/unit/test-smp-parse.c |   4 +-
+ 30 files changed, 618 insertions(+), 81 deletions(-)
+ create mode 100644 stubs/machine-stubs.c
+ create mode 100644 target/i386/core.c
+ create mode 100644 target/i386/core.h
+
+-- 
+2.34.1

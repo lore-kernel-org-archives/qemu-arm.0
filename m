@@ -1,428 +1,256 @@
-Received: by 2002:a17:504:1bc1:b0:1be9:327d:8ee3 with SMTP id v1csp1140993njg;
-        Wed, 18 Sep 2024 20:22:59 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUQIEg1PJ8d/joA0Scl37UfbcAf6ZCyfStyUU6hP03aDIMZo2DBn6YQcBvG7Gay4UyyxZ4qDVCUYlcxCw==@linaro.org
-X-Received: by 2002:a05:6a20:e687:b0:1c6:fb2a:4696 with SMTP id adf61e73a8af0-1cf75eefa0cmr39953307637.19.1726716179197;
-        Wed, 18 Sep 2024 20:22:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1726716179; cv=none;
+Received: by 2002:a17:504:1bc1:b0:1be9:327d:8ee3 with SMTP id v1csp1161216njg;
+        Wed, 18 Sep 2024 21:46:47 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWmlou73rbg9L1wFawSf4NVvBF5lyR01tslb/9YibETHUUuc4edK0pBJPwu1C4+11h3joQqjlqOy0HxPw==@linaro.org
+X-Received: by 2002:a05:6a21:a4c4:b0:1d2:e793:9fa with SMTP id adf61e73a8af0-1d2e7930c98mr12065563637.47.1726721207556;
+        Wed, 18 Sep 2024 21:46:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1726721207; cv=none;
         d=google.com; s=arc-20160816;
-        b=QRcm83jJ9wabuLCwZyRa70vv9hloTNS/LUN49drgO4s1LXLL5EGberAy7s60wzoLHb
-         2HMFdpDKkLu45OXne2NqYKcG09TLiCRZP5gFKwJCEtInJwhXIxcaMkhAMdkTOI2fUYLb
-         L/yaJdFVGVIQgLQ3BCx3dAj1gXu3YWJ2m11Ojc9euJ1ix1nEWKlfr9lfBOE7KJMceuoj
-         6b/Bu2UkN48aYdVB+YJb752XU/mXypLalNw5z3s8egykDfWT0aU6eZOPhEoUdr3ZJyYQ
-         jj5EWDDHxE9/c5LaBosPh0YKSTLvY+894FyCJusjr0nQ8AWuiJxDqgpgFE5/2rIhZwHY
-         oZHw==
+        b=hhK4wmBku4sZhEAXp/XqS5BSeVV+YL5MDcy6bacVa5y4Dm6E/n3TFFow7NnXUOnNGV
+         nFjEvf0+6hdFSxtmVdRUjB+ioED9ST4eH8upVjRXayuvrvSffgOX722uXLMgHnxJtmy+
+         V1HCZHWmYMd941+9xy3v3tmoRfFImnIQgPMaVuhkdr2W7g7iaEEhNPTulP+aoDzke5e/
+         GmA5EDfjcBQ3UApxLOaOqex9M68G/Bc1djcgDty4fOtFzR2JuZrNnozhkvik67/pbKqe
+         s6UDR5Q+j07HlJ1PK620uyjLcWIMzwdlL00psbgwlurQSESDZgR9oQX5B0kjZRDR+0si
+         PuaQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=q4JlnRf+sH8eouq6eUmmXaWchAjLldxPWsjwU8cMKxg=;
-        fh=aycRh6bH70yDU4CO/lbuD9bEQc/dF7n+mNxDj5SSsJs=;
-        b=HVGqZUGZIhy1JlUPPQjrLCAPyabrmQgJCOGFSE4eh+fKeh+vu8ao5mxr2y7ADe5rAJ
-         k0+NJnGH7/JXlCwjMSH47CSJR4GXxjaeksA0nD0V6cKJvVPBG+RbPqaIMDfEny7dD8Go
-         3KY7uPQ+xVAgBY04IAddkCfnCVLMYMpHE/Qut0lc8I1iwP/Y9jyUG2YuosPLh7URNqg9
-         PzeQUXQh+xWtOtxKlaBWcjw6/fE3LMSKaKY+O4vxzzHxNsGSEKvZmojsiicRH51M3Wf2
-         M8+/4ZjETbvnPspT+wHwc3iPtRRcsY7LHb7zKw/loLpVsixIaMEV/sAHk43eHIO7xzzM
-         /yxA==;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=okWQnCc9i+a9qTeP/CljeFJtPOK3zSl+MYdGWF+XBiU=;
+        fh=PZBSs29mit4jCJQodYb8+k83FCH/eNycFk3zOw71Hg8=;
+        b=CSIo7q4XBTwlVdMTmhc8UY4BK0JjZaCLgw9QIi4Y6BkCCkD7aHkd7vpZUD66uPncxD
+         RBmBUGKgHbW2NSBPjapIhAERFVQu+dsEhXVhIH5HQKdXblnvOfXknTL5s9M8epfUepu5
+         msJ/3fJiPcgQqrHxsC7jE/QNT3U9Lq+az4FydNcagSrvMS9i3eZ/bzys8s1edVXFg4XL
+         L5PKdfNNqB1rQ5bEs8rXSxpnU+X/3FcymFDX8ucAtMypWtwn/1Zgl4qnYzR4Y8aND1Dq
+         cRzORZVN6kY42rGYkekciTnxPc1i65opkTcpeHkjoSM+5bRa2f75CtvDLWfFydsZmmtp
+         iejA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=tIYiw5mU;
-       spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=gJPbxbwK;
+       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <gustavo.romero@linaro.org>
+Return-Path: <pierrick.bouvier@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d2e1a72fcca58-71944b7e5c6sor6422437b3a.8.2024.09.18.20.22.59
+        by mx.google.com with SMTPS id 41be03b00d2f7-7db49a14f64sor4235050a12.9.2024.09.18.21.46.47
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Wed, 18 Sep 2024 20:22:59 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        Wed, 18 Sep 2024 21:46:47 -0700 (PDT)
+Received-SPF: pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=tIYiw5mU;
-       spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=gJPbxbwK;
+       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1726716179; x=1727320979; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=q4JlnRf+sH8eouq6eUmmXaWchAjLldxPWsjwU8cMKxg=;
-        b=tIYiw5mUUDvk9RHmhlaPpzo/YD4cqumClrOC7djUHUSiywGOBzkVTBBwM/GMsHj/F0
-         ApI3zBxAGbIcwvhsZe+9e+EKrEFbFn+CHHebdu41DKZy2SA5IMzh9e0kZL2E/thKwzxF
-         wPSewkyWG5uXMWZkeGxhQdceGP5sLVBdhtyJu04EFp+AyjG+MGvFszGz2DWcScQp+ryn
-         CKiHFU03XxM8AaulIShATx3uoZ8xhHYPGvXKaH2LOeLnZuJ+PqHOrOkuxvFyaL0DKhYo
-         DjwJHgSu7qpJ92tOcU5GyMZlsh4tkWnO2wDfOl1mro6taes/OjKFc2rN+f8UqzGcda7L
-         Y66Q==
+        d=linaro.org; s=google; t=1726721207; x=1727326007; darn=linaro.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=okWQnCc9i+a9qTeP/CljeFJtPOK3zSl+MYdGWF+XBiU=;
+        b=gJPbxbwKf9PO4H/oQ/PiOMgCqB3H8uiJutiHUClTn02HNt2kpgAxxeNCUcYW6XxXFJ
+         nHe0QTtJzo/mXSZ0C45uD7wV+xNEOJ3lXIKEdloCa09TXwpOWBjcRLdft6pWJdvtWRGe
+         lKo/kBw46SOepeHfkELi4Vo/TWQB0tRhEjxkR4DMlgozJHzsGCopHb5P3vwsOLvLDcQF
+         rhZn315dk4CvDVPPiK9H9B0+/ub4+Xashptb0mgA0CL1FBIS0TZkjgob4QCNJoqgHusH
+         d6m6TNYJDooizoo1JuOx2+SV/I+18uxlM0eAJEDdPhtaPVSK4z9PZ5hUR+eWr0uSQk+S
+         hnwA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1726716179; x=1727320979;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=q4JlnRf+sH8eouq6eUmmXaWchAjLldxPWsjwU8cMKxg=;
-        b=rh1+2cZIJaPLMKjNw+pBWAMj/U5b6DmokEOR7HA7fiN9mlss56b9JGp50MXvYd81Pj
-         8KkqpsElPMTS3t9JRvAgzR83pouL+X72J/VZRRQZXGF50iLb2gE9N6FQ5RIpa6wjOwCj
-         rCRsebUNVb7Sl/Vr8o1UhlKz6JYApp/bl6brWs2r/R8b4Ocus/x0eA6rC8ef2mijdRrj
-         3ZLcETDfYWjWF72JOIveCsrKQqB5zKNEzwNay7U1yRo9e/8OjK7DU2nPWqfeA+1L8INF
-         I9NR/W4oFEuqbIgRP5N/eosUnnHtD1EXHfaLq8wsa9ND5Ja01drcgfSWNJulZRqT93cL
-         7XEA==
-X-Forwarded-Encrypted: i=1; AJvYcCVLDGcA0iEclfTFv7EljW8m8FR9AXq8zKO/3dBS+lQBRAES3lEQvBsmBVY5swsqZEJtVHSWKsc3udQPNw==@linaro.org
-X-Gm-Message-State: AOJu0Yy9mYSKm9sEG00ERc4xTU/9JQc88cHx5FAnLEz8NyrTdqicsJPI
-	Ddx6So83dVim6yBN5NQp3JR5m9tQYJ+HOdvo0SYHSO4gpT4psv/FVvm2zM3vzNjwog==
-X-Google-Smtp-Source: AGHT+IER8vk7VNwH0jakUaiaKB5bHqzns1GxQE7Z/Bxv2Y4wh0eEixI3JmItxHLLPwPvFbdzocsz3g==
-X-Received: by 2002:a05:6a00:2daa:b0:717:9154:b5b6 with SMTP id d2e1a72fcca58-7192606ce9emr38653960b3a.7.1726716178457;
-        Wed, 18 Sep 2024 20:22:58 -0700 (PDT)
-Return-Path: <gustavo.romero@linaro.org>
-Received: from [192.168.0.101] ([187.75.38.19])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-71944b7afaesm7349289b3a.130.2024.09.18.20.22.55
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 18 Sep 2024 20:22:57 -0700 (PDT)
-Message-ID: <0faf9a7c-0400-482c-974f-7b70e1d58202@linaro.org>
-Date: Thu, 19 Sep 2024 00:22:54 -0300
+        d=1e100.net; s=20230601; t=1726721207; x=1727326007;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=okWQnCc9i+a9qTeP/CljeFJtPOK3zSl+MYdGWF+XBiU=;
+        b=FGH/5Pfd0aMtGozD3zHQubyuSSj1KOQ4R68meCA2guEA/tSfoqTYnVaLUXUS85yzSH
+         46D/VFk9TCmMjvtz4vGw8egsmXYBGstwBvb6t7iPJQ8mUP8tcB6f2RaOCOmBjNVHh2us
+         X8rmd8wtrWFcPQFpgQb1vG+ffKPRbW2ABtLaFlpstADuNVhDuUDw11t3genA5R0b8sRE
+         cOGcx65dm+vj3jdgiqudPvAIwG0ftF1BYeoTuietU5EGl5mg6a61EzL+BRDiE8hrTuvR
+         giwDFCThsDTJHBwi5oJWOHbMrRLuxyGOuu361ctUw3U+t6swl6JX/woydoJKd+LR9dxs
+         L41w==
+X-Forwarded-Encrypted: i=1; AJvYcCX+2cJWyYO+YY5Q7Fk4OAxvxnBbmiZFkfvl/NQhvezxDVvahPg/ikwhINlLiSF8hlQ06mp5u2ehAcaczw==@linaro.org
+X-Gm-Message-State: AOJu0YxlKhgoKc48zudAS7WxCDGDfdiZ3gae+OeKRrVDjf1E2Fhj3DZM
+	9Z1706piqisb4l2r0g5gITK3diznPZ8JOiOLpxjBI9g+CWhp/yvnCHKaJfKMDSn7cA==
+X-Google-Smtp-Source: AGHT+IFTeoz0sc18zegnRwG9uqK1i/tdvMiZIsB+jYHs0tQzrYbWKu22/eeI4GvU6Dyul2n7o0JIuw==
+X-Received: by 2002:a05:6a21:1690:b0:1cf:4348:d5c8 with SMTP id adf61e73a8af0-1d112e8bfaemr31800828637.39.1726721206933;
+        Wed, 18 Sep 2024 21:46:46 -0700 (PDT)
+Return-Path: <pierrick.bouvier@linaro.org>
+Received: from linaro.. (216-180-64-156.dyn.novuscom.net. [216.180.64.156])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-71944bc279csm7478601b3a.188.2024.09.18.21.46.45
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 18 Sep 2024 21:46:46 -0700 (PDT)
+From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Palmer Dabbelt <palmer@dabbelt.com>,
+	Alistair Francis <alistair.francis@wdc.com>,
+	Hyman Huang <yong.huang@smartx.com>,
+	Halil Pasic <pasic@linux.ibm.com>,
+	kvm@vger.kernel.org,
+	Bin Meng <bmeng.cn@gmail.com>,
+	Peter Xu <peterx@redhat.com>,
+	Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+	qemu-s390x@nongnu.org,
+	Dmitry Fleytman <dmitry.fleytman@gmail.com>,
+	Hanna Reitz <hreitz@redhat.com>,
+	Klaus Jensen <its@irrelevant.dk>,
+	Corey Minyard <minyard@acm.org>,
+	Laurent Vivier <laurent@vivier.eu>,
+	WANG Xuerui <git@xen0n.name>,
+	Thomas Huth <thuth@redhat.com>,
+	Rob Herring <robh@kernel.org>,
+	Eduardo Habkost <eduardo@habkost.net>,
+	Nicholas Piggin <npiggin@gmail.com>,
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	Harsh Prateek Bora <harshpb@linux.ibm.com>,
+	"Maciej S. Szmigiero" <maciej.szmigiero@oracle.com>,
+	Ani Sinha <anisinha@redhat.com>,
+	Stefan Berger <stefanb@linux.vnet.ibm.com>,
+	Fam Zheng <fam@euphon.net>,
+	Laurent Vivier <lvivier@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Keith Busch <kbusch@kernel.org>,
+	Jean-Christophe Dubois <jcd@tribudubois.net>,
+	qemu-riscv@nongnu.org,
+	Igor Mammedov <imammedo@redhat.com>,
+	Akihiko Odaki <akihiko.odaki@daynix.com>,
+	Sriram Yagnaraman <sriram.yagnaraman@ericsson.com>,
+	Jason Wang <jasowang@redhat.com>,
+	Eric Farman <farman@linux.ibm.com>,
+	"Richard W.M. Jones" <rjones@redhat.com>,
+	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+	Nina Schoetterl-Glausch <nsg@linux.ibm.com>,
+	Aurelien Jarno <aurelien@aurel32.net>,
+	Markus Armbruster <armbru@redhat.com>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Fabiano Rosas <farosas@suse.de>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	qemu-arm@nongnu.org,
+	Christian Borntraeger <borntraeger@linux.ibm.com>,
+	qemu-ppc@nongnu.org,
+	Zhao Liu <zhao1.liu@intel.com>,
+	Daniel Henrique Barboza <danielhb413@gmail.com>,
+	qemu-block@nongnu.org,
+	Joel Stanley <joel@jms.id.au>,
+	Weiwei Li <liwei1518@gmail.com>,
+	Kevin Wolf <kwolf@redhat.com>,
+	Helge Deller <deller@gmx.de>,
+	Yanan Wang <wangyanan55@huawei.com>,
+	Michael Rolnik <mrolnik@gmail.com>,
+	Jesper Devantier <foss@defmacro.it>,
+	Marcelo Tosatti <mtosatti@redhat.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Subject: [PATCH v3 00/34] Use g_assert_not_reached instead of (g_)assert(0,false)
+Date: Wed, 18 Sep 2024 21:46:07 -0700
+Message-Id: <20240919044641.386068-1-pierrick.bouvier@linaro.org>
+X-Mailer: git-send-email 2.39.5
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH V2] arm/kvm: add support for MTE
-To: Ganapatrao Kulkarni <gankulkarni@os.amperecomputing.com>,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, richard.henderson@linaro.org,
- alex.bennee@linaro.org, darren@os.amperecomputing.com
-References: <20240912091616.393685-1-gankulkarni@os.amperecomputing.com>
-Content-Language: en-US
-From: Gustavo Romero <gustavo.romero@linaro.org>
-In-Reply-To: <20240912091616.393685-1-gankulkarni@os.amperecomputing.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-TUID: VSUjrAlajlq7
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-TUID: z3OBWhxypE3P
 
-Hi Ganapatrao,
+This series cleans up all usages of assert/g_assert who are supposed to stop
+execution of QEMU. We replace those by g_assert_not_reached().
+It was suggested recently when cleaning codebase to build QEMU with gcc
+and tsan: https://lore.kernel.org/qemu-devel/54bb02a6-1b12-460a-97f6-3f478ef766c6@linaro.org/.
 
-On 9/12/24 06:16, Ganapatrao Kulkarni wrote:
-> Extend the 'mte' property for the virt machine to cover KVM as
-> well. For KVM, we don't allocate tag memory, but instead enable
-> the capability.
->
-> If MTE has been enabled, we need to disable migration, as we do not
-> yet have a way to migrate the tags as well. Therefore, MTE will stay
-> off with KVM unless requested explicitly.
->
-> This patch is rework of commit b320e21c48ce64853904bea6631c0158cc2ef227
-> which broke TCG since it made the TCG -cpu max
-> report the presence of MTE to the guest even if the board hadn't
-> enabled MTE by wiring up the tag RAM. This meant that if the guest
-> then tried to use MTE QEMU would segfault accessing the
-> non-existent tag RAM.
->
-> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
-> Signed-off-by: Ganapatrao Kulkarni <gankulkarni@os.amperecomputing.com>
-> ---
-> Changes since V1:
-> 	Added code to enable MTE before reading register
-> id_aa64pfr1 (unmasked MTE bits).
->
-> This patch is boot tested on ARM64 with KVM and on X86 with TCG for mte=on
-> and default case(i.e, no mte).
->
->   hw/arm/virt.c        | 72 ++++++++++++++++++++++++++------------------
->   target/arm/cpu.c     |  7 +++--
->   target/arm/cpu.h     |  2 ++
->   target/arm/kvm.c     | 59 ++++++++++++++++++++++++++++++++++++
->   target/arm/kvm_arm.h | 19 ++++++++++++
->   5 files changed, 126 insertions(+), 33 deletions(-)
+In more, cleanup useless break and return after g_assert_not_reached();
 
-Overall the patch looks good. I just have a couple of questions.
+And finally, ensure with scripts/checkpatch.pl that we don't reintroduce
+(g_)assert(false) in the future.
 
+New commits (removing return) need review.
 
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 7934b23651..a33af7d996 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -2211,7 +2211,7 @@ static void machvirt_init(MachineState *machine)
->           exit(1);
->       }
->   
-> -    if (vms->mte && (kvm_enabled() || hvf_enabled())) {
-> +    if (vms->mte && hvf_enabled()) {
->           error_report("mach-virt: %s does not support providing "
->                        "MTE to the guest CPU",
->                        current_accel_name());
-> @@ -2281,39 +2281,51 @@ static void machvirt_init(MachineState *machine)
->           }
->   
->           if (vms->mte) {
-> -            /* Create the memory region only once, but link to all cpus. */
-> -            if (!tag_sysmem) {
-> -                /*
-> -                 * The property exists only if MemTag is supported.
-> -                 * If it is, we must allocate the ram to back that up.
-> -                 */
-> -                if (!object_property_find(cpuobj, "tag-memory")) {
-> -                    error_report("MTE requested, but not supported "
-> -                                 "by the guest CPU");
-> -                    exit(1);
-> +            if (tcg_enabled()) {
-> +                /* Create the memory region only once, but link to all cpus. */
-> +                if (!tag_sysmem) {
-> +                    /*
-> +                     * The property exists only if MemTag is supported.
-> +                     * If it is, we must allocate the ram to back that up.
-> +                     */
-> +                    if (!object_property_find(cpuobj, "tag-memory")) {
-> +                        error_report("MTE requested, but not supported "
-> +                                     "by the guest CPU");
-> +                        exit(1);
-> +                    }
-> +
-> +                    tag_sysmem = g_new(MemoryRegion, 1);
-> +                    memory_region_init(tag_sysmem, OBJECT(machine),
-> +                                       "tag-memory", UINT64_MAX / 32);
-> +
-> +                    if (vms->secure) {
-> +                        secure_tag_sysmem = g_new(MemoryRegion, 1);
-> +                        memory_region_init(secure_tag_sysmem, OBJECT(machine),
-> +                                           "secure-tag-memory",
-> +                                           UINT64_MAX / 32);
-> +
-> +                        /* As with ram, secure-tag takes precedence over tag. */
-> +                        memory_region_add_subregion_overlap(secure_tag_sysmem,
-> +                                                            0, tag_sysmem, -1);
-> +                    }
->                   }
->   
-> -                tag_sysmem = g_new(MemoryRegion, 1);
-> -                memory_region_init(tag_sysmem, OBJECT(machine),
-> -                                   "tag-memory", UINT64_MAX / 32);
-> -
-> +                object_property_set_link(cpuobj, "tag-memory",
-> +                                         OBJECT(tag_sysmem), &error_abort);
->                   if (vms->secure) {
-> -                    secure_tag_sysmem = g_new(MemoryRegion, 1);
-> -                    memory_region_init(secure_tag_sysmem, OBJECT(machine),
-> -                                       "secure-tag-memory", UINT64_MAX / 32);
-> -
-> -                    /* As with ram, secure-tag takes precedence over tag.  */
-> -                    memory_region_add_subregion_overlap(secure_tag_sysmem, 0,
-> -                                                        tag_sysmem, -1);
-> +                    object_property_set_link(cpuobj, "secure-tag-memory",
-> +                                             OBJECT(secure_tag_sysmem),
-> +                                             &error_abort);
->                   }
-> -            }
-> -
-> -            object_property_set_link(cpuobj, "tag-memory", OBJECT(tag_sysmem),
-> -                                     &error_abort);
-> -            if (vms->secure) {
-> -                object_property_set_link(cpuobj, "secure-tag-memory",
-> -                                         OBJECT(secure_tag_sysmem),
-> -                                         &error_abort);
-> +            } else if (kvm_enabled()) {
-> +                if (!kvm_arm_mte_supported()) {
-> +                    error_report("MTE requested, but not supported by KVM");
-> +                    exit(1);
-> +                }
-> +                kvm_arm_enable_mte(cpuobj, &error_abort);
-> +            } else {
-> +                    error_report("MTE requested, but not supported ");
-> +                    exit(1);
->               }
->           }
->   
-> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-> index 19191c2391..a59417aac8 100644
-> --- a/target/arm/cpu.c
-> +++ b/target/arm/cpu.c
-> @@ -2390,11 +2390,12 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
->   
->   #ifndef CONFIG_USER_ONLY
->           /*
-> -         * If we do not have tag-memory provided by the machine,
-> -         * reduce MTE support to instructions enabled at EL0.
-> +         * If we do not have tag-memory provided by the TCG
-> +         * nor MTE at KVM enabled, reduce MTE support to
-> +         * instructions enabled at EL0.
+Tested that it build warning free with gcc and clang.
 
-What controls if MTE insns. (stg, etc.) are enabled on EL0 and EL1
+If a maintainer could pull the whole series, this would be much more easier than
+integrating various parts of it in different subsystems. Thanks!
 
-are the ATA and ATA0 bits in SCTRL register. Also, AA64PFR1 is a
+v3
+- drop changes on .promela files
+- some changes were already merged
 
-register just to report the features available on the CPU, so I
+v2
+- align backslashes for some changes
+- add summary in all commits message
+- remove redundant comment
 
-wonder if that comment is indeed correct.
+v1
+https://lore.kernel.org/qemu-devel/20240910221606.1817478-1-pierrick.bouvier@linaro.org/T/#t
 
-@rth: what do you think?
+Pierrick Bouvier (34):
+  hw/acpi: replace assert(0) with g_assert_not_reached()
+  hw/arm: replace assert(0) with g_assert_not_reached()
+  hw/net: replace assert(0) with g_assert_not_reached()
+  migration: replace assert(0) with g_assert_not_reached()
+  qobject: replace assert(0) with g_assert_not_reached()
+  target/ppc: replace assert(0) with g_assert_not_reached()
+  block: replace assert(false) with g_assert_not_reached()
+  hw/hyperv: replace assert(false) with g_assert_not_reached()
+  hw/net: replace assert(false) with g_assert_not_reached()
+  hw/nvme: replace assert(false) with g_assert_not_reached()
+  hw/pci: replace assert(false) with g_assert_not_reached()
+  hw/ppc: replace assert(false) with g_assert_not_reached()
+  migration: replace assert(false) with g_assert_not_reached()
+  target/i386/kvm: replace assert(false) with g_assert_not_reached()
+  accel/tcg: remove break after g_assert_not_reached()
+  block: remove break after g_assert_not_reached()
+  hw/acpi: remove break after g_assert_not_reached()
+  hw/net: remove break after g_assert_not_reached()
+  hw/scsi: remove break after g_assert_not_reached()
+  hw/tpm: remove break after g_assert_not_reached()
+  target/arm: remove break after g_assert_not_reached()
+  target/riscv: remove break after g_assert_not_reached()
+  fpu: remove break after g_assert_not_reached()
+  tcg/loongarch64: remove break after g_assert_not_reached()
+  include/qemu: remove return after g_assert_not_reached()
+  hw/hyperv: remove return after g_assert_not_reached()
+  hw/net: remove return after g_assert_not_reached()
+  hw/pci: remove return after g_assert_not_reached()
+  hw/ppc: remove return after g_assert_not_reached()
+  migration: remove return after g_assert_not_reached()
+  qobject: remove return after g_assert_not_reached()
+  qom: remove return after g_assert_not_reached()
+  tests/qtest: remove return after g_assert_not_reached()
+  scripts/checkpatch.pl: emit error when using assert(false)
 
+ include/qemu/pmem.h                     |  1 -
+ accel/tcg/plugin-gen.c                  |  1 -
+ block/qcow2.c                           |  2 +-
+ block/ssh.c                             |  1 -
+ hw/acpi/aml-build.c                     |  3 +--
+ hw/arm/highbank.c                       |  2 +-
+ hw/hyperv/hyperv_testdev.c              |  7 +++----
+ hw/hyperv/vmbus.c                       | 15 ++++++---------
+ hw/net/e1000e_core.c                    |  4 +---
+ hw/net/i82596.c                         |  2 +-
+ hw/net/igb_core.c                       |  4 +---
+ hw/net/net_rx_pkt.c                     |  3 +--
+ hw/net/vmxnet3.c                        |  1 -
+ hw/nvme/ctrl.c                          |  8 ++++----
+ hw/pci/pci-stub.c                       |  6 ++----
+ hw/ppc/ppc.c                            |  1 -
+ hw/ppc/spapr_events.c                   |  3 +--
+ hw/scsi/virtio-scsi.c                   |  1 -
+ hw/tpm/tpm_spapr.c                      |  1 -
+ migration/dirtyrate.c                   |  3 +--
+ migration/migration-hmp-cmds.c          |  2 +-
+ migration/postcopy-ram.c                | 21 +++++++--------------
+ migration/ram.c                         |  8 +++-----
+ qobject/qlit.c                          |  2 +-
+ qobject/qnum.c                          | 12 ++++--------
+ qom/object.c                            |  1 -
+ target/arm/hyp_gdbstub.c                |  1 -
+ target/i386/kvm/kvm.c                   |  4 ++--
+ target/ppc/dfp_helper.c                 |  8 ++++----
+ target/ppc/mmu_helper.c                 |  2 +-
+ target/riscv/monitor.c                  |  1 -
+ tests/qtest/acpi-utils.c                |  1 -
+ fpu/softfloat-parts.c.inc               |  2 --
+ target/riscv/insn_trans/trans_rvv.c.inc |  2 --
+ tcg/loongarch64/tcg-target.c.inc        |  1 -
+ scripts/checkpatch.pl                   |  3 +++
+ 36 files changed, 50 insertions(+), 90 deletions(-)
 
->            * This matches Cortex-A710 BROADCASTMTE input being LOW.
->            */
-> -        if (cpu->tag_memory == NULL) {
-> +        if (cpu->tag_memory == NULL && !cpu->kvm_mte) {
->               cpu->isar.id_aa64pfr1 =
->                   FIELD_DP64(cpu->isar.id_aa64pfr1, ID_AA64PFR1, MTE, 1);
->           }
-
-If MTE is off on TGC and on KVM, then we're actually setting (deposit) MTE
-
-field in AA64PFR1, meaning that MTE is implemented? or am I missing
-
-something?
-
-
-> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-> index f065756c5c..8fc8b6398f 100644
-> --- a/target/arm/cpu.h
-> +++ b/target/arm/cpu.h
-> @@ -922,6 +922,8 @@ struct ArchCPU {
->   
->       /* CPU has memory protection unit */
->       bool has_mpu;
-> +    /* CPU has MTE enabled in KVM mode */
-> +    bool kvm_mte;
->       /* PMSAv7 MPU number of supported regions */
->       uint32_t pmsav7_dregion;
->       /* PMSAv8 MPU number of supported hyp regions */
-> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-> index 849e2e21b3..29865609fb 100644
-> --- a/target/arm/kvm.c
-> +++ b/target/arm/kvm.c
-> @@ -39,6 +39,7 @@
->   #include "hw/acpi/acpi.h"
->   #include "hw/acpi/ghes.h"
->   #include "target/arm/gtimer.h"
-> +#include "migration/blocker.h"
->   
->   const KVMCapabilityInfo kvm_arch_required_capabilities[] = {
->       KVM_CAP_LAST_INFO
-> @@ -119,6 +120,21 @@ bool kvm_arm_create_scratch_host_vcpu(const uint32_t *cpus_to_try,
->       if (vmfd < 0) {
->           goto err;
->       }
-> +
-> +    /*
-> +     * MTE bits of register id_aa64pfr1 are masked if MTE is
-> +     * not enabled and required to enable before VCPU
-> +     * is created. Hence enable MTE(if supported) before VCPU
-> +     * is created to read unmasked MTE bits.
-> +     */
-> +    if (kvm_arm_mte_supported()) {
-> +        KVMState kvm_state;
-> +
-> +        kvm_state.fd = kvmfd;
-> +        kvm_state.vmfd = vmfd;
-> +        kvm_vm_enable_cap(&kvm_state, KVM_CAP_ARM_MTE, 0);
-> +    }
-> +
->       cpufd = ioctl(vmfd, KVM_CREATE_VCPU, 0);
->       if (cpufd < 0) {
->           goto err;
-> @@ -1793,6 +1809,11 @@ bool kvm_arm_sve_supported(void)
->       return kvm_check_extension(kvm_state, KVM_CAP_ARM_SVE);
->   }
->   
-> +bool kvm_arm_mte_supported(void)
-> +{
-> +    return kvm_check_extension(kvm_state, KVM_CAP_ARM_MTE);
-> +}
-> +
->   QEMU_BUILD_BUG_ON(KVM_ARM64_SVE_VQ_MIN != 1);
->   
->   uint32_t kvm_arm_sve_get_vls(ARMCPU *cpu)
-> @@ -2417,3 +2438,41 @@ int kvm_arch_remove_sw_breakpoint(CPUState *cs, struct kvm_sw_breakpoint *bp)
->       }
->       return 0;
->   }
-> +
-> +void kvm_arm_enable_mte(Object *cpuobj, Error **errp)
-> +{
-> +    static bool tried_to_enable;
-> +    static bool succeeded_to_enable;
-> +    Error *mte_migration_blocker = NULL;
-> +    ARMCPU *cpu = ARM_CPU(cpuobj);
-> +    int ret;
-> +
-> +    if (!tried_to_enable) {
-> +        /*
-> +         * MTE on KVM is enabled on a per-VM basis (and retrying doesn't make
-> +         * sense), and we only want a single migration blocker as well.
-> +         */
-> +        tried_to_enable = true;
-> +
-> +        ret = kvm_vm_enable_cap(kvm_state, KVM_CAP_ARM_MTE, 0);
-> +        if (ret) {
-> +            error_setg_errno(errp, -ret, "Failed to enable KVM_CAP_ARM_MTE");
-> +            return;
-> +        }
-> +
-> +        /* TODO: Add migration support with MTE enabled */
-> +        error_setg(&mte_migration_blocker,
-> +                   "Live migration disabled due to MTE enabled");
-> +        if (migrate_add_blocker(&mte_migration_blocker, errp)) {
-> +            error_free(mte_migration_blocker);
-> +            return;
-> +        }
-> +
-> +        succeeded_to_enable = true;
-> +    }
-> +
-> +    if (succeeded_to_enable) {
-> +        cpu->kvm_mte = true;
-> +    }
-> +}
-> +
-
-nit: remove ending blank line here.
-
-
-Cheers,
-
-Gustavo
-
-
-> diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
-> index cfaa0d9bc7..4d293618a7 100644
-> --- a/target/arm/kvm_arm.h
-> +++ b/target/arm/kvm_arm.h
-> @@ -188,6 +188,13 @@ bool kvm_arm_pmu_supported(void);
->    */
->   bool kvm_arm_sve_supported(void);
->   
-> +/**
-> + * kvm_arm_mte_supported:
-> + *
-> + * Returns: true if KVM can enable MTE, and false otherwise.
-> + */
-> +bool kvm_arm_mte_supported(void);
-> +
->   /**
->    * kvm_arm_get_max_vm_ipa_size:
->    * @ms: Machine state handle
-> @@ -214,6 +221,8 @@ void kvm_arm_pvtime_init(ARMCPU *cpu, uint64_t ipa);
->   
->   int kvm_arm_set_irq(int cpu, int irqtype, int irq, int level);
->   
-> +void kvm_arm_enable_mte(Object *cpuobj, Error **errp);
-> +
->   #else
->   
->   /*
-> @@ -235,6 +244,11 @@ static inline bool kvm_arm_sve_supported(void)
->       return false;
->   }
->   
-> +static inline bool kvm_arm_mte_supported(void)
-> +{
-> +    return false;
-> +}
-> +
->   /*
->    * These functions should never actually be called without KVM support.
->    */
-> @@ -283,6 +297,11 @@ static inline uint32_t kvm_arm_sve_get_vls(ARMCPU *cpu)
->       g_assert_not_reached();
->   }
->   
-> +static inline void kvm_arm_enable_mte(Object *cpuobj, Error **errp)
-> +{
-> +    g_assert_not_reached();
-> +}
-> +
->   #endif
->   
->   #endif
+-- 
+2.39.5

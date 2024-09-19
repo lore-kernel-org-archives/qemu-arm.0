@@ -1,70 +1,70 @@
-Received: by 2002:a05:7022:f8d:b0:8a:132c:44a7 with SMTP id eg13csp85735dlb;
-        Wed, 18 Sep 2024 22:55:38 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVVs0AYxu6ayP1i7BHkoJP1KwEl24QQP/gTizO+fjgb1WFj3kW5l1X21fhuYOGMs193u6BRuxZMpYxo8Q==@linaro.org
-X-Google-Smtp-Source: AGHT+IGbCpyfK93jDX5sRG6E5Xrz8sKKd70+LvP2CilEFxR0ustYzup3JnwXxQDb6RPIoRKBnZT0
-X-Received: by 2002:a05:622a:5291:b0:458:38cf:410e with SMTP id d75a77b69052e-4599d23e041mr312178841cf.22.1726725338280;
-        Wed, 18 Sep 2024 22:55:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1726725338; cv=none;
+Received: by 2002:a05:7022:f8d:b0:8a:132c:44a7 with SMTP id eg13csp85801dlb;
+        Wed, 18 Sep 2024 22:55:57 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXIfm4X0WuOfS0fvnErPylh6+JM2DLtASAQT2l02xE+4oHjs5OpI/6VU2SUavpXlK+3mHyvu9fmmG/JJQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IFBtwTKig5/AFKstTk9W5cGpBvNEGpT7jtHbU/XZXGT7WWF6ZsFVNAGneWuryOAJriTizOd
+X-Received: by 2002:ac8:584c:0:b0:453:74cc:ce09 with SMTP id d75a77b69052e-4599d22410fmr386713251cf.8.1726725356929;
+        Wed, 18 Sep 2024 22:55:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1726725356; cv=none;
         d=google.com; s=arc-20240605;
-        b=XMZkJuQubOtuG+aSwNFhzeTzKy5+0frA9JCDGVwNen5lPOxd7jPBPrdd4PAqmVuvas
-         xtmnkcM6x6ixMxH7SpL3XQxIRDSOKPxIpEyo2I5vGUB2F/6Lhv5NTatFDC/PosSyhMYs
-         2XWgT2sHAqBo9GOTP3Sa7h8P+WG1SlJ+mlgO0rt3DuopROOC9iKtICHEEeKcRxS65gjX
-         fVH1SVpHJtaFC0BAr9A6u7Fq4U17j5zE3a7s+uqOm5mrfxLZzvRIRD5yXZGgXjIbC5np
-         Fd/f7F24gimY62SpopvzfzTj1ChIrSWfuCXafwDD0zF5TqPsrrVQsdGRZwaXEIODfs6s
-         j7xQ==
+        b=Bhr+/ba3Rm7lWvHRzSrl8u2q8uQ6Wi6S+gykOgC0thRhrxoOMjcO3nC4SCoFARiAjO
+         Q6Go3Tx1X/MYsVBF774ow1KTHOM9J3Uo14K9VOVlGmAaKOWcUX7xyQcnRjj7ZJzHHxtk
+         BlFoQqug8dVmpiGInvkMmAGWb1whjhQg81mKwiWsyFEpqIqcAsKGjbjSSWkS1ywjNZX8
+         B1il4osxhz0250eNGxDbMR5hu7nSZ/Rgm1uj68t9l0430HQtrW92RbpWKtTELCP/16Yn
+         MpXcZNId5dsV62kyu8Yaw57bgS6ELiAY9wh1vWY+6t80+/kgyFtBn7u/tPQdiW5z7tRT
+         J9ZA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=PzpT6+aTdwyBbXmISyMnjylr9Tqo17Pen5GywsaZS64=;
+        bh=98pJ/T3m6o/vwkHTQOMGhSZPRyUNpXswpE6iMAgcduo=;
         fh=33vV7fdwuF57f9/cQTMVCjJLx99l6PrD70Pt7L6JrPg=;
-        b=U8ZOy45avZVpEwDAVL2zQXGu7nl04G/iOMABI5CF/FhBkgd3PpRoQK+9w8V8/yl1hs
-         BuV9R5cjlI+t3ICtsnJMCvJMUmyhkX8fCfunZcUCR5Jl5SzO+Yy2LhXaCu5dh0284zPq
-         Bk1PY16Z8ucdf/ZcgY1PCo152ju23fKNpNQGCVQIANGUxZbv6Zr3EPhTeTqfveTR4gG8
-         Ix8zWXvsQNFeDKh4XoUqLvIIK15ZZgbz25jGuEmXU6rPp9yXGz4ORd8ouRJXOocrSAUO
-         P3+1c76JwJOcbhPSL7is8/v7Kwo9E//mp5+oaP3fGdM1kR6VM2Piuu6Y52Y82ulv+9EQ
-         GBhw==;
+        b=fM6EdM7xyJrJhvV8U6u0keiUXvBN9Sbuil60hJgI03MLA0CGq0BnnrtMpCbxvKrE1T
+         WevmHPvU+wilPZDFJDM7fAyukZpb/jIHt5pUxZj93qsju2XEvOG4KQksERybwi/jZhzW
+         tBwqHfZQ1YBRRZBVIBldw6+H58ncXQhQPBXK7wN22iC3a9DAMJPD2QIg6s9GRdbc/7/U
+         7sZaKdhzvveiHkR1SLkD32DYltmSVaRrQaE1u/+tsv2xRiMSx89SkLgbUAQWc7zMVsXD
+         O+JYk+xaOag5+3YnHlZY6b/wdQeDp5kRIMXTl4sWzHebEmc6iXH1Z1PSiUklx56yQDkr
+         Tivw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=A9VGJkm2;
+       dkim=pass header.i=@intel.com header.s=Intel header.b=TWo1KaSR;
        spf=pass (google.com: domain of zhao1.liu@intel.com designates 192.198.163.15 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 Return-Path: <zhao1.liu@intel.com>
 Received: from mgamail.intel.com (mgamail.intel.com. [192.198.163.15])
-        by mx.google.com with ESMTPS id d75a77b69052e-45b17931f19si12134001cf.562.2024.09.18.22.55.37
+        by mx.google.com with ESMTPS id d75a77b69052e-45b1792f416si10980571cf.563.2024.09.18.22.55.55
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 18 Sep 2024 22:55:38 -0700 (PDT)
+        Wed, 18 Sep 2024 22:55:56 -0700 (PDT)
 Received-SPF: pass (google.com: domain of zhao1.liu@intel.com designates 192.198.163.15 as permitted sender) client-ip=192.198.163.15;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=A9VGJkm2;
+       dkim=pass header.i=@intel.com header.s=Intel header.b=TWo1KaSR;
        spf=pass (google.com: domain of zhao1.liu@intel.com designates 192.198.163.15 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1726725338; x=1758261338;
+  t=1726725357; x=1758261357;
   h=from:to:cc:subject:date:message-id:in-reply-to:
    references:mime-version:content-transfer-encoding;
-  bh=8vg6cBFZQesBlTuKocwFM3B2ozeoI/WHoRcB8vhHX3k=;
-  b=A9VGJkm2dEYQKjCeC5POKwV3dJ1hEXzHOD0KBu80NjX9lP0XxhrLpo9O
-   hSNgG9OTQBpmqWXj9LFoHUZ+wSIWNjPzO767XrhULfrK4tmKnkoKKFjCT
-   qKBtCi3oMZAVomUPNicpeE5GPfVQ0WjQpc5Pj7dD1cqJEohJ9xNLDmbQx
-   Jh+SLYDMfjk/oFFlJRf60WL/6snSXkj8ZsuZIXo5AHCJvSivqcLIZwoQs
-   u6OXxOGQNB82Ud1G3ccWo5j9rHgUHyBiLVRoKFTXCFDatOfbsVvsrTwKR
-   VPiYxu6z6vx6eoWlCvSmjJNXHfg/2AUO0g+rp5kZw9HzjzYiYse57hRio
-   A==;
-X-CSE-ConnectionGUID: t9yQjkXtSXyG19otwtzzfw==
-X-CSE-MsgGUID: yRj7vQVxSR2B/rLPVjVpXQ==
-X-IronPort-AV: E=McAfee;i="6700,10204,11199"; a="25813443"
+  bh=/cMy+TVZMq4kWR7qIMuMwsU4jrTnlPcE1TIfBgg13Sg=;
+  b=TWo1KaSR3EkYxQ1t6iq7BdB7ubeIThuDZWRwjP7Ov5TUprxGb0y2w7A+
+   HQKdTRxDUxUHAk3T8XRJvbyF425KIRE1x3EN4lN2G6DET6pe54wBtSM/G
+   yMsiuapKj42y4pRY0+2hgQqCbTcM3aMFXMPZhmL7I3Tdut1kbTr+brXNf
+   9eAqSwB+77NDhkzZxioOJausmjZbKf2UNCIX39EeQNCZp1sXi2eLVloTG
+   BvycP17UlZZhiGWNIhBl3egxSVPxAhxMci8JDUMs8fxupanfFnq5Pjrup
+   WpFFXX0oYcnasgX/iVGYFfCZnmSow8PkwRjCzu5AbGW56xEgtRcgsayqy
+   g==;
+X-CSE-ConnectionGUID: 1ykXxMvEQIWpIn6wZsFVgA==
+X-CSE-MsgGUID: hFzedO+WSTWHLDcrL9Kvjg==
+X-IronPort-AV: E=McAfee;i="6700,10204,11199"; a="25813473"
 X-IronPort-AV: E=Sophos;i="6.10,240,1719903600"; 
-   d="scan'208";a="25813443"
+   d="scan'208";a="25813473"
 Received: from fmviesa006.fm.intel.com ([10.60.135.146])
-  by fmvoesa109.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Sep 2024 22:55:37 -0700
-X-CSE-ConnectionGUID: bQQEQDoBRhGmcoS6NdtmMA==
-X-CSE-MsgGUID: oV7dFcGcTuSTNDb8wim0HA==
+  by fmvoesa109.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Sep 2024 22:55:43 -0700
+X-CSE-ConnectionGUID: HLpTBuCBQpubXQuDEb2ZXA==
+X-CSE-MsgGUID: hbxUqHsUT/+8D401YpRrJQ==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.10,240,1719903600"; 
-   d="scan'208";a="69418610"
+   d="scan'208";a="69418634"
 Received: from liuzhao-optiplex-7080.sh.intel.com ([10.239.160.36])
-  by fmviesa006.fm.intel.com with ESMTP; 18 Sep 2024 22:55:31 -0700
+  by fmviesa006.fm.intel.com with ESMTP; 18 Sep 2024 22:55:37 -0700
 From: Zhao Liu <zhao1.liu@intel.com>
 To: =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
 	Igor Mammedov <imammedo@redhat.com>,
@@ -92,142 +92,65 @@ Cc: qemu-devel@nongnu.org,
 	Dapeng Mi <dapeng1.mi@linux.intel.com>,
 	Yongwei Ma <yongwei.ma@intel.com>,
 	Zhao Liu <zhao1.liu@intel.com>
-Subject: [RFC v2 01/12] qdev: Allow qdev_device_add() to add specific category device
-Date: Thu, 19 Sep 2024 14:11:17 +0800
-Message-Id: <20240919061128.769139-2-zhao1.liu@intel.com>
+Subject: [RFC v2 02/12] qdev: Introduce new device category to cover basic topology device
+Date: Thu, 19 Sep 2024 14:11:18 +0800
+Message-Id: <20240919061128.769139-3-zhao1.liu@intel.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240919061128.769139-1-zhao1.liu@intel.com>
 References: <20240919061128.769139-1-zhao1.liu@intel.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: DTelSlJu+l5V
+X-TUID: S8/3Xmi3tQKK
 
-Topology devices need to be created and realized before board
-initialization.
+Topology devices are used to define CPUs and need to be created and
+realized earlier than current qemu_create_cli_devices().
 
-Allow qdev_device_add() to specify category to help create topology
-devices early.
+Use this new catogory to identify such special devices, which allows
+to create them earlier in subsequent change.
 
 Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
 ---
- hw/net/virtio-net.c    |  2 +-
- hw/usb/xen-usb.c       |  3 ++-
- include/monitor/qdev.h |  4 ++--
- system/qdev-monitor.c  | 12 ++++++++----
- system/vl.c            |  4 ++--
- 5 files changed, 15 insertions(+), 10 deletions(-)
+ hw/cpu/cpu-topology.c  | 2 +-
+ include/hw/qdev-core.h | 1 +
+ system/qdev-monitor.c  | 1 +
+ 3 files changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/hw/net/virtio-net.c b/hw/net/virtio-net.c
-index fb84d142ee29..0d92e09e9076 100644
---- a/hw/net/virtio-net.c
-+++ b/hw/net/virtio-net.c
-@@ -935,7 +935,7 @@ static void failover_add_primary(VirtIONet *n, Error **errp)
-         return;
-     }
+diff --git a/hw/cpu/cpu-topology.c b/hw/cpu/cpu-topology.c
+index 3e8982ff7e6c..ce3da844a7d8 100644
+--- a/hw/cpu/cpu-topology.c
++++ b/hw/cpu/cpu-topology.c
+@@ -164,7 +164,7 @@ static void cpu_topo_class_init(ObjectClass *oc, void *data)
+     DeviceClass *dc = DEVICE_CLASS(oc);
+     CPUTopoClass *tc = CPU_TOPO_CLASS(oc);
  
--    dev = qdev_device_add_from_qdict(n->primary_opts,
-+    dev = qdev_device_add_from_qdict(n->primary_opts, NULL,
-                                      n->primary_opts_from_json,
-                                      &err);
-     if (err) {
-diff --git a/hw/usb/xen-usb.c b/hw/usb/xen-usb.c
-index 13901625c0c8..e4168b1fec7e 100644
---- a/hw/usb/xen-usb.c
-+++ b/hw/usb/xen-usb.c
-@@ -766,7 +766,8 @@ static void usbback_portid_add(struct usbback_info *usbif, unsigned port,
-     qdict_put_str(qdict, "hostport", portname);
-     opts = qemu_opts_from_qdict(qemu_find_opts("device"), qdict,
-                                 &error_abort);
--    usbif->ports[port - 1].dev = USB_DEVICE(qdev_device_add(opts, &local_err));
-+    usbif->ports[port - 1].dev = USB_DEVICE(
-+                                     qdev_device_add(opts, NULL, &local_err));
-     if (!usbif->ports[port - 1].dev) {
-         qobject_unref(qdict);
-         xen_pv_printf(&usbif->xendev, 0,
-diff --git a/include/monitor/qdev.h b/include/monitor/qdev.h
-index 1d57bf657794..f5fd6e6c1ffc 100644
---- a/include/monitor/qdev.h
-+++ b/include/monitor/qdev.h
-@@ -8,8 +8,8 @@ void hmp_info_qdm(Monitor *mon, const QDict *qdict);
- void qmp_device_add(QDict *qdict, QObject **ret_data, Error **errp);
+-    set_bit(DEVICE_CATEGORY_CPU, dc->categories);
++    set_bit(DEVICE_CATEGORY_CPU_DEF, dc->categories);
+     dc->realize = cpu_topo_realize;
  
- int qdev_device_help(QemuOpts *opts);
--DeviceState *qdev_device_add(QemuOpts *opts, Error **errp);
--DeviceState *qdev_device_add_from_qdict(const QDict *opts,
-+DeviceState *qdev_device_add(QemuOpts *opts, long *category, Error **errp);
-+DeviceState *qdev_device_add_from_qdict(const QDict *opts, long *category,
-                                         bool from_json, Error **errp);
- 
- /**
+     /*
+diff --git a/include/hw/qdev-core.h b/include/hw/qdev-core.h
+index 77223b28c788..ddcaa329e3ec 100644
+--- a/include/hw/qdev-core.h
++++ b/include/hw/qdev-core.h
+@@ -86,6 +86,7 @@ typedef enum DeviceCategory {
+     DEVICE_CATEGORY_SOUND,
+     DEVICE_CATEGORY_MISC,
+     DEVICE_CATEGORY_CPU,
++    DEVICE_CATEGORY_CPU_DEF,
+     DEVICE_CATEGORY_WATCHDOG,
+     DEVICE_CATEGORY_MAX
+ } DeviceCategory;
 diff --git a/system/qdev-monitor.c b/system/qdev-monitor.c
-index 457dfd05115e..fe120353fedc 100644
+index fe120353fedc..07863d4e650a 100644
 --- a/system/qdev-monitor.c
 +++ b/system/qdev-monitor.c
-@@ -632,7 +632,7 @@ const char *qdev_set_id(DeviceState *dev, char *id, Error **errp)
-     return prop->name;
- }
- 
--DeviceState *qdev_device_add_from_qdict(const QDict *opts,
-+DeviceState *qdev_device_add_from_qdict(const QDict *opts, long *category,
-                                         bool from_json, Error **errp)
- {
-     ERRP_GUARD();
-@@ -655,6 +655,10 @@ DeviceState *qdev_device_add_from_qdict(const QDict *opts,
-         return NULL;
-     }
- 
-+    if (category && !test_bit(*category, dc->categories)) {
-+        return NULL;
-+    }
-+
-     /* find bus */
-     path = qdict_get_try_str(opts, "bus");
-     if (path != NULL) {
-@@ -767,12 +771,12 @@ err_del_dev:
- }
- 
- /* Takes ownership of @opts on success */
--DeviceState *qdev_device_add(QemuOpts *opts, Error **errp)
-+DeviceState *qdev_device_add(QemuOpts *opts, long *category, Error **errp)
- {
-     QDict *qdict = qemu_opts_to_qdict(opts, NULL);
-     DeviceState *ret;
- 
--    ret = qdev_device_add_from_qdict(qdict, false, errp);
-+    ret = qdev_device_add_from_qdict(qdict, category, false, errp);
-     if (ret) {
-         qemu_opts_del(opts);
-     }
-@@ -897,7 +901,7 @@ void qmp_device_add(QDict *qdict, QObject **ret_data, Error **errp)
-         qemu_opts_del(opts);
-         return;
-     }
--    dev = qdev_device_add(opts, errp);
-+    dev = qdev_device_add(opts, NULL, errp);
-     if (!dev) {
-         /*
-          * Drain all pending RCU callbacks. This is done because
-diff --git a/system/vl.c b/system/vl.c
-index 193e7049ccbe..c40364e2f091 100644
---- a/system/vl.c
-+++ b/system/vl.c
-@@ -1212,7 +1212,7 @@ static int device_init_func(void *opaque, QemuOpts *opts, Error **errp)
- {
-     DeviceState *dev;
- 
--    dev = qdev_device_add(opts, errp);
-+    dev = qdev_device_add(opts, NULL, errp);
-     if (!dev && *errp) {
-         error_report_err(*errp);
-         return -1;
-@@ -2665,7 +2665,7 @@ static void qemu_create_cli_devices(void)
-          * from the start, so call qdev_device_add_from_qdict() directly for
-          * now.
-          */
--        dev = qdev_device_add_from_qdict(opt->opts, true, &error_fatal);
-+        dev = qdev_device_add_from_qdict(opt->opts, NULL, true, &error_fatal);
-         object_unref(OBJECT(dev));
-         loc_pop(&opt->loc);
-     }
+@@ -179,6 +179,7 @@ static void qdev_print_devinfos(bool show_no_user)
+         [DEVICE_CATEGORY_SOUND]   = "Sound",
+         [DEVICE_CATEGORY_MISC]    = "Misc",
+         [DEVICE_CATEGORY_CPU]     = "CPU",
++        [DEVICE_CATEGORY_CPU_DEF] = "CPU Definition",
+         [DEVICE_CATEGORY_WATCHDOG]= "Watchdog",
+         [DEVICE_CATEGORY_MAX]     = "Uncategorized",
+     };
 -- 
 2.34.1

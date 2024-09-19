@@ -1,256 +1,305 @@
-Received: by 2002:a17:504:1bc1:b0:1be9:327d:8ee3 with SMTP id v1csp1119035njg;
-        Wed, 18 Sep 2024 19:02:05 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCXHG6N6pKRZHDYNGyP1Bgso0PIIq7JYJWyiUxNnqFZTCpLs8iw5rY52TjcHDW+eQ6QHNPcwZb6Luyx+0Q==@linaro.org
-X-Google-Smtp-Source: AGHT+IEjg3SC0vpXnE0l6/uRRWguWkDOr9C+2wTvhOjDzok8gWOEoHg2AShPHS+wXokwUGQcmQVF
-X-Received: by 2002:a05:6512:2216:b0:52c:e10b:cb33 with SMTP id 2adb3069b0e04-5367ff32872mr14804843e87.50.1726711325016;
-        Wed, 18 Sep 2024 19:02:05 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1726711325; cv=pass;
+Received: by 2002:a17:504:1bc1:b0:1be9:327d:8ee3 with SMTP id v1csp1112625njg;
+        Wed, 18 Sep 2024 18:39:59 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXNeDPWfSvEm+aSpR4jEx7Vbk/jmYk4I0s8R8eQK5u7N+UjTcIcIWVfMJl+byiwPzLEHagpwZpVAHNSsA==@linaro.org
+X-Google-Smtp-Source: AGHT+IE0tvQMxv+Xg/TAFqMvL2PNYj+wp/QsvaHwIasUtXsPzndpPa+KCGMvLozvP/YDpb6yMRCF
+X-Received: by 2002:ac8:5f08:0:b0:458:429a:4d76 with SMTP id d75a77b69052e-45860329286mr344689641cf.28.1726709999137;
+        Wed, 18 Sep 2024 18:39:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1726709999; cv=none;
         d=google.com; s=arc-20240605;
-        b=X3jG15wFqovwc3+Ai9moG7Hvh4D+9xAS4ku6d7V/iuS2RHFheaAwl0aeM2doUF4EqA
-         lji97/hIdhAC72jCragFDtMpBzv38/eoXDQ7lsG7dVH7nxXCRZc57lodpPzLnDrNqxge
-         EpVY3FOLQDB4RHrU0eiSszSkuEXiX2cNIGeeFi/zSkRLHR9K7IgRguDi7t3o+rKvqd9a
-         YxpmpTsJKUAiVBfCT3BQ5f+I2UPdtriS22yvKqW+hsR/UcJuaPFbjgtt+70TLtShy4bS
-         aXet5kIY6vC9mExJox4XEjBCj7ya1h3iMASODjN7EJrxsGiE3hnhE8UUfwXSDiVSvHbr
-         edBw==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=mime-version:content-transfer-encoding:msip_labels:content-language
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:subject:cc:to:from:dkim-signature;
-        bh=joTtLr6+YIx1dv9cOXDi15iAUWkeRboaWU30VEpkOrU=;
-        fh=yyD7blXiOhz/g/aNawLLYjUrfN9ISD07hv8C778sbNM=;
-        b=ig24+XTMJFQ71d5F/rRzIvN+063BSHI1S6rokN+VM/nnZMbJPelyyl8CyOkV/DyP+K
-         yZ8w031aoA9xxeq9ClTB25HdmuHQYB/86Z6woeMiVumow6cH+m4Avx142OeUlaFy59kG
-         2jCyojc7kTC2o/vX0gq/gRbM+F63PUy9+zhHjhSPdjrQeH2g38aJ+6pwqUQkev68sJRX
-         IjR+6qE+vWhvUayAYIxSu0H5l+/dDRX+f0Hwkn7Z6xLug/cA9chppoNB8nhmIXsikoTR
-         ktz8/WkXY9rHLRL8uiByc1IOeRtMlOa5y2GPGUZ1U8gETh1H2xtf33Z/JE6x+pZSoI8M
-         JWRQ==;
+        b=dk+UyhL9wnMJoi3lm/P+khHnQYd7pDAAuC8G8MbZNGWWF8uRTxU+hUthgU6rD2Jtw3
+         Dtb2qLKJFI2kgI3ZQyh5RQfO4JgIdJFxL526VYPQfxHOXVxdIM88JvvVyyc5sDQbd6z2
+         FckIZ1G3FbmN86i71jzV8ClYd7m8bVLBGvF6YlaHZnbwITdNwYtxKrhkouZDDZVrBehB
+         xu8MGnP7IWAXSeW30xAWhJX//OU0NO8uYgYceC9KcE6s9mW6C+BoYjju6XNc+IWF7zmC
+         T53Fhh/AGL14f7P12qKLJLKEGHW9oFyrtEtou43kWMJ546jszy9e3WVJYHx1ZnD07bcV
+         eMpw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=X10jQlTYpcxg9AXNQn62SdrpQH11nnZd311IskdLLH0=;
+        fh=N9JXs6UlidM8EsUInW73fWjlYrhprlUzJ9DsuKSk+BQ=;
+        b=UQgGQRlZ8tc482CuJS88dnuIyWxdgTe3c3nbrNTHX+quOLtBBB+d5tdawjbh2bXwjz
+         Ao1huSr8wA4ShYkOp6su7DOcSJOpDCoEXB/P8/Pk+pLK3uYlcrWe1mH+mJ5EzEXv7MLu
+         xBndX4P272JwaWYfodFOzDeFTSaghWq4azuwjcBl4N9z2+hyoIFuAVT/fM6F/HSCZS/1
+         XPz86fxOwwzcJJOekns9lFrl6EVDZIGLXP+67JWU9bPiY7ieypKuvufrn1PYv21oD82X
+         z6l9zaKPc1tAKwPvxOlwv5P3c2jtqeRqFa6Rk7bBmQOJONxdpjKcS6si9N86AIDtKcEM
+         qlKA==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@fujitsu.com header.s=fj1 header.b=hvU54lDf;
-       arc=pass (i=1 spf=pass spfdomain=fujitsu.com dkim=pass dkdomain=fujitsu.com dmarc=pass fromdomain=fujitsu.com);
-       spf=pass (google.com: domain of yaoxt.fnst@fujitsu.com designates 68.232.156.101 as permitted sender) smtp.mailfrom=yaoxt.fnst@fujitsu.com;
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=fujitsu.com
-Return-Path: <yaoxt.fnst@fujitsu.com>
-Received: from esa14.fujitsucc.c3s2.iphmx.com (esa14.fujitsucc.c3s2.iphmx.com. [68.232.156.101])
-        by mx.google.com with ESMTPS id 2adb3069b0e04-536870bc4a2si3857244e87.608.2024.09.18.19.02.03
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 18 Sep 2024 19:02:04 -0700 (PDT)
-Received-SPF: pass (google.com: domain of yaoxt.fnst@fujitsu.com designates 68.232.156.101 as permitted sender) client-ip=68.232.156.101;
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@intel.com header.s=Intel header.b="kHdg/piR";
+       spf=pass (google.com: domain of zhao1.liu@intel.com designates 192.198.163.15 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Return-Path: <zhao1.liu@intel.com>
+Received: from mgamail.intel.com (mgamail.intel.com. [192.198.163.15])
+        by mx.google.com with ESMTPS id d75a77b69052e-45b1786bff5si7491951cf.99.2024.09.18.18.39.58
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 18 Sep 2024 18:39:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of zhao1.liu@intel.com designates 192.198.163.15 as permitted sender) client-ip=192.198.163.15;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@fujitsu.com header.s=fj1 header.b=hvU54lDf;
-       arc=pass (i=1 spf=pass spfdomain=fujitsu.com dkim=pass dkdomain=fujitsu.com dmarc=pass fromdomain=fujitsu.com);
-       spf=pass (google.com: domain of yaoxt.fnst@fujitsu.com designates 68.232.156.101 as permitted sender) smtp.mailfrom=yaoxt.fnst@fujitsu.com;
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=fujitsu.com
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
-  d=fujitsu.com; i=@fujitsu.com; q=dns/txt; s=fj1;
-  t=1726711325; x=1758247325;
-  h=from:to:cc:subject:date:message-id:references:
-   in-reply-to:content-transfer-encoding:mime-version;
-  bh=joTtLr6+YIx1dv9cOXDi15iAUWkeRboaWU30VEpkOrU=;
-  b=hvU54lDftiM5l9tboBhog2lzkvogIrccvMZNHnYIM8SuJyjXqdNPCarC
-   6kKZ2UnjBymi9U1ZqOWy6dapBRfg4LOO9wijZGVqENNKPQ9dnXgiNIZi1
-   V7TdHqIPvQTYcDVqqRCiaNvvxHxZT+vr036FgPy6boVXyMWixSqrEY6aN
-   zYsx4NfqVw+5aq6uxcfEoNa/+ZO/DnWd4HcHCMGBAX5hmJl84RdfuETIE
-   a6S7h3xqGuxjIbq1rg1jxyKkWJkNFltzuI8/ESzHvbUiwgx5PBTQ4tn5y
-   qeRuMQh231rYUKNYLDkSpAsMyfO8upMg9AfGSy7s14ciTLq193/gbVZ29
-   w==;
-X-CSE-ConnectionGUID: 5l6tvzCzQtO08pCzykJThw==
-X-CSE-MsgGUID: rdpuDmMrSIaQeQyFEDJb7w==
-X-IronPort-AV: E=McAfee;i="6700,10204,11168"; a="130736012"
-X-IronPort-AV: E=Sophos;i="6.10,157,1719846000"; 
-   d="scan'208";a="130736012"
-Received: from mail-japanwestazlp17010002.outbound.protection.outlook.com (HELO OS0P286CU011.outbound.protection.outlook.com) ([40.93.130.2])
-  by ob1.fujitsucc.c3s2.iphmx.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 19 Sep 2024 11:01:47 +0900
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=b/u/qct9hTR3f6zYo71Ne+K2Q1XyYHlrBVhf2fHag2KsOSsiEqO3kqk7JaCbbcOIYzlfMBdJwSnPgu2m3tHhvcu/t8g8agLk5I7uljL0jb7WKXOFarxTUjN4/48zR72xITVuyPgZq5QZqUdDBJlYwuf2fj1BYE4yCheL8fhkfILGLRlx2mh1vsBA3mFRDwdPVuNZCT7xhhh4OK3F24dbPlIAsfGXFiDF6Rcw+TNGMMtB93HzIMJHUwDIEJVmg5ZEhyevCUnziArCVEOd6GTBw2c6l/37jWoVpZRyNHy1lUpZisIx1Eg4+zFJ9Dc5kIwQqVWRQwh7UXeMli+dpzRUlQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=joTtLr6+YIx1dv9cOXDi15iAUWkeRboaWU30VEpkOrU=;
- b=VGeJzdkZ1GDOAJh1sEo0TWrL+lWnEK7mHI8Q51KlujcCuCbYs/z8UjsahNq/kX+fq6Jun8DQISqNjCDcrmAHAPTbWiCTEbLj0DLwB91TLtQzNX62zIjKgcWP56SgSuzkqgfjfD78NlgUzmTiDB6Ajev5LYR4xgHkb6WXKLIwgufpBJdZ7E+7wobIReGUESLXdJuTrnRUo8T3UB3pM3cfrFH6zz4RlWFgyQt+i9lw3GZHjTTPPp3U1Jj6zvWK5euP0HDTjSrn7c+SFbKiCh5Q+Hg5bDhWsrgDHydvYFHtpy+xG2wS4rm/NZTMRnv2R02Ed9QSqtoM/vtmRim+9NIRvg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=fujitsu.com; dmarc=pass action=none header.from=fujitsu.com;
- dkim=pass header.d=fujitsu.com; arc=none
-Received: from OSZPR01MB6453.jpnprd01.prod.outlook.com (2603:1096:604:ed::14)
- by TYWPR01MB11272.jpnprd01.prod.outlook.com (2603:1096:400:3f6::5) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7982.16; Thu, 19 Sep
- 2024 02:01:43 +0000
-Received: from OSZPR01MB6453.jpnprd01.prod.outlook.com
- ([fe80::9ef5:e83:9047:de11]) by OSZPR01MB6453.jpnprd01.prod.outlook.com
- ([fe80::9ef5:e83:9047:de11%6]) with mapi id 15.20.7962.022; Thu, 19 Sep 2024
- 02:01:42 +0000
-From: "Xingtao Yao (Fujitsu)" <yaoxt.fnst@fujitsu.com>
-To: Pierrick Bouvier <pierrick.bouvier@linaro.org>, "qemu-devel@nongnu.org"
-	<qemu-devel@nongnu.org>
-CC: Jason Wang <jasowang@redhat.com>, =?utf-8?B?QWxleCBCZW5uw6ll?=
-	<alex.bennee@linaro.org>, Laurent Vivier <lvivier@redhat.com>, Marcelo
- Tosatti <mtosatti@redhat.com>, Nicholas Piggin <npiggin@gmail.com>, Klaus
- Jensen <its@irrelevant.dk>, WANG Xuerui <git@xen0n.name>, Halil Pasic
-	<pasic@linux.ibm.com>, Rob Herring <robh@kernel.org>, Michael Rolnik
-	<mrolnik@gmail.com>, Zhao Liu <zhao1.liu@intel.com>, Peter Maydell
-	<peter.maydell@linaro.org>, Richard Henderson <richard.henderson@linaro.org>,
-	Fabiano Rosas <farosas@suse.de>, Corey Minyard <minyard@acm.org>, Keith Busch
-	<kbusch@kernel.org>, Thomas Huth <thuth@redhat.com>, "Maciej S. Szmigiero"
-	<maciej.szmigiero@oracle.com>, Harsh Prateek Bora <harshpb@linux.ibm.com>,
-	Kevin Wolf <kwolf@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, Jesper
- Devantier <foss@defmacro.it>, Hyman Huang <yong.huang@smartx.com>,
-	=?utf-8?B?UGhpbGlwcGUgTWF0aGlldS1EYXVkw6k=?= <philmd@linaro.org>, Palmer
- Dabbelt <palmer@dabbelt.com>, "qemu-s390x@nongnu.org"
-	<qemu-s390x@nongnu.org>, Laurent Vivier <laurent@vivier.eu>,
-	"qemu-riscv@nongnu.org" <qemu-riscv@nongnu.org>, "Richard W.M. Jones"
-	<rjones@redhat.com>, Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, Aurelien
- Jarno <aurelien@aurel32.net>, =?utf-8?B?RGFuaWVsIFAuIEJlcnJhbmfDqQ==?=
-	<berrange@redhat.com>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	"kvm@vger.kernel.org" <kvm@vger.kernel.org>, Christian Borntraeger
-	<borntraeger@linux.ibm.com>, Akihiko Odaki <akihiko.odaki@daynix.com>, Daniel
- Henrique Barboza <dbarboza@ventanamicro.com>, Hanna Reitz
-	<hreitz@redhat.com>, Ani Sinha <anisinha@redhat.com>, "qemu-ppc@nongnu.org"
-	<qemu-ppc@nongnu.org>, =?utf-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?=
-	<marcandre.lureau@redhat.com>, Alistair Francis <alistair.francis@wdc.com>,
-	Bin Meng <bmeng.cn@gmail.com>, "Michael S. Tsirkin" <mst@redhat.com>, Helge
- Deller <deller@gmx.de>, Peter Xu <peterx@redhat.com>, Daniel Henrique Barboza
-	<danielhb413@gmail.com>, Dmitry Fleytman <dmitry.fleytman@gmail.com>, Nina
- Schoetterl-Glausch <nsg@linux.ibm.com>, Yanan Wang <wangyanan55@huawei.com>,
-	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, Igor Mammedov
-	<imammedo@redhat.com>, Jean-Christophe Dubois <jcd@tribudubois.net>, Eric
- Farman <farman@linux.ibm.com>, Sriram Yagnaraman
-	<sriram.yagnaraman@ericsson.com>, "qemu-block@nongnu.org"
-	<qemu-block@nongnu.org>, Stefan Berger <stefanb@linux.vnet.ibm.com>, Joel
- Stanley <joel@jms.id.au>, Eduardo Habkost <eduardo@habkost.net>, David Gibson
-	<david@gibson.dropbear.id.au>, Fam Zheng <fam@euphon.net>, Weiwei Li
-	<liwei1518@gmail.com>, Markus Armbruster <armbru@redhat.com>
-Subject: RE: [PATCH v2 00/48] Use g_assert_not_reached instead of
- (g_)assert(0, false)
-Thread-Topic: [PATCH v2 00/48] Use g_assert_not_reached instead of
- (g_)assert(0, false)
-Thread-Index: AQHbBOcD6IgVKZuIjkK8WaTrDJ6NE7JU78/AgAkvXgCAADo4YA==
-Date: Thu, 19 Sep 2024 02:01:42 +0000
-Message-ID:
- <OSZPR01MB6453F232C6C3877C10A7106A8D632@OSZPR01MB6453.jpnprd01.prod.outlook.com>
-References: <20240912073921.453203-1-pierrick.bouvier@linaro.org>
- <OSZPR01MB6453486D937E15FBF6AEAD018D652@OSZPR01MB6453.jpnprd01.prod.outlook.com>
- <fada9192-1f49-4ccc-a3e0-30f17459eb31@linaro.org>
-In-Reply-To: <fada9192-1f49-4ccc-a3e0-30f17459eb31@linaro.org>
-Accept-Language: zh-CN, en-US
-Content-Language: zh-CN
-X-MS-Has-Attach:
-X-MS-TNEF-Correlator:
-msip_labels:
- =?utf-8?B?TVNJUF9MYWJlbF8xZTkyZWY3My0wYWQxLTQwYzUtYWQ1NS00NmRlMzM5Njgw?=
- =?utf-8?B?MmZfQWN0aW9uSWQ9NDQ0Y2ZkZTEtNzI3Yy00NWY5LWJkZTAtZGI4NzYwYmYz?=
- =?utf-8?B?NzRkO01TSVBfTGFiZWxfMWU5MmVmNzMtMGFkMS00MGM1LWFkNTUtNDZkZTMz?=
- =?utf-8?B?OTY4MDJmX0NvbnRlbnRCaXRzPTA7TVNJUF9MYWJlbF8xZTkyZWY3My0wYWQx?=
- =?utf-8?B?LTQwYzUtYWQ1NS00NmRlMzM5NjgwMmZfRW5hYmxlZD10cnVlO01TSVBfTGFi?=
- =?utf-8?B?ZWxfMWU5MmVmNzMtMGFkMS00MGM1LWFkNTUtNDZkZTMzOTY4MDJmX01ldGhv?=
- =?utf-8?B?ZD1Qcml2aWxlZ2VkO01TSVBfTGFiZWxfMWU5MmVmNzMtMGFkMS00MGM1LWFk?=
- =?utf-8?B?NTUtNDZkZTMzOTY4MDJmX05hbWU9RlVKSVRTVS1QVUJMSUPigIs7TVNJUF9M?=
- =?utf-8?B?YWJlbF8xZTkyZWY3My0wYWQxLTQwYzUtYWQ1NS00NmRlMzM5NjgwMmZfU2V0?=
- =?utf-8?B?RGF0ZT0yMDI0LTA5LTE5VDAxOjE2OjU3WjtNU0lQX0xhYmVsXzFlOTJlZjcz?=
- =?utf-8?B?LTBhZDEtNDBjNS1hZDU1LTQ2ZGUzMzk2ODAyZl9TaXRlSWQ9YTE5ZjEyMWQt?=
- =?utf-8?Q?81e1-4858-a9d8-736e267fd4c7;?=
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=fujitsu.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: OSZPR01MB6453:EE_|TYWPR01MB11272:EE_
-x-ms-office365-filtering-correlation-id: 456dde57-dcad-4443-f033-08dcd84f0214
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam:
- BCL:0;ARA:13230040|7416014|366016|376014|1800799024|38070700018|1580799027;
-x-microsoft-antispam-message-info:
- =?utf-8?B?YUFPd3BIQmZDV08waG1lV0pKNnZiVXkwZFd1QnllR3hiSWE3eUU2aWl5UWs4?=
- =?utf-8?B?U2lFTWxBUks0b1c5MkxaVUxQOENsZnp6WWpob1J1OWMySzU5WFBTdDFZb1U2?=
- =?utf-8?B?akRRa2xORDRIczlweEUzZHhhdVhLNCt1aW5keWZXbC9ENm5PWTFHR1pjbTF5?=
- =?utf-8?B?ZFBySTZ2a1IzWUNMSnlXRWtSUTMvQmYyU3RHMHFaU0tGZ2I0T1lhZmQ5RTlI?=
- =?utf-8?B?djlxTmNDR1NBK2NSWVp1aHI5Vmp0SlhxQ3M2bk9RdE4yai9PZERpT1RpTmJB?=
- =?utf-8?B?VUI5RE1jbTVpTHZJRzBpaGxOOW9vUldIT0h2dFI0S05ybUhmOW5vVW1uUVR5?=
- =?utf-8?B?TGtrVFRhNGk1cG94MnVwTWFRQk9KVHpEOVlXcjUyUGlQVmJ0RVNMVTRlamZz?=
- =?utf-8?B?MzhuSTFHaWdNQndoVjJVUUdsNGZKWFErR1FMdTFmditTUjJoOEFuSVNIelRj?=
- =?utf-8?B?UGQwd2J5aGtVV1FZZGdRazJsZ2U3OWdSb2diY0JXWXM3aEo3YUtQLyttWENq?=
- =?utf-8?B?L2JRVFNlMm5FYjhhamdnb3JRc3NHZm1pdFBGb0IxTzB3Q2s1eFFMYlZNUjZi?=
- =?utf-8?B?VU1saGRRWk5TUThrdzZ0bGg1V2duNW1OdVZXbDJXOWFKRy9ZZTQxbGJkL1lU?=
- =?utf-8?B?a3RlcDYvK2xORE1ibDFCUFZMR2crQ1JJakNsa0hINnI4Wjc0UmpOKzUvWTMy?=
- =?utf-8?B?TnRwY2I2Y25RZEtEeEpUZTBLWTk4Ylo5d2V6MURCR1Y3M2R0aVRDek1rTVgz?=
- =?utf-8?B?NVZNWkVVcnk3TW9VV0hZcTZGbGVxd2JZdkg1bzhZSTNNWlROMUxWQU5vY0o4?=
- =?utf-8?B?KysxOUFuUTJBL1FuNkFtR0V0NUpBbnZxekpYQXNTVUM4RE9sR1M4c3BKK3dX?=
- =?utf-8?B?SHM0S2V6ZDE3VHpGSnV0eVhoczdRejZRNWpvdkdpT0ZZQjNkcFI2aGN0Y1p3?=
- =?utf-8?B?WmxIcUNNK0hLM3NJQzZIaWhjVmZJT09JMVRzL002ZGRvaldvN3lLbkl2Z0pH?=
- =?utf-8?B?VE1OUG8vcFZ2cWdSY1ZialFYaitGOGNUbEhyd2FGanF1OE51a0xCSUw3T1Jo?=
- =?utf-8?B?SzhJZGxCcmJnK1JpOXNFV3FsUmJxbXBIak9tNTFLS01LSW5XQ1dobGtWT1JG?=
- =?utf-8?B?cDB6WXR6QWtFYWh4NzVvNERtbjFTQkZrT0daYVNDQUZmY3lhNEt1bUozL1p1?=
- =?utf-8?B?TFRtam9OemZoMHVXNEM0ZkE0Zy9rWnJqK09xM3hDOXBRWlBUM1B6aUhyR2FV?=
- =?utf-8?B?eVl1MFp4ZkEvSkpad1ZiU0Z3YU1idU1GK1FUNnZoQmp2Vk90bElicDFvZzl4?=
- =?utf-8?B?dUxNNlZxbFZsODdub1Jld3U1cmFXUzVReDE0bUorRWhRRWN3Qldzb2pGSldR?=
- =?utf-8?B?ZEkyZktHd2M2RDNrUkk5R1FYdmdMc2V0VDhpd0QrVnVpQlo3N0tnOXlRN21D?=
- =?utf-8?B?SW1qeXU3YVl6MmdTWXpYRU9SNUlvMnR3dEsxZXJ2dEx0U083K25GQm9xdUlw?=
- =?utf-8?B?NEJ6ZVJjK1cxZXBqWmtoY1RGMDQyUmJqKzRHTXhQbnI0WXZRRHY2UTAwNnBH?=
- =?utf-8?B?MWsrVHg5cDVYMGRCWDZCNytqRmlqb1pGbk12aHdqK1dXbm93cHJONytncmZH?=
- =?utf-8?B?eFYrMitUWHNOUVNtYVNIVVVTWld6ZmI5THpTelNreTc2QzgvUTRYWC95QWxo?=
- =?utf-8?B?WDJOT042Sld5ZmhZOG1hT1RrRnI5czVIUjFIbllST0ZXTHVUaGlRVndBbkp4?=
- =?utf-8?B?UnhEaUxGQTNDS2J5b295U0tDUHhRN0oxR3c1eXBPNHp2dGRKTzNCR1JRT0ZS?=
- =?utf-8?B?aTRSbU1IdDVDQlVDbEhZSUVWc1dTaStkTHFCNGhTT3dSUURVd1RkbjJVOFFv?=
- =?utf-8?B?bDQyM25QRmhjQVRRdzBMeHBjaEJYSnhrblI1Qk9Qc0djcExHdW9wWkVySTFj?=
- =?utf-8?Q?p42L10k+TEo=3D?=
-x-forefront-antispam-report:
- CIP:255.255.255.255;CTRY:;LANG:zh-cn;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:OSZPR01MB6453.jpnprd01.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(7416014)(366016)(376014)(1800799024)(38070700018)(1580799027);DIR:OUT;SFP:1101;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0:
- =?utf-8?B?aitzU2RRMmlwUGIvSlNRVEtJNXlpNFMxcEl1ZGN2OFA2VXdDMi9XeXBENGRS?=
- =?utf-8?B?MzdDZytnK3U1Yk9XNVdpQmVaaTNWME1WQWVvV1ExWkJOVitTdWd1ZklKUGwx?=
- =?utf-8?B?Zk5QOXduNTQ4Ky9QTVpsR2VYMTh3UHZsSzM2NU5EZCtQLzN3V0lNQ3h3MWNG?=
- =?utf-8?B?ZEtkbUFyK1JmVC9HNmNEeGZzZjNXMXpPZW12N2x3dnVkelRXSUphNzczQkE4?=
- =?utf-8?B?SWxEd1puVUNWbjVqbjd0YzYwLyttWkl6dlc5c0RnV2VwR2RLc2QyRkFlNWtR?=
- =?utf-8?B?N1RxUVNXVWpQTVFHSUJHam5tZng1T0VXbEhkc3poQWNwYlJsS1RiYjFsSXhU?=
- =?utf-8?B?S05uSTVyQjVpNWJsTnpLL1MwL3RsdEdyd0ZjMkJrQUJ4cVExYjFWNUxUeFJ6?=
- =?utf-8?B?cmpBaGVFcjRvRklFd0NTL09UdGt2SVdsSjZGc1NaTWpVMk10MGlWa0hzaUR1?=
- =?utf-8?B?MSt5RHdwTXJqZXBUM1cxbm91dXpqUG53dzZGZnpTYzNYdERqQ1krZGxuV1pM?=
- =?utf-8?B?MGZNZGRQUGg4Z2UxU1VjREpkY0xYNkkxbUhYVWRJb0tNWHZ5WFR1cWpLRktY?=
- =?utf-8?B?Q0I1SGJJRHN1R2FxUm5EMzB6TnlGZnRFSlkwcVRMY0xFWHNrMm1ISU81WVE3?=
- =?utf-8?B?RlBySlBvTlM4ODAxUExIa2oyVjFUTmpKWVEwL3JUUmEvVE5WNmh3SVNpY2RH?=
- =?utf-8?B?OG56VEU0RmoxTW1aTlhZMEJVeU5XMzd4VGk0Wmdyak4xaVN5eU1WNXBWZnJ0?=
- =?utf-8?B?cWVjMEdWSmNFUDQ5VzhwN0lyZGp6YmxiMEdpY1J0TnVHdlhPSUc2QnZZVXlW?=
- =?utf-8?B?Qm84dEE3L2E4QUZrU05PVkNDcWFQSDRrMnBtaWlBNW9xVjBzSVZ6K2s0NUxr?=
- =?utf-8?B?MHJMR3RyN0ZCd0t3ZVUzanBQM3VEa0hnVXZTeGZQZ3FqZkxjRnBadElDdmJ2?=
- =?utf-8?B?TnVrSU5jTzF6SURsZ0ZaZ1VTVWtvV2JUc1dzWC9VZnNRd21UVERHYjVGUWtM?=
- =?utf-8?B?bnVXZGdLakxBYjg3N3ljZWt1R3pyQ2prblRXSFc3WnkvTFdPWlhidWdPUC9t?=
- =?utf-8?B?ZXRITU9YVTJFTmNMT2dZaFB0enFJT0I0RHdxUk9zeWZTZU5WdmFBTU14OUFC?=
- =?utf-8?B?M3RINUY4aVgxdkUrdDVpTnpDOXdYT0dvOU5MeEhJR1JmZldXY0lZL3VTZGlN?=
- =?utf-8?B?MnBWOWNib2tCK2dieGJ2VHBGRTV2NzhIN0RHVjh2ZjcycGtqemJFQnF0VjVR?=
- =?utf-8?B?U0xpdldNT3o1N2tHM21IYXJ3WWFXYkZyWEZYaThrWWJ0eTBNNEtZWnpHdStU?=
- =?utf-8?B?alhtR0VqZ1JDZitIaHRDbmdPeVNzeEkycW9xT1RVTTB0NHFlLzlmdmZCRFlT?=
- =?utf-8?B?Z1JuMFp5UWt2WmxFZG9kNUwzQjZNLzVZU1pCZkJ4aWVORWl4SzA3UDF1aW8v?=
- =?utf-8?B?ckNxcklIVGhidkJNa1JBZ3R3WU1XSEFHOGZQQ3JHR2JidkVGYzUxb0lMTVJZ?=
- =?utf-8?B?WnFJQXQ4NHlzOVZqczJKc3R2YnpYNnVxb3FzVGZSdzJTcVUxUDBjeS9Wd0Zs?=
- =?utf-8?B?d05zWmpOOE9YWkhyMktCWnVDQityenRXVmhKZURoWlp5UzRydmR4VXhnUHdI?=
- =?utf-8?B?aEo0R3VVWVloN2hjN1N0ZXA4RkdLY2R3UlNIMTgwbUJTMWtBVGhWNVJsdW9s?=
- =?utf-8?B?Q0hFOFBRVWk5SVlza2RTaHVLSkg5NmxKM01qU0xyZkk2UjZ2RXU4UzN0UThH?=
- =?utf-8?B?MTAxL1M3V2RMUXRjdk1uTWcxbGV2WFlOaWJMWk5BNlNFL29rWFRKdHVPM3ZG?=
- =?utf-8?B?U0ptalBCUXowZldlQnliTnRVSkhTSHBJd3JYQ0ZiMjhkWURrL05aVmNhZFZx?=
- =?utf-8?B?NHNieG5vNWhWaTFMRkcweE9tTThnbUdQWFFKRUcvS0JJbTUvNmplM29YSmpG?=
- =?utf-8?B?RG1HRU1SL0w2WkdZbjI4Q1ZrMnFKcnlsUklBbXRVU1JEUEFQb2ltU1JrcHFu?=
- =?utf-8?B?dEtraTdQOFJUNC9vSDBsQU9HMVBybndPRXBaTTFwQ3hwbFNQSkdDN1NYRDZI?=
- =?utf-8?B?dzZOYTl4cFlaVGRqRlQ0b0NuMGFNMVZ2ZEJ3VXZCSU44bHEzU0VSQ0VaWXRB?=
- =?utf-8?Q?zBpZlXbxEL2uN2FaD44zMLe0v?=
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+       dkim=pass header.i=@intel.com header.s=Intel header.b="kHdg/piR";
+       spf=pass (google.com: domain of zhao1.liu@intel.com designates 192.198.163.15 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1726709999; x=1758245999;
+  h=from:to:cc:subject:date:message-id:in-reply-to:
+   references:mime-version:content-transfer-encoding;
+  bh=GTUQ019BfwQpkrJFj+VNn+W9sPDXxvfUxmbaNbsBlZw=;
+  b=kHdg/piR6khov4QszD7VMPwuoKWL7b6nIXqhjfq+wEhaMFoFB7Ffju4d
+   MKE1g3+637Vsnz+ssonaWqMU4qH6AGT77VbGN0+SmZktEGn5blt9YPXd9
+   U3cfgsa8ueJkGg13uB3TlwdEdZNNAxLMHcW9x4sCpR2YtuwBZ3ub68SxS
+   itqc00Fkvq3efP63VEloUlot6YSnrJPeSuuliqOZ2/9amaCykl6LwU9ao
+   US/bbWyoHsTYE9DG2xlEaBQf4gFfRrob5YjIdKO6aWyOWXdJqarhOqhd2
+   EHPEsvEb1VU+wLzUol1zpXAOoG+FxON5RKN/k7UxV/4FIYT0eD7s1rv75
+   Q==;
+X-CSE-ConnectionGUID: CcmVCOSpQ++jXOaBKPMErQ==
+X-CSE-MsgGUID: J7J0uS5jScu+hEE4Arcfcw==
+X-IronPort-AV: E=McAfee;i="6700,10204,11199"; a="25797820"
+X-IronPort-AV: E=Sophos;i="6.10,240,1719903600"; 
+   d="scan'208";a="25797820"
+Received: from orviesa006.jf.intel.com ([10.64.159.146])
+  by fmvoesa109.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Sep 2024 18:39:58 -0700
+X-CSE-ConnectionGUID: I3knkL/jSee7aLywlolMUQ==
+X-CSE-MsgGUID: yWAY1M6kTXWufBZ8mK+FLw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.10,240,1719903600"; 
+   d="scan'208";a="70058495"
+Received: from liuzhao-optiplex-7080.sh.intel.com ([10.239.160.36])
+  by orviesa006.jf.intel.com with ESMTP; 18 Sep 2024 18:39:52 -0700
+From: Zhao Liu <zhao1.liu@intel.com>
+To: =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+	Igor Mammedov <imammedo@redhat.com>,
+	Eduardo Habkost <eduardo@habkost.net>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Yanan Wang <wangyanan55@huawei.com>,
+	"Michael S . Tsirkin" <mst@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+	Nicholas Piggin <npiggin@gmail.com>,
+	=?UTF-8?q?Fr=C3=A9d=C3=A9ric=20Barrat?= <fbarrat@linux.ibm.com>,
+	Daniel Henrique Barboza <danielhb413@gmail.com>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	Harsh Prateek Bora <harshpb@linux.ibm.com>,
+	Markus Armbruster <armbru@redhat.com>,
+	Marcelo Tosatti <mtosatti@redhat.com>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org,
+	kvm@vger.kernel.org,
+	qemu-ppc@nongnu.org,
+	qemu-arm@nongnu.org,
+	Zhenyu Wang <zhenyu.z.wang@intel.com>,
+	Dapeng Mi <dapeng1.mi@linux.intel.com>,
+	Yongwei Ma <yongwei.ma@intel.com>,
+	Zhao Liu <zhao1.liu@intel.com>
+Subject: [RFC v2 02/15] qdev: Add the interface to reparent the device
+Date: Thu, 19 Sep 2024 09:55:20 +0800
+Message-Id: <20240919015533.766754-3-zhao1.liu@intel.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20240919015533.766754-1-zhao1.liu@intel.com>
+References: <20240919015533.766754-1-zhao1.liu@intel.com>
 MIME-Version: 1.0
-X-MS-Exchange-AntiSpam-ExternalHop-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-ExternalHop-MessageData-0:
-	Z101d5cjhOt+9mIHANPL/Jz8ZeVQ1Hx9gdojui319jGlcVEjm4V93Y8nJtxc4LM8fJTfEzu0RBSDoEs96gDoFdXZqAnFAFlEojyZLHVGvZNt0O3dkjBxqTS1FzlHnGZEWPGsDZPmecqykybSqg2aM0ZdAzkma75dUp1tHBX851yT4TiQHGs1RO6kY0bKy87updk2sgOeTvi6yuBBenEUSHoTMxYNt5trPukC8McdThxCcnGAGVluzokQtgSUBrhwHeeoIgXqSiYSibzB4IeFAVsFu05OpIGQpP1NJEbDGjXpvq3row8+ZNP+QDgnXvOyMheBZjJ/v6O/vG/toqULBys/FefT56b7cyZwvPg+7iBD3onS1VRqnZn2oJflUKn2jPnk9BPBWvAcJbBhyRe/l8SMRl4DjITi2mc696TMJp/c2HXAqF/atKUa1/i4umFF3vfwf9ZFPlCX/EsZm1AhV3Qj5jireF5sz1Pc5GxOOkWIZHfuCrn/B+6bpHcxTwc8OOMq5DkkodOww+WSGpuktQ6bEqHtvF+RuWu+L1ApiD2QOKRwpyXYfjMbjzT8fgW+ThJKCpbfLDp9aptMYzAQJLD8noKxMM85KmDdIPN57WepBJ/5PEe/Qt67Daw6HYvO
-X-OriginatorOrg: fujitsu.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: OSZPR01MB6453.jpnprd01.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 456dde57-dcad-4443-f033-08dcd84f0214
-X-MS-Exchange-CrossTenant-originalarrivaltime: 19 Sep 2024 02:01:42.8153
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: a19f121d-81e1-4858-a9d8-736e267fd4c7
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: KDfyRkuNoUPf0aOQw60ZT5m8VUOJQje98nxTuqBjHATb29iPrAyMcsUR9lRgxAWgcuJT4aZ4YxuNcW0efKagnw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYWPR01MB11272
-X-TUID: g+rW1m3SrR36
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: Ll5K1grt8leC
 
-PiA+PiAtLQ0KPiA+PiAyLjM5LjINCj4gPj4NCj4gPg0KPiANCj4gV2hpY2ggb25lIGRpZCB5b3Ug
-ZmluZD8gVXNpbmcgd2hpY2ggZ3JlcCBjb21tYW5kPw0KU29ycnksIEkgbWFkZSBhIG1pc3Rha2Uu
-IEkgaGF2ZW4ndCBmb3VuZCBhbnl0aGluZyBuZXcgeWV0Lg0K
+User created devices may need to adjust their default object parent or
+parent bus.
+
+User created devices are QOM parented to one of the peripheral
+containers ("/peripheral" or "/peripheral-anon") in qdev_set_id() by
+default. Sometimes, it is necessary to reparent a device to another
+object to express the more accurate child<> relationship, as in the
+cases of the PnvPHBRootPort device or subsequent topology devices.
+
+The current pnv_phb_user_get_parent() implements such reparenting logic.
+To allow it to be used by topology devices as well, transform it into a
+generic qdev interface with custom device id ("default_id" parameter).
+
+And add the code to handle the failure of object_property_add_child().
+
+Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
+---
+ hw/core/qdev.c         | 52 +++++++++++++++++++++++++++++++++++++
+ hw/pci-host/pnv_phb.c  | 59 +++++++++---------------------------------
+ include/hw/qdev-core.h |  3 +++
+ 3 files changed, 67 insertions(+), 47 deletions(-)
+
+diff --git a/hw/core/qdev.c b/hw/core/qdev.c
+index 4429856eaddd..ff073cbff56d 100644
+--- a/hw/core/qdev.c
++++ b/hw/core/qdev.c
+@@ -143,6 +143,58 @@ bool qdev_set_parent_bus(DeviceState *dev, BusState *bus, Error **errp)
+     return true;
+ }
+ 
++/*
++ * Set the QOM parent and parent bus of an object child. If the device
++ * state associated with the child has an id, use it as QOM id.
++ * Otherwise use default_id as QOM id.
++ *
++ * This helper does both operations at the same time because setting
++ * a new QOM child will erase the bus parent of the device. This happens
++ * because object_unparent() will call object_property_del_child(),
++ * which in turn calls the property release callback prop->release if
++ * it's defined. In our case this callback is set to
++ * object_finalize_child_property(), which was assigned during the
++ * first object_property_add_child() call. This callback will end up
++ * calling device_unparent(), and this function removes the device
++ * from its parent bus.
++ *
++ * The QOM and parent bus to be set aren't necessarily related, so
++ * let's receive both as arguments.
++ */
++bool qdev_set_parent(DeviceState *dev, BusState *bus, Object *parent,
++                     char *default_id, Error **errp)
++{
++    Object *child = OBJECT(dev);
++    ObjectProperty *prop;
++
++    if (!dev->id && !default_id) {
++        error_setg(errp, "unknown device id");
++        return false;
++    }
++
++    if (child->parent == parent) {
++        return true;
++    }
++
++    object_ref(child);
++    object_unparent(child);
++    prop =  object_property_add_child(parent,
++                                      dev->id ? dev->id : default_id,
++                                      child);
++    object_unref(child);
++
++    if (!prop) {
++        error_setg(errp, "couldn't change parent");
++        return false;
++    }
++
++    if (!qdev_set_parent_bus(dev, bus, errp)) {
++        return false;
++    }
++
++    return true;
++}
++
+ DeviceState *qdev_new(const char *name)
+ {
+     ObjectClass *oc = object_class_by_name(name);
+diff --git a/hw/pci-host/pnv_phb.c b/hw/pci-host/pnv_phb.c
+index d4c118d44362..a26e7b7aec5c 100644
+--- a/hw/pci-host/pnv_phb.c
++++ b/hw/pci-host/pnv_phb.c
+@@ -19,49 +19,6 @@
+ #include "qom/object.h"
+ #include "sysemu/sysemu.h"
+ 
+-
+-/*
+- * Set the QOM parent and parent bus of an object child. If the device
+- * state associated with the child has an id, use it as QOM id.
+- * Otherwise use object_typename[index] as QOM id.
+- *
+- * This helper does both operations at the same time because setting
+- * a new QOM child will erase the bus parent of the device. This happens
+- * because object_unparent() will call object_property_del_child(),
+- * which in turn calls the property release callback prop->release if
+- * it's defined. In our case this callback is set to
+- * object_finalize_child_property(), which was assigned during the
+- * first object_property_add_child() call. This callback will end up
+- * calling device_unparent(), and this function removes the device
+- * from its parent bus.
+- *
+- * The QOM and parent bus to be set aren´t necessarily related, so
+- * let's receive both as arguments.
+- */
+-static bool pnv_parent_fixup(Object *parent, BusState *parent_bus,
+-                             Object *child, int index,
+-                             Error **errp)
+-{
+-    g_autofree char *default_id =
+-        g_strdup_printf("%s[%d]", object_get_typename(child), index);
+-    const char *dev_id = DEVICE(child)->id;
+-
+-    if (child->parent == parent) {
+-        return true;
+-    }
+-
+-    object_ref(child);
+-    object_unparent(child);
+-    object_property_add_child(parent, dev_id ? dev_id : default_id, child);
+-    object_unref(child);
+-
+-    if (!qdev_set_parent_bus(DEVICE(child), parent_bus, errp)) {
+-        return false;
+-    }
+-
+-    return true;
+-}
+-
+ static Object *pnv_phb_user_get_parent(PnvChip *chip, PnvPHB *phb, Error **errp)
+ {
+     if (phb->version == 3) {
+@@ -82,6 +39,7 @@ static bool pnv_phb_user_device_init(PnvPHB *phb, Error **errp)
+     PnvMachineState *pnv = PNV_MACHINE(qdev_get_machine());
+     PnvChip *chip = pnv_get_chip(pnv, phb->chip_id);
+     Object *parent = NULL;
++    g_autofree char *default_id = NULL;
+ 
+     if (!chip) {
+         error_setg(errp, "invalid chip id: %d", phb->chip_id);
+@@ -98,8 +56,11 @@ static bool pnv_phb_user_device_init(PnvPHB *phb, Error **errp)
+      * correctly the device tree. pnv_xscom_dt() needs every
+      * PHB to be a child of the chip to build the DT correctly.
+      */
+-    if (!pnv_parent_fixup(parent, qdev_get_parent_bus(DEVICE(chip)),
+-                          OBJECT(phb), phb->phb_id, errp)) {
++    default_id = g_strdup_printf("%s[%d]",
++                                 object_get_typename(OBJECT(phb)),
++                                 phb->phb_id);
++    if (!qdev_set_parent(DEVICE(phb), qdev_get_parent_bus(DEVICE(chip)),
++                         parent, default_id, errp)) {
+         return false;
+     }
+ 
+@@ -246,6 +207,7 @@ static void pnv_phb_root_port_realize(DeviceState *dev, Error **errp)
+     uint16_t device_id = 0;
+     Error *local_err = NULL;
+     int chip_id, index;
++    g_autofree char *default_id = NULL;
+ 
+     /*
+      * 'index' will be used both as a PCIE slot value and to calculate
+@@ -273,8 +235,11 @@ static void pnv_phb_root_port_realize(DeviceState *dev, Error **errp)
+      * parent bus. Change the QOM parent to be the same as the
+      * parent bus it's already assigned to.
+      */
+-    if (!pnv_parent_fixup(OBJECT(bus), BUS(bus), OBJECT(dev),
+-                          index, errp)) {
++    default_id = g_strdup_printf("%s[%d]",
++                                 object_get_typename(OBJECT(dev)),
++                                 index);
++    if (!qdev_set_parent(dev, BUS(bus), OBJECT(bus),
++                         default_id, errp)) {
+         return;
+     }
+ 
+diff --git a/include/hw/qdev-core.h b/include/hw/qdev-core.h
+index 85c7d462dfba..7cbc5fb97298 100644
+--- a/include/hw/qdev-core.h
++++ b/include/hw/qdev-core.h
+@@ -1011,6 +1011,9 @@ char *qdev_get_human_name(DeviceState *dev);
+ /* FIXME: make this a link<> */
+ bool qdev_set_parent_bus(DeviceState *dev, BusState *bus, Error **errp);
+ 
++bool qdev_set_parent(DeviceState *dev, BusState *bus, Object *parent,
++                     char *default_id, Error **errp);
++
+ extern bool qdev_hot_removed;
+ 
+ char *qdev_get_dev_path(DeviceState *dev);
+-- 
+2.34.1

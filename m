@@ -1,70 +1,70 @@
-Received: by 2002:a05:7022:f8d:b0:8a:132c:44a7 with SMTP id eg13csp85809dlb;
-        Wed, 18 Sep 2024 22:55:59 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWWZCPGsiUMacFi20hFjZuV8GbYmUFhddCC0LTg0WdN4ov3lRhBCRkTdHt87WelM4m2vFt+03Ji2YYvcQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IFY9KOUr6S+yDVjAkJf3yJmeqNXzygbC3SZuVk/2/apXDqzk9nxCUe/VH2wDdrmQSUocAC7
-X-Received: by 2002:ac8:7d02:0:b0:458:3ac9:11ed with SMTP id d75a77b69052e-45b1609a3dcmr32322271cf.25.1726725359674;
-        Wed, 18 Sep 2024 22:55:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1726725359; cv=none;
+Received: by 2002:a05:7022:f8d:b0:8a:132c:44a7 with SMTP id eg13csp85817dlb;
+        Wed, 18 Sep 2024 22:56:01 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWlVcXXs8mig1XdWcm7IcJu8m0tW7yzPHNyhw4EMtH44xSv3jtmt+oQ5QXt4pjAAaVMSCEFhNdUIWQbWA==@linaro.org
+X-Google-Smtp-Source: AGHT+IG6YCkGvgq/9lIwwoQyBky2+9JwxeEVD+HxTJTurphzgtKVUfGzssk68AqSzHj5Auxuvjaj
+X-Received: by 2002:a05:622a:4e8b:b0:458:611b:ac38 with SMTP id d75a77b69052e-458611bb077mr341707621cf.42.1726725361176;
+        Wed, 18 Sep 2024 22:56:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1726725361; cv=none;
         d=google.com; s=arc-20240605;
-        b=U+ap8TAU7ZZTvh72mMWMQsJbGmJvZXBIH/L7NKBafLrfLsrVjKZClUfoPFkTlGi2yL
-         8ZBrbX1Ie7UyYrieCAcUiHMBZLARv2narReJitvdgBCFUDcH545vjBkcq8H2UGnd9eX0
-         3tafkKO8xNN/Vgn839S4WmAQABjeOY66lshKujhBP/ovychyrImROIqaseumxZE3fCq5
-         M7s8qht8sHKqGJjpBf8mPc93khrc/+OKEIwkhE82+LTX7Zkl04vpnt4bdDBS9pzFz1H+
-         4nuVGWdWCmZ6ZPYEbWdSJVEX0aof2yomj5TwauB61A0J4CdlDRSuTahozk0zgJtyRAbj
-         Tnvw==
+        b=Rrq/K0X4lzhZVimGgAGahUchMfVr0NUA2+cqoXuGzuAVVVIHU3PDZbKAsKFFZF4j0W
+         9OcHIF0XdNHh99VW5jiBTdXSS/BAqpJu+Jl+EztD3beR8P2FYxvaBxZLfKNKZM5yQkFi
+         FvI+dNt05Xi3ELAqlWeIe/8sW6m7SsgDJ9krfQzH+oFF4utzN9QdrXOEZvpXirv+Wuq1
+         f5WR6ra5uvTT8pCDJrB9yTqyMCKdKeBIu++xWtOMtAjRqb1stAOBZYlmCSY36ZrJQNcZ
+         ekYjFKt2Wf/Fg66ff69bhw4Ix5buVEeHE+Zp39LeDe+bbNbv0gFzaC0V8x1/vrGZ0FNP
+         mggg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=kt+TcOPJ5v/UOrom1g1vGGE5QOHJGxNfdnhP6Yzxe/4=;
+        bh=HpfUKWZf41qzfjNaXASQcHIajRGsIJjcjRlq0sgN2M4=;
         fh=33vV7fdwuF57f9/cQTMVCjJLx99l6PrD70Pt7L6JrPg=;
-        b=BX07agFnIo2F+iWV8t1ASz78AAsv1SFCFgeCzg5XoFz2U9gfSMGA3vHcKmYFYq+HvI
-         Hekk/QiJ7PlDXxf1+9zurOkMwOdnPjBgTWrkkgat7Algnct4FU8pI70LRWqmhTcLxVNJ
-         7Fd57jN70tJ3pCZGfBK0E+K3pu7k3/xvYgmMSqF/sePquoDaw4gtTVMedVxTr4PvCP/4
-         Ew/MK/nXFInqunfViq76ekRys4uYAPN36HyKiCOds5u8EndoBGh8PTXQovmgndWVBEkq
-         Md+F1ZhqCe8M9YiauDP6tyUYxl+acmKobK7fLqIFNJTf9rn3/lwxfE3tZhR77Brcbnnl
-         XugA==;
+        b=CK3UTvN7c6Vk/nnt0p7PZHSaSCb23ykI23hgPhgFdmeyUxmVibhaSwf3x/2ewjYwJa
+         QnCdweMrYT2tSYL4v3EwXHfOTbYw9R4ru7EAWzavi7OgUxH7A14r9moVs5N0rGjsOjLw
+         MJbENo4XTxcFFARz5jPh1VjpRAcRQFU89071U0urqGInPXWvSejq+bFQf8r/low3qJxm
+         nJM31nhwpx6OOJL663aIybwCiszroZqzJ0ns7qK+TcYnK2PvnAUUqYCRRBwrm087tbJ5
+         Bp2XE7Xoq72w8tfTbKkv9y/eI2ZrHmG8w2zBbzWs14G+IVwuMuG18NU/Odc0FIQiTckG
+         nmKQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=beRd1qGq;
+       dkim=pass header.i=@intel.com header.s=Intel header.b="H/ZNKm2i";
        spf=pass (google.com: domain of zhao1.liu@intel.com designates 192.198.163.15 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 Return-Path: <zhao1.liu@intel.com>
 Received: from mgamail.intel.com (mgamail.intel.com. [192.198.163.15])
-        by mx.google.com with ESMTPS id d75a77b69052e-45b1792f416si10980571cf.563.2024.09.18.22.55.58
+        by mx.google.com with ESMTPS id d75a77b69052e-45b1792f416si10980571cf.563.2024.09.18.22.55.59
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 18 Sep 2024 22:55:59 -0700 (PDT)
+        Wed, 18 Sep 2024 22:56:01 -0700 (PDT)
 Received-SPF: pass (google.com: domain of zhao1.liu@intel.com designates 192.198.163.15 as permitted sender) client-ip=192.198.163.15;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=beRd1qGq;
+       dkim=pass header.i=@intel.com header.s=Intel header.b="H/ZNKm2i";
        spf=pass (google.com: domain of zhao1.liu@intel.com designates 192.198.163.15 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1726725360; x=1758261360;
+  t=1726725361; x=1758261361;
   h=from:to:cc:subject:date:message-id:in-reply-to:
    references:mime-version:content-transfer-encoding;
-  bh=CwVrpvp1WDScgEYLWjHPu+YgDBg0b3NbDgIP9DAGUe8=;
-  b=beRd1qGqvdk9X6315+XZAJjWw5uRzK8JCzzNoGAFMTesyTDLRdFQvqQc
-   QlaVsXOHS1fU6WDuRk1ON8aRZe6XZwzWdUIDGo3tphFR1ei7wFJ5ACLW5
-   ISipIWb0/DNwfE0O6BDEBXXMliTLcDeRjNcZo9xxZ81yzUHgtmBsbbVks
-   i9AyqHtlaXlxnihO7S4aPeuFuxuqytl3A4mBmQn5A4exstncbNmiER0dR
-   8hHSI7L51IaZOGfbyMAT/1FUq/uqKdQyFrATT0isB9Sq912As4f6Ww1G0
-   ULmFpm6T7j+VSpBH5vhVIUzofpsL6nDinj0elCNpKLmFkx0kl6iJfNYzY
-   A==;
-X-CSE-ConnectionGUID: LvLprIETTVOuJx8kQPJF6g==
-X-CSE-MsgGUID: A5+5Cx2JSAOLfPcBaQxt1Q==
-X-IronPort-AV: E=McAfee;i="6700,10204,11199"; a="25813510"
+  bh=T5fYW0Qp5HK4dCgA8zTvCnqjoH/YS2wAEp4x5hqFcPU=;
+  b=H/ZNKm2iJ9l+DalPP4o/gCnd7MSIhVDeh0nqsfNSm+GaC6bX6FC9XAct
+   8SLAH0BIFwNi/4BjgHcxhuCzF0IaN32yA+RIAyyIu9UnU7m53s4gmw7NI
+   Luo6vViOCrNKa7l6zmhnIBK8b7mUwi00LL4AP7JT7L6A1Rq++QVMPKtKW
+   wF69FAJI+U6zqqhEAniRcWIpYQcJPYEpSeaXUrrvqmHxbb0eoCdZTX54e
+   iK/6MBBxAViD0UT2QWGk1608oYO/0ksf2IIzAJJ84EmFlk9ls4iTv0Hcw
+   4lpOUbG+GVSZDrx8HwxehXv1pSLsKjYm8ebbLYES4EZCGJMC/4gT9Qsvp
+   g==;
+X-CSE-ConnectionGUID: LtLD8YlVS0GlzaSSeg1Sbw==
+X-CSE-MsgGUID: oXM7YUixROmx9unpWj/cKQ==
+X-IronPort-AV: E=McAfee;i="6700,10204,11199"; a="25813536"
 X-IronPort-AV: E=Sophos;i="6.10,240,1719903600"; 
-   d="scan'208";a="25813510"
+   d="scan'208";a="25813536"
 Received: from fmviesa006.fm.intel.com ([10.60.135.146])
-  by fmvoesa109.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Sep 2024 22:55:49 -0700
-X-CSE-ConnectionGUID: cnG4W7PSTWykvtbW1B+1LQ==
-X-CSE-MsgGUID: X7u2e1dAQ1u80SUmmx+ZsA==
+  by fmvoesa109.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Sep 2024 22:55:55 -0700
+X-CSE-ConnectionGUID: izHbtgFiQeKuhayuq/BgHg==
+X-CSE-MsgGUID: 8GpqZCUxQfG5uQ4iHEKGyg==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.10,240,1719903600"; 
-   d="scan'208";a="69418644"
+   d="scan'208";a="69418665"
 Received: from liuzhao-optiplex-7080.sh.intel.com ([10.239.160.36])
-  by fmviesa006.fm.intel.com with ESMTP; 18 Sep 2024 22:55:43 -0700
+  by fmviesa006.fm.intel.com with ESMTP; 18 Sep 2024 22:55:49 -0700
 From: Zhao Liu <zhao1.liu@intel.com>
 To: =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
 	Igor Mammedov <imammedo@redhat.com>,
@@ -92,126 +92,90 @@ Cc: qemu-devel@nongnu.org,
 	Dapeng Mi <dapeng1.mi@linux.intel.com>,
 	Yongwei Ma <yongwei.ma@intel.com>,
 	Zhao Liu <zhao1.liu@intel.com>
-Subject: [RFC v2 03/12] system/vl: Create CPU topology devices from CLI early
-Date: Thu, 19 Sep 2024 14:11:19 +0800
-Message-Id: <20240919061128.769139-4-zhao1.liu@intel.com>
+Subject: [RFC v2 04/12] hw/core/machine: Split machine initialization around qemu_add_cli_devices_early()
+Date: Thu, 19 Sep 2024 14:11:20 +0800
+Message-Id: <20240919061128.769139-5-zhao1.liu@intel.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240919061128.769139-1-zhao1.liu@intel.com>
 References: <20240919061128.769139-1-zhao1.liu@intel.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: A5Cj6E/insz1
+X-TUID: eY2OQqq7CudJ
 
-Custom topology will allow user to build CPU topology from CLI totally,
-and this replaces machine's default CPU creation process (*_init_cpus()
-in MachineClass.init()).
+Split machine initialization and machine_run_board_init() into two parts
+around qemu_add_cli_devices_early(), allowing initialization to continue
+after the CPU creation from the CLI.
 
-For the machine's initialization, there may be CPU dependencies in the
-remaining initialization after the CPU creation.
-
-To address such dependencies, create the CPU topology device (including
-CPU devices) from the CLI earlier, so that the latter part of machine
-initialization can be separated after qemu_add_cli_devices_early().
+This enables machine to place the initialization steps with CPU
+dependencies in post_init().
 
 Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
 ---
- system/vl.c | 55 +++++++++++++++++++++++++++++++++++------------------
- 1 file changed, 36 insertions(+), 19 deletions(-)
+ hw/core/machine.c   | 10 ++++++++++
+ include/hw/boards.h |  2 ++
+ system/vl.c         |  4 +++-
+ 3 files changed, 15 insertions(+), 1 deletion(-)
 
-diff --git a/system/vl.c b/system/vl.c
-index c40364e2f091..8540454aa1c2 100644
---- a/system/vl.c
-+++ b/system/vl.c
-@@ -1211,8 +1211,9 @@ static int device_help_func(void *opaque, QemuOpts *opts, Error **errp)
- static int device_init_func(void *opaque, QemuOpts *opts, Error **errp)
- {
-     DeviceState *dev;
-+    long *category = opaque;
+diff --git a/hw/core/machine.c b/hw/core/machine.c
+index 076bd365197b..7b4ac5ac52b2 100644
+--- a/hw/core/machine.c
++++ b/hw/core/machine.c
+@@ -1645,6 +1645,16 @@ void machine_run_board_init(MachineState *machine, const char *mem_path, Error *
  
--    dev = qdev_device_add(opts, NULL, errp);
-+    dev = qdev_device_add(opts, category, errp);
-     if (!dev && *errp) {
-         error_report_err(*errp);
-         return -1;
-@@ -2623,6 +2624,36 @@ static void qemu_init_displays(void)
-     }
+     accel_init_interfaces(ACCEL_GET_CLASS(machine->accelerator));
+     machine_class->init(machine);
++}
++
++void machine_run_board_post_init(MachineState *machine, Error **errp)
++{
++    MachineClass *machine_class = MACHINE_GET_CLASS(machine);
++
++    if (machine_class->post_init) {
++        machine_class->post_init(machine);
++    }
++
+     phase_advance(PHASE_MACHINE_INITIALIZED);
  }
  
-+static void qemu_add_devices(long *category)
-+{
-+    DeviceOption *opt;
-+
-+    qemu_opts_foreach(qemu_find_opts("device"),
-+                      device_init_func, category, &error_fatal);
-+    QTAILQ_FOREACH(opt, &device_opts, next) {
-+        DeviceState *dev;
-+        loc_push_restore(&opt->loc);
-+        /*
-+         * TODO Eventually we should call qmp_device_add() here to make sure it
-+         * behaves the same, but QMP still has to accept incorrectly typed
-+         * options until libvirt is fixed and we want to be strict on the CLI
-+         * from the start, so call qdev_device_add_from_qdict() directly for
-+         * now.
-+         */
-+        dev = qdev_device_add_from_qdict(opt->opts, category,
-+                                         true, &error_fatal);
-+        object_unref(OBJECT(dev));
-+        loc_pop(&opt->loc);
-+    }
-+}
-+
-+static void qemu_add_cli_devices_early(void)
-+{
-+    long category = DEVICE_CATEGORY_CPU_DEF;
-+
-+    qemu_add_devices(&category);
-+}
-+
- static void qemu_init_board(void)
- {
+diff --git a/include/hw/boards.h b/include/hw/boards.h
+index a49677466ef6..9f706223e848 100644
+--- a/include/hw/boards.h
++++ b/include/hw/boards.h
+@@ -33,6 +33,7 @@ const char *machine_class_default_cpu_type(MachineClass *mc);
+ 
+ void machine_add_audiodev_property(MachineClass *mc);
+ void machine_run_board_init(MachineState *machine, const char *mem_path, Error **errp);
++void machine_run_board_post_init(MachineState *machine, Error **errp);
+ bool machine_usb(MachineState *machine);
+ int machine_phandle_start(MachineState *machine);
+ bool machine_dump_guest_core(MachineState *machine);
+@@ -271,6 +272,7 @@ struct MachineClass {
+     const char *deprecation_reason;
+ 
+     void (*init)(MachineState *state);
++    void (*post_init)(MachineState *state);
+     void (*reset)(MachineState *state, ShutdownCause reason);
+     void (*wakeup)(MachineState *state);
+     int (*kvm_type)(MachineState *machine, const char *arg);
+diff --git a/system/vl.c b/system/vl.c
+index 8540454aa1c2..00370f7a52aa 100644
+--- a/system/vl.c
++++ b/system/vl.c
+@@ -2659,12 +2659,14 @@ static void qemu_init_board(void)
      /* process plugin before CPUs are created, but once -smp has been parsed */
-@@ -2631,6 +2662,9 @@ static void qemu_init_board(void)
-     /* From here on we enter MACHINE_PHASE_INITIALIZED.  */
+     qemu_plugin_load_list(&plugin_list, &error_fatal);
+ 
+-    /* From here on we enter MACHINE_PHASE_INITIALIZED.  */
      machine_run_board_init(current_machine, mem_path, &error_fatal);
  
-+    /* Create CPU topology device if any. */
-+    qemu_add_cli_devices_early();
+     /* Create CPU topology device if any. */
+     qemu_add_cli_devices_early();
+ 
++    /* From here on we enter MACHINE_PHASE_INITIALIZED.  */
++    machine_run_board_post_init(current_machine, &error_fatal);
 +
      drive_check_orphaned();
  
      realtime_init();
-@@ -2638,8 +2672,6 @@ static void qemu_init_board(void)
- 
- static void qemu_create_cli_devices(void)
- {
--    DeviceOption *opt;
--
-     soundhw_init();
- 
-     qemu_opts_foreach(qemu_find_opts("fw_cfg"),
-@@ -2653,22 +2685,7 @@ static void qemu_create_cli_devices(void)
- 
-     /* init generic devices */
-     rom_set_order_override(FW_CFG_ORDER_OVERRIDE_DEVICE);
--    qemu_opts_foreach(qemu_find_opts("device"),
--                      device_init_func, NULL, &error_fatal);
--    QTAILQ_FOREACH(opt, &device_opts, next) {
--        DeviceState *dev;
--        loc_push_restore(&opt->loc);
--        /*
--         * TODO Eventually we should call qmp_device_add() here to make sure it
--         * behaves the same, but QMP still has to accept incorrectly typed
--         * options until libvirt is fixed and we want to be strict on the CLI
--         * from the start, so call qdev_device_add_from_qdict() directly for
--         * now.
--         */
--        dev = qdev_device_add_from_qdict(opt->opts, NULL, true, &error_fatal);
--        object_unref(OBJECT(dev));
--        loc_pop(&opt->loc);
--    }
-+    qemu_add_devices(NULL);
-     rom_reset_order_override();
- }
- 
 -- 
 2.34.1

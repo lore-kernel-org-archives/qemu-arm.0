@@ -1,70 +1,70 @@
-Received: by 2002:a05:7022:f8d:b0:8a:132c:44a7 with SMTP id eg13csp85881dlb;
-        Wed, 18 Sep 2024 22:56:14 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVRiJ/eN7LFBvmw7BpwAcn6a8zolSaosXiWtdcKK4JhiBcV0b3I72tFn0lk3CBqcuvbcEGlmp/Jdsbhyw==@linaro.org
-X-Google-Smtp-Source: AGHT+IEO2HDFPgnt5lbE2tv5k4vtCe/zgQMEL2iWsJCsxA7L9TUQAqS0/s9gfzhbmtXcEKlbHQxB
-X-Received: by 2002:a05:6214:2f03:b0:6c3:5b2a:e3d6 with SMTP id 6a1803df08f44-6c5736e856emr420425666d6.43.1726725374765;
-        Wed, 18 Sep 2024 22:56:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1726725374; cv=none;
+Received: by 2002:a05:7022:f8d:b0:8a:132c:44a7 with SMTP id eg13csp85910dlb;
+        Wed, 18 Sep 2024 22:56:20 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXeq1IWCPI9X5HQYQ5VC1s4yG7aHGaYrQ6ivXNJ49QQ/pmPoIA72m5MdJY+ZLFYt2R0Yz49BrpwTY6TIQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IG4pnmPmQVnKvqfd7KpYKsZNW9ylQA4col2rMTCITSID5/hGxiLxu+1jUJDKcezoZ1JiQGg
+X-Received: by 2002:a05:6214:3c9a:b0:6c5:20c2:f34f with SMTP id 6a1803df08f44-6c57dfa58f9mr296966286d6.21.1726725380671;
+        Wed, 18 Sep 2024 22:56:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1726725380; cv=none;
         d=google.com; s=arc-20240605;
-        b=dgZTUE+6gb6MyMth1JSf6dpjd+cp0xHlT+wLWpNNOMCBK5uLVubGEANzyI/bFztUd2
-         zlv28fRTH+knh8lYaSGZCVCfSctzsrn18JFeZfnDw2MaJIDGMNnhav9HLuKo//HilW9q
-         WItdIYWo6hkSu6q5sLYV28C+wioW/mTJvrqalTSQlki8BkFCHUm18k872qEkqVQQ7f/R
-         E8bXmSWnsuU8U85BnMsULozP2vWyK33WQIUHvXywIN85ZFn4uiAgNOyh8ZitXYRN81ao
-         gU6IdIoORiwoVtshYjVh7pT2kymmyo3SL432LOjcEqAC1jqPGDsybOTSGjhdvDjdR+2Y
-         0wTA==
+        b=SdDX7hwl+yep+s6IRxPu1Ijw05waj3OFO2nEFzznmQMBfBlhu5d353IfnpTabheUxD
+         TTzmU42HtgCnrQBF/6ifKe6C5Zje2Lat9wSu1rvsbbrQ1UrGCGsOV8ZV/X2o8e1f2mgA
+         LwjUn3W9i/Tu8HK0aRwGKejgOI0pvXxG8w1hzYurdon1aQuWbrbfPK9u+X+kS2dfxZyQ
+         heIx1CUaJbBRUv28ZFp8+ABDtQ+4laOrDKbVMZxhnyIhnN2N6tqjdnb83zYEh7QjXXRJ
+         Hx9DwsAB+PVEAKs/f24bCAm3Z+7UP6+3zev/7uapbbFwoCIZ2pYOzHVx9UmLx4k3ox4c
+         /HRw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=CC4mPbdPv35OyEY+fYAEHmj6/eb5tP0mYjktEkFnOyw=;
+        bh=+LWrLtjR+PxUgTxvAPD8gfuwSJ1qwj4rPrv/G+NV0mw=;
         fh=33vV7fdwuF57f9/cQTMVCjJLx99l6PrD70Pt7L6JrPg=;
-        b=aceOOPXBAxn2V+mookZMRAhkS7qNzDyvVdngJkwRysafV0uYoke6ENF+7MrAju4Oip
-         JH/kqgSw/o6W5npsCsCTwe48vwEdiJxHYu8kpC6EWTZMkyDpbF8i5OhxkuV/0XQZo7+V
-         nY1Vn9+sDWCBR9sbgNaY6y3akX8dfXYByrWJ/KLHCACVouB1dD+ae6LKrfL5w/tgTEIa
-         bTMf38gU9Hs7DwmyXmhkcPf1+JbfgG3VO7FZq8Vu3Lfmu9FP2iZNTrx6e3IvqZi/p0hy
-         3Qc9YNl5zwyU77MkbDNhPFNIXqD3KGEw19TDV1mjn0+cbQdovSDRamztGSqGWQkOlKh2
-         uwkg==;
+        b=HMNLzy0eTl+wsS0E6j7ikNUq7/VWLiFIX/WI4lmYOX2/WlwKr7xu6j5HpJ/WeD12q1
+         tIUZw3JdCdbkoGXq3ZhehmgWjdVOl41bjzsDYSEg/qvnTw7risXNGl28VSN1cIJKyaeL
+         i45E8DeVU051HnT/xkIh0emM4BjPp+VrFY+qTL+Ko1l2qo6OjOoViCPlgyXp53zHIb9r
+         cTA1mV4DRmlFfSfZPRuGeD56mnQoWEJlI/sbKznTfDcykwuUXn/J4mPyA9xXpCPQfSju
+         7HXZ+3SF4/qeOPJDZ145o3ArHUh3TJe4lDUqzMfwMlAFYPBap/7wSEf/9/XrxGk33PH5
+         582A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b="M/oo9srM";
+       dkim=pass header.i=@intel.com header.s=Intel header.b=HiyEi71R;
        spf=pass (google.com: domain of zhao1.liu@intel.com designates 192.198.163.15 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 Return-Path: <zhao1.liu@intel.com>
 Received: from mgamail.intel.com (mgamail.intel.com. [192.198.163.15])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6c75e561fefsi11380346d6.306.2024.09.18.22.56.13
+        by mx.google.com with ESMTPS id 6a1803df08f44-6c75e561fefsi11380346d6.306.2024.09.18.22.56.19
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 18 Sep 2024 22:56:14 -0700 (PDT)
+        Wed, 18 Sep 2024 22:56:20 -0700 (PDT)
 Received-SPF: pass (google.com: domain of zhao1.liu@intel.com designates 192.198.163.15 as permitted sender) client-ip=192.198.163.15;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b="M/oo9srM";
+       dkim=pass header.i=@intel.com header.s=Intel header.b=HiyEi71R;
        spf=pass (google.com: domain of zhao1.liu@intel.com designates 192.198.163.15 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1726725375; x=1758261375;
+  t=1726725381; x=1758261381;
   h=from:to:cc:subject:date:message-id:in-reply-to:
    references:mime-version:content-transfer-encoding;
-  bh=NEuBE48juMTcQ/dJZHqJkRWuT1BVDd+3siUk37y9rsM=;
-  b=M/oo9srMkiuaf2PeFTY6NvZKzMMahm/2pM7ZOrCQ4znT4B15VZA6FKqL
-   8SEp2AVdjU5zUREntL15pYbYK2BcdJv03pK5mfpt/6dHQnOstKSCDNmiu
-   vB7tmDeGnMHTW20+2FBNDvSZkiyygL6h4MZ1FvHlWmuF15k6NKuLKSiE7
-   b0SbRIR9FdnzJMPHL2kdXYBzAjxzDyWjpRHZlU4Eq0oez+IOHq7AqlD2b
-   RjiPELbIIqgcT9Y0/ud0+y6OHtTVnitAyAYFM3CUwQ3gjvHtDh9u1+3mf
-   uyRGizubuWWoOWHdMhFiRwYOw14d8gekjyrIlSXi0RwBP+FiwjFk/s0B0
+  bh=swUKe7Dk5Q6yJ5VJiLcmgO4PNjWAtrL0i/B6l+A1Xbk=;
+  b=HiyEi71RM2E0F1qmx67D6S1lNJcuIaLNHyk+oz3eMET5FsNm4j9D05Ky
+   EdaGNTpf4zDjX0Pt6fAdTxff2rXZc1dFfxPXdmneyj7cU6vzXvld5yRJi
+   r0Ns9dCV1tw6oOuyEzEA/zNhmUtp/NR96iHwYKclbSZSMowxl8Ra/JStQ
+   Ykc6d6/0gx9YI3x1oWZEB5YLvt0h2xlLLyeXrFRtarOqknMeIPaHmO3yN
+   3QaBKeME95GVayGynbhxO5hU9L6gLR+nYYXstn31ZQ+omgJBCwziAK/o2
+   5LjUCi8yy2qA4niGfFxUUUyQ7w+ttpKMVok4ODb+te598SRPKve1DOxJ/
    Q==;
-X-CSE-ConnectionGUID: xVq3RhWmRi+Oxx4NNpzBrg==
-X-CSE-MsgGUID: gucct6NjSkyWBeMbfEPA2w==
-X-IronPort-AV: E=McAfee;i="6700,10204,11199"; a="25813631"
+X-CSE-ConnectionGUID: 6kPOyUC6SlC6p9mkh/6BnA==
+X-CSE-MsgGUID: akF+DvTIQAKWNeqiIQY+Bw==
+X-IronPort-AV: E=McAfee;i="6700,10204,11199"; a="25813663"
 X-IronPort-AV: E=Sophos;i="6.10,240,1719903600"; 
-   d="scan'208";a="25813631"
+   d="scan'208";a="25813663"
 Received: from fmviesa006.fm.intel.com ([10.60.135.146])
-  by fmvoesa109.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Sep 2024 22:56:13 -0700
-X-CSE-ConnectionGUID: uRrDVkRIRWuVWkVS9YAxng==
-X-CSE-MsgGUID: NLGU4weHTJKIgFAW97vQLw==
+  by fmvoesa109.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Sep 2024 22:56:20 -0700
+X-CSE-ConnectionGUID: 0tIfENWWT32Xu6SDNpEnXA==
+X-CSE-MsgGUID: OO4hh/zZRMaI4/Pt2zCRAA==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.10,240,1719903600"; 
-   d="scan'208";a="69418749"
+   d="scan'208";a="69418778"
 Received: from liuzhao-optiplex-7080.sh.intel.com ([10.239.160.36])
-  by fmviesa006.fm.intel.com with ESMTP; 18 Sep 2024 22:56:07 -0700
+  by fmviesa006.fm.intel.com with ESMTP; 18 Sep 2024 22:56:13 -0700
 From: Zhao Liu <zhao1.liu@intel.com>
 To: =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
 	Igor Mammedov <imammedo@redhat.com>,
@@ -92,159 +92,144 @@ Cc: qemu-devel@nongnu.org,
 	Dapeng Mi <dapeng1.mi@linux.intel.com>,
 	Yongwei Ma <yongwei.ma@intel.com>,
 	Zhao Liu <zhao1.liu@intel.com>
-Subject: [RFC v2 07/12] hw/core: Re-implement topology helpers to honor max limitations
-Date: Thu, 19 Sep 2024 14:11:23 +0800
-Message-Id: <20240919061128.769139-8-zhao1.liu@intel.com>
+Subject: [RFC v2 08/12] hw/i386: Use get_max_topo_by_level() to get topology information
+Date: Thu, 19 Sep 2024 14:11:24 +0800
+Message-Id: <20240919061128.769139-9-zhao1.liu@intel.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240919061128.769139-1-zhao1.liu@intel.com>
 References: <20240919061128.769139-1-zhao1.liu@intel.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: +eQqFt393Fk6
+X-TUID: W1llarg1XDuJ
 
-For custom topology case, the valid and reliable topology information
-be obtained from topology max limitations.
-
-Therefore, re-implement machine_topo_get_cores_per_socket() and
-machine_topo_get_threads_per_socket() to consider the custom topology
-case. And further, use the wrapped helper to set CPUState.nr_threads/
-nr_cores, avoiding topology mismatches in custom topology scenarios.
-
-Additionally, since test-smp-parse needs more stubs to compile with
-cpu-slot.c, keep the old helpers for test-smp-parse' use for now. The
-legacy old helpers will be cleaned up when full compilation support is
-added later on.
+To honor the custom topology case and generate correct APIC ID for
+hybrid CPU topology, Use get_max_topo_by_level() to get topology
+information instead of accessing MachineState.smp directly.
 
 Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
 ---
- hw/core/machine-smp.c       |  8 +++++---
- hw/cpu/cpu-slot.c           | 18 ++++++++++++++++++
- include/hw/boards.h         |  9 +++++++--
- include/hw/cpu/cpu-slot.h   |  2 ++
- system/cpus.c               |  2 +-
- tests/unit/test-smp-parse.c |  4 ++--
- 6 files changed, 35 insertions(+), 8 deletions(-)
+ hw/i386/x86-common.c | 19 +++++++++++++------
+ hw/i386/x86.c        | 20 +++++++++++++-------
+ 2 files changed, 26 insertions(+), 13 deletions(-)
 
-diff --git a/hw/core/machine-smp.c b/hw/core/machine-smp.c
-index d3be4352267d..2965b042fd92 100644
---- a/hw/core/machine-smp.c
-+++ b/hw/core/machine-smp.c
-@@ -376,14 +376,16 @@ bool machine_parse_smp_cache(MachineState *ms,
-     return true;
- }
+diff --git a/hw/i386/x86-common.c b/hw/i386/x86-common.c
+index 75d4b2f3d43a..58591e015569 100644
+--- a/hw/i386/x86-common.c
++++ b/hw/i386/x86-common.c
+@@ -202,11 +202,15 @@ void x86_cpus_init(X86MachineState *x86ms, int default_cpu_version)
  
--unsigned int machine_topo_get_cores_per_socket(const MachineState *ms)
-+unsigned int machine_topo_get_cores_per_socket_old(const MachineState *ms)
+ static void x86_fixup_topo_ids(MachineState *ms, X86CPU *cpu)
  {
-+    assert(!ms->topo);
-     return ms->smp.cores * ms->smp.modules * ms->smp.clusters * ms->smp.dies;
- }
++    int max_modules, max_dies;
++
++    max_modules = get_max_topo_by_level(ms, CPU_TOPOLOGY_LEVEL_MODULE);
++    max_dies = get_max_topo_by_level(ms, CPU_TOPOLOGY_LEVEL_DIE);
+     /*
+      * die-id was optional in QEMU 4.0 and older, so keep it optional
+      * if there's only one die per socket.
+      */
+-    if (cpu->module_id < 0 && ms->smp.modules == 1) {
++    if (cpu->module_id < 0 && max_modules == 1) {
+         cpu->module_id = 0;
+     }
  
--unsigned int machine_topo_get_threads_per_socket(const MachineState *ms)
-+unsigned int machine_topo_get_threads_per_socket_old(const MachineState *ms)
+@@ -214,7 +218,7 @@ static void x86_fixup_topo_ids(MachineState *ms, X86CPU *cpu)
+      * module-id was optional in QEMU 9.0 and older, so keep it optional
+      * if there's only one module per die.
+      */
+-    if (cpu->die_id < 0 && ms->smp.dies == 1) {
++    if (cpu->die_id < 0 && max_dies == 1) {
+         cpu->die_id = 0;
+     }
+ }
+@@ -393,6 +397,7 @@ void x86_cpu_pre_plug(HotplugHandler *hotplug_dev,
+     MachineState *ms = MACHINE(hotplug_dev);
+     X86MachineState *x86ms = X86_MACHINE(hotplug_dev);
+     X86CPUTopoInfo topo_info;
++    int max_modules, max_dies;
+ 
+     if (!object_dynamic_cast(OBJECT(cpu), ms->cpu_type)) {
+         error_setg(errp, "Invalid CPU type, expected cpu type: '%s'",
+@@ -413,13 +418,15 @@ void x86_cpu_pre_plug(HotplugHandler *hotplug_dev,
+ 
+     init_topo_info(&topo_info, x86ms);
+ 
+-    if (ms->smp.modules > 1) {
+-        env->nr_modules = ms->smp.modules;
++    max_modules = get_max_topo_by_level(ms, CPU_TOPOLOGY_LEVEL_MODULE);
++    if (max_modules > 1) {
++        env->nr_modules = max_modules;
+         set_bit(CPU_TOPOLOGY_LEVEL_MODULE, env->avail_cpu_topo);
+     }
+ 
+-    if (ms->smp.dies > 1) {
+-        env->nr_dies = ms->smp.dies;
++    max_dies = get_max_topo_by_level(ms, CPU_TOPOLOGY_LEVEL_DIE);
++    if (max_dies > 1) {
++        env->nr_dies = max_dies;
+         set_bit(CPU_TOPOLOGY_LEVEL_DIE, env->avail_cpu_topo);
+     }
+ 
+diff --git a/hw/i386/x86.c b/hw/i386/x86.c
+index cdf7b81ad0e3..55904b545d84 100644
+--- a/hw/i386/x86.c
++++ b/hw/i386/x86.c
+@@ -44,16 +44,20 @@ void init_topo_info(X86CPUTopoInfo *topo_info,
  {
--    return ms->smp.threads * machine_topo_get_cores_per_socket(ms);
-+    assert(!ms->topo);
-+    return ms->smp.threads * machine_topo_get_cores_per_socket_old(ms);
+     MachineState *ms = MACHINE(x86ms);
+ 
+-    topo_info->dies_per_pkg = ms->smp.dies;
++    topo_info->dies_per_pkg =
++        get_max_topo_by_level(ms, CPU_TOPOLOGY_LEVEL_DIE);
+     /*
+      * Though smp.modules means the number of modules in one cluster,
+      * i386 doesn't support cluster level so that the smp.clusters
+      * always defaults to 1, therefore using smp.modules directly is
+      * fine here.
+      */
+-    topo_info->modules_per_die = ms->smp.modules;
+-    topo_info->cores_per_module = ms->smp.cores;
+-    topo_info->threads_per_core = ms->smp.threads;
++    topo_info->modules_per_die =
++        get_max_topo_by_level(ms, CPU_TOPOLOGY_LEVEL_MODULE);
++    topo_info->cores_per_module =
++        get_max_topo_by_level(ms, CPU_TOPOLOGY_LEVEL_CORE);
++    topo_info->threads_per_core =
++        get_max_topo_by_level(ms, CPU_TOPOLOGY_LEVEL_THREAD);
  }
  
- CpuTopologyLevel machine_get_cache_topo_level(const MachineState *ms,
-diff --git a/hw/cpu/cpu-slot.c b/hw/cpu/cpu-slot.c
-index f2b9c412926f..8c0d55e835e2 100644
---- a/hw/cpu/cpu-slot.c
-+++ b/hw/cpu/cpu-slot.c
-@@ -204,6 +204,8 @@ static int get_smp_info_by_level(const CpuTopology *smp_info,
-         return smp_info->cores;
-     case CPU_TOPOLOGY_LEVEL_MODULE:
-         return smp_info->modules;
-+    case CPU_TOPOLOGY_LEVEL_CLUSTER:
-+        return smp_info->clusters;
-     case CPU_TOPOLOGY_LEVEL_DIE:
-         return smp_info->dies;
-     case CPU_TOPOLOGY_LEVEL_SOCKET:
-@@ -356,6 +358,22 @@ int get_max_topo_by_level(const MachineState *ms, CpuTopologyLevel level)
-     return ms->topo->stat.entries[level].max_limit;
- }
+ /*
+@@ -103,7 +107,7 @@ static const CPUArchIdList *x86_possible_cpu_arch_ids(MachineState *ms)
+     X86MachineState *x86ms = X86_MACHINE(ms);
+     unsigned int max_cpus = ms->smp.max_cpus;
+     X86CPUTopoInfo topo_info;
+-    int i;
++    int i, max_dies, max_modules;
  
-+unsigned int machine_topo_get_cores_per_socket(const MachineState *ms)
-+{
-+    int cores = 1, i;
-+
-+    for (i = CPU_TOPOLOGY_LEVEL_CORE; i < CPU_TOPOLOGY_LEVEL_SOCKET; i++) {
-+        cores *= get_max_topo_by_level(ms, i);
-+    }
-+    return cores;
-+}
-+
-+unsigned int machine_topo_get_threads_per_socket(const MachineState *ms)
-+{
-+    return get_max_topo_by_level(ms, CPU_TOPOLOGY_LEVEL_THREAD) *
-+           machine_topo_get_cores_per_socket(ms);
-+}
-+
- bool machine_parse_custom_topo_config(MachineState *ms,
-                                       const SMPConfiguration *config,
-                                       Error **errp)
-diff --git a/include/hw/boards.h b/include/hw/boards.h
-index 6ef4ea322590..faf7859debdd 100644
---- a/include/hw/boards.h
-+++ b/include/hw/boards.h
-@@ -48,8 +48,13 @@ void machine_parse_smp_config(MachineState *ms,
- bool machine_parse_smp_cache(MachineState *ms,
-                              const SmpCachePropertiesList *caches,
-                              Error **errp);
--unsigned int machine_topo_get_cores_per_socket(const MachineState *ms);
--unsigned int machine_topo_get_threads_per_socket(const MachineState *ms);
-+/*
-+ * TODO: Drop these old helpers when cpu-slot.c could be compiled for
-+ * test-smp-parse. Pls use machine_topo_get_cores_per_socket() and
-+ * machine_topo_get_threads_per_socket() instead.
-+ */
-+unsigned int machine_topo_get_cores_per_socket_old(const MachineState *ms);
-+unsigned int machine_topo_get_threads_per_socket_old(const MachineState *ms);
- CpuTopologyLevel machine_get_cache_topo_level(const MachineState *ms,
-                                               CacheLevelAndType cache);
- void machine_memory_devices_init(MachineState *ms, hwaddr base, uint64_t size);
-diff --git a/include/hw/cpu/cpu-slot.h b/include/hw/cpu/cpu-slot.h
-index f56a0b08dca4..230309b67fe1 100644
---- a/include/hw/cpu/cpu-slot.h
-+++ b/include/hw/cpu/cpu-slot.h
-@@ -81,6 +81,8 @@ struct CPUSlot {
- void machine_plug_cpu_slot(MachineState *ms);
- bool machine_create_topo_tree(MachineState *ms, Error **errp);
- int get_max_topo_by_level(const MachineState *ms, CpuTopologyLevel level);
-+unsigned int machine_topo_get_cores_per_socket(const MachineState *ms);
-+unsigned int machine_topo_get_threads_per_socket(const MachineState *ms);
- bool machine_parse_custom_topo_config(MachineState *ms,
-                                       const SMPConfiguration *config,
-                                       Error **errp);
-diff --git a/system/cpus.c b/system/cpus.c
-index 1c818ff6828c..53e7cfb8a55f 100644
---- a/system/cpus.c
-+++ b/system/cpus.c
-@@ -667,7 +667,7 @@ void qemu_init_vcpu(CPUState *cpu)
-     MachineState *ms = MACHINE(qdev_get_machine());
+     if (ms->possible_cpus) {
+         /*
+@@ -120,6 +124,8 @@ static const CPUArchIdList *x86_possible_cpu_arch_ids(MachineState *ms)
  
-     cpu->nr_cores = machine_topo_get_cores_per_socket(ms);
--    cpu->nr_threads =  ms->smp.threads;
-+    cpu->nr_threads = get_max_topo_by_level(ms, CPU_TOPOLOGY_LEVEL_THREAD);
-     cpu->stopped = true;
-     cpu->random_seed = qemu_guest_random_seed_thread_part1();
+     init_topo_info(&topo_info, x86ms);
  
-diff --git a/tests/unit/test-smp-parse.c b/tests/unit/test-smp-parse.c
-index f9bccb56abc7..44d2213a7163 100644
---- a/tests/unit/test-smp-parse.c
-+++ b/tests/unit/test-smp-parse.c
-@@ -801,8 +801,8 @@ static void check_parse(MachineState *ms, const SMPConfiguration *config,
-     /* call the generic parser */
-     machine_parse_smp_config(ms, config, &err);
++    max_dies = get_max_topo_by_level(ms, CPU_TOPOLOGY_LEVEL_DIE);
++    max_modules = get_max_topo_by_level(ms, CPU_TOPOLOGY_LEVEL_MODULE);
+     for (i = 0; i < ms->possible_cpus->len; i++) {
+         X86CPUTopoIDs topo_ids;
  
--    ms_threads_per_socket = machine_topo_get_threads_per_socket(ms);
--    ms_cores_per_socket = machine_topo_get_cores_per_socket(ms);
-+    ms_threads_per_socket = machine_topo_get_threads_per_socket_old(ms);
-+    ms_cores_per_socket = machine_topo_get_cores_per_socket_old(ms);
-     output_topo_str = cpu_topology_to_string(&ms->smp,
-                                              ms_threads_per_socket,
-                                              ms_cores_per_socket,
+@@ -131,11 +137,11 @@ static const CPUArchIdList *x86_possible_cpu_arch_ids(MachineState *ms)
+                                  &topo_info, &topo_ids);
+         ms->possible_cpus->cpus[i].props.has_socket_id = true;
+         ms->possible_cpus->cpus[i].props.socket_id = topo_ids.pkg_id;
+-        if (ms->smp.dies > 1) {
++        if (max_dies > 1) {
+             ms->possible_cpus->cpus[i].props.has_die_id = true;
+             ms->possible_cpus->cpus[i].props.die_id = topo_ids.die_id;
+         }
+-        if (ms->smp.modules > 1) {
++        if (max_modules > 1) {
+             ms->possible_cpus->cpus[i].props.has_module_id = true;
+             ms->possible_cpus->cpus[i].props.module_id = topo_ids.module_id;
+         }
 -- 
 2.34.1

@@ -1,233 +1,431 @@
-Received: by 2002:a17:505:42a7:b0:1be9:327d:8ee3 with SMTP id rt7csp286173njb;
-        Thu, 19 Sep 2024 08:56:35 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCWVZrf7twyIZnm/pD5t3ocMnWk0UjiL6vXhWCpD+46CcnZpoAumxIV4HzWcBdVOHlFnUA53neseS06NnA==@linaro.org
-X-Google-Smtp-Source: AGHT+IGR8zGDMKBvBSJcDAbkPqQO1Wh/swnDh9E1yc+1dWPnlrz7NoJKhI8m7eN/zkKE0GIynaR5
-X-Received: by 2002:a17:902:e84d:b0:207:1570:13e8 with SMTP id d9443c01a7336-2076e31f04amr373689215ad.12.1726761395487;
-        Thu, 19 Sep 2024 08:56:35 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1726761395; cv=pass;
+Received: by 2002:a17:505:42a7:b0:1be9:327d:8ee3 with SMTP id rt7csp968950njb;
+        Fri, 20 Sep 2024 11:03:44 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWAKKrkzTXV+vJce4FkoM2RSSFeOWeyAuZ8E79qC9T7i3iWY/t3vzMVd9UmvDyKPKCkEwoIYj6cAxVTKA==@linaro.org
+X-Google-Smtp-Source: AGHT+IFY8dqoah55sgpQN5NKHEEYGi7sWaR8/KbjjnyIT0Q2E72BYRHhfdRvSgYj/YuhyESUPlOw
+X-Received: by 2002:a05:6871:609:b0:260:f801:61b2 with SMTP id 586e51a60fabf-2803a8e4e16mr2880680fac.43.1726855424046;
+        Fri, 20 Sep 2024 11:03:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1726855424; cv=none;
         d=google.com; s=arc-20240605;
-        b=C0xLpyeR2Iyd2qLlbsfrQ+y1xO1+92qWFZAZI6lRqFOW7a5AyNCk6BMgEOkj20Mx78
-         m0qBVUXAElLcpn21cXokHQGVl+N3B5HUbYBmR2XwtgI5Tz4u28XjvUPVzCoC7aqfdqWu
-         aG5dEDuFkf0NfkzgDTELcmh4SpSdq4dWlJEV00wA3IVyCRgs9z6qXfecCikJhZahlGX9
-         z0fpa5LC8qT6J3XVCIi9CX2WdWJx9zkzPD1pV30pVcgmOHx2ywaoueZf44f4Lk8xvMzk
-         sDIUzGehcn9jkCFiiPyXdZasMSVk/dwueytPKkUSLzewljCgPG4tsdJd0y4o7+jykPBP
-         4Ldg==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=mime-version:content-transfer-encoding:in-reply-to:from
-         :content-language:references:cc:to:subject:user-agent:date
-         :message-id:dkim-signature;
-        bh=UsAyoozlum0ealAMPfSRXaSsNvE+Wcmeefet8nSgKvQ=;
-        fh=OY1nNymyeu5l2nPUN+QIeEOguAaG3EF6bwSt4m1EGes=;
-        b=cE95QN0PA5M4BP7GaAfEevmvOMRUiHY1WtKVpD3d68ZRvMnzRhRM4MbLiNCBgsOh4K
-         T8KDXN1kRbF7GpVP85Nt37Clz4fe9OSMlJq40Wp9IugJP7FkPbyH8lQIdfKQkAEwbaHn
-         LpkDIuSIU1nQ1PYgglWbXeP3OGcv7fU1D5N7lHrGknjV7zyr73OhjjNBfuNhAG+HWTNT
-         NCNqutaVYBjpn6/PbT3jYvV9/WkMCGpe0h0AA6iMQ6DCBTyc19eCb/ScsmbZ0wRmz6ce
-         gWYS3jqQloR7WK1Vgc35nxyPIVI9sndu3RSbf4+RCiPmxe/ObFA/nfVG1H6hBW6WsNMk
-         giRg==;
+        b=fMODVrf2WfHlw/vqOWs2Lc8iRGKeiUfIwYjw+qo6YUU6oxERMAnXAcf5F/QBkra1/U
+         fqjRXj9+RAxH5M4Q9fh5IYJM67pMoWde+j9XNwlE6sV8NVlbc49sw0bYXozcZHWEOC7m
+         1+xz8hTC+Wbpwrmc6j3HhMukOGWaF2rQhjuzF1/S2RSxMNbINiD19r9/gP7mTPOk14tA
+         eEelNqfhzQbnESyNRx1I9wYfbtRnVRxqh5VQLiSZXtt9E9BklL4pa2RnE1XYIOq1cxJk
+         iXDzXoCPQTPF96BHm02wRiQa96LidngN1isZPsdW2b0b8SvBkCRMFH7W6vcN4TSZu2Dp
+         OtKg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=bofBxwt9eQWNhPNybPCc/0fu7JZxDxx/ho7OkhckqN8=;
+        fh=MW0LfvHWqDQvxJG7Q4T5EUHpH+vOBnvrsbJXkpcDEV0=;
+        b=Iy7Gg1PehXpQ0i+DOAUZhGkN4WmB29OTdWWtjbaucmJVtzhPkM07DLl+IESC0zpLTq
+         h/bFnPFT5InbJmz/1ACgNuUNnejLU8v1MsLhfbi8Q6z9sDDeLW8nZp4UX2knRUbQIp3k
+         TM5X2JHjcwQw9Ieg1nuoioZofxip49auUyaNVvQd8Fd8NFeBzDRDc2b2VHR/xPHnk2A4
+         XnFWyIDzSlrnTJwNl9GVkljp5yuHTh4yfu6uA5LK6NesGga0nqmVSV9mtrps0GUxWNvZ
+         sb3bT4uuLDZDYTQrXpTNXeZZJ75EJSAp5EvkUJsxeayFERLnPuZFodVofWkgDTZYIDtD
+         HEZA==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@os.amperecomputing.com header.s=selector2 header.b=hvOBz1TQ;
-       arc=pass (i=1 spf=pass spfdomain=os.amperecomputing.com dkim=pass dkdomain=os.amperecomputing.com dmarc=pass fromdomain=os.amperecomputing.com);
-       spf=pass (google.com: domain of gankulkarni@os.amperecomputing.com designates 2a01:111:f403:2009::705 as permitted sender) smtp.mailfrom=gankulkarni@os.amperecomputing.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amperecomputing.com
-Return-Path: <gankulkarni@os.amperecomputing.com>
-Received: from NAM10-BN7-obe.outbound.protection.outlook.com (mail-bn7nam10on20705.outbound.protection.outlook.com. [2a01:111:f403:2009::705])
-        by mx.google.com with ESMTPS id d9443c01a7336-207946de619si135090065ad.254.2024.09.19.08.56.34
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 19 Sep 2024 08:56:35 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gankulkarni@os.amperecomputing.com designates 2a01:111:f403:2009::705 as permitted sender) client-ip=2a01:111:f403:2009::705;
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@google.com header.s=20230601 header.b="RMGq2p/t";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id ada2fe7eead31-49e6b49dd72si3463884137.600.2024.09.20.11.03.43
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 20 Sep 2024 11:03:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@os.amperecomputing.com header.s=selector2 header.b=hvOBz1TQ;
-       arc=pass (i=1 spf=pass spfdomain=os.amperecomputing.com dkim=pass dkdomain=os.amperecomputing.com dmarc=pass fromdomain=os.amperecomputing.com);
-       spf=pass (google.com: domain of gankulkarni@os.amperecomputing.com designates 2a01:111:f403:2009::705 as permitted sender) smtp.mailfrom=gankulkarni@os.amperecomputing.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amperecomputing.com
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=NOzT7hqyiIL8oVBIpkWbirp3cpufCpCQJv1TQfNe6NSDGOzMCqoePYOjjQqv7paZ5Dn+EnbhXL4bZTwNoHDxhr85X0dCzvEjRBsUR+zJMf2hzoibWhWmmzLXPfU3rhdalkx3JxtVI16gteNDeS9QFGTBOd4dHbhUHDrf08Z5D741HP1OMtWlXybK3XGJPeU0I4nfgGqiG0LzRfEpfLS4Z6o7MA9PcxIiTn00vjrnW+IOXrsWzId1IuVA6LwYG6ww0NJv8Awe3jAq7AuvE8lpgDLANXiRL7aD3wzvTNzJeXnYvq0bZi3Hl7ac+HrdUgHtBbXPkFoqQY2JhLXmakRwEg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=UsAyoozlum0ealAMPfSRXaSsNvE+Wcmeefet8nSgKvQ=;
- b=XaG+ACWyvieKMaHfgB7I2cgSvtFzL15s8ARxpH/5M6TLd6k9uG6I+r2mg15l16CmtdcUe7VtiiTBioHxuLT7veJv6f+48Lywisqo+7ea4V5vCXjXYSU7OWH7ptQuXc/i1/FMRCrLaetwkinj99XgEkMxrhyGod4gNLUpbhcXiCdzI2nEN0X1TnjWgDPUFFIhC8c8az7sGhbX+EbejN84cOSrOQmtlMDoZ6cdrpTBteofueqpvenhvLGkLyUsrEaW/ecNtIWsrmMTwPfyOyGqOpPVXXDem2lrMCLF725ZNWeII1mmLv4+mDecuCYYCM93LbqrKkQSMLtapkSrs3pw2g==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=os.amperecomputing.com; dmarc=pass action=none
- header.from=os.amperecomputing.com; dkim=pass
- header.d=os.amperecomputing.com; arc=none
+       dkim=pass header.i=@google.com header.s=20230601 header.b="RMGq2p/t";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
+       dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1srhyE-0006a5-J4; Fri, 20 Sep 2024 14:03:06 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <tavip@google.com>) id 1srhyD-0006YW-4t
+ for qemu-arm@nongnu.org; Fri, 20 Sep 2024 14:03:05 -0400
+Received: from mail-lf1-x12b.google.com ([2a00:1450:4864:20::12b])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <tavip@google.com>) id 1srhyA-0002jx-TP
+ for qemu-arm@nongnu.org; Fri, 20 Sep 2024 14:03:04 -0400
+Received: by mail-lf1-x12b.google.com with SMTP id
+ 2adb3069b0e04-5356a2460ceso3055e87.0
+ for <qemu-arm@nongnu.org>; Fri, 20 Sep 2024 11:03:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=os.amperecomputing.com; s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=UsAyoozlum0ealAMPfSRXaSsNvE+Wcmeefet8nSgKvQ=;
- b=hvOBz1TQvt/FJpWYV2mfCcdxjYhka6/4bJOF4qflezmQfQ8QN1H+z2YMApzgABlrp0rBZVdosgT6tF8kA4GDfcsrhinnJ7lBrqSYIAkuUXMyLtQ96ONXGCCoUzCZD8Qu2S4XZImyZExN3dxeBDuF9DQd8lnAYGcLWXTtFaD0MXw=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=os.amperecomputing.com;
-Received: from SJ2PR01MB8101.prod.exchangelabs.com (2603:10b6:a03:4f6::10) by
- SA0PR01MB6379.prod.exchangelabs.com (2603:10b6:806:e1::15) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.7982.17; Thu, 19 Sep 2024 15:56:22 +0000
-Received: from SJ2PR01MB8101.prod.exchangelabs.com
- ([fe80::292:6d9c:eb9a:95c9]) by SJ2PR01MB8101.prod.exchangelabs.com
- ([fe80::292:6d9c:eb9a:95c9%4]) with mapi id 15.20.7962.022; Thu, 19 Sep 2024
- 15:56:22 +0000
-Message-ID: <cdbe8ff8-6745-4b3e-9c9e-e557bad1aa21@os.amperecomputing.com>
-Date: Thu, 19 Sep 2024 21:26:14 +0530
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH V2] arm/kvm: add support for MTE
-To: Cornelia Huck <cohuck@redhat.com>,
- Gustavo Romero <gustavo.romero@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, richard.henderson@linaro.org,
- alex.bennee@linaro.org, darren@os.amperecomputing.com
-References: <20240912091616.393685-1-gankulkarni@os.amperecomputing.com>
- <0faf9a7c-0400-482c-974f-7b70e1d58202@linaro.org>
- <879f7e65-070a-4d9b-b70f-60576b7b5319@os.amperecomputing.com>
- <8734lvu1ji.fsf@redhat.com>
-Content-Language: en-US
-From: Ganapatrao Kulkarni <gankulkarni@os.amperecomputing.com>
-In-Reply-To: <8734lvu1ji.fsf@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-ClientProxiedBy: MA0PR01CA0014.INDPRD01.PROD.OUTLOOK.COM
- (2603:1096:a01:80::21) To SJ2PR01MB8101.prod.exchangelabs.com
- (2603:10b6:a03:4f6::10)
-Return-Path: gankulkarni@os.amperecomputing.com
+ d=google.com; s=20230601; t=1726855380; x=1727460180; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=bofBxwt9eQWNhPNybPCc/0fu7JZxDxx/ho7OkhckqN8=;
+ b=RMGq2p/t+1ePGVrvwvO/TpBeRDJJjc5PT5+7N7rVK6FB11LiOt4AYs5rwZa7FusuP0
+ 6odKdu3lyj7KXqhGj8znxDOCvPcA1VMiPkbM91xMEjGQSlSAOfoM1jttM53SiTE3Z7fr
+ wH0bMzuoNDFKP2jj6lLpdBsUm6JND1Ayh2tc3xUPwgVdMPX5/Hm8PtZHUaKZLh39vq2l
+ vT4l0VlbgW6BNuCZ8zvXuVb1FF26ZjHo3stZ/fJxEC3fX/QOMstzgrrVqTBNgrgS93yz
+ xq4UQgP5s0QfIo5E+KdPQEW8SLH0k17qi/xPflVj+Mmq5rzSmtf+S/GcCcuNp+IFGduw
+ oVSg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1726855380; x=1727460180;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=bofBxwt9eQWNhPNybPCc/0fu7JZxDxx/ho7OkhckqN8=;
+ b=Ctnonkn52yWWwtKdKPMm/FhdYoreI10RyrYc0kd81PG2RLWLkWbda65AJrfSW7Gk9o
+ p9AhUKw8i5Vs7Vqqn++53P0u7hKj7v+askhTowycqSrYLcKyGHQjkT8d2/CLaK+9Nt6o
+ TVxq4KPCDxl2lH0ZtbU1WmGf9Xhw+hGu2/Cq3NleSKj2uOtISDCh46q/kKQfnv43x2PB
+ rUWpI033t2YLjUPzhOPoFUV78TaA0mRtsBxtIdtnQXBB3hC+NYuHVyCit7OXAFCmwD9w
+ bZqQ2Bf0L3iXrGd/7DV5vE7GOmgWaW4/Ylf/JsfcwRdYPDMcvv9TlLTOWWviZqQO7tkF
+ K1vA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUnti+cf9aFKW1QyRu02x/Zg+3T1Rdrhw/ABVpv5mk/IN/1HVlul1XFvzHLga/SymV+2u16EfT5OA==@nongnu.org
+X-Gm-Message-State: AOJu0YzmwaozN7EKfcRT1R1IAOeF2sxPgTF6rYyrIDiayHONgpQqGcxn
+ 6s7j7Zmzv8FJ/BwqEfg9gQOoYeNNqmP8eopQipwtVzeNV7ipIGL7T939a89HmzgZWkGTlkhiMeQ
+ Qd4QMZBepPLvQcAgoGd4TJfdLSaPNgCvmzWE+
+X-Received: by 2002:a05:6512:3f1d:b0:535:68b2:9589 with SMTP id
+ 2adb3069b0e04-5374adc4e10mr23251e87.2.1726855379576; Fri, 20 Sep 2024
+ 11:02:59 -0700 (PDT)
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: SJ2PR01MB8101:EE_|SA0PR01MB6379:EE_
-X-MS-Office365-Filtering-Correlation-Id: 43246635-570e-423b-8263-08dcd8c39b9e
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|366016|376014;
-X-Microsoft-Antispam-Message-Info:
-	=?utf-8?B?WWRlQWZZWm5wbVhZck9PTjE3NWRtR0ZyVzZ5TFRxNGpqK3FEdUdtVDJWOWRF?=
- =?utf-8?B?YmgvWWJMS0ZmbkJsd2MyNnpmMHFGU3NmREkrenVGQVRkRGVZSzNQakczUDdy?=
- =?utf-8?B?Mm90ditZRk9PbE9HVnJyWEczcmh0Mjd0eUlWcS8rdzFBTFhjNExNbHBxT1pi?=
- =?utf-8?B?YW90c3BrTy9yeVJyQVNvd0F6UENlTDJ2L0dnZzUvNVFRb0hhMzAwMEE2b29q?=
- =?utf-8?B?alFDd0NCOSt4MlE4Q1IxM0I1dkowa0lCRTkrVU9FZWV4eU9lTDBDQ25jZ0Uw?=
- =?utf-8?B?TkVkR3ZTQnRGei9Ma2xHUEZBOXJkeWlxVWM0bWVsbW1rM0JLZ1Fzbm9OZnE5?=
- =?utf-8?B?VXlRRDhpSjc1Ym5XLzQ3ekZpYnZSTDVCYWc3bmlQdDlJRjU1dndFckthMnlJ?=
- =?utf-8?B?aUkrc0g3aFlQZ1hHQ1FkUGNqV1Z4aGlObDNNeTkvV0k2ZzBoUDVQYTNHT2Ji?=
- =?utf-8?B?S1ByaEI2RFBackFYWGRqNDB2b29aYmhYMGozOGVWNEZmeFF6Z21uQnlhUXJG?=
- =?utf-8?B?WVdya09rcENmcUdSNngzNVdEZ2I3VW0zZVFVendRWVFiMkd4aHFqYXNLVzYy?=
- =?utf-8?B?OG96elMwYUR3eTdGMlFCTDBhRFVuSEYwa0Q3cXRHTVQ1K2sxdVVGODNXOG1k?=
- =?utf-8?B?bDlLdHdTY21Nc2JpZ3l0cVZpMzRqQW1ZOEZqZXdjamVrUzgwRzVha1dBOU9O?=
- =?utf-8?B?bDkwcFhNYUIvaUZRbmF3ZmY0bWZoZ2JyZTR1M2c1UWJSMm1kNjJ3ZDdmbzBT?=
- =?utf-8?B?UjNkQUhVNjRPNlpWaUlpUWVzY2ZhTmYxN2FOSmJvVGlLQmUrRHN1cGRpaHFR?=
- =?utf-8?B?ZHNXQmQxY0QxaVZHb1VXZVdnZjVoem8yZGtrNVh5b1JZZEhHVjRWZ1FXOXl5?=
- =?utf-8?B?MmtIM2xCK2VESHk2RjJ5RUUrWEJROGorR3hKMXQyOVZ3V3NvcW1lUGIzTXcz?=
- =?utf-8?B?dXE4YURCamZpb1VYRE9nK0FRdHAyZmtFY25aUTVYT3hLRG1kUXpaeWFibGg5?=
- =?utf-8?B?VEJlWVpPTzhvakx4UnNVVjZVcHhISjJUUmNsWm1GbS9xUm1EUi9MT0xnNDlm?=
- =?utf-8?B?blhIM01XVkNWVytGQ1RsaEJ1Wjl3RmtOZ2RHaFV1eVp5cTRNNW1XRGpmTnh5?=
- =?utf-8?B?U1B0L3EyWjd5VFh0dXQyY3NQRDFCbEtzbkNPSjM1RTVIODRVdW04MmRMUzgw?=
- =?utf-8?B?ZUMyeUtnTHdIWStHRU5SK3VQTUtBMjNRbENTb3NsY2xMVW1YdEI1cWVMdVpM?=
- =?utf-8?B?RUZ3R3FUNDgzR3JaK0NJN01wMlBLd0ZjU0pUdk5oU0dUbjZBd3hUNW1mU2Zm?=
- =?utf-8?B?bG15ZDFYUWk3NDdubDFDMllFR2tEdkJtZ1dwMWFlb0w2OGlZUGFPMU5HZ3k3?=
- =?utf-8?B?MS9PNHd5bU9yT2U3Um5kQTdSMElIYkNjcGd4TVZZYU9mMndXY2F5bHlRUWhP?=
- =?utf-8?B?WExBMlUxb2JteHExZ1JoOXhYUzlDN2QxNHdYaWxWaGlaWDVOay9JNVY4NEkr?=
- =?utf-8?B?U0c1QmRBV3hGK0wydXY3UlcwR3NhS1hNMHBXYzM0TjVQNHB0VUhEcklOdWdS?=
- =?utf-8?B?aDZIMDQ4WkY2TGxBWG1PUy9LZXFZY1lDMXNRVXhyQWgxd05DOXhndFRFQ2o3?=
- =?utf-8?B?ZSt2Vm5IMXFKT1lKSUFhaHVERlJQY0xKWnZQU3VXMnpTNlZKM2FJQjg0WGht?=
- =?utf-8?B?QzRkbitnRGZUMEIzUEEveDZxL3MyR2l0eUhTK2lhQStObEhnZWM4MG4xVUoz?=
- =?utf-8?B?ejlIY0dta2ZXVFpvRExvR3ZMNG9GSTJXRDY5b1dwVW5sL0l0TVdsUzRoMlpv?=
- =?utf-8?B?MFZJRGpKTnRLVmkyZGVVZz09?=
-X-Forefront-Antispam-Report:
-	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SJ2PR01MB8101.prod.exchangelabs.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(366016)(376014);DIR:OUT;SFP:1102;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0:
-	=?utf-8?B?cVBSQkV4KzlpK2dTOVVhdC9qaDR0Z1JhZHM3cGkxb3M3ZXVZclRIc0Nlb254?=
- =?utf-8?B?bTd2NktCbWRjUFlFTzVNd0ppOTA4bnBVZ1MrTDJYL2pUbEpBWTVMSXd3SUov?=
- =?utf-8?B?R0dTd1ZVWGRPRktaRGFHYnh4a00xOVFEVnVmT1phNU8wM0lQbkNEQi9ncDJI?=
- =?utf-8?B?bWYwVUsrUldleTE0eU9WK05JeWJjZXl6UUVlY2dLVXNJWnBVN2dMWGVLYURt?=
- =?utf-8?B?TzNiY2E5NFY1UlV2OE1TdnNWTTlNWTd2WmRYL1crb3BXbmNmWkllMGdhNmw4?=
- =?utf-8?B?Z0kzRzFkWXNsVTdYOUF4akZWZzZQSVZHNUd5enl1UUVlWlhOVnFqRVRRSVhl?=
- =?utf-8?B?OTh1emsyaTBVMnhnU0tnZ1FoZFhNdlFuSUhBS0JOYk5FT1pJUEFKdU1VZVV6?=
- =?utf-8?B?b21hUTdYT1N2TGJEblRUcU5DNVpWamZDanZnUDI2SHQ1TWJoY2hPbW1tZnlW?=
- =?utf-8?B?eUp5K1pZZmVTVm5Cd0ErSEFQQ0RybmozUFNaMk5sczA5YkE1ODNmbkpwTU12?=
- =?utf-8?B?MkJKelRSazN3TGRsNFJ0dHFWNEdpVjAvc1E0RFhHSmZBUW9xSHpUaXFLcjhv?=
- =?utf-8?B?ZktMSTg2L0ZtVlpUbStyNzZFMzRTV3h6enA3SHNNdzlrSmxWT1NvRUtaWTVq?=
- =?utf-8?B?bXV4K1VGcnJiUWRrbGFEbkZNZDZxT1ZoMEJPY0oyQlZSbkZyRzFkWnVGbVNI?=
- =?utf-8?B?a0pEcXhOSVowaGJQbzRlbng1TEFpWUkydHpBcVN3RS9kQjgvQ2F2TEZHVGxt?=
- =?utf-8?B?NTBSZ3ptUVVRZkphbTE3VGhVR3BMZmRLRS9uR3JsZmxYWGFXdThzNkJ1UDRN?=
- =?utf-8?B?TUNjb0tIMlVzRXZja1BOL29xYkxoeE1ZUVdxSkgvWkM4a0ZzTWN6YUNQSmtX?=
- =?utf-8?B?cEFFbWZRdm5ERjdXRkNsMGs1dTZLMXVBbXMyZ1dRYVcvTnFiTUMybHJ1Y1lG?=
- =?utf-8?B?MUxtT2VKbnBMSlEvNW0yZFcreWxmNW5XR3lDKzRZRkNkZzNqTU9mdFBiRldR?=
- =?utf-8?B?eE10WU9kVVBBZ3VDUFN2Z21wa2k0cU1BOS8xS1FjUW1Od1VhbUJONG8vKzdp?=
- =?utf-8?B?WmpaWmZaUHpYRXJkREJQYmtQaTkvYnAwVjlVNm1qUlVDZVJjZ1piTFp3T29I?=
- =?utf-8?B?QmlpSmZJZTRzczdDWGFMWkMrWFcyU2pYaHJmNXlQT1Fya2l4L1YyU0hCMncw?=
- =?utf-8?B?TVk2Vlloc2xlWnVZNjVhNEVSY3ZpdzI3b2p0MTFjVGpCbHU5c3VXbFpHZ0I0?=
- =?utf-8?B?d2hNSCszOXNoMklsV2VyeFRwd213dm1uZkZzS2RXUHFCS3o0aFEzYyswM21q?=
- =?utf-8?B?ZVVtb2pVOGZwQ0xKSkR1ZEE4MDlkWDlxYlo4SEtqd3JwakRKQXBXWFJQTW5v?=
- =?utf-8?B?T2I2V2pnb2xkelBpdTE1ZmhmamVhcXJZSWtuSkwzWmc4NmhySWZYSkdpbnlo?=
- =?utf-8?B?RU5oSllFWGpjb1VNRnpWNDFTUlNCZHVNMEVyUVNYRUlMUmZuMzdpcHBXMGJ0?=
- =?utf-8?B?alUzZWd6SnhCVGp5Ni9sZkI0NnIraTBLYWlQUldBVkJELys3SVRwWnpQUXN2?=
- =?utf-8?B?ZVgrblNYQmNXa2RJZXl0LzF3bXdBKzdFT3JFS1pvQ2pCZHpmR0Fvb2FqRjQz?=
- =?utf-8?B?YUF1YlYvZFFpdEJWbVpzYU5BYk1TM3FrZENkYW5MSHU3ZVh3aTkvM1lTdHZU?=
- =?utf-8?B?RmgweW1DM215NFl0bWxJb1Myem1QS3RZOXdjb0FDUEdLaDRoRVdjOGNVeVVa?=
- =?utf-8?B?Ti81QktTT1FraGdzVWtMQm8yanQvMmlVZDlGcWNWWWdRTXRmREtoeEdlTFBm?=
- =?utf-8?B?aFVhTmhCTGtzem5QalZFOGtsR0picUF3VzhCUmwyeXU5dXg0SGtheXpsM1ZI?=
- =?utf-8?B?UnU0TDhma01YcmhJNWJMd3REL21aSlRaYno4MVFZcFdtTHh6UkhaSitHZkg3?=
- =?utf-8?B?ZW1OK0RMc256Z2hJOE5GdnVEaGY0WWNBQXM3OWNMOFBRVXhOM0pMNXl0U2Vk?=
- =?utf-8?B?c1FFTkpWYzJRdkhhMWo0TkI4eUN6QitGYk41TEpIMWFYZW9CZEJud3FGRFdW?=
- =?utf-8?B?OExNRmVQOEZmUnRUeWZtYW1CZXJ0b2kvN0QvSGp4R0JtVEo3NG9FUnRRdWlt?=
- =?utf-8?B?NmY4cGtWZ25IY1VKVmRuZWtsaFhUR3FnNmp2c3dDL1BCWTBVak5JdHljUGdM?=
- =?utf-8?Q?XtNeBbVz29FjHctKVFe2y6Y=3D?=
-X-OriginatorOrg: os.amperecomputing.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 43246635-570e-423b-8263-08dcd8c39b9e
-X-MS-Exchange-CrossTenant-AuthSource: SJ2PR01MB8101.prod.exchangelabs.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 19 Sep 2024 15:56:22.3964
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 3bc2b170-fd94-476d-b0ce-4229bdc904a7
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: Xr9xtUWmsZkEiL/0LOaUO1qKytyN+eMbgn1ZWZ+ID0Nj+KKA9zwH2D+Von8e9rthUyEVQ4NvbacsfiDCNa2Cyjp48FTOKQl/pvV4uu523lvKfInDpsWBGWqoatl2aPoz
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA0PR01MB6379
-X-TUID: G7LwseHtAWYB
+References: <20240918192254.3136903-1-tavip@google.com>
+ <20240918192254.3136903-9-tavip@google.com>
+ <Zus1YzMOZD1ppO-2@mail.minyard.net>
+ <CAGWr4cSvq+WnUQO3-8jyasQPhKGQCvzOYqRm5W8vRdhW9iU=xw@mail.gmail.com>
+ <ZutGsQglLtK7MtRB@mail.minyard.net>
+ <CAFEAcA_ZUkz8xv_PP27nD_eRL18v0cU6A7K+K57b8ML-9pmodQ@mail.gmail.com>
+In-Reply-To: <CAFEAcA_ZUkz8xv_PP27nD_eRL18v0cU6A7K+K57b8ML-9pmodQ@mail.gmail.com>
+From: Octavian Purdila <tavip@google.com>
+Date: Fri, 20 Sep 2024 11:02:46 -0700
+Message-ID: <CAGWr4cScq6+KQi2aJWtgSUSt+j28wXsxP240FfzTrCAFGRV14g@mail.gmail.com>
+Subject: Re: [PATCH 08/25] hw/i2c: add support for flexcomm i2c
+To: corey@minyard.net
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, stefanst@google.com, 
+ pbonzini@redhat.com, marcandre.lureau@redhat.com, berrange@redhat.com, 
+ eduardo@habkost.net, luc@lmichel.fr, damien.hedde@dahe.fr, 
+ alistair@alistair23.me, thuth@redhat.com, philmd@linaro.org, jsnow@redhat.com, 
+ crosa@redhat.com, lvivier@redhat.com, 
+ Peter Maydell <peter.maydell@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::12b;
+ envelope-from=tavip@google.com; helo=mail-lf1-x12b.google.com
+X-Spam_score_int: -175
+X-Spam_score: -17.6
+X-Spam_bar: -----------------
+X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ ENV_AND_HDR_SPF_MATCH=-0.5, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
+ USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: iGeSxyBPF+wV
+
+On Thu, Sep 19, 2024 at 2:36=E2=80=AFAM Peter Maydell <peter.maydell@linaro=
+.org> wrote:
+>
+> On Wed, 18 Sept 2024 at 22:31, Corey Minyard <corey@minyard.net> wrote:
+> > Generally it's frowned upon to have a ton of extra stuff that's not
+> > used.  I would think some is ok, like defining bits in registers that
+> > aren't used yet, but I have no idea how all the enums below here
+> > actually tie into anything.  I'm guessing these are just bitmasks into
+> > registers, but really, it's a lot easier to read if you have something
+> > like:
+> >
+> > /*
+> >  * The I2C Master function enable. When disabled, the Master
+> >  * configuration settings are not changed, but the Master function is
+> >  * internally reset.
+> >  */
+> > #define FLEXCOMM_I2C_CFG_MSTEN (1 << 4)
+>
+> The FIELD macro already gives you that:
+>   FIELD(FLEXCOMM_I2C_CFG, MSTEN, startbit, len);
+> will define an R_FLEXCOMM_I2C_CFG_MSTEN_MASK (which is
+> (1 << startbit) for the 'len =3D=3D 1' case).
+>
+> You can also set and read a 1 bit field the same as
+> any other, with the FIELD_DP32/FIELD_EX32 macros, so
+> you don't often need to directly use the MASK macro:
+>   s->cfg =3D FIELD_DP32(s->cfg, CFG, MSTEN, 1);
+> and
+>   if (FIELD_EX32(s->cfg, CFG, MSTEN)) {
+>      ...
+>   }
+>
+> The FIELD() macros are a bit unwieldy sometimes but the
+> advantage over ad-hoc #defines is that they're consistent
+> for every field in every register.
+>
+> I agree that providing enums for the possible values for 1-bit
+> fields is a bit superfluous.
+>
+
+I went ahead and removed those 1-bit enum values and added support to
+filter register/fields when generating the code. Also converted the
+enums to defines to make these a little bit more compact as I don't
+think we have any advantage over the enums?
+
+So with the following invocation:
+
+  run_target('svd-flexcomm-i2c', command: svd_gen_header +
+    [ '-i', rt595, '-o', '@SOURCE_ROOT@/include/hw/arm/svd/flexcomm_i2c.h',
+      '-p', 'I2C0', '-t', 'FLEXCOMM_I2C',
+      '--fields', 'CFG TIMEOUT:TOMIN MSTCTL MSTDAT
+STAT:MSTPENDING,MSTSTATE INT*:MSTPENDING* SLV*:'])
+
+I am getting the below generated file. Note that the register info is
+generated for all registers because this information is used to
+initialize the reset values, mask writes appropriately in registers
+and trace register access.
+
+Please let me know if this looks good or if there are any other tweaks
+I could make.
+
+/*
+ * Copyright 2016-2023 NXP SPDX-License-Identifier: BSD-3-Clause
+ *
+ * Automatically generated by svd-gen-header.py from MIMXRT595S_cm33.xml
+ */
+#pragma once
+
+#include "hw/register.h"
+
+/* I2C Bus Interface */
+#define FLEXCOMM_I2C_REGS_NO (1024)
+
+/* Configuration Register */
+REG32(FLEXCOMM_I2C_CFG, 0x800);
+/* Master Enable */
+FIELD(FLEXCOMM_I2C_CFG, MSTEN, 0, 1);
+/* Slave Enable */
+FIELD(FLEXCOMM_I2C_CFG, SLVEN, 1, 1);
+/* Monitor Enable */
+FIELD(FLEXCOMM_I2C_CFG, MONEN, 2, 1);
+/* I2C bus Time-out Enable */
+FIELD(FLEXCOMM_I2C_CFG, TIMEOUTEN, 3, 1);
+/* Monitor function Clock Stretching */
+FIELD(FLEXCOMM_I2C_CFG, MONCLKSTR, 4, 1);
+/* High Speed mode Capable enable */
+FIELD(FLEXCOMM_I2C_CFG, HSCAPABLE, 5, 1);
+
+/* Status Register */
+REG32(FLEXCOMM_I2C_STAT, 0x804);
+/* Master Pending */
+FIELD(FLEXCOMM_I2C_STAT, MSTPENDING, 0, 1);
+/* Master State code */
+FIELD(FLEXCOMM_I2C_STAT, MSTSTATE, 1, 3);
+/* Idle. The Master function is available to be used for a new transaction.=
+ */
+#define FLEXCOMM_I2C_STAT_MSTSTATE_IDLE 0
+/*
+ * Receive ready. Received data is available (in Master Receiver mode). Add=
+ress
+ * plus Read was previously sent and Acknowledged by a slave.
+ */
+#define FLEXCOMM_I2C_STAT_MSTSTATE_RECEIVE_READY 1
+/*
+ * Transmit ready. Data can be transmitted (in Master Transmitter mode).
+ * Address plus Write was previously sent and Acknowledged by a slave.
+ */
+#define FLEXCOMM_I2C_STAT_MSTSTATE_TRANSMIT_READY 2
+/* NACK Address. Slave NACKed address. */
+#define FLEXCOMM_I2C_STAT_MSTSTATE_NACK_ADDRESS 3
+/* NACK Data. Slave NACKed transmitted data. */
+#define FLEXCOMM_I2C_STAT_MSTSTATE_NACK_DATA 4
+
+/* Interrupt Enable Set Register */
+REG32(FLEXCOMM_I2C_INTENSET, 0x808);
+/* Master Pending interrupt Enable */
+FIELD(FLEXCOMM_I2C_INTENSET, MSTPENDINGEN, 0, 1);
+
+/* Interrupt Enable Clear Register */
+REG32(FLEXCOMM_I2C_INTENCLR, 0x80C);
+/* Master Pending interrupt clear */
+FIELD(FLEXCOMM_I2C_INTENCLR, MSTPENDINGCLR, 0, 1);
+
+/* Time-out Register */
+REG32(FLEXCOMM_I2C_TIMEOUT, 0x810);
+/* Time-out time value, the bottom 4 bits */
+FIELD(FLEXCOMM_I2C_TIMEOUT, TOMIN, 0, 4);
+
+/* Interrupt Status Register */
+REG32(FLEXCOMM_I2C_INTSTAT, 0x818);
+/* Master Pending */
+FIELD(FLEXCOMM_I2C_INTSTAT, MSTPENDING, 0, 1);
+
+/* Master Control Register */
+REG32(FLEXCOMM_I2C_MSTCTL, 0x820);
+/* Master Continue(write-only) */
+FIELD(FLEXCOMM_I2C_MSTCTL, MSTCONTINUE, 0, 1);
+/* Master Start control(write-only) */
+FIELD(FLEXCOMM_I2C_MSTCTL, MSTSTART, 1, 1);
+/* Master Stop control(write-only) */
+FIELD(FLEXCOMM_I2C_MSTCTL, MSTSTOP, 2, 1);
+/* Master DMA enable */
+FIELD(FLEXCOMM_I2C_MSTCTL, MSTDMA, 3, 1);
+
+/* Master Data Register */
+REG32(FLEXCOMM_I2C_MSTDAT, 0x828);
+/* Master function data register */
+FIELD(FLEXCOMM_I2C_MSTDAT, DATA, 0, 8);
+
+/* Slave Control Register */
+REG32(FLEXCOMM_I2C_SLVCTL, 0x840);
+
+/* Slave Data Register */
+REG32(FLEXCOMM_I2C_SLVDAT, 0x844);
+
+/* Slave Address Register */
+REG32(FLEXCOMM_I2C_SLVADR0, 0x848);
+
+/* Slave Address Register */
+REG32(FLEXCOMM_I2C_SLVADR1, 0x84C);
+
+/* Slave Address Register */
+REG32(FLEXCOMM_I2C_SLVADR2, 0x850);
+
+/* Slave Address Register */
+REG32(FLEXCOMM_I2C_SLVADR3, 0x854);
+
+/* Slave Qualification for Address 0 Register */
+REG32(FLEXCOMM_I2C_SLVQUAL0, 0x858);
 
 
-
-On 19-09-2024 08:35 pm, Cornelia Huck wrote:
-> On Thu, Sep 19 2024, Ganapatrao Kulkarni <gankulkarni@os.amperecomputing.com> wrote:
-> 
->> I have modified as below diff to keep TCG if loop as it is and adding if
->> for KVM case to clear/mask the MTE bits if MTE in KVM mode is not
->> enabled by user command(if no mte=on).
->>
->> Is below diff makes sense?
->>
->> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
->> index a59417aac8..523996576d 100644
->> --- a/target/arm/cpu.c
->> +++ b/target/arm/cpu.c
->> @@ -2390,15 +2390,20 @@ static void arm_cpu_realizefn(DeviceState *dev,
->> Error **errp)
->>
->>    #ifndef CONFIG_USER_ONLY
->>            /*
->> -         * If we do not have tag-memory provided by the TCG
->> -         * nor MTE at KVM enabled, reduce MTE support to
->> -         * instructions enabled at EL0.
->> +         * If we do not have tag-memory provided by the TCG,
->> +         * reduce MTE support to instructions enabled at EL0.
->>             * This matches Cortex-A710 BROADCASTMTE input being LOW.
->>             */
->> -        if (cpu->tag_memory == NULL && !cpu->kvm_mte) {
->> +        if (tcg_enabled() && cpu->tag_memory == NULL) {
->>                cpu->isar.id_aa64pfr1 =
->>                    FIELD_DP64(cpu->isar.id_aa64pfr1, ID_AA64PFR1, MTE, 1);
->>            }
->> +
->> +        /* Disable MTE, if it is not enabled by the user for KVM mode.
->> +         */
->> +        if (kvm_enabled() && !cpu->kvm_mte) {
->> +                FIELD_DP64(cpu->isar.id_aa64pfr1, ID_AA64PFR1, MTE, 0);
->> +        }
->>    #endif
->>        }
-> 
-> Wouldn't that be a possibly guest-visible change?
-> 
-
-Yes, the MTE bits of id_aa64pfr1 are masked to guest like before.
-
--- 
-Thanks,
-Ganapat/GK
+#define FLEXCOMM_I2C_REGISTER_ACCESS_INFO_ARRAY(_name) \
+    struct RegisterAccessInfo _name[FLEXCOMM_I2C_REGS_NO] =3D { \
+        [0 ... FLEXCOMM_I2C_REGS_NO - 1] =3D { \
+            .name =3D "", \
+            .addr =3D -1, \
+        }, \
+        [0x200] =3D { \
+            .name =3D "CFG", \
+            .addr =3D 0x800, \
+            .ro =3D 0xFFFFFFC0, \
+            .reset =3D 0x0, \
+        }, \
+        [0x201] =3D { \
+            .name =3D "STAT", \
+            .addr =3D 0x804, \
+            .ro =3D 0xFCF57FAF, \
+            .reset =3D 0x801, \
+        }, \
+        [0x202] =3D { \
+            .name =3D "INTENSET", \
+            .addr =3D 0x808, \
+            .ro =3D 0xFCF476AE, \
+            .reset =3D 0x0, \
+        }, \
+        [0x203] =3D { \
+            .name =3D "INTENCLR", \
+            .addr =3D 0x80C, \
+            .ro =3D 0xFCF476AE, \
+            .reset =3D 0x0, \
+        }, \
+        [0x204] =3D { \
+            .name =3D "TIMEOUT", \
+            .addr =3D 0x810, \
+            .ro =3D 0xFFFF0000, \
+            .reset =3D 0xFFFF, \
+        }, \
+        [0x205] =3D { \
+            .name =3D "CLKDIV", \
+            .addr =3D 0x814, \
+            .ro =3D 0xFFFF0000, \
+            .reset =3D 0x0, \
+        }, \
+        [0x206] =3D { \
+            .name =3D "INTSTAT", \
+            .addr =3D 0x818, \
+            .ro =3D 0xFFFFFFFF, \
+            .reset =3D 0x801, \
+        }, \
+        [0x208] =3D { \
+            .name =3D "MSTCTL", \
+            .addr =3D 0x820, \
+            .ro =3D 0xFFFFFFF0, \
+            .reset =3D 0x0, \
+        }, \
+        [0x209] =3D { \
+            .name =3D "MSTTIME", \
+            .addr =3D 0x824, \
+            .ro =3D 0xFFFFFF88, \
+            .reset =3D 0x77, \
+        }, \
+        [0x20A] =3D { \
+            .name =3D "MSTDAT", \
+            .addr =3D 0x828, \
+            .ro =3D 0xFFFFFF00, \
+            .reset =3D 0x0, \
+        }, \
+        [0x210] =3D { \
+            .name =3D "SLVCTL", \
+            .addr =3D 0x840, \
+            .ro =3D 0xFFFFFCF4, \
+            .reset =3D 0x0, \
+        }, \
+        [0x211] =3D { \
+            .name =3D "SLVDAT", \
+            .addr =3D 0x844, \
+            .ro =3D 0xFFFFFF00, \
+            .reset =3D 0x0, \
+        }, \
+        [0x212] =3D { \
+            .name =3D "SLVADR0", \
+            .addr =3D 0x848, \
+            .ro =3D 0xFFFF7F00, \
+            .reset =3D 0x1, \
+        }, \
+        [0x213] =3D { \
+            .name =3D "SLVADR1", \
+            .addr =3D 0x84C, \
+            .ro =3D 0xFFFF7F00, \
+            .reset =3D 0x1, \
+        }, \
+        [0x214] =3D { \
+            .name =3D "SLVADR2", \
+            .addr =3D 0x850, \
+            .ro =3D 0xFFFF7F00, \
+            .reset =3D 0x1, \
+        }, \
+        [0x215] =3D { \
+            .name =3D "SLVADR3", \
+            .addr =3D 0x854, \
+            .ro =3D 0xFFFF7F00, \
+            .reset =3D 0x1, \
+        }, \
+        [0x216] =3D { \
+            .name =3D "SLVQUAL0", \
+            .addr =3D 0x858, \
+            .ro =3D 0xFFFFFF00, \
+            .reset =3D 0x0, \
+        }, \
+        [0x220] =3D { \
+            .name =3D "MONRXDAT", \
+            .addr =3D 0x880, \
+            .ro =3D 0xFFFFFFFF, \
+            .reset =3D 0x0, \
+        }, \
+        [0x3FF] =3D { \
+            .name =3D "ID", \
+            .addr =3D 0xFFC, \
+            .ro =3D 0xFFFFFFFF, \
+            .reset =3D 0xE0301300, \
+        }, \
+    }

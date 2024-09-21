@@ -1,126 +1,114 @@
-Received: by 2002:a17:505:42a7:b0:1be9:327d:8ee3 with SMTP id rt7csp968950njb;
-        Fri, 20 Sep 2024 11:03:44 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWAKKrkzTXV+vJce4FkoM2RSSFeOWeyAuZ8E79qC9T7i3iWY/t3vzMVd9UmvDyKPKCkEwoIYj6cAxVTKA==@linaro.org
-X-Google-Smtp-Source: AGHT+IFY8dqoah55sgpQN5NKHEEYGi7sWaR8/KbjjnyIT0Q2E72BYRHhfdRvSgYj/YuhyESUPlOw
-X-Received: by 2002:a05:6871:609:b0:260:f801:61b2 with SMTP id 586e51a60fabf-2803a8e4e16mr2880680fac.43.1726855424046;
-        Fri, 20 Sep 2024 11:03:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1726855424; cv=none;
+Received: by 2002:a17:505:42a7:b0:1be9:327d:8ee3 with SMTP id rt7csp1481360njb;
+        Sat, 21 Sep 2024 12:36:30 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUZiFDs3Ijn6RRHp8fj4QxClehr1vutTIICnwLhgnhj13hl947sC2FFcrwkOQFFv8SOa5jhCQA/YSYbMg==@linaro.org
+X-Google-Smtp-Source: AGHT+IEvGNBqLzbv3O2ljOK8z5D7jPbnh5I2ymFBAjU7mzUjFQVJsKIWULDgSMtTVi57+J7xg+vo
+X-Received: by 2002:a05:6214:4589:b0:6c5:2fc7:a626 with SMTP id 6a1803df08f44-6c7bc746b22mr107008946d6.34.1726947390356;
+        Sat, 21 Sep 2024 12:36:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1726947390; cv=none;
         d=google.com; s=arc-20240605;
-        b=fMODVrf2WfHlw/vqOWs2Lc8iRGKeiUfIwYjw+qo6YUU6oxERMAnXAcf5F/QBkra1/U
-         fqjRXj9+RAxH5M4Q9fh5IYJM67pMoWde+j9XNwlE6sV8NVlbc49sw0bYXozcZHWEOC7m
-         1+xz8hTC+Wbpwrmc6j3HhMukOGWaF2rQhjuzF1/S2RSxMNbINiD19r9/gP7mTPOk14tA
-         eEelNqfhzQbnESyNRx1I9wYfbtRnVRxqh5VQLiSZXtt9E9BklL4pa2RnE1XYIOq1cxJk
-         iXDzXoCPQTPF96BHm02wRiQa96LidngN1isZPsdW2b0b8SvBkCRMFH7W6vcN4TSZu2Dp
-         OtKg==
+        b=TvqEOjWapJxxNC1AKpSYVGdpXfKckfcOIVlgpotuxa3FG09Rv7yl2VgiaMuQzpT2Qv
+         Z3rFveC6GgZoPs9NAINGAda7QYXItpNGIdVHF9gH9WpttgpKjzd7W/hgqBnAhuuxEp4K
+         JHllL4N/RLpkwhKkiLrmux+lXZJ+drVa+p+OT27wIHYcf/wycJU5Yk7MdrRJIdb7ibol
+         kGyaHE6mEBNgQIL4qVH6rL6LK1uhf4mE3SbzCHpEX91HashT2AeNnK/osPRf2JTjgnBI
+         VqgZizkL2HRn6qaLM6NrcMtu8oW1DESz4D4iFd3oqADIWqUHMYxaWCnchhXU5GT1eEAe
+         dKwA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=bofBxwt9eQWNhPNybPCc/0fu7JZxDxx/ho7OkhckqN8=;
-        fh=MW0LfvHWqDQvxJG7Q4T5EUHpH+vOBnvrsbJXkpcDEV0=;
-        b=Iy7Gg1PehXpQ0i+DOAUZhGkN4WmB29OTdWWtjbaucmJVtzhPkM07DLl+IESC0zpLTq
-         h/bFnPFT5InbJmz/1ACgNuUNnejLU8v1MsLhfbi8Q6z9sDDeLW8nZp4UX2knRUbQIp3k
-         TM5X2JHjcwQw9Ieg1nuoioZofxip49auUyaNVvQd8Fd8NFeBzDRDc2b2VHR/xPHnk2A4
-         XnFWyIDzSlrnTJwNl9GVkljp5yuHTh4yfu6uA5LK6NesGga0nqmVSV9mtrps0GUxWNvZ
-         sb3bT4uuLDZDYTQrXpTNXeZZJ75EJSAp5EvkUJsxeayFERLnPuZFodVofWkgDTZYIDtD
-         HEZA==;
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :mime-version:dkim-signature;
+        bh=E8LFyP1seF1KlJDE/l6XVbrZ2rFN6UCOfREcWb7U+SM=;
+        fh=JJ+m4CkYpKb9HNCE26j4wl691CDbBF/VBwrBG0RIfyo=;
+        b=dP1i1wknkeHUn8mvkVmYdIquplzIHhIpXDLwhkYKE3MEep2As1EQFvSEjysT6J6lmy
+         Wmfl7DtAs2wE9bYVAE4+1KtK6XYLd+joSa34i145boT11Aomb9DwydkRi4/W3fVM/OUC
+         mxoqChtxN76u4TLn7oA5k4LbdaCNBDkrytEOwbb1cF7MayCHJzO48NvJZFLYn3rI61mf
+         AxWJEVWqOZ3BdlyXpV4EaPKAH3B6hyAHM/7D/NGjMpbuKyDA93MEeRFJRvKhfQbB2OZf
+         QC5qb56xUGUQ4atC2lqiAiPC+tfbMxRUdUnRM6aPiA7zlyS8AErZvNzgd65TyOrlDyW8
+         kRZA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b="RMGq2p/t";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=ga8iQ1Ni;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ada2fe7eead31-49e6b49dd72si3463884137.600.2024.09.20.11.03.43
+        by mx.google.com with ESMTPS id 6a1803df08f44-6c75e456639si71040276d6.50.2024.09.21.12.36.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 20 Sep 2024 11:03:44 -0700 (PDT)
+        Sat, 21 Sep 2024 12:36:30 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b="RMGq2p/t";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=ga8iQ1Ni;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1srhyE-0006a5-J4; Fri, 20 Sep 2024 14:03:06 -0400
+	id 1ss5tt-0006XD-LQ; Sat, 21 Sep 2024 15:36:13 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <tavip@google.com>) id 1srhyD-0006YW-4t
- for qemu-arm@nongnu.org; Fri, 20 Sep 2024 14:03:05 -0400
-Received: from mail-lf1-x12b.google.com ([2a00:1450:4864:20::12b])
+ (Exim 4.90_1) (envelope-from <marietto2008@gmail.com>)
+ id 1ss5tr-0006VR-Qs; Sat, 21 Sep 2024 15:36:11 -0400
+Received: from mail-pl1-x62d.google.com ([2607:f8b0:4864:20::62d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <tavip@google.com>) id 1srhyA-0002jx-TP
- for qemu-arm@nongnu.org; Fri, 20 Sep 2024 14:03:04 -0400
-Received: by mail-lf1-x12b.google.com with SMTP id
- 2adb3069b0e04-5356a2460ceso3055e87.0
- for <qemu-arm@nongnu.org>; Fri, 20 Sep 2024 11:03:01 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <marietto2008@gmail.com>)
+ id 1ss5tq-0003OF-80; Sat, 21 Sep 2024 15:36:11 -0400
+Received: by mail-pl1-x62d.google.com with SMTP id
+ d9443c01a7336-20551eeba95so28267575ad.2; 
+ Sat, 21 Sep 2024 12:36:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1726855380; x=1727460180; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=bofBxwt9eQWNhPNybPCc/0fu7JZxDxx/ho7OkhckqN8=;
- b=RMGq2p/t+1ePGVrvwvO/TpBeRDJJjc5PT5+7N7rVK6FB11LiOt4AYs5rwZa7FusuP0
- 6odKdu3lyj7KXqhGj8znxDOCvPcA1VMiPkbM91xMEjGQSlSAOfoM1jttM53SiTE3Z7fr
- wH0bMzuoNDFKP2jj6lLpdBsUm6JND1Ayh2tc3xUPwgVdMPX5/Hm8PtZHUaKZLh39vq2l
- vT4l0VlbgW6BNuCZ8zvXuVb1FF26ZjHo3stZ/fJxEC3fX/QOMstzgrrVqTBNgrgS93yz
- xq4UQgP5s0QfIo5E+KdPQEW8SLH0k17qi/xPflVj+Mmq5rzSmtf+S/GcCcuNp+IFGduw
- oVSg==
+ d=gmail.com; s=20230601; t=1726947367; x=1727552167; darn=nongnu.org;
+ h=to:subject:message-id:date:from:mime-version:from:to:cc:subject
+ :date:message-id:reply-to;
+ bh=E8LFyP1seF1KlJDE/l6XVbrZ2rFN6UCOfREcWb7U+SM=;
+ b=ga8iQ1Ni77TrrybWL6hgIzSBXp27o4CNgOgdLE8mjc6rqYqX7srmPhd5oraxx8ALf4
+ wZBjFjWuoQhvVENpce+SYSBI9RTgAr84GbYGqLUYVkdwiaBmEiaqJn7T8FVl+UfJNmsB
+ fxDUWHx7uG1aij1T9oDt4xgFO4G1eYGLk/iJG3UO8bzQKtBCOWnQXKYcuJV5CIoKpWPs
+ rteqTJxNTcWmrUXaRWPXnWI55/MmFLD3SrqYkZhprCCzG+zY7chMWJUmMjTgOyC+a18Q
+ iU0eaMabdTWOonpyfW4PsZcjVzSc74JbXEjJwF59PE+8A7T5SVy3JziiKIXi5BRIaARv
+ h6eA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1726855380; x=1727460180;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=bofBxwt9eQWNhPNybPCc/0fu7JZxDxx/ho7OkhckqN8=;
- b=Ctnonkn52yWWwtKdKPMm/FhdYoreI10RyrYc0kd81PG2RLWLkWbda65AJrfSW7Gk9o
- p9AhUKw8i5Vs7Vqqn++53P0u7hKj7v+askhTowycqSrYLcKyGHQjkT8d2/CLaK+9Nt6o
- TVxq4KPCDxl2lH0ZtbU1WmGf9Xhw+hGu2/Cq3NleSKj2uOtISDCh46q/kKQfnv43x2PB
- rUWpI033t2YLjUPzhOPoFUV78TaA0mRtsBxtIdtnQXBB3hC+NYuHVyCit7OXAFCmwD9w
- bZqQ2Bf0L3iXrGd/7DV5vE7GOmgWaW4/Ylf/JsfcwRdYPDMcvv9TlLTOWWviZqQO7tkF
- K1vA==
+ d=1e100.net; s=20230601; t=1726947367; x=1727552167;
+ h=to:subject:message-id:date:from:mime-version:x-gm-message-state
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=E8LFyP1seF1KlJDE/l6XVbrZ2rFN6UCOfREcWb7U+SM=;
+ b=OBy+DtWAF0Fd6u9lfTtmK2Vs/bRVM0uftjxchLE7cTBUDwyIO29O9RfuREe+defw+S
+ 9USWHlqkJLlz6jDUsIGlb/evH3UVRPO5e/V91fq5EK8QTBmeyfp2a5IxQHCUQO79tK4F
+ jY4Bx1svjPpPxJMzH2ZJKE2IE2Oc1FHPtyPxPXvgpnT38rbF8aGop4VhPrFh1170NyID
+ DkGs0kJPmEYn15oynheXQ25913WC0mEaZ0DkyKRC00suhXs8VJmzw0qXxuueEcPHebtz
+ eYW0VPZyWOq+Uj6vsC6bPrpoz0eLxFa5dek1WKIay7z2bmaaEURmfY1taLCxMDYyO1yr
+ bUmg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUnti+cf9aFKW1QyRu02x/Zg+3T1Rdrhw/ABVpv5mk/IN/1HVlul1XFvzHLga/SymV+2u16EfT5OA==@nongnu.org
-X-Gm-Message-State: AOJu0YzmwaozN7EKfcRT1R1IAOeF2sxPgTF6rYyrIDiayHONgpQqGcxn
- 6s7j7Zmzv8FJ/BwqEfg9gQOoYeNNqmP8eopQipwtVzeNV7ipIGL7T939a89HmzgZWkGTlkhiMeQ
- Qd4QMZBepPLvQcAgoGd4TJfdLSaPNgCvmzWE+
-X-Received: by 2002:a05:6512:3f1d:b0:535:68b2:9589 with SMTP id
- 2adb3069b0e04-5374adc4e10mr23251e87.2.1726855379576; Fri, 20 Sep 2024
- 11:02:59 -0700 (PDT)
+ AJvYcCV5wLWL/bdAlp4hBbdkpQEKVZU34nNg9KE66hopu/6lZVNjCpBjSpi6NeCOY8v/UGOpS9Nh48hLNqpPLAc=@nongnu.org
+X-Gm-Message-State: AOJu0YyQ/TpMhyjZ5YB4BO01OUSX/6OWm8ERsHiujCPhaBdG+FSkCVGN
+ 2OYLd94dfImdECiEwqhT31su1qIj98q3s6sGu5XddmKFfY9vuyg6eG6x+h2EPA2kiSvIRbPSp+M
+ 5fkCZ1o/sRQ3HqHjnjOmWDmK4iYYOr6MPt84=
+X-Received: by 2002:a17:903:41cc:b0:206:64b4:3088 with SMTP id
+ d9443c01a7336-208d83cda24mr100777975ad.29.1726947366822; Sat, 21 Sep 2024
+ 12:36:06 -0700 (PDT)
 MIME-Version: 1.0
-References: <20240918192254.3136903-1-tavip@google.com>
- <20240918192254.3136903-9-tavip@google.com>
- <Zus1YzMOZD1ppO-2@mail.minyard.net>
- <CAGWr4cSvq+WnUQO3-8jyasQPhKGQCvzOYqRm5W8vRdhW9iU=xw@mail.gmail.com>
- <ZutGsQglLtK7MtRB@mail.minyard.net>
- <CAFEAcA_ZUkz8xv_PP27nD_eRL18v0cU6A7K+K57b8ML-9pmodQ@mail.gmail.com>
-In-Reply-To: <CAFEAcA_ZUkz8xv_PP27nD_eRL18v0cU6A7K+K57b8ML-9pmodQ@mail.gmail.com>
-From: Octavian Purdila <tavip@google.com>
-Date: Fri, 20 Sep 2024 11:02:46 -0700
-Message-ID: <CAGWr4cScq6+KQi2aJWtgSUSt+j28wXsxP240FfzTrCAFGRV14g@mail.gmail.com>
-Subject: Re: [PATCH 08/25] hw/i2c: add support for flexcomm i2c
-To: corey@minyard.net
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, stefanst@google.com, 
- pbonzini@redhat.com, marcandre.lureau@redhat.com, berrange@redhat.com, 
- eduardo@habkost.net, luc@lmichel.fr, damien.hedde@dahe.fr, 
- alistair@alistair23.me, thuth@redhat.com, philmd@linaro.org, jsnow@redhat.com, 
- crosa@redhat.com, lvivier@redhat.com, 
- Peter Maydell <peter.maydell@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::12b;
- envelope-from=tavip@google.com; helo=mail-lf1-x12b.google.com
-X-Spam_score_int: -175
-X-Spam_score: -17.6
-X-Spam_bar: -----------------
-X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- ENV_AND_HDR_SPF_MATCH=-0.5, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
- USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
+From: Mario Marietto <marietto2008@gmail.com>
+Date: Sat, 21 Sep 2024 21:35:30 +0200
+Message-ID: <CA+1FSihZ4-W+ksXwu6UHaWqOb6tpud7WEyknekJ1TmZQWPZ42Q@mail.gmail.com>
+Subject: How to enable KVM nesting virtualization on the Jetson nano.
+To: qemu-arm <qemu-arm@nongnu.org>, qemu-discuss@nongnu.org, 
+ Peter Maydell <peter.maydell@linaro.org>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>, 
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+ Eric Blake <eblake@redhat.com>, virt-tools-list@redhat.com,
+ libvirt-users@redhat.com
+Content-Type: multipart/alternative; boundary="000000000000586c910622a6445e"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62d;
+ envelope-from=marietto2008@gmail.com; helo=mail-pl1-x62d.google.com
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, HTML_MESSAGE=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -135,297 +123,80 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: iGeSxyBPF+wV
+X-TUID: WsdSRca8N/jk
 
-On Thu, Sep 19, 2024 at 2:36=E2=80=AFAM Peter Maydell <peter.maydell@linaro=
-.org> wrote:
->
-> On Wed, 18 Sept 2024 at 22:31, Corey Minyard <corey@minyard.net> wrote:
-> > Generally it's frowned upon to have a ton of extra stuff that's not
-> > used.  I would think some is ok, like defining bits in registers that
-> > aren't used yet, but I have no idea how all the enums below here
-> > actually tie into anything.  I'm guessing these are just bitmasks into
-> > registers, but really, it's a lot easier to read if you have something
-> > like:
-> >
-> > /*
-> >  * The I2C Master function enable. When disabled, the Master
-> >  * configuration settings are not changed, but the Master function is
-> >  * internally reset.
-> >  */
-> > #define FLEXCOMM_I2C_CFG_MSTEN (1 << 4)
->
-> The FIELD macro already gives you that:
->   FIELD(FLEXCOMM_I2C_CFG, MSTEN, startbit, len);
-> will define an R_FLEXCOMM_I2C_CFG_MSTEN_MASK (which is
-> (1 << startbit) for the 'len =3D=3D 1' case).
->
-> You can also set and read a 1 bit field the same as
-> any other, with the FIELD_DP32/FIELD_EX32 macros, so
-> you don't often need to directly use the MASK macro:
->   s->cfg =3D FIELD_DP32(s->cfg, CFG, MSTEN, 1);
-> and
->   if (FIELD_EX32(s->cfg, CFG, MSTEN)) {
->      ...
->   }
->
-> The FIELD() macros are a bit unwieldy sometimes but the
-> advantage over ad-hoc #defines is that they're consistent
-> for every field in every register.
->
-> I agree that providing enums for the possible values for 1-bit
-> fields is a bit superfluous.
->
+--000000000000586c910622a6445e
+Content-Type: text/plain; charset="UTF-8"
 
-I went ahead and removed those 1-bit enum values and added support to
-filter register/fields when generating the code. Also converted the
-enums to defines to make these a little bit more compact as I don't
-think we have any advantage over the enums?
+Hello to everyone.
 
-So with the following invocation:
+while I was looking for a way to enable the nesting virtualization on my
+Jetson nano,after having enabled KVM applying these patches :
 
-  run_target('svd-flexcomm-i2c', command: svd_gen_header +
-    [ '-i', rt595, '-o', '@SOURCE_ROOT@/include/hw/arm/svd/flexcomm_i2c.h',
-      '-p', 'I2C0', '-t', 'FLEXCOMM_I2C',
-      '--fields', 'CFG TIMEOUT:TOMIN MSTCTL MSTDAT
-STAT:MSTPENDING,MSTSTATE INT*:MSTPENDING* SLV*:'])
+https://github.com/OE4T/linux-tegra-4.9/blob/oe4t-patches-l4t-r37.4/
+<https://github.com/OE4T/linux-tegra-4.9/blob/oe4t-patches-l4t-r32.4/arch/arm64/configs/tegra_defconfig>
 
-I am getting the below generated file. Note that the register info is
-generated for all registers because this information is used to
-initialize the reset values, mask writes appropriately in registers
-and trace register access.
+When I have googled for acquiring more informations,I found these
+interesting threads :
 
-Please let me know if this looks good or if there are any other tweaks
-I could make.
+https://patches.linaro.org/project/qemu-devel/patch/b7c2626e6c720ccc43e57197dff3dac72d613640.1616052890.git.haibo.xu@linaro.org/
 
-/*
- * Copyright 2016-2023 NXP SPDX-License-Identifier: BSD-3-Clause
- *
- * Automatically generated by svd-gen-header.py from MIMXRT595S_cm33.xml
- */
-#pragma once
+https://superuser.com/questions/1838383/arm-cpu-nested-virtualization-how-can-i-make-vcpu-start-from-el2
 
-#include "hw/register.h"
-
-/* I2C Bus Interface */
-#define FLEXCOMM_I2C_REGS_NO (1024)
-
-/* Configuration Register */
-REG32(FLEXCOMM_I2C_CFG, 0x800);
-/* Master Enable */
-FIELD(FLEXCOMM_I2C_CFG, MSTEN, 0, 1);
-/* Slave Enable */
-FIELD(FLEXCOMM_I2C_CFG, SLVEN, 1, 1);
-/* Monitor Enable */
-FIELD(FLEXCOMM_I2C_CFG, MONEN, 2, 1);
-/* I2C bus Time-out Enable */
-FIELD(FLEXCOMM_I2C_CFG, TIMEOUTEN, 3, 1);
-/* Monitor function Clock Stretching */
-FIELD(FLEXCOMM_I2C_CFG, MONCLKSTR, 4, 1);
-/* High Speed mode Capable enable */
-FIELD(FLEXCOMM_I2C_CFG, HSCAPABLE, 5, 1);
-
-/* Status Register */
-REG32(FLEXCOMM_I2C_STAT, 0x804);
-/* Master Pending */
-FIELD(FLEXCOMM_I2C_STAT, MSTPENDING, 0, 1);
-/* Master State code */
-FIELD(FLEXCOMM_I2C_STAT, MSTSTATE, 1, 3);
-/* Idle. The Master function is available to be used for a new transaction.=
- */
-#define FLEXCOMM_I2C_STAT_MSTSTATE_IDLE 0
-/*
- * Receive ready. Received data is available (in Master Receiver mode). Add=
-ress
- * plus Read was previously sent and Acknowledged by a slave.
- */
-#define FLEXCOMM_I2C_STAT_MSTSTATE_RECEIVE_READY 1
-/*
- * Transmit ready. Data can be transmitted (in Master Transmitter mode).
- * Address plus Write was previously sent and Acknowledged by a slave.
- */
-#define FLEXCOMM_I2C_STAT_MSTSTATE_TRANSMIT_READY 2
-/* NACK Address. Slave NACKed address. */
-#define FLEXCOMM_I2C_STAT_MSTSTATE_NACK_ADDRESS 3
-/* NACK Data. Slave NACKed transmitted data. */
-#define FLEXCOMM_I2C_STAT_MSTSTATE_NACK_DATA 4
-
-/* Interrupt Enable Set Register */
-REG32(FLEXCOMM_I2C_INTENSET, 0x808);
-/* Master Pending interrupt Enable */
-FIELD(FLEXCOMM_I2C_INTENSET, MSTPENDINGEN, 0, 1);
-
-/* Interrupt Enable Clear Register */
-REG32(FLEXCOMM_I2C_INTENCLR, 0x80C);
-/* Master Pending interrupt clear */
-FIELD(FLEXCOMM_I2C_INTENCLR, MSTPENDINGCLR, 0, 1);
-
-/* Time-out Register */
-REG32(FLEXCOMM_I2C_TIMEOUT, 0x810);
-/* Time-out time value, the bottom 4 bits */
-FIELD(FLEXCOMM_I2C_TIMEOUT, TOMIN, 0, 4);
-
-/* Interrupt Status Register */
-REG32(FLEXCOMM_I2C_INTSTAT, 0x818);
-/* Master Pending */
-FIELD(FLEXCOMM_I2C_INTSTAT, MSTPENDING, 0, 1);
-
-/* Master Control Register */
-REG32(FLEXCOMM_I2C_MSTCTL, 0x820);
-/* Master Continue(write-only) */
-FIELD(FLEXCOMM_I2C_MSTCTL, MSTCONTINUE, 0, 1);
-/* Master Start control(write-only) */
-FIELD(FLEXCOMM_I2C_MSTCTL, MSTSTART, 1, 1);
-/* Master Stop control(write-only) */
-FIELD(FLEXCOMM_I2C_MSTCTL, MSTSTOP, 2, 1);
-/* Master DMA enable */
-FIELD(FLEXCOMM_I2C_MSTCTL, MSTDMA, 3, 1);
-
-/* Master Data Register */
-REG32(FLEXCOMM_I2C_MSTDAT, 0x828);
-/* Master function data register */
-FIELD(FLEXCOMM_I2C_MSTDAT, DATA, 0, 8);
-
-/* Slave Control Register */
-REG32(FLEXCOMM_I2C_SLVCTL, 0x840);
-
-/* Slave Data Register */
-REG32(FLEXCOMM_I2C_SLVDAT, 0x844);
-
-/* Slave Address Register */
-REG32(FLEXCOMM_I2C_SLVADR0, 0x848);
-
-/* Slave Address Register */
-REG32(FLEXCOMM_I2C_SLVADR1, 0x84C);
-
-/* Slave Address Register */
-REG32(FLEXCOMM_I2C_SLVADR2, 0x850);
-
-/* Slave Address Register */
-REG32(FLEXCOMM_I2C_SLVADR3, 0x854);
-
-/* Slave Qualification for Address 0 Register */
-REG32(FLEXCOMM_I2C_SLVQUAL0, 0x858);
+On the first site,he says :
 
 
-#define FLEXCOMM_I2C_REGISTER_ACCESS_INFO_ARRAY(_name) \
-    struct RegisterAccessInfo _name[FLEXCOMM_I2C_REGS_NO] =3D { \
-        [0 ... FLEXCOMM_I2C_REGS_NO - 1] =3D { \
-            .name =3D "", \
-            .addr =3D -1, \
-        }, \
-        [0x200] =3D { \
-            .name =3D "CFG", \
-            .addr =3D 0x800, \
-            .ro =3D 0xFFFFFFC0, \
-            .reset =3D 0x0, \
-        }, \
-        [0x201] =3D { \
-            .name =3D "STAT", \
-            .addr =3D 0x804, \
-            .ro =3D 0xFCF57FAF, \
-            .reset =3D 0x801, \
-        }, \
-        [0x202] =3D { \
-            .name =3D "INTENSET", \
-            .addr =3D 0x808, \
-            .ro =3D 0xFCF476AE, \
-            .reset =3D 0x0, \
-        }, \
-        [0x203] =3D { \
-            .name =3D "INTENCLR", \
-            .addr =3D 0x80C, \
-            .ro =3D 0xFCF476AE, \
-            .reset =3D 0x0, \
-        }, \
-        [0x204] =3D { \
-            .name =3D "TIMEOUT", \
-            .addr =3D 0x810, \
-            .ro =3D 0xFFFF0000, \
-            .reset =3D 0xFFFF, \
-        }, \
-        [0x205] =3D { \
-            .name =3D "CLKDIV", \
-            .addr =3D 0x814, \
-            .ro =3D 0xFFFF0000, \
-            .reset =3D 0x0, \
-        }, \
-        [0x206] =3D { \
-            .name =3D "INTSTAT", \
-            .addr =3D 0x818, \
-            .ro =3D 0xFFFFFFFF, \
-            .reset =3D 0x801, \
-        }, \
-        [0x208] =3D { \
-            .name =3D "MSTCTL", \
-            .addr =3D 0x820, \
-            .ro =3D 0xFFFFFFF0, \
-            .reset =3D 0x0, \
-        }, \
-        [0x209] =3D { \
-            .name =3D "MSTTIME", \
-            .addr =3D 0x824, \
-            .ro =3D 0xFFFFFF88, \
-            .reset =3D 0x77, \
-        }, \
-        [0x20A] =3D { \
-            .name =3D "MSTDAT", \
-            .addr =3D 0x828, \
-            .ro =3D 0xFFFFFF00, \
-            .reset =3D 0x0, \
-        }, \
-        [0x210] =3D { \
-            .name =3D "SLVCTL", \
-            .addr =3D 0x840, \
-            .ro =3D 0xFFFFFCF4, \
-            .reset =3D 0x0, \
-        }, \
-        [0x211] =3D { \
-            .name =3D "SLVDAT", \
-            .addr =3D 0x844, \
-            .ro =3D 0xFFFFFF00, \
-            .reset =3D 0x0, \
-        }, \
-        [0x212] =3D { \
-            .name =3D "SLVADR0", \
-            .addr =3D 0x848, \
-            .ro =3D 0xFFFF7F00, \
-            .reset =3D 0x1, \
-        }, \
-        [0x213] =3D { \
-            .name =3D "SLVADR1", \
-            .addr =3D 0x84C, \
-            .ro =3D 0xFFFF7F00, \
-            .reset =3D 0x1, \
-        }, \
-        [0x214] =3D { \
-            .name =3D "SLVADR2", \
-            .addr =3D 0x850, \
-            .ro =3D 0xFFFF7F00, \
-            .reset =3D 0x1, \
-        }, \
-        [0x215] =3D { \
-            .name =3D "SLVADR3", \
-            .addr =3D 0x854, \
-            .ro =3D 0xFFFF7F00, \
-            .reset =3D 0x1, \
-        }, \
-        [0x216] =3D { \
-            .name =3D "SLVQUAL0", \
-            .addr =3D 0x858, \
-            .ro =3D 0xFFFFFF00, \
-            .reset =3D 0x0, \
-        }, \
-        [0x220] =3D { \
-            .name =3D "MONRXDAT", \
-            .addr =3D 0x880, \
-            .ro =3D 0xFFFFFFFF, \
-            .reset =3D 0x0, \
-        }, \
-        [0x3FF] =3D { \
-            .name =3D "ID", \
-            .addr =3D 0xFFC, \
-            .ro =3D 0xFFFFFFFF, \
-            .reset =3D 0xE0301300, \
-        }, \
-    }
+> can be enabled by "-M virt,accel=kvm,virtualization=on" when starting a VM
+
+Good,I could try,but I'm not using qemu directly (I've installed qemu
+vers. 9) ,but
+virt-manager version 4.0. Maybe I should upgrade it ?
+
+In virt-manager I don't see how I can specify those parameters.
+Anyway I'm not sure that it will work,because on the second thread he said to :
+
+-append "kvm-arm.mode=nested" \
+
+
+Where is the truth ?
+
+Very thanks.
+
+-- 
+Mario.
+
+--000000000000586c910622a6445e
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div>Hello to everyone.<br></div><div><br></div><div>while
+ I was looking for a way to enable the nesting virtualization on my=20
+Jetson nano,after having enabled KVM applying these patches :</div><div><br=
+></div><div><a href=3D"https://github.com/OE4T/linux-tegra-4.9/blob/oe4t-pa=
+tches-l4t-r32.4/arch/arm64/configs/tegra_defconfig" rel=3D"nofollow norefer=
+rer" target=3D"_blank">https://github.com/OE4T/linux-tegra-4.9/blob/oe4t-pa=
+tches-l4t-r37.4/</a> </div><div><br></div><div>When I have googled for acqu=
+iring more informations,I found these interesting threads :</div><div><br><=
+/div><div><a href=3D"https://patches.linaro.org/project/qemu-devel/patch/b7=
+c2626e6c720ccc43e57197dff3dac72d613640.1616052890.git.haibo.xu@linaro.org/"=
+ target=3D"_blank">https://patches.linaro.org/project/qemu-devel/patch/b7c2=
+626e6c720ccc43e57197dff3dac72d613640.1616052890.git.haibo.xu@linaro.org/</a=
+></div><div><br></div><div><a href=3D"https://superuser.com/questions/18383=
+83/arm-cpu-nested-virtualization-how-can-i-make-vcpu-start-from-el2" target=
+=3D"_blank">https://superuser.com/questions/1838383/arm-cpu-nested-virtuali=
+zation-how-can-i-make-vcpu-start-from-el2</a></div><div><br></div><div>On t=
+he first site,he says :<br></div><div><pre><span><br>&gt; can be enabled by=
+ &quot;-M virt,accel=3Dkvm,virtualization=3Don&quot; when starting a VM<br>=
+<br></span></pre><pre><span style=3D"font-family:arial,sans-serif">Good,I c=
+ould try,but I&#39;m not using qemu directly (I&#39;ve installed qemu vers.=
+ 9) ,but <br>virt-manager version 4.0. Maybe I should upgrade it ?<br><br>I=
+n virt-manager I don&#39;t see how I can specify those parameters. <br>Anyw=
+ay I&#39;m not sure that it will work,because on the second thread he said =
+to :<br><br></span><code>-append <span>&quot;kvm-arm.mode=3Dnested&quot;</s=
+pan> \</code><br><span style=3D"font-family:arial,sans-serif"></span></pre>=
+<pre><span style=3D"font-family:arial,sans-serif"><br>Where is the truth ? =
+<br><br>Very thanks.</span></pre></div><span class=3D"gmail_signature_prefi=
+x">-- </span><br><div dir=3D"ltr" class=3D"gmail_signature" data-smartmail=
+=3D"gmail_signature">Mario.<br></div></div>
+
+--000000000000586c910622a6445e--

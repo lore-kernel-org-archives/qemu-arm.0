@@ -1,194 +1,177 @@
-Received: by 2002:a17:505:42a7:b0:1be9:327d:8ee3 with SMTP id rt7csp2115577njb;
-        Mon, 23 Sep 2024 02:44:09 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVo2rd36dwTKZTWwNquW93n/bKynrWBS1fdxB8Lirc0SQSyBXE5Uyb9DyQoInkjhUPZ90PiZVAQCKAWNQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IGDGfyuf9XSxs0PFAg1t/bY0t2e21lYw1q6lNvmllbA8tVPUpIMoXpZLCJd5/2itSoLPhhk
-X-Received: by 2002:a05:620a:454c:b0:7a9:c0b8:9337 with SMTP id af79cd13be357-7acb80ccd55mr2037496585a.37.1727084648194;
-        Mon, 23 Sep 2024 02:44:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1727084648; cv=none;
-        d=google.com; s=arc-20240605;
-        b=O+iITUeVijcXy7tfhTc9TzZQWJQYC7sT+E1IQxhqBk5srt/v3iF/4NMVG708PxZcgd
-         jlcuBNuwHm/fe4xBdLdX0ECBArbkQYm8XFHhlFN3QJMv8Bs54TGVpuR4CvyPSf8HVvoT
-         +vQy+qdBHw1falgpzdqyAzbHbRMHgV8wL0sSpXt5Ry+s7r0JjvB9y1K4+6Fc3ib0RVds
-         /6ApkN2+0VwaXwfjwpSHVXbCXHSPBRt79xxb2phO128iRBH4oOhSjdNiEovEmYntXYBx
-         LG0Sv1/w1gIbo73HWKGIK165NzXQaNOtZyNCBXt+RU7R0Kf5tYHh5moyt2+e+Wid6iOC
-         hDWw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to;
-        bh=g8PIR/AtnxX2N2aOHQMjqhhm1Vb2m+e0nVvAQp4i2Zk=;
-        fh=dcWtL3UV6hgfvVRRNBgcZIYWwd7971OyicJdpXZbSYo=;
-        b=ei/hBko9rg2J3st2WgOksb6dWxeH+qMep3J7P6DmTuu3JdO9aRvpxjRW6opo9ds4+f
-         ++fNLKcNYjMoOgzKwzR20eNDcptpfjJ7Uucs4CHZOhObmD75QgPOp5DXZywxFb6D95c4
-         raYWTjNZzGN/0e/cHxzs4lmQ1Sn7C0Rwuu8FQUnPlT5m1DQNivtMM7P4B+3aCL3eD074
-         gP7C7akO0P6SfaoEfQiuHhpwRoIbiiu8Mc/WPsBK3y0hVxBunKIgQv8EwrWsiEmWFUTl
-         h3p0LfOuSap1zh2cYXi+PiJA5P2Nv3IXlSe5DUMeRtNR3k3co0ZTrYK/EG7anyrmkY9Q
-         2gyQ==;
+Received: by 2002:a17:505:42a7:b0:1be9:327d:8ee3 with SMTP id rt7csp2280081njb;
+        Mon, 23 Sep 2024 07:55:29 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUKYyyKr2Ic1UbqGjuEEMPlsI5WLEmyAN4UudJLWSUMB1WmkHc1rVwvXTvM1bdIxVI/LWv+j03IG2/r/A==@linaro.org
+X-Received: by 2002:a05:6102:3ed6:b0:49b:d2ec:c617 with SMTP id ada2fe7eead31-49fc766911cmr7824748137.29.1727103329221;
+        Mon, 23 Sep 2024 07:55:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1727103329; cv=none;
+        d=google.com; s=arc-20160816;
+        b=OXYB24wks5S29ZgdaogANhQ4g7H2TRoHvV2spfnxt34TTMRPabqYbCGYWdvceoVPXc
+         M7I4xJtRBw5X6nJwZ2zBTQnu1AahR9T1YnfKrXVUf1W171AE2CwdfIXh5LBLSG8ai8Y/
+         /Kp4LJTT1ted0A2TjClErNJor45Qz1JYz0EQVfHvry40AsHLVVazHWovSQoWKIuGPUfO
+         ySAtd0uGbwg3Bv/75ZyywMMgsy5uaay0nNIdQ2BncJKAaLjGPFKy8ruCPEGKZTdWVPoZ
+         8qeP5sFAiuLDNXF9Z/tZ8gICh1eMcU3BynyeQwnKDxiIEcL78qCZ+GXzvhafZF6E/6mE
+         bgAQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=pBoxVH+Ru8Cf8WZg/qIWXUyc6DjCMqmFHFamf1lm7RE=;
+        fh=Ki6NY52GuCCpoRMWv9SjUPmMI4ZQSx1g8V5lrEvm/no=;
+        b=KOoqmdYmi/eafu4hHWR/oE1u5Y9AwLQUqOpxjxExUeG6fYjOiqWb/KGAPNlVkvqXXI
+         KSmAaCvP+ywHh3Y4Fi732sIlumXk8hqWuH5Yt4Kui/BHIK15H3t5obCIVx2QBtSmFcYy
+         MY9t2jVM4RGZ6sldcmh9FRqM7rS/rSM+bnFHjoWmT7jksNu43c6bTw56Sfu94vAnL1SI
+         +zvdhD0GX9ZGYUKgMyLMiGrprv5Dj1SqPLYxDiA9FDQKsXdnasrxWsuk2mZFLOa8F1F9
+         MYTW9yqHwM1EoL77TxsUsdpEx1XeCXfGOnG9X6NDyPtJhsIjmjyOa2iWr/+PPInf8A1O
+         gvQg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7acb08f5edesi1011030485a.619.2024.09.23.02.44.08
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 23 Sep 2024 02:44:08 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=D4TPETIj;
+       spf=pass (google.com: domain of edgar.iglesias@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=edgar.iglesias@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=neutral header.i=@linaro.org
+Return-Path: <edgar.iglesias@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id ada2fe7eead31-49e6b438a82sor1811151137.12.2024.09.23.07.55.29
+        (Google Transport Security);
+        Mon, 23 Sep 2024 07:55:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of edgar.iglesias@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ssfaV-0000pf-HQ; Mon, 23 Sep 2024 05:42:35 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1ssfaS-0000bP-8x; Mon, 23 Sep 2024 05:42:32 -0400
-Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1ssfaQ-0008C9-Rh; Mon, 23 Sep 2024 05:42:32 -0400
-Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
- (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.12; Mon, 23 Sep
- 2024 17:42:06 +0800
-Received: from localhost.localdomain (192.168.10.10) by TWMBX01.aspeed.com
- (192.168.0.62) with Microsoft SMTP Server id 15.2.1258.12 via Frontend
- Transport; Mon, 23 Sep 2024 17:42:06 +0800
-To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
- <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
- <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
- Stanley" <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
- <yunlin.tang@aspeedtech.com>
-Subject: [PATCH 3/5] hw/gpio/aspeed: Support different memory region ops
-Date: Mon, 23 Sep 2024 17:42:03 +0800
-Message-ID: <20240923094206.1455783-4-jamin_lin@aspeedtech.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20240923094206.1455783-1-jamin_lin@aspeedtech.com>
-References: <20240923094206.1455783-1-jamin_lin@aspeedtech.com>
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=D4TPETIj;
+       spf=pass (google.com: domain of edgar.iglesias@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=edgar.iglesias@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1727103329; x=1727708129; darn=linaro.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=pBoxVH+Ru8Cf8WZg/qIWXUyc6DjCMqmFHFamf1lm7RE=;
+        b=D4TPETIjE20+4UNJgUMuP521iSg7gxgR2erzDpiQZ+D8WYDj6vQrkLCuPPGHAwPkNW
+         EM59hSG/vXLiAih1LsOejRLqDPdpNB0ltqq/2Oom/nDtaAe5s4NFo/QCKXnHCdmeOeuB
+         n2XnxsibCwtOjHjMcrDpxN375KayPFJf6jsKlW6qvR5lK4Vb5uv1PgWfyyVyo84unnCQ
+         tKzDeEKnYmioSHS6vfKunB5yKUa3pFZf4eMNqyV0fFVPzKeIcQlaMtXtsTMwUCYK77jo
+         G4GIHaeDBx2DY0LK7CylVptM4LrsM7Xr59qdcoVYJwNouP4OdydXQ4Pui/hguHzkkWIY
+         hyPA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1727103329; x=1727708129;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=pBoxVH+Ru8Cf8WZg/qIWXUyc6DjCMqmFHFamf1lm7RE=;
+        b=EOXCy62jTt7lZ5auv8FmjA8jM9je1gO1nrZJqlZ8Gsh8rSz4iEPR8IsM77d7s+JnOP
+         HjPYUFKtvCHErakllVWgNJ575QrudMxPP/gDvehe8QY9D2c2TyU9Tv6i/v7qHJTvDqBk
+         CAowVDL2+3MDrmq254T290hWe7le6eY8kFT9jBSGQFKtmha+yFrJEY5qn0G6c/GuYw7C
+         Fq8U//f46YtxN1F5G54uwsf9nJoQTPR2kCEIasI2C+SoyKKAnVfwbyJGKF8YZYtrAZ1t
+         akfD6E3Bm0x2dv6j3EncBVbRWYGB8ZJGWJyHmQX47ku1Xn5eXCyVAurKmJJ9yKkhGVyN
+         9VmA==
+X-Forwarded-Encrypted: i=1; AJvYcCUJTW3niwkzyc/4WbDHR6H72mkT0EEULZzgAWJnTCu4SKPDrxAZombdyrzWWnRGJbcqFjz6wCy/XXeZMltnzg==@linaro.org, AJvYcCW9WVFoLjBprvw4q2NWQsEdXfFdKqvOxQ0clN23p0jOW2fOP2AO4PBjJRwJX6d692xHgpBOGbKyjga9eA==@linaro.org, AJvYcCWrRsTo92oPUCLMKVv6qvmgyot5fLm/APhVbdkbvwmyPV1Ni/4UzjjjljaoCSNIMEOl34/lBgyr8sNhA4wVSk1I/44=@linaro.org
+X-Gm-Message-State: AOJu0YxSROekA+DjoxS9nelArOe4ERaL2M4wMc+nymRY/CognBMYbxkA
+	OFwlWQyUc3b+LXDLz4kM2Rp8JivRYOzQQAbpAh1uqwKmFdbj7fri
+X-Google-Smtp-Source: AGHT+IEVIq+5zTRJIDiwVEZ//hmPV3dnxQ6KGiEO/YrKl7+YpgOR25Qn3clhu6UZuNekZAImrbXJhA==
+X-Received: by 2002:a05:6102:94c:b0:498:e25c:738f with SMTP id ada2fe7eead31-49fc7624bf3mr7212517137.18.1727103328687;
+        Mon, 23 Sep 2024 07:55:28 -0700 (PDT)
+Return-Path: <edgar.iglesias@gmail.com>
+Received: from gmail.com (ip190-5-140-142.intercom.com.sv. [190.5.140.142])
+        by smtp.gmail.com with ESMTPSA id a1e0cc1a2514c-849399971dfsm3226559241.26.2024.09.23.07.55.27
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 23 Sep 2024 07:55:27 -0700 (PDT)
+From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: sstabellini@kernel.org,
+	anthony@xenproject.org,
+	paul@xen.org,
+	peter.maydell@linaro.org,
+	alex.bennee@linaro.org,
+	edgar.iglesias@amd.com,
+	xen-devel@lists.xenproject.org,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Eduardo Habkost <eduardo@habkost.net>,
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	qemu-arm@nongnu.org
+Subject: [PATCH v2 2/4] hw/xen: xenpvh: Disable buffered IOREQs for ARM
+Date: Mon, 23 Sep 2024 16:55:18 +0200
+Message-ID: <20240923145520.1323504-3-edgar.iglesias@gmail.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20240923145520.1323504-1-edgar.iglesias@gmail.com>
+References: <20240923145520.1323504-1-edgar.iglesias@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=211.20.114.72;
- envelope-from=jamin_lin@aspeedtech.com; helo=TWMBX01.aspeed.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_FAIL=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
-From:  Jamin Lin via <qemu-arm@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: qgyPGotKJHmn
+X-TUID: HAA94QqZDB7s
 
-It set "aspeed_gpio_ops" struct which containing
-read and write callbacks to be used when I/O is performed
-on the GPIO region.
+From: "Edgar E. Iglesias" <edgar.iglesias@amd.com>
 
-Besides, in the previous design of ASPEED SOCs,
-one register is used for setting one function for 32 GPIO pins.
-ex: GPIO000 is used for setting data value for GPIO A, B, C and D in AST2600.
-ex: GPIO004 is used for setting direction for GPIO A, B, C and D in AST2600.
+Add a way to enable/disable buffered IOREQs for PVH machines
+and disable them for ARM. ARM does not support buffered
+IOREQ's nor the legacy way to map IOREQ info pages.
 
-However, the register set have a significant change in AST2700.
-Each GPIO pin has their own control register. In other words, users are able to
-set one GPIO pin’s direction, interrupt enable, input mask and so on
-in one register. The aspeed_gpio_read/aspeed_gpio_write callback functions
-are not compatible AST2700.
+See the following for more details:
+https://xenbits.xen.org/gitweb/?p=xen.git;a=commitdiff;h=2fbd7e609e1803ac5e5c26e22aa8e4b5a6cddbb1
+https://xenbits.xen.org/gitweb/?p=xen.git;a=blob;f=xen/arch/arm/ioreq.c;h=2e829d2e7f3760401b96fa7c930e2015fb1cf463;hb=HEAD#l138
 
-Introduce a new "const MemoryRegionOps *" attribute in AspeedGPIOClass and
-use it in aspeed_gpio_realize function.
-
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+Signed-off-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
 ---
- hw/gpio/aspeed_gpio.c         | 7 ++++++-
- include/hw/gpio/aspeed_gpio.h | 1 +
- 2 files changed, 7 insertions(+), 1 deletion(-)
+ hw/arm/xen-pvh.c                | 3 +++
+ hw/i386/xen/xen-pvh.c           | 3 +++
+ hw/xen/xen-pvh-common.c         | 2 +-
+ include/hw/xen/xen-pvh-common.h | 3 +++
+ 4 files changed, 10 insertions(+), 1 deletion(-)
 
-diff --git a/hw/gpio/aspeed_gpio.c b/hw/gpio/aspeed_gpio.c
-index 94a5f3ee03..f23ffae34d 100644
---- a/hw/gpio/aspeed_gpio.c
-+++ b/hw/gpio/aspeed_gpio.c
-@@ -1047,7 +1047,7 @@ static void aspeed_gpio_realize(DeviceState *dev, Error **errp)
-         }
-     }
+diff --git a/hw/arm/xen-pvh.c b/hw/arm/xen-pvh.c
+index 04cb9855af..28af3910ea 100644
+--- a/hw/arm/xen-pvh.c
++++ b/hw/arm/xen-pvh.c
+@@ -66,6 +66,9 @@ static void xen_arm_machine_class_init(ObjectClass *oc, void *data)
+      */
+     mc->max_cpus = GUEST_MAX_VCPUS;
  
--    memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_gpio_ops, s,
-+    memory_region_init_io(&s->iomem, OBJECT(s), agc->reg_ops, s,
-             TYPE_ASPEED_GPIO, agc->mem_size);
++    /* Xen/ARM does not use buffered IOREQs.  */
++    xpc->handle_bufioreq = HVM_IOREQSRV_BUFIOREQ_OFF;
++
+     /* List of supported features known to work on PVH ARM.  */
+     xpc->has_tpm = true;
+     xpc->has_virtio_mmio = true;
+diff --git a/hw/i386/xen/xen-pvh.c b/hw/i386/xen/xen-pvh.c
+index 45645667e9..f1f02d3311 100644
+--- a/hw/i386/xen/xen-pvh.c
++++ b/hw/i386/xen/xen-pvh.c
+@@ -89,6 +89,9 @@ static void xen_pvh_machine_class_init(ObjectClass *oc, void *data)
+     /* We have an implementation specific init to create CPU objects.  */
+     xpc->init = xen_pvh_init;
  
-     sysbus_init_mmio(sbd, &s->iomem);
-@@ -1132,6 +1132,7 @@ static void aspeed_gpio_ast2400_class_init(ObjectClass *klass, void *data)
-     agc->reg_table = aspeed_3_3v_gpios;
-     agc->reg_table_count = GPIO_3_3V_REG_ARRAY_SIZE;
-     agc->mem_size = 0x1000;
-+    agc->reg_ops = &aspeed_gpio_ops;
- }
++    /* Enable buffered IOREQs.  */
++    xpc->handle_bufioreq = HVM_IOREQSRV_BUFIOREQ_ATOMIC;
++
+     /*
+      * PCI INTX routing.
+      *
+diff --git a/hw/xen/xen-pvh-common.c b/hw/xen/xen-pvh-common.c
+index 08641fdcec..76a9b2b945 100644
+--- a/hw/xen/xen-pvh-common.c
++++ b/hw/xen/xen-pvh-common.c
+@@ -195,7 +195,7 @@ static void xen_pvh_init(MachineState *ms)
  
- static void aspeed_gpio_2500_class_init(ObjectClass *klass, void *data)
-@@ -1144,6 +1145,7 @@ static void aspeed_gpio_2500_class_init(ObjectClass *klass, void *data)
-     agc->reg_table = aspeed_3_3v_gpios;
-     agc->reg_table_count = GPIO_3_3V_REG_ARRAY_SIZE;
-     agc->mem_size = 0x1000;
-+    agc->reg_ops = &aspeed_gpio_ops;
- }
+     xen_pvh_init_ram(s, sysmem);
+     xen_register_ioreq(&s->ioreq, ms->smp.max_cpus,
+-                       HVM_IOREQSRV_BUFIOREQ_ATOMIC,
++                       xpc->handle_bufioreq,
+                        &xen_memory_listener);
  
- static void aspeed_gpio_ast2600_3_3v_class_init(ObjectClass *klass, void *data)
-@@ -1156,6 +1158,7 @@ static void aspeed_gpio_ast2600_3_3v_class_init(ObjectClass *klass, void *data)
-     agc->reg_table = aspeed_3_3v_gpios;
-     agc->reg_table_count = GPIO_3_3V_REG_ARRAY_SIZE;
-     agc->mem_size = 0x800;
-+    agc->reg_ops = &aspeed_gpio_ops;
- }
+     if (s->cfg.virtio_mmio_num) {
+diff --git a/include/hw/xen/xen-pvh-common.h b/include/hw/xen/xen-pvh-common.h
+index bc09eea936..5cdd23c2f4 100644
+--- a/include/hw/xen/xen-pvh-common.h
++++ b/include/hw/xen/xen-pvh-common.h
+@@ -43,6 +43,9 @@ struct XenPVHMachineClass {
+      */
+     int (*set_pci_link_route)(uint8_t line, uint8_t irq);
  
- static void aspeed_gpio_ast2600_1_8v_class_init(ObjectClass *klass, void *data)
-@@ -1168,6 +1171,7 @@ static void aspeed_gpio_ast2600_1_8v_class_init(ObjectClass *klass, void *data)
-     agc->reg_table = aspeed_1_8v_gpios;
-     agc->reg_table_count = GPIO_1_8V_REG_ARRAY_SIZE;
-     agc->mem_size = 0x800;
-+    agc->reg_ops = &aspeed_gpio_ops;
- }
- 
- static void aspeed_gpio_1030_class_init(ObjectClass *klass, void *data)
-@@ -1180,6 +1184,7 @@ static void aspeed_gpio_1030_class_init(ObjectClass *klass, void *data)
-     agc->reg_table = aspeed_3_3v_gpios;
-     agc->reg_table_count = GPIO_3_3V_REG_ARRAY_SIZE;
-     agc->mem_size = 0x1000;
-+    agc->reg_ops = &aspeed_gpio_ops;
- }
- 
- static const TypeInfo aspeed_gpio_info = {
-diff --git a/include/hw/gpio/aspeed_gpio.h b/include/hw/gpio/aspeed_gpio.h
-index 8cd2ff5496..e1e6c54333 100644
---- a/include/hw/gpio/aspeed_gpio.h
-+++ b/include/hw/gpio/aspeed_gpio.h
-@@ -77,6 +77,7 @@ struct AspeedGPIOClass {
-     const AspeedGPIOReg *reg_table;
-     unsigned reg_table_count;
-     uint64_t mem_size;
-+    const MemoryRegionOps *reg_ops;
- };
- 
- struct AspeedGPIOState {
++    /* Allow implementations to optionally enable buffered ioreqs.  */
++    uint8_t handle_bufioreq;
++
+     /*
+      * Each implementation can optionally enable features that it
+      * supports and are known to work.
 -- 
-2.34.1
-
+2.43.0

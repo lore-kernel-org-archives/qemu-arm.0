@@ -1,189 +1,117 @@
-Received: by 2002:a17:505:42a7:b0:1be9:327d:8ee3 with SMTP id rt7csp2013598njb;
-        Sun, 22 Sep 2024 20:57:29 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWBzuq0BtANNr8U1IDMr8kan5bFQahfeN7vOlmXaceKXPuRgv9HlWQiyFLxMqfCfWEY5848TwaO/hkc0A==@linaro.org
-X-Google-Smtp-Source: AGHT+IFTfbUQmiWXlLudH9xJGiWJUH9At87s9PY+J5czjqZl2njN2uXGF3ie725/oLmZg4veEOTI
-X-Received: by 2002:ac8:7d51:0:b0:458:4072:34e with SMTP id d75a77b69052e-45b204ef788mr179409801cf.16.1727063849166;
-        Sun, 22 Sep 2024 20:57:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1727063849; cv=none;
+Received: by 2002:a17:505:42a7:b0:1be9:327d:8ee3 with SMTP id rt7csp2115132njb;
+        Mon, 23 Sep 2024 02:42:34 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCV6m0FgKtJ79QrX5Mm0Nl2P7XppeqdBw9ZVtaWVVIORrronKbMrUscarKDrn+X6VYcvXdpdcQ+TXxlgSQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IHqCgbI0jikaDOJpElfbQSwSarF14o2w0OYz2gYg/jPzoEKeL3KYAy2DvsDc58r/cEMz2Ze
+X-Received: by 2002:a05:620a:19a1:b0:79f:148:d834 with SMTP id af79cd13be357-7acb8e1e800mr1985377385a.59.1727084554503;
+        Mon, 23 Sep 2024 02:42:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1727084554; cv=none;
         d=google.com; s=arc-20240605;
-        b=Og/zV7bwZ76teNNRhpnpi0d2nS0zNib0es1UNw/V9Kb2Ny7htqNmcp+g+nIgBDvd98
-         sp/MIQG96JkY+3J9x+v/oxKmus9gJdc4cDhdfcbTcj5CKAwg+FGNSLj9YQvSH5CSzU8H
-         xTwSlDIMZioSb+rmncTseE0Mt3AYJ6hkmXA+CLBfym5+JVNDu1ezZ3BzLc9Dzqdo5OW8
-         WfjTNvjWd+s9xvHtcurkRXjoOpc/anESMTNjkN6B5QbnScuqG0GbEkNvthkPBH0OgIlr
-         tuLbK4MXBfgLp5FKadxzaKkWuKSW8hYWVOb0li6Yhokgh8WWQ35nKXviTSWfcyTVGA/R
-         UjrQ==
+        b=Pdg97Di+nz6YwfcEjT1dhEPIUwQ8EbeVekELit31rNCRfXs1kWA9qzLCm0Bj16zZ9g
+         BaMlm1wDITGx7E6tPRorupF5hA6tH1IscyMj5jeTDmyPhO0Loag1E3DVWiftJUQgExA+
+         /PS0nKwHvb4/u5AXna3f8eJ0aGs/pTGnLHpPFb1XMnEaapFBNv3b2Mm1Mpc00RtkycIH
+         U3+bd5acSLOWt8/sp8/b2Aj4c0FhFcgdfeeBSdL/yRul3vPYpcnxrpHPQIWfzLCwDfid
+         67UZYtytxLg5/yJW/XgUPEPxs3WGCfYZ693B7NMWoqVlQQ3NCXpDlhXIgvrBArS1aHKY
+         /2lw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from;
-        bh=IQrh43cFhWDNHa2MltyKoKxIev7B7VTtOlH8b4u/r2A=;
-        fh=9Ev+QBUhk6P6vR3LT1wYeDLexozsz44nqjfoyPajZCc=;
-        b=Gu7DY+zJjv5GOjt9DZbFGUUa4OBbCjAAXOKe0MUbQegF8bQe9HtobFNsZY2GGx1a7X
-         M8s4pNGnnkNgmDGZtTFd5ec+Gdds3NzErwEM2oxcaCvwcbxWv3mtpNeDHhQevhGGHNkE
-         xNKCO8Wc9mg+8mlfD2gbx5duyLKHmORGxVRZOeuhHAWLvDdwzDM0qJt77aPKLS2olefG
-         Js1D0XJJQukKdVIAUPilZ8QZiR+l4NPcbiGULd5Ju0BXYZwpl6BHe9vDPSG0dvBqDR/8
-         tp+6rh9+KplLe/MoKd+HG/O3jyayfXwdFz+Bjz54Pa4cqA0KuGropQTSd5WsAPl0RBJW
-         DcwA==;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to;
+        bh=gbGHdvaZ7rwU62t1y2MpfP5ApxA9TcS2qxLJkhqd3BY=;
+        fh=dcWtL3UV6hgfvVRRNBgcZIYWwd7971OyicJdpXZbSYo=;
+        b=ZUmmLqZAyzVZTLlC9hq1pZL35fAiU7wKcZJVfPsFKwkPdit4A7cqvR7KTH+/T7thu4
+         sn42uhnvuxbJsFqtkDCSdWFZEcpe+Hxaj5S6jid6RYi3XroRg6NIVBhge9j2/kohixIg
+         K+jewmnRMWZQGXPaFqdx9yMy8Q8XpvrDdAXHx0VUbC+paTLGHrwh+yMYv2gxR1+lNxN9
+         CGeRYTtVbtX9RgsIOhDTlcL0mtRR2F/mEOhxr62ge4d+ZjStuUK0xuTTh8kRj8nexdFw
+         m30kwKS9SG3ICDUWjgqheRY/ntvGaX/QfpGZw2iGg7HPVsM7C5PfpHd0jbxBcApsxUV+
+         kxlw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-45b1786987fsi95645381cf.8.2024.09.22.20.57.29
+        by mx.google.com with ESMTPS id af79cd13be357-7acb08f4a24si1026180085a.553.2024.09.23.02.42.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 22 Sep 2024 20:57:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 23 Sep 2024 02:42:34 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1ssaBp-0006PT-Pc; Sun, 22 Sep 2024 23:56:45 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1ssfaK-00004z-Gi; Mon, 23 Sep 2024 05:42:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sebastian.huber@embedded-brains.de>)
- id 1ssaBo-0006Mo-2R; Sun, 22 Sep 2024 23:56:44 -0400
-Received: from dedi548.your-server.de ([85.10.215.148])
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1ssfaI-0008NQ-6n; Mon, 23 Sep 2024 05:42:22 -0400
+Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sebastian.huber@embedded-brains.de>)
- id 1ssaBm-00013D-3Y; Sun, 22 Sep 2024 23:56:43 -0400
-Received: from sslproxy04.your-server.de ([78.46.152.42])
- by dedi548.your-server.de with esmtpsa  (TLS1.3) tls TLS_AES_256_GCM_SHA384
- (Exim 4.96.2) (envelope-from <sebastian.huber@embedded-brains.de>)
- id 1ssaBg-0004WH-2f; Mon, 23 Sep 2024 05:56:37 +0200
-Received: from [82.100.198.138] (helo=mail.embedded-brains.de)
- by sslproxy04.your-server.de with esmtpsa (TLS1.3) tls TLS_AES_256_GCM_SHA384
- (Exim 4.96) (envelope-from <sebastian.huber@embedded-brains.de>)
- id 1ssaBh-0002tv-0Y; Mon, 23 Sep 2024 05:56:36 +0200
-Received: from localhost (localhost [127.0.0.1])
- by mail.embedded-brains.de (Postfix) with ESMTP id 0CB27480199;
- Mon, 23 Sep 2024 05:56:36 +0200 (CEST)
-Received: from mail.embedded-brains.de ([127.0.0.1])
- by localhost (zimbra.eb.localhost [127.0.0.1]) (amavis, port 10032)
- with ESMTP id BHj_8TPmRsSL; Mon, 23 Sep 2024 05:56:35 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
- by mail.embedded-brains.de (Postfix) with ESMTP id B4F6F48006F;
- Mon, 23 Sep 2024 05:56:35 +0200 (CEST)
-X-Virus-Scanned: amavis at zimbra.eb.localhost
-Received: from mail.embedded-brains.de ([127.0.0.1])
- by localhost (zimbra.eb.localhost [127.0.0.1]) (amavis, port 10026)
- with ESMTP id fwJZ0RC4QexY; Mon, 23 Sep 2024 05:56:35 +0200 (CEST)
-Received: from zimbra.eb.localhost (unknown [192.168.96.242])
- by mail.embedded-brains.de (Postfix) with ESMTPSA id 86FED480199;
- Mon, 23 Sep 2024 05:56:35 +0200 (CEST)
-From: Sebastian Huber <sebastian.huber@embedded-brains.de>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org
-Subject: [PATCH 1/2] hw/arm/boot: Use hooks if PSCI is disabled
-Date: Mon, 23 Sep 2024 05:56:31 +0200
-Message-Id: <20240923035632.81304-2-sebastian.huber@embedded-brains.de>
-X-Mailer: git-send-email 2.35.3
-In-Reply-To: <20240923035632.81304-1-sebastian.huber@embedded-brains.de>
-References: <20240923035632.81304-1-sebastian.huber@embedded-brains.de>
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1ssfaE-0008C9-UH; Mon, 23 Sep 2024 05:42:21 -0400
+Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
+ (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.12; Mon, 23 Sep
+ 2024 17:42:06 +0800
+Received: from localhost.localdomain (192.168.10.10) by TWMBX01.aspeed.com
+ (192.168.0.62) with Microsoft SMTP Server id 15.2.1258.12 via Frontend
+ Transport; Mon, 23 Sep 2024 17:42:06 +0800
+To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
+ <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
+ <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
+ Stanley" <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
+ <yunlin.tang@aspeedtech.com>
+Subject: [PATCH 0/5] Support GPIO for AST2700
+Date: Mon, 23 Sep 2024 17:42:00 +0800
+Message-ID: <20240923094206.1455783-1-jamin_lin@aspeedtech.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-X-Authenticated-Sender: smtp-embedded@poldi-networks.de
-X-Virus-Scanned: Clear (ClamAV 1.0.5/27406/Sun Sep 22 10:30:52 2024)
-Received-SPF: pass client-ip=85.10.215.148;
- envelope-from=sebastian.huber@embedded-brains.de; helo=dedi548.your-server.de
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=211.20.114.72;
+ envelope-from=jamin_lin@aspeedtech.com; helo=TWMBX01.aspeed.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_FAIL=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: quHd40YqNHhU
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
+From:  Jamin Lin via <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 6UY7Ej8TBP13
 
-In arm_load_kernel(), use the secondary boot hooks provided by the
-platform if PSCI is disabled also while booting a non-Linux kernel.
-While booting Linux with PSCI disabled, provide default hooks if needed.
+v1: support GPIO for AST2700
 
-In do_cpu_reset(), use the secondary CPU reset hook provided by the
-platform for resetting a non-Linux kernel.
+Jamin Lin (5):
+  hw/gpio/aspeed: Fix coding style
+  hw/gpio/aspeed: Support to set the different memory size
+  hw/gpio/aspeed: Support different memory region ops
+  hw/gpio/aspeed: Add AST2700 support
+  aspeed/soc: Support GPIO for AST2700
 
-This change allows a more accurate simulation of the platform reset
-behaviour.
+ hw/arm/aspeed_ast27x0.c       |  18 +-
+ hw/gpio/aspeed_gpio.c         | 390 +++++++++++++++++++++++++++++++++-
+ include/hw/gpio/aspeed_gpio.h |   4 +-
+ 3 files changed, 405 insertions(+), 7 deletions(-)
 
-Signed-off-by: Sebastian Huber <sebastian.huber@embedded-brains.de>
----
- hw/arm/boot.c | 30 +++++++++++++++++++-----------
- 1 file changed, 19 insertions(+), 11 deletions(-)
-
-diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-index 5301d8d318..cad7f41f46 100644
---- a/hw/arm/boot.c
-+++ b/hw/arm/boot.c
-@@ -720,7 +720,11 @@ static void do_cpu_reset(void *opaque)
-                 g_assert_not_reached();
-             }
-=20
--            cpu_set_pc(cs, entry);
-+            if (cs =3D=3D first_cpu || !info->secondary_cpu_reset_hook) =
-{
-+                cpu_set_pc(cs, entry);
-+            } else {
-+                info->secondary_cpu_reset_hook(cpu, info);
-+            }
-         } else {
-             /*
-              * If we are booting Linux then we might need to do so at:
-@@ -1299,20 +1303,24 @@ void arm_load_kernel(ARMCPU *cpu, MachineState *m=
-s, struct arm_boot_info *info)
-         }
-     }
-=20
--    if (info->psci_conduit =3D=3D QEMU_PSCI_CONDUIT_DISABLED &&
--        info->is_linux && nb_cpus > 1) {
-+    if (info->psci_conduit =3D=3D QEMU_PSCI_CONDUIT_DISABLED && nb_cpus =
-> 1) {
-         /*
--         * We're booting Linux but not using PSCI, so for SMP we need
--         * to write a custom secondary CPU boot loader stub, and arrange
--         * for the secondary CPU reset to make the accompanying initiali=
-zation.
-+         * We're not using PSCI, so for SMP we may need to write a custo=
-m
-+         * secondary CPU boot loader stub, and arrange for the secondary=
- CPU
-+         * reset to make the accompanying initialization.
-          */
--        if (!info->secondary_cpu_reset_hook) {
--            info->secondary_cpu_reset_hook =3D default_reset_secondary;
-+        if (info->is_linux) {
-+            /* For the Linux boot, use default hooks if needed */
-+            if (!info->secondary_cpu_reset_hook) {
-+                info->secondary_cpu_reset_hook =3D default_reset_seconda=
-ry;
-+            }
-+            if (!info->write_secondary_boot) {
-+                info->write_secondary_boot =3D default_write_secondary;
-+            }
-         }
--        if (!info->write_secondary_boot) {
--            info->write_secondary_boot =3D default_write_secondary;
-+        if (info->write_secondary_boot) {
-+            info->write_secondary_boot(cpu, info);
-         }
--        info->write_secondary_boot(cpu, info);
-     } else {
-         /*
-          * No secondary boot stub; don't use the reset hook that would
---=20
-2.35.3
+-- 
+2.34.1
 

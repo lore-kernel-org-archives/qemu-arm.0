@@ -1,199 +1,273 @@
-Received: by 2002:a17:505:42a7:b0:1be9:327d:8ee3 with SMTP id rt7csp2772521njb;
-        Tue, 24 Sep 2024 04:52:33 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWUGZtJZSlrwmbLR96mBI5F6sXAfoRNVQ59Kls08L62zQy7+0uZq3LGhZBR2F7riegawlQb7d5MJr2drA==@linaro.org
-X-Google-Smtp-Source: AGHT+IFg7NH6SYiTw6q7sG29j5bkx7ToQRSWu12cokeunIMg56KDWWeJABUuhkG+VlGlD7vGzdTo
-X-Received: by 2002:a05:6214:2dc9:b0:6c3:5606:2ae1 with SMTP id 6a1803df08f44-6c7bc679712mr239613436d6.3.1727178753098;
-        Tue, 24 Sep 2024 04:52:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1727178753; cv=none;
-        d=google.com; s=arc-20240605;
-        b=BciTYRHycdbB5Qy6GyK3xTsa3DPjKX1D+rYUVUs8OmlNXankpgWWVH/tiok2nDMQKM
-         NNw9ouD1OyphBqtgnb4npbEza1rFyn7eZtS8XkDFRVTkCOe3nT94R2mdxkjCOIzTj2iM
-         6Ft5KbLRK6rKR/8ipiKRJ+NWQ2Adpms+F28bReimR4pmQM+jpDeiOrZRj3l2VyEMirBY
-         R18+IwboO9I/aqL281EtCBNXSkYrRwTwPOtfUmShdMqqxt741CgGFjALoH92kt4hv2ai
-         yiIbOjzip0ff4Kwtgnw6kDB75v0QwokKT/4z8zt5E16aATH6XftXD3Wqflk03GTp5kGU
-         w3Sw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:content-language:in-reply-to:autocrypt
-         :from:references:cc:to:subject:user-agent:mime-version:date
-         :message-id:dkim-signature;
-        bh=Rtnq8t61UErQCzPeVRr9owhJtnRVnr5vTKkDQPJL3J4=;
-        fh=mgYUA0V7sZvNYSLGTnpedaSBXceMPtro2SQ1Ncic99w=;
-        b=M82c7ujWWMUs+vlMwrQTU6PB6Vp6T1/4WbS9B6pAncCr2iQtF4suL0ePp4JMeBPT+w
-         RDmo0GKz5js6E/2qX9CTYjFwHK+/WJvqYUlNuqBvfkOLh2/6X90OxRU/56qhP6LPK1MV
-         wnY6fVmQguDld/xokL7MPU33GBzARD5O+yM0jIqD4DHUMtwZu79tVx+5DlM8IkeK+rGP
-         hm5Cbfcs4MdiBHC+oy6PGqlwkmWkasieCbyRo4Ie1Fa6gMSJ0j8Hy1Txn96yvGlT86n7
-         0Jus6wFlcWbX8RVWgWKghZbwrmN/hF6zWBxwhNI17Q1ch/7ef/P65dSw9CwHtraHjvGv
-         LFeA==;
+Received: by 2002:a17:505:42a7:b0:1be9:327d:8ee3 with SMTP id rt7csp2795553njb;
+        Tue, 24 Sep 2024 05:32:22 -0700 (PDT)
+X-Received: by 2002:a05:651c:542:b0:2f3:cd4e:b931 with SMTP id 38308e7fff4ca-2f7cb30cb9bmr94430401fa.10.1727181141750;
+        Tue, 24 Sep 2024 05:32:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1727181141; cv=none;
+        d=google.com; s=arc-20160816;
+        b=dybxseea/iicnK+S343+BKLWLRaRGYHEZT+lphaDBa5VAevy02ZWf6Ms+wfjt267dS
+         2Lni02zk1+Ntb8Y44sAA1I1msHjd935CjqcA/J7/2oS3CtHMOAXIqd/rYAJY52IRXpdA
+         6YvF4vQKsBpjwGeTFaScifqZjwmiIuL3KcEnQPIlnLRPjHc5uS0oJkCnTegSiskWHker
+         Ea8K0T+Sx+IHzzx67N80xMZy/9DiLtBpIanj0nbbOGdXI/66hKC4ONE+PvMSRfVAAUU6
+         beApksNh6Df6OlzmMhZSbgYMQoPRj+9onXz6Hd8vU+FzJxDxS1SV4eyxgju2rfo38en6
+         ikYA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=GyRKw9qtbFiiitlNZMMOTwG0z8GW4JOzDpGvDMyvWiI=;
+        fh=JiTWXjSUoAsVgXHVDv5qopTke0cv8JhW4+l60+TEk7A=;
+        b=0GWTzLFrMRPYSwaJHtK5G6CddCid25lGnahTVbCuxdBgLaDdHcO211TrYAopyfQIln
+         TMDshkN3nCnT1WqvO6DBQoI7GrkIIRKZHKyZmb4+/eywXyXbnNOhyIBWjyM6p9Q7III9
+         UGfAi3t8FnGBzcn05RGSAXlHRxfto8Ch67b5pqJY8+NA+qn0eHP0n3x+npzOhEiJJJP7
+         M/h1/ri/j/1cFWsd3HS1/Ql/9CFrdJd/IVk/8LSZjAnjh3+YCCwzqFkS0hqL9wYQwJHA
+         Jtzih5rxTRLe+M0rpnLqdRdDgTOlsznoVjVOKtVaj0zj5bFT9SM6bkErGLcciHc/MjjK
+         WN+Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hgxBMDO1;
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <thuth@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6cb0f4e7e1csi14299376d6.136.2024.09.24.04.52.32
+       dkim=pass header.i=@linaro.org header.s=google header.b="zH6wxjf/";
+       spf=pass (google.com: domain of manos.pitsidianakis@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=manos.pitsidianakis@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <manos.pitsidianakis@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 38308e7fff4ca-2f8d289b4ccsor3265681fa.13.2024.09.24.05.32.21
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 24 Sep 2024 04:52:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        (Google Transport Security);
+        Tue, 24 Sep 2024 05:32:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of manos.pitsidianakis@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hgxBMDO1;
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1727178752;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=Rtnq8t61UErQCzPeVRr9owhJtnRVnr5vTKkDQPJL3J4=;
-	b=hgxBMDO1N//6K0ZPaCMzOI6BL3Qw4kIAlelwqHzT5tJiFYN2wtj68XwzFJMBLEx5WdEoGh
-	qJipBM0UD/zjwJ6lIYxcNcNpUba+281fJKxjSYjEVkYLCn6J7RGn5ooFUipNObawj2gFGr
-	iRigCaZwOWCYNgH3O3x+YlHEnVEox08=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-127-lRt2bRGdM1qaQ1fscDIbMg-1; Tue, 24 Sep 2024 07:52:31 -0400
-X-MC-Unique: lRt2bRGdM1qaQ1fscDIbMg-1
-Received: by mail-wm1-f72.google.com with SMTP id 5b1f17b1804b1-42cb08ed3a6so29809415e9.0
-        for <alex.bennee@linaro.org>; Tue, 24 Sep 2024 04:52:31 -0700 (PDT)
+       dkim=pass header.i=@linaro.org header.s=google header.b="zH6wxjf/";
+       spf=pass (google.com: domain of manos.pitsidianakis@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=manos.pitsidianakis@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1727181141; x=1727785941; darn=linaro.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=GyRKw9qtbFiiitlNZMMOTwG0z8GW4JOzDpGvDMyvWiI=;
+        b=zH6wxjf/BqO4O/w6PlG8TwDu3Xie8RyEz5eLQ5mCrV5zdurj4hE07wHZxBDaXznVUU
+         cQrDnOsxegVeN/pd2Sk8EKg6oemVNheRrua9l6Kr0As1t/DybHEP9Tg9tInMI5EHh5sn
+         9QOZ9BruYZRgIlEZX6SA2RBtBCgf/WFKv4f9qvSXsGKezs3suZYCYU5eYq8JEqnRvctw
+         rK6+YB3e6ffB/9p0tDWxlf/oJ69Vmq6hUMfiTZZakFGnkvGYdOv9Kd0OKNtd0aP6BSap
+         2w9mG/5NYqC67C6JO6zjbdRPPlN+GUhWxc1sSrWtvw0cs7etyI7aFp1DFZ5YLsqwer70
+         OhxA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1727178750; x=1727783550;
-        h=content-transfer-encoding:in-reply-to:autocrypt:content-language
-         :from:references:cc:to:subject:user-agent:mime-version:date
-         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+        d=1e100.net; s=20230601; t=1727181141; x=1727785941;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=Rtnq8t61UErQCzPeVRr9owhJtnRVnr5vTKkDQPJL3J4=;
-        b=VkyxGTUsLjbisQrbWs1uPsCnWpkAVHlvuf+H/vfsyjO4sPPmH/4Cm6BsSHNW6oIDWL
-         CKV0hVMzzitkTNKJGY7v03BMHOsvWXeaFPXngg3k0snrn7SptVklJR5DFK2uERZAy+vY
-         Tb88nxlbQpH081aygtU4leSQ9C3PvNe+/evIwLP+nIyZb6JXTSCJ0OGSbXg7luan1SC4
-         hAjt0U03P6wmlNAnzeWygLuKgewBANJOOoCetMmmOIDR4LI9ZWwg3oW706UTuGpLtFh8
-         UL9LSYw0PjPQLzKan8gvBcw9BHUp2R8GtuRV1EbSlH64HPbpP8ZjlQYrHxnnWsq9YMjD
-         g7AA==
-X-Forwarded-Encrypted: i=1; AJvYcCXhdji7M3PKFA+AbtkJ9kaFu5dNG3jAqbPv3SVj6oEBxjss3qsCX9QpCAsbwb8mTkPvzpMD6B38JEcIFg==@linaro.org
-X-Gm-Message-State: AOJu0YymUez4k1JDC+BNPJQ5cdm7cgcYKvKdRL0Gf8LcLyVthK69Fl8y
-	MFCtBdWi17YYoyXNIgatuPTcEgUSGd94Zer1+yBFrqVqZGTQJSeiXqSd3NQuqj90jY0OMCfA4Qr
-	OdPCNvQLFCRUboqI6rnBuGLZcxf8HtCgl129fLR6HmGMLOw3JdTEP/g==
-X-Received: by 2002:a05:600c:3b96:b0:42c:b67b:816b with SMTP id 5b1f17b1804b1-42e8f344801mr17127715e9.1.1727178750249;
-        Tue, 24 Sep 2024 04:52:30 -0700 (PDT)
-X-Received: by 2002:a05:600c:3b96:b0:42c:b67b:816b with SMTP id 5b1f17b1804b1-42e8f344801mr17127075e9.1.1727178749850;
-        Tue, 24 Sep 2024 04:52:29 -0700 (PDT)
-Return-Path: <thuth@redhat.com>
-Received: from [10.202.148.89] (nat-pool-brq-u.redhat.com. [213.175.37.12])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-42e902b680fsm19874965e9.35.2024.09.24.04.52.27
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 24 Sep 2024 04:52:29 -0700 (PDT)
-Message-ID: <a65a3201-d8bf-4ca3-81a3-60ad2d3d63f0@redhat.com>
-Date: Tue, 24 Sep 2024 13:52:27 +0200
+        bh=GyRKw9qtbFiiitlNZMMOTwG0z8GW4JOzDpGvDMyvWiI=;
+        b=tu8vKPVadiCVxzfM3DmX1mjXqN1dRdpOPnypiNAI3R+G7CyJlOl4FfVHj2ZMUVajpI
+         OoYcpAciCTOPzGJeY5OVCyevuksKekZgP06wrMrbuVvl7cmsKsuKtDfcp8L9cj+kaOK9
+         aTC7zV6l8ZiRWeZEOYVHYDCLBWeiuMZxemEebZs5u+9XOtU2JaumIWfdP6zk/jYm0+E3
+         BvDkSspPiIRMLcU8CMHqXy0VIoMl7aULBSOrktpMsTe177P3Oxm26Tn0fluZZcILSkgD
+         9IyODsfTHscG2Bz+/QHQ+NmPIWC/Bo5PBSzXsspr4ZRV8/hClX+szC3FJZ30jN1Vd1cR
+         FPoA==
+X-Gm-Message-State: AOJu0YzxiRp8on9FGUjbyUaRp86oD/ereS3969BOl2khoU+kUncUAh3f
+	gRa57NzPPNXvRavHUH8qmZ+WpAQRhAsaHJR9KowxTSnkSZNIQfQLv5PRFLl9+l52GaXrr4mqHIC
+	ZuWxPlhKAyfbcPMb2IeUKYJBXyEZfEL11igokrCAN
+X-Google-Smtp-Source: AGHT+IH7lyPF2LdCsDkake6J/K8hp6pJdd40tPZtKXa6rYUJkS7RdcfNSTYmoHT9kDCLD+qiP1iWYgJFuT3gjDhmpSM=
+X-Received: by 2002:a2e:96c8:0:b0:2f3:c384:71ee with SMTP id
+ 38308e7fff4ca-2f7cb358d5amr77860411fa.33.1727181140913; Tue, 24 Sep 2024
+ 05:32:20 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 30/34] migration: remove return after
- g_assert_not_reached()
-To: Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-devel@nongnu.org
-Cc: Palmer Dabbelt <palmer@dabbelt.com>,
- Alistair Francis <alistair.francis@wdc.com>,
- Hyman Huang <yong.huang@smartx.com>, Halil Pasic <pasic@linux.ibm.com>,
- kvm@vger.kernel.org, Bin Meng <bmeng.cn@gmail.com>,
- Peter Xu <peterx@redhat.com>, Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- David Gibson <david@gibson.dropbear.id.au>,
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>, qemu-s390x@nongnu.org,
- Dmitry Fleytman <dmitry.fleytman@gmail.com>, Hanna Reitz
- <hreitz@redhat.com>, Klaus Jensen <its@irrelevant.dk>,
- Corey Minyard <minyard@acm.org>, Laurent Vivier <laurent@vivier.eu>,
- WANG Xuerui <git@xen0n.name>, Rob Herring <robh@kernel.org>,
- Eduardo Habkost <eduardo@habkost.net>, Nicholas Piggin <npiggin@gmail.com>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>,
- "Maciej S. Szmigiero" <maciej.szmigiero@oracle.com>,
- Ani Sinha <anisinha@redhat.com>, Stefan Berger <stefanb@linux.vnet.ibm.com>,
- Fam Zheng <fam@euphon.net>, Laurent Vivier <lvivier@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
- <berrange@redhat.com>, Richard Henderson <richard.henderson@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Keith Busch <kbusch@kernel.org>, Jean-Christophe Dubois
- <jcd@tribudubois.net>, qemu-riscv@nongnu.org,
- Igor Mammedov <imammedo@redhat.com>, Akihiko Odaki
- <akihiko.odaki@daynix.com>,
- Sriram Yagnaraman <sriram.yagnaraman@ericsson.com>,
- Jason Wang <jasowang@redhat.com>, Eric Farman <farman@linux.ibm.com>,
- "Richard W.M. Jones" <rjones@redhat.com>,
- =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- Nina Schoetterl-Glausch <nsg@linux.ibm.com>,
- Aurelien Jarno <aurelien@aurel32.net>, Markus Armbruster
- <armbru@redhat.com>, =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Fabiano Rosas <farosas@suse.de>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, qemu-arm@nongnu.org,
- Christian Borntraeger <borntraeger@linux.ibm.com>, qemu-ppc@nongnu.org,
- Zhao Liu <zhao1.liu@intel.com>,
- Daniel Henrique Barboza <danielhb413@gmail.com>, qemu-block@nongnu.org,
- Joel Stanley <joel@jms.id.au>, Weiwei Li <liwei1518@gmail.com>,
- Kevin Wolf <kwolf@redhat.com>, Helge Deller <deller@gmx.de>,
- Yanan Wang <wangyanan55@huawei.com>, Michael Rolnik <mrolnik@gmail.com>,
- Jesper Devantier <foss@defmacro.it>, Marcelo Tosatti <mtosatti@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>
-References: <20240919044641.386068-1-pierrick.bouvier@linaro.org>
- <20240919044641.386068-31-pierrick.bouvier@linaro.org>
-From: Thomas Huth <thuth@redhat.com>
-Autocrypt: addr=thuth@redhat.com; keydata=
- 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
-In-Reply-To: <20240919044641.386068-31-pierrick.bouvier@linaro.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-TUID: Qh9YtS3LQMMA
+References: <20240923-feature-build-info-cli-v2-1-66b3462f16a1@linaro.org>
+ <ZvGbRWSPPLJDx7BX@redhat.com> <ka5ia.wqlrej2ef9q@linaro.org>
+ <ZvJ8JblXVH-kJGi1@redhat.com> <CAAjaMXZ8q0is2-7-kjyBs=YsBc03=0R2XcYiR-fp05=bcerD6Q@mail.gmail.com>
+ <87setpcl9p.fsf@draig.linaro.org> <ZvKrqCR5L21-6k54@redhat.com>
+In-Reply-To: <ZvKrqCR5L21-6k54@redhat.com>
+From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+Date: Tue, 24 Sep 2024 15:32:10 +0300
+Message-ID: <CAAjaMXYX5f5_Q6WezmteM77dSqTHZOdCB7LdZYY6Tj9PtKkSCw@mail.gmail.com>
+Subject: Re: [PATCH v2] Add -build-info and -build-info-json CLI arguments
+To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
+Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	"open list:ARM SMMU <qemu-arm@nongnu.org>," <qemu-devel@nongnu.org>, Cleber Rosa <crosa@redhat.com>, John Snow <jsnow@redhat.com>, 
+	=?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
+	Paolo Bonzini <pbonzini@redhat.com>, Gustavo Romero <gustavo.romero@linaro.org>, 
+	Peter Maydell <peter.maydell@linaro.org>, =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+	Pierrick Bouvier <pierrick.bouvier@linaro.org>, 
+	Richard Henderson <richard.henderson@linaro.org>
+Content-Type: multipart/alternative; boundary="0000000000005e15bb0622dcb21f"
+X-TUID: fZUiH2q2BCvG
 
-On 19/09/2024 06.46, Pierrick Bouvier wrote:
-> This patch is part of a series that moves towards a consistent use of
-> g_assert_not_reached() rather than an ad hoc mix of different
-> assertion mechanisms.
-> 
-> Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-> ---
->   migration/dirtyrate.c    | 1 -
->   migration/postcopy-ram.c | 7 -------
->   migration/ram.c          | 2 --
->   3 files changed, 10 deletions(-)
+--0000000000005e15bb0622dcb21f
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+Hello Daniel,
+
+On Tue, Sep 24, 2024, 3:08 PM Daniel P. Berrang=C3=A9 <berrange@redhat.com>
+wrote:
+
+> On Tue, Sep 24, 2024 at 01:02:26PM +0100, Alex Benn=C3=A9e wrote:
+> > Manos Pitsidianakis <manos.pitsidianakis@linaro.org> writes:
+> >
+> > > Hello Daniel,
+> > >
+> > > On Tue, 24 Sept 2024 at 11:45, Daniel P. Berrang=C3=A9 <berrange@redh=
+at.com>
+> wrote:
+> > >>
+> > >> On Mon, Sep 23, 2024 at 10:09:32PM +0300, Manos Pitsidianakis wrote:
+> > >> > Hello Daniel,
+> > >> >
+> > >> > On Mon, 23 Sep 2024 19:45, "Daniel P. Berrang=C3=A9" <
+> berrange@redhat.com> wrote:
+> > >> > > On Mon, Sep 23, 2024 at 09:05:24AM +0300, Manos Pitsidianakis
+> wrote:
+> > <snip>
+> > >> > > ie, look a query-audiodevs to discover what audio baxckends are
+> > >> > > built-in, don't look for CONFIG_XXX settings related to audio.
+> > >> > > If there are gaps in information we can query from QMP, we shoul=
+d
+> > >> > > aim to close those gaps.
+> > >> > >
+> > >> > > IOW, I don't think we should expose this build info info in eith=
+er
+> > >> > > human readable or machine readable format.
+> > >> >
+> > >> > QAPI/QMP is not the perspective of this patch, this is for people
+> who use
+> > >> > custom-built (i.e. not from a distro) binaries and want to be able
+> to
+> > >> > identify how it was built. Launching a binary to query stuff is
+> > >> > unnecessarily complex for this task, and the info is not generally
+> > >> > interesting to the API consumers as you said.
+> > >>
+> > >> Launching QEMU to talk QMP is our defined public API for querying
+> > >> anything about the capabilities of QEMU. We're worked hard to get
+> > >> away from providing ad-hoc ways to query QEMU from the command
+> > >> line and going back to that is not desirable. It may be slightly
+> > >> more complicated, but not by very much.
+> > >
+> > > Again, this is not a "capabilities discovery" API. It lists the
+> > > build-time configuration of the binary. Perhaps we can expose it in a
+> > > different way so that people don't end up confused?
+> >
+> > I think the problem is however much we might say it's not a capabilitie=
+s
+> > discovery API it's very existence encourages users to use it as one.
+> >
+> > What about a script:
+> >
+> >   qemu-get-build-info </path/to/qemu>
+> >
+> > which would launch the binary and query it over QMP? Would that work?
+>
+> If this is purely a debugging aid, we could make use of ELF notes to
+> just stick the config-host.h content into the binary. This has precedent
+> in systemd package notes (https://github.com/systemd/package-notes) and
+> is more clearly *NOT* an end user CLI option, nor a public API in QMP.
+>
+> Querying is then
+>
+>     objdump -j .note.qemu-config-h -s /usrbin/qemu-system-x86_64
+>
+
+That's actually a way better solution! I will attempt it for the next
+revision.
+
+Manos
+
+>
+
+--0000000000005e15bb0622dcb21f
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"auto"><div>Hello Daniel,<br><br><div class=3D"gmail_quote"><div=
+ dir=3D"ltr" class=3D"gmail_attr">On Tue, Sep 24, 2024, 3:08 PM Daniel P. B=
+errang=C3=A9 &lt;<a href=3D"mailto:berrange@redhat.com">berrange@redhat.com=
+</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:=
+0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">=
+On Tue, Sep 24, 2024 at 01:02:26PM +0100, Alex Benn=C3=A9e wrote:<br>
+&gt; Manos Pitsidianakis &lt;<a href=3D"mailto:manos.pitsidianakis@linaro.o=
+rg" target=3D"_blank" rel=3D"noreferrer">manos.pitsidianakis@linaro.org</a>=
+&gt; writes:<br>
+&gt; <br>
+&gt; &gt; Hello Daniel,<br>
+&gt; &gt;<br>
+&gt; &gt; On Tue, 24 Sept 2024 at 11:45, Daniel P. Berrang=C3=A9 &lt;<a hre=
+f=3D"mailto:berrange@redhat.com" target=3D"_blank" rel=3D"noreferrer">berra=
+nge@redhat.com</a>&gt; wrote:<br>
+&gt; &gt;&gt;<br>
+&gt; &gt;&gt; On Mon, Sep 23, 2024 at 10:09:32PM +0300, Manos Pitsidianakis=
+ wrote:<br>
+&gt; &gt;&gt; &gt; Hello Daniel,<br>
+&gt; &gt;&gt; &gt;<br>
+&gt; &gt;&gt; &gt; On Mon, 23 Sep 2024 19:45, &quot;Daniel P. Berrang=C3=A9=
+&quot; &lt;<a href=3D"mailto:berrange@redhat.com" target=3D"_blank" rel=3D"=
+noreferrer">berrange@redhat.com</a>&gt; wrote:<br>
+&gt; &gt;&gt; &gt; &gt; On Mon, Sep 23, 2024 at 09:05:24AM +0300, Manos Pit=
+sidianakis wrote:<br>
+&gt; &lt;snip&gt;<br>
+&gt; &gt;&gt; &gt; &gt; ie, look a query-audiodevs to discover what audio b=
+axckends are<br>
+&gt; &gt;&gt; &gt; &gt; built-in, don&#39;t look for CONFIG_XXX settings re=
+lated to audio.<br>
+&gt; &gt;&gt; &gt; &gt; If there are gaps in information we can query from =
+QMP, we should<br>
+&gt; &gt;&gt; &gt; &gt; aim to close those gaps.<br>
+&gt; &gt;&gt; &gt; &gt;<br>
+&gt; &gt;&gt; &gt; &gt; IOW, I don&#39;t think we should expose this build =
+info info in either<br>
+&gt; &gt;&gt; &gt; &gt; human readable or machine readable format.<br>
+&gt; &gt;&gt; &gt;<br>
+&gt; &gt;&gt; &gt; QAPI/QMP is not the perspective of this patch, this is f=
+or people who use<br>
+&gt; &gt;&gt; &gt; custom-built (i.e. not from a distro) binaries and want =
+to be able to<br>
+&gt; &gt;&gt; &gt; identify how it was built. Launching a binary to query s=
+tuff is<br>
+&gt; &gt;&gt; &gt; unnecessarily complex for this task, and the info is not=
+ generally<br>
+&gt; &gt;&gt; &gt; interesting to the API consumers as you said.<br>
+&gt; &gt;&gt;<br>
+&gt; &gt;&gt; Launching QEMU to talk QMP is our defined public API for quer=
+ying<br>
+&gt; &gt;&gt; anything about the capabilities of QEMU. We&#39;re worked har=
+d to get<br>
+&gt; &gt;&gt; away from providing ad-hoc ways to query QEMU from the comman=
+d<br>
+&gt; &gt;&gt; line and going back to that is not desirable. It may be sligh=
+tly<br>
+&gt; &gt;&gt; more complicated, but not by very much.<br>
+&gt; &gt;<br>
+&gt; &gt; Again, this is not a &quot;capabilities discovery&quot; API. It l=
+ists the<br>
+&gt; &gt; build-time configuration of the binary. Perhaps we can expose it =
+in a<br>
+&gt; &gt; different way so that people don&#39;t end up confused?<br>
+&gt; <br>
+&gt; I think the problem is however much we might say it&#39;s not a capabi=
+lities<br>
+&gt; discovery API it&#39;s very existence encourages users to use it as on=
+e.<br>
+&gt; <br>
+&gt; What about a script:<br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0qemu-get-build-info &lt;/path/to/qemu&gt;<br>
+&gt; <br>
+&gt; which would launch the binary and query it over QMP? Would that work?<=
+br>
+<br>
+If this is purely a debugging aid, we could make use of ELF notes to<br>
+just stick the config-host.h content into the binary. This has precedent<br=
+>
+in systemd package notes (<a href=3D"https://github.com/systemd/package-not=
+es" rel=3D"noreferrer noreferrer" target=3D"_blank">https://github.com/syst=
+emd/package-notes</a>) and<br>
+is more clearly *NOT* an end user CLI option, nor a public API in QMP.<br>
+<br>
+Querying is then<br>
+<br>
+=C2=A0 =C2=A0 objdump -j .note.qemu-config-h -s /usrbin/qemu-system-x86_64<=
+br></blockquote></div></div><div dir=3D"auto"><br></div><div dir=3D"auto">T=
+hat&#39;s actually a way better solution! I will attempt it for the next re=
+vision.</div><div dir=3D"auto"><br></div><div dir=3D"auto">Manos=C2=A0</div=
+><div dir=3D"auto"><div class=3D"gmail_quote"><blockquote class=3D"gmail_qu=
+ote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,20=
+4);padding-left:1ex">
+</blockquote></div></div></div>
+
+--0000000000005e15bb0622dcb21f--

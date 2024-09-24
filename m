@@ -1,122 +1,117 @@
-Received: by 2002:a17:505:42a7:b0:1be9:327d:8ee3 with SMTP id rt7csp3032039njb;
-        Tue, 24 Sep 2024 12:15:56 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCX5mIksBlvrFWTiCT3T0yGpjQXV+qhuhcrENSBAocnUHfpO/vm8kBGzrtAb/VHPK7BiaZdLjDu92tAElw==@linaro.org
-X-Google-Smtp-Source: AGHT+IFP78FSfSlInEjrhyUcjOBwWDm3kzdJ0oV8FWoXNHf45/SFQNfA4+RqcHTVwXeD3egf4qqf
-X-Received: by 2002:a05:6358:9394:b0:1b3:94cc:6526 with SMTP id e5c5f4694b2df-1bea856bc1emr59881455d.2.1727205356386;
-        Tue, 24 Sep 2024 12:15:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1727205356; cv=none;
+Received: by 2002:a17:505:42a7:b0:1be9:327d:8ee3 with SMTP id rt7csp3034070njb;
+        Tue, 24 Sep 2024 12:20:09 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUeOMhLUXgTNY/3yJX1jV13S/55rKqzJ2/63IQX+RgfAv7d1l7NzO6GfFQMu/Z/zVGeDkDwoun95dK8vg==@linaro.org
+X-Google-Smtp-Source: AGHT+IFKrEWIwxV0DrraESrFhBWCPKI0H38fQdGt7FMAEo0NYJfraiAExcPJomzPSNzPBbrypq3O
+X-Received: by 2002:a05:6102:ccd:b0:49e:928f:7976 with SMTP id ada2fe7eead31-4a15dc997c6mr807859137.12.1727205609564;
+        Tue, 24 Sep 2024 12:20:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1727205609; cv=none;
         d=google.com; s=arc-20240605;
-        b=D29iRMZq8vjvOTD09ivGAS1DMCnYDer8c0tUswyma8KttXQMuPE1xLBH8qT3Qb6Eg+
-         SSAs/Z9C0dIreGSq9vNx6Hi1AxDysQWs51kfCCkUKxWx/Dwr5OwU1r3sCHn6BdEHu1MS
-         8jKb5AD4s8oS/J4dVZZylmvB4BX/hgQIB8YVkRRY7sQOCc3pohEnvcMKjfJzK7EN477x
-         avupDipcPHuOkOLde6v1VL1IGLXE1xcgM1+oBwWhcNUYlYlMVTbncxZD9VTc1yjmoth+
-         TnTMTb6HWThsrZp6zGjbqQNg1mzY05I1ez2Ikxjf54D/bbI0lgJDqqydZacfG6v5Elgl
-         kxOA==
+        b=UsQjUt0YG2m9zs1Blc9Jr+4E/74xPCsI7n6E3KX3NDBDTot+hR6PRTDmulBD/HCInN
+         0m9Mast8quJWDrgvVmjql1LIJM9zqwbzF4X/C9xdYyqO2pCNfFJsIwsCsjDScLE9oQhR
+         FMnleKqR2rdWagp2fAMUKm7QfeuU7L3Ckir4PDIh7LlHLD5UAv6RsfyeMmQyzDJA6jL1
+         UO93gwfj3B026eZnY88TZHiR+7+ANe7VtvRsepxAN3zqALf/8C6r4IDBwbMpQ86Gt0AR
+         dJI1gUddy+yzufediyZf/mHY30P14y1elXVJCRaJ8bBvjV2bDT38GW55UCFeK2/BRblj
+         v7cw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:cc:from:content-language:references:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=YUogfJuU1I9/+JaCfV8qUdt50vZ6ZfbB1fjC8hifGa4=;
-        fh=V1iA4gKf88m6YaXNlLsaxFSp1YGcCc5/zbtSuN7JMro=;
-        b=Gene1IGgRVDoQxObZ8fHBuKApnUWS0cT/G70SAwTnPc1nIcCth2jt5FJI8YDCoyZlK
-         dCWEQrCkZKftwwpLcoTeOuVPsq9qy+8Fl40r2UEsoE0wDF0XaQGAw04hy/uBlre1x9Qe
-         8iWzZZRU3gNoACXowWFOV8kY0ssTkTU+2df17ntU7bZWrHfOn/4Zz5C4e6PjolZIkA1A
-         ymvZjNvKLbw5Me1j4MsAYpDu4WEl/GGRDNTWJVnyLQP1+FatAFNAeZo3h4ZXvbNg2bAP
-         jeWNljvCAGLjWkv+ntYbTxzFowE1runuLfOFQxnqTh0+2AbkQDutfdbtN+5eB1Vj24j6
-         KmHQ==;
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=hC7RUQh5iJG+tj/FBPCCf6KG23a/jAttxBOMoGR0rKk=;
+        fh=uGu748YfoQIXvdPSvfeQwNuYW9BHIK+6sVMr/sevgac=;
+        b=jE6MEVhDyqB74OZDI55Tno34nxN1je12qJKjFhtT5c1ZppCnv933kkgVrG/H+bX2j5
+         ox7WLXiBrZ8BWj+0Eh/OxVlSNmg928XwH1GBi+OSZJ0x6b17IyskC2Ih0cR9soMO7FrF
+         deSOSZh4kAxx3zwQllb9XeFSh0CMZWthbtjLeJaN49BRN6W58os3PE90WBzjnkZh5igi
+         YlLY2HB+rzC/wrlZpUFzZBoM+iMjwZYCjQwD80xWCuRqjF/9uXNAp26aI28oMQNjDxEt
+         ZHgYYPq/p+mAAyfmarIC0z/Qg5bWNFQnhKjSzz5DE1K9EcR/T3InGT7pg/hRT/qQNatT
+         6Rag==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=tgxoQ9uf;
+       dkim=pass header.i=@linaro.org header.s=google header.b=WapE7C94;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-45b5267c608si20559431cf.232.2024.09.24.12.15.56
+        by mx.google.com with ESMTPS id 6a1803df08f44-6cb0f4c2576si23357556d6.29.2024.09.24.12.20.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 24 Sep 2024 12:15:56 -0700 (PDT)
+        Tue, 24 Sep 2024 12:20:09 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=tgxoQ9uf;
+       dkim=pass header.i=@linaro.org header.s=google header.b=WapE7C94;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1stB0c-0008Cz-FQ; Tue, 24 Sep 2024 15:15:39 -0400
+	id 1stB4a-0006ZQ-NW; Tue, 24 Sep 2024 15:19:44 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1stB0P-0007dX-UK
- for qemu-arm@nongnu.org; Tue, 24 Sep 2024 15:15:28 -0400
-Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1stB4Y-0006TX-H0
+ for qemu-arm@nongnu.org; Tue, 24 Sep 2024 15:19:42 -0400
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1stB0L-0004vI-M9
- for qemu-arm@nongnu.org; Tue, 24 Sep 2024 15:15:24 -0400
-Received: by mail-wr1-x435.google.com with SMTP id
- ffacd0b85a97d-3787ddbd5a2so3414577f8f.0
- for <qemu-arm@nongnu.org>; Tue, 24 Sep 2024 12:15:20 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1stB4W-00054F-Hw
+ for qemu-arm@nongnu.org; Tue, 24 Sep 2024 15:19:42 -0400
+Received: by mail-wm1-x32f.google.com with SMTP id
+ 5b1f17b1804b1-42ca4e0299eso48920055e9.2
+ for <qemu-arm@nongnu.org>; Tue, 24 Sep 2024 12:19:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1727205319; x=1727810119; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:cc:from:content-language
- :references:to:subject:user-agent:mime-version:date:message-id:from
- :to:cc:subject:date:message-id:reply-to;
- bh=YUogfJuU1I9/+JaCfV8qUdt50vZ6ZfbB1fjC8hifGa4=;
- b=tgxoQ9ufMG/JH2apYINehuABabgjCX49wUD+J+UkPojcxv8IabNnGiKbYNe3Xn/Zps
- wS+QH8G91Xuo/n7xGPaJamka/A5oSgSC4m8LVAVKP/89IpBb1bTfc5pcpd/MKDw8Q7V9
- ilW6iXoPUydXwGFLYs+Mqn2PIK53Fyee4lZ1BQV3SSIjwXeQyF9buk8S4Y5PL8eEOS89
- pNzucOoDWCo9oOBQUO7VgBSQUKLowFrzb93qXz8cS+Ar97G96/1gvPtslMotE6zXTSpn
- YFe11roO81Wj2R8bJIGasQ2+oiIWqxq1/eCgO9l6mUiHj3OzIFVWPeIKhpVNG7E+K+MY
- T3iw==
+ d=linaro.org; s=google; t=1727205578; x=1727810378; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=hC7RUQh5iJG+tj/FBPCCf6KG23a/jAttxBOMoGR0rKk=;
+ b=WapE7C94XMBgUm7YgN+lqFsR2UkSW8oE0wYJrzIEmxhZJDc/1Yh/b/OxURNwPrxmO/
+ abfr3kde9Nf/pLHo4N2Qq76Nxv42F6y6lZVonufkpCdXKnhNrH+mVFmsB6zzMtvJFsov
+ Xpmv0at91qv4PPlna/PMipbOu+AyCL+qp7rGBYsA4ND9qdUdSm4jDYwc/EuLiGisfJDR
+ WqKev6sqpazBiDDy2OljPjhJH1SwedUTQbrJgjFpmJNz3n/f/mcfiUqGgRIHmv6FLugZ
+ fukJG4d3/8ILND/zVmog5Fs9K34Fvwag5OYfv1Ht6xriDi3RbRiTqzfOGvxWnw+XxW+A
+ hZNw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1727205319; x=1727810119;
- h=content-transfer-encoding:in-reply-to:cc:from:content-language
- :references:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=YUogfJuU1I9/+JaCfV8qUdt50vZ6ZfbB1fjC8hifGa4=;
- b=RJcTzKVcnZ3FBqMwsuApAPoC4BE5mizQ4mvoiCSO/xp00M1fZ3A1H1ucCHspatTGPW
- 7x+6WIZDR50IC/jf3fh3vGPBnevWSEaLhjUky/CVe73vAAckDSdCUrDqYXusJsl0w3Tc
- nZWtKOlEoDnz9Qd5m6ov6GNzAQlML/thxie8GPxxw2+QQfKhLbayCOERu8mBO9Qw7umX
- 9cvdlJSoGexP2encU9D8BKXfJxicCgEXhImlTA//iQ/Of0TQbcfISSXs6odpCFpu7RIK
- sXKHcNeg0mrRD4108QRC0hdVwzvepLPMxB8cC8ielIqTNaWsI97TwUvq6msvkUBgmpSi
- aZ8A==
-X-Gm-Message-State: AOJu0YxzO9tSK2i7Pl7MpLbRwSxLGk0N+5ymAxxZ+gTzp+4048gNs0bh
- 3K5oGfTrJdR7LrT71+kUkveGoHko8u7NUxD7TpKe1/ttQC44K5r2zcukvYvAxk8=
-X-Received: by 2002:adf:ab16:0:b0:374:bfc4:b62f with SMTP id
- ffacd0b85a97d-37cc2465055mr206389f8f.3.1727205319156; 
- Tue, 24 Sep 2024 12:15:19 -0700 (PDT)
-Received: from [192.168.240.175] (14.red-88-29-183.dynamicip.rima-tde.net.
- [88.29.183.14]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-37cbc2c2246sm2263656f8f.38.2024.09.24.12.15.16
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 24 Sep 2024 12:15:18 -0700 (PDT)
-Message-ID: <7c750b58-e845-4d80-b5a5-7eda8f505fb6@linaro.org>
-Date: Tue, 24 Sep 2024 21:14:55 +0200
+ d=1e100.net; s=20230601; t=1727205578; x=1727810378;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=hC7RUQh5iJG+tj/FBPCCf6KG23a/jAttxBOMoGR0rKk=;
+ b=mz2Fy5LsHToyTzEc8jMcfitBRzqnyZhfqalZZaIm0Vm6OASLoUUiazZVWoUqRKxXDx
+ AslHToE6d4sX1KhgGSk1rNpYHGsYa5L9h1ulo2xM/9UCj2N2OCpp/m/JfiCwbZ7obk2p
+ RVvy3Wf2081HRIU9b3ntSThHx1HTlvBG6JrryTm1KeGIHvfuUfCZBFioGpFoAiwspnNv
+ H48fh8e97+DW9Ld0YtWEV/ANk/l2xKw65mcBKgrAsV+owVAZmJ4uGx0VZCpq7MurX5Jh
+ KsKDvSUAhcv2oZbz1vl2HuJAF9feuBk0ONivHc438eHNnEl8su1f8XJCB48Kw+RWxuFP
+ nYtA==
+X-Gm-Message-State: AOJu0YzanZLzsVTKjfa8kj6CcTvWPQbbaW+5GU6MK22inPRXNN4RqvYm
+ v1TRqYuVeq6JJtHlEVIhk6iIdiwPLLZlokAyDffiRPPMgH2EqOh8E7LSxsOPy04=
+X-Received: by 2002:a05:600c:3d05:b0:42c:de2f:da27 with SMTP id
+ 5b1f17b1804b1-42e9610381bmr1107585e9.2.1727205577664; 
+ Tue, 24 Sep 2024 12:19:37 -0700 (PDT)
+Received: from localhost.localdomain (208.15.23.93.rev.sfr.net. [93.23.15.208])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-42e7543b9a4sm166337075e9.12.2024.09.24.12.19.34
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Tue, 24 Sep 2024 12:19:37 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Tony Nguyen <tony.nguyen@bt.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [RFC PATCH] hw/arm/armv7m: Expose and access System Control Space as
+ little endian
+Date: Tue, 24 Sep 2024 21:19:32 +0200
+Message-ID: <20240924191932.49386-1-philmd@linaro.org>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 09/12] target/arm: Implement the SETG* instructions
-To: Peter Maydell <peter.maydell@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- Gustavo Romero <gustavo.romero@linaro.org>
-References: <20230912140434.1333369-1-peter.maydell@linaro.org>
- <20230912140434.1333369-10-peter.maydell@linaro.org>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, Anton Johansson <anjo@rev.ng>
-In-Reply-To: <20230912140434.1333369-10-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::435;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x435.google.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -131,120 +126,82 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: wlaNTCDSXBfV
+X-TUID: N6dvw82mikcw
 
-Hi Peter,
+Per the Armv7-M Architecture Reference Manual (ARM DDI 0403E):
 
-(patch merged as commit 6087df574400659226861fa5ba47970f1fbd277b).
+  The System Control Space (SCS, address range 0xE000E000 to
+  0xE000EFFF) is a memory-mapped 4KB address space that provides
+  32-bit registers for configuration, status reporting and control.
+  All accesses to the SCS are little endian.
 
-On 12/9/23 16:04, Peter Maydell wrote:
-> The FEAT_MOPS SETG* instructions are very similar to the SET*
-> instructions, but as well as setting memory contents they also
-> set the MTE tags. They are architecturally required to operate
-> on tag-granule aligned regions only.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
-> v2: - separate helper functions calling do_setp/setm/sete
->      - use cpu_st16_mmu()
+Expose the region as a little-endian one and force dispatched
+accesses to also be in little endianness.
 
-So you replaced the pair of cpu_stq_mmuidx_ra() from v1 by
-cpu_st16_mmu().
-
-> ---
->   target/arm/internals.h         | 10 ++++
->   target/arm/tcg/helper-a64.h    |  3 ++
->   target/arm/tcg/a64.decode      |  5 ++
->   target/arm/tcg/helper-a64.c    | 86 ++++++++++++++++++++++++++++++++--
->   target/arm/tcg/mte_helper.c    | 40 ++++++++++++++++
->   target/arm/tcg/translate-a64.c | 20 +++++---
->   6 files changed, 155 insertions(+), 9 deletions(-)
-
-
-> +/*
-> + * Similar, but setting tags. The architecture requires us to do this
-> + * in 16-byte chunks. SETP accesses are not tag checked; they set
-> + * the tags.
-> + */
-> +static uint64_t set_step_tags(CPUARMState *env, uint64_t toaddr,
-> +                              uint64_t setsize, uint32_t data, int memidx,
-> +                              uint32_t *mtedesc, uintptr_t ra)
-> +{
-> +    void *mem;
-> +    uint64_t cleanaddr;
-> +
-> +    setsize = MIN(setsize, page_limit(toaddr));
-> +
-> +    cleanaddr = useronly_clean_ptr(toaddr);
-> +    /*
-> +     * Trapless lookup: returns NULL for invalid page, I/O,
-> +     * watchpoints, clean pages, etc.
-> +     */
-> +    mem = tlb_vaddr_to_host(env, cleanaddr, MMU_DATA_STORE, memidx);
-> +
-> +#ifndef CONFIG_USER_ONLY
-> +    if (unlikely(!mem)) {
-> +        /*
-> +         * Slow-path: just do one write. This will handle the
-> +         * watchpoint, invalid page, etc handling correctly.
-> +         * The architecture requires that we do 16 bytes at a time,
-> +         * and we know both ptr and size are 16 byte aligned.
-> +         * For clean code pages, the next iteration will see
-> +         * the page dirty and will use the fast path.
-> +         */
-> +        uint64_t repldata = data * 0x0101010101010101ULL;
-> +        MemOpIdx oi16 = make_memop_idx(MO_TE | MO_128, memidx);
-
-I'm trying to understand the MO_TE use, but I'm not seeing it in
-https://developer.arm.com/documentation/ddi0602/2024-06/Base-Instructions/SETGP--SETGM--SETGE--Memory-set-with-tag-setting-
-pseudo code. I also checked
-https://developer.arm.com/documentation/ddi0602/2024-06/Shared-Pseudocode/aarch64-functions-mops?lang=en#impl-aarch64.MemSetBytes.4
-and 
-https://developer.arm.com/documentation/ddi0602/2024-06/Shared-Pseudocode/aarch64-functions-memory?lang=en#AArch64.MemSingleWrite.5
-
-Is the following part in MemSingleWrite()?
-
-     if !atomic && aligned && accdesc.ispair then
-
-         bits(halfsize*8) lowhalf, highhalf;
-         <highhalf, lowhalf> = value;
-
-         memstatus = PhysMemWrite(memaddrdesc, halfsize, accdesc, lowhalf);
-
-         memaddrdesc.paddress.address = memaddrdesc.paddress.address + 
-halfsize;
-         memstatus = PhysMemWrite(memaddrdesc, halfsize, accdesc, highhalf);
-
-> +        cpu_st16_mmu(env, toaddr, int128_make128(repldata, repldata), oi16, ra);
-> +        mte_mops_set_tags(env, toaddr, 16, *mtedesc);
-> +        return 16;
-> +    }
-> +#endif
-> +    /* Easy case: just memset the host memory */
-> +    memset(mem, data, setsize);
-> +    mte_mops_set_tags(env, toaddr, setsize, *mtedesc);
-> +    return setsize;
-> +}
-
-If we need to endian swap, could we use the cached hflags instead of MO_TE?
-
-The BE_DATA bit is iset in rebuild_hflags_a64() when
-arm_cpu_data_is_big_endian_a64() is true. The following diff snippet
-works for me but I'm out of my comfort zone here :)
-
--- >8 --
-          uint64_t repldata = data * 0x0101010101010101ULL;
--        MemOpIdx oi16 = make_memop_idx(MO_TE | MO_128, memidx);
-+        MemOp be_data = EX_TBFLAG_ANY(env->hflags, BE_DATA) ? MO_BE : 
-MO_LE;
-+        MemOpIdx oi16 = make_memop_idx(be_data | MO_128, memidx);
-          cpu_st16_mmu(env, toaddr, int128_make128(repldata, repldata), 
-oi16, ra);
-          mte_mops_set_tags(env, toaddr, 16, *mtedesc);
-          return 16;
+Fixes: d5d680cacc ("memory: Access MemoryRegion with endianness")
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
+ hw/arm/armv7m.c | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
 
-Thanks,
+diff --git a/hw/arm/armv7m.c b/hw/arm/armv7m.c
+index 7c68525a9e..4a01b970e6 100644
+--- a/hw/arm/armv7m.c
++++ b/hw/arm/armv7m.c
+@@ -140,7 +140,7 @@ static MemTxResult v7m_sysreg_ns_write(void *opaque, hwaddr addr,
+         /* S accesses to the alias act like NS accesses to the real region */
+         attrs.secure = 0;
+         return memory_region_dispatch_write(mr, addr, value,
+-                                            size_memop(size) | MO_TE, attrs);
++                                            size_memop(size) | MO_LE, attrs);
+     } else {
+         /* NS attrs are RAZ/WI for privileged, and BusFault for user */
+         if (attrs.user) {
+@@ -160,7 +160,7 @@ static MemTxResult v7m_sysreg_ns_read(void *opaque, hwaddr addr,
+         /* S accesses to the alias act like NS accesses to the real region */
+         attrs.secure = 0;
+         return memory_region_dispatch_read(mr, addr, data,
+-                                           size_memop(size) | MO_TE, attrs);
++                                           size_memop(size) | MO_LE, attrs);
+     } else {
+         /* NS attrs are RAZ/WI for privileged, and BusFault for user */
+         if (attrs.user) {
+@@ -174,7 +174,7 @@ static MemTxResult v7m_sysreg_ns_read(void *opaque, hwaddr addr,
+ static const MemoryRegionOps v7m_sysreg_ns_ops = {
+     .read_with_attrs = v7m_sysreg_ns_read,
+     .write_with_attrs = v7m_sysreg_ns_write,
+-    .endianness = DEVICE_NATIVE_ENDIAN,
++    .endianness = DEVICE_LITTLE_ENDIAN,
+ };
+ 
+ static MemTxResult v7m_systick_write(void *opaque, hwaddr addr,
+@@ -187,7 +187,7 @@ static MemTxResult v7m_systick_write(void *opaque, hwaddr addr,
+     /* Direct the access to the correct systick */
+     mr = sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->systick[attrs.secure]), 0);
+     return memory_region_dispatch_write(mr, addr, value,
+-                                        size_memop(size) | MO_TE, attrs);
++                                        size_memop(size) | MO_LE, attrs);
+ }
+ 
+ static MemTxResult v7m_systick_read(void *opaque, hwaddr addr,
+@@ -199,14 +199,14 @@ static MemTxResult v7m_systick_read(void *opaque, hwaddr addr,
+ 
+     /* Direct the access to the correct systick */
+     mr = sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->systick[attrs.secure]), 0);
+-    return memory_region_dispatch_read(mr, addr, data, size_memop(size) | MO_TE,
+-                                       attrs);
++    return memory_region_dispatch_read(mr, addr, data,
++                                       size_memop(size) | MO_LE, attrs);
+ }
+ 
+ static const MemoryRegionOps v7m_systick_ops = {
+     .read_with_attrs = v7m_systick_read,
+     .write_with_attrs = v7m_systick_write,
+-    .endianness = DEVICE_NATIVE_ENDIAN,
++    .endianness = DEVICE_LITTLE_ENDIAN,
+ };
+ 
+ /*
+-- 
+2.45.2
 
-Phil.

@@ -1,234 +1,250 @@
-Received: by 2002:a17:505:42a7:b0:1be9:327d:8ee3 with SMTP id rt7csp2820484njb;
-        Tue, 24 Sep 2024 06:14:42 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCVjkaD7scK3j833dytC7GxpSQK15DmNRsZUz9sbObJy1Auu6uCPZLsyVHVAsZx+6tF93Zgyyu9Z51jUcQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IHk0AJD7b63HTzMu6rHFydHYIHw2KI83NWKr0qFIoix5DwqccRVMcm7Wyum0H43gWS+LQ/o
-X-Received: by 2002:ac2:4e07:0:b0:535:6cf6:92fc with SMTP id 2adb3069b0e04-536ac2d68e8mr7174641e87.8.1727183682297;
-        Tue, 24 Sep 2024 06:14:42 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1727183682; cv=pass;
+Received: by 2002:a17:505:42a7:b0:1be9:327d:8ee3 with SMTP id rt7csp3032039njb;
+        Tue, 24 Sep 2024 12:15:56 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCX5mIksBlvrFWTiCT3T0yGpjQXV+qhuhcrENSBAocnUHfpO/vm8kBGzrtAb/VHPK7BiaZdLjDu92tAElw==@linaro.org
+X-Google-Smtp-Source: AGHT+IFP78FSfSlInEjrhyUcjOBwWDm3kzdJ0oV8FWoXNHf45/SFQNfA4+RqcHTVwXeD3egf4qqf
+X-Received: by 2002:a05:6358:9394:b0:1b3:94cc:6526 with SMTP id e5c5f4694b2df-1bea856bc1emr59881455d.2.1727205356386;
+        Tue, 24 Sep 2024 12:15:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1727205356; cv=none;
         d=google.com; s=arc-20240605;
-        b=VrGbJ0TIQCBfu+0BNafqHZx86qze+9OPngCChxlLA6qmlsSbDpl/u4RNwF5oLjlQsW
-         datq9ZBmPHwqikDxJenfnUtDQE6D9fd1NWQ3SM+Mk3tlY2B4pjYeZxwvGsEZUj3m9/g4
-         ZHAzKm7GnkufgKqdrUHiW3I1vVvzcXN5f7b0QtTG95DrV9ccwIqw56ntcve+eRwa8tnw
-         oacpv7+lqOIRedpQXLfzUO2owq/lHmBiCjhXKL/E0t1JefOPYgTp1624g6ELwNrTdIDM
-         2IhDR6MxsQernLJFS00fMVm8oALQumHzi36JSglGMJzDVmm+23nOUxtuLPOA3GoaBgrQ
-         0Jhw==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=WnqnOjUIPUpooUWJE3Ky/GdGjOl8rnVXhYBy8Sl0MF8=;
-        fh=8FJvKPN9lS+Bn7GGCyjYqy/2QYKA5gUj9MilnCUTBG4=;
-        b=B0cOt5K0JlDUILWRviJPjOiO9Hoi4wzrkz4bMdrOPrM8d3GTaNAQLB3LHXAsD/DUjv
-         ZkU7mnUh8qROxm6nXU6HGEvBV0GJTR8T/dwu2bZ9HOLqG3cdwWQMC9Zc++v18yoEi3bs
-         Bbz2+Ek2km9wJzrgDIIGG9SPv5ba3ArG+sYNz9IULuBcrSiZwXDFBLCLaktySJRvUx4+
-         A1ZYBML7AyPvqnyheAMAhJ992If4WnHpjCB4GOKIk2TXyo+eCFASePGQd619mAyxUX0M
-         golZT9jEZYvp1V28zVGb755IpK50OW+1xF53CrxhwFLrWSK4EAIpyaPTJFp61JTYWWZI
-         n5TA==;
+        b=D29iRMZq8vjvOTD09ivGAS1DMCnYDer8c0tUswyma8KttXQMuPE1xLBH8qT3Qb6Eg+
+         SSAs/Z9C0dIreGSq9vNx6Hi1AxDysQWs51kfCCkUKxWx/Dwr5OwU1r3sCHn6BdEHu1MS
+         8jKb5AD4s8oS/J4dVZZylmvB4BX/hgQIB8YVkRRY7sQOCc3pohEnvcMKjfJzK7EN477x
+         avupDipcPHuOkOLde6v1VL1IGLXE1xcgM1+oBwWhcNUYlYlMVTbncxZD9VTc1yjmoth+
+         TnTMTb6HWThsrZp6zGjbqQNg1mzY05I1ez2Ikxjf54D/bbI0lgJDqqydZacfG6v5Elgl
+         kxOA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:cc:from:content-language:references:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=YUogfJuU1I9/+JaCfV8qUdt50vZ6ZfbB1fjC8hifGa4=;
+        fh=V1iA4gKf88m6YaXNlLsaxFSp1YGcCc5/zbtSuN7JMro=;
+        b=Gene1IGgRVDoQxObZ8fHBuKApnUWS0cT/G70SAwTnPc1nIcCth2jt5FJI8YDCoyZlK
+         dCWEQrCkZKftwwpLcoTeOuVPsq9qy+8Fl40r2UEsoE0wDF0XaQGAw04hy/uBlre1x9Qe
+         8iWzZZRU3gNoACXowWFOV8kY0ssTkTU+2df17ntU7bZWrHfOn/4Zz5C4e6PjolZIkA1A
+         ymvZjNvKLbw5Me1j4MsAYpDu4WEl/GGRDNTWJVnyLQP1+FatAFNAeZo3h4ZXvbNg2bAP
+         jeWNljvCAGLjWkv+ntYbTxzFowE1runuLfOFQxnqTh0+2AbkQDutfdbtN+5eB1Vj24j6
+         KmHQ==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cqHgtlbJ;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-27374-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="kvm+bounces-27374-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm+bounces-27374-alex.bennee=linaro.org@vger.kernel.org>
-Received: from am.mirrors.kernel.org (am.mirrors.kernel.org. [147.75.80.249])
-        by mx.google.com with ESMTPS id a640c23a62f3a-a9392f2bbddsi98970566b.76.2024.09.24.06.14.42
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=tgxoQ9uf;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d75a77b69052e-45b5267c608si20559431cf.232.2024.09.24.12.15.56
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 24 Sep 2024 06:14:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm+bounces-27374-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) client-ip=147.75.80.249;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 24 Sep 2024 12:15:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cqHgtlbJ;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-27374-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="kvm+bounces-27374-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by am.mirrors.kernel.org (Postfix) with ESMTPS id ABA121F21ABF
-	for <alex.bennee@linaro.org>; Tue, 24 Sep 2024 13:14:41 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id CDF1219B3F3;
-	Tue, 24 Sep 2024 13:14:36 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="cqHgtlbJ"
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1340A1A725D
-	for <kvm@vger.kernel.org>; Tue, 24 Sep 2024 13:14:34 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.129.124
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1727183676; cv=none; b=r71eK4qDRWkJqWDg7RW9wzuCcoLMEjasuz5wJSJA3531MFJf8sz4nyVR7aWLf9h/UKzA0PPz0mdDIBMvWhF/juNdlcqEsp8a5xCnThiOXkT4TIAZ8c37vlsQ/xSprdokCbo3cCUIOCgqpPAJn6fagTC7lCBSknZg/uZqMBfEg4k=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1727183676; c=relaxed/simple;
-	bh=oNCt++NdyweqJTH4BJjb6mwsYgnFbRrfE06b0vNa9hs=;
-	h=Date:From:To:Cc:Subject:Message-ID:In-Reply-To:References:
-	 MIME-Version:Content-Type; b=kfy79UPmM5o6iyscomgFzj4ycW8q3W8kmrba+YhmMp+civ8cmEZ/rnIsd2CPaad0Rng0+8UentePzq6hIDZYIlYbiB8aIuRFDq5P/r88GvnBm9MsWE3IRlR3SwtpBOlYfX176eARpVVdXV4kqbZDWfEivXNEGdxqeYCqHUVmcQA=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=cqHgtlbJ; arc=none smtp.client-ip=170.10.129.124
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1727183673;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=WnqnOjUIPUpooUWJE3Ky/GdGjOl8rnVXhYBy8Sl0MF8=;
-	b=cqHgtlbJQefK+loSz/6OZAe02FU8xaN70LMlOQumuU3xluW6Mb9qrdstKv6PhhGx7ngTfy
-	9oH/9qK1hPiT7js6YiduGu8JxeUToWccOHgAQkijXnt5Ii0ds9Jl347BddAcoEWf98lzjS
-	PIzXNagkUA20Ais4n6Zok7nfWHg6qU8=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-551-jAUCEKKRNaaISZc8IRCb0w-1; Tue, 24 Sep 2024 09:14:32 -0400
-X-MC-Unique: jAUCEKKRNaaISZc8IRCb0w-1
-Received: by mail-wm1-f72.google.com with SMTP id 5b1f17b1804b1-42e611963c2so36466555e9.1
-        for <kvm@vger.kernel.org>; Tue, 24 Sep 2024 06:14:32 -0700 (PDT)
+       dkim=pass header.i=@linaro.org header.s=google header.b=tgxoQ9uf;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1stB0c-0008Cz-FQ; Tue, 24 Sep 2024 15:15:39 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1stB0P-0007dX-UK
+ for qemu-arm@nongnu.org; Tue, 24 Sep 2024 15:15:28 -0400
+Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1stB0L-0004vI-M9
+ for qemu-arm@nongnu.org; Tue, 24 Sep 2024 15:15:24 -0400
+Received: by mail-wr1-x435.google.com with SMTP id
+ ffacd0b85a97d-3787ddbd5a2so3414577f8f.0
+ for <qemu-arm@nongnu.org>; Tue, 24 Sep 2024 12:15:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1727205319; x=1727810119; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:cc:from:content-language
+ :references:to:subject:user-agent:mime-version:date:message-id:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=YUogfJuU1I9/+JaCfV8qUdt50vZ6ZfbB1fjC8hifGa4=;
+ b=tgxoQ9ufMG/JH2apYINehuABabgjCX49wUD+J+UkPojcxv8IabNnGiKbYNe3Xn/Zps
+ wS+QH8G91Xuo/n7xGPaJamka/A5oSgSC4m8LVAVKP/89IpBb1bTfc5pcpd/MKDw8Q7V9
+ ilW6iXoPUydXwGFLYs+Mqn2PIK53Fyee4lZ1BQV3SSIjwXeQyF9buk8S4Y5PL8eEOS89
+ pNzucOoDWCo9oOBQUO7VgBSQUKLowFrzb93qXz8cS+Ar97G96/1gvPtslMotE6zXTSpn
+ YFe11roO81Wj2R8bJIGasQ2+oiIWqxq1/eCgO9l6mUiHj3OzIFVWPeIKhpVNG7E+K+MY
+ T3iw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1727183671; x=1727788471;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=WnqnOjUIPUpooUWJE3Ky/GdGjOl8rnVXhYBy8Sl0MF8=;
-        b=b2lS8LLwikw46RR4zJTjktANf7WwgxKrMcQWgWLgxvZczukbRIFt+bLCU4Gvc7YLK7
-         VXPTR3nyJWnqKk1lCqWXWl/3oHtHrfYuF/zppUNMosfpkom3fufl2RZfDe9ruNh3uYrb
-         jiJg5HWKtRsyUaBsDOn4TC+JRxHNpyAib/eTcJjbCoz+8PK8cGNEvAkqMJ08iSmg7391
-         I26ZH3zwTrRnp19InBbDsQhUqkIBS+SBi6T+z/WcAeyszihATHn/Wz7PKBDZL/tcoBNI
-         oJXpbVKCHCxCOwc+OPM6JaxPd3Fkri9WFDdS7zwjTgy6cU4wKy0PoC1yQAWUEEAUEpAv
-         viLQ==
-X-Forwarded-Encrypted: i=1; AJvYcCU3Q2ig/6Q6saQCTVa/ISvjn8jkteJ0reaKXMrA93A98Xx+608xe1sKdiPD5lpz2BKTuLc=@vger.kernel.org
-X-Gm-Message-State: AOJu0Yx4nBDRdn46LiLaBMizt9cpiJ01EtgL6lam0REvGcClz4PrlVUu
-	kDgI7pAtOhECc9zncgBg8bCr26P/Vyy/R79uyWqfyRgnXVPnvvwWYru4FU0zfPiEhWeSOKtFfMm
-	xFJzKFC7sBWzd7iN6V+30SH9mvRlLqWbYc0b465dP8btYfe3pyw==
-X-Received: by 2002:a05:600c:3d93:b0:42c:b4f1:f281 with SMTP id 5b1f17b1804b1-42e7add23b6mr116891225e9.34.1727183671467;
-        Tue, 24 Sep 2024 06:14:31 -0700 (PDT)
-X-Received: by 2002:a05:600c:3d93:b0:42c:b4f1:f281 with SMTP id 5b1f17b1804b1-42e7add23b6mr116890835e9.34.1727183670954;
-        Tue, 24 Sep 2024 06:14:30 -0700 (PDT)
-Received: from imammedo.users.ipa.redhat.com (nat-pool-brq-t.redhat.com. [213.175.37.10])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-42e902b65d5sm22006755e9.38.2024.09.24.06.14.29
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 24 Sep 2024 06:14:30 -0700 (PDT)
-Date: Tue, 24 Sep 2024 15:14:29 +0200
-From: Igor Mammedov <imammedo@redhat.com>
-To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>, Shiju Jose
- <shiju.jose@huawei.com>, "Michael S. Tsirkin" <mst@redhat.com>, Ani Sinha
- <anisinha@redhat.com>, Cleber Rosa <crosa@redhat.com>, Dongjiu Geng
- <gengdongjiu1@gmail.com>, Eric Blake <eblake@redhat.com>, John Snow
- <jsnow@redhat.com>, Markus Armbruster <armbru@redhat.com>, Michael Roth
- <michael.roth@amd.com>, Paolo Bonzini <pbonzini@redhat.com>, Peter Maydell
- <peter.maydell@linaro.org>, Shannon Zhao <shannon.zhaosl@gmail.com>,
- kvm@vger.kernel.org, linux-kernel@vger.kernel.org, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Subject: Re: [PATCH v10 00/21] Add ACPI CPER firmware first error injection
- on ARM emulation
-Message-ID: <20240924151429.3e758b38@imammedo.users.ipa.redhat.com>
-In-Reply-To: <20240924150058.4879abe9@foz.lan>
-References: <cover.1726293808.git.mchehab+huawei@kernel.org>
-	<20240917141519.57766bb6@imammedo.users.ipa.redhat.com>
-	<20240924150058.4879abe9@foz.lan>
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
-Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
+ d=1e100.net; s=20230601; t=1727205319; x=1727810119;
+ h=content-transfer-encoding:in-reply-to:cc:from:content-language
+ :references:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=YUogfJuU1I9/+JaCfV8qUdt50vZ6ZfbB1fjC8hifGa4=;
+ b=RJcTzKVcnZ3FBqMwsuApAPoC4BE5mizQ4mvoiCSO/xp00M1fZ3A1H1ucCHspatTGPW
+ 7x+6WIZDR50IC/jf3fh3vGPBnevWSEaLhjUky/CVe73vAAckDSdCUrDqYXusJsl0w3Tc
+ nZWtKOlEoDnz9Qd5m6ov6GNzAQlML/thxie8GPxxw2+QQfKhLbayCOERu8mBO9Qw7umX
+ 9cvdlJSoGexP2encU9D8BKXfJxicCgEXhImlTA//iQ/Of0TQbcfISSXs6odpCFpu7RIK
+ sXKHcNeg0mrRD4108QRC0hdVwzvepLPMxB8cC8ielIqTNaWsI97TwUvq6msvkUBgmpSi
+ aZ8A==
+X-Gm-Message-State: AOJu0YxzO9tSK2i7Pl7MpLbRwSxLGk0N+5ymAxxZ+gTzp+4048gNs0bh
+ 3K5oGfTrJdR7LrT71+kUkveGoHko8u7NUxD7TpKe1/ttQC44K5r2zcukvYvAxk8=
+X-Received: by 2002:adf:ab16:0:b0:374:bfc4:b62f with SMTP id
+ ffacd0b85a97d-37cc2465055mr206389f8f.3.1727205319156; 
+ Tue, 24 Sep 2024 12:15:19 -0700 (PDT)
+Received: from [192.168.240.175] (14.red-88-29-183.dynamicip.rima-tde.net.
+ [88.29.183.14]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-37cbc2c2246sm2263656f8f.38.2024.09.24.12.15.16
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 24 Sep 2024 12:15:18 -0700 (PDT)
+Message-ID: <7c750b58-e845-4d80-b5a5-7eda8f505fb6@linaro.org>
+Date: Tue, 24 Sep 2024 21:14:55 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 09/12] target/arm: Implement the SETG* instructions
+To: Peter Maydell <peter.maydell@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Gustavo Romero <gustavo.romero@linaro.org>
+References: <20230912140434.1333369-1-peter.maydell@linaro.org>
+ <20230912140434.1333369-10-peter.maydell@linaro.org>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, Anton Johansson <anjo@rev.ng>
+In-Reply-To: <20230912140434.1333369-10-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-TUID: yoLASDmORkKq
+Received-SPF: pass client-ip=2a00:1450:4864:20::435;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x435.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: wlaNTCDSXBfV
 
-On Tue, 24 Sep 2024 15:00:58 +0200
-Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
+Hi Peter,
 
-> Em Tue, 17 Sep 2024 14:15:19 +0200
-> Igor Mammedov <imammedo@redhat.com> escreveu:
-> 
-> > I'm done with this round of review.
-> > 
-> > Given that the series accumulated a bunch of cleanups,
-> > I'd suggest to move all cleanups/renamings not related
-> > to new HEST lookup and new src id mapping to the beginning
-> > of the series, so once they reviewed they could be split up into
-> > a separate series that could be merged while we are ironing down
-> > the new functionality.   
-> 
-> I've rebased the series placing the preparation stuff (cleanups
-> and renames) at the beginning. So, what I have now is:
-> 
-> 1) preparation patches:
-> 
-> 41709f0898e1 acpi/ghes: get rid of ACPI_HEST_SRC_ID_RESERVED
-> 5409daa41c78 acpi/ghes: simplify acpi_ghes_record_errors() code
-> 2539f1f662b9 acpi/ghes: better handle source_id and notification
-> 3f19400549c1 acpi/ghes: Remove a duplicated out of bounds check
-> f0b06ecede46 acpi/ghes: Change the type for source_id
-> 9f08301ac195 acpi/ghes: Prepare to support multiple sources on ghes
-> 2426cd76e868 acpi/ghes: make the GHES record generation more generic
-> 3fb7ec864700 acpi/ghes: better name GHES memory error function
-> 1a22dad3211e acpi/ghes: don't crash QEMU if ghes GED is not found
-> 726968d4ee20 acpi/ghes: rename etc/hardware_error file macros
-> f562380da7ce docs: acpi_hest_ghes: fix documentation for CPER size
+(patch merged as commit 6087df574400659226861fa5ba47970f1fbd277b).
 
-> 69850f550f99 acpi/generic_event_device: add an APEI error device
-this one doesn't belong to clean ups, I think.
-Lets move this to #3 part
+On 12/9/23 16:04, Peter Maydell wrote:
+> The FEAT_MOPS SETG* instructions are very similar to the SET*
+> instructions, but as well as setting memory contents they also
+> set the MTE tags. They are architecturally required to operate
+> on tag-granule aligned regions only.
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+> v2: - separate helper functions calling do_setp/setm/sete
+>      - use cpu_st16_mmu()
 
-> 
-> Patches were changed to ensure that they won't be add any new
-> new features. They are just code shift in order to make the diff
-> of the next patches smaller.
-> 
-> There is a small point here: the logic was simplified to only
-> support a single source ID (I added an assert() to enforce it) and
-> simplified the calculus in preparation for the HEST and migration
-> series.
-> 
-> 
-> 2) add a BIOS pointer to HEST, using it. The migration stuff
-> will be along those:
-> 
-> c24f1a8708e3 acpi/ghes: add a firmware file with HEST address
-> 853dce23ec39 acpi/ghes: Use HEST table offsets when preparing GHES records
-> c148716fd7c8 acpi/generic_event_device: Update GHES migration to cover hest addr
-> 
-> Up to that, still no new features, but the offset calculus will be
-> relative to HEST table and will use the bios pointers stored there;
-> 
-> 3) Add support for generic error inject:
-> 
-> f5ec0d197d82 acpi/ghes: add a notifier to notify when error data is ready
-> f5e015537209 arm/virt: Wire up a GED error device for ACPI / GHES
-> 3b6692dbf473 qapi/acpi-hest: add an interface to do generic CPER error injection
-> 620a5a49f218 scripts/ghes_inject: add a script to generate GHES error inject
-> 
-> 4) MPIDR property:
-> 2dd6e3aae450 target/arm: add an experimental mpidr arm cpu property object
-> 02c88cd4daa2 scripts/arm_processor_error.py: retrieve mpidr if not filled
-> 
-> I'm still testing if the rebase didn't cause any issues. So, the above
-> may still change a little bit. I also need to address your comments to the
-> cleanup patches and work at the migration, but just want to double check if
-> this is what you want.
-> 
-> If OK to you, my plan is to submit you the cleanup patches after I
-> finish testing the hole series.
-> 
-> The migration logic will require some time, and I don't want to bother
-> with the cleanup stuff while doing it. So, perhaps while I'm doing it,
-> you could review/merge the cleanups.
-> 
-> We can do the same for each of the 4 above series of patches, as it
-> makes review simpler as there will be less patches to look into on
-> each series.
-> 
-> Would it work for you?
+So you replaced the pair of cpu_stq_mmuidx_ra() from v1 by
+cpu_st16_mmu().
 
-other than nit above, LGTM
+> ---
+>   target/arm/internals.h         | 10 ++++
+>   target/arm/tcg/helper-a64.h    |  3 ++
+>   target/arm/tcg/a64.decode      |  5 ++
+>   target/arm/tcg/helper-a64.c    | 86 ++++++++++++++++++++++++++++++++--
+>   target/arm/tcg/mte_helper.c    | 40 ++++++++++++++++
+>   target/arm/tcg/translate-a64.c | 20 +++++---
+>   6 files changed, 155 insertions(+), 9 deletions(-)
 
-> 
-> Thanks,
-> Mauro
-> 
 
+> +/*
+> + * Similar, but setting tags. The architecture requires us to do this
+> + * in 16-byte chunks. SETP accesses are not tag checked; they set
+> + * the tags.
+> + */
+> +static uint64_t set_step_tags(CPUARMState *env, uint64_t toaddr,
+> +                              uint64_t setsize, uint32_t data, int memidx,
+> +                              uint32_t *mtedesc, uintptr_t ra)
+> +{
+> +    void *mem;
+> +    uint64_t cleanaddr;
+> +
+> +    setsize = MIN(setsize, page_limit(toaddr));
+> +
+> +    cleanaddr = useronly_clean_ptr(toaddr);
+> +    /*
+> +     * Trapless lookup: returns NULL for invalid page, I/O,
+> +     * watchpoints, clean pages, etc.
+> +     */
+> +    mem = tlb_vaddr_to_host(env, cleanaddr, MMU_DATA_STORE, memidx);
+> +
+> +#ifndef CONFIG_USER_ONLY
+> +    if (unlikely(!mem)) {
+> +        /*
+> +         * Slow-path: just do one write. This will handle the
+> +         * watchpoint, invalid page, etc handling correctly.
+> +         * The architecture requires that we do 16 bytes at a time,
+> +         * and we know both ptr and size are 16 byte aligned.
+> +         * For clean code pages, the next iteration will see
+> +         * the page dirty and will use the fast path.
+> +         */
+> +        uint64_t repldata = data * 0x0101010101010101ULL;
+> +        MemOpIdx oi16 = make_memop_idx(MO_TE | MO_128, memidx);
+
+I'm trying to understand the MO_TE use, but I'm not seeing it in
+https://developer.arm.com/documentation/ddi0602/2024-06/Base-Instructions/SETGP--SETGM--SETGE--Memory-set-with-tag-setting-
+pseudo code. I also checked
+https://developer.arm.com/documentation/ddi0602/2024-06/Shared-Pseudocode/aarch64-functions-mops?lang=en#impl-aarch64.MemSetBytes.4
+and 
+https://developer.arm.com/documentation/ddi0602/2024-06/Shared-Pseudocode/aarch64-functions-memory?lang=en#AArch64.MemSingleWrite.5
+
+Is the following part in MemSingleWrite()?
+
+     if !atomic && aligned && accdesc.ispair then
+
+         bits(halfsize*8) lowhalf, highhalf;
+         <highhalf, lowhalf> = value;
+
+         memstatus = PhysMemWrite(memaddrdesc, halfsize, accdesc, lowhalf);
+
+         memaddrdesc.paddress.address = memaddrdesc.paddress.address + 
+halfsize;
+         memstatus = PhysMemWrite(memaddrdesc, halfsize, accdesc, highhalf);
+
+> +        cpu_st16_mmu(env, toaddr, int128_make128(repldata, repldata), oi16, ra);
+> +        mte_mops_set_tags(env, toaddr, 16, *mtedesc);
+> +        return 16;
+> +    }
+> +#endif
+> +    /* Easy case: just memset the host memory */
+> +    memset(mem, data, setsize);
+> +    mte_mops_set_tags(env, toaddr, setsize, *mtedesc);
+> +    return setsize;
+> +}
+
+If we need to endian swap, could we use the cached hflags instead of MO_TE?
+
+The BE_DATA bit is iset in rebuild_hflags_a64() when
+arm_cpu_data_is_big_endian_a64() is true. The following diff snippet
+works for me but I'm out of my comfort zone here :)
+
+-- >8 --
+          uint64_t repldata = data * 0x0101010101010101ULL;
+-        MemOpIdx oi16 = make_memop_idx(MO_TE | MO_128, memidx);
++        MemOp be_data = EX_TBFLAG_ANY(env->hflags, BE_DATA) ? MO_BE : 
+MO_LE;
++        MemOpIdx oi16 = make_memop_idx(be_data | MO_128, memidx);
+          cpu_st16_mmu(env, toaddr, int128_make128(repldata, repldata), 
+oi16, ra);
+          mte_mops_set_tags(env, toaddr, 16, *mtedesc);
+          return 16;
+---
+
+Thanks,
+
+Phil.

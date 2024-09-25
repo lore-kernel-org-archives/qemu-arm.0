@@ -1,40 +1,40 @@
-Received: by 2002:a17:505:5b18:b0:1be9:327d:8ee3 with SMTP id ox24csp357090njb;
-        Wed, 25 Sep 2024 07:17:21 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUIbvmEzVoAbfOFQ9nKcy/679DEzTUjzopgciEziyuRE33PJUtFzyyQ1NOHM0DUAfdT4aYfmjIrrAuvTw==@linaro.org
-X-Google-Smtp-Source: AGHT+IHPJYzzlB8ph5LU3tgvt6Xl1kuLsPG9UXng/oC+w4k6f/ZpJ3VlZrzUChBHBGl/P8ESiHw+
-X-Received: by 2002:a05:6870:d2a0:b0:25e:bd9d:b1cb with SMTP id 586e51a60fabf-286e179fb9dmr2335157fac.40.1727273841073;
-        Wed, 25 Sep 2024 07:17:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1727273841; cv=none;
+Received: by 2002:a17:505:5b18:b0:1be9:327d:8ee3 with SMTP id ox24csp361707njb;
+        Wed, 25 Sep 2024 07:24:07 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVvlufsE1LPrE55zBI1vQx/yp3w/1N5LTJnmAGdDAwxFW+NA0dMY32VPkdyGCuPzc+xO0vzvc4XA5N61g==@linaro.org
+X-Google-Smtp-Source: AGHT+IFAR5aanpRL7IErYPHRohYVaoa5m+sY3m2Yxei2aZri82H7t4FJ0RDVMHQkuibakB+w0Qbi
+X-Received: by 2002:a05:6214:5b8a:b0:6c5:ae6a:101a with SMTP id 6a1803df08f44-6cb1dd176c8mr58358956d6.7.1727274247135;
+        Wed, 25 Sep 2024 07:24:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1727274247; cv=none;
         d=google.com; s=arc-20240605;
-        b=hKH/xEm+bp2MQbttedbi4rqpeqW/CBWmsK9aMDtVqTQn9kzd0Cn+Dj3kJQrOgbWAYq
-         yLDy4YEF6CpJT2tn5XbeZ2zRAH+e8PVoDMY/MSYimbMeMuAHfy8Wq+LpUdixRpAjewQR
-         B1oleWPABFvy5jf31ExhLQDg+S27Gcl3B5E6VRV5neMZdsVizaUGlg00ykrJUp5Y6SbW
-         IW/XC/hQORjRvqRP0554nE51sdJl8IcXisV5qCf4Ccby8YMMfvG7SvtE55gZ2LlYV762
-         aETtZE3RKs7ZP3q/rhvJqI8vOXl1yszjXEID8rL1xjmx2hAqmttYwvnDGTS+jJJRnXU1
-         rdDA==
+        b=GM7G1VRxpxHSEqU/1r+7N29ZUV0sseJ0ssE9daBwg8Z5BbEaOwSNeVKxehW2fQzqp5
+         t9Kj/siMegILrpRrfu2CKa6x3rIXTnfgQOXd4Y/KJTfo7mHm9lswGlER88feOfDGx44D
+         v8wYpw6eMJE18PXr0kNcpkYtZZqqad06BBt4yuQlzf7CplVf3E5dXt2FMXn47HrxLXqk
+         3RLYqbY8HeEFz0iJvhMdzQXjZEprtXZRHG1V6xuwD/l9knb59cU+36uw53Xr9ghIwU+U
+         LhtSCo+JT9NSYmdysr9rIn2jVAPOPPSbY0Z9YWyBXaP5XF0gIBNbavkVqxSCTmfqf9LI
+         KL6Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:mime-version:organization:references
          :in-reply-to:message-id:subject:cc:to:date;
-        bh=aXprJFdLl0LO6KFsIsNvUyJc/VpmLUM7WDfvQ/OsnKA=;
-        fh=sk20niJjP+LyGcAC6rY5I61AlgNCIPpR6UIhxIWLYTI=;
-        b=W8+sPKCsyziBQxA72pMmaPhwzjDgq/TtAMXsJFQRyHTlkVGkVq+OCo8Pf6E5QyWpbN
-         RsK5wWDbXzMjaCM1m26rV4VI+XsU/MHiUgHc+h8FrfYSuLYnCxUoMmVecKvMEjQ3qOVV
-         g7sm6HC6y45m4En6BX5O/uMqdE5BG1jVsqgeZopk3XoB/Tp+Xy1yutZOmIg0K/hKW6IO
-         17oWXWulx7/ulXVRCDYAAtMbQqjaILcn80KFWVRlHmL0q3dZp+Z9tIPXb1zEv0gVIVcZ
-         KlqWMM/JG/NNKlXaipZ4vQAJ6LJU6D0uh42ralPhbERAP4V3L+p+zTGHVj3pNFi8MVX0
-         U0OA==;
+        bh=o6eWiuRZa+4fuX+YquI8sJ3DkuDb+sm50mok8Kuh9bo=;
+        fh=xorUoMC2IHZi14qbosopEp/1wCIif4VMRZ2S+Ueublk=;
+        b=jJ0+9GeScQon13l8PS4rZBRJYc4JrXiVsO0CLI/gG5ygKhXHje2lRHrZOrK0ewmV4O
+         WCOS23A6E2LKFr7z7EZdxqqHKTyq13sqtFYC0Jc1+VVOKaIyk17BnEpPHSEu39WaJnoi
+         OGaHvMo9KQ8FZcHkfI6NH2nCbxGJpMmL9tKHAGnaqahQDKgnufrcmCpnBTVqRRo6uOGr
+         F5w9osI4D8KSqet0g5AooIJqEba/eYinQ7sajtbEa42niokDrTnhs7M3DtmDhFBQTjb1
+         TqfVJ3Df02q45rOouuMhpDZV4n6t18DYoVDU8mt4udN0BUPzR+8kWps/YIA3c+z0+ZsJ
+         6uaw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ada2fe7eead31-4a1518b5777si1139570137.636.2024.09.25.07.17.20
+        by mx.google.com with ESMTPS id 6a1803df08f44-6cb0f4c1f2fsi40624126d6.106.2024.09.25.07.24.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 25 Sep 2024 07:17:21 -0700 (PDT)
+        Wed, 25 Sep 2024 07:24:07 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
@@ -42,36 +42,39 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1stSpM-0004CM-Qe; Wed, 25 Sep 2024 10:17:13 -0400
+	id 1stSvf-0006IH-9N; Wed, 25 Sep 2024 10:23:43 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1stSpF-0003hJ-2u; Wed, 25 Sep 2024 10:17:05 -0400
+ id 1stSvc-0006AG-B1; Wed, 25 Sep 2024 10:23:41 -0400
 Received: from frasgout.his.huawei.com ([185.176.79.56])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1stSpD-0001vL-GJ; Wed, 25 Sep 2024 10:17:04 -0400
-Received: from mail.maildlp.com (unknown [172.18.186.31])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4XDJgZ60l9z6G9MC;
- Wed, 25 Sep 2024 22:16:26 +0800 (CST)
+ id 1stSva-0002aQ-Ai; Wed, 25 Sep 2024 10:23:40 -0400
+Received: from mail.maildlp.com (unknown [172.18.186.231])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4XDJqC0lDhz6G9Pm;
+ Wed, 25 Sep 2024 22:23:03 +0800 (CST)
 Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
- by mail.maildlp.com (Postfix) with ESMTPS id D67EC140498;
- Wed, 25 Sep 2024 22:16:58 +0800 (CST)
+ by mail.maildlp.com (Postfix) with ESMTPS id 1B45E140736;
+ Wed, 25 Sep 2024 22:23:35 +0800 (CST)
 Received: from localhost (10.203.177.66) by frapeml500008.china.huawei.com
  (7.182.85.71) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Wed, 25 Sep
- 2024 16:16:58 +0200
-Date: Wed, 25 Sep 2024 15:16:57 +0100
+ 2024 16:23:34 +0200
+Date: Wed, 25 Sep 2024 15:23:33 +0100
 To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 CC: Igor Mammedov <imammedo@redhat.com>, Shiju Jose <shiju.jose@huawei.com>,
  "Michael S. Tsirkin" <mst@redhat.com>, Ani Sinha <anisinha@redhat.com>,
- Dongjiu Geng <gengdongjiu1@gmail.com>, <linux-kernel@vger.kernel.org>,
- <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
-Subject: Re: [PATCH 07/15] acpi/ghes: Change the type for source_id
-Message-ID: <20240925151657.00002163@Huawei.com>
-In-Reply-To: <427117fa409217094f5e98694913a371fb5bcda5.1727236561.git.mchehab+huawei@kernel.org>
+ Dongjiu Geng <gengdongjiu1@gmail.com>, Peter Maydell
+ <peter.maydell@linaro.org>, Shannon Zhao <shannon.zhaosl@gmail.com>,
+ <linux-kernel@vger.kernel.org>, <qemu-arm@nongnu.org>,
+ <qemu-devel@nongnu.org>
+Subject: Re: [PATCH 08/15] acpi/ghes: Prepare to support multiple sources on
+ ghes
+Message-ID: <20240925152333.0000110d@Huawei.com>
+In-Reply-To: <05fb5c6a7d26eeb730bf5fe1f67bb6581ec6d730.1727236561.git.mchehab+huawei@kernel.org>
 References: <cover.1727236561.git.mchehab+huawei@kernel.org>
- <427117fa409217094f5e98694913a371fb5bcda5.1727236561.git.mchehab+huawei@kernel.org>
+ <05fb5c6a7d26eeb730bf5fe1f67bb6581ec6d730.1727236561.git.mchehab+huawei@kernel.org>
 Organization: Huawei Technologies Research and Development (UK) Ltd.
 X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
 MIME-Version: 1.0
@@ -104,60 +107,54 @@ Reply-to:  Jonathan Cameron <Jonathan.Cameron@Huawei.com>
 From:  Jonathan Cameron via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: y3cvVJgW+WoG
+X-TUID: vpPyj2gw0tQi
 
-On Wed, 25 Sep 2024 06:04:12 +0200
+On Wed, 25 Sep 2024 06:04:13 +0200
 Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
 
-> HEST source ID is actually a 16-bit value
-Indeed.
-Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+> The current code is actually dependent on having just one
+> error structure with a single source.
+> 
+> As the number of sources should be arch-dependent, as it
+> will depend on what kind of synchronous/assynchronous
+> notifications will exist, change the logic to dynamically
+> build the table.
+Not really arch dependent.  Depends on both arch and some
+firmware implementation choices, but I guess that detail
+doesn't matter here.
 
 > 
-> Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-> ---
->  hw/acpi/ghes-stub.c    | 2 +-
->  hw/acpi/ghes.c         | 2 +-
->  include/hw/acpi/ghes.h | 2 +-
->  3 files changed, 3 insertions(+), 3 deletions(-)
+> Yet, for a proper support, we need to get the number of
+> sources by reading the number from the HEST table. However,
+> bios currently doesn't store a pointer to it.
 > 
-> diff --git a/hw/acpi/ghes-stub.c b/hw/acpi/ghes-stub.c
-> index c315de1802d6..2b64cbd2819a 100644
-> --- a/hw/acpi/ghes-stub.c
-> +++ b/hw/acpi/ghes-stub.c
-> @@ -11,7 +11,7 @@
->  #include "qemu/osdep.h"
->  #include "hw/acpi/ghes.h"
+> For now just change the logic at table build time, while
+> enforcing that it will behave like before with a single
+> source ID.
+> 
+> A future patch will add a HEST table bios pointer and
+> change the logic at acpi_ghes_record_errors() to
+> dynamically use the new size.
+> 
+> Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+Trivial comment inline
+Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+
+> @@ -335,9 +346,10 @@ static void build_ghes_v2(GArray *table_data,
+>      build_append_gas(table_data, AML_AS_SYSTEM_MEMORY, 0x40, 0,
+>                       4 /* QWord access */, 0);
+>      bios_linker_loader_add_pointer(linker, ACPI_BUILD_TABLE_FILE,
+> -        address_offset + GAS_ADDR_OFFSET,
+> -        sizeof(uint64_t), ACPI_GHES_ERRORS_FW_CFG_FILE,
+> -        (ACPI_GHES_ERROR_SOURCE_COUNT + source_id) * sizeof(uint64_t));
+> +                                   address_offset + GAS_ADDR_OFFSET,
+
+I'd prefer if we avoided realigning unless absolutely necessary or
+that it is split into a separate patch.
+Makes things a tiny bit harder to review.
+
+> +                                   sizeof(uint64_t),
+> +                                   ACPI_GHES_ERRORS_FW_CFG_FILE,
+> +                                   (num_sources + index) * sizeof(uint64_t));
 >  
-> -int acpi_ghes_record_errors(uint8_t source_id, uint64_t physical_address)
-> +int acpi_ghes_record_errors(uint16_t source_id, uint64_t physical_address)
->  {
->      return -1;
->  }
-> diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
-> index b932b6fe2c2e..29240aa139d5 100644
-> --- a/hw/acpi/ghes.c
-> +++ b/hw/acpi/ghes.c
-> @@ -383,7 +383,7 @@ void acpi_ghes_add_fw_cfg(AcpiGhesState *ags, FWCfgState *s,
->      ags->present = true;
->  }
->  
-> -int acpi_ghes_record_errors(uint8_t source_id, uint64_t physical_address)
-> +int acpi_ghes_record_errors(uint16_t source_id, uint64_t physical_address)
->  {
->      uint64_t error_block_addr, read_ack_register_addr, read_ack_register = 0;
->      uint64_t start_addr;
-> diff --git a/include/hw/acpi/ghes.h b/include/hw/acpi/ghes.h
-> index 50e3a25ea384..9295e46be25e 100644
-> --- a/include/hw/acpi/ghes.h
-> +++ b/include/hw/acpi/ghes.h
-> @@ -73,7 +73,7 @@ void acpi_build_hest(GArray *table_data, GArray *hardware_errors,
->                       const char *oem_id, const char *oem_table_id);
->  void acpi_ghes_add_fw_cfg(AcpiGhesState *vms, FWCfgState *s,
->                            GArray *hardware_errors);
-> -int acpi_ghes_record_errors(uint8_t source_id, uint64_t error_physical_addr);
-> +int acpi_ghes_record_errors(uint16_t source_id, uint64_t error_physical_addr);
->  
->  /**
->   * acpi_ghes_present: Report whether ACPI GHES table is present
 

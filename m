@@ -1,173 +1,118 @@
-Received: by 2002:a17:505:5b18:b0:1be9:327d:8ee3 with SMTP id ox24csp99716njb;
-        Tue, 24 Sep 2024 21:26:13 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCVS0Ati99oDVuRQ68dHb6/rj7jTKkVruK+DPRnApW6S/BB6ha84bTmNNejbkiDsuNH6P+ip7T+PHlekvA==@linaro.org
-X-Google-Smtp-Source: AGHT+IHiV/M3/HSy7RaZOGoB/bKxfOuhc1Yws7LZIKe6UX5UNJWfcX+Zb5Mw2br1RcNT3sef8lft
-X-Received: by 2002:a05:6a20:6f8c:b0:1d3:b48:ee29 with SMTP id adf61e73a8af0-1d4d4aadee5mr2285043637.12.1727238373177;
-        Tue, 24 Sep 2024 21:26:13 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1727238373; cv=pass;
+Received: by 2002:a17:505:5b18:b0:1be9:327d:8ee3 with SMTP id ox24csp346250njb;
+        Wed, 25 Sep 2024 07:03:23 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWymiu9Za9g3/KRN1VX1L0T6/BSLO0baDsWxBgnzUKQwwBZI2dDWtONsfwdBXJtHdT3Ke/qgud3YwM6Gg==@linaro.org
+X-Google-Smtp-Source: AGHT+IEUkUgZDwsXvbT5d27o0nhoq9i8JegAkqFkSakjyqYydthAu/eFuetsWIirghWfRjln105f
+X-Received: by 2002:a05:6214:4306:b0:6c7:c74f:7173 with SMTP id 6a1803df08f44-6cb1ddef29cmr40245556d6.39.1727273003491;
+        Wed, 25 Sep 2024 07:03:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1727273003; cv=none;
         d=google.com; s=arc-20240605;
-        b=ThGxZC11Dmo2s/OIMmux5ahYO6UISUrTkYO0doEo+j0gfBpkShc5ny+9Vb5fqSJtK9
-         zG9QI3mQZkv+6TuCDGK74P4CkpSZev8chQOyIbMOfjxAo2Lgo8SEMXWENHzflr4uVSf2
-         7wzVAhx+U4VqFwwTbRPlZ4tZoRs3TPldRUzQn1zLjO2ulvmCSpVj9qiGzMXmX6/2uI5d
-         yLqoG45fWX4UXAk8YiyyLIgFn61ELuKHND9gGsPPyfU7GtkkfCgZ9CiaG8rC+n+jMOS7
-         qrVg0suD8xnmUdds3gCis7D8dWCOlVi7uWxmt98JfoKurdBqjKSVMe+8fIvv1JdWHo5/
-         X+1Q==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=rU6IesOVAtG/aH5kyEH4GX85NMvzIlVOfRyjtNdJ1Rg=;
-        fh=AOCC5tpeye5ckJ/ySRwTpsf+mLJ6bqpyTzU5DWRpiMQ=;
-        b=IRGPxzHK7u9XgiTC6A8N2P66PXJd/jsABXBKJKbecw0TChUMHiszbWzKWeR0hdHqjO
-         4/Ktkqk4ffZfxtS2Nz+4V5aE4E80tkyhc8QeYhG3JOkUKh86dEQbURZ5XxhX1IncoD7I
-         rXCvSkIo5khGSPYEaNJdwccTozAoJaQHdf+okp+Xua+W2LQKVoJdI/uwmkrxRdjZtkY+
-         WqEQWkO4WA+CvycFM6pUo1RXjbUPLcbMNSoA16zPfkC9nIa8fr+zlplPzB9TEnXxm1vV
-         xUzlAhVwGDEfEKGm4Fl6i6BF6KOVJbJmHY/+9n9Uvz4Q6k0WsbOZ+X9K8Dk93zTV2Y/P
-         ChnA==;
+        b=Nw0OY9PF0bWPnOeCRVEg3wdZH7TwnW458daxz54WT+AnZk/jLL4M9dZDYYv1ukRX0z
+         ScLr0k1TTVxTTWPiJL3N3hhGTiMHACuTCJV0A+woOCliKzFOAh6hyq6w1iaHFMfAA+tv
+         /TWtjd6rXUGBcp3J2Mi8yAZBqd9szE6LE5G9fqpVznN7h32AUwKDirPY6Ua5fetVic+P
+         Rf/x6aig7Y7LpAJik9FUX6+M5j4F+DXtFnWdui/PBXm+Pb2ZEztpQMTqd4Qp52qmHWPx
+         wqg+a9qucvIFFlir4YaK6FvGw7M/5nf/by0oqBYlo1Tu+EMXV4Joh/oTEhLHZ9ynAfoM
+         c/sg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:subject:cc:to:date;
+        bh=V9mUbuHjx61iSbntfPqe/26Hwf4coG/abx9TjDpGPLk=;
+        fh=sk20niJjP+LyGcAC6rY5I61AlgNCIPpR6UIhxIWLYTI=;
+        b=kn2eRLfh6vr9cGYtmcioZr+5LaEeHIyxEka7kjGhys/O50obttNDCxRqK9mDxvRxZ7
+         iTW6ILLANG5DGppwTI33zXOQnJiE1n0O4TJdXT3baJqi0HRo2x3AOvyydQc199CMdQIR
+         zVADv4KwV6uo/wvPw7K8klA0KiUI3NrBBPt4xlQKimuZKfWxrfYCwq8qzuVdgKR86I7R
+         3UVvt9mGJ6rTBgUNF+xuKLTnZl8FO40hDgoyF+eCRQtka9Z0TWXWV3VPiGBzqwWmLcE0
+         RE5OMnwge2ahDhqVU7VNKRjBjQ1ggyFZpytzFW3XEr42E0KYZV4pYkeDyWXMK6y1qxVx
+         NNCg==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=qfvajQ7W;
-       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
-       spf=pass (google.com: domain of kvm+bounces-27405-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="kvm+bounces-27405-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
-Return-Path: <kvm+bounces-27405-alex.bennee=linaro.org@vger.kernel.org>
-Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [139.178.88.99])
-        by mx.google.com with ESMTPS id 41be03b00d2f7-7e6b7c994a4si3012667a12.326.2024.09.24.21.26.13
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6cb0f7b6b1fsi39732056d6.469.2024.09.25.07.03.23
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 24 Sep 2024 21:26:13 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm+bounces-27405-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) client-ip=139.178.88.99;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 25 Sep 2024 07:03:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=qfvajQ7W;
-       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
-       spf=pass (google.com: domain of kvm+bounces-27405-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="kvm+bounces-27405-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
-Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by sv.mirrors.kernel.org (Postfix) with ESMTPS id B827F284D7B
-	for <alex.bennee@linaro.org>; Wed, 25 Sep 2024 04:26:12 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 8FD2814B965;
-	Wed, 25 Sep 2024 04:26:08 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="qfvajQ7W"
-Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4DB7713AA53;
-	Wed, 25 Sep 2024 04:26:07 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=10.30.226.201
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1727238368; cv=none; b=iOx9+KBbF8RuYZaqxSMx16Li8IvNw+nwYd2ZJUfiEQGhbWa7VdxFY7eU0Cm+o7QDiwsncWkA3Hy5yCE7XHA+dEdq9eSm5Qk3/c3NjiqEjgfxIXnTtK8RqhSQZHvM4MBoaEqrjORFyaozKEG/5Bn0Yp2KuI1CxGWvrbPmRmcEdGs=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1727238368; c=relaxed/simple;
-	bh=Ynfd0JRm++Nr2Ee+rhT8wlroxPnjzYV/SOrelhCelmg=;
-	h=Date:From:To:Cc:Subject:Message-ID:In-Reply-To:References:
-	 MIME-Version:Content-Type; b=efdKDIBKG9OjKdU0qIDU53Xx5Kth6orZz+oi4vUandOhwq+fkSsVvqDpUeldM3wjCAeSgxVX+Ba0JCcXQtr9oVyP975wcK5/tn8TfWerj1h3jlbfaximKO9kC4nblPR/opyPIl8n2BL+whpVz4Ij6G7J9VSCf8+7ZIF+fSlMJNU=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=qfvajQ7W; arc=none smtp.client-ip=10.30.226.201
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 23A92C4CEC3;
-	Wed, 25 Sep 2024 04:26:03 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1727238367;
-	bh=Ynfd0JRm++Nr2Ee+rhT8wlroxPnjzYV/SOrelhCelmg=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=qfvajQ7WG0ypVLqcmpWxo+kxj698Cwbnm+r/0YhOX3PEe3PnWkgW57a5A2eo0Ee7D
-	 B+LuTdFM+97a3BW1idyWzlu5ciUFDocJ+JUeYlmNmsb/8pEGOB4tYpXYdqzcIDnTCZ
-	 L1PHsV5f8TUQQpB7xX/T3CavZr5mhYoyJqYzLq541F/A6Y5AkdSM7rFkHfAqVNVtUo
-	 D5GK8ONk5257ePVWiM1eM8/8pndgpG6cmHbmVeZEtGDYE4cboH+ahc6ZQfzn7W+xyC
-	 PJ53wOCz70H5DQYV8woUPwZYfC9fHOSyTq8K5uat4f5y7bnp0zP6l6fsm9biw6giaB
-	 +kSl80LgePvqA==
-Date: Wed, 25 Sep 2024 06:26:00 +0200
-From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-To: Igor Mammedov <imammedo@redhat.com>
-Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>, Shiju Jose
- <shiju.jose@huawei.com>, "Michael S. Tsirkin" <mst@redhat.com>, Ani Sinha
- <anisinha@redhat.com>, Cleber Rosa <crosa@redhat.com>, Dongjiu Geng
- <gengdongjiu1@gmail.com>, Eric Blake <eblake@redhat.com>, John Snow
- <jsnow@redhat.com>, Markus Armbruster <armbru@redhat.com>, Michael Roth
- <michael.roth@amd.com>, Paolo Bonzini <pbonzini@redhat.com>, Peter Maydell
- <peter.maydell@linaro.org>, Shannon Zhao <shannon.zhaosl@gmail.com>,
- kvm@vger.kernel.org, linux-kernel@vger.kernel.org, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Subject: Re: [PATCH v10 00/21] Add ACPI CPER firmware first error injection
- on ARM emulation
-Message-ID: <20240925062600.7cbfeb19@foz.lan>
-In-Reply-To: <20240924151429.3e758b38@imammedo.users.ipa.redhat.com>
-References: <cover.1726293808.git.mchehab+huawei@kernel.org>
-	<20240917141519.57766bb6@imammedo.users.ipa.redhat.com>
-	<20240924150058.4879abe9@foz.lan>
-	<20240924151429.3e758b38@imammedo.users.ipa.redhat.com>
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
-Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1stSbZ-0004nE-Eb; Wed, 25 Sep 2024 10:02:57 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1stSbU-0004kJ-QD; Wed, 25 Sep 2024 10:02:53 -0400
+Received: from frasgout.his.huawei.com ([185.176.79.56])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1stSbS-0007gR-P3; Wed, 25 Sep 2024 10:02:52 -0400
+Received: from mail.maildlp.com (unknown [172.18.186.31])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4XDJH16KMVz6D8wR;
+ Wed, 25 Sep 2024 21:58:37 +0800 (CST)
+Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
+ by mail.maildlp.com (Postfix) with ESMTPS id CFAAE140498;
+ Wed, 25 Sep 2024 22:02:35 +0800 (CST)
+Received: from localhost (10.203.177.66) by frapeml500008.china.huawei.com
+ (7.182.85.71) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Wed, 25 Sep
+ 2024 16:02:35 +0200
+Date: Wed, 25 Sep 2024 15:02:32 +0100
+To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+CC: Igor Mammedov <imammedo@redhat.com>, Shiju Jose <shiju.jose@huawei.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Ani Sinha <anisinha@redhat.com>,
+ Dongjiu Geng <gengdongjiu1@gmail.com>, <linux-kernel@vger.kernel.org>,
+ <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
+Subject: Re: [PATCH 01/15] acpi/ghes: get rid of ACPI_HEST_SRC_ID_RESERVED
+Message-ID: <20240925150232.00005374@Huawei.com>
+In-Reply-To: <0518c86d8724ba7f9986727676b64c531bd26b6f.1727236561.git.mchehab+huawei@kernel.org>
+References: <cover.1727236561.git.mchehab+huawei@kernel.org>
+ <0518c86d8724ba7f9986727676b64c531bd26b6f.1727236561.git.mchehab+huawei@kernel.org>
+Organization: Huawei Technologies Research and Development (UK) Ltd.
+X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset="US-ASCII"
 Content-Transfer-Encoding: 7bit
-X-TUID: 5S506P/7MzL8
+X-Originating-IP: [10.203.177.66]
+X-ClientProxiedBy: lhrpeml500002.china.huawei.com (7.191.160.78) To
+ frapeml500008.china.huawei.com (7.182.85.71)
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
+X-Spam_score_int: -26
+X-Spam_score: -2.7
+X-Spam_bar: --
+X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_MSPIKE_H2=-0.828,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Reply-to:  Jonathan Cameron <Jonathan.Cameron@Huawei.com>
+From:  Jonathan Cameron via <qemu-devel@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: Z3GZR8EbV1f1
 
-Em Tue, 24 Sep 2024 15:14:29 +0200
-Igor Mammedov <imammedo@redhat.com> escreveu:
+On Wed, 25 Sep 2024 06:04:06 +0200
+Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
 
-> > 1) preparation patches:
-...
-> > 69850f550f99 acpi/generic_event_device: add an APEI error device  
-> this one doesn't belong to clean ups, I think.
-> Lets move this to #3 part
-
-Ok.
-
-> > The migration logic will require some time, and I don't want to bother
-> > with the cleanup stuff while doing it. So, perhaps while I'm doing it,
-> > you could review/merge the cleanups.
-> > 
-> > We can do the same for each of the 4 above series of patches, as it
-> > makes review simpler as there will be less patches to look into on
-> > each series.
-> > 
-> > Would it work for you?  
+> This is just duplicating ACPI_GHES_ERROR_SOURCE_COUNT, which
+> has a better name. So, drop the duplication.
 > 
-> other than nit above, LGTM
-> 
-
-Ok, sent a PR with the first set (cleanups) at:
-
-	https://lore.kernel.org/qemu-devel/cover.1727236561.git.mchehab+huawei@kernel.org/
-
-You can see the full series at:
-
-	https://gitlab.com/mchehab_kernel/qemu/-/commits/qemu_submission_v11b?ref_type=heads
-
-It works fine, except for the migration part that I'm still working with.
-
-For the migration, there are how two functions at ghes.c:
-
-The one compatible with current behavior (up to version 9.1):
-	https://gitlab.com/mchehab_kernel/qemu/-/blob/qemu_submission_v11b/hw/acpi/ghes.c?ref_type=heads#L411
-
-And the new one using offsets calculated from HEST (newer versions):
-	https://gitlab.com/mchehab_kernel/qemu/-/blob/qemu_submission_v11b/hw/acpi/ghes.c?ref_type=heads#L437 
-
-With that, the migration logic can decide what function should be
-called (currently, it is just checking if hest_addr_le is zero, but
-I guess I'll need to change it to match some variable added by the
-migration path.
-
-Also, in preparation for the migration tests, I created a separate 
-branch at:
-
-	https://gitlab.com/mchehab_kernel/qemu/-/commits/ghes_on_v9.1.0?ref_type=heads
-
-which contains the same patches on the top of 9.1, except for
-the HEST ones. It also contains a hack to use ACPI_GHES_NOTIFY_GPIO
-instead of ACPI_GHES_NOTIFY_SEA.
-
-With that, we have a way to use the same error injection logic
-on both 9.1 and upstream, hopefully being enough to test if migration
-works.
-
-Thanks,
-Mauro
+> Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+> Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+FWIW
+Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>

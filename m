@@ -1,40 +1,40 @@
-Received: by 2002:a17:505:5b18:b0:1be9:327d:8ee3 with SMTP id ox24csp351950njb;
-        Wed, 25 Sep 2024 07:10:02 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCX9+1vetEhxWZCV4xZZKq32pqM5xTTC3NsiECsDGWUAjicRjBsrE5NKnp2gKU332OFxlKY0mbvuEgMZbA==@linaro.org
-X-Google-Smtp-Source: AGHT+IFVZBBDGmPHeI5mtfG0ydTpzWnJ2xaR0Z0hr4DJDAqEOM0J1N+nZaydVbTNL91cZ/ElOc/4
-X-Received: by 2002:a05:6870:3329:b0:277:d932:deb1 with SMTP id 586e51a60fabf-286e13c1841mr2329047fac.18.1727273402577;
-        Wed, 25 Sep 2024 07:10:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1727273402; cv=none;
+Received: by 2002:a17:505:5b18:b0:1be9:327d:8ee3 with SMTP id ox24csp353354njb;
+        Wed, 25 Sep 2024 07:11:58 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVU6iTZC5bBO897q5ghaYY8W+H/Pq/0PmrnwHEd9fzKSjXUA8o/khvZWF4Az9+UTWduXqbQSrKRalfQyw==@linaro.org
+X-Google-Smtp-Source: AGHT+IE0rGp9U32mZ/wmcyH6iPBEuUNtlqTt+oC4hoz/WDzBgII80fR7yK5YtaUIHP4B4IVjUBSX
+X-Received: by 2002:a05:620a:1a28:b0:7a9:bf9f:5cd5 with SMTP id af79cd13be357-7ace7467477mr442904985a.55.1727273518470;
+        Wed, 25 Sep 2024 07:11:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1727273518; cv=none;
         d=google.com; s=arc-20240605;
-        b=E4OmxIl5utE5uarW6nkkEg5Za7PWo7MnABPUKK46GSFNd/jxJPX0XEQOXlH+fzs33R
-         9vE7rH+J4Hc+DL0s99VujzoNONcC7WCV5ZzF3BEs8MWGf2u1FiyW4Q5+V2J39BNCcIZD
-         WTFRTVZRn3JPc/YdlL619I7aiCeVgsjKAiHqpury5Y8UGy2jCuHyBafrcD/NEnCsXX/1
-         q/lJYTcoq++r6vQUk3IwgRBldzSMKjK3DjA+cDp4eLaaMgTS+pwC5p9VLfVtTygJe/sM
-         LaAEKOL9ydp5TCnEDDGOE4NiO3ktjZV8s4yL3eeC6scQdys8ZXWwicvcvLdb5m/KSXzi
-         io2Q==
+        b=b0Gj6hEGJPzFLuLR0SO9AC9KWw2wYfSqnL+Q+imG+bZJzZ06IkWU1oiIcUzO1ffOTN
+         Rko4hXiyCxch+fMuhHNZGQiazis338VDTdtLYvJh0oJ+Bb1aHos/Vmoj5642DolZN+m6
+         iA0UXpyRsNaQ6yChVpiqDQZWIcv91vKmlN7szII8bI3HI1qQQLwK5U2YUD/t0ui5Yi3f
+         qlFfzK+YgQqpzGAOfL8BsEjDZX2qCIYO5rBFb7Lp2kFszCx0o5pi1rWsfxm6LARcPsEc
+         i6klVaDn+CiXkGuMXJ9hqshVocsT+zOwRR6gHBmyh3uaaD0mMxTC8y+an8JU8YIUA1XQ
+         Nrew==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:mime-version:organization:references
          :in-reply-to:message-id:subject:cc:to:date;
-        bh=Cjg+T0f3Wnp9ojW+hc+UKKiwpF2I5P/kfIKYzhTJRjQ=;
-        fh=sk20niJjP+LyGcAC6rY5I61AlgNCIPpR6UIhxIWLYTI=;
-        b=NKIwhXqGtK1r0hF/cXRHH/gjJ6nivRrtSJh6JQ4t7TveVBMhGJ27AVSVo8Oi3WUL0D
-         Sv4Ot+WcRIRh7kLu2wvskVMmZgwO0uXBIPtM2lGWYJoXz7t693i5gvtD6N0Hq65+k6su
-         KYw/Q0hRgylkydfnh9Vlg6ma1cTxEAPWChRZaE2GIan0wf53TINndHGsKsvRBqY/Tsdb
-         EJNoDgDDoPPsPeZe8ByYM1EfDNas6n+Nox8KA02j7Chy7YBsKPB635pKPBulmnvLxpyf
-         3ZnGY95EK1tDggUKr/dUk62quxbtMGdxD4NnO8mpBNR5DWPRisjvbU4674cY9VCNGXsS
-         Y0GA==;
+        bh=z3c6rLbHL5DyDdemkQM9bNT0guk2I87QCbiK0+RD1KI=;
+        fh=xorUoMC2IHZi14qbosopEp/1wCIif4VMRZ2S+Ueublk=;
+        b=PQolz8hEKSU9L1D9dePGSymj8clbmFF7QHZ8e+4alrCqHRIx5CCSK8FtORqukU6jkI
+         EvhVwKJAMQoLklFXLdgyqrDw/3UCubkVV1QflwvzE0+spXsNJBPIkiqtCjt/hYLlW+bz
+         ynvJ1Jlnm/C0/8K+R5Np9LELt/4xLzhZwsgRt3WVH5iWWAL11l5tkh0pz12NsbDcyiXY
+         CWZDEreZCIK2HZJcogcMYUHIP7zq+8lRHcRQ9WSIdqJRmjv0yoEpw0qR7fF8OZteQeNI
+         dFqFODQ3e+Kna+JkuIjw4paEJUBnQcsMiymAdpNTDqiUNDt/2WMEev/+UJet9GcW6sL/
+         6UwA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 71dfb90a1353d-505aa1524aesi1119820e0c.252.2024.09.25.07.10.02
+        by mx.google.com with ESMTPS id af79cd13be357-7acde529c71si402939685a.44.2024.09.25.07.11.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 25 Sep 2024 07:10:02 -0700 (PDT)
+        Wed, 25 Sep 2024 07:11:58 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
@@ -42,36 +42,39 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1stSi6-0002QV-EK; Wed, 25 Sep 2024 10:09:42 -0400
+	id 1stSk1-0007RS-KM; Wed, 25 Sep 2024 10:11:43 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1stSi5-0002PU-KI; Wed, 25 Sep 2024 10:09:41 -0400
+ id 1stSjj-0006Je-TQ; Wed, 25 Sep 2024 10:11:25 -0400
 Received: from frasgout.his.huawei.com ([185.176.79.56])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1stSi3-0000A1-5l; Wed, 25 Sep 2024 10:09:40 -0400
-Received: from mail.maildlp.com (unknown [172.18.186.216])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4XDJR53vnjz6D8gq;
- Wed, 25 Sep 2024 22:05:37 +0800 (CST)
+ id 1stSjh-0000SX-KY; Wed, 25 Sep 2024 10:11:23 -0400
+Received: from mail.maildlp.com (unknown [172.18.186.31])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4XDJSJ4m5Xz6HJbb;
+ Wed, 25 Sep 2024 22:06:40 +0800 (CST)
 Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
- by mail.maildlp.com (Postfix) with ESMTPS id 7E119140B39;
- Wed, 25 Sep 2024 22:09:35 +0800 (CST)
+ by mail.maildlp.com (Postfix) with ESMTPS id C5C49140498;
+ Wed, 25 Sep 2024 22:11:17 +0800 (CST)
 Received: from localhost (10.203.177.66) by frapeml500008.china.huawei.com
  (7.182.85.71) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Wed, 25 Sep
- 2024 16:09:34 +0200
-Date: Wed, 25 Sep 2024 15:09:33 +0100
+ 2024 16:11:17 +0200
+Date: Wed, 25 Sep 2024 15:11:15 +0100
 To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 CC: Igor Mammedov <imammedo@redhat.com>, Shiju Jose <shiju.jose@huawei.com>,
  "Michael S. Tsirkin" <mst@redhat.com>, Ani Sinha <anisinha@redhat.com>,
- Dongjiu Geng <gengdongjiu1@gmail.com>, <linux-kernel@vger.kernel.org>,
- <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
-Subject: Re: [PATCH 02/15] acpi/ghes: simplify acpi_ghes_record_errors() code
-Message-ID: <20240925150933.0000373d@Huawei.com>
-In-Reply-To: <45dcc7644e2b2a04645a37e561ed7294482b0744.1727236561.git.mchehab+huawei@kernel.org>
+ Dongjiu Geng <gengdongjiu1@gmail.com>, Peter Maydell
+ <peter.maydell@linaro.org>, Shannon Zhao <shannon.zhaosl@gmail.com>,
+ <linux-kernel@vger.kernel.org>, <qemu-arm@nongnu.org>,
+ <qemu-devel@nongnu.org>
+Subject: Re: [PATCH 03/15] acpi/ghes: simplify the per-arch caller to build
+ HEST table
+Message-ID: <20240925151115.00005b15@Huawei.com>
+In-Reply-To: <6305bca3d0c4fc02853fe2794eeb39f46823c733.1727236561.git.mchehab+huawei@kernel.org>
 References: <cover.1727236561.git.mchehab+huawei@kernel.org>
- <45dcc7644e2b2a04645a37e561ed7294482b0744.1727236561.git.mchehab+huawei@kernel.org>
+ <6305bca3d0c4fc02853fe2794eeb39f46823c733.1727236561.git.mchehab+huawei@kernel.org>
 Organization: Huawei Technologies Research and Development (UK) Ltd.
 X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
 MIME-Version: 1.0
@@ -104,112 +107,37 @@ Reply-to:  Jonathan Cameron <Jonathan.Cameron@Huawei.com>
 From:  Jonathan Cameron via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: nrbo/Dwkz9o/
+X-TUID: Y6B35FnSUpqg
 
-On Wed, 25 Sep 2024 06:04:07 +0200
+On Wed, 25 Sep 2024 06:04:08 +0200
 Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
 
-> Reduce the ident of the function and prepares it for
-> the next changes.
+> The GHES driver requires not only a HEST table, but also a
+> separate firmware file to store Error Structure records.
+> It can't do one without the other.
+> 
+> Simplify the caller logic for it to require one function.
+> 
+> This prepares for further changes where the HEST table
+> generation will become more generic.
 > 
 > No functional changes.
 > 
 > Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-> Reviewed-by: Igor Mammedov <imammedo@redhat.com>
-Some of the alignment doesn't seem to match local style which
-is either align after ( or align 4 spaces in from line above for
-multiple line argument lists.
-
-Code is fine as I guess the later structure is to prepare
-for additions that prevent early returns being sensible.
-
-With that in mind.
-
-Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-
-> ---
->  hw/acpi/ghes.c | 56 ++++++++++++++++++++++++++------------------------
->  1 file changed, 29 insertions(+), 27 deletions(-)
 > 
-> diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
-> index dc217694deb9..dacbd4d0c093 100644
-> --- a/hw/acpi/ghes.c
-> +++ b/hw/acpi/ghes.c
-> @@ -402,40 +402,42 @@ int acpi_ghes_record_errors(uint8_t source_id, uint64_t physical_address)
->  
->      start_addr = le64_to_cpu(ags->ghes_addr_le);
->  
-> -    if (physical_address) {
-> +    if (!physical_address) {
-> +        return -1;
-> +    }
->  
-> -        if (source_id < ACPI_GHES_ERROR_SOURCE_COUNT) {
-> -            start_addr += source_id * sizeof(uint64_t);
-> -        }
-> +    if (source_id < ACPI_GHES_ERROR_SOURCE_COUNT) {
-> +        start_addr += source_id * sizeof(uint64_t);
-> +    }
->  
-> -        cpu_physical_memory_read(start_addr, &error_block_addr,
-> -                                 sizeof(error_block_addr));
-> +    cpu_physical_memory_read(start_addr, &error_block_addr,
-> +                                sizeof(error_block_addr));
->  
-> -        error_block_addr = le64_to_cpu(error_block_addr);
-> +    error_block_addr = le64_to_cpu(error_block_addr);
->  
-> -        read_ack_register_addr = start_addr +
-> -            ACPI_GHES_ERROR_SOURCE_COUNT * sizeof(uint64_t);
-> +    read_ack_register_addr = start_addr +
-> +        ACPI_GHES_ERROR_SOURCE_COUNT * sizeof(uint64_t);
->  
-> -        cpu_physical_memory_read(read_ack_register_addr,
-> -                                 &read_ack_register, sizeof(read_ack_register));
-> +    cpu_physical_memory_read(read_ack_register_addr,
-> +                                &read_ack_register, sizeof(read_ack_register));
-
-Alignment looks fishy plus maybe move &read_ack_register up a line.
-
-
->  
-> -        /* zero means OSPM does not acknowledge the error */
-> -        if (!read_ack_register) {
-> -            error_report("OSPM does not acknowledge previous error,"
-> -                " so can not record CPER for current error anymore");
-> -        } else if (error_block_addr) {
-> -            read_ack_register = cpu_to_le64(0);
-> -            /*
-> -             * Clear the Read Ack Register, OSPM will write it to 1 when
-> -             * it acknowledges this error.
-> -             */
-> -            cpu_physical_memory_write(read_ack_register_addr,
-> -                &read_ack_register, sizeof(uint64_t));
-> +    /* zero means OSPM does not acknowledge the error */
-> +    if (!read_ack_register) {
-> +        error_report("OSPM does not acknowledge previous error,"
-> +            " so can not record CPER for current error anymore");
-I guess later changes make it unwise to just return -1 here.	
-
-> +    } else if (error_block_addr) {
-> +        read_ack_register = cpu_to_le64(0);
-> +        /*
-> +         * Clear the Read Ack Register, OSPM will write it to 1 when
-> +         * it acknowledges this error.
-> +         */
-> +        cpu_physical_memory_write(read_ack_register_addr,
-> +            &read_ack_register, sizeof(uint64_t));
->  
-> -            ret = acpi_ghes_record_mem_error(error_block_addr,
-> -                                             physical_address);
-> -        } else
-> -            error_report("can not find Generic Error Status Block");
-> +        ret = acpi_ghes_record_mem_error(error_block_addr,
-> +                                            physical_address);
-or return here.
-> +    } else {
-> +        error_report("can not find Generic Error Status Block");
->      }
->  
->      return ret;
+> ---
+> 
+> Changes from v10:
+> - Removed the logic which associates notification and source
+>   ID. This will be placed on a separate patch.
+> 
+> Changes from v8:
+> - Non-rename/cleanup changes merged altogether;
+> - source ID is now more generic, defined per guest target.
+>   That should make easier to add support for 86.
+> 
+> Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+Odd sign off here ;)
+Otherwise seems reasonable to me.
+Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
 

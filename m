@@ -1,273 +1,154 @@
-Received: by 2002:a17:505:42a7:b0:1be9:327d:8ee3 with SMTP id rt7csp2795553njb;
-        Tue, 24 Sep 2024 05:32:22 -0700 (PDT)
-X-Received: by 2002:a05:651c:542:b0:2f3:cd4e:b931 with SMTP id 38308e7fff4ca-2f7cb30cb9bmr94430401fa.10.1727181141750;
-        Tue, 24 Sep 2024 05:32:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1727181141; cv=none;
-        d=google.com; s=arc-20160816;
-        b=dybxseea/iicnK+S343+BKLWLRaRGYHEZT+lphaDBa5VAevy02ZWf6Ms+wfjt267dS
-         2Lni02zk1+Ntb8Y44sAA1I1msHjd935CjqcA/J7/2oS3CtHMOAXIqd/rYAJY52IRXpdA
-         6YvF4vQKsBpjwGeTFaScifqZjwmiIuL3KcEnQPIlnLRPjHc5uS0oJkCnTegSiskWHker
-         Ea8K0T+Sx+IHzzx67N80xMZy/9DiLtBpIanj0nbbOGdXI/66hKC4ONE+PvMSRfVAAUU6
-         beApksNh6Df6OlzmMhZSbgYMQoPRj+9onXz6Hd8vU+FzJxDxS1SV4eyxgju2rfo38en6
-         ikYA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=GyRKw9qtbFiiitlNZMMOTwG0z8GW4JOzDpGvDMyvWiI=;
-        fh=JiTWXjSUoAsVgXHVDv5qopTke0cv8JhW4+l60+TEk7A=;
-        b=0GWTzLFrMRPYSwaJHtK5G6CddCid25lGnahTVbCuxdBgLaDdHcO211TrYAopyfQIln
-         TMDshkN3nCnT1WqvO6DBQoI7GrkIIRKZHKyZmb4+/eywXyXbnNOhyIBWjyM6p9Q7III9
-         UGfAi3t8FnGBzcn05RGSAXlHRxfto8Ch67b5pqJY8+NA+qn0eHP0n3x+npzOhEiJJJP7
-         M/h1/ri/j/1cFWsd3HS1/Ql/9CFrdJd/IVk/8LSZjAnjh3+YCCwzqFkS0hqL9wYQwJHA
-         Jtzih5rxTRLe+M0rpnLqdRdDgTOlsznoVjVOKtVaj0zj5bFT9SM6bkErGLcciHc/MjjK
-         WN+Q==;
+Received: by 2002:a17:505:5b18:b0:1be9:327d:8ee3 with SMTP id ox24csp242810njb;
+        Wed, 25 Sep 2024 04:05:40 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVJIhNLNPSXwJdIWAsuVTdoKQ+kRKwmwTPykA/U2AuleKOpIdqfAKYhUAnrL2PsFUS3C1+79E0WH33f5A==@linaro.org
+X-Google-Smtp-Source: AGHT+IGEaSDMA+8zDTyTzLm3anOyXihz5BjdEDkRS6GLH3oouGEALY3Zf28yFuWXjvt8F7jsQeEi
+X-Received: by 2002:a05:620a:4496:b0:7a9:a219:17a2 with SMTP id af79cd13be357-7ace744d4d2mr345524185a.50.1727262340234;
+        Wed, 25 Sep 2024 04:05:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1727262340; cv=none;
+        d=google.com; s=arc-20240605;
+        b=HFNFP2+zO86uisfZK5zFtgN3KVQa+/8FSL8NIKU1SRPe3ofzkQVooNePUcHAWu019u
+         LXsPipde/xpfXs9Nbnnawl1+tvggzn8QWuZvu7J4hRuZOnEmXIbDDPs9F5TVZa7eXjMo
+         iBYoumoKVNWprTilrhSWXYYNpQaWxRD7OzB99SYijkmYcSXr7ndlo/kWSpWd0EBbNlZY
+         0b7+v2DuP2fFdvzONf2y9GxqFiuDjlGnnGoYEQFLXbd5r5rJKU1ks9TcWyd02FW4hCqE
+         tfeWa5CPg++w0ttMPf/eUg7VptjR22q36L6VB+8Mo2M1tFiQu485WDSoSkhKWBcGZSn3
+         m3uw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=XD7RRfHaxQ6/w3m7YDB0Ut+qX/tB8DtOzSqGUUCudAU=;
+        fh=mOrQWbwvSWgojlWdBH8Q2fVEvb9CwuJ1hUmnp96v7EQ=;
+        b=cjvKoTAUWus7+pae0vEqfhhhz80m72SAVerUvEef4WO4/bWLQFOVghS20S0aSbKelA
+         StPcTtmoQLWMusB6bpDIuR7L3G3ywofIyWYkJ53IPEL/Rubc/+1pLxIfxfps4OXWSmjk
+         Mp/eIGcFmP7V2P23ROJQKWLZRa4DWFjzGk0iF7cQ4RWx+DDrF764lJdFbfzcBVq37QsS
+         MGkGi1y3yl3B+B2EN7qfSi+9Q7V2ARIsNQeX8lfq12Jxt+3K1fx8FnbOHfBKgvnnKHyH
+         HWZhTaYVNyoDbVL2JaUTmvzEhWIyudstV4EYjxAJ0nB5PB4NUOyN9pC3zbuFJ2/DFFNS
+         uZow==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="zH6wxjf/";
-       spf=pass (google.com: domain of manos.pitsidianakis@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=manos.pitsidianakis@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=rouTciOm;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <manos.pitsidianakis@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 38308e7fff4ca-2f8d289b4ccsor3265681fa.13.2024.09.24.05.32.21
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id af79cd13be357-7acde548fc6si369800085a.205.2024.09.25.04.05.40
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 24 Sep 2024 05:32:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of manos.pitsidianakis@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 25 Sep 2024 04:05:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="zH6wxjf/";
-       spf=pass (google.com: domain of manos.pitsidianakis@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=manos.pitsidianakis@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=rouTciOm;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1stPpW-0003AG-Mr; Wed, 25 Sep 2024 07:05:11 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1stPpS-00038W-Rx
+ for qemu-arm@nongnu.org; Wed, 25 Sep 2024 07:05:07 -0400
+Received: from mail-lf1-x135.google.com ([2a00:1450:4864:20::135])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1stPpR-00024H-5H
+ for qemu-arm@nongnu.org; Wed, 25 Sep 2024 07:05:06 -0400
+Received: by mail-lf1-x135.google.com with SMTP id
+ 2adb3069b0e04-5365b6bd901so7826167e87.2
+ for <qemu-arm@nongnu.org>; Wed, 25 Sep 2024 04:05:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1727181141; x=1727785941; darn=linaro.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=GyRKw9qtbFiiitlNZMMOTwG0z8GW4JOzDpGvDMyvWiI=;
-        b=zH6wxjf/BqO4O/w6PlG8TwDu3Xie8RyEz5eLQ5mCrV5zdurj4hE07wHZxBDaXznVUU
-         cQrDnOsxegVeN/pd2Sk8EKg6oemVNheRrua9l6Kr0As1t/DybHEP9Tg9tInMI5EHh5sn
-         9QOZ9BruYZRgIlEZX6SA2RBtBCgf/WFKv4f9qvSXsGKezs3suZYCYU5eYq8JEqnRvctw
-         rK6+YB3e6ffB/9p0tDWxlf/oJ69Vmq6hUMfiTZZakFGnkvGYdOv9Kd0OKNtd0aP6BSap
-         2w9mG/5NYqC67C6JO6zjbdRPPlN+GUhWxc1sSrWtvw0cs7etyI7aFp1DFZ5YLsqwer70
-         OhxA==
+ d=linaro.org; s=google; t=1727262302; x=1727867102; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=XD7RRfHaxQ6/w3m7YDB0Ut+qX/tB8DtOzSqGUUCudAU=;
+ b=rouTciOmxEg7pZpm8W4ShGZcdLfifK03ZsGjK/iNLaVAEyvMbaUayBtSvi9tP5qgjF
+ XrEOxtCH9zFBwzxyH9UpLLAzpLH3/+t0sAct349aEfXzclAfwQctXzVAimxXp9ethKoW
+ 0d5/OBVwmCJWW2O7s9AGB6K/Ssc3IrK8wZDHKGoZlnt5cblrcY0RQAxJz6sT+/gzE838
+ gfGX3o/kuIegrhdVtrWjVAIia9ONcYxjx7FKkb0mAU6v1GTXiv5WBy818BnFvSDTueTT
+ EOKL4uzzvyDxbkf9KHMNDTvtYfvEvDXhXRTzhr+7UzXoDCdyRFgq02ukBZyvvEIrt4Ue
+ Dqdg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1727181141; x=1727785941;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=GyRKw9qtbFiiitlNZMMOTwG0z8GW4JOzDpGvDMyvWiI=;
-        b=tu8vKPVadiCVxzfM3DmX1mjXqN1dRdpOPnypiNAI3R+G7CyJlOl4FfVHj2ZMUVajpI
-         OoYcpAciCTOPzGJeY5OVCyevuksKekZgP06wrMrbuVvl7cmsKsuKtDfcp8L9cj+kaOK9
-         aTC7zV6l8ZiRWeZEOYVHYDCLBWeiuMZxemEebZs5u+9XOtU2JaumIWfdP6zk/jYm0+E3
-         BvDkSspPiIRMLcU8CMHqXy0VIoMl7aULBSOrktpMsTe177P3Oxm26Tn0fluZZcILSkgD
-         9IyODsfTHscG2Bz+/QHQ+NmPIWC/Bo5PBSzXsspr4ZRV8/hClX+szC3FJZ30jN1Vd1cR
-         FPoA==
-X-Gm-Message-State: AOJu0YzxiRp8on9FGUjbyUaRp86oD/ereS3969BOl2khoU+kUncUAh3f
-	gRa57NzPPNXvRavHUH8qmZ+WpAQRhAsaHJR9KowxTSnkSZNIQfQLv5PRFLl9+l52GaXrr4mqHIC
-	ZuWxPlhKAyfbcPMb2IeUKYJBXyEZfEL11igokrCAN
-X-Google-Smtp-Source: AGHT+IH7lyPF2LdCsDkake6J/K8hp6pJdd40tPZtKXa6rYUJkS7RdcfNSTYmoHT9kDCLD+qiP1iWYgJFuT3gjDhmpSM=
-X-Received: by 2002:a2e:96c8:0:b0:2f3:c384:71ee with SMTP id
- 38308e7fff4ca-2f7cb358d5amr77860411fa.33.1727181140913; Tue, 24 Sep 2024
- 05:32:20 -0700 (PDT)
+ d=1e100.net; s=20230601; t=1727262302; x=1727867102;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=XD7RRfHaxQ6/w3m7YDB0Ut+qX/tB8DtOzSqGUUCudAU=;
+ b=rz6wkosXwFVpvnICeeXqFEYzo7lAJrqt5XuxhlsFL9JvAdlfjrP0FeHJBBiAIo98SC
+ 0vz/ARU7tSt3G5t4k0t7fV7QgjSMtvvAWHUdA1wswHuVXWL/Bkw7k+i+FnSdwm6DE+oc
+ jClOaoF9zmPDFU9xru3o743xNrEF44DBhk4S6WEO+18PotNZrHIA0h8jTrugzdnT5lFA
+ gcVwOYowFJ0AQWkbzJs69nfr6U1k+IlX3qKZ76IQ5K8N0YhG9qrN+oxL9eQDWyH2ImT5
+ oa3rg9qc4ExkKTG5PRDBmrt+Odf4NJPHQPYMcegqu5p6MTBb6DMyQbSz9lDHBfXHf5RM
+ BM7g==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVt3LkLiWPY27ci2/RrL1P9J+rTwaTPnUYKdJImIvUbSL9XxqHhygw4AZIadlbp5T59VqR2jHjhpw==@nongnu.org
+X-Gm-Message-State: AOJu0Yw+qn4KBwZqRqaKCgh0uHTQ7dR1lbZVs7f9ykz8/w51R8tjGBZ2
+ JD8DFyuE54YppRI2KSCaAiHJJHUIiRFiYZ1SV6Llx7Fj8Zlg91iu6LC8PYlH58ZeAl21Jg0/XEE
+ T9ujJzuNMQvAosVFGkEca4Sd12G79zhT8n3msQA==
+X-Received: by 2002:a05:6512:3e1b:b0:536:52c4:d7d3 with SMTP id
+ 2adb3069b0e04-5387048abcemr1110828e87.9.1727262301950; Wed, 25 Sep 2024
+ 04:05:01 -0700 (PDT)
 MIME-Version: 1.0
-References: <20240923-feature-build-info-cli-v2-1-66b3462f16a1@linaro.org>
- <ZvGbRWSPPLJDx7BX@redhat.com> <ka5ia.wqlrej2ef9q@linaro.org>
- <ZvJ8JblXVH-kJGi1@redhat.com> <CAAjaMXZ8q0is2-7-kjyBs=YsBc03=0R2XcYiR-fp05=bcerD6Q@mail.gmail.com>
- <87setpcl9p.fsf@draig.linaro.org> <ZvKrqCR5L21-6k54@redhat.com>
-In-Reply-To: <ZvKrqCR5L21-6k54@redhat.com>
-From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-Date: Tue, 24 Sep 2024 15:32:10 +0300
-Message-ID: <CAAjaMXYX5f5_Q6WezmteM77dSqTHZOdCB7LdZYY6Tj9PtKkSCw@mail.gmail.com>
-Subject: Re: [PATCH v2] Add -build-info and -build-info-json CLI arguments
-To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
-Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	"open list:ARM SMMU <qemu-arm@nongnu.org>," <qemu-devel@nongnu.org>, Cleber Rosa <crosa@redhat.com>, John Snow <jsnow@redhat.com>, 
-	=?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
-	Paolo Bonzini <pbonzini@redhat.com>, Gustavo Romero <gustavo.romero@linaro.org>, 
-	Peter Maydell <peter.maydell@linaro.org>, =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
-	Pierrick Bouvier <pierrick.bouvier@linaro.org>, 
-	Richard Henderson <richard.henderson@linaro.org>
-Content-Type: multipart/alternative; boundary="0000000000005e15bb0622dcb21f"
-X-TUID: fZUiH2q2BCvG
-
---0000000000005e15bb0622dcb21f
+References: <20240924191932.49386-1-philmd@linaro.org>
+In-Reply-To: <20240924191932.49386-1-philmd@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 25 Sep 2024 12:04:50 +0100
+Message-ID: <CAFEAcA-X+BUGcq0EGOC05DWqjNd+WSs_Ufqv8=gpRfF0uAmUYg@mail.gmail.com>
+Subject: Re: [RFC PATCH] hw/arm/armv7m: Expose and access System Control Space
+ as little endian
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
+ Tony Nguyen <tony.nguyen@bt.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::135;
+ envelope-from=peter.maydell@linaro.org; helo=mail-lf1-x135.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: SKBImRr44zfY
 
-Hello Daniel,
-
-On Tue, Sep 24, 2024, 3:08 PM Daniel P. Berrang=C3=A9 <berrange@redhat.com>
-wrote:
-
-> On Tue, Sep 24, 2024 at 01:02:26PM +0100, Alex Benn=C3=A9e wrote:
-> > Manos Pitsidianakis <manos.pitsidianakis@linaro.org> writes:
-> >
-> > > Hello Daniel,
-> > >
-> > > On Tue, 24 Sept 2024 at 11:45, Daniel P. Berrang=C3=A9 <berrange@redh=
-at.com>
-> wrote:
-> > >>
-> > >> On Mon, Sep 23, 2024 at 10:09:32PM +0300, Manos Pitsidianakis wrote:
-> > >> > Hello Daniel,
-> > >> >
-> > >> > On Mon, 23 Sep 2024 19:45, "Daniel P. Berrang=C3=A9" <
-> berrange@redhat.com> wrote:
-> > >> > > On Mon, Sep 23, 2024 at 09:05:24AM +0300, Manos Pitsidianakis
-> wrote:
-> > <snip>
-> > >> > > ie, look a query-audiodevs to discover what audio baxckends are
-> > >> > > built-in, don't look for CONFIG_XXX settings related to audio.
-> > >> > > If there are gaps in information we can query from QMP, we shoul=
-d
-> > >> > > aim to close those gaps.
-> > >> > >
-> > >> > > IOW, I don't think we should expose this build info info in eith=
-er
-> > >> > > human readable or machine readable format.
-> > >> >
-> > >> > QAPI/QMP is not the perspective of this patch, this is for people
-> who use
-> > >> > custom-built (i.e. not from a distro) binaries and want to be able
-> to
-> > >> > identify how it was built. Launching a binary to query stuff is
-> > >> > unnecessarily complex for this task, and the info is not generally
-> > >> > interesting to the API consumers as you said.
-> > >>
-> > >> Launching QEMU to talk QMP is our defined public API for querying
-> > >> anything about the capabilities of QEMU. We're worked hard to get
-> > >> away from providing ad-hoc ways to query QEMU from the command
-> > >> line and going back to that is not desirable. It may be slightly
-> > >> more complicated, but not by very much.
-> > >
-> > > Again, this is not a "capabilities discovery" API. It lists the
-> > > build-time configuration of the binary. Perhaps we can expose it in a
-> > > different way so that people don't end up confused?
-> >
-> > I think the problem is however much we might say it's not a capabilitie=
-s
-> > discovery API it's very existence encourages users to use it as one.
-> >
-> > What about a script:
-> >
-> >   qemu-get-build-info </path/to/qemu>
-> >
-> > which would launch the binary and query it over QMP? Would that work?
+On Tue, 24 Sept 2024 at 20:19, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.o=
+rg> wrote:
 >
-> If this is purely a debugging aid, we could make use of ELF notes to
-> just stick the config-host.h content into the binary. This has precedent
-> in systemd package notes (https://github.com/systemd/package-notes) and
-> is more clearly *NOT* an end user CLI option, nor a public API in QMP.
+> Per the Armv7-M Architecture Reference Manual (ARM DDI 0403E):
 >
-> Querying is then
+>   The System Control Space (SCS, address range 0xE000E000 to
+>   0xE000EFFF) is a memory-mapped 4KB address space that provides
+>   32-bit registers for configuration, status reporting and control.
+>   All accesses to the SCS are little endian.
 >
->     objdump -j .note.qemu-config-h -s /usrbin/qemu-system-x86_64
+> Expose the region as a little-endian one and force dispatched
+> accesses to also be in little endianness.
 >
+> Fixes: d5d680cacc ("memory: Access MemoryRegion with endianness")
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
 
-That's actually a way better solution! I will attempt it for the next
-revision.
+What's the rationale for this change? All Arm system emulator
+builds are TARGET_LITTLE_ENDIAN, so MO_TE and MO_LE have
+identical behaviour, as do DEVICE_LITTLE_ENDIAN and
+DEVICE_TARGET_ENDIAN.
 
-Manos
-
->
-
---0000000000005e15bb0622dcb21f
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"auto"><div>Hello Daniel,<br><br><div class=3D"gmail_quote"><div=
- dir=3D"ltr" class=3D"gmail_attr">On Tue, Sep 24, 2024, 3:08 PM Daniel P. B=
-errang=C3=A9 &lt;<a href=3D"mailto:berrange@redhat.com">berrange@redhat.com=
-</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:=
-0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">=
-On Tue, Sep 24, 2024 at 01:02:26PM +0100, Alex Benn=C3=A9e wrote:<br>
-&gt; Manos Pitsidianakis &lt;<a href=3D"mailto:manos.pitsidianakis@linaro.o=
-rg" target=3D"_blank" rel=3D"noreferrer">manos.pitsidianakis@linaro.org</a>=
-&gt; writes:<br>
-&gt; <br>
-&gt; &gt; Hello Daniel,<br>
-&gt; &gt;<br>
-&gt; &gt; On Tue, 24 Sept 2024 at 11:45, Daniel P. Berrang=C3=A9 &lt;<a hre=
-f=3D"mailto:berrange@redhat.com" target=3D"_blank" rel=3D"noreferrer">berra=
-nge@redhat.com</a>&gt; wrote:<br>
-&gt; &gt;&gt;<br>
-&gt; &gt;&gt; On Mon, Sep 23, 2024 at 10:09:32PM +0300, Manos Pitsidianakis=
- wrote:<br>
-&gt; &gt;&gt; &gt; Hello Daniel,<br>
-&gt; &gt;&gt; &gt;<br>
-&gt; &gt;&gt; &gt; On Mon, 23 Sep 2024 19:45, &quot;Daniel P. Berrang=C3=A9=
-&quot; &lt;<a href=3D"mailto:berrange@redhat.com" target=3D"_blank" rel=3D"=
-noreferrer">berrange@redhat.com</a>&gt; wrote:<br>
-&gt; &gt;&gt; &gt; &gt; On Mon, Sep 23, 2024 at 09:05:24AM +0300, Manos Pit=
-sidianakis wrote:<br>
-&gt; &lt;snip&gt;<br>
-&gt; &gt;&gt; &gt; &gt; ie, look a query-audiodevs to discover what audio b=
-axckends are<br>
-&gt; &gt;&gt; &gt; &gt; built-in, don&#39;t look for CONFIG_XXX settings re=
-lated to audio.<br>
-&gt; &gt;&gt; &gt; &gt; If there are gaps in information we can query from =
-QMP, we should<br>
-&gt; &gt;&gt; &gt; &gt; aim to close those gaps.<br>
-&gt; &gt;&gt; &gt; &gt;<br>
-&gt; &gt;&gt; &gt; &gt; IOW, I don&#39;t think we should expose this build =
-info info in either<br>
-&gt; &gt;&gt; &gt; &gt; human readable or machine readable format.<br>
-&gt; &gt;&gt; &gt;<br>
-&gt; &gt;&gt; &gt; QAPI/QMP is not the perspective of this patch, this is f=
-or people who use<br>
-&gt; &gt;&gt; &gt; custom-built (i.e. not from a distro) binaries and want =
-to be able to<br>
-&gt; &gt;&gt; &gt; identify how it was built. Launching a binary to query s=
-tuff is<br>
-&gt; &gt;&gt; &gt; unnecessarily complex for this task, and the info is not=
- generally<br>
-&gt; &gt;&gt; &gt; interesting to the API consumers as you said.<br>
-&gt; &gt;&gt;<br>
-&gt; &gt;&gt; Launching QEMU to talk QMP is our defined public API for quer=
-ying<br>
-&gt; &gt;&gt; anything about the capabilities of QEMU. We&#39;re worked har=
-d to get<br>
-&gt; &gt;&gt; away from providing ad-hoc ways to query QEMU from the comman=
-d<br>
-&gt; &gt;&gt; line and going back to that is not desirable. It may be sligh=
-tly<br>
-&gt; &gt;&gt; more complicated, but not by very much.<br>
-&gt; &gt;<br>
-&gt; &gt; Again, this is not a &quot;capabilities discovery&quot; API. It l=
-ists the<br>
-&gt; &gt; build-time configuration of the binary. Perhaps we can expose it =
-in a<br>
-&gt; &gt; different way so that people don&#39;t end up confused?<br>
-&gt; <br>
-&gt; I think the problem is however much we might say it&#39;s not a capabi=
-lities<br>
-&gt; discovery API it&#39;s very existence encourages users to use it as on=
-e.<br>
-&gt; <br>
-&gt; What about a script:<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0qemu-get-build-info &lt;/path/to/qemu&gt;<br>
-&gt; <br>
-&gt; which would launch the binary and query it over QMP? Would that work?<=
-br>
-<br>
-If this is purely a debugging aid, we could make use of ELF notes to<br>
-just stick the config-host.h content into the binary. This has precedent<br=
->
-in systemd package notes (<a href=3D"https://github.com/systemd/package-not=
-es" rel=3D"noreferrer noreferrer" target=3D"_blank">https://github.com/syst=
-emd/package-notes</a>) and<br>
-is more clearly *NOT* an end user CLI option, nor a public API in QMP.<br>
-<br>
-Querying is then<br>
-<br>
-=C2=A0 =C2=A0 objdump -j .note.qemu-config-h -s /usrbin/qemu-system-x86_64<=
-br></blockquote></div></div><div dir=3D"auto"><br></div><div dir=3D"auto">T=
-hat&#39;s actually a way better solution! I will attempt it for the next re=
-vision.</div><div dir=3D"auto"><br></div><div dir=3D"auto">Manos=C2=A0</div=
-><div dir=3D"auto"><div class=3D"gmail_quote"><blockquote class=3D"gmail_qu=
-ote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,20=
-4);padding-left:1ex">
-</blockquote></div></div></div>
-
---0000000000005e15bb0622dcb21f--
+thanks
+-- PMM

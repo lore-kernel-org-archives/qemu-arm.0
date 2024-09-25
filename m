@@ -1,174 +1,143 @@
-Received: by 2002:a17:505:5b18:b0:1be9:327d:8ee3 with SMTP id ox24csp86789njb;
-        Tue, 24 Sep 2024 20:36:48 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCV3CV1dAnqmOe12VG/lqEopH2rm4i8MIv5bQVniz7XZj7oG/tcH9Vmsb2yfWSkZ7h62bxPZbNk4pCp9Ow==@linaro.org
-X-Google-Smtp-Source: AGHT+IFUwfF15s8csfi9QojyxX9y4zogW0Zw6rimBhnMGy53kdIzpT7Z1WjZWE4tOP1fcDAojYNp
-X-Received: by 2002:a05:622a:1898:b0:458:5992:34c1 with SMTP id d75a77b69052e-45b5dede46amr20718241cf.16.1727235408193;
-        Tue, 24 Sep 2024 20:36:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1727235408; cv=none;
+Received: by 2002:a17:505:5b18:b0:1be9:327d:8ee3 with SMTP id ox24csp94179njb;
+        Tue, 24 Sep 2024 21:04:58 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCXQGHTm2Ie39By0NobxIPy9ePGJGYmVjKuruA/Q6Gvc7b3OA91Uck0Q2NVqKoGvqapEre4n7SI546k8kA==@linaro.org
+X-Google-Smtp-Source: AGHT+IHK3VFO6Azl4XQ3Dzyrmmh+tzaaPsx6HJ0Zpc/DciB+99fvcreV5gVnOVZqEZ35aS2GesMf
+X-Received: by 2002:a17:907:7286:b0:a8d:128a:cc23 with SMTP id a640c23a62f3a-a93a06c5dc8mr95792366b.59.1727237097937;
+        Tue, 24 Sep 2024 21:04:57 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1727237097; cv=pass;
         d=google.com; s=arc-20240605;
-        b=IFuXCnwHyxSGZo96YpmcEIX4YQpW9tfdFQGIY2GhPcjIMOY4T8Rdf1irc3GLVAfrJa
-         maE/dXJmqIFQYTbwhJnkOs3F50wRXadH5E0pJEnsZ+NEIsbzKWI/d/dIwakItFm+ol1U
-         ItYCity7iqnmkbsCSOWYABOhuEJ4i9yhMxZxOPdiTQ6Ssk+VQR8H/39IVLbwboDf2sbH
-         q+xgiPzH2pEb+/eOc43nsebxPl8c+u7Sw2lhXvUWxrOK43tk/MdDNkhve7/ZtZH9iwHr
-         w4WMhMGvZfk61tHIuRND/ud/2LDLp9JSB5lTGjoUNpUvMFCGMWIAmPSaXAectJKBccto
-         SHxQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to;
-        bh=u9ejhqqcUiylFfNV1ooWWjj9N9t7W0+OxCjN8elKuOw=;
-        fh=dcWtL3UV6hgfvVRRNBgcZIYWwd7971OyicJdpXZbSYo=;
-        b=eQsZQnN2SsIhkUeTKuqm1IHlkO7ezRPNxze9TKbODHk8rH3BImlOtMRrAMCR/fzREg
-         2Tw2jPgwKz5wr89b1014sRjftoGHpurQAzSFTdx1wU95piKv9DUehDTDWThlnJiwYpQ/
-         oBBSQK+Gh9+REijfVh+7yFVC1yPQN1IY85t0dlpX1vfd2mOKftkEpUBUCFxqdp4cEwXY
-         nspkoXzMu6fScZRoZCzJ9IFqqiwGTkWsDgIChYTXF3BnDHOz3QOhe/gcjRTPqJ0uQHHK
-         8WgvgPpycn8eZDzewaXe8IIlwiyMKGg7GnV001w2lHT9X60kWxoDQkVzCZ2myg4H8vMY
-         NMmg==;
+        b=R7+oEGnsJQTwaRSm+iN4IXmUCQRGnSCjNzJdMmR/xdgxXK6zivu6gtbl9ZM+UQ+PeH
+         12VXRkNlbRf71vlP2yw1OogNBMuU4eP0Rik+u1pF2JDjg6dgKSN9DxyLEZdDLa+r1zC2
+         UL1w9JANWSPpqGYXJwXZWEeFRoWQS4fWGNzp61WTlhyzxOnFGMt7edSiWPIA2t9qPXn4
+         E9sU4VN/wzT184dLE10QxA6We67jFQ0p8sN0eCONNvEkEuL3+sAut+Lr04Rsv8s56XWD
+         d07TxtPGVEpBEHnfcg+jOfuPac2G+bk4kNd0wV10woqsNa0ABEYJH9tGWwG3VrSXK7d+
+         mBYQ==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=sender:content-transfer-encoding:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
+         :date:subject:cc:to:from:dkim-signature;
+        bh=+YUeC08ugN2JBtC9RDi/UUV820Wlh8ypgFGLGbc1FxA=;
+        fh=cHr103FZjxYpnzWV8HEdBbSUHzARr8y7HHMCd+4YRdE=;
+        b=UWJs/5TJnLoVPx+2tkOjVrOiSNHkSIJAsSZCDGkaCvRAK0eXqDGrsOQiI1snbK9/j4
+         a51nsBtlA+ejrau/aiLYZ9rHTYfwc3sIDFJTo47BzdxbKCaEyLxGCVx40wHwFCk/8ZW2
+         RQ/T41Fth0fyy/5qhuWbkSgSH/W72/7r5LolaP8RX/BUgbFopJkIr1xC7wj09EotT2Ph
+         FnLWhjA6zIcEKCP8RlF4FBIjzZjdp6ki8+ToFmoiw1McFT0U2X/iaMAghRePDbA1TqZg
+         shrJdn/BjIWAt5uu0pJ8u2oBDPxm/CjbLqErY1MdO+jVYC29hGsbcnUKiDXcIn5zHM9U
+         yAAQ==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-45b526f2719si28754931cf.526.2024.09.24.20.36.48
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=IBpqOl5V;
+       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
+       spf=pass (google.com: domain of linux-kernel+bounces-337973-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) smtp.mailfrom="linux-kernel+bounces-337973-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
+Return-Path: <linux-kernel+bounces-337973-alex.bennee=linaro.org@vger.kernel.org>
+Received: from am.mirrors.kernel.org (am.mirrors.kernel.org. [2604:1380:4601:e00::3])
+        by mx.google.com with ESMTPS id a640c23a62f3a-a9393115736si186339366b.853.2024.09.24.21.04.57
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 24 Sep 2024 20:36:48 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 24 Sep 2024 21:04:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of linux-kernel+bounces-337973-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) client-ip=2604:1380:4601:e00::3;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1stIoQ-0004MU-Lf; Tue, 24 Sep 2024 23:35:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1stIoK-0004BY-PM; Tue, 24 Sep 2024 23:35:30 -0400
-Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1stIoH-0007FP-Cp; Tue, 24 Sep 2024 23:35:27 -0400
-Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
- (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.12; Wed, 25 Sep
- 2024 11:34:55 +0800
-Received: from localhost.localdomain (192.168.10.10) by TWMBX01.aspeed.com
- (192.168.0.62) with Microsoft SMTP Server id 15.2.1258.12 via Frontend
- Transport; Wed, 25 Sep 2024 11:34:55 +0800
-To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
- <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
- <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
- Stanley" <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
- <yunlin.tang@aspeedtech.com>
-Subject: [PATCH v2 6/6] aspeed/soc: Support GPIO for AST2700
-Date: Wed, 25 Sep 2024 11:34:54 +0800
-Message-ID: <20240925033454.4117445-7-jamin_lin@aspeedtech.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20240925033454.4117445-1-jamin_lin@aspeedtech.com>
-References: <20240925033454.4117445-1-jamin_lin@aspeedtech.com>
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=IBpqOl5V;
+       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
+       spf=pass (google.com: domain of linux-kernel+bounces-337973-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) smtp.mailfrom="linux-kernel+bounces-337973-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
+Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by am.mirrors.kernel.org (Postfix) with ESMTPS id 85E2F1F22AA5
+	for <alex.bennee@linaro.org>; Wed, 25 Sep 2024 04:04:57 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 9A8F014B95A;
+	Wed, 25 Sep 2024 04:04:48 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="IBpqOl5V"
+Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 58DCE14B94C
+	for <linux-kernel@vger.kernel.org>; Wed, 25 Sep 2024 04:04:48 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=10.30.226.201
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1727237088; cv=none; b=aDyPbJvB4IGwJxFl4/TxNCGKAW2/NuCXE9oIhUWRaIuMnsUMAL/hNzWM8m3TuUicwa22f4KVzbjlud2Wl1idbZmVcJi3DgVsoqic1TcSlSeZU6QjRBJ7tex9/mBHj5AgVehvhBsSx4Ryhy1ouF7uEmeE0ol2KL6xS0N3cLdcaBo=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1727237088; c=relaxed/simple;
+	bh=BSna6PtTcJXhc2BwT04xbR58a+FIME41kCjBdqVnEa4=;
+	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:
+	 MIME-Version; b=CDlI6PuWXByJNQT494DjyOUMHReeM0FEbBAu1bIXW4wQ06iZtoyhNlZ3r98qIO7UA1JL7kAf+P7wSxOUG7hSAuFxdkWp4W6AE009Y9MvAFSH/5wUV+YREEwh+5EB6lw/xh/Y5zs66fhHsmmGGbVZVoh/nvtthqv5j5N8oVW2DeE=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=IBpqOl5V; arc=none smtp.client-ip=10.30.226.201
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 07961C4CECE;
+	Wed, 25 Sep 2024 04:04:48 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1727237088;
+	bh=BSna6PtTcJXhc2BwT04xbR58a+FIME41kCjBdqVnEa4=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=IBpqOl5VZruvvoSmGlu3kZ3tJ8SCyosM78IgpTjij0u3uNNeY7TjmHDdLXDSnKXcR
+	 ybOWAg5aVBUwYafMsD2XG2xLTJuNdhVA2ryAVFb+5oEgvu0V7c7bJI6qKknRuWuQUu
+	 q3v4iJ3ynhYsMI+LkM6kWZKg5qde4Q8H7vNHPwwMVtfJ+AYVpVcDDVJ+xe2pcE325G
+	 Q+Q/5mHab6utJL/12m30b0q2I9h0fV63yXRe/m9l6l0KAvfVnotVgJYO6EzsBRe9sl
+	 QkKvvV7HNfYZwRgi31YTpQnl4BEPB4TkwDdaU5Lfmiw6OIMcTKEp3I91rTaumHxI55
+	 +roBRiu6iz/8g==
+Received: from mchehab by mail.kernel.org with local (Exim 4.98)
+	(envelope-from <mchehab+huawei@kernel.org>)
+	id 1stJGg-0000000827x-0lpG;
+	Wed, 25 Sep 2024 06:04:46 +0200
+From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+To: Igor Mammedov <imammedo@redhat.com>
+Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>,
+	Shiju Jose <shiju.jose@huawei.com>,
+	Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	Ani Sinha <anisinha@redhat.com>,
+	Dongjiu Geng <gengdongjiu1@gmail.com>,
+	linux-kernel@vger.kernel.org,
+	qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH 05/15] acpi/ghes: Fix acpi_ghes_record_errors() argument
+Date: Wed, 25 Sep 2024 06:04:10 +0200
+Message-ID: <58444cff65cc5b9164f47db4685910a2602b7d13.1727236561.git.mchehab+huawei@kernel.org>
+X-Mailer: git-send-email 2.46.1
+In-Reply-To: <cover.1727236561.git.mchehab+huawei@kernel.org>
+References: <cover.1727236561.git.mchehab+huawei@kernel.org>
+Precedence: bulk
+X-Mailing-List: linux-kernel@vger.kernel.org
+List-Id: <linux-kernel.vger.kernel.org>
+List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-Received-SPF: pass client-ip=211.20.114.72;
- envelope-from=jamin_lin@aspeedtech.com; helo=TWMBX01.aspeed.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_FAIL=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
-From:  Jamin Lin via <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: GrNRVBHfKFz0
+Sender: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+X-TUID: 6XrEtlZNTKrU
 
-Add GPIO model for AST2700 GPIO support.
-The GPIO controller registers base address is start at
-0x14C0_B000 and its address space is 0x1000.
+The first argument is source ID and not notification type.
 
-The AST2700 GPIO controller interrupt is connected to
-GICINT130_INTC at bit 18.
+Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 ---
- hw/arm/aspeed_ast27x0.c | 18 +++++++++++++++---
- 1 file changed, 15 insertions(+), 3 deletions(-)
 
-diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
-index 761ee11657..dca660eb6b 100644
---- a/hw/arm/aspeed_ast27x0.c
-+++ b/hw/arm/aspeed_ast27x0.c
-@@ -62,6 +62,7 @@ static const hwaddr aspeed_soc_ast2700_memmap[] = {
-     [ASPEED_GIC_REDIST]    =  0x12280000,
-     [ASPEED_DEV_ADC]       =  0x14C00000,
-     [ASPEED_DEV_I2C]       =  0x14C0F000,
-+    [ASPEED_DEV_GPIO]      =  0x14C0B000,
- };
+Changes from v8:
+- Non-rename/cleanup changes merged altogether;
+- source ID is now more generic, defined per guest target.
+  That should make easier to add support for 86.
+
+Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+---
+ include/hw/acpi/ghes.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/include/hw/acpi/ghes.h b/include/hw/acpi/ghes.h
+index 20016c226d1f..50e3a25ea384 100644
+--- a/include/hw/acpi/ghes.h
++++ b/include/hw/acpi/ghes.h
+@@ -73,7 +73,7 @@ void acpi_build_hest(GArray *table_data, GArray *hardware_errors,
+                      const char *oem_id, const char *oem_table_id);
+ void acpi_ghes_add_fw_cfg(AcpiGhesState *vms, FWCfgState *s,
+                           GArray *hardware_errors);
+-int acpi_ghes_record_errors(uint8_t notify, uint64_t error_physical_addr);
++int acpi_ghes_record_errors(uint8_t source_id, uint64_t error_physical_addr);
  
- #define AST2700_MAX_IRQ 288
-@@ -87,8 +88,7 @@ static const int aspeed_soc_ast2700_irqmap[] = {
-     [ASPEED_DEV_ADC]       = 130,
-     [ASPEED_DEV_XDMA]      = 5,
-     [ASPEED_DEV_EMMC]      = 15,
--    [ASPEED_DEV_GPIO]      = 11,
--    [ASPEED_DEV_GPIO_1_8V] = 130,
-+    [ASPEED_DEV_GPIO]      = 130,
-     [ASPEED_DEV_RTC]       = 13,
-     [ASPEED_DEV_TIMER1]    = 16,
-     [ASPEED_DEV_TIMER2]    = 17,
-@@ -124,7 +124,7 @@ static const int aspeed_soc_ast2700_gic128_intcmap[] = {
- static const int aspeed_soc_ast2700_gic130_intcmap[] = {
-     [ASPEED_DEV_I2C]        = 0,
-     [ASPEED_DEV_ADC]        = 16,
--    [ASPEED_DEV_GPIO_1_8V]  = 18,
-+    [ASPEED_DEV_GPIO]       = 18,
- };
- 
- /* GICINT 131 */
-@@ -373,6 +373,9 @@ static void aspeed_soc_ast2700_init(Object *obj)
- 
-     snprintf(typename, sizeof(typename), "aspeed.i2c-%s", socname);
-     object_initialize_child(obj, "i2c", &s->i2c, typename);
-+
-+    snprintf(typename, sizeof(typename), "aspeed.gpio-%s", socname);
-+    object_initialize_child(obj, "gpio", &s->gpio, typename);
- }
- 
- /*
-@@ -658,6 +661,15 @@ static void aspeed_soc_ast2700_realize(DeviceState *dev, Error **errp)
-         sysbus_connect_irq(SYS_BUS_DEVICE(&s->i2c.busses[i]), 0, irq);
-     }
- 
-+    /* GPIO */
-+    if (!sysbus_realize(SYS_BUS_DEVICE(&s->gpio), errp)) {
-+        return;
-+    }
-+    aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->gpio), 0,
-+                    sc->memmap[ASPEED_DEV_GPIO]);
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->gpio), 0,
-+                       aspeed_soc_get_irq(s, ASPEED_DEV_GPIO));
-+
-     create_unimplemented_device("ast2700.dpmcu", 0x11000000, 0x40000);
-     create_unimplemented_device("ast2700.iomem0", 0x12000000, 0x01000000);
-     create_unimplemented_device("ast2700.iomem1", 0x14000000, 0x01000000);
+ /**
+  * acpi_ghes_present: Report whether ACPI GHES table is present
 -- 
-2.34.1
+2.46.1
 

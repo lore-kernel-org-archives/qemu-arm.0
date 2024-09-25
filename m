@@ -1,40 +1,40 @@
-Received: by 2002:a17:505:5b18:b0:1be9:327d:8ee3 with SMTP id ox24csp86624njb;
-        Tue, 24 Sep 2024 20:36:16 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWUP0Ih3fDKINjvtNga+M929ap7g4d3x8AmOU9K4ujkD7nd0vp/JqSiwCkUuIYY0G2fjx/+E3Ouamo2WQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IFFDsde02T8du1C7LoplZEf1NudBop8dOExn5d3CbPwGM0Amwz4W17dZf7kYUuEObXF1a4H
-X-Received: by 2002:a05:622a:1812:b0:458:2214:9c88 with SMTP id d75a77b69052e-45b5dece48dmr25759691cf.2.1727235376507;
-        Tue, 24 Sep 2024 20:36:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1727235376; cv=none;
+Received: by 2002:a17:505:5b18:b0:1be9:327d:8ee3 with SMTP id ox24csp86734njb;
+        Tue, 24 Sep 2024 20:36:40 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCU68vkwpZQsHKA+qXfpr/TUaVQd5jfRq/a+aVdN4xIyF9IUFT2vtkH2I0y1jQ2GNukx/h/XNpn+C9vTdA==@linaro.org
+X-Google-Smtp-Source: AGHT+IENSvTr+HEOT1hbkGFAS6v6yShSP13Ga3WXgmaC5Ns35jpkBRNy2cxNOwrKcczZAndgu+xS
+X-Received: by 2002:a05:622a:1885:b0:457:c74a:638e with SMTP id d75a77b69052e-45b5e02c502mr23398831cf.38.1727235400800;
+        Tue, 24 Sep 2024 20:36:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1727235400; cv=none;
         d=google.com; s=arc-20240605;
-        b=XYZfyWFpXuQfoc0PmrqnLm8Mfv/zEQ4gMuQzuxEMwXo74lcxCjb/Ep0B7rKqLZsDjq
-         Y2pt2INp0mk69BeEBS2v21fI+pne1X3lj8mcCjMAWF6pgyDmsnbbpZcjpuQQ385LpGGR
-         NnzKb6FKgtJ9slOIqdPiWfU096are4Qlyps4HAb7P4vdSDOIt2UZHvrZcy7DL/HiiqFf
-         lnrVTqDLxAewkTAFXCX2EyDNsFo4NpQoBRauIIomcB0Q+BHo3a1U5qaCyqvJyW2Q6988
-         l/c7ZXjxLMtPtzJXJ20ZEaWYAwfOImGAsIGagoJQU2RWFVyDTyV8l/ncQfIQM3dUMusM
-         1dBA==
+        b=aPIM4EtRDyD13qXg4vfXfzBCrElWiyNKwonju7PX5GJhYtXwFgTp4XRa6AvNLbiMbB
+         TbpSeqClE1NwJbxPoM8vB+29VTUcTYjUpdd+Wv/uEPcNXuF3j56Nw0QqQhDaKdlatZLx
+         9EBmjnGtUrMVx/TLAJx3f173AdcwK9QFlkN6aRYLrnmPaYgDV1uTS4vLwI/Mm4HVO9jX
+         /IczRd+yzJPY8I+5c8zcE65iQpMhYrchMzL0uuNDP0pu3wVrDEFss8BwRpvq+cMYdusc
+         6bJnciyMFJqLpv1q0uTuN1Txm9q4dHAkQEKA+P7AzrZuog7kl4gBlno8goyOREXtbtX2
+         Qctw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to;
-        bh=9OvADZc0ts0pP6Jed9hSWpXMqOSuZENTAYqygDaRCRU=;
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to;
+        bh=WNsf14GdiSamAqAPzUe8vgbtlbObAAnOhHzFypFAoW8=;
         fh=dcWtL3UV6hgfvVRRNBgcZIYWwd7971OyicJdpXZbSYo=;
-        b=alh/lLKSlswqAli7qZmBnTJufrGhNcWStp1eJ1h3NBuqj0UBPbFpT5cKpramq9VcTp
-         +/2Daaa3Gkg87uJV200Zn2SwrY7NJ990hEH91Uc2IO1uHOXeWPQ5Q2KThv8x7FvOSnI3
-         bfV4X5RoKlZLtCRfOpYh0YVMmLb6HHwO1sq5dxpl150yLIYXzHpRMyw9S4P4nOmruvfd
-         o01YuGWx81qUEHz/Lq6EydzWDVF5NDMoo6SndMKcqqgeMH4PU21dLojWGi48r4x3hNib
-         4a0nATP04jEK0yDqzx3i2Hm6RBJoyKnX0e5KIv4mUeYAnDLDvNhmpIszEqpUdvsa0ZJ4
-         n4yA==;
+        b=HnBbTO54yxO9w8/BS1yl8Jh47ELVnqWCa0aGWvflm4tYKQQTKPw0vvsR2tHQNUD0Gb
+         pWCHblsdkFILaN+y/PBXBZj0v5B+wNSRhrn9LkbZt0Mo/p6ipXLNaHjyAHhySr1/30rW
+         BxmHuWSTtyiL4aIiVjNMa8QUbKR0lPsVxuQQQsgX4Eb1KNHFhbdBWrsxDD+zjJrnhLlH
+         4VEpOrzIryqO+gRlYBz+jlVjoBx6mOFkLeAHpVz6IZs5//2DTT7MCWXCqNhXWZbQX6d3
+         GjBNP224gLVfBv5EmJtqS6WW/U5nWHJYARjkF6I3+/QB90TAYIvybfjKAW8By9bvk/04
+         kKEA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-45b5256f9a5si29498691cf.88.2024.09.24.20.36.16
+        by mx.google.com with ESMTPS id d75a77b69052e-45b52734fe7si29486591cf.642.2024.09.24.20.36.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 24 Sep 2024 20:36:16 -0700 (PDT)
+        Tue, 24 Sep 2024 20:36:40 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
@@ -42,22 +42,22 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1stInz-0003Md-HD; Tue, 24 Sep 2024 23:35:07 -0400
+	id 1stIoP-0004IZ-S1; Tue, 24 Sep 2024 23:35:33 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1stInx-0003HO-Aj; Tue, 24 Sep 2024 23:35:05 -0400
+ id 1stIoF-00047G-2p; Tue, 24 Sep 2024 23:35:24 -0400
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1stInu-0007FP-Mv; Tue, 24 Sep 2024 23:35:05 -0400
+ id 1stIoB-0007FP-SO; Tue, 24 Sep 2024 23:35:22 -0400
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.12; Wed, 25 Sep
- 2024 11:34:54 +0800
+ 2024 11:34:55 +0800
 Received: from localhost.localdomain (192.168.10.10) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server id 15.2.1258.12 via Frontend
- Transport; Wed, 25 Sep 2024 11:34:54 +0800
+ Transport; Wed, 25 Sep 2024 11:34:55 +0800
 To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
  <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
@@ -65,10 +65,12 @@ To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  "open list:All patches CC here" <qemu-devel@nongnu.org>
 CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
  <yunlin.tang@aspeedtech.com>
-Subject: [PATCH v2 0/6] Support GPIO for AST2700
-Date: Wed, 25 Sep 2024 11:34:48 +0800
-Message-ID: <20240925033454.4117445-1-jamin_lin@aspeedtech.com>
+Subject: [PATCH v2 5/6] hw/gpio/aspeed: Add AST2700 support
+Date: Wed, 25 Sep 2024 11:34:53 +0800
+Message-ID: <20240925033454.4117445-6-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20240925033454.4117445-1-jamin_lin@aspeedtech.com>
+References: <20240925033454.4117445-1-jamin_lin@aspeedtech.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
@@ -96,25 +98,462 @@ Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
 From:  Jamin Lin via <qemu-devel@nongnu.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: w4+BuP3rA+Im
+X-TUID: ZAxLpCURttV3
 
-v1: Support GPIO for AST2700
-v2: Fix clear incorrect interrupt status and adds reviewer suggestion
+AST2700 integrates two set of Parallel GPIO Controller
+with maximum 212 control pins, which are 27 groups.
+(H, exclude pin: H7 H6 H5 H4)
 
-Jamin Lin (6):
-  hw/gpio/aspeed: Fix coding style
-  hw/gpio/aspeed: Support to set the different memory size
-  hw/gpio/aspeed: Support different memory region ops
-  hw/gpio/aspeed: Fix clear incorrect interrupt status for GPIO index
-    mode
-  hw/gpio/aspeed: Add AST2700 support
-  aspeed/soc: Support GPIO for AST2700
+In the previous design of ASPEED SOCs,
+one register is used for setting one function for one set which are 32 pins
+and 4 groups.
+ex: GPIO000 is used for setting data value for GPIO A, B, C and D in AST2600.
+ex: GPIO004 is used for setting direction for GPIO A, B, C and D in AST2600.
 
- hw/arm/aspeed_ast27x0.c       |  18 +-
- hw/gpio/aspeed_gpio.c         | 413 ++++++++++++++++++++++++++++++++--
- include/hw/gpio/aspeed_gpio.h |   4 +-
- 3 files changed, 418 insertions(+), 17 deletions(-)
+However, the register set have a significant change since AST2700.
+Each GPIO pin has their own individual control register. In other words, users are able to
+set one GPIO pin’s direction, interrupt enable, input mask and so on
+in the same one register.
 
+Currently, aspeed_gpio_read/aspeed_gpio_write callback functions
+are not compatible AST2700.
+Introduce new aspeed_gpio_2700_read/aspeed_gpio_2700_write callback functions
+and aspeed_gpio_2700_ops memory region operation for AST2700.
+Introduce a new ast2700 class to support AST2700.
+
+Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+---
+ hw/gpio/aspeed_gpio.c | 375 ++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 375 insertions(+)
+
+diff --git a/hw/gpio/aspeed_gpio.c b/hw/gpio/aspeed_gpio.c
+index 58ae63e3c1..e09e34ff2d 100644
+--- a/hw/gpio/aspeed_gpio.c
++++ b/hw/gpio/aspeed_gpio.c
+@@ -227,6 +227,38 @@ REG32(GPIO_INDEX_REG, 0x2AC)
+     FIELD(GPIO_INDEX_REG, COMMAND_SRC_1, 21, 1)
+     FIELD(GPIO_INDEX_REG, INPUT_MASK, 20, 1)
+ 
++/* AST2700 GPIO Register Address Offsets */
++REG32(GPIO_2700_DEBOUNCE_TIME_1, 0x000)
++REG32(GPIO_2700_DEBOUNCE_TIME_2, 0x004)
++REG32(GPIO_2700_DEBOUNCE_TIME_3, 0x008)
++REG32(GPIO_2700_INT_STATUS_1, 0x100)
++REG32(GPIO_2700_INT_STATUS_2, 0x104)
++REG32(GPIO_2700_INT_STATUS_3, 0x108)
++REG32(GPIO_2700_INT_STATUS_4, 0x10C)
++REG32(GPIO_2700_INT_STATUS_5, 0x110)
++REG32(GPIO_2700_INT_STATUS_6, 0x114)
++REG32(GPIO_2700_INT_STATUS_7, 0x118)
++/* GPIOA0 - GPIOAA7 Control Register */
++REG32(GPIO_A0_CONTROL, 0x180)
++    SHARED_FIELD(GPIO_CONTROL_OUT_DATA, 0, 1)
++    SHARED_FIELD(GPIO_CONTROL_DIRECTION, 1, 1)
++    SHARED_FIELD(GPIO_CONTROL_INT_ENABLE, 2, 1)
++    SHARED_FIELD(GPIO_CONTROL_INT_SENS_0, 3, 1)
++    SHARED_FIELD(GPIO_CONTROL_INT_SENS_1, 4, 1)
++    SHARED_FIELD(GPIO_CONTROL_INT_SENS_2, 5, 1)
++    SHARED_FIELD(GPIO_CONTROL_RESET_TOLERANCE, 6, 1)
++    SHARED_FIELD(GPIO_CONTROL_DEBOUNCE_1, 7, 1)
++    SHARED_FIELD(GPIO_CONTROL_DEBOUNCE_2, 8, 1)
++    SHARED_FIELD(GPIO_CONTROL_INPUT_MASK, 9, 1)
++    SHARED_FIELD(GPIO_CONTROL_BLINK_COUNTER_1, 10, 1)
++    SHARED_FIELD(GPIO_CONTROL_BLINK_COUNTER_2, 11, 1)
++    SHARED_FIELD(GPIO_CONTROL_INT_STATUS, 12, 1)
++    SHARED_FIELD(GPIO_CONTROL_IN_DATA, 13, 1)
++    SHARED_FIELD(GPIO_CONTROL_RESERVED, 14, 18)
++REG32(GPIO_AA7_CONTROL, 0x4DC)
++#define GPIO_2700_MEM_SIZE 0x4E0
++#define GPIO_2700_REG_ARRAY_SIZE (GPIO_2700_MEM_SIZE >> 2)
++
+ static int aspeed_evaluate_irq(GPIOSets *regs, int gpio_prev_high, int gpio)
+ {
+     uint32_t falling_edge = 0, rising_edge = 0;
+@@ -965,6 +997,311 @@ static void aspeed_gpio_set_pin(Object *obj, Visitor *v, const char *name,
+     aspeed_gpio_set_pin_level(s, set_idx, pin, level);
+ }
+ 
++static uint64_t aspeed_gpio_2700_read_control_reg(AspeedGPIOState *s,
++                                    uint32_t pin)
++{
++    AspeedGPIOClass *agc = ASPEED_GPIO_GET_CLASS(s);
++    GPIOSets *set;
++    uint64_t value = 0;
++    uint32_t set_idx;
++    uint32_t pin_idx;
++
++    set_idx = pin / ASPEED_GPIOS_PER_SET;
++    pin_idx = pin % ASPEED_GPIOS_PER_SET;
++
++    if (set_idx >= agc->nr_gpio_sets) {
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: set index: %d, out of bounds\n",
++                      __func__, set_idx);
++        return 0;
++    }
++
++    set = &s->sets[set_idx];
++    value = SHARED_FIELD_DP32(value, GPIO_CONTROL_OUT_DATA,
++                              extract32(set->data_read, pin_idx, 1));
++    value = SHARED_FIELD_DP32(value, GPIO_CONTROL_DIRECTION,
++                              extract32(set->direction, pin_idx, 1));
++    value = SHARED_FIELD_DP32(value, GPIO_CONTROL_INT_ENABLE,
++                              extract32(set->int_enable, pin_idx, 1));
++    value = SHARED_FIELD_DP32(value, GPIO_CONTROL_INT_SENS_0,
++                              extract32(set->int_sens_0, pin_idx, 1));
++    value = SHARED_FIELD_DP32(value, GPIO_CONTROL_INT_SENS_1,
++                              extract32(set->int_sens_1, pin_idx, 1));
++    value = SHARED_FIELD_DP32(value, GPIO_CONTROL_INT_SENS_2,
++                              extract32(set->int_sens_2, pin_idx, 1));
++    value = SHARED_FIELD_DP32(value, GPIO_CONTROL_RESET_TOLERANCE,
++                              extract32(set->reset_tol, pin_idx, 1));
++    value = SHARED_FIELD_DP32(value, GPIO_CONTROL_DEBOUNCE_1,
++                              extract32(set->debounce_1, pin_idx, 1));
++    value = SHARED_FIELD_DP32(value, GPIO_CONTROL_DEBOUNCE_2,
++                              extract32(set->debounce_2, pin_idx, 1));
++    value = SHARED_FIELD_DP32(value, GPIO_CONTROL_INPUT_MASK,
++                              extract32(set->input_mask, pin_idx, 1));
++    value = SHARED_FIELD_DP32(value, GPIO_CONTROL_INT_STATUS,
++                              extract32(set->int_status, pin_idx, 1));
++    value = SHARED_FIELD_DP32(value, GPIO_CONTROL_IN_DATA,
++                              extract32(set->data_value, pin_idx, 1));
++    return value;
++}
++
++static void aspeed_gpio_2700_write_control_reg(AspeedGPIOState *s,
++                                uint32_t pin, uint32_t type, uint64_t data)
++{
++    AspeedGPIOClass *agc = ASPEED_GPIO_GET_CLASS(s);
++    const GPIOSetProperties *props;
++    GPIOSets *set;
++    uint32_t set_idx;
++    uint32_t pin_idx;
++    uint32_t group_value = 0;
++    uint32_t pending = 0;
++
++    set_idx = pin / ASPEED_GPIOS_PER_SET;
++    pin_idx = pin % ASPEED_GPIOS_PER_SET;
++
++    if (set_idx >= agc->nr_gpio_sets) {
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: set index: %d, out of bounds\n",
++                      __func__, set_idx);
++        return;
++    }
++
++    set = &s->sets[set_idx];
++    props = &agc->props[set_idx];
++
++    /* direction */
++    group_value = set->direction;
++    group_value = deposit32(group_value, pin_idx, 1,
++                            SHARED_FIELD_EX32(data, GPIO_CONTROL_DIRECTION));
++    /*
++     * where data is the value attempted to be written to the pin:
++     * pin type      | input mask | output mask | expected value
++     * ------------------------------------------------------------
++     * bidirectional  |   1       |   1        |  data
++     * input only     |   1       |   0        |   0
++     * output only    |   0       |   1        |   1
++     * no pin         |   0       |   0        |   0
++     *
++     * which is captured by:
++     * data = ( data | ~input) & output;
++     */
++    group_value = (group_value | ~props->input) & props->output;
++    set->direction = update_value_control_source(set, set->direction,
++                                                 group_value);
++
++    /* out data */
++    group_value = set->data_read;
++    group_value = deposit32(group_value, pin_idx, 1,
++                            SHARED_FIELD_EX32(data, GPIO_CONTROL_OUT_DATA));
++    group_value &= props->output;
++    group_value = update_value_control_source(set, set->data_read,
++                                              group_value);
++    set->data_read = group_value;
++
++    /* interrupt enable */
++    group_value = set->int_enable;
++    group_value = deposit32(group_value, pin_idx, 1,
++                            SHARED_FIELD_EX32(data, GPIO_CONTROL_INT_ENABLE));
++    set->int_enable = update_value_control_source(set, set->int_enable,
++                                                  group_value);
++
++    /* interrupt sensitivity type 0 */
++    group_value = set->int_sens_0;
++    group_value = deposit32(group_value, pin_idx, 1,
++                            SHARED_FIELD_EX32(data, GPIO_CONTROL_INT_SENS_0));
++    set->int_sens_0 = update_value_control_source(set, set->int_sens_0,
++                                                  group_value);
++
++    /* interrupt sensitivity type 1 */
++    group_value = set->int_sens_1;
++    group_value = deposit32(group_value, pin_idx, 1,
++                            SHARED_FIELD_EX32(data, GPIO_CONTROL_INT_SENS_1));
++    set->int_sens_1 = update_value_control_source(set, set->int_sens_1,
++                                                  group_value);
++
++    /* interrupt sensitivity type 2 */
++    group_value = set->int_sens_2;
++    group_value = deposit32(group_value, pin_idx, 1,
++                            SHARED_FIELD_EX32(data, GPIO_CONTROL_INT_SENS_2));
++    set->int_sens_2 = update_value_control_source(set, set->int_sens_2,
++                                                  group_value);
++
++    /* reset tolerance enable */
++    group_value = set->reset_tol;
++    group_value = deposit32(group_value, pin_idx, 1,
++                        SHARED_FIELD_EX32(data, GPIO_CONTROL_RESET_TOLERANCE));
++    set->reset_tol = update_value_control_source(set, set->reset_tol,
++                                                 group_value);
++
++    /* debounce 1 */
++    group_value = set->debounce_1;
++    group_value = deposit32(group_value, pin_idx, 1,
++                            SHARED_FIELD_EX32(data, GPIO_CONTROL_DEBOUNCE_1));
++    set->debounce_1 = update_value_control_source(set, set->debounce_1,
++                                                  group_value);
++
++    /* debounce 2 */
++    group_value = set->debounce_2;
++    group_value = deposit32(group_value, pin_idx, 1,
++                            SHARED_FIELD_EX32(data, GPIO_CONTROL_DEBOUNCE_2));
++    set->debounce_2 = update_value_control_source(set, set->debounce_2,
++                                                  group_value);
++
++    /* input mask */
++    group_value = set->input_mask;
++    group_value = deposit32(group_value, pin_idx, 1,
++                            SHARED_FIELD_EX32(data, GPIO_CONTROL_INPUT_MASK));
++    /*
++     * feeds into interrupt generation
++     * 0: read from data value reg will be updated
++     * 1: read from data value reg will not be updated
++     */
++    set->input_mask = group_value & props->input;
++
++    /* blink counter 1 */
++    /* blink counter 2 */
++    /* unimplement */
++
++    /* interrupt status */
++    if (SHARED_FIELD_EX32(data, GPIO_CONTROL_INT_STATUS)) {
++        pending = extract32(set->int_status, pin_idx, 1);
++        if (pending) {
++            if (s->pending) {
++                assert(s->pending >= pending);
++                s->pending -= pending;
++            }
++            set->int_status = deposit32(set->int_status, pin_idx, 1, 0);
++        }
++    }
++
++    aspeed_gpio_update(s, set, set->data_value, UINT32_MAX);
++    return;
++}
++
++static uint64_t aspeed_gpio_2700_read(void *opaque, hwaddr offset,
++                                uint32_t size)
++{
++    AspeedGPIOState *s = ASPEED_GPIO(opaque);
++    AspeedGPIOClass *agc = ASPEED_GPIO_GET_CLASS(s);
++    GPIOSets *set;
++    uint64_t value;
++    uint64_t reg;
++    uint32_t pin;
++    uint32_t idx;
++
++    reg = offset >> 2;
++
++    if (reg >= agc->reg_table_count) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: offset 0x%" PRIx64 " out of bounds\n",
++                      __func__, offset);
++        return 0;
++    }
++
++    switch (reg) {
++    case R_GPIO_2700_DEBOUNCE_TIME_1 ... R_GPIO_2700_DEBOUNCE_TIME_3:
++        idx = reg - R_GPIO_2700_DEBOUNCE_TIME_1;
++
++        if (idx >= ASPEED_GPIO_NR_DEBOUNCE_REGS) {
++            qemu_log_mask(LOG_GUEST_ERROR,
++                          "%s: debounce index: %d, out of bounds\n",
++                          __func__, idx);
++            return 0;
++        }
++
++        value = (uint64_t) s->debounce_regs[idx];
++        break;
++    case R_GPIO_2700_INT_STATUS_1 ... R_GPIO_2700_INT_STATUS_7:
++        idx = reg - R_GPIO_2700_INT_STATUS_1;
++
++        if (idx >= agc->nr_gpio_sets) {
++            qemu_log_mask(LOG_GUEST_ERROR,
++                          "%s: interrupt status index: %d, out of bounds\n",
++                          __func__, idx);
++            return 0;
++        }
++
++        set = &s->sets[idx];
++        value = (uint64_t) set->int_status;
++        break;
++    case R_GPIO_A0_CONTROL ... R_GPIO_AA7_CONTROL:
++        pin = reg - R_GPIO_A0_CONTROL;
++
++        if (pin >= agc->nr_gpio_pins) {
++            qemu_log_mask(LOG_GUEST_ERROR, "%s: invalid pin number: %d\n",
++                          __func__, pin);
++               return 0;
++        }
++
++        value = aspeed_gpio_2700_read_control_reg(s, pin);
++        break;
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: no getter for offset 0x%"
++                      PRIx64"\n", __func__, offset);
++        return 0;
++    }
++
++    trace_aspeed_gpio_read(offset, value);
++    return value;
++}
++
++static void aspeed_gpio_2700_write(void *opaque, hwaddr offset,
++                                uint64_t data, uint32_t size)
++{
++    AspeedGPIOState *s = ASPEED_GPIO(opaque);
++    AspeedGPIOClass *agc = ASPEED_GPIO_GET_CLASS(s);
++    uint64_t reg;
++    uint32_t pin;
++    uint32_t type;
++    uint32_t idx;
++
++    trace_aspeed_gpio_write(offset, data);
++
++    reg = offset >> 2;
++
++    if (reg >= agc->reg_table_count) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: offset 0x%" PRIx64 " out of bounds\n",
++                      __func__, offset);
++        return;
++    }
++
++    switch (reg) {
++    case R_GPIO_2700_DEBOUNCE_TIME_1 ... R_GPIO_2700_DEBOUNCE_TIME_3:
++        idx = reg - R_GPIO_2700_DEBOUNCE_TIME_1;
++
++        if (idx >= ASPEED_GPIO_NR_DEBOUNCE_REGS) {
++            qemu_log_mask(LOG_GUEST_ERROR,
++                          "%s: debounce index: %d out of bounds\n",
++                          __func__, idx);
++            return;
++        }
++
++        s->debounce_regs[idx] = (uint32_t) data;
++        break;
++    case R_GPIO_A0_CONTROL ... R_GPIO_AA7_CONTROL:
++        pin = reg - R_GPIO_A0_CONTROL;
++
++        if (pin >= agc->nr_gpio_pins) {
++            qemu_log_mask(LOG_GUEST_ERROR, "%s: invalid pin number: %d\n",
++                          __func__, pin);
++            return;
++        }
++
++        if (SHARED_FIELD_EX32(data, GPIO_CONTROL_RESERVED)) {
++            qemu_log_mask(LOG_GUEST_ERROR, "%s: invalid reserved data: 0x%"
++                          PRIx64"\n", __func__, data);
++            return;
++        }
++
++        aspeed_gpio_2700_write_control_reg(s, pin, type, data);
++        break;
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: no setter for offset 0x%"
++                      PRIx64"\n", __func__, offset);
++        break;
++    }
++
++    return;
++}
++
+ /* Setup functions */
+ static const GPIOSetProperties ast2400_set_props[ASPEED_GPIO_MAX_NR_SETS] = {
+     [0] = {0xffffffff,  0xffffffff,  {"A", "B", "C", "D"} },
+@@ -1011,6 +1348,16 @@ static GPIOSetProperties ast1030_set_props[ASPEED_GPIO_MAX_NR_SETS] = {
+     [5] = {0x000000ff,  0x00000000,  {"U"} },
+ };
+ 
++static GPIOSetProperties ast2700_set_props[ASPEED_GPIO_MAX_NR_SETS] = {
++    [0] = {0xffffffff,  0xffffffff,  {"A", "B", "C", "D"} },
++    [1] = {0x0fffffff,  0x0fffffff,  {"E", "F", "G", "H"} },
++    [2] = {0xffffffff,  0xffffffff,  {"I", "J", "K", "L"} },
++    [3] = {0xffffffff,  0xffffffff,  {"M", "N", "O", "P"} },
++    [4] = {0xffffffff,  0xffffffff,  {"Q", "R", "S", "T"} },
++    [5] = {0xffffffff,  0xffffffff,  {"U", "V", "W", "X"} },
++    [6] = {0x00ffffff,  0x00ffffff,  {"Y", "Z", "AA"} },
++};
++
+ static const MemoryRegionOps aspeed_gpio_ops = {
+     .read       = aspeed_gpio_read,
+     .write      = aspeed_gpio_write,
+@@ -1019,6 +1366,14 @@ static const MemoryRegionOps aspeed_gpio_ops = {
+     .valid.max_access_size = 4,
+ };
+ 
++static const MemoryRegionOps aspeed_gpio_2700_ops = {
++    .read       = aspeed_gpio_2700_read,
++    .write      = aspeed_gpio_2700_write,
++    .endianness = DEVICE_LITTLE_ENDIAN,
++    .valid.min_access_size = 4,
++    .valid.max_access_size = 4,
++};
++
+ static void aspeed_gpio_reset(DeviceState *dev)
+ {
+     AspeedGPIOState *s = ASPEED_GPIO(dev);
+@@ -1188,6 +1543,18 @@ static void aspeed_gpio_1030_class_init(ObjectClass *klass, void *data)
+     agc->reg_ops = &aspeed_gpio_ops;
+ }
+ 
++static void aspeed_gpio_2700_class_init(ObjectClass *klass, void *data)
++{
++    AspeedGPIOClass *agc = ASPEED_GPIO_CLASS(klass);
++
++    agc->props = ast2700_set_props;
++    agc->nr_gpio_pins = 216;
++    agc->nr_gpio_sets = 7;
++    agc->reg_table_count = GPIO_2700_REG_ARRAY_SIZE;
++    agc->mem_size = 0x1000;
++    agc->reg_ops = &aspeed_gpio_2700_ops;
++}
++
+ static const TypeInfo aspeed_gpio_info = {
+     .name           = TYPE_ASPEED_GPIO,
+     .parent         = TYPE_SYS_BUS_DEVICE,
+@@ -1232,6 +1599,13 @@ static const TypeInfo aspeed_gpio_ast1030_info = {
+     .instance_init  = aspeed_gpio_init,
+ };
+ 
++static const TypeInfo aspeed_gpio_ast2700_info = {
++    .name           = TYPE_ASPEED_GPIO "-ast2700",
++    .parent         = TYPE_ASPEED_GPIO,
++    .class_init     = aspeed_gpio_2700_class_init,
++    .instance_init  = aspeed_gpio_init,
++};
++
+ static void aspeed_gpio_register_types(void)
+ {
+     type_register_static(&aspeed_gpio_info);
+@@ -1240,6 +1614,7 @@ static void aspeed_gpio_register_types(void)
+     type_register_static(&aspeed_gpio_ast2600_3_3v_info);
+     type_register_static(&aspeed_gpio_ast2600_1_8v_info);
+     type_register_static(&aspeed_gpio_ast1030_info);
++    type_register_static(&aspeed_gpio_ast2700_info);
+ }
+ 
+ type_init(aspeed_gpio_register_types);
 -- 
 2.34.1
 

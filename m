@@ -1,63 +1,63 @@
-Received: by 2002:a17:505:5b18:b0:1be9:327d:8ee3 with SMTP id ox24csp86772njb;
-        Tue, 24 Sep 2024 20:36:47 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCV2BNFBqqHqyrn6eYQ3812HmgVhfuoszLvnpon9BIAFm4wTCCUYidDLUzCaZ0SWoLOH+Sn/3XEny7v1CQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IHOiJdUqbVdml4LcyxoXMF9JWRo5xTA2ZVFs9Awpa1eSZzMXfnPghyqlyy8NdwD57BbiOTO
-X-Received: by 2002:a05:622a:144c:b0:45b:16f5:6c16 with SMTP id d75a77b69052e-45b5dede324mr26393501cf.24.1727235407308;
-        Tue, 24 Sep 2024 20:36:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1727235407; cv=none;
+Received: by 2002:a17:505:5b18:b0:1be9:327d:8ee3 with SMTP id ox24csp86789njb;
+        Tue, 24 Sep 2024 20:36:48 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCV3CV1dAnqmOe12VG/lqEopH2rm4i8MIv5bQVniz7XZj7oG/tcH9Vmsb2yfWSkZ7h62bxPZbNk4pCp9Ow==@linaro.org
+X-Google-Smtp-Source: AGHT+IFUwfF15s8csfi9QojyxX9y4zogW0Zw6rimBhnMGy53kdIzpT7Z1WjZWE4tOP1fcDAojYNp
+X-Received: by 2002:a05:622a:1898:b0:458:5992:34c1 with SMTP id d75a77b69052e-45b5dede46amr20718241cf.16.1727235408193;
+        Tue, 24 Sep 2024 20:36:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1727235408; cv=none;
         d=google.com; s=arc-20240605;
-        b=Cil4ZoUOQVriXJY98jPsLqp3V0wvd30DpPJ6zVpyhyw1d02dTeUVRavouKWdWQvwag
-         fxaixC/Q81/6ionDdwn99PuPn9vkVeX/g57FcDMFxmJbuyIVjpcewqV5wl+x/TED/2hb
-         lPef/1lvY9Od9VpnpqRyaxYLRjKdfXbezKXCQ5RdKSxu5m1dbHcPX1NmtNNJTy5gOWRu
-         Jv4YeVjJ1C0zpHY3PfBCCvMHeaPRI4mSyDiZZpPWFohTKGs4sehamzuCJFQ1kcDQoT9Z
-         DCniu96wYddixnUEYDBtAxNg9/T4+j91lJWo8xL7TX10nznNoDMqCZ4VmGgFycHI5GY8
-         J9wA==
+        b=IFuXCnwHyxSGZo96YpmcEIX4YQpW9tfdFQGIY2GhPcjIMOY4T8Rdf1irc3GLVAfrJa
+         maE/dXJmqIFQYTbwhJnkOs3F50wRXadH5E0pJEnsZ+NEIsbzKWI/d/dIwakItFm+ol1U
+         ItYCity7iqnmkbsCSOWYABOhuEJ4i9yhMxZxOPdiTQ6Ssk+VQR8H/39IVLbwboDf2sbH
+         q+xgiPzH2pEb+/eOc43nsebxPl8c+u7Sw2lhXvUWxrOK43tk/MdDNkhve7/ZtZH9iwHr
+         w4WMhMGvZfk61tHIuRND/ud/2LDLp9JSB5lTGjoUNpUvMFCGMWIAmPSaXAectJKBccto
+         SHxQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to;
-        bh=C7gbf1L9j9biNEcbmGxVe8HxcMyXt6HdixDYRmyLji4=;
+        bh=u9ejhqqcUiylFfNV1ooWWjj9N9t7W0+OxCjN8elKuOw=;
         fh=dcWtL3UV6hgfvVRRNBgcZIYWwd7971OyicJdpXZbSYo=;
-        b=TPlFJJVDBQfC9u3ai8ckWEJGfGd4hbwMjkZ/tHlmZS5VJ6dS4nDc1tI/Pl3u68s8hX
-         kb5nU95CwT8nl2V6eLWERdp42W3TpxM5b28Nr+cFM4U8+o/+Ctsc7AyGLZiTpG0KBNO8
-         V6Azj6Dam4qJ6R0YBQ4CbpTEhtaNQg1J8avBkjcmP9Psy8Mh2ocrHRmSg9a8bNxye2pp
-         wo+hAexL4d9FjnHHxl5KnCiIZzQGMHWVcoiMgpU59BhQkkYe8nVgtFnPZZKDBffddvtK
-         Js9TlBny71Hhek+4SfstjDs9X3esYkM1NA2GNvQkA+Te4coE9vlVYQeUWaIpwzgVk1j8
-         2Xvw==;
+        b=eQsZQnN2SsIhkUeTKuqm1IHlkO7ezRPNxze9TKbODHk8rH3BImlOtMRrAMCR/fzREg
+         2Tw2jPgwKz5wr89b1014sRjftoGHpurQAzSFTdx1wU95piKv9DUehDTDWThlnJiwYpQ/
+         oBBSQK+Gh9+REijfVh+7yFVC1yPQN1IY85t0dlpX1vfd2mOKftkEpUBUCFxqdp4cEwXY
+         nspkoXzMu6fScZRoZCzJ9IFqqiwGTkWsDgIChYTXF3BnDHOz3QOhe/gcjRTPqJ0uQHHK
+         8WgvgPpycn8eZDzewaXe8IIlwiyMKGg7GnV001w2lHT9X60kWxoDQkVzCZ2myg4H8vMY
+         NMmg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-45b5273e361si29757661cf.662.2024.09.24.20.36.47
+        by mx.google.com with ESMTPS id d75a77b69052e-45b526f2719si28754931cf.526.2024.09.24.20.36.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 24 Sep 2024 20:36:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 24 Sep 2024 20:36:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1stIo5-0003l7-27; Tue, 24 Sep 2024 23:35:13 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1stIoQ-0004MU-Lf; Tue, 24 Sep 2024 23:35:34 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1stIo2-0003as-Om; Tue, 24 Sep 2024 23:35:10 -0400
+ id 1stIoK-0004BY-PM; Tue, 24 Sep 2024 23:35:30 -0400
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1stIo1-0007FP-4u; Tue, 24 Sep 2024 23:35:10 -0400
+ id 1stIoH-0007FP-Cp; Tue, 24 Sep 2024 23:35:27 -0400
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.12; Wed, 25 Sep
- 2024 11:34:54 +0800
+ 2024 11:34:55 +0800
 Received: from localhost.localdomain (192.168.10.10) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server id 15.2.1258.12 via Frontend
- Transport; Wed, 25 Sep 2024 11:34:54 +0800
+ Transport; Wed, 25 Sep 2024 11:34:55 +0800
 To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
  <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
@@ -65,10 +65,9 @@ To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  "open list:All patches CC here" <qemu-devel@nongnu.org>
 CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
  <yunlin.tang@aspeedtech.com>
-Subject: [PATCH v2 2/6] hw/gpio/aspeed: Support to set the different memory
- size
-Date: Wed, 25 Sep 2024 11:34:50 +0800
-Message-ID: <20240925033454.4117445-3-jamin_lin@aspeedtech.com>
+Subject: [PATCH v2 6/6] aspeed/soc: Support GPIO for AST2700
+Date: Wed, 25 Sep 2024 11:34:54 +0800
+Message-ID: <20240925033454.4117445-7-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20240925033454.4117445-1-jamin_lin@aspeedtech.com>
 References: <20240925033454.4117445-1-jamin_lin@aspeedtech.com>
@@ -84,105 +83,92 @@ X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
  SPF_HELO_FAIL=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
-From:  Jamin Lin via <qemu-arm@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: GZpTmYW1qFKE
+From:  Jamin Lin via <qemu-devel@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: GrNRVBHfKFz0
 
-According to the datasheet of ASPEED SOCs,
-a GPIO controller owns 4KB of register space for AST2700,
-AST2500, AST2400 and AST1030; owns 2KB of register space
-for AST2600 1.8v and owns 2KB of register space for AST2600 3.3v.
+Add GPIO model for AST2700 GPIO support.
+The GPIO controller registers base address is start at
+0x14C0_B000 and its address space is 0x1000.
 
-It set the memory region size 2KB by default and it does not compatible
-register space for AST2700.
-
-Introduce a new class attribute to set the GPIO controller memory size
-for different ASPEED SOCs.
+The AST2700 GPIO controller interrupt is connected to
+GICINT130_INTC at bit 18.
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 ---
- hw/gpio/aspeed_gpio.c         | 7 ++++++-
- include/hw/gpio/aspeed_gpio.h | 1 +
- 2 files changed, 7 insertions(+), 1 deletion(-)
+ hw/arm/aspeed_ast27x0.c | 18 +++++++++++++++---
+ 1 file changed, 15 insertions(+), 3 deletions(-)
 
-diff --git a/hw/gpio/aspeed_gpio.c b/hw/gpio/aspeed_gpio.c
-index a5886ffa43..4b8004649b 100644
---- a/hw/gpio/aspeed_gpio.c
-+++ b/hw/gpio/aspeed_gpio.c
-@@ -1048,7 +1048,7 @@ static void aspeed_gpio_realize(DeviceState *dev, Error **errp)
-     }
- 
-     memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_gpio_ops, s,
--            TYPE_ASPEED_GPIO, 0x800);
-+                          TYPE_ASPEED_GPIO, agc->mem_size);
- 
-     sysbus_init_mmio(sbd, &s->iomem);
- }
-@@ -1131,6 +1131,7 @@ static void aspeed_gpio_ast2400_class_init(ObjectClass *klass, void *data)
-     agc->nr_gpio_sets = 7;
-     agc->reg_table = aspeed_3_3v_gpios;
-     agc->reg_table_count = GPIO_3_3V_REG_ARRAY_SIZE;
-+    agc->mem_size = 0x1000;
- }
- 
- static void aspeed_gpio_2500_class_init(ObjectClass *klass, void *data)
-@@ -1142,6 +1143,7 @@ static void aspeed_gpio_2500_class_init(ObjectClass *klass, void *data)
-     agc->nr_gpio_sets = 8;
-     agc->reg_table = aspeed_3_3v_gpios;
-     agc->reg_table_count = GPIO_3_3V_REG_ARRAY_SIZE;
-+    agc->mem_size = 0x1000;
- }
- 
- static void aspeed_gpio_ast2600_3_3v_class_init(ObjectClass *klass, void *data)
-@@ -1153,6 +1155,7 @@ static void aspeed_gpio_ast2600_3_3v_class_init(ObjectClass *klass, void *data)
-     agc->nr_gpio_sets = 7;
-     agc->reg_table = aspeed_3_3v_gpios;
-     agc->reg_table_count = GPIO_3_3V_REG_ARRAY_SIZE;
-+    agc->mem_size = 0x800;
- }
- 
- static void aspeed_gpio_ast2600_1_8v_class_init(ObjectClass *klass, void *data)
-@@ -1164,6 +1167,7 @@ static void aspeed_gpio_ast2600_1_8v_class_init(ObjectClass *klass, void *data)
-     agc->nr_gpio_sets = 2;
-     agc->reg_table = aspeed_1_8v_gpios;
-     agc->reg_table_count = GPIO_1_8V_REG_ARRAY_SIZE;
-+    agc->mem_size = 0x800;
- }
- 
- static void aspeed_gpio_1030_class_init(ObjectClass *klass, void *data)
-@@ -1175,6 +1179,7 @@ static void aspeed_gpio_1030_class_init(ObjectClass *klass, void *data)
-     agc->nr_gpio_sets = 6;
-     agc->reg_table = aspeed_3_3v_gpios;
-     agc->reg_table_count = GPIO_3_3V_REG_ARRAY_SIZE;
-+    agc->mem_size = 0x1000;
- }
- 
- static const TypeInfo aspeed_gpio_info = {
-diff --git a/include/hw/gpio/aspeed_gpio.h b/include/hw/gpio/aspeed_gpio.h
-index 39febda9ea..8cd2ff5496 100644
---- a/include/hw/gpio/aspeed_gpio.h
-+++ b/include/hw/gpio/aspeed_gpio.h
-@@ -76,6 +76,7 @@ struct AspeedGPIOClass {
-     uint32_t nr_gpio_sets;
-     const AspeedGPIOReg *reg_table;
-     unsigned reg_table_count;
-+    uint64_t mem_size;
+diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
+index 761ee11657..dca660eb6b 100644
+--- a/hw/arm/aspeed_ast27x0.c
++++ b/hw/arm/aspeed_ast27x0.c
+@@ -62,6 +62,7 @@ static const hwaddr aspeed_soc_ast2700_memmap[] = {
+     [ASPEED_GIC_REDIST]    =  0x12280000,
+     [ASPEED_DEV_ADC]       =  0x14C00000,
+     [ASPEED_DEV_I2C]       =  0x14C0F000,
++    [ASPEED_DEV_GPIO]      =  0x14C0B000,
  };
  
- struct AspeedGPIOState {
+ #define AST2700_MAX_IRQ 288
+@@ -87,8 +88,7 @@ static const int aspeed_soc_ast2700_irqmap[] = {
+     [ASPEED_DEV_ADC]       = 130,
+     [ASPEED_DEV_XDMA]      = 5,
+     [ASPEED_DEV_EMMC]      = 15,
+-    [ASPEED_DEV_GPIO]      = 11,
+-    [ASPEED_DEV_GPIO_1_8V] = 130,
++    [ASPEED_DEV_GPIO]      = 130,
+     [ASPEED_DEV_RTC]       = 13,
+     [ASPEED_DEV_TIMER1]    = 16,
+     [ASPEED_DEV_TIMER2]    = 17,
+@@ -124,7 +124,7 @@ static const int aspeed_soc_ast2700_gic128_intcmap[] = {
+ static const int aspeed_soc_ast2700_gic130_intcmap[] = {
+     [ASPEED_DEV_I2C]        = 0,
+     [ASPEED_DEV_ADC]        = 16,
+-    [ASPEED_DEV_GPIO_1_8V]  = 18,
++    [ASPEED_DEV_GPIO]       = 18,
+ };
+ 
+ /* GICINT 131 */
+@@ -373,6 +373,9 @@ static void aspeed_soc_ast2700_init(Object *obj)
+ 
+     snprintf(typename, sizeof(typename), "aspeed.i2c-%s", socname);
+     object_initialize_child(obj, "i2c", &s->i2c, typename);
++
++    snprintf(typename, sizeof(typename), "aspeed.gpio-%s", socname);
++    object_initialize_child(obj, "gpio", &s->gpio, typename);
+ }
+ 
+ /*
+@@ -658,6 +661,15 @@ static void aspeed_soc_ast2700_realize(DeviceState *dev, Error **errp)
+         sysbus_connect_irq(SYS_BUS_DEVICE(&s->i2c.busses[i]), 0, irq);
+     }
+ 
++    /* GPIO */
++    if (!sysbus_realize(SYS_BUS_DEVICE(&s->gpio), errp)) {
++        return;
++    }
++    aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->gpio), 0,
++                    sc->memmap[ASPEED_DEV_GPIO]);
++    sysbus_connect_irq(SYS_BUS_DEVICE(&s->gpio), 0,
++                       aspeed_soc_get_irq(s, ASPEED_DEV_GPIO));
++
+     create_unimplemented_device("ast2700.dpmcu", 0x11000000, 0x40000);
+     create_unimplemented_device("ast2700.iomem0", 0x12000000, 0x01000000);
+     create_unimplemented_device("ast2700.iomem1", 0x14000000, 0x01000000);
 -- 
 2.34.1
 

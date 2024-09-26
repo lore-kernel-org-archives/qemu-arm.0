@@ -1,68 +1,68 @@
-Received: by 2002:a17:505:5b18:b0:1be9:327d:8ee3 with SMTP id ox24csp1047825njb;
-        Thu, 26 Sep 2024 09:11:17 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXiXbbUV9lfaptLHONlGcFRkD1yHyRYcMEYkj+K6G3QFtxO9tV/h6F7Lv6VMMmjr2kjFBtGn5demGNawQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IFH2CE2BV7j15hLLST6mTwxfDJlkRtlNcm1+PQ52Sgi+YXABiIfJ9oeg9pgub619i0UkR19
-X-Received: by 2002:a05:620a:2446:b0:7a9:abee:992 with SMTP id af79cd13be357-7ae378bc21fmr13065185a.50.1727367077085;
-        Thu, 26 Sep 2024 09:11:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1727367077; cv=none;
+Received: by 2002:a17:505:5b18:b0:1be9:327d:8ee3 with SMTP id ox24csp1048989njb;
+        Thu, 26 Sep 2024 09:12:48 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWfCxXrHyPU4qlKd9wX/NVk53zyzDi+EXIu7v5PhjH9+4YZ6A8l0XDvbv4EkdXeKNPCerNX8IAPgZJa4A==@linaro.org
+X-Google-Smtp-Source: AGHT+IHVKL73d9lOBRa0PG3qVWWqA/mEzH38yQO6JCuy7iYsJVtfEX9ci6HWjTDI4Q3isoeIAGhD
+X-Received: by 2002:a05:620a:1921:b0:7a9:b250:d57b with SMTP id af79cd13be357-7ae37825c86mr16211585a.5.1727367168439;
+        Thu, 26 Sep 2024 09:12:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1727367168; cv=none;
         d=google.com; s=arc-20240605;
-        b=XGB/Cpr9eIvO8pnfeGBlfTGolqPBVFeWjHBD8lI/Z1gusRiCwjYFSqZHZp+XMW4/7K
-         O8e8bSiH+Dlvav/oZqiVGWtVI+OYOkTT8Z0i8Igcllhmd/v9/jsYpmijnw5nX7QEBQvD
-         jRqhaxL3VobhlW5nyvcDvst78/As6VMmI0LdF+L2X5o/11LmB1TVK2IwhrzXzi51dcPf
-         uYjd39KPlwT1+/cbzrV9AZr7bi0u71np5iwNKWVIGq0z8c3VGgiC7OVw/zE/XEDw7Bp4
-         NvuUFWxnzh+4foIYjzyAiBOITvjM+nhBSS11lNY1SY/TvjOoDcy82V71iNd3XtM4+G/I
-         6tOg==
+        b=JO50mS2EqkrVeHJQGSgyyRzpH+1qPWQeS1JHoz/NGICRZBx724upITPU3vd8p+ywKh
+         UYkbRoB2azp2VTNp4JksID7O3npWc8qxcwWmQGZHJz9mvXJRjXjYDcoTVpMHReEj/G7Y
+         Bk6XZypDEnt2t4JUl54Fh7wAZe8I2kipVJ785tX5ukCCwI9PfknI/U1qOuI7LKZRPOQm
+         826EYSEhEyFLaKwxqsjHh3zXUaeYrWJJXE2YX5VWWEyTbBvMSPDIstjP3GQLT7ayODi6
+         sO8epDmXqThjSTVrvwbqnvWwLK2MPWP3R0uS+pUrYlgcMlV5Oht80K88nb1aqbMlgKjC
+         FPhA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:content-language:references:cc:to:subject
          :user-agent:mime-version:date:message-id;
-        bh=9n0t7ONe5NhY5lcT4V7ZlJStcL5L8fm2GgteTR+3SfE=;
+        bh=hwnYDiN9iruXdL1k/b8PKm8DKXuN49nkytBLRMgXlQI=;
         fh=y8UldgvBpgWdzvo0ZnT6ptMSZ9zI0pieroCu40oTsaQ=;
-        b=FdV2Zec64Kw7QjFyQvjsn+VC6T/a4Nl+JMPlqZI/HbVeeWtERuuFeqoPtiu3woZH0b
-         0EmA5Pl3Laip/PL/t651M1rBaewbQyLSNHCi0PfXCgP0H9tkKGm4mTPnMKm0545szecE
-         jDgmas/UC0OlZT3EDlWCZj1d8FWIO6EVFGZTcD9awTIvUx9XB6giMadLlqt7hpCF40wp
-         jxT9Xz0iaNX+nNu+Jb1aP9EwuEe57DtdLpw13bGYlPIxJEHWid6YZmjPfE96KmKTF0Iv
-         gHi6TQ8GbjeAewLi3is3hcZvzKiP/m6/ZD2PtB7Q/Uce7S9yIKnajU3wbfVUj9U44U/F
-         d33A==;
+        b=G3rZIVlGPgG+lNzk813ZwMfuumzLQSV2L//4ckiMddsknWnkzN0MVy6wKM+g5NUFih
+         GvdC3AwUbTeTU0aLfTFram39ekJdVb1LfbT2QZ1U5I39EIs0CHCnZGdMl4FMdEGAIwgk
+         TM1gkmqcn8FPp8QYAluxm0D/ggvF1kl6ncdeYD9SBbsZJn6Bx5NDn9g1pbEBY/qAvcd0
+         QZNuu0XDaqqrYCEnrb4mlNO2nzMQw5K9cz3joj1G8wQETUO9HVg8Axg2JREIvHlofqLb
+         ceLUBG/e+6fdSsqdwiqtD3Kb97rfIEhzIwkEQUhZHCPSTKwXvfXxkRIEsFj53rsFfXF7
+         HbEA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7ae377d0429si8266785a.104.2024.09.26.09.11.17
+        by mx.google.com with ESMTPS id af79cd13be357-7ae37871192si5979485a.608.2024.09.26.09.12.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 26 Sep 2024 09:11:17 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 26 Sep 2024 09:12:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1str56-0005sY-Rq; Thu, 26 Sep 2024 12:11:05 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1str6l-00055C-3Z; Thu, 26 Sep 2024 12:12:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=Z/Ab=QY=kaod.org=clg@ozlabs.org>)
- id 1str52-0005bv-IB; Thu, 26 Sep 2024 12:11:00 -0400
+ id 1str6j-0004zb-Pa; Thu, 26 Sep 2024 12:12:45 -0400
 Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=Z/Ab=QY=kaod.org=clg@ozlabs.org>)
- id 1str50-0004Me-O3; Thu, 26 Sep 2024 12:11:00 -0400
+ id 1str6i-0004Rn-5a; Thu, 26 Sep 2024 12:12:45 -0400
 Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4XDz9C5DMQz4xQr;
- Fri, 27 Sep 2024 02:10:55 +1000 (AEST)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4XDzCF42rdz4xQS;
+ Fri, 27 Sep 2024 02:12:41 +1000 (AEST)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits))
  (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4XDz980X1Tz4xPX;
- Fri, 27 Sep 2024 02:10:51 +1000 (AEST)
-Message-ID: <6aea4f4b-2446-43c0-acb9-0f0df000f3b4@kaod.org>
-Date: Thu, 26 Sep 2024 18:10:49 +0200
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4XDzCB0001z4xNC;
+ Fri, 27 Sep 2024 02:12:37 +1000 (AEST)
+Message-ID: <e1076f8e-2e32-41ba-adf4-8e28aae8e526@kaod.org>
+Date: Thu, 26 Sep 2024 18:12:35 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 6/6] aspeed/soc: Support GPIO for AST2700
+Subject: Re: [PATCH v3 0/6] Support GPIO for AST2700
 To: Jamin Lin <jamin_lin@aspeedtech.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
@@ -71,10 +71,9 @@ To: Jamin Lin <jamin_lin@aspeedtech.com>,
  "open list:All patches CC here" <qemu-devel@nongnu.org>
 Cc: troy_lee@aspeedtech.com, yunlin.tang@aspeedtech.com
 References: <20240926074535.1286209-1-jamin_lin@aspeedtech.com>
- <20240926074535.1286209-7-jamin_lin@aspeedtech.com>
 Content-Language: en-US, fr
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20240926074535.1286209-7-jamin_lin@aspeedtech.com>
+In-Reply-To: <20240926074535.1286209-1-jamin_lin@aspeedtech.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 Received-SPF: pass client-ip=150.107.74.76;
@@ -87,96 +86,50 @@ X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
  RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: +V1VcSs5FHMJ
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: Mg+MqlZN0Fg+
+
+Hello Jamin,
 
 On 9/26/24 09:45, Jamin Lin wrote:
-> Add GPIO model for AST2700 GPIO support.
-> The GPIO controller registers base address is start at
-> 0x14C0_B000 and its address space is 0x1000.
+> v1: Support GPIO for AST2700
+> v2: Fix clear incorrect interrupt status and adds reviewer suggestions
+> v3: remove nested conditionals and adds reviewer suggestions
 > 
-> The AST2700 GPIO controller interrupt is connected to
-> GICINT130_INTC at bit 18.
+> Jamin Lin (6):
+>    hw/gpio/aspeed: Fix coding style
+>    hw/gpio/aspeed: Support to set the different memory size
+>    hw/gpio/aspeed: Support different memory region ops
+>    hw/gpio/aspeed: Fix clear incorrect interrupt status for GPIO index
+>      mode
+>    hw/gpio/aspeed: Add AST2700 support
+>    aspeed/soc: Support GPIO for AST2700
 > 
-> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-> --->   hw/arm/aspeed_ast27x0.c | 18 +++++++++++++++---
->   1 file changed, 15 insertions(+), 3 deletions(-)
+>   hw/arm/aspeed_ast27x0.c       |  18 +-
+>   hw/gpio/aspeed_gpio.c         | 427 ++++++++++++++++++++++++++++++++--
+>   include/hw/gpio/aspeed_gpio.h |   4 +-
+>   3 files changed, 430 insertions(+), 19 deletions(-)
 > 
-> diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
-> index 761ee11657..dca660eb6b 100644
-> --- a/hw/arm/aspeed_ast27x0.c
-> +++ b/hw/arm/aspeed_ast27x0.c
-> @@ -62,6 +62,7 @@ static const hwaddr aspeed_soc_ast2700_memmap[] = {
->       [ASPEED_GIC_REDIST]    =  0x12280000,
->       [ASPEED_DEV_ADC]       =  0x14C00000,
->       [ASPEED_DEV_I2C]       =  0x14C0F000,
-> +    [ASPEED_DEV_GPIO]      =  0x14C0B000,
->   };
->   
->   #define AST2700_MAX_IRQ 288
-> @@ -87,8 +88,7 @@ static const int aspeed_soc_ast2700_irqmap[] = {
->       [ASPEED_DEV_ADC]       = 130,
->       [ASPEED_DEV_XDMA]      = 5,
->       [ASPEED_DEV_EMMC]      = 15,
-> -    [ASPEED_DEV_GPIO]      = 11,
-> -    [ASPEED_DEV_GPIO_1_8V] = 130,
-> +    [ASPEED_DEV_GPIO]      = 130,
 
-This change needs some explanation and a Fixes tag.
+Could you please to add tests in tests/qtest/aspeed_gpio-test.c
+for this changes ? At least one with the ast2700-evb machine if
+possible.
+
 
 Thanks,
 
 C.
 
-
->       [ASPEED_DEV_RTC]       = 13,
->       [ASPEED_DEV_TIMER1]    = 16,
->       [ASPEED_DEV_TIMER2]    = 17,
-> @@ -124,7 +124,7 @@ static const int aspeed_soc_ast2700_gic128_intcmap[] = {
->   static const int aspeed_soc_ast2700_gic130_intcmap[] = {
->       [ASPEED_DEV_I2C]        = 0,
->       [ASPEED_DEV_ADC]        = 16,
-> -    [ASPEED_DEV_GPIO_1_8V]  = 18,
-> +    [ASPEED_DEV_GPIO]       = 18,
->   };
->   
->   /* GICINT 131 */
-> @@ -373,6 +373,9 @@ static void aspeed_soc_ast2700_init(Object *obj)
->   
->       snprintf(typename, sizeof(typename), "aspeed.i2c-%s", socname);
->       object_initialize_child(obj, "i2c", &s->i2c, typename);
-> +
-> +    snprintf(typename, sizeof(typename), "aspeed.gpio-%s", socname);
-> +    object_initialize_child(obj, "gpio", &s->gpio, typename);
->   }
->   
->   /*
-> @@ -658,6 +661,15 @@ static void aspeed_soc_ast2700_realize(DeviceState *dev, Error **errp)
->           sysbus_connect_irq(SYS_BUS_DEVICE(&s->i2c.busses[i]), 0, irq);
->       }
->   
-> +    /* GPIO */
-> +    if (!sysbus_realize(SYS_BUS_DEVICE(&s->gpio), errp)) {
-> +        return;
-> +    }
-> +    aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->gpio), 0,
-> +                    sc->memmap[ASPEED_DEV_GPIO]);
-> +    sysbus_connect_irq(SYS_BUS_DEVICE(&s->gpio), 0,
-> +                       aspeed_soc_get_irq(s, ASPEED_DEV_GPIO));
-> +
->       create_unimplemented_device("ast2700.dpmcu", 0x11000000, 0x40000);
->       create_unimplemented_device("ast2700.iomem0", 0x12000000, 0x01000000);
->       create_unimplemented_device("ast2700.iomem1", 0x14000000, 0x01000000);
 

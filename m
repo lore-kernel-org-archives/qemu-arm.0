@@ -1,143 +1,135 @@
-Received: by 2002:a17:505:5b18:b0:1be9:327d:8ee3 with SMTP id ox24csp977113njb;
-        Thu, 26 Sep 2024 07:24:51 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXLelBqC+y75/+pCVBnloXKkrDyE3LABAR9RPrgzQnjOm/KO2d8hHesdvxhDKBSX2oprUoLpcBSaGSsHw==@linaro.org
-X-Google-Smtp-Source: AGHT+IFYdryt/wTBgtwwMGqHi4GewlEaE2gPY6dJKi6iDsTpa2PHJJQy5d0ebPRJFoRZtWVsXKUW
-X-Received: by 2002:a05:622a:1aa3:b0:458:2f29:5d3f with SMTP id d75a77b69052e-45b5e0324c1mr96925321cf.38.1727360691633;
-        Thu, 26 Sep 2024 07:24:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1727360691; cv=none;
+Received: by 2002:a17:505:5b18:b0:1be9:327d:8ee3 with SMTP id ox24csp893640njb;
+        Thu, 26 Sep 2024 05:09:16 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCW0YbrIWPw/kj2D0sJNpCxOSTW5Zs4Jc5Kxs0DnU7gyRhY2u3IQNNk8PNcYjEgcwUGM5z4B9CiUQgf3NA==@linaro.org
+X-Google-Smtp-Source: AGHT+IFwwwCEWsswpf/u2Zx4WGsaoCCjWyJityEdsGzB+dKs6H6Iu81pIJIlDrzqrGWIoErIgQ4V
+X-Received: by 2002:a05:6a20:7490:b0:1cc:e71d:ea10 with SMTP id adf61e73a8af0-1d4ebe73f00mr4770369637.14.1727352556256;
+        Thu, 26 Sep 2024 05:09:16 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1727352556; cv=pass;
         d=google.com; s=arc-20240605;
-        b=cZUoNkMD9CvvM0WaSFlHVX6BBGpAVcwaSSzPOiuql/rKJTmDT8T/FWdZimSvDXeUkf
-         9ZuygKRmLeiWHEfFN8xTVoBaz20tg3oWQpzDKb+DB6uMrnqudQIjpNEHi4GLlrlRoMcD
-         XamiKw422sSSsQGeluOqvVIfuqj49KchFTU4y58hhjbkSZjP2QVpK6+bECAu+852OxZL
-         dx07uowCp41hXJ3COHHN1TIlYKbmTM6JJyM5osZVtJ+Z4tHw5yudnHihpLfEDIT84+vd
-         rcS98atBUfKQ20TfJoQm7tmYU7Q9yqxf0qz6oUVfEcSMBm9GbrtTvBe7mTV/wvtuayer
-         MUGQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:subject:cc:to:from
-         :date:dkim-signature;
-        bh=lUEzhFOvUeyALpye2uhaBNImniIZgsHyOIPofc388uY=;
-        fh=j7GA3EfRet1H7jTzv9UDgZNjw8MUZeXqIU5NskuDe5w=;
-        b=aFJ9066oKqCZuXevegtF1jguFim4DfUUbUusMLpYHw7lvMorKkXDLKg/1URMr257OW
-         A5aySjyaMyJuDcUp5yOdkMRYjhFAmhaWw155e4n7X4y6JhCARV/8icM6bUKMzNC0EN4V
-         2fYVZwcAgpaPeL0Rsx9iKPQRGw3rLDrF7kYxB4IukzQlRl+VZ6fNIoB7fGj9sdSWmbg2
-         X0Y+wkjZN5kpWGiqFZYMqyaOfNNeWRDmKKdycukG2R0Sv3kPMaeF4rPgxJ9OV4QzYRwn
-         45xj4o5ZA4l7mgIyDT4lWfdqBNvOdAVCn8EeJdhXDE1gC/3uydGv1szCnJbm0RBVKECU
-         bZQg==;
+        b=I/cze0wOEhkN59IwZtlY3KIcgoWbIxGmMmfvKAUiRNQpF19rbsnKE+lxNetaBNIZVS
+         DTpeuPKf58qpkIoB9FyYISbQzzYZRpw/OsdmvZf5OEtK/DMYBoWW24+qc+wQ3NQo953R
+         QowClae6Pn2zI/DLwo9jxkopGvSbIaeVWslArAqH1ASHQpj3dZog9bBOa7Fp2ITrXLuh
+         qjgVbxuCXdTsvIlEpSv7iD7EGOaVV6aJ4fGWZxKcXMGdkJ3cmos55TJhosUgXhv/cB2c
+         S/8hOps3OTTu1HVf0hdfXAQFUTco4rv1Cw/HHl7pVKK27VXXNGpAceEJ2KtB44M5dXkW
+         nCFA==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:organization:references
+         :in-reply-to:message-id:subject:cc:to:from:date;
+        bh=8nN14meJ3iV5eqowM4vuk00tpD4pWFqzSC6rn+izipE=;
+        fh=sk20niJjP+LyGcAC6rY5I61AlgNCIPpR6UIhxIWLYTI=;
+        b=XLrw8kZpE+1f83cC0JwAPPlAOWFE2aYTP+e/W1483Fk2g2XWPL/Fb+QjJmobrtm5gy
+         uEWYhN4cpsQ3sT/d9xn9hgzlgXcdtH9Ay1G9tlcUNHRJi2r2XUCah90ECs4SKFbzpMJv
+         Nvx5LAGpmqt1s6zzfkiVuHCTxjPDCEZVJYXsqYc5vP1oBPEb5bZCysblLw2QqePLdscL
+         vnJw6EKyCZh9NI5HBp7J6XS08hqc+JNomAOgbvakoCZ2hHrmQFNXk9YBpuD6CM7KoT4B
+         IjAGkTV3VqjlPlBjim/6Ra3evNrTxmGWaNfsQhc7w74MYEyZENSw0oGk4CoiwSP3VQoO
+         WmrA==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=m42N0InC;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-45b52680f6asi67129931cf.382.2024.09.26.07.24.51
+ARC-Authentication-Results: i=2; mx.google.com;
+       arc=pass (i=1 spf=pass spfdomain=huawei.com dmarc=pass fromdomain=huawei.com);
+       spf=pass (google.com: domain of linux-kernel+bounces-340428-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-340428-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=fail (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Return-Path: <linux-kernel+bounces-340428-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [2604:1380:45e3:2400::1])
+        by mx.google.com with ESMTPS id 41be03b00d2f7-7e6b7cbec20si6822994a12.608.2024.09.26.05.09.16
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 26 Sep 2024 07:24:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 26 Sep 2024 05:09:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of linux-kernel+bounces-340428-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) client-ip=2604:1380:45e3:2400::1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=m42N0InC;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1stpQ7-0003YJ-SL; Thu, 26 Sep 2024 10:24:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mchehab+huawei@kernel.org>)
- id 1stpQ4-0003LK-Mj; Thu, 26 Sep 2024 10:24:37 -0400
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mchehab+huawei@kernel.org>)
- id 1stpQ2-000610-VC; Thu, 26 Sep 2024 10:24:36 -0400
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by dfw.source.kernel.org (Postfix) with ESMTP id 361605C0F77;
- Thu, 26 Sep 2024 14:24:29 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E4F98C4CEC5;
- Thu, 26 Sep 2024 14:24:30 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1727360672;
- bh=LWxaj5iNhhP3rDS/oE3mjCOoegafoGUrmfRPy36bfEE=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=m42N0InC24vU1kYEW9SHebL1etq04DumO5tIs2og2uYEi+d8943XM3bmsudtIy48T
- DxUIrAPjVhyU8WYVWpPR45oEnXiXKeBct1f5AxjhMDBpTWELMuXxw8UaWB//3T9py2
- mUzdTU8hNYSyYxtnqKtLIU4QyRxeZSGmsTt4COYoWbiUvWe6UOPamskbqB8kFd1rvE
- 4MPE06HQQeuJZdXXxWAdotAIKS8DMYOAS3bZOVOFrf7O+SESBSoKCynsM6JiBZWTEY
- xOIpiyCfVUCU2+l76g6nE0lHEJ4A92axQrtAXXVzKcS1El5OgxD0R3r+AXxL8sAKgN
- jiR6gFQQaWUsw==
-Date: Thu, 26 Sep 2024 16:24:28 +0200
-From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-To: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
-Cc: Igor Mammedov <imammedo@redhat.com>, Shiju Jose <shiju.jose@huawei.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Ani Sinha <anisinha@redhat.com>,
- Dongjiu Geng <gengdongjiu1@gmail.com>, <linux-kernel@vger.kernel.org>,
- <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
-Subject: Re: [PATCH 12/15] acpi/ghes: don't crash QEMU if ghes GED is not found
-Message-ID: <20240926162428.4ecb16d8@foz.lan>
-In-Reply-To: <20240926130909.00006135@Huawei.com>
+       arc=pass (i=1 spf=pass spfdomain=huawei.com dmarc=pass fromdomain=huawei.com);
+       spf=pass (google.com: domain of linux-kernel+bounces-340428-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-340428-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=fail (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by sv.mirrors.kernel.org (Postfix) with ESMTPS id A5AB728467B
+	for <alex.bennee@linaro.org>; Thu, 26 Sep 2024 12:09:15 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 54377171088;
+	Thu, 26 Sep 2024 12:09:15 +0000 (UTC)
+Received: from frasgout.his.huawei.com (frasgout.his.huawei.com [185.176.79.56])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6BE0216DEDF
+	for <linux-kernel@vger.kernel.org>; Thu, 26 Sep 2024 12:09:13 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=185.176.79.56
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1727352555; cv=none; b=tXBHRtoRF8SFe/zYDv1fmAm7yqo6DQqGI1AmvWilyZ2bbY4M/rHD4kNUFVGYvi1i1BdZh3r6z1LQeXy+XQ4+iV3WOjgn+x+Y2864/jHjsQUaQgYVEDb8kEDYWK3XVN+kJ/ZlOnX0m+qgWa2ZgPXeUgOIWHgDwPDP8nrPOn0ggpM=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1727352555; c=relaxed/simple;
+	bh=Y+NCjuqiiHimuCgBNQCCYkDtQs9asC7+ph3I9KV12zo=;
+	h=Date:From:To:CC:Subject:Message-ID:In-Reply-To:References:
+	 MIME-Version:Content-Type; b=KdqLH+0Q7jZZh1PscZIauATdo+b/jeuQk7DBaGLbEp6kBc3c0ehWmn89M6OnPrA5LlTjA1ne8bCTxUnV/v+BVW67kr6ffQuNO+o5GrwughJVZAURmmO2B9ts6/83nRTefXKvno62GqTFBORykFOcotV2RAd0KEASsBDwi++Wst0=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=Huawei.com; spf=pass smtp.mailfrom=huawei.com; arc=none smtp.client-ip=185.176.79.56
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=Huawei.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=huawei.com
+Received: from mail.maildlp.com (unknown [172.18.186.216])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4XDsnc3Rrhz6J6dn;
+	Thu, 26 Sep 2024 20:08:36 +0800 (CST)
+Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
+	by mail.maildlp.com (Postfix) with ESMTPS id 881B7140C98;
+	Thu, 26 Sep 2024 20:09:11 +0800 (CST)
+Received: from localhost (10.203.177.66) by frapeml500008.china.huawei.com
+ (7.182.85.71) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Thu, 26 Sep
+ 2024 14:09:10 +0200
+Date: Thu, 26 Sep 2024 13:09:09 +0100
+From: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
+To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+CC: Igor Mammedov <imammedo@redhat.com>, Shiju Jose <shiju.jose@huawei.com>,
+	"Michael S. Tsirkin" <mst@redhat.com>, Ani Sinha <anisinha@redhat.com>,
+	Dongjiu Geng <gengdongjiu1@gmail.com>, <linux-kernel@vger.kernel.org>,
+	<qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
+Subject: Re: [PATCH 12/15] acpi/ghes: don't crash QEMU if ghes GED is not
+ found
+Message-ID: <20240926130909.00006135@Huawei.com>
+In-Reply-To: <dc61673f18e44b0c169762a084b77acb6a76c738.1727236561.git.mchehab+huawei@kernel.org>
 References: <cover.1727236561.git.mchehab+huawei@kernel.org>
- <dc61673f18e44b0c169762a084b77acb6a76c738.1727236561.git.mchehab+huawei@kernel.org>
- <20240926130909.00006135@Huawei.com>
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
+	<dc61673f18e44b0c169762a084b77acb6a76c738.1727236561.git.mchehab+huawei@kernel.org>
+Organization: Huawei Technologies Research and Development (UK) Ltd.
+X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
+Precedence: bulk
+X-Mailing-List: linux-kernel@vger.kernel.org
+List-Id: <linux-kernel.vger.kernel.org>
+List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset="US-ASCII"
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2604:1380:4641:c500::1;
- envelope-from=mchehab+huawei@kernel.org; helo=dfw.source.kernel.org
-X-Spam_score_int: -21
-X-Spam_score: -2.2
-X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.131,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: N3fPBz7evUSv
+X-ClientProxiedBy: lhrpeml500004.china.huawei.com (7.191.163.9) To
+ frapeml500008.china.huawei.com (7.182.85.71)
+X-TUID: qUl8CoIS5KSw
 
-Em Thu, 26 Sep 2024 13:09:09 +0100
-Jonathan Cameron <Jonathan.Cameron@Huawei.com> escreveu:
+On Wed, 25 Sep 2024 06:04:17 +0200
+Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
 
-> On Wed, 25 Sep 2024 06:04:17 +0200
-> Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
+> Instead, produce an error and continue working
 > 
-> > Instead, produce an error and continue working
-> > 
-> > Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>  
-> Make sense as defense in depth. Can we actually hit this for existing
-> systems, or is the injection stuff disabled if the ged isn't configured?
+> Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+Make sense as defense in depth. Can we actually hit this for existing
+systems, or is the injection stuff disabled if the ged isn't configured?
 
-What happens is that:
+Jonathan
 
-- with memory errors, this logic at acpi_ghes_memory_errors() will
-  report the error, just like error_report():
+> ---
+>  hw/acpi/ghes.c | 5 ++++-
+>  1 file changed, 4 insertions(+), 1 deletion(-)
+> 
+> diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
+> index 3af1cd16d4d7..209095f67e9a 100644
+> --- a/hw/acpi/ghes.c
+> +++ b/hw/acpi/ghes.c
+> @@ -418,7 +418,10 @@ void ghes_record_cper_errors(const void *cper, size_t len,
+>  
+>      acpi_ged_state = ACPI_GED(object_resolve_path_type("", TYPE_ACPI_GED,
+>                                                         NULL));
+> -    g_assert(acpi_ged_state);
+> +    if (!acpi_ged_state) {
+> +        error_setg(errp, "Can't find ACPI_GED object");
+> +        return;
+> +    }
+>      ags = &acpi_ged_state->ghes_state;
+>  
+>      get_ghes_offsets(le64_to_cpu(ags->ghes_addr_le),
 
-	    if (errp) {
-	        error_report_err(errp);
-	        return -1;
-	    }
-
-  so, no practical changes.
-
-- for injections via script, this will return the error via QMP
-  interface, preventing the guest crash.
-
-The script can then handle it the way it wants (right now, it just
-prints the error).
-
-Thanks,
-Mauro

@@ -1,203 +1,236 @@
-Received: by 2002:a17:505:5b18:b0:1be9:327d:8ee3 with SMTP id ox24csp778508njb;
-        Thu, 26 Sep 2024 00:49:54 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCU4d7aOylJLltl+cYQJKOXODkr1nbMQ567WOQvrwVerL5dgmh4ipBKVs0WAUJv2dsOJUySsX0+Girytiw==@linaro.org
-X-Google-Smtp-Source: AGHT+IETBHp2nbLnBmyjUZLDanFPbOgH4juhBwL6g5hkeKIKUe2ei5nBvCN/0rQcqT/T0CxCGjbV
-X-Received: by 2002:a05:622a:14e:b0:45b:28a3:46d with SMTP id d75a77b69052e-45b5def2800mr63771041cf.28.1727336994819;
-        Thu, 26 Sep 2024 00:49:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1727336994; cv=none;
+Received: by 2002:a17:505:5b18:b0:1be9:327d:8ee3 with SMTP id ox24csp887311njb;
+        Thu, 26 Sep 2024 05:01:22 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCVoTl3VBcGPQhQZqhNG3RJs76QISxBMN3gZBKWZkXXz1U7AibbpcfQbis9VTF/Lmi8XRUBLbicTVq+2qg==@linaro.org
+X-Google-Smtp-Source: AGHT+IFY47MaucoIt2Mf8k8T904L+z7Q15OLJzkH48d37/17wpVlwYwJWSB0cVFzufDB1bDGAbq5
+X-Received: by 2002:a17:902:da91:b0:203:a0c5:fcfd with SMTP id d9443c01a7336-20afc4088abmr81992225ad.3.1727352082130;
+        Thu, 26 Sep 2024 05:01:22 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1727352082; cv=pass;
         d=google.com; s=arc-20240605;
-        b=VLXAvgj78A7Bry4PDdMp/22glxeCyF7vVk/YR+oH8xeH0KJyUDcutOuggeVQKiBQHv
-         qIGB2cChrPdlsIuPcZpSFZE8aGUiRZbWXWepGnzucfT15ZTk10yRIestF3h/n6Fy1B8x
-         8k2Ajqyz238Ef8NTBDISGMAMDocJaTHvELJXfUw4woRcN0FE8B8JtH/9VaPy0gyb4Y72
-         t1wJpnQ6WjRaUxVH4Hva88pvsmBdNuuY1QGw0ZObU3eZnoUdgs1aaGOzKgTNVeU98lSQ
-         iL0yF8LZr8GN6iB2GFZrd9r5DJS6f/IYBD6na41g0cB/1DibMQG5C34Wl3q2T2E/MaSl
-         +Vuw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to;
-        bh=OV1UhsVdSVqr7UUa1EW1koTbrvOkCE214NwP8TKxAKs=;
-        fh=dcWtL3UV6hgfvVRRNBgcZIYWwd7971OyicJdpXZbSYo=;
-        b=YL0zjl1cQiKlRY8wX1mBNRNPqY0M2xvg4YjUsRHmR7g1McC2GcXOhbi3Z0zQW0CVV1
-         2Kl2L9Svwa3JnvOnt5zrPsaVK8CA8emSHSOUj3GJkj7TsaSQBiGUION3psvDYWRPBC8z
-         v3J3QY/X8wubEPfODVJDD6R+CswtNYiGJMSeuJRCPzXCj3bA50NCaZAR4Q6uekSXHhrR
-         hTows+3UZ8HWwoK6BfXR8CDVo2XbUg1ToS3cC7dyH4/y8CC6mwe4WcBZgV0DHrb2fcec
-         TNkNu47ap02B0J69YrOjtzjXCUBQncoZ5CBHPGP+3RwjtYlpkVxI2+3VLn2t8mtuLqzg
-         wEUg==;
+        b=M7VmZ51aptgNPjJxweJZqUP+yUcOyuLztU5ZptBmr9f6s079TJ9D2hx0pOZH9KvHTv
+         OXysBOzFHMjnsyaUgUhPDV4F7DHf+KflDMb+MndLYeR2mIKnRoFdZacQc3j0I3Vt77iD
+         56YiN4BH74SlcMntcsq+ZhhzEpITZ7fNNnJf2Qb+M7t73F5C/hds41evhxLRK7HlE0wJ
+         4/oiMt72Fn9+kS6dDpTpisgFO7p9ysWohkG3ueX5K1NACfH86B3TAyluBL2ASaNY6NRm
+         LnLBzhw+KjvjvMNW4+DpQpHkfCrQMEkSFck+3OntNOSdF859QkpYSUzlMVLMNsnDz2fi
+         IsgA==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:organization:references
+         :in-reply-to:message-id:subject:cc:to:from:date;
+        bh=+xUIQPFDKXW4aVUk2OlLA7MfXEAoxQiJoCIkgq0O6Wk=;
+        fh=sk20niJjP+LyGcAC6rY5I61AlgNCIPpR6UIhxIWLYTI=;
+        b=gNa0MuC5l0hHLaNavhwwLV0sQCntplSWrcYutChQ/z2YnKBOu2LCTMupU40sLl4Xpa
+         O/pQkEx/eLfHRAoxzmkZH4hpHPdixz9s8g9iIIU93X8comX71bCWjz2D/UA8pQoiutZZ
+         JVABvrtt4PZHuPku55aRczTTsAbKDruGlkco+/0j8vLc/bS/eUdBLt19yreePsNbn7AW
+         dRa92MmVvheQb1+utUpeZ/tKMa+1fw8dI45KFUdv1NJ99nAstQI6HsqVI9X/bDQ/RtEa
+         8PscDYpOmaSC2HhfxYMF0hYUoBTbdPalbbGzbnbUfldOPKYIhGckJQpljhiZneeCf4Kb
+         quGQ==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-45b526f3edcsi52673031cf.541.2024.09.26.00.49.54
+ARC-Authentication-Results: i=2; mx.google.com;
+       arc=pass (i=1 spf=pass spfdomain=huawei.com dmarc=pass fromdomain=huawei.com);
+       spf=pass (google.com: domain of linux-kernel+bounces-340418-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) smtp.mailfrom="linux-kernel+bounces-340418-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=fail (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Return-Path: <linux-kernel+bounces-340418-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sy.mirrors.kernel.org (sy.mirrors.kernel.org. [147.75.48.161])
+        by mx.google.com with ESMTPS id d9443c01a7336-20b05b859e1si32672485ad.504.2024.09.26.05.01.21
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 26 Sep 2024 00:49:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 26 Sep 2024 05:01:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of linux-kernel+bounces-340418-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) client-ip=147.75.48.161;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1stjCX-0001yq-01; Thu, 26 Sep 2024 03:46:13 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1stjCT-0001rc-UL; Thu, 26 Sep 2024 03:46:12 -0400
-Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1stjCS-0006Ef-3O; Thu, 26 Sep 2024 03:46:09 -0400
-Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
- (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.12; Thu, 26 Sep
- 2024 15:45:37 +0800
-Received: from localhost.localdomain (192.168.10.10) by TWMBX01.aspeed.com
- (192.168.0.62) with Microsoft SMTP Server id 15.2.1258.12 via Frontend
- Transport; Thu, 26 Sep 2024 15:45:37 +0800
-To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
- <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
- <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
- Stanley" <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
- <yunlin.tang@aspeedtech.com>
-Subject: [PATCH v3 4/6] hw/gpio/aspeed: Fix clear incorrect interrupt status
- for GPIO index mode
-Date: Thu, 26 Sep 2024 15:45:33 +0800
-Message-ID: <20240926074535.1286209-5-jamin_lin@aspeedtech.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20240926074535.1286209-1-jamin_lin@aspeedtech.com>
-References: <20240926074535.1286209-1-jamin_lin@aspeedtech.com>
+       arc=pass (i=1 spf=pass spfdomain=huawei.com dmarc=pass fromdomain=huawei.com);
+       spf=pass (google.com: domain of linux-kernel+bounces-340418-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) smtp.mailfrom="linux-kernel+bounces-340418-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=fail (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by sy.mirrors.kernel.org (Postfix) with ESMTPS id E22D0B28642
+	for <alex.bennee@linaro.org>; Thu, 26 Sep 2024 12:01:19 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 5BCC8176FB8;
+	Thu, 26 Sep 2024 12:01:03 +0000 (UTC)
+Received: from frasgout.his.huawei.com (frasgout.his.huawei.com [185.176.79.56])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 63B031741F0
+	for <linux-kernel@vger.kernel.org>; Thu, 26 Sep 2024 12:01:00 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=185.176.79.56
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1727352063; cv=none; b=Yarlm7mmR86oC05CwnX20Cvk9OZbSa+JkBF1kh5Xr/CUvUGomA0fstwIXUI+3IYfo1lbwtFRX+aGSjskKNdduFF0CW039nVcRmyxmXonaheBvtutYiWJ3vymbzNqIC4Ho1zob/dWP4yDcU04KKExcGa9pUqPd660GXk7tn+u1Oo=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1727352063; c=relaxed/simple;
+	bh=Qo4RxcudXypmYwICcrVSlrgLaG8mPa++K/0cPQwmWFA=;
+	h=Date:From:To:CC:Subject:Message-ID:In-Reply-To:References:
+	 MIME-Version:Content-Type; b=JNsNi5mEPAV5DdIhMyKeosxHFSyP7yxMAcSxSZnjgL3Mvyc+eAWX925CY2RfvUvf94JvNNezFSXcmz4WkJ4OUG73myaQKqjOdkird3D/th90fUN46OO7AnihHsqFLsMxDRLVCtpa+YxhgxptcbTMAZ6p5s0Wijk7djcYGbN75U4=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=Huawei.com; spf=pass smtp.mailfrom=huawei.com; arc=none smtp.client-ip=185.176.79.56
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=Huawei.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=huawei.com
+Received: from mail.maildlp.com (unknown [172.18.186.31])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4XDsXB37Rpz6LDcy;
+	Thu, 26 Sep 2024 19:56:58 +0800 (CST)
+Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
+	by mail.maildlp.com (Postfix) with ESMTPS id D3B771401F3;
+	Thu, 26 Sep 2024 20:00:57 +0800 (CST)
+Received: from localhost (10.203.177.66) by frapeml500008.china.huawei.com
+ (7.182.85.71) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Thu, 26 Sep
+ 2024 14:00:57 +0200
+Date: Thu, 26 Sep 2024 13:00:56 +0100
+From: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
+To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+CC: Igor Mammedov <imammedo@redhat.com>, Shiju Jose <shiju.jose@huawei.com>,
+	"Michael S. Tsirkin" <mst@redhat.com>, Ani Sinha <anisinha@redhat.com>,
+	Dongjiu Geng <gengdongjiu1@gmail.com>, <linux-kernel@vger.kernel.org>,
+	<qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
+Subject: Re: [PATCH 09/15] acpi/ghes: make the GHES record generation more
+ generic
+Message-ID: <20240926130056.00001e12@Huawei.com>
+In-Reply-To: <9b256923695e2202f549cbbb11dc22982cb22abf.1727236561.git.mchehab+huawei@kernel.org>
+References: <cover.1727236561.git.mchehab+huawei@kernel.org>
+	<9b256923695e2202f549cbbb11dc22982cb22abf.1727236561.git.mchehab+huawei@kernel.org>
+Organization: Huawei Technologies Research and Development (UK) Ltd.
+X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
+Precedence: bulk
+X-Mailing-List: linux-kernel@vger.kernel.org
+List-Id: <linux-kernel.vger.kernel.org>
+List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-Received-SPF: pass client-ip=211.20.114.72;
- envelope-from=jamin_lin@aspeedtech.com; helo=TWMBX01.aspeed.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_FAIL=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
-From:  Jamin Lin via <qemu-arm@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: EZqqtsDnKHiX
+Content-Type: text/plain; charset="US-ASCII"
+Content-Transfer-Encoding: 7bit
+X-ClientProxiedBy: lhrpeml500004.china.huawei.com (7.191.163.9) To
+ frapeml500008.china.huawei.com (7.182.85.71)
+X-TUID: a9f6HAd3M6VN
 
-The interrupt status field is W1C, where a set bit on read indicates an
-interrupt is pending. If the bit extracted from data is set it should
-clear the corresponding bit in group_value. However, if the extracted
-bit is clear then the value of the corresponding bit in group_value
-should be unchanged.
+On Wed, 25 Sep 2024 06:04:14 +0200
+Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
 
-SHARED_FIELD_EX32() extracts the interrupt status bit from the write
-(data). group_value is set to the set's interrupt status, which means
-that for any pin with an interrupt pending, the corresponding bit is
-set. The deposit32() call updates the bit at pin_idx in the group,
-using the value extracted from the write (data).
+> Split the code into separate functions to allow using the
+> common CPER filling code by different error sources.
+> 
+> The generic code was moved to ghes_record_cper_errors(),
+> and ghes_gen_err_data_uncorrectable_recoverable() now contains
+> only a logic to fill GEGB part of the record.
+> 
+> The remaining code to generate a memory error now belongs to
+> acpi_ghes_record_errors() function.
+> 
+> A further patch will give it a better name.
 
-The result is that if multiple interrupt status bits
-were pending and the write was acknowledging specific one bit,
-then the all interrupt status bits will be cleared.
-However, it is index mode and should only clear the corresponding bit.
+That bit is fine, I'm less sure about
+ghes_gen_err_data_uncorrectable_recoverable()
+Maybe you refactor that later, but I'd suggest doing so in this
+patch to make it 
+ghes_gen_data() with the uncorrectable and recoverable bits
+passed in as parameters.
 
-For example, say we have an interrupt pending for GPIOA0, where the
-following statements are true:
+Jonathan
 
-   set->int_status == 0b01
-   s->pending == 1
+> 
+> Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+> ---
+>  hw/acpi/ghes.c         | 118 +++++++++++++++++++++++++----------------
+>  include/hw/acpi/ghes.h |   3 ++
+>  2 files changed, 74 insertions(+), 47 deletions(-)
+> 
+> diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
+> index 340a0263faf8..307b5a41d539 100644
+> --- a/hw/acpi/ghes.c
+> +++ b/hw/acpi/ghes.c
+> @@ -181,51 +181,30 @@ static void acpi_ghes_build_append_mem_cper(GArray *table,
+>      build_append_int_noprefix(table, 0, 7);
+>  }
+>  
+> -static int acpi_ghes_record_mem_error(uint64_t error_block_address,
+> -                                      uint64_t error_physical_addr)
+> +static void
+> +ghes_gen_err_data_uncorrectable_recoverable(GArray *block,
+> +                                            const uint8_t *section_type,
+> +                                            int data_length)
+>  {
 
-Before it is acknowledged, an interrupt becomes pending for GPIOA1:
+That's an ugly name .  Suggestion below on instead passing parameters
+for the uncorrectable and recoverable parts and amking this
+ghes_gen_err_data()
 
-   set->int_status == 0b11
-   s->pending == 2
+> -    GArray *block;
+> -
+> -    /* Memory Error Section Type */
+> -    const uint8_t uefi_cper_mem_sec[] =
+> -          UUID_LE(0xA5BC1114, 0x6F64, 0x4EDE, 0xB8, 0x63, 0x3E, 0x83, \
+> -                  0xED, 0x7C, 0x83, 0xB1);
+> -
+>      /* invalid fru id: ACPI 4.0: 17.3.2.6.1 Generic Error Data,
+>       * Table 17-13 Generic Error Data Entry
+>       */
+>      QemuUUID fru_id = {};
+> -    uint32_t data_length;
+>  
+> -    block = g_array_new(false, true /* clear */, 1);
+> -
+> -    /* This is the length if adding a new generic error data entry*/
+> -    data_length = ACPI_GHES_DATA_LENGTH + ACPI_GHES_MEM_CPER_LENGTH;
+>      /*
+> -     * It should not run out of the preallocated memory if adding a new generic
+> -     * error data entry
+> +     * Calculate the size with this block. No need to check for
+> +     * too big CPER, as CPER size is checked at ghes_record_cper_errors()
+>       */
+> -    assert((data_length + ACPI_GHES_GESB_SIZE) <=
+> -            ACPI_GHES_MAX_RAW_DATA_LENGTH);
+> +    data_length += ACPI_GHES_GESB_SIZE;
+>  
+>      /* Build the new generic error status block header */
+>      acpi_ghes_generic_error_status(block, ACPI_GEBS_UNCORRECTABLE,
+>          0, 0, data_length, ACPI_CPER_SEV_RECOVERABLE);
+>  
+>      /* Build this new generic error data entry header */
+> -    acpi_ghes_generic_error_data(block, uefi_cper_mem_sec,
+> +    acpi_ghes_generic_error_data(block, section_type,
+>          ACPI_CPER_SEV_RECOVERABLE, 0, 0,
+>          ACPI_GHES_MEM_CPER_LENGTH, fru_id, 0);
+Maybe should just pass in ACPI_CPER_SEV_RECOVERABLE 
+and ACPI_GEBS_UNCORRECTABLE in parameters.
 
-A write is issued to acknowledge the interrupt for GPIOA0. This causes
-the following sequence:
+Main advantage being that should allow reuse for other combinations
+and it gets rid of the nasty function name!
 
-   reg_value == 0b11
-   pending == 2
-   s->pending == 0
-   set->int_status == 0b00
+> -
+> -    /* Build the memory section CPER for above new generic error data entry */
+> -    acpi_ghes_build_append_mem_cper(block, error_physical_addr);
+> -
+> -    /* Write the generic error data entry into guest memory */
+> -    cpu_physical_memory_write(error_block_address, block->data, block->len);
+> -
+> -    g_array_free(block, true);
+> -
+> -    return 0;
+>  }
+>  
+>  /*
+> @@ -399,14 +378,19 @@ void acpi_ghes_add_fw_cfg(AcpiGhesState *ags, FWCfgState *s,
+>      ags->present = true;
+>  }
+>  
+> -int acpi_ghes_record_errors(uint16_t source_id, uint64_t physical_address)
+> +void ghes_record_cper_errors(const void *cper, size_t len,
+> +                             uint16_t source_id, Error **errp)
+>  {
 
-It should only clear bit 0 in index mode and the correct result
-should be as following.
+> -    return ret;
+> +    read_ack_register = cpu_to_le64(0);
+> +    /*
+> +        * Clear the Read Ack Register, OSPM will write it to 1 when
+> +        * it acknowledges this error.
+> +        */
 
-   set->int_status == 0b11
-   s->pending == 2
+Indent issue.
 
-   pending == 1
-   s->pending == 1
-   set->int_status == 0b10
-
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
----
- hw/gpio/aspeed_gpio.c | 27 +++++++++++++++++----------
- 1 file changed, 17 insertions(+), 10 deletions(-)
-
-diff --git a/hw/gpio/aspeed_gpio.c b/hw/gpio/aspeed_gpio.c
-index 8725606aec..16c18ea2f7 100644
---- a/hw/gpio/aspeed_gpio.c
-+++ b/hw/gpio/aspeed_gpio.c
-@@ -641,7 +641,7 @@ static void aspeed_gpio_write_index_mode(void *opaque, hwaddr offset,
-     uint32_t pin_idx = reg_idx_number % ASPEED_GPIOS_PER_SET;
-     uint32_t group_idx = pin_idx / GPIOS_PER_GROUP;
-     uint32_t reg_value = 0;
--    uint32_t cleared;
-+    uint32_t pending = 0;
- 
-     set = &s->sets[set_idx];
-     props = &agc->props[set_idx];
-@@ -703,16 +703,23 @@ static void aspeed_gpio_write_index_mode(void *opaque, hwaddr offset,
-                               FIELD_EX32(data, GPIO_INDEX_REG, INT_SENS_2));
-         set->int_sens_2 = update_value_control_source(set, set->int_sens_2,
-                                                       reg_value);
--        /* set interrupt status */
--        reg_value = set->int_status;
--        reg_value = deposit32(reg_value, pin_idx, 1,
--                              FIELD_EX32(data, GPIO_INDEX_REG, INT_STATUS));
--        cleared = ctpop32(reg_value & set->int_status);
--        if (s->pending && cleared) {
--            assert(s->pending >= cleared);
--            s->pending -= cleared;
-+        /* interrupt status */
-+        if (FIELD_EX32(data, GPIO_INDEX_REG, INT_STATUS)) {
-+            /* pending is either 1 or 0 for a 1-bit field */
-+            pending = extract32(set->int_status, pin_idx, 1);
-+
-+            assert(s->pending >= pending);
-+
-+            /* No change to s->pending if pending is 0 */
-+            s->pending -= pending;
-+
-+            /*
-+             * The write acknowledged the interrupt regardless of whether it
-+             * was pending or not. The post-condition is that it mustn't be
-+             * pending. Unconditionally clear the status bit.
-+             */
-+            set->int_status = deposit32(set->int_status, pin_idx, 1, 0);
-         }
--        set->int_status &= ~reg_value;
-         break;
-     case gpio_reg_idx_debounce:
-         reg_value = set->debounce_1;
--- 
-2.34.1
+> +    cpu_physical_memory_write(read_ack_register_addr,
+> +        &read_ack_register, sizeof(uint64_t));
+> +
+> +    /* Write the generic error data entry into guest memory */
+> +    cpu_physical_memory_write(error_block_addr, cper, len);
+> +
+> +    return;
+> +}
 

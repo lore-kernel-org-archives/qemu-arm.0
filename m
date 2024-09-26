@@ -1,138 +1,256 @@
-Received: by 2002:a17:505:5b18:b0:1be9:327d:8ee3 with SMTP id ox24csp892940njb;
-        Thu, 26 Sep 2024 05:08:15 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCVrCVoA6DNWRQeJnRBn0VkeHPjxd/aBQH4LMTAJ/mgxM1dxavemreZ2y/3a5w7hBFp8a73tA1O6OxKigA==@linaro.org
-X-Google-Smtp-Source: AGHT+IHPQ4lYhCbFnRQwQkh8yIpw6UcSTLmGjiM2tR8sJ3NNOusOP/JU6XLsmuxqmH5DvScUE0i4
-X-Received: by 2002:a17:90a:2dc7:b0:2e0:a957:e8de with SMTP id 98e67ed59e1d1-2e0a957f3ddmr804629a91.0.1727352494934;
-        Thu, 26 Sep 2024 05:08:14 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1727352494; cv=pass;
+Received: by 2002:a17:505:5b18:b0:1be9:327d:8ee3 with SMTP id ox24csp973467njb;
+        Thu, 26 Sep 2024 07:19:28 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCUnFICFOGschmqw7cEOR9L+Oal3jsiFpIhLtx0OU2xfO5EHsI6riFru2nYUaaimtML9J/a0ClVouLfKew==@linaro.org
+X-Google-Smtp-Source: AGHT+IGEOoemNy1ZVgi3AUIda1X1iCV2rnBsMGcYg2u5Bdqwl6h1qd6ATdFQVnkoaqlX8Nbm33SX
+X-Received: by 2002:a05:6512:b8c:b0:535:3d08:5844 with SMTP id 2adb3069b0e04-5387048d13fmr4858739e87.6.1727360367865;
+        Thu, 26 Sep 2024 07:19:27 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1727360367; cv=pass;
         d=google.com; s=arc-20240605;
-        b=Yk/dUBTNIEFa/KwLPzRLpFGZQJcoljwJUilUG8akwowbQmGA6IhKpVjMBHiGIBd3fr
-         p++l1qbHFjFuqbNIYHJ7e7SIlP28XlVDIZFPcirwxKv63REdwEOvKIgjG6t+20mZhqw9
-         IW8dWTjXiIxLM55dZdUbnoJiutEYu0aGJOvqzTegXth3+3xJY/YyX5X5ZuPVi+1LHMyu
-         MPYkv8joAmtgnKorETfYxMYbs/frxL7t+US1zGjFG94ixQxZL5ThnJDVGYFVHnvBSPY1
-         s9GLtZs0B8huK4+VqFCidMkdVnNMllYV30b2dCZDdmXorZRPqsG/RtmM64R3SK6LHBOW
-         XjfQ==
+        b=Wdd3j2sXBHgFuvdgmnLt0JUCl64uuWzMqAS73VgK8bfOf/H9aBfGow1qceKjr03vgs
+         Sx7RD6uVC1A8Pn9un1g/1Pmdi+IR3wQ5RWAyfmtBXw3aKd5+nGqvffugyFgU0lJukovW
+         SxYFmGDWzeKKHVkWuFibiA3dKcO/9RkclRHLvhFfl9WEivnVlOMijNf97ZySOugkeW4H
+         mB6vom60wa1ihXbc8Ym6Ql5Bhm4Xn1LnqcW+w7Btcg4BC1JbudE6njOso9aVhSa96jHR
+         kJhWLXzi1B03zjP/yQvMRSZK1Zv3w4dCcKmqTvTeYK9EfDxECQh+Fj1zR5PtVHF29bNG
+         pK8w==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:organization:references
-         :in-reply-to:message-id:subject:cc:to:from:date;
-        bh=9n8cVuBgdpDL6V0i8NTJGgyWML2Irg+R7WQcKjQpNsQ=;
-        fh=xz4FDqw4HoXXpXUzYV3lccYRcF11w/MfLNW6iEmge2M=;
-        b=M6zI0cct+fiXtvpENpkrqFUuP5hnBb7iedphc9pPYXKt4ILMG70f+Kt9gv0ssEzMYa
-         owhWed55E42I367FqTbFprL/CVsO6kmQ8hYX9iUI+OBafw3P8gaN9kAl2lv9bFvF42Nd
-         cfdafYhA+YB8ncm+ZeOGNzVT4uuHVIHHcZSKZg6TzD+1J37mu6iNntt6RONDPcNxf13N
-         t4AwIYQasaFyy45zkyyRgE6s7I/yljSD8zBxLyUs6VmhPbzzKWz+otQvIFIx3/z1HcYH
-         fY5CgIpuwzEBNR2QjElKHbqZyLAYSs0fDM2yzGq7Cb8uLULRT9hWjavxTSkBxN608dpS
-         sLLA==;
+         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=qoKWbIVBG0/pWU1HWNWIEdRu+2vxqpgBufN3T43Ht6k=;
+        fh=j7GA3EfRet1H7jTzv9UDgZNjw8MUZeXqIU5NskuDe5w=;
+        b=D8XmLBCvAY+efNnaUFj60ZW/0BGpDwe+3U5Zh/ZpaqttuFWIyURkz1a9f73WeAvORJ
+         faOw9wf4HcyRHnF/7IJ1BUOsbibur1BcRtuC/yEu5wkKE75jKREHkD/F7fNL+RR77cGj
+         QiYJNtaulXtAQWjK1/RaAcL/ZvAuQxz3c6MpOOCzpQcuDZzOJqK4clrKztF3YdHO8WSn
+         tgDhIceqWS6qbOigWvxbE87Lg533YjJD0JzN01NBmsdIIJNLsNgVsMh4ncc4jJ2C4ceL
+         uaeLECHnq7vDpVO6koYHgFu6JFN5xGQRzvG4gYk4U4Tq8zs+JWmV16gpnbieCDDsLMbI
+         inDQ==;
         dara=google.com
 ARC-Authentication-Results: i=2; mx.google.com;
-       arc=pass (i=1 spf=pass spfdomain=huawei.com dmarc=pass fromdomain=huawei.com);
-       spf=pass (google.com: domain of kvm+bounces-27557-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="kvm+bounces-27557-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=fail (p=QUARANTINE sp=QUARANTINE dis=QUARANTINE) header.from=huawei.com
-Return-Path: <kvm+bounces-27557-alex.bennee=linaro.org@vger.kernel.org>
-Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [139.178.88.99])
-        by mx.google.com with ESMTPS id 98e67ed59e1d1-2e082d9d7a3si2938948a91.162.2024.09.26.05.08.14
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=gKeYqO+c;
+       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
+       spf=pass (google.com: domain of linux-kernel+bounces-340563-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="linux-kernel+bounces-340563-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
+Return-Path: <linux-kernel+bounces-340563-alex.bennee=linaro.org@vger.kernel.org>
+Received: from am.mirrors.kernel.org (am.mirrors.kernel.org. [147.75.80.249])
+        by mx.google.com with ESMTPS id 4fb4d7f45d1cf-5c879e9ed4csi926249a12.496.2024.09.26.07.19.27
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 26 Sep 2024 05:08:14 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm+bounces-27557-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) client-ip=139.178.88.99;
+        Thu, 26 Sep 2024 07:19:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of linux-kernel+bounces-340563-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) client-ip=147.75.80.249;
 Authentication-Results: mx.google.com;
-       arc=pass (i=1 spf=pass spfdomain=huawei.com dmarc=pass fromdomain=huawei.com);
-       spf=pass (google.com: domain of kvm+bounces-27557-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="kvm+bounces-27557-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=fail (p=QUARANTINE sp=QUARANTINE dis=QUARANTINE) header.from=huawei.com
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=gKeYqO+c;
+       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
+       spf=pass (google.com: domain of linux-kernel+bounces-340563-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="linux-kernel+bounces-340563-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
 Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by sv.mirrors.kernel.org (Postfix) with ESMTPS id 734C4284782
-	for <alex.bennee@linaro.org>; Thu, 26 Sep 2024 12:08:14 +0000 (UTC)
+	by am.mirrors.kernel.org (Postfix) with ESMTPS id 5622D1F21373
+	for <alex.bennee@linaro.org>; Thu, 26 Sep 2024 14:19:26 +0000 (UTC)
 Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 8FC0F1714B3;
-	Thu, 26 Sep 2024 12:08:09 +0000 (UTC)
-Received: from frasgout.his.huawei.com (frasgout.his.huawei.com [185.176.79.56])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 747F33BBE5;
+	Thu, 26 Sep 2024 14:19:20 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="gKeYqO+c"
+Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2DD8214F9FD;
-	Thu, 26 Sep 2024 12:08:06 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=185.176.79.56
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2FF121114
+	for <linux-kernel@vger.kernel.org>; Thu, 26 Sep 2024 14:19:19 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=10.30.226.201
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1727352489; cv=none; b=ad+lbAJ1xgRIcosN4AaYc3TP3p8NXaUOlPsAD/Q/6+3a3TEV8zr3wYVJIKK4RueauLsd+ihBOIZ/7/T11IVNS1A85RqWJITK3h3DAMSUhyfaAPKHndt4WAAywMWAz56zBmXPlr0Ezh+O7zrGivmohVGxmFLLobbFYZKa29q3zVw=
+	t=1727360360; cv=none; b=USoCV7KrEjf5ffCfFe5fb8eNmcDzCb3w0bLoAlh45lNMw7h0SzB1FReZG37lqzihC+X2HdpTbq9xC1lV0HfPOWvnowCfNDt3SE1u4NDI3zzgYUyisiWu8/lrbeIOJMQ4WS+w7MkoXwuIILwHYfX9eCov/KXJ68Vg3VeGsBTEEAA=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1727352489; c=relaxed/simple;
-	bh=PO57L/uFfP7LlHOyaDgLFn5H9GT+LWQKvPwHx9D9P/s=;
-	h=Date:From:To:CC:Subject:Message-ID:In-Reply-To:References:
-	 MIME-Version:Content-Type; b=G8OevxDCtwChhSZq7wSOwlSNEC2Qcio2PyI3Hipx5Dw/H6/XUVKK5w5284tbZV2oTuCg04Zx8OULY4+aVptO+VQuNmD8wMevQVaXeFqJVyauxJG0h0B7RC/V62m67zvnaFMz1rKbVMOXgXvqoMXLdCA/JkvvIPOAQOqbmsUmvvA=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=Huawei.com; spf=pass smtp.mailfrom=huawei.com; arc=none smtp.client-ip=185.176.79.56
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=Huawei.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=huawei.com
-Received: from mail.maildlp.com (unknown [172.18.186.31])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4XDsm93tdkz6J7Y4;
-	Thu, 26 Sep 2024 20:07:21 +0800 (CST)
-Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
-	by mail.maildlp.com (Postfix) with ESMTPS id 946571401F3;
-	Thu, 26 Sep 2024 20:07:56 +0800 (CST)
-Received: from localhost (10.203.177.66) by frapeml500008.china.huawei.com
- (7.182.85.71) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Thu, 26 Sep
- 2024 14:07:55 +0200
-Date: Thu, 26 Sep 2024 13:07:54 +0100
-From: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
-To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-CC: Igor Mammedov <imammedo@redhat.com>, Shiju Jose <shiju.jose@huawei.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>, Ani Sinha <anisinha@redhat.com>,
-	Dongjiu Geng <gengdongjiu1@gmail.com>, Paolo Bonzini <pbonzini@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>, <kvm@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <qemu-arm@nongnu.org>,
-	<qemu-devel@nongnu.org>
-Subject: Re: [PATCH 11/15] acpi/ghes: better name GHES memory error function
-Message-ID: <20240926130754.000041ab@Huawei.com>
-In-Reply-To: <f4c031c627e761b2a48267f1cec1af3a7ad0acbb.1727236561.git.mchehab+huawei@kernel.org>
+	s=arc-20240116; t=1727360360; c=relaxed/simple;
+	bh=2osnQDz0LxKw4i1NaGRSjr4kpgAji49Rc3tJuNnxvYQ=;
+	h=Date:From:To:Cc:Subject:Message-ID:In-Reply-To:References:
+	 MIME-Version:Content-Type; b=kHJT+MFpMEt2/YFUAXQvnpdxl9V6nYOP31ag3nKqOScBAMgPms3iVwlxz1L5e75dBazTNj/EnJhqp3iATDpf06OR4GdfNoGqYmofU7NchH/0RY0dT6TZihjYxBet4CHWOniffdCL909U/0IC+YRiQP/6EbfVYGTCCszuAzETicw=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=gKeYqO+c; arc=none smtp.client-ip=10.30.226.201
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BDB2FC4CEC5;
+	Thu, 26 Sep 2024 14:19:17 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1727360359;
+	bh=2osnQDz0LxKw4i1NaGRSjr4kpgAji49Rc3tJuNnxvYQ=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=gKeYqO+ce9pS5qu95pV6p0ksXn7YVD3O0XkWGMqelZ+nWaWPlgLVilDOvqg1c/eKb
+	 Jg56HVwWZTAEd059/HhfFHK0KFnOum4mw7U/WMmTkjW5VsDv7Wg68MH1veITUV9Hwv
+	 Hq1aowIB30BgpssImhGG5kUUSfhzj7EjB/LAi9SJp77uQm3llZKCHw1Ong6MxIoFbk
+	 b+TC6pNb/SvH8XUNsGVaeVbXnWwfAWY+WJGXamIrZsYUWAhs2qDODezHScIi1Fa82P
+	 q9zhDlY2Yp2zRC4iZ4F64SO6S7wR/CiOZcL420KsGiOw7EOUGXuJl6Uj3uBZUq3O2/
+	 PfHMRObjYVR4g==
+Date: Thu, 26 Sep 2024 16:19:15 +0200
+From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+To: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
+Cc: Igor Mammedov <imammedo@redhat.com>, Shiju Jose <shiju.jose@huawei.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Ani Sinha <anisinha@redhat.com>,
+ Dongjiu Geng <gengdongjiu1@gmail.com>, <linux-kernel@vger.kernel.org>,
+ <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
+Subject: Re: [PATCH 09/15] acpi/ghes: make the GHES record generation more
+ generic
+Message-ID: <20240926161726.3945f835@foz.lan>
+In-Reply-To: <20240926130056.00001e12@Huawei.com>
 References: <cover.1727236561.git.mchehab+huawei@kernel.org>
-	<f4c031c627e761b2a48267f1cec1af3a7ad0acbb.1727236561.git.mchehab+huawei@kernel.org>
-Organization: Huawei Technologies Research and Development (UK) Ltd.
-X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
+	<9b256923695e2202f549cbbb11dc22982cb22abf.1727236561.git.mchehab+huawei@kernel.org>
+	<20240926130056.00001e12@Huawei.com>
+X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
 Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
+X-Mailing-List: linux-kernel@vger.kernel.org
+List-Id: <linux-kernel.vger.kernel.org>
+List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-X-ClientProxiedBy: lhrpeml500004.china.huawei.com (7.191.163.9) To
- frapeml500008.china.huawei.com (7.182.85.71)
-X-TUID: rcRHGDsyWiCU
+X-TUID: aw6HBN7d0192
 
-On Wed, 25 Sep 2024 06:04:16 +0200
-Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
+Em Thu, 26 Sep 2024 13:00:56 +0100
+Jonathan Cameron <Jonathan.Cameron@Huawei.com> escreveu:
 
-> The current function used to generate GHES data is specific for
-> memory errors. Give a better name for it, as we now have a generic
-> function as well.
+> On Wed, 25 Sep 2024 06:04:14 +0200
+> Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
 > 
-> Reviewed-by: Igor Mammedov <imammedo@redhat.com>
-> Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-In general fine, but question below on what looks to be an unrelated change.
+> > Split the code into separate functions to allow using the
+> > common CPER filling code by different error sources.
+> > 
+> > The generic code was moved to ghes_record_cper_errors(),
+> > and ghes_gen_err_data_uncorrectable_recoverable() now contains
+> > only a logic to fill GEGB part of the record.
+> > 
+> > The remaining code to generate a memory error now belongs to
+> > acpi_ghes_record_errors() function.
+> > 
+> > A further patch will give it a better name.  
+> 
+> That bit is fine, I'm less sure about
+> ghes_gen_err_data_uncorrectable_recoverable()
+> Maybe you refactor that later, but I'd suggest doing so in this
+> patch to make it 
+> ghes_gen_data() with the uncorrectable and recoverable bits
+> passed in as parameters.
 
-Jonathan
+For now, no need. When using the error injection script, such
+function is not used. The script can already play with what's
+defined there.
+
+Besides that, I tried to generalize it, but it is not trivial,
+as passing some things as parameter is really hard. So, instead,
+I opted to keep the code as-is. It can be changed later once we
+add internal events that require a different setting than what
+we have with ARMv8 memory errors via SEA.
+> 
+> Jonathan
+> 
+> > 
+> > Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+> > ---
+> >  hw/acpi/ghes.c         | 118 +++++++++++++++++++++++++----------------
+> >  include/hw/acpi/ghes.h |   3 ++
+> >  2 files changed, 74 insertions(+), 47 deletions(-)
+> > 
+> > diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
+> > index 340a0263faf8..307b5a41d539 100644
+> > --- a/hw/acpi/ghes.c
+> > +++ b/hw/acpi/ghes.c
+> > @@ -181,51 +181,30 @@ static void acpi_ghes_build_append_mem_cper(GArray *table,
+> >      build_append_int_noprefix(table, 0, 7);
+> >  }
+> >  
+> > -static int acpi_ghes_record_mem_error(uint64_t error_block_address,
+> > -                                      uint64_t error_physical_addr)
+> > +static void
+> > +ghes_gen_err_data_uncorrectable_recoverable(GArray *block,
+> > +                                            const uint8_t *section_type,
+> > +                                            int data_length)
+> >  {  
+> 
+> That's an ugly name .  Suggestion below on instead passing parameters
+> for the uncorrectable and recoverable parts and amking this
+> ghes_gen_err_data()
+> 
+> > -    GArray *block;
+> > -
+> > -    /* Memory Error Section Type */
+> > -    const uint8_t uefi_cper_mem_sec[] =
+> > -          UUID_LE(0xA5BC1114, 0x6F64, 0x4EDE, 0xB8, 0x63, 0x3E, 0x83, \
+> > -                  0xED, 0x7C, 0x83, 0xB1);
+> > -
+> >      /* invalid fru id: ACPI 4.0: 17.3.2.6.1 Generic Error Data,
+> >       * Table 17-13 Generic Error Data Entry
+> >       */
+> >      QemuUUID fru_id = {};
+> > -    uint32_t data_length;
+> >  
+> > -    block = g_array_new(false, true /* clear */, 1);
+> > -
+> > -    /* This is the length if adding a new generic error data entry*/
+> > -    data_length = ACPI_GHES_DATA_LENGTH + ACPI_GHES_MEM_CPER_LENGTH;
+> >      /*
+> > -     * It should not run out of the preallocated memory if adding a new generic
+> > -     * error data entry
+> > +     * Calculate the size with this block. No need to check for
+> > +     * too big CPER, as CPER size is checked at ghes_record_cper_errors()
+> >       */
+> > -    assert((data_length + ACPI_GHES_GESB_SIZE) <=
+> > -            ACPI_GHES_MAX_RAW_DATA_LENGTH);
+> > +    data_length += ACPI_GHES_GESB_SIZE;
+> >  
+> >      /* Build the new generic error status block header */
+> >      acpi_ghes_generic_error_status(block, ACPI_GEBS_UNCORRECTABLE,
+> >          0, 0, data_length, ACPI_CPER_SEV_RECOVERABLE);
+> >  
+> >      /* Build this new generic error data entry header */
+> > -    acpi_ghes_generic_error_data(block, uefi_cper_mem_sec,
+> > +    acpi_ghes_generic_error_data(block, section_type,
+> >          ACPI_CPER_SEV_RECOVERABLE, 0, 0,
+> >          ACPI_GHES_MEM_CPER_LENGTH, fru_id, 0);  
+> Maybe should just pass in ACPI_CPER_SEV_RECOVERABLE 
+> and ACPI_GEBS_UNCORRECTABLE in parameters.
+> 
+> Main advantage being that should allow reuse for other combinations
+> and it gets rid of the nasty function name!
+> 
+> > -
+> > -    /* Build the memory section CPER for above new generic error data entry */
+> > -    acpi_ghes_build_append_mem_cper(block, error_physical_addr);
+> > -
+> > -    /* Write the generic error data entry into guest memory */
+> > -    cpu_physical_memory_write(error_block_address, block->data, block->len);
+> > -
+> > -    g_array_free(block, true);
+> > -
+> > -    return 0;
+> >  }
+> >  
+> >  /*
+> > @@ -399,14 +378,19 @@ void acpi_ghes_add_fw_cfg(AcpiGhesState *ags, FWCfgState *s,
+> >      ags->present = true;
+> >  }
+> >  
+> > -int acpi_ghes_record_errors(uint16_t source_id, uint64_t physical_address)
+> > +void ghes_record_cper_errors(const void *cper, size_t len,
+> > +                             uint16_t source_id, Error **errp)
+> >  {  
+> 
+> > -    return ret;
+> > +    read_ack_register = cpu_to_le64(0);
+> > +    /*
+> > +        * Clear the Read Ack Register, OSPM will write it to 1 when
+> > +        * it acknowledges this error.
+> > +        */  
+> 
+> Indent issue.
+> 
+> > +    cpu_physical_memory_write(read_ack_register_addr,
+> > +        &read_ack_register, sizeof(uint64_t));
+> > +
+> > +    /* Write the generic error data entry into guest memory */
+> > +    cpu_physical_memory_write(error_block_addr, cper, len);
+> > +
+> > +    return;
+> > +}  
+> 
 
 
-> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-> index 849e2e21b304..57192285fb96 100644
-> --- a/target/arm/kvm.c
-> +++ b/target/arm/kvm.c
-> @@ -2373,7 +2373,8 @@ void kvm_arch_on_sigbus_vcpu(CPUState *c, int code, void *addr)
->               */
->              if (code == BUS_MCEERR_AR) {
->                  kvm_cpu_synchronize_state(c);
-> -                if (!acpi_ghes_record_errors(ACPI_HEST_SRC_ID_SEA, paddr)) {
-> +                if (!acpi_ghes_memory_errors(ARM_ACPI_HEST_SRC_ID_SYNC,
-The parameter changes seems unconnected to rest of the patch...  Maybe at least
-mention it in the patch description.
-I can't find the definition of ARM_ACPI_HEST_SRC_ID_SYNC either so where
-did that come from?
 
-> +                                             paddr)) {
->                      kvm_inject_arm_sea(c);
->                  } else {
->                      error_report("failed to record the error");
-
+Thanks,
+Mauro

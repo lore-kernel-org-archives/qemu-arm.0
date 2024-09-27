@@ -1,90 +1,197 @@
-Received: by 2002:a17:504:5f68:b0:1be9:327d:8ee3 with SMTP id gl8csp167333njc;
-        Fri, 27 Sep 2024 00:32:33 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWKSgrQTIOlk7M5C0nQN4ltJ2ay8TR3bWWlQ8AFSJ6iijd4tk6ucyYg5U84AJDFgVj7Yhxcjycp/t0m8g==@linaro.org
-X-Google-Smtp-Source: AGHT+IFMZJSiXBKiVmMPcmhpjODO8i3t6W9gGApY1p3Egttn2VNcyTsSH9Qtpo/ApifPA/n2XF54
-X-Received: by 2002:a05:620a:2492:b0:7a9:c406:eebd with SMTP id af79cd13be357-7ae378c28fdmr284308985a.42.1727422352957;
-        Fri, 27 Sep 2024 00:32:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1727422352; cv=none;
+Received: by 2002:a17:504:5f68:b0:1be9:327d:8ee3 with SMTP id gl8csp182507njc;
+        Fri, 27 Sep 2024 01:13:05 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCWJmqe+6mqy/2VgWStEoJU12RT+byNex3wA6AZw7Rg6WStBMbDN7j57K5anGKC4iJ8VLRDBzdgb4UqdGQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IFr886OLLGL/A7hvXL9hzONLFZkPsKySDuoXyDBN/hTHTCDNPCaI0f3L31BaSqjlPOl22Xd
+X-Received: by 2002:a05:620a:190e:b0:7a9:b739:3763 with SMTP id af79cd13be357-7ae37859261mr306621885a.28.1727424784719;
+        Fri, 27 Sep 2024 01:13:04 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1727424784; cv=pass;
         d=google.com; s=arc-20240605;
-        b=Jvz62/yCjbSNB9d4HMMRTDRhhMO4JV+g2J8W2CMPe1rTDp+G+0xJlr7VPtImrbpkeY
-         ihpIGj5LY0AoRtKiKhYXPdV/OD92rvMxFk68i9sfF5ZcSbLj4M3x1dVrJ793A6eR/5Xl
-         CFNIdJI1g0OeXbdOGGMrFRdOT1uxpatFnBrfJ2Rc/fQL/juDzsK6mUFMUwHwjgLX5Cqq
-         hoynfYOntFIRx6LCP6YAUppE3Xqd7o7d3FSU/c0Y9Eq8kkiowxuDEK/pGNBQY6ovytAo
-         9JbB7amNIUdhS3vgnGeKkAH9932kP2rctTFZnvxavDCBGC4yYRCtJO5TL98tYTen4prq
-         oRhQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to;
-        bh=Cuelhesp2EJkf6+kUOINt1uwensPR6dAhjz7egcQUKc=;
-        fh=bfdvnURtAD34fQ77QeZnvwdM4/zSvHk1Doa+KIkv0v8=;
-        b=B4QEE1k8mE4W9vPf2+LGu2/Q1Bz4IwWbeGFrYRDlX2k1YGdNEo+VdOoUhuvb0eGW3Z
-         c8V4PiSUxg+Qj0aHRlYQpAVlLvImoMkfu9gKmnsZVAa1TqXvRyWeAz2tWvcRmsc7iQx9
-         7dEXCOBJ6dMxU+IH9GxoGX7J3VEX5p9OZtJThO5CBImLv2JQ5KEuOG+PM8pz6erxqGno
-         SMaR5pTbsejnTzyYp5vpXPdzcJw+GRSKc8OrmiN5iqkEIsB06vB3MMmqptzep1vyzhiF
-         ibducfyn+q8p06lwVaVfup4Rkn6jCKf2sLGQY9PGrr1ay49+DyF7uj6Fov11BCFLI8tG
-         y/gA==;
+        b=T0vagpFSOIvmPNevPo0PlhtgOMSth03b6gj5k657n8Oa5N6+4EAPke6sdiWtKXQed+
+         EKvTq1TRn9cdde/G/KsChudGtcPJi1Njjgc2bTjLa1AGw+ueQpaPTjMwnsIk8Toswy0P
+         0aoC5wqNJVWdQ2C3fJ2YaEFggeofRVM3CGCMCVwEQp1q1WZwpgdn+xwUX+uEjijk4Hee
+         h/Doqz9tEODouCCcbG+s/3PjFywWZpxwtBlp+Shr+lagA/GEZpELLHbHchzlQjpFIB9b
+         aQvYQenM3vKmnCLPGOoHS3qeU22gShfE7kS7MidCEWS+7upLJODCQKFzCiNz/SBNpyum
+         Yy4g==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :in-reply-to:references:message-id:date:thread-index:thread-topic
+         :subject:cc:to:from:dkim-signature;
+        bh=2K22qyGT3xU/Yr+zML8b/qWGjRNPYWPflxnnWGix9WU=;
+        fh=n03wY5lU8Xq1kW10MzeiULEIiO5N7WBImT4kRems8fc=;
+        b=k+BWWiviBEZonaFDi0thbZPb7aeNWzIA9hfDTUoxtYXg/44FwVn3anBXgOb58xkhjv
+         CRCSwnXLe/h4bTjrD5afrzIkr8CGpsTK87Zg6Tz/WgYDsJmYzf+/aV4atTJv94412n5r
+         udqapyCk6HUUiIbnZmeav6/I5mO3uBT4k2IpUzrFwTEFiSnTCp3dEU5WaekrYf1y3BAA
+         //ZzeG0oJAnkrIVcrHWcdcgZofVOMvZYk5Ejbqjs1rz0v//q4A3g1dd/iZ669eCGThzc
+         DwscdnxyASSgwpIkt1q9T9bGkB5EVM9EByMyihHBUt5sEB7481bwlw5AF2Vt5eJxwnAo
+         TfAw==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@aspeedtech.com header.s=selector2 header.b=rdDN133t;
+       arc=pass (i=1 spf=pass spfdomain=aspeedtech.com dkim=pass dkdomain=aspeedtech.com dmarc=pass fromdomain=aspeedtech.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=aspeedtech.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7ae378529d2si155534185a.392.2024.09.27.00.32.32
+        by mx.google.com with ESMTPS id af79cd13be357-7ae37855d66si162353585a.467.2024.09.27.01.13.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 27 Sep 2024 00:32:32 -0700 (PDT)
+        Fri, 27 Sep 2024 01:13:04 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=pass header.i=@aspeedtech.com header.s=selector2 header.b=rdDN133t;
+       arc=pass (i=1 spf=pass spfdomain=aspeedtech.com dkim=pass dkdomain=aspeedtech.com dmarc=pass fromdomain=aspeedtech.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=aspeedtech.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1su5SY-0001tX-MS; Fri, 27 Sep 2024 03:32:14 -0400
+	id 1su65j-0007Em-8M; Fri, 27 Sep 2024 04:12:43 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1su5SW-0001mM-TE; Fri, 27 Sep 2024 03:32:12 -0400
-Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
+ id 1su65h-0007D7-Qm; Fri, 27 Sep 2024 04:12:41 -0400
+Received: from mail-eastasiaazlp170110002.outbound.protection.outlook.com
+ ([2a01:111:f403:c400::2] helo=HK3PR03CU002.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1su5SV-0004DY-8G; Fri, 27 Sep 2024 03:32:12 -0400
-Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
- (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.12; Fri, 27 Sep
- 2024 15:31:45 +0800
-Received: from localhost.localdomain (192.168.10.10) by TWMBX01.aspeed.com
- (192.168.0.62) with Microsoft SMTP Server id 15.2.1258.12 via Frontend
- Transport; Fri, 27 Sep 2024 15:31:45 +0800
-To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
- <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
- <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
- Stanley" <joel@jms.id.au>, Thomas Huth <thuth@redhat.com>, Laurent Vivier
- <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, "open list:ASPEED
- BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC here"
- <qemu-devel@nongnu.org>
-CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
+ id 1su65f-00010h-4t; Fri, 27 Sep 2024 04:12:41 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=KSgpx2qczmeKBtUBcFdjR4NSrfPmNq9V8YxVH/BriWVkipePCzS/AMA5FKibgC89f64DRXLc+7RN95H1PhCW3uaG+ypaJqvSAK1mwe7oWdza91XOkKcVUPbXfHD8zW0YQPGl9iui4ZXnsq6knWaNjyTaI+gzaB47yS+1xA/8aeKco6W+MiLJDG4Yl0vPmOUWcnmcEvvwOCx272CvcbMrETkAoAP4ejSnlNR1//zT7HDhxwc6IpvvXxvMCq79rSX07DEtk4VmbQCWe3dzzZJJwztLXIAAsBb/AriJYtriBGek4yszUQh4meV0S4qMlEUpV96vBiQ58+4wjOaio3sT8g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=2K22qyGT3xU/Yr+zML8b/qWGjRNPYWPflxnnWGix9WU=;
+ b=gF/WlKxq1YWCb3Dimupm2ifBjKF2o7ViWLbJT+TAwBilPM72KpvP8E6oYLSp1vZg9WYwWXK5DxxSYoAW660Y9YZSuMq23QFsbwHX45rfheQPYBJnyvv34d/pEjUHCeN31GmW25fQ3sKYGbRJ0fHo4uqA4hL+RnojBHXAlQG9zcWMVCs3VxglFqCZEZ30SwhuCmmQUeP4I9EPkC17Eu+iDQatc/PkoB3trKsLgtisMHzYbTaWh0Io6cWg3gwtfYELnOMVq0Ih7eSibPMWJNjXvYT4uKEhN+5NT9XqGgjps7UCR0As27FDQknLGU2LkWPlso9G/h08EnEfysUjMlDKbg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
+ header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=2K22qyGT3xU/Yr+zML8b/qWGjRNPYWPflxnnWGix9WU=;
+ b=rdDN133te7NEvBtzgPNWII8FpdnSzphKTdNY7isq/XRV7aQ5v90CPFScmNYLKlyGbWNTefjFdufp0lEdTnhQgLVKypgOmIyY4ubchS3OLlz9TX+BxI9H6sb4xd0naqlhR+vogwEfjIAZGkBQ6u63liWQkf3Vn37CRDRVgAgm7feqcBgX9upezxFrFpbfkbq7fumCiVyGylXpgyR89ngF/8xUthxxBtDgBzOhU9GWLL9rby7UploZ3f6NO48/qze5ljquA1o2paMgIFeLPLp88p7Y+V7fCFPrfo/STFtmP/J2F1L7WQKsdHX1IUoi59gAEqVZBdUBpCNK1qt0G2Ufew==
+Received: from SI2PR06MB5041.apcprd06.prod.outlook.com (2603:1096:4:1a4::6) by
+ KL1PR06MB6210.apcprd06.prod.outlook.com (2603:1096:820:d9::9) with
+ Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.7982.28; Fri, 27 Sep 2024 08:12:30 +0000
+Received: from SI2PR06MB5041.apcprd06.prod.outlook.com
+ ([fe80::705a:352a:7564:8e56]) by SI2PR06MB5041.apcprd06.prod.outlook.com
+ ([fe80::705a:352a:7564:8e56%6]) with mapi id 15.20.8005.017; Fri, 27 Sep 2024
+ 08:12:30 +0000
+From: Jamin Lin <jamin_lin@aspeedtech.com>
+To: Jamin Lin <jamin_lin@aspeedtech.com>, =?iso-8859-1?Q?C=E9dric_Le_Goater?=
+ <clg@kaod.org>, Peter Maydell <peter.maydell@linaro.org>, Steven Lee
+ <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>, Andrew Jeffery
+ <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, Thomas Huth
+ <thuth@redhat.com>, Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini
+ <pbonzini@redhat.com>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, "open
+ list:All patches CC here" <qemu-devel@nongnu.org>
+CC: Troy Lee <troy_lee@aspeedtech.com>, Yunlin Tang
  <yunlin.tang@aspeedtech.com>
-Subject: [PATCH v4 4/7] hw/gpio/aspeed: Fix clear incorrect interrupt status
- for GPIO index mode
-Date: Fri, 27 Sep 2024 15:31:41 +0800
-Message-ID: <20240927073144.2303522-5-jamin_lin@aspeedtech.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20240927073144.2303522-1-jamin_lin@aspeedtech.com>
+Subject: RE: [PATCH v4 7/7] hw/gpio/aspeed: Add test case for AST2700
+Thread-Topic: [PATCH v4 7/7] hw/gpio/aspeed: Add test case for AST2700
+Thread-Index: AQHbEK9VteKxfxxBFU2cL/77vJlmzbJrRybg
+Date: Fri, 27 Sep 2024 08:12:30 +0000
+Message-ID: <SI2PR06MB504163D471738C1A07960F7AFC6B2@SI2PR06MB5041.apcprd06.prod.outlook.com>
 References: <20240927073144.2303522-1-jamin_lin@aspeedtech.com>
+ <20240927073144.2303522-8-jamin_lin@aspeedtech.com>
+In-Reply-To: <20240927073144.2303522-8-jamin_lin@aspeedtech.com>
+Accept-Language: zh-TW, en-US
+Content-Language: zh-TW
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=aspeedtech.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: SI2PR06MB5041:EE_|KL1PR06MB6210:EE_
+x-ms-office365-filtering-correlation-id: 35626adb-203c-45ec-b46e-08dcdecc21fe
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+ ARA:13230040|7416014|366016|376014|1800799024|921020|38070700018; 
+x-microsoft-antispam-message-info: =?iso-8859-1?Q?y0mjgnxzMxQcLz1PaRxfa8IcC1pV0U7uS+JoVCUBk+B2d0cM4HapIagHIn?=
+ =?iso-8859-1?Q?bnb1ypOGJoafCT15hU3LbWO9eRuU4kl80WBjJck2c3jR+VUlBUe7LsCYHB?=
+ =?iso-8859-1?Q?8PX2W0+mDWiirWRp9iQ43d9YbbiSvdGj1Wj6OfaoaFiBuh1C6VWkbXYrk3?=
+ =?iso-8859-1?Q?C8KnIb1nsa17nLDV7sVosnt9XSAfAODEB7KtHLUHiO/ym9SeX2NCzltRRf?=
+ =?iso-8859-1?Q?A0A7qQYFGbbrYWMEZiowByJpbGM0+L7yQHxEyCU/YjRiWNIAU6UpRNwBG+?=
+ =?iso-8859-1?Q?jlISwSk2QPjHop5MLo69uyXZP/XbbFXZwoAoxfyt33tnMOyDVNPCoA7wdO?=
+ =?iso-8859-1?Q?YguMOMhek2MlOuzdHZOGOrui2orzR33004HjzBkQEBSJ2QR2dvsNbMfzuY?=
+ =?iso-8859-1?Q?URDlCTXobPMJ1MKATjdqwIQX+Xt0aJA8WDRZe/Qc9Ja3EPOIHvGEJDwZ1z?=
+ =?iso-8859-1?Q?px66dcnk4BvxpJES2vPea38FNkHkc1nPFEv8N7zvnCg6eB8mh8X1w/kLwF?=
+ =?iso-8859-1?Q?+d6fyTvrdunsGLaABu+B+tI54pDjdb/hF583rTltQwWAfbBahSJuwKBSHc?=
+ =?iso-8859-1?Q?94TwChKZCEAW7aYHbjYnLW1ZAOXzc159su3qEqed6kFVKnY5Mev9qZeGcl?=
+ =?iso-8859-1?Q?/GDFo7mZ9bXhUlzlBOHy5uFDtfoMlcQHcpWGzE+sq4GwAZZxn5RiIBPMiL?=
+ =?iso-8859-1?Q?F9sIViAXHB9i9lTv1FAOu+mS+QlFrUqOsjnmcnYI+bZECWw5qYpbFji5FM?=
+ =?iso-8859-1?Q?0nyJLRSdLZexCdG6rzcHAIV8yBVB2e5uRjYDCZl62xLqVeEU2j31+fLfhs?=
+ =?iso-8859-1?Q?j7p6KZv++/EB3ZygkOEWHpbB7/ZEei+F1kI/PUKmTDHhmrILPdhM6YZwMG?=
+ =?iso-8859-1?Q?yLm+pFhQIxBWk8Rcoss+vM3Ccn+19mZjuCQSn0hySF1MSqx3cP31XqPfVY?=
+ =?iso-8859-1?Q?vqzA1zFvtfyxWQwYyyx/SBYwWHbo7nYpaZoxjzO82J+CHJqHg3zHY72jXL?=
+ =?iso-8859-1?Q?w15JxdD2Rrbh1vkdF5q6l6rYbX57YlfTgVDF8Zo2Nodz8Wh80ytfme/Uep?=
+ =?iso-8859-1?Q?KnzACo/at759ZnsRB5IsZI/REZ+zKPH1B7tZsSh3NC+n0hH4NgKXa5oqbt?=
+ =?iso-8859-1?Q?6gUZqcKZAtMCfR0K8T9rievbQmcVuD8tOsTxJehD5YOc2lsVEkbj/oqBtb?=
+ =?iso-8859-1?Q?mJ7ADjGy5fWurzouK6MSC15ttpbddzEIfdxJKQgEMH5cdd6EjbWmlBCY4z?=
+ =?iso-8859-1?Q?8itZ89M+hzxuc0uTmWpUFpTWQMWgvOIZLT9K4MDeBF/7Z2ZztA08SZ3AC1?=
+ =?iso-8859-1?Q?GJjckoC5Bs5UrEcRYG7e2muW8pr8Cs3FwiHqWWAqJJjGM5FNHIbSx3cbla?=
+ =?iso-8859-1?Q?v8keDMO3vKW8u3pt7iF/It69pzR0/yWhLwGoFDz0qkW6nYCLb0hF0=3D?=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:zh-tw; SCL:1;
+ SRV:; IPV:NLI; SFV:NSPM; H:SI2PR06MB5041.apcprd06.prod.outlook.com; PTR:;
+ CAT:NONE;
+ SFS:(13230040)(7416014)(366016)(376014)(1800799024)(921020)(38070700018);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?8OFHVgYIA2F8E/6qDUkIgqtR+XPeBZDxcIY/VLMkpB7Q82YUVpIJ/iPln9?=
+ =?iso-8859-1?Q?9/yMyuNtB3y0DalnDU375l5NpqZ/ZAG75loQO1Ory6PEkr5SCObVja1YQr?=
+ =?iso-8859-1?Q?Gqs1m6vfsBOs1mlvoZ41kFA8S56QIh/Mlp/yo8SroM8S4O9HpWmfs6PTbc?=
+ =?iso-8859-1?Q?OUiyzXMtFCEEbzYLBsFxtMWz3jcK2xj+SBsVnzrKHqsluNbhfWrMPf6ewU?=
+ =?iso-8859-1?Q?+ZzNU5nT0FtWuHoKrz/DD75cECGogxdjXKQ8gBUS/loyaOUR+z6pkYYY0S?=
+ =?iso-8859-1?Q?K7yBIGUWpeEwoV/PPonnNgaiu3BmnIEv8OSIZCx0/OvZrx+IKSb6fuMR2O?=
+ =?iso-8859-1?Q?HjdQ9CTYFnvuFE4s/BbnR5eOIptgEfuGj0aujJSKJjEd7czg62ALbfo4ZW?=
+ =?iso-8859-1?Q?DKzM0WuX6M8oeGxKxt+LcdPn9zmR1iKsNBSXS2mg7xDh0RUDuuh4mU6Kx7?=
+ =?iso-8859-1?Q?jLlBBugLy0YHVwxnvMvGg2ewTO8d3SBv+8X4ho4HjicAmy/9v68DfOwxBV?=
+ =?iso-8859-1?Q?ekQGY/5NdS052Q+I+nzJeGjM3vCGHzRaPIdcnI1WPWf3a7O4zP2qugpl8o?=
+ =?iso-8859-1?Q?6KoHfvQmicC9cKJ9BMkAjPXRAQj08v9qcl4olkgXDkvhcZcbkClgnmthe1?=
+ =?iso-8859-1?Q?y3cAFpBYkuj5kLYdN82YOhp5q1K23YFCWNB2TOdyjhp8NniVGuYGgiFv2f?=
+ =?iso-8859-1?Q?Q4Eu+av/K9Ygg5X0ZK+ZiL3TZYzSCOdqyAv1JXF9Zl/sP0WcHUvE18lFQ4?=
+ =?iso-8859-1?Q?CAvESFUGU3sS7fFRY/IolmVIhBeB+I4rpMplpBZZJaP1j+S2kktjkBOx6y?=
+ =?iso-8859-1?Q?8h4p9+/3WZReeA5SCwHo429EM+6bGOlZgs631mkZ9HOucyy6z0MoAOe0ep?=
+ =?iso-8859-1?Q?phBuuWnCj7oVgLZYNrdfHAtdCvguQXt0JpVNxQ72R/Anju6NjqbQ54aVBi?=
+ =?iso-8859-1?Q?L4q1XL9D/DEgjSmLMbAadV7c5GUsRqB2Ot47RRhmVbQwA6WX4McJpFX0Bb?=
+ =?iso-8859-1?Q?qHwlh3PS9TowJgcqq/uQUcxEArq5tcvGDiHFg7kt2LGdFMZbCWWvvK2/ch?=
+ =?iso-8859-1?Q?JfA+CMNg2nEpItXUdI/FnpyMBo8UsCcU1389piBG07flwTXlqRnlfxwIFN?=
+ =?iso-8859-1?Q?aTvIKB6KxupK2vsuL2KhfJ3TRPyVZ6y9Fx/iY7krEL7OeR4H/hz0Mo/hOs?=
+ =?iso-8859-1?Q?j5GPhUkODS19Lx5boZ12mht1QG9cqnP/zRYV1JboAjXYp6MKzZRTh1hntx?=
+ =?iso-8859-1?Q?qLKNvBHvoVhHZVOjVQ6jEAXjKKrYAcW83bSpE9lBpLQXl+Se7fPIQUhiFG?=
+ =?iso-8859-1?Q?hBpo2AbmiKsPqf3ufeNX1tOuOVXn4D1LqiZnHW+R5VDHTqwazVp9VNDWdl?=
+ =?iso-8859-1?Q?Dxawdbt9ry+YSP/OMhHa3+GdZlM7kCSG7zfnzXHhRL7irfo+mWlFVYeACT?=
+ =?iso-8859-1?Q?5IkStPwftOIHSfrp6RgAJ6oM31j3huxiqb9dePYvUF6WPoZ+o4fTDZbCZH?=
+ =?iso-8859-1?Q?ZPqVanIPE/OjJHewz25OhiXnxe3pEjno9M48g1WlESiuNCviO/TgeFoAFY?=
+ =?iso-8859-1?Q?+ZAbXixuU1HI36RNaUqrNTWRq76pXSUHdSzUwD7tPVrDlmkrX0WtmrIEUY?=
+ =?iso-8859-1?Q?OXvPzYLQ5YSzozX8IRskVWcG6Gpl3qRiiW?=
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-Received-SPF: pass client-ip=211.20.114.72;
- envelope-from=jamin_lin@aspeedtech.com; helo=TWMBX01.aspeed.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_FAIL=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-OriginatorOrg: aspeedtech.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SI2PR06MB5041.apcprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 35626adb-203c-45ec-b46e-08dcdecc21fe
+X-MS-Exchange-CrossTenant-originalarrivaltime: 27 Sep 2024 08:12:30.4477 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: RUBiRcsgfr4CbnWE91NRMbYjdmD/+eAFD4cpxouzT1RelLkMMGbHI1P5HKgtjImZCC9J0xFHFHhwAHocGii6Xdqg3HDSaLsdaMDaSUKSmBw=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: KL1PR06MB6210
+Received-SPF: pass client-ip=2a01:111:f403:c400::2;
+ envelope-from=jamin_lin@aspeedtech.com;
+ helo=HK3PR03CU002.outbound.protection.outlook.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -97,111 +204,144 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
-From:  Jamin Lin via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: xUSlVZPnZYMJ
+X-TUID: jyNKBWRmn/Ue
 
-The interrupt status field is W1C, where a set bit on read indicates an
-interrupt is pending. If the bit extracted from data is set it should
-clear the corresponding bit in reg_value. However, if the extracted
-bit is clear then the value of the corresponding bit in reg_value
-should be unchanged.
+Hi Cedric,
 
-SHARED_FIELD_EX32() extracts the interrupt status bit from the write
-(data). reg_value is set to the set's interrupt status, which means
-that for any pin with an interrupt pending, the corresponding bit is
-set. The deposit32() call updates the bit at pin_idx in the
-reg_value, using the value extracted from the write (data).
+> Subject: [PATCH v4 7/7] hw/gpio/aspeed: Add test case for AST2700
+>=20
+> Add test case to test GPIO output and input pins from A0 to D7 for AST270=
+0.
+>=20
+> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+> ---
+>  tests/qtest/aspeed_gpio-test.c | 64 ++++++++++++++++++++++++++++++++++
+>  1 file changed, 64 insertions(+)
+>=20
+> diff --git a/tests/qtest/aspeed_gpio-test.c b/tests/qtest/aspeed_gpio-tes=
+t.c
+> index d38f51d719..8ae42a8da5 100644
+> --- a/tests/qtest/aspeed_gpio-test.c
+> +++ b/tests/qtest/aspeed_gpio-test.c
+> @@ -33,6 +33,10 @@
+>  #define GPIO_ABCD_DATA_VALUE 0x000
+>  #define GPIO_ABCD_DIRECTION  0x004
+>=20
+> +/* AST2700 */
+> +#define AST2700_GPIO_BASE 0x14C0B000
+> +#define GPIOA0_CONTROL 0x180
+> +
+>  static void test_set_colocated_pins(const void *data)  {
+>      QTestState *s =3D (QTestState *)data; @@ -72,6 +76,61 @@ static void
+> test_set_input_pins(const void *data)
+>      g_assert_cmphex(value, =3D=3D, 0xffffffff);  }
+>=20
+> +static void test_2700_output_pins(const void *data) {
+> +    QTestState *s =3D (QTestState *)data;
+> +    uint32_t offset =3D 0;
+> +    uint32_t value =3D 0;
+> +    uint32_t pin =3D 0;
+> +
+> +    for (char c =3D 'A'; c <=3D 'D'; c++) {
+> +        for (int i =3D 0; i < 8; i++) {
+> +            offset =3D AST2700_GPIO_BASE + GPIOA0_CONTROL + (pin * 4);
+> +
+> +            /* output direction and output hi */
+> +            qtest_writel(s, offset, 0x00000003);
+> +            value =3D qtest_readl(s, offset);
+> +            g_assert_cmphex(value, =3D=3D, 0x00000003);
+> +
+> +            /* output direction and output low */
+> +            qtest_writel(s, offset, 0x00000002);
+> +            value =3D qtest_readl(s, offset);
+> +            g_assert_cmphex(value, =3D=3D, 0x00000002);
+> +            pin++;
+> +        }
+> +    }
+> +}
+> +
+> +static void test_2700_input_pins(const void *data) {
+> +    QTestState *s =3D (QTestState *)data;
+> +    char name[16];
+> +    uint32_t offset =3D 0;
+> +    uint32_t value =3D 0;
+> +    uint32_t pin =3D 0;
+> +
+> +    for (char c =3D 'A'; c <=3D 'D'; c++) {
+> +        for (int i =3D 0; i < 8; i++) {
+> +            sprintf(name, "gpio%c%d", c, i);
+> +            offset =3D AST2700_GPIO_BASE + GPIOA0_CONTROL + (pin * 4);
+> +            /* input direction */
+> +            qtest_writel(s, offset, 0);
+> +
+> +            /* set input */
+> +            qtest_qom_set_bool(s, "/machine/soc/gpio", name, true);
+> +            value =3D qtest_readl(s, offset);
+> +            g_assert_cmphex(value, =3D=3D, 0x00002000);
+> +
+> +            /* clear input */
+> +            qtest_qom_set_bool(s, "/machine/soc/gpio", name, false);
+> +            value =3D qtest_readl(s, offset);
+> +            g_assert_cmphex(value, =3D=3D, 0);
+> +            pin++;
+> +        }
+> +    }
+> +}
+> +
+> +
+>  int main(int argc, char **argv)
+>  {
+>      QTestState *s;
+> @@ -83,6 +142,11 @@ int main(int argc, char **argv)
+>      qtest_add_data_func("/ast2600/gpio/set_colocated_pins", s,
+>                          test_set_colocated_pins);
+>      qtest_add_data_func("/ast2600/gpio/set_input_pins", s,
+> test_set_input_pins);
+> +
+> +    s =3D qtest_init("-machine ast2700-evb");
+> +    qtest_add_data_func("/ast2700/gpio/input_pins", s,
+> test_2700_input_pins);
+> +    qtest_add_data_func("/ast2700/gpio/out_pins", s,
+> + test_2700_output_pins);
+> +
+>      r =3D g_test_run();
+>      qtest_quit(s);
+>=20
+It seems I need to check arch for AST2700 to fix the following errors.
 
-The result is that if multiple interrupt status bits
-were pending and the write was acknowledging specific one bit,
-then the all interrupt status bits will be cleared.
-However, it is index mode and should only clear the corresponding bit.
+int main(int argc, char **argv)
+{
+    const char *arch =3D qtest_get_arch();
+    QTestState *s;
+    int r;
 
-For example, say we have an interrupt pending for GPIOA0, where the
-following statements are true:
+    g_test_init(&argc, &argv, NULL);
 
-   set->int_status == 0b01
-   s->pending == 1
+    s =3D qtest_init("-machine ast2600-evb");
+    qtest_add_data_func("/ast2600/gpio/set_colocated_pins", s,
+                        test_set_colocated_pins);
+    qtest_add_data_func("/ast2600/gpio/set_input_pins", s, test_set_input_p=
+ins);
 
-Before it is acknowledged, an interrupt becomes pending for GPIOA1:
+    if (strcmp(arch, "aarch64") =3D=3D 0) {
+        s =3D qtest_init("-machine ast2700-evb");
+        qtest_add_data_func("/ast2700/gpio/input_pins",
+                            s, test_2700_input_pins);
+        qtest_add_data_func("/ast2700/gpio/out_pins", s, test_2700_output_p=
+ins);
+    }
 
-   set->int_status == 0b11
-   s->pending == 2
+    r =3D g_test_run();
+    qtest_quit(s);
 
-A write is issued to acknowledge the interrupt for GPIOA0. This causes
-the following sequence:
+    return r;
+}
 
-   reg_value == 0b11
-   pending == 2
-   s->pending == 0
-   set->int_status == 0b00
+qemu-system-arm: unsupported machine type: "ast2700-evb"
+Use -machine help to list supported machines
 
-It should only clear bit 0 in index mode and the correct result
-should be as following.
-
-   set->int_status == 0b11
-   s->pending == 2
-
-   pending == 1
-   s->pending == 1
-   set->int_status == 0b10
-
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-Suggested-by: Andrew Jeffery <andrew@codeconstruct.com.au>
-Reviewed-by: Andrew Jeffery <andrew@codeconstruct.com.au>
----
- hw/gpio/aspeed_gpio.c | 27 +++++++++++++++++----------
- 1 file changed, 17 insertions(+), 10 deletions(-)
-
-diff --git a/hw/gpio/aspeed_gpio.c b/hw/gpio/aspeed_gpio.c
-index 8725606aec..16c18ea2f7 100644
---- a/hw/gpio/aspeed_gpio.c
-+++ b/hw/gpio/aspeed_gpio.c
-@@ -641,7 +641,7 @@ static void aspeed_gpio_write_index_mode(void *opaque, hwaddr offset,
-     uint32_t pin_idx = reg_idx_number % ASPEED_GPIOS_PER_SET;
-     uint32_t group_idx = pin_idx / GPIOS_PER_GROUP;
-     uint32_t reg_value = 0;
--    uint32_t cleared;
-+    uint32_t pending = 0;
- 
-     set = &s->sets[set_idx];
-     props = &agc->props[set_idx];
-@@ -703,16 +703,23 @@ static void aspeed_gpio_write_index_mode(void *opaque, hwaddr offset,
-                               FIELD_EX32(data, GPIO_INDEX_REG, INT_SENS_2));
-         set->int_sens_2 = update_value_control_source(set, set->int_sens_2,
-                                                       reg_value);
--        /* set interrupt status */
--        reg_value = set->int_status;
--        reg_value = deposit32(reg_value, pin_idx, 1,
--                              FIELD_EX32(data, GPIO_INDEX_REG, INT_STATUS));
--        cleared = ctpop32(reg_value & set->int_status);
--        if (s->pending && cleared) {
--            assert(s->pending >= cleared);
--            s->pending -= cleared;
-+        /* interrupt status */
-+        if (FIELD_EX32(data, GPIO_INDEX_REG, INT_STATUS)) {
-+            /* pending is either 1 or 0 for a 1-bit field */
-+            pending = extract32(set->int_status, pin_idx, 1);
-+
-+            assert(s->pending >= pending);
-+
-+            /* No change to s->pending if pending is 0 */
-+            s->pending -= pending;
-+
-+            /*
-+             * The write acknowledged the interrupt regardless of whether it
-+             * was pending or not. The post-condition is that it mustn't be
-+             * pending. Unconditionally clear the status bit.
-+             */
-+            set->int_status = deposit32(set->int_status, pin_idx, 1, 0);
-         }
--        set->int_status &= ~reg_value;
-         break;
-     case gpio_reg_idx_debounce:
-         reg_value = set->debounce_1;
--- 
-2.34.1
+> --
+> 2.34.1
 

@@ -1,90 +1,100 @@
-Received: by 2002:a17:505:5b18:b0:1be9:327d:8ee3 with SMTP id ox24csp1048989njb;
-        Thu, 26 Sep 2024 09:12:48 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWfCxXrHyPU4qlKd9wX/NVk53zyzDi+EXIu7v5PhjH9+4YZ6A8l0XDvbv4EkdXeKNPCerNX8IAPgZJa4A==@linaro.org
-X-Google-Smtp-Source: AGHT+IHVKL73d9lOBRa0PG3qVWWqA/mEzH38yQO6JCuy7iYsJVtfEX9ci6HWjTDI4Q3isoeIAGhD
-X-Received: by 2002:a05:620a:1921:b0:7a9:b250:d57b with SMTP id af79cd13be357-7ae37825c86mr16211585a.5.1727367168439;
-        Thu, 26 Sep 2024 09:12:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1727367168; cv=none;
+Received: by 2002:a17:504:5f68:b0:1be9:327d:8ee3 with SMTP id gl8csp72206njc;
+        Thu, 26 Sep 2024 19:13:27 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWPVZNMgtEYchxTBp2P/yMOllOl3mG0bEB2mSpsLh3GEoL2Ijsabzvdzsn3+9eHS7GLH8EgeJqeeCCU4Q==@linaro.org
+X-Google-Smtp-Source: AGHT+IE1/3lE8TDvxjYso4Oz5/JoiWesOAywPORdgrrHGF/jGwss/80w8KIz7ExuIXciYa+PtS6/
+X-Received: by 2002:a05:6214:2f06:b0:6c5:508d:7f81 with SMTP id 6a1803df08f44-6cb3b5e9376mr43475846d6.26.1727403206953;
+        Thu, 26 Sep 2024 19:13:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1727403206; cv=none;
         d=google.com; s=arc-20240605;
-        b=JO50mS2EqkrVeHJQGSgyyRzpH+1qPWQeS1JHoz/NGICRZBx724upITPU3vd8p+ywKh
-         UYkbRoB2azp2VTNp4JksID7O3npWc8qxcwWmQGZHJz9mvXJRjXjYDcoTVpMHReEj/G7Y
-         Bk6XZypDEnt2t4JUl54Fh7wAZe8I2kipVJ785tX5ukCCwI9PfknI/U1qOuI7LKZRPOQm
-         826EYSEhEyFLaKwxqsjHh3zXUaeYrWJJXE2YX5VWWEyTbBvMSPDIstjP3GQLT7ayODi6
-         sO8epDmXqThjSTVrvwbqnvWwLK2MPWP3R0uS+pUrYlgcMlV5Oht80K88nb1aqbMlgKjC
-         FPhA==
+        b=a98K5IimGhmAMSJvXkMaiepku1QCn2QpQYaOJqL+1BbmRDbI0uysu6C0AzUfBdwi/+
+         5k0SyDwbguoYPreEtMhPi0P5fwCyaoPWCu7X5HevYJ8f1U6lXim2yV3Z/03PRFugVaWU
+         vhrBR3+GRn6OzxL+pfNM39OTM9X5o/ze5Acotq9rQPbWtQw6xIN1JwjbfDNLBxvYuBpx
+         6c2QCvk8blEc+1GZluUoebYUHilxk7Ug920/Y7Pe9X1EP6xoDjExJV58fOuZuiwxmjSS
+         CIuANR7CT78rkHHqPblGZcEEUBj4b4OH0cCRba/0tGyXUOfYi7n/S0AdCK/oarKHo0wY
+         XTfg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id;
-        bh=hwnYDiN9iruXdL1k/b8PKm8DKXuN49nkytBLRMgXlQI=;
-        fh=y8UldgvBpgWdzvo0ZnT6ptMSZ9zI0pieroCu40oTsaQ=;
-        b=G3rZIVlGPgG+lNzk813ZwMfuumzLQSV2L//4ckiMddsknWnkzN0MVy6wKM+g5NUFih
-         GvdC3AwUbTeTU0aLfTFram39ekJdVb1LfbT2QZ1U5I39EIs0CHCnZGdMl4FMdEGAIwgk
-         TM1gkmqcn8FPp8QYAluxm0D/ggvF1kl6ncdeYD9SBbsZJn6Bx5NDn9g1pbEBY/qAvcd0
-         QZNuu0XDaqqrYCEnrb4mlNO2nzMQw5K9cz3joj1G8wQETUO9HVg8Axg2JREIvHlofqLb
-         ceLUBG/e+6fdSsqdwiqtD3Kb97rfIEhzIwkEQUhZHCPSTKwXvfXxkRIEsFj53rsFfXF7
-         HbEA==;
+         :list-unsubscribe:list-id:precedence:mime-version:user-agent
+         :content-transfer-encoding:references:in-reply-to:date:cc:to:from
+         :subject:message-id:dkim-signature;
+        bh=H8OfuyqM0QxAAJ/WGAptY24LWLlDe+sdBQ3IAIPLwVU=;
+        fh=ZOisryR2Mb28fNxWQse9qjy5qBOClWtToxOZdGTojXg=;
+        b=jjdEovTbMS1fBSuhoIbmF8gYn+aUHdk7ZjLsVgW/1Qw+cfcZ3hjouaCV8gDrVyNKhI
+         2EoHP6nkq2Bbc+fD6atqS0OtEiAfB+ly1E0wdopsV881vKOe/0zM5ZJwrB8Y0d+URieD
+         LP3bG8m9RRHWAQBGSJ5tMd82fiY2ar2sqldaPFyUdp8Hyduz9Hg3k2CMgVmnO7uJEeVG
+         HSFvWCaE7w225XSzQETA0v8BNuz40H2RIaCiywk0kKCCUSw7sT7zdJF/xFxrZ8fEgtWS
+         SQe+38wgIgaDiWLrpjaArlQf+Qs8hXMo3xIe7R7meTUDjRTuqddtOPgepkomoepuDz+4
+         OdsQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@codeconstruct.com.au header.s=2022a header.b=VffgqiDF;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=codeconstruct.com.au
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7ae37871192si5979485a.608.2024.09.26.09.12.48
+        by mx.google.com with ESMTPS id 6a1803df08f44-6cb3cf18ee3si8479676d6.233.2024.09.26.19.13.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 26 Sep 2024 09:12:48 -0700 (PDT)
+        Thu, 26 Sep 2024 19:13:26 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@codeconstruct.com.au header.s=2022a header.b=VffgqiDF;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=codeconstruct.com.au
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1str6l-00055C-3Z; Thu, 26 Sep 2024 12:12:47 -0400
+	id 1su0Tf-0002zO-5H; Thu, 26 Sep 2024 22:13:03 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=Z/Ab=QY=kaod.org=clg@ozlabs.org>)
- id 1str6j-0004zb-Pa; Thu, 26 Sep 2024 12:12:45 -0400
-Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
+ (Exim 4.90_1) (envelope-from <andrew@codeconstruct.com.au>)
+ id 1su0Td-0002yG-CZ; Thu, 26 Sep 2024 22:13:01 -0400
+Received: from pi.codeconstruct.com.au ([203.29.241.158]
+ helo=codeconstruct.com.au)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=Z/Ab=QY=kaod.org=clg@ozlabs.org>)
- id 1str6i-0004Rn-5a; Thu, 26 Sep 2024 12:12:45 -0400
-Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4XDzCF42rdz4xQS;
- Fri, 27 Sep 2024 02:12:41 +1000 (AEST)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits))
- (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4XDzCB0001z4xNC;
- Fri, 27 Sep 2024 02:12:37 +1000 (AEST)
-Message-ID: <e1076f8e-2e32-41ba-adf4-8e28aae8e526@kaod.org>
-Date: Thu, 26 Sep 2024 18:12:35 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 0/6] Support GPIO for AST2700
-To: Jamin Lin <jamin_lin@aspeedtech.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
+ (Exim 4.90_1) (envelope-from <andrew@codeconstruct.com.au>)
+ id 1su0Ta-0007SV-7Y; Thu, 26 Sep 2024 22:13:01 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=codeconstruct.com.au; s=2022a; t=1727403170;
+ bh=H8OfuyqM0QxAAJ/WGAptY24LWLlDe+sdBQ3IAIPLwVU=;
+ h=Subject:From:To:Cc:Date:In-Reply-To:References;
+ b=VffgqiDFLrcouJ/V9mWP0wOQim/7lcgyv37ZawMjWRw3VWLyN55UDBW/FZ4WmY1nH
+ G+gl4jwmNvuNcSoL2vIj/6Fevmrsy1MIxn20CmFg8/z0MOxVAIGYuizhNBJ61VxXj4
+ scKWRELhZcf4xsBNabmGGYGll/Den3NtEIqpp4b782ltpZzwFIBuA2Pws8k9i2x5JF
+ pobh4m7ncAuIOdt13SArA/l4bPZuD5AthLrBbQp/rMmzw5V/8+UIFA6fKd0S73cr8J
+ sY8Hfi9Oo7GO2IuCcj9NMtu2n4oKLqYhDtsMllrzMuQ/RkD1f/zthpsKnF08++gzjA
+ 6sZS0xN8+mX5A==
+Received: from [192.168.68.112]
+ (ppp118-210-187-73.adl-adc-lon-bras34.tpg.internode.on.net [118.210.187.73])
+ by mail.codeconstruct.com.au (Postfix) with ESMTPSA id 629EB6502D;
+ Fri, 27 Sep 2024 10:12:48 +0800 (AWST)
+Message-ID: <4ca92b4ccaa8d66db990dc51d4d50aa7e648ad5a.camel@codeconstruct.com.au>
+Subject: Re: [PATCH v3 4/6] hw/gpio/aspeed: Fix clear incorrect interrupt
+ status for GPIO index mode
+From: Andrew Jeffery <andrew@codeconstruct.com.au>
+To: Jamin Lin <jamin_lin@aspeedtech.com>, =?ISO-8859-1?Q?C=E9dric?= Le
+ Goater <clg@kaod.org>, Peter Maydell <peter.maydell@linaro.org>, Steven Lee
+ <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>, Joel Stanley
+ <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, "open
+ list:All patches CC here" <qemu-devel@nongnu.org>
 Cc: troy_lee@aspeedtech.com, yunlin.tang@aspeedtech.com
+Date: Fri, 27 Sep 2024 11:42:47 +0930
+In-Reply-To: <20240926074535.1286209-5-jamin_lin@aspeedtech.com>
 References: <20240926074535.1286209-1-jamin_lin@aspeedtech.com>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20240926074535.1286209-1-jamin_lin@aspeedtech.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=150.107.74.76;
- envelope-from=SRS0=Z/Ab=QY=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.246, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ <20240926074535.1286209-5-jamin_lin@aspeedtech.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.46.4-2 
+MIME-Version: 1.0
+Received-SPF: pass client-ip=203.29.241.158;
+ envelope-from=andrew@codeconstruct.com.au; helo=codeconstruct.com.au
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -99,37 +109,126 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Mg+MqlZN0Fg+
+X-TUID: fa1rWPWBePGX
 
-Hello Jamin,
+On Thu, 2024-09-26 at 15:45 +0800, Jamin Lin wrote:
+> The interrupt status field is W1C, where a set bit on read indicates an
+> interrupt is pending. If the bit extracted from data is set it should
+> clear the corresponding bit in group_value. However, if the extracted
+> bit is clear then the value of the corresponding bit in group_value
+> should be unchanged.
+>=20
+> SHARED_FIELD_EX32() extracts the interrupt status bit from the write
+> (data). group_value is set to the set's interrupt status, which means
 
-On 9/26/24 09:45, Jamin Lin wrote:
-> v1: Support GPIO for AST2700
-> v2: Fix clear incorrect interrupt status and adds reviewer suggestions
-> v3: remove nested conditionals and adds reviewer suggestions
-> 
-> Jamin Lin (6):
->    hw/gpio/aspeed: Fix coding style
->    hw/gpio/aspeed: Support to set the different memory size
->    hw/gpio/aspeed: Support different memory region ops
->    hw/gpio/aspeed: Fix clear incorrect interrupt status for GPIO index
->      mode
->    hw/gpio/aspeed: Add AST2700 support
->    aspeed/soc: Support GPIO for AST2700
-> 
->   hw/arm/aspeed_ast27x0.c       |  18 +-
->   hw/gpio/aspeed_gpio.c         | 427 ++++++++++++++++++++++++++++++++--
->   include/hw/gpio/aspeed_gpio.h |   4 +-
->   3 files changed, 430 insertions(+), 19 deletions(-)
-> 
+I think you should s/group_value/reg_value/ here as that's what's used
+in the removed code below.
 
-Could you please to add tests in tests/qtest/aspeed_gpio-test.c
-for this changes ? At least one with the ast2700-evb machine if
-possible.
+Though maybe C=C3=A9dric can fix it up for you when he applies it if anothe=
+r
+revision isn't otherwise necessary.
 
+> that for any pin with an interrupt pending, the corresponding bit is
+> set. The deposit32() call updates the bit at pin_idx in the group,
+> using the value extracted from the write (data).
+>=20
+> The result is that if multiple interrupt status bits
+> were pending and the write was acknowledging specific one bit,
+> then the all interrupt status bits will be cleared.
+> However, it is index mode and should only clear the corresponding bit.
+>=20
+> For example, say we have an interrupt pending for GPIOA0, where the
+> following statements are true:
+>=20
+>    set->int_status =3D=3D 0b01
+>    s->pending =3D=3D 1
+>=20
+> Before it is acknowledged, an interrupt becomes pending for GPIOA1:
+>=20
+>    set->int_status =3D=3D 0b11
+>    s->pending =3D=3D 2
+>=20
+> A write is issued to acknowledge the interrupt for GPIOA0. This causes
+> the following sequence:
+>=20
+>    reg_value =3D=3D 0b11
+>    pending =3D=3D 2
+>    s->pending =3D=3D 0
+>    set->int_status =3D=3D 0b00
+>=20
+> It should only clear bit 0 in index mode and the correct result
+> should be as following.
+>=20
+>    set->int_status =3D=3D 0b11
+>    s->pending =3D=3D 2
+>=20
+>    pending =3D=3D 1
+>    s->pending =3D=3D 1
+>    set->int_status =3D=3D 0b10
+>=20
 
-Thanks,
+Maybe this is a bit forward, but:
 
-C.
+Suggested-by: Andrew Jeffery <andrew@codeconstruct.com.au>
+Reviewed-by: Andrew Jeffery <andrew@codeconstruct.com.au>
 
+> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+> ---
+>  hw/gpio/aspeed_gpio.c | 27 +++++++++++++++++----------
+>  1 file changed, 17 insertions(+), 10 deletions(-)
+>=20
+> diff --git a/hw/gpio/aspeed_gpio.c b/hw/gpio/aspeed_gpio.c
+> index 8725606aec..16c18ea2f7 100644
+> --- a/hw/gpio/aspeed_gpio.c
+> +++ b/hw/gpio/aspeed_gpio.c
+> @@ -641,7 +641,7 @@ static void aspeed_gpio_write_index_mode(void *opaque=
+, hwaddr offset,
+>      uint32_t pin_idx =3D reg_idx_number % ASPEED_GPIOS_PER_SET;
+>      uint32_t group_idx =3D pin_idx / GPIOS_PER_GROUP;
+>      uint32_t reg_value =3D 0;
+> -    uint32_t cleared;
+> +    uint32_t pending =3D 0;
+> =20
+>      set =3D &s->sets[set_idx];
+>      props =3D &agc->props[set_idx];
+> @@ -703,16 +703,23 @@ static void aspeed_gpio_write_index_mode(void *opaq=
+ue, hwaddr offset,
+>                                FIELD_EX32(data, GPIO_INDEX_REG, INT_SENS_=
+2));
+>          set->int_sens_2 =3D update_value_control_source(set, set->int_se=
+ns_2,
+>                                                        reg_value);
+> -        /* set interrupt status */
+> -        reg_value =3D set->int_status;
+> -        reg_value =3D deposit32(reg_value, pin_idx, 1,
+> -                              FIELD_EX32(data, GPIO_INDEX_REG, INT_STATU=
+S));
+> -        cleared =3D ctpop32(reg_value & set->int_status);
+> -        if (s->pending && cleared) {
+> -            assert(s->pending >=3D cleared);
+> -            s->pending -=3D cleared;
+> +        /* interrupt status */
+> +        if (FIELD_EX32(data, GPIO_INDEX_REG, INT_STATUS)) {
+> +            /* pending is either 1 or 0 for a 1-bit field */
+> +            pending =3D extract32(set->int_status, pin_idx, 1);
+> +
+> +            assert(s->pending >=3D pending);
+> +
+> +            /* No change to s->pending if pending is 0 */
+> +            s->pending -=3D pending;
+> +
+> +            /*
+> +             * The write acknowledged the interrupt regardless of whethe=
+r it
+> +             * was pending or not. The post-condition is that it mustn't=
+ be
+> +             * pending. Unconditionally clear the status bit.
+> +             */
+> +            set->int_status =3D deposit32(set->int_status, pin_idx, 1, 0=
+);
+>          }
+> -        set->int_status &=3D ~reg_value;
+>          break;
+>      case gpio_reg_idx_debounce:
+>          reg_value =3D set->debounce_1;
 

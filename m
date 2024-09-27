@@ -1,93 +1,93 @@
-Received: by 2002:a17:504:5f68:b0:1be9:327d:8ee3 with SMTP id gl8csp523101njc;
+Received: by 2002:a17:504:5f68:b0:1be9:327d:8ee3 with SMTP id gl8csp523103njc;
         Fri, 27 Sep 2024 11:41:03 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUya4tqKih7Gg3ZWUT+02vmzYAGfKB8zjs7zhzP01H5Q7LowZX3j3z4CYPqvtkt5BB06nnRunFQTx2MqA==@linaro.org
-X-Google-Smtp-Source: AGHT+IGWQHJP/ni1DAz8ZoIFrPndNbfFuX388Gg+HG7joLjBRDeCr5/MPo7RSyUj9I6gHjt7POXz
-X-Received: by 2002:a05:6214:3908:b0:6c3:5926:a070 with SMTP id 6a1803df08f44-6cb3b62cc3amr54584926d6.30.1727462463419;
+X-Forwarded-Encrypted: i=2; AJvYcCUrq51eebldxxLljygZRG7P0ZOMRVlHA0sygnQOG8h40ZyHdHzVJWnmF3Uv5mx6tb2CzfWNNK1giqM9vQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IErO+2GHJ73XlMb3WS/bu0PjjowkOy1sM6TDq/jHVVQxXD0+itYvFFe0nx3Xc4K4tw+YbHG
+X-Received: by 2002:a05:6102:3f50:b0:49b:a93d:3d0 with SMTP id ada2fe7eead31-4a2cefeaeefmr4746943137.1.1727462463511;
         Fri, 27 Sep 2024 11:41:03 -0700 (PDT)
 ARC-Seal: i=1; a=rsa-sha256; t=1727462463; cv=none;
         d=google.com; s=arc-20240605;
-        b=densMiO7SgIzzSsX1k0jkVXHAIH/XfWwDehMs4KeW5iqq9LDkTCFUu5pL9XrScb8zQ
-         gmkP99dhhw10SQum9Z7N3OK5fdp3N/HKLCuqzILrSuUZpOWwnNK0nd9jMr56qz+dbr8x
-         +vkZCMnIQFOeJrAnHrBvIT2WPnTAhfd1p9tRG8kuWeFJ5luHfPU+y3XketYFbXi6OpxQ
-         EhdGO4MroLy6xlKKa5FI5ziOuRbS3dpUK6V5NayUymXVKw1XjeMsKYaSpxycTCnq/I0N
-         xvQQXYw6rwW+c68054v4f4mBzLGHAP3IVdZdvCZAICjwQB/nyIAQ5ez3KLpe4bwnliNL
-         KjNg==
+        b=Cd3wSKzMzrcPSUHhB/bnJRu459klr3KmWpjOiFZDrZ2I3uiIjtbr0ZVB6u0Q5VUhyu
+         6AwkTAZAj36djdxsLQeGidi4DLIMYiYk6PFlc8hbtF6kiMF13OX+n8/Ulvhd9FtLrhNO
+         WxdjUc0UL5eJtO2TAnlV3hetniJsLOFL44ksDc84PeFApTkEsaDfwspFgKRsa4qjxYi5
+         bVuIZ2rSQhf6jikaE1p9NbhRDoqYTdUFMHnOOfIH0cksWG9nFlHwXrxNnB0c1Wmdtyhp
+         tN7xRP4Aje2zUVERPtAsvGAKBSuYcZcAJcX06iiM11eUflHgPDrwx71nlX9gnBdIQ07U
+         AyvA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=inndt6ew6MTEcC6kmRfkoTY6qU9U3jastIodPwqdQos=;
+        bh=Kttuzan+2SEQ2RSLRx2BTKlmBgGkB2zb7Y5AdN50UrQ=;
         fh=0jvlPj6FfZI8yMiCe8KYsRPZa/AaDVZptXEU0geLoY4=;
-        b=FcWOzBCJNF2syecuUCDwK7vy/Cax7/+wdGpesWYUZHnMlx0JmEeliua3j1mv6w+/PK
-         2F+9TOYm7jyFyoZrdqt63Cb86BkA1ar9HNU0ZUpxPQlSMQlAlua+mGF/rnjrJrcGtjhk
-         AH+OYNxjD82z047IALYrVTx92d+q8rFF8vl3B26rz4AQyoadojTtqlOYL7eOkj6EVe8T
-         /dHMX2Svu0Wm2PzjiB10KagL+NocIy7hhv/k2SNJLqZh089NpbCVYouKdX5QOPV7sJGX
-         Xl5KZ97R4xRYtrR+KzKr9eDIAwqJY5e7VBHlFYh+vANDlvwszxk8WHidvbRzBQAn88yh
-         Qopw==;
+        b=ApiGMw3l3CeGRxmsMlMvvljx6f4Tv1EPMTVMosoy7pR7hRCGVUm9WmqhdWxlxRvmPW
+         8H8KmlwCFkyE8JqE7q+hNCy+9iRyz9brzEso4xFbxBA+278yoaS5BDaWN6JTnArkwFjt
+         8ssXLvkQSSclf3KvtOJgM4Pw0btpy58Oh9vIUMgXJpkJcKKqJLHub23itnrxO1I3oFnt
+         nIPJRkSs3wvdRoXCFp54JcQ8N4PEpWOJf8NPzSi8OElWpcDGbR5MhDoBUGAfbV5doolU
+         GSZjDfRH2UmWmbyvsoFpKs0vBwYAvUuFnN3oBYH88LUUX8/AWSP22pf9WT5VK9kNiwuv
+         Q0RQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@oracle.com header.s=corp-2023-11-20 header.b=Xa+ZALnN;
+       dkim=pass header.i=@oracle.com header.s=corp-2023-11-20 header.b=B5139c2k;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=oracle.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6cb3b6be3aesi28488346d6.517.2024.09.27.11.41.03
+        by mx.google.com with ESMTPS id 6a1803df08f44-6cb3b6a4752si29036506d6.485.2024.09.27.11.41.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Fri, 27 Sep 2024 11:41:03 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@oracle.com header.s=corp-2023-11-20 header.b=Xa+ZALnN;
+       dkim=pass header.i=@oracle.com header.s=corp-2023-11-20 header.b=B5139c2k;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=oracle.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1suFtB-0007gO-C5; Fri, 27 Sep 2024 14:40:25 -0400
+	id 1suFta-0000Mk-6N; Fri, 27 Sep 2024 14:40:50 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <annie.li@oracle.com>)
- id 1suFt7-0007ah-DA; Fri, 27 Sep 2024 14:40:21 -0400
-Received: from mx0a-00069f02.pphosted.com ([205.220.165.32])
+ id 1suFtU-0008ML-Nz; Fri, 27 Sep 2024 14:40:45 -0400
+Received: from mx0b-00069f02.pphosted.com ([205.220.177.32])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <annie.li@oracle.com>)
- id 1suFt5-0002Jp-Sp; Fri, 27 Sep 2024 14:40:21 -0400
-Received: from pps.filterd (m0246629.ppops.net [127.0.0.1])
- by mx0b-00069f02.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 48RHMbn0032355;
- Fri, 27 Sep 2024 18:40:12 GMT
+ id 1suFtS-0002LK-Gp; Fri, 27 Sep 2024 14:40:44 -0400
+Received: from pps.filterd (m0246631.ppops.net [127.0.0.1])
+ by mx0b-00069f02.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 48RHMXAn018123;
+ Fri, 27 Sep 2024 18:40:35 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=
  from:to:cc:subject:date:message-id:in-reply-to:references
  :reply-to:mime-version:content-transfer-encoding; s=
- corp-2023-11-20; bh=inndt6ew6MTEcC6kmRfkoTY6qU9U3jastIodPwqdQos=; b=
- Xa+ZALnN9X4H+25sdnv2cmXax2QbWp+RbHhxnpYDOue8Q7lU8Vx4tb25i0rk0kca
- swLZn3fv8wBdhukgVcM08xIRixZitRdWB+8BxF00g+YScj/GlTJVKTiQ505Aw6CM
- zJ3qAeA1GvBZFlcBRJt4AjobrWJLXlNojrSe7eeNyA16GfMmtp8Xbhj/mNUGUkv2
- W0CpRYt6cAGYmDtheBvT/fEhkBDgIE/45V6f7EmZYXAtxsRLZjrNSo0+VrtkVWeF
- zDWqPbWA2bt7UdLvHAfOsxlpQia4Dml9raleROkmbr916edNiR2HsBy7MRTRMTpH
- Q25aDOmLU6fpIt5LG7zVzA==
+ corp-2023-11-20; bh=Kttuzan+2SEQ2RSLRx2BTKlmBgGkB2zb7Y5AdN50UrQ=; b=
+ B5139c2kceeGsXoYs8l9I2nrU29LuwNYDRorJfDz31OyraMhDBTgTAGugD0V5XPM
+ n65K2YP8xqPMtSdCV6Q/XUdo3M9z4FwHgkcisPZUYXr9Qgat872+EzCxC/XBcepI
+ CrI4F2Onrp602o42Qxe+4/CsoTEWEtXPfa5YMVuOmVPnN4xCPr5dliTFMu8fZDSp
+ evE36nkM3SOtRNoG+QdZ2PbpmGhyK1UFqkT8l1+X4NhxAYLJq1rJ5ulymulFBWgc
+ vCN3mHG9qscnrYDCZi1GPcVhf/bQWHB/1SDXVAc8FxIanOaJJgy/joqvZqPlOPEV
+ 0DD/OMnUTGf+cOvwZHuJhg==
 Received: from iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com
  (iadpaimrmta01.appoci.oracle.com [130.35.100.223])
- by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 41sp1ar9e1-1
+ by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 41smx3dxnq-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 27 Sep 2024 18:40:12 +0000 (GMT)
+ Fri, 27 Sep 2024 18:40:35 +0000 (GMT)
 Received: from pps.filterd
  (iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
  by iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com (8.18.1.2/8.18.1.2)
- with ESMTP id 48RIA5lt032892; Fri, 27 Sep 2024 18:40:10 GMT
+ with ESMTP id 48RHrdx3032809; Fri, 27 Sep 2024 18:40:34 GMT
 Received: from pps.reinject (localhost [127.0.0.1])
  by iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTPS id
- 41smkm8gjn-1
+ 41smkm8h02-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 27 Sep 2024 18:40:10 +0000
+ Fri, 27 Sep 2024 18:40:34 +0000
 Received: from iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com
  (iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
- by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 48RIdIoj009004;
- Fri, 27 Sep 2024 18:40:09 GMT
+ by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 48RIdIop009004;
+ Fri, 27 Sep 2024 18:40:34 GMT
 Received: from localhost.localdomain (dhcp-10-175-14-34.vpn.oracle.com
  [10.175.14.34])
  by iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTP id
- 41smkm8ff6-9; Fri, 27 Sep 2024 18:40:09 +0000
+ 41smkm8ff6-12; Fri, 27 Sep 2024 18:40:33 +0000
 From: Annie Li <annie.li@oracle.com>
 To: qemu-devel@nongnu.org, qemu-arm@nongnu.org, imammedo@redhat.com
 Cc: dave@treblig.org, mst@redhat.com, anisinha@redhat.com,
@@ -96,10 +96,9 @@ Cc: dave@treblig.org, mst@redhat.com, anisinha@redhat.com,
  wangyanan55@huawei.com, zhao1.liu@intel.com, pbonzini@redhat.com,
  richard.henderson@linaro.org, eblake@redhat.com, armbru@redhat.com,
  annie.li@oracle.com, miguel.luis@oracle.com
-Subject: [RFC V2 PATCH 08/11] tests/acpi: allow FACP and DSDT table changes
- for arm/virt
-Date: Fri, 27 Sep 2024 14:39:03 -0400
-Message-ID: <20240927183906.1248-9-annie.li@oracle.com>
+Subject: [RFC V2 PATCH 11/11] arm/virt: enable sleep support
+Date: Fri, 27 Sep 2024 14:39:06 -0400
+Message-ID: <20240927183906.1248-12-annie.li@oracle.com>
 X-Mailer: git-send-email 2.45.1
 In-Reply-To: <20240927183906.1248-1-annie.li@oracle.com>
 References: <20240927183906.1248-1-annie.li@oracle.com>
@@ -113,16 +112,16 @@ X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
  mlxlogscore=999 malwarescore=0 adultscore=0 bulkscore=0 mlxscore=0
  classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2408220000
  definitions=main-2409270135
-X-Proofpoint-ORIG-GUID: 595fO0j4qbCA8aJwtyAjaqmLQKpJjjjy
-X-Proofpoint-GUID: 595fO0j4qbCA8aJwtyAjaqmLQKpJjjjy
-Received-SPF: pass client-ip=205.220.165.32; envelope-from=annie.li@oracle.com;
- helo=mx0a-00069f02.pphosted.com
+X-Proofpoint-ORIG-GUID: aF2CkG-XpRUMGPD827sinozii9Y4rsL_
+X-Proofpoint-GUID: aF2CkG-XpRUMGPD827sinozii9Y4rsL_
+Received-SPF: pass client-ip=205.220.177.32; envelope-from=annie.li@oracle.com;
+ helo=mx0b-00069f02.pphosted.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -140,29 +139,32 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 Reply-To: miguel.luis@oracle.com
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: tEOjnavHOys1
+X-TUID: VZ+9hn7TIRON
 
 From: Miguel Luis <miguel.luis@oracle.com>
 
-List changed files for FACP and DSDT table changes for the arm/virt.
+For reference: qmp_system_sleep relies on wakeup support delegated
+by qemu_wakeup_suspend_enabled() hence the need for calling
+qemu_register_wakeup_support(). With this, we should be able to
+issue QMP system_sleep command now.
 
 Signed-off-by: Miguel Luis <miguel.luis@oracle.com>
 ---
- tests/qtest/bios-tables-test-allowed-diff.h | 6 ++++++
- 1 file changed, 6 insertions(+)
+ hw/arm/virt.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
-index dfb8523c8b..dcc7c2306d 100644
---- a/tests/qtest/bios-tables-test-allowed-diff.h
-+++ b/tests/qtest/bios-tables-test-allowed-diff.h
-@@ -1 +1,7 @@
- /* List of comma-separated changed AML files to ignore */
-+"tests/data/acpi/virt/DSDT",
-+"tests/data/acpi/virt/DSDT.acpihmatvirt",
-+"tests/data/acpi/virt/DSDT.memhp",
-+"tests/data/acpi/virt/DSDT.pxb",
-+"tests/data/acpi/virt/DSDT.topology",
-+"tests/data/acpi/virt/FACP",
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 6be80f042f..370ee4fe7f 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -2403,6 +2403,7 @@ static void machvirt_init(MachineState *machine)
+ 
+      /* connect sleep request */
+      vms->sleep_notifier.notify = virt_sleep_req;
++     qemu_register_wakeup_support();
+ 
+      /* connect powerdown request */
+      vms->powerdown_notifier.notify = virt_powerdown_req;
 -- 
 2.43.5
 

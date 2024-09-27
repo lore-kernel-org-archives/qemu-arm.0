@@ -1,40 +1,40 @@
-Received: by 2002:a17:504:5f68:b0:1be9:327d:8ee3 with SMTP id gl8csp167279njc;
-        Fri, 27 Sep 2024 00:32:20 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWLalAqaw7uF0zGirWLDV3UIywMyh+c6xLqyO/YuwypXDQ9hQdIPlFmCRcbEvrIym+hEvKWuVDPfOG/fQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IG+eAlhWeObKLmwittlPG9AJZBaYLDWJs6oqxnRJGOjeWNJUlXSqHkWPhr+gNiMy3ASZnd3
-X-Received: by 2002:a05:620a:1788:b0:7ac:acb7:8059 with SMTP id af79cd13be357-7ae378547a0mr300577485a.31.1727422340449;
-        Fri, 27 Sep 2024 00:32:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1727422340; cv=none;
+Received: by 2002:a17:504:5f68:b0:1be9:327d:8ee3 with SMTP id gl8csp167333njc;
+        Fri, 27 Sep 2024 00:32:33 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWKSgrQTIOlk7M5C0nQN4ltJ2ay8TR3bWWlQ8AFSJ6iijd4tk6ucyYg5U84AJDFgVj7Yhxcjycp/t0m8g==@linaro.org
+X-Google-Smtp-Source: AGHT+IFMZJSiXBKiVmMPcmhpjODO8i3t6W9gGApY1p3Egttn2VNcyTsSH9Qtpo/ApifPA/n2XF54
+X-Received: by 2002:a05:620a:2492:b0:7a9:c406:eebd with SMTP id af79cd13be357-7ae378c28fdmr284308985a.42.1727422352957;
+        Fri, 27 Sep 2024 00:32:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1727422352; cv=none;
         d=google.com; s=arc-20240605;
-        b=dEHHqJUBmHXxIeuq5D0j3w10l+D2rK4wviG1E+pWDYhahEuETIFqHgStqNlmhztpYl
-         pKwx3ElSBU33S22k1FDO1P2ii75bdI8BKtdWS4vNnhI2HOqqSRHdTmsNmyyNuXYlw4FR
-         9iH0v8gFWCD7tv0DJRpuFCZHFI7xVQsfryXJfpbZdMMtlxjgZtzO7zd9aW8D2c0jbNF8
-         Aa0xyBDD8Tfb3/J0TliN0afE+PCHpXAdNbWCNGTNq2wCatjE3JPkCAxC4JjL5lkYTEJX
-         /WVNd4rP9VtTQMGQAlOnoswfYycG0ZwhHusRyNmJ6SxmUVPOa77vlBFf7tZDfn7472qy
-         bq9g==
+        b=Jvz62/yCjbSNB9d4HMMRTDRhhMO4JV+g2J8W2CMPe1rTDp+G+0xJlr7VPtImrbpkeY
+         ihpIGj5LY0AoRtKiKhYXPdV/OD92rvMxFk68i9sfF5ZcSbLj4M3x1dVrJ793A6eR/5Xl
+         CFNIdJI1g0OeXbdOGGMrFRdOT1uxpatFnBrfJ2Rc/fQL/juDzsK6mUFMUwHwjgLX5Cqq
+         hoynfYOntFIRx6LCP6YAUppE3Xqd7o7d3FSU/c0Y9Eq8kkiowxuDEK/pGNBQY6ovytAo
+         9JbB7amNIUdhS3vgnGeKkAH9932kP2rctTFZnvxavDCBGC4yYRCtJO5TL98tYTen4prq
+         oRhQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to;
-        bh=Wth1AkYkGAQWUYC9Eg7oUANxmXE9K06KsIM9ACBBkBc=;
-        fh=RdJersRTvVIU6GkG8yrSEUovA6vfgZWQMb4aw2HkXSs=;
-        b=MycQhV7eVupKq+vpvR9lpDZV/ICck9r7+Mbgq/k7mNc++1a/iLwzBeFhdkbk6Ds7v5
-         WN8BYQ0qJxNc6CjHaYw6WaUvf7nHhNni41TektnmNrIRtD2kUakmkkXhoqmaGAPbMXPY
-         MFYKJSIgOFV6u1Yfhc1U4jLgPqXutktY5mZBwoNAy8VRcIq8x4BOZPPS/jGN4ORQ1wjs
-         96I/2PBqGUltzeok/8rMxt00aWEHpNr87C8Tp8J6KbgMU1x9JrhFfkcFDJGKvf7Zvzhz
-         /miBma7rItF48mx5cmaQGcAcFiFrvOn2CKCd+bCdB/V2oNbSz8ybVJr62/2/lj6TZmKA
-         8+/Q==;
+        bh=Cuelhesp2EJkf6+kUOINt1uwensPR6dAhjz7egcQUKc=;
+        fh=bfdvnURtAD34fQ77QeZnvwdM4/zSvHk1Doa+KIkv0v8=;
+        b=B4QEE1k8mE4W9vPf2+LGu2/Q1Bz4IwWbeGFrYRDlX2k1YGdNEo+VdOoUhuvb0eGW3Z
+         c8V4PiSUxg+Qj0aHRlYQpAVlLvImoMkfu9gKmnsZVAa1TqXvRyWeAz2tWvcRmsc7iQx9
+         7dEXCOBJ6dMxU+IH9GxoGX7J3VEX5p9OZtJThO5CBImLv2JQ5KEuOG+PM8pz6erxqGno
+         SMaR5pTbsejnTzyYp5vpXPdzcJw+GRSKc8OrmiN5iqkEIsB06vB3MMmqptzep1vyzhiF
+         ibducfyn+q8p06lwVaVfup4Rkn6jCKf2sLGQY9PGrr1ay49+DyF7uj6Fov11BCFLI8tG
+         y/gA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7ae37838667si165774185a.255.2024.09.27.00.32.20
+        by mx.google.com with ESMTPS id af79cd13be357-7ae378529d2si155534185a.392.2024.09.27.00.32.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 27 Sep 2024 00:32:20 -0700 (PDT)
+        Fri, 27 Sep 2024 00:32:32 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
@@ -42,22 +42,22 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1su5SR-0001Pj-4O; Fri, 27 Sep 2024 03:32:07 -0400
+	id 1su5SY-0001tX-MS; Fri, 27 Sep 2024 03:32:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1su5SO-0001Ki-Jw; Fri, 27 Sep 2024 03:32:05 -0400
+ id 1su5SW-0001mM-TE; Fri, 27 Sep 2024 03:32:12 -0400
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1su5SL-0004DY-KS; Fri, 27 Sep 2024 03:32:04 -0400
+ id 1su5SV-0004DY-8G; Fri, 27 Sep 2024 03:32:12 -0400
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.12; Fri, 27 Sep
- 2024 15:31:44 +0800
+ 2024 15:31:45 +0800
 Received: from localhost.localdomain (192.168.10.10) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server id 15.2.1258.12 via Frontend
- Transport; Fri, 27 Sep 2024 15:31:44 +0800
+ Transport; Fri, 27 Sep 2024 15:31:45 +0800
 To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
  <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
@@ -66,17 +66,17 @@ To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC here"
  <qemu-devel@nongnu.org>
 CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
- <yunlin.tang@aspeedtech.com>, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?=
- <clg@redhat.com>
-Subject: [PATCH v4 1/7] hw/gpio/aspeed: Fix coding style
-Date: Fri, 27 Sep 2024 15:31:38 +0800
-Message-ID: <20240927073144.2303522-2-jamin_lin@aspeedtech.com>
+ <yunlin.tang@aspeedtech.com>
+Subject: [PATCH v4 4/7] hw/gpio/aspeed: Fix clear incorrect interrupt status
+ for GPIO index mode
+Date: Fri, 27 Sep 2024 15:31:41 +0800
+Message-ID: <20240927073144.2303522-5-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20240927073144.2303522-1-jamin_lin@aspeedtech.com>
 References: <20240927073144.2303522-1-jamin_lin@aspeedtech.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 Received-SPF: pass client-ip=211.20.114.72;
  envelope-from=jamin_lin@aspeedtech.com; helo=TWMBX01.aspeed.com
 X-Spam_score_int: -18
@@ -101,61 +101,107 @@ Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
 From:  Jamin Lin via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Ao5JmD7vMV6T
+X-TUID: xUSlVZPnZYMJ
 
-Fix coding style issues from checkpatch.pl
+The interrupt status field is W1C, where a set bit on read indicates an
+interrupt is pending. If the bit extracted from data is set it should
+clear the corresponding bit in reg_value. However, if the extracted
+bit is clear then the value of the corresponding bit in reg_value
+should be unchanged.
+
+SHARED_FIELD_EX32() extracts the interrupt status bit from the write
+(data). reg_value is set to the set's interrupt status, which means
+that for any pin with an interrupt pending, the corresponding bit is
+set. The deposit32() call updates the bit at pin_idx in the
+reg_value, using the value extracted from the write (data).
+
+The result is that if multiple interrupt status bits
+were pending and the write was acknowledging specific one bit,
+then the all interrupt status bits will be cleared.
+However, it is index mode and should only clear the corresponding bit.
+
+For example, say we have an interrupt pending for GPIOA0, where the
+following statements are true:
+
+   set->int_status == 0b01
+   s->pending == 1
+
+Before it is acknowledged, an interrupt becomes pending for GPIOA1:
+
+   set->int_status == 0b11
+   s->pending == 2
+
+A write is issued to acknowledge the interrupt for GPIOA0. This causes
+the following sequence:
+
+   reg_value == 0b11
+   pending == 2
+   s->pending == 0
+   set->int_status == 0b00
+
+It should only clear bit 0 in index mode and the correct result
+should be as following.
+
+   set->int_status == 0b11
+   s->pending == 2
+
+   pending == 1
+   s->pending == 1
+   set->int_status == 0b10
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
+Suggested-by: Andrew Jeffery <andrew@codeconstruct.com.au>
+Reviewed-by: Andrew Jeffery <andrew@codeconstruct.com.au>
 ---
- hw/gpio/aspeed_gpio.c         | 6 +++---
- include/hw/gpio/aspeed_gpio.h | 2 +-
- 2 files changed, 4 insertions(+), 4 deletions(-)
+ hw/gpio/aspeed_gpio.c | 27 +++++++++++++++++----------
+ 1 file changed, 17 insertions(+), 10 deletions(-)
 
 diff --git a/hw/gpio/aspeed_gpio.c b/hw/gpio/aspeed_gpio.c
-index 71756664dd..00fb72a509 100644
+index 8725606aec..16c18ea2f7 100644
 --- a/hw/gpio/aspeed_gpio.c
 +++ b/hw/gpio/aspeed_gpio.c
-@@ -340,7 +340,8 @@ static void aspeed_gpio_set_pin_level(AspeedGPIOState *s, uint32_t set_idx,
-         value &= ~pin_mask;
-     }
+@@ -641,7 +641,7 @@ static void aspeed_gpio_write_index_mode(void *opaque, hwaddr offset,
+     uint32_t pin_idx = reg_idx_number % ASPEED_GPIOS_PER_SET;
+     uint32_t group_idx = pin_idx / GPIOS_PER_GROUP;
+     uint32_t reg_value = 0;
+-    uint32_t cleared;
++    uint32_t pending = 0;
  
--    aspeed_gpio_update(s, &s->sets[set_idx], value, ~s->sets[set_idx].direction);
-+    aspeed_gpio_update(s, &s->sets[set_idx], value,
-+                       ~s->sets[set_idx].direction);
- }
- 
- /*
-@@ -629,7 +630,6 @@ static uint64_t aspeed_gpio_read(void *opaque, hwaddr offset, uint32_t size)
- static void aspeed_gpio_write_index_mode(void *opaque, hwaddr offset,
-                                                 uint64_t data, uint32_t size)
- {
--
-     AspeedGPIOState *s = ASPEED_GPIO(opaque);
-     AspeedGPIOClass *agc = ASPEED_GPIO_GET_CLASS(s);
-     const GPIOSetProperties *props;
-@@ -963,7 +963,7 @@ static void aspeed_gpio_set_pin(Object *obj, Visitor *v, const char *name,
-     aspeed_gpio_set_pin_level(s, set_idx, pin, level);
- }
- 
--/****************** Setup functions ******************/
-+/* Setup functions */
- static const GPIOSetProperties ast2400_set_props[ASPEED_GPIO_MAX_NR_SETS] = {
-     [0] = {0xffffffff,  0xffffffff,  {"A", "B", "C", "D"} },
-     [1] = {0xffffffff,  0xffffffff,  {"E", "F", "G", "H"} },
-diff --git a/include/hw/gpio/aspeed_gpio.h b/include/hw/gpio/aspeed_gpio.h
-index 90a12ae318..39febda9ea 100644
---- a/include/hw/gpio/aspeed_gpio.h
-+++ b/include/hw/gpio/aspeed_gpio.h
-@@ -88,7 +88,7 @@ struct AspeedGPIOState {
-     qemu_irq irq;
-     qemu_irq gpios[ASPEED_GPIO_MAX_NR_SETS][ASPEED_GPIOS_PER_SET];
- 
--/* Parallel GPIO Registers */
-+    /* Parallel GPIO Registers */
-     uint32_t debounce_regs[ASPEED_GPIO_NR_DEBOUNCE_REGS];
-     struct GPIOSets {
-         uint32_t data_value; /* Reflects pin values */
+     set = &s->sets[set_idx];
+     props = &agc->props[set_idx];
+@@ -703,16 +703,23 @@ static void aspeed_gpio_write_index_mode(void *opaque, hwaddr offset,
+                               FIELD_EX32(data, GPIO_INDEX_REG, INT_SENS_2));
+         set->int_sens_2 = update_value_control_source(set, set->int_sens_2,
+                                                       reg_value);
+-        /* set interrupt status */
+-        reg_value = set->int_status;
+-        reg_value = deposit32(reg_value, pin_idx, 1,
+-                              FIELD_EX32(data, GPIO_INDEX_REG, INT_STATUS));
+-        cleared = ctpop32(reg_value & set->int_status);
+-        if (s->pending && cleared) {
+-            assert(s->pending >= cleared);
+-            s->pending -= cleared;
++        /* interrupt status */
++        if (FIELD_EX32(data, GPIO_INDEX_REG, INT_STATUS)) {
++            /* pending is either 1 or 0 for a 1-bit field */
++            pending = extract32(set->int_status, pin_idx, 1);
++
++            assert(s->pending >= pending);
++
++            /* No change to s->pending if pending is 0 */
++            s->pending -= pending;
++
++            /*
++             * The write acknowledged the interrupt regardless of whether it
++             * was pending or not. The post-condition is that it mustn't be
++             * pending. Unconditionally clear the status bit.
++             */
++            set->int_status = deposit32(set->int_status, pin_idx, 1, 0);
+         }
+-        set->int_status &= ~reg_value;
+         break;
+     case gpio_reg_idx_debounce:
+         reg_value = set->debounce_1;
 -- 
 2.34.1
 

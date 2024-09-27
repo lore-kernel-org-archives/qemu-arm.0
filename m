@@ -1,99 +1,212 @@
-Received: by 2002:a17:504:5f68:b0:1be9:327d:8ee3 with SMTP id gl8csp74170njc;
-        Thu, 26 Sep 2024 19:20:12 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWiTbsAwPW9rAsxpR6fOaCWr+SKLwUmOxXtMYcxMszmxemibG5XGvoUNg3fcsRt3FkLz8sChikNI9BWaQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IFRqz0WBeBerbYeH3Nr+ZO8WsW0yCZdZuEFFM6FfwFUwyAqddbsAd1PUa7PnRviB0spqJ6n
-X-Received: by 2002:a05:620a:45a3:b0:7a9:9fd0:3e00 with SMTP id af79cd13be357-7ae378d480dmr252627785a.62.1727403612340;
-        Thu, 26 Sep 2024 19:20:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1727403612; cv=none;
+Received: by 2002:a17:504:5f68:b0:1be9:327d:8ee3 with SMTP id gl8csp90753njc;
+        Thu, 26 Sep 2024 20:19:35 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCU9YvXxc+NS7IjxeDvs+ECVnocwivTDg3sxwHM80zRUO+/KgFTuQG6P+mfB+YomoMLgsSvbKPCxhPXWXw==@linaro.org
+X-Google-Smtp-Source: AGHT+IG74nWhlIXHHAXV/9Cm0ffe25a89S9zdXvIwrnFqWZq1PBvXwKPk3bMYJWVrLE77dRh+hEm
+X-Received: by 2002:a05:622a:14a:b0:458:29fe:d254 with SMTP id d75a77b69052e-45c9f2c7c80mr28182791cf.59.1727407174789;
+        Thu, 26 Sep 2024 20:19:34 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1727407174; cv=pass;
         d=google.com; s=arc-20240605;
-        b=lfnNTt9M66MRc0o+RTkbENHXDhjfUltq/jq/PXvLnFaNO8VecdZ3Czl+/7/US05Aoi
-         rscO6x/BtUsYE8c1B701gbZgT/TCidnb6m9Ko7c6z9demhePexXE4oCq0lrZHVcbHtqT
-         0N3FLHPCbTZ9coanrDi/63vK+7AJ+xFhBWRWiCTbfOzlrDGNImfEDEQ9qr3Ul+2d+p6r
-         DYRMd2MbVDp2aAU8aHpT1i/KIBqiY/cMJRf9aSRmbkOu0AVLWCCXRcwpczgXVFSTJJQI
-         okpwS48ho5r7S5vdX6lCo8zg0ScB4aSN1ZSq5GRMqNYctrw+swfBHgU1LQ8qVDOlIUeD
-         i8jw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        b=J77oFZ4pNn3S6oiYle6TZ9H/8q2ejMilRxkGlBYoRRTRJRMwYLPlI0dZDnoWvX7gUi
+         oCFSbgtw1N2KmiBldEbhZnvqS8aRTwkrX6Ft7GNtlgcFoqCkVUhzTM1HuBlwJxvuHxO9
+         0ny3s9KYl4zCzBKqhUCF82+NkupDlmhkILOp2+K0zz0eUnGKy5/+cfDSDDg1FZQjuKLb
+         jzvVTIllk76iJoKUpIcpgtibx31eCVPUVxmI08v0dMG7fDHwtBmH5y8PP6BxkUqJmKei
+         cCqvHuxyQKLjpTblL00G2JpwnM44sbw50VRn7kOJLo0QWcBWJa4xNPf6ImD9C11yxxII
+         eRgg==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:user-agent
-         :content-transfer-encoding:references:in-reply-to:date:cc:to:from
-         :subject:message-id:dkim-signature;
-        bh=cm1nC1Y8MQ1E3bPX8fk0KXIdZ8AlPJE+1PF/2ZLOrRI=;
-        fh=ZOisryR2Mb28fNxWQse9qjy5qBOClWtToxOZdGTojXg=;
-        b=jMovfcfUfDeqJvs8+1PDN+6n9gGnAzKSc5YEtzRc0LfR6SfNN/yadV9m/EY2YDaSq9
-         dsDu95W/NtxCCCmfkW44ZS0m4wsCREX0j9dLU64DpVTsNiGBFrLRj2yGUubCBhgM1CMf
-         XncDnTzLmkJ3Yzk054bT8Nx74vftkWMzjBIV4wa7YUC+PZ6SrGqxfCC1+N2V1efeqElH
-         nOvUrI7rngZzkzOKWoQkVV5L6OcmhhavfGAaNFEnwWvsCGj4Gajo3RbNJZZ87eahCGSZ
-         amFUKQnX6z2AwdhVQdZvnWxub0O2t6JmBe97rwNbtGmVZEwKC6h1URj1+djQlikdyFno
-         9e7A==;
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :in-reply-to:references:message-id:date:thread-index:thread-topic
+         :subject:cc:to:from:dkim-signature;
+        bh=8Hmf3a3cHUGzEkPiJaWPBaQJ4/GZVLOy6DOi2igBV1g=;
+        fh=Di+GWwPrN92aEJsOIkbgJfzXV8JTtAd2+TRiI5c9dNM=;
+        b=g+x6mZHf7clLq6zCsA1po5vGzou054mKD2xnf+1sM/scbVRMufaB/k9YKdy1i2VfmH
+         Oy80apJttMEVk2EXgHfelA4HcEQX0FqTQXgK3A7gv/ZNAdFzKbGbbvOKSpGdNyK4Tla/
+         4XyGY4WG3DKmr0EKXdxoJxZ7mhvPIzJkpQ/8OnJcQ2zo+HzBf+9hNbD8kKi354ruaRJB
+         MvQPXJJPtnvSDyyVXXtpaIScR55d4DZLkUporaUcwW29E/QT69iGfy8BVZxwnAYKQsms
+         iqOi5PDDewj4qLDkxmlDSWXiqhKNeanKtz6A9vH3M6HCReVm5xivmrtd6mRMcH+lsVmO
+         xs0Q==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@codeconstruct.com.au header.s=2022a header.b="Jbnj/Nea";
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@aspeedtech.com header.s=selector2 header.b=kCWS9nd6;
+       arc=pass (i=1 spf=pass spfdomain=aspeedtech.com dkim=pass dkdomain=aspeedtech.com dmarc=pass fromdomain=aspeedtech.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=codeconstruct.com.au
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=aspeedtech.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7ae378a4becsi117717185a.752.2024.09.26.19.20.12
+        by mx.google.com with ESMTPS id d75a77b69052e-45c9f39e19csi12410561cf.721.2024.09.26.20.19.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 26 Sep 2024 19:20:12 -0700 (PDT)
+        Thu, 26 Sep 2024 20:19:34 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@codeconstruct.com.au header.s=2022a header.b="Jbnj/Nea";
+       dkim=pass header.i=@aspeedtech.com header.s=selector2 header.b=kCWS9nd6;
+       arc=pass (i=1 spf=pass spfdomain=aspeedtech.com dkim=pass dkdomain=aspeedtech.com dmarc=pass fromdomain=aspeedtech.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=codeconstruct.com.au
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=aspeedtech.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1su0aS-0006mY-3E; Thu, 26 Sep 2024 22:20:04 -0400
+	id 1su1Vh-0002CQ-0p; Thu, 26 Sep 2024 23:19:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <andrew@codeconstruct.com.au>)
- id 1su0aQ-0006k5-3D; Thu, 26 Sep 2024 22:20:02 -0400
-Received: from pi.codeconstruct.com.au ([203.29.241.158]
- helo=codeconstruct.com.au)
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1su1Vf-0002BY-7Z; Thu, 26 Sep 2024 23:19:11 -0400
+Received: from mail-psaapc01on20702.outbound.protection.outlook.com
+ ([2a01:111:f400:feae::702]
+ helo=APC01-PSA-obe.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <andrew@codeconstruct.com.au>)
- id 1su0aO-0007rb-5y; Thu, 26 Sep 2024 22:20:01 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=codeconstruct.com.au; s=2022a; t=1727403593;
- bh=cm1nC1Y8MQ1E3bPX8fk0KXIdZ8AlPJE+1PF/2ZLOrRI=;
- h=Subject:From:To:Cc:Date:In-Reply-To:References;
- b=Jbnj/NeaRdBFdV+9TuheonzdWVuHHiW0cJDEvh19KliyHSdeNp6DoViGjWuoiu5JQ
- zmo8jvcIvEl2dsgKV0CWu7oabl/NMjWR8HawTRFmStHELOZwYb81cOaarZ6fT+FmvN
- 5wQpy6wY2AgnrKRfuDPlZcd4g1PaKXpva0M3rD3JJBGPhOoFsxhgy0etlRiSpHEs9q
- pzyw7ImzgiMpoRiWxGBJDZEknaVLiGPn5J0VK5cwSmkJnCpMMvYvCxFxAxUMCo4xC8
- P+joYOC2rQVacZGnKfLLcJqUoILewQNLwY9M5X84JLbvVH44QhfNoyk2KvybwdC/UA
- Ny1RcuoYTQvcA==
-Received: from [192.168.68.112]
- (ppp118-210-187-73.adl-adc-lon-bras34.tpg.internode.on.net [118.210.187.73])
- by mail.codeconstruct.com.au (Postfix) with ESMTPSA id 34F9A6502D;
- Fri, 27 Sep 2024 10:19:53 +0800 (AWST)
-Message-ID: <599cdb2fa47a4c1da5775be175ec67d66cf7cf43.camel@codeconstruct.com.au>
-Subject: Re: [PATCH v3 5/6] hw/gpio/aspeed: Add AST2700 support
-From: Andrew Jeffery <andrew@codeconstruct.com.au>
-To: Jamin Lin <jamin_lin@aspeedtech.com>, =?ISO-8859-1?Q?C=E9dric?= Le
- Goater <clg@kaod.org>, Peter Maydell <peter.maydell@linaro.org>, Steven Lee
- <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>, Joel Stanley
- <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, "open
- list:All patches CC here" <qemu-devel@nongnu.org>
-Cc: troy_lee@aspeedtech.com, yunlin.tang@aspeedtech.com
-Date: Fri, 27 Sep 2024 11:49:52 +0930
-In-Reply-To: <20240926074535.1286209-6-jamin_lin@aspeedtech.com>
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1su1Vc-0000nE-ON; Thu, 26 Sep 2024 23:19:10 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=wk9YNaI3hOFTJFf/u47ysz+tBfumnoZ+YeF+f8j2ZfQ7SyX5IuKesAiMgTfW2ZNtX8firuPvoOACbqXL14uaU973NLXprV9qHJjXnKVYTc58xt6RTnI8P5gLplpu/6tkNaPlT5shjon/hgUO0f7QdZzMGJnLKCNZznOnq1aoZEW1tWDMLMvris0iJ2RBTEKwO5+NMnNRa/DUbxAY76wgRieNM91L/AqK6lVDs7HRSlWxI1EvOt9xFCUBzAVC3X+ubvMWW0fvdiiNJzBfTCx9H0TJJ4yBp1EPhlKTD02TF5/eUL42G+MBkvsvWrLgpdCeB1B+H3UUaHq/nyqwBx4HfQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=8Hmf3a3cHUGzEkPiJaWPBaQJ4/GZVLOy6DOi2igBV1g=;
+ b=c3txc+s/4t2ZuTeY1/TVTpOM3w87SE27nqBbg7MT7i+SXEljqxA8X5w9Mc/LidcRbUGHdqmj5E8cgKPZW/HRqJqRn+qEfiUeNnR8zJgMoWpR2sJURx4Pv4APG1TX1Qc+RP0krL/oidysr3BafaNLH+EKub60mO7ga+i3Y0dwWHu1dq7w5wZLX8fIaZb0A8dzVy2PDLHEYk/aSN0c1ORegmQwdQpOR8C55PDTjkRnC/bPlA1tVhe1f/8RnZnHyyUWInOlyUH8JCaHcxdLunwA0PuiNl5CB3jALMRlSBZ5Ut7SYjlCP9HM7S1yg5qd8HPZa1q/UI3MlfOpZaxF3RXEpQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
+ header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=8Hmf3a3cHUGzEkPiJaWPBaQJ4/GZVLOy6DOi2igBV1g=;
+ b=kCWS9nd6uEaiNCEAOFxv8syJTlN6BqHKTfrpLyoSWPyLRnDQI3Q7KanncMqsE+r4gLeqCcenUh2c3LpQmzwUVX1watSDlTVhChE1R2S5t9XidEStnkMLMtoTSRIxlCNjljkmyTxrAHo86hqjCjSagv5BONEua27RRu3RqLqcyAE4Z98LDRJsoLLoLxkEz726GuslL2mwlMsrc/+EsCNNMtbN0oJVsnBL1ade7iNlf37bMVQh6jI2osjExkoRRjOg0C05bDx74roeEZ9tgXJ/1160bNlp4iJj2Ehhi9WLOsLalATqp5GCSXSsvzp0e62qMLu4LqobBTZZS/7wITL3PQ==
+Received: from SI2PR06MB5041.apcprd06.prod.outlook.com (2603:1096:4:1a4::6) by
+ KL1PR06MB6789.apcprd06.prod.outlook.com (2603:1096:820:ff::5) with
+ Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.7982.27; Fri, 27 Sep 2024 03:19:01 +0000
+Received: from SI2PR06MB5041.apcprd06.prod.outlook.com
+ ([fe80::705a:352a:7564:8e56]) by SI2PR06MB5041.apcprd06.prod.outlook.com
+ ([fe80::705a:352a:7564:8e56%6]) with mapi id 15.20.8005.017; Fri, 27 Sep 2024
+ 03:19:01 +0000
+From: Jamin Lin <jamin_lin@aspeedtech.com>
+To: Andrew Jeffery <andrew@codeconstruct.com.au>,
+ =?utf-8?B?Q8OpZHJpYyBMZSBHb2F0ZXI=?= <clg@kaod.org>, Peter Maydell
+ <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
+ <leetroy@gmail.com>, Joel Stanley <joel@jms.id.au>, "open list:ASPEED BMCs"
+ <qemu-arm@nongnu.org>, "open list:All patches CC here"
+ <qemu-devel@nongnu.org>
+CC: Troy Lee <troy_lee@aspeedtech.com>, Yunlin Tang
+ <yunlin.tang@aspeedtech.com>
+Subject: RE: [PATCH v3 5/6] hw/gpio/aspeed: Add AST2700 support
+Thread-Topic: [PATCH v3 5/6] hw/gpio/aspeed: Add AST2700 support
+Thread-Index: AQHbD+gbnlxKWGF+L0ac1loR0KLSUrJq56cAgAAQTrA=
+Date: Fri, 27 Sep 2024 03:19:01 +0000
+Message-ID: <SI2PR06MB504179310FA40090C7FC27E1FC6B2@SI2PR06MB5041.apcprd06.prod.outlook.com>
 References: <20240926074535.1286209-1-jamin_lin@aspeedtech.com>
  <20240926074535.1286209-6-jamin_lin@aspeedtech.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.46.4-2 
+ <599cdb2fa47a4c1da5775be175ec67d66cf7cf43.camel@codeconstruct.com.au>
+In-Reply-To: <599cdb2fa47a4c1da5775be175ec67d66cf7cf43.camel@codeconstruct.com.au>
+Accept-Language: zh-TW, en-US
+Content-Language: zh-TW
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=aspeedtech.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: SI2PR06MB5041:EE_|KL1PR06MB6789:EE_
+x-ms-office365-filtering-correlation-id: 4dcfe155-a118-4a5a-67a1-08dcdea32211
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0; ARA:13230040|1800799024|366016|376014|38070700018;
+x-microsoft-antispam-message-info: =?utf-8?B?M2NiMytUcWJLcEJXWTlleUtEeGsrU2xkZjNvRC9QdjJVNGxoU1UzbERKSStq?=
+ =?utf-8?B?VkIxbHpCNmtTK3JkMTIvU0VDSzFxamNPcGloQmp4NWJmRXQzN1kwZTRSUUw5?=
+ =?utf-8?B?ZW5TYnVqQ2J3a1J3OGVLNGVrNEUwS0ZFV203MHE5RzV2SmVPa1FXWU94Mjl5?=
+ =?utf-8?B?c1ZTbEc5ZWJoTjhHa05xN0t1K3FCWVoraXMzRkhzdVdkb3dBVlBDRUgwWHRj?=
+ =?utf-8?B?WHZneG9UL09hTFoyNmFqT0RSZGdoQ0lacis5YTFmaGFTSCtybWZNQ1RRTy9R?=
+ =?utf-8?B?TXhJMmM0MjhHL3VZdDdUbDc4MFVwbEsva3RUVGQ3UzB2cU9lL3RYT1d3MG5k?=
+ =?utf-8?B?eks4L0FjdzhQMzVtaTlxWml2VE1WQTl0S1R6ekk5Tm0yYTlnekRNM05HTGNT?=
+ =?utf-8?B?ZFpVZ3Q2clNYejNuajgrK2lrZzZZenZyWFRnMENOemlaODFhNmNrYUFmWXNs?=
+ =?utf-8?B?Q01tZVl5blc4TGhYelQxR2VSSmZtS3kvY20xLzlFQXhRNDhTbTV6QTV4OWdF?=
+ =?utf-8?B?Zmh4TXFQb3ZhZDZjU3dNVFQ0b1hCMGZROFh4N011SExNMG00eFlkNWNDd0pW?=
+ =?utf-8?B?ektPYVlXdGJZL3VQa3VwUTRkUm5HZWZUSWFXdlFISHJpakU2R2hOWC8zMnky?=
+ =?utf-8?B?dUFUalRWRnUxZ21LKzAyOUZGR2FuSFVvQ2RBNU5VYzZidEF0Z280TDFYYjRE?=
+ =?utf-8?B?bGZscm5sZ0I3MVJneHVNclBXaFQxU1phM0JsZzNJYnF1SzhJOWRnRWtFa29h?=
+ =?utf-8?B?ajFKbGZaVmdmWWdIRnAxdnc1dlZNZ0RJdVlmSTJNaTREdDd5RGkzdUJpd2lN?=
+ =?utf-8?B?VWJXUThkbUE3VUkxREptVTBhclJZMHNDRXgxT0lpdkpLbU5nbEFmakxVU2ti?=
+ =?utf-8?B?bjBwcnA3SDZBV3NSQkpmRWpDcVlVNWtPTXRMbDdFbGFyTnlidzc5SFlJcEdq?=
+ =?utf-8?B?T2dJSlgrWktSYUpReW94UHlEbzZVa0VpOFl4UGJaeGIwQnU3SWlyTjR2WVpw?=
+ =?utf-8?B?VjJJRDJ1L21xbEtVMUdING5ZNFpaa0JHZkNuU255ZG9WcjQxVUE3M0NJdFRn?=
+ =?utf-8?B?V21mekhMLzFrUmc5bDBVQVVCcm5RNXhxbThWR0xYUEUwc0pGTUZtRWFRMTBs?=
+ =?utf-8?B?L2RBMU1BVEV0bHFWNmFxa2pzbnZ0Unl3REd6L24ybmpPZXhjOXFiM1hMR0w1?=
+ =?utf-8?B?OVFXc3d6WW9SODlJRzFiZDhiK00vVm5CcnRnMEJnc3ArM3dwZTNkK0ZzdTFM?=
+ =?utf-8?B?emFGY1REK0Q4TEJ5dlBrNFZnV21QMnZGVkVUZGJmNjA0UktPSzhwbXFQZldl?=
+ =?utf-8?B?b3BEd2JmMWkvZ2wrSlh2UFZ6MUxkYS9GallBOTJrTWYwUkNWOGxaTDhObEIx?=
+ =?utf-8?B?eG5XRFJJbitpS1hpU2h4M3RtOGs2VlErRlptRGVheXZKa05FbDF1YWtRUnhZ?=
+ =?utf-8?B?ODBYTDNDbksxRFRnV2VMNVJRd2hVdmZuTVB2R05mUE55Q2d2ZU5SY1hDMGQw?=
+ =?utf-8?B?NGVsUnM5Ti8xbW41VnBGSUpsRlRpMG9PcGFPeEc4Wm1uRFpyQkpWcFoxUWdG?=
+ =?utf-8?B?eDlvWFg0RE1SaG5iQkFNMm5UVm5wRG95WHg4MmVBSnJrcGNQbnh5djJ1M1BM?=
+ =?utf-8?B?RTBQMlpFRmQ5VFp0WStJbnhSNkx6eit2MTRON2lCR0VYR0dqNWIvMWZ1LzVO?=
+ =?utf-8?B?R3lFMDQyV1dXcmdEM1FIL0o5K3JobWVSK05OZkx0QVQ1MW1pYmlRSTUySGUy?=
+ =?utf-8?B?YmJYbEE2THJBVmNTNEUvYjJEWFliV2FaZjgrakpjdmp6YUNoSkxsdDhxSDlz?=
+ =?utf-8?B?UGRqdzFLSHR0TE00K3hCd05jOTBXWCtnWmJGZFhseDJnSkxQNjRKTmpHdDRF?=
+ =?utf-8?B?NU9wbTFMWUZDUTZsbG5LMkprVndoUjlFNFhTWGxCQ2g5U1E9PQ==?=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:zh-tw; SCL:1;
+ SRV:; IPV:NLI; SFV:NSPM; H:SI2PR06MB5041.apcprd06.prod.outlook.com; PTR:;
+ CAT:NONE; SFS:(13230040)(1800799024)(366016)(376014)(38070700018); DIR:OUT;
+ SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?bndVN1Y5ZjQwRE00dDlRNlBsR2ZvYkdDeUJtczFRZ1NXWmt4STVJMVd5Snhw?=
+ =?utf-8?B?ZDZ0SjZ5ZWV1dXI3L3BHN25rSmFobEg4WjhwRGVJbVJxQnNXeHJxOGJib3lS?=
+ =?utf-8?B?Q0txcmtBNk41U2s4czU4Q2R6aWlDbnVXUzluSlp5Y3o0cHNQUjAzTHlXUHBK?=
+ =?utf-8?B?bzE1ZkNvSUdPdXljOENDOCsvRDJXZEEyaFJER3JrY1YxNjRhN1RvVXM0VDFv?=
+ =?utf-8?B?MDJTa3hWMm9idlhEUUtFdmQxUkFaTFIxVVFKdVR3ai9aTS9xbkRVQzVaLzZO?=
+ =?utf-8?B?Zy9ZcDJhL2QwUEUrVDdoU083UUk4Ync1Z1NMS1Q0d3ZUbnRnWFc5S3ZvYWNG?=
+ =?utf-8?B?VVV5Y2pFZE92V0ZnRStyem9NY1pVVDJpSTJ0SURYdWRKV2VrMWUrV0I4QklV?=
+ =?utf-8?B?b3FhZy9Ia2Vva3VpZ1lnOERnekhNbWF1RG5QU2FzZVFKY09Vc09ldDJXQlpt?=
+ =?utf-8?B?dVlaTXY1Tjl3TFR3TkI1RmtHamxPWkFEUHlvK3dpcHA1VHB5azJHSHU4MG1J?=
+ =?utf-8?B?dFM0TjBkUWZNQ0dEQytUa2J3MFhqSlB3UFpXdEJwOFJId2t6dUhQN2JHVERt?=
+ =?utf-8?B?THVXMklYd0NXVmNCbFZIMXFXcWRyR1pqeFFGRVFFRDRjeHAwem13Qy9nVkdQ?=
+ =?utf-8?B?OEZUdUZ5NFROalhpUEFKcUVNUllWNjJFVTJJSzNwb3UrM1hpTkJRSEl4TzZY?=
+ =?utf-8?B?aW8vZUp1c1VxamUybmpkMGU0UjFCK2NRc0Y4SDhVMENvVkpSU0JaNjRCOXdC?=
+ =?utf-8?B?ZTB6K0JYcG9XajBQMTJZbjNCMFhqQ0t2Qnp5NDdNbVJlVmFaeUxWUnNuQUZn?=
+ =?utf-8?B?Ny9Vdk5TbTFmT0hhejc2d01NUWZ1TjVWcmR5dXJKWDNQaTcwRmNFdjE5OXBJ?=
+ =?utf-8?B?YjBPajZvaEdQdWxqTWIzSVVVQ0xxYk5pR2tKNGpGcW4ySnRiTnlCVE8ya0ww?=
+ =?utf-8?B?emk1bVhSOC9XejZkUTE1YmYvYUxCTjFLaEhXZ1dVbzVBYlRvblVJRGY3N0pW?=
+ =?utf-8?B?NGRMQitRY1BJanVwTFU5N1drRU0yRE1CNktrOC85YUdWZUVWeGhlaG14c1g4?=
+ =?utf-8?B?d1VoOXMvNUYrN0tMUGxLdFQ2SWs5ZU42TlVSK1I2WjBERXAvcGdqWFREVkd1?=
+ =?utf-8?B?WUZweHlHKy82dTF0Y3hyWEhsb3laVGk4c1lFeUFuTG5iSlpuQzhDUDZBMEkx?=
+ =?utf-8?B?R29kZ2U3MHIrQ1luRVFheVRaMGVac3hpSVBGbEhTVWdOYU9iREcvd1pqVndR?=
+ =?utf-8?B?Q25adktia0l6aU56YWw0K2dKdHJmRmlOcGtnOTlBWGdzNWN4ZWJMalREQjNl?=
+ =?utf-8?B?SEcwTFZxcktCUTdKbGFUL3hnYW5aQy9yVStUbmh6K3J1eXc0MC8yYml1WCtT?=
+ =?utf-8?B?b2JXdmQ4SGZabFFNVzVNdGhLVzBRMHQzV1JSYm1aaGhJWVdxblFFeGJFNGVY?=
+ =?utf-8?B?eWhZbU1JUUV1Qk9oY1J1WC93SzA2VTVUSitrNnJlaVVEcjFpM1lNWnc1RkNw?=
+ =?utf-8?B?ZmtqK1FrUk40eWdTZWJQS2xEb2oraS93bEF4R3MyUWFHUXNrT2VXMUtqTHBi?=
+ =?utf-8?B?N0ZJS2pNNGZPK3BFbGhCajl1RW5RdzFrRXBCSWk5eFU5aUFtNG1FakxOUks5?=
+ =?utf-8?B?MGowcjdMZ3haMVh4TkI5VkIxMnRweENRdnAza3MvYnZPc1ZDbStuMnFYdjIy?=
+ =?utf-8?B?eXFod3hwYXBRYzhOazNibWJoc3ZwcENscGk1eDVJcWZ6UXJHN2NJdWk0YUlx?=
+ =?utf-8?B?d2FZOWg4TXhFUUUreTFVcU5oRldQcE9kbkcvMGxlWGJQWU5TR1BOME14M0NH?=
+ =?utf-8?B?cHZuNjJrWXdCeUgxQmNOMTJBamxhdmU5czl1SGpQMmxDeVFESlBMamN0ckdh?=
+ =?utf-8?B?dEM0U1RhNkU1ZkMxd3VYVEcwcE54ZDhsYklPUVhxWm9KaUF4OWgxZ2gvbDVS?=
+ =?utf-8?B?RFBxKzdtRzhlQWRlbU5PNGY0c1Bsa0tqR0J2RUlIRDZFWTFlL2tQeXVzVFk1?=
+ =?utf-8?B?d0lnU3c2R3RnVW1TVktJWlZ5Z1d4MGNLN0hSSzY0eGFZSU9kRkRpengwbHdL?=
+ =?utf-8?B?Vk1IQUROU1VwUXJ4T0ljVzNvUkpsdSttdCs3TlN2eXN2NlhySnQvdURvWGhl?=
+ =?utf-8?Q?zkqdUsipJ8zPESCELUw981owI?=
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-Received-SPF: pass client-ip=203.29.241.158;
- envelope-from=andrew@codeconstruct.com.au; helo=codeconstruct.com.au
+X-OriginatorOrg: aspeedtech.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SI2PR06MB5041.apcprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 4dcfe155-a118-4a5a-67a1-08dcdea32211
+X-MS-Exchange-CrossTenant-originalarrivaltime: 27 Sep 2024 03:19:01.2039 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: lypYj0DIsmCUHMRJy0Rrm6XPH6VjMFll8DqqpsDNfrSvVZEL9F/PrteY3JrBXB2UX6rP5lRjVJ9wQvPXIi4F9ltEOhSamCwIxlvE6mq+Ty4=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: KL1PR06MB6789
+Received-SPF: pass client-ip=2a01:111:f400:feae::702;
+ envelope-from=jamin_lin@aspeedtech.com;
+ helo=APC01-PSA-obe.outbound.protection.outlook.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -108,40 +221,30 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 6vRjiWMaWRpj
+X-TUID: 8alHQCvwZSmh
 
-On Thu, 2024-09-26 at 15:45 +0800, Jamin Lin wrote:
-> AST2700 integrates two set of Parallel GPIO Controller
-> with maximum 212 control pins, which are 27 groups.
-> (H, exclude pin: H7 H6 H5 H4)
->=20
-> In the previous design of ASPEED SOCs,
-> one register is used for setting one function for one set which are 32 pi=
-ns
-> and 4 groups.
-> ex: GPIO000 is used for setting data value for GPIO A, B, C and D in AST2=
-600.
-> ex: GPIO004 is used for setting direction for GPIO A, B, C and D in AST26=
-00.
->=20
-> However, the register set have a significant change since AST2700.
-> Each GPIO pin has their own individual control register. In other words, =
-users are able to
-> set one GPIO pin=E2=80=99s direction, interrupt enable, input mask and so=
- on
-> in the same one register.
->=20
-> Currently, aspeed_gpio_read/aspeed_gpio_write callback functions
-> are not compatible AST2700.
-> Introduce new aspeed_gpio_2700_read/aspeed_gpio_2700_write callback funct=
-ions
-> and aspeed_gpio_2700_ops memory region operation for AST2700.
-> Introduce a new ast2700 class to support AST2700.
->=20
-> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-
-Some of the wrapping in the commit message could be improved, but
-otherwise:
-
-Reviewed-by: Andrew Jeffery <andrew@codeconstruct.com.au>
-
+SGkgQW5kcmV3LA0KDQo+IA0KPiBPbiBUaHUsIDIwMjQtMDktMjYgYXQgMTU6NDUgKzA4MDAsIEph
+bWluIExpbiB3cm90ZToNCj4gPiBBU1QyNzAwIGludGVncmF0ZXMgdHdvIHNldCBvZiBQYXJhbGxl
+bCBHUElPIENvbnRyb2xsZXIgd2l0aCBtYXhpbXVtDQo+ID4gMjEyIGNvbnRyb2wgcGlucywgd2hp
+Y2ggYXJlIDI3IGdyb3Vwcy4NCj4gPiAoSCwgZXhjbHVkZSBwaW46IEg3IEg2IEg1IEg0KQ0KPiA+
+DQo+ID4gSW4gdGhlIHByZXZpb3VzIGRlc2lnbiBvZiBBU1BFRUQgU09Dcywgb25lIHJlZ2lzdGVy
+IGlzIHVzZWQgZm9yDQo+ID4gc2V0dGluZyBvbmUgZnVuY3Rpb24gZm9yIG9uZSBzZXQgd2hpY2gg
+YXJlIDMyIHBpbnMgYW5kIDQgZ3JvdXBzLg0KPiA+IGV4OiBHUElPMDAwIGlzIHVzZWQgZm9yIHNl
+dHRpbmcgZGF0YSB2YWx1ZSBmb3IgR1BJTyBBLCBCLCBDIGFuZCBEIGluIEFTVDI2MDAuDQo+ID4g
+ZXg6IEdQSU8wMDQgaXMgdXNlZCBmb3Igc2V0dGluZyBkaXJlY3Rpb24gZm9yIEdQSU8gQSwgQiwg
+QyBhbmQgRCBpbiBBU1QyNjAwLg0KPiA+DQo+ID4gSG93ZXZlciwgdGhlIHJlZ2lzdGVyIHNldCBo
+YXZlIGEgc2lnbmlmaWNhbnQgY2hhbmdlIHNpbmNlIEFTVDI3MDAuDQo+ID4gRWFjaCBHUElPIHBp
+biBoYXMgdGhlaXIgb3duIGluZGl2aWR1YWwgY29udHJvbCByZWdpc3Rlci4gSW4gb3RoZXINCj4g
+PiB3b3JkcywgdXNlcnMgYXJlIGFibGUgdG8gc2V0IG9uZSBHUElPIHBpbuKAmXMgZGlyZWN0aW9u
+LCBpbnRlcnJ1cHQNCj4gPiBlbmFibGUsIGlucHV0IG1hc2sgYW5kIHNvIG9uIGluIHRoZSBzYW1l
+IG9uZSByZWdpc3Rlci4NCj4gPg0KPiA+IEN1cnJlbnRseSwgYXNwZWVkX2dwaW9fcmVhZC9hc3Bl
+ZWRfZ3Bpb193cml0ZSBjYWxsYmFjayBmdW5jdGlvbnMgYXJlDQo+ID4gbm90IGNvbXBhdGlibGUg
+QVNUMjcwMC4NCj4gPiBJbnRyb2R1Y2UgbmV3IGFzcGVlZF9ncGlvXzI3MDBfcmVhZC9hc3BlZWRf
+Z3Bpb18yNzAwX3dyaXRlIGNhbGxiYWNrDQo+ID4gZnVuY3Rpb25zIGFuZCBhc3BlZWRfZ3Bpb18y
+NzAwX29wcyBtZW1vcnkgcmVnaW9uIG9wZXJhdGlvbiBmb3IgQVNUMjcwMC4NCj4gPiBJbnRyb2R1
+Y2UgYSBuZXcgYXN0MjcwMCBjbGFzcyB0byBzdXBwb3J0IEFTVDI3MDAuDQo+ID4NCj4gPiBTaWdu
+ZWQtb2ZmLWJ5OiBKYW1pbiBMaW4gPGphbWluX2xpbkBhc3BlZWR0ZWNoLmNvbT4NCj4gDQo+IFNv
+bWUgb2YgdGhlIHdyYXBwaW5nIGluIHRoZSBjb21taXQgbWVzc2FnZSBjb3VsZCBiZSBpbXByb3Zl
+ZCwgYnV0DQo+IG90aGVyd2lzZToNCj4gDQpUaGFua3MgZm9yIHN1Z2dlc3Rpb24gYW5kIHJldmll
+dy4NCldpbGwgdXBkYXRlDQoNCkphbWluDQo+IFJldmlld2VkLWJ5OiBBbmRyZXcgSmVmZmVyeSA8
+YW5kcmV3QGNvZGVjb25zdHJ1Y3QuY29tLmF1Pg0KDQo=

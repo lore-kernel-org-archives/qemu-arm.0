@@ -1,99 +1,99 @@
-Received: by 2002:a17:505:70c3:b0:1be9:327d:8ee3 with SMTP id lw3csp204938njc;
+Received: by 2002:a17:505:70c3:b0:1be9:327d:8ee3 with SMTP id lw3csp204936njc;
         Sat, 28 Sep 2024 01:58:56 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVH4GISI/aAwFxTSmyw+SvPh6rsjNp4IOmkuzYhj0WkJYoMkeVdmM7vzrV8+yZo2hEj+RAv76QdMQb8xg==@linaro.org
-X-Google-Smtp-Source: AGHT+IFNs5qb2eewvQyjwgO7Sjh0axmIdypvK4v/pVg0oJ8A0g0HPW6YoT37pdbc41PfFdbe2yoj
-X-Received: by 2002:a05:620a:2a07:b0:7a2:d63:4cc6 with SMTP id af79cd13be357-7ae37856f35mr969246585a.39.1727513936367;
+X-Forwarded-Encrypted: i=2; AJvYcCUpp3DQ4N3DmyxyA92K7N8Z8+2nm1b4wy/AZTxtKuaCrNFHVYdIjRtnSJ6sRDk0MsA4GB3Cxs3krIROuw==@linaro.org
+X-Google-Smtp-Source: AGHT+IGqNlQTZOaFG8QkiybljtPNOTmlNJ8vb13uQW8chBcRgHRn8WcHOLGq7cYNjztMyN0hu3WN
+X-Received: by 2002:a05:620a:2413:b0:7a9:a744:f9b0 with SMTP id af79cd13be357-7ae2c5ecd12mr1494719285a.2.1727513936298;
         Sat, 28 Sep 2024 01:58:56 -0700 (PDT)
 ARC-Seal: i=1; a=rsa-sha256; t=1727513936; cv=none;
         d=google.com; s=arc-20240605;
-        b=cfey83NDhBpS9GS7acTBeqJX7Gibv/Ulr2kxvK9eV4hjPgoPjkxS97BdwDcOk1WDtI
-         l5MJDifCaiM4eAXPhIDX1WDPfZkRgnizzobC8mOoQKgv/606mUgg+1A0HmchVQDP6lqt
-         xVgXmcUTw53RD0aJndKit41nOn3ytc0Y3zHsvdYa49bopiEDAIRtWG1h41TB18mbqphs
-         ZjKnf9RyrF3VM/UB9/1x4vSv9pVP051xXiGQx4ILVP72hF7pCK8+fLDd4nIgAO1W+rkT
-         8RfpQSjkH4EYoBReQ2mfkrwAnLHK5f9fbW/42r6ZxIfS9OQ2GIsA05sdv77ipk++Rub3
-         lc2w==
+        b=T4qlntKmgrgLjaVt9efmgED5012+YSYUhHJQ22MCpm4z69URxigwBgnwpZSxFy1GsU
+         0FAhTGjAX5DhG1B2xOjKesco7heZz2O3Ts9tV1xp3ydLSAMxFC5dCDuBDe/j7cnpWiQa
+         y1OIJGO2E0zyx2YFvqd9HR98SU+o4Jh+OtrWUhVubkGHHRb/mYA5O/pAjCn4nCKQNFfs
+         9es5XUxkuOXD7cx0oP5i5LGgmYW+7LqJsLaqbBuUq219gcJGm2hWoPrFhvXPLr6TGG1J
+         smnpVpJzEyTbjs4ALQZneP2M7Tmb9x7n+Mq5I8SP/hRMKgZdOAeFo//2Ry/nsTErA6Sc
+         EdhA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=FfeuSle8WU9lgCf9lWNy2Qa389vC+1vrwCadU13cu6o=;
+        bh=zl3mKVns8uJPgYMQEV1u67mSsyfy3FBABb4tiuHMiDI=;
         fh=X/cEeG0IecOcbktZzhggOUgW8rnsW2Y9KQE40BZHOoA=;
-        b=ORtDnf9Yf+IkU5wSIyFbRBc3JAvULP71erws1iw0tRhZDIfZqYV2Cmz320IycyvBA0
-         ApFM+eBDh36X1EfgpgNguyp4SSypJt2oUE+fGc4IXB9MJrJaFojRAypRz+lPbPwl1isW
-         79iHhbAtQzSWraTqP17BSgcKX27880/h3Qx0US3Ujk6yQFnAZmCZCrJZhQhn6bdn0IKW
-         XtiTdDGksbmh7SfSoAgokm0t3yDUINlLCjEFBpJPElIHPjLtZtJvmbdBSo316rGNY7OV
-         FQ7Exl37ifN9Dj8MBFc743Ri1+w41GH2y+LYd9aVa1HTZyfVUAipgrVeXydVd6bvw0dE
-         LEMQ==;
+        b=Pe7U/YgSTx/zHHFvgVZtDb0myk5dJvT5ARcHl3EtdX0z8s82pNN+LKh0GnLYz0MaKX
+         4v2FP2p4mHCUy7uxYQFpFnOTuizKB3IWwAeOffTFK+pRbugfq57t1SPg6UiE8S6HBJ9O
+         B5uUzoeceIWGjHXKmsQW8bQkxAPPnGecO25BR4VVDCzuMAyDe9qBWxGOxihlTfzd3LyA
+         NM0hPKJtA2UClt5SfMzGwROF0o1toqle+PWpdXrwUV+T4KhJmHZ5f6Xop+EyKNF0u/8I
+         veXFQi/KvtKxRi3X9UQx9VvQcI1rbcRUqhjj0D8VweLWXnX4DfVE4DEohxubItr2dC7H
+         TkLg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b=jfBK+BRt;
+       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b=hPSLhB6C;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7ae37854ef1si414036785a.444.2024.09.28.01.58.56
+        by mx.google.com with ESMTPS id af79cd13be357-7ae377e337fsi414073585a.181.2024.09.28.01.58.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Sat, 28 Sep 2024 01:58:56 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b=jfBK+BRt;
+       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b=hPSLhB6C;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1suTHj-0000YY-OH; Sat, 28 Sep 2024 04:58:39 -0400
+	id 1suTHU-0008Lo-GY; Sat, 28 Sep 2024 04:58:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <phil@philjordan.eu>)
- id 1suTHh-0000WD-Ai
- for qemu-devel@nongnu.org; Sat, 28 Sep 2024 04:58:37 -0400
-Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
+ id 1suTHS-0008KP-Gn
+ for qemu-devel@nongnu.org; Sat, 28 Sep 2024 04:58:22 -0400
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <phil@philjordan.eu>)
- id 1suTHf-0002K8-Gh
- for qemu-devel@nongnu.org; Sat, 28 Sep 2024 04:58:37 -0400
-Received: by mail-wr1-x436.google.com with SMTP id
- ffacd0b85a97d-37ce18b042fso216868f8f.1
- for <qemu-devel@nongnu.org>; Sat, 28 Sep 2024 01:58:34 -0700 (PDT)
+ id 1suTHO-0002HL-6X
+ for qemu-devel@nongnu.org; Sat, 28 Sep 2024 04:58:22 -0400
+Received: by mail-wr1-x42c.google.com with SMTP id
+ ffacd0b85a97d-37cc810ce73so1767944f8f.1
+ for <qemu-devel@nongnu.org>; Sat, 28 Sep 2024 01:58:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=philjordan-eu.20230601.gappssmtp.com; s=20230601; t=1727513913; x=1728118713;
+ d=philjordan-eu.20230601.gappssmtp.com; s=20230601; t=1727513897; x=1728118697;
  darn=nongnu.org; 
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=FfeuSle8WU9lgCf9lWNy2Qa389vC+1vrwCadU13cu6o=;
- b=jfBK+BRtJtF+gp8/N0evWYVshHEtFatc4vAU4REkpfEMwyNia872Xoha5jSnAopaeU
- DfgzpwHUF2pq/rRy0W8zWKTQVbfQXhkrKLvSCT3Wj+hPNCq15zgCji/E8iuN8dPDpEEC
- NjTijvUIQjt9fiAmyZd2AmGMrhm1iDa+cQ1gMEYscSAOgWKz3omVZzF3dEZ3EMTOmLES
- wjAC5/tlnWJPdugl019d664yNF/TKwlJzsthnXWc9x4xhyUFh+unUm8RumFJEJvPdvmU
- wcfDLOjiEEJQLFhdMKejW+mrLWY/vDJ2XXjfJ8J2zQSI17CxMIWmjdBcwmoGtJnzH8Gr
- uDjg==
+ bh=zl3mKVns8uJPgYMQEV1u67mSsyfy3FBABb4tiuHMiDI=;
+ b=hPSLhB6CerAxQnY2lOU/dQ3JKrCdfxtAgwR6grSkxWHysihVe9OQkHd9dB0BEpJRfh
+ ZLllGktn6xq2wG1rnQ0Zdceb2EpEInOJXgnFdooYtA3xyZGzMHJ2tAF0mrAWC5Qfx0wX
+ dbQmvd/M9Q6nKovJXGGi0c85lpCJEo7yQFdz8rjKRpX2AJp9Hk29UkRelFkzzVQUCfV3
+ 514ie0e9QsBNp/esX7+phvMZVzZL0Ernaz/nSuY/2Vxi6gNG6Fb5YhKFNuDojIPu0+iN
+ obIz4iWLU8hPM3qwzNqyGfVhQEyr9pmULEayl2CbFIidlx3RDoSOKV6e4aZ1fOGbdR1M
+ za7w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1727513913; x=1728118713;
+ d=1e100.net; s=20230601; t=1727513897; x=1728118697;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=FfeuSle8WU9lgCf9lWNy2Qa389vC+1vrwCadU13cu6o=;
- b=fF+dr/fWB+TJE81U7rWzED+BUqaSH70XsNLRQ8lNtEGRvgkwfBTC/F3cJ5BWF2Q6Uu
- ifyAgBIQ3vdjsk9yEGRnLum3k6nCzpvvROjDoNkCjy/YSeOxn0HXUdJy5pRUyXY7ZKvH
- 0vjda0KbK+V+jMRSxZnbjPg32WtCWQO/megDIFHmQEnrAwYBZUutVHlJMEbdMEZRwAjO
- uF4Ddyt5W6o3hkzmbFyzCc5WkbXj0GHBi10kjL/MAPp2rJ2XSb4znjIPXET8YN05Fidc
- plbgwaGTKIwIE32jo4BqS8B2XDkxr4TxmUBfo0hOEDzDyOXGcKplcJhVQ2XjXhS9XqSw
- rLPQ==
-X-Gm-Message-State: AOJu0YwdY9INzal3+lnRY+iW5TgLfmLQ0bKvFgzDEZ3N9X7yhV7Ln74J
- meRQkiivIcNgVei5xDFjMfctbwuGV+XyHCjqQcMcqvCA8uSwTLAzqjaXjRbQ+15i7bQfKDssbP7
- j8g==
-X-Received: by 2002:a5d:404a:0:b0:371:a8a3:f9a1 with SMTP id
- ffacd0b85a97d-37cd5a831fcmr3731857f8f.11.1727513913081; 
- Sat, 28 Sep 2024 01:58:33 -0700 (PDT)
+ bh=zl3mKVns8uJPgYMQEV1u67mSsyfy3FBABb4tiuHMiDI=;
+ b=a0SKVuofaoHtMx5fz/pqIbSNzlgLWX6D0G2eqUTr4PKsfdr24t1SBrUKIARNAgmuJS
+ gJOjVWaGgukcvYcF0aT/vyhi8nSuPSJTs5Ja89Jf1KnjOFPPQF6+WBuDT4ZWBgKFu937
+ LttHvR437pkgcmfHqJEr1SXyQNimyLCIRBnmBap79LHUjbw0k/fJz54/x00xiA9HVV/y
+ AAGa1YMGJGwWhilhzIqYWAtbSA1jxiU+Vy8/toYcAit9z2fRsfsZ8N4mHfchYoaEdutQ
+ acok7awQYnK+mKptxQFhxVA6zeAXHb96uqYv/oloIt0JJJ8WAEBKU5p5yi23kkiSIFiz
+ dO1w==
+X-Gm-Message-State: AOJu0YydQgd6mNaYJ9h75kDe3pCd9GUOLhFNM9RbyP8k3d0YHzkE3dKW
+ dbyQDSRLggv0OElbjtLyBRWoYjrW2t6NWYBMYyng6i1ELsZV5gA8H0luK1TK73MufoiT2BxYv61
+ ZZQ==
+X-Received: by 2002:adf:ed4e:0:b0:374:bad2:6a5e with SMTP id
+ ffacd0b85a97d-37cd5ab7535mr3210984f8f.28.1727513896501; 
+ Sat, 28 Sep 2024 01:58:16 -0700 (PDT)
 Received: from localhost.localdomain ([2001:4bb8:2ae:e42d:7dbb:76ba:120d:8a28])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-37cd57423afsm4313167f8f.90.2024.09.28.01.58.28
+ ffacd0b85a97d-37cd57423afsm4313167f8f.90.2024.09.28.01.58.06
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Sat, 28 Sep 2024 01:58:32 -0700 (PDT)
+ Sat, 28 Sep 2024 01:58:16 -0700 (PDT)
 From: Phil Dennis-Jordan <phil@philjordan.eu>
 To: qemu-devel@nongnu.org
 Cc: agraf@csgraf.de, phil@philjordan.eu, peter.maydell@linaro.org,
@@ -108,18 +108,17 @@ Cc: agraf@csgraf.de, phil@philjordan.eu, peter.maydell@linaro.org,
  jcmvbkbc@gmail.com, marcandre.lureau@redhat.com, berrange@redhat.com,
  akihiko.odaki@daynix.com, qemu-arm@nongnu.org, qemu-block@nongnu.org,
  qemu-riscv@nongnu.org
-Subject: [PATCH v3 05/14] MAINTAINERS: Add myself as maintainer for apple-gfx,
- reviewer for HVF
-Date: Sat, 28 Sep 2024 10:57:18 +0200
-Message-Id: <20240928085727.56883-6-phil@philjordan.eu>
+Subject: [PATCH v3 02/14] hw/display/apple-gfx: Adds PCI implementation
+Date: Sat, 28 Sep 2024 10:57:15 +0200
+Message-Id: <20240928085727.56883-3-phil@philjordan.eu>
 X-Mailer: git-send-email 2.39.3 (Apple Git-145)
 In-Reply-To: <20240928085727.56883-1-phil@philjordan.eu>
 References: <20240928085727.56883-1-phil@philjordan.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: neutral client-ip=2a00:1450:4864:20::436;
- envelope-from=phil@philjordan.eu; helo=mail-wr1-x436.google.com
+Received-SPF: neutral client-ip=2a00:1450:4864:20::42c;
+ envelope-from=phil@philjordan.eu; helo=mail-wr1-x42c.google.com
 X-Spam_score_int: -10
 X-Spam_score: -1.1
 X-Spam_bar: -
@@ -140,57 +139,190 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: +G3lJE7X8iVq
+X-TUID: wyy3vV/+WIu4
 
-I'm happy to take responsibility for the macOS PV graphics code. As
-HVF patches don't seem to get much attention at the moment, I'm also
-adding myself as designated reviewer for HVF and x86 HVF to try and
-improve that.
-
-I anticipate that the resulting workload should be covered by the
-funding I'm receiving for improving Qemu in combination with macOS. As
-of right now this runs out at the end of 2024; I expect the workload on
-apple-gfx should be relatively minor and manageable in my spare time
-beyond that. I may have to remove myself from more general HVF duties
-once the contract runs out if it's more than I can manage.
+This change wires up the PCI variant of the paravirtualised
+graphics device, mainly useful for x86-64 macOS guests, implemented
+by macOS's ParavirtualizedGraphics.framework. It builds on code
+shared with the vmapple/mmio variant of the PVG device.
 
 Signed-off-by: Phil Dennis-Jordan <phil@philjordan.eu>
 ---
- MAINTAINERS | 7 +++++++
- 1 file changed, 7 insertions(+)
+ hw/display/Kconfig         |   5 ++
+ hw/display/apple-gfx-pci.m | 138 +++++++++++++++++++++++++++++++++++++
+ hw/display/meson.build     |   1 +
+ 3 files changed, 144 insertions(+)
+ create mode 100644 hw/display/apple-gfx-pci.m
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index ffacd60f407..0133b874847 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -510,6 +510,7 @@ F: target/arm/hvf/
- X86 HVF CPUs
- M: Cameron Esfahani <dirty@apple.com>
- M: Roman Bolshakov <rbolshakov@ddn.com>
-+R: Phil Dennis-Jordan <phil@philjordan.eu>
- W: https://wiki.qemu.org/Features/HVF
- S: Maintained
- F: target/i386/hvf/
-@@ -517,6 +518,7 @@ F: target/i386/hvf/
- HVF
- M: Cameron Esfahani <dirty@apple.com>
- M: Roman Bolshakov <rbolshakov@ddn.com>
-+R: Phil Dennis-Jordan <phil@philjordan.eu>
- W: https://wiki.qemu.org/Features/HVF
- S: Maintained
- F: accel/hvf/
-@@ -2624,6 +2626,11 @@ F: hw/display/edid*
- F: include/hw/display/edid.h
- F: qemu-edid.c
- 
-+macOS PV Graphics (apple-gfx)
-+M: Phil Dennis-Jordan <phil@philjordan.eu>
-+S: Maintained
-+F: hw/display/apple-gfx*
+diff --git a/hw/display/Kconfig b/hw/display/Kconfig
+index 179a479d220..c2ec268f8e9 100644
+--- a/hw/display/Kconfig
++++ b/hw/display/Kconfig
+@@ -152,3 +152,8 @@ config MAC_PVG_VMAPPLE
+     bool
+     depends on MAC_PVG
+     depends on ARM
 +
- PIIX4 South Bridge (i82371AB)
- M: Hervé Poussineau <hpoussin@reactos.org>
- M: Philippe Mathieu-Daudé <philmd@linaro.org>
++config MAC_PVG_PCI
++    bool
++    depends on MAC_PVG && PCI
++    default y if PCI_DEVICES
+diff --git a/hw/display/apple-gfx-pci.m b/hw/display/apple-gfx-pci.m
+new file mode 100644
+index 00000000000..9370258ee46
+--- /dev/null
++++ b/hw/display/apple-gfx-pci.m
+@@ -0,0 +1,138 @@
++/*
++ * QEMU Apple ParavirtualizedGraphics.framework device, PCI variant
++ *
++ * Copyright © 2023-2024 Phil Dennis-Jordan
++ *
++ * This work is licensed under the terms of the GNU GPL, version 2 or later.
++ * See the COPYING file in the top-level directory.
++ *
++ * ParavirtualizedGraphics.framework is a set of libraries that macOS provides
++ * which implements 3d graphics passthrough to the host as well as a
++ * proprietary guest communication channel to drive it. This device model
++ * implements support to drive that library from within QEMU as a PCI device
++ * aimed primarily at x86-64 macOS VMs.
++ */
++
++#include "apple-gfx.h"
++#include "hw/pci/pci_device.h"
++#include "hw/pci/msi.h"
++#include "qapi/error.h"
++#include "trace.h"
++#import <ParavirtualizedGraphics/ParavirtualizedGraphics.h>
++
++typedef struct AppleGFXPCIState {
++    PCIDevice parent_obj;
++
++    AppleGFXState common;
++} AppleGFXPCIState;
++
++OBJECT_DECLARE_SIMPLE_TYPE(AppleGFXPCIState, APPLE_GFX_PCI)
++
++static const char* apple_gfx_pci_option_rom_path = NULL;
++
++static void apple_gfx_init_option_rom_path(void)
++{
++    NSURL *option_rom_url = PGCopyOptionROMURL();
++    const char *option_rom_path = option_rom_url.fileSystemRepresentation;
++    if (option_rom_url.fileURL && option_rom_path != NULL) {
++        apple_gfx_pci_option_rom_path = g_strdup(option_rom_path);
++    }
++    [option_rom_url release];
++}
++
++static void apple_gfx_pci_init(Object *obj)
++{
++    AppleGFXPCIState *s = APPLE_GFX_PCI(obj);
++
++    if (!apple_gfx_pci_option_rom_path) {
++        /* Done on device not class init to avoid -daemonize ObjC fork crash */
++        PCIDeviceClass *pci = PCI_DEVICE_CLASS(object_get_class(obj));
++        apple_gfx_init_option_rom_path();
++        pci->romfile = apple_gfx_pci_option_rom_path;
++    }
++
++    apple_gfx_common_init(obj, &s->common, TYPE_APPLE_GFX_PCI);
++}
++
++static void apple_gfx_pci_interrupt(PCIDevice *dev, AppleGFXPCIState *s,
++                                    uint32_t vector)
++{
++    bool msi_ok;
++    trace_apple_gfx_raise_irq(vector);
++
++    msi_ok = msi_enabled(dev);
++    if (msi_ok) {
++        msi_notify(dev, vector);
++    }
++}
++
++static void apple_gfx_pci_realize(PCIDevice *dev, Error **errp)
++{
++    AppleGFXPCIState *s = APPLE_GFX_PCI(dev);
++    Error *err = NULL;
++    int ret;
++
++    pci_register_bar(dev, PG_PCI_BAR_MMIO,
++                     PCI_BASE_ADDRESS_SPACE_MEMORY, &s->common.iomem_gfx);
++
++    ret = msi_init(dev, 0x0 /* config offset; 0 = find space */,
++                   PG_PCI_MAX_MSI_VECTORS, true /* msi64bit */,
++                   false /*msi_per_vector_mask*/, &err);
++    if (ret != 0) {
++        error_propagate(errp, err);
++        return;
++    }
++
++    @autoreleasepool {
++        PGDeviceDescriptor *desc = [PGDeviceDescriptor new];
++        desc.raiseInterrupt = ^(uint32_t vector) {
++            apple_gfx_pci_interrupt(dev, s, vector);
++        };
++
++        apple_gfx_common_realize(&s->common, desc);
++        [desc release];
++        desc = nil;
++    }
++}
++
++static void apple_gfx_pci_reset(Object *obj, ResetType type)
++{
++    AppleGFXPCIState *s = APPLE_GFX_PCI(obj);
++    [s->common.pgdev reset];
++}
++
++static void apple_gfx_pci_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++    PCIDeviceClass *pci = PCI_DEVICE_CLASS(klass);
++    ResettableClass *rc = RESETTABLE_CLASS(klass);
++
++    assert(rc->phases.hold == NULL);
++    rc->phases.hold = apple_gfx_pci_reset;
++    dc->desc = "macOS Paravirtualized Graphics PCI Display Controller";
++    dc->hotpluggable = false;
++    set_bit(DEVICE_CATEGORY_DISPLAY, dc->categories);
++
++    pci->vendor_id = PG_PCI_VENDOR_ID;
++    pci->device_id = PG_PCI_DEVICE_ID;
++    pci->class_id = PCI_CLASS_DISPLAY_OTHER;
++    pci->realize = apple_gfx_pci_realize;
++
++    // TODO: Property for setting mode list
++}
++
++static TypeInfo apple_gfx_pci_types[] = {
++    {
++        .name          = TYPE_APPLE_GFX_PCI,
++        .parent        = TYPE_PCI_DEVICE,
++        .instance_size = sizeof(AppleGFXPCIState),
++        .class_init    = apple_gfx_pci_class_init,
++        .instance_init = apple_gfx_pci_init,
++        .interfaces = (InterfaceInfo[]) {
++            { INTERFACE_PCIE_DEVICE },
++            { },
++        },
++    }
++};
++DEFINE_TYPES(apple_gfx_pci_types)
++
+diff --git a/hw/display/meson.build b/hw/display/meson.build
+index 70d855749c0..ceb7bb07612 100644
+--- a/hw/display/meson.build
++++ b/hw/display/meson.build
+@@ -67,6 +67,7 @@ system_ss.add(when: 'CONFIG_ATI_VGA', if_true: [files('ati.c', 'ati_2d.c', 'ati_
+ 
+ system_ss.add(when: 'CONFIG_MAC_PVG',         if_true: [files('apple-gfx.m'), pvg, metal])
+ system_ss.add(when: 'CONFIG_MAC_PVG_VMAPPLE', if_true: [files('apple-gfx-vmapple.m'), pvg, metal])
++system_ss.add(when: 'CONFIG_MAC_PVG_PCI',     if_true: [files('apple-gfx-pci.m'), pvg, metal])
+ 
+ if config_all_devices.has_key('CONFIG_VIRTIO_GPU')
+   virtio_gpu_ss = ss.source_set()
 -- 
 2.39.3 (Apple Git-145)
 

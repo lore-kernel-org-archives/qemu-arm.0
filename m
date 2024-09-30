@@ -1,80 +1,80 @@
-Received: by 2002:a17:505:70c3:b0:1be9:327d:8ee3 with SMTP id lw3csp1074542njc;
-        Mon, 30 Sep 2024 00:36:19 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXDA19ECjlzZCI5Fd18ldwFAI01oEGi5U/sYp/Rg8yvJfe676tgxrgdjR9KQ89cWzBlk7lQbJjxFFGhqA==@linaro.org
-X-Received: by 2002:a05:600c:4751:b0:42c:b9a5:ebbc with SMTP id 5b1f17b1804b1-42f58440efcmr95760035e9.16.1727681778884;
-        Mon, 30 Sep 2024 00:36:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1727681778; cv=none;
+Received: by 2002:a17:505:70c3:b0:1be9:327d:8ee3 with SMTP id lw3csp1074583njc;
+        Mon, 30 Sep 2024 00:36:27 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWZIGa0Mch0/+0HPZvY4WtaCH3VZO1Kl2OJdj/dnvBQk5X5Zb4+okksclsDlREKpK3oH9BXpFo+wb5pBQ==@linaro.org
+X-Received: by 2002:a5d:4bcf:0:b0:374:b3a3:3f83 with SMTP id ffacd0b85a97d-37cd5b07311mr6235895f8f.53.1727681786814;
+        Mon, 30 Sep 2024 00:36:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1727681786; cv=none;
         d=google.com; s=arc-20240605;
-        b=SVWDaT7if+kMvNLqpJgt5vYlLx457LlVDt9RQjAcJI3z3qDlgFRcxAVmbkrgJadG/E
-         bbCVsTevzopuqIdRczKFKiQeQ+4LxTQGnAPNRQtRjd4SusZNEd0EkxfSDkus9b/3UuQJ
-         FyMqfuWPoNeVKbWLwPDiLzN6QjBeiq7JKuEJxyp4LtUH93pUhzX3lfZ+71Ngodqz7aOs
-         fdLJQ+VnLQ+JWIVVSA/7zqy/+XJWa+iltj5NsoWZmZLKcfXblZTnHtPHTzAccDgoK/h3
-         RHs5Se0mFj6GS6euJ9LKAH5IJBR9BN/WzRNrjq/YSFvTOsOQ2kjNkA1WkTszNLFP2BEL
-         w3YQ==
+        b=UbjZ5CBBcdHkrmkVB2Kx+PkcjxVdt243Zcp84LO1D6TVNAXwD9eiwCmBsXeo869N8H
+         zjqqyS+1bB4GNJ+Y1FZozPJM6U4h9FO+fwREjzR8o6DT+eyzh3OMjvLq37iokkJVujuR
+         nj9gox23VtKJZ6ZP1fPjCBRR0SRXw411vJd0TJGJfMOAs2Uz8C+mo2pmUyH+Oj18Rtdi
+         EQkgmkHUE9Xgnx/F/FCLsE7Z92EqHg3RWq07wdRgGKbAC+vsRMnVe7IisQcmwd0ZS51h
+         /onjz79xwzYVR43HcT+bJRjhCKBdmtb63MH9h8kZe7qo2S+hUjUiZcb/K++8HGuZnMUs
+         d8VA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=No3UNTdnI2PUra55xn+9Km9SFh7ve86YSqv3e3Ulz3I=;
-        fh=VZxA7oZdQjpTrvLb2IxQFfSeZW1+xcPXXeeFEX1RSFo=;
-        b=hzDaAZLO9SJtUTh5sQIbzXH2jXcw3bEl4kV5EvLMI5L/0VDexnAzZ7kyqZ4oQ8p9lu
-         ponveehu62iFJBuRtb7UOGP+aQJQHSm7U6Y9La+2tgILIf8pbFOyW+5Q56XV2Sjs/PS7
-         106eM10GfMZH2Fr37g1TmMNdpaazCJPMIvzvKfydVEXZghDiUTB5o48O9jd35vdwVEKW
-         5lkrSB+begRRd5ponvNB5lpxGwF53TYMp4swtWorPJjDCkFVZu0SJ6yHtlYZCawz3vi8
-         sHMl2m6bugDtMJ9RKgr0dCc+JGN7l3df1kS04BHJuI7HavulgLy2rfQvIEYwHpPAsrD4
-         NyFw==;
+        bh=olm5MEqTuo7Wlc02c6b6qRoX+TEZG1pRsM1M0qwZSUk=;
+        fh=YMod5UhbtQj9Lg3wyR2jvoxlI2FjLjaxIsGVLTOSSKU=;
+        b=OsOpyY/CAG+ew2jueHe+2ZbcXaWCr743NUxGJTab3o0qf/4yM95LQyRilo315HUthh
+         YA4/AKcGDTIejfsNFAXlfekIx2vLncTkUBhMvsk5EBPeT8KIG7uc0LZQZyLvBf7yklFy
+         Vn/nB0doHR0eOotzi2nBoy1RlknDCbss4OVwYDaBIWPa5j6jo7aLNUEIeYHwY5BiI36/
+         CpWa96kp20KZbakN5QQmNUSGpVlpJa6BEt/VWxtsmcj4meid0lE2IEW7EsRaMqR2lq4V
+         wFu4DbcVEChjsiuJ1GXV87F5ZrZyPjRhlQYh92cxbHD5sCqrCPuXAfJQqMbLrp8SdxWA
+         3rOA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=x0KOc90p;
+       dkim=pass header.i=@linaro.org header.s=google header.b=nOaQJx6s;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 5b1f17b1804b1-42f5821103fsor24366515e9.9.2024.09.30.00.36.18
+        by mx.google.com with SMTPS id ffacd0b85a97d-37cd5667fbesor1301172f8f.3.2024.09.30.00.36.26
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 30 Sep 2024 00:36:18 -0700 (PDT)
+        Mon, 30 Sep 2024 00:36:26 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=x0KOc90p;
+       dkim=pass header.i=@linaro.org header.s=google header.b=nOaQJx6s;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1727681778; x=1728286578; darn=linaro.org;
+        d=linaro.org; s=google; t=1727681786; x=1728286586; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=No3UNTdnI2PUra55xn+9Km9SFh7ve86YSqv3e3Ulz3I=;
-        b=x0KOc90pf3vsKwLoU5E6i0PPA3iPM+btM55o7h0ASP/fLHSnnJoLUhbaXwozm4oe8L
-         J0vDYZpH8r8eegYiPXl93YWwpKFK9FurygYqJo0fwmFn2PZI2AzN9CGARfrjvVDBGNtz
-         6qJ3C/Pl9PhS0JgZ+NBlOxEZTkofDET3fj3qTWjaTVHKuTg5eNCuAG+FZKz8pr5VQjQR
-         Mv9roXNp9EzOhlgXkfAdk78ZrAmfw6xbKmtQtjAWgxAvtXXNV1EueExwEHSr0PB6fygU
-         4MkhEQjAbfEh4fgvgAucSqwMh2BJfnVELpketADgqydypbrargf3CSn5QAoBFFExi4Oq
-         2MeQ==
+        bh=olm5MEqTuo7Wlc02c6b6qRoX+TEZG1pRsM1M0qwZSUk=;
+        b=nOaQJx6ssMS6Ookm7OrImb9q/ay4DViOyxkKrgYKFi1XKVYcDuhM9J8cfPJpQZeNoD
+         wi39AgiLoI5emdlhAwm9joAyW3f69FIamMid6WvFB18F6yaC2Xd4b+CEejDTxAOgxSFq
+         yw7+em2vvMFYEGSAyPEkTIh8u/1HWtrhzTULy2v9Abg/HyiB8ogjrM0HQYn2Ekk26LOW
+         8T0Nnlo6Bs9OVPGfF3tBuBTCr2xFLM0StQEL6miTVg8G7YGI7+WOx5jk+a9osDPsorIO
+         0j2iaUn7dNIynjINvUucLjqlLQijxpuDrF1HodA9BD/HaSrSa2TRr/ckaT0elVaqGlhT
+         t9Ww==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1727681778; x=1728286578;
+        d=1e100.net; s=20230601; t=1727681786; x=1728286586;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=No3UNTdnI2PUra55xn+9Km9SFh7ve86YSqv3e3Ulz3I=;
-        b=dEG1oiPhy5oyWdGaG1UVQkfAef87jWZsFWX2XYSmJf+94/Ys5I54FpU6TyYsVL9vkj
-         QMkegbjMGFIoCmZ6fh9WxSgsvd5vv3voHK55PnvuutFruKARyHY5qhbHwRMb8TnBiHBI
-         WJBLUE9TdNHio3+/b6s4Z2gpFaPtem8U970+8McLwyCMbbd9sQ1rX9smfR7jUrbvMiqM
-         fJ7mjG1sLsvG6dV+geKqyWIbX/6lO6pne+QxqKqjIuyVQspx2CKiIBDQ25CGNxajXH5U
-         11Nv9QOvuEFk4yppUNBwWOlPAzYHPRIqU+HeB4SHFqV0jOceISJb9yiLZETOJDqZvGMZ
-         u5Zg==
-X-Forwarded-Encrypted: i=1; AJvYcCWUhVaX0kYWQtrbNzcS7hSkZm475nA5VB19YsMEI0vbhwMjAgD2TbpRYzcWwBEfg4ZtSXKPRdQ45UfR7A==@linaro.org
-X-Gm-Message-State: AOJu0YzsfwZr10idGNVLl1KFlcNuk8Kx1vFYCIg7qmQPpJ2uPwZyqvb4
-	Xg9N1uSp6i//nTViyteTRGfX/UlbttZ4yfBVBM5VndwxXwnzXcpGxoSUiVInnG47MQ==
-X-Google-Smtp-Source: AGHT+IFRv3VLtyKO7mNdwt1H9m+lBB/oi2IabLTun7tIx7ArAk7aBJ8x8BS7GDBx16sOWJESKh3XrQ==
-X-Received: by 2002:a05:600c:4f01:b0:42c:afea:2a10 with SMTP id 5b1f17b1804b1-42f58441814mr91713325e9.21.1727681778254;
-        Mon, 30 Sep 2024 00:36:18 -0700 (PDT)
+        bh=olm5MEqTuo7Wlc02c6b6qRoX+TEZG1pRsM1M0qwZSUk=;
+        b=ruCOJzJRgB7eNE/w4OqLl6delXiUxanInwV5Ay2rkKY/JGmpfkGmQ94XuyYYlstFNm
+         3YZH/WH7iTOjRyv5xySHaQRkpWv8pgK1ZW03CbC3leevFKZ+oiTyuElyuPY2JWQVxel3
+         P1FjSGQHmbu/FvLKIoOPJFCVFbm602VlXjmozIH7cbdGc0RGj5zQrMtYiSjLuypyLzQ+
+         kTCwAjcwIHqhRLQ/qxyvY9FTfiff6SwhjJjWORajK+si955y5UWT312kE/o2yjNWuz/G
+         miIk9daQHnZAkFB+HngHAoGKcPJT5I0B/vFcNDOtRx3ktVsgej27TKWpTOxKJc9Fi5S0
+         w4Gg==
+X-Forwarded-Encrypted: i=1; AJvYcCVYA5BQnO4mqEUWn4zwB6SPBaIeYXXr8SvOPyLxWTONuweoDRuqGC5fFTPUXNwyzH+X4BVUSojRKzFm9w==@linaro.org
+X-Gm-Message-State: AOJu0YwyuAUdHidtHhe3u3C30KVrED56JrvX/OJ4LYEnki86q3b8qOTV
+	leD7FT+7q3Tnepz/F7YBjBkOWQ1RzCOjiZ0Dq1TjSgbqVXNV3gHUp2gTasWStyi6yw==
+X-Google-Smtp-Source: AGHT+IFJ/LX8GVVEsOLDWrfB7Tgyojyz4e841ap2Xfa6UE1pQYhd3FzF3SxsSMfp08WAfw2JTro3Mg==
+X-Received: by 2002:a5d:690f:0:b0:37c:d4ba:1127 with SMTP id ffacd0b85a97d-37cd5a8791dmr6298056f8f.16.1727681786225;
+        Mon, 30 Sep 2024 00:36:26 -0700 (PDT)
 Return-Path: <philmd@linaro.org>
 Received: from localhost.localdomain (186.red-88-28-13.dynamicip.rima-tde.net. [88.28.13.186])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-42e96a54dd4sm141894255e9.45.2024.09.30.00.36.14
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-37cd56e6665sm8343859f8f.54.2024.09.30.00.36.23
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Mon, 30 Sep 2024 00:36:17 -0700 (PDT)
+        Mon, 30 Sep 2024 00:36:25 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Mahmoud Mandour <ma.mandourr@gmail.com>,
@@ -96,88 +96,50 @@ Cc: Mahmoud Mandour <ma.mandourr@gmail.com>,
 	Pierrick Bouvier <pierrick.bouvier@linaro.org>,
 	Max Filippov <jcmvbkbc@gmail.com>,
 	Paul Burton <paulburton@kernel.org>
-Subject: [PATCH 10/13] hw/virtio/virtio-access: Use ld/st_endian_phys() API
-Date: Mon, 30 Sep 2024 09:34:47 +0200
-Message-ID: <20240930073450.33195-11-philmd@linaro.org>
+Subject: [PATCH 11/13] hw/pci/pci_device: Add PCI_DMA_DEFINE_LDST_END() macro
+Date: Mon, 30 Sep 2024 09:34:48 +0200
+Message-ID: <20240930073450.33195-12-philmd@linaro.org>
 X-Mailer: git-send-email 2.45.2
 In-Reply-To: <20240930073450.33195-1-philmd@linaro.org>
 References: <20240930073450.33195-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 3DKO9EgILfQh
+X-TUID: 5MLglLu7hepL
 
-Refactor to use the recently introduced ld/st_endian_phys() API.
-No logical change intended.
+Define both endianness variants with a single macro.
+Useful to add yet other endian specific definitions
+in the next commit.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- include/hw/virtio/virtio-access.h | 27 +++++----------------------
- 1 file changed, 5 insertions(+), 22 deletions(-)
+ include/hw/pci/pci_device.h | 13 +++++++------
+ 1 file changed, 7 insertions(+), 6 deletions(-)
 
-diff --git a/include/hw/virtio/virtio-access.h b/include/hw/virtio/virtio-access.h
-index b920874be8..37a42407ea 100644
---- a/include/hw/virtio/virtio-access.h
-+++ b/include/hw/virtio/virtio-access.h
-@@ -43,30 +43,21 @@ static inline uint16_t virtio_lduw_phys(VirtIODevice *vdev, hwaddr pa)
- {
-     AddressSpace *dma_as = vdev->dma_as;
+diff --git a/include/hw/pci/pci_device.h b/include/hw/pci/pci_device.h
+index 91df40f989..ff619241a4 100644
+--- a/include/hw/pci/pci_device.h
++++ b/include/hw/pci/pci_device.h
+@@ -298,13 +298,14 @@ static inline MemTxResult pci_dma_write(PCIDevice *dev, dma_addr_t addr,
+         return st##_s##_dma(pci_get_address_space(dev), addr, val, attrs); \
+     }
  
--    if (virtio_access_is_big_endian(vdev)) {
--        return lduw_be_phys(dma_as, pa);
--    }
--    return lduw_le_phys(dma_as, pa);
-+    return lduw_endian_phys(virtio_access_is_big_endian(vdev), dma_as, pa);
- }
++#define PCI_DMA_DEFINE_LDST_END(_l, _s, _bits) \
++    PCI_DMA_DEFINE_LDST(_l##_le, _s##_le, _bits) \
++    PCI_DMA_DEFINE_LDST(_l##_be, _s##_be, _bits)
++
+ PCI_DMA_DEFINE_LDST(ub, b, 8);
+-PCI_DMA_DEFINE_LDST(uw_le, w_le, 16)
+-PCI_DMA_DEFINE_LDST(l_le, l_le, 32);
+-PCI_DMA_DEFINE_LDST(q_le, q_le, 64);
+-PCI_DMA_DEFINE_LDST(uw_be, w_be, 16)
+-PCI_DMA_DEFINE_LDST(l_be, l_be, 32);
+-PCI_DMA_DEFINE_LDST(q_be, q_be, 64);
++PCI_DMA_DEFINE_LDST_END(uw, w, 16)
++PCI_DMA_DEFINE_LDST_END(l,  l, 32)
++PCI_DMA_DEFINE_LDST_END(q,  q, 64)
  
- static inline uint32_t virtio_ldl_phys(VirtIODevice *vdev, hwaddr pa)
- {
-     AddressSpace *dma_as = vdev->dma_as;
+ #undef PCI_DMA_DEFINE_LDST
  
--    if (virtio_access_is_big_endian(vdev)) {
--        return ldl_be_phys(dma_as, pa);
--    }
--    return ldl_le_phys(dma_as, pa);
-+    return ldl_endian_phys(virtio_access_is_big_endian(vdev), dma_as, pa);
- }
- 
- static inline uint64_t virtio_ldq_phys(VirtIODevice *vdev, hwaddr pa)
- {
-     AddressSpace *dma_as = vdev->dma_as;
- 
--    if (virtio_access_is_big_endian(vdev)) {
--        return ldq_be_phys(dma_as, pa);
--    }
--    return ldq_le_phys(dma_as, pa);
-+    return ldq_endian_phys(virtio_access_is_big_endian(vdev), dma_as, pa);
- }
- 
- static inline void virtio_stw_phys(VirtIODevice *vdev, hwaddr pa,
-@@ -74,11 +65,7 @@ static inline void virtio_stw_phys(VirtIODevice *vdev, hwaddr pa,
- {
-     AddressSpace *dma_as = vdev->dma_as;
- 
--    if (virtio_access_is_big_endian(vdev)) {
--        stw_be_phys(dma_as, pa, value);
--    } else {
--        stw_le_phys(dma_as, pa, value);
--    }
-+    stw_endian_phys(virtio_access_is_big_endian(vdev), dma_as, pa, value);
- }
- 
- static inline void virtio_stl_phys(VirtIODevice *vdev, hwaddr pa,
-@@ -86,11 +73,7 @@ static inline void virtio_stl_phys(VirtIODevice *vdev, hwaddr pa,
- {
-     AddressSpace *dma_as = vdev->dma_as;
- 
--    if (virtio_access_is_big_endian(vdev)) {
--        stl_be_phys(dma_as, pa, value);
--    } else {
--        stl_le_phys(dma_as, pa, value);
--    }
-+    stl_endian_phys(virtio_access_is_big_endian(vdev), dma_as, pa, value);
- }
- 
- static inline void virtio_stw_p(VirtIODevice *vdev, void *ptr, uint16_t v)
 -- 
 2.45.2

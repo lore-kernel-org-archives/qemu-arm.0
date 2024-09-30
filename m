@@ -1,93 +1,116 @@
-Received: by 2002:a17:505:70c3:b0:1be9:327d:8ee3 with SMTP id lw3csp1109134njc;
-        Mon, 30 Sep 2024 02:12:59 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVbyuKCSbVwMFviHIG6nMjtv0sahh4QUptmYYOIgcL1fzKgbbDZryY7J4d64JpnqT9jpKKBZLi/INqjPw==@linaro.org
-X-Google-Smtp-Source: AGHT+IFPjIBnhVhS3dSit3ah1lq9QcbcLUjvXfwJUlCzx+f7MQg9e7ub6CwO9Jlw4PMB4ZJnU+ta
-X-Received: by 2002:a05:622a:1904:b0:456:9494:aa91 with SMTP id d75a77b69052e-45c9ecbdb6cmr181118861cf.16.1727687579387;
-        Mon, 30 Sep 2024 02:12:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1727687579; cv=none;
+Received: by 2002:a17:505:70c3:b0:1be9:327d:8ee3 with SMTP id lw3csp1231922njc;
+        Mon, 30 Sep 2024 06:24:02 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWcsKKLhNmNmsYpGGIuXHSKaq5QdCycsANaUEnXnnJn/El6aJmFjD3c3pDGufykRJ6ziXRPs99vEAQKLQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IGkq6bNzyC/v0qgpx7yQotJ5QdMOfew6YdfbVE4RBp7G9+pLsqyavFHl/1GVKDeTSyNEfY8
+X-Received: by 2002:a05:6870:89a3:b0:261:22a4:9235 with SMTP id 586e51a60fabf-28710ba9068mr7207369fac.32.1727702642371;
+        Mon, 30 Sep 2024 06:24:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1727702642; cv=none;
         d=google.com; s=arc-20240605;
-        b=UTUCalI8FkK6JwUxKunqj3U8aG5GYlDq26MFc7gzWwAoe8glvK3+cWRqFCkXARm+vo
-         7nxOOK2NTOntFOqEOLPHeXmaNzxqSaMaUy9hYnUehyqrESbPZb58kSbEVxKfFzpBkfj0
-         O7FOykVmbc9bkNLEXghfsHgMAjUAc4xz3Ue+/k2+JESCBRXqv8Q7gjiz7iZfMzF3H8yq
-         3t6FSNe/aWwUpyMV3li51MZeP8I93tK5wTyxYEmaxXWsuYZ27jSiGyox5Po6T5sOTh0f
-         eRqJTQ9vdl0Mb8ubKEz4wXAdcLqfA+xECYGnWHBh1Dyz7w/shMT6vSBs/B/E1H8T/Emz
-         GxxA==
+        b=KUugDb0IZ+mKHaLtBbK6hSGi4xLFfQOZ+qY4Ld+SzlzUPetdZs8rKkj9D7rQ8/Jmx3
+         KBcOE+kh4GDeypmz7+uOUgZ6+0yPF8mj9u2jmwlOCEuLuswrOcaPbeLscRFC3ZVMf2jG
+         5udz3SSTaQGHsa8lmuNWSGp+GhbTWWh1Dun6PtAcDK4AOoPau/ON1/UCZSDc0byR6NZY
+         jDEOMNsA01YeWtkh7zh3yJ8Xfe1RbSz2X3L+4CYy9L7Y5OXRaQhTaopNCsn7CEJzOJ22
+         l65/968PrD/xYmvnJjfvyimN9fsrSbgvNaqprWHSU/2KJkq6kLPO2MlsDuLGR1d6c5ji
+         8eeg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id;
-        bh=pcfLkD5O3Yi/aQU+iB/mMmDxKLhsuUXaKuubExsJ0og=;
-        fh=97uyR/uuvr4jnX3vPrzCNtEvGPs9ZT7AiNCQmcU+/V4=;
-        b=aK1rZmut3fSfWeq44KrrPWN8RKVhtuFwUiOrYNhJ2YUKCnfvYqGMls+53U9DoWkI1u
-         iX9I2/W/vN5R1sYztnOVUaQGsW1ElxIZ+agwfMyNwM31gwdpngPlEorasuBz5wteau0J
-         Y/xRgHCrk9NMYOIzT8UWDmcVXA/fM6qyPCdHmuMnyo6QDWJ+936vq1tVsaJnBTLcysU/
-         oqPL+Xfmb2GE3F+RW5J1lWOoFpDxUV8g8VRdQ795pxco3WDmFy7a/FPmOQTLk4wPMx+y
-         0nZk9q1yYOVQ33fMIVaofH3Omd1JuaSCdEA+Ew+SdLTr1Dk9F8Mr/UiM5gxVujhoFAHM
-         bPiA==;
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=y49D8L+xH7T7+8zYU2ZZJmAVprThYbfty07i+lBtO/k=;
+        fh=473fBm433A1Q8N7qMV771k6WBZJ4+bbDdUfHwK8sObY=;
+        b=E+EVfw5zPyL/L6/1ljhVaioVp2PKtgaEkk0hV4uTQe5yNO+nKr6YvleoRR1d/Gijzn
+         CshyxbD9xWbM+8EB82B35rkmK8BGEh/1B4eNxkiyktLTkF4mk6V+TRyg/fFhIe9Og5i0
+         CtIQXe/LAO46Jg0/f9+IsgBHG9KsxHOfqpMTb2XKnrj6BA63kKMKNgDFDczR7WkHrC/1
+         cobNGTOajuz3xkLAnFpM0xhstbDtyDtdGv1O8nC3Rj0PCum1Bs56Iql1lIP0rj1+IlFv
+         +ofANAt3wz1abLR/2YBeJ35m2UDqz5Qxda1la/H6LRdnSEQMxYiP4WxjxxZ73vUjrMWa
+         4qqg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@yandex-team.ru header.s=default header.b=QxbEMqGV;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=yandex-team.ru
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-45c9f382cdcsi76512521cf.678.2024.09.30.02.12.59
+        by mx.google.com with ESMTPS id a1e0cc1a2514c-84eb1fc7b8dsi1370254241.14.2024.09.30.06.24.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 30 Sep 2024 02:12:59 -0700 (PDT)
+        Mon, 30 Sep 2024 06:24:02 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@yandex-team.ru header.s=default header.b=QxbEMqGV;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=yandex-team.ru
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1svCRf-000142-9m; Mon, 30 Sep 2024 05:11:55 -0400
+	id 1svGNB-0002jZ-7f; Mon, 30 Sep 2024 09:23:33 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=qSCK=Q4=kaod.org=clg@ozlabs.org>)
- id 1svCRY-0000fY-4n; Mon, 30 Sep 2024 05:11:49 -0400
-Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
+ (Exim 4.90_1) (envelope-from <vsementsov@yandex-team.ru>)
+ id 1svGN9-0002iJ-Ly; Mon, 30 Sep 2024 09:23:32 -0400
+Received: from forwardcorp1d.mail.yandex.net
+ ([2a02:6b8:c41:1300:1:45:d181:df01])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=qSCK=Q4=kaod.org=clg@ozlabs.org>)
- id 1svCRW-0004Xd-0q; Mon, 30 Sep 2024 05:11:47 -0400
-Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4XHFgb5fZKz4wbv;
- Mon, 30 Sep 2024 19:11:39 +1000 (AEST)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4XHFgW0qPKz4wcL;
- Mon, 30 Sep 2024 19:11:34 +1000 (AEST)
-Message-ID: <b73a755f-69ae-4132-bcfb-950ac9e3acfb@kaod.org>
-Date: Mon, 30 Sep 2024 11:11:30 +0200
+ (Exim 4.90_1) (envelope-from <vsementsov@yandex-team.ru>)
+ id 1svGN6-0001J7-FE; Mon, 30 Sep 2024 09:23:31 -0400
+Received: from mail-nwsmtp-smtp-corp-main-56.klg.yp-c.yandex.net
+ (mail-nwsmtp-smtp-corp-main-56.klg.yp-c.yandex.net
+ [IPv6:2a02:6b8:c42:b1cb:0:640:2a1e:0])
+ by forwardcorp1d.mail.yandex.net (Yandex) with ESMTPS id 1C18860A20;
+ Mon, 30 Sep 2024 16:23:21 +0300 (MSK)
+Received: from [IPV6:2a02:6b8:b081:b737::1:2c] (unknown
+ [2a02:6b8:b081:b737::1:2c])
+ by mail-nwsmtp-smtp-corp-main-56.klg.yp-c.yandex.net (smtpcorp/Yandex) with
+ ESMTPSA id ENZBJX1IWa60-boQthCi9; Mon, 30 Sep 2024 16:23:20 +0300
+X-Yandex-Fwd: 1
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yandex-team.ru;
+ s=default; t=1727702600;
+ bh=y49D8L+xH7T7+8zYU2ZZJmAVprThYbfty07i+lBtO/k=;
+ h=From:In-Reply-To:Cc:Date:References:To:Subject:Message-ID;
+ b=QxbEMqGVu8CuTWz4MfL9JkKLKCGswjxb53UW0bOfOfSAplZXd1LMFQK3g9fkB4V73
+ XPLmGicBR90EcEKipsOcXI1Xl4FN5GqrkQim93JHTw4s9ojR4LTNVOCL6JsM5Dz2M7
+ Z/C5Fvqi4bQ1O1xTMKVN4O8Pk4YnU7y3wBFv32Gc=
+Authentication-Results: mail-nwsmtp-smtp-corp-main-56.klg.yp-c.yandex.net;
+ dkim=pass header.i=@yandex-team.ru
+Message-ID: <a9b78fc7-c2f6-43ea-b3b4-eab5eb3ed0f3@yandex-team.ru>
+Date: Mon, 30 Sep 2024 16:23:14 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [SPAM] [PATCH v6 6/8] aspeed/soc: Correct GPIO irq 130 for AST2700
-To: Jamin Lin <jamin_lin@aspeedtech.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- Thomas Huth <thuth@redhat.com>, Laurent Vivier <lvivier@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-Cc: troy_lee@aspeedtech.com, yunlin.tang@aspeedtech.com
-References: <20240930085239.3089901-1-jamin_lin@aspeedtech.com>
- <20240930085239.3089901-7-jamin_lin@aspeedtech.com>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20240930085239.3089901-7-jamin_lin@aspeedtech.com>
+Subject: Re: [PATCH v2 03/19] qapi/block-core: Drop temporary 'prefix'
+To: Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org
+Cc: alex.williamson@redhat.com, andrew@codeconstruct.com.au,
+ andrew@daynix.com, arei.gonglei@huawei.com, berrange@redhat.com,
+ berto@igalia.com, borntraeger@linux.ibm.com, clg@kaod.org, david@redhat.com,
+ den@openvz.org, eblake@redhat.com, eduardo@habkost.net,
+ farman@linux.ibm.com, farosas@suse.de, hreitz@redhat.com,
+ idryomov@gmail.com, iii@linux.ibm.com, jamin_lin@aspeedtech.com,
+ jasowang@redhat.com, joel@jms.id.au, jsnow@redhat.com, kwolf@redhat.com,
+ leetroy@gmail.com, marcandre.lureau@redhat.com, marcel.apfelbaum@gmail.com,
+ michael.roth@amd.com, mst@redhat.com, mtosatti@redhat.com,
+ nsg@linux.ibm.com, pasic@linux.ibm.com, pbonzini@redhat.com,
+ peter.maydell@linaro.org, peterx@redhat.com, philmd@linaro.org,
+ pizhenwei@bytedance.com, pl@dlhnet.de, richard.henderson@linaro.org,
+ stefanha@redhat.com, steven_lee@aspeedtech.com, thuth@redhat.com,
+ wangyanan55@huawei.com, yuri.benditovich@daynix.com, zhao1.liu@intel.com,
+ qemu-block@nongnu.org, qemu-arm@nongnu.org, qemu-s390x@nongnu.org,
+ kvm@vger.kernel.org, avihaih@nvidia.com
+References: <20240904111836.3273842-1-armbru@redhat.com>
+ <20240904111836.3273842-4-armbru@redhat.com>
+Content-Language: en-US
+From: Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>
+In-Reply-To: <20240904111836.3273842-4-armbru@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=150.107.74.76;
- envelope-from=SRS0=qSCK=Q4=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.248, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Content-Transfer-Encoding: 7bit
+X-Yandex-Filter: 1
+Received-SPF: pass client-ip=2a02:6b8:c41:1300:1:45:d181:df01;
+ envelope-from=vsementsov@yandex-team.ru; helo=forwardcorp1d.mail.yandex.net
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -102,56 +125,23 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: BfdHuXHj+Zzg
+X-TUID: GH5Cnoe/legY
 
-On 9/30/24 10:52, Jamin Lin wrote:
-> The register set of GPIO have a significant change since AST2700.
-> Each GPIO pin has their own individual control register and users are able to
-> set one GPIO pin’s direction, interrupt enable, input mask and so on in the
-> same one control register.
+On 04.09.24 14:18, Markus Armbruster wrote:
+> Recent commit "qapi: Smarter camel_to_upper() to reduce need for
+> 'prefix'" added a temporary 'prefix' to delay changing the generated
+> code.
 > 
-> AST2700 does not have GPIO18_XXX registers for GPIO 1.8v, removes
-> ASPEED_DEV_GPIO_1_8V. It is enough to only have ASPEED_DEV_GPIO
-> device in AST2700.
+> Revert it.  This improves XDbgBlockGraphNodeType's generated
+> enumeration constant prefix from
+> X_DBG_BLOCK_GRAPH_NODE_TYPE_BLOCK_BACKEND to
+> XDBG_BLOCK_GRAPH_NODE_TYPE_BLOCK_BACKEND.
 > 
-> The AST2700 GPIO controller interrupt is connected to GICINT130_INTC at
-> bit 18. Therefore, correct GPIO irq 130.
-> 
-> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+> Signed-off-by: Markus Armbruster<armbru@redhat.com>
 
+Reviewed-by: Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>
 
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
-
-Thanks,
-
-C.
-
-
-> ---
->   hw/arm/aspeed_ast27x0.c | 5 ++---
->   1 file changed, 2 insertions(+), 3 deletions(-)
-> 
-> diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
-> index 761ee11657..99135edc1e 100644
-> --- a/hw/arm/aspeed_ast27x0.c
-> +++ b/hw/arm/aspeed_ast27x0.c
-> @@ -87,8 +87,7 @@ static const int aspeed_soc_ast2700_irqmap[] = {
->       [ASPEED_DEV_ADC]       = 130,
->       [ASPEED_DEV_XDMA]      = 5,
->       [ASPEED_DEV_EMMC]      = 15,
-> -    [ASPEED_DEV_GPIO]      = 11,
-> -    [ASPEED_DEV_GPIO_1_8V] = 130,
-> +    [ASPEED_DEV_GPIO]      = 130,
->       [ASPEED_DEV_RTC]       = 13,
->       [ASPEED_DEV_TIMER1]    = 16,
->       [ASPEED_DEV_TIMER2]    = 17,
-> @@ -124,7 +123,7 @@ static const int aspeed_soc_ast2700_gic128_intcmap[] = {
->   static const int aspeed_soc_ast2700_gic130_intcmap[] = {
->       [ASPEED_DEV_I2C]        = 0,
->       [ASPEED_DEV_ADC]        = 16,
-> -    [ASPEED_DEV_GPIO_1_8V]  = 18,
-> +    [ASPEED_DEV_GPIO]       = 18,
->   };
->   
->   /* GICINT 131 */
+-- 
+Best regards,
+Vladimir
 

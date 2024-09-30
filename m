@@ -1,152 +1,182 @@
-Received: by 2002:a17:505:70c3:b0:1be9:327d:8ee3 with SMTP id lw3csp1234910njc;
-        Mon, 30 Sep 2024 06:29:08 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVtfcrQAGucOeuOA/ntkKSuNnIAjtZ2TkHu/yFqVrjIQNmt9BQh4R+XNwdJ5OUxxIzyyU5bh0Gb/UThMQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IHOW657NH+IRE0cz3XWfOBDXlf4WBuXtrDVhgyWWC1niFrxTcbdK1IWrwU2nxGCaTHJJttC
-X-Received: by 2002:a05:620a:4606:b0:79f:433:6e7f with SMTP id af79cd13be357-7ae3782e436mr2158993985a.21.1727702948514;
-        Mon, 30 Sep 2024 06:29:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1727702948; cv=none;
+Received: by 2002:a17:505:70c3:b0:1be9:327d:8ee3 with SMTP id lw3csp1302540njc;
+        Mon, 30 Sep 2024 08:17:18 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCW8MrRaHS1sP0anHXn+sAFNwsTX3WQlOBjDS2USgshBHw++HBcFKtpWaMF7zNG949U2NHyIlCLn+wOG/A==@linaro.org
+X-Google-Smtp-Source: AGHT+IEs7d1DJPx02ZrwAgR0FG8YRRzZiCfCiw6qYagXTRHG91nYGUIG5oeQF7UfUp2IEsfDRqOf
+X-Received: by 2002:a05:620a:444c:b0:7a9:bf2a:d7c8 with SMTP id af79cd13be357-7ae378b4f50mr1907705485a.41.1727709438590;
+        Mon, 30 Sep 2024 08:17:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1727709438; cv=none;
         d=google.com; s=arc-20240605;
-        b=Om0PekvWwVPMIAYn2HHtVEd1jbX2OF6TDfGuYAaby9rGagO2HCPn5Diqvhkdoo1tjq
-         nG+TmjfDbUPw8TNEdaRpijktGs3MQpnr8K1w7IQFxy/YFUxpPgMN3k7rDm8HMKNZuQV8
-         yRd4VIbX2Y/NI4LUCUupcTbje6KtMSzIpB+EkmfTp72lS7ZeQS2nCg+PWr2T/QlTbII+
-         mXQxqzjoHcUGcT5nx00E73g8InHos23Ry7tP1UMhkHorBaEIV+42XmmohP7pO9cOsDRw
-         KKS3vtJD2rw1BFyjvKAsxCnrrGHMA69nqjTVWGKtch1eUul2wlBjmVrUPbxgvq6FmI80
-         zcaw==
+        b=YG3IybFetcyw58k+/tzst7ImRiWBo0iTz/O5GrnCln6SGur7yVX+LVKZcnRJ4QuP9C
+         URO7tATfbbWeL+CKEknXG2kFfkpQ40AgtgJxXLANiK8J83BA99oz3+7Lgei4lNpCRgkj
+         ft7q9vGDF67egJFNAzZXNba4yd3A/of9TXAPweM6qFs61OvPdanJqMrsEihMIBGgfYQI
+         avjpw1n2WSV2+vGR1iMt1NFPI5cYn2TF5QXQ2FAetnfoCJZVZaD/sysg3CPQ/O7g8cL+
+         gV98e8d+4N3CE4uwmoWu8O6CrRXeOsTNXl2lEMqplVyM585LeybgGf4V87OAnujoiMXs
+         bjkA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:content-language:references:cc:to:from:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=+waii4FbayNO7LNajP/96dTGHhFcyMFynIDpkcVFBvg=;
-        fh=473fBm433A1Q8N7qMV771k6WBZJ4+bbDdUfHwK8sObY=;
-        b=kdw8rM6AqdIFMhMyjWPvxK2fhpODJ3vs+bkZKR+Pg3U0Dus+nvVyRih6bv92cIV7Jc
-         GAl5a6VI0aRvAPGtES+a4+bLy2cVuGbrZRHvLDPdj30qNjAqHMSiaQJBN1Ycn9/BAdc/
-         PhUWczBZ0haKFkHKX77sMhBB5Js+ueJ2yqtnUqJuOPF1l4T0M+OolO0qBVmpo7V7ugCO
-         tL4iKJTZzdtFqILsAORqsmFpYTan5E1eFJ2YYYGa5urz1U108kIitvMZfgEAx7TjoW9C
-         7giEZ8DH4aXVHW34gwWnkxNKYvnlV3KgzJvQCWCUny9NRJNilgIfPFTM/rBZNetB7x8K
-         ildg==;
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=u8jF7f97obPQbQPRwah5xs/l/E1L4LlJnkZkiyAlH64=;
+        fh=GM9acArPY2fDtHdkCjukbca0GBTkFAE2X2sLKidq27Q=;
+        b=MFP1fUe9rEQbi492Buzr7kTOjbercNSo8Id41XeCNaZC6HoAFB0G9tpZ/LctgpK0Tl
+         bE1klySGb7/mVa1Z0FxO4SRN6ATwNlGuZmDJ+coXhrSu27H/DjXRxllVlLTCfmV13S8N
+         h/q0AdiJqrN+XEtbea9n6SVqeZxK37gzzZdN/vo2s2pnZAdpgqfwHlN3uLD4kd7oICoE
+         8qb97J5CvmcQg+KS/UVG3YExAbaVWu33sEg0EYrJIItf9Kr3f5mIGxzHM0ZJV7j286/3
+         YbI8KlOnggOcirN4i9UJ7LPBT02V4UzElTDLVVIqEYrqDYH0qJsMQkcmE9Z1zbspmzWX
+         F/8Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@yandex-team.ru header.s=default header.b=JoRfMGd4;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=yandex-team.ru
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=NYUp0l60;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7ae378a06b7si859455185a.761.2024.09.30.06.29.08
+        by mx.google.com with ESMTPS id af79cd13be357-7ae378a31f1si868270185a.775.2024.09.30.08.17.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 30 Sep 2024 06:29:08 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 30 Sep 2024 08:17:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@yandex-team.ru header.s=default header.b=JoRfMGd4;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=yandex-team.ru
+       dkim=pass header.i=@linaro.org header.s=google header.b=NYUp0l60;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1svGSJ-00086L-6c; Mon, 30 Sep 2024 09:28:51 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1svI9A-000614-Rt; Mon, 30 Sep 2024 11:17:13 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <vsementsov@yandex-team.ru>)
- id 1svGSG-0007y3-UW; Mon, 30 Sep 2024 09:28:49 -0400
-Received: from forwardcorp1b.mail.yandex.net
- ([2a02:6b8:c02:900:1:45:d181:df01])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <vsementsov@yandex-team.ru>)
- id 1svGSC-0001ux-Tc; Mon, 30 Sep 2024 09:28:48 -0400
-Received: from mail-nwsmtp-smtp-corp-main-62.myt.yp-c.yandex.net
- (mail-nwsmtp-smtp-corp-main-62.myt.yp-c.yandex.net
- [IPv6:2a02:6b8:c12:1105:0:640:3589:0])
- by forwardcorp1b.mail.yandex.net (Yandex) with ESMTPS id CD99A60D36;
- Mon, 30 Sep 2024 16:28:39 +0300 (MSK)
-Received: from [IPV6:2a02:6b8:b081:b737::1:2c] (unknown
- [2a02:6b8:b081:b737::1:2c])
- by mail-nwsmtp-smtp-corp-main-62.myt.yp-c.yandex.net (smtpcorp/Yandex) with
- ESMTPSA id WSZQ8J1Id0U0-LPaVea0W; Mon, 30 Sep 2024 16:28:39 +0300
-X-Yandex-Fwd: 1
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yandex-team.ru;
- s=default; t=1727702919;
- bh=+waii4FbayNO7LNajP/96dTGHhFcyMFynIDpkcVFBvg=;
- h=In-Reply-To:Cc:Date:References:To:From:Subject:Message-ID;
- b=JoRfMGd4aPROPyM57tZZgEbu5mfdKA4KSnMElz4iYOSQPOSvA59jhWGflAA4+mzh5
- V+g/a1pylBFmHjJsH84dFnG00YQvkfNzR1qC/8Mo+5Z6lQqSGgRURcWPm9VsuZzeb9
- r+6xZiGhBWgkukWBN16hx9zaSdkiLevDtfaE2J0Q=
-Authentication-Results: mail-nwsmtp-smtp-corp-main-62.myt.yp-c.yandex.net;
- dkim=pass header.i=@yandex-team.ru
-Message-ID: <f0d0b7f0-e989-4a83-b33e-6e273f4a2b77@yandex-team.ru>
-Date: Mon, 30 Sep 2024 16:28:32 +0300
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1svI99-0005zO-Ld
+ for qemu-arm@nongnu.org; Mon, 30 Sep 2024 11:17:11 -0400
+Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1svI96-000593-F7
+ for qemu-arm@nongnu.org; Mon, 30 Sep 2024 11:17:10 -0400
+Received: by mail-ed1-x531.google.com with SMTP id
+ 4fb4d7f45d1cf-5c8967dd2c7so1562454a12.1
+ for <qemu-arm@nongnu.org>; Mon, 30 Sep 2024 08:17:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1727709426; x=1728314226; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=u8jF7f97obPQbQPRwah5xs/l/E1L4LlJnkZkiyAlH64=;
+ b=NYUp0l60I1B20jsg9yNZZXJ9vlq6C4zPjyxm/kCXzwjexxfSRmlt2bbhtaVhCSCwEk
+ iT8AFaP5tZLvGEDShAWlTLRdo7D0GAriaVxZyA0yfPDqSiwaIIMrxlPgBE5LXOAw0UMA
+ K5TDlBn9keWvJB595xkhJSLEQ+JJ7dVJjKrAOfi211cLbIpZL305tz2fpOTnyschZSB3
+ nOg5t+cJKo3jg2sZilbWpJgwXb3vkA1BTgklN1bInHYgTRnL70Od+/zP4SQJfWQ/f4XZ
+ Ruee+tXXtOIzC9rrHC1k7v7dpNdohv1W5HFv6HJXQiogRI5u3a9p3vLchZtWZGk+/PsK
+ TAdw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1727709426; x=1728314226;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=u8jF7f97obPQbQPRwah5xs/l/E1L4LlJnkZkiyAlH64=;
+ b=A70Dv4PnWGtCD0QOf4/1pma27PIYanErCsHqr0wt40n1iOVmYN00/724SVaCZttWcI
+ ma9xuwxEVLYrBu0PwqzSE/MSsUD9hpNOyUjSpP/Ui+x0Srtu4t8v6csaXGljPvc4zIIb
+ yPNMMjwnAtLtMXYsn5BqnyTWRBDI0Nwk7ZnUGY/xKOV+VBphxASMrp4WxKvUqtfGpIpe
+ G9ceLC1awT0BXndx/GdcoZ2P5K3MtfR15txHSrOyFWHWEVgDiaXIgWpMHR4JGnjR8YN3
+ feiUbmv7fAHK9/HK3yoZDlgxlT4bITy3FDpdBw8Rr7AwmS3A46RGHLO0Prgmu2Qhs2Qv
+ J9zg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVixLSXztugnTRWtT1tUBunrtRW7tpwgb40+2UYi3qJWIDR2vPAXEYqSKq+A2lD2ZG2CXl/YWyP1Q==@nongnu.org
+X-Gm-Message-State: AOJu0YxgEFpBi863MGtaQcPv7DTRE7GROOSIWcj7V7I4CS5sL8VTuQWU
+ AYmW8J/EfoZsMC4370VtfYZrbIfRNfn2+KUVNcI/Xt5lxAof6GlUtU54VQzEvd3EkSgAhe6K8EJ
+ X/HTfb+3TBItpwloEXQitTwEQYIsPwV/e9N8jWw==
+X-Received: by 2002:a05:6402:d07:b0:5c2:4dcc:b90a with SMTP id
+ 4fb4d7f45d1cf-5c88260791cmr11853419a12.34.1727709426303; Mon, 30 Sep 2024
+ 08:17:06 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 03/19] qapi/block-core: Drop temporary 'prefix'
-From: Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>
-To: Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org
-Cc: alex.williamson@redhat.com, andrew@codeconstruct.com.au,
- andrew@daynix.com, arei.gonglei@huawei.com, berrange@redhat.com,
- berto@igalia.com, borntraeger@linux.ibm.com, clg@kaod.org, david@redhat.com,
- den@openvz.org, eblake@redhat.com, eduardo@habkost.net,
- farman@linux.ibm.com, farosas@suse.de, hreitz@redhat.com,
- idryomov@gmail.com, iii@linux.ibm.com, jamin_lin@aspeedtech.com,
- jasowang@redhat.com, joel@jms.id.au, jsnow@redhat.com, kwolf@redhat.com,
- leetroy@gmail.com, marcandre.lureau@redhat.com, marcel.apfelbaum@gmail.com,
- michael.roth@amd.com, mst@redhat.com, mtosatti@redhat.com,
- nsg@linux.ibm.com, pasic@linux.ibm.com, pbonzini@redhat.com,
- peter.maydell@linaro.org, peterx@redhat.com, philmd@linaro.org,
- pizhenwei@bytedance.com, pl@dlhnet.de, richard.henderson@linaro.org,
- stefanha@redhat.com, steven_lee@aspeedtech.com, thuth@redhat.com,
- wangyanan55@huawei.com, yuri.benditovich@daynix.com, zhao1.liu@intel.com,
- qemu-block@nongnu.org, qemu-arm@nongnu.org, qemu-s390x@nongnu.org,
- kvm@vger.kernel.org, avihaih@nvidia.com
-References: <20240904111836.3273842-1-armbru@redhat.com>
- <20240904111836.3273842-4-armbru@redhat.com>
- <a9b78fc7-c2f6-43ea-b3b4-eab5eb3ed0f3@yandex-team.ru>
-Content-Language: en-US
-In-Reply-To: <a9b78fc7-c2f6-43ea-b3b4-eab5eb3ed0f3@yandex-team.ru>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Yandex-Filter: 1
-Received-SPF: pass client-ip=2a02:6b8:c02:900:1:45:d181:df01;
- envelope-from=vsementsov@yandex-team.ru; helo=forwardcorp1b.mail.yandex.net
+References: <20240923035632.81304-1-sebastian.huber@embedded-brains.de>
+ <20240923035632.81304-2-sebastian.huber@embedded-brains.de>
+In-Reply-To: <20240923035632.81304-2-sebastian.huber@embedded-brains.de>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 30 Sep 2024 16:16:54 +0100
+Message-ID: <CAFEAcA8Wf-PzAC-YGdma3YVETyuatLJHmvjrrb_kG2NjDSGs+Q@mail.gmail.com>
+Subject: Re: [PATCH 1/2] hw/arm/boot: Use hooks if PSCI is disabled
+To: Sebastian Huber <sebastian.huber@embedded-brains.de>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::531;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x531.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 01/MHwJpN0j2
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: v/cds/l5sPLh
 
-On 30.09.24 16:23, Vladimir Sementsov-Ogievskiy wrote:
-> On 04.09.24 14:18, Markus Armbruster wrote:
->> Recent commit "qapi: Smarter camel_to_upper() to reduce need for
->> 'prefix'" added a temporary 'prefix' to delay changing the generated
->> code.
->>
->> Revert it.  This improves XDbgBlockGraphNodeType's generated
->> enumeration constant prefix from
->> X_DBG_BLOCK_GRAPH_NODE_TYPE_BLOCK_BACKEND to
->> XDBG_BLOCK_GRAPH_NODE_TYPE_BLOCK_BACKEND.
->>
->> Signed-off-by: Markus Armbruster<armbru@redhat.com>
-> 
-> Reviewed-by: Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>
-> 
+On Mon, 23 Sept 2024 at 04:57, Sebastian Huber
+<sebastian.huber@embedded-brains.de> wrote:
+>
+> In arm_load_kernel(), use the secondary boot hooks provided by the
+> platform if PSCI is disabled also while booting a non-Linux kernel.
+> While booting Linux with PSCI disabled, provide default hooks if needed.
+>
+> In do_cpu_reset(), use the secondary CPU reset hook provided by the
+> platform for resetting a non-Linux kernel.
+>
+> This change allows a more accurate simulation of the platform reset
+> behaviour.
 
-Oops sorry, I see now that was merged already.
+So, the difficulty with this is that it's effectively
+introducing an extra way of booting. At the moment we
+have two boot approaches for Arm guests:
 
--- 
-Best regards,
-Vladimir
+(1) Booting Linux -- the boot.c code simulates what the BIOS,
+boot rom etc, does, both to set up the 1st CPU for the kernel
+boot entry, and to set up the secondaries in whatever way
+the bootrom does that the kernel expects to release them from.
 
+(2) Booting bare-metal -- boot.c assumes the guest code is going
+to do whatever the BIOS/bootrom does, so you get what you get
+for real-hardware CPU reset. (Either the secondaries start
+in power-off state and the primary will release them via some
+kind of power controller device, or else all the CPUs start at
+once at the reset vector and the bootrom is going to sort the
+secondaries out and put them in a pen.)
+
+What you want is a third thing:
+
+(3) Booting not-a-kernel but not 100% bare-metal: emulate what
+the bootrom does for primary and secondary CPUs but don't
+boot the guest binary as if it was a Linux kernel.
+
+The problem with adding that is that we don't have any
+way to distinguish whether the user wanted that or our
+existing type (2), because both are "user gave us a binary
+that isn't a Linux kernel". (It also has a bit of a
+"continuously expanding job" problem because the bootrom
+could do arbitrarily complicated things, like boot directly
+from SD cards, which we have historically not wanted to
+emulate within QEMU itself.)
+
+There are other platforms where the real hardware's bootrom
+has a particular "this is what a bare-metal-under-the-bootrom
+startup looks like" definition, notably the raspberry pi
+boards. There too we don't currently implement that, and
+instead effectively tell users "pick one of the two boot
+paradigms we do support"...
+
+thanks
+-- PMM

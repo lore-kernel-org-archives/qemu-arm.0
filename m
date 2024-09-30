@@ -1,80 +1,80 @@
-Received: by 2002:a17:505:70c3:b0:1be9:327d:8ee3 with SMTP id lw3csp1074302njc;
-        Mon, 30 Sep 2024 00:35:38 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUjx7mRPvraYiwlW5wRmkhvtGfwrJYZxeJLk8rWSfKDxXSBnM9g4z6JHIOdWGihXXaLlz45uwCZpi0wfA==@linaro.org
-X-Received: by 2002:a05:600c:1c04:b0:428:10d7:a4b1 with SMTP id 5b1f17b1804b1-42f58497f61mr84973635e9.25.1727681738183;
-        Mon, 30 Sep 2024 00:35:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1727681738; cv=none;
+Received: by 2002:a17:505:70c3:b0:1be9:327d:8ee3 with SMTP id lw3csp1074352njc;
+        Mon, 30 Sep 2024 00:35:46 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUXCqWZBAT+H18cGOx2svsKpXyBlcPXKTimaZE17MzXUzguhoG1B6d3pkcd5fPwEtuoAKCAV/Oy++lHuQ==@linaro.org
+X-Received: by 2002:adf:fec3:0:b0:37c:ca21:bc5d with SMTP id ffacd0b85a97d-37cd5aa9ab4mr4890586f8f.17.1727681746114;
+        Mon, 30 Sep 2024 00:35:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1727681746; cv=none;
         d=google.com; s=arc-20240605;
-        b=MuprqrJgaagfHKsqHNMXVGbGoCW444h94lc5vW3TMh1+jjc3N4lZbdNbkEZx8szJT8
-         rWIIxHRNW/jAB9J0SAUDK/9X80bH+IJqWH8Dw/o28JLQb+0OJ/elfo1gvZOoLpZHMBxK
-         l1fek86Ws7MNSMJSAEf9i6+V1zSM/TczrDClXoW2kMQYKYsHvg5CtI2oJP3thbFQsJfu
-         Kt2CTiDxiddOXv6xamZlh8PcMeFkuKu7NMRhbbQJwa/rmLQIdpjsuIaI38r+Pnp3tfuP
-         nhV4ws4RPc0d+91cwrkHBpYgu718mTV59uN26nflsTzRfPZbUYrsypJRFM25tjhONl8D
-         UCHg==
+        b=LVgT3EGRKoXnT5qheQ6EYPp8hfi+f3laPCYqJuFq4N/wOJzGwo3HjxZyJgLg7Wtsyw
+         dHAJnC4vjfcZ3HOtfr/8YAR+0SHI7JOZHncOfl4AsLmKOa2088ZOrtAJEciQC/DvcnJI
+         X+38Xkoy6YSuAeZC6g/narnDJx4i3msrfeZSp3Uud6g9uEaaXu+V9iNLyLqqvrzMmGGe
+         WkwhBTj/q7JlCZPtB5jlcZ3AXiUp5ouDzLljmn0YDeJ34o+OerOjZ9QVeKAh193vL9va
+         5KK8/e2oPo+N4mBtwDSE8Tm+aBmn/Cbq42Pt1MnEHIdoY5R37HiT0BQNWY4077xETpI7
+         tfrA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=h5V3kOB6PMSOt7GvVRYTAhn4zZrY1jWMSTBtmM5O9vw=;
-        fh=rqwgOovZ5OMJjrtHSD+vEw31RpPkiNJuMDm2UU5nfbM=;
-        b=Gx5aVW4JY/InK0FQZGTqVGdzG5DdAaptCArO50QCBin0ZEQSXNS/69TAYdgmG18IUS
-         OK+okmO1o0K7FDFWl+0CVAPStImvWQ7v8f/SCDdMJkvueXw7pF8rxu6VUq6rr85Fh1Jp
-         TxGfkHGMv+XBQdGWjE0yHJVlOWmNyOW6z9lr88/+CrkmmKPFzuf/l1b0/n0uCOFR4AWp
-         fgw0HFnj5Bg8/yqw2h5nEHpHo9Lpez1l30WsbBqLG9PjG+fsXs529g0fsWKS10i1qe/r
-         uZ/UgmFr1YTwwDpVefW98ceZmO3+YZYcgZ/VgTEnpRnLIv58WFglkfcJM3ym38fvrGUK
-         HEMA==;
+        bh=Ke80z1hBRrKSp3+ZYDR0R7E2LnwfnPIGBFgkH62rA90=;
+        fh=omWZffiE7T/Y2YoOeu+IRfiw0HOpu3o6OBZEUsgzKkw=;
+        b=li+ubfqGGrDgkyvF8BFQeeU0LjqxkgQzqTOHbZrmUNbH3XbGU9JbDODmwEejIXf9pS
+         k4eJSipFbNZ4vu+AQA0vrywhrd/wxDa6Oir9H+4vaePAvakm/9JIO8Oif4SqFEttS3Ct
+         Kc/ZwswEH8a2OlQeIedinWhtJnBJcbKV9pkN+mq2sUGZDn5EGjBErZlqGsPF9qsKDene
+         xR8Zt2bJVj/gkQt97E/Jj4hkkDoTGJ/3a9Xs0ZB7mP8V/zCRA6/Egxfu6SipN0YKX74u
+         MzT6TkS0z6fE9pf3Dj4goPmSVLWnb02JqVUltQrAeVT8Y4PvzXAwYBCrVbEJIrDZcNa/
+         Ns/w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=KhC7fgbS;
+       dkim=pass header.i=@linaro.org header.s=google header.b=rh7awBeM;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 5b1f17b1804b1-42f581d00ecsor26163575e9.5.2024.09.30.00.35.38
+        by mx.google.com with SMTPS id 5b1f17b1804b1-42f58219b9esor21079905e9.12.2024.09.30.00.35.45
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 30 Sep 2024 00:35:38 -0700 (PDT)
+        Mon, 30 Sep 2024 00:35:46 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=KhC7fgbS;
+       dkim=pass header.i=@linaro.org header.s=google header.b=rh7awBeM;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1727681738; x=1728286538; darn=linaro.org;
+        d=linaro.org; s=google; t=1727681745; x=1728286545; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=h5V3kOB6PMSOt7GvVRYTAhn4zZrY1jWMSTBtmM5O9vw=;
-        b=KhC7fgbSeXpLZq2bvk93H+TZNva4lV+ne6yCKOIxAQ6paZfUD9GaLBIzNb0vH9pT+R
-         a//vXv2+9Lx4pQEn69xgOHTMWrsl4jfU5cLFhOb6P6rvsTuvVQLt5XRXUBiY9I4u1c4B
-         E3BgaKH3gH8pwe9Dn8AHoEIWIwhixcx4Aj01paNKEE7jIsnGe7MPd33eLARPNet4zQfk
-         jI0PHRpdBdzBZ3b0LKD/s0Rqu3FKD7K1DIv6s605rG0/12NOBUMxX4oaZSoEe+RTnReJ
-         knWCOA4+7cGSSga18VWlVg11Ws3s8VvIu29tDUow+ISpwiQ2fa1uPJXHOHJo+rr1HsyD
-         aDFQ==
+        bh=Ke80z1hBRrKSp3+ZYDR0R7E2LnwfnPIGBFgkH62rA90=;
+        b=rh7awBeM3LU2f0ksMHbXemtMZ3hygXVAEXmIXcNGfg5iTNG1sk8veL8An26xdv96dg
+         1K+foZMF2N8RZgKennZk07E+UZs7d2GZrLScOTIwi34mxTcOVFmlexwRc2ydhpGnV1Sm
+         VmcrFxWdFd0FEd9u1j+VG3KF5KbmB+uvAiHX6r27fJsnwp0azD0qeSp9h7GVX0yHSEKg
+         WPn6M/RxLUlhFeFeDfWzdqPeQ/FeLjZwUIRts8/R4e+RxU4L5hkaojR+QLNHqVpvI1In
+         eyD4US29mKWRyxhx9dJaSxWSb0T1hBLyZLeZ6+Yj85KEoInyMZcvE0MHekEQI30WfIJC
+         F3ew==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1727681738; x=1728286538;
+        d=1e100.net; s=20230601; t=1727681745; x=1728286545;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=h5V3kOB6PMSOt7GvVRYTAhn4zZrY1jWMSTBtmM5O9vw=;
-        b=bkX6mpLTdM8siMMGFIf5CObMy4RPGpzlBwFo5MCRGwPq2zjxuHkwwtzB+qCdNpJ866
-         6OCU3hgK9xghNauQRsF1P/d80lRCogp07GVWZJy6brPuLbQapb5FBn4ytyqjD1Al/2+R
-         52dnKzN2XP7c/rGWbSOWPnK7g4q/zqMIDLZO3hWNfeVii6fkYAQuf3R/vyyQjRosJY90
-         vDOhGgCA6qG/uJ6gsATvP2DPjlzZRW6r0FYjotQnY84LNq77rq49RjOfdxCJaDK82Evw
-         DdA+q3fW/BXoR/EL127Nb4/DHBTh/0I1Qz+fbExZGIXDM1tlRio3QHZYjHXcHZFjdVxt
-         nUbA==
-X-Forwarded-Encrypted: i=1; AJvYcCVOXBfTg0rUSChIX4+vRipUWT6JXZTGscCe8EBkWkDH7elggp+J0QKmy0+k+oxkFSFnvt0EK9JSsUH22g==@linaro.org
-X-Gm-Message-State: AOJu0YwAPkT4U7Cdd0FJdedrQJoLn7m6u/YkepcFSS+Hvc4s3eRT0hBJ
-	thGmsLKb4CV28iMrm+qbBNUwttNl4+KkKdaq22GrUs9A0HkiCpY2GgjUQRME7H4odw==
-X-Google-Smtp-Source: AGHT+IF9ceLg1Tk+l2rdJmvlOhYmg7G7ZqzHxY0PwujIuYTvs3nnaYA8IbnEtTruWsA0+LWvGrZZRQ==
-X-Received: by 2002:a5d:6448:0:b0:37c:d162:8295 with SMTP id ffacd0b85a97d-37cd5aafa24mr6498931f8f.29.1727681737564;
-        Mon, 30 Sep 2024 00:35:37 -0700 (PDT)
+        bh=Ke80z1hBRrKSp3+ZYDR0R7E2LnwfnPIGBFgkH62rA90=;
+        b=lj7KBrmyMpbfX07ghLfaRQzWxPi4fsc7P1tNhjW0Yqgb6B8u3QA27Mx860JwxlvGuW
+         T6x2wDc+lnVbpDjWV55JxoJIk2pfESrIIkxsS3NFlKNVpycZDx3LwQ3YX6e3EWhJuJdD
+         ntix3PankkAG6ngR+DH2+Hb21gfNNYv5q2EvI/3n9tzl7vKuwdcGfDAENGJKpcZwRQKO
+         39X3iRMZ6H8FsGfHwsUtjb8wMpgRG/rn2NzgxnA7yS5DwkBLkJ5opJi4NTTlU7UjyHa5
+         JwrJ2ivCwk41f+zrE4h8ChHFGNnRC6XNBtshqS8TbfKVPzKpYglj4kpkvdWQ1mAV6WaI
+         yA2g==
+X-Forwarded-Encrypted: i=1; AJvYcCVuDHNnprJRzTSGzCppZ7Mv2FMSXC5ChrnL5//Tf32VFOgwsuDIrQeZQFEHPBIgGtnz1/YSS7ELdvIuYQ==@linaro.org
+X-Gm-Message-State: AOJu0YyW6HXl8p7N++JIvHAmWtp/kpSoxRr8uh4KHbRf4AnfObLGoGC8
+	+K/cDdKyi6/zE6ET5TSxDdxNY1NV/zjwW0ZBSbpo0A5ryyvh8TB2/hl6dXU4fWLX6Q==
+X-Google-Smtp-Source: AGHT+IEtjPiT/vdhmDvKy5kyiLLj+B2N3ZG+taBN5or5yvAqA67A1U8MeeGcBTLFaojCJ5TT1R8r8Q==
+X-Received: by 2002:a05:600c:1d20:b0:42c:b6e4:e3ac with SMTP id 5b1f17b1804b1-42f5840ceedmr70234335e9.3.1727681745463;
+        Mon, 30 Sep 2024 00:35:45 -0700 (PDT)
 Return-Path: <philmd@linaro.org>
 Received: from localhost.localdomain (186.red-88-28-13.dynamicip.rima-tde.net. [88.28.13.186])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-37cd564d331sm8359558f8f.10.2024.09.30.00.35.34
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-42e9025c517sm147896025e9.0.2024.09.30.00.35.42
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Mon, 30 Sep 2024 00:35:37 -0700 (PDT)
+        Mon, 30 Sep 2024 00:35:45 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Mahmoud Mandour <ma.mandourr@gmail.com>,
@@ -96,123 +96,76 @@ Cc: Mahmoud Mandour <ma.mandourr@gmail.com>,
 	Pierrick Bouvier <pierrick.bouvier@linaro.org>,
 	Max Filippov <jcmvbkbc@gmail.com>,
 	Paul Burton <paulburton@kernel.org>
-Subject: [PATCH 05/13] hw/mips: Add cpu_is_bigendian field to BlCpuCfg structure
-Date: Mon, 30 Sep 2024 09:34:42 +0200
-Message-ID: <20240930073450.33195-6-philmd@linaro.org>
+Subject: [PATCH 06/13] tests/tcg/plugins: Use the ld/st_endian_p() API
+Date: Mon, 30 Sep 2024 09:34:43 +0200
+Message-ID: <20240930073450.33195-7-philmd@linaro.org>
 X-Mailer: git-send-email 2.45.2
 In-Reply-To: <20240930073450.33195-1-philmd@linaro.org>
 References: <20240930073450.33195-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: zMBp0Q+ciKDK
+X-TUID: 9VKlFJLA88hd
 
-Add the BlCpuCfg::cpu_is_bigendian field, initialize it in
-machine code. Bootloader API use the ld/st_endian_p() to
-dispatch to target endianness.
+Refactor to use the recently introduced ld/st_endian_p() API
+No logical change intended.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- include/hw/mips/bootloader.h |  1 +
- hw/mips/bootloader.c         | 10 +++++-----
- hw/mips/boston.c             |  2 +-
- hw/mips/fuloong2e.c          |  2 +-
- hw/mips/malta.c              |  2 +-
- 5 files changed, 9 insertions(+), 8 deletions(-)
+ tests/tcg/plugins/mem.c | 24 ++++++------------------
+ 1 file changed, 6 insertions(+), 18 deletions(-)
 
-diff --git a/include/hw/mips/bootloader.h b/include/hw/mips/bootloader.h
-index 744eb11d0e..ef778a38d0 100644
---- a/include/hw/mips/bootloader.h
-+++ b/include/hw/mips/bootloader.h
-@@ -13,6 +13,7 @@
- #include "exec/target_long.h"
- 
- typedef struct bl_cpu_cfg {
-+    bool cpu_is_bigendian;
- } BlCpuCfg;
- 
- void bl_gen_jump_to(const BlCpuCfg *cfg, void **p, target_ulong jump_addr);
-diff --git a/hw/mips/bootloader.c b/hw/mips/bootloader.c
-index ee1a1c4f20..258cc5d8c8 100644
---- a/hw/mips/bootloader.c
-+++ b/hw/mips/bootloader.c
-@@ -58,9 +58,9 @@ static void st_nm32_p(const BlCpuCfg *cfg, void **ptr, uint32_t insn)
- {
-     uint16_t *p = *ptr;
- 
--    stw_p(p, insn >> 16);
-+    stw_endian_p(cfg->cpu_is_bigendian, p, insn >> 16);
-     p++;
--    stw_p(p, insn >> 0);
-+    stw_endian_p(cfg->cpu_is_bigendian, p, insn >> 0);
-     p++;
- 
-     *ptr = p;
-@@ -74,7 +74,7 @@ static void bl_gen_nop(const BlCpuCfg *cfg, void **ptr)
-     } else {
-         uint32_t *p = *ptr;
- 
--        stl_p(p, 0);
-+        stl_endian_p(cfg->cpu_is_bigendian, p, 0);
-         p++;
-         *ptr = p;
-     }
-@@ -95,7 +95,7 @@ static void bl_gen_r_type(const BlCpuCfg *cfg,
-     insn = deposit32(insn, 6, 5, shift);
-     insn = deposit32(insn, 0, 6, funct);
- 
--    stl_p(p, insn);
-+    stl_endian_p(cfg->cpu_is_bigendian, p, insn);
-     p++;
- 
-     *ptr = p;
-@@ -113,7 +113,7 @@ static void bl_gen_i_type(const BlCpuCfg *cfg,
-     insn = deposit32(insn, 16, 5, rt);
-     insn = deposit32(insn, 0, 16, imm);
- 
--    stl_p(p, insn);
-+    stl_endian_p(cfg->cpu_is_bigendian, p, insn);
-     p++;
- 
-     *ptr = p;
-diff --git a/hw/mips/boston.c b/hw/mips/boston.c
-index 8e210876e1..d4dd242d0d 100644
---- a/hw/mips/boston.c
-+++ b/hw/mips/boston.c
-@@ -325,7 +325,7 @@ type_init(boston_register_types)
- 
- static void gen_firmware(void *p, hwaddr kernel_entry, hwaddr fdt_addr)
- {
--    const BlCpuCfg bl_cfg = { };
-+    const BlCpuCfg bl_cfg = { .cpu_is_bigendian = TARGET_BIG_ENDIAN };
-     uint64_t regaddr;
- 
-     /* Move CM GCRs */
-diff --git a/hw/mips/fuloong2e.c b/hw/mips/fuloong2e.c
-index a989637d3b..4fe5108845 100644
---- a/hw/mips/fuloong2e.c
-+++ b/hw/mips/fuloong2e.c
-@@ -165,7 +165,7 @@ static uint64_t load_kernel(MIPSCPU *cpu)
- static void write_bootloader(CPUMIPSState *env, uint8_t *base,
-                              uint64_t kernel_addr)
- {
--    const BlCpuCfg bl_cfg = { };
-+    const BlCpuCfg bl_cfg = { .cpu_is_bigendian = false };
-     uint32_t *p;
- 
-     /* Small bootloader */
-diff --git a/hw/mips/malta.c b/hw/mips/malta.c
-index fc485cc884..6e73c896ff 100644
---- a/hw/mips/malta.c
-+++ b/hw/mips/malta.c
-@@ -624,7 +624,7 @@ static void bl_setup_gt64120_jump_kernel(void **p, uint64_t run_addr,
-     static const char pci_pins_cfg[PCI_NUM_PINS] = {
-         10, 10, 11, 11 /* PIIX IRQRC[A:D] */
-     };
--    const BlCpuCfg bl_cfg = { };
-+    const BlCpuCfg bl_cfg = { .cpu_is_bigendian = TARGET_BIG_ENDIAN };
- 
-     /* Bus endianness is always reversed */
- #if TARGET_BIG_ENDIAN
+diff --git a/tests/tcg/plugins/mem.c b/tests/tcg/plugins/mem.c
+index b0fa8a9f27..3586d05587 100644
+--- a/tests/tcg/plugins/mem.c
++++ b/tests/tcg/plugins/mem.c
+@@ -163,13 +163,9 @@ static void update_region_info(uint64_t region, uint64_t offset,
+     {
+         uint16_t *p = (uint16_t *) &ri->data[offset];
+         if (is_store) {
+-            if (be) {
+-                stw_be_p(p, value.data.u16);
+-            } else {
+-                stw_le_p(p, value.data.u16);
+-            }
++            stw_endian_p(be, p, value.data.u16);
+         } else {
+-            uint16_t val = be ? lduw_be_p(p) : lduw_le_p(p);
++            uint16_t val = lduw_endian_p(be, p);
+             unseen_data = val != value.data.u16;
+         }
+         break;
+@@ -178,13 +174,9 @@ static void update_region_info(uint64_t region, uint64_t offset,
+     {
+         uint32_t *p = (uint32_t *) &ri->data[offset];
+         if (is_store) {
+-            if (be) {
+-                stl_be_p(p, value.data.u32);
+-            } else {
+-                stl_le_p(p, value.data.u32);
+-            }
++            stl_endian_p(be, p, value.data.u32);
+         } else {
+-            uint32_t val = be ? ldl_be_p(p) : ldl_le_p(p);
++            uint32_t val = ldl_endian_p(be, p);
+             unseen_data = val != value.data.u32;
+         }
+         break;
+@@ -193,13 +185,9 @@ static void update_region_info(uint64_t region, uint64_t offset,
+     {
+         uint64_t *p = (uint64_t *) &ri->data[offset];
+         if (is_store) {
+-            if (be) {
+-                stq_be_p(p, value.data.u64);
+-            } else {
+-                stq_le_p(p, value.data.u64);
+-            }
++            stq_endian_p(be, p, value.data.u64);
+         } else {
+-            uint64_t val = be ? ldq_be_p(p) : ldq_le_p(p);
++            uint64_t val = ldq_endian_p(be, p);
+             unseen_data = val != value.data.u64;
+         }
+         break;
 -- 
 2.45.2

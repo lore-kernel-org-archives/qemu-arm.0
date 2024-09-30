@@ -1,304 +1,1276 @@
-Received: by 2002:a17:505:70c3:b0:1be9:327d:8ee3 with SMTP id lw3csp1444955njc;
-        Mon, 30 Sep 2024 12:44:55 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCUZnaIDS3tZDtQAE1MdML9YFtnFzIqMLrfEXf8eN/KUwFv6E+xBVXvWgCnxlDRPuBuenawbijnc/viZlw==@linaro.org
-X-Google-Smtp-Source: AGHT+IFwGe3uP+B6MzTFWlcYMAEbzkCdEVRi3DNWvfRsUPpAsQyrPRGQQWG5V1jU6IXFRZjA+dhi
-X-Received: by 2002:a05:6214:2d41:b0:6cb:5a37:1997 with SMTP id 6a1803df08f44-6cb5a371ac7mr95389746d6.12.1727725494707;
-        Mon, 30 Sep 2024 12:44:54 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1727725494; cv=pass;
+Received: by 2002:a17:505:70c3:b0:1be9:327d:8ee3 with SMTP id lw3csp1488944njc;
+        Mon, 30 Sep 2024 14:29:09 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUz82xl5fjgQG+5bJRDdEzxX+Nl05g18PQ1lvH0vbagSRks6aTQPKlnDEUhGW0v6wQIpgcd2c/+Oqs4Ew==@linaro.org
+X-Google-Smtp-Source: AGHT+IE4PUN4c5y4ZkXXOuG5jXv5dlXJsxUYo0pTsJYQDKNPYx+jl2vqpb6zbDeGX2pIgP26l66r
+X-Received: by 2002:ac8:5a4e:0:b0:456:8ded:7065 with SMTP id d75a77b69052e-45c9f2a3ce2mr226256201cf.42.1727731749331;
+        Mon, 30 Sep 2024 14:29:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1727731749; cv=none;
         d=google.com; s=arc-20240605;
-        b=LHH0xlj0l3MNgkdv9hExYCKUdq9wR2fEwqy4BS8VYaDwnI2P7ds25nr4WWuT1+L9u4
-         UQ1tBcTHOH3NIZQhLrY0XbgcIUIdGOlOdOvKi2Et/3Ov1rWLYSvJfipkgZHJ9sSl1JMJ
-         s+1UH6R5mEuhz7LD8w6DSEdrgtRRFF2nkNoMa9EykblDLhgmImpM7Md35LxRl/c7oO18
-         AZ3etz8aXdbb6LoIbxXN8typrtdRffOT69kiy3Nnav5dr+T92AwgnR2kMN7HVrBZcQhz
-         kQKdFXB9OEwjEOeHpuq3JQL+TbsJWgoUgtxbRSVGZINtdUiIEGkRUXDDkiNgJ2WQRl32
-         jMXQ==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        b=g004Ygp5VetfFPIcfT38mjca++8oupwRHrxx5bRY+bWRRJQZhYyruveFHqQE4brWFc
+         LAso+OV0ByWmPbyT5/nV60HeckarsKD7lvI56ck1SU5qkjWt6OzXIB5rnXSvv+89kkPF
+         UjVVX8jslqKtbBdHmHDqemA60qyn1HY70+/0O9+S/dNhteoyAhU9Iwhm5r5aRzCekQl8
+         kGkSeAtszcu56aoxKnBvxTTvjCuGc0RVKHm7gGsRPS9Jh2CELvgGz/to/gAU7CAtr8o3
+         /KYI83Ga0/zRjIk0Yx3HmfLWz9fUnbN/iVEKnz6JS2p5UwNSIF6AKHfWbhHg75p5FwJn
+         37/A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=h1XAbPDYIK/R57zKBNcqpFRULcIrha3/IJ0YEwvG8tg=;
-        fh=c6e/wnDjgxsSBsj14vIoxh98NLofmDmHpni7PWhY0w0=;
-        b=LWN+eeuAHw8JKJnYtgXBk1OEN6RhnrIGBQ9QlQFkMk/HqYYZ9+NL8lekyQpJodspXT
-         DV7fmfYbY6gaD96JQMtW6rmbIZ+SrtQfQ3MG22z267U44mzxO7jSTbhAqs0k4nsVm2C7
-         fZlnFIe2LXoqzmbdgCw9GZfhSeghpCFkSb03ulmxT7nhHRtyqQzVGSTNSjKmKN1mnJdZ
-         REI9CiSarD763xDgFe2X8yywmeeCu5bULykRtyc5TL9V/9as8JI36x7XT7ukESy/9KNW
-         GHgBGvE6KFU/7qqnHWI7OdhIg2F89jIg4NLGugIW2EdJQixnq+hsnMsih6cba3efhHH1
-         4Fqg==;
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=FSnMSYMEpBNjLlZ8EK5cN8z+08Q/PvDJLqFw8NntJ9w=;
+        fh=W3V63wfSvKekenqkca6PuKM6Tth3J17MKY+aLIuo7GY=;
+        b=VsQGZCWRAxlQnDttDJhM5JkgSb705VF6D1kTImK63sIsV7Mrc3VIx+wXvT+GkJwhIO
+         SIe7bMfEN9iatLHqrcNCGJD9hxHy91hWfad2u9hjQ4uuoIHTXQlFXAItRS/uIj5ab5kF
+         QqnQ/hwWVQzvDaI2K5H9yu7JtWCbhi2fZEp6j5Lq9sAxMLUZVnDBoGiosNMLuiYXxA4g
+         r0Fw8/3AFymGlZlosCCaea7FPbdZHuMJ2lrkpXABz0189PHAxYlqX/FvIaai1SI47cnI
+         cOzcIS/ZGcouYWiXzPjZKR8t0VxkyD4QF+KA/JfLvrZtJJgaxHG6blW/BauRzeBWDC4o
+         cRwg==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=OqpfBLMx;
-       arc=pass (i=1 spf=pass spfdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=V5ALziC+;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6cb3b671ce9si94140296d6.205.2024.09.30.12.44.54
+        by mx.google.com with ESMTPS id d75a77b69052e-45c9f34de98si91077051cf.509.2024.09.30.14.29.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 30 Sep 2024 12:44:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 30 Sep 2024 14:29:09 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=OqpfBLMx;
-       arc=pass (i=1 spf=pass spfdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=V5ALziC+;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1svMJS-00056X-MD; Mon, 30 Sep 2024 15:44:06 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1svNwj-0002ho-Lm; Mon, 30 Sep 2024 17:28:45 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
- id 1svMJN-0004VF-Ao; Mon, 30 Sep 2024 15:44:01 -0400
-Received: from mail-dm6nam12on2060f.outbound.protection.outlook.com
- ([2a01:111:f403:2417::60f]
- helo=NAM12-DM6-obe.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
- id 1svMJK-00027Z-KS; Mon, 30 Sep 2024 15:44:00 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=OvK5McjrfPENgxRXNem2SBTUqmBLhFQBsxkWve94K0901wslqgMt5YykaqCQe/dg+1VeSa3/pcUSzZORGb0XJKF9Fcdk4YL2QNttm8yhgxq5PEEnp4+7SrfHkhb1lIytgOBxqqa1MnwOlAN93/rGR/w/p6vzJvcXbaWvlK8bnWI5lmRi8HUrs8nzXzUY0fr+eLGiXNFt7jxWBMWu7NM+Gos13Qh91TI0NHqW9VOxFyXEJ/Ytg/OzPC0dSSpHNkFfsOmTtsSbsf2YDKfBVAiX6lrgzulwZZNkid0GABWJFAqvNb5eESz1Yv1jvfXRZTsO/xwH++an4S7b0h09CwZ/AQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=h1XAbPDYIK/R57zKBNcqpFRULcIrha3/IJ0YEwvG8tg=;
- b=bBx/lisQwwSHKgby742W+NGedXMFlU6dbIsQoTQez2I3pDJRDcwsySRsuvaUZPKvStnsRA8DlHwXUV4l9uGn5c9/Ppc9dGyZ6j6g6A1920YQGYc/Jku+JUzA0WvrXpd4kEY5vU1CWshmYYrjQ8q1C+ZmryWO+IzqnB9JkOJkzB9hfKSWtG4JbLZwjRhVyfO9FjUeWzN25tgPMkQTA/47xdr8pfIEqno/JY96iAMW8bqWxNNHvCGUGTmpIkXRgEYKOMAdhf24G8mvVVfF3cMdmU/1yS/cKadRE+Hun/mk//91QCmtiMhmJhPLF48GclrRafc7FMn3ANyMQ36+WzH9tQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 216.228.118.232) smtp.rcpttodomain=huawei.com smtp.mailfrom=nvidia.com;
- dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
- dkim=none (message not signed); arc=none (0)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=h1XAbPDYIK/R57zKBNcqpFRULcIrha3/IJ0YEwvG8tg=;
- b=OqpfBLMxeu3Pd5QgR1xQ6vGyTSHNy6QYJATTzvS4vtbRsOmYGvZ69vxGsVt7kECUkpEAx88+duYhQM85x/UNEYdz0uo0sX6uV7jMFl61n3O13ykeufLytotTX9sLz9B1YsOgySEBq9KnvJekuahzN1qpoXfzUiU344fDL3Jw8x6Mm68pa8p7f+lYuhRHMW3JPZXalJBZ8K0wVgNsfl5k0qn+Hcd0Omjp8ulzOB0mUa1UQpiLQrzmC1xkqgxLKNkIUnwks0uH+/34HCTeMviNEIgCgiYoACHLMJRrfary2rieHfiROGkxscMszbSvdw8rx/2bMGlNSDKuSb69py1ACA==
-Received: from LV3P220CA0018.NAMP220.PROD.OUTLOOK.COM (2603:10b6:408:234::19)
- by SJ2PR12MB8805.namprd12.prod.outlook.com (2603:10b6:a03:4d0::20)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8005.26; Mon, 30 Sep
- 2024 19:43:48 +0000
-Received: from MN1PEPF0000ECDA.namprd02.prod.outlook.com
- (2603:10b6:408:234:cafe::2a) by LV3P220CA0018.outlook.office365.com
- (2603:10b6:408:234::19) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8005.27 via Frontend
- Transport; Mon, 30 Sep 2024 19:43:47 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.118.232)
- smtp.mailfrom=nvidia.com;
- dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=nvidia.com;
-Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 216.228.118.232 as permitted sender) receiver=protection.outlook.com;
- client-ip=216.228.118.232; helo=mail.nvidia.com; pr=C
-Received: from mail.nvidia.com (216.228.118.232) by
- MN1PEPF0000ECDA.mail.protection.outlook.com (10.167.242.134) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.8026.11 via Frontend Transport; Mon, 30 Sep 2024 19:43:47 +0000
-Received: from drhqmail203.nvidia.com (10.126.190.182) by mail.nvidia.com
- (10.127.129.5) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.4; Mon, 30 Sep
- 2024 12:43:44 -0700
-Received: from drhqmail203.nvidia.com (10.126.190.182) by
- drhqmail203.nvidia.com (10.126.190.182) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1544.4; Mon, 30 Sep 2024 12:43:43 -0700
-Received: from Asurada-Nvidia (10.127.8.13) by mail.nvidia.com
- (10.126.190.182) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.4 via Frontend
- Transport; Mon, 30 Sep 2024 12:43:43 -0700
-Date: Mon, 30 Sep 2024 12:43:41 -0700
-From: Nicolin Chen <nicolinc@nvidia.com>
-To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
-CC: Eric Auger <eric.auger@redhat.com>, Mostafa Saleh <smostafa@google.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org"
- <qemu-devel@nongnu.org>, Peter Maydell <peter.maydell@linaro.org>, "Jason
- Gunthorpe" <jgg@nvidia.com>, Jean-Philippe Brucker
- <jean-philippe@linaro.org>, Moritz Fischer <mdf@kernel.org>, Michael Shavit
- <mshavit@google.com>, "Andrea Bolognani" <abologna@redhat.com>, "Michael S.
- Tsirkin" <mst@redhat.com>, "Peter Xu" <peterx@redhat.com>
-Subject: Re: nested-smmuv3 topic, Sep 2024
-Message-ID: <Zvr/bf7KgLN1cjOl@Asurada-Nvidia>
-References: <ZtlrLJzZqpnUrZQf@Asurada-Nvidia>
- <d0e3a60713da4ff1bb10245e789ecf24@huawei.com>
- <ZtoWVjmSXfQStlkF@nvidia.com>
- <e06e0a8a89d74d88b653d4f49d0b08fe@huawei.com>
+ (Exim 4.90_1) (envelope-from <strahinjapjankovic@gmail.com>)
+ id 1svNwi-0002gs-B5; Mon, 30 Sep 2024 17:28:44 -0400
+Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <strahinjapjankovic@gmail.com>)
+ id 1svNwe-00061t-5j; Mon, 30 Sep 2024 17:28:44 -0400
+Received: by mail-ed1-x52a.google.com with SMTP id
+ 4fb4d7f45d1cf-5c88c9e45c2so3660096a12.0; 
+ Mon, 30 Sep 2024 14:28:38 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1727731717; x=1728336517; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=FSnMSYMEpBNjLlZ8EK5cN8z+08Q/PvDJLqFw8NntJ9w=;
+ b=V5ALziC+0+C4AdlxMJjpreLgXy62YU3tYNYE3oaqp5Y6l8g9Dz6R3SZMVIhJMQ3MnU
+ jYL/DGZ602+QPNS3u5alYRdTw5/PfvZM5JBcgsm0GrGTFeklWILTKrR+bYjqXWRpNwcp
+ CVhCEkViVCX9u13mYIdvegvdekHJb0SHeuBdAnX45/erjl3GTUr1TgZym1Ucf2SpKyCs
+ vtOQftHuWAGRcblD+CA0r6voBDq2DkarMsX+241U+MB94P2rzzZeWrE6oicJuXKwZO46
+ 8rlfP3MBd+OZgozO6j5kDAxpn2BQ64V8I8/tzGZEdzWc94yQ5uVyFj5cYDs4tCf3LbFj
+ L+SQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1727731717; x=1728336517;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=FSnMSYMEpBNjLlZ8EK5cN8z+08Q/PvDJLqFw8NntJ9w=;
+ b=J0Oh1j98uJ+CRU04dYblfs736WuUKc7R2f+eV2oQD1ZK01+qI9B4XFhhC29QveAsWc
+ Q/QnGzPYMnoYNJNBCsHT4E5WjQOPeuMV9PoOSKt2rKMwCvmzU98boQYZ7ZKnStqM14sF
+ NghQFEmP1Z0yp2YVH1aIxMBfYtLDF462hb8jQm3WGHTDt0Jpw9vuOB5XDEJ2NsHSEIyL
+ u83fCCjeR0NB0HE1unzj0lJdaPPEIidEj1Oi901jonssJLBNSYMXOjk7uTRiTe9S4trF
+ LkDwIB66p2jDFr/5iUBvL4USQiyYpii++u6dFrXVFUt2wwaaX0Y5iaaMwbEVyChrvzL9
+ vj8g==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWk66nuybEAN1ORquTWCDmEZPiXIJCRKkrI0Gg2jbKT85luM4DKGZZyqcQcV2qsDM0JqdALCxWIud/WIQ==@nongnu.org,
+ AJvYcCWlwCNTna4gTMx2i4jAAw4DfS/CIjSx232+K/xoaoMoKVuo4wnyKlBdflQtiN4Nb0/Sb9r+8SA1Hg==@nongnu.org
+X-Gm-Message-State: AOJu0YzI9nuwKjx6ftozbz3P27dTbhN4Rtszdj2XtKbL8xZTKkN2s2Ku
+ D5061kCjZCXnE5JmYqPeVET2KA+uK+ces/SH1aLA7EGGv15dzNsPIuyGHuzU9PnVzLmvwZTuns5
+ D2whOt2lrJ9j5LkAJqXKRswm3i2XRjs/l
+X-Received: by 2002:a05:6402:5419:b0:5c8:a2b8:cab3 with SMTP id
+ 4fb4d7f45d1cf-5c8a2b8ce3cmr1069849a12.4.1727731717185; Mon, 30 Sep 2024
+ 14:28:37 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Disposition: inline
-In-Reply-To: <e06e0a8a89d74d88b653d4f49d0b08fe@huawei.com>
-X-NV-OnPremToCloud: ExternallySecured
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: MN1PEPF0000ECDA:EE_|SJ2PR12MB8805:EE_
-X-MS-Office365-Filtering-Correlation-Id: d5b07682-e93a-49cb-8ae8-08dce1883364
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
- ARA:13230040|376014|36860700013|1800799024|7416014|82310400026; 
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?TWuIDXa+gc6yEK62Nn8UNiOwRnerYq04iXZKbvW9u5aOAhaTL0FWjyXJpkry?=
- =?us-ascii?Q?sB1+r65wC4DkM5jHIPmOR7ZIe/Es5mTSZ266E+6L9YnLy3TmRUt0M+JTGzDy?=
- =?us-ascii?Q?B7lmE/68vgvpRctjQDOqGPfOuFJb7xrChoffQmrnqsi2mS+cnECAkWMq0JFi?=
- =?us-ascii?Q?1te03bwvCUUqUN3OuYXctNSpbpe3DismXqH1oAHX+cDgQtxOobB+VhFy0G4J?=
- =?us-ascii?Q?fyS9OVK5XdP0OBU0NnB57+Z7srVm8Dnaohl+61k6bcC8S0Grm1Vmq6YNe9Z3?=
- =?us-ascii?Q?EPfCRy/mHGpZoM35jMTbbMZoi76keAiN3i7qs4PZxzymCeoRCrxhErWafOb5?=
- =?us-ascii?Q?qSBUnhHqQRi3TYlCcrAuT5dSx2DhajVlMQzxC4Y9e1TxKzGiW7qZEQIYnZi4?=
- =?us-ascii?Q?pSFg/NdZE7KOLlWjIyE90xDijQ5j/IYVQ5aNY5fcF+rYpFgS6XkNTMu4AhjU?=
- =?us-ascii?Q?GF0HNaMcq77mFQE7YaooeHBATL9v8NDyXBGRGs4xFW3onMjOKOjKxe0VO08G?=
- =?us-ascii?Q?ZUtkyBhm/FSjfy5BhWPDBhSzOZIRvRgjJNAOrs4wGCnaDTUFlu8FV3maiKxT?=
- =?us-ascii?Q?lS8hgvm1sAbInS2tSxUiphRBTna1QgarHMO+tNCv01B8Ft9xVkcrGUZR5SNc?=
- =?us-ascii?Q?X0Vx0S8HY9nRHPE/tdzVMiV4iTtZR9fIeF+8yDsYYPPBpsupABnKTsiCPA2e?=
- =?us-ascii?Q?z6zKvExjwRHwdHK2x4QEVyPKu8ewCb1Rji+LfgjRT/Z5h5VUXCB2Q3m7dvPq?=
- =?us-ascii?Q?dFQcrEas5QXn2FI2je736wNDKQGtWZBeV8uNn1w8a4wXbES87ZeoWSEB0aUB?=
- =?us-ascii?Q?FeZSaGvutd18G8QS2BMRnKPNjOBpQX5xTKC4xf4k1ElHiwl0UXxwowB/48vn?=
- =?us-ascii?Q?xcoGmCEQ9gcDR99aHpp4T1kr6pp3dAghQCzkvMY24tLkvikNrkvaLzgjea9G?=
- =?us-ascii?Q?RzPLFNtJ6rGP/nb9sYb2qhopKAsoK1PKcHzJNzo51JRNYCshNKscQDI8Z4qJ?=
- =?us-ascii?Q?fKRKU7byJZtWVQB0lrFqgdGJpTCEsR82ulZERPjOLkJmYPRSks3BlGBXz3xH?=
- =?us-ascii?Q?L5QoH7ByONNDtv8oAN2OZ6ITJqSsYT9IX85iXYZFC1mpF6HQJjRfzJoZHbV2?=
- =?us-ascii?Q?jT7uODH6+JaI2hxh/uynhP4Xuf6vOcOH+hccf9WnvZEL0B43P0txuCV0oHJY?=
- =?us-ascii?Q?ehyfPT52uLenhOpfde6udA8RHKqQTncZ5/T4QC2iAIQmKQVPdIAlzyq2U+LB?=
- =?us-ascii?Q?KjgR19kX8IoE9jZpWoYFnzTSpbtJTIe018kd3QdYruVIKnDtyFArcf7KWL5i?=
- =?us-ascii?Q?5ItulKwRFOZvwP/XOfLaua7ZWB63y1dP60sdXP9ojXedfyoUTNX8M+9y9xOU?=
- =?us-ascii?Q?d9fmpIowvqIWVcyThRt4kpY/5930?=
-X-Forefront-Antispam-Report: CIP:216.228.118.232; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc7edge1.nvidia.com; CAT:NONE;
- SFS:(13230040)(376014)(36860700013)(1800799024)(7416014)(82310400026); DIR:OUT;
- SFP:1101; 
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 30 Sep 2024 19:43:47.2234 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: d5b07682-e93a-49cb-8ae8-08dce1883364
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.118.232];
- Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: MN1PEPF0000ECDA.namprd02.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ2PR12MB8805
-Received-SPF: softfail client-ip=2a01:111:f403:2417::60f;
- envelope-from=nicolinc@nvidia.com;
- helo=NAM12-DM6-obe.outbound.protection.outlook.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+References: <20240919215525.22398-1-strahinja.p.jankovic@gmail.com>
+ <CAFEAcA_RkwPgTksJCEP4=V0WY0wp0OiYP28PzXDJKRvpi_KWvw@mail.gmail.com>
+In-Reply-To: <CAFEAcA_RkwPgTksJCEP4=V0WY0wp0OiYP28PzXDJKRvpi_KWvw@mail.gmail.com>
+From: Strahinja Jankovic <strahinjapjankovic@gmail.com>
+Date: Mon, 30 Sep 2024 23:28:22 +0200
+Message-ID: <CABtshVSsXPoMQy1EZaq2veo-80UMrUX+cqkvh5wq6cujW60s7A@mail.gmail.com>
+Subject: Re: [PATCH] {hw/ssi,docs/system/arm}: Allwinner A10 SPI emulation
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: Beniamino Galvani <b.galvani@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, 
+ Alistair Francis <alistair@alistair23.me>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Content-Type: multipart/alternative; boundary="00000000000045296306235ce33c"
+Received-SPF: pass client-ip=2a00:1450:4864:20::52a;
+ envelope-from=strahinjapjankovic@gmail.com; helo=mail-ed1-x52a.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.144,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: j7djcrANLuDY
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: T/1Cbsb14H7E
 
-On Mon, Sep 30, 2024 at 10:45:31AM +0000, Shameerali Kolothum Thodi wrote:
-> > -----Original Message-----
-> > From: Nicolin Chen <nicolinc@nvidia.com>
-> > Sent: Thursday, September 5, 2024 9:37 PM
-> > To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
-> > Cc: Eric Auger <eric.auger@redhat.com>; Mostafa Saleh
-> > <smostafa@google.com>; qemu-arm@nongnu.org; qemu-
-> > devel@nongnu.org; Peter Maydell <peter.maydell@linaro.org>; Jason
-> > Gunthorpe <jgg@nvidia.com>; Jean-Philippe Brucker <jean-
-> > philippe@linaro.org>; Moritz Fischer <mdf@kernel.org>; Michael Shavit
-> > <mshavit@google.com>; Andrea Bolognani <abologna@redhat.com>;
-> > Michael S. Tsirkin <mst@redhat.com>; Peter Xu <peterx@redhat.com>
-> > Subject: Re: nested-smmuv3 topic, Sep 2024
+--00000000000045296306235ce33c
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Hi Peter,
+
+Thank you very much for the review and detailed comments.
+
+I will try to address all comments in the v2 of the patches, but I have
+some questions I added below.
+
+On Mon, Sep 30, 2024 at 4:45=E2=80=AFPM Peter Maydell <peter.maydell@linaro=
+.org>
+wrote:
+
+> On Thu, 19 Sept 2024 at 22:55, Strahinja Jankovic
+> <strahinjapjankovic@gmail.com> wrote:
 > >
-> > Hi Shameer,
+> > This patch implements Allwinner A10 SPI controller emulation.
+> > Only master-mode functionality is implemented.
 > >
-> > Thanks for the reply!
+> > Since U-Boot and Linux SPI drivers for Allwinner A10 perform only
+> > byte-wide CPU access (no DMA) to the peripheral, the emulated
+> > controller does not implement DMA control and supports only byte-wide
+> > access.
 > >
-> > On Thu, Sep 05, 2024 at 12:55:52PM +0000, Shameerali Kolothum Thodi
-> > wrote:
-> > > > The main takeaway from the discussion is to
-> > > > 1) Turn the vSMMU module into a pluggable one, like intel-iommu
-> > > > 2) Move the per-SMMU pxb bus and device auto-assign into libvirt
-> > > >
-> > > > Apart from the multi-vSMMU thing, there's basic nesting series:
-> > > > 0) Keep updating to the latest kernel uAPIs to support nesting
-> > >
-> > > By this you mean the old HWPT based nested-smmuv3 support?
+> > Docs are also updated for Cubieboard to indicate SPI availability.
 > >
-> > HWPT + vIOMMU. The for-viommu/virq branches that I shared in my
-> > kernel series have those changes. Invalidations is done via the
-> > vIOMMU infrastructure.
-> >
-> > > >
-> > > > I was trying to do all these three, but apparently too ambitious.
-> > > > The kernel side of work is still taking a lot of my bandwidth. So
-> > > > far I had almost-zero progress on task (1) and completely-zero on
-> > > > task (2).
-> > > >
-> > > > <-- Help Needed --->
-> > > > So, I'm wondering if anyone(s) might have some extra bandwidth in
-> > > > the following months helping these two tasks, either of which can
-> > > > be a standalone project I think.
-> > > >
-> > > > For task (0), I think I can keep updating the uAPI part, although
-> > > > it'd need some help for reviews, which I was hoping to occur after
-> > > > Intel sends the QEMU nesting backend patches. Once we know how big
-> > > > the rework is going to be, we may need to borrow some help at that
-> > > > point once again..
-> > >
-> > > I might have some bandwidth starting October and can take a look at
-> > > task 1 above. I haven't gone through the VIOMMU API model completely
-> > > yet and plan to do that soon.
-> >
-> 
-> I had  an initial look at this and also had some discussions with Eric at KVM
-> Forum(Thanks Eric!).
+> > Signed-off-by: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
+>
+> Hi; thanks for this patch. It generally looks good to me;
+> my comments below are not major.
+>
+> >  docs/system/arm/cubieboard.rst     |   1 +
+> >  hw/arm/Kconfig                     |   1 +
+> >  hw/arm/allwinner-a10.c             |   8 +
+> >  hw/ssi/Kconfig                     |   4 +
+> >  hw/ssi/allwinner-a10-spi.c         | 534 +++++++++++++++++++++++++++++
+> >  hw/ssi/meson.build                 |   1 +
+> >  hw/ssi/trace-events                |  10 +
+> >  include/hw/arm/allwinner-a10.h     |   2 +
+> >  include/hw/ssi/allwinner-a10-spi.h |  56 +++
+>
+> For "add new device to existing board" changes we generally
+> prefer them to be two commits:
+>  * add the new device model
+>  * wire up the device in the board model
+>
+> Could you split this patch in two, please?
+>
 
-Wow, thank both of you!
+Yes, I will split this into two patches.
 
-> Going through the code, is it ok to introduce a "pci-bus" for the proposed
-> nested SMMUv3 device which will create the link between the SMMUv3 dev
-> and the associated root complex(pxb-pcie).
-> 
-> Something like below,
-> 
-> -device pxb-pcie,id=pcie.1,bus_nr=2,bus=pcie.0 \
-> -device arm-nested-smmuv3,pci-bus=pcie.1 \
-> -device pcie-root-port,id=pcie.port1,bus=pcie.1 \
-> -device vfio-pci,host=0000:75:00.1, bus=pcie.port1 \
-> ...
-> -device pxb-pcie,id=pcie.2,bus_nr=8,bus=pcie.0 \
-> -device arm-nested-smmuv3,pci-bus=pcie.2 \
-> -device pcie-root-port,id=pcie.port2,bus=pcie.2 \
-> -device vfio-pci,host=0000:75:00.2, bus=pcie.port2 \
-> 
-> This way we can invoke the pci_setup_iommu() with the
-> right PCIBus during the nested SMMUv3 device realize fn.
-> 
-> Please let me know, if this works/scales with all the use cases we have.
 
-That looks nice to me. Hopefully, IORT or Device Tree would be
-easy to tie to the corresponding pci-bus as well..
+>
+> > diff --git a/hw/ssi/allwinner-a10-spi.c b/hw/ssi/allwinner-a10-spi.c
+> > new file mode 100644
+> > index 0000000000..ea44ae46a3
+> > --- /dev/null
+> > +++ b/hw/ssi/allwinner-a10-spi.c
+> > @@ -0,0 +1,534 @@
+> > +/*
+> > + *  Allwinner SPI Bus Serial Interface Emulation
+> > + *
+> > + *  Copyright (C) 2024 Strahinja Jankovic <
+> strahinja.p.jankovic@gmail.com>
+> > + *
+> > + *  This program is free software; you can redistribute it and/or
+> modify it
+> > + *  under the terms of the GNU General Public License as published by
+> the
+> > + *  Free Software Foundation; either version 2 of the License, or
+> > + *  (at your option) any later version.
+> > + *
+> > + *  This program is distributed in the hope that it will be useful, bu=
+t
+> WITHOUT
+> > + *  ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+> or
+> > + *  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public Licen=
+se
+> > + *  for more details.
+> > + *
+> > + *  You should have received a copy of the GNU General Public License
+> along
+> > + *  with this program; if not, see <http://www.gnu.org/licenses/>.
+> > + *
+> > + * SPDX-License-Identifier: MIT
+>
+> This SPDX tag does not match the human-readable license. We're OK with
+> either GPL-2.0-or-later or MIT, but which one do you want?
+>
+> Also, the .h file license-and-copyright comment has no SPDX tag;
+> we don't currently insist on SPDX tags, but you might wish to
+> be consistent.
+>
 
-> Also Eric mentioned that when he initially added the support for SMMUv3,
-> the initial approach was -device based solution, but later changed to machine
-> option instead based on review comments. I managed to find the link where
-> this change was proposed(by Peter),
-> 
-> https://lore.kernel.org/all/CAFEAcA_H+sraWNVhEZc48eS11n6dC9CyEwTL44tPERiPBO+hbw@mail.gmail.com/
-> 
-> I hope the use cases we now have make it reasonable to introduce a "-device arm-nested-smmuv3" model.
-> Please let me know if there are still objections to going this way.
+Good points, I will update this.
 
-I assume so. With multiple smmuv3 devices in the VM, we would need
-this kinda flexibility to create them.
 
-And FYI, I also found some resource in NVIDIA who will help me on
-the QEMU workload, including our remaining task -- libvirt. I'll
-align with them in the days ahead, and will keep all of us updated
-after.
+>
+> > +/* Control register */
+> > +#define SPI_CTL_SDC      (1 << 19)
+> > +#define SPI_CTL_TP_EN    (1 << 18)
+> > +#define SPI_CTL_SS_LEVEL (1 << 17)
+> > +#define SPI_CTL_SS_CTRL  (1 << 16)
+> > +#define SPI_CTL_DHB      (1 << 15)
+> > +#define SPI_CTL_DDB      (1 << 14)
+> > +#define SPI_CTL_SS       (3 << 12)
+> > +#define SPI_CTL_SS_SHIFT (12)
+> > +#define SPI_CTL_RPSM     (1 << 11)
+> > +#define SPI_CTL_XCH      (1 << 10)
+> > +#define SPI_CTL_RF_RST   (1 << 9)
+> > +#define SPI_CTL_TF_RST   (1 << 8)
+> > +#define SPI_CTL_SSCTL    (1 << 7)
+> > +#define SPI_CTL_LMTF     (1 << 6)
+> > +#define SPI_CTL_DMAMC    (1 << 5)
+> > +#define SPI_CTL_SSPOL    (1 << 4)
+> > +#define SPI_CTL_POL      (1 << 3)
+> > +#define SPI_CTL_PHA      (1 << 2)
+> > +#define SPI_CTL_MODE     (1 << 1)
+> > +#define SPI_CTL_EN       (1 << 0)
+> > +#define SPI_CTL_MASK     (0xFFFFFu)
+> > +#define SPI_CTL_RESET    (0x0002001Cu)
+>
+> Brackets aren't necessary around single integer values,
+> only around expressions.
+>
+>
+> > +static void allwinner_a10_spi_update_irq(AWA10SPIState *s)
+> > +{
+> > +    int level;
+> > +
+> > +    if (fifo8_is_empty(&s->rx_fifo)) {
+> > +        s->regs[REG_INDEX(SPI_INT_STA_REG)] &=3D ~SPI_INT_STA_RR;
+> > +    } else {
+> > +        s->regs[REG_INDEX(SPI_INT_STA_REG)] |=3D SPI_INT_STA_RR;
+> > +    }
+> > +
+> > +    if (fifo8_num_used(&s->rx_fifo) >=3D (AW_A10_SPI_FIFO_SIZE >> 2)) =
+{
+> > +        s->regs[REG_INDEX(SPI_INT_STA_REG)] |=3D SPI_INT_STA_RF14;
+> > +    } else {
+> > +        s->regs[REG_INDEX(SPI_INT_STA_REG)] &=3D ~SPI_INT_STA_RF14;
+> > +    }
+> > +
+> > +    if (fifo8_num_used(&s->rx_fifo) >=3D (AW_A10_SPI_FIFO_SIZE >> 1)) =
+{
+> > +        s->regs[REG_INDEX(SPI_INT_STA_REG)] |=3D SPI_INT_STA_RHF;
+> > +    } else {
+> > +        s->regs[REG_INDEX(SPI_INT_STA_REG)] &=3D ~SPI_INT_STA_RHF;
+> > +    }
+> > +
+> > +    if (fifo8_num_free(&s->rx_fifo) <=3D (AW_A10_SPI_FIFO_SIZE >> 2)) =
+{
+> > +        s->regs[REG_INDEX(SPI_INT_STA_REG)] |=3D SPI_INT_STA_RF34;
+> > +    } else {
+> > +        s->regs[REG_INDEX(SPI_INT_STA_REG)] &=3D ~SPI_INT_STA_RF34;
+> > +    }
+> > +
+> > +    if (fifo8_is_full(&s->rx_fifo)) {
+> > +        s->regs[REG_INDEX(SPI_INT_STA_REG)] |=3D SPI_INT_STA_RF;
+> > +    } else {
+> > +        s->regs[REG_INDEX(SPI_INT_STA_REG)] &=3D ~SPI_INT_STA_RF;
+> > +    }
+> > +
+> > +    if (fifo8_is_empty(&s->tx_fifo)) {
+> > +        s->regs[REG_INDEX(SPI_INT_STA_REG)] |=3D SPI_INT_STA_TE;
+> > +    } else {
+> > +        s->regs[REG_INDEX(SPI_INT_STA_REG)] &=3D ~SPI_INT_STA_TE;
+> > +    }
+> > +
+> > +    if (fifo8_num_free(&s->tx_fifo) >=3D (AW_A10_SPI_FIFO_SIZE >> 2)) =
+{
+> > +        s->regs[REG_INDEX(SPI_INT_STA_REG)] |=3D SPI_INT_STA_TE14;
+> > +    } else {
+> > +        s->regs[REG_INDEX(SPI_INT_STA_REG)] &=3D ~SPI_INT_STA_TE14;
+> > +    }
+> > +
+> > +    if (fifo8_num_free(&s->tx_fifo) >=3D (AW_A10_SPI_FIFO_SIZE >> 1)) =
+{
+> > +        s->regs[REG_INDEX(SPI_INT_STA_REG)] |=3D SPI_INT_STA_THE;
+> > +    } else {
+> > +        s->regs[REG_INDEX(SPI_INT_STA_REG)] &=3D ~SPI_INT_STA_THE;
+> > +    }
+> > +
+> > +    if (fifo8_num_used(&s->tx_fifo) <=3D (AW_A10_SPI_FIFO_SIZE >> 2)) =
+{
+> > +        s->regs[REG_INDEX(SPI_INT_STA_REG)] |=3D SPI_INT_STA_TE34;
+> > +    } else {
+> > +        s->regs[REG_INDEX(SPI_INT_STA_REG)] &=3D ~SPI_INT_STA_TE34;
+> > +    }
+> > +
+> > +    if (fifo8_is_full(&s->rx_fifo)) {
+> > +        s->regs[REG_INDEX(SPI_INT_STA_REG)] |=3D SPI_INT_STA_TF;
+> > +    } else {
+> > +        s->regs[REG_INDEX(SPI_INT_STA_REG)] &=3D ~SPI_INT_STA_TF;
+> > +    }
+> > +
+> > +    level =3D s->regs[REG_INDEX(SPI_INT_STA_REG)] &
+> > +                    s->regs[REG_INDEX(SPI_INTCTL_REG)] ?
+> > +                1 :
+> > +                0;
+>
+> If you declare 'level' as a 'bool' you can avoid this
+> awkward "? 1 : 0" expression.
+>
+> > +
+> > +    qemu_set_irq(s->irq, level);
+> > +
+> > +    trace_allwinner_a10_spi_update_irq(level);
+> > +}
+> > +
+> > +static void allwinner_a10_spi_flush_txfifo(AWA10SPIState *s)
+> > +{
+> > +    uint8_t tx;
+> > +    uint8_t rx;
+> > +    uint32_t burst_count =3D s->regs[REG_INDEX(SPI_BC_REG)];
+> > +    uint32_t tx_burst =3D s->regs[REG_INDEX(SPI_TC_REG)];
+> > +    trace_allwinner_a10_spi_burst_length(tx_burst);
+> > +
+> > +
+> trace_allwinner_a10_spi_flush_txfifo_begin(fifo8_num_used(&s->tx_fifo),
+> > +
+>  fifo8_num_used(&s->rx_fifo));
+> > +
+> > +    while (!fifo8_is_empty(&s->tx_fifo)) {
+> > +        tx =3D fifo8_pop(&s->tx_fifo);
+> > +        rx =3D 0;
+> > +        bool fill_rx =3D true;
+>
+> Variable declarations should always go at the start of a block,
+> not in the middle of one. (Since tx and rx are not used
+> outside the loop, you could fix this by declaring them
+> here rather than at the top of the function if you like.)
+>
+> > +
+> > +        trace_allwinner_a10_spi_tx(tx);
+> > +
+> > +        /* Write one byte at a time */
+> > +        rx =3D ssi_transfer(s->bus, tx);
+> > +
+> > +        trace_allwinner_a10_spi_rx(rx);
+> > +
+> > +        /* Check DHB here to determing if RX bytes should be stored */
+>
+> Typo: "determine"
+>
+> > +        if (s->regs[REG_INDEX(SPI_CTL_REG)] & SPI_CTL_DHB) {
+> > +            /* Store rx bytes only after WTC transfers */
+> > +            if (tx_burst > 0u) {
+> > +                fill_rx =3D false;
+> > +                tx_burst--;
+> > +            }
+> > +        }
+> > +
+> > +        if (fill_rx) {
+> > +            if (fifo8_is_full(&s->rx_fifo)) {
+> > +                s->regs[REG_INDEX(SPI_INT_STA_REG)] |=3D SPI_INT_STA_R=
+F;
+> > +            } else {
+> > +                fifo8_push(&s->rx_fifo, rx);
+> > +            }
+> > +        }
+> > +
+> > +        allwinner_a10_spi_update_irq(s);
+> > +
+> > +        burst_count--;
+> > +
+> > +        if (burst_count =3D=3D 0) {
+> > +            s->regs[REG_INDEX(SPI_INT_STA_REG)] |=3D SPI_INT_STA_TC;
+> > +            s->regs[REG_INDEX(SPI_CTL_REG)] &=3D ~SPI_CTL_XCH;
+> > +            break;
+> > +        }
+> > +    }
+> > +
+> > +    if (fifo8_is_empty(&s->tx_fifo)) {
+> > +        s->regs[REG_INDEX(SPI_INT_STA_REG)] |=3D SPI_INT_STA_TC;
+> > +        s->regs[REG_INDEX(SPI_CTL_REG)] &=3D ~SPI_CTL_XCH;
+> > +    }
+> > +
+> > +
+> trace_allwinner_a10_spi_flush_txfifo_end(fifo8_num_used(&s->tx_fifo),
+> > +
+>  fifo8_num_used(&s->rx_fifo));
+> > +}
+> > +
+> > +static uint64_t allwinner_a10_spi_read(void *opaque, hwaddr offset,
+> > +                                       unsigned size)
+> > +{
+> > +    uint32_t value =3D 0;
+> > +    AWA10SPIState *s =3D opaque;
+> > +    uint32_t index =3D offset >> 2;
+>
+> The MemoryRegionOps defines that size =3D=3D 1 is permitted,
+> but this calculation of index without any validation
+> of offset means that if the guest writes a byte to
+> offset 1 we will treat that identically to writing a byte
+> to offset 0. This probably isn't what the hardware does.
+>
 
-Thanks!
-Nicolin
+I checked once more the User manual, and it does not mention unaligned
+access (example for RXDATA)
+
+In 8-bits SPI bus width, this register can be accessed in byte,
+half-word or word unit by AHB. In byte accessing method,
+if there are words in RXFIFO, the top word is returned and
+the RXFIFO depth is decreased by 1. In half-word accessing
+method, the two SPI bursts are returned and the RXFIFO
+depth is decrease by 2. In word accessing method, the four
+SPI bursts are returned and the RXFIFO depth is decreased
+by 4.
+
+I chose not to cover the half-word and word access methods, since neither
+Linux kernel nor U-Boot use it
+(both use only byte access).
+
+I guess that I could add `.valid.unaligned =3D false` when initializing
+`MemoryRegionOps`?
+
+Best regards,
+Strahinja
+
+
+
+>
+> > +
+> > +    if (offset > SPI_FIFO_STA_REG) {
+> > +        qemu_log_mask(LOG_GUEST_ERROR,
+> > +                      "[%s]%s: Bad register at offset 0x%" HWADDR_PRIx
+> "\n",
+> > +                      TYPE_AW_A10_SPI, __func__, offset);
+> > +        return 0;
+> > +    }
+> > +
+> > +    value =3D s->regs[index];
+> > +
+> > +    if (allwinner_a10_spi_is_enabled(s)) {
+> > +        switch (offset) {
+> > +        case SPI_RXDATA_REG:
+> > +            if (fifo8_is_empty(&s->rx_fifo)) {
+> > +                /* value is undefined */
+> > +                value =3D 0xdeadbeef;
+> > +            } else {
+> > +                /* read from the RX FIFO */
+> > +                value =3D fifo8_pop(&s->rx_fifo);
+> > +            }
+> > +            break;
+> > +        case SPI_TXDATA_REG:
+> > +            qemu_log_mask(LOG_GUEST_ERROR,
+> > +                          "[%s]%s: Trying to read from TX FIFO\n",
+> > +                          TYPE_AW_A10_SPI, __func__);
+> > +
+> > +            /* Reading from TXDATA gives 0 */
+> > +            break;
+> > +        case SPI_FIFO_STA_REG:
+> > +            /* Read current tx/rx fifo data count */
+> > +            value =3D fifo8_num_used(&s->tx_fifo) <<
+> SPI_FIFO_STA_TF_CNT_SHIFT |
+> > +                    fifo8_num_used(&s->rx_fifo) <<
+> SPI_FIFO_STA_RF_CNT_SHIFT;
+> > +        default:
+> > +            break;
+> > +        }
+> > +
+> > +        allwinner_a10_spi_update_irq(s);
+> > +    }
+> > +    trace_allwinner_a10_spi_read(allwinner_a10_spi_get_regname(offset)=
+,
+> value);
+> > +
+> > +    return (uint64_t)value;
+>
+> The cast here is unnecessary as the function return type is uint64_t.
+>
+> > +}
+> > +
+> > +static void allwinner_a10_spi_write(void *opaque, hwaddr offset,
+> uint64_t value,
+> > +                                    unsigned size)
+> > +{
+> > +    AWA10SPIState *s =3D opaque;
+> > +    uint32_t index =3D offset >> 2;
+>
+> Similar remarks here about byte and halfword writes to
+> non-4-aligned offsets.
+>
+> > +    int i =3D 0;
+> > +
+> > +    if (offset > SPI_FIFO_STA_REG) {
+> > +        qemu_log_mask(LOG_GUEST_ERROR,
+> > +                      "[%s]%s: Bad register at offset 0x%" HWADDR_PRIx
+> "\n",
+> > +                      TYPE_AW_A10_SPI, __func__, offset);
+> > +        return;
+> > +    }
+> > +
+> > +    trace_allwinner_a10_spi_write(allwinner_a10_spi_get_regname(offset=
+),
+> > +                                  (uint32_t)value);
+> > +
+> > +    if (!allwinner_a10_spi_is_enabled(s)) {
+> > +        /* Block is disabled */
+> > +        if (offset !=3D SPI_CTL_REG) {
+> > +            /* Ignore access */
+> > +            return;
+> > +        }
+> > +    }
+> > +
+> > +    switch (offset) {
+> > +    case SPI_RXDATA_REG:
+> > +        qemu_log_mask(LOG_GUEST_ERROR, "[%s]%s: Trying to write to RX
+> FIFO\n",
+> > +                      TYPE_AW_A10_SPI, __func__);
+> > +        break;
+> > +    case SPI_TXDATA_REG:
+> > +        if (fifo8_is_full(&s->tx_fifo)) {
+> > +            /* Ignore writes if queue is full */
+> > +            break;
+> > +        }
+> > +
+> > +        fifo8_push(&s->tx_fifo, (uint8_t)value);
+> > +
+> > +        break;
+> > +    case SPI_INT_STA_REG:
+> > +        /* Handle W1C bits - everything except SPI_INT_STA_INT_CBF. */
+> > +        value &=3D ~SPI_INT_STA_INT_CBF;
+> > +        s->regs[REG_INDEX(SPI_INT_STA_REG)] &=3D ~(value &
+> SPI_INT_STA_MASK);
+> > +        break;
+> > +    case SPI_CTL_REG:
+> > +        s->regs[REG_INDEX(SPI_CTL_REG)] =3D value;
+> > +
+> > +        for (i =3D 0; i < AW_A10_SPI_CS_LINES_NR; i++) {
+> > +            qemu_set_irq(
+> > +                s->cs_lines[i],
+> > +                i =3D=3D allwinner_a10_spi_selected_channel(s) ?
+> > +                    !!(s->regs[REG_INDEX(SPI_CTL_REG)] &
+> SPI_CTL_SS_LEVEL) :
+> > +                    !(s->regs[REG_INDEX(SPI_CTL_REG)] & SPI_CTL_SSPOL)=
+);
+>
+> This might be easier to read if we factored out the ?:
+> expression into a function with a descriptive name.
+>
+> > +        }
+> > +
+> > +        if (s->regs[REG_INDEX(SPI_CTL_REG)] & SPI_CTL_XCH) {
+> > +            /* Request to start emitting */
+> > +            allwinner_a10_spi_flush_txfifo(s);
+> > +        }
+> > +        if (s->regs[REG_INDEX(SPI_CTL_REG)] & SPI_CTL_TF_RST) {
+> > +            allwinner_a10_spi_txfifo_reset(s);
+> > +            s->regs[REG_INDEX(SPI_CTL_REG)] &=3D ~SPI_CTL_TF_RST;
+> > +        }
+> > +        if (s->regs[REG_INDEX(SPI_CTL_REG)] & SPI_CTL_RF_RST) {
+> > +            allwinner_a10_spi_rxfifo_reset(s);
+> > +            s->regs[REG_INDEX(SPI_CTL_REG)] &=3D ~SPI_CTL_RF_RST;
+> > +        }
+> > +        break;
+> > +    default:
+> > +        s->regs[index] =3D value;
+> > +        break;
+> > +    }
+> > +
+> > +    allwinner_a10_spi_update_irq(s);
+> > +}
+> > +
+> > +static const MemoryRegionOps allwinner_a10_spi_ops =3D {
+> > +    .read =3D allwinner_a10_spi_read,
+> > +    .write =3D allwinner_a10_spi_write,
+> > +    .valid.min_access_size =3D 1,
+> > +    .valid.max_access_size =3D 4,
+> > +    .endianness =3D DEVICE_NATIVE_ENDIAN,
+> > +};
+> > +
+> > +static const VMStateDescription allwinner_a10_spi_vmstate =3D {
+> > +    .name =3D TYPE_AW_A10_SPI,
+> > +    .version_id =3D 1,
+> > +    .minimum_version_id =3D 1,
+> > +    .fields =3D
+> > +        (const VMStateField[]){
+> > +            VMSTATE_FIFO8(tx_fifo, AWA10SPIState),
+> > +            VMSTATE_FIFO8(rx_fifo, AWA10SPIState),
+> > +            VMSTATE_UINT32_ARRAY(regs, AWA10SPIState,
+> AW_A10_SPI_REGS_NUM),
+> > +            VMSTATE_END_OF_LIST() }
+>
+> Our usual indent for this is
+>     .fields =3D (const VMStateField[]) {
+>          VMSTATE_FOO(...),
+>          ...
+>          VMSTATE_END_OF_LIST()
+>     }
+
+> +};
+> > +
+>
+> > --- a/hw/ssi/trace-events
+> > +++ b/hw/ssi/trace-events
+> > @@ -53,3 +53,13 @@ pnv_spi_rx_read_N2frame(void) ""
+> >  pnv_spi_shift_rx(uint8_t byte, uint32_t index) "byte =3D 0x%2.2x into =
+RDR
+> from payload index %d"
+> >  pnv_spi_sequencer_stop_requested(const char* reason) "due to %s"
+> >  pnv_spi_RDR_match(const char* result) "%s"
+> > +
+> > +# allwinner_a10_spi.c
+> > +allwinner_a10_spi_update_irq(uint32_t level) "IRQ level is %d"
+> > +allwinner_a10_spi_flush_txfifo_begin(uint32_t tx, uint32_t rx) "Begin:
+> TX Fifo Size =3D %d, RX Fifo Size =3D %d"
+> > +allwinner_a10_spi_flush_txfifo_end(uint32_t tx, uint32_t rx) "End: TX
+> Fifo Size =3D %d, RX Fifo Size =3D %d"
+> > +allwinner_a10_spi_burst_length(uint32_t len) "Burst length =3D %d"
+> > +allwinner_a10_spi_tx(uint8_t byte) "write 0x%02x"
+> > +allwinner_a10_spi_rx(uint8_t byte) "read 0x%02x"
+> > +allwinner_a10_spi_read(const char* regname, uint32_t value) "reg[%s] =
+=3D>
+> 0x%" PRIx32
+> > +allwinner_a10_spi_write(const char* regname, uint32_t value) "reg[%s]
+> <=3D 0x%" PRIx32
+>
+> Be consistent about whether you want to use PRI* macros
+> for uint32_t types or not, please. (Admittedly QEMU itself is
+> not super consistent here either, but I think the more common
+> option is to use %d, %x etc for uint32_t, because we can assume
+> that 'int' is a 32-bit type. It's only uint64_t that requires the
+> PRI macros.)
+>
+> thanks
+> -- PMM
+>
+
+--00000000000045296306235ce33c
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr">Hi Peter,<div><br></div><div>Thank you ve=
+ry much for the review and detailed comments.</div><div><br></div><div>I wi=
+ll try to address all comments in the v2 of the patches, but I have some qu=
+estions I added below.</div></div><br><div class=3D"gmail_quote"><div dir=
+=3D"ltr" class=3D"gmail_attr">On Mon, Sep 30, 2024 at 4:45=E2=80=AFPM Peter=
+ Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.org" target=3D"_blank">=
+peter.maydell@linaro.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail=
+_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204=
+,204);padding-left:1ex">On Thu, 19 Sept 2024 at 22:55, Strahinja Jankovic<b=
+r>
+&lt;<a href=3D"mailto:strahinjapjankovic@gmail.com" target=3D"_blank">strah=
+injapjankovic@gmail.com</a>&gt; wrote:<br>
+&gt;<br>
+&gt; This patch implements Allwinner A10 SPI controller emulation.<br>
+&gt; Only master-mode functionality is implemented.<br>
+&gt;<br>
+&gt; Since U-Boot and Linux SPI drivers for Allwinner A10 perform only<br>
+&gt; byte-wide CPU access (no DMA) to the peripheral, the emulated<br>
+&gt; controller does not implement DMA control and supports only byte-wide<=
+br>
+&gt; access.<br>
+&gt;<br>
+&gt; Docs are also updated for Cubieboard to indicate SPI availability.<br>
+&gt;<br>
+&gt; Signed-off-by: Strahinja Jankovic &lt;<a href=3D"mailto:strahinja.p.ja=
+nkovic@gmail.com" target=3D"_blank">strahinja.p.jankovic@gmail.com</a>&gt;<=
+br>
+<br>
+Hi; thanks for this patch. It generally looks good to me;<br>
+my comments below are not major.<br>
+<br>
+&gt;=C2=A0 docs/system/arm/cubieboard.rst=C2=A0 =C2=A0 =C2=A0|=C2=A0 =C2=A0=
+1 +<br>
+&gt;=C2=A0 hw/arm/Kconfig=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 =C2=A01 +<br>
+&gt;=C2=A0 hw/arm/allwinner-a10.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0|=C2=A0 =C2=A08 +<br>
+&gt;=C2=A0 hw/ssi/Kconfig=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 =C2=A04 +<br>
+&gt;=C2=A0 hw/ssi/allwinner-a10-spi.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0| 53=
+4 +++++++++++++++++++++++++++++<br>
+&gt;=C2=A0 hw/ssi/meson.build=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0|=C2=A0 =C2=A01 +<br>
+&gt;=C2=A0 hw/ssi/trace-events=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 |=C2=A0 10 +<br>
+&gt;=C2=A0 include/hw/arm/allwinner-a10.h=C2=A0 =C2=A0 =C2=A0|=C2=A0 =C2=A0=
+2 +<br>
+&gt;=C2=A0 include/hw/ssi/allwinner-a10-spi.h |=C2=A0 56 +++<br>
+<br>
+For &quot;add new device to existing board&quot; changes we generally<br>
+prefer them to be two commits:<br>
+=C2=A0* add the new device model<br>
+=C2=A0* wire up the device in the board model<br>
+<br>
+Could you split this patch in two, please?<br></blockquote><div><br></div><=
+div>Yes, I will split this into two patches.</div><div>=C2=A0</div><blockqu=
+ote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px=
+ solid rgb(204,204,204);padding-left:1ex">
+<br>
+&gt; diff --git a/hw/ssi/allwinner-a10-spi.c b/hw/ssi/allwinner-a10-spi.c<b=
+r>
+&gt; new file mode 100644<br>
+&gt; index 0000000000..ea44ae46a3<br>
+&gt; --- /dev/null<br>
+&gt; +++ b/hw/ssi/allwinner-a10-spi.c<br>
+&gt; @@ -0,0 +1,534 @@<br>
+&gt; +/*<br>
+&gt; + *=C2=A0 Allwinner SPI Bus Serial Interface Emulation<br>
+&gt; + *<br>
+&gt; + *=C2=A0 Copyright (C) 2024 Strahinja Jankovic &lt;<a href=3D"mailto:=
+strahinja.p.jankovic@gmail.com" target=3D"_blank">strahinja.p.jankovic@gmai=
+l.com</a>&gt;<br>
+&gt; + *<br>
+&gt; + *=C2=A0 This program is free software; you can redistribute it and/o=
+r modify it<br>
+&gt; + *=C2=A0 under the terms of the GNU General Public License as publish=
+ed by the<br>
+&gt; + *=C2=A0 Free Software Foundation; either version 2 of the License, o=
+r<br>
+&gt; + *=C2=A0 (at your option) any later version.<br>
+&gt; + *<br>
+&gt; + *=C2=A0 This program is distributed in the hope that it will be usef=
+ul, but WITHOUT<br>
+&gt; + *=C2=A0 ANY WARRANTY; without even the implied warranty of MERCHANTA=
+BILITY or<br>
+&gt; + *=C2=A0 FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public=
+ License<br>
+&gt; + *=C2=A0 for more details.<br>
+&gt; + *<br>
+&gt; + *=C2=A0 You should have received a copy of the GNU General Public Li=
+cense along<br>
+&gt; + *=C2=A0 with this program; if not, see &lt;<a href=3D"http://www.gnu=
+.org/licenses/" rel=3D"noreferrer" target=3D"_blank">http://www.gnu.org/lic=
+enses/</a>&gt;.<br>
+&gt; + *<br>
+&gt; + * SPDX-License-Identifier: MIT<br>
+<br>
+This SPDX tag does not match the human-readable license. We&#39;re OK with<=
+br>
+either GPL-2.0-or-later or MIT, but which one do you want?<br>
+<br>
+Also, the .h file license-and-copyright comment has no SPDX tag;<br>
+we don&#39;t currently insist on SPDX tags, but you might wish to<br>
+be consistent.<br></blockquote><div><br></div><div>Good points, I will upda=
+te this.</div><div>=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"m=
+argin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left=
+:1ex">
+<br>
+&gt; +/* Control register */<br>
+&gt; +#define SPI_CTL_SDC=C2=A0 =C2=A0 =C2=A0 (1 &lt;&lt; 19)<br>
+&gt; +#define SPI_CTL_TP_EN=C2=A0 =C2=A0 (1 &lt;&lt; 18)<br>
+&gt; +#define SPI_CTL_SS_LEVEL (1 &lt;&lt; 17)<br>
+&gt; +#define SPI_CTL_SS_CTRL=C2=A0 (1 &lt;&lt; 16)<br>
+&gt; +#define SPI_CTL_DHB=C2=A0 =C2=A0 =C2=A0 (1 &lt;&lt; 15)<br>
+&gt; +#define SPI_CTL_DDB=C2=A0 =C2=A0 =C2=A0 (1 &lt;&lt; 14)<br>
+&gt; +#define SPI_CTL_SS=C2=A0 =C2=A0 =C2=A0 =C2=A0(3 &lt;&lt; 12)<br>
+&gt; +#define SPI_CTL_SS_SHIFT (12)<br>
+&gt; +#define SPI_CTL_RPSM=C2=A0 =C2=A0 =C2=A0(1 &lt;&lt; 11)<br>
+&gt; +#define SPI_CTL_XCH=C2=A0 =C2=A0 =C2=A0 (1 &lt;&lt; 10)<br>
+&gt; +#define SPI_CTL_RF_RST=C2=A0 =C2=A0(1 &lt;&lt; 9)<br>
+&gt; +#define SPI_CTL_TF_RST=C2=A0 =C2=A0(1 &lt;&lt; 8)<br>
+&gt; +#define SPI_CTL_SSCTL=C2=A0 =C2=A0 (1 &lt;&lt; 7)<br>
+&gt; +#define SPI_CTL_LMTF=C2=A0 =C2=A0 =C2=A0(1 &lt;&lt; 6)<br>
+&gt; +#define SPI_CTL_DMAMC=C2=A0 =C2=A0 (1 &lt;&lt; 5)<br>
+&gt; +#define SPI_CTL_SSPOL=C2=A0 =C2=A0 (1 &lt;&lt; 4)<br>
+&gt; +#define SPI_CTL_POL=C2=A0 =C2=A0 =C2=A0 (1 &lt;&lt; 3)<br>
+&gt; +#define SPI_CTL_PHA=C2=A0 =C2=A0 =C2=A0 (1 &lt;&lt; 2)<br>
+&gt; +#define SPI_CTL_MODE=C2=A0 =C2=A0 =C2=A0(1 &lt;&lt; 1)<br>
+&gt; +#define SPI_CTL_EN=C2=A0 =C2=A0 =C2=A0 =C2=A0(1 &lt;&lt; 0)<br>
+&gt; +#define SPI_CTL_MASK=C2=A0 =C2=A0 =C2=A0(0xFFFFFu)<br>
+&gt; +#define SPI_CTL_RESET=C2=A0 =C2=A0 (0x0002001Cu)<br>
+<br>
+Brackets aren&#39;t necessary around single integer values,<br>
+only around expressions.<br>
+<br>
+<br>
+&gt; +static void allwinner_a10_spi_update_irq(AWA10SPIState *s)<br>
+&gt; +{<br>
+&gt; +=C2=A0 =C2=A0 int level;<br>
+&gt; +<br>
+&gt; +=C2=A0 =C2=A0 if (fifo8_is_empty(&amp;s-&gt;rx_fifo)) {<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;regs[REG_INDEX(SPI_INT_STA_REG)] &a=
+mp;=3D ~SPI_INT_STA_RR;<br>
+&gt; +=C2=A0 =C2=A0 } else {<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;regs[REG_INDEX(SPI_INT_STA_REG)] |=
+=3D SPI_INT_STA_RR;<br>
+&gt; +=C2=A0 =C2=A0 }<br>
+&gt; +<br>
+&gt; +=C2=A0 =C2=A0 if (fifo8_num_used(&amp;s-&gt;rx_fifo) &gt;=3D (AW_A10_=
+SPI_FIFO_SIZE &gt;&gt; 2)) {<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;regs[REG_INDEX(SPI_INT_STA_REG)] |=
+=3D SPI_INT_STA_RF14;<br>
+&gt; +=C2=A0 =C2=A0 } else {<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;regs[REG_INDEX(SPI_INT_STA_REG)] &a=
+mp;=3D ~SPI_INT_STA_RF14;<br>
+&gt; +=C2=A0 =C2=A0 }<br>
+&gt; +<br>
+&gt; +=C2=A0 =C2=A0 if (fifo8_num_used(&amp;s-&gt;rx_fifo) &gt;=3D (AW_A10_=
+SPI_FIFO_SIZE &gt;&gt; 1)) {<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;regs[REG_INDEX(SPI_INT_STA_REG)] |=
+=3D SPI_INT_STA_RHF;<br>
+&gt; +=C2=A0 =C2=A0 } else {<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;regs[REG_INDEX(SPI_INT_STA_REG)] &a=
+mp;=3D ~SPI_INT_STA_RHF;<br>
+&gt; +=C2=A0 =C2=A0 }<br>
+&gt; +<br>
+&gt; +=C2=A0 =C2=A0 if (fifo8_num_free(&amp;s-&gt;rx_fifo) &lt;=3D (AW_A10_=
+SPI_FIFO_SIZE &gt;&gt; 2)) {<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;regs[REG_INDEX(SPI_INT_STA_REG)] |=
+=3D SPI_INT_STA_RF34;<br>
+&gt; +=C2=A0 =C2=A0 } else {<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;regs[REG_INDEX(SPI_INT_STA_REG)] &a=
+mp;=3D ~SPI_INT_STA_RF34;<br>
+&gt; +=C2=A0 =C2=A0 }<br>
+&gt; +<br>
+&gt; +=C2=A0 =C2=A0 if (fifo8_is_full(&amp;s-&gt;rx_fifo)) {<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;regs[REG_INDEX(SPI_INT_STA_REG)] |=
+=3D SPI_INT_STA_RF;<br>
+&gt; +=C2=A0 =C2=A0 } else {<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;regs[REG_INDEX(SPI_INT_STA_REG)] &a=
+mp;=3D ~SPI_INT_STA_RF;<br>
+&gt; +=C2=A0 =C2=A0 }<br>
+&gt; +<br>
+&gt; +=C2=A0 =C2=A0 if (fifo8_is_empty(&amp;s-&gt;tx_fifo)) {<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;regs[REG_INDEX(SPI_INT_STA_REG)] |=
+=3D SPI_INT_STA_TE;<br>
+&gt; +=C2=A0 =C2=A0 } else {<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;regs[REG_INDEX(SPI_INT_STA_REG)] &a=
+mp;=3D ~SPI_INT_STA_TE;<br>
+&gt; +=C2=A0 =C2=A0 }<br>
+&gt; +<br>
+&gt; +=C2=A0 =C2=A0 if (fifo8_num_free(&amp;s-&gt;tx_fifo) &gt;=3D (AW_A10_=
+SPI_FIFO_SIZE &gt;&gt; 2)) {<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;regs[REG_INDEX(SPI_INT_STA_REG)] |=
+=3D SPI_INT_STA_TE14;<br>
+&gt; +=C2=A0 =C2=A0 } else {<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;regs[REG_INDEX(SPI_INT_STA_REG)] &a=
+mp;=3D ~SPI_INT_STA_TE14;<br>
+&gt; +=C2=A0 =C2=A0 }<br>
+&gt; +<br>
+&gt; +=C2=A0 =C2=A0 if (fifo8_num_free(&amp;s-&gt;tx_fifo) &gt;=3D (AW_A10_=
+SPI_FIFO_SIZE &gt;&gt; 1)) {<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;regs[REG_INDEX(SPI_INT_STA_REG)] |=
+=3D SPI_INT_STA_THE;<br>
+&gt; +=C2=A0 =C2=A0 } else {<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;regs[REG_INDEX(SPI_INT_STA_REG)] &a=
+mp;=3D ~SPI_INT_STA_THE;<br>
+&gt; +=C2=A0 =C2=A0 }<br>
+&gt; +<br>
+&gt; +=C2=A0 =C2=A0 if (fifo8_num_used(&amp;s-&gt;tx_fifo) &lt;=3D (AW_A10_=
+SPI_FIFO_SIZE &gt;&gt; 2)) {<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;regs[REG_INDEX(SPI_INT_STA_REG)] |=
+=3D SPI_INT_STA_TE34;<br>
+&gt; +=C2=A0 =C2=A0 } else {<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;regs[REG_INDEX(SPI_INT_STA_REG)] &a=
+mp;=3D ~SPI_INT_STA_TE34;<br>
+&gt; +=C2=A0 =C2=A0 }<br>
+&gt; +<br>
+&gt; +=C2=A0 =C2=A0 if (fifo8_is_full(&amp;s-&gt;rx_fifo)) {<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;regs[REG_INDEX(SPI_INT_STA_REG)] |=
+=3D SPI_INT_STA_TF;<br>
+&gt; +=C2=A0 =C2=A0 } else {<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;regs[REG_INDEX(SPI_INT_STA_REG)] &a=
+mp;=3D ~SPI_INT_STA_TF;<br>
+&gt; +=C2=A0 =C2=A0 }<br>
+&gt; +<br>
+&gt; +=C2=A0 =C2=A0 level =3D s-&gt;regs[REG_INDEX(SPI_INT_STA_REG)] &amp;<=
+br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ s-&gt;regs[REG_INDEX(SPI_INTCTL_REG)] ?<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 1 :<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 0;<br>
+<br>
+If you declare &#39;level&#39; as a &#39;bool&#39; you can avoid this<br>
+awkward &quot;? 1 : 0&quot; expression.<br>
+<br>
+&gt; +<br>
+&gt; +=C2=A0 =C2=A0 qemu_set_irq(s-&gt;irq, level);<br>
+&gt; +<br>
+&gt; +=C2=A0 =C2=A0 trace_allwinner_a10_spi_update_irq(level);<br>
+&gt; +}<br>
+&gt; +<br>
+&gt; +static void allwinner_a10_spi_flush_txfifo(AWA10SPIState *s)<br>
+&gt; +{<br>
+&gt; +=C2=A0 =C2=A0 uint8_t tx;<br>
+&gt; +=C2=A0 =C2=A0 uint8_t rx;<br>
+&gt; +=C2=A0 =C2=A0 uint32_t burst_count =3D s-&gt;regs[REG_INDEX(SPI_BC_RE=
+G)];<br>
+&gt; +=C2=A0 =C2=A0 uint32_t tx_burst =3D s-&gt;regs[REG_INDEX(SPI_TC_REG)]=
+;<br>
+&gt; +=C2=A0 =C2=A0 trace_allwinner_a10_spi_burst_length(tx_burst);<br>
+&gt; +<br>
+&gt; +=C2=A0 =C2=A0 trace_allwinner_a10_spi_flush_txfifo_begin(fifo8_num_us=
+ed(&amp;s-&gt;tx_fifo),<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0fifo8_num_used(&amp;s-&gt;rx_fifo));<br>
+&gt; +<br>
+&gt; +=C2=A0 =C2=A0 while (!fifo8_is_empty(&amp;s-&gt;tx_fifo)) {<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 tx =3D fifo8_pop(&amp;s-&gt;tx_fifo);<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 rx =3D 0;<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 bool fill_rx =3D true;<br>
+<br>
+Variable declarations should always go at the start of a block,<br>
+not in the middle of one. (Since tx and rx are not used<br>
+outside the loop, you could fix this by declaring them<br>
+here rather than at the top of the function if you like.)<br>
+<br>
+&gt; +<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 trace_allwinner_a10_spi_tx(tx);<br>
+&gt; +<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 /* Write one byte at a time */<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 rx =3D ssi_transfer(s-&gt;bus, tx);<br>
+&gt; +<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 trace_allwinner_a10_spi_rx(rx);<br>
+&gt; +<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 /* Check DHB here to determing if RX byte=
+s should be stored */<br>
+<br>
+Typo: &quot;determine&quot;<br>
+<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 if (s-&gt;regs[REG_INDEX(SPI_CTL_REG)] &a=
+mp; SPI_CTL_DHB) {<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 /* Store rx bytes only afte=
+r WTC transfers */<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 if (tx_burst &gt; 0u) {<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 fill_rx =3D f=
+alse;<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 tx_burst--;<b=
+r>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
+&gt; +<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 if (fill_rx) {<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 if (fifo8_is_full(&amp;s-&g=
+t;rx_fifo)) {<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;regs[RE=
+G_INDEX(SPI_INT_STA_REG)] |=3D SPI_INT_STA_RF;<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 } else {<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 fifo8_push(&a=
+mp;s-&gt;rx_fifo, rx);<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
+&gt; +<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 allwinner_a10_spi_update_irq(s);<br>
+&gt; +<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 burst_count--;<br>
+&gt; +<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 if (burst_count =3D=3D 0) {<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;regs[REG_INDEX(SPI_IN=
+T_STA_REG)] |=3D SPI_INT_STA_TC;<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;regs[REG_INDEX(SPI_CT=
+L_REG)] &amp;=3D ~SPI_CTL_XCH;<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
+&gt; +=C2=A0 =C2=A0 }<br>
+&gt; +<br>
+&gt; +=C2=A0 =C2=A0 if (fifo8_is_empty(&amp;s-&gt;tx_fifo)) {<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;regs[REG_INDEX(SPI_INT_STA_REG)] |=
+=3D SPI_INT_STA_TC;<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;regs[REG_INDEX(SPI_CTL_REG)] &amp;=
+=3D ~SPI_CTL_XCH;<br>
+&gt; +=C2=A0 =C2=A0 }<br>
+&gt; +<br>
+&gt; +=C2=A0 =C2=A0 trace_allwinner_a10_spi_flush_txfifo_end(fifo8_num_used=
+(&amp;s-&gt;tx_fifo),<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0fifo8_num_used(&amp;s-&gt;rx_fifo));<br>
+&gt; +}<br>
+&gt; +<br>
+&gt; +static uint64_t allwinner_a10_spi_read(void *opaque, hwaddr offset,<b=
+r>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0unsig=
+ned size)<br>
+&gt; +{<br>
+&gt; +=C2=A0 =C2=A0 uint32_t value =3D 0;<br>
+&gt; +=C2=A0 =C2=A0 AWA10SPIState *s =3D opaque;<br>
+&gt; +=C2=A0 =C2=A0 uint32_t index =3D offset &gt;&gt; 2;<br>
+<br>
+The MemoryRegionOps defines that size =3D=3D 1 is permitted,<br>
+but this calculation of index without any validation<br>
+of offset means that if the guest writes a byte to<br>
+offset 1 we will treat that identically to writing a byte<br>
+to offset 0. This probably isn&#39;t what the hardware does.<br></blockquot=
+e><div><br></div><div>I checked once more the User manual, and it does not =
+mention unaligned access (example for RXDATA)</div><div><br></div>In 8-bits=
+ SPI bus width, this register can be accessed in byte, <br>half-word or wor=
+d unit by AHB. In byte accessing method, <br>if there are words in RXFIFO, =
+the top word is returned and <br>the RXFIFO depth is decreased by 1. In hal=
+f-word accessing <br>method, the two SPI bursts are returned and the RXFIFO=
+ <br>depth is decrease by 2. In word accessing method, the four <br>SPI bur=
+sts are returned and the RXFIFO depth is decreased <br><div>by 4.</div><div=
+><br></div><div>I chose not to cover the half-word and word access methods,=
+ since neither Linux kernel nor U-Boot use it</div><div>(both use only byte=
+ access).</div><div><br></div><div>I guess that I could add `.valid.unalign=
+ed =3D false` when initializing `MemoryRegionOps`?</div><div><br></div><div=
+>Best regards,</div><div>Strahinja</div><div><br></div><div>=C2=A0</div><bl=
+ockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-lef=
+t:1px solid rgb(204,204,204);padding-left:1ex">
+<br>
+&gt; +<br>
+&gt; +=C2=A0 =C2=A0 if (offset &gt; SPI_FIFO_STA_REG) {<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_log_mask(LOG_GUEST_ERROR,<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 &quot;[%s]%s: Bad register at offset 0x%&quot; HWADDR_PRIx &quot;\n=
+&quot;,<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 TYPE_AW_A10_SPI, __func__, offset);<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 return 0;<br>
+&gt; +=C2=A0 =C2=A0 }<br>
+&gt; +<br>
+&gt; +=C2=A0 =C2=A0 value =3D s-&gt;regs[index];<br>
+&gt; +<br>
+&gt; +=C2=A0 =C2=A0 if (allwinner_a10_spi_is_enabled(s)) {<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 switch (offset) {<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 case SPI_RXDATA_REG:<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 if (fifo8_is_empty(&amp;s-&=
+gt;rx_fifo)) {<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 /* value is u=
+ndefined */<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 value =3D 0xd=
+eadbeef;<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 } else {<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 /* read from =
+the RX FIFO */<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 value =3D fif=
+o8_pop(&amp;s-&gt;rx_fifo);<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 case SPI_TXDATA_REG:<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_log_mask(LOG_GUEST_ERR=
+OR,<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 &quot;[%s]%s: Trying to read from TX FIFO\n&quot;,<br=
+>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 TYPE_AW_A10_SPI, __func__);<br>
+&gt; +<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 /* Reading from TXDATA give=
+s 0 */<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 case SPI_FIFO_STA_REG:<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 /* Read current tx/rx fifo =
+data count */<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 value =3D fifo8_num_used(&a=
+mp;s-&gt;tx_fifo) &lt;&lt; SPI_FIFO_STA_TF_CNT_SHIFT |<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ fifo8_num_used(&amp;s-&gt;rx_fifo) &lt;&lt; SPI_FIFO_STA_RF_CNT_SHIFT;<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 default:<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
+&gt; +<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 allwinner_a10_spi_update_irq(s);<br>
+&gt; +=C2=A0 =C2=A0 }<br>
+&gt; +=C2=A0 =C2=A0 trace_allwinner_a10_spi_read(allwinner_a10_spi_get_regn=
+ame(offset), value);<br>
+&gt; +<br>
+&gt; +=C2=A0 =C2=A0 return (uint64_t)value;<br>
+<br>
+The cast here is unnecessary as the function return type is uint64_t.<br>
+<br>
+&gt; +}<br>
+&gt; +<br>
+&gt; +static void allwinner_a10_spi_write(void *opaque, hwaddr offset, uint=
+64_t value,<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 unsigned size)<br>
+&gt; +{<br>
+&gt; +=C2=A0 =C2=A0 AWA10SPIState *s =3D opaque;<br>
+&gt; +=C2=A0 =C2=A0 uint32_t index =3D offset &gt;&gt; 2;<br>
+<br>
+Similar remarks here about byte and halfword writes to<br>
+non-4-aligned offsets.<br>
+<br>
+&gt; +=C2=A0 =C2=A0 int i =3D 0;<br>
+&gt; +<br>
+&gt; +=C2=A0 =C2=A0 if (offset &gt; SPI_FIFO_STA_REG) {<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_log_mask(LOG_GUEST_ERROR,<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 &quot;[%s]%s: Bad register at offset 0x%&quot; HWADDR_PRIx &quot;\n=
+&quot;,<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 TYPE_AW_A10_SPI, __func__, offset);<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 return;<br>
+&gt; +=C2=A0 =C2=A0 }<br>
+&gt; +<br>
+&gt; +=C2=A0 =C2=A0 trace_allwinner_a10_spi_write(allwinner_a10_spi_get_reg=
+name(offset),<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 (uint32_t)value);<br>
+&gt; +<br>
+&gt; +=C2=A0 =C2=A0 if (!allwinner_a10_spi_is_enabled(s)) {<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 /* Block is disabled */<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 if (offset !=3D SPI_CTL_REG) {<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 /* Ignore access */<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 return;<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
+&gt; +=C2=A0 =C2=A0 }<br>
+&gt; +<br>
+&gt; +=C2=A0 =C2=A0 switch (offset) {<br>
+&gt; +=C2=A0 =C2=A0 case SPI_RXDATA_REG:<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_log_mask(LOG_GUEST_ERROR, &quot;[%s]=
+%s: Trying to write to RX FIFO\n&quot;,<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 TYPE_AW_A10_SPI, __func__);<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
+&gt; +=C2=A0 =C2=A0 case SPI_TXDATA_REG:<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 if (fifo8_is_full(&amp;s-&gt;tx_fifo)) {<=
+br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 /* Ignore writes if queue i=
+s full */<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
+&gt; +<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 fifo8_push(&amp;s-&gt;tx_fifo, (uint8_t)v=
+alue);<br>
+&gt; +<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
+&gt; +=C2=A0 =C2=A0 case SPI_INT_STA_REG:<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 /* Handle W1C bits - everything except SP=
+I_INT_STA_INT_CBF. */<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 value &amp;=3D ~SPI_INT_STA_INT_CBF;<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;regs[REG_INDEX(SPI_INT_STA_REG)] &a=
+mp;=3D ~(value &amp; SPI_INT_STA_MASK);<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
+&gt; +=C2=A0 =C2=A0 case SPI_CTL_REG:<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;regs[REG_INDEX(SPI_CTL_REG)] =3D va=
+lue;<br>
+&gt; +<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 for (i =3D 0; i &lt; AW_A10_SPI_CS_LINES_=
+NR; i++) {<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_set_irq(<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;cs_line=
+s[i],<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 i =3D=3D allw=
+inner_a10_spi_selected_channel(s) ?<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ !!(s-&gt;regs[REG_INDEX(SPI_CTL_REG)] &amp; SPI_CTL_SS_LEVEL) :<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ !(s-&gt;regs[REG_INDEX(SPI_CTL_REG)] &amp; SPI_CTL_SSPOL));<br>
+<br>
+This might be easier to read if we factored out the ?:<br>
+expression into a function with a descriptive name.<br>
+<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
+&gt; +<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 if (s-&gt;regs[REG_INDEX(SPI_CTL_REG)] &a=
+mp; SPI_CTL_XCH) {<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 /* Request to start emittin=
+g */<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 allwinner_a10_spi_flush_txf=
+ifo(s);<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 if (s-&gt;regs[REG_INDEX(SPI_CTL_REG)] &a=
+mp; SPI_CTL_TF_RST) {<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 allwinner_a10_spi_txfifo_re=
+set(s);<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;regs[REG_INDEX(SPI_CT=
+L_REG)] &amp;=3D ~SPI_CTL_TF_RST;<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 if (s-&gt;regs[REG_INDEX(SPI_CTL_REG)] &a=
+mp; SPI_CTL_RF_RST) {<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 allwinner_a10_spi_rxfifo_re=
+set(s);<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;regs[REG_INDEX(SPI_CT=
+L_REG)] &amp;=3D ~SPI_CTL_RF_RST;<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
+&gt; +=C2=A0 =C2=A0 default:<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;regs[index] =3D value;<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
+&gt; +=C2=A0 =C2=A0 }<br>
+&gt; +<br>
+&gt; +=C2=A0 =C2=A0 allwinner_a10_spi_update_irq(s);<br>
+&gt; +}<br>
+&gt; +<br>
+&gt; +static const MemoryRegionOps allwinner_a10_spi_ops =3D {<br>
+&gt; +=C2=A0 =C2=A0 .read =3D allwinner_a10_spi_read,<br>
+&gt; +=C2=A0 =C2=A0 .write =3D allwinner_a10_spi_write,<br>
+&gt; +=C2=A0 =C2=A0 .valid.min_access_size =3D 1,<br>
+&gt; +=C2=A0 =C2=A0 .valid.max_access_size =3D 4,<br>
+&gt; +=C2=A0 =C2=A0 .endianness =3D DEVICE_NATIVE_ENDIAN,<br>
+&gt; +};<br>
+&gt; +<br>
+&gt; +static const VMStateDescription allwinner_a10_spi_vmstate =3D {<br>
+&gt; +=C2=A0 =C2=A0 .name =3D TYPE_AW_A10_SPI,<br>
+&gt; +=C2=A0 =C2=A0 .version_id =3D 1,<br>
+&gt; +=C2=A0 =C2=A0 .minimum_version_id =3D 1,<br>
+&gt; +=C2=A0 =C2=A0 .fields =3D<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 (const VMStateField[]){<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 VMSTATE_FIFO8(tx_fifo, AWA1=
+0SPIState),<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 VMSTATE_FIFO8(rx_fifo, AWA1=
+0SPIState),<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 VMSTATE_UINT32_ARRAY(regs, =
+AWA10SPIState, AW_A10_SPI_REGS_NUM),<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 VMSTATE_END_OF_LIST() }<br>
+<br>
+Our usual indent for this is<br>
+=C2=A0 =C2=A0 .fields =3D (const VMStateField[]) {<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0VMSTATE_FOO(...),<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0...<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0VMSTATE_END_OF_LIST()<br>
+=C2=A0 =C2=A0 }=C2=A0</blockquote><blockquote class=3D"gmail_quote" style=
+=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding=
+-left:1ex">
+&gt; +};<br>
+&gt; +<br>
+<br>
+&gt; --- a/hw/ssi/trace-events<br>
+&gt; +++ b/hw/ssi/trace-events<br>
+&gt; @@ -53,3 +53,13 @@ pnv_spi_rx_read_N2frame(void) &quot;&quot;<br>
+&gt;=C2=A0 pnv_spi_shift_rx(uint8_t byte, uint32_t index) &quot;byte =3D 0x=
+%2.2x into RDR from payload index %d&quot;<br>
+&gt;=C2=A0 pnv_spi_sequencer_stop_requested(const char* reason) &quot;due t=
+o %s&quot;<br>
+&gt;=C2=A0 pnv_spi_RDR_match(const char* result) &quot;%s&quot;<br>
+&gt; +<br>
+&gt; +# allwinner_a10_spi.c<br>
+&gt; +allwinner_a10_spi_update_irq(uint32_t level) &quot;IRQ level is %d&qu=
+ot;<br>
+&gt; +allwinner_a10_spi_flush_txfifo_begin(uint32_t tx, uint32_t rx) &quot;=
+Begin: TX Fifo Size =3D %d, RX Fifo Size =3D %d&quot;<br>
+&gt; +allwinner_a10_spi_flush_txfifo_end(uint32_t tx, uint32_t rx) &quot;En=
+d: TX Fifo Size =3D %d, RX Fifo Size =3D %d&quot;<br>
+&gt; +allwinner_a10_spi_burst_length(uint32_t len) &quot;Burst length =3D %=
+d&quot;<br>
+&gt; +allwinner_a10_spi_tx(uint8_t byte) &quot;write 0x%02x&quot;<br>
+&gt; +allwinner_a10_spi_rx(uint8_t byte) &quot;read 0x%02x&quot;<br>
+&gt; +allwinner_a10_spi_read(const char* regname, uint32_t value) &quot;reg=
+[%s] =3D&gt; 0x%&quot; PRIx32<br>
+&gt; +allwinner_a10_spi_write(const char* regname, uint32_t value) &quot;re=
+g[%s] &lt;=3D 0x%&quot; PRIx32<br>
+<br>
+Be consistent about whether you want to use PRI* macros<br>
+for uint32_t types or not, please. (Admittedly QEMU itself is<br>
+not super consistent here either, but I think the more common<br>
+option is to use %d, %x etc for uint32_t, because we can assume<br>
+that &#39;int&#39; is a 32-bit type. It&#39;s only uint64_t that requires t=
+he<br>
+PRI macros.)<br>
+<br>
+thanks<br>
+-- PMM<br>
+</blockquote></div></div>
+
+--00000000000045296306235ce33c--

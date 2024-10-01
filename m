@@ -1,122 +1,178 @@
-Received: by 2002:a17:504:959a:b0:1be9:327d:8ee3 with SMTP id e26csp236385njl;
-        Tue, 1 Oct 2024 07:52:42 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCV/szaRVy8VcXwp+tF7e3B15PvfIc4IcE7poK9aoH/TEMbbx7x8DrH4xVZw7TYlEzCnx0PkMUtbxGsJmg==@linaro.org
-X-Google-Smtp-Source: AGHT+IEIGpgpvtNHNw+nqo0ZwAuuz8gCZwWV2o7vd+aJf5YiOGpQO8vLOEKJLUSVJ3V9FLa99oE3
-X-Received: by 2002:a05:6359:45a1:b0:1be:de52:97c3 with SMTP id e5c5f4694b2df-1c0cecbe7a6mr7139255d.5.1727794361874;
-        Tue, 01 Oct 2024 07:52:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1727794361; cv=none;
+Received: by 2002:a17:504:959a:b0:1be9:327d:8ee3 with SMTP id e26csp236639njl;
+        Tue, 1 Oct 2024 07:53:11 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCV8PkgJSTt4AZ79jVc5JkXTM6L34BYzddE6Dg4Ic6C39LZWJP0kyKgHEUoDxbXedWxxUlhaAG7rbB83mw==@linaro.org
+X-Google-Smtp-Source: AGHT+IHe36HGWCEGniChyBlq/7aHTf1TUd/kNcaXrTw2CKM2wrFuJxb/xABxpwUjJnraEEZalJfV
+X-Received: by 2002:a05:622a:143:b0:458:571c:f9b3 with SMTP id d75a77b69052e-45c9f1bea1dmr241050281cf.1.1727794391495;
+        Tue, 01 Oct 2024 07:53:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1727794391; cv=none;
         d=google.com; s=arc-20240605;
-        b=XlyaNQ7/KbtgYrh3jw6FR876SxNz4Dd4Qp1F8UkQIzJ7alj5qzggNv4/DbjX4qQbI2
-         PM6JGsnW6CpEJAPWiXhHv9ROZhAWDnhXHKHDdj3ADeffRkV2Zhi0shR9VtWpuvOHotBO
-         IjRco0e0Lw1IBTvDLfCcndtLd+e1PaYKHzmgtv8hzWiAuO3pszKWcSVMJsuB/XNXMx8e
-         5zVjfyOrxqY+8wFYfK2DehA//A/NHTmHH/dh4FRZFEn1ksjlp2iuK1RzBSIBPk1BA4Ay
-         qQssHM2PD+imAZ0/m+uWFANjNwpOj11K20QnIfEqD0W5af2QnrYL4245y99ivU/sn4eo
-         fNmQ==
+        b=CmIWU3kjAgfrE3HUjZW+EMhFbhMH+rBodQ3hxsm9OZi0E9n/lMDiIub/Nx1TRX7gXT
+         PyTgloGiCnvtLQWGgA5kIleCnp+EAzogoJCbchMneprCQVltxkRNfSuD9bSMyS3PZZoq
+         Xca1ebA50ZzHeFWDBk6z0gys8kDkiwAf5aDz3xhkyCZAhUO43YHFqBDy/ek4vhHNUJIe
+         HTP3/vrbEKqoorZ4U3Z3vtEhPzttnh34FPleg5lsKl1s4zNq8YdUc8Gnr5ykBfsmsCF8
+         IseyGjCVIOFvsZhUo+RkOsg7w51Z4800WjMpQauYeOH7ijAW44K3mgnxk1cgyUqB8Ku3
+         aXpA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=T1NDpBhJvX7cA4nuu6OkQSIHt4wMJgEGOAOYgzp3VUY=;
-        fh=I1WPfORysjPKha0oopD+bWO5BnRMMp4D4TYNOm8GkzI=;
-        b=Io4qpBoyTaunrHaafaYshFmaP/Ny7HoWGR9OMAAfW7w/arxtZ+EJAHAdoMS37TvvYK
-         7dN/+X7hiTqsKtSTLnG/0SphANBs8QpZthmomFIQxdq4bh70k/LZX/EKZ/q0Aj0InOMc
-         GjJuFfG8VHMEPi6Zh0hxc5KPgT51nDb6imRXDv3702M/jcLgFIoQs1avBU2eJNYi2afp
-         iCE9LqUGSNV7y64eVAnGS95ild3BNRxUDt7JZziBUEJSr0cRMH4bUzXufK5NqG3eZ6w5
-         elW3Cp0IC28ufW/bJncvwzb5pTtzDkaSdF1PcdM5/UXrQAddCHSnDf1/iXazm4wKCEGB
-         xm3Q==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:autocrypt:content-language:from:references:cc:to
+         :subject:user-agent:mime-version:date:message-id:dkim-signature;
+        bh=oX5e8KJFPVCsIMiJ1/A5vFhu5mTRzo9awdA64YgTDyI=;
+        fh=GG2OjotlRU2zFY1ZFevpsSTIdb9FQLNYV2NlrwD0Nqw=;
+        b=Ov7IPuksKc/hEWsfQTEA50/IflzGUVhcyDeh6q8WNRyRXrctLLKpyRT6RGbX3vFQQE
+         KnMO/4zmw9w/1K6uUWXFNhwFP7EJAFV8WM8Qi5DTnKjWdElLbFR8tSqVC8F9bnLXH20W
+         xN5REiwRmojuv8tf6hL5z455lcx3VJjfKSX4XurJf0KnRR8lwUej5Om64JNoy1IolKdA
+         rAmXO5ptar47e+wcuO1O1OxAYXWr3r8HDVzH9x37VSIkk6gkpUfn3t5PqiyUIJu/xXD4
+         kSoj0m/uRyetxaUDaa+ipkz7jd9+1sP0v12bGzRzjE13ci8O/7mmRmjdd3RpCG8B6elO
+         gUQg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=D5RCZlp6;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ffCxjcJZ;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6cb3b68777csi110768816d6.338.2024.10.01.07.52.41
+        by mx.google.com with ESMTPS id d75a77b69052e-45c9f28cfc1si107721331cf.31.2024.10.01.07.53.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 01 Oct 2024 07:52:41 -0700 (PDT)
+        Tue, 01 Oct 2024 07:53:11 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=D5RCZlp6;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ffCxjcJZ;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sveDi-0003G2-DN; Tue, 01 Oct 2024 10:51:23 -0400
+	id 1sveDg-0003EW-Ms; Tue, 01 Oct 2024 10:51:21 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1sveDX-0002rp-MK
- for qemu-devel@nongnu.org; Tue, 01 Oct 2024 10:51:12 -0400
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1sveDT-0005YR-Su
- for qemu-devel@nongnu.org; Tue, 01 Oct 2024 10:51:09 -0400
-Received: by mail-wm1-x32e.google.com with SMTP id
- 5b1f17b1804b1-42cb1e623d1so52264095e9.0
- for <qemu-devel@nongnu.org>; Tue, 01 Oct 2024 07:51:07 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1727794266; x=1728399066; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=T1NDpBhJvX7cA4nuu6OkQSIHt4wMJgEGOAOYgzp3VUY=;
- b=D5RCZlp6UMflUvwBJvD7Zz6KGdgIs/6xC26eVGwcSB6LlUhO0uyNK5EJKmZeZCs964
- DXRY0m2TFyLYhMPUDkYzwp0rVuKdBiIBcl+u2rplphAe6PAQygnDlLrxMUNzhqTjg+0P
- SI1RtsyCNUCINMDcbP5S3RKUXMB5lCJ+MB4dun8thxNZr0oLQw+lbC+m2l/IZjXI5E+H
- IoaJEWeniMBarJT4aDQqRnAgV6+K19YM5SzctUicXsPzuvZGA2ejlgvxG9j+tBMB486t
- blRvr7k60QatcAVQPiJmugTs5BSO4jBgPe0PHlP8nCbPiREwSzsSnoeb+osgKIQtEJpK
- cF9A==
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1sveCl-0001uJ-BF
+ for qemu-devel@nongnu.org; Tue, 01 Oct 2024 10:50:25 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1sveCj-0005O7-9I
+ for qemu-devel@nongnu.org; Tue, 01 Oct 2024 10:50:23 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1727794218;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=oX5e8KJFPVCsIMiJ1/A5vFhu5mTRzo9awdA64YgTDyI=;
+ b=ffCxjcJZ/PZ8QWhDyhQmTMgCc1cAGxbnDjX/zxmSfy2Ky6t0SzJp61Vm4oBx1QLbkErTC9
+ 7THfnVd8YvAuJKxcMONvxMq0nWQoLNInUyj1rJrdscjW6qL9SsYbomokUxgKpyMF0AoTHJ
+ yAjITG83nFSS6CkzxKc/ENSTzsbKzEs=
+Received: from mail-ej1-f70.google.com (mail-ej1-f70.google.com
+ [209.85.218.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-648-0oEO2u91M3CldOvzT126vw-1; Tue, 01 Oct 2024 01:24:07 -0400
+X-MC-Unique: 0oEO2u91M3CldOvzT126vw-1
+Received: by mail-ej1-f70.google.com with SMTP id
+ a640c23a62f3a-a8d26b5857cso394473266b.0
+ for <qemu-devel@nongnu.org>; Mon, 30 Sep 2024 22:24:07 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1727794266; x=1728399066;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=T1NDpBhJvX7cA4nuu6OkQSIHt4wMJgEGOAOYgzp3VUY=;
- b=WxQv8FzngyTN/ngMvm2fJD+7h7xMRmHoU9yYhO0Go7naILmNimnDJ+ik740SN0yEeE
- o8imqmky2ZyPfvmZraUbK7t/y6ZBNlMUKuVhyO1jtukdVaffPM5n57a7rU2HF0ANlhsG
- 51oeA1aig0EIkvjiJEQfjGs5S0Sg5+NiSzfs3VLjEtz873hrC8ikbbt8V87vjucQ7kga
- cZJnS4dx/VZuiq5WJAQSiCVbp4s7kbCDCEoLGtEv8XzUtqOatdiA61phz+JpZKR/hV8U
- SKH5FaS0EsbKD2GxI9OuEHszAzOnh72h0T8PcN6L+drkxv9KfHgapJAAG3MlCTd1dxzh
- QppA==
+ d=1e100.net; s=20230601; t=1727760246; x=1728365046;
+ h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=oX5e8KJFPVCsIMiJ1/A5vFhu5mTRzo9awdA64YgTDyI=;
+ b=ryEs6Ei6JUdUCFFjELskx8l0KNadJVYOy/BG74/xERTY3Sjg4X2FipcB1w6/lvqZSU
+ bT6X5+UnS6PrPTwceqsKHE2m8+8KfszdmcKlTCfc8Qzz97s817XX65Y/4UXpbPybJdNh
+ wAsksU5/KIx7FY5rjEr/5uUwzaQzonzTQjnoRuCGYpo82PwVnUr1+csOxk+UIVnRYiru
+ cjVzbQGBcOIHwH0b5/WKuTaNAPDK9AtCci5B7tGVe2qNvWJJesr5+Mut0ux5urQe0p/s
+ xwz7QCCtLDYpkuDRVGP8rDLgQLGcvz1SUBK5zbHRas/6Dv9/mmtkAYa2c5CYsTqSnLKo
+ usdg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWIsADwb496Gr01ljEA0grAqY33VX6rOf0rPbvmALaSqePS9d7AkUcJIZcYftg4k1BEyqfUk4GBo6iw@nongnu.org
-X-Gm-Message-State: AOJu0Yw8BaHc+NEUN5w+A7cXGWJp1jYa261/6jg1+BQVdrMNWQAuEEoF
- +eXNIOrcJDTKOAQhhpkxQMVQq2dEowoc24uheogaEt3bRzPBaoVdfY1SYf/HbB6UIBY3YVy7uLj
- yifDKaQ6hXD8UH7wlERB/55VG5rsm8W7s7Zybs9Z6e6Uh14Gs
-X-Received: by 2002:a05:6402:1ec3:b0:5c7:229a:b49d with SMTP id
- 4fb4d7f45d1cf-5c88262bf4cmr12144866a12.30.1727774677751; Tue, 01 Oct 2024
- 02:24:37 -0700 (PDT)
+ AJvYcCWf6EqNLpCCG582M+s+UvsCf3B59rD1p56/8e5FGBL716yy1ce00ITHtZAIIcPV31OJ3kNVDm9dFoYG@nongnu.org
+X-Gm-Message-State: AOJu0YxGiZBMpSO4DnkTIuYv9p2GBvWF9/tG/9S09uy9YlUbB7XP6izq
+ bRz9dUGKU+P2coiB4eVBEpdJIkvTaWSoaQvlG1yfwJhpLNaoEkk5CaX06qxTJADYJSwRHfTGmas
+ 91szzn1HubNffXVF8lK5ZFdvjvcxOh+PbA26t5eNDjYpEWPtw788P
+X-Received: by 2002:a17:907:3f1c:b0:a8a:837c:ebd4 with SMTP id
+ a640c23a62f3a-a93c4926f43mr1733196066b.27.1727760246492; 
+ Mon, 30 Sep 2024 22:24:06 -0700 (PDT)
+X-Received: by 2002:a17:907:3f1c:b0:a8a:837c:ebd4 with SMTP id
+ a640c23a62f3a-a93c4926f43mr1733193666b.27.1727760246010; 
+ Mon, 30 Sep 2024 22:24:06 -0700 (PDT)
+Received: from [192.168.0.7] (ip-109-42-49-143.web.vodafone.de.
+ [109.42.49.143]) by smtp.gmail.com with ESMTPSA id
+ a640c23a62f3a-a93e5324b4dsm418884766b.0.2024.09.30.22.24.04
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 30 Sep 2024 22:24:05 -0700 (PDT)
+Message-ID: <b1ec36e3-e910-41ae-9330-ed71dd038f64@redhat.com>
+Date: Tue, 1 Oct 2024 07:24:03 +0200
 MIME-Version: 1.0
-References: <20240919215525.22398-1-strahinja.p.jankovic@gmail.com>
- <CAFEAcA_RkwPgTksJCEP4=V0WY0wp0OiYP28PzXDJKRvpi_KWvw@mail.gmail.com>
- <CABtshVSsXPoMQy1EZaq2veo-80UMrUX+cqkvh5wq6cujW60s7A@mail.gmail.com>
-In-Reply-To: <CABtshVSsXPoMQy1EZaq2veo-80UMrUX+cqkvh5wq6cujW60s7A@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 1 Oct 2024 10:24:26 +0100
-Message-ID: <CAFEAcA89cd3zNE3sC_+tSKo51S9V=COoGnqC-Ce37W6c4et_mg@mail.gmail.com>
-Subject: Re: [PATCH] {hw/ssi,docs/system/arm}: Allwinner A10 SPI emulation
-To: Strahinja Jankovic <strahinjapjankovic@gmail.com>
-Cc: Beniamino Galvani <b.galvani@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>, 
- Alistair Francis <alistair@alistair23.me>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32e.google.com
-X-Spam_score_int: -4
-X-Spam_score: -0.5
-X-Spam_bar: /
-X-Spam_report: (-0.5 / 5.0 requ) BAYES_00=-1.9, DATE_IN_PAST_03_06=1.592,
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v7 8/8] tests/qtest:ast2700-gpio-test: Add GPIO test case
+ for AST2700
+To: Jamin Lin <jamin_lin@aspeedtech.com>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?=
+ <clg@kaod.org>, Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+Cc: troy_lee@aspeedtech.com, yunlin.tang@aspeedtech.com
+References: <20241001024334.834807-1-jamin_lin@aspeedtech.com>
+ <20241001024334.834807-9-jamin_lin@aspeedtech.com>
+From: Thomas Huth <thuth@redhat.com>
+Content-Language: en-US
+Autocrypt: addr=thuth@redhat.com; keydata=
+ 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
+In-Reply-To: <20241001024334.834807-9-jamin_lin@aspeedtech.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.144,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -131,83 +187,52 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: R/RFxmHq46Go
+X-TUID: WO+UMHACE7zY
 
-On Mon, 30 Sept 2024 at 22:28, Strahinja Jankovic
-<strahinjapjankovic@gmail.com> wrote:
->
-> Hi Peter,
->
-> Thank you very much for the review and detailed comments.
->
-> I will try to address all comments in the v2 of the patches, but I have s=
-ome questions I added below.
->
-> On Mon, Sep 30, 2024 at 4:45=E2=80=AFPM Peter Maydell <peter.maydell@lina=
-ro.org> wrote:
->> > +static uint64_t allwinner_a10_spi_read(void *opaque, hwaddr offset,
->> > +                                       unsigned size)
->> > +{
->> > +    uint32_t value =3D 0;
->> > +    AWA10SPIState *s =3D opaque;
->> > +    uint32_t index =3D offset >> 2;
->>
->> The MemoryRegionOps defines that size =3D=3D 1 is permitted,
->> but this calculation of index without any validation
->> of offset means that if the guest writes a byte to
->> offset 1 we will treat that identically to writing a byte
->> to offset 0. This probably isn't what the hardware does.
->
-> I checked once more the User manual, and it does not mention
-> unaligned access (example for RXDATA)
->
-> In 8-bits SPI bus width, this register can be accessed in byte,
-> half-word or word unit by AHB. In byte accessing method,
-> if there are words in RXFIFO, the top word is returned and
-> the RXFIFO depth is decreased by 1. In half-word accessing
-> method, the two SPI bursts are returned and the RXFIFO
-> depth is decrease by 2. In word accessing method, the four
-> SPI bursts are returned and the RXFIFO depth is decreased
-> by 4.
->
-> I chose not to cover the half-word and word access methods,
-> since neither Linux kernel nor U-Boot use it
-> (both use only byte access).
->
-> I guess that I could add `.valid.unaligned =3D false` when
-> initializing `MemoryRegionOps`?
+On 01/10/2024 04.43, Jamin Lin wrote:
+> Add GPIO test cases to test output and input pins from A0 to D7 for AST2700.
+> 
+> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+> ---
+>   tests/qtest/ast2700-gpio-test.c | 95 +++++++++++++++++++++++++++++++++
+>   tests/qtest/meson.build         |  3 ++
+>   2 files changed, 98 insertions(+)
+>   create mode 100644 tests/qtest/ast2700-gpio-test.c
+> 
+> diff --git a/tests/qtest/ast2700-gpio-test.c b/tests/qtest/ast2700-gpio-test.c
+...
+> +int main(int argc, char **argv)
+> +{
+> +    g_test_init(&argc, &argv, NULL);
+> +
+> +    qtest_add_func("/ast2700/gpio/input_pins", test_2700_input_pins);
+> +    qtest_add_func("/ast2700/gpio/output_pins", test_2700_output_pins);
+> +
+> +    return g_test_run();
+> +}
+> diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
+> index 310865e49c..e1b62d34d8 100644
+> --- a/tests/qtest/meson.build
+> +++ b/tests/qtest/meson.build
+> @@ -209,6 +209,8 @@ qtests_aspeed = \
+>     ['aspeed_hace-test',
+>      'aspeed_smc-test',
+>      'aspeed_gpio-test']
+> +qtests_aspeed64 = \
+> +  ['ast2700-gpio-test']
+>   
+>   qtests_stm32l4x5 = \
+>     ['stm32l4x5_exti-test',
+> @@ -247,6 +249,7 @@ qtests_aarch64 = \
+>     (config_all_devices.has_key('CONFIG_RASPI') ? ['bcm2835-dma-test', 'bcm2835-i2c-test'] : []) +  \
+>     (config_all_accel.has_key('CONFIG_TCG') and                                            \
+>      config_all_devices.has_key('CONFIG_TPM_TIS_I2C') ? ['tpm-tis-i2c-test'] : []) + \
+> +  (config_all_devices.has_key('CONFIG_ASPEED_SOC') ? qtests_aspeed64 : []) + \
+>     ['arm-cpu-features',
+>      'numa-test',
+>      'boot-serial-test',
 
-This wouldn't help, because a 2-byte load at offset 2
-is not "unaligned" from the memory system's point of view.
-(Also, unaligned =3D false is the default.)
+Thanks, that looks way simpler now!
 
-Looking again at your code I see I misread it a bit:
-I thought it was doing a switch() on index, but it is on
-offset.
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 
-Using a switch on offset makes it easy to handle the case
-of "bogus write to an offset that isn't the start of a
-register":
-
-   switch (offset) {
-   case SOME_REG_OFFSET:
-       /*
-        * handle it; if size 1/2/4 behave differently,
-        * then look at 'size' to do the right thing.
-        */
-       break;
-   /* etc */
-   default:
-       qemu_log_mask(LOG_GUEST_ERROR,
-                     "%s: bad offset 0x%x\n", __func__,
-                     (uint32_t)offset);
-       break;
-   }
-
-Then both the "offset that's not a defined register"
-and "offset that's not aligned to the start of a register"
-go into the default case, we log it as a guest error,
-and do nothing.
-
-thanks
--- PMM

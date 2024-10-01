@@ -1,86 +1,86 @@
-Received: by 2002:a05:7022:698c:b0:8b:e46e:3391 with SMTP id cj12csp64676dlb;
+Received: by 2002:a05:7022:698c:b0:8b:e46e:3391 with SMTP id cj12csp64677dlb;
         Tue, 1 Oct 2024 00:04:23 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCVS9Slcci/COmEcEzo9ylnkBHqznTSrt7mxmgrBmnJoU0SYdy7uKd9gdR5upvP7nkk0+WFNucDX5Bj62Q==@linaro.org
-X-Google-Smtp-Source: AGHT+IGb+lpLztC3ZS2WzL5qO3JQNkr7fK1Id3jopT1Gi39A3ESVE3NVItRV6DtsLz8gpZmI9iVw
-X-Received: by 2002:a17:903:32c3:b0:20b:6f04:486a with SMTP id d9443c01a7336-20b6f044a6amr133534395ad.35.1727766263596;
+X-Forwarded-Encrypted: i=3; AJvYcCVKaJSQHs4GhhMT+NnDWhaw24gjB7hyyuYOfC/c3mkhPSzaP7yMoMboF2JW/KVb3E2TL/OE6qQKPL3fgQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IH3bTCKfbzb2H0RpFobLKvz9BCfDBpX9fgZ09pRpxaKNv4BKxLafXwn0zp4r6NVWk8V8BSO
+X-Received: by 2002:a05:6808:22a0:b0:3e2:7f9f:7f5e with SMTP id 5614622812f47-3e3939cd5d7mr9311153b6e.30.1727766263612;
         Tue, 01 Oct 2024 00:04:23 -0700 (PDT)
 ARC-Seal: i=2; a=rsa-sha256; t=1727766263; cv=pass;
         d=google.com; s=arc-20240605;
-        b=H2lcIFJ2+ITyMF+fLA90FnfGQecsgN0ew0vd9+9EyNLbqXdZ9Yx2xrXCY1XIuFg90T
-         THOEs1myx0qRxuIXV0GF4msLo2/jmYdzwwolIydL0RXG9i+wiE+hg7F6TfvdPS5okZnk
-         xuiAyQK+fVcm5Qkd56oardC8qXG9AGuMD9xsCsN7BaI4vHJixsI/FuErVEtGX86t4m6g
-         txn5IezAwAFbhWxAok7hncvbyzU3VDBtGowi2xO9PwpSQf1bHNS9aaIbO6m60+zD1rL9
-         v5QDn2uJl3ZcMST4A0JwXUKEdIoi8RM3oLqbTPEHnakYTRXN9PYYQuCpSkHILJamfH9p
-         lCgQ==
+        b=jzmkH/ZYdYIsRSP53+7bSiVExOXIDbV5sdtbZZh4S5A7ltflhYEcKc3N//DB5+mPv3
+         QptbmFDWURMZ9xpwAY5REPJW84HtmcuitJbAUQS7CjZ1xB1QjxrLBn8A3T8DL8TrPvHK
+         1WECQf7v8cRmUX0LUeEBWFZevlf89vTyGXlDne6G2J4/zFM/aFGasXx2QdfWFajUKhHb
+         eA57hTuXDhRWWehPFq25nMw9knrCukA/16NC3AK4tPmPUJjpYWbNUvaf/wxcoqqJ9IpB
+         axa3ErnuD1XNayZvdM7gLV49yMpOYV9gQR6lOewG8qym7S0I0Ltb2ovixMxzdr9/no4Z
+         iVEw==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:content-transfer-encoding:mime-version:list-unsubscribe
          :list-subscribe:list-id:precedence:references:in-reply-to:message-id
          :date:subject:cc:to:from:dkim-signature;
-        bh=fMFygYrzqXehNTe5XtoiBAQrrdAxUPN+PSgNRFNsPkM=;
+        bh=R8t7feTdaPtL50ANU6ScNQtJvqumcabgzgnSAZ4n4vw=;
         fh=rzGDMRJFBBrjbOaW7dLpUOdm+9c++WP8RCbD+hTQXmk=;
-        b=D3YXwsOpx4+M0bMhAk5omzP19cGcOW8/BIan7L2py/PHGqlL4pnagwNUDkqchqaguk
-         gOeAEuFzvsoaJmxSfAKIZu6XBul+9b6D9D0YKdVThoslRkfBdp9EG2UhxgC0OTT4XV8Y
-         WSRdSJWs9oWdLytwybghP7R5/kEYYB8W+pVITfvSQNlu0+mt9jebcpatldzixFYFksH/
-         wMGMXJyx7xAe24gfkB3J8aAW3a3rQBs2Tr5u5BlFzGHevFCZcJdAPANvzH0cP8Vy1Pde
-         xV6xxhNYNncHge/nOscXZKAa5Rx/fQfxfQRIX3zabDy/FXQBcATgyiYmc73j155fLU7b
-         dmgQ==;
+        b=B/bBPbG1O4b6pZ4a6eR3qMVZlbtZxjjAeJj2TxPfFCqmCpAIS4nwJJ6zxv3S/D3umf
+         a+8x/RWPBJ080QcE5I1W3CQHYhDjlkRHvztrgcNuuMcWsQ+evzIRkYPQpSVBL2/KdRWy
+         LsG9On9/u4wJq8tRfYlgZVXqX1qGdJv37gCvnksb3OZgtH86CM4Li0dcD4B13NhTdKml
+         f9LwgPRVySqZKfjlhglERUSPrW6cccqFOThVbpSi5+tBR9aCzGmie3CX/j4QpYdV98Rh
+         B6XtzbpQb6pggCsTjVhf/yu9N1+Ftqfa2F/sgIUTTJcTVIYHGveG3kAi+ddwOdPGD/8E
+         OhDA==;
         dara=google.com
 ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=nX6vCR5R;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=WKhB7puq;
        arc=pass (i=1 dkim=pass dkdomain=kernel.org);
-       spf=pass (google.com: domain of linux-kernel+bounces-345351-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-345351-alex.bennee=linaro.org@vger.kernel.org";
+       spf=pass (google.com: domain of linux-kernel+bounces-345350-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) smtp.mailfrom="linux-kernel+bounces-345350-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
-Return-Path: <linux-kernel+bounces-345351-alex.bennee=linaro.org@vger.kernel.org>
-Received: from sy.mirrors.kernel.org (sy.mirrors.kernel.org. [2604:1380:40f1:3f00::1])
-        by mx.google.com with ESMTPS id d9443c01a7336-20b37e51a09si104206985ad.363.2024.10.01.00.04.23
+Return-Path: <linux-kernel+bounces-345350-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sy.mirrors.kernel.org (sy.mirrors.kernel.org. [147.75.48.161])
+        by mx.google.com with ESMTPS id 41be03b00d2f7-7e6db5fc48dsi10439937a12.34.2024.10.01.00.04.23
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Tue, 01 Oct 2024 00:04:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of linux-kernel+bounces-345351-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) client-ip=2604:1380:40f1:3f00::1;
+Received-SPF: pass (google.com: domain of linux-kernel+bounces-345350-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) client-ip=147.75.48.161;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=nX6vCR5R;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=WKhB7puq;
        arc=pass (i=1 dkim=pass dkdomain=kernel.org);
-       spf=pass (google.com: domain of linux-kernel+bounces-345351-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-345351-alex.bennee=linaro.org@vger.kernel.org";
+       spf=pass (google.com: domain of linux-kernel+bounces-345350-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) smtp.mailfrom="linux-kernel+bounces-345350-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
 Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by sy.mirrors.kernel.org (Postfix) with ESMTPS id 818EFB22437
-	for <alex.bennee@linaro.org>; Tue,  1 Oct 2024 07:04:21 +0000 (UTC)
+	by sy.mirrors.kernel.org (Postfix) with ESMTPS id 9362CB21999
+	for <alex.bennee@linaro.org>; Tue,  1 Oct 2024 07:04:22 +0000 (UTC)
 Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id AF0401BD017;
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id AFC361BD01D;
 	Tue,  1 Oct 2024 07:04:11 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="nX6vCR5R"
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="WKhB7puq"
 Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6C1581BC9F9
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6C0F31BC9F4
 	for <linux-kernel@vger.kernel.org>; Tue,  1 Oct 2024 07:04:11 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=10.30.226.201
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1727766251; cv=none; b=k0gcAuqaSXoPKrUhBRfaVTuhD52lmkn0xrp+f3xPGBJP6ZmiLou9cR6vC57J0VGq5G0Rhj01Tzbqv2iciXuns5uDf6Iom6maIOhhnD72DvXdKLj0yj+OB5pLJ+6+c/1mQ2Uq63qzYH0TRRO+YG3Tai9tyaw8fH20xpZ3AwERSz8=
+	t=1727766251; cv=none; b=bBwbazV9SDc8zrz6mAOA68FW9nkBot7yp+yyddkz11k2rVrmYEl4FHkA1C4knNlCDTEN129XlhoqNO6vhSczNngSI72zIK+tvvjHaDdrXNAzjm0U4uHgBv6UCO2TpMDYB8Y4ujcPAxJVzCKV8RqYk+5BsieYrmdN6GCe68ff+Lo=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
 	s=arc-20240116; t=1727766251; c=relaxed/simple;
-	bh=OPn+v+8+BveQRdEyioQUgXVoI5BFnHOQMXslK4VQRmM=;
+	bh=zkop42TFRLpY7ULuyBanfVruQ6JbCYVDcuNKDW81Y1Y=;
 	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:
-	 MIME-Version; b=rsYS4HqfNm9gxtEAanw38heF1g8/A53z7BWdtj4h2vBlRNurJsJcmtO2VzA3T4kxAmc1J8KIfMCX/rk+r9QJPu8RVS3gMiBKbaZxzUVrnlEHL4/8ga1ACk/swjovM1iN+5EY+kqaV/nkrH5jYmv64Qbeu+VE5Q+y1/nv9faJUgM=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=nX6vCR5R; arc=none smtp.client-ip=10.30.226.201
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1D3B5C4CECF;
+	 MIME-Version; b=ozwatxfBA/+k1ddfbMFWVE0jbugGO8qGv+/CK5wqupqk+nrKlF/dBNvwqwkVqFPyzj+oVCTPnJc1tmCUAfPBLbbAOABrFreIqzF6eiYfWFlUFtd+v2SuLEQHdgG/PkyzeMLklPJWL81/7Hl8cTdLkGzWoU6kGdqFbdwvF/1mZBo=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=WKhB7puq; arc=none smtp.client-ip=10.30.226.201
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 10C82C4CEC6;
 	Tue,  1 Oct 2024 07:04:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
 	s=k20201202; t=1727766251;
-	bh=OPn+v+8+BveQRdEyioQUgXVoI5BFnHOQMXslK4VQRmM=;
+	bh=zkop42TFRLpY7ULuyBanfVruQ6JbCYVDcuNKDW81Y1Y=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=nX6vCR5Ry8sK/PUt1JzItEvx062H3XhEucp8Rhka53c8x/0JqWIT0p380FeK3XL4E
-	 XkAKf1Blro7LrHPrnnqrsfDhhl1VNoesmb0VaT1+Eulwb1QDnrm6Ye3N7GItVRu5//
-	 gnJPs2kh2+Oe62QjUNpu6TNn0n0w2HidemsIEhey2Mpwa9pMLuuoMqY7I7uRlF3jL9
-	 Mg6rjW1khLrmC6kvCLrav/WgHdTIq1+ed29jDGlwAmSlw6yytDznnvYYg2e9edFoR2
-	 +WgpkpdjTNYOUBh6Sj36+ZEnb8jQ/1VryyhkN3tIcIpqO0k57OSJpRdrvzA1MBipW0
-	 gczzKdU5vfU8Q==
+	b=WKhB7puqWLjWEh5WYvXQE0rTdVWeDN5LVjylm2JNCfGw36C9B3RgdhFiU3pOOCOdm
+	 UYkHmf3N84IWPAUUY8Ks+bbYzR/PPqrpiyKYOI7DWDlSunSKxboSq7rqteYSBdtrUZ
+	 I7Q6CTbB6gi82Au7iP5bFOEjLAcsubfHBtk7DRTpWQqrotb6bxTZO+1V4eGacC+/ro
+	 fj12AUupWZpyJ1tBo+2qbf68QpVgImo/KgjfsZNrPRD5aMpDGAGY/CDqR3RzasUg/o
+	 jXCmypQ2pCc4BIft6xZraHM06VFVMlE+Er3RfiFgtXm5n21ogDZChIqSV4y2eNjkD5
+	 5v8GJt3FzyWHQ==
 Received: from mchehab by mail.kernel.org with local (Exim 4.98)
 	(envelope-from <mchehab@kernel.org>)
-	id 1svWvY-00000001V0l-2CWy;
+	id 1svWvY-00000001V0R-1Rfk;
 	Tue, 01 Oct 2024 09:04:08 +0200
 From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 To: Igor Mammedov <imammedo@redhat.com>
@@ -92,9 +92,9 @@ Cc: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
 	qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org,
 	Jonathan Cameron <Jonathan.Cameron@huawei.com>
-Subject: [PATCH v2 06/15] acpi/ghes: Remove a duplicated out of bounds check
-Date: Tue,  1 Oct 2024 09:03:43 +0200
-Message-ID: <ccb2123649c35e0a268b9745e9b295c8208e92bd.1727766088.git.mchehab+huawei@kernel.org>
+Subject: [PATCH v2 02/15] acpi/ghes: simplify acpi_ghes_record_errors() code
+Date: Tue,  1 Oct 2024 09:03:39 +0200
+Message-ID: <3c7830e2db3aa2655db0487611c853728a1dca54.1727766088.git.mchehab+huawei@kernel.org>
 X-Mailer: git-send-email 2.46.0
 In-Reply-To: <cover.1727766088.git.mchehab+huawei@kernel.org>
 References: <cover.1727766088.git.mchehab+huawei@kernel.org>
@@ -106,34 +106,94 @@ List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Sender: Mauro Carvalho Chehab <mchehab@kernel.org>
-X-TUID: nFvuMkJS3a3X
+X-TUID: 3Y1qb3NF54EX
 
-acpi_ghes_record_errors() has an assert() at the beginning
-to ensure that source_id will be lower than
-ACPI_GHES_ERROR_SOURCE_COUNT. Remove a duplicated check.
+Reduce the ident of the function and prepares it for
+the next changes.
+
+No functional changes.
 
 Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
 ---
- hw/acpi/ghes.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+ hw/acpi/ghes.c | 56 ++++++++++++++++++++++++++------------------------
+ 1 file changed, 29 insertions(+), 27 deletions(-)
 
 diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
-index 29cd7e4d8171..5f67322bf0f2 100644
+index dc217694deb9..e66f3be1502b 100644
 --- a/hw/acpi/ghes.c
 +++ b/hw/acpi/ghes.c
-@@ -404,9 +404,7 @@ int acpi_ghes_record_errors(uint8_t source_id, uint64_t physical_address)
-         return -1;
+@@ -402,40 +402,42 @@ int acpi_ghes_record_errors(uint8_t source_id, uint64_t physical_address)
+ 
+     start_addr = le64_to_cpu(ags->ghes_addr_le);
+ 
+-    if (physical_address) {
++    if (!physical_address) {
++        return -1;
++    }
+ 
+-        if (source_id < ACPI_GHES_ERROR_SOURCE_COUNT) {
+-            start_addr += source_id * sizeof(uint64_t);
+-        }
++    if (source_id < ACPI_GHES_ERROR_SOURCE_COUNT) {
++        start_addr += source_id * sizeof(uint64_t);
++    }
+ 
+-        cpu_physical_memory_read(start_addr, &error_block_addr,
+-                                 sizeof(error_block_addr));
++    cpu_physical_memory_read(start_addr, &error_block_addr,
++                             sizeof(error_block_addr));
+ 
+-        error_block_addr = le64_to_cpu(error_block_addr);
++    error_block_addr = le64_to_cpu(error_block_addr);
+ 
+-        read_ack_register_addr = start_addr +
+-            ACPI_GHES_ERROR_SOURCE_COUNT * sizeof(uint64_t);
++    read_ack_register_addr = start_addr +
++                             ACPI_GHES_ERROR_SOURCE_COUNT * sizeof(uint64_t);
+ 
+-        cpu_physical_memory_read(read_ack_register_addr,
+-                                 &read_ack_register, sizeof(read_ack_register));
++    cpu_physical_memory_read(read_ack_register_addr,
++                             &read_ack_register, sizeof(read_ack_register));
+ 
+-        /* zero means OSPM does not acknowledge the error */
+-        if (!read_ack_register) {
+-            error_report("OSPM does not acknowledge previous error,"
+-                " so can not record CPER for current error anymore");
+-        } else if (error_block_addr) {
+-            read_ack_register = cpu_to_le64(0);
+-            /*
+-             * Clear the Read Ack Register, OSPM will write it to 1 when
+-             * it acknowledges this error.
+-             */
+-            cpu_physical_memory_write(read_ack_register_addr,
+-                &read_ack_register, sizeof(uint64_t));
++    /* zero means OSPM does not acknowledge the error */
++    if (!read_ack_register) {
++        error_report("OSPM does not acknowledge previous error,"
++                     " so can not record CPER for current error anymore");
++    } else if (error_block_addr) {
++        read_ack_register = cpu_to_le64(0);
++        /*
++         * Clear the Read Ack Register, OSPM will write it to 1 when
++         * it acknowledges this error.
++         */
++        cpu_physical_memory_write(read_ack_register_addr,
++                                  &read_ack_register, sizeof(uint64_t));
+ 
+-            ret = acpi_ghes_record_mem_error(error_block_addr,
+-                                             physical_address);
+-        } else
+-            error_report("can not find Generic Error Status Block");
++        ret = acpi_ghes_record_mem_error(error_block_addr,
++                                         physical_address);
++    } else {
++        error_report("can not find Generic Error Status Block");
      }
  
--    if (source_id < ACPI_GHES_ERROR_SOURCE_COUNT) {
--        start_addr += source_id * sizeof(uint64_t);
--    }
-+    start_addr += source_id * sizeof(uint64_t);
- 
-     cpu_physical_memory_read(start_addr, &error_block_addr,
-                              sizeof(error_block_addr));
+     return ret;
 -- 
 2.46.0
 

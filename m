@@ -1,135 +1,142 @@
-Received: by 2002:a17:504:959a:b0:1be9:327d:8ee3 with SMTP id e26csp236745njl;
-        Tue, 1 Oct 2024 07:53:22 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWlUXm+CmI4zt3TQJkCYgcAEeT/io1G931nkapayUh3ApUR51kLRU8yMNFstjEM8xSJxyDYzYP4KxbSIA==@linaro.org
-X-Google-Smtp-Source: AGHT+IGioYjG5aWEYaiBPS2Odr/7dnAYavP4gWcoW6qjJmD7B07cBvV3i+t5Zr+da48x6b/CZunB
-X-Received: by 2002:a05:620a:4087:b0:7a9:b2d6:7fa5 with SMTP id af79cd13be357-7ae3782e4c4mr2968690185a.26.1727794402695;
-        Tue, 01 Oct 2024 07:53:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1727794402; cv=none;
+Received: by 2002:a17:504:959a:b0:1be9:327d:8ee3 with SMTP id e26csp271784njl;
+        Tue, 1 Oct 2024 08:43:09 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXNDo4t1dlVQJS4D8ezVkM4Gl3X/gTUuVAUfUMuq49uyjgj5v13aeykO+3nINrPxbdS3oaNacXZW1wMwQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IHcoCwghqNYkACarN6g3nWd2aQbHOxxNlALG0V23+VQj6jlmnmIokOhaLwd2JZJa+fGO1iw
+X-Received: by 2002:a05:620a:2907:b0:7a5:1ca:d008 with SMTP id af79cd13be357-7ae6275db11mr9488685a.66.1727797389104;
+        Tue, 01 Oct 2024 08:43:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1727797389; cv=none;
         d=google.com; s=arc-20240605;
-        b=VjnSYyOAYqrQERy92OOwJUNqNYZbJH7pio1VfhZ8fldhnvdGJKjJFibfs4zPqxhRo6
-         ng8RcBbvS5kG0XIQCyA86yvwfpvaqpMUFypcAEeswoMS4lmjtaiUTHwIFS7y0YQV5qTh
-         UHi0OMbhPh2BhHzbWPHQLy1Lt089RypFETagd7cEBFXGcbuC1cpNkNytvZ+uDAFQf6Dg
-         LsInT926yiVr9squ72wgMYOLjYKTxcvhcFmjM5Fb5wSmBRZaFjnn64YC01akL1uLCND1
-         3L1Rmy3qfw4IhKfap5ZSn49wRlgZgiIZOskMZBL1F+BNiCCxG5Y9jvAVjPwg3zz77/Ci
-         +SuA==
+        b=b6UT5JTwqr2NmyOPgNrn8pku7pwfOSS2kZN/SnwztGcKiMRyyStSIyc5+XGuNRp05g
+         JDO3RIS8LbnvNn4DK8hePcWY/hJ74NpNQbf8XerhRUtfkhYlIpPScslRQ+1QZvP3zfhU
+         vr/PEsHRTYwcdmBNtyJr8YCIK5ivuMhMrDodcIhH5qeJgOg1xoDyPgTXh5aVUqBgGiyR
+         VPfU9zjYw3AdQvOSd5MjfARD3JjiLKR1Z80Jay8TkkvIuUi9F9ESxqB9a2JChKdO7ZAQ
+         rF1i14fHjrmWKp/+tkYZ5iv8dRBbFupbGy+T+zSuVoExHzHQKnhoRT9Gqf1hMFoRsmQH
+         0DoQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from;
-        bh=gzdjRQ2MjC0GMqRnvIfHBurwucvzpTSHlgKQQqBGeHM=;
-        fh=ABklJQq7KO4nQ4dmhroInuk7feazkA6WNnIOsatc/xo=;
-        b=eRFwc3i165MkTYWPaARSh6AcFKprspeotuSIGd6mFiqs4B5Vgr7m6DT8zq95kY2Tyr
-         otdM4Oo7zr3ZbqnVxdtD/yJTfja8Ij5qDD2HmfnCHP2gYtOB6ybPafV699MhojD39n1s
-         zSXyBNiHC/S0oZ/n5YvOXCppKdzDqV/JCnnW7tbX0oIPzFz7ozNyQJLG5Dxb887L3xGo
-         x4bTGGwyFkkhyUury8hw9A89ms5YDV3Nn04X7uEhG92+1fyU/QZc6ratXjB3eK4RkhGe
-         667gEf0+tsL/gKDyXW3gYz2sGPO2+RkOm7kmn4QByT/LXg2kfSjhV8XzJH6EgDVwM6jj
-         kFlw==;
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id;
+        bh=Fp7qDKqb2xOia3NMUm2DYy+s/BDB+sIW9LJh3hYXYd8=;
+        fh=97uyR/uuvr4jnX3vPrzCNtEvGPs9ZT7AiNCQmcU+/V4=;
+        b=RBj59DHEvjr+7pApQWph9DGKx2vSx4PbX8axZMZ9rKm7NCesEea/KyXQvJYXwMKBGf
+         bnIM5ZCz4CmO3QMfTBSFcwkuCiTegoIRrxw82B2HO4Vkce98kw3w7X2Sa7Rdyh0Tf00v
+         0a4/rhL4fZZUA3yHi+aJ6YSmHKuadyDuK8Op1ZbM5XRQZaVoQ8FNgxByx14sUXKpqRzn
+         dBLChn7zKyNGwHG8L01SIJFUBFXW+f5BMEYyaABo6EJZQtrLWziWmxF0e3zLhtOOHtX2
+         lkGPTb7FeS2LgpVQ+W1PiA+6FwurWyQV+gC4TjjC5qmXU0le9qN1DQFM3eVna8VOqxNV
+         qzFQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7ae37837de6si1107087785a.285.2024.10.01.07.53.22
+        by mx.google.com with ESMTPS id af79cd13be357-7ae377d0683si1098867185a.7.2024.10.01.08.43.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 01 Oct 2024 07:53:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 01 Oct 2024 08:43:09 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sveE4-00041M-Q4; Tue, 01 Oct 2024 10:51:44 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1svf1d-0006Ze-RK; Tue, 01 Oct 2024 11:42:59 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <adiupina@astralinux.ru>)
- id 1sveCm-0001uU-4e; Tue, 01 Oct 2024 10:50:26 -0400
-Received: from mx.astralinux.ru ([89.232.161.68])
+ (Exim 4.90_1) (envelope-from <SRS0=vEdf=Q5=kaod.org=clg@ozlabs.org>)
+ id 1svf1a-0006Xp-Qg; Tue, 01 Oct 2024 11:42:55 -0400
+Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <adiupina@astralinux.ru>)
- id 1sveCk-00058E-1X; Tue, 01 Oct 2024 10:50:23 -0400
-Received: from [10.177.185.109] (helo=new-mail.astralinux.ru)
- by mx.astralinux.ru with esmtps (TLS1.3) tls
- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
- (envelope-from <adiupina@astralinux.ru>)
- id 1svZWG-00FsZP-O8; Tue, 01 Oct 2024 12:50:12 +0300
-Received: from rbta-msk-lt-302690.astralinux.ru (unknown [10.198.11.47])
- by new-mail.astralinux.ru (Postfix) with ESMTPA id 4XHtWP30KLzkWwW;
- Tue,  1 Oct 2024 12:51:45 +0300 (MSK)
-From: Alexandra Diupina <adiupina@astralinux.ru>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Alexandra Diupina <adiupina@astralinux.ru>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, sdl.qemu@linuxtesting.org
-Subject: [PATCH 2/3] hw/intc/arm_gicv3_cpuif: Add cast to match the
- documentation
-Date: Tue,  1 Oct 2024 12:51:24 +0300
-Message-Id: <20241001095125.26043-2-adiupina@astralinux.ru>
-X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20241001095125.26043-1-adiupina@astralinux.ru>
-References: <20241001095125.26043-1-adiupina@astralinux.ru>
+ (Exim 4.90_1) (envelope-from <SRS0=vEdf=Q5=kaod.org=clg@ozlabs.org>)
+ id 1svf1Z-0007Ss-2W; Tue, 01 Oct 2024 11:42:54 -0400
+Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4XJ2JR5d74z4x4c;
+ Wed,  2 Oct 2024 01:42:47 +1000 (AEST)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (Client did not present a certificate)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4XJ2JK3tHbz4wb0;
+ Wed,  2 Oct 2024 01:42:40 +1000 (AEST)
+Message-ID: <eceb3377-58a7-4b90-a4b7-452500771da0@kaod.org>
+Date: Tue, 1 Oct 2024 17:42:35 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-DrWeb-SpamScore: 0
-X-DrWeb-SpamState: legit
-X-DrWeb-SpamDetail: gggruggvucftvghtrhhoucdtuddrgedvfedrvdehuddgtddvucetufdoteggodetrfcurfhrohhfihhlvgemucfftfghgfeunecuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefhvfevufffkffojghfggfgsedtkeertdertddtnecuhfhrohhmpeetlhgvgigrnhgurhgrucffihhuphhinhgruceorgguihhuphhinhgrsegrshhtrhgrlhhinhhugidrrhhuqeenucggtffrrghtthgvrhhnpeefkedufedvkeffuedtgfdugeeutdegvdffffejfffgleffieduhfejvdelffdvudenucffohhmrghinheplhhinhhugihtvghsthhinhhgrdhorhhgnecukfhppedutddrudelkedruddurdegjeenucfrrghrrghmpehhvghloheprhgsthgrqdhmshhkqdhlthdqfedtvdeiledtrdgrshhtrhgrlhhinhhugidrrhhupdhinhgvthepuddtrdduleekrdduuddrgeejmeefleelledvpdhmrghilhhfrhhomheprgguihhuphhinhgrsegrshhtrhgrlhhinhhugidrrhhupdhnsggprhgtphhtthhopeehpdhrtghpthhtohepphgvthgvrhdrmhgrhiguvghllheslhhinhgrrhhordhorhhgpdhrtghpthhtoheprgguihhuphhinhgrsegrshhtrhgrlhhinhhugidrrhhupdhrtghpthhtohepqhgvmhhuqdgrrhhmsehnohhnghhnuhdrohhrghdprhgtphhtthhopehqvghmuhdquggvvhgvlhesnhhonhhgnhhurdhorhhgpdhrtghpthhtohepshgulhdrqhgvmh
- husehlihhnuhigthgvshhtihhnghdrohhrghenucffrhdrhggvsgcutehnthhishhprghmmecunecuvfgrghhsme
-X-DrWeb-SpamVersion: Dr.Web Antispam 1.0.7.202406240#1727772118#02
-X-AntiVirus: Checked by Dr.Web [MailD: 11.1.19.2307031128,
- SE: 11.1.12.2210241838, Core engine: 7.00.65.05230, Virus records: 12191152,
- Updated: 2024-Oct-01 08:11:54 UTC]
-Received-SPF: pass client-ip=89.232.161.68;
- envelope-from=adiupina@astralinux.ru; helo=mx.astralinux.ru
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
+User-Agent: Mozilla Thunderbird
+Subject: Re: [SPAM] [PATCH v7 0/8] Support GPIO for AST2700
+To: Jamin Lin <jamin_lin@aspeedtech.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ Thomas Huth <thuth@redhat.com>, Laurent Vivier <lvivier@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+Cc: troy_lee@aspeedtech.com, yunlin.tang@aspeedtech.com
+References: <20241001024334.834807-1-jamin_lin@aspeedtech.com>
+Content-Language: en-US, fr
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <20241001024334.834807-1-jamin_lin@aspeedtech.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=150.107.74.76;
+ envelope-from=SRS0=vEdf=Q5=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
+X-Spam_score_int: -39
+X-Spam_score: -4.0
+X-Spam_bar: ----
+X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_MED=-2.3,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: kDeypS5IhE7X
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: Mbl9Hgf1WsTF
 
-The result of 1 << regbit with regbit==31 has a 1 in the 32nd bit.
-When cast to uint64_t (for further bitwise OR), the 32 most
-significant bits will be filled with 1s. However, the documentation
-states that the upper 32 bits of ICH_AP[0/1]R<n>_EL2 are reserved.
+On 10/1/24 04:43, Jamin Lin wrote:
+> v1: Support GPIO for AST2700
+> v2: Fix clear incorrect interrupt status and adds reviewer suggestions
+> v3: Remove nested conditionals and adds reviewer suggestions
+> v4: Add test cases to test GPIO for AST2700 and update commit messages
+> v5: Fix aspeed_gpio-test test failed if arch is arm
+> v6: Add to test aspeed_gpio-test for aarch64
+> v7: Move GPIO testcase for AST2700 to ast2700-gpio-test.c
+> 
+> Jamin Lin (8):
+>    hw/gpio/aspeed: Fix coding style
+>    hw/gpio/aspeed: Support to set the different memory size
+>    hw/gpio/aspeed: Support different memory region ops
+>    hw/gpio/aspeed: Fix clear incorrect interrupt status for GPIO index
+>      mode
+>    hw/gpio/aspeed: Add AST2700 support
+>    aspeed/soc: Correct GPIO irq 130 for AST2700
+>    aspeed/soc: Support GPIO for AST2700
+>    tests/qtest:ast2700-gpio-test: Add GPIO test case for AST2700
+> 
+>   hw/arm/aspeed_ast27x0.c         |  18 +-
+>   hw/gpio/aspeed_gpio.c           | 427 ++++++++++++++++++++++++++++++--
+>   include/hw/gpio/aspeed_gpio.h   |   4 +-
+>   tests/qtest/ast2700-gpio-test.c |  95 +++++++
+>   tests/qtest/meson.build         |   3 +
+>   5 files changed, 528 insertions(+), 19 deletions(-)
+>   create mode 100644 tests/qtest/ast2700-gpio-test.c
+> 
 
-Add an explicit cast to match the documentation.
 
-Found by Linux Verification Center (linuxtesting.org) with SVACE.
+Applied to aspeed-next.
 
-Fixes: c3f21b065a ("hw/intc/arm_gicv3_cpuif: Support vLPIs")
-Signed-off-by: Alexandra Diupina <adiupina@astralinux.ru>
----
- hw/intc/arm_gicv3_cpuif.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Thanks,
 
-diff --git a/hw/intc/arm_gicv3_cpuif.c b/hw/intc/arm_gicv3_cpuif.c
-index bdb13b00e9..b7bb4bc2d6 100644
---- a/hw/intc/arm_gicv3_cpuif.c
-+++ b/hw/intc/arm_gicv3_cpuif.c
-@@ -793,7 +793,7 @@ static void icv_activate_vlpi(GICv3CPUState *cs)
-     int regno = aprbit / 32;
-     int regbit = aprbit % 32;
- 
--    cs->ich_apr[cs->hppvlpi.grp][regno] |= (1 << regbit);
-+    cs->ich_apr[cs->hppvlpi.grp][regno] |= (1U << regbit);
-     gicv3_redist_vlpi_pending(cs, cs->hppvlpi.irq, 0);
- }
- 
--- 
-2.30.2
+C.
+
 

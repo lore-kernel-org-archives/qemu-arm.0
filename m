@@ -1,161 +1,134 @@
-Received: by 2002:a17:504:959a:b0:1be9:327d:8ee3 with SMTP id e26csp210816njl;
-        Tue, 1 Oct 2024 07:15:14 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXZXhMDPz1nysKlu45hhLo98dO323gFt3V2DNmkOx62M90JDZBKYevphFy12sk7RfJUX0erCmRgvw0Xeg==@linaro.org
-X-Google-Smtp-Source: AGHT+IEMtm1kSdBdHAY7pCI12Ygm8ZmT7XsecobYhcWaac8W+gfLOPS6iFD9Yexwb0AxlKwpXUll
-X-Received: by 2002:a05:620a:25c7:b0:7ac:aad3:9135 with SMTP id af79cd13be357-7ae5b82cf7amr515007585a.15.1727792114379;
-        Tue, 01 Oct 2024 07:15:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1727792114; cv=none;
+Received: by 2002:a17:504:959a:b0:1be9:327d:8ee3 with SMTP id e26csp236126njl;
+        Tue, 1 Oct 2024 07:52:17 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXZajGaj6sCi22IzbtMOdZFrLTckkWQShZlTPJ+m6iLrRrC/AgztC2QgaKF4OIKQH/M27OGagmB3C+Llw==@linaro.org
+X-Google-Smtp-Source: AGHT+IFrb3QWXIe78CkCSZ96JxdIH428rnX/91SGHfbf8w9ttDFOYeAXXaWCpglpLbpYnI6po8mB
+X-Received: by 2002:a05:6358:10a2:b0:1bc:47b2:12e2 with SMTP id e5c5f4694b2df-1c0cecbea38mr11220255d.3.1727794337133;
+        Tue, 01 Oct 2024 07:52:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1727794337; cv=none;
         d=google.com; s=arc-20240605;
-        b=jo59PrX8KH+qa1inWhvRrH8eQmr+6zsDeOMgDHZPsDDmocFDSFXkTyDV6pfAGEURLM
-         zQL+hs9H0wFI5a2XdqdyEutjitBYUbkSQJsMn7VR8jybz2+GZ4dKL1fFrEO8JA8tuWqx
-         wDoHMZ/+72SYE88V6tyiP9vDQL28DS0keJcZx4wGNt+xmRaa6m2UNC889SVhphh6ZeW5
-         H94bZtJL3XbtAtAPRWR/BIwoIyokYoO/KIh900cjKyU0BMOfw0DZkoF290t2OAwNgNUl
-         YgYT5TQyLlwinNzq4IcsjYaS9Yh1hOjbNhqp9baVfyYjHvTxhX1A08DcWlQdoqJLFOYb
-         itvA==
+        b=jVrpEg0zD/IAB8jZ1PDBO1783dJcIbokwcZVHtsFHxXJKeKFrWBol13Bf3ae1sacEt
+         6+wdP3EZhrldPSopMhUGv8nOdP1L0lqxAfshUrGQ2P2Tz8NrFeppiYyLMDJ4LwsZQ2jn
+         HrvNB3yIILo7HT4ld1RA8+I7ttNTSFPriIqMTcwrqQ/dH4ji4HoqJOSuqwxyJ3WmzLKX
+         WHIDCMVp17b+4NMsw7ZsnRcoK2Fwlu7HOze4BkXwm1mTsVBp/7Re/aYOWwqLOEiJaSAm
+         SNXdinYQsrBqQjLDNVzzRVpz35SU7tLgQUbvl/rEraMKGO32ywgQzBEGBJ8o3b8sC2og
+         jzRQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to;
-        bh=Wth1AkYkGAQWUYC9Eg7oUANxmXE9K06KsIM9ACBBkBc=;
-        fh=RdJersRTvVIU6GkG8yrSEUovA6vfgZWQMb4aw2HkXSs=;
-        b=a7K91nZ+RWpsdDhBAMkE9FVp/sXwk6n3OM7DW6iTCqE8e7xJ99y8FzSBT1PzK/yQGq
-         k78iJAfrpy6rLPdXfpss7twHrIaRGOFZUZY2C+XH+ZdDL3Q1p1eEpfvfT8gUaFPgf6z5
-         3UFFbm7+GoeyTJAsu2cUSe371D4a9F/X7rUEJlCcWYQljFwIzvykTwEII/N8Cw0SQAOl
-         mSAKp4McpQEBLWy53a8eyxbLwFzCS1ldTXTnyBHjZAEYN68LNK7V4hIncT/YEdCAutJa
-         fT0ZbQVf5h7GQm4STmzD23sfETYH174How6JnHzchQz2zbpX+zXOFll/1jPzF2r3P4aP
-         fopQ==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from;
+        bh=BLiBiKN01hsb0phSGHFvjawXrMSpAqC2onwGHUciPXY=;
+        fh=ABklJQq7KO4nQ4dmhroInuk7feazkA6WNnIOsatc/xo=;
+        b=fU9uK5tYLrJqb5Cofs+UmgtPjh8wPnqJ9dI4a7dBoeDzE0XY+KFamRCRTqMSvgXOtt
+         Hr9I6uqM5DG11zG8A8r5ML4sh8qjKxds81HbX+0XPa45vUrFz7H8aN2XkGMihVFP060m
+         erQT2GP/aRa00w8C53A8MYwcEerC/Yjg1OX638B1Ch2hDDhV140LFbON8fly0zywuH5w
+         7RQ1fZ2fCd9YM53b+s6M/smv+NXxbmEkDqfcS8BDqc2yVQ5+cGjF3KgrX9lC3FchiJab
+         1Z2c69lAJFPHjLrMA+FhMxIN1Dn+LP4BlhjuNLHsDPNWve1gtP3M2zuWDERPcVK9PALM
+         I4nw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7ae377d059bsi1077036885a.136.2024.10.01.07.15.14
+        by mx.google.com with ESMTPS id 6a1803df08f44-6cb3b60549asi118522666d6.9.2024.10.01.07.52.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 01 Oct 2024 07:15:14 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 01 Oct 2024 07:52:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1svdcJ-0000HD-5z; Tue, 01 Oct 2024 10:12:43 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sveDE-0002Da-Lg; Tue, 01 Oct 2024 10:50:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1svdcE-0008Le-3P; Tue, 01 Oct 2024 10:12:38 -0400
-Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
+ (Exim 4.90_1) (envelope-from <adiupina@astralinux.ru>)
+ id 1sveCj-0001rf-GC; Tue, 01 Oct 2024 10:50:22 -0400
+Received: from mx.astralinux.ru ([89.232.161.68])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1svdcC-0003Bx-Dv; Tue, 01 Oct 2024 10:12:37 -0400
-Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
- (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.12; Tue, 1 Oct
- 2024 10:43:34 +0800
-Received: from localhost.localdomain (192.168.10.10) by TWMBX01.aspeed.com
- (192.168.0.62) with Microsoft SMTP Server id 15.2.1258.12 via Frontend
- Transport; Tue, 1 Oct 2024 10:43:34 +0800
-To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
- <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
- <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
- Stanley" <joel@jms.id.au>, Thomas Huth <thuth@redhat.com>, Laurent Vivier
- <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, "open list:ASPEED
- BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC here"
- <qemu-devel@nongnu.org>
-CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
- <yunlin.tang@aspeedtech.com>, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?=
- <clg@redhat.com>
-Subject: [PATCH v7 1/8] hw/gpio/aspeed: Fix coding style
-Date: Tue, 1 Oct 2024 10:43:27 +0800
-Message-ID: <20241001024334.834807-2-jamin_lin@aspeedtech.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20241001024334.834807-1-jamin_lin@aspeedtech.com>
-References: <20241001024334.834807-1-jamin_lin@aspeedtech.com>
+ (Exim 4.90_1) (envelope-from <adiupina@astralinux.ru>)
+ id 1sveCc-00058E-DM; Tue, 01 Oct 2024 10:50:19 -0400
+Received: from [10.177.185.109] (helo=new-mail.astralinux.ru)
+ by mx.astralinux.ru with esmtps (TLS1.3) tls
+ TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
+ (envelope-from <adiupina@astralinux.ru>)
+ id 1svZWI-00FsZa-Jr; Tue, 01 Oct 2024 12:50:14 +0300
+Received: from rbta-msk-lt-302690.astralinux.ru (unknown [10.198.11.47])
+ by new-mail.astralinux.ru (Postfix) with ESMTPA id 4XHtWR1L3BzkWwh;
+ Tue,  1 Oct 2024 12:51:47 +0300 (MSK)
+From: Alexandra Diupina <adiupina@astralinux.ru>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: Alexandra Diupina <adiupina@astralinux.ru>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, sdl.qemu@linuxtesting.org
+Subject: [PATCH 3/3] hw/intc/arm_gicv3: Add cast to match the documentation
+Date: Tue,  1 Oct 2024 12:51:25 +0300
+Message-Id: <20241001095125.26043-3-adiupina@astralinux.ru>
+X-Mailer: git-send-email 2.30.2
+In-Reply-To: <20241001095125.26043-1-adiupina@astralinux.ru>
+References: <20241001095125.26043-1-adiupina@astralinux.ru>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=211.20.114.72;
- envelope-from=jamin_lin@aspeedtech.com; helo=TWMBX01.aspeed.com
+X-DrWeb-SpamScore: 0
+X-DrWeb-SpamState: legit
+X-DrWeb-SpamDetail: gggruggvucftvghtrhhoucdtuddrgedvfedrvdehuddgtddvucetufdoteggodetrfcurfhrohhfihhlvgemucfftfghgfeunecuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefhvfevufffkffojghfggfgsedtkeertdertddtnecuhfhrohhmpeetlhgvgigrnhgurhgrucffihhuphhinhgruceorgguihhuphhinhgrsegrshhtrhgrlhhinhhugidrrhhuqeenucggtffrrghtthgvrhhnpeefkedufedvkeffuedtgfdugeeutdegvdffffejfffgleffieduhfejvdelffdvudenucffohhmrghinheplhhinhhugihtvghsthhinhhgrdhorhhgnecukfhppedutddrudelkedruddurdegjeenucfrrghrrghmpehhvghloheprhgsthgrqdhmshhkqdhlthdqfedtvdeiledtrdgrshhtrhgrlhhinhhugidrrhhupdhinhgvthepuddtrdduleekrdduuddrgeejmeefleelledvpdhmrghilhhfrhhomheprgguihhuphhinhgrsegrshhtrhgrlhhinhhugidrrhhupdhnsggprhgtphhtthhopeehpdhrtghpthhtohepphgvthgvrhdrmhgrhiguvghllheslhhinhgrrhhordhorhhgpdhrtghpthhtoheprgguihhuphhinhgrsegrshhtrhgrlhhinhhugidrrhhupdhrtghpthhtohepqhgvmhhuqdgrrhhmsehnohhnghhnuhdrohhrghdprhgtphhtthhopehqvghmuhdquggvvhgvlhesnhhonhhgnhhurdhorhhgpdhrtghpthhtohepshgulhdrqhgvmh
+ husehlihhnuhigthgvshhtihhnghdrohhrghenucffrhdrhggvsgcutehnthhishhprghmmecunecuvfgrghhsme
+X-DrWeb-SpamVersion: Dr.Web Antispam 1.0.7.202406240#1727772118#02
+X-AntiVirus: Checked by Dr.Web [MailD: 11.1.19.2307031128,
+ SE: 11.1.12.2210241838, Core engine: 7.00.65.05230, Virus records: 12191152,
+ Updated: 2024-Oct-01 08:11:54 UTC]
+Received-SPF: pass client-ip=89.232.161.68;
+ envelope-from=adiupina@astralinux.ru; helo=mx.astralinux.ru
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_FAIL=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
-From:  Jamin Lin via <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: UFlE296BWkN1
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: fghzgLoERTE4
 
-Fix coding style issues from checkpatch.pl
+The result of 1 << regbit with regbit==31 has a 1 in the 32nd bit.
+When cast to uint64_t (for further bitwise OR), the 32 most
+significant bits will be filled with 1s. However, the documentation
+states that the upper 32 bits of ICC_AP[0/1]R<n>_EL2 are reserved.
 
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
+Add an explicit cast to match the documentation.
+
+Found by Linux Verification Center (linuxtesting.org) with SVACE.
+
+Fixes: 28cca59c46 ("hw/intc/arm_gicv3: Add NMI handling CPU interface registers")
+Signed-off-by: Alexandra Diupina <adiupina@astralinux.ru>
 ---
- hw/gpio/aspeed_gpio.c         | 6 +++---
- include/hw/gpio/aspeed_gpio.h | 2 +-
- 2 files changed, 4 insertions(+), 4 deletions(-)
+ hw/intc/arm_gicv3_cpuif.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/gpio/aspeed_gpio.c b/hw/gpio/aspeed_gpio.c
-index 71756664dd..00fb72a509 100644
---- a/hw/gpio/aspeed_gpio.c
-+++ b/hw/gpio/aspeed_gpio.c
-@@ -340,7 +340,8 @@ static void aspeed_gpio_set_pin_level(AspeedGPIOState *s, uint32_t set_idx,
-         value &= ~pin_mask;
+diff --git a/hw/intc/arm_gicv3_cpuif.c b/hw/intc/arm_gicv3_cpuif.c
+index bdb13b00e9..00a2e78142 100644
+--- a/hw/intc/arm_gicv3_cpuif.c
++++ b/hw/intc/arm_gicv3_cpuif.c
+@@ -1170,7 +1170,7 @@ static void icc_activate_irq(GICv3CPUState *cs, int irq)
+     if (nmi) {
+         cs->icc_apr[cs->hppi.grp][regno] |= ICC_AP1R_EL1_NMI;
+     } else {
+-        cs->icc_apr[cs->hppi.grp][regno] |= (1 << regbit);
++        cs->icc_apr[cs->hppi.grp][regno] |= (1U << regbit);
      }
  
--    aspeed_gpio_update(s, &s->sets[set_idx], value, ~s->sets[set_idx].direction);
-+    aspeed_gpio_update(s, &s->sets[set_idx], value,
-+                       ~s->sets[set_idx].direction);
- }
- 
- /*
-@@ -629,7 +630,6 @@ static uint64_t aspeed_gpio_read(void *opaque, hwaddr offset, uint32_t size)
- static void aspeed_gpio_write_index_mode(void *opaque, hwaddr offset,
-                                                 uint64_t data, uint32_t size)
- {
--
-     AspeedGPIOState *s = ASPEED_GPIO(opaque);
-     AspeedGPIOClass *agc = ASPEED_GPIO_GET_CLASS(s);
-     const GPIOSetProperties *props;
-@@ -963,7 +963,7 @@ static void aspeed_gpio_set_pin(Object *obj, Visitor *v, const char *name,
-     aspeed_gpio_set_pin_level(s, set_idx, pin, level);
- }
- 
--/****************** Setup functions ******************/
-+/* Setup functions */
- static const GPIOSetProperties ast2400_set_props[ASPEED_GPIO_MAX_NR_SETS] = {
-     [0] = {0xffffffff,  0xffffffff,  {"A", "B", "C", "D"} },
-     [1] = {0xffffffff,  0xffffffff,  {"E", "F", "G", "H"} },
-diff --git a/include/hw/gpio/aspeed_gpio.h b/include/hw/gpio/aspeed_gpio.h
-index 90a12ae318..39febda9ea 100644
---- a/include/hw/gpio/aspeed_gpio.h
-+++ b/include/hw/gpio/aspeed_gpio.h
-@@ -88,7 +88,7 @@ struct AspeedGPIOState {
-     qemu_irq irq;
-     qemu_irq gpios[ASPEED_GPIO_MAX_NR_SETS][ASPEED_GPIOS_PER_SET];
- 
--/* Parallel GPIO Registers */
-+    /* Parallel GPIO Registers */
-     uint32_t debounce_regs[ASPEED_GPIO_NR_DEBOUNCE_REGS];
-     struct GPIOSets {
-         uint32_t data_value; /* Reflects pin values */
+     if (irq < GIC_INTERNAL) {
 -- 
-2.34.1
+2.30.2
 

@@ -1,198 +1,335 @@
-Received: by 2002:a17:504:959a:b0:1be9:327d:8ee3 with SMTP id e26csp322577njl;
-        Tue, 1 Oct 2024 10:01:09 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVOB47p1T0KGARUdTSu8JEbuPWXHu+0Lh4uk558kBniHtnPEwEh/R//fjvG1qdcrXQCrMVKs/sDiZ9vJA==@linaro.org
-X-Google-Smtp-Source: AGHT+IEFF0sko9cj8zjGVBkQZnigYSEIznEN2jvUaHXIXdz+8B4bwOPCUJoqXWz6UbU1+LsUHCV7
-X-Received: by 2002:a05:6214:540d:b0:6cb:7e60:2bb1 with SMTP id 6a1803df08f44-6cb81a34e7emr1805936d6.29.1727802069053;
-        Tue, 01 Oct 2024 10:01:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1727802069; cv=none;
+Received: by 2002:a17:504:959a:b0:1be9:327d:8ee3 with SMTP id e26csp426136njl;
+        Tue, 1 Oct 2024 13:19:43 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWqJr3Cigd18lvGpwiuhCOR2kvpnV/JyL3X+BkRA8ywudFhzz3zFC5GaP+FbRkR3MMAGUl6QnW1Rfw3EA==@linaro.org
+X-Google-Smtp-Source: AGHT+IGdFmygKOhwH/G0tPGUnbxiMzOiHFlKyf0/hkbAuqjE/4NY13PENrtglk4IIg75CKG1iVVs
+X-Received: by 2002:a05:622a:1446:b0:458:34fb:5d59 with SMTP id d75a77b69052e-45d804d6fb5mr14783281cf.29.1727813982928;
+        Tue, 01 Oct 2024 13:19:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1727813982; cv=none;
         d=google.com; s=arc-20240605;
-        b=L2h3dtCptPu49PlSbRqzP1FSoApl/gMHvxqwD1jgz4Msnl29d+mnZIxhzTROFw8Pd+
-         yFoWZ39JgC66W+kYXuaJA9xtIuKgHUAbPcz3RrmuQKGPGslscPWf8eeKCLFSEVKf1q6D
-         lOwuajuuERvIwT5S/dyanvK/CqsHNCREtI50oDU7agNcsI1bkGVcwL1z99VKBeAvBohG
-         QAAOaoM7Hhds5FHMPP86R9KYXIrz8VEa81UBgWswmZua/eeM1tBpys6poK/iZDvu90tK
-         qSvF5eETJs0U8DugtNzXwOzVHYJkouXhalYwOQgtRte2amOvPzov4lRnHPkyTsr70wpQ
-         xNMA==
+        b=ffDjrF33BWjZtld7Mmw2Jg2GvnphpU9OQnkNLI6VwSuMf7cpGxctWvMfkzpBe1sLDX
+         tcVyHK36IKs5sJSd6u0QGjzxIux+rla6xuFR8uePW0D1lhw+VDZDKNpbymMuNRgLEfH/
+         VAL+iO5FlODRHXogxf+atTcNwRJ1BUulV8HVdh43HZ4bYJumTKSYzuOFT23IgMi8CsNF
+         rB1Qbq99PS/AoK3jLlF4uz2g8EODTuc9BfnccJ0wx8zoPRs9QRilLGQUEvMj9TtioeLG
+         UgSpc0KEWYh9rXfCBw/j/Z/y8PxYjZIhSNoKKLNd6rg453G/K4dc4qf8voHI+3apncR9
+         xKtw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:user-agent
-         :in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=xhN6KC0l5N9ILSalYFIArgIpYZwzG4RRIkeshKs1GSE=;
-        fh=L+bYJIFwkcZa9Lt0mMsyq49Ob5GAcshtTLW+WSK82tI=;
-        b=FuRoF5ja96Lt+j52Tk8zKOlZrIs5rDOBCmwLHG0bWmsgyDNAbCkFX4ddqbfwfmG/9C
-         YFEsR/y4J3XCmjzHO3NAFyVNUliOIaaQX/NdfrnvBh4vgKiIk458ZPDt3G5dEU/DPwwS
-         yYSOH34XSteDFCNpiseSD2nIEiSm7+QJk3S6clrVhz1LlM4zQ3s8TLrsF70m+t7nfeXo
-         fjXAuznpe9YXknVlrWbXIKDWBkly1u8R21QUwjfLqz3QEJpsO7CJvePYIt/YcxhAyOMi
-         oav3mktZBES3BrKBO5Nbn3gF+tdRnAafReRh5GsArCiGLy2fNHrF9bPf6w/GXgtk1Evu
-         g1fQ==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=H2MP46GSGntyim8sGvnjmzPuS/ng9fYAo5WaLy4fl7o=;
+        fh=7+N13Y2iUnfcVAOq9edwRtqps1xrNqrjUz/7GhCz6uQ=;
+        b=lBLfB6nbmuIgg1Pc9kYXEUFCC1UAK0Pnp0SP0TgmDh66GW/tywueWDi7OETnS/xxIM
+         zU3UGSl2dZqqh4O0e2Pa2U1r8l6oQIiCAuKoRFl7HH23N3lx1RZ5PdBrbTcCnqNhRdPS
+         fzyoFLlJACsmzovQtiPB2JnQmAr3hE9Hu4TwHoPjtwXWaPxou/UYd/Ximy0N+nAE0J15
+         lUUJGsnWm7RPDdizwmIB+yUtH/SShKVIDg5lvIIaTUv0ooCPoMO/TNtSnh9SxDROhXVv
+         M7wNnZ4zvEl64tzE1ceX0j8ukDfjzVias9/2QF7872EHJg2mYk9pGClpp+psrSoO8hsq
+         r6oQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bG+vEmDz;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=elT8THLu;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-45c9f39f616si109667201cf.712.2024.10.01.10.01.08
+        by mx.google.com with ESMTPS id d75a77b69052e-45c9f2900d4si116227561cf.45.2024.10.01.13.19.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 01 Oct 2024 10:01:09 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 01 Oct 2024 13:19:42 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bG+vEmDz;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=elT8THLu;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1svgF1-00056K-GP; Tue, 01 Oct 2024 13:00:52 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1svjLJ-0003Bk-3p; Tue, 01 Oct 2024 16:19:33 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1svgF0-00056C-5N
- for qemu-devel@nongnu.org; Tue, 01 Oct 2024 13:00:50 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1svgEt-0000Er-Ql
- for qemu-devel@nongnu.org; Tue, 01 Oct 2024 13:00:49 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1727802042;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:in-reply-to:in-reply-to:  references:references;
- bh=xhN6KC0l5N9ILSalYFIArgIpYZwzG4RRIkeshKs1GSE=;
- b=bG+vEmDz/M1apG3BPA7b5h+7JNt5VEzanSGeGg6dj6K6lP87bv9aO3wH+vyv0V7pIlU4KQ
- JLTQJaLW/WP8e3XerU29FbGgS/2WuPetAMUC95m9sG8YDnI3R9fheymbBTCe1iCl2aZGrw
- iHj+YqHFTZL5j9BOMMzhgblF8OIG+QU=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-115-l-uA_5X1NU6fngPfLOc9oQ-1; Tue,
- 01 Oct 2024 13:00:38 -0400
-X-MC-Unique: l-uA_5X1NU6fngPfLOc9oQ-1
-Received: from mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (unknown
- [10.30.177.40])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id A9A1F191962C; Tue,  1 Oct 2024 17:00:37 +0000 (UTC)
-Received: from redhat.com (unknown [10.42.28.186])
- by mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 225BA195605A; Tue,  1 Oct 2024 17:00:35 +0000 (UTC)
-Date: Tue, 1 Oct 2024 18:00:33 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-Cc: Thomas Huth <thuth@redhat.com>,
- "open list:ARM SMMU <qemu-arm@nongnu.org>, " <qemu-devel@nongnu.org>,
- Peter Maydell <peter.maydell@linaro.org>,
- Philippe Mathieu-Daud =?utf-8?B?w6k=?= <philmd@linaro.org>
-Subject: Re: [PATCH] tests/functional: Switch back to the gitlab URLs for the
- advent calendar tests
-Message-ID: <ZvwqsX_g5IhVTNkG@redhat.com>
-References: <20240930171834.51701-1-thuth@redhat.com>
- <ko5yn.bgayz532vi6@linaro.org>
- <23f7bf52-af7d-4186-b773-28b15e872064@redhat.com>
- <CAAjaMXZ0ixQoWroJeoVVo+fmC-hVhG9Dx_+F8PrPEMTid07hyg@mail.gmail.com>
+ (Exim 4.90_1) (envelope-from <strahinjapjankovic@gmail.com>)
+ id 1svjLI-0003BD-6T; Tue, 01 Oct 2024 16:19:32 -0400
+Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <strahinjapjankovic@gmail.com>)
+ id 1svjLF-0005tR-Ur; Tue, 01 Oct 2024 16:19:31 -0400
+Received: by mail-ed1-x532.google.com with SMTP id
+ 4fb4d7f45d1cf-5c89e66012aso2764584a12.2; 
+ Tue, 01 Oct 2024 13:19:29 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1727813968; x=1728418768; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=H2MP46GSGntyim8sGvnjmzPuS/ng9fYAo5WaLy4fl7o=;
+ b=elT8THLukLsfBCwZj56uvDLFLEmwaZn7vphbcaP24iq3FEQRQGAK/UvMNr8yiued4j
+ dIpsoxH/9WKD6TNWhtzp/zsmdhajLMtr5rcIEu5ECB6U53+cuz7/bv39chUmOj0Qtsuq
+ s/x2S9S329Zu3xvMNDLV9t3Oo9VjDvoSI4NjdLTTKhF8uxBlT5xE6iN7EC7Yep37USgd
+ DOtdhCALsf+gg5q+JaOuztvhFbDA0fjW9Du8Ku6eklhrlwdIDFYSPlcwDxUaUl65caTA
+ GUXKwIuiK/NGFSCsaQFS2PAhnuJN3S65T32K1KTuShoF6Q0YKsS3AjP2RSnAfydYpSbi
+ SmFg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1727813968; x=1728418768;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=H2MP46GSGntyim8sGvnjmzPuS/ng9fYAo5WaLy4fl7o=;
+ b=G4kG4BFB7lktYSFGYgr4qB8y/LgAEFol+Y0zy+hw5REzc1c0unHMFbca56wI4sdmXY
+ LqBGvECQbkJ+K50v/VH/eW3LnJHZCK+bBk+8R/gXxr2i6o7bTeOzIQH/f2JMIl9C2c/U
+ uTEiVBaOB2WikK3CyKGVtfBH5Zn4AkQCm21HOr0PDzOCN5DSRsGk/rKEbzOk1uPKEbze
+ xMQvLwXu0MSgA3Ev4KBU9EheIkKz8wzr1VcietOJMsYyEP0jf9nq/Phy35xko6Hv6rnC
+ 3N5rFMRI5vBKnbt4NyS8STyHbDtoHchPmWnmWahBS9uf8732w7QeXw9EVNVlZT4lujfv
+ EvKQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCU2KpxDEv4j8d0RjdW9+fIr3pn60b6a36rZek2FqhQEDL5jZMi0ZC+C2WFn9kyNVPHMwZMWVxHGxpAV0w==@nongnu.org,
+ AJvYcCXbTuN/TZ7Ye8LjCIUgoPwNgFEIrtUHTQzT2zPJ6I++9L/LMfeAJdCHKxnOowjUdQ1bA0/OFmroKw==@nongnu.org
+X-Gm-Message-State: AOJu0Yz6b6HyWXxqhOPH+GAhvEE3g6VXpNMl7NGthQ7t3azD7qM1j/Y4
+ Wd5dt9LEvrz6ny98NoCQwwc0PtT6GSzhrS7kIdXSi7oMQkFLE5SsoLYurmi1rE6GfoNqhwQls9X
+ XeKeGjLVKZtmkgI1nAPaowli0Pyc=
+X-Received: by 2002:a05:6402:4406:b0:5c8:a0fd:63d6 with SMTP id
+ 4fb4d7f45d1cf-5c8b1a36c94mr482779a12.20.1727813967681; Tue, 01 Oct 2024
+ 13:19:27 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <CAAjaMXZ0ixQoWroJeoVVo+fmC-hVhG9Dx_+F8PrPEMTid07hyg@mail.gmail.com>
-User-Agent: Mutt/2.2.12 (2023-09-09)
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.40
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+References: <20240919215525.22398-1-strahinja.p.jankovic@gmail.com>
+ <CAFEAcA_RkwPgTksJCEP4=V0WY0wp0OiYP28PzXDJKRvpi_KWvw@mail.gmail.com>
+ <CABtshVSsXPoMQy1EZaq2veo-80UMrUX+cqkvh5wq6cujW60s7A@mail.gmail.com>
+ <CAFEAcA89cd3zNE3sC_+tSKo51S9V=COoGnqC-Ce37W6c4et_mg@mail.gmail.com>
+In-Reply-To: <CAFEAcA89cd3zNE3sC_+tSKo51S9V=COoGnqC-Ce37W6c4et_mg@mail.gmail.com>
+From: Strahinja Jankovic <strahinjapjankovic@gmail.com>
+Date: Tue, 1 Oct 2024 22:19:14 +0200
+Message-ID: <CABtshVRGSU4fA_zGiKn00PbfHNg+S2MywhY+5wum+S+HMjAqTw@mail.gmail.com>
+Subject: Re: [PATCH] {hw/ssi,docs/system/arm}: Allwinner A10 SPI emulation
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: Beniamino Galvani <b.galvani@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, 
+ Alistair Francis <alistair@alistair23.me>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Content-Type: multipart/alternative; boundary="000000000000c81f8d06237009d3"
+Received-SPF: pass client-ip=2a00:1450:4864:20::532;
+ envelope-from=strahinjapjankovic@gmail.com; helo=mail-ed1-x532.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.144,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_PASS=-0.001, T_SPF_HELO_TEMPERROR=0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: vnMAvSB1Iha1
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: mnQv3d+2n28x
 
-On Tue, Oct 01, 2024 at 03:09:29PM +0300, Manos Pitsidianakis wrote:
-> On Tue, Oct 1, 2024, 12:14 PM Thomas Huth <thuth@redhat.com> wrote:
-> 
-> > On 01/10/2024 10.50, Manos Pitsidianakis wrote:
-> > > Hello Thomas,
-> > >
-> > > On Mon, 30 Sep 2024 20:18, Thomas Huth <thuth@redhat.com> wrote:
-> > >> Shortly after we switched to the original URLs on
-> > qemu-advent-calendar.org,
-> > >> the server went offline - looks like we are better off using the gitlab
-> > >> URLs again instead.
-> > >>
-> > >> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> > >> ---
-> > > [snip]
-> > >> diff --git a/tests/functional/test_microblazeel_s3adsp1800.py b/tests/
-> > >> functional/test_microblazeel_s3adsp1800.py
-> > >> index faa3927f2e..47c941d487 100755
-> > >> --- a/tests/functional/test_microblazeel_s3adsp1800.py
-> > >> +++ b/tests/functional/test_microblazeel_s3adsp1800.py
-> > >> @@ -18,8 +18,8 @@ class MicroblazeelMachine(QemuSystemTest):
-> > >>     timeout = 90
-> > >>
-> > >>     ASSET_IMAGE = Asset(
-> > >> -        ('
-> > http://www.qemu-advent-calendar.org/2023/download/day13.tar.gz'),
-> > >> -
-> > 'b9b3d43c5dd79db88ada495cc6e0d1f591153fe41355e925d791fbf44de50c22')
-> > >> +        ('
-> > https://qemu-advcal.gitlab.io/qac-best-of-multiarch/download/
-> > >> day13.tar.xz'),
-> > >> +
-> > '67e4c502651f8801e724ecc26403f1d0cdbc00549b033166e2e8cd14e9d49fef')
-> > >>
-> > >>     def test_microblazeel_s3adsp1800(self):
-> > >>         self.require_netdev('user')
-> > >
-> > > I downloaded both day13.tar.gz and day13.tar.xz and these archives have
-> > > different file contents, is that on purpose?
+--000000000000c81f8d06237009d3
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+On Tue, Oct 1, 2024 at 11:24=E2=80=AFAM Peter Maydell <peter.maydell@linaro=
+.org>
+wrote:
+
+> On Mon, 30 Sept 2024 at 22:28, Strahinja Jankovic
+> <strahinjapjankovic@gmail.com> wrote:
 > >
-> > Oh, drat! That's a different package, indeed - it's the one from 2018, not
-> > the one from 2023! I didn't really notice since I did not remove my
-> > tests/functional/ folder before re-running the tests, so this test was
-> > silently re-using the old binary from the previous test runs :-/
-> > (note to myself: we should maybe remove the binaries after each test run).
+> > Hi Peter,
 > >
-> > Thanks for spotting it!
+> > Thank you very much for the review and detailed comments.
 > >
-> > Meanwhile, the www.qemu-advent-calendar.org website seems to be back, so
-> > maybe we don't need this patch here anymore... let's wait and see whether
-> > it
-> > remains stable now...
-> 
-> 
-> Suggestion: Add a list of source URLs in Asset() so that it has a fallback
-> if the first host cannot be reached, maybe you can respin the patch to do
-> this?
+> > I will try to address all comments in the v2 of the patches, but I have
+> some questions I added below.
+> >
+> > On Mon, Sep 30, 2024 at 4:45=E2=80=AFPM Peter Maydell <peter.maydell@li=
+naro.org>
+> wrote:
+> >> > +static uint64_t allwinner_a10_spi_read(void *opaque, hwaddr offset,
+> >> > +                                       unsigned size)
+> >> > +{
+> >> > +    uint32_t value =3D 0;
+> >> > +    AWA10SPIState *s =3D opaque;
+> >> > +    uint32_t index =3D offset >> 2;
+> >>
+> >> The MemoryRegionOps defines that size =3D=3D 1 is permitted,
+> >> but this calculation of index without any validation
+> >> of offset means that if the guest writes a byte to
+> >> offset 1 we will treat that identically to writing a byte
+> >> to offset 0. This probably isn't what the hardware does.
+> >
+> > I checked once more the User manual, and it does not mention
+> > unaligned access (example for RXDATA)
+> >
+> > In 8-bits SPI bus width, this register can be accessed in byte,
+> > half-word or word unit by AHB. In byte accessing method,
+> > if there are words in RXFIFO, the top word is returned and
+> > the RXFIFO depth is decreased by 1. In half-word accessing
+> > method, the two SPI bursts are returned and the RXFIFO
+> > depth is decrease by 2. In word accessing method, the four
+> > SPI bursts are returned and the RXFIFO depth is decreased
+> > by 4.
+> >
+> > I chose not to cover the half-word and word access methods,
+> > since neither Linux kernel nor U-Boot use it
+> > (both use only byte access).
+> >
+> > I guess that I could add `.valid.unaligned =3D false` when
+> > initializing `MemoryRegionOps`?
+>
+> This wouldn't help, because a 2-byte load at offset 2
+> is not "unaligned" from the memory system's point of view.
+> (Also, unaligned =3D false is the default.)
+>
+> Looking again at your code I see I misread it a bit:
+> I thought it was doing a switch() on index, but it is on
+> offset.
+>
+> Using a switch on offset makes it easy to handle the case
+> of "bogus write to an offset that isn't the start of a
+> register":
+>
+>    switch (offset) {
+>    case SOME_REG_OFFSET:
+>        /*
+>         * handle it; if size 1/2/4 behave differently,
+>         * then look at 'size' to do the right thing.
+>         */
+>        break;
+>    /* etc */
+>    default:
+>        qemu_log_mask(LOG_GUEST_ERROR,
+>                      "%s: bad offset 0x%x\n", __func__,
+>                      (uint32_t)offset);
+>        break;
+>    }
+>
+> Then both the "offset that's not a defined register"
+> and "offset that's not aligned to the start of a register"
+> go into the default case, we log it as a guest error,
+> and do nothing.
+>
 
-If the first host URL isn't reliable then we shouldn't use it at all, just
-point directly to the 2nd reliable URL. If neither of the URLs are considered
-reliable then we shouldn't have the test enabled at all IMHO. 
+Great, thanks for the suggestion! I will include it in v2.
 
-With regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+Best regards,
+Strahinja
 
+
+
+>
+> thanks
+> -- PMM
+>
+
+--000000000000c81f8d06237009d3
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
+<div dir=3D"ltr" class=3D"gmail_attr">On Tue, Oct 1, 2024 at 11:24=E2=80=AF=
+AM Peter Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.org">peter.mayd=
+ell@linaro.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" st=
+yle=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padd=
+ing-left:1ex">On Mon, 30 Sept 2024 at 22:28, Strahinja Jankovic<br>
+&lt;<a href=3D"mailto:strahinjapjankovic@gmail.com" target=3D"_blank">strah=
+injapjankovic@gmail.com</a>&gt; wrote:<br>
+&gt;<br>
+&gt; Hi Peter,<br>
+&gt;<br>
+&gt; Thank you very much for the review and detailed comments.<br>
+&gt;<br>
+&gt; I will try to address all comments in the v2 of the patches, but I hav=
+e some questions I added below.<br>
+&gt;<br>
+&gt; On Mon, Sep 30, 2024 at 4:45=E2=80=AFPM Peter Maydell &lt;<a href=3D"m=
+ailto:peter.maydell@linaro.org" target=3D"_blank">peter.maydell@linaro.org<=
+/a>&gt; wrote:<br>
+&gt;&gt; &gt; +static uint64_t allwinner_a10_spi_read(void *opaque, hwaddr =
+offset,<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0unsigned size)<br>
+&gt;&gt; &gt; +{<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 uint32_t value =3D 0;<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 AWA10SPIState *s =3D opaque;<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 uint32_t index =3D offset &gt;&gt; 2;<br>
+&gt;&gt;<br>
+&gt;&gt; The MemoryRegionOps defines that size =3D=3D 1 is permitted,<br>
+&gt;&gt; but this calculation of index without any validation<br>
+&gt;&gt; of offset means that if the guest writes a byte to<br>
+&gt;&gt; offset 1 we will treat that identically to writing a byte<br>
+&gt;&gt; to offset 0. This probably isn&#39;t what the hardware does.<br>
+&gt;<br>
+&gt; I checked once more the User manual, and it does not mention<br>
+&gt; unaligned access (example for RXDATA)<br>
+&gt;<br>
+&gt; In 8-bits SPI bus width, this register can be accessed in byte,<br>
+&gt; half-word or word unit by AHB. In byte accessing method,<br>
+&gt; if there are words in RXFIFO, the top word is returned and<br>
+&gt; the RXFIFO depth is decreased by 1. In half-word accessing<br>
+&gt; method, the two SPI bursts are returned and the RXFIFO<br>
+&gt; depth is decrease by 2. In word accessing method, the four<br>
+&gt; SPI bursts are returned and the RXFIFO depth is decreased<br>
+&gt; by 4.<br>
+&gt;<br>
+&gt; I chose not to cover the half-word and word access methods,<br>
+&gt; since neither Linux kernel nor U-Boot use it<br>
+&gt; (both use only byte access).<br>
+&gt;<br>
+&gt; I guess that I could add `.valid.unaligned =3D false` when<br>
+&gt; initializing `MemoryRegionOps`?<br>
+<br>
+This wouldn&#39;t help, because a 2-byte load at offset 2<br>
+is not &quot;unaligned&quot; from the memory system&#39;s point of view.<br=
+>
+(Also, unaligned =3D false is the default.)<br>
+<br>
+Looking again at your code I see I misread it a bit:<br>
+I thought it was doing a switch() on index, but it is on<br>
+offset.<br>
+<br>
+Using a switch on offset makes it easy to handle the case<br>
+of &quot;bogus write to an offset that isn&#39;t the start of a<br>
+register&quot;:<br>
+<br>
+=C2=A0 =C2=A0switch (offset) {<br>
+=C2=A0 =C2=A0case SOME_REG_OFFSET:<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0/*<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 * handle it; if size 1/2/4 behave differently,<=
+br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 * then look at &#39;size&#39; to do the right t=
+hing.<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 */<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0break;<br>
+=C2=A0 =C2=A0/* etc */<br>
+=C2=A0 =C2=A0default:<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0qemu_log_mask(LOG_GUEST_ERROR,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0&quot;%s: bad offset 0x%x\n&quot;, __func__,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0(uint32_t)offset);<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0break;<br>
+=C2=A0 =C2=A0}<br>
+<br>
+Then both the &quot;offset that&#39;s not a defined register&quot;<br>
+and &quot;offset that&#39;s not aligned to the start of a register&quot;<br=
+>
+go into the default case, we log it as a guest error,<br>
+and do nothing.<br></blockquote><div><br></div><div>Great, thanks for the s=
+uggestion! I will include it in v2.</div><div><br></div><div>Best regards,<=
+/div><div>Strahinja</div><div><br></div><div>=C2=A0</div><blockquote class=
+=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rg=
+b(204,204,204);padding-left:1ex">
+<br>
+thanks<br>
+-- PMM<br>
+</blockquote></div></div>
+
+--000000000000c81f8d06237009d3--

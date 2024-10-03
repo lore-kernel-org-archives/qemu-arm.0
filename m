@@ -1,115 +1,116 @@
-Received: by 2002:a17:504:959a:b0:1be9:327d:8ee3 with SMTP id e26csp1456804njl;
-        Thu, 3 Oct 2024 07:01:32 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCV40bChWBzMGVDh2X22nzjIEwcFX92C6dgJJDN7QOJDB8a/B/7nCvHOFQ5uK0sO5DjqSNXuGRqXXiEMhg==@linaro.org
-X-Google-Smtp-Source: AGHT+IHlFWKvpEZ774eIKhFKKynuFvSsGEfavQ2HjlhLdPhxJ/GfEFJd3uIqWcm5NALusiBnqWqQ
-X-Received: by 2002:a05:6214:4610:b0:6cb:3839:2016 with SMTP id 6a1803df08f44-6cb81a0ee0dmr89260046d6.24.1727964092398;
-        Thu, 03 Oct 2024 07:01:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1727964092; cv=none;
+Received: by 2002:a17:504:959a:b0:1be9:327d:8ee3 with SMTP id e26csp1457229njl;
+        Thu, 3 Oct 2024 07:02:00 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCX5uwz45HHSSWwbpjXmp48ERqLSYtCkGmfde1aLIBi8oba5ZU80dTEB5kb5TYTbcrPOynmz8QDiXzlBMQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IGiKoIjnfzZeivpoTCnWruoh9Gn1wy8gJxUppcGY57fLxeiqiYfaw+ryTYzKz4PSBJklDE7
+X-Received: by 2002:a05:6102:6cd:b0:4a3:cb2b:9748 with SMTP id ada2fe7eead31-4a3e6992662mr5013807137.24.1727964120474;
+        Thu, 03 Oct 2024 07:02:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1727964120; cv=none;
         d=google.com; s=arc-20240605;
-        b=PXo6DugQ2TrYoJk4UsCMesLL+X/AgKagQGbMEh8x0omZ/WNclkasOxmhL+UldJ9Mpn
-         aUGMPt2X8dMvrL6chz2br7ujp/yKuw0pEnCFy7jRxnngI6oLAcn0MBAP4Vn/E8krhZVO
-         KDIE4zNptARzqhZH48xm4V+0MURk2rIwiA3ICWQVHod++YrihTyx7kUPStpPmeJpFB6H
-         FHHYDV86HQ8RVyBoV6ReDf8Km+MSwWFQjaRqemrqOuVDjNV18wy5G9A6HrSwc8zR2Rn1
-         yDllITkc3/iRfXZdx6wT+e/mIoPaMVZYRY6BLBXDdGEh4/r+BBBtjKqUaXo2wH/JlY5y
-         XaUg==
+        b=YK7D7JvQy2c6vEI0L8VbCeP+nO3DRL09DxszSxg6d+DBQOkv0tK+B3f7NGJFDEAn8t
+         zaSKzvx7fn3DRLVfafPzuUl0PFVr39tpILhFAszJyK8+5O1tsq8YKsJCFYN5FMm32nJZ
+         19SsrbU9PVCnYAom3FF5iUeZZ5MBeFcGIIE+Mn7nD5C2sMpJrxfxvv/gau/Cwprycf3p
+         CDtflFwTgae20uBmEFwLwml2j9LIMrAEr3Z8lnrKNYSVVCnmxwFJBQpP26/bTZoChpf8
+         cRBQHf/+Gi0RLrkMwowv3tgG0EyBla53dDO/DGsG3P685Ytuz9Ufm7fgRHAvPGb81gvU
+         DBbA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=3Ok18kr1nMkw/0rVgIWp/xbgbnOWA7nawrP/P6cDv6w=;
-        fh=dLP/YLBjMZxhHfH1sS7Ziu5zNyswdPoi/by3dAcRF0o=;
-        b=djt/UR54ulZfOKoX+DZMW8VbnhrbcMl8XsOfV46t42dWMbGRxpDSvW6OiiphJ1zh5Q
-         JBnipQ4JerArCzThP7MLyyZg+gvN/0/xYs0JdtRLWoOdKAYfHyZjAQP/t3Bc0YgPtcMP
-         bEgmc4wUQwzFUoS5301IfnRbqn4jkW2AWa1EAVUTTqmCq+shUYBSleJY1o/pXYg6iXrW
-         YirpMkl+m62mgOt924T3/R2N8AqsWTKGQJYjldhRK2HAMJcAZx33ZW39xRC/gU0GGj7+
-         XLF9hZNwLQXdnCR4FbGyCjobbLTdolw3xN2HYIWdi9GqZcD1Bv3XbM/JN+8R5oEBJNme
-         tQgw==;
+        bh=LPD0ziR8yfL/HjZu6b/yEmmqErN3Sv3BQp33o6QEumo=;
+        fh=tDUnKAOzH3m+e+SVCPqqHBIbaZ4/EHUx1hmJy36Agss=;
+        b=fBhqbdiJUZYJOdC64K2k2E3Rh3vIl0IKM0fgywgalsbv6hjXW+Cfg4gsET0DjLDZWM
+         16obyj4WiR3ihjYgq3hkisEO+dK/cgnobrqhjdYyTDCg/9e8XhrKtHGblUK0x32M3oVr
+         Bzom2OnJusGa6SyPeHVWzAAGn+94McFQvNJVH6ggU2/fZCcpMD7fyfxt5Wed1P2y1kPy
+         lgAv12xukTfT9YRtxHuCwREZoBYH5201jJEADeyncXiwb9Owe0Rbp9DNsVFpyvFIE8JB
+         GWEatZhAQEzA+MR0k+lz9MYDpIhTdWtbcJ3d7AWLc+IPERI6ROuLx78RtoW67WeBK+zf
+         E3Eg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=vH6qJZMe;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=paSZkejc;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-45d95745489si8370311cf.803.2024.10.03.07.01.32
+        by mx.google.com with ESMTPS id ada2fe7eead31-4a3f9d01c3bsi204751137.515.2024.10.03.07.02.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 03 Oct 2024 07:01:32 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 03 Oct 2024 07:02:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=vH6qJZMe;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=paSZkejc;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1swMO9-0004JB-6V; Thu, 03 Oct 2024 10:01:05 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1swMOC-0004Lf-EN; Thu, 03 Oct 2024 10:01:08 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1swMNQ-00046z-Jc
- for qemu-arm@nongnu.org; Thu, 03 Oct 2024 10:00:25 -0400
-Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
+ id 1swMNQ-000471-NU
+ for qemu-devel@nongnu.org; Thu, 03 Oct 2024 10:00:25 -0400
+Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1swMNL-0002qj-1l
- for qemu-arm@nongnu.org; Thu, 03 Oct 2024 10:00:18 -0400
-Received: by mail-wr1-x436.google.com with SMTP id
- ffacd0b85a97d-37cc5fb1e45so823263f8f.2
- for <qemu-arm@nongnu.org>; Thu, 03 Oct 2024 07:00:14 -0700 (PDT)
+ id 1swMNO-0002rV-Af
+ for qemu-devel@nongnu.org; Thu, 03 Oct 2024 10:00:20 -0400
+Received: by mail-wr1-x42e.google.com with SMTP id
+ ffacd0b85a97d-37ccd81de57so617229f8f.0
+ for <qemu-devel@nongnu.org>; Thu, 03 Oct 2024 07:00:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1727964013; x=1728568813; darn=nongnu.org;
+ d=linaro.org; s=google; t=1727964016; x=1728568816; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=3Ok18kr1nMkw/0rVgIWp/xbgbnOWA7nawrP/P6cDv6w=;
- b=vH6qJZMeRpJFQuMCeeRbLN8k6DyA/WzBHZ4ffLRirgJrD8cnEfT9wLUklfaQFOXohA
- n5rvrJ6+oKX+VEF/x7J17Q+Qe58X9lFmo3j6V9bFfYa+czvJFm+qTDC/QxfnL8cwpoRF
- wmBR57pc47okkcCGXImzQNBHxhZSZROeLYx3c5FJ1F/XcBMUm6Yvk+W79WgbohwkMEMk
- vsfAnZg3fCHTKmMcpEAe7MP4FBDS5ads/fQDOoTRHwWfM7N/VN6QtnKzHkZ9vS5WRd8E
- zbOREtCZMPVBHF1X237dFgJlSx/077xRcGhw1wsLmFvRUKq1W3EAiirLjyLfQzXTIl/R
- z9jA==
+ bh=LPD0ziR8yfL/HjZu6b/yEmmqErN3Sv3BQp33o6QEumo=;
+ b=paSZkejcLJehhIKtxeAm7c6dbsEA+0qHftsZSbuKCTOOt2h23ReqjdvnTr459qqFas
+ TJ6RFkql2+9bZs3+AwImySZZr4kuZsGUwxzVR/ikY5yQTCpHeWhbyT4dpu4+FFt06Gfx
+ 8GYfOy4/eeL1b48CCoJbucAl/E1aDZOQPB+7eQsF8qUbnjOCbkv/oUPGcljLXUwQ0mmo
+ 0Lh+S1A2ZKwGgVJMDVz8BQuki+EYEdUa3kaLzsdySnBhoIckdR7do1RKoh8MYcb2lszJ
+ ZKUrXRfb/JhFB/Fy8XJ64qxVrQhVaUb76T20iiTqGOAdi9Bs46yFJTmmQW3NptT1RIkX
+ qcyg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1727964013; x=1728568813;
+ d=1e100.net; s=20230601; t=1727964016; x=1728568816;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=3Ok18kr1nMkw/0rVgIWp/xbgbnOWA7nawrP/P6cDv6w=;
- b=nSsYeY9lV2J1MjjqaR7gAJX0E5nHKApTC0oyaF46wNW1/kqQFz4vYBH+n7dLWFYZOw
- qPXARjrKK6VffYJfKzjzFXh2+Q+UEOk1oSm7YrtEYYf1VscgRkjluAxwbjzUt5OSqSH5
- +vA7zqkgWP7VHNIZtwDKmGAsUTc6Z2qzpia0LuVBIINWUXMhoHBoYa1oscsBDKVs7b9Y
- aVdYvK17C9oK3Z/oru0H3lVypLEFlP4BfwqEmPpVBUzabLmlOgKtnNMYYn8HEnnobFi2
- 82nQNbBJI2dZ0o0ZYwUMgcC1KwL2CNAuFhEG0EM2VtcvQleckfnn+CHX/+r3a84TRuwp
- fzSQ==
-X-Gm-Message-State: AOJu0Yystc1QHV7HZVdgwW+OCv1NK8d+PUZTggt6C0r+syzSlkv+uxxI
- Al360CFgM3hhRXHXfonYQkDr/Cyt3yJoh77cxDBBcQHVKKaCHvEU0wCdffQOfRWT5mokZlKB5Qv
- N
-X-Received: by 2002:adf:e643:0:b0:374:c847:852 with SMTP id
- ffacd0b85a97d-37cfb9d024cmr4686638f8f.29.1727964012887; 
- Thu, 03 Oct 2024 07:00:12 -0700 (PDT)
+ bh=LPD0ziR8yfL/HjZu6b/yEmmqErN3Sv3BQp33o6QEumo=;
+ b=cjkHQ7Jx6flfQLZON+hbs52XsIM3sKXaunGjnhVt+0GvAftLeLUcC3eYxdNe6vOwD+
+ IpJUImSrabxkJYoFtUiaTLLzvyttyR8MbdsU7CVoPRSqDRLsBLTbdfWqd6OeQOWxi8+r
+ w4ethW1ClEL0yG624enIPJDujiax8xI8PmXG5Ds9Kdlu85D/OZcdMbZ4mkE3dqJ75p8H
+ kcLC1YgWGLwFRIi1ka/kkuWqCdfYrkDYNXFistfmDmTG9nD/hdUjdFgSR3dOsLOLo7U7
+ ZBNQHrc+bYa0lUHxXU33okhuN543NfEl1BOh9nEGFeoxTeMqzWQdquf0DP1aeJUaDEVW
+ P/VQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVKO71mNCBpQ6qo8AM3s3odT4B0M/YtXVSoa/v/NgY8+W4kP7mwnE52v2mY+YDW1v7Zdsh4pa9JwZzZ@nongnu.org
+X-Gm-Message-State: AOJu0Yx9n0Mb9/lcBk80LGRdKIhFuZ7BA908flw2eFBAsiTM+/H63CN/
+ B2GJ4QxkbqVxbJIw93Vhc3KKQyJB/r5FHs86xi1mXtkHeY7Vboila6g7ydRjRck=
+X-Received: by 2002:adf:a30d:0:b0:37c:f561:1130 with SMTP id
+ ffacd0b85a97d-37d04a04aa2mr2286429f8f.18.1727964016185; 
+ Thu, 03 Oct 2024 07:00:16 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-37d0822bc38sm1340255f8f.45.2024.10.03.07.00.12
+ ffacd0b85a97d-37d0822bc38sm1340255f8f.45.2024.10.03.07.00.15
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 03 Oct 2024 07:00:12 -0700 (PDT)
+ Thu, 03 Oct 2024 07:00:15 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Guenter Roeck <linux@roeck-us.net>, Paolo Bonzini <pbonzini@redhat.com>
-Subject: [PATCH v2 1/6] hw/adc: Remove MAX111X device
-Date: Thu,  3 Oct 2024 15:00:05 +0100
-Message-Id: <20241003140010.1653808-2-peter.maydell@linaro.org>
+Subject: [PATCH v2 5/6] hw/block: Remove ecc
+Date: Thu,  3 Oct 2024 15:00:09 +0100
+Message-Id: <20241003140010.1653808-6-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20241003140010.1653808-1-peter.maydell@linaro.org>
 References: <20241003140010.1653808-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::436;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x436.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -118,370 +119,207 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: rLpyTSqseUJL
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: zlFMGij5G5F9
 
-The MAX111X ADC device was used only by the XScale-based
-Zaurus machine types. Now they have all been removed, we can
-drop this device model too.
+The ecc.c code was used only by the PXA2xx and OMAP2 SoC devices,
+which we have removed, so it is now completely unused.
 
-Because this device is an SSI device, in theory it could be created
-by users on the command line for boards with a different SSI
-controller, but we don't believe users are doing this -- it would be
-impossible on the command line to connect up the GPIO inputs which
-correspond to ADC inputs, or the GPIO output which is an interrupt
-line.  The only example a web search produces for "device max1111" or
-"device max1110" is our own bug report
-  https://gitlab.com/qemu-project/qemu/-/issues/2228
-where it's used as an example of a bogus command that causes an
-assertion in an aspeed machine type that wasn't expecting anything
-other than flash devices on its SMC bus.
+Note that hw/misc/eccmemctl.c does not in fact use any of the
+code frome ecc.c, so that KConfig dependency was incorrect.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- include/hw/adc/max111x.h |  56 ----------
- hw/adc/max111x.c         | 236 ---------------------------------------
- hw/adc/Kconfig           |   3 -
- hw/adc/meson.build       |   1 -
- 4 files changed, 296 deletions(-)
- delete mode 100644 include/hw/adc/max111x.h
- delete mode 100644 hw/adc/max111x.c
+ include/hw/block/flash.h | 11 -----
+ hw/block/ecc.c           | 91 ----------------------------------------
+ hw/arm/Kconfig           |  1 -
+ hw/block/Kconfig         |  3 --
+ hw/block/meson.build     |  1 -
+ hw/misc/Kconfig          |  1 -
+ 6 files changed, 108 deletions(-)
+ delete mode 100644 hw/block/ecc.c
 
-diff --git a/include/hw/adc/max111x.h b/include/hw/adc/max111x.h
+diff --git a/include/hw/block/flash.h b/include/hw/block/flash.h
+index b985c825a01..5fd67f5bb79 100644
+--- a/include/hw/block/flash.h
++++ b/include/hw/block/flash.h
+@@ -62,17 +62,6 @@ uint32_t nand_getbuswidth(DeviceState *dev);
+ #define NAND_MFR_HYNIX      0xad
+ #define NAND_MFR_MICRON     0x2c
+ 
+-/* ecc.c */
+-typedef struct {
+-    uint8_t cp;     /* Column parity */
+-    uint16_t lp[2]; /* Line parity */
+-    uint16_t count;
+-} ECCState;
+-
+-uint8_t ecc_digest(ECCState *s, uint8_t sample);
+-void ecc_reset(ECCState *s);
+-extern const VMStateDescription vmstate_ecc_state;
+-
+ /* m25p80.c */
+ 
+ #define TYPE_M25P80 "m25p80-generic"
+diff --git a/hw/block/ecc.c b/hw/block/ecc.c
 deleted file mode 100644
-index beff59c815d..00000000000
---- a/include/hw/adc/max111x.h
+index ed889a4184f..00000000000
+--- a/hw/block/ecc.c
 +++ /dev/null
-@@ -1,56 +0,0 @@
+@@ -1,91 +0,0 @@
 -/*
-- * Maxim MAX1110/1111 ADC chip emulation.
+- * Calculate Error-correcting Codes. Used by NAND Flash controllers
+- * (not by NAND chips).
 - *
 - * Copyright (c) 2006 Openedhand Ltd.
 - * Written by Andrzej Zaborowski <balrog@zabor.org>
 - *
-- * This code is licensed under the GNU GPLv2.
-- *
-- * Contributions after 2012-01-13 are licensed under the terms of the
-- * GNU GPL, version 2 or (at your option) any later version.
-- */
--
--#ifndef HW_MISC_MAX111X_H
--#define HW_MISC_MAX111X_H
--
--#include "hw/ssi/ssi.h"
--#include "qom/object.h"
--
--/*
-- * This is a model of the Maxim MAX1110/1111 ADC chip, which for QEMU
-- * is an SSI slave device. It has either 4 (max1110) or 8 (max1111)
-- * 8-bit ADC channels.
-- *
-- * QEMU interface:
-- *  + GPIO inputs 0..3 (for max1110) or 0..7 (for max1111): set the value
-- *    of each ADC input, as an unsigned 8-bit value
-- *  + GPIO output 0: interrupt line
-- *  + Properties "input0" to "input3" (max1110) or "input0" to "input7"
-- *    (max1111): initial reset values for ADC inputs.
-- *
-- * Known bugs:
-- *  + the interrupt line is not correctly implemented, and will never
-- *    be lowered once it has been asserted.
-- */
--struct MAX111xState {
--    SSIPeripheral parent_obj;
--
--    qemu_irq interrupt;
--    /* Values of inputs at system reset (settable by QOM property) */
--    uint8_t reset_input[8];
--
--    uint8_t tb1, rb2, rb3;
--    int cycle;
--
--    uint8_t input[8];
--    int inputs, com;
--};
--
--#define TYPE_MAX_111X "max111x"
--
--OBJECT_DECLARE_SIMPLE_TYPE(MAX111xState, MAX_111X)
--
--#define TYPE_MAX_1110 "max1110"
--#define TYPE_MAX_1111 "max1111"
--
--#endif
-diff --git a/hw/adc/max111x.c b/hw/adc/max111x.c
-deleted file mode 100644
-index aa51e47245d..00000000000
---- a/hw/adc/max111x.c
-+++ /dev/null
-@@ -1,236 +0,0 @@
--/*
-- * Maxim MAX1110/1111 ADC chip emulation.
-- *
-- * Copyright (c) 2006 Openedhand Ltd.
-- * Written by Andrzej Zaborowski <balrog@zabor.org>
-- *
-- * This code is licensed under the GNU GPLv2.
+- * This code is licensed under the GNU GPL v2.
 - *
 - * Contributions after 2012-01-13 are licensed under the terms of the
 - * GNU GPL, version 2 or (at your option) any later version.
 - */
 -
 -#include "qemu/osdep.h"
--#include "hw/adc/max111x.h"
--#include "hw/irq.h"
 -#include "migration/vmstate.h"
--#include "qemu/module.h"
--#include "hw/qdev-properties.h"
+-#include "hw/block/flash.h"
 -
--/* Control-byte bitfields */
--#define CB_PD0		(1 << 0)
--#define CB_PD1		(1 << 1)
--#define CB_SGL		(1 << 2)
--#define CB_UNI		(1 << 3)
--#define CB_SEL0		(1 << 4)
--#define CB_SEL1		(1 << 5)
--#define CB_SEL2		(1 << 6)
--#define CB_START	(1 << 7)
+-/*
+- * Pre-calculated 256-way 1 byte column parity.  Table borrowed from Linux.
+- */
+-static const uint8_t nand_ecc_precalc_table[] = {
+-    0x00, 0x55, 0x56, 0x03, 0x59, 0x0c, 0x0f, 0x5a,
+-    0x5a, 0x0f, 0x0c, 0x59, 0x03, 0x56, 0x55, 0x00,
+-    0x65, 0x30, 0x33, 0x66, 0x3c, 0x69, 0x6a, 0x3f,
+-    0x3f, 0x6a, 0x69, 0x3c, 0x66, 0x33, 0x30, 0x65,
+-    0x66, 0x33, 0x30, 0x65, 0x3f, 0x6a, 0x69, 0x3c,
+-    0x3c, 0x69, 0x6a, 0x3f, 0x65, 0x30, 0x33, 0x66,
+-    0x03, 0x56, 0x55, 0x00, 0x5a, 0x0f, 0x0c, 0x59,
+-    0x59, 0x0c, 0x0f, 0x5a, 0x00, 0x55, 0x56, 0x03,
+-    0x69, 0x3c, 0x3f, 0x6a, 0x30, 0x65, 0x66, 0x33,
+-    0x33, 0x66, 0x65, 0x30, 0x6a, 0x3f, 0x3c, 0x69,
+-    0x0c, 0x59, 0x5a, 0x0f, 0x55, 0x00, 0x03, 0x56,
+-    0x56, 0x03, 0x00, 0x55, 0x0f, 0x5a, 0x59, 0x0c,
+-    0x0f, 0x5a, 0x59, 0x0c, 0x56, 0x03, 0x00, 0x55,
+-    0x55, 0x00, 0x03, 0x56, 0x0c, 0x59, 0x5a, 0x0f,
+-    0x6a, 0x3f, 0x3c, 0x69, 0x33, 0x66, 0x65, 0x30,
+-    0x30, 0x65, 0x66, 0x33, 0x69, 0x3c, 0x3f, 0x6a,
+-    0x6a, 0x3f, 0x3c, 0x69, 0x33, 0x66, 0x65, 0x30,
+-    0x30, 0x65, 0x66, 0x33, 0x69, 0x3c, 0x3f, 0x6a,
+-    0x0f, 0x5a, 0x59, 0x0c, 0x56, 0x03, 0x00, 0x55,
+-    0x55, 0x00, 0x03, 0x56, 0x0c, 0x59, 0x5a, 0x0f,
+-    0x0c, 0x59, 0x5a, 0x0f, 0x55, 0x00, 0x03, 0x56,
+-    0x56, 0x03, 0x00, 0x55, 0x0f, 0x5a, 0x59, 0x0c,
+-    0x69, 0x3c, 0x3f, 0x6a, 0x30, 0x65, 0x66, 0x33,
+-    0x33, 0x66, 0x65, 0x30, 0x6a, 0x3f, 0x3c, 0x69,
+-    0x03, 0x56, 0x55, 0x00, 0x5a, 0x0f, 0x0c, 0x59,
+-    0x59, 0x0c, 0x0f, 0x5a, 0x00, 0x55, 0x56, 0x03,
+-    0x66, 0x33, 0x30, 0x65, 0x3f, 0x6a, 0x69, 0x3c,
+-    0x3c, 0x69, 0x6a, 0x3f, 0x65, 0x30, 0x33, 0x66,
+-    0x65, 0x30, 0x33, 0x66, 0x3c, 0x69, 0x6a, 0x3f,
+-    0x3f, 0x6a, 0x69, 0x3c, 0x66, 0x33, 0x30, 0x65,
+-    0x00, 0x55, 0x56, 0x03, 0x59, 0x0c, 0x0f, 0x5a,
+-    0x5a, 0x0f, 0x0c, 0x59, 0x03, 0x56, 0x55, 0x00,
+-};
 -
--#define CHANNEL_NUM(v, b0, b1, b2)	\
--                        ((((v) >> (2 + (b0))) & 4) |	\
--                         (((v) >> (3 + (b1))) & 2) |	\
--                         (((v) >> (4 + (b2))) & 1))
--
--static uint32_t max111x_read(MAX111xState *s)
+-/* Update ECC parity count.  */
+-uint8_t ecc_digest(ECCState *s, uint8_t sample)
 -{
--    if (!s->tb1)
--        return 0;
+-    uint8_t idx = nand_ecc_precalc_table[sample];
 -
--    switch (s->cycle ++) {
--    case 1:
--        return s->rb2;
--    case 2:
--        return s->rb3;
+-    s->cp ^= idx & 0x3f;
+-    if (idx & 0x40) {
+-        s->lp[0] ^= ~s->count;
+-        s->lp[1] ^= s->count;
 -    }
+-    s->count ++;
 -
--    return 0;
+-    return sample;
 -}
 -
--/* Interpret a control-byte */
--static void max111x_write(MAX111xState *s, uint32_t value)
+-/* Reinitialise the counters.  */
+-void ecc_reset(ECCState *s)
 -{
--    int measure, chan;
--
--    /* Ignore the value if START bit is zero */
--    if (!(value & CB_START))
--        return;
--
--    s->cycle = 0;
--
--    if (!(value & CB_PD1)) {
--        s->tb1 = 0;
--        return;
--    }
--
--    s->tb1 = value;
--
--    if (s->inputs == 8)
--        chan = CHANNEL_NUM(value, 1, 0, 2);
--    else
--        chan = CHANNEL_NUM(value & ~CB_SEL0, 0, 1, 2);
--
--    if (value & CB_SGL)
--        measure = s->input[chan] - s->com;
--    else
--        measure = s->input[chan] - s->input[chan ^ 1];
--
--    if (!(value & CB_UNI))
--        measure ^= 0x80;
--
--    s->rb2 = (measure >> 2) & 0x3f;
--    s->rb3 = (measure << 6) & 0xc0;
--
--    /* FIXME: When should the IRQ be lowered?  */
--    qemu_irq_raise(s->interrupt);
+-    s->lp[0] = 0x0000;
+-    s->lp[1] = 0x0000;
+-    s->cp = 0x00;
+-    s->count = 0;
 -}
 -
--static uint32_t max111x_transfer(SSIPeripheral *dev, uint32_t value)
--{
--    MAX111xState *s = MAX_111X(dev);
--    max111x_write(s, value);
--    return max111x_read(s);
--}
--
--static const VMStateDescription vmstate_max111x = {
--    .name = "max111x",
--    .version_id = 1,
--    .minimum_version_id = 1,
+-/* Save/restore */
+-const VMStateDescription vmstate_ecc_state = {
+-    .name = "ecc-state",
+-    .version_id = 0,
+-    .minimum_version_id = 0,
 -    .fields = (const VMStateField[]) {
--        VMSTATE_SSI_PERIPHERAL(parent_obj, MAX111xState),
--        VMSTATE_UINT8(tb1, MAX111xState),
--        VMSTATE_UINT8(rb2, MAX111xState),
--        VMSTATE_UINT8(rb3, MAX111xState),
--        VMSTATE_INT32_EQUAL(inputs, MAX111xState, NULL),
--        VMSTATE_INT32(com, MAX111xState),
--        VMSTATE_ARRAY_INT32_UNSAFE(input, MAX111xState, inputs,
--                                   vmstate_info_uint8, uint8_t),
--        VMSTATE_END_OF_LIST()
--    }
+-        VMSTATE_UINT8(cp, ECCState),
+-        VMSTATE_UINT16_ARRAY(lp, ECCState, 2),
+-        VMSTATE_UINT16(count, ECCState),
+-        VMSTATE_END_OF_LIST(),
+-    },
 -};
--
--static void max111x_input_set(void *opaque, int line, int value)
--{
--    MAX111xState *s = MAX_111X(opaque);
--
--    assert(line >= 0 && line < s->inputs);
--    s->input[line] = value;
--}
--
--static int max111x_init(SSIPeripheral *d, int inputs)
--{
--    DeviceState *dev = DEVICE(d);
--    MAX111xState *s = MAX_111X(dev);
--
--    qdev_init_gpio_out(dev, &s->interrupt, 1);
--    qdev_init_gpio_in(dev, max111x_input_set, inputs);
--
--    s->inputs = inputs;
--
--    return 0;
--}
--
--static void max1110_realize(SSIPeripheral *dev, Error **errp)
--{
--    max111x_init(dev, 8);
--}
--
--static void max1111_realize(SSIPeripheral *dev, Error **errp)
--{
--    max111x_init(dev, 4);
--}
--
--static void max111x_reset(DeviceState *dev)
--{
--    MAX111xState *s = MAX_111X(dev);
--    int i;
--
--    for (i = 0; i < s->inputs; i++) {
--        s->input[i] = s->reset_input[i];
--    }
--    s->com = 0;
--    s->tb1 = 0;
--    s->rb2 = 0;
--    s->rb3 = 0;
--    s->cycle = 0;
--}
--
--static Property max1110_properties[] = {
--    /* Reset values for ADC inputs */
--    DEFINE_PROP_UINT8("input0", MAX111xState, reset_input[0], 0xf0),
--    DEFINE_PROP_UINT8("input1", MAX111xState, reset_input[1], 0xe0),
--    DEFINE_PROP_UINT8("input2", MAX111xState, reset_input[2], 0xd0),
--    DEFINE_PROP_UINT8("input3", MAX111xState, reset_input[3], 0xc0),
--    DEFINE_PROP_END_OF_LIST(),
--};
--
--static Property max1111_properties[] = {
--    /* Reset values for ADC inputs */
--    DEFINE_PROP_UINT8("input0", MAX111xState, reset_input[0], 0xf0),
--    DEFINE_PROP_UINT8("input1", MAX111xState, reset_input[1], 0xe0),
--    DEFINE_PROP_UINT8("input2", MAX111xState, reset_input[2], 0xd0),
--    DEFINE_PROP_UINT8("input3", MAX111xState, reset_input[3], 0xc0),
--    DEFINE_PROP_UINT8("input4", MAX111xState, reset_input[4], 0xb0),
--    DEFINE_PROP_UINT8("input5", MAX111xState, reset_input[5], 0xa0),
--    DEFINE_PROP_UINT8("input6", MAX111xState, reset_input[6], 0x90),
--    DEFINE_PROP_UINT8("input7", MAX111xState, reset_input[7], 0x80),
--    DEFINE_PROP_END_OF_LIST(),
--};
--
--static void max111x_class_init(ObjectClass *klass, void *data)
--{
--    SSIPeripheralClass *k = SSI_PERIPHERAL_CLASS(klass);
--    DeviceClass *dc = DEVICE_CLASS(klass);
--
--    k->transfer = max111x_transfer;
--    device_class_set_legacy_reset(dc, max111x_reset);
--    dc->vmsd = &vmstate_max111x;
--    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
--}
--
--static const TypeInfo max111x_info = {
--    .name          = TYPE_MAX_111X,
--    .parent        = TYPE_SSI_PERIPHERAL,
--    .instance_size = sizeof(MAX111xState),
--    .class_init    = max111x_class_init,
--    .abstract      = true,
--};
--
--static void max1110_class_init(ObjectClass *klass, void *data)
--{
--    SSIPeripheralClass *k = SSI_PERIPHERAL_CLASS(klass);
--    DeviceClass *dc = DEVICE_CLASS(klass);
--
--    k->realize = max1110_realize;
--    device_class_set_props(dc, max1110_properties);
--}
--
--static const TypeInfo max1110_info = {
--    .name          = TYPE_MAX_1110,
--    .parent        = TYPE_MAX_111X,
--    .class_init    = max1110_class_init,
--};
--
--static void max1111_class_init(ObjectClass *klass, void *data)
--{
--    SSIPeripheralClass *k = SSI_PERIPHERAL_CLASS(klass);
--    DeviceClass *dc = DEVICE_CLASS(klass);
--
--    k->realize = max1111_realize;
--    device_class_set_props(dc, max1111_properties);
--}
--
--static const TypeInfo max1111_info = {
--    .name          = TYPE_MAX_1111,
--    .parent        = TYPE_MAX_111X,
--    .class_init    = max1111_class_init,
--};
--
--static void max111x_register_types(void)
--{
--    type_register_static(&max111x_info);
--    type_register_static(&max1110_info);
--    type_register_static(&max1111_info);
--}
--
--type_init(max111x_register_types)
-diff --git a/hw/adc/Kconfig b/hw/adc/Kconfig
-index a825bd3d343..25d2229fb83 100644
---- a/hw/adc/Kconfig
-+++ b/hw/adc/Kconfig
-@@ -1,5 +1,2 @@
- config STM32F2XX_ADC
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index a70ceff504b..7b19a9559f6 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -146,7 +146,6 @@ config OMAP
      bool
--
--config MAX111X
+     select FRAMEBUFFER
+     select I2C
+-    select ECC
+     select NAND
+     select PFLASH_CFI01
+     select SD
+diff --git a/hw/block/Kconfig b/hw/block/Kconfig
+index e67a6fd8af7..a898e04f03b 100644
+--- a/hw/block/Kconfig
++++ b/hw/block/Kconfig
+@@ -22,9 +22,6 @@ config PFLASH_CFI01
+ config PFLASH_CFI02
+     bool
+ 
+-config ECC
 -    bool
-diff --git a/hw/adc/meson.build b/hw/adc/meson.build
-index a4f85b7d468..7f7acc16196 100644
---- a/hw/adc/meson.build
-+++ b/hw/adc/meson.build
-@@ -2,4 +2,3 @@ system_ss.add(when: 'CONFIG_STM32F2XX_ADC', if_true: files('stm32f2xx_adc.c'))
- system_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files('aspeed_adc.c'))
- system_ss.add(when: 'CONFIG_NPCM7XX', if_true: files('npcm7xx_adc.c'))
- system_ss.add(when: 'CONFIG_ZYNQ', if_true: files('zynq-xadc.c'))
--system_ss.add(when: 'CONFIG_MAX111X', if_true: files('max111x.c'))
+-
+ config VIRTIO_BLK
+     bool
+     default y
+diff --git a/hw/block/meson.build b/hw/block/meson.build
+index 999a93d900f..16a51bf8e21 100644
+--- a/hw/block/meson.build
++++ b/hw/block/meson.build
+@@ -3,7 +3,6 @@ system_ss.add(files(
+   'cdrom.c',
+   'hd-geometry.c'
+ ))
+-system_ss.add(when: 'CONFIG_ECC', if_true: files('ecc.c'))
+ system_ss.add(when: 'CONFIG_FDC', if_true: files('fdc.c'))
+ system_ss.add(when: 'CONFIG_FDC_ISA', if_true: files('fdc-isa.c'))
+ system_ss.add(when: 'CONFIG_FDC_SYSBUS', if_true: files('fdc-sysbus.c'))
+diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
+index 1e08785b832..8568aaa2293 100644
+--- a/hw/misc/Kconfig
++++ b/hw/misc/Kconfig
+@@ -74,7 +74,6 @@ config IVSHMEM_DEVICE
+ 
+ config ECCMEMCTL
+     bool
+-    select ECC
+ 
+ config IMX
+     bool
 -- 
 2.34.1
 

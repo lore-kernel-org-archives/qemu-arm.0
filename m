@@ -1,85 +1,83 @@
-Received: by 2002:a17:504:959a:b0:1be9:327d:8ee3 with SMTP id e26csp1298444njl;
-        Thu, 3 Oct 2024 01:37:14 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXv/vbNWHbk8ZbUv+FJrr6iTqWocQaCSN9rJXxF549glF7lH++aVaPE22WCOMO/la0LP4bIr4Snej3RwQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IF6pfFQIfmgeEePgfwew1O0QtvTL20VWg+JFqYfmG4+cSAjoWvmZQwt/aTLKhhz0lUyyh9H
-X-Received: by 2002:a05:620a:179e:b0:7a9:b1e8:46ab with SMTP id af79cd13be357-7ae67e4789fmr417492085a.19.1727944634510;
-        Thu, 03 Oct 2024 01:37:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1727944634; cv=none;
+Received: by 2002:a17:504:959a:b0:1be9:327d:8ee3 with SMTP id e26csp1323422njl;
+        Thu, 3 Oct 2024 02:42:14 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCU2CkcTLEVqXm9jFHEHB5OALKTXqTYPPaRDjtYFRRF748xxoKj6ZYXPEeGda5r/LW7m+LBBPiFfgO8ozA==@linaro.org
+X-Google-Smtp-Source: AGHT+IHMxs/3RtAGUWT1WoAVhdKgjcsxXq2CorNKovXf3bgZQLrWe48bPUk49GouTte4WSk7DDmV
+X-Received: by 2002:a05:620a:28cd:b0:79f:793:9a63 with SMTP id af79cd13be357-7ae62727d45mr972419885a.44.1727948534050;
+        Thu, 03 Oct 2024 02:42:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1727948534; cv=none;
         d=google.com; s=arc-20240605;
-        b=O7c+MTCInIwNJhOmJoirtuWgPdUv4mdC9Si0gdbo/ZSAFqCEtWJRxpA6TZqJeoWuP+
-         6eRSTc/QaL1QFNeVSTIq6FlO3IzJckVfPoys+FHbgLko2wIcFwXQwKACwOOJt8pGbvvh
-         ti1VnOSDbcSDe24r6Wbt7abD3mr93nF6q6LNs7P3B5UEGo8bIAeQKY+s5doYaW7Qc3O8
-         G201Qzu6tZsFyszfQN6N/aBK8UfkVbUiG/9WFOzY1P0wYwacVpK6QnULVyOIbgrAn6QE
-         eJMNeo+h3kX/wrw8js8fSj9MGpzjQ+qD3xzeB2hKmjPPqnkUaWT5juEfmRqm9w0ly2Ye
-         Sm2Q==
+        b=kf2DHb2i6RTLDrIGcPZyhyCCCoxwlqQPrJe7HeJoFFHhbTd7DrQrSuUJ7AdHQR6x8M
+         yxXENtcRGtfSSqbjIZEqeo2taW4xssha2Dmq/CSNSzSL76cPmIW0CZSQke3qhIHg8wCC
+         VNROIBjNQYdKM7QqlZT8vevW6HwZUGABYU6XAi0a7jE+VwmTDLgXlKphAnal5PYMiEk3
+         2Rll4XETRjtGrmyMaK7r25W/YjwVSynNOW9qvhU/sjOY+3wD6OrWOsg8yTCaroBn74lS
+         ou3eTxaLPVjva4VdaMos5PEopdvUIfUzZAI2caI7duP368LHxxE+bxsyDDNWvMtNaxE6
+         0eTw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature:dkim-filter;
-        bh=bvCArfBxkPutYzyakD7t3ZBavD+tFjEHb8BCFcBKAmc=;
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature
+         :dkim-filter;
+        bh=SdTacgwXlOQE7qPrAZC0vzcZsDUWZve9UsTlQIJud6M=;
         fh=v8mqTSJAHlKy0cdGphppNgnpWvpEjYKgmaDPa3OV15Y=;
-        b=UM55qEO4xSyzgpZmfmnt+AtstGXzc4rAqcmVexg8tYsePR+beFFj0GJnUwwFwUT79M
-         1BDPzfkFr4TrJNdae64VgTuuV7FfFBkF+q4WCv6eVTQ/CTt8v5SMrMpB2wS+d3iec388
-         C5jXDkxIlO0ykgTe0jAUhIM8QyJHH6MmKSaqNKKHbb56U2hyvMumQ/R/98b4kxC+Mss+
-         qNz9O0tj/gD7y37o4u/OsqglYhoYZqf6jTAVvYtFesklVzXoyzDpQkPC3YACv/rtnpHT
-         2E4mpK0lm1eZZrJLleRzZ9t5sKLxBPp4Oa9fol7asURAYqe7WadJykIUuF1HwCjPVwgx
-         5jiQ==;
+        b=OcQqdecWC/KUyPSJTOUTP8TfCCEFO1ZcHl2wo6spfdDjZl2oPalGVpbPA7La2dKj76
+         HepoC65fjRsHyzJ/uaU/OPZKsShXXuF1QIFRyndA5RXaf5LMAH6EPkwzbTo3rdegy9u4
+         MIwsPYjDkdb2Jj4lrXHFazF4YmSv/vqyi33mCg25t/XrVpdEocZ49+wJslkPF7lI3jga
+         7vscSQtyFrJbPzdl71qtQt9z5GZ12Nv77C+SdA+agwNK194xg1LsZcWLWPN+7d9IMi8M
+         soV6SpEgUrtsvosViGAzul+UTCb3Nq2vuY3lffiiQGaBLBs6sZEPGIrejRhdk+RjEUXj
+         vstg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=M+JyCmTM;
+       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=waOT6tNB;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7ae6ba09eeesi49101585a.530.2024.10.03.01.37.14
+        by mx.google.com with ESMTPS id af79cd13be357-7ae6ba09b04si60227285a.469.2024.10.03.02.42.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 03 Oct 2024 01:37:14 -0700 (PDT)
+        Thu, 03 Oct 2024 02:42:13 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=M+JyCmTM;
+       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=waOT6tNB;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1swHA0-0003tp-EM; Thu, 03 Oct 2024 04:26:09 -0400
+	id 1swGyU-0001m9-AO; Thu, 03 Oct 2024 04:14:18 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ines.varhol@telecom-paris.fr>)
- id 1swH9m-0003sT-26
- for qemu-devel@nongnu.org; Thu, 03 Oct 2024 04:25:57 -0400
-Received: from zproxy3.enst.fr ([2001:660:330f:2::de])
+ id 1swGyJ-0001lG-Vn; Thu, 03 Oct 2024 04:14:03 -0400
+Received: from zproxy3.enst.fr ([137.194.2.222])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ines.varhol@telecom-paris.fr>)
- id 1swH9I-00059V-2k
- for qemu-devel@nongnu.org; Thu, 03 Oct 2024 04:25:49 -0400
+ id 1swGxS-0003cq-K3; Thu, 03 Oct 2024 04:13:50 -0400
 Received: from localhost (localhost [IPv6:::1])
- by zproxy3.enst.fr (Postfix) with ESMTP id 0039CA0835;
- Thu,  3 Oct 2024 10:11:13 +0200 (CEST)
+ by zproxy3.enst.fr (Postfix) with ESMTP id B366BA0662;
+ Thu,  3 Oct 2024 10:11:12 +0200 (CEST)
 Received: from zproxy3.enst.fr ([IPv6:::1])
  by localhost (zproxy3.enst.fr [IPv6:::1]) (amavis, port 10032) with ESMTP
- id t65Z8H-bmKti; Thu,  3 Oct 2024 10:11:13 +0200 (CEST)
+ id gBiOnLwkVKek; Thu,  3 Oct 2024 10:11:12 +0200 (CEST)
 Received: from localhost (localhost [IPv6:::1])
- by zproxy3.enst.fr (Postfix) with ESMTP id 61FD4A0817;
- Thu,  3 Oct 2024 10:11:13 +0200 (CEST)
-DKIM-Filter: OpenDKIM Filter v2.10.3 zproxy3.enst.fr 61FD4A0817
+ by zproxy3.enst.fr (Postfix) with ESMTP id 1BDCAA06B3;
+ Thu,  3 Oct 2024 10:11:12 +0200 (CEST)
+DKIM-Filter: OpenDKIM Filter v2.10.3 zproxy3.enst.fr 1BDCAA06B3
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=telecom-paris.fr;
- s=A35C7578-1106-11E5-A17F-C303FDDA8F2E; t=1727943073;
- bh=bvCArfBxkPutYzyakD7t3ZBavD+tFjEHb8BCFcBKAmc=;
+ s=A35C7578-1106-11E5-A17F-C303FDDA8F2E; t=1727943072;
+ bh=SdTacgwXlOQE7qPrAZC0vzcZsDUWZve9UsTlQIJud6M=;
  h=From:To:Date:Message-ID:MIME-Version;
- b=M+JyCmTMF878Q6rSgZUvzn4W5492/zmXDxsucy5e3B6DhAmX/2vGE7AX/B7l9rBBe
- kuKoM9wVZb4WoswhJL8dX66CSxWTQ5mUW/tFiKO2DP6v0kvLA84z2kseuPwS3okgUB
- qeHbecjlvLW4hXEo42b4y6pSMTNWjd2SXJ5lWOvg=
+ b=waOT6tNB4k8dBcwasxxRdKUANpB7LN2Mu3yxZ4quGNxmPcjG7pYPMbFwbVPcLM3vy
+ fRLlo2SAxFahBtK2T3DCCPWUg41D+43vom7AGlqH98HVSosoiwWb8szmdRoH0N+34n
+ sKvk5Ffm7RMBRNM2f6OJl6ivTttomEBNW+SHVnsk=
 X-Virus-Scanned: amavis at enst.fr
 Received: from zproxy3.enst.fr ([IPv6:::1])
  by localhost (zproxy3.enst.fr [IPv6:::1]) (amavis, port 10026) with ESMTP
- id zU-J1kxmMKz7; Thu,  3 Oct 2024 10:11:13 +0200 (CEST)
+ id lU-7fIyEQFLC; Thu,  3 Oct 2024 10:11:11 +0200 (CEST)
 Received: from inesv-Inspiron-3501.enst.fr (unknown
  [IPv6:2a04:8ec0:0:124::190c])
- by zproxy3.enst.fr (Postfix) with ESMTPSA id 03272A0677;
- Thu,  3 Oct 2024 10:11:12 +0200 (CEST)
+ by zproxy3.enst.fr (Postfix) with ESMTPSA id 5ED24A0677;
+ Thu,  3 Oct 2024 10:11:11 +0200 (CEST)
 From: =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>
 To: qemu-devel@nongnu.org
 Cc: Arnaud Minier <arnaud.minier@telecom-paris.fr>,
@@ -93,23 +91,23 @@ Cc: Arnaud Minier <arnaud.minier@telecom-paris.fr>,
  Damien Hedde <damien.hedde@dahe.fr>,
  =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>,
  Laurent Vivier <lvivier@redhat.com>
-Subject: [PING PATCH v5 1/3] hw/misc: Create STM32L4x5 SYSCFG clock
-Date: Thu,  3 Oct 2024 10:10:04 +0200
-Message-ID: <20241003081105.40836-2-ines.varhol@telecom-paris.fr>
+Subject: [PING PATCH v5 0/3] Check clock connection between STM32L4x5 RCC and
+ peripherals
+Date: Thu,  3 Oct 2024 10:10:03 +0200
+Message-ID: <20241003081105.40836-1-ines.varhol@telecom-paris.fr>
 X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20241003081105.40836-1-ines.varhol@telecom-paris.fr>
-References: <20241003081105.40836-1-ines.varhol@telecom-paris.fr>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2001:660:330f:2::de;
+Received-SPF: pass client-ip=137.194.2.222;
  envelope-from=ines.varhol@telecom-paris.fr; helo=zproxy3.enst.fr
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
- DKIM_SIGNED=0.1, T_SPF_HELO_TEMPERROR=0.01,
- T_SPF_TEMPERROR=0.01 autolearn=no autolearn_force=no
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ T_SPF_HELO_TEMPERROR=0.01,
+ T_SPF_TEMPERROR=0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -124,105 +122,66 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: +cieajRIQFOJ
+X-TUID: T/+g3WYUb7Tl
 
-This commit creates a clock in STM32L4x5 SYSCFG and wires it up to the
-corresponding clock from STM32L4x5 RCC.
+Among implemented STM32L4x5 devices, USART, GPIO and SYSCFG
+have a clock source, but none has a corresponding test in QEMU.
+
+This patch makes sure that all 3 devices create a clock correctly,
+adds a QOM property to access clocks' periods from QTests,
+and adds QTests checking that clock enable in RCC has the
+expected results for all 3 devices.
+
+Thank you for the reviews.
+
+Changes from v4 to v5: none
+(just added new reviewers in commit messages)
+
+Changes from v3 to v4:
+- removed 2nd commit (it was bumping up version id in
+`vmstate_stm32l4x5_usart_base`, which is useless when not adding
+any fields), it was a misunderstanding
+- in `clock.c`, `vmstate_stm32l4x5_usart_base`, renamed `freq_hz` to
+`period`
+- in `clocks.rst`, specified that `qtest-clock-period` is only usable
+from the QTests and not QEMU
+- in `qtest/stm32l4x5.h`, used macros from "clock.h" to compute
+the expected clock period in the right unit
+- in `qtest/stm32l4x5.h`, removed "osdep.h" include
+
+Changes from "v1" to v3:
+- adding a commit to expose `qtest-clock-period`, a QOM property for
+all clocks, only accessible from QTests, and mention it in clock.rst
+- adapt QTests so that they use clock period instead of clock frequency
+- remove `clock-freq-hz` QOM property in STM32L4x5 USART and SYSCFG
+- dropping the commit migrating GPIO clocks as it's already upstream
+
+Changes from v1 to an unfortunate second "v1":
+- upgrading `VMStateDescription` to version 2 to account for
+`VMSTATE_CLOCK()`
+- QTests : consolidating `get_clock_freq_hz()` in a header
+and making appropriate changes in stm32l4x5q_*-test.c
 
 Signed-off-by: In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
 Reviewed-by: Luc Michel <luc@lmichel.fr>
----
- include/hw/misc/stm32l4x5_syscfg.h |  1 +
- hw/arm/stm32l4x5_soc.c             |  2 ++
- hw/misc/stm32l4x5_syscfg.c         | 19 +++++++++++++++++--
- 3 files changed, 20 insertions(+), 2 deletions(-)
 
-diff --git a/include/hw/misc/stm32l4x5_syscfg.h b/include/hw/misc/stm32l4=
-x5_syscfg.h
-index 23bb564150..c450df2b9e 100644
---- a/include/hw/misc/stm32l4x5_syscfg.h
-+++ b/include/hw/misc/stm32l4x5_syscfg.h
-@@ -48,6 +48,7 @@ struct Stm32l4x5SyscfgState {
-     uint32_t swpr2;
-=20
-     qemu_irq gpio_out[GPIO_NUM_PINS];
-+    Clock *clk;
- };
-=20
- #endif
-diff --git a/hw/arm/stm32l4x5_soc.c b/hw/arm/stm32l4x5_soc.c
-index fac83d349c..16e3505dcb 100644
---- a/hw/arm/stm32l4x5_soc.c
-+++ b/hw/arm/stm32l4x5_soc.c
-@@ -236,6 +236,8 @@ static void stm32l4x5_soc_realize(DeviceState *dev_so=
-c, Error **errp)
-=20
-     /* System configuration controller */
-     busdev =3D SYS_BUS_DEVICE(&s->syscfg);
-+    qdev_connect_clock_in(DEVICE(&s->syscfg), "clk",
-+        qdev_get_clock_out(DEVICE(&(s->rcc)), "syscfg-out"));
-     if (!sysbus_realize(busdev, errp)) {
-         return;
-     }
-diff --git a/hw/misc/stm32l4x5_syscfg.c b/hw/misc/stm32l4x5_syscfg.c
-index a5a1ce2680..a947a9e036 100644
---- a/hw/misc/stm32l4x5_syscfg.c
-+++ b/hw/misc/stm32l4x5_syscfg.c
-@@ -26,6 +26,9 @@
- #include "trace.h"
- #include "hw/irq.h"
- #include "migration/vmstate.h"
-+#include "hw/clock.h"
-+#include "hw/qdev-clock.h"
-+#include "qapi/error.h"
- #include "hw/misc/stm32l4x5_syscfg.h"
- #include "hw/gpio/stm32l4x5_gpio.h"
-=20
-@@ -225,12 +228,22 @@ static void stm32l4x5_syscfg_init(Object *obj)
-     qdev_init_gpio_in(DEVICE(obj), stm32l4x5_syscfg_set_irq,
-                       GPIO_NUM_PINS * NUM_GPIOS);
-     qdev_init_gpio_out(DEVICE(obj), s->gpio_out, GPIO_NUM_PINS);
-+    s->clk =3D qdev_init_clock_in(DEVICE(s), "clk", NULL, s, 0);
-+}
-+
-+static void stm32l4x5_syscfg_realize(DeviceState *dev, Error **errp)
-+{
-+    Stm32l4x5SyscfgState *s =3D STM32L4X5_SYSCFG(dev);
-+    if (!clock_has_source(s->clk)) {
-+        error_setg(errp, "SYSCFG: clk input must be connected");
-+        return;
-+    }
- }
-=20
- static const VMStateDescription vmstate_stm32l4x5_syscfg =3D {
-     .name =3D TYPE_STM32L4X5_SYSCFG,
--    .version_id =3D 1,
--    .minimum_version_id =3D 1,
-+    .version_id =3D 2,
-+    .minimum_version_id =3D 2,
-     .fields =3D (VMStateField[]) {
-         VMSTATE_UINT32(memrmp, Stm32l4x5SyscfgState),
-         VMSTATE_UINT32(cfgr1, Stm32l4x5SyscfgState),
-@@ -241,6 +254,7 @@ static const VMStateDescription vmstate_stm32l4x5_sys=
-cfg =3D {
-         VMSTATE_UINT32(swpr, Stm32l4x5SyscfgState),
-         VMSTATE_UINT32(skr, Stm32l4x5SyscfgState),
-         VMSTATE_UINT32(swpr2, Stm32l4x5SyscfgState),
-+        VMSTATE_CLOCK(clk, Stm32l4x5SyscfgState),
-         VMSTATE_END_OF_LIST()
-     }
- };
-@@ -251,6 +265,7 @@ static void stm32l4x5_syscfg_class_init(ObjectClass *=
-klass, void *data)
-     ResettableClass *rc =3D RESETTABLE_CLASS(klass);
-=20
-     dc->vmsd =3D &vmstate_stm32l4x5_syscfg;
-+    dc->realize =3D stm32l4x5_syscfg_realize;
-     rc->phases.hold =3D stm32l4x5_syscfg_hold_reset;
- }
-=20
+In=C3=A8s Varhol (3):
+  hw/misc: Create STM32L4x5 SYSCFG clock
+  hw/clock: Expose 'qtest-clock-period' QOM property for QTests
+  tests/qtest: Check STM32L4x5 clock connections
+
+ docs/devel/clocks.rst               |  6 +++++
+ include/hw/misc/stm32l4x5_syscfg.h  |  1 +
+ tests/qtest/stm32l4x5.h             | 42 +++++++++++++++++++++++++++++
+ hw/arm/stm32l4x5_soc.c              |  2 ++
+ hw/core/clock.c                     | 16 +++++++++++
+ hw/misc/stm32l4x5_syscfg.c          | 19 +++++++++++--
+ tests/qtest/stm32l4x5_gpio-test.c   | 23 ++++++++++++++++
+ tests/qtest/stm32l4x5_syscfg-test.c | 20 ++++++++++++--
+ tests/qtest/stm32l4x5_usart-test.c  | 26 ++++++++++++++++++
+ 9 files changed, 151 insertions(+), 4 deletions(-)
+ create mode 100644 tests/qtest/stm32l4x5.h
+
 --=20
 2.45.2
 

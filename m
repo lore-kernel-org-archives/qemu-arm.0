@@ -1,218 +1,487 @@
-Received: by 2002:a17:504:959a:b0:1be9:327d:8ee3 with SMTP id e26csp1476051njl;
-        Thu, 3 Oct 2024 07:27:43 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCUgfQVMXp1c9mkU/G/j9+yYGiIk9D/dmfMwpPTip5LVDlDpI7YIyvFRnTFLh7AFPLROIP8IJvo6f4VRJQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IGFItAum6/reWOiLsdLjjpF/WEwtbJEbLOsgGmnAV0P+ef6mFvit1RYuWc5dwmQO9T5iTwT
-X-Received: by 2002:a17:907:6d29:b0:a77:cca9:b212 with SMTP id a640c23a62f3a-a98f83708c8mr661760766b.45.1727965663364;
-        Thu, 03 Oct 2024 07:27:43 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1727965663; cv=pass;
+Received: by 2002:a17:504:959a:b0:1be9:327d:8ee3 with SMTP id e26csp1456804njl;
+        Thu, 3 Oct 2024 07:01:32 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCV40bChWBzMGVDh2X22nzjIEwcFX92C6dgJJDN7QOJDB8a/B/7nCvHOFQ5uK0sO5DjqSNXuGRqXXiEMhg==@linaro.org
+X-Google-Smtp-Source: AGHT+IHlFWKvpEZ774eIKhFKKynuFvSsGEfavQ2HjlhLdPhxJ/GfEFJd3uIqWcm5NALusiBnqWqQ
+X-Received: by 2002:a05:6214:4610:b0:6cb:3839:2016 with SMTP id 6a1803df08f44-6cb81a0ee0dmr89260046d6.24.1727964092398;
+        Thu, 03 Oct 2024 07:01:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1727964092; cv=none;
         d=google.com; s=arc-20240605;
-        b=TRScgQA6WjM0xYpp7DEUfKP7ctcnS4CAh/b/HsBQ2NtEb2RAbvlBawIkrBY7hyFW5V
-         oikpAd35up897UNl6HdUV687ziHcVNzxjpbC+PeHr7bIL5OpuMB7UhzvubduRZAy2w03
-         IKMqDR73ZVWfvhXAUw03IxwvbQJEDSp0v8F7JpmcsDvoJZD1rva10t8Rj34SawsdimK3
-         hPMrlgZaoV4b6/5MU3zXo8dEUEs3pLSBxNBGZOHc2wLQoQohu3+/214owbR4qqlKH+RL
-         /IW5xyjtLXJI7EhRmNJf2kIh6Acxl1olvV8gulQv0SSqVk8p6kIkR23JvUDzG3AieXmh
-         VBOA==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=3pJZobA60sAFaK3pApVWkQmuKWb0cjI4YlaaOYgdqzI=;
-        fh=iZDjIwaQuKN5Pec3SwInc4jdIRM+Q5sEgrcu9VcJZCs=;
-        b=LrFKmXypL9ZFaFbKbBN4z/zMkOjIH4oA21uacy5JDZ+9pAFCPrOsjyWy32IqKCfulg
-         IOV7GIaA/Jw6QmxxBKN81URdmfrxbWVNor/bC5fbxa42DhwmRv6p+YXIdmSe3gk2AScp
-         r0EZlGmMziiVN4GePY7Oo6F5WPgWTHETE78G/J6tMch0cv6C5sprMsUILnWnvEx//D2j
-         HXdgjbXEWdGo5WsmjwDQD84ah4BHLdXfGzvQcDoNh2qPvxdqQyMiVJuTUwLsoNXhY9ns
-         tqX1sRQIrDf1lKntg3i1B3FqdqLH8bfea0IYK67Cn8eam+o0cmwVqPY3paPOAnAvEdct
-         Pi2g==;
+        b=PXo6DugQ2TrYoJk4UsCMesLL+X/AgKagQGbMEh8x0omZ/WNclkasOxmhL+UldJ9Mpn
+         aUGMPt2X8dMvrL6chz2br7ujp/yKuw0pEnCFy7jRxnngI6oLAcn0MBAP4Vn/E8krhZVO
+         KDIE4zNptARzqhZH48xm4V+0MURk2rIwiA3ICWQVHod++YrihTyx7kUPStpPmeJpFB6H
+         FHHYDV86HQ8RVyBoV6ReDf8Km+MSwWFQjaRqemrqOuVDjNV18wy5G9A6HrSwc8zR2Rn1
+         yDllITkc3/iRfXZdx6wT+e/mIoPaMVZYRY6BLBXDdGEh4/r+BBBtjKqUaXo2wH/JlY5y
+         XaUg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=3Ok18kr1nMkw/0rVgIWp/xbgbnOWA7nawrP/P6cDv6w=;
+        fh=dLP/YLBjMZxhHfH1sS7Ziu5zNyswdPoi/by3dAcRF0o=;
+        b=djt/UR54ulZfOKoX+DZMW8VbnhrbcMl8XsOfV46t42dWMbGRxpDSvW6OiiphJ1zh5Q
+         JBnipQ4JerArCzThP7MLyyZg+gvN/0/xYs0JdtRLWoOdKAYfHyZjAQP/t3Bc0YgPtcMP
+         bEgmc4wUQwzFUoS5301IfnRbqn4jkW2AWa1EAVUTTqmCq+shUYBSleJY1o/pXYg6iXrW
+         YirpMkl+m62mgOt924T3/R2N8AqsWTKGQJYjldhRK2HAMJcAZx33ZW39xRC/gU0GGj7+
+         XLF9hZNwLQXdnCR4FbGyCjobbLTdolw3xN2HYIWdi9GqZcD1Bv3XbM/JN+8R5oEBJNme
+         tQgw==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=TYUl0MKy;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of linux-kernel+bounces-349126-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) smtp.mailfrom="linux-kernel+bounces-349126-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <linux-kernel+bounces-349126-alex.bennee=linaro.org@vger.kernel.org>
-Received: from am.mirrors.kernel.org (am.mirrors.kernel.org. [2604:1380:4601:e00::3])
-        by mx.google.com with ESMTPS id a640c23a62f3a-a99110fdde7si77833166b.918.2024.10.03.07.27.43
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=vH6qJZMe;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d75a77b69052e-45d95745489si8370311cf.803.2024.10.03.07.01.32
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 03 Oct 2024 07:27:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of linux-kernel+bounces-349126-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) client-ip=2604:1380:4601:e00::3;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 03 Oct 2024 07:01:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=TYUl0MKy;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of linux-kernel+bounces-349126-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) smtp.mailfrom="linux-kernel+bounces-349126-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by am.mirrors.kernel.org (Postfix) with ESMTPS id C40BB1F221CC
-	for <alex.bennee@linaro.org>; Thu,  3 Oct 2024 14:27:42 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 3D62B19DF9D;
-	Thu,  3 Oct 2024 14:27:36 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="TYUl0MKy"
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 588C31CFBC
-	for <linux-kernel@vger.kernel.org>; Thu,  3 Oct 2024 14:27:34 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.133.124
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1727965656; cv=none; b=iyhH0E6Rr6uqlrBmf3JvVz/IDK4SwSFid3/eaKSMv0jWXI1NQe8LG9yESuQMxTKv6bWPMAz90KLl2kM8Uq9dz3oK1KPRUq/YnWyrw+qu2gjAaVpqs79U8RbsP/brpp3QvQBk00Zlh02MNZg2CWxEDz5gda8l/wjPOHnQYsrTeWM=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1727965656; c=relaxed/simple;
-	bh=2H9N41lOa743gHarwDbZz2BDYAZgwD99s/YFhFW2eqg=;
-	h=Date:From:To:Cc:Subject:Message-ID:In-Reply-To:References:
-	 MIME-Version:Content-Type; b=bqsFnYDW1wRmQ7DelywR2wnoBd9d95Sx7YjS2RdC+lo8IPoDhfta2K2pD7RAAA8l4g6OALIkhPzX60Asi59d7w3FIxjN67f0yXZPMlPuLu+HqavkEgsukdt3yoC82tdoBTSNZ8Ljyya/zJSr7fX4hVY4XddhAWoXqfKXow5g2Qw=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=TYUl0MKy; arc=none smtp.client-ip=170.10.133.124
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1727965653;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=3pJZobA60sAFaK3pApVWkQmuKWb0cjI4YlaaOYgdqzI=;
-	b=TYUl0MKyA6hix3Q7qj1JcYlBb23m53/h1K2FD3PhuKxyCiEwCawSW5CFFZSthYqLZuGe0a
-	XTh5C2tP33xyq2zUFt4eHxP4TY0LTpb2mh/GJtItX9gppf9QtXbzO3DO6+o80/pTrJwikW
-	uJGBD2ASfXLzBWNBuFUnhMFf0JwBJJg=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-512-BL0-0mBVNru7Bx50_KeRmA-1; Thu, 03 Oct 2024 10:27:32 -0400
-X-MC-Unique: BL0-0mBVNru7Bx50_KeRmA-1
-Received: by mail-wm1-f72.google.com with SMTP id 5b1f17b1804b1-42cae209243so5574335e9.1
-        for <linux-kernel@vger.kernel.org>; Thu, 03 Oct 2024 07:27:31 -0700 (PDT)
+       dkim=pass header.i=@linaro.org header.s=google header.b=vH6qJZMe;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1swMO9-0004JB-6V; Thu, 03 Oct 2024 10:01:05 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1swMNQ-00046z-Jc
+ for qemu-arm@nongnu.org; Thu, 03 Oct 2024 10:00:25 -0400
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1swMNL-0002qj-1l
+ for qemu-arm@nongnu.org; Thu, 03 Oct 2024 10:00:18 -0400
+Received: by mail-wr1-x436.google.com with SMTP id
+ ffacd0b85a97d-37cc5fb1e45so823263f8f.2
+ for <qemu-arm@nongnu.org>; Thu, 03 Oct 2024 07:00:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1727964013; x=1728568813; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=3Ok18kr1nMkw/0rVgIWp/xbgbnOWA7nawrP/P6cDv6w=;
+ b=vH6qJZMeRpJFQuMCeeRbLN8k6DyA/WzBHZ4ffLRirgJrD8cnEfT9wLUklfaQFOXohA
+ n5rvrJ6+oKX+VEF/x7J17Q+Qe58X9lFmo3j6V9bFfYa+czvJFm+qTDC/QxfnL8cwpoRF
+ wmBR57pc47okkcCGXImzQNBHxhZSZROeLYx3c5FJ1F/XcBMUm6Yvk+W79WgbohwkMEMk
+ vsfAnZg3fCHTKmMcpEAe7MP4FBDS5ads/fQDOoTRHwWfM7N/VN6QtnKzHkZ9vS5WRd8E
+ zbOREtCZMPVBHF1X237dFgJlSx/077xRcGhw1wsLmFvRUKq1W3EAiirLjyLfQzXTIl/R
+ z9jA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1727965651; x=1728570451;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=3pJZobA60sAFaK3pApVWkQmuKWb0cjI4YlaaOYgdqzI=;
-        b=v8SGnzNqeqBd7yQCoY9JX5WfE9PL4WnCmYr6PAFyx6bAYFrC2X199L+2QYxKOi3pNQ
-         J8EhKxiO7kEN2Os1fA/BeKtStzBIbZW2VO7cK1K8GtzNzQ02ZxtVv+qdb938OMGTqQkf
-         UtKs6PrJqanoqtpi4pVnZlh8QnQfEOmWnAi/lIcjte3Qs6BikhICDvcUlAJeGcDq4E6M
-         F1YOFkTqxTb6Id3lihTHFZ/BHudp6GYOvL5F8RclTLx/Uhzn9DCkBq96MmgmhSOm73Wp
-         /c/gKdY96atmgf67eXUFUYaN7EbD3KgzPsO3JRG+RePu7stp2mcGPW2d/paRO8HCaMiV
-         8Gqg==
-X-Forwarded-Encrypted: i=1; AJvYcCUNlD0sPxB2Ws+OcU0vQz8mmWdgu9xOPDetoBr123X0+WbuAeKSa4zn1DrTGrDxve+q3dG45NHmFHwypqk=@vger.kernel.org
-X-Gm-Message-State: AOJu0Yz9UrLCIRVTFPns3mMubd1q9dOxrgXl/+MkuhOKzbUntoZv0LlR
-	OJX27obDpjipCHWXdVT5ok2BQlUGZWvw3045PWAAz9xWTVoRv27isYzlOlLqbTctcDcltA5nKsJ
-	1+WBHDqI1BEn3Vyd7OtNCjjtPPOYPOTXXzJLmqZUecVHmDjvTkMWMWjnQwPFFSA==
-X-Received: by 2002:a05:600c:1c04:b0:426:6158:962d with SMTP id 5b1f17b1804b1-42f778f17b5mr41060305e9.23.1727965650638;
-        Thu, 03 Oct 2024 07:27:30 -0700 (PDT)
-X-Received: by 2002:a05:600c:1c04:b0:426:6158:962d with SMTP id 5b1f17b1804b1-42f778f17b5mr41060175e9.23.1727965650166;
-        Thu, 03 Oct 2024 07:27:30 -0700 (PDT)
-Received: from imammedo.users.ipa.redhat.com (nat-pool-brq-t.redhat.com. [213.175.37.10])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-42f802b2805sm16826775e9.44.2024.10.03.07.27.29
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 03 Oct 2024 07:27:29 -0700 (PDT)
-Date: Thu, 3 Oct 2024 16:27:28 +0200
-From: Igor Mammedov <imammedo@redhat.com>
-To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>, Shiju Jose
- <shiju.jose@huawei.com>, "Michael S. Tsirkin" <mst@redhat.com>, Philippe
- =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@linaro.org>, Ani Sinha
- <anisinha@redhat.com>, Dongjiu Geng <gengdongjiu1@gmail.com>, Eduardo
- Habkost <eduardo@habkost.net>, Marcel Apfelbaum
- <marcel.apfelbaum@gmail.com>, Yanan Wang <wangyanan55@huawei.com>, Zhao Liu
- <zhao1.liu@intel.com>, linux-kernel@vger.kernel.org, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Subject: Re: [PATCH RFC 4/5] acpi/generic_event_device: add logic to detect
- if HEST addr is available
-Message-ID: <20241003162728.1de6fc62@imammedo.users.ipa.redhat.com>
-In-Reply-To: <176693e011a411db92be9e912bfc4a9da0e664b7.1727782588.git.mchehab+huawei@kernel.org>
-References: <cover.1727782588.git.mchehab+huawei@kernel.org>
-	<176693e011a411db92be9e912bfc4a9da0e664b7.1727782588.git.mchehab+huawei@kernel.org>
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
-Precedence: bulk
-X-Mailing-List: linux-kernel@vger.kernel.org
-List-Id: <linux-kernel.vger.kernel.org>
-List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
+ d=1e100.net; s=20230601; t=1727964013; x=1728568813;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=3Ok18kr1nMkw/0rVgIWp/xbgbnOWA7nawrP/P6cDv6w=;
+ b=nSsYeY9lV2J1MjjqaR7gAJX0E5nHKApTC0oyaF46wNW1/kqQFz4vYBH+n7dLWFYZOw
+ qPXARjrKK6VffYJfKzjzFXh2+Q+UEOk1oSm7YrtEYYf1VscgRkjluAxwbjzUt5OSqSH5
+ +vA7zqkgWP7VHNIZtwDKmGAsUTc6Z2qzpia0LuVBIINWUXMhoHBoYa1oscsBDKVs7b9Y
+ aVdYvK17C9oK3Z/oru0H3lVypLEFlP4BfwqEmPpVBUzabLmlOgKtnNMYYn8HEnnobFi2
+ 82nQNbBJI2dZ0o0ZYwUMgcC1KwL2CNAuFhEG0EM2VtcvQleckfnn+CHX/+r3a84TRuwp
+ fzSQ==
+X-Gm-Message-State: AOJu0Yystc1QHV7HZVdgwW+OCv1NK8d+PUZTggt6C0r+syzSlkv+uxxI
+ Al360CFgM3hhRXHXfonYQkDr/Cyt3yJoh77cxDBBcQHVKKaCHvEU0wCdffQOfRWT5mokZlKB5Qv
+ N
+X-Received: by 2002:adf:e643:0:b0:374:c847:852 with SMTP id
+ ffacd0b85a97d-37cfb9d024cmr4686638f8f.29.1727964012887; 
+ Thu, 03 Oct 2024 07:00:12 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-37d0822bc38sm1340255f8f.45.2024.10.03.07.00.12
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 03 Oct 2024 07:00:12 -0700 (PDT)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Guenter Roeck <linux@roeck-us.net>, Paolo Bonzini <pbonzini@redhat.com>
+Subject: [PATCH v2 1/6] hw/adc: Remove MAX111X device
+Date: Thu,  3 Oct 2024 15:00:05 +0100
+Message-Id: <20241003140010.1653808-2-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20241003140010.1653808-1-peter.maydell@linaro.org>
+References: <20241003140010.1653808-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-TUID: pa7aUw/e9vYT
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::436;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x436.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: rLpyTSqseUJL
 
-On Tue,  1 Oct 2024 13:42:49 +0200
-Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
+The MAX111X ADC device was used only by the XScale-based
+Zaurus machine types. Now they have all been removed, we can
+drop this device model too.
 
-> Create a new property (x-has-hest-addr) and use it to detect if
-> the GHES table offsets can be calculated from the HEST address
-> (qemu 9.2 and upper) or via the legacy way via an offset obtained
-> from the hardware_errors firmware file.
-> 
-> Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-> ---
->  hw/acpi/generic_event_device.c | 1 +
->  hw/acpi/ghes.c                 | 2 +-
->  hw/core/machine.c              | 4 +++-
->  include/hw/acpi/ghes.h         | 1 +
->  4 files changed, 6 insertions(+), 2 deletions(-)
-> 
-> diff --git a/hw/acpi/generic_event_device.c b/hw/acpi/generic_event_device.c
-> index 49ca1fb8e84a..c4677c9ae6b4 100644
-> --- a/hw/acpi/generic_event_device.c
-> +++ b/hw/acpi/generic_event_device.c
-> @@ -318,6 +318,7 @@ static void acpi_ged_send_event(AcpiDeviceIf *adev, AcpiEventStatusBits ev)
->  
->  static Property acpi_ged_properties[] = {
->      DEFINE_PROP_UINT32("ged-event", AcpiGedState, ged_event_bitmap, 0),
-> +    DEFINE_PROP_BOOL("x-has-hest-addr", AcpiGedState, ghes_state.hest_lookup, true),
->      DEFINE_PROP_END_OF_LIST(),
->  };
->  
-> diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
-> index 313a6e453af6..86bad865168c 100644
-> --- a/hw/acpi/ghes.c
-> +++ b/hw/acpi/ghes.c
-> @@ -513,7 +513,7 @@ void ghes_record_cper_errors(const void *cper, size_t len,
->      }
->      ags = &acpi_ged_state->ghes_state;
->  
-> -    if (!ags->hest_addr_le) {
-> +    if (!ags->hest_lookup) {
->          get_ghes_offsets(le64_to_cpu(ags->hw_error_le),
->                           &cper_addr, &read_ack_register_addr);
+Because this device is an SSI device, in theory it could be created
+by users on the command line for boards with a different SSI
+controller, but we don't believe users are doing this -- it would be
+impossible on the command line to connect up the GPIO inputs which
+correspond to ADC inputs, or the GPIO output which is an interrupt
+line.  The only example a web search produces for "device max1111" or
+"device max1110" is our own bug report
+  https://gitlab.com/qemu-project/qemu/-/issues/2228
+where it's used as an example of a bogus command that causes an
+assertion in an aspeed machine type that wasn't expecting anything
+other than flash devices on its SMC bus.
 
-just fencing off lookup is not enough,
-to be compatible with qemu-9.1 (virt-9.1) we also should not publish hest_addr fwcfg.
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ include/hw/adc/max111x.h |  56 ----------
+ hw/adc/max111x.c         | 236 ---------------------------------------
+ hw/adc/Kconfig           |   3 -
+ hw/adc/meson.build       |   1 -
+ 4 files changed, 296 deletions(-)
+ delete mode 100644 include/hw/adc/max111x.h
+ delete mode 100644 hw/adc/max111x.c
 
-Also have assert (to be removed later) to make sure that we put only
-1 (existing) error source in HEST.
-When you switch to multiple sources, this will become a condition
-to switch HEST generation between 9.1 and 9.2+ variants.
-
-
->      } else {
-> diff --git a/hw/core/machine.c b/hw/core/machine.c
-> index adaba17ebac1..b58afe48aa71 100644
-> --- a/hw/core/machine.c
-> +++ b/hw/core/machine.c
-> @@ -34,7 +34,9 @@
->  #include "hw/virtio/virtio-iommu.h"
->  #include "audio/audio.h"
->  
-> -GlobalProperty hw_compat_9_1[] = {};
-> +GlobalProperty hw_compat_9_1[] = {
-> +    {"x-has-hest-addr", "false"},
-> +};
->  const size_t hw_compat_9_1_len = G_N_ELEMENTS(hw_compat_9_1);
->  
->  GlobalProperty hw_compat_9_0[] = {
-> diff --git a/include/hw/acpi/ghes.h b/include/hw/acpi/ghes.h
-> index a07c30ef13b7..040d6ee366b2 100644
-> --- a/include/hw/acpi/ghes.h
-> +++ b/include/hw/acpi/ghes.h
-> @@ -61,6 +61,7 @@ typedef struct AcpiGhesState {
->      uint64_t hest_addr_le;
->      uint64_t hw_error_le;
->      bool present; /* True if GHES is present at all on this board */
-> +    bool hest_lookup; /* True if HEST address is present */
->  } AcpiGhesState;
->  
->  /*
+diff --git a/include/hw/adc/max111x.h b/include/hw/adc/max111x.h
+deleted file mode 100644
+index beff59c815d..00000000000
+--- a/include/hw/adc/max111x.h
++++ /dev/null
+@@ -1,56 +0,0 @@
+-/*
+- * Maxim MAX1110/1111 ADC chip emulation.
+- *
+- * Copyright (c) 2006 Openedhand Ltd.
+- * Written by Andrzej Zaborowski <balrog@zabor.org>
+- *
+- * This code is licensed under the GNU GPLv2.
+- *
+- * Contributions after 2012-01-13 are licensed under the terms of the
+- * GNU GPL, version 2 or (at your option) any later version.
+- */
+-
+-#ifndef HW_MISC_MAX111X_H
+-#define HW_MISC_MAX111X_H
+-
+-#include "hw/ssi/ssi.h"
+-#include "qom/object.h"
+-
+-/*
+- * This is a model of the Maxim MAX1110/1111 ADC chip, which for QEMU
+- * is an SSI slave device. It has either 4 (max1110) or 8 (max1111)
+- * 8-bit ADC channels.
+- *
+- * QEMU interface:
+- *  + GPIO inputs 0..3 (for max1110) or 0..7 (for max1111): set the value
+- *    of each ADC input, as an unsigned 8-bit value
+- *  + GPIO output 0: interrupt line
+- *  + Properties "input0" to "input3" (max1110) or "input0" to "input7"
+- *    (max1111): initial reset values for ADC inputs.
+- *
+- * Known bugs:
+- *  + the interrupt line is not correctly implemented, and will never
+- *    be lowered once it has been asserted.
+- */
+-struct MAX111xState {
+-    SSIPeripheral parent_obj;
+-
+-    qemu_irq interrupt;
+-    /* Values of inputs at system reset (settable by QOM property) */
+-    uint8_t reset_input[8];
+-
+-    uint8_t tb1, rb2, rb3;
+-    int cycle;
+-
+-    uint8_t input[8];
+-    int inputs, com;
+-};
+-
+-#define TYPE_MAX_111X "max111x"
+-
+-OBJECT_DECLARE_SIMPLE_TYPE(MAX111xState, MAX_111X)
+-
+-#define TYPE_MAX_1110 "max1110"
+-#define TYPE_MAX_1111 "max1111"
+-
+-#endif
+diff --git a/hw/adc/max111x.c b/hw/adc/max111x.c
+deleted file mode 100644
+index aa51e47245d..00000000000
+--- a/hw/adc/max111x.c
++++ /dev/null
+@@ -1,236 +0,0 @@
+-/*
+- * Maxim MAX1110/1111 ADC chip emulation.
+- *
+- * Copyright (c) 2006 Openedhand Ltd.
+- * Written by Andrzej Zaborowski <balrog@zabor.org>
+- *
+- * This code is licensed under the GNU GPLv2.
+- *
+- * Contributions after 2012-01-13 are licensed under the terms of the
+- * GNU GPL, version 2 or (at your option) any later version.
+- */
+-
+-#include "qemu/osdep.h"
+-#include "hw/adc/max111x.h"
+-#include "hw/irq.h"
+-#include "migration/vmstate.h"
+-#include "qemu/module.h"
+-#include "hw/qdev-properties.h"
+-
+-/* Control-byte bitfields */
+-#define CB_PD0		(1 << 0)
+-#define CB_PD1		(1 << 1)
+-#define CB_SGL		(1 << 2)
+-#define CB_UNI		(1 << 3)
+-#define CB_SEL0		(1 << 4)
+-#define CB_SEL1		(1 << 5)
+-#define CB_SEL2		(1 << 6)
+-#define CB_START	(1 << 7)
+-
+-#define CHANNEL_NUM(v, b0, b1, b2)	\
+-                        ((((v) >> (2 + (b0))) & 4) |	\
+-                         (((v) >> (3 + (b1))) & 2) |	\
+-                         (((v) >> (4 + (b2))) & 1))
+-
+-static uint32_t max111x_read(MAX111xState *s)
+-{
+-    if (!s->tb1)
+-        return 0;
+-
+-    switch (s->cycle ++) {
+-    case 1:
+-        return s->rb2;
+-    case 2:
+-        return s->rb3;
+-    }
+-
+-    return 0;
+-}
+-
+-/* Interpret a control-byte */
+-static void max111x_write(MAX111xState *s, uint32_t value)
+-{
+-    int measure, chan;
+-
+-    /* Ignore the value if START bit is zero */
+-    if (!(value & CB_START))
+-        return;
+-
+-    s->cycle = 0;
+-
+-    if (!(value & CB_PD1)) {
+-        s->tb1 = 0;
+-        return;
+-    }
+-
+-    s->tb1 = value;
+-
+-    if (s->inputs == 8)
+-        chan = CHANNEL_NUM(value, 1, 0, 2);
+-    else
+-        chan = CHANNEL_NUM(value & ~CB_SEL0, 0, 1, 2);
+-
+-    if (value & CB_SGL)
+-        measure = s->input[chan] - s->com;
+-    else
+-        measure = s->input[chan] - s->input[chan ^ 1];
+-
+-    if (!(value & CB_UNI))
+-        measure ^= 0x80;
+-
+-    s->rb2 = (measure >> 2) & 0x3f;
+-    s->rb3 = (measure << 6) & 0xc0;
+-
+-    /* FIXME: When should the IRQ be lowered?  */
+-    qemu_irq_raise(s->interrupt);
+-}
+-
+-static uint32_t max111x_transfer(SSIPeripheral *dev, uint32_t value)
+-{
+-    MAX111xState *s = MAX_111X(dev);
+-    max111x_write(s, value);
+-    return max111x_read(s);
+-}
+-
+-static const VMStateDescription vmstate_max111x = {
+-    .name = "max111x",
+-    .version_id = 1,
+-    .minimum_version_id = 1,
+-    .fields = (const VMStateField[]) {
+-        VMSTATE_SSI_PERIPHERAL(parent_obj, MAX111xState),
+-        VMSTATE_UINT8(tb1, MAX111xState),
+-        VMSTATE_UINT8(rb2, MAX111xState),
+-        VMSTATE_UINT8(rb3, MAX111xState),
+-        VMSTATE_INT32_EQUAL(inputs, MAX111xState, NULL),
+-        VMSTATE_INT32(com, MAX111xState),
+-        VMSTATE_ARRAY_INT32_UNSAFE(input, MAX111xState, inputs,
+-                                   vmstate_info_uint8, uint8_t),
+-        VMSTATE_END_OF_LIST()
+-    }
+-};
+-
+-static void max111x_input_set(void *opaque, int line, int value)
+-{
+-    MAX111xState *s = MAX_111X(opaque);
+-
+-    assert(line >= 0 && line < s->inputs);
+-    s->input[line] = value;
+-}
+-
+-static int max111x_init(SSIPeripheral *d, int inputs)
+-{
+-    DeviceState *dev = DEVICE(d);
+-    MAX111xState *s = MAX_111X(dev);
+-
+-    qdev_init_gpio_out(dev, &s->interrupt, 1);
+-    qdev_init_gpio_in(dev, max111x_input_set, inputs);
+-
+-    s->inputs = inputs;
+-
+-    return 0;
+-}
+-
+-static void max1110_realize(SSIPeripheral *dev, Error **errp)
+-{
+-    max111x_init(dev, 8);
+-}
+-
+-static void max1111_realize(SSIPeripheral *dev, Error **errp)
+-{
+-    max111x_init(dev, 4);
+-}
+-
+-static void max111x_reset(DeviceState *dev)
+-{
+-    MAX111xState *s = MAX_111X(dev);
+-    int i;
+-
+-    for (i = 0; i < s->inputs; i++) {
+-        s->input[i] = s->reset_input[i];
+-    }
+-    s->com = 0;
+-    s->tb1 = 0;
+-    s->rb2 = 0;
+-    s->rb3 = 0;
+-    s->cycle = 0;
+-}
+-
+-static Property max1110_properties[] = {
+-    /* Reset values for ADC inputs */
+-    DEFINE_PROP_UINT8("input0", MAX111xState, reset_input[0], 0xf0),
+-    DEFINE_PROP_UINT8("input1", MAX111xState, reset_input[1], 0xe0),
+-    DEFINE_PROP_UINT8("input2", MAX111xState, reset_input[2], 0xd0),
+-    DEFINE_PROP_UINT8("input3", MAX111xState, reset_input[3], 0xc0),
+-    DEFINE_PROP_END_OF_LIST(),
+-};
+-
+-static Property max1111_properties[] = {
+-    /* Reset values for ADC inputs */
+-    DEFINE_PROP_UINT8("input0", MAX111xState, reset_input[0], 0xf0),
+-    DEFINE_PROP_UINT8("input1", MAX111xState, reset_input[1], 0xe0),
+-    DEFINE_PROP_UINT8("input2", MAX111xState, reset_input[2], 0xd0),
+-    DEFINE_PROP_UINT8("input3", MAX111xState, reset_input[3], 0xc0),
+-    DEFINE_PROP_UINT8("input4", MAX111xState, reset_input[4], 0xb0),
+-    DEFINE_PROP_UINT8("input5", MAX111xState, reset_input[5], 0xa0),
+-    DEFINE_PROP_UINT8("input6", MAX111xState, reset_input[6], 0x90),
+-    DEFINE_PROP_UINT8("input7", MAX111xState, reset_input[7], 0x80),
+-    DEFINE_PROP_END_OF_LIST(),
+-};
+-
+-static void max111x_class_init(ObjectClass *klass, void *data)
+-{
+-    SSIPeripheralClass *k = SSI_PERIPHERAL_CLASS(klass);
+-    DeviceClass *dc = DEVICE_CLASS(klass);
+-
+-    k->transfer = max111x_transfer;
+-    device_class_set_legacy_reset(dc, max111x_reset);
+-    dc->vmsd = &vmstate_max111x;
+-    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
+-}
+-
+-static const TypeInfo max111x_info = {
+-    .name          = TYPE_MAX_111X,
+-    .parent        = TYPE_SSI_PERIPHERAL,
+-    .instance_size = sizeof(MAX111xState),
+-    .class_init    = max111x_class_init,
+-    .abstract      = true,
+-};
+-
+-static void max1110_class_init(ObjectClass *klass, void *data)
+-{
+-    SSIPeripheralClass *k = SSI_PERIPHERAL_CLASS(klass);
+-    DeviceClass *dc = DEVICE_CLASS(klass);
+-
+-    k->realize = max1110_realize;
+-    device_class_set_props(dc, max1110_properties);
+-}
+-
+-static const TypeInfo max1110_info = {
+-    .name          = TYPE_MAX_1110,
+-    .parent        = TYPE_MAX_111X,
+-    .class_init    = max1110_class_init,
+-};
+-
+-static void max1111_class_init(ObjectClass *klass, void *data)
+-{
+-    SSIPeripheralClass *k = SSI_PERIPHERAL_CLASS(klass);
+-    DeviceClass *dc = DEVICE_CLASS(klass);
+-
+-    k->realize = max1111_realize;
+-    device_class_set_props(dc, max1111_properties);
+-}
+-
+-static const TypeInfo max1111_info = {
+-    .name          = TYPE_MAX_1111,
+-    .parent        = TYPE_MAX_111X,
+-    .class_init    = max1111_class_init,
+-};
+-
+-static void max111x_register_types(void)
+-{
+-    type_register_static(&max111x_info);
+-    type_register_static(&max1110_info);
+-    type_register_static(&max1111_info);
+-}
+-
+-type_init(max111x_register_types)
+diff --git a/hw/adc/Kconfig b/hw/adc/Kconfig
+index a825bd3d343..25d2229fb83 100644
+--- a/hw/adc/Kconfig
++++ b/hw/adc/Kconfig
+@@ -1,5 +1,2 @@
+ config STM32F2XX_ADC
+     bool
+-
+-config MAX111X
+-    bool
+diff --git a/hw/adc/meson.build b/hw/adc/meson.build
+index a4f85b7d468..7f7acc16196 100644
+--- a/hw/adc/meson.build
++++ b/hw/adc/meson.build
+@@ -2,4 +2,3 @@ system_ss.add(when: 'CONFIG_STM32F2XX_ADC', if_true: files('stm32f2xx_adc.c'))
+ system_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files('aspeed_adc.c'))
+ system_ss.add(when: 'CONFIG_NPCM7XX', if_true: files('npcm7xx_adc.c'))
+ system_ss.add(when: 'CONFIG_ZYNQ', if_true: files('zynq-xadc.c'))
+-system_ss.add(when: 'CONFIG_MAX111X', if_true: files('max111x.c'))
+-- 
+2.34.1
 

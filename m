@@ -1,124 +1,123 @@
-Received: by 2002:a17:504:959a:b0:1be9:327d:8ee3 with SMTP id e26csp1530843njl;
-        Thu, 3 Oct 2024 08:55:08 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVsuT6Dkes6f+fhfQ3KrTFtSoHMxw1mYSfBve0MYe5QTkfNQsARJ1APIBNsXvC/IQk7AGQeBDmuIn2Mxw==@linaro.org
-X-Google-Smtp-Source: AGHT+IEy/1+3ukAdstD6fZFNqtznxaX2t/xWSPcn9wHhgXnmhE01hI4ncPzl1Q2ydW09NsPdbvjy
-X-Received: by 2002:a05:622a:508:b0:45b:6f9:532f with SMTP id d75a77b69052e-45d804d7284mr95217041cf.27.1727970908487;
-        Thu, 03 Oct 2024 08:55:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1727970908; cv=none;
+Received: by 2002:a17:504:959a:b0:1be9:327d:8ee3 with SMTP id e26csp1530866njl;
+        Thu, 3 Oct 2024 08:55:10 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCU7HNhvO/W7FAHqU1RZJBQ//x9aOVLsHIxwY3UcbWEAYeMvKBlBkneu22b0gFWoRy5mn9IySwncK+TsKg==@linaro.org
+X-Google-Smtp-Source: AGHT+IEyEVprZUtKxgj/GdRmEcu8TBA5P0+T5YuNB/yjdiGdSul+D0L79RlctNAHudHc3RLV5ndy
+X-Received: by 2002:a05:6358:6481:b0:1ba:4581:18fc with SMTP id e5c5f4694b2df-1c0cee8c458mr361078455d.20.1727970910240;
+        Thu, 03 Oct 2024 08:55:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1727970910; cv=none;
         d=google.com; s=arc-20240605;
-        b=RzOO0xi1T8ED+5PGdLO+V53bknhQoHoHri+2t0xWVetbOynxn+7Ft1o69v2aqgoqm8
-         Roeh/qPywtBlOUVYX2MP6i+eLbAP931vIbEANDOh9NZ38UVxG99qgNtBaksATyvqLpE1
-         iDpp01SDFOA4/xYGrBIDEJiwfZCfjIuwFgnkY19R4A0PQDzk/LRWqcTLIBbEXoglkVLI
-         mTa+w+ywTp8Qre+ryU9Z6tjUb0stCywZNbHmwFPB7Bdgxb4D+jhccTGueqrEVhByYiUN
-         FLXqLDDvUOLrwjZOlAtPL5AhfOszaL20mxxtDDeMhFxITpGSBNxXi1/r1aKrvcD3CXnv
-         kjgQ==
+        b=XTjUvIlvsOh5zB4HpVna4rFxwMWw88/bK9rZKgpst+z/KXG88VXiVQ65+I6Vf6qZSA
+         nIcYps5DlFYUrZHQpZAGhGNKgo2e99qrrK9rUfRlk7Ig7wegVkE0WxmPuInIfsDbygAh
+         3XDJmJdKzTJaCF2UcvojwGTrIhwUTE8I3aV83o9/ukh3z7eQf/5AU9Xu7kg7DmYVeIww
+         hpbCWP5lXGqJI4YuFJjrQbWiZ3O7lG+MJ6ZGEHNYPAoyVW+MgCgs1LCsPcUf79OxKz61
+         ffP9uJ38xMkKHCJ2QWN0Xl7Vpts8QnQLVtSFlfVI5eV7cbCU4CuJar+rxUP1krbWoKrk
+         +vAw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:content-language:references:cc:to:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=H4iuofAzmjQ69v9z61keFGhIgoYW/hbzQrKzWVkUNAU=;
-        fh=20ELACBKz6bivppkbY1iaAPAVHRY/v9Mj2CVNUQPyGo=;
-        b=Lk9vfnmrgrR5vYQY2L7cwKtjyBh2yMKaQ8bnLgZfv3gpK2KFwm/4d+hSaKTKcNroJE
-         JOTCByyYMeXbsduAsTjv60hpWwRH45goHm2QXN8bjk8ymUOYHrRbN5qK02GoZhp9UP5/
-         wPEYzAkzfmUHr6rKKhv+J9t779p19DCrbWR2PZ4q+nl1EBBA2OgF2hKgnhkoMiGu2lBd
-         32FnfYtjSlUaqM8H4Sulu6Hqdtg2dCc/1+BueBpZpjIuim3jRqiZn6c1lMjkMJluBtUy
-         p5ntKjwAsQOjrMJtfUJ6mZtGD81992ZRBCK6/B9xfJGs4CBfv9xYxF0hSBRUysi0M47m
-         Dxcg==;
+        bh=HggQnz65ToFzLh/DTXAhcvH2OgkXjubRfaW635E+SuI=;
+        fh=sZsBh7L6x2OmQg3dK1R/HfKqEmK4M6e9FYN/07AdEIk=;
+        b=i4leUvHfwkumO7pMmpIzFOAypSVVsiOOxwSSzHuY+XUVCmo6lYE5xPemGJVLbj7OhG
+         tH39Itl+D4d+W+ei0q5jqbfgR3kN7ly+b3i9Cfg66jv5rdjYaioUYSkANBJsdY1PgYk5
+         rEvazdz0KeZgzjwiWScAJ99gSYwF6Mc+HsjujOkWO0YZ9JMpJ6dzZfri66xT0pgXR8gr
+         +4QibpNB79Ce0H2RIMxrcYfynk6TImlTtRQ5pH0HliN/PzRvSenbudft6fAr5FC9uMcp
+         em8u+MEe7yUwXLvu209KXvzK8A0nTS8+jnARqhgbBeiUHHJP75pY3oIEKXgdMNMF/5Ld
+         3bSg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=fNPzrsaP;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Z+22ON6N;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-45d95518376si10072711cf.389.2024.10.03.08.55.08
+        by mx.google.com with ESMTPS id 6a1803df08f44-6cb937fe09dsi15182706d6.308.2024.10.03.08.55.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 03 Oct 2024 08:55:08 -0700 (PDT)
+        Thu, 03 Oct 2024 08:55:10 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=fNPzrsaP;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Z+22ON6N;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1swO9i-0006T4-AG; Thu, 03 Oct 2024 11:54:18 -0400
+	id 1swO9L-0006Mx-Ag; Thu, 03 Oct 2024 11:53:55 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1swO9g-0006Si-Is
- for qemu-devel@nongnu.org; Thu, 03 Oct 2024 11:54:16 -0400
-Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1swO9J-0006MH-Mm
+ for qemu-devel@nongnu.org; Thu, 03 Oct 2024 11:53:53 -0400
+Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1swO9f-0003Xt-2X
- for qemu-devel@nongnu.org; Thu, 03 Oct 2024 11:54:16 -0400
-Received: by mail-wr1-x429.google.com with SMTP id
- ffacd0b85a97d-37cd8972738so880710f8f.3
- for <qemu-devel@nongnu.org>; Thu, 03 Oct 2024 08:54:14 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1swO9H-0003JM-S8
+ for qemu-devel@nongnu.org; Thu, 03 Oct 2024 11:53:53 -0400
+Received: by mail-wr1-x430.google.com with SMTP id
+ ffacd0b85a97d-37cc9aeb01dso823535f8f.2
+ for <qemu-devel@nongnu.org>; Thu, 03 Oct 2024 08:53:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1727970853; x=1728575653; darn=nongnu.org;
+ d=linaro.org; s=google; t=1727970829; x=1728575629; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=H4iuofAzmjQ69v9z61keFGhIgoYW/hbzQrKzWVkUNAU=;
- b=fNPzrsaP3dxSFF+gCQfAFEqDwC9ZvRIY+rmpXk2DoIkqAH5WpsEgRZvlLpCrqzeREe
- iFOhn8PmsT0nueqbjcPjEjJ8FWOvQC0ssLF8nRUyLZBWWqum1RPbdVWj/wzz2oRCXzbT
- uV9S5g7qHbtph40GrALblgEORWt5IToJy/WN3gtnlDQPnTPkpHvr4ju5TZpF7ChG18Ja
- 0xqvFBoA0vaKBADelrd9j7RyyLo1SQMY7SUQNqgVgzwUx+muDB5j9otqFOkfW0MJviJR
- FCkPSzaqnDrcjotXF4CBY+miTK8ZRT9RGcF/esbkrTD5BOUqyEevokVKiW296wwf6+bZ
- JTHg==
+ bh=HggQnz65ToFzLh/DTXAhcvH2OgkXjubRfaW635E+SuI=;
+ b=Z+22ON6N68WIMFARq+MdrDygh4yi8DeWE4dzvPt5TvkrAwyRWjyIEX8y9E5/piPHP7
+ 0hMzk0CgYxmYVyuXj4hYv/8cxCz5xbBsap4DnzrLIaBALfT7SiN0Po3eBasQUxpAE+uC
+ w3UgX3go0Qm6D/fuysFVlLhQInyFx69MMRf3wNV//xOYDaojtDrkUM2QZ6PIkY7H5U7+
+ Gn8EgHarOFdyaMM68H66oss0iHCr4tgisKKn9pxbLn4Eyj9zP7Z6ZN/5Tw8CJXzgHFJ7
+ +SaHGG042aANoijKjwytRPSfru/86boDSa6elHbWRt21ULArt6a6zkL/a3Fh/MOhPV1r
+ m+1A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1727970853; x=1728575653;
+ d=1e100.net; s=20230601; t=1727970829; x=1728575629;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=H4iuofAzmjQ69v9z61keFGhIgoYW/hbzQrKzWVkUNAU=;
- b=Qu4zwnNYsHo0ni+iUVnzxxehb5hOYVJmXNQeKvWUF/Kg6yxNtzae1Be9tAwNGaeGFY
- WrMCIILxkbOC/DSf1vByczzCHKHmRZDfBazqi92RNkLP9s4wDDAVo7PGO9FPn8QHBiTe
- hepYc7NGCYHO1vPlGKsv7hRbRMFQLdzn/b2gRyRwEoX7iOckfut0mS43UlNdl9rjlIkO
- 2yUw8XiCCmT5Wd3DwId2FzmpF5KyjQiOyrre60buO9IcXDuaEKrLkHnJzlxFiQQjMqX/
- XL8kizvEnqexVhbtulssN0CLnzBktZDBiWMLOqj/FOAab36oPPd0XFLctDFmJoPpZTz+
- 7q4g==
+ bh=HggQnz65ToFzLh/DTXAhcvH2OgkXjubRfaW635E+SuI=;
+ b=u+/khf9QhmWQ/7EzSs4xW1UxpVWk6+lvPDAgovxxnyfX0yx6k4AiMYVK1laXlSwK93
+ qqoJx1Z2nt1286uKh73AoGjEGUYTxNV8BPAhpoTm5MopCy7DMbTsqQvZCLNXIfC5CaOY
+ oRywClGDKU77kuAy6qG0kxfG+Z/09RIwunLtUSuiKL9RvryPPeLzw1ZQ8+eRr3sCdvka
+ MgJbrDe1zPq58HHDMc5hvmuWFsSfOAhDJU1ds0l1AQkhp0Y015WQqZZqMgte9UlIW4LZ
+ koqwE1lZ3xpVmwqb55K4QBWtZcI+UMrVBLdJEAad4LZV8b9pU4/UiNH3MIu7wg/2GK0u
+ luPg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWI/rX8upnG5n+AJOIJlWHIp4aNMHHIrrr1wWfg4ctw/sRJF7/h5RWb6XjU/7ad5m2+5l6QX6qdsSpf@nongnu.org
-X-Gm-Message-State: AOJu0YzAXwVuMOB9J3jN8pr6sX7diewlVajQTw2bw6VgavrvYWRaI+2e
- OsZBRbi07Cs9daDU5SBMNEF7nzltPUYVeyCO9TXmddv31bm7oucjXzYB8cUmZro=
-X-Received: by 2002:a5d:5d85:0:b0:37c:fce8:b51f with SMTP id
- ffacd0b85a97d-37cfce8b58dmr4154026f8f.27.1727970853296; 
- Thu, 03 Oct 2024 08:54:13 -0700 (PDT)
+ AJvYcCUx9PH21wFL4GGzBzZmLKRsHOCld5+56qs2bcy5ZzKGVGLvlL4PpyUYGCczbcgyFdULYuYNWOiB8wnt@nongnu.org
+X-Gm-Message-State: AOJu0YwORgGItqgt7YRMKLlhKqerR2J4cp5GnxHjst4j/L3gCT8axUch
+ y/2TvP6LgeGW1seeTxcHMZmFZFeuIQA/CB/roLW+XYEShHbVtVh1Gyvn5mP9gKY=
+X-Received: by 2002:a5d:60c2:0:b0:37c:d4e8:2c6a with SMTP id
+ ffacd0b85a97d-37cfba11d8dmr3750276f8f.51.1727970829544; 
+ Thu, 03 Oct 2024 08:53:49 -0700 (PDT)
 Received: from [192.168.13.175] (49.red-88-29-183.dynamicip.rima-tde.net.
  [88.29.183.49]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-37d082425f5sm1544489f8f.50.2024.10.03.08.54.11
+ ffacd0b85a97d-37d082425f5sm1544489f8f.50.2024.10.03.08.53.47
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 03 Oct 2024 08:54:12 -0700 (PDT)
-Message-ID: <25c66f65-f642-42d8-8b5e-46a3a6b97909@linaro.org>
-Date: Thu, 3 Oct 2024 17:49:25 +0200
+ Thu, 03 Oct 2024 08:53:48 -0700 (PDT)
+Message-ID: <9fed2cdf-a96a-4d5a-a529-62388124d1fa@linaro.org>
+Date: Thu, 3 Oct 2024 17:36:19 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] target/arm: Avoid target_ulong for physical address
- lookups
-To: Ard Biesheuvel <ardb+git@google.com>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Ard Biesheuvel <ardb@kernel.org>,
- Arnd Bergmann <arnd@arndb.de>,
- Richard Henderson <richard.henderson@linaro.org>
-References: <20240927071051.1444768-1-ardb+git@google.com>
+Subject: Re: [PATCH v2 1/6] hw/adc: Remove MAX111X device
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: Guenter Roeck <linux@roeck-us.net>, Paolo Bonzini <pbonzini@redhat.com>
+References: <20241003140010.1653808-1-peter.maydell@linaro.org>
+ <20241003140010.1653808-2-peter.maydell@linaro.org>
 Content-Language: en-US
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20240927071051.1444768-1-ardb+git@google.com>
+In-Reply-To: <20241003140010.1653808-2-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::429;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x429.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::430;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x430.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -133,32 +132,34 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: JIE0ywEDCu5g
+X-TUID: IyiQTfRwj/Ge
 
-On 27/9/24 09:10, Ard Biesheuvel wrote:
-> From: Ard Biesheuvel <ardb@kernel.org>
+On 3/10/24 16:00, Peter Maydell wrote:
+> The MAX111X ADC device was used only by the XScale-based
+> Zaurus machine types. Now they have all been removed, we can
+> drop this device model too.
 > 
-> target_ulong is typedef'ed as a 32-bit integer when building the
-> qemu-system-arm target, and this is smaller than the size of an
-> intermediate physical address when LPAE is being used.
+> Because this device is an SSI device, in theory it could be created
+> by users on the command line for boards with a different SSI
+> controller, but we don't believe users are doing this -- it would be
+> impossible on the command line to connect up the GPIO inputs which
+> correspond to ADC inputs, or the GPIO output which is an interrupt
+> line.  The only example a web search produces for "device max1111" or
+> "device max1110" is our own bug report
+>    https://gitlab.com/qemu-project/qemu/-/issues/2228
+> where it's used as an example of a bogus command that causes an
+> assertion in an aspeed machine type that wasn't expecting anything
+> other than flash devices on its SMC bus.
 > 
-> Given that Linux may place leaf level user page tables in high memory
-> when built for LPAE, the kernel will crash with an external abort as
-> soon as it enters user space when running with more than ~3 GiB of
-> system RAM.
-> 
-> So replace target_ulong with vaddr in places where it may carry an
-> address value that is not representable in 32 bits.
-
-Yay!
-
-> Fixes: f3639a64f602ea ("target/arm: Use softmmu tlbs for page table walking")
-> Reported-by: Arnd Bergmann <arnd@arndb.de>
-> Tested-by: Arnd Bergmann <arnd@arndb.de>
-> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-> Signed-off-by: Ard Biesheuvel <ardb@kernel.org>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->   target/arm/internals.h |  4 ++--
->   target/arm/ptw.c       | 16 ++++++++--------
->   2 files changed, 10 insertions(+), 10 deletions(-)
+>   include/hw/adc/max111x.h |  56 ----------
+>   hw/adc/max111x.c         | 236 ---------------------------------------
+>   hw/adc/Kconfig           |   3 -
+>   hw/adc/meson.build       |   1 -
+>   4 files changed, 296 deletions(-)
+>   delete mode 100644 include/hw/adc/max111x.h
+>   delete mode 100644 hw/adc/max111x.c
+
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 

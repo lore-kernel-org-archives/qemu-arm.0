@@ -1,83 +1,85 @@
-Received: by 2002:a17:504:959a:b0:1be9:327d:8ee3 with SMTP id e26csp1323422njl;
-        Thu, 3 Oct 2024 02:42:14 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCU2CkcTLEVqXm9jFHEHB5OALKTXqTYPPaRDjtYFRRF748xxoKj6ZYXPEeGda5r/LW7m+LBBPiFfgO8ozA==@linaro.org
-X-Google-Smtp-Source: AGHT+IHMxs/3RtAGUWT1WoAVhdKgjcsxXq2CorNKovXf3bgZQLrWe48bPUk49GouTte4WSk7DDmV
-X-Received: by 2002:a05:620a:28cd:b0:79f:793:9a63 with SMTP id af79cd13be357-7ae62727d45mr972419885a.44.1727948534050;
-        Thu, 03 Oct 2024 02:42:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1727948534; cv=none;
+Received: by 2002:a17:504:959a:b0:1be9:327d:8ee3 with SMTP id e26csp1345876njl;
+        Thu, 3 Oct 2024 03:36:32 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUsGCRZXBBdUhVeUmMeAcd8q/xbWgtuKFLcwEBxD9mx9blhL+BO7sC6xT1Bp/8jFFMnmE3WJIGesdbYLw==@linaro.org
+X-Google-Smtp-Source: AGHT+IEEdU7IYDcppvS3PS6OGK96d4HgHJ4Rp9MK6a059K1UUOK6NbPBDIrCgwtLYDJogmT9/r+R
+X-Received: by 2002:a05:620a:bc6:b0:7ac:9b5e:baf3 with SMTP id af79cd13be357-7ae626c28f2mr959551985a.26.1727951791856;
+        Thu, 03 Oct 2024 03:36:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1727951791; cv=none;
         d=google.com; s=arc-20240605;
-        b=kf2DHb2i6RTLDrIGcPZyhyCCCoxwlqQPrJe7HeJoFFHhbTd7DrQrSuUJ7AdHQR6x8M
-         yxXENtcRGtfSSqbjIZEqeo2taW4xssha2Dmq/CSNSzSL76cPmIW0CZSQke3qhIHg8wCC
-         VNROIBjNQYdKM7QqlZT8vevW6HwZUGABYU6XAi0a7jE+VwmTDLgXlKphAnal5PYMiEk3
-         2Rll4XETRjtGrmyMaK7r25W/YjwVSynNOW9qvhU/sjOY+3wD6OrWOsg8yTCaroBn74lS
-         ou3eTxaLPVjva4VdaMos5PEopdvUIfUzZAI2caI7duP368LHxxE+bxsyDDNWvMtNaxE6
-         0eTw==
+        b=NrxUsj8UyB00x6bmSeRfTprbRDIepdnhzT6b8WSEmTusCuTE/kUaFQDoyYWP6HUraN
+         i6LBvBD7UQt3eF15Y6kYdSIP3GIMHnJ8qm+KSVc9AxNPRL2wZZCNAWw544Tm8vIqooat
+         GvN7mSIhSZPm02J73LU9TBaY4bKjagXBTlKMCTyLU8519N76meCdFEYywajAjSY2W/eA
+         ZHGT4UFmCXTPAx8UGtOsB9oXvm4VqK674smM1+I+4ds86uzt9Ydxp/+uQqPGzy7arcm6
+         gSpdtzw9vzkZXpGJ1XM+Yi/tC0LSBjUFXqPcHsl4f6Xu68S1b/fQeS/jLAAs6e9mhzyj
+         RlqA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature
-         :dkim-filter;
-        bh=SdTacgwXlOQE7qPrAZC0vzcZsDUWZve9UsTlQIJud6M=;
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature:dkim-filter;
+        bh=elbDLH2Z7tgiZHcCp8dN35rslZb0FrbBfhJcFwMk/M0=;
         fh=v8mqTSJAHlKy0cdGphppNgnpWvpEjYKgmaDPa3OV15Y=;
-        b=OcQqdecWC/KUyPSJTOUTP8TfCCEFO1ZcHl2wo6spfdDjZl2oPalGVpbPA7La2dKj76
-         HepoC65fjRsHyzJ/uaU/OPZKsShXXuF1QIFRyndA5RXaf5LMAH6EPkwzbTo3rdegy9u4
-         MIwsPYjDkdb2Jj4lrXHFazF4YmSv/vqyi33mCg25t/XrVpdEocZ49+wJslkPF7lI3jga
-         7vscSQtyFrJbPzdl71qtQt9z5GZ12Nv77C+SdA+agwNK194xg1LsZcWLWPN+7d9IMi8M
-         soV6SpEgUrtsvosViGAzul+UTCb3Nq2vuY3lffiiQGaBLBs6sZEPGIrejRhdk+RjEUXj
-         vstg==;
+        b=YIPKaUUwDwfxosLSVNOeEKOOzSvyQqKCBbELXegCwuBDESDqrKL6aq+q2xUAXOmRT4
+         nU041HEQq9IiOWcU9bEAFECjYfwaNPYBfT+7S+c82kmcsjFM1l9TWRpY1x617qpRiU7i
+         tY7Yuw5M5OVkBba6zcwTzeKySRskaOi1NJLDvfXRilochIx5l81Rgy3eFfh9SvWhFogd
+         ++oFSlem+fSkUWxWTC1B9EfJdMQMDeSVThfiJwCyOnma/cWoSuz8LGI6PNRwK0fL9UAo
+         4+itnCmoF2dmE9WElajkAZg1mKFArQzfYjngVPL6NSzY3Gjh+ld8UH7k+Jum0gQuh2Za
+         QpGA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=waOT6tNB;
+       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=4zKYOWbF;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7ae6ba09b04si60227285a.469.2024.10.03.02.42.13
+        by mx.google.com with ESMTPS id af79cd13be357-7ae6ba09dfesi71257485a.481.2024.10.03.03.36.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 03 Oct 2024 02:42:13 -0700 (PDT)
+        Thu, 03 Oct 2024 03:36:31 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=waOT6tNB;
+       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=4zKYOWbF;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
-Received: from localhost ([::1] helo=lists1p.gnu.org)
+Received: from [::1] (helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1swGyU-0001m9-AO; Thu, 03 Oct 2024 04:14:18 -0400
+	id 1swH8r-0003aX-Tm; Thu, 03 Oct 2024 04:24:59 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ines.varhol@telecom-paris.fr>)
- id 1swGyJ-0001lG-Vn; Thu, 03 Oct 2024 04:14:03 -0400
-Received: from zproxy3.enst.fr ([137.194.2.222])
+ id 1swH8d-0003ZS-Rg
+ for qemu-devel@nongnu.org; Thu, 03 Oct 2024 04:24:43 -0400
+Received: from [2001:660:330f:2::de] (helo=zproxy3.enst.fr)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ines.varhol@telecom-paris.fr>)
- id 1swGxS-0003cq-K3; Thu, 03 Oct 2024 04:13:50 -0400
+ id 1swH7z-00057F-Fg
+ for qemu-devel@nongnu.org; Thu, 03 Oct 2024 04:24:35 -0400
 Received: from localhost (localhost [IPv6:::1])
- by zproxy3.enst.fr (Postfix) with ESMTP id B366BA0662;
- Thu,  3 Oct 2024 10:11:12 +0200 (CEST)
+ by zproxy3.enst.fr (Postfix) with ESMTP id AF8D7A085D;
+ Thu,  3 Oct 2024 10:11:14 +0200 (CEST)
 Received: from zproxy3.enst.fr ([IPv6:::1])
  by localhost (zproxy3.enst.fr [IPv6:::1]) (amavis, port 10032) with ESMTP
- id gBiOnLwkVKek; Thu,  3 Oct 2024 10:11:12 +0200 (CEST)
+ id V8PZZ2g6RLC9; Thu,  3 Oct 2024 10:11:14 +0200 (CEST)
 Received: from localhost (localhost [IPv6:::1])
- by zproxy3.enst.fr (Postfix) with ESMTP id 1BDCAA06B3;
- Thu,  3 Oct 2024 10:11:12 +0200 (CEST)
-DKIM-Filter: OpenDKIM Filter v2.10.3 zproxy3.enst.fr 1BDCAA06B3
+ by zproxy3.enst.fr (Postfix) with ESMTP id 2121FA08D1;
+ Thu,  3 Oct 2024 10:11:14 +0200 (CEST)
+DKIM-Filter: OpenDKIM Filter v2.10.3 zproxy3.enst.fr 2121FA08D1
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=telecom-paris.fr;
- s=A35C7578-1106-11E5-A17F-C303FDDA8F2E; t=1727943072;
- bh=SdTacgwXlOQE7qPrAZC0vzcZsDUWZve9UsTlQIJud6M=;
+ s=A35C7578-1106-11E5-A17F-C303FDDA8F2E; t=1727943074;
+ bh=elbDLH2Z7tgiZHcCp8dN35rslZb0FrbBfhJcFwMk/M0=;
  h=From:To:Date:Message-ID:MIME-Version;
- b=waOT6tNB4k8dBcwasxxRdKUANpB7LN2Mu3yxZ4quGNxmPcjG7pYPMbFwbVPcLM3vy
- fRLlo2SAxFahBtK2T3DCCPWUg41D+43vom7AGlqH98HVSosoiwWb8szmdRoH0N+34n
- sKvk5Ffm7RMBRNM2f6OJl6ivTttomEBNW+SHVnsk=
+ b=4zKYOWbFw7IG/o0eqdsI7eTVisHpso+asgwcLECVJfynmQ+afUb/Zw/b11gKf5c26
+ isn3NbfvKKx/ZoFui8GTDz27Rj3cHOZMeCSCFJ+KyD9J2RqRDCp0HSYdGRF/2jLhLu
+ iz3RlpdFcuru97WCYZonWaukRSTJxICnWJKLLo5A=
 X-Virus-Scanned: amavis at enst.fr
 Received: from zproxy3.enst.fr ([IPv6:::1])
  by localhost (zproxy3.enst.fr [IPv6:::1]) (amavis, port 10026) with ESMTP
- id lU-7fIyEQFLC; Thu,  3 Oct 2024 10:11:11 +0200 (CEST)
+ id c_bSxq77BK0f; Thu,  3 Oct 2024 10:11:14 +0200 (CEST)
 Received: from inesv-Inspiron-3501.enst.fr (unknown
  [IPv6:2a04:8ec0:0:124::190c])
- by zproxy3.enst.fr (Postfix) with ESMTPSA id 5ED24A0677;
- Thu,  3 Oct 2024 10:11:11 +0200 (CEST)
+ by zproxy3.enst.fr (Postfix) with ESMTPSA id B167FA0677;
+ Thu,  3 Oct 2024 10:11:13 +0200 (CEST)
 From: =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>
 To: qemu-devel@nongnu.org
 Cc: Arnaud Minier <arnaud.minier@telecom-paris.fr>,
@@ -91,23 +93,25 @@ Cc: Arnaud Minier <arnaud.minier@telecom-paris.fr>,
  Damien Hedde <damien.hedde@dahe.fr>,
  =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>,
  Laurent Vivier <lvivier@redhat.com>
-Subject: [PING PATCH v5 0/3] Check clock connection between STM32L4x5 RCC and
- peripherals
-Date: Thu,  3 Oct 2024 10:10:03 +0200
-Message-ID: <20241003081105.40836-1-ines.varhol@telecom-paris.fr>
+Subject: [PING PATCH v5 3/3] tests/qtest: Check STM32L4x5 clock connections
+Date: Thu,  3 Oct 2024 10:10:06 +0200
+Message-ID: <20241003081105.40836-4-ines.varhol@telecom-paris.fr>
 X-Mailer: git-send-email 2.45.2
+In-Reply-To: <20241003081105.40836-1-ines.varhol@telecom-paris.fr>
+References: <20241003081105.40836-1-ines.varhol@telecom-paris.fr>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=137.194.2.222;
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2001:660:330f:2::de
+ (deferred)
+Received-SPF: pass client-ip=2001:660:330f:2::de;
  envelope-from=ines.varhol@telecom-paris.fr; helo=zproxy3.enst.fr
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- T_SPF_HELO_TEMPERROR=0.01,
- T_SPF_TEMPERROR=0.01 autolearn=ham autolearn_force=no
+X-Spam_score_int: -8
+X-Spam_score: -0.9
+X-Spam_bar: /
+X-Spam_report: (-0.9 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
+ DKIM_SIGNED=0.1, RDNS_NONE=0.793, T_SPF_HELO_TEMPERROR=0.01,
+ T_SPF_TEMPERROR=0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -122,66 +126,241 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: T/+g3WYUb7Tl
+X-TUID: 3C2SL1nVXQMp
 
-Among implemented STM32L4x5 devices, USART, GPIO and SYSCFG
-have a clock source, but none has a corresponding test in QEMU.
-
-This patch makes sure that all 3 devices create a clock correctly,
-adds a QOM property to access clocks' periods from QTests,
-and adds QTests checking that clock enable in RCC has the
-expected results for all 3 devices.
-
-Thank you for the reviews.
-
-Changes from v4 to v5: none
-(just added new reviewers in commit messages)
-
-Changes from v3 to v4:
-- removed 2nd commit (it was bumping up version id in
-`vmstate_stm32l4x5_usart_base`, which is useless when not adding
-any fields), it was a misunderstanding
-- in `clock.c`, `vmstate_stm32l4x5_usart_base`, renamed `freq_hz` to
-`period`
-- in `clocks.rst`, specified that `qtest-clock-period` is only usable
-from the QTests and not QEMU
-- in `qtest/stm32l4x5.h`, used macros from "clock.h" to compute
-the expected clock period in the right unit
-- in `qtest/stm32l4x5.h`, removed "osdep.h" include
-
-Changes from "v1" to v3:
-- adding a commit to expose `qtest-clock-period`, a QOM property for
-all clocks, only accessible from QTests, and mention it in clock.rst
-- adapt QTests so that they use clock period instead of clock frequency
-- remove `clock-freq-hz` QOM property in STM32L4x5 USART and SYSCFG
-- dropping the commit migrating GPIO clocks as it's already upstream
-
-Changes from v1 to an unfortunate second "v1":
-- upgrading `VMStateDescription` to version 2 to account for
-`VMSTATE_CLOCK()`
-- QTests : consolidating `get_clock_freq_hz()` in a header
-and making appropriate changes in stm32l4x5q_*-test.c
+For USART, GPIO and SYSCFG devices, check that clock frequency before
+and after enabling the peripheral clock in RCC is correct.
 
 Signed-off-by: In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Reviewed-by: Luc Michel <luc@lmichel.fr>
-
-In=C3=A8s Varhol (3):
-  hw/misc: Create STM32L4x5 SYSCFG clock
-  hw/clock: Expose 'qtest-clock-period' QOM property for QTests
-  tests/qtest: Check STM32L4x5 clock connections
-
- docs/devel/clocks.rst               |  6 +++++
- include/hw/misc/stm32l4x5_syscfg.h  |  1 +
+---
  tests/qtest/stm32l4x5.h             | 42 +++++++++++++++++++++++++++++
- hw/arm/stm32l4x5_soc.c              |  2 ++
- hw/core/clock.c                     | 16 +++++++++++
- hw/misc/stm32l4x5_syscfg.c          | 19 +++++++++++--
  tests/qtest/stm32l4x5_gpio-test.c   | 23 ++++++++++++++++
  tests/qtest/stm32l4x5_syscfg-test.c | 20 ++++++++++++--
  tests/qtest/stm32l4x5_usart-test.c  | 26 ++++++++++++++++++
- 9 files changed, 151 insertions(+), 4 deletions(-)
+ 4 files changed, 109 insertions(+), 2 deletions(-)
  create mode 100644 tests/qtest/stm32l4x5.h
 
+diff --git a/tests/qtest/stm32l4x5.h b/tests/qtest/stm32l4x5.h
+new file mode 100644
+index 0000000000..2d21cc666c
+--- /dev/null
++++ b/tests/qtest/stm32l4x5.h
+@@ -0,0 +1,42 @@
++/*
++ * QTest testcase header for STM32L4X5 :
++ * used for consolidating common objects in stm32l4x5_*-test.c
++ *
++ * Copyright (c) 2024 Arnaud Minier <arnaud.minier@telecom-paris.fr>
++ * Copyright (c) 2024 In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
++ *
++ * This work is licensed under the terms of the GNU GPL, version 2 or la=
+ter.
++ * See the COPYING file in the top-level directory.
++ */
++
++#include "libqtest.h"
++
++/* copied from clock.h */
++#define CLOCK_PERIOD_1SEC (1000000000llu << 32)
++#define CLOCK_PERIOD_FROM_HZ(hz) (((hz) !=3D 0) ? CLOCK_PERIOD_1SEC / (h=
+z) : 0u)
++/*
++ * MSI (4 MHz) is used as system clock source after startup
++ * from Reset.
++ * AHB, APB1 and APB2 prescalers are set to 1 at reset.
++ */
++#define SYSCLK_PERIOD CLOCK_PERIOD_FROM_HZ(4000000)
++#define RCC_AHB2ENR 0x4002104C
++#define RCC_APB1ENR1 0x40021058
++#define RCC_APB1ENR2 0x4002105C
++#define RCC_APB2ENR 0x40021060
++
++
++static inline uint64_t get_clock_period(QTestState *qts, const char *pat=
+h)
++{
++    uint64_t clock_period =3D 0;
++    QDict *r;
++
++    r =3D qtest_qmp(qts, "{ 'execute': 'qom-get', 'arguments':"
++        " { 'path': %s, 'property': 'qtest-clock-period'} }", path);
++    g_assert_false(qdict_haskey(r, "error"));
++    clock_period =3D qdict_get_int(r, "return");
++    qobject_unref(r);
++    return clock_period;
++}
++
++
+diff --git a/tests/qtest/stm32l4x5_gpio-test.c b/tests/qtest/stm32l4x5_gp=
+io-test.c
+index 72a7823406..c0686c7b30 100644
+--- a/tests/qtest/stm32l4x5_gpio-test.c
++++ b/tests/qtest/stm32l4x5_gpio-test.c
+@@ -10,6 +10,7 @@
+=20
+ #include "qemu/osdep.h"
+ #include "libqtest-single.h"
++#include "stm32l4x5.h"
+=20
+ #define GPIO_BASE_ADDR 0x48000000
+ #define GPIO_SIZE      0x400
+@@ -505,6 +506,26 @@ static void test_bsrr_brr(const void *data)
+     gpio_writel(gpio, ODR, reset(gpio, ODR));
+ }
+=20
++static void test_clock_enable(void)
++{
++    /*
++     * For each GPIO, enable its clock in RCC
++     * and check that its clock period changes to SYSCLK_PERIOD
++     */
++    unsigned int gpio_id;
++
++    for (uint32_t gpio =3D GPIO_A; gpio <=3D GPIO_H; gpio +=3D GPIO_B - =
+GPIO_A) {
++        gpio_id =3D get_gpio_id(gpio);
++        g_autofree char *path =3D g_strdup_printf("/machine/soc/gpio%c/c=
+lk",
++                                                gpio_id + 'a');
++        g_assert_cmpuint(get_clock_period(global_qtest, path), =3D=3D, 0=
+);
++        /* Enable the gpio clock */
++        writel(RCC_AHB2ENR, readl(RCC_AHB2ENR) | (0x1 << gpio_id));
++        g_assert_cmpuint(get_clock_period(global_qtest, path), =3D=3D,
++                         SYSCLK_PERIOD);
++    }
++}
++
+ int main(int argc, char **argv)
+ {
+     int ret;
+@@ -556,6 +577,8 @@ int main(int argc, char **argv)
+     qtest_add_data_func("stm32l4x5/gpio/test_bsrr_brr2",
+                         test_data(GPIO_D, 0),
+                         test_bsrr_brr);
++    qtest_add_func("stm32l4x5/gpio/test_clock_enable",
++                   test_clock_enable);
+=20
+     qtest_start("-machine b-l475e-iot01a");
+     ret =3D g_test_run();
+diff --git a/tests/qtest/stm32l4x5_syscfg-test.c b/tests/qtest/stm32l4x5_=
+syscfg-test.c
+index 258417cd88..d5c71e2c0e 100644
+--- a/tests/qtest/stm32l4x5_syscfg-test.c
++++ b/tests/qtest/stm32l4x5_syscfg-test.c
+@@ -10,6 +10,7 @@
+=20
+ #include "qemu/osdep.h"
+ #include "libqtest-single.h"
++#include "stm32l4x5.h"
+=20
+ #define SYSCFG_BASE_ADDR 0x40010000
+ #define SYSCFG_MEMRMP 0x00
+@@ -26,7 +27,9 @@
+ #define INVALID_ADDR 0x2C
+=20
+ /* SoC forwards GPIOs to SysCfg */
+-#define SYSCFG "/machine/soc"
++#define SOC "/machine/soc"
++#define SYSCFG "/machine/soc/syscfg"
++#define SYSCFG_CLK "/machine/soc/syscfg/clk"
+ #define EXTI "/machine/soc/exti"
+=20
+ static void syscfg_writel(unsigned int offset, uint32_t value)
+@@ -41,7 +44,7 @@ static uint32_t syscfg_readl(unsigned int offset)
+=20
+ static void syscfg_set_irq(int num, int level)
+ {
+-   qtest_set_irq_in(global_qtest, SYSCFG, NULL, num, level);
++   qtest_set_irq_in(global_qtest, SOC, NULL, num, level);
+ }
+=20
+ static void system_reset(void)
+@@ -301,6 +304,17 @@ static void test_irq_gpio_multiplexer(void)
+     syscfg_writel(SYSCFG_EXTICR1, 0x00000000);
+ }
+=20
++static void test_clock_enable(void)
++{
++    g_assert_cmpuint(get_clock_period(global_qtest, SYSCFG_CLK), =3D=3D,=
+ 0);
++
++    /* Enable SYSCFG clock */
++    writel(RCC_APB2ENR, readl(RCC_APB2ENR) | (0x1 << 0));
++
++    g_assert_cmpuint(get_clock_period(global_qtest, SYSCFG_CLK), =3D=3D,
++                                       SYSCLK_PERIOD);
++}
++
+ int main(int argc, char **argv)
+ {
+     int ret;
+@@ -325,6 +339,8 @@ int main(int argc, char **argv)
+                    test_irq_pin_multiplexer);
+     qtest_add_func("stm32l4x5/syscfg/test_irq_gpio_multiplexer",
+                    test_irq_gpio_multiplexer);
++    qtest_add_func("stm32l4x5/syscfg/test_clock_enable",
++                   test_clock_enable);
+=20
+     qtest_start("-machine b-l475e-iot01a");
+     ret =3D g_test_run();
+diff --git a/tests/qtest/stm32l4x5_usart-test.c b/tests/qtest/stm32l4x5_u=
+sart-test.c
+index 64cebda60f..315bcee004 100644
+--- a/tests/qtest/stm32l4x5_usart-test.c
++++ b/tests/qtest/stm32l4x5_usart-test.c
+@@ -12,6 +12,7 @@
+ #include "libqtest.h"
+ #include "hw/misc/stm32l4x5_rcc_internals.h"
+ #include "hw/registerfields.h"
++#include "stm32l4x5.h"
+=20
+ #define RCC_BASE_ADDR 0x40021000
+ /* Use USART 1 ADDR, assume the others work the same */
+@@ -331,6 +332,30 @@ static void test_ack(void)
+     qtest_quit(qts);
+ }
+=20
++static void check_clock(QTestState *qts, const char *path, uint32_t rcc_=
+reg,
++                        uint32_t reg_offset)
++{
++    g_assert_cmpuint(get_clock_period(qts, path), =3D=3D, 0);
++    qtest_writel(qts, rcc_reg, qtest_readl(qts, rcc_reg) | (0x1 << reg_o=
+ffset));
++    g_assert_cmpuint(get_clock_period(qts, path), =3D=3D, SYSCLK_PERIOD)=
+;
++}
++
++static void test_clock_enable(void)
++{
++    /*
++     * For each USART device, enable its clock in RCC
++     * and check that its clock frequency is SYSCLK_PERIOD
++     */
++    QTestState *qts =3D qtest_init("-M b-l475e-iot01a");
++
++    check_clock(qts, "machine/soc/usart[0]/clk", RCC_APB2ENR, 14);
++    check_clock(qts, "machine/soc/usart[1]/clk", RCC_APB1ENR1, 17);
++    check_clock(qts, "machine/soc/usart[2]/clk", RCC_APB1ENR1, 18);
++    check_clock(qts, "machine/soc/uart[0]/clk", RCC_APB1ENR1, 19);
++    check_clock(qts, "machine/soc/uart[1]/clk", RCC_APB1ENR1, 20);
++    check_clock(qts, "machine/soc/lpuart1/clk", RCC_APB1ENR2, 0);
++}
++
+ int main(int argc, char **argv)
+ {
+     int ret;
+@@ -344,6 +369,7 @@ int main(int argc, char **argv)
+     qtest_add_func("stm32l4x5/usart/receive_str", test_receive_str);
+     qtest_add_func("stm32l4x5/usart/send_str", test_send_str);
+     qtest_add_func("stm32l4x5/usart/ack", test_ack);
++    qtest_add_func("stm32l4x5/usart/clock_enable", test_clock_enable);
+     ret =3D g_test_run();
+=20
+     return ret;
 --=20
 2.45.2
 

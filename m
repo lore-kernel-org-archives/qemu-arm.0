@@ -1,180 +1,198 @@
-Received: by 2002:a17:504:959a:b0:1be9:327d:8ee3 with SMTP id e26csp1479080njl;
-        Thu, 3 Oct 2024 07:32:11 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCU2m4QpoGTh6e4nUDraVMvuH7HW4VOBiE7mJBedZsxOS24haSUYKhK47rp3DxNkO4YjZdNMtHZ6D1jhPg==@linaro.org
-X-Google-Smtp-Source: AGHT+IF5+3Av+vcOOob+QO6N2IOJlkseovcBcDnd60AyBV2kbJgWBUOSbQbZSP6OUdmVQ8px082/
-X-Received: by 2002:a05:6902:e0c:b0:e26:29cd:c1e9 with SMTP id 3f1490d57ef6-e26383ddf1dmr5749191276.34.1727965931269;
-        Thu, 03 Oct 2024 07:32:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1727965931; cv=none;
+Received: by 2002:a17:504:959a:b0:1be9:327d:8ee3 with SMTP id e26csp1487491njl;
+        Thu, 3 Oct 2024 07:46:57 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCXwhoNu6vGcbi3ke5nBm8jift902zgjMxqNjTp7OeuThxX9GZrWA6gFeEV6+X3P24ofOq5o6akIQfg6XA==@linaro.org
+X-Google-Smtp-Source: AGHT+IHSFIGjhyC7UhRsL72u1kQbOcVxIaT4cRNEBZSd/TvMl2Skn/Oo4xhdngkGcCkQGpbYNzuD
+X-Received: by 2002:a05:620a:4110:b0:7a9:acd5:1b21 with SMTP id af79cd13be357-7ae6270b2admr1134223085a.50.1727966816782;
+        Thu, 03 Oct 2024 07:46:56 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1727966816; cv=pass;
         d=google.com; s=arc-20240605;
-        b=FfwPI5YWq4qc1hzwQgt6OfbXvJvqJwOpVcy5cAr8gDcCJZ7ZgxeEc23GqhfG9C72fN
-         0J9PkthE9Lc9XndLVlr5mMrGs/1wsaxEV8ki6fmDIh+3iB3HcG07lDslegftxWZvZI6j
-         q67rtwQ+JEGEn11vITkzvjVWvxUkzEUs0oW7JESUcaq9Z3zu1Ki++RgmrOVvW0+oBJnm
-         H1n9iS2S1ORqh4K+/6yccuOMgS/MLiRMd9pVgYkjy2LQ9Z30jrd+UI5PiwTr5PO7QNsT
-         ofOUWa7d24frOkmm289dBu7jrdE7Cwpn+DUwHSHPPB7PipfljbWij6cd5HnGCZRRkTSW
-         7CkA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature:sender:precedence
-         :errors-to:list-subscribe:list-help:list-post:list-unsubscribe
-         :list-id;
-        bh=7NqZgDSIdmym8k9v4wrElx9POiJdcsjS85l4BMSFw2Y=;
-        fh=x07N3uJ4cwFmUarGcQLSm3dnevCz2wW4CkF4MsDVSfY=;
-        b=MFqoIQc/7qzbhxZEgQWq8mgnebskqZ/1asH1gukmTtPu+AhsgMy5kv+5Z3dPectFhS
-         HhNuaDnpgos109t1iJXe1RDR0juAdVExDmgYZdd4aLgM5fhQoLuUnVsHgTSL/vcfZUsA
-         xGllLRoUHdpZ0wFKZz1szGqDnYrRTMZOtUNHXhzjEPs3atdZDRxnwp28DHw7IwiJXWLA
-         Ni9Uaa7dZLWG0FV9ypbg/mQUIdMq3HnUUupihkhtvpSIuDEvMusXT186LpqsUJLyW3Dp
-         Ooz3EIrDP5y5EfSZ0c/8gOTRSFZW+TKnPIQKDF7yUWtwEOyNrBMPfqCMXW4ejID2I0Tc
-         HOhg==;
+        b=XWPiWf7u+SjPZB4IvCBGkYwmfdJ2/XjQYZQHGhC6/snNcOahLmdUJJx4K5R3UIr8B6
+         6TE6DLz4vrYmyJhJoO4I5lDI8Q4vSzzuZjn0K8b/RGay4Zd/f7mLfnJjMdysCxtIVO17
+         jsOF1hX9CbGCncsUFsmk7u0TR7gD2WcVOq3ZfbqkoZN79CJa4VV+fx2Gv47d2VvkpAnm
+         iYC8IJ5lUfzEfXK/h6hIycIJNqg4hGytckZwT++sHd9VGI43KItwwUa54JlPux8DIW9a
+         B0tOjwT4booR4pbGEBtUpZYaVZ4mK4iHaUuQTpPgHr21uYE+gg5HiZbf2tmcBFLs+2Ue
+         E3ew==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=ecke0VAUjbY2qs/OU5TI2Vftyi8DYGdyyeDK1FIBoPU=;
+        fh=kjMCq/axLuMuSbhJR1YCpc55o0CiQbKqEhu2cqf43RE=;
+        b=QGHSY2q5ntULUD7UMYxA1NZtcMD/oFhV0Gbrc2PSsNx4JZT84nWIFbqNXI6egrA057
+         vUjEXNeKbKcU4BiahG7WWj6I5w/JDRAQHu3jYMKZveOlkuAXXhRHrWVmqJxWxXIyMMKl
+         L1uBfkK1bicd9MeOpqvo80iGHq9ikpNEA4tvd1Cs4PRRPtgxFLbiTghO2+Brnn9NyqvG
+         MOcP30Nra+FmonzoyZ9KehblGgOcKzFYlI1R7d5ePoZ4ACBxY7HAUirRcpLdNwSM1sdx
+         EdD9KTtJzRvo4z+dk0G78AsE/nDtyhuxKpaN+N82Gxbws8RkTy3e7TnjhOa2Myp7uTUS
+         BtPA==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=Oib+6qKV;
-       spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
-Return-Path: <xen-devel-bounces@lists.xenproject.org>
-Received: from lists.xenproject.org (lists.xenproject.org. [192.237.175.120])
-        by mx.google.com with ESMTPS id 3f1490d57ef6-e2885f4fc1bsi804994276.713.2024.10.03.07.32.11
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bQHf3Smh;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of linux-kernel+bounces-349148-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="linux-kernel+bounces-349148-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <linux-kernel+bounces-349148-alex.bennee=linaro.org@vger.kernel.org>
+Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [147.75.199.223])
+        by mx.google.com with ESMTPS id af79cd13be357-7ae6b74f558si114339685a.92.2024.10.03.07.46.56
+        for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 03 Oct 2024 07:32:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) client-ip=192.237.175.120;
+        Thu, 03 Oct 2024 07:46:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of linux-kernel+bounces-349148-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) client-ip=147.75.199.223;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=Oib+6qKV;
-       spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
-Received: from list by lists.xenproject.org with outflank-mailman.809517.1221924 (Exim 4.92)
-	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
-	id 1swMrQ-0001Dc-TE; Thu, 03 Oct 2024 14:31:20 +0000
-X-Outflank-Mailman: Message body and most headers restored to incoming version
-Received: by outflank-mailman (output) from mailman id 809517.1221924; Thu, 03 Oct 2024 14:31:20 +0000
-Received: from localhost ([127.0.0.1] helo=lists.xenproject.org)
-	by lists.xenproject.org with esmtp (Exim 4.92)
-	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
-	id 1swMrQ-0001DV-PQ; Thu, 03 Oct 2024 14:31:20 +0000
-Received: by outflank-mailman (input) for mailman id 809517;
- Thu, 03 Oct 2024 14:31:19 +0000
-Received: from se1-gles-flk1-in.inumbo.com ([94.247.172.50]
- helo=se1-gles-flk1.inumbo.com)
- by lists.xenproject.org with esmtp (Exim 4.92) (envelope-from
- <SRS0=3wyt=Q7=gmail.com=edgar.iglesias@srs-se1.protection.inumbo.net>)
- id 1swMrP-0008IT-Rc
- for xen-devel@lists.xenproject.org; Thu, 03 Oct 2024 14:31:19 +0000
-Received: from mail-lf1-x133.google.com (mail-lf1-x133.google.com
- [2a00:1450:4864:20::133])
- by se1-gles-flk1.inumbo.com (Halon) with ESMTPS
- id 271af55b-8194-11ef-99a2-01e77a169b0f;
- Thu, 03 Oct 2024 16:31:18 +0200 (CEST)
-Received: by mail-lf1-x133.google.com with SMTP id
- 2adb3069b0e04-5398e33155fso1320156e87.3
- for <xen-devel@lists.xenproject.org>; Thu, 03 Oct 2024 07:31:18 -0700 (PDT)
-Received: from gmail.com (213-67-3-247-no600.tbcn.telia.com. [213.67.3.247])
- by smtp.gmail.com with ESMTPSA id
- 2adb3069b0e04-539a82570b4sm190849e87.91.2024.10.03.07.31.16
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 03 Oct 2024 07:31:16 -0700 (PDT)
-X-BeenThere: xen-devel@lists.xenproject.org
-List-Id: Xen developer discussion <xen-devel.lists.xenproject.org>
-List-Unsubscribe: <https://lists.xenproject.org/mailman/options/xen-devel>,
- <mailto:xen-devel-request@lists.xenproject.org?subject=unsubscribe>
-List-Post: <mailto:xen-devel@lists.xenproject.org>
-List-Help: <mailto:xen-devel-request@lists.xenproject.org?subject=help>
-List-Subscribe: <https://lists.xenproject.org/mailman/listinfo/xen-devel>,
- <mailto:xen-devel-request@lists.xenproject.org?subject=subscribe>
-Errors-To: xen-devel-bounces@lists.xenproject.org
-Precedence: list
-Sender: "Xen-devel" <xen-devel-bounces@lists.xenproject.org>
-X-Inumbo-ID: 271af55b-8194-11ef-99a2-01e77a169b0f
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1727965878; x=1728570678; darn=lists.xenproject.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=7NqZgDSIdmym8k9v4wrElx9POiJdcsjS85l4BMSFw2Y=;
-        b=Oib+6qKVXssGS/34dQCIZgsuM+ApUmF2KD8TKhjyw0cw1a/Sguf3c7vnm/cHwQIYLB
-         T9nkv2eTYi3BpUOJ+0ei3JH7dw81cZbWlSigrqD84Dc/XBpRN+twaxDOgbF0p6NfEUKW
-         kFV4cPtL3VdvpA0t1srR8n7ZynNt7NHBqmn0OC4aWeezwXLk/3nawEphKMyLpv1qh+Tx
-         LfbMltpd2tB4Pyy7xKaIuZjxyuiD0nJB8blM0bQriVInDzvedlRI8wV8gPmUgweIQBlb
-         SdvR64L6smD6ezB1QNpoJ+1vAZNRyNdYs2xuXZQSt6SMgn1w69TWQVX8z3ILWiZ2/F+R
-         yjdQ==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bQHf3Smh;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of linux-kernel+bounces-349148-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="linux-kernel+bounces-349148-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ny.mirrors.kernel.org (Postfix) with ESMTPS id 6FABA1C21290
+	for <alex.bennee@linaro.org>; Thu,  3 Oct 2024 14:46:56 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id C46E519CC04;
+	Thu,  3 Oct 2024 14:46:50 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="bQHf3Smh"
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0AFCD19993F
+	for <linux-kernel@vger.kernel.org>; Thu,  3 Oct 2024 14:46:48 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.129.124
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1727966810; cv=none; b=uAkD/ntrG+kQI9ZAFrwL0Tr7N4MRXoiSkOU9hPqYtaAUhPao4+pkD1bqNyRArptvlFIetASd+NfbdDtyTZ0EdvbdLdtXZuJtBu78+t1EUypHRQAZ+Iw0nk5f5vuAAzC3/2aYd4b8GvmaTrl2bW6UeQsmKrGPKHrEzAAhRluK6Cg=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1727966810; c=relaxed/simple;
+	bh=MsMu/Eu0sgD39bsCHZ0Z1TZ1GNoqeeCs1Ucl7X27XXs=;
+	h=Date:From:To:Cc:Subject:Message-ID:In-Reply-To:References:
+	 MIME-Version:Content-Type; b=Os44mlzjjjNCEQpwuG/ijZBOsTp5BFyIKV21FHEiDGgl4EZWoBTl0tcHUZ4aOD9Lx1bQTuP2QKQpV4Ld8icGip1K4EeznL/FCSkdQqYx8SGOtfTF/QKroEawaKqdq8JB6mv3JD6WpowUfErpe/MhTTyGniClQ1zTRh8SaTDPLBs=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=bQHf3Smh; arc=none smtp.client-ip=170.10.129.124
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1727966807;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=ecke0VAUjbY2qs/OU5TI2Vftyi8DYGdyyeDK1FIBoPU=;
+	b=bQHf3Smh7QU8nhY0grBAmevr6CK4h3V+m9bYqaJFffOJgdg/TcqlNUA1zbq6OWF1U/DDDQ
+	QwtMV3KBB+UUS8LNNhuXMb1dRkAspG0UId8hpCDcs1ZreWgjWlOHmYt7AFMmtk9w1D/b9e
+	dN1ujksK5MyrV3sn/slLQYfAiEtljvI=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-295-YWHg1BdbNhWp4AvUbnW_Zw-1; Thu, 03 Oct 2024 10:46:44 -0400
+X-MC-Unique: YWHg1BdbNhWp4AvUbnW_Zw-1
+Received: by mail-wr1-f70.google.com with SMTP id ffacd0b85a97d-37ce14d621aso559260f8f.3
+        for <linux-kernel@vger.kernel.org>; Thu, 03 Oct 2024 07:46:44 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1727965878; x=1728570678;
+        d=1e100.net; s=20230601; t=1727966803; x=1728571603;
         h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=7NqZgDSIdmym8k9v4wrElx9POiJdcsjS85l4BMSFw2Y=;
-        b=qI1NupL4SF0+b7VwgBHE/Agh0C7FchnCjlDfYHFmYqLl1kYq8wJ9VinMI/P+LUB9wp
-         AowFsK53auT1Z5uLgzMJIe0bwt5oIDqyBlf3Fjt6nObEHBeS/yDudJA0K37B8+f9D9DG
-         v6w0EtJzVUZ7ZJttSzk8eRq3sFUspAH1hePxf0LpKXOdIy1J+wHijuSz964noLgCBvcE
-         zopYLGKhbCZUyUw9q2zAkuJ/QtdLA8P8gE8JbgJM9A+B0XzXGPz6TPcNpaYsHgFPebNC
-         iq9vNlZ9nkol8SYJeboLkkTUyIoTRG2NaNBeNuTsJehfOtje68rUkwK1tKn+P3jV6+WI
-         cf9A==
-X-Forwarded-Encrypted: i=1; AJvYcCVz4VFIR+r+CnM/hRpKv+u7a9naB9e4eF2+gFl0piADQTAgjThTY+1L7//IonzRJgLf66DUzLH4rM0=@lists.xenproject.org
-X-Gm-Message-State: AOJu0YyOx7SOi2rfqUw7UVZzxJnJDpQoLvYlZuqsBz+QiTUc9wyiiQRW
-	Dc8gtkNk7D/QZdcguFk4b7O2TD7TbUK9JbQQHqh8KpPUM56vejCh
-X-Received: by 2002:a05:6512:3da1:b0:539:93b2:1383 with SMTP id 2adb3069b0e04-539a07a1d8emr4381480e87.46.1727965877639;
-        Thu, 03 Oct 2024 07:31:17 -0700 (PDT)
-From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: sstabellini@kernel.org,
-	anthony@xenproject.org,
-	paul@xen.org,
-	peter.maydell@linaro.org,
-	edgar.iglesias@amd.com,
-	xen-devel@lists.xenproject.org,
-	qemu-arm@nongnu.org
-Subject: [PULL v1 5/5] hw/arm: xenpvh: Enable PCI for ARM PVH
-Date: Thu,  3 Oct 2024 16:31:02 +0200
-Message-ID: <20241003143103.1476805-6-edgar.iglesias@gmail.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20241003143103.1476805-1-edgar.iglesias@gmail.com>
-References: <20241003143103.1476805-1-edgar.iglesias@gmail.com>
+        bh=ecke0VAUjbY2qs/OU5TI2Vftyi8DYGdyyeDK1FIBoPU=;
+        b=wNlK19lWlmL+9xl2E/TWMFI0BU1dNSaWWAISs6YXPvjYVlz8cX+1Oi8BCTDg55GMmt
+         yjU5cVJJPKoRqNTPsv28I8dQovfqFENol+P4ePAl3KrsEvXUwJ2kgey16PHdQaPKgJ5O
+         iwVUG7HB+Vr3yCevRQQkmr+nI08PIyn0oPjtb3DE0P77heSdSgAt4lIKzgzFv/aO74Sk
+         zp9OE5fpI50nsttGzHGr1MpNbn1u6KxekmTGNXKq/KNzatAiuTv9KA7/3yyqQ76LGRI5
+         m6QDILURPuP6BEdINrsewdLM0xkWdzxbrEzyjGXnzq/e8DaYomCEvm5mcvEQKUMM5xSQ
+         yPyA==
+X-Forwarded-Encrypted: i=1; AJvYcCW1zdEjgvj4p0yE+jln4tBYJK3ej+bsjwhLdF1kUl5Q4o5Zeyusg1c/IBIqxOV4RehXE05Gztb6GZsvBVQ=@vger.kernel.org
+X-Gm-Message-State: AOJu0YzI7D1AlarSe8U4sp7q+WDBTHgN9QNb/YNODVAY2fHPmMKzuV3h
+	ZD6IfkM+ycIvo5UKExdg5Ie+xA+cp8w6ypCgJjtJp8hS38XcCw+jcdj+GUYaxIdwfr2Oi+CoYhs
+	1nHRprtSlf2PBm4vbcB1O5hxqMVepqh8AdkFVB2+ya16MmQ1R9qS5PsiaUOEeeQ==
+X-Received: by 2002:adf:f34f:0:b0:37c:d200:4fea with SMTP id ffacd0b85a97d-37cfb9d1efdmr4040750f8f.34.1727966803418;
+        Thu, 03 Oct 2024 07:46:43 -0700 (PDT)
+X-Received: by 2002:adf:f34f:0:b0:37c:d200:4fea with SMTP id ffacd0b85a97d-37cfb9d1efdmr4040738f8f.34.1727966802988;
+        Thu, 03 Oct 2024 07:46:42 -0700 (PDT)
+Received: from imammedo.users.ipa.redhat.com (nat-pool-brq-t.redhat.com. [213.175.37.10])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-37d0823ed00sm1414702f8f.49.2024.10.03.07.46.42
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 03 Oct 2024 07:46:42 -0700 (PDT)
+Date: Thu, 3 Oct 2024 16:46:41 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>, Shiju Jose
+ <shiju.jose@huawei.com>, "Michael S. Tsirkin" <mst@redhat.com>, Ani Sinha
+ <anisinha@redhat.com>, Peter Maydell <peter.maydell@linaro.org>, Shannon
+ Zhao <shannon.zhaosl@gmail.com>, linux-kernel@vger.kernel.org,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [PATCH RFC 5/5] arm/virt-acpi-build: Properly handle virt-9.1
+Message-ID: <20241003164641.76e5bffe@imammedo.users.ipa.redhat.com>
+In-Reply-To: <2b5b4e57eb5332c83789d4bd0f01214861cc7f0a.1727782588.git.mchehab+huawei@kernel.org>
+References: <cover.1727782588.git.mchehab+huawei@kernel.org>
+	<2b5b4e57eb5332c83789d4bd0f01214861cc7f0a.1727782588.git.mchehab+huawei@kernel.org>
+X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
+Precedence: bulk
+X-Mailing-List: linux-kernel@vger.kernel.org
+List-Id: <linux-kernel.vger.kernel.org>
+List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-TUID: ATaR7lRFElIb
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-TUID: mrL+jg9D6hSW
 
-From: "Edgar E. Iglesias" <edgar.iglesias@amd.com>
+On Tue,  1 Oct 2024 13:42:50 +0200
+Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
 
-Enable PCI support for the ARM Xen PVH machine.
+> A virt-9.1 machine can have only one source ID.
 
-Reviewed-by: Stefano Stabellini <sstabellini@kernel.org>
-Signed-off-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
----
- hw/arm/xen-pvh.c | 14 ++++++++++++++
- 1 file changed, 14 insertions(+)
+and here it is.
+I'd just merge this into previous patch
 
-diff --git a/hw/arm/xen-pvh.c b/hw/arm/xen-pvh.c
-index 28af3910ea..33f0dd5982 100644
---- a/hw/arm/xen-pvh.c
-+++ b/hw/arm/xen-pvh.c
-@@ -39,6 +39,16 @@ static void xen_arm_instance_init(Object *obj)
-                                          VIRTIO_MMIO_DEV_SIZE };
- }
- 
-+static void xen_pvh_set_pci_intx_irq(void *opaque, int intx_irq, int level)
-+{
-+    XenPVHMachineState *s = XEN_PVH_MACHINE(opaque);
-+    int irq = s->cfg.pci_intx_irq_base + intx_irq;
-+
-+    if (xendevicemodel_set_irq_level(xen_dmod, xen_domid, irq, level)) {
-+        error_report("xendevicemodel_set_pci_intx_level failed");
-+    }
-+}
-+
- static void xen_arm_machine_class_init(ObjectClass *oc, void *data)
- {
-     XenPVHMachineClass *xpc = XEN_PVH_MACHINE_CLASS(oc);
-@@ -69,7 +79,11 @@ static void xen_arm_machine_class_init(ObjectClass *oc, void *data)
-     /* Xen/ARM does not use buffered IOREQs.  */
-     xpc->handle_bufioreq = HVM_IOREQSRV_BUFIOREQ_OFF;
- 
-+    /* PCI INTX delivery.  */
-+    xpc->set_pci_intx_irq = xen_pvh_set_pci_intx_irq;
-+
-     /* List of supported features known to work on PVH ARM.  */
-+    xpc->has_pci = true;
-     xpc->has_tpm = true;
-     xpc->has_virtio_mmio = true;
- 
--- 
-2.43.0
+> 
+> Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+> ---
+>  hw/arm/virt-acpi-build.c | 30 ++++++++++++++++++++++++++----
+>  1 file changed, 26 insertions(+), 4 deletions(-)
+> 
+> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> index 476c365851c4..8036eb5953d0 100644
+> --- a/hw/arm/virt-acpi-build.c
+> +++ b/hw/arm/virt-acpi-build.c
+> @@ -894,6 +894,10 @@ static const AcpiNotificationSourceId hest_ghes_notify[] = {
+>      {ACPI_HEST_SRC_ID_SYNC, ACPI_GHES_NOTIFY_SEA},
+>  };
+>  
+> +static const AcpiNotificationSourceId hest_ghes_notify_9_1[] = {
+> +    {ACPI_HEST_SRC_ID_QMP, ACPI_GHES_NOTIFY_GPIO},
+> +};
+> +
+>  static
+>  void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
+>  {
+> @@ -947,10 +951,28 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
+>      build_dbg2(tables_blob, tables->linker, vms);
+>  
+>      if (vms->ras) {
+> -        acpi_add_table(table_offsets, tables_blob);
+> -        acpi_build_hest(tables_blob, tables->hardware_errors, tables->linker,
+> -                        hest_ghes_notify, ARRAY_SIZE(hest_ghes_notify),
+> -                        vms->oem_id, vms->oem_table_id);
+> +        AcpiGhesState *ags;
+> +        AcpiGedState *acpi_ged_state;
+> +
+> +        acpi_ged_state = ACPI_GED(object_resolve_path_type("", TYPE_ACPI_GED,
+> +                                                       NULL));
+> +        if (acpi_ged_state) {
+> +            ags = &acpi_ged_state->ghes_state;
+> +
+> +            acpi_add_table(table_offsets, tables_blob);
+> +
+> +            if (!ags->hest_lookup) {
+> +                acpi_build_hest(tables_blob, tables->hardware_errors,
+> +                                tables->linker, hest_ghes_notify_9_1,
+> +                                ARRAY_SIZE(hest_ghes_notify_9_1),
+> +                                vms->oem_id, vms->oem_table_id);
+> +            } else {
+> +                acpi_build_hest(tables_blob, tables->hardware_errors,
+> +                                tables->linker, hest_ghes_notify,
+> +                                ARRAY_SIZE(hest_ghes_notify),
+> +                                vms->oem_id, vms->oem_table_id);
+> +            }
+> +        }
+>      }
+>  
+>      if (ms->numa_state->num_nodes > 0) {
 

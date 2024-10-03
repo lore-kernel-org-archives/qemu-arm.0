@@ -1,116 +1,117 @@
-Received: by 2002:a17:504:959a:b0:1be9:327d:8ee3 with SMTP id e26csp1457229njl;
-        Thu, 3 Oct 2024 07:02:00 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCX5uwz45HHSSWwbpjXmp48ERqLSYtCkGmfde1aLIBi8oba5ZU80dTEB5kb5TYTbcrPOynmz8QDiXzlBMQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IGiKoIjnfzZeivpoTCnWruoh9Gn1wy8gJxUppcGY57fLxeiqiYfaw+ryTYzKz4PSBJklDE7
-X-Received: by 2002:a05:6102:6cd:b0:4a3:cb2b:9748 with SMTP id ada2fe7eead31-4a3e6992662mr5013807137.24.1727964120474;
-        Thu, 03 Oct 2024 07:02:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1727964120; cv=none;
+Received: by 2002:a17:504:959a:b0:1be9:327d:8ee3 with SMTP id e26csp1457509njl;
+        Thu, 3 Oct 2024 07:02:18 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWGhhk/Q2MiNEcbkT3vcMX6OqSyNeG02/iL19/qTedVO4yERGt8H4BYddZjrZtD+Ygdi3QMhR2MZ7xsWA==@linaro.org
+X-Google-Smtp-Source: AGHT+IGg42EFq8QaXW/QVPfFvN10YXUI3lMllJGuuOCpb+xRrhrfkBFeCaTGsJMXf7oEIxe77f9m
+X-Received: by 2002:a05:620a:17a4:b0:7a9:bd67:f12a with SMTP id af79cd13be357-7ae6272ecd1mr939840185a.62.1727964138581;
+        Thu, 03 Oct 2024 07:02:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1727964138; cv=none;
         d=google.com; s=arc-20240605;
-        b=YK7D7JvQy2c6vEI0L8VbCeP+nO3DRL09DxszSxg6d+DBQOkv0tK+B3f7NGJFDEAn8t
-         zaSKzvx7fn3DRLVfafPzuUl0PFVr39tpILhFAszJyK8+5O1tsq8YKsJCFYN5FMm32nJZ
-         19SsrbU9PVCnYAom3FF5iUeZZ5MBeFcGIIE+Mn7nD5C2sMpJrxfxvv/gau/Cwprycf3p
-         CDtflFwTgae20uBmEFwLwml2j9LIMrAEr3Z8lnrKNYSVVCnmxwFJBQpP26/bTZoChpf8
-         cRBQHf/+Gi0RLrkMwowv3tgG0EyBla53dDO/DGsG3P685Ytuz9Ufm7fgRHAvPGb81gvU
-         DBbA==
+        b=KCTSGj56p+7aWq6t6HZ0H/tmH4+I3WnXVoq5j7PzqLBrZwsdhRY+TVMCbAQyjYUxAU
+         f0PVkyMRLuOPqHK4Mdzat4zpwz02S+7cckVreEObJZDBLDY3NRxbDGz61tgH9wSzcAvr
+         8QJk5/re5m29dq2eAvocPdAls4OH/wGgqDuW0cABzOfMsVEfaCYOFlxMROuvtOvLFyuz
+         UsHyjXWVhKPDzyTzh11Vo4l1ITgkBFTV7zL3b2Ja/757OJh/JLyzkg4R+wUc2Trug/73
+         kBnG4IIzhOTd+036uDU0d3QZQVnxnBnrHPbNd+FjeIMuWPabA70PtY435CwFruFR0LYF
+         Zobw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=LPD0ziR8yfL/HjZu6b/yEmmqErN3Sv3BQp33o6QEumo=;
-        fh=tDUnKAOzH3m+e+SVCPqqHBIbaZ4/EHUx1hmJy36Agss=;
-        b=fBhqbdiJUZYJOdC64K2k2E3Rh3vIl0IKM0fgywgalsbv6hjXW+Cfg4gsET0DjLDZWM
-         16obyj4WiR3ihjYgq3hkisEO+dK/cgnobrqhjdYyTDCg/9e8XhrKtHGblUK0x32M3oVr
-         Bzom2OnJusGa6SyPeHVWzAAGn+94McFQvNJVH6ggU2/fZCcpMD7fyfxt5Wed1P2y1kPy
-         lgAv12xukTfT9YRtxHuCwREZoBYH5201jJEADeyncXiwb9Owe0Rbp9DNsVFpyvFIE8JB
-         GWEatZhAQEzA+MR0k+lz9MYDpIhTdWtbcJ3d7AWLc+IPERI6ROuLx78RtoW67WeBK+zf
-         E3Eg==;
+        bh=5YfeG5jC30ICdEmD4L7YfElHyWYG3PKB3Jupds5FC1o=;
+        fh=yxxSOZW08qA3pQZYu65Ky82cQ1eZndjEVlUiP62ttSo=;
+        b=aiWNkChCcLrAgtrzA/PF1D/ANORTvAsqjJz4bvDYC2CAih+RJyC5N59l5Usah8huST
+         QPwE3hPJJfmyOWjyuk5NrqoPrtZbncFuG0XM8sRKVL4RcIOWWEKw9MSZ1eb6AJ4e2gMs
+         1x27wu+Y7MQQmWKzv/lK41jX0M/hC4fH2KkD+kPtuVumIVoNdaUGdRpJ0TybbAp/nz0v
+         ob5h/l9Qr7K8O4gv54lJRjzGcdJFaf8QFeoIjETjQASR9kBJ0Selib/jX+RYSlFjUFCI
+         qX+2Mv0tqJ3uuASBFVXCo16RfPXKa29bmz+z/DmqOHUeHCCz8/fcv3F41gz0MXZi2/3m
+         h4bg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=paSZkejc;
+       dkim=pass header.i=@linaro.org header.s=google header.b=iotOYRgl;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ada2fe7eead31-4a3f9d01c3bsi204751137.515.2024.10.03.07.02.00
+        by mx.google.com with ESMTPS id af79cd13be357-7ae6bb65742si100959385a.693.2024.10.03.07.02.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 03 Oct 2024 07:02:00 -0700 (PDT)
+        Thu, 03 Oct 2024 07:02:18 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=paSZkejc;
+       dkim=pass header.i=@linaro.org header.s=google header.b=iotOYRgl;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1swMOC-0004Lf-EN; Thu, 03 Oct 2024 10:01:08 -0400
+	id 1swMOC-0004L6-Bn; Thu, 03 Oct 2024 10:01:08 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1swMNQ-000471-NU
- for qemu-devel@nongnu.org; Thu, 03 Oct 2024 10:00:25 -0400
-Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
+ id 1swMNS-00047I-Mt
+ for qemu-devel@nongnu.org; Thu, 03 Oct 2024 10:00:26 -0400
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1swMNO-0002rV-Af
- for qemu-devel@nongnu.org; Thu, 03 Oct 2024 10:00:20 -0400
-Received: by mail-wr1-x42e.google.com with SMTP id
- ffacd0b85a97d-37ccd81de57so617229f8f.0
- for <qemu-devel@nongnu.org>; Thu, 03 Oct 2024 07:00:17 -0700 (PDT)
+ id 1swMNN-0002r5-40
+ for qemu-devel@nongnu.org; Thu, 03 Oct 2024 10:00:21 -0400
+Received: by mail-wm1-x32f.google.com with SMTP id
+ 5b1f17b1804b1-42cb57f8b41so13165935e9.0
+ for <qemu-devel@nongnu.org>; Thu, 03 Oct 2024 07:00:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1727964016; x=1728568816; darn=nongnu.org;
+ d=linaro.org; s=google; t=1727964014; x=1728568814; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=LPD0ziR8yfL/HjZu6b/yEmmqErN3Sv3BQp33o6QEumo=;
- b=paSZkejcLJehhIKtxeAm7c6dbsEA+0qHftsZSbuKCTOOt2h23ReqjdvnTr459qqFas
- TJ6RFkql2+9bZs3+AwImySZZr4kuZsGUwxzVR/ikY5yQTCpHeWhbyT4dpu4+FFt06Gfx
- 8GYfOy4/eeL1b48CCoJbucAl/E1aDZOQPB+7eQsF8qUbnjOCbkv/oUPGcljLXUwQ0mmo
- 0Lh+S1A2ZKwGgVJMDVz8BQuki+EYEdUa3kaLzsdySnBhoIckdR7do1RKoh8MYcb2lszJ
- ZKUrXRfb/JhFB/Fy8XJ64qxVrQhVaUb76T20iiTqGOAdi9Bs46yFJTmmQW3NptT1RIkX
- qcyg==
+ bh=5YfeG5jC30ICdEmD4L7YfElHyWYG3PKB3Jupds5FC1o=;
+ b=iotOYRgltHSsyVND6gb9eZYE9Xch+RK0uvEoNj3CgQQ/4U2E0LoGlzg20nMXpyM2hB
+ R1wm2UD8TJCXLdEj9RG7q3fgNE+tKqa3BR/ZFWRuebBXxcqCn4eZFYdAVyGu+deMmM30
+ XJGtoodCakD83sm71kn3gbalCmeq0gzqvkP0C09KvVAW7p6d6J9Bkg1XnwWRUwsyN7V2
+ QZ2IqKGWQ5gDLWlo9flQR7okzdfU7Jf41ySA1ggeBUMxwZEPMN+Tv5WKtDdPtF2ZYuIu
+ 0VncuO0jQZhkKchvWODnZcS3d/xuc9TRIsgiJm6Z95MBwBcZvLLZWADHNeISAFV6QToz
+ ZMjQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1727964016; x=1728568816;
+ d=1e100.net; s=20230601; t=1727964014; x=1728568814;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=LPD0ziR8yfL/HjZu6b/yEmmqErN3Sv3BQp33o6QEumo=;
- b=cjkHQ7Jx6flfQLZON+hbs52XsIM3sKXaunGjnhVt+0GvAftLeLUcC3eYxdNe6vOwD+
- IpJUImSrabxkJYoFtUiaTLLzvyttyR8MbdsU7CVoPRSqDRLsBLTbdfWqd6OeQOWxi8+r
- w4ethW1ClEL0yG624enIPJDujiax8xI8PmXG5Ds9Kdlu85D/OZcdMbZ4mkE3dqJ75p8H
- kcLC1YgWGLwFRIi1ka/kkuWqCdfYrkDYNXFistfmDmTG9nD/hdUjdFgSR3dOsLOLo7U7
- ZBNQHrc+bYa0lUHxXU33okhuN543NfEl1BOh9nEGFeoxTeMqzWQdquf0DP1aeJUaDEVW
- P/VQ==
+ bh=5YfeG5jC30ICdEmD4L7YfElHyWYG3PKB3Jupds5FC1o=;
+ b=nokzcuKpOY966ayQjpxyRDbbD2vEevGuT/ZmXyA5AjC3Qlr4WcNCneFwPHqf5gR5i3
+ 9asqm+6XfFPBxht/2vJthI7lTU2L+IND0kRTfQ/Q8FX+WR/07uK+PDtnocfSk3P890WP
+ Ty1CFBSocky6VQew5bdB6Ib6N233L0TY16XSDtITvveJoieZ1mxvhOIat43Lr1D0F3at
+ lXjagibBDS4L5IEbil6i5dHuop+VCvXzRbSS6k+rDtcliX/3wHdKFIRxQYYCzWW934Cx
+ jrdv42TsCZW4x/raBkLQ491O/o8qOnMykGqELn5Wren0ljpur5rgs7aaXSudUBmJmnKm
+ 6SnQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVKO71mNCBpQ6qo8AM3s3odT4B0M/YtXVSoa/v/NgY8+W4kP7mwnE52v2mY+YDW1v7Zdsh4pa9JwZzZ@nongnu.org
-X-Gm-Message-State: AOJu0Yx9n0Mb9/lcBk80LGRdKIhFuZ7BA908flw2eFBAsiTM+/H63CN/
- B2GJ4QxkbqVxbJIw93Vhc3KKQyJB/r5FHs86xi1mXtkHeY7Vboila6g7ydRjRck=
-X-Received: by 2002:adf:a30d:0:b0:37c:f561:1130 with SMTP id
- ffacd0b85a97d-37d04a04aa2mr2286429f8f.18.1727964016185; 
- Thu, 03 Oct 2024 07:00:16 -0700 (PDT)
+ AJvYcCUhX+uZiR0FqLkTCLSnYEVvG/DnPmU9RYmd/0vQ7c5hv+KPzRM1zONh5J9okBX4iDkSCaKqtnIVXeCn@nongnu.org
+X-Gm-Message-State: AOJu0Yz3Zt43cto7d8KE97mvqBVVIOxR0LsfgW5NDrJLModXLXBWRUob
+ P5fXdiXw6+co6isDmb5RDphJhMp8U/DR+VbGmIm73xn1ojDBBwgZjg8JaHfC0Cj5yb8Cb5LaBtM
+ L
+X-Received: by 2002:a5d:58d2:0:b0:37c:cea2:826f with SMTP id
+ ffacd0b85a97d-37cfb8b562bmr5642691f8f.2.1727964014263; 
+ Thu, 03 Oct 2024 07:00:14 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-37d0822bc38sm1340255f8f.45.2024.10.03.07.00.15
+ ffacd0b85a97d-37d0822bc38sm1340255f8f.45.2024.10.03.07.00.13
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 03 Oct 2024 07:00:15 -0700 (PDT)
+ Thu, 03 Oct 2024 07:00:13 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Guenter Roeck <linux@roeck-us.net>, Paolo Bonzini <pbonzini@redhat.com>
-Subject: [PATCH v2 5/6] hw/block: Remove ecc
-Date: Thu,  3 Oct 2024 15:00:09 +0100
-Message-Id: <20241003140010.1653808-6-peter.maydell@linaro.org>
+Subject: [PATCH v2 3/6] hw/ide: Remove DSCM-1XXXX microdrive device model
+Date: Thu,  3 Oct 2024 15:00:07 +0100
+Message-Id: <20241003140010.1653808-4-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20241003140010.1653808-1-peter.maydell@linaro.org>
 References: <20241003140010.1653808-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -132,194 +133,709 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: zlFMGij5G5F9
+X-TUID: tsCSGmbYHdQi
 
-The ecc.c code was used only by the PXA2xx and OMAP2 SoC devices,
-which we have removed, so it is now completely unused.
-
-Note that hw/misc/eccmemctl.c does not in fact use any of the
-code frome ecc.c, so that KConfig dependency was incorrect.
+The DSCM-1XXXX microdrive device model was used only by the
+XScale-based Zaurus machine types.  Now they have been removed, we
+can delete this device too.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- include/hw/block/flash.h | 11 -----
- hw/block/ecc.c           | 91 ----------------------------------------
- hw/arm/Kconfig           |  1 -
- hw/block/Kconfig         |  3 --
- hw/block/meson.build     |  1 -
- hw/misc/Kconfig          |  1 -
- 6 files changed, 108 deletions(-)
- delete mode 100644 hw/block/ecc.c
+ include/hw/pcmcia.h |   3 -
+ hw/ide/microdrive.c | 644 --------------------------------------------
+ hw/ide/Kconfig      |   6 -
+ hw/ide/meson.build  |   1 -
+ 4 files changed, 654 deletions(-)
+ delete mode 100644 hw/ide/microdrive.c
 
-diff --git a/include/hw/block/flash.h b/include/hw/block/flash.h
-index b985c825a01..5fd67f5bb79 100644
---- a/include/hw/block/flash.h
-+++ b/include/hw/block/flash.h
-@@ -62,17 +62,6 @@ uint32_t nand_getbuswidth(DeviceState *dev);
- #define NAND_MFR_HYNIX      0xad
- #define NAND_MFR_MICRON     0x2c
+diff --git a/include/hw/pcmcia.h b/include/hw/pcmcia.h
+index ab268027511..6c08ad616a5 100644
+--- a/include/hw/pcmcia.h
++++ b/include/hw/pcmcia.h
+@@ -60,7 +60,4 @@ struct PCMCIACardClass {
+ #define CISTPL_END            0xff  /* Tuple End */
+ #define CISTPL_ENDMARK        0xff
  
--/* ecc.c */
--typedef struct {
--    uint8_t cp;     /* Column parity */
--    uint16_t lp[2]; /* Line parity */
--    uint16_t count;
--} ECCState;
+-/* dscm1xxxx.c */
+-PCMCIACardState *dscm1xxxx_init(DriveInfo *bdrv);
 -
--uint8_t ecc_digest(ECCState *s, uint8_t sample);
--void ecc_reset(ECCState *s);
--extern const VMStateDescription vmstate_ecc_state;
--
- /* m25p80.c */
- 
- #define TYPE_M25P80 "m25p80-generic"
-diff --git a/hw/block/ecc.c b/hw/block/ecc.c
+ #endif
+diff --git a/hw/ide/microdrive.c b/hw/ide/microdrive.c
 deleted file mode 100644
-index ed889a4184f..00000000000
---- a/hw/block/ecc.c
+index 5475d599788..00000000000
+--- a/hw/ide/microdrive.c
 +++ /dev/null
-@@ -1,91 +0,0 @@
+@@ -1,644 +0,0 @@
 -/*
-- * Calculate Error-correcting Codes. Used by NAND Flash controllers
-- * (not by NAND chips).
+- * QEMU IDE Emulation: microdrive (CF / PCMCIA)
 - *
+- * Copyright (c) 2003 Fabrice Bellard
 - * Copyright (c) 2006 Openedhand Ltd.
-- * Written by Andrzej Zaborowski <balrog@zabor.org>
 - *
-- * This code is licensed under the GNU GPL v2.
+- * Permission is hereby granted, free of charge, to any person obtaining a copy
+- * of this software and associated documentation files (the "Software"), to deal
+- * in the Software without restriction, including without limitation the rights
+- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+- * copies of the Software, and to permit persons to whom the Software is
+- * furnished to do so, subject to the following conditions:
 - *
-- * Contributions after 2012-01-13 are licensed under the terms of the
-- * GNU GPL, version 2 or (at your option) any later version.
+- * The above copyright notice and this permission notice shall be included in
+- * all copies or substantial portions of the Software.
+- *
+- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+- * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+- * THE SOFTWARE.
 - */
 -
 -#include "qemu/osdep.h"
+-#include "hw/pcmcia.h"
 -#include "migration/vmstate.h"
--#include "hw/block/flash.h"
+-#include "qapi/error.h"
+-#include "qemu/module.h"
+-#include "sysemu/dma.h"
+-#include "hw/irq.h"
 -
--/*
-- * Pre-calculated 256-way 1 byte column parity.  Table borrowed from Linux.
-- */
--static const uint8_t nand_ecc_precalc_table[] = {
--    0x00, 0x55, 0x56, 0x03, 0x59, 0x0c, 0x0f, 0x5a,
--    0x5a, 0x0f, 0x0c, 0x59, 0x03, 0x56, 0x55, 0x00,
--    0x65, 0x30, 0x33, 0x66, 0x3c, 0x69, 0x6a, 0x3f,
--    0x3f, 0x6a, 0x69, 0x3c, 0x66, 0x33, 0x30, 0x65,
--    0x66, 0x33, 0x30, 0x65, 0x3f, 0x6a, 0x69, 0x3c,
--    0x3c, 0x69, 0x6a, 0x3f, 0x65, 0x30, 0x33, 0x66,
--    0x03, 0x56, 0x55, 0x00, 0x5a, 0x0f, 0x0c, 0x59,
--    0x59, 0x0c, 0x0f, 0x5a, 0x00, 0x55, 0x56, 0x03,
--    0x69, 0x3c, 0x3f, 0x6a, 0x30, 0x65, 0x66, 0x33,
--    0x33, 0x66, 0x65, 0x30, 0x6a, 0x3f, 0x3c, 0x69,
--    0x0c, 0x59, 0x5a, 0x0f, 0x55, 0x00, 0x03, 0x56,
--    0x56, 0x03, 0x00, 0x55, 0x0f, 0x5a, 0x59, 0x0c,
--    0x0f, 0x5a, 0x59, 0x0c, 0x56, 0x03, 0x00, 0x55,
--    0x55, 0x00, 0x03, 0x56, 0x0c, 0x59, 0x5a, 0x0f,
--    0x6a, 0x3f, 0x3c, 0x69, 0x33, 0x66, 0x65, 0x30,
--    0x30, 0x65, 0x66, 0x33, 0x69, 0x3c, 0x3f, 0x6a,
--    0x6a, 0x3f, 0x3c, 0x69, 0x33, 0x66, 0x65, 0x30,
--    0x30, 0x65, 0x66, 0x33, 0x69, 0x3c, 0x3f, 0x6a,
--    0x0f, 0x5a, 0x59, 0x0c, 0x56, 0x03, 0x00, 0x55,
--    0x55, 0x00, 0x03, 0x56, 0x0c, 0x59, 0x5a, 0x0f,
--    0x0c, 0x59, 0x5a, 0x0f, 0x55, 0x00, 0x03, 0x56,
--    0x56, 0x03, 0x00, 0x55, 0x0f, 0x5a, 0x59, 0x0c,
--    0x69, 0x3c, 0x3f, 0x6a, 0x30, 0x65, 0x66, 0x33,
--    0x33, 0x66, 0x65, 0x30, 0x6a, 0x3f, 0x3c, 0x69,
--    0x03, 0x56, 0x55, 0x00, 0x5a, 0x0f, 0x0c, 0x59,
--    0x59, 0x0c, 0x0f, 0x5a, 0x00, 0x55, 0x56, 0x03,
--    0x66, 0x33, 0x30, 0x65, 0x3f, 0x6a, 0x69, 0x3c,
--    0x3c, 0x69, 0x6a, 0x3f, 0x65, 0x30, 0x33, 0x66,
--    0x65, 0x30, 0x33, 0x66, 0x3c, 0x69, 0x6a, 0x3f,
--    0x3f, 0x6a, 0x69, 0x3c, 0x66, 0x33, 0x30, 0x65,
--    0x00, 0x55, 0x56, 0x03, 0x59, 0x0c, 0x0f, 0x5a,
--    0x5a, 0x0f, 0x0c, 0x59, 0x03, 0x56, 0x55, 0x00,
+-#include "qom/object.h"
+-#include "ide-internal.h"
+-
+-#define TYPE_MICRODRIVE "microdrive"
+-OBJECT_DECLARE_SIMPLE_TYPE(MicroDriveState, MICRODRIVE)
+-
+-/***********************************************************/
+-/* CF-ATA Microdrive */
+-
+-#define METADATA_SIZE   0x20
+-
+-/* DSCM-1XXXX Microdrive hard disk with CF+ II / PCMCIA interface.  */
+-
+-struct MicroDriveState {
+-    /*< private >*/
+-    PCMCIACardState parent_obj;
+-    /*< public >*/
+-
+-    IDEBus bus;
+-    uint32_t attr_base;
+-    uint32_t io_base;
+-
+-    /* Card state */
+-    uint8_t opt;
+-    uint8_t stat;
+-    uint8_t pins;
+-
+-    uint8_t ctrl;
+-    uint16_t io;
+-    uint8_t cycle;
 -};
 -
--/* Update ECC parity count.  */
--uint8_t ecc_digest(ECCState *s, uint8_t sample)
--{
--    uint8_t idx = nand_ecc_precalc_table[sample];
+-/* Register bitfields */
+-enum md_opt {
+-    OPT_MODE_MMAP    = 0,
+-    OPT_MODE_IOMAP16 = 1,
+-    OPT_MODE_IOMAP1  = 2,
+-    OPT_MODE_IOMAP2  = 3,
+-    OPT_MODE         = 0x3f,
+-    OPT_LEVIREQ      = 0x40,
+-    OPT_SRESET       = 0x80,
+-};
+-enum md_cstat {
+-    STAT_INT        = 0x02,
+-    STAT_PWRDWN     = 0x04,
+-    STAT_XE         = 0x10,
+-    STAT_IOIS8      = 0x20,
+-    STAT_SIGCHG     = 0x40,
+-    STAT_CHANGED    = 0x80,
+-};
+-enum md_pins {
+-    PINS_MRDY       = 0x02,
+-    PINS_CRDY       = 0x20,
+-};
+-enum md_ctrl {
+-    CTRL_IEN        = 0x02,
+-    CTRL_SRST       = 0x04,
+-};
 -
--    s->cp ^= idx & 0x3f;
--    if (idx & 0x40) {
--        s->lp[0] ^= ~s->count;
--        s->lp[1] ^= s->count;
+-static inline void md_interrupt_update(MicroDriveState *s)
+-{
+-    PCMCIACardState *card = PCMCIA_CARD(s);
+-
+-    if (card->slot == NULL) {
+-        return;
 -    }
--    s->count ++;
 -
--    return sample;
+-    qemu_set_irq(card->slot->irq,
+-                    !(s->stat & STAT_INT) &&    /* Inverted */
+-                    !(s->ctrl & (CTRL_IEN | CTRL_SRST)) &&
+-                    !(s->opt & OPT_SRESET));
 -}
 -
--/* Reinitialise the counters.  */
--void ecc_reset(ECCState *s)
+-static void md_set_irq(void *opaque, int irq, int level)
 -{
--    s->lp[0] = 0x0000;
--    s->lp[1] = 0x0000;
--    s->cp = 0x00;
--    s->count = 0;
+-    MicroDriveState *s = opaque;
+-
+-    if (level) {
+-        s->stat |= STAT_INT;
+-    } else {
+-        s->stat &= ~STAT_INT;
+-    }
+-
+-    md_interrupt_update(s);
 -}
 -
--/* Save/restore */
--const VMStateDescription vmstate_ecc_state = {
--    .name = "ecc-state",
--    .version_id = 0,
+-static void md_reset(DeviceState *dev)
+-{
+-    MicroDriveState *s = MICRODRIVE(dev);
+-
+-    s->opt = OPT_MODE_MMAP;
+-    s->stat = 0;
+-    s->pins = 0;
+-    s->cycle = 0;
+-    s->ctrl = 0;
+-    ide_bus_reset(&s->bus);
+-}
+-
+-static uint8_t md_attr_read(PCMCIACardState *card, uint32_t at)
+-{
+-    MicroDriveState *s = MICRODRIVE(card);
+-    PCMCIACardClass *pcc = PCMCIA_CARD_GET_CLASS(card);
+-
+-    if (at < s->attr_base) {
+-        if (at < pcc->cis_len) {
+-            return pcc->cis[at];
+-        } else {
+-            return 0x00;
+-        }
+-    }
+-
+-    at -= s->attr_base;
+-
+-    switch (at) {
+-    case 0x00:  /* Configuration Option Register */
+-        return s->opt;
+-    case 0x02:  /* Card Configuration Status Register */
+-        if (s->ctrl & CTRL_IEN) {
+-            return s->stat & ~STAT_INT;
+-        } else {
+-            return s->stat;
+-        }
+-    case 0x04:  /* Pin Replacement Register */
+-        return (s->pins & PINS_CRDY) | 0x0c;
+-    case 0x06:  /* Socket and Copy Register */
+-        return 0x00;
+-#ifdef VERBOSE
+-    default:
+-        printf("%s: Bad attribute space register %02x\n", __func__, at);
+-#endif
+-    }
+-
+-    return 0;
+-}
+-
+-static void md_attr_write(PCMCIACardState *card, uint32_t at, uint8_t value)
+-{
+-    MicroDriveState *s = MICRODRIVE(card);
+-
+-    at -= s->attr_base;
+-
+-    switch (at) {
+-    case 0x00:  /* Configuration Option Register */
+-        s->opt = value & 0xcf;
+-        if (value & OPT_SRESET) {
+-            device_cold_reset(DEVICE(s));
+-        }
+-        md_interrupt_update(s);
+-        break;
+-    case 0x02:  /* Card Configuration Status Register */
+-        if ((s->stat ^ value) & STAT_PWRDWN) {
+-            s->pins |= PINS_CRDY;
+-        }
+-        s->stat &= 0x82;
+-        s->stat |= value & 0x74;
+-        md_interrupt_update(s);
+-        /* Word 170 in Identify Device must be equal to STAT_XE */
+-        break;
+-    case 0x04:  /* Pin Replacement Register */
+-        s->pins &= PINS_CRDY;
+-        s->pins |= value & PINS_MRDY;
+-        break;
+-    case 0x06:  /* Socket and Copy Register */
+-        break;
+-    default:
+-        printf("%s: Bad attribute space register %02x\n", __func__, at);
+-    }
+-}
+-
+-static uint16_t md_common_read(PCMCIACardState *card, uint32_t at)
+-{
+-    MicroDriveState *s = MICRODRIVE(card);
+-    IDEState *ifs;
+-    uint16_t ret;
+-    at -= s->io_base;
+-
+-    switch (s->opt & OPT_MODE) {
+-    case OPT_MODE_MMAP:
+-        if ((at & ~0x3ff) == 0x400) {
+-            at = 0;
+-        }
+-        break;
+-    case OPT_MODE_IOMAP16:
+-        at &= 0xf;
+-        break;
+-    case OPT_MODE_IOMAP1:
+-        if ((at & ~0xf) == 0x3f0) {
+-            at -= 0x3e8;
+-        } else if ((at & ~0xf) == 0x1f0) {
+-            at -= 0x1f0;
+-        }
+-        break;
+-    case OPT_MODE_IOMAP2:
+-        if ((at & ~0xf) == 0x370) {
+-            at -= 0x368;
+-        } else if ((at & ~0xf) == 0x170) {
+-            at -= 0x170;
+-        }
+-    }
+-
+-    switch (at) {
+-    case 0x0:  /* Even RD Data */
+-    case 0x8:
+-        return ide_data_readw(&s->bus, 0);
+-
+-        /* TODO: 8-bit accesses */
+-        if (s->cycle) {
+-            ret = s->io >> 8;
+-        } else {
+-            s->io = ide_data_readw(&s->bus, 0);
+-            ret = s->io & 0xff;
+-        }
+-        s->cycle = !s->cycle;
+-        return ret;
+-    case 0x9:  /* Odd RD Data */
+-        return s->io >> 8;
+-    case 0xd:  /* Error */
+-        return ide_ioport_read(&s->bus, 0x1);
+-    case 0xe:  /* Alternate Status */
+-        ifs = ide_bus_active_if(&s->bus);
+-        if (ifs->blk) {
+-            return ifs->status;
+-        } else {
+-            return 0;
+-        }
+-    case 0xf:  /* Device Address */
+-        ifs = ide_bus_active_if(&s->bus);
+-        return 0xc2 | ((~ifs->select << 2) & 0x3c);
+-    default:
+-        return ide_ioport_read(&s->bus, at);
+-    }
+-
+-    return 0;
+-}
+-
+-static void md_common_write(PCMCIACardState *card, uint32_t at, uint16_t value)
+-{
+-    MicroDriveState *s = MICRODRIVE(card);
+-    at -= s->io_base;
+-
+-    switch (s->opt & OPT_MODE) {
+-    case OPT_MODE_MMAP:
+-        if ((at & ~0x3ff) == 0x400) {
+-            at = 0;
+-        }
+-        break;
+-    case OPT_MODE_IOMAP16:
+-        at &= 0xf;
+-        break;
+-    case OPT_MODE_IOMAP1:
+-        if ((at & ~0xf) == 0x3f0) {
+-            at -= 0x3e8;
+-        } else if ((at & ~0xf) == 0x1f0) {
+-            at -= 0x1f0;
+-        }
+-        break;
+-    case OPT_MODE_IOMAP2:
+-        if ((at & ~0xf) == 0x370) {
+-            at -= 0x368;
+-        } else if ((at & ~0xf) == 0x170) {
+-            at -= 0x170;
+-        }
+-    }
+-
+-    switch (at) {
+-    case 0x0:  /* Even WR Data */
+-    case 0x8:
+-        ide_data_writew(&s->bus, 0, value);
+-        break;
+-
+-        /* TODO: 8-bit accesses */
+-        if (s->cycle) {
+-            ide_data_writew(&s->bus, 0, s->io | (value << 8));
+-        } else {
+-            s->io = value & 0xff;
+-        }
+-        s->cycle = !s->cycle;
+-        break;
+-    case 0x9:
+-        s->io = value & 0xff;
+-        s->cycle = !s->cycle;
+-        break;
+-    case 0xd:  /* Features */
+-        ide_ioport_write(&s->bus, 0x1, value);
+-        break;
+-    case 0xe:  /* Device Control */
+-        s->ctrl = value;
+-        if (value & CTRL_SRST) {
+-            device_cold_reset(DEVICE(s));
+-        }
+-        md_interrupt_update(s);
+-        break;
+-    default:
+-        if (s->stat & STAT_PWRDWN) {
+-            s->pins |= PINS_CRDY;
+-            s->stat &= ~STAT_PWRDWN;
+-        }
+-        ide_ioport_write(&s->bus, at, value);
+-    }
+-}
+-
+-static const VMStateDescription vmstate_microdrive = {
+-    .name = "microdrive",
+-    .version_id = 3,
 -    .minimum_version_id = 0,
 -    .fields = (const VMStateField[]) {
--        VMSTATE_UINT8(cp, ECCState),
--        VMSTATE_UINT16_ARRAY(lp, ECCState, 2),
--        VMSTATE_UINT16(count, ECCState),
--        VMSTATE_END_OF_LIST(),
--    },
+-        VMSTATE_UINT8(opt, MicroDriveState),
+-        VMSTATE_UINT8(stat, MicroDriveState),
+-        VMSTATE_UINT8(pins, MicroDriveState),
+-        VMSTATE_UINT8(ctrl, MicroDriveState),
+-        VMSTATE_UINT16(io, MicroDriveState),
+-        VMSTATE_UINT8(cycle, MicroDriveState),
+-        VMSTATE_IDE_BUS(bus, MicroDriveState),
+-        VMSTATE_IDE_DRIVES(bus.ifs, MicroDriveState),
+-        VMSTATE_END_OF_LIST()
+-    }
 -};
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index a70ceff504b..7b19a9559f6 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -146,7 +146,6 @@ config OMAP
-     bool
-     select FRAMEBUFFER
-     select I2C
--    select ECC
-     select NAND
-     select PFLASH_CFI01
-     select SD
-diff --git a/hw/block/Kconfig b/hw/block/Kconfig
-index e67a6fd8af7..a898e04f03b 100644
---- a/hw/block/Kconfig
-+++ b/hw/block/Kconfig
-@@ -22,9 +22,6 @@ config PFLASH_CFI01
- config PFLASH_CFI02
-     bool
- 
--config ECC
--    bool
 -
- config VIRTIO_BLK
+-static const uint8_t dscm1xxxx_cis[0x14a] = {
+-    [0x000] = CISTPL_DEVICE,    /* 5V Device Information */
+-    [0x002] = 0x03,             /* Tuple length = 4 bytes */
+-    [0x004] = 0xdb,             /* ID: DTYPE_FUNCSPEC, non WP, DSPEED_150NS */
+-    [0x006] = 0x01,             /* Size = 2K bytes */
+-    [0x008] = CISTPL_ENDMARK,
+-
+-    [0x00a] = CISTPL_DEVICE_OC, /* Additional Device Information */
+-    [0x00c] = 0x04,             /* Tuple length = 4 byest */
+-    [0x00e] = 0x03,             /* Conditions: Ext = 0, Vcc 3.3V, MWAIT = 1 */
+-    [0x010] = 0xdb,             /* ID: DTYPE_FUNCSPEC, non WP, DSPEED_150NS */
+-    [0x012] = 0x01,             /* Size = 2K bytes */
+-    [0x014] = CISTPL_ENDMARK,
+-
+-    [0x016] = CISTPL_JEDEC_C,   /* JEDEC ID */
+-    [0x018] = 0x02,             /* Tuple length = 2 bytes */
+-    [0x01a] = 0xdf,             /* PC Card ATA with no Vpp required */
+-    [0x01c] = 0x01,
+-
+-    [0x01e] = CISTPL_MANFID,    /* Manufacture ID */
+-    [0x020] = 0x04,             /* Tuple length = 4 bytes */
+-    [0x022] = 0xa4,             /* TPLMID_MANF = 00a4 (IBM) */
+-    [0x024] = 0x00,
+-    [0x026] = 0x00,             /* PLMID_CARD = 0000 */
+-    [0x028] = 0x00,
+-
+-    [0x02a] = CISTPL_VERS_1,    /* Level 1 Version */
+-    [0x02c] = 0x12,             /* Tuple length = 23 bytes */
+-    [0x02e] = 0x04,             /* Major Version = JEIDA 4.2 / PCMCIA 2.1 */
+-    [0x030] = 0x01,             /* Minor Version = 1 */
+-    [0x032] = 'I',
+-    [0x034] = 'B',
+-    [0x036] = 'M',
+-    [0x038] = 0x00,
+-    [0x03a] = 'm',
+-    [0x03c] = 'i',
+-    [0x03e] = 'c',
+-    [0x040] = 'r',
+-    [0x042] = 'o',
+-    [0x044] = 'd',
+-    [0x046] = 'r',
+-    [0x048] = 'i',
+-    [0x04a] = 'v',
+-    [0x04c] = 'e',
+-    [0x04e] = 0x00,
+-    [0x050] = CISTPL_ENDMARK,
+-
+-    [0x052] = CISTPL_FUNCID,    /* Function ID */
+-    [0x054] = 0x02,             /* Tuple length = 2 bytes */
+-    [0x056] = 0x04,             /* TPLFID_FUNCTION = Fixed Disk */
+-    [0x058] = 0x01,             /* TPLFID_SYSINIT: POST = 1, ROM = 0 */
+-
+-    [0x05a] = CISTPL_FUNCE,     /* Function Extension */
+-    [0x05c] = 0x02,             /* Tuple length = 2 bytes */
+-    [0x05e] = 0x01,             /* TPLFE_TYPE = Disk Device Interface */
+-    [0x060] = 0x01,             /* TPLFE_DATA = PC Card ATA Interface */
+-
+-    [0x062] = CISTPL_FUNCE,     /* Function Extension */
+-    [0x064] = 0x03,             /* Tuple length = 3 bytes */
+-    [0x066] = 0x02,             /* TPLFE_TYPE = Basic PC Card ATA Interface */
+-    [0x068] = 0x08,             /* TPLFE_DATA: Rotating, Unique, Single */
+-    [0x06a] = 0x0f,             /* TPLFE_DATA: Sleep, Standby, Idle, Auto */
+-
+-    [0x06c] = CISTPL_CONFIG,    /* Configuration */
+-    [0x06e] = 0x05,             /* Tuple length = 5 bytes */
+-    [0x070] = 0x01,             /* TPCC_RASZ = 2 bytes, TPCC_RMSZ = 1 byte */
+-    [0x072] = 0x07,             /* TPCC_LAST = 7 */
+-    [0x074] = 0x00,             /* TPCC_RADR = 0200 */
+-    [0x076] = 0x02,
+-    [0x078] = 0x0f,             /* TPCC_RMSK = 200, 202, 204, 206 */
+-
+-    [0x07a] = CISTPL_CFTABLE_ENTRY, /* 16-bit PC Card Configuration */
+-    [0x07c] = 0x0b,             /* Tuple length = 11 bytes */
+-    [0x07e] = 0xc0,             /* TPCE_INDX = Memory Mode, Default, Iface */
+-    [0x080] = 0xc0,             /* TPCE_IF = Memory, no BVDs, no WP, READY */
+-    [0x082] = 0xa1,             /* TPCE_FS = Vcc only, no I/O, Memory, Misc */
+-    [0x084] = 0x27,             /* NomV = 1, MinV = 1, MaxV = 1, Peakl = 1 */
+-    [0x086] = 0x55,             /* NomV: 5.0 V */
+-    [0x088] = 0x4d,             /* MinV: 4.5 V */
+-    [0x08a] = 0x5d,             /* MaxV: 5.5 V */
+-    [0x08c] = 0x4e,             /* Peakl: 450 mA */
+-    [0x08e] = 0x08,             /* TPCE_MS = 1 window, 1 byte, Host address */
+-    [0x090] = 0x00,             /* Window descriptor: Window length = 0 */
+-    [0x092] = 0x20,             /* TPCE_MI: support power down mode, RW */
+-
+-    [0x094] = CISTPL_CFTABLE_ENTRY, /* 16-bit PC Card Configuration */
+-    [0x096] = 0x06,             /* Tuple length = 6 bytes */
+-    [0x098] = 0x00,             /* TPCE_INDX = Memory Mode, no Default */
+-    [0x09a] = 0x01,             /* TPCE_FS = Vcc only, no I/O, no Memory */
+-    [0x09c] = 0x21,             /* NomV = 1, MinV = 0, MaxV = 0, Peakl = 1 */
+-    [0x09e] = 0xb5,             /* NomV: 3.3 V */
+-    [0x0a0] = 0x1e,
+-    [0x0a2] = 0x3e,             /* Peakl: 350 mA */
+-
+-    [0x0a4] = CISTPL_CFTABLE_ENTRY, /* 16-bit PC Card Configuration */
+-    [0x0a6] = 0x0d,             /* Tuple length = 13 bytes */
+-    [0x0a8] = 0xc1,             /* TPCE_INDX = I/O and Memory Mode, Default */
+-    [0x0aa] = 0x41,             /* TPCE_IF = I/O and Memory, no BVD, no WP */
+-    [0x0ac] = 0x99,             /* TPCE_FS = Vcc only, I/O, Interrupt, Misc */
+-    [0x0ae] = 0x27,             /* NomV = 1, MinV = 1, MaxV = 1, Peakl = 1 */
+-    [0x0b0] = 0x55,             /* NomV: 5.0 V */
+-    [0x0b2] = 0x4d,             /* MinV: 4.5 V */
+-    [0x0b4] = 0x5d,             /* MaxV: 5.5 V */
+-    [0x0b6] = 0x4e,             /* Peakl: 450 mA */
+-    [0x0b8] = 0x64,             /* TPCE_IO = 16-byte boundary, 16/8 accesses */
+-    [0x0ba] = 0xf0,             /* TPCE_IR =  MASK, Level, Pulse, Share */
+-    [0x0bc] = 0xff,             /* IRQ0..IRQ7 supported */
+-    [0x0be] = 0xff,             /* IRQ8..IRQ15 supported */
+-    [0x0c0] = 0x20,             /* TPCE_MI = support power down mode */
+-
+-    [0x0c2] = CISTPL_CFTABLE_ENTRY, /* 16-bit PC Card Configuration */
+-    [0x0c4] = 0x06,             /* Tuple length = 6 bytes */
+-    [0x0c6] = 0x01,             /* TPCE_INDX = I/O and Memory Mode */
+-    [0x0c8] = 0x01,             /* TPCE_FS = Vcc only, no I/O, no Memory */
+-    [0x0ca] = 0x21,             /* NomV = 1, MinV = 0, MaxV = 0, Peakl = 1 */
+-    [0x0cc] = 0xb5,             /* NomV: 3.3 V */
+-    [0x0ce] = 0x1e,
+-    [0x0d0] = 0x3e,             /* Peakl: 350 mA */
+-
+-    [0x0d2] = CISTPL_CFTABLE_ENTRY, /* 16-bit PC Card Configuration */
+-    [0x0d4] = 0x12,             /* Tuple length = 18 bytes */
+-    [0x0d6] = 0xc2,             /* TPCE_INDX = I/O Primary Mode */
+-    [0x0d8] = 0x41,             /* TPCE_IF = I/O and Memory, no BVD, no WP */
+-    [0x0da] = 0x99,             /* TPCE_FS = Vcc only, I/O, Interrupt, Misc */
+-    [0x0dc] = 0x27,             /* NomV = 1, MinV = 1, MaxV = 1, Peakl = 1 */
+-    [0x0de] = 0x55,             /* NomV: 5.0 V */
+-    [0x0e0] = 0x4d,             /* MinV: 4.5 V */
+-    [0x0e2] = 0x5d,             /* MaxV: 5.5 V */
+-    [0x0e4] = 0x4e,             /* Peakl: 450 mA */
+-    [0x0e6] = 0xea,             /* TPCE_IO = 1K boundary, 16/8 access, Range */
+-    [0x0e8] = 0x61,             /* Range: 2 fields, 2 bytes addr, 1 byte len */
+-    [0x0ea] = 0xf0,             /* Field 1 address = 0x01f0 */
+-    [0x0ec] = 0x01,
+-    [0x0ee] = 0x07,             /* Address block length = 8 */
+-    [0x0f0] = 0xf6,             /* Field 2 address = 0x03f6 */
+-    [0x0f2] = 0x03,
+-    [0x0f4] = 0x01,             /* Address block length = 2 */
+-    [0x0f6] = 0xee,             /* TPCE_IR = IRQ E, Level, Pulse, Share */
+-    [0x0f8] = 0x20,             /* TPCE_MI = support power down mode */
+-
+-    [0x0fa] = CISTPL_CFTABLE_ENTRY, /* 16-bit PC Card Configuration */
+-    [0x0fc] = 0x06,             /* Tuple length = 6 bytes */
+-    [0x0fe] = 0x02,             /* TPCE_INDX = I/O Primary Mode, no Default */
+-    [0x100] = 0x01,             /* TPCE_FS = Vcc only, no I/O, no Memory */
+-    [0x102] = 0x21,             /* NomV = 1, MinV = 0, MaxV = 0, Peakl = 1 */
+-    [0x104] = 0xb5,             /* NomV: 3.3 V */
+-    [0x106] = 0x1e,
+-    [0x108] = 0x3e,             /* Peakl: 350 mA */
+-
+-    [0x10a] = CISTPL_CFTABLE_ENTRY, /* 16-bit PC Card Configuration */
+-    [0x10c] = 0x12,             /* Tuple length = 18 bytes */
+-    [0x10e] = 0xc3,             /* TPCE_INDX = I/O Secondary Mode, Default */
+-    [0x110] = 0x41,             /* TPCE_IF = I/O and Memory, no BVD, no WP */
+-    [0x112] = 0x99,             /* TPCE_FS = Vcc only, I/O, Interrupt, Misc */
+-    [0x114] = 0x27,             /* NomV = 1, MinV = 1, MaxV = 1, Peakl = 1 */
+-    [0x116] = 0x55,             /* NomV: 5.0 V */
+-    [0x118] = 0x4d,             /* MinV: 4.5 V */
+-    [0x11a] = 0x5d,             /* MaxV: 5.5 V */
+-    [0x11c] = 0x4e,             /* Peakl: 450 mA */
+-    [0x11e] = 0xea,             /* TPCE_IO = 1K boundary, 16/8 access, Range */
+-    [0x120] = 0x61,             /* Range: 2 fields, 2 byte addr, 1 byte len */
+-    [0x122] = 0x70,             /* Field 1 address = 0x0170 */
+-    [0x124] = 0x01,
+-    [0x126] = 0x07,             /* Address block length = 8 */
+-    [0x128] = 0x76,             /* Field 2 address = 0x0376 */
+-    [0x12a] = 0x03,
+-    [0x12c] = 0x01,             /* Address block length = 2 */
+-    [0x12e] = 0xee,             /* TPCE_IR = IRQ E, Level, Pulse, Share */
+-    [0x130] = 0x20,             /* TPCE_MI = support power down mode */
+-
+-    [0x132] = CISTPL_CFTABLE_ENTRY, /* 16-bit PC Card Configuration */
+-    [0x134] = 0x06,             /* Tuple length = 6 bytes */
+-    [0x136] = 0x03,             /* TPCE_INDX = I/O Secondary Mode */
+-    [0x138] = 0x01,             /* TPCE_FS = Vcc only, no I/O, no Memory */
+-    [0x13a] = 0x21,             /* NomV = 1, MinV = 0, MaxV = 0, Peakl = 1 */
+-    [0x13c] = 0xb5,             /* NomV: 3.3 V */
+-    [0x13e] = 0x1e,
+-    [0x140] = 0x3e,             /* Peakl: 350 mA */
+-
+-    [0x142] = CISTPL_NO_LINK,   /* No Link */
+-    [0x144] = 0x00,             /* Tuple length = 0 bytes */
+-
+-    [0x146] = CISTPL_END,       /* Tuple End */
+-};
+-
+-#define TYPE_DSCM1XXXX "dscm1xxxx"
+-
+-static int dscm1xxxx_attach(PCMCIACardState *card)
+-{
+-    MicroDriveState *md = MICRODRIVE(card);
+-    PCMCIACardClass *pcc = PCMCIA_CARD_GET_CLASS(card);
+-
+-    md->attr_base = pcc->cis[0x74] | (pcc->cis[0x76] << 8);
+-    md->io_base = 0x0;
+-
+-    device_cold_reset(DEVICE(md));
+-    md_interrupt_update(md);
+-
+-    return 0;
+-}
+-
+-static int dscm1xxxx_detach(PCMCIACardState *card)
+-{
+-    MicroDriveState *md = MICRODRIVE(card);
+-
+-    device_cold_reset(DEVICE(md));
+-    return 0;
+-}
+-
+-PCMCIACardState *dscm1xxxx_init(DriveInfo *dinfo)
+-{
+-    MicroDriveState *md;
+-
+-    md = MICRODRIVE(object_new(TYPE_DSCM1XXXX));
+-    qdev_realize(DEVICE(md), NULL, &error_fatal);
+-
+-    if (dinfo != NULL) {
+-        ide_bus_create_drive(&md->bus, 0, dinfo);
+-    }
+-    md->bus.ifs[0].drive_kind = IDE_CFATA;
+-    md->bus.ifs[0].mdata_size = METADATA_SIZE;
+-    md->bus.ifs[0].mdata_storage = g_malloc0(METADATA_SIZE);
+-
+-    return PCMCIA_CARD(md);
+-}
+-
+-static void dscm1xxxx_class_init(ObjectClass *oc, void *data)
+-{
+-    PCMCIACardClass *pcc = PCMCIA_CARD_CLASS(oc);
+-    DeviceClass *dc = DEVICE_CLASS(oc);
+-
+-    pcc->cis = dscm1xxxx_cis;
+-    pcc->cis_len = sizeof(dscm1xxxx_cis);
+-
+-    pcc->attach = dscm1xxxx_attach;
+-    pcc->detach = dscm1xxxx_detach;
+-    /* Reason: Needs to be wired-up in code, see dscm1xxxx_init() */
+-    dc->user_creatable = false;
+-}
+-
+-static const TypeInfo dscm1xxxx_type_info = {
+-    .name = TYPE_DSCM1XXXX,
+-    .parent = TYPE_MICRODRIVE,
+-    .class_init = dscm1xxxx_class_init,
+-};
+-
+-static void microdrive_realize(DeviceState *dev, Error **errp)
+-{
+-    MicroDriveState *md = MICRODRIVE(dev);
+-
+-    ide_bus_init_output_irq(&md->bus, qemu_allocate_irq(md_set_irq, md, 0));
+-}
+-
+-static void microdrive_init(Object *obj)
+-{
+-    MicroDriveState *md = MICRODRIVE(obj);
+-
+-    ide_bus_init(&md->bus, sizeof(md->bus), DEVICE(obj), 0, 1);
+-}
+-
+-static void microdrive_class_init(ObjectClass *oc, void *data)
+-{
+-    DeviceClass *dc = DEVICE_CLASS(oc);
+-    PCMCIACardClass *pcc = PCMCIA_CARD_CLASS(oc);
+-
+-    pcc->attr_read = md_attr_read;
+-    pcc->attr_write = md_attr_write;
+-    pcc->common_read = md_common_read;
+-    pcc->common_write = md_common_write;
+-    pcc->io_read = md_common_read;
+-    pcc->io_write = md_common_write;
+-
+-    dc->realize = microdrive_realize;
+-    device_class_set_legacy_reset(dc, md_reset);
+-    dc->vmsd = &vmstate_microdrive;
+-}
+-
+-static const TypeInfo microdrive_type_info = {
+-    .name = TYPE_MICRODRIVE,
+-    .parent = TYPE_PCMCIA_CARD,
+-    .instance_size = sizeof(MicroDriveState),
+-    .instance_init = microdrive_init,
+-    .abstract = true,
+-    .class_init = microdrive_class_init,
+-};
+-
+-static void microdrive_register_types(void)
+-{
+-    type_register_static(&microdrive_type_info);
+-    type_register_static(&dscm1xxxx_type_info);
+-}
+-
+-type_init(microdrive_register_types)
+diff --git a/hw/ide/Kconfig b/hw/ide/Kconfig
+index 6dfc5a21292..2e22b677da3 100644
+--- a/hw/ide/Kconfig
++++ b/hw/ide/Kconfig
+@@ -43,12 +43,6 @@ config IDE_VIA
      bool
-     default y
-diff --git a/hw/block/meson.build b/hw/block/meson.build
-index 999a93d900f..16a51bf8e21 100644
---- a/hw/block/meson.build
-+++ b/hw/block/meson.build
-@@ -3,7 +3,6 @@ system_ss.add(files(
-   'cdrom.c',
-   'hd-geometry.c'
- ))
--system_ss.add(when: 'CONFIG_ECC', if_true: files('ecc.c'))
- system_ss.add(when: 'CONFIG_FDC', if_true: files('fdc.c'))
- system_ss.add(when: 'CONFIG_FDC_ISA', if_true: files('fdc-isa.c'))
- system_ss.add(when: 'CONFIG_FDC_SYSBUS', if_true: files('fdc-sysbus.c'))
-diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
-index 1e08785b832..8568aaa2293 100644
---- a/hw/misc/Kconfig
-+++ b/hw/misc/Kconfig
-@@ -74,7 +74,6 @@ config IVSHMEM_DEVICE
+     select IDE_PCI
  
- config ECCMEMCTL
+-config MICRODRIVE
+-    bool
+-    select IDE_BUS
+-    select IDE_DEV
+-    depends on PCMCIA
+-
+ config AHCI
      bool
--    select ECC
- 
- config IMX
-     bool
+     select IDE_BUS
+diff --git a/hw/ide/meson.build b/hw/ide/meson.build
+index d09705cac03..90ea8614233 100644
+--- a/hw/ide/meson.build
++++ b/hw/ide/meson.build
+@@ -13,4 +13,3 @@ system_ss.add(when: 'CONFIG_IDE_PCI', if_true: files('pci.c'))
+ system_ss.add(when: 'CONFIG_IDE_PIIX', if_true: files('piix.c', 'ioport.c'))
+ system_ss.add(when: 'CONFIG_IDE_SII3112', if_true: files('sii3112.c'))
+ system_ss.add(when: 'CONFIG_IDE_VIA', if_true: files('via.c'))
+-system_ss.add(when: 'CONFIG_MICRODRIVE', if_true: files('microdrive.c'))
 -- 
 2.34.1
 

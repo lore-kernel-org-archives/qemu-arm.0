@@ -1,117 +1,116 @@
-Received: by 2002:a17:504:959a:b0:1be9:327d:8ee3 with SMTP id e26csp1457509njl;
-        Thu, 3 Oct 2024 07:02:18 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWGhhk/Q2MiNEcbkT3vcMX6OqSyNeG02/iL19/qTedVO4yERGt8H4BYddZjrZtD+Ygdi3QMhR2MZ7xsWA==@linaro.org
-X-Google-Smtp-Source: AGHT+IGg42EFq8QaXW/QVPfFvN10YXUI3lMllJGuuOCpb+xRrhrfkBFeCaTGsJMXf7oEIxe77f9m
-X-Received: by 2002:a05:620a:17a4:b0:7a9:bd67:f12a with SMTP id af79cd13be357-7ae6272ecd1mr939840185a.62.1727964138581;
-        Thu, 03 Oct 2024 07:02:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1727964138; cv=none;
+Received: by 2002:a17:504:959a:b0:1be9:327d:8ee3 with SMTP id e26csp1457796njl;
+        Thu, 3 Oct 2024 07:02:35 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCU8I9ec7zTKvnEWU/Dn++0ax7apKe+b9hVXOkfOd+bJkQESFswAN8UMInFtZL0MoY4vTBLhkOFIzjH3wA==@linaro.org
+X-Google-Smtp-Source: AGHT+IG1G3DF6zOrKc9XfeB07qUsSnKtKPS/SBMsw4H0k4kdp8f7MO12OOsh/hwHRwLndZN7X+tY
+X-Received: by 2002:a05:620a:2946:b0:7ac:b2d6:9ccf with SMTP id af79cd13be357-7ae62742f89mr1149484185a.61.1727964155319;
+        Thu, 03 Oct 2024 07:02:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1727964155; cv=none;
         d=google.com; s=arc-20240605;
-        b=KCTSGj56p+7aWq6t6HZ0H/tmH4+I3WnXVoq5j7PzqLBrZwsdhRY+TVMCbAQyjYUxAU
-         f0PVkyMRLuOPqHK4Mdzat4zpwz02S+7cckVreEObJZDBLDY3NRxbDGz61tgH9wSzcAvr
-         8QJk5/re5m29dq2eAvocPdAls4OH/wGgqDuW0cABzOfMsVEfaCYOFlxMROuvtOvLFyuz
-         UsHyjXWVhKPDzyTzh11Vo4l1ITgkBFTV7zL3b2Ja/757OJh/JLyzkg4R+wUc2Trug/73
-         kBnG4IIzhOTd+036uDU0d3QZQVnxnBnrHPbNd+FjeIMuWPabA70PtY435CwFruFR0LYF
-         Zobw==
+        b=Y0lAZVnWw2qYYMKsLuK4ch25obcuFuBe5TmwAJEiB4nTdOovjMnFtR2aT1S+Pp30Z5
+         ugb9bW/jHIBp9iQA5ZcA/YQLdNZIpb5mPAivHqk4hG39+GWzXSPKcerusSYBsvexJjIz
+         Ixl2hdIDwojbEHRVqwtwIOvlEERCs9nBpSXnvRgwrjAQ+B/+mv8xJaoP7jNSDjsSHtwO
+         izt+X4FNc0D5rM2rGsdx85FBmFAzmpisH6yb8QULAAUoHNLrynWPi0qyrlzZq3XS/xtx
+         XG9TpjRSo1gZRa5JFTj0+JHjW5uiiUfKkMF0oUl3QWnJSqQ783jYNbGnafHLPPKjV3N2
+         DFeQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=5YfeG5jC30ICdEmD4L7YfElHyWYG3PKB3Jupds5FC1o=;
-        fh=yxxSOZW08qA3pQZYu65Ky82cQ1eZndjEVlUiP62ttSo=;
-        b=aiWNkChCcLrAgtrzA/PF1D/ANORTvAsqjJz4bvDYC2CAih+RJyC5N59l5Usah8huST
-         QPwE3hPJJfmyOWjyuk5NrqoPrtZbncFuG0XM8sRKVL4RcIOWWEKw9MSZ1eb6AJ4e2gMs
-         1x27wu+Y7MQQmWKzv/lK41jX0M/hC4fH2KkD+kPtuVumIVoNdaUGdRpJ0TybbAp/nz0v
-         ob5h/l9Qr7K8O4gv54lJRjzGcdJFaf8QFeoIjETjQASR9kBJ0Selib/jX+RYSlFjUFCI
-         qX+2Mv0tqJ3uuASBFVXCo16RfPXKa29bmz+z/DmqOHUeHCCz8/fcv3F41gz0MXZi2/3m
-         h4bg==;
+        bh=/NdtSVHO79et12wC7mRevKMLx4j9u2HZmS8+HJMur2g=;
+        fh=dLP/YLBjMZxhHfH1sS7Ziu5zNyswdPoi/by3dAcRF0o=;
+        b=g6MkIeVZW2eEJwxtgS5RSCKSkLhgbELUl0TUPQbz0fZ2MAYhTilX07ubPqmGPKW7dS
+         hkDMowChTBKZ74/0lt40GnmvDXiMFQDT96gY56nHP3WNRJrybj5kByVNGnk8W2U4GdxR
+         8VRRC8Au4MTxFpDFqJZSGeDQWh5bFEmu02CsUOs2dabvw8SDwbbXXOl6QNUcZq7u3j+O
+         43JgSNA2Qz6EVx4lGcIPqmXLj9SDr5oK41G+mFop/Uk6nLVMKmhTM1lrL2ECMDvwVr5B
+         /RvZOzcUpBUmFUr6vSuHwpeQCO5yCCmFbxqV3q3NjJMacQC0vgVYQHgArECUQgbBgw72
+         llBA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=iotOYRgl;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=Fik2p2y4;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7ae6bb65742si100959385a.693.2024.10.03.07.02.18
+        by mx.google.com with ESMTPS id af79cd13be357-7ae6bb066desi105908085a.591.2024.10.03.07.02.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 03 Oct 2024 07:02:18 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 03 Oct 2024 07:02:35 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=iotOYRgl;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=Fik2p2y4;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1swMOC-0004L6-Bn; Thu, 03 Oct 2024 10:01:08 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1swMO8-0004Ht-1y; Thu, 03 Oct 2024 10:01:04 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1swMNS-00047I-Mt
- for qemu-devel@nongnu.org; Thu, 03 Oct 2024 10:00:26 -0400
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+ id 1swMNS-00047H-Mj
+ for qemu-arm@nongnu.org; Thu, 03 Oct 2024 10:00:26 -0400
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1swMNN-0002r5-40
- for qemu-devel@nongnu.org; Thu, 03 Oct 2024 10:00:21 -0400
-Received: by mail-wm1-x32f.google.com with SMTP id
- 5b1f17b1804b1-42cb57f8b41so13165935e9.0
- for <qemu-devel@nongnu.org>; Thu, 03 Oct 2024 07:00:15 -0700 (PDT)
+ id 1swMNO-0002rm-FN
+ for qemu-arm@nongnu.org; Thu, 03 Oct 2024 10:00:21 -0400
+Received: by mail-wm1-x32a.google.com with SMTP id
+ 5b1f17b1804b1-42cb7a2e4d6so10302285e9.0
+ for <qemu-arm@nongnu.org>; Thu, 03 Oct 2024 07:00:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1727964014; x=1728568814; darn=nongnu.org;
+ d=linaro.org; s=google; t=1727964017; x=1728568817; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=5YfeG5jC30ICdEmD4L7YfElHyWYG3PKB3Jupds5FC1o=;
- b=iotOYRgltHSsyVND6gb9eZYE9Xch+RK0uvEoNj3CgQQ/4U2E0LoGlzg20nMXpyM2hB
- R1wm2UD8TJCXLdEj9RG7q3fgNE+tKqa3BR/ZFWRuebBXxcqCn4eZFYdAVyGu+deMmM30
- XJGtoodCakD83sm71kn3gbalCmeq0gzqvkP0C09KvVAW7p6d6J9Bkg1XnwWRUwsyN7V2
- QZ2IqKGWQ5gDLWlo9flQR7okzdfU7Jf41ySA1ggeBUMxwZEPMN+Tv5WKtDdPtF2ZYuIu
- 0VncuO0jQZhkKchvWODnZcS3d/xuc9TRIsgiJm6Z95MBwBcZvLLZWADHNeISAFV6QToz
- ZMjQ==
+ bh=/NdtSVHO79et12wC7mRevKMLx4j9u2HZmS8+HJMur2g=;
+ b=Fik2p2y4e8bfjLBLZoePIJA+OcBr5qffo7kBeyD2APPYg19agQI22883QKHqHZg42T
+ F8TK1u7Pq8t6tZbpdTqpuuYzrErmW3O1+BX4jCWrUA1uswWZhuG0MNsjzON+aF/NAXV+
+ joXjViGMmuNvEd1aauhcnGRK7lQ+xnN0reLBOWx6GOJ91LPSZD3nFnD98dD8MrSSjB6B
+ 85e84d69BVCQmsfSjoCxGveig83QhybmC99UkQYBH4RebJedGfwfaVC/IUC/tYqy7Is0
+ YxZuiGJmr/We5MMMA4ka07mqScE5o1rNWspAnZJw31nuarBFjjQPu3FLhyP3ZV3R9+C2
+ eDMA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1727964014; x=1728568814;
+ d=1e100.net; s=20230601; t=1727964017; x=1728568817;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=5YfeG5jC30ICdEmD4L7YfElHyWYG3PKB3Jupds5FC1o=;
- b=nokzcuKpOY966ayQjpxyRDbbD2vEevGuT/ZmXyA5AjC3Qlr4WcNCneFwPHqf5gR5i3
- 9asqm+6XfFPBxht/2vJthI7lTU2L+IND0kRTfQ/Q8FX+WR/07uK+PDtnocfSk3P890WP
- Ty1CFBSocky6VQew5bdB6Ib6N233L0TY16XSDtITvveJoieZ1mxvhOIat43Lr1D0F3at
- lXjagibBDS4L5IEbil6i5dHuop+VCvXzRbSS6k+rDtcliX/3wHdKFIRxQYYCzWW934Cx
- jrdv42TsCZW4x/raBkLQ491O/o8qOnMykGqELn5Wren0ljpur5rgs7aaXSudUBmJmnKm
- 6SnQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUhX+uZiR0FqLkTCLSnYEVvG/DnPmU9RYmd/0vQ7c5hv+KPzRM1zONh5J9okBX4iDkSCaKqtnIVXeCn@nongnu.org
-X-Gm-Message-State: AOJu0Yz3Zt43cto7d8KE97mvqBVVIOxR0LsfgW5NDrJLModXLXBWRUob
- P5fXdiXw6+co6isDmb5RDphJhMp8U/DR+VbGmIm73xn1ojDBBwgZjg8JaHfC0Cj5yb8Cb5LaBtM
- L
-X-Received: by 2002:a5d:58d2:0:b0:37c:cea2:826f with SMTP id
- ffacd0b85a97d-37cfb8b562bmr5642691f8f.2.1727964014263; 
- Thu, 03 Oct 2024 07:00:14 -0700 (PDT)
+ bh=/NdtSVHO79et12wC7mRevKMLx4j9u2HZmS8+HJMur2g=;
+ b=qscuujVft32qfbvLYljj+61jk7ONsOqMNrrMTwnmC0MlhzwIhXtTocWpPp7wJIvXNK
+ N/Hr0CC2+VvFoosTpLJREjxVQdARzVFDX4HZcWBiLVBOsA6KnboQ+Yr+kCv/r6HbvVG9
+ MW591FBFIhWaiz1iPT5IFIbsclQgtsFtOAytcvwDclUB+OE0xw67ouhLieqeRVLReUhw
+ EzO9Qq530fpAmbA2hVsjnL27DgKaecXwmx8u2F7lmKG9cstn42r66IGDLouu06FBHByy
+ VZtzV0XnP7xJI0fiIF20Molnn+jTbhu7u42VPQSYnp1ggPBjTs+se5t1eAghkfD7lYkD
+ k7NQ==
+X-Gm-Message-State: AOJu0Yx7Pw8ZTnXYlJbV1PComjd1h8hecnunQASPfG4fxxdKEQIO0ME0
+ qp4Vp9eh6lG5Rj2+T2Zc0ZpSLwFPeAoJI8gkYHLnelVzpXFd7OLJGHzhqQ7osUogtF2mfbYUsuG
+ +
+X-Received: by 2002:a05:600c:4f10:b0:42c:b5f1:4508 with SMTP id
+ 5b1f17b1804b1-42f778f360emr45374425e9.23.1727964016820; 
+ Thu, 03 Oct 2024 07:00:16 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-37d0822bc38sm1340255f8f.45.2024.10.03.07.00.13
+ ffacd0b85a97d-37d0822bc38sm1340255f8f.45.2024.10.03.07.00.16
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 03 Oct 2024 07:00:13 -0700 (PDT)
+ Thu, 03 Oct 2024 07:00:16 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Guenter Roeck <linux@roeck-us.net>, Paolo Bonzini <pbonzini@redhat.com>
-Subject: [PATCH v2 3/6] hw/ide: Remove DSCM-1XXXX microdrive device model
-Date: Thu,  3 Oct 2024 15:00:07 +0100
-Message-Id: <20241003140010.1653808-4-peter.maydell@linaro.org>
+Subject: [PATCH v2 6/6] vl.c: Remove pxa2xx-specific -portrait and -rotate
+ options
+Date: Thu,  3 Oct 2024 15:00:10 +0100
+Message-Id: <20241003140010.1653808-7-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20241003140010.1653808-1-peter.maydell@linaro.org>
 References: <20241003140010.1653808-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -120,722 +119,216 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: tsCSGmbYHdQi
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: CYlpJLhcykWU
 
-The DSCM-1XXXX microdrive device model was used only by the
-XScale-based Zaurus machine types.  Now they have been removed, we
-can delete this device too.
+The ``-portrait`` and ``-rotate`` options were documented as only
+working with the PXA LCD device, and all the machine types using
+that display device were removed in 9.2.
+
+These options were intended to simulate a mobile device being
+rotated by the user, and had three effects:
+ * the display output was rotated by 90, 180 or 270 degrees
+   (implemented in the PXA display device models)
+ * the mouse/trackpad input was rotated the opposite way
+   (implemented in generic code)
+ * the machine model would signal to the guest about its
+   orientation
+   (implemented by e.g. the spitz machine model)
+
+Of these three things, the input-rotation was coded without being
+restricted to boards which supported the full set of device-rotation
+handling, so in theory the options were usable on other machine
+models with odd effects (rotating input but not display output).  But
+this was never intended or documented behaviour, so we can reasonably
+drop these command line arguments without a formal deprecate-and-drop
+cycle for them.
+
+Remove the options, and their implementation and documentation.
+Describe the removal in removed-features.rst.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- include/hw/pcmcia.h |   3 -
- hw/ide/microdrive.c | 644 --------------------------------------------
- hw/ide/Kconfig      |   6 -
- hw/ide/meson.build  |   1 -
- 4 files changed, 654 deletions(-)
- delete mode 100644 hw/ide/microdrive.c
+ docs/about/removed-features.rst | 22 ++++++++++++++++++++
+ include/sysemu/sysemu.h         |  1 -
+ system/globals.c                |  1 -
+ system/vl.c                     | 11 ----------
+ ui/input.c                      | 36 ---------------------------------
+ qemu-options.hx                 | 16 ---------------
+ 6 files changed, 22 insertions(+), 65 deletions(-)
 
-diff --git a/include/hw/pcmcia.h b/include/hw/pcmcia.h
-index ab268027511..6c08ad616a5 100644
---- a/include/hw/pcmcia.h
-+++ b/include/hw/pcmcia.h
-@@ -60,7 +60,4 @@ struct PCMCIACardClass {
- #define CISTPL_END            0xff  /* Tuple End */
- #define CISTPL_ENDMARK        0xff
+diff --git a/docs/about/removed-features.rst b/docs/about/removed-features.rst
+index 6e96cd067fa..567e653e1d3 100644
+--- a/docs/about/removed-features.rst
++++ b/docs/about/removed-features.rst
+@@ -517,6 +517,28 @@ The virtio-blk SCSI passthrough feature is a legacy VIRTIO feature.  VIRTIO 1.0
+ and later do not support it because the virtio-scsi device was introduced for
+ full SCSI support.  Use virtio-scsi instead when SCSI passthrough is required.
  
--/* dscm1xxxx.c */
--PCMCIACardState *dscm1xxxx_init(DriveInfo *bdrv);
--
- #endif
-diff --git a/hw/ide/microdrive.c b/hw/ide/microdrive.c
-deleted file mode 100644
-index 5475d599788..00000000000
---- a/hw/ide/microdrive.c
-+++ /dev/null
-@@ -1,644 +0,0 @@
--/*
-- * QEMU IDE Emulation: microdrive (CF / PCMCIA)
-- *
-- * Copyright (c) 2003 Fabrice Bellard
-- * Copyright (c) 2006 Openedhand Ltd.
-- *
-- * Permission is hereby granted, free of charge, to any person obtaining a copy
-- * of this software and associated documentation files (the "Software"), to deal
-- * in the Software without restriction, including without limitation the rights
-- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-- * copies of the Software, and to permit persons to whom the Software is
-- * furnished to do so, subject to the following conditions:
-- *
-- * The above copyright notice and this permission notice shall be included in
-- * all copies or substantial portions of the Software.
-- *
-- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-- * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-- * THE SOFTWARE.
-- */
--
--#include "qemu/osdep.h"
--#include "hw/pcmcia.h"
--#include "migration/vmstate.h"
--#include "qapi/error.h"
--#include "qemu/module.h"
--#include "sysemu/dma.h"
--#include "hw/irq.h"
--
--#include "qom/object.h"
--#include "ide-internal.h"
--
--#define TYPE_MICRODRIVE "microdrive"
--OBJECT_DECLARE_SIMPLE_TYPE(MicroDriveState, MICRODRIVE)
--
--/***********************************************************/
--/* CF-ATA Microdrive */
--
--#define METADATA_SIZE   0x20
--
--/* DSCM-1XXXX Microdrive hard disk with CF+ II / PCMCIA interface.  */
--
--struct MicroDriveState {
--    /*< private >*/
--    PCMCIACardState parent_obj;
--    /*< public >*/
--
--    IDEBus bus;
--    uint32_t attr_base;
--    uint32_t io_base;
--
--    /* Card state */
--    uint8_t opt;
--    uint8_t stat;
--    uint8_t pins;
--
--    uint8_t ctrl;
--    uint16_t io;
--    uint8_t cycle;
--};
--
--/* Register bitfields */
--enum md_opt {
--    OPT_MODE_MMAP    = 0,
--    OPT_MODE_IOMAP16 = 1,
--    OPT_MODE_IOMAP1  = 2,
--    OPT_MODE_IOMAP2  = 3,
--    OPT_MODE         = 0x3f,
--    OPT_LEVIREQ      = 0x40,
--    OPT_SRESET       = 0x80,
--};
--enum md_cstat {
--    STAT_INT        = 0x02,
--    STAT_PWRDWN     = 0x04,
--    STAT_XE         = 0x10,
--    STAT_IOIS8      = 0x20,
--    STAT_SIGCHG     = 0x40,
--    STAT_CHANGED    = 0x80,
--};
--enum md_pins {
--    PINS_MRDY       = 0x02,
--    PINS_CRDY       = 0x20,
--};
--enum md_ctrl {
--    CTRL_IEN        = 0x02,
--    CTRL_SRST       = 0x04,
--};
--
--static inline void md_interrupt_update(MicroDriveState *s)
--{
--    PCMCIACardState *card = PCMCIA_CARD(s);
--
--    if (card->slot == NULL) {
--        return;
--    }
--
--    qemu_set_irq(card->slot->irq,
--                    !(s->stat & STAT_INT) &&    /* Inverted */
--                    !(s->ctrl & (CTRL_IEN | CTRL_SRST)) &&
--                    !(s->opt & OPT_SRESET));
--}
--
--static void md_set_irq(void *opaque, int irq, int level)
--{
--    MicroDriveState *s = opaque;
--
--    if (level) {
--        s->stat |= STAT_INT;
--    } else {
--        s->stat &= ~STAT_INT;
--    }
--
--    md_interrupt_update(s);
--}
--
--static void md_reset(DeviceState *dev)
--{
--    MicroDriveState *s = MICRODRIVE(dev);
--
--    s->opt = OPT_MODE_MMAP;
--    s->stat = 0;
--    s->pins = 0;
--    s->cycle = 0;
--    s->ctrl = 0;
--    ide_bus_reset(&s->bus);
--}
--
--static uint8_t md_attr_read(PCMCIACardState *card, uint32_t at)
--{
--    MicroDriveState *s = MICRODRIVE(card);
--    PCMCIACardClass *pcc = PCMCIA_CARD_GET_CLASS(card);
--
--    if (at < s->attr_base) {
--        if (at < pcc->cis_len) {
--            return pcc->cis[at];
--        } else {
--            return 0x00;
--        }
--    }
--
--    at -= s->attr_base;
--
--    switch (at) {
--    case 0x00:  /* Configuration Option Register */
--        return s->opt;
--    case 0x02:  /* Card Configuration Status Register */
--        if (s->ctrl & CTRL_IEN) {
--            return s->stat & ~STAT_INT;
--        } else {
--            return s->stat;
--        }
--    case 0x04:  /* Pin Replacement Register */
--        return (s->pins & PINS_CRDY) | 0x0c;
--    case 0x06:  /* Socket and Copy Register */
--        return 0x00;
--#ifdef VERBOSE
--    default:
--        printf("%s: Bad attribute space register %02x\n", __func__, at);
--#endif
--    }
--
--    return 0;
--}
--
--static void md_attr_write(PCMCIACardState *card, uint32_t at, uint8_t value)
--{
--    MicroDriveState *s = MICRODRIVE(card);
--
--    at -= s->attr_base;
--
--    switch (at) {
--    case 0x00:  /* Configuration Option Register */
--        s->opt = value & 0xcf;
--        if (value & OPT_SRESET) {
--            device_cold_reset(DEVICE(s));
--        }
--        md_interrupt_update(s);
--        break;
--    case 0x02:  /* Card Configuration Status Register */
--        if ((s->stat ^ value) & STAT_PWRDWN) {
--            s->pins |= PINS_CRDY;
--        }
--        s->stat &= 0x82;
--        s->stat |= value & 0x74;
--        md_interrupt_update(s);
--        /* Word 170 in Identify Device must be equal to STAT_XE */
--        break;
--    case 0x04:  /* Pin Replacement Register */
--        s->pins &= PINS_CRDY;
--        s->pins |= value & PINS_MRDY;
--        break;
--    case 0x06:  /* Socket and Copy Register */
--        break;
--    default:
--        printf("%s: Bad attribute space register %02x\n", __func__, at);
--    }
--}
--
--static uint16_t md_common_read(PCMCIACardState *card, uint32_t at)
--{
--    MicroDriveState *s = MICRODRIVE(card);
--    IDEState *ifs;
--    uint16_t ret;
--    at -= s->io_base;
--
--    switch (s->opt & OPT_MODE) {
--    case OPT_MODE_MMAP:
--        if ((at & ~0x3ff) == 0x400) {
--            at = 0;
--        }
--        break;
--    case OPT_MODE_IOMAP16:
--        at &= 0xf;
--        break;
--    case OPT_MODE_IOMAP1:
--        if ((at & ~0xf) == 0x3f0) {
--            at -= 0x3e8;
--        } else if ((at & ~0xf) == 0x1f0) {
--            at -= 0x1f0;
--        }
--        break;
--    case OPT_MODE_IOMAP2:
--        if ((at & ~0xf) == 0x370) {
--            at -= 0x368;
--        } else if ((at & ~0xf) == 0x170) {
--            at -= 0x170;
--        }
--    }
--
--    switch (at) {
--    case 0x0:  /* Even RD Data */
--    case 0x8:
--        return ide_data_readw(&s->bus, 0);
--
--        /* TODO: 8-bit accesses */
--        if (s->cycle) {
--            ret = s->io >> 8;
--        } else {
--            s->io = ide_data_readw(&s->bus, 0);
--            ret = s->io & 0xff;
--        }
--        s->cycle = !s->cycle;
--        return ret;
--    case 0x9:  /* Odd RD Data */
--        return s->io >> 8;
--    case 0xd:  /* Error */
--        return ide_ioport_read(&s->bus, 0x1);
--    case 0xe:  /* Alternate Status */
--        ifs = ide_bus_active_if(&s->bus);
--        if (ifs->blk) {
--            return ifs->status;
--        } else {
--            return 0;
--        }
--    case 0xf:  /* Device Address */
--        ifs = ide_bus_active_if(&s->bus);
--        return 0xc2 | ((~ifs->select << 2) & 0x3c);
--    default:
--        return ide_ioport_read(&s->bus, at);
--    }
--
--    return 0;
--}
--
--static void md_common_write(PCMCIACardState *card, uint32_t at, uint16_t value)
--{
--    MicroDriveState *s = MICRODRIVE(card);
--    at -= s->io_base;
--
--    switch (s->opt & OPT_MODE) {
--    case OPT_MODE_MMAP:
--        if ((at & ~0x3ff) == 0x400) {
--            at = 0;
--        }
--        break;
--    case OPT_MODE_IOMAP16:
--        at &= 0xf;
--        break;
--    case OPT_MODE_IOMAP1:
--        if ((at & ~0xf) == 0x3f0) {
--            at -= 0x3e8;
--        } else if ((at & ~0xf) == 0x1f0) {
--            at -= 0x1f0;
--        }
--        break;
--    case OPT_MODE_IOMAP2:
--        if ((at & ~0xf) == 0x370) {
--            at -= 0x368;
--        } else if ((at & ~0xf) == 0x170) {
--            at -= 0x170;
--        }
--    }
--
--    switch (at) {
--    case 0x0:  /* Even WR Data */
--    case 0x8:
--        ide_data_writew(&s->bus, 0, value);
--        break;
--
--        /* TODO: 8-bit accesses */
--        if (s->cycle) {
--            ide_data_writew(&s->bus, 0, s->io | (value << 8));
--        } else {
--            s->io = value & 0xff;
--        }
--        s->cycle = !s->cycle;
--        break;
--    case 0x9:
--        s->io = value & 0xff;
--        s->cycle = !s->cycle;
--        break;
--    case 0xd:  /* Features */
--        ide_ioport_write(&s->bus, 0x1, value);
--        break;
--    case 0xe:  /* Device Control */
--        s->ctrl = value;
--        if (value & CTRL_SRST) {
--            device_cold_reset(DEVICE(s));
--        }
--        md_interrupt_update(s);
--        break;
--    default:
--        if (s->stat & STAT_PWRDWN) {
--            s->pins |= PINS_CRDY;
--            s->stat &= ~STAT_PWRDWN;
--        }
--        ide_ioport_write(&s->bus, at, value);
--    }
--}
--
--static const VMStateDescription vmstate_microdrive = {
--    .name = "microdrive",
--    .version_id = 3,
--    .minimum_version_id = 0,
--    .fields = (const VMStateField[]) {
--        VMSTATE_UINT8(opt, MicroDriveState),
--        VMSTATE_UINT8(stat, MicroDriveState),
--        VMSTATE_UINT8(pins, MicroDriveState),
--        VMSTATE_UINT8(ctrl, MicroDriveState),
--        VMSTATE_UINT16(io, MicroDriveState),
--        VMSTATE_UINT8(cycle, MicroDriveState),
--        VMSTATE_IDE_BUS(bus, MicroDriveState),
--        VMSTATE_IDE_DRIVES(bus.ifs, MicroDriveState),
--        VMSTATE_END_OF_LIST()
--    }
--};
--
--static const uint8_t dscm1xxxx_cis[0x14a] = {
--    [0x000] = CISTPL_DEVICE,    /* 5V Device Information */
--    [0x002] = 0x03,             /* Tuple length = 4 bytes */
--    [0x004] = 0xdb,             /* ID: DTYPE_FUNCSPEC, non WP, DSPEED_150NS */
--    [0x006] = 0x01,             /* Size = 2K bytes */
--    [0x008] = CISTPL_ENDMARK,
--
--    [0x00a] = CISTPL_DEVICE_OC, /* Additional Device Information */
--    [0x00c] = 0x04,             /* Tuple length = 4 byest */
--    [0x00e] = 0x03,             /* Conditions: Ext = 0, Vcc 3.3V, MWAIT = 1 */
--    [0x010] = 0xdb,             /* ID: DTYPE_FUNCSPEC, non WP, DSPEED_150NS */
--    [0x012] = 0x01,             /* Size = 2K bytes */
--    [0x014] = CISTPL_ENDMARK,
--
--    [0x016] = CISTPL_JEDEC_C,   /* JEDEC ID */
--    [0x018] = 0x02,             /* Tuple length = 2 bytes */
--    [0x01a] = 0xdf,             /* PC Card ATA with no Vpp required */
--    [0x01c] = 0x01,
--
--    [0x01e] = CISTPL_MANFID,    /* Manufacture ID */
--    [0x020] = 0x04,             /* Tuple length = 4 bytes */
--    [0x022] = 0xa4,             /* TPLMID_MANF = 00a4 (IBM) */
--    [0x024] = 0x00,
--    [0x026] = 0x00,             /* PLMID_CARD = 0000 */
--    [0x028] = 0x00,
--
--    [0x02a] = CISTPL_VERS_1,    /* Level 1 Version */
--    [0x02c] = 0x12,             /* Tuple length = 23 bytes */
--    [0x02e] = 0x04,             /* Major Version = JEIDA 4.2 / PCMCIA 2.1 */
--    [0x030] = 0x01,             /* Minor Version = 1 */
--    [0x032] = 'I',
--    [0x034] = 'B',
--    [0x036] = 'M',
--    [0x038] = 0x00,
--    [0x03a] = 'm',
--    [0x03c] = 'i',
--    [0x03e] = 'c',
--    [0x040] = 'r',
--    [0x042] = 'o',
--    [0x044] = 'd',
--    [0x046] = 'r',
--    [0x048] = 'i',
--    [0x04a] = 'v',
--    [0x04c] = 'e',
--    [0x04e] = 0x00,
--    [0x050] = CISTPL_ENDMARK,
--
--    [0x052] = CISTPL_FUNCID,    /* Function ID */
--    [0x054] = 0x02,             /* Tuple length = 2 bytes */
--    [0x056] = 0x04,             /* TPLFID_FUNCTION = Fixed Disk */
--    [0x058] = 0x01,             /* TPLFID_SYSINIT: POST = 1, ROM = 0 */
--
--    [0x05a] = CISTPL_FUNCE,     /* Function Extension */
--    [0x05c] = 0x02,             /* Tuple length = 2 bytes */
--    [0x05e] = 0x01,             /* TPLFE_TYPE = Disk Device Interface */
--    [0x060] = 0x01,             /* TPLFE_DATA = PC Card ATA Interface */
--
--    [0x062] = CISTPL_FUNCE,     /* Function Extension */
--    [0x064] = 0x03,             /* Tuple length = 3 bytes */
--    [0x066] = 0x02,             /* TPLFE_TYPE = Basic PC Card ATA Interface */
--    [0x068] = 0x08,             /* TPLFE_DATA: Rotating, Unique, Single */
--    [0x06a] = 0x0f,             /* TPLFE_DATA: Sleep, Standby, Idle, Auto */
--
--    [0x06c] = CISTPL_CONFIG,    /* Configuration */
--    [0x06e] = 0x05,             /* Tuple length = 5 bytes */
--    [0x070] = 0x01,             /* TPCC_RASZ = 2 bytes, TPCC_RMSZ = 1 byte */
--    [0x072] = 0x07,             /* TPCC_LAST = 7 */
--    [0x074] = 0x00,             /* TPCC_RADR = 0200 */
--    [0x076] = 0x02,
--    [0x078] = 0x0f,             /* TPCC_RMSK = 200, 202, 204, 206 */
--
--    [0x07a] = CISTPL_CFTABLE_ENTRY, /* 16-bit PC Card Configuration */
--    [0x07c] = 0x0b,             /* Tuple length = 11 bytes */
--    [0x07e] = 0xc0,             /* TPCE_INDX = Memory Mode, Default, Iface */
--    [0x080] = 0xc0,             /* TPCE_IF = Memory, no BVDs, no WP, READY */
--    [0x082] = 0xa1,             /* TPCE_FS = Vcc only, no I/O, Memory, Misc */
--    [0x084] = 0x27,             /* NomV = 1, MinV = 1, MaxV = 1, Peakl = 1 */
--    [0x086] = 0x55,             /* NomV: 5.0 V */
--    [0x088] = 0x4d,             /* MinV: 4.5 V */
--    [0x08a] = 0x5d,             /* MaxV: 5.5 V */
--    [0x08c] = 0x4e,             /* Peakl: 450 mA */
--    [0x08e] = 0x08,             /* TPCE_MS = 1 window, 1 byte, Host address */
--    [0x090] = 0x00,             /* Window descriptor: Window length = 0 */
--    [0x092] = 0x20,             /* TPCE_MI: support power down mode, RW */
--
--    [0x094] = CISTPL_CFTABLE_ENTRY, /* 16-bit PC Card Configuration */
--    [0x096] = 0x06,             /* Tuple length = 6 bytes */
--    [0x098] = 0x00,             /* TPCE_INDX = Memory Mode, no Default */
--    [0x09a] = 0x01,             /* TPCE_FS = Vcc only, no I/O, no Memory */
--    [0x09c] = 0x21,             /* NomV = 1, MinV = 0, MaxV = 0, Peakl = 1 */
--    [0x09e] = 0xb5,             /* NomV: 3.3 V */
--    [0x0a0] = 0x1e,
--    [0x0a2] = 0x3e,             /* Peakl: 350 mA */
--
--    [0x0a4] = CISTPL_CFTABLE_ENTRY, /* 16-bit PC Card Configuration */
--    [0x0a6] = 0x0d,             /* Tuple length = 13 bytes */
--    [0x0a8] = 0xc1,             /* TPCE_INDX = I/O and Memory Mode, Default */
--    [0x0aa] = 0x41,             /* TPCE_IF = I/O and Memory, no BVD, no WP */
--    [0x0ac] = 0x99,             /* TPCE_FS = Vcc only, I/O, Interrupt, Misc */
--    [0x0ae] = 0x27,             /* NomV = 1, MinV = 1, MaxV = 1, Peakl = 1 */
--    [0x0b0] = 0x55,             /* NomV: 5.0 V */
--    [0x0b2] = 0x4d,             /* MinV: 4.5 V */
--    [0x0b4] = 0x5d,             /* MaxV: 5.5 V */
--    [0x0b6] = 0x4e,             /* Peakl: 450 mA */
--    [0x0b8] = 0x64,             /* TPCE_IO = 16-byte boundary, 16/8 accesses */
--    [0x0ba] = 0xf0,             /* TPCE_IR =  MASK, Level, Pulse, Share */
--    [0x0bc] = 0xff,             /* IRQ0..IRQ7 supported */
--    [0x0be] = 0xff,             /* IRQ8..IRQ15 supported */
--    [0x0c0] = 0x20,             /* TPCE_MI = support power down mode */
--
--    [0x0c2] = CISTPL_CFTABLE_ENTRY, /* 16-bit PC Card Configuration */
--    [0x0c4] = 0x06,             /* Tuple length = 6 bytes */
--    [0x0c6] = 0x01,             /* TPCE_INDX = I/O and Memory Mode */
--    [0x0c8] = 0x01,             /* TPCE_FS = Vcc only, no I/O, no Memory */
--    [0x0ca] = 0x21,             /* NomV = 1, MinV = 0, MaxV = 0, Peakl = 1 */
--    [0x0cc] = 0xb5,             /* NomV: 3.3 V */
--    [0x0ce] = 0x1e,
--    [0x0d0] = 0x3e,             /* Peakl: 350 mA */
--
--    [0x0d2] = CISTPL_CFTABLE_ENTRY, /* 16-bit PC Card Configuration */
--    [0x0d4] = 0x12,             /* Tuple length = 18 bytes */
--    [0x0d6] = 0xc2,             /* TPCE_INDX = I/O Primary Mode */
--    [0x0d8] = 0x41,             /* TPCE_IF = I/O and Memory, no BVD, no WP */
--    [0x0da] = 0x99,             /* TPCE_FS = Vcc only, I/O, Interrupt, Misc */
--    [0x0dc] = 0x27,             /* NomV = 1, MinV = 1, MaxV = 1, Peakl = 1 */
--    [0x0de] = 0x55,             /* NomV: 5.0 V */
--    [0x0e0] = 0x4d,             /* MinV: 4.5 V */
--    [0x0e2] = 0x5d,             /* MaxV: 5.5 V */
--    [0x0e4] = 0x4e,             /* Peakl: 450 mA */
--    [0x0e6] = 0xea,             /* TPCE_IO = 1K boundary, 16/8 access, Range */
--    [0x0e8] = 0x61,             /* Range: 2 fields, 2 bytes addr, 1 byte len */
--    [0x0ea] = 0xf0,             /* Field 1 address = 0x01f0 */
--    [0x0ec] = 0x01,
--    [0x0ee] = 0x07,             /* Address block length = 8 */
--    [0x0f0] = 0xf6,             /* Field 2 address = 0x03f6 */
--    [0x0f2] = 0x03,
--    [0x0f4] = 0x01,             /* Address block length = 2 */
--    [0x0f6] = 0xee,             /* TPCE_IR = IRQ E, Level, Pulse, Share */
--    [0x0f8] = 0x20,             /* TPCE_MI = support power down mode */
--
--    [0x0fa] = CISTPL_CFTABLE_ENTRY, /* 16-bit PC Card Configuration */
--    [0x0fc] = 0x06,             /* Tuple length = 6 bytes */
--    [0x0fe] = 0x02,             /* TPCE_INDX = I/O Primary Mode, no Default */
--    [0x100] = 0x01,             /* TPCE_FS = Vcc only, no I/O, no Memory */
--    [0x102] = 0x21,             /* NomV = 1, MinV = 0, MaxV = 0, Peakl = 1 */
--    [0x104] = 0xb5,             /* NomV: 3.3 V */
--    [0x106] = 0x1e,
--    [0x108] = 0x3e,             /* Peakl: 350 mA */
--
--    [0x10a] = CISTPL_CFTABLE_ENTRY, /* 16-bit PC Card Configuration */
--    [0x10c] = 0x12,             /* Tuple length = 18 bytes */
--    [0x10e] = 0xc3,             /* TPCE_INDX = I/O Secondary Mode, Default */
--    [0x110] = 0x41,             /* TPCE_IF = I/O and Memory, no BVD, no WP */
--    [0x112] = 0x99,             /* TPCE_FS = Vcc only, I/O, Interrupt, Misc */
--    [0x114] = 0x27,             /* NomV = 1, MinV = 1, MaxV = 1, Peakl = 1 */
--    [0x116] = 0x55,             /* NomV: 5.0 V */
--    [0x118] = 0x4d,             /* MinV: 4.5 V */
--    [0x11a] = 0x5d,             /* MaxV: 5.5 V */
--    [0x11c] = 0x4e,             /* Peakl: 450 mA */
--    [0x11e] = 0xea,             /* TPCE_IO = 1K boundary, 16/8 access, Range */
--    [0x120] = 0x61,             /* Range: 2 fields, 2 byte addr, 1 byte len */
--    [0x122] = 0x70,             /* Field 1 address = 0x0170 */
--    [0x124] = 0x01,
--    [0x126] = 0x07,             /* Address block length = 8 */
--    [0x128] = 0x76,             /* Field 2 address = 0x0376 */
--    [0x12a] = 0x03,
--    [0x12c] = 0x01,             /* Address block length = 2 */
--    [0x12e] = 0xee,             /* TPCE_IR = IRQ E, Level, Pulse, Share */
--    [0x130] = 0x20,             /* TPCE_MI = support power down mode */
--
--    [0x132] = CISTPL_CFTABLE_ENTRY, /* 16-bit PC Card Configuration */
--    [0x134] = 0x06,             /* Tuple length = 6 bytes */
--    [0x136] = 0x03,             /* TPCE_INDX = I/O Secondary Mode */
--    [0x138] = 0x01,             /* TPCE_FS = Vcc only, no I/O, no Memory */
--    [0x13a] = 0x21,             /* NomV = 1, MinV = 0, MaxV = 0, Peakl = 1 */
--    [0x13c] = 0xb5,             /* NomV: 3.3 V */
--    [0x13e] = 0x1e,
--    [0x140] = 0x3e,             /* Peakl: 350 mA */
--
--    [0x142] = CISTPL_NO_LINK,   /* No Link */
--    [0x144] = 0x00,             /* Tuple length = 0 bytes */
--
--    [0x146] = CISTPL_END,       /* Tuple End */
--};
--
--#define TYPE_DSCM1XXXX "dscm1xxxx"
--
--static int dscm1xxxx_attach(PCMCIACardState *card)
--{
--    MicroDriveState *md = MICRODRIVE(card);
--    PCMCIACardClass *pcc = PCMCIA_CARD_GET_CLASS(card);
--
--    md->attr_base = pcc->cis[0x74] | (pcc->cis[0x76] << 8);
--    md->io_base = 0x0;
--
--    device_cold_reset(DEVICE(md));
--    md_interrupt_update(md);
--
--    return 0;
--}
--
--static int dscm1xxxx_detach(PCMCIACardState *card)
--{
--    MicroDriveState *md = MICRODRIVE(card);
--
--    device_cold_reset(DEVICE(md));
--    return 0;
--}
--
--PCMCIACardState *dscm1xxxx_init(DriveInfo *dinfo)
--{
--    MicroDriveState *md;
--
--    md = MICRODRIVE(object_new(TYPE_DSCM1XXXX));
--    qdev_realize(DEVICE(md), NULL, &error_fatal);
--
--    if (dinfo != NULL) {
--        ide_bus_create_drive(&md->bus, 0, dinfo);
--    }
--    md->bus.ifs[0].drive_kind = IDE_CFATA;
--    md->bus.ifs[0].mdata_size = METADATA_SIZE;
--    md->bus.ifs[0].mdata_storage = g_malloc0(METADATA_SIZE);
--
--    return PCMCIA_CARD(md);
--}
--
--static void dscm1xxxx_class_init(ObjectClass *oc, void *data)
--{
--    PCMCIACardClass *pcc = PCMCIA_CARD_CLASS(oc);
--    DeviceClass *dc = DEVICE_CLASS(oc);
--
--    pcc->cis = dscm1xxxx_cis;
--    pcc->cis_len = sizeof(dscm1xxxx_cis);
--
--    pcc->attach = dscm1xxxx_attach;
--    pcc->detach = dscm1xxxx_detach;
--    /* Reason: Needs to be wired-up in code, see dscm1xxxx_init() */
--    dc->user_creatable = false;
--}
--
--static const TypeInfo dscm1xxxx_type_info = {
--    .name = TYPE_DSCM1XXXX,
--    .parent = TYPE_MICRODRIVE,
--    .class_init = dscm1xxxx_class_init,
--};
--
--static void microdrive_realize(DeviceState *dev, Error **errp)
--{
--    MicroDriveState *md = MICRODRIVE(dev);
--
--    ide_bus_init_output_irq(&md->bus, qemu_allocate_irq(md_set_irq, md, 0));
--}
--
--static void microdrive_init(Object *obj)
--{
--    MicroDriveState *md = MICRODRIVE(obj);
--
--    ide_bus_init(&md->bus, sizeof(md->bus), DEVICE(obj), 0, 1);
--}
--
--static void microdrive_class_init(ObjectClass *oc, void *data)
--{
--    DeviceClass *dc = DEVICE_CLASS(oc);
--    PCMCIACardClass *pcc = PCMCIA_CARD_CLASS(oc);
--
--    pcc->attr_read = md_attr_read;
--    pcc->attr_write = md_attr_write;
--    pcc->common_read = md_common_read;
--    pcc->common_write = md_common_write;
--    pcc->io_read = md_common_read;
--    pcc->io_write = md_common_write;
--
--    dc->realize = microdrive_realize;
--    device_class_set_legacy_reset(dc, md_reset);
--    dc->vmsd = &vmstate_microdrive;
--}
--
--static const TypeInfo microdrive_type_info = {
--    .name = TYPE_MICRODRIVE,
--    .parent = TYPE_PCMCIA_CARD,
--    .instance_size = sizeof(MicroDriveState),
--    .instance_init = microdrive_init,
--    .abstract = true,
--    .class_init = microdrive_class_init,
--};
--
--static void microdrive_register_types(void)
--{
--    type_register_static(&microdrive_type_info);
--    type_register_static(&dscm1xxxx_type_info);
--}
--
--type_init(microdrive_register_types)
-diff --git a/hw/ide/Kconfig b/hw/ide/Kconfig
-index 6dfc5a21292..2e22b677da3 100644
---- a/hw/ide/Kconfig
-+++ b/hw/ide/Kconfig
-@@ -43,12 +43,6 @@ config IDE_VIA
-     bool
-     select IDE_PCI
++``-portrait`` and ``-rotate`` (since 9.2)
++'''''''''''''''''''''''''''''''''''''''''
++
++The ``-portrait`` and ``-rotate`` options were documented as only
++working with the PXA LCD device, and all the machine types using
++that display device were removed in 9.2, so these options also
++have been dropped.
++
++These options were intended to simulate a mobile device being
++rotated by the user, and had three effects:
++
++* the display output was rotated by 90, 180 or 270 degrees
++* the mouse/trackpad input was rotated the opposite way
++* the machine model would signal to the guest about its
++  orientation
++
++Of these three things, the input-rotation was coded without being
++restricted to boards which supported the full set of device-rotation
++handling, so in theory the options were usable on other machine models
++to produce an odd effect (rotating input but not display output). But
++this was never intended or documented behaviour, so we have dropped
++the options along with the machine models they were intended for.
  
--config MICRODRIVE
--    bool
--    select IDE_BUS
--    select IDE_DEV
--    depends on PCMCIA
+ User-mode emulator command line arguments
+ -----------------------------------------
+diff --git a/include/sysemu/sysemu.h b/include/sysemu/sysemu.h
+index 5b4397eeb80..7ec419ce132 100644
+--- a/include/sysemu/sysemu.h
++++ b/include/sysemu/sysemu.h
+@@ -41,7 +41,6 @@ extern int graphic_height;
+ extern int graphic_depth;
+ extern int display_opengl;
+ extern const char *keyboard_layout;
+-extern int graphic_rotate;
+ extern int old_param;
+ extern uint8_t *boot_splash_filedata;
+ extern bool enable_mlock;
+diff --git a/system/globals.c b/system/globals.c
+index d602a04fa28..84ce943ac96 100644
+--- a/system/globals.c
++++ b/system/globals.c
+@@ -40,7 +40,6 @@ int autostart = 1;
+ int vga_interface_type = VGA_NONE;
+ bool vga_interface_created;
+ Chardev *parallel_hds[MAX_PARALLEL_PORTS];
+-int graphic_rotate;
+ QEMUOptionRom option_rom[MAX_OPTION_ROMS];
+ int nb_option_roms;
+ int old_param;
+diff --git a/system/vl.c b/system/vl.c
+index fe547ca47c2..e83b3b2608b 100644
+--- a/system/vl.c
++++ b/system/vl.c
+@@ -2910,17 +2910,6 @@ void qemu_init(int argc, char **argv)
+                 nographic = true;
+                 dpy.type = DISPLAY_TYPE_NONE;
+                 break;
+-            case QEMU_OPTION_portrait:
+-                graphic_rotate = 90;
+-                break;
+-            case QEMU_OPTION_rotate:
+-                graphic_rotate = strtol(optarg, (char **) &optarg, 10);
+-                if (graphic_rotate != 0 && graphic_rotate != 90 &&
+-                    graphic_rotate != 180 && graphic_rotate != 270) {
+-                    error_report("only 90, 180, 270 deg rotation is available");
+-                    exit(1);
+-                }
+-                break;
+             case QEMU_OPTION_kernel:
+                 qdict_put_str(machine_opts_dict, "kernel", optarg);
+                 break;
+diff --git a/ui/input.c b/ui/input.c
+index dc745860f48..7ddefebc439 100644
+--- a/ui/input.c
++++ b/ui/input.c
+@@ -174,37 +174,6 @@ void qmp_input_send_event(const char *device,
+     qemu_input_event_sync();
+ }
+ 
+-static int qemu_input_transform_invert_abs_value(int value)
+-{
+-  return (int64_t)INPUT_EVENT_ABS_MAX - value + INPUT_EVENT_ABS_MIN;
+-}
 -
- config AHCI
-     bool
-     select IDE_BUS
-diff --git a/hw/ide/meson.build b/hw/ide/meson.build
-index d09705cac03..90ea8614233 100644
---- a/hw/ide/meson.build
-+++ b/hw/ide/meson.build
-@@ -13,4 +13,3 @@ system_ss.add(when: 'CONFIG_IDE_PCI', if_true: files('pci.c'))
- system_ss.add(when: 'CONFIG_IDE_PIIX', if_true: files('piix.c', 'ioport.c'))
- system_ss.add(when: 'CONFIG_IDE_SII3112', if_true: files('sii3112.c'))
- system_ss.add(when: 'CONFIG_IDE_VIA', if_true: files('via.c'))
--system_ss.add(when: 'CONFIG_MICRODRIVE', if_true: files('microdrive.c'))
+-static void qemu_input_transform_abs_rotate(InputEvent *evt)
+-{
+-    InputMoveEvent *move = evt->u.abs.data;
+-    switch (graphic_rotate) {
+-    case 90:
+-        if (move->axis == INPUT_AXIS_X) {
+-            move->axis = INPUT_AXIS_Y;
+-        } else if (move->axis == INPUT_AXIS_Y) {
+-            move->axis = INPUT_AXIS_X;
+-            move->value = qemu_input_transform_invert_abs_value(move->value);
+-        }
+-        break;
+-    case 180:
+-        move->value = qemu_input_transform_invert_abs_value(move->value);
+-        break;
+-    case 270:
+-        if (move->axis == INPUT_AXIS_X) {
+-            move->axis = INPUT_AXIS_Y;
+-            move->value = qemu_input_transform_invert_abs_value(move->value);
+-        } else if (move->axis == INPUT_AXIS_Y) {
+-            move->axis = INPUT_AXIS_X;
+-        }
+-        break;
+-    }
+-}
+-
+ static void qemu_input_event_trace(QemuConsole *src, InputEvent *evt)
+ {
+     const char *name;
+@@ -340,11 +309,6 @@ void qemu_input_event_send_impl(QemuConsole *src, InputEvent *evt)
+ 
+     qemu_input_event_trace(src, evt);
+ 
+-    /* pre processing */
+-    if (graphic_rotate && (evt->type == INPUT_EVENT_KIND_ABS)) {
+-            qemu_input_transform_abs_rotate(evt);
+-    }
+-
+     /* send event */
+     s = qemu_input_find_handler(1 << evt->type, src);
+     if (!s) {
+diff --git a/qemu-options.hx b/qemu-options.hx
+index d94e2cbbaeb..d013742e4a3 100644
+--- a/qemu-options.hx
++++ b/qemu-options.hx
+@@ -2377,22 +2377,6 @@ SRST
+         pick the first available. (Since 2.9)
+ ERST
+ 
+-DEF("portrait", 0, QEMU_OPTION_portrait,
+-    "-portrait       rotate graphical output 90 deg left (only PXA LCD)\n",
+-    QEMU_ARCH_ALL)
+-SRST
+-``-portrait``
+-    Rotate graphical output 90 deg left (only PXA LCD).
+-ERST
+-
+-DEF("rotate", HAS_ARG, QEMU_OPTION_rotate,
+-    "-rotate <deg>   rotate graphical output some deg left (only PXA LCD)\n",
+-    QEMU_ARCH_ALL)
+-SRST
+-``-rotate deg``
+-    Rotate graphical output some deg left (only PXA LCD).
+-ERST
+-
+ DEF("vga", HAS_ARG, QEMU_OPTION_vga,
+     "-vga [std|cirrus|vmware|qxl|xenfb|tcx|cg3|virtio|none]\n"
+     "                select video card type\n", QEMU_ARCH_ALL)
 -- 
 2.34.1
 

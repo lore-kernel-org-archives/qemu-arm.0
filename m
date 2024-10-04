@@ -1,169 +1,153 @@
-Received: by 2002:a17:504:5965:b0:1be9:327d:8ee3 with SMTP id xe5csp475585njb;
-        Fri, 26 Jul 2024 06:46:22 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCW4kmMdy93dHEXu5a+3pMv+QSEHXtER55dVkVYRHs7y29MdjkSpBuyhnJWLv+T4Uam3DF/qHuTPvkVwUuqo6NvZyhAdLJOg
-X-Google-Smtp-Source: AGHT+IHZxXykfdgUlwc5FhcxFUpeu74xdrxM7gicY2AKtaOTMrZ5BghmWnb9mZFka2WFcOxlpJXZ
-X-Received: by 2002:a05:6830:6486:b0:709:3b82:7680 with SMTP id 46e09a7af769-7093b827b7bmr1773134a34.19.1722001582124;
-        Fri, 26 Jul 2024 06:46:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1722001582; cv=none;
-        d=google.com; s=arc-20160816;
-        b=1GF/h9j1vdb/UKh9M/h4FyxSUEDao6Y3MPIswRRHp753WrqrTuPsjeK8RjUSgYYA9P
-         I+ikGgqHVBlcL8W2RmiZKnCVpPBdmQjY6huxWlWPiGTzXlaI7zqKRBd/f1VY/D+qnzIa
-         dV89ifZUVAh3BmaxrkCTlJvdi5NpY9imkFfuQU1H+ov3bbdTVFTZVirK0JBT8NNeS/E0
-         xhLElED+SfZkAzScYR11L1liuNwBGPawgoCLdMoiOEOjm0Pud75zdwN4qGAce3n84xkn
-         vfz8KZlZEU0VxMtpNQGvsv8EhJyR85igmzEhFjopPsz/RwyeMiTZQmN8RKJsmp610nHj
-         6gTg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=Im4JjI8yzxxn9wQq5bZQLL26rZjo/9QxJ6+zUl4DQ7s=;
-        fh=+JUQlqeb+WOWoY8tr4tplfLgDiP2lWYvcRFLGxWHojE=;
-        b=eIfIAIhco31ZzZp9gVsVve+WSMUEcg56CK+/VFuHfasV2y2WlzdLNMkHQu+I8F/r1C
-         5mXP28KfMPLnLq86PILnU/7gTyhF5xu+c4y5Wv6zc7YYgsjX6s1Ohrw9g/wZ32rPC35r
-         xXIegALCz5uaQutJOTsAXq+50EexzJBIdNQl9SVxM/b0teEyraBT6dXOdT+OhnvXHQ8Q
-         OvMFD/s7o8lw7ke8mOW1Y16ot5kRgbNDkp0beIktE7H8MyoUC2k5AtzWmcAF/wfLqQv9
-         iZ89p0D7l5VrkV5hWrQ8z17MRlMCLWe8QQpjFZJEDLVgriPZyEg4a/thkvFZc8ce1WCD
-         Rfew==;
+Received: by 2002:a17:505:c89:b0:1be9:327d:8ee3 with SMTP id hp9csp540759njb;
+        Fri, 4 Oct 2024 09:00:09 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCXEl3s4dRXUBihWb2Hcltk/pGIhjJy/W2ASCfvmQFE9/6+GGMl2nK5SN47jJX+yM5jrC+9RN+2utwzECQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IFdie2iqHNejTisUdEdgTum8geX6Coov00txvOZzlIV3k99ZrrLNDg81C8Tl/SGEYpc/5GE
+X-Received: by 2002:a17:902:fc46:b0:20b:8bd0:7387 with SMTP id d9443c01a7336-20bff1ca475mr42812455ad.52.1728057609567;
+        Fri, 04 Oct 2024 09:00:09 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1728057609; cv=pass;
+        d=google.com; s=arc-20240605;
+        b=jVFGCsrNH79BrPV9pe1+c4Rr2qQhi+C9kS6xQhd1UhiVjBwGOxEjsdEP7ocRJIF01o
+         0AS6hA382+b/4TDIr+OJaCwtT/ucSwvx8TCgMdYlTb1Rt62mus+CCz0Qmen1l0OVHEFh
+         YGkPU9eJFsCbBmGaWWddXrCCrL0aNMbyQYCoI5TWh6KgIeV34/uyUZ64vlRBi1dMrYcb
+         hE+w42OjatJ0u3vs4pzDezKaovl9NsrU86+KDYBZs6gso2nkB1Gx2W5gzh3HolqLNjdQ
+         4Jb0XE7g0hBeQEUeK2gLtEeW6an0I/JsH1hBOCc+LcykG+ePRE4eoVKQar8vutGNrQ5J
+         Z52w==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=in-reply-to:content-disposition:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:references:message-id:subject:cc
+         :to:from:dkim-signature:date;
+        bh=ivG9THqCQQnFANZXsktsXbgeggmF80l3fARD79rk4OU=;
+        fh=cnZePdd2WjKvlD15FlaqeuAmMFOuyJuZdctvaOYhbaw=;
+        b=PD8ZkE44KAmRkalCa9Im2elg2FF+MFY9zx5pWPM8yf/EKnyWja+jZcQmMKbfKLxhVd
+         Dtw1MeL9S9z7LbteAHZZ6I9yBvBvtU1XlNeRT0Rh9420sNb0s2WrnlNQYWURHifvci5v
+         tqeWytGuKTqWiYXS2GMuNM/1Plel36lepX6OycBGYnyHgBcbPnL/TX20m2UvBUwE/xgZ
+         blkAPlcSPCZdC+V3ZDjFXolZUqXUSRu/ukgbn87049vr07LbAWRFz1/at4mEFo6wvuov
+         WUEWhtKHGWMiYx45Ti0EZw2aH/Ed7HscrsrRWf4vV1/sLQty56VSAEhuKMkzDKOBz+Tx
+         mA0A==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DUyWGN4r;
-       spf=pass (google.com: domain of crosa@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=crosa@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <crosa@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id af79cd13be357-7a1d7445555si408833985a.248.2024.07.26.06.46.21
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@linux.dev header.s=key1 header.b=VBEdW6Td;
+       arc=pass (i=1 spf=pass spfdomain=linux.dev dkim=pass dkdomain=linux.dev dmarc=pass fromdomain=linux.dev);
+       spf=pass (google.com: domain of kvm+bounces-27983-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="kvm+bounces-27983-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linux.dev
+Return-Path: <kvm+bounces-27983-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [2604:1380:45e3:2400::1])
+        by mx.google.com with ESMTPS id d9443c01a7336-20c138d08a0si472045ad.152.2024.10.04.09.00.09
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 26 Jul 2024 06:46:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of crosa@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        Fri, 04 Oct 2024 09:00:09 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm+bounces-27983-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) client-ip=2604:1380:45e3:2400::1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DUyWGN4r;
-       spf=pass (google.com: domain of crosa@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=crosa@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1722001581;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=Im4JjI8yzxxn9wQq5bZQLL26rZjo/9QxJ6+zUl4DQ7s=;
-	b=DUyWGN4r7r24U/jgytdlvtFkzY/L1XcLy++0wOGMX+BJG+/kq7xGwmCrb8PZIB1e8ht246
-	UCkRc3fOkzjmaX+FRsg6G8KDKggzY6TNbDl8OOngQ68EZhRRw86eb6uVNqg5JcAvzSSqx8
-	UIp5xxCEGA7BsoSHADAUqKZ0okawMc8=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-170-dGOgJqcsNGmzR9AyTJmYdQ-1; Fri,
- 26 Jul 2024 09:46:17 -0400
-X-MC-Unique: dGOgJqcsNGmzR9AyTJmYdQ-1
-Received: from mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.40])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+       dkim=pass header.i=@linux.dev header.s=key1 header.b=VBEdW6Td;
+       arc=pass (i=1 spf=pass spfdomain=linux.dev dkim=pass dkdomain=linux.dev dmarc=pass fromdomain=linux.dev);
+       spf=pass (google.com: domain of kvm+bounces-27983-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="kvm+bounces-27983-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linux.dev
+Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id B640C19E5770;
-	Fri, 26 Jul 2024 13:46:07 +0000 (UTC)
-Received: from p1.localdomain.com (unknown [10.22.17.77])
-	by mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 2A4F71955D42;
-	Fri, 26 Jul 2024 13:45:42 +0000 (UTC)
-From: Cleber Rosa <crosa@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Thomas Huth <thuth@redhat.com>,
-	Beraldo Leal <bleal@redhat.com>,
-	Sriram Yagnaraman <sriram.yagnaraman@ericsson.com>,
-	David Woodhouse <dwmw2@infradead.org>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Leif Lindholm <quic_llindhol@quicinc.com>,
-	Jiaxun Yang <jiaxun.yang@flygoat.com>,
-	kvm@vger.kernel.org,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
-	Wainer dos Santos Moschetta <wainersm@redhat.com>,
-	qemu-arm@nongnu.org,
-	Radoslaw Biernacki <rad@semihalf.com>,
-	Cleber Rosa <crosa@redhat.com>,
-	Paul Durrant <paul@xen.org>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Akihiko Odaki <akihiko.odaki@daynix.com>
-Subject: [PATCH 13/13] Avocado tests: allow for parallel execution of tests
-Date: Fri, 26 Jul 2024 09:44:38 -0400
-Message-ID: <20240726134438.14720-14-crosa@redhat.com>
-In-Reply-To: <20240726134438.14720-1-crosa@redhat.com>
-References: <20240726134438.14720-1-crosa@redhat.com>
+	by sv.mirrors.kernel.org (Postfix) with ESMTPS id D396428687B
+	for <alex.bennee@linaro.org>; Fri,  4 Oct 2024 16:00:08 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 57A0F1C7281;
+	Fri,  4 Oct 2024 15:53:10 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (1024-bit key) header.d=linux.dev header.i=@linux.dev header.b="VBEdW6Td"
+Received: from out-179.mta1.migadu.com (out-179.mta1.migadu.com [95.215.58.179])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7372C1C7262
+	for <kvm@vger.kernel.org>; Fri,  4 Oct 2024 15:53:07 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=95.215.58.179
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1728057189; cv=none; b=XjNhfYo8Ni4Gh4wcKZ9qdBRwQhGeoLXEmM8NyCWMtSWff0/JvHEgaLcIKIQfdIt3ajyOCpIgI3UXTiKx+u3I4GtJyXLix5ms8gm+CAqEyec8NhvGv+3gMbS177p/i0dcMZTTUMmFKGmRLc/k9/qXxRQRxaF0zyU+HYHNPNGmYXk=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1728057189; c=relaxed/simple;
+	bh=dk8hBzieIPbzvrhpctgGmM0IsPgACCkbqqNlKJy6X7g=;
+	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
+	 Content-Type:Content-Disposition:In-Reply-To; b=lV9FIjESGd1E8VyQYSQX+E3RrJgFu0tStGK2J4rBLmt7UwpetJk5+cdCCaygpMjCGrXyqJ9png/SnkPGThDiRAzdGzeZUg5jgiWKvkMSLz4walEGELvEYeKW7trZnhjx/AlcOMb/OZTkGGMwQfaPfB44QI0R/dLIUWFKLvNuZWM=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linux.dev; spf=pass smtp.mailfrom=linux.dev; dkim=pass (1024-bit key) header.d=linux.dev header.i=@linux.dev header.b=VBEdW6Td; arc=none smtp.client-ip=95.215.58.179
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linux.dev
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=linux.dev
+Date: Fri, 4 Oct 2024 08:52:57 -0700
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.dev; s=key1;
+	t=1728057185;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=ivG9THqCQQnFANZXsktsXbgeggmF80l3fARD79rk4OU=;
+	b=VBEdW6TdJq+I0Nni5DzNlmiLE4pE738CbB+0OTgiHbZpgUoJi/Je1pnPd+L3nCltngGK6V
+	xKB4MNhUyy6gW7Y2Vp3j9rX5aK/0N45w1qn2+EmYweF+nBjIzxWopsR+3Lw9DCb0FB0nKd
+	dzkQ+bGU/2kC6D0PzBHZVzRUWj1GLfY=
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: Oliver Upton <oliver.upton@linux.dev>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: Ahmad Fatoum <a.fatoum@pengutronix.de>, qemu-arm@nongnu.org,
+	kvmarm@lists.linux.dev, kvm@vger.kernel.org,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+	Enrico Joerns <ejo@pengutronix.de>
+Subject: Re: [BUG] ARM64 KVM: Data abort executing post-indexed LDR on MMIO
+ address
+Message-ID: <ZwAPWc-v9GhMbERF@linux.dev>
+References: <89f184d6-5b61-4c77-9f3b-c0a8f6a75d60@pengutronix.de>
+ <CAFEAcA_Yv2a=XCKw80y9iyBRoC27UL6Sfzgy4KwFDkC1gbzK7w@mail.gmail.com>
+ <a4c06f55-28ec-4620-b594-b7ff0bb1e162@pengutronix.de>
+ <CAFEAcA9F3AR-0OCKDy__eVBJRMi80G7bWNfANGZRR2W8iMhfJA@mail.gmail.com>
+Precedence: bulk
+X-Mailing-List: kvm@vger.kernel.org
+List-Id: <kvm.vger.kernel.org>
+List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.40
-X-TUID: iqvBZB8xpop8
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAFEAcA9F3AR-0OCKDy__eVBJRMi80G7bWNfANGZRR2W8iMhfJA@mail.gmail.com>
+X-Migadu-Flow: FLOW_OUT
+X-TUID: P/0jbamfba+J
 
-The updated Avocado version allows for the execution of tests in
-parallel.
+On Fri, Oct 04, 2024 at 01:10:48PM +0100, Peter Maydell wrote:
+> On Fri, 4 Oct 2024 at 12:51, Ahmad Fatoum <a.fatoum@pengutronix.de> wrote:
+> > > Strictly speaking this is a missing feature in KVM (in an
+> > > ideal world it would let you do MMIO with any instruction
+> > > that you could use on real hardware).
+> >
+> > I assume that's because KVM doesn't want to handle interruptions
+> > in the middle of such "composite" instructions?
+> 
+> It's because with the ISV=1 information in the ESR_EL2,
+> KVM has everything it needs to emulate the load/store:
+> it has the affected register number, the data width, etc. When
+> ISV is 0, simulating the load/store would require KVM
+> to load the actual instruction word, decode it to figure
+> out what kind of load/store it was, and then emulate
+> its behaviour. The instruction decode would be complicated
+> and if done in the kernel would increase the attack surface
+> exposed to the guest.
 
-While on a CI environment it may not be a good idea to increase the
-parallelization level in a single runner, developers may leverage that
-on specific CI runners or on their development environments.
+On top of that, the only way to 'safely' fetch the instruction would be
+to pause all vCPUs in the VM to prevent the guest from remapping the
+address space behind either KVM or the VMM's back.
 
-This also multiplies the timeout for each test accordingly.  The
-reason is that more concurrency can lead to less resources, and less
-resources can lead to some specific tests taking longer to complete
-and then time out.  The timeout factor being used here is very
-conservative (being equal to the amount of parallel tasks).  The worst
-this possibly oversized timeout value can do is making users wait a
-bit longer for the job to finish if a test hangs.
+> > static inline u32 __raw_readl(const volatile void __iomem *addr)
+> > {
+> >         return *(const volatile u32 __force *)addr;
+> > }
+> >
+> > I wouldn't necessarily characterize this as strange, we just erroneously
+> > assumed that with strongly ordered memory for MMIO regions and volatile
+> > accesses we had our bases covered and indeed we did until the bases
+> > shifted to include hardware-assisted virtualization. :-)
 
-Overall, users can expect a much quicker turnaround on most systems
-with a value such as 8 on a 12 core machine.
+This has nothing to do with ordering and everything to do with the
+instruction set && what your compiler decided to emit.
 
-Signed-off-by: Cleber Rosa <crosa@redhat.com>
----
- docs/devel/testing.rst | 12 ++++++++++++
- tests/Makefile.include |  6 +++++-
- 2 files changed, 17 insertions(+), 1 deletion(-)
+> I'm not a fan of doing MMIO access via 'volatile' in C code,
+> personally -- I think the compiler has a tendency to do more
+> clever recombination than you might actually want, because
+> it doesn't know that the thing you're accessing isn't RAM-like.
 
-diff --git a/docs/devel/testing.rst b/docs/devel/testing.rst
-index 23d3f44f52..5600123743 100644
---- a/docs/devel/testing.rst
-+++ b/docs/devel/testing.rst
-@@ -983,6 +983,18 @@ of Avocado or ``make check-avocado``, and can also be queried using:
- 
-   pyvenv/bin/avocado list tests/avocado
- 
-+To run tests in parallel, the ``AVOCADO_PARALLEL`` environment
-+variable can be defined with a value different than ``1`` (its default
-+value).  Example:
-+
-+ .. code::
-+
-+  make check-avocado AVOCADO_PARALLEL=4
-+
-+Please exercise care when using parallel execution with the QEMU
-+Avocado tests as a higher system load can cause time sensitive tests
-+to timeout and be interrupted.
-+
- Manual Installation
- ~~~~~~~~~~~~~~~~~~~
- 
-diff --git a/tests/Makefile.include b/tests/Makefile.include
-index 6618bfed70..545b5155f9 100644
---- a/tests/Makefile.include
-+++ b/tests/Makefile.include
-@@ -94,6 +94,9 @@ TESTS_RESULTS_DIR=$(BUILD_DIR)/tests/results
- ifndef AVOCADO_TESTS
- 	AVOCADO_TESTS=tests/avocado
- endif
-+ifndef AVOCADO_PARALLEL
-+	AVOCADO_PARALLEL=1
-+endif
- # Controls the output generated by Avocado when running tests.
- # Any number of command separated loggers are accepted.  For more
- # information please refer to "avocado --help".
-@@ -141,7 +144,8 @@ check-avocado: check-venv $(TESTS_RESULTS_DIR) get-vm-images
-             --show=$(AVOCADO_SHOW) run --job-results-dir=$(TESTS_RESULTS_DIR) \
-             $(if $(AVOCADO_TAGS),, --filter-by-tags-include-empty \
- 			--filter-by-tags-include-empty-key) \
--            $(AVOCADO_CMDLINE_TAGS) \
-+            $(AVOCADO_CMDLINE_TAGS) --max-parallel-tasks=$(AVOCADO_PARALLEL) \
-+			-p timeout_factor=$(AVOCADO_PARALLEL) \
-             $(if $(GITLAB_CI),,--failfast) $(AVOCADO_TESTS), \
-             "AVOCADO", "tests/avocado")
- 
++1
+
 -- 
-2.45.2
+Thanks,
+Oliver

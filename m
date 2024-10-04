@@ -1,479 +1,250 @@
-Received: by 2002:a17:505:c89:b0:1be9:327d:8ee3 with SMTP id hp9csp214449njb;
-        Thu, 3 Oct 2024 21:18:03 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXbILd0pV7DDb1mt7KUqSQiiHGA0LhpYeSVzxoxm49mQelVD4ipmr8/ELfusPv4B/R/LslsO/JMypbGPg==@linaro.org
-X-Google-Smtp-Source: AGHT+IGoQoCwyvpFgsTwhXsPU6hSdt1UW3Pks3BqPE4zl1K+xUJoF9OCS+2dFkqk4hjFdVRAHZzZ
-X-Received: by 2002:a05:622a:1101:b0:458:2764:37d5 with SMTP id d75a77b69052e-45d9ba20615mr19093291cf.6.1728015483333;
-        Thu, 03 Oct 2024 21:18:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1728015483; cv=none;
+Received: by 2002:a17:505:c89:b0:1be9:327d:8ee3 with SMTP id hp9csp258723njb;
+        Thu, 3 Oct 2024 23:44:30 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUZb2o0rIDLgzYKgzYrpBsUbvVOoLnaggRnmb3jngCfHWfeAw743EVPvpdJ2TcxRBlhPBrWjoxj5olEiA==@linaro.org
+X-Google-Smtp-Source: AGHT+IGQbiNnZCfZ0pGH4fSgjhZUp6ebHy7VULr7e9BeIGjUUHsx8Ndo9EOXpMj+hIfofzlqNuHv
+X-Received: by 2002:a05:690c:d8d:b0:6e2:1336:55d8 with SMTP id 00721157ae682-6e2c6ff029amr17682437b3.10.1728024270334;
+        Thu, 03 Oct 2024 23:44:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1728024270; cv=none;
         d=google.com; s=arc-20240605;
-        b=C/cvcmaeBIP5BCg1Yf5dJWUQbZ0Bj0n+WdkbBC2s/4NRpvJv9+WN33zYeikx3lksEF
-         VVwZZ8Upbxnd+iTFs0szmEqe6pSJxOfsm/OjZge5uvpdaOHLYkj1L+CXvMkrxSJNzZ4L
-         mX6Ywdxm+x9bdxc8S26t4Dq8xSIBTismZlnm1QptMmhH1qxzWd8yWe74BfQ26QOGYj2d
-         4F16n9LAFlt4LAjT8/CVkDDeXXfpu66rbZUa+H45wwuYERpafDxvtkAOd14BCzAAOnEe
-         337WrCD9+8EkpQC94wsuUQlmpfJFRXnb+iGqO1a+o/Y12+obH+daixUwKntgmsxKuB7+
-         OLCQ==
+        b=NbWNluexD0yoNPYjYKncvf54tKvxpX2uZmYV70CoGlvOKE7ifbb6ORT/BuTmzbyhgy
+         ptipyYFguaRfolpLUYDvtW37DrmhUYFKtRAqF5OSDshd9VeCFGPRHorlu1Jtbjbgdd0j
+         /FEgyr1zOSYhfr5vMB1OO2f7Z4BSFatN8tErzUyoQhBsKs7slq/JpiWMhrtGW+o/D6B3
+         OzQETuvFw4mv49rApL6mEWAAPSZXSkGY7UEeEjWmdsPzbAJS0j+NNxKbMRFhPL2hrX/0
+         sL8ntDfD5ZQI6kfmWdWY0m5ZCY6bZ7BF4ozLNPLFdDU3Ij+/KTj0EfPKeHnV/9O/qKSt
+         mhSQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:content-language:references:cc:to:subject:from
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=BnrDyQLhR0U+YMI1a3HCP/1jOkmY5FsSDonFN4KJZLs=;
-        fh=Qu6idoTZTKKE9LUhweiY6E2q+SmObFT6XlwOdIVoC+s=;
-        b=gougJznj/zx9XFr2xaqY5t35nAiN5E5hvAr9Mv/MRgapgO8Y/XM9DQvrwcQTrQ3y7d
-         OBy1yhdk8qCLrJeO1jk0wuNMABxZZG+aheASXi50/madq79I2EA/w5jTuL1bgB+xI9Mv
-         Y/YhD+W665+7IFjXvwTfIUULQ7z5BTxcjPjSYdm3ROagZnDaqm6jqPDP2sJSU0mcwW6C
-         C6zJcBbecyj23hjfISyWsAKy0phXKgfpvdpbse1bt1eNzzksfaVN+0me4TOd/J6MZNC6
-         pBVfyOjD5Fyk7vhQYA0/l8Xn3frX1f5Xa8uyPS5ZFG+uXInFXkp6pAOvkIjbBAYcowpo
-         YeEw==;
+        h=content-transfer-encoding:content-language:in-reply-to:autocrypt
+         :from:references:cc:to:subject:user-agent:mime-version:date
+         :message-id:dkim-signature;
+        bh=veCQknW8c7X9RGou6gaB6C4La2rZyiyIy66HwbF0seM=;
+        fh=431BP3Qy/exK5NGKt6+izvuHGGw32KZkMFd98YWsdtQ=;
+        b=MOGUOUNji32ws9DB0NeCJkqyEojLrA1/cccNTYZd+MNQBIzwUrT9ItnKl7AIalYlu4
+         Lo2Tai1LotQdWmnG16gGFGv6t+/r09Pw3RpcudNAbqDoRu14G0ouPD1w0mIoYTIw+NPZ
+         JXEf9KRjWjEDAAIm7PD17baUSokO80cFEhrqo4ajC1j+WrdUZAvfeePWI5ZJlDP59faS
+         FLIKuHaPGlqWBDzG0ReRSCThze7KmDBnxqzUzb4vdvquBt3WF3awBrGRvcCMm0xM2zWZ
+         RkLlVY6mNmSenBem3KMsCulMNWq5aD+JYT6B91A1bt1F/kk0QgTCv3Awfr/Pjr73RNHx
+         n62w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=1P3t6I1B;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-45d9524db56si25611791cf.36.2024.10.03.21.18.03
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MZkMSHJg;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <thuth@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id 00721157ae682-6e2bd65ce11si19029007b3.394.2024.10.03.23.44.30
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 03 Oct 2024 21:18:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 03 Oct 2024 23:44:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=1P3t6I1B;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1swZko-0000QH-Mu; Fri, 04 Oct 2024 00:17:24 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <akihiko.odaki@daynix.com>)
- id 1swZkj-0000Pg-HK
- for qemu-devel@nongnu.org; Fri, 04 Oct 2024 00:17:17 -0400
-Received: from mail-io1-xd33.google.com ([2607:f8b0:4864:20::d33])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <akihiko.odaki@daynix.com>)
- id 1swZkf-0001KW-Ui
- for qemu-devel@nongnu.org; Fri, 04 Oct 2024 00:17:17 -0400
-Received: by mail-io1-xd33.google.com with SMTP id
- ca18e2360f4ac-8323dddfca2so96795039f.2
- for <qemu-devel@nongnu.org>; Thu, 03 Oct 2024 21:17:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1728015432; x=1728620232;
- darn=nongnu.org; 
- h=content-transfer-encoding:in-reply-to:content-language:references
- :cc:to:subject:from:user-agent:mime-version:date:message-id:from:to
- :cc:subject:date:message-id:reply-to;
- bh=BnrDyQLhR0U+YMI1a3HCP/1jOkmY5FsSDonFN4KJZLs=;
- b=1P3t6I1BSZQ+ruNRha+MQq78mXY42NgtUJJog9+yal8adw6SXP7VydYpQhAJv3rAM/
- +86RguQ8sMrtFeu1oBoeUBf3+wAtVqO95Vy5DvMwzLlwf/zg+ceUCt7ziN5s/oWcle/E
- 6NJ43Fv0JzkUwQ0U/jTgSFNLlFRJokuGtux+3e7UhGwwHHOyw4h4o5KB7IqTSCz9yHPN
- xLPHyEFqUvyZV4WYBqOdGrajXhHUPHtXCtyXr9IhbeQGESbumggifZR2VVK/MbFSExyO
- 73XYx/0DNr0mNQp5OKxStGeDsbMxjZ4Q8HvDi4GooYs864Wz1v3HHT5s9WPpn2LFkp68
- sJEg==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MZkMSHJg;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1728024269;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+	bh=veCQknW8c7X9RGou6gaB6C4La2rZyiyIy66HwbF0seM=;
+	b=MZkMSHJgzIZjtsjLW6b97KughZ4E/vlE1YBNKUQR7i03quQjPeINkjyi2vb5pmwXLuwO5V
+	ByIRR0bESJgDzcc2vEkkZSqQJf+GzE9uh+PMRgS1pNjMh/Lpn1Jpa9w4R5X403GHAVgYS+
+	CtUHUeKANyT+VIChzbMvLTqT+9v2GkE=
+Received: from mail-ej1-f71.google.com (mail-ej1-f71.google.com
+ [209.85.218.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-639-cz3kPBuDMISUWKtd997UuA-1; Fri, 04 Oct 2024 02:44:28 -0400
+X-MC-Unique: cz3kPBuDMISUWKtd997UuA-1
+Received: by mail-ej1-f71.google.com with SMTP id a640c23a62f3a-a8a9094c973so100920366b.2
+        for <alex.bennee@linaro.org>; Thu, 03 Oct 2024 23:44:27 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1728015432; x=1728620232;
- h=content-transfer-encoding:in-reply-to:content-language:references
- :cc:to:subject:from:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=BnrDyQLhR0U+YMI1a3HCP/1jOkmY5FsSDonFN4KJZLs=;
- b=HtHsJSI7KPcoj6W4Wqp09f0Y9RE4aMWqJE+MBv2Wyehp8Ca/3H5ykrWFGCYYXskL/v
- BU1o1h0CH4v+wA2aH8BDQheD5Ri4Cvh0mzDEgHv85LSBLa4ynQRRW7ROfo/L8Yo7urwY
- ECQCtCI0knWqfvWUaKaOLWryIKg3ZeWrUfkVVG0qEwqTySckwfuhYKM3WJpt42LsYQvq
- 26IauvsFn0jpfwuL4g++qpJ7vVfj5U2nk5jgsGUZIeCvFdJjIiwCKwDCnDkhSxcMP89B
- EKNHun34Rnyf98nt+Ik2lYL0MK3tOZl4NpkdSEuLV1Lo653073c37MmH35uCpTLC/Gwu
- T0Iw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCX5nmiglFBIYmOWj3LXyoKmNRBsAepdE6yEhLjLrBfTrrMiWyXs1y+m+mxHqNOAOZ1XVxI1nRK+Pv9S@nongnu.org
-X-Gm-Message-State: AOJu0Yy2IWIgDC1wIX7svxHgiW5aWQY5bggW4BsAh469od8cr1vbun2t
- V/tPtBQkh7o6fMhW9QfBXPHxZCq7mlQzCsQK6j/MzGAmpaQtyfoeLjfY5zoCIgk=
-X-Received: by 2002:a05:6e02:2195:b0:3a3:6ada:9a62 with SMTP id
- e9e14a558f8ab-3a375976d4dmr16624715ab.1.1728015432467; 
- Thu, 03 Oct 2024 21:17:12 -0700 (PDT)
-Received: from [157.82.207.107] ([157.82.207.107])
- by smtp.gmail.com with ESMTPSA id
- 41be03b00d2f7-7e9dcb4fc47sm1559411a12.71.2024.10.03.21.17.05
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 03 Oct 2024 21:17:11 -0700 (PDT)
-Message-ID: <ab82d2b3-4b06-4f9e-b58a-ea9a5d6c5000@daynix.com>
-Date: Fri, 4 Oct 2024 13:17:04 +0900
+        d=1e100.net; s=20230601; t=1728024267; x=1728629067;
+        h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+         :from:references:cc:to:subject:user-agent:mime-version:date
+         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=veCQknW8c7X9RGou6gaB6C4La2rZyiyIy66HwbF0seM=;
+        b=MpAonz0AWyv0u1HDS6dnAgyPPfpUMKfNcAlyr6AZN5t7KDf9DEfDsmHV7X6VrZqzPx
+         g0oJR9TWotSDeiO56v6btLm8AyNegjqVYAv3tUmn48noh53UBe/wngd4OsQu2rj5biHZ
+         MYVRQZfVGpF+ERCT2pw6UQwVMX82aRFqNY/rnkAshz4LQRz6OX+/sTjPdphGIXODvXJl
+         uIDhDKolwPKfuW6EQkgX2AW2cX++A/7KtoSBykC/S2po2TomC8ZP15NRV3f+pH5ofMON
+         NYA+a94uiSno5mRgdzKEaacBB4MN5qOl5koJ3eDVDUW6pRSfMIBi2MQqpr96nHU1ZZjw
+         vb+Q==
+X-Forwarded-Encrypted: i=1; AJvYcCWZb8Fg7k8v5/i8ii3f0PY5a38UHMmETp1ecyZxhhA44pK2QHL7WEWHh6HsCmiErI1jr+Ga/astEF1jmg==@linaro.org
+X-Gm-Message-State: AOJu0YwV8wJBj9IVo7wRE/UBDKxYu7aHznZVhaWqbHqMs1ufTJBRkQXM
+	w5vjgggTOxrDxIAF4HCFkTqatleP2HvjKgn3uVGGrferhHnY7giOCyIa/RPly2ltvXy7yhROaD2
+	DGQ00ghfw8Szg0rwcVV2yz0hbC/XjMZsGd2S6g5rcGGoWUN/ClOEcTg==
+X-Received: by 2002:a17:906:ee87:b0:a8d:250a:52a8 with SMTP id a640c23a62f3a-a991bce6124mr178706866b.3.1728024266939;
+        Thu, 03 Oct 2024 23:44:26 -0700 (PDT)
+X-Received: by 2002:a17:906:ee87:b0:a8d:250a:52a8 with SMTP id a640c23a62f3a-a991bce6124mr178703766b.3.1728024266456;
+        Thu, 03 Oct 2024 23:44:26 -0700 (PDT)
+Return-Path: <thuth@redhat.com>
+Received: from [192.168.0.7] (ip-109-42-49-143.web.vodafone.de. [109.42.49.143])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a9910287283sm180763866b.32.2024.10.03.23.44.24
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 03 Oct 2024 23:44:25 -0700 (PDT)
+Message-ID: <448beb47-c05f-40aa-a1a0-87ef27bfb494@redhat.com>
+Date: Fri, 4 Oct 2024 08:44:23 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-From: Akihiko Odaki <akihiko.odaki@daynix.com>
-Subject: Re: [PATCH v3 04/14] hw/display/apple-gfx: Adds configurable mode list
-To: Phil Dennis-Jordan <phil@philjordan.eu>, qemu-devel@nongnu.org
-Cc: agraf@csgraf.de, peter.maydell@linaro.org, pbonzini@redhat.com,
- rad@semihalf.com, quic_llindhol@quicinc.com, marcin.juszkiewicz@linaro.org,
- stefanha@redhat.com, mst@redhat.com, slp@redhat.com,
- richard.henderson@linaro.org, eduardo@habkost.net,
- marcel.apfelbaum@gmail.com, gaosong@loongson.cn, jiaxun.yang@flygoat.com,
- chenhuacai@kernel.org, kwolf@redhat.com, hreitz@redhat.com,
- philmd@linaro.org, shorne@gmail.com, palmer@dabbelt.com,
- alistair.francis@wdc.com, bmeng.cn@gmail.com, liwei1518@gmail.com,
- dbarboza@ventanamicro.com, zhiwei_liu@linux.alibaba.com, jcmvbkbc@gmail.com,
- marcandre.lureau@redhat.com, berrange@redhat.com, qemu-arm@nongnu.org,
- qemu-block@nongnu.org, qemu-riscv@nongnu.org
-References: <20240928085727.56883-1-phil@philjordan.eu>
- <20240928085727.56883-5-phil@philjordan.eu>
+Subject: Re: [PATCH 08/13] hw/xtensa/xtfpga: Replace memcpy()+tswap32() by
+ stl_endian_p()
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-devel@nongnu.org
+Cc: Mahmoud Mandour <ma.mandourr@gmail.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Alexandre Iooss <erdnaxe@crans.org>, Jason Wang <jasowang@redhat.com>,
+ Aleksandar Rikalo <arikalo@gmail.com>, Anton Johansson <anjo@rev.ng>,
+ Peter Maydell <peter.maydell@linaro.org>, Huacai Chen
+ <chenhuacai@kernel.org>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Sven Schnelle <svens@stackframe.org>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ qemu-arm@nongnu.org, Aurelien Jarno <aurelien@aurel32.net>,
+ Max Filippov <jcmvbkbc@gmail.com>, Paul Burton <paulburton@kernel.org>
+References: <20240930073450.33195-1-philmd@linaro.org>
+ <20240930073450.33195-9-philmd@linaro.org>
+ <257b0de0-6744-4ae8-a2c5-f05eec29a3f0@redhat.com>
+ <0c28a435-0af6-450f-8558-14dddc6cb6a6@linaro.org>
+ <a14cd43c-087b-4a5d-b036-39aa6a80e691@linaro.org>
+ <f20cebfe-027a-4664-82f0-3769c7047e38@linaro.org>
+ <aeb88605-989b-4c26-9371-15fbe44a9e3a@linaro.org>
+ <46ea20fd-c6bc-411a-b8e2-ab7179c00185@linaro.org>
+ <a1a67f7c-553c-42d4-b852-2cc26e7181a0@linaro.org>
+From: Thomas Huth <thuth@redhat.com>
+Autocrypt: addr=thuth@redhat.com; keydata=
+ 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
+In-Reply-To: <a1a67f7c-553c-42d4-b852-2cc26e7181a0@linaro.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Language: en-US
-In-Reply-To: <20240928085727.56883-5-phil@philjordan.eu>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: none client-ip=2607:f8b0:4864:20::d33;
- envelope-from=akihiko.odaki@daynix.com; helo=mail-io1-xd33.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: SDpncv9jazsv
+Content-Transfer-Encoding: 8bit
+X-TUID: b8atk2OAvm1L
 
-On 2024/09/28 17:57, Phil Dennis-Jordan wrote:
-> This change adds a property 'display_modes' on the graphics device
-> which permits specifying a list of display modes. (screen resolution
-> and refresh rate)
+On 03/10/2024 23.40, Philippe Mathieu-Daudé wrote:
+> On 3/10/24 23:34, Pierrick Bouvier wrote:
+>> On 10/3/24 14:31, Pierrick Bouvier wrote:
+>>> On 10/3/24 13:48, Philippe Mathieu-Daudé wrote:
+>>>> On 3/10/24 18:04, Pierrick Bouvier wrote:
+>>>>> On 10/3/24 09:02, Philippe Mathieu-Daudé wrote:
+>>>>>> On 30/9/24 16:32, Thomas Huth wrote:
+>>>>>>> On 30/09/2024 09.34, Philippe Mathieu-Daudé wrote:
+>>>>>>>> Replace a pair of memcpy() + tswap32() by stl_endian_p(),
+>>>>>>>> which also swap the value using target endianness.
+>>>>>>>>
+>>>>>>>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+>>>>>>>> ---
+>>>>>>>>      hw/xtensa/xtfpga.c | 6 ++----
+>>>>>>>>      1 file changed, 2 insertions(+), 4 deletions(-)
+>>>>>>>>
+>>>>>>>> diff --git a/hw/xtensa/xtfpga.c b/hw/xtensa/xtfpga.c
+>>>>>>>> index 228f00b045..521fe84b01 100644
+>>>>>>>> --- a/hw/xtensa/xtfpga.c
+>>>>>>>> +++ b/hw/xtensa/xtfpga.c
+>>>>>>>> @@ -438,11 +438,9 @@ static void xtfpga_init(const XtfpgaBoardDesc
+>>>>>>>> *board, MachineState *machine)
+>>>>>>>>                  const size_t boot_sz = TARGET_BIG_ENDIAN ?
+>>>>>>>> sizeof(boot_be)
+>>>>>>>>                                                           :
+>>>>>>>> sizeof(boot_le);
+>>>>>>>>                  uint8_t *boot = TARGET_BIG_ENDIAN ? boot_be : boot_le;
+>>>>>>>> -            uint32_t entry_pc = tswap32(entry_point);
+>>>>>>>> -            uint32_t entry_a2 = tswap32(tagptr);
+>>>>>>>> -            memcpy(boot + 4, &entry_pc, sizeof(entry_pc));
+>>>>>>>> -            memcpy(boot + 8, &entry_a2, sizeof(entry_a2));
+>>>>>>>> +            stl_endian_p(TARGET_BIG_ENDIAN, boot + 4, entry_point);
+>>>>>>>> +            stl_endian_p(TARGET_BIG_ENDIAN, boot + 8, tagptr);
+>>>>>>>
+>>>>>>> Why don't you simply use stl_p() here?
+>>>>>>
+>>>>>> We want to remove the tswap32() calls...
+>>>>>>
+>>>>>
+>>>>> I think is point is that you could directly use stl_be_p, instead of
+>>>>> stl_endian_p(TARGET_BIT_ENDIAN, ...).
+>>>>
+>>>> TARGET_BIG_ENDIAN is defined as 0 on little endian, and 1 on big one.
+>>>>
+>>>> The following change isn't worth it:
+>>>>
+>>>>      if (TARGET_BIG_ENDIAN) {
+>>>>        stl_be_p(boot + 8, tagptr);
+>>>>      } else {
+>>>>        stl_le_p(boot + 8, tagptr);
+>>>>      }
+>>>>
+>>>> Maybe I'm missing Thomas point, as the xtfpga machines are available
+>>>> for both xtensa-softmmu (LE) and xtensaeb-softmmu (BE).
+>>>>
+>>>>> I don't know if your intent is to make be/le variant "private" and
+>>>>> relies only on endian_p though.
+>>>>
+>>>> My intent is to enforce endian agnostic API uses when possible, and
+>>>> use LE/BE specific variant when it is known at build time.
+>>>
+>>> Oh ok, it's me who missed your point then.
+>>> For some reason, I thought we were always calling big endian variant.
+>>>
+>>> Thus, your implementation makes totally sense.
+>>>
+>>> Let's see if Thomas meant something different.
+>>> Else,
+>>> Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+>>
+>> Looking more closely,
+>> stl_p is already correctly defined when you know at compile time your 
+>> target endianness. So Thomas was referring to this.
+>>
+>> https://gitlab.com/qemu-project/qemu/-/blame/master/include/exec/cpu- 
+>> all.h?ref_type=heads#L49
 > 
-> PCI variant of apple-gfx only for the moment.
-> 
-> Signed-off-by: Phil Dennis-Jordan <phil@philjordan.eu>
-> ---
->   hw/display/apple-gfx-pci.m |  43 ++++++++++-
->   hw/display/apple-gfx.h     |  17 ++++-
->   hw/display/apple-gfx.m     | 151 ++++++++++++++++++++++++++++++++++---
->   3 files changed, 198 insertions(+), 13 deletions(-)
-> 
-> diff --git a/hw/display/apple-gfx-pci.m b/hw/display/apple-gfx-pci.m
-> index 9370258ee46..ea86a1f4a21 100644
-> --- a/hw/display/apple-gfx-pci.m
-> +++ b/hw/display/apple-gfx-pci.m
-> @@ -16,6 +16,7 @@
->   #include "apple-gfx.h"
->   #include "hw/pci/pci_device.h"
->   #include "hw/pci/msi.h"
-> +#include "hw/qdev-properties.h"
->   #include "qapi/error.h"
->   #include "trace.h"
->   #import <ParavirtualizedGraphics/ParavirtualizedGraphics.h>
-> @@ -101,6 +102,46 @@ static void apple_gfx_pci_reset(Object *obj, ResetType type)
->       [s->common.pgdev reset];
->   }
->   
-> +static void apple_gfx_pci_get_display_modes(Object *obj, Visitor *v,
-> +                                            const char *name, void *opaque,
-> +                                            Error **errp)
-> +{
-> +    Property *prop = opaque;
-> +    AppleGFXDisplayModeList *mode_list = object_field_prop_ptr(obj, prop);
-> +
-> +    apple_gfx_get_display_modes(mode_list, v, name, errp);
-> +}
-> +
-> +static void apple_gfx_pci_set_display_modes(Object *obj, Visitor *v,
-> +                                            const char *name, void *opaque,
-> +                                            Error **errp)
-> +{
-> +    Property *prop = opaque;
-> +    AppleGFXDisplayModeList *mode_list = object_field_prop_ptr(obj, prop);
-> +
-> +    apple_gfx_set_display_modes(mode_list, v, name, errp);
-> +}
-> +
-> +const PropertyInfo apple_gfx_pci_prop_display_modes = {
-> +    .name  = "display_modes",
-> +    .description =
-> +        "Colon-separated list of display modes; "
-> +        "<width>x<height>@<refresh-rate>; the first mode is considered "
-> +        "'native'. Example: 3840x2160@60:2560x1440@60:1920x1080@60",
+> OK I guess I'm seeing Thomas point now; this series cover was not clear
+> enough. The goal is to remove TARGET_BIG_ENDIAN so we can build half
+> objects and do a little step toward the single binary.
 
-Please use DEFINE_PROP_ARRAY() instead of inventing your own way to 
-define an array.
+Ok, that piece of information was missing in the patch description, indeed.
+But the tswap function should already work with common code, see the 
+target_needs_bswap() stuff in include/exec/tswap.h, so maybe this change 
+here even is not needed at all?
 
-> +    .get   = apple_gfx_pci_get_display_modes,
-> +    .set   = apple_gfx_pci_set_display_modes,
-> +};
-> +
-> +#define DEFINE_PROP_DISPLAY_MODES(_name, _state, _field) \
-> +    DEFINE_PROP(_name, _state, _field, apple_gfx_pci_prop_display_modes, \
-> +                AppleGFXDisplayModeList)
-> +
-> +static Property apple_gfx_pci_properties[] = {
-> +    DEFINE_PROP_DISPLAY_MODES("display-modes", AppleGFXPCIState,
-> +                              common.display_modes),
-> +    DEFINE_PROP_END_OF_LIST(),
-> +};
-> +
->   static void apple_gfx_pci_class_init(ObjectClass *klass, void *data)
->   {
->       DeviceClass *dc = DEVICE_CLASS(klass);
-> @@ -118,7 +159,7 @@ static void apple_gfx_pci_class_init(ObjectClass *klass, void *data)
->       pci->class_id = PCI_CLASS_DISPLAY_OTHER;
->       pci->realize = apple_gfx_pci_realize;
->   
-> -    // TODO: Property for setting mode list
-> +    device_class_set_props(dc, apple_gfx_pci_properties);
->   }
->   
->   static TypeInfo apple_gfx_pci_types[] = {
-> diff --git a/hw/display/apple-gfx.h b/hw/display/apple-gfx.h
-> index 995ecf7f4a7..baad4a98652 100644
-> --- a/hw/display/apple-gfx.h
-> +++ b/hw/display/apple-gfx.h
-> @@ -5,14 +5,28 @@
->   #define TYPE_APPLE_GFX_PCI          "apple-gfx-pci"
->   
->   #include "qemu/typedefs.h"
-> +#include "qemu/osdep.h"
->   
->   typedef struct AppleGFXState AppleGFXState;
->   
-> +typedef struct AppleGFXDisplayMode {
-> +    uint16_t width_px;
-> +    uint16_t height_px;
-> +    uint16_t refresh_rate_hz;
-> +} AppleGFXDisplayMode;
-> +
-> +typedef struct AppleGFXDisplayModeList {
-> +    GArray *modes;
-> +} AppleGFXDisplayModeList;
-> +
->   void apple_gfx_common_init(Object *obj, AppleGFXState *s, const char* obj_name);
-> +void apple_gfx_get_display_modes(AppleGFXDisplayModeList *mode_list, Visitor *v,
-> +                                 const char *name, Error **errp);
-> +void apple_gfx_set_display_modes(AppleGFXDisplayModeList *mode_list, Visitor *v,
-> +                                 const char *name, Error **errp);
->   
->   #ifdef __OBJC__
->   
-> -#include "qemu/osdep.h"
->   #include "exec/memory.h"
->   #include "ui/surface.h"
->   #include <dispatch/dispatch.h>
-> @@ -38,6 +52,7 @@ struct AppleGFXState {
->       bool new_frame;
->       bool cursor_show;
->       QEMUCursor *cursor;
-> +    AppleGFXDisplayModeList display_modes;
->   
->       dispatch_queue_t render_queue;
->       /* The following fields should only be accessed from render_queue: */
-> diff --git a/hw/display/apple-gfx.m b/hw/display/apple-gfx.m
-> index 6ef1048d93d..358192db6a0 100644
-> --- a/hw/display/apple-gfx.m
-> +++ b/hw/display/apple-gfx.m
-> @@ -16,6 +16,9 @@
->   #include "trace.h"
->   #include "qemu-main.h"
->   #include "qemu/main-loop.h"
-> +#include "qemu/cutils.h"
-> +#include "qapi/visitor.h"
-> +#include "qapi/error.h"
->   #include "ui/console.h"
->   #include "monitor/monitor.h"
->   #include "qapi/error.h"
-> @@ -23,9 +26,10 @@
->   #include <mach/mach_vm.h>
->   #import <ParavirtualizedGraphics/ParavirtualizedGraphics.h>
->   
-> -static const PGDisplayCoord_t apple_gfx_modes[] = {
-> -    { .x = 1440, .y = 1080 },
-> -    { .x = 1280, .y = 1024 },
-> +static const AppleGFXDisplayMode apple_gfx_default_modes[] = {
-> +    { 1920, 1080, 60 },
-> +    { 1440, 1080, 60 },
-> +    { 1280, 1024, 60 },
->   };
->   
->   typedef struct PGTask_s { // Name matches forward declaration in PG header
-> @@ -264,7 +268,6 @@ static void set_mode(AppleGFXState *s, uint32_t width, uint32_t height)
->   static void create_fb(AppleGFXState *s)
->   {
->       s->con = graphic_console_init(NULL, 0, &apple_gfx_fb_ops, s);
-> -    set_mode(s, 1440, 1080);
->   
->       s->cursor_show = true;
->   }
-> @@ -466,20 +469,24 @@ static void apple_gfx_register_task_mapping_handlers(AppleGFXState *s,
->       return disp_desc;
->   }
->   
-> -static NSArray<PGDisplayMode*>* apple_gfx_prepare_display_mode_array(void)
-> +static NSArray<PGDisplayMode*>* apple_gfx_create_display_mode_array(
-> +    const AppleGFXDisplayMode display_modes[], int display_mode_count)
->   {
-> -    PGDisplayMode *modes[ARRAY_SIZE(apple_gfx_modes)];
-> +    PGDisplayMode **modes = alloca(sizeof(modes[0]) * display_mode_count);
->       NSArray<PGDisplayMode*>* mode_array = nil;
->       int i;
->   
-> -    for (i = 0; i < ARRAY_SIZE(apple_gfx_modes); i++) {
-> +    for (i = 0; i < display_mode_count; i++) {
-> +        const AppleGFXDisplayMode *mode = &display_modes[i];
-> +        PGDisplayCoord_t mode_size = { mode->width_px, mode->height_px };
->           modes[i] =
-> -            [[PGDisplayMode alloc] initWithSizeInPixels:apple_gfx_modes[i] refreshRateInHz:60.];
-> +            [[PGDisplayMode alloc] initWithSizeInPixels:mode_size
-> +                                        refreshRateInHz:mode->refresh_rate_hz];
->       }
->   
-> -    mode_array = [NSArray arrayWithObjects:modes count:ARRAY_SIZE(apple_gfx_modes)];
-> +    mode_array = [NSArray arrayWithObjects:modes count:display_mode_count];
->   
-> -    for (i = 0; i < ARRAY_SIZE(apple_gfx_modes); i++) {
-> +    for (i = 0; i < display_mode_count; i++) {
->           [modes[i] release];
->           modes[i] = nil;
->       }
-> @@ -516,6 +523,8 @@ static void apple_gfx_register_task_mapping_handlers(AppleGFXState *s,
->   void apple_gfx_common_realize(AppleGFXState *s, PGDeviceDescriptor *desc)
->   {
->       PGDisplayDescriptor *disp_desc = nil;
-> +    const AppleGFXDisplayMode *display_modes = apple_gfx_default_modes;
-> +    int num_display_modes = ARRAY_SIZE(apple_gfx_default_modes);
->   
->       QTAILQ_INIT(&s->tasks);
->       s->render_queue = dispatch_queue_create("apple-gfx.render",
-> @@ -533,7 +542,127 @@ void apple_gfx_common_realize(AppleGFXState *s, PGDeviceDescriptor *desc)
->       s->pgdisp = [s->pgdev newDisplayWithDescriptor:disp_desc
->                                                 port:0 serialNum:1234];
->       [disp_desc release];
-> -    s->pgdisp.modeList = apple_gfx_prepare_display_mode_array();
-> +
-> +    if (s->display_modes.modes != NULL && s->display_modes.modes->len > 0) {
-> +        display_modes =
-> +            &g_array_index(s->display_modes.modes, AppleGFXDisplayMode, 0);
-> +        num_display_modes = s->display_modes.modes->len;
-> +    }
-> +    s->pgdisp.modeList =
-> +        apple_gfx_create_display_mode_array(display_modes, num_display_modes);
->   
->       create_fb(s);
->   }
-> +
-> +void apple_gfx_get_display_modes(AppleGFXDisplayModeList *mode_list, Visitor *v,
-> +                                 const char *name, Error **errp)
-> +{
-> +    GArray *modes = mode_list->modes;
-> +    /* 3 uint16s (max 5 digits) and 3 separator characters per mode + nul. */
-> +    size_t buffer_size = (5 + 1) * 3 * modes->len + 1;
-> +
-> +    char *buffer = alloca(buffer_size);
-> +    char *pos = buffer;
-> +
-> +    unsigned used = 0;
-> +    buffer[0] = '\0';
-> +    for (guint i = 0; i < modes->len; ++i)
-> +    {
-> +        AppleGFXDisplayMode *mode =
-> +            &g_array_index(modes, AppleGFXDisplayMode, i);
-> +        int rc = snprintf(pos, buffer_size - used,
-> +                          "%s%"PRIu16"x%"PRIu16"@%"PRIu16,
-> +                          i > 0 ? ":" : "",
-> +                          mode->width_px, mode->height_px,
-> +                          mode->refresh_rate_hz);
-> +        used += rc;
-> +        pos += rc;
-> +        assert(used < buffer_size);
-> +    }
-> +
-> +    pos = buffer;
-> +    visit_type_str(v, name, &pos, errp);
-> +}
-> +
-> +void apple_gfx_set_display_modes(AppleGFXDisplayModeList *mode_list, Visitor *v,
-> +                                 const char *name, Error **errp)
-> +{
-> +    Error *local_err = NULL;
-> +    const char *endptr;
-> +    char *str;
-> +    int ret;
-> +    unsigned int val;
-> +    uint32_t num_modes;
-> +    GArray *modes;
-> +    uint32_t mode_idx;
-> +
-> +    visit_type_str(v, name, &str, &local_err);
-> +    if (local_err) {
-> +        error_propagate(errp, local_err);
-> +        return;
-> +    }
-> +
-> +    // Count colons to estimate modes. No leading/trailing colons so start at 1.
-> +    num_modes = 1;
-> +    for (size_t i = 0; str[i] != '\0'; ++i)
-> +    {
-> +        if (str[i] == ':') {
-> +            ++num_modes;
-> +        }
-> +    }
-> +
-> +    modes = g_array_sized_new(false, true, sizeof(AppleGFXDisplayMode), num_modes);
-> +
-> +    endptr = str;
-> +    for (mode_idx = 0; mode_idx < num_modes; ++mode_idx)
-> +    {
-> +        AppleGFXDisplayMode mode = {};
-> +        if (mode_idx > 0)
-> +        {
-> +            if (*endptr != ':') {
-> +                goto separator_error;
-> +            }
-> +            ++endptr;
-> +        }
-> +
-> +        ret = qemu_strtoui(endptr, &endptr, 10, &val);
-> +        if (ret || val > UINT16_MAX || val == 0) {
-> +            error_setg(errp, "width of '%s' must be a decimal integer number "
-> +                       "of pixels in the range 1..65535", name);
-> +            goto out;
-> +        }
-> +        mode.width_px = val;
-> +        if (*endptr != 'x') {
-> +            goto separator_error;
-> +        }
-> +
-> +        ret = qemu_strtoui(endptr + 1, &endptr, 10, &val);
-> +        if (ret || val > UINT16_MAX || val == 0) {
-> +            error_setg(errp, "height of '%s' must be a decimal integer number "
-> +                       "of pixels in the range 1..65535", name);
-> +            goto out;
-> +        }
-> +        mode.height_px = val;
-> +        if (*endptr != '@') {
-> +            goto separator_error;
-> +        }
-> +
-> +        ret = qemu_strtoui(endptr + 1, &endptr, 10, &val);
-> +        if (ret) {
-> +            error_setg(errp, "refresh rate of '%s'"
-> +                       " must be a non-negative decimal integer (Hertz)", name);
-> +        }
-> +        mode.refresh_rate_hz = val;
-> +        g_array_append_val(modes, mode);
-> +    }
-> +
-> +    mode_list->modes = modes;
-> +    goto out;
-> +
-> +separator_error:
-> +    error_setg(errp, "Each display mode takes the format "
-> +               "'<width>x<height>@<rate>', modes are separated by colons. (:)");
-> +out:
-> +    g_free(str);
-> +    return;
-> +}
-
+  Thomas

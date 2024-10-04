@@ -1,512 +1,217 @@
-Received: by 2002:a17:504:5965:b0:1be9:327d:8ee3 with SMTP id xe5csp1723237njb;
-        Mon, 29 Jul 2024 04:19:01 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVRq0uT0eIoUj7An1yVcGmibB9TMjgwSqEfs9WZcmg0ZUCQPy3EdwBSFGJ03oxiLlLaiDJh5TgemnTXCyHnPm3+2D+m0UPP
-X-Google-Smtp-Source: AGHT+IHnkwfwYdaPokN1qwF2BNmKrnFdEpDrl+UE9U2ouo9WW8+pJMkvGnkQrmgWK6fSsa3o5wct
-X-Received: by 2002:a05:6a20:1593:b0:1c0:e564:d718 with SMTP id adf61e73a8af0-1c4a13a1afcmr5948998637.37.1722251941434;
-        Mon, 29 Jul 2024 04:19:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1722251941; cv=none;
-        d=google.com; s=arc-20160816;
-        b=Lwo90KNH5pH4HqYouiP6c1JYQryY+2yW+pIZB4PfthsFvM9dmvInJCwipvA5eUrjLy
-         pConpScuD0JBv1DAHfrxbA6lUwvmdA6rbawBS1zSn6jLBiUV076bQvkPQTU53WKSz1Bv
-         qBa9LFdHxN3gjgvq9TPbzEbUJ3MQc5UZwmqGBgrkTraeVmVSC58RcNV3COUck6reUf3W
-         Gp/MElxY7fxcanF1RcvBI1bnAD7wW3wxfsRbJQAd5TSrkWPBxo9a6oCJQs25lmLyHWiD
-         Z4P52lIzQTqFOrrFN/dvDp0Ao99tIN8oGdm6nDv70YTmu8FTIrQqwfExfiIoexCzneD4
-         X4FA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=/l1cJ5qNYbWgGqUR5JvmFCAIWFrVWk3ZWQwNkstA+zM=;
-        fh=JEjgglkjz9EVColBjpvdXP1KNgrq6WpDCL6BLvOlji8=;
-        b=ZtwHrkPnLIMiwLHN8UcVlQy2E3hJBP2HajbcINvcHrg0Tep+MMnzlGxbipNvXlXrCY
-         zPd0wPUdqxH9a9RZfgzApZI43WR5h7E96KnHy1lG0TakyMYvqxST+Z0bjSNwbpRUceYf
-         DNOzmoaWNmraKsa4LUC9wYBpAWsF8hpyxEZ54Rb8Q1KxvUt2OHhdw5tLKhfJx+x+XGWS
-         /w18vAT91jtOIcZS9Xz7u+3el3MFdGOofsXfXHW2kdIWJbWw4z8dvja2280SYFNbVz2C
-         y+RdEzvCw8FmMbbKLGR8Y96qR1NvFIiVm7RDDbmA+zEE0CRcPOos6udkBjdfNFTGBjRW
-         loKw==;
+Received: by 2002:a17:505:c89:b0:1be9:327d:8ee3 with SMTP id hp9csp350021njb;
+        Fri, 4 Oct 2024 03:36:27 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCW4i0Fhg7KmFQ23XGKuryvZQfZtMSFHBYjbS/s3arekAQMBhCW3GajK77o0jOBh2fU+d8joM/XJmAsT8w==@linaro.org
+X-Google-Smtp-Source: AGHT+IHLAIjtqOKYIwxr9wt4SePjmX4LwVTwEnRCX9dUtr4zTHlDuWIU+lrtz2ZNYRpaDJrG9p/Q
+X-Received: by 2002:a0c:e5cf:0:b0:6cb:9c55:4215 with SMTP id 6a1803df08f44-6cb9c55430cmr19648016d6.33.1728038187321;
+        Fri, 04 Oct 2024 03:36:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1728038187; cv=none;
+        d=google.com; s=arc-20240605;
+        b=X10TXfNo2lbB6gH8H7j10FBOPnDj6K15KLjKIBqrNOW3nolBRKtRZ91fn8GABny6fq
+         Dcv/xpyWJLlbv2puvsnd6qIjLQ785Giz9lXOB1iXmVCQqtsXGGG7egtV0ms3nKHuQdtk
+         dafvJ88kJFUHLburP34RcWBYAOTKHGcs5GUMt7Y8AzOwMmDpklJNmrAtZ+Ck5NUtaMR8
+         nNfJELwGt6rxS/+ut0vOIwSKEx11m/kqYJB8K3r/1VNcaaJ0XeaM4lS/iW/mYXjiOsqi
+         L6y9MLtdEP3x7bRg2woROtDiN64v2Tb46PL89e6ebUHVtzbD1KXZfqg8su3F3K2PG5lh
+         AaSw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=W9OlicifHtCtS77O14+qa+y/eM2RaCg2lpgZjfc3j5w=;
+        fh=hgLuMk1u2KWLKw7JYWojqESeAksXr48FXWQiKVUgiIE=;
+        b=eB2I1wsZLYt1Th/tH9w6llBlI2SrTQZHHGssYWAPdLsHfqvosiN9sMx/9LnaIBbbxW
+         HYbA/2wsXZQZdykALmR6rzVh/gYuz988v+oaXM0u82SwGLeL4KYROiviS5es4h61m5Fp
+         cKeyFWFSNU6HE4kyVTkYukG9Y28HAJeANida93dT2kOXuhQmUOaHzIPlpyzZV/KuRQf+
+         hi3Z5W5ez3cNWVEgNDkgv5qhHmY3Bxm5CCWzdVxp0b1+WMNC5BvqP2RfvRqrezuzpz1j
+         YkIp+f22B9EgOs/07mOVdPOHs7LBevO7EceMfVX/pYeMs9JqriEwaU1ZlDidFLHT61J8
+         +pTQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=qFrHCY5f;
-       spf=pass (google.com: domain of mchehab+huawei@kernel.org designates 145.40.73.55 as permitted sender) smtp.mailfrom=mchehab+huawei@kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
-Return-Path: <mchehab+huawei@kernel.org>
-Received: from sin.source.kernel.org (sin.source.kernel.org. [145.40.73.55])
-        by mx.google.com with ESMTPS id d2e1a72fcca58-70ead82eacdsi9542104b3a.154.2024.07.29.04.19.01
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 29 Jul 2024 04:19:01 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mchehab+huawei@kernel.org designates 145.40.73.55 as permitted sender) client-ip=145.40.73.55;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Op4rFDWc;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6cb9361468fsi33139996d6.125.2024.10.04.03.36.27
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 04 Oct 2024 03:36:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=qFrHCY5f;
-       spf=pass (google.com: domain of mchehab+huawei@kernel.org designates 145.40.73.55 as permitted sender) smtp.mailfrom=mchehab+huawei@kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id BAD0CCE0966;
-	Mon, 29 Jul 2024 11:18:59 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7F963C32786;
-	Mon, 29 Jul 2024 11:18:55 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1722251939;
-	bh=TZWnzVzliccEj7Fu28VQJqcjmzU0UNXPAtXxgl5zVdY=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=qFrHCY5fm/HSbjL6v49B02WHi0ZkxUrwfWoFvLZ2A1VzKTzNqXGe3KoB8UCxI6mCK
-	 1Q2wolZY4SfT4wWPX+k07zbxZIBRjQcc2uCFbm2BrYRf1YLZMFfhDyh23jcLoB8IEK
-	 U/T+cXjfDYnKn5QBMfjRRvBh+XXYHeCh20HwgLgjuKb0O9w0GgU2AdT4b6rXB9cPLN
-	 wzxeItsj9VwwAiwc/jWRI/IbcEOtZTsoVIM12lg+H9xXDToR37zLbcMXjdLtvPnHPC
-	 MBIDzbkAi/b8eahJRX1WcvNCqiVTruvwGLoiuP7D4/h0+Y2dt8hHXG/wENbTrTTrBI
-	 7R3WOIKCjKBlg==
-Date: Mon, 29 Jul 2024 13:18:52 +0200
-From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-To: Markus Armbruster <armbru@redhat.com>
-Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>, Shiju Jose
- <shiju.jose@huawei.com>, Alex =?UTF-8?B?QmVubsOpZQ==?=
- <alex.bennee@linaro.org>, "Michael S. Tsirkin" <mst@redhat.com>, Philippe
- =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@linaro.org>, Ani Sinha
- <anisinha@redhat.com>, Beraldo Leal <bleal@redhat.com>, Dongjiu Geng
- <gengdongjiu1@gmail.com>, Eric Blake <eblake@redhat.com>, Igor Mammedov
- <imammedo@redhat.com>, Peter Maydell <peter.maydell@linaro.org>, Thomas
- Huth <thuth@redhat.com>, Wainer dos Santos Moschetta <wainersm@redhat.com>,
- linux-kernel@vger.kernel.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [PATCH v3 7/7] acpi/ghes: extend arm error injection logic
-Message-ID: <20240729131852.0b850c15@foz.lan>
-In-Reply-To: <87y15ppz3x.fsf@pond.sub.org>
-References: <cover.1721630625.git.mchehab+huawei@kernel.org>
-	<89e8a63b5e54409dd9bc4e7f4f4c12290838371b.1721630625.git.mchehab+huawei@kernel.org>
-	<87y15ppz3x.fsf@pond.sub.org>
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
+       dkim=pass header.i=@linaro.org header.s=google header.b=Op4rFDWc;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1swffX-0007PF-Vy; Fri, 04 Oct 2024 06:36:20 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1swffX-0007On-3k
+ for qemu-arm@nongnu.org; Fri, 04 Oct 2024 06:36:19 -0400
+Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1swffV-0008H4-Br
+ for qemu-arm@nongnu.org; Fri, 04 Oct 2024 06:36:18 -0400
+Received: by mail-ed1-x52c.google.com with SMTP id
+ 4fb4d7f45d1cf-5c89f3e8a74so2572142a12.0
+ for <qemu-arm@nongnu.org>; Fri, 04 Oct 2024 03:36:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1728038174; x=1728642974; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=W9OlicifHtCtS77O14+qa+y/eM2RaCg2lpgZjfc3j5w=;
+ b=Op4rFDWc9ffEV2KNmEaRfu0n9Sq+G61ISttP+Hm/sgupCnYdLIHeY/qv+gf9G4DPE0
+ iwooVcl6KgkS40nGJVt5F/TmYJq2BpmHBEzydFK8RbiVse1AlndF/DhEln4F9sLHa/Qt
+ FP9mlX4G2fORNLNeRxVOihM0ISdqzsVFsVZ0KTjhZ/AUxROeBoAL0V0mkqiQf9ReD+AS
+ rsSThTo6lrShGgrK+0WyCK57TBTZpVur+GTxNYRYPWC+64zj7JNhEbaGXrP/70CdUpg1
+ fnu3u4DDsSMExCZFEMLCubxmTFA9HNSfBgSfhSEH/YImx7dVAFVWjHYo9nQp6SVZRxW3
+ Nkeg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1728038174; x=1728642974;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=W9OlicifHtCtS77O14+qa+y/eM2RaCg2lpgZjfc3j5w=;
+ b=jYrNZ9Z/+xWeEibwcfZoj2u1Xes5penp6Wsrt6vxGwQyCa/u8cdUiPUxkMFDLZgOuq
+ C2h+EGWbHrmc1I1JYZcyftXxDqdODp3+/v2nAoIjlrVFDhnEnLuN+6O7Jp0tJvHNzhBS
+ szTB7bnC2xMA0MlCO/FEqMnh+eLCLB5sKyU7lArBV/N+0OnVUS3aGsGxBh3h/TEZk6DM
+ Zff5Ok7rPMBiUEpAfrHj23U28YMexSzlFLWKTCFJlzNQU3k6KYnBvzL8GqEXJ06jlFDw
+ RTztKl80S8ucl6qXd4fx9jEsscJDso51VCSVzAzpH07zNMKtU2Y4H48GuHR7EI3sdcd7
+ kzRg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXXMl49ckfTj2qou0V7tTOXjZcFY0qdlXDGrpm9g0Lq2Au+822FKtxoflPE2UbkSUtpty8K5FauVA==@nongnu.org
+X-Gm-Message-State: AOJu0YwL3OhiwaKrPk69cqWkch1R/AjATJhmi5Vf3sO6NKmGPjQ+OytR
+ Om1tndEF1wR3SLzSAB3M0dcd/04iQ/vjsc1NxfCQmiyiyvKTRbW9qzcSC7b4NEggOQRwJqLBrq6
+ O8WiJfZ1hxbSDOioUzHvcFsWfKBSP7c3QIyengYib3QHApdVc
+X-Received: by 2002:a05:6402:440a:b0:5c8:8db1:1d55 with SMTP id
+ 4fb4d7f45d1cf-5c8d2e3a6b2mr1657000a12.10.1728038174213; Fri, 04 Oct 2024
+ 03:36:14 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+References: <20240923035632.81304-1-sebastian.huber@embedded-brains.de>
+ <20240923035632.81304-2-sebastian.huber@embedded-brains.de>
+ <CAFEAcA8Wf-PzAC-YGdma3YVETyuatLJHmvjrrb_kG2NjDSGs+Q@mail.gmail.com>
+ <1809049101.17000.1728005051804.JavaMail.zimbra@embedded-brains.de>
+In-Reply-To: <1809049101.17000.1728005051804.JavaMail.zimbra@embedded-brains.de>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 4 Oct 2024 11:36:01 +0100
+Message-ID: <CAFEAcA_zcdNaR5NTnTLmCZ5EgzBb=mFqqpLQKergk7z80kaEZA@mail.gmail.com>
+Subject: Re: [PATCH 1/2] hw/arm/boot: Use hooks if PSCI is disabled
+To: Sebastian Huber <sebastian.huber@embedded-brains.de>
+Cc: qemu-devel <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-TUID: dz6c01cSmBpj
+Received-SPF: pass client-ip=2a00:1450:4864:20::52c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52c.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: HN1Ys+mAjuF7
 
-Em Thu, 25 Jul 2024 12:03:46 +0200
-Markus Armbruster <armbru@redhat.com> escreveu:
-
-> Mauro Carvalho Chehab <mchehab+huawei@kernel.org> writes:
->=20
-> > Enrich CPER error injection logic for ARM processor to allow
-> > setting values to  from UEFI 2.10 tables N.16 and N.17.
+On Fri, 4 Oct 2024 at 02:24, Sebastian Huber
+<sebastian.huber@embedded-brains.de> wrote:
+>
+> ----- Am 30. Sep 2024 um 17:16 schrieb Peter Maydell peter.maydell@linaro=
+.org:
+>
+> > On Mon, 23 Sept 2024 at 04:57, Sebastian Huber
+> > <sebastian.huber@embedded-brains.de> wrote:
+> >>
+> >> In arm_load_kernel(), use the secondary boot hooks provided by the
+> >> platform if PSCI is disabled also while booting a non-Linux kernel.
+> >> While booting Linux with PSCI disabled, provide default hooks if neede=
+d.
+> >>
+> >> In do_cpu_reset(), use the secondary CPU reset hook provided by the
+> >> platform for resetting a non-Linux kernel.
+> >>
+> >> This change allows a more accurate simulation of the platform reset
+> >> behaviour.
 > >
-> > It should be noticed that, with such change, all arguments are
-> > now optional, so, once QMP is negotiated with:
+> > So, the difficulty with this is that it's effectively
+> > introducing an extra way of booting. At the moment we
+> > have two boot approaches for Arm guests:
 > >
-> > 	{ "execute": "qmp_capabilities" }
+> > (1) Booting Linux -- the boot.c code simulates what the BIOS,
+> > boot rom etc, does, both to set up the 1st CPU for the kernel
+> > boot entry, and to set up the secondaries in whatever way
+> > the bootrom does that the kernel expects to release them from.
 > >
-> > the simplest way to generate a cache error is to use:
+> > (2) Booting bare-metal -- boot.c assumes the guest code is going
+> > to do whatever the BIOS/bootrom does, so you get what you get
+> > for real-hardware CPU reset. (Either the secondaries start
+> > in power-off state and the primary will release them via some
+> > kind of power controller device, or else all the CPUs start at
+> > once at the reset vector and the bootrom is going to sort the
+> > secondaries out and put them in a pen.)
 > >
-> > 	{ "execute": "arm-inject-error" }
+> > What you want is a third thing:
 > >
-> > Also, as now PEI is mapped into an array, it is possible to
-> > inject multiple errors at the same CPER record with:
+> > (3) Booting not-a-kernel but not 100% bare-metal: emulate what
+> > the bootrom does for primary and secondary CPUs but don't
+> > boot the guest binary as if it was a Linux kernel.
 > >
-> > 	{ "execute": "arm-inject-error", "arguments": {
-> > 	   "error": [ {"type": [ "cache-error" ]},
-> > 		      {"type": [ "tlb-error" ]} ] } }
+> > The problem with adding that is that we don't have any
+> > way to distinguish whether the user wanted that or our
+> > existing type (2), because both are "user gave us a binary
+> > that isn't a Linux kernel". (It also has a bit of a
+> > "continuously expanding job" problem because the bootrom
+> > could do arbitrarily complicated things, like boot directly
+> > from SD cards, which we have historically not wanted to
+> > emulate within QEMU itself.)
 > >
-> > This would generate both cache and TLB errors, using default
-> > values for other fields.
-> >
-> > As all fields from ARM Processor CPER are now mapped, all
-> > types of CPER records can be generated with the new QAPI.
-> >
-> > Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org> =20
->=20
-> [...]
->=20
-> > diff --git a/qapi/arm-error-inject.json b/qapi/arm-error-inject.json
-> > index 430e6cea6b60..2a314830fe60 100644
-> > --- a/qapi/arm-error-inject.json
-> > +++ b/qapi/arm-error-inject.json
-> > @@ -2,40 +2,258 @@
-> >  # vim: filetype=3Dpython
-> > =20
-> >  ##
-> > -# =3D ARM Processor Errors
-> > +# =3D ARM Processor Errors as defined at:
-> > +# https://uefi.org/specs/UEFI/2.10/Apx_N_Common_Platform_Error_Record.=
-html
-> > +# See tables N.16, N.17 and N.21.
-> >  ## =20
->=20
-> This comes out badly in HTML.
->=20
-> Try something like
->=20
->    # =3D ARM Processor Errors
->    #
->    # These are defined at
->    # https://uefi.org/specs/UEFI/2.10/Apx_N_Common_Platform_Error_Record.=
-html
->    # See tables N.16, N.17 and N.21.
+> > There are other platforms where the real hardware's bootrom
+> > has a particular "this is what a bare-metal-under-the-bootrom
+> > startup looks like" definition, notably the raspberry pi
+> > boards. There too we don't currently implement that, and
+> > instead effectively tell users "pick one of the two boot
+> > paradigms we do support"...
+>
+> Ok, I understand your concerns. What I would like to do is running unmodi=
+fied executables on Qemu so that I can test exactly the same program which =
+would run on the real hardware. To properly initialize an SMP system, you h=
+ave to do certain things in a proper order. Currently, when I start the Zyn=
+q machine it immediately executes the ELF entry on both cores. This conflic=
+ts with the normal system start sequence which assumes that initially the s=
+econd core waits in an idle loop. For example, the second core is normally =
+released after the GIC distributor is initialized.
+>
+> Changing all the existing machines to use this third way is probably a ba=
+d idea, but would it be possible to make it configurable though the platfor=
+m info or a command line option?
 
-Ok. I double-checked the results of both manpage and html on the
-version I'm about to submit. The parsed macros should now be OK
-for both.
+Image loading is already weird and inconsistent across
+architectures and across machines. I'm not really
+enthusiastic about adding an extra thing that only
+applies to one machine type.
 
->=20
-> If any part of this is relevant in PATCH 4 already, squash the relevant
-> parts into that patch please.
+You might be able to get the effect you want by writing a
+guest binary that does the things the boot-rom does before
+starting the main executable, and telling QEMU to load
+both that "bootrom/bios" ELF file and the main ELF file.
 
-Ok. I ended squashing patch 7 with patch 4.
-
->=20
-> > =20
-> > +##
-> > +# @ArmProcessorValidationBits:
-> > +#
-> > +# Indcates whether or not fields of ARM processor CPER record are vali=
-d. =20
->=20
-> docs/devel/qapi-code-gen.rst section "Documentation markup":
->=20
->     For legibility, wrap text paragraphs so every line is at most 70
->     characters long.
-
-Ok.
-
-> > +#
-> > +# @mpidr-valid:  MPIDR Valid
-> > +#
-> > +# @affinity-valid: Error affinity level Valid
-> > +#
-> > +# @running-state-valid: Running State
-> > +#
-> > +# @vendor-specific-valid: Vendor Specific Info Valid
-> > +#
-> > +# Since: 9.1
-> > +##
-> > +{ 'enum': 'ArmProcessorValidationBits',
-> > +  'data': ['mpidr-valid',
-> > +           'affinity-valid',
-> > +           'running-state-valid',
-> > +           'vendor-specific-valid']
-> > +}
-> > +
-> > +##
-> > +# @ArmProcessorFlags:
-> > +#
-> > +# Indicates error attributes at the Error info section.
-> > +#
-> > +# @first-error-cap: First error captured
-> > +#
-> > +# @last-error-cap:  Last error captured
-> > +#
-> > +# @propagated: Propagated
-> > +#
-> > +# @overflow: Overflow
-> > +#
-> > +# Since: 9.1
-> > +##
-> > +{ 'enum': 'ArmProcessorFlags',
-> > +  'data': ['first-error-cap',
-> > +           'last-error-cap',
-> > +           'propagated',
-> > +           'overflow']
-> > +}
-> > +
-> > +##
-> > +# @ArmProcessorRunningState:
-> > +#
-> > +# Indicates if the processor is running.
-> > +#
-> > +# @processor-running: indicates that the processor is running
-> > +#
-> > +# Since: 9.1
-> > +##
-> > +{ 'enum': 'ArmProcessorRunningState',
-> > +  'data': ['processor-running']
-> > +}
-> > +
-> >  ##
-> >  # @ArmProcessorErrorType:
-> >  #
-> > -# Type of ARM processor error to inject
-> > -#
-> > -# @unknown-error: Unknown error
-> > +# Type of ARM processor error information to inject.
-> >  #
-> >  # @cache-error: Cache error
-> >  #
-> >  # @tlb-error: TLB error
-> >  #
-> > -# @bus-error: Bus error.
-> > +# @bus-error: Bus error
-> >  #
-> > -# @micro-arch-error: Micro architectural error.
-> > +# @micro-arch-error: Micro architectural error
-> >  #
-> >  # Since: 9.1
-> >  ##
-> >  { 'enum': 'ArmProcessorErrorType',
-> > -  'data': ['unknown-error',
-> > -	   'cache-error',
-> > +  'data': ['cache-error',
-> >             'tlb-error',
-> >             'bus-error',
-> >             'micro-arch-error']
-> > + } =20
->=20
-> Squash the changes to this type into PATCH 4, please.
-
-Ok.
-
-> > +
-> > +##
-> > +# @ArmPeiValidationBits:
-> > +#
-> > +# Indcates whether or not fields of Processor Error Info section are v=
-alid.
-> > +#
-> > +# @multiple-error-valid: Information at multiple-error field is valid
-> > +#
-> > +# @flags-valid: Information at flags field is valid
-> > +#
-> > +# @error-info-valid: Information at error-info field is valid
-> > +#
-> > +# @virt-addr-valid: Information at virt-addr field is valid
-> > +#
-> > +# @phy-addr-valid: Information at phy-addr field is valid
-> > +#
-> > +# Since: 9.1
-> > +##
-> > +{ 'enum': 'ArmPeiValidationBits',
-> > +  'data': ['multiple-error-valid',
-> > +           'flags-valid',
-> > +           'error-info-valid',
-> > +           'virt-addr-valid',
-> > +           'phy-addr-valid']
-> > +}
-> > +
-> > +##
-> > +# @ArmProcessorErrorInformation:
-> > +#
-> > +# Contains ARM processor error information (PEI) data according with U=
-EFI
-> > +# CPER table N.17.
-> > +#
-> > +# @validation:
-> > +#       Valid validation bits for error-info section.
-> > +#       Argument is optional. If not specified, those flags will be en=
-abled:
-> > +#       first-error-cap and propagated. =20
->=20
-> Please format like this for consistency:
->=20
->    # @validation: Valid validation bits for error-info section.
->    #     Argument is optional.  If not specified, those flags will be
->    #     enabled: first-error-cap and propagated.
-
-Ok.
-
->=20
-> > +#
-> > +# @type:
-> > +#       ARM processor error types to inject. Argument is mandatory.
-> > +#
-> > +# @multiple-error:
-> > +#       Indicates whether multiple errors have occurred.
-> > +#       Argument is optional. If not specified and @validation not enf=
-orced,
-> > +#       this field will be marked as invalid at CPER record..
-> > +#
-> > +# @flags:
-> > +#       Indicates flags that describe the error attributes.
-> > +#       Argument is optional. If not specified and defaults to
-> > +#       first-error and propagated.
-> > +#
-> > +# @error-info:
-> > +#       Error information structure is specific to each error type.
-> > +#       Argument is optional, and its value depends on the PEI type(s).
-> > +#       If not defined, the default depends on the type:
-> > +#       - for cache-error: 0x0091000F;
-> > +#       - for tlb-error: 0x0054007F;
-> > +#       - for bus-error: 0x80D6460FFF;
-> > +#       - for micro-arch-error: 0x78DA03FF;
-> > +#       - if multiple types used, this bit is disabled from @validatio=
-n bits.
-> > +#
-> > +# @virt-addr:
-> > +#       Virtual fault address associated with the error.
-> > +#       Argument is optional. If not specified and @validation not enf=
-orced,
-> > +#       this field will be marked as invalid at CPER record..
-> > +#
-> > +# @phy-addr:
-> > +#       Physical fault address associated with the error.
-> > +#       Argument is optional. If not specified and @validation not enf=
-orced,
-> > +#       this field will be marked as invalid at CPER record..
-> > +#
-> > +# Since: 9.1
-> > +##
-> > +{ 'struct': 'ArmProcessorErrorInformation',
-> > +  'data': { '*validation': ['ArmPeiValidationBits'],
-> > +            'type': ['ArmProcessorErrorType'],
-> > +            '*multiple-error': 'uint16',
-> > +            '*flags': ['ArmProcessorFlags'],
-> > +            '*error-info': 'uint64',
-> > +            '*virt-addr':  'uint64',
-> > +            '*phy-addr': 'uint64'}
-> > +}
-> > +
-> > +##
-> > +# @ArmProcessorContext:
-> > +#
-> > +# Provide processor context state specific to the ARM processor archit=
-ecture,
-> > +# According with UEFI 2.10 CPER table N.21.
-> > +# Argument is optional.If not specified, no context will be used.
-> > +#
-> > +# @type:
-> > +#       Contains an integer value indicating the type of context state=
- being
-> > +#       reported.
-> > +#       Argument is optional. If not defined, it will be set to be EL1=
- register
-> > +#       for the emulation, e. g.:
-> > +#       - on arm32: AArch32 EL1 context registers;
-> > +#       - on arm64: AArch64 EL1 context registers.
-> > +#
-> > +# @register:
-> > +#       Provides the contents of the actual registers or raw data, dep=
-ending
-> > +#       on the context type.
-> > +#       Argument is optional. If not defined, it will fill the first r=
-egister
-> > +#       with 0xDEADBEEF, and the other ones with zero.
-> > +#
-> > +# @minimal-size:
-> > +#       Argument is optional. If provided, define the minimal size of =
-the
-> > +#       context register array. The actual size is defined by checking=
- the
-> > +#       number of register values plus the content of this field (if u=
-sed),
-> > +#       ensuring that each processor context information structure arr=
-ay is
-> > +#       padded with zeros if the size is not a multiple of 16 bytes.
-> > +#
-> > +# Since: 9.1
-> > +##
-> > +{ 'struct': 'ArmProcessorContext',
-> > +  'data': { '*type': 'uint16',
-> > +            '*minimal-size': 'uint32',
-> > +            '*register': ['uint64']}
-> >  }
-> > =20
-> >  ##
-> >  # @arm-inject-error:
-> >  #
-> > -# Inject ARM Processor error.
-> > +# Inject ARM Processor error with data to be filled accordign with UEF=
-I 2.10
-> > +# CPER table N.16.
-> >  #
-> > -# @errortypes: ARM processor error types to inject
-> > +# @validation:
-> > +#       Valid validation bits for ARM processor CPER.
-> > +#       Argument is optional. If not specified, the default is
-> > +#       calculated based on having the corresponding arguments filled.
-> > +#
-> > +# @affinity-level:
-> > +#       Error affinity level for errors that can be attributed to a sp=
-ecific
-> > +#       affinity level.
-> > +#       Argument is optional. If not specified and @validation not enf=
-orced,
-> > +#       this field will be marked as invalid at CPER record.
-> > +#
-> > +# @mpidr-el1:
-> > +#       Processor=E2=80=99s unique ID in the system.
-> > +#       Argument is optional. If not specified, it will use the cpu mp=
-idr
-> > +#       field from the emulation data. If zero and @validation is not
-> > +#       enforced, this field will be marked as invalid at CPER record.
-> > +#
-> > +# @midr-el1:  Identification info of the chip
-> > +#       Argument is optional. If not specified, it will use the cpu mp=
-idr
-> > +#       field from the emulation data. If zero and @validation is not
-> > +#       enforced, this field will be marked as invalid at CPER record.
-> > +#
-> > +# @running-state:
-> > +#       Indicates the running state of the processor.
-> > +#       Argument is optional. If not specified and @validation not enf=
-orced,
-> > +#       this field will be marked as invalid at CPER record.
-> > +#
-> > +# @psci-state:
-> > +#       Provides PSCI state of the processor, as defined in ARM PSCI d=
-ocument.
-> > +#       Argument is optional. If not specified, it will use the cpu po=
-wer
-> > +#       state field from the emulation data.
-> > +#
-> > +# @context:
-> > +#       Contains an array of processor context registers.
-> > +#       Argument is optional. If not specified, no context will be add=
-ed.
-> > +#
-> > +# @vendor-specific:
-> > +#       Contains a byte array of vendor-specific data.
-> > +#       Argument is optional. If not specified, no vendor-specific data
-> > +#       will be added.
-> > +#
-> > +# @error:
-> > +#       Contains an array of ARM processor error information (PEI) sec=
-tions.
-> > +#       Argument is optional. If not specified, defaults to a single
-> > +#       Program Error Information record defaulting to type=3Dcache-er=
-ror.
-> >  #
-> >  # Features:
-> >  #
-> > @@ -44,6 +262,16 @@
-> >  # Since: 9.1
-> >  ##
-> >  { 'command': 'arm-inject-error',
-> > -  'data': { 'errortypes': ['ArmProcessorErrorType'] },
-> > +  'data': {
-> > +    '*validation': ['ArmProcessorValidationBits'],
-> > +    '*affinity-level': 'uint8',
-> > +    '*mpidr-el1': 'uint64',
-> > +    '*midr-el1': 'uint64',
-> > +    '*running-state':  ['ArmProcessorRunningState'],
-> > +    '*psci-state': 'uint32',
-> > +    '*context': ['ArmProcessorContext'],
-> > +    '*vendor-specific': ['uint8'],
-> > +    '*error': ['ArmProcessorErrorInformation']
-> > +  },
-> >    'features': [ 'unstable' ]
-> >  } =20
->=20
-> This changes the command pretty much completely.  Why is the previous
-> state worth capturing in git?
-
-I was thinking on having the first patch with minimal stuff and
-letting patch 7 with everything, but after yours and Jonathan's
-comments, I opted to merge them altogether.
-
->=20
-> > diff --git a/tests/lcitool/libvirt-ci b/tests/lcitool/libvirt-ci
-> > index 0e9490cebc72..77c800186f34 160000
-> > --- a/tests/lcitool/libvirt-ci
-> > +++ b/tests/lcitool/libvirt-ci
-> > @@ -1 +1 @@
-> > -Subproject commit 0e9490cebc726ef772b6c9e27dac32e7ae99f9b2
-> > +Subproject commit 77c800186f34b21be7660750577cc5582a914deb =20
->=20
-> Accident?
->=20
-
-Yes. Working with submodules is sometimes tricky, as git commit -a wants
-to merge everything including submodule changes, and manually dropping
-submodule from existing commits is tricky. I added this to my environment,
-but this affects only git diff porcelain:
-
-	[diff]
-	        ignoreSubmodules =3D all
-
-I wonder is are there ways for git commit -a to also ignore submodules...
-perhaps some git hook?
-
-Thanks,
-Mauro
+thanks
+-- PMM

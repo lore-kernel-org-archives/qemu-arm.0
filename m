@@ -1,80 +1,80 @@
-Received: by 2002:a17:505:c89:b0:1be9:327d:8ee3 with SMTP id hp9csp1047903njb;
+Received: by 2002:a17:505:c89:b0:1be9:327d:8ee3 with SMTP id hp9csp1047909njb;
         Sat, 5 Oct 2024 08:26:12 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWMwhTk+tYg+k1I6SkXI6p2HkWvqOUPtJ7DUPvwUgFmTFQuA+72ISsOzrUNuUcjTuq6HrdEBF813c5uwA==@linaro.org
-X-Received: by 2002:a17:902:e80c:b0:20b:7094:8d14 with SMTP id d9443c01a7336-20bfde58014mr103852725ad.5.1728141971770;
-        Sat, 05 Oct 2024 08:26:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1728141971; cv=none;
+X-Forwarded-Encrypted: i=2; AJvYcCXtsPT6VMGlSt6xYt8BhCkjJQfX1h4iy7UPcU4er6Mf2qFRFQHGjiWqt4qmkwXs3pgakrKdyh/KY943DQ==@linaro.org
+X-Received: by 2002:a17:902:d2cc:b0:20b:99bb:c403 with SMTP id d9443c01a7336-20bfe497052mr87912545ad.39.1728141972733;
+        Sat, 05 Oct 2024 08:26:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1728141972; cv=none;
         d=google.com; s=arc-20240605;
-        b=ihw3S3i9De93OKbGzqUNlU7c1zFUttqx8Zukz44tK+YroyXOXuHL4loN84uNWOKQIb
-         Ha1D5Vkf9WDiMOv7xyWb/VkBvRXwCuhhVjXsrLgdF78c/jAsaDRXePXA4f8pdPynEAMc
-         Ju5nvY7QNZKZDwbfS3g8nDkJvYT7eikzmESaSqMTP55AMvIGc7AwVt0161z65UW3ib30
-         9izbPTnyL8xdiggGZFLFBw1uaj80iPDM7zjffsoFJ2P0PSiOUMu+aHGjQIr1dJOdzY0Y
-         CzyhTN+Q8Sr+pkjvlhcNQfoZN6PucfMyvVK4B0d0D5yMZEvXl9fmVHJjPv5WaY5IYoKo
-         qzCw==
+        b=Hejgkmw8hv/5lreGud+/ZFi8kcgWF1xyr2qkgqi06/FiqdVkYSlCUc6MPXVsYdq87c
+         W4Zq5goX3gqlxCXrAb/4cv5Q+OVDr34QzdvzJ0ob7HE6n5oewzAuXOSYmLQI7uyBrGVS
+         qyLp3gXWZlFFpP7P+ogDSIO7Wl0ZAPdeeCMOB2LYKbjd9jM6qJwyUPiHJa4K63XQe7XD
+         hdu1dcoh+CXXfgjqaCna5eM0zh65rBs5oCCy7uaUKEjD7VRd7/K5vIz9NE0GeYUDGhXQ
+         lIJKYq4ukfM5bfODxqOEDtMaVi07A0ZUr7udbkppJJRUjiA2ilF73dZk3Xo1L17EVmeT
+         BdUA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=/ZHU/9Bj/Yhl/fLIAf9ED9KKjqQvRkGT+c+Pl2SvUJY=;
-        fh=eXtsLInz+BJPEttbWYsvHoEB/YU0yEteVO4MS3POAS0=;
-        b=Bmo/PF/eXljnml8cM3UkfBkkqUSzfNFUNkHuWZlgshkUH1kWTM3iupFGGSxFOveilV
-         q+suvX8l5lWCZFrHlIT8AgY3IEd47wEUb1RyaogQZzJvGFEUgcoe/TpK+Gm0GivbQx70
-         8lp/QwxAID1YMzCk4ezOCJHdq+ULDR6EVhCUCRvoGa7EvSrn9BX/9d8/b6vjpsjjMBU6
-         GW+5iUeDztAELGpviwPxim4J5WLxr6pTRCSjdZ9fRRNEE8G5R2z3Vlqj88FmXX237+/C
-         Dm0YhmNeClm2EP76dZGRUohXMIgq3lIzy6FHaN3QQz/GVqrKFpUysruC+oUNeKiEl49R
-         8HpA==;
+        bh=qIlBHpyIHO+kiCFyGgZVBXgacr4yw5gCrMn63zUSz3U=;
+        fh=+JGEziEvgFNYwLyLmVKwJ21e+LGO2ELkkwg+JZNg2KQ=;
+        b=CQlFlxDHUkee98e0XSeHeqkwFzEPfBnIj92SRbW903SHtUWGB49oNuaqeSK4Cj7tqa
+         DNxuMsWd09j42XQ3NbozhQZrE5ExkT9+EyA0zxbrrXe+HMJMuf8pvriqMqDbLDRoWZLg
+         bv380TVluF0idNdVoxyCTQ6Ac0ShymdFd7fD5F0+Xzs3NSlk5D0RuzLTavGjDM+PoqwP
+         7K+5aTfaK0m1kmBD1gOvAy0iNNxf1SBCR6lucJlc0UoFxnnebyeJDJVnGu+23Oi5Bd2l
+         GZiMShq2/WFI/Eca/I9etkrwlthpwYAwI8S/8Q+h/SnUz4APsP4JZLh4mlrObRaHaX+Q
+         EVyw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=cweBGUCQ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=LYpkfBI4;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d9443c01a7336-20c1390fe5esor9055135ad.15.2024.10.05.08.26.11
+        by mx.google.com with SMTPS id d9443c01a7336-20c13768b1dsor10603475ad.0.2024.10.05.08.26.12
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Sat, 05 Oct 2024 08:26:11 -0700 (PDT)
+        Sat, 05 Oct 2024 08:26:12 -0700 (PDT)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=cweBGUCQ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=LYpkfBI4;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1728141971; x=1728746771; darn=linaro.org;
+        d=linaro.org; s=google; t=1728141972; x=1728746772; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=/ZHU/9Bj/Yhl/fLIAf9ED9KKjqQvRkGT+c+Pl2SvUJY=;
-        b=cweBGUCQtQg8Wvz+cY3aw3ROEcLdK9kVIX5nxF+fOvWy8Kqq328wXkqOaT5uajkev7
-         At7r+DDaeX3y6NqGhj7lfFlItv08CVAyPTGg+HLha7jzzKVlUB1A8ZuMadlx981J2qmp
-         jwpxy7tfX6Xhy46c6TH+BsCtPUwrMtkSQgbLkXAwJYHiskYj3aenYV0jtl3hfXPlxlvL
-         v+rlOF7iriImoEl+br++cK+5ctdUlqV0bdnPGxA3LW4YbiCcYwp27KtkRpgH6GKqU/HV
-         vpl3lrDDktBQPvE1Xc/GeeBgSRsLOirWWOu2/XIrgSIhNDnH5lK5E8Ko0umdHT6B3G5T
-         LBhg==
+        bh=qIlBHpyIHO+kiCFyGgZVBXgacr4yw5gCrMn63zUSz3U=;
+        b=LYpkfBI46FRKfVl1PvvejjaneAGF5IDhq6lGU1+22Bnk2eYgZOECWuepLHMipda5fb
+         Zjwubl2OOvA4ZQvV9h/bxFY+e4jKsLlBDW/MzqjD9yY2EyeKlaPfEQc4ZwdrpPTIbs0c
+         UCcjc2vsxxYpVL8rOjOY+m6BWXBe8anEULY0tXzf2sNrw6SDx8JG+4ZKCOkCtFlVxYG0
+         9AfmQxmxAUtt4jjKakDttCK+yuPztkIrX+615H219YKrhSUi0k95rYkoqnSl5+4S70Bp
+         D9606XgFJKJEGJJ6HOuKiaRMdXKfm6gSEjz5+kmw2tbs3kZGUy7xlpO+jgxntyXfO9UP
+         /s7Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1728141971; x=1728746771;
+        d=1e100.net; s=20230601; t=1728141972; x=1728746772;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=/ZHU/9Bj/Yhl/fLIAf9ED9KKjqQvRkGT+c+Pl2SvUJY=;
-        b=nWpIbfw/cBTuTYlJWx2jCRZ1At208gSqUbKPGoHgOY8koRdcCAdg+cH/L9oLgRjlAF
-         x9UKenCxvK6zv/Hj3sgiIulsTzKyuOTxRUBrvtgWeHEZqnVLAhX9tBEAZwcL2jBDhZfx
-         ltmX2w9lc7c0X80C7gj9xrmTW+0/HnQhzUAj15GgryaRhjw17Tg9gMyMOK4nc1KJH1cJ
-         Y9bL3R+jFUnDt6o2K6iqkzP60Jf2CV9UHGVPWff5aZ767T39QcrptvFiZRs2JeJp6sMc
-         bEmk2LUyLd4FCjz3Z72HhtWVdgqLYFhGq7EIb7QxHWBEYk1wWy+MnwB6beZ2ME11WeRJ
-         DQyw==
-X-Forwarded-Encrypted: i=1; AJvYcCVTo0WdjACdCkac7FkmOG4wgF/WxhOD2TqXXX8jufy2WauA8Fymopkl/l1shucxIWpxYrFFbLd1PTQlLA==@linaro.org
-X-Gm-Message-State: AOJu0Yz2THLN5h4g80cfj1oEIulJgLpZA8O9MVnVqCTpsiPpU+6GEN5x
-	pt64HFYgVIYeuFiIPgqyh1qV96n+e1QXSK4V4l8+t14SE39vzVinP/aYlEpZSAHJfw==
-X-Google-Smtp-Source: AGHT+IH4Lr64SQZfzlOO2MyBkQGMuSWCJxA1Uid5flyT3IfspQk+qHg9k3FYTQCTF9/9yq+5XQ2JSg==
-X-Received: by 2002:a17:903:2b07:b0:20b:8e18:a395 with SMTP id d9443c01a7336-20bfe291f03mr89154495ad.44.1728141971365;
-        Sat, 05 Oct 2024 08:26:11 -0700 (PDT)
+        bh=qIlBHpyIHO+kiCFyGgZVBXgacr4yw5gCrMn63zUSz3U=;
+        b=qh6D5zZ7O1mtIR56xC7Fq/2v3Theu+GgOqeH2ZK22Yr+sUj2QuqcuNbI3bGQD14XQD
+         9IJo67eslUgJ7OcGNb+x0VQg6CsKSkK1k5MEMhmniwjDqIGO4+LzNkNdIiwsHVbwM/D6
+         sQTJxr8g83dPMo3Sy7rQRSLAAWYOPZMolbZHnYLJ9AhCD1nQ7D3xR++X31xjlps7jjWh
+         OytTqkg8OANcPbbsLFZTqyMTu3QEB0NmvFWH9gMcsFAxpM/IE/bS+VzxEjxcB0gisaH5
+         bQKS1CWxjBJBNmGaW4TrY5acAP9fGnqkcKM7vN+XLwcyvmmuJzq0iEtaqgVaCIueOwQ7
+         2pQw==
+X-Forwarded-Encrypted: i=1; AJvYcCXjOoJFS41+ZUwsqZ0NhJQB5D+AR8/2wpeFyhEG2uS24c07umN7pg7JivKPeimWNIuBueAoMstnNLupPw==@linaro.org
+X-Gm-Message-State: AOJu0YykkOGQ+d73sNdxAWM0j2TtmVDLul3fKLGjEyKS+7uzZ/HmasHq
+	ZqYgR97c30U6MCwo8xe79y/A0TMu+gSVLftjzrYrh5Xzp9MY0yAQYCWoeVBxUxYZNg==
+X-Google-Smtp-Source: AGHT+IGWHKPtHA2twxKvGB6E/ujF3z3IoFDGiLN3geSfu/MXfka4dtEv6hp0P2DmLjyD/i9iV2pkew==
+X-Received: by 2002:a17:902:d2d1:b0:20b:9547:9b2d with SMTP id d9443c01a7336-20bfde55510mr91868295ad.2.1728141972285;
+        Sat, 05 Oct 2024 08:26:12 -0700 (PDT)
 Return-Path: <richard.henderson@linaro.org>
 Received: from stoup.. (174-21-81-121.tukw.qwest.net. [174.21.81.121])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-20c1396948dsm14351765ad.225.2024.10.05.08.26.10
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-20c1396948dsm14351765ad.225.2024.10.05.08.26.11
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 05 Oct 2024 08:26:10 -0700 (PDT)
+        Sat, 05 Oct 2024 08:26:11 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: deller@kernel.org,
@@ -82,100 +82,95 @@ Cc: deller@kernel.org,
 	alex.bennee@linaro.org,
 	linux-parisc@vger.kernel.org,
 	qemu-arm@nongnu.org
-Subject: [PATCH 19/20] target/arm: Move device detection earlier in get_phys_addr_lpae
-Date: Sat,  5 Oct 2024 08:25:50 -0700
-Message-ID: <20241005152551.307923-20-richard.henderson@linaro.org>
+Subject: [PATCH 20/20] target/arm: Fix alignment fault priority in get_phys_addr_lpae
+Date: Sat,  5 Oct 2024 08:25:51 -0700
+Message-ID: <20241005152551.307923-21-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20241005152551.307923-1-richard.henderson@linaro.org>
 References: <20241005152551.307923-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: bFCrM5+AdMAM
+X-TUID: vfvJU18GdT+M
 
-Determine cache attributes, and thence Device vs Normal memory,
-earlier in the function.  We have an existing regime_is_stage2
-if block into which this can be slotted.
+Now that we have the MemOp for the access, we can order
+the alignment fault caused by memory type before the
+permission fault for the page.
+
+For subsequent page hits, permission and stage 2 checks
+are known to pass, and so the TLB_CHECK_ALIGNED fault
+raised in generic code is not mis-ordered.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/ptw.c | 49 ++++++++++++++++++++++++------------------------
- 1 file changed, 25 insertions(+), 24 deletions(-)
+ target/arm/ptw.c | 49 +++++++++++++++++++++++++++---------------------
+ 1 file changed, 28 insertions(+), 21 deletions(-)
 
 diff --git a/target/arm/ptw.c b/target/arm/ptw.c
-index 238b2c92a9..0a1a820362 100644
+index 0a1a820362..50aa5e338c 100644
 --- a/target/arm/ptw.c
 +++ b/target/arm/ptw.c
-@@ -2029,8 +2029,20 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
-             xn = extract64(attrs, 53, 2);
-             result->f.prot = get_S2prot(env, ap, xn, ptw->in_s1_is_el0);
-         }
-+
-+        result->cacheattrs.is_s2_format = true;
-+        result->cacheattrs.attrs = extract32(attrs, 2, 4);
-+        /*
-+         * Security state does not really affect HCR_EL2.FWB;
-+         * we only need to filter FWB for aa32 or other FEAT.
-+         */
-+        device = S2_attrs_are_device(arm_hcr_el2_eff(env),
-+                                     result->cacheattrs.attrs);
-     } else {
-         int nse, ns = extract32(attrs, 5, 1);
-+        uint8_t attrindx;
-+        uint64_t mair;
-+
-         switch (out_space) {
-         case ARMSS_Root:
-             /*
-@@ -2102,6 +2114,19 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
-          */
-         result->f.prot = get_S1prot(env, mmu_idx, aarch64, ap, xn, pxn,
-                                     result->f.attrs.space, out_space);
-+
-+        /* Index into MAIR registers for cache attributes */
-+        attrindx = extract32(attrs, 2, 3);
-+        mair = env->cp15.mair_el[regime_el(env, mmu_idx)];
-+        assert(attrindx <= 7);
-+        result->cacheattrs.is_s2_format = false;
-+        result->cacheattrs.attrs = extract64(mair, attrindx * 8, 8);
-+
-+        /* When in aarch64 mode, and BTI is enabled, remember GP in the TLB. */
-+        if (aarch64 && cpu_isar_feature(aa64_bti, cpu)) {
-+            result->f.extra.arm.guarded = extract64(attrs, 50, 1); /* GP */
-+        }
-+        device = S1_attrs_are_device(result->cacheattrs.attrs);
+@@ -2129,6 +2129,34 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
+         device = S1_attrs_are_device(result->cacheattrs.attrs);
      }
  
++    /*
++     * Enable alignment checks on Device memory.
++     *
++     * Per R_XCHFJ, the correct ordering for alignment, permission,
++     * and stage 2 faults is:
++     *    - Alignment fault caused by the memory type
++     *    - Permission fault
++     *    - A stage 2 fault on the memory access
++     * Perform the alignment check now, so that we recognize it in
++     * the correct order.  Set TLB_CHECK_ALIGNED so that any subsequent
++     * softmmu tlb hit will also check the alignment.
++     *
++     * In v7, for a CPU without the Virtualization Extensions this
++     * access is UNPREDICTABLE; we choose to make it take the alignment
++     * fault as is required for a v7VE CPU. (QEMU doesn't emulate any
++     * CPUs with ARM_FEATURE_LPAE but not ARM_FEATURE_V7VE anyway.)
++     */
++    if (device) {
++        unsigned a_bits = memop_atomicity_bits(memop);
++        if (address & ((1 << a_bits) - 1)) {
++            fi->type = ARMFault_Alignment;
++            goto do_fault;
++        }
++        result->f.tlb_fill_flags = TLB_CHECK_ALIGNED;
++    } else {
++        result->f.tlb_fill_flags = 0;
++    }
++
      if (!(result->f.prot & (1 << access_type))) {
-@@ -2131,30 +2156,6 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
+         fi->type = ARMFault_Permission;
+         goto do_fault;
+@@ -2156,27 +2184,6 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
      result->f.attrs.space = out_space;
      result->f.attrs.secure = arm_space_is_secure(out_space);
  
--    if (regime_is_stage2(mmu_idx)) {
--        result->cacheattrs.is_s2_format = true;
--        result->cacheattrs.attrs = extract32(attrs, 2, 4);
--        /*
--         * Security state does not really affect HCR_EL2.FWB;
--         * we only need to filter FWB for aa32 or other FEAT.
--         */
--        device = S2_attrs_are_device(arm_hcr_el2_eff(env),
--                                     result->cacheattrs.attrs);
--    } else {
--        /* Index into MAIR registers for cache attributes */
--        uint8_t attrindx = extract32(attrs, 2, 3);
--        uint64_t mair = env->cp15.mair_el[regime_el(env, mmu_idx)];
--        assert(attrindx <= 7);
--        result->cacheattrs.is_s2_format = false;
--        result->cacheattrs.attrs = extract64(mair, attrindx * 8, 8);
--
--        /* When in aarch64 mode, and BTI is enabled, remember GP in the TLB. */
--        if (aarch64 && cpu_isar_feature(aa64_bti, cpu)) {
--            result->f.extra.arm.guarded = extract64(attrs, 50, 1); /* GP */
--        }
--        device = S1_attrs_are_device(result->cacheattrs.attrs);
+-    /*
+-     * Enable alignment checks on Device memory.
+-     *
+-     * Per R_XCHFJ, this check is mis-ordered. The correct ordering
+-     * for alignment, permission, and stage 2 faults should be:
+-     *    - Alignment fault caused by the memory type
+-     *    - Permission fault
+-     *    - A stage 2 fault on the memory access
+-     * but due to the way the TCG softmmu TLB operates, we will have
+-     * implicitly done the permission check and the stage2 lookup in
+-     * finding the TLB entry, so the alignment check cannot be done sooner.
+-     *
+-     * In v7, for a CPU without the Virtualization Extensions this
+-     * access is UNPREDICTABLE; we choose to make it take the alignment
+-     * fault as is required for a v7VE CPU. (QEMU doesn't emulate any
+-     * CPUs with ARM_FEATURE_LPAE but not ARM_FEATURE_V7VE anyway.)
+-     */
+-    if (device) {
+-        result->f.tlb_fill_flags |= TLB_CHECK_ALIGNED;
 -    }
 -
      /*
-      * Enable alignment checks on Device memory.
-      *
+      * For FEAT_LPA2 and effective DS, the SH field in the attributes
+      * was re-purposed for output address bits.  The SH attribute in
 -- 
 2.43.0

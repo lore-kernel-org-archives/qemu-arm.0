@@ -1,80 +1,81 @@
-Received: by 2002:a17:505:c89:b0:1be9:327d:8ee3 with SMTP id hp9csp1047885njb;
-        Sat, 5 Oct 2024 08:26:10 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXvoyeH79x2a6jqz1M6KBAxZVRk1XHLshXCeBDtzrzqEJEUF4kF60bPWb+NLT1YaAiXFXIJMHfTSLZl3A==@linaro.org
-X-Received: by 2002:a17:902:e852:b0:20b:642c:223d with SMTP id d9443c01a7336-20bfdf8045amr91374385ad.11.1728141969731;
-        Sat, 05 Oct 2024 08:26:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1728141969; cv=none;
+Received: by 2002:a17:505:c89:b0:1be9:327d:8ee3 with SMTP id hp9csp1047895njb;
+        Sat, 5 Oct 2024 08:26:11 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXLdPYj7qEYmOAU1m3JQ0GKyjQF3ywfcLl2lUsI0gcuNGbmcStK1eCVRs3xL9W0RDlcY1Dwk+INuVSbwA==@linaro.org
+X-Received: by 2002:a17:903:268e:b0:20b:9b38:fbd6 with SMTP id d9443c01a7336-20bff194b37mr71963905ad.40.1728141970773;
+        Sat, 05 Oct 2024 08:26:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1728141970; cv=none;
         d=google.com; s=arc-20240605;
-        b=JsqVt564gnRZSXES/BgEBMyJseuNh1FYlqAt6nAZxbkPMTeLlSP38gytVAzsNpEv0D
-         7Rz4sytVlo++2ktrWVPV+TFe3jFmGIdODdoY7B1auc1uduPwoS4v7RA67+IxSMUjRlfb
-         mO+kDrSrGLAczZ/5bM8RJ7B76uddA632Pkc3HWZnMjfDMSbdWNy8cXC3e+LQsAfaiLc8
-         NMZ1jHURIzTksowNrpre/8AxUSzE09q2YN9at6g15/ej5F/7rvvBwgFRui3TVEYBIkbL
-         v19+INdLqBv3vITO0k7m0DigD6S4TN2bBfiobYK7LUhl4DNUPk/zBh4Kg7nW9vBEGQCH
-         9bKw==
+        b=FKKxwiDDzepFCZyoa4hOxsdFy853PHVsW4/knY+fRRWbHIaKbVcD1GxbWjER3X3EV1
+         Rw8gC3RO0Cr9QL8SR2JrCqIQSTbm4O8V3chleE2Q8rkTK0Fp7t2+OfGRsFU6P6IhCM16
+         gplxKPytX7qYm3qArXKAUxK9Yn5vJu3w46/OjERcg8SdgYev2cgfaw9F8xLFUleGVsGg
+         taOBobi73sqs7LRGSl61BRfuAqzrWSuaPTDOqNaVhY/fTKnhTLrRUJxiBNwpCM5DwQtA
+         eUN1JXQyvAgKoq7OqmTGibcaNAwmikfQx2ZLKKbYk9WAxLlqK6/XrPYglfXxCwoKavDB
+         OXXg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=oB3S/z+Tf/YurYPbjZAkQ2iOmy2pkllXkguo9aONGm0=;
-        fh=zjMwXqe4GeOZRFj9qJTXVi1rWKEf0k68RStQTRhDorA=;
-        b=DaYgNFVMyzSgwYizZVf7yA5t9ZqGuE+/vw5Bk7sxAOTQTHvGkCOOWL7wU6gQZzdnvN
-         vgun3bcfVxk7lw+k2rIVGmpOm0tx4yWBARrnHhKIrhqu2Lv2y4XcM+szYvoDDsWmjS0l
-         33+eDydrvdbyMkYF1qhgMurpPYFo3N+PAYF6QV5Yf1CVm8fJvpqNf+BPEyanuQkPhwSv
-         NqkEnPw6F/YzEltIRIjKSP/i4KtaFeWY7QfHo3Y1Wq1d9mjyv9gYeWW/5jVzKuGxzmKa
-         BYbciA5CnZ/mTninnBa/LgNOwQtfzDpJ22rZbKdSIiKwarG1HoX0JFZ9Fs5Hs/R6q7GD
-         GXyw==;
+        bh=9tqb0TUsQOZF/sRJ8YxWqhKeQa3g/EH2JXyCvd2UdW4=;
+        fh=L3gfhcAAaPaXpqKrP3R/vl7mTXTUYWxpzBQRQv6wtdo=;
+        b=Al+vV5S9G9FExurvKMXGOEbyK6f0qgJTqNangQRML4Z8lqgptuu25D9/TfZmHrU3ny
+         MVmJ0R8HuyEpBkXwXjQePqON2yn6TApzfgveiQpqkEhFPgz9TFGMCVOcDbe8D84zDxli
+         fiI2MlsVNf+lxSarTTD8bsL8qgTMGHT9uEVM8RJt7ddiG7aXOUuEgrlM9HLF4IPtMeqn
+         fyDk4edxrklo6G6uqrzTKmYk7g96eAQCfYd1w5/3p/bxMD2n1Q/nIuR0+Ndy7O5ySkYx
+         TaIJjLrbSYErt6zmk7ner6IYysIyjjUlwabOZa1zdki/AQiBhqzV3ySOelWuiurDcD8q
+         yuRw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=CtERMhWT;
+       dkim=pass header.i=@linaro.org header.s=google header.b=oMc3a7i5;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d9443c01a7336-20c138ba8dbsor8949365ad.3.2024.10.05.08.26.09
+        by mx.google.com with SMTPS id d9443c01a7336-20c1394f298sor9748195ad.14.2024.10.05.08.26.10
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Sat, 05 Oct 2024 08:26:09 -0700 (PDT)
+        Sat, 05 Oct 2024 08:26:10 -0700 (PDT)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=CtERMhWT;
+       dkim=pass header.i=@linaro.org header.s=google header.b=oMc3a7i5;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1728141969; x=1728746769; darn=linaro.org;
+        d=linaro.org; s=google; t=1728141970; x=1728746770; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=oB3S/z+Tf/YurYPbjZAkQ2iOmy2pkllXkguo9aONGm0=;
-        b=CtERMhWTRXVfP03xkpxIVNS8p6Loxu2ifSvHwUshBKSavtCBVTCD7Y0paWV3JA64r8
-         XqBmaegtcqvoswJMlIMzm82Du8pFb7q0xBrR/Pi6BVSFVjf8Tx1zf+i84SDQPBTXd5q2
-         yAgonZr/qzK70BhqgY5ZgDHLJ8ltZxXajOGj8uoYPpmuROTAW7s/R7u9O3O8wyZtaFiH
-         GyAifoHPbgx9LoN163BJ19KvO4G5I039Ifa7I9KQeMmtuvaW744nuV9VvncHzAHT7o2y
-         HfLVAFiZpgmTxlPZGF5uKboOCI9ScfqQJHYSg0uJx6lPjPzmPg8gAfXN6bVSUQo2UbYP
-         /UTA==
+        bh=9tqb0TUsQOZF/sRJ8YxWqhKeQa3g/EH2JXyCvd2UdW4=;
+        b=oMc3a7i5lfg1BqRraOecfPzKMeNNQhhz9H6qE5I3IERfi2HsCgEI+SAtdH7RFwjLRj
+         CaeZV95jTpo6Ph38Ht7BbXxh982aBQPopaK/OclRlSkI8JUkvLsXBzy1GTe9MwpFQ6Vt
+         HB/3ufcA9ETod92kvh8ksuhgepI6jRCYYQbX3cLtCRMqryngVYVDI33fSIHAFZDC/bNU
+         wq7cFfB372OyffsrBBFD+VRmpaRQXM9/cLF4huP21hKUtDjhWrb9VgqpzvOnpElGQxJK
+         qohzIN3PIugRSyUre6MKZOXbZi9v2rv/7UNb5dLLFvW9dxB16PVRrwdhVV8GRh0957Un
+         /43w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1728141969; x=1728746769;
+        d=1e100.net; s=20230601; t=1728141970; x=1728746770;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=oB3S/z+Tf/YurYPbjZAkQ2iOmy2pkllXkguo9aONGm0=;
-        b=EyIhaTgDySeIirBEUKa4HqALresxp5jP6o3x+1pfoUcp3Slze7rGf5cH3yyDxOyNa0
-         I2KJq9cvY2cU3VkdwlVZpkjdKRFo64tgz8HygGM2a7CXr2bigiNGyWfV8BRqHosxBfU2
-         fV8DZnsEfKYV22I3PtSE4AY4oe51FrEd5jKZ92gceudtJ9rdBTqnaR8OWeGJQzqtwyGR
-         C4dUS4HIRaz9nQhtJwbvXp1jMcG6J7RiUSkr8BYljf1nU6OofzvrijS12zBiox7ZMoZ1
-         mkAqfQ38NlaV6jDsBhsxyHMIi/SPEO/TdJv3ovgqWO3hJlp71zp6MTE7uqOpX88w5At9
-         H4KQ==
-X-Forwarded-Encrypted: i=1; AJvYcCWdmhfZGmc5ausypHueUPyJxR2vdacBPFYFpAjEDXRsK9wg19Vd6iUiE20W7ripVjD3yPipzFhj6MBoqQ==@linaro.org
-X-Gm-Message-State: AOJu0Yw54hLzT+P9skbtzvQlgZ3ylk7lxo2sgxFk/EGapOjTPfRWnnwV
-	ZZB4uYyh2T+gBXy/JIVNnfqDQPznbYUzIuF+Oa9tG4bxm28Gs/Gmg049ak7vWYh/IQ==
-X-Google-Smtp-Source: AGHT+IHGjDyFhoX1JFcZLwPMzIWk0VZ6VyK/OgPBEe0dpV3tD5qpqz+OhbMKSWs06HyBvYG2qhd0Ew==
-X-Received: by 2002:a17:903:2343:b0:20b:8924:3a77 with SMTP id d9443c01a7336-20bfe071396mr82155675ad.26.1728141969294;
-        Sat, 05 Oct 2024 08:26:09 -0700 (PDT)
+        bh=9tqb0TUsQOZF/sRJ8YxWqhKeQa3g/EH2JXyCvd2UdW4=;
+        b=kGpj6mtMDucagBPVrbNr5yB9rAuD4zjx0PwzA3eCMdqjqBbzorP5zSsjeQ71t90Ky2
+         flNyWX9HWaEHNu2Zrt6PbNzzFxravsNSNCD6MK59zDQV8kIUIwY987m2JpAl7OM1nPAJ
+         CWuEg6YapiI08FQ+3PPqquhi1uopeUHTM3KKe3hDJg9MjLctThQFRd81ikJ8t2LfQfuV
+         3364gvHNaELBj1TE9XvJ7oexZIQpOKig9In4z9ZNd7yGghO/SjZ69DQJY6zi+WfPXOOx
+         Iuy9Ju08S+MWebNJeWpw5ClY8QUDXdtVeoGf3Gw/NIEMYEM1eRv+Vp7eECv0awy5cn4N
+         GUjA==
+X-Forwarded-Encrypted: i=1; AJvYcCVerNYSIf/TevzNyMCdy8HK/eJJpyP8PZgQ7UMkOb941C8fscjgkctqKpUjkIAKMpggGuTnsFQ92k9G7g==@linaro.org
+X-Gm-Message-State: AOJu0Yydhz3JzqBGZX09LcNQEbZq/vlG4L7Ts2FBHR7JRjYWkAMWyMqi
+	V7a7uWKNp1zvPxOOla6140lXE/Y0LHT3/TyrtYDIfS5Hxt/jdyYK94vO0hkCDATxkmu2E+hLy5b
+	LDZw=
+X-Google-Smtp-Source: AGHT+IHAcc49fQDj+6dUv1WwyItmZo+VQhDVyFSsiB0HVGJtSbOyDZXUNQcKgpb3qKjj8UutpLm7Eg==
+X-Received: by 2002:a17:902:d2d0:b0:20b:be06:f3d9 with SMTP id d9443c01a7336-20bfe1887c8mr91971805ad.24.1728141970334;
+        Sat, 05 Oct 2024 08:26:10 -0700 (PDT)
 Return-Path: <richard.henderson@linaro.org>
 Received: from stoup.. (174-21-81-121.tukw.qwest.net. [174.21.81.121])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-20c1396948dsm14351765ad.225.2024.10.05.08.26.08
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-20c1396948dsm14351765ad.225.2024.10.05.08.26.09
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 05 Oct 2024 08:26:08 -0700 (PDT)
+        Sat, 05 Oct 2024 08:26:09 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: deller@kernel.org,
@@ -82,65 +83,51 @@ Cc: deller@kernel.org,
 	alex.bennee@linaro.org,
 	linux-parisc@vger.kernel.org,
 	qemu-arm@nongnu.org
-Subject: [PATCH 17/20] target/arm: Pass MemOp through get_phys_addr_twostage
-Date: Sat,  5 Oct 2024 08:25:48 -0700
-Message-ID: <20241005152551.307923-18-richard.henderson@linaro.org>
+Subject: [PATCH 18/20] target/arm: Pass MemOp to get_phys_addr_lpae
+Date: Sat,  5 Oct 2024 08:25:49 -0700
+Message-ID: <20241005152551.307923-19-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20241005152551.307923-1-richard.henderson@linaro.org>
 References: <20241005152551.307923-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: FvlG6DzfNrxN
+X-TUID: l2hs6gPFIT3B
 
-Pass memop through get_phys_addr_twostage with its
-recursion with get_phys_addr_nogpc.
+Pass the value through from get_phys_addr_nogpc.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/ptw.c | 10 ++++++----
- 1 file changed, 6 insertions(+), 4 deletions(-)
+ target/arm/ptw.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
 
 diff --git a/target/arm/ptw.c b/target/arm/ptw.c
-index 0445c3ccf3..f1fca086a4 100644
+index f1fca086a4..238b2c92a9 100644
 --- a/target/arm/ptw.c
 +++ b/target/arm/ptw.c
-@@ -3301,7 +3301,7 @@ static bool get_phys_addr_disabled(CPUARMState *env,
- 
- static bool get_phys_addr_twostage(CPUARMState *env, S1Translate *ptw,
-                                    vaddr address,
--                                   MMUAccessType access_type,
-+                                   MMUAccessType access_type, MemOp memop,
-                                    GetPhysAddrResult *result,
-                                    ARMMMUFaultInfo *fi)
+@@ -1684,12 +1684,13 @@ static bool nv_nv1_enabled(CPUARMState *env, S1Translate *ptw)
+  * @ptw: Current and next stage parameters for the walk.
+  * @address: virtual address to get physical address for
+  * @access_type: MMU_DATA_LOAD, MMU_DATA_STORE or MMU_INST_FETCH
++ * @memop: memory operation feeding this access, or 0 for none
+  * @result: set on translation success,
+  * @fi: set to fault info if the translation fails
+  */
+ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
+                                uint64_t address,
+-                               MMUAccessType access_type,
++                               MMUAccessType access_type, MemOp memop,
+                                GetPhysAddrResult *result, ARMMMUFaultInfo *fi)
  {
-@@ -3313,7 +3313,8 @@ static bool get_phys_addr_twostage(CPUARMState *env, S1Translate *ptw,
-     ARMSecuritySpace ipa_space;
-     uint64_t hcr;
+     ARMCPU *cpu = env_archcpu(env);
+@@ -3534,7 +3535,8 @@ static bool get_phys_addr_nogpc(CPUARMState *env, S1Translate *ptw,
+     }
  
--    ret = get_phys_addr_nogpc(env, ptw, address, access_type, 0, result, fi);
-+    ret = get_phys_addr_nogpc(env, ptw, address, access_type,
-+                              memop, result, fi);
- 
-     /* If S1 fails, return early.  */
-     if (ret) {
-@@ -3339,7 +3340,8 @@ static bool get_phys_addr_twostage(CPUARMState *env, S1Translate *ptw,
-     cacheattrs1 = result->cacheattrs;
-     memset(result, 0, sizeof(*result));
- 
--    ret = get_phys_addr_nogpc(env, ptw, ipa, access_type, 0, result, fi);
-+    ret = get_phys_addr_nogpc(env, ptw, ipa, access_type,
-+                              memop, result, fi);
-     fi->s2addr = ipa;
- 
-     /* Combine the S1 and S2 perms.  */
-@@ -3469,7 +3471,7 @@ static bool get_phys_addr_nogpc(CPUARMState *env, S1Translate *ptw,
-         if (arm_feature(env, ARM_FEATURE_EL2) &&
-             !regime_translation_disabled(env, ARMMMUIdx_Stage2, ptw->in_space)) {
-             return get_phys_addr_twostage(env, ptw, address, access_type,
--                                          result, fi);
-+                                          memop, result, fi);
-         }
-         /* fall through */
- 
+     if (regime_using_lpae_format(env, mmu_idx)) {
+-        return get_phys_addr_lpae(env, ptw, address, access_type, result, fi);
++        return get_phys_addr_lpae(env, ptw, address, access_type,
++                                  memop, result, fi);
+     } else if (arm_feature(env, ARM_FEATURE_V7) ||
+                regime_sctlr(env, mmu_idx) & SCTLR_XP) {
+         return get_phys_addr_v6(env, ptw, address, access_type, result, fi);
 -- 
 2.43.0

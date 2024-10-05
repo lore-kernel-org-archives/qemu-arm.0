@@ -1,160 +1,214 @@
-Received: by 2002:a17:505:c89:b0:1be9:327d:8ee3 with SMTP id hp9csp918288njb;
-        Sat, 5 Oct 2024 03:03:49 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUXjMC/IU+qTJeh8xQ4uLzav0eaoKdzjcW58iVK2ODqJ5eo3SgNOyAdeCKiqtqNMqCrFzpGEW0gJS+r2Q==@linaro.org
-X-Google-Smtp-Source: AGHT+IGvhsf7IldXQ7VDyanXplwrFxKS2ujImE7JOzqLcpyNVtmfsaOXSkYEOfD9gAGFP4K3drZ6
-X-Received: by 2002:a05:620a:d94:b0:7ae:33d0:d95 with SMTP id af79cd13be357-7ae6f48bc96mr978422685a.48.1728122629546;
-        Sat, 05 Oct 2024 03:03:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1728122629; cv=none;
+Received: by 2002:a17:505:c89:b0:1be9:327d:8ee3 with SMTP id hp9csp918349njb;
+        Sat, 5 Oct 2024 03:03:58 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXWrNBbXjz3Fd8I/AVIK+3xvujbnzVi+VWl8y2G6DpM9p77GAK6i42qO44NPgo/bwy4QNL6eE8pwFcdsA==@linaro.org
+X-Google-Smtp-Source: AGHT+IG/+f++8ANRbnFVPyiD8SH611YVNSm3KFlCKAFtCZjKjlg/vuXfuTVFAaplm4nUd/vDYMK8
+X-Received: by 2002:a05:6214:449b:b0:6c7:c5b5:f576 with SMTP id 6a1803df08f44-6cb9a2fc382mr84444866d6.20.1728122638068;
+        Sat, 05 Oct 2024 03:03:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1728122638; cv=none;
         d=google.com; s=arc-20240605;
-        b=Wr443k5vM+ETYIJcg403AXcrzekrj/7n0SSatJVhuyN03AuEIHw2chT04fxhNk5/6w
-         6f3LlSuTpDCY+GeSK8C9OAZKyS5bILxm3Fy3VZ8sZIumzP2LRcMM6ZNSvMrj15fEaHil
-         KqshN5IJRgeBKbMBOtD2ZAgy6ucW74UwIspx1mnXmWRsyHhqIecKQeKrbTKN3FAnvqE4
-         WmgHpWXrJOsgT8GVE5NsRqnCzG0AHmI0BgV1LkOAYe3wwv6nDZOaupYYMoRWV1MZ0oIe
-         WdXi3e56UXBzHWNKOtv9CjbScStWNf/WvTxX6lryAb6ffMNDfbH+AL6L9ikPRwAZ+qaK
-         xQJA==
+        b=huzJQ2xfnvodprsXoN6RlmhDzFh33af+U9Q9Dq2UK8U1t00yCZ2em+8b/rM5ebzc9v
+         SeHCINZZauXv5sK/bGAnPYlYdp4xhIqJS90mdRkYYWPAsRJAxHOtYzxFUHMsT7bgX0ty
+         ET2rGvuhutNkqkYXs6mtdRyeAtB890ExCio5PK4x1JgE6Vgm1BAwRkXiGtlLeeuXQhee
+         xV6WHuQ8dJ6n9PLTf7mwlNNRPyCLKekXD0PBdMBidnw1KsnUxQXM1pP6LZYtEi0/Q71l
+         AhwO745bnDIsK/mQUq+k0XI+TFBN9a5M1/tEqPVGgumqmF6h5NRIzsnTX9VU9FVkz0Vs
+         +3sQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=in0VHzxFSDDDrMbuRFYfjXR4tb1sUlmcuzElyepMMf0=;
-        fh=6OWnW332UbOmm58/J1ruk+tA4QUHVEirxGtD5qxUCl8=;
-        b=lkKLZnmLpZxJKRLWJzLA5wQU1NrP9vvL/0QoOCx7N6Y5XiA03qnme+hrEyPWfFmpui
-         DynFF3hcS/0IIm13ZIgaOfV6EXUfCOS1MQpRCWJba+ocTrvUdEWFaiBXl0ujklGnolP7
-         Fi6BUb+F/noLFaoxx0qV4y+jNd7iDzXj/Xqxs0AOgIlnA5kJZoI6c4IYY6s3VPGHV9f0
-         O/8LojcxD0UGNPyZQQ7znUT+5SJVM4tyvj5zeg6165dkQaJ9SdXqxIK8Q1Koj55ZMMOC
-         nHZlNnbXXZnhdJ7tTloBvzki9hR5KM+rUEss/xgVgXr9e7yHI8NUyVPtCWcabxL+mnZR
-         jCFw==;
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=LJT4bwjrVjkUNMR4zGJJ5/3WvHmiyGwjh/aOrcBGjRY=;
+        fh=4tddjnVckVY2PFcAumb8au4mH87k/DRdfJC2/ph/uSg=;
+        b=VWGvt4TLsn+D0xVRjy7SOdKKU51lkJWFQsto4+DQcR0uu/DVNdBRo+M25XOvmN8Zx7
+         neq1kiZ+ZlCRvlxSRgX9zI+DkeSp6epRqaUauDIFU4q4lYT+kx/Z/td+tcyw6NOTNgRh
+         ZIZ/0xK/HtKHJdC3xeYnoWYQGF6RpxdPTti6lEvIfbqp4LwiaeUZPtX3srW2nRl7jMNR
+         PW/ksbQOdXVJ0MUv8gk8vLjM2xdI4ekM/Zon2t5nEwF+DM6mOWXclgCFNmbFoJ6syr5r
+         Oz8J8Hz1oEvGZAP2h6HBlbZqS+Jgu3khS3+i0jDwELlcoilm8HvVzXukOaIi6juVmYyY
+         yw/A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=DXflmIK4;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b="H0H/NyXS";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7ae7561e5e1si152387585a.141.2024.10.05.03.03.49
+        by mx.google.com with ESMTPS id 6a1803df08f44-6cba478f06asi17157696d6.522.2024.10.05.03.03.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 05 Oct 2024 03:03:49 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sat, 05 Oct 2024 03:03:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=DXflmIK4;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b="H0H/NyXS";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sx1ce-00034a-FO; Sat, 05 Oct 2024 06:02:48 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sx1cf-000358-GD; Sat, 05 Oct 2024 06:02:49 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1sx1cc-00032V-5d; Sat, 05 Oct 2024 06:02:46 -0400
-Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
+ id 1sx1cd-000330-1C; Sat, 05 Oct 2024 06:02:47 -0400
+Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1sx1ca-00083X-Iz; Sat, 05 Oct 2024 06:02:45 -0400
-Received: by mail-ej1-x630.google.com with SMTP id
- a640c23a62f3a-a93c1cc74fdso497589866b.3; 
+ id 1sx1ca-00083e-SO; Sat, 05 Oct 2024 06:02:46 -0400
+Received: by mail-ej1-x62f.google.com with SMTP id
+ a640c23a62f3a-a991fedbd04so138217866b.3; 
  Sat, 05 Oct 2024 03:02:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1728122560; x=1728727360; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=in0VHzxFSDDDrMbuRFYfjXR4tb1sUlmcuzElyepMMf0=;
- b=DXflmIK4x/WKEQ3ZNLKrCb4cj07thtW+zHse976z9RX6wIBvJ2I9Zq73l8Yksp042V
- zJwngfN23wHXybIQWNJpIQBiekgd7pvb7HgANnUKGW1dfqqhfm5GFxysOVeyFoFAObyT
- aEFVhMMNVqdYz2CpuT8mAwY0ybZj54Aji2YsS8YUdJC8C5JZ2TXVzJI2E1EUhUaPdvWu
- ScrNHKupz/HfuxENyngVV3ypi1nsAle2uNl4XAhTk27yffo2OZB95Ja/Ku9roQXhdiv4
- V9GgH6p2Pp+tG5DPrvKBZSJ38Vko2ofs6Nr9Gwu18gtXMmlfuLmAQnltrlkhFkgTtn7x
- kbVg==
+ d=gmail.com; s=20230601; t=1728122562; x=1728727362; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=LJT4bwjrVjkUNMR4zGJJ5/3WvHmiyGwjh/aOrcBGjRY=;
+ b=H0H/NyXSlWefUcISHN0wSfAh5Ckq3e6tgsSrpxQgME26gep6sXG+BSM5wbnowFCBti
+ 8tyq9TNEJ8D0WJ5fhxg2bd1wDO8GEJy/lQErqZXPwnIn2x3wqE36AeBmp7wLj6MXyAoe
+ xydOIvdfD2q4srk4qkWyajtqonKcb2hfT8PJNkNqi2sfHAnI6nNzgRLrLoTfEq/mwhN/
+ C8B9Jc4fWM3+mIym7/ke6HlvNq0/TGMtPjqObPrdsh8eNlfyP5K9FZoS55dPXTD9yl96
+ f1BxO20DDJ/xEqMT6T1iy6yE218E0KdjeHKk77mOXbKkscZwi+9jtZXZeKxws2JNP3nN
+ 4Ujg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1728122560; x=1728727360;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=in0VHzxFSDDDrMbuRFYfjXR4tb1sUlmcuzElyepMMf0=;
- b=X+n7Ln3763iUcOETf5HjuejYUKHFQrsWj+Ks30coUwyjiIfH2/S2N/nsjq5njwutMy
- YLpLj+iHIsci1l0ocNOT5E4MNczPwvAO05csNm/kVMDbejf8qw4CmQM//DJOaD+2ypTD
- sn8Eh+99AFcncHtZKvhEILeDf5lUSwzC49Vasc2OQ9+LsbKUZNijhBvI4PSOJqwNv/FG
- 66tt1DUFl8ZOjWG7OxdFdZUkPAurysQiI4O6PV9cz8mIlUTCVN9jc6mHc3L8bEP1UYoi
- fJUzPAnVxrp2tO+FZOyIM5dHaLju6gMQxORhF35lat2ck+NhVpjiqTsFMlgs2ByUrAac
- qR4A==
+ d=1e100.net; s=20230601; t=1728122562; x=1728727362;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=LJT4bwjrVjkUNMR4zGJJ5/3WvHmiyGwjh/aOrcBGjRY=;
+ b=tnBNYYdP6OkcgrdMGvzRyeOPGjaLKlyiO3Bk/sJDIBLqNgp5TgQq26JouZX+I9p204
+ 1z7B6itVknW+OWg/DXmwI9BniKcb/R1xJ5BgbfiUW+Dwkuhonugfo6LCSb/OUjC6bF+i
+ 3UGaWPIYgE7rHZwPIDgc4YL6riCzNBZNHtZDBP7b7yCNOo1jTnRvnokIY8Acr1Le0Rcw
+ bErB6jGJ+jwLa6x/wfJUY9Fghk9RHCMHWaa1lAyJ+oVMldSh3leB/UmE/paoRbETQGkR
+ cRF8k1gexIhccMJvnOIsViJxIRfc8rhVzrxuqX5Iy1voWw0m0QCkpIqKVgykb+laIJFD
+ A0EA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUaVXPqEd0TzvrEjTcEjwe7TqmApPEhi30z4IubVdKrR/my+d9rB3iyY6AyYMIOD/fx/dP+syJpWjs=@nongnu.org,
- AJvYcCV8jRiIGFAejCejmdkuO4ptri3vAuF3B1VS8ilevn7k7WgTUB42+QQvW3YknBSW6c0jtyze5hXCaw==@nongnu.org
-X-Gm-Message-State: AOJu0YyRHnNaA6tQAwvVoGq1vBGcOpcMDVjighmd4bojkkfVH7YBAZLq
- xMfi4/uusrB0S8WCVXLQ1eMuql8OFE5j8k209wLT/TGWlui5m1moHGG/cw==
-X-Received: by 2002:a17:907:6d26:b0:a99:35ae:3f0 with SMTP id
- a640c23a62f3a-a9935ae096emr163791066b.59.1728122559988; 
- Sat, 05 Oct 2024 03:02:39 -0700 (PDT)
+ AJvYcCUBk23FSds/dam5knwRUrzeFxVc/W6PEsmUsJSI3rGvAacleNQoLQQvtTXOMMES6rPf0u0PXH4AC40=@nongnu.org,
+ AJvYcCWAmRQUDhjuWzazlMT7CR6rXOdMK90GtSXixxvUyTZlnwjOT2Fzc1lJjCbugVR4Jbm+cDRId+5z5A==@nongnu.org
+X-Gm-Message-State: AOJu0YyPUYX9x9ksIwcmCmf9HDqqXSKMfWC2HUuV6V1WJV6DxwWl2qY7
+ SQUB7OSLUmgqkAJRD9JPUSulcQB4YKtkpNhmXnN9WvDNm3+afL6qVj2ohA==
+X-Received: by 2002:a05:6402:35cf:b0:5c5:cb49:2f28 with SMTP id
+ 4fb4d7f45d1cf-5c8d2e16faemr6064037a12.4.1728122562150; 
+ Sat, 05 Oct 2024 03:02:42 -0700 (PDT)
 Received: from archlinux.. (pd95ed790.dip0.t-ipconnect.de. [217.94.215.144])
  by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-a9932bf8a90sm99894166b.50.2024.10.05.03.02.39
+ a640c23a62f3a-a9932bf8a90sm99894166b.50.2024.10.05.03.02.40
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 05 Oct 2024 03:02:39 -0700 (PDT)
+ Sat, 05 Oct 2024 03:02:41 -0700 (PDT)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>, Bernhard Beschow <shentey@gmail.com>,
  qemu-ppc@nongnu.org, qemu-arm@nongnu.org
-Subject: [PATCH v2 0/2] Reuse TYPE_GPIO_PWR in ppce500 machine
-Date: Sat,  5 Oct 2024 12:02:26 +0200
-Message-ID: <20241005100228.28094-1-shentey@gmail.com>
+Subject: [PATCH v2 2/2] hw/ppc/e500: Reuse TYPE_GPIO_PWR
+Date: Sat,  5 Oct 2024 12:02:28 +0200
+Message-ID: <20241005100228.28094-3-shentey@gmail.com>
 X-Mailer: git-send-email 2.46.2
-Content-Type: text/plain; charset="utf-8"
+In-Reply-To: <20241005100228.28094-1-shentey@gmail.com>
+References: <20241005100228.28094-1-shentey@gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::630;
- envelope-from=shentey@gmail.com; helo=mail-ej1-x630.google.com
-X-Spam_score_int: -10
-X-Spam_score: -1.1
-X-Spam_bar: -
-X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::62f;
+ envelope-from=shentey@gmail.com; helo=mail-ej1-x62f.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- FREEMAIL_REPLY=1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: B8RLW+9ugUxd
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: fGixGdCiNBUe
 
-Just like the ARM virt machine, the ppce500 machine implements a=0D
-"gpio-poweroff"-compatible device tree node. So far, the implementations=0D
-aren't shared, and in addition, the ppce500 machine uses qemu_allocate_irq(=
-)=0D
-which leaks memory. This series fixes both by reusing TYPE_GPIO_PWR.=0D
-=0D
-Testing done:=0D
-* Build qemu_ppc64_e5500_defconfig in Buildroot, run it in the ppce500 mach=
-ine=0D
-  and issue the `poweroff` command. Observe that QEMU is shut down cleanly.=
-=0D
-=0D
-[1] https://github.com/shentok/qemu/tree/e500-fdt=0D
-=0D
-Supersedes: 20240923101554.12900-1-shentey@gmail.com=0D
-=0D
-Bernhard Beschow (2):=0D
-  MAINTAINERS: Add hw/gpio/gpio_pwr.c=0D
-  hw/ppc/e500: Reuse TYPE_GPIO_PWR=0D
-=0D
- MAINTAINERS    |  1 +=0D
- hw/ppc/e500.c  | 16 ++++------------=0D
- hw/ppc/Kconfig |  1 +=0D
- 3 files changed, 6 insertions(+), 12 deletions(-)=0D
-=0D
--- =0D
-2.46.2=0D
-=0D
+Taking inspiration from the ARM virt machine, port away from
+qemu_allocate_irq() by reusing TYPE_GPIO_PWR.
+
+Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+---
+ hw/ppc/e500.c  | 16 ++++------------
+ hw/ppc/Kconfig |  1 +
+ 2 files changed, 5 insertions(+), 12 deletions(-)
+
+diff --git a/hw/ppc/e500.c b/hw/ppc/e500.c
+index 3bd12b54ab..7811c22e7b 100644
+--- a/hw/ppc/e500.c
++++ b/hw/ppc/e500.c
+@@ -30,7 +30,6 @@
+ #include "sysemu/sysemu.h"
+ #include "sysemu/kvm.h"
+ #include "sysemu/reset.h"
+-#include "sysemu/runstate.h"
+ #include "kvm_ppc.h"
+ #include "sysemu/device_tree.h"
+ #include "hw/ppc/openpic.h"
+@@ -47,7 +46,6 @@
+ #include "hw/platform-bus.h"
+ #include "hw/net/fsl_etsec/etsec.h"
+ #include "hw/i2c/i2c.h"
+-#include "hw/irq.h"
+ #include "hw/sd/sdhci.h"
+ #include "hw/misc/unimp.h"
+ 
+@@ -892,13 +890,6 @@ static DeviceState *ppce500_init_mpic(PPCE500MachineState *pms,
+     return dev;
+ }
+ 
+-static void ppce500_power_off(void *opaque, int line, int on)
+-{
+-    if (on) {
+-        qemu_system_shutdown_request(SHUTDOWN_CAUSE_GUEST_SHUTDOWN);
+-    }
+-}
+-
+ void ppce500_init(MachineState *machine)
+ {
+     MemoryRegion *address_space_mem = get_system_memory();
+@@ -1086,7 +1077,7 @@ void ppce500_init(MachineState *machine)
+     sysbus_create_simple("e500-spin", pmc->spin_base, NULL);
+ 
+     if (pmc->has_mpc8xxx_gpio) {
+-        qemu_irq poweroff_irq;
++        DeviceState *gpio_pwr_dev;
+ 
+         dev = qdev_new("mpc8xxx_gpio");
+         s = SYS_BUS_DEVICE(dev);
+@@ -1096,8 +1087,9 @@ void ppce500_init(MachineState *machine)
+                                     sysbus_mmio_get_region(s, 0));
+ 
+         /* Power Off GPIO at Pin 0 */
+-        poweroff_irq = qemu_allocate_irq(ppce500_power_off, NULL, 0);
+-        qdev_connect_gpio_out(dev, 0, poweroff_irq);
++        gpio_pwr_dev = sysbus_create_simple("gpio-pwr", -1, NULL);
++        qdev_connect_gpio_out(dev, 0, qdev_get_gpio_in_named(gpio_pwr_dev,
++                                                             "shutdown", 0));
+     }
+ 
+     /* Platform Bus Device */
+diff --git a/hw/ppc/Kconfig b/hw/ppc/Kconfig
+index 5addad1124..89cabe5d53 100644
+--- a/hw/ppc/Kconfig
++++ b/hw/ppc/Kconfig
+@@ -158,6 +158,7 @@ config E500
+     imply VIRTIO_PCI
+     select ETSEC
+     select GPIO_MPC8XXX
++    select GPIO_PWR
+     select OPENPIC
+     select PFLASH_CFI01
+     select PLATFORM_BUS
+-- 
+2.46.2
+

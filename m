@@ -1,200 +1,167 @@
-Received: by 2002:a17:505:c89:b0:1be9:327d:8ee3 with SMTP id hp9csp1941062njb;
-        Mon, 7 Oct 2024 06:33:02 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWOdepsFFjLD5v05WzSY8+xtuerjasXUdqIX80MsI8PV9kGh/Mxtf3kE9eiJZQgTyIh4orX2EI71koo6w==@linaro.org
-X-Google-Smtp-Source: AGHT+IG8RYsIJ57hYld9N4aE7nj9R9yNqxEZCITBbC2AJ40+kAiz1sTYVGyI96lM6pzQDoJEHbyg
-X-Received: by 2002:a05:6122:904:b0:507:9165:20e with SMTP id 71dfb90a1353d-50c85e631bdmr6151566e0c.0.1728307982273;
-        Mon, 07 Oct 2024 06:33:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1728307982; cv=none;
+Received: by 2002:a17:505:c89:b0:1be9:327d:8ee3 with SMTP id hp9csp1047738njb;
+        Sat, 5 Oct 2024 08:25:55 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUaCEhcUnVVHsx5rQ4Jv74XsY8+4GODkHDErvMZWhkCXIEHcY6tyEaj8RLeq9/La7cbo/8GwwWuv0rifA==@linaro.org
+X-Received: by 2002:a17:902:e74c:b0:206:9a3f:15e5 with SMTP id d9443c01a7336-20bfe043018mr92509945ad.32.1728141955250;
+        Sat, 05 Oct 2024 08:25:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1728141955; cv=none;
         d=google.com; s=arc-20240605;
-        b=T79mXCtiyQxh35vCd7l5Yi8zT7MkW7TTdfWVnnryTifgjWRxAb2o9yFVpwP7BdPsiH
-         7uLvB0tFwBLtP32qvRvVJPoGIu7IXMbmIscBsKcrdg8FMGnfsEsEO9YlLBkgF/krml/M
-         BZOPKnvkXiV9d7Vz5H6f1l+Z8UZ7WQiI5awZy4vFJGLu/jFEjYfokLU4S42Z80eVAtFj
-         oVwotYdCQqh7PNs4/+AsKoSMFcvwwP+SKswhP2338j3lRuJO3EmqtfRvJ2DgRqrq604z
-         Jac5WUhP1fLpQa6K3CzgOLechWEFGhZU9UrHfgWXrdDldNFn/ik7RFpvmnGroCGPL8Zo
-         mxgQ==
+        b=d56JzXZxpUe55SWmTAEzKaaINUDnBwwu8tP+B4BpPPBwckfujbXl9Mhxa2qD0D6+ED
+         ylDdgVk6XsEGnWf74ts0Y2+Tt0ISQhsDGY0TuW0iGO+Ev4tzAWP1b87co/bDeTFfAQah
+         QmsBXmINO9G+JMxNr7x4gvwa9fdfO1oNocA31VlG6tk6aS8XsRcMnQX1fCYwUuBejWst
+         4sAhSl5Bgvrct14RVEXF6mUhikssNiJuRZLkK3v4RBiALiS4erA9Nm+Hcwtgc3wuDDlo
+         CF1gmDc2ckuuJt/+wQW/5spVLJdXrnbEFw+Yk549waz8LPb0jR3CKbPUSsx2mayzoNHk
+         Al6g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:subject:cc:to:from
-         :date:dkim-signature;
-        bh=cFFf8CKcwYhnJ7SdLlxptlTyPvE7fzsa30udxbxBdTM=;
-        fh=Pa8FH0stjZYjky2UT0CTsafYYFYJuOhlFYeLbGNWfX8=;
-        b=QY9c7ugI+hbZkv1SPuy6eCditpalt73v2ZOgsK722DHE2lWQJvcRooxwbiWzKhQo7D
-         //S3g8nEVQs/lZD5+7xU1SuTPDL9ptrB5uWglwV/QUTXIpvskdrurZjDaqE7NYkG6lkr
-         ywCdBHlxYJxbjqvTUuamKvsDfSOW1g+2qYYgGYlNYK3PImKNAc4HziSNrxu3j/HYiQZM
-         2q7JTvPSZdcYqxMnloBIB9z1hEd9V8cR1g+R/aNCDk8p1YQtuCVp3RxGJYOHe0RXcvTg
-         lYz42Y2VCT+eUyRCU8E6+XyfoQ8zaVpwu7/HEi3+UHQ4ban1Gqyw3Q5d7EYvsz2yHqw7
-         JA5Q==;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=wBthGFf8BfR2i4dob959bB47CFsEJX0Mf+aRMHd0jM4=;
+        fh=AyJsET+4279DeCQAOgZ56EfjL8qLnSrNsOze8/2ol9E=;
+        b=SwEmPVkIlvpuaOMEauJrg5a/SsE4hHv/T2dqWv5MUBBgxWxrJpHg9Y/rlit+1mqht6
+         6EC+wYYXKfMnMpsk97Et7v/sB321eXSCuIR9rLLcphT+0rEWLZbw9vr3fhPgOICMlcwz
+         0+gOGH28Mb8g6yFymQiWu/tCTSnHd1jynZDTpYEI/+fI87q0KaxP1nRVrFGiP6DALsOg
+         AqnDpEH1LUAYq6xxOyxS6SbWTdWcGiEqGrrAO2qyD+0w6WRGkwU9yCgSX5TEtJcULzYQ
+         szFaWcTP/1JmNF5okFKPSwCRd+a9vAaOMr8mxPXEemhf/fCIFEUOIuV5Jef9jdwTQdTC
+         9Yzw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BqcrfzeU;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 71dfb90a1353d-50c9ad70542si806993e0c.75.2024.10.07.06.33.02
+       dkim=pass header.i=@linaro.org header.s=google header.b=vr7nLxuO;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d9443c01a7336-20c138a9ec9sor10743025ad.2.2024.10.05.08.25.55
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 07 Oct 2024 06:33:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Sat, 05 Oct 2024 08:25:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BqcrfzeU;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sxnqv-00041W-Qx; Mon, 07 Oct 2024 09:32:45 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1sxnqt-00041G-Px
- for qemu-arm@nongnu.org; Mon, 07 Oct 2024 09:32:44 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1sxnqs-0003bc-A4
- for qemu-arm@nongnu.org; Mon, 07 Oct 2024 09:32:43 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1728307961;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=cFFf8CKcwYhnJ7SdLlxptlTyPvE7fzsa30udxbxBdTM=;
- b=BqcrfzeUkH+9jc0/6BY2cQu9TvH+DZPegXFNMG8syBEw5wnyBDEZDA7LuG0t2Ghq7C4QIF
- GsML0jl0ui2v/mKJ1WFmcVXGXhGUMEAPE4G4iXZMY4ZlpDapv+58lJKfDvY8BQcoyXAGMF
- lDYQ8ou3NMtuJVGMUPI0GuevJBGa8z4=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-344-oSaxrQXLON-YCVjt-24ZZg-1; Mon, 07 Oct 2024 09:32:40 -0400
-X-MC-Unique: oSaxrQXLON-YCVjt-24ZZg-1
-Received: by mail-wm1-f71.google.com with SMTP id
- 5b1f17b1804b1-42f310f0ed2so50356315e9.1
- for <qemu-arm@nongnu.org>; Mon, 07 Oct 2024 06:32:40 -0700 (PDT)
+       dkim=pass header.i=@linaro.org header.s=google header.b=vr7nLxuO;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1728141955; x=1728746755; darn=linaro.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=wBthGFf8BfR2i4dob959bB47CFsEJX0Mf+aRMHd0jM4=;
+        b=vr7nLxuORtJwqMfL9+hv3d0uDY+ijWPGzv3tBBeUQj0+C0VAqImopeuwMco0oJ5QPf
+         xRzbacACIqBPT9/ZvTT8VrVaRBU/YgKEptEW5j2NuhBPpXvypxhnx4BoO8ZLWmKFFG+f
+         nWN7qUubfUOeCZpGUlz2obc88qUz450k9CuKHZEjk/gjVnfKa5BhHxpryy7yw0A9dkEM
+         8KAtZgcOjpzc9AJq44/R5HWFISgkdBjrUxhM8xzQNW0Qjc3W2O1jq8OPaBH9BgzbnegL
+         PZFvNckkBFcsbJa4OB87c0KGGVUAjmm6luChKv0/mQ5cuBrgxsXlwJpKFzivjTQjkLH4
+         24rQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1728307959; x=1728912759;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=cFFf8CKcwYhnJ7SdLlxptlTyPvE7fzsa30udxbxBdTM=;
- b=qQU15NFkiRV6aj6oHj66/dMQf4mSZoV7YzhgVTi3B4MQvVaN89UEMDuRdijaytTKVr
- pbyEYFCXOjiw/xa0bVJPQMJX3hF/zIQFEBESHODlZpIRgJd+H7HMiXJIrmhEMP1bUNUJ
- vHwitbsXNHx7SXCRAe2C5ydqGpjumKxtzZcqBjIFCKybE7f1dRwQCpozXBd4phdEkDBe
- XRR6GVkOoJcGakMa8FwXUNA2NEzsPVz/OfLsUAxe2HSbuQajFXY9oew1IM6rBZeSFBf9
- OLEqrpwDuTjmCdwmcobUYfuODxU3JYxlsn+zs0D/kcGe/FzruPqXciLVbnn/PiUTCm3F
- yM0w==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXYX/UpKybmozfg5kaL/H2tShtrxkOIb7N7edZgejfEh+tnTpPhzcTsXRyK4wrR5JxoreekcY3s2A==@nongnu.org
-X-Gm-Message-State: AOJu0YyonE47D6U90qPx7ZF9ntRAwEKY0NFgo7QUcHsb6qd3JW+CDiPO
- ig8ugqRwSm6u7GYUQt4/SmybmozwrioURtXAmHFl/sL+isuQt6jl0o3Dr/9G3UwLYOl+VkRGBqn
- iWId4TRtIA+WvJ3qKe6fsS6kZNMVgzf/jlgBkeHvqE1w+5F/PBQ==
-X-Received: by 2002:a5d:5f54:0:b0:37c:cfdc:19ba with SMTP id
- ffacd0b85a97d-37d0e751784mr12994633f8f.28.1728307958990; 
- Mon, 07 Oct 2024 06:32:38 -0700 (PDT)
-X-Received: by 2002:a5d:5f54:0:b0:37c:cfdc:19ba with SMTP id
- ffacd0b85a97d-37d0e751784mr12994593f8f.28.1728307958487; 
- Mon, 07 Oct 2024 06:32:38 -0700 (PDT)
-Received: from imammedo.users.ipa.redhat.com (nat-pool-brq-t.redhat.com.
- [213.175.37.10]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-37d1695eee7sm5749727f8f.82.2024.10.07.06.32.37
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 07 Oct 2024 06:32:37 -0700 (PDT)
-Date: Mon, 7 Oct 2024 15:32:36 +0200
-From: Igor Mammedov <imammedo@redhat.com>
-To: Annie Li <annie.li@oracle.com>
-Cc: miguel.luis@oracle.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- dave@treblig.org, mst@redhat.com, anisinha@redhat.com,
- shannon.zhaosl@gmail.com, peter.maydell@linaro.org, eduardo@habkost.net,
- marcel.apfelbaum@gmail.com, philmd@linaro.org, wangyanan55@huawei.com,
- zhao1.liu@intel.com, pbonzini@redhat.com, richard.henderson@linaro.org,
- eblake@redhat.com, armbru@redhat.com
-Subject: Re: [RFC V2 PATCH 04/11] acpi: Support Control Method sleep button
- for x86
-Message-ID: <20241007153236.2b4d3ad6@imammedo.users.ipa.redhat.com>
-In-Reply-To: <20240927183906.1248-5-annie.li@oracle.com>
-References: <20240927183906.1248-1-annie.li@oracle.com>
- <20240927183906.1248-5-annie.li@oracle.com>
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
+        d=1e100.net; s=20230601; t=1728141955; x=1728746755;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=wBthGFf8BfR2i4dob959bB47CFsEJX0Mf+aRMHd0jM4=;
+        b=at9VY1w8b0Yk58dZraZ3qVJrogQV8bdLyqCkDGY+LwKylX8HQcbaPU+1aPunsIxF1o
+         6M2FePJOLfhTp/ivZIYH0oarmgDJdp9MUL5LLJJhe1oZDt2asJZfkxqHOErAF2NDPz9q
+         cJrzI+PoME9P3yTR5TznDLfVQImTGPLw6qMMpmshCSroXJfAzGQcZ69UtK+Ds8cnMHuk
+         Z9Iwf4OnQ1BkGHattLsP4V4QyFeWzljzO/l0pNRG8eYm1/vQlofYf7+jCSLebPH0CVcL
+         mftfk0QwaSCylUW2evuK48KF40XJZydPQ4Kx/67D3eWlUSSVobWw/EqnPLTF7LlzKsNm
+         Ducg==
+X-Forwarded-Encrypted: i=1; AJvYcCVRxMjplwGpTrBzr12/mhRIuslgqRzayDOP6dZ4b2izECb/DPwcKEU/k7/T+WUDxNJY1ssgE23Ffm1Phw==@linaro.org
+X-Gm-Message-State: AOJu0YwPiU+GmZKOUVQmwiOSS/aMZ9tSK07g1DQeXEJJQJqAxaEoUATm
+	4zVWl3JA8ShFLFjip7Uh5RqV50MUQk4BL1z9ip/SsBtfqN6w8ATXG/H/zNfLVeEe+jjw6yCVTdM
+	7MCU=
+X-Google-Smtp-Source: AGHT+IH7Xmy/UoZFDozrpGZR2JXAjehjcUEjjy3Gt9EAYcog/cZlmR6Wqao6wjaMYAvpmgnjtSqiEQ==
+X-Received: by 2002:a17:902:d581:b0:20b:419e:9f15 with SMTP id d9443c01a7336-20bfea570admr86092045ad.46.1728141954795;
+        Sat, 05 Oct 2024 08:25:54 -0700 (PDT)
+Return-Path: <richard.henderson@linaro.org>
+Received: from stoup.. (174-21-81-121.tukw.qwest.net. [174.21.81.121])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-20c1396948dsm14351765ad.225.2024.10.05.08.25.54
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 05 Oct 2024 08:25:54 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: deller@kernel.org,
+	peter.maydell@linaro.org,
+	alex.bennee@linaro.org,
+	linux-parisc@vger.kernel.org,
+	qemu-arm@nongnu.org
+Subject: [PATCH 02/20] accel/tcg: Expand tlb_fill for 3 callers
+Date: Sat,  5 Oct 2024 08:25:33 -0700
+Message-ID: <20241005152551.307923-3-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20241005152551.307923-1-richard.henderson@linaro.org>
+References: <20241005152551.307923-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=imammedo@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
-X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.153,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: tOaoMfjl/ROl
+Content-Transfer-Encoding: 8bit
+X-TUID: 3jecNHHhL7wK
 
-On Fri, 27 Sep 2024 14:38:59 -0400
-Annie Li <annie.li@oracle.com> wrote:
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ accel/tcg/cputlb.c | 33 ++++++++++-----------------------
+ 1 file changed, 10 insertions(+), 23 deletions(-)
 
-> Adding Control Method Sleep button and its GPE event handler for
-> x86.
-> 
-> Signed-off-by: Annie Li <annie.li@oracle.com>
-> ---
->  hw/i386/acpi-build.c | 9 +++++++++
->  1 file changed, 9 insertions(+)
-> 
-> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-> index 5d4bd2b710..ee62333a03 100644
-> --- a/hw/i386/acpi-build.c
-> +++ b/hw/i386/acpi-build.c
-> @@ -40,6 +40,7 @@
->  #include "hw/acpi/acpi_aml_interface.h"
->  #include "hw/input/i8042.h"
->  #include "hw/acpi/memory_hotplug.h"
-> +#include "hw/acpi/control_method_device.h"
->  #include "sysemu/tpm.h"
->  #include "hw/acpi/tpm.h"
->  #include "hw/acpi/vmgenid.h"
-> @@ -1527,6 +1528,14 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
->      }
->      aml_append(dsdt, scope);
->  
-> +    sb_scope = aml_scope("_SB");
-> +    acpi_dsdt_add_sleep_button(sb_scope);
-> +    aml_append(dsdt, sb_scope);
-> +
-> +    scope =  aml_scope("\\_GPE");
-
-> +    acpi_dsdt_add_sleep_gpe_event_handler(scope);
-instead of having 1-off function, it would be better to inline impl,
-here, like we do elsewhere with _Exx methods.
-
-Also given that, series doesn't support wake,
-you don't need to copy example from spec related to operation region,
-as dedicated GPE event by itself tells us that sleep was requested.
-
-so all you need to do is sending Notify to sleep button device.
-
-
-> +    aml_append(dsdt, scope);
-> +
->      if (pcmc->legacy_cpu_hotplug) {
->          build_legacy_cpu_hotplug_aml(dsdt, machine, pm->cpu_hp_io_base);
->      } else {
-
+diff --git a/accel/tcg/cputlb.c b/accel/tcg/cputlb.c
+index fd6459b695..58960969f4 100644
+--- a/accel/tcg/cputlb.c
++++ b/accel/tcg/cputlb.c
+@@ -1220,25 +1220,6 @@ void tlb_set_page(CPUState *cpu, vaddr addr,
+                             prot, mmu_idx, size);
+ }
+ 
+-/*
+- * Note: tlb_fill() can trigger a resize of the TLB. This means that all of the
+- * caller's prior references to the TLB table (e.g. CPUTLBEntry pointers) must
+- * be discarded and looked up again (e.g. via tlb_entry()).
+- */
+-static void tlb_fill(CPUState *cpu, vaddr addr, int size,
+-                     MMUAccessType access_type, int mmu_idx, uintptr_t retaddr)
+-{
+-    bool ok;
+-
+-    /*
+-     * This is not a probe, so only valid return is success; failure
+-     * should result in exception + longjmp to the cpu loop.
+-     */
+-    ok = cpu->cc->tcg_ops->tlb_fill(cpu, addr, size,
+-                                    access_type, mmu_idx, false, retaddr);
+-    assert(ok);
+-}
+-
+ static inline void cpu_unaligned_access(CPUState *cpu, vaddr addr,
+                                         MMUAccessType access_type,
+                                         int mmu_idx, uintptr_t retaddr)
+@@ -1631,7 +1612,10 @@ static bool mmu_lookup1(CPUState *cpu, MMULookupPageData *data,
+     if (!tlb_hit(tlb_addr, addr)) {
+         if (!victim_tlb_hit(cpu, mmu_idx, index, access_type,
+                             addr & TARGET_PAGE_MASK)) {
+-            tlb_fill(cpu, addr, data->size, access_type, mmu_idx, ra);
++            bool ok = cpu->cc->tcg_ops->tlb_fill(cpu, addr, data->size,
++                                                 access_type, mmu_idx,
++                                                 false, ra);
++            assert(ok);
+             maybe_resized = true;
+             index = tlb_index(cpu, mmu_idx, addr);
+             entry = tlb_entry(cpu, mmu_idx, addr);
+@@ -1833,8 +1817,10 @@ static void *atomic_mmu_lookup(CPUState *cpu, vaddr addr, MemOpIdx oi,
+     if (!tlb_hit(tlb_addr, addr)) {
+         if (!victim_tlb_hit(cpu, mmu_idx, index, MMU_DATA_STORE,
+                             addr & TARGET_PAGE_MASK)) {
+-            tlb_fill(cpu, addr, size,
+-                     MMU_DATA_STORE, mmu_idx, retaddr);
++            bool ok = cpu->cc->tcg_ops->tlb_fill(cpu, addr, size,
++                                                 MMU_DATA_STORE, mmu_idx,
++                                                 false, retaddr);
++            assert(ok);
+             index = tlb_index(cpu, mmu_idx, addr);
+             tlbe = tlb_entry(cpu, mmu_idx, addr);
+         }
+@@ -1848,7 +1834,8 @@ static void *atomic_mmu_lookup(CPUState *cpu, vaddr addr, MemOpIdx oi,
+      * but addr_read will only be -1 if PAGE_READ was unset.
+      */
+     if (unlikely(tlbe->addr_read == -1)) {
+-        tlb_fill(cpu, addr, size, MMU_DATA_LOAD, mmu_idx, retaddr);
++        cpu->cc->tcg_ops->tlb_fill(cpu, addr, size, MMU_DATA_LOAD,
++                                   mmu_idx, false, retaddr);
+         /*
+          * Since we don't support reads and writes to different
+          * addresses, and we do have the proper page loaded for
+-- 
+2.43.0

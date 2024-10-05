@@ -1,81 +1,80 @@
-Received: by 2002:a17:505:c89:b0:1be9:327d:8ee3 with SMTP id hp9csp1047895njb;
-        Sat, 5 Oct 2024 08:26:11 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXLdPYj7qEYmOAU1m3JQ0GKyjQF3ywfcLl2lUsI0gcuNGbmcStK1eCVRs3xL9W0RDlcY1Dwk+INuVSbwA==@linaro.org
-X-Received: by 2002:a17:903:268e:b0:20b:9b38:fbd6 with SMTP id d9443c01a7336-20bff194b37mr71963905ad.40.1728141970773;
-        Sat, 05 Oct 2024 08:26:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1728141970; cv=none;
+Received: by 2002:a17:505:c89:b0:1be9:327d:8ee3 with SMTP id hp9csp1047903njb;
+        Sat, 5 Oct 2024 08:26:12 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWMwhTk+tYg+k1I6SkXI6p2HkWvqOUPtJ7DUPvwUgFmTFQuA+72ISsOzrUNuUcjTuq6HrdEBF813c5uwA==@linaro.org
+X-Received: by 2002:a17:902:e80c:b0:20b:7094:8d14 with SMTP id d9443c01a7336-20bfde58014mr103852725ad.5.1728141971770;
+        Sat, 05 Oct 2024 08:26:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1728141971; cv=none;
         d=google.com; s=arc-20240605;
-        b=FKKxwiDDzepFCZyoa4hOxsdFy853PHVsW4/knY+fRRWbHIaKbVcD1GxbWjER3X3EV1
-         Rw8gC3RO0Cr9QL8SR2JrCqIQSTbm4O8V3chleE2Q8rkTK0Fp7t2+OfGRsFU6P6IhCM16
-         gplxKPytX7qYm3qArXKAUxK9Yn5vJu3w46/OjERcg8SdgYev2cgfaw9F8xLFUleGVsGg
-         taOBobi73sqs7LRGSl61BRfuAqzrWSuaPTDOqNaVhY/fTKnhTLrRUJxiBNwpCM5DwQtA
-         eUN1JXQyvAgKoq7OqmTGibcaNAwmikfQx2ZLKKbYk9WAxLlqK6/XrPYglfXxCwoKavDB
-         OXXg==
+        b=ihw3S3i9De93OKbGzqUNlU7c1zFUttqx8Zukz44tK+YroyXOXuHL4loN84uNWOKQIb
+         Ha1D5Vkf9WDiMOv7xyWb/VkBvRXwCuhhVjXsrLgdF78c/jAsaDRXePXA4f8pdPynEAMc
+         Ju5nvY7QNZKZDwbfS3g8nDkJvYT7eikzmESaSqMTP55AMvIGc7AwVt0161z65UW3ib30
+         9izbPTnyL8xdiggGZFLFBw1uaj80iPDM7zjffsoFJ2P0PSiOUMu+aHGjQIr1dJOdzY0Y
+         CzyhTN+Q8Sr+pkjvlhcNQfoZN6PucfMyvVK4B0d0D5yMZEvXl9fmVHJjPv5WaY5IYoKo
+         qzCw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=9tqb0TUsQOZF/sRJ8YxWqhKeQa3g/EH2JXyCvd2UdW4=;
-        fh=L3gfhcAAaPaXpqKrP3R/vl7mTXTUYWxpzBQRQv6wtdo=;
-        b=Al+vV5S9G9FExurvKMXGOEbyK6f0qgJTqNangQRML4Z8lqgptuu25D9/TfZmHrU3ny
-         MVmJ0R8HuyEpBkXwXjQePqON2yn6TApzfgveiQpqkEhFPgz9TFGMCVOcDbe8D84zDxli
-         fiI2MlsVNf+lxSarTTD8bsL8qgTMGHT9uEVM8RJt7ddiG7aXOUuEgrlM9HLF4IPtMeqn
-         fyDk4edxrklo6G6uqrzTKmYk7g96eAQCfYd1w5/3p/bxMD2n1Q/nIuR0+Ndy7O5ySkYx
-         TaIJjLrbSYErt6zmk7ner6IYysIyjjUlwabOZa1zdki/AQiBhqzV3ySOelWuiurDcD8q
-         yuRw==;
+        bh=/ZHU/9Bj/Yhl/fLIAf9ED9KKjqQvRkGT+c+Pl2SvUJY=;
+        fh=eXtsLInz+BJPEttbWYsvHoEB/YU0yEteVO4MS3POAS0=;
+        b=Bmo/PF/eXljnml8cM3UkfBkkqUSzfNFUNkHuWZlgshkUH1kWTM3iupFGGSxFOveilV
+         q+suvX8l5lWCZFrHlIT8AgY3IEd47wEUb1RyaogQZzJvGFEUgcoe/TpK+Gm0GivbQx70
+         8lp/QwxAID1YMzCk4ezOCJHdq+ULDR6EVhCUCRvoGa7EvSrn9BX/9d8/b6vjpsjjMBU6
+         GW+5iUeDztAELGpviwPxim4J5WLxr6pTRCSjdZ9fRRNEE8G5R2z3Vlqj88FmXX237+/C
+         Dm0YhmNeClm2EP76dZGRUohXMIgq3lIzy6FHaN3QQz/GVqrKFpUysruC+oUNeKiEl49R
+         8HpA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=oMc3a7i5;
+       dkim=pass header.i=@linaro.org header.s=google header.b=cweBGUCQ;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d9443c01a7336-20c1394f298sor9748195ad.14.2024.10.05.08.26.10
+        by mx.google.com with SMTPS id d9443c01a7336-20c1390fe5esor9055135ad.15.2024.10.05.08.26.11
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Sat, 05 Oct 2024 08:26:10 -0700 (PDT)
+        Sat, 05 Oct 2024 08:26:11 -0700 (PDT)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=oMc3a7i5;
+       dkim=pass header.i=@linaro.org header.s=google header.b=cweBGUCQ;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1728141970; x=1728746770; darn=linaro.org;
+        d=linaro.org; s=google; t=1728141971; x=1728746771; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=9tqb0TUsQOZF/sRJ8YxWqhKeQa3g/EH2JXyCvd2UdW4=;
-        b=oMc3a7i5lfg1BqRraOecfPzKMeNNQhhz9H6qE5I3IERfi2HsCgEI+SAtdH7RFwjLRj
-         CaeZV95jTpo6Ph38Ht7BbXxh982aBQPopaK/OclRlSkI8JUkvLsXBzy1GTe9MwpFQ6Vt
-         HB/3ufcA9ETod92kvh8ksuhgepI6jRCYYQbX3cLtCRMqryngVYVDI33fSIHAFZDC/bNU
-         wq7cFfB372OyffsrBBFD+VRmpaRQXM9/cLF4huP21hKUtDjhWrb9VgqpzvOnpElGQxJK
-         qohzIN3PIugRSyUre6MKZOXbZi9v2rv/7UNb5dLLFvW9dxB16PVRrwdhVV8GRh0957Un
-         /43w==
+        bh=/ZHU/9Bj/Yhl/fLIAf9ED9KKjqQvRkGT+c+Pl2SvUJY=;
+        b=cweBGUCQtQg8Wvz+cY3aw3ROEcLdK9kVIX5nxF+fOvWy8Kqq328wXkqOaT5uajkev7
+         At7r+DDaeX3y6NqGhj7lfFlItv08CVAyPTGg+HLha7jzzKVlUB1A8ZuMadlx981J2qmp
+         jwpxy7tfX6Xhy46c6TH+BsCtPUwrMtkSQgbLkXAwJYHiskYj3aenYV0jtl3hfXPlxlvL
+         v+rlOF7iriImoEl+br++cK+5ctdUlqV0bdnPGxA3LW4YbiCcYwp27KtkRpgH6GKqU/HV
+         vpl3lrDDktBQPvE1Xc/GeeBgSRsLOirWWOu2/XIrgSIhNDnH5lK5E8Ko0umdHT6B3G5T
+         LBhg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1728141970; x=1728746770;
+        d=1e100.net; s=20230601; t=1728141971; x=1728746771;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=9tqb0TUsQOZF/sRJ8YxWqhKeQa3g/EH2JXyCvd2UdW4=;
-        b=kGpj6mtMDucagBPVrbNr5yB9rAuD4zjx0PwzA3eCMdqjqBbzorP5zSsjeQ71t90Ky2
-         flNyWX9HWaEHNu2Zrt6PbNzzFxravsNSNCD6MK59zDQV8kIUIwY987m2JpAl7OM1nPAJ
-         CWuEg6YapiI08FQ+3PPqquhi1uopeUHTM3KKe3hDJg9MjLctThQFRd81ikJ8t2LfQfuV
-         3364gvHNaELBj1TE9XvJ7oexZIQpOKig9In4z9ZNd7yGghO/SjZ69DQJY6zi+WfPXOOx
-         Iuy9Ju08S+MWebNJeWpw5ClY8QUDXdtVeoGf3Gw/NIEMYEM1eRv+Vp7eECv0awy5cn4N
-         GUjA==
-X-Forwarded-Encrypted: i=1; AJvYcCVerNYSIf/TevzNyMCdy8HK/eJJpyP8PZgQ7UMkOb941C8fscjgkctqKpUjkIAKMpggGuTnsFQ92k9G7g==@linaro.org
-X-Gm-Message-State: AOJu0Yydhz3JzqBGZX09LcNQEbZq/vlG4L7Ts2FBHR7JRjYWkAMWyMqi
-	V7a7uWKNp1zvPxOOla6140lXE/Y0LHT3/TyrtYDIfS5Hxt/jdyYK94vO0hkCDATxkmu2E+hLy5b
-	LDZw=
-X-Google-Smtp-Source: AGHT+IHAcc49fQDj+6dUv1WwyItmZo+VQhDVyFSsiB0HVGJtSbOyDZXUNQcKgpb3qKjj8UutpLm7Eg==
-X-Received: by 2002:a17:902:d2d0:b0:20b:be06:f3d9 with SMTP id d9443c01a7336-20bfe1887c8mr91971805ad.24.1728141970334;
-        Sat, 05 Oct 2024 08:26:10 -0700 (PDT)
+        bh=/ZHU/9Bj/Yhl/fLIAf9ED9KKjqQvRkGT+c+Pl2SvUJY=;
+        b=nWpIbfw/cBTuTYlJWx2jCRZ1At208gSqUbKPGoHgOY8koRdcCAdg+cH/L9oLgRjlAF
+         x9UKenCxvK6zv/Hj3sgiIulsTzKyuOTxRUBrvtgWeHEZqnVLAhX9tBEAZwcL2jBDhZfx
+         ltmX2w9lc7c0X80C7gj9xrmTW+0/HnQhzUAj15GgryaRhjw17Tg9gMyMOK4nc1KJH1cJ
+         Y9bL3R+jFUnDt6o2K6iqkzP60Jf2CV9UHGVPWff5aZ767T39QcrptvFiZRs2JeJp6sMc
+         bEmk2LUyLd4FCjz3Z72HhtWVdgqLYFhGq7EIb7QxHWBEYk1wWy+MnwB6beZ2ME11WeRJ
+         DQyw==
+X-Forwarded-Encrypted: i=1; AJvYcCVTo0WdjACdCkac7FkmOG4wgF/WxhOD2TqXXX8jufy2WauA8Fymopkl/l1shucxIWpxYrFFbLd1PTQlLA==@linaro.org
+X-Gm-Message-State: AOJu0Yz2THLN5h4g80cfj1oEIulJgLpZA8O9MVnVqCTpsiPpU+6GEN5x
+	pt64HFYgVIYeuFiIPgqyh1qV96n+e1QXSK4V4l8+t14SE39vzVinP/aYlEpZSAHJfw==
+X-Google-Smtp-Source: AGHT+IH4Lr64SQZfzlOO2MyBkQGMuSWCJxA1Uid5flyT3IfspQk+qHg9k3FYTQCTF9/9yq+5XQ2JSg==
+X-Received: by 2002:a17:903:2b07:b0:20b:8e18:a395 with SMTP id d9443c01a7336-20bfe291f03mr89154495ad.44.1728141971365;
+        Sat, 05 Oct 2024 08:26:11 -0700 (PDT)
 Return-Path: <richard.henderson@linaro.org>
 Received: from stoup.. (174-21-81-121.tukw.qwest.net. [174.21.81.121])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-20c1396948dsm14351765ad.225.2024.10.05.08.26.09
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-20c1396948dsm14351765ad.225.2024.10.05.08.26.10
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 05 Oct 2024 08:26:09 -0700 (PDT)
+        Sat, 05 Oct 2024 08:26:10 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: deller@kernel.org,
@@ -83,51 +82,100 @@ Cc: deller@kernel.org,
 	alex.bennee@linaro.org,
 	linux-parisc@vger.kernel.org,
 	qemu-arm@nongnu.org
-Subject: [PATCH 18/20] target/arm: Pass MemOp to get_phys_addr_lpae
-Date: Sat,  5 Oct 2024 08:25:49 -0700
-Message-ID: <20241005152551.307923-19-richard.henderson@linaro.org>
+Subject: [PATCH 19/20] target/arm: Move device detection earlier in get_phys_addr_lpae
+Date: Sat,  5 Oct 2024 08:25:50 -0700
+Message-ID: <20241005152551.307923-20-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20241005152551.307923-1-richard.henderson@linaro.org>
 References: <20241005152551.307923-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: l2hs6gPFIT3B
+X-TUID: bFCrM5+AdMAM
 
-Pass the value through from get_phys_addr_nogpc.
+Determine cache attributes, and thence Device vs Normal memory,
+earlier in the function.  We have an existing regime_is_stage2
+if block into which this can be slotted.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/ptw.c | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+ target/arm/ptw.c | 49 ++++++++++++++++++++++++------------------------
+ 1 file changed, 25 insertions(+), 24 deletions(-)
 
 diff --git a/target/arm/ptw.c b/target/arm/ptw.c
-index f1fca086a4..238b2c92a9 100644
+index 238b2c92a9..0a1a820362 100644
 --- a/target/arm/ptw.c
 +++ b/target/arm/ptw.c
-@@ -1684,12 +1684,13 @@ static bool nv_nv1_enabled(CPUARMState *env, S1Translate *ptw)
-  * @ptw: Current and next stage parameters for the walk.
-  * @address: virtual address to get physical address for
-  * @access_type: MMU_DATA_LOAD, MMU_DATA_STORE or MMU_INST_FETCH
-+ * @memop: memory operation feeding this access, or 0 for none
-  * @result: set on translation success,
-  * @fi: set to fault info if the translation fails
-  */
- static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
-                                uint64_t address,
--                               MMUAccessType access_type,
-+                               MMUAccessType access_type, MemOp memop,
-                                GetPhysAddrResult *result, ARMMMUFaultInfo *fi)
- {
-     ARMCPU *cpu = env_archcpu(env);
-@@ -3534,7 +3535,8 @@ static bool get_phys_addr_nogpc(CPUARMState *env, S1Translate *ptw,
+@@ -2029,8 +2029,20 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
+             xn = extract64(attrs, 53, 2);
+             result->f.prot = get_S2prot(env, ap, xn, ptw->in_s1_is_el0);
+         }
++
++        result->cacheattrs.is_s2_format = true;
++        result->cacheattrs.attrs = extract32(attrs, 2, 4);
++        /*
++         * Security state does not really affect HCR_EL2.FWB;
++         * we only need to filter FWB for aa32 or other FEAT.
++         */
++        device = S2_attrs_are_device(arm_hcr_el2_eff(env),
++                                     result->cacheattrs.attrs);
+     } else {
+         int nse, ns = extract32(attrs, 5, 1);
++        uint8_t attrindx;
++        uint64_t mair;
++
+         switch (out_space) {
+         case ARMSS_Root:
+             /*
+@@ -2102,6 +2114,19 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
+          */
+         result->f.prot = get_S1prot(env, mmu_idx, aarch64, ap, xn, pxn,
+                                     result->f.attrs.space, out_space);
++
++        /* Index into MAIR registers for cache attributes */
++        attrindx = extract32(attrs, 2, 3);
++        mair = env->cp15.mair_el[regime_el(env, mmu_idx)];
++        assert(attrindx <= 7);
++        result->cacheattrs.is_s2_format = false;
++        result->cacheattrs.attrs = extract64(mair, attrindx * 8, 8);
++
++        /* When in aarch64 mode, and BTI is enabled, remember GP in the TLB. */
++        if (aarch64 && cpu_isar_feature(aa64_bti, cpu)) {
++            result->f.extra.arm.guarded = extract64(attrs, 50, 1); /* GP */
++        }
++        device = S1_attrs_are_device(result->cacheattrs.attrs);
      }
  
-     if (regime_using_lpae_format(env, mmu_idx)) {
--        return get_phys_addr_lpae(env, ptw, address, access_type, result, fi);
-+        return get_phys_addr_lpae(env, ptw, address, access_type,
-+                                  memop, result, fi);
-     } else if (arm_feature(env, ARM_FEATURE_V7) ||
-                regime_sctlr(env, mmu_idx) & SCTLR_XP) {
-         return get_phys_addr_v6(env, ptw, address, access_type, result, fi);
+     if (!(result->f.prot & (1 << access_type))) {
+@@ -2131,30 +2156,6 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
+     result->f.attrs.space = out_space;
+     result->f.attrs.secure = arm_space_is_secure(out_space);
+ 
+-    if (regime_is_stage2(mmu_idx)) {
+-        result->cacheattrs.is_s2_format = true;
+-        result->cacheattrs.attrs = extract32(attrs, 2, 4);
+-        /*
+-         * Security state does not really affect HCR_EL2.FWB;
+-         * we only need to filter FWB for aa32 or other FEAT.
+-         */
+-        device = S2_attrs_are_device(arm_hcr_el2_eff(env),
+-                                     result->cacheattrs.attrs);
+-    } else {
+-        /* Index into MAIR registers for cache attributes */
+-        uint8_t attrindx = extract32(attrs, 2, 3);
+-        uint64_t mair = env->cp15.mair_el[regime_el(env, mmu_idx)];
+-        assert(attrindx <= 7);
+-        result->cacheattrs.is_s2_format = false;
+-        result->cacheattrs.attrs = extract64(mair, attrindx * 8, 8);
+-
+-        /* When in aarch64 mode, and BTI is enabled, remember GP in the TLB. */
+-        if (aarch64 && cpu_isar_feature(aa64_bti, cpu)) {
+-            result->f.extra.arm.guarded = extract64(attrs, 50, 1); /* GP */
+-        }
+-        device = S1_attrs_are_device(result->cacheattrs.attrs);
+-    }
+-
+     /*
+      * Enable alignment checks on Device memory.
+      *
 -- 
 2.43.0

@@ -1,162 +1,164 @@
-Received: by 2002:a17:505:c89:b0:1be9:327d:8ee3 with SMTP id hp9csp1162060njb;
-        Sat, 5 Oct 2024 13:59:05 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXym+swjG+npDGC7sGfGVQTHua0e0SSjSrxLURywbW6UNWrjXweWjNPKntHLD3D5CSgWJOXdb//gEHOaw==@linaro.org
-X-Google-Smtp-Source: AGHT+IEULPlAh4wOlzR12NTFuFyo8NW3yy4OCyuxAul0EMvyMF8RmArSKncxtzz9JMFj37yVktnq
-X-Received: by 2002:a05:620a:4452:b0:7a6:68d1:7dfa with SMTP id af79cd13be357-7ae6f437000mr1112984785a.17.1728161945321;
-        Sat, 05 Oct 2024 13:59:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1728161945; cv=none;
+Received: by 2002:a17:505:c89:b0:1be9:327d:8ee3 with SMTP id hp9csp1147618njb;
+        Sat, 5 Oct 2024 13:06:06 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWnMkZI2thhDcljr/5JUG86lISbKunf3LnPXWnDWme2/cxdH/YDUrpKq001hYOEDt1pN+Dpu+Y5GcdESg==@linaro.org
+X-Received: by 2002:a17:902:f689:b0:20b:9379:f1fc with SMTP id d9443c01a7336-20bfe021ae5mr97591575ad.12.1728158766608;
+        Sat, 05 Oct 2024 13:06:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1728158766; cv=none;
         d=google.com; s=arc-20240605;
-        b=OaKiJSR0Bxby/v3C1N12AFHTpvFjybD8B/B/L2fXrgMdCQ2J/BBFKNUDLkSXDLiPaP
-         +v/QFhZ9x7bMErry9qdzwCwrc8XLAJaQ1IhHcyRNiEEr145rJtJeX4+ywsK9+oBxbTq0
-         tBdysP7owMiFwEhPCkfxWY0yEk9U5gYYTui4od0tn7jCpfz1Yxm4QsilJiq7M5D+Ca6W
-         v9nicYk6vT+I31/YploCVrVyqP5sSNcEoKZ8LKChA+6EBvID+9lEzZj8YYpSK7VuaQo3
-         WmD70HsXYr9EdsdGT2J5RrysR9Ys3cS3Z6WamvRxAlkrmY3TSgR5/KFM5pU33F3o+u8y
-         5SWA==
+        b=kBrClcqK4CLrGsuwWNW4keLO4jUBkFebM+7JxTebibCSiYupO94uFGqiNcsV097BEt
+         m7FOibHAJ9i8REgi4UrlVH2vZU2o2VBSq4sCEZ+6p4einTaCwhFyYSXEIsuxziTw0cn9
+         2cYPfemGzHdXT2DQCDaDmTKnqZUHno7wtvPVSRtfOoIxpBV4eX4l1KkgCrQInSLl5p8S
+         /ZUKZZg6W2kQyxzcWzs+UCMiXO0eQuXJbIuI/5ZVrKTQKm/fjtqcOktmjcZcAG7A0gia
+         JkzBj1CsPphJ3tkBq2rWh9tu/Q9iSgyib7kousqa7+5bL8GnwOUYHiaRjJWQDCdcFYY4
+         mh8Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=JgYpXgtbXLUe7lni8+U/LXo08TWpLW4e88SRJQEYyUI=;
-        fh=wU1l73Q5jlzsTDMWng5XpHEgha3OeRC1rP+sq/GzOw0=;
-        b=MdEZSOkwnEfXijhs8B8FLYz4xHN4XFQv1DaPsQe42pKfqVgyMtfhEPws0Bs6TjTnS4
-         nUc2znNqEbBeW+Jwb/Mfik4wFBGNIL0vjdpB+faP7vNrHkZhTOyI+8IcpNmIzZXe6w3R
-         EdGHvE+dTNWpWT9FgHTxrMKMemQ6p3e2sUWb+m+U5EyjQ+tsgHNv6qUKny/tEz7Vwuk/
-         Tqw0mJOU3gQA9cJjcuvhZ+3h2aJu8fUaB8O+0Sky2lW4UrtmFC9xDOJPPNA5zVmhf8wB
-         tpbarZ7XLeKYzaF3yH/YJv8eWneO7uQhhKp2yEvyyDpg9I3wxc6ryC5P/MvlvfuNTYVL
-         hHFQ==;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=rMIQXnxelIQ86qxYbOA8sg/WFq9fqYpMUetqZ1DDKfA=;
+        fh=5dz/WuvSS5zLGuanc6OT+3NfLn56/YiKRzJTAn1RNR4=;
+        b=XmgnHmqAOySYhyXN03QYxVmuU8NZWlBVYV/U0Vs6oyrFkKO5Ne30LqjYgrGD/LSlcd
+         Y0elYYGsP9AvfWT/w46tLp7rRBL0IWv1C9OLLYIW4HoSIImt0Jmo97T8v6NA4ELZ29QA
+         7T75hGtV8EBJ0XrjaTMuH9CsqmtTseU2gTF1ZapzBY9bATgVtqubvEPt4YmVyQJcuf3f
+         pAiCAddRSHhYZnwyYT5ZkoHX/DGK0CxqdTqcJKugwHV7enZLA8kJy7FxYRPwrjxpuojY
+         4ZftD4W4u4Y+mCVs/33w7J5pF5uupP2lxZToCh49wnziUls257kJQGVVXXnxu+XeIy25
+         qiDQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=BlOSydc6;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=mUFKIodG;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7ae756193d8si270568485a.15.2024.10.05.13.59.05
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d9443c01a7336-20c138b46e8sor10433955ad.2.2024.10.05.13.06.06
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 05 Oct 2024 13:59:05 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Sat, 05 Oct 2024 13:06:06 -0700 (PDT)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=BlOSydc6;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=mUFKIodG;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sxBqr-0002kJ-RS; Sat, 05 Oct 2024 16:58:10 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1sxBqn-0002hm-6d; Sat, 05 Oct 2024 16:58:05 -0400
-Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1sxBql-0006n3-LN; Sat, 05 Oct 2024 16:58:04 -0400
-Received: by mail-ej1-x629.google.com with SMTP id
- a640c23a62f3a-a8d4979b843so435745066b.3; 
- Sat, 05 Oct 2024 13:58:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1728161881; x=1728766681; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=JgYpXgtbXLUe7lni8+U/LXo08TWpLW4e88SRJQEYyUI=;
- b=BlOSydc6wD3DOcyUGLDti8WcYVQt+66zXnBJPnxRef1VMqEQbWFoirWZKsZd24IK8k
- 0InSj2j3qi0Miw+2iMjRFEXuTuPMkhBevzezWBN434NlsQ+FUTMFIYi9g/aHf1ye1JXQ
- MDeFV3+nfqYXu7XSW5FRR7XM6v5XxbE5zXVZJbafntb//8qP4WPu4mrpTOnamkN2g2zA
- bxQN9Ct09mKlQx2DD6hnbMWSs8iHst+AzPKNVaAG3TxLUNxAoVWliCIhsdR/qNw4WWkZ
- mkBZJKhG7uTkkG30KJdSiXzetR5HBldkMOHc+FjtnhVbhu5wmmhXU7yHnfxf9r6oU93v
- B7Ng==
+        d=linaro.org; s=google; t=1728158766; x=1728763566; darn=linaro.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=rMIQXnxelIQ86qxYbOA8sg/WFq9fqYpMUetqZ1DDKfA=;
+        b=mUFKIodG/tZRLel2eBCLJbgPlRduZkzeqtYxQtczbPlx7PcGHelpI0/7MEpjFoNWID
+         fg2XrxtqndlpwwuwzkIqofeZ4ixlpbUWpfcS109aLP78eplyIfY10JGe3UuIdI4dvReB
+         JfgxOgmHoKeA9/x6ttJq+lx4Mzr4WPOJesdsKz1cL1JIT0pf5dwrcXdRbvwUj4axl6SO
+         0adRW6E0yTFEfVuQvZxSePRrhBzKgXzIl+C3ygjN8aU3eKNh8PsQ8WwEKoOTRTO8fq6N
+         qml0K9bpojrw1LLF4cX6Xn2DPvnwfa1k45tr3zHBFrGJsVHFPD1oPSx2xapBVdyoXeCA
+         ymFQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1728161881; x=1728766681;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=JgYpXgtbXLUe7lni8+U/LXo08TWpLW4e88SRJQEYyUI=;
- b=p6E5IjtDhaJslwlam70W7ezPC1xKtuOGWXjwTcxIaWeh4zkIVp8ItuLGGQFNB9j1A4
- xU2VwfmJxYOjl1WgsoQ9Bg6EyBECAJDtHzF4wpdmaKvxR061nvWLGIRMOBZdfiXiNVFC
- U219htkBB8KlyskGQzlENeACtHV6r3y0cn8FRgldQJINZIipTEeLYDn4FkuyzjCjPu7T
- P34p3blTtX5Ziq8x9ZkrvunTpCtyJst6VuSQpYwr3K4Pbt1tD81DyW203evkxKnNNOlk
- 6MRS0zLIXAdF/7k0cDM1auKgHp+7gNALWCXn9NRM4paE5bqdQwlGjNxfcdK45a64S5Or
- 2QFA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUY9xGw736HckwI72FtWp+hqdculIcd+ou6xeLWwwb8kbvxyY/sjZpfUB+eMAWE28QR8phmvy16mg==@nongnu.org
-X-Gm-Message-State: AOJu0YwGa2pFC48D7AJkisfDn6sAAckz/UFripkbWgj4Uuc+cqB47dvo
- w7WV0yFu6pNIgdhi4i5KPzYa/5uexeSMgbRyM7fJqMSZtIjmf/4MZWN7TA==
-X-Received: by 2002:a17:907:3d94:b0:a99:3768:7501 with SMTP id
- a640c23a62f3a-a9937687755mr342299266b.51.1728161880922; 
- Sat, 05 Oct 2024 13:58:00 -0700 (PDT)
-Received: from archlinux.. (pd95ed790.dip0.t-ipconnect.de. [217.94.215.144])
- by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-a993f40d542sm105804966b.157.2024.10.05.13.57.59
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 05 Oct 2024 13:58:00 -0700 (PDT)
-From: Bernhard Beschow <shentey@gmail.com>
+        d=1e100.net; s=20230601; t=1728158766; x=1728763566;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=rMIQXnxelIQ86qxYbOA8sg/WFq9fqYpMUetqZ1DDKfA=;
+        b=NsVzC8vWD7aZi2KgD5x9FpFcKKe6+bElbfcGie4dUPuaSO6WiH9RCY0usnRRB2XhU8
+         /7uokmGZnebmAaEUJGSdC4pn/cmrK4CswSYKeHPwXR7kLOJTOBwDm+O72KpvT7c+9rFg
+         iAheCaWxhuRRpvLTLsLz8uG+7NxxG8laySkZv73m5vRQpJHh0FWRxxjujClm9RpJ66ED
+         adi+joSnyA1Cyj+HpgQklSvBYBpyTjIjAnlMwVnXaXjC14feYAxFrxWTnJUifirW+YdJ
+         YF4JwxK01oqB13gLf6iUWfpSYeWx9KFzkLHudqdKJdgMXoOW+EzXhSZMfBj7Dz+8k1ct
+         jPKQ==
+X-Forwarded-Encrypted: i=1; AJvYcCWtO30BB7JNHF88jXN+4UK5j5P3s/ZNZXQLVA0mW+XefTulXZmwu2zIeR6yxYsMvyXopJF/7FTBfFOg7Q==@linaro.org
+X-Gm-Message-State: AOJu0YxrcIeHPQlcrYFjsJS5siNG3L1gCDsACYFnDp72ejGZB7cPoJAm
+	KFc9GagoM8kjl6QAOq9Sz0xA9hjei+lRxNfk3Dhvt+EWExGUYKkfxHe6SSsOQq1/yQ==
+X-Google-Smtp-Source: AGHT+IHH1UPbilIVxeQbQP7YVJkO3rAkayOpruqAQpJ8VTJH0ulhL8QO7zYfsZKakqfCs3+vPIEAIw==
+X-Received: by 2002:a17:902:f545:b0:20b:a576:1896 with SMTP id d9443c01a7336-20bff190668mr89400615ad.43.1728158766201;
+        Sat, 05 Oct 2024 13:06:06 -0700 (PDT)
+Return-Path: <richard.henderson@linaro.org>
+Received: from stoup.. (174-21-81-121.tukw.qwest.net. [174.21.81.121])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-20c13931055sm16493405ad.139.2024.10.05.13.06.05
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 05 Oct 2024 13:06:05 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: Jason Wang <jasowang@redhat.com>, qemu-arm@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Bernhard Beschow <shentey@gmail.com>
-Subject: [PATCH 4/4] hw/net/lan9118_phy: Add missing 100 mbps full duplex
- advertisement
-Date: Sat,  5 Oct 2024 22:57:48 +0200
-Message-ID: <20241005205748.29203-5-shentey@gmail.com>
-X-Mailer: git-send-email 2.46.2
-In-Reply-To: <20241005205748.29203-1-shentey@gmail.com>
-References: <20241005205748.29203-1-shentey@gmail.com>
+Cc: deller@kernel.org,
+	peter.maydell@linaro.org,
+	alex.bennee@linaro.org,
+	linux-parisc@vger.kernel.org,
+	qemu-arm@nongnu.org
+Subject: [PATCH v2 05/21] include/exec/memop: Introduce memop_atomicity_bits
+Date: Sat,  5 Oct 2024 13:05:44 -0700
+Message-ID: <20241005200600.493604-6-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20241005200600.493604-1-richard.henderson@linaro.org>
+References: <20241005200600.493604-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::629;
- envelope-from=shentey@gmail.com; helo=mail-ej1-x629.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 3Okl+pN6I9i8
+X-TUID: /JiNj+w2Zk5W
 
-The real device advertises this mode and the device model already advertises
-100 mbps half duplex and 10 mbps full+half duplex. So advertise this mode to
-make the model more realistic.
+Split out of mmu_lookup.
 
-Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- hw/net/lan9118_phy.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ include/exec/memop.h | 24 ++++++++++++++++++++++++
+ accel/tcg/cputlb.c   | 16 ++--------------
+ 2 files changed, 26 insertions(+), 14 deletions(-)
 
-diff --git a/hw/net/lan9118_phy.c b/hw/net/lan9118_phy.c
-index 1c2f30c81a..4815a4da35 100644
---- a/hw/net/lan9118_phy.c
-+++ b/hw/net/lan9118_phy.c
-@@ -145,8 +145,8 @@ void lan9118_phy_write(Lan9118PhyState *s, int reg, uint32_t val)
-         break;
-     case MII_ANAR:
-         s->advertise = (val & (MII_ANAR_RFAULT | MII_ANAR_PAUSE_ASYM |
--                               MII_ANAR_PAUSE | MII_ANAR_10FD | MII_ANAR_10 |
--                               MII_ANAR_SELECT))
-+                               MII_ANAR_PAUSE | MII_ANAR_TXFD | MII_ANAR_10FD |
-+                               MII_ANAR_10 | MII_ANAR_SELECT))
-                      | MII_ANAR_TX;
-         break;
-     case 30: /* Interrupt mask */
+diff --git a/include/exec/memop.h b/include/exec/memop.h
+index f53bf618c6..b699bf7688 100644
+--- a/include/exec/memop.h
++++ b/include/exec/memop.h
+@@ -193,4 +193,28 @@ static inline unsigned memop_alignment_bits(MemOp memop)
+     return a;
+ }
+ 
++/*
++ * memop_atomicity_bits:
++ * @memop: MemOp value
++ *
++ * Extract the atomicity size from the memop.
++ */
++static inline unsigned memop_atomicity_bits(MemOp memop)
++{
++    unsigned size = memop & MO_SIZE;
++
++    switch (memop & MO_ATOM_MASK) {
++    case MO_ATOM_NONE:
++        size = MO_8;
++        break;
++    case MO_ATOM_IFALIGN_PAIR:
++    case MO_ATOM_WITHIN16_PAIR:
++        size = size ? size - 1 : 0;
++        break;
++    default:
++        break;
++    }
++    return size;
++}
++
+ #endif
+diff --git a/accel/tcg/cputlb.c b/accel/tcg/cputlb.c
+index b5bff220a3..f5fca5a118 100644
+--- a/accel/tcg/cputlb.c
++++ b/accel/tcg/cputlb.c
+@@ -1751,20 +1751,8 @@ static bool mmu_lookup(CPUState *cpu, vaddr addr, MemOpIdx oi,
+      * Device memory type require alignment.
+      */
+     if (unlikely(flags & TLB_CHECK_ALIGNED)) {
+-        MemOp size = l->memop & MO_SIZE;
+-
+-        switch (l->memop & MO_ATOM_MASK) {
+-        case MO_ATOM_NONE:
+-            size = MO_8;
+-            break;
+-        case MO_ATOM_IFALIGN_PAIR:
+-        case MO_ATOM_WITHIN16_PAIR:
+-            size = size ? size - 1 : 0;
+-            break;
+-        default:
+-            break;
+-        }
+-        if (addr & ((1 << size) - 1)) {
++        a_bits = memop_atomicity_bits(l->memop);
++        if (addr & ((1 << a_bits) - 1)) {
+             cpu_unaligned_access(cpu, addr, type, l->mmu_idx, ra);
+         }
+     }
 -- 
-2.46.2
-
+2.43.0

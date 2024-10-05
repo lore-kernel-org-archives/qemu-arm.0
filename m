@@ -1,93 +1,134 @@
-Received: by 2002:a17:505:c89:b0:1be9:327d:8ee3 with SMTP id hp9csp664943njb;
-        Fri, 4 Oct 2024 12:50:45 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXxdmCqIwimSWMgsUIbeJS8pObv5rY+aPPlWdfUgSE6ogpIP+FCyvEMELXQIVKkbVPgH0yJ4i2txYK9Kw==@linaro.org
-X-Google-Smtp-Source: AGHT+IG69lcjA5wZHlAkmQ3lPk10X7bJ0EGgm+9vrGA7E9X34iHwnytjrl5YWl7xhOjF+3GrYdOh
-X-Received: by 2002:a05:620a:3725:b0:7ae:6e02:6a9d with SMTP id af79cd13be357-7ae6f43a92amr710408385a.26.1728071445602;
-        Fri, 04 Oct 2024 12:50:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1728071445; cv=none;
+Received: by 2002:a17:505:c89:b0:1be9:327d:8ee3 with SMTP id hp9csp839882njb;
+        Fri, 4 Oct 2024 22:13:23 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXVKq9vZX7xJ95+RQCeCcup+jTVw3b6I1w5iBLawQasLRA+lO9FQ09nKMAXAIp/Z48o7kZKyO5o/IfR4g==@linaro.org
+X-Google-Smtp-Source: AGHT+IHG6e/znR48venRqAC2ZsoVaAOXZqL/bCpk3lHQk+1zLcEStaTNMJfUvZ6OAhT0DVwoEBjh
+X-Received: by 2002:ac8:5d46:0:b0:458:2bda:e543 with SMTP id d75a77b69052e-45d9ba44bc7mr80810501cf.18.1728105203216;
+        Fri, 04 Oct 2024 22:13:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1728105203; cv=none;
         d=google.com; s=arc-20240605;
-        b=SSmORgcwqXqw1JPmXqc4PyGpzTxBpemsiuszd4PdkK1KcdIeGrvfqtlawsVGfCQOyn
-         WgZY2hyqfGjNGqewNBGrsVjc3AkfO1yZjOgKLS8eH2CP6Kf6EBOq56RGypq8p0MVr6Lf
-         QZMs1tX/7SG3srlvL45gcDA4O+IucQW2V5DyGDsf56YfrrjrDOO9WWAkDbRJs2CuBxbl
-         +jBqe0PJML9ngJPggaf+H5BCviZFklvyAZDnpNnQ0SGZnJr87UQOm6dD+Dbx8JUBRs7Y
-         ligAR1Uer58WaBV+qH94eQsMAlBfq/y938/5wqwMElek6AAhgO2uEADMfHSqKEj/+1Yn
-         ct9Q==
+        b=CE06AvHv9RQh33MaaJJCZhwqgkQCIZ7oIt9SCmYQZ6UxnnregAYseWPrBVnx4HxXue
+         lkXvD87WH0ZEEwqmL9Zs2eFW7FzpO27xhX1hSZCiEIRwq8dgNsrphu2GGMilf1dlGcl/
+         JmLvcXBBGeihpNHevknCLNckk6ayX71Q5drXJMPLCyztdFEH6Jo6SOOK1S8N0gUyVHMp
+         +iskaA+zsaWGoc6Zd6dRULv6NFyjJkkK086nOijB+/r1wCwcHdz3Dnp/O2YVz/YHf7/A
+         xmwn5YLbg9CgknwmiihefJutwtaNgkR8iMcOoclarY7OJtbdxBxGKpQ4H8DQp3jfglbj
+         f7oA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id;
-        bh=Yoy0QBaXuWq9zQCN1DnTsTcGojJx4kkJvXqAeEBHiB4=;
-        fh=CAbQ9BDNstdisPlH2CswLmUM1eipe1cQbLOukYdByUI=;
-        b=LllQi7MHH8ij9GmXHA7zE4p+qJlJsv3kchYP7tFjZBx+GOm1wvNNIoWoku4uHT+Hw8
-         TUKsaMRSxRzg7mhVRksWzFYK/5/+oTVAIt0Oo+pwvs+7S+Os6omLDnDRNFtXw0wFC4Sc
-         fc7TnehtTkYSPzgwCWCAWCvldntZDmcfB1Fz3zNehdz68ZbxpeeSoTUx/4EuAd+L2nAo
-         pKai7bUnjCtRD8EfY0aQljmcru0G7QVsICa2NSb3dgf6hjILUK5VUimlK1hbNgVdIl7x
-         u6I6mLVCNsXQfrhBnLwGH/j1bErHj4ZYB+JUcvFKWzqeqXMCYcPyptIGLCUVJfnq3mVb
-         5jmg==;
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=r+dSGTdC8rEBKFvL7zeY9zRLUuqb60N8rzYF/bCzHGs=;
+        fh=zv68uxEhoovAD/GTZ68xpPSmJk42ARd/zTw6nn7ozNo=;
+        b=kp/ThrXnKMjYlG4gFGB5ntw/OUQU6Vkp9B8ZxNV8cIPNPFAyiR391yzl1rHYXuBHYy
+         XOWYXGj8MP9OhS5w/A/pipab016GcGUjaitFTx16uNJwteTnB92ycY75jIjERS2nnx6j
+         OcPDRuKbDR76fMtstg6qJW3uT/Rda+hyVsyYfy9aLevy4TG8d/4v9IZFAKKdZG7zchQ5
+         +Ifnq+t4eFcuwBjzvdfyQGh/21ZD+ejl+vQeXtR4c5pWjSKP2bYuXZgeWRYlN1PwezyS
+         EqY0cEcsn+88HeA9xk8hYBu1KPX+OJFYEbLmpFDNkfzI1hbMkUDuMjD9PRMyRUWNW1P3
+         D+WA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=N5alU9e1;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7ae756158bfsi35439985a.110.2024.10.04.12.50.45
+        by mx.google.com with ESMTPS id d75a77b69052e-45da74b0094si14229101cf.26.2024.10.04.22.13.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 04 Oct 2024 12:50:45 -0700 (PDT)
+        Fri, 04 Oct 2024 22:13:23 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=N5alU9e1;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1swoJo-0004Sj-B5; Fri, 04 Oct 2024 15:50:28 -0400
+	id 1swx65-00080q-Mg; Sat, 05 Oct 2024 01:12:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <a.fatoum@pengutronix.de>)
- id 1swoJm-0004SR-Pi
- for qemu-arm@nongnu.org; Fri, 04 Oct 2024 15:50:27 -0400
-Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <a.fatoum@pengutronix.de>)
- id 1swoJk-000410-Pn
- for qemu-arm@nongnu.org; Fri, 04 Oct 2024 15:50:26 -0400
-Received: from ptz.office.stw.pengutronix.de ([2a0a:edc0:0:900:1d::77]
- helo=[127.0.0.1])
- by metis.whiteo.stw.pengutronix.de with esmtp (Exim 4.92)
- (envelope-from <a.fatoum@pengutronix.de>)
- id 1swoJg-0001qQ-83; Fri, 04 Oct 2024 21:50:20 +0200
-Message-ID: <4d559b9e-c208-46f3-851a-68086dc8a50f@pengutronix.de>
-Date: Fri, 4 Oct 2024 21:50:18 +0200
+ (Exim 4.90_1) (envelope-from <akihiko.odaki@daynix.com>)
+ id 1swx5y-0007zn-00
+ for qemu-arm@nongnu.org; Sat, 05 Oct 2024 01:12:47 -0400
+Received: from mail-pf1-x430.google.com ([2607:f8b0:4864:20::430])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <akihiko.odaki@daynix.com>)
+ id 1swx5u-0003bl-9o
+ for qemu-arm@nongnu.org; Sat, 05 Oct 2024 01:12:45 -0400
+Received: by mail-pf1-x430.google.com with SMTP id
+ d2e1a72fcca58-71de9e1f431so1033898b3a.3
+ for <qemu-arm@nongnu.org>; Fri, 04 Oct 2024 22:12:41 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1728105160; x=1728709960;
+ darn=nongnu.org; 
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=r+dSGTdC8rEBKFvL7zeY9zRLUuqb60N8rzYF/bCzHGs=;
+ b=N5alU9e1LKNDw1ZY/YyC5yVl3eFh3CgCpqry3d87Hm7gbZ7O2lXWrffhWfA84GN8Yn
+ opvlM0KDLay6dV3bi2rW4oPh65B6HMI19nCj47G6drnbSbPgX++zsZ7ylvV65/HD+MKc
+ 453up/X/pXzs/z1EsO7ah1aI59ubWkvQwK+rFRJkyC8yrdUAN2Hqa7WekILPUoJhQJ0E
+ ureX7cQJDQ78N79hvdQN5ZgbWjelimcEbo15BdPww/rHhi9x9M5yCEBZ2xaRgjtO5gTb
+ 5ndG1OlYIVuMPH33PYgBI6h3aOmOL0HEFlSsFaMsUFaJ41a26vLrvqiEO9jyvfATy3p7
+ qK2g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1728105160; x=1728709960;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=r+dSGTdC8rEBKFvL7zeY9zRLUuqb60N8rzYF/bCzHGs=;
+ b=ScVYZ/JYCxpHGqRTS/3gx7j6deHOtsgZUy8HWZkGFeaEijojGYpZ5PsNKQRqgUuqhn
+ 9fravMOgkqPYhQDc0lAfAuN9OqPs4o6nm7GbXKbL7FU61el393D6cT8bdviqwVXhCZh4
+ jJr0YO72ziFDxv+8u9CKJx9gpdPs9MMLd5N3y6NRAKaSRvIN7Eods2m/+CwxTN50fk04
+ cItSFYi2TKVoNhVwnHGYXvEbIMAx81HHb40lYQfFKUU6sa2DAV+lAwkPQYNoVXaaS6X3
+ WMm5LDFncE5QrlCOpi1UjtJZB9cz/Tyk8UGFRwZfTshvHduJv5vr7M9cnFQaOCkPAItM
+ OqOw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVgYVrVcASNMDbIXjOVT+AAukhRndxN+1uYCk3pMHymkWSjwERIQ7GerZsJlVVOGEbq+UPr9+aq9Q==@nongnu.org
+X-Gm-Message-State: AOJu0YzqWM8LUHwhSTpeBvDbiiLPjbwMZS99GegvxW4hyUjqlfBwuV30
+ XjNr2PHbwAdZ6+5aKcpBnaxCBneccppsu49MRtU8v2P91SYFbcKeZqn5CZXyB1Y=
+X-Received: by 2002:a05:6a00:3d51:b0:717:88eb:824d with SMTP id
+ d2e1a72fcca58-71de23b6b35mr8315891b3a.7.1728105159964; 
+ Fri, 04 Oct 2024 22:12:39 -0700 (PDT)
+Received: from [157.82.202.230] ([157.82.202.230])
+ by smtp.gmail.com with ESMTPSA id
+ d2e1a72fcca58-71df0d7cfa4sm744350b3a.196.2024.10.04.22.12.33
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 04 Oct 2024 22:12:39 -0700 (PDT)
+Message-ID: <7af710d1-e337-41b8-9328-0488fc20f438@daynix.com>
+Date: Sat, 5 Oct 2024 14:12:32 +0900
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [BUG] ARM64 KVM: Data abort executing post-indexed LDR on MMIO
- address
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org, kvmarm@lists.linux.dev, kvm@vger.kernel.org,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>, Enrico Joerns <ejo@pengutronix.de>
-References: <89f184d6-5b61-4c77-9f3b-c0a8f6a75d60@pengutronix.de>
- <CAFEAcA_Yv2a=XCKw80y9iyBRoC27UL6Sfzgy4KwFDkC1gbzK7w@mail.gmail.com>
- <a4c06f55-28ec-4620-b594-b7ff0bb1e162@pengutronix.de>
- <CAFEAcA9F3AR-0OCKDy__eVBJRMi80G7bWNfANGZRR2W8iMhfJA@mail.gmail.com>
+Subject: Re: [PATCH v3 11/14] hw/vmapple/bdif: Introduce vmapple backdoor
+ interface
+To: Phil Dennis-Jordan <phil@philjordan.eu>, qemu-devel@nongnu.org
+Cc: agraf@csgraf.de, peter.maydell@linaro.org, pbonzini@redhat.com,
+ rad@semihalf.com, quic_llindhol@quicinc.com, marcin.juszkiewicz@linaro.org,
+ stefanha@redhat.com, mst@redhat.com, slp@redhat.com,
+ richard.henderson@linaro.org, eduardo@habkost.net,
+ marcel.apfelbaum@gmail.com, gaosong@loongson.cn, jiaxun.yang@flygoat.com,
+ chenhuacai@kernel.org, kwolf@redhat.com, hreitz@redhat.com,
+ philmd@linaro.org, shorne@gmail.com, palmer@dabbelt.com,
+ alistair.francis@wdc.com, bmeng.cn@gmail.com, liwei1518@gmail.com,
+ dbarboza@ventanamicro.com, zhiwei_liu@linux.alibaba.com, jcmvbkbc@gmail.com,
+ marcandre.lureau@redhat.com, berrange@redhat.com, qemu-arm@nongnu.org,
+ qemu-block@nongnu.org, qemu-riscv@nongnu.org,
+ Alexander Graf <graf@amazon.com>
+References: <20240928085727.56883-1-phil@philjordan.eu>
+ <20240928085727.56883-12-phil@philjordan.eu>
 Content-Language: en-US
-From: Ahmad Fatoum <a.fatoum@pengutronix.de>
-In-Reply-To: <CAFEAcA9F3AR-0OCKDy__eVBJRMi80G7bWNfANGZRR2W8iMhfJA@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:900:1d::77
-X-SA-Exim-Mail-From: a.fatoum@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de);
- SAEximRunCond expanded to false
-X-PTX-Original-Recipient: qemu-arm@nongnu.org
-Received-SPF: pass client-ip=2a0a:edc0:2:b01:1d::104;
- envelope-from=a.fatoum@pengutronix.de; helo=metis.whiteo.stw.pengutronix.de
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+From: Akihiko Odaki <akihiko.odaki@daynix.com>
+In-Reply-To: <20240928085727.56883-12-phil@philjordan.eu>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: none client-ip=2607:f8b0:4864:20::430;
+ envelope-from=akihiko.odaki@daynix.com; helo=mail-pf1-x430.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -102,86 +143,362 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 0md/dv6gZbsI
+X-TUID: lTOALK+5yGbx
 
-Hi,
+On 2024/09/28 17:57, Phil Dennis-Jordan wrote:
+> From: Alexander Graf <graf@amazon.com>
+> 
+> The VMApple machine exposes AUX and ROOT block devices (as well as USB OTG
+> emulation) via virtio-pci as well as a special, simple backdoor platform
+> device.
+> 
+> This patch implements this backdoor platform device to the best of my
+> understanding. I left out any USB OTG parts; they're only needed for
+> guest recovery and I don't understand the protocol yet.
+> 
+> Signed-off-by: Alexander Graf <graf@amazon.com>
+> Signed-off-by: Phil Dennis-Jordan <phil@philjordan.eu>
+> ---
+>   hw/vmapple/Kconfig        |   3 +
+>   hw/vmapple/bdif.c         | 245 ++++++++++++++++++++++++++++++++++++++
+>   hw/vmapple/meson.build    |   1 +
+>   hw/vmapple/trace-events   |   5 +
+>   include/hw/vmapple/bdif.h |  31 +++++
+>   5 files changed, 285 insertions(+)
+>   create mode 100644 hw/vmapple/bdif.c
+>   create mode 100644 include/hw/vmapple/bdif.h
+> 
+> diff --git a/hw/vmapple/Kconfig b/hw/vmapple/Kconfig
+> index a73504d5999..68f88876eb9 100644
+> --- a/hw/vmapple/Kconfig
+> +++ b/hw/vmapple/Kconfig
+> @@ -1,3 +1,6 @@
+>   config VMAPPLE_AES
+>       bool
+>   
+> +config VMAPPLE_BDIF
+> +    bool
+> +
+> diff --git a/hw/vmapple/bdif.c b/hw/vmapple/bdif.c
+> new file mode 100644
+> index 00000000000..36b5915ff30
+> --- /dev/null
+> +++ b/hw/vmapple/bdif.c
+> @@ -0,0 +1,245 @@
+> +/*
+> + * VMApple Backdoor Interface
+> + *
+> + * Copyright © 2023 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+> + *
+> + * This work is licensed under the terms of the GNU GPL, version 2 or later.
+> + * See the COPYING file in the top-level directory.
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "hw/vmapple/bdif.h"
+> +#include "qemu/log.h"
+> +#include "qemu/module.h"
+> +#include "qapi/error.h"
+> +#include "trace.h"
+> +#include "hw/block/block.h"
+> +#include "sysemu/block-backend.h"
+> +
+> +#define REG_DEVID_MASK      0xffff0000
+> +#define DEVID_ROOT          0x00000000
+> +#define DEVID_AUX           0x00010000
+> +#define DEVID_USB           0x00100000
+> +
+> +#define REG_STATUS          0x0
+> +#define REG_STATUS_ACTIVE     BIT(0)
+> +#define REG_CFG             0x4
+> +#define REG_CFG_ACTIVE        BIT(1)
+> +#define REG_UNK1            0x8
+> +#define REG_BUSY            0x10
+> +#define REG_BUSY_READY        BIT(0)
+> +#define REG_UNK2            0x400
+> +#define REG_CMD             0x408
+> +#define REG_NEXT_DEVICE     0x420
+> +#define REG_UNK3            0x434
+> +
+> +typedef struct vblk_sector {
 
-On 04.10.24 14:10, Peter Maydell wrote:
-> On Fri, 4 Oct 2024 at 12:51, Ahmad Fatoum <a.fatoum@pengutronix.de> wrote:
->> On 04.10.24 12:40, Peter Maydell wrote:
->>> Don't do this -- KVM doesn't support it. For access to MMIO,
->>> stick to instructions which will set the ISV bit in ESR_EL1.
->>>
->>> That is:
->>>
->>>  * AArch64 loads and stores of a single general-purpose register
->>>    (including the register specified with 0b11111, including those
->>>    with Acquire/Release semantics, but excluding Load Exclusive
->>>    or Store Exclusive and excluding those with writeback).
->>>  * AArch32 instructions where the instruction:
->>>     - Is an LDR, LDA, LDRT, LDRSH, LDRSHT, LDRH, LDAH, LDRHT,
->>>       LDRSB, LDRSBT, LDRB, LDAB, LDRBT, STR, STL, STRT, STRH,
->>>       STLH, STRHT, STRB, STLB, or STRBT instruction.
->>>     - Is not performing register writeback.
->>>     - Is not using R15 as a source or destination register.
->>>
->>> Your instruction is doing writeback. Do the address update
->>> as a separate instruction.
+Please use VblkSector for the tag name too.
 
-With readl/writel implemented in assembly, I get beyond that point, but
-now I get a data abort running an DC IVAC instruction on address 0x1000,
-where the cfi-flash is located. This instruction is part of a routine
-to remap the cfi-flash to start a page later, so the zero page can be
-mapped faulting.
+> +    uint32_t pad;
+> +    uint32_t pad2;
+> +    uint32_t sector;
+> +    uint32_t pad3;
+> +} VblkSector;
+> +
+> +typedef struct vblk_req_cmd {
+> +    uint64_t addr;
+> +    uint32_t len;
+> +    uint32_t flags;
+> +} VblkReqCmd;
+> +
+> +typedef struct vblk_req {
+> +    VblkReqCmd sector;
+> +    VblkReqCmd data;
+> +    VblkReqCmd retval;
+> +} VblkReq;
+> +
+> +#define VBLK_DATA_FLAGS_READ  0x00030001
+> +#define VBLK_DATA_FLAGS_WRITE 0x00010001
+> +
+> +#define VBLK_RET_SUCCESS  0
+> +#define VBLK_RET_FAILED   1
+> +
+> +static uint64_t bdif_read(void *opaque, hwaddr offset, unsigned size)
+> +{
+> +    uint64_t ret = -1;
+> +    uint64_t devid = (offset & REG_DEVID_MASK);
 
-Simple reproducer:
+The parenthes in this line are unnecessary.
 
-start:
-        ldr     x0, =0x1000
-        ldr     x1, =0x1040
-        bl      v8_inv_dcache_range
+> +
+> +    switch (offset & ~REG_DEVID_MASK) {
+> +    case REG_STATUS:
+> +        ret = REG_STATUS_ACTIVE;
+> +        break;
+> +    case REG_CFG:
+> +        ret = REG_CFG_ACTIVE;
+> +        break;
+> +    case REG_UNK1:
+> +        ret = 0x420;
+> +        break;
+> +    case REG_BUSY:
+> +        ret = REG_BUSY_READY;
+> +        break;
+> +    case REG_UNK2:
+> +        ret = 0x1;
+> +        break;
+> +    case REG_UNK3:
+> +        ret = 0x0;
+> +        break;
+> +    case REG_NEXT_DEVICE:
+> +        switch (devid) {
+> +        case DEVID_ROOT:
+> +            ret = 0x8000000;
+> +            break;
+> +        case DEVID_AUX:
+> +            ret = 0x10000;
+> +            break;
+> +        }
+> +        break;
+> +    }
+> +
+> +    trace_bdif_read(offset, size, ret);
+> +    return ret;
+> +}
+> +
+> +static void le2cpu_sector(VblkSector *sector)
+> +{
+> +    sector->sector = le32_to_cpu(sector->sector);
+> +}
+> +
+> +static void le2cpu_reqcmd(VblkReqCmd *cmd)
+> +{
+> +    cmd->addr = le64_to_cpu(cmd->addr);
+> +    cmd->len = le32_to_cpu(cmd->len);
+> +    cmd->flags = le32_to_cpu(cmd->flags);
+> +}
+> +
+> +static void le2cpu_req(VblkReq *req)
+> +{
+> +    le2cpu_reqcmd(&req->sector);
+> +    le2cpu_reqcmd(&req->data);
+> +    le2cpu_reqcmd(&req->retval);
+> +}
+> +
+> +static void vblk_cmd(uint64_t devid, BlockBackend *blk, uint64_t value,
+> +                     uint64_t static_off)
+> +{
+> +    VblkReq req;
+> +    VblkSector sector;
+> +    uint64_t off = 0;
+> +    char *buf = NULL;
+> +    uint8_t ret = VBLK_RET_FAILED;
+> +    int r;
+> +
+> +    cpu_physical_memory_read(value, &req, sizeof(req));
+> +    le2cpu_req(&req);
+> +
+> +    if (req.sector.len != sizeof(sector)) {
+> +        ret = VBLK_RET_FAILED;
+> +        goto out;
+> +    }
+> +
+> +    /* Read the vblk command */
+> +    cpu_physical_memory_read(req.sector.addr, &sector, sizeof(sector));
+> +    le2cpu_sector(&sector);
+> +
+> +    off = sector.sector * 512ULL + static_off;
+> +
+> +    /* Sanity check that we're not allocating bogus sizes */
+> +    if (req.data.len > (128 * 1024 * 1024)) {
 
-        mov     w10, '!'
-        bl      putch
+Use MiB defined in: include/qemu/units.h
+The parentheses on the right hand are also unnecessary.
 
-        ret
+> +        goto out;
+> +    }
+> +
+> +    buf = g_malloc0(req.data.len);
+> +    switch (req.data.flags) {
+> +    case VBLK_DATA_FLAGS_READ:
+> +        r = blk_pread(blk, off, req.data.len, buf, 0);
+> +        trace_bdif_vblk_read(devid == DEVID_AUX ? "aux" : "root",
+> +                             req.data.addr, off, req.data.len, r);
+> +        if (r < 0) {
+> +            goto out;
+> +        }
+> +        cpu_physical_memory_write(req.data.addr, buf, req.data.len);
+> +        ret = VBLK_RET_SUCCESS;
+> +        break;
+> +    case VBLK_DATA_FLAGS_WRITE:
+> +        /* Not needed, iBoot only reads */
+> +        break;
+> +    default:
+> +        break;
+> +    }
+> +
+> +out:
+> +    g_free(buf);
+> +    cpu_physical_memory_write(req.retval.addr, &ret, 1);
+> +}
+> +
+> +static void bdif_write(void *opaque, hwaddr offset,
+> +                       uint64_t value, unsigned size)
+> +{
+> +    VMAppleBdifState *s = opaque;
+> +    uint64_t devid = (offset & REG_DEVID_MASK);
+> +
+> +    trace_bdif_write(offset, size, value);
+> +
+> +    switch (offset & ~REG_DEVID_MASK) {
+> +    case REG_CMD:
+> +        switch (devid) {
+> +        case DEVID_ROOT:
+> +            vblk_cmd(devid, s->root, value, 0x0);
+> +            break;
+> +        case DEVID_AUX:
+> +            vblk_cmd(devid, s->aux, value, 0x0);
+> +            break;
+> +        }
+> +        break;
+> +    }
+> +}
+> +
+> +static const MemoryRegionOps bdif_ops = {
+> +    .read = bdif_read,
+> +    .write = bdif_write,
+> +    .endianness = DEVICE_NATIVE_ENDIAN,
+> +    .valid = {
+> +        .min_access_size = 1,
+> +        .max_access_size = 8,
+> +    },
+> +    .impl = {
+> +        .min_access_size = 1,
+> +        .max_access_size = 8,
+> +    },
+> +};
+> +
+> +static void bdif_init(Object *obj)
+> +{
+> +    VMAppleBdifState *s = VMAPPLE_BDIF(obj);
+> +
+> +    memory_region_init_io(&s->mmio, obj, &bdif_ops, obj,
+> +                         "VMApple Backdoor Interface", VMAPPLE_BDIF_SIZE);
+> +    sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->mmio);
+> +}
+> +
+> +static Property bdif_properties[] = {
+> +    DEFINE_PROP_DRIVE("aux", VMAppleBdifState, aux),
+> +    DEFINE_PROP_DRIVE("root", VMAppleBdifState, root),
+> +    DEFINE_PROP_END_OF_LIST(),
+> +};
+> +
+> +static void bdif_class_init(ObjectClass *klass, void *data)
+> +{
+> +    DeviceClass *dc = DEVICE_CLASS(klass);
+> +
+> +    dc->desc = "VMApple Backdoor Interface";
+> +    device_class_set_props(dc, bdif_properties);
+> +}
+> +
+> +static const TypeInfo bdif_info = {
+> +    .name          = TYPE_VMAPPLE_BDIF,
+> +    .parent        = TYPE_SYS_BUS_DEVICE,
+> +    .instance_size = sizeof(VMAppleBdifState),
+> +    .instance_init = bdif_init,
+> +    .class_init    = bdif_class_init,
+> +};
+> +
+> +static void bdif_register_types(void)
+> +{
+> +    type_register_static(&bdif_info);
+> +}
+> +
+> +type_init(bdif_register_types)
+> diff --git a/hw/vmapple/meson.build b/hw/vmapple/meson.build
+> index bcd4dcb28d2..d4624713deb 100644
+> --- a/hw/vmapple/meson.build
+> +++ b/hw/vmapple/meson.build
+> @@ -1 +1,2 @@
+>   system_ss.add(when: 'CONFIG_VMAPPLE_AES',  if_true: files('aes.c'))
+> +system_ss.add(when: 'CONFIG_VMAPPLE_BDIF', if_true: files('bdif.c'))
+> diff --git a/hw/vmapple/trace-events b/hw/vmapple/trace-events
+> index 1c9a3326eb4..fc8e9cc5897 100644
+> --- a/hw/vmapple/trace-events
+> +++ b/hw/vmapple/trace-events
+> @@ -19,3 +19,8 @@ aes_2_write_unknown(uint64_t offset) "offset=0x%"PRIx64
+>   aes_2_write(uint64_t offset, uint64_t val) "offset=0x%"PRIx64" val=0x%"PRIx64
+>   aes_dump_data(const char *desc, const char *hex) "%s%s"
+>   
+> +# bdif.c
+> +bdif_read(uint64_t offset, uint32_t size, uint64_t value) "offset=0x%"PRIx64" size=0x%x value=0x%"PRIx64
+> +bdif_write(uint64_t offset, uint32_t size, uint64_t value) "offset=0x%"PRIx64" size=0x%x value=0x%"PRIx64
+> +bdif_vblk_read(const char *dev, uint64_t addr, uint64_t offset, uint32_t len, int r) "dev=%s addr=0x%"PRIx64" off=0x%"PRIx64" size=0x%x r=%d"
+> +
+> diff --git a/include/hw/vmapple/bdif.h b/include/hw/vmapple/bdif.h
+> new file mode 100644
+> index 00000000000..65ee43457b9
+> --- /dev/null
+> +++ b/include/hw/vmapple/bdif.h
+> @@ -0,0 +1,31 @@
+> +/*
+> + * VMApple Backdoor Interface
+> + *
+> + * Copyright © 2023 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+> + *
+> + * This work is licensed under the terms of the GNU GPL, version 2 or later.
+> + * See the COPYING file in the top-level directory.
+> + */
+> +
+> +#ifndef HW_VMAPPLE_BDIF_H
+> +#define HW_VMAPPLE_BDIF_H
+> +
+> +#include "hw/sysbus.h"
+> +#include "qom/object.h"
+> +
+> +#define TYPE_VMAPPLE_BDIF "vmapple-bdif"
+> +OBJECT_DECLARE_SIMPLE_TYPE(VMAppleBdifState, VMAPPLE_BDIF)
+> +
+> +struct VMAppleBdifState {
+> +    /* <private> */
+> +    SysBusDevice parent_obj;
+> +
+> +    /* <public> */
+> +    BlockBackend *aux;
+> +    BlockBackend *root;
+> +    MemoryRegion mmio;
+> +};
+> +
+> +#define VMAPPLE_BDIF_SIZE 0x00200000
 
-v8_inv_dcache_range:
-        mrs     x3, ctr_el0
-        lsr     x3, x3, #16
-        and     x3, x3, #0xf
-        mov     x2, #0x4
-        lsl     x2, x2, x3
-        sub     x3, x2, #0x1
-        bic     x0, x0, x3
-1:
-        dc      ivac, x0
-        add     x0, x0, x2
-        cmp     x0, x1
-        b.cc    1b
-        dsb     sy
-        ret
+Please move VMAppleBdifState and VMAPPLE_BDIF_SIZE into: hw/vmapple/bdif.c
+They are both private.
 
-This prints ! without KVM, but triggers a data abort before that with -enable-kvm:
+> +
+> +#endif /* HW_VMAPPLE_BDIF_H */
 
-  DABT (current EL) exception (ESR 0x96000010) at 0x0000000000001000
-  elr: 000000007fbe0550 lr : 000000007fbe01ac
-  [snip]
-
-  Call trace:
-  [<7fbe0550>] (v8_inv_dcache_range+0x1c/0x34) from [<7fbe0218>] (arch_remap_range+0x64/0x70)
-  [<7fbe0218>] (arch_remap_range+0x64/0x70) from [<7fb8795c>] (of_platform_device_create+0x1e8/0x22c)
-  [<7fb8795c>] (of_platform_device_create+0x1e8/0x22c) from [<7fb87a04>] (of_platform_bus_create+0x64/0xbc)
-  [snip]
-
-Any idea what this is about?
-
-Thanks,
-Ahmad
-
-
--- 
-Pengutronix e.K.                           |                             |
-Steuerwalder Str. 21                       | http://www.pengutronix.de/  |
-31137 Hildesheim, Germany                  | Phone: +49-5121-206917-0    |
-Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |

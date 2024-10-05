@@ -1,214 +1,170 @@
-Received: by 2002:a17:505:c89:b0:1be9:327d:8ee3 with SMTP id hp9csp918349njb;
-        Sat, 5 Oct 2024 03:03:58 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXWrNBbXjz3Fd8I/AVIK+3xvujbnzVi+VWl8y2G6DpM9p77GAK6i42qO44NPgo/bwy4QNL6eE8pwFcdsA==@linaro.org
-X-Google-Smtp-Source: AGHT+IG/+f++8ANRbnFVPyiD8SH611YVNSm3KFlCKAFtCZjKjlg/vuXfuTVFAaplm4nUd/vDYMK8
-X-Received: by 2002:a05:6214:449b:b0:6c7:c5b5:f576 with SMTP id 6a1803df08f44-6cb9a2fc382mr84444866d6.20.1728122638068;
-        Sat, 05 Oct 2024 03:03:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1728122638; cv=none;
+Received: by 2002:a17:505:c89:b0:1be9:327d:8ee3 with SMTP id hp9csp1047724njb;
+        Sat, 5 Oct 2024 08:25:53 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWUvXgB9pNYk02k2KQjQ3wPadf3PU7LM3iulyXy3dn1gRXKcEN3Zy3WGXS89enh649RoLEbVrt0Z8svXA==@linaro.org
+X-Received: by 2002:a17:903:192:b0:20b:a89a:1d60 with SMTP id d9443c01a7336-20bfee31a71mr72527125ad.30.1728141953403;
+        Sat, 05 Oct 2024 08:25:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1728141953; cv=none;
         d=google.com; s=arc-20240605;
-        b=huzJQ2xfnvodprsXoN6RlmhDzFh33af+U9Q9Dq2UK8U1t00yCZ2em+8b/rM5ebzc9v
-         SeHCINZZauXv5sK/bGAnPYlYdp4xhIqJS90mdRkYYWPAsRJAxHOtYzxFUHMsT7bgX0ty
-         ET2rGvuhutNkqkYXs6mtdRyeAtB890ExCio5PK4x1JgE6Vgm1BAwRkXiGtlLeeuXQhee
-         xV6WHuQ8dJ6n9PLTf7mwlNNRPyCLKekXD0PBdMBidnw1KsnUxQXM1pP6LZYtEi0/Q71l
-         AhwO745bnDIsK/mQUq+k0XI+TFBN9a5M1/tEqPVGgumqmF6h5NRIzsnTX9VU9FVkz0Vs
-         +3sQ==
+        b=lJX5m9SQrqDfacES2w3RQyF7idJdLJmCdU9JSJde8FAudiBtOY2+nDkMX8aq7EFMwj
+         FsC+GMJqO3APx7GCOf3ez+WAUKccNLKoZhqoFqC3Z86jL0Ep236gRbr7CqM0BGRhQXUd
+         g5YFOml3cRaoIUyhUCZxu5US6iCpQD7K/iMuVL8faAlYEgAiKLvMCDVeCLSYEvw/jwyd
+         B0fTMRBfMTP/fD/6Tzp5T12a4Uk3BtneV7uJ+6oclNO1OptsVtFZ4eyOUkJ6+40x8l2q
+         OPQP+XnkeN5K3lY9e+e0MT6wHIVzMNJO8nOZkvfvk4YeeK2T9Y2+Appj5nZGRW5Z3Fn/
+         RiYA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=LJT4bwjrVjkUNMR4zGJJ5/3WvHmiyGwjh/aOrcBGjRY=;
-        fh=4tddjnVckVY2PFcAumb8au4mH87k/DRdfJC2/ph/uSg=;
-        b=VWGvt4TLsn+D0xVRjy7SOdKKU51lkJWFQsto4+DQcR0uu/DVNdBRo+M25XOvmN8Zx7
-         neq1kiZ+ZlCRvlxSRgX9zI+DkeSp6epRqaUauDIFU4q4lYT+kx/Z/td+tcyw6NOTNgRh
-         ZIZ/0xK/HtKHJdC3xeYnoWYQGF6RpxdPTti6lEvIfbqp4LwiaeUZPtX3srW2nRl7jMNR
-         PW/ksbQOdXVJ0MUv8gk8vLjM2xdI4ekM/Zon2t5nEwF+DM6mOWXclgCFNmbFoJ6syr5r
-         Oz8J8Hz1oEvGZAP2h6HBlbZqS+Jgu3khS3+i0jDwELlcoilm8HvVzXukOaIi6juVmYyY
-         yw/A==;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=wpFwx2+B2oxOHc6b6hBqiIP5nn07TpsAOahnQ7H73ek=;
+        fh=Ys+BPasg2Q7IieGf8Pqj/P8GyYjrbcOI9VfS73o2qRs=;
+        b=DlE39ulnK37DpTGsHeDFS/1FV6yfWt8BaMy2KV/NUoFhS4f2DucDrLcm6dh9mMgyrq
+         +q3LGYa5lcJdIX22olnFq8Aqagg3Ib/jF4CtOccLConcd8W3u2zN9R3NNZvPJIOYWij8
+         jYLU+NCUDO6kZxjNljTBjuwn8LKf+culph/YY1dGPjIWl2Mk4R6Ot0c4LSfky7n46zXa
+         YkQfgebcqlpnrTu6+YNdK1mpzl4/aX1Q5OsEHki9dj4jSxrgvOUAq71ZTDfUgbczoneN
+         yAZlZIg7PICyxVGJspgkbkbPmHEaqKiSllBxuKDuojtaHPvwgTF6vkcqpxlMDc7f1fal
+         V1Bw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b="H0H/NyXS";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=p8QJDHXG;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6cba478f06asi17157696d6.522.2024.10.05.03.03.57
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d9443c01a7336-20c138e1181sor10070175ad.9.2024.10.05.08.25.53
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 05 Oct 2024 03:03:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Sat, 05 Oct 2024 08:25:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b="H0H/NyXS";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=p8QJDHXG;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sx1cf-000358-GD; Sat, 05 Oct 2024 06:02:49 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1sx1cd-000330-1C; Sat, 05 Oct 2024 06:02:47 -0400
-Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1sx1ca-00083e-SO; Sat, 05 Oct 2024 06:02:46 -0400
-Received: by mail-ej1-x62f.google.com with SMTP id
- a640c23a62f3a-a991fedbd04so138217866b.3; 
- Sat, 05 Oct 2024 03:02:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1728122562; x=1728727362; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=LJT4bwjrVjkUNMR4zGJJ5/3WvHmiyGwjh/aOrcBGjRY=;
- b=H0H/NyXSlWefUcISHN0wSfAh5Ckq3e6tgsSrpxQgME26gep6sXG+BSM5wbnowFCBti
- 8tyq9TNEJ8D0WJ5fhxg2bd1wDO8GEJy/lQErqZXPwnIn2x3wqE36AeBmp7wLj6MXyAoe
- xydOIvdfD2q4srk4qkWyajtqonKcb2hfT8PJNkNqi2sfHAnI6nNzgRLrLoTfEq/mwhN/
- C8B9Jc4fWM3+mIym7/ke6HlvNq0/TGMtPjqObPrdsh8eNlfyP5K9FZoS55dPXTD9yl96
- f1BxO20DDJ/xEqMT6T1iy6yE218E0KdjeHKk77mOXbKkscZwi+9jtZXZeKxws2JNP3nN
- 4Ujg==
+        d=linaro.org; s=google; t=1728141953; x=1728746753; darn=linaro.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=wpFwx2+B2oxOHc6b6hBqiIP5nn07TpsAOahnQ7H73ek=;
+        b=p8QJDHXGXU0aAHiavA3MfnotQzPhOwubrXn/W1GYwQsb2+K+RvwV26Hatd8bu72pO4
+         teVNNsR+jpDHyFUr/XJ8gNrv248h5qUqJmRYDdbqNRY7L053jL86wh1u4dgOYVxbSQAE
+         AmE8xI9QnVUMaiu519gRJyKTvJADLLQhYjJj/Az+BUCdtVvIWabObTKUtMyiPUG4p/Xs
+         nbt3LOkGgTMuAHX8B6jhZwJZDGfiVaLKcHtj979ZA0wapAPZeyCOS1DXBkgrF39+WxBw
+         y1a9RiSGFM4ksmIDpwxmpGOdoTZ1m8n2KEvyLmLnnGY5HygxolXOsRfni+5WAp2Op1nd
+         10Xg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1728122562; x=1728727362;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=LJT4bwjrVjkUNMR4zGJJ5/3WvHmiyGwjh/aOrcBGjRY=;
- b=tnBNYYdP6OkcgrdMGvzRyeOPGjaLKlyiO3Bk/sJDIBLqNgp5TgQq26JouZX+I9p204
- 1z7B6itVknW+OWg/DXmwI9BniKcb/R1xJ5BgbfiUW+Dwkuhonugfo6LCSb/OUjC6bF+i
- 3UGaWPIYgE7rHZwPIDgc4YL6riCzNBZNHtZDBP7b7yCNOo1jTnRvnokIY8Acr1Le0Rcw
- bErB6jGJ+jwLa6x/wfJUY9Fghk9RHCMHWaa1lAyJ+oVMldSh3leB/UmE/paoRbETQGkR
- cRF8k1gexIhccMJvnOIsViJxIRfc8rhVzrxuqX5Iy1voWw0m0QCkpIqKVgykb+laIJFD
- A0EA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUBk23FSds/dam5knwRUrzeFxVc/W6PEsmUsJSI3rGvAacleNQoLQQvtTXOMMES6rPf0u0PXH4AC40=@nongnu.org,
- AJvYcCWAmRQUDhjuWzazlMT7CR6rXOdMK90GtSXixxvUyTZlnwjOT2Fzc1lJjCbugVR4Jbm+cDRId+5z5A==@nongnu.org
-X-Gm-Message-State: AOJu0YyPUYX9x9ksIwcmCmf9HDqqXSKMfWC2HUuV6V1WJV6DxwWl2qY7
- SQUB7OSLUmgqkAJRD9JPUSulcQB4YKtkpNhmXnN9WvDNm3+afL6qVj2ohA==
-X-Received: by 2002:a05:6402:35cf:b0:5c5:cb49:2f28 with SMTP id
- 4fb4d7f45d1cf-5c8d2e16faemr6064037a12.4.1728122562150; 
- Sat, 05 Oct 2024 03:02:42 -0700 (PDT)
-Received: from archlinux.. (pd95ed790.dip0.t-ipconnect.de. [217.94.215.144])
- by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-a9932bf8a90sm99894166b.50.2024.10.05.03.02.40
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 05 Oct 2024 03:02:41 -0700 (PDT)
-From: Bernhard Beschow <shentey@gmail.com>
+        d=1e100.net; s=20230601; t=1728141953; x=1728746753;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=wpFwx2+B2oxOHc6b6hBqiIP5nn07TpsAOahnQ7H73ek=;
+        b=lIts+AEsC0Dgt+qnhmUZ3xwF5nlpHzhoB+pK4CWqpzxQ2Vo7r9Vj3OaPKyFHVwO4Xt
+         9cFI/mLKEn79eJdCKVVjJ1leBxOelWpu/Nx97pbD0DHd1GehR3B2Zvupe6P56QL0Qofz
+         7XU2F8TtdPibToIia2RCU51RsyCNPyQ41+jYzCzHj0j5tqQSsCtknXfUDrtXmRM9TMRj
+         lNkX8kV/8IKRobCcv9UVyOWldfmSLmUZ5LvYYclMitSRX2TXuq3JOCtfi7cuBIRqMqM9
+         SAOyGD+5ExUGwf14ATtSDbBVQEbTJysBizy2rxxfWWQwjI4o5nH1YsjnUZvn8T3a+Afi
+         v4cw==
+X-Forwarded-Encrypted: i=1; AJvYcCV603fcMg48oahrGnMIiDB3zhVAO88KNsyU1JUHi318BJOQbNfqQWySMwdRCFgZhyDnf8NWJkyE3SGiCw==@linaro.org
+X-Gm-Message-State: AOJu0YxLxqo8LKYF+9e7bGw8/GhKKIzfmUqrwZrYHUYdjAmpaZEb8QvX
+	oVcnq6RY7h6MJrwpRbdkrOS+4WEp+8NP2p7/cF9DsFwecX9rp0IVIGvc0qRiMeOYbg==
+X-Google-Smtp-Source: AGHT+IHPXsFE7R6jjgtrThFRIybCkI51Eu2ER9DX0AbZAMTqrYQ1cs+3WLCHNSwkVb8nGfrYpNWUSg==
+X-Received: by 2002:a17:902:f548:b0:20b:96e:8e65 with SMTP id d9443c01a7336-20bff1a8b43mr85517295ad.42.1728141952853;
+        Sat, 05 Oct 2024 08:25:52 -0700 (PDT)
+Return-Path: <richard.henderson@linaro.org>
+Received: from stoup.. (174-21-81-121.tukw.qwest.net. [174.21.81.121])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-20c1396948dsm14351765ad.225.2024.10.05.08.25.52
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 05 Oct 2024 08:25:52 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Bernhard Beschow <shentey@gmail.com>,
- qemu-ppc@nongnu.org, qemu-arm@nongnu.org
-Subject: [PATCH v2 2/2] hw/ppc/e500: Reuse TYPE_GPIO_PWR
-Date: Sat,  5 Oct 2024 12:02:28 +0200
-Message-ID: <20241005100228.28094-3-shentey@gmail.com>
-X-Mailer: git-send-email 2.46.2
-In-Reply-To: <20241005100228.28094-1-shentey@gmail.com>
-References: <20241005100228.28094-1-shentey@gmail.com>
+Cc: deller@kernel.org,
+	peter.maydell@linaro.org,
+	alex.bennee@linaro.org,
+	linux-parisc@vger.kernel.org,
+	qemu-arm@nongnu.org
+Subject: [PATCH 00/20] accel/tcg: Introduce tlb_fill_align hook
+Date: Sat,  5 Oct 2024 08:25:31 -0700
+Message-ID: <20241005152551.307923-1-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::62f;
- envelope-from=shentey@gmail.com; helo=mail-ej1-x62f.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: fGixGdCiNBUe
+X-TUID: Z+3+BtBCVnvg
 
-Taking inspiration from the ARM virt machine, port away from
-qemu_allocate_irq() by reusing TYPE_GPIO_PWR.
+This new hook will allow targets to recognize an alignment
+fault with the correct priority with respect to other faults
+that can be raised by paging.
 
-Signed-off-by: Bernhard Beschow <shentey@gmail.com>
----
- hw/ppc/e500.c  | 16 ++++------------
- hw/ppc/Kconfig |  1 +
- 2 files changed, 5 insertions(+), 12 deletions(-)
+This should fix several hppa fault priority issues, most
+importantly that access permissions come before alignment.
 
-diff --git a/hw/ppc/e500.c b/hw/ppc/e500.c
-index 3bd12b54ab..7811c22e7b 100644
---- a/hw/ppc/e500.c
-+++ b/hw/ppc/e500.c
-@@ -30,7 +30,6 @@
- #include "sysemu/sysemu.h"
- #include "sysemu/kvm.h"
- #include "sysemu/reset.h"
--#include "sysemu/runstate.h"
- #include "kvm_ppc.h"
- #include "sysemu/device_tree.h"
- #include "hw/ppc/openpic.h"
-@@ -47,7 +46,6 @@
- #include "hw/platform-bus.h"
- #include "hw/net/fsl_etsec/etsec.h"
- #include "hw/i2c/i2c.h"
--#include "hw/irq.h"
- #include "hw/sd/sdhci.h"
- #include "hw/misc/unimp.h"
- 
-@@ -892,13 +890,6 @@ static DeviceState *ppce500_init_mpic(PPCE500MachineState *pms,
-     return dev;
- }
- 
--static void ppce500_power_off(void *opaque, int line, int on)
--{
--    if (on) {
--        qemu_system_shutdown_request(SHUTDOWN_CAUSE_GUEST_SHUTDOWN);
--    }
--}
--
- void ppce500_init(MachineState *machine)
- {
-     MemoryRegion *address_space_mem = get_system_memory();
-@@ -1086,7 +1077,7 @@ void ppce500_init(MachineState *machine)
-     sysbus_create_simple("e500-spin", pmc->spin_base, NULL);
- 
-     if (pmc->has_mpc8xxx_gpio) {
--        qemu_irq poweroff_irq;
-+        DeviceState *gpio_pwr_dev;
- 
-         dev = qdev_new("mpc8xxx_gpio");
-         s = SYS_BUS_DEVICE(dev);
-@@ -1096,8 +1087,9 @@ void ppce500_init(MachineState *machine)
-                                     sysbus_mmio_get_region(s, 0));
- 
-         /* Power Off GPIO at Pin 0 */
--        poweroff_irq = qemu_allocate_irq(ppce500_power_off, NULL, 0);
--        qdev_connect_gpio_out(dev, 0, poweroff_irq);
-+        gpio_pwr_dev = sysbus_create_simple("gpio-pwr", -1, NULL);
-+        qdev_connect_gpio_out(dev, 0, qdev_get_gpio_in_named(gpio_pwr_dev,
-+                                                             "shutdown", 0));
-     }
- 
-     /* Platform Bus Device */
-diff --git a/hw/ppc/Kconfig b/hw/ppc/Kconfig
-index 5addad1124..89cabe5d53 100644
---- a/hw/ppc/Kconfig
-+++ b/hw/ppc/Kconfig
-@@ -158,6 +158,7 @@ config E500
-     imply VIRTIO_PCI
-     select ETSEC
-     select GPIO_MPC8XXX
-+    select GPIO_PWR
-     select OPENPIC
-     select PFLASH_CFI01
-     select PLATFORM_BUS
+This should fix the documented error in the Arm alignment
+fault due to memory type.
+
+
+r~
+
+
+Richard Henderson (20):
+  accel/tcg: Assert noreturn from write-only page for atomics
+  accel/tcg: Expand tlb_fill for 3 callers
+  include/exec/memop: Move get_alignment_bits from tcg.h
+  include/exec/memop: Rename get_alignment_bits
+  include/exec/memop: Introduce memop_atomicity_bits
+  hw/core/tcg-cpu-ops: Introduce tlb_fill_align hook
+  accel/tcg: Use the tlb_fill_align hook
+  target/hppa: Add MemOp argument to hppa_get_physical_address
+  target/hppa: Perform access rights before protection id check
+  target/hppa: Fix priority of T, D, and B page faults
+  target/hppa: Handle alignment faults in hppa_get_physical_address
+  target/hppa: Add hppa_cpu_tlb_fill_align
+  target/arm: Pass MemOp to get_phys_addr
+  target/arm: Pass MemOp to get_phys_addr_with_space_nogpc
+  target/arm: Pass MemOp to get_phys_addr_gpc
+  target/arm: Pass MemOp to get_phys_addr_nogpc
+  target/arm: Pass MemOp through get_phys_addr_twostage
+  target/arm: Pass MemOp to get_phys_addr_lpae
+  target/arm: Move device detection earlier in get_phys_addr_lpae
+  target/arm: Fix alignment fault priority in get_phys_addr_lpae
+
+ include/exec/memop.h           |  47 +++++++++++
+ include/hw/core/tcg-cpu-ops.h  |  25 ++++++
+ include/tcg/tcg.h              |  23 ------
+ target/arm/internals.h         |   6 +-
+ target/hppa/cpu.h              |   5 +-
+ accel/tcg/cputlb.c             | 142 +++++++++++++++++----------------
+ accel/tcg/user-exec.c          |   4 +-
+ target/alpha/cpu.c             |   1 +
+ target/arm/cpu.c               |   1 +
+ target/arm/helper.c            |   4 +-
+ target/arm/ptw.c               | 139 ++++++++++++++++++--------------
+ target/arm/tcg/cpu-v7m.c       |   1 +
+ target/arm/tcg/m_helper.c      |   8 +-
+ target/arm/tcg/tlb_helper.c    |   2 +-
+ target/arm/tcg/translate-a64.c |   4 +-
+ target/avr/cpu.c               |   1 +
+ target/hppa/cpu.c              |   1 +
+ target/hppa/int_helper.c       |   2 +-
+ target/hppa/mem_helper.c       |  50 ++++++++----
+ target/hppa/op_helper.c        |   2 +-
+ target/i386/tcg/tcg-cpu.c      |   1 +
+ target/loongarch/cpu.c         |   1 +
+ target/m68k/cpu.c              |   1 +
+ target/microblaze/cpu.c        |   1 +
+ target/mips/cpu.c              |   1 +
+ target/openrisc/cpu.c          |   1 +
+ target/ppc/cpu_init.c          |   1 +
+ target/riscv/tcg/tcg-cpu.c     |   1 +
+ target/rx/cpu.c                |   1 +
+ target/s390x/cpu.c             |   1 +
+ target/sh4/cpu.c               |   1 +
+ target/sparc/cpu.c             |   1 +
+ target/tricore/cpu.c           |   1 +
+ target/xtensa/cpu.c            |   1 +
+ target/xtensa/translate.c      |   2 +-
+ tcg/tcg-op-ldst.c              |   6 +-
+ tcg/tcg.c                      |   2 +-
+ tcg/arm/tcg-target.c.inc       |   4 +-
+ tcg/sparc64/tcg-target.c.inc   |   2 +-
+ 39 files changed, 302 insertions(+), 196 deletions(-)
+
 -- 
-2.46.2
-
+2.43.0

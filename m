@@ -1,178 +1,293 @@
-Received: by 2002:a17:505:c89:b0:1be9:327d:8ee3 with SMTP id hp9csp1147754njb;
-        Sat, 5 Oct 2024 13:06:22 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCU6xBJjN9Q0z9oLIout6hBksXhqp+wJEC8ph/Jg3qYok1sGCVc13EERYycpcU/j4Lci6LtPZiBnc81PcQ==@linaro.org
-X-Received: by 2002:a17:902:c94d:b0:20b:46cb:8cbe with SMTP id d9443c01a7336-20bfe00bc48mr106167725ad.29.1728158781911;
-        Sat, 05 Oct 2024 13:06:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1728158781; cv=none;
+Received: by 2002:a17:505:c89:b0:1be9:327d:8ee3 with SMTP id hp9csp1162078njb;
+        Sat, 5 Oct 2024 13:59:09 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXtELHN7FTrkkKC41eboEU6jltkxUedOxDn62F6U8myhHyQOePL7SEsR4Lk3v4clPIByBfl8BbLk9op0Q==@linaro.org
+X-Google-Smtp-Source: AGHT+IHlQ9rBbovSLtIX9rHEBWm3Pm3iU0zm38Wx9vJ9khQCKNbPGFD/a17nOEqF1Oa//ARqvA7k
+X-Received: by 2002:a05:6214:540f:b0:6cb:7ce7:c076 with SMTP id 6a1803df08f44-6cb9a2f58c9mr104171436d6.18.1728161948923;
+        Sat, 05 Oct 2024 13:59:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1728161948; cv=none;
         d=google.com; s=arc-20240605;
-        b=Wijt4hONcmwUxh5XweOgpTzER/rGT82i3I8n7Q8wBQcN/xqZzrQfE2sMdpfY5fzLKi
-         JbpYQjMNTEMrY4j4UhDZ6ULSgodXHdcCdJ+xg92wgklBZZr21dyWAuks4rwkEan1ebP8
-         wVTF4ndlbvcNlqGfdodCccfH4hpjSxQVv+4vLvopGRDh+mCvdGgo+mLohadpxiTj7PNe
-         /tmOOvI3NVm+XrJX8qqCN228NBZgA0aXPjPUyiH3X/9ILGWRnWrx4unutdyqRxNFRUEa
-         37Lrn72d7n1DV9ERT6O2qn0wYySV6d+Q0AeQ4StS8VeC+dLp46me1s1Fdx7oG0l8m4ns
-         dwCg==
+        b=RpA2FijeqXQTyPLhLPGTvMBZyWcJ3XPcZQS0b0zbuzzF/cpaUThx7O6gvHDeDZW3nC
+         x5Dtse/7/g989+oEAFmtHyf2DqWdFsMtKpUIdg2KhwffoPshbDAs4g/sODddBAaPwZUB
+         zFk3FceHZN2yshYN0QOUvuR52nsy3Svq8gB2uovlFkco/TuSpCxht22zFn+c9gb6bS30
+         esHLHV9WSOI9gk8MH4hzg4s4/5eDFNWT7I6O/BtFO3Ho2hdOcVLk97BDhp+Pu7fQSmKF
+         ZtWmfo1QmVtsH46fhsdTejbipDlADYx5T6VHAZQ/cLf64fjEUgxf5BBuzc5VSG549dCm
+         fYdw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=OPq3M0kuo1Nn8l2/hQhKXzGFF76ZzptYhUbdCidOcco=;
-        fh=1fkVneA8pXvJk7MeF1oGqdd/gtkiX+ra3s03a/cVZU4=;
-        b=gU7OCLxcQA0q/xxwSFew8dnlRC6ERbDf7jtm/Jda0CmWltpmUIV89773SRm/xkD1LG
-         lWnx0GyTsH8tPg32IHIokj8oSlBiYhRw06ZbZVxNi35EvgJxE6i17yZMZ1rs0lVh/2TG
-         CAGOkcOcHvOcG5sKKnYfnAq+tF43nw7pilnmd4I8bVZ9xOaAVlHAA43SdZIXJ4TCYa5S
-         nQzshHiIAq3PDwjb48ZP9EDLjyo1S3RGYtO/Qy0Yhv3TR0GDFEZEtGbPsO4vgApSWo6a
-         ddd8sLUcy/zV2/FNBWga+1vmw9jcaGQOf0CRgWVAo0v5PgYSwFLzIqVv7FTFM8jPgeLy
-         3zOw==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=XJn4B+jQc95ao6ZyIj/u4htIgx2sxZoS2pamWWEl5zk=;
+        fh=Mw52gfCnVTIF+vtgf0Az39CYZOyiWgRaKKjtrIPJz04=;
+        b=K3BTlrlb2Juiwp0FjcRsWVFyBWVAPDWQ86L1Q7U43GUBf6gvSqnBSVPk3t83V5KYEs
+         XSsW/X0ctoUoW4smsDyjVbI6Ky9FLdLNvxK6A9Sg2eGUfhGCPWwcbS+hU8igMWg5VTOb
+         hk19rb0LnhjsBkS1KfhRolY0YSo/nwDrXGmPNa2uicUpMabrJ8v1nEKn5Fomt++LjjVZ
+         BhIHdUil/AUhFY5nBH5mLvpQnFDDoXaJMqMWDq93/gl2Al5/y25vyQVRnZDW9LX1BSd6
+         Tamt1NxFJD/LEErv49onxCCUn9KpiYFodgX8E/O1VRrCsjUycWWYbpmIxIq0nAE3qnMG
+         8VgA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=hPGNSuiu;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=JORishKw;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d9443c01a7336-20c138b0ff0sor10255195ad.5.2024.10.05.13.06.21
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6cba4773612si27949806d6.391.2024.10.05.13.59.08
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Sat, 05 Oct 2024 13:06:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Sat, 05 Oct 2024 13:59:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=hPGNSuiu;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=JORishKw;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sxBqo-0002ic-RT; Sat, 05 Oct 2024 16:58:06 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1sxBqm-0002hQ-Ed; Sat, 05 Oct 2024 16:58:04 -0400
+Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1sxBqk-0006mf-1q; Sat, 05 Oct 2024 16:58:04 -0400
+Received: by mail-ej1-x631.google.com with SMTP id
+ a640c23a62f3a-a99422929b2so66958066b.0; 
+ Sat, 05 Oct 2024 13:58:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1728158781; x=1728763581; darn=linaro.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=OPq3M0kuo1Nn8l2/hQhKXzGFF76ZzptYhUbdCidOcco=;
-        b=hPGNSuiuRngefoE3eDrG6xv0JnX0TqPZyvEZ4YzZCYgt7wQa5z8r4KXAOL/tW+Tc2c
-         vPCk6wFo1L0ts9yvPHsFPEbUfg0CI7lkaffrmHqDQ2A91YsM0wepIcYpo6tGmKCaPxrf
-         K3s84mi7faEXYzj2nC0G4I9cPrp8ZeeeHvbVAACOaij6E4QPgpr09peAU3GbRLjT30jj
-         F2kxIBgbhF8Mi0vMv53/YE+1+2MGPU0/fq35ZwN3c+3+RPQq1WP9D0nhyJziZmU1L5Rh
-         AWTP4dxlM/HoZXu8GgmKGinkST7NzWeOpsbW2ixuPTUIlnD66LHWUGWTtTyws9LZGBLl
-         RryQ==
+ d=gmail.com; s=20230601; t=1728161880; x=1728766680; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=XJn4B+jQc95ao6ZyIj/u4htIgx2sxZoS2pamWWEl5zk=;
+ b=JORishKw9WXYRbByHwrvfHRGKoglnrR95kd0CEolMRVWCdAwKNTSp3UaVj+pNlgwt8
+ E8ZeAT8sgH2FMudGiIpugw8n/mFgXfptdfL/N01QxRhxPvi+7vfnjtnZ+cEfLld3Q5tB
+ 5bjIcepGqbw/S4TyiD2PPoUJfn6xZ1iRInM0MG0KaXL5uELiwwwJriohocg/Yau9rrVk
+ QonoBcGf6tQZv98YhIAk2RJlx1ozfOQwQcQ1nt07cXkeBMtGQdCpZwp0df10RZeYO82J
+ IuRI0kuphrhNVDrbbfdCuNn33sel/CUuzHIJeQALnHQ0apEYPXk8/tugH8nJ51pLG7pM
+ YfxQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1728158781; x=1728763581;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=OPq3M0kuo1Nn8l2/hQhKXzGFF76ZzptYhUbdCidOcco=;
-        b=AP3reBnH+AC6m5oWrvspRpG4OuP/GJn4UBmePLMR97Rw6VL1v8J0qBcuoSiOPR2EID
-         xu3UsgrM2oMA9kZJrzLn4BljNtP8W9AsBwvh5jjWn1+y3HGCRkVHeSeFnagRyNmlz6Ue
-         c5V8beGLeBbcrCKxYpU/DEDUzbKWHofi7/7y/QdsM4byyqfFeUPc37b2S3mVbQx/LBjC
-         La2cpLDbaC+36bpTc32zQHKhE503zl2bRwe5sMO1X3RNvcwQfwuo9+lyMZvUcUyoRJ7j
-         SDYRGA7a00Tgg25b+XBgjhyy0jT7tj8Mx5OsqAZz7JE23uhCz5zmeJy+u9/SVQn9ty0S
-         4LKQ==
-X-Forwarded-Encrypted: i=1; AJvYcCUTo0cTB1jh1CdKag7zAbdihOuUGVq/qEDX2X/8Aelm1gwsrosAPoc5gJLVOTpPHQ2Oj5kXVw5b5ydSCg==@linaro.org
-X-Gm-Message-State: AOJu0YwOoubQ11S4Iej2kZt46D6w35vbtCyD/a0ppHtVoeYWm2yXx1w+
-	HXu0wljj6HO0JJ6V1dqXENTVB8iOQRU1+XZydpqdFe+S7uIX/TYWLhishNZss5Kbpg==
-X-Google-Smtp-Source: AGHT+IEXZ+Zzt8PYusjsrpVGhTnFdRGcsZ6PugCvEf2Sr7CI2YAi0gDdsUS8CYPUBNKBVP2Jklnamw==
-X-Received: by 2002:a17:902:da92:b0:20b:6188:fc5e with SMTP id d9443c01a7336-20bfdfff45emr91588865ad.28.1728158781473;
-        Sat, 05 Oct 2024 13:06:21 -0700 (PDT)
-Return-Path: <richard.henderson@linaro.org>
-Received: from stoup.. (174-21-81-121.tukw.qwest.net. [174.21.81.121])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-20c13931055sm16493405ad.139.2024.10.05.13.06.20
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 05 Oct 2024 13:06:21 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
+ d=1e100.net; s=20230601; t=1728161880; x=1728766680;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=XJn4B+jQc95ao6ZyIj/u4htIgx2sxZoS2pamWWEl5zk=;
+ b=nz1PMaePeYnfzvpa8HyHdfivZFC+ImHhp083Q6LcGl5tN6qgfm0yEmT+NcVKG5Grec
+ 0RL5CfBs8s9MLMzBjcZxS7LP2cPL5gxBx25vwgnWp8Ml0gnSHt1Y/o5KhtYmp+JOoxtt
+ 1Ov78ZZ4t98Xat6gb9HMPKB4iIkcnuIkMtbLfipx3NcMfRq6f83DiZplFnbJo1SWMk2O
+ sp0Vjl+CLo7Wc6Zfv3AQCdAzjeV0RxTntWbb2HWFL/9M3KJZUXIqw3eGpfFwMosyRQl0
+ WkbstO5DlH+0XuW4V/6KHFhnDFg+5uGHDP6J6JAOx8q+PBn1q4GFZ7+/y2l2dmzTqPag
+ xrVg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXaHa6mbWvgWDPlyDqP70ZV1b+PFQLxc/GcJZrad755PDRhyw0UKEC5Q7Ef9IUb4xGcH3jRg/w8Ig==@nongnu.org
+X-Gm-Message-State: AOJu0Yz5PI35PORBs/8jOXZKXYc1cd5C6gZ7uFDR+E75ERfwPqM/313u
+ em0XTVViHoU9uB0ZrvsLP1opfGPWfy/EvAzmKN+fxDWMrw+suRiLmklLrw==
+X-Received: by 2002:a17:906:ee87:b0:a8d:250a:52a8 with SMTP id
+ a640c23a62f3a-a991bce6124mr861012766b.3.1728161879788; 
+ Sat, 05 Oct 2024 13:57:59 -0700 (PDT)
+Received: from archlinux.. (pd95ed790.dip0.t-ipconnect.de. [217.94.215.144])
+ by smtp.gmail.com with ESMTPSA id
+ a640c23a62f3a-a993f40d542sm105804966b.157.2024.10.05.13.57.59
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 05 Oct 2024 13:57:59 -0700 (PDT)
+From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
-Cc: deller@kernel.org,
-	peter.maydell@linaro.org,
-	alex.bennee@linaro.org,
-	linux-parisc@vger.kernel.org,
-	qemu-arm@nongnu.org
-Subject: [PATCH v2 21/21] target/arm: Fix alignment fault priority in get_phys_addr_lpae
-Date: Sat,  5 Oct 2024 13:06:00 -0700
-Message-ID: <20241005200600.493604-22-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20241005200600.493604-1-richard.henderson@linaro.org>
-References: <20241005200600.493604-1-richard.henderson@linaro.org>
+Cc: Jason Wang <jasowang@redhat.com>, qemu-arm@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Bernhard Beschow <shentey@gmail.com>
+Subject: [PATCH 3/4] hw/net/lan9118_phy: Reuse MII constants
+Date: Sat,  5 Oct 2024 22:57:47 +0200
+Message-ID: <20241005205748.29203-4-shentey@gmail.com>
+X-Mailer: git-send-email 2.46.2
+In-Reply-To: <20241005205748.29203-1-shentey@gmail.com>
+References: <20241005205748.29203-1-shentey@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: tEXpVOz4n5Ig
+Received-SPF: pass client-ip=2a00:1450:4864:20::631;
+ envelope-from=shentey@gmail.com; helo=mail-ej1-x631.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: /lHdJp50uton
 
-Now that we have the MemOp for the access, we can order
-the alignment fault caused by memory type before the
-permission fault for the page.
+Prefer named constants over magic values for better readability.
 
-For subsequent page hits, permission and stage 2 checks
-are known to pass, and so the TLB_CHECK_ALIGNED fault
-raised in generic code is not mis-ordered.
-
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 ---
- target/arm/ptw.c | 51 ++++++++++++++++++++++++++++--------------------
- 1 file changed, 30 insertions(+), 21 deletions(-)
+ include/hw/net/mii.h |  6 +++++
+ hw/net/lan9118_phy.c | 59 +++++++++++++++++++++++++++-----------------
+ 2 files changed, 43 insertions(+), 22 deletions(-)
 
-diff --git a/target/arm/ptw.c b/target/arm/ptw.c
-index 0a1a820362..dd40268397 100644
---- a/target/arm/ptw.c
-+++ b/target/arm/ptw.c
-@@ -2129,6 +2129,36 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
-         device = S1_attrs_are_device(result->cacheattrs.attrs);
-     }
+diff --git a/include/hw/net/mii.h b/include/hw/net/mii.h
+index f7feddac9b..55bf7c92a1 100644
+--- a/include/hw/net/mii.h
++++ b/include/hw/net/mii.h
+@@ -71,6 +71,7 @@
+ #define MII_BMSR_JABBER     (1 << 1)  /* Jabber detected */
+ #define MII_BMSR_EXTCAP     (1 << 0)  /* Ext-reg capability */
  
-+    /*
-+     * Enable alignment checks on Device memory.
-+     *
-+     * Per R_XCHFJ, the correct ordering for alignment, permission,
-+     * and stage 2 faults is:
-+     *    - Alignment fault caused by the memory type
-+     *    - Permission fault
-+     *    - A stage 2 fault on the memory access
-+     * Perform the alignment check now, so that we recognize it in
-+     * the correct order.  Set TLB_CHECK_ALIGNED so that any subsequent
-+     * softmmu tlb hit will also check the alignment; clear along the
-+     * non-device path so that tlb_fill_flags is consistent in the
-+     * event of restart_atomic_update.
-+     *
-+     * In v7, for a CPU without the Virtualization Extensions this
-+     * access is UNPREDICTABLE; we choose to make it take the alignment
-+     * fault as is required for a v7VE CPU. (QEMU doesn't emulate any
-+     * CPUs with ARM_FEATURE_LPAE but not ARM_FEATURE_V7VE anyway.)
-+     */
-+    if (device) {
-+        unsigned a_bits = memop_atomicity_bits(memop);
-+        if (address & ((1 << a_bits) - 1)) {
-+            fi->type = ARMFault_Alignment;
-+            goto do_fault;
-+        }
-+        result->f.tlb_fill_flags = TLB_CHECK_ALIGNED;
-+    } else {
-+        result->f.tlb_fill_flags = 0;
-+    }
++#define MII_ANAR_RFAULT     (1 << 13) /* Say we can detect faults */
+ #define MII_ANAR_PAUSE_ASYM (1 << 11) /* Try for asymmetric pause */
+ #define MII_ANAR_PAUSE      (1 << 10) /* Try for pause */
+ #define MII_ANAR_TXFD       (1 << 8)
+@@ -78,6 +79,7 @@
+ #define MII_ANAR_10FD       (1 << 6)
+ #define MII_ANAR_10         (1 << 5)
+ #define MII_ANAR_CSMACD     (1 << 0)
++#define MII_ANAR_SELECT     (0x001f)  /* Selector bits */
+ 
+ #define MII_ANLPAR_ACK      (1 << 14)
+ #define MII_ANLPAR_PAUSEASY (1 << 11) /* can pause asymmetrically */
+@@ -112,6 +114,10 @@
+ #define RTL8201CP_PHYID1    0x0000
+ #define RTL8201CP_PHYID2    0x8201
+ 
++/* SMSC LAN9118 */
++#define SMSCLAN9118_PHYID1  0x0007
++#define SMSCLAN9118_PHYID2  0xc0d1
 +
-     if (!(result->f.prot & (1 << access_type))) {
-         fi->type = ARMFault_Permission;
-         goto do_fault;
-@@ -2156,27 +2186,6 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
-     result->f.attrs.space = out_space;
-     result->f.attrs.secure = arm_space_is_secure(out_space);
+ /* RealTek 8211E */
+ #define RTL8211E_PHYID1     0x001c
+ #define RTL8211E_PHYID2     0xc915
+diff --git a/hw/net/lan9118_phy.c b/hw/net/lan9118_phy.c
+index 1ab4bbc900..1c2f30c81a 100644
+--- a/hw/net/lan9118_phy.c
++++ b/hw/net/lan9118_phy.c
+@@ -14,6 +14,7 @@
  
--    /*
--     * Enable alignment checks on Device memory.
--     *
--     * Per R_XCHFJ, this check is mis-ordered. The correct ordering
--     * for alignment, permission, and stage 2 faults should be:
--     *    - Alignment fault caused by the memory type
--     *    - Permission fault
--     *    - A stage 2 fault on the memory access
--     * but due to the way the TCG softmmu TLB operates, we will have
--     * implicitly done the permission check and the stage2 lookup in
--     * finding the TLB entry, so the alignment check cannot be done sooner.
--     *
--     * In v7, for a CPU without the Virtualization Extensions this
--     * access is UNPREDICTABLE; we choose to make it take the alignment
--     * fault as is required for a v7VE CPU. (QEMU doesn't emulate any
--     * CPUs with ARM_FEATURE_LPAE but not ARM_FEATURE_V7VE anyway.)
--     */
--    if (device) {
--        result->f.tlb_fill_flags |= TLB_CHECK_ALIGNED;
--    }
--
-     /*
-      * For FEAT_LPA2 and effective DS, the SH field in the attributes
-      * was re-purposed for output address bits.  The SH attribute in
+ #include "qemu/osdep.h"
+ #include "hw/net/lan9118_phy.h"
++#include "hw/net/mii.h"
+ #include "hw/irq.h"
+ #include "qemu/log.h"
+ #include "trace.h"
+@@ -38,11 +39,11 @@ void lan9118_phy_update_link(Lan9118PhyState *s, bool link_down)
+     /* Autonegotiation status mirrors link status. */
+     if (link_down) {
+         trace_lan9118_phy_update_link("down");
+-        s->status &= ~0x0024;
++        s->status &= ~(MII_BMSR_AN_COMP | MII_BMSR_LINK_ST);
+         s->ints |= PHY_INT_DOWN;
+     } else {
+         trace_lan9118_phy_update_link("up");
+-        s->status |= 0x0024;
++        s->status |= MII_BMSR_AN_COMP | MII_BMSR_LINK_ST;
+         s->ints |= PHY_INT_ENERGYON;
+         s->ints |= PHY_INT_AUTONEG_COMPLETE;
+     }
+@@ -53,9 +54,18 @@ void lan9118_phy_reset(Lan9118PhyState *s)
+ {
+     trace_lan9118_phy_reset();
+ 
+-    s->status = 0x7809;
+-    s->control = 0x3000;
+-    s->advertise = 0x01e1;
++    s->status = MII_BMSR_100TX_FD
++                | MII_BMSR_100TX_HD
++                | MII_BMSR_10T_FD
++                | MII_BMSR_10T_HD
++                | MII_BMSR_AUTONEG
++                | MII_BMSR_EXTCAP;
++    s->control = MII_BMCR_AUTOEN | MII_BMCR_SPEED100;
++    s->advertise = MII_ANAR_TXFD
++                   | MII_ANAR_TX
++                   | MII_ANAR_10FD
++                   | MII_ANAR_10
++                   | MII_ANAR_CSMACD;
+     s->int_mask = 0;
+     s->ints = 0;
+     lan9118_phy_update_link(s, s->link_down);
+@@ -66,26 +76,26 @@ uint32_t lan9118_phy_read(Lan9118PhyState *s, int reg)
+     uint32_t val;
+ 
+     switch (reg) {
+-    case 0: /* Basic Control */
++    case MII_BMCR:
+         val = s->control;
+         break;
+-    case 1: /* Basic Status */
++    case MII_BMSR:
+         val = s->status;
+         break;
+-    case 2: /* ID1 */
+-        val = 0x0007;
++    case MII_PHYID1:
++        val = SMSCLAN9118_PHYID1;
+         break;
+-    case 3: /* ID2 */
+-        val = 0xc0d1;
++    case MII_PHYID2:
++        val = SMSCLAN9118_PHYID2;
+         break;
+-    case 4: /* Auto-neg advertisement */
++    case MII_ANAR:
+         val = s->advertise;
+         break;
+-    case 5: /* Auto-neg Link Partner Ability */
++    case MII_ANLPAR:
+         val = 0x0f71;
+         break;
+-    case 6: /* Auto-neg Expansion */
+-        val = 1;
++    case MII_ANER:
++        val = MII_ANER_NWAY;
+         break;
+     case 29: /* Interrupt source. */
+         val = s->ints;
+@@ -120,19 +130,24 @@ void lan9118_phy_write(Lan9118PhyState *s, int reg, uint32_t val)
+     trace_lan9118_phy_write(val, reg);
+ 
+     switch (reg) {
+-    case 0: /* Basic Control */
+-        if (val & 0x8000) {
++    case MII_BMCR:
++        if (val & MII_BMCR_RESET) {
+             lan9118_phy_reset(s);
+         } else {
+-            s->control = val & 0x7980;
++            s->control = val & (MII_BMCR_LOOPBACK | MII_BMCR_SPEED100 |
++                                MII_BMCR_AUTOEN | MII_BMCR_PDOWN | MII_BMCR_FD |
++                                MII_BMCR_CTST);
+             /* Complete autonegotiation immediately. */
+-            if (val & 0x1000) {
+-                s->status |= 0x0020;
++            if (val & MII_BMCR_AUTOEN) {
++                s->status |= MII_BMSR_AN_COMP;
+             }
+         }
+         break;
+-    case 4: /* Auto-neg advertisement */
+-        s->advertise = (val & 0x2d7f) | 0x80;
++    case MII_ANAR:
++        s->advertise = (val & (MII_ANAR_RFAULT | MII_ANAR_PAUSE_ASYM |
++                               MII_ANAR_PAUSE | MII_ANAR_10FD | MII_ANAR_10 |
++                               MII_ANAR_SELECT))
++                     | MII_ANAR_TX;
+         break;
+     case 30: /* Interrupt mask */
+         s->int_mask = val & 0xff;
 -- 
-2.43.0
+2.46.2
+

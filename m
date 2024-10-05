@@ -1,155 +1,196 @@
-Received: by 2002:a17:505:c89:b0:1be9:327d:8ee3 with SMTP id hp9csp624831njb;
-        Fri, 4 Oct 2024 11:24:22 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXVyytOldjBOkfhHJPv52lw7eAYXbL2ywwRaG+CqhQJ79LOh4DGfRLipGS5ihbjCy0XbuiNPl/Xmo2+wQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IFv5WHXeeDANYaeIdXeAc/MjswPYKDUxQ9gMn+aKC6f8GsmhQoi/IUSvnAIeCkJ/iPu8fdZ
-X-Received: by 2002:a05:622a:5c7:b0:458:532c:1e66 with SMTP id d75a77b69052e-45d9ba87308mr60136291cf.33.1728066262511;
-        Fri, 04 Oct 2024 11:24:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1728066262; cv=none;
+Received: by 2002:a17:505:c89:b0:1be9:327d:8ee3 with SMTP id hp9csp921355njb;
+        Sat, 5 Oct 2024 03:11:34 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXqHmxrrjeoD1gx4MoMlyQKhtPLCYTL3Su3D8qrNmJCbJvdJ14Y+HDKr9zRCjrloQi5tbN2mp5qvpja+A==@linaro.org
+X-Google-Smtp-Source: AGHT+IHU9DqYQFAvJgGU1V+BD++ZjDkbowk42RG7SuIe22KJnb2SeX20r2t227R5WiRZmMMS/FW6
+X-Received: by 2002:ac8:7f04:0:b0:458:3395:9c4d with SMTP id d75a77b69052e-45d9badabb9mr75459001cf.40.1728123094244;
+        Sat, 05 Oct 2024 03:11:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1728123094; cv=none;
         d=google.com; s=arc-20240605;
-        b=DAK3oItZDOmUyZ074SABp03PFkBUERE9Q3IWnUISA0C4pG9D611wAD1zB8W6VWjrC/
-         RsZbOnWYuO3SdB8wbHu4OltzoSDdKSc/2xxIWBpqr6cED9lU1f8bTOT4WPKIBD+agk7m
-         HyyB9X21tmUbmFtWLSviEjqJTo14mQY2VMb+UiUMCgPwChXVwJeStvLcA4JnxYQTvc4q
-         NX99XFyfzceNwaFXTk2DUt+vd6fcvJMZPtJoe0IgfGBKuLwU7Ewy6pSCRM7IwYTae2QR
-         TXDji9MbgxdGGwhAEmEWfGK3+AMUSzp2MWsEf8lVq1Tqwy3qUTvJjWq9KzQ8e/DKFdDY
-         Hgng==
+        b=G/FAKuNc3IuP9MgbtUXSR/5mnlDORdZNvHbfQAPHQYSxCS4YnRuMs40OA/0mQTPLZg
+         LdfuUfVFn347igdT01gyOMJ5DmP6WIy88jOySchyBy7MBxpy1rgFSxBEKNB0CuE7YTGS
+         1zywMHQfMLzE1q8VmnJJP7zwIJA84UX4/2wH4eMtsv1oSuIR2T3aw5yQ2HK4NmsMI7mk
+         DbFCJH5QVuemrg2ytYD+NTnX7vJZyKBzupWRkpvX8OMBdOzmZPbpNp19kyw77eAbffB5
+         EB1FvTMe+6gA1oZISZv8hwuhX5DSG0J+4QGmkHdpClPRc1xSHC1FDvWu7faTd/SPCe/k
+         43qw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=daj2G7v6GYNNMy/YdduAt2P4YOw8SO/gZvr0DGLa6xA=;
-        fh=cw98dB6PlZTkfkvoi68yEJS+JjHyOgPJRZssRvNnllo=;
-        b=eAeFOCagvSXXAxZaR4S1muI706i7RsbUYtur1uMRsxhLX2O95vX9Bzdu0s2gPBd6Vs
-         oYREYpPUNaH0/oBIcFezOX55hyRjaZ3wXry94+SSsjvlB2k7DhCi2+XvkpPZ7QpLkH80
-         7WCeRPj4af6Ofrmg9Dte5lOTMCvcpn1z61UKtl91k1h5tSI7yEFXwu1+mIzONClqDrdK
-         tmf5CA5qjp6iMlAbLE0W4cVvXT+TTguJKQKfuVvBtU8zTrHZdsK349eCRtFmeqDZkbE2
-         F7wa+oZA4HbfjB3tUXj7Lmuhhn5NFR2aub5yqE1Sw68QOTcKDk6pf0eJN09NAxMMn5H1
-         bCrw==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:references:in-reply-to:subject:cc:to:from
+         :date:dkim-signature;
+        bh=Gx7wEJPYU6nF+8R1X8Q39JtQibkyvPUdm12Li1kywDc=;
+        fh=1h5IcotE95mv6lL5dfC3COnJRumlEo3I7u0ldJX34nc=;
+        b=flNEiKP1ilpisr0k/IIWgguHj51ZKhYrCl6rw8rUXW+dKIxKcMD/Gid3EpddEnXnQe
+         xQJSwg258vPfvPFSauBY9o92A6ZZmgdUA8RpKh8S3NfNxkvcTm1C+qx3dtPW0xzzl1uA
+         2Yt3LNgFqg30I2donte8IsAPZ1jWcbMNSM8JOdlZGvH6bG+e86UxuEBgckZGYyT2eBnq
+         PeZ/ers4axp0Ga2Iiet3/Wbb8G3y9WNhIcj9boFu/xKts+aJI55s5ejt5MxuNwmg+H8R
+         iJQWoicGBAcHwOvgdVcGpaMM0RBzrPYV7eCkARtcVgk0MBuO0je6vIPdtc2fI26HOAya
+         PLhg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=h3q0omy8;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=E5z05KrO;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-45da74e673csi3154881cf.207.2024.10.04.11.24.22
+        by mx.google.com with ESMTPS id d75a77b69052e-45da76d91d0si17468521cf.743.2024.10.05.03.11.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 04 Oct 2024 11:24:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sat, 05 Oct 2024 03:11:34 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=h3q0omy8;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=E5z05KrO;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1swmy8-00012e-FT; Fri, 04 Oct 2024 14:24:00 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sx1ko-0006HB-F8; Sat, 05 Oct 2024 06:11:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1swmy6-000127-VO
- for qemu-devel@nongnu.org; Fri, 04 Oct 2024 14:23:58 -0400
-Received: from mail-lj1-x22b.google.com ([2a00:1450:4864:20::22b])
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1sx1kl-0006GT-TN; Sat, 05 Oct 2024 06:11:12 -0400
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1swmy5-0002ZS-Fs
- for qemu-devel@nongnu.org; Fri, 04 Oct 2024 14:23:58 -0400
-Received: by mail-lj1-x22b.google.com with SMTP id
- 38308e7fff4ca-2fac47f0b1aso30897811fa.1
- for <qemu-devel@nongnu.org>; Fri, 04 Oct 2024 11:23:57 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1sx1kk-0000uw-8m; Sat, 05 Oct 2024 06:11:11 -0400
+Received: by mail-wr1-x42b.google.com with SMTP id
+ ffacd0b85a97d-37cd8a5aac9so1605371f8f.2; 
+ Sat, 05 Oct 2024 03:11:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1728066236; x=1728671036; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
+ d=gmail.com; s=20230601; t=1728123068; x=1728727868; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
  :message-id:reply-to;
- bh=daj2G7v6GYNNMy/YdduAt2P4YOw8SO/gZvr0DGLa6xA=;
- b=h3q0omy8BpO9FP5XKwlgTc0q0+1Fn6+/aY5eCf0jNPBYTkXfE9JMcEWKsXLelQkFId
- A2TYzC/RsqCw/9rjej45EtNbhQabADpZc4Becs3x2Q52NL4cobi+vdeoF//ubPyxGX5z
- 3ChcGL4T5m48WCHWCYWowEZV1qt1+th1BL40Q/x7CBjKu0urLF08zr/z1tkCiiYTU0mY
- 4/yZAT7zTOceDlPd6E6pjGPKJKaewLN0zB87OPBAcBRcgZmwuRIhomJrshfUgHlLGkIb
- vS0Ruyp2OWK4jDwAbEeOgOjYTycoMbaUTKn0tYG0msNFfCsvKN3m1+lZVjUTu9uEMKkS
- fc4g==
+ bh=Gx7wEJPYU6nF+8R1X8Q39JtQibkyvPUdm12Li1kywDc=;
+ b=E5z05KrO/4Yb9vSG96EAVABwgJLB/+egZf6QehmfK7gGtt3eeZ+YGZ4OnJS4vX4At5
+ hxQ5Hf/S6kV5AryyzeYcj/1aXLZbpPVroUKUP+/c8Y8bsDtjC22d5Lg+Sp86nlb6AUtt
+ NJ1PNFEfbNUUHjPDvsHX/Thczlo3lDn2TRGHZUF7KeQe+gOjtPdxzHKa883TbR59NaOX
+ +zy78/LFuAEFHalk8aYF7q7IDSFCQq0Dz6vDGENrD1Xk1H+P1s9Fq9EXHy8nWmOSp4/i
+ YacI2he3lqCjr3SVa0DdDKUVi6aE/4WaMag6MB0OK50iIQ/lijyRuewjQB+9krFy+biB
+ ozEg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1728066236; x=1728671036;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ d=1e100.net; s=20230601; t=1728123068; x=1728727868;
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=daj2G7v6GYNNMy/YdduAt2P4YOw8SO/gZvr0DGLa6xA=;
- b=YZRubMfi/R8HW1JwvXUigu557umkUX8SWnL9Pu8h7+ipEfTntqJUSf/DPTc8No58OC
- 8FqGpMkJ6YXIXRNvgL8pBSXLYvV0GnfqcYzqXoSdOAMqBSUiqqgFJA925cpjiIbPbIGc
- GisswsxUuq7cCWrV3Bh76QLYUNRLqmzhSoiZqTBdSV4jG0RuNUJoMykz6jSPdxO3zLvF
- Pl4MBaPiqavVHnnc2ReUgXmh5Ypjd1GEm9EQJVf4H2hniLvzGmYTfYKnnWdekehPaaKR
- lMYVUCQ5LHCFY/eN5P7C5yd7a+IuctZNs2MiTxO6aR4L6RKZL5NdbM/eco50Os6RIDTz
- 75ng==
-X-Gm-Message-State: AOJu0Yz3xQjEJeksQINjuvW7KihT8ni4yvf4NHYA3rhWrWHgmgH4cKG5
- wJw3RCKuDbMnDgrSrv2kWr2yATnvzsL8r1Yjc6DxIx0eVp+gN9NTDh5zCBSflv4EwS6zpzx48w3
- j33701ZI+6gb49yF5AMRWplq95uNduVXe1PPsdg==
-X-Received: by 2002:a2e:d1a:0:b0:2f1:a19b:d5a4 with SMTP id
- 38308e7fff4ca-2faf5cdead9mr13292311fa.22.1728066235764; Fri, 04 Oct 2024
- 11:23:55 -0700 (PDT)
+ bh=Gx7wEJPYU6nF+8R1X8Q39JtQibkyvPUdm12Li1kywDc=;
+ b=OVCbbQlxMl6kttkoyWOjaASXp9hC9V5byg8CVyRjpWH4S6JqeM/DxnLrXpjNaSALo8
+ VEtwPYCEsE5L2vBU2pZ05WiQnVR2gHsvin3hM8tuGX71j6v9huOhwAw37Pjg2t1+4I+X
+ U3g0GCbBtqkN61Ay+RwihvD1jgE12DNKMSuCaPq2eEz4auTbyEnrvLcTDEk5gAF43y0y
+ VtQeWjt6covRYbCYGsfzY3GAA9yGwQEO52/umYZso225nWwZjPQxvs8qHH1NV/EXPPG9
+ aFQfvqqDHar3RE+13noAN1vogNeQV1mlnezZxAN1vndfC9W2fUoDWwxhw0gbDY78D8fH
+ FeEA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUHNkKtgoeuorUX20KKxq8twzbEq9vj8ad5iAJ4UTZqqQdl9QhDHrjNKVOoiWsA7cTwuJJYNFXgqQ==@nongnu.org,
+ AJvYcCVQx+lAKOzRgrr+9XMZIO9eLS2XHKqnq8OSfE/61Hkr2m6SGiNJgCV9snJv7XE2E4+W1swQZgneX3s=@nongnu.org
+X-Gm-Message-State: AOJu0Yz1eVpzUc3sVwMT6603TH7+u0Y5NfYnU5z+Kc2S2BLpQMgwS/k+
+ 66TM9rWkG4Vpj2gJ8mja4+BMPZjKfjM26Kh+BLIA33Xa70e6eoW6wPaPYQ==
+X-Received: by 2002:a5d:4ec1:0:b0:374:bb0c:c067 with SMTP id
+ ffacd0b85a97d-37d0e7b9b19mr2837949f8f.40.1728123067596; 
+ Sat, 05 Oct 2024 03:11:07 -0700 (PDT)
+Received: from ?IPv6:::1?
+ (p200300faaf0b740060f42ffb9c392035.dip0.t-ipconnect.de.
+ [2003:fa:af0b:7400:60f4:2ffb:9c39:2035])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-37d16920cc7sm1470338f8f.61.2024.10.05.03.11.07
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sat, 05 Oct 2024 03:11:07 -0700 (PDT)
+Date: Sat, 05 Oct 2024 10:11:01 +0000
+From: Bernhard Beschow <shentey@gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+CC: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-ppc@nongnu.org
+Subject: Re: [PATCH 0/3] Split TYPE_GPIOPWR and reuse in E500 machines
+In-Reply-To: <CAFEAcA-69b=MJtqpOss97erRH8v01GdUEGLNydQaz3bVxbUQkg@mail.gmail.com>
+References: <20240923101554.12900-1-shentey@gmail.com>
+ <CAFEAcA-69b=MJtqpOss97erRH8v01GdUEGLNydQaz3bVxbUQkg@mail.gmail.com>
+Message-ID: <ADAEF2E0-07DF-40F5-9226-CAC28FFA90D3@gmail.com>
 MIME-Version: 1.0
-References: <20241003081105.40836-1-ines.varhol@telecom-paris.fr>
-In-Reply-To: <20241003081105.40836-1-ines.varhol@telecom-paris.fr>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 4 Oct 2024 19:23:45 +0100
-Message-ID: <CAFEAcA9=We-DwTezYw6=KApSQ14iExgdek8YLPTzU6HLLv_jpw@mail.gmail.com>
-Subject: Re: [PING PATCH v5 0/3] Check clock connection between STM32L4x5 RCC
- and peripherals
-To: =?UTF-8?B?SW7DqHMgVmFyaG9s?= <ines.varhol@telecom-paris.fr>
-Cc: qemu-devel@nongnu.org, Arnaud Minier <arnaud.minier@telecom-paris.fr>, 
- Paolo Bonzini <pbonzini@redhat.com>, Luc Michel <luc@lmichel.fr>,
- qemu-arm@nongnu.org, 
- Thomas Huth <thuth@redhat.com>, Samuel Tardieu <sam@rfc1149.net>, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
- Alistair Francis <alistair@alistair23.me>,
- =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
- Damien Hedde <damien.hedde@dahe.fr>, Laurent Vivier <lvivier@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain;
+ charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::22b;
- envelope-from=peter.maydell@linaro.org; helo=mail-lj1-x22b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
+ envelope-from=shentey@gmail.com; helo=mail-wr1-x42b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: cAJqosT7fymf
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: RXnMmMSeLZyN
 
-On Thu, 3 Oct 2024 at 09:11, In=C3=A8s Varhol <ines.varhol@telecom-paris.fr=
-> wrote:
->
-> Among implemented STM32L4x5 devices, USART, GPIO and SYSCFG
-> have a clock source, but none has a corresponding test in QEMU.
->
-> This patch makes sure that all 3 devices create a clock correctly,
-> adds a QOM property to access clocks' periods from QTests,
-> and adds QTests checking that clock enable in RCC has the
-> expected results for all 3 devices.
->
-> Thank you for the reviews.
->
-> Changes from v4 to v5: none
-> (just added new reviewers in commit messages)
 
-Thanks for the resend -- I've applied this to target-arm.next.
 
--- PMM
+Am 30=2E September 2024 12:57:17 UTC schrieb Peter Maydell <peter=2Emaydel=
+l@linaro=2Eorg>:
+>On Mon, 23 Sept 2024 at 11:16, Bernhard Beschow <shentey@gmail=2Ecom> wro=
+te:
+>>
+>> This series is part of a bigger series exploring data-driven machine cr=
+eation
+>> using device tree blobs on top of the e500 machines [1]=2E The idea is =
+to
+>> instantiate a QEMU device model for each device tree node containing a
+>> compatible property=2E [1] achieves feature-parity with the hardcoded m=
+achines
+>> when supplied the same device tree blob that the hardcoded machine woul=
+d
+>> generate=2E
+>
+>FWIW, on Arm I have generally pushed back against the idea
+>of "create a QEMU machine from a device tree", because the
+>device tree does not in general contain sufficient information
+>to create a QEMU machine=2E It only has the information that
+>Linux needs to use the devices, which is a subset of the
+>total "how do all these devices exist and get wired together"=2E
+>(There are some special cases like some Xilinx FPGA systems,
+>where both the device tree and the hardware were autogenerated
+>from a common source definition, and so there's enough of
+>a constraint on what the hardware can be to make it workable=2E)
+>
+>> Just like the ARM virt machine, the ppce500 machine implements a
+>> "gpio-poweroff"-compatible device tree node=2E Unfortunately, the imple=
+mentation
+>> isn't shared which this series fixes=2E In order to reflect device tree=
+ which has
+>> separate bindings for gpio-poweroff and gpio-reset, and to prepare for =
+the
+>> above, the gpio-pwr device model is split=2E
+>>
+>> Note: If the split seems too fine-grained, the existing gpio-pwr device=
+ model
+>> could probably be reused in ppce500, too=2E
+>
+>I definitely like getting rid of the hand-coded
+>qemu_allocate_irq() in e500=2Ec=2E But I don't really see
+>the benefit of splitting gpio_pwr into two devices=2E
+>If you only need the power-off behaviour, you can
+>leave the restart gpio input not connected to anything=2E
+
+New series sent which removes qemu_allocate_irq() usage in e500=2Ec: https=
+://lore=2Ekernel=2Eorg/qemu-devel/20241005100228=2E28094-1-shentey@gmail=2E=
+com/
+
+Best regards,
+Bernhard
+
+>
+>thanks
+>-- PMM

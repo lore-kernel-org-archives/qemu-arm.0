@@ -1,81 +1,80 @@
-Received: by 2002:a17:505:c89:b0:1be9:327d:8ee3 with SMTP id hp9csp1047738njb;
-        Sat, 5 Oct 2024 08:25:55 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUaCEhcUnVVHsx5rQ4Jv74XsY8+4GODkHDErvMZWhkCXIEHcY6tyEaj8RLeq9/La7cbo/8GwwWuv0rifA==@linaro.org
-X-Received: by 2002:a17:902:e74c:b0:206:9a3f:15e5 with SMTP id d9443c01a7336-20bfe043018mr92509945ad.32.1728141955250;
-        Sat, 05 Oct 2024 08:25:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1728141955; cv=none;
+Received: by 2002:a17:505:c89:b0:1be9:327d:8ee3 with SMTP id hp9csp1047744njb;
+        Sat, 5 Oct 2024 08:25:56 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXhYp7L4RNCl5xE2MT2zMhSHLGNIFKu21ZAhUpMksA1D3lmSuGL8gcTc9scH7q9gBQdB1s0KpLtZpdUWQ==@linaro.org
+X-Received: by 2002:a17:902:f611:b0:202:13b0:f8d2 with SMTP id d9443c01a7336-20bff04ad1cmr97794595ad.46.1728141956224;
+        Sat, 05 Oct 2024 08:25:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1728141956; cv=none;
         d=google.com; s=arc-20240605;
-        b=d56JzXZxpUe55SWmTAEzKaaINUDnBwwu8tP+B4BpPPBwckfujbXl9Mhxa2qD0D6+ED
-         ylDdgVk6XsEGnWf74ts0Y2+Tt0ISQhsDGY0TuW0iGO+Ev4tzAWP1b87co/bDeTFfAQah
-         QmsBXmINO9G+JMxNr7x4gvwa9fdfO1oNocA31VlG6tk6aS8XsRcMnQX1fCYwUuBejWst
-         4sAhSl5Bgvrct14RVEXF6mUhikssNiJuRZLkK3v4RBiALiS4erA9Nm+Hcwtgc3wuDDlo
-         CF1gmDc2ckuuJt/+wQW/5spVLJdXrnbEFw+Yk549waz8LPb0jR3CKbPUSsx2mayzoNHk
-         Al6g==
+        b=W6Z4ICzrtcp2ZDDRlo6cnT7f5U9uuhR7/Vuqvetmm90xLAHCAppJJL6pLi8npFXUFI
+         g6dr9kTql1C5Bt/2pf2AlHccRMVO3iqGBXhaUCfES+lezfDre6j7LYnBTzzpsmabte85
+         Ob4ZtmJU+9VrjCar40zlyOGlygzdTXKccDQC4hLtjLQW3DBiCf+DTiYM6G940kMFj+6L
+         aCQk+5ULL+PifpheeVkTQ0V+/XpJ4eXTaYsyHbS9dhtO3c/O0VHE6GvtnpHg8nDpVP7g
+         bwrALgJq6MT8uqTZFjDtYN6WWl3AUVzPJerIGJe7DytWvPoNBA4+teWkOvHjUDFtMBrN
+         Uywg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=wBthGFf8BfR2i4dob959bB47CFsEJX0Mf+aRMHd0jM4=;
-        fh=AyJsET+4279DeCQAOgZ56EfjL8qLnSrNsOze8/2ol9E=;
-        b=SwEmPVkIlvpuaOMEauJrg5a/SsE4hHv/T2dqWv5MUBBgxWxrJpHg9Y/rlit+1mqht6
-         6EC+wYYXKfMnMpsk97Et7v/sB321eXSCuIR9rLLcphT+0rEWLZbw9vr3fhPgOICMlcwz
-         0+gOGH28Mb8g6yFymQiWu/tCTSnHd1jynZDTpYEI/+fI87q0KaxP1nRVrFGiP6DALsOg
-         AqnDpEH1LUAYq6xxOyxS6SbWTdWcGiEqGrrAO2qyD+0w6WRGkwU9yCgSX5TEtJcULzYQ
-         szFaWcTP/1JmNF5okFKPSwCRd+a9vAaOMr8mxPXEemhf/fCIFEUOIuV5Jef9jdwTQdTC
-         9Yzw==;
+        bh=js9k8IR/cEhAqGc5dKpCioG/n/UgV+piB56d5dg8Aiw=;
+        fh=/tz+WPqgIOInGLm4+3Rf6j/+L/4Njiykl3n5pDerVVM=;
+        b=aQ0BUYaERvSjgR/Ivje5nZXFWLRSwrlJZyh/p5LzNtfWPbzPXWK8tT+DpqYEmOAEOo
+         eavNNOO09E07VsZ7jQYizmDLI92i9XTluf2c86FMQqSYAHeeY5dZbT/yW+9kjCU/5yFH
+         jkK/ZR6z8l/CjnEN8TW0msH58WRaEZMwyfqybQ2xjiSWnIMF5evhSLSL+bEeZU0yxmzY
+         onaRhAYmOSqjibXIt1UslPdPby+8vjflJZbgoT3T+/hhaYyPwLYEgQ+cZC02vxRBXGfA
+         wc1bFyAIEu5SZWg3ZkLSwd3+PnrWUKS6883UoXoGYfC30hD8pbhlHKNmaU6i46GIMiw6
+         xwoA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=vr7nLxuO;
+       dkim=pass header.i=@linaro.org header.s=google header.b=OfdT97o2;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d9443c01a7336-20c138a9ec9sor10743025ad.2.2024.10.05.08.25.55
+        by mx.google.com with SMTPS id d9443c01a7336-20c1394bd5asor14109275ad.20.2024.10.05.08.25.56
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Sat, 05 Oct 2024 08:25:55 -0700 (PDT)
+        Sat, 05 Oct 2024 08:25:56 -0700 (PDT)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=vr7nLxuO;
+       dkim=pass header.i=@linaro.org header.s=google header.b=OfdT97o2;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1728141955; x=1728746755; darn=linaro.org;
+        d=linaro.org; s=google; t=1728141956; x=1728746756; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=wBthGFf8BfR2i4dob959bB47CFsEJX0Mf+aRMHd0jM4=;
-        b=vr7nLxuORtJwqMfL9+hv3d0uDY+ijWPGzv3tBBeUQj0+C0VAqImopeuwMco0oJ5QPf
-         xRzbacACIqBPT9/ZvTT8VrVaRBU/YgKEptEW5j2NuhBPpXvypxhnx4BoO8ZLWmKFFG+f
-         nWN7qUubfUOeCZpGUlz2obc88qUz450k9CuKHZEjk/gjVnfKa5BhHxpryy7yw0A9dkEM
-         8KAtZgcOjpzc9AJq44/R5HWFISgkdBjrUxhM8xzQNW0Qjc3W2O1jq8OPaBH9BgzbnegL
-         PZFvNckkBFcsbJa4OB87c0KGGVUAjmm6luChKv0/mQ5cuBrgxsXlwJpKFzivjTQjkLH4
-         24rQ==
+        bh=js9k8IR/cEhAqGc5dKpCioG/n/UgV+piB56d5dg8Aiw=;
+        b=OfdT97o21hnxOvEkxY4lAkRWw9+JUBEI1kw5Jhw9HOfwtfG5LQEg2oEty0+XBSS0Ek
+         cbteWzJKUfjiN7aoiZh1kZP6YU498EBwnD3F3tAkrOv3pmzf2zFNjy8wgc34Ll0agsXY
+         +NBdOMvrqZDddn8IPpj+tpTyHuQxarQe+NGSqyzSnrWCFIEl23s2e8Z24WrCLXlqQThE
+         1uoHv7MMt+e9cg0fc+5f5tO3ABJFf8qrjrBQCj3tN3OBDuHSh2ZmMc9t3+vdYsLWa1Gf
+         hkK+YixLnUliaffPU7+4lCnzhNpnLuA2CuJRp4s/YDHGg9V9PnHVeUIcR5XVUV4Ax32k
+         wDMQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1728141955; x=1728746755;
+        d=1e100.net; s=20230601; t=1728141956; x=1728746756;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=wBthGFf8BfR2i4dob959bB47CFsEJX0Mf+aRMHd0jM4=;
-        b=at9VY1w8b0Yk58dZraZ3qVJrogQV8bdLyqCkDGY+LwKylX8HQcbaPU+1aPunsIxF1o
-         6M2FePJOLfhTp/ivZIYH0oarmgDJdp9MUL5LLJJhe1oZDt2asJZfkxqHOErAF2NDPz9q
-         cJrzI+PoME9P3yTR5TznDLfVQImTGPLw6qMMpmshCSroXJfAzGQcZ69UtK+Ds8cnMHuk
-         Z9Iwf4OnQ1BkGHattLsP4V4QyFeWzljzO/l0pNRG8eYm1/vQlofYf7+jCSLebPH0CVcL
-         mftfk0QwaSCylUW2evuK48KF40XJZydPQ4Kx/67D3eWlUSSVobWw/EqnPLTF7LlzKsNm
-         Ducg==
-X-Forwarded-Encrypted: i=1; AJvYcCVRxMjplwGpTrBzr12/mhRIuslgqRzayDOP6dZ4b2izECb/DPwcKEU/k7/T+WUDxNJY1ssgE23Ffm1Phw==@linaro.org
-X-Gm-Message-State: AOJu0YwPiU+GmZKOUVQmwiOSS/aMZ9tSK07g1DQeXEJJQJqAxaEoUATm
-	4zVWl3JA8ShFLFjip7Uh5RqV50MUQk4BL1z9ip/SsBtfqN6w8ATXG/H/zNfLVeEe+jjw6yCVTdM
-	7MCU=
-X-Google-Smtp-Source: AGHT+IH7Xmy/UoZFDozrpGZR2JXAjehjcUEjjy3Gt9EAYcog/cZlmR6Wqao6wjaMYAvpmgnjtSqiEQ==
-X-Received: by 2002:a17:902:d581:b0:20b:419e:9f15 with SMTP id d9443c01a7336-20bfea570admr86092045ad.46.1728141954795;
-        Sat, 05 Oct 2024 08:25:54 -0700 (PDT)
+        bh=js9k8IR/cEhAqGc5dKpCioG/n/UgV+piB56d5dg8Aiw=;
+        b=I/7DTvyuhqrA7yNe0FQXRItlNesSsvcnvMNxB4lk/UdkPDkW5QVevMHRnHS0Hl48Yq
+         bzlYKBJuWwTvBEHGCNVzaxyU9qQn+3chm4J9N+vYKfMgsVbpw1kwxxbC/FKlqIsPT2Ya
+         nEqlGhnOGJQ8O6jbKHSdBrcrTP0xdUgKNmEPv19h68pNyE4f7GabOSGxqKb6Ht1N7h1X
+         Rr52IoNwvrf8yxgy2wX4FsubvaE7sqbzBUD5iQRA8+W4qUS6fP4xx0gl/MsHc984IoIY
+         35Rovz3PsmAbr6tLL8cmKxXET7tTuYmwp+n/12+nTY8St5mcAx4Kv2A5L2gUL/Se7qjz
+         W9WA==
+X-Forwarded-Encrypted: i=1; AJvYcCVhbC6idEQONT84QPp3f9JZQ0Yi5mpIZqZh5dnN9OfG+CIpCCo+L+X7bk5rftuG78qkh+HT6APnu+4xJw==@linaro.org
+X-Gm-Message-State: AOJu0YwE9V/WrC22jC3V5YCKX3NzssKBaCORhkLAqv+GrlsLDQNQRbMq
+	HOEAQ9D8ivgHLWrPgwsJRvBLaV1lyPTIiTkIVc0no4b7R3Eg8AZVxiyOZAATDJOtNg==
+X-Google-Smtp-Source: AGHT+IGIBBnYzSGfllOqeGB217gC39c6yX53tA6gs3EyjynpH2B/4NzPXZOQfYqQh+wbNxGsQ2aqKA==
+X-Received: by 2002:a17:902:e551:b0:20b:4875:2c51 with SMTP id d9443c01a7336-20bfe024d5cmr107983235ad.27.1728141955681;
+        Sat, 05 Oct 2024 08:25:55 -0700 (PDT)
 Return-Path: <richard.henderson@linaro.org>
 Received: from stoup.. (174-21-81-121.tukw.qwest.net. [174.21.81.121])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-20c1396948dsm14351765ad.225.2024.10.05.08.25.54
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-20c1396948dsm14351765ad.225.2024.10.05.08.25.55
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 05 Oct 2024 08:25:54 -0700 (PDT)
+        Sat, 05 Oct 2024 08:25:55 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: deller@kernel.org,
@@ -83,85 +82,89 @@ Cc: deller@kernel.org,
 	alex.bennee@linaro.org,
 	linux-parisc@vger.kernel.org,
 	qemu-arm@nongnu.org
-Subject: [PATCH 02/20] accel/tcg: Expand tlb_fill for 3 callers
-Date: Sat,  5 Oct 2024 08:25:33 -0700
-Message-ID: <20241005152551.307923-3-richard.henderson@linaro.org>
+Subject: [PATCH 03/20] include/exec/memop: Move get_alignment_bits from tcg.h
+Date: Sat,  5 Oct 2024 08:25:34 -0700
+Message-ID: <20241005152551.307923-4-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20241005152551.307923-1-richard.henderson@linaro.org>
 References: <20241005152551.307923-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: 3jecNHHhL7wK
+X-TUID: l3gJmQuqri8i
+
+This function is specific to MemOp, not TCG in general.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- accel/tcg/cputlb.c | 33 ++++++++++-----------------------
- 1 file changed, 10 insertions(+), 23 deletions(-)
+ include/exec/memop.h | 23 +++++++++++++++++++++++
+ include/tcg/tcg.h    | 23 -----------------------
+ 2 files changed, 23 insertions(+), 23 deletions(-)
 
-diff --git a/accel/tcg/cputlb.c b/accel/tcg/cputlb.c
-index fd6459b695..58960969f4 100644
---- a/accel/tcg/cputlb.c
-+++ b/accel/tcg/cputlb.c
-@@ -1220,25 +1220,6 @@ void tlb_set_page(CPUState *cpu, vaddr addr,
-                             prot, mmu_idx, size);
+diff --git a/include/exec/memop.h b/include/exec/memop.h
+index f881fe7af4..97720a8ee7 100644
+--- a/include/exec/memop.h
++++ b/include/exec/memop.h
+@@ -170,4 +170,27 @@ static inline bool memop_big_endian(MemOp op)
+     return (op & MO_BSWAP) == MO_BE;
  }
  
--/*
-- * Note: tlb_fill() can trigger a resize of the TLB. This means that all of the
-- * caller's prior references to the TLB table (e.g. CPUTLBEntry pointers) must
-- * be discarded and looked up again (e.g. via tlb_entry()).
++/**
++ * get_alignment_bits
++ * @memop: MemOp value
++ *
++ * Extract the alignment size from the memop.
++ */
++static inline unsigned get_alignment_bits(MemOp memop)
++{
++    unsigned a = memop & MO_AMASK;
++
++    if (a == MO_UNALN) {
++        /* No alignment required.  */
++        a = 0;
++    } else if (a == MO_ALIGN) {
++        /* A natural alignment requirement.  */
++        a = memop & MO_SIZE;
++    } else {
++        /* A specific alignment requirement.  */
++        a = a >> MO_ASHIFT;
++    }
++    return a;
++}
++
+ #endif
+diff --git a/include/tcg/tcg.h b/include/tcg/tcg.h
+index 21d5884741..824fb3560d 100644
+--- a/include/tcg/tcg.h
++++ b/include/tcg/tcg.h
+@@ -281,29 +281,6 @@ static inline int tcg_type_size(TCGType t)
+     return 4 << i;
+ }
+ 
+-/**
+- * get_alignment_bits
+- * @memop: MemOp value
+- *
+- * Extract the alignment size from the memop.
 - */
--static void tlb_fill(CPUState *cpu, vaddr addr, int size,
--                     MMUAccessType access_type, int mmu_idx, uintptr_t retaddr)
+-static inline unsigned get_alignment_bits(MemOp memop)
 -{
--    bool ok;
+-    unsigned a = memop & MO_AMASK;
 -
--    /*
--     * This is not a probe, so only valid return is success; failure
--     * should result in exception + longjmp to the cpu loop.
--     */
--    ok = cpu->cc->tcg_ops->tlb_fill(cpu, addr, size,
--                                    access_type, mmu_idx, false, retaddr);
--    assert(ok);
+-    if (a == MO_UNALN) {
+-        /* No alignment required.  */
+-        a = 0;
+-    } else if (a == MO_ALIGN) {
+-        /* A natural alignment requirement.  */
+-        a = memop & MO_SIZE;
+-    } else {
+-        /* A specific alignment requirement.  */
+-        a = a >> MO_ASHIFT;
+-    }
+-    return a;
 -}
 -
- static inline void cpu_unaligned_access(CPUState *cpu, vaddr addr,
-                                         MMUAccessType access_type,
-                                         int mmu_idx, uintptr_t retaddr)
-@@ -1631,7 +1612,10 @@ static bool mmu_lookup1(CPUState *cpu, MMULookupPageData *data,
-     if (!tlb_hit(tlb_addr, addr)) {
-         if (!victim_tlb_hit(cpu, mmu_idx, index, access_type,
-                             addr & TARGET_PAGE_MASK)) {
--            tlb_fill(cpu, addr, data->size, access_type, mmu_idx, ra);
-+            bool ok = cpu->cc->tcg_ops->tlb_fill(cpu, addr, data->size,
-+                                                 access_type, mmu_idx,
-+                                                 false, ra);
-+            assert(ok);
-             maybe_resized = true;
-             index = tlb_index(cpu, mmu_idx, addr);
-             entry = tlb_entry(cpu, mmu_idx, addr);
-@@ -1833,8 +1817,10 @@ static void *atomic_mmu_lookup(CPUState *cpu, vaddr addr, MemOpIdx oi,
-     if (!tlb_hit(tlb_addr, addr)) {
-         if (!victim_tlb_hit(cpu, mmu_idx, index, MMU_DATA_STORE,
-                             addr & TARGET_PAGE_MASK)) {
--            tlb_fill(cpu, addr, size,
--                     MMU_DATA_STORE, mmu_idx, retaddr);
-+            bool ok = cpu->cc->tcg_ops->tlb_fill(cpu, addr, size,
-+                                                 MMU_DATA_STORE, mmu_idx,
-+                                                 false, retaddr);
-+            assert(ok);
-             index = tlb_index(cpu, mmu_idx, addr);
-             tlbe = tlb_entry(cpu, mmu_idx, addr);
-         }
-@@ -1848,7 +1834,8 @@ static void *atomic_mmu_lookup(CPUState *cpu, vaddr addr, MemOpIdx oi,
-      * but addr_read will only be -1 if PAGE_READ was unset.
-      */
-     if (unlikely(tlbe->addr_read == -1)) {
--        tlb_fill(cpu, addr, size, MMU_DATA_LOAD, mmu_idx, retaddr);
-+        cpu->cc->tcg_ops->tlb_fill(cpu, addr, size, MMU_DATA_LOAD,
-+                                   mmu_idx, false, retaddr);
-         /*
-          * Since we don't support reads and writes to different
-          * addresses, and we do have the proper page loaded for
+ typedef tcg_target_ulong TCGArg;
+ 
+ /* Define type and accessor macros for TCG variables.
 -- 
 2.43.0

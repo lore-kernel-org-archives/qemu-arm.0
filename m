@@ -1,308 +1,204 @@
-Received: by 2002:a17:505:c89:b0:1be9:327d:8ee3 with SMTP id hp9csp1147627njb;
-        Sat, 5 Oct 2024 13:06:08 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVZZw3v0dmEslRl5t10O8Zh2YTfpre3olqYoQ4Kr9xZPksEWHfpWGCOq340h5NAFT7l3mO7YJlbiqeu2Q==@linaro.org
-X-Received: by 2002:a17:903:2452:b0:205:6552:1099 with SMTP id d9443c01a7336-20bfe022cd9mr86609355ad.8.1728158768508;
-        Sat, 05 Oct 2024 13:06:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1728158768; cv=none;
+Received: by 2002:a17:505:c89:b0:1be9:327d:8ee3 with SMTP id hp9csp1171916njb;
+        Sat, 5 Oct 2024 14:35:58 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCVroqqaa9jzc9TA8FxXH1cmHGnvqdNMLshb/yaVEaE0HWIz7YXaIfoFQYTdYU9rWpGjDZkLH+UkTchblg==@linaro.org
+X-Google-Smtp-Source: AGHT+IGFCR2UrPVivUY/oJSXllytQfs8Fu/FkzZu6tX4H3UlBFJ+kTdiTCHBGlhjoXD2e4DfnzYa
+X-Received: by 2002:a05:6214:4604:b0:6b7:aed3:408f with SMTP id 6a1803df08f44-6cb9a326d09mr132670346d6.13.1728164158120;
+        Sat, 05 Oct 2024 14:35:58 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1728164158; cv=pass;
         d=google.com; s=arc-20240605;
-        b=TJjyEOFoctlxEbHeUSwFnTJyrVdmfEA7h0uF/K2khCpG11Ha3fJKUCrwcnrb2WdGz/
-         KY/ezb9JWvo/Lc1kpLrSji5Rk9tABJgLnB9DCMkL3X9N+kr/0kZwlnSYipvpRtl0/umo
-         focohkkuI0w7DNN8abw0pB9MVtHzRu9w5aO3HXvMUQsb8BhwlMh9cfEKVMnymEfTzcX0
-         Cb9KuZfV3E6OVSPlFXAD6bIKIgnpr+gltKr6sTfNKmHvmCV/+nnjh557EFpMM5qO4Fie
-         mXAmZuZ/j40vS5fVKY8vfhZ8KlKFaT6mL5xvbpDrO1kGl3sLuFWP59FIuW2X4GTLAkEH
-         qSdw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=aSpIks7wgvzrdGiSzq/HYW4dr1jFM7gjMRozlRGemJM=;
-        fh=gm94RItQkOvSlWNCghXjcsxXceDBv2nJakNQ+lM8Dog=;
-        b=Mj9s1X4OpoiRDJySXBs4YyOj4S/63FeUNCeo8CNCUO1b4AZHbXMHtoUCQdNeIs1qRK
-         wMhFRuUxJ2k/YrNWeDqMZflGSQgE3phqkJSakQIGGYgZbLqA87nhSOBK8VEmZVEiAS6S
-         owc574xDIjrsaDlby1yQYgRTwXmYsG96E2lgs2tIvxVOP8KSwGHC8NflvNI+ZpYuTPm/
-         wfJVbG+ia7wWhrkUrWnk0pvGy16GMBrZ28jZCCKzztTMunggaKTZEmUhC9jZFbvmspmb
-         mlDIUwjgvJhmQTxkydgFfds5i9fOsxUUF3J9x+38hZ9IdiqMDkiGtdIzJxyCdRy/uq9m
-         RUQw==;
+        b=hIotLuSvOaixkO6T1s1dj+qKEMeSjJlIn3iOdTaWmjQoeJ9KuZObKKjrVtbiq/YO5n
+         dNnmQEquF05gilw1iY9jTln+IG3XenDq2pcFprTcHROOPWwou7Qy1H2anKsh43rmAFLQ
+         hIueN5h4ktmvGptQ5mzVl6smiH97bj0BpWF/72WiG0jU8wj//R4137b8R8mOx5nTPIIZ
+         TGjkCAj2eurgaACSODDJWenho4Rowp8ikJcUj+MQ9MVWhxTuM+hAKS6BpAU3zSDt+N9m
+         k9Gy6YVc0n+FILJDNcby4KQjh1DL85PMPOwSLpHDedrUDaz49m5tTQPMvys91dyu2Bpi
+         KNag==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=mime-version:list-unsubscribe:list-subscribe:list-id:precedence
+         :user-agent:references:in-reply-to:subject:cc:to:from:message-id
+         :date:dkim-signature;
+        bh=/ph5e/ooB5DbMO9pPsaPBZoZvZyscRnw9zmtso6XVLE=;
+        fh=SnFmhe+5i6KgsJ5Q6TvjqQXtXYEN4xB/iCvHkChcy9c=;
+        b=J5HUJHgMjn7OpVa8kpQiFGHH2V2Q3RDMQFoCddVMOqGwl1hp15/1v1vyXPqkWpPvG4
+         3CzUCvwi6F4EJah0EGsPAHEc3vTJPtOiMVtIWJWjtNNreR/IoGDbGfaPiysVHHyjYoUy
+         4OgC89QrRq4KMrgcZ+h0gaFzOSA2qw3HVKWE6/yg684FPsIE8l8gie/Nzf1OmLeK2ke+
+         QKm/Gey1yPTtxacjjlb7HvBGLMHnBkOzl8+j7bPC7hnOEvdAddXdawklVig3F5hMFPzo
+         TKS9gtGsvmAfTOqgSfL74pRbAiG5tCKqdXOl7IJmSwG1az11I9JPaRTWn2vZ8mvSb/Sg
+         XDYA==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=EIBygv+m;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d9443c01a7336-20c139558efsor12391835ad.16.2024.10.05.13.06.08
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=nOpfuY9R;
+       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
+       spf=pass (google.com: domain of kvmarm+bounces-16251-alex.bennee=linaro.org@lists.linux.dev designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="kvmarm+bounces-16251-alex.bennee=linaro.org@lists.linux.dev";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
+Return-Path: <kvmarm+bounces-16251-alex.bennee=linaro.org@lists.linux.dev>
+Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [2604:1380:45d1:ec00::1])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6cba46d6fd9si29343936d6.70.2024.10.05.14.35.57
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Sat, 05 Oct 2024 13:06:08 -0700 (PDT)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=EIBygv+m;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1728158768; x=1728763568; darn=linaro.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=aSpIks7wgvzrdGiSzq/HYW4dr1jFM7gjMRozlRGemJM=;
-        b=EIBygv+muVxnU4gu2IO+STHtirBaw8JxfHZMKIyRiFTJxM+iYrP+W8bLUz31xctzLo
-         OMST/bfr15lzfBfxDi+RpYbY9aZT6ttv5WACshbI//84r2HKJyqs94LbTAvx/vdqGfaV
-         /+e8dFJSJXhDSQlodNQpI4lAZmcunOn6gEvMjCECcSrEuhyDOC4cVAD53DqlTuqN01/5
-         06Peo/huzBji23o4QH2rUzL41wkabRMVrrvXgZAFlHTdcnnLw5dLs4QK7GTchwTttzlL
-         ao05UHiPl6Y7yjZ+wxZMRf2E71HxriiiMnibX+wsFqAQMR0zSQrh+R9zlxzKpjhFRVVk
-         DJRg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1728158768; x=1728763568;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=aSpIks7wgvzrdGiSzq/HYW4dr1jFM7gjMRozlRGemJM=;
-        b=ulFakjM3ikZRSNL+aO1z+9cBxwK6i7JQ+fTiD+MVU/kqNIZBIq8hTQjvy7DjdsrPLh
-         jp5epip+91ow2Uc/2jcUlTfoceUwRgIWVX4dLJq3rK3+rKgkHgmRBQyhx+UscVBGYqZY
-         EHTqoVn24ZYyWlgCN++l6ZPNgNWLrtwBEbDP201kqqvjO5FEfk0Avog3NsWfnJrM3RWw
-         6E6yGu7/EQijmHdh76LwX/4hC5TGVQCY51J2JeyoWoq9qT5HnkH/h4y1/o2ulnu+7OqK
-         LzGcnP6ADjJ6ViSsF45uvtAmqXng1295/rpMxwgHGKVrKBoxnmZOIwv5bqfezYHnXOcc
-         8fag==
-X-Forwarded-Encrypted: i=1; AJvYcCVtbkRgL9nS/oMB2f/PjF612JGzCjCcNWTRTts440VTMVI5BUf+Sh0GOrUj5oH28Cay+Y6OtdadgKKTEg==@linaro.org
-X-Gm-Message-State: AOJu0Yxf0Cd651a+gY4KxEy/n4HacSr8gxbflrJiU0Cn+xO2U3D/b1nU
-	l/z9t0a2Zk/Kv6l95KtdKh+9P7ANWdBXmJg9KljTwYAfFR3DqJwet+yr0sQx1W5U3aV1oJwqkAF
-	j1pA=
-X-Google-Smtp-Source: AGHT+IEaeCLxh/V4FYDHhcizmCqrbA2X6RtS9JLzATD1GoweD02dQoKPmQSlloLgWaenfDYRsJ7amg==
-X-Received: by 2002:a17:90a:a107:b0:2e0:7560:9334 with SMTP id 98e67ed59e1d1-2e1e636f75bmr8187622a91.36.1728158768046;
-        Sat, 05 Oct 2024 13:06:08 -0700 (PDT)
-Return-Path: <richard.henderson@linaro.org>
-Received: from stoup.. (174-21-81-121.tukw.qwest.net. [174.21.81.121])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-20c13931055sm16493405ad.139.2024.10.05.13.06.07
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 05 Oct 2024 13:06:07 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: deller@kernel.org,
-	peter.maydell@linaro.org,
-	alex.bennee@linaro.org,
-	linux-parisc@vger.kernel.org,
-	qemu-arm@nongnu.org
-Subject: [PATCH v2 07/21] accel/tcg: Use the tlb_fill_align hook
-Date: Sat,  5 Oct 2024 13:05:46 -0700
-Message-ID: <20241005200600.493604-8-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20241005200600.493604-1-richard.henderson@linaro.org>
-References: <20241005200600.493604-1-richard.henderson@linaro.org>
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-TUID: gg9uJUbEY8tE
+        Sat, 05 Oct 2024 14:35:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvmarm+bounces-16251-alex.bennee=linaro.org@lists.linux.dev designates 2604:1380:45d1:ec00::1 as permitted sender) client-ip=2604:1380:45d1:ec00::1;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=nOpfuY9R;
+       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
+       spf=pass (google.com: domain of kvmarm+bounces-16251-alex.bennee=linaro.org@lists.linux.dev designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="kvmarm+bounces-16251-alex.bennee=linaro.org@lists.linux.dev";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
+Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ny.mirrors.kernel.org (Postfix) with ESMTPS id B1C3D1C20DAA
+	for <alex.bennee@linaro.org>; Sat,  5 Oct 2024 21:35:57 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id D06F2158DC4;
+	Sat,  5 Oct 2024 21:35:52 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="nOpfuY9R"
+Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A2ED518E1F;
+	Sat,  5 Oct 2024 21:35:52 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=10.30.226.201
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1728164152; cv=none; b=PUZyLP77U8RBJa/pBuf4YIwE+UrwYDb8r3u0Hpq199+zr0ws8IWQDgCiPZmA8wFZ2PvVgYILiR/9vxJcqvOcQl2JuM6m6oamsFYChwRtokK8zXS4ytIiLmUGZUdGuSMUy8eqbSfNt11d+5OXGtf/c3RAislbEkx5T3Dfis10eQs=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1728164152; c=relaxed/simple;
+	bh=4sfPDWl1oJaJQh9DQfDD4n4dpgiSjjXdaE92+qki+no=;
+	h=Date:Message-ID:From:To:Cc:Subject:In-Reply-To:References:
+	 MIME-Version:Content-Type; b=rIALBscndcVJnmNBpeiJX67Nh83xqhPnObdktu5adgh3I2776aXdqUVP8d4mf38H6G31dJdr9NQ9H6BgIwK1PeYyu67mE4hbitUN/zBNEmxXZ2za7SW59EYH2PGLGfYX+4PrbHmigImq75sUwQgHNtYT4CUQXr6GoEOMdiUZ0r4=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=nOpfuY9R; arc=none smtp.client-ip=10.30.226.201
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 21F30C4CECC;
+	Sat,  5 Oct 2024 21:35:52 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1728164152;
+	bh=4sfPDWl1oJaJQh9DQfDD4n4dpgiSjjXdaE92+qki+no=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=nOpfuY9RkAvbGr1+JirOtWdENC8a8hWxm/fOFqgfo4xdotxuvlbrkvdQJVCOzVYed
+	 oEDTlkg4EHoaUSYvw0EafAfcLbV2SAfH53l8Zgyv7dx1xfKDWsf269E3LGWmsOdtyn
+	 2uf1vXvDzqMiUOUJlwUe3t+/mGiAjlT/khk8qmaKdIY2Ww+Rwxq96pP4K9MWFCqdZe
+	 p1FcHyhU0XyArpT9kczq4YZeT1imC4CahdX8/sP+kuFmwkPl9d/tXGTunaPlxCdl6d
+	 0SiTSmoOXKMRIbhrJUw9dOnDDfJnJus7M+I/qcnyadOv8wdrsU0Vc4UocmvcjLC6h0
+	 uqhqGrSdG5krA==
+Received: from sofa.misterjones.org ([185.219.108.64] helo=wait-a-minute.misterjones.org)
+	by disco-boy.misterjones.org with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.95)
+	(envelope-from <maz@kernel.org>)
+	id 1sxCRK-000h6U-1X;
+	Sat, 05 Oct 2024 22:35:50 +0100
+Date: Sat, 05 Oct 2024 22:35:49 +0100
+Message-ID: <87a5fiutai.wl-maz@kernel.org>
+From: Marc Zyngier <maz@kernel.org>
+To: Ahmad Fatoum <a.fatoum@pengutronix.de>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	qemu-arm@nongnu.org,
+	kvmarm@lists.linux.dev,
+	kvm@vger.kernel.org,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	"linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+	Enrico Joerns <ejo@pengutronix.de>
+Subject: Re: [BUG] ARM64 KVM: Data abort executing post-indexed LDR on MMIO address
+In-Reply-To: <65ab10d7-6594-490c-be07-39f83ac3559a@pengutronix.de>
+References: <89f184d6-5b61-4c77-9f3b-c0a8f6a75d60@pengutronix.de>
+	<CAFEAcA_Yv2a=XCKw80y9iyBRoC27UL6Sfzgy4KwFDkC1gbzK7w@mail.gmail.com>
+	<a4c06f55-28ec-4620-b594-b7ff0bb1e162@pengutronix.de>
+	<CAFEAcA9F3AR-0OCKDy__eVBJRMi80G7bWNfANGZRR2W8iMhfJA@mail.gmail.com>
+	<4d559b9e-c208-46f3-851a-68086dc8a50f@pengutronix.de>
+	<864j5q7sdq.wl-maz@kernel.org>
+	<65ab10d7-6594-490c-be07-39f83ac3559a@pengutronix.de>
+User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
+ FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/29.4
+ (x86_64-pc-linux-gnu) MULE/6.0 (HANACHIRUSATO)
+Precedence: bulk
+X-Mailing-List: kvmarm@lists.linux.dev
+List-Id: <kvmarm.lists.linux.dev>
+List-Subscribe: <mailto:kvmarm+subscribe@lists.linux.dev>
+List-Unsubscribe: <mailto:kvmarm+unsubscribe@lists.linux.dev>
+MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
+Content-Type: text/plain; charset=US-ASCII
+X-SA-Exim-Connect-IP: 185.219.108.64
+X-SA-Exim-Rcpt-To: a.fatoum@pengutronix.de, peter.maydell@linaro.org, qemu-arm@nongnu.org, kvmarm@lists.linux.dev, kvm@vger.kernel.org, kernel@pengutronix.de, linux-arm-kernel@lists.infradead.org, ejo@pengutronix.de
+X-SA-Exim-Mail-From: maz@kernel.org
+X-SA-Exim-Scanned: No (on disco-boy.misterjones.org); SAEximRunCond expanded to false
+X-TUID: 67sDGvxNfzej
 
-When we have a tlb miss, defer the alignment check to
-the new tlb_fill_align hook.  Move the existing alignment
-check so that we only perform it with a tlb hit.
+On Sat, 05 Oct 2024 19:38:23 +0100,
+Ahmad Fatoum <a.fatoum@pengutronix.de> wrote:
+> 
+> Hello Marc,
+> 
+> On 05.10.24 12:31, Marc Zyngier wrote:
+> > On Fri, 04 Oct 2024 20:50:18 +0100,
+> > Ahmad Fatoum <a.fatoum@pengutronix.de> wrote:
+> >> With readl/writel implemented in assembly, I get beyond that point, but
+> >> now I get a data abort running an DC IVAC instruction on address 0x1000,
+> >> where the cfi-flash is located. This instruction is part of a routine
+> >> to remap the cfi-flash to start a page later, so the zero page can be
+> >> mapped faulting.
+> 
+> [snip]
+> 
+> >> Any idea what this is about?
+> > 
+> > IIRC, the QEMU flash is implemented as a read-only memslot. A data
+> > cache invalidation is a *write*, as it can be (and is) upgraded to a
+> > clean+invalidate by the HW.
+> 
+> So it's a write, even if there are no dirty cache lines?
 
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- accel/tcg/cputlb.c | 89 +++++++++++++++++++++++++---------------------
- 1 file changed, 49 insertions(+), 40 deletions(-)
+Yes.
 
-diff --git a/accel/tcg/cputlb.c b/accel/tcg/cputlb.c
-index 4bc34c8a37..0e6ae65a39 100644
---- a/accel/tcg/cputlb.c
-+++ b/accel/tcg/cputlb.c
-@@ -1616,14 +1616,14 @@ typedef struct MMULookupLocals {
-  * tlb_fill will longjmp out.  Return true if the softmmu tlb for
-  * @mmu_idx may have resized.
-  */
--static bool mmu_lookup1(CPUState *cpu, MMULookupPageData *data,
-+static bool mmu_lookup1(CPUState *cpu, MMULookupPageData *data, MemOp memop,
-                         int mmu_idx, MMUAccessType access_type, uintptr_t ra)
- {
-     vaddr addr = data->addr;
-     uintptr_t index = tlb_index(cpu, mmu_idx, addr);
-     CPUTLBEntry *entry = tlb_entry(cpu, mmu_idx, addr);
-     uint64_t tlb_addr = tlb_read_idx(entry, access_type);
--    bool maybe_resized = false;
-+    bool did_tlb_fill = false;
-     CPUTLBEntryFull *full;
-     int flags;
- 
-@@ -1631,17 +1631,26 @@ static bool mmu_lookup1(CPUState *cpu, MMULookupPageData *data,
-     if (!tlb_hit(tlb_addr, addr)) {
-         if (!victim_tlb_hit(cpu, mmu_idx, index, access_type,
-                             addr & TARGET_PAGE_MASK)) {
--            bool ok = cpu->cc->tcg_ops->tlb_fill(cpu, addr, data->size,
--                                                 access_type, mmu_idx,
--                                                 false, ra);
-+            bool ok = cpu->cc->tcg_ops->tlb_fill_align(cpu, addr, memop,
-+                                                       data->size, access_type,
-+                                                       mmu_idx, false, ra);
-             assert(ok);
--            maybe_resized = true;
-+            did_tlb_fill = true;
-             index = tlb_index(cpu, mmu_idx, addr);
-             entry = tlb_entry(cpu, mmu_idx, addr);
-         }
-         tlb_addr = tlb_read_idx(entry, access_type) & ~TLB_INVALID_MASK;
-     }
- 
-+    if (!did_tlb_fill) {
-+        /* We didn't use tlb_fill_align, so alignment not yet checked. */
-+        unsigned a_bits = memop_alignment_bits(memop);
-+
-+        if (unlikely(addr & ((1 << a_bits) - 1))) {
-+            cpu_unaligned_access(cpu, addr, access_type, mmu_idx, ra);
-+        }
-+    }
-+
-     full = &cpu->neg.tlb.d[mmu_idx].fulltlb[index];
-     flags = tlb_addr & (TLB_FLAGS_MASK & ~TLB_FORCE_SLOW);
-     flags |= full->slow_flags[access_type];
-@@ -1651,7 +1660,7 @@ static bool mmu_lookup1(CPUState *cpu, MMULookupPageData *data,
-     /* Compute haddr speculatively; depending on flags it might be invalid. */
-     data->haddr = (void *)((uintptr_t)addr + entry->addend);
- 
--    return maybe_resized;
-+    return did_tlb_fill;
- }
- 
- /**
-@@ -1702,7 +1711,6 @@ static void mmu_watch_or_dirty(CPUState *cpu, MMULookupPageData *data,
- static bool mmu_lookup(CPUState *cpu, vaddr addr, MemOpIdx oi,
-                        uintptr_t ra, MMUAccessType type, MMULookupLocals *l)
- {
--    unsigned a_bits;
-     bool crosspage;
-     int flags;
- 
-@@ -1711,12 +1719,6 @@ static bool mmu_lookup(CPUState *cpu, vaddr addr, MemOpIdx oi,
- 
-     tcg_debug_assert(l->mmu_idx < NB_MMU_MODES);
- 
--    /* Handle CPU specific unaligned behaviour */
--    a_bits = memop_alignment_bits(l->memop);
--    if (addr & ((1 << a_bits) - 1)) {
--        cpu_unaligned_access(cpu, addr, type, l->mmu_idx, ra);
--    }
--
-     l->page[0].addr = addr;
-     l->page[0].size = memop_size(l->memop);
-     l->page[1].addr = (addr + l->page[0].size - 1) & TARGET_PAGE_MASK;
-@@ -1724,7 +1726,7 @@ static bool mmu_lookup(CPUState *cpu, vaddr addr, MemOpIdx oi,
-     crosspage = (addr ^ l->page[1].addr) & TARGET_PAGE_MASK;
- 
-     if (likely(!crosspage)) {
--        mmu_lookup1(cpu, &l->page[0], l->mmu_idx, type, ra);
-+        mmu_lookup1(cpu, &l->page[0], l->memop, l->mmu_idx, type, ra);
- 
-         flags = l->page[0].flags;
-         if (unlikely(flags & (TLB_WATCHPOINT | TLB_NOTDIRTY))) {
-@@ -1743,8 +1745,8 @@ static bool mmu_lookup(CPUState *cpu, vaddr addr, MemOpIdx oi,
-          * Lookup both pages, recognizing exceptions from either.  If the
-          * second lookup potentially resized, refresh first CPUTLBEntryFull.
-          */
--        mmu_lookup1(cpu, &l->page[0], l->mmu_idx, type, ra);
--        if (mmu_lookup1(cpu, &l->page[1], l->mmu_idx, type, ra)) {
-+        mmu_lookup1(cpu, &l->page[0], l->memop, l->mmu_idx, type, ra);
-+        if (mmu_lookup1(cpu, &l->page[1], 0, l->mmu_idx, type, ra)) {
-             uintptr_t index = tlb_index(cpu, l->mmu_idx, addr);
-             l->page[0].full = &cpu->neg.tlb.d[l->mmu_idx].fulltlb[index];
-         }
-@@ -1770,7 +1772,7 @@ static bool mmu_lookup(CPUState *cpu, vaddr addr, MemOpIdx oi,
-      * Device memory type require alignment.
-      */
-     if (unlikely(flags & TLB_CHECK_ALIGNED)) {
--        a_bits = memop_atomicity_bits(l->memop);
-+        unsigned a_bits = memop_atomicity_bits(l->memop);
-         if (addr & ((1 << a_bits) - 1)) {
-             cpu_unaligned_access(cpu, addr, type, l->mmu_idx, ra);
-         }
-@@ -1788,34 +1790,18 @@ static void *atomic_mmu_lookup(CPUState *cpu, vaddr addr, MemOpIdx oi,
- {
-     uintptr_t mmu_idx = get_mmuidx(oi);
-     MemOp mop = get_memop(oi);
--    int a_bits = memop_alignment_bits(mop);
-     uintptr_t index;
-     CPUTLBEntry *tlbe;
-     vaddr tlb_addr;
-     void *hostaddr;
-     CPUTLBEntryFull *full;
-+    bool did_tlb_fill = false;
- 
-     tcg_debug_assert(mmu_idx < NB_MMU_MODES);
- 
-     /* Adjust the given return address.  */
-     retaddr -= GETPC_ADJ;
- 
--    /* Enforce guest required alignment.  */
--    if (unlikely(a_bits > 0 && (addr & ((1 << a_bits) - 1)))) {
--        /* ??? Maybe indicate atomic op to cpu_unaligned_access */
--        cpu_unaligned_access(cpu, addr, MMU_DATA_STORE,
--                             mmu_idx, retaddr);
--    }
--
--    /* Enforce qemu required alignment.  */
--    if (unlikely(addr & (size - 1))) {
--        /* We get here if guest alignment was not requested,
--           or was not enforced by cpu_unaligned_access above.
--           We might widen the access and emulate, but for now
--           mark an exception and exit the cpu loop.  */
--        goto stop_the_world;
--    }
--
-     index = tlb_index(cpu, mmu_idx, addr);
-     tlbe = tlb_entry(cpu, mmu_idx, addr);
- 
-@@ -1824,10 +1810,11 @@ static void *atomic_mmu_lookup(CPUState *cpu, vaddr addr, MemOpIdx oi,
-     if (!tlb_hit(tlb_addr, addr)) {
-         if (!victim_tlb_hit(cpu, mmu_idx, index, MMU_DATA_STORE,
-                             addr & TARGET_PAGE_MASK)) {
--            bool ok = cpu->cc->tcg_ops->tlb_fill(cpu, addr, size,
--                                                 MMU_DATA_STORE, mmu_idx,
--                                                 false, retaddr);
-+            bool ok = cpu->cc->tcg_ops->tlb_fill_align(cpu, addr, mop, size,
-+                                                       MMU_DATA_STORE, mmu_idx,
-+                                                       false, retaddr);
-             assert(ok);
-+            did_tlb_fill = true;
-             index = tlb_index(cpu, mmu_idx, addr);
-             tlbe = tlb_entry(cpu, mmu_idx, addr);
-         }
-@@ -1841,8 +1828,8 @@ static void *atomic_mmu_lookup(CPUState *cpu, vaddr addr, MemOpIdx oi,
-      * but addr_read will only be -1 if PAGE_READ was unset.
-      */
-     if (unlikely(tlbe->addr_read == -1)) {
--        cpu->cc->tcg_ops->tlb_fill(cpu, addr, size, MMU_DATA_LOAD,
--                                   mmu_idx, false, retaddr);
-+        cpu->cc->tcg_ops->tlb_fill_align(cpu, addr, mop, size, MMU_DATA_LOAD,
-+                                         mmu_idx, false, retaddr);
-         /*
-          * Since we don't support reads and writes to different
-          * addresses, and we do have the proper page loaded for
-@@ -1850,6 +1837,28 @@ static void *atomic_mmu_lookup(CPUState *cpu, vaddr addr, MemOpIdx oi,
-          */
-         g_assert_not_reached();
-     }
-+
-+    /* Enforce guest required alignment, if not handled by tlb_fill_align. */
-+    if (!did_tlb_fill) {
-+        int a_bits = memop_alignment_bits(mop);
-+        if (unlikely(a_bits > 0 && (addr & ((1 << a_bits) - 1)))) {
-+            /* ??? Maybe indicate atomic op to cpu_unaligned_access */
-+            cpu_unaligned_access(cpu, addr, MMU_DATA_STORE,
-+                                 mmu_idx, retaddr);
-+        }
-+    }
-+
-+    /* Enforce qemu required alignment.  */
-+    if (unlikely(addr & (size - 1))) {
-+        /*
-+         * We get here if guest alignment was not requested,
-+         * or was not enforced by cpu_unaligned_access above.
-+         * We might widen the access and emulate, but for now
-+         * mark an exception and exit the cpu loop.
-+         */
-+        goto stop_the_world;
-+    }
-+
-     /* Collect tlb flags for read. */
-     tlb_addr |= tlbe->addr_read;
- 
+At the point where this is handled, the CPU has no clue about the
+dirty state of an arbitrary cache line, at an arbitrary cache level.
+The CPU simply forward the CMO downstream, and the permission check
+happens way before that.
+
+> > KVM cannot satisfy the write, for obvious reasons, and tells the guest
+> > to bugger off (__gfn_to_pfn_memslot() returns KVM_PFN_ERR_RO_FAULT,
+> > which satisfies is_error_noslot_pfn() -- a slight oddity, but hey, why
+> > not).
+> > 
+> > In the end, you get an exception. We could relax this by
+> > special-casing CMOs to RO memslots, but this doesn't look great.
+> > 
+> > The real question is: what are you trying to achieve with this?
+> 
+> barebox sets up the MMU, but tries to keep a 1:1 mapping. On Virt, we
+> want to map the zero page faulting, but still have access to the first
+> block of the cfi-flash.
+> 
+> Therefore, barebox will map the cfi-flash one page later
+> (virt 0x1000,0x2000,... -> phys 0x0000,0x1000,...) and so on, so the first
+> page can be mapped faulting.
+> 
+> The routine[1] that does this remapping invalidates the virtual address range,
+> because the attributes may change[2]. This invalidate also happens for cfi-flash,
+> but we should never encounter dirty cache lines there as the remap is done
+> before driver probe.
+>
+> Can you advise what should be done differently?
+
+If you always map the flash as Device memory, there is no need for
+CMOs. Same thing if you map it as NC. And even if you did map it as
+Cacheable, it wouldn't matter. KVM already handles coherency when the
+flash is switching between memory-mapped and programming mode, as the
+physical address space changes (the flash literally drops from the
+memory map).
+
+In general, issuing CMOs to a device is a bizarre concept, because it
+is pretty rare that a device can handle a full cache-line as
+write-back. Devices tend to handle smaller, register-sized accesses,
+not a full 64-byte eviction.
+
+Now, I'm still wondering whether we should simply forward the CMO to
+userspace as we do for other writes, and let the VMM deal with it. The
+main issue is that there is no current way to describe this.
+
+The alternative would be to silently handle the trap and pretend it
+never occurred, as we do for other bizarre behaviours. But that'd be
+something only new kernels would support, and I guess you'd like your
+guest to work today, not tomorrow.
+
+	M.
+
 -- 
-2.43.0
+Without deviation from the norm, progress is not possible.

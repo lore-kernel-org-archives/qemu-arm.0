@@ -1,133 +1,118 @@
-Received: by 2002:a05:7022:6382:b0:8b:e46e:3391 with SMTP id q2csp740609dlq;
-        Fri, 4 Oct 2024 23:14:38 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVY7O6Aoc9wzmWeEqY6t1erR/U0lrzw4dAqasRTGNkZw2SNqSW/9mRj0HF2GIlB5l7VQO9drXjmxhxzCA==@linaro.org
-X-Google-Smtp-Source: AGHT+IFlqIbijQ2qdQL0XDTRzNK2SaYsCzp2R04PJW2Fz7yK4ijaYcETwDMAtzanObi6knz1gpzP
-X-Received: by 2002:a05:6214:4885:b0:6cb:7d35:5e31 with SMTP id 6a1803df08f44-6cb9a45caadmr62872546d6.20.1728108878150;
-        Fri, 04 Oct 2024 23:14:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1728108878; cv=none;
+Received: by 2002:a17:505:c89:b0:1be9:327d:8ee3 with SMTP id hp9csp927693njb;
+        Sat, 5 Oct 2024 03:32:21 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUBdPaZkp69FWDmjQFI5m7CxSlfvL3x3f9V9Ae1snPRUCc0M0AMfHWPeya0T4OXc6r3fy+gp214NpbHbA==@linaro.org
+X-Google-Smtp-Source: AGHT+IH9YqImUYowCSD5zd+zL1mxXMStVeLB7WfceSprap9WZsDiKg37SXEdzKwnyDOvg6uXgNu9
+X-Received: by 2002:ac8:594d:0:b0:456:80d4:812a with SMTP id d75a77b69052e-45d8d06f932mr165210981cf.6.1728124341015;
+        Sat, 05 Oct 2024 03:32:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1728124341; cv=none;
         d=google.com; s=arc-20240605;
-        b=Q5A2RvNvqtwcnJVInSKQXjmvVaMFVdC/F+VXnukuyieiFNmPwGcCwx/hbKLWpsP4B0
-         fMQL17m8A/0ENJfnZkQdVhw6wAh83otNOCxds6D18J4DQiAdYCP0IQ1Au6N79/jwEaT1
-         8i8w68Qx93B1gwQ0mbBAdc18WxmXOXbV1asdDAwSYDQyQMe7N/36qJRr1zCKuO+3SX2Q
-         6rd0C/VK8bBc5Hg8tPtoRu70/GvB3gj+4D1jCfVt3ExusImQv1tyup6TXNMOkzZPf8qa
-         H6xn5/23ihkkJPhlXy4NmCSWRi1cg1xkfV4yhhzQUzRQAuvbB93HczJj/nQKrTRNCFAm
-         D+HQ==
+        b=bzNwffbilyuEqZAK/1ZbyJKX2OEzeE5vgCQlO3TDkBmxy2J5oXtbtBfkUg613w+CBg
+         vCeJGWe/hdKPaPs4xm+IoTGxMYyG1Cj4v0OGeX9ofCxf79oFXJlQOlEG8p9an4XC1ujb
+         Nj4DU1gAc0BPKiPU7jikwAI3W6EDz6F7ezdas7yXvEljra3uctM5taMgvSlqV39Ph5My
+         YIOcvCEikF0FFSdq5deGoX8qghALa4TL1Xt/b1kMIezZah8L938BZ1u4oZYNHv5byut8
+         YHt1K7tZPHADVR7Sly62DjpeNRQFSqll6qOFoEB0PhvasbyWRdZRQJC30MT460767AA+
+         p3ww==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=oucCD6GmvM1AxZvz00WRd/F6EZ16LhJ5WCAB0EFZax8=;
-        fh=3DjTSSIoIV9MnBQ7g6tQLY9SGwE8w9px537eQk3+5DA=;
-        b=St8pO3NclFgOc2VlrQqoLk27WWRxVgxA5LQfXkWvQvIVuf6amyAamKAt/FAqsjQNaa
-         3o3mWko19bnRNbNtjUjp3zNntxVrjM4RVTnFGMIWv61dokl8G6vMXbmyOz1Xh3KzFroB
-         /0t5kbnXarstPzegjQBWaDSfmv8PCJ/u+mzBk69a9QXrjo1DshdXJqPqJ+liqeGt66+/
-         6xD19pI9err/ST6Ml6jgOwm/dfB4n+8OHRMofoJEfllkYx8MMS25oTl7+oM1spxiDc7n
-         X9fxFfMxr5Gg33O4pCwt0SDB86j3WdVY/qMMZoa1LOPuYrKOfgQ11eDZ4Rxucf9b5YwY
-         XQfQ==;
+         :list-unsubscribe:list-id:precedence:mime-version:user-agent
+         :references:in-reply-to:subject:cc:to:from:message-id:date
+         :dkim-signature;
+        bh=OwX+BQDJzAj35+Y0L6AiLAuSBl0DdlKJEJNkNkJjuSI=;
+        fh=SnFmhe+5i6KgsJ5Q6TvjqQXtXYEN4xB/iCvHkChcy9c=;
+        b=I9x845KrMB21XPVIjKn1KNgqwjISQGOzEoFKK6mTtGpx10uENrrGWCsoKBZChYSm3Q
+         o/7NaQAU3AGIgWeltia2LWcZBaW7qEetPkvMT4nfrHHr9d2H/SYED4gZYVvnaelfI5t9
+         cQMAtvItHn2Qb+KF+tIxTodoy3nMJ7++PBZQBPfCwICCp609vy4UgjWHXX9u9/KDUxQt
+         O2OZfLbRPZ5b645/PYrCXlxycWDxDlhKBBYlApCjnN0eCq1WBADhnS6vDmuR3yM3kbiL
+         4+IMxJ7vJEjexTRsvbNKeLmOqhfNhFl3LNHTtJIeJzcPhPhNcwfP3qeHTRhBnDgmP+e0
+         5eWA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=UKONea8f;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b="NaA1b/iz";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6cba46e887esi14706516d6.153.2024.10.04.23.14.37
+        by mx.google.com with ESMTPS id af79cd13be357-7ae7562cc70si160112885a.222.2024.10.05.03.32.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 04 Oct 2024 23:14:38 -0700 (PDT)
+        Sat, 05 Oct 2024 03:32:20 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=UKONea8f;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b="NaA1b/iz";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1swy3m-0002AD-R5; Sat, 05 Oct 2024 02:14:35 -0400
+	id 1sx255-0001Nn-WE; Sat, 05 Oct 2024 06:32:12 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <akihiko.odaki@daynix.com>)
- id 1swy3b-0001y3-Ov
- for qemu-arm@nongnu.org; Sat, 05 Oct 2024 02:14:24 -0400
-Received: from mail-pf1-x42a.google.com ([2607:f8b0:4864:20::42a])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <akihiko.odaki@daynix.com>)
- id 1swy3Z-00019N-AB
- for qemu-arm@nongnu.org; Sat, 05 Oct 2024 02:14:23 -0400
-Received: by mail-pf1-x42a.google.com with SMTP id
- d2e1a72fcca58-71dc4451fffso2826392b3a.2
- for <qemu-arm@nongnu.org>; Fri, 04 Oct 2024 23:14:20 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1728108860; x=1728713660;
- darn=nongnu.org; 
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=oucCD6GmvM1AxZvz00WRd/F6EZ16LhJ5WCAB0EFZax8=;
- b=UKONea8f94iRc7xRis5UO5Mhc50Lq0Ci7AAORzMIJqmFvR4Sj831btTEnsaorDGF17
- FFv5MslE/AWmwMGdVsiFZwsL6jPUXXObjbhvpubYHaAidvWyb90Eq5N55+JsxVwDUpjm
- xN7YLrr8LFA7CxZgOMBsQjIff7YPL+Rh7rwT29qKf+e80U9OKISE2lS+RT4A60h7H55S
- SnqWfuzhfIB8EO9U3fb+JspPrSYRJoTtnPm1ZnMhM4U/6x2uFS6b/UQd1E8sHFEkx5+s
- 7QKzP0hiRKFz5Uusy/ihuxzwQMgXQuo3WLVYCWqyFBwnF49Y4w29Yibs6Nf2hbAvYn1e
- ygNQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1728108860; x=1728713660;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=oucCD6GmvM1AxZvz00WRd/F6EZ16LhJ5WCAB0EFZax8=;
- b=YAxlUrUnD6euWWAlaF/yoWJN5RgoU/E3nFU2fLV13wSf+M4jPuo0JQlJM9RvH9yw1F
- HVjPxhkXUr741p0wDH2Fag4vhsjZu3SPw9s/b+vyHmupe5CiNpNJMhU6Ov3kyL8gKAl6
- jKGHs9bl+Fw19eqZJMOk85azyZTX2M0nGqFnFeuU181csWbllNaSJXFtRPxG/R0itKoh
- gIF2cj+TltxkUBrLaya8kfK+wRTxKkix9dXQXi3OqEasklmDrkCbvsh8HybsDsyzzxJ7
- poQjcKV9tE93VnxUD5vJSke2/fzgpeeBgMDkMaCZ6G/otFyEsgaTh3RJ1N/etGrR4RGk
- wvMg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUuat/ruCjGztWIJdR5k+ZO6ICL11OaqU9ub3v/E+rS2etOcrI14dTxhw0OeHCViIY0kYFbHHeaJg==@nongnu.org
-X-Gm-Message-State: AOJu0YxwySU9Izsx4S09jDNe9b5unj7jJEi8U8W9OENLsBVxERXCtlTb
- vB3P+CblYJZ/wbCye+WlyF5KUHVsaW3q9sBsON4TrMcz27eWqf2PudUdQ3KuTqs=
-X-Received: by 2002:a05:6a00:3c83:b0:717:8ee0:4ea1 with SMTP id
- d2e1a72fcca58-71de22e8399mr9376019b3a.0.1728108859995; 
- Fri, 04 Oct 2024 23:14:19 -0700 (PDT)
-Received: from [157.82.202.230] ([157.82.202.230])
- by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-71df0d69246sm834048b3a.182.2024.10.04.23.14.13
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 04 Oct 2024 23:14:19 -0700 (PDT)
-Message-ID: <a67552fd-f304-468b-bffa-9d2a98ce5a5e@daynix.com>
-Date: Sat, 5 Oct 2024 15:14:12 +0900
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 08/14] hvf: arm: Ignore writes to CNTP_CTL_EL0
-To: Phil Dennis-Jordan <phil@philjordan.eu>, qemu-devel@nongnu.org
-Cc: agraf@csgraf.de, peter.maydell@linaro.org, pbonzini@redhat.com,
- rad@semihalf.com, quic_llindhol@quicinc.com, marcin.juszkiewicz@linaro.org,
- stefanha@redhat.com, mst@redhat.com, slp@redhat.com,
- richard.henderson@linaro.org, eduardo@habkost.net,
- marcel.apfelbaum@gmail.com, gaosong@loongson.cn, jiaxun.yang@flygoat.com,
- chenhuacai@kernel.org, kwolf@redhat.com, hreitz@redhat.com,
- philmd@linaro.org, shorne@gmail.com, palmer@dabbelt.com,
- alistair.francis@wdc.com, bmeng.cn@gmail.com, liwei1518@gmail.com,
- dbarboza@ventanamicro.com, zhiwei_liu@linux.alibaba.com, jcmvbkbc@gmail.com,
- marcandre.lureau@redhat.com, berrange@redhat.com, qemu-arm@nongnu.org,
- qemu-block@nongnu.org, qemu-riscv@nongnu.org,
- Alexander Graf <graf@amazon.com>
-References: <20240928085727.56883-1-phil@philjordan.eu>
- <20240928085727.56883-9-phil@philjordan.eu>
-Content-Language: en-US
-From: Akihiko Odaki <akihiko.odaki@daynix.com>
-In-Reply-To: <20240928085727.56883-9-phil@philjordan.eu>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: none client-ip=2607:f8b0:4864:20::42a;
- envelope-from=akihiko.odaki@daynix.com; helo=mail-pf1-x42a.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=unavailable autolearn_force=no
+ (Exim 4.90_1) (envelope-from <maz@kernel.org>) id 1sx252-0001NU-QH
+ for qemu-arm@nongnu.org; Sat, 05 Oct 2024 06:32:09 -0400
+Received: from nyc.source.kernel.org ([147.75.193.91])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <maz@kernel.org>) id 1sx250-0003LL-4R
+ for qemu-arm@nongnu.org; Sat, 05 Oct 2024 06:32:07 -0400
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by nyc.source.kernel.org (Postfix) with ESMTP id AF2FCA40390;
+ Sat,  5 Oct 2024 10:31:40 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D2FAEC4CEC2;
+ Sat,  5 Oct 2024 10:31:48 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1728124308;
+ bh=dRfL9j9fox9VAJqc0lt4h4UbPL3AelM/FiWAIcNnBLk=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=NaA1b/izRRpGy/Uf2jvZ6tDEg8GmC5EAzwKkwpPGT531aHilzWSVikSp/xeg3vJXF
+ AZ1MKt49KnY28ZaOyxgw1RGpt1RAgVn0Ee5euMoiu7BzSghRMkAT/LDmHjIq4SEfMk
+ YJQEOhI/KpjzA0tziqpWGorvzg2U87cFgi9K+BEdJy8a8/Fxqn9xQOM65K+Ikl7EkU
+ SarcI7gNmfRfw4gyniazOgpihH4zU1+snZ0RKQc+UXxqyaqNSwJMWePibMVGO0XgsZ
+ cYyQNqt6neknw0DZRQU3N/0GuqhqLlDCLjahFfPViCE7AZUJIUjAMwZeKWtxl+tysE
+ iO4u/m4eQI9kA==
+Received: from sofa.misterjones.org ([185.219.108.64]
+ helo=goblin-girl.misterjones.org)
+ by disco-boy.misterjones.org with esmtpsa (TLS1.3) tls
+ TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
+ (envelope-from <maz@kernel.org>) id 1sx24g-000YxZ-Jq;
+ Sat, 05 Oct 2024 11:31:46 +0100
+Date: Sat, 05 Oct 2024 11:31:45 +0100
+Message-ID: <864j5q7sdq.wl-maz@kernel.org>
+From: Marc Zyngier <maz@kernel.org>
+To: Ahmad Fatoum <a.fatoum@pengutronix.de>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ kvmarm@lists.linux.dev, kvm@vger.kernel.org,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>, Enrico Joerns <ejo@pengutronix.de>
+Subject: Re: [BUG] ARM64 KVM: Data abort executing post-indexed LDR on MMIO
+ address
+In-Reply-To: <4d559b9e-c208-46f3-851a-68086dc8a50f@pengutronix.de>
+References: <89f184d6-5b61-4c77-9f3b-c0a8f6a75d60@pengutronix.de>
+ <CAFEAcA_Yv2a=XCKw80y9iyBRoC27UL6Sfzgy4KwFDkC1gbzK7w@mail.gmail.com>
+ <a4c06f55-28ec-4620-b594-b7ff0bb1e162@pengutronix.de>
+ <CAFEAcA9F3AR-0OCKDy__eVBJRMi80G7bWNfANGZRR2W8iMhfJA@mail.gmail.com>
+ <4d559b9e-c208-46f3-851a-68086dc8a50f@pengutronix.de>
+User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
+ FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/29.4
+ (aarch64-unknown-linux-gnu) MULE/6.0 (HANACHIRUSATO)
+MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
+Content-Type: text/plain; charset=US-ASCII
+X-SA-Exim-Connect-IP: 185.219.108.64
+X-SA-Exim-Rcpt-To: a.fatoum@pengutronix.de, peter.maydell@linaro.org,
+ qemu-arm@nongnu.org, kvmarm@lists.linux.dev, kvm@vger.kernel.org,
+ kernel@pengutronix.de, linux-arm-kernel@lists.infradead.org,
+ ejo@pengutronix.de
+X-SA-Exim-Mail-From: maz@kernel.org
+X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
+ SAEximRunCond expanded to false
+Received-SPF: pass client-ip=147.75.193.91; envelope-from=maz@kernel.org;
+ helo=nyc.source.kernel.org
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.146,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -142,16 +127,98 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 6KssmzMvjRjs
+X-TUID: ZiTSxp/mpBb4
 
-On 2024/09/28 17:57, Phil Dennis-Jordan wrote:
-> From: Alexander Graf <graf@amazon.com>
+On Fri, 04 Oct 2024 20:50:18 +0100,
+Ahmad Fatoum <a.fatoum@pengutronix.de> wrote:
 > 
-> MacOS unconditionally disables interrupts of the physical timer on boot
-> and then continues to use the virtual one. We don't really want to support
-> a full physical timer emulation, so let's just ignore those writes.
+> Hi,
 > 
-> Signed-off-by: Alexander Graf <graf@amazon.com>
-> Signed-off-by: Phil Dennis-Jordan <phil@philjordan.eu>
+> On 04.10.24 14:10, Peter Maydell wrote:
+> > On Fri, 4 Oct 2024 at 12:51, Ahmad Fatoum <a.fatoum@pengutronix.de> wrote:
+> >> On 04.10.24 12:40, Peter Maydell wrote:
+> >>> Don't do this -- KVM doesn't support it. For access to MMIO,
+> >>> stick to instructions which will set the ISV bit in ESR_EL1.
+> >>>
+> >>> That is:
+> >>>
+> >>>  * AArch64 loads and stores of a single general-purpose register
+> >>>    (including the register specified with 0b11111, including those
+> >>>    with Acquire/Release semantics, but excluding Load Exclusive
+> >>>    or Store Exclusive and excluding those with writeback).
+> >>>  * AArch32 instructions where the instruction:
+> >>>     - Is an LDR, LDA, LDRT, LDRSH, LDRSHT, LDRH, LDAH, LDRHT,
+> >>>       LDRSB, LDRSBT, LDRB, LDAB, LDRBT, STR, STL, STRT, STRH,
+> >>>       STLH, STRHT, STRB, STLB, or STRBT instruction.
+> >>>     - Is not performing register writeback.
+> >>>     - Is not using R15 as a source or destination register.
+> >>>
+> >>> Your instruction is doing writeback. Do the address update
+> >>> as a separate instruction.
+> 
+> With readl/writel implemented in assembly, I get beyond that point, but
+> now I get a data abort running an DC IVAC instruction on address 0x1000,
+> where the cfi-flash is located. This instruction is part of a routine
+> to remap the cfi-flash to start a page later, so the zero page can be
+> mapped faulting.
+> 
+> Simple reproducer:
+> 
+> start:
+>         ldr     x0, =0x1000
+>         ldr     x1, =0x1040
+>         bl      v8_inv_dcache_range
+> 
+>         mov     w10, '!'
+>         bl      putch
+> 
+>         ret
+> 
+> v8_inv_dcache_range:
+>         mrs     x3, ctr_el0
+>         lsr     x3, x3, #16
+>         and     x3, x3, #0xf
+>         mov     x2, #0x4
+>         lsl     x2, x2, x3
+>         sub     x3, x2, #0x1
+>         bic     x0, x0, x3
+> 1:
+>         dc      ivac, x0
+>         add     x0, x0, x2
+>         cmp     x0, x1
+>         b.cc    1b
+>         dsb     sy
+>         ret
+> 
+> This prints ! without KVM, but triggers a data abort before that with -enable-kvm:
+> 
+>   DABT (current EL) exception (ESR 0x96000010) at 0x0000000000001000
+>   elr: 000000007fbe0550 lr : 000000007fbe01ac
+>   [snip]
+> 
+>   Call trace:
+>   [<7fbe0550>] (v8_inv_dcache_range+0x1c/0x34) from [<7fbe0218>] (arch_remap_range+0x64/0x70)
+>   [<7fbe0218>] (arch_remap_range+0x64/0x70) from [<7fb8795c>] (of_platform_device_create+0x1e8/0x22c)
+>   [<7fb8795c>] (of_platform_device_create+0x1e8/0x22c) from [<7fb87a04>] (of_platform_bus_create+0x64/0xbc)
+>   [snip]
+> 
+> Any idea what this is about?
 
-Reviewed-by: Akihiko Odaki <akihiko.odaki@daynix.com>
+IIRC, the QEMU flash is implemented as a read-only memslot. A data
+cache invalidation is a *write*, as it can be (and is) upgraded to a
+clean+invalidate by the HW.
+
+KVM cannot satisfy the write, for obvious reasons, and tells the guest
+to bugger off (__gfn_to_pfn_memslot() returns KVM_PFN_ERR_RO_FAULT,
+which satisfies is_error_noslot_pfn() -- a slight oddity, but hey, why
+not).
+
+In the end, you get an exception. We could relax this by
+special-casing CMOs to RO memslots, but this doesn't look great.
+
+The real question is: what are you trying to achieve with this?
+
+	M.
+
+-- 
+Without deviation from the norm, progress is not possible.

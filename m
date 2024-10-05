@@ -1,80 +1,81 @@
-Received: by 2002:a17:505:c89:b0:1be9:327d:8ee3 with SMTP id hp9csp1147664njb;
-        Sat, 5 Oct 2024 13:06:13 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUekqOyjZ01zVTAGjSC7+KZWNl/dy0YofMUxmocaWdkz7NMVbn4seWCECJpeqg3iaWu1U8Lh7Opbl33bw==@linaro.org
-X-Received: by 2002:a17:903:244c:b0:20b:7ec0:ee24 with SMTP id d9443c01a7336-20bfde658cdmr87014675ad.9.1728158773161;
-        Sat, 05 Oct 2024 13:06:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1728158773; cv=none;
+Received: by 2002:a17:505:c89:b0:1be9:327d:8ee3 with SMTP id hp9csp1147675njb;
+        Sat, 5 Oct 2024 13:06:14 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCU3qG6cXhxFVQIB6TeLOXILqL7EUWXNxPPGyGrF/hldvdEdTXn9r2bWzNoU2GBgPZ5++97fvNw+PDbuXQ==@linaro.org
+X-Received: by 2002:a17:902:cf10:b0:20b:af36:ea5 with SMTP id d9443c01a7336-20bfdfaf7bdmr109507795ad.18.1728158774213;
+        Sat, 05 Oct 2024 13:06:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1728158774; cv=none;
         d=google.com; s=arc-20240605;
-        b=BXNlXt9k88kCtaVBlWXSkxoN1iLDDN6iRx9NU2LthkrguEduPhvlBCMt4gCxeSA4+/
-         O8HM7QbvEe1P2uZB079qLFkE7de+Q/hnozQ9WrX2nQgFIPWv/QNHcAgNnAnZeDeKh2GQ
-         GY0qrvtgim4G2yoaAeHSZ275DuN+B6ZBDmoVpElyrxflzYcpar6vC2QsQhmtJDr+hO7U
-         3JKb2uPXCxO7rgjl9DjcadtVYgfcNGgCWymkrw45mbPV4/fKizp4/8QQWHhbnmKx3mxI
-         hk1+TLxPvZsGGOKcXmAq86eX7iS2dtL2xpSSWt3EO+CqIOwXmXpAyQu4Du0QerD27Jwf
-         jaSQ==
+        b=QPQdycZpBRQgPeT4U7iZ8QjVvjoXxQCDnkja1pkwkzMOApWOl4LEcZZsOo1F+03Z15
+         uIjlRR2Ea+3QejUyGLJ7RD2JMgqp9NA/avOnrkOhWFePYEg1mrZIYaCqVa2NIGaJv7/F
+         GxluWCr5ImRu/j0tVGc3G7mgcbKw/SDFzXpmO7VD8rnNee/sm0V+RhRrCVJiKVNAR4mc
+         rohEQXryIKvmrS01/SvZ0q1upez69nJqZ3LixyBYpvmiW7xqvqrxxde/p0rgObpQo1aR
+         k6PviDlnJHDrqfarSiwxE7IYpUjnpECRvu/6YuJzYdh4YPk5KkePBZ4enALXvxpIgguQ
+         mc6Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=Rc7m2CC+o/vfg9459Vx/ro/giFzSXc14VGjLvy+03yM=;
-        fh=IY362+nnfxUTNBq++l6sfUID1+6vsF/0eC0i4uzNiLE=;
-        b=Rb9PRyFWBfT58V6NuQnXpdNBN0Y7g/TpqvAFong60v4d+f8oU0i3Ubuer/vdgk8FeK
-         gNHSoFbluMQyR1J4cTA4fijkYrGqsfgapDihtmXMOdk7+eUlfPu1Ba5TONrVFg92Lcrd
-         CngRCZG4EmBoJGwXcryf7Vjqzr+yUwCxHNyTD8oOq5L8kMpujr6eKUDW7lABipVMHIYc
-         ++SbIZwbKOmGorv9H7En2stQoJqSPhS+7+tu74S99D16+g6YgDZ9/xFRqhvZfaQzxgLQ
-         OAgxVqE1pgMSMS0JQaOqyjkht3MX7yEf0Sais8l76hhaiFo3Qrz37CSp2u/ei1EmRPct
-         3Sdg==;
+        bh=E1uh5v8Er5HwrssIP/tcmhd1DyyVCAW+cpRhBaU0frQ=;
+        fh=cIy9wDAJ8hDRILSXG4ifZb7922P9cCEwvDUKPCB9ZrA=;
+        b=RPPFzww9Ree5Tvb5WBXNFh+kowGK/KAB5yIkkOnC7WbQ8HLxSj5cN/YJSw27zs/aZy
+         RfcnME/MaZmcKq1n67HZnFyxcOo3RYspFegTSvQe/Yevkj0ypxLPip44VRz+vCcaG6z1
+         juL7HaDFJkzAE1DDk/rA46uue2IY8aO+m+2ZsQO1eYSFwiLI1bHH8qj+WLoiRga4wqaq
+         Oot6yEG9UeOCkVJx5sMhqHbCqE3K7lTeUfTPG1BgfNHb9+guK9+yNk0UskNum3XCd8v5
+         LrjGOL8/X7BDxA5dhfYzwi4Af4aaY10QtTfxEPy7h95PzG5Glqu77zgQAUgRMCFNB38O
+         qN9w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=kZ2a2Wy3;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Bgcc4HsY;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d9443c01a7336-20c13992beasor16197435ad.19.2024.10.05.13.06.13
+        by mx.google.com with SMTPS id d9443c01a7336-20c1393f835sor10086515ad.20.2024.10.05.13.06.14
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Sat, 05 Oct 2024 13:06:13 -0700 (PDT)
+        Sat, 05 Oct 2024 13:06:14 -0700 (PDT)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=kZ2a2Wy3;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Bgcc4HsY;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1728158773; x=1728763573; darn=linaro.org;
+        d=linaro.org; s=google; t=1728158774; x=1728763574; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=Rc7m2CC+o/vfg9459Vx/ro/giFzSXc14VGjLvy+03yM=;
-        b=kZ2a2Wy3ctmbeZMNQSME1VLAzdQU2kYEpCOXaBWTTisnCQUX7u+5ErV50PJKBYMHSO
-         HYB3pteLAnNBSUiE+0chQY3S4owcfzxJR0yJ7jmqmzjayWK9ISohNa8x3RsSSKoJfIAI
-         yYwfLvj8MS2R+kwPEkBeYNlb4EMnQTDfb5eqAY2Alvv5He4xNbyLfOsAWwHY4UtvQyUx
-         pQ/h/8hCkx2uYVLtIFujP8Cq/ie7fIugLjzsfAXOs/ASavu5ZzUdigcvpJcarYUkZ6WS
-         l+KXyxtjt834K+Hme+QlFE5t54hkIUDceJgRq+zXRZX4QqP0Y7RIiAQAgxYXdK4YlAwc
-         GWVw==
+        bh=E1uh5v8Er5HwrssIP/tcmhd1DyyVCAW+cpRhBaU0frQ=;
+        b=Bgcc4HsYHfEMA9Fu2lcFkTdEuVb5jt9OVTR/d8cUdsqqLrxkhf3A3YDvocNLB3YId1
+         VHgqCsX77Ot9XlNrun+OSnb/auPZsb7QPRNSzdtFpZWQ4KluZcj0p/VALededd5B/62q
+         iafFVlqRhldrOYQ6ZxWz3vD0pLCkcxUh5xc8OmklykGdCvlRSA3pAho5A3jSWvgc554w
+         eyRWvJxfxJT2a958OimKeeNy7BJhzUcjm+cdypyrd3aAbI4IPmfsaYXG0LdKdOMlTQPH
+         7IoYUt53ohoEfDhdOA7fy5RFq4bkGIcijqnwGqnUfQ6p+M8ehZIxWMZddQe9LyfmasjJ
+         lbEA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1728158773; x=1728763573;
+        d=1e100.net; s=20230601; t=1728158774; x=1728763574;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=Rc7m2CC+o/vfg9459Vx/ro/giFzSXc14VGjLvy+03yM=;
-        b=FAxTldZvlP/6WNV/hkE3JNEdaxsqtk0t9hJvz5UTLaBxUZZ+JFpYxF5dkqDWfS2SGr
-         Zv7O3jP2D1n1m5rVnl3xU4sBbau1SHm+5CyF676EkkN1qfgMwO6l4jmCFIJH0LYAsF+O
-         z9rXBqsZq31xJpu8VcSj9APcZEwwA/okDcDNompxd1ZbalEWa+6afALOinPNMzU8iF9c
-         MHrg3T5MMNZMJXRl0VHQIgm48fMHtQ/I7PXN35utiN7y+jN6R0tw7oJkim566rR2f9J5
-         50MgJ3TmhpaMXaIuJlowtd9JPk5bCF7zw7fflcQhTaII2m3fC+EvUV8n4HBPUrOmmu6B
-         xkfA==
-X-Forwarded-Encrypted: i=1; AJvYcCXXJ0+fcGDupMxp5ITOMMxZ4FN/UJcHZvOJ5YUhqY06cWzay4omfgBReAN86xapSe4xCz2tb5zQY5JWqQ==@linaro.org
-X-Gm-Message-State: AOJu0Yy93KJc+bXV0ZG7gmbxoCBMJ3tjqclUVLekoUJxsiNX9hCNjZ+J
-	eKNK29JP87wsMsgamTy3BlwzcMstTgbB7DOOi06VA+5ZNSMPSVpXYUkFIdPSETQSQg==
-X-Google-Smtp-Source: AGHT+IGHEK6fjBSmL22oUUwIkylcWSfEnGAMH/PbqEEDgjtyaqNVMTdBmg2DLFABo2GcKikjZC9wnw==
-X-Received: by 2002:a17:902:e54f:b0:20b:9698:a234 with SMTP id d9443c01a7336-20bfde65b4dmr91370085ad.8.1728158772729;
-        Sat, 05 Oct 2024 13:06:12 -0700 (PDT)
+        bh=E1uh5v8Er5HwrssIP/tcmhd1DyyVCAW+cpRhBaU0frQ=;
+        b=OFF5ffIraWXu5U/tiINXGxHuiELKzf3jvC0cGc8msOQua2WdYtk+dtK5Sl6MCPSy9Y
+         CgnRyN3ltNwzTYSBIUw1uCVaByma+cPSibdyemJpfHHiJa8JvCBXWNtvH7TL+DaHpH9e
+         yI7OYrdvrlTvuhMeT8qfcU1nBXZcmOOPcD1ZRd/xKW0nJzSgJu4K7ZFCWYxCZkU2tjNC
+         58yXinoi+gilPXQ6MWMRc/k66ZRbnSGzzkrpeHaGx4HawFsGEMlUbZEprdZQnms52DMW
+         IdbtGeNisQkcpw3ivp5MsaiC+76djyOyiuElloOBudGoptT6zEdfeBj6LM/FXB+tBVdI
+         Q7yA==
+X-Forwarded-Encrypted: i=1; AJvYcCW4ZYJRGagpHoC2f6QpmCRVHVwjNh4hyYUjZgHa1f0AwP27aeqMvT92OIK0IH71oIORAnGfphmD8VLhDQ==@linaro.org
+X-Gm-Message-State: AOJu0YwVbzqsXb4htJ+xPV4fNgcWxq8l/HvqFI1u29kM9amq3Zik54j3
+	7qKLKa+JPLfCIjz1OtS9niFE5jY352OQkBmujoDKfVxB1/zO8Ac4RZhnaX+O+Fac7k8otfk3CSF
+	GnUs=
+X-Google-Smtp-Source: AGHT+IFuIEZa4i6J0XzDsWHUBnGbrBzjQrdOCbbZFKtwtRYvhgzw6qHzcnt8mJfy/cgTXRoh5crEPg==
+X-Received: by 2002:a17:902:d4c6:b0:20b:b48d:68e with SMTP id d9443c01a7336-20bfde57cf8mr99495885ad.7.1728158773783;
+        Sat, 05 Oct 2024 13:06:13 -0700 (PDT)
 Return-Path: <richard.henderson@linaro.org>
 Received: from stoup.. (174-21-81-121.tukw.qwest.net. [174.21.81.121])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-20c13931055sm16493405ad.139.2024.10.05.13.06.12
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-20c13931055sm16493405ad.139.2024.10.05.13.06.13
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 05 Oct 2024 13:06:12 -0700 (PDT)
+        Sat, 05 Oct 2024 13:06:13 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: deller@kernel.org,
@@ -82,93 +83,112 @@ Cc: deller@kernel.org,
 	alex.bennee@linaro.org,
 	linux-parisc@vger.kernel.org,
 	qemu-arm@nongnu.org
-Subject: [PATCH v2 12/21] target/hppa: Add hppa_cpu_tlb_fill_align
-Date: Sat,  5 Oct 2024 13:05:51 -0700
-Message-ID: <20241005200600.493604-13-richard.henderson@linaro.org>
+Subject: [PATCH v2 13/21] target/arm: Pass MemOp to get_phys_addr
+Date: Sat,  5 Oct 2024 13:05:52 -0700
+Message-ID: <20241005200600.493604-14-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20241005200600.493604-1-richard.henderson@linaro.org>
 References: <20241005200600.493604-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: mkc5m2tnBTpV
+X-TUID: wkTKYMJX+UxL
 
-Fill in the tlb_fill_align hook, so that we can recognize
-alignment exceptions in the correct priority order.
+Zero is the safe do-nothing value for callers to use.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/hppa/cpu.h        |  3 +++
- target/hppa/cpu.c        |  2 +-
- target/hppa/mem_helper.c | 16 ++++++++++++----
- 3 files changed, 16 insertions(+), 5 deletions(-)
+ target/arm/internals.h      | 3 ++-
+ target/arm/ptw.c            | 2 +-
+ target/arm/tcg/m_helper.c   | 8 ++++----
+ target/arm/tcg/tlb_helper.c | 2 +-
+ 4 files changed, 8 insertions(+), 7 deletions(-)
 
-diff --git a/target/hppa/cpu.h b/target/hppa/cpu.h
-index 526855f982..c0567ce0ab 100644
---- a/target/hppa/cpu.h
-+++ b/target/hppa/cpu.h
-@@ -366,6 +366,9 @@ void hppa_set_ior_and_isr(CPUHPPAState *env, vaddr addr, bool mmu_disabled);
- bool hppa_cpu_tlb_fill(CPUState *cs, vaddr address, int size,
-                        MMUAccessType access_type, int mmu_idx,
-                        bool probe, uintptr_t retaddr);
-+bool hppa_cpu_tlb_fill_align(CPUState *cs, vaddr address, MemOp mop, int size,
-+                             MMUAccessType access_type, int mmu_idx,
-+                             bool probe, uintptr_t retaddr);
- void hppa_cpu_do_interrupt(CPUState *cpu);
- bool hppa_cpu_exec_interrupt(CPUState *cpu, int int_req);
- int hppa_get_physical_address(CPUHPPAState *env, vaddr addr, int mmu_idx,
-diff --git a/target/hppa/cpu.c b/target/hppa/cpu.c
-index 3b6c325e09..768abc6e5d 100644
---- a/target/hppa/cpu.c
-+++ b/target/hppa/cpu.c
-@@ -226,7 +226,7 @@ static const TCGCPUOps hppa_tcg_ops = {
-     .restore_state_to_opc = hppa_restore_state_to_opc,
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index 1e5da81ce9..2b16579fa5 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -1432,6 +1432,7 @@ typedef struct GetPhysAddrResult {
+  * @env: CPUARMState
+  * @address: virtual address to get physical address for
+  * @access_type: 0 for read, 1 for write, 2 for execute
++ * @memop: memory operation feeding this access, or 0 for none
+  * @mmu_idx: MMU index indicating required translation regime
+  * @result: set on translation success.
+  * @fi: set to fault info if the translation fails
+@@ -1450,7 +1451,7 @@ typedef struct GetPhysAddrResult {
+  *    value.
+  */
+ bool get_phys_addr(CPUARMState *env, vaddr address,
+-                   MMUAccessType access_type, ARMMMUIdx mmu_idx,
++                   MMUAccessType access_type, MemOp memop, ARMMMUIdx mmu_idx,
+                    GetPhysAddrResult *result, ARMMMUFaultInfo *fi)
+     __attribute__((nonnull));
  
- #ifndef CONFIG_USER_ONLY
--    .tlb_fill_align = tlb_fill_align_first,
-+    .tlb_fill_align = hppa_cpu_tlb_fill_align,
-     .tlb_fill = hppa_cpu_tlb_fill,
-     .cpu_exec_interrupt = hppa_cpu_exec_interrupt,
-     .cpu_exec_halt = hppa_cpu_has_work,
-diff --git a/target/hppa/mem_helper.c b/target/hppa/mem_helper.c
-index d38054da8a..35e9170bf3 100644
---- a/target/hppa/mem_helper.c
-+++ b/target/hppa/mem_helper.c
-@@ -424,9 +424,9 @@ void hppa_cpu_do_transaction_failed(CPUState *cs, hwaddr physaddr,
-     }
+diff --git a/target/arm/ptw.c b/target/arm/ptw.c
+index 659855133c..373095a339 100644
+--- a/target/arm/ptw.c
++++ b/target/arm/ptw.c
+@@ -3572,7 +3572,7 @@ bool get_phys_addr_with_space_nogpc(CPUARMState *env, vaddr address,
  }
  
--bool hppa_cpu_tlb_fill(CPUState *cs, vaddr addr, int size,
--                       MMUAccessType type, int mmu_idx,
--                       bool probe, uintptr_t retaddr)
-+bool hppa_cpu_tlb_fill_align(CPUState *cs, vaddr addr, MemOp mop, int size,
-+                             MMUAccessType type, int mmu_idx,
-+                             bool probe, uintptr_t retaddr)
+ bool get_phys_addr(CPUARMState *env, vaddr address,
+-                   MMUAccessType access_type, ARMMMUIdx mmu_idx,
++                   MMUAccessType access_type, MemOp memop, ARMMMUIdx mmu_idx,
+                    GetPhysAddrResult *result, ARMMMUFaultInfo *fi)
  {
-     HPPACPU *cpu = HPPA_CPU(cs);
-     CPUHPPAState *env = &cpu->env;
-@@ -445,7 +445,7 @@ bool hppa_cpu_tlb_fill(CPUState *cs, vaddr addr, int size,
-         break;
+     S1Translate ptw = {
+diff --git a/target/arm/tcg/m_helper.c b/target/arm/tcg/m_helper.c
+index 23d7f73035..f7354f3c6e 100644
+--- a/target/arm/tcg/m_helper.c
++++ b/target/arm/tcg/m_helper.c
+@@ -222,7 +222,7 @@ static bool v7m_stack_write(ARMCPU *cpu, uint32_t addr, uint32_t value,
+     int exc;
+     bool exc_secure;
+ 
+-    if (get_phys_addr(env, addr, MMU_DATA_STORE, mmu_idx, &res, &fi)) {
++    if (get_phys_addr(env, addr, MMU_DATA_STORE, 0, mmu_idx, &res, &fi)) {
+         /* MPU/SAU lookup failed */
+         if (fi.type == ARMFault_QEMU_SFault) {
+             if (mode == STACK_LAZYFP) {
+@@ -311,7 +311,7 @@ static bool v7m_stack_read(ARMCPU *cpu, uint32_t *dest, uint32_t addr,
+     bool exc_secure;
+     uint32_t value;
+ 
+-    if (get_phys_addr(env, addr, MMU_DATA_LOAD, mmu_idx, &res, &fi)) {
++    if (get_phys_addr(env, addr, MMU_DATA_LOAD, 0, mmu_idx, &res, &fi)) {
+         /* MPU/SAU lookup failed */
+         if (fi.type == ARMFault_QEMU_SFault) {
+             qemu_log_mask(CPU_LOG_INT,
+@@ -2009,7 +2009,7 @@ static bool v7m_read_half_insn(ARMCPU *cpu, ARMMMUIdx mmu_idx, bool secure,
+                       "...really SecureFault with SFSR.INVEP\n");
+         return false;
      }
+-    if (get_phys_addr(env, addr, MMU_INST_FETCH, mmu_idx, &res, &fi)) {
++    if (get_phys_addr(env, addr, MMU_INST_FETCH, 0, mmu_idx, &res, &fi)) {
+         /* the MPU lookup failed */
+         env->v7m.cfsr[env->v7m.secure] |= R_V7M_CFSR_IACCVIOL_MASK;
+         armv7m_nvic_set_pending(env->nvic, ARMV7M_EXCP_MEM, env->v7m.secure);
+@@ -2045,7 +2045,7 @@ static bool v7m_read_sg_stack_word(ARMCPU *cpu, ARMMMUIdx mmu_idx,
+     ARMMMUFaultInfo fi = {};
+     uint32_t value;
  
--    excp = hppa_get_physical_address(env, addr, mmu_idx, a_prot, 0,
-+    excp = hppa_get_physical_address(env, addr, mmu_idx, a_prot, mop,
-                                      &phys, &prot);
-     if (unlikely(excp >= 0)) {
-         if (probe) {
-@@ -473,6 +473,14 @@ bool hppa_cpu_tlb_fill(CPUState *cs, vaddr addr, int size,
-     return true;
- }
- 
-+bool hppa_cpu_tlb_fill(CPUState *cs, vaddr addr, int size,
-+                       MMUAccessType type, int mmu_idx,
-+                       bool probe, uintptr_t retaddr)
-+{
-+    return hppa_cpu_tlb_fill_align(cs, addr, 0, size, type,
-+                                   mmu_idx, probe, retaddr);
-+}
-+
- /* Insert (Insn/Data) TLB Address.  Note this is PA 1.1 only.  */
- void HELPER(itlba_pa11)(CPUHPPAState *env, target_ulong addr, target_ulong reg)
- {
+-    if (get_phys_addr(env, addr, MMU_DATA_LOAD, mmu_idx, &res, &fi)) {
++    if (get_phys_addr(env, addr, MMU_DATA_LOAD, 0, mmu_idx, &res, &fi)) {
+         /* MPU/SAU lookup failed */
+         if (fi.type == ARMFault_QEMU_SFault) {
+             qemu_log_mask(CPU_LOG_INT,
+diff --git a/target/arm/tcg/tlb_helper.c b/target/arm/tcg/tlb_helper.c
+index 885bf4ec14..1d8b7bcaa2 100644
+--- a/target/arm/tcg/tlb_helper.c
++++ b/target/arm/tcg/tlb_helper.c
+@@ -344,7 +344,7 @@ bool arm_cpu_tlb_fill(CPUState *cs, vaddr address, int size,
+      * return false.  Otherwise populate fsr with ARM DFSR/IFSR fault
+      * register format, and signal the fault.
+      */
+-    ret = get_phys_addr(&cpu->env, address, access_type,
++    ret = get_phys_addr(&cpu->env, address, access_type, 0,
+                         core_to_arm_mmu_idx(&cpu->env, mmu_idx),
+                         &res, fi);
+     if (likely(!ret)) {
 -- 
 2.43.0

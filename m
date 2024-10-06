@@ -1,121 +1,98 @@
-Received: by 2002:a17:505:c89:b0:1be9:327d:8ee3 with SMTP id hp9csp1162078njb;
-        Sat, 5 Oct 2024 13:59:09 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXtELHN7FTrkkKC41eboEU6jltkxUedOxDn62F6U8myhHyQOePL7SEsR4Lk3v4clPIByBfl8BbLk9op0Q==@linaro.org
-X-Google-Smtp-Source: AGHT+IHlQ9rBbovSLtIX9rHEBWm3Pm3iU0zm38Wx9vJ9khQCKNbPGFD/a17nOEqF1Oa//ARqvA7k
-X-Received: by 2002:a05:6214:540f:b0:6cb:7ce7:c076 with SMTP id 6a1803df08f44-6cb9a2f58c9mr104171436d6.18.1728161948923;
-        Sat, 05 Oct 2024 13:59:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1728161948; cv=none;
+Received: by 2002:a17:505:c89:b0:1be9:327d:8ee3 with SMTP id hp9csp1322506njb;
+        Sun, 6 Oct 2024 01:00:31 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCW0RcfgX/t9jRBrCZAD9p3yPrU++CZAYTUoCiXV5cyAtkZsRJmz7FnN9F9Ozj7+ETTnxPJ6P33q95u6aw==@linaro.org
+X-Google-Smtp-Source: AGHT+IGqfANkw4PD8FjFpo8P3iVa0y5ABWa/m8/pZZ3c7Cyso7k7IN+ZLC1enrUrfovDqBYUMN6u
+X-Received: by 2002:a05:6214:2dc8:b0:6cb:3bc0:f5f8 with SMTP id 6a1803df08f44-6cb9a45c5a7mr125129496d6.38.1728201631502;
+        Sun, 06 Oct 2024 01:00:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1728201631; cv=none;
         d=google.com; s=arc-20240605;
-        b=RpA2FijeqXQTyPLhLPGTvMBZyWcJ3XPcZQS0b0zbuzzF/cpaUThx7O6gvHDeDZW3nC
-         x5Dtse/7/g989+oEAFmtHyf2DqWdFsMtKpUIdg2KhwffoPshbDAs4g/sODddBAaPwZUB
-         zFk3FceHZN2yshYN0QOUvuR52nsy3Svq8gB2uovlFkco/TuSpCxht22zFn+c9gb6bS30
-         esHLHV9WSOI9gk8MH4hzg4s4/5eDFNWT7I6O/BtFO3Ho2hdOcVLk97BDhp+Pu7fQSmKF
-         ZtWmfo1QmVtsH46fhsdTejbipDlADYx5T6VHAZQ/cLf64fjEUgxf5BBuzc5VSG549dCm
-         fYdw==
+        b=SxdBe7heTcP97JGygnZxoI+HYBBj1P3Ga2wW7RMEB3modsSflE78RZ46crpRya0uFx
+         QoOQtXr0yWuoBNKIescDaZVKicxMopfs3/NipNi6PkXC9n81qRqcZXhsaav7K1aIZ6cP
+         78ckpxQ5kpVMOly/i1e8t275HCfmQ8reWM/Fswsphdj1SeL1yZuRaGsBEa5oJHfUOKSt
+         MdudAuCoqkEvzBzdAo2O9k2dWReB/vOJWULTYDAMNsb3Xps/ZVi6Y1FPYtvpnDEKwvPI
+         9+jbObN7NnEyn1JBJlRHumIiXR9NPgzlslthmi2vJV0zPqTzy8d3/AVDEIxXA202uyZ/
+         /zZw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=XJn4B+jQc95ao6ZyIj/u4htIgx2sxZoS2pamWWEl5zk=;
-        fh=Mw52gfCnVTIF+vtgf0Az39CYZOyiWgRaKKjtrIPJz04=;
-        b=K3BTlrlb2Juiwp0FjcRsWVFyBWVAPDWQ86L1Q7U43GUBf6gvSqnBSVPk3t83V5KYEs
-         XSsW/X0ctoUoW4smsDyjVbI6Ky9FLdLNvxK6A9Sg2eGUfhGCPWwcbS+hU8igMWg5VTOb
-         hk19rb0LnhjsBkS1KfhRolY0YSo/nwDrXGmPNa2uicUpMabrJ8v1nEKn5Fomt++LjjVZ
-         BhIHdUil/AUhFY5nBH5mLvpQnFDDoXaJMqMWDq93/gl2Al5/y25vyQVRnZDW9LX1BSd6
-         Tamt1NxFJD/LEErv49onxCCUn9KpiYFodgX8E/O1VRrCsjUycWWYbpmIxIq0nAE3qnMG
-         8VgA==;
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id;
+        bh=Ou5JuTPGVZiC3ifacUBmsIaoE4lcFS/QCKIvm9iUQfk=;
+        fh=11ftpBpDV4vughdtjwlu8r9gyL0WZFHVk/lZohOKGxo=;
+        b=NVzQkYl3kGRo9uhVarrvjIGIss5nf/v1F1Nmf7XBjq9FxwZ31rOE6P12FjvpEI8Osk
+         n6ZZ+aoOLjobyh5Ahg6pN5/DYopDT03dJKQ64ky7AeMKjP11kVUr14AkFRCxX3HTa+jJ
+         td+SKUi1VhYclNwjHFLsNh6yi92tUozbsHJ+K0PKNIWLTkdsHr3u4Wg5k0Aa5h1jjhNB
+         N90g/px0TBOs6kpXCMXbVL6zVJFXdhlkgFFRX40JzjDHpb5mOAXyS6BcXl7fRWKHnRam
+         vqzx4jc60pDPMWUdE/BSoH+7YpyQfx7r1Onx2XPldc2Wfe8l4XoDnXTKeoHOObJ7CGe5
+         T20Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=JORishKw;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6cba4773612si27949806d6.391.2024.10.05.13.59.08
+        by mx.google.com with ESMTPS id 6a1803df08f44-6cba475b7f7si36650356d6.271.2024.10.06.01.00.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 05 Oct 2024 13:59:08 -0700 (PDT)
+        Sun, 06 Oct 2024 01:00:31 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=JORishKw;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sxBqo-0002ic-RT; Sat, 05 Oct 2024 16:58:06 -0400
+	id 1sxMBY-0003De-MC; Sun, 06 Oct 2024 04:00:12 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1sxBqm-0002hQ-Ed; Sat, 05 Oct 2024 16:58:04 -0400
-Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1sxBqk-0006mf-1q; Sat, 05 Oct 2024 16:58:04 -0400
-Received: by mail-ej1-x631.google.com with SMTP id
- a640c23a62f3a-a99422929b2so66958066b.0; 
- Sat, 05 Oct 2024 13:58:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1728161880; x=1728766680; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=XJn4B+jQc95ao6ZyIj/u4htIgx2sxZoS2pamWWEl5zk=;
- b=JORishKw9WXYRbByHwrvfHRGKoglnrR95kd0CEolMRVWCdAwKNTSp3UaVj+pNlgwt8
- E8ZeAT8sgH2FMudGiIpugw8n/mFgXfptdfL/N01QxRhxPvi+7vfnjtnZ+cEfLld3Q5tB
- 5bjIcepGqbw/S4TyiD2PPoUJfn6xZ1iRInM0MG0KaXL5uELiwwwJriohocg/Yau9rrVk
- QonoBcGf6tQZv98YhIAk2RJlx1ozfOQwQcQ1nt07cXkeBMtGQdCpZwp0df10RZeYO82J
- IuRI0kuphrhNVDrbbfdCuNn33sel/CUuzHIJeQALnHQ0apEYPXk8/tugH8nJ51pLG7pM
- YfxQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1728161880; x=1728766680;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=XJn4B+jQc95ao6ZyIj/u4htIgx2sxZoS2pamWWEl5zk=;
- b=nz1PMaePeYnfzvpa8HyHdfivZFC+ImHhp083Q6LcGl5tN6qgfm0yEmT+NcVKG5Grec
- 0RL5CfBs8s9MLMzBjcZxS7LP2cPL5gxBx25vwgnWp8Ml0gnSHt1Y/o5KhtYmp+JOoxtt
- 1Ov78ZZ4t98Xat6gb9HMPKB4iIkcnuIkMtbLfipx3NcMfRq6f83DiZplFnbJo1SWMk2O
- sp0Vjl+CLo7Wc6Zfv3AQCdAzjeV0RxTntWbb2HWFL/9M3KJZUXIqw3eGpfFwMosyRQl0
- WkbstO5DlH+0XuW4V/6KHFhnDFg+5uGHDP6J6JAOx8q+PBn1q4GFZ7+/y2l2dmzTqPag
- xrVg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXaHa6mbWvgWDPlyDqP70ZV1b+PFQLxc/GcJZrad755PDRhyw0UKEC5Q7Ef9IUb4xGcH3jRg/w8Ig==@nongnu.org
-X-Gm-Message-State: AOJu0Yz5PI35PORBs/8jOXZKXYc1cd5C6gZ7uFDR+E75ERfwPqM/313u
- em0XTVViHoU9uB0ZrvsLP1opfGPWfy/EvAzmKN+fxDWMrw+suRiLmklLrw==
-X-Received: by 2002:a17:906:ee87:b0:a8d:250a:52a8 with SMTP id
- a640c23a62f3a-a991bce6124mr861012766b.3.1728161879788; 
- Sat, 05 Oct 2024 13:57:59 -0700 (PDT)
-Received: from archlinux.. (pd95ed790.dip0.t-ipconnect.de. [217.94.215.144])
- by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-a993f40d542sm105804966b.157.2024.10.05.13.57.59
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 05 Oct 2024 13:57:59 -0700 (PDT)
-From: Bernhard Beschow <shentey@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: Jason Wang <jasowang@redhat.com>, qemu-arm@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Bernhard Beschow <shentey@gmail.com>
-Subject: [PATCH 3/4] hw/net/lan9118_phy: Reuse MII constants
-Date: Sat,  5 Oct 2024 22:57:47 +0200
-Message-ID: <20241005205748.29203-4-shentey@gmail.com>
-X-Mailer: git-send-email 2.46.2
-In-Reply-To: <20241005205748.29203-1-shentey@gmail.com>
-References: <20241005205748.29203-1-shentey@gmail.com>
+ (Exim 4.90_1) (envelope-from <a.fatoum@pengutronix.de>)
+ id 1sxMBR-00038q-Bx
+ for qemu-arm@nongnu.org; Sun, 06 Oct 2024 04:00:05 -0400
+Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <a.fatoum@pengutronix.de>)
+ id 1sxMBO-0002y1-SZ
+ for qemu-arm@nongnu.org; Sun, 06 Oct 2024 04:00:05 -0400
+Received: from ptz.office.stw.pengutronix.de ([2a0a:edc0:0:900:1d::77]
+ helo=[127.0.0.1])
+ by metis.whiteo.stw.pengutronix.de with esmtp (Exim 4.92)
+ (envelope-from <a.fatoum@pengutronix.de>)
+ id 1sxMBJ-0005Tc-KL; Sun, 06 Oct 2024 09:59:57 +0200
+Message-ID: <0352a327-0e78-48d4-a876-d33689fcd766@pengutronix.de>
+Date: Sun, 6 Oct 2024 09:59:56 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::631;
- envelope-from=shentey@gmail.com; helo=mail-ej1-x631.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [BUG] ARM64 KVM: Data abort executing post-indexed LDR on MMIO
+ address
+To: Marc Zyngier <maz@kernel.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ kvmarm@lists.linux.dev, kvm@vger.kernel.org,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>, Enrico Joerns <ejo@pengutronix.de>
+References: <89f184d6-5b61-4c77-9f3b-c0a8f6a75d60@pengutronix.de>
+ <CAFEAcA_Yv2a=XCKw80y9iyBRoC27UL6Sfzgy4KwFDkC1gbzK7w@mail.gmail.com>
+ <a4c06f55-28ec-4620-b594-b7ff0bb1e162@pengutronix.de>
+ <CAFEAcA9F3AR-0OCKDy__eVBJRMi80G7bWNfANGZRR2W8iMhfJA@mail.gmail.com>
+ <4d559b9e-c208-46f3-851a-68086dc8a50f@pengutronix.de>
+ <864j5q7sdq.wl-maz@kernel.org>
+ <65ab10d7-6594-490c-be07-39f83ac3559a@pengutronix.de>
+ <87a5fiutai.wl-maz@kernel.org>
+Content-Language: en-US
+From: Ahmad Fatoum <a.fatoum@pengutronix.de>
+In-Reply-To: <87a5fiutai.wl-maz@kernel.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:900:1d::77
+X-SA-Exim-Mail-From: a.fatoum@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de);
+ SAEximRunCond expanded to false
+X-PTX-Original-Recipient: qemu-arm@nongnu.org
+Received-SPF: pass client-ip=2a0a:edc0:2:b01:1d::104;
+ envelope-from=a.fatoum@pengutronix.de; helo=metis.whiteo.stw.pengutronix.de
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -130,164 +107,100 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: /lHdJp50uton
+X-TUID: BBdfyEFt0TXB
 
-Prefer named constants over magic values for better readability.
+Hello Marc,
 
-Signed-off-by: Bernhard Beschow <shentey@gmail.com>
----
- include/hw/net/mii.h |  6 +++++
- hw/net/lan9118_phy.c | 59 +++++++++++++++++++++++++++-----------------
- 2 files changed, 43 insertions(+), 22 deletions(-)
+On 05.10.24 23:35, Marc Zyngier wrote:
+> On Sat, 05 Oct 2024 19:38:23 +0100,
+> Ahmad Fatoum <a.fatoum@pengutronix.de> wrote:
+>>> IIRC, the QEMU flash is implemented as a read-only memslot. A data
+>>> cache invalidation is a *write*, as it can be (and is) upgraded to a
+>>> clean+invalidate by the HW.
+>>
+>> So it's a write, even if there are no dirty cache lines?
+> 
+> Yes.
+> 
+> At the point where this is handled, the CPU has no clue about the
+> dirty state of an arbitrary cache line, at an arbitrary cache level.
+> The CPU simply forward the CMO downstream, and the permission check
+> happens way before that.
 
-diff --git a/include/hw/net/mii.h b/include/hw/net/mii.h
-index f7feddac9b..55bf7c92a1 100644
---- a/include/hw/net/mii.h
-+++ b/include/hw/net/mii.h
-@@ -71,6 +71,7 @@
- #define MII_BMSR_JABBER     (1 << 1)  /* Jabber detected */
- #define MII_BMSR_EXTCAP     (1 << 0)  /* Ext-reg capability */
- 
-+#define MII_ANAR_RFAULT     (1 << 13) /* Say we can detect faults */
- #define MII_ANAR_PAUSE_ASYM (1 << 11) /* Try for asymmetric pause */
- #define MII_ANAR_PAUSE      (1 << 10) /* Try for pause */
- #define MII_ANAR_TXFD       (1 << 8)
-@@ -78,6 +79,7 @@
- #define MII_ANAR_10FD       (1 << 6)
- #define MII_ANAR_10         (1 << 5)
- #define MII_ANAR_CSMACD     (1 << 0)
-+#define MII_ANAR_SELECT     (0x001f)  /* Selector bits */
- 
- #define MII_ANLPAR_ACK      (1 << 14)
- #define MII_ANLPAR_PAUSEASY (1 << 11) /* can pause asymmetrically */
-@@ -112,6 +114,10 @@
- #define RTL8201CP_PHYID1    0x0000
- #define RTL8201CP_PHYID2    0x8201
- 
-+/* SMSC LAN9118 */
-+#define SMSCLAN9118_PHYID1  0x0007
-+#define SMSCLAN9118_PHYID2  0xc0d1
-+
- /* RealTek 8211E */
- #define RTL8211E_PHYID1     0x001c
- #define RTL8211E_PHYID2     0xc915
-diff --git a/hw/net/lan9118_phy.c b/hw/net/lan9118_phy.c
-index 1ab4bbc900..1c2f30c81a 100644
---- a/hw/net/lan9118_phy.c
-+++ b/hw/net/lan9118_phy.c
-@@ -14,6 +14,7 @@
- 
- #include "qemu/osdep.h"
- #include "hw/net/lan9118_phy.h"
-+#include "hw/net/mii.h"
- #include "hw/irq.h"
- #include "qemu/log.h"
- #include "trace.h"
-@@ -38,11 +39,11 @@ void lan9118_phy_update_link(Lan9118PhyState *s, bool link_down)
-     /* Autonegotiation status mirrors link status. */
-     if (link_down) {
-         trace_lan9118_phy_update_link("down");
--        s->status &= ~0x0024;
-+        s->status &= ~(MII_BMSR_AN_COMP | MII_BMSR_LINK_ST);
-         s->ints |= PHY_INT_DOWN;
-     } else {
-         trace_lan9118_phy_update_link("up");
--        s->status |= 0x0024;
-+        s->status |= MII_BMSR_AN_COMP | MII_BMSR_LINK_ST;
-         s->ints |= PHY_INT_ENERGYON;
-         s->ints |= PHY_INT_AUTONEG_COMPLETE;
-     }
-@@ -53,9 +54,18 @@ void lan9118_phy_reset(Lan9118PhyState *s)
- {
-     trace_lan9118_phy_reset();
- 
--    s->status = 0x7809;
--    s->control = 0x3000;
--    s->advertise = 0x01e1;
-+    s->status = MII_BMSR_100TX_FD
-+                | MII_BMSR_100TX_HD
-+                | MII_BMSR_10T_FD
-+                | MII_BMSR_10T_HD
-+                | MII_BMSR_AUTONEG
-+                | MII_BMSR_EXTCAP;
-+    s->control = MII_BMCR_AUTOEN | MII_BMCR_SPEED100;
-+    s->advertise = MII_ANAR_TXFD
-+                   | MII_ANAR_TX
-+                   | MII_ANAR_10FD
-+                   | MII_ANAR_10
-+                   | MII_ANAR_CSMACD;
-     s->int_mask = 0;
-     s->ints = 0;
-     lan9118_phy_update_link(s, s->link_down);
-@@ -66,26 +76,26 @@ uint32_t lan9118_phy_read(Lan9118PhyState *s, int reg)
-     uint32_t val;
- 
-     switch (reg) {
--    case 0: /* Basic Control */
-+    case MII_BMCR:
-         val = s->control;
-         break;
--    case 1: /* Basic Status */
-+    case MII_BMSR:
-         val = s->status;
-         break;
--    case 2: /* ID1 */
--        val = 0x0007;
-+    case MII_PHYID1:
-+        val = SMSCLAN9118_PHYID1;
-         break;
--    case 3: /* ID2 */
--        val = 0xc0d1;
-+    case MII_PHYID2:
-+        val = SMSCLAN9118_PHYID2;
-         break;
--    case 4: /* Auto-neg advertisement */
-+    case MII_ANAR:
-         val = s->advertise;
-         break;
--    case 5: /* Auto-neg Link Partner Ability */
-+    case MII_ANLPAR:
-         val = 0x0f71;
-         break;
--    case 6: /* Auto-neg Expansion */
--        val = 1;
-+    case MII_ANER:
-+        val = MII_ANER_NWAY;
-         break;
-     case 29: /* Interrupt source. */
-         val = s->ints;
-@@ -120,19 +130,24 @@ void lan9118_phy_write(Lan9118PhyState *s, int reg, uint32_t val)
-     trace_lan9118_phy_write(val, reg);
- 
-     switch (reg) {
--    case 0: /* Basic Control */
--        if (val & 0x8000) {
-+    case MII_BMCR:
-+        if (val & MII_BMCR_RESET) {
-             lan9118_phy_reset(s);
-         } else {
--            s->control = val & 0x7980;
-+            s->control = val & (MII_BMCR_LOOPBACK | MII_BMCR_SPEED100 |
-+                                MII_BMCR_AUTOEN | MII_BMCR_PDOWN | MII_BMCR_FD |
-+                                MII_BMCR_CTST);
-             /* Complete autonegotiation immediately. */
--            if (val & 0x1000) {
--                s->status |= 0x0020;
-+            if (val & MII_BMCR_AUTOEN) {
-+                s->status |= MII_BMSR_AN_COMP;
-             }
-         }
-         break;
--    case 4: /* Auto-neg advertisement */
--        s->advertise = (val & 0x2d7f) | 0x80;
-+    case MII_ANAR:
-+        s->advertise = (val & (MII_ANAR_RFAULT | MII_ANAR_PAUSE_ASYM |
-+                               MII_ANAR_PAUSE | MII_ANAR_10FD | MII_ANAR_10 |
-+                               MII_ANAR_SELECT))
-+                     | MII_ANAR_TX;
-         break;
-     case 30: /* Interrupt mask */
-         s->int_mask = val & 0xff;
+I see. When I added that invalidation, it was suggested[1] that instead
+of invalidation after the remapping, I would clean the range before
+remapping. Cleaning the zero page triggered a data abort, which I didn't
+understand as there should be no dirty lines, but now I get it.
+
+One more question: This upgrading of DC IVAC to DC CIVAC is because
+the code is run under virtualization, right?
+
+[1]: https://lore.barebox.org/barebox/9809c04c-58c5-6888-2b14-cf17fa7c4b1a@pengutronix.de/
+
+>> The routine[1] that does this remapping invalidates the virtual address range,
+>> because the attributes may change[2]. This invalidate also happens for cfi-flash,
+>> but we should never encounter dirty cache lines there as the remap is done
+>> before driver probe.
+>>
+>> Can you advise what should be done differently?
+> 
+> If you always map the flash as Device memory, there is no need for
+> CMOs. Same thing if you map it as NC.
+
+Everything, except for RAM, is mapped Device-nGnRnE.
+
+> And even if you did map it as
+> Cacheable, it wouldn't matter. KVM already handles coherency when the
+> flash is switching between memory-mapped and programming mode, as the
+> physical address space changes (the flash literally drops from the
+> memory map).
+> 
+> In general, issuing CMOs to a device is a bizarre concept, because it
+> is pretty rare that a device can handle a full cache-line as
+> write-back. Devices tend to handle smaller, register-sized accesses,
+> not a full 64-byte eviction.
+
+The same remap_range function is used to:
+
+  - remap normal memory:
+    - Mapping memory regions uncached for memory test
+    - Mapping memory buffers coherent or write-combine
+  - remap ROMs: BootROMs at address zero may be hidden behind the NULL
+    page and need to be mapped differently when calling/peeking into it.
+  - remap device memory, e.g. in the case of the cfi-flash here
+
+The invalidation is done unconditionally for all of them, although it
+makes only the sense in the first case.
+
+> Now, I'm still wondering whether we should simply forward the CMO to
+> userspace as we do for other writes, and let the VMM deal with it. The
+> main issue is that there is no current way to describe this.
+> 
+> The alternative would be to silently handle the trap and pretend it
+> never occurred, as we do for other bizarre behaviours. But that'd be
+> something only new kernels would support, and I guess you'd like your
+> guest to work today, not tomorrow.
+
+I think following fix on the barebox side may work:
+
+  - Walk all pages about to be remapped
+  - Execute the AT instruction on the page's base address
+  - Only if the page was previously mapped cacheable, clean + invalidate
+    the cache
+  - Remove the current cache invalidation after remap
+
+Does that sound sensible?
+
+Thanks,
+Ahmad
+
+> 
+> 	M.
+> 
+
+
 -- 
-2.46.2
-
+Pengutronix e.K.                           |                             |
+Steuerwalder Str. 21                       | http://www.pengutronix.de/  |
+31137 Hildesheim, Germany                  | Phone: +49-5121-206917-0    |
+Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |

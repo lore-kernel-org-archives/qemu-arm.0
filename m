@@ -1,73 +1,72 @@
-Received: by 2002:a17:505:c89:b0:1be9:327d:8ee3 with SMTP id hp9csp2202361njb;
-        Mon, 7 Oct 2024 14:25:45 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVTFfsOysESmBOzFTStKkH5VtNhoof+t3bAvjCSw3BCIv36lNPkr9PzVwTTARlcTvZUJrKlUZNtA6h30A==@linaro.org
-X-Google-Smtp-Source: AGHT+IEO7AgBAULHlsubCv4alePzbU0V6pqDSnpMkn5OF0Q7FZ+HqagvfVFjlQJ1BniM0fzd3O0D
-X-Received: by 2002:a17:907:3e20:b0:a8a:8915:6bf6 with SMTP id a640c23a62f3a-a991c0308famr1333898766b.52.1728336344999;
-        Mon, 07 Oct 2024 14:25:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1728336344; cv=none;
+Received: by 2002:a17:505:c89:b0:1be9:327d:8ee3 with SMTP id hp9csp2202574njb;
+        Mon, 7 Oct 2024 14:26:26 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVdAOtFKsF1rXNUKRO4UQX/MpNSkayEOzoLymsN53n30EoP3WYbKkcUqv/VQIUa77yZ80UhedUxv+FCAw==@linaro.org
+X-Google-Smtp-Source: AGHT+IHA+XdJRfq5pl+o1PelLgYGHdIJQu/FtIXYuwbIskFlvGsAj9mUBGSjtC9wN2D5QZqW+/3Z
+X-Received: by 2002:a05:6402:518c:b0:5c8:8381:c308 with SMTP id 4fb4d7f45d1cf-5c8d2d00fd2mr11707144a12.5.1728336385982;
+        Mon, 07 Oct 2024 14:26:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1728336385; cv=none;
         d=google.com; s=arc-20240605;
-        b=cfcN3P4zyeuPtA3BdlGIBniiW3OOEm9HPKbwuEEGPgtqL1+TbDnOKv2oPlMHEOxUDA
-         IVbz7pTVm3nnDIEe98fGKA5b0/wCtv6y5HV5+bG1qRCetteGLyOgE+diPNiAzncTIjzb
-         zqxfJi5ZMEqACWuMWib4FSfmnf/gjcr+BlLRME8mYQ/wbvDlC1a0UwuvV03lOyTAucc8
-         7S2qXrroogIwN2GCtenixhp1eWojaR9ZG6QYDQ29MxL0x27cZ3IQsJJWA2oYQqCDJ9qt
-         RcFxsYkg16A5n7vALI8ePvZ0cdv5UKEr2UE5XltdcAizwud4RmtoCXJsWLngWP++qTqg
-         QCjQ==
+        b=lcxpAR7WVR6hkt3H9SnDadzOgN/sYF522gu8Jw92DYAFO4DADAMRLsW0Q+1FgS9Gf6
+         kEkAJFnCfdu8JujqfFOZXvNuqwFuZTdTa/im9aGZbODzFmIRVwoKOAVNYvHLtR74uccx
+         v/OQlXMYZ36opM+HFamUsFrPlhVG2JsT2pW6YuVTmHUAyvoHDUjehu3kTgK27wZTb2Ve
+         o8O+lFpf26WOtOHiqZ2+idJikOhAYGV3ywyhaOg+/6bkUCWuK7PKde5OuWjw1NIX1Gx1
+         lzbGKyENcq3b3PamfjE/2Th3u/XzgzktpL9WsSTJcczZIfwPhIvYs9jshhu/MYpRQvDn
+         wBOw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=ui-outboundreport:content-transfer-encoding:in-reply-to:autocrypt
          :from:content-language:references:cc:to:subject:user-agent
          :mime-version:date:message-id:dkim-signature;
-        bh=/6kYe65SKMcicOCKh5ADZUEKSAFjWpZ0mMFYAo+g85U=;
+        bh=9xmTQ3MTHaGYfKNMFGOwKAEB7OrnQPo8rEImMyiimE0=;
         fh=3fZ7Wohp6BUOfptJMglDqKETKOsQS3q9o/uj1RhoDNQ=;
-        b=LxmEz3KPCpgEycZtdMCLQ10MD4ZjZHl4n8THtqxF4YDmTiz3DLbLZmP9VVc+V7LMKG
-         ZYeNhAL5KfV/6yvTkzhbikDVCowUQQFibbh5hCkTq0fZNUVYZSNo80unI66yJm+YVaRy
-         P0cpCna1cRctAJKa/4PhRQih4d4QiCC+9+WFiZnG32v3p32KgflhZghTwtT7jkEEVnfc
-         HvNOM8TyS/Bhaq+L6eb5J1t1MFULvRJGi5eEhW0o3NWrp2lqdvDsb7eWgZGtgx345pS5
-         US1IYdja4S2sFvWy2Cl/St3Mr3qnAn5ntoKegsInyHY2616UB+6SOu5lGwm891LL38Ut
-         fOdg==;
+        b=etpJroDasZbgMsXvSyZdqhdwmrg7B9z7vTViWcd4rzabzzt/5AeDI2vC809y6p75l6
+         uWICiM2xl1VZWwYgX5yUDOxuEWOpuxjcCPZ9z7g8sZTZZZq7CgN8/UldwmSn+7qIPjYq
+         WTIZlubJz8+wHeWuktcbuz4YXeBj5mAInjHDu2uwfIREyEH9EPG3OEmCdmMM0IIleyad
+         x24iYsrEiNcfnlj12H0uBIoCPV0CAtbUEb8k2aOGR0gf7bxIK7YjqPwdRU/W42bCkj7J
+         oZdz79D6mcgCA9SECJ3ly530mNASLHcbNGMj4GAcuqyh/3jQMS9xPsVjyWjbKneZ9+jk
+         /NPA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmx.de header.s=s31663417 header.b=AF6AdqJP;
-       spf=pass (google.com: domain of deller@gmx.de designates 212.227.17.21 as permitted sender) smtp.mailfrom=deller@gmx.de;
+       dkim=pass header.i=@gmx.de header.s=s31663417 header.b=Rvmp78J7;
+       spf=pass (google.com: domain of deller@gmx.de designates 212.227.17.20 as permitted sender) smtp.mailfrom=deller@gmx.de;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=gmx.de
 Return-Path: <deller@gmx.de>
-Received: from mout.gmx.net (mout.gmx.net. [212.227.17.21])
-        by mx.google.com with ESMTPS id a640c23a62f3a-a994d1c108csi293236566b.248.2024.10.07.14.25.44
+Received: from mout.gmx.net (mout.gmx.net. [212.227.17.20])
+        by mx.google.com with ESMTPS id 4fb4d7f45d1cf-5c8e05f02fcsi4653484a12.385.2024.10.07.14.26.25
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 07 Oct 2024 14:25:44 -0700 (PDT)
-Received-SPF: pass (google.com: domain of deller@gmx.de designates 212.227.17.21 as permitted sender) client-ip=212.227.17.21;
+        Mon, 07 Oct 2024 14:26:25 -0700 (PDT)
+Received-SPF: pass (google.com: domain of deller@gmx.de designates 212.227.17.20 as permitted sender) client-ip=212.227.17.20;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmx.de header.s=s31663417 header.b=AF6AdqJP;
-       spf=pass (google.com: domain of deller@gmx.de designates 212.227.17.21 as permitted sender) smtp.mailfrom=deller@gmx.de;
+       dkim=pass header.i=@gmx.de header.s=s31663417 header.b=Rvmp78J7;
+       spf=pass (google.com: domain of deller@gmx.de designates 212.227.17.20 as permitted sender) smtp.mailfrom=deller@gmx.de;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=gmx.de
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmx.de;
-	s=s31663417; t=1728336344; x=1728941144; i=deller@gmx.de;
-	bh=/6kYe65SKMcicOCKh5ADZUEKSAFjWpZ0mMFYAo+g85U=;
+	s=s31663417; t=1728336385; x=1728941185; i=deller@gmx.de;
+	bh=9xmTQ3MTHaGYfKNMFGOwKAEB7OrnQPo8rEImMyiimE0=;
 	h=X-UI-Sender-Class:Message-ID:Date:MIME-Version:Subject:To:Cc:
 	 References:From:In-Reply-To:Content-Type:
 	 Content-Transfer-Encoding:cc:content-transfer-encoding:
 	 content-type:date:from:message-id:mime-version:reply-to:subject:
 	 to;
-	b=AF6AdqJPHDRNpcYfqwBI5SzJ86fwhChT4iBJ+UvAugg9/8Y2VVy7cb3Pqyz2em8g
-	 fS1lRWBwWsEuqz0FJ2CJd5QC4lTzaDzw6u5ztRI4vOEVnjad160jZkhq+a7CEpHA2
-	 J7ZC0+Uw0tkDdVRn35Tm7FbtFzpGyMRxE53MfoDbweR862vB0G2CDFcInNWMhJ3q7
-	 7Cqa85ujtnOx1TIPCwGZeBjVXtZjwE/TGC3lrb1fGbB7klwAACGFutuv/o/NSOvpH
-	 dW1yg6Lpd696YfDhNJLVx0zdVfQiwck/spJeraBzwfMtvLWiYRTwo6qsOtL7nkrys
-	 CjTitFWR+Hf2Kkbt3g==
+	b=Rvmp78J7xgXjBHartScHLsrJ2xoXYbH3t5dilflpsQPfeOMFvmpBwepVbc2Zxzj8
+	 FDANatcFIsLUjvA2NENVR+2HFvLoEMJPdUVPo3r0oPeMMF7Au/wEr86kl2xn6Or6G
+	 VR+k7x6eFwLZjc6/vJ7yKtyCCVrxr0To/SrUBD0paYUvh2khiwElAel28QObAOxfy
+	 2OsA2D/zlHKKMogFYjVlli9ASO2JN9cH3672FNOunitG4CURXML/0CuG0Ih9imrRE
+	 YKu8ku7dPNbVMZ6+lV/VuUR1Rr8166P5mcv93MQURVUKavikRszQuaUYzlRysX+QZ
+	 NCvFteHZC3f0iZuT7g==
 X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
 Received: from [192.168.20.55] ([109.250.63.79]) by mail.gmx.net (mrgmx104
- [212.227.17.168]) with ESMTPSA (Nemesis) id 1M72sJ-1t4F9j0mYZ-003VDb; Mon, 07
- Oct 2024 23:25:44 +0200
-Message-ID: <4d7e4ea3-be70-44ea-9958-5f1b3aaff5fd@gmx.de>
-Date: Mon, 7 Oct 2024 23:25:43 +0200
+ [212.227.17.168]) with ESMTPSA (Nemesis) id 1MG9g4-1tCFfZ154u-00D5Um; Mon, 07
+ Oct 2024 23:26:25 +0200
+Message-ID: <71ea154d-e4aa-4d6c-9dfb-d5d89f90205c@gmx.de>
+Date: Mon, 7 Oct 2024 23:26:24 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 19/21] target/arm: Move device detection earlier in
- get_phys_addr_lpae
+Subject: Re: [PATCH v2 20/21] target/arm: Add arm_cpu_tlb_fill_align
 To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
 Cc: deller@kernel.org, peter.maydell@linaro.org, alex.bennee@linaro.org,
  linux-parisc@vger.kernel.org, qemu-arm@nongnu.org
 References: <20241005200600.493604-1-richard.henderson@linaro.org>
- <20241005200600.493604-20-richard.henderson@linaro.org>
+ <20241005200600.493604-21-richard.henderson@linaro.org>
 Content-Language: en-US
 From: Helge Deller <deller@gmx.de>
 Autocrypt: addr=deller@gmx.de; keydata=
@@ -113,128 +112,43 @@ Autocrypt: addr=deller@gmx.de; keydata=
  FwRDcGV6nxanxZGKEkSHHOm8jHwvQWvPP73pvuPBEPtKGLzbgd7OOcGZWtq2hNC6cRtsRdDx
  4TAGMCz4j238m+2mdbdhRh3iBnWT5yPFfnv/2IjFAk+sdix1Mrr+LIDF++kiekeq0yUpDdc4
  ExBy2xf6dd+tuFFBp3/VDN4U0UfG4QJ2fg19zE5Z8dS4jGIbLg==
-In-Reply-To: <20241005200600.493604-20-richard.henderson@linaro.org>
+In-Reply-To: <20241005200600.493604-21-richard.henderson@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:+yEiB+QnkLPPdYILVQkbkz/xPBXtJb9qoSPoJ/HNyxQHvgriRUf
- l0UVPtkFXjaX+L30ZIcU2ogak6EKyAdICNkL2lDqEZ9P9bvfJ475rd/e9xd77EJC1Nhce2c
- 3XKLoUUpOSgSQk9ZK3+MbqQgq05Bar10EJLLUjpo2NxsQnFZdmKTwjjxJkvZMHpP7gjBj3K
- S9X5mPuGpQZyDliqkUz+w==
+X-Provags-ID: V03:K1:JAJ0OjAMb9ZDbCeq+sgTWHRGALHE12S63zBxJ37RKEmacI1b2z4
+ ts1U4xdufUFvO0EOYGTmeOn8ogQOCirbXS38pnTDMe3UFw0dz7RvG+TD8k+94IM8WiqYjX4
+ Y0x3U62oTahPq7rWxM8/aTD6woe1FvXJOa5Zrb/iDIWhZvGIq1qz1roGv+1r68MaHqt5km7
+ vNfWerUktVYGdvLpMDvpw==
 X-Spam-Flag: NO
-UI-OutboundReport: notjunk:1;M01:P0:ABOw0Kn3tKI=;C2jzHi0+cIFqu6CeJIsKYh6bOcm
- f7AcvA0pVOmiwpoBY4cLmY06ox5M1cbpovXU/KcaLOy0NHEZQof8/Qy+T0laZCTAUFQo4hxjp
- xKpxtvGkOe2B57vnRNRARPoAUtsEMlGUbiRMUcJnh/x24w6xCMg0cZ1Jzf9vu4S+Uxk6JZ7yi
- NJfkTn2PRsjGl8VsgRzCgu9D3b3i6zFaYmc8QTdZfJInJf4WpuZSrbHLKKf1a7+OcGKXS56AR
- Bl8Y++ZS3v7y+QBMhVFVV3mmKiWjmPSs+X6zc6N0e9Z5LFPGKV6awt3K+l8w2x07IwJV0i0Uz
- K0yyYI0fLcdOHbVce/WOfmc4RomOgNiu8GH+jGtpr6PLpQmLRmG3q6T7rDtnwsFbyCPfwP9p8
- QnqNH8rHRisAR67Ka73E4T3zyw2Av2lx5FVfXkLhabce/zL7XgVSOkALiG1awyIGKNwNIi2xE
- KiVtA/edLVFJ+P9G5SKGZ+dJ/dzVd7MjwMPc7jOd7RY+nyQ8alXDNGQVRc/nAhCuF3qbmLpdf
- +084cC253OIV7or+qNPojBmGvHTVQWwOLTlZH+C7raC3qKfH+tESp7CVQDd1XxrtjbGGNl8U9
- 5BDFRbqXQcByO2+zdJVE/lFVkQX0OEl6dmAJgY+qDf4+r7AaiHFYTAM5hJr68qQBBUTsvprqn
- bKuHD1vlB9pHuMKl8yaVkZWTNaum6E75C53QxVOA4osT/FuJ67vfqilEsdGeVCQQ/iWuHkZFr
- HUG3IBxy+RXDkFxSqVjX4eGJgkRfKnj80OMwOqOj1TXCIwIv2EHHAszTMrSIvqDdxhbDupF64
- iEre8+dcE08Kdb/zqhEE9z6g==
-X-TUID: b0lG9G9+vgGD
+UI-OutboundReport: notjunk:1;M01:P0:4DGfTGgMgws=;kADFpI8nnwRfK0gIDXE6ebrR8fY
+ JSxkpTN/flu0+WUF7WQLZsfWjfcj4Ok1rcP3BzcF5jp3E1N7UFsetJ5bDhxbW6jlrHT4aR4yB
+ i+zZ/PQU5+BKUfuGqdMqDyGDWfyKtM1LkF+EQ/95QNiDCvGXUbu/u2Z9A3oGNWHbwU26SxqKV
+ jlcELhySE9Y38LTOvqhKdf9AqpPnNHJ59+8HJ8k+N8HR+CWePDPePiIG0+onjcJ2Iu2evP/p7
+ N7qXPiqepv9z+bBmfO/OEK5a79y+mjsYyIgsK7ruJS6/BoZVQA9r8ih0bdWHQhpsiGTNCZHAx
+ /7e0kl3rJPlXjzzXq4e7GBI5xkOXahXbg51+TLAyjqmz1/tGNySQoODB51MYah1XRWQkl0ZJA
+ BgTspoYg6CtCr4xNHduisdbd0uYeWUHwMN3YrHJhTtkXT1L7WoC1Obo6QLgNLce9q77h9Hipv
+ D4iWptWm1sZ/Pa3ApDrGvO/6w5/7di2JxbtxZzu/MV0PbMR34p4jC3ZqKU3iIyiqCAG6sj6Dd
+ f0eyN0oBYt1uCpeO87mkSJjPqnWe7EscxZxIGD2GYgZGNLDkOOTWdOgWCGMEkud59Gd4Lo9Gx
+ Jyqtnsx2uoQFmlA3jSGbwHhnEfxlCC4VBEM8Nfmrp5Zdn+k3aE44PTHfUsEv7ShIzOnI4h7bK
+ 1DdrwqOeqfQYrtv6PjxA6xPPUAbGz1FqFhywzc/yc3XISRtAHq5lgzJktbS74BQ4LQcwW8WdT
+ nPnRQSCuo4a8/HHdCXe6DGn09SpK+fRhXuUkdXezAxSMjyhKsOtMm17kj4ccjVQYJj0oRQzSb
+ RG8J/BVGWqDieCOfB0cWQe1Q==
+X-TUID: i3gbMhxHKTZJ
 
 On 10/5/24 22:05, Richard Henderson wrote:
-> Determine cache attributes, and thence Device vs Normal memory,
-
-"thence" ?
-
-Other than that I have no arm knowledge to review the patch below....
-
-Helge
-
-> earlier in the function.  We have an existing regime_is_stage2
-> if block into which this can be slotted.
+> Fill in the tlb_fill_align hook.  So far this is the same
+> as tlb_fill_align_first, except that we can pass memop to
+> get_phys_addr as well.
 >
 > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+
+
+Reviewed-by: Helge Deller <deller@gmx.de>
+
+
 > ---
->   target/arm/ptw.c | 49 ++++++++++++++++++++++++------------------------
->   1 file changed, 25 insertions(+), 24 deletions(-)
->
-> diff --git a/target/arm/ptw.c b/target/arm/ptw.c
-> index 238b2c92a9..0a1a820362 100644
-> --- a/target/arm/ptw.c
-> +++ b/target/arm/ptw.c
-> @@ -2029,8 +2029,20 @@ static bool get_phys_addr_lpae(CPUARMState *env, =
-S1Translate *ptw,
->               xn =3D extract64(attrs, 53, 2);
->               result->f.prot =3D get_S2prot(env, ap, xn, ptw->in_s1_is_e=
-l0);
->           }
-> +
-> +        result->cacheattrs.is_s2_format =3D true;
-> +        result->cacheattrs.attrs =3D extract32(attrs, 2, 4);
-> +        /*
-> +         * Security state does not really affect HCR_EL2.FWB;
-> +         * we only need to filter FWB for aa32 or other FEAT.
-> +         */
-> +        device =3D S2_attrs_are_device(arm_hcr_el2_eff(env),
-> +                                     result->cacheattrs.attrs);
->       } else {
->           int nse, ns =3D extract32(attrs, 5, 1);
-> +        uint8_t attrindx;
-> +        uint64_t mair;
-> +
->           switch (out_space) {
->           case ARMSS_Root:
->               /*
-> @@ -2102,6 +2114,19 @@ static bool get_phys_addr_lpae(CPUARMState *env, =
-S1Translate *ptw,
->            */
->           result->f.prot =3D get_S1prot(env, mmu_idx, aarch64, ap, xn, p=
-xn,
->                                       result->f.attrs.space, out_space);
-> +
-> +        /* Index into MAIR registers for cache attributes */
-> +        attrindx =3D extract32(attrs, 2, 3);
-> +        mair =3D env->cp15.mair_el[regime_el(env, mmu_idx)];
-> +        assert(attrindx <=3D 7);
-> +        result->cacheattrs.is_s2_format =3D false;
-> +        result->cacheattrs.attrs =3D extract64(mair, attrindx * 8, 8);
-> +
-> +        /* When in aarch64 mode, and BTI is enabled, remember GP in the=
- TLB. */
-> +        if (aarch64 && cpu_isar_feature(aa64_bti, cpu)) {
-> +            result->f.extra.arm.guarded =3D extract64(attrs, 50, 1); /*=
- GP */
-> +        }
-> +        device =3D S1_attrs_are_device(result->cacheattrs.attrs);
->       }
->
->       if (!(result->f.prot & (1 << access_type))) {
-> @@ -2131,30 +2156,6 @@ static bool get_phys_addr_lpae(CPUARMState *env, =
-S1Translate *ptw,
->       result->f.attrs.space =3D out_space;
->       result->f.attrs.secure =3D arm_space_is_secure(out_space);
->
-> -    if (regime_is_stage2(mmu_idx)) {
-> -        result->cacheattrs.is_s2_format =3D true;
-> -        result->cacheattrs.attrs =3D extract32(attrs, 2, 4);
-> -        /*
-> -         * Security state does not really affect HCR_EL2.FWB;
-> -         * we only need to filter FWB for aa32 or other FEAT.
-> -         */
-> -        device =3D S2_attrs_are_device(arm_hcr_el2_eff(env),
-> -                                     result->cacheattrs.attrs);
-> -    } else {
-> -        /* Index into MAIR registers for cache attributes */
-> -        uint8_t attrindx =3D extract32(attrs, 2, 3);
-> -        uint64_t mair =3D env->cp15.mair_el[regime_el(env, mmu_idx)];
-> -        assert(attrindx <=3D 7);
-> -        result->cacheattrs.is_s2_format =3D false;
-> -        result->cacheattrs.attrs =3D extract64(mair, attrindx * 8, 8);
-> -
-> -        /* When in aarch64 mode, and BTI is enabled, remember GP in the=
- TLB. */
-> -        if (aarch64 && cpu_isar_feature(aa64_bti, cpu)) {
-> -            result->f.extra.arm.guarded =3D extract64(attrs, 50, 1); /*=
- GP */
-> -        }
-> -        device =3D S1_attrs_are_device(result->cacheattrs.attrs);
-> -    }
-> -
->       /*
->        * Enable alignment checks on Device memory.
->        *
+>   target/arm/internals.h      |  3 +++
+>   target/arm/cpu.c            |  2 +-
+>   target/arm/tcg/cpu-v7m.c    |  2 +-
+>   target/arm/tcg/tlb_helper.c | 27 +++++++++++++++++++++++----
+>   4 files changed, 28 insertions(+), 6 deletions(-)

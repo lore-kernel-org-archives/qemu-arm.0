@@ -1,242 +1,54 @@
-Received: by 2002:a17:505:c89:b0:1be9:327d:8ee3 with SMTP id hp9csp1796986njb;
-        Mon, 7 Oct 2024 01:37:26 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVOv39WZmuxTogHy/7TSjQSoSo+8/HxpGOn3n5KtGD91OAflMs9xf3lBzH42tG5LBs8oZr9TmhqPICNsQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IH4SypC6puZzRjqr5a1mR/WAHYbqOWEjO2O1qeG68l6FqU4e0VhsjtAM6i+z9Job8jIRUrs
-X-Received: by 2002:a05:620a:284c:b0:7ac:a93b:7f68 with SMTP id af79cd13be357-7ae67e75d18mr2522476085a.23.1728290245995;
-        Mon, 07 Oct 2024 01:37:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1728290245; cv=none;
-        d=google.com; s=arc-20240605;
-        b=edYP6kn15X/ogkx/PQRid2wkgnrycyNIcCFEM2H0LjucO0pEO+a1IZzhnLDwpZxKsh
-         j2hGUiEEJlYxTOXl73ThjqnGysDsMZNyd4YRo6bIPlpWZzj+filZhwEAzywl48mZmK0i
-         4SnC9eCNQRp+rc67PvYLdwVnnNWMqccEXGKnYmiNwUNuiqc9NPe4FjhGJlRiZRT7/L4R
-         Zp+eilShOiyFsdBZjO6D7iWswnEPjNJJ51JQtegx+fGjP/nEqbecuaurMI6Qch1u/6DN
-         srK5oyv0jkuhve9NV7p7UiyZt3uf61HxfkhLBcVvTge/yPYQG577xXmWHN42+6SoPY+U
-         iurg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=X56J6m3ksGmeIeQ0juQ6+g3Dw6yr+pZHrfPX1DCp2Xk=;
-        fh=ybP/BExwzYmRUZVrbv+ndNkeh6U/j57X/jTn4pgVolo=;
-        b=jZIIF2c182sxa9s6tNxNRJjvsZWNddkrmW22/3xGOg14qLvPJIMs1S03E+vXz1Z/bz
-         Od/ze0aC1g075T+dTJMwDNfbVDBJm8OeGZAYFnoqecAoU3LRNvsqY6Fc29zo/VX9nwFa
-         VplvbVYQlemaKJF2wFVECZasylZCFGcJahGzO2SyH9zoD56CuFEz8VnOyQ12icqD0hG1
-         KdhA02WOHYubQ9eQX+H3qqOUY7I8HzXs8PdW8hL4EB4nrD1dvM1uPgP5q4/rN0Nuqu1G
-         hv+T0dt6Lk+nfx7ZZLcEWzOBlwGCL5bHuFjKWTK+yyD8ttWArLumqlyEjOufA/621ZeC
-         alnQ==;
-        dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=gm+BeVL4;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-45da74e9947si55980691cf.223.2024.10.07.01.37.25
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 07 Oct 2024 01:37:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=gm+BeVL4;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sxjEn-00066D-Ep; Mon, 07 Oct 2024 04:37:05 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1sxjEl-00065T-Es
- for qemu-arm@nongnu.org; Mon, 07 Oct 2024 04:37:03 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1sxjEi-0006O9-F4
- for qemu-arm@nongnu.org; Mon, 07 Oct 2024 04:37:02 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1728290219;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=X56J6m3ksGmeIeQ0juQ6+g3Dw6yr+pZHrfPX1DCp2Xk=;
- b=gm+BeVL44/Lx3G4aaz67fuKRVEMNUh4bZcgx2J8ylvtgEy6fIxdYUU8zJRs9wavCF54ZiR
- X/jUGZyFnEpHQrlYdGEX9m2g57Z14YCl5tAPwodNbNA7kz6apps0jjoRilA/WZgbVQ4BK/
- ZXAJl+pA9YzxDvN0w9VmvhLSO0AurxM=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-403-UZILxorfPBeT0AN9MMhI-Q-1; Mon,
- 07 Oct 2024 04:36:55 -0400
-X-MC-Unique: UZILxorfPBeT0AN9MMhI-Q-1
-Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id F1464195FE3F; Mon,  7 Oct 2024 08:36:53 +0000 (UTC)
-Received: from thuth-p1g4.redhat.com (unknown [10.39.194.46])
- by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id AED9F19560A3; Mon,  7 Oct 2024 08:36:50 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: qemu-devel@nongnu.org,
-	Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
- Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-Subject: [PATCH v2] tests/functional: Switch back to the gitlab URLs for the
- advent calendar tests
-Date: Mon,  7 Oct 2024 10:36:49 +0200
-Message-ID: <20241007083649.204886-1-thuth@redhat.com>
+Return-Path: <alex.bennee@linaro.org>
+Received: from draig.lan ([85.9.250.243])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a992e78498fsm397906066b.107.2024.10.07.10.01.11
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 07 Oct 2024 10:01:11 -0700 (PDT)
+Received: from draig (localhost [IPv6:::1])
+	by draig.lan (Postfix) with ESMTP id 2BB705F796;
+	Mon,  7 Oct 2024 18:01:10 +0100 (BST)
+From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org,  qemu-devel@nongnu.org,  Zheyu Ma
+ <zheyuma97@gmail.com>,  qemu-stable@nongnu.org
+Subject: Re: [PATCH] hw/char/pl011: Use correct masks for IBRD and FBRD
+In-Reply-To: <20241007144732.2491331-1-peter.maydell@linaro.org> (Peter
+	Maydell's message of "Mon, 7 Oct 2024 15:47:32 +0100")
+References: <20241007144732.2491331-1-peter.maydell@linaro.org>
+User-Agent: mu4e 1.12.6; emacs 29.4
+Date: Mon, 07 Oct 2024 18:01:10 +0100
+Message-ID: <87wmijvodl.fsf@draig.linaro.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -22
-X-Spam_score: -2.3
-X-Spam_bar: --
-X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.151,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: hGnYs9hsnQ+f
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: Xuq0vITdf238
 
-Shortly after we switched to the original URLs on qemu-advent-calendar.org,
-the server went offline - looks like we are better off using the gitlab
-URLs again instead.
+Peter Maydell <peter.maydell@linaro.org> writes:
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- v2: Drop the wrong change to the test_microblazeel_s3adsp1800.py file
+> In commit b88cfee90268cad we defined masks for the IBRD and FBRD
+> integer and fractional baud rate divider registers, to prevent the
+> guest from writing invalid values which could cause division-by-zero.
+> Unfortunately we got the mask values the wrong way around: the FBRD
+> register is six bits and the IBRD register is 16 bits, not
+> vice-versa.
+>
+> You would only run into this bug if you programmed the UART to a baud
+> rate of less than 9600, because for 9600 baud and above the IBRD
+> value will fit into 6 bits, as per the table in
+>  https://developer.arm.com/documentation/ddi0183/g/programmers-model/regi=
+ster-descriptions/fractional-baud-rate-register--uartfbrd
+>
+> The only visible effects would be that the value read back from
+> the register by the guest would be truncated, and we would
+> print an incorrect baud rate in the debug logs.
+>
+> Cc: qemu-stable@nongnu.org
+> Fixes: b88cfee90268 ("hw/char/pl011: Avoid division-by-zero in pl011_get_=
+baudrate()")
+> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/2610
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
- tests/functional/test_arm_vexpress.py    | 2 +-
- tests/functional/test_m68k_mcf5208evb.py | 2 +-
- tests/functional/test_or1k_sim.py        | 2 +-
- tests/functional/test_ppc64_e500.py      | 2 +-
- tests/functional/test_ppc_mac.py         | 2 +-
- tests/functional/test_sh4_r2d.py         | 2 +-
- tests/functional/test_sparc_sun4m.py     | 2 +-
- tests/functional/test_xtensa_lx60.py     | 2 +-
- 8 files changed, 8 insertions(+), 8 deletions(-)
+Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
 
-diff --git a/tests/functional/test_arm_vexpress.py b/tests/functional/test_arm_vexpress.py
-index cc6015112b..6bd6290030 100755
---- a/tests/functional/test_arm_vexpress.py
-+++ b/tests/functional/test_arm_vexpress.py
-@@ -11,7 +11,7 @@
- class VExpressTest(LinuxKernelTest):
- 
-     ASSET_DAY16 = Asset(
--        'https://www.qemu-advent-calendar.org/2018/download/day16.tar.xz',
-+        'https://qemu-advcal.gitlab.io/qac-best-of-multiarch/download/day16.tar.xz',
-         '63311adb2d4c4e7a73214a86d29988add87266a909719c56acfadd026b4110a7')
- 
-     def test_arm_vexpressa9(self):
-diff --git a/tests/functional/test_m68k_mcf5208evb.py b/tests/functional/test_m68k_mcf5208evb.py
-index 869ccc88df..00c59590c3 100755
---- a/tests/functional/test_m68k_mcf5208evb.py
-+++ b/tests/functional/test_m68k_mcf5208evb.py
-@@ -13,7 +13,7 @@
- class Mcf5208EvbTest(LinuxKernelTest):
- 
-     ASSET_DAY07 = Asset(
--        'https://www.qemu-advent-calendar.org/2018/download/day07.tar.xz',
-+        'https://qemu-advcal.gitlab.io/qac-best-of-multiarch/download/day07.tar.xz',
-         '753c2f3837126b7c6ba92d0b1e0b156e8a2c5131d2d576bb0b9a763fae73c08a')
- 
-     def test_m68k_mcf5208evb(self):
-diff --git a/tests/functional/test_or1k_sim.py b/tests/functional/test_or1k_sim.py
-index aa2a1f08d2..10e0437c50 100755
---- a/tests/functional/test_or1k_sim.py
-+++ b/tests/functional/test_or1k_sim.py
-@@ -13,7 +13,7 @@
- class OpenRISC1kSimTest(LinuxKernelTest):
- 
-     ASSET_DAY20 = Asset(
--        'https://www.qemu-advent-calendar.org/2018/download/day20.tar.xz',
-+        'https://qemu-advcal.gitlab.io/qac-best-of-multiarch/download/day20.tar.xz',
-         'ff9d7dd7c6bdba325bd85ee85c02db61ff653e129558aeffe6aff55bffb6763a')
- 
-     def test_or1k_sim(self):
-diff --git a/tests/functional/test_ppc64_e500.py b/tests/functional/test_ppc64_e500.py
-index 3558ae0c8c..f1af92373e 100755
---- a/tests/functional/test_ppc64_e500.py
-+++ b/tests/functional/test_ppc64_e500.py
-@@ -10,7 +10,7 @@
- class E500Test(LinuxKernelTest):
- 
-     ASSET_DAY19 = Asset(
--        'https://www.qemu-advent-calendar.org/2018/download/day19.tar.xz',
-+        'https://qemu-advcal.gitlab.io/qac-best-of-multiarch/download/day19.tar.xz',
-         '20b1bb5a8488c664defbb5d283addc91a05335a936c63b3f5ff7eee74b725755')
- 
-     def test_ppc64_e500(self):
-diff --git a/tests/functional/test_ppc_mac.py b/tests/functional/test_ppc_mac.py
-index a6b1ca2d4c..3f45e37a45 100755
---- a/tests/functional/test_ppc_mac.py
-+++ b/tests/functional/test_ppc_mac.py
-@@ -10,7 +10,7 @@
- class MacTest(LinuxKernelTest):
- 
-     ASSET_DAY15 = Asset(
--        'https://www.qemu-advent-calendar.org/2018/download/day15.tar.xz',
-+        'https://qemu-advcal.gitlab.io/qac-best-of-multiarch/download/day15.tar.xz',
-         '03e0757c131d2959decf293a3572d3b96c5a53587165bf05ce41b2818a2bccd5')
- 
-     def do_day15_test(self):
-diff --git a/tests/functional/test_sh4_r2d.py b/tests/functional/test_sh4_r2d.py
-index 5fe8cf9f8d..c3cfff79ad 100755
---- a/tests/functional/test_sh4_r2d.py
-+++ b/tests/functional/test_sh4_r2d.py
-@@ -13,7 +13,7 @@
- class R2dTest(LinuxKernelTest):
- 
-     ASSET_DAY09 = Asset(
--        'https://www.qemu-advent-calendar.org/2018/download/day09.tar.xz',
-+        'https://qemu-advcal.gitlab.io/qac-best-of-multiarch/download/day09.tar.xz',
-         'a61b44d2630a739d1380cc4ff4b80981d47ccfd5992f1484ccf48322c35f09ac')
- 
-     # This test has a 6-10% failure rate on various hosts that look
-diff --git a/tests/functional/test_sparc_sun4m.py b/tests/functional/test_sparc_sun4m.py
-index b334375820..573f85222a 100755
---- a/tests/functional/test_sparc_sun4m.py
-+++ b/tests/functional/test_sparc_sun4m.py
-@@ -11,7 +11,7 @@
- class Sun4mTest(LinuxKernelTest):
- 
-     ASSET_DAY11 = Asset(
--        'https://www.qemu-advent-calendar.org/2018/download/day11.tar.xz',
-+        'https://qemu-advcal.gitlab.io/qac-best-of-multiarch/download/day11.tar.xz',
-         'c776533ba756bf4dd3f1fc4c024fb50ef0d853e05c5f5ddf0900a32d1eaa49e0')
- 
-     def test_sparc_ss20(self):
-diff --git a/tests/functional/test_xtensa_lx60.py b/tests/functional/test_xtensa_lx60.py
-index 8ce5206a4f..d4ad92dc6c 100755
---- a/tests/functional/test_xtensa_lx60.py
-+++ b/tests/functional/test_xtensa_lx60.py
-@@ -11,7 +11,7 @@
- class XTensaLX60Test(LinuxKernelTest):
- 
-     ASSET_DAY02 = Asset(
--        'https://www.qemu-advent-calendar.org/2018/download/day02.tar.xz',
-+        'https://qemu-advcal.gitlab.io/qac-best-of-multiarch/download/day02.tar.xz',
-         '68ff07f9b3fd3df36d015eb46299ba44748e94bfbb2d5295fddc1a8d4a9fd324')
- 
-     def test_xtensa_lx60(self):
--- 
-2.46.1
-
+--=20
+Alex Benn=C3=A9e
+Virtualisation Tech Lead @ Linaro

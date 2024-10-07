@@ -1,121 +1,137 @@
-Received: by 2002:a17:505:c89:b0:1be9:327d:8ee3 with SMTP id hp9csp1366300njb;
-        Sun, 6 Oct 2024 03:28:56 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXSLewl5rMBZ7+yDOr7DRCC4GxyNXX3arw9BRIbpOwC0gFZX/JhjhQI659+HpRn/Z0wdPoazDFmaUG/zQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IHZgXKxk4MOdeZ7zTYXfBnUSoDvkh5Ve0GMWaJO5x6D60JYR+WgerxgfeAVi53svVmIcAQ6
-X-Received: by 2002:ac8:5a46:0:b0:45d:5786:80b4 with SMTP id d75a77b69052e-45d9ba6449bmr137035661cf.26.1728210536290;
-        Sun, 06 Oct 2024 03:28:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1728210536; cv=none;
+Received: by 2002:a17:505:c89:b0:1be9:327d:8ee3 with SMTP id hp9csp1909600njb;
+        Mon, 7 Oct 2024 05:45:27 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVybX3djkLhj1bAdV1/eJOnsGrBjJGej7l9A9Dt/EqN6o80r1Z3pt0SxX64csSHlm6VyXfpQvq/TSwziQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IF5WGuiLVkiDDo6k4jrHp3bPkAXhcHm/VindBgsR9cDL0CMTPIf5y1hDkCsr25HJ1LKKfds
+X-Received: by 2002:a05:620a:198b:b0:7a9:be1b:7a41 with SMTP id af79cd13be357-7ae6fb2e9b1mr1818225985a.4.1728305126802;
+        Mon, 07 Oct 2024 05:45:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1728305126; cv=none;
         d=google.com; s=arc-20240605;
-        b=AYjmzobSADXQS6zXmLObC5Ojvpj6z6tOyntnvZlxF/LMhYxenZRvVvqQFA/4nmE713
-         I+3o7zGpqoTe8p5AJ2HmmA8QPKxpahP1WDQ016i432H2hsTu6RXpTg9i/849hztSUDn2
-         EWM7G0rChq16ypWUnjsHliJ4XDSq65X/APYwhilsoezV0H+gWTNF1dOxt1yZaGUq1cYE
-         0QXbFuyCaO72p8dmUAXpzBfKQ4mriYGg3mu6tVTJpgC8jE9ZYBrzZI4ke6RtauHsVo7T
-         GQfDeCvMczzrYJjwAVREuT8XdjhYM+5HCZQQKf9D7CAuwgsUQ0PxjFMNDRlZpfNxln68
-         IqCg==
+        b=NfhwEzuEv6mimITYJxuYILCXJYqU0pJYBNuqNFc8LCTpNH3y6ZYdb2Vfy01j1rSr1N
+         NeurBbBTPqHaT0E2Hb3bRfn1kQ8ftHZc6L9wlDoenLs0AdZEw+nGvkC9PLlGyaBek2Nu
+         2JfzNZPYsIjBGrG8TPqq8ptmdrwPdwoqDiUhv+aKDuz5YvHUOoagdwGayZtWh3TaVBQE
+         OpFWU/VsXnfrOepu8g3gUgHdQp5lG0vLu1XZmfS+nhir35b7sphYZutwR/LknADWgTvX
+         d0xj9HMTze1XFKgynMTxuNktxIyfsLbKyEuSyVZXUty2X/MHbOjEx8V5WZ4uSO3QGP6H
+         pFZw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:user-agent
-         :references:in-reply-to:subject:cc:to:from:message-id:date
-         :dkim-signature;
-        bh=oMiszMrmqx7T1GgKa2HzSE4vKJ1XYLKtJFIo/Isp1Bs=;
-        fh=SnFmhe+5i6KgsJ5Q6TvjqQXtXYEN4xB/iCvHkChcy9c=;
-        b=gKA1cCXsXeZy2JlqoRk+n/LR0SlygOiOBeBcVAA+NWsc6qu+us6Ke5q4bDG4mDlqBI
-         tHMDTwpo+vnTjRu4JWihA/1YV+JbWeYg1jF9lqvu+txkgQA8m6D0h9pt5icuyxGiNTrN
-         4gjudz8XCz3nrjavvgdFqOg6Hy5Xg1k2IarvxIKC4tvyzVDHv9WrzWPV4NXhiRkM17QC
-         R8aGgvweEc1hB24jJFjqvTRhnYIniwyX1cJLT9FsOw15jmSaLZZ5qrGya+8AdQDKrJfx
-         3Pg5xkWNt2qYbwZwC91JQ+B3OtlIDtQel6uQ0CdGPcvPmkSRs3W6kKGRU78A/2H5havh
-         V68A==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:subject:cc:to:from
+         :date:dkim-signature;
+        bh=3XimklviNwoadeALIBpKZ5s2pHbdlyJaEPc4Sg0+99s=;
+        fh=BHF1CV8LbB5tiY6GNVH6dWjJ27lniJhCo84Aux8rlWg=;
+        b=NABeAyBsQ4Sae276C3vDMu37EUCMY85KicjmrYzcLGI6Uf2ZJBDfqaisSn/3plaE7L
+         anHLWS3eQ9sy00vOOoAEpW60lRyBPWR8csxd+W0gH2dtdHHyW/SUWULDNfEy3Shz5rS9
+         86bUFfgtG3zYfxb6r1Bho212I8Gg4edzqeaw6JawvJD2aXci9QI3RG1Vg5ubd47qEr2/
+         EGKMbf/KhC5kh0OduZ5HS1F40BjoiTwKR+QnIfBN0PUaff4byHKuSUTaeF00FcRCs1PA
+         0+sNgjWtZsdcaxXspwQ9CdB4YSC8NC1DwE5DwFY6vfQY/OEjZaRklbkRwd7TOamkkXSX
+         f/7w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=K3IxjiMy;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bXk6Cw4j;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-45da75df8c4si40307371cf.358.2024.10.06.03.28.56
+        by mx.google.com with ESMTPS id af79cd13be357-7ae75770377si580747385a.566.2024.10.07.05.45.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 06 Oct 2024 03:28:56 -0700 (PDT)
+        Mon, 07 Oct 2024 05:45:26 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=K3IxjiMy;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bXk6Cw4j;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sxOV9-0005TV-NL; Sun, 06 Oct 2024 06:28:35 -0400
+	id 1sxn6h-0002C1-FX; Mon, 07 Oct 2024 08:44:59 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <maz@kernel.org>) id 1sxOV5-0005Sm-Bi
- for qemu-arm@nongnu.org; Sun, 06 Oct 2024 06:28:31 -0400
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1sxn6e-0002B9-PG
+ for qemu-arm@nongnu.org; Mon, 07 Oct 2024 08:44:56 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <maz@kernel.org>) id 1sxOV1-00010W-TH
- for qemu-arm@nongnu.org; Sun, 06 Oct 2024 06:28:29 -0400
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by nyc.source.kernel.org (Postfix) with ESMTP id 17D42A40193;
- Sun,  6 Oct 2024 10:28:18 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 437DFC4CEC5;
- Sun,  6 Oct 2024 10:28:26 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1728210506;
- bh=qQResh1CcWQO+c6Odpl8c5StGvv2HmNjqiNTYvGALNg=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=K3IxjiMyyiajCHdln/10sV19fD/J+xDyFqAVAcIXluVkjYnKNvOlapBiT7Y/HSrNP
- uhgMmCLkK1CkoE++6Bb38HEl3VHA4CME0DyCPvl1aHLksbZ6p39/GulEkPn7Y73aFe
- OW89w/nZAikRIJ3qGed6/jnmAIXr6cqQxW5a+eX2rypOtqdgQvju3rGiDGtvnixXdm
- 0KxnRa1t1l3qcHdFdzXgZngHL3LJF0kxtOhBzIBWmwGgXG2t5yy0PcTZh+5gzDlHzU
- xNxhMRG5TduTIc/ZYMLMNpSjllc4di4751gj7gWX4UUQiIL31gHN0seMnPy4P7tTgL
- dNkRzVCPcs9rg==
-Received: from sofa.misterjones.org ([185.219.108.64]
- helo=goblin-girl.misterjones.org)
- by disco-boy.misterjones.org with esmtpsa (TLS1.3) tls
- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
- (envelope-from <maz@kernel.org>) id 1sxOUy-000lyd-1W;
- Sun, 06 Oct 2024 11:28:24 +0100
-Date: Sun, 06 Oct 2024 11:28:23 +0100
-Message-ID: <8634l97cfs.wl-maz@kernel.org>
-From: Marc Zyngier <maz@kernel.org>
-To: Ahmad Fatoum <a.fatoum@pengutronix.de>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- kvmarm@lists.linux.dev, kvm@vger.kernel.org,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>, Enrico Joerns <ejo@pengutronix.de>
-Subject: Re: [BUG] ARM64 KVM: Data abort executing post-indexed LDR on MMIO
- address
-In-Reply-To: <0352a327-0e78-48d4-a876-d33689fcd766@pengutronix.de>
-References: <89f184d6-5b61-4c77-9f3b-c0a8f6a75d60@pengutronix.de>
- <CAFEAcA_Yv2a=XCKw80y9iyBRoC27UL6Sfzgy4KwFDkC1gbzK7w@mail.gmail.com>
- <a4c06f55-28ec-4620-b594-b7ff0bb1e162@pengutronix.de>
- <CAFEAcA9F3AR-0OCKDy__eVBJRMi80G7bWNfANGZRR2W8iMhfJA@mail.gmail.com>
- <4d559b9e-c208-46f3-851a-68086dc8a50f@pengutronix.de>
- <864j5q7sdq.wl-maz@kernel.org>
- <65ab10d7-6594-490c-be07-39f83ac3559a@pengutronix.de>
- <87a5fiutai.wl-maz@kernel.org>
- <0352a327-0e78-48d4-a876-d33689fcd766@pengutronix.de>
-User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
- FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/29.4
- (aarch64-unknown-linux-gnu) MULE/6.0 (HANACHIRUSATO)
-MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1sxn6d-0004LU-6y
+ for qemu-arm@nongnu.org; Mon, 07 Oct 2024 08:44:56 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1728305093;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=3XimklviNwoadeALIBpKZ5s2pHbdlyJaEPc4Sg0+99s=;
+ b=bXk6Cw4jb3RqvMswn3v30O0cbsjhi/Wiw1wO27OhepXoWoLntfT6pTd4auh8lQ8i58BxnR
+ mibzZ7ald5OinDFTR3tPogrZXChDnEK84MNtIK2SM+8Aqr6gB/lf43dccwJdDOx6MAbM5g
+ lSLRS34p+HR74YfBgAi8kJsF/Om8Y/k=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-159-1HYAIYL9PEG9dqkAw9vJpg-1; Mon, 07 Oct 2024 08:44:52 -0400
+X-MC-Unique: 1HYAIYL9PEG9dqkAw9vJpg-1
+Received: by mail-wm1-f71.google.com with SMTP id
+ 5b1f17b1804b1-42cb22d396cso39348055e9.0
+ for <qemu-arm@nongnu.org>; Mon, 07 Oct 2024 05:44:52 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1728305091; x=1728909891;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=3XimklviNwoadeALIBpKZ5s2pHbdlyJaEPc4Sg0+99s=;
+ b=TUFpwaKPDYgnPaH5MFVv7FsiFqGFb066+H/yDWUyhnn9fhipw4wSDHk5jREr2yzKdv
+ R66J+dBGO/jcDMQbq+axJPENzzoijUbR4EcArHall+Jz77+syjpiJXxRAugh61CDsgw9
+ EDOdjpfLbD9bnXTg4qb1iUn7RuQjD3XQo42oeA4tk2zTaQIxmpL4vAWHX+FwvkjQ1XnP
+ K8ET0x0+SfoeuXCuo307pp9T3w69KHh3UFu8jW0KlEBU6S+jwYlHWctNczByOZcvkVJ2
+ DeRn7p6TwpRn9Sj9jUCqNlxJMX3Q8G9BJvg6bM4zWfcIZvnYypJePZ0SUeTF7xcwEE/i
+ Wfag==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVL6xXYPcIJQSF39pxxtx3puFxy9YwGh5yedUYSLf/GmxAifJI5L0+OBOVo6UB1F+E3lox+6dshrg==@nongnu.org
+X-Gm-Message-State: AOJu0YxqKeAxwgfCRMSoU4wW160DUCi2BP215XA+0Ggi2vs6H4gLLoLv
+ P42CSj1jDVAXrETxuum5dlHJzrZ+hWEhJLM/N3+IR9CGO914+pKgwQ3+riLEc+LXwO5XWKJDF2j
+ zY97+v8oiaSI530Us1/oW6+ao6M1bPEMgHvlm5DOr+85lIVYLTQ==
+X-Received: by 2002:a7b:c44c:0:b0:42f:6878:a68d with SMTP id
+ 5b1f17b1804b1-42f8664f3c4mr77076375e9.20.1728305091509; 
+ Mon, 07 Oct 2024 05:44:51 -0700 (PDT)
+X-Received: by 2002:a7b:c44c:0:b0:42f:6878:a68d with SMTP id
+ 5b1f17b1804b1-42f8664f3c4mr77075975e9.20.1728305091050; 
+ Mon, 07 Oct 2024 05:44:51 -0700 (PDT)
+Received: from imammedo.users.ipa.redhat.com (nat-pool-brq-t.redhat.com.
+ [213.175.37.10]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-42f86a20471sm91063045e9.17.2024.10.07.05.44.50
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 07 Oct 2024 05:44:50 -0700 (PDT)
+Date: Mon, 7 Oct 2024 14:44:49 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Annie Li <annie.li@oracle.com>
+Cc: miguel.luis@oracle.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ dave@treblig.org, mst@redhat.com, anisinha@redhat.com,
+ shannon.zhaosl@gmail.com, peter.maydell@linaro.org, eduardo@habkost.net,
+ marcel.apfelbaum@gmail.com, philmd@linaro.org, wangyanan55@huawei.com,
+ zhao1.liu@intel.com, pbonzini@redhat.com, richard.henderson@linaro.org,
+ eblake@redhat.com, armbru@redhat.com
+Subject: Re: [RFC V2 PATCH 01/11] acpi: hmp/qmp: Add hmp/qmp support for
+ system_sleep
+Message-ID: <20241007144449.457d304f@imammedo.users.ipa.redhat.com>
+In-Reply-To: <20240927183906.1248-2-annie.li@oracle.com>
+References: <20240927183906.1248-1-annie.li@oracle.com>
+ <20240927183906.1248-2-annie.li@oracle.com>
+X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
+MIME-Version: 1.0
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=US-ASCII
-X-SA-Exim-Connect-IP: 185.219.108.64
-X-SA-Exim-Rcpt-To: a.fatoum@pengutronix.de, peter.maydell@linaro.org,
- qemu-arm@nongnu.org, kvmarm@lists.linux.dev, kvm@vger.kernel.org,
- kernel@pengutronix.de, linux-arm-kernel@lists.infradead.org,
- ejo@pengutronix.de
-X-SA-Exim-Mail-From: maz@kernel.org
-X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
- SAEximRunCond expanded to false
-Received-SPF: pass client-ip=2604:1380:45d1:ec00::3;
- envelope-from=maz@kernel.org; helo=nyc.source.kernel.org
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=imammedo@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -21
 X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.144,
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.153,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -130,129 +146,153 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: TCVR2ljhfjgk
+X-TUID: ymwoRAmzqz0i
 
-On Sun, 06 Oct 2024 08:59:56 +0100,
-Ahmad Fatoum <a.fatoum@pengutronix.de> wrote:
+On Fri, 27 Sep 2024 14:38:56 -0400
+Annie Li <annie.li@oracle.com> wrote:
+
+> Followng hmp/qmp commands are implemented for pressing virtual
+> sleep button,
 > 
-> Hello Marc,
+> hmp: system_sleep
+> qmp: { "execute": "system_sleep" }
 > 
-> On 05.10.24 23:35, Marc Zyngier wrote:
-> > On Sat, 05 Oct 2024 19:38:23 +0100,
-> > Ahmad Fatoum <a.fatoum@pengutronix.de> wrote:
-> >>> IIRC, the QEMU flash is implemented as a read-only memslot. A data
-> >>> cache invalidation is a *write*, as it can be (and is) upgraded to a
-> >>> clean+invalidate by the HW.
-> >>
-> >> So it's a write, even if there are no dirty cache lines?
-> > 
-> > Yes.
-> > 
-> > At the point where this is handled, the CPU has no clue about the
-> > dirty state of an arbitrary cache line, at an arbitrary cache level.
-> > The CPU simply forward the CMO downstream, and the permission check
-> > happens way before that.
+> These commands put the guest into suspend or other power states
+> depending on the power settings inside the guest.
 > 
-> I see. When I added that invalidation, it was suggested[1] that instead
-> of invalidation after the remapping, I would clean the range before
-> remapping. Cleaning the zero page triggered a data abort, which I didn't
-> understand as there should be no dirty lines, but now I get it.
+> Signed-off-by: Annie Li <annie.li@oracle.com>
+> ---
+>  hmp-commands.hx            | 14 ++++++++++++++
+>  hw/core/machine-hmp-cmds.c |  5 +++++
+>  hw/core/machine-qmp-cmds.c |  9 +++++++++
+>  include/monitor/hmp.h      |  1 +
+>  qapi/machine.json          | 18 ++++++++++++++++++
+>  qapi/pragma.json           |  1 +
+>  6 files changed, 48 insertions(+)
 > 
-> One more question: This upgrading of DC IVAC to DC CIVAC is because
-> the code is run under virtualization, right?
+> diff --git a/hmp-commands.hx b/hmp-commands.hx
+> index 06746f0afc..4c149f403f 100644
+> --- a/hmp-commands.hx
+> +++ b/hmp-commands.hx
+> @@ -639,6 +639,20 @@ SRST
+>    whether profiling is on or off.
+>  ERST
+>  
+> +    {
+> +        .name       = "system_sleep",
+> +        .args_type  = "",
+> +        .params     = "",
+> +        .help       = "send ACPI sleep event",
+> +        .cmd = hmp_system_sleep,
+> +    },
+> +
+> +SRST
+> +``system_sleep``
+> +  Push the virtual sleep button; if supported the system will enter
+> +  an ACPI sleep state.
 
-Not necessarily. Virtualisation mandates the upgrade, but CIVAC is
-also a perfectly valid implementation of both IVAC and CVAC.  And it
-isn't uncommon that CPUs implement everything the same way.
+perhaps comma after 'if supported'
 
-This is why, if you dare looking at the definition of ESR_ELx for a
-data abort, you will notice that ESR_ELx.WnR (which indicates whether
-the abort was triggered by a read or a write) is always 1 (denoting a
-write) on a CMO, irrespective of what CMO triggered it.
 
-Additionally, FEAT_CMOW requires both read and write permissions to
-not trigger faults on CMOs, but that's a bit orthogonal to your
-problem.
+> +ERST
+> +
+>      {
+>          .name       = "system_reset",
+>          .args_type  = "",
+> diff --git a/hw/core/machine-hmp-cmds.c b/hw/core/machine-hmp-cmds.c
+> index 8701f00cc7..3ee529d8d5 100644
+> --- a/hw/core/machine-hmp-cmds.c
+> +++ b/hw/core/machine-hmp-cmds.c
+> @@ -189,6 +189,11 @@ void hmp_system_reset(Monitor *mon, const QDict *qdict)
+>      qmp_system_reset(NULL);
+>  }
+>  
+> +void hmp_system_sleep(Monitor *mon, const QDict *qdict)
+> +{
+> +    qmp_system_sleep(NULL);
+> +}
+> +
+>  void hmp_system_powerdown(Monitor *mon, const QDict *qdict)
+>  {
+>      qmp_system_powerdown(NULL);
+> diff --git a/hw/core/machine-qmp-cmds.c b/hw/core/machine-qmp-cmds.c
+> index 130217da8f..770f8189ba 100644
+> --- a/hw/core/machine-qmp-cmds.c
+> +++ b/hw/core/machine-qmp-cmds.c
+> @@ -276,6 +276,15 @@ void qmp_system_reset(Error **errp)
+>      qemu_system_reset_request(SHUTDOWN_CAUSE_HOST_QMP_SYSTEM_RESET);
+>  }
+>  
+> +void qmp_system_sleep(Error **errp)
+> +{
+> +    if (!qemu_wakeup_suspend_enabled()) {
+> +        error_setg(errp,
+> +                   "suspend from running is not supported by this guest");
 
-> 
-> [1]: https://lore.barebox.org/barebox/9809c04c-58c5-6888-2b14-cf17fa7c4b1a@pengutronix.de/
-> 
-> >> The routine[1] that does this remapping invalidates the virtual address range,
-> >> because the attributes may change[2]. This invalidate also happens for cfi-flash,
-> >> but we should never encounter dirty cache lines there as the remap is done
-> >> before driver probe.
-> >>
-> >> Can you advise what should be done differently?
-> > 
-> > If you always map the flash as Device memory, there is no need for
-> > CMOs. Same thing if you map it as NC.
-> 
-> Everything, except for RAM, is mapped Device-nGnRnE.
+it's machine and not the guest that doesn't support, isn't it?
 
-Right, no problem then.
+> +        return;
+> +    }
 
-> 
-> > And even if you did map it as
-> > Cacheable, it wouldn't matter. KVM already handles coherency when the
-> > flash is switching between memory-mapped and programming mode, as the
-> > physical address space changes (the flash literally drops from the
-> > memory map).
-> > 
-> > In general, issuing CMOs to a device is a bizarre concept, because it
-> > is pretty rare that a device can handle a full cache-line as
-> > write-back. Devices tend to handle smaller, register-sized accesses,
-> > not a full 64-byte eviction.
-> 
-> The same remap_range function is used to:
-> 
->   - remap normal memory:
->     - Mapping memory regions uncached for memory test
->     - Mapping memory buffers coherent or write-combine
->   - remap ROMs: BootROMs at address zero may be hidden behind the NULL
->     page and need to be mapped differently when calling/peeking into it.
->   - remap device memory, e.g. in the case of the cfi-flash here
-> 
-> The invalidation is done unconditionally for all of them, although it
-> makes only the sense in the first case.
+I'd reorder this after 6/11, to avoid adding function that does nothing
+and then explaining why it is done this way.
 
-Indeed.
+> +}
+> +
+>  void qmp_system_powerdown(Error **errp)
+>  {
+>      qemu_system_powerdown_request();
+> diff --git a/include/monitor/hmp.h b/include/monitor/hmp.h
+> index ae116d9804..e543eec109 100644
+> --- a/include/monitor/hmp.h
+> +++ b/include/monitor/hmp.h
+> @@ -43,6 +43,7 @@ void hmp_quit(Monitor *mon, const QDict *qdict);
+>  void hmp_stop(Monitor *mon, const QDict *qdict);
+>  void hmp_sync_profile(Monitor *mon, const QDict *qdict);
+>  void hmp_system_reset(Monitor *mon, const QDict *qdict);
+> +void hmp_system_sleep(Monitor *mon, const QDict *qdict);
+>  void hmp_system_powerdown(Monitor *mon, const QDict *qdict);
+>  void hmp_exit_preconfig(Monitor *mon, const QDict *qdict);
+>  void hmp_announce_self(Monitor *mon, const QDict *qdict);
+> diff --git a/qapi/machine.json b/qapi/machine.json
+> index d4317435e7..b32d231aa9 100644
+> --- a/qapi/machine.json
+> +++ b/qapi/machine.json
+> @@ -362,6 +362,24 @@
+>  ##
+>  { 'command': 'system_reset' }
+>  
+> +##
+> +# @system_sleep:
+> +#
+> +# Requests that a guest perform a ACPI sleep transition by pushing a virtual
+> +# sleep button.
+> +#
+> +# .. note:: A guest may or may not respond to this command. This command
+> +#        returning does not indicate that a guest has accepted the request
+> +#        or that it has gone to sleep.
+> +#
+> +# .. qmp-example::
+> +#
+> +# -> { "execute": "system_sleep" }
+> +# <- { "return": {} }
+> +#
+> +##
+> +{ 'command': 'system_sleep' }
+> +
+>  ##
+>  # @system_powerdown:
+>  #
+> diff --git a/qapi/pragma.json b/qapi/pragma.json
+> index 59fbe74b8c..e2c5dcb829 100644
+> --- a/qapi/pragma.json
+> +++ b/qapi/pragma.json
+> @@ -23,6 +23,7 @@
+>          'set_password',
+>          'system_powerdown',
+>          'system_reset',
+> +        'system_sleep',
+>          'system_wakeup' ],
+>      # Commands allowed to return a non-dictionary
+>      'command-returns-exceptions': [
 
-> 
-> > Now, I'm still wondering whether we should simply forward the CMO to
-> > userspace as we do for other writes, and let the VMM deal with it. The
-> > main issue is that there is no current way to describe this.
-> > 
-> > The alternative would be to silently handle the trap and pretend it
-> > never occurred, as we do for other bizarre behaviours. But that'd be
-> > something only new kernels would support, and I guess you'd like your
-> > guest to work today, not tomorrow.
-> 
-> I think following fix on the barebox side may work:
-> 
->   - Walk all pages about to be remapped
->   - Execute the AT instruction on the page's base address
-
-Why do you need AT if you are walking the PTs? If you walk, you
-already have access to the memory attributes. In general, AT can be
-slower than an actual walk.
-
-Or did you actually mean iterating over the VA range? Even in that
-case, AT can be a bad idea, as you are likely to iterate in page-size
-increments even if you have a block mapping. Walking the PTs tells you
-immediately how much a leaf is mapping (assuming you don't have any
-other tracking).
-
->   - Only if the page was previously mapped cacheable, clean + invalidate
->     the cache
->   - Remove the current cache invalidation after remap
-> 
-> Does that sound sensible?
-
-This looks reasonable (apart from the AT thingy).
-
-Thanks,
-
-	M.
-
--- 
-Without deviation from the norm, progress is not possible.

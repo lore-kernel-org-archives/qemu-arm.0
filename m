@@ -1,73 +1,73 @@
-Received: by 2002:a17:505:c89:b0:1be9:327d:8ee3 with SMTP id hp9csp2194051njb;
-        Mon, 7 Oct 2024 14:04:56 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUAOcxD40Kp3riXz9n6XfEJXMeE7bNHE7sMmtaEenh5rBP0jQdrAs7rGyD1LVTj/dhwWhQncyVjCuOaGg==@linaro.org
-X-Google-Smtp-Source: AGHT+IHlAIHlefLtML1evw36dKHf2jVCTLBpDr0sl0ZdFmm/KVKsTXdeM1Fl00qQtOYnH3+zOsdA
-X-Received: by 2002:adf:f58b:0:b0:37c:d162:8295 with SMTP id ffacd0b85a97d-37d0e7800dfmr7718407f8f.29.1728335096463;
-        Mon, 07 Oct 2024 14:04:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1728335096; cv=none;
+Received: by 2002:a17:505:c89:b0:1be9:327d:8ee3 with SMTP id hp9csp2196127njb;
+        Mon, 7 Oct 2024 14:09:22 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVQnTOSeJvjgCf56IhBsL1rFTBgxnAyVU1geMwU2PT1Eb8k2pR60BL1Rvk44+YXsHoyQejFWOtH2dukLQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IF1C4LnGp+UxmqOukwfC0Lm+M6n0cul7Z8fSTjKYWBE2EdUIoF8k+ZG8Zm42o1KZrAbULqL
+X-Received: by 2002:a17:906:ef07:b0:a86:b46b:860a with SMTP id a640c23a62f3a-a991c0756a5mr1424656366b.54.1728335362483;
+        Mon, 07 Oct 2024 14:09:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1728335362; cv=none;
         d=google.com; s=arc-20240605;
-        b=hUbysfRdvEbwWc2NKcvAKtDW7OY9OmS0NCBK+8Bqj+ZVlNOrTBOiY6V/PmRW1cBc/J
-         paf1zC/BrOtnh7c2q8kAXIhtA5E0cdFQaD4goBeyZWTslCynlWN+6JPS5LITYCLN+I88
-         bWCxVnkPwzoxRr+Ml0fzs6JebGlcJSv442JCe0MQmr/WVFJPrr9n4ZJWr4o/NoHIeR2s
-         k3OrdbPcg3dHGdSWl4oPDCOliIk/vKNmgEY+lSdTntySpY6AwRpVKoce+oKBlLFUZrGR
-         XeWpXNW/4yOfcBLbkVVvNgw3UPngVqH0EMfiQNrQaX+w+htrAFZFVb2sPTZ53+UNSFIt
-         lytg==
+        b=DTPgf6rbgEaOBOERjdOFKMPC1CeH/PpYLJiNUklqgHf552dK66NWlnmFUjA3S7e7Kp
+         8mIWf7aUwbBb/SR1MHPaDru7OkMSKLWBN1eKg3pkv4/NNhq1YDkeAeziWu5uQWSDgw0u
+         hedVd83SFzJTvQZDbqZnNYL9QhbzlGnXt8jzEDh096YpzmY1J590FbOZmM5Zx0J+OiYu
+         PUAS/iyeZtFdqvM3bxTEEmsJb1Uw+MhfZpiODvZtQKDcwJbev56j5siPApGoksTPNLNs
+         7YvjiFsc0DrMaqbf9mEiUJimTza8xp2g69BdjtehXhebgdB2rpD2bFJT8fSmYD7NufS6
+         r0/A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=ui-outboundreport:content-transfer-encoding:in-reply-to:autocrypt
          :from:content-language:references:cc:to:subject:user-agent
          :mime-version:date:message-id:dkim-signature;
-        bh=Asn+5QYgZ80t/ESs8Mt65BDvhZZZgP6XVThreBfw+1o=;
+        bh=TyKCRNHmeyFgjDaIevWefebvU9noqHM5gZ0NJ7NBUOE=;
         fh=3fZ7Wohp6BUOfptJMglDqKETKOsQS3q9o/uj1RhoDNQ=;
-        b=aqNvdlhp/y8607JXRuWd+v+4ffYrxSB24CtBf0WRFM222nWPaqGiwm8gDPp9tmSsp5
-         vFDypcoWwebOanqTuA8/Y4v0ydpQitjffkj8rvrE+KbOJ+SIdoCbZjMdWpJeKIukTZCC
-         jaHAZTPUyGP2y2RUGiMpagLBamfgle++6vgxsX5WJhZc9ywmW610pA6WOAoqCKMC8h15
-         X4iD0ncLUnOqnBZhFY3odcwaPNmWtibWxMSmH1Q/Qh/bhZAs8UVLIrLNuxii0vxoB+B2
-         HsaXrdfRTh7J8DEwD/9uOX4wldYQtyc64g7c65hp/PSAkEwpHfloWOycrYi4PLvZ0WC3
-         1sZQ==;
+        b=AqOufKgscFov5bh+g9lGcfjg2QumhiS3cs3cLDvYM2C/yiT6B2j6w/8xMHfyEhDFc3
+         IylfN+fZERHUrCAVFKRH05/6lpVss3tA+szQPdvbjy3dvfEfs27QXzjUPzKMKi19C7kG
+         VHM8YFl0xwU3DzoEmHqVRO9ltYAw61A81TLx2vwf94/cgaxLk2Wsi9WwRcaQCbU4Ejki
+         afC1JdhLBe+UUatUONfKd49kGSuVedZ7xVy4cj1G/traI8Rlg/X4YlGoUt7vrmKrU+kT
+         lfabaXBoFImX9mKBtKVf7DJj96cF0yXnnT4yi2CIX4ainq4wlqgodml0Z4CuuEqiDbIU
+         PUYw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmx.de header.s=s31663417 header.b=aFr7chLJ;
-       spf=pass (google.com: domain of deller@gmx.de designates 212.227.17.21 as permitted sender) smtp.mailfrom=deller@gmx.de;
+       dkim=pass header.i=@gmx.de header.s=s31663417 header.b=qMKfh0nn;
+       spf=pass (google.com: domain of deller@gmx.de designates 212.227.17.20 as permitted sender) smtp.mailfrom=deller@gmx.de;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=gmx.de
 Return-Path: <deller@gmx.de>
-Received: from mout.gmx.net (mout.gmx.net. [212.227.17.21])
-        by mx.google.com with ESMTPS id ffacd0b85a97d-37d16991f69si2659772f8f.757.2024.10.07.14.04.56
+Received: from mout.gmx.net (mout.gmx.net. [212.227.17.20])
+        by mx.google.com with ESMTPS id a640c23a62f3a-a994616db66si337394566b.92.2024.10.07.14.09.22
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 07 Oct 2024 14:04:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of deller@gmx.de designates 212.227.17.21 as permitted sender) client-ip=212.227.17.21;
+        Mon, 07 Oct 2024 14:09:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of deller@gmx.de designates 212.227.17.20 as permitted sender) client-ip=212.227.17.20;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmx.de header.s=s31663417 header.b=aFr7chLJ;
-       spf=pass (google.com: domain of deller@gmx.de designates 212.227.17.21 as permitted sender) smtp.mailfrom=deller@gmx.de;
+       dkim=pass header.i=@gmx.de header.s=s31663417 header.b=qMKfh0nn;
+       spf=pass (google.com: domain of deller@gmx.de designates 212.227.17.20 as permitted sender) smtp.mailfrom=deller@gmx.de;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=gmx.de
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmx.de;
-	s=s31663417; t=1728335096; x=1728939896; i=deller@gmx.de;
-	bh=Asn+5QYgZ80t/ESs8Mt65BDvhZZZgP6XVThreBfw+1o=;
+	s=s31663417; t=1728335361; x=1728940161; i=deller@gmx.de;
+	bh=TyKCRNHmeyFgjDaIevWefebvU9noqHM5gZ0NJ7NBUOE=;
 	h=X-UI-Sender-Class:Message-ID:Date:MIME-Version:Subject:To:Cc:
 	 References:From:In-Reply-To:Content-Type:
 	 Content-Transfer-Encoding:cc:content-transfer-encoding:
 	 content-type:date:from:message-id:mime-version:reply-to:subject:
 	 to;
-	b=aFr7chLJpgUI6a22iRkhLOZjlRs/VbFA0WRT+LOQfWCkuiSSqKuoeL01yAxoJKkU
-	 L8BqV7U9D+oJWL+tu93FoMKXZgCBEba9Qk+kZx6+nY/HTh7/mdCSY6BAOHRrM8YQq
-	 fATUguytU1FwCXgVAOKkduZ7Sat098PANYdmq3Yr5SqytvY4T6bcsA+xFJnkJI5Q9
-	 RwqK8PGtT7bOhFdSysbAtyIUSi9LAmG1OIm88TVfimJz8cceK7lcD+qcVM0xpSBj1
-	 TDzT2AdnBe1uLJ+UzrtaqaPSiHshGJPKh6S9S5/UO0Krr+GHzZJ6JsOLDq6lV0g2z
-	 1NfbtLs717Y7nWkGrA==
+	b=qMKfh0nndex7u3T8M5LTv33MshgNYUUAAfXELrnT9v30ITAliY5p8umvEInJ3Jj/
+	 ZsvvK3pdGtgzDy6kWIXB8bKWclWDuPBB4CB7wWIEqYnvPZQ19o3563laglmxxkFye
+	 uXLz7+CfetpOIqRc1PZ6DMUpQkNmyIJnfqeobtk7fc3Kh5oqcCOW3NXBF1AGmL3xJ
+	 To15kWbaWNXYmEPbD3LbycjGet2/QCx/WE3RWNzN7Gg7NhmZ9ZpWWTLrLGJaDtW76
+	 dUIs1g5fcDON9vpxEHDvj6V+MQcB0OGOdMEOnuj1rMj0KP6+DWtez5Q2aYhAevLMd
+	 iY9i11crY0Kjmic6wg==
 X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
 Received: from [192.168.20.55] ([109.250.63.79]) by mail.gmx.net (mrgmx105
- [212.227.17.168]) with ESMTPSA (Nemesis) id 1MAOJP-1t9lnw3IGR-00GcEi; Mon, 07
- Oct 2024 23:04:55 +0200
-Message-ID: <b927a1c5-d232-40f1-83cb-279595cf8d93@gmx.de>
-Date: Mon, 7 Oct 2024 23:04:54 +0200
+ [212.227.17.168]) with ESMTPSA (Nemesis) id 1MO9z7-1tMKgy2wtl-00LSxQ; Mon, 07
+ Oct 2024 23:09:21 +0200
+Message-ID: <1e416170-a14c-4d78-8141-412c32b3dc0f@gmx.de>
+Date: Mon, 7 Oct 2024 23:09:20 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 05/21] include/exec/memop: Introduce
- memop_atomicity_bits
+Subject: Re: [PATCH v2 06/21] hw/core/tcg-cpu-ops: Introduce tlb_fill_align
+ hook
 To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
 Cc: deller@kernel.org, peter.maydell@linaro.org, alex.bennee@linaro.org,
  linux-parisc@vger.kernel.org, qemu-arm@nongnu.org
 References: <20241005200600.493604-1-richard.henderson@linaro.org>
- <20241005200600.493604-6-richard.henderson@linaro.org>
+ <20241005200600.493604-7-richard.henderson@linaro.org>
 Content-Language: en-US
 From: Helge Deller <deller@gmx.de>
 Autocrypt: addr=deller@gmx.de; keydata=
@@ -113,31 +113,33 @@ Autocrypt: addr=deller@gmx.de; keydata=
  FwRDcGV6nxanxZGKEkSHHOm8jHwvQWvPP73pvuPBEPtKGLzbgd7OOcGZWtq2hNC6cRtsRdDx
  4TAGMCz4j238m+2mdbdhRh3iBnWT5yPFfnv/2IjFAk+sdix1Mrr+LIDF++kiekeq0yUpDdc4
  ExBy2xf6dd+tuFFBp3/VDN4U0UfG4QJ2fg19zE5Z8dS4jGIbLg==
-In-Reply-To: <20241005200600.493604-6-richard.henderson@linaro.org>
+In-Reply-To: <20241005200600.493604-7-richard.henderson@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:xAZ5XjPMPucqJ8WuHVVEKM1e96QQn8HOyXcnrGa498KFFmhQ3I2
- lyguGU2vW/F8Id9wM21U/hECIp6GsBzHJW4ZmDyYORXv143PAaa8IPWJGLsh9TfYxDRw9w1
- PBafWW9kZa9XULq7Jiur1zEFRKT5M6uIwG+5lfRgXy7SDCDQTC42reCuhRlBZ7C3TOKoPrr
- O0wB8fSghF5yZVHd2jX1g==
+X-Provags-ID: V03:K1:CP1aOEoy66qdltkCQpaCnXfu567xmDWznClWUj5yuvS2uB/x74i
+ AdvnpUnRivYyrYrKZJABlfH73B0HXA47nJFZyjanL2+BvpN8zTfYwFCICfS+SU58WQTlMRA
+ GC1YTYfm1e9IphCdAbOuhRPRp9m4UyXU2ATX76/q62qyjaugdbrL/qqQiCV2jL+PWV1rc2m
+ r6qJTO9k6hQohTpsAlfjQ==
 X-Spam-Flag: NO
-UI-OutboundReport: notjunk:1;M01:P0:sCAgjSgLqos=;gItkBghhNOKlcgyT6h8kIMvTmiR
- 9CrU9e2VYlTxifgpiWK8GVGX/9K5c4wx90P6xjEeOJta9AyQw9V363UdEo6IXbE5DaETwoClA
- MeoMKcfD542Wb+0KyeMJeIBGVLb9aHA+NhFKN2gp05h5EmtVHH7Wywk/mUJwgMN0FDgG0j/Sq
- 0ttda9ilVj6Ul8giJmMXunkopj0b0/uokTYZWxNL+l+oZGvtaw/2InGxCn9ZppFJT4iO2wRi9
- 1XsKqpDYRTa9oBoKtvpQLicc7GAOklHq+pcr+YSnvzoToXbsK8TJVuh1sgxdZYqJLMjMEh5SJ
- y2wDPceU4RxWjWb6xfPd9CJ7PweEEl3tJEL4Q1pFTuxi36AKwIaA00403bz8JD87PlC7uhk+M
- OC526abnVuf5kRsqdPyiOqgAAq6VERx/YnLTOER1OWk6fYA2cc7nGlumBVBg8sg80SdzPKeRJ
- ZPcvlRfQBhPQMP6m5nfqO//tnQs4cBIbQBN6qAhYPfVBgnlhlueasiIlV4U/jtVT32Ja/zeZ4
- bJ1Do0ThtGYFhOnLy2Phspmj1n1MHZ0p+hsFMDIEgZkz1wEmZBDK92fw3Q81GuYjEJdU0Mpo7
- TUsmxzoGrRgKwTsjtjSgwLjEm5QwZKbC65YzdcXZxESoN3aHSvUc9+PjVeQBhajoVuKwhSocU
- Y+DbugYJd++kpLSi2xyxo0ggCwFVqcmdfjYQLlAl2y6sZfI1fABaJ+yUYq5DvEUioEzSIMXGU
- jkupwYfCNrQJnKiTgnlnI8iXFV+k+7HPHIv8IpD0GIUMZ2L46l+VDQFzD2Ao26M9aer1o66fC
- yC8YUfL1Xbta7hHfusn2QEbQ==
-X-TUID: K+EEEvJgK0ng
+UI-OutboundReport: notjunk:1;M01:P0:o6721oMgQFQ=;aztqfcqVxCBSH1bP6/4kwyEUxXk
+ kQgEyMOYrGGjmnIaJAzpoQYGK2a9irBFMTASaHmkyBn5sKWgQz08LKi++c6GUyxTjKeUCJ+Zw
+ YUL39hYCoRuI+ir+OMdYcYKPJ97jcYQoDB17lmcXVUvt3DCitFUb5EJ7dcV7Z9SNKnhghKQGk
+ 4A/qsqKbPijZkiQJnoVg7ldupNzENx4RBYvxVNYwQkE4Gqet78B0ikKJo6owTbrzN9THO7f7T
+ ufr4U0flUr8cg78q5pjX80belOhc7oIdxJcUDldevgi747kbN1K1OuvBcJNxVnFLpryvIwDtU
+ jv9EnBPI2hQzJ0utgKoWzaOApC5NERJ/5TxU59bwYRbddDJQyQT1R63NjtDHRfNjnA897wYtq
+ eQTqhrZsFRoCInrItf1UrkjolYxldb8DAtLek9uAhtoeFCSI08AT7in7ZWpBqmh2W1kNW+fpr
+ dFMvMq+YcWnFal2JRDl9BK7X2ZUtcdewVIx3H0Jg5Fo4BH2/e71R/VVB4gIfAH777Gnv9iGw/
+ 34r7O2q91fIOLsfVHj4iZ8Wc5IJ/tgvB0PjxOpYHtUUEIkgKf9YEqmnAjYNaWK98r9M+11Q/l
+ dtfobh6IQgyWpn+65xwRzXYR+a1Z1VE0gAwa+2tUcX5zJjxDirwKxtWCYPQUfED4I53I/CBo6
+ dq/dlGIDb7SF9opnXC7HQYXcNHvUoWPuiiPt4ERV3v9/OSiaOw0sMI5iWx2bJ5XZsRQLO40jk
+ dtZ6I7nrHHcBHj/wbSvjxS0VmekgCzh6+kFd8b1sEGnp0DiXKnEhDnUN1DO2y09pFU4RFNqzk
+ fZVZBwr/0YJO4OyoMq1yhaCQ==
+X-TUID: XhubWYU+5sKF
 
 On 10/5/24 22:05, Richard Henderson wrote:
-> Split out of mmu_lookup.
+> Add the hook to struct TCGCPUOps.  Add a default implementation
+> that recognizes alignment faults before page faults.  Populate
+> all TCGCPUOps structures with the default implementation.
 >
 > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 
@@ -146,69 +148,25 @@ Reviewed-by: Helge Deller <deller@gmx.de>
 
 
 > ---
->   include/exec/memop.h | 24 ++++++++++++++++++++++++
->   accel/tcg/cputlb.c   | 16 ++--------------
->   2 files changed, 26 insertions(+), 14 deletions(-)
->
-> diff --git a/include/exec/memop.h b/include/exec/memop.h
-> index f53bf618c6..b699bf7688 100644
-> --- a/include/exec/memop.h
-> +++ b/include/exec/memop.h
-> @@ -193,4 +193,28 @@ static inline unsigned memop_alignment_bits(MemOp m=
-emop)
->       return a;
->   }
->
-> +/*
-> + * memop_atomicity_bits:
-> + * @memop: MemOp value
-> + *
-> + * Extract the atomicity size from the memop.
-> + */
-> +static inline unsigned memop_atomicity_bits(MemOp memop)
-> +{
-> +    unsigned size =3D memop & MO_SIZE;
-> +
-> +    switch (memop & MO_ATOM_MASK) {
-> +    case MO_ATOM_NONE:
-> +        size =3D MO_8;
-> +        break;
-> +    case MO_ATOM_IFALIGN_PAIR:
-> +    case MO_ATOM_WITHIN16_PAIR:
-> +        size =3D size ? size - 1 : 0;
-> +        break;
-> +    default:
-> +        break;
-> +    }
-> +    return size;
-> +}
-> +
->   #endif
-> diff --git a/accel/tcg/cputlb.c b/accel/tcg/cputlb.c
-> index b5bff220a3..f5fca5a118 100644
-> --- a/accel/tcg/cputlb.c
-> +++ b/accel/tcg/cputlb.c
-> @@ -1751,20 +1751,8 @@ static bool mmu_lookup(CPUState *cpu, vaddr addr,=
- MemOpIdx oi,
->        * Device memory type require alignment.
->        */
->       if (unlikely(flags & TLB_CHECK_ALIGNED)) {
-> -        MemOp size =3D l->memop & MO_SIZE;
-> -
-> -        switch (l->memop & MO_ATOM_MASK) {
-> -        case MO_ATOM_NONE:
-> -            size =3D MO_8;
-> -            break;
-> -        case MO_ATOM_IFALIGN_PAIR:
-> -        case MO_ATOM_WITHIN16_PAIR:
-> -            size =3D size ? size - 1 : 0;
-> -            break;
-> -        default:
-> -            break;
-> -        }
-> -        if (addr & ((1 << size) - 1)) {
-> +        a_bits =3D memop_atomicity_bits(l->memop);
-> +        if (addr & ((1 << a_bits) - 1)) {
->               cpu_unaligned_access(cpu, addr, type, l->mmu_idx, ra);
->           }
->       }
+>   include/hw/core/tcg-cpu-ops.h | 25 +++++++++++++++++++++++++
+>   accel/tcg/cputlb.c            | 19 +++++++++++++++++++
+>   target/alpha/cpu.c            |  1 +
+>   target/arm/cpu.c              |  1 +
+>   target/arm/tcg/cpu-v7m.c      |  1 +
+>   target/avr/cpu.c              |  1 +
+>   target/hppa/cpu.c             |  1 +
+>   target/i386/tcg/tcg-cpu.c     |  1 +
+>   target/loongarch/cpu.c        |  1 +
+>   target/m68k/cpu.c             |  1 +
+>   target/microblaze/cpu.c       |  1 +
+>   target/mips/cpu.c             |  1 +
+>   target/openrisc/cpu.c         |  1 +
+>   target/ppc/cpu_init.c         |  1 +
+>   target/riscv/tcg/tcg-cpu.c    |  1 +
+>   target/rx/cpu.c               |  1 +
+>   target/s390x/cpu.c            |  1 +
+>   target/sh4/cpu.c              |  1 +
+>   target/sparc/cpu.c            |  1 +
+>   target/tricore/cpu.c          |  1 +
+>   target/xtensa/cpu.c           |  1 +
+>   21 files changed, 63 insertions(+)

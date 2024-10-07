@@ -1,72 +1,73 @@
-Received: by 2002:a17:505:c89:b0:1be9:327d:8ee3 with SMTP id hp9csp2197784njb;
-        Mon, 7 Oct 2024 14:13:41 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVXbPkFTWuqxlQI6tknrwNVKuVhwK3dKS9b5ae/RD+4UOU9GglhVb7Oi8/7B+0RZcmuvHL2BJYhvAfToQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IFqlhv4EcUTIrq4AKyWHSNVzcN2NIAYF3kP0NspeswoLzvBqvvs1/8zU0ZRgO0GvRyuLo56
-X-Received: by 2002:adf:fac9:0:b0:374:c481:3f7 with SMTP id ffacd0b85a97d-37d0e6d8604mr7553498f8f.6.1728335621351;
-        Mon, 07 Oct 2024 14:13:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1728335621; cv=none;
+Received: by 2002:a17:505:c89:b0:1be9:327d:8ee3 with SMTP id hp9csp2198114njb;
+        Mon, 7 Oct 2024 14:14:38 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVyUhUfV1S7Q5a5on4ui49OehkQoyMtGV05c/WxYuYBv39Qsa1W9kbejv16/mfbNIeM8MvQsJcU/Lde5g==@linaro.org
+X-Google-Smtp-Source: AGHT+IEMn978JjqqOfesT4hElIQLpx4HMwuwNoAPt5m8mjOVwL0cIZhKment2iZAHOxRwIc+iDLG
+X-Received: by 2002:adf:f30e:0:b0:374:fa15:a8b6 with SMTP id ffacd0b85a97d-37d0e731b81mr7465011f8f.18.1728335678769;
+        Mon, 07 Oct 2024 14:14:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1728335678; cv=none;
         d=google.com; s=arc-20240605;
-        b=F7M/U/OJl+SyN2bKmaC2pH+prjJ/pvGDznIcayttnJtJ7VMy37Qs1KhE81EHL6sWG5
-         mehMlf9y5WXVTCtyOjn54SdnfjSvH7g7gFcSMC3NG4Cmgtj5tyKBslwrbJGM6n1W6ou9
-         zHabIIsQoPDFxlioWPWVgEJn4jSLAGnuwm9CfMFlFOwofCADaL+aFkPA1xuWO8eTO+G+
-         K5vUVnWekqLJagaf79OIbx3FfpsgE6EAYW2AUSTLoOgOn+lCVM5CToNKNe9HoUkiQuLm
-         OGZPDn5pkB+6F+V11OWsp3UhhsD9rGcuODQlozREZ53aW6WnDfoCWE8Mwb2hh46qj4Ig
-         yEbQ==
+        b=Z6pmZ+EacxuxJS/OuO/W7jlRtALnS0d2ANDLdL0bFWnwiiYZTy/PFWUbPPR3p+q7kO
+         /HYcJD/tK/Goqtx0mS9Y0lvT0cQ/92kr0sggaXRCK86aIPYe8L4GNJNxOzCucKYnxWgj
+         WwtNtDDdgUHmkxTCFqVYGUIOrQFlE4JoUC9EntSlDqWWbW34UANV3MfjewQQUXS6vHBM
+         cY6tuBOBLwDt/ViH2JVwSJB3/0jD66uSIStI4jaYUeWkUYSluoN8M2boP0Q5Fpt4kg+A
+         DORhOvt76TgRbGEDVuSDORAhjYShxmWCq5ZbcaXIlvxPqHb+Zu/3gGgMJCH8ZnKGsoAR
+         nLWA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=ui-outboundreport:content-transfer-encoding:in-reply-to:autocrypt
          :from:content-language:references:cc:to:subject:user-agent
          :mime-version:date:message-id:dkim-signature;
-        bh=Pz5aP8rM2IkjmDqGJVSZO6hFnDGmCcDZPRR0Xl8N/Lg=;
+        bh=OOUA8oOsBM4wkSyzXKc8P5D0/fw7drV6WW83phXePfI=;
         fh=3fZ7Wohp6BUOfptJMglDqKETKOsQS3q9o/uj1RhoDNQ=;
-        b=gtRec43y5NNCI+pAC5FIFga5zchcAdrx8S1mBpjR9iHPkl0vsQQCSX2aLNdLH1Sc4/
-         V1HhGJ9Egwhnj2aMEK1O+i7L+GFKoAvpJyrAx2b5kygVIGZ3LXbi4dbfUjuf/qjr/ODY
-         Ah3ciRK2aXPwFuVpGPeBp8KBuWg1osQgrhzuhmub4QGvp7sLiKxlab+5O+tNoJ64ZsQS
-         Lmkzc08f5bYokMNzRwbQPNNmRITIKK0rTWU08drcC7EYjNSLTS3Hc34BPIqyl8ZTTFOq
-         cz/c/cd0hXQ2QsVp1AQr4j5ydNJU+pMJK4PsJEsoGgF0V4FEjnucAzIxVdBTXjWINP8u
-         L23A==;
+        b=D+GnMbMqbOkR82xVMriAzx11N/ADSB6cIsouGd8UlYXNut/dsv+NsGP7G/DlF/KwFD
+         zjhoNwExDRRjd7gf69fHzvBcdvsZbFXga6D30Fb/yysQdMoK1TpoIraYqugQoEOrYi3i
+         lPqiHOqZQXHtwOtgahtZx6OTvl1jZNvxEvchKdinJBM8xcdvDKUGdEwMNtOfhIefMn/7
+         sE40aRHFvIME1dpGozdMh00bI1bTrohG1muJK0rqOiKQrUlhaLqnN4BAVL3aShiC3PJ7
+         ohEBDTghb0I12p+h7A97Mn9A9PhosRmknwSG9S/fSu447Ijojn2/L4rQ7qkoewZFES3O
+         KaRw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmx.de header.s=s31663417 header.b=AHtyEj5z;
+       dkim=pass header.i=@gmx.de header.s=s31663417 header.b=etHUyLIr;
        spf=pass (google.com: domain of deller@gmx.de designates 212.227.17.22 as permitted sender) smtp.mailfrom=deller@gmx.de;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=gmx.de
 Return-Path: <deller@gmx.de>
 Received: from mout.gmx.net (mout.gmx.net. [212.227.17.22])
-        by mx.google.com with ESMTPS id ffacd0b85a97d-37d1697730bsi2791942f8f.609.2024.10.07.14.13.41
+        by mx.google.com with ESMTPS id ffacd0b85a97d-37d1695ee6esi2803193f8f.348.2024.10.07.14.14.38
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 07 Oct 2024 14:13:41 -0700 (PDT)
+        Mon, 07 Oct 2024 14:14:38 -0700 (PDT)
 Received-SPF: pass (google.com: domain of deller@gmx.de designates 212.227.17.22 as permitted sender) client-ip=212.227.17.22;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmx.de header.s=s31663417 header.b=AHtyEj5z;
+       dkim=pass header.i=@gmx.de header.s=s31663417 header.b=etHUyLIr;
        spf=pass (google.com: domain of deller@gmx.de designates 212.227.17.22 as permitted sender) smtp.mailfrom=deller@gmx.de;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=gmx.de
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmx.de;
-	s=s31663417; t=1728335620; x=1728940420; i=deller@gmx.de;
-	bh=Pz5aP8rM2IkjmDqGJVSZO6hFnDGmCcDZPRR0Xl8N/Lg=;
+	s=s31663417; t=1728335678; x=1728940478; i=deller@gmx.de;
+	bh=OOUA8oOsBM4wkSyzXKc8P5D0/fw7drV6WW83phXePfI=;
 	h=X-UI-Sender-Class:Message-ID:Date:MIME-Version:Subject:To:Cc:
 	 References:From:In-Reply-To:Content-Type:
 	 Content-Transfer-Encoding:cc:content-transfer-encoding:
 	 content-type:date:from:message-id:mime-version:reply-to:subject:
 	 to;
-	b=AHtyEj5znbElMcpcboPDdC/Aucx1e95B5esfZ9BT7HY8OFNpqzkC1S4tT8n0IUtf
-	 EJjIzc3RRNXMg+MlxfSP/6D5r8UzdmDdEouQ/nTWxlReEjgUbnQy8vMHDpbk8LbFC
-	 AF1K7elP4x0COQZqBy53PgN9fcghMiQNx9nFV5AgxBpYzjjzgbADS7XTMAR20NNL4
-	 aRavC5j2A2sV8rlOBLt2udwW8Jw5ZFXLHTX9THUhy4kVqHQFkNN7j87lTcYWxiwmo
-	 BKjNteszchQF2BqoYzZehba2eqEyjuw+FHR8FEye5OrEsmlNcq5klAu1T5L0x6dYP
-	 6Oupa1WWDDFiq61qnQ==
+	b=etHUyLIr/4ieTkMit0uDHwua77MrP36mCXpiRT/oaqrkOHuS57g71x7rYEYwX27D
+	 uevphmeRHqe3IkFW3BnVIAcm4G51sqSoM5eG1aEPmI0x/QMi6tbg7uhrJvm504gPG
+	 Ja7407vcuYUxwKrKKJOKcJ+dhEgNLbbOixpr3trLnOnrmkXnMsSgtQSBINCtM4xOG
+	 Yr0QvvyYUvQb3aMZjK6sIA6TttjBkdGJ8mYxqGQ4gE/BawdaaQDTVVdEcL4VOmxw1
+	 EyLsivJqVXwN8EQpcWh8TTjuvkr5hUS7m62TsodB0gezn6L5WnAkLXAdkZiIriwxS
+	 ApRsSIJZYGZab5uKww==
 X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
-Received: from [192.168.20.55] ([109.250.63.79]) by mail.gmx.net (mrgmx104
- [212.227.17.168]) with ESMTPSA (Nemesis) id 1Mlf0U-1tgdXC2afq-00mfrJ; Mon, 07
- Oct 2024 23:13:40 +0200
-Message-ID: <6df44ac0-72cd-4623-a810-66f8d781ed0c@gmx.de>
-Date: Mon, 7 Oct 2024 23:13:39 +0200
+Received: from [192.168.20.55] ([109.250.63.79]) by mail.gmx.net (mrgmx105
+ [212.227.17.168]) with ESMTPSA (Nemesis) id 1N3bSt-1tyROn0UUd-015H2O; Mon, 07
+ Oct 2024 23:14:38 +0200
+Message-ID: <b91c7cf3-12b4-4a0b-b372-11b291e70d50@gmx.de>
+Date: Mon, 7 Oct 2024 23:14:37 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 07/21] accel/tcg: Use the tlb_fill_align hook
+Subject: Re: [PATCH v2 08/21] target/hppa: Add MemOp argument to
+ hppa_get_physical_address
 To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
 Cc: deller@kernel.org, peter.maydell@linaro.org, alex.bennee@linaro.org,
  linux-parisc@vger.kernel.org, qemu-arm@nongnu.org
 References: <20241005200600.493604-1-richard.henderson@linaro.org>
- <20241005200600.493604-8-richard.henderson@linaro.org>
+ <20241005200600.493604-9-richard.henderson@linaro.org>
 Content-Language: en-US
 From: Helge Deller <deller@gmx.de>
 Autocrypt: addr=deller@gmx.de; keydata=
@@ -112,38 +113,41 @@ Autocrypt: addr=deller@gmx.de; keydata=
  FwRDcGV6nxanxZGKEkSHHOm8jHwvQWvPP73pvuPBEPtKGLzbgd7OOcGZWtq2hNC6cRtsRdDx
  4TAGMCz4j238m+2mdbdhRh3iBnWT5yPFfnv/2IjFAk+sdix1Mrr+LIDF++kiekeq0yUpDdc4
  ExBy2xf6dd+tuFFBp3/VDN4U0UfG4QJ2fg19zE5Z8dS4jGIbLg==
-In-Reply-To: <20241005200600.493604-8-richard.henderson@linaro.org>
+In-Reply-To: <20241005200600.493604-9-richard.henderson@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:w34hSYqPDYn4tdrjdLnz7tfaS71dn/GNVaP/T6ox3AQ4CsFkyiv
- wfRQCdLSjJn4c5bQJpQax9y3Hg33fkxXQ+8gxIkXVteNRxzFm2w9dcJIOY3juF2OsWPuEGT
- MKOZzFjuRpWuxBL2PlFQ+pH3LbS2I7mPgVzSZvkQuYSS6BmvKfHJC90iT7FHGbByEx80n+M
- RR9o3Im1aSG94TkU0KYyQ==
+X-Provags-ID: V03:K1:axKvToOl0KnBf+C7712fpuUtJ0XvZJZJQhFyfzw/K6UCJMUL0kN
+ 0Yp1/r9wHHmSyDMSrScdWCDb9USkiAIN5cSqFF9hLOqYZlbd+MAf2mVMeLxTAtoCHoveeP/
+ UILffrUYZ5pN/P9e13UQ5DFcUa6iSeEj+PEeTJT8fMo5xwWMQQIzTuF41hJYZswqxOLJzhx
+ Xxbowc7psY8JzzLqeDskw==
 X-Spam-Flag: NO
-UI-OutboundReport: notjunk:1;M01:P0:hpXcjcPchdE=;yx8cwG4AtgnbjShREQbolJnZ/Qq
- SotXILWpAHNi1EmjHoVs3+wIfOTRErswxv2CWvu7GSULt1Z0y4w2cqy2aFkZgY86Zrep+mOUn
- u4y2uuhdPjpZAvxeDVdeE7a5VQ3oE5eo5AuZClYYhHPrJRVxStUY02Y0vAj/rcd7qRutXBN6v
- e4PO+B/hwCFbuhm98U5L8jocApqsqhJwFbCvCwZErZU2dKvVIo1Uh+AklO5tBK1tQNa3gn+5Y
- hcHnDjxxkuam+7Ek1YFZ8oNHBLZEZHuTRgdcUNiW0fPLyoNWlD5m34rv1XTx5aJdtq62LfvHh
- VkFt4rvAtnle7tMM8m4euOfNDcWV68yck6wvf0wZgBj+kw1EEkfyxi45q6K4TL+tIrggXrt/o
- FdEeGB+89fXOS5X79hsH2mIAyk7AHSNcbFAs3ApDygsVrwU5p3B4hTnqBcKO61p67dfu75qiZ
- +ptECvKVMGwVJF9f78rlyQwlQ8+xcW0KZVsjMyYuE/GZzeYW69nmy3pAwf6eZsFY8/zLxjQGQ
- 8JNCQ28ncKIFcDD03xLtZUf3vqP6JYmj5/ELI69i8b8pGBPZmW9CxPrRS5MD7h9DHBChWxigW
- Psv8dV4ozG5L3RWwX3ABJMV/LhdZ36dypzsFQwZioA+bJmL4qaHCUAg9F+cS5KPCdS31vRGAr
- 4newGJIa1+rSK9Ufe8uJIouM2OM7C4hyrFkGrW9AVjooKY700gGf8fMxlHICe8XSNA13kBGWF
- 2qDUrBygxvsQ2jS378VlLna/wffRPzoMLwxCRlJj6IUf9dZN5QD8lSzEy7SQIjsU8ZXCWaPLI
- j+w2K6ZpojY7Cp+JDtyY0dfg==
-X-TUID: DZKOcikcH0nP
+UI-OutboundReport: notjunk:1;M01:P0:6kBs6HUgm/k=;KHQdTeZ2ZixVZpTgj8TlIeJZ/e8
+ MKZ7N+Hb0V3MsNY6ZZ9prnDHAie1TmvkibUyEGqQLVUhIzNKAJtqyAZgm/1H7NB4dRx0lTrSQ
+ r6a0nWj/7zkRlSjIiv+WBT8LWxJqWoFLy1aLLj3se/Hew+IrzyrxzXY0zm6OdtKqZT+2ErmSt
+ wbOq8Q/Q0nMO3LVqEVf1tiKFjfrz5SbBY7p/vYorCA9tX8+NZZIugUNbZV84vhE4NMDAUMNUx
+ M5U1e1/cW64afEtF/k3w44EiQMztuZON8mcLG3rKmtl8LueJivscklVWaqWWUiVhoT2UmtAIE
+ SrmOfK+39nC0xr6UJ9mHcczpUbMnBS5iuiqC5/RCJCiV438uMTXCm98Ku8QZM04UFFLBAG06R
+ m7HDor53f/EWS8mFTp6zGqKTgtD1AoFnhKcr0HNFAPkYxSIyyTwai7NMpZimqQ45U+ZUtPD1b
+ PdSOdRbybpepw3g47ysEjEYyWKAfXP7VI+UT2gGqppS9mDdOsDCW5i9humTw07zYEjiFXU7oH
+ WP0Y7fogyQEZbckGLZJWyigLGswbdyHxvmieWyGAtVIdp6wRQumfstIR7abXAam2IPp4beNaB
+ Og3GW4jnZL3gD3/xHxfJT0SgOCg3gvttlTSn12HTEjISL01lJcevtUWAqYS2SdQNXn/vooivQ
+ gchdcTj61fTc4/jlVz9FWPjw6UlqEy0l2nNAK3It0OWn0dM3TQNWfWJOJ+6f/NNP7YoYEgs/T
+ UVgM5KLh7zQy9BGrslEyihmPsW3GjfrH4V3vrsE73eBRsvfQCDkxNoutAX+en2lC8QEEXNVR+
+ 5ZdrWONg2diYItPjGjJnUWIA==
+X-TUID: lJNc2cpid9NH
 
 On 10/5/24 22:05, Richard Henderson wrote:
-> When we have a tlb miss, defer the alignment check to
-> the new tlb_fill_align hook.  Move the existing alignment
-> check so that we only perform it with a tlb hit.
+> Just add the argument, unused at this point.
+> Zero is the safe do-nothing value for all callers.
 >
 > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+
 
 Reviewed-by: Helge Deller <deller@gmx.de>
 
 > ---
->   accel/tcg/cputlb.c | 89 +++++++++++++++++++++++++---------------------
->   1 file changed, 49 insertions(+), 40 deletions(-)
+>   target/hppa/cpu.h        | 2 +-
+>   target/hppa/int_helper.c | 2 +-
+>   target/hppa/mem_helper.c | 9 +++++----
+>   target/hppa/op_helper.c  | 2 +-
+>   4 files changed, 8 insertions(+), 7 deletions(-)

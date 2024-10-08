@@ -1,104 +1,104 @@
-Received: by 2002:a17:505:c89:b0:1be9:327d:8ee3 with SMTP id hp9csp2289924njb;
-        Mon, 7 Oct 2024 18:23:56 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVB3WyEg+BoqmXQBA8JwmENm8xxyRDuao3Geo7JwPMqEw4jvFRZ6y/XInMHU/Xz0iwnulhY6ZCcOsw3yg==@linaro.org
-X-Google-Smtp-Source: AGHT+IHJ7m8bX+qrEYEDyeQ0CP9w+vnTlFJz6yDCzlzuhlkK4KIPv8onDgbPpsrA9mjN33Vv7yai
-X-Received: by 2002:a05:6214:5a08:b0:6cb:39f0:e5a5 with SMTP id 6a1803df08f44-6cb9a4636c9mr170503126d6.45.1728350636711;
-        Mon, 07 Oct 2024 18:23:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1728350636; cv=none;
+Received: by 2002:a17:505:c89:b0:1be9:327d:8ee3 with SMTP id hp9csp2290194njb;
+        Mon, 7 Oct 2024 18:24:44 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWQc+q65iccukvNYnYCka3JhT9ZmVgGRZgu6fuRUyoL0vwkrIqdUbz9GtDWJ0NeLt5FppiZ4iYRb6bemw==@linaro.org
+X-Google-Smtp-Source: AGHT+IGpBt97su+iW/DbbOsCRlLwYE4nuv0jhNVPA+wbEeL2rmHJUxN4jXGcGCAmweapN1I2Kei1
+X-Received: by 2002:a05:622a:118e:b0:458:3116:f06d with SMTP id d75a77b69052e-45d9ba3ad6emr213568731cf.22.1728350683872;
+        Mon, 07 Oct 2024 18:24:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1728350683; cv=none;
         d=google.com; s=arc-20240605;
-        b=T92OvxV0Jh/2vR6FZbUj2pz2EJlhOYx9uWiUewhPSsSP9KLIGR81sU+Aa9CuPb1HX+
-         /pBnbWEfl8ia70zmwzU7E8ZBocUEm2EQ+foGgorUIDWw9IGXixNJJe9vOGx1+1UrWjIG
-         cwvOUrZGb/n75KnXivcDOjTUgpwj52pnK9MBHImVIxH5U6VjTZEGSDxP7dzODwyoWnuT
-         Jg7zTtfefsDU5dmOysZGKzjDiQobQm6jTpsNe55znBCNgj90r6VivaJh1ZNrDKmkT5Au
-         ijxuQGVCZjvV+R6QxodLkSn9f47ScZ/+3kacBMhey2FsiUtBC7eDVlXa7DqOkuXFbv9t
-         WrpQ==
+        b=QOOd9xMjJm0Jf2L0jHV54IfC7z1Wf+nwH3DEn5TiAlpue5WV4TkRw/n+6IBcy2ojTO
+         MdyKbV5Bb18IOQXqfZ0BfadZ1QAvSVzMsu0EyO+aDNXlaaEB55VE/AXrOSrtBCdRzrYx
+         D9B9x7k1YNqwCiJebLorQnpU+idBVpCOGFAX8cBQ1SXJfpOX/80/MNF/JnEM3tXHntJM
+         DKJzq8WV641Sv6bq7g8aeKebRrBUZLX0JiLnP4k5yUwopn9pGMjHLXB7XGCyUMJAjDO1
+         nVWXNzwxmUy8leu8xCBjVTEGrBleD06JevHKOa1hDN8yNNVoXJbRehEC6OOtZuFH8HRg
+         /kMQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
          :references:mime-version:in-reply-to:date:dkim-signature;
-        bh=YKQ9trFugufZOwGY7NmDfogxKbP5q2hRcs5m3sq43O4=;
+        bh=49FquaWPsQCXDvZ+9iOGQgsSq0aM4lH+3lh+RTdFI2o=;
         fh=2mssAqYKJuMcD/Ya5YUzhxP7uPixmdZ7O75Bi0gtEhM=;
-        b=Eti2sQk+qMg1jw6Zh5yHaOW7FaKEFgA7QTfkML/ot5G1CJYF3eA47we0Oa/2+TB6qP
-         pJbAjLZ/aSYThulNmiSpI838n+jloNMtxhox82oZtpBQNgXUpZ2unP6RzUKogQpTC5Xm
-         5mOpZlDsoBrAysTSo3LHccl83VttxDGREzWbgaI8Yf9T2N+g38UfM5h4oRWBszkOAEKB
-         GHFIBWuAhASICfNTvTqSZovRAKxshHQ+598Qrdtvdzf6/XuYpkmg3Fy9sXnZW59FRsBX
-         RySmsLKdWBmSopt2XDYs40XO2LFuoEjZjvXI6KpTUnYoKGYFcFPmkRoevQehz6Srjl4m
-         Bibw==;
+        b=cLBepw/IwYnsDHaHzjSTON3jDO6bMZcIxJIdxZ7tR+9wyiI+krgnCHtybMMMzKTytH
+         E1jam0PU038Rd3aopvHtUHShQN8M+nVCGS8Ong+pfVZqxFu+FwLX5ks3uRu+JVGuUwwt
+         fYZXdEkyA4I5AzgyL7Z4bZxj325e2Taty5zQ18f3zNmib6kv7z7TENVvxE9TT/yOWqqS
+         12HienE7pQtyUiZA0eKXuuf+du+KnH16yaRVzsco5FzKIByWcH2k8zO7AylOaZoRygqs
+         4nYreTg7aorIfBbJ+ECgEmDgyfw90JCkuzqtMrSR3d2HFjw+ZYiUTTLk81b1YrRGFwIs
+         KqiA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=F3C+IC6e;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=ZbGg8t+q;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6cbbf08cb68si1783406d6.614.2024.10.07.18.23.56
+        by mx.google.com with ESMTPS id d75a77b69052e-45da76b76besi77884181cf.649.2024.10.07.18.24.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 07 Oct 2024 18:23:56 -0700 (PDT)
+        Mon, 07 Oct 2024 18:24:43 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=F3C+IC6e;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=ZbGg8t+q;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sxyuP-0006Mi-3e; Mon, 07 Oct 2024 21:21:05 -0400
+	id 1sxyuo-0007qZ-D3; Mon, 07 Oct 2024 21:21:30 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <3pYgEZwUKCgg1i3qxowwotm.kwuymu2-lm3mtvwvov2.wzo@flex--tavip.bounces.google.com>)
- id 1sxyt1-0008WK-H9
- for qemu-devel@nongnu.org; Mon, 07 Oct 2024 21:19:39 -0400
-Received: from mail-pg1-x54a.google.com ([2607:f8b0:4864:20::54a])
+ <3q4gEZwUKCg47o9w3u22uzs.q204s08-rs9sz121u18.25u@flex--tavip.bounces.google.com>)
+ id 1sxyt6-0000c9-Ax
+ for qemu-devel@nongnu.org; Mon, 07 Oct 2024 21:19:44 -0400
+Received: from mail-pf1-x44a.google.com ([2607:f8b0:4864:20::44a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from
- <3pYgEZwUKCgg1i3qxowwotm.kwuymu2-lm3mtvwvov2.wzo@flex--tavip.bounces.google.com>)
- id 1sxysz-0000Fg-SG
- for qemu-devel@nongnu.org; Mon, 07 Oct 2024 21:19:39 -0400
-Received: by mail-pg1-x54a.google.com with SMTP id
- 41be03b00d2f7-7e9a3e3ec4fso3887702a12.2
- for <qemu-devel@nongnu.org>; Mon, 07 Oct 2024 18:19:36 -0700 (PDT)
+ <3q4gEZwUKCg47o9w3u22uzs.q204s08-rs9sz121u18.25u@flex--tavip.bounces.google.com>)
+ id 1sxyt3-0000HA-R1
+ for qemu-devel@nongnu.org; Mon, 07 Oct 2024 21:19:44 -0400
+Received: by mail-pf1-x44a.google.com with SMTP id
+ d2e1a72fcca58-71e11abb22aso518153b3a.1
+ for <qemu-devel@nongnu.org>; Mon, 07 Oct 2024 18:19:41 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1728350376; x=1728955176; darn=nongnu.org;
+ d=google.com; s=20230601; t=1728350380; x=1728955180; darn=nongnu.org;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:from:to:cc:subject:date:message-id:reply-to;
- bh=YKQ9trFugufZOwGY7NmDfogxKbP5q2hRcs5m3sq43O4=;
- b=F3C+IC6eC4epdm1kGJmbzRUBQVciVWYyA6WR++rji0yQXHhKvTj8/YBSgjztwcIfm1
- xIIsNyU50ibZzVecbd4jPj4RXIdVWQXe8A0ouXkbWVvDxoI6dP8kYjF5HaVd2bMiY43I
- O+y+XApvJMW3iCZ9XmhfHFrlySewGLHT4NQ6z+TXkZrtjZ/beakGCvKYgCBYsjcSm2Fo
- 3wzesY3r5pavjGusJMRONqs8RevX99bWte05zFSWdB9takPn1q16Ys1fbrC8GxTRzxsM
- I/ckidQqFPOn5DH7KxCqXwKXx/kHoZ2XDjOvVKZiwLsVZfAEDpGZa1x9wA1iTp/cYhTy
- FKGg==
+ bh=49FquaWPsQCXDvZ+9iOGQgsSq0aM4lH+3lh+RTdFI2o=;
+ b=ZbGg8t+qbV8sonNVz0B5vAy1Q0OrO5tMy1xHL4d5DTHJstdZK0I3leAavZ7yUwJ5/K
+ HzzcIG0Emk/za25DfQrPu4xxJWzP9b5d8Apai9CO3wWRVSCIG8/rv2QWPVH0csLuYVcm
+ GMh2PhjyZ1COo381ynQF4BUECvcjCRnXXiQCR33b4NvfKLEPB8h2qZ10uDfkUG0o1IKH
+ hUFSpHWyeuCGAEyfwZA8w5r8JBMFwesiVKsC9vGt0ByRTH1sx88VE+OIZA9uC3061nx/
+ jBeEqqvcyqYy1S9CQEi/lp0TNLawL8sa0N6AJsf7O0qu9ccT1m5CUfliHJ7j6/Qshbqd
+ nHlQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1728350376; x=1728955176;
+ d=1e100.net; s=20230601; t=1728350380; x=1728955180;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=YKQ9trFugufZOwGY7NmDfogxKbP5q2hRcs5m3sq43O4=;
- b=Qh0vw1tZROxgVlD5uY5tUqG9NdnvH+ovBoeDACBMo9tzCeVjBfuQC5ITntXa5RKe14
- 2TqIBwSRlafcx99MhJQR3/P+n3gEIN6VtvA/iFFp3+cprp8MeXZi/UI9MLQilBOrGC35
- ONSCdxUX/VrhOtlpP6YExucE77ScgKg72H8LppbaclUvgv8fMMXT6yYbTeytMwAyqXCI
- s1nOXD+ShbtWaEvjHo6wXm/b7vG2IbqGiKj4K2Zo3ViVikK2rGrLKoF8XppEcmfWFzoT
- xwGoJIU5DXBTY55wOa2h+xZvDvW5R5vYeJmGA1gpDAQullcVuob0yLISyGX8j0rCqxbC
- sIgg==
-X-Gm-Message-State: AOJu0YyDWlC7OtiU1+GXckA9GwQSDNSldUC84IDNMPSPKfndgeYEv8xF
- SHVAkkDnh2RdT/hh4RVKIHKt/veE0KG6eQ311tcIN0+6moLUBeO44cT5ajWlVUP7PWLroqr/WIT
- a1MjFjxcB4YvMrQn91EsdvuQDbwWYTdIita/xYoQIZLAJmzTy4rzMjqMmfnNEdikrH4Xf6MD52B
- +AAHktWwFIQtGmmNVm7igKitlE/A==
+ bh=49FquaWPsQCXDvZ+9iOGQgsSq0aM4lH+3lh+RTdFI2o=;
+ b=kN7aUTSKEOpU4Gf12JSfxUUo4KvXdTkpD1YnXJrcZIgtKaFYrnqRnCLTz3m/EMPatc
+ M87MVvbvq4GyxhvvM56bNu/8/BiK5PFeSjUT7IORxyPRVT7y2F/P6A/mHKzpn+tRc4cS
+ Okj8kIzsbHhjGCKA9gWHR4oDz3CALEq2ZX8NCW94UjzqgagO1c4IXbQHav0+VLmuytBl
+ ix4c2NON2PyFSJkSD56hMW6ngpk7X101z00MZm9qxh/8Wt9SmG7yB+QtBXNcHY9fohCs
+ /9/J5XAjyVEna5cc5I/7OzVpQycaQyJnTRYKF3kejTFjezvBUP++EeJ+YTiZ9mt9ILUF
+ pTKQ==
+X-Gm-Message-State: AOJu0Yz7/DheuOcfHVxyQ9dpJkLQMcS+MIAIWKnEK9rRn2Z/gDcoLE6C
+ 9kcr/Kve4s3A7jtzeULvdr1gRMjnLIjvKX62h8SsN7wa72QzlULbTHKjS1zqY6YS0j3v7Z/4VcH
+ 69kYiezcxHmtTzUuPS78mJSysypWfB+tbeCY+TVHGgy4CXfohyVvlj7VGGGbRWEAbnIxDRdoCjm
+ 1KEOQb3tCgXPa1sWYNyxmyYTfyNQ==
 X-Received: from warp10.c.googlers.com ([fda3:e722:ac3:cc00:24:72f4:c0a8:750])
- (user=tavip job=sendgmr) by 2002:a17:90a:8a8c:b0:2c9:7616:dec5
+ (user=tavip job=sendgmr) by 2002:a05:6a00:324b:b0:71d:eb98:7341
  with SMTP id
- 98e67ed59e1d1-2e1e620b95fmr18689a91.2.1728350373992; Mon, 07 Oct 2024
- 18:19:33 -0700 (PDT)
-Date: Mon,  7 Oct 2024 18:18:48 -0700
+ d2e1a72fcca58-71deb987431mr22279b3a.2.1728350379687; Mon, 07 Oct 2024
+ 18:19:39 -0700 (PDT)
+Date: Mon,  7 Oct 2024 18:18:51 -0700
 In-Reply-To: <20241008011852.1439154-1-tavip@google.com>
 Mime-Version: 1.0
 References: <20241008011852.1439154-1-tavip@google.com>
 X-Mailer: git-send-email 2.47.0.rc0.187.ge670bccf7e-goog
-Message-ID: <20241008011852.1439154-23-tavip@google.com>
-Subject: [PATCH v2 22/25] hw/misc: add spi-tester
+Message-ID: <20241008011852.1439154-26-tavip@google.com>
+Subject: [PATCH v2 25/25] tests/qtest: add tests for RT500's clock controller
 From: Octavian Purdila <tavip@google.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, stefanst@google.com, pbonzini@redhat.com, 
@@ -107,9 +107,9 @@ Cc: qemu-arm@nongnu.org, stefanst@google.com, pbonzini@redhat.com,
  alistair@alistair23.me, thuth@redhat.com, philmd@linaro.org, jsnow@redhat.com, 
  crosa@redhat.com, lvivier@redhat.com
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::54a;
- envelope-from=3pYgEZwUKCgg1i3qxowwotm.kwuymu2-lm3mtvwvov2.wzo@flex--tavip.bounces.google.com;
- helo=mail-pg1-x54a.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::44a;
+ envelope-from=3q4gEZwUKCg47o9w3u22uzs.q204s08-rs9sz121u18.25u@flex--tavip.bounces.google.com;
+ helo=mail-pf1-x44a.google.com
 X-Spam_score_int: -95
 X-Spam_score: -9.6
 X-Spam_bar: ---------
@@ -131,160 +131,231 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: qV2RFRrZxzEa
+X-TUID: KFRw2DQSSpgP
 
-Add a simple SPI peripheral that echoes back received data. Useful for
-testing SPI controllers.
+Add test to exercise clocks set and clear, system PLL initialization,
+audio PLL initialization, systick and ostimer clock source selection.
 
 Signed-off-by: Octavian Purdila <tavip@google.com>
 ---
- include/hw/misc/spi_tester.h | 32 +++++++++++++++++
- hw/misc/spi_tester.c         | 67 ++++++++++++++++++++++++++++++++++++
- hw/misc/Kconfig              |  5 +++
- hw/misc/meson.build          |  1 +
- 4 files changed, 105 insertions(+)
- create mode 100644 include/hw/misc/spi_tester.h
- create mode 100644 hw/misc/spi_tester.c
+ tests/qtest/rt500-clkctl-test.c | 195 ++++++++++++++++++++++++++++++++
+ tests/qtest/meson.build         |   1 +
+ 2 files changed, 196 insertions(+)
+ create mode 100644 tests/qtest/rt500-clkctl-test.c
 
-diff --git a/include/hw/misc/spi_tester.h b/include/hw/misc/spi_tester.h
+diff --git a/tests/qtest/rt500-clkctl-test.c b/tests/qtest/rt500-clkctl-test.c
 new file mode 100644
-index 0000000000..8935f3f1af
+index 0000000000..d5b83d81da
 --- /dev/null
-+++ b/include/hw/misc/spi_tester.h
-@@ -0,0 +1,32 @@
++++ b/tests/qtest/rt500-clkctl-test.c
+@@ -0,0 +1,195 @@
 +/*
-+ * Simple SPI peripheral device used for SPI controller testing.
-+ *
-+ * Copyright (c) 2024 Google LLC.
++ * Copyright (c) 2024 Google LLC
 + *
 + * SPDX-License-Identifier: GPL-2.0-or-later
 + *
 + * This work is licensed under the terms of the GNU GPL, version 2 or later.
 + * See the COPYING file in the top-level directory.
 + */
-+
-+#ifndef HW_SPI_TESTER_H
-+#define HW_SPI_TESTER_H
 +
 +#include "qemu/osdep.h"
 +#include "qemu/log.h"
 +#include "qemu/module.h"
-+#include "qemu/bswap.h"
++#include "qemu/main-loop.h"
++#include "exec/memory.h"
++#include "hw/clock.h"
 +#include "hw/irq.h"
-+#include "hw/ssi/ssi.h"
-+#include "qemu/timer.h"
++#include "hw/qdev-clock.h"
 +#include "hw/qdev-properties.h"
 +
-+#define TYPE_SPI_TESTER "spi-tester"
-+#define SPI_TESTER(obj) OBJECT_CHECK(SpiTesterState, (obj), TYPE_SPI_TESTER)
++#include "hw/misc/rt500_clkctl0.h"
++#include "hw/misc/rt500_clkctl1.h"
++#include "hw/misc/rt500_clk_freqs.h"
++#include "hw/arm/svd/rt500.h"
++#include "reg-utils.h"
 +
-+typedef struct {
-+    SSIPeripheral ssidev;
-+    bool cs;
-+} SpiTesterState;
++#define SYSCLK_HZ 200000000
++#define CLKCTL0_NAME "/machine/soc/clkctl0"
++#define CLKCTL1_NAME "/machine/soc/clkctl1"
 +
-+#endif /* HW_SPI_TESTER_H */
-diff --git a/hw/misc/spi_tester.c b/hw/misc/spi_tester.c
-new file mode 100644
-index 0000000000..2793ce52dc
---- /dev/null
-+++ b/hw/misc/spi_tester.c
-@@ -0,0 +1,67 @@
-+/*
-+ * Simple SPI peripheral echo device used for SPI controller testing.
-+ *
-+ * Copyright (c) 2024 Google LLC.
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or later.
-+ * See the COPYING file in the top-level directory.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "migration/vmstate.h"
-+#include "hw/misc/spi_tester.h"
-+
-+static uint32_t spi_tester_transfer(SSIPeripheral *dev, uint32_t value)
++static void pscctl_test(gconstpointer user_data)
 +{
-+    SpiTesterState *s = SPI_TESTER(dev);
++    /* rom controller clock should be enabled at reset */
++    g_assert(REG32_READ_FIELD(RT500_CLKCTL0, PSCCTL0, ROM_CTRLR_CLK) == 1);
 +
-+    if (s->cs) {
-+        return 0;
-+    }
++    /* DSP clk is disabled at reset */
++    g_assert(REG32_READ_FIELD(RT500_CLKCTL0, PSCCTL0, DSP_CLK) == 0);
 +
-+    return value;
++    /* check PSCTL_SET functionality */
++    REG32_WRITE_FIELD_NOUPDATE(RT500_CLKCTL0, PSCCTL0_SET, DSP_CLK, 1);
++    g_assert(REG32_READ_FIELD(RT500_CLKCTL0, PSCCTL0, DSP_CLK) == 1);
++
++    /* check PSCTL_CLR functionality */
++    REG32_WRITE_FIELD_NOUPDATE(RT500_CLKCTL0, PSCCTL0_CLR, DSP_CLK, 1);
++    g_assert(REG32_READ_FIELD(RT500_CLKCTL0, PSCCTL0, DSP_CLK) == 0);
++
++    /* FLEXIO clk is disabled at reset */
++    g_assert(REG32_READ_FIELD(RT500_CLKCTL1, PSCCTL0, FlexIO) == 0);
++
++    /* check PSCTL_SET functionality */
++    REG32_WRITE_FIELD_NOUPDATE(RT500_CLKCTL1, PSCCTL0_SET, FlexIO, 1);
++    g_assert(REG32_READ_FIELD(RT500_CLKCTL1, PSCCTL0, FlexIO) == 1);
++
++    /* check PSCTL_CLR functionality */
++    REG32_WRITE_FIELD_NOUPDATE(RT500_CLKCTL1, PSCCTL0_CLR, FlexIO, 1);
++    g_assert(REG32_READ_FIELD(RT500_CLKCTL1, PSCCTL0, FlexIO) == 0);
 +}
 +
-+static int spi_tester_set_cs(SSIPeripheral *dev, bool select)
++static void audiopll0pfd_test(gconstpointer user_data)
 +{
-+    SpiTesterState *s = SPI_TESTER(dev);
++    /*  audio plls are gated at boot */
++    g_assert(REG32_READ_FIELD(RT500_CLKCTL1, AUDIOPLL0PFD, PFD3_CLKGATE) == 1);
++    g_assert(REG32_READ_FIELD(RT500_CLKCTL1, AUDIOPLL0PFD, PFD2_CLKGATE) == 1);
++    g_assert(REG32_READ_FIELD(RT500_CLKCTL1, AUDIOPLL0PFD, PFD1_CLKGATE) == 1);
++    g_assert(REG32_READ_FIELD(RT500_CLKCTL1, AUDIOPLL0PFD, PFD0_CLKGATE) == 1);
 +
-+    s->cs = select;
++    /*  ,,, and clocks are not ready */
++    g_assert(REG32_READ_FIELD(RT500_CLKCTL1, AUDIOPLL0PFD, PFD3_CLKRDY) == 0);
++    g_assert(REG32_READ_FIELD(RT500_CLKCTL1, AUDIOPLL0PFD, PFD2_CLKRDY) == 0);
++    g_assert(REG32_READ_FIELD(RT500_CLKCTL1, AUDIOPLL0PFD, PFD1_CLKRDY) == 0);
++    g_assert(REG32_READ_FIELD(RT500_CLKCTL1, AUDIOPLL0PFD, PFD0_CLKRDY) == 0);
 +
-+    return 0;
++    /* ungate all plls and check that clocks are ready */
++    REG32_WRITE_FIELD(RT500_CLKCTL1, AUDIOPLL0PFD, PFD3_CLKGATE, 0);
++    REG32_WRITE_FIELD(RT500_CLKCTL1, AUDIOPLL0PFD, PFD2_CLKGATE, 0);
++    REG32_WRITE_FIELD(RT500_CLKCTL1, AUDIOPLL0PFD, PFD1_CLKGATE, 0);
++    REG32_WRITE_FIELD(RT500_CLKCTL1, AUDIOPLL0PFD, PFD0_CLKGATE, 0);
++
++    g_assert(REG32_READ_FIELD(RT500_CLKCTL1, AUDIOPLL0PFD, PFD3_CLKRDY) == 1);
++    g_assert(REG32_READ_FIELD(RT500_CLKCTL1, AUDIOPLL0PFD, PFD2_CLKRDY) == 1);
++    g_assert(REG32_READ_FIELD(RT500_CLKCTL1, AUDIOPLL0PFD, PFD1_CLKRDY) == 1);
++    g_assert(REG32_READ_FIELD(RT500_CLKCTL1, AUDIOPLL0PFD, PFD0_CLKRDY) == 1);
 +}
 +
-+static const VMStateDescription vmstate_spi_tester = {
-+    .name = "spi-tester",
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .fields = (const VMStateField[]) {
-+        VMSTATE_SSI_PERIPHERAL(ssidev, SpiTesterState),
-+        VMSTATE_BOOL(cs, SpiTesterState),
-+        VMSTATE_END_OF_LIST()
-+    }
-+};
-+
-+static void spi_tester_class_init(ObjectClass *klass, void *data)
++static void syspll0pfd_test(gconstpointer user_data)
 +{
-+    SSIPeripheralClass *k = SSI_PERIPHERAL_CLASS(klass);
-+    DeviceClass *dc = DEVICE_CLASS(klass);
++    /*  system plls are gated at boot */
++    g_assert(REG32_READ_FIELD(RT500_CLKCTL0, SYSPLL0PFD, PFD3_CLKGATE) == 1);
++    g_assert(REG32_READ_FIELD(RT500_CLKCTL0, SYSPLL0PFD, PFD2_CLKGATE) == 1);
++    g_assert(REG32_READ_FIELD(RT500_CLKCTL0, SYSPLL0PFD, PFD1_CLKGATE) == 1);
++    g_assert(REG32_READ_FIELD(RT500_CLKCTL0, SYSPLL0PFD, PFD0_CLKGATE) == 1);
 +
-+    dc->vmsd = &vmstate_spi_tester;
-+    k->transfer    = spi_tester_transfer;
-+    k->set_cs      = spi_tester_set_cs;
-+    k->cs_polarity = SSI_CS_LOW;
++    /*  ,,, and clocks are not ready */
++    g_assert(REG32_READ_FIELD(RT500_CLKCTL0, SYSPLL0PFD, PFD3_CLKRDY) == 0);
++    g_assert(REG32_READ_FIELD(RT500_CLKCTL0, SYSPLL0PFD, PFD2_CLKRDY) == 0);
++    g_assert(REG32_READ_FIELD(RT500_CLKCTL0, SYSPLL0PFD, PFD1_CLKRDY) == 0);
++    g_assert(REG32_READ_FIELD(RT500_CLKCTL0, SYSPLL0PFD, PFD0_CLKRDY) == 0);
++
++    /* ungate all plls and check that clocks are ready */
++    REG32_WRITE_FIELD(RT500_CLKCTL0, SYSPLL0PFD, PFD3_CLKGATE, 0);
++    REG32_WRITE_FIELD(RT500_CLKCTL0, SYSPLL0PFD, PFD2_CLKGATE, 0);
++    REG32_WRITE_FIELD(RT500_CLKCTL0, SYSPLL0PFD, PFD1_CLKGATE, 0);
++    REG32_WRITE_FIELD(RT500_CLKCTL0, SYSPLL0PFD, PFD0_CLKGATE, 0);
++
++    g_assert(REG32_READ_FIELD(RT500_CLKCTL0, SYSPLL0PFD, PFD3_CLKRDY) == 1);
++    g_assert(REG32_READ_FIELD(RT500_CLKCTL0, SYSPLL0PFD, PFD2_CLKRDY) == 1);
++    g_assert(REG32_READ_FIELD(RT500_CLKCTL0, SYSPLL0PFD, PFD1_CLKRDY) == 1);
++    g_assert(REG32_READ_FIELD(RT500_CLKCTL0, SYSPLL0PFD, PFD0_CLKRDY) == 1);
 +}
 +
-+static const TypeInfo spi_tester_types[] = {
-+    {
-+        .name          = TYPE_SPI_TESTER,
-+        .parent        = TYPE_SSI_PERIPHERAL,
-+        .instance_size = sizeof(SpiTesterState),
-+        .class_init    = spi_tester_class_init,
-+    },
-+};
++static void systick_clk_test(gconstpointer user_data)
++{
++    /* systick is not running at reset */
++    g_assert_cmpuint(dev_clock_out_get_hz(CLKCTL0_NAME, "systick_clk"), ==, 0);
 +
-+DEFINE_TYPES(spi_tester_types);
-diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
-index 3e93c12c8e..484ee3149f 100644
---- a/hw/misc/Kconfig
-+++ b/hw/misc/Kconfig
-@@ -218,6 +218,11 @@ config I2C_TESTER
-     default y if TEST_DEVICES
-     depends on I2C
- 
-+config SPI_TESTER
-+    bool
-+    default y if TEST_DEVICES
-+    depends on SSI
++    /* select divout no divisor */
++    REG32_WRITE_FIELD(RT500_CLKCTL0, SYSTICKFCLKSEL, SEL,
++                      SYSTICKFCLKSEL_DIVOUT);
++    g_assert_cmpuint(dev_clock_out_get_hz(CLKCTL0_NAME, "systick_clk"),
++                     ==, SYSCLK_HZ);
 +
- config FLEXCOMM
-     bool
-     select I2C
-diff --git a/hw/misc/meson.build b/hw/misc/meson.build
-index cd29db37d7..0cece9a964 100644
---- a/hw/misc/meson.build
-+++ b/hw/misc/meson.build
-@@ -153,6 +153,7 @@ system_ss.add(when: 'CONFIG_SBSA_REF', if_true: files('sbsa_ec.c'))
- system_ss.add(when: 'CONFIG_LASI', if_true: files('lasi.c'))
++    /* change divisor to 2 */
++    REG32_WRITE_FIELD(RT500_CLKCTL0, SYSTICKFCLKDIV, DIV, 1);
++    g_assert_cmpuint(dev_clock_out_get_hz(CLKCTL0_NAME, "systick_clk"),
++                     ==, SYSCLK_HZ / 2);
++
++    /* select lpsoc */
++    REG32_WRITE_FIELD(RT500_CLKCTL0, SYSTICKFCLKSEL, SEL,
++                      SYSTICKFCLKSEL_LPOSC);
++    g_assert_cmpuint(dev_clock_out_get_hz(CLKCTL0_NAME, "systick_clk"),
++                     ==, LPOSC_CLK_HZ);
++
++    /* select lpsoc */
++    REG32_WRITE_FIELD(RT500_CLKCTL0, SYSTICKFCLKSEL, SEL,
++                      SYSTICKFCLKSEL_32KHZRTC);
++    g_assert_cmpuint(dev_clock_out_get_hz(CLKCTL0_NAME, "systick_clk"),
++                     ==, RTC32KHZ_CLK_HZ);
++
++    /* disable clock */
++    REG32_WRITE_FIELD(RT500_CLKCTL0, SYSTICKFCLKSEL, SEL,
++                      SYSTICKFCLKSEL_NONE);
++    g_assert_cmpuint(dev_clock_out_get_hz(CLKCTL0_NAME, "systick_clk"),
++                     ==, 0);
++}
++
++static void ostimer_clk_test(gconstpointer user_data)
++{
++    /* systick is not running at reset */
++    g_assert_cmpuint(dev_clock_out_get_hz(CLKCTL1_NAME, "ostimer_clk"), ==, 0);
++
++    /* select lpsoc */
++    REG32_WRITE_FIELD(RT500_CLKCTL1, OSEVENTTFCLKSEL, SEL,
++                      OSEVENTTFCLKSEL_LPOSC);
++    g_assert_cmpuint(dev_clock_out_get_hz(CLKCTL1_NAME, "ostimer_clk"), ==,
++                     LPOSC_CLK_HZ);
++
++    /* select 32khz RTC */
++    REG32_WRITE_FIELD(RT500_CLKCTL1, OSEVENTTFCLKSEL, SEL,
++                      OSEVENTTFCLKSEL_32KHZRTC);
++    g_assert_cmpuint(dev_clock_out_get_hz(CLKCTL1_NAME, "ostimer_clk"), ==,
++                     RTC32KHZ_CLK_HZ);
++
++    /* select hclk */
++    REG32_WRITE_FIELD(RT500_CLKCTL1, OSEVENTTFCLKSEL, SEL,
++                      OSEVENTTFCLKSEL_HCLK);
++    g_assert_cmpuint(dev_clock_out_get_hz(CLKCTL1_NAME, "ostimer_clk"), ==,
++                     SYSCLK_HZ);
++
++    /* disable clock */
++    REG32_WRITE_FIELD(RT500_CLKCTL1, OSEVENTTFCLKSEL, SEL,
++                      OSEVENTTFCLKSEL_NONE);
++    g_assert_cmpuint(dev_clock_out_get_hz(CLKCTL1_NAME, "ostimer_clk"), ==, 0);
++}
++
++int main(int argc, char **argv)
++{
++    int ret;
++
++    g_test_init(&argc, &argv, NULL);
++
++    qtest_add_data_func("/rt500-clkctl/pscctl-test", NULL, pscctl_test);
++    qtest_add_data_func("/rt500-clkctl/syspll0pfd-test", NULL,
++                        syspll0pfd_test);
++    qtest_add_data_func("/rt500-clkctl/audiopll0pfd-test", NULL,
++                        audiopll0pfd_test);
++    g_test_add_data_func("/rt500-clkctl/systick-test", NULL,
++                         systick_clk_test);
++    g_test_add_data_func("/rt500-clkctl/ostimer-clk-test", NULL,
++                         ostimer_clk_test);
++
++    qtest_start("-M rt595-evk");
++    ret = g_test_run();
++    qtest_end();
++
++    return ret;
++}
+diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
+index d3bf33b855..1a2d2ca3e1 100644
+--- a/tests/qtest/meson.build
++++ b/tests/qtest/meson.build
+@@ -234,6 +234,7 @@ qtests_arm = \
+   (config_all_devices.has_key('CONFIG_STM32L4X5_SOC') and
+    config_all_devices.has_key('CONFIG_DM163')? ['dm163-test'] : []) + \
+   (config_all_devices.has_key('CONFIG_FLEXCOMM') ? ['flexcomm-test', 'flexcomm-usart-test', 'flexcomm-i2c-test', 'flexcomm-spi-test'] : []) + \
++  (config_all_devices.has_key('CONFIG_RT500_CLKCTL') ? ['rt500-clkctl-test'] : []) + \
+   ['arm-cpu-features',
+    'boot-serial-test']
  
- system_ss.add(when: 'CONFIG_I2C_TESTER', if_true: files('i2c_tester.c'))
-+system_ss.add(when: 'CONFIG_SPI_TESTER', if_true: files('spi_tester.c'))
- 
- system_ss.add(when: 'CONFIG_FLEXCOMM', if_true: files('flexcomm.c'))
- system_ss.add(when: 'CONFIG_RT500_CLKCTL', if_true: files('rt500_clkctl0.c', 'rt500_clkctl1.c'))
 -- 
 2.47.0.rc0.187.ge670bccf7e-goog
 

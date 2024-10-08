@@ -1,103 +1,104 @@
-Received: by 2002:a17:505:c89:b0:1be9:327d:8ee3 with SMTP id hp9csp2289384njb;
-        Mon, 7 Oct 2024 18:22:23 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXg8ncuO5H0ASgwvIYfiz1PCklBR21/AEevTHQhfT54GsFCymD+Di08y2p1Fim9Bf928pHK+LvhA3pmOQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IHbgI+WsoRQbd2mO/MghfmIfFUll2f8PGQ6MJIcxgb+Q2pKhiQi+pGQYbDdepelM6tBChjt
-X-Received: by 2002:a05:620a:19a2:b0:7ac:a93b:9fa6 with SMTP id af79cd13be357-7ae6f45b611mr2433938385a.30.1728350542862;
-        Mon, 07 Oct 2024 18:22:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1728350542; cv=none;
+Received: by 2002:a17:505:c89:b0:1be9:327d:8ee3 with SMTP id hp9csp2289660njb;
+        Mon, 7 Oct 2024 18:23:08 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUvSF9oN9S+80XzV94rP8plekI1Jagjs6k99k9WKnCz5mp1YUCCB+ZeBU4xrPGdjvRYpiVKF3wPk4Z0ag==@linaro.org
+X-Google-Smtp-Source: AGHT+IGSt0ak9YSGbD0otIpdpwZkbCU1lUtAVfpzWD1g+aLBIn0eJtj6b8OD07Yd6bJDleflvHRn
+X-Received: by 2002:a05:620a:2451:b0:7a9:bf2a:d7d8 with SMTP id af79cd13be357-7ae6f42e031mr1814634485a.8.1728350588770;
+        Mon, 07 Oct 2024 18:23:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1728350588; cv=none;
         d=google.com; s=arc-20240605;
-        b=WZ1ZhVZvYaj0Zaa/XLxl0XEON0BAHHea3n6wdJDaAsMwK2E0ZEyOVkrwq+CQ31Qb/k
-         NFD1ydD+8TrBJeI/WMv4IRgCNEIjK3Ao4E4s49rcOVGsXoYT740d/4srENfi9kx0wvog
-         qgazA2BivpcXYium5sOUmsKkEjYsd8jcrzjJ1RLUmuQvGS0u3TQcM7pix4xIbuACdsVr
-         /6H3B1rjMHWjsAox94iuUX5aho+f8X1XNliCl6/lu1u9GuqAmJmRDwK7WEP2AT/M/J3A
-         XIWH9eejo9c08sJwJwwt1N/1obKlzosagS8Jo2h4zcsCpN4j5vZP9i0DTu07Jom7/NjR
-         Y0+A==
+        b=Z22nWdKrI228ZvjTWT162uUNu4HVB2K85wILF/TJmaqIEAPEri3/9G4IpxpohwDu3j
+         BGE0pJe7w443GLz3ar5Rdg3OBVxQLAZG4VA7Xp94+fcnBbToDSCYpEoebp8ojsNDyWOI
+         SJKB7WsTMD5bK/fMw673KmDDEDRHKFVABfT0Sd7DA6PRoYUiDOe6EW59IQ7/tMdn9nyA
+         qot78IzW3UNizCPTl1y0tKrllWXUDJ5ZncZ4y44hEa/cSDmqhfEK+TH+/rbGAFa7Z33N
+         XnmMA4qWUzcO7eU7IeAWWUCqg0c9bvynW5jkAf9dP99VY2BW8/0GoESouYZFu/PLgzNl
+         6oQg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
          :references:mime-version:in-reply-to:date:dkim-signature;
-        bh=KH/2xv+ry9E6fErLW4rxS6RZmIvXaaOZIkrg/WhK4hs=;
+        bh=ohI0GInatBpkkVc6LlITBXAa2f8u1GNul4wGD6o5kbw=;
         fh=2mssAqYKJuMcD/Ya5YUzhxP7uPixmdZ7O75Bi0gtEhM=;
-        b=SO4ChDNAkuRTtg2Y/cww3eu7HzXErj4HSBWGEx9HsBQ3bg/f7UADOvmVDPCsNe8vGt
-         2y29lIJdRg5L9v2ihLCGuGpimQwM7HRmCXhYVqPxwvsUMASfX3O1DnLamnhgAB8yJove
-         H5moHgRqvhBzgF0nV2lrcjoEh4/3bhTr4rtv4Tjg9p0IW65PrUgvc3tteYhbtW4LEqY6
-         17rPnidWUWz8YZwOMvDjSxh5lXeVWkWSWXpM89QLu9Ke++P57CkDwMElx8IehEauq66D
-         u2ymP/ZJqZ3lLEfFm5cZDUeHC6ZANC4GpdK2a9hHDq1gfxspTnA3pl6W1MSk9zbwV7Dy
-         96IQ==;
+        b=BbSq8H6qTnZtHPRnRwM42H1iQdEmjHF3G+1FbYs93MoupZBtkeOnHgq8jXGYpMUxgu
+         +EqriW89z1S6nQpfVH8WoDLovDCLe4BRXuT9PX9oLb8D/7eiXPS22ew4PBQomhZQIFOy
+         fzbn5wTqM5Wn11R5at6UOQ3JFw0qPEcSM0c97VzF+ElfdpAfAZG8FHUFRig0C6bLdaC5
+         cUEF7t9YYfP6PHA21dlWbLbYcHpR9ayfmcojMbfiF1oORz7zClhqk7kKa36VoL5ZiYwB
+         gXPEGGZDDFULXHc3Ei58wP/sZu9n8E2MBHeSnpwJurzeK8tjCcEhvRi+xsDInKo5PqmI
+         vNoA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=E2IPreJg;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@google.com header.s=20230601 header.b=0rSL9sYh;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-45da75e234csi72729191cf.341.2024.10.07.18.22.22
+        by mx.google.com with ESMTPS id d75a77b69052e-45da74e9a1dsi73656461cf.187.2024.10.07.18.23.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 07 Oct 2024 18:22:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 07 Oct 2024 18:23:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=E2IPreJg;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@google.com header.s=20230601 header.b=0rSL9sYh;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sxytq-0003f2-Uq; Mon, 07 Oct 2024 21:20:34 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1sxyuB-0004eG-A8; Mon, 07 Oct 2024 21:20:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <3nogEZwUKCAEubwjqhpphmf.dpnrfnv-bsnopohov.psh@flex--tavip.bounces.google.com>)
- id 1sxysx-0008CL-Iu
- for qemu-arm@nongnu.org; Mon, 07 Oct 2024 21:19:36 -0400
-Received: from mail-yw1-x114a.google.com ([2607:f8b0:4864:20::114a])
+ <3mYgEZwUKCvovcxkriqqing.eqosgow-fgxgnpqpipw.qti@flex--tavip.bounces.google.com>)
+ id 1sxysx-0008CI-J4
+ for qemu-devel@nongnu.org; Mon, 07 Oct 2024 21:19:36 -0400
+Received: from mail-pf1-x449.google.com ([2607:f8b0:4864:20::449])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from
- <3nogEZwUKCAEubwjqhpphmf.dpnrfnv-bsnopohov.psh@flex--tavip.bounces.google.com>)
- id 1sxyst-0000Co-78
- for qemu-arm@nongnu.org; Mon, 07 Oct 2024 21:19:34 -0400
-Received: by mail-yw1-x114a.google.com with SMTP id
- 00721157ae682-6e2baf2ff64so75972957b3.0
- for <qemu-arm@nongnu.org>; Mon, 07 Oct 2024 18:19:27 -0700 (PDT)
+ <3mYgEZwUKCvovcxkriqqing.eqosgow-fgxgnpqpipw.qti@flex--tavip.bounces.google.com>)
+ id 1sxyss-0000CG-Ps
+ for qemu-devel@nongnu.org; Mon, 07 Oct 2024 21:19:33 -0400
+Received: by mail-pf1-x449.google.com with SMTP id
+ d2e1a72fcca58-71dfeda9ac0so1866077b3a.1
+ for <qemu-devel@nongnu.org>; Mon, 07 Oct 2024 18:19:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1728350367; x=1728955167; darn=nongnu.org;
+ d=google.com; s=20230601; t=1728350363; x=1728955163; darn=nongnu.org;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:from:to:cc:subject:date:message-id:reply-to;
- bh=KH/2xv+ry9E6fErLW4rxS6RZmIvXaaOZIkrg/WhK4hs=;
- b=E2IPreJg/qpe9C4HZIVYUl2AoLpgWNToFGeYZsH+sMaXZz3c31uhCKtffKNXPBwNZR
- 3CXoacMfTSpq8TOnLP9S86M/HI3SJ/NwPeP/B52CunBCG1ecXHXugSQPg5hOVPbUz//0
- j6Rwm+THEUt/hOKd9dDX+i8goQw5ndtBptBe/bNXwGsCFz+BYN4Pr5vZFsIw8unH8xmR
- I9/XArOEGjwu7wjaELZlQcxd1oivqpJhmHGuxWZaSJp/ESqHur71Q0xhWeeUFtcXOE8M
- adWbHJl0xIbX8ogLBSsTllQb14XvWg5Bjxfq4f8UaqV9rHbRvyUPcVxCN2B/wdfGWIE4
- 9N2g==
+ bh=ohI0GInatBpkkVc6LlITBXAa2f8u1GNul4wGD6o5kbw=;
+ b=0rSL9sYhIKVm/xcP036gFjJ38oSIMXgXDHlZUNXIz4M2K8wHivHlEp7LRBarCHzD4J
+ OmoVRMD/qJEn8rqnEkwfQa0f3kigbBBVKY4CMbiB++JSdEAVoCBMkbtxiVtXEPgWF0NO
+ tqswvX8g9jeNPnuBNA84sNC0oOepRWggVs8jz2twPcGpmsZZ1vH+BGyu9RF4zjMyCzHr
+ vAj5zWJk87Q6wysAhYRolVZWvt70s59I9csy0VI0oezUw8WndS1WsXvMhkTGIMPkmspp
+ ZL9J8OoGrCKlVJ4dFxmfqghuF54CUlKbLHIMR4ZVOEiNW+exs+LGDhqVTrR0RVGVR0i4
+ lWEg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1728350367; x=1728955167;
+ d=1e100.net; s=20230601; t=1728350363; x=1728955163;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=KH/2xv+ry9E6fErLW4rxS6RZmIvXaaOZIkrg/WhK4hs=;
- b=er6Ps33R36zg5zll+1oXnAbdY/NceBJ63pFdWZMVySqqQhh19QjPyQkIAUxIHdNRGE
- mvw6BtmJ75KYldlkd53AUWHiqiyOTY908cfvemIIM7KfWRMYtsdJykZKXtaOhFg0v0B4
- iguRrn4SouYPrGpNGFnuetfgA+2ZqQ90gdt3EDka9gaLWHfhdwvqu8/2PDtSCM+Datcu
- tsW8PAiheIT0gGraMO473xm7mDF4yG1bdlbitms+4dz0oe2o4zi9Mo+asugLnFjyo+0u
- 4euRqU4NiqUnBtZvD8MJImpfHYQw56Ce/HlEC2BnwOdNa2ukcjVhQ4MLl67Ai6+i+nUt
- af2g==
-X-Gm-Message-State: AOJu0Yz7hk2Iy7T81/FWmJLcrukaeRkcmY7uXNV61xdbhRaqxJ+5O0d+
- DyeZ1xx/akCOZnQnX+gHfW/qPlpcAdsZhh+3RbrYtURe2yCHMWCKb3bN+TKOeLQTA3aZ6ffsLA=
- =
+ bh=ohI0GInatBpkkVc6LlITBXAa2f8u1GNul4wGD6o5kbw=;
+ b=UEKRgPMkBAaTYG/t85t2s1bqIW/u/rJZDxmYjIkDfE/eOs/bc9uRF+dhter8txpQPL
+ ky1ud0w4+60KRpy8J6Z2yhjai1VN5XY2U2hLkCC9dD0dMfW33MmBcSPhM8qs50Ui4BJx
+ zNNMOgDmuC6T/4Uy64LQfJ5Zdr3Jefqmq1CyWqu5u0Om1MdHj0jh11AapXOphKCm2XZ1
+ I1gNRFcS+5LsIgXMVTUzqFqJ0IlWnQRJXKKYubwVMX4V6QRXBCcJcmcVe6+PP5dcmM61
+ iIPDYqEpB12OvEeyqPjaNa+L8nU2SbrpYRCWmmAHZsMVPa2NZ2c2XygnBYP7dnfhlOt7
+ d8Vg==
+X-Gm-Message-State: AOJu0Yy/LegDmbSxLNCq4XSYXjJmTCO8FkF0MmVYiQIaA8GtlsERmsPZ
+ JMRgq3VAeuN3YO0yAlkF9NT23kS347DAuPgqHlEbODHNwtd43dtpfIYNnkIx2f+oXE1FveefbNI
+ /MF1e42I2D8Vs3jDDkXJl2F/0mq0EQA1by2R1QeXhn4rz8ZTMUjhI5fhCEruuBqIHv32pMiovJA
+ Mw6F/DNTKsAdVfzTJZMHHuDuUSbg==
 X-Received: from warp10.c.googlers.com ([fda3:e722:ac3:cc00:24:72f4:c0a8:750])
- (user=tavip job=sendgmr) by 2002:a81:ad0b:0:b0:6e2:121c:4509 with
- SMTP id
- 00721157ae682-6e2c72bbd4bmr1572397b3.7.1728350366897; Mon, 07 Oct 2024
- 18:19:26 -0700 (PDT)
-Date: Mon,  7 Oct 2024 18:18:44 -0700
+ (user=tavip job=sendgmr) by 2002:a05:6a00:91db:b0:71e:401:6580
+ with SMTP id
+ d2e1a72fcca58-71e040166f7mr10095b3a.6.1728350361548; Mon, 07 Oct 2024
+ 18:19:21 -0700 (PDT)
+Date: Mon,  7 Oct 2024 18:18:41 -0700
 In-Reply-To: <20241008011852.1439154-1-tavip@google.com>
 Mime-Version: 1.0
 References: <20241008011852.1439154-1-tavip@google.com>
 X-Mailer: git-send-email 2.47.0.rc0.187.ge670bccf7e-goog
-Message-ID: <20241008011852.1439154-19-tavip@google.com>
-Subject: [PATCH v2 18/25] tests/qtest: add flexcomm usart tests
+Message-ID: <20241008011852.1439154-16-tavip@google.com>
+Subject: [PATCH v2 15/25] tests/qtest: add register access macros and functions
 From: Octavian Purdila <tavip@google.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, stefanst@google.com, pbonzini@redhat.com, 
@@ -106,48 +107,53 @@ Cc: qemu-arm@nongnu.org, stefanst@google.com, pbonzini@redhat.com,
  alistair@alistair23.me, thuth@redhat.com, philmd@linaro.org, jsnow@redhat.com, 
  crosa@redhat.com, lvivier@redhat.com
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::114a;
- envelope-from=3nogEZwUKCAEubwjqhpphmf.dpnrfnv-bsnopohov.psh@flex--tavip.bounces.google.com;
- helo=mail-yw1-x114a.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::449;
+ envelope-from=3mYgEZwUKCvovcxkriqqing.eqosgow-fgxgnpqpipw.qti@flex--tavip.bounces.google.com;
+ helo=mail-pf1-x449.google.com
 X-Spam_score_int: -95
 X-Spam_score: -9.6
 X-Spam_bar: ---------
 X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.024,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
+ USER_IN_DEF_DKIM_WL=-7.5 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: E0r5XjhU5fd3
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: AAsC6RFrRddz
 
-Add flexcomm usart polling and irq unit tests.
+Add utility macros for accessing register or register bit fields in
+tests, e.g.:
+
+  REG32_WRITE(FLEXCOMM, PSELID, persel);
+  g_assert(REG32_READ_FIELD(FLEXCOMM, PSELID, PERSEL) == persel);
 
 Signed-off-by: Octavian Purdila <tavip@google.com>
 ---
- tests/qtest/flexcomm-usart-test.c | 316 ++++++++++++++++++++++++++++++
- tests/qtest/meson.build           |   3 +-
- 2 files changed, 318 insertions(+), 1 deletion(-)
- create mode 100644 tests/qtest/flexcomm-usart-test.c
+ tests/qtest/reg-utils.h | 70 +++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 70 insertions(+)
+ create mode 100644 tests/qtest/reg-utils.h
 
-diff --git a/tests/qtest/flexcomm-usart-test.c b/tests/qtest/flexcomm-usart-test.c
+diff --git a/tests/qtest/reg-utils.h b/tests/qtest/reg-utils.h
 new file mode 100644
-index 0000000000..0ffa49dd6f
+index 0000000000..e09aaf3333
 --- /dev/null
-+++ b/tests/qtest/flexcomm-usart-test.c
-@@ -0,0 +1,316 @@
++++ b/tests/qtest/reg-utils.h
+@@ -0,0 +1,70 @@
 +/*
++ * Register access utilities for device tests.
++ *
 + * Copyright (C) 2024 Google LLC
 + *
 + * SPDX-License-Identifier: GPL-2.0-or-later
@@ -155,335 +161,66 @@ index 0000000000..0ffa49dd6f
 + * This work is licensed under the terms of the GNU GPL, version 2 or later.
 + * See the COPYING file in the top-level directory.
 + */
++#ifndef _REG_UTILS_H
++#define _REG_UTILS_H
 +
-+#include "qemu/osdep.h"
-+#include <glib/gstdio.h>
++#include "libqtest-single.h"
++#include "hw/registerfields.h"
 +
-+#include "io/channel-socket.h"
-+#include "qemu/config-file.h"
-+#include "qemu/log.h"
-+#include "qemu/module.h"
-+#include "qapi/error.h"
-+#include "qemu/sockets.h"
-+#include "sysemu/sysemu.h"
-+#include "qemu/main-loop.h"
-+#include "qemu/option.h"
-+#include "exec/memory.h"
-+#include "hw/irq.h"
-+#include "hw/qdev-properties.h"
++#ifdef DEBUG_REG
++#define debug(fmt, args...) fprintf(stderr, fmt, ## args)
++#else
++#define debug(fmt, args...)
++#endif
 +
-+#include "hw/misc/flexcomm.h"
-+#include "hw/arm/svd/flexcomm_usart.h"
-+#include "hw/arm/svd/rt500.h"
-+#include "reg-utils.h"
++#define _REG_OFF(mod, reg) (A_##mod##_##reg)
 +
-+#define FLEXCOMM_BASE RT500_FLEXCOMM0_BASE
-+#define FLEXCOMM_USART_BASE RT500_FLEXCOMM0_BASE
-+#define DEVICE_NAME "/machine/soc/flexcomm0"
++#define REG32_READ(mod, reg)                                            \
++    ({                                                                  \
++        uint32_t value;                                                 \
++        value = readl(mod##_BASE + _REG_OFF(mod, reg));                 \
++        debug("[%s] -> %08x\n", #reg, value);                           \
++        value;                                                          \
++    })
 +
-+struct TestState {
-+    QTestState *qtest;
-+    QIOChannel *ioc;
-+};
++#define REG32_WRITE(mod, reg, value)                                    \
++    do {                                                                \
++        debug("[%s] <- %08x\n", #reg, value);                           \
++        writel(mod##_BASE + _REG_OFF(mod, reg), value);                 \
++    } while (0)
 +
-+static void polling_test(gconstpointer user_data)
-+{
-+    struct TestState *t = (struct TestState *)user_data;
-+    uint32_t tmp;
-+    char byte;
-+    int fifo_size;
-+    QDict *resp;
++#define REG_FIELD_VAL(v, mod, reg, field)                               \
++    FIELD_EX32(v, mod##_##reg, field)                                   \
 +
-+    resp = qmp("{\"execute\": \"system_reset\"}");
-+    qdict_unref(resp);
++#define REG32_READ_FIELD(mod, reg, field)                   \
++    REG_FIELD_VAL(REG32_READ(mod, reg), mod, reg, field)
 +
-+    /* select and lock USART */
-+    tmp = FIELD_DP32(FLEXCOMM_PERSEL_USART, FLEXCOMM_PSELID, LOCK, 1);
-+    REG32_WRITE(FLEXCOMM, PSELID, tmp);
++#define REG32_WRITE_FIELD(mod, reg, field, val)                         \
++    do {                                                                \
++        uint32_t _tmp = REG32_READ(mod, reg);                           \
++        _tmp = FIELD_DP32(_tmp, mod##_##reg, field, val);               \
++        REG32_WRITE(mod, reg, _tmp);                                    \
++    } while (0)
 +
-+    fifo_size = REG32_READ_FIELD(FLEXCOMM_USART, FIFOSIZE, FIFOSIZE);
++#define REG32_WRITE_FIELD_NOUPDATE(mod, reg, field, val)                \
++    do {                                                                \
++        uint32_t _tmp = FIELD_DP32(0, mod##_##reg, field, val);         \
++        REG32_WRITE(mod, reg, _tmp);                                    \
++    } while (0)
 +
-+    /* enable USART */
-+    REG32_WRITE_FIELD(FLEXCOMM_USART, CFG, ENABLE, 1);
-+    g_assert_cmpuint(REG32_READ_FIELD(FLEXCOMM_USART, CFG, ENABLE), ==, 1);
++#define WAIT_REG32_FIELD(ns, mod, reg, field, val)                      \
++    do {                                                                \
++        clock_step(ns);                                                 \
++        g_assert_cmpuint(REG32_READ_FIELD(mod, reg, field), ==, val);   \
++    } while (0)
 +
-+    /* enable TX and RX FIFO */
-+    REG32_WRITE_FIELD(FLEXCOMM_USART, FIFOCFG, ENABLETX, 1);
-+    g_assert_cmpuint(REG32_READ_FIELD(FLEXCOMM_USART, FIFOCFG, ENABLETX),
-+                     ==, 1);
-+    REG32_WRITE_FIELD(FLEXCOMM_USART, FIFOCFG, ENABLERX, 1);
-+    g_assert_cmpuint(REG32_READ_FIELD(FLEXCOMM_USART, FIFOCFG, ENABLERX),
-+                     ==, 1);
++#define REG32_READ_FAIL(mod, reg) \
++    readl_fail(mod##_BASE + _REG_OFF(mod, reg))
 +
-+    /* test writes and fifo counters wrap */
-+    for (int i = 0; i < fifo_size / 2; i++) {
-+        /* check fifostat */
-+        g_assert_cmpuint(REG32_READ_FIELD(FLEXCOMM_USART, FIFOSTAT, RXFULL),
-+                         ==, 0);
-+        g_assert_cmpuint(REG32_READ_FIELD(FLEXCOMM_USART, FIFOSTAT, RXNOTEMPTY),
-+                         ==, 0);
-+        g_assert_cmpuint(REG32_READ_FIELD(FLEXCOMM_USART, FIFOSTAT, TXNOTFULL),
-+                         ==, 1);
-+        g_assert_cmpuint(REG32_READ_FIELD(FLEXCOMM_USART, FIFOSTAT, TXEMPTY),
-+                         ==, 1);
++#define REG32_WRITE_FAIL(mod, reg, value) \
++    writel_fail(mod##_BASE + _REG_OFF(mod, reg), value)
 +
-+        REG32_WRITE(FLEXCOMM_USART, FIFOWR, 'a' + i);
-+        qio_channel_read(t->ioc, &byte, 1, &error_abort);
-+        g_assert_cmpuint(byte, ==, 'a' + i);
-+    }
-+
-+    /* test reads and fifo level */
-+
-+    for (int i = 0; i < fifo_size / 2; i++) {
-+        byte = 'A' + i;
-+        g_assert_cmpuint(qio_channel_write(t->ioc, &byte, 1, &error_abort),
-+                         ==, 1);
-+    }
-+
-+    /* wait for the RXLVL to update */
-+    WAIT_REG32_FIELD(1000, FLEXCOMM_USART, FIFOSTAT, RXLVL,
-+                     fifo_size / 2);
-+
-+    /* check fifo stat */
-+    g_assert_cmpuint(REG32_READ_FIELD(FLEXCOMM_USART, FIFOSTAT, RXFULL),
-+                     ==, 0);
-+    g_assert_cmpuint(REG32_READ_FIELD(FLEXCOMM_USART, FIFOSTAT, RXNOTEMPTY),
-+                     ==, 1);
-+    g_assert_cmpuint(REG32_READ_FIELD(FLEXCOMM_USART, FIFOSTAT, TXNOTFULL),
-+                     ==, 1);
-+    g_assert_cmpuint(REG32_READ_FIELD(FLEXCOMM_USART, FIFOSTAT, TXEMPTY),
-+                     ==, 1);
-+
-+    /* send until FIFO is full */
-+    for (int i = fifo_size / 2; i < fifo_size; i++) {
-+        byte = 'A' + i;
-+        g_assert_cmpuint(qio_channel_write(t->ioc, &byte, 1, &error_abort),
-+                         ==, 1);
-+    }
-+
-+    /* wait for the RXLVL to update */
-+    WAIT_REG32_FIELD(1000, FLEXCOMM_USART, FIFOSTAT, RXLVL, fifo_size);
-+
-+    /* check fifo stat */
-+    g_assert_cmpuint(REG32_READ_FIELD(FLEXCOMM_USART, FIFOSTAT, RXFULL),
-+                     ==, 1);
-+    g_assert_cmpuint(REG32_READ_FIELD(FLEXCOMM_USART, FIFOSTAT, RXNOTEMPTY),
-+                     ==, 1);
-+    g_assert_cmpuint(REG32_READ_FIELD(FLEXCOMM_USART, FIFOSTAT, TXNOTFULL),
-+                     ==, 1);
-+    g_assert_cmpuint(REG32_READ_FIELD(FLEXCOMM_USART, FIFOSTAT, TXEMPTY),
-+                     ==, 1);
-+
-+    /* check read no pop */
-+    g_assert_cmpuint(REG32_READ_FIELD(FLEXCOMM_USART, FIFORDNOPOP, RXDATA),
-+                     ==, 'A');
-+
-+    /* now read from the fifo  */
-+    for (int i = 0; i < fifo_size; i++) {
-+        g_assert_cmpuint(REG32_READ_FIELD(FLEXCOMM_USART, FIFORD, RXDATA),
-+                         ==, 'A' + i);
-+    }
-+
-+    /* check fifostat */
-+    g_assert_cmpuint(REG32_READ_FIELD(FLEXCOMM_USART, FIFOSTAT, RXFULL), ==, 0);
-+    g_assert_cmpuint(REG32_READ_FIELD(FLEXCOMM_USART, FIFOSTAT, RXNOTEMPTY),
-+                     ==, 0);
-+    g_assert_cmpuint(REG32_READ_FIELD(FLEXCOMM_USART, FIFOSTAT, TXNOTFULL),
-+                     ==, 1);
-+    g_assert_cmpuint(REG32_READ_FIELD(FLEXCOMM_USART, FIFOSTAT, TXEMPTY),
-+                     ==, 1);
-+}
-+
-+static void irq_test(gconstpointer user_data)
-+{
-+    struct TestState *t = (struct TestState *)user_data;
-+    char buf[256] = { 0, };
-+    uint32_t tmp;
-+    QDict *resp;
-+
-+    resp = qmp("{\"execute\": \"system_reset\"}");
-+    qdict_unref(resp);
-+
-+    qtest_irq_intercept_out_named(t->qtest, DEVICE_NAME,
-+                                  SYSBUS_DEVICE_GPIO_IRQ);
-+
-+    /* select and lock FLEXCOMM_USART */
-+    tmp = FIELD_DP32(FLEXCOMM_PERSEL_USART, FLEXCOMM_PSELID, LOCK, 1);
-+    REG32_WRITE(FLEXCOMM, PSELID, tmp);
-+
-+    /*
-+     * set RX IRQ/DMA trigger level to 4 bytes - value 3 in FIFOTRIG
-+     *
-+     * 0000 - Trigger when the RX FIFO has received 1 entry (is no longer empty)
-+     * 0001 - Trigger when the RX FIFO has received 2 entries
-+     * 1111 - Trigger when the RX FIFO has received 16 entries (has become full)
-+     */
-+    REG32_WRITE_FIELD(FLEXCOMM_USART, FIFOTRIG, RXLVL, 3);
-+    g_assert_cmpuint(REG32_READ_FIELD(FLEXCOMM_USART, FIFOTRIG, RXLVL),
-+                     ==, 3);
-+
-+    /* enable RX trigger for IRQ/DMA  */
-+    REG32_WRITE_FIELD(FLEXCOMM_USART, FIFOTRIG, RXLVLENA, 1);
-+    g_assert_cmpuint(REG32_READ_FIELD(FLEXCOMM_USART, FIFOTRIG, RXLVLENA),
-+                     ==, 1);
-+
-+    /* enable RXLVL interrupt */
-+    REG32_WRITE_FIELD(FLEXCOMM_USART, FIFOINTENSET, RXLVL, 1);
-+    g_assert_cmpuint(REG32_READ_FIELD(FLEXCOMM_USART, FIFOINTENSET, RXLVL),
-+                     ==, 1);
-+
-+    /* enable FLEXCOMM_USART */
-+    REG32_WRITE_FIELD(FLEXCOMM_USART, CFG, ENABLE, 1);
-+    g_assert_cmpuint(REG32_READ_FIELD(FLEXCOMM_USART, CFG, ENABLE),
-+                     ==, 1);
-+
-+    /* enable TX and RX FIFO */
-+    REG32_WRITE_FIELD(FLEXCOMM_USART, FIFOCFG, ENABLETX, 1);
-+    g_assert_cmpuint(REG32_READ_FIELD(FLEXCOMM_USART, FIFOCFG, ENABLETX),
-+                     ==, 1);
-+    REG32_WRITE_FIELD(FLEXCOMM_USART, FIFOCFG, ENABLERX, 1);
-+    g_assert_cmpuint(REG32_READ_FIELD(FLEXCOMM_USART, FIFOCFG, ENABLERX),
-+                     ==, 1);
-+
-+    /* check interrupt status */
-+    g_assert_cmpuint(REG32_READ_FIELD(FLEXCOMM_USART, FIFOINTSTAT, RXLVL),
-+                     ==, 0);
-+    g_assert_cmpuint(REG32_READ_FIELD(FLEXCOMM_USART, FIFOINTSTAT, TXLVL),
-+                     ==, 0);
-+    g_assert_false(get_irq(0));
-+
-+    /* enable TX trigger for IRQ/DMA  */
-+    REG32_WRITE_FIELD(FLEXCOMM_USART, FIFOTRIG, TXLVLENA, 1);
-+    g_assert_cmpuint(REG32_READ_FIELD(FLEXCOMM_USART, FIFOTRIG, TXLVLENA),
-+                     ==, 1);
-+
-+    /* enable irq for TX */
-+    REG32_WRITE_FIELD(FLEXCOMM_USART, FIFOINTENSET, TXLVL, 1);
-+    g_assert_cmpuint(REG32_READ_FIELD(FLEXCOMM_USART, FIFOINTENSET, TXLVL),
-+                     ==, 1);
-+
-+    /* check TX irq */
-+    g_assert_cmpuint(REG32_READ_FIELD(FLEXCOMM_USART, FIFOINTSTAT, TXLVL),
-+                     ==, 1);
-+    g_assert_true(get_irq(0));
-+
-+    /* disable irq for TX */
-+    REG32_WRITE_FIELD(FLEXCOMM_USART, FIFOTRIG, TXLVLENA, 0);
-+    g_assert_cmpuint(REG32_READ_FIELD(FLEXCOMM_USART, FIFOTRIG, TXLVLENA),
-+                     ==, 0);
-+    g_assert_cmpuint(REG32_READ_FIELD(FLEXCOMM_USART, FIFOINTSTAT, TXLVL),
-+                     ==, 0);
-+    g_assert_false(get_irq(0));
-+
-+    /* send 3 bytes */
-+    g_assert_cmpuint(qio_channel_write(t->ioc, buf, 3, &error_abort),
-+                     ==, 3);
-+
-+    /* check that we have 3 bytes in the fifo */
-+    WAIT_REG32_FIELD(1000, FLEXCOMM_USART, FIFOSTAT, RXLVL, 3);
-+
-+    /* and no interrupt has been triggered yet */
-+    g_assert_cmpuint(REG32_READ_FIELD(FLEXCOMM_USART, FIFOINTSTAT, RXLVL),
-+                     ==, 0);
-+    g_assert_false(get_irq(0));
-+
-+    /* push it over the edge */
-+    g_assert_cmpuint(qio_channel_write(t->ioc, buf, 1, &error_abort), ==, 1);
-+
-+    /* check that we have 4 bytes in the fifo */
-+    WAIT_REG32_FIELD(1000, FLEXCOMM_USART, FIFOSTAT, RXLVL, 4);
-+
-+    /* and the interrupt has been triggered */
-+    g_assert_cmpuint(REG32_READ_FIELD(FLEXCOMM_USART, FIFOINTSTAT, RXLVL),
-+                     ==, 1);
-+    g_assert_true(get_irq(0));
-+
-+    /* read one byte from the fifo */
-+    g_assert_cmpuint(REG32_READ_FIELD(FLEXCOMM_USART, FIFORD, RXDATA),
-+                     ==, 0);
-+
-+    /* we should have 3 bytes in the FIFO */
-+    g_assert_cmpuint(REG32_READ_FIELD(FLEXCOMM_USART, FIFOSTAT, RXLVL),
-+                     ==, 3);
-+
-+    /* and no interrupts active */
-+    g_assert_cmpuint(REG32_READ_FIELD(FLEXCOMM_USART, FIFOINTSTAT, RXLVL),
-+             ==, 0);
-+    g_assert_false(get_irq(0));
-+}
-+
-+static void close_ioc(void *ioc)
-+{
-+    qio_channel_close(ioc, NULL);
-+}
-+
-+int main(int argc, char **argv)
-+{
-+    int ret;
-+    struct TestState test;
-+    char *tmp_path = g_dir_make_tmp("qemu-flexcomm-usart-test.XXXXXX", NULL);
-+    SocketAddress addr = {
-+        .type = SOCKET_ADDRESS_TYPE_UNIX,
-+        .u.q_unix.path = g_build_filename(tmp_path, "sock", NULL),
-+    };
-+    char *args;
-+    QIOChannelSocket *lioc;
-+
-+    module_call_init(MODULE_INIT_QOM);
-+    g_test_init(&argc, &argv, NULL);
-+
-+    lioc = qio_channel_socket_new();
-+    qio_channel_socket_listen_sync(lioc, &addr, 1, &error_abort);
-+
-+    qtest_add_data_func("/flexcomm-usart/polling", &test, polling_test);
-+    qtest_add_data_func("/flexcomm-usart/irq", &test, irq_test);
-+
-+    args = g_strdup_printf("-M rt595-evk "
-+                           "-chardev socket,id=flexcomm0-usart,path=%s",
-+                           addr.u.q_unix.path);
-+    test.qtest = qtest_start(args);
-+
-+    qio_channel_wait(QIO_CHANNEL(lioc), G_IO_IN);
-+    test.ioc = QIO_CHANNEL(qio_channel_socket_accept(lioc, &error_abort));
-+    g_assert(test.ioc);
-+    qtest_add_abrt_handler(close_ioc, test.ioc);
-+
-+    ret = g_test_run();
-+
-+    qtest_end();
-+
-+    qtest_remove_abrt_handler(test.ioc);
-+    g_unlink(addr.u.q_unix.path);
-+    g_free(addr.u.q_unix.path);
-+    g_rmdir(tmp_path);
-+    g_free(tmp_path);
-+    g_free(args);
-+    object_unref(OBJECT(test.ioc));
-+    object_unref(OBJECT(lioc));
-+
-+    return ret;
-+}
-diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-index f35bb52aa2..c7a5bb61e9 100644
---- a/tests/qtest/meson.build
-+++ b/tests/qtest/meson.build
-@@ -233,7 +233,7 @@ qtests_arm = \
-   (config_all_devices.has_key('CONFIG_FSI_APB2OPB_ASPEED') ? ['aspeed_fsi-test'] : []) + \
-   (config_all_devices.has_key('CONFIG_STM32L4X5_SOC') and
-    config_all_devices.has_key('CONFIG_DM163')? ['dm163-test'] : []) + \
--  (config_all_devices.has_key('CONFIG_FLEXCOMM')? ['flexcomm-test'] : []) + \
-+  (config_all_devices.has_key('CONFIG_FLEXCOMM') ? ['flexcomm-test', 'flexcomm-usart-test'] : []) + \
-   ['arm-cpu-features',
-    'boot-serial-test']
- 
-@@ -350,6 +350,7 @@ qtests = {
-   'virtio-net-failover': files('migration-helpers.c'),
-   'vmgenid-test': files('boot-sector.c', 'acpi-utils.c'),
-   'netdev-socket': files('netdev-socket.c', '../unit/socket-helpers.c'),
-+  'flexcomm-usart-test': [io],
- }
- 
- if vnc.found()
++#endif /* _REG_UTILS_H */
 -- 
 2.47.0.rc0.187.ge670bccf7e-goog
 

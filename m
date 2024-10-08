@@ -1,98 +1,145 @@
-Received: by 2002:a17:504:1f11:b0:1be9:327d:8ee3 with SMTP id z17csp227983njl;
-        Tue, 8 Oct 2024 07:22:35 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVjRBdGkslLRPqazlAzibVWlzMlW9DJVr4DX1AhuZKApz2wfb3BmtsmhSJf5lmlI6CvZMbgs5bzT9dNOA==@linaro.org
-X-Received: by 2002:a05:600c:3b02:b0:42c:bc22:e074 with SMTP id 5b1f17b1804b1-42f85aeef9emr126772355e9.29.1728397354842;
-        Tue, 08 Oct 2024 07:22:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1728397354; cv=none;
+Received: by 2002:a17:504:1f11:b0:1be9:327d:8ee3 with SMTP id z17csp236909njl;
+        Tue, 8 Oct 2024 07:35:19 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUJwOk/GzN7u5jVSWpzk9wuB9QxuTsHEh+e38N1FAsWA8RNs5RwGK+7lzfSjLM0OvanMB7wqBInKYagyQ==@linaro.org
+X-Received: by 2002:a05:6402:1ccd:b0:5c8:9553:c779 with SMTP id 4fb4d7f45d1cf-5c8d2ebdf0cmr14303423a12.27.1728398119441;
+        Tue, 08 Oct 2024 07:35:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1728398119; cv=none;
         d=google.com; s=arc-20240605;
-        b=Ce+rX3XPfZfvg5Q76X1cARJ2QvhxP8IxxfLY8Z9Mbrc+nYwqJWp7DeQLuYgtnSDRwG
-         IG0MpV2cQkw1yVs3/Zc5ry4kblTUKgi2oKHiYpkeEUa/OiGyASMsR23IuLw54MTTwnm/
-         9BM8ugn1dbB6p7Zqu2IW4zfALnAMTuaOxKvI8249wTHzGO6o26vCNQGZWg2A3L+F/CVV
-         envwD6fa7Qo8uIHZOJnSD7gINk4AHLVwgxdIo9xIIJlOUqOd5nOMZzhUSnLEBlfy/LIt
-         sGHWle56lxrVC2tHLXmVdC7628BiAIcgUdHDhzlhnj2qskozgyTGg8AMnG3YeXtrQ9jH
-         AFoA==
+        b=ggPSpS2xWBt8Z9c3PPLh6cOzxaFOdQSjqSkTlhyTl7Y4/Q+qYGCfuwR+JojgSuFvno
+         6R4WqmeQzTmw0H2KEdRixApRKeLG+keXj0JoYxtc2vbauQayCazvjbR51pPOT0panQZ+
+         JMYCNdSqb3z9h3WXPnSz7MnIi7GsRXr7Kl9orj+264WM+Cdlc/7ZTvAb4TEhmAYSi3Ds
+         E+Zf2AyM73I3+9JcMJY5CKEL7lbBnhduicrHLUED+uZgu2oY/HM58P067vmhQLC1u/Vv
+         SxwCfe/g9SP2l8LotPh802sgl7nvdrl48saTomyRwRxIaQoJNBjKlWVJXy+XIJ/faKo0
+         Jg4A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:dkim-signature;
-        bh=mIOwIE4dnIoolyLpGLimDS0AFNW4u/gKwOEM/yPvXxA=;
-        fh=zK9w4DoCRHLHmFoGNcUZa5XaxPDWxOd+KBZFa2+1xbc=;
-        b=W4MEXL7m/YdebSemdYbuNP3oKXY2ja/UrJyDyMFnd2jtKG3KDIdw+sUJaupCoorF1U
-         u8I/MWS8AQN0GQr16Nw+jMpCH1vOs7jgfy9hbLlMvm3rmu014DnwagGgLXB4GrVZO8/i
-         9WMZ8hIbkuFBEwW/QotdM3GENBNaM6D1xhPPSpQ3SDkidqlqWHDQud/VYra6f6bpqy7x
-         MfuYTLdcWjJ8kUEOYreUgbzWclth1CyhHhGBCauKiAZz0gZvHWiYPGabmce3UjnQthCt
-         vuFn95ezGK1RicOqcA95lFVu56lWpMrLQVbxjUt6utPmUGslryZIDPHqYxSRmruDPiqn
-         ZCKg==;
+        bh=ejEHR1wMlkNLtiJ1Hqtaqwe+D7rXesFiFwGrxD/Swxc=;
+        fh=rwhzM3gzT8D0WyMs5LqSH1b340rG68EPA7h24wKbf4k=;
+        b=c3Jq1ufwUcEYUMQA6+P94tI7BDI1EsraszFdspr4P1XDazvZ9v0/7l+sNydQ7QSk6C
+         UvCCBLj286trV5PV2aAw+0UEOzzdzdKI/afDaOSPsJ7IFxcOZnPwg4flmZ3kGTUh/jwt
+         kDLhML3Bcrzf8e5V4ECpI9XSBl6U2jmvMEp54paqKIqaeZ58adFjSysDXYO3Q+hdAHip
+         leaE9JvbkDB7nYX998EqYZao7oAlqMy7WYz3H11crG6FZQ9NM5/ZZG4zD3KBvsobM2IJ
+         juWzpzUzOq+R0WEqixXL56uOAZs8vX/PyVuovtBo9VfVm8Mey8n2LhUxTobe87+y327j
+         bm8A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=A1YQB4tc;
+       dkim=pass header.i=@linaro.org header.s=google header.b=KHh6p9FM;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <peter.maydell@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id ffacd0b85a97d-37d2de121cesor162224f8f.10.2024.10.08.07.22.34
+        by mx.google.com with SMTPS id 4fb4d7f45d1cf-5c8e05e4038sor2069498a12.8.2024.10.08.07.35.19
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Tue, 08 Oct 2024 07:22:34 -0700 (PDT)
+        Tue, 08 Oct 2024 07:35:19 -0700 (PDT)
 Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=A1YQB4tc;
+       dkim=pass header.i=@linaro.org header.s=google header.b=KHh6p9FM;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1728397354; x=1729002154; darn=linaro.org;
+        d=linaro.org; s=google; t=1728398119; x=1729002919; darn=linaro.org;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=mIOwIE4dnIoolyLpGLimDS0AFNW4u/gKwOEM/yPvXxA=;
-        b=A1YQB4tcYZObtuxHYUeIN0htaATACIJe3FDGBc89xuGcL6WqASpH8PRC73vNqO0elr
-         8/3Ok8oH36aS6Jdt+k3Q9E0nb0NrMDXY0IOa4hyLc6ddqnre90rLTsJSzpc+pHoaCnuP
-         HYdEYj/SZswaLEqKzjzCZTVe/WFelPcu+ivYrA5bzObcF9DxiujLM9EAsDud6Zjv4iFr
-         lwE6mMgm8XxPnc4j0NrI5oswcQoO27L4jFUiLuEncVhE7n1yaeVtfxhnESbp3WiHwDRG
-         E/P0CXRpggo9+Vd30D2dV7mwQ53ANqmtHzd1ACFtW1rEd8q6AyRFt8d+Bs1RZmZ8fks+
-         ZTFA==
+        bh=ejEHR1wMlkNLtiJ1Hqtaqwe+D7rXesFiFwGrxD/Swxc=;
+        b=KHh6p9FMidET3xYDZpKtGeqx4fPq7tKusgm4KpQRtqtKAxa3NU/jA6NPcXxWmLlGkF
+         euMcGNumlUvte5uzTdFsonMRG+dm7pK8OboNwkIS7vL6Os2uRxi5dW9YoxGNScqFvxNB
+         YflVFEu/du80c8+1WmEj1LnxU4OsgvEhuq3Fu+s2Rvniis7rT955sN91WEXgDEKvmB5W
+         Omhu4p8gecV3Tmm3Mb0cfLD4ZHOxAxeVwyeBUpfX54Hki2c0zvlQ8f9gzscYEn2RUzuw
+         0MNenAWeRU9cjSFCUpz4hQ6wH73taDGSaAswO/mtWJuQMQNDgDWpLm5um1Ahf6Vs79lp
+         oA6A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1728397354; x=1729002154;
+        d=1e100.net; s=20230601; t=1728398119; x=1729002919;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=mIOwIE4dnIoolyLpGLimDS0AFNW4u/gKwOEM/yPvXxA=;
-        b=a6M0NPDEGZy0+b1++6XRHjNL8kascdFHYkMz0D6149Sh5RrOElxDhD4b9/PaIbfCBD
-         nAByI40xpaui7YwVLmMfFNhM/a64UC0+787x1MGS/LL5kJEHbnqVLyiOCKQdH9LRSBeD
-         fMToCn+DDAmaT8n+tFkuFyHhx2o8K7B5ET/DP/XOj3f19nr4Awq5nIL6ABkKO+ncqNzo
-         PvcvUIKHv1tafJCS/06Q4GzJpB4vARewLRYII8tAdPyYmEp1W9nGxEroTqWJOsJzYBC5
-         bE5h+eZPmCKPba/bW5oflq4APpSQTJ3xqHDnxli68WfxD5wau33iEIz99d0MhMKbzL45
-         288Q==
-X-Forwarded-Encrypted: i=1; AJvYcCW3jIGVtW+fiYV775UXeBygAgg6MfEnxZV5vZf5M5tZGJe4CzWIYhwBM4c7ZcmEmabu4UkK3uCkL2qFOg==@linaro.org
-X-Gm-Message-State: AOJu0YynQ4HGOG/iLN3I8+i0Y1vkstltKT/vYLf9mZPRfeO1UKwmAD72
-	nSOV316ira5V1ihDeEtfDt2TYViOHfFVtwTg2NfPLS7orpTQNm07cnwZ80Iby6t9+gBI3LXotH2
-	TUXyRGbjT1Byq22d26FZF/mMEt9Uvcy3t8kVENyem
-X-Google-Smtp-Source: AGHT+IG4DScf133UOLJi0v/dH7Dlw/hjpi7mdUSEXGkfcorU2vYoBNYxL3zcPhTqtqhDp7hvPo1uf/cjZhw/yLcgu+8=
-X-Received: by 2002:a5d:49c9:0:b0:37d:3759:bb8 with SMTP id
- ffacd0b85a97d-37d37591daamr704491f8f.53.1728397354228; Tue, 08 Oct 2024
- 07:22:34 -0700 (PDT)
+        bh=ejEHR1wMlkNLtiJ1Hqtaqwe+D7rXesFiFwGrxD/Swxc=;
+        b=cy4ihB0mAIs9ynOc/lcc5ivAZ+xd1sfjSE0YBy/zUeZrstvOnpU8XT0+gZi8noZVFF
+         ZNiKVHaVNyd5vKUsSKt5AQIRzGp/Inc+4RBbBDGOeZ63QN5glX5hPFwXYv4/ccS6N9YM
+         bOAWtyh0R969yqCGmjJn3g/gK9Zpc0DYLIH5hwChbIouhgJ1TpiLiQw+2I4bAbfJeXNq
+         yMm2+AZs5sHut7FLJ9MTTJG5xtgc42pZ0nnFF1msd7DfKeVuPMqvZUqgTTE+ac9Kp4J4
+         xrxoYAvDNA0Xa40ukFWPflNhqT8xOpoFXOVCAuK+YY8Q9RgT7J/lD2xCmfAagTfLfGl6
+         XNdQ==
+X-Forwarded-Encrypted: i=1; AJvYcCX7Bfs0yqpIN5WbeQmiJ33mApgGYVxuCD88fPNv8VM45RRW7YMZc8O2o8pb3nzepYkoZVn3JcwoHn3iQw==@linaro.org
+X-Gm-Message-State: AOJu0YzwV1Zjo7ss4EcAszHOCSTv9b9gqM/EXf3/f/Nw2lUKGBZ4ChzW
+	vlzgAfg2j6O+rZUHHppHocUjokyf10rBF4NcjexdUWJjTm//0ppPBg4V2GUPOiuKK0UCYBp7blW
+	0rsbOnLPXO4NgEBiZUU9BNraVh5ddjnevv2WRv+wB
+X-Google-Smtp-Source: AGHT+IEJhPFIg7Qd18l/zzU6VuxNjyfZlpL9dJ5GySWcXx1gRxvqO8ZcTix41f8blmGjq8Y98ULXs/w/4SLM1BwGu+4=
+X-Received: by 2002:a05:6402:c42:b0:5c8:ad38:165c with SMTP id
+ 4fb4d7f45d1cf-5c8d2ebdaf7mr14866174a12.23.1728398118716; Tue, 08 Oct 2024
+ 07:35:18 -0700 (PDT)
 MIME-Version: 1.0
-References: <20241005200600.493604-1-richard.henderson@linaro.org> <20241005200600.493604-21-richard.henderson@linaro.org>
-In-Reply-To: <20241005200600.493604-21-richard.henderson@linaro.org>
+References: <20241005200600.493604-1-richard.henderson@linaro.org> <20241005200600.493604-15-richard.henderson@linaro.org>
+In-Reply-To: <20241005200600.493604-15-richard.henderson@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 8 Oct 2024 15:22:23 +0100
-Message-ID: <CAFEAcA-vpg_Bun4r5=e7mghzWmh=rP+AHup9drQqzqjz4ON40A@mail.gmail.com>
-Subject: Re: [PATCH v2 20/21] target/arm: Add arm_cpu_tlb_fill_align
+Date: Tue, 8 Oct 2024 15:35:07 +0100
+Message-ID: <CAFEAcA9B1OsYgChehuz7uRgP-=Mbh=4zSK+owJz+BoBvA4Cnvg@mail.gmail.com>
+Subject: Re: [PATCH v2 14/21] target/arm: Pass MemOp to get_phys_addr_with_space_nogpc
 To: Richard Henderson <richard.henderson@linaro.org>
 Cc: qemu-devel@nongnu.org, deller@kernel.org, alex.bennee@linaro.org, 
 	linux-parisc@vger.kernel.org, qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-X-TUID: Udca1pPsJPir
+X-TUID: Pc4qNM4XNV6t
 
 On Sat, 5 Oct 2024 at 21:06, Richard Henderson
 <richard.henderson@linaro.org> wrote:
 >
-> Fill in the tlb_fill_align hook.  So far this is the same
-> as tlb_fill_align_first, except that we can pass memop to
-> get_phys_addr as well.
+> Zero is the safe do-nothing value for callers to use.
 >
 > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+>  target/arm/internals.h | 3 ++-
+>  target/arm/helper.c    | 4 ++--
+>  target/arm/ptw.c       | 2 +-
+>  3 files changed, 5 insertions(+), 4 deletions(-)
+>
+> diff --git a/target/arm/internals.h b/target/arm/internals.h
+> index 2b16579fa5..a6088d551c 100644
+> --- a/target/arm/internals.h
+> +++ b/target/arm/internals.h
+> @@ -1461,6 +1461,7 @@ bool get_phys_addr(CPUARMState *env, vaddr address,
+>   * @env: CPUARMState
+>   * @address: virtual address to get physical address for
+>   * @access_type: 0 for read, 1 for write, 2 for execute
+> + * @memop: memory operation feeding this access, or 0 for none
+>   * @mmu_idx: MMU index indicating required translation regime
+>   * @space: security space for the access
+>   * @result: set on translation success.
+> @@ -1470,7 +1471,7 @@ bool get_phys_addr(CPUARMState *env, vaddr address,
+>   * a Granule Protection Check on the resulting address.
+>   */
+>  bool get_phys_addr_with_space_nogpc(CPUARMState *env, vaddr address,
+> -                                    MMUAccessType access_type,
+> +                                    MMUAccessType access_type, MemOp memop,
+>                                      ARMMMUIdx mmu_idx, ARMSecuritySpace space,
+>                                      GetPhysAddrResult *result,
+>                                      ARMMMUFaultInfo *fi)
+> diff --git a/target/arm/helper.c b/target/arm/helper.c
+> index 3f77b40734..f2f329e00a 100644
+> --- a/target/arm/helper.c
+> +++ b/target/arm/helper.c
+> @@ -3602,8 +3602,8 @@ static uint64_t do_ats_write(CPUARMState *env, uint64_t value,
+>       * I_MXTJT: Granule protection checks are not performed on the final address
+>       * of a successful translation.
+>       */
+> -    ret = get_phys_addr_with_space_nogpc(env, value, access_type, mmu_idx, ss,
+> -                                         &res, &fi);
+> +    ret = get_phys_addr_with_space_nogpc(env, value, access_type, 0,
+> +                                         mmu_idx, ss, &res, &fi);
 
+0 is the correct thing here, because AT operations are effectively
+assuming an aligned address (cf AArch64.AT() setting "aligned = true"
+in the Arm ARM pseudocode).
+
+Is there a way to write this as something other than "0" as
+an indication of "we've definitely thought about this callsite
+and it's not just 0 for back-compat behaviour" ? Otherwise we
+could add a brief comment.
+
+Otherwise
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
 thanks

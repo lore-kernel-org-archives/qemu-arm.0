@@ -1,121 +1,192 @@
-Received: by 2002:a17:504:1f11:b0:1be9:327d:8ee3 with SMTP id z17csp362993njl;
-        Tue, 8 Oct 2024 10:51:01 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUrS3ZZERP1GhdO1SbXtU4AMOgGoBSqcjMWt5jxVvjEqEKRjXwd/XTv0KnjTc1cK7i8EEYgsKbNJq896Q==@linaro.org
-X-Received: by 2002:a17:902:ce88:b0:206:a913:96a7 with SMTP id d9443c01a7336-20bff04acb3mr219826755ad.44.1728409861710;
-        Tue, 08 Oct 2024 10:51:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1728409861; cv=none;
+Received: by 2002:a17:504:1f11:b0:1be9:327d:8ee3 with SMTP id z17csp353297njl;
+        Tue, 8 Oct 2024 10:32:46 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWQ6Y2CDKtrYUMa06lkfk+4eAhMlzRxm4dip6mlcQxJ+zDCAX14MLjYgM6DrohmQZ/xD350lS0jnySXmg==@linaro.org
+X-Received: by 2002:a05:6a00:3c88:b0:71e:2e2:c91b with SMTP id d2e1a72fcca58-71e02e2ca3fmr10988950b3a.27.1728408765862;
+        Tue, 08 Oct 2024 10:32:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1728408765; cv=none;
         d=google.com; s=arc-20240605;
-        b=lX4amWcLsy5xKHFri2CxrSNWg+LNb4t4/+NsD0BoireJGv6XgQ6AoVEY5sIJRqCSR4
-         xS8kMXExjlIWin36uXYtIqEwPaci1B89XE1Qq7s5ueTqH70Tsdi4YLJhUPEHa0okJLne
-         baV4RUBdWwEd6IMSlSg9jG+yYHe0f9TysD9xwikp4CVMpF7llaiVbqDkU+KOCanV8UCS
-         e/VipVXdeBKHgBqxG/iZRIjw7XpLdJFIaGJZHDuH24By6LWrpxM4fvmkApKHSBZ7L3JH
-         w1SdMeGfyiAyYmhxR6BJCxQ3OPk1CghOiE14IzUghpJeQEkhMP2lw2y/jfxheV1xqvXZ
-         bCew==
+        b=Mg+fy0byLz4bB4cClgo41BupTtn8YolA4H0ihSD0LovKPp8g36VGbdnkVdHTXz3Hge
+         OHordHvAkvOKct/wtf0lE0weiGv7ud48Dfj+xPXJ6bzWKTrWobKn0bAArO+y3+CcCZMJ
+         iWMonMthezs5tO9e7uIAJxkKFMoAlDATl+Vbh8YxHXy2FLpJNZkdkZrFS6M2V0vZkIka
+         BCI9NmB7P/TY0BSNqoVFO+uvN+q9HN2l8zp09vT0gKaOrCpsJAPoT1iaxH3Bsujvrsw+
+         3VKJCf+8gqBj0pcuOlkVaDFXvn7zymtmMA3qNtlMRIF34qHkcHUGkFCG82Tytr2xTxu2
+         Q1Dg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=u61rbn9oStn0Woo0fYr3gUc00N9GLwZAKPF4sc2tom4=;
-        fh=ubnqHwaGF+3WMJzTuPcz3r4Zr/44StXlirBUYggS4M4=;
-        b=EsVeONcjElIGB452dTEZGWLtDyMLovzr8n1uPOayCAtGmdH3+YK8Pd6thMNXV0Xa8s
-         QJ7s/ftCdvkYoeos5u89ApRiJ97zwrMNVSV0oH8FUKbZua5vgdQsmXiqWCTJZuGwkvUF
-         47Bk0uAC93392oMQ+hveY9bgiLBUgkiH75nOjA0yrii//deTCVEkR7w8GX+kZr9fN2ea
-         bgQ97HqAAv+xRJp48bpAPBfl4awvV405qTISLmZSqyAwJpvbH7QxPrwEenykteUeLXX9
-         iiNertsR7q+AJuHLxQ9fZOYKV7/U0+Adp+y14IiHYTfnXaNUzodMo/hOOmv7kkXRQFgh
-         J0IA==;
+        bh=U4Y923DNTB69Q7mP3ieLv48ZUpge+neE9bsJN+T0+x8=;
+        fh=WIGN84APW/xdQEvcRkgIR7Snnbhv07XbYLjcW4P3+ak=;
+        b=a3zWYfTXfyglLcRGrRNRqq6Ge/Twk0913alAUX89+qpetW2Etx/2BI6ebr3uIjjFfO
+         ceKlRGYYWM0Lzj7fTP+8Y1B95x8CDXujFyyw5P1NNkGmrt0A9lE8zfslezfkqJgDfIYj
+         0ZSKG+sxu00HH+cyS0vf+rhibsYzReZ0MSklSC2U28hIlqJliBfbVk+z+K5A/HailAIY
+         AW4sU5J8aZrn0F+UadtrMYo110Ry6j4KjAAo9GSwpfhYHT3Of6TUFNHF7lzXvulGMXOz
+         blYhFQ9gnkO1l2seLAlqTqAkoQLgUYXw0Tq6wDbFhjoIpeWQbIqQ+gA+BDhh1P0mOMFV
+         HDJA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=TNOHH32n;
+       dkim=pass header.i=@linaro.org header.s=google header.b=aKJKPzEg;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d9443c01a7336-20c138d508asor43998505ad.5.2024.10.08.10.51.01
+        by mx.google.com with SMTPS id d2e1a72fcca58-71df0d7f3fesor5473786b3a.12.2024.10.08.10.32.45
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Tue, 08 Oct 2024 10:51:01 -0700 (PDT)
+        Tue, 08 Oct 2024 10:32:45 -0700 (PDT)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=TNOHH32n;
+       dkim=pass header.i=@linaro.org header.s=google header.b=aKJKPzEg;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1728409861; x=1729014661; darn=linaro.org;
+        d=linaro.org; s=google; t=1728408765; x=1729013565; darn=linaro.org;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=u61rbn9oStn0Woo0fYr3gUc00N9GLwZAKPF4sc2tom4=;
-        b=TNOHH32n5a90Iqvyq2fXanpLcf+zY3pQIfTys3t0A2y6pvcNME1A8J4rYTHgYUIE2b
-         7sO1gl79/B/CYZYxboLo8v/0MmBAitIqdZ3XvAm5MUHkQ38GY3zxnrKA9E0/C92iQsl+
-         GYcplXh9hldv9WCayWLsXm/Skvld4Z1OsDoqZAyWznAkCns+Pw4fT8j7qHEsAJF01x1c
-         K2BqtQaPeY0WA4VBLb/SBHivbyGM8VX0Yf3tBkf3jc4ip5IwgPIm2LP+SmyKYyCW4yNG
-         OmvNeIiiwK9PfIeoIjfVzFUlWSs/f9Ys2V0jkbXSJDOW0VnK8Ji/J004XwD+cfVpdSg7
-         ntLg==
+        bh=U4Y923DNTB69Q7mP3ieLv48ZUpge+neE9bsJN+T0+x8=;
+        b=aKJKPzEgxYiIIbjOZusW6+v6Xg60AwbcCVBFZ15FSX34OD1J+7CG2HBqq5H37+5U7I
+         vdH3Mw+YMqL2sB5rjCOB70NIMzI2I8klZyy/5R9QMm6yQ2lJw6NTbLboApYEscdw/goY
+         tSgf8E4LIZJMDqsD7o8LnGALkIiRGGm3uWqODZbGn/nvzfA8G238t5fDZGQgs5Ede1AP
+         wbdwtAHIMIA1rennS6m5D63gzmRs+/si1z9dDyLhQR7FhOgLzBt4ErxLjO2YzU+Bi8Dn
+         MVwbq0xP2AoiHXY75nZhjo3tyH7HbzwMU2cThjW/RAnhzfC86y5xvhaRGwL+5iArjeae
+         wBmw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1728409861; x=1729014661;
+        d=1e100.net; s=20230601; t=1728408765; x=1729013565;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=u61rbn9oStn0Woo0fYr3gUc00N9GLwZAKPF4sc2tom4=;
-        b=Wn6MgMBbImV4LgVjeDHS/yKSp0sJ+eKrPxjuxScLNHpS9x8rDB+CUzrPP6op1DuwY7
-         2ioiYjW3sDu3cR5Jtw49xipu3f6GgbNof6Jvc7DP1ZhjZcUnRN04pAv7c9FV/Y7eZJ3v
-         QCN4v62bkZanmCzJ054gwWIATT0rboy1WjXtjWkU2RTW/JJcCES4eIobB4ihOmqWprVk
-         W17nCB79s5kt/CM1bLKc1Yj4kVtdfh1pAUjnu7m+LDXbvu4FnamkIRUaZ3r4isrBQZOS
-         1dfEfWkMPLIGePna7X6VcGjmGmhrJGjtujq67Yes5JuUYVOHGmscJU9bebKA9C63yZve
-         68kw==
-X-Forwarded-Encrypted: i=1; AJvYcCUYSNNtLN2AUFsLXVhP3gLp1itflWvHGDlg+XUE63+kQvXb8xYaJOAhlA1NxKX/C7ECcDbL3kNUlOi/7g==@linaro.org
-X-Gm-Message-State: AOJu0YyRa8zGVd+xZomsGuSgnOolA2JYHBv+A9D1S5FjWNsxyvdtGplK
-	4UsWQBB6cYsklTkkTrczdancp5a5LV8K6puPTKBSMFywo5xqauLD6296JQPJmThaxQ==
-X-Google-Smtp-Source: AGHT+IH/gmp29kQkCW1MHpP2Fw7IWUdIixZZ3svn3bgb1FIgQf5uLSMcvXEpVcoiw4XJJPN6VTBMxQ==
-X-Received: by 2002:a17:903:1c2:b0:20b:51c2:d789 with SMTP id d9443c01a7336-20bfdfef83emr245455255ad.16.1728409861117;
-        Tue, 08 Oct 2024 10:51:01 -0700 (PDT)
+        bh=U4Y923DNTB69Q7mP3ieLv48ZUpge+neE9bsJN+T0+x8=;
+        b=Vk4GW6LJ44zlhOKwIRxszKtGj0kJeSONk6h5wsVAj3iInbl7WaQQRe5VpVK9Kgk2b1
+         aX3lbz5iLWr9asL059pQZCSsGnWDIqfbad3I3iJ2keRbJUfUCzD24UB9qMAPMnW2xdhb
+         h0F/+yI/XW949nkZbPKB0nP7u8bnDvsX9Al8pCG3S/agfwzk45/psCw6kIeZJws74duA
+         NGuzZK+XorsTC2pcrhAMjJrdV57puRJCMCilffkjwS6r/vE8QaXPowBypAK940SX0Zhz
+         CNH0xUZQyeqGLOHhVmNdga4eBOr4mXYz77d9CJ/TmBxZs6beZyt5Av4leU05N40KxRpE
+         azYQ==
+X-Forwarded-Encrypted: i=1; AJvYcCU936qglNAJSewjShhVj7shR238vCJKvxoMAYF1v1zu9jt+/5e4XDvenHDDyOx7BTspiNC07HwcSKcDKQ==@linaro.org
+X-Gm-Message-State: AOJu0YwGy8sL0sojnTjzNH/o+DtHaU9CGcY4NLL8qKO/+TYc0YQv8lDV
+	V05jinoxzXvxIzEPu6NT64GrWxio9cL1WxrItixRQd8/EwgIjtaLdc1hqWegEAT0PQ==
+X-Google-Smtp-Source: AGHT+IGNqyg5pdejspXKBggqd2RvQRJTE4x6tHjisJvKdNG8KH+pUiftg7ccR+Rf3hDmeAa8Wu2wqw==
+X-Received: by 2002:a05:6a00:1904:b0:71e:1722:d019 with SMTP id d2e1a72fcca58-71e1722d508mr3560925b3a.22.1728408765209;
+        Tue, 08 Oct 2024 10:32:45 -0700 (PDT)
 Return-Path: <richard.henderson@linaro.org>
 Received: from [192.168.0.4] (174-21-81-121.tukw.qwest.net. [174.21.81.121])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-20c138cbf62sm58642245ad.89.2024.10.08.10.51.00
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-71df0d67beasm6573709b3a.179.2024.10.08.10.32.44
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 08 Oct 2024 10:51:00 -0700 (PDT)
-Message-ID: <fc414fcd-3e83-4cbb-ab81-77922b4d3c64@linaro.org>
-Date: Tue, 8 Oct 2024 10:50:58 -0700
+        Tue, 08 Oct 2024 10:32:44 -0700 (PDT)
+Message-ID: <5c33b223-10cc-4ad6-a3e8-15082266b31d@linaro.org>
+Date: Tue, 8 Oct 2024 10:32:42 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 14/21] target/arm: Pass MemOp to
- get_phys_addr_with_space_nogpc
+Subject: Re: [PATCH v2 13/21] target/arm: Pass MemOp to get_phys_addr
 To: Peter Maydell <peter.maydell@linaro.org>
 Cc: qemu-devel@nongnu.org, deller@kernel.org, alex.bennee@linaro.org,
  linux-parisc@vger.kernel.org, qemu-arm@nongnu.org
 References: <20241005200600.493604-1-richard.henderson@linaro.org>
- <20241005200600.493604-15-richard.henderson@linaro.org>
- <CAFEAcA9B1OsYgChehuz7uRgP-=Mbh=4zSK+owJz+BoBvA4Cnvg@mail.gmail.com>
+ <20241005200600.493604-14-richard.henderson@linaro.org>
+ <CAFEAcA_jXTuB6c8oVcXmi66zcXn5-PYM7W9z1wf7-fzXg7_Oiw@mail.gmail.com>
 Content-Language: en-US
 From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <CAFEAcA9B1OsYgChehuz7uRgP-=Mbh=4zSK+owJz+BoBvA4Cnvg@mail.gmail.com>
+In-Reply-To: <CAFEAcA_jXTuB6c8oVcXmi66zcXn5-PYM7W9z1wf7-fzXg7_Oiw@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-TUID: VBAHPpDuL7HL
+X-TUID: sVIK1YGnT+iw
 
-On 10/8/24 07:35, Peter Maydell wrote:
->> -    ret = get_phys_addr_with_space_nogpc(env, value, access_type, mmu_idx, ss,
->> -                                         &res, &fi);
->> +    ret = get_phys_addr_with_space_nogpc(env, value, access_type, 0,
->> +                                         mmu_idx, ss, &res, &fi);
+On 10/8/24 07:45, Peter Maydell wrote:
+> On Sat, 5 Oct 2024 at 21:06, Richard Henderson
+> <richard.henderson@linaro.org> wrote:
+>>
+>> Zero is the safe do-nothing value for callers to use.
+>>
+>> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+>> ---
+>>   target/arm/internals.h      | 3 ++-
+>>   target/arm/ptw.c            | 2 +-
+>>   target/arm/tcg/m_helper.c   | 8 ++++----
+>>   target/arm/tcg/tlb_helper.c | 2 +-
+>>   4 files changed, 8 insertions(+), 7 deletions(-)
 > 
-> 0 is the correct thing here, because AT operations are effectively
-> assuming an aligned address (cf AArch64.AT() setting "aligned = true"
-> in the Arm ARM pseudocode).
+>> diff --git a/target/arm/tcg/m_helper.c b/target/arm/tcg/m_helper.c
+>> index 23d7f73035..f7354f3c6e 100644
+>> --- a/target/arm/tcg/m_helper.c
+>> +++ b/target/arm/tcg/m_helper.c
+>> @@ -222,7 +222,7 @@ static bool v7m_stack_write(ARMCPU *cpu, uint32_t addr, uint32_t value,
+>>       int exc;
+>>       bool exc_secure;
+>>
+>> -    if (get_phys_addr(env, addr, MMU_DATA_STORE, mmu_idx, &res, &fi)) {
+>> +    if (get_phys_addr(env, addr, MMU_DATA_STORE, 0, mmu_idx, &res, &fi)) {
+>>           /* MPU/SAU lookup failed */
+>>           if (fi.type == ARMFault_QEMU_SFault) {
+>>               if (mode == STACK_LAZYFP) {
+>> @@ -311,7 +311,7 @@ static bool v7m_stack_read(ARMCPU *cpu, uint32_t *dest, uint32_t addr,
+>>       bool exc_secure;
+>>       uint32_t value;
+>>
+>> -    if (get_phys_addr(env, addr, MMU_DATA_LOAD, mmu_idx, &res, &fi)) {
+>> +    if (get_phys_addr(env, addr, MMU_DATA_LOAD, 0, mmu_idx, &res, &fi)) {
+>>           /* MPU/SAU lookup failed */
+>>           if (fi.type == ARMFault_QEMU_SFault) {
+>>               qemu_log_mask(CPU_LOG_INT,
 > 
-> Is there a way to write this as something other than "0" as
-> an indication of "we've definitely thought about this callsite
-> and it's not just 0 for back-compat behaviour" ? Otherwise we
-> could add a brief comment.
+> We do actually know what kind of memory operation we're doing here:
+> it's a 4-byte access. (It should never be unaligned because an M-profile
+> SP can't ever be un-4-aligned, though I forget whether our implementation
+> really enforces that.)
+> 
+>> @@ -2009,7 +2009,7 @@ static bool v7m_read_half_insn(ARMCPU *cpu, ARMMMUIdx mmu_idx, bool secure,
+>>                         "...really SecureFault with SFSR.INVEP\n");
+>>           return false;
+>>       }
+>> -    if (get_phys_addr(env, addr, MMU_INST_FETCH, mmu_idx, &res, &fi)) {
+>> +    if (get_phys_addr(env, addr, MMU_INST_FETCH, 0, mmu_idx, &res, &fi)) {
+>>           /* the MPU lookup failed */
+>>           env->v7m.cfsr[env->v7m.secure] |= R_V7M_CFSR_IACCVIOL_MASK;
+>>           armv7m_nvic_set_pending(env->nvic, ARMV7M_EXCP_MEM, env->v7m.secure);
+> 
+> Similarly this is a 16-bit load that in theory should never
+> be possible to be unaligned.
+> 
+>> @@ -2045,7 +2045,7 @@ static bool v7m_read_sg_stack_word(ARMCPU *cpu, ARMMMUIdx mmu_idx,
+>>       ARMMMUFaultInfo fi = {};
+>>       uint32_t value;
+>>
+>> -    if (get_phys_addr(env, addr, MMU_DATA_LOAD, mmu_idx, &res, &fi)) {
+>> +    if (get_phys_addr(env, addr, MMU_DATA_LOAD, 0, mmu_idx, &res, &fi)) {
+>>           /* MPU/SAU lookup failed */
+>>           if (fi.type == ARMFault_QEMU_SFault) {
+>>               qemu_log_mask(CPU_LOG_INT,
+> 
+> and this is another 4-byte load via sp.
+> 
+>> diff --git a/target/arm/tcg/tlb_helper.c b/target/arm/tcg/tlb_helper.c
+>> index 885bf4ec14..1d8b7bcaa2 100644
+>> --- a/target/arm/tcg/tlb_helper.c
+>> +++ b/target/arm/tcg/tlb_helper.c
+>> @@ -344,7 +344,7 @@ bool arm_cpu_tlb_fill(CPUState *cs, vaddr address, int size,
+>>        * return false.  Otherwise populate fsr with ARM DFSR/IFSR fault
+>>        * register format, and signal the fault.
+>>        */
+>> -    ret = get_phys_addr(&cpu->env, address, access_type,
+>> +    ret = get_phys_addr(&cpu->env, address, access_type, 0,
+>>                           core_to_arm_mmu_idx(&cpu->env, mmu_idx),
+>>                           &res, fi);
+>>       if (likely(!ret)) {
 
-Nothing other than 0 is leaping to mind.
-The documentation for @memop includes "... or 0 for none".
+The question is: if it should be impossible for them to be misaligned, should we pass an 
+argument that checks alignment and then (!) potentially raise a guest exception.
 
-Perhaps
+I suspect the answer is no.
 
-   /* This is a translation not a memory reference, so "memop = none = 0". */
+If it should be impossible, no alignment fault is ever visible to the guest in this 
+context, then we should at most assert(), otherwise do nothing.
+
+We *can* pass, e.g. MO_32 or MO_16 for documentation purposes, if you like.  Without 
+additional adornment, this does not imply alignment enforcement (i.e. MO_ALIGN).  But this 
+would be functionally indistinguishable from 0 (which I imperfectly documented with "or 0" 
+in the function block comments).
 
 
 r~

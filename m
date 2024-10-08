@@ -1,95 +1,98 @@
-Received: by 2002:a17:504:1f11:b0:1be9:327d:8ee3 with SMTP id z17csp213674njl;
-        Tue, 8 Oct 2024 07:05:30 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWm3n9wOahcRa+IpQ2a3+EHVionTIhTrCqO1RT2whcBvJ1d/UhQmit6HSoRWq7jzOMKay8tZCd+JwUumA==@linaro.org
-X-Received: by 2002:a2e:a985:0:b0:2f5:806:5cee with SMTP id 38308e7fff4ca-2faf3c5f7c9mr81673601fa.11.1728396330073;
-        Tue, 08 Oct 2024 07:05:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1728396330; cv=none;
+Received: by 2002:a17:504:1f11:b0:1be9:327d:8ee3 with SMTP id z17csp220436njl;
+        Tue, 8 Oct 2024 07:12:53 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVrKkcgttkF4szRu2FLC37nhWOOajAz/XOv26iw1tAdY16pYKRg2kg05Iq1VF00XXkUglMDBQyVnuELqQ==@linaro.org
+X-Received: by 2002:a05:6402:234b:b0:5c2:8249:b2d3 with SMTP id 4fb4d7f45d1cf-5c8d2e75c6amr15502741a12.26.1728396773479;
+        Tue, 08 Oct 2024 07:12:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1728396773; cv=none;
         d=google.com; s=arc-20240605;
-        b=b83+o3xR31AkIg1YsE2zOqdoUTOsQDbMAA5HjXPAm3wygbONL0WN+X4SLtgrWTB5ms
-         k4a5D3jTYeP9avy9/mv4KbzqqWPNVrPOzZ8/X8JwSJW33Wmr6MMo9eGg3PGe3Deh1Ajc
-         Jp7Onirbd12GOEUUrnGm2AuBVDzNP/yRJgbVDo2mPRpsgUd5/oimXfhv7BMKPHQ+pstG
-         O8k9oe2cquKFspJYWbxEVOsZaG7Dwv88jnzkSccBGLE6IGaiEUzdcrm8M08Ho0MNCJn7
-         JCJnvuLVzJKne1cETNsxBpGlPYHJmJ+Jj63j0dGdbx5ilQRzsDFNLmjMUuMMutoTDigG
-         FYMQ==
+        b=hiwV4SjsIjTuyL4n840NpK80z/40v88ub/MhQK+Uoc6rMhvz1xR4xaRpsUHOKX2pF1
+         8HXDTwBjmwh75OReC0d72obGj1JCg++jVzuVys4kSLP0OWav7w+ZFKFF56QJqA3mmY3f
+         Lc9KkbD0SqJ0mpHgZB/BzDdMxSB7RYHuDUqWnT9XqaIdA+2W3H929Cu7hMjamsXwkW2z
+         XxVOwbCwW5IXwMiXWGaxxbmHPiTqcP0pA9ZxFpzrWIERAlHiVSYCZ3RhLOx0HWFQlveK
+         5mt2buzUYxbmD1g/HCnNkjPHDXax95VyqPQjk492sxxOS1CExqVcJ52SdOjH03A+zO+g
+         mAow==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:dkim-signature;
-        bh=2l3ZDx6KfEzG9FBRNLYNkBYdxJ2VQK7XfM57EJm+wcg=;
-        fh=L4itmZ9+qYqJPSkdvrkrrP1qUmVyOVnNIy74aiOLLoc=;
-        b=K5PermAaB30IYtLfNVuXSC51LDVvUNF3mLnSgtnMCZl9UY09BJ8RiDGEkdP6H07vTt
-         4bj+dAFa073cw8O8kGsouqPpOKglYRd1W8lM7YdQwTiTvvnZq/QKB2rNjF4eA4GYJs5F
-         9/yjLyAaBO7O+ctAHdxP/fxteseUxc/QvMfBs3m0G3si6Id+U5JjWs9hmJtN4EzMTl6N
-         UbXle7u+X+8stmarA3JKleqOqdQJEMaXERWVBgK/uNqvXkbGpM+VJEJ9zYFQ64UxLFoz
-         q9+5CoBwZHYuMMgUPZJdpaeu8Gty0qTzoMck3JMuJnaY7ey4gw7CmQFb+rSBD6V1YRin
-         5dqQ==;
+        bh=1lXif4RUJBAa4Us8GfRhA66sgDxsm7TrrGS+Pr6tRns=;
+        fh=K5vxNdSwF6GndJEF2/ZkLiOUXgBzVwYxV0/l+SWGDAs=;
+        b=TbD/MAbSpjkD6qxTo/7BO79auAO3+mJI62rXKqZa5Z24WyeNs69QxMG64y0a3mxZeA
+         q+BFWiLzaMekNYp56H55gE9F9rMAZjySN+4HHTZA4bB5K8YCjMEGIS97HJWz6rZBj8mr
+         klFYbuW7kATToRAW4jougSc+rtkGrrWhX8AMMBBtJOvDDGzfXsm0toGbgvHHQekEeUij
+         VCHGPlAXfi6HSVESAR2/u3I8i3OCGpheLBbrGE3/xZbRs9en5/Dkv0lMD0GIy64YpfQO
+         V3gQY8o/v/3ZvFvjZVP0a3uu8VQS3G/Gl+HTFvJUY8K7uJWBCZeJDtTPjwsEy7yyqMLm
+         T5Cw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=I5g7YSF4;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ushS3szW;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <peter.maydell@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 38308e7fff4ca-2faf9b3f20esor9147811fa.15.2024.10.08.07.05.29
+        by mx.google.com with SMTPS id 4fb4d7f45d1cf-5c8e05ef384sor1892146a12.7.2024.10.08.07.12.53
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Tue, 08 Oct 2024 07:05:30 -0700 (PDT)
+        Tue, 08 Oct 2024 07:12:53 -0700 (PDT)
 Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=I5g7YSF4;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ushS3szW;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1728396329; x=1729001129; darn=linaro.org;
+        d=linaro.org; s=google; t=1728396773; x=1729001573; darn=linaro.org;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=2l3ZDx6KfEzG9FBRNLYNkBYdxJ2VQK7XfM57EJm+wcg=;
-        b=I5g7YSF45muEU+GvriktenmXC/A+rv7h4pJZ/6xbENOas2Ul1rIR0rJbR0Mb2WXn3i
-         IicOmI/LMQT4OMCaJ6teH764jCLUJ3tEWjzxqlZpj8z0fyKwptKJJEU/gZa0eJEtH5JK
-         uLvQYh9L1QhGcZrEXsKmmxUZ40vphF+Oau96jGQgMIr+EIU+GoofcRGLMAQtf/YxVdo4
-         t5rwADlZqn11C0KWVmTpDcF0+wNzCyqeV+Bkt5I/ascgpHA0d4AhI57Tupl5/vbkaWt+
-         tIbTvKwUvND586olOSSb1qTextzMWoqb07axStMt7WRYU05S52Pnm4/dSlBfXmmK5YR4
-         nYRQ==
+        bh=1lXif4RUJBAa4Us8GfRhA66sgDxsm7TrrGS+Pr6tRns=;
+        b=ushS3szWVSS1SFLcOuuxOaEAd5cYKG2NzviZasMizG0QAIrgIeU470wD6rmKO6Djrc
+         8yx0q/dxtbksvml6GmEl2mjVDjU3XAh439+Cq1x8ffXLF9KEOKBsbcQ2JuJDh7JxM1gp
+         fYdq+7v6Kv1eMJ5O7X+eljsxdGPitqTKTEbyNnuBLFzlyHDhx7e5gjVGhKNw8ziqSvBF
+         72CCKuMeMU/Ec54lMjSpWhBUwmQvaKT6l2+9wcpN6s2U4hRKOdrwkzhMCvovt6kEHqob
+         C6d7lLgQ8Dxdu20U7tR5BDi3Q9TzsyRCcospXM3F2xG/UaSeJsgpcIwbddqRzAIyswbs
+         Ud/g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1728396329; x=1729001129;
+        d=1e100.net; s=20230601; t=1728396773; x=1729001573;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=2l3ZDx6KfEzG9FBRNLYNkBYdxJ2VQK7XfM57EJm+wcg=;
-        b=B6t1mTQ4HZkz534xufNzh96RaqMDyfTb90cC5EJ5TCWdkuiqRR8AP3slsOM5BzoJF7
-         HaXPSDz3alLWfBF0cT9VyG8BuEdIAyEa18P+VfQy8Pe80KaHSfAI31F6DfE34r2NC4Sr
-         jIOFalIVnlMd8W4zXLCBu/9pMoDnkJJIH8PettrS9X8hMX1sLAup+sCLHlAeotWmN/RP
-         ToiGgvKLycs/8GanlZFM3vl1oHn00rg9/XSZ88BvJH2UzgXs95QI++WhO3b68AJliSBX
-         Mlot/BorzL4tHKPrDqTzq8wu2tY5j0b+WICg1yKfye6lk8EzxfFfn2bJGQX5wH9PGUDj
-         gmxg==
-X-Forwarded-Encrypted: i=1; AJvYcCXHxHg//mGTwkJTpZGvdh01EOYwnfmm25h9nSBf3+Qp3t/QO/zKYuHUgm0sAzVQ9gE/U+XeRTL1ZxBt6g==@linaro.org
-X-Gm-Message-State: AOJu0YzkIUJhnKpJ4Nq+BMtza9BKU1tPYWVkOIGeYraAVGIjytd01RBA
-	DpJV+uhrD3ZBNdXjRO+cxMruditFBkn7tsS/1TNjiQOcWDlmFP/FdpcPpOrFeIT3QUH80gtRpHS
-	LEyG0Y/5e0hkQw0X30HCwA6XQDPLHQCkCrfYllocR
-X-Google-Smtp-Source: AGHT+IHBZUuuXGIdrsRP+B4qX5P0Sr0NlGymNkJEVP1ALv2MaP/eBYA9REXK0nzhHDZeS8C0X8vz1WSBjTAJppTqxcI=
-X-Received: by 2002:a05:651c:19a0:b0:2fa:c49b:d14f with SMTP id
- 38308e7fff4ca-2faf3c509a5mr79361221fa.2.1728396329406; Tue, 08 Oct 2024
- 07:05:29 -0700 (PDT)
+        bh=1lXif4RUJBAa4Us8GfRhA66sgDxsm7TrrGS+Pr6tRns=;
+        b=vvwk0+b3Lpq2q+qjwfrDfEvcuDlAgU/UabC1XzU50ke+6fOc2O8PWGTo6xR6XLu4cx
+         tH2rjHeg042/qBGFpdjewgAXjM1kpjufiW+iyZlq4zIREC+lyMdSolXb0pGYLg0V0Z6I
+         Ob0REkmHGoAnxR5IClMTRFkpcBgxVt+TKiyaZhKTDW8HZUD2zj6wi+2Jfhdj2RPCLR+u
+         Mm96hevEUTRL+QpSzl29GoROYzmSmR0PKWYcCbSw1OEtx2qGdvJNIZWAEp/J6avEVhWX
+         oLGVV3K3iyoR/hBa2JsJQ/eppMZzkgtaL4TzrO44Vn3PRnsQCQrG3IYq6z9uZwuHFkTr
+         dXqQ==
+X-Forwarded-Encrypted: i=1; AJvYcCUOTJNjFmkLx7JN0LDKdjgvB7fHefjQ+rudkSul1PespD3NpcTNEfnYLEegxCW7rTVADYyhsLi0wmk/4A==@linaro.org
+X-Gm-Message-State: AOJu0YxQ7eV/YTib8+9EYgMf8miqvGY8EVMUaSzQ/akmno4RWKyMUUVq
+	50jy5uvZDbGyz7dFhII2/bht7/yPcwuW0f+j3gTz2DXDM1YMFTeSgjWgTAttnC0LCdRba0MWYD5
+	Ram96frLwz9sSeKom0skYsLMitIs4uCZt4IQ8PnGh
+X-Google-Smtp-Source: AGHT+IEcDc2sIhY+0z9mugT3adwi3ou7mwIvwU3589KDMI2IU3RWaTS2embnO91yYcHNIouo0MisPyWHIBEyQYrQlQs=
+X-Received: by 2002:a05:6402:4028:b0:5c2:6343:8ddf with SMTP id
+ 4fb4d7f45d1cf-5c8d2ea0879mr11698041a12.33.1728396772504; Tue, 08 Oct 2024
+ 07:12:52 -0700 (PDT)
 MIME-Version: 1.0
-References: <20241005200600.493604-1-richard.henderson@linaro.org> <20241005200600.493604-6-richard.henderson@linaro.org>
-In-Reply-To: <20241005200600.493604-6-richard.henderson@linaro.org>
+References: <20241005200600.493604-1-richard.henderson@linaro.org> <20241005200600.493604-7-richard.henderson@linaro.org>
+In-Reply-To: <20241005200600.493604-7-richard.henderson@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 8 Oct 2024 15:05:18 +0100
-Message-ID: <CAFEAcA9V5-hbQm6iDP80cH9LQi3zcCp4kHZDp4MG2y25SP_PZw@mail.gmail.com>
-Subject: Re: [PATCH v2 05/21] include/exec/memop: Introduce memop_atomicity_bits
+Date: Tue, 8 Oct 2024 15:12:41 +0100
+Message-ID: <CAFEAcA944zo89gOGhn8Axdi4P+vWqATo7qGGEEMDcwPyAD==7A@mail.gmail.com>
+Subject: Re: [PATCH v2 06/21] hw/core/tcg-cpu-ops: Introduce tlb_fill_align hook
 To: Richard Henderson <richard.henderson@linaro.org>
 Cc: qemu-devel@nongnu.org, deller@kernel.org, alex.bennee@linaro.org, 
 	linux-parisc@vger.kernel.org, qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-X-TUID: J6UpDr/MVl3j
+X-TUID: 4v7+zwEJ6quK
 
 On Sat, 5 Oct 2024 at 21:06, Richard Henderson
 <richard.henderson@linaro.org> wrote:
 >
-> Split out of mmu_lookup.
+> Add the hook to struct TCGCPUOps.  Add a default implementation
+> that recognizes alignment faults before page faults.  Populate
+> all TCGCPUOps structures with the default implementation.
 >
 > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 

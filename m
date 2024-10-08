@@ -1,168 +1,411 @@
-Received: by 2002:a17:504:1f11:b0:1be9:327d:8ee3 with SMTP id z17csp243328njl;
-        Tue, 8 Oct 2024 07:46:06 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWtmMyrRbshhM4uD42zXBbRrVOBLlduJagKwiYX5CH+KNk3N/jj1LReGPoS+hCMjjc/PiQbTAsqmmPRYQ==@linaro.org
-X-Received: by 2002:a17:907:3e05:b0:a93:d5d3:be4 with SMTP id a640c23a62f3a-a991bd16c3fmr1610531566b.13.1728398765870;
-        Tue, 08 Oct 2024 07:46:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1728398765; cv=none;
+Received: by 2002:a17:504:1f11:b0:1be9:327d:8ee3 with SMTP id z17csp269731njl;
+        Tue, 8 Oct 2024 08:22:02 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCWGhRT7F+r1+DLDggHO817cc2I2AYdNvPf92bTaZqqeeVINU1IYu+yXkCHEEL5ijM7o/8J/CQDgyYN0RQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IEOMLfS8AK0K0fsnc4lLwHDdCbvE8N+uIpkb4LdtJUkfCfJf5thgK8/TQcJ1pjnuayfF3YR
+X-Received: by 2002:a05:622a:2989:b0:45f:67c:1eba with SMTP id d75a77b69052e-45f067c2045mr16320161cf.11.1728400922016;
+        Tue, 08 Oct 2024 08:22:02 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1728400922; cv=pass;
         d=google.com; s=arc-20240605;
-        b=J38UQk8w9hpA5I8K90afkv767dSa8nU0QOGRTdWsW1io3u5IHpPgxNap7+8AjH0EoB
-         aM1h34DKy+s1cJn3xHGSLPj9zeokMz2G0t7LYzJQYlEO9KIYzRJZIwSUT16WOZ1BPznc
-         bQB8A/2aooMCyUlMUzLXeHzvs2yE29r2U7tVNZ1vSq2/q1NsZJCpIEu6X5GMW30eZucG
-         9LaArquaxk3S1tfjSb9KCZtLYFqkkGT6C+QEV6CH3VP1uPE8wPfT5FGSWl40hSHgHV+x
-         dXcuCSptAy+OSSY1FqJaHZXuuE2Ipln2jLoyWKfRitYLHykQT/TWInP1MWj03BV13n9W
-         dH8Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=j5MphECLD4P0U/jqbmbESSvAYHMevQyba1bA/1qjbuA=;
-        fh=5bsxa+6u59BK7EttGcknRG4ajhDZmxGhIcafQ0okKg0=;
-        b=E+M7JUeRKTho8thwDQZVTqMXmP8fNxceAEXSZpFZUr4GLbs8MznZrcuOxJaaF64gmW
-         bu26oqkQQIzB13Tvk0wUL9xCOTqLqpRSX422sLW5nfrhlG0I+LltswyB3XpKFaFmKw3y
-         Y03SkSmDo2j8gQozWv8pcm/ERPXbx/R3eSrVTvQ+spwP9zx1XrVcrzqi6/DX6mOMSecS
-         5wVUzoAMmMWO/acl4GrBtzwi8fPnGqlcBUWTyYV+2P3JbuBraL7t8b782vv98H6gDv0V
-         6oKfX+sfVOUIPMXtynImkaGx6IvCWFSrUcdLU9nucRpD4BGnttmNrrVE72I70F6TYpH1
-         cphA==;
+        b=bYw9bvMgierfe4tYib8E7PxCE0WfBaA6bRJKeVarM1HTaG0dJtOuphrx3QRjQrHUam
+         d+Ny+I3+DmvgJRNKpoSeDIbNGtkyvrXS/H6pop8UPn8leWtDpIk7QoGJtyWBfhdntSdU
+         B9YRcaWk6Dyi3fwYtI+oZbXrjGhga5ma5V8p5LLRLT/gipBXXQjLj1eZMueVR30YaHek
+         +AFLktMIS2iX74+ikQ6ppeKUIp7zdD0zxJ/WU0uKznZIZgEh8J6n/5UN2lxcKZehmlhR
+         uaNF4uYqjChbGKSKmBa5GSjo2lI9QR9U0qCmktyEgGJinLGe5FirHqqsmL5rfIQyToxJ
+         QUFQ==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:date:message-id:dkim-signature
+         :dkim-signature;
+        bh=zWywVMpcuXm26xRJfowhqS3Hlp+nCd4WfLbpDbju50Q=;
+        fh=RN+PIeI3EZvn42Y9+S0CGvOibX0+BxBSdGYAL9pvJys=;
+        b=gVcFZvNa7hotP078jlQJPg/P08GBv96RXYM6TLrcrfLZyUv/J8/P5/BTK0H4HYzHwO
+         bYKC4xEap4cklQRAUFRUxy73v2gRqap7YD3LxMX8spwonwYcwVloMrJvTJWhAxQhZpRx
+         pukIvNFUPobyyPuHltlVGCcNDubgUD4RfwotoCk+Wk0Y0+cPVReqIDOwaI6nTuijtocE
+         y2YWGTfPPk3h1C9MF13rKzLgivSIyf8EG8h9Id5Iq1+gsIvx4IPYgB5zLKeD4cv8og+P
+         rx4/WQ47ZbLh8/V0FPjuNGyMq91wMh6Tjh2qjRkBAeuTVSkzQr64DgtqMTcXgOfTemjZ
+         ufVw==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=FhceTU5I;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id a640c23a62f3a-a9943221077sor245406066b.1.2024.10.08.07.46.05
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@oracle.com header.s=corp-2023-11-20 header.b=h5aeuXy0;
+       dkim=pass header.i=@oracle.onmicrosoft.com header.s=selector2-oracle-onmicrosoft-com header.b=HM6NjtBn;
+       arc=pass (i=1 spf=pass spfdomain=oracle.com dkim=pass dkdomain=oracle.com dmarc=pass fromdomain=oracle.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=oracle.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d75a77b69052e-45efd2817edsi16871181cf.201.2024.10.08.08.22.01
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 08 Oct 2024 07:46:05 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 08 Oct 2024 08:22:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=FhceTU5I;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       dkim=pass header.i=@oracle.com header.s=corp-2023-11-20 header.b=h5aeuXy0;
+       dkim=pass header.i=@oracle.onmicrosoft.com header.s=selector2-oracle-onmicrosoft-com header.b=HM6NjtBn;
+       arc=pass (i=1 spf=pass spfdomain=oracle.com dkim=pass dkdomain=oracle.com dmarc=pass fromdomain=oracle.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=oracle.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1syC1o-0007mU-0t; Tue, 08 Oct 2024 11:21:36 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <annie.li@oracle.com>)
+ id 1syC1m-0007m9-Mv; Tue, 08 Oct 2024 11:21:34 -0400
+Received: from mx0b-00069f02.pphosted.com ([205.220.177.32])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <annie.li@oracle.com>)
+ id 1syC1k-0008OF-7z; Tue, 08 Oct 2024 11:21:34 -0400
+Received: from pps.filterd (m0333520.ppops.net [127.0.0.1])
+ by mx0b-00069f02.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 498DtZVj008590;
+ Tue, 8 Oct 2024 15:21:19 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=cc
+ :content-transfer-encoding:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to; s=
+ corp-2023-11-20; bh=zWywVMpcuXm26xRJfowhqS3Hlp+nCd4WfLbpDbju50Q=; b=
+ h5aeuXy0rzXAPSgRee1Wdq6Lh0x1XNmY+zKpgjLqwuy0mM/0xOQdy9wicDzYjP6I
+ UScL7InpiwD2lGYNoAvTkI91agqJ5D4sb0vHcC/WdX0MrtjXlka2/948O3Ciczt6
+ fxUgqiOvDeYVmHblbrTc7h3UwtSvMMH53cNHbThI/raMPgfzqr96xfjNqi5B6bBa
+ Fb4/ko/r1kmyj+xCRoxuZQdhDXfqWhaCZDEVRFJqJQ0+RYBPMMUUViggglxChwtt
+ qZ6+SAXhvyYYWHYEwVIhIakE2ko+Or/G2M5/kk6lbgrKbo1dPVgA5kAFAOIY2K09
+ twxpe5kQLagKoiAM7CogPw==
+Received: from phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com
+ (phxpaimrmta01.appoci.oracle.com [138.1.114.2])
+ by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 423034pa88-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 08 Oct 2024 15:21:19 +0000 (GMT)
+Received: from pps.filterd
+ (phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
+ by phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com (8.18.1.2/8.18.1.2)
+ with ESMTP id 498EFFIO012038; Tue, 8 Oct 2024 15:21:18 GMT
+Received: from nam12-bn8-obe.outbound.protection.outlook.com
+ (mail-bn8nam12lp2172.outbound.protection.outlook.com [104.47.55.172])
+ by phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com (PPS) with ESMTPS id
+ 422uw7aues-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 08 Oct 2024 15:21:18 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=MF2cDdnWy7IN1D/lpUI24QvLX88ZOyh9WmsuwPF/F3xp7gBApoOM1/NJtmiR8OwNMagWwm+siD1rJArEOwbR9zl00orb9PS2baQOGj6Z0DRp5GyGSWtGBiW5q8rOrPZSkBqnYJEzsMPXI1Jx9yWqmAdqB2OnjHk0oS6mK3QWMBmpnDRQVcUk+ObHd5S1AzectQR2dS902OMoyhA1+a0OSKPKodtg6hxcD8gmnwURvHWLPDP0oKC4QX5ndcluYLJsnhuD501r+hpequiw1ahA145hoRstGaUsMmnJJxsCcbiAQJScIu12RzP3Tu8Nhc+Jv1+jaoqs4+fFCZO0ApdE9A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=zWywVMpcuXm26xRJfowhqS3Hlp+nCd4WfLbpDbju50Q=;
+ b=iV4FIVQo9za7nXr2hZyXz7In0yhJJmMI8/kj3MpApUrungxSQCb4D/OctUs6D3Ukz9g54R1KxmIzz3ELOgwT31yo+mxBAa03GzwYYRYrHmpa5WP69BQb629L/V7gXr6DN07iphqQ417Tu4sxL5vlimacddXmjrpQfvMbvN8MwsWniKNQBXMXjwYzyPeuiDQNOKQUP3svquL6wa1B0Ujski22l5wbVig4lvW4ZevufmZ1uyOpXSe8Q+HqWHtPnlmjg6PmRS+ArAYEoRceJjF/VOoBhMwcPujyFhiMZpYuqU/4her6IytjpBSCePOEzFIu04Z606DDxsK9qq+Ojw275A==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
+ dkim=pass header.d=oracle.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1728398765; x=1729003565; darn=linaro.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=j5MphECLD4P0U/jqbmbESSvAYHMevQyba1bA/1qjbuA=;
-        b=FhceTU5I36wM+O/VrvGnUSND9Zf541fSAkOBslMZiAMOS+rWybNhslju+dIZycPhl8
-         JFysQ9wnwqlbpMesW+ZfAvFNmzbQ/uldHkEWcAQGeG0V2Ezdxn4/gcDKITUn+Ek0qKTu
-         K+kr8U9Euoi58nXeTu7FnlYspQu78A1KFi/48+CdRJrsrOow7r7FEpuu/ZxYRVI1tvj1
-         f0LnZkQNxcQSzX92WFwz5YEDlceVlEcz6cf5WH0PUv1ipb2Sc1UD4hz8mDbaTBekYA8G
-         42YLnbxxBXv3f6vcl2yWogN5ycJTPx73yh1lnl+O3+steZv4xad1vxC4hB9nPltc5522
-         FlOw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1728398765; x=1729003565;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=j5MphECLD4P0U/jqbmbESSvAYHMevQyba1bA/1qjbuA=;
-        b=EFXSzlJLgCJ76T4kjEqJuUerOmT66vldqc21xRyXGrzIUP2i5flyZa0t3dAZw0qfpK
-         O+LmBMPAWot7O1+J1rgQW7xVVMD8e0JvcddI5oAR09/2cgvDH5p+31dPtYm6XNuPHMVW
-         ob8ojz6glQQTzIOHexTB7K+92Ab2PoV2GzYdRJj/TY4Kvfe6TusUGo1a6+eICyW3oBIo
-         ctajaS0lzDkIIn4Iy17783uDLKyV8r+sD02+rO7ACZ0B1rfSAmNocfPyo/Kvs3WkE869
-         wEBzMEyz2n07H2f6zrTjJxxK5531Dm02i/91gz5p6HY4EOh6tWxUDQcXuzADFch2C9Ud
-         kVNA==
-X-Forwarded-Encrypted: i=1; AJvYcCWLhLzAvTTUnOpaqF4ziR+Bs6rD6dQu9bemov1dUHxuH7dhHBXIyp22iSAc2kn6hxpq8w+LFJtSBojMqw==@linaro.org
-X-Gm-Message-State: AOJu0YwAhoAik7g1z1DWyo/WPKJMWVSZ4/BG9vOAKIUwYK1D6SwwcoxC
-	lPfz8v5EXhmDNETKF1MlCCwuYp7ZD7HIC/Yn3B38iSnjW8bIPhVhbIKFRW1bC7Oz6Q7teujXcuC
-	jXLJR+apbcnRijENh32g+HJ9hDE3UPD7pSYQp/0ur
-X-Google-Smtp-Source: AGHT+IGbbRXahkkw9UahWbFZHSA6zRVWmmssrHeW2g12mO5Ut8YunOTSsC5XXWpGwl8aN5g3vofSKPBmJRKe9gpczlc=
-X-Received: by 2002:a05:6402:50d0:b0:5c8:a92b:b0a with SMTP id
- 4fb4d7f45d1cf-5c8d2e1efd5mr13576867a12.1.1728398765144; Tue, 08 Oct 2024
- 07:46:05 -0700 (PDT)
+ d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=zWywVMpcuXm26xRJfowhqS3Hlp+nCd4WfLbpDbju50Q=;
+ b=HM6NjtBnuMTQW81IX+t9Up6HcEfKrbTyTiudvx/BCmWnawFgmm1OJ2fa3S6QILwggRn3DcTG7fSAwPC1UXNfaKMWAm0EgHHQe0vk3rHZeIS/ROyOSuW3Es8YLE03fGbNJBe8G7h8gyLYSzwdSXSRFoagJZuMukM+Y4PfgQKAN1s=
+Received: from CY8PR10MB6851.namprd10.prod.outlook.com (2603:10b6:930:9f::11)
+ by BLAPR10MB5185.namprd10.prod.outlook.com (2603:10b6:208:328::16)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8048.16; Tue, 8 Oct
+ 2024 15:21:14 +0000
+Received: from CY8PR10MB6851.namprd10.prod.outlook.com
+ ([fe80::a218:72a4:83b2:56dc]) by CY8PR10MB6851.namprd10.prod.outlook.com
+ ([fe80::a218:72a4:83b2:56dc%4]) with mapi id 15.20.8048.013; Tue, 8 Oct 2024
+ 15:21:13 +0000
+Message-ID: <80483b29-2334-46a2-a95c-649d898a1fd6@oracle.com>
+Date: Tue, 8 Oct 2024 11:21:05 -0400
+User-Agent: Mozilla Thunderbird
+Subject: Re: [RFC V2 PATCH 00/11] Support ACPI Control Method Sleep button
+To: Igor Mammedov <imammedo@redhat.com>
+Cc: miguel.luis@oracle.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ dave@treblig.org, mst@redhat.com, anisinha@redhat.com,
+ shannon.zhaosl@gmail.com, peter.maydell@linaro.org,
+ eduardo@habkost.net, marcel.apfelbaum@gmail.com, philmd@linaro.org,
+ wangyanan55@huawei.com, zhao1.liu@intel.com, pbonzini@redhat.com,
+ richard.henderson@linaro.org, eblake@redhat.com, armbru@redhat.com
+References: <20240927183906.1248-1-annie.li@oracle.com>
+ <20241007154150.6d406a7b@imammedo.users.ipa.redhat.com>
+Content-Language: en-US
+From: Annie Li <annie.li@oracle.com>
+In-Reply-To: <20241007154150.6d406a7b@imammedo.users.ipa.redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-ClientProxiedBy: LO3P265CA0019.GBRP265.PROD.OUTLOOK.COM
+ (2603:10a6:600:387::18) To CY8PR10MB6851.namprd10.prod.outlook.com
+ (2603:10b6:930:9f::11)
 MIME-Version: 1.0
-References: <20241005200600.493604-1-richard.henderson@linaro.org> <20241005200600.493604-14-richard.henderson@linaro.org>
-In-Reply-To: <20241005200600.493604-14-richard.henderson@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 8 Oct 2024 15:45:53 +0100
-Message-ID: <CAFEAcA_jXTuB6c8oVcXmi66zcXn5-PYM7W9z1wf7-fzXg7_Oiw@mail.gmail.com>
-Subject: Re: [PATCH v2 13/21] target/arm: Pass MemOp to get_phys_addr
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, deller@kernel.org, alex.bennee@linaro.org, 
-	linux-parisc@vger.kernel.org, qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-X-TUID: Bw6/XisNDndd
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: CY8PR10MB6851:EE_|BLAPR10MB5185:EE_
+X-MS-Office365-Filtering-Correlation-Id: a4e6c85a-6c0d-4def-7634-08dce7acd8bc
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|376014|7416014|366016;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?aVlyd2pORmwxVGMvQWtNaU40MU9EMkc1NGluWnVoZWNNc00xcldPMHFFWTlJ?=
+ =?utf-8?B?a2JlT3FaQ203cjM1cmd5OFBsTG5lUmcyb3puUkdpMnlhNWhNbUdRZUlHV0ta?=
+ =?utf-8?B?L3g5QXJ6UnF5emdPTUx1aFZVb0F5SnlTKzdYbTEya2hrdkxwcHM4cUVwdUM5?=
+ =?utf-8?B?SzFrS25DTEluNHRZeDJWakRMc3BPT0NtdFlQZkFzYU4zM3BJK3ZFc1BxNFVL?=
+ =?utf-8?B?MzNHWmdKMzYwNi9wclN0ZWJaZVFPcFZwKzlEcXBjUmdnYzNZYStpWEJuTDdq?=
+ =?utf-8?B?MkVCb1NBUmVlS1cxdDJCTEVPaXhZTlk3bDBKb2Y5YWpKeUtLMkFWS2ZOUDZM?=
+ =?utf-8?B?eFc4ang3NUVOQVQwK2Vpd3VGaVVxcG5ZcDJSZWdZMmtOMU5qTGlkS0d0TTJ5?=
+ =?utf-8?B?WDdYVDhYNGp2MnEybDFiT2k3ek5Ta2toSkdSdWQvRGloMGZ4N0FGZWdaMEU0?=
+ =?utf-8?B?L1liUFdkSC9hQzhhRHcwRGlXbXVtelIxZ08weW9YODRmcmRLc0g5cVcyR2Ir?=
+ =?utf-8?B?Rm5hRUJJUVlSd25OMGxRemxDaGM0TWxJbFJxWWI2cGU1K3Y0K01Kb2t4T2ZQ?=
+ =?utf-8?B?bnlucTJQays4OEtqY1pKWjh2SUgzUzJGL3pNQmdlZHEvYkN5VUErcE5oOERk?=
+ =?utf-8?B?cTV4SUoxY1hTVTdocWNlc0hZdTBaUEgvQjJCYzg5enFmZnZNdHJTbjNyWERN?=
+ =?utf-8?B?bUNGMXUxR25wNVpxRmU2RDZ2VXYwWk5NczBaWHc5MUk2ejlLbklGUTF5QWx2?=
+ =?utf-8?B?ZmZ3UFJlYytyLzYvYzZsMTFJYUpzQWlmc0wwWmh6MW92NFN5NnNINFhPbzFo?=
+ =?utf-8?B?bUpmSmt0d3F6V25kQVlrTzd2UlFWZWwzL0wyUlBpNktIbGRoNFB0NncxQTE4?=
+ =?utf-8?B?Y1ZzMHc1NDV5TW1yWUxwVTlldHNqRDlUWit5S3d5Y2NLeWJTWVVFUVFBSlBx?=
+ =?utf-8?B?WUUvT0hETS9XVUFNNUkreGF2NS9QZkRjVnpmSjM4TVFGOXNxZ1lnSlo0elJE?=
+ =?utf-8?B?OE9SaHp1YUNuRW9Xdis5UmtmMnVCeWtyWE5DY2p1bm9IVFdwcGZHZjg3VXpN?=
+ =?utf-8?B?RnZCWGxwWUNySTVVVVNtbnB3Wmk0SlprTDF5MWFhbk9VUmJqclJib1FqbTZq?=
+ =?utf-8?B?VXU5aytiRkhZT2U1aGh4QjUxRDh1blFjUTdMVG5nNTBmQUFCWUF2NXFyR1pN?=
+ =?utf-8?B?alpDQmFyTEg3RThhOGxMTkFmeVNhRUZYb0VNbEltUDVjZGFSc0ROclIvZmxv?=
+ =?utf-8?B?R1M2d2pyTkxvQW5iVS9rMnk0RUJlejRKTmtWdzhkZnFrSUlldTl2cng0SGJv?=
+ =?utf-8?B?dW5tNHlJOFhJYUszb0o1SGdiSkZ3ZWVGU21zU0U2b0Z3ckY0M2I0QXdvYWV1?=
+ =?utf-8?B?ZmY1dy95bjNzYWlUY1k0VGtIVmsyVDFzRFhkQkJ3SEhWWGo2NVVZYlNyOHFn?=
+ =?utf-8?B?dmpPMTNNbWp5R05uZmdsak0zQkF2Z1ZRZTJyTnNtOWw1bFUxTmh3aEZDRE1E?=
+ =?utf-8?B?NitQRFAvKzFFMndvRE5tS092MUFxZnUxMmV5UTF4c05BaHBiMDRoN3h4R1B2?=
+ =?utf-8?B?SnRkZ2p3K1VNYW5kdmFUc3VQTG9TalhZY3paVTJTaVJhbzlSTlh6MVR2QzRU?=
+ =?utf-8?Q?2W0Cp+xOFo9Id9XkiF7L5+svsmibUqNRLJGBOHZD1Vvw=3D?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:CY8PR10MB6851.namprd10.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(1800799024)(376014)(7416014)(366016); DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?TEJnNWwyZFo0VnVMUzRmUldXSVV5WTdFRWNDbUpJaDg2bytnUVRSMmxJZFJ5?=
+ =?utf-8?B?SmRCbjBBSkR1TTJ0bUR6VStuZ0h6TEEyK3NzOFRSdHE1d0MvQ0loaGdTa1J6?=
+ =?utf-8?B?L3NrYWNHUU1CcHE3a1lhSEh2V2VUUit3ZjBaRkhUdktnNG9YRzV6bFl0L0NE?=
+ =?utf-8?B?NUNSWi9CdUtEa3ZrS1hVUyttQVRkYnpBSi9CSFpxcTJ4MTF5TXJtMUxrZU0x?=
+ =?utf-8?B?UXRQUkVmWW9UODZYNlhEUm53c3hDOG9xWDQwVGovOTFEREFkUFVzZVZhcXRB?=
+ =?utf-8?B?cDZDeExCbUJoL0dqdWhWVFRiUnI3V1ExRjlZYlJ5VHJNSjcvaWZvc1UvV3Y2?=
+ =?utf-8?B?bUpFNnlDcTlBN1dldjdSNHFuTWU1VWErV3RtTkVvNkFGdE9KbmZaVUtKUjN0?=
+ =?utf-8?B?SnRITURTdnFmelZnanFjbWF0MkFLUlZ4b1RaY1dKOUJWVmZ4cngzNlNnYWJn?=
+ =?utf-8?B?SmpUOWFtUy81V0RiVW1sNEErSjJYTFhJd1V4UmxFUS8zd1Npa2tHTVJwbUJ0?=
+ =?utf-8?B?MUNNSDFOOXBwa3JZRzF6dU9SbXlJTUQ1MGxZTkJqcmNVYlczbEcyL1lFb1ZV?=
+ =?utf-8?B?MzlTUm1LZ3JlWW9KWVEzUkZDMlh5MVI2ZEhOc2dFWVNOa2JkN1QyYk9IdzhT?=
+ =?utf-8?B?UEhYcDljUXJ6WVMwZkd0ZDJpek85Nm0vamNjRnRGNWFXNFRSSmd4WG9abFMy?=
+ =?utf-8?B?SUlqWGxaYnpqSkFuWGVKVXlOUUlLVzBGdE56WU9Qb0Rya3cycXJ6cTM1SWpO?=
+ =?utf-8?B?VUdTTG92ZS9GMmptSWpjaDJGMHN1eGlCUmF3M3J3L1czelVwV2tOMzd2T3pM?=
+ =?utf-8?B?VVZ5V2NEakZMQ1h3VmFzRzdZOU5QNVo3L3l6Vi9BRlhaemlROEpaZUJqakp6?=
+ =?utf-8?B?RE16TC8zbFEzK0JRMGY4MUtCQ01NcnprR3BZQXhNaUJDR3Q4NS9DMzhpUW4v?=
+ =?utf-8?B?TDg3V1pEOGNoc2VIZkNwZXRQNzd4QmYxcHpqSHVlV3ZpN2NQeld5S00vaWJh?=
+ =?utf-8?B?eVVyTmp3QW02WngyV3lDTCtlRE9iMmRuV3BJUGpTVk5KNittMVBvbDBSN2hh?=
+ =?utf-8?B?cEJOaVlyYUd6QmI5aHlrUVN3TGlzekU0UVZTSEZOeVdad2pxd2ZxSUpUR2FI?=
+ =?utf-8?B?VVlKTzQzd1B3RG41N1lrY2N1Y3JibDhXVy9TbDRqVjZSdEQ3UDBQaWREeFho?=
+ =?utf-8?B?Qm9TR1R3UFhiZ3A5Q3RTQWRWNFQ4dUNTZHVYYjQ5TWFsclFSZ2ZIMlBWY2hw?=
+ =?utf-8?B?ZmRpVDc4SC93TEFkZkZMcmNmdUNrOEpKUU5JVlJlWi9PTnJhNVBWM2E2Y0NC?=
+ =?utf-8?B?YmNJcjBySEpTOGljc0UvRHN1OHU4a0o1cnUyUzFWTVhVcDkzYUQ1ZzFTWXdL?=
+ =?utf-8?B?V3VHMFY5TDA3eUhNMnJSVEFXWUZqL01CeGVXOUEwelg0d1U4MmVqNFJFNFVk?=
+ =?utf-8?B?RDlPZ0JIRTlrZGkrcFpLRlY1QVJ4N2xDbnlCVUZvK0c3b1RKM0pqSnYyVWI3?=
+ =?utf-8?B?S1ZFVllJZytLUDlGeXBVMmdydDR1dVlhVEdaV1dteFBnUWNSOFNZRVE2dzYx?=
+ =?utf-8?B?V0ZoQ3FjRHRTQ29TcEozSFkzdHhTSmUxR1JQRzNWMStCVXl0RVpqSXJhaXlm?=
+ =?utf-8?B?L21Wa2pXRWtTZkh0eFhjSXV3MmRyeUt1aWxzWHp2WTJ6a2FWQnRCWEFpTnl5?=
+ =?utf-8?B?c2pFcVIzaTZjR092cGNvWGxERHU3QVlBYjlNRDFTa3Q3a1RhN2NBY2VZWGNx?=
+ =?utf-8?B?Y0ZEazJhMHBGR25FV0RXelR4bk04eEt4UHZYNXFOTmpFQ3BOMFJVWEhUR1Ra?=
+ =?utf-8?B?YmNJcy9oeng3Umlaamc5V0xFNHZuQlgyamhBc1F3bUZ2aGRlaERWYis1SGRs?=
+ =?utf-8?B?TEZla1BqdW9NdFFkSnNONDJEdG5qN3BtSlJOaXg4enUvN1I2dTVIUHAzM2Nh?=
+ =?utf-8?B?ZXhxZ2t3bFFlUlIrV3pxZGZPdG5TNWsvVWR4KzY0aHRmWUpKNlpLalJMN0pG?=
+ =?utf-8?B?ejdySTRldlFoQkorbGdFVUF4UGFDQVJKMGNYbXkrVktmYTZKYThtazZPRmxJ?=
+ =?utf-8?B?RHJKTHBiV2JiZ0I4alNGQ2lVY05ONlZlc1hXbGxYY2dYQW15bms2b1V3OWl2?=
+ =?utf-8?Q?ozlvZ2KnftgF7AxCY7ofJ+Mqq?=
+X-MS-Exchange-AntiSpam-ExternalHop-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-ExternalHop-MessageData-0: oll9HDbkRa1rPTaWwmkDQj79DlY6TbN78PgKl/176+GHdCghhg0M9NJAXcxDgLZQX5Kb6ztY3nAoqUfY+vSoUyLQ0Ss8Ipsc1udNwzkxM+xTn9fU6TcnXLGlR0DgQ9Hi5LTnGLkkXii6qVgJ7SFMn7AgdgQqIUrRQEuN6eer6eaN7d1Zj7NLFHlfBjagic8lqxFxBDnQiN6SOykMrR/dm7ho7LTOoNIhFCzbhGKOg4FCOGq8kohfGFGg0BXESQLjBQFejudcqiiNdA3DIfSfX9AZ7KGruVUB9ea02HkPoCT85Guql/94NGywdfvoN55hNq2raapN96mUm6VD1Ul6UDaKVGPaDDuYdHXd2r5mq0sQbTBGtl2nV0VBv/CbzxpFdsY02ryNpoClWQR1k+uFwauEo/XiEpqFU0uRkOABU+CvRTLkk2/zXemTzlscBOjEDqhrDggBTMGX+PIZG3jzlw4n+PHpl1/bmDYhnvbDUvYqN+PaYKiOKXgRwmmfcyBIjAGc12VEIXwqB+as3LFlEy+e9FxHRHdJU6Gha7OeXinCapxOrPBt/LMajMryvdDYHMilM1ytmnEt9QQ1aLLLnolkqf04Mur1To2otKi6hLY=
+X-OriginatorOrg: oracle.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: a4e6c85a-6c0d-4def-7634-08dce7acd8bc
+X-MS-Exchange-CrossTenant-AuthSource: CY8PR10MB6851.namprd10.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 08 Oct 2024 15:21:13.9219 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: 3gXnzIAIcz0nVpIdnuzRMy/sJKdjwDqOt4c1UsTWYHq14mr/CT+IHvgKKA3uJFJNVTRfJ84MfuCkP0m3k4Zktg==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BLAPR10MB5185
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1051,Hydra:6.0.680,FMLib:17.12.62.30
+ definitions=2024-10-08_13,2024-10-08_01,2024-09-30_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=999
+ adultscore=0
+ phishscore=0 mlxscore=0 suspectscore=0 bulkscore=0 spamscore=0
+ malwarescore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2409260000 definitions=main-2410080097
+X-Proofpoint-GUID: mBLMmU6gJpt5eE_NJ6ieEP_Gx9vSYOuq
+X-Proofpoint-ORIG-GUID: mBLMmU6gJpt5eE_NJ6ieEP_Gx9vSYOuq
+Received-SPF: pass client-ip=205.220.177.32; envelope-from=annie.li@oracle.com;
+ helo=mx0b-00069f02.pphosted.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: mnK4p9IsC9/L
 
-On Sat, 5 Oct 2024 at 21:06, Richard Henderson
-<richard.henderson@linaro.org> wrote:
+
+On 10/7/2024 9:41 AM, Igor Mammedov wrote:
+> On Fri, 27 Sep 2024 14:38:55 -0400
+> Annie Li <annie.li@oracle.com> wrote:
 >
-> Zero is the safe do-nothing value for callers to use.
+>> The ACPI sleep button can be implemented as a fixed hardware button
+>> or Control Method Sleep button.
+>>
+>> The patch of implementing a fixed hardware sleep button was posted
+>> here 1). More discussions can be found here 2). Essentially, the
+>> discussion mainly focuses on whether the sleep button is implemented
+>> as a fixed hardware button or Control Method Sleep button. The latter
+>> benefits various architectures since the code can be shared among
+>> them.
+>>
+>> This patch set implements Control Method Sleep button for both x86
+>> and ARM platform.(The patch set was posted previously here 3). We
+>> rebase all the patches on QEMU9.1.0 and re-post it).
+>>
+>> For x86, a sleep button GPE event handler is implemented, so a GPE
+>> event is triggered to indicate the OSPM the sleep button is pressed.
+>> Tests have been done for Linux guest, and Windows Server guest,
+>> the sleep button works as expected.
+>>
+>> For ARM, a GED event is triggered to notify the OSPM. With proper
+>> debug knobs it is possible to see the guest OSPM acknowledges the
+>> sleep event:
+> Series also missed 'microvm', that uses GED
+> (it's likely the same amount of work as for arm/virt board)
+I haven't implement this for 'microvm' yet, will work on this part, as 
+well as
+things you mentioned below.
+
+Thanks
+Annie
+
 >
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
->  target/arm/internals.h      | 3 ++-
->  target/arm/ptw.c            | 2 +-
->  target/arm/tcg/m_helper.c   | 8 ++++----
->  target/arm/tcg/tlb_helper.c | 2 +-
->  4 files changed, 8 insertions(+), 7 deletions(-)
-
-> diff --git a/target/arm/tcg/m_helper.c b/target/arm/tcg/m_helper.c
-> index 23d7f73035..f7354f3c6e 100644
-> --- a/target/arm/tcg/m_helper.c
-> +++ b/target/arm/tcg/m_helper.c
-> @@ -222,7 +222,7 @@ static bool v7m_stack_write(ARMCPU *cpu, uint32_t addr, uint32_t value,
->      int exc;
->      bool exc_secure;
+> also test all boards you are touching, to make sure you
+> didn't break them.
 >
-> -    if (get_phys_addr(env, addr, MMU_DATA_STORE, mmu_idx, &res, &fi)) {
-> +    if (get_phys_addr(env, addr, MMU_DATA_STORE, 0, mmu_idx, &res, &fi)) {
->          /* MPU/SAU lookup failed */
->          if (fi.type == ARMFault_QEMU_SFault) {
->              if (mode == STACK_LAZYFP) {
-> @@ -311,7 +311,7 @@ static bool v7m_stack_read(ARMCPU *cpu, uint32_t *dest, uint32_t addr,
->      bool exc_secure;
->      uint32_t value;
+> Note: commit messages should be more verbose explaining why and what
+> patches are doing.
 >
-> -    if (get_phys_addr(env, addr, MMU_DATA_LOAD, mmu_idx, &res, &fi)) {
-> +    if (get_phys_addr(env, addr, MMU_DATA_LOAD, 0, mmu_idx, &res, &fi)) {
->          /* MPU/SAU lookup failed */
->          if (fi.type == ARMFault_QEMU_SFault) {
->              qemu_log_mask(CPU_LOG_INT,
-
-We do actually know what kind of memory operation we're doing here:
-it's a 4-byte access. (It should never be unaligned because an M-profile
-SP can't ever be un-4-aligned, though I forget whether our implementation
-really enforces that.)
-
-> @@ -2009,7 +2009,7 @@ static bool v7m_read_half_insn(ARMCPU *cpu, ARMMMUIdx mmu_idx, bool secure,
->                        "...really SecureFault with SFSR.INVEP\n");
->          return false;
->      }
-> -    if (get_phys_addr(env, addr, MMU_INST_FETCH, mmu_idx, &res, &fi)) {
-> +    if (get_phys_addr(env, addr, MMU_INST_FETCH, 0, mmu_idx, &res, &fi)) {
->          /* the MPU lookup failed */
->          env->v7m.cfsr[env->v7m.secure] |= R_V7M_CFSR_IACCVIOL_MASK;
->          armv7m_nvic_set_pending(env->nvic, ARMV7M_EXCP_MEM, env->v7m.secure);
-
-Similarly this is a 16-bit load that in theory should never
-be possible to be unaligned.
-
-> @@ -2045,7 +2045,7 @@ static bool v7m_read_sg_stack_word(ARMCPU *cpu, ARMMMUIdx mmu_idx,
->      ARMMMUFaultInfo fi = {};
->      uint32_t value;
+> PS:
+> Also keep  changelog in cover letter, for a short list of changes
+> between series revisions,
+> see '[PATCH v3 0/1] hw/nvme: add atomic write support' for an example
 >
-> -    if (get_phys_addr(env, addr, MMU_DATA_LOAD, mmu_idx, &res, &fi)) {
-> +    if (get_phys_addr(env, addr, MMU_DATA_LOAD, 0, mmu_idx, &res, &fi)) {
->          /* MPU/SAU lookup failed */
->          if (fi.type == ARMFault_QEMU_SFault) {
->              qemu_log_mask(CPU_LOG_INT,
-
-and this is another 4-byte load via sp.
-
-> diff --git a/target/arm/tcg/tlb_helper.c b/target/arm/tcg/tlb_helper.c
-> index 885bf4ec14..1d8b7bcaa2 100644
-> --- a/target/arm/tcg/tlb_helper.c
-> +++ b/target/arm/tcg/tlb_helper.c
-> @@ -344,7 +344,7 @@ bool arm_cpu_tlb_fill(CPUState *cs, vaddr address, int size,
->       * return false.  Otherwise populate fsr with ARM DFSR/IFSR fault
->       * register format, and signal the fault.
->       */
-> -    ret = get_phys_addr(&cpu->env, address, access_type,
-> +    ret = get_phys_addr(&cpu->env, address, access_type, 0,
->                          core_to_arm_mmu_idx(&cpu->env, mmu_idx),
->                          &res, fi);
->      if (likely(!ret)) {
-
-thanks
--- PMM
+>> (qemu) system_sleep
+>> (qemu) [6.744138] exregion-0179 ex_system_memory_space: System-Memory (width 32) R/W 0 Address=0000000009080000
+>> [6.746003] evmisc-0132 ev_queue_notify_reques: Dispatching Notify on [SLPB] (Device) Value 0x80 (Status Change) Node 00000000f0e6819e
+>> [6.802873] PM: suspend entry (s2idle)
+>> [6.806201] Filesystems sync: 0.002 seconds
+>> [6.807580] Freezing user space processes
+>> [6.809478] Freezing user space processes completed (elapsed 0.001 seconds)
+>> [6.810602] OOM killer disabled.
+>> [6.811111] Freezing remaining freezable tasks
+>> [6.812953] Freezing remaining freezable tasks completed (elapsed 0.001 seconds)
+>> [6.814126] printk: Suspending console(s) (use no_console_suspend to debug)
+>>
+>> But that seems to be all, depicting that sleep/wakeup for ARM is broken
+>> and there are still missing some pieces of the puzzle.
+>>
+>> Nonetheless, we would like to take this RFC as an opportunity for updates
+>> on this subject as possible roadmaps.
+>>
+>> 1) https://urldefense.com/v3/__https://lists.gnu.org/archive/html/qemu-devel/2017-07/msg06478.html__;!!ACWV5N9M2RV99hQ!PLz2MGkywgnU4MB6tbITFe4-fMs6CqdUQY9Jhgbi2vIdAVf94Uz2OI-yBQOYElEQb-dsvtN323zzSb8$
+>> 2) https://urldefense.com/v3/__https://lore.kernel.org/all/20210920095316.2dd133be@redhat.com/T/*mfe24f89778020deeacfe45083f3eea3cf9f55961__;Iw!!ACWV5N9M2RV99hQ!PLz2MGkywgnU4MB6tbITFe4-fMs6CqdUQY9Jhgbi2vIdAVf94Uz2OI-yBQOYElEQb-dsvtN34RUikoM$
+>> 3) https://urldefense.com/v3/__https://lore.kernel.org/all/20231205002143.562-1-annie.li@oracle.com/T/__;!!ACWV5N9M2RV99hQ!PLz2MGkywgnU4MB6tbITFe4-fMs6CqdUQY9Jhgbi2vIdAVf94Uz2OI-yBQOYElEQb-dsvtN3zrJlck4$
+>>
+>>
+>> Annie Li (6):
+>>    acpi: hmp/qmp: Add hmp/qmp support for system_sleep
+>>    acpi: Implement control method sleep button
+>>    test/acpi: allow DSDT table changes
+>>    acpi: Support Control Method sleep button for x86
+>>    tests/acpi: Update DSDT tables for Control method sleep button
+>>    acpi: Send the GPE event of suspend and wakeup for x86
+>>
+>> Miguel Luis (5):
+>>    hw/acpi: Add ACPI GED support for the sleep event
+>>    tests/acpi: allow FACP and DSDT table changes for arm/virt
+>>    hw/arm: enable sleep support for arm/virt
+>>    tests/acpi: Update FACP and DSDT tables for sleep button
+>>    arm/virt: enable sleep support
+>>
+>>   hmp-commands.hx                               |  14 +++++
+>>   hw/acpi/control_method_device.c               |  54 ++++++++++++++++++
+>>   hw/acpi/core.c                                |  17 ++++--
+>>   hw/acpi/generic_event_device.c                |   9 +++
+>>   hw/acpi/meson.build                           |   1 +
+>>   hw/arm/virt-acpi-build.c                      |  13 +++++
+>>   hw/arm/virt.c                                 |  14 ++++-
+>>   hw/core/machine-hmp-cmds.c                    |   5 ++
+>>   hw/core/machine-qmp-cmds.c                    |  11 ++++
+>>   hw/i386/acpi-build.c                          |   9 +++
+>>   include/hw/acpi/acpi.h                        |   1 +
+>>   include/hw/acpi/acpi_dev_interface.h          |   1 +
+>>   include/hw/acpi/control_method_device.h       |  25 ++++++++
+>>   include/hw/acpi/generic_event_device.h        |   1 +
+>>   include/hw/arm/virt.h                         |   1 +
+>>   include/monitor/hmp.h                         |   1 +
+>>   qapi/machine.json                             |  18 ++++++
+>>   qapi/pragma.json                              |   1 +
+>>   tests/data/acpi/aarch64/virt/DSDT             | Bin 5196 -> 5278 bytes
+>>   .../data/acpi/aarch64/virt/DSDT.acpihmatvirt  | Bin 5282 -> 5364 bytes
+>>   tests/data/acpi/aarch64/virt/DSDT.memhp       | Bin 6557 -> 6639 bytes
+>>   tests/data/acpi/aarch64/virt/DSDT.pxb         | Bin 7679 -> 7761 bytes
+>>   tests/data/acpi/aarch64/virt/DSDT.topology    | Bin 5398 -> 5480 bytes
+>>   tests/data/acpi/aarch64/virt/FACP             | Bin 276 -> 276 bytes
+>>   tests/data/acpi/x86/pc/DSDT                   | Bin 6830 -> 7012 bytes
+>>   tests/data/acpi/x86/pc/DSDT.acpierst          | Bin 6741 -> 6923 bytes
+>>   tests/data/acpi/x86/pc/DSDT.acpihmat          | Bin 8155 -> 8337 bytes
+>>   tests/data/acpi/x86/pc/DSDT.bridge            | Bin 13701 -> 13883 bytes
+>>   tests/data/acpi/x86/pc/DSDT.cphp              | Bin 7294 -> 7476 bytes
+>>   tests/data/acpi/x86/pc/DSDT.dimmpxm           | Bin 8484 -> 8666 bytes
+>>   tests/data/acpi/x86/pc/DSDT.hpbridge          | Bin 6781 -> 6963 bytes
+>>   tests/data/acpi/x86/pc/DSDT.hpbrroot          | Bin 3337 -> 3519 bytes
+>>   tests/data/acpi/x86/pc/DSDT.ipmikcs           | Bin 6902 -> 7084 bytes
+>>   tests/data/acpi/x86/pc/DSDT.memhp             | Bin 8189 -> 8371 bytes
+>>   tests/data/acpi/x86/pc/DSDT.nohpet            | Bin 6688 -> 6870 bytes
+>>   tests/data/acpi/x86/pc/DSDT.numamem           | Bin 6836 -> 7018 bytes
+>>   tests/data/acpi/x86/pc/DSDT.roothp            | Bin 10623 -> 10805 bytes
+>>   tests/data/acpi/x86/q35/DSDT                  | Bin 8355 -> 8537 bytes
+>>   tests/data/acpi/x86/q35/DSDT.acpierst         | Bin 8372 -> 8554 bytes
+>>   tests/data/acpi/x86/q35/DSDT.acpihmat         | Bin 9680 -> 9862 bytes
+>>   .../acpi/x86/q35/DSDT.acpihmat-noinitiator    | Bin 8634 -> 8816 bytes
+>>   tests/data/acpi/x86/q35/DSDT.applesmc         | Bin 8401 -> 8583 bytes
+>>   tests/data/acpi/x86/q35/DSDT.bridge           | Bin 11968 -> 12150 bytes
+>>   tests/data/acpi/x86/q35/DSDT.core-count       | Bin 12913 -> 13095 bytes
+>>   tests/data/acpi/x86/q35/DSDT.core-count2      | Bin 33770 -> 33952 bytes
+>>   tests/data/acpi/x86/q35/DSDT.cphp             | Bin 8819 -> 9001 bytes
+>>   tests/data/acpi/x86/q35/DSDT.cxl              | Bin 9714 -> 9896 bytes
+>>   tests/data/acpi/x86/q35/DSDT.dimmpxm          | Bin 10009 -> 10191 bytes
+>>   tests/data/acpi/x86/q35/DSDT.ipmibt           | Bin 8430 -> 8612 bytes
+>>   tests/data/acpi/x86/q35/DSDT.ipmismbus        | Bin 8443 -> 8625 bytes
+>>   tests/data/acpi/x86/q35/DSDT.ivrs             | Bin 8372 -> 8554 bytes
+>>   tests/data/acpi/x86/q35/DSDT.memhp            | Bin 9714 -> 9896 bytes
+>>   tests/data/acpi/x86/q35/DSDT.mmio64           | Bin 9485 -> 9667 bytes
+>>   tests/data/acpi/x86/q35/DSDT.multi-bridge     | Bin 13208 -> 13390 bytes
+>>   tests/data/acpi/x86/q35/DSDT.noacpihp         | Bin 8235 -> 8417 bytes
+>>   tests/data/acpi/x86/q35/DSDT.nohpet           | Bin 8213 -> 8395 bytes
+>>   tests/data/acpi/x86/q35/DSDT.numamem          | Bin 8361 -> 8543 bytes
+>>   tests/data/acpi/x86/q35/DSDT.pvpanic-isa      | Bin 8456 -> 8638 bytes
+>>   tests/data/acpi/x86/q35/DSDT.thread-count     | Bin 12913 -> 13095 bytes
+>>   tests/data/acpi/x86/q35/DSDT.thread-count2    | Bin 33770 -> 33952 bytes
+>>   tests/data/acpi/x86/q35/DSDT.tis.tpm12        | Bin 8961 -> 9143 bytes
+>>   tests/data/acpi/x86/q35/DSDT.tis.tpm2         | Bin 8987 -> 9169 bytes
+>>   tests/data/acpi/x86/q35/DSDT.type4-count      | Bin 18589 -> 18771 bytes
+>>   tests/data/acpi/x86/q35/DSDT.viot             | Bin 9464 -> 9646 bytes
+>>   tests/data/acpi/x86/q35/DSDT.xapic            | Bin 35718 -> 35900 bytes
+>>   65 files changed, 191 insertions(+), 5 deletions(-)
+>>   create mode 100644 hw/acpi/control_method_device.c
+>>   create mode 100644 include/hw/acpi/control_method_device.h
+>>

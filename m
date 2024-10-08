@@ -1,279 +1,98 @@
-Received: by 2002:a17:504:1f11:b0:1be9:327d:8ee3 with SMTP id z17csp681822njl;
-        Wed, 9 Oct 2024 01:06:03 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCXQi54KW1wANAUTK4V4nYhGdl13mdY6U1CK+AvA10Bw75E4wikuX5Dy0hDu44GG7XlGrvsu6igX5DJXTw==@linaro.org
-X-Google-Smtp-Source: AGHT+IEFiTmQVx4jax5tD0wtzkIRWFbsni/RqvPAuw4PJNsyUz6NQ/aCqF7qzm6KgcIpH67FInSP
-X-Received: by 2002:a05:6a21:4006:b0:1d4:fd63:95bc with SMTP id adf61e73a8af0-1d8a3be149bmr3351573637.9.1728461162743;
-        Wed, 09 Oct 2024 01:06:02 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1728461162; cv=pass;
-        d=google.com; s=arc-20240605;
-        b=LUsGwt3MIkI6R24sxaA0PtZD8ASmWnh3UHMox8iDQgQuUNzXVz4AKgthw92SIgGiDU
-         7hlZO6v1ALoc9YpuWGa0x9U9vTJP978bAJjDEdmsE0Ec5vPy5+C5SkPlBufrvSQ31b2Y
-         GkuzqKeCkZW5yer6Vhc93xbxhvx72JUn29ni/AbPFeARi2lm+43ut/vvVEffqbXJ97qP
-         ETROq/bbTklOZiw/gPAbOwQUkek6L/kOyQg8onWV2yqr0Oa7ce1nu/3Y4wQmdCY3oZYV
-         +Nx9ewsk98DPd9D3+NP7oXk8I4VKHJuwLohqbacJTzSMgnq7fWMzrUSFI0Ti7j7gxnpQ
-         A8Rw==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=mime-version:list-unsubscribe:list-subscribe:list-id:precedence
-         :user-agent:references:in-reply-to:subject:cc:to:from:message-id
-         :date:dkim-signature;
-        bh=tBj9akJzIJRLu/ruinsTJT5YZK48TzbE7cqyGPfcaCY=;
-        fh=SnFmhe+5i6KgsJ5Q6TvjqQXtXYEN4xB/iCvHkChcy9c=;
-        b=XQtrqPndcS7nqLoPlbpKV2mW/V8m+gIk+CQ4ZnWYbQeD51XDvD6nqKyvLZXXMjqOoQ
-         b3VQie6FlX+yvObhrqgyox4bnCtUVWkvckCwybKgptEYUkLj6pO6+MTJwpKtfrUzavD3
-         FB/Ml/lO1BaVQb5wk/OPyE9sLTq9zdtOzZMhxoPoPRK0cnfrcDZjbqznVDwizIHuIsLM
-         y3Rd9O73yhfwTgZu3Dxqlwusf/gE0T+cIHvP3Q3e7PdWM8QyaXvhlwzEa8fHq+JbAD2+
-         L73SEJPERyD/xZl1fO1tZ8vD4mqyP//DYezVVomfmUcumhEY1sDyejpe8LbOD04pWIp+
-         CuUg==;
+Received: by 2002:a17:504:1f11:b0:1be9:327d:8ee3 with SMTP id z17csp213235njl;
+        Tue, 8 Oct 2024 07:05:03 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVx/apPSh35rxu34bwK70/d7ofKLaHCx+ncQMeKCasvgBQqR6DroyCFbJjgxQgrgquELhb+qiue8JqB7g==@linaro.org
+X-Received: by 2002:a05:6402:3490:b0:5c9:6c7:8b56 with SMTP id 4fb4d7f45d1cf-5c906c78b97mr3023115a12.7.1728396303088;
+        Tue, 08 Oct 2024 07:05:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1728396303; cv=none;
+        d=google.com; s=arc-20160816;
+        b=Sl/dCtKrfqb/nuktIo5Zey+COgmwTUKdEvizogkVrDaCqGmmnZZ46/i9XzH1dVlft8
+         1++aKhXKOPL9ZG6D/DbAYgDZGfbEQaHsLMLoNNRS+G72RPmrtdm9LoKI7RLbVWHeIpVl
+         jfKiN6lktQf7fHN7ym9hgGZDeGsxYMa8JGUGsl1QwFBLybLuFdVncs8yvPShSFLEUl8p
+         Z/SKZtm0g5+/5yDnyUG78W3WG4/M8q/qjD+CQpyUrqVP9p9+TlGATmIG2etfqQUC7mh7
+         7BDeCwoAdVc8o2b29YRQn9REraA1jzBV/So0UxsRS8f9Aj60tzXvoi2wgsL88TZH+V5m
+         bShQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=aetDmH2NilGTvMf839NYi3b2dnOTF5pYiBjtZB77M6M=;
+        fh=SxVlQ+3Uxnix+AhT2p6Oyve5IGqkXJYWcghLlhudvkA=;
+        b=P4KPiyN4YnN39ZOTsaqPADuD2tlUTDjqppnh2AiZJXiWQokoAjUcb2mrTGg85XBSoY
+         fbT3Q8wpy/HXAwGjckAxafWom70xKuolv1fbHKKRgoJWOEigIOeWrULBVjrKnVcP9TI9
+         tcY4adv6YX7oGP8ellW61WdNCGlJQw3VRKV49o8ZTrw8whsrCwmU5md19t8+Vu9tpma6
+         QwmNwSP0YWEUnXS09iLZ3jf3N19ao+l5LZUiN1FfruON/97XFFUH2yizxhEvfY83gKE0
+         O61uo6AjT7Uwv0KcsfjH7zzC8iyjORf+WGA7Sqi6YrMiyniXnkZ9/ubrdZ7Ux40ZzWHj
+         VnUg==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=IPzXEIep;
-       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
-       spf=pass (google.com: domain of kvm+bounces-28175-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="kvm+bounces-28175-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
-Return-Path: <kvm+bounces-28175-alex.bennee=linaro.org@vger.kernel.org>
-Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [2604:1380:45e3:2400::1])
-        by mx.google.com with ESMTPS id 41be03b00d2f7-7e9f683fc2dsi10677906a12.120.2024.10.09.01.06.02
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=f8ig198n;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 4fb4d7f45d1cf-5c8d9a474e3sor3703908a12.3.2024.10.08.07.05.02
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 09 Oct 2024 01:06:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm+bounces-28175-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) client-ip=2604:1380:45e3:2400::1;
+        (Google Transport Security);
+        Tue, 08 Oct 2024 07:05:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=IPzXEIep;
-       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
-       spf=pass (google.com: domain of kvm+bounces-28175-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="kvm+bounces-28175-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
-Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by sv.mirrors.kernel.org (Postfix) with ESMTPS id 31AE428A07D
-	for <alex.bennee@linaro.org>; Wed,  9 Oct 2024 08:06:02 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id AFC4B18873F;
-	Wed,  9 Oct 2024 08:05:14 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="IPzXEIep"
-Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 642A1188737;
-	Wed,  9 Oct 2024 08:05:13 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=10.30.226.201
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1728461114; cv=none; b=AQymqOPVr1hhGrWB+5H3ChreT9woRZbxw+cRlXaykeihJIUDSVpjheG6uKoXZzY8SOEm4EdDA7gj6v5TPkuh6al9ItpY7lS/gCKVmiZ1DAwps66PbEQ7OpRxO1wo4E4yHok+M6BkHnVFE0h6/bkTBwOLjgGJUOSQCgitRQJhUTE=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1728461114; c=relaxed/simple;
-	bh=DPzYwoAXdnJEo3Ar1EbaCUK518yNbF3ZH8uXcbO+nq4=;
-	h=Date:Message-ID:From:To:Cc:Subject:In-Reply-To:References:
-	 MIME-Version:Content-Type; b=F/Iv0CvQcgwbzryW1yg8QyJmAEfzKfnnwMkYcWbVQGuLTrw3zqbqmVxOiTo4rIYvmTXMoHsUyyOs1kYTJl7WeKBjm/A3ZHhXQ/O9kBwGmKfBoa4NzAnONKr/o6tXZKZoEnqIBIPu4eYcDl9Osq4bE8EbKSrHikgiv8zZd61M5nc=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=IPzXEIep; arc=none smtp.client-ip=10.30.226.201
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A4F83C4CEC5;
-	Wed,  9 Oct 2024 08:05:13 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1728461113;
-	bh=DPzYwoAXdnJEo3Ar1EbaCUK518yNbF3ZH8uXcbO+nq4=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=IPzXEIepdJLVf61I0DXwipijwI6ari0oinXoyonSihisOYNv0sYl6oq6E4rdnd/zg
-	 OZWfSkOgpfqj3gmbvPWCEwMYDtdQhfVc0GbKH4cMpX+U2o5SfZy8PlE+i/VbXCu0rx
-	 6f6dEXBqpw+RifVS/EDtXz1FGW6BGAE1MdN5FMKw8KIkecygJ5GT7idg9N74bceDO1
-	 IqIIB0H+SiOYkbKQ5KleSiHzHSJgb89+lq0N303FDzOXGb9MFRCpVkRuvR1WItKFtz
-	 YYzGaNqMn7dJJXyaBQ6Cu9UTU37NM+6GOLoS6jONmMxgU7yrh0N4YjI5tNn/RishY1
-	 Xn3Nqxdp6o/4g==
-Received: from 82-132-234-182.dab.02.net ([82.132.234.182] helo=wait-a-minute.misterjones.org)
-	by disco-boy.misterjones.org with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.95)
-	(envelope-from <maz@kernel.org>)
-	id 1syRh0-001iDe-TE;
-	Wed, 09 Oct 2024 09:05:11 +0100
-Date: Wed, 09 Oct 2024 09:05:09 +0100
-Message-ID: <877cahvgzu.wl-maz@kernel.org>
-From: Marc Zyngier <maz@kernel.org>
-To: Ahmad Fatoum <a.fatoum@pengutronix.de>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	qemu-arm@nongnu.org,
-	kvmarm@lists.linux.dev,
-	kvm@vger.kernel.org,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	"linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
-	Enrico Joerns <ejo@pengutronix.de>
-Subject: Re: [BUG] ARM64 KVM: Data abort executing post-indexed LDR on MMIO address
-In-Reply-To: <f096876b-f364-4291-88e0-ac189b4f26fe@pengutronix.de>
-References: <89f184d6-5b61-4c77-9f3b-c0a8f6a75d60@pengutronix.de>
-	<CAFEAcA_Yv2a=XCKw80y9iyBRoC27UL6Sfzgy4KwFDkC1gbzK7w@mail.gmail.com>
-	<a4c06f55-28ec-4620-b594-b7ff0bb1e162@pengutronix.de>
-	<CAFEAcA9F3AR-0OCKDy__eVBJRMi80G7bWNfANGZRR2W8iMhfJA@mail.gmail.com>
-	<4d559b9e-c208-46f3-851a-68086dc8a50f@pengutronix.de>
-	<864j5q7sdq.wl-maz@kernel.org>
-	<65ab10d7-6594-490c-be07-39f83ac3559a@pengutronix.de>
-	<87a5fiutai.wl-maz@kernel.org>
-	<0352a327-0e78-48d4-a876-d33689fcd766@pengutronix.de>
-	<8634l97cfs.wl-maz@kernel.org>
-	<f096876b-f364-4291-88e0-ac189b4f26fe@pengutronix.de>
-User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
- FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/29.4
- (x86_64-pc-linux-gnu) MULE/6.0 (HANACHIRUSATO)
-Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
-MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
-Content-Type: text/plain; charset=US-ASCII
-X-SA-Exim-Connect-IP: 82.132.234.182
-X-SA-Exim-Rcpt-To: a.fatoum@pengutronix.de, peter.maydell@linaro.org, qemu-arm@nongnu.org, kvmarm@lists.linux.dev, kvm@vger.kernel.org, kernel@pengutronix.de, linux-arm-kernel@lists.infradead.org, ejo@pengutronix.de
-X-SA-Exim-Mail-From: maz@kernel.org
-X-SA-Exim-Scanned: No (on disco-boy.misterjones.org); SAEximRunCond expanded to false
-X-TUID: ggkTmC0g/BPg
+       dkim=pass header.i=@linaro.org header.s=google header.b=f8ig198n;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1728396302; x=1729001102; darn=linaro.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=aetDmH2NilGTvMf839NYi3b2dnOTF5pYiBjtZB77M6M=;
+        b=f8ig198nHhBRxn1OFMI8OwlRrI45Zk5jzajyFYe26ZWsuYjxN5xXczvGpWUiVBo0eu
+         vcmMiFxLpH62vv5CMBg1O2eRfC7WLdzU3XoLpQp7wrgUBMbOSeeUUSd4EAonfTtPKR3g
+         LChSL4dFcU1uBcamQ+kdCK5nLeueOeM1GtShTcAMI5qVzhVCcxAFAEMEGeuAZGDjkZNP
+         zS/vJTpeKgsdk8vcoMlnUBatSj+etmeEZBh3JsqKX/1XIkngdNtWi97PO7SyZvGHl7GL
+         w9Wt8mSwKt5Im6fToh3/+zoCch+gMdrmXaIjT1DVIAm5aakopgmn8i4odpmXGWTSDwbD
+         JqgA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1728396302; x=1729001102;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=aetDmH2NilGTvMf839NYi3b2dnOTF5pYiBjtZB77M6M=;
+        b=mESY1hnHlIADLF9WIC61SBqSrkvrA7EcTio6XsZYQuUT7bCabI9DGA3f3pWUJXuVW2
+         FVleLDjZOKpxDdO8iZFZNFoJRGpNBCKCdn98qMCZwuuitPCfaZ+lg5J1kTkhOtRMNw77
+         7IYIqpczv5RfbygNih75tz365WmkxmFf8GyC2T59kY89cKdbeUYLti225fZyvC88oi7R
+         k5wXW5XI7ckWH0zfZ/5DRFG4oAZjjh3dC+XCph4Q44IzvstbCTZr3nTJeRT8s56ds0sS
+         /oe9Gjr2B4FwmDb7ui35LrNOVbbMigOIhBEKj7Rfv6xYt+EHj9qrNNAQq1ZdkhdI4Z++
+         Qdgg==
+X-Forwarded-Encrypted: i=1; AJvYcCW/Is/8HqRMLjRLDyaf9cjo+je6gCrumxURakVWhbnILCQAo8ZjlDs3pVBBbT+dCE85NMzWYx2qA5TiWg==@linaro.org
+X-Gm-Message-State: AOJu0YwNQdo65sl5KEkzOuEhSJbF3xtwb2zK/G5vRTIQU8uYzrxEX3s2
+	FK/CEOuaXO+hrbyY19dRduecCmSvHMQSaAwznXs3zUdvrd6DQIIWa6CFnvxJtlw5HTArF05ep+N
+	Lg+pPrsTRL99gh49QUrFeX/yzNrlosXrsNjTWrGe/j0kcy/gLhRw=
+X-Google-Smtp-Source: AGHT+IF6H3Lvl6/NmA82bxuWyc/gR8SMikRNZ7hPVFOE+nrj/em3ufiBwEctKYWf3rwHepOwHOxLcsK7Ag6vWLVesNE=
+X-Received: by 2002:a05:6402:4307:b0:5c9:3f1:e5cd with SMTP id
+ 4fb4d7f45d1cf-5c905c7a8famr3615578a12.0.1728396302336; Tue, 08 Oct 2024
+ 07:05:02 -0700 (PDT)
+MIME-Version: 1.0
+References: <20241005200600.493604-1-richard.henderson@linaro.org> <20241005200600.493604-4-richard.henderson@linaro.org>
+In-Reply-To: <20241005200600.493604-4-richard.henderson@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 8 Oct 2024 15:04:51 +0100
+Message-ID: <CAFEAcA8L9djaHeeEShySGa0LKt-qDovgBxvFMDTOF_+=J7+u3w@mail.gmail.com>
+Subject: Re: [PATCH v2 03/21] include/exec/memop: Move get_alignment_bits from tcg.h
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, deller@kernel.org, alex.bennee@linaro.org, 
+	linux-parisc@vger.kernel.org, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+X-TUID: q0C8+X5mz/fh
 
-On Wed, 09 Oct 2024 07:11:52 +0100,
-Ahmad Fatoum <a.fatoum@pengutronix.de> wrote:
-> 
-> Hello Marc,
-> 
-> On 06.10.24 12:28, Marc Zyngier wrote:
-> > On Sun, 06 Oct 2024 08:59:56 +0100,
-> > Ahmad Fatoum <a.fatoum@pengutronix.de> wrote:
-> >> On 05.10.24 23:35, Marc Zyngier wrote:
-> >>> On Sat, 05 Oct 2024 19:38:23 +0100,
-> >>> Ahmad Fatoum <a.fatoum@pengutronix.de> wrote:
-> >> One more question: This upgrading of DC IVAC to DC CIVAC is because
-> >> the code is run under virtualization, right?
-> > 
-> > Not necessarily. Virtualisation mandates the upgrade, but CIVAC is
-> > also a perfectly valid implementation of both IVAC and CVAC.  And it
-> > isn't uncommon that CPUs implement everything the same way.
-> 
-> Makes sense. After all, software should expect cache lines to
-> be evicted at any time due to capacity misses anyway.
-> 
-> >> I think following fix on the barebox side may work:
-> >>
-> >>   - Walk all pages about to be remapped
-> >>   - Execute the AT instruction on the page's base address
-> > 
-> > Why do you need AT if you are walking the PTs? If you walk, you
-> > already have access to the memory attributes. In general, AT can be
-> > slower than an actual walk.
-> >
-> > Or did you actually mean iterating over the VA range? Even in that
-> > case, AT can be a bad idea, as you are likely to iterate in page-size
-> > increments even if you have a block mapping. Walking the PTs tells you
-> > immediately how much a leaf is mapping (assuming you don't have any
-> > other tracking).
-> 
-> There's no other tracking and I hoped that using AT (which is already
-> being used for the mmuinfo shell command) would be easier.
+On Sat, 5 Oct 2024 at 21:06, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> This function is specific to MemOp, not TCG in general.
+>
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
 
-Heavy use of AT is debatable.
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-It requires heavy synchronisation (the ISB between AT and the PAR_EL1
-readout), traps in some circumstances, and is not guaranteed to report
-the exact content of the page tables when it comes to memory
-attributes (it can instead report what the implementation actually
-does). In turn, it *may* hit in the TLBs. Or thrash them.
-
-But the real use of AT is when you do not have a virtual mapping for
-your page tables, making them difficult to walk in SW. For example,
-KVM uses AT to walk the guest's stage-1 PTs on stage-2 fault, because
-we don't have the guest's memory mapped at EL2 in general.
-
-Maybe this doesn't matter in your case, as this doesn't happen often
-enough to justify a dedicated SW walker.
-
-> 
-> I see now that it would be too suboptimal to do it this way and have
-> implemented a revised arch_remap_range[1] for barebox, which I just
-> Cc'd you on.
-
-I'll try to have a look.
-
-> 
-> [1]: https://lore.kernel.org/barebox/20241009060511.4121157-5-a.fatoum@pengutronix.de/T/#u
-> 
-> >>   - Only if the page was previously mapped cacheable, clean + invalidate
-> >>     the cache
-> >>   - Remove the current cache invalidation after remap
-> >>
-> >> Does that sound sensible?
-> > 
-> > This looks reasonable (apart from the AT thingy).
-> 
-> I have two (hopefully the last!) questions about remaining differing
-> behavior with KVM and without:
-> 
-> 1) Unaligned stack accesses crash in KVM:
-> 
-> start: /* This will be mapped at 0x40080000 */
->         ldr     x0, =0x4007fff0
->         mov     sp, x0
->         stp     x0, x1, [sp] // This is ok
-> 
->         ldr     x0, =0x4007fff8
->         mov     sp, x0
->         stp     x0, x1, [sp] // This crashes
-> 
-> I know that the stack should be 16 byte aligned, but why does it crash
-> only under KVM?
-
-KVM shouldn't be involved in any of this. What is SCTLR_EL1.SA set to?
-KVM resets it to 1, which is legal ("On a Warm reset, this field
-resets to an architecturally UNKNOWN value."). You shouldn't rely on
-it being 0 if you are doing unaligned accesses to the stack pointer.
-
-> 
-> Context: The barebox Image used for Qemu has a Linux ARM64 "Image" header,
-> so it's loaded at an offset and grows the stack down into this memory region
-> until the FDT's /memory could be decoded and a proper stack is set up.
-> 
-> A regression introduced earlier this year, caused the stack to grow down
-> from a non-16-byte address, which is fixed in [2].
-> 
-> [2]: https://lore.kernel.org/barebox/20241009060511.4121157-5-a.fatoum@pengutronix.de/T/#ma381512862d22530382aff1662caadad2c8bc182
-> 
-> 2) Using uncached memory for Virt I/O queues with KVM enabled is considerably
->    slower. My guess is that these accesses keep getting trapped, but what I wonder
->    about is the performance discrepancy between the big.LITTLE cores
->    (measurement of barebox copying 1MiB using `time cp -v /dev/virtioblk0 /tmp`):
-> 
->     KVM && !CACHED && 1x Cortex-A53:  0.137s
->     KVM && !CACHED && 1x Cortex-A72: 54.030s
->     KVM &&  CACHED && 1x Cortex-A53:  0.120s
->     KVM &&  CACHED && 1x Cortex-A72:  0.035s
-> 
-> The A53s are CPUs 0-1 and the A72 are 2-5.
-> 
-> Any idea why accessing uncached memory from the big core is so much worse?
-
-KVM shouldn't trap these accesses at all, except for the initial
-faulting-in of the memory (once per page).
-
-But to see such a difference, the problem is likely somewhere else. As
-you seem to be using QEMU as the VMM, you are likely to fall into the
-"Mismatched attributes" sink-hole (see B2.16 "Mismatched memory
-attributes" in the ARM ARM).
-
-The gist of the problem is that QEMU is using a cacheable mapping for
-all of the guest memory, while you are using a NC mapping. Are these
-two guaranteed to be coherent? Not at all. The abysmal level of
-performance is likely to be caused by the rate of miss in the cache on
-the QEMU side. It simply doesn't observe the guest's writes until it
-misses (for fun, giggles and self-promotion, see [1]).
-
-As an experiment, you could run something that actively puts a lot of
-cache pressure in parallel to your guest. You should see the
-performance increase significantly.
-
-Now, this is very much a case of "don't do that". Virtio is, by
-definition, a cache coherent device. So either you use it with
-attributes that maintain coherency (and everything works), or you add
-cache maintenance to your virtio implementation (good luck getting the
-ordering right).
-
-HTH,
-
-	M.
-
-[1] http://events17.linuxfoundation.org/sites/events/files/slides/slides_10.pdf
-
--- 
-Without deviation from the norm, progress is not possible.
+thanks
+-- PMM

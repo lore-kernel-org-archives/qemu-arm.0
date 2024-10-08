@@ -1,105 +1,103 @@
-Received: by 2002:a17:505:c89:b0:1be9:327d:8ee3 with SMTP id hp9csp2290490njb;
-        Mon, 7 Oct 2024 18:25:33 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUSUFKVcvMSHMlJMGbuAtni3XsE2X2AmEXfG5zlXVvF0kn1hLn70SD+NGpc0lxQSaCSDL22yFDlqXVYIw==@linaro.org
-X-Google-Smtp-Source: AGHT+IFSIZjXUK/WgaaxMZJMQbdJPOo9Zs3uTqimF7H/N0h0Ke4m0IFPGRbyXT9xX6wr0AJs1JnT
-X-Received: by 2002:a05:620a:d83:b0:7a9:c406:eeb3 with SMTP id af79cd13be357-7ae6f421c92mr2303750785a.1.1728350733352;
-        Mon, 07 Oct 2024 18:25:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1728350733; cv=none;
+Received: by 2002:a17:505:c89:b0:1be9:327d:8ee3 with SMTP id hp9csp2290504njb;
+        Mon, 7 Oct 2024 18:25:36 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVH+CY96dfSfZvYsXEn/GvAG8O44IrVbd4DJs+QOxFxPXumj+JtLRvqZyi39TFgssPUZfdD7COEEESOIQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IH2BCuoqo36592VCIxpWr0P3kBuJ3ImzDtyZhV0TmOoy0VYvYb19b95hkSLbSWiQjLuIjz2
+X-Received: by 2002:a05:620a:1710:b0:7a7:f989:58c7 with SMTP id af79cd13be357-7ae6f437407mr2073976585a.17.1728350736764;
+        Mon, 07 Oct 2024 18:25:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1728350736; cv=none;
         d=google.com; s=arc-20240605;
-        b=B8NTLQtONn0K1DRX2Ke8nx8JtZwKKlspAZytxS587tUQzTigtCQgkCxbm0XunB+SgM
-         FKYYmltcU93X1GOWlOeABsyTrLInB+RncrHw2oy7v26+5V4pkH6UetCzJBy6g4WVv1vo
-         ktmXjZUptKDniaDOLhkA2vrJ1t44WkXeJMw6jKGLhe8ZJOhPwpDIYtjWmDM2MyNt4ljn
-         mZnYGN8OeQla80Fa5clm2NAfRvazo090iKHXKy9DEeBjX4bw+UO94tV2UB6GmO3SiFxI
-         mUkGMeiWlMMCohyzTTgvErIuaPg/imV50yQ9ozwSOOWdIudveg6ppUhQXFcf9NNAglD2
-         6k2Q==
+        b=dHxOdUW6ECnFeULvtrea1EWOkp77K3WXtBahLUwukCFwlyGGU3g6E0VlxazjcGkSbc
+         5oQqiFwiTrf4yVf75qjYdNotxmp98PyinW5exHpBzewFIOAE3Lg6M5tVq843TqABulmY
+         RGo2zSchq1Y9iIaypFJzWHsh4iv/nfDpbnBmAbUyTSzoMzm8U2raYWuPJraxJ/n3aai+
+         4QS01v6sUbycSlWkdkrK+qxx0aErtpffgRKpYW2tIklpZcPnlWndO7IC8hBYMLYwO67B
+         XGkm8oL4PWGyCg7yBfX10hwYNo5iuhV27XaLOksfLVFlI5rH6NTAN/NdejB9CZPjz4x2
+         1DBg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
          :references:mime-version:in-reply-to:date:dkim-signature;
-        bh=UWggVGt8pbE9ZLsUZv4jH44X5yOt44e5jHCMlGNjp7Y=;
+        bh=1slVDOqEB8KWMUfUEIu1Co2wfDTjYSlNZhTPxBm4iBk=;
         fh=2mssAqYKJuMcD/Ya5YUzhxP7uPixmdZ7O75Bi0gtEhM=;
-        b=bHIsVWRVz9ebJn9fA0cp67AFrxvIdTZXZQLblxUf/RbwOuPzDIQi57TI8lT4ssir2C
-         cgeQBX5eQoT86lFXlu5jVyCoPHWXudWPcv32CEC42i26LD7vjdfG/lyfGTnOb8uqmu7D
-         Ui3ytQe9uSngJOo1Fuug0x94X5NzB87O3sUnFosGuqKsDPgBDh5wsZBu2s+tKVr3P5pz
-         w6aCYQIylrTm2Z+GavL++r1eJeEywAPPIlR1O8qBw+4dSUuhdDRkVm3t5+qH140EGcRk
-         vyUdIuYkhdIo92RhPdfdVfUFZ5XmIKx7WKQi6FZYQ0qWSHMBEeKmmAjfIJSClrd8kelb
-         hs6g==;
+        b=O4f6k7W7pogIm6WJam0VkmWnbzxx9OUJf9S32UxPa8sYe18HOdA1ux7KOWIUJapM/v
+         eZHkDuiJ8qslrTG5HTnPY5LYHZyuzkFxsVU4wuSN+Vy8LDo4Qsfx4tGrDK+AoGlRcmBF
+         ONlWGHiuuEe3olllVEVOOMZcdtehfZtCXuZkqrc5X6vy7Ia34PEx7vyU+jBMNnmaIkbu
+         w7mO0wxPsuKMA1Zp34PfD4xTZn96jHqeGo8juGvq+f/h523MSB7jyfuJxIi1S6mD/z3n
+         9TcxrnVsoU3zEVT9GUQ4wBNoTQ1/y0MlGeVIfDIQKhP9M2mksQ+FCctPj+IP4/yzMQRM
+         iPWA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=a7goeXj4;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@google.com header.s=20230601 header.b=0dm5WD+p;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7ae7561677asi764141885a.86.2024.10.07.18.25.33
+        by mx.google.com with ESMTPS id af79cd13be357-7ae75662558si736972485a.325.2024.10.07.18.25.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 07 Oct 2024 18:25:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 07 Oct 2024 18:25:36 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=a7goeXj4;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@google.com header.s=20230601 header.b=0dm5WD+p;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sxyuF-0005Jt-N9; Mon, 07 Oct 2024 21:20:55 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sxyuN-0006Gv-Nq; Mon, 07 Oct 2024 21:21:04 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <3m4gEZwUKCvwxezmtksskpi.gsquiqy-hiziprsrkry.svk@flex--tavip.bounces.google.com>)
- id 1sxysx-0008CE-JD
- for qemu-devel@nongnu.org; Mon, 07 Oct 2024 21:19:36 -0400
-Received: from mail-yw1-x1149.google.com ([2607:f8b0:4864:20::1149])
+ <3oogEZwUKCAUyf0nulttlqj.htrvjrz-fwrstslsz.twl@flex--tavip.bounces.google.com>)
+ id 1sxysy-0008GR-CA
+ for qemu-arm@nongnu.org; Mon, 07 Oct 2024 21:19:36 -0400
+Received: from mail-yb1-xb4a.google.com ([2607:f8b0:4864:20::b4a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from
- <3m4gEZwUKCvwxezmtksskpi.gsquiqy-hiziprsrkry.svk@flex--tavip.bounces.google.com>)
- id 1sxyst-0000CW-74
- for qemu-devel@nongnu.org; Mon, 07 Oct 2024 21:19:34 -0400
-Received: by mail-yw1-x1149.google.com with SMTP id
- 00721157ae682-6e2b049b64aso81158297b3.3
- for <qemu-devel@nongnu.org>; Mon, 07 Oct 2024 18:19:24 -0700 (PDT)
+ <3oogEZwUKCAUyf0nulttlqj.htrvjrz-fwrstslsz.twl@flex--tavip.bounces.google.com>)
+ id 1sxysv-0000Dr-8p
+ for qemu-arm@nongnu.org; Mon, 07 Oct 2024 21:19:36 -0400
+Received: by mail-yb1-xb4a.google.com with SMTP id
+ 3f1490d57ef6-e2605ce4276so8766175276.3
+ for <qemu-arm@nongnu.org>; Mon, 07 Oct 2024 18:19:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1728350364; x=1728955164; darn=nongnu.org;
+ d=google.com; s=20230601; t=1728350370; x=1728955170; darn=nongnu.org;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:from:to:cc:subject:date:message-id:reply-to;
- bh=UWggVGt8pbE9ZLsUZv4jH44X5yOt44e5jHCMlGNjp7Y=;
- b=a7goeXj4xpd6QVZucbFLqeoo/qPRNmaftLcNPO5RqWa4dtcwb5fvbAOo/gFAuj1eI8
- yTqXbWYK5kULLpevzOiSJCy8RTEKyXi1vOw+k/9c9u4ChJTA41b+fuXAaVk8PZCGjCe9
- Z6dCam6aESV/eqE8L/a0RvwPlAZrgKpC+SNemGQA7wJAHol0r3R/B/YNyDrAS2/NXMiM
- 1Q3uY3+F4dRSf+OSSBeyDpJR7ztZb+3gzaXttRYqoYxFv4CQ+3LdPhtStBTOu1md9Oui
- 1VgEYaekDdL1auVUopeUaVbrUDpGk6s9IoAbnQMUXqH5tsNXyvpsVvHK1PRJ/tIT9ylI
- Gi6Q==
+ bh=1slVDOqEB8KWMUfUEIu1Co2wfDTjYSlNZhTPxBm4iBk=;
+ b=0dm5WD+p8k1mkYwvDQsvCgT14WY4LSPCt/Q1uThQGNEbjDUeusAlBGthjD61NR46YS
+ D6kSw7YNuS6mz7DaoEMNucFjY0Oi/E50ncjJv3DvMIAjnbVUR9hydezZ2J6WX4pddDiM
+ HDGWPIUJkOC3//N7pW1nBy+Di5aIgxeRcwL3D7iiDaVmg7Kso0hvAd7hs/P/ehbYX9i5
+ scbp3NETRn00fJns2FcwjpnKrjxZQh52I0DYyShNRvM4AMBhI3erNakOMdSzX7Eg2lqq
+ KkPeXZmBMht8t9A7WKyHPQpr0a7m/1xDKFoONJ/VqX9V9FvhCeSVCqbzPp0n2OGGbLLY
+ 3hRQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1728350364; x=1728955164;
+ d=1e100.net; s=20230601; t=1728350370; x=1728955170;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=UWggVGt8pbE9ZLsUZv4jH44X5yOt44e5jHCMlGNjp7Y=;
- b=mZ+Yz8s1krXk77laXY97zVaKm9+WD7gIgTDatbze/B2QZnod5q9vCnzekqB0rO5/QF
- H9GMF2HAeEu7nJvHNyySIqQDjvtsN9OhNU0J0M5dcCTq9MkcaGlw00AjIeOrFgiUtuPX
- E9+7s6XkayJGYAMfqBPsmjd4vL3xOrkNk3DJGewZ14X43v4LLePCinUbhy9kSHe81YMk
- xH0VqhmkHuoRJC5FNUMIHsPHHCgWBSHGgH+6KBzknPa8c+ncTc91JyUza8/yJUGvCfmH
- RqUZ/weEtJSrkS204OkgFqjiwyMl1RNXHqMUkPhV4M71CEsimhHkBhpBrKGMSxdbMoIb
- huFg==
-X-Gm-Message-State: AOJu0YzGkHnS7f6a2VuKYVDhnr6wyBBs+CyPJpsCwioV1BubJ2d+dBQ4
- FC9epnrthHjVOM5fTOOoaup9BFsWHR/zsX1wefwzKHB97DviRGli8cRh825MLFelAJ9uWyOtW9r
- +zFkqqsowIn7QcJq1FuBm+tRtvOh0FB8gMkCoNH6TutT+lhRPjQ6/fooKO5+I8tTwfB8urc0esK
- jz26cEWfZiWZBQfgKXMp2KyyIhpQ==
+ bh=1slVDOqEB8KWMUfUEIu1Co2wfDTjYSlNZhTPxBm4iBk=;
+ b=WOo3nlht9o8iNWlcRfJopuyEOCqxOckAaMJ51j9s0fPhJ9Btk9tvtzd0daXErCQ3ih
+ HOmE33pfons4ezw6E8qek1W0u3AK7y4urnpu8AuZs9G5SrhbBaU+zqIVvSiuqzKZ6ao8
+ 99JoCM2K0rPllUzhxHlwCkEdV/jKY0CYYD9Qp6Aont4r6N5DS701F8f+AkiRN+3EuVY8
+ 7fzKuwEOVhK8blw+fJyBHE6iOkiKzYd3KcfHnT+QhB3u9fdbtmWx5YPSZ5Ud+UUJiOB+
+ a9YE0tI1ZbBQ9vgmFluKuJN9Mo1tI+j0DatDEptw1tIHTclsNe0OjE3ekAgrEZW4rBRp
+ 8HsA==
+X-Gm-Message-State: AOJu0YyvSt29SQ/5/UIhMMFPpXlMJAu4Ek5kNXl3rMl/v3eZ4YihOSFq
+ YaUyhTMg1zMuOZkQ4iMrGTXOUZ26DtWMqMPgjkCF9VrqeDE5+04oqOgv13f+AV7uXK6YwRzqwA=
+ =
 X-Received: from warp10.c.googlers.com ([fda3:e722:ac3:cc00:24:72f4:c0a8:750])
- (user=tavip job=sendgmr) by 2002:a25:26d0:0:b0:e17:8e73:866c with
+ (user=tavip job=sendgmr) by 2002:a5b:388:0:b0:e20:2502:be14 with
  SMTP id
- 3f1490d57ef6-e2893945130mr35092276.10.1728350363413; Mon, 07 Oct 2024
- 18:19:23 -0700 (PDT)
-Date: Mon,  7 Oct 2024 18:18:42 -0700
+ 3f1490d57ef6-e289391f4abmr10789276.7.1728350370295; Mon, 07 Oct 2024 18:19:30
+ -0700 (PDT)
+Date: Mon,  7 Oct 2024 18:18:46 -0700
 In-Reply-To: <20241008011852.1439154-1-tavip@google.com>
 Mime-Version: 1.0
 References: <20241008011852.1439154-1-tavip@google.com>
 X-Mailer: git-send-email 2.47.0.rc0.187.ge670bccf7e-goog
-Message-ID: <20241008011852.1439154-17-tavip@google.com>
-Subject: [PATCH v2 16/25] system/qtest: add APIS to check for memory access
- failures
+Message-ID: <20241008011852.1439154-21-tavip@google.com>
+Subject: [PATCH v2 20/25] tests/qtest: add tests for flexcomm i2c
 From: Octavian Purdila <tavip@google.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, stefanst@google.com, pbonzini@redhat.com, 
@@ -108,449 +106,230 @@ Cc: qemu-arm@nongnu.org, stefanst@google.com, pbonzini@redhat.com,
  alistair@alistair23.me, thuth@redhat.com, philmd@linaro.org, jsnow@redhat.com, 
  crosa@redhat.com, lvivier@redhat.com
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1149;
- envelope-from=3m4gEZwUKCvwxezmtksskpi.gsquiqy-hiziprsrkry.svk@flex--tavip.bounces.google.com;
- helo=mail-yw1-x1149.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b4a;
+ envelope-from=3oogEZwUKCAUyf0nulttlqj.htrvjrz-fwrstslsz.twl@flex--tavip.bounces.google.com;
+ helo=mail-yb1-xb4a.google.com
 X-Spam_score_int: -95
 X-Spam_score: -9.6
 X-Spam_bar: ---------
 X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.024,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=unavailable autolearn_force=no
+ USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: KsDV8whsUXti
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: RgRXIoAz1maZ
 
-Add read*/write*_fail qtest APIs to check for memory access failures.
+Add master mode tests for flexcomm i2c.
 
 Signed-off-by: Octavian Purdila <tavip@google.com>
 ---
- tests/qtest/libqtest-single.h | 92 +++++++++++++++++++++++++++++++++++
- tests/qtest/libqtest.h        | 76 +++++++++++++++++++++++++++++
- system/qtest.c                | 44 ++++++++++-------
- tests/qtest/libqtest.c        | 73 ++++++++++++++++++++++++++-
- 4 files changed, 265 insertions(+), 20 deletions(-)
+ tests/qtest/flexcomm-i2c-test.c | 170 ++++++++++++++++++++++++++++++++
+ tests/qtest/meson.build         |   2 +-
+ 2 files changed, 171 insertions(+), 1 deletion(-)
+ create mode 100644 tests/qtest/flexcomm-i2c-test.c
 
-diff --git a/tests/qtest/libqtest-single.h b/tests/qtest/libqtest-single.h
-index 851724cbcb..c22037c8b2 100644
---- a/tests/qtest/libqtest-single.h
-+++ b/tests/qtest/libqtest-single.h
-@@ -265,6 +265,98 @@ static inline uint64_t readq(uint64_t addr)
-     return qtest_readq(global_qtest, addr);
- }
+diff --git a/tests/qtest/flexcomm-i2c-test.c b/tests/qtest/flexcomm-i2c-test.c
+new file mode 100644
+index 0000000000..45f31da7de
+--- /dev/null
++++ b/tests/qtest/flexcomm-i2c-test.c
+@@ -0,0 +1,170 @@
++/*
++ * Copyright (c) 2024 Google LLC.
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ *
++ * This work is licensed under the terms of the GNU GPL, version 2 or later.
++ * See the COPYING file in the top-level directory.
++ */
++
++#include "qemu/osdep.h"
++
++#include "qemu/config-file.h"
++#include "qemu/log.h"
++#include "qemu/module.h"
++#include "qapi/error.h"
++#include "qemu/sockets.h"
++#include "sysemu/sysemu.h"
++#include "qemu/main-loop.h"
++#include "qemu/option.h"
++#include "exec/memory.h"
++#include "hw/irq.h"
++#include "hw/qdev-properties.h"
++#include "hw/qdev-core.h"
++
++#include "hw/misc/flexcomm.h"
++#include "hw/arm/svd/flexcomm_i2c.h"
++#include "hw/arm/svd/rt500.h"
++#include "hw/misc/i2c_tester.h"
++#include "reg-utils.h"
++
++#define PERIPH_ADDR (0x50)
++#define INVALID_ADDR (0x10)
++
++#define REG_ADDR 11
++#define REG_VALUE 0xAA
++
++#define FLEXCOMM_BASE RT500_FLEXCOMM0_BASE
++#define FLEXCOMM_I2C_BASE RT500_FLEXCOMM0_BASE
++#define DEVICE_NAME "/machine/soc/flexcomm0"
++
++struct TestState {
++    QTestState *qtest;
++};
++
++static void master_test(gconstpointer user_data)
++{
++    struct TestState *t = (struct TestState *)user_data;
++    uint32_t tmp;
++
++    qtest_irq_intercept_out_named(t->qtest, DEVICE_NAME,
++                                  SYSBUS_DEVICE_GPIO_IRQ);
++
++    /* Select and lock I2C */
++    tmp = FLEXCOMM_PERSEL_I2C;
++    FIELD_DP32(tmp, FLEXCOMM_PSELID, LOCK, 1);
++    REG32_WRITE(FLEXCOMM, PSELID, tmp);
++
++    /* Enable master mode */
++    REG32_WRITE_FIELD(FLEXCOMM_I2C, CFG, MSTEN, 1);
++    g_assert(REG32_READ_FIELD(FLEXCOMM_I2C, CFG, MSTEN) == 1);
++
++    g_assert(REG32_READ_FIELD(FLEXCOMM_I2C, STAT, MSTPENDING) == 1);
++    g_assert(REG32_READ_FIELD(FLEXCOMM_I2C, STAT, MSTSTATE) ==
++             MSTSTATE_IDLE);
++
++    /* Enable interrupts */
++    REG32_WRITE_FIELD(FLEXCOMM_I2C, INTENSET, MSTPENDINGEN, 1);
++    g_assert_true(get_irq(0));
++
++    /* start for invalid address  */
++    REG32_WRITE(FLEXCOMM_I2C, MSTDAT, INVALID_ADDR);
++    REG32_WRITE_FIELD_NOUPDATE(FLEXCOMM_I2C, MSTCTL, MSTSTART, 1);
++    g_assert(REG32_READ_FIELD(FLEXCOMM_I2C, STAT, MSTSTATE) ==
++             MSTSTATE_NAKADR);
++    g_assert_true(get_irq(0));
++    REG32_WRITE_FIELD_NOUPDATE(FLEXCOMM_I2C, MSTCTL, MSTSTOP, 1);
++
++    /* write past the last register */
++    REG32_WRITE_FIELD(FLEXCOMM_I2C, MSTDAT, DATA, PERIPH_ADDR);
++    REG32_WRITE_FIELD_NOUPDATE(FLEXCOMM_I2C, MSTCTL, MSTSTART, 1);
++    g_assert_true(get_irq(0));
++    g_assert(REG32_READ_FIELD(FLEXCOMM_I2C, STAT, MSTSTATE) ==
++             MSTSTATE_TXRDY);
++    REG32_WRITE_FIELD(FLEXCOMM_I2C, MSTDAT, DATA, I2C_TESTER_NUM_REGS + 10);
++    REG32_WRITE_FIELD_NOUPDATE(FLEXCOMM_I2C, MSTCTL, MSTCONTINUE, 1);
++    g_assert_true(get_irq(0));
++    g_assert(REG32_READ_FIELD(FLEXCOMM_I2C, STAT, MSTSTATE) ==
++             MSTSTATE_TXRDY);
++    REG32_WRITE_FIELD_NOUPDATE(FLEXCOMM_I2C, MSTCTL, MSTCONTINUE, 1);
++    g_assert_true(get_irq(0));
++    g_assert(REG32_READ_FIELD(FLEXCOMM_I2C, STAT, MSTSTATE) ==
++             MSTSTATE_NAKDAT);
++    REG32_WRITE_FIELD_NOUPDATE(FLEXCOMM_I2C, MSTCTL, MSTSTOP, 1);
++
++    /* write value to register */
++    REG32_WRITE_FIELD(FLEXCOMM_I2C, MSTDAT, DATA, PERIPH_ADDR);
++    REG32_WRITE_FIELD_NOUPDATE(FLEXCOMM_I2C, MSTCTL, MSTSTART, 1);
++    g_assert_true(get_irq(0));
++    g_assert(REG32_READ_FIELD(FLEXCOMM_I2C, STAT, MSTSTATE) ==
++             MSTSTATE_TXRDY);
++    REG32_WRITE_FIELD(FLEXCOMM_I2C, MSTDAT, DATA, REG_ADDR);
++    REG32_WRITE_FIELD_NOUPDATE(FLEXCOMM_I2C, MSTCTL, MSTCONTINUE, 1);
++    g_assert_true(get_irq(0));
++    g_assert(REG32_READ_FIELD(FLEXCOMM_I2C, STAT, MSTSTATE) ==
++             MSTSTATE_TXRDY);
++    REG32_WRITE_FIELD(FLEXCOMM_I2C, MSTDAT, DATA, REG_VALUE);
++    REG32_WRITE_FIELD_NOUPDATE(FLEXCOMM_I2C, MSTCTL, MSTCONTINUE, 1);
++    g_assert_true(get_irq(0));
++    g_assert(REG32_READ_FIELD(FLEXCOMM_I2C, STAT, MSTSTATE) ==
++             MSTSTATE_TXRDY);
++    REG32_WRITE_FIELD_NOUPDATE(FLEXCOMM_I2C, MSTCTL, MSTSTOP, 1);
++    g_assert_true(get_irq(0));
++    g_assert(REG32_READ_FIELD(FLEXCOMM_I2C, STAT, MSTSTATE) ==
++             MSTSTATE_IDLE);
++
++    /* read value back from register */
++    REG32_WRITE_FIELD(FLEXCOMM_I2C, MSTDAT, DATA, PERIPH_ADDR);
++    REG32_WRITE_FIELD_NOUPDATE(FLEXCOMM_I2C, MSTCTL, MSTSTART, 1);
++    g_assert_true(get_irq(0));
++    g_assert(REG32_READ_FIELD(FLEXCOMM_I2C, STAT, MSTSTATE) ==
++             MSTSTATE_TXRDY);
++    REG32_WRITE_FIELD(FLEXCOMM_I2C, MSTDAT, DATA, REG_ADDR);
++    REG32_WRITE_FIELD_NOUPDATE(FLEXCOMM_I2C, MSTCTL, MSTCONTINUE, 1);
++    g_assert_true(get_irq(0));
++    g_assert(REG32_READ_FIELD(FLEXCOMM_I2C, STAT, MSTSTATE) ==
++             MSTSTATE_TXRDY);
++    REG32_WRITE_FIELD(FLEXCOMM_I2C, MSTDAT, DATA, (PERIPH_ADDR + 1));
++    REG32_WRITE_FIELD_NOUPDATE(FLEXCOMM_I2C, MSTCTL, MSTSTART, 1);
++    g_assert_true(get_irq(0));
++    g_assert(REG32_READ_FIELD(FLEXCOMM_I2C, STAT, MSTSTATE) ==
++             MSTSTATE_RXRDY);
++    g_assert_cmpuint(REG32_READ_FIELD(FLEXCOMM_I2C, MSTDAT, DATA), ==,
++                     REG_VALUE);
++    REG32_WRITE_FIELD_NOUPDATE(FLEXCOMM_I2C, MSTCTL, MSTSTOP, 1);
++
++    /*
++     * Check that the master ended the transaction (i.e. i2c_end_transfer was
++     * called). If the master does not properly end the transaction this would
++     * be seen as a restart and it would not be NACKed.
++     */
++    REG32_WRITE_FIELD(FLEXCOMM_I2C, MSTDAT, DATA, INVALID_ADDR);
++    REG32_WRITE_FIELD_NOUPDATE(FLEXCOMM_I2C, MSTCTL, MSTSTART, 1);
++
++    g_assert(REG32_READ_FIELD(FLEXCOMM_I2C, STAT, MSTSTATE) ==
++             MSTSTATE_NAKADR);
++    g_assert_true(get_irq(0));
++    REG32_WRITE_FIELD_NOUPDATE(FLEXCOMM_I2C, MSTCTL, MSTSTOP, 1);
++
++    /* Disable interrupts */
++    REG32_WRITE_FIELD(FLEXCOMM_I2C, INTENCLR, MSTPENDINGCLR, 1);
++    g_assert_false(get_irq(0));
++}
++
++int main(int argc, char **argv)
++{
++    int ret;
++    struct TestState test;
++
++    module_call_init(MODULE_INIT_QOM);
++    g_test_init(&argc, &argv, NULL);
++
++    qtest_add_data_func("/flexcomm-i2c/master", &test, master_test);
++
++    test.qtest = qtest_start("-M rt595-evk "
++                          "-device i2c-tester,address=0x50,bus=/flexcomm0-i2c");
++    ret = g_test_run();
++    qtest_end();
++
++    return ret;
++}
+diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
+index c7a5bb61e9..c21b18c304 100644
+--- a/tests/qtest/meson.build
++++ b/tests/qtest/meson.build
+@@ -233,7 +233,7 @@ qtests_arm = \
+   (config_all_devices.has_key('CONFIG_FSI_APB2OPB_ASPEED') ? ['aspeed_fsi-test'] : []) + \
+   (config_all_devices.has_key('CONFIG_STM32L4X5_SOC') and
+    config_all_devices.has_key('CONFIG_DM163')? ['dm163-test'] : []) + \
+-  (config_all_devices.has_key('CONFIG_FLEXCOMM') ? ['flexcomm-test', 'flexcomm-usart-test'] : []) + \
++  (config_all_devices.has_key('CONFIG_FLEXCOMM') ? ['flexcomm-test', 'flexcomm-usart-test', 'flexcomm-i2c-test'] : []) + \
+   ['arm-cpu-features',
+    'boot-serial-test']
  
-+/**
-+ * writeb_fail:
-+ * @addr: Guest address to write to.
-+ * @value: Value being written.
-+ *
-+ * Writes an 8-bit value to memory expecting a failure.
-+ */
-+static inline void writeb_fail(uint64_t addr, uint8_t value)
-+{
-+    qtest_writeb_fail(global_qtest, addr, value);
-+}
-+
-+/**
-+ * writew_fail:
-+ * @addr: Guest address to write to.
-+ * @value: Value being written.
-+ *
-+ * Writes a 16-bit value to memory expecting a failure.
-+ */
-+static inline void writew_fail(uint64_t addr, uint16_t value)
-+{
-+    qtest_writew_fail(global_qtest, addr, value);
-+}
-+
-+/**
-+ * writel_fail:
-+ * @addr: Guest address to write to.
-+ * @value: Value being written.
-+ *
-+ * Writes a 32-bit value to memory expecting a failure.
-+ */
-+static inline void writel_fail(uint64_t addr, uint32_t value)
-+{
-+    qtest_writel_fail(global_qtest, addr, value);
-+}
-+
-+/**
-+ * writeq_fail:
-+ * @addr: Guest address to write to.
-+ * @value: Value being written.
-+ *
-+ * Writes a 64-bit value to memory expecting a failure.
-+ */
-+static inline void writeq_fail(uint64_t addr, uint64_t value)
-+{
-+    qtest_writeq_fail(global_qtest, addr, value);
-+}
-+
-+/**
-+ * readb_fail:
-+ * @addr: Guest address to read from.
-+ *
-+ * Reads an 8-bit value from memory expecting a failure.
-+ */
-+static inline void readb_fail(uint64_t addr)
-+{
-+    qtest_readb_fail(global_qtest, addr);
-+}
-+
-+/**
-+ * readw_fail:
-+ * @addr: Guest address to read from.
-+ *
-+ * Reads a 16-bit value from memory expecting a failure.
-+ */
-+static inline void readw_fail(uint64_t addr)
-+{
-+    qtest_readw_fail(global_qtest, addr);
-+}
-+
-+/**
-+ * readl_fail:
-+ * @addr: Guest address to read from.
-+ *
-+ * Reads a 32-bit value from memory expecting a failure.
-+ */
-+static inline void readl_fail(uint64_t addr)
-+{
-+    qtest_readl_fail(global_qtest, addr);
-+}
-+
-+/**
-+ * readq_fail:
-+ * @addr: Guest address to read from.
-+ *
-+ * Reads a 64-bit value from memory expecting a failure.
-+ */
-+static inline void readq_fail(uint64_t addr)
-+{
-+    qtest_readq_fail(global_qtest, addr);
-+}
-+
- /**
-  * memread:
-  * @addr: Guest address to read from.
-diff --git a/tests/qtest/libqtest.h b/tests/qtest/libqtest.h
-index beb96b18eb..f9bbeb2e60 100644
---- a/tests/qtest/libqtest.h
-+++ b/tests/qtest/libqtest.h
-@@ -549,6 +549,82 @@ uint32_t qtest_readl(QTestState *s, uint64_t addr);
-  */
- uint64_t qtest_readq(QTestState *s, uint64_t addr);
- 
-+/**
-+ * qtest_writeb_fail:
-+ * @s: #QTestState instance to operate on.
-+ * @addr: Guest address to write to.
-+ * @value: Value being written.
-+ *
-+ * Writes an 8-bit value to memory expecting a failure.
-+ */
-+void qtest_writeb_fail(QTestState *s, uint64_t addr, uint8_t value);
-+
-+/**
-+ * qtest_writew_fail:
-+ * @s: #QTestState instance to operate on.
-+ * @addr: Guest address to write to.
-+ * @value: Value being written.
-+ *
-+ * Writes a 16-bit value to memory expecting a failure.
-+ */
-+void qtest_writew_fail(QTestState *s, uint64_t addr, uint16_t value);
-+
-+/**
-+ * qtest_writel_fail:
-+ * @s: #QTestState instance to operate on.
-+ * @addr: Guest address to write to.
-+ * @value: Value being written.
-+ *
-+ * Writes a 32-bit value to memory expecting a failure.
-+ */
-+void qtest_writel_fail(QTestState *s, uint64_t addr, uint32_t value);
-+
-+/**
-+ * qtest_writeq_fail:
-+ * @s: #QTestState instance to operate on.
-+ * @addr: Guest address to write to.
-+ * @value: Value being written.
-+ *
-+ * Writes a 64-bit value to memory expecting a failure.
-+ */
-+void qtest_writeq_fail(QTestState *s, uint64_t addr, uint64_t value);
-+
-+/**
-+ * qtest_readb_fail:
-+ * @s: #QTestState instance to operate on.
-+ * @addr: Guest address to read from.
-+ *
-+ * Reads an 8-bit value from memory expecting a failure.
-+ */
-+void qtest_readb_fail(QTestState *s, uint64_t addr);
-+
-+/**
-+ * qtest_readw_fail:
-+ * @s: #QTestState instance to operate on.
-+ * @addr: Guest address to read from.
-+ *
-+ * Reads a 16-bit value from memory expecting a failure.
-+ */
-+void qtest_readw_fail(QTestState *s, uint64_t addr);
-+
-+/**
-+ * qtest_readl_fail:
-+ * @s: #QTestState instance to operate on.
-+ * @addr: Guest address to read from.
-+ *
-+ * Reads a 32-bit value from memory expecting a failure.
-+ */
-+void qtest_readl_fail(QTestState *s, uint64_t addr);
-+
-+/**
-+ * qtest_readq_fail:
-+ * @s: #QTestState instance to operate on.
-+ * @addr: Guest address to read from.
-+ *
-+ * Reads a 64-bit value from memory expecting a failure.
-+ */
-+void qtest_readq_fail(QTestState *s, uint64_t addr);
-+
- /**
-  * qtest_memread:
-  * @s: #QTestState instance to operate on.
-diff --git a/system/qtest.c b/system/qtest.c
-index 12703a2045..95bb80a2bc 100644
---- a/system/qtest.c
-+++ b/system/qtest.c
-@@ -514,26 +514,30 @@ static void qtest_process_command(CharBackend *chr, gchar **words)
- 
-         if (words[0][5] == 'b') {
-             uint8_t data = value;
--            address_space_write(first_cpu->as, addr, MEMTXATTRS_UNSPECIFIED,
--                                &data, 1);
-+            ret = address_space_write(first_cpu->as, addr,
-+                                      MEMTXATTRS_UNSPECIFIED, &data, 1);
-         } else if (words[0][5] == 'w') {
-             uint16_t data = value;
-             tswap16s(&data);
--            address_space_write(first_cpu->as, addr, MEMTXATTRS_UNSPECIFIED,
--                                &data, 2);
-+            ret = address_space_write(first_cpu->as, addr,
-+                                      MEMTXATTRS_UNSPECIFIED, &data, 2);
-         } else if (words[0][5] == 'l') {
-             uint32_t data = value;
-             tswap32s(&data);
--            address_space_write(first_cpu->as, addr, MEMTXATTRS_UNSPECIFIED,
--                                &data, 4);
-+            ret = address_space_write(first_cpu->as, addr,
-+                                      MEMTXATTRS_UNSPECIFIED, &data, 4);
-         } else if (words[0][5] == 'q') {
-             uint64_t data = value;
-             tswap64s(&data);
--            address_space_write(first_cpu->as, addr, MEMTXATTRS_UNSPECIFIED,
--                                &data, 8);
-+            ret = address_space_write(first_cpu->as, addr,
-+                                      MEMTXATTRS_UNSPECIFIED, &data, 8);
-         }
-         qtest_send_prefix(chr);
--        qtest_send(chr, "OK\n");
-+        if (ret == MEMTX_OK) {
-+            qtest_send(chr, "OK\n");
-+        } else {
-+            qtest_send(chr, "FAIL\n");
-+        }
-     } else if (strcmp(words[0], "readb") == 0 ||
-                strcmp(words[0], "readw") == 0 ||
-                strcmp(words[0], "readl") == 0 ||
-@@ -548,26 +552,30 @@ static void qtest_process_command(CharBackend *chr, gchar **words)
- 
-         if (words[0][4] == 'b') {
-             uint8_t data;
--            address_space_read(first_cpu->as, addr, MEMTXATTRS_UNSPECIFIED,
--                               &data, 1);
-+            ret = address_space_read(first_cpu->as, addr,
-+                                     MEMTXATTRS_UNSPECIFIED, &data, 1);
-             value = data;
-         } else if (words[0][4] == 'w') {
-             uint16_t data;
--            address_space_read(first_cpu->as, addr, MEMTXATTRS_UNSPECIFIED,
--                               &data, 2);
-+            ret = address_space_read(first_cpu->as, addr,
-+                                     MEMTXATTRS_UNSPECIFIED, &data, 2);
-             value = tswap16(data);
-         } else if (words[0][4] == 'l') {
-             uint32_t data;
--            address_space_read(first_cpu->as, addr, MEMTXATTRS_UNSPECIFIED,
--                               &data, 4);
-+            ret = address_space_read(first_cpu->as, addr,
-+                                     MEMTXATTRS_UNSPECIFIED, &data, 4);
-             value = tswap32(data);
-         } else if (words[0][4] == 'q') {
--            address_space_read(first_cpu->as, addr, MEMTXATTRS_UNSPECIFIED,
--                               &value, 8);
-+            ret = address_space_read(first_cpu->as, addr,
-+                                     MEMTXATTRS_UNSPECIFIED, &value, 8);
-             tswap64s(&value);
-         }
-         qtest_send_prefix(chr);
--        qtest_sendf(chr, "OK 0x%016" PRIx64 "\n", value);
-+        if (ret == MEMTX_OK) {
-+            qtest_sendf(chr, "OK 0x%016" PRIx64 "\n", value);
-+        } else {
-+            qtest_sendf(chr, "FAIL\n");
-+        }
-     } else if (strcmp(words[0], "read") == 0) {
-         g_autoptr(GString) enc = NULL;
-         uint64_t addr, len;
-diff --git a/tests/qtest/libqtest.c b/tests/qtest/libqtest.c
-index 9d07de1fbd..4055d6b953 100644
---- a/tests/qtest/libqtest.c
-+++ b/tests/qtest/libqtest.c
-@@ -666,7 +666,7 @@ static GString *qtest_client_socket_recv_line(QTestState *s)
-     return line;
- }
- 
--static gchar **qtest_rsp_args(QTestState *s, int expected_args)
-+static gchar **_qtest_rsp_args(QTestState *s, int expected_args, bool fail)
- {
-     GString *line;
-     gchar **words;
-@@ -700,7 +700,11 @@ redo:
-     }
- 
-     g_assert(words[0] != NULL);
--    g_assert_cmpstr(words[0], ==, "OK");
-+    if (fail) {
-+        g_assert_cmpstr(words[0], ==, "FAIL");
-+    } else {
-+        g_assert_cmpstr(words[0], ==, "OK");
-+    }
- 
-     for (i = 0; i < expected_args; i++) {
-         g_assert(words[i] != NULL);
-@@ -709,6 +713,11 @@ redo:
-     return words;
- }
- 
-+static gchar **qtest_rsp_args(QTestState *s, int expected_args)
-+{
-+    return _qtest_rsp_args(s, expected_args, false);
-+}
-+
- static void qtest_rsp(QTestState *s)
- {
-     gchar **words = qtest_rsp_args(s, 0);
-@@ -716,6 +725,13 @@ static void qtest_rsp(QTestState *s)
-     g_strfreev(words);
- }
- 
-+static void qtest_rsp_fail(QTestState *s)
-+{
-+    gchar **words = _qtest_rsp_args(s, 0, true);
-+
-+    g_strfreev(words);
-+}
-+
- static int qtest_query_target_endianness(QTestState *s)
- {
-     gchar **args;
-@@ -1103,6 +1119,13 @@ static void qtest_write(QTestState *s, const char *cmd, uint64_t addr,
-     qtest_rsp(s);
- }
- 
-+static void qtest_write_fail(QTestState *s, const char *cmd, uint64_t addr,
-+                             uint64_t value)
-+{
-+    qtest_sendf(s, "%s 0x%" PRIx64 " 0x%" PRIx64 "\n", cmd, addr, value);
-+    qtest_rsp_fail(s);
-+}
-+
- void qtest_writeb(QTestState *s, uint64_t addr, uint8_t value)
- {
-     qtest_write(s, "writeb", addr, value);
-@@ -1123,6 +1146,26 @@ void qtest_writeq(QTestState *s, uint64_t addr, uint64_t value)
-     qtest_write(s, "writeq", addr, value);
- }
- 
-+void qtest_writeb_fail(QTestState *s, uint64_t addr, uint8_t value)
-+{
-+    qtest_write_fail(s, "writeb", addr, value);
-+}
-+
-+void qtest_writew_fail(QTestState *s, uint64_t addr, uint16_t value)
-+{
-+    qtest_write_fail(s, "writew", addr, value);
-+}
-+
-+void qtest_writel_fail(QTestState *s, uint64_t addr, uint32_t value)
-+{
-+    qtest_write_fail(s, "writel", addr, value);
-+}
-+
-+void qtest_writeq_fail(QTestState *s, uint64_t addr, uint64_t value)
-+{
-+    qtest_write_fail(s, "writeq", addr, value);
-+}
-+
- static uint64_t qtest_read(QTestState *s, const char *cmd, uint64_t addr)
- {
-     gchar **args;
-@@ -1138,6 +1181,12 @@ static uint64_t qtest_read(QTestState *s, const char *cmd, uint64_t addr)
-     return value;
- }
- 
-+static void qtest_read_fail(QTestState *s, const char *cmd, uint64_t addr)
-+{
-+    qtest_sendf(s, "%s 0x%" PRIx64 "\n", cmd, addr);
-+    qtest_rsp_fail(s);
-+}
-+
- uint8_t qtest_readb(QTestState *s, uint64_t addr)
- {
-     return qtest_read(s, "readb", addr);
-@@ -1158,6 +1207,26 @@ uint64_t qtest_readq(QTestState *s, uint64_t addr)
-     return qtest_read(s, "readq", addr);
- }
- 
-+void qtest_readb_fail(QTestState *s, uint64_t addr)
-+{
-+    qtest_read_fail(s, "readb", addr);
-+}
-+
-+void qtest_readw_fail(QTestState *s, uint64_t addr)
-+{
-+    qtest_read_fail(s, "readw", addr);
-+}
-+
-+void qtest_readl_fail(QTestState *s, uint64_t addr)
-+{
-+    qtest_read_fail(s, "readl", addr);
-+}
-+
-+void qtest_readq_fail(QTestState *s, uint64_t addr)
-+{
-+    qtest_read(s, "readq", addr);
-+}
-+
- static int hex2nib(char ch)
- {
-     if (ch >= '0' && ch <= '9') {
 -- 
 2.47.0.rc0.187.ge670bccf7e-goog
 

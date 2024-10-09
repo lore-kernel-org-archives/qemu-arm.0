@@ -1,51 +1,51 @@
-Received: by 2002:a17:504:1f11:b0:1be9:327d:8ee3 with SMTP id z17csp594826njl;
-        Tue, 8 Oct 2024 20:19:58 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUUuAg4kbup9yGW3WPUiAB05QwslOi6/vx8EcsYonzXcrVlbohybZA7Ik0tCrz/l+hp9YnJHrxZhYQaIg==@linaro.org
-X-Google-Smtp-Source: AGHT+IFTaRYiNAoL5VcCI74J4QWVKJVS6wkxmus56QUWu1QcIRFZL6LixRkeHH2HovoInR/5BAqi
-X-Received: by 2002:a05:600c:3ac4:b0:428:e866:3933 with SMTP id 5b1f17b1804b1-430d6faa388mr7020435e9.22.1728443998392;
-        Tue, 08 Oct 2024 20:19:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1728443998; cv=none;
+Received: by 2002:a17:504:1f11:b0:1be9:327d:8ee3 with SMTP id z17csp594923njl;
+        Tue, 8 Oct 2024 20:20:18 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCU2wm6p0mxw/nqAxwVByLec/ddsAoMWth5jISLnnC3JIm6sM5GS2x0/uqj6ztXNKeALCyAIBcyPlR/ezw==@linaro.org
+X-Google-Smtp-Source: AGHT+IEbETnLRp6OIIZCuqmNuXzNp2Vlg8VkreYMMo16b+58OR0nSHCXmUr2+0dgRYtG27qZg2N6
+X-Received: by 2002:a5d:456f:0:b0:374:b6f3:728d with SMTP id ffacd0b85a97d-37d3ab31248mr445952f8f.46.1728444017919;
+        Tue, 08 Oct 2024 20:20:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1728444017; cv=none;
         d=google.com; s=arc-20240605;
-        b=VLCITyFKu5qXKTJEZrtSAOfwlT4bWnVsXsWDzKDyQ5KrEoO5kmQ0j0p4a1aebNl0te
-         YMgmLlqSqekrPbFJd4pXhGpshoCq8Ue5i/pWtQ0/6Q/N7VHvq5L8sb+TYSANdBnPtiQM
-         9CknpJuZg6ZUSYPBmHEZBoMRm/IiFpnMVttKujqAXyAhQB4yjwuM1hyMcuHEajnWsLUC
-         RlSvVKf6GDDq8r0qX3ysYGOsG/6tgJ6FIaMRHw1jZL2JSOBgDifRwxSKb4fOucrt+6wc
-         IpvphOQZBWphFP1h6l4GJDYd7oNU1zsOTfFUnPxSkU7BZXri/RDrJ4dcIetCc9atWHYz
-         JTJQ==
+        b=AUpRqJwuFCvbd78q/onv1XgaBxDFcDLdRtJiXUDSgE6PFYd+Z7OpEhoJQ3n1pM4H+1
+         cUuGJ2p3ldQvlONUArBInTgK1ugULrCgT9xZa4PSkFynCnZ0HtMWW+rwnFXbex1Z4SOW
+         VAYGUKP9ddhpchPiUzw1EOZtlnRaJyN6IFYgaTh6+9V6hvVDmCQ6HauSf0rrffUC2E0P
+         QS6bSKpAdXt6D0TNdC8AlbJTp76rjmYdTyz92RTkTEPZc1IGbAkyBV9Z9b1Obk5D3kvS
+         v5i8TSQSy3lIwLgX4fxHLoJVyQuoKaD+Fkn1DBBW6ZC46tvATj7mA7OmT6QdUMpij9kQ
+         DTPQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from;
-        bh=BoXGaUYFnB/QTckpixjhvsSL7CUv5wh4nRWBmXGxo4c=;
+        bh=Hcg42jnB9P3vSvOXsSDX78o22Mw6gUD5ohZVkHuvWu4=;
         fh=4Dgx8jc1gJCFDIGNl8iT3gucG+cuHYR9XmJ7yDXtNzA=;
-        b=lTqSiREqofSAE6I/vBVQrnyryg+MFLQxbg38C6KtpyonIgeuSrknwvF2ZXkO/a8IsY
-         2ZDJEhVLcDtwXCozGzfjeD5LPNHo6bRDHk69GOnlL6A2vuIjczOgvV6gNOh+kVkM6oCK
-         EaC6qrOrpEbgmMuKr3xE72a9PFeJSyRuXU5+FCze2U38W+YoEIzrx9wfi2ZgXx2HP4qw
-         g1zcNWwpoV6pm18Hdxx82kRnMDBQeHUoC00LsCc8v43uJ+PoQfr8RaclJR/QvgWg7OmX
-         g/hI7Ztgxp62+wkGOZW1uPRfbuptED1dMHfx6ugjRyFjJqMXRJ6f3Gv5Xa59lx9aeqEu
-         yzsg==;
+        b=ElF/2qL/R147DY+oxL1zYTXu/3ja5dCc1jKpCU/jYg2mlTRmU8WD/wbxI2mCdk6od7
+         pvT849yyZuZg4X4jow67Rao6ba+CacTPqquVSBMr9v/eedflD/6I88lPWwYW1lg7fmpu
+         r5nBjaiPR6zn9P8jv+lBip83+/fA2DT9ym7W4+R+l5nqEKVmMpSVwFSLMIRpOhunMNga
+         6xpsJY/O1wdbfxHsX3iXfnDze+8Ig5VTriA+svYGlyRosNWa/knxh1tvrObr3z7xXyHS
+         g4e61CaJSuxSQ+yJtWBfNpSzQ+dEb8LIWF5AlR4HvaJb5THXaqF+R6K0CNLtG/dHymTL
+         X5Tg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
 Return-Path: <salil.mehta@huawei.com>
 Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id 5b1f17b1804b1-430d59b2be8si2650995e9.187.2024.10.08.20.19.58
+        by mx.google.com with ESMTPS id ffacd0b85a97d-37d3196a46asi1038629f8f.370.2024.10.08.20.20.17
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 08 Oct 2024 20:19:58 -0700 (PDT)
+        Tue, 08 Oct 2024 20:20:17 -0700 (PDT)
 Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from mail.maildlp.com (unknown [172.18.186.216])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4XNdRJ6lNSz6K95k;
-	Wed,  9 Oct 2024 11:19:40 +0800 (CST)
+Received: from mail.maildlp.com (unknown [172.18.186.31])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4XNdRh34k5z6K97j;
+	Wed,  9 Oct 2024 11:20:00 +0800 (CST)
 Received: from frapeml500007.china.huawei.com (unknown [7.182.85.172])
-	by mail.maildlp.com (Postfix) with ESMTPS id 9152B140447;
-	Wed,  9 Oct 2024 11:19:57 +0800 (CST)
+	by mail.maildlp.com (Postfix) with ESMTPS id 12BF5140133;
+	Wed,  9 Oct 2024 11:20:17 +0800 (CST)
 Received: from 00293818-MRGF.huawei.com (10.126.173.89) by
  frapeml500007.china.huawei.com (7.182.85.172) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Wed, 9 Oct 2024 05:19:38 +0200
+ 15.1.2507.39; Wed, 9 Oct 2024 05:19:57 +0200
 From: Salil Mehta <salil.mehta@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <mst@redhat.com>
 CC: <salil.mehta@huawei.com>, <maz@kernel.org>, <jean-philippe@linaro.org>,
@@ -64,9 +64,9 @@ CC: <salil.mehta@huawei.com>, <maz@kernel.org>, <jean-philippe@linaro.org>,
 	<jiakernel2@gmail.com>, <maobibo@loongson.cn>, <lixianglai@loongson.cn>,
 	<shahuang@redhat.com>, <zhao1.liu@intel.com>, <linuxarm@huawei.com>,
 	<gustavo.romero@linaro.org>
-Subject: [PATCH RFC V4 01/33] arm/virt,target/arm: Add new ARMCPU {socket,cluster,core,thread}-id property
-Date: Wed, 9 Oct 2024 04:17:43 +0100
-Message-ID: <20241009031815.250096-2-salil.mehta@huawei.com>
+Subject: [PATCH RFC V4 02/33] cpu-common: Add common CPU utility for possible vCPUs
+Date: Wed, 9 Oct 2024 04:17:44 +0100
+Message-ID: <20241009031815.250096-3-salil.mehta@huawei.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20241009031815.250096-1-salil.mehta@huawei.com>
 References: <20241009031815.250096-1-salil.mehta@huawei.com>
@@ -76,123 +76,124 @@ Content-Type: text/plain
 X-Originating-IP: [10.126.173.89]
 X-ClientProxiedBy: dggems705-chm.china.huawei.com (10.3.19.182) To
  frapeml500007.china.huawei.com (7.182.85.172)
-X-TUID: J4RsyI8jvH2F
+X-TUID: pjrc2Vv2056I
 
-This shall be used to store user specified topology{socket,cluster,core,thread}
-and shall be converted to a unique 'vcpu-id' which is used as slot-index during
-hot(un)plug of vCPU.
+This patch adds various utility functions that may be required to fetch or check
+the state of possible vCPUs. It also introduces the concept of *disabled* vCPUs,
+which are part of the *possible* vCPUs but are not enabled. This state will be
+used during machine initialization and later during the plugging or unplugging
+of vCPUs. We release the QOM CPU objects for all disabled vCPUs.
 
 Co-developed-by: Keqian Zhu <zhukeqian1@huawei.com>
 Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
 Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
 ---
- hw/arm/virt.c         | 10 ++++++++++
- include/hw/arm/virt.h | 28 ++++++++++++++++++++++++++++
- target/arm/cpu.c      |  4 ++++
- target/arm/cpu.h      |  4 ++++
- 4 files changed, 46 insertions(+)
+ cpu-common.c          | 21 ++++++++++++++++++++
+ include/hw/core/cpu.h | 46 +++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 67 insertions(+)
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 7934b23651..a0aeb263dc 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -2240,6 +2240,14 @@ static void machvirt_init(MachineState *machine)
-                           &error_fatal);
+diff --git a/cpu-common.c b/cpu-common.c
+index 6b262233a3..4a446f6f7f 100644
+--- a/cpu-common.c
++++ b/cpu-common.c
+@@ -24,6 +24,7 @@
+ #include "sysemu/cpus.h"
+ #include "qemu/lockable.h"
+ #include "trace/trace-root.h"
++#include "hw/boards.h"
  
-         aarch64 &= object_property_get_bool(cpuobj, "aarch64", NULL);
-+        object_property_set_int(cpuobj, "socket-id",
-+                                virt_get_socket_id(machine, n), NULL);
-+        object_property_set_int(cpuobj, "cluster-id",
-+                                virt_get_cluster_id(machine, n), NULL);
-+        object_property_set_int(cpuobj, "core-id",
-+                                virt_get_core_id(machine, n), NULL);
-+        object_property_set_int(cpuobj, "thread-id",
-+                                virt_get_thread_id(machine, n), NULL);
- 
-         if (!vms->secure) {
-             object_property_set_bool(cpuobj, "has_el3", false, NULL);
-@@ -2763,6 +2771,7 @@ static const CPUArchIdList *virt_possible_cpu_arch_ids(MachineState *ms)
- {
-     int n;
-     unsigned int max_cpus = ms->smp.max_cpus;
-+    unsigned int smp_threads = ms->smp.threads;
-     VirtMachineState *vms = VIRT_MACHINE(ms);
-     MachineClass *mc = MACHINE_GET_CLASS(vms);
- 
-@@ -2776,6 +2785,7 @@ static const CPUArchIdList *virt_possible_cpu_arch_ids(MachineState *ms)
-     ms->possible_cpus->len = max_cpus;
-     for (n = 0; n < ms->possible_cpus->len; n++) {
-         ms->possible_cpus->cpus[n].type = ms->cpu_type;
-+        ms->possible_cpus->cpus[n].vcpus_count = smp_threads;
-         ms->possible_cpus->cpus[n].arch_id =
-             virt_cpu_mp_affinity(vms, n);
- 
-diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-index aca4f8061b..db3e2aebb9 100644
---- a/include/hw/arm/virt.h
-+++ b/include/hw/arm/virt.h
-@@ -214,4 +214,32 @@ static inline int virt_gicv3_redist_region_count(VirtMachineState *vms)
-             vms->highmem_redists) ? 2 : 1;
+ QemuMutex qemu_cpu_list_lock;
+ static QemuCond exclusive_cond;
+@@ -108,6 +109,26 @@ void cpu_list_remove(CPUState *cpu)
+     cpu_list_generation_id++;
  }
  
-+static inline int virt_get_socket_id(const MachineState *ms, int cpu_index)
++CPUState *qemu_get_possible_cpu(int index)
 +{
-+    assert(cpu_index >= 0 && cpu_index < ms->possible_cpus->len);
++    MachineState *ms = MACHINE(qdev_get_machine());
++    const CPUArchIdList *possible_cpus = ms->possible_cpus;
 +
-+    return ms->possible_cpus->cpus[cpu_index].props.socket_id;
++    assert((index >= 0) && (index < possible_cpus->len));
++
++    return CPU(possible_cpus->cpus[index].cpu);
 +}
 +
-+static inline int virt_get_cluster_id(const MachineState *ms, int cpu_index)
++bool qemu_present_cpu(CPUState *cpu)
 +{
-+    assert(cpu_index >= 0 && cpu_index < ms->possible_cpus->len);
-+
-+    return ms->possible_cpus->cpus[cpu_index].props.cluster_id;
++    return cpu;
 +}
 +
-+static inline int virt_get_core_id(const MachineState *ms, int cpu_index)
++bool qemu_enabled_cpu(CPUState *cpu)
 +{
-+    assert(cpu_index >= 0 && cpu_index < ms->possible_cpus->len);
-+
-+    return ms->possible_cpus->cpus[cpu_index].props.core_id;
++    return cpu && !cpu->disabled;
 +}
 +
-+static inline int virt_get_thread_id(const MachineState *ms, int cpu_index)
-+{
-+    assert(cpu_index >= 0 && cpu_index < ms->possible_cpus->len);
-+
-+    return ms->possible_cpus->cpus[cpu_index].props.thread_id;
-+}
-+
- #endif /* QEMU_ARM_VIRT_H */
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 19191c2391..bda95366d1 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -2622,6 +2622,10 @@ static Property arm_cpu_properties[] = {
-     DEFINE_PROP_UINT64("mp-affinity", ARMCPU,
-                         mp_affinity, ARM64_AFFINITY_INVALID),
-     DEFINE_PROP_INT32("node-id", ARMCPU, node_id, CPU_UNSET_NUMA_NODE_ID),
-+    DEFINE_PROP_INT32("socket-id", ARMCPU, socket_id, 0),
-+    DEFINE_PROP_INT32("cluster-id", ARMCPU, cluster_id, 0),
-+    DEFINE_PROP_INT32("core-id", ARMCPU, core_id, 0),
-+    DEFINE_PROP_INT32("thread-id", ARMCPU, thread_id, 0),
-     DEFINE_PROP_INT32("core-count", ARMCPU, core_count, -1),
-     /* True to default to the backward-compat old CNTFRQ rather than 1Ghz */
-     DEFINE_PROP_BOOL("backcompat-cntfrq", ARMCPU, backcompat_cntfrq, false),
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index f065756c5c..1277a0ddfc 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -1086,6 +1086,10 @@ struct ArchCPU {
-     QLIST_HEAD(, ARMELChangeHook) el_change_hooks;
+ CPUState *qemu_get_cpu(int index)
+ {
+     CPUState *cpu;
+diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
+index 1c9c775df6..73a4e4cce1 100644
+--- a/include/hw/core/cpu.h
++++ b/include/hw/core/cpu.h
+@@ -538,6 +538,20 @@ struct CPUState {
+     CPUPluginState *plugin_state;
+ #endif
  
-     int32_t node_id; /* NUMA node this CPU belongs to */
-+    int32_t socket_id;
-+    int32_t cluster_id;
-+    int32_t core_id;
-+    int32_t thread_id;
++    /*
++     * In the guest kernel, the presence of vCPUs is determined by information
++     * provided by the VMM or firmware via the ACPI MADT at boot time. Some
++     * architectures do not allow modifications to this configuration after
++     * the guest has booted. Therefore, for such architectures, hotpluggable
++     * vCPUs are exposed by the VMM as not 'ACPI Enabled' to the kernel.
++     * Within QEMU, such vCPUs (those that are 'yet-to-be-plugged' or have
++     * been hot-unplugged) may either have a `CPUState` object in a 'disabled'
++     * state or may not have a `CPUState` object at all.
++     *
++     * By default, `CPUState` objects are enabled across all architectures.
++     */
++    bool disabled;
++
+     /* TODO Move common fields from CPUArchState here. */
+     int cpu_index;
+     int cluster_index;
+@@ -924,6 +938,38 @@ static inline bool cpu_in_exclusive_context(const CPUState *cpu)
+  */
+ CPUState *qemu_get_cpu(int index);
  
-     /* Used to synchronize KVM and QEMU in-kernel device levels */
-     uint8_t device_irq_level;
++/**
++ * qemu_get_possible_cpu:
++ * @index: The CPUState@cpu_index value of the CPU to obtain.
++ *         Input index MUST be in range [0, Max Possible CPUs)
++ *
++ * If CPUState object exists,then it gets a CPU matching
++ * @index in the possible CPU array.
++ *
++ * Returns: The possible CPU or %NULL if CPU does not exist.
++ */
++CPUState *qemu_get_possible_cpu(int index);
++
++/**
++ * qemu_present_cpu:
++ * @cpu: The vCPU to check
++ *
++ * Checks if the vCPU is amongst the present possible vcpus.
++ *
++ * Returns: True if it is present possible vCPU else false
++ */
++bool qemu_present_cpu(CPUState *cpu);
++
++/**
++ * qemu_enabled_cpu:
++ * @cpu: The vCPU to check
++ *
++ * Checks if the vCPU is enabled.
++ *
++ * Returns: True if it is 'enabled' else false
++ */
++bool qemu_enabled_cpu(CPUState *cpu);
++
+ /**
+  * cpu_exists:
+  * @id: Guest-exposed CPU ID to lookup.
 -- 
 2.34.1

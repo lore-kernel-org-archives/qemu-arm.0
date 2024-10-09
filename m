@@ -1,176 +1,198 @@
-Received: by 2002:a05:7022:110:b0:8b:e46e:3391 with SMTP id 16csp643116dlk;
-        Tue, 8 Oct 2024 22:45:27 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVY2n0YrxBl3kF1ln+N+zkORCCoMEBaAKFifBfeQMIeoHfBPkrIAjmR/WqW+bPblmoVQNERPXUcjN9UTg==@linaro.org
-X-Google-Smtp-Source: AGHT+IENQuPfFIyLsDCjA0bwJ2GjXmVXo5bNweCWcufsgFqMQ+0HIevMpXA11LbpYkOx79cTXLJM
-X-Received: by 2002:a05:6214:459d:b0:6c3:5c75:d2b1 with SMTP id 6a1803df08f44-6cbc9081fb5mr28721106d6.5.1728452727431;
-        Tue, 08 Oct 2024 22:45:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1728452727; cv=none;
+Received: by 2002:a17:504:1f11:b0:1be9:327d:8ee3 with SMTP id z17csp594826njl;
+        Tue, 8 Oct 2024 20:19:58 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUUuAg4kbup9yGW3WPUiAB05QwslOi6/vx8EcsYonzXcrVlbohybZA7Ik0tCrz/l+hp9YnJHrxZhYQaIg==@linaro.org
+X-Google-Smtp-Source: AGHT+IFTaRYiNAoL5VcCI74J4QWVKJVS6wkxmus56QUWu1QcIRFZL6LixRkeHH2HovoInR/5BAqi
+X-Received: by 2002:a05:600c:3ac4:b0:428:e866:3933 with SMTP id 5b1f17b1804b1-430d6faa388mr7020435e9.22.1728443998392;
+        Tue, 08 Oct 2024 20:19:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1728443998; cv=none;
         d=google.com; s=arc-20240605;
-        b=Uqv2Kw8RtF7G0NCajiUSm4/EPWKPvsnWjn5AhJj0Xcy2CwI5mZr+3Gb/a6RkKrmpSK
-         0kIih/yeTM0YY39DVfoC3kOgZa+/jeGlJhNkfU7tFq54uGRLETIyFjFxsdPgteOTcEPh
-         n2fqmOrDPvHdYL6Bh8YHlNOWw3ZBQMS98oWNnUKxUcRe/6k+F/sfmGyPfdEX82N9wcaV
-         1ogqjzWMvFSrEQgUMUsFPLxDKK/HLOlZYe0vVrlbE+h2vh0yg2AE3DOoKBw2hPuAbFs+
-         0ZeeFIz59cddFlsQcGEQdD5KG//mbLWMnwrT092eQ55dYoJiozn5du2+0pbUhhA7cMJq
-         Jt2Q==
+        b=VLCITyFKu5qXKTJEZrtSAOfwlT4bWnVsXsWDzKDyQ5KrEoO5kmQ0j0p4a1aebNl0te
+         YMgmLlqSqekrPbFJd4pXhGpshoCq8Ue5i/pWtQ0/6Q/N7VHvq5L8sb+TYSANdBnPtiQM
+         9CknpJuZg6ZUSYPBmHEZBoMRm/IiFpnMVttKujqAXyAhQB4yjwuM1hyMcuHEajnWsLUC
+         RlSvVKf6GDDq8r0qX3ysYGOsG/6tgJ6FIaMRHw1jZL2JSOBgDifRwxSKb4fOucrt+6wc
+         IpvphOQZBWphFP1h6l4GJDYd7oNU1zsOTfFUnPxSkU7BZXri/RDrJ4dcIetCc9atWHYz
+         JTJQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=SbMW2BJ7wvOz13L/HeRhE0P+s/BMXBBa7SIBcnPArUA=;
-        fh=wNgTrgmq0VRUyaeC2SHc+pkwJSD6QOmCg7MKZWreEQM=;
-        b=EmJN2i9iPzow4Xj6fC6ADwGGLMz/QjMB+lyyoS1oT2RxjbPTr+iwJAwgCRFkVtgFGd
-         wSoGxVK+gGVtMMaqrWkCM7xvZ9eI43GlSro/0JbOfqTag+3XNAH4nhhrmPyE/5CgRqgG
-         NzvQx+SS1R7tw9vyHcfIrzcVLIfm/J4shjPp1DyASWKC7FnK8lDcS/UkKtdSfWBZvFIi
-         IPQXjPUaBx+NO4vwB4jrxdW8G/GDkQI6KaxIoVTgokgq8+WEkLXIkhpngjgBRxvSpLyp
-         ce+Pbvu4wR2vcOdL7dHggn0tZiwa307vqX6peOR9uZVH0UindTXsCaKY9wtVPRRd6z1y
-         rZqA==;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from;
+        bh=BoXGaUYFnB/QTckpixjhvsSL7CUv5wh4nRWBmXGxo4c=;
+        fh=4Dgx8jc1gJCFDIGNl8iT3gucG+cuHYR9XmJ7yDXtNzA=;
+        b=lTqSiREqofSAE6I/vBVQrnyryg+MFLQxbg38C6KtpyonIgeuSrknwvF2ZXkO/a8IsY
+         2ZDJEhVLcDtwXCozGzfjeD5LPNHo6bRDHk69GOnlL6A2vuIjczOgvV6gNOh+kVkM6oCK
+         EaC6qrOrpEbgmMuKr3xE72a9PFeJSyRuXU5+FCze2U38W+YoEIzrx9wfi2ZgXx2HP4qw
+         g1zcNWwpoV6pm18Hdxx82kRnMDBQeHUoC00LsCc8v43uJ+PoQfr8RaclJR/QvgWg7OmX
+         g/hI7Ztgxp62+wkGOZW1uPRfbuptED1dMHfx6ugjRyFjJqMXRJ6f3Gv5Xa59lx9aeqEu
+         yzsg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b="dSd/iP8K";
-       spf=pass (google.com: domain of zhao1.liu@intel.com designates 198.175.65.20 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Return-Path: <zhao1.liu@intel.com>
-Received: from mgamail.intel.com (mgamail.intel.com. [198.175.65.20])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6cba46d7a6asi104618246d6.59.2024.10.08.22.45.26
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 08 Oct 2024 22:45:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of zhao1.liu@intel.com designates 198.175.65.20 as permitted sender) client-ip=198.175.65.20;
+       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Return-Path: <salil.mehta@huawei.com>
+Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
+        by mx.google.com with ESMTPS id 5b1f17b1804b1-430d59b2be8si2650995e9.187.2024.10.08.20.19.58
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 08 Oct 2024 20:19:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b="dSd/iP8K";
-       spf=pass (google.com: domain of zhao1.liu@intel.com designates 198.175.65.20 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1728452727; x=1759988727;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=9pYDTK3HR96Un6CzOse/eSqGpHwAG/V7ph9HU0V5qWk=;
-  b=dSd/iP8KxK6Edup/WQiq0vP0IWEt5+SZlJNaPxpCOD9vj2+I5OMeBSrh
-   eXXXCFkpjJ1utxCTVFtGwcGfDmP/EgncMko6ZDWy7X0GSVexzjzrc6PFC
-   wPCnjx1X/1wb25ZX2rk1cjKDhH8WUsGyyBMc6yqgOw6UKb9yDajY5BhUs
-   AFGrpswEuqYgEVKF5KvpvIo2BuyXSFT0Oe0JBN0FsTprQ0De1wsdp7upY
-   oyTqJetrho5QJx7RbhYMyKorvhuNSnEhP5s2mejEAD0Vw31hyMOYQyLoz
-   huzBmOlPsnU9F6bOf/9Xu1rgTRp0UNcdxkhd9/xB4JALtrm74yiSBygD+
-   w==;
-X-CSE-ConnectionGUID: iknQmHy+Rl+0hZS15Nf67A==
-X-CSE-MsgGUID: A7TZN8ISSquu6vy09yro4A==
-X-IronPort-AV: E=McAfee;i="6700,10204,11219"; a="27545675"
-X-IronPort-AV: E=Sophos;i="6.11,189,1725346800"; 
-   d="scan'208";a="27545675"
-Received: from fmviesa010.fm.intel.com ([10.60.135.150])
-  by orvoesa112.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 08 Oct 2024 22:45:24 -0700
-X-CSE-ConnectionGUID: 3vUy2zWBQcSZlfFJZ2+OXQ==
-X-CSE-MsgGUID: Vhs2SIyzQkyn0HaVgqI5jg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.11,189,1725346800"; 
-   d="scan'208";a="76446635"
-Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost) ([10.239.160.36])
-  by fmviesa010.fm.intel.com with ESMTP; 08 Oct 2024 22:45:18 -0700
-Date: Wed, 9 Oct 2024 14:01:30 +0800
-From: Zhao Liu <zhao1.liu@intel.com>
-To: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-Cc: Daniel P =?utf-8?B?LiBCZXJyYW5n77+9?= <berrange@redhat.com>,
-	Igor Mammedov <imammedo@redhat.com>,
-	Eduardo Habkost <eduardo@habkost.net>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Philippe =?utf-8?B?TWF0aGlldS1EYXVk77+9?= <philmd@linaro.org>,
-	Yanan Wang <wangyanan55@huawei.com>,
-	"Michael S . Tsirkin" <mst@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Sergio Lopez <slp@redhat.com>, Jason Wang <jasowang@redhat.com>,
-	Stefano Stabellini <sstabellini@kernel.org>,
-	Anthony PERARD <anthony@xenproject.org>,
-	Paul Durrant <paul@xen.org>,
-	"Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
-	Eric Blake <eblake@redhat.com>,
-	Markus Armbruster <armbru@redhat.com>,
-	Alex =?utf-8?B?QmVubu+/vWU=?= <alex.bennee@linaro.org>,
-	Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
-	kvm@vger.kernel.org, qemu-arm@nongnu.org,
-	Zhenyu Wang <zhenyu.z.wang@intel.com>,
-	Dapeng Mi <dapeng1.mi@linux.intel.com>,
-	Yongwei Ma <yongwei.ma@intel.com>, Zhao Liu <zhao1.liu@intel.com>
-Subject: Re: [RFC v2 00/12] Introduce Hybrid CPU Topology via Custom Topology
- Tree
-Message-ID: <ZwYcOuZAt7qX5ci3@intel.com>
-References: <20240919061128.769139-1-zhao1.liu@intel.com>
- <20241008113038.00007ee4@Huawei.com>
+       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Received: from mail.maildlp.com (unknown [172.18.186.216])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4XNdRJ6lNSz6K95k;
+	Wed,  9 Oct 2024 11:19:40 +0800 (CST)
+Received: from frapeml500007.china.huawei.com (unknown [7.182.85.172])
+	by mail.maildlp.com (Postfix) with ESMTPS id 9152B140447;
+	Wed,  9 Oct 2024 11:19:57 +0800 (CST)
+Received: from 00293818-MRGF.huawei.com (10.126.173.89) by
+ frapeml500007.china.huawei.com (7.182.85.172) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.39; Wed, 9 Oct 2024 05:19:38 +0200
+From: Salil Mehta <salil.mehta@huawei.com>
+To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <mst@redhat.com>
+CC: <salil.mehta@huawei.com>, <maz@kernel.org>, <jean-philippe@linaro.org>,
+	<jonathan.cameron@huawei.com>, <lpieralisi@kernel.org>,
+	<peter.maydell@linaro.org>, <richard.henderson@linaro.org>,
+	<imammedo@redhat.com>, <andrew.jones@linux.dev>, <david@redhat.com>,
+	<philmd@linaro.org>, <eric.auger@redhat.com>, <will@kernel.org>,
+	<ardb@kernel.org>, <oliver.upton@linux.dev>, <pbonzini@redhat.com>,
+	<gshan@redhat.com>, <rafael@kernel.org>, <borntraeger@linux.ibm.com>,
+	<alex.bennee@linaro.org>, <npiggin@gmail.com>, <harshpb@linux.ibm.com>,
+	<linux@armlinux.org.uk>, <darren@os.amperecomputing.com>,
+	<ilkka@os.amperecomputing.com>, <vishnu@os.amperecomputing.com>,
+	<karl.heubaum@oracle.com>, <miguel.luis@oracle.com>,
+	<salil.mehta@opnsrc.net>, <zhukeqian1@huawei.com>,
+	<wangxiongfeng2@huawei.com>, <wangyanan55@huawei.com>,
+	<jiakernel2@gmail.com>, <maobibo@loongson.cn>, <lixianglai@loongson.cn>,
+	<shahuang@redhat.com>, <zhao1.liu@intel.com>, <linuxarm@huawei.com>,
+	<gustavo.romero@linaro.org>
+Subject: [PATCH RFC V4 01/33] arm/virt,target/arm: Add new ARMCPU {socket,cluster,core,thread}-id property
+Date: Wed, 9 Oct 2024 04:17:43 +0100
+Message-ID: <20241009031815.250096-2-salil.mehta@huawei.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20241009031815.250096-1-salil.mehta@huawei.com>
+References: <20241009031815.250096-1-salil.mehta@huawei.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20241008113038.00007ee4@Huawei.com>
-X-TUID: s6g4XpXBvSby
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-Originating-IP: [10.126.173.89]
+X-ClientProxiedBy: dggems705-chm.china.huawei.com (10.3.19.182) To
+ frapeml500007.china.huawei.com (7.182.85.172)
+X-TUID: J4RsyI8jvH2F
 
-Hi Jonathan,
+This shall be used to store user specified topology{socket,cluster,core,thread}
+and shall be converted to a unique 'vcpu-id' which is used as slot-index during
+hot(un)plug of vCPU.
 
-Thank you for looking at here!
+Co-developed-by: Keqian Zhu <zhukeqian1@huawei.com>
+Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
+Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
+---
+ hw/arm/virt.c         | 10 ++++++++++
+ include/hw/arm/virt.h | 28 ++++++++++++++++++++++++++++
+ target/arm/cpu.c      |  4 ++++
+ target/arm/cpu.h      |  4 ++++
+ 4 files changed, 46 insertions(+)
 
-On Tue, Oct 08, 2024 at 11:30:38AM +0100, Jonathan Cameron wrote:
-> Date: Tue, 8 Oct 2024 11:30:38 +0100
-> From: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
-> Subject: Re: [RFC v2 00/12] Introduce Hybrid CPU Topology via Custom
->  Topology Tree
-> X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
-> 
-> On Thu, 19 Sep 2024 14:11:16 +0800
-> Zhao Liu <zhao1.liu@intel.com> wrote:
-> 
-> 
-> > -smp maxsockets=1,maxdies=1,maxmodules=2,maxcores=2,maxthreads=2
-> > -machine pc,custom-topo=on \
-> > -device cpu-socket,id=sock0 \
-> > -device cpu-die,id=die0,bus=sock0 \
-> > -device cpu-module,id=mod0,bus=die0 \
-> > -device cpu-module,id=mod1,bus=die0 \
-> > -device x86-intel-core,id=core0,bus=mod0 \
-> > -device x86-intel-atom,id=core1,bus=mod1 \
-> > -device x86-intel-atom,id=core2,bus=mod1 \
-> > -device host-x86_64-cpu,id=cpu0,socket-id=0,die-id=0,module-id=0,core-id=0,thread-id=0 \
-> > -device host-x86_64-cpu,id=cpu1,socket-id=0,die-id=0,module-id=0,core-id=0,thread-id=1 \
-> > -device host-x86_64-cpu,id=cpu2,socket-id=0,die-id=0,module-id=1,core-id=0,thread-id=0 \
-> > -device host-x86_64-cpu,id=cpu3,socket-id=0,die-id=0,module-id=1,core-id=1,thread-id=0
-> 
-> I quite like this as a way of doing the configuration but that needs
-> some review from others.
-
-Thanks!
-
-> Peter, Alex, do you think this scheme is flexible enough to ultimately
-> allow us to support this for arm? 
-
-I was also hoping that being generic enough would benefit ARM.
-
-> > 
-> > This does not accommodate hybrid topologies. Therefore, we introduce
-> > max* parameters: maxthreads/maxcores/maxmodules/maxdies/maxsockets
-> > (for x86), to predefine the topology framework for the machine. These
-> > parameters also constrain subsequent custom topologies, ensuring the
-> > number of child devices under each parent device does not exceed the
-> > specified max limits.
-> 
-> To my thinking this seems like a good solution even though it's a
-> bunch more smp parameters.
-> 
-> What does this actually mean for hotplug of CPUs?  What cases work
-> with this setup?
-
-My solution for this does not change the current CPU hotplug, because the
-current cpu hotplug only needs to consider smp.cpus and smp.maxcpus.
-
-But when a cpu is plugged in, machine needs to make sure that plugging
-into the core doesn't break the maxthreads limit. Similarly, if one wants
-to support hotplugging at the socket/die/core granularity, he will need
-to make sure that the new topology meets the limits set by the max
-parameters, which are the equivalent of preemptively leaving some empty
-holes that can be utilized by hotplug.
-
-> > Therefore, once user wants to customize topology by "-machine
-> > custom-topo=on", the machine, that supports custom topology, will skip
-> > the default topology creation as well as the default CPU creation.
-> 
-> Seems sensible to me.
-
-Thank you! Glad to have your support.
-
-Regards,
-Zhao
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 7934b23651..a0aeb263dc 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -2240,6 +2240,14 @@ static void machvirt_init(MachineState *machine)
+                           &error_fatal);
+ 
+         aarch64 &= object_property_get_bool(cpuobj, "aarch64", NULL);
++        object_property_set_int(cpuobj, "socket-id",
++                                virt_get_socket_id(machine, n), NULL);
++        object_property_set_int(cpuobj, "cluster-id",
++                                virt_get_cluster_id(machine, n), NULL);
++        object_property_set_int(cpuobj, "core-id",
++                                virt_get_core_id(machine, n), NULL);
++        object_property_set_int(cpuobj, "thread-id",
++                                virt_get_thread_id(machine, n), NULL);
+ 
+         if (!vms->secure) {
+             object_property_set_bool(cpuobj, "has_el3", false, NULL);
+@@ -2763,6 +2771,7 @@ static const CPUArchIdList *virt_possible_cpu_arch_ids(MachineState *ms)
+ {
+     int n;
+     unsigned int max_cpus = ms->smp.max_cpus;
++    unsigned int smp_threads = ms->smp.threads;
+     VirtMachineState *vms = VIRT_MACHINE(ms);
+     MachineClass *mc = MACHINE_GET_CLASS(vms);
+ 
+@@ -2776,6 +2785,7 @@ static const CPUArchIdList *virt_possible_cpu_arch_ids(MachineState *ms)
+     ms->possible_cpus->len = max_cpus;
+     for (n = 0; n < ms->possible_cpus->len; n++) {
+         ms->possible_cpus->cpus[n].type = ms->cpu_type;
++        ms->possible_cpus->cpus[n].vcpus_count = smp_threads;
+         ms->possible_cpus->cpus[n].arch_id =
+             virt_cpu_mp_affinity(vms, n);
+ 
+diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+index aca4f8061b..db3e2aebb9 100644
+--- a/include/hw/arm/virt.h
++++ b/include/hw/arm/virt.h
+@@ -214,4 +214,32 @@ static inline int virt_gicv3_redist_region_count(VirtMachineState *vms)
+             vms->highmem_redists) ? 2 : 1;
+ }
+ 
++static inline int virt_get_socket_id(const MachineState *ms, int cpu_index)
++{
++    assert(cpu_index >= 0 && cpu_index < ms->possible_cpus->len);
++
++    return ms->possible_cpus->cpus[cpu_index].props.socket_id;
++}
++
++static inline int virt_get_cluster_id(const MachineState *ms, int cpu_index)
++{
++    assert(cpu_index >= 0 && cpu_index < ms->possible_cpus->len);
++
++    return ms->possible_cpus->cpus[cpu_index].props.cluster_id;
++}
++
++static inline int virt_get_core_id(const MachineState *ms, int cpu_index)
++{
++    assert(cpu_index >= 0 && cpu_index < ms->possible_cpus->len);
++
++    return ms->possible_cpus->cpus[cpu_index].props.core_id;
++}
++
++static inline int virt_get_thread_id(const MachineState *ms, int cpu_index)
++{
++    assert(cpu_index >= 0 && cpu_index < ms->possible_cpus->len);
++
++    return ms->possible_cpus->cpus[cpu_index].props.thread_id;
++}
++
+ #endif /* QEMU_ARM_VIRT_H */
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 19191c2391..bda95366d1 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -2622,6 +2622,10 @@ static Property arm_cpu_properties[] = {
+     DEFINE_PROP_UINT64("mp-affinity", ARMCPU,
+                         mp_affinity, ARM64_AFFINITY_INVALID),
+     DEFINE_PROP_INT32("node-id", ARMCPU, node_id, CPU_UNSET_NUMA_NODE_ID),
++    DEFINE_PROP_INT32("socket-id", ARMCPU, socket_id, 0),
++    DEFINE_PROP_INT32("cluster-id", ARMCPU, cluster_id, 0),
++    DEFINE_PROP_INT32("core-id", ARMCPU, core_id, 0),
++    DEFINE_PROP_INT32("thread-id", ARMCPU, thread_id, 0),
+     DEFINE_PROP_INT32("core-count", ARMCPU, core_count, -1),
+     /* True to default to the backward-compat old CNTFRQ rather than 1Ghz */
+     DEFINE_PROP_BOOL("backcompat-cntfrq", ARMCPU, backcompat_cntfrq, false),
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index f065756c5c..1277a0ddfc 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -1086,6 +1086,10 @@ struct ArchCPU {
+     QLIST_HEAD(, ARMELChangeHook) el_change_hooks;
+ 
+     int32_t node_id; /* NUMA node this CPU belongs to */
++    int32_t socket_id;
++    int32_t cluster_id;
++    int32_t core_id;
++    int32_t thread_id;
+ 
+     /* Used to synchronize KVM and QEMU in-kernel device levels */
+     uint8_t device_irq_level;
+-- 
+2.34.1

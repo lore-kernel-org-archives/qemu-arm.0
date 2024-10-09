@@ -1,51 +1,51 @@
-Received: by 2002:a17:504:1f11:b0:1be9:327d:8ee3 with SMTP id z17csp597277njl;
-        Tue, 8 Oct 2024 20:29:08 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXFQ87cEccDE+exzrMMtKdoYoSW4NTQVnnA3mt869sbsk/6muTk7Hme/pb+ZasB0wjcIqA9ymYhr530LQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IEPxzuGhVO1ugPXL80QBjdA5U9Xoqsh8M4C7p+tAPxzmK/jbZGxjuJhPCWMlreReIdM0oK1
-X-Received: by 2002:a05:6a00:3c88:b0:71d:f012:6de7 with SMTP id d2e1a72fcca58-71e1dbd0567mr1803795b3a.27.1728444548187;
-        Tue, 08 Oct 2024 20:29:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1728444548; cv=none;
+Received: by 2002:a17:504:1f11:b0:1be9:327d:8ee3 with SMTP id z17csp599635njl;
+        Tue, 8 Oct 2024 20:37:51 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWdgoEJpAtSJODdJk96pAvy7xtRjSSX8sOKid+PAngEtsCY2aE47VlCaGn9IJH8EkhUZ6Te93Sl6w4Hzg==@linaro.org
+X-Google-Smtp-Source: AGHT+IGz0H60BSm3NuQZC+YzC6rAby8huyRP/+Teq2kX44FCwVxCIemP4YcibDLEG3KzZnYy+0em
+X-Received: by 2002:adf:a405:0:b0:37c:c60d:f9b5 with SMTP id ffacd0b85a97d-37d3a9b50d4mr539739f8f.2.1728445071580;
+        Tue, 08 Oct 2024 20:37:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1728445071; cv=none;
         d=google.com; s=arc-20240605;
-        b=EvQUlmfu20//5mifWarRx4O9TSiUQEFMTyIURR81jZapLHrwpRW2AtBQchYLErsIVV
-         8RvLfYJfBx3xGfUVm2jbPl6gh+6QJHfuinJqFq9/Vm14csySsQxSil+D6YdRsRtxI82M
-         +9e3eb4ow/EzTWDw+4+I9FKGc0KK0ye1WBfJMNxzt71DZWb7gpxZgvyGWYm7xwAX5QUS
-         RukdQ+Qv5Aa+pIIHqsqrIclO257UJmDEszg3DTjTO2D5QM5INyZrfyZwjbtiZgHLgxwz
-         v4lukOdP0Ec6EKlM/qf9Gy0AUzZFUcxPERivT/Flno1oXOErOZmNd4wHktWbPou3Geku
-         8j7A==
+        b=LOPi9WUq8r7oZT778nx9f/+z3g5QjZRNzMOSYJHVM6RdpRPH7UVWzPfmZ3dwWiItbP
+         AohLvDYIjpImMKuVlzyL1TYoQrhYBKK/FH7LZUBuHcntwi2llvfGmcawnwJKaXGuudQ6
+         C4Gd9XWznTJt89vpoOKndHkODjo0h3ckr+M759vyEx8cNJ0oNpaU3pKgCSPORMTrKLB+
+         q3mLbVBbQfBRkaNkqqTtUyAiiclqQs/vtat+a9DMqvsOBzyl7xg6eJqImeGFvR/g/FD1
+         UtX7TxUpaRqTav6NQE9s9HUQJdLDaHW/qPFY5EQKef8QQhIB86eq4iv8Vh2yjhI7eB3C
+         SEfw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from;
-        bh=Ap+VpmTHXghYzzEkGHSxMOEN2+FHE07YfY1YyAwcmnM=;
+        bh=799KrF/iCibIYMcE4ZilxKeSpHf10FdkdF9SIH3DzdA=;
         fh=4Dgx8jc1gJCFDIGNl8iT3gucG+cuHYR9XmJ7yDXtNzA=;
-        b=CJON4j68IMyqySQ8l1VmDluCGOgY6Hc9pWf1bNjX5PSKfId70EA/WSsslJbbXlExNE
-         nG82tZ5QXe1TgbqXVCNfZDDaMc20uZoX/0TtbVNcFzpKR5Wd3OJkIAk6eGqNTd1zR6QR
-         FZ8ZITpFBCADWC+faZcfH+C9oSTGEYGEemZowBzMknd8V/dAXI76+cn+18EULh30qft3
-         77rKne6xDDaRsEGoBGzxo0kf7qVd49kuAbWgl2u9ikyERI6IXbW51hOV/21plryW8mKE
-         HN7Pe0ZDahIGe6wU7tyn5VOQCNxfGH6qjWRa9WsXKI0boVt0hSE8q96JMZEiaheRO42G
-         Zpyg==;
+        b=Bwe08EeJXl6CxSGqyqM3GtuwOFv/V+P2mCMH8iQ/vvGc0/faD/Q1iPJKmolRq3MvVU
+         JYj+g2oDYEwcvJ7Os4g4FX81Qypvc/X67lmD2Eyj3ZtVAMfAriJTutDCe6c7zfqd6O2/
+         WAMxIJe/IQLZHp+faUDHgyJq90mR/WlG7lFHMXbss/q9mjtN5PRSQnCEFU2Xxu5zIXp4
+         1b4WcAakX9SqfHwC3v27F36HDHgbyVRQ2CXt1UDnjjR0QDnhnuXiMQ+RRGISlFXS6EpP
+         QxDUtoUYhirDGdn3/XracB4FAOTqY0wjJU/5zW78r9ZdWI1KsnYTON4TcvCKIBL7irOO
+         W31g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
 Return-Path: <salil.mehta@huawei.com>
 Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id d2e1a72fcca58-71df0d5d8c7si10255314b3a.217.2024.10.08.20.29.07
+        by mx.google.com with ESMTPS id ffacd0b85a97d-37d3dfc9678si132750f8f.197.2024.10.08.20.37.51
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 08 Oct 2024 20:29:08 -0700 (PDT)
+        Tue, 08 Oct 2024 20:37:51 -0700 (PDT)
 Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from mail.maildlp.com (unknown [172.18.186.216])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4XNddq72fNz6K98k;
-	Wed,  9 Oct 2024 11:28:47 +0800 (CST)
+Received: from mail.maildlp.com (unknown [172.18.186.231])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4XNdpp0wP3z6K6RV;
+	Wed,  9 Oct 2024 11:36:34 +0800 (CST)
 Received: from frapeml500007.china.huawei.com (unknown [7.182.85.172])
-	by mail.maildlp.com (Postfix) with ESMTPS id 9FFE9140A90;
-	Wed,  9 Oct 2024 11:29:04 +0800 (CST)
+	by mail.maildlp.com (Postfix) with ESMTPS id 8F806140A34;
+	Wed,  9 Oct 2024 11:37:50 +0800 (CST)
 Received: from 00293818-MRGF.huawei.com (10.126.173.89) by
  frapeml500007.china.huawei.com (7.182.85.172) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Wed, 9 Oct 2024 05:28:45 +0200
+ 15.1.2507.39; Wed, 9 Oct 2024 05:37:31 +0200
 From: Salil Mehta <salil.mehta@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <mst@redhat.com>
 CC: <salil.mehta@huawei.com>, <maz@kernel.org>, <jean-philippe@linaro.org>,
@@ -64,87 +64,360 @@ CC: <salil.mehta@huawei.com>, <maz@kernel.org>, <jean-philippe@linaro.org>,
 	<jiakernel2@gmail.com>, <maobibo@loongson.cn>, <lixianglai@loongson.cn>,
 	<shahuang@redhat.com>, <zhao1.liu@intel.com>, <linuxarm@huawei.com>,
 	<gustavo.romero@linaro.org>
-Subject: [PATCH RFC V4 29/33] hw/intc/arm_gicv3_common: Add GICv3CPUState 'accessible' flag migration handling
-Date: Wed, 9 Oct 2024 04:18:11 +0100
-Message-ID: <20241009031815.250096-30-salil.mehta@huawei.com>
+Subject: [PATCH RFC V4 30/33] target/arm/kvm,tcg: Handle SMCCC hypercall exits in VMM during PSCI_CPU_{ON,OFF}
+Date: Wed, 9 Oct 2024 04:37:01 +0100
+Message-ID: <20241009033704.250287-1-salil.mehta@huawei.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20241009031815.250096-1-salil.mehta@huawei.com>
 References: <20241009031815.250096-1-salil.mehta@huawei.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-Originating-IP: [10.126.173.89]
-X-ClientProxiedBy: dggems705-chm.china.huawei.com (10.3.19.182) To
+X-ClientProxiedBy: dggems704-chm.china.huawei.com (10.3.19.181) To
  frapeml500007.china.huawei.com (7.182.85.172)
-X-TUID: kMgXQ9tKWqYQ
+X-TUID: /8gUshlc5f1e
 
-The QOM `GICv3CPUState` (and consequently the corresponding KVM VGIC `ICC_*_EL1`
-registers) can be either 'accessible' or 'inaccessible', depending on the state
-of the associated QOM vCPUs. This `gicc_accessible` state should be saved during
-migration at the source and restored at the destination.
+From: Author Salil Mehta <salil.mehta@huawei.com>
 
-Ideally, the number of possible and enabled QOM vCPUs should match between the
-source and destination. Ensuring this consistency is the responsibility of the
-administrator. However, if the destination QEMU has more enabled vCPUs than the
-source, we can either fail the migration or override the destination QEMU’s vCPU
-configuration to match the source. We have adopted the latter approach as a
-mitigation for the mismatch. Nonetheless, the administrator should still ensure
-that the number of possible QOM vCPUs is consistent at both ends.
+To support vCPU hotplug, we must trap any `HVC`/`SMC` `PSCI_CPU_{ON,OFF}`
+hypercalls from the host KVM to QEMU for policy checks. This ensures the
+following when a vCPU is brought online:
 
+1. The vCPU is actually plugged in (i.e., present).
+2. The vCPU is not disabled.
+
+Implement the registration and handling of `HVC`/`SMC` hypercall exits within
+the VMM, ensuring that proper policy checks and control flow are enforced during
+the vCPU onlining and offlining processes.
+
+Co-developed-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
+Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
 Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
 ---
- hw/intc/arm_gicv3_common.c | 25 +++++++++++++++++++++++++
- 1 file changed, 25 insertions(+)
+ target/arm/arm-powerctl.c   | 22 ++++++---
+ target/arm/helper.c         |  2 +-
+ target/arm/internals.h      | 11 -----
+ target/arm/kvm.c            | 93 +++++++++++++++++++++++++++++++++++++
+ target/arm/kvm_arm.h        | 14 ++++++
+ target/arm/meson.build      |  1 +
+ target/arm/{tcg => }/psci.c |  8 ++++
+ target/arm/tcg/meson.build  |  4 --
+ 8 files changed, 132 insertions(+), 23 deletions(-)
+ rename target/arm/{tcg => }/psci.c (97%)
 
-diff --git a/hw/intc/arm_gicv3_common.c b/hw/intc/arm_gicv3_common.c
-index e7b2d04358..5dda14ce1c 100644
---- a/hw/intc/arm_gicv3_common.c
-+++ b/hw/intc/arm_gicv3_common.c
-@@ -126,6 +126,29 @@ static int vmstate_gicv3_cpu_pre_load(void *opaque)
-     return 0;
+diff --git a/target/arm/arm-powerctl.c b/target/arm/arm-powerctl.c
+index 2b2055c6ac..03bb8e7b8a 100644
+--- a/target/arm/arm-powerctl.c
++++ b/target/arm/arm-powerctl.c
+@@ -17,6 +17,7 @@
+ #include "qemu/main-loop.h"
+ #include "sysemu/tcg.h"
+ #include "target/arm/multiprocessing.h"
++#include "hw/boards.h"
+ 
+ #ifndef DEBUG_ARM_POWERCTL
+ #define DEBUG_ARM_POWERCTL 0
+@@ -31,14 +32,14 @@
+ 
+ CPUState *arm_get_cpu_by_id(uint64_t id)
+ {
++    MachineState *ms = MACHINE(qdev_get_machine());
+     CPUState *cpu;
+ 
+     DPRINTF("cpu %" PRId64 "\n", id);
+ 
+-    CPU_FOREACH(cpu) {
+-        ARMCPU *armcpu = ARM_CPU(cpu);
+-
+-        if (arm_cpu_mp_affinity(armcpu) == id) {
++    /* with vCPU hotplug support, we must now check for all possible vCPUs */
++    CPU_FOREACH_POSSIBLE(cpu, ms->possible_cpus) {
++        if (cpu && (arm_cpu_mp_affinity(ARM_CPU(cpu)) == id)) {
+             return cpu;
+         }
+     }
+@@ -119,9 +120,16 @@ int arm_set_cpu_on(uint64_t cpuid, uint64_t entry, uint64_t context_id,
+ 
+     /* Retrieve the cpu we are powering up */
+     target_cpu_state = arm_get_cpu_by_id(cpuid);
+-    if (!target_cpu_state) {
+-        /* The cpu was not found */
+-        return QEMU_ARM_POWERCTL_INVALID_PARAM;
++
++    if (!qemu_enabled_cpu(target_cpu_state)) {
++        /*
++         * The cpu is not plugged in or disabled. We should return appropriate
++         * value as introduced in DEN0022E PSCI 1.2 issue E
++         */
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "[ARM]%s: Denying attempt to online removed/disabled "
++                      "CPU%" PRId64"\n", __func__, cpuid);
++        return QEMU_ARM_POWERCTL_IS_OFF;
+     }
+ 
+     target_cpu = ARM_CPU(target_cpu_state);
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index a890f98445..c121e3bc1a 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -11840,7 +11840,7 @@ void arm_cpu_do_interrupt(CPUState *cs)
+                       env->exception.syndrome);
+     }
+ 
+-    if (tcg_enabled() && arm_is_psci_call(cpu, cs->exception_index)) {
++    if (arm_is_psci_call(cpu, cs->exception_index)) {
+         arm_handle_psci_call(cpu);
+         qemu_log_mask(CPU_LOG_INT, "...handled as PSCI call\n");
+         return;
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index 722c4dd00b..e9c3ae4494 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -501,21 +501,10 @@ vaddr arm_adjust_watchpoint_address(CPUState *cs, vaddr addr, int len);
+ /* Callback function for when a watchpoint or breakpoint triggers. */
+ void arm_debug_excp_handler(CPUState *cs);
+ 
+-#if defined(CONFIG_USER_ONLY) || !defined(CONFIG_TCG)
+-static inline bool arm_is_psci_call(ARMCPU *cpu, int excp_type)
+-{
+-    return false;
+-}
+-static inline void arm_handle_psci_call(ARMCPU *cpu)
+-{
+-    g_assert_not_reached();
+-}
+-#else
+ /* Return true if the r0/x0 value indicates that this SMC/HVC is a PSCI call. */
+ bool arm_is_psci_call(ARMCPU *cpu, int excp_type);
+ /* Actually handle a PSCI call */
+ void arm_handle_psci_call(ARMCPU *cpu);
+-#endif
+ 
+ /**
+  * arm_clear_exclusive: clear the exclusive monitor
+diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+index 369d7ad135..9a51249a42 100644
+--- a/target/arm/kvm.c
++++ b/target/arm/kvm.c
+@@ -544,9 +544,51 @@ int kvm_arch_get_default_type(MachineState *ms)
+     return fixed_ipa ? 0 : size;
  }
  
-+static int vmstate_gicv3_cpu_post_load(void *opaque, int version_id)
++static bool kvm_arm_set_vm_attr(struct kvm_device_attr *attr, const char *name)
 +{
-+    GICv3CPUState *cs = opaque;
++    int err;
 +
-+    /*
-+     * If the destination QEMU has more *enabled* vCPUs than the source, we can
-+     * either *fail* the migration or override the destination QEMU’s vCPU
-+     * configuration to match the source. Since it is safe to override the
-+     * `CPUState` of the extra *enabled* vCPUs at the destination, we have
-+     * adopted the latter approach as a mitigation for the mismatch.
-+     * RFC: Question: any suggestions on this are welcome?
-+     */
-+    if (!gicv3_cpu_accessible((cs)) && qemu_enabled_cpu(cs->cpu)) {
-+        warn_report("Found CPU %d enabled for incoming *disabled* GICC State\n",
-+                    cs->cpu->cpu_index);
-+        warn_report("Disabling CPU %d to match the incoming migrated state",
-+                    cs->cpu->cpu_index);
-+        qdev_unrealize(DEVICE(cs->cpu));
++    err = kvm_vm_ioctl(kvm_state, KVM_HAS_DEVICE_ATTR, attr);
++    if (err != 0) {
++        error_report("%s: KVM_HAS_DEVICE_ATTR: %s", name, strerror(-err));
++        return false;
++    }
++
++    err = kvm_vm_ioctl(kvm_state, KVM_SET_DEVICE_ATTR, attr);
++    if (err != 0) {
++        error_report("%s: KVM_SET_DEVICE_ATTR: %s", name, strerror(-err));
++        return false;
++    }
++
++    return true;
++}
++
++int kvm_arm_set_smccc_filter(uint64_t func, uint8_t faction)
++{
++    struct kvm_smccc_filter filter = {
++        .base = func,
++        .nr_functions = 1,
++        .action = faction,
++    };
++    struct kvm_device_attr attr = {
++        .group = KVM_ARM_VM_SMCCC_CTRL,
++        .attr = KVM_ARM_VM_SMCCC_FILTER,
++        .flags = 0,
++        .addr = (uintptr_t)&filter,
++    };
++
++    if (!kvm_arm_set_vm_attr(&attr, "SMCCC Filter")) {
++        error_report("failed to set SMCCC filter in KVM Host");
++        return -1;
 +    }
 +
 +    return 0;
 +}
 +
- static bool icc_sre_el1_reg_needed(void *opaque)
+ int kvm_arch_init(MachineState *ms, KVMState *s)
  {
-     GICv3CPUState *cs = opaque;
-@@ -186,6 +209,7 @@ static const VMStateDescription vmstate_gicv3_cpu = {
-     .version_id = 1,
-     .minimum_version_id = 1,
-     .pre_load = vmstate_gicv3_cpu_pre_load,
-+    .post_load = vmstate_gicv3_cpu_post_load,
-     .fields = (const VMStateField[]) {
-         VMSTATE_UINT32(level, GICv3CPUState),
-         VMSTATE_UINT32(gicr_ctlr, GICv3CPUState),
-@@ -207,6 +231,7 @@ static const VMStateDescription vmstate_gicv3_cpu = {
-         VMSTATE_UINT64_2DARRAY(icc_apr, GICv3CPUState, 3, 4),
-         VMSTATE_UINT64_ARRAY(icc_igrpen, GICv3CPUState, 3),
-         VMSTATE_UINT64(icc_ctlr_el3, GICv3CPUState),
-+        VMSTATE_BOOL(gicc_accessible, GICv3CPUState),
-         VMSTATE_END_OF_LIST()
-     },
-     .subsections = (const VMStateDescription * const []) {
+     int ret = 0;
++
+     /* For ARM interrupt delivery is always asynchronous,
+      * whether we are using an in-kernel VGIC or not.
+      */
+@@ -609,6 +651,22 @@ int kvm_arch_init(MachineState *ms, KVMState *s)
+     hw_breakpoints = g_array_sized_new(true, true,
+                                        sizeof(HWBreakpoint), max_hw_bps);
+ 
++    /*
++     * To be able to handle PSCI CPU ON calls in QEMU, we need to install SMCCC
++     * filter in the Host KVM. This is required to support features like
++     * virtual CPU Hotplug on ARM platforms.
++     */
++    if (kvm_arm_set_smccc_filter(PSCI_0_2_FN64_CPU_ON,
++                                 KVM_SMCCC_FILTER_FWD_TO_USER)) {
++        error_report("CPU On PSCI-to-user-space fwd filter install failed");
++        abort();
++    }
++    if (kvm_arm_set_smccc_filter(PSCI_0_2_FN_CPU_OFF,
++                                 KVM_SMCCC_FILTER_FWD_TO_USER)) {
++        error_report("CPU Off PSCI-to-user-space fwd filter install failed");
++        abort();
++    }
++
+     return ret;
+ }
+ 
+@@ -1452,6 +1510,38 @@ static bool kvm_arm_handle_debug(ARMCPU *cpu,
+     return false;
+ }
+ 
++static int kvm_arm_handle_hypercall(CPUState *cs, struct kvm_run *run)
++{
++    ARMCPU *cpu = ARM_CPU(cs);
++    CPUARMState *env = &cpu->env;
++
++    kvm_cpu_synchronize_state(cs);
++
++    /*
++     * hard coding immediate to 0 as we dont expect non-zero value as of now
++     * This might change in future versions. Hence, KVM_GET_ONE_REG  could be
++     * used in such cases but it must be enhanced then only synchronize will
++     * also fetch ESR_EL2 value.
++     */
++    if (run->hypercall.flags == KVM_HYPERCALL_EXIT_SMC) {
++        cs->exception_index = EXCP_SMC;
++        env->exception.syndrome = syn_aa64_smc(0);
++    } else {
++        cs->exception_index = EXCP_HVC;
++        env->exception.syndrome = syn_aa64_hvc(0);
++    }
++    env->exception.target_el = 1;
++    bql_lock();
++    arm_cpu_do_interrupt(cs);
++    bql_unlock();
++
++    /*
++     * For PSCI, exit the kvm_run loop and process the work. Especially
++     * important if this was a CPU_OFF command and we can't return to the guest.
++     */
++    return EXCP_INTERRUPT;
++}
++
+ int kvm_arch_handle_exit(CPUState *cs, struct kvm_run *run)
+ {
+     ARMCPU *cpu = ARM_CPU(cs);
+@@ -1468,6 +1558,9 @@ int kvm_arch_handle_exit(CPUState *cs, struct kvm_run *run)
+         ret = kvm_arm_handle_dabt_nisv(cpu, run->arm_nisv.esr_iss,
+                                        run->arm_nisv.fault_ipa);
+         break;
++    case KVM_EXIT_HYPERCALL:
++          ret = kvm_arm_handle_hypercall(cs, run);
++        break;
+     default:
+         qemu_log_mask(LOG_UNIMP, "%s: un-handled exit reason %d\n",
+                       __func__, run->exit_reason);
+diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
+index 0be7e896d2..b9c2b0f501 100644
+--- a/target/arm/kvm_arm.h
++++ b/target/arm/kvm_arm.h
+@@ -225,6 +225,15 @@ void kvm_arm_pvtime_init(ARMCPU *cpu, uint64_t ipa);
+ 
+ int kvm_arm_set_irq(int cpu, int irqtype, int irq, int level);
+ 
++/**
++ * kvm_arm_set_smccc_filter
++ * @func: funcion
++ * @faction: SMCCC filter action(handle, deny, fwd-to-user) to be deployed
++ *
++ * Sets the ARMs SMC-CC filter in KVM Host for selective hypercall exits
++ */
++int kvm_arm_set_smccc_filter(uint64_t func, uint8_t faction);
++
+ #else
+ 
+ /*
+@@ -294,6 +303,11 @@ static inline uint32_t kvm_arm_sve_get_vls(ARMCPU *cpu)
+     g_assert_not_reached();
+ }
+ 
++static inline int kvm_arm_set_smccc_filter(uint64_t func, uint8_t faction)
++{
++    g_assert_not_reached();
++}
++
+ #endif
+ 
+ #endif
+diff --git a/target/arm/meson.build b/target/arm/meson.build
+index 2e10464dbb..3e9f704f35 100644
+--- a/target/arm/meson.build
++++ b/target/arm/meson.build
+@@ -23,6 +23,7 @@ arm_system_ss.add(files(
+   'arm-qmp-cmds.c',
+   'cortex-regs.c',
+   'machine.c',
++  'psci.c',
+   'ptw.c',
+ ))
+ 
+diff --git a/target/arm/tcg/psci.c b/target/arm/psci.c
+similarity index 97%
+rename from target/arm/tcg/psci.c
+rename to target/arm/psci.c
+index 51d2ca3d30..b3fcb85079 100644
+--- a/target/arm/tcg/psci.c
++++ b/target/arm/psci.c
+@@ -21,7 +21,9 @@
+ #include "exec/helper-proto.h"
+ #include "kvm-consts.h"
+ #include "qemu/main-loop.h"
++#include "qemu/error-report.h"
+ #include "sysemu/runstate.h"
++#include "sysemu/tcg.h"
+ #include "internals.h"
+ #include "arm-powerctl.h"
+ #include "target/arm/multiprocessing.h"
+@@ -158,6 +160,11 @@ void arm_handle_psci_call(ARMCPU *cpu)
+     case QEMU_PSCI_0_1_FN_CPU_SUSPEND:
+     case QEMU_PSCI_0_2_FN_CPU_SUSPEND:
+     case QEMU_PSCI_0_2_FN64_CPU_SUSPEND:
++       if (!tcg_enabled()) {
++            warn_report("CPU suspend not supported in non-tcg mode");
++            break;
++       }
++#ifdef CONFIG_TCG
+         /* Affinity levels are not supported in QEMU */
+         if (param[1] & 0xfffe0000) {
+             ret = QEMU_PSCI_RET_INVALID_PARAMS;
+@@ -170,6 +177,7 @@ void arm_handle_psci_call(ARMCPU *cpu)
+             env->regs[0] = 0;
+         }
+         helper_wfi(env, 4);
++#endif
+         break;
+     case QEMU_PSCI_1_0_FN_PSCI_FEATURES:
+         switch (param[1]) {
+diff --git a/target/arm/tcg/meson.build b/target/arm/tcg/meson.build
+index 508932a249..5b43c84c40 100644
+--- a/target/arm/tcg/meson.build
++++ b/target/arm/tcg/meson.build
+@@ -54,9 +54,5 @@ arm_ss.add(when: 'TARGET_AARCH64', if_true: files(
+   'sve_helper.c',
+ ))
+ 
+-arm_system_ss.add(files(
+-  'psci.c',
+-))
+-
+ arm_system_ss.add(when: 'CONFIG_ARM_V7M', if_true: files('cpu-v7m.c'))
+ arm_user_ss.add(when: 'TARGET_AARCH64', if_false: files('cpu-v7m.c'))
 -- 
 2.34.1

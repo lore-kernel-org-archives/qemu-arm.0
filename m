@@ -1,182 +1,170 @@
-Received: by 2002:a17:504:1f11:b0:1be9:327d:8ee3 with SMTP id z17csp532101njl;
-        Tue, 8 Oct 2024 17:05:13 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUGRTpitJshQ+ON+RbnXlDxRhUOS/aOo+mp99Gz1BBtqHil5v1o3MQzuPHALVRAamktlAPZHCMItWCwVQ==@linaro.org
-X-Received: by 2002:a17:903:41cf:b0:20b:af36:ea5 with SMTP id d9443c01a7336-20c6376e592mr8438155ad.18.1728432313028;
-        Tue, 08 Oct 2024 17:05:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1728432313; cv=none;
+Received: by 2002:a17:504:1f11:b0:1be9:327d:8ee3 with SMTP id z17csp597177njl;
+        Tue, 8 Oct 2024 20:28:46 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCU2JixQiL5XPB8CYz4qQdu63DTAAtiuAZSlOwmuSmT6DndC0DvT4I+vK/oc/hWFdXn97vq1lo8BvxXwHA==@linaro.org
+X-Google-Smtp-Source: AGHT+IGjKjIuIT45x5OZ3GCCP8jn1maZZzYkbWJgT9kgYpmpMg7IaQH3gzvdibaQCkAEYNaanQjT
+X-Received: by 2002:a05:600c:5021:b0:42f:8e2e:c00a with SMTP id 5b1f17b1804b1-430ccf03b60mr4947065e9.2.1728444525951;
+        Tue, 08 Oct 2024 20:28:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1728444525; cv=none;
         d=google.com; s=arc-20240605;
-        b=hQSuK4yhn6mhsSDbfO4PERPgRpN5244U0a6fTaMDUWEmfFZ+/4ixYfSrtm9Kice28M
-         ok4DtmxKevUKpidoT7ZzLg2lb0+tJENOSJe8zQWxDwBzpY6nZyE5Aem6pZ0zaOYArvm4
-         CuaKiTjDHeyUmh6MzG9rDnmi/vrTRCtu63dkprHa/8mqRF4Ycrby3+26VUolxVZzl10N
-         wkblvQGWVJFdvZMlTwGyNSExjywARi7lYmSaojkAoJazFew5ESG2hyRnVNKnykIZtUeo
-         pyW9HqsfBJgnXpcAbacd+vgVQC2bmdcAkPht3E4zOKIU4XAtRWZtcWljGVrRr2S2VyT5
-         9YBQ==
+        b=HxAQuLpokCaND32coxQ+rV1IFrWCOjabO1NO5qcPgRf07a1hvbb/o2QRiu+Src8sEf
+         Kr9Clk6R/V9LRFJUP1dLz7Z9Mj2X+LZ6XuuPegsUUpJHGXTCHlWjim8weQAFk2ib+nJL
+         sfbwegCmopZy7z2iMM3i/fM1P+VMezgTve1itjVLzH+ZcZF7GKz2bVeKFhBSYvZp1Y5X
+         W4As43v4baKL2iL0daMdvFbA3oou1P1ErO2j8FERzUSPvEfRZcxQ4N/vq45Ob2AVVjUi
+         0bfqdJZXOR3XGhGAIbgpq54Gs+iZ+WZnm/i+3ErgriVFIoqQObn2ulw8dF0niLMV6yUQ
+         ykOw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=oOELs1GBJLtlq8nQGFT7BbF8Y02om3aScvqBsVkX7+Q=;
-        fh=8+Ij/xiRfBxIOSkv69xOx+Mz/tv8tuVGGYBQMXFfrwo=;
-        b=k+LQs4FZRKOvntP6eyzIXYMoCi2c+4O3V6sn2kbXpEHNvW+LnI3+8oxMrs1v0tDQu+
-         zAde659FzksiGwWI3l3O3uJQtmwLZ//T7lFSnm4S4lS26wap1qaHkOkzNHp5E7yGOdJo
-         3YTpHb8ueOgHzJZGX6CwhBPgZCy9FumevAXnnj9hPozRY728P+s2dayWx+p6yL6FcJ5J
-         4oj/dSORmfwfMQs9F041rS0aCf7kWI6Bny6xGdwN4B+LGsN2TNBBW/r+RGSIT2ba+/JM
-         zAHdIrdqv1BdYnaNqBqlRyJ3LimRTvPxANHfua4X3bo146SNVGBbYoWCd8SD5ZGCHi9d
-         5Pyg==;
+         :message-id:date:subject:cc:to:from;
+        bh=RlqgnZBYHb161FI85jYOQtg7EwDnfhHunQC9Bbrsmso=;
+        fh=4Dgx8jc1gJCFDIGNl8iT3gucG+cuHYR9XmJ7yDXtNzA=;
+        b=hrkGUEdyB3OsYGsm7DI50+UTuJsh/crElG1bD0tlmrZdXQ0fUO68sPprRL9ColdMFa
+         NGfOpDd5JfD7l+SOvCYogMcB4CI0N+GH3USRx8g71NBGAJnQc6ANzXF+pNNBY1Gp5KTT
+         Dr/mOm0xjDEx/ABgWJKsoWzydQMLmlkBMtmqL7xV6zBeybIF3EWHJ7k5b1IGfv6lRq3y
+         lLcE799ZN4REcIAcQ4VIdT8zygg8HZi0F6M6SnQ6wCfGMpFUbsipTU+RyDL/mj2traCN
+         KWCNcMz1PK643LYgRFgJwjKnNcEFOMqc1Tdi9A5qK20eAZnax0M9qcwDrHfy5mpvLzce
+         i3JQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=cAap8amP;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d9443c01a7336-20c138b1ac0sor48341785ad.7.2024.10.08.17.05.12
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 08 Oct 2024 17:05:13 -0700 (PDT)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Return-Path: <salil.mehta@huawei.com>
+Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
+        by mx.google.com with ESMTPS id ffacd0b85a97d-37d1699ae59si3901932f8f.891.2024.10.08.20.28.45
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 08 Oct 2024 20:28:45 -0700 (PDT)
+Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=cAap8amP;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1728432312; x=1729037112; darn=linaro.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=oOELs1GBJLtlq8nQGFT7BbF8Y02om3aScvqBsVkX7+Q=;
-        b=cAap8amP9GSVw600rXWLabXf8YscE8BdZ1hDUH3wR6XEF3JPHlO4Yyw2N0LoyGwzty
-         nJ+BW4QhmbStXp9B+3OW1GduVzb0yyWUghBqZYjChE8NFf0u2MUYEtBHogQ/1WOnrPV+
-         3eyWmn1s4jJNHEZY4MHjk7joLVFh0/mqXaOxsinJT78TKrTj+l9yFOmLfZo64flUowAk
-         sRXTmtuhdVXFNNMSb7HylcVIVtCmt75J1pezgm4jmdp41YPMnSrxGWwXHn6NmNCt/eD8
-         pfpiFNqW+8ifh2sRSqoA55oj6Q9MkPSSlexnTi5XTR5+HPfiIHPRImpD5LYlFhrg3Kqp
-         nTMg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1728432312; x=1729037112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=oOELs1GBJLtlq8nQGFT7BbF8Y02om3aScvqBsVkX7+Q=;
-        b=HoWDGyqrYktMJMRzCi+g3gag4RA6S2H6bjPkYGBFEu6y3/C2iugwtQJMsHUqS6VWU1
-         cyynwF5N+GbV6zw2kvbHp2U+7imrtVcjsmiq/lrBXwgmhf8bEeRS6k7TGhLrozdesq16
-         uvlBnN7/6TrV8v5u1idhF4XPESBmjXgsp79i77UJ8IcBuxgY3m5aA2A6GWzoaxrLOQ6z
-         8v0q5QualXUHi79KhwfACcvao9v5I4deK/nizuqzCTgp1IqVLqxWnoMlW5GZKZ9o7IIh
-         GDlge6O/CPe1HMm4M62DUFxQat97jTIV/OJi4tIFYF9TLFsiSiiRyVF0sNhNLaGaw0Cg
-         d1qw==
-X-Forwarded-Encrypted: i=1; AJvYcCVIeLieWS3KX/AS73kXIqHlPoAosbt5pCltLbA/U9wjzi/isl1WAIaFbv7Xu/1oPh1UHxfVAlCMGGbnbQ==@linaro.org
-X-Gm-Message-State: AOJu0YyU/v8eeWbTJz/zXDoW1jHrpMU2cMAGM+59GgCg+wSc/Vf0yhbj
-	e+l0LUIXpP1/4O9IZx1X7OcfJ3hiMC+8y7B1wmPlCGsrI0gm2xpRrYJbs21q9PxDlA==
-X-Google-Smtp-Source: AGHT+IGdLlh7lpqvQhrMnt+h4KRJVDHjJLBqhH4OV1XyMKMzeUf8I/qGPJ2X48D5Sn4234GTGJ8pPw==
-X-Received: by 2002:a17:902:ce91:b0:20b:54e5:e822 with SMTP id d9443c01a7336-20c6377b24fmr8881225ad.21.1728432312463;
-        Tue, 08 Oct 2024 17:05:12 -0700 (PDT)
-Return-Path: <richard.henderson@linaro.org>
-Received: from stoup.. (174-21-81-121.tukw.qwest.net. [174.21.81.121])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-20c138cecf2sm60705105ad.104.2024.10.08.17.05.11
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 08 Oct 2024 17:05:12 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: deller@kernel.org,
-	peter.maydell@linaro.org,
-	alex.bennee@linaro.org,
-	linux-parisc@vger.kernel.org,
-	qemu-arm@nongnu.org
-Subject: [PATCH v3 18/20] target/arm: Move device detection earlier in get_phys_addr_lpae
-Date: Tue,  8 Oct 2024 17:04:51 -0700
-Message-ID: <20241009000453.315652-19-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20241009000453.315652-1-richard.henderson@linaro.org>
-References: <20241009000453.315652-1-richard.henderson@linaro.org>
+       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Received: from mail.maildlp.com (unknown [172.18.186.31])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4XNdcJ5BX2z6K63T;
+	Wed,  9 Oct 2024 11:27:28 +0800 (CST)
+Received: from frapeml500007.china.huawei.com (unknown [7.182.85.172])
+	by mail.maildlp.com (Postfix) with ESMTPS id 2AD6D140114;
+	Wed,  9 Oct 2024 11:28:45 +0800 (CST)
+Received: from 00293818-MRGF.huawei.com (10.126.173.89) by
+ frapeml500007.china.huawei.com (7.182.85.172) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.39; Wed, 9 Oct 2024 05:28:26 +0200
+From: Salil Mehta <salil.mehta@huawei.com>
+To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <mst@redhat.com>
+CC: <salil.mehta@huawei.com>, <maz@kernel.org>, <jean-philippe@linaro.org>,
+	<jonathan.cameron@huawei.com>, <lpieralisi@kernel.org>,
+	<peter.maydell@linaro.org>, <richard.henderson@linaro.org>,
+	<imammedo@redhat.com>, <andrew.jones@linux.dev>, <david@redhat.com>,
+	<philmd@linaro.org>, <eric.auger@redhat.com>, <will@kernel.org>,
+	<ardb@kernel.org>, <oliver.upton@linux.dev>, <pbonzini@redhat.com>,
+	<gshan@redhat.com>, <rafael@kernel.org>, <borntraeger@linux.ibm.com>,
+	<alex.bennee@linaro.org>, <npiggin@gmail.com>, <harshpb@linux.ibm.com>,
+	<linux@armlinux.org.uk>, <darren@os.amperecomputing.com>,
+	<ilkka@os.amperecomputing.com>, <vishnu@os.amperecomputing.com>,
+	<karl.heubaum@oracle.com>, <miguel.luis@oracle.com>,
+	<salil.mehta@opnsrc.net>, <zhukeqian1@huawei.com>,
+	<wangxiongfeng2@huawei.com>, <wangyanan55@huawei.com>,
+	<jiakernel2@gmail.com>, <maobibo@loongson.cn>, <lixianglai@loongson.cn>,
+	<shahuang@redhat.com>, <zhao1.liu@intel.com>, <linuxarm@huawei.com>,
+	<gustavo.romero@linaro.org>
+Subject: [PATCH RFC V4 28/33] tcg/mttcg: Introduce MTTCG thread unregistration leg
+Date: Wed, 9 Oct 2024 04:18:10 +0100
+Message-ID: <20241009031815.250096-29-salil.mehta@huawei.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20241009031815.250096-1-salil.mehta@huawei.com>
+References: <20241009031815.250096-1-salil.mehta@huawei.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: pmwAfbQ/kMs4
+Content-Type: text/plain
+X-Originating-IP: [10.126.173.89]
+X-ClientProxiedBy: dggems705-chm.china.huawei.com (10.3.19.182) To
+ frapeml500007.china.huawei.com (7.182.85.172)
+X-TUID: me2i7M6n0Ffd
 
-Determine cache attributes, and thence Device vs Normal memory,
-earlier in the function.  We have an existing regime_is_stage2
-if block into which this can be slotted.
+From: Miguel Luis <miguel.luis@oracle.com>
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+Introduce the TCG thread unregistration leg which shall be called in context to
+TCG/vCPU unrealize.
+
+Reported-by: Salil Mehta <salil.mehta@huawei.com>
+Signed-off-by: Miguel Luis <miguel.luis@oracle.com>
+Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
 ---
- target/arm/ptw.c | 49 ++++++++++++++++++++++++------------------------
- 1 file changed, 25 insertions(+), 24 deletions(-)
+ accel/tcg/tcg-accel-ops-mttcg.c |  1 +
+ include/tcg/startup.h           |  7 +++++++
+ tcg/tcg.c                       | 33 +++++++++++++++++++++++++++++++++
+ 3 files changed, 41 insertions(+)
 
-diff --git a/target/arm/ptw.c b/target/arm/ptw.c
-index 238b2c92a9..0a1a820362 100644
---- a/target/arm/ptw.c
-+++ b/target/arm/ptw.c
-@@ -2029,8 +2029,20 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
-             xn = extract64(attrs, 53, 2);
-             result->f.prot = get_S2prot(env, ap, xn, ptw->in_s1_is_el0);
-         }
+diff --git a/accel/tcg/tcg-accel-ops-mttcg.c b/accel/tcg/tcg-accel-ops-mttcg.c
+index ab2f79d2c7..4b26164ffd 100644
+--- a/accel/tcg/tcg-accel-ops-mttcg.c
++++ b/accel/tcg/tcg-accel-ops-mttcg.c
+@@ -122,6 +122,7 @@ static void *mttcg_cpu_thread_fn(void *arg)
+     bql_unlock();
+     rcu_remove_force_rcu_notifier(&force_rcu.notifier);
+     rcu_unregister_thread();
++    tcg_unregister_thread();
+     return NULL;
+ }
+ 
+diff --git a/include/tcg/startup.h b/include/tcg/startup.h
+index a565071516..c035d03f7e 100644
+--- a/include/tcg/startup.h
++++ b/include/tcg/startup.h
+@@ -51,6 +51,13 @@ void tcg_register_thread(void);
+ void tcg_register_thread(CPUState *cpu);
+ #endif
+ 
++/**
++ * tcg_unregister_thread: Unregister this thread with the TCG runtime
++ *
++ * This leg shall be called whenever TCG vCPU is hot-unplugged
++ */
++void tcg_unregister_thread(void);
 +
-+        result->cacheattrs.is_s2_format = true;
-+        result->cacheattrs.attrs = extract32(attrs, 2, 4);
-+        /*
-+         * Security state does not really affect HCR_EL2.FWB;
-+         * we only need to filter FWB for aa32 or other FEAT.
-+         */
-+        device = S2_attrs_are_device(arm_hcr_el2_eff(env),
-+                                     result->cacheattrs.attrs);
-     } else {
-         int nse, ns = extract32(attrs, 5, 1);
-+        uint8_t attrindx;
-+        uint64_t mair;
+ /**
+  * tcg_prologue_init(): Generate the code for the TCG prologue
+  *
+diff --git a/tcg/tcg.c b/tcg/tcg.c
+index 5e9c6b2b4b..3bdebdb332 100644
+--- a/tcg/tcg.c
++++ b/tcg/tcg.c
+@@ -811,6 +811,39 @@ void tcg_register_thread(CPUState *cpu)
+ 
+     tcg_ctx = s;
+ }
 +
-         switch (out_space) {
-         case ARMSS_Root:
-             /*
-@@ -2102,6 +2114,19 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
-          */
-         result->f.prot = get_S1prot(env, mmu_idx, aarch64, ap, xn, pxn,
-                                     result->f.attrs.space, out_space);
++static void tcg_free_plugin_context(TCGContext *s)
++{
++#ifdef CONFIG_PLUGIN
++    unsigned i;
 +
-+        /* Index into MAIR registers for cache attributes */
-+        attrindx = extract32(attrs, 2, 3);
-+        mair = env->cp15.mair_el[regime_el(env, mmu_idx)];
-+        assert(attrindx <= 7);
-+        result->cacheattrs.is_s2_format = false;
-+        result->cacheattrs.attrs = extract64(mair, attrindx * 8, 8);
-+
-+        /* When in aarch64 mode, and BTI is enabled, remember GP in the TLB. */
-+        if (aarch64 && cpu_isar_feature(aa64_bti, cpu)) {
-+            result->f.extra.arm.guarded = extract64(attrs, 50, 1); /* GP */
++    if (s->plugin_tb) {
++        for (i = 0; i < s->plugin_tb->insns->len; i++) {
++            g_free(g_ptr_array_index(s->plugin_tb->insns, i));
 +        }
-+        device = S1_attrs_are_device(result->cacheattrs.attrs);
-     }
++        g_ptr_array_free(s->plugin_tb->insns, TRUE);
++
++        if (!s->plugin_tb->insns) {
++            g_free(s->plugin_tb);
++        }
++    }
++#endif
++}
++
++void tcg_unregister_thread(void)
++{
++    TCGContext *s = tcg_ctx;
++    unsigned int n;
++
++    /* unclaim an entry in tcg_ctxs */
++    n = qatomic_fetch_dec(&tcg_cur_ctxs);
++    g_assert(n > 1);
++    qatomic_store_release(&tcg_ctxs[n - 1], 0);
++
++    tcg_free_plugin_context(s);
++
++    g_free(s);
++}
+ #endif /* !CONFIG_USER_ONLY */
  
-     if (!(result->f.prot & (1 << access_type))) {
-@@ -2131,30 +2156,6 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
-     result->f.attrs.space = out_space;
-     result->f.attrs.secure = arm_space_is_secure(out_space);
- 
--    if (regime_is_stage2(mmu_idx)) {
--        result->cacheattrs.is_s2_format = true;
--        result->cacheattrs.attrs = extract32(attrs, 2, 4);
--        /*
--         * Security state does not really affect HCR_EL2.FWB;
--         * we only need to filter FWB for aa32 or other FEAT.
--         */
--        device = S2_attrs_are_device(arm_hcr_el2_eff(env),
--                                     result->cacheattrs.attrs);
--    } else {
--        /* Index into MAIR registers for cache attributes */
--        uint8_t attrindx = extract32(attrs, 2, 3);
--        uint64_t mair = env->cp15.mair_el[regime_el(env, mmu_idx)];
--        assert(attrindx <= 7);
--        result->cacheattrs.is_s2_format = false;
--        result->cacheattrs.attrs = extract64(mair, attrindx * 8, 8);
--
--        /* When in aarch64 mode, and BTI is enabled, remember GP in the TLB. */
--        if (aarch64 && cpu_isar_feature(aa64_bti, cpu)) {
--            result->f.extra.arm.guarded = extract64(attrs, 50, 1); /* GP */
--        }
--        device = S1_attrs_are_device(result->cacheattrs.attrs);
--    }
--
-     /*
-      * Enable alignment checks on Device memory.
-      *
+ /* pool based memory allocation */
 -- 
-2.43.0
+2.34.1

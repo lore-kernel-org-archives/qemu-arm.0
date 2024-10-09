@@ -1,51 +1,51 @@
-Received: by 2002:a17:504:1f11:b0:1be9:327d:8ee3 with SMTP id z17csp595968njl;
-        Tue, 8 Oct 2024 20:24:15 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCU4nx+0jm9qd1dF6vol3Yj3RuVswxhHANLTl07UAjhkw+p6BKucPK8+Kvuy9zTV2Btc24rjvGqFVWBO5w==@linaro.org
-X-Google-Smtp-Source: AGHT+IE8X9wZdRwyE1RxDQD6veLHbBxye05imCY3VSj6wpdxmOtYh8zyDVKpfLC78SgUM94gu0tr
-X-Received: by 2002:a17:902:e884:b0:20b:632d:27b7 with SMTP id d9443c01a7336-20c63751631mr20310745ad.33.1728444255322;
-        Tue, 08 Oct 2024 20:24:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1728444255; cv=none;
+Received: by 2002:a17:504:1f11:b0:1be9:327d:8ee3 with SMTP id z17csp596068njl;
+        Tue, 8 Oct 2024 20:24:35 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWJI972QqTDGpmS3YlnkyhaNWBmedL9uf7R1HY/NqwFXq6pEcKK8JJuLjqj+m1XA7t0f35exNslf7zVCg==@linaro.org
+X-Google-Smtp-Source: AGHT+IEf04bTTf2QqVZgz4czGVy7IdkaweCmM5aqmukRgJUXlTHeO/B8ZIU1AKeOVZhFRJ6WQmiK
+X-Received: by 2002:a17:902:f642:b0:20b:7ca4:1f69 with SMTP id d9443c01a7336-20c63708c64mr16455175ad.4.1728444275455;
+        Tue, 08 Oct 2024 20:24:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1728444275; cv=none;
         d=google.com; s=arc-20240605;
-        b=cvRqOj92qNFx8/qXDtPsh4N+Zzml7ym87/6FywcBiW+sBSK9oD9RHEf0aYgLrYooHG
-         jS1NXSPqCnkoze0AKw7DV6yAcIbD7mquApOEdgaSme8PlWV75pdIKXn0BYyz+8C9Z65d
-         z7LWQ0jdXjqB9qUgyCBYSMieyOMZaLBqVPXNLxi+1Fw/KGbYL6ktX0SgaEvp5j2pzrla
-         iTtgl4YW5zcffgfH1KN/3UpiRvNZ1lBVUGOwZUWDV+EuwC2aX6BTM9KBADFDkUm+urrW
-         6ezQYtD5tObMi0BRAldqQVD/hna/4O+JGaUGBIZV/C2JAtn/UVzGDwHDJUaGfQiKit2d
-         F+Cg==
+        b=S24mO4xBJlmTuYTsiD/9sdMTxyrz7eDrLR4wSnpuezcOwfEmRlwoHE7T41BS670IfL
+         eIYKiAs2dM+SQK3r3muO2+fIxqApNoWysn2CNaOJN8RXBGQRRq71lRC6AUR6Yb16aKlY
+         fd2xGbd7XdTYiV0opXaKBZ0tfzLg9edsayE5GwNPBL5tr0mC+HwLFRUCOTyhY7aXD09+
+         yh5X/r/i3TftmiockpwtEnUMXgZLyH/+yO17mrSk9Lx1ruZb6bLFT14215MC6TWknZCX
+         jTF6bgQ9mbvtaH9GMXrjOwnxvixTsmm0v+YU7bWE+IkLfwMEFSAC8jMTrQa8hp9vK/Gg
+         llnw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from;
-        bh=M4lDxnqSgDn1d6Qgt86bFZMydN5S7eVukH155mUVXUk=;
+        bh=revuXMrGrRU+Q9rweA+U9wyL4NdSGi+3OW/3A2QTz8o=;
         fh=4Dgx8jc1gJCFDIGNl8iT3gucG+cuHYR9XmJ7yDXtNzA=;
-        b=H2hzpBHhk+tFPpVdEE2c3s2WaDSOSVJ74WFRaQ1HEtid105L1tor094xj3RCeJoBJb
-         xeo9VXF24Cb7z5Xxl4S1QRutXQ07Oqkay9t0MvphOUIQDYPOyY3MO04BhGVyxmcru9g6
-         VKo5EI16eeAc9MyBICBkGDOGQ2NTAMHsyvZONBRzdenHfogl4/8OK/rbnqvEYXaQrDIf
-         nPqUsyjnRFgLgquR28HhqKTRVzZtulQAjAkr8kIuyJ13hxM6I6xuR8yQc9v/+o935IU8
-         ISFmsrBM5aHa77i0akdKHoPp151vnqOMl/O9Y+sJw9Aob0QjCCGupQGZrEM1LDF9o3Wz
-         xVMw==;
+        b=KiHQ0wv3WRsYiimW009m2xOaGiB8VlAcFC6ZTwdzbEWMsGn+b25Q1rJvu1rY4blS4M
+         YcA6vd9LuC49bHPh2NBqO7g+7ZGKDzrzyqS2Yc7z7rwyUJpGzt7Jmj+wGbcMdxv2jp3q
+         uyx9pFGWd5ZucMgK9VKLk+q/Jb+EY68uLd1ZevYSLhA8YUA5KLCAYNXsIK9PW8S7RKjc
+         +SBD+k9o0qIS/mUe8j0cYEromKRzmWJKYLhDMcyul4+gTDF4dgm+EKO03xH6g71OkjXP
+         dddnjoKxRZPTDGmi0N1eGD5MlMZGwn4zdB6rTarUmUVhXENeI9K/T0KnylQhNzPcr20I
+         wGbA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
 Return-Path: <salil.mehta@huawei.com>
 Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id d9443c01a7336-20c6b3b7e95si3807835ad.121.2024.10.08.20.24.14
+        by mx.google.com with ESMTPS id d9443c01a7336-20c62f4f092si9087225ad.13.2024.10.08.20.24.34
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 08 Oct 2024 20:24:15 -0700 (PDT)
+        Tue, 08 Oct 2024 20:24:35 -0700 (PDT)
 Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from mail.maildlp.com (unknown [172.18.186.216])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4XNdXC1hzLz6K98h;
-	Wed,  9 Oct 2024 11:23:55 +0800 (CST)
+Received: from mail.maildlp.com (unknown [172.18.186.31])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4XNdWR12GMz6K6h7;
+	Wed,  9 Oct 2024 11:23:15 +0800 (CST)
 Received: from frapeml500007.china.huawei.com (unknown [7.182.85.172])
-	by mail.maildlp.com (Postfix) with ESMTPS id DA53A140447;
-	Wed,  9 Oct 2024 11:24:11 +0800 (CST)
+	by mail.maildlp.com (Postfix) with ESMTPS id 8BE4D140452;
+	Wed,  9 Oct 2024 11:24:31 +0800 (CST)
 Received: from 00293818-MRGF.huawei.com (10.126.173.89) by
  frapeml500007.china.huawei.com (7.182.85.172) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Wed, 9 Oct 2024 05:23:52 +0200
+ 15.1.2507.39; Wed, 9 Oct 2024 05:24:12 +0200
 From: Salil Mehta <salil.mehta@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <mst@redhat.com>
 CC: <salil.mehta@huawei.com>, <maz@kernel.org>, <jean-philippe@linaro.org>,
@@ -64,9 +64,9 @@ CC: <salil.mehta@huawei.com>, <maz@kernel.org>, <jean-philippe@linaro.org>,
 	<jiakernel2@gmail.com>, <maobibo@loongson.cn>, <lixianglai@loongson.cn>,
 	<shahuang@redhat.com>, <zhao1.liu@intel.com>, <linuxarm@huawei.com>,
 	<gustavo.romero@linaro.org>
-Subject: [PATCH RFC V4 14/33] arm/virt: Release objects for *disabled* possible vCPUs after init
-Date: Wed, 9 Oct 2024 04:17:56 +0100
-Message-ID: <20241009031815.250096-15-salil.mehta@huawei.com>
+Subject: [PATCH RFC V4 15/33] arm/virt/acpi: Update ACPI DSDT Tbl to include CPUs AML with hotplug support
+Date: Wed, 9 Oct 2024 04:17:57 +0100
+Message-ID: <20241009031815.250096-16-salil.mehta@huawei.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20241009031815.250096-1-salil.mehta@huawei.com>
 References: <20241009031815.250096-1-salil.mehta@huawei.com>
@@ -76,75 +76,195 @@ Content-Type: text/plain
 X-Originating-IP: [10.126.173.89]
 X-ClientProxiedBy: dggems705-chm.china.huawei.com (10.3.19.182) To
  frapeml500007.china.huawei.com (7.182.85.172)
-X-TUID: zkGfblORr0MV
+X-TUID: 5ADpej+6bqKx
 
-During `machvirt_init()`, QOM ARMCPU objects are pre-created along with the
-corresponding KVM vCPUs in the host for all possible vCPUs. This is necessary
-due to the architectural constraint that KVM restricts the deferred creation of
-KVM vCPUs and VGIC initialization/sizing after VM initialization. Hence, VGIC is
-pre-sized with possible vCPUs.
+Support for Virtual CPU Hotplug requires a sequence of ACPI handshakes between
+QEMU and the guest kernel when a vCPU is plugged or unplugged. Most of the AML
+code to support these handshakes already exists. This AML needs to be built
+during VM initialization for the ARM architecture as well, if GED support
+exists.
 
-After the initialization of the machine is complete, the disabled possible KVM
-vCPUs are parked in the per-virt-machine list "kvm_parked_vcpus," and we release
-the QOM ARMCPU objects for the disabled vCPUs. These will be re-created when the
-vCPU is hotplugged again. The QOM ARMCPU object is then re-attached to the
-corresponding parked KVM vCPU.
+TODO (Peculiar Problem with AML):
+Encountering the following ACPI namespace error when the GED AML is placed after
+the CPU AML.
 
-Alternatively, we could have chosen not to release the QOM CPU objects and kept
-reusing them. This approach might require some modifications to the
-`qdevice_add()` interface to retrieve the old ARMCPU object instead of creating
-a new one for the hotplug request.
+Error excerpt:
+[   75.795774] ACPI BIOS Error (bug): Could not resolve symbol [\_SB.GED.CSCN],
+[   75.797237] ACPI Error: Aborting method \_SB.GED._EVT due to previous error
+[   75.798530] acpi-ged ACPI0013:00: IRQ method execution failed
 
-Each of these approaches has its own pros and cons. This prototype uses the
-first approach (suggestions are welcome!).
+Preliminary analysis:
+The error is definitely not related to a `forward declaration` issue but rather
+to associating the `CSCN` (CPU Scan event handler) method with the `GED` scope
+before the `\\_SB.GED` scope is created. Therefore, it appears that the GED AML
+should be initialized prior to the CPU AML.
 
-Co-developed-by: Keqian Zhu <zhukeqian1@huawei.com>
-Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
+As a result, I had to move the GED AML before the CPU AML to resolve the issue.
+Everything about the two AML sections seems identical, except for their
+location. Any insights?
+
+==============================
+Summary comparison of DSDT.dsl
+==============================
+[1] Both working and not working DSDT.dsl Files are placed at below path:
+    https://drive.google.com/drive/folders/1bbEvS18CtBn3vYFnGIVdgcSD_hggyODV?usp=drive_link
+[2] Configuration: -smp cpu 4, maxcpus 6
+
+           DSDT.dsl (Not Working)                                                    DSDT.dsl (Working)
+           ---------------------                                                     ------------------
+
+DefinitionBlock ("", "DSDT", 2, "BOCHS ", "BXPC    ", 0x00000001)        DefinitionBlock ("", "DSDT", 2, "BOCHS ", "BXPC    ", 0x00000001)
+{                                                                        {
+    Scope (\_SB)                                                             Scope (\_SB)
+    {                                                                        {
+        Scope (_SB)                                                              Device (\_SB.GED)
+        {                                                                        {
+            Device (\_SB.PRES)                                                       Name (_HID, "ACPI0013"
+            {                                                                        Name (_UID, "GED")
+	    [...]                                                                    Name (_CRS, ResourceTemplate ()
+            Device (\_SB.CPUS)                                                 	     [...]
+            {                                                                        Method (_EVT, 1, Serialized)
+                Name (_HID, "ACPI0010")                                              {
+                Name (_CID, EisaId ("PNP0A05"))                                          Local0 = ESEL /* \_SB_.GED_.ESEL */
+                Method (CTFY, 2, NotSerialized)                                          If (((Local0 & 0x02) == 0x02))
+                {	                                                                 {
+	    [...]                                                                             Notify (PWRB, 0x80)
+                Method (CSTA, 1, Serialized)                                             }
+                {
+	    [...]                                                                        If (((Local0 & 0x08) == 0x08))
+                Method (CEJ0, 1, Serialized)                                             {
+                {                                                                            \_SB.GED.CSCN ()
+	    [...]                                                                        }
+                Method (CSCN, 0, Serialized)                                         }
+                {                                                                }
+	    [...]
+                Method (COST, 4, Serialized)                                     Scope (_SB)
+                {			                                         {
+	    [...]                                                                    Device (\_SB.PRES)
+                Device (C000)                                                        {
+                {		                                                    	  [...]
+	    [...]                                                                    Device (\_SB.CPUS)
+                Device (C001)                                                        {
+                {                                                                         Name (_HID, "ACPI0010")
+	    [...]                                                                         Name (_CID, EisaId ("PNP0A05"))
+                Device (C002)                                                             Method (CTFY, 2, NotSerialized)
+                {		                                                          {
+	    [...]                                                                    [...]
+                Device (C003)                                                             Method (CSTA, 1, Serialized)
+                {                                                                         {
+	    [...]                                                                    [...]
+                Device (C004)                                                             Method (CEJ0, 1, Serialized)
+                {		                                                          {
+	    [...]                                                                    [...]
+                Device (C005)                                                             Method (CSCN, 0, Serialized)
+                {			                                                  {
+            }                                                                        [...]
+        }                                                                                 Method (COST, 4, Serialized)
+                                                                                          {
+        Method (\_SB.GED.CSCN, 0, NotSerialized)                                     [...]
+        {                                                                                 Device (C000)
+            \_SB.CPUS.CSCN ()                                                             {
+        }                                                                            [...]
+                                                                                          Device (C001)
+        Device (COM0)                                                                     {
+        {	                                                                     [...]
+	    [...]                                                                         Device (C002)
+                                                                                          {
+        Device (\_SB.GED)                                                            [...]
+        {                                                                                 Device (C003)
+            Name (_HID, "ACPI0013")                                                       {
+            Name (_UID, "GED")                                                       [...]
+            Name (_CRS, ResourceTemplate ()                                               Device (C004)
+            {	                                                                          {
+	    [...]                                                                    [...]
+            OperationRegion (EREG, SystemMemory, 0x09080000, 0x04)                        Device (C005)
+            Field (EREG, DWordAcc, NoLock, WriteAsZeros)                                  {
+            {	                                                                      }
+	    [...]                                                                 }
+
+            Method (_EVT, 1, Serialized)                                          Method (\_SB.GED.CSCN, 0, NotSerialized)
+            {                                                                     {
+                Local0 = ESEL                                                         \_SB.CPUS.CSCN ()
+                If (((Local0 & 0x02) == 0x02))                                    }
+                {
+                    Notify (PWRB, 0x80)                                           Device (COM0)
+                }                                                                 {
+                                                                                      [...]
+                If (((Local0 & 0x08) == 0x08))                               }
+                {                                                        }
+                    \_SB.GED.CSCN ()
+                }
+            }
+        }
+
+        Device (PWRB)
+        {
+	    [...]
+    }
+}
+
 Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
 ---
- hw/arm/virt.c | 30 ++++++++++++++++++++++++++++++
- 1 file changed, 30 insertions(+)
+ hw/arm/virt-acpi-build.c | 33 +++++++++++++++++++++++----------
+ 1 file changed, 23 insertions(+), 10 deletions(-)
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 696e0a9f75..d8cae70ab2 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -2093,6 +2093,36 @@ static void virt_cpu_post_init(VirtMachineState *vms, MemoryRegion *sysmem)
-             }
-         }
-     }
-+
-+    if (kvm_enabled() || tcg_enabled()) {
-+        CPU_FOREACH_POSSIBLE(cpu, possible_cpus) {
-+            /*
-+             * Now, GIC has been sized with possible CPUs and we dont require
-+             * disabled vCPU objects to be represented in the QOM. Release the
-+             * disabled ARMCPU objects earlier used during init for pre-sizing.
-+             *
-+             * We fake to the guest through ACPI about the presence(_STA.PRES=1)
-+             * of these non-existent vCPUs at VMM/qemu and present these as
-+             * disabled vCPUs(_STA.ENA=0) so that they cant be used. These vCPUs
-+             * can be later added to the guest through hotplug exchanges when
-+             * ARMCPU objects are created back again using 'device_add' QMP
-+             * command.
-+             */
-+            /*
-+             * RFC: Question: Other approach could've been to keep them forever
-+             * and release it only once when qemu exits as part of finalize or
-+             * when new vCPU is hotplugged. In the later old could be released
-+             * for the newly created object for the same vCPU or just reuse the
-+             * old QOM vCPU object?
-+             */
-+            if (!qemu_enabled_cpu(cpu)) {
-+                CPUArchId *cpu_slot;
-+                cpu_slot = virt_find_cpu_slot(cpu);
-+                cpu_slot->cpu = NULL;
-+                object_unref(OBJECT(cpu));
-+            }
-+        }
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index f76fb117ad..32238170ab 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -805,6 +805,7 @@ static void
+ build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+ {
+     VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
++    MachineClass *mc = MACHINE_GET_CLASS(vms);
+     Aml *scope, *dsdt;
+     MachineState *ms = MACHINE(vms);
+     const MemMapEntry *memmap = vms->memmap;
+@@ -821,7 +822,28 @@ build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+      * the RTC ACPI device at all when using UEFI.
+      */
+     scope = aml_scope("\\_SB");
+-    acpi_dsdt_add_cpus(scope, vms);
++    if (vms->acpi_dev) {
++        build_ged_aml(scope, "\\_SB."GED_DEVICE,
++                      HOTPLUG_HANDLER(vms->acpi_dev),
++                      irqmap[VIRT_ACPI_GED] + ARM_SPI_BASE, AML_SYSTEM_MEMORY,
++                      memmap[VIRT_ACPI_GED].base);
++    } else {
++        acpi_dsdt_add_gpio(scope, &memmap[VIRT_GPIO],
++                           (irqmap[VIRT_GPIO] + ARM_SPI_BASE));
 +    }
- }
++
++    /* if GED is enabled then cpus AML shall be added as part build_cpus_aml */
++    if (vms->acpi_dev && mc->has_hotpluggable_cpus) {
++        CPUHotplugFeatures opts = {
++            .acpi_1_compatible = false,
++            .has_legacy_cphp = false
++        };
++
++        build_cpus_aml(scope, ms, opts, NULL, memmap[VIRT_CPUHP_ACPI].base,
++                       "\\_SB", AML_GED_EVT_CPU_SCAN_METHOD, AML_SYSTEM_MEMORY);
++    } else {
++        acpi_dsdt_add_cpus(scope, vms);
++    }
+     acpi_dsdt_add_uart(scope, &memmap[VIRT_UART0],
+                        (irqmap[VIRT_UART0] + ARM_SPI_BASE), 0);
+     if (vms->second_ns_uart_present) {
+@@ -836,15 +858,6 @@ build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+                          (irqmap[VIRT_MMIO] + ARM_SPI_BASE),
+                          0, NUM_VIRTIO_TRANSPORTS);
+     acpi_dsdt_add_pci(scope, memmap, irqmap[VIRT_PCIE] + ARM_SPI_BASE, vms);
+-    if (vms->acpi_dev) {
+-        build_ged_aml(scope, "\\_SB."GED_DEVICE,
+-                      HOTPLUG_HANDLER(vms->acpi_dev),
+-                      irqmap[VIRT_ACPI_GED] + ARM_SPI_BASE, AML_SYSTEM_MEMORY,
+-                      memmap[VIRT_ACPI_GED].base);
+-    } else {
+-        acpi_dsdt_add_gpio(scope, &memmap[VIRT_GPIO],
+-                           (irqmap[VIRT_GPIO] + ARM_SPI_BASE));
+-    }
  
- static void virt_cpu_set_properties(Object *cpuobj, const CPUArchId *cpu_slot,
+     if (vms->acpi_dev) {
+         uint32_t event = object_property_get_uint(OBJECT(vms->acpi_dev),
 -- 
 2.34.1

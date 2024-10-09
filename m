@@ -1,81 +1,80 @@
-Received: by 2002:a17:504:1f11:b0:1be9:327d:8ee3 with SMTP id z17csp532017njl;
-        Tue, 8 Oct 2024 17:05:04 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCU2ZE1k8MiPysZuPhdaZqFFhtQt3bf1s2AOOPxKrAO+5I9z2QfNSkTQEi8A4HJUDsVvjTaMJoOUxhyXNw==@linaro.org
-X-Received: by 2002:a17:902:d4d0:b0:206:adc8:2dcb with SMTP id d9443c01a7336-20c6373aa92mr9861415ad.25.1728432303859;
-        Tue, 08 Oct 2024 17:05:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1728432303; cv=none;
+Received: by 2002:a17:504:1f11:b0:1be9:327d:8ee3 with SMTP id z17csp532036njl;
+        Tue, 8 Oct 2024 17:05:05 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVMUIwvuqu2kp8gndy2xNd/KKW4DxCcQ3Tjy6eBv+QZEnlwhbJOaky+8wSIxonZi7UMpV0hWw86h7EIHQ==@linaro.org
+X-Received: by 2002:a17:902:f541:b0:20b:49c3:7856 with SMTP id d9443c01a7336-20c637112bbmr11636855ad.17.1728432305707;
+        Tue, 08 Oct 2024 17:05:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1728432305; cv=none;
         d=google.com; s=arc-20240605;
-        b=h9bLyLCfbc79zm7wsE54RmW1/rL2SD6XL5oxbYzy4ZfA3w0/QH+1CNB5zOS2jeOG86
-         16DSHFbwxUaF1lcM05ZmEEFZkLAKJzhFjMtP7yTh2DE5/ZG0u0BP9FzxdjXRojl2Xy0v
-         HMOtYDF7vMrzio7OdUG0JFetgO1Kutl0BU5jpXLg4xI1uxmWgQ2mL75nu6iEFtCCeVbI
-         TWPiDH5fXAjGr+Bh3FL9PigR1QkMTxl604eMkP23BHoc5N8M4n+Rc3RxCY04rpu4Tfrh
-         D+VeCWtczhByDmzksWG9tHvog8/gQqYKnxhbNx+8S9K0nx2TpH+S6ZilaDbEfL3Y/3bI
-         e3Pg==
+        b=MICvELB90cvigBAj6UOtvYyAo5Y4atT2fGccNh9DYU6poJt1EetFT3Nss1XzYw9oOc
+         2uIFXitrwTamt1fQ4tvljIrAk7keRm/rK/0Ou09I9yLqs0DXBCd2/SEinEb9MFNRef9o
+         UJRK4e17dUph+YrhYj4Aedvz7yz4VCZTZT6/IDT2KUqRst0jyM9Ub49626T7yEiaGD7T
+         llran8otEMllBB/commdcNX4n1c+wlp8ks0cHXWH29qy/RC+DMSpCuYK2hvBFZXnbTe4
+         1j6u8iWj6/pK6AV1NSnu5XTllueG/4VhLSqnBwz0cm883CuMolgKsoEK8q+ElCSW0t2i
+         0l/w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=jvwlrMz3Fk2P5q43/JWG8Wh7xLnVWB9wP6XAmMUyGN8=;
-        fh=mRAqvoVWjM+4kQu/MRIlAJAF97uuu8slrKE9ShfPT7k=;
-        b=UTbDfXciK6sV+Mc8804t/iiomKWLUTdcppBNqCuUVfSgKlP05kebAtppUEHFVvclPw
-         6AfBM2pEMLDg0SbJHjcH+Meif88xgHB0BUWHC/PBqAEzxue2Ddwf5Na+X1goBwRXY/jZ
-         3m5T3Tvl09JXfJQcaK2P9hjJE6I8iZQyjCVTybkGM7A74m3aQGX3vFv7QA+m51Ffq0Pb
-         cZd13TlfzDlfurES2RfN0xk0aqnlrNfAq2q+xo/jeLpG0fWA+t+d8g/fYobIy0UD3hTA
-         y3ipT68n9ni7d1hOwS0PpMFdZsXYMS1xuqWvckWZy4GvhqJZEePZD69Vw9SnkOyGYYEL
-         vxMg==;
+        bh=xQhK8NjjgW/kNvx5X1m22TpA6VVxTZtyOqTVcWaZJho=;
+        fh=RW1CnHu1d++NGXddHX+DAJwJ/Ef/fgwtp3KQKtU92ls=;
+        b=WO91Bt8ASnY5K/exzZYz/BqlP5ALgNEXrEpasQV+51famMcshs1xtwDdzNsIXYoxgn
+         SJdetc4EgK8ffBtKiJ7homt7+2kaBJgrXYkeJYRvCmRU3TqcASWE0BvnOzGaykTw7/kX
+         1xp7fqVGSOcyMluCn/SNcthw54hHwIJ6Hc0tu8ddeHMVfgtVwiZ5cHQgFyEwURQHcQeV
+         syNWNZdD83I7/V+hrqxOPwITC+k5SFpsGOotKKOowQ2pRywPpWfIAi3YO6dqZX/93Ttn
+         86swLwWZ2L/nFBAEu6uoIbg+Dk7yaZa5RCWVsL90DTiiShwXM8OvDM9h/f4bE3recPHt
+         IVCw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=SRKljg0k;
+       dkim=pass header.i=@linaro.org header.s=google header.b=DKGoLRPF;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d9443c01a7336-20c138d1bafsor65528245ad.7.2024.10.08.17.05.03
+        by mx.google.com with SMTPS id d9443c01a7336-20c138fd17esor48332915ad.11.2024.10.08.17.05.05
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Tue, 08 Oct 2024 17:05:03 -0700 (PDT)
+        Tue, 08 Oct 2024 17:05:05 -0700 (PDT)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=SRKljg0k;
+       dkim=pass header.i=@linaro.org header.s=google header.b=DKGoLRPF;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1728432303; x=1729037103; darn=linaro.org;
+        d=linaro.org; s=google; t=1728432305; x=1729037105; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=jvwlrMz3Fk2P5q43/JWG8Wh7xLnVWB9wP6XAmMUyGN8=;
-        b=SRKljg0kCe048HrYsh5sFWIfOHc0KbLwJMxO+eqqZmfXcLiMDcs4ilr8CWq/8WcjW9
-         FVQ+ETCYLPol8ilw+nuO+7TtYp+J4kG8ZDbTCAhEyKvIEEwH/ew5YQQjjWswgrm/T+fJ
-         QC7eynaxb5W0dy7C1c1FfBYJxdEO2qAZM88Y1vAtwXTmEY++Q0XDnc6IgoN7ru1DUoyh
-         4uOWcW7qPvGuNWzCQjR3RUpIqSvD2UHWk/hFLrulIbkbi9ict3g37J4Dr7hnukB808mh
-         KhQ6A5kG8e9L0UrZYmHUIcmtotPhQi03g1BmqWMrxpMkzuPKFx7rsbc8J3a5bhHvYGId
-         3Kug==
+        bh=xQhK8NjjgW/kNvx5X1m22TpA6VVxTZtyOqTVcWaZJho=;
+        b=DKGoLRPFSjDbxueqRLXYes4pBGopTBl5bm/xCghWu35qNzi8f68MpgwuTyTOznSa/4
+         gKZ6numLPT0PR5xkFBRr3OEwMRKURr+aV1b8Gqb0uvBsU8LHhhhx9fWSpfV+RiSFCTWn
+         ZsGwzfcOAdj7qP1U026lC2UBmAaVl4JzEcJOjwbQN8+lLfmZZNEQDos4w7N0It/SZPwm
+         Bd9A4SIcKlkyFsT8iiT5n1CJZTlVxdMrgB/qGc95GP53OTe4/+WQP9XHscQh51C0Zv6v
+         PwGx8KDXGnK0V/p9H6o+pW/+6N9b4KsdJg8gfuFLCzl9FaAk/UnRokNv5do512YYuCZm
+         tsZg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1728432303; x=1729037103;
+        d=1e100.net; s=20230601; t=1728432305; x=1729037105;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=jvwlrMz3Fk2P5q43/JWG8Wh7xLnVWB9wP6XAmMUyGN8=;
-        b=W20/f2FEyeJYhiLsRAGJ7HRwss+S1rv7CSm4fPKG6WSYeZbh/dvAoK5gysbL+0D/1K
-         iN/3saN1QTJZUNZFwzu5lozl7eCFknHrA+0MyqN9rIY53XLFmgLa75y3gC9hvA9YW3cw
-         DsuKNWo9bXi0bAoyN9KXDpk9QU0Ah/42k8pzRlQFvxOmhUAE6gdgJNZon/nrimEt1m8w
-         qe1Tnz2T+1ozsBg1Brm7vf18f/f8IaYOgmx+8huaWwpvs2TnG9hzmO1bzY+v4dqGBSJg
-         pRDJXjUtWQ4j5qjMAN9q886MJ/QZG3ES6ihFGvc/n70ORsEyLdTdBfwcnhTreRZJukOU
-         xdew==
-X-Forwarded-Encrypted: i=1; AJvYcCUZQ0wR3NTu2nXegpxFQC6fAjm/aKSdFQNxNa9xNKP4V98Ykl+JYnSKbUycslXAXkJLDVqHlarN1w33fQ==@linaro.org
-X-Gm-Message-State: AOJu0YwpahxK6Yh+0qiQHIIR3NmYkKT0DC4TQ02ELwzKY5jPNOgKXYFB
-	oOgntma1MSwIbzK1tSaUEXvet1FfqC7nWd2mziOmnFQwDWjW5JhXjmCOlNLh8YCK5rR5tyIiNw1
-	qMnw=
-X-Google-Smtp-Source: AGHT+IEQN3Rl72pcmgLCTKgbIcOtLba1v+GzwtpoC9AF0fnEDdxLNrxqZqv2s5T7uD+5Iv4bbg/olQ==
-X-Received: by 2002:a17:903:2289:b0:20c:5263:247a with SMTP id d9443c01a7336-20c637809c9mr15713945ad.38.1728432303433;
-        Tue, 08 Oct 2024 17:05:03 -0700 (PDT)
+        bh=xQhK8NjjgW/kNvx5X1m22TpA6VVxTZtyOqTVcWaZJho=;
+        b=hVIZYf5Xh6LMA/yDNAwfkZghJH+6m9K3FEthzoYwXLxtFkobJ2I+RR3asvxTVfxk8f
+         +jQyClpRsRYlGudkE/wSt1mdm9SDG+jG5mVElwSfWULH0sDa/roUe0VPgjJvoK8RO+8b
+         Vf/6/zv5Mv6b3QsYF18nNagZe29jUbGNQw1VI6NEHYcCZ0hlg15XITkSloyhk0tbUOBD
+         OmLzaAr1iEjURfF3g6w41y/+RJ2UKTP2CqD3jnJ6T7vjsFeAHhgWi0YX6GS+jrf5sHrz
+         616yVpedujv75qGL52lsqBn1Zvhbx0Hd+HBv38/OD5x6/PkQ3stIRmA+0qFI+lx9bExA
+         m2Nw==
+X-Forwarded-Encrypted: i=1; AJvYcCUXK+vg9KMgRemtssDYmw9S5xriZs94iUhnPmem/RPTe7Az8qA7SfYqlQf9f3QP4CqVM7DP+EsXMfBVqw==@linaro.org
+X-Gm-Message-State: AOJu0Yx9r1Qoou1ySnwE2NhjSyH4Q6B0AL9Tv6g9VWN4g8Wc53L3C2k3
+	6QK6ILhgpMmXKKRRqkEUNTPajNPduopytaq78eeidjiw5pqj1vrbxCo8k60+5Fh1SA==
+X-Google-Smtp-Source: AGHT+IGk0V3WqNWZpuoKiyjHCbvkavwK7mPvzoRJ0f7iYAkKJh77UVywliO2AjnwG+Rua0FM3sG5Mg==
+X-Received: by 2002:a17:903:2309:b0:20b:51c2:d789 with SMTP id d9443c01a7336-20c63711761mr12234395ad.16.1728432305301;
+        Tue, 08 Oct 2024 17:05:05 -0700 (PDT)
 Return-Path: <richard.henderson@linaro.org>
 Received: from stoup.. (174-21-81-121.tukw.qwest.net. [174.21.81.121])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-20c138cecf2sm60705105ad.104.2024.10.08.17.05.02
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-20c138cecf2sm60705105ad.104.2024.10.08.17.05.04
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 08 Oct 2024 17:05:03 -0700 (PDT)
+        Tue, 08 Oct 2024 17:05:04 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: deller@kernel.org,
@@ -84,57 +83,50 @@ Cc: deller@kernel.org,
 	linux-parisc@vger.kernel.org,
 	qemu-arm@nongnu.org,
 	Helge Deller <deller@gmx.de>
-Subject: [PATCH v3 08/20] target/hppa: Perform access rights before protection id check
-Date: Tue,  8 Oct 2024 17:04:41 -0700
-Message-ID: <20241009000453.315652-9-richard.henderson@linaro.org>
+Subject: [PATCH v3 10/20] target/hppa: Handle alignment faults in hppa_get_physical_address
+Date: Tue,  8 Oct 2024 17:04:43 -0700
+Message-ID: <20241009000453.315652-11-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20241009000453.315652-1-richard.henderson@linaro.org>
 References: <20241009000453.315652-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: Fo1P4o5W2lb5
+X-TUID: DBkD6/5cwK7X
 
 In Chapter 5, Interruptions, the group 3 exceptions lists
-"Data memory access rights trap" in priority order ahead of
-"Data memory protection ID trap".
-
-Swap these checks in hppa_get_physical_address.
+"Unaligned data reference trap" has higher priority than
+"Data memory break trap".
 
 Reviewed-by: Helge Deller <deller@gmx.de>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/hppa/mem_helper.c | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
+ target/hppa/mem_helper.c | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
 
 diff --git a/target/hppa/mem_helper.c b/target/hppa/mem_helper.c
-index a386c80fa4..f027c494e2 100644
+index f71cedd7a9..d38054da8a 100644
 --- a/target/hppa/mem_helper.c
 +++ b/target/hppa/mem_helper.c
-@@ -267,6 +267,12 @@ int hppa_get_physical_address(CPUHPPAState *env, vaddr addr, int mmu_idx,
-         goto egress;
+@@ -221,7 +221,7 @@ int hppa_get_physical_address(CPUHPPAState *env, vaddr addr, int mmu_idx,
+             g_assert_not_reached();
+         }
+         prot = PAGE_READ | PAGE_WRITE | PAGE_EXEC;
+-        goto egress;
++        goto egress_align;
      }
  
-+    if (unlikely(!(prot & type))) {
-+        /* Not allowed -- Inst/Data Memory Access Rights Fault. */
-+        ret = (type & PAGE_EXEC) ? EXCP_IMP : EXCP_DMAR;
-+        goto egress;
+     /* Find a valid tlb entry that matches the virtual address.  */
+@@ -323,6 +323,11 @@ int hppa_get_physical_address(CPUHPPAState *env, vaddr addr, int mmu_idx,
+         }
+     }
+ 
++ egress_align:
++    if (addr & ((1u << memop_alignment_bits(mop)) - 1)) {
++        ret = EXCP_UNALIGN;
 +    }
 +
-     /* access_id == 0 means public page and no check is performed */
-     if (ent->access_id && MMU_IDX_TO_P(mmu_idx)) {
-         int access_prot = (hppa_is_pa20(env)
-@@ -281,12 +287,6 @@ int hppa_get_physical_address(CPUHPPAState *env, vaddr addr, int mmu_idx,
-         prot &= access_prot;
-     }
- 
--    if (unlikely(!(prot & type))) {
--        /* Not allowed -- Inst/Data Memory Access Rights Fault. */
--        ret = (type & PAGE_EXEC) ? EXCP_IMP : EXCP_DMAR;
--        goto egress;
--    }
--
-     /*
-      * In priority order, check for conditions which raise faults.
-      * Remove PROT bits that cover the condition we want to check,
+  egress:
+     *pphys = phys;
+     *pprot = prot;
 -- 
 2.43.0

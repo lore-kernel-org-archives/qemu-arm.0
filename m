@@ -1,72 +1,73 @@
-Received: by 2002:a17:504:1f11:b0:1be9:327d:8ee3 with SMTP id z17csp1083577njl;
-        Wed, 9 Oct 2024 12:46:33 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWV3BGXSm22aqfai1mpZz9790Hl+XPx573RQ+fTGTs9bvoMst7f5ShmjLbWmRQ9sZJsbsfslYIOiT1wew==@linaro.org
-X-Google-Smtp-Source: AGHT+IEF8sppR/w6Ns/qZmu+AnOl86PQohO5GYW8H9rOrV3E9+HiHq1Qsd4uPOvHe+WIVNTDDyJx
-X-Received: by 2002:a17:906:6a29:b0:a86:b46b:860a with SMTP id a640c23a62f3a-a998d32fe2cmr360914766b.54.1728503193252;
-        Wed, 09 Oct 2024 12:46:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1728503193; cv=none;
+Received: by 2002:a17:504:1f11:b0:1be9:327d:8ee3 with SMTP id z17csp1131559njl;
+        Wed, 9 Oct 2024 14:29:40 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWKsYXuJqShelqAOKYELU1YD+PFaIk5MnGCNmgH43UWYbx2mTtXupziqs9HH4ea9e9sZ9rdZyzr3OtEzQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IEYyp47MQq4GmKEVLjzUD9+Vzu6J5hXjmHuEGIUBABJOZzexEeg5bvf/itHZzPVE42XMX/E
+X-Received: by 2002:a05:6402:26d0:b0:5c6:3ebf:5c10 with SMTP id 4fb4d7f45d1cf-5c9335538dfmr1024287a12.10.1728509380683;
+        Wed, 09 Oct 2024 14:29:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1728509380; cv=none;
         d=google.com; s=arc-20240605;
-        b=b8dwRgISWBYu3LoFzyZ8h5JYavYZ6wrRYx6qOaVC0PdzsXULbSlu2NmY8iR2xDnI9c
-         sbYjzMxu919rboQgaRL/QGOKQBM1HmZ+H70R5kTVPVLvuC1+K2Os1qW15nNoGMeKCGJ6
-         UTMQwogjVJDfxTxS9Jkbd5vKmmAMr/sz8swQzLyrtJe53E1bU8RAryBiEx8Y6u7JtPf8
-         VIjvtab06RbQTDlrWVfAITJJ8lVW0MP8JstOrk9ksUH7KCFQCFF+y8inhbcoemCPcMaw
-         4elsegW/wMxvwS3TJfd2afe6uOPtKZG2Eu/yaQi4ffFssnkKXEjWTpUhOmumLT8WGOy3
-         iTDQ==
+        b=djQsuMQlL22d0s2u+wIvWaEAKDv1mNoA0lO925J4E3Xg4ybv7LDb5/ZZf8bB0QOJS6
+         NusKAG4tx5sT1o4GHvZg2SKtf0cjqh8XKBYMmXziV1gd1sLX3pS7ouFjYbVEpOxP/NaL
+         9QExWWlF0vTaSoEEb+f8gkrEa+99dk0jqbZFXU2PjjVSAyS51Zu2pWqpPOhkiT+9719e
+         RXhPkEyR/w0wDmHhKNugnBK7BT0vGGz5A/FoihVYwQG/VEeKElzqkMudv7q7+FqyPXG9
+         g8jJ+YWmrYTGespsKV8D78dwLFq8HRTuKn1bABtZEXWxGidRzJXb5H5xXVdMdIHjjES9
+         rVhQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=ui-outboundreport:content-transfer-encoding:in-reply-to:autocrypt
          :from:content-language:references:cc:to:subject:user-agent
          :mime-version:date:message-id:dkim-signature;
-        bh=l7/3KWyYkdVNuAZ8PjFJLPSZeO67WwppJtJn1V4WkXU=;
+        bh=Cktov7IgpjoLwvQgMG36+aq60qnsQb9DIXdfD6cis7M=;
         fh=3fZ7Wohp6BUOfptJMglDqKETKOsQS3q9o/uj1RhoDNQ=;
-        b=MlYKmwUzN+qcCpV0NW8yqzH3BqWFcn66comZtJOBO10u1yWzxfWL3KjgybLNsFkkJQ
-         cR884Wgzn4ImtWOewVlA1HOATFAK7T7NnmYcYKDT3PC3EKflaMfWb9qttRMZcTRLF9uz
-         ktlsLTZ4T52X6lQjASezF7rCHmpYafkH1dmQQpQsD6G1tjimwhGX+YmVg2R/KWaN41f4
-         Tpx45D//Q8hq+z6NCBEKVx4Bw1PTuB5ZiPPjGwtuOoslrt9UFaeY0JXh9s0EzwnbnXBe
-         4nMJ3UOEAlkkXvUb8lArlm+lO2zKET5d3GfiV7aibYLxVxNEGUkM9SDkqGLp4Lw+XTcG
-         KDDg==;
+        b=IPlUU27m4KHPsVRokVxbwxuB3HJNsMeo1co4T3f2hypLLsg61i1ZvV2R2J5BN3C4Kk
+         Xw9qp9z/b5IK8IPhTqdMRfwNapelL4es+MUQYJsyv4VrmTtq+2jeTcxEcCYXQOuqFsts
+         I16r0qpTUh5MgMrDsUvHJtriKW4C5Qh+ivYENNK3SHwPUYWKLXYAXWtGcP75BSsHztlZ
+         7c1qRvYn5AizTYwdtOG22cXQReNKedjKae3yD1WXGkVib/nCeowcn6i7BQamya0NHi49
+         JPexO4Eo09UNinmzUTt7QXnGJXj1dkrI/32vKSml4LDrwYDyu3zX9K9GuQAyzjZ+8djH
+         ArHQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmx.de header.s=s31663417 header.b=r6xW8flD;
-       spf=pass (google.com: domain of deller@gmx.de designates 212.227.17.20 as permitted sender) smtp.mailfrom=deller@gmx.de;
+       dkim=pass header.i=@gmx.de header.s=s31663417 header.b=uaCPkVVj;
+       spf=pass (google.com: domain of deller@gmx.de designates 212.227.17.22 as permitted sender) smtp.mailfrom=deller@gmx.de;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=gmx.de
 Return-Path: <deller@gmx.de>
-Received: from mout.gmx.net (mout.gmx.net. [212.227.17.20])
-        by mx.google.com with ESMTPS id a640c23a62f3a-a993fa2344esi727959566b.593.2024.10.09.12.46.32
+Received: from mout.gmx.net (mout.gmx.net. [212.227.17.22])
+        by mx.google.com with ESMTPS id 4fb4d7f45d1cf-5c91b0f7a46si2109427a12.579.2024.10.09.14.29.40
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 09 Oct 2024 12:46:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of deller@gmx.de designates 212.227.17.20 as permitted sender) client-ip=212.227.17.20;
+        Wed, 09 Oct 2024 14:29:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of deller@gmx.de designates 212.227.17.22 as permitted sender) client-ip=212.227.17.22;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmx.de header.s=s31663417 header.b=r6xW8flD;
-       spf=pass (google.com: domain of deller@gmx.de designates 212.227.17.20 as permitted sender) smtp.mailfrom=deller@gmx.de;
+       dkim=pass header.i=@gmx.de header.s=s31663417 header.b=uaCPkVVj;
+       spf=pass (google.com: domain of deller@gmx.de designates 212.227.17.22 as permitted sender) smtp.mailfrom=deller@gmx.de;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=gmx.de
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmx.de;
-	s=s31663417; t=1728503192; x=1729107992; i=deller@gmx.de;
-	bh=l7/3KWyYkdVNuAZ8PjFJLPSZeO67WwppJtJn1V4WkXU=;
+	s=s31663417; t=1728509377; x=1729114177; i=deller@gmx.de;
+	bh=Cktov7IgpjoLwvQgMG36+aq60qnsQb9DIXdfD6cis7M=;
 	h=X-UI-Sender-Class:Message-ID:Date:MIME-Version:Subject:To:Cc:
 	 References:From:In-Reply-To:Content-Type:
 	 Content-Transfer-Encoding:cc:content-transfer-encoding:
 	 content-type:date:from:message-id:mime-version:reply-to:subject:
 	 to;
-	b=r6xW8flDeemx6WxYyjgfvIvxLG/dTONKG6/GOsgCGQdKTLSw6va0chMKc9oNEqkT
-	 /x0HVf2kVzaJbJ9giD+JnljWbsV0aXdtEKl/txt3bRcTaQPSTfk9dEMAOIIoHr2z0
-	 A4xgFRoNroVYODF3Ymc7vupPHqVqqrRYmE3W1Qf3KIA5+TUSrznfEBQiX7zHRb4ge
-	 DOGHk1lWTvJzyyJX76WnCQ88GpFbnVPMDscQeybOSLM55XupdVuExWG+rhdJaSE10
-	 zY57I5qLoiPl6W0BISzCM9DiDCLoAFGvOa+eDCTSHgol77ZWoL6NVY/p2kePISQqy
-	 knpT279Uqw6SRgIP3Q==
+	b=uaCPkVVjKUqAFu0S2y0lgbP7mezjrk7WatUBeRRS5PZLRPI+3CLNBAHnmd/8ALTO
+	 o6X0wO0V83LlEGG8ETHg+bW6d4cRfJgq57GZCx+RbBAXloOsyZODjIpKOTiKkiqtP
+	 H0kjaMSapm/W2QBfxOIfDZIKm5eYk2lgOf6z1WAn9eCMhdsAPhBZUAErzzPxI2N83
+	 DZj83iiPjR5lnqC4/zYH9kEJRUSF1DQzRZbmhgpmUGNXIpBk/uDI14iw2diuGzzy+
+	 PRV5Kwmt57+S6NeS9/wMI3XiCGKIiXLgZNwD3l1KCQS0FmIRI/MhKuMWM++vHwxIC
+	 9OrQl4+/lHqXcQo6QA==
 X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
-Received: from [192.168.20.55] ([109.250.63.79]) by mail.gmx.net (mrgmx104
- [212.227.17.168]) with ESMTPSA (Nemesis) id 1MeU0q-1tWZsi1te0-00fYrf; Wed, 09
- Oct 2024 21:46:32 +0200
-Message-ID: <c135e5d1-e742-4a62-9ad6-82614869dc6b@gmx.de>
-Date: Wed, 9 Oct 2024 21:46:31 +0200
+Received: from [192.168.20.55] ([109.250.63.79]) by mail.gmx.net (mrgmx105
+ [212.227.17.168]) with ESMTPSA (Nemesis) id 1N4Qwg-1twLot0xSo-014RWq; Wed, 09
+ Oct 2024 23:29:37 +0200
+Message-ID: <703527ad-6594-455f-95a5-bb50e95b4f1a@gmx.de>
+Date: Wed, 9 Oct 2024 23:29:36 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 05/20] accel/tcg: Add TCGCPUOps.tlb_fill_align
+Subject: Re: [PATCH v3 06/20] accel/tcg: Use the alignment test in
+ tlb_fill_align
 To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
 Cc: deller@kernel.org, peter.maydell@linaro.org, alex.bennee@linaro.org,
  linux-parisc@vger.kernel.org, qemu-arm@nongnu.org
 References: <20241009000453.315652-1-richard.henderson@linaro.org>
- <20241009000453.315652-6-richard.henderson@linaro.org>
+ <20241009000453.315652-7-richard.henderson@linaro.org>
 Content-Language: en-US
 From: Helge Deller <deller@gmx.de>
 Autocrypt: addr=deller@gmx.de; keydata=
@@ -112,109 +113,34 @@ Autocrypt: addr=deller@gmx.de; keydata=
  FwRDcGV6nxanxZGKEkSHHOm8jHwvQWvPP73pvuPBEPtKGLzbgd7OOcGZWtq2hNC6cRtsRdDx
  4TAGMCz4j238m+2mdbdhRh3iBnWT5yPFfnv/2IjFAk+sdix1Mrr+LIDF++kiekeq0yUpDdc4
  ExBy2xf6dd+tuFFBp3/VDN4U0UfG4QJ2fg19zE5Z8dS4jGIbLg==
-In-Reply-To: <20241009000453.315652-6-richard.henderson@linaro.org>
+In-Reply-To: <20241009000453.315652-7-richard.henderson@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:zCmpm0qU1enjfJ9eJtMe3crtl/bLN/vE//FdwjxOjRr8j2Fb/Zt
- Mqi199ikz4/XKLoNOHCBYqAx1k3iyuRHXMkf0O5XA2jI/f0o9OsHZIRhbwzy9FLEgQ2VNvV
- BjYKoOtVC5sPCW5i4FmRmNLjVktS+ejghzOiiuZV3P3PcEKN6PcXno0yUmYkmF+IEA/MJJR
- qZ69u9F0/dzp6K/5MWKjg==
+X-Provags-ID: V03:K1:Os1oFUYwRxSEqQHoe4APk+cVwrfkdQHvCr24H/OfUXb5AlEfvea
+ Im3Z6XEZHZcZ3x6hXyQNmWHUfODCIjiToXr7/aJ6Ui5BlvtDexBha9/+hsJAIW5SREPxE57
+ QU0Rlt9bbgZcQ2x1qmAEcRQ4ToSOCngh65KTlzKpKnB+scTYzbkrnsAZX7qw6fkC3IOiYRk
+ HQBeJBhyRJ69bDpXlEYyQ==
 X-Spam-Flag: NO
-UI-OutboundReport: notjunk:1;M01:P0:aTjAG1270K4=;3m8XDLjt8j3IgsgUWe4hCpmDMtz
- Eivwyn/pZAJAjI2olNWO8srf1kgZANKL6zIKw+ebIqNU9/pwDCCjYF7iIbpoJihMg4xhEPWnX
- mSU8w+ODopp7u40v30zLTcyBsyzmFRGHCnCDasikr9gN4Z53y1cUsXgu2utpeQNRWLX5QskHA
- QbFKSQg9Tm1tNQ4Hfc332LaXGqRYmIJnM7OPzFogEgPrXcDoYgXZvxaD6VhPs0fIqHNry1baR
- Q2jsTFB2XkrPpHR8eg78fwWGJnWEaGsoevh17HLTH9m+YVG3AiJ8JOqI8TULVpMHc9kTITh25
- 2ufnJzfEoFYX5hVnaQ02MSc1yRsU12yBqr6UkTdYE1X1Hy0rwB2KNQVg5ftb6z427HHvFoN+2
- nz11SOFMFlguKkaK3Rq6Tw2PTRbh+G68k5x5Sh5he5L/R3DgRx/Xkge8W2hR6HQ2+qS4To6I+
- z57+zS5lHDCzAtSSSRxOlS84olAelgYtULn2jyYwqFNWjjgiVTyZPH3NuqI051QQns7NXzFkb
- zcwdMrR4NYy5ESNs3cvN52OmmG8V0F2bA7dCf0El1MwkYIWF3nxWE3+S2XBSsxGzI/N3KXtpo
- zlhD8C1QEctc5BiMsKu9qYaJvLGG5remrkyejoHTak/ZC7g0xMeabNmDR+AKd2Y2xTIolSii8
- 6zg6XkeXacaUlxmYON+3FN394pGLDcQSRrwXyvWwFWafwRG0MFQg2bSo88G8xa21bqQBHW7zA
- bTvZBjpE3N9lGM/1xE6cv1Btsbq/HS72DRrv0xiVI5y+Ay8IGEXPK4rjOoZTWX3+upkwh4OV/
- ktZXo++Nrw/I2P7bRISoicjQ==
-X-TUID: 6JilM1Q9+SLY
+UI-OutboundReport: notjunk:1;M01:P0:cU4ODWKw8sc=;ua+X+RenXvdgtik7I1AQJfq4bA9
+ j5PEInPPL9lUDR9fcaF8Ni/YyKwnS+RkTt5/kBQL1ZLABL51bwbzwm8izJ/MVZegdwdN5oIOb
+ Ixroak+jNK/7ksJTewe/CTI9YjtaiA52KTI9n2DHBDPy1f+MgGgPgoW/Erzfx6MEquA4Gcq77
+ PxYL7gUv6a77lCeh/AZGg+j0DUbI9fETTHuj2dGg4GOb1o0ymrCWvJOi5XNnIfvnUOyDDyqaw
+ BVNg0eBGGi7oKLFoFWrh5jUMSW9ChQ6+tOPLnDmT4R3E0Pd8AzsRVAHNqHhqctdoyPvBuG0Rh
+ bBjFvXxChnoj4FNPtXAKwydqB0gBBC3FKNAQupMVQ2EUc4w9ey7XSsSDXU9KFx1jzZJUNADJU
+ ihrL6XKrNIID4YT9V1AFHcpUOqq78zWIjMIS9GKyG7FP+SzRB8yANmnh7a/K8ImKxzc6ebqIn
+ OTXvYXC2yA34yA8EkSMsXjgxs7GTt/r/qSsMwWLkmHBUDaG8r1tjVei91RlO+c3DzMu4mfJyh
+ m8v+Jyny4BIppxGJ9z0cBBvrU/ETYk+mAMWgyTktbIgNJ9kgdvazlGZu2wPtahDwEap5y6L+/
+ 8ArthFdEuGR5U1lVVuwTWtsfvcAI7dR0UkLR1SFomfMVHP4hRU32Qj7t2c+AAqM13KMMi8Kv2
+ hLXJn7v00L/mGxZNDWMMEcttTdeiNREuJ0s+YvIXa3hFY6H2IwplNJgajxX39y8tBYPPsEfsM
+ ej5duaxKDPrJ2RyM4Xkes4CkXuh3gf5ldd07VyeWjkWICn3YaXBP3eVVi8XBc6RRWMp2uvUlL
+ 5vG13LHOQWtrhf8mctBmCFDA==
+X-TUID: jQyz5cf/vAMc
 
 On 10/9/24 02:04, Richard Henderson wrote:
-> Add a new callback to handle softmmu paging.  Return the page
-> details directly, instead of passing them indirectly to
-> tlb_set_page.  Handle alignment simultaneously with paging so
-> that faults are handled with target-specific priority.
->
-> Route all calls the two hooks through a tlb_fill_align
-
-Route all calls (of?) the two hooks... ?
-
-> function local to cputlb.c.
->
-> As yet no targets implement the new hook.
-> As yet cputlb.c does not use the new alignment check.
+> When we have a tlb miss, defer the alignment check to
+> the new tlb_fill_align hook.  Move the existing alignment
+> check so that we only perform it with a tlb hit.
 >
 > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
->   include/hw/core/cpu.h         |  4 +--
->   include/hw/core/tcg-cpu-ops.h | 26 +++++++++++++++
->   include/qemu/typedefs.h       |  1 +
->   accel/tcg/cputlb.c            | 61 ++++++++++++++++++++++-------------
->   4 files changed, 67 insertions(+), 25 deletions(-)
->
-> diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
-> index 04e9ad4996..d21a24c82f 100644
-> --- a/include/hw/core/cpu.h
-> +++ b/include/hw/core/cpu.h
-> @@ -205,7 +205,7 @@ struct CPUClass {
->    * so the layout is not as critical as that of CPUTLBEntry. This is
->    * also why we don't want to combine the two structs.
->    */
-> -typedef struct CPUTLBEntryFull {
-> +struct CPUTLBEntryFull {
->       /*
->        * @xlat_section contains:
->        *  - in the lower TARGET_PAGE_BITS, a physical section number
-> @@ -261,7 +261,7 @@ typedef struct CPUTLBEntryFull {
->               bool guarded;
->           } arm;
->       } extra;
-> -} CPUTLBEntryFull;
-> +};
->
->   /*
->    * Data elements that are per MMU mode, minus the bits accessed by
-> diff --git a/include/hw/core/tcg-cpu-ops.h b/include/hw/core/tcg-cpu-ops=
-.h
-> index 34318cf0e6..c932690621 100644
-> --- a/include/hw/core/tcg-cpu-ops.h
-> +++ b/include/hw/core/tcg-cpu-ops.h
-> @@ -13,6 +13,7 @@
->   #include "exec/breakpoint.h"
->   #include "exec/hwaddr.h"
->   #include "exec/memattrs.h"
-> +#include "exec/memop.h"
->   #include "exec/mmu-access-type.h"
->   #include "exec/vaddr.h"
->
-> @@ -131,6 +132,31 @@ struct TCGCPUOps {
->        * same function signature.
->        */
->       bool (*cpu_exec_halt)(CPUState *cpu);
-> +    /**
-> +     * @tlb_fill_align: Handle a softmmu tlb miss
-> +     * @cpu: cpu context
-> +     * @out: output page properties
-> +     * @addr: virtual address
-> +     * @access_type: read, write or execute
-> +     * @mmu_idx: mmu context
-> +     * @memop: memory operation for the access
-> +     * @size: memory access size, or 0 for whole page
-> +     * @probe: test only, no fault
-> +     * @ra: host return address for exception unwind
-> +     *
-> +     * If the access is valid, fill in @out and return true.
-> +     * Otherwise if probe is true, return false.
-> +     * Otherwise raise and exception and do not return.
-
-Otherwise raise an(?) exception...
-
 
 Reviewed-by: Helge Deller <deller@gmx.de>
-

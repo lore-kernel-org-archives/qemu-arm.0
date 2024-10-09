@@ -1,192 +1,223 @@
-Received: by 2002:a17:504:1f11:b0:1be9:327d:8ee3 with SMTP id z17csp863929njl;
-        Wed, 9 Oct 2024 06:59:22 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXSLTKkhMu74ewJvQoGF9PQDPxU5pIvUQTbwo7AIDk6vjpAaZKRNXsTLrQkvAB9AJutZgaPYRruBWMIDw==@linaro.org
-X-Received: by 2002:a17:907:1c0a:b0:a99:403e:2568 with SMTP id a640c23a62f3a-a998d122efcmr202845866b.5.1728482362471;
-        Wed, 09 Oct 2024 06:59:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1728482362; cv=none;
+Received: by 2002:a17:504:1f11:b0:1be9:327d:8ee3 with SMTP id z17csp890615njl;
+        Wed, 9 Oct 2024 07:32:56 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCW7+NdfDRh07bcuihWgt9AOcwNkA7soP7vd5ZN77HJ5vEbx2T7VgsU3Me7sLJT75uKjNnlVFFDU/0XD/g==@linaro.org
+X-Google-Smtp-Source: AGHT+IFWzgC7ji/LCQKY+zLQyFkAQF+P8fIYu6/6yWyZ8jPhDbzG/kKjEKdbFVbW0jXYZdgucTug
+X-Received: by 2002:a05:6214:5981:b0:6cb:4362:e49d with SMTP id 6a1803df08f44-6cbc958b18cmr42679736d6.41.1728484376338;
+        Wed, 09 Oct 2024 07:32:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1728484376; cv=none;
         d=google.com; s=arc-20240605;
-        b=i9MdemfzVratNreYAqOraz28yBi7VgBNK5GvY6QqqByfbgNcXFNHjnMBfee3OaZTRc
-         lh2SLgXlib6PP7hfejz2T28bMjndIe+yFtZy/1WCvLBMAixMidNBnz2uXRTUvNefjT2D
-         v7XuszhPzdkN2cnlm8na9E4b+s8mIZZ0sa6nA/HjbUpTpEQh906C66cMGOcI63c/uQOR
-         poG0H69+Ur55s2O2ls1Tk/xLSNxBzyjRKjHLzBITKR7D2zOpkz+vzICmElz3qj0FMUQR
-         n8dSLrNVvqIKNnYyRZeHOED8RvEDwwNwUf/TRMQbQ4G7D5SlkNGmnzSMZ+ySZfVv6bHh
-         FQSA==
+        b=ADZfg7RQzH7Okf4gz15592t1rn2KrWcwYn8q5Xa/Ide9MxArbpbsxyodk69yu+OB0M
+         fgz4e1paJ+9W5xLYTAAFw5rBQaUPEa2cLMq0rZbVs8BbL5v7MD8i4TUrJQsDaD7zWL5z
+         hAhW7oOhi70QcoaylAY6QaXyLoFlF6BCHV7HCE6uT+wveB5i7TtjwLLn9Es8GeclNk6T
+         tGHzCzocuU8P4m2krbpnUF5anJ8S/58/Dvb6WI+tPAS4oaMGo3WRy9cRes4pCNK2ceLE
+         5fy8lPQy5a4IzPlGGTDyaFWobMu3TxfFAO6nurAMb0AFRt/Tmd2qOe8UKOl+7w7bDEfp
+         wXMA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:references:message-id
+         :content-transfer-encoding:cc:date:in-reply-to:from:subject
          :mime-version:dkim-signature;
-        bh=l0I3hgXYskFaM1WPaQBMv7Pv3MdsYJHuri7ua6DX/GE=;
-        fh=Pm7iEJOBS9nqTxdDWiBESvRze6FXqQ0NzDDPHxLsx98=;
-        b=RsDj8Z6F8Ce4zICGI49eW//7EOkp3dtgHHDePmIY/+lbi7XWxYQpSvSy5Wf+u6GPuf
-         P2STRl4hcW9+Y2//TdbiSBSPC5jNs/X/8kCMz66NkY/TeYuioRXIiiR6xsGrGL/lQSts
-         YmbuMrc65vFHUFnLr5RpjLUJbyRilIeXbopEY4bJJVh2EinsWxB+qjf70rnErzlvQ2pn
-         3aw7mtRbAfl90H7ikvGgNrp+Pnq3TcZ6yvV7hw0RmNUAIVg5eKems0fftQHN4L6zak+i
-         r0bT93ome9shAQm/AWqBGuc5mgjBQcPPqDNkSfxvAITaGX99AQM6LBpeCif//enwh2WX
-         BXuQ==;
+        bh=IUY+PgorULmvKl8Nuh1flWONR31fIfcbhFz5AkHpU8U=;
+        fh=LJify4XAED6pkTnhxJqwFpgebMz2WjSuzE9h0k/c8kM=;
+        b=Tu/HPbGMqzQeWBOlFzHDofOZByaDmFt1Q1E0wA7TXz4x3AYcqW4ifYO0tAVc/+S8xK
+         0f8cgYGTSaOelvo7zs6Y3qQIlOEi7LZ8pJfRg3G/c0BEOZrbLDLcmlk1olP9IXHp9pVo
+         OSs8JBVY8vtr32ErO11LwoGVUgUrarEjsewxrIi6MvFTS7BC1I8mzeRH2oIH5CD/lrFk
+         JoIZ1fyEFrbN+QGfRlxEayjd7M/GKZMUa8aP801mJFWlNvr3UVex5VeqMBJ97Xf18xfS
+         LXn8sDJ2aywH5SW0Eqel/D/eeNoppiNk711ibb74Ypbd2behRfkAqECklmpXmRaP6+nM
+         ufZQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=tYzEpCYg;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=ES1r6O+9;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id a640c23a62f3a-a994c251722sor282195966b.8.2024.10.09.06.59.22
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6cba4772cc5si109315866d6.420.2024.10.09.07.32.56
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Wed, 09 Oct 2024 06:59:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 09 Oct 2024 07:32:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=tYzEpCYg;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=ES1r6O+9;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1syXjq-0007dz-4T; Wed, 09 Oct 2024 10:32:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <rcardenas.rod@gmail.com>)
+ id 1syXjo-0007dL-4r; Wed, 09 Oct 2024 10:32:28 -0400
+Received: from mail-lf1-x12f.google.com ([2a00:1450:4864:20::12f])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <rcardenas.rod@gmail.com>)
+ id 1syXjm-000437-Hu; Wed, 09 Oct 2024 10:32:27 -0400
+Received: by mail-lf1-x12f.google.com with SMTP id
+ 2adb3069b0e04-53988c54ec8so8141490e87.0; 
+ Wed, 09 Oct 2024 07:32:25 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1728482362; x=1729087162; darn=linaro.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=l0I3hgXYskFaM1WPaQBMv7Pv3MdsYJHuri7ua6DX/GE=;
-        b=tYzEpCYgEIwqZEjys7sy1ogXezDNdfN8bAjFUhvP3R+xhOrvBhWcHHRT8kd1C3IQrc
-         /rmfLaCC9+fMx85rn5FVZ+gALMBOzwQcQsTPDmrjWA0i/5RSzUyx0cCnsJknZqHD5YFr
-         KcW+x4kn4xGj4q42XoI4r2lwUW+uGho4rNSkNoa89EihiyY0873lCyT0Zc/Q02sAl28B
-         6FBPT7rX6rVf3fSxjlZpS2xT3zMJ6/x/cN+JFCv6pt/n31Xj0pDyf1h/NPW0xIVa+OA+
-         fnW/dOvW5A1TynB6R+co3S5fknt+xumbEZoxm7afaMrhRli1YPfkSlfmzqtTs1Villz+
-         EKyA==
+ d=gmail.com; s=20230601; t=1728484343; x=1729089143; darn=nongnu.org;
+ h=to:references:message-id:content-transfer-encoding:cc:date
+ :in-reply-to:from:subject:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=IUY+PgorULmvKl8Nuh1flWONR31fIfcbhFz5AkHpU8U=;
+ b=ES1r6O+98RunnRIErbUygHz9pTUbVYlxeTj708v64JszuVc59OxONO3ed/ZBUchHE/
+ 0FsPUOW0uULvcz/pjSFrTL7gnzZJU48fkW+hWk6yGx5nhQotpf29kZznOr6rJVXRO3zi
+ cHfEJErwSKdJ8s2GyXGFndAy3RYgyqayVHKPfYsp7f0r6L0Sghw5o3fC7JEZ+PwM7eQO
+ WI7b4wFjlTOBQeZshLycfZSO0KPksjjb8DSgw+j7mrF9agEwbOwVztooloxenusmuvbm
+ 3vkKXsn7QaSDapaPtP6GVCT6XjvV2jhvPKeUM7uFKbepDw/5+n8NiUTtZLHAfRMiRUyq
+ U3zg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1728482362; x=1729087162;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=l0I3hgXYskFaM1WPaQBMv7Pv3MdsYJHuri7ua6DX/GE=;
-        b=C1+JK83mFrbTng/F7ROP7DbOEd6RlaTymYZAo2Rf8buKGY0Q9ctGzDek9lAc/driXB
-         1not68WP3lw7/KtITMRA+1qeR1Dsy9uNbtqcRF8vVwI1vwtTav4xk882tjVOWaxM+SJn
-         +YYj70KWOYuYMhLGWm+NFqrV2oQ06fNmqTfhnC0jzkBvRWTTrOClmzEQstw4ASHNmZ5G
-         d4/Eum4iqCM+Wp3M+va3eFA8ScyQ1X1Q+KaSVNc/HzSW1SeqvNw8oP4m0MwNPtuy+QF6
-         x1ldjpIlESkDTAcuBsFEeutU0rJL4W++Mw36x//vVcxMeq3W3J+EZp4Dlp1nq7Ng5V8C
-         BVoQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVIjrVLH3gMDWazZwcFrMWKAvPM8tjR4bAPBo8opLKZo6fMbODmNWOyn4qoEJayoj+qWYZolZ9LugyB9Q==@linaro.org
-X-Gm-Message-State: AOJu0YzjXrCqjD+IOHGHdxCSUIY2uXG8AiiBGd0fSbmL+XlCkE++2O+K
-	WCbg1dXNCuOOdbHkNZLpwPKo4wRIpi5MMDbPnLAmGLChY+YIY4vWcK/pdeFnkgWuJf4MxSuzE3E
-	oAWcP7+M+0FN20NyE4soCkyyYHh7yHNVmNVVcUqdH
-X-Google-Smtp-Source: AGHT+IFcaDAmv5R+/Xh7CHX50o4jgaS6RwlGJuW4592TQfJL+6zctEsY3T1VEpWaMxyXf+D46/DImjU/Acw+HiHxBUI=
-X-Received: by 2002:a05:6402:2813:b0:5c2:6d16:ad5e with SMTP id
- 4fb4d7f45d1cf-5c91d63e0e4mr2429095a12.19.1728482361560; Wed, 09 Oct 2024
- 06:59:21 -0700 (PDT)
-MIME-Version: 1.0
-References: <20241005200600.493604-1-richard.henderson@linaro.org>
- <20241005200600.493604-14-richard.henderson@linaro.org> <CAFEAcA_jXTuB6c8oVcXmi66zcXn5-PYM7W9z1wf7-fzXg7_Oiw@mail.gmail.com>
- <5c33b223-10cc-4ad6-a3e8-15082266b31d@linaro.org>
-In-Reply-To: <5c33b223-10cc-4ad6-a3e8-15082266b31d@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 9 Oct 2024 14:59:10 +0100
-Message-ID: <CAFEAcA9jwsD3p3Voj=q1Tcv0CZ7u2mADdfo6oQrGXr5FfFQQBg@mail.gmail.com>
-Subject: Re: [PATCH v2 13/21] target/arm: Pass MemOp to get_phys_addr
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, deller@kernel.org, alex.bennee@linaro.org, 
-	linux-parisc@vger.kernel.org, qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-X-TUID: 1Q1nFbhUzS5/
+ d=1e100.net; s=20230601; t=1728484343; x=1729089143;
+ h=to:references:message-id:content-transfer-encoding:cc:date
+ :in-reply-to:from:subject:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=IUY+PgorULmvKl8Nuh1flWONR31fIfcbhFz5AkHpU8U=;
+ b=XWJbb8rvV4iNKjeJ8mIwvEzerBhaWXnnfnBPLIw2TJFcdSDT4sHlmo1TdB1hWPQOTS
+ DLlM9PvM5y6BM62GDWFefwyBtJdC9t/ztJVXZGTsd84QKaLdwW7rxnDSpqrcE6d/bkm1
+ 2eizwb113x72j14SYbV1nuQjjzTqzeQvP/gc9NLjgnbquTozZsx+3NXEG2NYz37aZojx
+ AtKT30+H5olFl31MKD7smyf7cHp18Z5+QXTpK2D2ut0fPYlee/V1WSG9PJcPV2ioED9q
+ wxgYXXtbjbLsyvd5muhP56mumqspdGtdyQs4D3X9Ey8DtRXlvBcb+rjmC62SJaWBB+xn
+ vQ8A==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVDGpAaWHkyvNGkaib/KI2aIH+RBP7Nr2d0rd4DWNG9tdn0zC2w6VSq74tyMz52msI9CLIdHkA7Szr4@nongnu.org
+X-Gm-Message-State: AOJu0YwVaG9oTXaq810sh7iKHTmln9+iJ7qZrQymKRFz3IVDOhIJza7d
+ 4oSG2IpCy1qrDZtEumo0HuvPJEKwelj7a5a52YG+LZsbTam7oVUv
+X-Received: by 2002:a05:6512:3ca7:b0:538:9e40:94b with SMTP id
+ 2adb3069b0e04-539c489754fmr1797497e87.19.1728484343036; 
+ Wed, 09 Oct 2024 07:32:23 -0700 (PDT)
+Received: from smtpclient.apple ([138.4.224.164])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-37d2e65d618sm3933939f8f.23.2024.10.09.07.32.22
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Wed, 09 Oct 2024 07:32:22 -0700 (PDT)
+Content-Type: text/plain;
+	charset=utf-8
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3818.100.11.1.3\))
+Subject: Re: [PATCH 3/4] STM32: new GPIO device
+From: =?utf-8?B?Um9tw6FuIEPDoXJkZW5hcyBSb2Ryw61ndWV6?=
+ <rcardenas.rod@gmail.com>
+In-Reply-To: <CAFEAcA-QUAKPuzcjLafU8U_=wk2HWhHbxx76WgwN+Cgdec_kGQ@mail.gmail.com>
+Date: Wed, 9 Oct 2024 16:32:11 +0200
+Cc: qemu-arm@nongnu.org,
+ alistair@alistair23.me,
+ qemu-devel@nongnu.org
+Content-Transfer-Encoding: quoted-printable
+Message-Id: <63F1DC02-ECC8-44C8-91BB-337DDC9420D8@gmail.com>
+References: <20240927150738.57786-1-rcardenas.rod@gmail.com>
+ <20240927150738.57786-3-rcardenas.rod@gmail.com>
+ <CAFEAcA-QUAKPuzcjLafU8U_=wk2HWhHbxx76WgwN+Cgdec_kGQ@mail.gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+X-Mailer: Apple Mail (2.3818.100.11.1.3)
+Received-SPF: pass client-ip=2a00:1450:4864:20::12f;
+ envelope-from=rcardenas.rod@gmail.com; helo=mail-lf1-x12f.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: +SR42VKtZR1B
 
-On Tue, 8 Oct 2024 at 18:32, Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> On 10/8/24 07:45, Peter Maydell wrote:
-> > On Sat, 5 Oct 2024 at 21:06, Richard Henderson
-> > <richard.henderson@linaro.org> wrote:
-> >>
-> >> Zero is the safe do-nothing value for callers to use.
-> >>
-> >> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> >> ---
-> >>   target/arm/internals.h      | 3 ++-
-> >>   target/arm/ptw.c            | 2 +-
-> >>   target/arm/tcg/m_helper.c   | 8 ++++----
-> >>   target/arm/tcg/tlb_helper.c | 2 +-
-> >>   4 files changed, 8 insertions(+), 7 deletions(-)
-> >
-> >> diff --git a/target/arm/tcg/m_helper.c b/target/arm/tcg/m_helper.c
-> >> index 23d7f73035..f7354f3c6e 100644
-> >> --- a/target/arm/tcg/m_helper.c
-> >> +++ b/target/arm/tcg/m_helper.c
-> >> @@ -222,7 +222,7 @@ static bool v7m_stack_write(ARMCPU *cpu, uint32_t addr, uint32_t value,
-> >>       int exc;
-> >>       bool exc_secure;
-> >>
-> >> -    if (get_phys_addr(env, addr, MMU_DATA_STORE, mmu_idx, &res, &fi)) {
-> >> +    if (get_phys_addr(env, addr, MMU_DATA_STORE, 0, mmu_idx, &res, &fi)) {
-> >>           /* MPU/SAU lookup failed */
-> >>           if (fi.type == ARMFault_QEMU_SFault) {
-> >>               if (mode == STACK_LAZYFP) {
-> >> @@ -311,7 +311,7 @@ static bool v7m_stack_read(ARMCPU *cpu, uint32_t *dest, uint32_t addr,
-> >>       bool exc_secure;
-> >>       uint32_t value;
-> >>
-> >> -    if (get_phys_addr(env, addr, MMU_DATA_LOAD, mmu_idx, &res, &fi)) {
-> >> +    if (get_phys_addr(env, addr, MMU_DATA_LOAD, 0, mmu_idx, &res, &fi)) {
-> >>           /* MPU/SAU lookup failed */
-> >>           if (fi.type == ARMFault_QEMU_SFault) {
-> >>               qemu_log_mask(CPU_LOG_INT,
-> >
-> > We do actually know what kind of memory operation we're doing here:
-> > it's a 4-byte access. (It should never be unaligned because an M-profile
-> > SP can't ever be un-4-aligned, though I forget whether our implementation
-> > really enforces that.)
-> >
-> >> @@ -2009,7 +2009,7 @@ static bool v7m_read_half_insn(ARMCPU *cpu, ARMMMUIdx mmu_idx, bool secure,
-> >>                         "...really SecureFault with SFSR.INVEP\n");
-> >>           return false;
-> >>       }
-> >> -    if (get_phys_addr(env, addr, MMU_INST_FETCH, mmu_idx, &res, &fi)) {
-> >> +    if (get_phys_addr(env, addr, MMU_INST_FETCH, 0, mmu_idx, &res, &fi)) {
-> >>           /* the MPU lookup failed */
-> >>           env->v7m.cfsr[env->v7m.secure] |= R_V7M_CFSR_IACCVIOL_MASK;
-> >>           armv7m_nvic_set_pending(env->nvic, ARMV7M_EXCP_MEM, env->v7m.secure);
-> >
-> > Similarly this is a 16-bit load that in theory should never
-> > be possible to be unaligned.
-> >
-> >> @@ -2045,7 +2045,7 @@ static bool v7m_read_sg_stack_word(ARMCPU *cpu, ARMMMUIdx mmu_idx,
-> >>       ARMMMUFaultInfo fi = {};
-> >>       uint32_t value;
-> >>
-> >> -    if (get_phys_addr(env, addr, MMU_DATA_LOAD, mmu_idx, &res, &fi)) {
-> >> +    if (get_phys_addr(env, addr, MMU_DATA_LOAD, 0, mmu_idx, &res, &fi)) {
-> >>           /* MPU/SAU lookup failed */
-> >>           if (fi.type == ARMFault_QEMU_SFault) {
-> >>               qemu_log_mask(CPU_LOG_INT,
-> >
-> > and this is another 4-byte load via sp.
-> >
-> >> diff --git a/target/arm/tcg/tlb_helper.c b/target/arm/tcg/tlb_helper.c
-> >> index 885bf4ec14..1d8b7bcaa2 100644
-> >> --- a/target/arm/tcg/tlb_helper.c
-> >> +++ b/target/arm/tcg/tlb_helper.c
-> >> @@ -344,7 +344,7 @@ bool arm_cpu_tlb_fill(CPUState *cs, vaddr address, int size,
-> >>        * return false.  Otherwise populate fsr with ARM DFSR/IFSR fault
-> >>        * register format, and signal the fault.
-> >>        */
-> >> -    ret = get_phys_addr(&cpu->env, address, access_type,
-> >> +    ret = get_phys_addr(&cpu->env, address, access_type, 0,
-> >>                           core_to_arm_mmu_idx(&cpu->env, mmu_idx),
-> >>                           &res, fi);
-> >>       if (likely(!ret)) {
->
-> The question is: if it should be impossible for them to be misaligned, should we pass an
-> argument that checks alignment and then (!) potentially raise a guest exception.
->
-> I suspect the answer is no.
->
-> If it should be impossible, no alignment fault is ever visible to the guest in this
-> context, then we should at most assert(), otherwise do nothing.
->
-> We *can* pass, e.g. MO_32 or MO_16 for documentation purposes, if you like.  Without
-> additional adornment, this does not imply alignment enforcement (i.e. MO_ALIGN).  But this
-> would be functionally indistinguishable from 0 (which I imperfectly documented with "or 0"
-> in the function block comments).
+Looks like the stm32l4x5 is quite similar to my implementation. It =
+didn=E2=80=99t exist when I started with my implementation . I will take =
+a closer look and work on improving/extending the stm32l4x5 GPIO with my =
+proposal. Is it OK if I rename it to stm32_gpio? so it is clearer that =
+the implementation is generic and can fit almost any STM32 target.
 
-Mmm. I think I thought when I started reviewing this series that we might
-have a bigger set of "we put in 0 here but is that the right thing?"
-callsites. But I think in working through it it turns out there aren't
-very many and for all of those "don't check alignment" is the right thing.
+Sorry about the issues with the patches, I am not familiar with this =
+methodology of working with git.
+Could you guide me on how to send with you a revised version of patches =
+3 and 4?
 
-thanks
--- PMM
+> On 4 Oct 2024, at 20:08, Peter Maydell <peter.maydell@linaro.org> =
+wrote:
+>=20
+> On Fri, 27 Sept 2024 at 16:08, Rom=C3=A1n C=C3=A1rdenas Rodr=C3=ADguez
+> <rcardenas.rod@gmail.com> wrote:
+>>=20
+>> Generic GPIO class for STM32 devices. It can be used for most of =
+STM32 chips.
+>> Note that it does not implement configuration locking mechanisms.
+>=20
+> So we already have an stm32l4x5 GPIO device. How different
+> is that one from these ones? Should we be sharing implementation,
+> or are they too different?
+>=20
+> When adding a new file, could you please add lines to
+> the MAINTAINERS file putting it in an appropriate subsection?
+>=20
+>> +static void stm32_gpio_irq_reset(void *opaque, int line, int value)
+>> +{
+>> +    STM32GPIOState *s =3D STM32_GPIO(opaque);
+>> +
+>> +    trace_stm32_gpio_irq_reset(line, value);
+>> +
+>> +    bool prev_reset =3D s->reset;
+>=20
+> QEMU's coding style says that variable declarations
+> should always be at the start of a code block, never
+> in the middle. (There are some other cases of this here
+> and in patch 4, I think.)
+>=20
+>> +    s->reset =3D value !=3D 0;
+>> +    if (prev_reset !=3D s->reset) {
+>> +        if (s->reset) {
+>> +            stm32_gpio_reset(DEVICE(s));
+>> +        } else {
+>> +            stm32_gpio_update_state(s);
+>> +        }
+>> +    }
+>> +}
+>=20
+>> +static Property stm32_gpio_properties[] =3D {
+>> +    DEFINE_PROP_UINT32("family", STM32GPIOState, family, STM32_F2),
+>=20
+> For this sort of situation where we have a set of devices that
+> are very similar but have some slight model-to-model variation,
+> rather than using a device property to tell the device which
+> variation it is, we generally use a parent class with the
+> implementation and a set of child classes which tweak fields
+> controlling the parent class behaviour. For an example, look at
+> hw/gpio/aspeed_gpio.c -- TYPE_ASPEED_GPIO is marked ".abstract =3D =
+true",
+> and it has most of the implementation. Then the various subtypes
+> inherit from it, and their class init functions set fields in
+> the class struct to define the behaviour.
+> hw/char/stm32l4x5_usart.c is another example.
+>=20
+>> +static void stm32_gpio_class_init(ObjectClass *klass, void *data)
+>> +{
+>> +    DeviceClass *dc =3D DEVICE_CLASS(klass);
+>> +
+>> +    device_class_set_props(dc, stm32_gpio_properties);
+>> +    dc->vmsd =3D &vmstate_stm32_gpio;
+>> +    dc->realize =3D stm32_gpio_realize;
+>> +    device_class_set_legacy_reset(dc, stm32_gpio_reset);
+>=20
+> Could you use the non-legacy reset instead? It's not much of
+> a change, instead of calling this you set the ResettableClass
+> phases.hold, and the reset function has a slightly different
+> function signature. hw/char/stm32l4x5_usart.c has an example.
+>=20
+> thanks
+> -- PMM
+

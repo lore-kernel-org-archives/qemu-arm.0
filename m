@@ -1,179 +1,176 @@
-Received: by 2002:a17:504:1f11:b0:1be9:327d:8ee3 with SMTP id z17csp532113njl;
-        Tue, 8 Oct 2024 17:05:15 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWzuccXOJuhU0QDNCWkGAIkoT+LCfpifg7Y4ik5alcvFKy0E9r4xkltnne6j1JvjFC4zyi6oFYRbHwMqA==@linaro.org
-X-Received: by 2002:a17:902:da81:b0:205:861c:5c4a with SMTP id d9443c01a7336-20c6379b2e6mr10735575ad.60.1728432314868;
-        Tue, 08 Oct 2024 17:05:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1728432314; cv=none;
+Received: by 2002:a05:7022:110:b0:8b:e46e:3391 with SMTP id 16csp643116dlk;
+        Tue, 8 Oct 2024 22:45:27 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVY2n0YrxBl3kF1ln+N+zkORCCoMEBaAKFifBfeQMIeoHfBPkrIAjmR/WqW+bPblmoVQNERPXUcjN9UTg==@linaro.org
+X-Google-Smtp-Source: AGHT+IENQuPfFIyLsDCjA0bwJ2GjXmVXo5bNweCWcufsgFqMQ+0HIevMpXA11LbpYkOx79cTXLJM
+X-Received: by 2002:a05:6214:459d:b0:6c3:5c75:d2b1 with SMTP id 6a1803df08f44-6cbc9081fb5mr28721106d6.5.1728452727431;
+        Tue, 08 Oct 2024 22:45:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1728452727; cv=none;
         d=google.com; s=arc-20240605;
-        b=lPpVEAI2MMqoXekvXv63E+8vdC9FTKVm7hVNeAFDqf6dnesqUcSmduAFZzqm4HZ9l8
-         q2N3nUS4gKXekVs8HQugdRYzHsNtXxyo3iHmLe4v3YzJg2+hBof1j2QWujn8Rmyob8R0
-         5xryfQxHYGJRjHdhod2l0WqwSOBgn0GW+AshmX0UutFvML0mHFgEi8qKG9jJMqYJ/dgQ
-         0/Z3+XZA8WUzrOZiV0Q2jEdzCzPUctBYtZyLfVY6Ow+6pgtspMAb+FSKB4o5WPR6xyR5
-         LtSK56DgyITNb1SG6r7wV93NbCHCalnxI+9dR7gxDqSF+IXBPtBplncVPcfdNAOG6RY3
-         0e4w==
+        b=Uqv2Kw8RtF7G0NCajiUSm4/EPWKPvsnWjn5AhJj0Xcy2CwI5mZr+3Gb/a6RkKrmpSK
+         0kIih/yeTM0YY39DVfoC3kOgZa+/jeGlJhNkfU7tFq54uGRLETIyFjFxsdPgteOTcEPh
+         n2fqmOrDPvHdYL6Bh8YHlNOWw3ZBQMS98oWNnUKxUcRe/6k+F/sfmGyPfdEX82N9wcaV
+         1ogqjzWMvFSrEQgUMUsFPLxDKK/HLOlZYe0vVrlbE+h2vh0yg2AE3DOoKBw2hPuAbFs+
+         0ZeeFIz59cddFlsQcGEQdD5KG//mbLWMnwrT092eQ55dYoJiozn5du2+0pbUhhA7cMJq
+         Jt2Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=G2SEeBS4yBn5Ue1nQmA6MrWE5kNjL002NNNwwbKYNls=;
-        fh=Gio4deX4FYfvmj+3esf9YSXbEHtcXCjSXAOXsgV8cVA=;
-        b=i8YCEwCqltMsg2Hf43o845wo8bFs/Db/yXtYiM7ohf2H3q42SaXWgH3zgjV4APJ7Va
-         r/+OQ4Kql3/ryhuMOG90ezaAAQkr4TgbJt2aj1BLMVmLKXBugSvHYA0i/54Feoj9owWq
-         qARjGXRL4haJrlSR6JuovWl9N5g+xOnyViTkkLjgWmyevgTl2DQxTcj74/jPNaPC8r2Y
-         Nh6hcZa2YMJAVyY90qi+ITu0OTfN6z3UJXq6j2inI/TXdAGyee1Y0DKzHXghVsq9Oy2j
-         TnUw5T85XxrSv5C34V62nr3gR07hvWxZ1uhG8zQrhi0yyQwP0r1Bcgax/NiNd+PkL4eC
-         0EPg==;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=SbMW2BJ7wvOz13L/HeRhE0P+s/BMXBBa7SIBcnPArUA=;
+        fh=wNgTrgmq0VRUyaeC2SHc+pkwJSD6QOmCg7MKZWreEQM=;
+        b=EmJN2i9iPzow4Xj6fC6ADwGGLMz/QjMB+lyyoS1oT2RxjbPTr+iwJAwgCRFkVtgFGd
+         wSoGxVK+gGVtMMaqrWkCM7xvZ9eI43GlSro/0JbOfqTag+3XNAH4nhhrmPyE/5CgRqgG
+         NzvQx+SS1R7tw9vyHcfIrzcVLIfm/J4shjPp1DyASWKC7FnK8lDcS/UkKtdSfWBZvFIi
+         IPQXjPUaBx+NO4vwB4jrxdW8G/GDkQI6KaxIoVTgokgq8+WEkLXIkhpngjgBRxvSpLyp
+         ce+Pbvu4wR2vcOdL7dHggn0tZiwa307vqX6peOR9uZVH0UindTXsCaKY9wtVPRRd6z1y
+         rZqA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="ICn+f/rh";
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d9443c01a7336-20c5c873821sor10141925ad.2.2024.10.08.17.05.14
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 08 Oct 2024 17:05:14 -0700 (PDT)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+       dkim=pass header.i=@intel.com header.s=Intel header.b="dSd/iP8K";
+       spf=pass (google.com: domain of zhao1.liu@intel.com designates 198.175.65.20 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Return-Path: <zhao1.liu@intel.com>
+Received: from mgamail.intel.com (mgamail.intel.com. [198.175.65.20])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6cba46d7a6asi104618246d6.59.2024.10.08.22.45.26
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 08 Oct 2024 22:45:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of zhao1.liu@intel.com designates 198.175.65.20 as permitted sender) client-ip=198.175.65.20;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="ICn+f/rh";
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1728432314; x=1729037114; darn=linaro.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=G2SEeBS4yBn5Ue1nQmA6MrWE5kNjL002NNNwwbKYNls=;
-        b=ICn+f/rhmm9H38nVOKwpjLw3LIiQm1bhalRhVXdHsa94q4qlAOn/z2B9SD0+73FrBG
-         yVMv7qqufs2lVr7mXvBDvmiq0N8LV3Ltl8oir0tGxyrtpxsNCqOmilGbTtKtbXDzFVUO
-         CJHljG/i2mVWMErDcKi5fm7kKDTumokT33ZyQ9XhrMtXUfpM+eeGtF7PZPrx4TlyQndl
-         McY1oGizZDI21Lx4v+UgONbE0vcaJuEKU6D/2A5z0oAH4w0h2m/X0wrIPUk4mJIKpVr1
-         BkNBgRA+NV78I1jS3pbjHHxMCbXmgDeI9szF/blMWWoXEkEFxPrIidOkhNqr7qrz3Ouw
-         ZQYg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1728432314; x=1729037114;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=G2SEeBS4yBn5Ue1nQmA6MrWE5kNjL002NNNwwbKYNls=;
-        b=Mg/39V6A6JW973Gn1bmBrdCmNyHIUxkM3JU9FgnLt8UlZ7CpS+8TReeG5iELAEUsm+
-         eKSPNgfPUELyCcG4LT7mVUB0uoYxGBl2bNCLOS2O1nRu1G2bv3iaKo5W9/ehFNfiZCLN
-         jyEMlOVD3iqYKQH6Nwj8ap+QuMDaWTIBDTi7RIn7+z+rp6mDhA+9dXZ3wTqAc7DtMGAZ
-         i25uFiBWxeuLY/SdcfIm5aEQtCHbEulA97+Tkqo8uCaPHnj/2/HO2gHd+H0TfGLxgKNo
-         Ru0wFAcJWkkohAYzm5sxLzbOmgHpoQ71u5CgXTUTZYae6ms+kRlFGwBwCtUGaD8f+0kA
-         ac0w==
-X-Forwarded-Encrypted: i=1; AJvYcCX/C64NmJIh2F+/+wiLrguo/12waYPQW5X7vsWFnmG3W2Jq/Q9wbGEl8hzbhm7tBkToBR9jRNw2IRVvgA==@linaro.org
-X-Gm-Message-State: AOJu0YzUwLAuivvpLXkQCMmI2jyIuXit+Wum+1hh0Kikl35eNVfvuLM1
-	KaKOgyS2zFJirUcJJfrHjEYC0ewwEvH9lBm6L/2UJ8YF34Pn2o3AwKf+KrlF8wcVfA==
-X-Google-Smtp-Source: AGHT+IEIyXlGp9GlJJjjmIJWjUJQUjNDGcChOdkRVTwHuAzsY/hOJnshLN76/ClOQ0ILuClUnw979g==
-X-Received: by 2002:a17:903:22ce:b0:20b:a5b5:b89 with SMTP id d9443c01a7336-20c63751f24mr14941525ad.35.1728432314287;
-        Tue, 08 Oct 2024 17:05:14 -0700 (PDT)
-Return-Path: <richard.henderson@linaro.org>
-Received: from stoup.. (174-21-81-121.tukw.qwest.net. [174.21.81.121])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-20c138cecf2sm60705105ad.104.2024.10.08.17.05.13
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 08 Oct 2024 17:05:13 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: deller@kernel.org,
-	peter.maydell@linaro.org,
-	alex.bennee@linaro.org,
-	linux-parisc@vger.kernel.org,
-	qemu-arm@nongnu.org
-Subject: [PATCH v3 20/20] target/arm: Fix alignment fault priority in get_phys_addr_lpae
-Date: Tue,  8 Oct 2024 17:04:53 -0700
-Message-ID: <20241009000453.315652-21-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20241009000453.315652-1-richard.henderson@linaro.org>
-References: <20241009000453.315652-1-richard.henderson@linaro.org>
+       dkim=pass header.i=@intel.com header.s=Intel header.b="dSd/iP8K";
+       spf=pass (google.com: domain of zhao1.liu@intel.com designates 198.175.65.20 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1728452727; x=1759988727;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=9pYDTK3HR96Un6CzOse/eSqGpHwAG/V7ph9HU0V5qWk=;
+  b=dSd/iP8KxK6Edup/WQiq0vP0IWEt5+SZlJNaPxpCOD9vj2+I5OMeBSrh
+   eXXXCFkpjJ1utxCTVFtGwcGfDmP/EgncMko6ZDWy7X0GSVexzjzrc6PFC
+   wPCnjx1X/1wb25ZX2rk1cjKDhH8WUsGyyBMc6yqgOw6UKb9yDajY5BhUs
+   AFGrpswEuqYgEVKF5KvpvIo2BuyXSFT0Oe0JBN0FsTprQ0De1wsdp7upY
+   oyTqJetrho5QJx7RbhYMyKorvhuNSnEhP5s2mejEAD0Vw31hyMOYQyLoz
+   huzBmOlPsnU9F6bOf/9Xu1rgTRp0UNcdxkhd9/xB4JALtrm74yiSBygD+
+   w==;
+X-CSE-ConnectionGUID: iknQmHy+Rl+0hZS15Nf67A==
+X-CSE-MsgGUID: A7TZN8ISSquu6vy09yro4A==
+X-IronPort-AV: E=McAfee;i="6700,10204,11219"; a="27545675"
+X-IronPort-AV: E=Sophos;i="6.11,189,1725346800"; 
+   d="scan'208";a="27545675"
+Received: from fmviesa010.fm.intel.com ([10.60.135.150])
+  by orvoesa112.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 08 Oct 2024 22:45:24 -0700
+X-CSE-ConnectionGUID: 3vUy2zWBQcSZlfFJZ2+OXQ==
+X-CSE-MsgGUID: Vhs2SIyzQkyn0HaVgqI5jg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.11,189,1725346800"; 
+   d="scan'208";a="76446635"
+Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost) ([10.239.160.36])
+  by fmviesa010.fm.intel.com with ESMTP; 08 Oct 2024 22:45:18 -0700
+Date: Wed, 9 Oct 2024 14:01:30 +0800
+From: Zhao Liu <zhao1.liu@intel.com>
+To: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Cc: Daniel P =?utf-8?B?LiBCZXJyYW5n77+9?= <berrange@redhat.com>,
+	Igor Mammedov <imammedo@redhat.com>,
+	Eduardo Habkost <eduardo@habkost.net>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Philippe =?utf-8?B?TWF0aGlldS1EYXVk77+9?= <philmd@linaro.org>,
+	Yanan Wang <wangyanan55@huawei.com>,
+	"Michael S . Tsirkin" <mst@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Sergio Lopez <slp@redhat.com>, Jason Wang <jasowang@redhat.com>,
+	Stefano Stabellini <sstabellini@kernel.org>,
+	Anthony PERARD <anthony@xenproject.org>,
+	Paul Durrant <paul@xen.org>,
+	"Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
+	Eric Blake <eblake@redhat.com>,
+	Markus Armbruster <armbru@redhat.com>,
+	Alex =?utf-8?B?QmVubu+/vWU=?= <alex.bennee@linaro.org>,
+	Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
+	kvm@vger.kernel.org, qemu-arm@nongnu.org,
+	Zhenyu Wang <zhenyu.z.wang@intel.com>,
+	Dapeng Mi <dapeng1.mi@linux.intel.com>,
+	Yongwei Ma <yongwei.ma@intel.com>, Zhao Liu <zhao1.liu@intel.com>
+Subject: Re: [RFC v2 00/12] Introduce Hybrid CPU Topology via Custom Topology
+ Tree
+Message-ID: <ZwYcOuZAt7qX5ci3@intel.com>
+References: <20240919061128.769139-1-zhao1.liu@intel.com>
+ <20241008113038.00007ee4@Huawei.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-TUID: A14oT+UGdMLP
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20241008113038.00007ee4@Huawei.com>
+X-TUID: s6g4XpXBvSby
 
-Now that we have the MemOp for the access, we can order
-the alignment fault caused by memory type before the
-permission fault for the page.
+Hi Jonathan,
 
-For subsequent page hits, permission and stage 2 checks
-are known to pass, and so the TLB_CHECK_ALIGNED fault
-raised in generic code is not mis-ordered.
+Thank you for looking at here!
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- target/arm/ptw.c | 51 ++++++++++++++++++++++++++++--------------------
- 1 file changed, 30 insertions(+), 21 deletions(-)
+On Tue, Oct 08, 2024 at 11:30:38AM +0100, Jonathan Cameron wrote:
+> Date: Tue, 8 Oct 2024 11:30:38 +0100
+> From: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
+> Subject: Re: [RFC v2 00/12] Introduce Hybrid CPU Topology via Custom
+>  Topology Tree
+> X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
+> 
+> On Thu, 19 Sep 2024 14:11:16 +0800
+> Zhao Liu <zhao1.liu@intel.com> wrote:
+> 
+> 
+> > -smp maxsockets=1,maxdies=1,maxmodules=2,maxcores=2,maxthreads=2
+> > -machine pc,custom-topo=on \
+> > -device cpu-socket,id=sock0 \
+> > -device cpu-die,id=die0,bus=sock0 \
+> > -device cpu-module,id=mod0,bus=die0 \
+> > -device cpu-module,id=mod1,bus=die0 \
+> > -device x86-intel-core,id=core0,bus=mod0 \
+> > -device x86-intel-atom,id=core1,bus=mod1 \
+> > -device x86-intel-atom,id=core2,bus=mod1 \
+> > -device host-x86_64-cpu,id=cpu0,socket-id=0,die-id=0,module-id=0,core-id=0,thread-id=0 \
+> > -device host-x86_64-cpu,id=cpu1,socket-id=0,die-id=0,module-id=0,core-id=0,thread-id=1 \
+> > -device host-x86_64-cpu,id=cpu2,socket-id=0,die-id=0,module-id=1,core-id=0,thread-id=0 \
+> > -device host-x86_64-cpu,id=cpu3,socket-id=0,die-id=0,module-id=1,core-id=1,thread-id=0
+> 
+> I quite like this as a way of doing the configuration but that needs
+> some review from others.
 
-diff --git a/target/arm/ptw.c b/target/arm/ptw.c
-index 0a1a820362..dd40268397 100644
---- a/target/arm/ptw.c
-+++ b/target/arm/ptw.c
-@@ -2129,6 +2129,36 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
-         device = S1_attrs_are_device(result->cacheattrs.attrs);
-     }
- 
-+    /*
-+     * Enable alignment checks on Device memory.
-+     *
-+     * Per R_XCHFJ, the correct ordering for alignment, permission,
-+     * and stage 2 faults is:
-+     *    - Alignment fault caused by the memory type
-+     *    - Permission fault
-+     *    - A stage 2 fault on the memory access
-+     * Perform the alignment check now, so that we recognize it in
-+     * the correct order.  Set TLB_CHECK_ALIGNED so that any subsequent
-+     * softmmu tlb hit will also check the alignment; clear along the
-+     * non-device path so that tlb_fill_flags is consistent in the
-+     * event of restart_atomic_update.
-+     *
-+     * In v7, for a CPU without the Virtualization Extensions this
-+     * access is UNPREDICTABLE; we choose to make it take the alignment
-+     * fault as is required for a v7VE CPU. (QEMU doesn't emulate any
-+     * CPUs with ARM_FEATURE_LPAE but not ARM_FEATURE_V7VE anyway.)
-+     */
-+    if (device) {
-+        unsigned a_bits = memop_atomicity_bits(memop);
-+        if (address & ((1 << a_bits) - 1)) {
-+            fi->type = ARMFault_Alignment;
-+            goto do_fault;
-+        }
-+        result->f.tlb_fill_flags = TLB_CHECK_ALIGNED;
-+    } else {
-+        result->f.tlb_fill_flags = 0;
-+    }
-+
-     if (!(result->f.prot & (1 << access_type))) {
-         fi->type = ARMFault_Permission;
-         goto do_fault;
-@@ -2156,27 +2186,6 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
-     result->f.attrs.space = out_space;
-     result->f.attrs.secure = arm_space_is_secure(out_space);
- 
--    /*
--     * Enable alignment checks on Device memory.
--     *
--     * Per R_XCHFJ, this check is mis-ordered. The correct ordering
--     * for alignment, permission, and stage 2 faults should be:
--     *    - Alignment fault caused by the memory type
--     *    - Permission fault
--     *    - A stage 2 fault on the memory access
--     * but due to the way the TCG softmmu TLB operates, we will have
--     * implicitly done the permission check and the stage2 lookup in
--     * finding the TLB entry, so the alignment check cannot be done sooner.
--     *
--     * In v7, for a CPU without the Virtualization Extensions this
--     * access is UNPREDICTABLE; we choose to make it take the alignment
--     * fault as is required for a v7VE CPU. (QEMU doesn't emulate any
--     * CPUs with ARM_FEATURE_LPAE but not ARM_FEATURE_V7VE anyway.)
--     */
--    if (device) {
--        result->f.tlb_fill_flags |= TLB_CHECK_ALIGNED;
--    }
--
-     /*
-      * For FEAT_LPA2 and effective DS, the SH field in the attributes
-      * was re-purposed for output address bits.  The SH attribute in
--- 
-2.43.0
+Thanks!
+
+> Peter, Alex, do you think this scheme is flexible enough to ultimately
+> allow us to support this for arm? 
+
+I was also hoping that being generic enough would benefit ARM.
+
+> > 
+> > This does not accommodate hybrid topologies. Therefore, we introduce
+> > max* parameters: maxthreads/maxcores/maxmodules/maxdies/maxsockets
+> > (for x86), to predefine the topology framework for the machine. These
+> > parameters also constrain subsequent custom topologies, ensuring the
+> > number of child devices under each parent device does not exceed the
+> > specified max limits.
+> 
+> To my thinking this seems like a good solution even though it's a
+> bunch more smp parameters.
+> 
+> What does this actually mean for hotplug of CPUs?  What cases work
+> with this setup?
+
+My solution for this does not change the current CPU hotplug, because the
+current cpu hotplug only needs to consider smp.cpus and smp.maxcpus.
+
+But when a cpu is plugged in, machine needs to make sure that plugging
+into the core doesn't break the maxthreads limit. Similarly, if one wants
+to support hotplugging at the socket/die/core granularity, he will need
+to make sure that the new topology meets the limits set by the max
+parameters, which are the equivalent of preemptively leaving some empty
+holes that can be utilized by hotplug.
+
+> > Therefore, once user wants to customize topology by "-machine
+> > custom-topo=on", the machine, that supports custom topology, will skip
+> > the default topology creation as well as the default CPU creation.
+> 
+> Seems sensible to me.
+
+Thank you! Glad to have your support.
+
+Regards,
+Zhao

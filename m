@@ -1,51 +1,51 @@
-Received: by 2002:a17:504:1f11:b0:1be9:327d:8ee3 with SMTP id z17csp595776njl;
-        Tue, 8 Oct 2024 20:23:34 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUIN/GkNBDhqmlLZZMyU/x5iILe2LOtgWlP5qq7H+KKEbtAPAVVO8i9F2SOvpBkpIjkFnhZ9aybP/y6Ag==@linaro.org
-X-Google-Smtp-Source: AGHT+IHrovHLo4O0xMs8ZcbsQjBnlc7iKXUO+8B5+DBj7KY/ocLBrbgzehurvcf1kVWKe4aE3B1J
-X-Received: by 2002:adf:a296:0:b0:37c:fde2:93b6 with SMTP id ffacd0b85a97d-37d3aa23802mr458499f8f.11.1728444213860;
-        Tue, 08 Oct 2024 20:23:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1728444213; cv=none;
+Received: by 2002:a17:504:1f11:b0:1be9:327d:8ee3 with SMTP id z17csp595862njl;
+        Tue, 8 Oct 2024 20:23:53 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUOoNRuenUK3wpdUOMc8rNrsEokrHqO9vR2Mm2cAb9VxwPlYUhUsQ7U/rKpa88oCM0RMG7twsqA/+dmFQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IFFe0zr7wUYJvnsW5eI8XXPxFQoZRtSn25JJEBSiEvjAFtoH5no1fWWCXZMQApeUBkBfVsB
+X-Received: by 2002:a05:600c:3ac4:b0:42c:df29:2366 with SMTP id 5b1f17b1804b1-430d748cb12mr6380565e9.33.1728444233246;
+        Tue, 08 Oct 2024 20:23:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1728444233; cv=none;
         d=google.com; s=arc-20240605;
-        b=j5dvtQDb3lejNypnShPyCy9lCyJ5JnPWK5DswlpmzYMwY+I0y4lkNJ7beMowfstFvI
-         6Ifu85J1igt0vlSzui2FL1gsi7O0VU3Om7uR2eeG11t33lMKlB3tl7eUJBriK+dD0/so
-         u4NC5O/xYwnzP4jm6+p3Df9NQ3D1KbjQ4O9cl0ONA2t5qyCYS8nWfwyRuPGUmWin/vD4
-         AbWMURNHkmGUrQ/U/q9G/zkRo1ONotfSnYHprNpAzKpqeO7dcRu3TYoZ7ZN64dp5QLUn
-         tCxraN8bCGwxkI70So9w7OJQvKh2haKq6db4mG7yOFcy2ADZSrhTvhbhAerkgz4M3/+Y
-         TZxg==
+        b=HRtaxnWfUPC4nppQrj52B9Pm661A62TFE7ZhaEHuGnic2P6DLF6QVjtzISRWej2VFu
+         SpC6vQrqOhVal+2EC9GV/Eju8VE5Z5NRmRGGKAaqwZt4epK3/d4fGtCawI6Ljs4keNZh
+         GrHd07pQQCgADSqQdBhT//HIvP4EszfcoVede9DApc23RMBgKh1EvoOedw4qxQ7VKnv/
+         lNsWoDjW/oHGL/2Puoj0YfBXuBSYxtwO6bS/1CPCO6bTUafYnt1SOjFmmnwpJ+KzmrB2
+         6UVfoH+Xin7ZKzCmIIYMJYjZEkA5xamI6a/RyPkRfooigdJY6JoqvI8RSR3zsEXN33NT
+         TKWw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from;
-        bh=wxrxgFoR/2MR1WZun579KOGl6N23rAA4faCNurTSrjo=;
+        bh=Xodga3D9L4wvxir8wVEUmB4VdKxT6PNGTcrobpzV5AQ=;
         fh=4Dgx8jc1gJCFDIGNl8iT3gucG+cuHYR9XmJ7yDXtNzA=;
-        b=LKIb01HU80wWxCzOt5kxTcTUgBvemsq1/Ro0C7Si3o1v+ypgmd3gidFxICkR5otCOL
-         HMFUrMCZmEx8o5bo+sEwRPCox4C7lxkeZ0UDqssVrhAnckjzA0pHUbsx0zK4Von7XSc7
-         My2Rgq2hiPzL5kwDTZ5rP0jrJn2JqFhUCOmgk57zT0wj3KerqBScA+FCmTTumbCYw6lu
-         RCRlcNIsYykm9wHcEuXf2m4VN1+YgrzHn9EGudDnAXmupKtWyU00iIvkSiHeHxc9GAzh
-         EkSCxLFXCQJMKXgWpGXuVboq8Jve3IqNQGusDS1qAbtTQczhQFwbfy3hlk8CTxiFqbfk
-         xEwg==;
+        b=SxZKierHqdmyUFQP38uh/TXb261JOeqUSj63X+Evz+BMi5Xs8Xkwwpqdt5HPf+Y3YD
+         4G3kJYb59fcC+S3QGafzYFLxuSep2a9xr0Lu9NVddqLxjYHw+SMIzdwb6nYXmIpM9DrK
+         m9GFmXnQZaXws0y1RTRvOE+RV315FcJu/LKeNeUp07MtTeGKTxVatB3ZaqEKsrzKtcci
+         ZbwiEbK6913wMGY3AGGj03ikluRjXxJ1f9zII6cra1AnKkMedKfNLW8ls1lhGBjqTAvr
+         FJIWdj0Qg8tILIRC3zVvSF/p8FnP/7cWGaYTelxdnRThRd4iLuMbKjSxAtijjSTLgbYk
+         J18g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
 Return-Path: <salil.mehta@huawei.com>
 Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id ffacd0b85a97d-37d169119bcsi3710913f8f.150.2024.10.08.20.23.33
+        by mx.google.com with ESMTPS id 5b1f17b1804b1-430d59b26d5si2662435e9.157.2024.10.08.20.23.53
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 08 Oct 2024 20:23:33 -0700 (PDT)
+        Tue, 08 Oct 2024 20:23:53 -0700 (PDT)
 Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
 Received: from mail.maildlp.com (unknown [172.18.186.216])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4XNdQp2LWQz6LDBS;
-	Wed,  9 Oct 2024 11:19:14 +0800 (CST)
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4XNdWq5Wlyz6K998;
+	Wed,  9 Oct 2024 11:23:35 +0800 (CST)
 Received: from frapeml500007.china.huawei.com (unknown [7.182.85.172])
-	by mail.maildlp.com (Postfix) with ESMTPS id 0C66E140447;
-	Wed,  9 Oct 2024 11:23:33 +0800 (CST)
+	by mail.maildlp.com (Postfix) with ESMTPS id 693C6140A90;
+	Wed,  9 Oct 2024 11:23:52 +0800 (CST)
 Received: from 00293818-MRGF.huawei.com (10.126.173.89) by
  frapeml500007.china.huawei.com (7.182.85.172) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Wed, 9 Oct 2024 05:23:13 +0200
+ 15.1.2507.39; Wed, 9 Oct 2024 05:23:33 +0200
 From: Salil Mehta <salil.mehta@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <mst@redhat.com>
 CC: <salil.mehta@huawei.com>, <maz@kernel.org>, <jean-philippe@linaro.org>,
@@ -64,9 +64,9 @@ CC: <salil.mehta@huawei.com>, <maz@kernel.org>, <jean-philippe@linaro.org>,
 	<jiakernel2@gmail.com>, <maobibo@loongson.cn>, <lixianglai@loongson.cn>,
 	<shahuang@redhat.com>, <zhao1.liu@intel.com>, <linuxarm@huawei.com>,
 	<gustavo.romero@linaro.org>
-Subject: [PATCH RFC V4 12/33] arm/virt: Create GED device before *disabled* vCPU Objects are destroyed
-Date: Wed, 9 Oct 2024 04:17:54 +0100
-Message-ID: <20241009031815.250096-13-salil.mehta@huawei.com>
+Subject: [PATCH RFC V4 13/33] arm/virt: Init PMU at host for all possible vCPUs
+Date: Wed, 9 Oct 2024 04:17:55 +0100
+Message-ID: <20241009031815.250096-14-salil.mehta@huawei.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20241009031815.250096-1-salil.mehta@huawei.com>
 References: <20241009031815.250096-1-salil.mehta@huawei.com>
@@ -76,58 +76,84 @@ Content-Type: text/plain
 X-Originating-IP: [10.126.173.89]
 X-ClientProxiedBy: dggems705-chm.china.huawei.com (10.3.19.182) To
  frapeml500007.china.huawei.com (7.182.85.172)
-X-TUID: DFGVaOYLhhHZ
+X-TUID: XPxvJGx5li21
 
-ACPI CPU hotplug state (is_present=_STA.PRESENT, is_enabled=_STA.ENABLED) for
-all the possible vCPUs MUST be initialized during machine init. This is done
-during the creation of the GED device. VMM/Qemu MUST expose/fake the ACPI state
-of the disabled vCPUs to the Guest kernel as 'present' (_STA.PRESENT) always
-i.e. ACPI persistent. if the 'disabled' vCPU objectes are destroyed before the
-GED device has been created then their ACPI hotplug state might not get
-initialized correctly as acpi_persistent flag is part of the CPUState. This will
-expose wrong status of the unplugged vCPUs to the Guest kernel.
+The PMU for all possible vCPUs must be initialized during VM initialization.
+Refactor the existing code to accommodate possible vCPUs. This assumes that all
+processors being used are identical. It is an architectural constraint of ARM
+CPUs that all vCPUs MUST have identical feature sets, at least until the ARM
+specification is updated to allow otherwise.
 
-Hence, moving the GED device creation before disabled vCPU objects get destroyed
-as part of the post CPU init routine.
+Past discussion for reference:
+Link: https://lists.gnu.org/archive/html/qemu-devel/2020-06/msg00131.html
 
+Co-developed-by: Keqian Zhu <zhukeqian1@huawei.com>
+Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
 Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
 ---
- hw/arm/virt.c | 16 ++++++++++------
- 1 file changed, 10 insertions(+), 6 deletions(-)
+ hw/arm/virt.c         | 9 +++++----
+ include/hw/arm/virt.h | 1 +
+ include/hw/core/cpu.h | 5 +++++
+ 3 files changed, 11 insertions(+), 4 deletions(-)
 
 diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 3986f6d9fc..e40e6c23e4 100644
+index e40e6c23e4..696e0a9f75 100644
 --- a/hw/arm/virt.c
 +++ b/hw/arm/virt.c
-@@ -2452,6 +2452,16 @@ static void machvirt_init(MachineState *machine)
+@@ -2033,12 +2033,13 @@ static void finalize_gic_version(VirtMachineState *vms)
+  */
+ static void virt_cpu_post_init(VirtMachineState *vms, MemoryRegion *sysmem)
+ {
++    CPUArchIdList *possible_cpus = vms->parent.possible_cpus;
+     int max_cpus = MACHINE(vms)->smp.max_cpus;
+-    bool aarch64, pmu, steal_time;
++    bool aarch64, steal_time;
+     CPUState *cpu;
  
-     create_gic(vms, sysmem);
+     aarch64 = object_property_get_bool(OBJECT(first_cpu), "aarch64", NULL);
+-    pmu = object_property_get_bool(OBJECT(first_cpu), "pmu", NULL);
++    vms->pmu = object_property_get_bool(OBJECT(first_cpu), "pmu", NULL);
+     steal_time = object_property_get_bool(OBJECT(first_cpu),
+                                           "kvm-steal-time", NULL);
  
-+    /*
-+     * ACPI CPU Hotplug state MUST be initialized before destroying disabled
-+     * vCPUs in the cpu post init routine
-+     */
-+    if (has_ged && aarch64 && firmware_loaded && virt_is_acpi_enabled(vms)) {
-+        vms->acpi_dev = create_acpi_ged(vms);
-+    } else {
-+        create_gpio_devices(vms, VIRT_GPIO, sysmem);
-+    }
+@@ -2065,8 +2066,8 @@ static void virt_cpu_post_init(VirtMachineState *vms, MemoryRegion *sysmem)
+             memory_region_add_subregion(sysmem, pvtime_reg_base, pvtime);
+         }
+ 
+-        CPU_FOREACH(cpu) {
+-            if (pmu) {
++        CPU_FOREACH_POSSIBLE(cpu, possible_cpus) {
++            if (vms->pmu) {
+                 assert(arm_feature(&ARM_CPU(cpu)->env, ARM_FEATURE_PMU));
+                 if (kvm_irqchip_in_kernel()) {
+                     kvm_arm_pmu_set_irq(ARM_CPU(cpu), VIRTUAL_PMU_IRQ);
+diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+index b5bfb75f71..98ce68eae1 100644
+--- a/include/hw/arm/virt.h
++++ b/include/hw/arm/virt.h
+@@ -161,6 +161,7 @@ struct VirtMachineState {
+     bool mte;
+     bool dtb_randomness;
+     bool second_ns_uart_present;
++    bool pmu;
+     OnOffAuto acpi;
+     VirtGICType gic_version;
+     VirtIOMMUType iommu;
+diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
+index bcc62fbf0c..fa6f1dbec9 100644
+--- a/include/hw/core/cpu.h
++++ b/include/hw/core/cpu.h
+@@ -607,6 +607,11 @@ extern CPUTailQ cpus_queue;
+ #define CPU_FOREACH_SAFE(cpu, next_cpu) \
+     QTAILQ_FOREACH_SAFE_RCU(cpu, &cpus_queue, node, next_cpu)
+ 
++#define CPU_FOREACH_POSSIBLE(cpu, poslist) \
++    for (int iter = 0; \
++         iter < (poslist)->len && ((cpu) = (poslist)->cpus[iter].cpu, 1); \
++         iter++)
 +
-     virt_cpu_post_init(vms, sysmem);
+ extern __thread CPUState *current_cpu;
  
-     fdt_add_pmu_nodes(vms);
-@@ -2504,12 +2514,6 @@ static void machvirt_init(MachineState *machine)
- 
-     create_pcie(vms);
- 
--    if (has_ged && aarch64 && firmware_loaded && virt_is_acpi_enabled(vms)) {
--        vms->acpi_dev = create_acpi_ged(vms);
--    } else {
--        create_gpio_devices(vms, VIRT_GPIO, sysmem);
--    }
--
-     if (vms->secure && !vmc->no_secure_gpio) {
-         create_gpio_devices(vms, VIRT_SECURE_GPIO, secure_sysmem);
-     }
+ /**
 -- 
 2.34.1

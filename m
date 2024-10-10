@@ -1,122 +1,106 @@
-Received: by 2002:a17:504:1f11:b0:1be9:327d:8ee3 with SMTP id z17csp1415339njl;
-        Thu, 10 Oct 2024 03:44:44 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWx8NcOtfx2Rq8dCbO1BJZgCjSYWsROr1IRfonpT1pzPr3FKs2qd+ZLsSCORsOY4kJR7QN9lJ/nrS1Seg==@linaro.org
-X-Received: by 2002:a05:6402:268e:b0:5c9:2a70:94d1 with SMTP id 4fb4d7f45d1cf-5c92a709719mr2804029a12.3.1728557084020;
-        Thu, 10 Oct 2024 03:44:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1728557084; cv=none;
+Received: by 2002:a17:504:1f11:b0:1be9:327d:8ee3 with SMTP id z17csp1449711njl;
+        Thu, 10 Oct 2024 04:54:39 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUVKasPMVEaO9ygF+WOXZhBNHDuJTK2VZ7UaZMz53cwzgY2i6RtZrUQhY0Ux74JcPCzWdPkvYkcATEF+A==@linaro.org
+X-Received: by 2002:a05:6402:d05:b0:5c9:4022:872d with SMTP id 4fb4d7f45d1cf-5c9402289e2mr788384a12.32.1728561279010;
+        Thu, 10 Oct 2024 04:54:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1728561278; cv=none;
         d=google.com; s=arc-20240605;
-        b=QouoyKRMnnKjcDQrqGTifOC1OrBYOFufcuFeAH/6A2CK2nycnp/vsmHqPsu+d+UNmU
-         nYg7sGbAWbUZPePRZNMBNzxDVjr5QG/dQGOv44/ut53KSqC6fBVlu8XNo0iBekDTH9rO
-         rsF8jBV2Dmtt4Xf7dBzTkLRLkYN/Pd4ALAh9YFKjI/Bo73wOyumDGMokW0qb0jXz3Xqk
-         /L68GUwNrnetFfyVQsmu1yW+d9VorzDvd6vEfzELeqhkuZDMt8NCjLt6fTW9ze5Wrz1A
-         CMcgwqHW3wJpIKHiqInIc8o3xmVjQdYTHuVDd6eCfHlTK9qf2+ruR1ZRtrljyeahkwDJ
-         79WQ==
+        b=kLr0WnDzZuve+320vAlU86W815UhR0R0LjG9elH/p3y70p9oCmI3nUcKAo9iXiMnKg
+         Yvr2Suz98alEqN14tUc4fOP59fZZoVEu52l0lnuSOROlIglC+5rZQcvuEoPpNZnC8oL9
+         r42KmNIgK5x9KjGLPbvo+f+SR6nJonom428Fq6gUvWQH2WLncL29Rnu/Y7CxvBFtEhQb
+         g1w9xaGecMwauRcLXllYNNv+kgK7UkQFdWaiyiVsd2q2esr4hClHw9WSiIetUqgfXd8D
+         UkJMUM+M+6oGCf3KolPGYTqaEiwqA6vQnRAvOIWa5Z28zYUPkAA1RekYONZVKXXmOmHA
+         1pXQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:dkim-signature;
-        bh=BX/60HY1SQilc1djhjB/a1kYJ5/dGdDi3/gVE9ZXjRA=;
-        fh=cwz+N5tLVnQzfA5eGmouXDEVnB8LQa9wP6A9a8/1w8M=;
-        b=DZPLsiVJAA5ap5ToDIWdo+QdmL2OYA/kpKdMbhdKcxlx3TZQJY6miOFIjI96d0gngJ
-         G+CwwbZ4AvaTfZKZzVk4fuBNRJciBMwk6apTFoTMHQOEUBuNxJYlgsJFtMNWdiiu1atn
-         HnKroE3BfBuk954JfIYSeRVY1tpI3HD4L3Vy0ttzU1DVhYeT9E3NkGGBBjicjplfKhvR
-         fPqWIyCJ9mbHQxd6Lp1VM3iMhUAK4vWo/EIeHaN+gw4eXoHHvCWglCFiDM1Hpjk42Idu
-         zjdkv9Wpibi+k/uhklnTUYSWEiVunv/4anloIZn5IQp5M6IkXlvPkWDXOxZke7M1NmNI
-         9S8A==;
+        bh=8Sns7xsmeqPOQZ2N1m+ivw76fAsG/Ttx25YK//ondvE=;
+        fh=Hbd7v3F/RLI3ON46NgCPJgprRLCSlCPp3HZ9srV2XGo=;
+        b=SSTlDlZI6/y7BOIuagsxYPgHH05a4ILL1A7hBD236/eV72OEfjzAC3VAdG+za4rHVB
+         5u+LIf6xQU6Fwet8MzbktJ3fzmrMWl2DGIBaP7bYVpRynGDhaHBpx40E2ManDzVlzJFj
+         RdCZZR4tuHJwuWCl+QJvYUaTONidhaTwDU4gEnZiZPLbqhQJERQskaxjYiChuvKqgNAx
+         1qt1ui0OvjdzjNllDEV1FwQZ2SRztym7Vjbv1NxBBGBLXF9n+bUQoFruHODfeX9Sxrkz
+         SLTieiguDmKwAl0wVLHpWm9ZQsUOI3Mf1MWuw2akRMwuppHAQJuFrvg5EiuQRy04dgr8
+         +pXQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=EBAvnnsR;
+       dkim=pass header.i=@linaro.org header.s=google header.b=cNoAA5nj;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <peter.maydell@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 4fb4d7f45d1cf-5c93725a2c5sor274627a12.9.2024.10.10.03.44.43
+        by mx.google.com with SMTPS id 4fb4d7f45d1cf-5c93728de60sor347324a12.12.2024.10.10.04.54.38
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Thu, 10 Oct 2024 03:44:43 -0700 (PDT)
+        Thu, 10 Oct 2024 04:54:38 -0700 (PDT)
 Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=EBAvnnsR;
+       dkim=pass header.i=@linaro.org header.s=google header.b=cNoAA5nj;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1728557083; x=1729161883; darn=linaro.org;
+        d=linaro.org; s=google; t=1728561278; x=1729166078; darn=linaro.org;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=BX/60HY1SQilc1djhjB/a1kYJ5/dGdDi3/gVE9ZXjRA=;
-        b=EBAvnnsRD18Jl+raVLQLinpv/vtKTbfCm2wdiLrT2VDDsT6oSWYpjwatq1N6xS8CPi
-         yLNErDXiFtMuG46JFP8CXOinFu6H8ivEo+L0w58qF761i8sFacuc/6RLeYV5KHE71O8j
-         sKKyUm7stbI7gfQHEACO0pHWqGEQWZwy2buzhqRqOQz+lf8ajo+cG2s/Qqs0S/aAzhcx
-         t7zk87sJjqxQ7XbFlgQEfPQjykuTt74+wVKZTG5ZSFAt8KPQj/uAtpLSRMhZeG47bAdP
-         CG+hghK7YvUe8nsFHZu7zoOn+r1OrYGMUXH1Ya0J85saMflpRu1t8imiIfS6u+R8eA/c
-         AZ/g==
+        bh=8Sns7xsmeqPOQZ2N1m+ivw76fAsG/Ttx25YK//ondvE=;
+        b=cNoAA5njTZxa8kbaTgsVtAyd/+1slQgHMTSiRtnqN5PrLaxHpxh3jovudgHW6U/wIe
+         JOqp3hJhGJB5Y42Yx8i3XAfVQTVgVlPIijY2e+fKCaHrpcxZhVxUap9sKTcF4mqwZu66
+         Ls9QuVSl1i+BXHbkpNgSMyv8X+F1kfaXrEXmFrUmW7Aeqk7IXiVN/TE2hk2rAs+Z6Foe
+         x9yLM43dpFlQUnBXDDzqXDA3JQH3aKfWLVw4Fxj1ZCGVJ0w7E1Tvl7srF8XDwiR7ObZ2
+         3sdrT1IuSewbE8qL3KCFOy1He0XixjEaxv78VtJBETwjigQCOzYFIP84AP6ZrU11qfcN
+         CVFA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1728557083; x=1729161883;
+        d=1e100.net; s=20230601; t=1728561278; x=1729166078;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=BX/60HY1SQilc1djhjB/a1kYJ5/dGdDi3/gVE9ZXjRA=;
-        b=rt5wy7n3ChyvJ+ro7ou6mVk+yz6Uwr/jbJFSW/CaSNlXAOhqOvMovfLruUISbWjTZJ
-         f3JGHY+wju8JHEz+7Asi866Iktk6ae8dAyU1yfp7eHTxLRsBWSy1wHJpgZ8uRx0M0juq
-         en+17bm3j8l4twLvQw2AFESxMY3xsxeb7Cl0y5PyFBqIOKh985mYLhB+embxv0mphmEg
-         gL0qaoCBwBx4OFl8QDIIZlvZ6xbAE5ckHoMjcobwF7UeqM6jYPBdqEtQpgqptRuPpZbK
-         p18OLV4DnjGvF9KeEIdPGbWf8knWUMbCyF8lrnLvlaSCMYYbidRmTPDcitjN4etLen1L
-         d/Og==
-X-Forwarded-Encrypted: i=1; AJvYcCXwBiea8oBY1H0bj39lZXe+rJjHZI0Ih4yqTm5Dk01alQ9mKVDA1zB3fwxqxAOJCFXij1Oj8oo7IR9QXQ==@linaro.org
-X-Gm-Message-State: AOJu0YxAdXxBx5U7yc5zf6UWE6ooX9P8jJLjiLnr7EWmWluWmfKREX5E
-	k6h9NF827ipOgTb6iFX5T8NpZzTzi0QzA5STP4fTU0nDMPm/uHzw/F1lyN5nCkltrE1gZfXonnz
-	eIo3WeRWe6Pg6y6v78Ot+4vItsO4UWHiRq0HSacxd
-X-Google-Smtp-Source: AGHT+IHZMWiUZgylwth4eNH4y3+UYvrysEu+bCAnCgwYWQMyWAJs0RSCwqbbOpDohzoAn4H+jeuGr31Qt7J4TGKbEx4=
-X-Received: by 2002:a05:6402:3512:b0:5c5:c5c0:74ec with SMTP id
- 4fb4d7f45d1cf-5c91d675a01mr4875352a12.24.1728557083380; Thu, 10 Oct 2024
- 03:44:43 -0700 (PDT)
+        bh=8Sns7xsmeqPOQZ2N1m+ivw76fAsG/Ttx25YK//ondvE=;
+        b=p2Z/weTX+8wjSSEqH3I143UigMEa27wNpOrsoAYtmZJIhveG56iSw9ixPk7yh7C1lk
+         FtCJQP4Ocqg2WHh4Unl0saGTCQQBuHb2FpORzv5QL478iWhu9UF75dnrMYG8h7Ndddt9
+         mM3jC5uZ35RCIUJ0IFZBiDg2rIqRBaYnhu7rrqYUyQMt4DA2LFaTn7izrPBnuMrHaM4J
+         BkbOuZc0oCstKMXrYlC61dxACJdd5l7MafmyNOz7Rp9D7IfqtSWV/GdzDKXOh09ccE00
+         b1KYn4MisEFV+OvfDAf263ijN468snGB5fBENwssWrId1cqEdVvY9bC1heQuDU7i+TG0
+         0qoQ==
+X-Forwarded-Encrypted: i=1; AJvYcCWZfALFPk2SB7VaLkGUOiwWR3hnFfdF6WTcDPWgYLxx6y382K6+4fcFBdvD28pu4fHF7jHsZfl+/YZVHw==@linaro.org
+X-Gm-Message-State: AOJu0Yx7Gu+fZM9h04A/2EwXrQ9qE2vUD3LK1zHVVvDIqnsZ2INMnvpL
+	3Q40fA4JMNo6PZQYhJNW6ySfE7Z7A9NbxH0yrP0MJIR843HJXI53BSyTssmhDOloTi2vgZNv86a
+	HVfKI+mCQYQl9I4L1ZZYtPrGAP7j3phZ6s0VKyXuT
+X-Google-Smtp-Source: AGHT+IHlzPdpIM+xZafDveyx5hFZBh1GFLt91YGTshVGwJuewegfJ0kE6/lX8niCegw6R1ub6TjBDm7VFgL5A3dgYr4=
+X-Received: by 2002:a05:6402:3513:b0:5c8:79fa:2e3e with SMTP id
+ 4fb4d7f45d1cf-5c91d6fc258mr5034904a12.28.1728561278443; Thu, 10 Oct 2024
+ 04:54:38 -0700 (PDT)
 MIME-Version: 1.0
-References: <20241009000453.315652-1-richard.henderson@linaro.org> <20241009000453.315652-7-richard.henderson@linaro.org>
-In-Reply-To: <20241009000453.315652-7-richard.henderson@linaro.org>
+References: <20241009000453.315652-1-richard.henderson@linaro.org> <20241009000453.315652-20-richard.henderson@linaro.org>
+In-Reply-To: <20241009000453.315652-20-richard.henderson@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 10 Oct 2024 11:44:31 +0100
-Message-ID: <CAFEAcA-mSsFgjoBWi13dXqZUbys2N81YVXLD_ZfuuGo+Xfy-gQ@mail.gmail.com>
-Subject: Re: [PATCH v3 06/20] accel/tcg: Use the alignment test in tlb_fill_align
+Date: Thu, 10 Oct 2024 12:54:27 +0100
+Message-ID: <CAFEAcA-azLR3SdjR6_+aJ0EkWW97mQukacHABHxWj+b7mQ0OxQ@mail.gmail.com>
+Subject: Re: [PATCH v3 19/20] target/arm: Implement TCGCPUOps.tlb_fill_align
 To: Richard Henderson <richard.henderson@linaro.org>
 Cc: qemu-devel@nongnu.org, deller@kernel.org, alex.bennee@linaro.org, 
 	linux-parisc@vger.kernel.org, qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-X-TUID: 5n+Em3xTdLLf
+X-TUID: +mutn/3zC0Ja
 
 On Wed, 9 Oct 2024 at 01:05, Richard Henderson
 <richard.henderson@linaro.org> wrote:
 >
-> When we have a tlb miss, defer the alignment check to
-> the new tlb_fill_align hook.  Move the existing alignment
-> check so that we only perform it with a tlb hit.
+> Fill in the tlb_fill_align hook.  Handle alignment not due to
+> memory type, since that's no longer handled by generic code.
+> Pass memop to get_phys_addr.
 >
 > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+>  target/arm/internals.h      |  6 ++---
+>  target/arm/cpu.c            |  2 +-
+>  target/arm/tcg/cpu-v7m.c    |  2 +-
+>  target/arm/tcg/tlb_helper.c | 49 ++++++++++++++-----------------------
+>  4 files changed, 24 insertions(+), 35 deletions(-)
+>
 
-
-> @@ -1754,8 +1767,8 @@ static bool mmu_lookup(CPUState *cpu, vaddr addr, MemOpIdx oi,
->           * Lookup both pages, recognizing exceptions from either.  If the
->           * second lookup potentially resized, refresh first CPUTLBEntryFull.
->           */
-> -        mmu_lookup1(cpu, &l->page[0], l->mmu_idx, type, ra);
-> -        if (mmu_lookup1(cpu, &l->page[1], l->mmu_idx, type, ra)) {
-> +        mmu_lookup1(cpu, &l->page[0], l->memop, l->mmu_idx, type, ra);
-> +        if (mmu_lookup1(cpu, &l->page[1], 0, l->mmu_idx, type, ra)) {
-
-Is 0 the right thing here ? Given that alignment-requirements can
-differ per-page, what happens for the case of an unaligned access
-that crosses a page boundary where the first page is "memory that
-doesn't care about alignment" and the second page is "memory that
-does enforce alignment" ?
-
-For Arm this is moot, because an access that crosses a page
-boundary into something with different memory attributes is
-CONSTRAINED UNPREDICTABLE (per Arm ARM rev K.a B2.15.3), but
-maybe other architectures are less flexible.
-
-Also, the comment does say "recognizing exceptions from either",
-and we aren't going to do that for alignment issues in page 2,
-so if we're OK with ignoring this we should update the comment.
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
 thanks
 -- PMM

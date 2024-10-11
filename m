@@ -1,415 +1,144 @@
-Received: by 2002:a17:505:3501:b0:1be9:327d:8ee3 with SMTP id mc1csp393161njb;
-        Fri, 11 Oct 2024 06:21:08 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVUZ5L85E7TRefKXJjU3KGxRPmDeNqcBpDtURiOyDQWn/FmepluNlSFbdcJzkJPLRnEx7ik1eG2EZ/JwQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IEvDk7Qiv8/61wZ5kTp/fXwBkXmZZcqSpErXch5V9lnX2xa8CCoF7cq5WZX0QcNEw99FhSu
-X-Received: by 2002:a05:6102:3e81:b0:49b:c3ce:2537 with SMTP id ada2fe7eead31-4a465971edfmr1977801137.8.1728652867829;
-        Fri, 11 Oct 2024 06:21:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1728652867; cv=none;
-        d=google.com; s=arc-20240605;
-        b=MPhx+OkK+mdiMhhEgGbJfpCbXP/UsENXua4bZ4o2ybTl3rXDtNbkrAMv5b4ivWP8io
-         DRCNkviHPw9noDB/Q2tc7ma08uHMoYsRSZps9CMk9pza2isqp/D1tz0AYbA20j78vVLt
-         r2bzuLYKa18K8UctITkJirSGnUI+jxYuI9K2kMrpZmmQfEmRLC9Lqo9A3mUuTrh4uV8g
-         rA+mFNxIIgYm3O5MoqNUqI62ZdaKXYhmydZsARyixFqjLeDbDa7rmZHQYGVj4/5qwjQP
-         4wBUDrShWiZa4s7lMgwE8/3oUF9MVJbvQIz2+hMHNHgNsY6j97KMtY1RSpr46tXT5Vyq
-         EmAg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=x+ggIoBaMj2R6F9eH6cEtv4h0m1WXCB4RfcKG4Zja5M=;
-        fh=yV7XiH9Iqz9ECmsY7O4iL5H1OqntXAXD46ZP2pth0HE=;
-        b=TPhycX8WlYJ7x2uFeeyg31Bk8PUh2oON40Il55M51YRXp+mcFsqCGFNhCSSmNfkyPc
-         6q/8n7qaTOflEX/qS/Onnai2cw7UcgeliJQc8dSQ4L4q/fG9aWUlsl1UsgWexYcOc21U
-         QN6zvFZpUuDpwY7PMLCJUvUoJ283UXKb3cnQTfwbZuixOLA+NW62zVe++6YEw7ko5iaB
-         WKyHouiVR8Dh8uS/vitM+I+hj2fuzxH4YKq4AczEJIlkd2g1+7tb5wVOSj8g9XEs4BFP
-         fZG+Ndlcl0V23bzzfPvh73M7Cq4UwQP8fdDIjvVWm9ZWCUEX8qv6foLvv7ok7aF6FECj
-         NTjA==;
+Received: by 2002:a17:505:3501:b0:1be9:327d:8ee3 with SMTP id mc1csp471804njb;
+        Fri, 11 Oct 2024 08:22:55 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVcVNIEvmZ8XQJugeDpryULP0hVitmFaUY8EjzCi1a3RH8m0ryqkiDN7G8659GFtnIQam1XDzoAB3TCtA==@linaro.org
+X-Received: by 2002:a17:902:d48a:b0:20b:5aeb:9b8 with SMTP id d9443c01a7336-20ca03d67eamr48023175ad.24.1728660174964;
+        Fri, 11 Oct 2024 08:22:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1728660174; cv=none;
+        d=google.com; s=arc-20160816;
+        b=WtJj0yXt9T30TSCcIJW6caVKKyBTAO9Xc5AXpL5vwgpzRJFToo3kMuv1wy4Kohu/4Q
+         xq7RnecoOGLP3eMFBe8AjqMKZRIbHCGLBbhXJnqJi7Cqs/RIn1ty42T8nLnCgoxhsAgH
+         RIJuE2BnSHtRNlygectwGf7Og+U8yoUeewBpXudsjRdWO7GmZcVJbCp67te6Puzhuin0
+         uii/kx74/amBlC/b/Oe/JVeXNRmV3Vh10d3snVC/xrwgrW7LDhMwbrKyNf7WJUb3V58L
+         xTsk7wXr9vf0r6ceDqYEUP7OKUtMg3myIrNQ8mcBsqmE7AkCycon/SwCieosFTcBGtMw
+         /zpA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=1CogMR7I7WuqqzE6cNx48xEoXofErOXlHnvljTI0ZmU=;
+        fh=q7l2kWaHlHLQ9fyjTMDURiLNkBKaJ+5DcmhkhX5vNTI=;
+        b=C51qwLN7eZ8o7Gf3kRukB9c4o5EwnWb2cNeFRV5LjA6+QofEOr0fKBJPJ06/vR7Zad
+         7Opd60BuKJPrHvQwYBrEwOobaXYv0EjAK/id5IzgPOt8U4SVyd/DVIBV3mL3yIOdgUPs
+         uOtKu/EpX/CbNuuQZzaO1KG1hqzuBKYDUay9TlhzaDNS7H8PR+sx1n1xxMFgGM7qe1do
+         jrd95vKoH90BaRmHeJbmBiMzsAxSEL8QuZDIi5ycPIKCCjrXxaQqNFLNZ3NEa7Rp9hHA
+         fMBucjeqNtG2yNKubG9kP+V73s5jWOI0+d3v9s7UfZx5IDuz7FoDIVrMUBRxzmLPEpFO
+         ONNA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=gNSrQ+5j;
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <thuth@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id ada2fe7eead31-4a457a46cbdsi793989137.215.2024.10.11.06.21.07
+       dkim=pass header.i=@linaro.org header.s=google header.b="sCuzJuv/";
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d9443c01a7336-20c64f97aaesor38843805ad.3.2024.10.11.08.22.54
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 11 Oct 2024 06:21:07 -0700 (PDT)
-Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        (Google Transport Security);
+        Fri, 11 Oct 2024 08:22:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=gNSrQ+5j;
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1728652867;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=x+ggIoBaMj2R6F9eH6cEtv4h0m1WXCB4RfcKG4Zja5M=;
-	b=gNSrQ+5jUOsUQuYGq0NsBmWNdoyvsFUV0YlJJOZOmNEIpg/Dz2PXedWPp2ZtMb9CbN9JnY
-	qykjqFOPUzwCxjdpr7tDiCOAt8MZcI6EvR6IAp2UdMSHhjDcCuDE/LMakEkZ6Lu9KwD0Lg
-	uYOnsT7d0t+xXhmUMLumJWmLPmOe7PI=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-689-WDFvBM_9P4SiXyplw4dIzQ-1; Fri,
- 11 Oct 2024 09:21:04 -0400
-X-MC-Unique: WDFvBM_9P4SiXyplw4dIzQ-1
-Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 10EEC1955F41;
-	Fri, 11 Oct 2024 13:21:03 +0000 (UTC)
-Received: from thuth-p1g4.redhat.com (unknown [10.39.193.77])
-	by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP id 39B841956052;
-	Fri, 11 Oct 2024 13:20:59 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: qemu-devel@nongnu.org,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Cc: Guenter Roeck <linux@roeck-us.net>,
-	Yoshinori Sato <ysato@users.sourceforge.jp>,
-	Magnus Damm <magnus.damm@gmail.com>,
-	qemu-arm@nongnu.org,
-	Thomas Huth <thuth@redhat.com>
-Subject: [PATCH 17/17] tests/functional: Convert the Avocado sh4 tuxrun test
-Date: Fri, 11 Oct 2024 15:19:34 +0200
-Message-ID: <20241011131937.377223-18-thuth@redhat.com>
-In-Reply-To: <20241011131937.377223-1-thuth@redhat.com>
-References: <20241011131937.377223-1-thuth@redhat.com>
+       dkim=pass header.i=@linaro.org header.s=google header.b="sCuzJuv/";
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1728660174; x=1729264974; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=1CogMR7I7WuqqzE6cNx48xEoXofErOXlHnvljTI0ZmU=;
+        b=sCuzJuv/xuljKTin0gfFxit9TUxUsZUBnCaH4Deyib/3+KKy95xt/rke3aD+awNxBu
+         c4sYEZ9SUiDSh0cAoIJooDjB9/tslt177ktsYRxJki4MkCyUwlbQnJMVvYsd8Q/SkHpY
+         D68G+TikTOSayXEx/vmUa4+emtWPyFO2j44WyWD5l5E8pmRDhJbM1/wvHWFFQ3WhNtbL
+         uv/bvposWjBE2e8GQQXkSwXOINZSQklc+Kb2v2zt3t9tQ7qj0Kl2/l737uG2f8C3ioCn
+         DU3jZreeQhZv31QMHzzJMPaQANmtriGhpAczldbq8vtBEdAiC8ZygufCy1uQwxzlAPBR
+         CsIw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1728660174; x=1729264974;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=1CogMR7I7WuqqzE6cNx48xEoXofErOXlHnvljTI0ZmU=;
+        b=tbNnvjmkyebn2Xxvp1AsSpMDjfrHLOGllPPSwMva0HpFnWNaIAMZbtWlmU9mk5xQNf
+         sFC7FHo4f3UPJjQ3jc1my44nPsXMo9w3kVL5B+wY43IRuI5NrTaSD5baTF2ZK0ctUP3a
+         jttie4fapisGN8k2T/Oe3UI4+ql3JDRhkcqqD4mVf41fYTXxcvqxh2m6aqDb6y7BVT/Q
+         or0TsgMlXQP9wU9XcMTdaGPU5JQnRMJPl21HrlX8cdkdG3VwrGPtN0b+5K6QdAt1E0OX
+         r+YsV1f5xU1hkpXLLX8ZpRD2dm2L59bfO9W+pMpqdq5wARYvNx5NNe9jLiaOpgCbWhf/
+         OwfA==
+X-Forwarded-Encrypted: i=1; AJvYcCVVArNoriwy6N6YBL2xS2QZ48MW0nce71juE/hcK75Hp2Xo2Vg+lgN671AZyc7FPgTCmg9UXEvtx40W2A==@linaro.org
+X-Gm-Message-State: AOJu0YzBYL6mNhPkn1kfl3qi8QWNAlW4MhGfpF/AALRyYS6bRIB7iK6i
+	NcM5SVZZ+N5q98M5ipRBvIMPPr5SdZj/L6rjxDTDBWl8yrjg9H/zv8i3bY3z1g4QwA==
+X-Google-Smtp-Source: AGHT+IGtuBfJ5Y8/O99TVzmcr+ylQwPmRJHu4yyYUgnd8FAVtIUhSM+5WEIdXBhH7Jp50Bxnudz0dA==
+X-Received: by 2002:a17:902:e88a:b0:20b:5e34:1842 with SMTP id d9443c01a7336-20ca03ff886mr53673925ad.25.1728660174181;
+        Fri, 11 Oct 2024 08:22:54 -0700 (PDT)
+Return-Path: <richard.henderson@linaro.org>
+Received: from [192.168.0.4] (174-21-81-121.tukw.qwest.net. [174.21.81.121])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-20c8c348986sm24499055ad.258.2024.10.11.08.22.53
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 11 Oct 2024 08:22:53 -0700 (PDT)
+Message-ID: <b5bf5d17-2451-4d6e-9a4e-6fb4e94ad308@linaro.org>
+Date: Fri, 11 Oct 2024 08:22:51 -0700
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-X-TUID: u0BrAHEq/C5a
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 06/20] accel/tcg: Use the alignment test in
+ tlb_fill_align
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, deller@kernel.org, alex.bennee@linaro.org,
+ linux-parisc@vger.kernel.org, qemu-arm@nongnu.org
+References: <20241009000453.315652-1-richard.henderson@linaro.org>
+ <20241009000453.315652-7-richard.henderson@linaro.org>
+ <CAFEAcA-mSsFgjoBWi13dXqZUbys2N81YVXLD_ZfuuGo+Xfy-gQ@mail.gmail.com>
+Content-Language: en-US
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <CAFEAcA-mSsFgjoBWi13dXqZUbys2N81YVXLD_ZfuuGo+Xfy-gQ@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-TUID: qdRjt+q+rROn
 
-Move the test into a new file so that it can be run via
-qemu-system-sh4 in the functional framework.
+On 10/10/24 03:44, Peter Maydell wrote:
+> On Wed, 9 Oct 2024 at 01:05, Richard Henderson
+> <richard.henderson@linaro.org> wrote:
+>>
+>> When we have a tlb miss, defer the alignment check to
+>> the new tlb_fill_align hook.  Move the existing alignment
+>> check so that we only perform it with a tlb hit.
+>>
+>> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> 
+> 
+>> @@ -1754,8 +1767,8 @@ static bool mmu_lookup(CPUState *cpu, vaddr addr, MemOpIdx oi,
+>>            * Lookup both pages, recognizing exceptions from either.  If the
+>>            * second lookup potentially resized, refresh first CPUTLBEntryFull.
+>>            */
+>> -        mmu_lookup1(cpu, &l->page[0], l->mmu_idx, type, ra);
+>> -        if (mmu_lookup1(cpu, &l->page[1], l->mmu_idx, type, ra)) {
+>> +        mmu_lookup1(cpu, &l->page[0], l->memop, l->mmu_idx, type, ra);
+>> +        if (mmu_lookup1(cpu, &l->page[1], 0, l->mmu_idx, type, ra)) {
+> 
+> Is 0 the right thing here ? Given that alignment-requirements can
+> differ per-page, what happens for the case of an unaligned access
+> that crosses a page boundary where the first page is "memory that
+> doesn't care about alignment" and the second page is "memory that
+> does enforce alignment" ?
 
-Since this was the last test in tests/avocado/tuxrun_baselines.py,
-we can now delete that file completely.
+I can't think of anything else that makes sense.  The access to the second page is 
+"aligned" in the sense that it begins at offset 0.
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- tests/avocado/tuxrun_baselines.py   | 228 ----------------------------
- tests/functional/meson.build        |   2 +
- tests/functional/test_sh4_tuxrun.py |  57 +++++++
- 3 files changed, 59 insertions(+), 228 deletions(-)
- delete mode 100644 tests/avocado/tuxrun_baselines.py
- create mode 100755 tests/functional/test_sh4_tuxrun.py
+Anyway, alignment as a page property is unique to Arm and...
 
-diff --git a/tests/avocado/tuxrun_baselines.py b/tests/avocado/tuxrun_baselines.py
-deleted file mode 100644
-index c358095e1f..0000000000
---- a/tests/avocado/tuxrun_baselines.py
-+++ /dev/null
-@@ -1,228 +0,0 @@
--# Functional test that boots known good tuxboot images the same way
--# that tuxrun (www.tuxrun.org) does. This tool is used by things like
--# the LKFT project to run regression tests on kernels.
--#
--# Copyright (c) 2023 Linaro Ltd.
--#
--# Author:
--#  Alex Bennée <alex.bennee@linaro.org>
--#
--# SPDX-License-Identifier: GPL-2.0-or-later
--
--import os
--import time
--import tempfile
--
--from avocado import skip, skipUnless
--from avocado_qemu import QemuSystemTest
--from avocado_qemu import exec_command, exec_command_and_wait_for_pattern
--from avocado_qemu import wait_for_console_pattern
--from avocado.utils import process
--from avocado.utils.path import find_command
--
--class TuxRunBaselineTest(QemuSystemTest):
--    """
--    :avocado: tags=accel:tcg
--    """
--
--    KERNEL_COMMON_COMMAND_LINE = 'printk.time=0'
--    # Tests are ~10-40s, allow for --debug/--enable-gcov overhead
--    timeout = 100
--
--    def get_tag(self, tagname, default=None):
--        """
--        Get the metadata tag or return the default.
--        """
--        utag = self._get_unique_tag_val(tagname)
--        print(f"{tagname}/{default} -> {utag}")
--        if utag:
--            return utag
--
--        return default
--
--    def setUp(self):
--        super().setUp()
--
--        # We need zstd for all the tuxrun tests
--        # See https://github.com/avocado-framework/avocado/issues/5609
--        zstd = find_command('zstd', False)
--        if zstd is False:
--            self.cancel('Could not find "zstd", which is required to '
--                        'decompress rootfs')
--        self.zstd = zstd
--
--        # Process the TuxRun specific tags, most machines work with
--        # reasonable defaults but we sometimes need to tweak the
--        # config. To avoid open coding everything we store all these
--        # details in the metadata for each test.
--
--        # The tuxboot tag matches the root directory
--        self.tuxboot = self.get_tag('tuxboot')
--
--        # Most Linux's use ttyS0 for their serial port
--        self.console = self.get_tag('console', "ttyS0")
--
--        # Does the machine shutdown QEMU nicely on "halt"
--        self.shutdown = self.get_tag('shutdown')
--
--        # The name of the kernel Image file
--        self.image = self.get_tag('image', "Image")
--
--        self.root = self.get_tag('root', "vda")
--
--        # Occasionally we need extra devices to hook things up
--        self.extradev = self.get_tag('extradev')
--
--        self.qemu_img = super().get_qemu_img()
--
--    def wait_for_console_pattern(self, success_message, vm=None):
--        wait_for_console_pattern(self, success_message,
--                                 failure_message='Kernel panic - not syncing',
--                                 vm=vm)
--
--    def fetch_tuxrun_assets(self, csums=None, dt=None):
--        """
--        Fetch the TuxBoot assets. They are stored in a standard way so we
--        use the per-test tags to fetch details.
--        """
--        base_url = f"https://storage.tuxboot.com/20230331/{self.tuxboot}/"
--
--        # empty hash if we weren't passed one
--        csums = {} if csums is None else csums
--        ksum = csums.get(self.image, None)
--        isum = csums.get("rootfs.ext4.zst", None)
--
--        kernel_image =  self.fetch_asset(base_url + self.image,
--                                         asset_hash = ksum,
--                                         algorithm = "sha256")
--        disk_image_zst = self.fetch_asset(base_url + "rootfs.ext4.zst",
--                                         asset_hash = isum,
--                                         algorithm = "sha256")
--
--        cmd = f"{self.zstd} -d {disk_image_zst} -o {self.workdir}/rootfs.ext4"
--        process.run(cmd)
--
--        if dt:
--            dsum = csums.get(dt, None)
--            dtb = self.fetch_asset(base_url + dt,
--                                   asset_hash = dsum,
--                                   algorithm = "sha256")
--        else:
--            dtb = None
--
--        return (kernel_image, self.workdir + "/rootfs.ext4", dtb)
--
--    def prepare_run(self, kernel, disk, drive, dtb=None, console_index=0):
--        """
--        Setup to run and add the common parameters to the system
--        """
--        self.vm.set_console(console_index=console_index)
--
--        # all block devices are raw ext4's
--        blockdev = "driver=raw,file.driver=file," \
--            + f"file.filename={disk},node-name=hd0"
--
--        kcmd_line = self.KERNEL_COMMON_COMMAND_LINE
--        kcmd_line += f" root=/dev/{self.root}"
--        kcmd_line += f" console={self.console}"
--
--        self.vm.add_args('-kernel', kernel,
--                         '-append', kcmd_line,
--                         '-blockdev', blockdev)
--
--        # Sometimes we need extra devices attached
--        if self.extradev:
--            self.vm.add_args('-device', self.extradev)
--
--        self.vm.add_args('-device',
--                         f"{drive},drive=hd0")
--
--        # Some machines need an explicit DTB
--        if dtb:
--            self.vm.add_args('-dtb', dtb)
--
--    def run_tuxtest_tests(self, haltmsg):
--        """
--        Wait for the system to boot up, wait for the login prompt and
--        then do a few things on the console. Trigger a shutdown and
--        wait to exit cleanly.
--        """
--        self.wait_for_console_pattern("Welcome to TuxTest")
--        time.sleep(0.2)
--        exec_command(self, 'root')
--        time.sleep(0.2)
--        exec_command(self, 'cat /proc/interrupts')
--        time.sleep(0.1)
--        exec_command(self, 'cat /proc/self/maps')
--        time.sleep(0.1)
--        exec_command(self, 'uname -a')
--        time.sleep(0.1)
--        exec_command_and_wait_for_pattern(self, 'halt', haltmsg)
--
--        # Wait for VM to shut down gracefully if it can
--        if self.shutdown == "nowait":
--            self.vm.shutdown()
--        else:
--            self.vm.wait()
--
--    def common_tuxrun(self,
--                      csums=None,
--                      dt=None,
--                      drive="virtio-blk-device",
--                      haltmsg="reboot: System halted",
--                      console_index=0):
--        """
--        Common path for LKFT tests. Unless we need to do something
--        special with the command line we can process most things using
--        the tag metadata.
--        """
--        (kernel, disk, dtb) = self.fetch_tuxrun_assets(csums, dt)
--
--        self.prepare_run(kernel, disk, drive, dtb, console_index)
--        self.vm.launch()
--        self.run_tuxtest_tests(haltmsg)
--
--
--    #
--    # The tests themselves. The configuration is derived from how
--    # tuxrun invokes qemu (with minor tweaks like using -blockdev
--    # consistently). The tuxrun equivalent is something like:
--    #
--    # tuxrun --device qemu-{ARCH} \
--    #        --kernel https://storage.tuxboot.com/{TUXBOOT}/{IMAGE}
--    #
--
--    # Note: some segfaults caused by unaligned userspace access
--    @skipUnless(os.getenv('QEMU_TEST_FLAKY_TESTS'), 'Test is unstable on GitLab')
--    def test_sh4(self):
--        """
--        :avocado: tags=arch:sh4
--        :avocado: tags=machine:r2d
--        :avocado: tags=cpu:sh7785
--        :avocado: tags=tuxboot:sh4
--        :avocado: tags=image:zImage
--        :avocado: tags=root:sda
--        :avocado: tags=console:ttySC1
--        :avocado: tags=flaky
--        """
--        sums = { "rootfs.ext4.zst" :
--                 "3592a7a3d5a641e8b9821449e77bc43c9904a56c30d45da0694349cfd86743fd",
--                 "zImage" :
--                 "29d9b2aba604a0f53a5dc3b5d0f2b8e35d497de1129f8ee5139eb6fdf0db692f" }
--
--        # The test is currently too unstable to do much in userspace
--        # so we skip common_tuxrun and do a minimal boot and shutdown.
--        (kernel, disk, dtb) = self.fetch_tuxrun_assets(csums=sums)
--
--        # the console comes on the second serial port
--        self.prepare_run(kernel, disk,
--                         "driver=ide-hd,bus=ide.0,unit=0",
--                         console_index=1)
--        self.vm.launch()
--
--        self.wait_for_console_pattern("Welcome to TuxTest")
--        time.sleep(0.1)
--        exec_command(self, 'root')
--        time.sleep(0.1)
--        exec_command_and_wait_for_pattern(self, 'halt',
--                                          "reboot: System halted")
-diff --git a/tests/functional/meson.build b/tests/functional/meson.build
-index c17c9b0700..51d1037d96 100644
---- a/tests/functional/meson.build
-+++ b/tests/functional/meson.build
-@@ -156,8 +156,10 @@ tests_s390x_system_thorough = [
- 
- tests_sh4_system_thorough = [
-   'sh4_r2d',
-+  'sh4_tuxrun',
- ]
- 
-+
- tests_sparc_system_thorough = [
-   'sparc_sun4m',
- ]
-diff --git a/tests/functional/test_sh4_tuxrun.py b/tests/functional/test_sh4_tuxrun.py
-new file mode 100755
-index 0000000000..352cb360ef
---- /dev/null
-+++ b/tests/functional/test_sh4_tuxrun.py
-@@ -0,0 +1,57 @@
-+#!/usr/bin/env python3
-+#
-+# Functional test that boots known good tuxboot images the same way
-+# that tuxrun (www.tuxrun.org) does. This tool is used by things like
-+# the LKFT project to run regression tests on kernels.
-+#
-+# Copyright (c) 2023 Linaro Ltd.
-+#
-+# Author:
-+#  Alex Bennée <alex.bennee@linaro.org>
-+#
-+# SPDX-License-Identifier: GPL-2.0-or-later
-+
-+import os
-+import time
-+
-+from unittest import skipUnless
-+from qemu_test import Asset, exec_command_and_wait_for_pattern, exec_command
-+from qemu_test.tuxruntest import TuxRunBaselineTest
-+
-+class TuxRunSh4Test(TuxRunBaselineTest):
-+
-+    ASSET_SH4_KERNEL = Asset(
-+        'https://storage.tuxboot.com/20230331/sh4/zImage',
-+        '29d9b2aba604a0f53a5dc3b5d0f2b8e35d497de1129f8ee5139eb6fdf0db692f')
-+    ASSET_SH4_ROOTFS = Asset(
-+        'https://storage.tuxboot.com/20230331/sh4/rootfs.ext4.zst',
-+        '3592a7a3d5a641e8b9821449e77bc43c9904a56c30d45da0694349cfd86743fd')
-+
-+    # Note: some segfaults caused by unaligned userspace access
-+    @skipUnless(os.getenv('QEMU_TEST_FLAKY_TESTS'), 'Test is unstable')
-+    def test_sh4(self):
-+        self.set_machine('r2d')
-+        self.cpu='sh7785'
-+        self.root='sda'
-+        self.console='ttySC1'
-+
-+        # The test is currently too unstable to do much in userspace
-+        # so we skip common_tuxrun and do a minimal boot and shutdown.
-+        (kernel, disk, dtb) = self.fetch_tuxrun_assets(self.ASSET_SH4_KERNEL,
-+                                                       self.ASSET_SH4_ROOTFS)
-+
-+        # the console comes on the second serial port
-+        self.prepare_run(kernel, disk,
-+                         "driver=ide-hd,bus=ide.0,unit=0",
-+                         console_index=1)
-+        self.vm.launch()
-+
-+        self.wait_for_console_pattern("Welcome to TuxTest")
-+        time.sleep(0.1)
-+        exec_command(self, 'root')
-+        time.sleep(0.1)
-+        exec_command_and_wait_for_pattern(self, 'halt',
-+                                          "reboot: System halted")
-+
-+if __name__ == '__main__':
-+    TuxRunBaselineTest.main()
--- 
-2.46.1
+
+> For Arm this is moot, because an access that crosses a page
+> boundary into something with different memory attributes is
+> CONSTRAINED UNPREDICTABLE (per Arm ARM rev K.a B2.15.3), but
+> maybe other architectures are less flexible.
+
+... as you say.
+
+> Also, the comment does say "recognizing exceptions from either",
+> and we aren't going to do that for alignment issues in page 2,
+> so if we're OK with ignoring this we should update the comment.
+
+The second page can still raise page faults.  How would you re-word this?
+
+
+r~

@@ -1,215 +1,230 @@
-Received: by 2002:a17:505:3501:b0:1be9:327d:8ee3 with SMTP id mc1csp949662njb;
-        Sat, 12 Oct 2024 06:42:47 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXIn1bQ8CVh43wkHGySbM5KsHLafCcftCfIIjsAF31LtCL4xZXbuLXJBKGnu2KEL9bgUZr0B2WfBGwNuQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IG8QS7e1eAd+bx4I+rFNrAzLKk2fFn5p3JnbfQ8cEUjQO6xby5v6TaZBxCyVDAOxplZKjla
-X-Received: by 2002:a05:620a:40d3:b0:79f:9fa:8224 with SMTP id af79cd13be357-7b120fc4bfcmr505309285a.36.1728740567308;
-        Sat, 12 Oct 2024 06:42:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1728740567; cv=none;
+Received: by 2002:a17:505:3501:b0:1be9:327d:8ee3 with SMTP id mc1csp392467njb;
+        Fri, 11 Oct 2024 06:20:15 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUlq9Lsp87uj2EWGkW5uwKsvog/6oPrkkL5gkNmYeoANdIaF/3x+Li8qWWMwBBRd7Je1NW8p/lXV0bDsw==@linaro.org
+X-Google-Smtp-Source: AGHT+IHTasTeH1krQv1NlbYUHOzHlP72RG7liLrdt/3xa5eXRgIh3FQLkeGZsWuxdoodbt8QjesI
+X-Received: by 2002:a05:6122:1d4d:b0:50d:2769:d744 with SMTP id 71dfb90a1353d-50d2769d944mr1813196e0c.11.1728652814977;
+        Fri, 11 Oct 2024 06:20:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1728652814; cv=none;
         d=google.com; s=arc-20240605;
-        b=EweROhcxJwPmtNYWsZ+3uFpwmwnZeTT5TNausvakFvsnr2BEPhSAN4SRt2sPBMGlyE
-         21updSlP5GhE0ODUlyhrATAPIas8qeySM+M9a/sDnQNSUxDvlObDl8kK2O4WTLUF6Wv/
-         sxsSBCCJMC4VgMMie2ciKsq2F4qB6XxxlvpIISFDX3p1pyzQNCZ15yoJ8huGWJowCjyM
-         ks8TOQS7EHt2v2Xb+PWNtLpF5MvuxIJYhI1KJB1q4GCRrZTQj927B+AXEcvCkDhkdomq
-         LDZQmlLlJCTnWUSCFB3bg5zjPRMX+pi1GDLgF7lYyYXieqdsbm4Qeoe/4uOkMQt79lq7
-         kbrw==
+        b=i3LnH2QcUtngaJ2JxkCnx1Xfjs0LRSAn30zIHamLaoomTj3VwdsI72xoZxRwjDAEyp
+         AE26l0Sxn+Rf16IzOfJC80D3N7gs6oVDrpm6BexWjSmwhqC/QI/AEOlU/h5hlc03Pzt8
+         NjCzdgvS4dmw6v5MqQgLRDCDq3MH96lYDvC3uSGLA/N94x/8o9fWRVG0pZK/vXeg67fV
+         G+5TKBgLt+oL+IrTvDs5+MNdw02CxUyvGkt13TNwI7yPB4JKfW4l269Xag4Ne1mxkiBM
+         46mZLByEhzRyzvGbKIVj+4JYmSTpZsVvqIRY1VuMoVzrjsid772mBXLS3J7frYa+j8yj
+         qUPw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:references:in-reply-to:subject:cc:to:from
-         :date:dkim-signature;
-        bh=wsupazMnCPw+QOmcribO4MLjxraI3Fs4bmrt2mvfNqM=;
-        fh=bNaJuLDRcOBwxiu+0w5sOmlNG3QD/X7ugAAY0gaeNnQ=;
-        b=W0zbO5MnEtaET9dTjhiuIDvIt8PlmEqNgFaOQLDVhXReFQqQvb2EECi6+BuvJNUvYr
-         goP6R+07qObndh4QUwwX/ulKS8Byj61Elt+Amnae8Tr9KuFcJtKdEr4vEQ9dl8P1ZeTO
-         wU1a+q0pa5TuL99eErr+/JI9KoYvdSZnoxkx+DE3X5OvjGnK1s729lg88cM57vWHYaRO
-         KhazaJPoIO+/Vu/ktdUnzcwSPlC0v+d5AJfjCTBCf3vUmQlyaMx0QiG+IG+pVlJgmZK2
-         rVeAsUbYdOo7sCm/C6tCQO/qmPQYdPrx1IxHYBxJvW9AWkbRxcWAUBXUJVGy5Nhgt7Cn
-         e/Hw==;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=OfD2T2DNljJ4PR1x+jFli4y7dytYo55E8P6pXj2fAdg=;
+        fh=yV7XiH9Iqz9ECmsY7O4iL5H1OqntXAXD46ZP2pth0HE=;
+        b=JsPuWZcT2xIGbwUeWuMwohtECQQqttfhCy22h2QguS9sl/cI5Hq/EDCJgG9o2hMpct
+         pgBao5JIC6EOftB9YJFBYEZ5nOQts4kpiOSOJWncbbjYm4pIdvUxhP5sG4SfpnvYVuPk
+         wK4UeLojX/8r3S1s4ROy8ozLpiaaamJiR7pkZlLDqyIU/oPN1eSHHJk/P6qYESJrHUAL
+         GFhE1X24XgPTqn7e0DpuqftFYG+NarxY50ax3YspQGtKhfCk1k30y7m6I5uLkCRmaDV8
+         p+WMmnGyNiFfbJy1Pf9OjSOl8ePJs9pdLJBM/8/pZ/W5VOvc3Hc2r0KpLf1xrVz6I0/O
+         beBQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=PtiDXxPX;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7b1149a5e0asi623278885a.449.2024.10.12.06.42.47
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="H/JjLKQP";
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <thuth@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id 71dfb90a1353d-50d0887002dsi787446e0c.231.2024.10.11.06.20.14
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 12 Oct 2024 06:42:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 11 Oct 2024 06:20:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=PtiDXxPX;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1szcNk-0007D6-S4; Sat, 12 Oct 2024 09:42:08 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1szcNe-0007C8-V6; Sat, 12 Oct 2024 09:42:02 -0400
-Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1szcNd-0004IP-BU; Sat, 12 Oct 2024 09:42:02 -0400
-Received: by mail-wr1-x429.google.com with SMTP id
- ffacd0b85a97d-37d4fd00574so1535122f8f.0; 
- Sat, 12 Oct 2024 06:41:59 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1728740519; x=1729345319; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
- :message-id:reply-to;
- bh=wsupazMnCPw+QOmcribO4MLjxraI3Fs4bmrt2mvfNqM=;
- b=PtiDXxPXAqQVCzQ84kvNcDv0fqdFR/DNH/P+dUzUR38wwb7a//+V/KftM7oH54BmnQ
- FTVhBR290R+HTgn+mql96FfrN9HzwPAgRDkl2pbzjZ2knfO/xypk6VdP3IPSyf/SpO/L
- d5SZSCQXwth2LoEWo7LM7BPunP2G4e9Vp/ENya057dqc9lY85zBh28XHRMUx0T3vTCcj
- m/uo1LdJqUmpN4MRWGRZgQe1iU935MbwmO8RB2jmJcggEpmGF6Qy+F67GsoypbjicmNL
- QkBAksBwr1512quiKRKjMHq2tluRR4Ttt8+wCiBciPjIgbSnR8ICMAk5pxif1JmBrinm
- i0UA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1728740519; x=1729345319;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=wsupazMnCPw+QOmcribO4MLjxraI3Fs4bmrt2mvfNqM=;
- b=mdYSt3yGvDsv9aNSkneh9q1keQcVLnFv4lsgSnnzrdMAP2D5S/8BrJ5vHde+pixL3q
- 3Y/5cNDDvERo+/yolRlXPegNODKEK7vdYRU+RtN8RKqGwwXQf+wR2iRhYSHBYkh7OrxN
- Dz/+eM7nqiZ+wRF2RqPnZ6gDVcDHyHwnSoldrHlQGIsLBsK3AkbaKAwn89tkAETARW+U
- qp9KN38QFSlHxtUXv6q/EbavCVj0qiDmWQfAlq/8J+Cvip8mkXQ9VB+iuNb3M9dfhFte
- IrDQ90ZXPCvdW10vmhaakInktkuYzPa0CiWoPs+1i+6wT6GvQeHxprp2z3v9t3shpiTL
- 7W8w==
-X-Forwarded-Encrypted: i=1;
- AJvYcCU/WVJhETsrwPtStss1h4p9C/YN9FJUufNBAh/OUgl7ItOVyZlv47h1cO3W9VvwkW5ZW20afK1poLU=@nongnu.org,
- AJvYcCUhR18M+07/vytJYlevjfq0LZnHv9NWbZXKiTIoQvQLiY9IUFlX1e8bC2XIK/OeVRwRuGT0JnKZ6JtFfg==@nongnu.org,
- AJvYcCXoL3bkGXpwQBeNp4YmldN4K+EJDXiN8lgdBKT93h8wLq/cfsQToe/jZA9aBSsCx8PCv3f87kmIYA==@nongnu.org
-X-Gm-Message-State: AOJu0YxlZbkikTk8oH0BC5W//gO4/UniX/CZT3/Wn8ttdxYuuKYkWQP+
- InysQh72EP4oxyoSr/my3X5loFSgTA0QyshfLjXWxKsG16DEJ5yV
-X-Received: by 2002:adf:e7cf:0:b0:37d:43d1:2064 with SMTP id
- ffacd0b85a97d-37d552d3843mr4445974f8f.30.1728740518457; 
- Sat, 12 Oct 2024 06:41:58 -0700 (PDT)
-Received: from [127.0.0.1] (dynamic-077-011-117-250.77.11.pool.telefonica.de.
- [77.11.117.250]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-37d4b6bd134sm6386384f8f.41.2024.10.12.06.41.57
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 12 Oct 2024 06:41:58 -0700 (PDT)
-Date: Sat, 12 Oct 2024 13:41:57 +0000
-From: Bernhard Beschow <shentey@gmail.com>
-To: =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-CC: Peter Maydell <peter.maydell@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, 
- qemu-ppc@nongnu.org, qemu-arm@nongnu.org
-Subject: Re: [PATCH v2 2/2] hw/ppc/e500: Reuse TYPE_GPIO_PWR
-In-Reply-To: <d094728d-a7bd-4e16-b3c1-82065ca9bf08@linaro.org>
-References: <20241005100228.28094-1-shentey@gmail.com>
- <20241005100228.28094-3-shentey@gmail.com>
- <d094728d-a7bd-4e16-b3c1-82065ca9bf08@linaro.org>
-Message-ID: <1692441A-C91F-4A87-B8CB-82E42EE815EA@gmail.com>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="H/JjLKQP";
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1728652814;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=OfD2T2DNljJ4PR1x+jFli4y7dytYo55E8P6pXj2fAdg=;
+	b=H/JjLKQP7Ah2xb3kERB4tJZc+GvfUBVeC/c2ePBhW+fWFSujxea4YbcwikE71dAgTWPNc4
+	jIsFoKB8qZmUnz3iljAi5r4WD4azJzm/WvdOrhIzOB8Tlr8YkFv1wwb3NGGfoTsJWRZRRc
+	hANWWcQhELTHebqBOEFtjKNJt2J8n+8=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-611-wuLlgpvaMmikJYqAbfnQMg-1; Fri,
+ 11 Oct 2024 09:20:11 -0400
+X-MC-Unique: wuLlgpvaMmikJYqAbfnQMg-1
+Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 207981955F3D;
+	Fri, 11 Oct 2024 13:20:10 +0000 (UTC)
+Received: from thuth-p1g4.redhat.com (unknown [10.39.193.77])
+	by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP id 4E9001956052;
+	Fri, 11 Oct 2024 13:20:07 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Cc: Guenter Roeck <linux@roeck-us.net>,
+	Yoshinori Sato <ysato@users.sourceforge.jp>,
+	Magnus Damm <magnus.damm@gmail.com>,
+	qemu-arm@nongnu.org,
+	Thomas Huth <thuth@redhat.com>
+Subject: [PATCH 03/17] tests/functional: Convert the Avocado aarch64 tuxrun tests
+Date: Fri, 11 Oct 2024 15:19:20 +0200
+Message-ID: <20241011131937.377223-4-thuth@redhat.com>
+In-Reply-To: <20241011131937.377223-1-thuth@redhat.com>
+References: <20241011131937.377223-1-thuth@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::429;
- envelope-from=shentey@gmail.com; helo=mail-wr1-x429.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: d1LiX3KTEJLT
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
+X-TUID: 2Iz0u/UaEM7A
 
+Move the tests to a new file so that they can be run via
+qemu-system-aarch64 in the functional framework.
 
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ MAINTAINERS                             |  1 +
+ tests/avocado/tuxrun_baselines.py       | 31 ---------------
+ tests/functional/meson.build            |  2 +
+ tests/functional/test_aarch64_tuxrun.py | 50 +++++++++++++++++++++++++
+ 4 files changed, 53 insertions(+), 31 deletions(-)
+ create mode 100755 tests/functional/test_aarch64_tuxrun.py
 
-Am 7=2E Oktober 2024 21:13:22 UTC schrieb "Philippe Mathieu-Daud=C3=A9" <p=
-hilmd@linaro=2Eorg>:
->On 5/10/24 07:02, Bernhard Beschow wrote:
->> Taking inspiration from the ARM virt machine, port away from
->> qemu_allocate_irq() by reusing TYPE_GPIO_PWR=2E
->>=20
->> Signed-off-by: Bernhard Beschow <shentey@gmail=2Ecom>
->> ---
->>   hw/ppc/e500=2Ec  | 16 ++++------------
->>   hw/ppc/Kconfig |  1 +
->>   2 files changed, 5 insertions(+), 12 deletions(-)
->
->
->> @@ -892,13 +890,6 @@ static DeviceState *ppce500_init_mpic(PPCE500Machi=
-neState *pms,
->>       return dev;
->>   }
->>   -static void ppce500_power_off(void *opaque, int line, int on)
->> -{
->> -    if (on) {
->> -        qemu_system_shutdown_request(SHUTDOWN_CAUSE_GUEST_SHUTDOWN);
->> -    }
->> -}
->> -
->>   void ppce500_init(MachineState *machine)
->>   {
->>       MemoryRegion *address_space_mem =3D get_system_memory();
->> @@ -1086,7 +1077,7 @@ void ppce500_init(MachineState *machine)
->>       sysbus_create_simple("e500-spin", pmc->spin_base, NULL);
->>         if (pmc->has_mpc8xxx_gpio) {
->> -        qemu_irq poweroff_irq;
->> +        DeviceState *gpio_pwr_dev;
->
->Can we keep a reference in PPCE500MachineState?
-
-I considered turning it into an embedded attribute, but decided against it=
-, because 1/ the device isn't part of the SoC (and therefore ideally user-c=
-reateable), 2/ only used by the ppce500 machine, 3/ would be inconsistent w=
-ith surrounding code, and 4/ "gpio-pwr" would require exposing the struct f=
-irst (ARM virt also has no embedded attribute)=2E That all seemed like a lo=
-t of churn for what I want to achieve which is having the same solution for=
- the same problem across two machines=2E
-
-There is surely a lot of room for cleaning up e500 beyond my e500 cleanup =
-series, but unless there is demand for it, I'd stop there (patches welcome)=
-=2E Now that this series doesn't touch ARM much it'd actually make sense to=
- merge it there=2E
-
->
->Otherwise,
->Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro=2Eorg>
-
-So, is creating an anonymous device okay for you? Does your R-b stand neve=
-rtheless?
-
-Best regards,
-Bernhard
-
->
->>             dev =3D qdev_new("mpc8xxx_gpio");
->>           s =3D SYS_BUS_DEVICE(dev);
->> @@ -1096,8 +1087,9 @@ void ppce500_init(MachineState *machine)
->>                                       sysbus_mmio_get_region(s, 0));
->>             /* Power Off GPIO at Pin 0 */
->> -        poweroff_irq =3D qemu_allocate_irq(ppce500_power_off, NULL, 0)=
-;
->> -        qdev_connect_gpio_out(dev, 0, poweroff_irq);
->> +        gpio_pwr_dev =3D sysbus_create_simple("gpio-pwr", -1, NULL);
->> +        qdev_connect_gpio_out(dev, 0, qdev_get_gpio_in_named(gpio_pwr_=
-dev,
->> +                                                             "shutdown=
-", 0));
->>       }
+diff --git a/MAINTAINERS b/MAINTAINERS
+index d7a11fe601..ab9da679f5 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -987,6 +987,7 @@ F: hw/arm/virt*
+ F: include/hw/arm/virt.h
+ F: docs/system/arm/virt.rst
+ F: tests/functional/test_aarch64_virt.py
++F: tests/functional/test_aarch64_tuxrun.py
+ 
+ Xilinx Zynq
+ M: Edgar E. Iglesias <edgar.iglesias@gmail.com>
+diff --git a/tests/avocado/tuxrun_baselines.py b/tests/avocado/tuxrun_baselines.py
+index 56c8bdb2dc..dffa4f6339 100644
+--- a/tests/avocado/tuxrun_baselines.py
++++ b/tests/avocado/tuxrun_baselines.py
+@@ -192,37 +192,6 @@ def common_tuxrun(self,
+     #        --kernel https://storage.tuxboot.com/{TUXBOOT}/{IMAGE}
+     #
+ 
+-    def test_arm64(self):
+-        """
+-        :avocado: tags=arch:aarch64
+-        :avocado: tags=cpu:cortex-a57
+-        :avocado: tags=machine:virt
+-        :avocado: tags=tuxboot:arm64
+-        :avocado: tags=console:ttyAMA0
+-        :avocado: tags=shutdown:nowait
+-        """
+-        sums = {"Image" :
+-                "ce95a7101a5fecebe0fe630deee6bd97b32ba41bc8754090e9ad8961ea8674c7",
+-                "rootfs.ext4.zst" :
+-                "bbd5ed4b9c7d3f4ca19ba71a323a843c6b585e880115df3b7765769dbd9dd061"}
+-        self.common_tuxrun(csums=sums)
+-
+-    def test_arm64be(self):
+-        """
+-        :avocado: tags=arch:aarch64
+-        :avocado: tags=cpu:cortex-a57
+-        :avocado: tags=endian:big
+-        :avocado: tags=machine:virt
+-        :avocado: tags=tuxboot:arm64be
+-        :avocado: tags=console:ttyAMA0
+-        :avocado: tags=shutdown:nowait
+-        """
+-        sums = { "Image" :
+-                 "e0df4425eb2cd9ea9a283e808037f805641c65d8fcecc8f6407d8f4f339561b4",
+-                 "rootfs.ext4.zst" :
+-                 "e6ffd8813c8a335bc15728f2835f90539c84be7f8f5f691a8b01451b47fb4bd7"}
+-        self.common_tuxrun(csums=sums)
+-
+     def test_armv5(self):
+         """
+         :avocado: tags=arch:arm
+diff --git a/tests/functional/meson.build b/tests/functional/meson.build
+index c90c02517a..222bfbcc62 100644
+--- a/tests/functional/meson.build
++++ b/tests/functional/meson.build
+@@ -13,6 +13,7 @@ endif
+ test_timeouts = {
+   'aarch64_raspi4' : 120,
+   'aarch64_sbsaref' : 600,
++  'aarch64_tuxrun' : 120,
+   'aarch64_virt' : 360,
+   'acpi_bits' : 240,
+   'arm_raspi2' : 120,
+@@ -41,6 +42,7 @@ tests_aarch64_system_thorough = [
+   'aarch64_raspi3',
+   'aarch64_raspi4',
+   'aarch64_sbsaref',
++  'aarch64_tuxrun',
+   'aarch64_virt',
+   'multiprocess',
+ ]
+diff --git a/tests/functional/test_aarch64_tuxrun.py b/tests/functional/test_aarch64_tuxrun.py
+new file mode 100755
+index 0000000000..da56aee4ed
+--- /dev/null
++++ b/tests/functional/test_aarch64_tuxrun.py
+@@ -0,0 +1,50 @@
++#!/usr/bin/env python3
++#
++# Functional test that boots known good tuxboot images the same way
++# that tuxrun (www.tuxrun.org) does. This tool is used by things like
++# the LKFT project to run regression tests on kernels.
++#
++# Copyright (c) 2023 Linaro Ltd.
++#
++# Author:
++#  Alex Bennée <alex.bennee@linaro.org>
++#
++# SPDX-License-Identifier: GPL-2.0-or-later
++
++from qemu_test import Asset
++from qemu_test.tuxruntest import TuxRunBaselineTest
++
++class TuxRunAarch64Test(TuxRunBaselineTest):
++
++    ASSET_ARM64_KERNEL = Asset(
++        'https://storage.tuxboot.com/20230331/arm64/Image',
++        'ce95a7101a5fecebe0fe630deee6bd97b32ba41bc8754090e9ad8961ea8674c7')
++    ASSET_ARM64_ROOTFS = Asset(
++        'https://storage.tuxboot.com/20230331/arm64/rootfs.ext4.zst',
++        'bbd5ed4b9c7d3f4ca19ba71a323a843c6b585e880115df3b7765769dbd9dd061')
++
++    def test_arm64(self):
++        self.set_machine('virt')
++        self.cpu='cortex-a57'
++        self.console='ttyAMA0'
++        self.wait_for_shutdown=False
++        self.common_tuxrun(kernel_asset=self.ASSET_ARM64_KERNEL,
++                           rootfs_asset=self.ASSET_ARM64_ROOTFS)
++
++    ASSET_ARM64BE_KERNEL = Asset(
++        'https://storage.tuxboot.com/20230331/arm64be/Image',
++        'e0df4425eb2cd9ea9a283e808037f805641c65d8fcecc8f6407d8f4f339561b4')
++    ASSET_ARM64BE_ROOTFS = Asset(
++        'https://storage.tuxboot.com/20230331/arm64be/rootfs.ext4.zst',
++        'e6ffd8813c8a335bc15728f2835f90539c84be7f8f5f691a8b01451b47fb4bd7')
++
++    def test_arm64be(self):
++        self.set_machine('virt')
++        self.cpu='cortex-a57'
++        self.console='ttyAMA0'
++        self.wait_for_shutdown=False
++        self.common_tuxrun(kernel_asset=self.ASSET_ARM64BE_KERNEL,
++                           rootfs_asset=self.ASSET_ARM64BE_ROOTFS)
++
++if __name__ == '__main__':
++    TuxRunBaselineTest.main()
+-- 
+2.46.1

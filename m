@@ -1,69 +1,69 @@
-Received: by 2002:a17:505:3501:b0:1be9:327d:8ee3 with SMTP id mc1csp393086njb;
-        Fri, 11 Oct 2024 06:21:02 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVEvqtHPyiTzT+97yu+O5aGR0nTOamVHLYOEOi9i4kua8ybW+K6s+w0v57Nz+P0PEiQChbki/mCPvqTWg==@linaro.org
-X-Google-Smtp-Source: AGHT+IGyUj1EFzrnGZLiJyhmbknuH3hhMelMx1s02BjBs2ZLlNxzRjRKSkwdKC7tJMtQ4ydcZJbl
-X-Received: by 2002:a05:620a:4153:b0:7af:cd3c:1f30 with SMTP id af79cd13be357-7b11a3643demr366921285a.25.1728652862446;
-        Fri, 11 Oct 2024 06:21:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1728652862; cv=none;
+Received: by 2002:a17:505:3501:b0:1be9:327d:8ee3 with SMTP id mc1csp393119njb;
+        Fri, 11 Oct 2024 06:21:05 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUW+X9gZIK8z9aWF3WMDtxqXHBYBfHSwihFOJ+6zoCXVYz7Wc8PrLdlutmV+MumI9HjH4pEV8kcpDyxXg==@linaro.org
+X-Google-Smtp-Source: AGHT+IF3poRMeko3LqnCAIcg9fGdDrP1E/MlxT4Od5Onkv/E/nReAf8pHEtglAUdnX4637zIL/Na
+X-Received: by 2002:a05:6902:12c4:b0:e24:fac6:fad9 with SMTP id 3f1490d57ef6-e2919d83c4amr1841409276.16.1728652864925;
+        Fri, 11 Oct 2024 06:21:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1728652864; cv=none;
         d=google.com; s=arc-20240605;
-        b=BBqVQJznASIdMfXKbOjwFP2cr+2hOT1IUdTxuJMx/VpgN/apRTtdL4/rfTuj5c9o83
-         eBOzFjIDy8uZecexEMSCpUsVHQq4Ya7DgRu49WjW8HUzMvI3byM3R9hIUW3Ci5KFaPw4
-         SEBTGNPVtCY+VbB4ZQ+im4znaqMa8zfi3X9RlKFmWcqgx4ApghjZL0kyVBFjXnbbpjw7
-         Z1UYojxnX0CgsxRk5/ZTn0wCrSNvQ7WzqFBbrIuCX6UmCgQ3dfmXr1yS6RD+iux9sOlg
-         754Ll2+9wo9/Hpm9lNk/y9WmXVD1TDZpDtJ8uGngikGd6VpQPPkdwxV69OcXjnHEWfNX
-         ev/Q==
+        b=hoOnihbvX8Kh139jFqoukY/lda0XTRuzklv2fj7CHrbsbb6Lhli2+TlrdV6nWbqpp+
+         b+7DA2XXD6LiDqaJl32TPbunieX8/ZoRvsHB1+NI4avU5GO/8JsCf9lfCH8SheW5XkLj
+         4FBWtG9ndXzI2FPcWuZRku19AhdbX/e1wg12dqZNER0HSmvUaj/DUSzUW2XJRskRuMK6
+         fPxk/+f/IpXxci6pfiHmTnDVtN70//liFYgpqwExK9RKalzv1XOrmMQeWCVeuCUmBimD
+         GqzXlr4xCodIW/ODdgfkU9co+QWBH7UsyiZYh8F1X9UYjjzJuKhJZO6GSDjAJ/SKmX6I
+         6jUg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=GVVahyK6aiG7rFiHC9ll3BUOZPbdp7wyzMUyWTHzn+g=;
+        bh=JREXIIvl302nrjZLS5RAoHzWxTFKuXAGwAHQ6gMR2Hg=;
         fh=yV7XiH9Iqz9ECmsY7O4iL5H1OqntXAXD46ZP2pth0HE=;
-        b=JagrZ8DJ7KnEc9Qrwg57d9ba5QG4iix1B4M3y1waXHuLmH0VOsK6R2aS2S3YLW6Le3
-         JpsLhT8cfeYrDGpJx//u/fhLHX+Q94MP7Y6n51qcEdjayzr7t8JxqARpwpWTDLjwBStv
-         qBQQ6TKwwClpML3bShKI9Q7oAmkmnw86RBfbN01uDSoKyoXNgSgmlsCrnT0ZkJQz+QBh
-         P4qKQi2oFkbH1/CJfsOXiEWSCcqoh7sX4LyoPg2atKNrrSukIzrcrGU7V5pZuC0g2+Pz
-         Dtig0dkhpwhLegbitWuI+H9EwgZmH9kpMfrWWdKaObE3uv22Q/NcXvQ5wwtghUN3JwaP
-         55YQ==;
+        b=e0P83w9/mqxMWn6U7REARRsxekvM+YME/7OSBYy/2KFt+OtjxtBb4D9xkD5F6Q8Cw1
+         Sevon5jT0IriAShLbiKclEFdhRQsBm8x1ZMna1Fbfr8Fnqf4OHFeFMWDRNoUREWsH7TH
+         perNTDE0gipUEpwBgHhSKdAHa+vbAdbSaY48VDFeP9+775s25jUrFQ+Cj7ukDJu6g5n8
+         X9AjB196MYpVF5T9UyXLZKxkS6t8cZzqmdeoKPkfw9sIAMZvEGZSDwx3e7xmAWluXE8S
+         K2RoJOYyYgYcTA/6WYm8B1jZHi01lzEsbxwAsp8VCkhgoXJWA75yug1n80kczLPb+jhw
+         e8yQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=SgZxK5FG;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=WRyfxEXk;
        spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <thuth@redhat.com>
 Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id af79cd13be357-7b1148fd5c5si363091385a.140.2024.10.11.06.21.02
+        by mx.google.com with ESMTPS id af79cd13be357-7b1149d1222si383422485a.761.2024.10.11.06.21.04
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 11 Oct 2024 06:21:02 -0700 (PDT)
+        Fri, 11 Oct 2024 06:21:04 -0700 (PDT)
 Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=SgZxK5FG;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=WRyfxEXk;
        spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1728652862;
+	s=mimecast20190719; t=1728652864;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 to:to:cc:cc:mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=GVVahyK6aiG7rFiHC9ll3BUOZPbdp7wyzMUyWTHzn+g=;
-	b=SgZxK5FGZ2K6buzHCLelZ76p3mnbq8VTcwnafw7aZA1iHQlaCcYoFUQGJsTkuC4KiGY33Z
-	rY56PruKCb+txur9n4Z/3BTHY6nBcylNy9rxbOPEVYW5T0r6g1TKrk1EkaMCWuC9nIlyuA
-	8cv7/tl2hSbrQY2UUhcHxZ7vEQO+LmI=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+	bh=JREXIIvl302nrjZLS5RAoHzWxTFKuXAGwAHQ6gMR2Hg=;
+	b=WRyfxEXkPK1ibg3y6QZieL3Jg3wrvmh1pzLK3FIeo7ZInoMtp6tyPAxxxajZhKpb/X0noy
+	LryTY0eWGZUiMQuUn9ulKLugg/1fTpGY/+7wgsCcbNYtJKK+3Wwc2+SIntMJlCYLmYudRe
+	OwWv84z/1+yXGgb7rwwb0NiuphFRkGU=
+Received: from mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-28-eV-Y9c6hMQGPQRAkEQl6lg-1; Fri,
- 11 Oct 2024 09:20:56 -0400
-X-MC-Unique: eV-Y9c6hMQGPQRAkEQl6lg-1
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-638-DufTexF8MpaGj1B6Ka8pYQ-1; Fri,
+ 11 Oct 2024 09:21:01 -0400
+X-MC-Unique: DufTexF8MpaGj1B6Ka8pYQ-1
 Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 0F3DF1955F44;
-	Fri, 11 Oct 2024 13:20:52 +0000 (UTC)
+	by mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id D19411955D5F;
+	Fri, 11 Oct 2024 13:20:59 +0000 (UTC)
 Received: from thuth-p1g4.redhat.com (unknown [10.39.193.77])
-	by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP id 496501955E7B;
-	Fri, 11 Oct 2024 13:20:49 +0000 (UTC)
+	by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP id 5D1951955E8F;
+	Fri, 11 Oct 2024 13:20:55 +0000 (UTC)
 From: Thomas Huth <thuth@redhat.com>
 To: qemu-devel@nongnu.org,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
@@ -73,107 +73,45 @@ Cc: Guenter Roeck <linux@roeck-us.net>,
 	Magnus Damm <magnus.damm@gmail.com>,
 	qemu-arm@nongnu.org,
 	Thomas Huth <thuth@redhat.com>
-Subject: [PATCH 14/17] tests/functional: Convert the Avocado mips64el tuxrun test
-Date: Fri, 11 Oct 2024 15:19:31 +0200
-Message-ID: <20241011131937.377223-15-thuth@redhat.com>
+Subject: [PATCH 16/17] Revert "hw/sh4/r2d: Realize IDE controller before accessing it"
+Date: Fri, 11 Oct 2024 15:19:33 +0200
+Message-ID: <20241011131937.377223-17-thuth@redhat.com>
 In-Reply-To: <20241011131937.377223-1-thuth@redhat.com>
 References: <20241011131937.377223-1-thuth@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-X-TUID: bcsOt9JT61Jr
+X-TUID: ZsJ7cADhRV4I
 
-Move the test into a new file so that it can be run via
-qemu-system-mips64el in the functional framework.
+This reverts commit 3c5f86a22686ef475a8259c0d8ee714f61c770c9.
 
+Changing the order here caused a regression with the "tuxrun"
+kernels (from https://storage.tuxboot.com/20230331/) - ATA commands
+fail with a "ata1: lost interrupt (Status 0x58)" message.
+Apparently we need to wire the interrupt here first before
+realizing the device, so revert the change to the original
+behavior.
+
+Reported-by: Guenter Roeck <linux@roeck-us.net>
 Signed-off-by: Thomas Huth <thuth@redhat.com>
 ---
- tests/avocado/tuxrun_baselines.py        | 16 -----------
- tests/functional/meson.build             |  1 +
- tests/functional/test_mips64el_tuxrun.py | 35 ++++++++++++++++++++++++
- 3 files changed, 36 insertions(+), 16 deletions(-)
- create mode 100755 tests/functional/test_mips64el_tuxrun.py
+ hw/sh4/r2d.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/tests/avocado/tuxrun_baselines.py b/tests/avocado/tuxrun_baselines.py
-index e0e6a56067..18dc7ddaab 100644
---- a/tests/avocado/tuxrun_baselines.py
-+++ b/tests/avocado/tuxrun_baselines.py
-@@ -192,22 +192,6 @@ def common_tuxrun(self,
-     #        --kernel https://storage.tuxboot.com/{TUXBOOT}/{IMAGE}
-     #
- 
--    def test_mips64el(self):
--        """
--        :avocado: tags=arch:mips64el
--        :avocado: tags=machine:malta
--        :avocado: tags=tuxboot:mips64el
--        :avocado: tags=image:vmlinux
--        :avocado: tags=root:sda
--        :avocado: tags=shutdown:nowait
--        """
--        sums = { "rootfs.ext4.zst" :
--                 "fba585368f5915b1498ed081863474b2d7ec4e97cdd46d21bdcb2f9698f83de4",
--                 "vmlinux" :
--                 "d4e08965e2155c4cccce7c5f34d18fe34c636cda2f2c9844387d614950155266" }
--
--        self.common_tuxrun(csums=sums, drive="driver=ide-hd,bus=ide.0,unit=0")
--
-     def test_ppc32(self):
-         """
-         :avocado: tags=arch:ppc
-diff --git a/tests/functional/meson.build b/tests/functional/meson.build
-index eef48edf52..48445edfab 100644
---- a/tests/functional/meson.build
-+++ b/tests/functional/meson.build
-@@ -108,6 +108,7 @@ tests_mips64el_system_thorough = [
-   'mips64el_fuloong2e',
-   'mips64el_loongson3v',
-   'mips64el_malta',
-+  'mips64el_tuxrun',
- ]
- 
- tests_or1k_system_thorough = [
-diff --git a/tests/functional/test_mips64el_tuxrun.py b/tests/functional/test_mips64el_tuxrun.py
-new file mode 100755
-index 0000000000..819549a27b
---- /dev/null
-+++ b/tests/functional/test_mips64el_tuxrun.py
-@@ -0,0 +1,35 @@
-+#!/usr/bin/env python3
-+#
-+# Functional test that boots known good tuxboot images the same way
-+# that tuxrun (www.tuxrun.org) does. This tool is used by things like
-+# the LKFT project to run regression tests on kernels.
-+#
-+# Copyright (c) 2023 Linaro Ltd.
-+#
-+# Author:
-+#  Alex Bennée <alex.bennee@linaro.org>
-+#
-+# SPDX-License-Identifier: GPL-2.0-or-later
-+
-+from qemu_test import Asset
-+from qemu_test.tuxruntest import TuxRunBaselineTest
-+
-+class TuxRunMips64ELTest(TuxRunBaselineTest):
-+
-+    ASSET_MIPS64EL_KERNEL = Asset(
-+        'https://storage.tuxboot.com/20230331/mips64el/vmlinux',
-+        'd4e08965e2155c4cccce7c5f34d18fe34c636cda2f2c9844387d614950155266')
-+    ASSET_MIPS64EL_ROOTFS = Asset(
-+        'https://storage.tuxboot.com/20230331/mips64el/rootfs.ext4.zst',
-+        'fba585368f5915b1498ed081863474b2d7ec4e97cdd46d21bdcb2f9698f83de4')
-+
-+    def test_mips64el(self):
-+        self.set_machine('malta')
-+        self.root="sda"
-+        self.wait_for_shutdown=False
-+        self.common_tuxrun(kernel_asset=self.ASSET_MIPS64EL_KERNEL,
-+                           rootfs_asset=self.ASSET_MIPS64EL_ROOTFS,
-+                           drive="driver=ide-hd,bus=ide.0,unit=0")
-+
-+if __name__ == '__main__':
-+    TuxRunBaselineTest.main()
+diff --git a/hw/sh4/r2d.c b/hw/sh4/r2d.c
+index e5ac6751bd..7eecd79fcc 100644
+--- a/hw/sh4/r2d.c
++++ b/hw/sh4/r2d.c
+@@ -286,9 +286,9 @@ static void r2d_init(MachineState *machine)
+     dinfo = drive_get(IF_IDE, 0, 0);
+     dev = qdev_new("mmio-ide");
+     busdev = SYS_BUS_DEVICE(dev);
++    sysbus_connect_irq(busdev, 0, irq[CF_IDE]);
+     qdev_prop_set_uint32(dev, "shift", 1);
+     sysbus_realize_and_unref(busdev, &error_fatal);
+-    sysbus_connect_irq(busdev, 0, irq[CF_IDE]);
+     sysbus_mmio_map(busdev, 0, 0x14001000);
+     sysbus_mmio_map(busdev, 1, 0x1400080c);
+     mmio_ide_init_drives(dev, dinfo, NULL);
 -- 
 2.46.1

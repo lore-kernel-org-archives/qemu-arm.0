@@ -1,116 +1,178 @@
-Received: by 2002:a17:505:3501:b0:1be9:327d:8ee3 with SMTP id mc1csp683894njb;
-        Fri, 11 Oct 2024 15:52:22 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVbzwAPGSJxrc0QftdqZUkLXEy25fyTGZdsYAoEKYxhN6udXWzsO0+dwtyBJ964BTJc8hclg0hOuUkPyA==@linaro.org
-X-Received: by 2002:a05:6512:130b:b0:52f:c5c0:2879 with SMTP id 2adb3069b0e04-539da5950e8mr2233158e87.41.1728687142434;
-        Fri, 11 Oct 2024 15:52:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1728687142; cv=none;
+Received: by 2002:a17:505:3501:b0:1be9:327d:8ee3 with SMTP id mc1csp858484njb;
+        Sat, 12 Oct 2024 02:34:42 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCW5ADO1XS4asfkR0rX4UgiamljKg5sDFK9lMdpUd8AfhXWW0WzhWWidOs+5i8jnGiyEvSwG9l543y63iQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IEE1ITDnjsBuVAUnIQ/g7Bbe3mnoRjWLpckWXF6m3iYJYAG20iF8W2IaI2miVrswvSqkeHf
+X-Received: by 2002:a05:622a:5518:b0:45f:7a8:b633 with SMTP id d75a77b69052e-4604bbb449bmr81923701cf.15.1728725682593;
+        Sat, 12 Oct 2024 02:34:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1728725682; cv=none;
         d=google.com; s=arc-20240605;
-        b=BlOmiMQ+8cAJxoLHWrq31piIUJ31OIA1AZy+ASLJxHek6gXae5tdseQbW4l31XB963
-         /FHSpQDi7v7SCe8tStiX8bBVnCCLqe5HtxUBJCf757SMEUV8NjP0aL47giviBhGbKlvs
-         MqwuLRkjohxer8kr6U/cAXLieTx9iV52Eompstw9nm6IQIwa31jro5QCFqSOrdYr6JRy
-         fqifdLDAep5rMRWwhtPJzMnOSjBS2N1Xmkb8OwhdUXkFaRfWzqNZUzr+wIRTp9YY1ZG/
-         8AJXnmqDQCI1kDl9HwGMTYfgSgaxQjvOWtRiM2QwQdv+UVhGa3yRcOrM/vMPbmlb2Obh
-         JY7Q==
+        b=YoclaQVpM9nxO7AR0T9o7GbQzxSyLodx5dz75XzogJO3oqymJ5yyiSuKJv1Rio5ErG
+         Zd+l5F8dToUSskE8b/PXMZtfIy7WwpOULYlCksXQto0Yw2zOy+Us6810XrRLvu4FHFBF
+         YDtJ+iesLslnHfGey4Ilf27DMIepNClN4zA3cv+F5CVn7RzuWNJQhwtDSV7iiZg8//LP
+         w0NFmYma2aZXw8b3+uCpge48Rxc6cun4uVJ32IrlqzIOCDKZl4Edjd272H3pnRvMWH/5
+         iiaO3YmEMi1fwQYM1dA6VTqCw4JG79VIFZ64cVBaJiuCAJPm8ikuqfmILRtx779+fNCa
+         D0pA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
          :dkim-signature;
-        bh=dnzofjFPSUL3WKzP+FhJgxzB0pSOdKYfbeozcKbG5Lo=;
-        fh=Xk+2koagkksVGPPAF+hLdPmQrhLL6IpT4gh9KK7RKGs=;
-        b=VzKTfJqEK9AspMZm1r43XUlVacZudbuaECt0XOhlAgqNWwViP62BtjG+VK4EzcaRqV
-         vFV77lhwktL87HIl7d8goIlTq9GQDdEZ0z1P0AxUCSeN7YR4V9lZdEa/mJdb4KXA31NE
-         XnBvoG6Qa3JUh6D52FQrwVYhExS+o0xMzf+/9rreePiOfiJauR3itqLA8aiq7jZDrUA6
-         9kLP3i0mT8CuQCyMCZf3bMObRrsyF1DuR3KCA3eT8fow3HBcZpRLqvopm/3+kg4OGn1c
-         QVaB8dnT6Qu7NAGYrFfVHa16mL+qgTe4M6nPO4qtzbbnrKEvo29bZVdB65RzLscpIc+k
-         h6yg==;
+        bh=YVB7zC9Jj+1FXYZhXEx1pjKzOjot85Nva6zGh87BOMQ=;
+        fh=XZEAMzrA0R6LEHEbex23p+GsZB8dWVUXWZJ55oMvpMk=;
+        b=ajGFBk06T0WWdHJt+fZI71wZvK8l5XinsiToc+lqMdCb68JgzND6kW2HsAv9y1VJ96
+         ye+lzCBAO9QZpaVMUsTP3JBoAYdbZG8kQUiswbHp/b7JDO5NXFhNY/mg48JlLP+fq4FF
+         Vq+d7nYbfS3MSNFVz7orf3xfNHBSypGJ+p/iwq0NReLb6N9se/XhDS0kULfSmncbKfdA
+         B7kkR9o/hMbVJl8YiWt8Z0uNqVO+X/iPmBzTc/gNfuUwyuX34SzHIC77p5M+sEHOsHCT
+         CGU2zVycvRB80g9tP6OZG6c2438GE+3jEzK2zWp8Ywuu2e6ju9IkH3folsdKokCOKJd+
+         ZI8g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=m9sYQeDJ;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <philmd@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 2adb3069b0e04-539da5a0a72sor834958e87.26.2024.10.11.15.52.22
+       dkim=pass header.i=@intel.com header.s=Intel header.b=lB+mhUtP;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id af79cd13be357-7b1149d01c4si554377585a.710.2024.10.12.02.34.42
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Fri, 11 Oct 2024 15:52:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Sat, 12 Oct 2024 02:34:42 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=m9sYQeDJ;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1728687142; x=1729291942; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=dnzofjFPSUL3WKzP+FhJgxzB0pSOdKYfbeozcKbG5Lo=;
-        b=m9sYQeDJt6LzwAnphiFmhrpFqPzfgHCp4fpj0NGPeJNco1mDeekUj6OjsSOseYnqNt
-         FhEWsrEq6gNvXPVsFNPguyyCVDxC/xnUm64LBNo0CetQYk3IBMcD0Lf2NnhfaAP+XjfG
-         8VtTVZxbXdyfnopWt+DnM6GvuNkjt5dAIl6/+c6BquS8fPaAGVgK7Ov1d2mIYsahTY+3
-         O9Oi9RhuZYSUGB0KH52A82UXcbZTEslmCw05rX2sgvREOh2rnZuldrUqd5NFODVPzz1B
-         AH18f9yvWPaFaLgRqyorR15IUvk8+NOhI1yCZW7CrG+N74kYL1mv7e9QPTZB8wI9kakp
-         o3IQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1728687142; x=1729291942;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=dnzofjFPSUL3WKzP+FhJgxzB0pSOdKYfbeozcKbG5Lo=;
-        b=w3DZuQenkhFQHGuqLhIAbJVOEbEpQIKejtSyL/d5RzW8/Ll3ly8zT0twOPj9AujdaM
-         VcVYYrU+ZwTm3SILwbw7NP5OjMPmCe6D/iPvyV+mt9CLkyXlZdu4xUV0wLcAdb4eEVKd
-         ZHCAnR60ER/TPkmZESs36/+LzIveQWz5dJs2+qjasRGFOMpwBfdGLiCUSmnZLuqhRcQt
-         E+kqEzl8bUu/hnUiCoKBc1o9/JFPyaunTk6UrnYL93P6ljt1J3eXILq5QvuFkziW1h7F
-         rKsaGYbZisfLu63q/YoaYkclpKYSGNAX8wt9YIC80Nh0pF0AygX9fkIEzJdj3n/KKaVX
-         /JhA==
-X-Forwarded-Encrypted: i=1; AJvYcCUyehvod8HTsSSRvDnh8ijQynVTxXMNCrBJ7dESCLe07IGToS1RvHn+CrxbFXRp1nwvLNZ37KxUEeeSOQ==@linaro.org
-X-Gm-Message-State: AOJu0YyATqf9ML8r/q871LeGEIaFgM2NYeMNYxJnNo25gOLG8oxWBCg1
-	fWn7HVHIv7uBGRzWS3DtMD7I9z++f8T7ij5VPRQNiP5J9wO6nPfCzp7lvH1FyYbTAw==
-X-Google-Smtp-Source: AGHT+IGTg0S8j4FYojJFYVkX5vKBH9mqqx6AA/Eut0cgMrCG9vgLKGX6aYYOwZlWNCB4NeoGTdzDkA==
-X-Received: by 2002:a05:651c:556:b0:2f3:f441:af24 with SMTP id 38308e7fff4ca-2fb32779b16mr18140581fa.26.1728687141791;
-        Fri, 11 Oct 2024 15:52:21 -0700 (PDT)
-Return-Path: <philmd@linaro.org>
-Received: from [192.168.222.92] ([91.209.212.130])
-        by smtp.gmail.com with ESMTPSA id 38308e7fff4ca-2fb245b19f0sm6058001fa.71.2024.10.11.15.52.15
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 11 Oct 2024 15:52:20 -0700 (PDT)
-Message-ID: <ee2dcb64-1a4c-4b13-b0d9-83e1a58dbbcb@linaro.org>
-Date: Fri, 11 Oct 2024 19:52:10 -0300
+       dkim=pass header.i=@intel.com header.s=Intel header.b=lB+mhUtP;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1szYW2-0001cr-Sz; Sat, 12 Oct 2024 05:34:27 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
+ id 1szYW0-0001cU-2t; Sat, 12 Oct 2024 05:34:24 -0400
+Received: from mgamail.intel.com ([192.198.163.12])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
+ id 1szYVx-0008UR-7H; Sat, 12 Oct 2024 05:34:23 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1728725661; x=1760261661;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:in-reply-to;
+ bh=O3mCAQtayiMIHdyQpj2o2BuMZZMWYWs+Uw6UyGPRjUQ=;
+ b=lB+mhUtPQ/CLQu/q6cytTN/bwaWUJ3yctCBtrfwLTnW2qkBpAUf8TCKC
+ fr4o1JIgpGS2K8irvL6WZj36lGW8iq2c9K1j7ePPpQmW08DOVyMywqUN7
+ +y2yePGOTT6+v/9GArwZfK7Odggau8IinPjMWn0Bq2XyhGihExOsq0jzz
+ TZ33WkQzqiJWj0QQWDyQpoghNbxV140DdtdEqqcywFUNP6WXZEwNgPIs0
+ OtQPwLO49fMLcQZ5QKABekLO0EMH8wa8Lt3QfCBQ5OesouLKDteYg+r/p
+ uDk0dM2r1DCjok52iX//parKhX1PQHW1kvQYEf0lUrIFbnKwExt/g0bEt Q==;
+X-CSE-ConnectionGUID: t2XdL5PNS6KTncLLicaKGQ==
+X-CSE-MsgGUID: RIfxSHVMSC+E7VssSSPgng==
+X-IronPort-AV: E=McAfee;i="6700,10204,11222"; a="32035181"
+X-IronPort-AV: E=Sophos;i="6.11,198,1725346800"; d="scan'208";a="32035181"
+Received: from fmviesa002.fm.intel.com ([10.60.135.142])
+ by fmvoesa106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 12 Oct 2024 02:34:17 -0700
+X-CSE-ConnectionGUID: 7HZvLXW6TW2XeCQk17lw4A==
+X-CSE-MsgGUID: nMhM8DDBQJ6KW6YEML4x9A==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.11,198,1725346800"; d="scan'208";a="100447434"
+Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost)
+ ([10.239.160.36])
+ by fmviesa002.fm.intel.com with ESMTP; 12 Oct 2024 02:34:13 -0700
+Date: Sat, 12 Oct 2024 17:50:26 +0800
+From: Zhao Liu <zhao1.liu@intel.com>
+To: Alireza Sanaee <alireza.sanaee@huawei.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, zhenyu.z.wang@intel.com,
+ dapeng1.mi@linux.intel.com, yongwei.ma@intel.com, armbru@redhat.com,
+ farman@linux.ibm.com, peter.maydell@linaro.org, mst@redhat.com,
+ anisinha@redhat.com, shannon.zhaosl@gmail.com, imammedo@redhat.com,
+ mtosatti@redhat.com, berrange@redhat.com,
+ richard.henderson@linaro.org, linuxarm@huawei.com,
+ shameerali.kolothum.thodi@huawei.com, Jonathan.Cameron@huawei.com,
+ jiangkunkun@huawei.com, yangyicong@hisilicon.com
+Subject: Re: [PATCH v3 2/6] i386/cpu: add IsDefined flag to smp-cache property
+Message-ID: <ZwpGYtqS9AJ96G8+@intel.com>
+References: <20241010111822.345-1-alireza.sanaee@huawei.com>
+ <20241010111822.345-3-alireza.sanaee@huawei.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 16/17] Revert "hw/sh4/r2d: Realize IDE controller before
- accessing it"
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
- =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-Cc: Guenter Roeck <linux@roeck-us.net>,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
- Magnus Damm <magnus.damm@gmail.com>, qemu-arm@nongnu.org
-References: <20241011131937.377223-1-thuth@redhat.com>
- <20241011131937.377223-17-thuth@redhat.com>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20241011131937.377223-17-thuth@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: Sk+bXCqApBR5
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20241010111822.345-3-alireza.sanaee@huawei.com>
+Received-SPF: pass client-ip=192.198.163.12; envelope-from=zhao1.liu@intel.com;
+ helo=mgamail.intel.com
+X-Spam_score_int: -44
+X-Spam_score: -4.5
+X-Spam_bar: ----
+X-Spam_report: (-4.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.15,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: SRpi20dW0OtB
 
-On 11/10/24 10:19, Thomas Huth wrote:
-> This reverts commit 3c5f86a22686ef475a8259c0d8ee714f61c770c9.
+Hi Alireze,
+
+On Thu, Oct 10, 2024 at 12:18:18PM +0100, Alireza Sanaee wrote:
+> Date: Thu, 10 Oct 2024 12:18:18 +0100
+> From: Alireza Sanaee <alireza.sanaee@huawei.com>
+> Subject: [PATCH v3 2/6] i386/cpu: add IsDefined flag to smp-cache property
+> X-Mailer: git-send-email 2.34.1
 > 
-> Changing the order here caused a regression with the "tuxrun"
-> kernels (from https://storage.tuxboot.com/20230331/) - ATA commands
-> fail with a "ata1: lost interrupt (Status 0x58)" message.
-> Apparently we need to wire the interrupt here first before
-> realizing the device, so revert the change to the original
-> behavior.
+> This commit adds IsDefined flag to the object and this helps in avoiding
+> extra checks for every single layer of caches in both x86 and ARM.
 > 
-> Reported-by: Guenter Roeck <linux@roeck-us.net>
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> Signed-off-by: Alireza Sanaee <alireza.sanaee@huawei.com>
 > ---
->   hw/sh4/r2d.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
+>  hw/core/machine-smp.c | 2 ++
+>  include/hw/boards.h   | 1 +
+>  2 files changed, 3 insertions(+)
+> 
+> diff --git a/hw/core/machine-smp.c b/hw/core/machine-smp.c
+> index 9a28194676..5a02bbf584 100644
+> --- a/hw/core/machine-smp.c
+> +++ b/hw/core/machine-smp.c
+> @@ -371,6 +371,8 @@ bool machine_parse_smp_cache(MachineState *ms,
+>          return false;
+>      }
+>  
+> +    ms->smp_cache.IsDefined = true;
+> +
+>      return true;
+>  }
+>  
+> diff --git a/include/hw/boards.h b/include/hw/boards.h
+> index db2aa2b706..2883a57084 100644
+> --- a/include/hw/boards.h
+> +++ b/include/hw/boards.h
+> @@ -373,6 +373,7 @@ typedef struct CpuTopology {
+>  
+>  typedef struct SmpCache {
+>      SmpCacheProperties props[CACHE_LEVEL_AND_TYPE__MAX];
+> +    bool IsDefined;
+>  } SmpCache;
+>  
+>  /**
 
-Acked-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Thanks for your patch, now I've added this commit in my series to
+resolve my TODO, which can also help your series be more ARM-focused :).
+
+I will post my next version soon.
+
+Thanks,
+Zhao
+
 

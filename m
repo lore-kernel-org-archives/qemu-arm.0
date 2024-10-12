@@ -1,178 +1,258 @@
-Received: by 2002:a17:505:3501:b0:1be9:327d:8ee3 with SMTP id mc1csp858484njb;
-        Sat, 12 Oct 2024 02:34:42 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCW5ADO1XS4asfkR0rX4UgiamljKg5sDFK9lMdpUd8AfhXWW0WzhWWidOs+5i8jnGiyEvSwG9l543y63iQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IEE1ITDnjsBuVAUnIQ/g7Bbe3mnoRjWLpckWXF6m3iYJYAG20iF8W2IaI2miVrswvSqkeHf
-X-Received: by 2002:a05:622a:5518:b0:45f:7a8:b633 with SMTP id d75a77b69052e-4604bbb449bmr81923701cf.15.1728725682593;
-        Sat, 12 Oct 2024 02:34:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1728725682; cv=none;
+Received: by 2002:a17:505:3501:b0:1be9:327d:8ee3 with SMTP id mc1csp874495njb;
+        Sat, 12 Oct 2024 03:28:33 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVlMn1AjkyouLA1x7mtLSvpg1JrPKJrz9jO3OoZqEOfvulIaZRWQYv5GELi2ziL7mnp7xutlgdwEm6gBg==@linaro.org
+X-Google-Smtp-Source: AGHT+IEMpcvSyWUQzsAMwVp1HEddmvHTeTpBM8TC2qgaoH0GWj32XKRh90QIBjTlnFPIgUebiGPz
+X-Received: by 2002:a05:6214:3a8a:b0:6cb:be89:dd8 with SMTP id 6a1803df08f44-6cbeff52f57mr100646856d6.22.1728728913114;
+        Sat, 12 Oct 2024 03:28:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1728728913; cv=none;
         d=google.com; s=arc-20240605;
-        b=YoclaQVpM9nxO7AR0T9o7GbQzxSyLodx5dz75XzogJO3oqymJ5yyiSuKJv1Rio5ErG
-         Zd+l5F8dToUSskE8b/PXMZtfIy7WwpOULYlCksXQto0Yw2zOy+Us6810XrRLvu4FHFBF
-         YDtJ+iesLslnHfGey4Ilf27DMIepNClN4zA3cv+F5CVn7RzuWNJQhwtDSV7iiZg8//LP
-         w0NFmYma2aZXw8b3+uCpge48Rxc6cun4uVJ32IrlqzIOCDKZl4Edjd272H3pnRvMWH/5
-         iiaO3YmEMi1fwQYM1dA6VTqCw4JG79VIFZ64cVBaJiuCAJPm8ikuqfmILRtx779+fNCa
-         D0pA==
+        b=ADqkOo6VzzhvG1Xhu28ogWVQS/4ngTaXTrbiz/reCBWoLL4Nch6toJ/367DgjfpfFh
+         A0pfah+n4xc5xI4/Oasn1K7HLp/BKwRoizF9MWUm9PU1g7fuSCWSLlx/Ru/jc1aMJPfK
+         +OoIGN+xx90LTiNu+ojAV3ZhyE08sorFPkXJCm7ioPPapZBFBuxgk9xXrWorU7tnH3Pi
+         lSoKvy1Q4StsEy/XuKAAM1+5GEzSfQ6Le38mZNgQ2NSbPa2jQrapqrnw/6nNQX6DMJZW
+         Q4EyKCU9dHokzlK0RnrONnoYyTPVMqbkC1RgWLSNA7LXJyOxgScHRZBBVjZlOSoFVyXx
+         QiQQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=YVB7zC9Jj+1FXYZhXEx1pjKzOjot85Nva6zGh87BOMQ=;
-        fh=XZEAMzrA0R6LEHEbex23p+GsZB8dWVUXWZJ55oMvpMk=;
-        b=ajGFBk06T0WWdHJt+fZI71wZvK8l5XinsiToc+lqMdCb68JgzND6kW2HsAv9y1VJ96
-         ye+lzCBAO9QZpaVMUsTP3JBoAYdbZG8kQUiswbHp/b7JDO5NXFhNY/mg48JlLP+fq4FF
-         Vq+d7nYbfS3MSNFVz7orf3xfNHBSypGJ+p/iwq0NReLb6N9se/XhDS0kULfSmncbKfdA
-         B7kkR9o/hMbVJl8YiWt8Z0uNqVO+X/iPmBzTc/gNfuUwyuX34SzHIC77p5M+sEHOsHCT
-         CGU2zVycvRB80g9tP6OZG6c2438GE+3jEzK2zWp8Ywuu2e6ju9IkH3folsdKokCOKJd+
-         ZI8g==;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=jVWo9yPmOLpT1D4g6fP5xD4r9Dl9jRCW5oUriZRRQM0=;
+        fh=8h7shi0yfCpjWQfPt6G8q/Uhe70OsXawCuVYUheqDjs=;
+        b=cHnExDLOromV5j55jpg/xeoEXDNIgIY3rLdBPfBkFvMZ6/Hf3fYg5NKpO0jTkmn4E3
+         YYowsRQzuWjZEayl3u/N0o/JdkwWOgVHJ5HCzz6i6ZaV5PEi6T8OQCC/TyKo+GzYFFLR
+         Oal3ISUiDABuCqoiuQdbdSfRJaW5hy3nlKg+Rzr39FGwhrGWpywpTju8ofvjd1qn/UY/
+         Vr6DVujq+9G7zknsNsyc8+70Ubp6R8tWrCUVZheWhdiUL69OZLRZ+Lvamxg2t+pOzaFP
+         KGmgnDIaIVp4Ouzfns2rKcgTapjtLkATHdYL4WOaD+GOH0ud777UzbqhdCopu2wfyrTW
+         zCXA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=lB+mhUtP;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@intel.com header.s=Intel header.b=X3od+MH1;
+       spf=pass (google.com: domain of zhao1.liu@intel.com designates 192.198.163.8 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7b1149d01c4si554377585a.710.2024.10.12.02.34.42
-        for <alex.bennee@linaro.org>
+Return-Path: <zhao1.liu@intel.com>
+Received: from mgamail.intel.com (mgamail.intel.com. [192.198.163.8])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6cbe85e0783si58893326d6.189.2024.10.12.03.28.31
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 12 Oct 2024 02:34:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sat, 12 Oct 2024 03:28:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of zhao1.liu@intel.com designates 192.198.163.8 as permitted sender) client-ip=192.198.163.8;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=lB+mhUtP;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@intel.com header.s=Intel header.b=X3od+MH1;
+       spf=pass (google.com: domain of zhao1.liu@intel.com designates 192.198.163.8 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1szYW2-0001cr-Sz; Sat, 12 Oct 2024 05:34:27 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1szYW0-0001cU-2t; Sat, 12 Oct 2024 05:34:24 -0400
-Received: from mgamail.intel.com ([192.198.163.12])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1szYVx-0008UR-7H; Sat, 12 Oct 2024 05:34:23 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1728725661; x=1760261661;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=O3mCAQtayiMIHdyQpj2o2BuMZZMWYWs+Uw6UyGPRjUQ=;
- b=lB+mhUtPQ/CLQu/q6cytTN/bwaWUJ3yctCBtrfwLTnW2qkBpAUf8TCKC
- fr4o1JIgpGS2K8irvL6WZj36lGW8iq2c9K1j7ePPpQmW08DOVyMywqUN7
- +y2yePGOTT6+v/9GArwZfK7Odggau8IinPjMWn0Bq2XyhGihExOsq0jzz
- TZ33WkQzqiJWj0QQWDyQpoghNbxV140DdtdEqqcywFUNP6WXZEwNgPIs0
- OtQPwLO49fMLcQZ5QKABekLO0EMH8wa8Lt3QfCBQ5OesouLKDteYg+r/p
- uDk0dM2r1DCjok52iX//parKhX1PQHW1kvQYEf0lUrIFbnKwExt/g0bEt Q==;
-X-CSE-ConnectionGUID: t2XdL5PNS6KTncLLicaKGQ==
-X-CSE-MsgGUID: RIfxSHVMSC+E7VssSSPgng==
-X-IronPort-AV: E=McAfee;i="6700,10204,11222"; a="32035181"
-X-IronPort-AV: E=Sophos;i="6.11,198,1725346800"; d="scan'208";a="32035181"
-Received: from fmviesa002.fm.intel.com ([10.60.135.142])
- by fmvoesa106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 12 Oct 2024 02:34:17 -0700
-X-CSE-ConnectionGUID: 7HZvLXW6TW2XeCQk17lw4A==
-X-CSE-MsgGUID: nMhM8DDBQJ6KW6YEML4x9A==
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1728728913; x=1760264913;
+  h=from:to:cc:subject:date:message-id:mime-version:
+   content-transfer-encoding;
+  bh=QT95lceBi+UKQklKM/4f5OmFs4hQWznFN9i2vSXwYKI=;
+  b=X3od+MH1zWialDrCrRQx1U+lWQYCF0/t5sjmMw5TjM156xXsSQbyivXT
+   Ht3hoULer5AzUrCjANUv2WE2WbOqL+MpE6U3eSbdntYbzpXC5SoGSil1L
+   UE2vZm4yXFAL33tD0ssTAwbx9gc2GW/ZDVCXN5lT15NyAvrM//Vjx2T5i
+   oJT11C5+2GpDSIUROlyvQpd8iuMD4Oc6dJA5KrZ0SZiLjdsgoo/WCJX8z
+   dFANb0lp2qr9DlEi0Mm+kv7k1goGcoKiS99LgHu+9psApFqtHMr7JMucr
+   ku0BI1gJMlxEHIE/1f0gYQ45gTnR646EXijN1kVk+drDrb09VG5Oc82sQ
+   Q==;
+X-CSE-ConnectionGUID: Z4X8tjlmRQSEjzQRdy3gPw==
+X-CSE-MsgGUID: ctYRXt6uSCygRsGvEVIIQA==
+X-IronPort-AV: E=McAfee;i="6700,10204,11222"; a="45634853"
+X-IronPort-AV: E=Sophos;i="6.11,198,1725346800"; 
+   d="scan'208";a="45634853"
+Received: from orviesa010.jf.intel.com ([10.64.159.150])
+  by fmvoesa102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 Oct 2024 03:28:31 -0700
+X-CSE-ConnectionGUID: YkkSec8AQhyfX8wa+TnkcA==
+X-CSE-MsgGUID: FR0NkbxUQTSH29mlrlvhQA==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.11,198,1725346800"; d="scan'208";a="100447434"
-Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost)
- ([10.239.160.36])
- by fmviesa002.fm.intel.com with ESMTP; 12 Oct 2024 02:34:13 -0700
-Date: Sat, 12 Oct 2024 17:50:26 +0800
+X-IronPort-AV: E=Sophos;i="6.11,198,1725346800"; 
+   d="scan'208";a="77050807"
+Received: from liuzhao-optiplex-7080.sh.intel.com ([10.239.160.36])
+  by orviesa010.jf.intel.com with ESMTP; 12 Oct 2024 03:28:25 -0700
 From: Zhao Liu <zhao1.liu@intel.com>
-To: Alireza Sanaee <alireza.sanaee@huawei.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, zhenyu.z.wang@intel.com,
- dapeng1.mi@linux.intel.com, yongwei.ma@intel.com, armbru@redhat.com,
- farman@linux.ibm.com, peter.maydell@linaro.org, mst@redhat.com,
- anisinha@redhat.com, shannon.zhaosl@gmail.com, imammedo@redhat.com,
- mtosatti@redhat.com, berrange@redhat.com,
- richard.henderson@linaro.org, linuxarm@huawei.com,
- shameerali.kolothum.thodi@huawei.com, Jonathan.Cameron@huawei.com,
- jiangkunkun@huawei.com, yangyicong@hisilicon.com
-Subject: Re: [PATCH v3 2/6] i386/cpu: add IsDefined flag to smp-cache property
-Message-ID: <ZwpGYtqS9AJ96G8+@intel.com>
-References: <20241010111822.345-1-alireza.sanaee@huawei.com>
- <20241010111822.345-3-alireza.sanaee@huawei.com>
+To: =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+	Igor Mammedov <imammedo@redhat.com>,
+	Eduardo Habkost <eduardo@habkost.net>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Yanan Wang <wangyanan55@huawei.com>,
+	"Michael S . Tsirkin" <mst@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Eric Blake <eblake@redhat.com>,
+	Markus Armbruster <armbru@redhat.com>,
+	Marcelo Tosatti <mtosatti@redhat.com>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Jonathan Cameron <Jonathan.Cameron@huawei.com>,
+	Sia Jee Heng <jeeheng.sia@starfivetech.com>,
+	Alireza Sanaee <alireza.sanaee@huawei.com>
+Cc: qemu-devel@nongnu.org,
+	kvm@vger.kernel.org,
+	qemu-riscv@nongnu.org,
+	qemu-arm@nongnu.org,
+	Zhenyu Wang <zhenyu.z.wang@intel.com>,
+	Dapeng Mi <dapeng1.mi@linux.intel.com>,
+	Zhao Liu <zhao1.liu@intel.com>
+Subject: [PATCH v3 0/7] Introduce SMP Cache Topology
+Date: Sat, 12 Oct 2024 18:44:22 +0800
+Message-Id: <20241012104429.1048908-1-zhao1.liu@intel.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20241010111822.345-3-alireza.sanaee@huawei.com>
-Received-SPF: pass client-ip=192.198.163.12; envelope-from=zhao1.liu@intel.com;
- helo=mgamail.intel.com
-X-Spam_score_int: -44
-X-Spam_score: -4.5
-X-Spam_bar: ----
-X-Spam_report: (-4.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.15,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: SRpi20dW0OtB
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: d22fqFfM9Xzw
 
-Hi Alireze,
+Hi all,
 
-On Thu, Oct 10, 2024 at 12:18:18PM +0100, Alireza Sanaee wrote:
-> Date: Thu, 10 Oct 2024 12:18:18 +0100
-> From: Alireza Sanaee <alireza.sanaee@huawei.com>
-> Subject: [PATCH v3 2/6] i386/cpu: add IsDefined flag to smp-cache property
-> X-Mailer: git-send-email 2.34.1
-> 
-> This commit adds IsDefined flag to the object and this helps in avoiding
-> extra checks for every single layer of caches in both x86 and ARM.
-> 
-> Signed-off-by: Alireza Sanaee <alireza.sanaee@huawei.com>
-> ---
->  hw/core/machine-smp.c | 2 ++
->  include/hw/boards.h   | 1 +
->  2 files changed, 3 insertions(+)
-> 
-> diff --git a/hw/core/machine-smp.c b/hw/core/machine-smp.c
-> index 9a28194676..5a02bbf584 100644
-> --- a/hw/core/machine-smp.c
-> +++ b/hw/core/machine-smp.c
-> @@ -371,6 +371,8 @@ bool machine_parse_smp_cache(MachineState *ms,
->          return false;
->      }
->  
-> +    ms->smp_cache.IsDefined = true;
-> +
->      return true;
->  }
->  
-> diff --git a/include/hw/boards.h b/include/hw/boards.h
-> index db2aa2b706..2883a57084 100644
-> --- a/include/hw/boards.h
-> +++ b/include/hw/boards.h
-> @@ -373,6 +373,7 @@ typedef struct CpuTopology {
->  
->  typedef struct SmpCache {
->      SmpCacheProperties props[CACHE_LEVEL_AND_TYPE__MAX];
-> +    bool IsDefined;
->  } SmpCache;
->  
->  /**
+Compared with v2 [1], the changes in v3 are quite minor, and most of
+patches (except for patch 1 and 7) have received Jonathan’s R/b (thanks
+Jonathan!).
 
-Thanks for your patch, now I've added this commit in my series to
-resolve my TODO, which can also help your series be more ARM-focused :).
+Meanwhile, ARM side has also worked a lot on the smp-cache based on
+this series [2], so I think we are very close to the final merge, to
+catch up with this cycle. :)
 
-I will post my next version soon.
+This series is based on the commit 7e3b6d8063f2 ("Merge tag 'crypto-
+fixes-pull-request' of https://gitlab.com/berrange/qemu into staging").
 
-Thanks,
+Background
+==========
+
+The x86 and ARM (RISCV) need to allow user to configure cache properties
+(current only topology):
+ * For x86, the default cache topology model (of max/host CPU) does not
+   always match the Host's real physical cache topology. Performance can
+   increase when the configured virtual topology is closer to the
+   physical topology than a default topology would be.
+ * For ARM, QEMU can't get the cache topology information from the CPU
+   registers, then user configuration is necessary. Additionally, the
+   cache information is also needed for MPAM emulation (for TCG) to
+   build the right PPTT. (Originally from Jonathan)
+
+
+About smp-cache
+===============
+
+The API design has been discussed heavily in [3].
+
+Now, smp-cache is implemented as a array integrated in -machine. Though
+-machine currently can't support JSON format, this is the one of the
+directions of future.
+
+An example is as follows:
+
+smp_cache=smp-cache.0.cache=l1i,smp-cache.0.topology=core,smp-cache.1.cache=l1d,smp-cache.1.topology=core,smp-cache.2.cache=l2,smp-cache.2.topology=module,smp-cache.3.cache=l3,smp-cache.3.topology=die
+
+"cache" specifies the cache that the properties will be applied on. This
+field is the combination of cache level and cache type. Now it supports
+"l1d" (L1 data cache), "l1i" (L1 instruction cache), "l2" (L2 unified
+cache) and "l3" (L3 unified cache).
+
+"topology" field accepts CPU topology levels including "thread", "core",
+"module", "cluster", "die", "socket", "book", "drawer" and a special
+value "default".
+
+The "default" is introduced to make it easier for libvirt to set a
+default parameter value without having to care about the specific
+machine (because currently there is no proper way for machine to
+expose supported topology levels and caches).
+
+If "default" is set, then the cache topology will follow the
+architecture's default cache topology model. If other CPU topology level
+is set, the cache will be shared at corresponding CPU topology level.
+
+Welcome your feedback and review!
+
+[1]: Patch v2: https://lore.kernel.org/qemu-devel/20240908125920.1160236-1-zhao1.liu@intel.com/
+[2]: ARM smp-cache: https://lore.kernel.org/qemu-devel/20241010111822.345-1-alireza.sanaee@huawei.com/
+[3]: API disscussion: https://lore.kernel.org/qemu-devel/8734ndj33j.fsf@pond.sub.org/
+
+Thanks and Best Regards,
 Zhao
+---
+Changelog:
 
+Main changes since Patch v2:
+ * Updated version of new QAPI structures to v9.2. (Jonathan)
+ * Merged the QAPI change and smp-cache property support of machine
+   into one commit. (Jonathan)
+ * Picked Alireza's patch to add a has_caches flag.
+ * Polished english and coding style. (Jonathan)
 
+Main changes since Patch v1:
+ * Dropped handwriten smp-cache object and integrated cache properties
+   list into MachineState and used -machine to configure SMP cache
+   properties. (Markus)
+ * Dropped prefix of CpuTopologyLevel enumeration. (Markus)
+ * Rename CPU_TOPO_LEVEL_* to CPU_TOPOLOGY_LEVEL_* to match the QAPI's
+   generated code. (Markus)
+ * Renamed SMPCacheProperty/SMPCacheProperties (QAPI structures) to
+   SmpCacheProperties/SmpCachePropertiesWrapper. (Markus)
+ * Renamed SMPCacheName (QAPI structure) to SmpCacheLevelAndType and
+   dropped prefix. (Markus)
+ * Renamed 'name' field in SmpCacheProperties to 'cache', since the
+   type and level of the cache in SMP system could be able to specify
+   all of these kinds of cache explicitly enough.
+ * Renamed 'topo' field in SmpCacheProperties to 'topology'. (Markus)
+ * Returned error information when user repeats setting cache
+   properties. (Markus)
+ * Renamed SmpCacheLevelAndType to CacheLevelAndType, since this
+   representation is general across SMP or hybrid system.
+ * Dropped machine_check_smp_cache_support() and did the check when
+   -machine parses smp-cache in machine_parse_smp_cache().
+
+Main changes since RFC v2:
+ * Dropped cpu-topology.h and cpu-topology.c since QAPI has the helper
+   (CpuTopologyLevel_str) to convert enum to string. (Markus)
+ * Fixed text format in machine.json (CpuTopologyLevel naming, 2 spaces
+   between sentences). (Markus)
+ * Added a new level "default" to de-compatibilize some arch-specific
+   topo settings. (Daniel)
+ * Moved CpuTopologyLevel to qapi/machine-common.json, at where the
+   cache enumeration and smp-cache object would be added.
+   - If smp-cache object is defined in qapi/machine.json, storage-daemon
+     will complain about the qmp cmds in qapi/machine.json during
+     compiling.
+ * Referred to Daniel's suggestion to introduce cache JSON list, though
+   as a standalone object since -smp/-machine can't support JSON.
+ * Linked machine's smp_cache to smp-cache object instead of a builtin
+   structure. This is to get around the fact that the keyval format of
+   -machine can't support JSON.
+ * Wrapped the cache topology level access into a helper.
+ * Split as a separate commit to just include compatibility checking and
+   topology checking.
+ * Allow setting "default" topology level even though the cache
+   isn't supported by machine. (Daniel)
+ * Rewrote the document of smp-cache object.
+
+Main changes since RFC v1:
+ * Split CpuTopology renaimg out of this RFC.
+ * Use QAPI to enumerate CPU topology levels.
+ * Drop string_to_cpu_topo() since QAPI will help to parse the topo
+   levels.
+ * Set has_*_cache field in machine_get_smp(). (JeeHeng)
+ * Use "*_cache=topo_level" as -smp example as the original "level"
+   term for a cache has a totally different meaning. (Jonathan)
+---
+Alireza Sanaee (1):
+  i386/cpu: add has_caches flag to check smp_cache configuration
+
+Zhao Liu (6):
+  hw/core: Make CPU topology enumeration arch-agnostic
+  qapi/qom: Define cache enumeration and properties for machine
+  hw/core: Check smp cache topology support for machine
+  i386/cpu: Support thread and module level cache topology
+  i386/cpu: Update cache topology with machine's configuration
+  i386/pc: Support cache topology in -machine for PC machine
+
+ hw/core/machine-smp.c      | 117 +++++++++++++++++++++++
+ hw/core/machine.c          |  44 +++++++++
+ hw/i386/pc.c               |   4 +
+ hw/i386/x86-common.c       |   4 +-
+ include/hw/boards.h        |  16 ++++
+ include/hw/i386/topology.h |  22 +----
+ qapi/machine-common.json   |  96 ++++++++++++++++++-
+ qemu-options.hx            |  26 ++++-
+ target/i386/cpu.c          | 190 ++++++++++++++++++++++---------------
+ target/i386/cpu.h          |   4 +-
+ 10 files changed, 423 insertions(+), 100 deletions(-)
+
+-- 
+2.34.1

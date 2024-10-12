@@ -1,138 +1,122 @@
-Received: by 2002:a17:505:3501:b0:1be9:327d:8ee3 with SMTP id mc1csp544420njb;
-        Fri, 11 Oct 2024 10:25:20 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCU8Uvld3PoMaX2atlyMQxpxYwV4Mx6zVXJHtMhSdOfVNKK3zaVYrxmetI04vahgD6Lg1L5Ml2iEGbOiJA==@linaro.org
-X-Google-Smtp-Source: AGHT+IE8c+S7Pwi8Fqt1d7Fro2ZFLhlbWSjSeG/cwpFmL7MQFyl/ACffjySWNAkjc9c/F4wm7Ekj
-X-Received: by 2002:a05:620a:29c3:b0:7a9:ae0c:b6d5 with SMTP id af79cd13be357-7b11a3792b9mr565237785a.9.1728667519918;
-        Fri, 11 Oct 2024 10:25:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1728667519; cv=none;
+Received: by 2002:a17:505:3501:b0:1be9:327d:8ee3 with SMTP id mc1csp961446njb;
+        Sat, 12 Oct 2024 07:08:11 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCW3djag+qS2QCIikWt6plLEZdCXeI6ZLW7PeUf1o+E2qvVBl9T42fdf1IRBPsrvtOW/Ix21F7w2hTcKYg==@linaro.org
+X-Google-Smtp-Source: AGHT+IGMtBbBGA5iRICCHcX9xUxWG3POINUMBOivUquFTLdOtNK/nHwIUTL/KseUNqEYE7DtHuna
+X-Received: by 2002:a05:620a:2684:b0:7b1:19f4:c6e0 with SMTP id af79cd13be357-7b121022c51mr523124485a.51.1728742090776;
+        Sat, 12 Oct 2024 07:08:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1728742090; cv=none;
         d=google.com; s=arc-20240605;
-        b=ATv4F9TTE9VYa2lVUoBz89PAM3DeiRU2Ox4I858yc5MnIB/EygyIdDlN+kagwkjeGe
-         8RC8b5mM/A2HGCNrtdQCq8MZ3Mr2tcs/aov9z2FJHv/5EAe3BGgFm8s7YIq1GcruMJiJ
-         +WcgR/s+tcQ6jg8+WjhuuIYazWYLHm7vPywmO80mhc5JbcFp7q5sEYryztWEiF1z5X9K
-         R8XhMnpt/5va1ZpBeEBIuj5cSXmg57ZakITsixhOFkSF/889SNvzxcQtQSSKmlHTac+K
-         vWhFJMRTH0xuKBrOWvZ8qg6nTkP+uXRQ1UaYdnN8Yvk+qts2ZgXqYtf1fj00U5knpUaZ
-         3mOg==
+        b=dGz3AlhQP5brZd2W+Ub3SP6YvXs97TJchf1+4cIhae1nzU4B9FO5D0f7WSua5q2Fxi
+         tX/qpf0S4+B/H2uRXTuLGr1xjltAdHEnxNWcnM5s53vP3A2OcEU5d6mRHigc/F4bzgxX
+         XkUkp2uQeMYO+2Xr3iXmjNScMe6I+uECmxL9P+Vk46rzA80NEf0fyNJayZFwRSaIrhfm
+         hDX+KJf2UZvaZRvOVBq/W8thqpNSlCLDWSn725pLtQA3iRr9O5UyC0rcc7uasfwbqaVk
+         XRi0uiOwfAIaZf11x+AokFwDfecQ2a55cLp3Dqb3qdyfZYWEUPbLcOqQS0JLcNAAZ8E5
+         hGIA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:subject:cc:to:from
+         :mime-version:message-id:references:in-reply-to:subject:cc:to:from
          :date:dkim-signature;
-        bh=bNu6mg4j5/zNLXqNoI9txETqrFRXTZ0Avb4+PoNfWd4=;
-        fh=lcqDTNz3tLLSz/cNBJbIA0EMLKF6VFQYmk6sZoVzsoM=;
-        b=DP42j9ROtNtKKuIMHJO7L7/XKC7sATO5siae/Q1olei9HJ8RaSW4nhD7JEcwwR//zY
-         LpoYggqcVi1uKkrOXpw+6LYQGg2xNZSV/J8K+4ZZ4iJLidxnxIAuSPy5krPJTlnmW3TF
-         ImXltjCjEp5UZf6EscpUxF9P4+KeOM6CvFc89PpT3iQN1A0fIcJ5M++Yd+qeihS5eUSP
-         j4tFCS3GIZQnPhk75dTMKqBH8/7/aK3V7BvZf9hzuQrtHP6vAAfYsME09Tr8qxuyjTg+
-         bN48fI+Fn7oFDL73LQjLZUCCg4gs2t9ZYDsGW0Bo8wyfukiVtvrIS54ShDXsNAmdaKRs
-         iY7w==;
+        bh=hgIkR0DOZrDSIrMwIkDRUb0TbppctC9X9/nRHWqBGvo=;
+        fh=7v2QTzyz8hwcQbnIpHirPzu84PR8N+x3uHFOEBjVWGg=;
+        b=c+AMBNYOhNfgHXC++zYKeywnolU/qoM2Bwj9L+5nW8W/lQQ4gHs0kIpSTG/KOJpUuQ
+         PjRPh5rdwzvw1yzlKyoMu04ehTTU1eBYwIQBy1DnDlic6YKf6A2QniJxtAmtLtkY0+1P
+         O+JtxXp359moakm9MK1r1U5d6lY2I3GUP/6rQ/fLw/TOYxqblxa2J/FnENCOGsANSfwe
+         bm4qKQMsBxkGvLhvb26EDz7hdRmYey8sfSvzOWkVN9oPHi3NbU5xhZWaTw8BIVTMidq/
+         NLUCEbXziVj0iZj3q6H5uUqCLqPDae6MU5sbpDmbJVeC1S+cevrnkXLySLWTmetqY0KT
+         M8Yw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=g442yeW3;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=ngG8crGo;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4604288127bsi39963161cf.390.2024.10.11.10.25.19
+        by mx.google.com with ESMTPS id af79cd13be357-7b1148fc349si619274985a.125.2024.10.12.07.08.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 11 Oct 2024 10:25:19 -0700 (PDT)
+        Sat, 12 Oct 2024 07:08:10 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=g442yeW3;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=ngG8crGo;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1szJG0-0005Vx-NZ; Fri, 11 Oct 2024 13:16:59 -0400
+	id 1szcmf-0004cU-QM; Sat, 12 Oct 2024 10:07:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1szJ7w-0000wP-GO
- for qemu-arm@nongnu.org; Fri, 11 Oct 2024 13:08:35 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1szETY-0004dO-JP
- for qemu-arm@nongnu.org; Fri, 11 Oct 2024 08:10:35 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1728648627;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=bNu6mg4j5/zNLXqNoI9txETqrFRXTZ0Avb4+PoNfWd4=;
- b=g442yeW3VqAhYtCXI5pH6ualIdm6DDyxMQOOYW+HmuExWKSLN2Lq2VxjkCwar39RFoAQHI
- k3Ww6ERIEjiQRB0UPHsL3blNM6CJKrs5OPBSvfmn+L0OeQxhi5MLqjkMrZW5QokjQeQ09+
- QBAPf8S9N9w3vi0yTLWXfROtzl99uB4=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-662-x4HWJi6YPa6tVORfVH2WOg-1; Fri, 11 Oct 2024 08:10:25 -0400
-X-MC-Unique: x4HWJi6YPa6tVORfVH2WOg-1
-Received: by mail-wr1-f69.google.com with SMTP id
- ffacd0b85a97d-37d56061a4cso383706f8f.2
- for <qemu-arm@nongnu.org>; Fri, 11 Oct 2024 05:10:25 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1szcme-0004cB-8F; Sat, 12 Oct 2024 10:07:52 -0400
+Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1szcmc-0007CV-Fg; Sat, 12 Oct 2024 10:07:52 -0400
+Received: by mail-wr1-x430.google.com with SMTP id
+ ffacd0b85a97d-37d538fe5f2so1254986f8f.2; 
+ Sat, 12 Oct 2024 07:07:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1728742067; x=1729346867; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=hgIkR0DOZrDSIrMwIkDRUb0TbppctC9X9/nRHWqBGvo=;
+ b=ngG8crGoMWphN93hwsaaBRu8wY5tcLJYmUHk6s4rb/Ou6r60d5MNvLOt49MM13GAsd
+ 3+px3Pt+BxL5Wli1Fs1icNPkYBs89gxzUoKq4WuaLnQyDi37iKbJbsiOVHwuMQzvBuCj
+ HNsBWMMBoDkNkv7sCNGysaf6QBJ7jYCZVzWUaFdNaBszGpCdqa4+YRF/6Z7fPhsbJiCg
+ 0Bmp7ANIt6WZS+kPHBn3Xsvj/7/qpcsj9rr6UEWY6RtcajXXbd3yW89+YAvHYv7PXKct
+ 5SdVxqryRp3dEvJL5fxY5xit6JosNFsmd93BLNPIyHWeyLnNQ/dDpQ2+I8LOv3VWx5du
+ 2wYg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1728648624; x=1729253424;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ d=1e100.net; s=20230601; t=1728742067; x=1729346867;
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=bNu6mg4j5/zNLXqNoI9txETqrFRXTZ0Avb4+PoNfWd4=;
- b=P0EbNdmEoFHiQxA6H6huiHaQh2DxzfqSzZ3El+9lI5W1thQ0m45llb8ymHzUZJ3c01
- lYY9CAmvOwyNdR73KSqYDayeJBtbfkGQmgQ2+nXFcSSdH4k2yDEm75re7LwX5afnja7f
- 4y2LL0saWIe9oWaDbyCaeeTFDyINcaU4ouCC43Adm8HISbXOeGa+TpaloIEDWqKAv4Bx
- Gn6R3sSTDn8qVyb/r1GCiO2pYSRnI742GUANBJlNfTG4x8jH7kTYJ9c4CvAWr5CMgnDK
- /xH9DT2bZy/MxrFVY0D0gjWLQyVCmdj29v+Dk6SXF2ErCihgaLjN6dc6OqDkRpVZo8f9
- DZ/Q==
+ bh=hgIkR0DOZrDSIrMwIkDRUb0TbppctC9X9/nRHWqBGvo=;
+ b=A/3P3+v7mjJ0Ak9yCkA2iCJrLqqcLK3DjJTiGHOGI7ZHeP3h5e3JaXSQeZzH7fnwN4
+ TTyd0wPAuot/S4PRYmZi9UmcF6FIhqz4kt06X29Cq14WW4iXbNSm86Mk+l5YCIP0VxVL
+ YiuzMJLHMOS2Jt1yF9zPN1rOajIXM7TFftpcflWgoDyZ4i5FI1DdEuKwfKgFfOLJXLDb
+ EwBSUHu3FWrcAt9nd9u3eBDTvy9X8/fgk1Lx+LyEe9fI6M5XDy5hWXmvP/pFP5ADJXSj
+ LhCksaHYhvHOnMA5jbH/OGX3w6u2G3SbwIDXkTh6egLQ0qSrEWJg4oQ5rc6vBuhzevKi
+ KbpQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUuhz3KD1DsN4CE3eC2LUdMUJOLVfK0qypHtGMrFavtIOLKucOR0IS1+u59ED3vFtoE9TNLEflcqQ==@nongnu.org
-X-Gm-Message-State: AOJu0Ywi/2/Ptz4viPQTOdE6D0N+8LK1O4v9LlwZe5Gdpkrmi4JksAu8
- +p78QhYvsx2WacVLCdQnTMSuWSOlj4QQ27UHJgDY8Xm8lDzm/MW7VIrp0WgEtu0QyAIGdLBkLDu
- iSGApDw5GpIYQYnQkPB4BT3k2lY6NkNb2V+yShxY+60a+xmDXpA==
-X-Received: by 2002:adf:e54e:0:b0:37d:45f0:b33 with SMTP id
- ffacd0b85a97d-37d55184ae1mr1695891f8f.9.1728648624425; 
- Fri, 11 Oct 2024 05:10:24 -0700 (PDT)
-X-Received: by 2002:adf:e54e:0:b0:37d:45f0:b33 with SMTP id
- ffacd0b85a97d-37d55184ae1mr1695874f8f.9.1728648623946; 
- Fri, 11 Oct 2024 05:10:23 -0700 (PDT)
-Received: from imammedo.users.ipa.redhat.com (nat-pool-brq-t.redhat.com.
- [213.175.37.10]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-37d4b6d0071sm3749921f8f.62.2024.10.11.05.10.22
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 11 Oct 2024 05:10:23 -0700 (PDT)
-Date: Fri, 11 Oct 2024 14:10:20 +0200
-From: Igor Mammedov <imammedo@redhat.com>
-To: Annie Li <annie.li@oracle.com>
-Cc: miguel.luis@oracle.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- dave@treblig.org, mst@redhat.com, anisinha@redhat.com,
- shannon.zhaosl@gmail.com, peter.maydell@linaro.org, eduardo@habkost.net,
- marcel.apfelbaum@gmail.com, philmd@linaro.org, wangyanan55@huawei.com,
- zhao1.liu@intel.com, pbonzini@redhat.com, richard.henderson@linaro.org,
- eblake@redhat.com, armbru@redhat.com
-Subject: Re: [RFC V2 PATCH 02/11] acpi: Implement control method sleep button
-Message-ID: <20241011141020.61425d7c@imammedo.users.ipa.redhat.com>
-In-Reply-To: <120fc3a4-7601-4307-800d-bfa2637df81a@oracle.com>
-References: <20240927183906.1248-1-annie.li@oracle.com>
- <20240927183906.1248-3-annie.li@oracle.com>
- <20241007145950.0e53023c@imammedo.users.ipa.redhat.com>
- <120fc3a4-7601-4307-800d-bfa2637df81a@oracle.com>
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
+ AJvYcCVI73yA/0H1pV8XcHLtni/Xcfzp+jnMsnchKjo7YQvNDxl5n5YKF1kDzhD2AyRQzEDU2/eDx6hqDw==@nongnu.org
+X-Gm-Message-State: AOJu0YxB6jlVo/um6IgFui64qFJ4ulRXVrju8ARtCRO9oq4wxR282SSs
+ OyUuYeFELvrGhLTdKXbMMlSxZ3nEZItL6uz5egRTzYb23GAVsMwldqI2GQ==
+X-Received: by 2002:adf:f2cc:0:b0:37d:4517:acbb with SMTP id
+ ffacd0b85a97d-37d551d5265mr4285817f8f.17.1728742067052; 
+ Sat, 12 Oct 2024 07:07:47 -0700 (PDT)
+Received: from [127.0.0.1] (dynamic-077-011-117-250.77.11.pool.telefonica.de.
+ [77.11.117.250]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-430ccf5188dsm100761985e9.24.2024.10.12.07.07.46
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sat, 12 Oct 2024 07:07:46 -0700 (PDT)
+Date: Sat, 12 Oct 2024 14:07:43 +0000
+From: Bernhard Beschow <shentey@gmail.com>
+To: qemu-devel@nongnu.org
+CC: Jason Wang <jasowang@redhat.com>, qemu-arm@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>
+Subject: Re: [PATCH 0/4] Consolidate lan9118 phy implementations
+In-Reply-To: <20241005205748.29203-1-shentey@gmail.com>
+References: <20241005205748.29203-1-shentey@gmail.com>
+Message-ID: <D9A7DF9D-A506-431D-82D7-23136A94EDDE@gmail.com>
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=imammedo@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::430;
+ envelope-from=shentey@gmail.com; helo=mail-wr1-x430.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.15,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -147,158 +131,76 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: OHuSAhe9uIAF
+X-TUID: 0Fw9WDHCdwXS
 
-On Tue, 8 Oct 2024 11:22:33 -0400
-Annie Li <annie.li@oracle.com> wrote:
 
-> On 10/7/2024 8:59 AM, Igor Mammedov wrote:
-> > On Fri, 27 Sep 2024 14:38:57 -0400
-> > Annie Li<annie.li@oracle.com> wrote:
-> >  
-> >> The control method sleep button is added, as well as its GPE event
-> >> handler.
-> >>
-> >> Co-developed-by: Miguel Luis<miguel.luis@oracle.com>
-> >> Signed-off-by: Annie Li<annie.li@oracle.com>
-> >> ---
-> >>   hw/acpi/control_method_device.c         | 54 +++++++++++++++++++++++++
-> >>   hw/acpi/meson.build                     |  1 +
-> >>   include/hw/acpi/control_method_device.h | 25 ++++++++++++
-> >>   3 files changed, 80 insertions(+)
-> >>
-> >> diff --git a/hw/acpi/control_method_device.c b/hw/acpi/control_method_device.c
-> >> new file mode 100644
-> >> index 0000000000..f52c190352
-> >> --- /dev/null
-> >> +++ b/hw/acpi/control_method_device.c
-> >> @@ -0,0 +1,54 @@
-> >> +/*
-> >> + * Control method devices
-> >> + *
-> >> + * Copyright (c) 2023 Oracle and/or its affiliates.
-> >> + *
-> >> + *
-> >> + * Authors:
-> >> + *     Annie Li<annie.li@oracle.com>
-> >> + *
-> >> + *
-> >> + * This work is licensed under the terms of the GNU GPL, version 2 or later.
-> >> + * See the COPYING file in the top-level directory.  
-> > replace it with SPDX-License-Identifier like it's done elsewhere  
-> Nod
-> >  
-> >> + *
-> >> + */
-> >> +
-> >> +#include "qemu/osdep.h"
-> >> +#include "hw/acpi/control_method_device.h"
-> >> +#include "hw/mem/nvdimm.h"
-> >> +
-> >> +void acpi_dsdt_add_sleep_button(Aml *scope)
-> >> +{
-> >> +    Aml *dev = aml_device("\\_SB."ACPI_SLEEP_BUTTON_DEVICE);  
-> > drop "\\_SB." here and below as well,  
-> Make sense here since the scope parameter is "_SB", but for the "_SB"
-> in acpi_dsdt_add_sleep_gpe_event_handler where the scope parameter is 
-> "_GPE", I suppose "\\_SB." is necessary.
 
-Check the spec onhow name resolution in ACPI works.
-Anyways you likely won't have dedicated acpi_dsdt_add_sleep_gpe_event_handler(),
-on respin
+Am 5=2E Oktober 2024 20:57:44 UTC schrieb Bernhard Beschow <shentey@gmail=
+=2Ecom>:
+>hw/net/imx_fec and hw/net/lan9118 implement the same Ethernet PHY with si=
+milar
+>
+>but not quite the same code=2E This series consolidates the implementatio=
+ns into
+>
+>one to fix code duplication=2E It then continues to make the code more re=
+adable by
+>
+>reusing some existing constants=2E
+>
+>
+>
+>Having a dedicated module for the PHY allows it to be reused in even furt=
+her
+>
+>device models=2E
+>
 
-> >  
-> >> +    aml_append(dev, aml_name_decl("_HID", aml_eisaid("PNP0C0E")));
-> >> +    Aml *pkg = aml_package(2);
-> >> +    aml_append(pkg, aml_int(0x01));
-> >> +    aml_append(pkg, aml_int(0x04));
-> >> +    aml_append(dev, aml_name_decl("_PRW", pkg));
-> >> +    aml_append(dev, aml_operation_region("\\Boo", AML_SYSTEM_IO,  
-> > use some sensible name for opreg  
-> will do
-> >> +                                         aml_int(0x201), 0x1));
-> >> +    Aml *field = aml_field("\\Boo", AML_BYTE_ACC, AML_NOLOCK,
-> >> +                           AML_WRITE_AS_ZEROS);
-> >> +    aml_append(field, aml_named_field("SBP", 1));
-> >> +    aml_append(field, aml_named_field("SBW", 1));
-> >> +    aml_append(dev, field);
-> >> +    aml_append(scope, dev);
-> >> +}  
-> > also above and below lacks any documentation,
-> > add comments for relevant spec references, like we do with other ACPI
-> > functions. Also perhaps, it's out of order, reviewer has not clue
-> > where from above registers come and how it is supposed to work.
-> >
-> > if you invented those registers, there should be a preceding doc patch
-> > that documents them.
-> >
-> > Suggest to reorder after patch that implements above registers in hw,
-> > and also comment here where to look for them.  
-> 
-> Thanks for the feedback.
-> 
-> Thanks
-> Annie
-> 
-> >> +
-> >> +void acpi_dsdt_add_sleep_gpe_event_handler(Aml *scope)
-> >> +{
-> >> +     Aml *method = aml_method("_L07", 0, AML_NOTSERIALIZED);
-> >> +     Aml *condition = aml_if(aml_name("\\_SB.SLPB.SBP"));
-> >> +     aml_append(condition, aml_store(aml_int(1), aml_name("\\_SB.SLPB.SBP")));
-> >> +     aml_append(condition,
-> >> +                aml_notify(aml_name("\\_SB."ACPI_SLEEP_BUTTON_DEVICE),
-> >> +                                    aml_int(0x80)));
-> >> +     aml_append(method, condition);
-> >> +     condition = aml_if(aml_name("\\_SB.SLPB.SBW"));
-> >> +     aml_append(condition, aml_store(aml_int(1), aml_name("\\_SB.SLPB.SBW")));
-> >> +     aml_append(condition,
-> >> +                aml_notify(aml_name("\\_SB."ACPI_SLEEP_BUTTON_DEVICE),
-> >> +                                    aml_int(0x2)));
-> >> +     aml_append(method, condition);
-> >> +     aml_append(scope, method);
-> >> +}
-> >> diff --git a/hw/acpi/meson.build b/hw/acpi/meson.build
-> >> index fa5c07db90..0b4f1b432d 100644
-> >> --- a/hw/acpi/meson.build
-> >> +++ b/hw/acpi/meson.build
-> >> @@ -17,6 +17,7 @@ acpi_ss.add(when: 'CONFIG_ACPI_PCI', if_true: files('pci.c'))
-> >>   acpi_ss.add(when: 'CONFIG_ACPI_CXL', if_true: files('cxl.c'), if_false: files('cxl-stub.c'))
-> >>   acpi_ss.add(when: 'CONFIG_ACPI_VMGENID', if_true: files('vmgenid.c'))
-> >>   acpi_ss.add(when: 'CONFIG_ACPI_HW_REDUCED', if_true: files('generic_event_device.c'))
-> >> +acpi_ss.add(when: 'CONFIG_ACPI_HW_REDUCED', if_true: files('control_method_device.c'))
-> >>   acpi_ss.add(when: 'CONFIG_ACPI_HMAT', if_true: files('hmat.c'))
-> >>   acpi_ss.add(when: 'CONFIG_ACPI_APEI', if_true: files('ghes.c'), if_false: files('ghes-stub.c'))
-> >>   acpi_ss.add(when: 'CONFIG_ACPI_PIIX4', if_true: files('piix4.c'))
-> >> diff --git a/include/hw/acpi/control_method_device.h b/include/hw/acpi/control_method_device.h
-> >> new file mode 100644
-> >> index 0000000000..87f8d6fd59
-> >> --- /dev/null
-> >> +++ b/include/hw/acpi/control_method_device.h
-> >> @@ -0,0 +1,25 @@
-> >> +/*
-> >> + * Control method devices
-> >> + *
-> >> + * Copyright (c) 2023 Oracle and/or its affiliates.
-> >> + *
-> >> + *
-> >> + * Authors:
-> >> + *     Annie Li<annie.li@oracle.com>
-> >> + *
-> >> + *
-> >> + * This work is licensed under the terms of the GNU GPL, version 2 or later.
-> >> + * See the COPYING file in the top-level directory.
-> >> + *
-> >> + */
-> >> +
-> >> +
-> >> +#ifndef HW_ACPI_CONTROL_METHOD_DEVICE_H
-> >> +#define HW_ACPI_CONTROL_NETHOD_DEVICE_H
-> >> +
-> >> +#define ACPI_SLEEP_BUTTON_DEVICE "SLPB"
-> >> +
-> >> +void acpi_dsdt_add_sleep_button(Aml *scope);
-> >> +void acpi_dsdt_add_sleep_gpe_event_handler(Aml *scope);
-> >> +
-> >> +#endif  
+Ping
 
+>
+>
+>Bernhard Beschow (4):
+>
+>  hw/net/lan9118: Extract lan9118_phy
+>
+>  hw/net/lan9118_phy: Reuse in imx_fec and consolidate implementations
+>
+>  hw/net/lan9118_phy: Reuse MII constants
+>
+>  hw/net/lan9118_phy: Add missing 100 mbps full duplex advertisement
+>
+>
+>
+> include/hw/net/imx_fec=2Eh     |   7 +-
+>
+> include/hw/net/lan9118_phy=2Eh |  31 +++++++
+>
+> include/hw/net/mii=2Eh         |   6 ++
+>
+> hw/net/imx_fec=2Ec             | 141 +++--------------------------
+>
+> hw/net/lan9118=2Ec             | 133 +++++----------------------
+>
+> hw/net/lan9118_phy=2Ec         | 168 +++++++++++++++++++++++++++++++++++=
+
+>
+> hw/net/Kconfig               |   5 ++
+>
+> hw/net/meson=2Ebuild           |   1 +
+>
+> hw/net/trace-events          |  10 ++-
+>
+> 9 files changed, 254 insertions(+), 248 deletions(-)
+>
+> create mode 100644 include/hw/net/lan9118_phy=2Eh
+>
+> create mode 100644 hw/net/lan9118_phy=2Ec
+>
+>
+>
+>-- >
+>2=2E46=2E2
+>
+>
+>

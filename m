@@ -1,160 +1,119 @@
-Received: by 2002:a17:505:3501:b0:1be9:327d:8ee3 with SMTP id mc1csp2050382njb;
-        Mon, 14 Oct 2024 12:22:49 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVZAgLI+JyhsuY9qKNpjCH3zTVEgiO9LoTwBM5JnlJGz3yqrtdtfNX8kyQxPx1aWiUKQBzQZEa5T6YJxQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IEuAiv4aMaT6IaS6pkvi2I51iqUE/VNgb50VRjVnWro8q9t9f/d2JM5EmCOhEPDncBIbTB9
-X-Received: by 2002:a05:600c:138a:b0:42c:b74c:d8c3 with SMTP id 5b1f17b1804b1-4311df5c5b0mr124494455e9.32.1728933769355;
-        Mon, 14 Oct 2024 12:22:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1728933769; cv=none;
+Received: by 2002:a17:505:3501:b0:1be9:327d:8ee3 with SMTP id mc1csp2053746njb;
+        Mon, 14 Oct 2024 12:31:07 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCW45nuCv+50a50Rl0Qk45WmU9OpA0u1TsH6v8s/gJrOb59X+aXYGAASA+JvxikOP342W5GWWYQskKN6xQ==@linaro.org
+X-Received: by 2002:a17:902:d4c4:b0:20b:983c:f095 with SMTP id d9443c01a7336-20cbb24243fmr139601215ad.51.1728934267476;
+        Mon, 14 Oct 2024 12:31:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1728934267; cv=none;
         d=google.com; s=arc-20240605;
-        b=Cz7A7iKzOTrKPjq1FiE1BS9dJNL5rTXwUoaYziQDrHXszgfkhQOhSZDOMpzhe+W4+0
-         7WQZmIinbUsiPIGIQZTwxsangss105MxZsVrkNrqYL+1eVhrndUp0vBQ0TZjNRi9YMZ5
-         9VZLFG+DS6E+qMfJvjD+vagi9bvHZan5yqX2G89IC9xoCLG8oJQXpDEWloX3VwxT3r/S
-         OGnq9/FojbNB3KlJRCDqyLirWO0gMyC5kG7Msot2ashYItZ3CClWKkxe85u6kJ0NArjJ
-         NlDtd2Ir34KqFVCyYPe3B2S7ECBLIdteYZ5gK2jCupgrsjN8BpL32ijz1gZ1MukJFKby
-         uneQ==
+        b=Za6ktG8OpunOQviOg+gx9aiSdq7nBd3Hksmxqd2lF60I5OSN3l4/QfBjkKdHLOkbVZ
+         RgWzzh58qfHjKtNJG5s+bUFuxTL4tTOt1QkbaXmgwDll/CYKWW0v2vXF/E1bgudrCYkg
+         q5LGTyJRcXuM4BhORfr94icYj8kjZStASbUaCTsby/Ay/V1OW2hjyBBRDCtqisbE7lZ2
+         yzxMsm4SZSX3z3szNWol62efS/mV0yg6p8Y/j8pzLMMgyn9877WYvoSHfE5Hi7Xuh5V7
+         +C8D4fUSIIKHrntm3PydeKPeZBs6P7cpECZUhX0v/drSI2shfza8fPvs/Wb+NIIEgIUW
+         l+zA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from;
-        bh=EqIYfrGyQqqBJ2oGFqALfHLCu9tU+KmVwkt26SyxNzY=;
-        fh=4Dgx8jc1gJCFDIGNl8iT3gucG+cuHYR9XmJ7yDXtNzA=;
-        b=aku0oznrJ5yho7zneJpnt7aSkkD2fOi/PpLau5VZFulwzZl1+yJKVuMbUykbHAr4MC
-         +8douzbyk57p/9ZCZ9QV031SXRjAZydpA9FGuLrzotGrPr28g5+ilfPUZ+bCFxgoOnWe
-         6bJAQo6nXXqFbYqlq84/OsVawT6xQ1pMlJvCSVg4MjhYwVXB8OPoanzg2+FlFyBTmFyd
-         qL6w/ZRH+uiuVcbjhHs89e/vYy9+E/FypVdgwkfBPaQbYlgBz8Ph7Vj3o39K9SqIM6G/
-         /NIOKojlzEEehuVJj6u4dWRTGPwJDnWsaRHVxnc/9u21dZL+o7FUcnVXZ8H9ormDl47N
-         c3hA==;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=i1AEL1iCDF9gEmhg3gccpp0WV6U4G1Xodmz32GJKaMw=;
+        fh=8b7qnY7oFvSbYM+pl8SsNr+fBGTNBOIwoLa4A5BkI68=;
+        b=BvjO7PZkAu2c6jDSJoBXDHLkVJXlh676OutDqeesXt8uPrdGfWLV79BO+/3hbZqD8c
+         4JhdWSTZSYUWpOTjtCDNrU5aYYVjQN1Io5VIc87LFszASYq5+FQe7jGQZoMusT4vWTqI
+         By8BS0ZlaqrmZXmTU1jpA2HAD8Gu2IFQ/+3DCFjWdV/rDR8aH2UufwfFPXWGjFy50tDv
+         I0dPridPFprbeDpG3azrD5VinUdjAfhEYNOMRKfHjo+rcKuH8zARVtXuLe40o7GoTq+d
+         Ct/uvHeFxIAYYL7Ivyu6Otli0tauOIQ8QSr6VtcpmszBYkNv+ujl5Tt3R7M686s9AU4W
+         i5lA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Return-Path: <salil.mehta@huawei.com>
-Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id ffacd0b85a97d-37d4b7114c7si4660130f8f.161.2024.10.14.12.22.48
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 14 Oct 2024 12:22:49 -0700 (PDT)
-Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
+       dkim=pass header.i=@linaro.org header.s=google header.b=PnnjQNnF;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d9443c01a7336-20c8bac84c0sor46031345ad.1.2024.10.14.12.31.07
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Mon, 14 Oct 2024 12:31:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from mail.maildlp.com (unknown [172.18.186.216])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4XS6T85J7gz6L7DK;
-	Tue, 15 Oct 2024 03:18:20 +0800 (CST)
-Received: from frapeml500007.china.huawei.com (unknown [7.182.85.172])
-	by mail.maildlp.com (Postfix) with ESMTPS id 471E71400D9;
-	Tue, 15 Oct 2024 03:22:48 +0800 (CST)
-Received: from 00293818-MRGF.huawei.com (10.48.146.149) by
- frapeml500007.china.huawei.com (7.182.85.172) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Mon, 14 Oct 2024 21:22:28 +0200
-From: Salil Mehta <salil.mehta@huawei.com>
-To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <mst@redhat.com>
-CC: <salil.mehta@huawei.com>, <maz@kernel.org>, <jean-philippe@linaro.org>,
-	<jonathan.cameron@huawei.com>, <lpieralisi@kernel.org>,
-	<peter.maydell@linaro.org>, <richard.henderson@linaro.org>,
-	<imammedo@redhat.com>, <andrew.jones@linux.dev>, <david@redhat.com>,
-	<philmd@linaro.org>, <eric.auger@redhat.com>, <will@kernel.org>,
-	<ardb@kernel.org>, <oliver.upton@linux.dev>, <pbonzini@redhat.com>,
-	<gshan@redhat.com>, <rafael@kernel.org>, <borntraeger@linux.ibm.com>,
-	<alex.bennee@linaro.org>, <npiggin@gmail.com>, <harshpb@linux.ibm.com>,
-	<linux@armlinux.org.uk>, <darren@os.amperecomputing.com>,
-	<ilkka@os.amperecomputing.com>, <vishnu@os.amperecomputing.com>,
-	<karl.heubaum@oracle.com>, <miguel.luis@oracle.com>,
-	<salil.mehta@opnsrc.net>, <zhukeqian1@huawei.com>,
-	<wangxiongfeng2@huawei.com>, <wangyanan55@huawei.com>,
-	<jiakernel2@gmail.com>, <maobibo@loongson.cn>, <lixianglai@loongson.cn>,
-	<shahuang@redhat.com>, <zhao1.liu@intel.com>, <linuxarm@huawei.com>,
-	<gustavo.romero@linaro.org>
-Subject: [PATCH V1 0/4] Arch agnostic ACPI changes to support vCPU Hotplug (on Archs like ARM)
-Date: Mon, 14 Oct 2024 20:22:01 +0100
-Message-ID: <20241014192205.253479-1-salil.mehta@huawei.com>
-X-Mailer: git-send-email 2.34.1
+       dkim=pass header.i=@linaro.org header.s=google header.b=PnnjQNnF;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1728934267; x=1729539067; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=i1AEL1iCDF9gEmhg3gccpp0WV6U4G1Xodmz32GJKaMw=;
+        b=PnnjQNnFFlhMtu7OwPa/6C109cMbHcRFytm7DbTyYuO9oeadwqhW9Pwm9StzcYynI2
+         nNKMqkfXl3y+HLOtynJvaImM7dhBjaWmcTYOrcxuux09sUDxfQrqKNVKYOXPhldisFVF
+         1ncsdl3UOOhtco9s9oQDIbeTpe7AheJKtBPcuJGZGK7rJmzpo/rcFCnhVFPxI4ktH5NL
+         vyPDMH7zuwsazQvKS3qABWuUb9yxjN8HAYSttyY/hkXApkOn78TEYG3DNz+X0OkO4GkW
+         T3xxeYS0m4q4rULcgjKDuapNKZQ7ge/8oR/ekvdvJ1eAywm7ktGA+KtDPHhPWeLnfPhj
+         udMQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1728934267; x=1729539067;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=i1AEL1iCDF9gEmhg3gccpp0WV6U4G1Xodmz32GJKaMw=;
+        b=I6vWszYUfqtBtA5i2JTHZq3Ryr44+ED/uO+8+npVY0lZhYE9PVGZxGFv8AUdlAXm/m
+         UCpBWW1SBjp2/o5nD15AaZ3h8SBDFFiZa38X4A3csrrFrDMfoYT1wY4r/otPXE+DTXWQ
+         6TLFItfPnKyD8UTjFN5taAdXUo75HOvA3KM1nXtF701gYr/jHL1EElXCjOl6rGItD+nM
+         J8DbamlO7oVqC73WBdKn1EZMYRWe9QFgsUxhlKTwJaCIyEENZA4MBoeEKC1CK3Hoe8sZ
+         vOehUEkDzW85PIYRwonKfd8AFKR4lkqjrXVEN43J9OLWNJ34pj9UogGKWv1L+wU+LQSm
+         NjEA==
+X-Forwarded-Encrypted: i=1; AJvYcCXyjFuk/OgUqJrUmIaqOwVgZAu3sNZIN8p0+Ejer8hi32cMhCBCTAf0ORIETRgrKQueIx5qOcWiWPIrow==@linaro.org
+X-Gm-Message-State: AOJu0YzjfIz77ziCLBa2mEIddw4tHke3i2feJoyVSirIiHK1uUtRkWO5
+	Nmtz7IEobfYQUGbt7RLoaFlEQ5+amfH2tCl80sfYwSmlelkobG0wTujiTtz1kRXIhA==
+X-Google-Smtp-Source: AGHT+IGNwfPrqX/p12MjjHkL5fhFAF3sIeaw3O1of+XU0hk007UxnEm4B47z8tir6AN7cjGiuEiBDA==
+X-Received: by 2002:a17:902:fc50:b0:20c:8c0f:f986 with SMTP id d9443c01a7336-20cbb1a91camr125106145ad.24.1728934266970;
+        Mon, 14 Oct 2024 12:31:06 -0700 (PDT)
+Return-Path: <richard.henderson@linaro.org>
+Received: from [192.168.0.4] (174-21-81-121.tukw.qwest.net. [174.21.81.121])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-20c8c3561e0sm69129535ad.291.2024.10.14.12.31.06
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 14 Oct 2024 12:31:06 -0700 (PDT)
+Message-ID: <b8e76800-e5ea-4060-9e3c-35e8a9f8812b@linaro.org>
+Date: Mon, 14 Oct 2024 12:31:04 -0700
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 09/20] target/hppa: Fix priority of T, D, and B page
+ faults
+To: Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org
+Cc: deller@kernel.org, peter.maydell@linaro.org, alex.bennee@linaro.org,
+ linux-parisc@vger.kernel.org, qemu-arm@nongnu.org,
+ Helge Deller <deller@gmx.de>, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
+ <philmd@linaro.org>
+References: <20241009000453.315652-1-richard.henderson@linaro.org>
+ <20241009000453.315652-10-richard.henderson@linaro.org>
+ <4810ac6d-cbdc-4f04-a2fa-895e78cf2fcb@tls.msk.ru>
+Content-Language: en-US
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <4810ac6d-cbdc-4f04-a2fa-895e78cf2fcb@tls.msk.ru>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Originating-IP: [10.48.146.149]
-X-ClientProxiedBy: dggems701-chm.china.huawei.com (10.3.19.178) To
- frapeml500007.china.huawei.com (7.182.85.172)
-X-TUID: 8lQuwnwTA6Vy
+X-TUID: F+Ncat6aVRor
 
-Certain CPU architecture specifications [1][2][3] prohibit changes to the CPUs
-*presence* after the kernel has booted. This is because many system
-initializations depend on the exact CPU count at boot time and do not expect it
-to change afterward. For example, components like interrupt controllers that are
-closely coupled with CPUs, or various per-CPU features, may not support
-configuration changes once the kernel has been initialized.
+On 10/14/24 11:02, Michael Tokarev wrote:
+> On 09.10.2024 03:04, Richard Henderson wrote:
+>> Drop the 'else' so that ret is overridden with the
+>> highest priority fault.
+>>
+>> Fixes: d8bc1381250 ("target/hppa: Implement PSW_X")
+>> Reviewed-by: Helge Deller <deller@gmx.de>
+>> Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+>> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> 
+> Is this a qemu-stable material?  For now I assume yes, please
+> let me know if it is not.
 
-This requirement poses a challenge for virtualization features like vCPU
-hotplug. To address this, changes to the ACPI AML are necessary to update the
-`_STA.PRES` (presence) and `_STA.ENA` (enabled) bits accordingly during guest
-initialization, as well as when vCPUs are hot-plugged or hot-unplugged. The
-presence of unplugged vCPUs may need to be deliberately *simulated* at the ACPI
-level to maintain a *persistent* view of vCPUs for the guest kernel.
+The kernel fault thing is pretty nasty.
+Fixing that probably requires all of patches 2-11.
 
-This patch set introduces the following features:
-
-1. ACPI Interface with Explicit PRESENT and ENABLED CPU States: It allows the
-   guest kernel to evaluate these states using the `_STA` ACPI method.
-   
-2. Initialization of ACPI CPU States: These states are initialized during
-   `machvirt_init` and when vCPUs are hot-(un)plugged. This enables hotpluggable
-   vCPUs to be exposed to the guest kernel via ACPI.
-
-3. Support for Migrating ACPI CPU States: The patch set ensures the migration of
-   the newly introduced `is_{present,enabled}` ACPI CPU states to the
-   destination VM.
-
-The approach is flexible enough to accommodate ARM-like architectures that
-intend to implement vCPU hotplug functionality. It is suitable for architectures
-facing similar constraints to ARM or those that plan to implement vCPU
-hotplugging independently of hardware support (if available).
-
-This patch set is derived from the ARM-specific vCPU hotplug implementation [4]
-and includes migration components adaptable to other architectures, following
-suggestions [5] made by Igor Mammedov <imammedo@redhat.com>.
-
-It can be applied independently, ensuring compatibility with existing hotplug
-support in other architectures. I have tested this patch set in conjunction with
-the ARM-specific vCPU hotplug changes (included in the upcoming RFC V5 [6]), and
-everything worked as expected. I kindly request maintainers of other
-architectures to provide a "Tested-by" after running their respective regression
-tests.
-
-Many thanks!
+I don't think the arm fix is serious enough to backport.
 
 
-References:
-[1] KVMForum 2023 Presentation: Challenges Revisited in Supporting Virt CPU Hotplug on
-    architectures that don’t Support CPU Hotplug (like ARM64)
-    a. Kernel Link: https://kvm-forum.qemu.org/2023/KVM-forum-cpu-hotplug_7OJ1YyJ.pdf
-    b. Qemu Link:  https://kvm-forum.qemu.org/2023/Challenges_Revisited_in_Supporting_Virt_CPU_Hotplug_-__ii0iNb3.pdf
-[2] KVMForum 2020 Presentation: Challenges in Supporting Virtual CPU Hotplug on
-    SoC Based Systems (like ARM64)
-    Link: https://kvmforum2020.sched.com/event/eE4m
-[3] Check comment 5 in the bugzilla entry
-    Link: https://bugzilla.tianocore.org/show_bug.cgi?id=4481#c5
-[4] [PATCH RFC V4 00/33] Support of Virtual CPU Hotplug for ARMv8 Arch
-    Link: https://lore.kernel.org/qemu-devel/20241009031815.250096-1-salil.mehta@huawei.com/T/#mf32be203baa568a871dc625b732f666a4c4f1e68
-[5] Architecture agnostic ACPI VMSD state migration (Discussion)
-    Link: https://lore.kernel.org/qemu-devel/20240715155436.577d34c5@imammedo.users.ipa.redhat.com/
-[6] Upcoming RFC V5, Support of Virtual CPU Hotplug for ARMv8 Arch
-    Link: https://github.com/salil-mehta/qemu/commits/virt-cpuhp-armv8/rfc-v5
-
-Salil Mehta (4):
-  hw/acpi: Initialize ACPI Hotplug CPU Status with Support for vCPU
-    `Persistence`
-  hw/acpi: Update ACPI CPU Status `is_{present, enabled}` during vCPU
-    hot(un)plug
-  hw/acpi: Reflect ACPI vCPU {present,enabled} states in ACPI
-    _STA.{PRES,ENA} Bits
-  hw/acpi: Populate vCPU Hotplug VMSD to migrate `is_{present,enabled}`
-    states
-
- cpu-target.c         patches.vcpuhp.rfc-v5.arch.agnostic.acpi          |  1 +
- hw/acpi/cpu.c                  | 70 +++++++++++++++++++++++++++++++---
- hw/acpi/generic_event_device.c | 11 ++++++
- include/hw/acpi/cpu.h          | 21 ++++++++++
- include/hw/core/cpu.h          | 21 ++++++++++
- 5 files changed, 119 insertions(+), 5 deletions(-)
-
--- 
-2.34.1
+r~

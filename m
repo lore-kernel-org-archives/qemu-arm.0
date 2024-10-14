@@ -1,138 +1,109 @@
-Received: by 2002:a17:505:3501:b0:1be9:327d:8ee3 with SMTP id mc1csp1769108njb;
-        Mon, 14 Oct 2024 03:51:26 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWCi+bytprbw2iaae+nLlqgwU96QSrNm3wImVPZ6Lqom7yTLAj9rI1vWs2XNVEgqpD5ByBJ8XcjlaZiyw==@linaro.org
-X-Google-Smtp-Source: AGHT+IGxsXChzQI5c471o1u87d2TcIkN/3OaeypD9/4KiwzEg/+a0j1Fl5wcaaNMr+2FPVDwYnAI
-X-Received: by 2002:a05:622a:4e8e:b0:460:5aca:474d with SMTP id d75a77b69052e-4605aca5194mr107337701cf.23.1728903085779;
-        Mon, 14 Oct 2024 03:51:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1728903085; cv=none;
+Received: by 2002:a17:505:3501:b0:1be9:327d:8ee3 with SMTP id mc1csp1828251njb;
+        Mon, 14 Oct 2024 05:48:31 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVhTOz3NF0ppj9/u+nC9Zk//WDbZC4Pvn1xR6ACQZWIniTZo0hwNuwHi7hezA9ZP3KzJfBs2OCdMBPrdA==@linaro.org
+X-Google-Smtp-Source: AGHT+IGotsr5Bn5ZaG+830lDkaRg6I05249dqrCpmom0wBiK38IjlAamGKfygZ7mzrWIZjPPna9t
+X-Received: by 2002:a05:6214:5b0d:b0:6cb:e52c:c8dd with SMTP id 6a1803df08f44-6cbf9e9f4ecmr131729806d6.53.1728910111546;
+        Mon, 14 Oct 2024 05:48:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1728910111; cv=none;
         d=google.com; s=arc-20240605;
-        b=gP7INyeoZMgmsK1MwvXmNPvvNCoHfSYaOeydlWh1dMSFZz7orFnNzfzs9LQ2np5Tee
-         lIySQLavbmeorOVZ3QJVd8lhtiR9mkizT15yLgZf+c6B+4Fi/o1w2FnRkxgdEBmQClrx
-         6x4afrUDTeMl8jFuXFYjlYBsq6LWTUBE/6bTNq+R248y0x/DtWEjZlOoZNw3HbdC5PkM
-         1K24E5G+ih0e91uT2ZeIXDdDLixV/MfP2mNvGP6tgZhGjPNb9y2Ip5QcyodmBspAmqLO
-         4pwWuUA4wz24QkHAEPPI2454JcN39Lsylf12eZC/ELV6y5OHj4Y5C81gqt22G/zmvZw4
-         uhwg==
+        b=dWvIGhuB+XXzKVf0GdCvllMejBnc1lTXtOFMCFencV/D0x4laA5ofCniVszDmIj0M5
+         R2pruNSHXjagrV9DtcJQS0nkY/Xkk668RV/rx1R0HmV4XKc6SPwShdbGcbTO7y/zA3vC
+         kAjX0ZV4RkSkMH4XW1IDpmcfaA2qkM9APHPXe4gYFALEAGRrtcZJSAZj1SLfDjPARGgX
+         w119P1tz5mAKZE+fEGq1eTnnK5GucabPMJBO5JbDA1XmwBtYFSuHX9pn/b61OIG7qBsu
+         wGARlIeH30lR2wgxQqPkEoQPIzPLTy+ZIHPoAPSMFShCpIDelDhoCH9LhSVmfA1T1gZ8
+         ID1w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:in-reply-to:references
-         :message-id:content-transfer-encoding:mime-version:subject:date:from
-         :dkim-signature;
-        bh=8X9vuyXYR+y0kKvLJhNNDZ/SbTUMunEDKhXMJN3UXWA=;
-        fh=GZMuBu/rpFvAa8GQS06oP9uPdme5pEzj63im2YsAIJc=;
-        b=iX/Q6ZZhgpLrRGn75Yq1h2nrNlax8NOz2qWF0GtGgduff6tR0VwFcjH/NEA/eHmI8/
-         4IZpMXeVDOzQdSBs7s3NzR4vVQ7khYV6h9af44lYG3+Oi2vI18DXHmrP/Po6T4Dgo6d9
-         S3LkNDh9QfmJB3Ik2CKI4rdzkk0WCJn80Ri4KSCx9CVkrDcKgDdBU0/i1IiQM7RIstUN
-         Z74ysnHOwGPkUM8vvch7JTEE3l0n1n/N9z/IohySpxNhQLHxT3d0ryURuJlesbdtLslu
-         KWTS9ZoBhMhu8y4YLuTzKmzXbOlC6VHSxXzsNyPf45jTIvKCp3e2KOTkBIa0X2BYo7bL
-         MQ2A==;
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=kM79TXHsfWWOp3PAaFsigm/WkHWpSm/qj9ntAPFzurg=;
+        fh=2qP90IoVOn0f1Kh9SYvKAiBtA90Pqo8zJfcGedOcAxo=;
+        b=ka6IVAgm4ffEv55CEB0F+qHr5YRBUODD6FZm8gE5GgMJRqO7S0UnBLemHVvdrCZy+v
+         WfVwPf2wlzOFjktCVApabpxEPSJYIg8B3CaSa9rlO/s0B/zBhQeawpCH+icSjdwXSCgp
+         rTtUiE6AFn3mslHTxgcNToR/Oh+HtBK265GYS0OuTYBp1im05Eg0liXfE35idu7CLx8t
+         OQiypQlsToSskI75QS3tWhBFtnGM3DLK4115Al1tpL1Tb6CdQY/bCKoQlXeho/yQoPXE
+         ICbHyDu13+m9wDBZcTVAPj9xSQm2fQdUjsolRLU44h3T+5OTv0lpUDEIcAGJrNfgPOO7
+         y5kQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Qs0Dyp8Z;
+       dkim=pass header.i=@linaro.org header.s=google header.b=v775J4tS;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7b114998cd6si832081785a.330.2024.10.14.03.51.25
+        by mx.google.com with ESMTPS id 6a1803df08f44-6cbe85bc4c0si104498176d6.42.2024.10.14.05.48.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 14 Oct 2024 03:51:25 -0700 (PDT)
+        Mon, 14 Oct 2024 05:48:31 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Qs0Dyp8Z;
+       dkim=pass header.i=@linaro.org header.s=google header.b=v775J4tS;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1t0If4-00042f-UJ; Mon, 14 Oct 2024 06:50:50 -0400
+	id 1t0KUe-0002sc-3W; Mon, 14 Oct 2024 08:48:12 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1t0Ier-0003zf-Il
- for qemu-arm@nongnu.org; Mon, 14 Oct 2024 06:50:39 -0400
-Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1t0KUa-0002s8-7I
+ for qemu-arm@nongnu.org; Mon, 14 Oct 2024 08:48:08 -0400
+Received: from mail-lj1-x231.google.com ([2a00:1450:4864:20::231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1t0Ien-0006UB-6e
- for qemu-arm@nongnu.org; Mon, 14 Oct 2024 06:50:37 -0400
-Received: by mail-ej1-x629.google.com with SMTP id
- a640c23a62f3a-a99e3b3a411so315316066b.0
- for <qemu-arm@nongnu.org>; Mon, 14 Oct 2024 03:50:32 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1t0KUY-0004rC-IR
+ for qemu-arm@nongnu.org; Mon, 14 Oct 2024 08:48:07 -0400
+Received: by mail-lj1-x231.google.com with SMTP id
+ 38308e7fff4ca-2fb498a92f6so12152981fa.1
+ for <qemu-arm@nongnu.org>; Mon, 14 Oct 2024 05:48:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1728903031; x=1729507831; darn=nongnu.org;
- h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
- :mime-version:subject:date:from:from:to:cc:subject:date:message-id
- :reply-to; bh=8X9vuyXYR+y0kKvLJhNNDZ/SbTUMunEDKhXMJN3UXWA=;
- b=Qs0Dyp8Z9l/foVl0VWBLhsKlR4lBfLJAmmeHMoxilBs42/LjHGw/sEX6p//BmIasMS
- DnFDB0VKVl/DRHDDxI+0VwirI8G/Omru13j37xlF/pVhA8/yCzDHbhKGFjMKtEnZZk+j
- HSsGkCHjxIviQ0tbYIg0u4byHm++D4TnPwCXBN7Cx58t0kxGI2dCcUVxCEW7V/mD9svc
- HXpafqTXCaPMx1QaOseQaq+G5Wn3KjV6AXY/lTPvryLxf4+cqcx0tehozxwt5l/WTR2F
- 0qL2Ia2UeXdAZZqlzlzER8dBqQjndDmENQId8eWgEdqrmngN0HxGNdKMnEvdoeI301Dr
- Cwew==
+ d=linaro.org; s=google; t=1728910084; x=1729514884; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=kM79TXHsfWWOp3PAaFsigm/WkHWpSm/qj9ntAPFzurg=;
+ b=v775J4tSb4kZ8xSxq//YE/A+ATsbgWGmb4S5UAdb4aniZ51N1BnO5qIyHDWZUzDnJ2
+ GnFwNdyGcN8jZ46sZk7l3ch7PVS6DX89QRsSYuvTBpAeWkLVIGYoVWATIWWuXaTmdMez
+ L7+hjpCKjqvm5Y8ChGIyKY+B9QEPuVR6MJFkrxX+UUvMzhzSPpp3FOff4d6tvoo0aVqw
+ haxmqyGZfoB3JVyT+jhpwvzsHp+6s3qcAtIgyHqnyMlyK9mTDprL3z1ePCUsQIfka6+c
+ Wcyx3FnjG/Gk8X6236+Q0XneTc1jY5DGRe+vhaz8qfNAEFKELPEWAtW3jtOzzvaIknWV
+ q4Eg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1728903031; x=1729507831;
- h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
- :mime-version:subject:date:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=8X9vuyXYR+y0kKvLJhNNDZ/SbTUMunEDKhXMJN3UXWA=;
- b=GMbFBKt96ItbEfU+erAareD3MbyUOnNEuejpzpOu8wP+351PMRdwwkCSgIkjYuHExF
- sL0FHJi/v4G2UAaeAWffAZ/GTMUt0CwaaIFfEpAsUmNt9PKf9B6y70WRvNUj/KTlWIK/
- +RCF9XKS0gReBra4bVbLQTlzqJcRfnE4vSqUPonTx/S7GQIGPr+WCFyVGMyNA/BdbkgQ
- luVMEL+l5JLqqmvVBfCak5LOLycWUEPeTSlzify62h4d1oAsXsc/G+pV2vLluHLSm+Sc
- 9j04p6VnEjOeT0P80ivEuPaRxRDlhEMs17nKMC1eRJP64MmKBvjztvD+ZcCS6jqlrfHz
- 83jw==
+ d=1e100.net; s=20230601; t=1728910084; x=1729514884;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=kM79TXHsfWWOp3PAaFsigm/WkHWpSm/qj9ntAPFzurg=;
+ b=InmEzbqquowUNB44Ikd/b0QZ/oiP7+RTXbr6+Vs1zd4xC5bX35ZPCjJVEDp477AxWc
+ x6p4rnUbnrmjrnAdjxWeWFZqQBNrl089RJgd/vfopVS2fV6H90vfZHsiXaUFnnj7oQSl
+ 7IAuEU9UDrv1q4cbROyqzZMvEcdt2iJQqVtDrKkVS9Xmve0nlMyHrkmygSCrlOvVQv/g
+ WhvIouVRx3DRjPyGDQbQNpdrVOyYXaO9RdRgbfSZHySDY9KuUdNIHh4icQxzmEIeotSN
+ Q3t7bJD+Yj4k3KbGyp5WKiu/d/kfJzt+Z4yLzWYkGSn78Yn86pIfrAfL48jm9ldndPmi
+ vBgg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXIyq36gR1qExuPZvwKTS1EqFrRPll4Q2JI71h8aDyMmvpKOKnPhSSbeEyH2veayMu1Y9KxlImEIA==@nongnu.org
-X-Gm-Message-State: AOJu0Yw6JvmoyCsBHcNY+ULkYl8iJP8gKHqV5YHUEnZk73xvr4+6AL7k
- YyhxcvY06DrVZoffx7ZWpGzMuR9OynQP0uN8JhRQXtkEQtdNkZLyd6Sno5gQ6nFORZHUkNDMkZr
- aWiI=
-X-Received: by 2002:a17:907:7e8d:b0:a99:a18d:9793 with SMTP id
- a640c23a62f3a-a99b8775270mr888572666b.7.1728903031198; 
- Mon, 14 Oct 2024 03:50:31 -0700 (PDT)
-Received: from [127.0.1.1] (adsl-161.109.242.225.tellas.gr. [109.242.225.161])
- by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-a9a0b25226esm165504466b.59.2024.10.14.03.50.30
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 14 Oct 2024 03:50:30 -0700 (PDT)
-From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-Date: Mon, 14 Oct 2024 13:48:55 +0300
-Subject: [RFC PATCH 1/4] arm: Add FEAT_XS's TLBI NXS variants
+ AJvYcCWYdOoXgcem83L1GZKK9fFxNar2Cnf3oU9xsAfqoYiy+s4a1tntERbGJ98aFOINKMB7t3XH56b8Xg==@nongnu.org
+X-Gm-Message-State: AOJu0YyRwB3cx/mA3T1X4XakVcsf3f13y8sBbDbZ3wnyhHk5rKYbYChi
+ Qsaky0KFHdPGv6VPLr49JZ0y89LZ0/ivXCmtWAK4001nrdESyeml31RPBVxiWuZJPU3ZYtCrLOG
+ Jj5jrwTyj4MkDqStaGOK7JDxrhbSrx2PwT+s3Bw==
+X-Received: by 2002:a2e:4e11:0:b0:2fb:5060:7037 with SMTP id
+ 38308e7fff4ca-2fb506070e0mr12484231fa.41.1728910083959; Mon, 14 Oct 2024
+ 05:48:03 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20241014-arm-feat-xs-v1-1-42bb714d6b11@linaro.org>
-References: <20241014-arm-feat-xs-v1-0-42bb714d6b11@linaro.org>
-In-Reply-To: <20241014-arm-feat-xs-v1-0-42bb714d6b11@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
- Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-X-Mailer: b4 0.15-dev-12fc5
-X-Developer-Signature: v=1; a=openpgp-sha256; l=30178;
- i=manos.pitsidianakis@linaro.org; h=from:subject:message-id;
- bh=RH4gUuM4XiAkN2cmpjZ12TmceirbRYYoaEbxapzFk1I=;
- b=LS0tLS1CRUdJTiBQR1AgTUVTU0FHRS0tLS0tCgpvd0VCYlFLUy9aQU5Bd0FLQVhjcHgzQi9mZ
- 25RQWNzbVlnQm5EUGQwK2FiWExYMng4b2l3K01DUkE5OU5Wa09jClc1cDBHNnhoUXo5Q085YnFt
- a2VKQWpNRUFBRUtBQjBXSVFUTVhCdE9SS0JXODRkd0hSQjNLY2R3ZjM0SjBBVUMKWnd6M2RBQUt
- DUkIzS2Nkd2YzNEowQUFyRC85UkdiMVMvaExOV2hGY3djZjQzdkg5S3I1T3p4UEQvYTE1NVp2dA
- p6ZmNNblNEeFIreThQclRZalFzSnpTRWpBbUVUOEx5QTJnT2tzNjZxZENLamdEelBJMUROaEh3a
- mxXZlJXaVRrCmNJN0tVeDJ6MVI1cGtWT3ZvVUVLU1lhUVllcDh4NFNuenpLT2dTMldWREloR3lr
- ZU0vbmRlVTNxOUVqY2k5RmwKRGtPenVlM05UMGloUkl3YWY5aExiS0x1dUZyQ2lYTlo2elB2YmN
- Qd3BNV29vNlA1anQrRU0zamtQd2F1bjVNSApXeGV5QkFCSTh2Q01OUVNKSXZ6djVFVm9LZ3NzV1
- pEZHJZb241endSZDFva0JuOW1lTnNGTXplN2ZCZzhvS0hsCnpBa2tNNEFRNW95WXlXTEY4Sjh2W
- GlBYkpGVVpZaEl5d29tL0FZTm54WERGT1B5WUpMcDQxTVNGbU8xZ2hBR0IKZkhFU3ZPQVdUcnR5
- dnpsNXJrSEREV2l1SWNIbVBrajRxcEJ6V05waGFQc2lHeStrb0QrMVVqRGlCOVA2dlBtQgpjQXA
- 1eTJWZUFFZlBKUEllWFh1RDFVZUNOc3ZPclRWbEdPRHFKN1VSa0F3eHVjV1hGWWcxcVdWME9HZm
- MxQU5sCkRUeitmYUlpeVk2L3dXbHI0TXVVcU5vWHNFbXBrOGNmUXZKM0g0cVphYzNnZy91aGNsT
- HNmVG93VVlSczNXSTUKQ1hwU3B0aCs5RjBlSlR6VnU0SGFWZUMwOGtydExXYnJtd0JTejNCakNs
- YnlmNmQ2Yyt1eWN0dVNRSmphWVVmbAphSnJvUDRCN1hzamQ5WGVFYWtlTTMzNGVxcUNZRzIzUDR
- seDZ4b3BseVVxeXVUQmdaVHEzdm50RHF1eEg1TDZTCk9TYTJjUT09Cj12YVhVCi0tLS0tRU5EIF
- BHUCBNRVNTQUdFLS0tLS0K
-X-Developer-Key: i=manos.pitsidianakis@linaro.org; a=openpgp;
- fpr=7C721DF9DB3CC7182311C0BF68BC211D47B421E1
-Received-SPF: pass client-ip=2a00:1450:4864:20::629;
- envelope-from=manos.pitsidianakis@linaro.org; helo=mail-ej1-x629.google.com
+References: <20241005205748.29203-1-shentey@gmail.com>
+ <20241005205748.29203-2-shentey@gmail.com>
+In-Reply-To: <20241005205748.29203-2-shentey@gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 14 Oct 2024 13:47:52 +0100
+Message-ID: <CAFEAcA_2EU8Q+=Zm7pKJpO42=nAeGf9jpCsoM8ped1ngw66gKw@mail.gmail.com>
+Subject: Re: [PATCH 1/4] hw/net/lan9118: Extract lan9118_phy
+To: Bernhard Beschow <shentey@gmail.com>
+Cc: qemu-devel@nongnu.org, Jason Wang <jasowang@redhat.com>,
+ qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::231;
+ envelope-from=peter.maydell@linaro.org; helo=mail-lj1-x231.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -154,605 +125,62 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Ty+SZuopkNiQ
+X-TUID: 6035cDEqhcD3
 
-Signed-off-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
----
- target/arm/cpu-features.h |   5 +
- target/arm/helper.c       | 366 +++++++++++++++++++++++++++-------------------
- 2 files changed, 218 insertions(+), 153 deletions(-)
+On Sat, 5 Oct 2024 at 21:57, Bernhard Beschow <shentey@gmail.com> wrote:
+>
+> A very similar implementation of the same device exists in imx_fec. Prepare for
+> a common implementation by extracting the code into its own files.
+>
+> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+> ---
+>  include/hw/net/lan9118_phy.h |  31 ++++++++
+>  hw/net/lan9118.c             | 133 ++++++-----------------------------
+>  hw/net/lan9118_phy.c         | 117 ++++++++++++++++++++++++++++++
+>  hw/net/Kconfig               |   4 ++
+>  hw/net/meson.build           |   1 +
+>  5 files changed, 174 insertions(+), 112 deletions(-)
+>  create mode 100644 include/hw/net/lan9118_phy.h
+>  create mode 100644 hw/net/lan9118_phy.c
+>
+> diff --git a/include/hw/net/lan9118_phy.h b/include/hw/net/lan9118_phy.h
+> new file mode 100644
+> index 0000000000..50e3559b12
+> --- /dev/null
+> +++ b/include/hw/net/lan9118_phy.h
+> @@ -0,0 +1,31 @@
+> +/*
+> + * SMSC LAN9118 PHY emulation
+> + *
+> + * Copyright (c) 2009 CodeSourcery, LLC.
+> + * Written by Paul Brook
+> + *
+> + * This work is licensed under the terms of the GNU GPL, version 2 or later.
+> + * See the COPYING file in the top-level directory.
+> + */
+> +
+> +#ifndef HW_NET_LAN9118_PHY_H
+> +#define HW_NET_LAN9118_PHY_H
+> +
+> +#include "hw/irq.h"
+> +
+> +typedef struct Lan9118PhyState {
+> +    uint32_t status;
+> +    uint32_t control;
+> +    uint32_t advertise;
+> +    uint32_t ints;
+> +    uint32_t int_mask;
+> +    IRQState irq;
+> +    bool link_down;
+> +} Lan9118PhyState;
 
-diff --git a/target/arm/cpu-features.h b/target/arm/cpu-features.h
-index 04ce2818263e2c3b99c59940001b65302e1d26d2..b4dcd429c3540e18c44d3c30f82f030be45719f2 100644
---- a/target/arm/cpu-features.h
-+++ b/target/arm/cpu-features.h
-@@ -970,6 +970,11 @@ static inline bool isar_feature_aa64_sme_fa64(const ARMISARegisters *id)
-     return FIELD_EX64(id->id_aa64smfr0, ID_AA64SMFR0, FA64);
- }
- 
-+static inline bool isar_feature_aa64_xs(const ARMISARegisters *id)
-+{
-+    return FIELD_SEX64(id->id_aa64isar1, ID_AA64ISAR1, XS) >= 0;
-+}
-+
- /*
-  * Feature tests for "does this exist in either 32-bit or 64-bit?"
-  */
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 3f77b40734f2db831254a0e4eb205751aec0d1e5..3104a2d1dab6e58bf454c75afd478ec6d5fe521f 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -5671,98 +5671,111 @@ static const ARMCPRegInfo v8_cp_reginfo[] = {
-       .fgt = FGT_DCCISW,
-       .access = PL1_W, .accessfn = access_tsw, .type = ARM_CP_NOP },
-     /* TLBI operations */
--    { .name = "TLBI_VMALLE1IS", .state = ARM_CP_STATE_AA64,
-+#define TLBI(name, opc0, opc1, crn, crm, opc2, access, accessfn, type, fgt, \
-+             writefn)                                                       \
-+{ name, .state = ARM_CP_STATE_AA64, opc0, opc1, crn, crm, opc2, access,     \
-+  accessfn, type, fgt, writefn },                                           \
-+{ name"NXS", .state = ARM_CP_STATE_AA64, opc0, opc1, crn + 1, crm, opc2,    \
-+   access, accessfn, type, fgt, writefn }
-+ TLBI(.name = "TLBI_VMALLE1IS",
-       .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 3, .opc2 = 0,
-       .access = PL1_W, .accessfn = access_ttlbis, .type = ARM_CP_NO_RAW,
-       .fgt = FGT_TLBIVMALLE1IS,
--      .writefn = tlbi_aa64_vmalle1is_write },
--    { .name = "TLBI_VAE1IS", .state = ARM_CP_STATE_AA64,
-+      .writefn = tlbi_aa64_vmalle1is_write),
-+ TLBI(.name = "TLBI_VAE1IS",
-       .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 3, .opc2 = 1,
-       .access = PL1_W, .accessfn = access_ttlbis, .type = ARM_CP_NO_RAW,
-       .fgt = FGT_TLBIVAE1IS,
--      .writefn = tlbi_aa64_vae1is_write },
--    { .name = "TLBI_ASIDE1IS", .state = ARM_CP_STATE_AA64,
-+      .writefn = tlbi_aa64_vae1is_write),
-+ TLBI(.name = "TLBI_ASIDE1IS",
-       .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 3, .opc2 = 2,
-       .access = PL1_W, .accessfn = access_ttlbis, .type = ARM_CP_NO_RAW,
-       .fgt = FGT_TLBIASIDE1IS,
--      .writefn = tlbi_aa64_vmalle1is_write },
--    { .name = "TLBI_VAAE1IS", .state = ARM_CP_STATE_AA64,
-+      .writefn = tlbi_aa64_vmalle1is_write),
-+ TLBI(.name = "TLBI_VAAE1IS",
-       .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 3, .opc2 = 3,
-       .access = PL1_W, .accessfn = access_ttlbis, .type = ARM_CP_NO_RAW,
-       .fgt = FGT_TLBIVAAE1IS,
--      .writefn = tlbi_aa64_vae1is_write },
--    { .name = "TLBI_VALE1IS", .state = ARM_CP_STATE_AA64,
-+      .writefn = tlbi_aa64_vae1is_write),
-+ TLBI(.name = "TLBI_VALE1IS",
-       .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 3, .opc2 = 5,
-       .access = PL1_W, .accessfn = access_ttlbis, .type = ARM_CP_NO_RAW,
-       .fgt = FGT_TLBIVALE1IS,
--      .writefn = tlbi_aa64_vae1is_write },
--    { .name = "TLBI_VAALE1IS", .state = ARM_CP_STATE_AA64,
-+      .writefn = tlbi_aa64_vae1is_write),
-+ TLBI(.name = "TLBI_VAALE1IS",
-       .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 3, .opc2 = 7,
-       .access = PL1_W, .accessfn = access_ttlbis, .type = ARM_CP_NO_RAW,
-       .fgt = FGT_TLBIVAALE1IS,
--      .writefn = tlbi_aa64_vae1is_write },
--    { .name = "TLBI_VMALLE1", .state = ARM_CP_STATE_AA64,
-+      .writefn = tlbi_aa64_vae1is_write),
-+ TLBI(.name = "TLBI_VMALLE1",
-       .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 7, .opc2 = 0,
-       .access = PL1_W, .accessfn = access_ttlb, .type = ARM_CP_NO_RAW,
-       .fgt = FGT_TLBIVMALLE1,
--      .writefn = tlbi_aa64_vmalle1_write },
--    { .name = "TLBI_VAE1", .state = ARM_CP_STATE_AA64,
-+      .writefn = tlbi_aa64_vmalle1_write),
-+ TLBI(.name = "TLBI_VAE1",
-       .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 7, .opc2 = 1,
-       .access = PL1_W, .accessfn = access_ttlb, .type = ARM_CP_NO_RAW,
-       .fgt = FGT_TLBIVAE1,
--      .writefn = tlbi_aa64_vae1_write },
--    { .name = "TLBI_ASIDE1", .state = ARM_CP_STATE_AA64,
-+      .writefn = tlbi_aa64_vae1_write),
-+ TLBI(.name = "TLBI_ASIDE1",
-       .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 7, .opc2 = 2,
-       .access = PL1_W, .accessfn = access_ttlb, .type = ARM_CP_NO_RAW,
-       .fgt = FGT_TLBIASIDE1,
--      .writefn = tlbi_aa64_vmalle1_write },
--    { .name = "TLBI_VAAE1", .state = ARM_CP_STATE_AA64,
-+      .writefn = tlbi_aa64_vmalle1_write),
-+ TLBI(.name = "TLBI_VAAE1",
-       .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 7, .opc2 = 3,
-       .access = PL1_W, .accessfn = access_ttlb, .type = ARM_CP_NO_RAW,
-       .fgt = FGT_TLBIVAAE1,
--      .writefn = tlbi_aa64_vae1_write },
--    { .name = "TLBI_VALE1", .state = ARM_CP_STATE_AA64,
-+      .writefn = tlbi_aa64_vae1_write),
-+ TLBI(.name = "TLBI_VALE1",
-       .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 7, .opc2 = 5,
-       .access = PL1_W, .accessfn = access_ttlb, .type = ARM_CP_NO_RAW,
-       .fgt = FGT_TLBIVALE1,
--      .writefn = tlbi_aa64_vae1_write },
--    { .name = "TLBI_VAALE1", .state = ARM_CP_STATE_AA64,
-+      .writefn = tlbi_aa64_vae1_write),
-+ TLBI(.name = "TLBI_VAALE1",
-       .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 7, .opc2 = 7,
-       .access = PL1_W, .accessfn = access_ttlb, .type = ARM_CP_NO_RAW,
-       .fgt = FGT_TLBIVAALE1,
--      .writefn = tlbi_aa64_vae1_write },
--    { .name = "TLBI_IPAS2E1IS", .state = ARM_CP_STATE_AA64,
-+      .writefn = tlbi_aa64_vae1_write),
-+#undef TLBI
-+#define TLBI(name, opc0, opc1, crn, crm, opc2, access, type, writefn)   \
-+{ name, .state = ARM_CP_STATE_AA64, opc0, opc1, crn, crm, opc2, access, \
-+  type, writefn },                                           \
-+{ name"NXS", .state = ARM_CP_STATE_AA64, opc0, opc1, crn + 1, crm, opc2,\
-+   access, type, writefn }
-+ TLBI(.name = "TLBI_IPAS2E1IS",
-       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 0, .opc2 = 1,
-       .access = PL2_W, .type = ARM_CP_NO_RAW,
--      .writefn = tlbi_aa64_ipas2e1is_write },
--    { .name = "TLBI_IPAS2LE1IS", .state = ARM_CP_STATE_AA64,
-+      .writefn = tlbi_aa64_ipas2e1is_write),
-+ TLBI(.name = "TLBI_IPAS2LE1IS",
-       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 0, .opc2 = 5,
-       .access = PL2_W, .type = ARM_CP_NO_RAW,
--      .writefn = tlbi_aa64_ipas2e1is_write },
--    { .name = "TLBI_ALLE1IS", .state = ARM_CP_STATE_AA64,
-+      .writefn = tlbi_aa64_ipas2e1is_write),
-+ TLBI(.name = "TLBI_ALLE1IS",
-       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 3, .opc2 = 4,
-       .access = PL2_W, .type = ARM_CP_NO_RAW,
--      .writefn = tlbi_aa64_alle1is_write },
--    { .name = "TLBI_VMALLS12E1IS", .state = ARM_CP_STATE_AA64,
-+      .writefn = tlbi_aa64_alle1is_write),
-+ TLBI(.name = "TLBI_VMALLS12E1IS",
-       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 3, .opc2 = 6,
-       .access = PL2_W, .type = ARM_CP_NO_RAW,
--      .writefn = tlbi_aa64_alle1is_write },
--    { .name = "TLBI_IPAS2E1", .state = ARM_CP_STATE_AA64,
-+      .writefn = tlbi_aa64_alle1is_write),
-+ TLBI(.name = "TLBI_IPAS2E1",
-       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 4, .opc2 = 1,
-       .access = PL2_W, .type = ARM_CP_NO_RAW,
--      .writefn = tlbi_aa64_ipas2e1_write },
--    { .name = "TLBI_IPAS2LE1", .state = ARM_CP_STATE_AA64,
-+      .writefn = tlbi_aa64_ipas2e1_write),
-+ TLBI(.name = "TLBI_IPAS2LE1",
-       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 4, .opc2 = 5,
-       .access = PL2_W, .type = ARM_CP_NO_RAW,
--      .writefn = tlbi_aa64_ipas2e1_write },
--    { .name = "TLBI_ALLE1", .state = ARM_CP_STATE_AA64,
-+      .writefn = tlbi_aa64_ipas2e1_write),
-+ TLBI(.name = "TLBI_ALLE1",
-       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 7, .opc2 = 4,
-       .access = PL2_W, .type = ARM_CP_NO_RAW,
--      .writefn = tlbi_aa64_alle1_write },
--    { .name = "TLBI_VMALLS12E1", .state = ARM_CP_STATE_AA64,
-+      .writefn = tlbi_aa64_alle1_write),
-+ TLBI(.name = "TLBI_VMALLS12E1",
-       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 7, .opc2 = 6,
-       .access = PL2_W, .type = ARM_CP_NO_RAW,
--      .writefn = tlbi_aa64_alle1is_write },
-+      .writefn = tlbi_aa64_alle1is_write),
-+#undef TLBI
- #ifndef CONFIG_USER_ONLY
-     /* 64 bit address translation operations */
-     { .name = "AT_S1E1R", .state = ARM_CP_STATE_AA64,
-@@ -5819,41 +5832,49 @@ static const ARMCPRegInfo v8_cp_reginfo[] = {
-       .writefn = par_write },
- #endif
-     /* TLB invalidate last level of translation table walk */
--    { .name = "TLBIMVALIS", .cp = 15, .opc1 = 0, .crn = 8, .crm = 3, .opc2 = 5,
-+#define TLBI(name, cp, opc1, crn, crm, opc2, type, access, accessfn, writefn)\
-+{ name, cp, opc1, crn, crm, opc2, type, access, accessfn, writefn },         \
-+{ name"NXS", cp, opc1, crn + 1, crm, opc2, type, access, accessfn, writefn }
-+ TLBI(.name = "TLBIMVALIS", .cp = 15, .opc1 = 0, .crn = 8, .crm = 3, .opc2 = 5,
-       .type = ARM_CP_NO_RAW, .access = PL1_W, .accessfn = access_ttlbis,
--      .writefn = tlbimva_is_write },
--    { .name = "TLBIMVAALIS", .cp = 15, .opc1 = 0, .crn = 8, .crm = 3, .opc2 = 7,
-+      .writefn = tlbimva_is_write),
-+ TLBI(.name = "TLBIMVAALIS", .cp = 15, .opc1 = 0, .crn = 8, .crm = 3, .opc2 = 7,
-       .type = ARM_CP_NO_RAW, .access = PL1_W, .accessfn = access_ttlbis,
--      .writefn = tlbimvaa_is_write },
--    { .name = "TLBIMVAL", .cp = 15, .opc1 = 0, .crn = 8, .crm = 7, .opc2 = 5,
-+      .writefn = tlbimvaa_is_write),
-+ TLBI(.name = "TLBIMVAL", .cp = 15, .opc1 = 0, .crn = 8, .crm = 7, .opc2 = 5,
-       .type = ARM_CP_NO_RAW, .access = PL1_W, .accessfn = access_ttlb,
--      .writefn = tlbimva_write },
--    { .name = "TLBIMVAAL", .cp = 15, .opc1 = 0, .crn = 8, .crm = 7, .opc2 = 7,
-+      .writefn = tlbimva_write),
-+ TLBI(.name = "TLBIMVAAL", .cp = 15, .opc1 = 0, .crn = 8, .crm = 7, .opc2 = 7,
-       .type = ARM_CP_NO_RAW, .access = PL1_W, .accessfn = access_ttlb,
--      .writefn = tlbimvaa_write },
--    { .name = "TLBIMVALH", .cp = 15, .opc1 = 4, .crn = 8, .crm = 7, .opc2 = 5,
-+      .writefn = tlbimvaa_write),
-+#undef TLBI
-+#define TLBI(name, cp, opc1, crn, crm, opc2, type, access, writefn)\
-+{ name, cp, opc1, crn, crm, opc2, type, access, writefn },         \
-+{ name"NXS", cp, opc1, crn + 1, crm, opc2, type, access, writefn }
-+ TLBI(.name = "TLBIMVALH", .cp = 15, .opc1 = 4, .crn = 8, .crm = 7, .opc2 = 5,
-       .type = ARM_CP_NO_RAW, .access = PL2_W,
--      .writefn = tlbimva_hyp_write },
--    { .name = "TLBIMVALHIS",
-+      .writefn = tlbimva_hyp_write),
-+ TLBI(.name = "TLBIMVALHIS",
-       .cp = 15, .opc1 = 4, .crn = 8, .crm = 3, .opc2 = 5,
-       .type = ARM_CP_NO_RAW, .access = PL2_W,
--      .writefn = tlbimva_hyp_is_write },
--    { .name = "TLBIIPAS2",
-+      .writefn = tlbimva_hyp_is_write),
-+ TLBI(.name = "TLBIIPAS2",
-       .cp = 15, .opc1 = 4, .crn = 8, .crm = 4, .opc2 = 1,
-       .type = ARM_CP_NO_RAW, .access = PL2_W,
--      .writefn = tlbiipas2_hyp_write },
--    { .name = "TLBIIPAS2IS",
-+      .writefn = tlbiipas2_hyp_write),
-+ TLBI(.name = "TLBIIPAS2IS",
-       .cp = 15, .opc1 = 4, .crn = 8, .crm = 0, .opc2 = 1,
-       .type = ARM_CP_NO_RAW, .access = PL2_W,
--      .writefn = tlbiipas2is_hyp_write },
--    { .name = "TLBIIPAS2L",
-+      .writefn = tlbiipas2is_hyp_write),
-+ TLBI(.name = "TLBIIPAS2L",
-       .cp = 15, .opc1 = 4, .crn = 8, .crm = 4, .opc2 = 5,
-       .type = ARM_CP_NO_RAW, .access = PL2_W,
--      .writefn = tlbiipas2_hyp_write },
--    { .name = "TLBIIPAS2LIS",
-+      .writefn = tlbiipas2_hyp_write),
-+ TLBI(.name = "TLBIIPAS2LIS",
-       .cp = 15, .opc1 = 4, .crn = 8, .crm = 0, .opc2 = 5,
-       .type = ARM_CP_NO_RAW, .access = PL2_W,
--      .writefn = tlbiipas2is_hyp_write },
-+      .writefn = tlbiipas2is_hyp_write),
-+#undef TLBI
-     /* 32 bit cache operations */
-     { .name = "ICIALLUIS", .cp = 15, .opc1 = 0, .crn = 7, .crm = 1, .opc2 = 0,
-       .type = ARM_CP_NOP, .access = PL1_W, .accessfn = access_ticab },
-@@ -7829,207 +7850,245 @@ static const ARMCPRegInfo pauth_reginfo[] = {
- };
- 
- static const ARMCPRegInfo tlbirange_reginfo[] = {
--    { .name = "TLBI_RVAE1IS", .state = ARM_CP_STATE_AA64,
-+#define TLBI(name, opc0, opc1, crn, crm, opc2, access, accessfn, type, fgt, \
-+             writefn)                                                       \
-+{ name, .state = ARM_CP_STATE_AA64, opc0, opc1, crn, crm, opc2, access,     \
-+  accessfn, type, fgt, writefn },                                           \
-+{ name"NXS", .state = ARM_CP_STATE_AA64, opc0, opc1, crn + 1, crm, opc2,    \
-+   access, accessfn, type, fgt, writefn }
-+ TLBI(.name = "TLBI_RVAE1IS",
-       .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 2, .opc2 = 1,
-       .access = PL1_W, .accessfn = access_ttlbis, .type = ARM_CP_NO_RAW,
-       .fgt = FGT_TLBIRVAE1IS,
--      .writefn = tlbi_aa64_rvae1is_write },
--    { .name = "TLBI_RVAAE1IS", .state = ARM_CP_STATE_AA64,
-+      .writefn = tlbi_aa64_rvae1is_write),
-+ TLBI(.name = "TLBI_RVAAE1IS",
-       .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 2, .opc2 = 3,
-       .access = PL1_W, .accessfn = access_ttlbis, .type = ARM_CP_NO_RAW,
-       .fgt = FGT_TLBIRVAAE1IS,
--      .writefn = tlbi_aa64_rvae1is_write },
--   { .name = "TLBI_RVALE1IS", .state = ARM_CP_STATE_AA64,
-+      .writefn = tlbi_aa64_rvae1is_write),
-+   TLBI(.name = "TLBI_RVALE1IS",
-       .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 2, .opc2 = 5,
-       .access = PL1_W, .accessfn = access_ttlbis, .type = ARM_CP_NO_RAW,
-       .fgt = FGT_TLBIRVALE1IS,
--      .writefn = tlbi_aa64_rvae1is_write },
--    { .name = "TLBI_RVAALE1IS", .state = ARM_CP_STATE_AA64,
-+      .writefn = tlbi_aa64_rvae1is_write),
-+ TLBI(.name = "TLBI_RVAALE1IS",
-       .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 2, .opc2 = 7,
-       .access = PL1_W, .accessfn = access_ttlbis, .type = ARM_CP_NO_RAW,
-       .fgt = FGT_TLBIRVAALE1IS,
--      .writefn = tlbi_aa64_rvae1is_write },
--    { .name = "TLBI_RVAE1OS", .state = ARM_CP_STATE_AA64,
-+      .writefn = tlbi_aa64_rvae1is_write),
-+ TLBI(.name = "TLBI_RVAE1OS",
-       .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 5, .opc2 = 1,
-       .access = PL1_W, .accessfn = access_ttlbos, .type = ARM_CP_NO_RAW,
-       .fgt = FGT_TLBIRVAE1OS,
--      .writefn = tlbi_aa64_rvae1is_write },
--    { .name = "TLBI_RVAAE1OS", .state = ARM_CP_STATE_AA64,
-+      .writefn = tlbi_aa64_rvae1is_write),
-+ TLBI(.name = "TLBI_RVAAE1OS",
-       .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 5, .opc2 = 3,
-       .access = PL1_W, .accessfn = access_ttlbos, .type = ARM_CP_NO_RAW,
-       .fgt = FGT_TLBIRVAAE1OS,
--      .writefn = tlbi_aa64_rvae1is_write },
--   { .name = "TLBI_RVALE1OS", .state = ARM_CP_STATE_AA64,
-+      .writefn = tlbi_aa64_rvae1is_write),
-+ TLBI(.name = "TLBI_RVALE1OS",
-       .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 5, .opc2 = 5,
-       .access = PL1_W, .accessfn = access_ttlbos, .type = ARM_CP_NO_RAW,
-       .fgt = FGT_TLBIRVALE1OS,
--      .writefn = tlbi_aa64_rvae1is_write },
--    { .name = "TLBI_RVAALE1OS", .state = ARM_CP_STATE_AA64,
-+      .writefn = tlbi_aa64_rvae1is_write),
-+ TLBI(.name = "TLBI_RVAALE1OS",
-       .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 5, .opc2 = 7,
-       .access = PL1_W, .accessfn = access_ttlbos, .type = ARM_CP_NO_RAW,
-       .fgt = FGT_TLBIRVAALE1OS,
--      .writefn = tlbi_aa64_rvae1is_write },
--    { .name = "TLBI_RVAE1", .state = ARM_CP_STATE_AA64,
-+      .writefn = tlbi_aa64_rvae1is_write),
-+ TLBI(.name = "TLBI_RVAE1",
-       .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 6, .opc2 = 1,
-       .access = PL1_W, .accessfn = access_ttlb, .type = ARM_CP_NO_RAW,
-       .fgt = FGT_TLBIRVAE1,
--      .writefn = tlbi_aa64_rvae1_write },
--    { .name = "TLBI_RVAAE1", .state = ARM_CP_STATE_AA64,
-+      .writefn = tlbi_aa64_rvae1_write),
-+ TLBI(.name = "TLBI_RVAAE1",
-       .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 6, .opc2 = 3,
-       .access = PL1_W, .accessfn = access_ttlb, .type = ARM_CP_NO_RAW,
-       .fgt = FGT_TLBIRVAAE1,
--      .writefn = tlbi_aa64_rvae1_write },
--   { .name = "TLBI_RVALE1", .state = ARM_CP_STATE_AA64,
-+      .writefn = tlbi_aa64_rvae1_write),
-+   TLBI(.name = "TLBI_RVALE1",
-       .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 6, .opc2 = 5,
-       .access = PL1_W, .accessfn = access_ttlb, .type = ARM_CP_NO_RAW,
-       .fgt = FGT_TLBIRVALE1,
--      .writefn = tlbi_aa64_rvae1_write },
--    { .name = "TLBI_RVAALE1", .state = ARM_CP_STATE_AA64,
-+      .writefn = tlbi_aa64_rvae1_write),
-+ TLBI(.name = "TLBI_RVAALE1",
-       .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 6, .opc2 = 7,
-       .access = PL1_W, .accessfn = access_ttlb, .type = ARM_CP_NO_RAW,
-       .fgt = FGT_TLBIRVAALE1,
--      .writefn = tlbi_aa64_rvae1_write },
--    { .name = "TLBI_RIPAS2E1IS", .state = ARM_CP_STATE_AA64,
-+      .writefn = tlbi_aa64_rvae1_write),
-+#undef TLBI
-+#define TLBI(name, opc0, opc1, crn, crm, opc2, access, type, writefn)    \
-+{ name, .state = ARM_CP_STATE_AA64, opc0, opc1, crn, crm, opc2, access,  \
-+  type, writefn },                                                       \
-+{ name"NXS", .state = ARM_CP_STATE_AA64, opc0, opc1, crn + 1, crm, opc2, \
-+  access, type, writefn }
-+ TLBI(.name = "TLBI_RIPAS2E1IS",
-       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 0, .opc2 = 2,
-       .access = PL2_W, .type = ARM_CP_NO_RAW,
--      .writefn = tlbi_aa64_ripas2e1is_write },
--    { .name = "TLBI_RIPAS2LE1IS", .state = ARM_CP_STATE_AA64,
-+      .writefn = tlbi_aa64_ripas2e1is_write),
-+ TLBI(.name = "TLBI_RIPAS2LE1IS",
-       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 0, .opc2 = 6,
-       .access = PL2_W, .type = ARM_CP_NO_RAW,
--      .writefn = tlbi_aa64_ripas2e1is_write },
--    { .name = "TLBI_RVAE2IS", .state = ARM_CP_STATE_AA64,
-+      .writefn = tlbi_aa64_ripas2e1is_write),
-+ TLBI(.name = "TLBI_RVAE2IS",
-       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 2, .opc2 = 1,
-       .access = PL2_W, .type = ARM_CP_NO_RAW | ARM_CP_EL3_NO_EL2_UNDEF,
--      .writefn = tlbi_aa64_rvae2is_write },
--   { .name = "TLBI_RVALE2IS", .state = ARM_CP_STATE_AA64,
-+      .writefn = tlbi_aa64_rvae2is_write),
-+   TLBI(.name = "TLBI_RVALE2IS",
-       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 2, .opc2 = 5,
-       .access = PL2_W, .type = ARM_CP_NO_RAW | ARM_CP_EL3_NO_EL2_UNDEF,
--      .writefn = tlbi_aa64_rvae2is_write },
--    { .name = "TLBI_RIPAS2E1", .state = ARM_CP_STATE_AA64,
-+      .writefn = tlbi_aa64_rvae2is_write),
-+ TLBI(.name = "TLBI_RIPAS2E1",
-       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 4, .opc2 = 2,
-       .access = PL2_W, .type = ARM_CP_NO_RAW,
--      .writefn = tlbi_aa64_ripas2e1_write },
--    { .name = "TLBI_RIPAS2LE1", .state = ARM_CP_STATE_AA64,
-+      .writefn = tlbi_aa64_ripas2e1_write),
-+ TLBI(.name = "TLBI_RIPAS2LE1",
-       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 4, .opc2 = 6,
-       .access = PL2_W, .type = ARM_CP_NO_RAW,
--      .writefn = tlbi_aa64_ripas2e1_write },
--   { .name = "TLBI_RVAE2OS", .state = ARM_CP_STATE_AA64,
-+      .writefn = tlbi_aa64_ripas2e1_write),
-+   TLBI(.name = "TLBI_RVAE2OS",
-       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 5, .opc2 = 1,
-       .access = PL2_W, .type = ARM_CP_NO_RAW | ARM_CP_EL3_NO_EL2_UNDEF,
--      .writefn = tlbi_aa64_rvae2is_write },
--   { .name = "TLBI_RVALE2OS", .state = ARM_CP_STATE_AA64,
-+      .writefn = tlbi_aa64_rvae2is_write),
-+   TLBI(.name = "TLBI_RVALE2OS",
-       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 5, .opc2 = 5,
-       .access = PL2_W, .type = ARM_CP_NO_RAW | ARM_CP_EL3_NO_EL2_UNDEF,
--      .writefn = tlbi_aa64_rvae2is_write },
--    { .name = "TLBI_RVAE2", .state = ARM_CP_STATE_AA64,
-+      .writefn = tlbi_aa64_rvae2is_write),
-+ TLBI(.name = "TLBI_RVAE2",
-       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 6, .opc2 = 1,
-       .access = PL2_W, .type = ARM_CP_NO_RAW | ARM_CP_EL3_NO_EL2_UNDEF,
--      .writefn = tlbi_aa64_rvae2_write },
--   { .name = "TLBI_RVALE2", .state = ARM_CP_STATE_AA64,
-+      .writefn = tlbi_aa64_rvae2_write),
-+   TLBI(.name = "TLBI_RVALE2",
-       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 6, .opc2 = 5,
-       .access = PL2_W, .type = ARM_CP_NO_RAW | ARM_CP_EL3_NO_EL2_UNDEF,
--      .writefn = tlbi_aa64_rvae2_write },
--   { .name = "TLBI_RVAE3IS", .state = ARM_CP_STATE_AA64,
-+      .writefn = tlbi_aa64_rvae2_write),
-+   TLBI(.name = "TLBI_RVAE3IS",
-       .opc0 = 1, .opc1 = 6, .crn = 8, .crm = 2, .opc2 = 1,
-       .access = PL3_W, .type = ARM_CP_NO_RAW,
--      .writefn = tlbi_aa64_rvae3is_write },
--   { .name = "TLBI_RVALE3IS", .state = ARM_CP_STATE_AA64,
-+      .writefn = tlbi_aa64_rvae3is_write),
-+   TLBI(.name = "TLBI_RVALE3IS",
-       .opc0 = 1, .opc1 = 6, .crn = 8, .crm = 2, .opc2 = 5,
-       .access = PL3_W, .type = ARM_CP_NO_RAW,
--      .writefn = tlbi_aa64_rvae3is_write },
--   { .name = "TLBI_RVAE3OS", .state = ARM_CP_STATE_AA64,
-+      .writefn = tlbi_aa64_rvae3is_write),
-+   TLBI(.name = "TLBI_RVAE3OS",
-       .opc0 = 1, .opc1 = 6, .crn = 8, .crm = 5, .opc2 = 1,
-       .access = PL3_W, .type = ARM_CP_NO_RAW,
--      .writefn = tlbi_aa64_rvae3is_write },
--   { .name = "TLBI_RVALE3OS", .state = ARM_CP_STATE_AA64,
-+      .writefn = tlbi_aa64_rvae3is_write),
-+   TLBI(.name = "TLBI_RVALE3OS",
-       .opc0 = 1, .opc1 = 6, .crn = 8, .crm = 5, .opc2 = 5,
-       .access = PL3_W, .type = ARM_CP_NO_RAW,
--      .writefn = tlbi_aa64_rvae3is_write },
--   { .name = "TLBI_RVAE3", .state = ARM_CP_STATE_AA64,
-+      .writefn = tlbi_aa64_rvae3is_write),
-+   TLBI(.name = "TLBI_RVAE3",
-       .opc0 = 1, .opc1 = 6, .crn = 8, .crm = 6, .opc2 = 1,
-       .access = PL3_W, .type = ARM_CP_NO_RAW,
--      .writefn = tlbi_aa64_rvae3_write },
--   { .name = "TLBI_RVALE3", .state = ARM_CP_STATE_AA64,
-+      .writefn = tlbi_aa64_rvae3_write),
-+   TLBI(.name = "TLBI_RVALE3",
-       .opc0 = 1, .opc1 = 6, .crn = 8, .crm = 6, .opc2 = 5,
-       .access = PL3_W, .type = ARM_CP_NO_RAW,
--      .writefn = tlbi_aa64_rvae3_write },
-+      .writefn = tlbi_aa64_rvae3_write),
-+#undef TLBI
- };
- 
- static const ARMCPRegInfo tlbios_reginfo[] = {
--    { .name = "TLBI_VMALLE1OS", .state = ARM_CP_STATE_AA64,
-+#define TLBI(name, opc0, opc1, crn, crm, opc2, access, accessfn, type, fgt, \
-+             writefn)                                                       \
-+{ name, .state = ARM_CP_STATE_AA64, opc0, opc1, crn, crm, opc2, access,     \
-+  accessfn, type, fgt, writefn },                                           \
-+{ name"NXS", .state = ARM_CP_STATE_AA64, opc0, opc1, crn + 1, crm, opc2,    \
-+   access, accessfn, type, fgt, writefn }
-+ TLBI(.name = "TLBI_VMALLE1OS",
-       .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 1, .opc2 = 0,
-       .access = PL1_W, .accessfn = access_ttlbos, .type = ARM_CP_NO_RAW,
-       .fgt = FGT_TLBIVMALLE1OS,
--      .writefn = tlbi_aa64_vmalle1is_write },
--    { .name = "TLBI_VAE1OS", .state = ARM_CP_STATE_AA64,
-+      .writefn = tlbi_aa64_vmalle1is_write),
-+ TLBI(.name = "TLBI_VAE1OS",
-       .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 1, .opc2 = 1,
-       .fgt = FGT_TLBIVAE1OS,
-       .access = PL1_W, .accessfn = access_ttlbos, .type = ARM_CP_NO_RAW,
--      .writefn = tlbi_aa64_vae1is_write },
--    { .name = "TLBI_ASIDE1OS", .state = ARM_CP_STATE_AA64,
-+      .writefn = tlbi_aa64_vae1is_write),
-+ TLBI(.name = "TLBI_ASIDE1OS",
-       .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 1, .opc2 = 2,
-       .access = PL1_W, .accessfn = access_ttlbos, .type = ARM_CP_NO_RAW,
-       .fgt = FGT_TLBIASIDE1OS,
--      .writefn = tlbi_aa64_vmalle1is_write },
--    { .name = "TLBI_VAAE1OS", .state = ARM_CP_STATE_AA64,
-+      .writefn = tlbi_aa64_vmalle1is_write),
-+ TLBI(.name = "TLBI_VAAE1OS",
-       .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 1, .opc2 = 3,
-       .access = PL1_W, .accessfn = access_ttlbos, .type = ARM_CP_NO_RAW,
-       .fgt = FGT_TLBIVAAE1OS,
--      .writefn = tlbi_aa64_vae1is_write },
--    { .name = "TLBI_VALE1OS", .state = ARM_CP_STATE_AA64,
-+      .writefn = tlbi_aa64_vae1is_write),
-+ TLBI(.name = "TLBI_VALE1OS",
-       .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 1, .opc2 = 5,
-       .access = PL1_W, .accessfn = access_ttlbos, .type = ARM_CP_NO_RAW,
-       .fgt = FGT_TLBIVALE1OS,
--      .writefn = tlbi_aa64_vae1is_write },
--    { .name = "TLBI_VAALE1OS", .state = ARM_CP_STATE_AA64,
-+      .writefn = tlbi_aa64_vae1is_write),
-+ TLBI(.name = "TLBI_VAALE1OS",
-       .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 1, .opc2 = 7,
-       .access = PL1_W, .accessfn = access_ttlbos, .type = ARM_CP_NO_RAW,
-       .fgt = FGT_TLBIVAALE1OS,
--      .writefn = tlbi_aa64_vae1is_write },
--    { .name = "TLBI_ALLE2OS", .state = ARM_CP_STATE_AA64,
-+      .writefn = tlbi_aa64_vae1is_write),
-+#undef TLBI
-+#define TLBI(name, opc0, opc1, crn, crm, opc2, access, type, writefn)       \
-+{ name, .state = ARM_CP_STATE_AA64, opc0, opc1, crn, crm, opc2, access,     \
-+  type, writefn },                                                          \
-+{ name"NXS", .state = ARM_CP_STATE_AA64, opc0, opc1, crn + 1, crm, opc2,    \
-+   access, type, writefn }
-+ TLBI(.name = "TLBI_ALLE2OS",
-       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 1, .opc2 = 0,
-       .access = PL2_W, .type = ARM_CP_NO_RAW | ARM_CP_EL3_NO_EL2_UNDEF,
--      .writefn = tlbi_aa64_alle2is_write },
--    { .name = "TLBI_VAE2OS", .state = ARM_CP_STATE_AA64,
-+      .writefn = tlbi_aa64_alle2is_write),
-+ TLBI(.name = "TLBI_VAE2OS",
-       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 1, .opc2 = 1,
-       .access = PL2_W, .type = ARM_CP_NO_RAW | ARM_CP_EL3_NO_EL2_UNDEF,
--      .writefn = tlbi_aa64_vae2is_write },
--   { .name = "TLBI_ALLE1OS", .state = ARM_CP_STATE_AA64,
-+      .writefn = tlbi_aa64_vae2is_write),
-+   TLBI(.name = "TLBI_ALLE1OS",
-       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 1, .opc2 = 4,
-       .access = PL2_W, .type = ARM_CP_NO_RAW,
--      .writefn = tlbi_aa64_alle1is_write },
--    { .name = "TLBI_VALE2OS", .state = ARM_CP_STATE_AA64,
-+      .writefn = tlbi_aa64_alle1is_write),
-+ TLBI(.name = "TLBI_VALE2OS",
-       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 1, .opc2 = 5,
-       .access = PL2_W, .type = ARM_CP_NO_RAW | ARM_CP_EL3_NO_EL2_UNDEF,
--      .writefn = tlbi_aa64_vae2is_write },
--    { .name = "TLBI_VMALLS12E1OS", .state = ARM_CP_STATE_AA64,
-+      .writefn = tlbi_aa64_vae2is_write),
-+ TLBI(.name = "TLBI_VMALLS12E1OS",
-       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 1, .opc2 = 6,
-       .access = PL2_W, .type = ARM_CP_NO_RAW,
--      .writefn = tlbi_aa64_alle1is_write },
--    { .name = "TLBI_IPAS2E1OS", .state = ARM_CP_STATE_AA64,
-+      .writefn = tlbi_aa64_alle1is_write),
-+#undef TLBI
-+#define TLBI(name, opc0, opc1, crn, crm, opc2, access, type)            \
-+{ name, .state = ARM_CP_STATE_AA64, opc0, opc1, crn, crm, opc2, access, \
-+  type },                                                               \
-+{ name"NXS", .state = ARM_CP_STATE_AA64, opc0, opc1, crn + 1, crm, opc2,\
-+   access, type }
-+ TLBI(.name = "TLBI_IPAS2E1OS",
-       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 4, .opc2 = 0,
--      .access = PL2_W, .type = ARM_CP_NOP },
--    { .name = "TLBI_RIPAS2E1OS", .state = ARM_CP_STATE_AA64,
-+      .access = PL2_W, .type = ARM_CP_NOP),
-+ TLBI(.name = "TLBI_RIPAS2E1OS",
-       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 4, .opc2 = 3,
--      .access = PL2_W, .type = ARM_CP_NOP },
--    { .name = "TLBI_IPAS2LE1OS", .state = ARM_CP_STATE_AA64,
-+      .access = PL2_W, .type = ARM_CP_NOP),
-+ TLBI(.name = "TLBI_IPAS2LE1OS",
-       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 4, .opc2 = 4,
--      .access = PL2_W, .type = ARM_CP_NOP },
--    { .name = "TLBI_RIPAS2LE1OS", .state = ARM_CP_STATE_AA64,
-+      .access = PL2_W, .type = ARM_CP_NOP),
-+ TLBI(.name = "TLBI_RIPAS2LE1OS",
-       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 4, .opc2 = 7,
--      .access = PL2_W, .type = ARM_CP_NOP },
--    { .name = "TLBI_ALLE3OS", .state = ARM_CP_STATE_AA64,
-+      .access = PL2_W, .type = ARM_CP_NOP),
-+#undef TLBI
-+#define TLBI(name, opc0, opc1, crn, crm, opc2, access, type, writefn)       \
-+{ name, .state = ARM_CP_STATE_AA64, opc0, opc1, crn, crm, opc2, access,     \
-+  type, writefn },                                                          \
-+{ name"NXS", .state = ARM_CP_STATE_AA64, opc0, opc1, crn + 1, crm, opc2,    \
-+   access, type, writefn }
-+ TLBI(.name = "TLBI_ALLE3OS",
-       .opc0 = 1, .opc1 = 6, .crn = 8, .crm = 1, .opc2 = 0,
-       .access = PL3_W, .type = ARM_CP_NO_RAW,
--      .writefn = tlbi_aa64_alle3is_write },
--    { .name = "TLBI_VAE3OS", .state = ARM_CP_STATE_AA64,
-+      .writefn = tlbi_aa64_alle3is_write),
-+ TLBI(.name = "TLBI_VAE3OS",
-       .opc0 = 1, .opc1 = 6, .crn = 8, .crm = 1, .opc2 = 1,
-       .access = PL3_W, .type = ARM_CP_NO_RAW,
--      .writefn = tlbi_aa64_vae3is_write },
--    { .name = "TLBI_VALE3OS", .state = ARM_CP_STATE_AA64,
-+      .writefn = tlbi_aa64_vae3is_write),
-+ TLBI(.name = "TLBI_VALE3OS",
-       .opc0 = 1, .opc1 = 6, .crn = 8, .crm = 1, .opc2 = 5,
-       .access = PL3_W, .type = ARM_CP_NO_RAW,
--      .writefn = tlbi_aa64_vae3is_write },
-+      .writefn = tlbi_aa64_vae3is_write),
-+#undef TLBI
- };
- 
- static uint64_t rndr_readfn(CPUARMState *env, const ARMCPRegInfo *ri)
-@@ -9201,7 +9260,8 @@ void register_cp_regs_for_features(ARMCPU *cpu)
-                                R_ID_AA64ISAR1_SB_MASK |
-                                R_ID_AA64ISAR1_BF16_MASK |
-                                R_ID_AA64ISAR1_DGH_MASK |
--                               R_ID_AA64ISAR1_I8MM_MASK },
-+                               R_ID_AA64ISAR1_I8MM_MASK |
-+                               R_ID_AA64ISAR1_XS_MASK },
-             { .name = "ID_AA64ISAR2_EL1",
-               .exported_bits = R_ID_AA64ISAR2_WFXT_MASK |
-                                R_ID_AA64ISAR2_RPRES_MASK |
+This takes state that was in a QOM object, and moves it
+into something that's kind of a device but not a QOM
+object. I think we should avoid that, because at some
+point somebody's going to have to QOMify this.
 
--- 
-2.45.2
+Making this a QOM device is a bit awkward for migration
+compatibility, unfortunately.
 
+thanks
+-- PMM

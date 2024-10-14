@@ -1,208 +1,249 @@
-Received: by 2002:a17:505:3501:b0:1be9:327d:8ee3 with SMTP id mc1csp2035208njb;
-        Mon, 14 Oct 2024 11:51:14 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVkzqSxW3WO0ir9nfB5Lq/ONGsYJSQ4RtozK21ofkEB2zcAOFRNXG4cOJ7FjdYT04te3lqLhHyQh7VEIg==@linaro.org
-X-Google-Smtp-Source: AGHT+IGyj9imRFFYTcZbxtQXkEh4ggC6eiACBhYGNRUDwfjpp1Zg3Fiz1sVoVILOFMNNtJrEqFfi
-X-Received: by 2002:a05:622a:241:b0:45f:92f:d937 with SMTP id d75a77b69052e-4603f5b8b98mr251308941cf.14.1728931874384;
-        Mon, 14 Oct 2024 11:51:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1728931874; cv=none;
+Received: by 2002:a17:505:3501:b0:1be9:327d:8ee3 with SMTP id mc1csp2050512njb;
+        Mon, 14 Oct 2024 12:23:09 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUAjBQjfdtUjeATlYqIb6b+8CWzLzeMyZg668Gwf+S5nKu4OYzWuxvM8sDGYTsqBReUqjOV0/4GdpSnSw==@linaro.org
+X-Google-Smtp-Source: AGHT+IHS4s46eFqRPz5MwQ2lSjEHpgCqXoX7AwNeYHk7fH2BnAVTckP3ndzUuf494NT51Hd8juhe
+X-Received: by 2002:a05:600c:1e18:b0:426:5e32:4857 with SMTP id 5b1f17b1804b1-4311d710e52mr100661645e9.0.1728933788895;
+        Mon, 14 Oct 2024 12:23:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1728933788; cv=none;
         d=google.com; s=arc-20240605;
-        b=TvexkFuCBjuA4rr1pdUZJ0DKfoucJ2lRHaK+vrHmUuWT0MMzMm1+AZqvdpn47gyGKH
-         HKydEgX/F9RvARg7OKThstJcFt/zmdsf+k0tAzuKbG7zRIc0m+2ML9Qm+6a/sOVlfOfg
-         mPDRUWsWM5hw6gry9eELd8WGknycq0ED2LTmbCUUkuL4SPveMJaRQgNvPaAbHK2pYlX3
-         KJePmUJKw/uM2ny71z/OzWWyX48OzcQ/rgKxOe51HWopcBAYs5hgbsA0DSahQfSLP3KS
-         TDAuJazRyrCiCiPuJuc66r8QmHLxOuWwZ0pXKfjcioGGxk+kXaYHhPjKbcDquZoMJrlC
-         mGDg==
+        b=QjvosFvO6IhANE8KjdpvecllUtrC8bAmFGPVZPRR4LP91okPq1LJCVLtdxzoAiftcJ
+         MIWYGbYy32HitNB4vOz2W5fHsV1JoCjNrOGLRdeQRs5wDEpsHJa2FogffZAPmh4IoFwR
+         wq3D8RmFFbvtIOVOc9jZc1EODixk+Di+Bh4IWqVq6Ju8owcK8GrOR7BWgwMLncNg0m+9
+         wd6UUbTyseiIfuHubu0zJyj0uIVe5wEw4GyG3SeuwIu8aq15OEdBt5cGgKJjqAj52JrU
+         iRP5v0yU3G8DzTOzK2Rwiu8TDkPTu/wrxojCqm5w2MSbTr+b4cTHG5HWA02phIKOfAqH
+         VxUw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:references:in-reply-to:subject:cc:to:from
-         :date:dkim-signature;
-        bh=9Afn4YpkfgdO2F5nizDrDa38curFp/Rk7aAYjRgQ498=;
-        fh=Yll+2Q0fVEOTtwa1HYqZ+qvsMnI4WQiKrybiKkS5Zmo=;
-        b=CCYHccbUatzGblogaeq11XjZQ0EmHzzhKZ2IH29T5PVYbyW7x/hDpULUnccgm5lSFQ
-         qaBCmuAWPFaBo991qttDJ361N0OGc26AWfQkAT/+8Il1vh7SXwb81mE0jrS1pdrTWItI
-         4HHm2l8pMVj2hKWQCl4Gcya27gJm3FlYTp8rAjAl3TIPnWVRdB7pncPgciDkN/MtYs7D
-         rUJX/JAfbNxXgfaNxEPVBbcQuF3et5hSL5YVfovl/dUUaZcQWSLrCLFrwXt42mbalVGz
-         I3U71n1iDNeKWuPvufQRyBOq0Wh9doT2MumOkKU0sN7aX6Ld4fzASOGM9tvStNWZI9Cs
-         oo4A==;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from;
+        bh=lCquGcqSsG3HC7erbPLmk00BCQkLJ8wH+9SUNT1HTdA=;
+        fh=4Dgx8jc1gJCFDIGNl8iT3gucG+cuHYR9XmJ7yDXtNzA=;
+        b=TBglrBdaBnbPnZa+3yHzroct9h3QQq7qfIzSb4Dza1f1v6FXmnJibqvi1QLLJCSGxB
+         APKN9AdUq1mYbEJEtLKAwVDMqjwa+B3h9621f/STpCmthFBMv0NsRfT/M/AbRrDjWZA7
+         0pFBg39MkQ4PkwrcTjDu+9PDCZqTSSutN7MzH11FYLafbKv60/vHaitENFJUU7TVyCwd
+         IzqtjUjDyHBzSG5MbQzRFMzygXCekJYY+p5kfKKtL7wBhZS5cH/jZQdHxa14+0jsCdWW
+         PwCzh64SbYWRzrTFQ0Lb+AA6sS5a8KaAmk/dJGjcLF+TKqx1cNfroF1OPPJjRkBL1Ov0
+         n3xg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=cCUnlN31;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4604289b6fcsi118074101cf.403.2024.10.14.11.51.14
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 14 Oct 2024 11:51:14 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Return-Path: <salil.mehta@huawei.com>
+Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
+        by mx.google.com with ESMTPS id ffacd0b85a97d-37d4b9bb879si4901209f8f.778.2024.10.14.12.23.08
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 14 Oct 2024 12:23:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=cCUnlN31;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1t0Q9X-0004lX-Oe; Mon, 14 Oct 2024 14:50:47 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1t0Q9V-0004l1-Tl; Mon, 14 Oct 2024 14:50:45 -0400
-Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1t0Q9U-0001O7-Ab; Mon, 14 Oct 2024 14:50:45 -0400
-Received: by mail-ej1-x633.google.com with SMTP id
- a640c23a62f3a-a99ebb390a5so401757266b.1; 
- Mon, 14 Oct 2024 11:50:42 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1728931841; x=1729536641; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
- :message-id:reply-to;
- bh=9Afn4YpkfgdO2F5nizDrDa38curFp/Rk7aAYjRgQ498=;
- b=cCUnlN31Dn4E5ujfcbVaCAec8TuaxZnEobFf2PZvBu5ozWIBy2yEO8u1BCzARUPlt4
- fu9g5gY8O+KETdGN87Rh8pNfzYSDy2fDeXgPJ+jeTxoGWaYjwYR9lQtFxtBqjUU3HY+m
- x0pFBl6zS3QkIclMcl+gNC93v3eZE4WGk6kw6l1BRU7nmfxvPQnVcKjqBmtoRgdH8xoh
- 3J7atJ4zqdzCrQKmGI173XlzYpBp1HLu6xyijME1P4OQJc0xLCxIkWfyJlTJjYatyhop
- LEmOlcu2LZ3/yIMY7lcnRH1ptEbIuSCieu9BrnVLRppPpHo4nZHk/T3YKeHKXkWPQJOD
- 0Xjg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1728931841; x=1729536641;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=9Afn4YpkfgdO2F5nizDrDa38curFp/Rk7aAYjRgQ498=;
- b=XFkzwV9zppIZPTUijslr8izDSlfuJqevC8IGFmc6tSHMpwB5mWV6oVSAkXPogV6gf0
- ywx1wtQszbTKt9Lm13zYDicZR9RDn9Ppet3rrJlV0GPl5QP4lycSYUDdWYSWhBAVQhaB
- iN75L/4JlQGH3z1XTZFAS5/IF3KiAYOGRfuukfCzfX1HzTBdf+gbute9vGTc1zy4qkep
- ZtM1uGjcqTrBq2rzaPgrWQyNJrgCu5CObEyCWr9uiYEHWeGK8lev2KTGW0Ts2FBy+pvb
- nXs3agyubPZBrqbFsptGLGoNQTkynDbhdt9lTAr0CLLlcFNz8PIRTq4n1BT0EB+fbrMb
- Ah5g==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUz1f5FUbIIgiyDC2l1Cj1B9nDfkgi9hIesF6wOeeMKPQOv/UiPTijqkQQzMdBxZhQsnBOxcFBOuQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yye7Cu1ZRGy6fyoRSh3XrO2OEVBw6sdLnSLMefN94Gnd8HAZVVg
- 1p5hGqFof+h162ShK9dWoh6NtYBubzXaIm4vExmNsoGX6AI0hNWpeRNBWw==
-X-Received: by 2002:a17:906:478e:b0:a91:1699:f8eb with SMTP id
- a640c23a62f3a-a99b89f0ef7mr1288347266b.28.1728931840983; 
- Mon, 14 Oct 2024 11:50:40 -0700 (PDT)
-Received: from [127.0.0.1] ([62.214.191.67]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-a99f2ea1dd1sm348302466b.68.2024.10.14.11.50.40
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 14 Oct 2024 11:50:40 -0700 (PDT)
-Date: Mon, 14 Oct 2024 18:38:48 +0000
-From: Bernhard Beschow <shentey@gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-CC: qemu-devel@nongnu.org, Jason Wang <jasowang@redhat.com>,
- qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
-Subject: Re: [PATCH 1/4] hw/net/lan9118: Extract lan9118_phy
-In-Reply-To: <CAFEAcA_2EU8Q+=Zm7pKJpO42=nAeGf9jpCsoM8ped1ngw66gKw@mail.gmail.com>
-References: <20241005205748.29203-1-shentey@gmail.com>
- <20241005205748.29203-2-shentey@gmail.com>
- <CAFEAcA_2EU8Q+=Zm7pKJpO42=nAeGf9jpCsoM8ped1ngw66gKw@mail.gmail.com>
-Message-ID: <E3D8FB20-605D-4E29-A430-DD3C4B01102D@gmail.com>
+       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Received: from mail.maildlp.com (unknown [172.18.186.216])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4XS6Z32bkzz6K5cs;
+	Tue, 15 Oct 2024 03:22:35 +0800 (CST)
+Received: from frapeml500007.china.huawei.com (unknown [7.182.85.172])
+	by mail.maildlp.com (Postfix) with ESMTPS id D2919140C72;
+	Tue, 15 Oct 2024 03:23:07 +0800 (CST)
+Received: from 00293818-MRGF.huawei.com (10.48.146.149) by
+ frapeml500007.china.huawei.com (7.182.85.172) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.39; Mon, 14 Oct 2024 21:22:48 +0200
+From: Salil Mehta <salil.mehta@huawei.com>
+To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <mst@redhat.com>
+CC: <salil.mehta@huawei.com>, <maz@kernel.org>, <jean-philippe@linaro.org>,
+	<jonathan.cameron@huawei.com>, <lpieralisi@kernel.org>,
+	<peter.maydell@linaro.org>, <richard.henderson@linaro.org>,
+	<imammedo@redhat.com>, <andrew.jones@linux.dev>, <david@redhat.com>,
+	<philmd@linaro.org>, <eric.auger@redhat.com>, <will@kernel.org>,
+	<ardb@kernel.org>, <oliver.upton@linux.dev>, <pbonzini@redhat.com>,
+	<gshan@redhat.com>, <rafael@kernel.org>, <borntraeger@linux.ibm.com>,
+	<alex.bennee@linaro.org>, <npiggin@gmail.com>, <harshpb@linux.ibm.com>,
+	<linux@armlinux.org.uk>, <darren@os.amperecomputing.com>,
+	<ilkka@os.amperecomputing.com>, <vishnu@os.amperecomputing.com>,
+	<karl.heubaum@oracle.com>, <miguel.luis@oracle.com>,
+	<salil.mehta@opnsrc.net>, <zhukeqian1@huawei.com>,
+	<wangxiongfeng2@huawei.com>, <wangyanan55@huawei.com>,
+	<jiakernel2@gmail.com>, <maobibo@loongson.cn>, <lixianglai@loongson.cn>,
+	<shahuang@redhat.com>, <zhao1.liu@intel.com>, <linuxarm@huawei.com>,
+	<gustavo.romero@linaro.org>
+Subject: [PATCH V1 1/4] hw/acpi: Initialize ACPI Hotplug CPU Status with Support for vCPU `Persistence`
+Date: Mon, 14 Oct 2024 20:22:02 +0100
+Message-ID: <20241014192205.253479-2-salil.mehta@huawei.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20241014192205.253479-1-salil.mehta@huawei.com>
+References: <20241014192205.253479-1-salil.mehta@huawei.com>
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::633;
- envelope-from=shentey@gmail.com; helo=mail-ej1-x633.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: uTALhKgNbf2s
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [10.48.146.149]
+X-ClientProxiedBy: dggems701-chm.china.huawei.com (10.3.19.178) To
+ frapeml500007.china.huawei.com (7.182.85.172)
+X-TUID: 5SO3TaYtnoxm
 
+Certain CPU architecture specifications [1][2][3] prohibit changes to CPU
+presence after the kernel has booted. This limitation exists because many system
+initializations rely on the exact CPU count at boot time and do not expect it to
+change later. For example, components like interrupt controllers, which are
+closely tied to CPUs, or various per-CPU features, may not support configuration
+changes once the kernel has been initialized. This presents a challenge for
+virtualization features such as vCPU hotplug.
 
+To address this issue, introduce an `is_enabled` state in the `AcpiCpuStatus`,
+which reflects whether a vCPU has been hot-plugged or hot-unplugged in QEMU,
+marking it as (un)available in the Guest Kernel. The `is_present` state should
+be set based on the `acpi_persistent` flag. In cases where unplugged vCPUs need
+to be deliberately simulated in the ACPI to maintain a persistent view of vCPUs,
+this flag ensures the guest kernel continues to see those vCPUs.
 
-Am 14=2E Oktober 2024 12:47:52 UTC schrieb Peter Maydell <peter=2Emaydell@=
-linaro=2Eorg>:
->On Sat, 5 Oct 2024 at 21:57, Bernhard Beschow <shentey@gmail=2Ecom> wrote=
-:
->>
->> A very similar implementation of the same device exists in imx_fec=2E P=
-repare for
->> a common implementation by extracting the code into its own files=2E
->>
->> Signed-off-by: Bernhard Beschow <shentey@gmail=2Ecom>
->> ---
->>  include/hw/net/lan9118_phy=2Eh |  31 ++++++++
->>  hw/net/lan9118=2Ec             | 133 ++++++---------------------------=
---
->>  hw/net/lan9118_phy=2Ec         | 117 ++++++++++++++++++++++++++++++
->>  hw/net/Kconfig               |   4 ++
->>  hw/net/meson=2Ebuild           |   1 +
->>  5 files changed, 174 insertions(+), 112 deletions(-)
->>  create mode 100644 include/hw/net/lan9118_phy=2Eh
->>  create mode 100644 hw/net/lan9118_phy=2Ec
->>
->> diff --git a/include/hw/net/lan9118_phy=2Eh b/include/hw/net/lan9118_ph=
-y=2Eh
->> new file mode 100644
->> index 0000000000=2E=2E50e3559b12
->> --- /dev/null
->> +++ b/include/hw/net/lan9118_phy=2Eh
->> @@ -0,0 +1,31 @@
->> +/*
->> + * SMSC LAN9118 PHY emulation
->> + *
->> + * Copyright (c) 2009 CodeSourcery, LLC=2E
->> + * Written by Paul Brook
->> + *
->> + * This work is licensed under the terms of the GNU GPL, version 2 or =
-later=2E
->> + * See the COPYING file in the top-level directory=2E
->> + */
->> +
->> +#ifndef HW_NET_LAN9118_PHY_H
->> +#define HW_NET_LAN9118_PHY_H
->> +
->> +#include "hw/irq=2Eh"
->> +
->> +typedef struct Lan9118PhyState {
->> +    uint32_t status;
->> +    uint32_t control;
->> +    uint32_t advertise;
->> +    uint32_t ints;
->> +    uint32_t int_mask;
->> +    IRQState irq;
->> +    bool link_down;
->> +} Lan9118PhyState;
->
->This takes state that was in a QOM object, and moves it
->into something that's kind of a device but not a QOM
->object=2E I think we should avoid that, because at some
->point somebody's going to have to QOMify this=2E
->
->Making this a QOM device is a bit awkward for migration
->compatibility, unfortunately=2E
+Additionally, introduce an `acpi_persistent` property that can be used to
+initialize the ACPI vCPU presence state accordingly. Architectures requiring
+ACPI to expose a persistent view of vCPUs can override its default value. Refer
+to the patch-set implelenting vCPU hotplug support for ARM for more details on
+its usage.
 
-Do we care about migration compatibility here? Or is it sufficient to chec=
-k the version? In the latter case I could QOMify it=2E
+References:
+[1] KVMForum 2023 Presentation: Challenges Revisited in Supporting Virt CPU Hotplug on
+    architectures that don’t Support CPU Hotplug (like ARM64)
+    a. Kernel Link: https://kvm-forum.qemu.org/2023/KVM-forum-cpu-hotplug_7OJ1YyJ.pdf
+    b. Qemu Link:  https://kvm-forum.qemu.org/2023/Challenges_Revisited_in_Supporting_Virt_CPU_Hotplug_-__ii0iNb3.pdf
+[2] KVMForum 2020 Presentation: Challenges in Supporting Virtual CPU Hotplug on
+    SoC Based Systems (like ARM64)
+    Link: https://kvmforum2020.sched.com/event/eE4m
+[3] Check comment 5 in the bugzilla entry
+    Link: https://bugzilla.tianocore.org/show_bug.cgi?id=4481#c5
 
-Best regards,
-Bernhard
+Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
+---
+ cpu-target.c          |  1 +
+ hw/acpi/cpu.c         | 35 ++++++++++++++++++++++++++++++++++-
+ include/hw/acpi/cpu.h | 21 +++++++++++++++++++++
+ include/hw/core/cpu.h | 21 +++++++++++++++++++++
+ 4 files changed, 77 insertions(+), 1 deletion(-)
 
->
->thanks
->-- PMM
+diff --git a/cpu-target.c b/cpu-target.c
+index 499facf774..c8a29ab495 100644
+--- a/cpu-target.c
++++ b/cpu-target.c
+@@ -200,6 +200,7 @@ static Property cpu_common_props[] = {
+      */
+     DEFINE_PROP_LINK("memory", CPUState, memory, TYPE_MEMORY_REGION,
+                      MemoryRegion *),
++    DEFINE_PROP_BOOL("acpi-persistent", CPUState, acpi_persistent, false),
+ #endif
+     DEFINE_PROP_END_OF_LIST(),
+ };
+diff --git a/hw/acpi/cpu.c b/hw/acpi/cpu.c
+index 5cb60ca8bc..083c4010c2 100644
+--- a/hw/acpi/cpu.c
++++ b/hw/acpi/cpu.c
+@@ -225,7 +225,40 @@ void cpu_hotplug_hw_init(MemoryRegion *as, Object *owner,
+     state->dev_count = id_list->len;
+     state->devs = g_new0(typeof(*state->devs), state->dev_count);
+     for (i = 0; i < id_list->len; i++) {
+-        state->devs[i].cpu =  CPU(id_list->cpus[i].cpu);
++        struct CPUState *cpu = CPU(id_list->cpus[i].cpu);
++        /*
++         * In most architectures, CPUs that are marked as ACPI 'present' are
++         * also ACPI 'enabled' by default. These states remain consistent at
++         * both the QOM and ACPI levels.
++         */
++        if (cpu) {
++            state->devs[i].is_enabled = true;
++            state->devs[i].is_present = true;
++            state->devs[i].cpu = cpu;
++        } else {
++            state->devs[i].is_enabled = false;
++            /*
++             * In some architectures, even 'unplugged' or 'disabled' QOM CPUs
++             * may be exposed as ACPI 'present.' This approach provides a
++             * persistent view of the vCPUs to the guest kernel. This could be
++             * due to an architectural constraint that requires every per-CPU
++             * component to be present at boot time, meaning the exact count of
++             * vCPUs must be known and cannot be altered after the kernel has
++             * booted. As a result, the vCPU states at the QOM and ACPI levels
++             * might become inconsistent. However, in such cases, the presence
++             * of vCPUs has been deliberately simulated at the ACPI level.
++             */
++            if (acpi_persistent_cpu(first_cpu)) {
++                state->devs[i].is_present = true;
++                /*
++                 * `CPUHotplugState::AcpiCpuStatus::cpu` becomes insignificant
++                 * in this case
++                 */
++            } else {
++                state->devs[i].is_present = false;
++                state->devs[i].cpu = cpu;
++            }
++        }
+         state->devs[i].arch_id = id_list->cpus[i].arch_id;
+     }
+     memory_region_init_io(&state->ctrl_reg, owner, &cpu_hotplug_ops, state,
+diff --git a/include/hw/acpi/cpu.h b/include/hw/acpi/cpu.h
+index 32654dc274..bd3f9973c9 100644
+--- a/include/hw/acpi/cpu.h
++++ b/include/hw/acpi/cpu.h
+@@ -26,6 +26,8 @@ typedef struct AcpiCpuStatus {
+     uint64_t arch_id;
+     bool is_inserting;
+     bool is_removing;
++    bool is_present;
++    bool is_enabled;
+     bool fw_remove;
+     uint32_t ost_event;
+     uint32_t ost_status;
+@@ -75,4 +77,23 @@ extern const VMStateDescription vmstate_cpu_hotplug;
+     VMSTATE_STRUCT(cpuhp, state, 1, \
+                    vmstate_cpu_hotplug, CPUHotplugState)
+ 
++/**
++ * acpi_persistent_cpu:
++ * @cpu: The vCPU to check
++ *
++ * Checks if the vCPU state should always be reflected as *present* via ACPI
++ * to the Guest. By default, this is False on all architectures and has to be
++ * explicity set during initialization.
++ *
++ * Returns: True if it is ACPI 'persistent' CPU
++ *
++ */
++static inline bool acpi_persistent_cpu(CPUState *cpu)
++{
++    /*
++     * returns if 'Presence' of the vCPU is persistent and should be simulated
++     * via ACPI even after vCPUs have been unplugged in QOM
++     */
++    return cpu && cpu->acpi_persistent;
++}
+ #endif
+diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
+index 04e9ad4996..299e96c45b 100644
+--- a/include/hw/core/cpu.h
++++ b/include/hw/core/cpu.h
+@@ -542,6 +542,27 @@ struct CPUState {
+     CPUPluginState *plugin_state;
+ #endif
+ 
++    /*
++     * To implement the vCPU hotplug feature (which simulates CPU hotplug
++     * behavior), we need to dynamically create and destroy QOM vCPU objects,
++     * and (de)associate them with pre-existing KVM vCPUs while (un)parking the
++     * KVM vCPU context. One challenge is ensuring that these dynamically
++     * appearing or disappearing QOM vCPU objects are accurately reflected
++     * through ACPI to the Guest Kernel. Due to architectural constraints,
++     * changing the number of vCPUs after the guest kernel has booted may not
++     * always be possible.
++     *
++     * In certain architectures, to provide the guest kernel with a *persistent*
++     * view of vCPU presence, even when the QOM does not have a corresponding
++     * vCPU object, ACPI may simulate the presence of vCPUs by marking them as
++     * ACPI-disabled. This is achieved by setting `_STA.PRES=True` and
++     * `_STA.Ena=False` for unplugged vCPUs in QEMU's QOM.
++     *
++     * By default, this flag is set to `FALSE`, and it must be explicitly set
++     * to `TRUE` for architectures like ARM.
++     */
++    bool acpi_persistent;
++
+     /* TODO Move common fields from CPUArchState here. */
+     int cpu_index;
+     int cluster_index;
+-- 
+2.34.1

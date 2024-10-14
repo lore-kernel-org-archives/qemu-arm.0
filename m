@@ -1,107 +1,117 @@
-Received: by 2002:a17:505:3501:b0:1be9:327d:8ee3 with SMTP id mc1csp1970632njb;
-        Mon, 14 Oct 2024 09:42:13 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVUypP3PQI5Yz6DJoAH7D9shqSiYHSKEt9wugzfTDR3YVVaV0VynyCbhRgG9Jr68mYep4i6FDfFgT+koQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IHFzVlZAYl1YqMiH6oHVKF6SrKBH/hzjjn+6naG8m/1y+2E0EllKQeoMfEVQ0T2RXkb8UqW
-X-Received: by 2002:a05:6102:2ac9:b0:4a4:9541:e38c with SMTP id ada2fe7eead31-4a49541e4bbmr2157264137.0.1728924133169;
-        Mon, 14 Oct 2024 09:42:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1728924133; cv=none;
+Received: by 2002:a17:505:3501:b0:1be9:327d:8ee3 with SMTP id mc1csp1965322njb;
+        Mon, 14 Oct 2024 09:32:41 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWy1JBd2fWtOoUoM6BYQn0v6vVzN2kYkFeAht4/Unvs6CVaUbtaW1e1LClIg4c9osSkgdvswTpKN8ilRQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IFThFn2rVHRrYbuEOMhW/lumpuq3e+lgogVwgT65bUiV0g0xfLjfkzG0/wr6yI+VLYKJ8nr
+X-Received: by 2002:a0c:fa89:0:b0:6cb:fac2:1cec with SMTP id 6a1803df08f44-6cbfac21e4fmr110491366d6.25.1728923560808;
+        Mon, 14 Oct 2024 09:32:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1728923560; cv=none;
         d=google.com; s=arc-20240605;
-        b=ezPnU9tAC4VPQA26T3fKXqFY7DUAgvyjQ2Ysxes2o/umO6Ar4stL1kEftV3A38Zk56
-         7qsCejP7yWagviFpjkAS9/1kU7ygXztsfB1P8AQ8QCSOJMvdPHrjkWOMkyt4tKN/11VG
-         AvZsQb611uoVru0DD47ZG1qDHikLO1l5d398jZal+eSv2LTFdq2mmuzOmIbpkksa+W34
-         SNw2HRCtMTX5kl9Brrn9pHKFXKa+ATw3Ixcz0IteG+mlOxzbku4cK1NCfpo1/+L8LgX+
-         blnP9Ys6F6Nd4UROmKpTV/Vzp/QE4CXw53U0vgTXeKzCfTfpO9Y9raRINcduzIKjLeeB
-         t4eg==
+        b=gJugEF5bDZaXdn75qw/u4sY6O0Z9hJF6XxxiIJDhMrjT0SZ/cj/3S9JYuwMQKhb5QE
+         66Cpl9A1477M6xkRfQqfALz6htutBu2kq10Vp2qDk58i/U5S/i00nqdgsfcX0zTtoX7B
+         RuyAdigmJ1fHlsCIu/zOf8v2FG0p4S9sJ32u0WRAH0kUnaR5tocNl+fXuSQiaZ+bNZbh
+         94azzumHqxWePceW5zirN6ScZU2ftoP/NpTOLLLuf4r+yiQpfTdcnknlCnk4AlWieqze
+         2qaY2Q6sbPxDzO01CiPdFrgAfgymF3xGBKSdXMb64CSZmz+B2PypvjxAiUKdapQffD+Q
+         gT1g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=YLnPlc8Wk82BERYeTM5I4JDtZk08l5fkN3/0TnAiXD4=;
-        fh=4RF4muGld08CODtB0Qhet9C799EHcc/NeDNA2R/UUKc=;
-        b=TFzphEb64PR7d/5uF+frFd6EILlQiJU3o6ZD/5e8jIF5uoT91FJbVsDonqolizrhnw
-         7xR3aPVgeryn4YmMocD3XP/q5rvFznespzEF3pXqAYrWGBelNa7XLur4tA2bhOCBgoWQ
-         S0DmNc/QE1Cooyj13FOYgJkKuEuAvcIl2gAgHQ1m7NoHUVF0rlFL0q48Al0Og7kQ5YQY
-         LgL/H+U3znpL4rMVlOXJlcGOyia1Xu721WPzkqJAUxEZJ4Ud3kBE7xHNkalV/vC+/Fcz
-         QddeOUg4xHSMh1x9cPOhTEW4SGCI7dDCgsTtYtBRPCFwQoAGyiIgPVZdbjL3f5AcdofU
-         AhhA==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=1PrQn+uWeoZZP3OGAh+vxfmzh/N4rXkfXjfPzHNbc4U=;
+        fh=cZ9qfJsBb3s+Bn1yS9Nvgo0BeY1Tb463eXsqZne2PXw=;
+        b=bpcODSD/rCT9IeTObHAS1fdJfF9if2hItujdzsvOvDC/C95ccjPVEMW2de8vGBEbgr
+         r6FYvF2wXDhQ0whHaB8cl22u8oUn1WEBR54wVVA/c4GYTVUcP92Prdd+jGX5qHID5qCt
+         UbTj7MrVDnafvyVuzYvEBM84MKoWtpsmKFgJ+En4rc0rJ/BrxEtVqBtlspeysala/IOZ
+         KtLAg5v0h+zecJmQn7kGZLfhZ651LqGFoTmO3aPuSn4iwY39Z3H5jjQ/e/T/7I4slrmD
+         34w9FfmLG48y9OIturYunqVd447H5QP6o2ldPQfkKnPG+TztnQ6l4iWmt26aN2X3rMPq
+         N+Rw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=XC4MFCkr;
+       dkim=pass header.i=@linaro.org header.s=google header.b=PrHQGOe2;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-46042883cb3si106057661cf.311.2024.10.14.09.42.13
+        by mx.google.com with ESMTPS id 6a1803df08f44-6cbe8692677si105280236d6.382.2024.10.14.09.32.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 14 Oct 2024 09:42:13 -0700 (PDT)
+        Mon, 14 Oct 2024 09:32:40 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=XC4MFCkr;
+       dkim=pass header.i=@linaro.org header.s=google header.b=PrHQGOe2;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1t0O8l-0006is-7Z; Mon, 14 Oct 2024 12:41:51 -0400
+	id 1t0Nzf-0003D6-2X; Mon, 14 Oct 2024 12:32:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1t0O8i-0006ib-Ua
- for qemu-arm@nongnu.org; Mon, 14 Oct 2024 12:41:49 -0400
-Received: from mail-lf1-x132.google.com ([2a00:1450:4864:20::132])
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1t0NzX-0003Cc-DT
+ for qemu-arm@nongnu.org; Mon, 14 Oct 2024 12:32:19 -0400
+Received: from mail-pj1-x1032.google.com ([2607:f8b0:4864:20::1032])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1t0O8h-0001gx-4F
- for qemu-arm@nongnu.org; Mon, 14 Oct 2024 12:41:48 -0400
-Received: by mail-lf1-x132.google.com with SMTP id
- 2adb3069b0e04-539f7606199so1216599e87.0
- for <qemu-arm@nongnu.org>; Mon, 14 Oct 2024 09:41:46 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1t0NzV-0000u6-TO
+ for qemu-arm@nongnu.org; Mon, 14 Oct 2024 12:32:19 -0400
+Received: by mail-pj1-x1032.google.com with SMTP id
+ 98e67ed59e1d1-2e2e8c8915eso3117186a91.3
+ for <qemu-arm@nongnu.org>; Mon, 14 Oct 2024 09:32:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1728924105; x=1729528905; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=YLnPlc8Wk82BERYeTM5I4JDtZk08l5fkN3/0TnAiXD4=;
- b=XC4MFCkrBDPAasjoLWDpGd2jXaPqTwAA3Crrl9/mWLR7COgUi+HaiTS4FTeOw/zUDS
- qMis008yuGDDJy9P6W1PxIvmkyo3OY6bQqJIbM66r3t+iXgE39zJ/aeF8EHHeAdPp89+
- EePiTUKnRD+6CIgyTyvjIxDRGJWECw98vsy6fCiMYOthAHbLOS1O6OXEJJ3cLPhSmhXd
- 5dyoSUGTETslMcIlYvYLEBCzq6usSr8NJhqtklX7OKpUeSYz9WmvfFnn7IXFe4xflmwG
- NL+zC5oplGQO4KFg3TBvnhHClqaPUcSb/jPYZVyloeQwDJVEfvuZlMVTZKTxiZKY6eby
- NTuw==
+ d=linaro.org; s=google; t=1728923536; x=1729528336; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=1PrQn+uWeoZZP3OGAh+vxfmzh/N4rXkfXjfPzHNbc4U=;
+ b=PrHQGOe2zZnkSKVbyz+0kHDd2tiBk0l9tYU9aTgal3ddbqS1lviZhHGQY1W3gnKTSU
+ ouY6lWI2flrLFu4cPmBdRiKcmxwmdV3W7iq6Py4X0H/Vya9wN5tyUirqBhXvLoA8EbhX
+ f/AEKn4iBBYr1gnVQAsn+UzJhx/6KZA6/xzy16CpR3UWgD+83zgqMe8XUP6mPjloySUV
+ quzOOFGXCAM+o8rHXIF5L3v0vhM1//j0h/Y4G4KiSPtXQBwn25SfxKA7qSb9AIPhKvD0
+ r1AI9oyJv7oNlHsJDdhh85f1ypc2Ftduc5z5LOUI/OtT0dnb3/vGJLaiUNTYF7ecGKyJ
+ pjrA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1728924105; x=1729528905;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=YLnPlc8Wk82BERYeTM5I4JDtZk08l5fkN3/0TnAiXD4=;
- b=IH7HuvChPRHpy4vxzaT4RSlF4BO0SWFlDZvBrWrjAERqC7gOOFCNBEV4xe/OixbnE2
- kejibjm3dGYlKenIM0Jft32azwNDoKM+zQvQ+SflVnJpIUWiRsmQdSFLGFgTQ9YjjX7z
- rbnuZ7sOzDG9bHSs59cQGkAL5YNXTpEWe7E2QYBthq3WZsp8P/I9lxe13CsvVyQPrNL7
- vkrSLSkGKMsGVb3oLzG6a2pNL0swr4JYKmcP3j1bTpQngxQbSaUt6o/bgmGAXk2hkYbQ
- wLyjceW12x7ddDydu3O7B38qUj+pX6fdg2cN5BcBObB8+xluynccgdrz3tGTkMjBxRO1
- TOQw==
+ d=1e100.net; s=20230601; t=1728923536; x=1729528336;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=1PrQn+uWeoZZP3OGAh+vxfmzh/N4rXkfXjfPzHNbc4U=;
+ b=BZjdLmcghLsN9dxNsdcnj6A4KoVwGJ/YTssSmRHihfGtU4RpEfCAbP/Q4sYhCqK+or
+ WAwxBoxAY0x+dzFaC+ud6hEClcMtjO/DTCTVsOoyIrs0TF8OU9B5NNTLKoPDdI66Sifk
+ LrxrTivqFTbURqzAiPfF+JEvXA6fUmd1Epw7X8QSUEVL1NJ330MHJ7xy+c/Q8m+CUtTE
+ p33bcck8eThDp6PjZHqptz1KLkNLcvios7wJpgGTfX2D+fkGHJR6Gpr2QYxXnTa8mvjO
+ kDaUUBo6QpDTJ9H/N9cMfBsoTPHs33ads3N5mBZToMn1q44qyws3ATZOdKqbHCC8DRyS
+ rfQA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUaN4TamahSFyWxT6P8aZmHJ9Iw7LGKx9s/mpJ5Munc+f6vwzLcvKPUivXj2lLbFTPyAXkYeiB4mw==@nongnu.org
-X-Gm-Message-State: AOJu0YwpmQ+9yIgx5KFuI5s+rfXNbKjm1hzLvqaqOCx6lKbpd94nOB8b
- K7ydmV3V3pgDFPpUn7EQTPwf9HmobPBMncwJ7qwfHd21wIyBP8n4b+4EmwIpySvG1tpZCR7KgUg
- 6ttWEOjWVAr40DyFU2xRQ2heJn4HZECv3PzzSVA==
-X-Received: by 2002:a05:6512:3f02:b0:536:5625:511a with SMTP id
- 2adb3069b0e04-539da59516cmr6020488e87.47.1728924105049; Mon, 14 Oct 2024
- 09:41:45 -0700 (PDT)
+ AJvYcCVOltj9SjZnMBkkIfW4XrKazk+EVRCX+z2j4XlR89Ktz8+x00qqJgaUa1e6gEBVwvLqO8jSA6RgCw==@nongnu.org
+X-Gm-Message-State: AOJu0YxSYK1GEqGVMt/R6aOGjX1qx72fwkHT/QAqaoavBGkIBM3fAcS5
+ 6Pv6bjNECSfHzczX3JVrvCUs1RTgnm0QzL+2gvbxfY4WwUfp9Vm+d2FdEMTQSIs=
+X-Received: by 2002:a17:90a:ae0b:b0:2e2:b514:ca1 with SMTP id
+ 98e67ed59e1d1-2e3151b78b6mr12000540a91.6.1728923535805; 
+ Mon, 14 Oct 2024 09:32:15 -0700 (PDT)
+Received: from [192.168.0.4] (174-21-81-121.tukw.qwest.net. [174.21.81.121])
+ by smtp.gmail.com with ESMTPSA id
+ 98e67ed59e1d1-2e2d5fc5e29sm9170822a91.53.2024.10.14.09.32.15
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 14 Oct 2024 09:32:15 -0700 (PDT)
+Message-ID: <55d9edf7-9320-4b97-84dc-793cb1e72dbc@linaro.org>
+Date: Mon, 14 Oct 2024 09:32:13 -0700
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [RFC PATCH 3/4] arm/tcg/cpu64: add FEAT_XS feat in max cpu
+To: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>, qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
 References: <20241014-arm-feat-xs-v1-0-42bb714d6b11@linaro.org>
-In-Reply-To: <20241014-arm-feat-xs-v1-0-42bb714d6b11@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 14 Oct 2024 17:41:33 +0100
-Message-ID: <CAFEAcA_SYtVHjf2LmOkHZPHET=8r9BSCsir1R=PWLM55L3O4aQ@mail.gmail.com>
-Subject: Re: [RFC PATCH 0/4] No-op support for Arm FEAT_XS, feedback needed
-To: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::132;
- envelope-from=peter.maydell@linaro.org; helo=mail-lf1-x132.google.com
+ <20241014-arm-feat-xs-v1-3-42bb714d6b11@linaro.org>
+Content-Language: en-US
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <20241014-arm-feat-xs-v1-3-42bb714d6b11@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1032;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1032.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -123,50 +133,32 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: J3GOzMO8WhnI
+X-TUID: 3rKpey7pJ0Kf
 
-On Mon, 14 Oct 2024 at 11:50, Manos Pitsidianakis
-<manos.pitsidianakis@linaro.org> wrote:
->
-> This series is an initial incomplete attempt at adding support for the
-> FEAT_XS feature in aarch64 TCG. This feature was introduced in ARMv8.7:
-> it adds a new memory attribute XS which indicates that a memory access
-> could take longer than usual to complete and also adds instruction
-> variants for TLBI maintenance and DSB.
->
-> These variants are implemented as no-ops, since QEMU TCG doesn't
-> implement caching.
->
-> This is my first foray into TCG and certain things weren't clear to me:
->
-> 1. How to make sure the feature is implemented properly. Since we model
->    cache maintenance as no-ops my understanding is the only
->    functionality we need to provide is to expose the FEAT_XS feature bit
->    and also make sure the nXS variants trap properly if configured with
->    fine-grained traps.
+On 10/14/24 03:48, Manos Pitsidianakis wrote:
+> Add FEAT_XS feature report value in max cpu's ID_AA64ISAR1 sys register.
+> 
+> Signed-off-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+> ---
+>   target/arm/tcg/cpu64.c | 1 +
+>   1 file changed, 1 insertion(+)
+> 
+> diff --git a/target/arm/tcg/cpu64.c b/target/arm/tcg/cpu64.c
+> index 0168920828651492b1114d66ab0fc72c20dda2a8..8c8f88d84151952872f1b1987e98d789b501fb23 100644
+> --- a/target/arm/tcg/cpu64.c
+> +++ b/target/arm/tcg/cpu64.c
+> @@ -1163,6 +1163,7 @@ void aarch64_max_tcg_initfn(Object *obj)
+>       t = FIELD_DP64(t, ID_AA64ISAR1, BF16, 2);     /* FEAT_BF16, FEAT_EBF16 */
+>       t = FIELD_DP64(t, ID_AA64ISAR1, DGH, 1);      /* FEAT_DGH */
+>       t = FIELD_DP64(t, ID_AA64ISAR1, I8MM, 1);     /* FEAT_I8MM */
+> +    t = FIELD_DP64(t, ID_AA64ISAR1, XS, 1);       /* FEAT_XS */
+>       cpu->isar.id_aa64isar1 = t;
+>   
+>       t = cpu->isar.id_aa64isar2;
+> 
 
-We also need to make HCRX_EL2 writes allow read and write of the
-new FGTnXS and FnXS bits. (hcrx_write() constructs a valid_mask
-and only allows those bits to be written, so the mask needs updating.)
+Actually, this or a follow-up is missing the change to
+docs/system/arm/emulation.rst.
 
-> 2. Is there a point in adding a TCG test? If I read the manual
->    correctly, the nXS variants should trap to the undefined instruction
->    vector if unimplemented.
->
-> These patches lack support for FGT for now.
 
-We will need the FGT support, but I think it should be
-straightforward to add:
- * add a new entry NXS to the FIELD() definitions of FGT in cpregs.h
-   with the meaning "honour HCR_EL2.FGTnXS to suppress FGT",
-   and in access_check_cp_reg skip the trap-check if NXS is
-   set and arm_hcrx_el2_eff() has the FGTnXS bit set
- * when we add the new ARMCPRegInfo stanzas for the new NXS,
-   make the .fgt fields be
-     .fgt = FGT_TLBIwhatever | FGT_NXS
-   so we apply the NXS logic to those ones
-   (or if you like use macro magic in cpreg.h to define
-   FGT_TLBIVAE1OSNXS as being FGT_TLBIVAE1OS | FGT_NXS,
-   like what we do for including FGT_REV in the FGT_ constants)
-
--- PMM
+r~

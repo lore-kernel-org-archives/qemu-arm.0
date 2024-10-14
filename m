@@ -1,128 +1,201 @@
-Received: by 2002:a17:505:3501:b0:1be9:327d:8ee3 with SMTP id mc1csp1755232njb;
-        Mon, 14 Oct 2024 03:13:58 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IF/48kj32SER5JS0S4r6VgwKYUZmwg1HsB3DrQaB12P9z7esVtoWJBch09NC7IWRoozJgHK
-X-Received: by 2002:a05:620a:2407:b0:7af:c5e8:78b0 with SMTP id af79cd13be357-7b11a3c45d9mr1542635785a.65.1728900838738;
-        Mon, 14 Oct 2024 03:13:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1728900838; cv=none;
+Received: by 2002:a17:505:3501:b0:1be9:327d:8ee3 with SMTP id mc1csp1769307njb;
+        Mon, 14 Oct 2024 03:52:01 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVQaDBEzTQsrfWGppO5/6s84Uh/8SdprucSgGXc7B8Ir+XuN9hlYBPDxSrDHEIENIuRoRgfL/2NCA7V/Q==@linaro.org
+X-Google-Smtp-Source: AGHT+IGGceyZjw7MCDktBawUtyPkZy9+tD/yftzuKGlDiJPEy0Rb+F1NcLF+cTqP4Y41IyfT3U6k
+X-Received: by 2002:a05:6214:4882:b0:6cb:e453:590 with SMTP id 6a1803df08f44-6cbf009965bmr209549326d6.37.1728903121273;
+        Mon, 14 Oct 2024 03:52:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1728903121; cv=none;
         d=google.com; s=arc-20240605;
-        b=PVIVmZhy4Z/RTNeetcaaThh9ishXKVB/VERIZg6Uz3o2z9XzWm7bYTMLisQ/F6dA7r
-         aBwO2BegJQv3zSbBf/appshBqsCcjhcaDMRyFwMzfMQWDaq5um/2255gVqQXUqhQm73o
-         dg4sKrrL64hYcDeBjh3MdiCi4ZtBuMlYTVu16jpLhIQ6EAfwnmmTm10y6Vk/i9+sTNtY
-         /2O45heQ1qZvvR1HuKrhcG7/LyzjhyfJZJT3TQCfL5bauEkFQwDhFNDI5PJsT6qg5T7+
-         tf0twBc1tX4HmlMjV+F9HL2CN36yBh/N5mE3Y/1HQS1Vrk5hKcvx1xlOFrgoKx9s5cKs
-         23jg==
+        b=Fa2UwVo0jAqTIR03LLb26z1f8/xRtf///UI06QP5atkB4kjFrhluN0Kj9JRhwklUE3
+         WYn4BkaLznOR7ysG/2WFAc/Cjo70ir5A9sGNnlrNSOlAi2fHNwghmGIdwMKyTrumOLHd
+         cBSCPAX6DuYt4MLxjQ3y51K8t2hR0bpSvNjxVE8a8fzDstdsF0YEu2512lHH7uRWVKFs
+         a4H0Sidsk6XWhixip1tBrNYVRoX0IbLGmMVnWV3eeWddkagLOgHrRFwPKLXh/jK8CO5M
+         E5NTqlPwc1egphZMKsFSh1Lq+/DMC9gUVaJtP4wb8zULbydfjkXvo4qigKvkwshVZ22z
+         BHtg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=user-agent:in-reply-to:content-transfer-encoding
-         :content-disposition:mime-version:references:reply-to:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=v5gKkCG6usCG+bfba3Xn2GCgK6CC1BB9xO0vJlMJdMY=;
-        fh=tY8sL66BfLkqP909SLTXNI9r2EJ3RMmL9s6EJzKuDRM=;
-        b=OVIybV3l2RN2uGBWK1REkIzTPNZgxM8SLoM9vy2k2Fe4hOP+3YsLxTsdkqhU336iTf
-         l7hHCH6sFz2zhLIVgei2ztTP57z4R+B1SuhGwPqFu22VqMddpUS+KhdALT7KTnQvXg0l
-         83ZVYfQTbUbh1jYzwgTyIKzBkdXa2cFmNbhXyL+k6Bw8Jgj9vfR/PIwoIjfRB5mLPoad
-         9+CNCf2TTnqrwzQg5bTA/HO6MmjBShmB5XKm550G6tYk/swK5h2TW6kCEuPx5jtefjMq
-         OYjWKIYv3PYls/rThaZG+vFhKmvp957vVI5txHj1Vvi38k6srB/YQuRzerTrF5Kj17Tr
-         RGqw==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:in-reply-to:references
+         :message-id:content-transfer-encoding:mime-version:subject:date:from
+         :dkim-signature;
+        bh=ME8nUhQFFvx2jCgImr+jNjdB7rn6Qorc/P0rb7qligk=;
+        fh=7/WLw0wW+bJ0Oxnuhe0iOCehqsYNzYkTqCD+snC9hn0=;
+        b=dQAvOctfJ4FFHB9HyO5sDgTrmQna5XVx2rtVMOzWaPTPMxVq5BfZ4eZpyxvNJHzl0q
+         LOns7qGRAMoyC78HxYK4W65zKJGt7BF8iwkfiPgu3GDO3BhqyT9J9WvZWsFtK13HwOX9
+         4dTymYRVVNQIGPAOhuKwnTRdk9AF4Jk9XErYsgV2SQln6A3Cqnq7EoQkvdxlujH9vmuY
+         o7/Ydq+1brOkxRFCXJuQE85Fld12Qly63KbLN+l8QkYhRt9zTdz6AgX+KsrHxZwIZVZV
+         ofzi7npgWAYhimN9mdpxez2sgZL1br2Sw++xJA/V7g/ThQUEiZVHSP7KGlVSdNiW8CQ0
+         NCEw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=TAiIA1Su;
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <berrange@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id af79cd13be357-7b1149a621asi1138439985a.480.2024.10.14.03.13.58
+       dkim=pass header.i=@linaro.org header.s=google header.b=E6GDPOtu;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6cbe866b9f4si97642116d6.256.2024.10.14.03.52.01
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 14 Oct 2024 03:13:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 14 Oct 2024 03:52:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=TAiIA1Su;
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1728900838;
-	h=from:from:reply-to:reply-to:subject:subject:date:date:
-	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
-	 content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=v5gKkCG6usCG+bfba3Xn2GCgK6CC1BB9xO0vJlMJdMY=;
-	b=TAiIA1SuXH1B+K6AUZj0JEOwooK158eRs4aOjgz97hu75s4LmK9ZQk3zsXiT2Ot29iQsqx
-	hmGh18aY04Vxhz4VCwoltDU4vg6bnGiwG7bzEjCiNxSy1MfNo78ACEYXufswQx174Zih9p
-	HGjrNDlOV2OYM2AHgjzpyEemLf8r00A=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-643-FfYTG9KvMP6tMvokbO93bg-1; Mon,
- 14 Oct 2024 06:13:54 -0400
-X-MC-Unique: FfYTG9KvMP6tMvokbO93bg-1
-Received: from mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.15])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 477751956058;
-	Mon, 14 Oct 2024 10:13:52 +0000 (UTC)
-Received: from redhat.com (unknown [10.42.28.155])
-	by mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 260E91955F42;
-	Mon, 14 Oct 2024 10:13:46 +0000 (UTC)
-Date: Mon, 14 Oct 2024 11:13:41 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Thomas Huth <thuth@redhat.com>
-Cc: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	qemu-devel@nongnu.org,
-	Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Guenter Roeck <linux@roeck-us.net>,
-	Yoshinori Sato <ysato@users.sourceforge.jp>,
-	Magnus Damm <magnus.damm@gmail.com>, qemu-arm@nongnu.org
-Subject: Re: [PATCH 00/17] Convert the Avocado tuxrun tests into new
- functional tests
-Message-ID: <Zwzu1c9urQ2vSy0I@redhat.com>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-References: <20241011131937.377223-1-thuth@redhat.com>
- <87bjzoaura.fsf@draig.linaro.org>
- <7e8c6503-e56b-4a01-a1f8-945e3e0020d1@redhat.com>
+       dkim=pass header.i=@linaro.org header.s=google header.b=E6GDPOtu;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1t0If5-00042r-6I; Mon, 14 Oct 2024 06:50:51 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
+ id 1t0Ier-0003zh-SW
+ for qemu-devel@nongnu.org; Mon, 14 Oct 2024 06:50:39 -0400
+Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
+ id 1t0Ieq-0006V3-Bs
+ for qemu-devel@nongnu.org; Mon, 14 Oct 2024 06:50:37 -0400
+Received: by mail-ej1-x635.google.com with SMTP id
+ a640c23a62f3a-a9a0ec0a94fso119620166b.1
+ for <qemu-devel@nongnu.org>; Mon, 14 Oct 2024 03:50:35 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1728903035; x=1729507835; darn=nongnu.org;
+ h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+ :mime-version:subject:date:from:from:to:cc:subject:date:message-id
+ :reply-to; bh=ME8nUhQFFvx2jCgImr+jNjdB7rn6Qorc/P0rb7qligk=;
+ b=E6GDPOtu68gXxR5HessRrSZzcJyBSiNsO4LUNFN+fG6h8JDEqXJSO8CGV2Mw063+TN
+ GX7xOSI0kAlOUJdJ7gAVQmxez+is5UotB1Rg1ICH9xukzdNhfa94LOKW2XD89lnF5A6g
+ TNd56dBJNKjHM/r0QUsqJOboUE6i5DEdZYJVvEwZzQMUgOyn6l2YdXrbLE5RT0QMp681
+ yjNQnG3J/zSY88NVyEUU+ykl/b6hQKrQbF010e1ZeF4QY5o8aoWNY2h3xvv4sglXkkqw
+ OTAV4777GYh+CD9L1bg+e2csP7UJOvfQP1hORzsZ4sqWNlQhjNEb15mDlqk+4x9JAfXr
+ ODRw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1728903035; x=1729507835;
+ h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+ :mime-version:subject:date:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=ME8nUhQFFvx2jCgImr+jNjdB7rn6Qorc/P0rb7qligk=;
+ b=ZWrB470iN+x3bVs1B3hMDJMHK41DxH10H85Fv4HvKeAQxPvUQE309JFazLXRa+TO3X
+ ELeRfy/2IjHonoOUGh4lGmLXUjms3efVZYyd3g7GlmEhZtjhesqA2RphjockB7COlrVA
+ XErYrZev89ih1PYnicGwQ4vug6kw15UjtMo3Fe/xRTbAkzQseNHkE1a8RtWsPBuNY6vx
+ 8hZKmOcZVe5cEYGrnbrY4GYn4HPu454HihAU185ujf6gKG+PYxDn7dKUT76GlU1odTiI
+ pkiIO5mmVlG1OvC+IODZWvfhJN9f4zTr1pCjdUMZWvPrg2Et0V4jHXELTA9g8Iya0dPJ
+ vliQ==
+X-Gm-Message-State: AOJu0YzukjAX6HMtCDRgt5tBOlEzvT9HaJvafYmpp4wtRbrFiHP8owOP
+ kvbjMZqjAbHdF2gKvFucRCNOC549G4K7dTSNlL+hoIm51cV8o09sJyQn+uVR7X8=
+X-Received: by 2002:a17:906:df46:b0:a9a:1565:1051 with SMTP id
+ a640c23a62f3a-a9a15651340mr92319966b.10.1728903034620; 
+ Mon, 14 Oct 2024 03:50:34 -0700 (PDT)
+Received: from [127.0.1.1] (adsl-161.109.242.225.tellas.gr. [109.242.225.161])
+ by smtp.gmail.com with ESMTPSA id
+ a640c23a62f3a-a9a0b25226esm165504466b.59.2024.10.14.03.50.33
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 14 Oct 2024 03:50:34 -0700 (PDT)
+From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+Date: Mon, 14 Oct 2024 13:48:58 +0300
+Subject: [RFC PATCH 4/4] tests/tcg/aarch64: add system test for FEAT_XS
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <7e8c6503-e56b-4a01-a1f8-945e3e0020d1@redhat.com>
-User-Agent: Mutt/2.2.12 (2023-09-09)
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.15
-X-TUID: ABnSmLLwrrcU
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20241014-arm-feat-xs-v1-4-42bb714d6b11@linaro.org>
+References: <20241014-arm-feat-xs-v1-0-42bb714d6b11@linaro.org>
+In-Reply-To: <20241014-arm-feat-xs-v1-0-42bb714d6b11@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
+ Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+X-Mailer: b4 0.15-dev-12fc5
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1176;
+ i=manos.pitsidianakis@linaro.org; h=from:subject:message-id;
+ bh=QB6WISUQTDQIjWCsNTK3m3cj1QzjVAB89NST/LSlIlc=;
+ b=LS0tLS1CRUdJTiBQR1AgTUVTU0FHRS0tLS0tCgpvd0VCYlFLUy9aQU5Bd0FLQVhjcHgzQi9mZ
+ 25RQWNzbVlnQm5EUGQxWjJzRXNhWGJWWVNoYUh4YWNOWTBZZ3ZOCjVDZ3kvVVMwK0FGcTR3RllL
+ VDJKQWpNRUFBRUtBQjBXSVFUTVhCdE9SS0JXODRkd0hSQjNLY2R3ZjM0SjBBVUMKWnd6M2RRQUt
+ DUkIzS2Nkd2YzNEowTDEzRC8wVnFYTFhWWEVmc1FuQXcwVll6YXp6bm5HM0s0RmEyZmM5WEhBRQ
+ ozVUYwYWJaNmQxbTFGYTNjWlZEUXFXbThBT1Q2UHJuLzk3amRrMnROeDA2czMwS2c5bHd1NkxPe
+ DFobzZHSWhNCk12NWt1eWRnYmZiTE5FUEQ0OG41UXhiRTRLb3NvYlAyZjlLa3hraHNxTUNYRDB5
+ dXJEb25TMVhpSEtYcEczZjIKb2RYMWhBbEtySXBFSDFFbjQwaU9LOGkxRUx4aTBqV1hOcmdSVFV
+ NRGwwa3RNL1gyeWtBVW83SEMyNVdwZy8rdgpBVU9PQmtIbVF0MGM2b1FINExuY0VIVTltYXpMcD
+ NDYkx1RkFaeTQ3R0tXM3pRbnIydURQelByRmNoN1VIZ0VUCmhpRzkwTlNXZUE4dnZOTTYxaTdaS
+ GVZUFBhUllCWitMNnBJVXFaeDlLZ0x1S3lmVlRZRWNLcWNEYmpCemdJL2wKSTBKd1IrRlBRSFZ2
+ VWJSRGZ5NG1jaEtIY2R5QWN3T2psOTNDWFprTE1USWk2YWhCalVtcVVnazhhKzNwek5PQgpsTmp
+ iZk05Y0ZmK1FWWDloOE5vN3piRTV2TFJDNnlldG5kTU85Z2VuQ1U5cldCbDBXQTZ2VDBjOEZtTS
+ tXWGdxClUyaXJacmduSURUR0gzUmF0VjdXZFhtaStOaHAySjlDOUJ3VEx1WHVIN2NCeDg5VWEze
+ TRhYkVaR1kxT3ZXTjgKUWdKYXpPVnBJR1dVMVJUNFRMVWJyN2VSU1ZrTml2aXhkMzdMaXAvQ2cx
+ dnE2NFpCai9LUHZ0MW9wc3EzTnJ4awpXNFNNTE9vcjNBTWNSZCtKUGN0NS95K0lERjd2WVc2dmp
+ WclFhQlVPRU5lTXh2L2cxRWV1T1h5bkNLTjlLMmdlCldDY0JtUT09Cj13eDJmCi0tLS0tRU5EIF
+ BHUCBNRVNTQUdFLS0tLS0K
+X-Developer-Key: i=manos.pitsidianakis@linaro.org; a=openpgp;
+ fpr=7C721DF9DB3CC7182311C0BF68BC211D47B421E1
+Received-SPF: pass client-ip=2a00:1450:4864:20::635;
+ envelope-from=manos.pitsidianakis@linaro.org; helo=mail-ej1-x635.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: GPhoVJ4OpEjS
 
-On Mon, Oct 14, 2024 at 08:12:39AM +0200, Thomas Huth wrote:
-> On 13/10/2024 17.27, Alex Bennée wrote:
-> > Thomas Huth <thuth@redhat.com> writes:
-> > 
-> > > This patch series converts the tests/avocado/tuxrun_baselines.py
-> > > to the new functional test framework. While converting the sh4 test,
-> > > I noticed that the Avocado test was completely broken, so I included
-> > > a fix (revert) for that problem in this series, too.
-> > 
-> > How can I run them from meson? I don't see them in list (but make
-> > check-functional works). Shouldn't I be able to do:
-> > 
-> >    ./pyvenv/bin/meson test qemu:func-thorough
-> > 
-> > ?
-> 
-> Did you regenerate the meson files before running this command?
-> 
-> Anyway, the "official" way to run the tests is:
-> 
->  make check-functional
-> 
-> This should take care of
-> 1) Regenerating the meson files if necessary
-> 2) Precaching the assets if necessary
-> 3) Running the tests
+Add system test to make sure FEAT_XS is enabled for max cpu emulation
+and that QEMU doesn't crash when encountering an NXS instruction
+variant.
 
-Or if you just want to run a single test, directly execute the python
-file eg  ./tests/functional/testname.py
+Signed-off-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+---
+ tests/tcg/aarch64/system/feat-xs.c | 27 +++++++++++++++++++++++++++
+ 1 file changed, 27 insertions(+)
 
-With regards,
-Daniel
+diff --git a/tests/tcg/aarch64/system/feat-xs.c b/tests/tcg/aarch64/system/feat-xs.c
+new file mode 100644
+index 0000000000000000000000000000000000000000..52a481c577f9420fa2f6d6a794c1f26772cb4bff
+--- /dev/null
++++ b/tests/tcg/aarch64/system/feat-xs.c
+@@ -0,0 +1,27 @@
++/*
++ * FEAT_XS Test
++ *
++ * Copyright (c) 2024 Linaro Ltd
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include <minilib.h>
++#include <stdint.h>
++
++int main(void)
++{
++    uint64_t isar1;
++
++    asm volatile ("mrs %0, id_aa64isar1_el1" : "=r"(isar1));
++    if (((isar1 >> 56) & (0xff)) != 1) {
++        ml_printf("FEAT_XS not supported by CPU");
++        return 1;
++    }
++    /* VMALLE1NXS */
++    asm volatile (".inst 0xd508971f");
++    /* VMALLE1OSNXS */
++    asm volatile (".inst 0xd508911f");
++
++    return 0;
++}
+
 -- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+2.45.2
+

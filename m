@@ -1,122 +1,103 @@
-Received: by 2002:a17:505:3501:b0:1be9:327d:8ee3 with SMTP id mc1csp961446njb;
-        Sat, 12 Oct 2024 07:08:11 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCW3djag+qS2QCIikWt6plLEZdCXeI6ZLW7PeUf1o+E2qvVBl9T42fdf1IRBPsrvtOW/Ix21F7w2hTcKYg==@linaro.org
-X-Google-Smtp-Source: AGHT+IGMtBbBGA5iRICCHcX9xUxWG3POINUMBOivUquFTLdOtNK/nHwIUTL/KseUNqEYE7DtHuna
-X-Received: by 2002:a05:620a:2684:b0:7b1:19f4:c6e0 with SMTP id af79cd13be357-7b121022c51mr523124485a.51.1728742090776;
-        Sat, 12 Oct 2024 07:08:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1728742090; cv=none;
+Received: by 2002:a17:505:3501:b0:1be9:327d:8ee3 with SMTP id mc1csp1740414njb;
+        Mon, 14 Oct 2024 02:37:19 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXnaHzs3IwOlzDI+verYw9BB1q8ActBOk4Qk4yrYrRjlAd3wBDoAt/H0wbHN822/l8Xm6zIeQQ/TE0FNQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IGs+i9Sxie9g3EMso/s6MnKz/M1AAWfE1mtZSEDQDv1O3Kz3JFl9QzFt/yGfD+OFv3RYu9H
+X-Received: by 2002:a05:620a:487:b0:7b1:1b47:1719 with SMTP id af79cd13be357-7b11b471748mr1221132585a.49.1728898639388;
+        Mon, 14 Oct 2024 02:37:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1728898639; cv=none;
         d=google.com; s=arc-20240605;
-        b=dGz3AlhQP5brZd2W+Ub3SP6YvXs97TJchf1+4cIhae1nzU4B9FO5D0f7WSua5q2Fxi
-         tX/qpf0S4+B/H2uRXTuLGr1xjltAdHEnxNWcnM5s53vP3A2OcEU5d6mRHigc/F4bzgxX
-         XkUkp2uQeMYO+2Xr3iXmjNScMe6I+uECmxL9P+Vk46rzA80NEf0fyNJayZFwRSaIrhfm
-         hDX+KJf2UZvaZRvOVBq/W8thqpNSlCLDWSn725pLtQA3iRr9O5UyC0rcc7uasfwbqaVk
-         XRi0uiOwfAIaZf11x+AokFwDfecQ2a55cLp3Dqb3qdyfZYWEUPbLcOqQS0JLcNAAZ8E5
-         hGIA==
+        b=gif5N9vKrYAf++jvVl5K4YUTEKj1eYSwTtJ8ElwzHQOyvbXNrRoleuzaOMCpV9B9+x
+         tLsHnAD0kjoFJb2o5xDbDQDeJfedAzwThVFES5R0175qfEWOWmJ3p+LQTQzSvWCBr4r3
+         xaJFGEDFlmlDg5HR9GYMb2wyIjwRPlvglZFwU8Ec/snIApMqOK7Z5dwFTlRcZWsjTofH
+         QervMWorlsVuwx8fcudVluNGjeuIVfH8qjqON6+QxtGluW1TNSDFIFezfuVlhM0iW6ny
+         vCo81UEw5aJHHv71/efGLv/BqMhFsNiTB9/h1SfD2J6q54WP8lmfzTX2MXIi8JoiWOUZ
+         1dRw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:references:in-reply-to:subject:cc:to:from
-         :date:dkim-signature;
-        bh=hgIkR0DOZrDSIrMwIkDRUb0TbppctC9X9/nRHWqBGvo=;
-        fh=7v2QTzyz8hwcQbnIpHirPzu84PR8N+x3uHFOEBjVWGg=;
-        b=c+AMBNYOhNfgHXC++zYKeywnolU/qoM2Bwj9L+5nW8W/lQQ4gHs0kIpSTG/KOJpUuQ
-         PjRPh5rdwzvw1yzlKyoMu04ehTTU1eBYwIQBy1DnDlic6YKf6A2QniJxtAmtLtkY0+1P
-         O+JtxXp359moakm9MK1r1U5d6lY2I3GUP/6rQ/fLw/TOYxqblxa2J/FnENCOGsANSfwe
-         bm4qKQMsBxkGvLhvb26EDz7hdRmYey8sfSvzOWkVN9oPHi3NbU5xhZWaTw8BIVTMidq/
-         NLUCEbXziVj0iZj3q6H5uUqCLqPDae6MU5sbpDmbJVeC1S+cevrnkXLySLWTmetqY0KT
-         M8Yw==;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:subject:cc:to:date;
+        bh=l20kwCUzJfXMLJsEezitzG9nWzGH0pXM0m8PiNO9yLE=;
+        fh=5peQHe4Qo01/xo/FDApeixcD4sbQN6kQ06KYlBxCsyY=;
+        b=lDcC+HAz+FNZm8wwCqfscjsV8G8CMMzkStMv/D2+/IZZy+XMa5rWv0G6CdsecxOuOY
+         p+QXye0fWtvPDvc5+EGqCVnccq29VeNBoIb/lXjt5fZG23eKYM0x4/s02sx68g15lXGF
+         F72WuSraHlcJd3KCB7rt1o6CmR3A2MrvydfbLlriSXD8r27XkTiK+JaUog2e3SVY1BGv
+         8cAhJqo+rFkveWmLleRet+xj4Mq8bGbkywhMqzLZy8s3o0KDwUVCYZ4/iwoiA9r1fn6v
+         MtQBmANq1XMHCLmrCqb5b0bhDm15dRZkF1t1vhkyvsR6Ik53oBi7Qxr55D1Bl/8Nppo1
+         JsSA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=ngG8crGo;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7b1148fc349si619274985a.125.2024.10.12.07.08.10
+        by mx.google.com with ESMTPS id af79cd13be357-7b114933936si989347385a.202.2024.10.14.02.37.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 12 Oct 2024 07:08:10 -0700 (PDT)
+        Mon, 14 Oct 2024 02:37:19 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=ngG8crGo;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1szcmf-0004cU-QM; Sat, 12 Oct 2024 10:07:53 -0400
+	id 1t0HVo-000588-OS; Mon, 14 Oct 2024 05:37:12 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1szcme-0004cB-8F; Sat, 12 Oct 2024 10:07:52 -0400
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1szcmc-0007CV-Fg; Sat, 12 Oct 2024 10:07:52 -0400
-Received: by mail-wr1-x430.google.com with SMTP id
- ffacd0b85a97d-37d538fe5f2so1254986f8f.2; 
- Sat, 12 Oct 2024 07:07:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1728742067; x=1729346867; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
- :message-id:reply-to;
- bh=hgIkR0DOZrDSIrMwIkDRUb0TbppctC9X9/nRHWqBGvo=;
- b=ngG8crGoMWphN93hwsaaBRu8wY5tcLJYmUHk6s4rb/Ou6r60d5MNvLOt49MM13GAsd
- 3+px3Pt+BxL5Wli1Fs1icNPkYBs89gxzUoKq4WuaLnQyDi37iKbJbsiOVHwuMQzvBuCj
- HNsBWMMBoDkNkv7sCNGysaf6QBJ7jYCZVzWUaFdNaBszGpCdqa4+YRF/6Z7fPhsbJiCg
- 0Bmp7ANIt6WZS+kPHBn3Xsvj/7/qpcsj9rr6UEWY6RtcajXXbd3yW89+YAvHYv7PXKct
- 5SdVxqryRp3dEvJL5fxY5xit6JosNFsmd93BLNPIyHWeyLnNQ/dDpQ2+I8LOv3VWx5du
- 2wYg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1728742067; x=1729346867;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=hgIkR0DOZrDSIrMwIkDRUb0TbppctC9X9/nRHWqBGvo=;
- b=A/3P3+v7mjJ0Ak9yCkA2iCJrLqqcLK3DjJTiGHOGI7ZHeP3h5e3JaXSQeZzH7fnwN4
- TTyd0wPAuot/S4PRYmZi9UmcF6FIhqz4kt06X29Cq14WW4iXbNSm86Mk+l5YCIP0VxVL
- YiuzMJLHMOS2Jt1yF9zPN1rOajIXM7TFftpcflWgoDyZ4i5FI1DdEuKwfKgFfOLJXLDb
- EwBSUHu3FWrcAt9nd9u3eBDTvy9X8/fgk1Lx+LyEe9fI6M5XDy5hWXmvP/pFP5ADJXSj
- LhCksaHYhvHOnMA5jbH/OGX3w6u2G3SbwIDXkTh6egLQ0qSrEWJg4oQ5rc6vBuhzevKi
- KbpQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVI73yA/0H1pV8XcHLtni/Xcfzp+jnMsnchKjo7YQvNDxl5n5YKF1kDzhD2AyRQzEDU2/eDx6hqDw==@nongnu.org
-X-Gm-Message-State: AOJu0YxB6jlVo/um6IgFui64qFJ4ulRXVrju8ARtCRO9oq4wxR282SSs
- OyUuYeFELvrGhLTdKXbMMlSxZ3nEZItL6uz5egRTzYb23GAVsMwldqI2GQ==
-X-Received: by 2002:adf:f2cc:0:b0:37d:4517:acbb with SMTP id
- ffacd0b85a97d-37d551d5265mr4285817f8f.17.1728742067052; 
- Sat, 12 Oct 2024 07:07:47 -0700 (PDT)
-Received: from [127.0.0.1] (dynamic-077-011-117-250.77.11.pool.telefonica.de.
- [77.11.117.250]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-430ccf5188dsm100761985e9.24.2024.10.12.07.07.46
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 12 Oct 2024 07:07:46 -0700 (PDT)
-Date: Sat, 12 Oct 2024 14:07:43 +0000
-From: Bernhard Beschow <shentey@gmail.com>
-To: qemu-devel@nongnu.org
-CC: Jason Wang <jasowang@redhat.com>, qemu-arm@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>
-Subject: Re: [PATCH 0/4] Consolidate lan9118 phy implementations
-In-Reply-To: <20241005205748.29203-1-shentey@gmail.com>
-References: <20241005205748.29203-1-shentey@gmail.com>
-Message-ID: <D9A7DF9D-A506-431D-82D7-23136A94EDDE@gmail.com>
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1t0HVm-00057D-HX; Mon, 14 Oct 2024 05:37:10 -0400
+Received: from frasgout.his.huawei.com ([185.176.79.56])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1t0HVk-0006S2-1O; Mon, 14 Oct 2024 05:37:10 -0400
+Received: from mail.maildlp.com (unknown [172.18.186.216])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4XRsT9408gz67RYs;
+ Mon, 14 Oct 2024 17:32:29 +0800 (CST)
+Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
+ by mail.maildlp.com (Postfix) with ESMTPS id 7F1B71400D9;
+ Mon, 14 Oct 2024 17:36:56 +0800 (CST)
+Received: from localhost (10.203.177.66) by frapeml500008.china.huawei.com
+ (7.182.85.71) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Mon, 14 Oct
+ 2024 11:36:55 +0200
+Date: Mon, 14 Oct 2024 10:36:53 +0100
+To: Corey Minyard <minyard@acm.org>, Andrew Jeffery
+ <andrew@codeconstruct.com.au>, Matt Johnston <matt@codeconstruct.com.au>
+CC: Klaus Jensen <its@irrelevant.dk>, Corey Minyard <cminyard@mvista.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Peter Maydell
+ <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>, Keith Busch
+ <kbusch@kernel.org>, Lior Weintraub <liorw@pliops.com>, Jeremy Kerr
+ <jk@codeconstruct.com.au>, Peter Delevoryas <peter@pjd.dev>,
+ <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <qemu-block@nongnu.org>,
+ "Klaus Jensen" <k.jensen@samsung.com>, Davidlohr Bueso <dave@stgolabs.net>,
+ <linux-cxl@vger.kernel.org>, Hannes Reinecke <hare@suse.com>
+Subject: Re: [PATCH v6 0/3] hw/{i2c,nvme}: mctp endpoint, nvme management
+ interface model
+Message-ID: <20241014103653.00002c83@Huawei.com>
+In-Reply-To: <ZQsDcmkZYCk0eVhA@mail.minyard.net>
+References: <20230914-nmi-i2c-v6-0-11bbb4f74d18@samsung.com>
+ <20230920124803.00005ae9@Huawei.com>
+ <ZQrrgxHrfzmGyhZU@mail.minyard.net>
+ <ZQr0LXsSRXGqJ4EL@cormorant.local>
+ <ZQsDcmkZYCk0eVhA@mail.minyard.net>
+Organization: Huawei Technologies Research and Development (UK) Ltd.
+X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::430;
- envelope-from=shentey@gmail.com; helo=mail-wr1-x430.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset="US-ASCII"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.203.177.66]
+X-ClientProxiedBy: lhrpeml100004.china.huawei.com (7.191.162.219) To
+ frapeml500008.china.huawei.com (7.182.85.71)
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -129,78 +110,120 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Jonathan Cameron <Jonathan.Cameron@Huawei.com>
+From:  Jonathan Cameron via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 0Fw9WDHCdwXS
+X-TUID: D7FUlJfwnLaA
+
+On Wed, 20 Sep 2023 09:36:34 -0500
+Corey Minyard <minyard@acm.org> wrote:
+
+> On Wed, Sep 20, 2023 at 06:31:25AM -0700, Klaus Jensen wrote:
+> > On Sep 20 07:54, Corey Minyard wrote:  
+> > > On Wed, Sep 20, 2023 at 12:48:03PM +0100, Jonathan Cameron via wrote:  
+> > > > On Thu, 14 Sep 2023 11:53:40 +0200
+> > > > Klaus Jensen <its@irrelevant.dk> wrote:
+> > > >   
+> > > > > This adds a generic MCTP endpoint model that other devices may derive
+> > > > > from.
+> > > > > 
+> > > > > Also included is a very basic implementation of an NVMe-MI device,
+> > > > > supporting only a small subset of the required commands.
+> > > > > 
+> > > > > Since this all relies on i2c target mode, this can currently only be
+> > > > > used with an SoC that includes the Aspeed I2C controller.
+> > > > > 
+> > > > > The easiest way to get up and running with this, is to grab my buildroot
+> > > > > overlay[1] (aspeed_ast2600evb_nmi_defconfig). It includes modified a
+> > > > > modified dts as well as a couple of required packages.
+> > > > > 
+> > > > > QEMU can then be launched along these lines:
+> > > > > 
+> > > > >   qemu-system-arm \
+> > > > >     -nographic \
+> > > > >     -M ast2600-evb \
+> > > > >     -kernel output/images/zImage \
+> > > > >     -initrd output/images/rootfs.cpio \
+> > > > >     -dtb output/images/aspeed-ast2600-evb-nmi.dtb \
+> > > > >     -nic user,hostfwd=tcp::2222-:22 \
+> > > > >     -device nmi-i2c,address=0x3a \
+> > > > >     -serial mon:stdio
+> > > > > 
+> > > > > From within the booted system,
+> > > > > 
+> > > > >   mctp addr add 8 dev mctpi2c15
+> > > > >   mctp link set mctpi2c15 up
+> > > > >   mctp route add 9 via mctpi2c15
+> > > > >   mctp neigh add 9 dev mctpi2c15 lladdr 0x3a
+> > > > >   mi-mctp 1 9 info
+> > > > > 
+> > > > > Comments are very welcome!
+> > > > > 
+> > > > >   [1]: https://github.com/birkelund/hwtests/tree/main/br2-external
+> > > > > 
+> > > > > Signed-off-by: Klaus Jensen <k.jensen@samsung.com>  
+> > > > 
+> > > > Hi Klaus,
+> > > > 
+> > > > Silly question, but who is likely to pick this up? + likely to be soon?
+> > > > 
+> > > > I'm going to post the CXL stuff that makes use of the core support shortly
+> > > > and whilst I can point at this patch set on list, I'd keen to see it upstream
+> > > > to reduce the dependencies (it's got 2 sets ahead of it of CXL stuff
+> > > > anyway but that will all hopefully go through Michael Tsirkin's tree
+> > > > for PCI stuff in one go).  
+> > > 
+> > > I can pick it up, but he can just request a merge, too.
+> > > 
+> > > I did have a question I asked earlier about tests.  It would be unusual
+> > > at this point to add something like this without having some tests,
+> > > especially injecting invalid data.
+> > >   
+> > 
+> > Hi all,
+> > 
+> > Sorry for the late reply. I'm currently at SDC, but I will write up some
+> > tests when I get back to in the office on Monday.
+> > 
+> > Corey, what kinds of tests would be best here? Avocado "acceptance"
+> > tests or would you like to see something lower level?  
+> 
+> My main concern is testing what happens when bad data gets injected, to
+> avoid people coming up with clever names for exploits in qemu.  It's not
+> so much for this code, it's for the changes that comes in the future.
+> 
+> And, of course, normal functional tests to make sure it works.  What a
+> friend of mine calls "dead chicken" tests.  You wave a dead chicken at
+> it, and if the chicken is still dead everything is ok :).
+> 
+> I'm fine with either type of tests, but I'm not sure you can do this
+> with avocado.  It's probably about the same amount of work either path
+> you choose.
+> 
+> -corey
+
+Hi Klaus, All,
+
+I was looking at what dependencies I'm carrying on my CXL tree and this
+series is one of the bigger bits :(
+
+Any plans to take it forwards?
+I have some other stuff to solve to have a fully upstream QEMU
+solution for the CXL fm-api over mctp (direct from host anyway), but
+if this is blocked indefinitely tackling how to get a controller onto
+a typical server system isn't going to be productive :(
+
+As Davidlohr called out at in the CXL LPC Uconf [1] this is really handy
+for testing his work on libcxlmi. A number of people are looking
+at more sophisticated CXL fabric emulation and that will also need
+us to close this gap!
+
+No promises but maybe we can find someone to help with adding tests
+if that's the only remaining blocker.
+
+https://lpc.events/event/18/contributions/1876/attachments/1441/3072/lpc24-dbueso-libcxlmi.pdf [1]
+
+Jonathan
 
 
-
-Am 5=2E Oktober 2024 20:57:44 UTC schrieb Bernhard Beschow <shentey@gmail=
-=2Ecom>:
->hw/net/imx_fec and hw/net/lan9118 implement the same Ethernet PHY with si=
-milar
->
->but not quite the same code=2E This series consolidates the implementatio=
-ns into
->
->one to fix code duplication=2E It then continues to make the code more re=
-adable by
->
->reusing some existing constants=2E
->
->
->
->Having a dedicated module for the PHY allows it to be reused in even furt=
-her
->
->device models=2E
->
-
-Ping
-
->
->
->Bernhard Beschow (4):
->
->  hw/net/lan9118: Extract lan9118_phy
->
->  hw/net/lan9118_phy: Reuse in imx_fec and consolidate implementations
->
->  hw/net/lan9118_phy: Reuse MII constants
->
->  hw/net/lan9118_phy: Add missing 100 mbps full duplex advertisement
->
->
->
-> include/hw/net/imx_fec=2Eh     |   7 +-
->
-> include/hw/net/lan9118_phy=2Eh |  31 +++++++
->
-> include/hw/net/mii=2Eh         |   6 ++
->
-> hw/net/imx_fec=2Ec             | 141 +++--------------------------
->
-> hw/net/lan9118=2Ec             | 133 +++++----------------------
->
-> hw/net/lan9118_phy=2Ec         | 168 +++++++++++++++++++++++++++++++++++=
-
->
-> hw/net/Kconfig               |   5 ++
->
-> hw/net/meson=2Ebuild           |   1 +
->
-> hw/net/trace-events          |  10 ++-
->
-> 9 files changed, 254 insertions(+), 248 deletions(-)
->
-> create mode 100644 include/hw/net/lan9118_phy=2Eh
->
-> create mode 100644 hw/net/lan9118_phy=2Ec
->
->
->
->-- >
->2=2E46=2E2
->
->
->

@@ -1,103 +1,146 @@
-Received: by 2002:a17:505:3501:b0:1be9:327d:8ee3 with SMTP id mc1csp1740414njb;
-        Mon, 14 Oct 2024 02:37:19 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXnaHzs3IwOlzDI+verYw9BB1q8ActBOk4Qk4yrYrRjlAd3wBDoAt/H0wbHN822/l8Xm6zIeQQ/TE0FNQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IGs+i9Sxie9g3EMso/s6MnKz/M1AAWfE1mtZSEDQDv1O3Kz3JFl9QzFt/yGfD+OFv3RYu9H
-X-Received: by 2002:a05:620a:487:b0:7b1:1b47:1719 with SMTP id af79cd13be357-7b11b471748mr1221132585a.49.1728898639388;
-        Mon, 14 Oct 2024 02:37:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1728898639; cv=none;
+Received: by 2002:a17:505:3501:b0:1be9:327d:8ee3 with SMTP id mc1csp1769015njb;
+        Mon, 14 Oct 2024 03:51:07 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVxuDm6mhpdi0IQC9mXqct8Z9YCdzKHfOiVWQAcmpFK/0zCmupxH/vNOmp2j/0AISgoKylMuryCN8NrFQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IHdbYRBNL4CWf1j2hRlW+a3TMC69M0D8k+nog9hFEzGzKBZKnnpvtnIdfFiX13KAXmuzc6j
+X-Received: by 2002:ac8:7dca:0:b0:458:3ab3:84f9 with SMTP id d75a77b69052e-4603f590b1bmr239895331cf.9.1728903066929;
+        Mon, 14 Oct 2024 03:51:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1728903066; cv=none;
         d=google.com; s=arc-20240605;
-        b=gif5N9vKrYAf++jvVl5K4YUTEKj1eYSwTtJ8ElwzHQOyvbXNrRoleuzaOMCpV9B9+x
-         tLsHnAD0kjoFJb2o5xDbDQDeJfedAzwThVFES5R0175qfEWOWmJ3p+LQTQzSvWCBr4r3
-         xaJFGEDFlmlDg5HR9GYMb2wyIjwRPlvglZFwU8Ec/snIApMqOK7Z5dwFTlRcZWsjTofH
-         QervMWorlsVuwx8fcudVluNGjeuIVfH8qjqON6+QxtGluW1TNSDFIFezfuVlhM0iW6ny
-         vCo81UEw5aJHHv71/efGLv/BqMhFsNiTB9/h1SfD2J6q54WP8lmfzTX2MXIi8JoiWOUZ
-         1dRw==
+        b=XHrquyon9VRiw9ei4+E8vanMGGFbaL93rnsNx3CfS0SuldMGP+h20PJWJQpELWk8Ky
+         B/bZYu6sYwQTbv7tM9856qLprg68PlX27fvxH8Z5nfM3lfKgnMfCwP6/+ln3UfEgFwOV
+         MY4l03nZ5BMoe7P242DS/K77O7TiDKdTMqg1R7OTGDtk55Mqwdp9g2pU96ULIEOrj3u/
+         AeLIKSL5t36Jd07M1vJQgyzDK+Xd5dwv+uApi4lsdPoVULywVpl50RZcNOjQRUHF4h+u
+         iELbvqtT/gZ8qRgW4KjISfZZAjHneSNvhdg2kITuJOuQ8o/7/dujMf1ljy+hKFDTNOtW
+         8DSQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:subject:cc:to:date;
-        bh=l20kwCUzJfXMLJsEezitzG9nWzGH0pXM0m8PiNO9yLE=;
-        fh=5peQHe4Qo01/xo/FDApeixcD4sbQN6kQ06KYlBxCsyY=;
-        b=lDcC+HAz+FNZm8wwCqfscjsV8G8CMMzkStMv/D2+/IZZy+XMa5rWv0G6CdsecxOuOY
-         p+QXye0fWtvPDvc5+EGqCVnccq29VeNBoIb/lXjt5fZG23eKYM0x4/s02sx68g15lXGF
-         F72WuSraHlcJd3KCB7rt1o6CmR3A2MrvydfbLlriSXD8r27XkTiK+JaUog2e3SVY1BGv
-         8cAhJqo+rFkveWmLleRet+xj4Mq8bGbkywhMqzLZy8s3o0KDwUVCYZ4/iwoiA9r1fn6v
-         MtQBmANq1XMHCLmrCqb5b0bhDm15dRZkF1t1vhkyvsR6Ik53oBi7Qxr55D1Bl/8Nppo1
-         JsSA==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:content-transfer-encoding
+         :mime-version:message-id:date:subject:from:dkim-signature;
+        bh=b6bafoQ4AEmroXUTOf4RMDPzol5f3xKj5qcmoPEW4WI=;
+        fh=7fMLPEQwGy6OMPcRzLzCIU1Tkw2F8/Z2rIFZAOjqt3c=;
+        b=YbyR72janB+U8NtE0ysra1/nfs+Jl5u/gXu6CUEmc1UpA+/a+CUpPF2HZR9PtN8t31
+         NP23VgGW6CRCtcv7ki11n9IIeK6mAgIwOA15aEV0hQdMw0brCKmP3zDTqg6Dez3gjF6X
+         b/mZagmotn9bCqjEJsSGdPNj5v8S4dYB1q+wzBvG71RITzzY4Ev1n/M8WH29SUwXEy2u
+         7n6y7fVScnKFEhGf5FFYE4p5Zt8y2rti5w+UpBMx5+LHV166/2v0xMXETDn9UTyBBvyx
+         /rtsF3PLmFj1il540haTZX7RQZjbUXmhMUfKv62X/6GBfdHP3k1IC/LOpSgdNaOSRfoF
+         o14A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=q3b5woZC;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7b114933936si989347385a.202.2024.10.14.02.37.19
+        by mx.google.com with ESMTPS id d75a77b69052e-460428c8f29si94904631cf.550.2024.10.14.03.51.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 14 Oct 2024 02:37:19 -0700 (PDT)
+        Mon, 14 Oct 2024 03:51:06 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=q3b5woZC;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1t0HVo-000588-OS; Mon, 14 Oct 2024 05:37:12 -0400
+	id 1t0Iez-00040H-KV; Mon, 14 Oct 2024 06:50:45 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1t0HVm-00057D-HX; Mon, 14 Oct 2024 05:37:10 -0400
-Received: from frasgout.his.huawei.com ([185.176.79.56])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1t0HVk-0006S2-1O; Mon, 14 Oct 2024 05:37:10 -0400
-Received: from mail.maildlp.com (unknown [172.18.186.216])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4XRsT9408gz67RYs;
- Mon, 14 Oct 2024 17:32:29 +0800 (CST)
-Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
- by mail.maildlp.com (Postfix) with ESMTPS id 7F1B71400D9;
- Mon, 14 Oct 2024 17:36:56 +0800 (CST)
-Received: from localhost (10.203.177.66) by frapeml500008.china.huawei.com
- (7.182.85.71) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Mon, 14 Oct
- 2024 11:36:55 +0200
-Date: Mon, 14 Oct 2024 10:36:53 +0100
-To: Corey Minyard <minyard@acm.org>, Andrew Jeffery
- <andrew@codeconstruct.com.au>, Matt Johnston <matt@codeconstruct.com.au>
-CC: Klaus Jensen <its@irrelevant.dk>, Corey Minyard <cminyard@mvista.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Peter Maydell
- <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>, Keith Busch
- <kbusch@kernel.org>, Lior Weintraub <liorw@pliops.com>, Jeremy Kerr
- <jk@codeconstruct.com.au>, Peter Delevoryas <peter@pjd.dev>,
- <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <qemu-block@nongnu.org>,
- "Klaus Jensen" <k.jensen@samsung.com>, Davidlohr Bueso <dave@stgolabs.net>,
- <linux-cxl@vger.kernel.org>, Hannes Reinecke <hare@suse.com>
-Subject: Re: [PATCH v6 0/3] hw/{i2c,nvme}: mctp endpoint, nvme management
- interface model
-Message-ID: <20241014103653.00002c83@Huawei.com>
-In-Reply-To: <ZQsDcmkZYCk0eVhA@mail.minyard.net>
-References: <20230914-nmi-i2c-v6-0-11bbb4f74d18@samsung.com>
- <20230920124803.00005ae9@Huawei.com>
- <ZQrrgxHrfzmGyhZU@mail.minyard.net>
- <ZQr0LXsSRXGqJ4EL@cormorant.local>
- <ZQsDcmkZYCk0eVhA@mail.minyard.net>
-Organization: Huawei Technologies Research and Development (UK) Ltd.
-X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
+ (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
+ id 1t0Iep-0003ys-3g
+ for qemu-arm@nongnu.org; Mon, 14 Oct 2024 06:50:35 -0400
+Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
+ id 1t0Iem-0006U3-Vv
+ for qemu-arm@nongnu.org; Mon, 14 Oct 2024 06:50:34 -0400
+Received: by mail-ej1-x62f.google.com with SMTP id
+ a640c23a62f3a-a99f646ff1bso248841366b.2
+ for <qemu-arm@nongnu.org>; Mon, 14 Oct 2024 03:50:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1728903030; x=1729507830; darn=nongnu.org;
+ h=cc:to:content-transfer-encoding:mime-version:message-id:date
+ :subject:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=b6bafoQ4AEmroXUTOf4RMDPzol5f3xKj5qcmoPEW4WI=;
+ b=q3b5woZC1CIIRnSaEf19MINkXBEZmCe9hHuzCS8mLnrt3uAOa4XldDZ7fb/iCMAWhX
+ UyGrUl8MKBdgRg8z+rC7lD2eIqICR0oZ30q35dSxEDqyhNcSaurma53rRxwPJc9vei8I
+ uOeggp33QnPSGgyoB6Jz/2AIA786yxdDkoAq7wKrirnIPZ823EQD/SPQBETCoS7ZU+yS
+ 1cUVTVT9P2TVl/aUW6E5rKs7frA5ci5GR0aG5/fR2Y3IQr/h8kQepKLq8VIWqxM/EDUu
+ QFQQj4fPVkRJRZljLPFmLlODqgZr1kAWpo2a4IzWeEPv5+Ka30pBsH8KNwBXS7MtgK45
+ 1N/g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1728903030; x=1729507830;
+ h=cc:to:content-transfer-encoding:mime-version:message-id:date
+ :subject:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=b6bafoQ4AEmroXUTOf4RMDPzol5f3xKj5qcmoPEW4WI=;
+ b=K2cn9oitCxiqze4MfVrW2Cxjjcoqna3gv/YW/X79husUhAlRbKIAlnjKJCiMYzHsAC
+ Fd3FpLq4qut/QFmvb3PApe1nr9uixbK+au1+t4EdmDsxHxFLhPjpAhdwKjW7C/bWnPWr
+ gxeIuANZ1Y138pcZxYWGE0Uel3hSXJxbfqa1HDgOBmrK0AIWp2I/ywshi1Ig0aZhe8Wg
+ dP8JusaDnUUH2IZm04OD0+WUrFv+qiRHuD6yx98Jm8TQ3pb4ahdWcCj5YHlmjaxzrYXL
+ dMDVA5UZZXWvR9x7fm/LLeOZOUlJNY0j3cTS/dgNaf0qLQyy+zNu2S/KT+ECKZae9N5Z
+ o1pQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXyeuK6KYN/daBZUbRfQFqLxvswGhMLOfNPcOalZB4t9NNvUWyClXoCJb6/9OEy6e62V+LSM5IyAg==@nongnu.org
+X-Gm-Message-State: AOJu0YyCRXMfLyGvU6GJKLK5KW4VO+04SqHp3pVR65SHdPFmBqxbdUSu
+ mmtvXhu1aNwVshKimMbmak5R5GGttNcJKZDtGWXTW/xwu+N/cLiTYfGeVuw/kjPCh7ZqeYFORqn
+ qqbw=
+X-Received: by 2002:a17:907:7242:b0:a99:ff43:ca83 with SMTP id
+ a640c23a62f3a-a99ff43d09dmr434786266b.14.1728903030245; 
+ Mon, 14 Oct 2024 03:50:30 -0700 (PDT)
+Received: from [127.0.1.1] (adsl-161.109.242.225.tellas.gr. [109.242.225.161])
+ by smtp.gmail.com with ESMTPSA id
+ a640c23a62f3a-a9a0b25226esm165504466b.59.2024.10.14.03.50.29
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 14 Oct 2024 03:50:30 -0700 (PDT)
+From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+Subject: [RFC PATCH 0/4] No-op support for Arm FEAT_XS, feedback needed
+Date: Mon, 14 Oct 2024 13:48:54 +0300
+Message-Id: <20241014-arm-feat-xs-v1-0-42bb714d6b11@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.203.177.66]
-X-ClientProxiedBy: lhrpeml100004.china.huawei.com (7.191.162.219) To
- frapeml500008.china.huawei.com (7.182.85.71)
-Received-SPF: pass client-ip=185.176.79.56;
- envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-B4-Tracking: v=1; b=H4sIABb3DGcC/6tWKk4tykwtVrJSqFYqSi3LLM7MzwNyDHUUlJIzE
+ vPSU3UzU4B8JSMDIxMDS0NL3cSiXN201MQS3YpiXXPj1NSUJCPjFEtjcyWgjoKi1LTMCrBp0bG
+ 1tQAet9eFXQAAAA==
+X-Change-ID: 20240919-arm-feat-xs-73eedb23d937
+To: qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
+ Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+X-Mailer: b4 0.15-dev-12fc5
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1827;
+ i=manos.pitsidianakis@linaro.org; h=from:subject:message-id;
+ bh=n3V+VVQvSEXeK/GAnYRkazxno+QILIS5TUpLyNPBbMk=;
+ b=LS0tLS1CRUdJTiBQR1AgTUVTU0FHRS0tLS0tCgpvd0VCYlFLUy9aQU5Bd0FLQVhjcHgzQi9mZ
+ 25RQWNzbVlnQm5EUGQwZXZWMmhRNFRvbFFsa1J1REVjZnFCeVhDCmxmb29JSmhTeWtYejM5b1NE
+ WkNKQWpNRUFBRUtBQjBXSVFUTVhCdE9SS0JXODRkd0hSQjNLY2R3ZjM0SjBBVUMKWnd6M2RBQUt
+ DUkIzS2Nkd2YzNEowS3dDRC85OXJCcTZWK3NqSTBKaW1QRS9IeVd3NmlNWjJkVHpEcEJHTkErZw
+ pJOFVzM1lXbktneUc0eXZvK08veFFjdHNYclBQa2FkTFJZeHZBa2hQQWFZRm5mOE9SM0swMG9pS
+ lpOenpkTHdwClFqT3lEMlJUSm85bFZzV1FPSkRYNjF0Q01Bd3ZzaDNQNHBxcGZtaU9DY0MvWXVi
+ RTduU2c0Ky9Bc0lWQjZhUUoKazhvM1ppT1phM01RTDM1SnNQY0E4NnhWc1FCMTBpZmNlVTBGNTB
+ EUTZONG5VUTFjUll3cnBYSDY4YWNSU0grNwprOVhleVlVcnZQQndLN1pYRi8yUXNNRXRqNnRhc3
+ RqZjNHU3NuMkVVOVR6aWxsbGhRWDJGTDJraVkvWWQyU3VtCm4wTGFER0Y2Q3ZBNlErUWEwTHZxT
+ nhiekZVTmJKK2drY3dETmJyeGx2WWRSdlgzc2N1NTRRQXpqd09RQVZlZ1MKMm1FYjB1RHNxYy9i
+ eG5GUXhVUXRZbmMxbHpwaVdqcGpOV0dyMm9ORDhWU1hRWkhSSVhlREtyNGsvNmhjR3kwcwpNTlR
+ lS21UV1laZ2ZVc1VRUkRkdUZsMVRPMVhTKzdFQVBJQUJ6K2ozS3cyTzJpSUFCQUY1Nnd5SVhWNk
+ ZYaFVtCmZWN2ZKL2ZoWEpDTGdRZlNocXgraktzNFJnWDVPVUh2U2NHbDZoVlJ6S0E4b3NQNHpSW
+ nUxcHVmQ0VsRzRycnQKRUd0NzdjR29kdCtpUzNLUHVRVE1SSm5NOXQxOGZLa2UwOWRNTXNXNzlr
+ MEZUUTJKcWs5eHU0VlFQbGVKK1pMNApiZDZOR0lWbCtrckRFb2crSTBqSmRpanFJWmFhQXBoYmo
+ yZm8vUlArSmczVCtKZEFmWlRXd2FhZ2hDMTFJVXk4CndTZ2owZz09Cj1YNkdnCi0tLS0tRU5EIF
+ BHUCBNRVNTQUdFLS0tLS0K
+X-Developer-Key: i=manos.pitsidianakis@linaro.org; a=openpgp;
+ fpr=7C721DF9DB3CC7182311C0BF68BC211D47B421E1
+Received-SPF: pass client-ip=2a00:1450:4864:20::62f;
+ envelope-from=manos.pitsidianakis@linaro.org; helo=mail-ej1-x62f.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -110,120 +153,51 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Jonathan Cameron <Jonathan.Cameron@Huawei.com>
-From:  Jonathan Cameron via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: D7FUlJfwnLaA
+X-TUID: v04Lk1+s/hSD
 
-On Wed, 20 Sep 2023 09:36:34 -0500
-Corey Minyard <minyard@acm.org> wrote:
+This series is an initial incomplete attempt at adding support for the
+FEAT_XS feature in aarch64 TCG. This feature was introduced in ARMv8.7:
+it adds a new memory attribute XS which indicates that a memory access
+could take longer than usual to complete and also adds instruction
+variants for TLBI maintenance and DSB.
 
-> On Wed, Sep 20, 2023 at 06:31:25AM -0700, Klaus Jensen wrote:
-> > On Sep 20 07:54, Corey Minyard wrote:  
-> > > On Wed, Sep 20, 2023 at 12:48:03PM +0100, Jonathan Cameron via wrote:  
-> > > > On Thu, 14 Sep 2023 11:53:40 +0200
-> > > > Klaus Jensen <its@irrelevant.dk> wrote:
-> > > >   
-> > > > > This adds a generic MCTP endpoint model that other devices may derive
-> > > > > from.
-> > > > > 
-> > > > > Also included is a very basic implementation of an NVMe-MI device,
-> > > > > supporting only a small subset of the required commands.
-> > > > > 
-> > > > > Since this all relies on i2c target mode, this can currently only be
-> > > > > used with an SoC that includes the Aspeed I2C controller.
-> > > > > 
-> > > > > The easiest way to get up and running with this, is to grab my buildroot
-> > > > > overlay[1] (aspeed_ast2600evb_nmi_defconfig). It includes modified a
-> > > > > modified dts as well as a couple of required packages.
-> > > > > 
-> > > > > QEMU can then be launched along these lines:
-> > > > > 
-> > > > >   qemu-system-arm \
-> > > > >     -nographic \
-> > > > >     -M ast2600-evb \
-> > > > >     -kernel output/images/zImage \
-> > > > >     -initrd output/images/rootfs.cpio \
-> > > > >     -dtb output/images/aspeed-ast2600-evb-nmi.dtb \
-> > > > >     -nic user,hostfwd=tcp::2222-:22 \
-> > > > >     -device nmi-i2c,address=0x3a \
-> > > > >     -serial mon:stdio
-> > > > > 
-> > > > > From within the booted system,
-> > > > > 
-> > > > >   mctp addr add 8 dev mctpi2c15
-> > > > >   mctp link set mctpi2c15 up
-> > > > >   mctp route add 9 via mctpi2c15
-> > > > >   mctp neigh add 9 dev mctpi2c15 lladdr 0x3a
-> > > > >   mi-mctp 1 9 info
-> > > > > 
-> > > > > Comments are very welcome!
-> > > > > 
-> > > > >   [1]: https://github.com/birkelund/hwtests/tree/main/br2-external
-> > > > > 
-> > > > > Signed-off-by: Klaus Jensen <k.jensen@samsung.com>  
-> > > > 
-> > > > Hi Klaus,
-> > > > 
-> > > > Silly question, but who is likely to pick this up? + likely to be soon?
-> > > > 
-> > > > I'm going to post the CXL stuff that makes use of the core support shortly
-> > > > and whilst I can point at this patch set on list, I'd keen to see it upstream
-> > > > to reduce the dependencies (it's got 2 sets ahead of it of CXL stuff
-> > > > anyway but that will all hopefully go through Michael Tsirkin's tree
-> > > > for PCI stuff in one go).  
-> > > 
-> > > I can pick it up, but he can just request a merge, too.
-> > > 
-> > > I did have a question I asked earlier about tests.  It would be unusual
-> > > at this point to add something like this without having some tests,
-> > > especially injecting invalid data.
-> > >   
-> > 
-> > Hi all,
-> > 
-> > Sorry for the late reply. I'm currently at SDC, but I will write up some
-> > tests when I get back to in the office on Monday.
-> > 
-> > Corey, what kinds of tests would be best here? Avocado "acceptance"
-> > tests or would you like to see something lower level?  
-> 
-> My main concern is testing what happens when bad data gets injected, to
-> avoid people coming up with clever names for exploits in qemu.  It's not
-> so much for this code, it's for the changes that comes in the future.
-> 
-> And, of course, normal functional tests to make sure it works.  What a
-> friend of mine calls "dead chicken" tests.  You wave a dead chicken at
-> it, and if the chicken is still dead everything is ok :).
-> 
-> I'm fine with either type of tests, but I'm not sure you can do this
-> with avocado.  It's probably about the same amount of work either path
-> you choose.
-> 
-> -corey
+These variants are implemented as no-ops, since QEMU TCG doesn't
+implement caching.
 
-Hi Klaus, All,
+This is my first foray into TCG and certain things weren't clear to me:
 
-I was looking at what dependencies I'm carrying on my CXL tree and this
-series is one of the bigger bits :(
+1. How to make sure the feature is implemented properly. Since we model
+   cache maintenance as no-ops my understanding is the only
+   functionality we need to provide is to expose the FEAT_XS feature bit
+   and also make sure the nXS variants trap properly if configured with
+   fine-grained traps.
+2. Is there a point in adding a TCG test? If I read the manual
+   correctly, the nXS variants should trap to the undefined instruction
+   vector if unimplemented.
 
-Any plans to take it forwards?
-I have some other stuff to solve to have a fully upstream QEMU
-solution for the CXL fm-api over mctp (direct from host anyway), but
-if this is blocked indefinitely tackling how to get a controller onto
-a typical server system isn't going to be productive :(
+These patches lack support for FGT for now.
 
-As Davidlohr called out at in the CXL LPC Uconf [1] this is really handy
-for testing his work on libcxlmi. A number of people are looking
-at more sophisticated CXL fabric emulation and that will also need
-us to close this gap!
+Signed-off-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+---
+Manos Pitsidianakis (4):
+      arm: Add FEAT_XS's TLBI NXS variants
+      arm/tcg: add decodetree entry for DSB nXS variant
+      arm/tcg/cpu64: add FEAT_XS feat in max cpu
+      tests/tcg/aarch64: add system test for FEAT_XS
 
-No promises but maybe we can find someone to help with adding tests
-if that's the only remaining blocker.
+ target/arm/cpu-features.h          |   5 +
+ target/arm/helper.c                | 366 +++++++++++++++++++++----------------
+ target/arm/tcg/a64.decode          |   3 +
+ target/arm/tcg/cpu64.c             |   1 +
+ target/arm/tcg/translate-a64.c     |   6 +
+ tests/tcg/aarch64/system/feat-xs.c |  27 +++
+ 6 files changed, 255 insertions(+), 153 deletions(-)
+---
+base-commit: 7e3b6d8063f245d27eecce5aabe624b5785f2a77
+change-id: 20240919-arm-feat-xs-73eedb23d937
 
-https://lpc.events/event/18/contributions/1876/attachments/1441/3072/lpc24-dbueso-libcxlmi.pdf [1]
-
-Jonathan
-
+--
+γαῖα πυρί μιχθήτω
 

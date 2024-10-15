@@ -1,51 +1,51 @@
-Received: by 2002:a17:505:3501:b0:1be9:327d:8ee3 with SMTP id mc1csp2339035njb;
-        Tue, 15 Oct 2024 03:05:45 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWPPDCtectX6jSW/a/GWER/97/swBosd/fJZMgB9kqCNXolfdvjLd4a1EVMWQ3LHeUUooKZmTJXmu8ysA==@linaro.org
-X-Google-Smtp-Source: AGHT+IHar8e04+fanTNfITq8OhMr2xEGNF+VTrKsbcGFOuZQhrLu6AGVn+fEEqkLTthXpzu+WsMg
-X-Received: by 2002:a05:600c:3b8e:b0:431:24c3:dbaa with SMTP id 5b1f17b1804b1-431255cea47mr114110315e9.2.1728986745293;
-        Tue, 15 Oct 2024 03:05:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1728986745; cv=none;
+Received: by 2002:a17:505:3501:b0:1be9:327d:8ee3 with SMTP id mc1csp2339226njb;
+        Tue, 15 Oct 2024 03:06:05 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWlZ/+M5u82aEva1cH+DWZU6DHqZZahNZTw0Ial0BSMSPiv2ys1NDZGf8UJVQGK+DrHVX7sMJi58dhe8g==@linaro.org
+X-Google-Smtp-Source: AGHT+IEshtOqZXn1emVqfdNQxFPPzymEIMY08VkTwtLZpPwxkl9qAfTD/Wqu2PzhkfNMoZ9cV3lL
+X-Received: by 2002:adf:f84e:0:b0:37d:3735:8fe9 with SMTP id ffacd0b85a97d-37d551d53cfmr10323590f8f.27.1728986765762;
+        Tue, 15 Oct 2024 03:06:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1728986765; cv=none;
         d=google.com; s=arc-20240605;
-        b=VRPFaC4XHBvCisvIyakcitQRz9nS8r6ZPKD1V3HCXOT/mQILelTRRbO96K5k6QIsxq
-         unwcAX7iBqHDN+H8dQzvnO+R54FxGIaZ1xmwXsNZQh6US0fqVEYZecvNbLrd1cF74iG/
-         cyAKk8til1yp+9td6cXrCCAFpiglGNfYAAiECLrwAo3L0YRYNHboAiPdkbYIYjVGguVf
-         MJfIdXrY4Klnf7fLVjdPWslu9F4KRz46nx4Bg8txcYI52lJGHL24B3MuSN661oB+Yrzu
-         pA77zZm27aTfn/i8mAVxEp0Im3esxFS7WDppIdFnb/DKA9v0ndWq7Gyo7/XfTHoxhHII
-         8cVA==
+        b=LgjhNnvak6LGZ1rFBUTDZ4g5v3a7yaubVk63yjd8YZZXTqXjp0Mp+01vGBT32+9u09
+         TvSTzf/GhLNhA4L8aI/0F1Gj9mwkPx8Q/063Yt86YEj5U4B7wBS6wE9Miu0cNNdBZWZt
+         9sQ/oTaNOLDWPO/R3TzuIPHG12zXRBZ7r/t721d8r69dX8WdbkiTunH3EKc7m1J0t1BI
+         dlQEgmyJ5yZ8AhKQt6p24jsDm5UM6iOnWCNCjzmLoG+A4WViFyfQRZV/MwmHaRJDOTdW
+         jf6DA8jJGfQZveY6OzhSUfTMpx3YsVCgOO/wjQFg7D2aAo1X8k0XeSQhrEfrYnftLdCs
+         hPXw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from;
-        bh=dmMWluBFfNXWSPLgzxqwJtxFbzLb5gYHlmEHm2xxF8U=;
+        bh=2iEdWYHhMXNeq0WtMjLtROqrDM5oN/5U94NE8jtz+JQ=;
         fh=f7aqOn0Aylihzqer4hTA2kHSEaA8DU6KE1VFtniI5w4=;
-        b=RQOaGBVn9j4zYo7bQqWQeuEeo4fQgZ4Na133proG87iuN+jvH/gKmIB9qohCDKk1s3
-         cHba6BvgRTcVZAHXjgsT3B2zunnHG7RP0qA0sbxJE6TLI1F1vnm583Hndk+0/UQNUdmq
-         ZYbF8ey5XKJAs56KtBgH3905Tz9V83tJ9B7WKd9mrHPu9Jy/LOxrMIARr5UCkEZnkpdW
-         091eqmptJAVgBeKgyd+iiqK12+fkf3Izkpr2Cle66XpI0OftqO3+oeVQ2mRFCxD3nRoG
-         U7qe29fqXJo5YeBLEHAjP8Yyr8XJncd3DYtEEiBSOK6EpPSElIA12vuc72ydO4ucqsq9
-         uBjQ==;
+        b=iBDg2uquZIphhNWWdokmwscGk85gG3k/ZK4E0pyu2OT0c20NJY5VdVb5RBtJcHmA0n
+         YHphQyZHQYWYDT1Rsto8xg43vLLQ5vxlE+bei3gxeSJAlTHHHuuGyCrPSLugB22NGTvt
+         0TYvuSOqm2s0s6Rr44tPoMmd2wsF+YTouoxvRGhU7eVbEOvtvv5GuukPgOecKYhN1Tqy
+         OMj6hcEVUu1iP76/OHbGANkXBUV1UFukpnYx0Gf65nCSJXJNgwsMiaZWiu9kc9UCyzza
+         3/QMhqs7xSO7KVgwXhIFzA2qoE3A2NF+BFYNoQ2kls87GKRYRlAr4uRly8TaKZKBzb67
+         ODXg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
 Return-Path: <salil.mehta@huawei.com>
 Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id ffacd0b85a97d-37d7fc06b99si559611f8f.229.2024.10.15.03.05.45
+        by mx.google.com with ESMTPS id ffacd0b85a97d-37d7fc9ed59si522092f8f.469.2024.10.15.03.06.05
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 15 Oct 2024 03:05:45 -0700 (PDT)
+        Tue, 15 Oct 2024 03:06:05 -0700 (PDT)
 Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from mail.maildlp.com (unknown [172.18.186.216])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4XSV8Q1jZPz6K98P;
-	Tue, 15 Oct 2024 18:05:10 +0800 (CST)
+Received: from mail.maildlp.com (unknown [172.18.186.31])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4XSV7b2GYpz6FH29;
+	Tue, 15 Oct 2024 18:04:27 +0800 (CST)
 Received: from frapeml500007.china.huawei.com (unknown [7.182.85.172])
-	by mail.maildlp.com (Postfix) with ESMTPS id 5F435140AA7;
-	Tue, 15 Oct 2024 18:05:44 +0800 (CST)
+	by mail.maildlp.com (Postfix) with ESMTPS id 83382140451;
+	Tue, 15 Oct 2024 18:06:04 +0800 (CST)
 Received: from 00293818-MRGF.huawei.com (10.48.146.149) by
  frapeml500007.china.huawei.com (7.182.85.172) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Tue, 15 Oct 2024 12:05:24 +0200
+ 15.1.2507.39; Tue, 15 Oct 2024 12:05:44 +0200
 From: Salil Mehta <salil.mehta@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <mst@redhat.com>
 CC: <salil.mehta@huawei.com>, <maz@kernel.org>, <jean-philippe@linaro.org>,
@@ -64,9 +64,9 @@ CC: <salil.mehta@huawei.com>, <maz@kernel.org>, <jean-philippe@linaro.org>,
 	<jiakernel2@gmail.com>, <maobibo@loongson.cn>, <lixianglai@loongson.cn>,
 	<shahuang@redhat.com>, <zhao1.liu@intel.com>, <linuxarm@huawei.com>,
 	<gustavo.romero@linaro.org>
-Subject: [PATCH RFC V5 14/30] hw/acpi: Make _MAT method optional
-Date: Tue, 15 Oct 2024 10:59:56 +0100
-Message-ID: <20241015100012.254223-15-salil.mehta@huawei.com>
+Subject: [PATCH RFC V5 15/30] hw/arm/acpi: MADT Tbl change to size the guest with possible vCPUs
+Date: Tue, 15 Oct 2024 10:59:57 +0100
+Message-ID: <20241015100012.254223-16-salil.mehta@huawei.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20241015100012.254223-1-salil.mehta@huawei.com>
 References: <20241015100012.254223-1-salil.mehta@huawei.com>
@@ -76,42 +76,125 @@ Content-Type: text/plain
 X-Originating-IP: [10.48.146.149]
 X-ClientProxiedBy: dggems702-chm.china.huawei.com (10.3.19.179) To
  frapeml500007.china.huawei.com (7.182.85.172)
-X-TUID: jiT8Ka3F0N3R
+X-TUID: i0+nHejyT+A1
 
-From: Jean-Philippe Brucker <jean-philippe@linaro.org>
+When QEMU builds the MADT table, modifications are needed to include information
+about possible vCPUs that are exposed as ACPI-disabled (i.e., `_STA.Enabled=0`).
+This new information will help the guest kernel pre-size its resources during
+boot time. Pre-sizing based on possible vCPUs will facilitate the future
+hot-plugging of the currently disabled vCPUs.
 
-The GICC interface on arm64 vCPUs is statically defined in the MADT, and
-doesn't require a _MAT entry. Although the GICC is indicated as present
-by the MADT entry, it can only be used from vCPU sysregs, which aren't
-accessible until hot-add.
+Additionally, this change addresses updates to the ACPI MADT GIC CPU interface
+flags, as introduced in the UEFI ACPI 6.5 specification. These updates enable
+deferred virtual CPU onlining in the guest kernel.
 
-Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
-Reviewed-by: Gavin Shan <gshan@redhat.com>
+Link: https://uefi.org/specs/ACPI/6.5/05_ACPI_Software_Programming_Model.html#gic-cpu-interface-gicc-structure
+
+Co-developed-by: Keqian Zhu <zhukeqian1@huawei.com>
+Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
 Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
 ---
- hw/acpi/cpu.c | 9 ++++++---
- 1 file changed, 6 insertions(+), 3 deletions(-)
+ hw/arm/virt-acpi-build.c | 36 ++++++++++++++++++++++++++++++------
+ include/hw/acpi/cpu.h    | 19 +++++++++++++++++++
+ 2 files changed, 49 insertions(+), 6 deletions(-)
 
-diff --git a/hw/acpi/cpu.c b/hw/acpi/cpu.c
-index d34c1e601e..2cbeedffe8 100644
---- a/hw/acpi/cpu.c
-+++ b/hw/acpi/cpu.c
-@@ -731,10 +731,13 @@ void build_cpus_aml(Aml *table, MachineState *machine, CPUHotplugFeatures opts,
-             aml_append(dev, method);
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index 32238170ab..ff104b3496 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -663,6 +663,29 @@ static void build_append_gicr(GArray *table_data, uint64_t base, uint32_t size)
+     build_append_int_noprefix(table_data, size, 4); /* Discovery Range Length */
+ }
  
-             /* build _MAT object */
--            build_madt_cpu(i, arch_ids, madt_buf, true); /* set enabled flag */
--            aml_append(dev, aml_name_decl("_MAT",
-+            if (build_madt_cpu) {
-+                build_madt_cpu(i, arch_ids, madt_buf,
-+                                true); /* set enabled flag */
-+                aml_append(dev, aml_name_decl("_MAT",
-                 aml_buffer(madt_buf->len, (uint8_t *)madt_buf->data)));
--            g_array_free(madt_buf, true);
-+                g_array_free(madt_buf, true);
-+            }
++static uint32_t virt_acpi_get_gicc_flags(CPUState *cpu)
++{
++    MachineClass *mc = MACHINE_GET_CLASS(qdev_get_machine());
++
++    /* can only exist in 'enabled' state */
++    if (!mc->has_hotpluggable_cpus) {
++        return 1;
++    }
++
++    /*
++     * ARM GIC CPU Interface can be 'online-capable' or 'enabled' at boot
++     * We MUST set 'online-capable' bit for all hotpluggable CPUs except the
++     * first/boot CPU. Cold-booted CPUs without 'Id' can also be unplugged.
++     * Though as-of-now this is only used as a debugging feature.
++     *
++     *   UEFI ACPI Specification 6.5
++     *   Section: 5.2.12.14. GIC CPU Interface (GICC) Structure
++     *   Table:   5.37 GICC CPU Interface Flags
++     *   Link: https://uefi.org/specs/ACPI/6.5
++     */
++    return cpu && !cpu->cpu_index ? 1 : (1 << 3);
++}
++
+ static void
+ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+ {
+@@ -689,12 +712,13 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+     build_append_int_noprefix(table_data, vms->gic_version, 1);
+     build_append_int_noprefix(table_data, 0, 3);   /* Reserved */
  
-             if (CPU(arch_ids->cpus[i].cpu) != first_cpu) {
-                 method = aml_method("_EJ0", 1, AML_NOTSERIALIZED);
+-    for (i = 0; i < MACHINE(vms)->smp.cpus; i++) {
+-        ARMCPU *armcpu = ARM_CPU(qemu_get_cpu(i));
++    for (i = 0; i < MACHINE(vms)->smp.max_cpus; i++) {
++        CPUState *cpu = qemu_get_possible_cpu(i);
+         uint64_t physical_base_address = 0, gich = 0, gicv = 0;
+         uint32_t vgic_interrupt = vms->virt ? ARCH_GIC_MAINT_IRQ : 0;
+-        uint32_t pmu_interrupt = arm_feature(&armcpu->env, ARM_FEATURE_PMU) ?
+-                                             VIRTUAL_PMU_IRQ : 0;
++        uint32_t pmu_interrupt = vms->pmu ? VIRTUAL_PMU_IRQ : 0;
++        uint32_t flags = virt_acpi_get_gicc_flags(cpu);
++        uint64_t mpidr = acpi_get_cpu_archid(i);
+ 
+         if (vms->gic_version == VIRT_GIC_VERSION_2) {
+             physical_base_address = memmap[VIRT_GIC_CPU].base;
+@@ -709,7 +733,7 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+         build_append_int_noprefix(table_data, i, 4);    /* GIC ID */
+         build_append_int_noprefix(table_data, i, 4);    /* ACPI Processor UID */
+         /* Flags */
+-        build_append_int_noprefix(table_data, 1, 4);    /* Enabled */
++        build_append_int_noprefix(table_data, flags, 4);
+         /* Parking Protocol Version */
+         build_append_int_noprefix(table_data, 0, 4);
+         /* Performance Interrupt GSIV */
+@@ -723,7 +747,7 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+         build_append_int_noprefix(table_data, vgic_interrupt, 4);
+         build_append_int_noprefix(table_data, 0, 8);    /* GICR Base Address*/
+         /* MPIDR */
+-        build_append_int_noprefix(table_data, arm_cpu_mp_affinity(armcpu), 8);
++        build_append_int_noprefix(table_data, mpidr, 8);
+         /* Processor Power Efficiency Class */
+         build_append_int_noprefix(table_data, 0, 1);
+         /* Reserved */
+diff --git a/include/hw/acpi/cpu.h b/include/hw/acpi/cpu.h
+index bd3f9973c9..c688bb2141 100644
+--- a/include/hw/acpi/cpu.h
++++ b/include/hw/acpi/cpu.h
+@@ -96,4 +96,23 @@ static inline bool acpi_persistent_cpu(CPUState *cpu)
+      */
+     return cpu && cpu->acpi_persistent;
+ }
++
++/**
++ * acpi_get_cpu_archid:
++ * @cpu_index: possible vCPU for which arch-id needs to be retreived
++ *
++ * Fetches the vCPU arch-id of the possible vCPU. This should be same
++ * same as the one configured at KVM Host.
++ *
++ * Returns: arch-id of the possible vCPU
++ */
++static inline uint64_t acpi_get_cpu_archid(int cpu_index)
++{
++    MachineState *ms = MACHINE(qdev_get_machine());
++    const CPUArchIdList *possible_cpus = ms->possible_cpus;
++
++    assert((cpu_index >= 0) && (cpu_index < possible_cpus->len));
++
++    return possible_cpus->cpus[cpu_index].arch_id;
++}
+ #endif
 -- 
 2.34.1

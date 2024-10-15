@@ -1,128 +1,177 @@
-Received: by 2002:a17:504:3c0d:b0:1be9:327d:8ee3 with SMTP id y13csp189608nji;
-        Tue, 15 Oct 2024 10:36:25 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUZYa6WvTmjWYWdPTOwF+NXkH/qvuZThVXfZrGUa3ilZzTC8yNCU73F62WiubltMQB/xfhXBKhM1YlXNQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IHr7B49G726tFjaguDwVJbL7824BpfoqfbJ0DK+IgDjyq+7G8T4/eGQU+N0lreugLNZAa/e
-X-Received: by 2002:a0c:f413:0:b0:6cc:42d:bb6 with SMTP id 6a1803df08f44-6cc2b8cbac9mr17778946d6.16.1729013784845;
-        Tue, 15 Oct 2024 10:36:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1729013784; cv=none;
+Received: by 2002:a17:504:3c0d:b0:1be9:327d:8ee3 with SMTP id y13csp186704nji;
+        Tue, 15 Oct 2024 10:31:09 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCX+SQ/DZCWVyjQksIbZ6/pn2sshiKwDObiqRPVdBnkQ8clrBJnwx9IBeUdz8WRzDqgTEb0BIay8orwzmg==@linaro.org
+X-Google-Smtp-Source: AGHT+IE/AkF7ovN5xdf+kkTbGxR5aK7FQ+KPlLN/mtxHrCqnGH8Ak7ACh8Bp9FzRY8k6dZqdywDP
+X-Received: by 2002:a05:6102:c52:b0:4a3:e55d:eff5 with SMTP id ada2fe7eead31-4a475f414e9mr7889817137.9.1729013469158;
+        Tue, 15 Oct 2024 10:31:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1729013469; cv=none;
         d=google.com; s=arc-20240605;
-        b=fKEGxZBvE74PIe9DjbLQJlma3URITc6bDwA42IN2c1KFF+v5we5QJkL3zLGt41ick0
-         c4MlPGnobOy3+p5sow2D1TzST+CoX2WSgjrDo+M5LdirMVTu1D6B8Ox/ACnLgIyUOCWU
-         R/Y2YYGSY2L3i5mrEAXq5/hDrXmE2IPVlN/+eqrG06r4oftvou61j0Jv9JdLLAvmMOD8
-         98dea77/EIfMCqmYu+btwaCJunnjkCkbmAP84EIZ8rcj5SGVk+ER8SwffEVN9Yz+uPFv
-         NLiOeP2N+TUDa5jvnKbd41Wr0Ym2lstvAZ3NdiVMNf9SeWPW5M0Tp4lnpEz1QSMfK30s
-         uBmQ==
+        b=ZLKxM1W6+CfY0ejmB8Ca8K4I+hWKI4YQnXfcczidMYUv1lAmNGXLPv0m0lToZgfX0M
+         OeK6waZpiC8CgTiC3ohRUJYN6lrRoGl7kkXc2e2BxXt2vBjRUX32szWc8eAyRx5WluBs
+         Y8e8+Mm1UW8HWPdSHCe1sKOE1InvTKq5w9tcVb6fCGSIrwq97Y9rqMr3TN87bT9OYqYl
+         sl2K1shJyUt51PcFhO3m73c2zmJyC7tKyBKnEdGj/zHN1u7VA/ZwB5gThtEl+eDVDF1G
+         yo0fi0KpFlvuU6uQ6zqlFUC0yfz2zCSpigvzYhIr40CGvSNId+HXA54zhrNbYsd8HNS4
+         Z5Xw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=jWY7XzWZH9AEdLY2aHr1NP7a4yQuvuQNlf2nfUtAu00=;
-        fh=9OtG+nPY38evXqZlrfvu3SmQVpbPFIc4th1y7V9WQ0s=;
-        b=eKqvjh8q/ubvOgt6rg0MQbFciVnB5FAywQ0ivZsPOBz2VllbeaymAD2BkNkRTtHd5D
-         3A2377RIW4ndy5I/ymciP8TdOvKjMhu3syRhDl3RT3ZMcZBJMVIfBYeW/0v8BYfDNeOx
-         P2h5I+j8UvX4FReNeiae2guc1uZdNOhfEzqsX46mMyckXkK2KV5kZt5/UUFaDJQT+PS2
-         71Sd/A5fDOj7qhOlGOsbc5hrAqcdozlnKoRtmVM6ABUGfr5DkYBHH9fld7XZrFwpsF+3
-         38TpnIQXPzClFo+d0q68svBRcQqpJA4Wd3ZYEWOm5+CeYMYfZ1xrfCG/4sBSehAkJGch
-         e1IA==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:autocrypt:from:content-language:references:cc:to
+         :subject:user-agent:mime-version:date:message-id:dkim-signature;
+        bh=hAc0Rkh0qt9raJ7VpIsDm4hcL/CzinB8+igZso35Nxw=;
+        fh=vxy13qy1BHcjHoitbN4zpzUN+I11wpt29lKgTepIheE=;
+        b=kxq4Xxr7YJBnJjOXAF9eiRLSHHEDWDUJr6e+kUWNMVX62PZ3YztdbM5qyytFoJLao/
+         XwnNv4kGP+jixf3gjjJuHm3qc6/R+xYX4SO5fOC4BGM9bCfXTM5PpKRba7Nbit3DuTiE
+         8u75wro7sUPWfVv29Xmt7AIJFfNtIGxO9yjF0l8Cm2kEaotG0Dxo+BBk7onUdQPY4SHf
+         4X5ZvCOANgckKQlVeuxqMCvveClOS8wB3lvQ3eKM5NgcFCQDencgotMWh+9eTPvjc9mO
+         V8G3iYdVICkNoR3+BFs9P4tvI4k/Zsa401NPjL3kstis0qn9yNONVu37LDFvsEdfCa16
+         bw0g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=qKYsJFmv;
+       dkim=fail header.i=@gmail.com header.s=20230601 header.b=arm2Ydo1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       dara=fail header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6cc22a2fc64si18662966d6.238.2024.10.15.10.36.24
+        by mx.google.com with ESMTPS id ada2fe7eead31-4a5ace7db1dsi466349137.826.2024.10.15.10.31.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 15 Oct 2024 10:36:24 -0700 (PDT)
+        Tue, 15 Oct 2024 10:31:09 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=qKYsJFmv;
+       dkim=fail header.i=@gmail.com header.s=20230601 header.b=arm2Ydo1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       dara=fail header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1t0lSe-0007N2-2b; Tue, 15 Oct 2024 13:35:56 -0400
+	id 1t0lNe-0005XJ-3u; Tue, 15 Oct 2024 13:30:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1t0lSc-0007Mq-UD
- for qemu-arm@nongnu.org; Tue, 15 Oct 2024 13:35:54 -0400
-Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
+ (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
+ id 1t0lNY-0005UE-Jz; Tue, 15 Oct 2024 13:30:40 -0400
+Received: from mail-pf1-x42a.google.com ([2607:f8b0:4864:20::42a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1t0lSa-0006dP-OO
- for qemu-arm@nongnu.org; Tue, 15 Oct 2024 13:35:54 -0400
-Received: by mail-ed1-x531.google.com with SMTP id
- 4fb4d7f45d1cf-5c937b5169cso117675a12.1
- for <qemu-arm@nongnu.org>; Tue, 15 Oct 2024 10:35:51 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
+ id 1t0lNW-0005vA-Fb; Tue, 15 Oct 2024 13:30:40 -0400
+Received: by mail-pf1-x42a.google.com with SMTP id
+ d2e1a72fcca58-71e592d7f6eso1992731b3a.3; 
+ Tue, 15 Oct 2024 10:30:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1729013751; x=1729618551; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=jWY7XzWZH9AEdLY2aHr1NP7a4yQuvuQNlf2nfUtAu00=;
- b=qKYsJFmv8M6P/0g9djO6a5HXJiXsQJJXW5sJLuww8CSRjHusVCsEKGiFK61WvM40Ty
- 0+3EQcEkv1rb042G1utQnlYsUoST4nG1HbOmSsN/ECeT3JBnQR3XqjZV9GpWKP8e9Wht
- gPxtaAvYluzLLOfi2RPcEPhSlxLpvy0uDQcwDBDyPrv1j7RqJueV4vDr6WcnBTbfFfqO
- m+hcbW9FjDoODHAJWfYHMs6ajz5/GP4/axf1x4aDtmVIRABZYOXUeQi8rD8f49EEcfKA
- 2NI6IngRlg+JfU6HXb+KoBhWwBYpNE4JCQJChiGM/Bj27DoiUK6aBAXdAjOl+PdR0f8+
- yH/w==
+ d=gmail.com; s=20230601; t=1729013435; x=1729618235; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from
+ :content-language:references:cc:to:subject:user-agent:mime-version
+ :date:message-id:sender:from:to:cc:subject:date:message-id:reply-to;
+ bh=hAc0Rkh0qt9raJ7VpIsDm4hcL/CzinB8+igZso35Nxw=;
+ b=arm2Ydo1I+QJI4MLYEAJMzPlSoovucwvLIOKJG1d1w25ktJR+5XfJzOTkA4VFt2II6
+ GVdcqqgSsDllRBojpEGbNTJ4WV7AM+Z+KyTyPRWaZmlYPouHMGw7Mc5zkPB8bB71FPxS
+ awqI9PTxxPBHF5GVL96RS8B1yCC/Ny9DQGEvDAfKWPmjk7tZuPmu/MLd9VypDHKfRpaE
+ +rKpVUIDHUSAQq1kTQo1YpLgZD9aEB+jp1H81pAXysx9Ep6fRsTclNfzdiNnxIm1wtNN
+ JoeA6u0M9TRfFFV2TRCBH1jgDZROHtJlukW6/JLW4bmO9WCob4+d7+2+URLdoCBL8ZUP
+ z9Bg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1729013751; x=1729618551;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=jWY7XzWZH9AEdLY2aHr1NP7a4yQuvuQNlf2nfUtAu00=;
- b=Ltnn4qHd8I2Mcpp214sdHVxix07GwkT4A6Wwc2woHfIvkDnRwYoCwCM2eOBBZ99/M4
- 0BHCrS2fTqa0XlJ7rZvVFwK+I9lXGWEHcZIxsje8Ay3W2mz5fuCzf/P69YMOLPX3BX35
- uXmYraOQZum0Yrc/JN12ZEzXmwUNWpHMEpkWJsxRWA3qmUD65OO5RikqV7+xZEny+Dh5
- 0uicYeZzPC36y6oW1lueZ70sk8DLwIy4fr/GKFZCkN0FnZzr9ww+J1XHfexpDgRdcIXD
- 4Z7fDv2fx7yfJhLjWUwLp/54vLlYGGbRzeCXumdeLkVechms/l3zd4Vg4yE4NeHssYSX
- 70lQ==
+ d=1e100.net; s=20230601; t=1729013435; x=1729618235;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from
+ :content-language:references:cc:to:subject:user-agent:mime-version
+ :date:message-id:sender:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=hAc0Rkh0qt9raJ7VpIsDm4hcL/CzinB8+igZso35Nxw=;
+ b=UIXwrsm8O19zvoDNc3wb6DikjeKgr2O16rGtEyELM/k13iJiyowWlGVJWyy4KR4rNI
+ 1X8lLY7vdokavv9EssuUKoq1xvDg6YZ+FQkgcjOAo/0Q1CcHnmh1Ml+bFgyP5SMeJmqd
+ OZNYKVkkjIOVUkRfmVsV44QCPzbN3wx3UmAqpTydGWd4OkEB0QUhVAa4pSrZUMcVsqif
+ D1iaBvRYHq19SsS6n+ihAJkA6djseTmiwopO+s8pSVzv6cgXtK+gB4hTndyxeDYKTH7U
+ YYIhMWc5znPU575gGJPx1gm2kMbpH4YShljfvlSdeNbh7k5c0J/LaLcDlL3Ixl4oBRnT
+ 7Oyg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCX2JO+CZ8F9O1xtpf8B6xFOihQDs4D2ot50rc1sQI1a2Z4UTGB0QLyX+i1o54ufuFAg0ZiTrHm3+w==@nongnu.org
-X-Gm-Message-State: AOJu0YxHK8QAiV+J5+JpnQ8qKycrjUBzle+Ybpkrr3Rc5flOFOXsmXGc
- Bhj4bPAef/rwCNkplh8SRk79o746kiZpaLoxWBzE9IttrHmEfQw+bjpxkJGIDK6MvAJtY/J4DVO
- wVhM1oVqRtC/BUsbJa4HPP7dA5MB56hVeXMH6Lg==
-X-Received: by 2002:a05:6402:13c9:b0:5c9:46a7:527 with SMTP id
- 4fb4d7f45d1cf-5c94759070dmr13772080a12.17.1729013750498; Tue, 15 Oct 2024
- 10:35:50 -0700 (PDT)
+ AJvYcCX1GlYculdVW0viKqm9tNvCLzMy3XHbxK7jOawYb6w5DORgPeROHnTZ3Fq/M3myGxq37H76I2n9qw==@nongnu.org
+X-Gm-Message-State: AOJu0YzdW8qfa8yd91ITRCC3I8+Rq+xZhTDvsnyS86AmEoLSNMS79iI5
+ FZrjnoNOaJp8DRuc2oOwISJWH11/JsngJfKH9nFcvlWTbJar8ljE
+X-Received: by 2002:aa7:8892:0:b0:71e:2a0:b0b8 with SMTP id
+ d2e1a72fcca58-71e4c139390mr18794506b3a.1.1729013434789; 
+ Tue, 15 Oct 2024 10:30:34 -0700 (PDT)
+Received: from ?IPV6:2600:1700:e321:62f0:329c:23ff:fee3:9d7c?
+ ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
+ by smtp.gmail.com with ESMTPSA id
+ d2e1a72fcca58-71e7737119esm1588327b3a.10.2024.10.15.10.30.32
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 15 Oct 2024 10:30:33 -0700 (PDT)
+Message-ID: <ec0e8a75-c59f-41b3-b559-43c057fca8fd@roeck-us.net>
+Date: Tue, 15 Oct 2024 10:30:31 -0700
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: possible deprecation and removal of some old QEMU Arm machine
+ types (pxa2xx, omap, sa1110)
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+ Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
+ Aaro Koskinen <aaro.koskinen@iki.fi>,
+ Janusz Krzysztofik <jmkrzyszt@gmail.com>, Tony Lindgren <tony@atomide.com>,
+ linux-omap@vger.kernel.org, Arnd Bergmann <arnd@arndb.de>,
+ Daniel Mack <daniel@zonque.org>, Robert Jarzmik <robert.jarzmik@free.fr>,
+ Haojian Zhuang <haojian.zhuang@gmail.com>, Thomas Huth <thuth@redhat.com>
 References: <CAFEAcA88UGhjh8-iBvhxx6GdWg74dinYouiguTcz=qEe51L7Ag@mail.gmail.com>
  <fe5476c7-82e0-4353-a943-7f39b14e1b5b@roeck-us.net>
  <CAFEAcA-bqOM4Ptws-tsEwo2HDZ6YSX1Y+xGkR0WueRD_dUd0+Q@mail.gmail.com>
  <7bd858a2-9983-4ddf-8749-09c9b2e261f9@roeck-us.net>
  <CAFEAcA_-eTfF8tVaLk4yLgWMSA1+KjPBYyS3EjMQNC+59hT0Aw@mail.gmail.com>
  <CAFEAcA95QmpcsrgCj5uE-Ng8ahNir3MuVEHWBCvjb3UwBbOFRA@mail.gmail.com>
- <ec0e8a75-c59f-41b3-b559-43c057fca8fd@roeck-us.net>
-In-Reply-To: <ec0e8a75-c59f-41b3-b559-43c057fca8fd@roeck-us.net>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 15 Oct 2024 18:35:38 +0100
-Message-ID: <CAFEAcA9AZS1dGaLG85zZE8U0d7AcrLgKXNbhxkCoP+PLmbFn2g@mail.gmail.com>
-Subject: Re: possible deprecation and removal of some old QEMU Arm machine
- types (pxa2xx, omap, sa1110)
-To: Guenter Roeck <linux@roeck-us.net>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
- Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
- Aaro Koskinen <aaro.koskinen@iki.fi>, 
- Janusz Krzysztofik <jmkrzyszt@gmail.com>, Tony Lindgren <tony@atomide.com>,
- linux-omap@vger.kernel.org, 
- Arnd Bergmann <arnd@arndb.de>, Daniel Mack <daniel@zonque.org>, 
- Robert Jarzmik <robert.jarzmik@free.fr>,
- Haojian Zhuang <haojian.zhuang@gmail.com>, Thomas Huth <thuth@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::531;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x531.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Language: en-US
+From: Guenter Roeck <linux@roeck-us.net>
+Autocrypt: addr=linux@roeck-us.net; keydata=
+ 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
+ mDW4+i+XlNFUPUYMrIKi9joBhu18ssf5i5Q=
+In-Reply-To: <CAFEAcA95QmpcsrgCj5uE-Ng8ahNir3MuVEHWBCvjb3UwBbOFRA@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42a;
+ envelope-from=groeck7@gmail.com; helo=mail-pf1-x42a.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_ENVFROM_END_DIGIT=0.25,
+ FREEMAIL_FORGED_FROMDOMAIN=0.001, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -137,53 +186,40 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: uPko3pt2+3lg
+X-TUID: Q3wJGB7tqk2C
 
-On Tue, 15 Oct 2024 at 18:30, Guenter Roeck <linux@roeck-us.net> wrote:
->
-> On 10/15/24 10:13, Peter Maydell wrote:
-> > On Fri, 8 Mar 2024 at 15:41, Peter Maydell <peter.maydell@linaro.org> wrote:
-> >> Thanks to everybody for your input on this thread. My
-> >> proposal is to drop from QEMU:
-> >>   * all the PXA2xx machines
-> >>   * all the OMAP2 machines
-> >>   * the cheetah OMAP1 machine
-> >>
-> >> leaving (at least for now) sx1, sx1-v1, collie.
-> >
-> > This has now gone through. I'm now looking for test images
-> > for these remaining boards, so we can keep them from breaking
-> > when we do refactoring and code cleanup/modernization.
-> > Specifically, I'm looking for:
-> >   * QEMU command line
-> >   * all the binary blobs that go with it (hosted somewhere that
-> >     doesn't mind when our CI downloads all the images to run
-> >     its tests...)
-> >   * ideally, exercising the SD card interface if present
-> >
-> > Could the people who are still using/testing these boards
-> > help here ?
-> >
->
-> You'll find everything at https://github.com/groeck/linux-build-test.git,
-> but give me a couple of days and I'll create explicit information.
+On 10/15/24 10:13, Peter Maydell wrote:
+> On Fri, 8 Mar 2024 at 15:41, Peter Maydell <peter.maydell@linaro.org> wrote:
+>> Thanks to everybody for your input on this thread. My
+>> proposal is to drop from QEMU:
+>>   * all the PXA2xx machines
+>>   * all the OMAP2 machines
+>>   * the cheetah OMAP1 machine
+>>
+>> leaving (at least for now) sx1, sx1-v1, collie.
+> 
+> This has now gone through. I'm now looking for test images
+> for these remaining boards, so we can keep them from breaking
+> when we do refactoring and code cleanup/modernization.
+> Specifically, I'm looking for:
+>   * QEMU command line
+>   * all the binary blobs that go with it (hosted somewhere that
+>     doesn't mind when our CI downloads all the images to run
+>     its tests...)
+>   * ideally, exercising the SD card interface if present
+> 
+> Could the people who are still using/testing these boards
+> help here ?
+> 
 
-Yeah, I had a look at that but could only find the rootfs
-and got a bit lost trying to figure out what the QEMU
-commandline would end up being :-)
+You'll find everything at https://github.com/groeck/linux-build-test.git,
+but give me a couple of days and I'll create explicit information.
+Is it ok if I create a github repository specifically for this purpose,
+or does it have to be direct file downloads ?
 
-> Is it ok if I create a github repository specifically for this purpose,
-> or does it have to be direct file downloads ?
+Note that my tests only boot from sd card for sx1. I also don't have
+tests for sx1-v1, only for sx1. I don't recall if I ever tried sx1-v1.
 
-A github repo should be OK -- I'm pretty sure we can download
-from there (e.g. we already download some rootfs images from
-your linux-build-test github repo).
+Thanks,
+Guenter
 
-> Note that my tests only boot from sd card for sx1. I also don't have
-> tests for sx1-v1, only for sx1. I don't recall if I ever tried sx1-v1.
-
-Looking at the QEMU machine model code they don't differ
-much -- sx1-v1 has a bit less flash, and that's about it.
-
-thanks
--- PMM

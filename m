@@ -1,51 +1,51 @@
-Received: by 2002:a17:505:3501:b0:1be9:327d:8ee3 with SMTP id mc1csp2344715njb;
-        Tue, 15 Oct 2024 03:17:42 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCV+QYrZ26ippewPpoay9xoaWd0WVumg6dSNrnKbfISOzYzj1/vem2Z9ZuIwkp3NWQFmNNb8jlwOw9x+iw==@linaro.org
-X-Google-Smtp-Source: AGHT+IEcJw6Adr43o3bAMC0GNhkLzlYAW/uHDaWPlrB0NdnpzP5Wyr5hCLxNxnDIALsXraWUjey6
-X-Received: by 2002:a05:6902:11cf:b0:e26:aac:e89b with SMTP id 3f1490d57ef6-e2919db5feemr11604705276.31.1728987462411;
-        Tue, 15 Oct 2024 03:17:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1728987462; cv=none;
+Received: by 2002:a17:505:3501:b0:1be9:327d:8ee3 with SMTP id mc1csp2345102njb;
+        Tue, 15 Oct 2024 03:18:38 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUNlb3PhswE6A2Ra9arSzl9GtcphsFFyHrw+8pAOUfdmgC4XYgW0rxhuCgyaSYmspB0tmDT7XMWq9fW2A==@linaro.org
+X-Google-Smtp-Source: AGHT+IGGzrhLkdXm1M/QkNynkHhrpEtIIdy4jdrUnP3JRtlbPKio1o/cdj3nCm5iU9rfAogoGBdA
+X-Received: by 2002:a05:6512:3402:b0:535:68ab:7fdd with SMTP id 2adb3069b0e04-539e54f023amr4830096e87.19.1728987517974;
+        Tue, 15 Oct 2024 03:18:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1728987517; cv=none;
         d=google.com; s=arc-20240605;
-        b=lQRzNdPuQYTddYYM75mdCsT3FIv82mLa+pg50s/j2nzZYOpuHG6FVb22+E5KCjsq9G
-         Ntgp6Z3/AnJMpdvO7YmvQWj8G9h6jST7SzcGAGHejhpi/VAy+VZHMIXH5JsqpJ1LF+yv
-         Rn5DqDYM/0CQIvP/3s/2ylkrCNIgMNOZKtZ7JpoHl9FCqV2nJaZzk0f8Ol4z78qtYIar
-         lPZZMKTn1ev73gs56rBxh3XVINxK/NQGZCIL9ODwKMTTxHFf/i+cmwg8GkGyrDbiqGQt
-         MhoNJzRZsF+FyQsxEymHz0nmexnBi10TEmNTYEfIDE0bvMffCBvdtsfbSmaz7HxGZCVs
-         N06A==
+        b=cUyTN1jcA9MqgX7oKxkxjB/SFLJqiGvbYdi/XtNUvRmFa8DFHSUbTvGdvFiW/9zdd2
+         vyPHRJKR44kALg0hJeIF80mvbyysu03worhORpXIo3Jo/6XElhqrug+IL5ET4tkK+RFl
+         06im9AZAMwLIIEGYbP7kaG4VvnOHHfXAszG28mqMO6QAC/2WgIMMK7qJqbZ5wxPk+wDU
+         kFGA32USZ+J7RF4tlbVlTL9TRUE+2rpATn2AZBm4rdfwWMkNKmf9rNMqqkRqkz36wrN6
+         FZO8NdcZNJuBsGdnlgMS7CNfyMS7DVNEP5vlcW6kujYo9zph+gkoK/8ZUx29FpNuok0V
+         Z/ig==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from;
-        bh=ydkYIUVvxKvJ/KF8zq28V6bhiE02qiIOCQCjIztTqEM=;
+        bh=EUplQQggQ5IxMmc5a0Tv3ZxPsR4daBO9cjnU+fSQFPk=;
         fh=f7aqOn0Aylihzqer4hTA2kHSEaA8DU6KE1VFtniI5w4=;
-        b=WOHBSSB9G0zjHNZ3f2tdxRpBVEQ+Y5p+OLMhW/avH+KlwqEhGgv/09rDFumpeS3cyY
-         dwOxCEwz0oG6Avlx4jQgOg3068o9wtaAwiKWu6uWuTLOPxU+x7qhdBIui8rWYNa3LV89
-         A69WU7aEPu7cfONj69bLG3MLT7uT2ut+2YBZzWVREXyl1f+TpkwVOjVrVVzN3J9KOECX
-         scAJNtfrqlDltc2ZkXHMEylcBXn7EGEU9SON+KdeHRVUTR3iQ+XnPe7CBn5L/gIguWVK
-         r0udi44TKbjE/H1WAVgGzDWownkfHTqh4bMwdTyOGuoR0HpRODrH63534sND4nysM9fh
-         wyFg==;
+        b=loWjVBnwk9j6PthyuBcezimqJMrKmGnbvveIbUsiki4ojzk3DUNsy881r9N3G80yxQ
+         W/2xVgWUER1j+f8RKeTbxm2eKrOF6RR4yBH0j4GR55PxQRrBzMBMj2uS9moZAPlbd4Ki
+         ztRj5sbssjXsoadOCRNf04h7MOFCBTYgXZbkZt5CL/N4/3s1hXqBX8yGHQVW4zeFynbE
+         Ok0zIvTNvgVgTOs4mOqevrsVS4Rdbn6bYdRU0bnh77msYmGNq6Z1YXSJI8o4YmkmTujA
+         vQ0SwBDRx1zPr277MSqLqpYplmuWNudT1sJgIrIvK+QSE6mn40wi8qK6hygzKW9Fx5XK
+         snEw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
 Return-Path: <salil.mehta@huawei.com>
 Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id d75a77b69052e-4607b4a0a0csi10396771cf.439.2024.10.15.03.17.41
+        by mx.google.com with ESMTPS id 5b1f17b1804b1-4313f55eceesi5791665e9.39.2024.10.15.03.18.37
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 15 Oct 2024 03:17:42 -0700 (PDT)
+        Tue, 15 Oct 2024 03:18:37 -0700 (PDT)
 Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from mail.maildlp.com (unknown [172.18.186.216])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4XSVQB2VjXz6K985;
-	Tue, 15 Oct 2024 18:17:06 +0800 (CST)
+Received: from mail.maildlp.com (unknown [172.18.186.31])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4XSVQ356K0z6FGyW;
+	Tue, 15 Oct 2024 18:16:59 +0800 (CST)
 Received: from frapeml500007.china.huawei.com (unknown [7.182.85.172])
-	by mail.maildlp.com (Postfix) with ESMTPS id 7FB101400D9;
-	Tue, 15 Oct 2024 18:17:40 +0800 (CST)
+	by mail.maildlp.com (Postfix) with ESMTPS id E8EA91404F5;
+	Tue, 15 Oct 2024 18:18:36 +0800 (CST)
 Received: from 00293818-MRGF.huawei.com (10.48.146.149) by
  frapeml500007.china.huawei.com (7.182.85.172) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Tue, 15 Oct 2024 12:17:21 +0200
+ 15.1.2507.39; Tue, 15 Oct 2024 12:18:17 +0200
 From: Salil Mehta <salil.mehta@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <mst@redhat.com>
 CC: <salil.mehta@huawei.com>, <maz@kernel.org>, <jean-philippe@linaro.org>,
@@ -64,58 +64,94 @@ CC: <salil.mehta@huawei.com>, <maz@kernel.org>, <jean-philippe@linaro.org>,
 	<jiakernel2@gmail.com>, <maobibo@loongson.cn>, <lixianglai@loongson.cn>,
 	<shahuang@redhat.com>, <zhao1.liu@intel.com>, <linuxarm@huawei.com>,
 	<gustavo.romero@linaro.org>
-Subject: [PATCH RFC V5 29/30] hw/intc/arm_gicv3_kvm: Pause all vCPU to ensure locking in KVM of resetting vCPU
-Date: Tue, 15 Oct 2024 11:16:56 +0100
-Message-ID: <20241015101656.254330-1-salil.mehta@huawei.com>
+Subject: [PATCH RFC V5 30/30] hw/arm/virt: Expose cold-booted vCPUs as MADT GICC *Enabled*
+Date: Tue, 15 Oct 2024 11:18:00 +0100
+Message-ID: <20241015101800.254351-1-salil.mehta@huawei.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20241015100012.254223-1-salil.mehta@huawei.com>
 References: <20241015100012.254223-1-salil.mehta@huawei.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
 X-Originating-IP: [10.48.146.149]
-X-ClientProxiedBy: dggems705-chm.china.huawei.com (10.3.19.182) To
+X-ClientProxiedBy: dggems701-chm.china.huawei.com (10.3.19.178) To
  frapeml500007.china.huawei.com (7.182.85.172)
-X-TUID: ARcW6BZ3ayPA
+X-TUID: jVXeCECIZXV7
 
-vCPU reset can result in device access to VGIC CPU system registers using the
-`IOCTL KVM_DEV_ARM_VGIC_GRP_CPU_SYSREGS` interface. When accessing these
-registers in the KVM host, it is necessary to acquire a lock on all vCPUs during
-the `vgic_v3_attr_regs_access()` operation.
+Hotpluggable vCPUs must be exposed as "online-capable" according to the new UEFI
+specification [1][2]. However, marking cold-booted vCPUs as "online-capable"
+during boot may cause them to go undetected by legacy operating systems,
+potentially leading to compatibility issues. Hence, both 'online-capable' bit
+and 'Enabled' bit in GIC CPU Interface flags should not be mutually exclusive as
+they are now.
 
-This operation may fail if KVM is unable to acquire the necessary locks on all
-vCPUs. Therefore, to ensure proper locking of the vCPU being reset and prevent
-failures, we need to *pause all vCPUs* during this operation to facilitate
-successful locking within the host.
+Since implementing this specification change may take time, it is necessary to
+temporarily *disable* support for *unplugging* cold-booted vCPUs to maintain
+compatibility with legacy OS environments.
+
+As an alternative and temporary mitigation, we could introduce a property that
+controls whether cold-booted vCPUs are marked as unpluggable. Community feedback
+on this approach would be appreciated.
+
+References:
+[1] Original UEFI/ACPI proposed Change Bugzilla – TianoCore
+    Link: https://bugzilla.tianocore.org/show_bug.cgi?id=3706
+[2] Advanced Configuration and Power Interface (ACPI) Specification, Release 6.5, Aug 29, 2022
+    Section: 5.2.12.14 GIC CPU Interface (GICC) Structure / Table 5.37: GICC CPU Interface Flags
+    Link: https://uefi.org/sites/default/files/resources/ACPI_Spec_6_5_Aug29.pdf (Pages 138, 140)
 
 Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
 ---
- hw/intc/arm_gicv3_kvm.c | 9 +++++++++
- 1 file changed, 9 insertions(+)
+ hw/arm/virt.c         | 16 ++++++++++++++++
+ include/hw/core/cpu.h |  2 ++
+ 2 files changed, 18 insertions(+)
 
-diff --git a/hw/intc/arm_gicv3_kvm.c b/hw/intc/arm_gicv3_kvm.c
-index 3e1e97d830..bcdbf83897 100644
---- a/hw/intc/arm_gicv3_kvm.c
-+++ b/hw/intc/arm_gicv3_kvm.c
-@@ -714,10 +714,19 @@ static void arm_gicv3_icc_reset(CPUARMState *env, const ARMCPRegInfo *ri)
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 15d9c2d8ac..d1172151be 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -3174,6 +3174,10 @@ static void virt_cpu_pre_plug(HotplugHandler *hotplug_dev, DeviceState *dev,
+         virt_update_gic(vms, cs, true);
+         wire_gic_cpu_irqs(vms, cs);
+     }
++
++    if (!dev->hotplugged) {
++        cs->cold_booted = true;
++    }
+ }
+ 
+ static void virt_cpu_plug(HotplugHandler *hotplug_dev, DeviceState *dev,
+@@ -3248,6 +3252,18 @@ static void virt_cpu_unplug_request(HotplugHandler *hotplug_dev,
          return;
      }
  
 +    /*
-+     * This shall be called even when vcpu is being hotplugged or onlined and
-+     * other vcpus might be running. Host kernel KVM code to handle device
-+     * access of IOCTLs KVM_{GET|SET}_DEVICE_ATTR might fail due to inability to
-+     * grab vcpu locks for all the vcpus. Hence, we need to pause all vcpus to
-+     * facilitate locking within host.
++     * UEFI ACPI standard change is required to make both 'enabled' and the
++     * 'online-capable' bit co-exist instead of being mutually exclusive.
++     * check virt_acpi_get_gicc_flags() for more details.
++     *
++     * Disable the unplugging of cold-booted vCPUs as a temporary mitigation.
 +     */
-+    pause_all_vcpus();
-     /* Initialize to actual HW supported configuration */
-     kvm_device_access(s->dev_fd, KVM_DEV_ARM_VGIC_GRP_CPU_SYSREGS,
-                       KVM_VGIC_ATTR(ICC_CTLR_EL1, c->gicr_typer),
-                       &c->icc_ctlr_el1[GICV3_NS], false, &error_abort);
-+    resume_all_vcpus();
++    if (cs->cold_booted) {
++        error_setg(errp, "Hot-unplug of cold-booted CPU not supported!");
++        return;
++    }
++
+     if (cs->cpu_index == first_cpu->cpu_index) {
+         error_setg(errp, "Boot CPU(id%d=%d:%d:%d:%d) hot-unplug not supported",
+                    first_cpu->cpu_index, cpu->socket_id, cpu->cluster_id,
+diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
+index 4a74c383ab..7b7ca2c32c 100644
+--- a/include/hw/core/cpu.h
++++ b/include/hw/core/cpu.h
+@@ -571,6 +571,8 @@ struct CPUState {
+     uint32_t halted;
+     int32_t exception_index;
  
-     c->icc_ctlr_el1[GICV3_S] = c->icc_ctlr_el1[GICV3_NS];
- }
++    bool cold_booted;
++
+     AccelCPUState *accel;
+ 
+     /* Used to keep track of an outstanding cpu throttle thread for migration
 -- 
 2.34.1

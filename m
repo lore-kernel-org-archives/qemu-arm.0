@@ -1,51 +1,51 @@
-Received: by 2002:a17:505:3501:b0:1be9:327d:8ee3 with SMTP id mc1csp2338513njb;
-        Tue, 15 Oct 2024 03:04:45 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUWymgEhuA+hy4oMOL1esl+kKVfOTLFq8qvDKbOELhjM4UROEwEPPgBu8HMcq+Kiyd4XAy97aquV9D5jg==@linaro.org
-X-Google-Smtp-Source: AGHT+IHnou438yJld82KegEI3fqPgWNfe4StGxiCkiMUojW/dKi9Dc1TLDzOgedTlTXlcdB2IM0z
-X-Received: by 2002:a05:600c:3581:b0:430:5887:c238 with SMTP id 5b1f17b1804b1-4311decab1fmr127900605e9.11.1728986685366;
-        Tue, 15 Oct 2024 03:04:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1728986685; cv=none;
+Received: by 2002:a17:505:3501:b0:1be9:327d:8ee3 with SMTP id mc1csp2338687njb;
+        Tue, 15 Oct 2024 03:05:05 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVkqStWJ0mDINyx0hbdNPXhtmdvum5BWdniOHF5xWoB79DYAtXJWPxTHifXHr/UTKfkFGFdDBT8oxyboQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IE+xmNIjUWS7/ij1lKorZLMx2eCU74QqbKbSQtHQfC4skRZfxSxkc6KlCZfK7idl0FE68Xm
+X-Received: by 2002:adf:fe12:0:b0:374:c059:f2c5 with SMTP id ffacd0b85a97d-37d5519e149mr8965032f8f.22.1728986705616;
+        Tue, 15 Oct 2024 03:05:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1728986705; cv=none;
         d=google.com; s=arc-20240605;
-        b=USgHePUw7F3uh69LzTebk8L6LkEQIgQVHOb0Dy/XduPGwUyO0VSuclUlRQJ9GBeCMJ
-         NZnt1Fu2VcDUz9jy1DHLTYjbQi3JzrRGofp5lWlvIBcQOOohrlUfpkYkfTgv47Op395X
-         RgwayHb+27N4JoKzFZ8WA5PvQmINqu7HI0WFlJHUIuoWGivXLrDf9EBB2W1DyIL2r8s3
-         nxJbP4lipKbw5o0d/6uFDzKtOA8vgzcm1IFKGsRk0RfRBaH/5ID3kszbvWkdTKG2SJl/
-         /LpBgnl8SeX4SNtRX32o97WTy/XFkIb4+F+atXPLIguzAYUKEtoCpMsWJYEqE2m4NzxV
-         wQIQ==
+        b=H4de5UieqtnYX2VUMhJ5gsoVpiQexE8YQsdfocy7608TOqJnpT9yms1CPbdbPAxOBn
+         NnebRbziI8J+4DB6HlMCoOP8QTMu8slQwTG1U58oypHnGjHXUaus8b2Pg7zW2SewpBfT
+         6seerjr3SICLtfF8paEBEjHqYiho2sU93oki+9k6hW3z62vO8x3DkVWum6KLY04n2ha/
+         xrqER9w9F7sgc7rrpfCwnpr4jR1B3XTaHWdyWVMp/HSo0YLbAd6fGU4umlp8A0/tFBof
+         uIExB3npsABEcVLRxmvEW808iyE32KlGoPook0Tk91kKkz9haxLXDXIxz5BJw7YHJ6C7
+         S4rQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from;
-        bh=CMoV7zZUALGj6hBtSl65gVsUqE4OQrZg6akQzjwVytE=;
+        bh=lROFHgg8pZMyGzZnrwb9XGRgiUoNEdtB3uHF8m/DO1Q=;
         fh=f7aqOn0Aylihzqer4hTA2kHSEaA8DU6KE1VFtniI5w4=;
-        b=NXr1CW2Jkk570GecarviWCH0+c/gy6sh7Vwbjv+uX6d4TBIkfk0jyQGvRT8f6NCUcD
-         ENGbVGhLZlrw+8Sa3LXuDePcs5mFYmr3tRdcwYE81LmweIrdEiH22Wd9xZ/NtF9o7gUb
-         MkvpRjyoAWKzKTadMpxxmvdQLGtkqMJTKcaqaXlwBn/HV0AilLDR5nOcsf0NgAumedxr
-         +6QaqAApSWrJ06J0VrCZZfM1oAJo7TeXBRb57qUAvDMtxoU2E3iNTe8atcmdFQ4JUS44
-         xufee+rSXrzxv5LVoPrTNqv+mn2U/BkE4ygCN79zIpRezoismmuFnoX/D+cK/zxhaZnY
-         yvTw==;
+        b=cd6guBB5isvDl2iRg0OZNH2oRXOOhBCpTXCr3jZIbqTPEAM5MOfPGWMcI+aDIINWw2
+         EuO5KGdbOg83FVNkZJOSKYa1E1X5VCYZe+PgyK6qrPQowVEbZ0WiEKXyidy4hAsXDCHI
+         R5r8n4EhqnS0UyrcRxwo9o/l1oElMbohHMt8a0nQ20PrAgiRmxVwKrlTIzd/wGeIWAhh
+         nqwD0EZ60AD8clXoINULJkneEBRbHidGqi/Ouc0xsHcRttHCZI33fXzAg+5g8YPi/Mva
+         X1UhmdRy0ogaT3GqXR0uQPjDjjXedV2lu67GeL/HeOW0nyolTpRDML3N3YtGNAmqsyix
+         2cEw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
 Return-Path: <salil.mehta@huawei.com>
 Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id 5b1f17b1804b1-4313f56a77bsi5521485e9.77.2024.10.15.03.04.45
+        by mx.google.com with ESMTPS id ffacd0b85a97d-37d7fbee053si537287f8f.127.2024.10.15.03.05.05
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 15 Oct 2024 03:04:45 -0700 (PDT)
+        Tue, 15 Oct 2024 03:05:05 -0700 (PDT)
 Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from mail.maildlp.com (unknown [172.18.186.216])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4XSV630ltTz6FH25;
-	Tue, 15 Oct 2024 18:03:07 +0800 (CST)
+Received: from mail.maildlp.com (unknown [172.18.186.231])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4XSV380b50z6DB4H;
+	Tue, 15 Oct 2024 18:00:36 +0800 (CST)
 Received: from frapeml500007.china.huawei.com (unknown [7.182.85.172])
-	by mail.maildlp.com (Postfix) with ESMTPS id 4FCC61400D9;
-	Tue, 15 Oct 2024 18:04:44 +0800 (CST)
+	by mail.maildlp.com (Postfix) with ESMTPS id 66461140519;
+	Tue, 15 Oct 2024 18:05:04 +0800 (CST)
 Received: from 00293818-MRGF.huawei.com (10.48.146.149) by
  frapeml500007.china.huawei.com (7.182.85.172) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Tue, 15 Oct 2024 12:04:24 +0200
+ 15.1.2507.39; Tue, 15 Oct 2024 12:04:44 +0200
 From: Salil Mehta <salil.mehta@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <mst@redhat.com>
 CC: <salil.mehta@huawei.com>, <maz@kernel.org>, <jean-philippe@linaro.org>,
@@ -64,9 +64,9 @@ CC: <salil.mehta@huawei.com>, <maz@kernel.org>, <jean-philippe@linaro.org>,
 	<jiakernel2@gmail.com>, <maobibo@loongson.cn>, <lixianglai@loongson.cn>,
 	<shahuang@redhat.com>, <zhao1.liu@intel.com>, <linuxarm@huawei.com>,
 	<gustavo.romero@linaro.org>
-Subject: [PATCH RFC V5 11/30] arm/virt: Init PMU at host for all possible vCPUs
-Date: Tue, 15 Oct 2024 10:59:53 +0100
-Message-ID: <20241015100012.254223-12-salil.mehta@huawei.com>
+Subject: [PATCH RFC V5 12/30] arm/virt: Release objects for *disabled* possible vCPUs after init
+Date: Tue, 15 Oct 2024 10:59:54 +0100
+Message-ID: <20241015100012.254223-13-salil.mehta@huawei.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20241015100012.254223-1-salil.mehta@huawei.com>
 References: <20241015100012.254223-1-salil.mehta@huawei.com>
@@ -76,84 +76,77 @@ Content-Type: text/plain
 X-Originating-IP: [10.48.146.149]
 X-ClientProxiedBy: dggems702-chm.china.huawei.com (10.3.19.179) To
  frapeml500007.china.huawei.com (7.182.85.172)
-X-TUID: K409h7jnZWTq
+X-TUID: MytQbtsjViQj
 
-The PMU for all possible vCPUs must be initialized during VM initialization.
-Refactor the existing code to accommodate possible vCPUs. This assumes that all
-processors being used are identical. It is an architectural constraint of ARM
-CPUs that all vCPUs MUST have identical feature sets, at least until the ARM
-specification is updated to allow otherwise.
+During `machvirt_init()`, QOM ARMCPU objects are pre-created along with the
+corresponding KVM vCPUs in the host for all possible vCPUs. This is necessary
+due to the architectural constraint that KVM restricts the deferred creation of
+KVM vCPUs and VGIC initialization/sizing after VM initialization. Hence, VGIC is
+pre-sized with possible vCPUs.
 
-Past discussion for reference:
-Link: https://lists.gnu.org/archive/html/qemu-devel/2020-06/msg00131.html
+After the initialization of the machine is complete, the disabled possible KVM
+vCPUs are parked in the per-virt-machine list "kvm_parked_vcpus," and we release
+the QOM ARMCPU objects for the disabled vCPUs. These will be re-created when the
+vCPU is hotplugged again. The QOM ARMCPU object is then re-attached to the
+corresponding parked KVM vCPU.
+
+Alternatively, we could have chosen not to release the QOM CPU objects and kept
+reusing them. This approach might require some modifications to the
+`qdevice_add()` interface to retrieve the old ARMCPU object instead of creating
+a new one for the hotplug request.
+
+Each of these approaches has its own pros and cons. This prototype uses the
+first approach (suggestions are welcome!).
 
 Co-developed-by: Keqian Zhu <zhukeqian1@huawei.com>
 Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
 Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
 ---
- hw/arm/virt.c         | 9 +++++----
- include/hw/arm/virt.h | 1 +
- include/hw/core/cpu.h | 5 +++++
- 3 files changed, 11 insertions(+), 4 deletions(-)
+ hw/arm/virt.c | 25 +++++++++++++++++++++++++
+ 1 file changed, 25 insertions(+)
 
 diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index b9df428049..6ac2d8826e 100644
+index 6ac2d8826e..7cbc212130 100644
 --- a/hw/arm/virt.c
 +++ b/hw/arm/virt.c
-@@ -2035,12 +2035,13 @@ static void finalize_gic_version(VirtMachineState *vms)
-  */
- static void virt_cpu_post_init(VirtMachineState *vms, MemoryRegion *sysmem)
+@@ -2037,6 +2037,7 @@ static void virt_cpu_post_init(VirtMachineState *vms, MemoryRegion *sysmem)
  {
-+    CPUArchIdList *possible_cpus = vms->parent.possible_cpus;
+     CPUArchIdList *possible_cpus = vms->parent.possible_cpus;
      int max_cpus = MACHINE(vms)->smp.max_cpus;
--    bool aarch64, pmu, steal_time;
-+    bool aarch64, steal_time;
++    int smp_cpus = MACHINE(vms)->smp.cpus;
+     bool aarch64, steal_time;
      CPUState *cpu;
  
-     aarch64 = object_property_get_bool(OBJECT(first_cpu), "aarch64", NULL);
--    pmu = object_property_get_bool(OBJECT(first_cpu), "pmu", NULL);
-+    vms->pmu = object_property_get_bool(OBJECT(first_cpu), "pmu", NULL);
-     steal_time = object_property_get_bool(OBJECT(first_cpu),
-                                           "kvm-steal-time", NULL);
- 
-@@ -2067,8 +2068,8 @@ static void virt_cpu_post_init(VirtMachineState *vms, MemoryRegion *sysmem)
-             memory_region_add_subregion(sysmem, pvtime_reg_base, pvtime);
+@@ -2095,6 +2096,30 @@ static void virt_cpu_post_init(VirtMachineState *vms, MemoryRegion *sysmem)
+             }
          }
- 
--        CPU_FOREACH(cpu) {
--            if (pmu) {
-+        CPU_FOREACH_POSSIBLE(cpu, possible_cpus) {
-+            if (vms->pmu) {
-                 assert(arm_feature(&ARM_CPU(cpu)->env, ARM_FEATURE_PMU));
-                 if (kvm_irqchip_in_kernel()) {
-                     kvm_arm_pmu_set_irq(ARM_CPU(cpu), VIRTUAL_PMU_IRQ);
-diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-index b5bfb75f71..98ce68eae1 100644
---- a/include/hw/arm/virt.h
-+++ b/include/hw/arm/virt.h
-@@ -161,6 +161,7 @@ struct VirtMachineState {
-     bool mte;
-     bool dtb_randomness;
-     bool second_ns_uart_present;
-+    bool pmu;
-     OnOffAuto acpi;
-     VirtGICType gic_version;
-     VirtIOMMUType iommu;
-diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
-index 0be1984698..4a74c383ab 100644
---- a/include/hw/core/cpu.h
-+++ b/include/hw/core/cpu.h
-@@ -618,6 +618,11 @@ extern CPUTailQ cpus_queue;
- #define CPU_FOREACH_SAFE(cpu, next_cpu) \
-     QTAILQ_FOREACH_SAFE_RCU(cpu, &cpus_queue, node, next_cpu)
- 
-+#define CPU_FOREACH_POSSIBLE(cpu, poslist) \
-+    for (int iter = 0; \
-+         iter < (poslist)->len && ((cpu) = (poslist)->cpus[iter].cpu, 1); \
-+         iter++)
+     }
 +
- extern __thread CPUState *current_cpu;
++    if (kvm_enabled() || tcg_enabled()) {
++        int i = 0;
++        CPU_FOREACH_POSSIBLE(cpu, possible_cpus) {
++            /*
++             * Release the disabled ARMCPU objects that were previously used
++             * during initialization for pre-sizing host KVM.
++             *
++             * We simulate the presence of these non-existent vCPUs to the guest
++             * via ACPI by setting `_STA.PRES = 1` (indicating they are present)
++             * and mark them as disabled vCPUs by setting `_STA.ENA = 0`,
++             * ensuring they cannot be used. These vCPUs can be added back to
++             * the guest later through hotplug operations when ARMCPU objects
++             * are recreated using the '-device_add' QMP command.
++             */
++            if (i >= smp_cpus) {
++                CPUArchId *cpu_slot;
++                cpu_slot = virt_find_cpu_slot(cpu);
++                cpu_slot->cpu = NULL;
++                object_unref(OBJECT(cpu));
++            }
++            i++;
++        }
++    }
+ }
  
- /**
+ static void virt_cpu_set_properties(Object *cpuobj, const CPUArchId *cpu_slot,
 -- 
 2.34.1

@@ -1,178 +1,157 @@
-Received: by 2002:a17:505:3501:b0:1be9:327d:8ee3 with SMTP id mc1csp2217062njb;
-        Mon, 14 Oct 2024 20:31:15 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWh7Hb8/I/ZfI23+/woxnTI6cPIwAE4q/vy0HQzdB0sV3arvw0NEYc6goQvISu02ajVz82BIoRV7Asvww==@linaro.org
-X-Google-Smtp-Source: AGHT+IFyPl2qM9aoRvchZ0anua9XuYkdx4IdaJlNo/F5vLnw5/G6jnfDMp2dqLC3259G//sIzJmb
-X-Received: by 2002:a05:690c:7684:b0:6e3:2c7c:3739 with SMTP id 00721157ae682-6e3479c144fmr70646927b3.18.1728963075568;
-        Mon, 14 Oct 2024 20:31:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1728963075; cv=none;
+Received: by 2002:a17:504:3c0d:b0:1be9:327d:8ee3 with SMTP id y13csp53343nji;
+        Tue, 15 Oct 2024 07:09:35 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXOyzufK2BK5IxjD6LkT4JAdT1mrUeXyW5KcK7Hoz3vVOnreNxcY9sAQynVgyI+lb8hZfRs5gmPzYrKrA==@linaro.org
+X-Google-Smtp-Source: AGHT+IGKKJ8tkdH01phSKLk+N+gdCi1I+QarIATd9VUvUZxhJQ0iPDoto8Dk+8G2SiuTS5PPkvHT
+X-Received: by 2002:a05:6102:3f4c:b0:4a3:a7a0:889a with SMTP id ada2fe7eead31-4a465a70b67mr12915199137.19.1729001375330;
+        Tue, 15 Oct 2024 07:09:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1729001375; cv=none;
         d=google.com; s=arc-20240605;
-        b=Q8txf0GEQ5ZYZvwJFQbzZWNujROa5tuu08am7PuYW+ftN7eMdpWvKOiHMTNS2h8q8/
-         K6po1AvHRDMsyJ2+4yACn5EDcv8d9o2eftVXBk51pRnfsqyoBAigyPRDSuUQSy17Iw7u
-         DEeiDVSaZ8Y5jYbiFDmKHNz6lbBof+GbMpPHYJuG+vgp7RK36t2w0e8dv2Hzd0NcnRx+
-         LdNl84qgZj1yUHHhSxiumlQ+qOBDPsN87qiXHx3+G0aHxjbkS7HDMquWXvdUGS5Q2XWV
-         mHyiEa/L8oeiShCF5Cbwfft6tpKXbqYh105KexOrJaYTOdbS7VR0YCyYXMkF3X93rj29
-         20EQ==
+        b=W3Y/LvtdtLEa9QgUNszsYQZ1eDXmRB32zpU/e1aGlhjtqYPI+KUiFpFPftnYWuhqbL
+         Fs+4TnXSo8mg9R0FZ7ESGHDZvz+IvYwN/UJk8umsvb1Yhb0mACN1fL0Pcapbdl4tU9J0
+         FMKWRpunRzCS6FccyQ5PEjTYz2a8mwB0c9YzgHkd6Ca4LV2lbnb4dhNM29435Q6Aba+Z
+         jt603k8VD+eE+H40PAR5+SvIr4yp0O8odYJUziE0tj/H5i6WvC5BGOr1Cc5II1Wo/AAv
+         CNhcZ94a+eJxplHzrh/8LVE4q50Ta1sQeLS4Cceb6iDBYdEDoPFNG/V3YjqVz4tBDgjH
+         XoVw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject;
-        bh=H4ET501x6ollKe2MyUu1nZBA0eZeMYDXyf+hK5cQBfk=;
-        fh=qY+DLYss26WcVNq9IFyAgTctqmq4isjsl8aHNcuauI0=;
-        b=NBRuj+fzZ/O3RLE4S02KdBEn58rTFD12q4d9anQZQ8s454SZKMecp4IGM5TtTnTnbm
-         UQz83U/o4/1i0OHZS+AO4iU1PHb660Q4hqsKgqwKQpEXqZY2tMfrgsZlUjVZi08hRVHA
-         VGKI2gXPa1xypmSlL5FGpSRMqNd2W06Hg6cHAPQJFzDnY5L431RmmUwKyHSnSTm71/8N
-         aBotbuETyF+KiNnHPfupUEGk1iOvX082RI9lgRZX/k2HBfAIZTprsM0iDLjQFNN1tpBQ
-         oWeN56jmVgN3VhBWThabmr5VQ154BO8s5TWWw8qjoGKrjCgCnjI7ZPRoR+4Orkju1mk4
-         MyOg==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=n7khBWuAQuhlzuhiV0IiArZ/4WVz7fsPkQXZudGKbtc=;
+        fh=J7WMDFSlBY6Z5vg3zlfBylNB76JKDaD0ymbs9LOTPyc=;
+        b=K4/4bjfkN6VIAYnjYyJYXZ26/eiKeBLFynjN/sapFGqL6rFxWe68yo7IN/ETWSNrBf
+         TmMJ0r8yacEni5yZqY8gOmFua8ZMBMvupdO6XgTv/JNbQ6/oCCtHpMw/IUNXjmEsSE1D
+         kFfaCQRduw23QkG51fxQ72Vt65lVP2HbyGIbOwATv4QYfUQaNjkpyj8V/TserAT7gllZ
+         zpspXlqqCOKpxWPPY4q878toueRwnTu2opiDLDHvsQSJg5yOx313BdDmrM4k/Fx36DVg
+         3Rya7Woauc3scYSUjo20FlmjSDe9sIAcAgp5NuK+Ha3iTBgOuWNNOyVBjtYgTPNHghHP
+         KHdQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of maobibo@loongson.cn designates 114.242.206.163 as permitted sender) smtp.mailfrom=maobibo@loongson.cn
-Return-Path: <maobibo@loongson.cn>
-Received: from mail.loongson.cn (mail.loongson.cn. [114.242.206.163])
-        by mx.google.com with ESMTP id 00721157ae682-6e3c5d2ff4dsi3003807b3.336.2024.10.14.20.31.12;
-        Mon, 14 Oct 2024 20:31:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of maobibo@loongson.cn designates 114.242.206.163 as permitted sender) client-ip=114.242.206.163;
+       dkim=pass header.i=@linaro.org header.s=google header.b=A5mDGxjU;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id ada2fe7eead31-4a5acc232e9si343097137.333.2024.10.15.07.09.34
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 15 Oct 2024 07:09:35 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of maobibo@loongson.cn designates 114.242.206.163 as permitted sender) smtp.mailfrom=maobibo@loongson.cn
-Received: from loongson.cn (unknown [10.20.42.62])
-	by gateway (Coremail) with SMTP id _____8Bxkuj14Q1nKJscAA--.41500S3;
-	Tue, 15 Oct 2024 11:31:01 +0800 (CST)
-Received: from [10.20.42.62] (unknown [10.20.42.62])
-	by front1 (Coremail) with SMTP id qMiowMBxXuTs4Q1nYVwqAA--.8786S3;
-	Tue, 15 Oct 2024 11:30:53 +0800 (CST)
-Subject: Re: [PATCH V1 0/4] Arch agnostic ACPI changes to support vCPU Hotplug
- (on Archs like ARM)
-To: Salil Mehta <salil.mehta@huawei.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, mst@redhat.com
-Cc: maz@kernel.org, jean-philippe@linaro.org, jonathan.cameron@huawei.com,
- lpieralisi@kernel.org, peter.maydell@linaro.org,
- richard.henderson@linaro.org, imammedo@redhat.com, andrew.jones@linux.dev,
- david@redhat.com, philmd@linaro.org, eric.auger@redhat.com, will@kernel.org,
- ardb@kernel.org, oliver.upton@linux.dev, pbonzini@redhat.com,
- gshan@redhat.com, rafael@kernel.org, borntraeger@linux.ibm.com,
- alex.bennee@linaro.org, npiggin@gmail.com, harshpb@linux.ibm.com,
- linux@armlinux.org.uk, darren@os.amperecomputing.com,
- ilkka@os.amperecomputing.com, vishnu@os.amperecomputing.com,
- karl.heubaum@oracle.com, miguel.luis@oracle.com, salil.mehta@opnsrc.net,
- zhukeqian1@huawei.com, wangxiongfeng2@huawei.com, wangyanan55@huawei.com,
- jiakernel2@gmail.com, lixianglai@loongson.cn, shahuang@redhat.com,
- zhao1.liu@intel.com, linuxarm@huawei.com, gustavo.romero@linaro.org
-References: <20241014192205.253479-1-salil.mehta@huawei.com>
-From: maobibo <maobibo@loongson.cn>
-Message-ID: <3b0b1033-36eb-6180-1363-f76083a32ce0@loongson.cn>
-Date: Tue, 15 Oct 2024 11:30:34 +0800
-User-Agent: Mozilla/5.0 (X11; Linux loongarch64; rv:68.0) Gecko/20100101
- Thunderbird/68.7.0
+       dkim=pass header.i=@linaro.org header.s=google header.b=A5mDGxjU;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1t0iEh-00018A-71; Tue, 15 Oct 2024 10:09:19 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
+ id 1t0iEe-00016T-7R
+ for qemu-devel@nongnu.org; Tue, 15 Oct 2024 10:09:16 -0400
+Received: from mail-pf1-x429.google.com ([2607:f8b0:4864:20::429])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
+ id 1t0iEc-00021N-Jt
+ for qemu-devel@nongnu.org; Tue, 15 Oct 2024 10:09:15 -0400
+Received: by mail-pf1-x429.google.com with SMTP id
+ d2e1a72fcca58-71e6d988ecfso1377345b3a.0
+ for <qemu-devel@nongnu.org>; Tue, 15 Oct 2024 07:09:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1729001352; x=1729606152; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=n7khBWuAQuhlzuhiV0IiArZ/4WVz7fsPkQXZudGKbtc=;
+ b=A5mDGxjU15o3h//io/e4sk7cwvsp4stFX3Q7838SQAVrUzI2J/n+PBJ2Ca2WEole7M
+ FaIcBtWVvzlTb5r3AxKRWPPhUjW/Kzc2rzsjKUJxNfh87m51dFRtTuTFXUCcSVhrB9bb
+ GQ9LOxvZRTU6uASSi1LFHaBYamjaLt2thnKGab+VP9fqHLRur1yKmlH4vbmpjKrbvbNn
+ vXFW78nCuLcT0fgzIpppTfSLbPFiYlDEI8kUNdvJnpSivETmIs2B90cZ13Tcw6bEthK6
+ y2Wqhqs44lze7mOkcG8QlSwfdXtXxkfrgUqzIWbpYcNsdIoz45etDMBGUWk1nbLDoczZ
+ A8vg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1729001352; x=1729606152;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=n7khBWuAQuhlzuhiV0IiArZ/4WVz7fsPkQXZudGKbtc=;
+ b=neVX3+PFh8Pa4yDiSSGFLyjHvB0RKPksw8Aa55BMRNMKOXXWSbLQmQzlUVzV9QCnoz
+ fU5LqggIFGLdpJDvdTQql2JTTeDukCwFPPg2CJ+8cfO0MYgDbPnvcNSsw8XkT+/Uul6I
+ xWkkj+6DTvoEquePX8Z+fCjRKuulCEUG3kVuVj7lLI2hAoKf8L2qX94AAUfmxvJPvFXz
+ Jj/DUpaI+DYzJm3FyXUUPLIkySK2Cd7OQgPDXhCUqhagKIfNV51aChfgYrAG16Sj+tJu
+ JF08MKuFreUaGQg99PZ0BKrTm0S7qsKUp3LgAKiM723qzepXXUuscLyvAHu7+0Gn4mzP
+ e17A==
+X-Gm-Message-State: AOJu0YyfHsXyxbm15PWmDSiV94ruTm4+5fa8XgkJ1WoSHTCZlhlvzeCk
+ 3W+WAayUHCfIluOk8US4Nl10Dtrrk4G1P1X4jAweMPTb/ZhqeCEbSuXu7cbP4M9Bmkv1Vqp1J0o
+ Z
+X-Received: by 2002:a05:6a00:2306:b0:71e:6f32:df07 with SMTP id
+ d2e1a72fcca58-71e6f33c757mr6595863b3a.1.1729001351801; 
+ Tue, 15 Oct 2024 07:09:11 -0700 (PDT)
+Received: from amd.. ([2804:7f0:b401:3301:3e7c:3fff:fe7a:e83b])
+ by smtp.gmail.com with ESMTPSA id
+ d2e1a72fcca58-71e774caab8sm1325614b3a.145.2024.10.15.07.09.10
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 15 Oct 2024 07:09:11 -0700 (PDT)
+From: Gustavo Romero <gustavo.romero@linaro.org>
+To: qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org
+Cc: gustavo.romero@linaro.org
+Subject: [PATCH] tests/tcg/aarch64: Use raw strings for regexes in test-mte.py
+Date: Tue, 15 Oct 2024 14:08:06 +0000
+Message-Id: <20241015140806.385449-1-gustavo.romero@linaro.org>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-In-Reply-To: <20241014192205.253479-1-salil.mehta@huawei.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID:qMiowMBxXuTs4Q1nYVwqAA--.8786S3
-X-CM-SenderInfo: xpdruxter6z05rqj20fqof0/
-X-Coremail-Antispam: 1Uk129KBj93XoWxWryxur1DWrW3ZF43WF48uFX_yoWrtFyrpF
-	WIka1FqrWDtr1xGw4ftwnxWw1Y9a4rGF43Grn3ur18u3Z8tF1vyF1Skr4UXF13AF9a9F1x
-	ZFn0vr1Uu34DZFXCm3ZEXasCq-sJn29KB7ZKAUJUUUU7529EdanIXcx71UUUUU7KY7ZEXa
-	sCq-sGcSsGvfJ3Ic02F40EFcxC0VAKzVAqx4xG6I80ebIjqfuFe4nvWSU5nxnvy29KBjDU
-	0xBIdaVrnRJUUUPab4IE77IF4wAFF20E14v26r4j6ryUM7CY07I20VC2zVCF04k26cxKx2
-	IYs7xG6rWj6s0DM7CIcVAFz4kK6r1Y6r17M28lY4IEw2IIxxk0rwA2F7IY1VAKz4vEj48v
-	e4kI8wA2z4x0Y4vE2Ix0cI8IcVAFwI0_JFI_Gr1l84ACjcxK6xIIjxv20xvEc7CjxVAFwI
-	0_Gr0_Cr1l84ACjcxK6I8E87Iv67AKxVWxJVW8Jr1l84ACjcxK6I8E87Iv6xkF7I0E14v2
-	6r4UJVWxJr1ln4kS14v26r1Y6r17M2AIxVAIcxkEcVAq07x20xvEncxIr21l57IF6xkI12
-	xvs2x26I8E6xACxx1l5I8CrVACY4xI64kE6c02F40Ex7xfMcIj6xIIjxv20xvE14v26r12
-	6r1DMcIj6I8E87Iv67AKxVW8JVWxJwAm72CE4IkC6x0Yz7v_Jr0_Gr1lF7xvr2IY64vIr4
-	1lc7I2V7IY0VAS07AlzVAYIcxG8wCY1x0262kKe7AKxVWUtVW8ZwCF04k20xvY0x0EwIxG
-	rwCFx2IqxVCFs4IE7xkEbVWUJVW8JwCFI7km07C267AKxVWUXVWUAwC20s026c02F40E14
-	v26r1j6r18MI8I3I0E7480Y4vE14v26r106r1rMI8E67AF67kF1VAFwI0_Wrv_Gr1UMIIY
-	rxkI7VAKI48JMIIF0xvE2Ix0cI8IcVAFwI0_Jr0_JF4lIxAIcVC0I7IYx2IY6xkF7I0E14
-	v26r4j6F4UMIIF0xvE42xK8VAvwI8IcIk0rVWUJVWUCwCI42IY6I8E87Iv67AKxVW8JVWx
-	JwCI42IY6I8E87Iv6xkF7I0E14v26r4j6r4UJbIYCTnIWIevJa73UjIFyTuYvjxUcsjjDU
-	UUU
-X-TUID: Emq7y9FiZ0/3
+Received-SPF: pass client-ip=2607:f8b0:4864:20::429;
+ envelope-from=gustavo.romero@linaro.org; helo=mail-pf1-x429.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: cAbgDN/Jiz/F
 
-With cpu-add/cpu-del command tested on LoongArch system, no migration 
-tested. There is no negative influence with LoongArch cpu hotplug.
+Use Python's raw string notation instead of string literals for regex so
+it's not necessary to double backslashes when regex special forms are
+used. Raw notation is preferred for regex and easier to read.
 
-Regards
-Bibo Mao
+Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
+---
+ tests/tcg/aarch64/gdbstub/test-mte.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-On 2024/10/15 上午3:22, Salil Mehta via wrote:
-> Certain CPU architecture specifications [1][2][3] prohibit changes to the CPUs
-> *presence* after the kernel has booted. This is because many system
-> initializations depend on the exact CPU count at boot time and do not expect it
-> to change afterward. For example, components like interrupt controllers that are
-> closely coupled with CPUs, or various per-CPU features, may not support
-> configuration changes once the kernel has been initialized.
-> 
-> This requirement poses a challenge for virtualization features like vCPU
-> hotplug. To address this, changes to the ACPI AML are necessary to update the
-> `_STA.PRES` (presence) and `_STA.ENA` (enabled) bits accordingly during guest
-> initialization, as well as when vCPUs are hot-plugged or hot-unplugged. The
-> presence of unplugged vCPUs may need to be deliberately *simulated* at the ACPI
-> level to maintain a *persistent* view of vCPUs for the guest kernel.
-> 
-> This patch set introduces the following features:
-> 
-> 1. ACPI Interface with Explicit PRESENT and ENABLED CPU States: It allows the
->     guest kernel to evaluate these states using the `_STA` ACPI method.
->     
-> 2. Initialization of ACPI CPU States: These states are initialized during
->     `machvirt_init` and when vCPUs are hot-(un)plugged. This enables hotpluggable
->     vCPUs to be exposed to the guest kernel via ACPI.
-> 
-> 3. Support for Migrating ACPI CPU States: The patch set ensures the migration of
->     the newly introduced `is_{present,enabled}` ACPI CPU states to the
->     destination VM.
-> 
-> The approach is flexible enough to accommodate ARM-like architectures that
-> intend to implement vCPU hotplug functionality. It is suitable for architectures
-> facing similar constraints to ARM or those that plan to implement vCPU
-> hotplugging independently of hardware support (if available).
-> 
-> This patch set is derived from the ARM-specific vCPU hotplug implementation [4]
-> and includes migration components adaptable to other architectures, following
-> suggestions [5] made by Igor Mammedov <imammedo@redhat.com>.
-> 
-> It can be applied independently, ensuring compatibility with existing hotplug
-> support in other architectures. I have tested this patch set in conjunction with
-> the ARM-specific vCPU hotplug changes (included in the upcoming RFC V5 [6]), and
-> everything worked as expected. I kindly request maintainers of other
-> architectures to provide a "Tested-by" after running their respective regression
-> tests.
-> 
-> Many thanks!
-> 
-> 
-> References:
-> [1] KVMForum 2023 Presentation: Challenges Revisited in Supporting Virt CPU Hotplug on
->      architectures that don’t Support CPU Hotplug (like ARM64)
->      a. Kernel Link: https://kvm-forum.qemu.org/2023/KVM-forum-cpu-hotplug_7OJ1YyJ.pdf
->      b. Qemu Link:  https://kvm-forum.qemu.org/2023/Challenges_Revisited_in_Supporting_Virt_CPU_Hotplug_-__ii0iNb3.pdf
-> [2] KVMForum 2020 Presentation: Challenges in Supporting Virtual CPU Hotplug on
->      SoC Based Systems (like ARM64)
->      Link: https://kvmforum2020.sched.com/event/eE4m
-> [3] Check comment 5 in the bugzilla entry
->      Link: https://bugzilla.tianocore.org/show_bug.cgi?id=4481#c5
-> [4] [PATCH RFC V4 00/33] Support of Virtual CPU Hotplug for ARMv8 Arch
->      Link: https://lore.kernel.org/qemu-devel/20241009031815.250096-1-salil.mehta@huawei.com/T/#mf32be203baa568a871dc625b732f666a4c4f1e68
-> [5] Architecture agnostic ACPI VMSD state migration (Discussion)
->      Link: https://lore.kernel.org/qemu-devel/20240715155436.577d34c5@imammedo.users.ipa.redhat.com/
-> [6] Upcoming RFC V5, Support of Virtual CPU Hotplug for ARMv8 Arch
->      Link: https://github.com/salil-mehta/qemu/commits/virt-cpuhp-armv8/rfc-v5
-> 
-> Salil Mehta (4):
->    hw/acpi: Initialize ACPI Hotplug CPU Status with Support for vCPU
->      `Persistence`
->    hw/acpi: Update ACPI CPU Status `is_{present, enabled}` during vCPU
->      hot(un)plug
->    hw/acpi: Reflect ACPI vCPU {present,enabled} states in ACPI
->      _STA.{PRES,ENA} Bits
->    hw/acpi: Populate vCPU Hotplug VMSD to migrate `is_{present,enabled}`
->      states
-> 
->   cpu-target.c         patches.vcpuhp.rfc-v5.arch.agnostic.acpi          |  1 +
->   hw/acpi/cpu.c                  | 70 +++++++++++++++++++++++++++++++---
->   hw/acpi/generic_event_device.c | 11 ++++++
->   include/hw/acpi/cpu.h          | 21 ++++++++++
->   include/hw/core/cpu.h          | 21 ++++++++++
->   5 files changed, 119 insertions(+), 5 deletions(-)
-> 
+diff --git a/tests/tcg/aarch64/gdbstub/test-mte.py b/tests/tcg/aarch64/gdbstub/test-mte.py
+index a4cae6caa0..9ad98e7a54 100644
+--- a/tests/tcg/aarch64/gdbstub/test-mte.py
++++ b/tests/tcg/aarch64/gdbstub/test-mte.py
+@@ -23,8 +23,8 @@
+ from test_gdbstub import arg_parser, main, report
+ 
+ 
+-PATTERN_0 = "Memory tags for address 0x[0-9a-f]+ match \\(0x[0-9a-f]+\\)."
+-PATTERN_1 = ".*(0x[0-9a-f]+)"
++PATTERN_0 = r"Memory tags for address 0x[0-9a-f]+ match \(0x[0-9a-f]+\)."
++PATTERN_1 = r".*(0x[0-9a-f]+)"
+ 
+ 
+ def run_test():
+-- 
+2.34.1
+

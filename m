@@ -1,200 +1,166 @@
-Received: by 2002:a17:505:3501:b0:1be9:327d:8ee3 with SMTP id mc1csp2050948njb;
-        Mon, 14 Oct 2024 12:24:08 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXN4CaejdBo/jsIVwEXoyHjiEvmasXfzeyFLq7eAYwa+TQvVDpEAmaNeChTvPF7Eq9BjLtf3X85b45yEA==@linaro.org
-X-Google-Smtp-Source: AGHT+IHmula6GoObPBO+42P3IXOUuSnG3P70vUgF2uocdQgsLjO7Oj+mYIMjTHdVsN/oKTX4M9Ym
-X-Received: by 2002:a5d:62cc:0:b0:37d:4c8f:2e1 with SMTP id ffacd0b85a97d-37d5ff2c395mr5619294f8f.22.1728933848558;
-        Mon, 14 Oct 2024 12:24:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1728933848; cv=none;
+Received: by 2002:a17:505:3501:b0:1be9:327d:8ee3 with SMTP id mc1csp2324061njb;
+        Tue, 15 Oct 2024 02:28:07 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXa25T1dhzB6D4r+W+2sN3y0CEzJPS+OK/GIBh9L9aeKt1VFgMsiaqJL81lS3tvGXKQsFx/HfClvD1rIg==@linaro.org
+X-Google-Smtp-Source: AGHT+IEaDCmKBAn4nDUSjEyTekno2xblzpfZwFAX1vgtxkQkeyci/DMyDdG3Ho1ZtCQ5NI17choC
+X-Received: by 2002:a05:620a:1a1c:b0:7a9:abdf:f517 with SMTP id af79cd13be357-7b112517be8mr2662393385a.25.1728984487013;
+        Tue, 15 Oct 2024 02:28:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1728984486; cv=none;
         d=google.com; s=arc-20240605;
-        b=dxIvndAFBG6bQhCe0CytxHvTBKojSsud39trLUc/ukxklHzN4oxTFg9r+XDUidxZX3
-         wg0DYrevTEblgSG3N+fvkowD0dB3vu/X2W8XnwIu/MY8anyVaeHJKtYg3eM8bTylcQZd
-         p0alshi1Wi6q0+L8hRdNJvuBpGq7ELgbMhAmgfg2JtnBbeKpxTYxUtVRcMy3RJ3v/fnL
-         /iziI29C/csjPML1JfTe1jajsLgILi+63L6NAmgdBlGHo7QwDCXTMNDeF7WfR3QpYpTb
-         7m4uZHhGs54lMwQQsvYSEhrcHjb6eIrNiX/W7BWaYQp8qcsdSMMOICTcNcRq1oxIzExq
-         qsFw==
+        b=k+xonnxj6CE01t7BBJMOutX88e50pQybC3ANxHC7r//1k601kaSc9Swnn2CpIA21Nb
+         X81fmyD82Axb5Gw4CILw8NpI5wn6j8ALFVvfY1BI3QiJPjAsVQ7/mJBIKAUqvwyrZ5ZS
+         UIorIr6XUiVDUIwCfkpGdGBBqY8PHEM9f/WgfwE9RQIMdzvU0i+9F/BZr5HBsfoqGGHh
+         ucFVpHCvZ4hKbEF69mfxkqboizxnlLEM0w5i2YrQaQ5nJHjz+BPAWXZFRPIoleD/OG7K
+         K5vxJvaGHH0Nkq+SqTqCUYR2G6m7m3E2cDbXDvU4PJROC8mnPpszfprfhWtIHCHEgrof
+         TJjg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from;
-        bh=zjo00XovtEcCnZh4t8Wo5NIyAAuf551rSj8vynjf6c8=;
-        fh=4Dgx8jc1gJCFDIGNl8iT3gucG+cuHYR9XmJ7yDXtNzA=;
-        b=AyhKXzz1nERjZWvlWkLcYV5u7oVqGWZ+SaayA6R3JaWFEumFmAwWQwXNGyYi0sx9/V
-         XhIeN4Zckz2Dq1zKhSMTabczonVuHlUkLF1+yNu/k28+l/GZzxsfAPEajvWsjEpVBMxN
-         Rw759qiUiQ5asl+AVJjXkdNhtfPXDAtj127cTf6tZjk6y2gZ9/GiCHWREr5ChOi3vDaD
-         6yFPJ/vCsIz54BWUIB/w0vr+ENjp2UGLnIISStr5x4P7+0uQpOP6Ye45q2sjmFLqxG1Q
-         ZpIdpn1c6McZMaDq6QbOWFXKo83Xbs/LChNbVC6pT1wBNIflPi9QQBkI1SEuE4gHGfXX
-         r3dQ==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=tgpPHOMHhB56moS4r7vrLRohooFORWaeNRHN7Bg0Hk0=;
+        fh=HIsuUOgpMvgopiD3SRQ473HXMkMzMtZZqycEJsgPHm4=;
+        b=HAcI+gF8VP28H8j8XCBMBREceh3w3Lwvpbp8Z7SMGI9lJRzF/vnpVoUGEYL6wRS7Bx
+         mOV9cYgsGyeiZJsh86bKvPXqY6HNi6/tZUPHCtoGYSGVorpjUr+ngKyMqjloW54eKQR0
+         21jmT6DcCPLH47Q2JIxJFTpgErZMbrpqpWV2ELm4bFsRINys0bkf3JL1NRzQHUFbX1ex
+         9mxCvaBvk4wjNs0wGsF25Mpcy8dNIH2VD4l3u/g2nJEBlNM/aBOuJi0tr4ho8lk617ED
+         E5KW0OUOkNAravFaEhn5hpjHDePwfxR0xwtPlsQ2m6hvl0yPaoX5hVD/d1LaJtjgmCcw
+         c3gQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Return-Path: <salil.mehta@huawei.com>
-Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id ffacd0b85a97d-37d4b744a6dsi4806874f8f.271.2024.10.14.12.24.08
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 14 Oct 2024 12:24:08 -0700 (PDT)
-Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
+       dkim=pass header.i=@linaro.org header.s=google header.b="AFBObu/b";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id af79cd13be357-7b1363e2f18si97627485a.453.2024.10.15.02.28.06
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 15 Oct 2024 02:28:06 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from mail.maildlp.com (unknown [172.18.186.216])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4XS6Z02Wphz6K6T7;
-	Tue, 15 Oct 2024 03:22:32 +0800 (CST)
-Received: from frapeml500007.china.huawei.com (unknown [7.182.85.172])
-	by mail.maildlp.com (Postfix) with ESMTPS id B124A1400D9;
-	Tue, 15 Oct 2024 03:24:07 +0800 (CST)
-Received: from 00293818-MRGF.huawei.com (10.48.146.149) by
- frapeml500007.china.huawei.com (7.182.85.172) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Mon, 14 Oct 2024 21:23:48 +0200
-From: Salil Mehta <salil.mehta@huawei.com>
-To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <mst@redhat.com>
-CC: <salil.mehta@huawei.com>, <maz@kernel.org>, <jean-philippe@linaro.org>,
-	<jonathan.cameron@huawei.com>, <lpieralisi@kernel.org>,
-	<peter.maydell@linaro.org>, <richard.henderson@linaro.org>,
-	<imammedo@redhat.com>, <andrew.jones@linux.dev>, <david@redhat.com>,
-	<philmd@linaro.org>, <eric.auger@redhat.com>, <will@kernel.org>,
-	<ardb@kernel.org>, <oliver.upton@linux.dev>, <pbonzini@redhat.com>,
-	<gshan@redhat.com>, <rafael@kernel.org>, <borntraeger@linux.ibm.com>,
-	<alex.bennee@linaro.org>, <npiggin@gmail.com>, <harshpb@linux.ibm.com>,
-	<linux@armlinux.org.uk>, <darren@os.amperecomputing.com>,
-	<ilkka@os.amperecomputing.com>, <vishnu@os.amperecomputing.com>,
-	<karl.heubaum@oracle.com>, <miguel.luis@oracle.com>,
-	<salil.mehta@opnsrc.net>, <zhukeqian1@huawei.com>,
-	<wangxiongfeng2@huawei.com>, <wangyanan55@huawei.com>,
-	<jiakernel2@gmail.com>, <maobibo@loongson.cn>, <lixianglai@loongson.cn>,
-	<shahuang@redhat.com>, <zhao1.liu@intel.com>, <linuxarm@huawei.com>,
-	<gustavo.romero@linaro.org>
-Subject: [PATCH V1 4/4] hw/acpi: Populate vCPU Hotplug VMSD to migrate `is_{present,enabled}` states
-Date: Mon, 14 Oct 2024 20:22:05 +0100
-Message-ID: <20241014192205.253479-5-salil.mehta@huawei.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20241014192205.253479-1-salil.mehta@huawei.com>
-References: <20241014192205.253479-1-salil.mehta@huawei.com>
+       dkim=pass header.i=@linaro.org header.s=google header.b="AFBObu/b";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1t0dqN-0000y2-MH; Tue, 15 Oct 2024 05:27:55 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1t0dqM-0000xm-VA
+ for qemu-arm@nongnu.org; Tue, 15 Oct 2024 05:27:54 -0400
+Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1t0dqL-0004qS-CM
+ for qemu-arm@nongnu.org; Tue, 15 Oct 2024 05:27:54 -0400
+Received: by mail-ed1-x52b.google.com with SMTP id
+ 4fb4d7f45d1cf-5c9454f3bfaso5467446a12.2
+ for <qemu-arm@nongnu.org>; Tue, 15 Oct 2024 02:27:52 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1728984471; x=1729589271; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=tgpPHOMHhB56moS4r7vrLRohooFORWaeNRHN7Bg0Hk0=;
+ b=AFBObu/bpWLJkLiN3b7RH6DT07w8mXbNkU9Wk9VfZC6mkoG59r4kVv9+fN/tiQdEsB
+ Rz/1ZaZq4hmlwJRM7GWjjvdp1EUYZrAmKFce/oKaU1/8W1C6++J+MYyOsTVzkSp6A7yk
+ ywNu385t7VIz0Ix9nChOWOMM739zG4JZS63qx+uarA/9M8teJ/TyXlcb9sdfjwrylbnZ
+ mCPMzzt0hXXc66B+4RY+goVuXqYkgeM+R1BN0uNJrWciL9BhG9we3+nnVkUH46t96or8
+ Rsjr2w+x+0D7ZdCl6OpGrXnXZHYdieXwWIfx6X+5igIqsTBqnsqLP70kl1PQy+UAbJ6D
+ k4Gw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1728984471; x=1729589271;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=tgpPHOMHhB56moS4r7vrLRohooFORWaeNRHN7Bg0Hk0=;
+ b=KTQSDEvQC/W3aMaxOoqQfWFYk6kPZnnxSGBiyGr46ZzjW5U8QnDEHt+VkEa53ryYEz
+ OK0EFwOqjWDeyLv77LZXbftp59hZMPDz5pTsmGTAbvQlbt/rJD6pyQpWtKaDWxKyYDQ3
+ s5MKPNzt/U6b8DMOqc6n4ZQITWHhHmXIb3tERCE8FkNS0edsYqy3poeBBaqFef9BexxM
+ JXIIkbAAxzlkoygdY+KFeor+9+VMhUyGTuWnDMj7qn7ZLF6MEAYEDKa5O9N5THTsRLoG
+ 8MC0kgxH/bmQ9ThlpCVfS9KRDsjY4O6gYGJzlFQ76GxY5/zqQKQCV07JMkG6nXJ+M/vw
+ 2xAA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCW/gIftFibNKHeTgrS5smFLj/5uAvVyWS46XuzhYqBcIcqiZ2Z7HpmqdpsAEaLvxoZGGEQ0j+rvnQ==@nongnu.org
+X-Gm-Message-State: AOJu0YyaJ1jGR/zWpmfNl0KVnjJGDbaX4juXrzbQ9o1R/YtI2Jq93p+J
+ 1wkLBhEtdg0uX4JGttQeDoN6wsS2miZdE5UFaPjzVMmO3jWLPOEOFSfCKTHAUYKpa3d/QAxONas
+ JeGsqHsOtKIFYExnReRQstENTT38Vld5fads4yw==
+X-Received: by 2002:a05:6402:2685:b0:5c3:cc7d:c29d with SMTP id
+ 4fb4d7f45d1cf-5c95ac09825mr7747372a12.6.1728984470867; Tue, 15 Oct 2024
+ 02:27:50 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.48.146.149]
-X-ClientProxiedBy: dggems701-chm.china.huawei.com (10.3.19.178) To
- frapeml500007.china.huawei.com (7.182.85.172)
-X-TUID: zgpQW4RItC1o
+References: <20241005205748.29203-1-shentey@gmail.com>
+ <20241005205748.29203-2-shentey@gmail.com>
+ <CAFEAcA_2EU8Q+=Zm7pKJpO42=nAeGf9jpCsoM8ped1ngw66gKw@mail.gmail.com>
+ <E3D8FB20-605D-4E29-A430-DD3C4B01102D@gmail.com>
+In-Reply-To: <E3D8FB20-605D-4E29-A430-DD3C4B01102D@gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 15 Oct 2024 10:27:40 +0100
+Message-ID: <CAFEAcA8cEFprRy-9AbPsGLU4p1DmVepmWCsgY1LkKh26tHo6qw@mail.gmail.com>
+Subject: Re: [PATCH 1/4] hw/net/lan9118: Extract lan9118_phy
+To: Bernhard Beschow <shentey@gmail.com>
+Cc: qemu-devel@nongnu.org, Jason Wang <jasowang@redhat.com>,
+ qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::52b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52b.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: Ie7oLPkJ+T8t
 
-The ACPI CPU hotplug states `is_{present, enabled}` must be migrated alongside
-other vCPU hotplug states to the destination VM. Therefore, they should be
-integrated into the existing CPU Hotplug VM State Description (VMSD) table.
-Depending on the architecture and its implementation of CPU hotplug events
-(such as ACPI GED, etc.), the CPU hotplug states should be populated
-appropriately within their corresponding subsections of the VMSD table.
+On Mon, 14 Oct 2024 at 19:50, Bernhard Beschow <shentey@gmail.com> wrote:
+>
+>
+>
+> Am 14. Oktober 2024 12:47:52 UTC schrieb Peter Maydell <peter.maydell@linaro.org>:
+> >> +typedef struct Lan9118PhyState {
+> >> +    uint32_t status;
+> >> +    uint32_t control;
+> >> +    uint32_t advertise;
+> >> +    uint32_t ints;
+> >> +    uint32_t int_mask;
+> >> +    IRQState irq;
+> >> +    bool link_down;
+> >> +} Lan9118PhyState;
+> >
+> >This takes state that was in a QOM object, and moves it
+> >into something that's kind of a device but not a QOM
+> >object. I think we should avoid that, because at some
+> >point somebody's going to have to QOMify this.
+> >
+> >Making this a QOM device is a bit awkward for migration
+> >compatibility, unfortunately.
+>
+> Do we care about migration compatibility here? Or is it
+> sufficient to check the version? In the latter case I could
+> QOMify it.
 
-    "acpi-ged (16)": {
-        "ged_state": {
-            "sel": "0x00000000"
-        },
-        [...]
-        "acpi-ged/cpuhp": {
-            "cpuhp_state": {
-                "selector": "0x00000005",
-                "command": "0x00",
-                "devs": [
-                    {
-                        "is_inserting": false,
-                        "is_removing": false,
-                        "is_present": true,
-                        "is_enabled": true,
-                        "ost_event": "0x00000000",
-                        "ost_status": "0x00000000"
-                    },
-                    {
-                        "is_inserting": false,
-                        "is_removing": false,
-                        "is_present": true,
-                        "is_enabled": true,
-                        "ost_event": "0x00000000",
-                        "ost_status": "0x00000000"
-                    },
-                    {
-                        "is_inserting": false,
-                        "is_removing": false,
-                        "is_present": true,
-                        "is_enabled": true,
-                        "ost_event": "0x00000000",
-                        "ost_status": "0x00000000"
-                    },
-                    {
-                        "is_inserting": false,
-                        "is_removing": false,
-                        "is_present": true,
-                        "is_enabled": true,
-                        "ost_event": "0x00000000",
-                        "ost_status": "0x00000000"
-                    },
-                    {
-                        "is_inserting": false,
-                        "is_removing": false,
-                        "is_present": true,
-                        "is_enabled": false,
-                        "ost_event": "0x00000000",
-                        "ost_status": "0x00000000"
-                    },
-                    {
-                        "is_inserting": false,
-                        "is_removing": false,
-                        "is_present": true,
-                        "is_enabled": false,
-                        "ost_event": "0x00000000",
-                        "ost_status": "0x00000000"
-                    }
-                ]
-            }
-        }
-    },
 
-Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
----
- hw/acpi/cpu.c                  |  2 ++
- hw/acpi/generic_event_device.c | 11 +++++++++++
- 2 files changed, 13 insertions(+)
+Doing a quick grep it looks like the lan9118 is only
+used in a set of Arm boards and none of them are ones where
+we care about migration across versions. So I think we're
+ok to break compat with a version-bump. We should mention
+the affected boards in the commit message.
 
-diff --git a/hw/acpi/cpu.c b/hw/acpi/cpu.c
-index 23ea2b9c70..d34c1e601e 100644
---- a/hw/acpi/cpu.c
-+++ b/hw/acpi/cpu.c
-@@ -340,6 +340,8 @@ static const VMStateDescription vmstate_cpuhp_sts = {
-     .fields = (const VMStateField[]) {
-         VMSTATE_BOOL(is_inserting, AcpiCpuStatus),
-         VMSTATE_BOOL(is_removing, AcpiCpuStatus),
-+        VMSTATE_BOOL(is_present, AcpiCpuStatus),
-+        VMSTATE_BOOL(is_enabled, AcpiCpuStatus),
-         VMSTATE_UINT32(ost_event, AcpiCpuStatus),
-         VMSTATE_UINT32(ost_status, AcpiCpuStatus),
-         VMSTATE_END_OF_LIST()
-diff --git a/hw/acpi/generic_event_device.c b/hw/acpi/generic_event_device.c
-index 15b4c3ebbf..a4d78a534c 100644
---- a/hw/acpi/generic_event_device.c
-+++ b/hw/acpi/generic_event_device.c
-@@ -331,6 +331,16 @@ static const VMStateDescription vmstate_memhp_state = {
-     }
- };
- 
-+static const VMStateDescription vmstate_cpuhp_state = {
-+    .name = "acpi-ged/cpuhp",
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .fields      = (VMStateField[]) {
-+        VMSTATE_CPU_HOTPLUG(cpuhp_state, AcpiGedState),
-+        VMSTATE_END_OF_LIST()
-+    }
-+};
-+
- static const VMStateDescription vmstate_ged_state = {
-     .name = "acpi-ged-state",
-     .version_id = 1,
-@@ -379,6 +389,7 @@ static const VMStateDescription vmstate_acpi_ged = {
-     },
-     .subsections = (const VMStateDescription * const []) {
-         &vmstate_memhp_state,
-+        &vmstate_cpuhp_state,
-         &vmstate_ghes_state,
-         NULL
-     }
--- 
-2.34.1
+-- PMM

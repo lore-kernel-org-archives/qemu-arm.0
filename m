@@ -1,171 +1,190 @@
-Received: by 2002:a17:504:3c0d:b0:1be9:327d:8ee3 with SMTP id y13csp71306nji;
-        Tue, 15 Oct 2024 07:34:58 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCW6oAnVbqRiJr0efirNVgCjJvd1YWOycTenlNC6SQ5cCPbg9iTlPT99xibAfNw1y8GCVMZNqiPgHpTcVg==@linaro.org
-X-Google-Smtp-Source: AGHT+IGT3tKBbRecHqZVq0vG35ZRy8uKIUEI0RNZmSRdRS2htWC51xeQ7gpVToBjro6TWZ/G9mnd
-X-Received: by 2002:ac8:7f4a:0:b0:460:3e50:5922 with SMTP id d75a77b69052e-4604bc2de62mr201213281cf.39.1729002898503;
-        Tue, 15 Oct 2024 07:34:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1729002898; cv=none;
+Received: by 2002:a17:504:3c0d:b0:1be9:327d:8ee3 with SMTP id y13csp161567nji;
+        Tue, 15 Oct 2024 09:50:13 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCV0AqfnTmPaaeL+lCetqE5AIqJND2CReKuHfXstm3kRg2/rVE4ura538onmNEd3B1QPSH6uQ8IsdRH6Lw==@linaro.org
+X-Google-Smtp-Source: AGHT+IGMIm72B8SV1jied6gGJrhJ8cuoUK20HEqt8ZzG1Roq4f+1gXkQ92Sg2euCE8TmCqZqh0kq
+X-Received: by 2002:a05:6830:6f42:b0:703:6d7d:b225 with SMTP id 46e09a7af769-717d64c9a60mr10655910a34.32.1729011013743;
+        Tue, 15 Oct 2024 09:50:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1729011013; cv=none;
         d=google.com; s=arc-20240605;
-        b=PSQEZJDa8glRSLdArzNszPtm26mS3+CsYScHk4r61rheXVQgmHdqkxtNISmxVOGKHp
-         dJsaDGR/Hap9Fz3bruTxM+MGYpFNFdjoYQPaSCU9VXCMSSEJpRsOqmyjlgVafhbzYEpl
-         2O5RWdFJ/+u5iA4Bne4FzsOVGby9MramHQROZqp9l9THVYqu7Mz31/2iTy7/rb7kkMoF
-         sUyYn1701ui2y/I2rRNODydCYqe/mudDlMqPVOoWaZIY5LHBTkvyMDzddJ+z5Hg/aLWW
-         h7ugZQ7fNVGVCOdag80lKtrWv0N3gGQG0xd3UVaZvCwLhfGTRb4DSlC+wL2IvlBKkyTA
-         +N6A==
+        b=e9Dz//DR9aeIm6o1s+Rx0sKpbTd5LnYVhIAVKTwiw5gBZ5AeyoI3rpWXuwxTCD6ihu
+         mWKHr2orRU6PtxIsvQWgdOcxwUMMQF9V1o0E64oeVLac48ipP/eMfyXJmFMULPETdiZJ
+         dDi6ne7BvbxWFmVQca0QgUFSIvMgTiOaAvbIeutpcyHaRqJKQ1bFBqPcwZSLhTXUFyEZ
+         gR0pAxPE5AfKmR9XQKmLFWcz9uVJR9i+YCsy9x/v7mE9Uo4rQmB2xHXSCrOcl5BO3C/M
+         GyzCgVhIjMIo3N4RFgAw8rsGtnZh6693YAzr0roAilOhRYReoRtjhgivSpEW4mfc5cwm
+         oDSw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:thread-index:thread-topic
-         :content-transfer-encoding:mime-version:subject:references
-         :in-reply-to:message-id:cc:to:from:date:dkim-signature:dkim-filter;
-        bh=pQ+//zyPjrbjIR7o2OZ2SNr6BUwBDomIyH0iHTZbzck=;
-        fh=/Ocgt6CuIp7ufVoRkpSJl84nRt7bG8rVSKLkogVK4WY=;
-        b=WVlXMMfC+dwT6AEPl0o1SJB0lPEWiP81f1y8yMTTqgRyd0CZWDZZsDub+Xf7BL28St
-         xWo3mn8yBeOv4MINXTPYpu+XaE5H0/vsvpRzF+8cRG8JusVKn45bIWtzjSsTrrSaxYcK
-         BXk0T8lK1qxJiYvFP3xSboxBgSXhrqWvmbN1WZ/i4DcfGXVowmJtUckpCymVQbKcELrz
-         ZDj05r2uQJnxsgY6sOwCSfOpwQNW2P7J1LC8ilkuJm7qmCwenssHd2R4tWhMkDREHCaz
-         t3/3bnZ5vF/UTYSUuT4Q7kYCpbEpI5Se3qcHLrbH46LjohsfZVLGBoUGxvUEJiCHbTZI
-         0I4A==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:references:in-reply-to:subject:cc:to:from
+         :date:dkim-signature;
+        bh=szSNw4iCM6lsZci+VjOI55OeV1nZGXX+WEU6BV9WNdQ=;
+        fh=FcHFP7Ec1kZ7XJO5k4AMgWP5+pMrEdtl4slbgX1plpo=;
+        b=kpnMvPu71x3EL/XSk6T28Ad3aLKB25RKc48jlHLlYwfe2bEs5O68WcYO7KVaVoFR7L
+         3yWFJ8d75OxIy/i/lahNPAM2zlgZ77FIjqFFxc7GlOQw+iAqBHx1Q3K0KoOY2ENchCYy
+         htAnTY4Kpz8DJSGdHzlVfJgwzcyk9cXd+djKFwjE+4tSE9KBNdcgfNqFGY633dNpp1xi
+         Zn6MTte/JW1IqCwyyjH7RvO7gEAXHbSRMTgPG4EqDczScr8ds2DJwiyxiC93lxwfArAt
+         SB0+/LOKfIXB+UnL+QGTdpA34/yurjH1Fxd2XDnxy+IFoZ6+ITq7e5T12tCeSxM7IANS
+         5csA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=TWKLF4fu;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b="NAOUE/4S";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4608941b6e8si4755971cf.228.2024.10.15.07.34.58
+        by mx.google.com with ESMTPS id af79cd13be357-7b1363e2f18si174648385a.453.2024.10.15.09.50.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 15 Oct 2024 07:34:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 15 Oct 2024 09:50:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=TWKLF4fu;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b="NAOUE/4S";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1t0idB-0004SZ-8Z; Tue, 15 Oct 2024 10:34:37 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1t0kk5-0007gQ-Ux; Tue, 15 Oct 2024 12:49:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ivarhol-21@enst.fr>)
- id 1t0id8-0004Rp-5x; Tue, 15 Oct 2024 10:34:34 -0400
-Received: from zproxy3.enst.fr ([137.194.2.222])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ivarhol-21@enst.fr>)
- id 1t0id6-0005LP-Am; Tue, 15 Oct 2024 10:34:33 -0400
-Received: from localhost (localhost [IPv6:::1])
- by zproxy3.enst.fr (Postfix) with ESMTP id 6CC46A0840;
- Tue, 15 Oct 2024 16:34:26 +0200 (CEST)
-Received: from zproxy3.enst.fr ([IPv6:::1])
- by localhost (zproxy3.enst.fr [IPv6:::1]) (amavis, port 10032) with ESMTP
- id AJy_xfe6odRP; Tue, 15 Oct 2024 16:34:25 +0200 (CEST)
-Received: from localhost (localhost [IPv6:::1])
- by zproxy3.enst.fr (Postfix) with ESMTP id BCA1FA0602;
- Tue, 15 Oct 2024 16:34:25 +0200 (CEST)
-DKIM-Filter: OpenDKIM Filter v2.10.3 zproxy3.enst.fr BCA1FA0602
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=telecom-paris.fr;
- s=A35C7578-1106-11E5-A17F-C303FDDA8F2E; t=1729002865;
- bh=pQ+//zyPjrbjIR7o2OZ2SNr6BUwBDomIyH0iHTZbzck=;
- h=Date:From:To:Message-ID:MIME-Version;
- b=TWKLF4fumg8MAufG16cz9K5OETw0+sdUGK3mxprj2WV/MfFAJKt0JKjzwaUjSKAO5
- ImVF5CCZwAzWn6nfFJkpS0xN3R3fXAoa4/UjBfAO8AcVLA1cVTFkYmw2dSM4Sf2fSM
- vkIs7UT65Up1QxGKTdPNBKjI4V/HlpcLnwOTRLPA=
-X-Virus-Scanned: amavis at enst.fr
-Received: from zproxy3.enst.fr ([IPv6:::1])
- by localhost (zproxy3.enst.fr [IPv6:::1]) (amavis, port 10026) with ESMTP
- id Hnuvo_AQ9Oui; Tue, 15 Oct 2024 16:34:25 +0200 (CEST)
-Received: from zmail-tp2.enst.fr (zmail-tp2.enst.fr [137.194.2.199])
- by zproxy3.enst.fr (Postfix) with ESMTP id 39464A0889;
- Tue, 15 Oct 2024 16:34:25 +0200 (CEST)
-Date: Tue, 15 Oct 2024 16:34:24 +0200 (CEST)
-From: =?utf-8?B?SW7DqHM=?= Varhol <ines.varhol@telecom-paris.fr>
-To: peter maydell <peter.maydell@linaro.org>
-Cc: qemu-devel <qemu-devel@nongnu.org>, 
- Arnaud Minier <arnaud.minier@telecom-paris.fr>, 
- Paolo Bonzini <pbonzini@redhat.com>, Luc Michel <luc@lmichel.fr>, 
- qemu-arm <qemu-arm@nongnu.org>, Thomas Huth <thuth@redhat.com>, 
- Samuel Tardieu <sam@rfc1149.net>, 
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>, 
- Alistair Francis <alistair@alistair23.me>, 
- =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>, 
- Damien Hedde <damien.hedde@dahe.fr>, Laurent Vivier <lvivier@redhat.com>
-Message-ID: <698508180.2421226.1729002864954.JavaMail.zimbra@enst.fr>
-In-Reply-To: <CAFEAcA_0eyAa=XjDnobYqkinEnW1wOetKDBqus7k1BTWTyLLpQ@mail.gmail.com>
-References: <20241003081105.40836-1-ines.varhol@telecom-paris.fr>
- <20241003081105.40836-4-ines.varhol@telecom-paris.fr>
- <CAFEAcA_0eyAa=XjDnobYqkinEnW1wOetKDBqus7k1BTWTyLLpQ@mail.gmail.com>
-Subject: Re: [PING PATCH v5 3/3] tests/qtest: Check STM32L4x5 clock connections
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1t0kjx-0007fZ-2a; Tue, 15 Oct 2024 12:49:45 -0400
+Received: from mail-lf1-x131.google.com ([2a00:1450:4864:20::131])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1t0kjt-0000VW-J3; Tue, 15 Oct 2024 12:49:44 -0400
+Received: by mail-lf1-x131.google.com with SMTP id
+ 2adb3069b0e04-539fe76e802so1337752e87.1; 
+ Tue, 15 Oct 2024 09:49:38 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1729010977; x=1729615777; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=szSNw4iCM6lsZci+VjOI55OeV1nZGXX+WEU6BV9WNdQ=;
+ b=NAOUE/4SxysDGxRaKa5rKItPGjKlq5iGUeM32blnw4jnBuG2vc1KRWYnpO8cEnhiDF
+ gGZ/O2ycu7FT72SfitWtMECKx6GM42K1JWqvUkGmUjFV9PqzhX+Epy9wfhwnvV9/7cX1
+ 8RabptNRXxpmcBDkhBeSeGe6OknRuX5b6Mhj7JNNP4jA6HHTL+IFKpuipgE26vVPGwYa
+ 1xGKd74UumQx977U5J2ybIHy+BXipLYHF4kktigauw0g4k0z85B7d4JBlfycNY0Y1oUk
+ pr2LPLF3BAKL4PYXFk9UDjlKLCGk2aghInDeVGi2eYx7c+TfWCGSpaUYoM2fSqFbpbcv
+ hMQA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1729010977; x=1729615777;
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=szSNw4iCM6lsZci+VjOI55OeV1nZGXX+WEU6BV9WNdQ=;
+ b=azHUWE7gpEDnNw2ky5TjPNxaeeMSnpD1+zb0UvhCSJeEWSHcVhhxH4PLdIkiYLwTaC
+ tnl4H1QEF5xgj38R6wV/S2jjPfFwu+t/0G6uXnJJKcBdyh8ufIHn7wNXfzLySIUJm9/w
+ VYNKxBH4klqXQtpjsvbSEO2zn/ePwJe2FtSSCcrMZPPtJ56YXZ9jDLcRsGqdltIMRccC
+ 6UwOOAdwSGIWBlENvxjckCJKNjR/GzbYmQH/YHQQM1doxesmjeUxyZRarNDhT5wz5LGj
+ RkBdw4NTb0N1Fwr3Uq627NZgvOYqj6nc4kVJWZ2b+6DkR38B1zBToKJz9hrPuLnKSd3M
+ Jh6w==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWj9SiEEuNFWamD9bfabe2M2ekNtc/j36W8ASDuM3z8dZMVibrWlnQTguAR4i6cyQki9nqkK3u2qQ==@nongnu.org
+X-Gm-Message-State: AOJu0YyW8aqcH8b+oLD/8zpwg9i1YDGabNjnct5E2bqd2F6Gfms7jXBC
+ QIQYW7vHMo8Hqiyh5piCgy8k2wXEcQpgtGaCGsvUTcqGriHAc5+vaBVtPw==
+X-Received: by 2002:a05:6512:138c:b0:539:8d2c:c01c with SMTP id
+ 2adb3069b0e04-539e571dd25mr5972910e87.41.1729010977092; 
+ Tue, 15 Oct 2024 09:49:37 -0700 (PDT)
+Received: from [127.0.0.1] (dynamic-077-183-076-057.77.183.pool.telefonica.de.
+ [77.183.76.57]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4313f55e054sm23396715e9.4.2024.10.15.09.49.36
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 15 Oct 2024 09:49:36 -0700 (PDT)
+Date: Tue, 15 Oct 2024 16:49:33 +0000
+From: Bernhard Beschow <shentey@gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+CC: qemu-devel@nongnu.org, Jason Wang <jasowang@redhat.com>,
+ qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
+Subject: Re: [PATCH 1/4] hw/net/lan9118: Extract lan9118_phy
+In-Reply-To: <CAFEAcA8cEFprRy-9AbPsGLU4p1DmVepmWCsgY1LkKh26tHo6qw@mail.gmail.com>
+References: <20241005205748.29203-1-shentey@gmail.com>
+ <20241005205748.29203-2-shentey@gmail.com>
+ <CAFEAcA_2EU8Q+=Zm7pKJpO42=nAeGf9jpCsoM8ped1ngw66gKw@mail.gmail.com>
+ <E3D8FB20-605D-4E29-A430-DD3C4B01102D@gmail.com>
+ <CAFEAcA8cEFprRy-9AbPsGLU4p1DmVepmWCsgY1LkKh26tHo6qw@mail.gmail.com>
+Message-ID: <DC6BEBC3-FAA6-44C8-AE38-CDFBAADA5AE0@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain;
+ charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-Originating-IP: [2001:861:4680:b1b0:b400:8d99:1692:e69c]
-X-Mailer: Zimbra 9.0.0_GA_4653 (ZimbraWebClient - FF131 (Linux)/9.0.0_GA_4653)
-Thread-Topic: tests/qtest: Check STM32L4x5 clock connections
-Thread-Index: 4f/g2E/kFYRd7h99URcQ2H0ATraGUw==
-Received-SPF: pass client-ip=137.194.2.222; envelope-from=ivarhol-21@enst.fr;
- helo=zproxy3.enst.fr
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::131;
+ envelope-from=shentey@gmail.com; helo=mail-lf1-x131.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: qL+sfVNsJSTV
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: KHkNapSsGgG+
 
 
 
------ Le 15 Oct 24, =C3=A0 16:20, peter maydell peter.maydell@linaro.org a =
-=C3=A9crit :
-
-> On Thu, 3 Oct 2024 at 09:11, In=C3=A8s Varhol <ines.varhol@telecom-paris.=
-fr> wrote:
+Am 15=2E Oktober 2024 09:27:40 UTC schrieb Peter Maydell <peter=2Emaydell@=
+linaro=2Eorg>:
+>On Mon, 14 Oct 2024 at 19:50, Bernhard Beschow <shentey@gmail=2Ecom> wrot=
+e:
 >>
->> For USART, GPIO and SYSCFG devices, check that clock frequency before
->> and after enabling the peripheral clock in RCC is correct.
 >>
->> Signed-off-by: In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
->> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
->> Reviewed-by: Luc Michel <luc@lmichel.fr>
->=20
->=20
->> +static void test_clock_enable(void)
->> +{
->> +    /*
->> +     * For each USART device, enable its clock in RCC
->> +     * and check that its clock frequency is SYSCLK_PERIOD
->> +     */
->> +    QTestState *qts =3D qtest_init("-M b-l475e-iot01a");
->> +
->> +    check_clock(qts, "machine/soc/usart[0]/clk", RCC_APB2ENR, 14);
->> +    check_clock(qts, "machine/soc/usart[1]/clk", RCC_APB1ENR1, 17);
->> +    check_clock(qts, "machine/soc/usart[2]/clk", RCC_APB1ENR1, 18);
->> +    check_clock(qts, "machine/soc/uart[0]/clk", RCC_APB1ENR1, 19);
->> +    check_clock(qts, "machine/soc/uart[1]/clk", RCC_APB1ENR1, 20);
->> +    check_clock(qts, "machine/soc/lpuart1/clk", RCC_APB1ENR2, 0);
->> +}
->=20
-> This new test is missing the qtest_quit(qts) call at the
-> end, which makes it hang when run on OpenBSD. (I fixed
-> this up in the pullrequest.)
->=20
-> thanks
-> -- PMM
+>>
+>> Am 14=2E Oktober 2024 12:47:52 UTC schrieb Peter Maydell <peter=2Emayde=
+ll@linaro=2Eorg>:
+>> >> +typedef struct Lan9118PhyState {
+>> >> +    uint32_t status;
+>> >> +    uint32_t control;
+>> >> +    uint32_t advertise;
+>> >> +    uint32_t ints;
+>> >> +    uint32_t int_mask;
+>> >> +    IRQState irq;
+>> >> +    bool link_down;
+>> >> +} Lan9118PhyState;
+>> >
+>> >This takes state that was in a QOM object, and moves it
+>> >into something that's kind of a device but not a QOM
+>> >object=2E I think we should avoid that, because at some
+>> >point somebody's going to have to QOMify this=2E
+>> >
+>> >Making this a QOM device is a bit awkward for migration
+>> >compatibility, unfortunately=2E
+>>
+>> Do we care about migration compatibility here? Or is it
+>> sufficient to check the version? In the latter case I could
+>> QOMify it=2E
+>
+>
+>Doing a quick grep it looks like the lan9118 is only
+>used in a set of Arm boards and none of them are ones where
+>we care about migration across versions=2E
 
-Thanks for the fix!
+Four i=2Emx boards using imx_fec will also be affected=2E None is versione=
+d afaics=2E
 
-In=C3=A8s
+>So I think we're
+>ok to break compat with a version-bump=2E We should mention
+>the affected boards in the commit message=2E
+
+Will do=2E
+
+Thanks,
+Bernhard
+
+>
+>-- PMM

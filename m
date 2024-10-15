@@ -1,51 +1,51 @@
-Received: by 2002:a17:505:3501:b0:1be9:327d:8ee3 with SMTP id mc1csp2340327njb;
-        Tue, 15 Oct 2024 03:08:07 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUkmmnSDU9UUpRlYgedHVQc6l3ahmOik1rOQm1to2j0lvd1FwcnpLA8D5kEO8HTCbUDvZDwmpqfprluFw==@linaro.org
-X-Google-Smtp-Source: AGHT+IH/74Je/nyTIIRGXD98Z5MAoaMp7gyGHqhm8eN+bHtvaqi1yTegfAyRTwZ0oL8Uij7cyL+P
-X-Received: by 2002:a05:600c:3584:b0:430:570b:4554 with SMTP id 5b1f17b1804b1-431255ceaccmr127196965e9.3.1728986886905;
-        Tue, 15 Oct 2024 03:08:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1728986886; cv=none;
+Received: by 2002:a17:505:3501:b0:1be9:327d:8ee3 with SMTP id mc1csp2340535njb;
+        Tue, 15 Oct 2024 03:08:25 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVgkA463OhKLhSSlRNt49QskrcsKtlakTeEroAfAc3rs4zw0V443i+ThLIm8rMuJjwalwY38Xw8Zxsktw==@linaro.org
+X-Google-Smtp-Source: AGHT+IFXToKco1a2fsLJWk2Ka0RZHJk2TtBb66X1icRw3iIYf6HAdeVkCWDySszkvA9fKTmYPHwl
+X-Received: by 2002:a05:600c:a16:b0:430:57c9:f885 with SMTP id 5b1f17b1804b1-43125616451mr113299875e9.31.1728986905628;
+        Tue, 15 Oct 2024 03:08:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1728986905; cv=none;
         d=google.com; s=arc-20240605;
-        b=cFp/0ITx2UWw0AvtjB/zSNHa13RLXVWIMSEgRTWD9nc/s2NZ0aVqBEJ2HXgGyES6nz
-         C6iwZ9U0lPEamMR0OT90VA2fO03qM5NU2B5IxweqmmYhuZUP0HeEgDMzWqSaUtZdPNYx
-         GXTDSfGt3piO9guQM3ddjVE5kLlgOHiWLDOmgQS9GKDVmBtqgEsoQvqQQ226QoLDMS8/
-         +7dAurEU4TmdRFeMX/HQjtDSSsnlV223mpD1tiup4TtmLJN8CZEAiJrVfjRpXhc4gvJ5
-         6Emr4i7gj78Ag5Jknb80vD75O6BvSubcjnPtX0EhIo0dIfRuni0iGBiikf0vDLw8VwAn
-         mDWA==
+        b=VCuKUfk5SHR47TANWt48BzbGPoocHkigu3kaNXWzz/tqwOJ5jT1NxoJO9WsUoo5GSt
+         i8R/PMSexzXLJaXU2q8QRt5PQ7sEzYaMM6N+yplWB3nhVZecC8DYHeISBVNcliNyhVFL
+         VnNr+ZdzHlA52YRqY62ssCEhFUVqh+nOB6j/6whAXPebZVydoSyjvSa3sAkNCjD1XOXA
+         hwbZnSS6Z73pChT9WQY76vvf3WEpWhYyi32B1DybzCpHbYZJQdzjKYVxaPdX+qZhwuiQ
+         Mu2vls06ZewgeXeujzE/bSiaTjp0hoG8Lg9YHhVfEtG7Y3+h0efucHUe8ad/CQX2P9Bx
+         q3Hg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from;
-        bh=Arfdy6X8xVX/+8rEyfrsJzNZ/JtrD3Me6DPXtzWtwnA=;
+        bh=hU2CgzHJK/NinSmOpsUpBycxo19a8SSsqHQc9c/g8Io=;
         fh=f7aqOn0Aylihzqer4hTA2kHSEaA8DU6KE1VFtniI5w4=;
-        b=aQptbi4IQfmePG17T5Wg7F+WlPyCdn7SoYqyCeGZsXicdKr/e+ecCduQXKCNFgiZIA
-         Ad9IJ8YKf5XoUkSUp+cBuKjVJL1pSJY7Hny8AJ4Rt5dnrzSjwUUmwEJGXYqn5PsmAMLZ
-         MJIJa6RE78K0qZ7R+UInGCLyIkylKbVkHRtfJrpAFUZ1ZIXb2N3l3A2iQz/Bpb2wMhn1
-         jyiKcf09bRxt/yvAflKjD11TobV+FzMlWyes7rL4bXD1dUDwefxRiJJcfXMHXLqgpoAs
-         SKjSucYnUQqd8YIlFFJw8tD8lXyOKQAQ2dK07bI/XTf+tQe2UrPr1mQs4nNm5he590bD
-         GJCw==;
+        b=gi7fmkqPQkuX0O6hi0xkA1rjNh5IGy1eYY9Msub5NVhnbb1H1vQoUhg4p76Q0bc8Fb
+         MhF9H40VuAibQvC7Swlxi7BRg1gtntstXi9nEthHMbxWB5I93wW5yHFVC7tqKoZ8Cafb
+         MqR4iVcRh8vF0f+IdkRNul27OtydfZxYMDp1tVuQl2Dltyi+iSEULfq51hDQdwI7kxDt
+         +exwkTS5zfrTEFxXsVVJ9m3Q2b1vHyIb7FdklQ3Dmje71/snp6aLBevj7pjJXJu9RYPT
+         F8GXphMdhWQzFJz7lD4T+6ZRSubGKgKmJLl/1iHZRL6/PY4vGF91mUyI8+83AkxcvuT6
+         JMrg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
 Return-Path: <salil.mehta@huawei.com>
 Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id ffacd0b85a97d-37d7fbed510si517848f8f.9.2024.10.15.03.08.06
+        by mx.google.com with ESMTPS id 5b1f17b1804b1-4313f56a6c5si5568465e9.78.2024.10.15.03.08.25
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 15 Oct 2024 03:08:06 -0700 (PDT)
+        Tue, 15 Oct 2024 03:08:25 -0700 (PDT)
 Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from mail.maildlp.com (unknown [172.18.186.216])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4XSVC62pjvz6K977;
-	Tue, 15 Oct 2024 18:07:30 +0800 (CST)
+Received: from mail.maildlp.com (unknown [172.18.186.231])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4XSVBH21j1z6F97V;
+	Tue, 15 Oct 2024 18:06:47 +0800 (CST)
 Received: from frapeml500007.china.huawei.com (unknown [7.182.85.172])
-	by mail.maildlp.com (Postfix) with ESMTPS id 8593B1400D9;
-	Tue, 15 Oct 2024 18:08:04 +0800 (CST)
+	by mail.maildlp.com (Postfix) with ESMTPS id 7CB55140519;
+	Tue, 15 Oct 2024 18:08:24 +0800 (CST)
 Received: from 00293818-MRGF.huawei.com (10.48.146.149) by
  frapeml500007.china.huawei.com (7.182.85.172) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Tue, 15 Oct 2024 12:07:44 +0200
+ 15.1.2507.39; Tue, 15 Oct 2024 12:08:04 +0200
 From: Salil Mehta <salil.mehta@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <mst@redhat.com>
 CC: <salil.mehta@huawei.com>, <maz@kernel.org>, <jean-philippe@linaro.org>,
@@ -64,9 +64,9 @@ CC: <salil.mehta@huawei.com>, <maz@kernel.org>, <jean-philippe@linaro.org>,
 	<jiakernel2@gmail.com>, <maobibo@loongson.cn>, <lixianglai@loongson.cn>,
 	<shahuang@redhat.com>, <zhao1.liu@intel.com>, <linuxarm@huawei.com>,
 	<gustavo.romero@linaro.org>
-Subject: [PATCH RFC V5 21/30] arm/virt: Update the guest(via GED) about vCPU hot-(un)plug events
-Date: Tue, 15 Oct 2024 11:00:03 +0100
-Message-ID: <20241015100012.254223-22-salil.mehta@huawei.com>
+Subject: [PATCH RFC V5 22/30] target/arm/cpu: Check if hotplugged ARM vCPU's FEAT match existing
+Date: Tue, 15 Oct 2024 11:00:04 +0100
+Message-ID: <20241015100012.254223-23-salil.mehta@huawei.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20241015100012.254223-1-salil.mehta@huawei.com>
 References: <20241015100012.254223-1-salil.mehta@huawei.com>
@@ -76,117 +76,85 @@ Content-Type: text/plain
 X-Originating-IP: [10.48.146.149]
 X-ClientProxiedBy: dggems702-chm.china.huawei.com (10.3.19.179) To
  frapeml500007.china.huawei.com (7.182.85.172)
-X-TUID: jcQxtlgLPkBx
+X-TUID: +huKdPkz0I5Q
 
-During any vCPU hot-(un)plug operation, the running guest VM must be notified
-about the addition of a new vCPU or the removal of an existing vCPU. This
-notification is handled via an ACPI GED event, which is eventually demultiplexed
-into a vCPU hotplug event, and then further into a specific hot-(un)plug event
-for the *targeted* vCPU.
+The ARM extensions configuration *must* match the existing vCPUs already
+initialized in KVM at VM initialization. ARM does not allow any per-vCPU
+features to be changed once the system has fully initialized. This is an
+immutable constraint of the ARM CPU architecture.
 
-Introduce the required ACPI calls into the existing hot-(un)plug hooks, allowing
-ACPI GED events to be triggered from QEMU to the guest VM.
-
-Co-developed-by: Keqian Zhu <zhukeqian1@huawei.com>
-Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
 Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
 ---
- hw/arm/virt.c | 39 ++++++++++++++++++++++++++++++++++++---
- 1 file changed, 36 insertions(+), 3 deletions(-)
+ target/arm/cpu.c | 50 ++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 50 insertions(+)
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index b1eba8de8c..15d9c2d8ac 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -3181,6 +3181,7 @@ static void virt_cpu_plug(HotplugHandler *hotplug_dev, DeviceState *dev,
- {
-     VirtMachineState *vms = VIRT_MACHINE(hotplug_dev);
-     CPUState *cs = CPU(dev);
-+    Error *local_err = NULL;
-     CPUArchId *cpu_slot;
- 
-     /* insert the cold/hot-plugged vcpu in the slot */
-@@ -3213,8 +3214,18 @@ static void virt_cpu_plug(HotplugHandler *hotplug_dev, DeviceState *dev,
-      * hot-plugged, the guest is also notified.
-      */
-     if (vms->acpi_dev) {
--        /* TODO: update acpi hotplug state. Send cpu hotplug event to guest */
-+        HotplugHandlerClass *hhc;
-+        /* update acpi hotplug state and send cpu hotplug event to guest */
-+        hhc = HOTPLUG_HANDLER_GET_CLASS(vms->acpi_dev);
-+        hhc->plug(HOTPLUG_HANDLER(vms->acpi_dev), dev, &local_err);
-+        if (local_err) {
-+            goto fail;
-+        }
-     }
-+
-+    return;
-+fail:
-+    error_propagate(errp, local_err);
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 3de0cb346b..14fcabc2c9 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -1912,6 +1912,49 @@ static void arm_cpu_finalizefn(Object *obj)
+ #endif
  }
  
- static void virt_cpu_unplug_request(HotplugHandler *hotplug_dev,
-@@ -3223,7 +3234,9 @@ static void virt_cpu_unplug_request(HotplugHandler *hotplug_dev,
-     MachineClass *mc = MACHINE_GET_CLASS(qdev_get_machine());
-     VirtMachineState *vms = VIRT_MACHINE(hotplug_dev);
-     ARMCPU *cpu = ARM_CPU(dev);
-+    HotplugHandlerClass *hhc;
-     CPUState *cs = CPU(dev);
-+    Error *local_err = NULL;
- 
-     if (!vms->acpi_dev) {
-         error_setg(errp, "GED does not exists or device is not realized!");
-@@ -3242,14 +3255,25 @@ static void virt_cpu_unplug_request(HotplugHandler *hotplug_dev,
-         return;
-     }
- 
--    /* TODO: request cpu hotplug from guest */
-+    /* request cpu hotplug from guest */
-+    hhc = HOTPLUG_HANDLER_GET_CLASS(vms->acpi_dev);
-+    hhc->unplug_request(HOTPLUG_HANDLER(vms->acpi_dev), dev, &local_err);
-+    if (local_err) {
-+        goto fail;
++static void arm_cpu_check_features_change(ARMCPU *cpu, Error **errp)
++{
++#if defined(TARGET_AARCH64) && !defined(CONFIG_USER_ONLY)
++    MachineClass *mc = MACHINE_GET_CLASS(qdev_get_machine());
++    ARMCPU *firstcpu = ARM_CPU(first_cpu);
++    DeviceState *dev = DEVICE(cpu);
++
++    if (!arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
++        return;
 +    }
 +
-+    return;
-+fail:
-+    error_propagate(errp, local_err);
- }
- 
- static void virt_cpu_unplug(HotplugHandler *hotplug_dev, DeviceState *dev,
-                             Error **errp)
- {
-     VirtMachineState *vms = VIRT_MACHINE(hotplug_dev);
-+    HotplugHandlerClass *hhc;
-     CPUState *cs = CPU(dev);
-+    Error *local_err = NULL;
-     CPUArchId *cpu_slot;
- 
-     if (!vms->acpi_dev) {
-@@ -3259,7 +3283,12 @@ static void virt_cpu_unplug(HotplugHandler *hotplug_dev, DeviceState *dev,
- 
-     cpu_slot = virt_find_cpu_slot(cs);
- 
--    /* TODO: update the acpi cpu hotplug state for cpu hot-unplug */
-+    /* update the acpi cpu hotplug state for cpu hot-unplug */
-+    hhc = HOTPLUG_HANDLER_GET_CLASS(vms->acpi_dev);
-+    hhc->unplug(HOTPLUG_HANDLER(vms->acpi_dev), dev, &local_err);
-+    if (local_err) {
-+        goto fail;
++    /* For now, features of hotplugged CPU MUST match earlier booted CPUs */
++    if (!dev->hotplugged || !mc->has_hotpluggable_cpus) {
++        return;
 +    }
- 
-     unwire_gic_cpu_irqs(vms, cs);
-     virt_update_gic(vms, cs, false);
-@@ -3274,6 +3303,10 @@ static void virt_cpu_unplug(HotplugHandler *hotplug_dev, DeviceState *dev,
-     dev->opts = NULL;
- 
-     cpu_slot->cpu = NULL;
 +
-+    return;
-+fail:
-+    error_propagate(errp, local_err);
++    if (cpu_isar_feature(aa64_sve, cpu) &&
++        (cpu->sve_max_vq != firstcpu->sve_max_vq ||
++         cpu->sve_vq.map != firstcpu->sve_vq.map)) {
++        error_setg(errp,
++                   "CPU %d: 'SVE' feature didn't match with existing CPUs",
++                   CPU(cpu)->cpu_index);
++        return;
++    }
++
++    if (cpu_isar_feature(aa64_sme, cpu) &&
++        (cpu->sme_vq.map != firstcpu->sme_vq.map)) {
++        error_setg(errp,
++                   "CPU %d: 'SME' feature didn't match with exisitng CPUs",
++                   CPU(cpu)->cpu_index);
++        return;
++    }
++
++    if (cpu_isar_feature(aa64_pauth, cpu) &&
++        (cpu->prop_pauth != firstcpu->prop_pauth)) {
++        error_setg(errp,
++                   "CPU %d: 'PAuth' feature didn't match with exisitng CPUs",
++                   CPU(cpu)->cpu_index);
++        return;
++    }
++#endif
++}
++
+ void arm_cpu_finalize_features(ARMCPU *cpu, Error **errp)
+ {
+     Error *local_err = NULL;
+@@ -1961,6 +2004,13 @@ void arm_cpu_finalize_features(ARMCPU *cpu, Error **errp)
+             return;
+         }
+     }
++
++    /*
++     * As of now, we do not support heterogeneous computing, hence, features of
++     * all cpus should match. Hotplugged vCPUs are not allowed to have
++     * different features than the existing cold-plugged vCPUs
++     */
++    arm_cpu_check_features_change(cpu, &local_err);
  }
  
- static void virt_machine_device_pre_plug_cb(HotplugHandler *hotplug_dev,
+ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
 -- 
 2.34.1

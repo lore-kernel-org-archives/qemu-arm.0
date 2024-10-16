@@ -1,126 +1,117 @@
-Received: by 2002:a17:504:3c0d:b0:1be9:327d:8ee3 with SMTP id y13csp796183nji;
-        Wed, 16 Oct 2024 09:42:37 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVBUERZze2Mhgi4Bi48O8KFiRFUbiFCLek0QU9p6kEkNO0mgtIK2000mdsNNkTZ+lazHfUrM74c2TuEgQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IEqp1gaNSDoRs8/gMKXr62BVoHALFW4g1EGv5b9EY7vsFtpJYat3k14LXzMVdcLRhghlsjH
-X-Received: by 2002:ac8:7d06:0:b0:45e:ff4c:6387 with SMTP id d75a77b69052e-4604bb94e9dmr240435521cf.12.1729096957599;
-        Wed, 16 Oct 2024 09:42:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1729096957; cv=none;
+Received: by 2002:a17:504:3c0d:b0:1be9:327d:8ee3 with SMTP id y13csp938215nji;
+        Wed, 16 Oct 2024 14:24:39 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWvyT8Y/09GStELtggBozBpm8mS9FM0kOElLDHFs+Z6fp2nXalwk+35ATEBWG7bERCYS7dk28tuE9wrnA==@linaro.org
+X-Google-Smtp-Source: AGHT+IGhSm7wED5AhBCzc+OpNN08OI6hwQLlTBGUvlJkZrXGp64D04dUYPPCTNI8nSmADVjEw32u
+X-Received: by 2002:a05:622a:598f:b0:460:8fe2:c04c with SMTP id d75a77b69052e-4608fe2c0fdmr56103151cf.21.1729113879402;
+        Wed, 16 Oct 2024 14:24:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1729113879; cv=none;
         d=google.com; s=arc-20240605;
-        b=VZD+ZVVrcUvTmgIeyqkpL4Lk1bdFvjuxeLxuh2JxRurRsChN72gCnMPVkVY0vD63WT
-         REROrMQpZ65ZdSEJiWEfDLknbtdgXDx0fHtqx5lEvgclOl6WiUs+CxhackvteLKVqhAz
-         HsSBRr2kIJ2E052RuMKMhkNNA6bGJkKsX5QYuoIRn5OtAlYgAmYrZ0VWoB5MLjRcvMKK
-         4+i84HCeNWIWZtzdABoUkfpUThtEl0WaxkQ+bgWannYJFMYpoxrGZse+qsqVEOQhTAMv
-         E/HFE7Sy/6eyMok+fvYtIb48epTYpKK4PzSrxSbOFYbpUDXpkWPg7njKRix9uWwxcuaW
-         hD2A==
+        b=XDzrGUUm1jlFeINqVOb0VB9QSFkbxXCv/aLskG1St952FgHKV4m/EZtfvEc8eqr/sH
+         5dFEJoADC7aWaEJ1hSiimFcn0v+4B9VgB/kdKZcAms3PuZuM2X4mS0qqKrSqwSb+MoYw
+         nzGVqLq+uShvQkBNZMj1sP5lbVZqWu5nc428OOH2Crl6zSXHIvYT8PzopC4CgbigRnGe
+         3HxSts7fdtnhmDn+37/4LbRsxv6xXRYI9ZxUl1p1NFthdzF1t3Vh++6By1oRBai2vbej
+         /2G/u/YvEvGd7YqSSbOgnRKNz2G4Kxnf30J4DkJf1rk30LaKSD0TlW4Mtb+qdo3dq3aq
+         EgJA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=uHOGqysiZdjdbsRYTH0VIqC/aGvnJhRxa2LGj0rsgTw=;
-        fh=9a9mV80uW+Yb8pUavypbMD485PPg4NVw2kHpyOr6fiE=;
-        b=dIJYVzdVMcTgiBzjhCRvB/mu4VWNuNqbg1lWflQBWD8yDZzhBGsGBC54vRSe1LDiDK
-         uUIzUdL0XvUFhSeQ2LXx6Nai2wO40srUQjqyASghyIAjFTQIOmEZkmm7Xts9FJ1XMjuG
-         /dg3OBFJLGawbkfaVWIHPNcHMhGlYHi4n8lBnO2gkbEObg8oYgjtyLYK+NTGNRqsNIzN
-         cEQvNr0eZ0UmzrZcJyJDjO5iO/fo3eWvPD2S6OYZTfC3adfK23ItxTIQk6hhMG+ANN9N
-         xBZ1/hAyc5dzXmqF9Lyt4bRRm59ZJtiOrCcnZTzYXvZGhZa7G+Ye/qfAjPwgwyfS30qe
-         2NOA==;
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=7V7VO+tsKceMvp6RylfNFS9ZDwLOpBaFsdLb0+3aNAs=;
+        fh=iV/wa/EGzwekPs9SIy8f7XZbk0+azreCjNfifMvkeEI=;
+        b=Wq/ZT7rwP1lgTEFWLbt6VdyvY+SgXPh8gfdq/rpH2XlIs+SIRnivYAZg6I51UPmBjh
+         L02aLBzz9Mdg77CcoLYH9RIaukG70v1saDYBfyEk8GAkuDJAF6AB0IGLRhJSvm9p/MpJ
+         7E2+NufT99x36CNP2jqlM6T5L8K4WO7YrTmtkJgGNglpy0FwuvuB39nO3JJZGkPzzkeC
+         WADfrN7Qezi0wd/lOFTYf9vmmt3+6LHdONGRzSyPfAQTwdRlCGtHMhsI+S8PsL5m4ors
+         o3kYrJ8BQoVu1rgWU+WSMeUEpzgrGYv2wDp1GtL53P4I3PcIolhVjpHpjtzlR4oV8hMV
+         wSmQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=dpghk73s;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=nLiTtyhI;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4607b4c7b76si41925201cf.591.2024.10.16.09.42.37
+        by mx.google.com with ESMTPS id d75a77b69052e-4607b49da7asi46252011cf.402.2024.10.16.14.24.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 16 Oct 2024 09:42:37 -0700 (PDT)
+        Wed, 16 Oct 2024 14:24:39 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=dpghk73s;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=nLiTtyhI;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1t176L-0007ec-GN; Wed, 16 Oct 2024 12:42:21 -0400
+	id 1t1BVH-00026U-Im; Wed, 16 Oct 2024 17:24:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1t176J-0007eA-Fn
- for qemu-arm@nongnu.org; Wed, 16 Oct 2024 12:42:19 -0400
-Received: from mail-pg1-x534.google.com ([2607:f8b0:4864:20::534])
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1t1BVF-00025i-RG; Wed, 16 Oct 2024 17:24:21 -0400
+Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1t176H-0000gX-6t
- for qemu-arm@nongnu.org; Wed, 16 Oct 2024 12:42:19 -0400
-Received: by mail-pg1-x534.google.com with SMTP id
- 41be03b00d2f7-7e6cbf6cd1dso4744651a12.3
- for <qemu-arm@nongnu.org>; Wed, 16 Oct 2024 09:42:16 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1t1BVE-00012f-76; Wed, 16 Oct 2024 17:24:21 -0400
+Received: by mail-ej1-x633.google.com with SMTP id
+ a640c23a62f3a-a9a0084f703so32656366b.3; 
+ Wed, 16 Oct 2024 14:24:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1729096935; x=1729701735; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=uHOGqysiZdjdbsRYTH0VIqC/aGvnJhRxa2LGj0rsgTw=;
- b=dpghk73s1R6mE2Hhl2BPyO/WXmoiK62/Sye82UdkPY05mGHbUu+0z7DSShf8hsQuVF
- EWppGbicOcTC5dMOWsKvU048tPcqhAA+ljKL/6Q2e2WZlWaqxjWITSvmCK8AM7LxM6US
- 0U8o7oQpnevuKseQbvlnT6hNzwh5vrs09PJBTq67LQit9HZl57UzZxLHRPHynPth3UVk
- oKj1guecrRNI5LuIIKQeIiJIuWiX3FCIWhXkCp8sfHNf04RJvogLJUUIJjFku3iRBRd2
- llDkAhh03zW4s3pRRcC5RhutOi/av9KKIVGx/3rcvdWdsoItnGlocfXHOmnAhdj8fNJN
- vSgg==
+ d=gmail.com; s=20230601; t=1729113857; x=1729718657; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=7V7VO+tsKceMvp6RylfNFS9ZDwLOpBaFsdLb0+3aNAs=;
+ b=nLiTtyhIbQFU7htwZagwzGAce8uZyDZW1hX0bKQu0jl776kfiZQusZ/DicdRYdQt4K
+ v5ke1t4+4RsD7amrMmsAASzLYWB4mZpwH13GI472EXWSKBF1Q/n3Vqd3lldYeHByA1pq
+ 1xrlD5IHr845d8bQ4bYeEbnL/FM94eB3XcCki5wNcg61WJf12mD8JKcKyXktwxPBUkiE
+ PL5HQFHAFOP6bOPmJbsbzwsI2JTQlOELNqS41kqC8UY6OUcV5tIYNnf+4XWyWrwvSy49
+ E78tvM45r1JvOi6ubxSABDWg6laMF3mQ1tPRAfEXT7pHBbx1x7YPedKaskS185Th7C0e
+ gPOg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1729096935; x=1729701735;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=uHOGqysiZdjdbsRYTH0VIqC/aGvnJhRxa2LGj0rsgTw=;
- b=u6JwVLwQ9Sn3iPkU7Y0RPmFULfLCLX0fYF6PozIudRrbpq4grwU47CZNuGHXHeMTs0
- CIbfm68XAQ9lDJ98LHEGNhIHLGgeIS8QMMOQu7ebpCsIrMxVjAJ6Qff6+kc7uJmlwqle
- gCXPVqpp9d6WhBn5c7YeJI4Xa7yLVTvGXqxj5Wc1KMn6/1PHfaQkwns6yC6yqSMOzg3U
- +n+GDxYke1Eft0IlmHV4Yh+Uul9dWchZTR0udzP9Q6fml7NECOqHm/8jZrTce9LI5X5I
- DTqjbO1LrzPW3lYGVwVP3t0E/RVzaKQWXQQQq1J1tJuhmIzZUO44hcUecbGVgy/0kVnu
- RSqw==
+ d=1e100.net; s=20230601; t=1729113857; x=1729718657;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=7V7VO+tsKceMvp6RylfNFS9ZDwLOpBaFsdLb0+3aNAs=;
+ b=Xy52x7J2eXP9kJ2eDRRCdP0Ai96AG2M38boMJ1hc0wDNHfT968kZNW0r4LTgL1qHnX
+ JvFNGLmu0rNlM1sA/99jHKpc73COCpPT+Tq2+0f4O9AmoiLo6onVz7II119rVTXDV/y8
+ 9PEkvGghDFcPlETE4RX3jerV0WBsCq1h6xThwfvZVvqpujJhEreTiDisWw4DxSpTmDcn
+ f/H76I6H2vlrfZ1Irv1SaZ3lgwCeP079Ih7FfAYJUpJrsnh0vRiqyDPEqsUcOHyH/OXn
+ MuqiOWBijEw9VXicNQJbc+yQf4LjrVP+DVGhkPs0AY/eUBJ8l+CziGkXw0fVQGBSv7Nr
+ fhJw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUGbKqxeGzCdfJKKCS+hq+SaiCc5n4kHWnSzctsnGQfRnmIsOt/X/kVfe6NEoiDX6nUujd+UYydQA==@nongnu.org
-X-Gm-Message-State: AOJu0YxPdw+v+MJOo20pJDdAwFykXmTjqOKbelZykSiW8Pvlj1Pa1hv1
- M1yD/6iptny8OHjyglBmnRg0FZfyDwfZL9WEBPVP52hxFXV7ny+XE6ZK6m6tOUU=
-X-Received: by 2002:a05:6a21:3946:b0:1d9:1aa0:10b6 with SMTP id
- adf61e73a8af0-1d91aa01161mr723259637.3.1729096935452; 
- Wed, 16 Oct 2024 09:42:15 -0700 (PDT)
-Received: from [192.168.1.221] ([148.222.130.0])
- by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-71e82a19a8esm1452028b3a.211.2024.10.16.09.42.12
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 16 Oct 2024 09:42:15 -0700 (PDT)
-Message-ID: <4ee4f4bb-140a-43b7-bc5b-5c0098a6079a@linaro.org>
-Date: Wed, 16 Oct 2024 13:42:11 -0300
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] tests/functional: Convert most Aspeed machine tests
-To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ AJvYcCXjI8TkoR4ixBxE0zXqFk5GKYnhoiIIt1phmcYD4xg0hkvjI+aOOXChZp7cCqu9MNvaBqHQzqIrQg==@nongnu.org
+X-Gm-Message-State: AOJu0YxRc0R2dNawCF48YJmgyd8QeC/NwNobi3z4TvAWQvsvC16FyIaM
+ VRrkof+qcKtHKgXKfm2Cr4sWfvIC38hL07WanUsKVrOiTeyY22YcXNEfjQ==
+X-Received: by 2002:a17:907:f148:b0:a99:f1aa:a71f with SMTP id
+ a640c23a62f3a-a9a34d3cd85mr474036866b.11.1729113856989; 
+ Wed, 16 Oct 2024 14:24:16 -0700 (PDT)
+Received: from archlinux.. (dynamic-077-191-025-143.77.191.pool.telefonica.de.
+ [77.191.25.143]) by smtp.gmail.com with ESMTPSA id
+ a640c23a62f3a-a9a29750a9asm218005766b.88.2024.10.16.14.24.15
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 16 Oct 2024 14:24:16 -0700 (PDT)
+From: Bernhard Beschow <shentey@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: Jason Wang <jasowang@redhat.com>, qemu-arm@nongnu.org,
  Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Jamin Lin <jamin_lin@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- Thomas Huth <thuth@redhat.com>
-References: <20241016090741.2026630-1-clg@redhat.com>
- <Zw-HwHsGaO0W2fbc@redhat.com>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <Zw-HwHsGaO0W2fbc@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::534;
- envelope-from=philmd@linaro.org; helo=mail-pg1-x534.google.com
+ Guenter Roeck <linux@roeck-us.net>, Paolo Bonzini <pbonzini@redhat.com>,
+ Bernhard Beschow <shentey@gmail.com>
+Subject: [PATCH v2 0/5] Consolidate lan9118 phy implementations
+Date: Wed, 16 Oct 2024 23:24:02 +0200
+Message-ID: <20241016212407.139390-1-shentey@gmail.com>
+X-Mailer: git-send-email 2.47.0
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::633;
+ envelope-from=shentey@gmail.com; helo=mail-ej1-x633.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -137,109 +128,50 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: NFzYXyqAM2Ny
+X-TUID: bIctePf4jUAc
 
-On 16/10/24 06:30, Daniel P. Berrangé wrote:
-> On Wed, Oct 16, 2024 at 11:07:41AM +0200, Cédric Le Goater wrote:
->> This is a simple conversion of the tests with some cleanups and
->> adjustments to match the new test framework. Replace the zephyr image
->> MD5 hashes with SHA256 hashes while at it.
->>
->> The SDK tests depend on a ssh class from avocado.utils which is
->> difficult to replace. To be addressed separately.
->>
->> Signed-off-by: Cédric Le Goater <clg@redhat.com>
->> ---
->>   tests/avocado/machine_aspeed.py     | 252 --------------------------
->>   tests/functional/meson.build        |   2 +
->>   tests/functional/test_arm_aspeed.py | 269 ++++++++++++++++++++++++++++
->>   3 files changed, 271 insertions(+), 252 deletions(-)
->>   create mode 100644 tests/functional/test_arm_aspeed.py
->>
->> diff --git a/tests/functional/test_arm_aspeed.py b/tests/functional/test_arm_aspeed.py
->> new file mode 100644
->> index 000000000000..2f9a90f64d8f
->> --- /dev/null
->> +++ b/tests/functional/test_arm_aspeed.py
->> @@ -0,0 +1,269 @@
->> +#!/usr/bin/env python3
->> +#
->> +# Functional test that boots the ASPEED SoCs with firmware
->> +#
->> +# Copyright (C) 2022 ASPEED Technology Inc
->> +#
->> +# SPDX-License-Identifier: GPL-2.0-or-later
->> +
->> +import os
->> +import time
->> +import subprocess
->> +import tempfile
->> +
->> +from qemu_test import QemuSystemTest, Asset
->> +from qemu_test import wait_for_console_pattern
->> +from qemu_test import exec_command_and_wait_for_pattern
->> +from qemu_test import interrupt_interactive_console_until_pattern
->> +from qemu_test import exec_command
->> +from qemu_test import has_cmd
->> +from qemu_test.utils import archive_extract
->> +from zipfile import ZipFile
->> +from unittest import skipUnless
->> +
->> +class AST1030Machine(QemuSystemTest):
->> +
->> +    def test_ast1030_zephyros_1_04(self):
->> +        asset_url = Asset(
->> +            ('https://github.com/AspeedTech-BMC'
->> +             '/zephyr/releases/download/v00.01.04/ast1030-evb-demo.zip'),
->> +            '4ac6210adcbc61294927918707c6762483fd844dde5e07f3ba834ad1f91434d3')
-> 
-> Don't instantiate assets inline to test code, as this makes them
-> invisible to the logic that pre-downloads assets prior to running
-> tests. As a result you're liable to have test timeouts if the
-> on-the-fly asset download takes too long.
-> 
-> Instead You should use a class level varible with an "ASSET_" name
-> prefix eg
-> 
->     ASSET_<BLAH> = Asset(....)
-
-This is somehow documented in docs/devel/testing/functional.rst but
-could be clarified:
-
-   The second problem with downloading files from the internet are time
-   constraints. The time for downloading files should not be taken into
-   account when the test is running and the timeout of the test is
-   ticking (since downloading can be very slow, depending on the network
-   bandwidth).
-   This problem is solved by downloading the assets ahead of time, before
-   the tests are run. This pre-caching is done with the qemu_test.Asset
-   class. To use it in your test, declare an asset in your test class
-   with its URL and SHA256 checksum like this::
-
-       ASSET_somename = (
-           ('https://www.qemu.org/assets/images/qemu_head_200.png'),
- 
-'34b74cad46ea28a2966c1d04e102510daf1fd73e6582b6b74523940d5da029dd')
-
-
-> 
-> See other converted tests for examples of the pattern.
-> 
->> +        kernel_name = "ast1030-evb-demo/zephyr.elf"
->> +        zip_file = asset_url.fetch()
->> +        with ZipFile(zip_file, 'r') as zf:
->> +                     zf.extract(kernel_name, path=self.workdir)
->> +        kernel_file = os.path.join(self.workdir, kernel_name)
->> +
->> +        self.set_machine('ast1030-evb')
->> +        self.vm.set_console()
->> +        self.vm.add_args('-kernel', kernel_file, '-nographic')
->> +        self.vm.launch()
->> +        wait_for_console_pattern(self, "Booting Zephyr OS")
->> +        exec_command_and_wait_for_pattern(self, "help",
->> +                                          "Available commands")
->> +
-> 
-> With regards,
-> Daniel
-
+hw/net/imx_fec and hw/net/lan9118 implement the same Ethernet PHY with simi=
+lar=0D
+but not quite the same code. This series consolidates the implementations i=
+nto=0D
+one to fix code duplication. It then continues to make the code more readab=
+le by=0D
+reusing some existing constants.=0D
+=0D
+Having a dedicated module for the PHY allows it to be reused in even furthe=
+r=0D
+device models.=0D
+=0D
+Testing done:=0D
+* Run my usual sabrelite load and verify that network works.=0D
+* Build and run Buildroot's qemu_arm_vexpress_defconfig which includes lan9=
+118=0D
+  and check on serial console that IP address gets assigned.=0D
+=0D
+v2:=0D
+* QOM'ify + mention boards whose migratability will be broken (Peter)=0D
+=0D
+Bernhard Beschow (5):=0D
+  hw/resettable: Add SOFT reset type=0D
+  hw/net/lan9118: Extract lan9118_phy=0D
+  hw/net/lan9118_phy: Reuse in imx_fec and consolidate implementations=0D
+  hw/net/lan9118_phy: Reuse MII constants=0D
+  hw/net/lan9118_phy: Add missing 100 mbps full duplex advertisement=0D
+=0D
+ include/hw/net/imx_fec.h     |   9 +-=0D
+ include/hw/net/lan9118_phy.h |  36 ++++++=0D
+ include/hw/net/mii.h         |   6 +=0D
+ include/hw/resettable.h      |   1 +=0D
+ hw/net/imx_fec.c             | 146 +++---------------------=0D
+ hw/net/lan9118.c             | 137 ++++------------------=0D
+ hw/net/lan9118_phy.c         | 215 +++++++++++++++++++++++++++++++++++=0D
+ hw/net/Kconfig               |   5 +=0D
+ hw/net/meson.build           |   1 +=0D
+ hw/net/trace-events          |  10 +-=0D
+ 10 files changed, 311 insertions(+), 255 deletions(-)=0D
+ create mode 100644 include/hw/net/lan9118_phy.h=0D
+ create mode 100644 hw/net/lan9118_phy.c=0D
+=0D
+-- =0D
+2.47.0=0D
+=0D

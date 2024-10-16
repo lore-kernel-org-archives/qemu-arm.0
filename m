@@ -1,116 +1,115 @@
-Received: by 2002:a17:504:3c0d:b0:1be9:327d:8ee3 with SMTP id y13csp938398nji;
-        Wed, 16 Oct 2024 14:25:09 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUf0+4UkV25juOMCigZYO1kXaYMCObp6IHvq8P1D0aYpa0TYPFf3khNfYNwhFTSMmhZ3ZRz/3KdLn7UAQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IHxaZ+H7XdN5BWsTi99L64rceTzLJETKw1CxyLy3vv4OhHv5JDARFoFb2eiZKRCABW1B1wN
-X-Received: by 2002:a05:6102:3f11:b0:4a3:d82f:c68f with SMTP id ada2fe7eead31-4a465994bcamr19954184137.9.1729113909190;
-        Wed, 16 Oct 2024 14:25:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1729113909; cv=none;
+Received: by 2002:a17:504:3c0d:b0:1be9:327d:8ee3 with SMTP id y13csp938547nji;
+        Wed, 16 Oct 2024 14:25:31 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVrnTpVmAVEpGpUwIEu6vNl7rnr+zfVfU2W47m7WRnlJ/xqIZB8YSCoaxKhqyvPj56WQuuivZTnguL48g==@linaro.org
+X-Google-Smtp-Source: AGHT+IGNKl5B1VG8HsMjku3aAcwPYTEI9kRGHfngr6LakTtNctEgSFUd8PI06obsxszTljoTBNxv
+X-Received: by 2002:a05:6808:3099:b0:3e3:9a29:c6f2 with SMTP id 5614622812f47-3e5c90bb200mr16499537b6e.6.1729113931774;
+        Wed, 16 Oct 2024 14:25:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1729113931; cv=none;
         d=google.com; s=arc-20240605;
-        b=LMwuC85ewesT8Dm20gS5nGncHAhw370+JXqDsyULMnaZSohHkC1S64SJiATGejPYgG
-         m+/BOVbXHIUbTl4MrLjBS6V1/Ogi8ZDRyY1PfmYoaJtvXUTYgFUPLU8I1mem567XJKaH
-         stWP2QdgVzT2AFWAxoIZ8qshERozJAUG4aPsgvv/JGmNlsAicBpkeATfGHalTfU3dVJe
-         cb2ZMDgJZJuEHIyx/Hzy1Bs/KUNjbx37CyMOsxjB98LN6fy8A+vYxRxX2/W+vKpSjvFn
-         Dq0A3E4asiqeTY1Eze8SBJ27feJXGModXbBRcs1+hbI5iYtcVg+lByv2HRtnrfMy/PIY
-         xt1w==
+        b=JUR0GdE86YL76ThAKCo9a+j+piUEm9m18D7sQXtsZHnEKVOxotK6INSXNXu6a1QhBk
+         4mTx3Lv9tGfARnA15uHrjomKCgC1/z9XXkO2s9fxa8OpfNPrZ+730aLzJsPEb/jOTdUw
+         yJ7uQpnHidAxg+wWcsX9WN26GfVKPMKDnEMB8uk3zoExDkjd04sFyHYnW1YNExVLVJPq
+         P9eNf2lLK/zqPYZWXEXdVs16Hc3zjUYTgE5EzE2WWmm6Mj5IVCNao80ZsknkLgURW5At
+         CHWv9lkWF8YkjgVRG2dByd3dm3O24UgQK0c4HHsHGlL4SGH6lFQ5/rnp+97+FIyBhPb3
+         ljxg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=tnMQo+rYjxc+6D6y/U+RZNjtUqKrnuqcrTxxP6UZ8ck=;
-        fh=r0zeeSnLjCY7SdcGonag4rayPqxvrpAhxGVHz+JujEs=;
-        b=i++ajqvwuP669L5fXkujYoWYMSTmrejw6pOsr7G+9LIDepyhWBWibA/51Y5vy8jm8z
-         Bsnvw9XD8KbBkn76X2cse1sUIeMNMB9+5aZADCPfbKBhVhCcZHEC/9uTXJ/k+kfGoYMY
-         3wk/VxPTTOMHlDPjUG1zX6ymmJqmQLSVTgbty8RNYBfv/4s0ZnHUY7HxuvMZr6n08cqb
-         BcjtNZUN9U46Jd75HCU07+E4hKmgcGKuWkUz8NXfOUnIOpkijxwGGYaKm2EgvI4G96Nl
-         PkYv57GatCL1hCkW0s1c6iF631wGoNdex4CmzsI85a+bj3/fTnFfixiGBVXOfyX8tE0p
-         HToA==;
+        bh=s3D1Ytcxm8HdYzUOAcr5hC/ohLTIwUIkdZ77sZiIviA=;
+        fh=EFVxB3ZdN4Z2ggDQNYUum370a8rJcqcajUOmFj48EKE=;
+        b=Rb7IfHeDR1r3yQyjPRA4bGiCIRYWkZflX6f370LefU4AHKZKkY3bnTWoj8keZLdX74
+         jRNEGNSuhoAahm1tMaR1bg1bqyQnsacR+DEpzv2f8r0viR81MhRw10kNFYvMiiRdlRxQ
+         Bz1TAI1odjFVNrvWUutekCVWbPg5G8OPoLNhg/FyyUkGmhW/NF4ldxBR1LeMXcqg3Wfc
+         RhkMYxZdZCYntghK7zTDQBDSomlsWhCNLnPhH3w/3X48VpPG6/iqicwaBR7CyYmxkwh7
+         SAK3xJ5ywoJdS5g3v4vH8u9Cv1vttup5JMfm2yShVOIdxiye+jDtCXjYd0p0N2d2sxf/
+         IQAg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=ZpxUk89t;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=DE48Xfwa;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6cc22b3b0desi47889286d6.328.2024.10.16.14.25.09
+        by mx.google.com with ESMTPS id 6a1803df08f44-6cc229ccdc2si47466726d6.58.2024.10.16.14.25.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 16 Oct 2024 14:25:09 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 16 Oct 2024 14:25:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=ZpxUk89t;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=DE48Xfwa;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1t1BVO-0002A2-FK; Wed, 16 Oct 2024 17:24:30 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1t1BVO-00029o-6O; Wed, 16 Oct 2024 17:24:30 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1t1BVM-00028s-RO; Wed, 16 Oct 2024 17:24:29 -0400
-Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
+ id 1t1BVL-00028J-LI; Wed, 16 Oct 2024 17:24:27 -0400
+Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1t1BVL-00013p-DX; Wed, 16 Oct 2024 17:24:28 -0400
-Received: by mail-ed1-x532.google.com with SMTP id
- 4fb4d7f45d1cf-5c97c7852e8so440035a12.1; 
- Wed, 16 Oct 2024 14:24:26 -0700 (PDT)
+ id 1t1BVJ-00013U-WB; Wed, 16 Oct 2024 17:24:27 -0400
+Received: by mail-ej1-x631.google.com with SMTP id
+ a640c23a62f3a-a99cc265e0aso30576566b.3; 
+ Wed, 16 Oct 2024 14:24:25 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1729113865; x=1729718665; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1729113864; x=1729718664; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=tnMQo+rYjxc+6D6y/U+RZNjtUqKrnuqcrTxxP6UZ8ck=;
- b=ZpxUk89teF9wDoztiihljPps6VmsgFvy7z+erGmcwhX05MutdYtqnB8fhPiCdmL81w
- L8E6g6f+GzZFVoYM0zaNA28rliEr4eA9KHywn9MGiMLzJxYm3ja+JFe8pmhUIUI+NnMw
- s2yqtnH6IbydNjFJuSRmS7n4AMIXk4E+vt+psRSrYWmWtLYtH7u8l7ikuzl5vDAwb2Aw
- /Nj7MkJbSAreFT34/OkXeocfu8mzfk4d2NW1/pjwObkBMpjP3N2+3qDX24C+u8u1XFFy
- qdTdMPEKnKp+YWSyfGBW/0HK53bFCaG7brTK6JNBZ/9MtXIR7YF/ZC0UNmnWW1Zewqbo
- p0oA==
+ bh=s3D1Ytcxm8HdYzUOAcr5hC/ohLTIwUIkdZ77sZiIviA=;
+ b=DE48Xfwa+3rDm2Rcqy8ZJ9R036mZBf+V+ObGXG2XIzkMBeGIFXV4797nPOzofUAQwz
+ gTIjzsMK4PF+1nqCum8D/hSmUMa3xLDKK1Ph1zCYFb9IFttb+Nt/KuqtkzpU3+1T5/An
+ eGFbcBsWJOhVWaWj4fKlo0nCLMLZNbho0vre+E8wiPx5ygh91juNasxHvYi7Kan/WhcE
+ 4PJFP5oUhO4UXsDgmQAvDtsTOkKHIvtnd2kV2gb7zyUc/ROyK7oJQGo+CBIh0uParW86
+ iOE3dHtgwZpf8H/J/5S8HUOn+PSYJkVenm4bIaGtlMUpmEzzwSdVy+gPqBdEvbOmunA3
+ bImA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1729113865; x=1729718665;
+ d=1e100.net; s=20230601; t=1729113864; x=1729718664;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=tnMQo+rYjxc+6D6y/U+RZNjtUqKrnuqcrTxxP6UZ8ck=;
- b=D20dCSOvdRT46BQMdsj3UktQEcAvpOsMZ0RHlHO6Q10qLS9EN4JkJLf3SrigaKuQgv
- 5YNBQT9ZwyBxQDlHgh9tQEcrZnKW0Ia1qNXHp76ghaMeX6tkrTadxwAnbjkR+9uTlK7V
- 7I9UYtaELDurrGoBdEI600N4COBwxis71K1fwqwdTPqFzW7r0QdrQS6/kXL8zrvb31ea
- c7tnxER++xpt/C27UtxuVBUOE8vLmE8+OM75roGioP9TyzXkr9hdBzSAbZxDQaDZmH3T
- LHXfz+DpK/u+KfOL68YyMPiGY6yQVWn1EwwuB0YrXqosSMRVW+8lBZ5YOt/rC7uXq7+i
- IBEw==
+ bh=s3D1Ytcxm8HdYzUOAcr5hC/ohLTIwUIkdZ77sZiIviA=;
+ b=PkePhFFsbQ87RsqkSxWsxSEGNzYfKS8URp03wgCp08lK0N3h5eyUk7cRc9LuSPdpCC
+ uD0CoVQ0b736mJnyDHUmSsinakGlg3G/G72STawlYJ03MErcBkO/o5fYeYU0UMDUZzHd
+ L+ZO865tQWR12M9yY9OLL4mVFB58DJNq3YG3R1K436fmy3liHR695O5lSsJgrFzubWk3
+ DYm9aT3v+AjvIlfMyAJ4spMIJY/2FcM+3kGPhC7KCgk9Aa/6y8tVbpZZ18vN9RoNW9Pe
+ u7bOeVI43LqYDjDnMFXRc5WosH2Oy2irqIqkxGsNWzXCxVM2HKt5He3dMehdTkitzfNR
+ 8Qnw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWHLP65N+DImbuC4luu267AAhh/SzPVDtJwrhcfCqTRIe9srghaqoWhDcdFburPJs2vSQT4l4stwA==@nongnu.org
-X-Gm-Message-State: AOJu0YwVrLV49BuxN3NTW0T1XGaKoEOmpZWRvfJVVFK6ltMUhiWD+Adz
- iH1qBJe/7viO6bTOqBqo/GtXIqq8PVi6GsroE4x0w53HGvk2fERcy1DHLw==
-X-Received: by 2002:a17:907:7f12:b0:a99:f945:8776 with SMTP id
- a640c23a62f3a-a99f94588c4mr1369022166b.24.1729113864966; 
- Wed, 16 Oct 2024 14:24:24 -0700 (PDT)
+ AJvYcCUAmCGOGtiXlYgVv1EoCkwTY6zpt1Nd2+fUW5S8eTbWgnaLUR+OQlDldrcRnDaN6CgQJsvlBwzMNA==@nongnu.org
+X-Gm-Message-State: AOJu0YyIS28VK8nB56LPW8zzN9vMD1SYJf+n6bAQ/8yxV8Jy8QL1cfDg
+ ktdHyLX8s0aUgGtWiNe/B7/YBmnYSfdyXmIoeFB1JrB/+VjkqfmFtei3Fw==
+X-Received: by 2002:a17:907:e25f:b0:a99:529d:81ae with SMTP id
+ a640c23a62f3a-a9a34e4c8e8mr398739366b.55.1729113863610; 
+ Wed, 16 Oct 2024 14:24:23 -0700 (PDT)
 Received: from archlinux.. (dynamic-077-191-025-143.77.191.pool.telefonica.de.
  [77.191.25.143]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-a9a29750a9asm218005766b.88.2024.10.16.14.24.23
+ a640c23a62f3a-a9a29750a9asm218005766b.88.2024.10.16.14.24.22
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 16 Oct 2024 14:24:24 -0700 (PDT)
+ Wed, 16 Oct 2024 14:24:22 -0700 (PDT)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Jason Wang <jasowang@redhat.com>, qemu-arm@nongnu.org,
  Peter Maydell <peter.maydell@linaro.org>,
  Guenter Roeck <linux@roeck-us.net>, Paolo Bonzini <pbonzini@redhat.com>,
  Bernhard Beschow <shentey@gmail.com>
-Subject: [PATCH v2 5/5] hw/net/lan9118_phy: Add missing 100 mbps full duplex
- advertisement
-Date: Wed, 16 Oct 2024 23:24:07 +0200
-Message-ID: <20241016212407.139390-6-shentey@gmail.com>
+Subject: [PATCH v2 4/5] hw/net/lan9118_phy: Reuse MII constants
+Date: Wed, 16 Oct 2024 23:24:06 +0200
+Message-ID: <20241016212407.139390-5-shentey@gmail.com>
 X-Mailer: git-send-email 2.47.0
 In-Reply-To: <20241016212407.139390-1-shentey@gmail.com>
 References: <20241016212407.139390-1-shentey@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::532;
- envelope-from=shentey@gmail.com; helo=mail-ed1-x532.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::631;
+ envelope-from=shentey@gmail.com; helo=mail-ej1-x631.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -119,46 +118,178 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: VU2XZejKkXwo
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: DO738Vu39mLO
 
-The real device advertises this mode and the device model already advertises
-100 mbps half duplex and 10 mbps full+half duplex. So advertise this mode to
-make the model more realistic.
+Prefer named constants over magic values for better readability.
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 ---
- hw/net/lan9118_phy.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ include/hw/net/mii.h |  6 +++++
+ hw/net/lan9118_phy.c | 59 +++++++++++++++++++++++++++-----------------
+ 2 files changed, 43 insertions(+), 22 deletions(-)
 
+diff --git a/include/hw/net/mii.h b/include/hw/net/mii.h
+index f7feddac9b..55bf7c92a1 100644
+--- a/include/hw/net/mii.h
++++ b/include/hw/net/mii.h
+@@ -71,6 +71,7 @@
+ #define MII_BMSR_JABBER     (1 << 1)  /* Jabber detected */
+ #define MII_BMSR_EXTCAP     (1 << 0)  /* Ext-reg capability */
+ 
++#define MII_ANAR_RFAULT     (1 << 13) /* Say we can detect faults */
+ #define MII_ANAR_PAUSE_ASYM (1 << 11) /* Try for asymmetric pause */
+ #define MII_ANAR_PAUSE      (1 << 10) /* Try for pause */
+ #define MII_ANAR_TXFD       (1 << 8)
+@@ -78,6 +79,7 @@
+ #define MII_ANAR_10FD       (1 << 6)
+ #define MII_ANAR_10         (1 << 5)
+ #define MII_ANAR_CSMACD     (1 << 0)
++#define MII_ANAR_SELECT     (0x001f)  /* Selector bits */
+ 
+ #define MII_ANLPAR_ACK      (1 << 14)
+ #define MII_ANLPAR_PAUSEASY (1 << 11) /* can pause asymmetrically */
+@@ -112,6 +114,10 @@
+ #define RTL8201CP_PHYID1    0x0000
+ #define RTL8201CP_PHYID2    0x8201
+ 
++/* SMSC LAN9118 */
++#define SMSCLAN9118_PHYID1  0x0007
++#define SMSCLAN9118_PHYID2  0xc0d1
++
+ /* RealTek 8211E */
+ #define RTL8211E_PHYID1     0x001c
+ #define RTL8211E_PHYID2     0xc915
 diff --git a/hw/net/lan9118_phy.c b/hw/net/lan9118_phy.c
-index dafea5a875..5f9737556f 100644
+index 06e19c22c9..dafea5a875 100644
 --- a/hw/net/lan9118_phy.c
 +++ b/hw/net/lan9118_phy.c
-@@ -149,8 +149,8 @@ void lan9118_phy_write(Lan9118PhyState *s, int reg, uint32_t val)
+@@ -14,6 +14,7 @@
+ 
+ #include "qemu/osdep.h"
+ #include "hw/net/lan9118_phy.h"
++#include "hw/net/mii.h"
+ #include "hw/irq.h"
+ #include "hw/resettable.h"
+ #include "migration/vmstate.h"
+@@ -40,11 +41,11 @@ void lan9118_phy_update_link(Lan9118PhyState *s, bool link_down)
+     /* Autonegotiation status mirrors link status. */
+     if (link_down) {
+         trace_lan9118_phy_update_link("down");
+-        s->status &= ~0x0024;
++        s->status &= ~(MII_BMSR_AN_COMP | MII_BMSR_LINK_ST);
+         s->ints |= PHY_INT_DOWN;
+     } else {
+         trace_lan9118_phy_update_link("up");
+-        s->status |= 0x0024;
++        s->status |= MII_BMSR_AN_COMP | MII_BMSR_LINK_ST;
+         s->ints |= PHY_INT_ENERGYON;
+         s->ints |= PHY_INT_AUTONEG_COMPLETE;
+     }
+@@ -57,9 +58,18 @@ static void lan9118_phy_reset(Object *obj, ResetType type)
+ 
+     trace_lan9118_phy_reset();
+ 
+-    s->status = 0x7809;
+-    s->control = 0x3000;
+-    s->advertise = 0x01e1;
++    s->status = MII_BMSR_100TX_FD
++                | MII_BMSR_100TX_HD
++                | MII_BMSR_10T_FD
++                | MII_BMSR_10T_HD
++                | MII_BMSR_AUTONEG
++                | MII_BMSR_EXTCAP;
++    s->control = MII_BMCR_AUTOEN | MII_BMCR_SPEED100;
++    s->advertise = MII_ANAR_TXFD
++                   | MII_ANAR_TX
++                   | MII_ANAR_10FD
++                   | MII_ANAR_10
++                   | MII_ANAR_CSMACD;
+     s->int_mask = 0;
+     s->ints = 0;
+     lan9118_phy_update_link(s, s->link_down);
+@@ -70,26 +80,26 @@ uint32_t lan9118_phy_read(Lan9118PhyState *s, int reg)
+     uint32_t val;
+ 
+     switch (reg) {
+-    case 0: /* Basic Control */
++    case MII_BMCR:
+         val = s->control;
          break;
-     case MII_ANAR:
-         s->advertise = (val & (MII_ANAR_RFAULT | MII_ANAR_PAUSE_ASYM |
--                               MII_ANAR_PAUSE | MII_ANAR_10FD | MII_ANAR_10 |
--                               MII_ANAR_SELECT))
-+                               MII_ANAR_PAUSE | MII_ANAR_TXFD | MII_ANAR_10FD |
-+                               MII_ANAR_10 | MII_ANAR_SELECT))
-                      | MII_ANAR_TX;
+-    case 1: /* Basic Status */
++    case MII_BMSR:
+         val = s->status;
+         break;
+-    case 2: /* ID1 */
+-        val = 0x0007;
++    case MII_PHYID1:
++        val = SMSCLAN9118_PHYID1;
+         break;
+-    case 3: /* ID2 */
+-        val = 0xc0d1;
++    case MII_PHYID2:
++        val = SMSCLAN9118_PHYID2;
+         break;
+-    case 4: /* Auto-neg advertisement */
++    case MII_ANAR:
+         val = s->advertise;
+         break;
+-    case 5: /* Auto-neg Link Partner Ability */
++    case MII_ANLPAR:
+         val = 0x0f71;
+         break;
+-    case 6: /* Auto-neg Expansion */
+-        val = 1;
++    case MII_ANER:
++        val = MII_ANER_NWAY;
+         break;
+     case 29: /* Interrupt source. */
+         val = s->ints;
+@@ -124,19 +134,24 @@ void lan9118_phy_write(Lan9118PhyState *s, int reg, uint32_t val)
+     trace_lan9118_phy_write(val, reg);
+ 
+     switch (reg) {
+-    case 0: /* Basic Control */
+-        if (val & 0x8000) {
++    case MII_BMCR:
++        if (val & MII_BMCR_RESET) {
+             lan9118_phy_reset(OBJECT(s), RESET_TYPE_SOFT);
+         } else {
+-            s->control = val & 0x7980;
++            s->control = val & (MII_BMCR_LOOPBACK | MII_BMCR_SPEED100 |
++                                MII_BMCR_AUTOEN | MII_BMCR_PDOWN | MII_BMCR_FD |
++                                MII_BMCR_CTST);
+             /* Complete autonegotiation immediately. */
+-            if (val & 0x1000) {
+-                s->status |= 0x0020;
++            if (val & MII_BMCR_AUTOEN) {
++                s->status |= MII_BMSR_AN_COMP;
+             }
+         }
+         break;
+-    case 4: /* Auto-neg advertisement */
+-        s->advertise = (val & 0x2d7f) | 0x80;
++    case MII_ANAR:
++        s->advertise = (val & (MII_ANAR_RFAULT | MII_ANAR_PAUSE_ASYM |
++                               MII_ANAR_PAUSE | MII_ANAR_10FD | MII_ANAR_10 |
++                               MII_ANAR_SELECT))
++                     | MII_ANAR_TX;
          break;
      case 30: /* Interrupt mask */
+         s->int_mask = val & 0xff;
 -- 
 2.47.0
 

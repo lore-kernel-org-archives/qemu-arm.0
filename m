@@ -1,116 +1,117 @@
-Received: by 2002:a17:505:18c3:b0:1be9:327d:8ee3 with SMTP id tt3csp333992njb;
-        Thu, 17 Oct 2024 10:16:36 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVVfns/1HB0En6GRYBwfd5L6Nz/mzcNhU6CBUUTzsYXE3NtZO3OJzgtWYOy/9Ll9Yq9ZJNKxOy5eeivBQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IE9zrb13ICEHFDwgkmiZmz2/NwYx8kbvyE/7dJJBh9lZ/JQBx4wKE4TVt5V3d/27tHihzY5
-X-Received: by 2002:a05:6214:3986:b0:6cb:dd09:7b54 with SMTP id 6a1803df08f44-6cc2b8bb819mr120375956d6.6.1729185396668;
-        Thu, 17 Oct 2024 10:16:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1729185396; cv=none;
+Received: by 2002:a17:505:18c3:b0:1be9:327d:8ee3 with SMTP id tt3csp335463njb;
+        Thu, 17 Oct 2024 10:19:12 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWU3/chnKL1Ab57zbpjXVw0l0/7IRq/Qf+7/BtRVjErRCsHH5VFDWTuD0N5/Nl485+XjCAZH2fdaRRmDQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IFHAYFqfq6j07t2iFI6KZsVcawI7bIZzalYKCrsLkcV/jS3dnFWVY8Uh/UiG4XRKQsvIyN3
+X-Received: by 2002:a05:620a:2986:b0:7af:cdd7:d6e5 with SMTP id af79cd13be357-7b1417a24c7mr1124759885a.5.1729185552231;
+        Thu, 17 Oct 2024 10:19:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1729185552; cv=none;
         d=google.com; s=arc-20240605;
-        b=IDCMaAUub588yuHmysWpAY/jRN8m5o55p8nt5VXNJAxQK5Elggl5sf5TcHgch5+wnr
-         ycZp6rlMSKfi2BANHKJJdm0WMy0hKBrQyWgVSARSWQL5RQAgD4D2t3XZk74Wde879pDR
-         Sn7hSJciQbzf14HkGGq7GKXxc/lbwx9JSox6mezULAw4MqC+HXWA5l0WfkwteB4oHQcM
-         p8yue8RC5vjERTMwQdHzdIylAo2sjdI15B8SFi6p81KO4OSkCQf6mKQnPHhvoH5tAj49
-         M4BaLQCh2Pe6U+NxddfeligTwogb6VbWGNFay/5OG1La8lRiUBgN68FOzPuCyfjtPSWa
-         nH0A==
+        b=e7Uy0TVUzwcuII8tWo98ErPBpWyuwYbbNR5GsvSLr79L9AshSzNJxnAhva741xAYcw
+         39ZXt0kOSx422VFIZVvF3T/TLuLTcXXQb+lh/oDe3iqs8QQRrxa6T/rKJNCIE1qt3nbm
+         NpHPcxZR/enK+wOheTijHWTaYneLkO1LgTSgUGRIIeoCwPAZHCDtu2s5IkFznCpRiYMO
+         k53GowoLDwPX8pPbw/iygI1yvE4DUzsJKvkjV6j1SXeB/DTrRi1GqBFNH5/YPFswtkAs
+         357tRoZeLoh3/yS4NTA4n5fnSDhpVD/wapePMPA+izQunqS5NpDGvMhf2r6xZrXc116P
+         tJyQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:autocrypt:from:references:cc:to
+         :in-reply-to:autocrypt:from:content-language:references:cc:to
          :subject:user-agent:mime-version:date:message-id:dkim-signature;
-        bh=EvuPZhiNa/w6z9pGKPjV6aHsr0tG/I535eh9chaLunI=;
-        fh=vCf+ijVu54lqhgr0UKlsbbSsUZLfJyv0rOAESGbZ27Y=;
-        b=ImT4uwjp94Af2CR0lxxFDZh3rCmieP3k1esCtjEz6LQFgS71B/YNoBljRVbYJLNiqY
-         xoPSX9QLrVx63LgK/IXwq8eTgvEntry8r2DW6NjqYhbm94aTJn0d74ZSi+l631PTolq3
-         4DSv5kV3LMN8xBP934fEQuvbDs8DFcoLPGpFovzCi+R8o6OohUrQi9AX0gv0ZsQcejd8
-         L/FCmDUBAzxm4riPDio+e1SNMjutYnSJVpisJc9R44ga7ZTP2PiVHt/PnaNuxH/SRI4H
-         rrWw230ownJ3BehnC8NJgoLJaLcRWJXqKeI+Ob+eMvbtb+F1WJah5JtvqMkdBQ7uCdRl
-         X27A==;
+        bh=EvIStF4w9OyQ5tqyoopsYC/PFkbUhaQn37tIE4UQB/w=;
+        fh=3gfzdwWRJz3WSc21aV+zhCcittoaAKY+VWWSe9IPf0I=;
+        b=DES33jXj6VhKpIdLM3RWpiztOGqQkkNBx16/Ivu9qvDn8hcCiPq+6YspEzi/AHvuTN
+         y115j6AQWUqJ3uwa+a9nGGYSeU2N/+4saCtj86KIJ46L+lYwvASl2o7v5GoArENBKjju
+         SRXTjRwtp5ktd7+aR2od5G8UXhlhtLJTJK4uG5HhlgKqcy00PFkKgFbAk1tXPWAwWqax
+         IcQjoiMtXnqaUSOTE/ZKxdohZE7/i2bHFdUAETrdGxenTPdawel1Mn+0HrqONbGawV+U
+         6MmW+N/wq9PzTJQqViDcLTxowzVi1xFglwiHNvWSbHnDM09L2fYfO8dBEwGflUZqrROm
+         eXcA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ALQLvaX3;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DnwzmgK+;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6cc229cc820si67468346d6.76.2024.10.17.10.16.36
+        by mx.google.com with ESMTPS id af79cd13be357-7b1473dc284si367655385a.625.2024.10.17.10.19.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 17 Oct 2024 10:16:36 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 17 Oct 2024 10:19:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ALQLvaX3;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DnwzmgK+;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1t1U6Y-00038g-CT; Thu, 17 Oct 2024 13:16:06 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1t1U92-0003zP-P4; Thu, 17 Oct 2024 13:18:40 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1t1U6W-00035e-DP
- for qemu-arm@nongnu.org; Thu, 17 Oct 2024 13:16:04 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1t1U91-0003yu-1d
+ for qemu-devel@nongnu.org; Thu, 17 Oct 2024 13:18:39 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1t1U6S-00072W-Ae
- for qemu-arm@nongnu.org; Thu, 17 Oct 2024 13:16:04 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1t1U8z-0007ED-6g
+ for qemu-devel@nongnu.org; Thu, 17 Oct 2024 13:18:38 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1729185358;
+ s=mimecast20190719; t=1729185516;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=EvuPZhiNa/w6z9pGKPjV6aHsr0tG/I535eh9chaLunI=;
- b=ALQLvaX3w/eFMPwXb6pLDJcYhWyPxwTC5Dym0mw1oo/3nbcZtu7Qp0DAJIHs68+nqFpuSS
- Sh/jyig0zbZ4oIOdeWluacQRwwChuT6DWSWgCoF3qEpVsFu241BF6ZZqQ/5LsGOvOarM3U
- bPN12gtXTyXSV0eMCQr2c0ekzjVvB1U=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=EvIStF4w9OyQ5tqyoopsYC/PFkbUhaQn37tIE4UQB/w=;
+ b=DnwzmgK+Yl5eumoa3mH8XqpM9AZXDkAqSgJ/NQ49plc1AwqUOZ9hhiUkFbqKqMWPnlHG3N
+ qcv3UjoAt4dfDdhPsw52beYwKcPMORoeVct1dh3LgRIP5so9V7fiN/5r47WA4GIEfX1oZE
+ 6Xmfl5cy+nKCkucDRkcqhVWKjSIBK8k=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-544-197uzD38PYK3nRdLlKFXvw-1; Thu, 17 Oct 2024 13:15:55 -0400
-X-MC-Unique: 197uzD38PYK3nRdLlKFXvw-1
-Received: by mail-wm1-f72.google.com with SMTP id
- 5b1f17b1804b1-4311a383111so7309215e9.3
- for <qemu-arm@nongnu.org>; Thu, 17 Oct 2024 10:15:55 -0700 (PDT)
+ us-mta-629-YG_tfXgVP5ihaW8U2OoR8g-1; Thu, 17 Oct 2024 13:18:34 -0400
+X-MC-Unique: YG_tfXgVP5ihaW8U2OoR8g-1
+Received: by mail-wm1-f69.google.com with SMTP id
+ 5b1f17b1804b1-4315ad4938fso7050155e9.0
+ for <qemu-devel@nongnu.org>; Thu, 17 Oct 2024 10:18:34 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1729185354; x=1729790154;
- h=content-transfer-encoding:in-reply-to:autocrypt:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=EvuPZhiNa/w6z9pGKPjV6aHsr0tG/I535eh9chaLunI=;
- b=LJKSeLw5cJfLSyz8a+tuWa4m49BxaTd+Jf3uRw3qq7NHaeARbFx2Rs93dOCIN5khHd
- pJ5QMU1RpKFkfHSwJh/gARovCBT/xqFYRqcDA82JGVWiP4YlK9f1IYLykyo8lcYlHGXw
- 9ag8yukb/oF+Psh/uPLUo69FW9GJDz6gjI3Y8KZKFDeiJtNeoD1PTIq9MYMMIePNZ7V9
- gXNJ4cirDWYfckLrtRrwoUYqS8Q+B1HCTzBSf7vA8jzzhy5Bth90hor9OSbaUA2RhWTL
- S07FcIiPvSdc712P5tZCok0BhI1fH0QhvTKKm6cl74BbYZSFblH2F6c0iiIwy7eeUHx6
- wofg==
+ d=1e100.net; s=20230601; t=1729185513; x=1729790313;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from
+ :content-language:references:cc:to:subject:user-agent:mime-version
+ :date:message-id:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=EvIStF4w9OyQ5tqyoopsYC/PFkbUhaQn37tIE4UQB/w=;
+ b=Vj/Qb0OaOm87yrdE3SLCwKorEvAox0lV/+zVpx0cTjb7jeUcV7kqLIvpJ30TJXABnQ
+ lm97Xreuk1qCff77cAaQ3SoDgkCOc2UfU80quG+/wZktHlvdlPqz17f/DMGpIbPJV6x6
+ KsUHWy9p1qN533eWLJGHq3xCL4RgV5PQUkR3NG49gENJvZIuWfegfPd8seyAk1o8QWpf
+ r3zBzFkQjHDj/j3t1olWMhHgx2WrK21caIX0f0FUxC11bAmITW/Iwo7sPYVzYrzHXcGg
+ Rw8Uac1ZtizZ2AhAUZy5CXcx921kxZBwaVYG9JHUq4xVvP8N6clcfzhEKYFWOIZmwijW
+ xF1A==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWphq21SQ6edVAZmxTLSkZAVyDIz/nqyRMGv5l7Ql8u7b+0r2OA555r7586hRuTWKlG8FGPhjdgWA==@nongnu.org
-X-Gm-Message-State: AOJu0YxcGYClBiBrPcyIhg8Mcgk1YIrEAc4i0cYGuh0CDRk05TLSDeeO
- XSqmmZlYrgjhub/xJWRSqE3TpiqHIAD0EFbwRWodRXSQZmxwn6IJ0xNACOL+SsRyGP+9IKQHl+S
- P4yZlDDnHdUTm430OYRxqWPAvyutSnmp2YatImmVBfSYdE/AXeoR5qK+ofci+
-X-Received: by 2002:a05:600c:1d99:b0:431:58c4:2eb9 with SMTP id
- 5b1f17b1804b1-43158c430f0mr26798895e9.3.1729185354409; 
- Thu, 17 Oct 2024 10:15:54 -0700 (PDT)
-X-Received: by 2002:a05:600c:1d99:b0:431:58c4:2eb9 with SMTP id
- 5b1f17b1804b1-43158c430f0mr26798735e9.3.1729185353904; 
- Thu, 17 Oct 2024 10:15:53 -0700 (PDT)
+ AJvYcCXBYn8BpdItPaqy5kLl6YfcVpwMjsC0CWWembAC/XvbmVoJtRacgjbHKvFgkv+czi58zzVdwZFC3XOT@nongnu.org
+X-Gm-Message-State: AOJu0Yw3on39oeT58IhtSAWYfMy/9oEYWfnpEd+Y8fGNeVpj/SdD82Bi
+ owuaHzodqbhDdWpOG7Zk5PNFpMR1kbXlO1cIbfB2UFdAF4yC7gWcPgncezmb3utQXTFnyiThZ/u
+ NnVv9G1mj5lLZlPoWHFRDO+50p7HvBUXd7PQnJqD5nEMFD9wAWw6w
+X-Received: by 2002:adf:a3d7:0:b0:37d:52e3:e3f0 with SMTP id
+ ffacd0b85a97d-37d86d3cb13mr4798627f8f.44.1729185513410; 
+ Thu, 17 Oct 2024 10:18:33 -0700 (PDT)
+X-Received: by 2002:adf:a3d7:0:b0:37d:52e3:e3f0 with SMTP id
+ ffacd0b85a97d-37d86d3cb13mr4798610f8f.44.1729185512799; 
+ Thu, 17 Oct 2024 10:18:32 -0700 (PDT)
 Received: from [192.168.0.7] (ip-109-42-50-24.web.vodafone.de. [109.42.50.24])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4316069e8f6sm1500445e9.30.2024.10.17.10.15.52
+ ffacd0b85a97d-37d7fa90547sm7826081f8f.49.2024.10.17.10.18.31
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 17 Oct 2024 10:15:53 -0700 (PDT)
-Message-ID: <3ba99e35-3ef0-4c70-b7bc-e3682d090204@redhat.com>
-Date: Thu, 17 Oct 2024 19:15:50 +0200
+ Thu, 17 Oct 2024 10:18:32 -0700 (PDT)
+Message-ID: <70ac6525-85d6-4d0d-bf35-4d6bc924c8a8@redhat.com>
+Date: Thu, 17 Oct 2024 19:18:30 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/2] tests/functional: Add a functional test for the
- collie board
+Subject: Re: [PATCH 2/2] tests/functional: Add a functional test for the sx1
+ board
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 Cc: Guenter Roeck <linux@roeck-us.net>
 References: <20241017163247.711244-1-peter.maydell@linaro.org>
- <20241017163247.711244-2-peter.maydell@linaro.org>
+ <20241017163247.711244-3-peter.maydell@linaro.org>
+Content-Language: en-US
 From: Thomas Huth <thuth@redhat.com>
 Autocrypt: addr=thuth@redhat.com; keydata=
  xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
@@ -154,13 +155,10 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <20241017163247.711244-2-peter.maydell@linaro.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
+In-Reply-To: <20241017163247.711244-3-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -21
 X-Spam_score: -2.2
@@ -171,95 +169,144 @@ X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.068,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: bxzfjFmQgd7H
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: xZ6lPH1BPnWw
 
 On 17/10/2024 18.32, Peter Maydell wrote:
-> Add a functional test for the collie board that uses the kernel and
+> Add a functional test for the sx1 board that uses the kernel and
 > rootfs provided by Guenter Roeck in the linux-test-downloads repo:
 >   https://github.com/groeck/linux-test-downloads/
 > 
-> This just boots Linux with a userspace that immediately reboots
-> the board, so we wait for the reboot log line.
+> We have three variants of the test for this board:
+>    * just boot initrd
+>    * boot with filesystem on SD card
+>    * boot from flash
+> 
+> In all cases these images have a userspace that is configured to
+> immediately reboot the system on successful boot, and the board
+> itself supports telling QEMU to do the reboot, so we only need to
+> wait for QEMU to exit (via -no-reboot).
+> 
+> Since there are three subtests, the test as a whole takes about
+> 80s on my local machine. That's about the same as the aarch64_virt
+> test, so give it the same overall test timeout as that one.
 > 
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->   MAINTAINERS                         |  1 +
->   tests/functional/meson.build        |  1 +
->   tests/functional/test_arm_collie.py | 31 +++++++++++++++++++++++++++++
->   3 files changed, 33 insertions(+)
->   create mode 100755 tests/functional/test_arm_collie.py
+> The sdcard test requires the 'hw/sd/omap_mmc: Don't use sd_cmd_type_t' bugfix.
+> ---
+>   tests/functional/meson.build     |  2 +
+>   tests/functional/test_arm_sx1.py | 72 ++++++++++++++++++++++++++++++++
+>   2 files changed, 74 insertions(+)
+>   create mode 100755 tests/functional/test_arm_sx1.py
 > 
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index c21d6a2f9e1..10b3360ed40 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -929,6 +929,7 @@ F: hw/arm/strongarm*
->   F: hw/gpio/zaurus.c
->   F: include/hw/arm/sharpsl.h
->   F: docs/system/arm/collie.rst
-> +F: tests/functional/test_arm_collie.py
->   
->   Stellaris
->   M: Peter Maydell <peter.maydell@linaro.org>
 > diff --git a/tests/functional/meson.build b/tests/functional/meson.build
-> index c90c02517a0..0450805a9c4 100644
+> index 0450805a9c4..ec72bfaf63e 100644
 > --- a/tests/functional/meson.build
 > +++ b/tests/functional/meson.build
-> @@ -51,6 +51,7 @@ tests_alpha_system_thorough = [
->   
->   tests_arm_system_thorough = [
->     'arm_canona1100',
-> +  'arm_collie',
+> @@ -16,6 +16,7 @@ test_timeouts = {
+>     'aarch64_virt' : 360,
+>     'acpi_bits' : 240,
+>     'arm_raspi2' : 120,
+> +  'arm_sx1' : 360,
+>     'mips_malta' : 120,
+>     'netdev_ethtool' : 180,
+>     'ppc_40p' : 240,
+> @@ -54,6 +55,7 @@ tests_arm_system_thorough = [
+>     'arm_collie',
 >     'arm_integratorcp',
 >     'arm_raspi2',
+> +  'arm_sx1',
 >     'arm_vexpress',
-> diff --git a/tests/functional/test_arm_collie.py b/tests/functional/test_arm_collie.py
+>   ]
+>   
+> diff --git a/tests/functional/test_arm_sx1.py b/tests/functional/test_arm_sx1.py
 > new file mode 100755
-> index 00000000000..7e144a0a8fb
+> index 00000000000..2d86405831e
 > --- /dev/null
-> +++ b/tests/functional/test_arm_collie.py
-> @@ -0,0 +1,31 @@
+> +++ b/tests/functional/test_arm_sx1.py
+> @@ -0,0 +1,72 @@
 > +#!/usr/bin/env python3
 > +#
-> +# Functional test that boots a Linux kernel on a collie machine
-> +# and checks the console
+> +# Copyright (c) 2024 Linaro Ltd.
+> +#
+> +# Functional test that boots a Linux kernel on an sx1 machine
+> +# and checks the console. We have three variants:
+> +#  * just boot initrd
+> +#  * boot with filesystem on SD card
+> +#  * boot from flash
+> +# In all cases these images have a userspace that is configured
+> +# to immediately reboot the system on successful boot, so we
+> +# only need to wait for QEMU to exit (via -no-reboot).
 > +#
 > +# SPDX-License-Identifier: GPL-2.0-or-later
 > +
 > +from qemu_test import LinuxKernelTest, Asset
 > +from qemu_test.utils import archive_extract
 > +
-> +class CollieTest(LinuxKernelTest):
+> +class SX1Test(LinuxKernelTest):
 > +
 > +    ASSET_ZIMAGE = Asset(
-> +        'https://github.com/groeck/linux-test-downloads/raw/225223f2ad7d637b34426810bf6c3b727b76a718/collie/zImage',
-> +        '10ace8abf9e0875ef8a83b8829cc3b5b50bc6d7bc3ca29f19f49f5673a43c13b')
+> +        'https://github.com/groeck/linux-test-downloads/raw/225223f2ad7d637b34426810bf6c3b727b76a718/sx1/zImage',
+> +        'a0271899a8dc2165f9e0adb2d0a57fc839ae3a469722ffc56c77e108a8887615')
 > +
-> +    ASSET_ROOTFS = Asset(
-> +        'https://github.com/groeck/linux-test-downloads/raw/225223f2ad7d637b34426810bf6c3b727b76a718/collie/rootfs-sa110.cpio',
-> +        '89ccaaa5c6b33331887047e1618ffe81b0f55909173944347d5d2426f3bcc1f2')
+> +    ASSET_INITRD = Asset(
+> +        'https://github.com/groeck/linux-test-downloads/raw/225223f2ad7d637b34426810bf6c3b727b76a718/sx1/rootfs-armv4.cpio',
+> +        '35b0721249821aa544cd85b85d3cb8901db4c6d128eed86ab261e5d9e37d58f8')
 > +
-> +    def test_arm_collie(self):
-> +        self.set_machine('collie')
+> +    ASSET_SD_FS = Asset(
+> +        'https://github.com/groeck/linux-test-downloads/raw/225223f2ad7d637b34426810bf6c3b727b76a718/sx1/rootfs-armv4.ext2',
+> +        'c1db7f43ef92469ebc8605013728c8950e7608439f01d13678994f0ce101c3a8')
+> +
+> +    ASSET_FLASH = Asset(
+> +        'https://github.com/groeck/linux-test-downloads/raw/225223f2ad7d637b34426810bf6c3b727b76a718/sx1/flash',
+> +        '17e6a2758fa38efd2666be0879d4751fd37d194f25168a8deede420df519b676')
+> +
+> +    CONSOLE_ARGS = 'console=ttyS0,115200 earlycon=uart8250,mmio32,0xfffb0000,115200n8'
+> +
+> +    def test_arm_sx1_initrd(self):
+> +        self.set_machine('sx1')
 > +        zimage_path = self.ASSET_ZIMAGE.fetch()
-> +        rootfs_path = self.ASSET_ROOTFS.fetch()
-> +        self.vm.add_args('-append', 'rdinit=/sbin/init console=ttySA1')
+> +        initrd_path = self.ASSET_INITRD.fetch()
+> +        self.vm.add_args('-append', f'kunit.enable=0 rdinit=/sbin/init {self.CONSOLE_ARGS}')
+> +        self.vm.add_args('-no-reboot')
 > +        self.launch_kernel(zimage_path,
-> +                           initrd=rootfs_path,
-> +                           wait_for='reboot: Restarting system')
+> +                           initrd=initrd_path)
+> +        self.vm.wait()
+> +
+> +    def test_arm_sx1_sd(self):
+> +        self.set_machine('sx1')
+> +        zimage_path = self.ASSET_ZIMAGE.fetch()
+> +        sd_fs_path = self.ASSET_SD_FS.fetch()
+> +        self.vm.add_args('-append', f'kunit.enable=0 root=/dev/mmcblk0 rootwait {self.CONSOLE_ARGS}')
+> +        self.vm.add_args('-no-reboot')
+> +        self.vm.add_args('-snapshot')
+> +        self.vm.add_args('-drive', f'format=raw,if=sd,file={sd_fs_path}')
+> +        self.launch_kernel(zimage_path)
+> +        self.vm.wait()
+> +
+> +    def test_arm_sx1_flash(self):
+> +        self.set_machine('sx1')
+> +        zimage_path = self.ASSET_ZIMAGE.fetch()
+> +        flash_path = self.ASSET_FLASH.fetch()
+> +        self.vm.add_args('-append', f'kunit.enable=0 root=/dev/mtdblock3 rootwait {self.CONSOLE_ARGS}')
+> +        self.vm.add_args('-no-reboot')
+> +        self.vm.add_args('-snapshot')
+> +        self.vm.add_args('-drive', f'format=raw,if=pflash,file={flash_path}')
+> +        self.launch_kernel(zimage_path)
+> +        self.vm.wait()
 > +
 > +if __name__ == '__main__':
 > +    LinuxKernelTest.main()

@@ -1,111 +1,116 @@
-Received: by 2002:a17:505:18c3:b0:1be9:327d:8ee3 with SMTP id tt3csp307146njb;
-        Thu, 17 Oct 2024 09:33:08 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVTQZJgJEgoRSMfUuQncHIPg9PrUAGbGT6oOINY9z1JXXjKG94KPp9PWjlWOtVFJQ9ImAFU/IRZKaTNYg==@linaro.org
-X-Google-Smtp-Source: AGHT+IFF8BokPgk7JsKosEk7NzlciINIXDUtAFBzQyBLRyXJcGEjsxzojvCCh2cbP4ggJsBUNyr1
-X-Received: by 2002:a05:622a:1b93:b0:457:c435:a5c2 with SMTP id d75a77b69052e-4604bc492c0mr287504561cf.58.1729182788551;
-        Thu, 17 Oct 2024 09:33:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1729182788; cv=none;
+Received: by 2002:a17:505:18c3:b0:1be9:327d:8ee3 with SMTP id tt3csp307248njb;
+        Thu, 17 Oct 2024 09:33:19 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWtCHP6Aqkmqpdr50jzIx2YHC4qMZEF9PkMW6ZoKxBW9LgWoisNaz12zbU+wZDj67QOKHuP3z/MxoFkTg==@linaro.org
+X-Google-Smtp-Source: AGHT+IG0ivaTRvplIFfb9UQJK7GoTfyewpdL3dlZm3hlaQ4zDBfPpoLtI+yevU4MRSUG6nLxMI7H
+X-Received: by 2002:a05:620a:4153:b0:7a9:aae5:331 with SMTP id af79cd13be357-7b11a35f80bmr3031664385a.21.1729182799603;
+        Thu, 17 Oct 2024 09:33:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1729182799; cv=none;
         d=google.com; s=arc-20240605;
-        b=Rt/mXrltY6Ffv4u/J75Qb8WalDrAStZh+XMGSa5ew6GjKA2fAgEancPyOfYJg7mxIB
-         aAq+tu3hfjGuzHGaZCIu2ZIyALaeDpjHknkz/typpaA4xH+9zVdv79D7Xd/cmWDrb9g6
-         FRJw71vyth4uE1cm2ldUZ4X3ECoGFs7praQofJkymhctp9HJGPRGBFmSxkldORqgUogF
-         qnK8otsoiLQ2gVTPsVpzdB+M8tPNRKzhz1dc2gySjXJLT5kD/3gWp+OC2gcKv/4DbT6I
-         gkuBltXWHKZn7ZdK3tJci+C2FpDsTaHu/ZeCL9nR+LaHINyHoIuFQISJth1jhwwPr19i
-         cFDQ==
+        b=UwV/sBQLZ7/vLzkcUctX8Wq/Zmwl2jGn75aaFIW7LM6kyaM4h0OiUBY5QISZqajGbH
+         hqGPLZqjABNvtnZpR1GCJ+9U/iwAsBZmaNchOj+/n+J+aGzyovQ7zP04rYx2Px+soDx8
+         S/wxJ89tBY9TgJmBuUc6b/evKZx2HBDDZkQA9uNZR8MgC1VbxxwdeUc70HvY6P6obhv8
+         QCgIQ9+w9y5Z+ZgfArvN6SBqTKbz6BHmNohDvHSng2xPGTkLQPrfZL2PmINl8ONrhk98
+         VAOavaNPF9kIvebw7cO5kXlT7YqXYqxgZxHZg+s7JsvgLVUEUHLPRoYkqfWfTohrwmgz
+         ZYPw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=HsByr2/F9yb8R61V/RxanFmNShqqfc0i/+wi/KtFNd0=;
-        fh=ao9vbWTHK92cbRTFkPKKVc2eXeczL0Z/ivWNNGhyUW8=;
-        b=FraDCRqB0+YhawT5A+qMmrqDYsuUuDn5rTC6Rp0/v594hO2zCZm7I3DKtEN/qUr8hU
-         0YmIkgrTw6m4DE59JHSskWZmK/rILouKzXEw+RyShyd09qkawhPVztS05JnYb+CCMfoh
-         jJShIKLyc+yUL4PhQePeGrbkLyZVcnWj8nxQbX1aCIdEt+pwzSIYFgNtYQ14UwWbShCD
-         lOSvI0FLS86mCeTuVr1me8tujYOIGzKt7MmHqv2dwyXrSOUJq9JtSTijhf4ECkTli9UY
-         ml5fa42TLBOxeus9CEtxkzKYV/njkNzVY83s7KFxuTJjHTfSIpnAG9aBBwej69uKyXcM
-         5Fdg==;
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=2AgkgaAbQziOMfScOkAqQCRk4aNQbQUVYEqERQ+sqzM=;
+        fh=F/lpRzUG2ulBs0FmYAJq6HhTKoZNyBRGaQimLe8yPsU=;
+        b=FPXDWtbyyzWZ5z2CrDMg4sYEgd3vOZOogtSNVRb+Kc5QHadA7cFRC23Two701yBIFL
+         jscPQXHLEtf650mPksbpF5ej2T1cbbHGN7Zkmwn0mjBGgp6DZKyh+cfJ9V2ld8vNc2tL
+         dCX/qCXV+NJkgXvonrQmT8tlPQDlbjegJsmTfYDwewOSC6+18jXBAslhpMa6zzNF5ZPi
+         3TeAnMO2CLAUIlM0Uw2didQUIOq6lVFJlOmT9s0pAlCBY6tOolqPlGt5cQj3tqHHYFRN
+         gM1GRNizwUl+QSxxO0vJ1lZ8GWu0nDBhTa9PAMl3fCLZ/bq8yzK47xVWSqRVJxRXNOWU
+         Ys2A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=AHDrErLv;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=i5tDxpu1;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4609e2e14f8si21117741cf.193.2024.10.17.09.33.08
+        by mx.google.com with ESMTPS id af79cd13be357-7b1426017a5si519692885a.650.2024.10.17.09.33.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 17 Oct 2024 09:33:08 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 17 Oct 2024 09:33:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=AHDrErLv;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=i5tDxpu1;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1t1TQn-00009Q-BO; Thu, 17 Oct 2024 12:32:57 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1t1TQv-0000Ad-F3; Thu, 17 Oct 2024 12:33:05 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1t1TQl-00008y-4j
- for qemu-arm@nongnu.org; Thu, 17 Oct 2024 12:32:55 -0400
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+ id 1t1TQp-0000A4-2R
+ for qemu-devel@nongnu.org; Thu, 17 Oct 2024 12:32:59 -0400
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1t1TQg-0001pj-Pp
- for qemu-arm@nongnu.org; Thu, 17 Oct 2024 12:32:54 -0400
-Received: by mail-wm1-x336.google.com with SMTP id
- 5b1f17b1804b1-4315df7b43fso6432675e9.0
- for <qemu-arm@nongnu.org>; Thu, 17 Oct 2024 09:32:50 -0700 (PDT)
+ id 1t1TQh-0001q3-PL
+ for qemu-devel@nongnu.org; Thu, 17 Oct 2024 12:32:58 -0400
+Received: by mail-wm1-x332.google.com with SMTP id
+ 5b1f17b1804b1-431137d12a5so12041295e9.1
+ for <qemu-devel@nongnu.org>; Thu, 17 Oct 2024 09:32:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1729182769; x=1729787569; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=HsByr2/F9yb8R61V/RxanFmNShqqfc0i/+wi/KtFNd0=;
- b=AHDrErLvai/XZPaIXPua77LCAck8v6y7ffqL3vuOC1k6Ox1WOECi0lbXHZUGB12dmO
- 1HOxdIG/JEyO/9lSfo//9UA2DXowuQhMkVBVjEm7vYTpIzSJItglSR14DUatEAIuwNAH
- I8XXcTON7qx4AMkqvYU+kdlnTMZbo5aeI68cYOAjLxSOzYnH2hgyc2F/7NbfTXDHcAJt
- bSsrqoqG8rw9gep6wdqtqnkKM2i6V3RZv50EoWh9SYwiDPa4I1spTy4j3R4irl4aJto/
- IyU5jHTcc4777pNJgPr9vjpAsYougWULp1S7w1AoZFiEGJbAEE7FXUUt/Ex8hvLlyWk+
- 29RA==
+ d=linaro.org; s=google; t=1729182770; x=1729787570; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=2AgkgaAbQziOMfScOkAqQCRk4aNQbQUVYEqERQ+sqzM=;
+ b=i5tDxpu165fhKhHk9bShqX52TRRKJ8KaA3d36gOPamUkGSI9SqBvXBC5yMiZBpOOBB
+ 1R+rjsw53yyL7rE9aRrC3Lg7pz2VGVKh8BfJnAVBngUDsbzBZKHHi22koh3sdm4n1yrp
+ SorR+L7ZybupUMSAttP7QUvTveCWQlwV0Mi8hTYPhn0wi2OHP+sAHGQUOcWqMocvXX66
+ s+VwZOJQ6WY7R0sRvfW4eOfpw+x+esI2D9tJ+mm92PmCajAadW3pc6tRH4F2KTTA776S
+ AgbHJuwXGZOpN+l9lmN+mNQi/Ik6fyeeW+ZLFucrdMp7p54uI2DMeAM00uyqorM9m+1E
+ 37XQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1729182769; x=1729787569;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=HsByr2/F9yb8R61V/RxanFmNShqqfc0i/+wi/KtFNd0=;
- b=oKGuLGOgnHfWA2hV0G7yXxCkgqXI0hFj0E1Q1oiBKKWMgIuvJXhQ+4HnDHYC23bKkU
- shLuH4NFeQMmWQVcJ8p/J8Y8Y2x6dy7YeIw62laCie7dk5J3lR8C2ziyznMZ/JlRk5Xc
- MqAwiu+BN+socIaGCOkh1LST68RjVq5QlNACkmvQOfHfJx5rCsHNxWgMa1L8QqU80WsZ
- HlldWUuaudnA+PiBdoaXaOe7S2Pr0eca19PFg0sLcri2TfxiiHOTmjVZ/HB3MbHsbmCu
- qZl6ig+aXDZ6mjQj9yRZlqYpDfHtafFAMkVUviXSSBscQPxRo0rGOvcV2cN7ND6lTzHs
- Dljg==
-X-Gm-Message-State: AOJu0YyPHxBDdFDkL44DGfnMjSnpvzpbC+PCCw3EC4bg9ksfYbQzr7l/
- sckQAsRMdrbFiuFLYHGjwT5PYv24zgYJ95I20ct+0v85NzxkGg3Uv7IvJuPqbJZBVxxt29tZUjC
- /
-X-Received: by 2002:a05:600c:4e10:b0:428:f0c2:ef4a with SMTP id
- 5b1f17b1804b1-4314a2cc3a3mr69365415e9.13.1729182769128; 
- Thu, 17 Oct 2024 09:32:49 -0700 (PDT)
+ d=1e100.net; s=20230601; t=1729182770; x=1729787570;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=2AgkgaAbQziOMfScOkAqQCRk4aNQbQUVYEqERQ+sqzM=;
+ b=WwQE29OKEIcjb6qI269L009USI8d1yfQg6lcNxm7PblBVOz6u5yH+RljWoMi7dSI2T
+ RbCllOZa1HH7+FWRfkKr1VkLYl/ir/p5e53k5LGvNRWsTDq+R7QgZJJ0MV8g/KRsv7N3
+ EVFUZge8Fp/tg8V8Fhm8oopgxTlbCnAtNvYN5d7oqRIWyx45INNFH2pDOx878ZIPesNZ
+ O70//HqDk0dGQHgyyfsBAt2eO4Lvv0zj4cuTCijjTHMwQvQR6eXtzJmXvAVtvFMs1fGT
+ o6iw8p13wNIJeEFD6oH8ivugCphB09l2aa5A1LlAVXgDIOWUI8Zp/8fD4ynG/38JOz/Q
+ a5Gw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCW256c/KziddvLf06IjkJINFEqt91+NIQTk6Nk6cWZbhx7hmPZEUN2mSilcOn1rP9mEbJMAdinE1J+7@nongnu.org
+X-Gm-Message-State: AOJu0YzSOrPo4a0UH3thpa2AsCPLk/et/2goQ8cV/I60O7MfZUC0F1N/
+ TDh487CFpIGOQoVzV7KCMLbSRqxTiMsplHCAxghwKOXE+6ZRoJyWzp92Vko1eNc=
+X-Received: by 2002:a05:600c:3ba9:b0:42c:b52b:4335 with SMTP id
+ 5b1f17b1804b1-4311decaa31mr199654335e9.10.1729182770227; 
+ Thu, 17 Oct 2024 09:32:50 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4316067dc56sm545165e9.3.2024.10.17.09.32.48
+ 5b1f17b1804b1-4316067dc56sm545165e9.3.2024.10.17.09.32.49
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 17 Oct 2024 09:32:48 -0700 (PDT)
+ Thu, 17 Oct 2024 09:32:49 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Guenter Roeck <linux@roeck-us.net>,
 	Thomas Huth <thuth@redhat.com>
-Subject: [PATCH 0/2] arm: Add collie and sx functional tests
-Date: Thu, 17 Oct 2024 17:32:45 +0100
-Message-Id: <20241017163247.711244-1-peter.maydell@linaro.org>
+Subject: [PATCH 2/2] tests/functional: Add a functional test for the sx1 board
+Date: Thu, 17 Oct 2024 17:32:47 +0100
+Message-Id: <20241017163247.711244-3-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20241017163247.711244-1-peter.maydell@linaro.org>
+References: <20241017163247.711244-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::336;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x336.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::332;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x332.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -114,51 +119,146 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: rX0Hlei4rBgf
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: aeZ2SmUtBXUW
 
-This patchset adds new functional tests for the collie and sx1
-boards, which are the only remaining ones that survived the
-culling of the OMAP/PXA2xx/strongarm machines.
+Add a functional test for the sx1 board that uses the kernel and
+rootfs provided by Guenter Roeck in the linux-test-downloads repo:
+ https://github.com/groeck/linux-test-downloads/
 
-For these tests I'm indebted to Guenter Roeck, who has kindly
-built and made available the kernel images, rootfs, etc and
-documented the commands needed to boot them. All I've done
-here is wrap those up into test cases in our testcase
-framework by cribbing from some of our existing test code.
+We have three variants of the test for this board:
+  * just boot initrd
+  * boot with filesystem on SD card
+  * boot from flash
 
-Based-on: 20241017162755.710698-1-peter.maydell@linaro.org
-("hw/sd/omap_mmc: Don't use sd_cmd_type_t")
- -- the sd card test for the sx1 board will not pass without
-    that bugfix
+In all cases these images have a userspace that is configured to
+immediately reboot the system on successful boot, and the board
+itself supports telling QEMU to do the reboot, so we only need to
+wait for QEMU to exit (via -no-reboot).
 
-thanks
--- PMM
+Since there are three subtests, the test as a whole takes about
+80s on my local machine. That's about the same as the aarch64_virt
+test, so give it the same overall test timeout as that one.
 
-Peter Maydell (2):
-  tests/functional: Add a functional test for the collie board
-  tests/functional: Add a functional test for the sx1 board
-
- MAINTAINERS                         |  1 +
- tests/functional/meson.build        |  3 ++
- tests/functional/test_arm_collie.py | 31 +++++++++++++
- tests/functional/test_arm_sx1.py    | 72 +++++++++++++++++++++++++++++
- 4 files changed, 107 insertions(+)
- create mode 100755 tests/functional/test_arm_collie.py
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+The sdcard test requires the 'hw/sd/omap_mmc: Don't use sd_cmd_type_t' bugfix.
+---
+ tests/functional/meson.build     |  2 +
+ tests/functional/test_arm_sx1.py | 72 ++++++++++++++++++++++++++++++++
+ 2 files changed, 74 insertions(+)
  create mode 100755 tests/functional/test_arm_sx1.py
 
+diff --git a/tests/functional/meson.build b/tests/functional/meson.build
+index 0450805a9c4..ec72bfaf63e 100644
+--- a/tests/functional/meson.build
++++ b/tests/functional/meson.build
+@@ -16,6 +16,7 @@ test_timeouts = {
+   'aarch64_virt' : 360,
+   'acpi_bits' : 240,
+   'arm_raspi2' : 120,
++  'arm_sx1' : 360,
+   'mips_malta' : 120,
+   'netdev_ethtool' : 180,
+   'ppc_40p' : 240,
+@@ -54,6 +55,7 @@ tests_arm_system_thorough = [
+   'arm_collie',
+   'arm_integratorcp',
+   'arm_raspi2',
++  'arm_sx1',
+   'arm_vexpress',
+ ]
+ 
+diff --git a/tests/functional/test_arm_sx1.py b/tests/functional/test_arm_sx1.py
+new file mode 100755
+index 00000000000..2d86405831e
+--- /dev/null
++++ b/tests/functional/test_arm_sx1.py
+@@ -0,0 +1,72 @@
++#!/usr/bin/env python3
++#
++# Copyright (c) 2024 Linaro Ltd.
++#
++# Functional test that boots a Linux kernel on an sx1 machine
++# and checks the console. We have three variants:
++#  * just boot initrd
++#  * boot with filesystem on SD card
++#  * boot from flash
++# In all cases these images have a userspace that is configured
++# to immediately reboot the system on successful boot, so we
++# only need to wait for QEMU to exit (via -no-reboot).
++#
++# SPDX-License-Identifier: GPL-2.0-or-later
++
++from qemu_test import LinuxKernelTest, Asset
++from qemu_test.utils import archive_extract
++
++class SX1Test(LinuxKernelTest):
++
++    ASSET_ZIMAGE = Asset(
++        'https://github.com/groeck/linux-test-downloads/raw/225223f2ad7d637b34426810bf6c3b727b76a718/sx1/zImage',
++        'a0271899a8dc2165f9e0adb2d0a57fc839ae3a469722ffc56c77e108a8887615')
++
++    ASSET_INITRD = Asset(
++        'https://github.com/groeck/linux-test-downloads/raw/225223f2ad7d637b34426810bf6c3b727b76a718/sx1/rootfs-armv4.cpio',
++        '35b0721249821aa544cd85b85d3cb8901db4c6d128eed86ab261e5d9e37d58f8')
++
++    ASSET_SD_FS = Asset(
++        'https://github.com/groeck/linux-test-downloads/raw/225223f2ad7d637b34426810bf6c3b727b76a718/sx1/rootfs-armv4.ext2',
++        'c1db7f43ef92469ebc8605013728c8950e7608439f01d13678994f0ce101c3a8')
++
++    ASSET_FLASH = Asset(
++        'https://github.com/groeck/linux-test-downloads/raw/225223f2ad7d637b34426810bf6c3b727b76a718/sx1/flash',
++        '17e6a2758fa38efd2666be0879d4751fd37d194f25168a8deede420df519b676')
++
++    CONSOLE_ARGS = 'console=ttyS0,115200 earlycon=uart8250,mmio32,0xfffb0000,115200n8'
++
++    def test_arm_sx1_initrd(self):
++        self.set_machine('sx1')
++        zimage_path = self.ASSET_ZIMAGE.fetch()
++        initrd_path = self.ASSET_INITRD.fetch()
++        self.vm.add_args('-append', f'kunit.enable=0 rdinit=/sbin/init {self.CONSOLE_ARGS}')
++        self.vm.add_args('-no-reboot')
++        self.launch_kernel(zimage_path,
++                           initrd=initrd_path)
++        self.vm.wait()
++
++    def test_arm_sx1_sd(self):
++        self.set_machine('sx1')
++        zimage_path = self.ASSET_ZIMAGE.fetch()
++        sd_fs_path = self.ASSET_SD_FS.fetch()
++        self.vm.add_args('-append', f'kunit.enable=0 root=/dev/mmcblk0 rootwait {self.CONSOLE_ARGS}')
++        self.vm.add_args('-no-reboot')
++        self.vm.add_args('-snapshot')
++        self.vm.add_args('-drive', f'format=raw,if=sd,file={sd_fs_path}')
++        self.launch_kernel(zimage_path)
++        self.vm.wait()
++
++    def test_arm_sx1_flash(self):
++        self.set_machine('sx1')
++        zimage_path = self.ASSET_ZIMAGE.fetch()
++        flash_path = self.ASSET_FLASH.fetch()
++        self.vm.add_args('-append', f'kunit.enable=0 root=/dev/mtdblock3 rootwait {self.CONSOLE_ARGS}')
++        self.vm.add_args('-no-reboot')
++        self.vm.add_args('-snapshot')
++        self.vm.add_args('-drive', f'format=raw,if=pflash,file={flash_path}')
++        self.launch_kernel(zimage_path)
++        self.vm.wait()
++
++if __name__ == '__main__':
++    LinuxKernelTest.main()
 -- 
 2.34.1
 

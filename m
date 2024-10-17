@@ -1,111 +1,164 @@
-Received: by 2002:a17:505:18c3:b0:1be9:327d:8ee3 with SMTP id tt3csp53801njb;
-        Thu, 17 Oct 2024 02:12:09 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUbsF9Llrk1UAf3aesYmCPZTmkbYmYbTQpMbSFTxBZQwP1i0St/aIh3uFpqgQq3nOr4IwedAy8mdXOFgg==@linaro.org
-X-Google-Smtp-Source: AGHT+IEyh58jnNTBY1Pb6Vs0x5gOUFL4vdusNT+oH893NN6kfCbNriYG0Bmj5qt8ndjvkn3QNPgd
-X-Received: by 2002:a05:600c:1e0d:b0:431:5d89:646e with SMTP id 5b1f17b1804b1-4315d8967ebmr6299035e9.32.1729156329230;
-        Thu, 17 Oct 2024 02:12:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1729156329; cv=none;
+Received: by 2002:a17:505:18c3:b0:1be9:327d:8ee3 with SMTP id tt3csp60910njb;
+        Thu, 17 Oct 2024 02:32:18 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVNN5NQVLUDSdMWOMzrhC6cqMkBFg1iKOI3otpffaYD5dpNP4uyrfkazPXpJTE+5f9Y6+vDzUCHeWHAAg==@linaro.org
+X-Google-Smtp-Source: AGHT+IFc+QWDF5+aoMCLEzBNwawmJnX2pXR0uyaCjeFDGuOt6iDvaQmb4grDi8PxnRRTNkfI3UPO
+X-Received: by 2002:a05:622a:4c83:b0:45f:804:738d with SMTP id d75a77b69052e-460584b0025mr322810051cf.37.1729157537849;
+        Thu, 17 Oct 2024 02:32:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1729157537; cv=none;
         d=google.com; s=arc-20240605;
-        b=JabJBC2Bb+ugbYII8Ns8LNt9NBPIelY5kDO444ArRzgUmZ/QrOSuRKAdcQdGAEIKj/
-         e0HHA9z873FfbzIWC0Wp8AsENnWhDMh7hwLe3WMxhTiC2V6DBVBIVrsuL9oFmf4heZeB
-         q4q9X679dDxwIbeCcWTaxkQmxXQsGJhKDxpdSN09h/HkyGn+8zSVNpj6HmytmPtRSd5D
-         Nx9aaeU7MMKZHLHjR5tjfetx5pFzfxmeeTrn+//D9FEwmWaG1D7rUCRRAnKmUJ2SaNLA
-         t6wZ0Z3UjzBszrgiQtd+Sv+7WsnC4VjByRv1hOgEe4ZfoXwC5nbGPZHvnHC8CbU0COvn
-         lAIg==
+        b=YCxJx5Yr2ypA85cxzke0ji1/TcmuXkOZ9BjibBhfYFaU/PFkviW1T0OW/QYpHbaY1v
+         ZQTpjJFsfd9myiZ2LfhAsMbK5O4UIsilDHM3jXoEvxr1LTJ1F2harzgW3Y5ZAU+95mAq
+         4i9Hufw/IEMOl1hrzG2Z64wo/nYdQSGhsL8vi3kMlWyGmGKtn2Y4qax0GQy7wTGespEy
+         03Ur7H5iQr7lwVRMT0bQPgHSK5XwzdRv+3cGXXs42IJ8qBvQ9N0e+yZ4KAhCkoquN7qC
+         Wfro9vXiUaSxSnfceZO4u1jwNxZWs49Nq0R0MAtxtxuXNteH+TZ7hDuKqQOpRRo1pxdN
+         3fbQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:subject:cc:to:from:date;
-        bh=iMXq0QLkOAfUKEbZFAL+cbqwL6+rtfp2QDAO6XDVUAo=;
-        fh=3b9il47umKWjqKrof5lgN8HMBQZG2Z+dz652rXT+PHY=;
-        b=iUE9i5N4NbmyPkkelReTTzyeIw5zjOE1MN2WKVm5c5FEFay+o/Lvegd6Wgl13UHxrR
-         DBiWnhqDG9ZQmD6Ho3v4T0zc9m3Pa+06FZA7USKx6Mq6ZnmDs/VnCKVGR6FDmyYeuqDg
-         Nf2VGUT6ejjkgY+jEmpS6HkzFsM8QKh0xlEkwyDtk82fDJVSglHnMMeOwJNGBbqhIvWN
-         2Xn/+hbyz/lqm12c9jR29BrsdrKhRohBMNKkOe+xZGRlTaMfYqJ8kMNO86wCe1Fcz6XP
-         /0Dp6R+9lsx6QVVLy7cS0XRsIKQva7ZbQK9Pzm5TEf5RkShmh2NPqn8UX68s5KhqxUy2
-         XlzQ==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=tSUmQ+5UahoSL7J+r+hrCJZoKTaSjN8KDYFOwxiJCEU=;
+        fh=t8Okep5hPLgDBbSotLK/q/MSgEwT1tCy9QpJY7LEyog=;
+        b=U6k7RJJ/8FKE/UrP0PiqSdTeTYIhr1+Dm5qRl7g/GFmVHjHtHHrKakbVsQQ8ExW3Zo
+         pupNjPz2RUk/QNeOdaG3czwjWaSSFvBoLTUaxdjHJHuORzu/YuqLKKGgrXNhSEhATxW1
+         tmLjhLQeM1VdGFMcBs+rUro+9n7VlsowkJWxjVXD+pltoUxZSkzFTdMPMZlQavl7OTlR
+         FxICzHGgYLhhX/BKTolgFWRI6vDLLTr+8/XchrhpxP44bmGJqJFk0RTjeOI5BqtdhTK9
+         op8t3mNaqZ1yOdkEPZ5Nb2400SkCdLjKICqA24RA1nbAcPmGm21TQ4VdKulNTDb1ZQ4w
+         wH9Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=jonathan.cameron@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Return-Path: <jonathan.cameron@huawei.com>
-Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id ffacd0b85a97d-37d7fbedc7fsi2758667f8f.64.2024.10.17.02.12.08
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 17 Oct 2024 02:12:09 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
+       dkim=pass header.i=@linaro.org header.s=google header.b=P5fahgx6;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d75a77b69052e-4608e8fafacsi36563071cf.328.2024.10.17.02.32.17
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 17 Oct 2024 02:32:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=jonathan.cameron@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from mail.maildlp.com (unknown [172.18.186.31])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4XThn50TJ2z6LD9g;
-	Thu, 17 Oct 2024 17:07:37 +0800 (CST)
-Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
-	by mail.maildlp.com (Postfix) with ESMTPS id 66C021404F4;
-	Thu, 17 Oct 2024 17:12:08 +0800 (CST)
-Received: from localhost (10.126.174.164) by frapeml500008.china.huawei.com
- (7.182.85.71) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Thu, 17 Oct
- 2024 11:12:07 +0200
-Date: Thu, 17 Oct 2024 10:12:05 +0100
-From: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
-To: Zhao Liu <zhao1.liu@intel.com>
-CC: "Daniel P .\" =?ISO-8859-1?Q?Berrang=E9?= <berrange@redhat.com>, Igor  Mammedov <imammedo@redhat.com>, Eduardo Habkost <eduardo@habkost.net>, Marcel  Apfelbaum <marcel.apfelbaum@gmail.com>, Philippe =?ISO-8859-1?Q?Ma?=  =?ISO-8859-1?Q?thieu-Daud=E9?= <philmd@linaro.org>, Yanan Wang  <wangyanan55@huawei.com>,  Michael S.Tsirkin  <mst@redhat.com>, Paolo Bonzini  <pbonzini@redhat.com>, Richard Henderson <richard.henderson@linaro.org>, Eric  Blake <eblake@redhat.com>, Markus Armbruster <armbru@redhat.com>, Marcelo  Tosatti <mtosatti@redhat.com>, Alex =?ISO-8859-1?Q?Benn=E9e?=  <alex.bennee@linaro.org>, Peter Maydell <peter.maydell@linaro.org>, Sia Jee  Heng <jeeheng.sia@starfivetech.com>, Alireza Sanaee  <alireza.sanaee@huawei.com>, qemu-devel@nongnu.org, kvm@vger.kernel.org,  qemu-riscv@nongnu.org, qemu-arm@nongnu.org, Zhenyu Wang  <zhenyu.z.wang@intel.com>, Dapeng Mi <dapeng1.mi@linux.intel.com>"@domain.invalid
-Subject: Re: [PATCH v3 0/7] Introduce SMP Cache Topology
-Message-ID: <20241017101205.00007c87@Huawei.com>
-In-Reply-To: <20241012104429.1048908-1-zhao1.liu@intel.com>
-References: <20241012104429.1048908-1-zhao1.liu@intel.com>
-Organization: Huawei Technologies Research and Development (UK) Ltd.
-X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
+       dkim=pass header.i=@linaro.org header.s=google header.b=P5fahgx6;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1t1MrQ-0002UB-Bq; Thu, 17 Oct 2024 05:32:00 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1t1MrO-0002Tg-V0
+ for qemu-arm@nongnu.org; Thu, 17 Oct 2024 05:31:58 -0400
+Received: from mail-lj1-x233.google.com ([2a00:1450:4864:20::233])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1t1MrM-0006Ku-QP
+ for qemu-arm@nongnu.org; Thu, 17 Oct 2024 05:31:58 -0400
+Received: by mail-lj1-x233.google.com with SMTP id
+ 38308e7fff4ca-2fb5a9c7420so6996171fa.3
+ for <qemu-arm@nongnu.org>; Thu, 17 Oct 2024 02:31:53 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1729157512; x=1729762312; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=tSUmQ+5UahoSL7J+r+hrCJZoKTaSjN8KDYFOwxiJCEU=;
+ b=P5fahgx6oBiR9KAHWn4E+oLUnQMbboRs+yx8AF/xnut3e4tgHcD4qZYvIxCMSz1UgH
+ w18IPiD6+hpmD6MZ85/5pKAu0mk3wH3+XcTbjaZnUqOa0cvsxkl1gK+CxkwlFjRU+sty
+ xqXIINO/OXnkaMp88CCuqoAOQc6MnPUWq5dvGMKz++zeBtBZQpKQmHW5Q/d8a+Dizkss
+ cqVQ3cHFsprU/R8tcj0WpuXrtvmAI4KwDCv53mMiKULflunb0uza3uayJVh66lnqMysq
+ fNkwiOH91qJI9H1DV+cKX/19FqTdsAy66CmUd6olKfuD2bbS04nCG1LEJASgKji/RcPh
+ Pp0g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1729157512; x=1729762312;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=tSUmQ+5UahoSL7J+r+hrCJZoKTaSjN8KDYFOwxiJCEU=;
+ b=fQiwYQc8bGvu1TW5ZX92kH+akTAdpVD9sjQg8mgApwMHrAnskN2ElEbj0SCV4BJSrA
+ jft65Bzek7QuvpyVFoKtCV+056c6D0tLgeYIer+rg79U+e7Qa9Rr4TMF/AKjqZFsJ4Q3
+ 3D7nfQAJTKZZHT4C8W72BYvxuoGxE97qKEbtRkMl8zYJLO23kmVlbSHLsi0b89ePkCXS
+ iHQkJemGH3EpJj37FzMwytI3xs7wLFbuEVR6E8TnkaMLQ8mWHGJLd8KvOGkPkaIAFPX5
+ IjdWHWJvH9dKxPBEaMdjphhp34IZuWfrIhGp1ErYwJdoFHEuQp7v16bRsDBQj8ormsrw
+ 9A1Q==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWwnT/1kZpUtsNqH1hCS+YAodq4RtqhYJlSYv9C+QKn9/lUdYscXsNywsXRcpXAQLiNaHFdSoqNFw==@nongnu.org
+X-Gm-Message-State: AOJu0YwosP6fgBUQnk3fmThlaqTDdY15y2JReGGNmKO7DmMEWjXs0oLU
+ 8PEiuvO9uI+N0dm9zVQZny+lk/unkYrwZ8m+CuKzlbG7opRxGrfZMNCYEpQXv5o0L0HLLUZkAPb
+ CET6trZqAdYOS7+qAQ9Pt+vmgt6RCSME36VKZAw==
+X-Received: by 2002:a2e:702:0:b0:2fa:d67a:ada7 with SMTP id
+ 38308e7fff4ca-2fb3f1b764amr79485471fa.23.1729157512018; Thu, 17 Oct 2024
+ 02:31:52 -0700 (PDT)
 MIME-Version: 1.0
+References: <20241016212407.139390-1-shentey@gmail.com>
+ <20241016212407.139390-2-shentey@gmail.com>
+In-Reply-To: <20241016212407.139390-2-shentey@gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 17 Oct 2024 10:31:40 +0100
+Message-ID: <CAFEAcA93N-44Xi5hDgcA2iOJ=RD=4jRuJoHkZJ7ViRnaq55zeQ@mail.gmail.com>
+Subject: Re: [PATCH v2 1/5] hw/resettable: Add SOFT reset type
+To: Bernhard Beschow <shentey@gmail.com>
+Cc: qemu-devel@nongnu.org, Jason Wang <jasowang@redhat.com>,
+ qemu-arm@nongnu.org, 
+ Guenter Roeck <linux@roeck-us.net>, Paolo Bonzini <pbonzini@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-Originating-IP: [10.126.174.164]
-X-ClientProxiedBy: lhrpeml500004.china.huawei.com (7.191.163.9) To
- frapeml500008.china.huawei.com (7.182.85.71)
-X-TUID: oGAgV+mBnhQ6
+Received-SPF: pass client-ip=2a00:1450:4864:20::233;
+ envelope-from=peter.maydell@linaro.org; helo=mail-lj1-x233.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: hM+16VhouZO2
 
-On Sat, 12 Oct 2024 18:44:22 +0800
-Zhao Liu <zhao1.liu@intel.com> wrote:
+On Wed, 16 Oct 2024 at 22:24, Bernhard Beschow <shentey@gmail.com> wrote:
+>
+> This is a preparation for the next patch.
+>
+> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+> ---
+>  include/hw/resettable.h | 1 +
+>  1 file changed, 1 insertion(+)
+>
+> diff --git a/include/hw/resettable.h b/include/hw/resettable.h
+> index fd862f1e9f..0f25beaf21 100644
+> --- a/include/hw/resettable.h
+> +++ b/include/hw/resettable.h
+> @@ -40,6 +40,7 @@ typedef enum ResetType {
+>      RESET_TYPE_WAKEUP,
+>      RESET_TYPE_S390_CPU_INITIAL,
+>      RESET_TYPE_S390_CPU_NORMAL,
+> +    RESET_TYPE_SOFT,
+>  } ResetType;
 
-> Hi all,
->=20
-> Compared with v2 [1], the changes in v3 are quite minor, and most of
-> patches (except for patch 1 and 7) have received Jonathan=E2=80=99s R/b (=
+We have in general been avoiding defining a "soft" reset
+because it's not clear what the meaning of it should be
+or how it applies across devices.
+
+If we want to define a new ResetType then we need
+to start with the documentation which says clearly
+what the semantics of it should be and when it
+will be triggered.
+
+You might prefer to avoid entangling that with this
+lan9118 refactoring.
+
 thanks
-> Jonathan!).
->=20
-> Meanwhile, ARM side has also worked a lot on the smp-cache based on
-> this series [2], so I think we are very close to the final merge, to
-> catch up with this cycle. :)
-
-This would finally solve a long standing missing control for our
-virtualization usecases (TCG and MPAM stuff is an added bonus),
-so I'm very keen in this making 9.2 (and maybe even the ARM part
-of things happen to move fast enough). Ali is out this week,
-but should be back sometime next week. Looks like rebase of his
-ARM patches on this should be simple!
-
-I think this set mostly needs a QAPI review (perhaps from Markus?)
-
->=20
-> This series is based on the commit 7e3b6d8063f2 ("Merge tag 'crypto-
-> fixes-pull-request' of https://gitlab.com/berrange/qemu into staging").
->=20
-> Background
-> =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
->=20
-> The x86 and ARM (RISCV) need to allow user to configure cache properties
-*laughs*. I definitely going to start emailing ARM folk with
-ARM (RISCV) =20
-:) =20
-
-
-> (current only topology):
->  * For x86, the default cache topology model (of max/host CPU) does not
->    always match the Host's real physical cache topology. Performance can
->    increase when the configured virtual topology is closer to the
->    physical topology than a default topology would be.
->  * For ARM, QEMU can't get the cache topology information from the CPU
->    registers, then user configuration is necessary. Additionally, the
->    cache information is also needed for MPAM emulation (for TCG) to
->    build the right PPTT. (Originally from Jonathan)
+-- PMM

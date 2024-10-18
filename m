@@ -1,197 +1,229 @@
-Received: by 2002:a17:505:18c3:b0:1be9:327d:8ee3 with SMTP id tt3csp659481njb;
-        Fri, 18 Oct 2024 00:58:22 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWFDAAU3WTnsfG6iLQ7xc7LcIgXn3nT0resvBnVWUIUIeugF6/VJKYLwZt2DAf3mLbEjv8rqS8+IgfjYw==@linaro.org
-X-Google-Smtp-Source: AGHT+IHkXDXQtol2m67wDU9BLfI1kZnL0Ij90vZDAQpTvjPQWeS9Yj34GpkG15gy6hb5nopfEU2B
-X-Received: by 2002:a05:620a:4046:b0:7b1:1cb8:1a56 with SMTP id af79cd13be357-7b157b5a69cmr164992685a.14.1729238302143;
-        Fri, 18 Oct 2024 00:58:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1729238302; cv=none;
+Received: by 2002:a17:505:18c3:b0:1be9:327d:8ee3 with SMTP id tt3csp670660njb;
+        Fri, 18 Oct 2024 01:26:20 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWRShxQ7XZuk5bSfWUOp+ztXOec+XTM4voiN+YBmZV1UpireDzXNhq8loIduG3K/dy5A3IBPPQM58HIvA==@linaro.org
+X-Google-Smtp-Source: AGHT+IGgEKtLgAo7vMHsqXeqzDhtx4k8WaK0uavt7M+QkXjiUPYTRLLoQ91R3ukW3ucz3i7qQ4hM
+X-Received: by 2002:a05:620a:2989:b0:7b1:4783:b7b1 with SMTP id af79cd13be357-7b157c022c7mr139459585a.64.1729239980627;
+        Fri, 18 Oct 2024 01:26:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1729239980; cv=none;
         d=google.com; s=arc-20240605;
-        b=PhiUD9aR/mjwCXI6lP5FTYh4FUEmTF3p+uiE38YhIoK1zdb7RrpqgX+77RlkjRX+W3
-         DH6yVt+zUJDWVSAM9DKvM8hnUEPEN9/PFQZRlVA7iEg9jits+j7SGXMFbXnct4DWYFtp
-         WOdZqbXH1qaxy3j79RrMnVuHevmI6TIlH8yWMItx86VWJ7Bsz0+VomwuDiM5F0U3Sbeb
-         1Ua90BgXEq17UfoGHyaUWPJ8cnVlGGdacUa+c3l2Lp/XwYglu0sosUHlXzapdbPD0tLh
-         q+q38ZaoGFTV4SPCmPy9O16F6ClNiTTrJFHR1PqSPrhH8b+dR2p4fx0GopQm7CjeVPCp
-         omgA==
+        b=PQ6rpFzuj1SL4rlJeNC0d7eA8i0yTWBifhn9rGncFyzhfHFmQ9T5sLogHWDr9rjXL5
+         QLU7VNSvyZq9HkdnTFpVYqEgM4jrlgrLK+ghGS77XzEY/XAJhQCu6wfZD6bGjF7DSMN5
+         sDVJd03RYYPozKyYmNwpvWfHV0w1W/GWz0D053OIwTH0QDlMgBT0sfZQ9HLCVNxxIlDU
+         j2jh+m7OPJqxRM9xLmfqt6RXgydMKuPClpH0v92tLDMqUr+EI06J/09Jj7wLe5s6BOYk
+         CIFngTqU/RfMeOChOSh211QhiMfCw9k83p72wlNo8+8wyF9DpP/hAtdHYqC6cL5S9PDf
+         qKag==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :reply-to:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=DTTMNicW4OjRcXbKL4oqTcLX63sd7nExpwbEaCF2IcE=;
-        fh=8o6MdM69yW7KnUpp0LF0iA+MU8ridrpH5X1tqzzP+yc=;
-        b=Uz4cCXfiUVVQfMFmo66AVIMcIod/+BEf+oJQXcDhf3+J1QiVCHm6XLXZAgfukTJHHk
-         TvRIfBipDIhywJZV17Ipfv24/s1e/SvPZT9y/nIUMsq/thqtt8EAKcH/84KOghIM+iDx
-         A0QvLuV/A5YSN+ILIF/qFicn32Eu7kejW73h5FOGviueIiyS+Rq38DD/JF4Ei2FYsWAG
-         NQs/NNJ+HMWPuT4HFWWO3bjRIYfs+kkqXNogA88sKrMwnhYn66BkkNsNex5hDbrzyADG
-         dKtw83KBKb5uNmBNZri58MgLmSN5b5/6Lp1nTelmHkdSbUIpwuX/a7rpSk/jvjzgzWzH
-         GVkA==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:autocrypt:content-language:from:references:cc:to
+         :subject:user-agent:mime-version:date:message-id:dkim-signature;
+        bh=DOfRXiih0bQBzRn7dUVSyYcIJ7/vgoHs+Jqln//B9/w=;
+        fh=IkbH75X6Y+Ht2BhY4HfyRXH4WpY5t/952uCsIbpYP1U=;
+        b=CgEQiV67RK2Y62B2dM8AG0xhNvlZqH7I3HfQdKCyG1a9i5h5Gl/ITsN7MZyX847Y1D
+         bRCdH5GfgyML6WRYZ2YbA2eQgnt5TEQxCdr55miaWYITdY43ijigZy7D/QpSGIiWbpI5
+         a2m6VKaKPA4Bvh7QJTu0bDGCnERTY17C1H/GE/QTpryfs5FZ156McqT8SefjBEWBU8Dg
+         2meGv8b/HjkyHbbct+1GLJYx8duqSjIzUp9aokJ/tPFz3gtSSYlooQV+e90GaiJgj8OM
+         1QvkmQEZX7hWtZrX6qx71Tl3t7KZxxpJWsuRlDxShDUB6oee6UiQrzz+2H0hshX8wlGi
+         yDJw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=i5kW1Ljg;
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="g/P5xZTb";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <berrange@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id af79cd13be357-7b156f869e5si127558685a.186.2024.10.18.00.58.21
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id af79cd13be357-7b156ff1b14si128809185a.641.2024.10.18.01.26.20
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 18 Oct 2024 00:58:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 18 Oct 2024 01:26:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=i5kW1Ljg;
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="g/P5xZTb";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1t1iIt-00050k-Ub; Fri, 18 Oct 2024 04:25:47 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1t1iIr-0004zk-8h
+ for qemu-devel@nongnu.org; Fri, 18 Oct 2024 04:25:45 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1t1iIo-0001TG-Lt
+ for qemu-devel@nongnu.org; Fri, 18 Oct 2024 04:25:45 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1729238301;
-	h=from:from:reply-to:reply-to:subject:subject:date:date:
-	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
-	 content-type:content-type:in-reply-to:in-reply-to:  references:references;
-	bh=DTTMNicW4OjRcXbKL4oqTcLX63sd7nExpwbEaCF2IcE=;
-	b=i5kW1LjgzT1cmu5ZlTKyLQu1oJ5BIyrQFps7HGrXwtuMVe+nMG/3/T8ZdDA6CusZLZ5bAk
-	2EYKB81BklB8yYkci07yaG2WmfaBBqYjXA/ZZjM4tdCZ5FBuZIZk931BwFuSPefrXFfptY
-	BQmxuW64oZ+lMa7Q8LYs9MQrC+lCW2Y=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-612-7mvuoKwiMHmr0nwGMQ75mg-1; Fri,
- 18 Oct 2024 03:58:18 -0400
-X-MC-Unique: 7mvuoKwiMHmr0nwGMQ75mg-1
-Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 253291954227;
-	Fri, 18 Oct 2024 07:58:15 +0000 (UTC)
-Received: from redhat.com (unknown [10.42.28.61])
-	by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 6EABD19560A3;
-	Fri, 18 Oct 2024 07:58:06 +0000 (UTC)
-Date: Fri, 18 Oct 2024 08:58:03 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Zhao Liu <zhao1.liu@intel.com>
-Cc: Igor Mammedov <imammedo@redhat.com>,
-	Eduardo Habkost <eduardo@habkost.net>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Yanan Wang <wangyanan55@huawei.com>,
-	"Michael S . Tsirkin" <mst@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Eric Blake <eblake@redhat.com>,
-	Markus Armbruster <armbru@redhat.com>,
-	Marcelo Tosatti <mtosatti@redhat.com>,
-	Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Jonathan Cameron <Jonathan.Cameron@huawei.com>,
-	Sia Jee Heng <jeeheng.sia@starfivetech.com>,
-	Alireza Sanaee <alireza.sanaee@huawei.com>, qemu-devel@nongnu.org,
-	kvm@vger.kernel.org, qemu-riscv@nongnu.org, qemu-arm@nongnu.org,
-	Zhenyu Wang <zhenyu.z.wang@intel.com>,
-	Dapeng Mi <dapeng1.mi@linux.intel.com>
-Subject: Re: [PATCH v3 6/7] i386/pc: Support cache topology in -machine for
- PC machine
-Message-ID: <ZxIVC-XQaMqOy6Fw@redhat.com>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-References: <20241012104429.1048908-1-zhao1.liu@intel.com>
- <20241012104429.1048908-7-zhao1.liu@intel.com>
- <ZxEs3DGGgCqGT5yK@redhat.com>
- <ZxHcsPyqT6MLJ9hG@intel.com>
+ s=mimecast20190719; t=1729239941;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=DOfRXiih0bQBzRn7dUVSyYcIJ7/vgoHs+Jqln//B9/w=;
+ b=g/P5xZTbXiuoQUGpoW5+HbcEkTm54tCwDAuoneIqJ2vTgsC2wuqXmaTd5vBbkdJlkISzuJ
+ FEu1GgqHrbgyBB50MPwdMNzFc9m7EgBCUmWxhF2IVJ4dF+za9LFCW7cPBYx8e9Y3eSx62y
+ FCHO6l2sMKKXTGAi5PPJsukuhJiIEMA=
+Received: from mail-qk1-f198.google.com (mail-qk1-f198.google.com
+ [209.85.222.198]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-313-31ikgEjTNheIyn57WGUIcA-1; Fri, 18 Oct 2024 04:25:39 -0400
+X-MC-Unique: 31ikgEjTNheIyn57WGUIcA-1
+Received: by mail-qk1-f198.google.com with SMTP id
+ af79cd13be357-7ac8f684cdaso325691285a.3
+ for <qemu-devel@nongnu.org>; Fri, 18 Oct 2024 01:25:39 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1729239939; x=1729844739;
+ h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=DOfRXiih0bQBzRn7dUVSyYcIJ7/vgoHs+Jqln//B9/w=;
+ b=fwJJE/y+yXuFBhLudxIJ1CYp9sJxgNRT0id8FliMqbOHj5i5AFtoORpJeU/vd5oghn
+ b3TZ3grmr5MgLx8gzt2/jbyXi7O//7EHp8CbvYgpQT8AeJc+ZyWrJxYi7qnAkMb2qmZQ
+ q8UoFq4kNmWWHlflYuHmjLwsN+Bdb04k+1E2Jkz1KgiYALnE69SXmC/qP2s0iZQttBeb
+ +5MQ9NYowb627tX8iqqWKLdd1xNcb9ApHgKJnG0tIftpzUYbKKj/2yZgbfuViEQmhB17
+ 6Kb7w6VDxeVIDFmlVXvr7GGteQ1/oOXbAKcuz9WghPKG3VM6H2wtXJ+V92m08GUh4WIa
+ hFCA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXHOguPie4OrRfATUzynwFeBlHHWoOV09bCinCbrqLdyjDDBPCtWLGyNghKQuoJT9tLMiTcRJBqgzOZ@nongnu.org
+X-Gm-Message-State: AOJu0Yw0riZui75lLWTiboyzPIuFkAaQ5M3/DtdBmNeGyWGNaPL1gZOZ
+ e2JbTNj/dYzYM4vXEKG/Dd0PiuEpn0CMS3PzUUprOZZhVMbjuK/9EM22n/tdrjFh9DFZ/aMv2rg
+ kChTeRcsx6aeyOB1XMAH0D9hEQhasFP1r5QoAMUGnEPR5bZr9fCAy
+X-Received: by 2002:a05:620a:29c4:b0:7b1:4762:45c4 with SMTP id
+ af79cd13be357-7b157bf1363mr177428285a.54.1729239938911; 
+ Fri, 18 Oct 2024 01:25:38 -0700 (PDT)
+X-Received: by 2002:a05:620a:29c4:b0:7b1:4762:45c4 with SMTP id
+ af79cd13be357-7b157bf1363mr177426285a.54.1729239938494; 
+ Fri, 18 Oct 2024 01:25:38 -0700 (PDT)
+Received: from [192.168.0.7] (ip-109-42-50-24.web.vodafone.de. [109.42.50.24])
+ by smtp.gmail.com with ESMTPSA id
+ af79cd13be357-7b156f8ad1asm50068885a.4.2024.10.18.01.25.35
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 18 Oct 2024 01:25:38 -0700 (PDT)
+Message-ID: <011d3d75-2bf0-44eb-ba78-bf92240128f8@redhat.com>
+Date: Fri, 18 Oct 2024 10:25:33 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <ZxHcsPyqT6MLJ9hG@intel.com>
-User-Agent: Mutt/2.2.12 (2023-09-09)
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-X-TUID: R8k6Uco/NJo1
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v1 07/16] test/qtest/aspeed_smc-test: Fix coding style
+To: Jamin Lin <jamin_lin@aspeedtech.com>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?=
+ <clg@kaod.org>, Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ Alistair Francis <alistair@alistair23.me>, Kevin Wolf <kwolf@redhat.com>,
+ Hanna Reitz <hreitz@redhat.com>, Laurent Vivier <lvivier@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>,
+ "open list:Block layer core" <qemu-block@nongnu.org>,
+ Fabiano Rosas <farosas@suse.de>
+Cc: troy_lee@aspeedtech.com, yunlin.tang@aspeedtech.com
+References: <20241018053112.1886173-1-jamin_lin@aspeedtech.com>
+ <20241018053112.1886173-8-jamin_lin@aspeedtech.com>
+From: Thomas Huth <thuth@redhat.com>
+Content-Language: en-US
+Autocrypt: addr=thuth@redhat.com; keydata=
+ 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
+In-Reply-To: <20241018053112.1886173-8-jamin_lin@aspeedtech.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.068,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: VXii6fskYJFU
 
-On Fri, Oct 18, 2024 at 11:57:36AM +0800, Zhao Liu wrote:
-> Hi Daniel,
+On 18/10/2024 07.31, Jamin Lin wrote:
+> Fix coding style issues from checkpatch.pl
 > 
-> > > +    ``smp-cache.0.cache=cachename,smp-cache.0.topology=topologylevel``
-> > > +        Define cache properties for SMP system.
-> > > +
-> > > +        ``cache=cachename`` specifies the cache that the properties will be
-> > > +        applied on. This field is the combination of cache level and cache
-> > > +        type. It supports ``l1d`` (L1 data cache), ``l1i`` (L1 instruction
-> > > +        cache), ``l2`` (L2 unified cache) and ``l3`` (L3 unified cache).
-> > > +
-> > > +        ``topology=topologylevel`` sets the cache topology level. It accepts
-> > > +        CPU topology levels including ``thread``, ``core``, ``module``,
-> > > +        ``cluster``, ``die``, ``socket``, ``book``, ``drawer`` and a special
-> > > +        value ``default``. If ``default`` is set, then the cache topology will
-> > > +        follow the architecture's default cache topology model. If another
-> > > +        topology level is set, the cache will be shared at corresponding CPU
-> > > +        topology level. For example, ``topology=core`` makes the cache shared
-> > > +        by all threads within a core.
-> > > +
-> > > +        Example:
-> > > +
-> > > +        ::
-> > > +
-> > > +            -machine smp-cache.0.cache=l1d,smp-cache.0.topology=core,smp-cache.1.cache=l1i,smp-cache.1.topology=core
-> > 
-> > There are 4 cache types, l1d, l1i, l2, l3.
-> > 
-> > In this example you've only set properties for l1d, l1i caches.
-> > 
-> > What does this mean for l2 / l3 caches ?
+> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+> ---
+>   tests/qtest/aspeed_smc-test.c | 6 ++++--
+>   1 file changed, 4 insertions(+), 2 deletions(-)
 > 
-> Omitting "cache" will default to using the "default" level.
-> 
-> I think I should add the above description to the documentation.
-> 
-> > Are they reported as not existing, or are they to be reported at
-> > some built-in default topology level.
-> 
-> It's the latter.
-> 
-> If a machine doesn't support l2/l3, then QEMU will also report the error
-> like:
-> 
-> qemu-system-*: l2 cache topology not supported by this machine
+> diff --git a/tests/qtest/aspeed_smc-test.c b/tests/qtest/aspeed_smc-test.c
+> index c713a3700b..4673371d95 100644
+> --- a/tests/qtest/aspeed_smc-test.c
+> +++ b/tests/qtest/aspeed_smc-test.c
+> @@ -353,7 +353,8 @@ static void test_read_page_mem(void)
+>       uint32_t page[FLASH_PAGE_SIZE / 4];
+>       int i;
+>   
+> -    /* Enable 4BYTE mode for controller. This is should be strapped by
+> +    /*
+> +     * Enable 4BYTE mode for controller. This is should be strapped by
+>        * HW for CE0 anyhow.
+>        */
+>       spi_ce_ctrl(1 << CRTL_EXTENDED0);
+> @@ -394,7 +395,8 @@ static void test_write_page_mem(void)
+>       uint32_t page[FLASH_PAGE_SIZE / 4];
+>       int i;
+>   
+> -    /* Enable 4BYTE mode for controller. This is should be strapped by
+> +    /*
+> +     * Enable 4BYTE mode for controller. This is should be strapped by
+>        * HW for CE0 anyhow.
+>        */
+>       spi_ce_ctrl(1 << CRTL_EXTENDED0);
 
-Ok, that's good.
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 
-> > If the latter, how does the user know what that built-in default is, 
-> 
-> Currently, the default cache model for x86 is L1 per core, L2 per core,
-> and L3 per die. Similar to the topology levels, there is still no way to
-> expose this to users. I can descript default cache model in doc.
-> 
-> But I feel like we're back to the situation we discussed earlier:
-> "default" CPU topology support should be related to the CPU model, but
-> in practice, QEMU supports it at the machine level. The cache topology
-> depends on CPU topology support and can only continue to be added on top
-> of the machine.
-> 
-> So do you think we can add topology and cache information in CpuModelInfo
-> so that query-cpu-model-expansion can expose default CPU/cache topology
-> information to users?
-> 
-> This way, users can customize CPU/cache topology in -smp and
-> -machine smp-cache. Although the QMP command is targeted at the CPU model
-> while our CLI is at the machine level, at least we can expose the
-> information to users.
-> 
-> If you agree to expose the default topology/cache info in
-> query-cpu-model-expansion, can I work on this in a separate series? :)
-
-Yeah, lets worry about that another day.
-
-It it sufficient to just encourage users to always specify
-the full set of caches.
-
-> > Can we explicitly disable a l2/l3 cache, or must it always exists ?
-> 
-> Now we can't disable it through -machine smp-cache (while x86 CPU support
-> l3-cache=off), but as you mentioned, I can try using "invalid" to support
-> this scenario, which would be more general. Similarly, if you agree, I
-> can also add this support in a separate series.
-
-If we decide to offer a way to disable caches, probably better to have
-a name like 'disabled' for such a setting, and yes, we don't need todo
-that now.
-
-With regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|

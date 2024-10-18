@@ -1,195 +1,165 @@
-Received: by 2002:a17:505:18c3:b0:1be9:327d:8ee3 with SMTP id tt3csp818955njb;
-        Fri, 18 Oct 2024 06:31:53 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWaltHBJQZJivi1ooJKndrhoRBZaTzTN/fx0XciV6YSykAoOZs3hDagmRG8w6Or1/K3UqEaUjArcaXjow==@linaro.org
-X-Google-Smtp-Source: AGHT+IEXqaIY3Zyvl/aR1xr/NB7Y/wvgNLHdpJVKufQQ56rO921tTDzovEAgQz85dl8koUrIJzol
-X-Received: by 2002:a05:620a:1927:b0:7a9:b4d2:9d68 with SMTP id af79cd13be357-7b14d54cb9emr1197857585a.22.1729258313269;
-        Fri, 18 Oct 2024 06:31:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1729258313; cv=none;
+Received: by 2002:a17:505:18c3:b0:1be9:327d:8ee3 with SMTP id tt3csp848502njb;
+        Fri, 18 Oct 2024 07:18:19 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWapxyULExBcZGe0L9E2bmaKKvoviBLbaZto1/bDB1cAG7LH8HMC21XunnLoVNtjfiIiyDQGlzxGrec4Q==@linaro.org
+X-Google-Smtp-Source: AGHT+IEJVxZJkJTMNurn8AftNV7TAKwe3cspvAbouGT558hnYpxAsFSTl9R1/U9rvPNl9Rdz1+H6
+X-Received: by 2002:a05:6808:1307:b0:3e4:4b8f:cb8e with SMTP id 5614622812f47-3e602da5e1cmr2238277b6e.35.1729261098905;
+        Fri, 18 Oct 2024 07:18:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1729261098; cv=none;
         d=google.com; s=arc-20240605;
-        b=VtwuqAEqDl6oICyh196KNHC7hVoHK1vWTXK9edpdM2Gv052BnuewXwIubCCKuhIWZC
-         7944VocNXw+2ROARXdyRD2tT0OlizaBdyoB7lSQu7fsYDM7e0bKJqjWEeNS5t3RChiBm
-         4/8DuLOC8Sb4si3UaEzfc1NOI8sATaRjCKp6OtnOcC7cWeiT6PO0AnP5faYNFERgCdvE
-         RMIw/f2E4oLToQd3OXEJG9S/15Tm4iBvc4QhhLxaLf51LD6uTLMCwcV2Zuyp+FuCWJqC
-         O5sc3NlGEQrlrYVGTRXGJR678uoHz3rhwL/FcvES2LI77oRW3d/PY1VNAzsFM8+kIm+q
-         cLWw==
+        b=HIqEn0DwnBL3U25dcamxFnSaxEGF2j3PzpGxvlGvWHWWKSJVDEu+NGRqcif7KA3C+j
+         shbEUB+WyyjbkdByAEQmt29c055wm8duaLrcQiTRyNyWMmzFUHvulv0V1Tl3hQGrj0/N
+         r3c84ibnB1zk57dOVtZsYCgbmu+ZVZMn3B6BDiD5Ox/WyFu1t0yes7zbecOKBx0HYyRL
+         OmW/3fbcIoEwoY3OeV5o6tckDpYkINBtFHJ5A5GOy2m19+19OlCL5XMa5HOsMleNmF2J
+         E0BksVsvJ+9egOGHj+BK3Nc0ZiqTRpfW59vDnZ9Cmbe4W2fnOk13liPgHtEhXOtz9PpW
+         048w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id;
-        bh=sPX26JRkyYNOuUuEfR8RwZNKfUU9ZZPsLQ8vElXckzo=;
-        fh=4mlnkPeqTwuu2Qx8qreMlJHQU0w7aOUfwVS+XUkOkGE=;
-        b=LwI/F+cebMU/TYjE3GagI4yONI8s5QMioVjlEjz3NiKVwuwbeQd4eZXV9ci/OSRK7F
-         8WA4eZ4cZFj8NHsBIlwC4jQmenfIAEReVYBLwJUXT1+2Qvdt/vRYBlmsc0oadNlsCbHZ
-         UJzh0ofZrvlAC/9EmcUytHjAuOXPy/GNN8wkb8GR1Q7THjv8DNfFCFjIFuNYmAaFVu+F
-         VE0ic52qdpGzsh03h0OZPOP3g8SF8YG/leN9tge7YE4wxCle8+bQTLZlCqeKkfGj1vxk
-         2aNIFQMR/btcXxJiisRwt9kcpv1iwVQfWkHcuQQF+EyVD3J/Oi4KhMYg6ugXS/fR4O6L
-         owmA==;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=Vlis1wrdCPzJs0A3Vea7TA2gh4nT9iyy+d6woLENJUw=;
+        fh=e5+O3SR6KKeSK/hiXUbyB6fQO5OvwSSjHlKWdVK1ULg=;
+        b=PEJ9oGbmoHORJaZUMVLVOXFBlTJJ+6hxaHAcIBgbwZeTmo+FWZSt//te6EgSSY53mK
+         sz59pOwtQgBkFYuHH/VQz1QzTvdWVvdnfD05p5TZn3cYxmAZ2re+q2zlmHS69kMF4vdB
+         u3g6ggjhOgp5bZfbU8rHpAZMfgZOQmtZ+NPcJwekzVbuNbDVsHqBwdsJ5EuWt3wHFOP6
+         uOfd0SRVIqzl2iSoGiT4SDXyt2moOQCSbwmwxr+lDX2Qojh8PW6fU+huZj7a+9z/Exge
+         CUZjrV5I9NFPb9YwpoVzSTZEJTsNMjbZXdyMHrvQYexBhiVD+KcKYejpS0jre9bZVezN
+         5b/g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7b156ff0fc5si177525485a.571.2024.10.18.06.31.53
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OxUbOJQb;
+       spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <imammedo@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id a1e0cc1a2514c-851e5bfaadfsi278477241.186.2024.10.18.07.18.18
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 18 Oct 2024 06:31:53 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 18 Oct 2024 07:18:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of imammedo@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1t1n4y-0002ho-Ji; Fri, 18 Oct 2024 09:31:44 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=LF+j=RO=kaod.org=clg@ozlabs.org>)
- id 1t1n4g-0002XY-Sm; Fri, 18 Oct 2024 09:31:32 -0400
-Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=LF+j=RO=kaod.org=clg@ozlabs.org>)
- id 1t1n4e-00087y-C6; Fri, 18 Oct 2024 09:31:26 -0400
-Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4XVQZp4pTnz4wnp;
- Sat, 19 Oct 2024 00:31:14 +1100 (AEDT)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4XVQZh5ybFz4wcl;
- Sat, 19 Oct 2024 00:31:05 +1100 (AEDT)
-Message-ID: <b3970e21-cbd0-4bca-a857-df55d48c8468@kaod.org>
-Date: Fri, 18 Oct 2024 15:31:02 +0200
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OxUbOJQb;
+       spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1729261098;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=Vlis1wrdCPzJs0A3Vea7TA2gh4nT9iyy+d6woLENJUw=;
+	b=OxUbOJQbd5IcuoV4Y4RCi2wy7RilBUeZFZxSV0XakHNG7VczDsQJzUnR+Mr0HJgB+yqJrL
+	bMxAI06+e5cpxZsZ0pjDiRgs5bkv3szeHwAaSVz6nA6y828e2QL6E0r4svuyIHFpRqqgra
+	RY05bzxUxbtmPlC+PeXfz7cU3mR+F+s=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-317-T4X2uEYMPUmkC0vSlODx4g-1; Fri, 18 Oct 2024 10:18:16 -0400
+X-MC-Unique: T4X2uEYMPUmkC0vSlODx4g-1
+Received: by mail-wm1-f71.google.com with SMTP id 5b1f17b1804b1-431604a3b47so7854185e9.3
+        for <alex.bennee@linaro.org>; Fri, 18 Oct 2024 07:18:15 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1729261095; x=1729865895;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=Vlis1wrdCPzJs0A3Vea7TA2gh4nT9iyy+d6woLENJUw=;
+        b=fmxds8ZCHDYVOgSXmP+kW9d+ZzDYKnQoFeqGrJn2PlG99IHO1QCSDbrv+IZ+mfSHpJ
+         N+AptuOnH6VSHEOmSYQx6oqplvyzML/zb+xQ1u2UgvJwqWQrUdNCj94iqefhAzljrLro
+         y+TY33ClfhN45hOmWgKP7hEKOyRlDVxjlTXixwhGJr2ocg4yqG4g/a61m86L6CXxFma2
+         JlBDro42XSjcJDX7NZgNDJiU1OsEWX2r0yaD2GJ9LDbQRL/Pvmzm64o/LlJpVpp0CDYJ
+         HInpD1GIMPNHYdY9HBcYRl/Xu11iZJlHA7aaxT/uXGwV1kIxUV2VmXKu+aoNMOKjiuri
+         wtSQ==
+X-Forwarded-Encrypted: i=1; AJvYcCWQjClr+6dY0cqxcSonD0E+gKLM9c0pun0YaBq4QZDORtTq7Ucd7UFB18tUucTGAIojKQNBcIjfNue0IA==@linaro.org
+X-Gm-Message-State: AOJu0YyKYSJdqKIOrtGVu03mPGc7sxIEaCETm5G8vki8a6ivOVYZV81I
+	dOlwxKR9vKi8uR0Bm2nwHdTTsTopkyIBqVAf47fQqR6kzCXBeojcrXIO+gOdXfzios7wkyS9N4B
+	nWuadpz/mHeiHmP4U3ZgzQwy7dJuo4+ZTFhYJR7GBgex327lv9PXKyg==
+X-Received: by 2002:a05:600c:c84:b0:430:54a4:5b03 with SMTP id 5b1f17b1804b1-43161622973mr21143195e9.6.1729261094919;
+        Fri, 18 Oct 2024 07:18:14 -0700 (PDT)
+X-Received: by 2002:a05:600c:c84:b0:430:54a4:5b03 with SMTP id 5b1f17b1804b1-43161622973mr21142685e9.6.1729261094538;
+        Fri, 18 Oct 2024 07:18:14 -0700 (PDT)
+Return-Path: <imammedo@redhat.com>
+Received: from imammedo.users.ipa.redhat.com (nat-pool-brq-t.redhat.com. [213.175.37.10])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4316067dbb4sm29303585e9.9.2024.10.18.07.18.11
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 18 Oct 2024 07:18:14 -0700 (PDT)
+Date: Fri, 18 Oct 2024 16:18:11 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Salil Mehta <salil.mehta@huawei.com>
+Cc: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <mst@redhat.com>,
+ <maz@kernel.org>, <jean-philippe@linaro.org>,
+ <jonathan.cameron@huawei.com>, <lpieralisi@kernel.org>,
+ <peter.maydell@linaro.org>, <richard.henderson@linaro.org>,
+ <andrew.jones@linux.dev>, <david@redhat.com>, <philmd@linaro.org>,
+ <eric.auger@redhat.com>, <will@kernel.org>, <ardb@kernel.org>,
+ <oliver.upton@linux.dev>, <pbonzini@redhat.com>, <gshan@redhat.com>,
+ <rafael@kernel.org>, <borntraeger@linux.ibm.com>, <alex.bennee@linaro.org>,
+ <npiggin@gmail.com>, <harshpb@linux.ibm.com>, <linux@armlinux.org.uk>,
+ <darren@os.amperecomputing.com>, <ilkka@os.amperecomputing.com>,
+ <vishnu@os.amperecomputing.com>, <karl.heubaum@oracle.com>,
+ <miguel.luis@oracle.com>, <salil.mehta@opnsrc.net>,
+ <zhukeqian1@huawei.com>, <wangxiongfeng2@huawei.com>,
+ <wangyanan55@huawei.com>, <jiakernel2@gmail.com>, <maobibo@loongson.cn>,
+ <lixianglai@loongson.cn>, <shahuang@redhat.com>, <zhao1.liu@intel.com>,
+ <linuxarm@huawei.com>, <gustavo.romero@linaro.org>
+Subject: Re: [PATCH V1 2/4] hw/acpi: Update ACPI CPU Status `is_{present,
+ enabled}` during vCPU hot(un)plug
+Message-ID: <20241018161811.4a88c7b7@imammedo.users.ipa.redhat.com>
+In-Reply-To: <20241014192205.253479-3-salil.mehta@huawei.com>
+References: <20241014192205.253479-1-salil.mehta@huawei.com>
+	<20241014192205.253479-3-salil.mehta@huawei.com>
+X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [SPAM] [PATCH v1 02/16] hw/block:m25p80: Fix coding style
-To: Jamin Lin <jamin_lin@aspeedtech.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- Alistair Francis <alistair@alistair23.me>, Kevin Wolf <kwolf@redhat.com>,
- Hanna Reitz <hreitz@redhat.com>, Thomas Huth <thuth@redhat.com>,
- Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>,
- "open list:Block layer core" <qemu-block@nongnu.org>
-Cc: troy_lee@aspeedtech.com, yunlin.tang@aspeedtech.com
-References: <20241018053112.1886173-1-jamin_lin@aspeedtech.com>
- <20241018053112.1886173-3-jamin_lin@aspeedtech.com>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20241018053112.1886173-3-jamin_lin@aspeedtech.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=150.107.74.76;
- envelope-from=SRS0=LF+j=RO=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
-X-Spam_score_int: -39
-X-Spam_score: -4.0
-X-Spam_bar: ----
-X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.25, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: py6nA01CnoDf
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-TUID: XVppxMsA6WgY
 
-On 10/18/24 07:30, Jamin Lin wrote:
-> Fix coding style issues from checkpatch.pl
+On Mon, 14 Oct 2024 20:22:03 +0100
+Salil Mehta <salil.mehta@huawei.com> wrote:
+
+> Update the `AcpiCpuStatus` for `is_enabled` and `is_present` accordingly when
+> vCPUs are hot-plugged or hot-unplugged, taking into account the *persistence*
+> of the vCPUs.
 > 
-> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-
-
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
-
-Thanks,
-
-C.
-
-
+> Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
 > ---
->   hw/block/m25p80.c | 22 ++++++++++++++--------
->   1 file changed, 14 insertions(+), 8 deletions(-)
+>  hw/acpi/cpu.c | 7 +++++++
+>  1 file changed, 7 insertions(+)
 > 
-> diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
-> index f7123f9e68..3f55b8f385 100644
-> --- a/hw/block/m25p80.c
-> +++ b/hw/block/m25p80.c
-> @@ -61,7 +61,8 @@ typedef struct FlashPartInfo {
->        */
->       uint8_t id[SPI_NOR_MAX_ID_LEN];
->       uint8_t id_len;
-> -    /* there is confusion between manufacturers as to what a sector is. In this
-> +    /*
-> +     * there is confusion between manufacturers as to what a sector is. In this
->        * device model, a "sector" is the size that is erased by the ERASE_SECTOR
->        * command (opcode 0xd8).
->        */
-> @@ -168,7 +169,7 @@ typedef struct FlashPartInfo {
->   /*
->    * Spansion read mode command length in bytes,
->    * the mode is currently not supported.
-> -*/
-> + */
->   
->   #define SPANSION_CONTINUOUS_READ_MODE_CMD_LEN 1
->   #define WINBOND_CONTINUOUS_READ_MODE_CMD_LEN 1
-> @@ -189,7 +190,8 @@ static const FlashPartInfo known_devices[] = {
->   
->       { INFO("at45db081d",  0x1f2500,      0,  64 << 10,  16, ER_4K) },
->   
-> -    /* Atmel EEPROMS - it is assumed, that don't care bit in command
-> +    /*
-> +     * Atmel EEPROMS - it is assumed, that don't care bit in command
->        * is set to 0. Block protection is not supported.
->        */
->       { INFO("at25128a-nonjedec", 0x0,     0,         1, 131072, EEPROM) },
-> @@ -275,10 +277,13 @@ static const FlashPartInfo known_devices[] = {
->       { INFO_STACKED("n25q00a",   0x20bb21, 0x1000, 64 << 10, 2048, ER_4K, 4) },
->       { INFO_STACKED("mt25ql01g", 0x20ba21, 0x1040, 64 << 10, 2048, ER_4K, 2) },
->       { INFO_STACKED("mt25qu01g", 0x20bb21, 0x1040, 64 << 10, 2048, ER_4K, 2) },
-> -    { INFO_STACKED("mt25ql02g", 0x20ba22, 0x1040, 64 << 10, 4096, ER_4K | ER_32K, 2) },
-> -    { INFO_STACKED("mt25qu02g", 0x20bb22, 0x1040, 64 << 10, 4096, ER_4K | ER_32K, 2) },
-> +    { INFO_STACKED("mt25ql02g", 0x20ba22, 0x1040, 64 << 10, 4096,
-> +                   ER_4K | ER_32K, 2) },
-> +    { INFO_STACKED("mt25qu02g", 0x20bb22, 0x1040, 64 << 10, 4096,
-> +                   ER_4K | ER_32K, 2) },
->   
-> -    /* Spansion -- single (large) sector size only, at least
-> +    /*
-> +     * Spansion -- single (large) sector size only, at least
->        * for the chips listed here (without boot sectors).
->        */
->       { INFO("s25sl032p",   0x010215, 0x4d00,  64 << 10,  64, ER_4K) },
-> @@ -549,7 +554,8 @@ static void blk_sync_complete(void *opaque, int ret)
->       qemu_iovec_destroy(iov);
->       g_free(iov);
->   
-> -    /* do nothing. Masters do not directly interact with the backing store,
-> +    /*
-> +     * do nothing. Masters do not directly interact with the backing store,
->        * only the working copy so no mutexing required.
->        */
->   }
-> @@ -1843,7 +1849,7 @@ static void m25p80_register_types(void)
->   
->       type_register_static(&m25p80_info);
->       for (i = 0; i < ARRAY_SIZE(known_devices); ++i) {
-> -        TypeInfo ti = {
-> +        const TypeInfo ti = {
->               .name       = known_devices[i].part_name,
->               .parent     = TYPE_M25P80,
->               .class_init = m25p80_class_init,
+> diff --git a/hw/acpi/cpu.c b/hw/acpi/cpu.c
+> index 083c4010c2..700aa855e9 100644
+> --- a/hw/acpi/cpu.c
+> +++ b/hw/acpi/cpu.c
+> @@ -291,6 +291,8 @@ void acpi_cpu_plug_cb(HotplugHandler *hotplug_dev,
+>      }
+>  
+>      cdev->cpu = CPU(dev);
+> +    cdev->is_present = true;
+> +    cdev->is_enabled = true;
 
+hmm, if cpu is always present, then these fields are redundant
+since
+  (!cdev->cpu) == present
+and
+  then is_enabled could be fetched from cdev->cpu directly
+
+>      if (dev->hotplugged) {
+>          cdev->is_inserting = true;
+>          acpi_send_event(DEVICE(hotplug_dev), ACPI_CPU_HOTPLUG_STATUS);
+> @@ -322,6 +324,11 @@ void acpi_cpu_unplug_cb(CPUHotplugState *cpu_st,
+>          return;
+>      }
+>  
+> +    cdev->is_enabled = false;
+> +    if (!acpi_persistent_cpu(CPU(dev))) {
+> +        cdev->is_present = false;
+> +    }
+
+and other way around works as well.
+
+then we don't have to carry around extra state and making sure that it's in sync/migrated.
+
+> +
+>      cdev->cpu = NULL;
+>  }
+>  

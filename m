@@ -1,212 +1,152 @@
-Received: by 2002:a17:505:18c3:b0:1be9:327d:8ee3 with SMTP id tt3csp589499njb;
-        Thu, 17 Oct 2024 21:10:21 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCX88xjIvZKewm4z0Cez1CwAxPaEFwzK0ao48OUbLxfLMIwtF3J2dEsthlmfzE7j/kMIdoeARk2D0b6pHg==@linaro.org
-X-Google-Smtp-Source: AGHT+IEDWeWlW9oTXKJM9JFjbBX/qe+1JNd9rkVtmJG/W4iulNTQP11oL5IrNzNcO7p/ZFgOgIil
-X-Received: by 2002:a05:6214:451e:b0:6cb:f7dd:b6a8 with SMTP id 6a1803df08f44-6cde15379e0mr17536226d6.26.1729224621570;
-        Thu, 17 Oct 2024 21:10:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1729224621; cv=none;
+Received: by 2002:a17:505:18c3:b0:1be9:327d:8ee3 with SMTP id tt3csp611538njb;
+        Thu, 17 Oct 2024 22:31:36 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVq7bYR/8J8yWKTQixR/F9RLfux5uI1nZuqQgMO2gmSLYu9v/FPYV+ZZKyVxt9Wa04paDWc3UVbs+kYAA==@linaro.org
+X-Google-Smtp-Source: AGHT+IEEqjKUy0N2fxRICdjla7MzpE9sicYWQswdklKHGX/C/kQJMGV6705/jr4fRSEq98JvgMNY
+X-Received: by 2002:a05:622a:2298:b0:460:90e3:24a1 with SMTP id d75a77b69052e-460aede95bfmr19367911cf.39.1729229496471;
+        Thu, 17 Oct 2024 22:31:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1729229496; cv=none;
         d=google.com; s=arc-20240605;
-        b=LabopinLrEi1+Qo8PrBAYGahQmTMaPDQyQhT0iEdq28nTGZxT66sEEGlsZf/8VnxJj
-         P8rHf1N/1XyVXG7ovgqr2v949LqXIFmd4v46HQ+VNDLTdZj8mpoThUTa+lon7It2lIBe
-         a6lckwqAOwfXZdcGgHGuI56oT0WVUS1mdzPW3GutcCyuoPP50rPLPAgkfaBuL5lWvAWM
-         XdPqei4SYQU+oz/U0OsUYFPTz868zJ4Fb9lq9DWLiAX5nvBDcUhcn9FgvLNWYJMnJGUn
-         3rTSz6TVniCIViEVxIU9mTilpPo1M/lt/ieM8umIkwuO1xC89zObWEaEdrYS61KseuVG
-         gyVA==
+        b=PKzCrkTS4x4ugNg21ulVWsaFxuCy4L0XSoVP8sKCGtFJeFhXTHPR2zboowfwHtAwWw
+         1oPvmWp+3UbCenwVwPZNqH+SaoqYrfqyhHTYmxoCxU8zfYJzJC+/SfMgE45QNxCPzelj
+         auM0M/Wb1LDv35zSRU0/41d8mXFZK4qb0Np7yejXfwFepE2l6tPWMji8Vt5oHRT9eHlB
+         NcJ3KI20S8UrZavuDQdN8R8GoDi3p4fzbbwEw82pHGvV+MXCLXLAFnoePEnHkO3/L2RJ
+         hzrZcRRjwNLiX/uBUOEsWnVOqOiIwYDkN3g1+wlmo2iq+4id1kPn3aow/G3g39p2poho
+         SEXw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=r4ZQ2iGttkarx5P5vdhvObeefKtTomz6u0CLLWMigUY=;
-        fh=Lsr1I1WmDys7uDlzKwVM6idwSU5cyOX6HezNlE9gGr4=;
-        b=NS7yE8ROPhlQ79rPtcadJAhan5IJmCDdPdB2L/CjMWUoCfg7q/OBHRt7VmWnMsYdCM
-         GY/IMOK6YMraalJpjr7nIHOp8+Y5jzRZ9KH7CM/le/kMbJSQvsnD/PNg5JSZK5F7+oSg
-         fXWB0swe40SezoUyHQFEfIXfUpEeFv4qeDYXDBY97VbVwFZ/OQVuGK4gSF42UBTnigMZ
-         UU02wS4JRXG7Ktn7VvjyE+CUDOl4aw8b2q9fEFphIS/ptxRPVmqFWPgcswh9PNNK3stO
-         xG5sA9WOr85i0u5sTYJg2/Kxc06kKrwmzuyJyfpcPR6gN+diF4tFsF3uR96UIFufphh8
-         Ujdw==;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to;
+        bh=k4PIOl51i7sGpDw2bNWORAulTWKlUmvw83AOcU/P92A=;
+        fh=RVX+uUL/oYxgKlLpNyiQfzI75/ka+93kXvmeIy2Oap4=;
+        b=OCeMRzqCBfbzwlxixKM+cME9cGImhpCmKppviiYteCLn3hFZPc2ZufDJ9AyUMnXgJo
+         TzmVD/ridp76rU81L1Rv41shNtEerUBYgwWkcHBJ1TVEiB6JYLF+HhHWYkBgmLFFOoNv
+         UGuw/tUd6KTF0K0YszNzE7soTF8imNjZF2rr1OiNYEHw1yT6oU+gvRirOqX3KtEUFgG3
+         qe6cK2o11LgsZQnFsIXnAMlBIqOOrEgzG7UxpiybAfbKNSlbgAGNxi2TZGMti0uYT+1+
+         4er6OuF/PrvCJj9M3V7iUOw91oeOVKGRaTDFoDSUH3N3cMN4nj+QJ3pwHNnhB7jDZRB0
+         zJig==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=ZzyEPZAt;
-       spf=pass (google.com: domain of zhao1.liu@intel.com designates 198.175.65.19 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Return-Path: <zhao1.liu@intel.com>
-Received: from mgamail.intel.com (mgamail.intel.com. [198.175.65.19])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6cde111eae8si8582496d6.26.2024.10.17.21.10.20
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d75a77b69052e-460aeac2126si9087721cf.723.2024.10.17.22.31.36
+        for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 17 Oct 2024 21:10:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of zhao1.liu@intel.com designates 198.175.65.19 as permitted sender) client-ip=198.175.65.19;
+        Thu, 17 Oct 2024 22:31:36 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=ZzyEPZAt;
-       spf=pass (google.com: domain of zhao1.liu@intel.com designates 198.175.65.19 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1729224622; x=1760760622;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:content-transfer-encoding:in-reply-to;
-  bh=UO03l2WlkbGHRPPhQ1W7PzTfDWTByRjaEAMTt2eMXo4=;
-  b=ZzyEPZAtNhPizxkjU2pRYU1SJSva9tI3OAJL3gmKB8Djx2da1bvkpflV
-   syVz6fcVzSmvUqCvc+39UUZJDUx61a0iHnQtTD7aRET0SOXXU/hz7x6xS
-   skV6rJskmpV+hNqgqJKXKNi2M3v5VeuA05xMNUzRk3T491NRqlNb2Jf8a
-   870v3ZJ4CIOxspkCW+LJw5v1mOZ74VF3K3+lVROZZMBjnUgQKRvMRZJ4C
-   TzsxIFy5IDOsy2ZIdi0L0h0FWoJ51LFJs/ICVPP0G3VAZnsNfKV6MbcG4
-   FRDrLq2lbzJ3NTQVTgZ28pvKf9Gtw0e6h3wOI7B35+5rZQumVesK78WPz
-   w==;
-X-CSE-ConnectionGUID: gUvKuKWrTcuCwXsctddJOw==
-X-CSE-MsgGUID: SKm3A3/WS6CMVIB9HpSN7g==
-X-IronPort-AV: E=McAfee;i="6700,10204,11222"; a="28621475"
-X-IronPort-AV: E=Sophos;i="6.11,199,1725346800"; 
-   d="scan'208";a="28621475"
-Received: from orviesa002.jf.intel.com ([10.64.159.142])
-  by orvoesa111.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 17 Oct 2024 21:10:20 -0700
-X-CSE-ConnectionGUID: 7spyyLOrQh+idBbFxWPV8A==
-X-CSE-MsgGUID: 9z7etmnrTL23n7mV1FIhiQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.11,212,1725346800"; 
-   d="scan'208";a="109568860"
-Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost) ([10.239.160.36])
-  by orviesa002.jf.intel.com with ESMTP; 17 Oct 2024 21:10:14 -0700
-Date: Fri, 18 Oct 2024 12:26:29 +0800
-From: Zhao Liu <zhao1.liu@intel.com>
-To: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
-Cc: Daniel P =?iso-8859-1?Q?=2E_Berrang=E9?= <berrange@redhat.com>,
-	Igor Mammedov <imammedo@redhat.com>,
-	Eduardo Habkost <eduardo@habkost.net>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
-	Yanan Wang <wangyanan55@huawei.com>,
-	"Michael S . Tsirkin" <mst@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Eric Blake <eblake@redhat.com>,
-	Markus Armbruster <armbru@redhat.com>,
-	Marcelo Tosatti <mtosatti@redhat.com>,
-	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Jonathan Cameron <Jonathan.Cameron@huawei.com>,
-	Sia Jee Heng <jeeheng.sia@starfivetech.com>,
-	Alireza Sanaee <alireza.sanaee@huawei.com>, qemu-devel@nongnu.org,
-	kvm@vger.kernel.org, qemu-riscv@nongnu.org, qemu-arm@nongnu.org,
-	Zhenyu Wang <zhenyu.z.wang@intel.com>,
-	Dapeng Mi <dapeng1.mi@linux.intel.com>,
-	Zhao Liu <zhao1.liu@intel.com>
-Subject: Re: [PATCH v3 1/7] hw/core: Make CPU topology enumeration
- arch-agnostic
-Message-ID: <ZxHjdWSXyYKBAVWZ@intel.com>
-References: <20241012104429.1048908-1-zhao1.liu@intel.com>
- <20241012104429.1048908-2-zhao1.liu@intel.com>
- <0b884126-1fcb-40d2-9fc2-ab0944370fd9@linaro.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1t1fa8-0008Ef-2V; Fri, 18 Oct 2024 01:31:24 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1t1fa6-0008EL-SW; Fri, 18 Oct 2024 01:31:23 -0400
+Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1t1fa4-00089Y-IE; Fri, 18 Oct 2024 01:31:22 -0400
+Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
+ (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.12; Fri, 18 Oct
+ 2024 13:31:12 +0800
+Received: from localhost.localdomain (192.168.10.10) by TWMBX01.aspeed.com
+ (192.168.0.62) with Microsoft SMTP Server id 15.2.1258.12 via Frontend
+ Transport; Fri, 18 Oct 2024 13:31:12 +0800
+To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
+ <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
+ <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
+ Stanley" <joel@jms.id.au>, Alistair Francis <alistair@alistair23.me>, "Kevin
+ Wolf" <kwolf@redhat.com>, Hanna Reitz <hreitz@redhat.com>, Thomas Huth
+ <thuth@redhat.com>, Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini
+ <pbonzini@redhat.com>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, "open
+ list:All patches CC here" <qemu-devel@nongnu.org>, "open list:Block layer
+ core" <qemu-block@nongnu.org>
+CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
+ <yunlin.tang@aspeedtech.com>
+Subject: [PATCH v1 00/16] Fix write incorrect data into flash in user mode
+Date: Fri, 18 Oct 2024 13:30:56 +0800
+Message-ID: <20241018053112.1886173-1-jamin_lin@aspeedtech.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <0b884126-1fcb-40d2-9fc2-ab0944370fd9@linaro.org>
-X-TUID: rYHGS291VHIF
+Content-Type: text/plain
+Received-SPF: pass client-ip=211.20.114.72;
+ envelope-from=jamin_lin@aspeedtech.com; helo=TWMBX01.aspeed.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_FAIL=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
+From:  Jamin Lin via <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: lCFTb9/oKYaC
 
-Hi Marcin,
+change from v1:
+ 1. Fix write incorrect data into flash in user mode.
+ 2. Refactor aspeed smc qtest testcases to support AST2600, AST2500 and
+AST1030.
+ 3. Add ast2700 smc qtest testcase to support AST2700.
 
-On Thu, Oct 17, 2024 at 06:19:59PM +0200, Marcin Juszkiewicz wrote:
-> Date: Thu, 17 Oct 2024 18:19:59 +0200
-> From: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
-> Subject: Re: [PATCH v3 1/7] hw/core: Make CPU topology enumeration
->  arch-agnostic
-> 
-> W dniu 12.10.2024 o 12:44, Zhao Liu pisze:
-> > Cache topology needs to be defined based on CPU topology levels. Thus,
-> > define CPU topology enumeration in qapi/machine.json to make it generic
-> > for all architectures.
-> 
-> I have a question: how to create other than default cache topology in C
-> source?
+QEMU version: https://github.com/qemu/qemu/commit/95a16ee753d6da651fce8df876333bf7fcf134d9
 
-What does "C source" mean? Does it refer to the C code for sbsa-ref?
+Depend patch series:
+To successfully apply this patch series, it is required to apply this
+patch series first, https://patchwork.kernel.org/project/qemu-devel/list/?series=894520
 
-There's the ARM change to support cache topology for virt machine:
+Jamin Lin (16):
+  aspeed/smc: Fix write incorrect data into flash in user mode
+  hw/block:m25p80: Fix coding style
+  hw/block:m25p80: Support write status register 2 command (0x31) for
+    w25q01jvq
+  hw/block/m25p80: Add SFDP table for w25q80bl flash
+  hw/arm/aspeed: Correct spi_model w25q256 for ast1030-a1 EVB.
+  hw/arm/aspeed: Correct fmc_model w25q80bl for ast1030-a1 EVB
+  test/qtest/aspeed_smc-test: Fix coding style
+  test/qtest/aspeed_smc-test: Move testcases to test_palmetto_bmc
+    function
+  test/qtest/aspeed_smc-test: Introduce a new TestData to test different
+    BMC SOCs
+  test/qtest/aspeed_smc-test: Support to test all CE pins
+  test/qtest/aspeed_smc-test: Support to test all flash models
+  test/qtest/aspeed_smc-test: Support to test AST2500
+  test/qtest/aspeed_smc-test: Support to test AST2600
+  test/qtest/aspeed_smc-test: Support to test AST1030
+  test/qtest/aspeed_smc-test: Support write page command with QPI mode
+  test/qtest/ast2700-smc-test: Support to test AST2700
 
-https://lore.kernel.org/qemu-devel/20241010111822.345-5-alireza.sanaee@huawei.com/
+ hw/arm/aspeed.c                |   4 +-
+ hw/block/m25p80.c              |  63 ++-
+ hw/block/m25p80_sfdp.c         |  36 ++
+ hw/block/m25p80_sfdp.h         |   2 +-
+ hw/ssi/aspeed_smc.c            |  39 +-
+ include/hw/ssi/aspeed_smc.h    |   1 +
+ tests/qtest/aspeed_smc-test.c  | 783 ++++++++++++++++++++++-----------
+ tests/qtest/ast2700-smc-test.c | 598 +++++++++++++++++++++++++
+ tests/qtest/meson.build        |   3 +-
+ 9 files changed, 1245 insertions(+), 284 deletions(-)
+ create mode 100644 tests/qtest/ast2700-smc-test.c
 
-If you're looking to store cache information for some common purposes,
-you could also define a cache model structure similar to how it's done
-for x86:
-
-static const CPUCaches epyc_cache_info = {
-    .l1d_cache = &(CPUCacheInfo) {
-        .type = DATA_CACHE,
-        .level = 1,
-        .size = 32 * KiB,
-        .line_size = 64,
-        .associativity = 8,
-        .partitions = 1,
-        .sets = 64,
-        .lines_per_tag = 1,
-        .self_init = 1,
-        .no_invd_sharing = true,
-        .share_level = CPU_TOPOLOGY_LEVEL_CORE,
-    },
-    .l1i_cache = &(CPUCacheInfo) {
-        .type = INSTRUCTION_CACHE,
-        .level = 1,
-        .size = 64 * KiB,
-        .line_size = 64,
-        .associativity = 4,
-        .partitions = 1,
-        .sets = 256,
-        .lines_per_tag = 1,
-        .self_init = 1,
-        .no_invd_sharing = true,
-        .share_level = CPU_TOPOLOGY_LEVEL_CORE,
-    },
-    .l2_cache = &(CPUCacheInfo) {
-        .type = UNIFIED_CACHE,
-        .level = 2,
-        .size = 512 * KiB,
-        .line_size = 64,
-        .associativity = 8,
-        .partitions = 1,
-        .sets = 1024,
-        .lines_per_tag = 1,
-        .share_level = CPU_TOPOLOGY_LEVEL_CORE,
-    },
-    .l3_cache = &(CPUCacheInfo) {
-        .type = UNIFIED_CACHE,
-        .level = 3,
-        .size = 8 * MiB,
-        .line_size = 64,
-        .associativity = 16,
-        .partitions = 1,
-        .sets = 8192,
-        .lines_per_tag = 1,
-        .self_init = true,
-        .inclusive = true,
-        .complex_indexing = true,
-        .share_level = CPU_TOPOLOGY_LEVEL_DIE,
-    },
-};
-
-> If I would like to change default cache structure for sbsa-ref then how
-> would I do it?
-
-I'm not very familiar with sbsa-ref. How is the cache model defined? Does
-it use ACPI PPTT like the virt machine? If so, you can refer to the virt
-machine series link I provided above.
-
-> QEMU has powerful set of command line options. But it is hard to convert set
-> of cli options into C code.
-
-The CLI is currently quite complex, as different machine configurations
-may vary. But don't worry. The general steps for enabling smp-cache here
-are:
-
-1. Set cache levels support in sbsa_ref_class_init(). You can refer my
-   patch 6, to set ture for which cache level you need.
-2. Then, the cli can support "-machine smp-cache" for sbsa-ref machine.
-   You can refer the doc in my patch 6 to get the correct format.
-3. Next, the MachineState will store the user's cache topology in "smp_cache".
-   You can refer my patch 5 to get cache topology level from machine.
-4. Finally, it's architecture-specific code, depending on whether you
-   want to express cache information in the same pptt table as virt
-   machine.
-
-Regards,
-Zhao
+-- 
+2.34.1
 

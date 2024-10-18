@@ -1,99 +1,101 @@
-Received: by 2002:a17:505:18c3:b0:1be9:327d:8ee3 with SMTP id tt3csp845823njb;
-        Fri, 18 Oct 2024 07:14:34 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUK7qH7GBDt+iAladUOSsU1yG3g09Pmvqm067mlF+ALzr5/b8mF0HvsdgBj3swwNjeBOszP8SjT7O0cgA==@linaro.org
-X-Google-Smtp-Source: AGHT+IE1x7U/g64ZKJXcOz1W2fKurtG14F+4oUeR0byhSBv0xhUmbfwCLhiheKV1cSrplKgoXwBF
-X-Received: by 2002:a05:6808:3197:b0:3e5:fe87:a15c with SMTP id 5614622812f47-3e602c58aabmr2807504b6e.8.1729260874121;
-        Fri, 18 Oct 2024 07:14:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1729260874; cv=none;
+Received: by 2002:a17:505:18c3:b0:1be9:327d:8ee3 with SMTP id tt3csp846421njb;
+        Fri, 18 Oct 2024 07:15:20 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVDNF9IyO8kGqAIyJSNaz6ySYq2+phqb9QtqSe+1gi2maEOtuJL7zDQFl7zSX9I/OZBWM+Mhle7+89hdA==@linaro.org
+X-Google-Smtp-Source: AGHT+IHVWt2xsjJGM7kXTFajpoVnz4XrqGlLvyoeU/IawffhM8uiYYf8dqTL79mDT2ziC8kopb6d
+X-Received: by 2002:a05:6830:dcb:b0:718:180b:5b3c with SMTP id 46e09a7af769-7181a91bac1mr2069179a34.28.1729260920445;
+        Fri, 18 Oct 2024 07:15:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1729260920; cv=none;
         d=google.com; s=arc-20240605;
-        b=Ydj/hSWkS6mXWL11LIogAR2mgonFCgqsnv+Ex7UHGCIzfkonbqEYmpgMj1em3qSmUF
-         nNqj7xLkKRVlK8AoTFiRNKe8CinJ80/V9T3GWs5MJJ0BkSRKJ8u7KOhcC0SwEtCwl4vr
-         sWGPk9Mg7Mt6JWBuIkLaj9tOuVAQpukXX43aJD0CTzhxVUl7cXJaX/6N2SHaiAkpddU3
-         GjFUZLX9qA/wtoavFVCAtUGy7+g4K+8uz4wPoTm2tk2Riz1yexAyGy4mxVV2FSPVUxXs
-         jdv9DgLmmamndbQ8NNJFFf9Isk7SRfpgO2vTeXgnWq/jQzLcADM+f7Xmy62kDv8VAidP
-         KSMg==
+        b=iAlmYDdvLN9gF+XjONr/V01P0gadzooCHCdO8abi0T1D/FqQoUxBzoSXab1x2dXHPE
+         topDXKBhhNcy051f266ZvXYsw9xtiMBkdk7uVEcoMfpAyNnl0UNieZebrV0pd+WIyVCq
+         iVFZWQ49HEq3rscdy4LvOoJfAioHUp59uWb5Y6TMiGsLiL4KhiJ++LsXi0UDlIc6by8C
+         117whR0uRX3PhtBKhDZsAi9IKE0if05A5yBPnseQ46k18+qrCE15fzN8XZh8NqIyRvVA
+         Eszv1W9y0K0Eq/8lWAlflkqn0aVr9tE+vU0jcPpfwbasmUvTRtM9QzXFnCgDcX7h0m4t
+         l8Wg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=/fNL/+P00GzFrkc44mI8B5izEIFvMKA1wzL8Dp5K0oo=;
-        fh=TyQ+XMcHbPTbJ3OXPkaUEQ1AHt04IoT40Ys0Y0NTiKA=;
-        b=EOql5jty+clUJUXnkkPNX9XhSYIuC2izAVNSYK7tIAL8GrsstrqFtz8RlQ/rlCyXb8
-         8Bh1R9u6MRfaC4ZmfzYlc4Uy6NS5bKcDurDY6G0q0yqEx73TNXlwmjkr9KL86JMI6Mtq
-         nJyL3Sym/C767GiYFidniwIpMC40PIlWk0mTzlcvVu31ve/siJZqnkrfFJ1ewGsHgvmB
-         y8bu0rjLJtpbghOmoqMlaFitrSvCUJnXO41CxSQoQz0FZDKtq+Teoah1BwUNulz9rSy4
-         3PU7T1s64y8M0KLV4QGDVJAXJpxoqvs5bqEUtGzbe5zZnTaSkMmBnCXW+OL2sOKiMvjK
-         fQxQ==;
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=quF+uJRumwJtdROayPVjONeUFJ/tj9KRPQQ2lXyyT3U=;
+        fh=7q2THn0QGCe7+5kaQklC5nlS7FJy6l/fUJAwIYohlF8=;
+        b=gx7Lvfx9qaU7nsFc5Rbj78jUTIcOXJyw6rr4qw5r/tbz9wfZfUGcHyjyzvm5mYEz7Z
+         4ZNEZbpyuSyPrxJsWOb4FG/VVGOWRM3a0L/Yhmel3FR3vx3FBhh+J8Q2KCuSNINh2beh
+         +W5MovwyNn8l0ETOVqDwBj746tHgmH6dqDIvQ1Qrq97W9Z51w2iS3BUFDb1w1UbDGw6W
+         7NFkLREd4TVu35IY5SQX2mUHu4Gw7cT2uJeSApKewcKzr8c6Q7YC3vdE5c/HDJLTqkNt
+         YCq/ZFkS5YTN1WFJ08XSL/NoldHkJPurVpY+I+Lr5hqBRtCQsMbmZwHh6jstLuG1f5S9
+         Nfgw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=aRhEOBeo;
+       dkim=pass header.i=@linaro.org header.s=google header.b=rDRb8lpK;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a1e0cc1a2514c-851e5d3950esi279358241.221.2024.10.18.07.14.34
+        by mx.google.com with ESMTPS id ada2fe7eead31-4a5d62f1705si295755137.182.2024.10.18.07.15.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 18 Oct 2024 07:14:34 -0700 (PDT)
+        Fri, 18 Oct 2024 07:15:20 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=aRhEOBeo;
+       dkim=pass header.i=@linaro.org header.s=google header.b=rDRb8lpK;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1t1njY-0000w2-Cd; Fri, 18 Oct 2024 10:13:40 -0400
+	id 1t1njb-0000yP-Oq; Fri, 18 Oct 2024 10:13:43 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1t1njW-0000ur-JN
- for qemu-devel@nongnu.org; Fri, 18 Oct 2024 10:13:38 -0400
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+ id 1t1njZ-0000x2-Kh
+ for qemu-devel@nongnu.org; Fri, 18 Oct 2024 10:13:41 -0400
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1t1njU-0006wZ-9Z
- for qemu-devel@nongnu.org; Fri, 18 Oct 2024 10:13:38 -0400
-Received: by mail-wm1-x32c.google.com with SMTP id
- 5b1f17b1804b1-43159c9f617so18152995e9.2
- for <qemu-devel@nongnu.org>; Fri, 18 Oct 2024 07:13:35 -0700 (PDT)
+ id 1t1njX-0006yE-QC
+ for qemu-devel@nongnu.org; Fri, 18 Oct 2024 10:13:41 -0400
+Received: by mail-wm1-x335.google.com with SMTP id
+ 5b1f17b1804b1-4314fa33a35so21462345e9.1
+ for <qemu-devel@nongnu.org>; Fri, 18 Oct 2024 07:13:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1729260814; x=1729865614; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=/fNL/+P00GzFrkc44mI8B5izEIFvMKA1wzL8Dp5K0oo=;
- b=aRhEOBeoDhqZceLfMsHgHe5i8U1GNRYWeMXt52hhLs/c8wL2VZQ5iqGn+FFB2xbZPf
- gV18EesYoYha/2y6K8pVai8AC672sxTFeD32rhZcDbFZwuAC6T1/1wmDLTUTyvi/zh6a
- 1VUYzDbgCCYZ4gycFE/M5zcv2f0HCLj20pgCsBvZ6u9u+7nmLh99b/rC5neas+g1q/Cz
- tmhGe+E+l1PdOEkyQBVAjlufkPfZvmnNo96+VNe521C83AWeL9bD9vOMgNMvz8KZFHpC
- t7h5d+QvvcKphKljAefsNn5u7CPxAp0NabrS/tddMiWqqBBPWxyV73TC+Dwgq9HllBEC
- omFw==
+ d=linaro.org; s=google; t=1729260818; x=1729865618; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=quF+uJRumwJtdROayPVjONeUFJ/tj9KRPQQ2lXyyT3U=;
+ b=rDRb8lpKxv+H33sB+R3UmUk+1E1bz8PYRWmk5NrAnRWgieCEcdBvYTcnBQzNfoS/bh
+ ZoJ9qdtmPU5TdnHARHzny2/9w/sWAWs2CfUmqzcjeXKiDCGFedeVx1IFi3Qwfwmt7HTz
+ cyftjB6EBgrqTg67hqPEXDYVgReBC//ttJjmvgtXVCrpXyY1dyu4/S9zraP415xbWq3F
+ ejH0Ajrou/GVPZF0gDuXl9kLSjQTsQvthp39CSUiCic13I8t4Jk8C1yarFWlW29qhawF
+ GOLwk+/W4cr9SUAecCuSys1bEPI1QVQqlUt17w1ZKuRNmxvWgMCQCgrTW/tgdiVV+Czn
+ i7ag==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1729260814; x=1729865614;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=/fNL/+P00GzFrkc44mI8B5izEIFvMKA1wzL8Dp5K0oo=;
- b=ntDi0iRkZTDXRlncfkP1Ug3Cl6+tY1bMRQHVXnC3NnG36un8yOsvAtDnIKWkSW91MH
- lAje8A0tDN5U9hAJ0PNWgiDQKR5P8qKo8d+Q7uqeGebXHK5au45IiO3Miy4lJbMrz7bW
- uB+X2o5lJNHExP8mEw+A6fv8fPzQDJsJSHTKpzZ0noCazK9jHPtGGdBeh9vgKEyPFMfh
- miedSnCogU7q9XZB7C1mSPQXCbJjLWaHeOqNBgw5BLHRTaOA07PBbp9DMlbVaiAcxKMS
- /HoeyogXZH2INLTKAWYzCDWDNEQi7ANK/VZyaCzSGAhwAQXilUtH4oxmgwovJma3Oz5/
- dUwQ==
+ d=1e100.net; s=20230601; t=1729260818; x=1729865618;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=quF+uJRumwJtdROayPVjONeUFJ/tj9KRPQQ2lXyyT3U=;
+ b=Zr7v2mB8pyUWwaayOLETp3A9EPzFpWPEVyEO4tY2O09ty/63p8PjzcvmG04mgtA5y9
+ i67APpXihLaLrC5mmkfiawcp66BnZ+SLG7+ToTZNWyIUnB9ZgHENR9OtOVSjB36qWn2l
+ zfuuXG9W3KMrZEduv+5b+7VdQAx1t6S0zakn37pMH+r20k/BxUAcFNQfGglGMUBNclPo
+ po8chRE5/4sTdBA4AFDgSu2qPdRdSd3IEum5Ji4oaNKfrUPrNk3okaSkkXNdj0LDB+g9
+ tzwx0sM/5Xbz1nqCsR5KJsUxlHIa3W9Xf1+bye3CDE1oUuaYhV0hZ5/EB2CfKD9xGiqR
+ 006A==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWRdO9A1d+We1vg4PaDyZSRTWxV1swk2QwprmApWQ9xvrTcg2YU3R4msCEjUpys4JtGuW1bSdK7hEQ3@nongnu.org
-X-Gm-Message-State: AOJu0Yy7u12Gd4Uo1L814VsRQqFank9DE6jUUgqUduuzquY/m+LRjMyi
- nBtKQwYAg6NxnG0tYxc6x05XmC7Nc3SyawptczGmHBhXUXN0FTTeW9Qsi7Tis5o=
-X-Received: by 2002:a5d:4f05:0:b0:37d:462a:9bc6 with SMTP id
- ffacd0b85a97d-37eb488633emr1927192f8f.36.1729260814312; 
- Fri, 18 Oct 2024 07:13:34 -0700 (PDT)
+ AJvYcCX99n2vgEEWPSSmFnbqD8PYCY6gTpJcug5rIEv3ZXu0/jnFJ7XPWcMOQeQl1p/nHWIRv/SnPGVYUIEf@nongnu.org
+X-Gm-Message-State: AOJu0YwWvK16brNRINEQ+mq8jvZgNnXiB3poNd8XM1FW7G8hk5LoTOEa
+ r1SLeZIjPVTSsy/iWehoZ4skegoT17RFKFmqQmhsnpP9RXwzomlmlpvx2YkLTkU=
+X-Received: by 2002:a5d:6b85:0:b0:37d:39aa:b9f4 with SMTP id
+ ffacd0b85a97d-37eab6ee783mr1841212f8f.26.1729260818251; 
+ Fri, 18 Oct 2024 07:13:38 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-37ecf0ecd89sm2040086f8f.78.2024.10.18.07.13.33
+ ffacd0b85a97d-37ecf0ecd89sm2040086f8f.78.2024.10.18.07.13.37
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 18 Oct 2024 07:13:34 -0700 (PDT)
+ Fri, 18 Oct 2024 07:13:38 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
@@ -104,15 +106,17 @@ Cc: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
  Alexandre Iooss <erdnaxe@crans.org>,
  Alistair Francis <alistair@alistair23.me>,
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Subject: [PATCH 0/7] docs/system/arm: Provide at least skeleton docs for all
- boards
-Date: Fri, 18 Oct 2024 15:13:25 +0100
-Message-Id: <20241018141332.942844-1-peter.maydell@linaro.org>
+Subject: [PATCH 6/7] docs/system/arm: Add placeholder docs for mcimx6ul-evk
+ and mcimx7d-sabre
+Date: Fri, 18 Oct 2024 15:13:31 +0100
+Message-Id: <20241018141332.942844-7-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20241018141332.942844-1-peter.maydell@linaro.org>
+References: <20241018141332.942844-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::335;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x335.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -134,73 +138,75 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 1vBqgBWXnlk3
+X-TUID: l2+2+kbso222
 
-In target-arm.rst there is an apologetic note:
+Add placeholder docs for the mcimx6ul-evk and mcimx7d-sabre boards.
 
-  Unfortunately many of the Arm boards QEMU supports are currently
-  undocumented; you can get a complete list by running
-  ``qemu-system-aarch64 --machine help``.
-
-However, the situation isn't actually as bleak as this suggests:
-over the years we have generally insisted on documentation for
-new machine types and have filled in some of the gaps where
-there was no documentation for older machine types. Plus we just
-deleted a lot of older undocumented or underdocumented boards.
-
-I did a check of all the board types listed in --help and we
-really don't have very many left that weren't listed in the
-documentation. This series does some cleanup of existing
-docs to ensure that every board covered by a .rst file has
-a line in the right place in the list that lists the board
-name explicitly. It then adds placeholder docs for the remaining
-undocumented boards:
- * nuri, smdkc210 (Exynos4 boards)
- * xlnx-zcu102
- * mcimx6ul-evk
- * mcimx7d-sabre
-
-and removes the apologetic note about the list being incomplete.
-
-The placeholder docs are obviously not very useful, but they
-mean we at least have an entry in the list for the board
-that gives the manufacturer's name for the board, and we
-have a place to put expanded information in future if anybody
-wants to write it.
-
-Anybody who has more information on the above boards is of
-course welcome to expand on the minimal files here :-)
-
-thanks
--- PMM
-
-Peter Maydell (7):
-  docs/system/arm/stm32: List olimex-stm32-h405 in document title
-  docs/system/arm: Don't use wildcard '*-bmc' in doc titles
-  docs/system/arm: Split fby35 out from aspeed.rst
-  docs/system/arm: Add placeholder doc for exynos4 boards
-  docs/system/arm: Add placeholder doc for xlnx-zcu102 board
-  docs/system/arm: Add placeholder docs for mcimx6ul-evk and
-    mcimx7d-sabre
-  docs/system/target-arm.rst: Remove "many boards are undocumented" note
-
- MAINTAINERS                       |  5 +++
- docs/system/arm/aspeed.rst        | 52 ++-----------------------------
- docs/system/arm/exynos.rst        |  9 ++++++
- docs/system/arm/fby35.rst         | 47 ++++++++++++++++++++++++++++
- docs/system/arm/mcimx6ul-evk.rst  |  5 +++
- docs/system/arm/mcimx7d-sabre.rst |  5 +++
- docs/system/arm/nuvoton.rst       |  4 +--
- docs/system/arm/stm32.rst         |  4 +--
- docs/system/arm/xlnx-zcu102.rst   | 19 +++++++++++
- docs/system/target-arm.rst        |  9 +++---
- 10 files changed, 101 insertions(+), 58 deletions(-)
- create mode 100644 docs/system/arm/exynos.rst
- create mode 100644 docs/system/arm/fby35.rst
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ MAINTAINERS                       | 2 ++
+ docs/system/arm/mcimx6ul-evk.rst  | 5 +++++
+ docs/system/arm/mcimx7d-sabre.rst | 5 +++++
+ docs/system/target-arm.rst        | 2 ++
+ 4 files changed, 14 insertions(+)
  create mode 100644 docs/system/arm/mcimx6ul-evk.rst
  create mode 100644 docs/system/arm/mcimx7d-sabre.rst
- create mode 100644 docs/system/arm/xlnx-zcu102.rst
 
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 7c3325628c9..2866737261b 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -791,6 +791,7 @@ F: hw/arm/fsl-imx6ul.c
+ F: hw/misc/imx6ul_ccm.c
+ F: include/hw/arm/fsl-imx6ul.h
+ F: include/hw/misc/imx6ul_ccm.h
++F: docs/system/arm/mcimx6ul-evk.rst
+ 
+ MCIMX7D SABRE / i.MX7
+ M: Peter Maydell <peter.maydell@linaro.org>
+@@ -804,6 +805,7 @@ F: include/hw/arm/fsl-imx7.h
+ F: include/hw/misc/imx7_*.h
+ F: hw/pci-host/designware.c
+ F: include/hw/pci-host/designware.h
++F: docs/system/arm/mcimx7d-sabre.rst
+ 
+ MPS2 / MPS3
+ M: Peter Maydell <peter.maydell@linaro.org>
+diff --git a/docs/system/arm/mcimx6ul-evk.rst b/docs/system/arm/mcimx6ul-evk.rst
+new file mode 100644
+index 00000000000..8871138ab3e
+--- /dev/null
++++ b/docs/system/arm/mcimx6ul-evk.rst
+@@ -0,0 +1,5 @@
++NXP MCIMX6UL-EVK (``mcimx6ul-evk``)
++===================================
++
++The ``mcimx6ul-evk`` machine models the NXP i.MX6UltraLite Evaluation Kit
++MCIMX6UL-EVK development board. It has a single Cortex-A7 CPU.
+diff --git a/docs/system/arm/mcimx7d-sabre.rst b/docs/system/arm/mcimx7d-sabre.rst
+new file mode 100644
+index 00000000000..c5d35af1d44
+--- /dev/null
++++ b/docs/system/arm/mcimx7d-sabre.rst
+@@ -0,0 +1,5 @@
++NXP MCIMX7D Sabre (``mcimx7d-sabre``)
++=====================================
++
++The ``mcimx7d-sabre`` machine models the NXP SABRE Board MCIMX7SABRE,
++based an an i.MX7Dual SoC.
+diff --git a/docs/system/target-arm.rst b/docs/system/target-arm.rst
+index ace36d1b17d..1f806cf4a46 100644
+--- a/docs/system/target-arm.rst
++++ b/docs/system/target-arm.rst
+@@ -97,6 +97,8 @@ undocumented; you can get a complete list by running
+    arm/nrf
+    arm/nuvoton
+    arm/imx25-pdk
++   arm/mcimx6ul-evk
++   arm/mcimx7d-sabre
+    arm/orangepi
+    arm/raspi
+    arm/collie
 -- 
 2.34.1
 

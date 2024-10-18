@@ -1,229 +1,185 @@
-Received: by 2002:a17:505:18c3:b0:1be9:327d:8ee3 with SMTP id tt3csp670660njb;
-        Fri, 18 Oct 2024 01:26:20 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWRShxQ7XZuk5bSfWUOp+ztXOec+XTM4voiN+YBmZV1UpireDzXNhq8loIduG3K/dy5A3IBPPQM58HIvA==@linaro.org
-X-Google-Smtp-Source: AGHT+IGgEKtLgAo7vMHsqXeqzDhtx4k8WaK0uavt7M+QkXjiUPYTRLLoQ91R3ukW3ucz3i7qQ4hM
-X-Received: by 2002:a05:620a:2989:b0:7b1:4783:b7b1 with SMTP id af79cd13be357-7b157c022c7mr139459585a.64.1729239980627;
-        Fri, 18 Oct 2024 01:26:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1729239980; cv=none;
+Received: by 2002:a17:505:18c3:b0:1be9:327d:8ee3 with SMTP id tt3csp677321njb;
+        Fri, 18 Oct 2024 01:45:29 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVC9jBjVRe4ixJR52JvHE2xMFcb4EVyoB+GoQnOIdMEFAPxLQlyviJvSaRbqJ5zM4QTOPbSwWP3B7k47Q==@linaro.org
+X-Google-Smtp-Source: AGHT+IH4rFYtyKkgokJaXOj32RxkZHyl5O+byw7FfPfvvxPN7ICdSqVFo4XqfoCIdmG1izTPK66L
+X-Received: by 2002:a05:622a:152:b0:45d:56e4:1ffc with SMTP id d75a77b69052e-460aee2c93fmr17909391cf.51.1729241129562;
+        Fri, 18 Oct 2024 01:45:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1729241129; cv=none;
         d=google.com; s=arc-20240605;
-        b=PQ6rpFzuj1SL4rlJeNC0d7eA8i0yTWBifhn9rGncFyzhfHFmQ9T5sLogHWDr9rjXL5
-         QLU7VNSvyZq9HkdnTFpVYqEgM4jrlgrLK+ghGS77XzEY/XAJhQCu6wfZD6bGjF7DSMN5
-         sDVJd03RYYPozKyYmNwpvWfHV0w1W/GWz0D053OIwTH0QDlMgBT0sfZQ9HLCVNxxIlDU
-         j2jh+m7OPJqxRM9xLmfqt6RXgydMKuPClpH0v92tLDMqUr+EI06J/09Jj7wLe5s6BOYk
-         CIFngTqU/RfMeOChOSh211QhiMfCw9k83p72wlNo8+8wyF9DpP/hAtdHYqC6cL5S9PDf
-         qKag==
+        b=jwSq8D4Or9psKjP6Ha8x9VJg8Z4yicTS4XmJzNdw0MM/fLdoIawxUwIj6BZkorXSMg
+         shlj86X4p7SyNLAeOQLMaALVSeKs1e8gRWxclC8UcBnND0PGRyPFEG+LZ00W8eus6LMm
+         d8ST2cDXvEYPbY9igJmv2MAkggwQVCwGqPqgVNKnv4rxk2rx5yYGQIsrMID0YvTbcE2e
+         2gKSKNrA6AyVaC3MwCzGOORt4Y+RaaQS5U5KRKqhq4Q+u8RVxK7HFrZ+bdYhsP+7zHmx
+         JKGbOPXvGP436JrMJlFV3bizhMPUMIE1bWAkkvFxr2c819f8TspVmPyS+VcwY/c+Do3y
+         3S3g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:autocrypt:content-language:from:references:cc:to
-         :subject:user-agent:mime-version:date:message-id:dkim-signature;
-        bh=DOfRXiih0bQBzRn7dUVSyYcIJ7/vgoHs+Jqln//B9/w=;
-        fh=IkbH75X6Y+Ht2BhY4HfyRXH4WpY5t/952uCsIbpYP1U=;
-        b=CgEQiV67RK2Y62B2dM8AG0xhNvlZqH7I3HfQdKCyG1a9i5h5Gl/ITsN7MZyX847Y1D
-         bRCdH5GfgyML6WRYZ2YbA2eQgnt5TEQxCdr55miaWYITdY43ijigZy7D/QpSGIiWbpI5
-         a2m6VKaKPA4Bvh7QJTu0bDGCnERTY17C1H/GE/QTpryfs5FZ156McqT8SefjBEWBU8Dg
-         2meGv8b/HjkyHbbct+1GLJYx8duqSjIzUp9aokJ/tPFz3gtSSYlooQV+e90GaiJgj8OM
-         1QvkmQEZX7hWtZrX6qx71Tl3t7KZxxpJWsuRlDxShDUB6oee6UiQrzz+2H0hshX8wlGi
-         yDJw==;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=78E+gqjHuUrms4r7Xm7ew09KkmlWndNofkXcn2EVqxQ=;
+        fh=QQOpfZPnaut2u+2c3+U9/oBko8UmIVD4d84QZgiM70o=;
+        b=F8KwWh0yaER76dDXr/sKaqLHZfaHz34BFxeO1h/C8Ag28rgfxEdeQecV2zbd0vk8Co
+         gjCflGkSFOYuWsBvEWwhYq3WYsvmXnGsrjmZnpQDfyjuTsFbfSk2OwS9a9P1LiyIJuCt
+         QoowTX+j8danSaQ4+KQFxQbn/CS9AkjT8nL+FPISVLtAQO16TuoCOnZfi8lLBjX+WUrY
+         l/3IadY6hXwP7n+Y20LsJMi71nonLs599q+j9rpQV7z5xyHixkQvlo4ddLih7NzDyXhW
+         94ObmPaJ+nwpdLsRQiaaEOiAiYvdjieAWN/YCM+/+EqsWNE7EYAvt6e/cWAMe1NePFzA
+         D8ZQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="g/P5xZTb";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7b156ff1b14si128809185a.641.2024.10.18.01.26.20
-        for <alex.bennee@linaro.org>
+       dkim=pass header.i=@intel.com header.s=Intel header.b=bQzmOJiv;
+       spf=pass (google.com: domain of zhao1.liu@intel.com designates 198.175.65.11 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Return-Path: <zhao1.liu@intel.com>
+Received: from mgamail.intel.com (mgamail.intel.com. [198.175.65.11])
+        by mx.google.com with ESMTPS id d75a77b69052e-460aea40ce9si11949921cf.356.2024.10.18.01.45.27
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 18 Oct 2024 01:26:20 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 18 Oct 2024 01:45:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of zhao1.liu@intel.com designates 198.175.65.11 as permitted sender) client-ip=198.175.65.11;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="g/P5xZTb";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1t1iIt-00050k-Ub; Fri, 18 Oct 2024 04:25:47 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1t1iIr-0004zk-8h
- for qemu-devel@nongnu.org; Fri, 18 Oct 2024 04:25:45 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1t1iIo-0001TG-Lt
- for qemu-devel@nongnu.org; Fri, 18 Oct 2024 04:25:45 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1729239941;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=DOfRXiih0bQBzRn7dUVSyYcIJ7/vgoHs+Jqln//B9/w=;
- b=g/P5xZTbXiuoQUGpoW5+HbcEkTm54tCwDAuoneIqJ2vTgsC2wuqXmaTd5vBbkdJlkISzuJ
- FEu1GgqHrbgyBB50MPwdMNzFc9m7EgBCUmWxhF2IVJ4dF+za9LFCW7cPBYx8e9Y3eSx62y
- FCHO6l2sMKKXTGAi5PPJsukuhJiIEMA=
-Received: from mail-qk1-f198.google.com (mail-qk1-f198.google.com
- [209.85.222.198]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-313-31ikgEjTNheIyn57WGUIcA-1; Fri, 18 Oct 2024 04:25:39 -0400
-X-MC-Unique: 31ikgEjTNheIyn57WGUIcA-1
-Received: by mail-qk1-f198.google.com with SMTP id
- af79cd13be357-7ac8f684cdaso325691285a.3
- for <qemu-devel@nongnu.org>; Fri, 18 Oct 2024 01:25:39 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1729239939; x=1729844739;
- h=content-transfer-encoding:in-reply-to:autocrypt:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=DOfRXiih0bQBzRn7dUVSyYcIJ7/vgoHs+Jqln//B9/w=;
- b=fwJJE/y+yXuFBhLudxIJ1CYp9sJxgNRT0id8FliMqbOHj5i5AFtoORpJeU/vd5oghn
- b3TZ3grmr5MgLx8gzt2/jbyXi7O//7EHp8CbvYgpQT8AeJc+ZyWrJxYi7qnAkMb2qmZQ
- q8UoFq4kNmWWHlflYuHmjLwsN+Bdb04k+1E2Jkz1KgiYALnE69SXmC/qP2s0iZQttBeb
- +5MQ9NYowb627tX8iqqWKLdd1xNcb9ApHgKJnG0tIftpzUYbKKj/2yZgbfuViEQmhB17
- 6Kb7w6VDxeVIDFmlVXvr7GGteQ1/oOXbAKcuz9WghPKG3VM6H2wtXJ+V92m08GUh4WIa
- hFCA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXHOguPie4OrRfATUzynwFeBlHHWoOV09bCinCbrqLdyjDDBPCtWLGyNghKQuoJT9tLMiTcRJBqgzOZ@nongnu.org
-X-Gm-Message-State: AOJu0Yw0riZui75lLWTiboyzPIuFkAaQ5M3/DtdBmNeGyWGNaPL1gZOZ
- e2JbTNj/dYzYM4vXEKG/Dd0PiuEpn0CMS3PzUUprOZZhVMbjuK/9EM22n/tdrjFh9DFZ/aMv2rg
- kChTeRcsx6aeyOB1XMAH0D9hEQhasFP1r5QoAMUGnEPR5bZr9fCAy
-X-Received: by 2002:a05:620a:29c4:b0:7b1:4762:45c4 with SMTP id
- af79cd13be357-7b157bf1363mr177428285a.54.1729239938911; 
- Fri, 18 Oct 2024 01:25:38 -0700 (PDT)
-X-Received: by 2002:a05:620a:29c4:b0:7b1:4762:45c4 with SMTP id
- af79cd13be357-7b157bf1363mr177426285a.54.1729239938494; 
- Fri, 18 Oct 2024 01:25:38 -0700 (PDT)
-Received: from [192.168.0.7] (ip-109-42-50-24.web.vodafone.de. [109.42.50.24])
- by smtp.gmail.com with ESMTPSA id
- af79cd13be357-7b156f8ad1asm50068885a.4.2024.10.18.01.25.35
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 18 Oct 2024 01:25:38 -0700 (PDT)
-Message-ID: <011d3d75-2bf0-44eb-ba78-bf92240128f8@redhat.com>
-Date: Fri, 18 Oct 2024 10:25:33 +0200
+       dkim=pass header.i=@intel.com header.s=Intel header.b=bQzmOJiv;
+       spf=pass (google.com: domain of zhao1.liu@intel.com designates 198.175.65.11 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1729241129; x=1760777129;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:content-transfer-encoding:in-reply-to;
+  bh=1hzdX0SAedJp2ZbWcaKLwBlRgfiMbk9wET1obgyYSH0=;
+  b=bQzmOJivvAR2UBnMeGhNUbS7h6vMEKz8QUF6D8RhuVNEXl0jH5Tm2Aop
+   KMvDH02IyklC++WmCiGelpgchY3quUqNVAe0eVskvF+eFNW/3cwUL4xUV
+   huySY5rRFm824A6NezmNbRAma93RG0iOxRhL51PJzwj8uOE7RXdlff+ml
+   z9vYVF2WgHVgDd1GwhWyAbWhSRTCaLoTbW3JTPiGFILvHnMDTky+gnEFi
+   KP2RdRjTZ+drkNYGpwq02sGG0l5XAmgBzD/z2VGi4AWCgyeEQW8Ff7V7I
+   ZoyvCrKroNOHa1Fj4S0gV1PfMioh0vVL0fW5qprsF96f5oDLHpQsnhniK
+   g==;
+X-CSE-ConnectionGUID: SoKO84uaRR2+rULAQSzCzQ==
+X-CSE-MsgGUID: p9pt1JPSSkikSGAW/qjL9w==
+X-IronPort-AV: E=McAfee;i="6700,10204,11222"; a="39305837"
+X-IronPort-AV: E=Sophos;i="6.11,199,1725346800"; 
+   d="scan'208";a="39305837"
+Received: from fmviesa002.fm.intel.com ([10.60.135.142])
+  by orvoesa103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Oct 2024 01:45:26 -0700
+X-CSE-ConnectionGUID: BIYrmkbwQmuSAshnFlJ3Ug==
+X-CSE-MsgGUID: vn3Ep1RJQbukF0MCtS2swQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.11,213,1725346800"; 
+   d="scan'208";a="102105402"
+Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost) ([10.239.160.36])
+  by fmviesa002.fm.intel.com with ESMTP; 18 Oct 2024 01:45:21 -0700
+Date: Fri, 18 Oct 2024 17:01:36 +0800
+From: Zhao Liu <zhao1.liu@intel.com>
+To: Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>
+Cc: Igor Mammedov <imammedo@redhat.com>,
+	Eduardo Habkost <eduardo@habkost.net>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
+	Yanan Wang <wangyanan55@huawei.com>,
+	"Michael S . Tsirkin" <mst@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Eric Blake <eblake@redhat.com>,
+	Markus Armbruster <armbru@redhat.com>,
+	Marcelo Tosatti <mtosatti@redhat.com>,
+	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Jonathan Cameron <Jonathan.Cameron@huawei.com>,
+	Sia Jee Heng <jeeheng.sia@starfivetech.com>,
+	Alireza Sanaee <alireza.sanaee@huawei.com>, qemu-devel@nongnu.org,
+	kvm@vger.kernel.org, qemu-riscv@nongnu.org, qemu-arm@nongnu.org,
+	Zhenyu Wang <zhenyu.z.wang@intel.com>,
+	Dapeng Mi <dapeng1.mi@linux.intel.com>,
+	Zhao Liu <zhao1.liu@intel.com>
+Subject: Re: [PATCH v3 1/7] hw/core: Make CPU topology enumeration
+ arch-agnostic
+Message-ID: <ZxIj8CWZd7u+cysK@intel.com>
+References: <20241012104429.1048908-1-zhao1.liu@intel.com>
+ <20241012104429.1048908-2-zhao1.liu@intel.com>
+ <ZxEte1KBwWuCdkb1@redhat.com>
+ <ZxHJri+rgdGKf/0L@intel.com>
+ <ZxIUd9tMi9o1UVOS@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 07/16] test/qtest/aspeed_smc-test: Fix coding style
-To: Jamin Lin <jamin_lin@aspeedtech.com>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?=
- <clg@kaod.org>, Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- Alistair Francis <alistair@alistair23.me>, Kevin Wolf <kwolf@redhat.com>,
- Hanna Reitz <hreitz@redhat.com>, Laurent Vivier <lvivier@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>,
- "open list:Block layer core" <qemu-block@nongnu.org>,
- Fabiano Rosas <farosas@suse.de>
-Cc: troy_lee@aspeedtech.com, yunlin.tang@aspeedtech.com
-References: <20241018053112.1886173-1-jamin_lin@aspeedtech.com>
- <20241018053112.1886173-8-jamin_lin@aspeedtech.com>
-From: Thomas Huth <thuth@redhat.com>
-Content-Language: en-US
-Autocrypt: addr=thuth@redhat.com; keydata=
- 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
-In-Reply-To: <20241018053112.1886173-8-jamin_lin@aspeedtech.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
-X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.068,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: VXii6fskYJFU
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <ZxIUd9tMi9o1UVOS@redhat.com>
+X-TUID: q1lS43W9ojlO
 
-On 18/10/2024 07.31, Jamin Lin wrote:
-> Fix coding style issues from checkpatch.pl
+On Fri, Oct 18, 2024 at 08:55:35AM +0100, Daniel P. Berrangé wrote:
+> Date: Fri, 18 Oct 2024 08:55:35 +0100
+> From: "Daniel P. Berrangé" <berrange@redhat.com>
+> Subject: Re: [PATCH v3 1/7] hw/core: Make CPU topology enumeration
+>  arch-agnostic
 > 
-> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-> ---
->   tests/qtest/aspeed_smc-test.c | 6 ++++--
->   1 file changed, 4 insertions(+), 2 deletions(-)
+> On Fri, Oct 18, 2024 at 10:36:30AM +0800, Zhao Liu wrote:
+> > Hi Daniel,
+> > 
+> > > > -/*
+> > > > - * CPUTopoLevel is the general i386 topology hierarchical representation,
+> > > > - * ordered by increasing hierarchical relationship.
+> > > > - * Its enumeration value is not bound to the type value of Intel (CPUID[0x1F])
+> > > > - * or AMD (CPUID[0x80000026]).
+> > > > - */
+> > > > -enum CPUTopoLevel {
+> > > > -    CPU_TOPO_LEVEL_INVALID,
+> > > > -    CPU_TOPO_LEVEL_SMT,
+> > > > -    CPU_TOPO_LEVEL_CORE,
+> > > > -    CPU_TOPO_LEVEL_MODULE,
+> > > > -    CPU_TOPO_LEVEL_DIE,
+> > > > -    CPU_TOPO_LEVEL_PACKAGE,
+> > > > -    CPU_TOPO_LEVEL_MAX,
+> > > > -};
+> > > > -
+> > > 
+> > > snip
+> > > 
+> > > > @@ -18,3 +18,47 @@
+> > > >  ##
+> > > >  { 'enum': 'S390CpuEntitlement',
+> > > >    'data': [ 'auto', 'low', 'medium', 'high' ] }
+> > > > +
+> > > > +##
+> > > > +# @CpuTopologyLevel:
+> > > > +#
+> > > > +# An enumeration of CPU topology levels.
+> > > > +#
+> > > > +# @invalid: Invalid topology level.
+> > > 
+> > > Previously all topology levels were internal to QEMU, and IIUC
+> > > this CPU_TOPO_LEVEL_INVALID appears to have been a special
+> > > value to indicate  the cache was absent ?
+> > 
+> > Now I haven't support this logic.
+> > x86 CPU has a "l3-cache" property, and maybe that property can be
+> > implemented or replaced by the "invalid" level support you mentioned.
+> > 
+> > > Now we're exposing this directly to the user as a settable
+> > > option. We need to explain what effect setting 'invalid'
+> > > has on the CPU cache config.
+> > 
+> > If user set "invalid", QEMU will report the error message:
+> > 
+> > qemu-system-x86_64: Invalid cache topology level: invalid. The topology should match valid CPU topology level
+> > 
+> > Do you think this error message is sufficient?
 > 
-> diff --git a/tests/qtest/aspeed_smc-test.c b/tests/qtest/aspeed_smc-test.c
-> index c713a3700b..4673371d95 100644
-> --- a/tests/qtest/aspeed_smc-test.c
-> +++ b/tests/qtest/aspeed_smc-test.c
-> @@ -353,7 +353,8 @@ static void test_read_page_mem(void)
->       uint32_t page[FLASH_PAGE_SIZE / 4];
->       int i;
->   
-> -    /* Enable 4BYTE mode for controller. This is should be strapped by
-> +    /*
-> +     * Enable 4BYTE mode for controller. This is should be strapped by
->        * HW for CE0 anyhow.
->        */
->       spi_ce_ctrl(1 << CRTL_EXTENDED0);
-> @@ -394,7 +395,8 @@ static void test_write_page_mem(void)
->       uint32_t page[FLASH_PAGE_SIZE / 4];
->       int i;
->   
-> -    /* Enable 4BYTE mode for controller. This is should be strapped by
-> +    /*
-> +     * Enable 4BYTE mode for controller. This is should be strapped by
->        * HW for CE0 anyhow.
->        */
->       spi_ce_ctrl(1 << CRTL_EXTENDED0);
+> If the user cannot set 'invalid' as an input, and no QEMU interface
+> will emit, then ideally we would not define 'invalid' in the QAPI
+> schema at all.
+> 
+> This woudl require us to have some internal only way to record
+> "invalid", separately from the topology level, or with a magic
+> internal only constant that doesn't clash with the public enum
+> constants. I guess the latter would be less work e.g. we could
+> "abuse" the 'MAX' constant value
+> 
+>    #define CPU_TOPOLOGY_LEVEL_INVALID CPU_TOPOLOGY_LEVEL_MAX
+> 
+> or separate it with a negative value
+> 
+>    #define CPU_TOPOLOGY_LEVEL_INVALID -1
+>
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+This's a clever idea. Thank you!
 
+Rgards,
+Zhao

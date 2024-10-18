@@ -1,166 +1,155 @@
-Received: by 2002:a17:505:18c3:b0:1be9:327d:8ee3 with SMTP id tt3csp483745njb;
-        Thu, 17 Oct 2024 15:34:21 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVcH/66KHeCImyteEhLgDBVPNbfnXVwlDSBQG0CbeqXp7t1e7gdzUZaAIkOwv3fZ1JiNoR58brEwUjd/g==@linaro.org
-X-Google-Smtp-Source: AGHT+IFSpVuwSTu56O0eZkBVhF+AxeOYVKoVbWwCTeN23EHRkMMzwvbUHmVh+BnFmx94y5K0p3gE
-X-Received: by 2002:ac8:7f8c:0:b0:460:ad83:96f3 with SMTP id d75a77b69052e-460aedffc33mr5764131cf.59.1729204461042;
-        Thu, 17 Oct 2024 15:34:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1729204461; cv=none;
+Received: by 2002:a17:505:18c3:b0:1be9:327d:8ee3 with SMTP id tt3csp560900njb;
+        Thu, 17 Oct 2024 19:20:24 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUCJy0SkNmlD9BvpuSiNJj4S1RYun5XAqe1bTPEqlU/7RywVhud0m2J5cMK6GB8jHY1YuLpTfHnrDglfg==@linaro.org
+X-Google-Smtp-Source: AGHT+IF9OSpLIE8UWC8WPOScPo0G5NzGOzbKprt0r6rAWwBX+vfEljuG7ZjW+POeYTKl8jUcR3oo
+X-Received: by 2002:a05:6102:2ac4:b0:4a5:6f41:2132 with SMTP id ada2fe7eead31-4a5d6ac27f2mr1168509137.14.1729218024165;
+        Thu, 17 Oct 2024 19:20:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1729218024; cv=none;
         d=google.com; s=arc-20240605;
-        b=eqREU19mtmxIZEWUa0+LAHJVLXW3+X4VhV/zckvTjyEOEsNMwaDOObtynyAVzNf6Mx
-         BJSXreXh9+UjR8K8G3Nqq99O3DHOgjq5AiqINvu+LsR+NrY5PryO0GU9qrdCqGz6xTSt
-         lHAdAkLMa9W3RdjFC7nk1BobBqQqxvPCYuWMfkfjMoPoyKv4RKIndZmu31mXObXQalmq
-         +FUON133hPAEHUVQ53Wb2BLUYcVE3FW+Pcriz3yyKKlfeR/lijEKu1FWxxmCwQGnpSlI
-         hKbnMziQcM2f3XkKIP89j+a98UNN4u6DO6RzPAgB/mNzsGPCLjGxM6kO6Wd20VjB+EII
-         Kl5A==
+        b=Q89wlY1Ko4hCzrZ5eghxdFukZ2MqTZPnNA8Qb9WfhaaF37qwmJkLD648q2Xu8dZUKT
+         Fg/nSvsgRqPe3Cl9hNeaZXPMvB9JpivHBhfKsByckgqro0tZDs8x7lW1JNL6tr6pgAnm
+         bZS3ZyyE9rmN8z0mzYtD5IX8SfR7bEq4Hk8NKakX5r40lXZuMPnFUOl0AdXZEwcA/jZm
+         a74sRfMi4sHbxcvkIINs2hg63TUAJesTsU7SW51fy4DEqR/EHqdgvD5OdFzAnQ9FsLd/
+         x8N9SKjZGJVhh6hdcBWieKd2K/V2qv4JCjhsoY/4Pu+wn8YX+6U+WLXyGEVDqFkDMYze
+         tL+Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=Czuq5TZLUM6h/fTZNMGw9xt2q/K9IRxXHkX5gz7HDEA=;
-        fh=IIers6Tsdt9NdDeXEf7BFv3Zs0k8l5mJe8RbgC9bzGM=;
-        b=YcsVZbwe9TXn2Y1tYzXPSFhNhAC5RS3InXWPFjA66mlVtrXeDzoShxp1iy99iKnX6P
-         U1LTCOL58TPjZGs/ayDz8svHDU3oPhBpAclmv9zEmPMfVYlHyYCfpDtS64Qo/Yfh3RVS
-         ICdRlAt2HIxooaKWIRst0pt3S9wrZXiTmew6ZINflPMU+RI0irmDE/5clOBS/5VsZNRE
-         NnilaWniAyePDKlNpKNas39v1kmIrUzKf86GJXYOwS0B7Irwx20RvDipi2C2DMBZLyvz
-         dQoJoBGYdIvVKxX/prT+iZESW0rbp2oBJfz+tjQ0kqthkOaUewb1mdtStwSFMysfAGqV
-         NksQ==;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=q9gyJFY9ZYkoelzIOtFCsyrxszUHypFZeotYTK8LlBU=;
+        fh=QQOpfZPnaut2u+2c3+U9/oBko8UmIVD4d84QZgiM70o=;
+        b=jHN+E2c48A+2RCIC7WR+Xw1saFElV6rZKXbbyvN9Q1Vuaj5pBUVKWgNGNJuMYQM8I2
+         cSuIQy/WS2g1hrbr0e3ytzTGu+g7SMs8yLKi5bO3dm/ipc8Hb4/KRkB/9rF/4I0TfAK5
+         8Mtwmp9owMQO6TMnX/J5lde0dLSiCSnJB27zp2dz7BE87JwXlTEUCbNkP9St6Kb7Ic/K
+         whWdWHKYOlQwBRDqLskm3+CjaUbGgwKVvP9Bq8JRyLv9U7/LzRHTEyXdYSruQhCaFjjh
+         6phXhnIlM+TcLRGEg4++ZxhOKLZn74xg+ZlbqUPfk7A6a1eqLB0juZvsbeKGQwgjcQfy
+         Ukgw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=MMPoMFKz;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-460aeae4adbsi2959921cf.788.2024.10.17.15.34.20
-        for <alex.bennee@linaro.org>
+       dkim=pass header.i=@intel.com header.s=Intel header.b=JbQHSlyi;
+       spf=pass (google.com: domain of zhao1.liu@intel.com designates 198.175.65.17 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Return-Path: <zhao1.liu@intel.com>
+Received: from mgamail.intel.com (mgamail.intel.com. [198.175.65.17])
+        by mx.google.com with ESMTPS id d75a77b69052e-460aea57ee6si6581441cf.393.2024.10.17.19.20.23
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 17 Oct 2024 15:34:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 17 Oct 2024 19:20:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of zhao1.liu@intel.com designates 198.175.65.17 as permitted sender) client-ip=198.175.65.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=MMPoMFKz;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1t1Z41-0001Nc-13; Thu, 17 Oct 2024 18:33:49 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1t1Z3z-0001N0-HB
- for qemu-arm@nongnu.org; Thu, 17 Oct 2024 18:33:47 -0400
-Received: from mail-pf1-x42e.google.com ([2607:f8b0:4864:20::42e])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1t1Z3y-0001ub-3z
- for qemu-arm@nongnu.org; Thu, 17 Oct 2024 18:33:47 -0400
-Received: by mail-pf1-x42e.google.com with SMTP id
- d2e1a72fcca58-71e74900866so933657b3a.1
- for <qemu-arm@nongnu.org>; Thu, 17 Oct 2024 15:33:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1729204425; x=1729809225; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=Czuq5TZLUM6h/fTZNMGw9xt2q/K9IRxXHkX5gz7HDEA=;
- b=MMPoMFKz8PuipWasOqNmzyXEmWk7UKs/3OtXgmZGMfzZTHqN7CxHVNndgBifxUMRnB
- Vd0BJ2qOrYcajS0BnJoftQEx2pkqVwIuhNqvtRYZQLpauMVqpoFa9xG6loXrIuzmNZbc
- EPL/8kk//p7kZVRhvAJK5PTyR9To0WzKvNhxP60s78AjgTWIc6PM81zzfwiYljZD7OEm
- fGa8Ev1i0U9OzBWHE43UQOH+QD0DD/O3MNb+1G657WuNrCnfPI9jYPxRPtOhuA2kPW8I
- wIzdlBap8GbM/bbEXGOCZ/oIycTWWGxg7GIKO3cz4apwjRyLSX4QL894O5GiOfEq1JHV
- Y1EA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1729204425; x=1729809225;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=Czuq5TZLUM6h/fTZNMGw9xt2q/K9IRxXHkX5gz7HDEA=;
- b=mkwSiP704YUSp+07fTR/kG4lXzS2maWShmy4/kwKn2qAl/F/LNBOAtTXID1us2oGgJ
- zjvoQI3ETyWuFq6lnqa6MFJOF0s+TqFXwpv3m0T7lgtLdFv5D3n10MHbC7cI8vnZI4RU
- c5CwQy/NITSbjd+RkAjM+JRl9UR5PAKXPB2Ps+bxMNNFCLi4FhfNgu+dhQibvPyABt0p
- /ln0P4AksfNmQeTi9CmYrZvHU6ANMZiiKEhvMq1/7PqUjqv0MzOuAwSUg3JKDZBq06UV
- lAySn/wkgKne/1yS5nKMhXx76DOm95RUjHi7OIiGSb92BOaqng3c9uzUw+/aTi7q2fFt
- 7Twg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUghOp7VXUrhqc0/14w9bqBEckRpYstEyoVCAvtOvaQuKygNnmTqaMCpo15xw1Jho5DyGCjXWZYQA==@nongnu.org
-X-Gm-Message-State: AOJu0YyQDL8w5soNv4GZ+mzf9vS+WQ/bY7+UU0mrFTLw2lQnzCcHRc8x
- LpdvXWdlbc1xBwby2e/9X3YDMRK6dD1w/R62lAwjUHbifdnDuwqVxAfaEs2AIVrQqhs71YCQoqm
- v
-X-Received: by 2002:a05:6a21:58d:b0:1d9:29fe:1de0 with SMTP id
- adf61e73a8af0-1d92c5ae136mr447469637.50.1729204424685; 
- Thu, 17 Oct 2024 15:33:44 -0700 (PDT)
-Received: from [192.168.100.35] ([45.176.88.162])
- by smtp.gmail.com with ESMTPSA id
- 41be03b00d2f7-7eacc25249esm118600a12.55.2024.10.17.15.33.42
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 17 Oct 2024 15:33:44 -0700 (PDT)
-Message-ID: <64d36e10-aee5-4752-b075-2bfcf9e74bf1@linaro.org>
-Date: Thu, 17 Oct 2024 19:33:41 -0300
+       dkim=pass header.i=@intel.com header.s=Intel header.b=JbQHSlyi;
+       spf=pass (google.com: domain of zhao1.liu@intel.com designates 198.175.65.17 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1729218024; x=1760754024;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=8PKsoPgR4Ld+C0xF/qZFXE3weaPnEMpOVlDjd59wIDw=;
+  b=JbQHSlyiod/ypeogmVVv0sUOyiKRLqMwhaXGt5Zpaj4nhUhSjXFhSiN7
+   xbhJXyDx3hhThKP5kjcJJNDhOSg4yYHIVa/vdqByIYgBAHbbtSsJ9ZR0F
+   iYawaCdLlN+tWJN651yMypd0TPbAFZrX7C8OsuHB9Ps54mxipaxRfOaCM
+   6PnSoPswGmFlCANzvBbALoWnwK2T/zHKTYL0x1Oislcs+5NgNuBCaloX+
+   zDap/R1xZE8aUIL7jyWiSGg9TIUigoE9nNbOljKbtijqUfBI6G57arn49
+   u6s/+6ZpbDJWAlb1RKCEJMFLUIjoBy8zMCB2qB9El7BCUgzq5tE2d8ofY
+   A==;
+X-CSE-ConnectionGUID: zOf/iwp1SO+f8B3BeV+ygw==
+X-CSE-MsgGUID: GANyxDLMRDSR3UI/aczOBw==
+X-IronPort-AV: E=McAfee;i="6700,10204,11228"; a="28827904"
+X-IronPort-AV: E=Sophos;i="6.11,212,1725346800"; 
+   d="scan'208";a="28827904"
+Received: from orviesa003.jf.intel.com ([10.64.159.143])
+  by orvoesa109.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 17 Oct 2024 19:20:22 -0700
+X-CSE-ConnectionGUID: L+YNHYlyR+6QwKMonGQkjw==
+X-CSE-MsgGUID: GChpiH98T9WKlXP4N1D6Sg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.11,199,1725346800"; 
+   d="scan'208";a="83557602"
+Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost) ([10.239.160.36])
+  by orviesa003.jf.intel.com with ESMTP; 17 Oct 2024 19:20:14 -0700
+Date: Fri, 18 Oct 2024 10:36:30 +0800
+From: Zhao Liu <zhao1.liu@intel.com>
+To: Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>
+Cc: Igor Mammedov <imammedo@redhat.com>,
+	Eduardo Habkost <eduardo@habkost.net>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
+	Yanan Wang <wangyanan55@huawei.com>,
+	"Michael S . Tsirkin" <mst@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Eric Blake <eblake@redhat.com>,
+	Markus Armbruster <armbru@redhat.com>,
+	Marcelo Tosatti <mtosatti@redhat.com>,
+	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Jonathan Cameron <Jonathan.Cameron@huawei.com>,
+	Sia Jee Heng <jeeheng.sia@starfivetech.com>,
+	Alireza Sanaee <alireza.sanaee@huawei.com>, qemu-devel@nongnu.org,
+	kvm@vger.kernel.org, qemu-riscv@nongnu.org, qemu-arm@nongnu.org,
+	Zhenyu Wang <zhenyu.z.wang@intel.com>,
+	Dapeng Mi <dapeng1.mi@linux.intel.com>,
+	Zhao Liu <zhao1.liu@intel.com>
+Subject: Re: [PATCH v3 1/7] hw/core: Make CPU topology enumeration
+ arch-agnostic
+Message-ID: <ZxHJri+rgdGKf/0L@intel.com>
+References: <20241012104429.1048908-1-zhao1.liu@intel.com>
+ <20241012104429.1048908-2-zhao1.liu@intel.com>
+ <ZxEte1KBwWuCdkb1@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] hw/sd/omap_mmc: Don't use sd_cmd_type_t
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: qemu-stable@nongnu.org, Guenter Roeck <linux@roeck-us.net>
-References: <20241017162755.710698-1-peter.maydell@linaro.org>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20241017162755.710698-1-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42e;
- envelope-from=philmd@linaro.org; helo=mail-pf1-x42e.google.com
-X-Spam_score_int: 12
-X-Spam_score: 1.2
-X-Spam_bar: +
-X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_SBL_CSS=3.335, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: gxKzfnefZgig
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <ZxEte1KBwWuCdkb1@redhat.com>
+X-TUID: DSPRXGVwFwMz
 
-On 17/10/24 13:27, Peter Maydell wrote:
-> In commit 1ab08790bb75e4 we did some refactoring of the SD card
-> implementation, which included a rearrangement of the sd_cmd_type_t
-> enum values.  Unfortunately we didn't notice that this enum is not
-> used solely inside the SD card model itself, but is also used by the
-> OMAP MMC controller device.  In the OMAP MMC controller, it is used
-> to implement the handling of the Type field of the MMC_CMD register,
-> so changing the enum values so that they no longer lined up with the
-> bit definitions for that register field broke the controller model.
-> The effect is that Linux fails to boot from an SD card on the "sx1"
-> machine.
+Hi Daniel,
+
+> > -/*
+> > - * CPUTopoLevel is the general i386 topology hierarchical representation,
+> > - * ordered by increasing hierarchical relationship.
+> > - * Its enumeration value is not bound to the type value of Intel (CPUID[0x1F])
+> > - * or AMD (CPUID[0x80000026]).
+> > - */
+> > -enum CPUTopoLevel {
+> > -    CPU_TOPO_LEVEL_INVALID,
+> > -    CPU_TOPO_LEVEL_SMT,
+> > -    CPU_TOPO_LEVEL_CORE,
+> > -    CPU_TOPO_LEVEL_MODULE,
+> > -    CPU_TOPO_LEVEL_DIE,
+> > -    CPU_TOPO_LEVEL_PACKAGE,
+> > -    CPU_TOPO_LEVEL_MAX,
+> > -};
+> > -
 > 
-> Give omap-mmc its own enum which we can document as needing to match
-> the encoding used in this device's register, so it isn't sharing
-> sd_cmd_type_t with the SD card model any more.  We can then move
-> sd_cmd_type_t's definition out of sd.h and into sd.c, which is the
-> only place that uses it.
+> snip
 > 
-> Cc: qemu-stable@nongnu.org
-> Fixes: 1ab08790bb75 ("hw/sd/sdcard: Store command type in SDProto")
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->   include/hw/sd/sd.h |  8 --------
->   hw/sd/omap_mmc.c   | 22 ++++++++++++++++------
->   hw/sd/sd.c         |  8 ++++++++
->   3 files changed, 24 insertions(+), 14 deletions(-)
+> > @@ -18,3 +18,47 @@
+> >  ##
+> >  { 'enum': 'S390CpuEntitlement',
+> >    'data': [ 'auto', 'low', 'medium', 'high' ] }
+> > +
+> > +##
+> > +# @CpuTopologyLevel:
+> > +#
+> > +# An enumeration of CPU topology levels.
+> > +#
+> > +# @invalid: Invalid topology level.
+> 
+> Previously all topology levels were internal to QEMU, and IIUC
+> this CPU_TOPO_LEVEL_INVALID appears to have been a special
+> value to indicate  the cache was absent ?
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Now I haven't support this logic.
+x86 CPU has a "l3-cache" property, and maybe that property can be
+implemented or replaced by the "invalid" level support you mentioned.
 
-Thanks!
+> Now we're exposing this directly to the user as a settable
+> option. We need to explain what effect setting 'invalid'
+> has on the CPU cache config.
+
+If user set "invalid", QEMU will report the error message:
+
+qemu-system-x86_64: Invalid cache topology level: invalid. The topology should match valid CPU topology level
+
+Do you think this error message is sufficient?
+
+Thanks,
+Zhao

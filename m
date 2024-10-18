@@ -1,72 +1,72 @@
-Received: by 2002:a17:505:18c3:b0:1be9:327d:8ee3 with SMTP id tt3csp677321njb;
-        Fri, 18 Oct 2024 01:45:29 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVC9jBjVRe4ixJR52JvHE2xMFcb4EVyoB+GoQnOIdMEFAPxLQlyviJvSaRbqJ5zM4QTOPbSwWP3B7k47Q==@linaro.org
-X-Google-Smtp-Source: AGHT+IH4rFYtyKkgokJaXOj32RxkZHyl5O+byw7FfPfvvxPN7ICdSqVFo4XqfoCIdmG1izTPK66L
-X-Received: by 2002:a05:622a:152:b0:45d:56e4:1ffc with SMTP id d75a77b69052e-460aee2c93fmr17909391cf.51.1729241129562;
-        Fri, 18 Oct 2024 01:45:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1729241129; cv=none;
+Received: by 2002:a17:505:18c3:b0:1be9:327d:8ee3 with SMTP id tt3csp678052njb;
+        Fri, 18 Oct 2024 01:47:42 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWjPG4bhUWJYTc/dmCZle4nKyKkOTizTCYc/qvaMHE+z1pAN3PIcHd9e018Zjg10vl+T3cOJy+5rnNbfQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IFc6rZuKLia8kkgUB+Bc0qGBihzNpQjIsOnZkZoDZDDWzG9+VQkmgrC8/brSAvt4/JLc/qY
+X-Received: by 2002:a05:622a:4e9a:b0:45d:5c76:3b0c with SMTP id d75a77b69052e-460aed41a64mr18326291cf.25.1729241262705;
+        Fri, 18 Oct 2024 01:47:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1729241262; cv=none;
         d=google.com; s=arc-20240605;
-        b=jwSq8D4Or9psKjP6Ha8x9VJg8Z4yicTS4XmJzNdw0MM/fLdoIawxUwIj6BZkorXSMg
-         shlj86X4p7SyNLAeOQLMaALVSeKs1e8gRWxclC8UcBnND0PGRyPFEG+LZ00W8eus6LMm
-         d8ST2cDXvEYPbY9igJmv2MAkggwQVCwGqPqgVNKnv4rxk2rx5yYGQIsrMID0YvTbcE2e
-         2gKSKNrA6AyVaC3MwCzGOORt4Y+RaaQS5U5KRKqhq4Q+u8RVxK7HFrZ+bdYhsP+7zHmx
-         JKGbOPXvGP436JrMJlFV3bizhMPUMIE1bWAkkvFxr2c819f8TspVmPyS+VcwY/c+Do3y
-         3S3g==
+        b=TRbvJvX9+i+F8Dlr7CDWZaG0Xh1vARjGgp3iW6FiScGMk3DlmN+PmEz3Z3E7bJBZsg
+         XqPFu8LFA6Da4rBMomNZtEqNyiFtohvv3qff5UoSsDkpVIT8Yxa8/MFsMG6fSLVM9974
+         h8vXJpjUHbmBwEeb0nD54PIfTEIGBEDvLMuYMuVhg1IyTSNl3CI4685yoHhLY5dvfRfQ
+         4tDPwzZEwGH0dHKKp7LMNa2dYCoWz8jUtW+BsXP19QFV4PTEe7mr5FOilwQ9hyo2Fnuy
+         7sxpwSblFlAd27WmEYvCeKQWdfOIabCKhaYPQS7JW3FabpdGmaM25CObcUinJ0tY2omr
+         y8cQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=in-reply-to:content-transfer-encoding:content-disposition
          :mime-version:references:message-id:subject:cc:to:from:date
          :dkim-signature;
-        bh=78E+gqjHuUrms4r7Xm7ew09KkmlWndNofkXcn2EVqxQ=;
+        bh=qVNp83t4KvP+0JFAeZ0xWJPGUeIV/iwlbrgFZmmXSDc=;
         fh=QQOpfZPnaut2u+2c3+U9/oBko8UmIVD4d84QZgiM70o=;
-        b=F8KwWh0yaER76dDXr/sKaqLHZfaHz34BFxeO1h/C8Ag28rgfxEdeQecV2zbd0vk8Co
-         gjCflGkSFOYuWsBvEWwhYq3WYsvmXnGsrjmZnpQDfyjuTsFbfSk2OwS9a9P1LiyIJuCt
-         QoowTX+j8danSaQ4+KQFxQbn/CS9AkjT8nL+FPISVLtAQO16TuoCOnZfi8lLBjX+WUrY
-         l/3IadY6hXwP7n+Y20LsJMi71nonLs599q+j9rpQV7z5xyHixkQvlo4ddLih7NzDyXhW
-         94ObmPaJ+nwpdLsRQiaaEOiAiYvdjieAWN/YCM+/+EqsWNE7EYAvt6e/cWAMe1NePFzA
-         D8ZQ==;
+        b=CT/HOA96E7uxfRPoZbBzCnZjzYWWRtN/kewR2+i/HAq2bzl85GeqlP2aFWuL9fYliY
+         El3ZUOifq/JkDPaIXnp1l+/CikhLmLUNfS/xWt+jb35oe4gF+LkFvxgyhtRAm5xMTMZI
+         VFraI0CTgbiPWRygCa+kIU7YIt2frdaadRFC2Zs5co8m8Kcc9ioyYIS+IZXyqmcunXAs
+         +Confuesw0DzbjohY8quW1WW9xNZuC5yhIkzguYmjqNpaSs+k1WfYlJ9Aseo8DoW/RSH
+         mXECVweBG0dICxqfiZVxnggj/Gp6aOhTu7kHMnR2HZXc5DuKcM2a/gFIR/46etmzCeLv
+         S+5w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=bQzmOJiv;
+       dkim=pass header.i=@intel.com header.s=Intel header.b=TxUY4Mp+;
        spf=pass (google.com: domain of zhao1.liu@intel.com designates 198.175.65.11 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 Return-Path: <zhao1.liu@intel.com>
 Received: from mgamail.intel.com (mgamail.intel.com. [198.175.65.11])
-        by mx.google.com with ESMTPS id d75a77b69052e-460aea40ce9si11949921cf.356.2024.10.18.01.45.27
+        by mx.google.com with ESMTPS id d75a77b69052e-460aea8d02dsi12165761cf.611.2024.10.18.01.47.41
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 18 Oct 2024 01:45:29 -0700 (PDT)
+        Fri, 18 Oct 2024 01:47:42 -0700 (PDT)
 Received-SPF: pass (google.com: domain of zhao1.liu@intel.com designates 198.175.65.11 as permitted sender) client-ip=198.175.65.11;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=bQzmOJiv;
+       dkim=pass header.i=@intel.com header.s=Intel header.b=TxUY4Mp+;
        spf=pass (google.com: domain of zhao1.liu@intel.com designates 198.175.65.11 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1729241129; x=1760777129;
+  t=1729241262; x=1760777262;
   h=date:from:to:cc:subject:message-id:references:
    mime-version:content-transfer-encoding:in-reply-to;
-  bh=1hzdX0SAedJp2ZbWcaKLwBlRgfiMbk9wET1obgyYSH0=;
-  b=bQzmOJivvAR2UBnMeGhNUbS7h6vMEKz8QUF6D8RhuVNEXl0jH5Tm2Aop
-   KMvDH02IyklC++WmCiGelpgchY3quUqNVAe0eVskvF+eFNW/3cwUL4xUV
-   huySY5rRFm824A6NezmNbRAma93RG0iOxRhL51PJzwj8uOE7RXdlff+ml
-   z9vYVF2WgHVgDd1GwhWyAbWhSRTCaLoTbW3JTPiGFILvHnMDTky+gnEFi
-   KP2RdRjTZ+drkNYGpwq02sGG0l5XAmgBzD/z2VGi4AWCgyeEQW8Ff7V7I
-   ZoyvCrKroNOHa1Fj4S0gV1PfMioh0vVL0fW5qprsF96f5oDLHpQsnhniK
-   g==;
-X-CSE-ConnectionGUID: SoKO84uaRR2+rULAQSzCzQ==
-X-CSE-MsgGUID: p9pt1JPSSkikSGAW/qjL9w==
-X-IronPort-AV: E=McAfee;i="6700,10204,11222"; a="39305837"
+  bh=plBfgMHQMuI+dLmqLkuBbIQUiwBm4swhKQlf4bzVhk8=;
+  b=TxUY4Mp+gb4RmhBdO95HEH9Vu9Cvan1WP8aoOb+AdiR5ub7jodTDinAW
+   0gpdGUhzuPGHJrm7JeGbqlVIDhq+o3aIEe5IYzN+lvLq7FPAVxMhKpp5B
+   efhsEPLq0yzTMUIttIXwnf1djAitWjTinZF7sLpr4tLuD7kpdicR4QpVB
+   3IHdU+JPNDCuqQPKDV9P8ivCxpe3x7NfPYhxqsIUBZIFYbPRcBBgfjx+x
+   7ycQZCxCGN9PEFG3A+XTsGo6h4IBrYC4j64hr5cx9PMMkn5FNa51kDGGx
+   jhp48qky3hHvsEsE7jIHE+ZWvw2qa6jH5qeAfy50ElkGOJKMXWQZPHvZJ
+   Q==;
+X-CSE-ConnectionGUID: AnDcNStzT+SdoOtRfqlstA==
+X-CSE-MsgGUID: i2JzusxWQiaokoyoFlXYUw==
+X-IronPort-AV: E=McAfee;i="6700,10204,11222"; a="39306046"
 X-IronPort-AV: E=Sophos;i="6.11,199,1725346800"; 
-   d="scan'208";a="39305837"
+   d="scan'208";a="39306046"
 Received: from fmviesa002.fm.intel.com ([10.60.135.142])
-  by orvoesa103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Oct 2024 01:45:26 -0700
-X-CSE-ConnectionGUID: BIYrmkbwQmuSAshnFlJ3Ug==
-X-CSE-MsgGUID: vn3Ep1RJQbukF0MCtS2swQ==
+  by orvoesa103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Oct 2024 01:47:40 -0700
+X-CSE-ConnectionGUID: 1X6bbWVLRPKGDBLVB3+qyQ==
+X-CSE-MsgGUID: 0qGpU8v8T3qusDQ6TdvBUg==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.11,213,1725346800"; 
-   d="scan'208";a="102105402"
+   d="scan'208";a="102105838"
 Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost) ([10.239.160.36])
-  by fmviesa002.fm.intel.com with ESMTP; 18 Oct 2024 01:45:21 -0700
-Date: Fri, 18 Oct 2024 17:01:36 +0800
+  by fmviesa002.fm.intel.com with ESMTP; 18 Oct 2024 01:47:35 -0700
+Date: Fri, 18 Oct 2024 17:03:51 +0800
 From: Zhao Liu <zhao1.liu@intel.com>
 To: Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>
 Cc: Igor Mammedov <imammedo@redhat.com>,
@@ -89,97 +89,120 @@ Cc: Igor Mammedov <imammedo@redhat.com>,
 	Zhenyu Wang <zhenyu.z.wang@intel.com>,
 	Dapeng Mi <dapeng1.mi@linux.intel.com>,
 	Zhao Liu <zhao1.liu@intel.com>
-Subject: Re: [PATCH v3 1/7] hw/core: Make CPU topology enumeration
- arch-agnostic
-Message-ID: <ZxIj8CWZd7u+cysK@intel.com>
+Subject: Re: [PATCH v3 6/7] i386/pc: Support cache topology in -machine for
+ PC machine
+Message-ID: <ZxIkdyJ2ysibi74R@intel.com>
 References: <20241012104429.1048908-1-zhao1.liu@intel.com>
- <20241012104429.1048908-2-zhao1.liu@intel.com>
- <ZxEte1KBwWuCdkb1@redhat.com>
- <ZxHJri+rgdGKf/0L@intel.com>
- <ZxIUd9tMi9o1UVOS@redhat.com>
+ <20241012104429.1048908-7-zhao1.liu@intel.com>
+ <ZxEs3DGGgCqGT5yK@redhat.com>
+ <ZxHcsPyqT6MLJ9hG@intel.com>
+ <ZxIVC-XQaMqOy6Fw@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <ZxIUd9tMi9o1UVOS@redhat.com>
-X-TUID: q1lS43W9ojlO
+In-Reply-To: <ZxIVC-XQaMqOy6Fw@redhat.com>
+X-TUID: FSjUz0plf4+N
 
-On Fri, Oct 18, 2024 at 08:55:35AM +0100, Daniel P. Berrangé wrote:
-> Date: Fri, 18 Oct 2024 08:55:35 +0100
+On Fri, Oct 18, 2024 at 08:58:03AM +0100, Daniel P. Berrangé wrote:
+> Date: Fri, 18 Oct 2024 08:58:03 +0100
 > From: "Daniel P. Berrangé" <berrange@redhat.com>
-> Subject: Re: [PATCH v3 1/7] hw/core: Make CPU topology enumeration
->  arch-agnostic
+> Subject: Re: [PATCH v3 6/7] i386/pc: Support cache topology in -machine for
+>  PC machine
 > 
-> On Fri, Oct 18, 2024 at 10:36:30AM +0800, Zhao Liu wrote:
+> On Fri, Oct 18, 2024 at 11:57:36AM +0800, Zhao Liu wrote:
 > > Hi Daniel,
 > > 
-> > > > -/*
-> > > > - * CPUTopoLevel is the general i386 topology hierarchical representation,
-> > > > - * ordered by increasing hierarchical relationship.
-> > > > - * Its enumeration value is not bound to the type value of Intel (CPUID[0x1F])
-> > > > - * or AMD (CPUID[0x80000026]).
-> > > > - */
-> > > > -enum CPUTopoLevel {
-> > > > -    CPU_TOPO_LEVEL_INVALID,
-> > > > -    CPU_TOPO_LEVEL_SMT,
-> > > > -    CPU_TOPO_LEVEL_CORE,
-> > > > -    CPU_TOPO_LEVEL_MODULE,
-> > > > -    CPU_TOPO_LEVEL_DIE,
-> > > > -    CPU_TOPO_LEVEL_PACKAGE,
-> > > > -    CPU_TOPO_LEVEL_MAX,
-> > > > -};
-> > > > -
-> > > 
-> > > snip
-> > > 
-> > > > @@ -18,3 +18,47 @@
-> > > >  ##
-> > > >  { 'enum': 'S390CpuEntitlement',
-> > > >    'data': [ 'auto', 'low', 'medium', 'high' ] }
+> > > > +    ``smp-cache.0.cache=cachename,smp-cache.0.topology=topologylevel``
+> > > > +        Define cache properties for SMP system.
 > > > > +
-> > > > +##
-> > > > +# @CpuTopologyLevel:
-> > > > +#
-> > > > +# An enumeration of CPU topology levels.
-> > > > +#
-> > > > +# @invalid: Invalid topology level.
+> > > > +        ``cache=cachename`` specifies the cache that the properties will be
+> > > > +        applied on. This field is the combination of cache level and cache
+> > > > +        type. It supports ``l1d`` (L1 data cache), ``l1i`` (L1 instruction
+> > > > +        cache), ``l2`` (L2 unified cache) and ``l3`` (L3 unified cache).
+> > > > +
+> > > > +        ``topology=topologylevel`` sets the cache topology level. It accepts
+> > > > +        CPU topology levels including ``thread``, ``core``, ``module``,
+> > > > +        ``cluster``, ``die``, ``socket``, ``book``, ``drawer`` and a special
+> > > > +        value ``default``. If ``default`` is set, then the cache topology will
+> > > > +        follow the architecture's default cache topology model. If another
+> > > > +        topology level is set, the cache will be shared at corresponding CPU
+> > > > +        topology level. For example, ``topology=core`` makes the cache shared
+> > > > +        by all threads within a core.
+> > > > +
+> > > > +        Example:
+> > > > +
+> > > > +        ::
+> > > > +
+> > > > +            -machine smp-cache.0.cache=l1d,smp-cache.0.topology=core,smp-cache.1.cache=l1i,smp-cache.1.topology=core
 > > > 
-> > > Previously all topology levels were internal to QEMU, and IIUC
-> > > this CPU_TOPO_LEVEL_INVALID appears to have been a special
-> > > value to indicate  the cache was absent ?
+> > > There are 4 cache types, l1d, l1i, l2, l3.
+> > > 
+> > > In this example you've only set properties for l1d, l1i caches.
+> > > 
+> > > What does this mean for l2 / l3 caches ?
 > > 
-> > Now I haven't support this logic.
-> > x86 CPU has a "l3-cache" property, and maybe that property can be
-> > implemented or replaced by the "invalid" level support you mentioned.
+> > Omitting "cache" will default to using the "default" level.
 > > 
-> > > Now we're exposing this directly to the user as a settable
-> > > option. We need to explain what effect setting 'invalid'
-> > > has on the CPU cache config.
+> > I think I should add the above description to the documentation.
 > > 
-> > If user set "invalid", QEMU will report the error message:
+> > > Are they reported as not existing, or are they to be reported at
+> > > some built-in default topology level.
 > > 
-> > qemu-system-x86_64: Invalid cache topology level: invalid. The topology should match valid CPU topology level
+> > It's the latter.
 > > 
-> > Do you think this error message is sufficient?
+> > If a machine doesn't support l2/l3, then QEMU will also report the error
+> > like:
+> > 
+> > qemu-system-*: l2 cache topology not supported by this machine
 > 
-> If the user cannot set 'invalid' as an input, and no QEMU interface
-> will emit, then ideally we would not define 'invalid' in the QAPI
-> schema at all.
+> Ok, that's good.
 > 
-> This woudl require us to have some internal only way to record
-> "invalid", separately from the topology level, or with a magic
-> internal only constant that doesn't clash with the public enum
-> constants. I guess the latter would be less work e.g. we could
-> "abuse" the 'MAX' constant value
+> > > If the latter, how does the user know what that built-in default is, 
+> > 
+> > Currently, the default cache model for x86 is L1 per core, L2 per core,
+> > and L3 per die. Similar to the topology levels, there is still no way to
+> > expose this to users. I can descript default cache model in doc.
+> > 
+> > But I feel like we're back to the situation we discussed earlier:
+> > "default" CPU topology support should be related to the CPU model, but
+> > in practice, QEMU supports it at the machine level. The cache topology
+> > depends on CPU topology support and can only continue to be added on top
+> > of the machine.
+> > 
+> > So do you think we can add topology and cache information in CpuModelInfo
+> > so that query-cpu-model-expansion can expose default CPU/cache topology
+> > information to users?
+> > 
+> > This way, users can customize CPU/cache topology in -smp and
+> > -machine smp-cache. Although the QMP command is targeted at the CPU model
+> > while our CLI is at the machine level, at least we can expose the
+> > information to users.
+> > 
+> > If you agree to expose the default topology/cache info in
+> > query-cpu-model-expansion, can I work on this in a separate series? :)
 > 
->    #define CPU_TOPOLOGY_LEVEL_INVALID CPU_TOPOLOGY_LEVEL_MAX
+> Yeah, lets worry about that another day.
 > 
-> or separate it with a negative value
-> 
->    #define CPU_TOPOLOGY_LEVEL_INVALID -1
->
+> It it sufficient to just encourage users to always specify
+> the full set of caches.
 
-This's a clever idea. Thank you!
+Thanks!
 
-Rgards,
+> > > Can we explicitly disable a l2/l3 cache, or must it always exists ?
+> > 
+> > Now we can't disable it through -machine smp-cache (while x86 CPU support
+> > l3-cache=off), but as you mentioned, I can try using "invalid" to support
+> > this scenario, which would be more general. Similarly, if you agree, I
+> > can also add this support in a separate series.
+> 
+> If we decide to offer a way to disable caches, probably better to have
+> a name like 'disabled' for such a setting, and yes, we don't need todo
+> that now.
+
+Yes, "disabled" is better.
+
+Regards,
 Zhao
+
+ 

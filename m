@@ -1,98 +1,98 @@
-Received: by 2002:a17:505:18c3:b0:1be9:327d:8ee3 with SMTP id tt3csp845368njb;
-        Fri, 18 Oct 2024 07:13:57 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCW78Elf05tB/3zgaTamnx980O9mtaUcYiRSbbB7Id+/FO86Z6qN9YWykIcMzdIbCU83idvTrxMFi+FY0Q==@linaro.org
-X-Google-Smtp-Source: AGHT+IFf4ZCZFAOVutdnICjyGP+KkZDtV5PV6dIAZZn7jdr5Xv8jwAiRGQ4JKxwkmDrPSZiLjUoz
-X-Received: by 2002:a05:6808:22a3:b0:3e6:252:eba8 with SMTP id 5614622812f47-3e602c5a9b8mr1652370b6e.9.1729260837042;
-        Fri, 18 Oct 2024 07:13:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1729260837; cv=none;
+Received: by 2002:a17:505:18c3:b0:1be9:327d:8ee3 with SMTP id tt3csp845410njb;
+        Fri, 18 Oct 2024 07:14:01 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUjzTqlQ3BKl5DlQgfl02JSkwfCfmdzgYjR1QaxSErs24fWLYC6dAEtrhfc24b4zazIIGzYjonR8e0rBA==@linaro.org
+X-Google-Smtp-Source: AGHT+IHaTNdKlNJpF5kjkBWNZAIg2NoePdpb4QpLSr45NM40FIJ3izZTcdxcp0t4iwozuvlJgKf0
+X-Received: by 2002:a05:620a:2492:b0:7b1:5424:e994 with SMTP id af79cd13be357-7b157b62702mr287216785a.26.1729260841425;
+        Fri, 18 Oct 2024 07:14:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1729260841; cv=none;
         d=google.com; s=arc-20240605;
-        b=QNU+nDQ7bF0IYCWvMh2p4gI9HeyqUnT4Xud4z9fT7jqC0tD5+SDb7846Aoj2Fyaosx
-         uby8AC5bi4wrxUIBYxQWV8MmrpylluDBXuFv029EsVHWFi9s0iAvLo5kxL0sdzITKG3S
-         Nrt3EQBG8ZRUm2NoiOcwQ342YmaPKxOEP3gejqtgRjBu1kR8qBTqBdyFQKX8tcuDCw+T
-         uqVH6I+WZbOKdupgKTTftR3XuHkbQhyOPDJfy282AFBRa+R/U+1NyEGdtlniAofAk/C+
-         EvSEKCO9UHb7g04TYsqXyIgeUMdM/DSvv3B/76AivL33+3GuGaST21DKpk5hfmiVqRXy
-         FtjQ==
+        b=I6/g6BAq0Ud/JTJDeR6e2UWPhVmRWSKrZXyEOl4VtkY+zQSXLf6gjT5Oz0vXCPX2HD
+         9QJ6wQvSKD+envnt355HX7ey1xL2Vpkdt+HUS8q2GYx0W8sAABS19Tz4lIexdac1B7FQ
+         IjRNyTpdXt+G5+3qxNT/A0/FlbedRXwHhcGJkNZd89b4Shs1JpJFuaRNVd6l2q7WD9vy
+         nAFSlAUSOrYLP0MSbcA6h8+e1adwhool2Ei4DhxatrXVR4e6M+ZD7ukZaHwJ7zhYO4d7
+         55JvQJ75KXsLlZxp3PT01zdprHdMK1uSh+dS10gWlbM0jagsagDBl5Um99EZn7YQkwnm
+         OSAA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=gAX28yWcBXDRA8GUHaWHj1wjFTUDruopzlW85DJp/k8=;
+        bh=/CHgIXie95gPd8mgM7wMcsIUcDpBmAMsOaaghgDk4m8=;
         fh=JROX7yrvKMYU9BbmMyfGDG7C+H2YgCvn4aRmWAEICOc=;
-        b=hgJwwdlr/dHMgQLMn9BJextNgE7t4rld9ExtC3XLyl1e8yHJtweChb+lr+CI/HiJxA
-         DRgsED24koVaktR5bv8V9/NdCO9Df42+dQZlKxfdTAe0dAfucabPD/DQYQIu5He0qr4i
-         pxuLufNneWhZwNXvOMUkCsKH4Gm9XN/cE+dXACu4wTrSr5dr9aSpe+w0IHJ0TjgUQBjF
-         6zRwG7PNaL4vR5cYtzhk0aA45vsQjlY9L/jczlwgQVbPfbbZHac2TNiXG9QgoLUlORhM
-         Bxjptb37vR2v+T8Nr4plYlpokKbr/cNYcJmYPa3LY7tBxBcwWPzdULQj3y8w7XrH2yzS
-         /RLQ==;
+        b=jV9xcrbPRRP2YtQEOHp0uGa38vXkA5WB1Z4LbxHrIwvMeTP2CkJL4h90GfIvojRKgI
+         NyR07eDtH5kZF/nsKENBwtJeqZk4EdSRJhbJIwj4T8bLW23elnKzgA8YoP4sK8Hh4Un3
+         51HG14Obg8Lb/IUldkjiK0wZfhF5f7Qq8lyXIpOrPmf8u9kBctB34c1CoS5jwA33FurO
+         bzA4wihtrWYezGMEj1xJYzytWiHXJDxU6tLXD4XfGvP98Eg6z1S01y5sdT+QgDeWzwha
+         kj6tCg4pJKVAzh3kEqsyIMNE/Gmw3nY4ENnbrRDwogxrrh8xLNlTmn+F01rrSFXMLjW4
+         qDIA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=BZEFjEsb;
+       dkim=pass header.i=@linaro.org header.s=google header.b=OD6JZv4K;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ada2fe7eead31-4a5d64392besi312126137.492.2024.10.18.07.13.56
+        by mx.google.com with ESMTPS id af79cd13be357-7b156f616ffsi187006085a.5.2024.10.18.07.14.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 18 Oct 2024 07:13:57 -0700 (PDT)
+        Fri, 18 Oct 2024 07:14:01 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=BZEFjEsb;
+       dkim=pass header.i=@linaro.org header.s=google header.b=OD6JZv4K;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1t1njZ-0000x9-Pe; Fri, 18 Oct 2024 10:13:41 -0400
+	id 1t1njb-0000yK-FT; Fri, 18 Oct 2024 10:13:43 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1t1njY-0000wB-G7
+ id 1t1njY-0000w8-D5
  for qemu-arm@nongnu.org; Fri, 18 Oct 2024 10:13:40 -0400
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1t1njW-0006xY-N3
+ id 1t1njW-0006xJ-6a
  for qemu-arm@nongnu.org; Fri, 18 Oct 2024 10:13:40 -0400
-Received: by mail-wm1-x32d.google.com with SMTP id
- 5b1f17b1804b1-4314c452180so22244775e9.0
- for <qemu-arm@nongnu.org>; Fri, 18 Oct 2024 07:13:38 -0700 (PDT)
+Received: by mail-wr1-x42e.google.com with SMTP id
+ ffacd0b85a97d-37d47eff9acso1421164f8f.3
+ for <qemu-arm@nongnu.org>; Fri, 18 Oct 2024 07:13:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1729260817; x=1729865617; darn=nongnu.org;
+ d=linaro.org; s=google; t=1729260816; x=1729865616; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=gAX28yWcBXDRA8GUHaWHj1wjFTUDruopzlW85DJp/k8=;
- b=BZEFjEsbM2VXR8Q+/P9ORzeTjPA7VqUjzG9iZdoH6nIhe0loS7fZNuSXfnzB3DYSZs
- IpqrFYDLTFhOlf3VcA2acM+ZdF8RWhohhaNp1tUR3qz201f1yUovfDLJgFIZ/UJ2kkff
- Jbkz19p5H/9UYf+XQSUxI/hFdi0g+I2uCsY5iQkSEj0dgxSaTdKSA48eAqGYlXBva+17
- nokWkuYoggIt9PEKNolERCvsquj+lP/8Yh5BwTo/w9q11SwIjaQErq5uRaW1YsZJgfIT
- fJMIkGg2E68lzCl0rsj1XBipGeYpCH6zKtwWC/TXaALEfTuHmyAcWBXFa/jEuAVT5Eel
- tB4g==
+ bh=/CHgIXie95gPd8mgM7wMcsIUcDpBmAMsOaaghgDk4m8=;
+ b=OD6JZv4KtqY/RyUqrW/NoTMzKgtK5FJ6DbSQPbPQ4ijTqpBGfS3JdzVFjDndoywkEm
+ ZRDcS0KKU5ESVB6R8pXOXSTga7s37BNM2j6E4NkD+2zm/xzZpN0sUxFb3KmVlIkVd00e
+ x4ZZDAZJeO44/fv6rgx36f8rcz1cxonGzi0XlqdCSmas9V/1wCdoEVI+KENnOcGV4S5h
+ 5JuKE9Bpf+H1DHiCBSjbTbDKYAWzh8jIzb14ScRZkxMVeIrCOAPLVwbwnGA7ZT/5jbzc
+ 8I6b3V3uilk6uoNm1lDaTqO12hM6uUmdYkPMXNitiycoJG91vaxT+uZNfc2CqKHpUf5G
+ vNaQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1729260817; x=1729865617;
+ d=1e100.net; s=20230601; t=1729260816; x=1729865616;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=gAX28yWcBXDRA8GUHaWHj1wjFTUDruopzlW85DJp/k8=;
- b=CP7SdRMVx8QQ8KUJ2o5o+Pw1ar8SdlB7mJ4UHaKa6UEAauK4hFMJXpJlUSIfmDd63k
- cq98z6VSghJkQeiIKttI5/IIxhQMNuruiQQqFoKfvcwsVUvyQcwdD6bHzAwi+EEFwsRF
- qfXEEQV/HnY2phVVWckVLtwvN9hWviUIoxho920fRGujx1MEi6VSMzOlRzlY7uuljPEL
- BElO/wU7ic6suh1Rbn5Smh0lw9fpubryCJjziFnHJHR+qTFiUNvcH03jDJ5zWNgdVYtu
- ylbjyXMukSlULye2vNKaE+8cBb+ssNCp/NeYZlAL8dP7f6GW8r93Qwb18mQ7+QDqRZFL
- oGtg==
-X-Gm-Message-State: AOJu0Yx8zGxLG/eIU7EWckNoZWasKiEJQVJwhUkTZwABTQu4ejGM9lZu
- akJqNeRUOHvmtOMQ350FeFJ/HaUAUWSVDCoaKsP0M/97sI4aH4HKoIaX+nwEAWQA45LWZPzTVI+
- O
-X-Received: by 2002:a05:600c:4ecc:b0:431:416e:2603 with SMTP id
- 5b1f17b1804b1-431586fc9b3mr47060115e9.3.1729260817068; 
- Fri, 18 Oct 2024 07:13:37 -0700 (PDT)
+ bh=/CHgIXie95gPd8mgM7wMcsIUcDpBmAMsOaaghgDk4m8=;
+ b=VLjriN5ssFTO/tgCbcLLzCnP9Qu1Cf83ghhzXUXG6jvva/Gu+8vhGjJ6LrjOMHtOd6
+ MnSBG8x5BM9QMc6+em7vot/BwLf4Da0Z5QhxPL2kHNz+7TYwz9qaLDIigfkQL0mwjKX2
+ +o7ea7t1WqTrnuw92KyvqZORu21DQsSILLTWUNNYtB94YssZAYEyjR5SWHHtR57EyCdX
+ KHYzbN/VtJ61dtkvdFjoeo1THcFRE2wJRwHz4pwW8+JhuPWXsYyI+Gh3X+cWTLVTaEMb
+ qpmSbngqk43qbLZwndZ+X0qYH8MrJFpziqv9guSOj6kbsm37owBg46W5KrQLpO75v67L
+ C46A==
+X-Gm-Message-State: AOJu0Yy7i2kK8aNmqSPR5B7a6g3YBpupsllaGqG9Zk4ht4x5Iqwxfvuv
+ X6j0JVZufIFu6U83MoutBW46+s3vLl4WZzjPeU0em98G1OOR9bR4BYFp7ao0ZqC3G0Ho2R709iv
+ k
+X-Received: by 2002:adf:ec12:0:b0:37d:50e7:8c56 with SMTP id
+ ffacd0b85a97d-37ea213ffd2mr1768853f8f.11.1729260816407; 
+ Fri, 18 Oct 2024 07:13:36 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-37ecf0ecd89sm2040086f8f.78.2024.10.18.07.13.36
+ ffacd0b85a97d-37ecf0ecd89sm2040086f8f.78.2024.10.18.07.13.35
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
  Fri, 18 Oct 2024 07:13:36 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
@@ -105,23 +105,23 @@ Cc: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
  Alexandre Iooss <erdnaxe@crans.org>,
  Alistair Francis <alistair@alistair23.me>,
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Subject: [PATCH 4/7] docs/system/arm: Add placeholder doc for exynos4 boards
-Date: Fri, 18 Oct 2024 15:13:29 +0100
-Message-Id: <20241018141332.942844-5-peter.maydell@linaro.org>
+Subject: [PATCH 3/7] docs/system/arm: Split fby35 out from aspeed.rst
+Date: Fri, 18 Oct 2024 15:13:28 +0100
+Message-Id: <20241018141332.942844-4-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20241018141332.942844-1-peter.maydell@linaro.org>
 References: <20241018141332.942844-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -136,57 +136,160 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: h8QMNpxFBJWF
+X-TUID: Y/byY7+19hPJ
 
-Add a placeholder doc for the exynos4 boards nuri and smdkc210.
+The fby35 machine is not implemented in hw/arm/aspeed.c,
+but its documentation is currently stuck at the end of aspeed.rst,
+formatted in a way that it gets its own heading in the top-level
+list of boards in target-arm.html.
+
+We don't have any other boards that we document like this; split it
+out into its own rst file. This improves consistency with other
+board docs and means we can have the entry in the target-arm
+list be in the correct alphabetical order.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- MAINTAINERS                | 1 +
- docs/system/arm/exynos.rst | 9 +++++++++
- docs/system/target-arm.rst | 1 +
- 3 files changed, 11 insertions(+)
- create mode 100644 docs/system/arm/exynos.rst
+ MAINTAINERS                |  1 +
+ docs/system/arm/aspeed.rst | 48 --------------------------------------
+ docs/system/arm/fby35.rst  | 47 +++++++++++++++++++++++++++++++++++++
+ docs/system/target-arm.rst |  1 +
+ 4 files changed, 49 insertions(+), 48 deletions(-)
+ create mode 100644 docs/system/arm/fby35.rst
 
 diff --git a/MAINTAINERS b/MAINTAINERS
-index dff8073c5bc..031b117a3a0 100644
+index c21d6a2f9e1..dff8073c5bc 100644
 --- a/MAINTAINERS
 +++ b/MAINTAINERS
-@@ -716,6 +716,7 @@ L: qemu-arm@nongnu.org
- S: Odd Fixes
- F: hw/*/exynos*
- F: include/hw/*/exynos*
-+F: docs/system/arm/exynos.rst
+@@ -1121,6 +1121,7 @@ F: include/hw/*/*aspeed*
+ F: hw/net/ftgmac100.c
+ F: include/hw/net/ftgmac100.h
+ F: docs/system/arm/aspeed.rst
++F: docs/system/arm/fby35.rst
+ F: tests/*/*aspeed*
+ F: hw/arm/fby35.c
  
- Calxeda Highbank
- M: Rob Herring <robh@kernel.org>
-diff --git a/docs/system/arm/exynos.rst b/docs/system/arm/exynos.rst
+diff --git a/docs/system/arm/aspeed.rst b/docs/system/arm/aspeed.rst
+index 968ba88b997..63910d382fe 100644
+--- a/docs/system/arm/aspeed.rst
++++ b/docs/system/arm/aspeed.rst
+@@ -257,51 +257,3 @@ To boot a kernel directly from a Zephyr build tree:
+ 
+   $ qemu-system-arm -M ast1030-evb -nographic \
+         -kernel zephyr.elf
+-
+-Facebook Yosemite v3.5 Platform and CraterLake Server (``fby35``)
+-==================================================================
+-
+-Facebook has a series of multi-node compute server designs named
+-Yosemite. The most recent version released was
+-`Yosemite v3 <https://www.opencompute.org/documents/ocp-yosemite-v3-platform-design-specification-1v16-pdf>`__.
+-
+-Yosemite v3.5 is an iteration on this design, and is very similar: there's a
+-baseboard with a BMC, and 4 server slots. The new server board design termed
+-"CraterLake" includes a Bridge IC (BIC), with room for expansion boards to
+-include various compute accelerators (video, inferencing, etc). At the moment,
+-only the first server slot's BIC is included.
+-
+-Yosemite v3.5 is itself a sled which fits into a 40U chassis, and 3 sleds
+-can be fit into a chassis. See `here <https://www.opencompute.org/products/423/wiwynn-yosemite-v3-server>`__
+-for an example.
+-
+-In this generation, the BMC is an AST2600 and each BIC is an AST1030. The BMC
+-runs `OpenBMC <https://github.com/facebook/openbmc>`__, and the BIC runs
+-`OpenBIC <https://github.com/facebook/openbic>`__.
+-
+-Firmware images can be retrieved from the Github releases or built from the
+-source code, see the README's for instructions on that. This image uses the
+-"fby35" machine recipe from OpenBMC, and the "yv35-cl" target from OpenBIC.
+-Some reference images can also be found here:
+-
+-.. code-block:: bash
+-
+-    $ wget https://github.com/facebook/openbmc/releases/download/openbmc-e2294ff5d31d/fby35.mtd
+-    $ wget https://github.com/peterdelevoryas/OpenBIC/releases/download/oby35-cl-2022.13.01/Y35BCL.elf
+-
+-Since this machine has multiple SoC's, each with their own serial console, the
+-recommended way to run it is to allocate a pseudoterminal for each serial
+-console and let the monitor use stdio. Also, starting in a paused state is
+-useful because it allows you to attach to the pseudoterminals before the boot
+-process starts.
+-
+-.. code-block:: bash
+-
+-    $ qemu-system-arm -machine fby35 \
+-        -drive file=fby35.mtd,format=raw,if=mtd \
+-        -device loader,file=Y35BCL.elf,addr=0,cpu-num=2 \
+-        -serial pty -serial pty -serial mon:stdio \
+-        -display none -S
+-    $ screen /dev/tty0 # In a separate TMUX pane, terminal window, etc.
+-    $ screen /dev/tty1
+-    $ (qemu) c		   # Start the boot process once screen is setup.
+diff --git a/docs/system/arm/fby35.rst b/docs/system/arm/fby35.rst
 new file mode 100644
-index 00000000000..86894bc02b7
+index 00000000000..742b887d44c
 --- /dev/null
-+++ b/docs/system/arm/exynos.rst
-@@ -0,0 +1,9 @@
-+Exynos4 boards (``nuri``, ``smdkc210``)
-+=======================================
++++ b/docs/system/arm/fby35.rst
+@@ -0,0 +1,47 @@
++Facebook Yosemite v3.5 Platform and CraterLake Server (``fby35``)
++==================================================================
 +
-+These are machines which use the Samsung Exynos4210 SoC, which has Cortex-A9 CPUs.
++Facebook has a series of multi-node compute server designs named
++Yosemite. The most recent version released was
++`Yosemite v3 <https://www.opencompute.org/documents/ocp-yosemite-v3-platform-design-specification-1v16-pdf>`__.
 +
-+``nuri`` models the Samsung NURI board.
++Yosemite v3.5 is an iteration on this design, and is very similar: there's a
++baseboard with a BMC, and 4 server slots. The new server board design termed
++"CraterLake" includes a Bridge IC (BIC), with room for expansion boards to
++include various compute accelerators (video, inferencing, etc). At the moment,
++only the first server slot's BIC is included.
 +
-+``smdkc210`` models the Samsung SMDKC210 board.
++Yosemite v3.5 is itself a sled which fits into a 40U chassis, and 3 sleds
++can be fit into a chassis. See `here <https://www.opencompute.org/products/423/wiwynn-yosemite-v3-server>`__
++for an example.
 +
++In this generation, the BMC is an AST2600 and each BIC is an AST1030. The BMC
++runs `OpenBMC <https://github.com/facebook/openbmc>`__, and the BIC runs
++`OpenBIC <https://github.com/facebook/openbic>`__.
++
++Firmware images can be retrieved from the Github releases or built from the
++source code, see the README's for instructions on that. This image uses the
++"fby35" machine recipe from OpenBMC, and the "yv35-cl" target from OpenBIC.
++Some reference images can also be found here:
++
++.. code-block:: bash
++
++    $ wget https://github.com/facebook/openbmc/releases/download/openbmc-e2294ff5d31d/fby35.mtd
++    $ wget https://github.com/peterdelevoryas/OpenBIC/releases/download/oby35-cl-2022.13.01/Y35BCL.elf
++
++Since this machine has multiple SoC's, each with their own serial console, the
++recommended way to run it is to allocate a pseudoterminal for each serial
++console and let the monitor use stdio. Also, starting in a paused state is
++useful because it allows you to attach to the pseudoterminals before the boot
++process starts.
++
++.. code-block:: bash
++
++    $ qemu-system-arm -machine fby35 \
++        -drive file=fby35.mtd,format=raw,if=mtd \
++        -device loader,file=Y35BCL.elf,addr=0,cpu-num=2 \
++        -serial pty -serial pty -serial mon:stdio \
++        -display none -S
++    $ screen /dev/tty0 # In a separate TMUX pane, terminal window, etc.
++    $ screen /dev/tty1
++    $ (qemu) c		   # Start the boot process once screen is setup.
 diff --git a/docs/system/target-arm.rst b/docs/system/target-arm.rst
-index 9c01e66ffa9..a7f88c8f317 100644
+index 3c0a5848453..9c01e66ffa9 100644
 --- a/docs/system/target-arm.rst
 +++ b/docs/system/target-arm.rst
 @@ -90,6 +90,7 @@ undocumented; you can get a complete list by running
     arm/digic
     arm/cubieboard
     arm/emcraft-sf2
-+   arm/exynos
-    arm/fby35
++   arm/fby35
     arm/musicpal
     arm/kzm
+    arm/nrf
 -- 
 2.34.1
 

@@ -1,40 +1,40 @@
-Received: by 2002:a17:505:18c3:b0:1be9:327d:8ee3 with SMTP id tt3csp612047njb;
-        Thu, 17 Oct 2024 22:33:12 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVwBDcGUsDp5ojeN/xCFYrcZiHtCWpTez3bpdAFxMZdi+GFzLnVj7nQx8Gypx81mn7wQ8sBTYM6YJVtFQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IH8iqmXiqkaWfgVZD/I/twzM6jmTSBL48WX07cWLlhIS4P6DyWMctiHN1ziLOw0Hnb4vTXL
-X-Received: by 2002:a05:620a:4046:b0:7b1:5143:8da1 with SMTP id af79cd13be357-7b157bdfabbmr131447485a.43.1729229592336;
-        Thu, 17 Oct 2024 22:33:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1729229592; cv=none;
+Received: by 2002:a17:505:18c3:b0:1be9:327d:8ee3 with SMTP id tt3csp612056njb;
+        Thu, 17 Oct 2024 22:33:13 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXnj11VqiwS3hU618tXN9C/tNprlP0QO3Cnhxtx7VJUdV4vt5dmJFHDiIqONFrva1yiLFHIzOwrjb7dag==@linaro.org
+X-Google-Smtp-Source: AGHT+IFt7pWE5oiTqlyjotIhPjsjOdW39mydie2XibSv7LR1nrcnwAEFzyjeHdCIFxDqTBcR37Fr
+X-Received: by 2002:a05:620a:462b:b0:7b1:35bc:adf8 with SMTP id af79cd13be357-7b157b8a111mr91060385a.31.1729229593478;
+        Thu, 17 Oct 2024 22:33:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1729229593; cv=none;
         d=google.com; s=arc-20240605;
-        b=Wf6HVta9ZTdwrCeQwGsBYQBSFknl9XUZBDZtGUCOVW2AD/S56lIl5Oanq2bfL9djSL
-         +xUSBJRSeOF8VzC9a+VYT1KaLSV+1VNFWZFVqVqmcL/wZFZ2ESnMRuED0ER/VJ1BDccU
-         rGDVOGXu0z9dHXAwCbB5Q1NmQ0NJPe/5Z/HuXDE72NjLO6/nRZtUT5W/3pZuiZ6H60Z5
-         Xmy1YehrZ/sT6lA3lPmpyTkaa+is2JHH1URJ0PlY/i04XL9OEv8XtzIgHljkAixxhotz
-         ChN4fW/Vy5XnsFab5rQEGg7bqMOYlGpOBDchNc6bGZGV4f7AFRBJAU4N1dfr/ypOLBcs
-         zCYQ==
+        b=EYL/Sy63FfRk+xuaQTifSCPCVuctp2lTZoejGXUGE6hRHY3MWl7pynFzXR7NUPvIH/
+         ff1EcT9XkgHD8XQ6EkvhQbc8oVlgecHUKnBqakPYJnPNEnubHON3ZaNrj+wDSh7u2j3J
+         I+PHgpzCTU7EmChna60VGqI572/hc8H0EYy5MTCxE4+Qz8qB8EK66ud5Q4TA4489idHc
+         sch8YSWL2RzUMKcWwpQq9U3UE8a6iLxrK7blXIsHIkxhsmT5Y5IfGDvC+Wdyd85gMRMW
+         sOsNq8RNlib8AVxiz6nUInb60Lov64RM7fwvVZpFOZcLO22rb7mVN6yV2dNRFkpDavb9
+         KG/w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to;
-        bh=R8OvZBrll4nIRn14QLhTAeVjX1HTay7E8RfM2eUNaho=;
+        bh=qFHxodLxQVw4AXfEAnk5aSWtVbaGXbpMgvBwv7SViko=;
         fh=RVX+uUL/oYxgKlLpNyiQfzI75/ka+93kXvmeIy2Oap4=;
-        b=MT8c1r6Nf0/yZXKWGXtofAFyheQJHlqDWEBAHIiPpsR6jOehmFqpMB97NExSD6jteC
-         nrKi/SZYv07b3MHotb4ir/lghYBDBfEVHIXxovb7mw1AvsSnEynbG44WSQIQnAkqQnoP
-         xGRAeLSdtuhRk005/JnFzSFlpCtxhc7cHfUiUdYcamMFO2lGCrXXqFDy8K8XQfKQIuU4
-         24o/NJJEf2Mi0ZrDMUCyFy5KDbLpege/oD9cusA2jE1mC743okaWSUSjyq7H7sDTm/5v
-         cHFzqZbTwxbVVAkCs8otWe3euGP9CaiqcNRniTSZowyUwYchzsbAtkbd5/mYLeNaf/N+
-         J90w==;
+        b=VcFtmf+rfdPuoz5JfBSjwtuLXAEgEvYOZmcIJbs5Xd3UUnX9/nVoUOYHusTSgSKnFd
+         OMfLAc98/9WOegX8nuWw6LdEAFtoJjpo2Wp2c9DS7XbtKkyPLsOnRFC+Za2Ft8X4YMET
+         KFIpbzAMSWIrivvqrqc4/9msaT3Hk2Wp8nNX5trg6Wlq+I3FDHkaOM271zcLKUIAtHIX
+         vnjuNIlXVEM41GvL2Cfj68/ONn7WP+E5XkRceXOE6lpbradIzeRuCqOrpnjU7rEHhGGP
+         THGmpIXkVspEcTZEK5TxNjkzK9CL6pEWspNfl9sO99d78Hka6Ie9d4AmDJb6/8dJreHQ
+         ibFQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7b156ff16a0si102416085a.577.2024.10.17.22.33.12
+        by mx.google.com with ESMTPS id af79cd13be357-7b156fe4a5esi103969685a.384.2024.10.17.22.33.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 17 Oct 2024 22:33:12 -0700 (PDT)
+        Thu, 17 Oct 2024 22:33:13 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
@@ -42,22 +42,22 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1t1fac-0008Tv-7M; Fri, 18 Oct 2024 01:31:54 -0400
+	id 1t1fay-0000jQ-HH; Fri, 18 Oct 2024 01:32:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1t1faT-0008Md-W5; Fri, 18 Oct 2024 01:31:46 -0400
+ id 1t1fau-0000cr-Iu; Fri, 18 Oct 2024 01:32:13 -0400
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1t1faP-00089Y-5h; Fri, 18 Oct 2024 01:31:43 -0400
+ id 1t1fas-0008E2-2m; Fri, 18 Oct 2024 01:32:12 -0400
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.12; Fri, 18 Oct
- 2024 13:31:14 +0800
+ 2024 13:31:16 +0800
 Received: from localhost.localdomain (192.168.10.10) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server id 15.2.1258.12 via Frontend
- Transport; Fri, 18 Oct 2024 13:31:14 +0800
+ Transport; Fri, 18 Oct 2024 13:31:16 +0800
 To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
  <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
@@ -69,10 +69,9 @@ To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  core" <qemu-block@nongnu.org>
 CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
  <yunlin.tang@aspeedtech.com>
-Subject: [PATCH v1 06/16] hw/arm/aspeed: Correct fmc_model w25q80bl for
- ast1030-a1 EVB
-Date: Fri, 18 Oct 2024 13:31:02 +0800
-Message-ID: <20241018053112.1886173-7-jamin_lin@aspeedtech.com>
+Subject: [PATCH v1 13/16] test/qtest/aspeed_smc-test: Support to test AST2600
+Date: Fri, 18 Oct 2024 13:31:09 +0800
+Message-ID: <20241018053112.1886173-14-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20241018053112.1886173-1-jamin_lin@aspeedtech.com>
 References: <20241018053112.1886173-1-jamin_lin@aspeedtech.com>
@@ -103,44 +102,86 @@ Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
 From:  Jamin Lin via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 3rPuiLzIpdTV
+X-TUID: bD4nb+jibUeQ
 
-Currently, the default fmc_model was "sst25vf032b" whose size was 4MB for
-ast1030-a1 EVB. However, according to the schematic of ast1030-a1 EVB,
-ASPEED shipped default flash of fmc_cs0 and fmc_cs1 were "w25q80bl" and
-"w25q256", respectively. The size of w25q80bl is 1MB and the size of w25q256
-is 32MB.
-
-The fmc_cs0 was connected to AST1030 A1 internal flash and the fmc_cs1 was
-connected to external flash. The internal flash could not be changed because
-it was placed into AST1030 A1 chip. Users only can change fmc_cs1 external
-flash.
-
-So far, only supports to set the default fmc_model for all chip select pins.
-In other words, users cannot set the different default flash model for
-fmc_cs0 and fmc_cs1, respectively.
-
-Correct fmc_model default flash to w25q80bl the same as AST1030 A1
-internal flash for ast1030-a1 EVB.
+Add test_ast2600_evb function and reused testcases for AST2600 testing.
+The spi base address, flash base address and ce index of fmc_cs0 are
+0x1E620000, 0x20000000 and 0, respectively.
+The default flash model of fmc_cs0 is "mx66u51235f" whose size is 64MB,
+so set jedec_id 0xc2253a.
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 ---
- hw/arm/aspeed.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ tests/qtest/aspeed_smc-test.c | 41 +++++++++++++++++++++++++++++++++++
+ 1 file changed, 41 insertions(+)
 
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index bf68224295..b4b1ce9efb 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -1642,7 +1642,7 @@ static void aspeed_minibmc_machine_ast1030_evb_class_init(ObjectClass *oc,
-     mc->init = aspeed_minibmc_machine_init;
-     amc->i2c_init = ast1030_evb_i2c_init;
-     mc->default_ram_size = 0;
--    amc->fmc_model = "sst25vf032b";
-+    amc->fmc_model = "w25q80bl";
-     amc->spi_model = "w25q256";
-     amc->num_cs = 2;
-     amc->macs_mask = 0;
+diff --git a/tests/qtest/aspeed_smc-test.c b/tests/qtest/aspeed_smc-test.c
+index 0171ecf4ed..30f997679c 100644
+--- a/tests/qtest/aspeed_smc-test.c
++++ b/tests/qtest/aspeed_smc-test.c
+@@ -737,21 +737,62 @@ static void test_ast2500_evb(TestData *data)
+     qtest_add_data_func("/ast2500/smc/read_status_reg",
+                         data, test_read_status_reg);
+ }
++
++static void test_ast2600_evb(TestData *data)
++{
++    int ret;
++    int fd;
++
++    fd = g_file_open_tmp("qtest.m25p80.mx66u51235f.XXXXXX",
++                         &data->tmp_path, NULL);
++    g_assert(fd >= 0);
++    ret = ftruncate(fd, 64 * 1024 * 1024);
++    g_assert(ret == 0);
++    close(fd);
++
++    data->s = qtest_initf("-machine ast2600-evb "
++                          "-drive file=%s,format=raw,if=mtd",
++                          data->tmp_path);
++
++    /* fmc cs0 with mx66u51235f flash */
++    data->flash_base = 0x20000000;
++    data->spi_base = 0x1E620000;
++    data->jedec_id = 0xc2253a;
++    data->cs = 0;
++    data->node = "/machine/soc/fmc/ssi.0/child[0]";
++    /* beyond 16MB */
++    data->page_addr = 0x14000 * FLASH_PAGE_SIZE;
++
++    qtest_add_data_func("/ast2600/smc/read_jedec", data, test_read_jedec);
++    qtest_add_data_func("/ast2600/smc/erase_sector", data, test_erase_sector);
++    qtest_add_data_func("/ast2600/smc/erase_all",  data, test_erase_all);
++    qtest_add_data_func("/ast2600/smc/write_page", data, test_write_page);
++    qtest_add_data_func("/ast2600/smc/read_page_mem",
++                        data, test_read_page_mem);
++    qtest_add_data_func("/ast2600/smc/write_page_mem",
++                        data, test_write_page_mem);
++    qtest_add_data_func("/ast2600/smc/read_status_reg",
++                        data, test_read_status_reg);
++}
+ int main(int argc, char **argv)
+ {
+     TestData palmetto_data;
+     TestData ast2500_evb_data;
++    TestData ast2600_evb_data;
+     int ret;
+ 
+     g_test_init(&argc, &argv, NULL);
+ 
+     test_palmetto_bmc(&palmetto_data);
+     test_ast2500_evb(&ast2500_evb_data);
++    test_ast2600_evb(&ast2600_evb_data);
+     ret = g_test_run();
+ 
+     qtest_quit(palmetto_data.s);
+     qtest_quit(ast2500_evb_data.s);
++    qtest_quit(ast2600_evb_data.s);
+     unlink(palmetto_data.tmp_path);
+     unlink(ast2500_evb_data.tmp_path);
++    unlink(ast2600_evb_data.tmp_path);
+     return ret;
+ }
 -- 
 2.34.1
 

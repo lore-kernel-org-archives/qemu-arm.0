@@ -1,116 +1,233 @@
-Received: by 2002:a17:505:18c3:b0:1be9:327d:8ee3 with SMTP id tt3csp892647njb;
-        Fri, 18 Oct 2024 08:29:43 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCW3vlGPprXCkDcoHqQe91GQi2KYdpfrWw/0A0lv8yksC1XLYiSGQLr1O/GGxAQTvxs83EGAjfIeylAdig==@linaro.org
-X-Received: by 2002:a05:6402:42c8:b0:5c9:6bd9:68db with SMTP id 4fb4d7f45d1cf-5ca0ac44297mr2158514a12.3.1729265383624;
-        Fri, 18 Oct 2024 08:29:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1729265383; cv=none;
+Received: by 2002:a17:505:18c3:b0:1be9:327d:8ee3 with SMTP id tt3csp2023137njb;
+        Sun, 20 Oct 2024 14:21:23 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVrpsS6kjWHk6ODHVxxzdVCzsJp3sIiosFcValUD5f8G6d2eo6orwkEgQtWWmUjrFiEgSjazc3QD00Stw==@linaro.org
+X-Google-Smtp-Source: AGHT+IEAhOlKBTvCvyX8GWggbu8xQFj3RSN+qtDopUlnAo6XIiofF09TBcQq8SMe0iOHroVC/XaE
+X-Received: by 2002:a05:620a:40d2:b0:7b1:44e8:f756 with SMTP id af79cd13be357-7b157b3fe33mr1165410085a.6.1729459283190;
+        Sun, 20 Oct 2024 14:21:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1729459283; cv=none;
         d=google.com; s=arc-20240605;
-        b=EdyFmRfhCxZZjEuB7U/6TfHC2CiN6PnbvpG19hMKqB01Lb4ny8hXwCTLeSjPTKfWJ0
-         A74KJAKATVQXRsIOo7/0Q9Vr4Zqvo2NIbhoEKjF0+9I600nKAopI6q+QDc/aYnDmraPv
-         ys/zcYDym+5ic6WIbU1wxWpOCMfhF1TKKd8IbsYstlFGfaiWG77pvUE0Mp0YrTLpJI/W
-         Kd66SmQS6byIDGC/mC8sKwXasv947g1YPLDAxHcUhz1NCzV/+fwl/mrZNuTR9J2Wof7s
-         jfIibnW01avx+ZArPFMuPzTurUlwGQ+W9klP6ztGYgi4uKCQoMAzN/wHBTdl+vtzuX/p
-         93BQ==
+        b=joQ2ABDP0wj8jnve55fcobJ3NE8X4nPsEzrUVd8feoLkA+nPcWMdAqiSOr6LN9lr4a
+         8Y687sItpfcxZnlgVnvSozHQQppMUX7/77/n8NH5kzdECN+cCPvgyugJjq4gMUGSWlDw
+         nQqghzVaaEfcp/HHs6IVqHvsX/ZUnR5iSeutnjETkOCTZREffezJ7eudidiHUmSL9Ol7
+         43wue6epH+30IP3K8162NpmD/aMmMQQerAUVy/u4UV5XYXiRyU2npEHnM0bgW9fQdF1R
+         C+6z0fjpnMlFfGtZ7NK1ucX0TTmdpD4d/JZ9SppgRg75z1DzgNBtEj6BOPmpZc7Xdhh4
+         0+Kg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=35TxFoBwE/Ru8ZV4fXJd7kbiQXfCKpRq6FMpSUnsZJg=;
-        fh=tkCuc/E3rZGlynKHdnv8xo0ZzhGe917CCMf/UnwIo5E=;
-        b=TU8zW0PNkswOJaojG+zwBBLRk3ik7YQtN5KTwre4Xru9+TgrLcAT2bMODCMXh9JjL3
-         jUOrFAT52fBf1r4ztrIshBcTLexlfCur8KR14Wzz7/QyjO7wj4kMqr6SMtzejbzNhKin
-         GZU7vuCY0L42NZJ6cGFaX1pqgDh77u/bJW0E9dmSziSxBcBsOoWVoR+ryOVcvhTz03uO
-         rH4+x3O5dm1fIcgzKQqSY8seVyn1lzZstW/17Ak/k/lVLQZMWVdjfWiNRuva9jXcOp3r
-         suWlNL9dqrIfr4+bEoCdLlkGgxim+a5BO9x003jxTRca6HZXjaYIRfaRe2BX3bnIDh6D
-         j2Hg==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=IAEcDPZ3CQ9oAuIMRzDL1U+GIthteurNbBFokihTWZE=;
+        fh=5siOicwbB24Y2C2As2hu7VI00ywwRbssKCkUvu7TzsE=;
+        b=kye6RfKJoUdOzovYcCbIVdNvmnRFAjokDo5JRBHPqYRsPzAOFruz3KRAnkn6IrD8R9
+         2vSiXamYWRDi5+e9A5XGXlTIPSrT1F2c5Xp6UDPetM2x9w/XGUPe4dieb3EJvlAMoABJ
+         AsHk2nmTCHEsSBm+UUMPjNgMy7b+gCGiIMuAtQLIZ339TuZ4X8OpXcZV6NHsyyp0Ts+8
+         1LnZzxUZuGAs3BS/ZdQWBQqRpmA+XL2dxL16/gDFSueXprEon2LBJv56ToG1scO0IVlb
+         5P6AT/MSJwKW6FD5CsCp6T+QtFKXXIGMggyly1cpXQZtB2J8D/AfeYX+rAjjL71n49V4
+         p1tw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ejQssNOS;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 4fb4d7f45d1cf-5ca0afbc4d0sor396625a12.0.2024.10.18.08.29.43
+       dkim=fail header.i=@gmail.com header.s=20230601 header.b=IERlEOoD;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dara=fail header.i=@linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id af79cd13be357-7b165a8b74fsi250015185a.531.2024.10.20.14.21.23
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Fri, 18 Oct 2024 08:29:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Sun, 20 Oct 2024 14:21:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ejQssNOS;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       dkim=fail header.i=@gmail.com header.s=20230601 header.b=IERlEOoD;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dara=fail header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1t2dMC-0000rh-27; Sun, 20 Oct 2024 17:21:00 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
+ id 1t2dMA-0000r1-Rb; Sun, 20 Oct 2024 17:20:58 -0400
+Received: from mail-pg1-x531.google.com ([2607:f8b0:4864:20::531])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
+ id 1t2dM8-0002Sq-Lk; Sun, 20 Oct 2024 17:20:58 -0400
+Received: by mail-pg1-x531.google.com with SMTP id
+ 41be03b00d2f7-656d8b346d2so2453405a12.2; 
+ Sun, 20 Oct 2024 14:20:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1729265383; x=1729870183; darn=linaro.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=35TxFoBwE/Ru8ZV4fXJd7kbiQXfCKpRq6FMpSUnsZJg=;
-        b=ejQssNOSMY25kT0bU+MEaV0sdHng25ui4oOl12qLFOi+bwoxTORSL/sFDZGJdHxMOq
-         pvpe3jNoCFFQmCNV6uPUDYn6/NYsuUSc1SSXlcVtK0AVhZ/li/56p8OwrwphWmSt+VQA
-         hKaP6DHT+i3gBrBLxSJWxRQIcm0dGzSZt7NiVCjA4nbL9Ynkjkm4nB1weMzIzBEB/OS5
-         yv4Zjt8xO5OfYaT2JeDrwpAEb1NCvauTbekPo1v4TPs/phwxP8H0wz0F922vnyzN5tpX
-         2RQo+5FJfU/E58VgTgBxq2PpHsbBXjg5RrHJcnB3c3FQjS/yVOZL2bxDUT1x/GE/4rAE
-         V7+A==
+ d=gmail.com; s=20230601; t=1729459254; x=1730064054; darn=nongnu.org;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:sender:from:to:cc:subject:date:message-id
+ :reply-to; bh=IAEcDPZ3CQ9oAuIMRzDL1U+GIthteurNbBFokihTWZE=;
+ b=IERlEOoDck8SILRLRRHnMsvwOZtwWsv9stXiVcdk/5fUP4TRrVnoPeQ8Vv23q59uQ8
+ pq5KwJXWioKlYkL5LPv2AymgB0QzipXaM6L8kPKJ17BpEJvqHjOKNTIs/wFScEXCPeaY
+ YZQfc986yIE5n8NoLr0JLDRKcKkHEggQvOD0vc2irFiJH8R1Lqm/wawsyjN9jbiC31/F
+ 2NN3rL9S1qRJG+GiASLLYIzUSqGavr0hR3MihT5DlnjXgJcKqFqwx2rlqQIyo7OfG/oV
+ YwE27XDPK/Nop2BUm44BqgKAopdMxJW+83d9gascyo+swVct1w7xy4LY7+12G7wVZaM2
+ 1LLg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1729265383; x=1729870183;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=35TxFoBwE/Ru8ZV4fXJd7kbiQXfCKpRq6FMpSUnsZJg=;
-        b=HkEwIkejh11ZD8wKYjykj/23I42mls4bP50I6bEkfh/L6zCIs3eOHSiuKwOhmiFb3T
-         pIo2n7P2Q+svuSwDeNlsldoJbTfInTXBowUlILWdlkQwvq81bS3BUipYAp+xM5tjd/8x
-         c+fHMM1fxv6pM9/eEP1mPfnl4iH3ktLYwkrzf3Oexz5UYBWIoD1P2n8Y5GUDzblcxg2D
-         sFviRtuwvGOoU5qIBRLaIUGMTsYR4eDKnoIHJP97/WWRZOQ+YuaHiqIKmNl7X9Thhhlx
-         K3A9I+xbOfv75uQRnBSWnQu6SIJFZV8wuPv6KQthAm30BcsboGLMZvOlgWWwQuOS6c5R
-         BIow==
-X-Forwarded-Encrypted: i=1; AJvYcCVbSaLrbPl8tBYmC9c/VWM9E+aBmQucU0DNN1mdUfY2YUokd8k/GUnfSt5Gy5E2hIKxZqbFnKacJ3MQAQ==@linaro.org
-X-Gm-Message-State: AOJu0YzhJuWQ7Z7+bOxxlaYFVe25ETtVfJ29QG6WOtNnqmXPP20l1CWu
-	P10MHdCCv1aK+ySI07tFwIm2357am82dSBhCuxSGFWrbI2FMTfPyf0Il1UWNMCNimsqTzFCHfys
-	Wju4rLc7tU8KQ36Qx4HqnIBAZRvwacDus8wFQIJpofl04ZoHva0g=
-X-Google-Smtp-Source: AGHT+IG2C1pcmNQERXK6oOc622D1AEjdZx696HcoljlYKND9OBPgEa6D6VS3+3TOsW+8HTGqTr7naSc2QtRU+b/1yfw=
-X-Received: by 2002:a05:6402:268e:b0:5c4:1437:4159 with SMTP id
- 4fb4d7f45d1cf-5ca0ae8055fmr2170619a12.28.1729265383049; Fri, 18 Oct 2024
- 08:29:43 -0700 (PDT)
+ d=1e100.net; s=20230601; t=1729459254; x=1730064054;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:sender:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=IAEcDPZ3CQ9oAuIMRzDL1U+GIthteurNbBFokihTWZE=;
+ b=T8zcnbG0jPDK+nzS0cbTR1Yyi6L0QB+PREynyKBOI4SnlMmgWp+Y6071YQljKjzYq8
+ hbEcq3xCQZz2PblscMjmSKPkLyaexB25/K7ySaql009Jvlqh8epLUyJlfs12NTepvntm
+ 4xbsWBbW1U2AxXNImI78DmPPVets/pvHapxoAi5Fv0V0c3viknlxQclMF+5COxXLLs+u
+ vOVxQKWsEsk+ALd7BA/r+j8WYKLINF3nmx9WDcZ9hPO5rW8OXRFqe6uzWgI7Ii4r4W9I
+ rcUdZcDeQBQjztE2y+dIzEX/EFx50UbF3qdyVVf3QRtEPxiGDDRlMM3+vZTe+drVFcHx
+ 2PxQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVXMFTrBiGP8v0MK/a3svaJDzh47d37kVxeVATXslkTOHyX7suXOXyHI52PaxtvCDeixT3mljtbD/s/iA==@nongnu.org,
+ AJvYcCWFEBXUUJQ3m+TPRrBjfSxR1AMYzYp3aMeP0DnHd4p8LAhnetMsWPwg4OvTEKxiwSj2F1SBqh58Hw==@nongnu.org,
+ AJvYcCWz5nh7TLwnI5tr3FmoV9wyTmCZDpZttUMu8mIA+F5vchPHWX91Ba8Zl5qZr3Seo/5yuV2xZmATPbUSyA==@nongnu.org
+X-Gm-Message-State: AOJu0Yy/5p4n6LgftiK7biC28jPLkw/ec1IDaZcg4AhNaLAK3Yyg77Cx
+ LvXCnGeOAz710+m0BP3X3LU/t68jekV7nbVn25n/JWPMeQ3QwcGt
+X-Received: by 2002:a17:90a:e392:b0:2e2:cd5e:7eef with SMTP id
+ 98e67ed59e1d1-2e5618d9edamr10877559a91.27.1729459253544; 
+ Sun, 20 Oct 2024 14:20:53 -0700 (PDT)
+Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
+ by smtp.gmail.com with ESMTPSA id
+ 98e67ed59e1d1-2e5ad4ed73fsm2000148a91.44.2024.10.20.14.20.51
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 20 Oct 2024 14:20:52 -0700 (PDT)
+Date: Sun, 20 Oct 2024 14:20:50 -0700
+From: Guenter Roeck <linux@roeck-us.net>
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongu.org,
+ qemu-s390x@nongnu.org, qemu-riscv@nongnu.org,
+ Nicholas Piggin <npiggin@gmail.com>, BALATON Zoltan <balaton@eik.bme.hu>
+Subject: Re: [PATCH v3 06/12] target/ppc: Split out helper_dbczl for 970
+Message-ID: <2ecab2a6-649b-4c24-a287-58b74c39b412@roeck-us.net>
+References: <20240719010707.1319675-1-richard.henderson@linaro.org>
+ <20240719010707.1319675-7-richard.henderson@linaro.org>
 MIME-Version: 1.0
-References: <20241008114302.4855-1-gankulkarni@os.amperecomputing.com>
-In-Reply-To: <20241008114302.4855-1-gankulkarni@os.amperecomputing.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 18 Oct 2024 16:29:32 +0100
-Message-ID: <CAFEAcA8pErj84CTzBJ-Vd94B4radu2Ta=oDyKV_xYMBNcotQmA@mail.gmail.com>
-Subject: Re: [PATCH v4] arm/kvm: add support for MTE
-To: Ganapatrao Kulkarni <gankulkarni@os.amperecomputing.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, richard.henderson@linaro.org, 
-	gustavo.romero@linaro.org, alex.bennee@linaro.org, cohuck@redhat.com, 
-	darren@os.amperecomputing.com
-Content-Type: text/plain; charset="UTF-8"
-X-TUID: NslFAiJzFn30
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240719010707.1319675-7-richard.henderson@linaro.org>
+Received-SPF: pass client-ip=2607:f8b0:4864:20::531;
+ envelope-from=groeck7@gmail.com; helo=mail-pg1-x531.google.com
+X-Spam_score_int: -15
+X-Spam_score: -1.6
+X-Spam_bar: -
+X-Spam_report: (-1.6 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_ENVFROM_END_DIGIT=0.25,
+ FREEMAIL_FORGED_FROMDOMAIN=0.001, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.17, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: +2CjxlFx/+iM
 
-On Tue, 8 Oct 2024 at 12:43, Ganapatrao Kulkarni
-<gankulkarni@os.amperecomputing.com> wrote:
->
-> From: Cornelia Huck <cohuck@redhat.com>
->
-> Extend the 'mte' property for the virt machine to cover KVM as
-> well. For KVM, we don't allocate tag memory, but instead enable
-> the capability.
->
-> If MTE has been enabled, we need to disable migration, as we do not
-> yet have a way to migrate the tags as well. Therefore, MTE will stay
-> off with KVM unless requested explicitly.
->
-> [gankulkarni: This patch is rework of commit b320e21c48
-> which broke TCG since it made the TCG -cpu max
-> report the presence of MTE to the guest even if the board hadn't
-> enabled MTE by wiring up the tag RAM. This meant that if the guest
-> then tried to use MTE QEMU would segfault accessing the
-> non-existent tag RAM.]
->
-> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
-> Reviewed-by: Gustavo Romero <gustavo.romero@linaro.org>
-> Signed-off-by: Ganapatrao Kulkarni <gankulkarni@os.amperecomputing.com>
+Hi,
 
+On Fri, Jul 19, 2024 at 11:07:01AM +1000, Richard Henderson wrote:
+> We can determine at translation time whether the insn is or
+> is not dbczl.  We must retain a runtime check against the
+> HID5 register, but we can move that to a separate function
+> that never affects other ppc models.
+> 
+> Reviewed-by: Nicholas Piggin <npiggin@gmail.com>
+> Reviewed-by: BALATON Zoltan <balaton@eik.bme.hu>
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 
+I see an odd failure when trying to boot ppc64 images in qemu v9.1.0 and
+v9.1.1.
 
-Applied to target-arm.next, thanks.
+Starting network: udhcpc: started, v1.36.1
+malloc(): corrupted top size
+Aborted
+/usr/share/udhcpc/default.script: line 41: can't create : nonexistent directory
 
--- PMM
+I bisected the problem to this patch; bisect log is attached.
+I also found that the problem has been fixed in mainline qemu. Bisect
+points to commit: f168808d7d10 ("accel/tcg: Add TCGCPUOps.tlb_fill_align")
+as the fix. I attached this bisect log as well.
+
+Reverting this patch isn't easy due to several follow-up commits. Applying
+commit f168808d7d10 plus several preceding commits on top of v9.1.1 seems
+to fix the problem. The commits I applied are
+
+da335fe12a5d include/exec/memop: Move get_alignment_bits from tcg.h
+c5809eee452b include/exec/memop: Rename get_alignment_bits
+e5b063e81fd2 include/exec/memop: Introduce memop_atomicity_bits
+f168808d7d10 accel/tcg: Add TCGCPUOps.tlb_fill_align
+
+Obviously I have no idea if this is even remotely correct, so please take
+this report as purely informational in case someone else observes a similar
+problem.
+
+Thanks,
+Guenter
+
+---
+Bug introduced:
+
+# bad: [fd1952d814da738ed107e05583b3e02ac11e88ff] Update version for v9.1.0 release
+# good: [c25df57ae8f9fe1c72eee2dab37d76d904ac382e] Update version for 9.0.0 release
+git bisect start 'v9.1.0' 'v9.0.0'
+# good: [2529ea2d561ea9fe359fb19ebdcfeb8b6cddd219] hw/acpi/ich9: Remove dead code related to 'acpi_memory_hotplug'
+git bisect good 2529ea2d561ea9fe359fb19ebdcfeb8b6cddd219
+# good: [76e375fc3c538bd6e4232314f693b56536a50b73] docs/qapidoc: add QMP highlighting to annotated qmp-example blocks
+git bisect good 76e375fc3c538bd6e4232314f693b56536a50b73
+# bad: [60d30cff8472c0bf05a40b0f55221fb4efb768e2] target/ppc: Move SPR indirect registers into PnvCore
+git bisect bad 60d30cff8472c0bf05a40b0f55221fb4efb768e2
+# bad: [6c635326425091e164b563a7ce96408ef74ff2ec] vfio/{iommufd,container}: Remove caps::aw_bits
+git bisect bad 6c635326425091e164b563a7ce96408ef74ff2ec
+# good: [23fa74974d8c96bc95cbecc0d4e2d90f984939f6] Merge tag 'pull-target-arm-20240718' of https://git.linaro.org/people/pmaydell/qemu-arm into staging
+git bisect good 23fa74974d8c96bc95cbecc0d4e2d90f984939f6
+# good: [c135d5eaafe7aa2533da663d8e5a34a424b71eb9] tests/tcg/aarch64: Fix test-mte.py
+git bisect good c135d5eaafe7aa2533da663d8e5a34a424b71eb9
+# good: [6af69d02706c821797802cfd56acdac13a7c9422] Merge tag 'nvme-next-pull-request' of https://gitlab.com/birkelund/qemu into staging
+git bisect good 6af69d02706c821797802cfd56acdac13a7c9422
+# bad: [71bce0e1fb1a866dde4a4b6016fc18b09f317338] Merge tag 'pull-tcg-20240723' of https://gitlab.com/rth7680/qemu into staging
+git bisect bad 71bce0e1fb1a866dde4a4b6016fc18b09f317338
+# bad: [62fe57c6d23fe8136d281f0e37ec8a9fab08b60a] target/ppc: Split out helper_dbczl for 970
+git bisect bad 62fe57c6d23fe8136d281f0e37ec8a9fab08b60a
+# good: [3b9991e35c08be7fd6b84090b2114ff1bfd44d3f] target/arm: Use set/clear_helper_retaddr in SVE and SME helpers
+git bisect good 3b9991e35c08be7fd6b84090b2114ff1bfd44d3f
+# good: [521a80d895ec8ef0200dcac9b9b19e60b0cc1d1a] target/ppc: Hoist dcbz_size out of dcbz_common
+git bisect good 521a80d895ec8ef0200dcac9b9b19e60b0cc1d1a
+# first bad commit: [62fe57c6d23fe8136d281f0e37ec8a9fab08b60a] target/ppc: Split out helper_dbczl for 970
+
+---
+Bug fixed:
+
+# pass: [72b0b80714066a435502b67cdb55a7868ba0487d] Merge tag 'for-upstream' of https://gitlab.com/bonzini/qemu into staging
+# fail: [fd1952d814da738ed107e05583b3e02ac11e88ff] Update version for v9.1.0 release
+git bisect start '--term-bad=pass' '--term-good=fail' 'HEAD' 'v9.1.0'
+# fail: [4ae7d11b70a840eec7aa27269093b15d04ebc84e] Merge tag 'pull-tcg-20240922' of https://gitlab.com/rth7680/qemu into staging
+git bisect fail 4ae7d11b70a840eec7aa27269093b15d04ebc84e
+# fail: [b5ab62b3c0050612c7f9b0b4baeb44ebab42775a] Merge tag 'for-upstream' of https://gitlab.com/bonzini/qemu into staging
+git bisect fail b5ab62b3c0050612c7f9b0b4baeb44ebab42775a
+# pass: [1bfb726112ea4fda07c988f08df32d1eebb9abec] ui/pixman: generalize shared_image_destroy
+git bisect pass 1bfb726112ea4fda07c988f08df32d1eebb9abec
+# fail: [7e3b6d8063f245d27eecce5aabe624b5785f2a77] Merge tag 'crypto-fixes-pull-request' of https://gitlab.com/berrange/qemu into staging
+git bisect fail 7e3b6d8063f245d27eecce5aabe624b5785f2a77
+# pass: [e530581ee06573fcf48c7f7a6c3f8ec6e5809243] target/arm: Fix alignment fault priority in get_phys_addr_lpae
+git bisect pass e530581ee06573fcf48c7f7a6c3f8ec6e5809243
+# pass: [795592fef7d5d66a67b95a7f45cc1a84883db6a8] accel/tcg: Use the alignment test in tlb_fill_align
+git bisect pass 795592fef7d5d66a67b95a7f45cc1a84883db6a8
+# fail: [9d08a70ddc08e9b6ecf870fd232531c78fe0b208] tests/tcg: Run test-proc-mappings.py on i386
+git bisect fail 9d08a70ddc08e9b6ecf870fd232531c78fe0b208
+# fail: [da335fe12a5da71a33d7afc2075a341f26213f53] include/exec/memop: Move get_alignment_bits from tcg.h
+git bisect fail da335fe12a5da71a33d7afc2075a341f26213f53
+# fail: [e5b063e81fd2b30aad1e9128238871c71b62a666] include/exec/memop: Introduce memop_atomicity_bits
+git bisect fail e5b063e81fd2b30aad1e9128238871c71b62a666
+# pass: [f168808d7d100ed96c52c4438c4ddb557bd086bf] accel/tcg: Add TCGCPUOps.tlb_fill_align
+git bisect pass f168808d7d100ed96c52c4438c4ddb557bd086bf
+# first pass commit: [f168808d7d100ed96c52c4438c4ddb557bd086bf] accel/tcg: Add TCGCPUOps.tlb_fill_align

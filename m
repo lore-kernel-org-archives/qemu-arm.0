@@ -1,114 +1,111 @@
-Received: by 2002:a17:505:18c3:b0:1be9:327d:8ee3 with SMTP id tt3csp2631203njb;
-        Mon, 21 Oct 2024 13:50:54 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWEBu5sniEwjhiLqRYaTsOokSDiYuAGCyU+Fa1vwz4cHoFbvphreHMkvGs6xruXKxpuBUfJvT6KIwdpcQ==@linaro.org
-X-Received: by 2002:a17:907:3f09:b0:a9a:8a4:e090 with SMTP id a640c23a62f3a-a9a69c8fcf9mr1259089266b.50.1729543854347;
-        Mon, 21 Oct 2024 13:50:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1729543854; cv=none;
+Received: by 2002:a17:505:18c3:b0:1be9:327d:8ee3 with SMTP id tt3csp2643956njb;
+        Mon, 21 Oct 2024 14:19:39 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCV+avvBo4HB6Z+XqtlOEPuFxyIO7WNuNtXE8MUzqF9ac0Sf6aq8mqxDtmIyp2QRYPhXevvsVA5+J6tfGQ==@linaro.org
+X-Received: by 2002:a17:907:9409:b0:a9a:80f9:d4e0 with SMTP id a640c23a62f3a-a9aace61e24mr32793766b.34.1729545579379;
+        Mon, 21 Oct 2024 14:19:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1729545579; cv=none;
         d=google.com; s=arc-20240605;
-        b=isXbg1apTWucw2uG8BWQq2vgJN4M1gVjZ4FkEqCJwmyMHdIYzVtN31eikFYZcRCtp0
-         1V9FUBRKXAVSaknUgtxa5kv6knHq5vMvlgMpBhxGaBYMYiSL3qCbQFegvRC9v7f5X8J7
-         MrK8iCxRBdpOkuSNBHM3NvdGkpdCr0/kdTe7jV3ueR4NXOcsI6yEkCAjBtcilhXWgca4
-         mPSY8Z7JR36h7Uj379GWC+ysOWzp4DsFgJ3yjD9EtEIvWWKS1UD5+ucyOAblHywb3Dct
-         HczR5tMqc2vtA1vCLz2/vSulGcIliAyL/jkbp3P6dpjvjHuI+JwDjJNBUKkWkrxKsgm+
-         c0MA==
+        b=OoWAV5rCRFKPS1kbqZ9tE820hyPfpn2FxNeXUzDg8L5nWx9IlPlbb1pQVv/f9aiVIJ
+         OKRdLU7om2rxZQ3Azfl2UATwCJWXRF5fpwvVBRPKyO9jXTJ5lAN2nA0JWDapXJiYtojj
+         HsnrpdGqx7mzkMi501XG1G/1z/A4V++F8YG+sp6BxjZk4QH0S8FxHM9648XCkvlQ9dep
+         SOku4DDHbww6PYO7ElUqjqR09PyJ9L2WZTbTHZoN0katF64+149mt2WeyDSm39yViaPi
+         5S8ec+9GpP3dRZUsd/Y5DqE6+nXtiCWy5hOaJgFM1bIa7sLDqlvIPmd6pkjdF8Fwp8N6
+         K9ug==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:dkim-signature;
-        bh=8q2NamfBIbVqpI4ZHSeAC88TgZJI2rdwW4uqz4TtG2Y=;
-        fh=eAI2DHGcbZmyo9zAV0vzI0HeX2EGNqJ9YcouePlH4K0=;
-        b=eaX4ikDFVnujrdWEn5nj+vNR2dJvLwHkUNTOgHo61dJ8uX6Ns+VparJ2c1X/zqRdQU
-         syobqE8LeW/8JPZO8P+FPof9Q42DgaQl58PTnk5fDbUK1dfIFxNJwt5cB/Lh1T7tk2KA
-         3KLDE2qushsjfte+LHO9YhThVIlxxE0eg8nAlgE3yZWHAEIIlpzd3GKMUJnz9+IOgpKG
-         r3YM03jy1jlGYhI5H2CmX9Ng5FaBfRS8yE6cRBfNtas7+YvwMcvBzhXeMAai/za5tx75
-         z4C3LSE9nzLTn/QzPKzcdp8CjJQ5ZMzI2QzPaX0nKIPMdnwAuvmYxBHyJ3Md2gHqPHqU
-         Y/bw==;
+        bh=QIMZAb/byfJflibw2Jv3nMWPbWdqrZztGsq+D4F/Hm4=;
+        fh=5XNoAyhFk2qQaG1H2jyy4XULmM9vzJcHg02VaR3tzbM=;
+        b=NPyvcKIjEauhOVTAdG35X3gJxonjo9NXYSRXV616rlpuLEKR5+rjep1Rq19XvqOAFx
+         djXU9bhUl3bM04xGVXNliY8Ug9FziwS/eR0g4Xyp/ueOwwEw3PM5fz8gsQYmv6MNq+RL
+         x030ixS7lKJq+JT4RY3WZB7xJdHGa/a9CEOq5MtNXDV3WQp91pBCWqfu9s3rp5TXgOl5
+         FqRC3RNQtkKUqtuLw/+zcRFdmId7N6IMrW/R0+hRJOGotiDAO6ImLfj1c9o4djKWt7hE
+         0FCTvqyLaRa8aWPAqK9+w9VMwYpb0p/UDaGYfuIq2AyCilxOHkvBjX5TrzOOmkNHNkd+
+         iRoA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@opnsrc.net header.s=google header.b=Zd6kzjoZ;
+       dkim=pass header.i=@opnsrc.net header.s=google header.b=L0+aAOy1;
        spf=pass (google.com: domain of salil.mehta@opnsrc.net designates 209.85.220.41 as permitted sender) smtp.mailfrom=salil.mehta@opnsrc.net;
        dara=neutral header.i=@linaro.org
 Return-Path: <salil.mehta@opnsrc.net>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id a640c23a62f3a-a9aae67197fsor2879066b.0.2024.10.21.13.50.54
+        by mx.google.com with SMTPS id a640c23a62f3a-a9a91299701sor140915466b.9.2024.10.21.14.19.39
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 21 Oct 2024 13:50:54 -0700 (PDT)
+        Mon, 21 Oct 2024 14:19:39 -0700 (PDT)
 Received-SPF: pass (google.com: domain of salil.mehta@opnsrc.net designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@opnsrc.net header.s=google header.b=Zd6kzjoZ;
+       dkim=pass header.i=@opnsrc.net header.s=google header.b=L0+aAOy1;
        spf=pass (google.com: domain of salil.mehta@opnsrc.net designates 209.85.220.41 as permitted sender) smtp.mailfrom=salil.mehta@opnsrc.net;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=opnsrc.net; s=google; t=1729543854; x=1730148654; darn=linaro.org;
+        d=opnsrc.net; s=google; t=1729545579; x=1730150379; darn=linaro.org;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=8q2NamfBIbVqpI4ZHSeAC88TgZJI2rdwW4uqz4TtG2Y=;
-        b=Zd6kzjoZ490riwBqiKWRtjvnmtw9VttvTkp7junQt0z+PDKmypLT6miFkB1mMFb0p6
-         JDVnAFLcAMU41GGyTbDQakH7W3IfZp+ueRcpI9JFQEpD4tWOqlet+yuEGC2fwcodBjdV
-         NG9N4BGiV4r6dmNdDkCV/VxnO66M2Sukx81Lyc1o3HWR669dDr45cOhu5Ip9zfiGGlE3
-         I7zEpXLXdjLI/jz6NYBJYBPaYtyu6FJTe9wv4ux3JAwF6vZX2n4sF54+AEvta9QjTdfe
-         vWC4DvcFMT5BFzx3ZhmMVMBpIjgrmx7ahMXy6yvhG9uwvIU53OwNhbwXESSaYWNg0/M3
-         dyig==
+        bh=QIMZAb/byfJflibw2Jv3nMWPbWdqrZztGsq+D4F/Hm4=;
+        b=L0+aAOy1+Tot77xc/qJ0ny9V33bCms2txKPm62ZsQARC7wZBGZxDcXRnNKqU/byHU3
+         9FK52erkXpNkRXNEHcP9AHVnrMsXdB1yAbtsh5Uji0nNr4MOm68VK/PJ+yp0m8IDHnZI
+         xNOWxReMxvpRljLA4FTDz84HP49oIWMjGkUunw+kW2ooI8iUjfl51rTxjxdeXLmPWUIe
+         KQjkQ7tebV5oK9ZH/XA1fEmksp0KiuHEbyoxDSwhiTYi1V+v3YT9qvfsiV8BlvlsYHQD
+         spSydzp1sT5synXPI1dBWJFR2a4Vx3tHoUHHG8Y6ynxfJkCz9ok9jwQRNJ06kmgQdl3w
+         gGXA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1729543854; x=1730148654;
+        d=1e100.net; s=20230601; t=1729545579; x=1730150379;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=8q2NamfBIbVqpI4ZHSeAC88TgZJI2rdwW4uqz4TtG2Y=;
-        b=V953SIuH91tkSIbp+GXI1xOEwhmLsZiF+4jFWujhZGA4s6h3Q3h76b1O5lVqP7zd9Z
-         YPrX9xXPYCN6epnaP9Hg1gaCdyKuX/7LNOnDFmQL3lQ8MvU7ZfhSF4ngM1PIZgRgfR9l
-         imFy0L2Beu2jrsYjknAGykZe22dtjY59qeAE/uYqvBENFUlexAc53UgahqxQXj5MQHWb
-         KzPOspp5r7zC8+jhdIgDibwVtp//9w+ZQcRkkPhtNORj+ZFtmBfBwtZOl9dGhULGYcio
-         wYvME4SoimsedxpMrdxYM2//t023pZpstRqLDzdrPmG2pHP9EZAbWU+aEryAzApOAwyX
-         YKMQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVT5543o/euwFKLfp5h4XGiqJZJOJbHmUfrTJfZcQHEW30pZRqIvI2ng/LN1GxrNri1QWCGpyNC93urxA==@linaro.org
-X-Gm-Message-State: AOJu0YytdekduZrD0wtOtSz9Y5d0ZYX3VTUSpE117CPjk5V6IfFVLCSw
-	Io0hMyca/Q4o6HQXqgXhiApr0zsl1PNsUfEsBzYvLLGCCjjMAFu3L5DP3BSVY0FEE8qEQTqGmg4
-	3oYEn/ovN/Cvzt5qkjSkcLUqPjHegMJ0nlNVKRw==
-X-Google-Smtp-Source: AGHT+IHr0iqSqfHEWtpaZvJ30Gd68ushob7e0bCwNr5L1+5A5J9XwHZXGVZl/qpJmmRXGCQkxb7j1+ra/1kQDVUeVu0=
-X-Received: by 2002:a17:907:7b85:b0:a9a:b70:2a7c with SMTP id
- a640c23a62f3a-a9a69a7627fmr1404435766b.25.1729543853516; Mon, 21 Oct 2024
- 13:50:53 -0700 (PDT)
+        bh=QIMZAb/byfJflibw2Jv3nMWPbWdqrZztGsq+D4F/Hm4=;
+        b=xBkF8MAiDnUUflULUGVmEmyFm+hyjT1lw9XUr7eT4cGMhSNeHCGa/5IKR+itUh9woA
+         NJGGDR2miMDo5V/RxAcX/TvoyZt0SuoSCuJJnh193pc08JiclAre4s2DU8ll+5XxGI+Q
+         3uR7LZoCqdq0T4MXn7CbjOBuqbmMObkX5MthUvWs9ZwfVSamyrJY9X6SewN7y9Wr+fV8
+         u7rbmk1+MkMCw0avWzNqJTRC2Q+vvCCPZRraDwif406K+uTGH+y3/ZMPVBLluaMIcJ7u
+         vKptEhdE2wSQq7vK/CVagL88fL6OrdqmT8Jf1Z08LiqmUzaNGl6NZk2CO/fB0ee1tp2A
+         UAgA==
+X-Forwarded-Encrypted: i=1; AJvYcCXpr0wLKONh50M3H82GMlhuXJxXYIuropT58BHfkYUd81wCYfkRttOSERovCtZoaW7aXzRcLpuSOZy5Cw==@linaro.org
+X-Gm-Message-State: AOJu0YwUvU2lH0umGbrEkjDS/Qvi9O0HOmQR9C+jmTs3aiHAHS123evs
+	XXWnZC7E7Zoymug5MFPhnaOekZ906NDLUQoTmf4p5Tc8e8q4c8lTw84vGNA7PMDxUcQuUkSfJw3
+	KnnlWfCVfdp9vj/CgjB6uSl/xU2kHwRXBECYftg==
+X-Google-Smtp-Source: AGHT+IFY1I3HIpDE1tQJkZlaIVr67YNWpX50gMkb7rkHqCKQWpKscv+JuFiKdjS9pWLMQOvyS5iozagQfUGO3oZFPxQ=
+X-Received: by 2002:a17:906:c151:b0:a9a:5004:cecf with SMTP id
+ a640c23a62f3a-a9aace0fa68mr30860966b.9.1729545578527; Mon, 21 Oct 2024
+ 14:19:38 -0700 (PDT)
 MIME-Version: 1.0
 References: <20241014192205.253479-1-salil.mehta@huawei.com>
- <20241014192205.253479-2-salil.mehta@huawei.com> <2d4a0d78-f3cc-4644-a9ea-d02114c242b8@linaro.org>
-In-Reply-To: <2d4a0d78-f3cc-4644-a9ea-d02114c242b8@linaro.org>
+ <20241014192205.253479-2-salil.mehta@huawei.com> <305d1466-3505-4ef4-ade6-efa30978a477@redhat.com>
+In-Reply-To: <305d1466-3505-4ef4-ade6-efa30978a477@redhat.com>
 From: Salil Mehta <salil.mehta@opnsrc.net>
-Date: Mon, 21 Oct 2024 21:50:41 +0100
-Message-ID: <CAJ7pxeZuH+ZDAy09CUCxt3toNKF0z=VW8VZnQNjzDVKXNg1k5Q@mail.gmail.com>
+Date: Mon, 21 Oct 2024 22:19:26 +0100
+Message-ID: <CAJ7pxeYqLfvFUUr_BVNuXF4-i0DrD3xpGTq3ZF-G-62=fupnjQ@mail.gmail.com>
 Subject: Re: [PATCH V1 1/4] hw/acpi: Initialize ACPI Hotplug CPU Status with
  Support for vCPU `Persistence`
-To: Gustavo Romero <gustavo.romero@linaro.org>
+To: Gavin Shan <gshan@redhat.com>
 Cc: Salil Mehta <salil.mehta@huawei.com>, qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
 	mst@redhat.com, maz@kernel.org, jean-philippe@linaro.org, 
 	jonathan.cameron@huawei.com, lpieralisi@kernel.org, peter.maydell@linaro.org, 
 	richard.henderson@linaro.org, imammedo@redhat.com, andrew.jones@linux.dev, 
 	david@redhat.com, philmd@linaro.org, eric.auger@redhat.com, will@kernel.org, 
 	ardb@kernel.org, oliver.upton@linux.dev, pbonzini@redhat.com, 
-	gshan@redhat.com, rafael@kernel.org, borntraeger@linux.ibm.com, 
-	alex.bennee@linaro.org, npiggin@gmail.com, harshpb@linux.ibm.com, 
-	linux@armlinux.org.uk, darren@os.amperecomputing.com, 
-	ilkka@os.amperecomputing.com, vishnu@os.amperecomputing.com, 
-	karl.heubaum@oracle.com, miguel.luis@oracle.com, zhukeqian1@huawei.com, 
-	wangxiongfeng2@huawei.com, wangyanan55@huawei.com, jiakernel2@gmail.com, 
-	maobibo@loongson.cn, lixianglai@loongson.cn, shahuang@redhat.com, 
-	zhao1.liu@intel.com, linuxarm@huawei.com
-Content-Type: multipart/alternative; boundary="000000000000034382062502cf65"
-X-TUID: kIKj2jP3vLb5
+	rafael@kernel.org, borntraeger@linux.ibm.com, alex.bennee@linaro.org, 
+	npiggin@gmail.com, harshpb@linux.ibm.com, linux@armlinux.org.uk, 
+	darren@os.amperecomputing.com, ilkka@os.amperecomputing.com, 
+	vishnu@os.amperecomputing.com, karl.heubaum@oracle.com, 
+	miguel.luis@oracle.com, zhukeqian1@huawei.com, wangxiongfeng2@huawei.com, 
+	wangyanan55@huawei.com, jiakernel2@gmail.com, maobibo@loongson.cn, 
+	lixianglai@loongson.cn, shahuang@redhat.com, zhao1.liu@intel.com, 
+	linuxarm@huawei.com, gustavo.romero@linaro.org
+Content-Type: multipart/alternative; boundary="000000000000d4d91a0625033579"
+X-TUID: SyljSedcTSvC
 
---000000000000034382062502cf65
+--000000000000d4d91a0625033579
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-HI Gustavo,
+Hi Gavin,
 
-On Wed, Oct 16, 2024 at 10:01=E2=80=AFPM Gustavo Romero <gustavo.romero@lin=
-aro.org>
-wrote:
+On Thu, Oct 17, 2024 at 6:27=E2=80=AFAM Gavin Shan <gshan@redhat.com> wrote=
+:
 
-> Hi Salil,
->
-> On 10/14/24 16:22, Salil Mehta wrote:
+> On 10/15/24 5:22 AM, Salil Mehta wrote:
 > > Certain CPU architecture specifications [1][2][3] prohibit changes to C=
 PU
 > > presence after the kernel has booted. This limitation exists because
@@ -143,18 +140,6 @@ to
 > value. Refer
 > > to the patch-set implelenting vCPU hotplug support for ARM for more
 > details on
->
-> nit: implementation
->
-
-Thanks
-
-
->
->
-> Cheers,
-> Gustavo
->
 > > its usage.
 > >
 > > References:
@@ -194,6 +179,49 @@ PU_Hotplug_-__ii0iNb3.pdf
 > >   #endif
 > >       DEFINE_PROP_END_OF_LIST(),
 > >   };
+>
+> Would the property be consistent on all CPUs? I mean it's invalid for thi=
+s
+> property to be true on the first CPU while it's false on other CPUs. If m=
+y
+> understanding is correct, this property would be part of MachineState
+> instead
+> of CPUState, and it's not configurable. Is there a particular reason why
+> the
+> property should be tied with CPUState and configurable?
+>
+
+
+Yes, it might make more sense to keep it at the machine level or configured
+via firmware.
+
+It might not look very obvious but the idea of keeping ACPI persistence at
+CPUState level was to extend this feature and have some group of vCPUs to b=
+e
+hot pluggable while others could be forced to be non-hotpluggable.  This
+could be useful if in future hot pluggability is extended to
+per-die/per-numa
+level. I also removed the 'CPUState::disabled' flag which was more of an
+architecture specific thing.
+
+
+
+> Besides, the property name "acpi-persistent" isn't indicative enough. CPU
+> objects can be described through ACPI table or device tree node. So a mor=
+e
+> generic property name may be needed, for example "always_present"? If we
+> need move this property from CPUState to MachineStaste or MachineClass,
+> the name would be "cpu_always_present" or something like that.
+>
+
+This property is more related to the persistence of the vCPU state at
+the ACPI
+level. Therefore, I changed the name from 'always_present' which I used in
+one
+of the preliminary prototype presented at the KVM Forum 2023.
+
+
+>
 > > diff --git a/hw/acpi/cpu.c b/hw/acpi/cpu.c
 > > index 5cb60ca8bc..083c4010c2 100644
 > > --- a/hw/acpi/cpu.c
@@ -256,6 +284,19 @@ I
 > >       }
 > >       memory_region_init_io(&state->ctrl_reg, owner, &cpu_hotplug_ops,
 > state,
+>
+> The code is already self-explaining and the comments explaining how the
+> property
+> "acpi-persistent" is handled seems a bit duplicate. If you agree, lets
+> make comments
+> short and concise.
+>
+
+
+We can definitely make it more succinct
+
+
+>
 > > diff --git a/include/hw/acpi/cpu.h b/include/hw/acpi/cpu.h
 > > index 32654dc274..bd3f9973c9 100644
 > > --- a/include/hw/acpi/cpu.h
@@ -339,24 +380,37 @@ nd
 > > +     */
 > > +    bool acpi_persistent;
 > > +
+>
+> The comments can be short and concise either. Reader can refer to the
+> commit log for all the details.
+>
+
+Yes, we can
+
+thanks
+
+
+>
 > >       /* TODO Move common fields from CPUArchState here. */
 > >       int cpu_index;
 > >       int cluster_index;
 >
+> Thanks,
+> Gavin
+>
 >
 
---000000000000034382062502cf65
+--000000000000d4d91a0625033579
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-<div dir=3D"ltr"><div dir=3D"ltr">HI Gustavo,</div><br><div class=3D"gmail_=
-quote"><div dir=3D"ltr" class=3D"gmail_attr">On Wed, Oct 16, 2024 at 10:01=
-=E2=80=AFPM Gustavo Romero &lt;<a href=3D"mailto:gustavo.romero@linaro.org"=
->gustavo.romero@linaro.org</a>&gt; wrote:<br></div><blockquote class=3D"gma=
-il_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,2=
-04,204);padding-left:1ex">Hi Salil,<br>
-<br>
-On 10/14/24 16:22, Salil Mehta wrote:<br>
+<div dir=3D"ltr"><div dir=3D"ltr"><div dir=3D"ltr"><div dir=3D"ltr">Hi Gavi=
+n,<br></div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_=
+attr">On Thu, Oct 17, 2024 at 6:27=E2=80=AFAM Gavin Shan &lt;<a href=3D"mai=
+lto:gshan@redhat.com">gshan@redhat.com</a>&gt; wrote:<br></div><blockquote =
+class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px sol=
+id rgb(204,204,204);padding-left:1ex">On 10/15/24 5:22 AM, Salil Mehta wrot=
+e:<br>
 &gt; Certain CPU architecture specifications [1][2][3] prohibit changes to =
 CPU<br>
 &gt; presence after the kernel has booted. This limitation exists because m=
@@ -391,15 +445,6 @@ uiring<br>
 ue. Refer<br>
 &gt; to the patch-set implelenting vCPU hotplug support for ARM for more de=
 tails on<br>
-<br>
-nit: implementation<br></blockquote><div><br></div><div>Thanks</div><div>=
-=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0=
-.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">
-<br>
-<br>
-Cheers,<br>
-Gustavo<br>
-<br>
 &gt; its usage.<br>
 &gt; <br>
 &gt; References:<br>
@@ -452,6 +497,43 @@ e, memory, TYPE_MEMORY_REGION,<br>
 &gt;=C2=A0 =C2=A0#endif<br>
 &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0DEFINE_PROP_END_OF_LIST(),<br>
 &gt;=C2=A0 =C2=A0};<br>
+<br>
+Would the property be consistent on all CPUs? I mean it&#39;s invalid for t=
+his<br>
+property to be true on the first CPU while it&#39;s false on other CPUs. If=
+ my<br>
+understanding is correct, this property would be part of MachineState inste=
+ad<br>
+of CPUState, and it&#39;s not configurable. Is there a particular reason wh=
+y the<br>
+property should be tied with CPUState and configurable?<br></blockquote><di=
+v><br></div><div><br></div><div>Yes, it might make more sense to keep it at=
+ the machine level or configured</div><div>via firmware.=C2=A0</div><div><b=
+r></div><div>It might not look very obvious but the idea of keeping ACPI pe=
+rsistence at=C2=A0</div><div>CPUState level was to extend this feature and =
+have some group of vCPUs to be</div><div>hot pluggable=C2=A0while others co=
+uld be forced to be non-hotpluggable.=C2=A0 This</div><div>could be useful =
+if in future hot pluggability=C2=A0is extended to per-die/per-numa</div><di=
+v>level. I also removed the &#39;CPUState::disabled&#39; flag which was mor=
+e of an=C2=A0</div><div>architecture specific thing.</div><div><br></div><d=
+iv><br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px =
+0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">
+<br>
+Besides, the property name &quot;acpi-persistent&quot; isn&#39;t indicative=
+ enough. CPU<br>
+objects can be described through ACPI table or device tree node. So a more<=
+br>
+generic property name may be needed, for example &quot;always_present&quot;=
+? If we<br>
+need move this property from CPUState to MachineStaste or MachineClass,<br>
+the name would be &quot;cpu_always_present&quot; or something like that.<br=
+></blockquote><div><br></div><div>This property is more related to the pers=
+istence of the vCPU state at the=C2=A0ACPI</div><div>level. Therefore, I ch=
+anged the name from &#39;always_present&#39; which I used in one</div><div>=
+of the preliminary prototype presented at the KVM Forum 2023.=C2=A0</div><d=
+iv>=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0p=
+x 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">
+<br>
 &gt; diff --git a/hw/acpi/cpu.c b/hw/acpi/cpu.c<br>
 &gt; index 5cb60ca8bc..083c4010c2 100644<br>
 &gt; --- a/hw/acpi/cpu.c<br>
@@ -526,6 +608,16 @@ id_list-&gt;cpus[i].arch_id;<br>
 &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0}<br>
 &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0memory_region_init_io(&amp;state-&gt;ctrl_re=
 g, owner, &amp;cpu_hotplug_ops, state,<br>
+<br>
+The code is already self-explaining and the comments explaining how the pro=
+perty<br>
+&quot;acpi-persistent&quot; is handled seems a bit duplicate. If you agree,=
+ lets make comments<br>
+short and concise.<br></blockquote><div><br></div><div><br></div><div>We ca=
+n definitely make it more succinct</div><div>=C2=A0</div><blockquote class=
+=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rg=
+b(204,204,204);padding-left:1ex">
+<br>
 &gt; diff --git a/include/hw/acpi/cpu.h b/include/hw/acpi/cpu.h<br>
 &gt; index 32654dc274..bd3f9973c9 100644<br>
 &gt; --- a/include/hw/acpi/cpu.h<br>
@@ -611,11 +703,21 @@ A.PRES=3DTrue` and<br>
 &gt; +=C2=A0 =C2=A0 =C2=A0*/<br>
 &gt; +=C2=A0 =C2=A0 bool acpi_persistent;<br>
 &gt; +<br>
+<br>
+The comments can be short and concise either. Reader can refer to the<br>
+commit log for all the details.<br></blockquote><div><br></div><div>Yes, we=
+ can</div><div><br></div><div>thanks</div><div>=C2=A0</div><blockquote clas=
+s=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid r=
+gb(204,204,204);padding-left:1ex">
+<br>
 &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0/* TODO Move common fields from CPUArchState=
  here. */<br>
 &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0int cpu_index;<br>
 &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0int cluster_index;<br>
 <br>
-</blockquote></div></div>
+Thanks,<br>
+Gavin<br>
+<br>
+</blockquote></div></div></div></div>
 
---000000000000034382062502cf65--
+--000000000000d4d91a0625033579--

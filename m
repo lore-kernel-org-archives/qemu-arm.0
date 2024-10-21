@@ -1,184 +1,230 @@
-Received: by 2002:a17:505:18c3:b0:1be9:327d:8ee3 with SMTP id tt3csp2174557njb;
-        Sun, 20 Oct 2024 22:58:24 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWY3VlqrB2b93gK4uFfW7jeGtazyBUPGzVjXfDpjgWZ1UC+bZcYMJIBMzQeCHuYHlIf3gF8caenLIdGNA==@linaro.org
-X-Google-Smtp-Source: AGHT+IGMDr7UiHGtUKsYcrLtYuIBEs4lndijz11gSWMLbKSrapUSL4QtEFtYZUhNY++Gg9iNhG6K
-X-Received: by 2002:ac8:5d03:0:b0:460:8ab1:d1dc with SMTP id d75a77b69052e-460aeceec24mr144562321cf.1.1729490303920;
-        Sun, 20 Oct 2024 22:58:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1729490303; cv=none;
+Received: by 2002:a17:505:18c3:b0:1be9:327d:8ee3 with SMTP id tt3csp2175795njb;
+        Sun, 20 Oct 2024 23:01:34 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWfURw9xOD7VsE74KZjogvWkrvku1NfEEn08TMJNLGEsOl4N3PwG5jMNcWamPhgTtiLrWQA6dDar8b9hA==@linaro.org
+X-Google-Smtp-Source: AGHT+IH6EYSFQCUkP9tgmTsbwyEL6ZYlfmkMqpAhHGzTx900q4O7YyqGRBH+Mpms/uC9c4zykffK
+X-Received: by 2002:a05:6214:54c7:b0:6cc:2c93:b894 with SMTP id 6a1803df08f44-6cde164a9eamr147202506d6.45.1729490494014;
+        Sun, 20 Oct 2024 23:01:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1729490493; cv=none;
         d=google.com; s=arc-20240605;
-        b=TQOB7MhfDw/h0ld611y6hfZVZfNzfp5uQ0/8ZaAENSCds8fL/7IGdI+0/tHnpAJ9Iu
-         LK0LTLc1Ib/bnsyM6e2xr8kyZr2c+AEheGq1yfZa8t55nOT+Pf8ZsDptvDkSH6G0N8k8
-         BxZPrJLKtcuPpurWTsR/fPd6cUFf1z7KEwRUphNY5JYf2fJsRraccznnQECPLsteTR9+
-         GYecytg4vpEoa3vgnU0P2W3pNvucv1bH/8rKjYGnPpH38WjDeFdNRownXZHRFGOJSA4V
-         mRyV/+XOZ0hwig68nJLaqzYPqLNoePKIqZBL09kpx9hJRPBTpcoPK+aVT5RmyrAMvyRt
-         wYUg==
+        b=DEnRNmMhw3X/cfYO3YQRErS937yl0QMfGmgzxYZWODieI7TZF9Uhzb+isSgUyOKT6i
+         jugO+uPz/pUYvsaQ/dTv53LnzbDP4n0tFfqqTDUKIvpqd5Ca+MqsI23CN4qprcA9JLWW
+         pcNeYzfdXAMecropcCSKjhVrnKgLsibmNb/+NNaUNruPwBsmTp7zzcN80h4PCpjI0fzJ
+         FhHtRtcel0qKTscN26WfSGReI/s4sWpvqPwky4UDw8PvnnJgSYRNw6lu4EdYwIgLWiKb
+         x42lB9Y+Fl0LMnKgYDMibocIByg2n3mLKu3Xl0Aptlr5w1qItQJ5Dl3wbTlEtm5Zrkqh
+         5KRw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id;
-        bh=ZJYBiVZapxI0/LkuNNpqlVNcQNFGzgfX994vIBW+/Qo=;
-        fh=eN7lZ9heibeUB6u5SzBPQic8EU7Yz3B8TtcMbhjB3Lg=;
-        b=Pje3zNKMmszMKZmQm7UyfhnEj3mmJGMp57BtsqgfG6CXCWWKqNotkjtWV51uRe25++
-         O7gRju5GwsgIfoxaei1JjBrkPRsy7aXVyy5Y2Q+4dFb0YxM5oMJEWkIPli1bZQGfed5v
-         ki3gmXmk9cPezr5O498rT5n4vpylsfZmhJ4W3j1eUoXn6t5b/XE0xM4zg27ukqvq6qCU
-         IdbobaqRDPBrPSOV1oCI8LpS7+TjD49MoFDmi1sQPRmLYy82xBG5AmWowz0Z7Wlw0G9y
-         x/LDSKUcDLKJdIkraBy69ogW+bbDdh3pfD8g9T66ZE+cJez0x/JiUO7F58xu5WtBjDMc
-         4W4w==;
+        h=content-transfer-encoding:content-language:in-reply-to:autocrypt
+         :from:references:cc:to:subject:user-agent:mime-version:date
+         :message-id:dkim-signature;
+        bh=n9FGRL7g4a5XoyEQL8rvQTjKEocxsLblIQiJB9fxyIU=;
+        fh=lR5Zr0K0FmF+mQUq2KnyFzx84+ltzkqIw+Pxqf8I6aY=;
+        b=fE+wnwoM8b6O1YhDt9cOafruPy6cBKaMYUwjIp5mY6e2Bm/vyFZpB4yYKXSLyCfo0c
+         IlMk18j2O/QXIkoI4VXuFnW3nu1yGKlvKzEaXSl+s/Mx1sVbAGA8eAxHLnlax47ROCTv
+         +yCp2NSgXgFa3aXRVnmM5auv0y4vnnvCh0+d/QWpBF4j2JT4nAwvLmZ5MG/sIdbNVKJr
+         G8hyS4+Z+a6iKjrOVM9bfQ3IQoKVeFmKLf3WvgOejRQmpORi2SyINI6oh4h7bCSFNk1V
+         gVUudjkQvPYUQ6vSgp+2AabP8RkAnCVWmVB1sr5ud8WStQjnY5iwsLyRZSY1zbWzV7OA
+         zPMw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-460d3b34cb8si34819161cf.62.2024.10.20.22.58.23
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Ssgf7D1M;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <thuth@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6ce009ceac5si31794726d6.375.2024.10.20.23.01.33
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 20 Oct 2024 22:58:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 20 Oct 2024 23:01:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1t2lQe-0000sm-I9; Mon, 21 Oct 2024 01:58:08 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=cGEO=RR=kaod.org=clg@ozlabs.org>)
- id 1t2lQZ-0000lm-DH; Mon, 21 Oct 2024 01:58:04 -0400
-Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=cGEO=RR=kaod.org=clg@ozlabs.org>)
- id 1t2lQW-0005IF-I5; Mon, 21 Oct 2024 01:58:02 -0400
-Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4XX4NL3ksGz4wyh;
- Mon, 21 Oct 2024 16:57:54 +1100 (AEDT)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits))
- (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4XX4NH4bvZz4wc1;
- Mon, 21 Oct 2024 16:57:51 +1100 (AEDT)
-Message-ID: <09e1241f-2d7b-4762-813b-dd99d5005263@kaod.org>
-Date: Mon, 21 Oct 2024 07:57:50 +0200
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Ssgf7D1M;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1729490493;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+	bh=n9FGRL7g4a5XoyEQL8rvQTjKEocxsLblIQiJB9fxyIU=;
+	b=Ssgf7D1M8GrQVDYF4V2ghXOLxQp/lPrX4K630TymVBesUbD+DHyGVF/fsMQzCcyAQgQ/No
+	dS+8QDOl8tOguJDDsncIr0jgIleu2cDZFVf9qqciUS2EZznFigg8MHURDcq6uZK2Lh+uP7
+	HGyKVajJAE6pP9ksfCojHJcOjuaOzvo=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-12-3Zk8LDZ8NFeKthLatxT51w-1; Mon, 21 Oct 2024 02:01:32 -0400
+X-MC-Unique: 3Zk8LDZ8NFeKthLatxT51w-1
+Received: by mail-wr1-f71.google.com with SMTP id ffacd0b85a97d-37d504759d0so2515425f8f.0
+        for <alex.bennee@linaro.org>; Sun, 20 Oct 2024 23:01:32 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1729490491; x=1730095291;
+        h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+         :from:references:cc:to:subject:user-agent:mime-version:date
+         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=n9FGRL7g4a5XoyEQL8rvQTjKEocxsLblIQiJB9fxyIU=;
+        b=liZbrC1fkYkuwtLk9zm5H22sCDes2NWEnjVWLUfSuyot24cYDlvxmZvIefvdA9T/s+
+         FIZ2XD0LE/4osMBBlecH9mgtf8MNM7vVa4IMQpPZEeI2Xp8NIQqVY0FOzTqB4ywNpw3D
+         Ex2y32UknACZev3YOfU0GNWqRSGRlzPZeP27hYxNNMQ5amuaGN+UfXVUwIibyVTih+/t
+         APlCz0p05uVML6xxmtoXB4JPoC/AglnRnhUOpSutt3dfxWDclEPzf1FO+sEgko66Onq4
+         BO1KtGYq9ICsrycbHDyCXlrWVOdMuQ/jcDMF0BNXaNXBgZH7n6EMXURMfbrl3/d1H8Aw
+         GflA==
+X-Forwarded-Encrypted: i=1; AJvYcCX7941fEG4tXinZkksOU2udqyq96WrSHZf93AeH+1MLjWeB73I86itrz5KOCYWsOX/AK3AGCQX4+dMLNQ==@linaro.org
+X-Gm-Message-State: AOJu0YxqKMXD3cyKelXHptW6NAOq17OoSKDbdJTDuMOTD62kG7lYmwWH
+	N31Yr+sUTeAxDJS/MKPhC3pHaTVpNCeSIjLyJFQgTXDlm7QoVRlEdp7vTPryuK2CPuNZ5TYR5aQ
+	8Ybab0xlGxc1PQxmZHPR2jTcjcrhWv/CZeMatelsuPBlJW/RxhwalKg==
+X-Received: by 2002:adf:f9d0:0:b0:37c:cfa4:d998 with SMTP id ffacd0b85a97d-37eb4768898mr8690019f8f.49.1729490491030;
+        Sun, 20 Oct 2024 23:01:31 -0700 (PDT)
+X-Received: by 2002:adf:f9d0:0:b0:37c:cfa4:d998 with SMTP id ffacd0b85a97d-37eb4768898mr8689990f8f.49.1729490490693;
+        Sun, 20 Oct 2024 23:01:30 -0700 (PDT)
+Return-Path: <thuth@redhat.com>
+Received: from [192.168.0.7] (ip-109-42-50-24.web.vodafone.de. [109.42.50.24])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-37ee0b9bd6esm3356912f8f.104.2024.10.20.23.01.28
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 20 Oct 2024 23:01:30 -0700 (PDT)
+Message-ID: <75745c15-feed-45e8-9ba4-93ab103fd832@redhat.com>
+Date: Mon, 21 Oct 2024 08:01:27 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 6/7] docs/system/arm: Add placeholder docs for
- mcimx6ul-evk and mcimx7d-sabre
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: Jean-Christophe Dubois <jcd@tribudubois.net>,
- Igor Mitsyanko <i.mitsyanko@gmail.com>,
- Andrey Smirnov <andrew.smirnov@gmail.com>,
- Alexandre Iooss <erdnaxe@crans.org>,
- Alistair Francis <alistair@alistair23.me>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-References: <20241018141332.942844-1-peter.maydell@linaro.org>
- <20241018141332.942844-7-peter.maydell@linaro.org>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20241018141332.942844-7-peter.maydell@linaro.org>
+Subject: Re: [PATCH 00/17] Convert the Avocado tuxrun tests into new
+ functional tests
+To: qemu-devel@nongnu.org, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
+ <philmd@linaro.org>, =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+Cc: Guenter Roeck <linux@roeck-us.net>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Magnus Damm <magnus.damm@gmail.com>, qemu-arm@nongnu.org
+References: <20241011131937.377223-1-thuth@redhat.com>
+From: Thomas Huth <thuth@redhat.com>
+Autocrypt: addr=thuth@redhat.com; keydata=
+ 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
+In-Reply-To: <20241011131937.377223-1-thuth@redhat.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=150.107.74.76;
- envelope-from=SRS0=cGEO=RR=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
-X-Spam_score_int: -39
-X-Spam_score: -4.0
-X-Spam_bar: ----
-X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.17, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 2E4vjw08nUZw
+Content-Transfer-Encoding: 7bit
+X-TUID: TLf5vO9ZplKI
 
-On 10/18/24 16:13, Peter Maydell wrote:
-> Add placeholder docs for the mcimx6ul-evk and mcimx7d-sabre boards.
+On 11/10/2024 15.19, Thomas Huth wrote:
+> This patch series converts the tests/avocado/tuxrun_baselines.py
+> to the new functional test framework. While converting the sh4 test,
+> I noticed that the Avocado test was completely broken, so I included
+> a fix (revert) for that problem in this series, too.
 > 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-
-
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
-
-Thanks,
-
-C.
-
-
-> ---
->   MAINTAINERS                       | 2 ++
->   docs/system/arm/mcimx6ul-evk.rst  | 5 +++++
->   docs/system/arm/mcimx7d-sabre.rst | 5 +++++
->   docs/system/target-arm.rst        | 2 ++
->   4 files changed, 14 insertions(+)
->   create mode 100644 docs/system/arm/mcimx6ul-evk.rst
->   create mode 100644 docs/system/arm/mcimx7d-sabre.rst
+> Thomas Huth (17):
+>    tests/functional: Add a base class for the TuxRun tests
+>    tests/functional: Convert the Avocado ppc64 tuxrun tests
+>    tests/functional: Convert the Avocado aarch64 tuxrun tests
+>    tests/functional: Convert the Avocado sparc64 tuxrun test
+>    tests/functional: Convert the Avocado s390x tuxrun test
+>    tests/functional: Convert the Avocado arm tuxrun tests
+>    tests/functional: Convert the Avocado riscv32 tuxrun tests
+>    tests/functional: Convert the Avocado riscv64 tuxrun tests
+>    tests/functional: Convert the Avocado i386 tuxrun test
+>    tests/functional: Convert the Avocado x86_64 tuxrun test
+>    tests/functional: Convert the Avocado mips tuxrun test
+>    tests/functional: Convert the Avocado mipsel tuxrun test
+>    tests/functional: Convert the Avocado mips64 tuxrun test
+>    tests/functional: Convert the Avocado mips64el tuxrun test
+>    tests/functional: Convert the Avocado ppc32 tuxrun test
+>    Revert "hw/sh4/r2d: Realize IDE controller before accessing it"
+>    tests/functional: Convert the Avocado sh4 tuxrun test
 > 
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index 7c3325628c9..2866737261b 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -791,6 +791,7 @@ F: hw/arm/fsl-imx6ul.c
->   F: hw/misc/imx6ul_ccm.c
->   F: include/hw/arm/fsl-imx6ul.h
->   F: include/hw/misc/imx6ul_ccm.h
-> +F: docs/system/arm/mcimx6ul-evk.rst
->   
->   MCIMX7D SABRE / i.MX7
->   M: Peter Maydell <peter.maydell@linaro.org>
-> @@ -804,6 +805,7 @@ F: include/hw/arm/fsl-imx7.h
->   F: include/hw/misc/imx7_*.h
->   F: hw/pci-host/designware.c
->   F: include/hw/pci-host/designware.h
-> +F: docs/system/arm/mcimx7d-sabre.rst
->   
->   MPS2 / MPS3
->   M: Peter Maydell <peter.maydell@linaro.org>
-> diff --git a/docs/system/arm/mcimx6ul-evk.rst b/docs/system/arm/mcimx6ul-evk.rst
-> new file mode 100644
-> index 00000000000..8871138ab3e
-> --- /dev/null
-> +++ b/docs/system/arm/mcimx6ul-evk.rst
-> @@ -0,0 +1,5 @@
-> +NXP MCIMX6UL-EVK (``mcimx6ul-evk``)
-> +===================================
-> +
-> +The ``mcimx6ul-evk`` machine models the NXP i.MX6UltraLite Evaluation Kit
-> +MCIMX6UL-EVK development board. It has a single Cortex-A7 CPU.
-> diff --git a/docs/system/arm/mcimx7d-sabre.rst b/docs/system/arm/mcimx7d-sabre.rst
-> new file mode 100644
-> index 00000000000..c5d35af1d44
-> --- /dev/null
-> +++ b/docs/system/arm/mcimx7d-sabre.rst
-> @@ -0,0 +1,5 @@
-> +NXP MCIMX7D Sabre (``mcimx7d-sabre``)
-> +=====================================
-> +
-> +The ``mcimx7d-sabre`` machine models the NXP SABRE Board MCIMX7SABRE,
-> +based an an i.MX7Dual SoC.
-> diff --git a/docs/system/target-arm.rst b/docs/system/target-arm.rst
-> index ace36d1b17d..1f806cf4a46 100644
-> --- a/docs/system/target-arm.rst
-> +++ b/docs/system/target-arm.rst
-> @@ -97,6 +97,8 @@ undocumented; you can get a complete list by running
->      arm/nrf
->      arm/nuvoton
->      arm/imx25-pdk
-> +   arm/mcimx6ul-evk
-> +   arm/mcimx7d-sabre
->      arm/orangepi
->      arm/raspi
->      arm/collie
+>   MAINTAINERS                              |   4 +-
+>   hw/sh4/r2d.c                             |   2 +-
+>   tests/avocado/tuxrun_baselines.py        | 620 -----------------------
+>   tests/functional/meson.build             |  28 +
+>   tests/functional/qemu_test/tuxruntest.py | 158 ++++++
+>   tests/functional/test_aarch64_tuxrun.py  |  50 ++
+>   tests/functional/test_arm_tuxrun.py      |  70 +++
+>   tests/functional/test_i386_tuxrun.py     |  35 ++
+>   tests/functional/test_mips64_tuxrun.py   |  35 ++
+>   tests/functional/test_mips64el_tuxrun.py |  35 ++
+>   tests/functional/test_mips_tuxrun.py     |  36 ++
+>   tests/functional/test_mipsel_tuxrun.py   |  36 ++
+>   tests/functional/test_ppc64_tuxrun.py    | 110 ++++
+>   tests/functional/test_ppc_tuxrun.py      |  35 ++
+>   tests/functional/test_riscv32_tuxrun.py  |  38 ++
+>   tests/functional/test_riscv64_tuxrun.py  |  38 ++
+>   tests/functional/test_s390x_tuxrun.py    |  34 ++
+>   tests/functional/test_sh4_tuxrun.py      |  57 +++
+>   tests/functional/test_sparc64_tuxrun.py  |  34 ++
+>   tests/functional/test_x86_64_tuxrun.py   |  36 ++
+>   20 files changed, 869 insertions(+), 622 deletions(-)
+>   delete mode 100644 tests/avocado/tuxrun_baselines.py
+>   create mode 100644 tests/functional/qemu_test/tuxruntest.py
+>   create mode 100755 tests/functional/test_aarch64_tuxrun.py
+>   create mode 100755 tests/functional/test_arm_tuxrun.py
+>   create mode 100755 tests/functional/test_i386_tuxrun.py
+>   create mode 100755 tests/functional/test_mips64_tuxrun.py
+>   create mode 100755 tests/functional/test_mips64el_tuxrun.py
+>   create mode 100755 tests/functional/test_mips_tuxrun.py
+>   create mode 100755 tests/functional/test_mipsel_tuxrun.py
+>   create mode 100755 tests/functional/test_ppc64_tuxrun.py
+>   create mode 100755 tests/functional/test_ppc_tuxrun.py
+>   create mode 100755 tests/functional/test_riscv32_tuxrun.py
+>   create mode 100755 tests/functional/test_riscv64_tuxrun.py
+>   create mode 100755 tests/functional/test_s390x_tuxrun.py
+>   create mode 100755 tests/functional/test_sh4_tuxrun.py
+>   create mode 100755 tests/functional/test_sparc64_tuxrun.py
+>   create mode 100755 tests/functional/test_x86_64_tuxrun.py
 
+Ok, if there are no objections, I'll include this patch series in my next 
+pull request, with this small fix squashed into the final patch:
+
+diff --git a/MAINTAINERS b/MAINTAINERS
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -4071,7 +4071,8 @@ F: scripts/ci/
+  F: tests/docker/
+  F: tests/vm/
+  F: tests/lcitool/
+-F: tests/avocado/tuxrun_baselines.py
++F: tests/functional/qemu_test/tuxruntest.py
++F: tests/functional/test_*_tuxrun.py
+  F: scripts/archive-source.sh
+  F: docs/devel/testing.rst
+  W: https://gitlab.com/qemu-project/qemu/pipelines
+
+  Thomas

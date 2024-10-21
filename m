@@ -1,100 +1,114 @@
-Received: by 2002:a17:505:18c3:b0:1be9:327d:8ee3 with SMTP id tt3csp2175795njb;
-        Sun, 20 Oct 2024 23:01:34 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWfURw9xOD7VsE74KZjogvWkrvku1NfEEn08TMJNLGEsOl4N3PwG5jMNcWamPhgTtiLrWQA6dDar8b9hA==@linaro.org
-X-Google-Smtp-Source: AGHT+IH6EYSFQCUkP9tgmTsbwyEL6ZYlfmkMqpAhHGzTx900q4O7YyqGRBH+Mpms/uC9c4zykffK
-X-Received: by 2002:a05:6214:54c7:b0:6cc:2c93:b894 with SMTP id 6a1803df08f44-6cde164a9eamr147202506d6.45.1729490494014;
-        Sun, 20 Oct 2024 23:01:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1729490493; cv=none;
+Received: by 2002:a17:505:18c3:b0:1be9:327d:8ee3 with SMTP id tt3csp2199865njb;
+        Mon, 21 Oct 2024 00:16:32 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWpKAfk7qxioVspDuAXViLXVaZAQLljdh2UsFvVPD4JZuBXrBM7gAGv2xlj3eB3gFtJifaJFxZX/4Ky3g==@linaro.org
+X-Google-Smtp-Source: AGHT+IH/eRIAgPL0DeuSmcXBbvGZVxIZu51nHxdGErwbxqwXL6BmspCV0V5l/zrTiZgzLaB0upC8
+X-Received: by 2002:a05:6214:310e:b0:6cb:f46:2c53 with SMTP id 6a1803df08f44-6cde18ba1a3mr163186786d6.6.1729494992619;
+        Mon, 21 Oct 2024 00:16:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1729494992; cv=none;
         d=google.com; s=arc-20240605;
-        b=DEnRNmMhw3X/cfYO3YQRErS937yl0QMfGmgzxYZWODieI7TZF9Uhzb+isSgUyOKT6i
-         jugO+uPz/pUYvsaQ/dTv53LnzbDP4n0tFfqqTDUKIvpqd5Ca+MqsI23CN4qprcA9JLWW
-         pcNeYzfdXAMecropcCSKjhVrnKgLsibmNb/+NNaUNruPwBsmTp7zzcN80h4PCpjI0fzJ
-         FhHtRtcel0qKTscN26WfSGReI/s4sWpvqPwky4UDw8PvnnJgSYRNw6lu4EdYwIgLWiKb
-         x42lB9Y+Fl0LMnKgYDMibocIByg2n3mLKu3Xl0Aptlr5w1qItQJ5Dl3wbTlEtm5Zrkqh
-         5KRw==
+        b=VTHhZOZwC3JZCiewQk9pwtQpuGKTO6ERK2WptBzomy/AJ1XN3B7vk7HfO0/66XbCqX
+         GyN3HB03SO8HfrcTWawnHZy2aRM/ceGnhfhGLpGnboNgj4Gx0CNSWCcQxwXyN1W2Vb74
+         s28JZrSzU81BDEiZnfhtGZbwZnDulK2jmq+wQdWGzPgt/bKPWoSNutEEMWHvu3o8cjKP
+         0p0AgPj7sBcLNoeBMgo3oYAZpKpEqitNkZN6KwxHPINb6B1r5t/BvgCPUT3R6O58Tzch
+         kZU8S8myy7C/KlyDljsdPDKXGbstXKYm+ysejHfBo/Sn5bXZT93MkQjkPod5Y7xN982a
+         FjPQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:content-language:in-reply-to:autocrypt
-         :from:references:cc:to:subject:user-agent:mime-version:date
-         :message-id:dkim-signature;
-        bh=n9FGRL7g4a5XoyEQL8rvQTjKEocxsLblIQiJB9fxyIU=;
-        fh=lR5Zr0K0FmF+mQUq2KnyFzx84+ltzkqIw+Pxqf8I6aY=;
-        b=fE+wnwoM8b6O1YhDt9cOafruPy6cBKaMYUwjIp5mY6e2Bm/vyFZpB4yYKXSLyCfo0c
-         IlMk18j2O/QXIkoI4VXuFnW3nu1yGKlvKzEaXSl+s/Mx1sVbAGA8eAxHLnlax47ROCTv
-         +yCp2NSgXgFa3aXRVnmM5auv0y4vnnvCh0+d/QWpBF4j2JT4nAwvLmZ5MG/sIdbNVKJr
-         G8hyS4+Z+a6iKjrOVM9bfQ3IQoKVeFmKLf3WvgOejRQmpORi2SyINI6oh4h7bCSFNk1V
-         gVUudjkQvPYUQ6vSgp+2AabP8RkAnCVWmVB1sr5ud8WStQjnY5iwsLyRZSY1zbWzV7OA
-         zPMw==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:autocrypt:from:references:cc:to
+         :subject:user-agent:mime-version:date:message-id:dkim-signature;
+        bh=TVxGon3KWm9x2irZSZT3tz5+/0o7syg+4pQNIESNu2E=;
+        fh=Ni1kXroDrOSa9gQXBvUnN8bm4rMSt1i6ZtFpkufnmzE=;
+        b=Wa6iHgAOCFPbyUWARMQ4LqWiBKhlEPJKgda6I8OF/K5y7g+7ObDZrJ5E0QpQsCNSLr
+         6K/7ORVffTEbpAzob8R+NFP/xOGz8yD5yNkMxcmd4uASv0N3s+xB+g/kiF1rLjKje/uU
+         bgDIU2LYF+We1fv5h49+niNyjFhpiBG9D2X5uOQF3orGY/2nucVyYVnroM2Kyl2vyekf
+         vqr46RsfbjdOQoWqBYJaWqRLzVwz6suZBlcHaiJqw8f+xZJ+Jkr1KpsAdQNSfRMX9iUW
+         t7e8cXa6r6/mj1w+BTzj28RgP5bbluSsUirsBOtpkEwIwH0H/Iu1pN5VMfnpBvDt7CO5
+         xn9w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Ssgf7D1M;
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DSbjeDTE;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <thuth@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6ce009ceac5si31794726d6.375.2024.10.20.23.01.33
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6ce0089e60csi33179006d6.15.2024.10.21.00.16.32
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 20 Oct 2024 23:01:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 21 Oct 2024 00:16:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Ssgf7D1M;
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DSbjeDTE;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1t2mdt-0008Qf-Eh; Mon, 21 Oct 2024 03:15:53 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1t2mdr-0008QG-QJ
+ for qemu-arm@nongnu.org; Mon, 21 Oct 2024 03:15:51 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1t2mdp-0004oL-NC
+ for qemu-arm@nongnu.org; Mon, 21 Oct 2024 03:15:51 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1729490493;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=n9FGRL7g4a5XoyEQL8rvQTjKEocxsLblIQiJB9fxyIU=;
-	b=Ssgf7D1M8GrQVDYF4V2ghXOLxQp/lPrX4K630TymVBesUbD+DHyGVF/fsMQzCcyAQgQ/No
-	dS+8QDOl8tOguJDDsncIr0jgIleu2cDZFVf9qqciUS2EZznFigg8MHURDcq6uZK2Lh+uP7
-	HGyKVajJAE6pP9ksfCojHJcOjuaOzvo=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ s=mimecast20190719; t=1729494948;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=TVxGon3KWm9x2irZSZT3tz5+/0o7syg+4pQNIESNu2E=;
+ b=DSbjeDTE8ir/fWmNGVUvS+PLkrJaupfEjEH6Hbv7H7vfZf0gk5q3+fZo/jRb0lclM7WvpL
+ qB1bcwcJBATuNHXHTUGK1yF++7xhM2RKBzC0NTAyiKEMvijBTefOUdnYTIPL/xzk7NOocq
+ Lw8NckKd5Yg7j/3lB0/j4dTFOKSN5gw=
+Received: from mail-ej1-f70.google.com (mail-ej1-f70.google.com
+ [209.85.218.70]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-12-3Zk8LDZ8NFeKthLatxT51w-1; Mon, 21 Oct 2024 02:01:32 -0400
-X-MC-Unique: 3Zk8LDZ8NFeKthLatxT51w-1
-Received: by mail-wr1-f71.google.com with SMTP id ffacd0b85a97d-37d504759d0so2515425f8f.0
-        for <alex.bennee@linaro.org>; Sun, 20 Oct 2024 23:01:32 -0700 (PDT)
+ us-mta-621-yqnVgcBkOEeZWBtayaimRg-1; Mon, 21 Oct 2024 03:15:46 -0400
+X-MC-Unique: yqnVgcBkOEeZWBtayaimRg-1
+Received: by mail-ej1-f70.google.com with SMTP id
+ a640c23a62f3a-a99f084683fso282260166b.3
+ for <qemu-arm@nongnu.org>; Mon, 21 Oct 2024 00:15:46 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1729490491; x=1730095291;
-        h=content-transfer-encoding:in-reply-to:autocrypt:content-language
-         :from:references:cc:to:subject:user-agent:mime-version:date
-         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=n9FGRL7g4a5XoyEQL8rvQTjKEocxsLblIQiJB9fxyIU=;
-        b=liZbrC1fkYkuwtLk9zm5H22sCDes2NWEnjVWLUfSuyot24cYDlvxmZvIefvdA9T/s+
-         FIZ2XD0LE/4osMBBlecH9mgtf8MNM7vVa4IMQpPZEeI2Xp8NIQqVY0FOzTqB4ywNpw3D
-         Ex2y32UknACZev3YOfU0GNWqRSGRlzPZeP27hYxNNMQ5amuaGN+UfXVUwIibyVTih+/t
-         APlCz0p05uVML6xxmtoXB4JPoC/AglnRnhUOpSutt3dfxWDclEPzf1FO+sEgko66Onq4
-         BO1KtGYq9ICsrycbHDyCXlrWVOdMuQ/jcDMF0BNXaNXBgZH7n6EMXURMfbrl3/d1H8Aw
-         GflA==
-X-Forwarded-Encrypted: i=1; AJvYcCX7941fEG4tXinZkksOU2udqyq96WrSHZf93AeH+1MLjWeB73I86itrz5KOCYWsOX/AK3AGCQX4+dMLNQ==@linaro.org
-X-Gm-Message-State: AOJu0YxqKMXD3cyKelXHptW6NAOq17OoSKDbdJTDuMOTD62kG7lYmwWH
-	N31Yr+sUTeAxDJS/MKPhC3pHaTVpNCeSIjLyJFQgTXDlm7QoVRlEdp7vTPryuK2CPuNZ5TYR5aQ
-	8Ybab0xlGxc1PQxmZHPR2jTcjcrhWv/CZeMatelsuPBlJW/RxhwalKg==
-X-Received: by 2002:adf:f9d0:0:b0:37c:cfa4:d998 with SMTP id ffacd0b85a97d-37eb4768898mr8690019f8f.49.1729490491030;
-        Sun, 20 Oct 2024 23:01:31 -0700 (PDT)
-X-Received: by 2002:adf:f9d0:0:b0:37c:cfa4:d998 with SMTP id ffacd0b85a97d-37eb4768898mr8689990f8f.49.1729490490693;
-        Sun, 20 Oct 2024 23:01:30 -0700 (PDT)
-Return-Path: <thuth@redhat.com>
+ d=1e100.net; s=20230601; t=1729494945; x=1730099745;
+ h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=TVxGon3KWm9x2irZSZT3tz5+/0o7syg+4pQNIESNu2E=;
+ b=DSnKOwQREavjc4fDH2Hn/stNfGc/BbExMF03TuNHc0qwhD1yVYCuG4masuEfLKbu2O
+ 0TCS3AmJzPR+ZeiBehxIiqWWyhRIfJ1wxaYnZ8Ix8zeNTqjwbbY+1IcJw9KZTepxr5nE
+ RrCK2FBN7e/R6mhZ95gk5QRW46kOgpXMDMBINQRvKWukTBh8XWMURHMC/xY7HEaeEu8s
+ biGbk4cm9CdfJ7RSTNHhupwRvmh9G2MpMvrXMH/IFkY+kPrDz7nst5vA0hP4p0a65oDu
+ GnPmuoU9OgXlWiwUEp5/Q5eGpUao636yEr/TtTIHAtGuSWE7TlcbZA6p6KJGslG4Zv83
+ LrGQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCX1c13sMsVjP5KdjgwIpy0b5xQRGPFsoml1U4Lp+nAOGYWLSgDj1Sv8RHQq+dMlbSIZ0xACRsuEMg==@nongnu.org
+X-Gm-Message-State: AOJu0YwjN5EN9+wVJfxlf1cXC5UXgrh0lPo5NYknHOAGyPVFySaM/A7x
+ A1iNb5I1MwUEVL28Up5eHh3p+jjqnenWwPFaYhStK1NwaAcMvPZPuEuGS9Yux4Thgzhn/F00gUI
+ P8pth3xqhHsx84Zgk1Q0b8s/CmlFqx8rzwK1H2idYL/lLZcJThA==
+X-Received: by 2002:a17:907:2d9e:b0:a99:ffef:aec5 with SMTP id
+ a640c23a62f3a-a9a69a80a24mr1036058766b.23.1729494945135; 
+ Mon, 21 Oct 2024 00:15:45 -0700 (PDT)
+X-Received: by 2002:a17:907:2d9e:b0:a99:ffef:aec5 with SMTP id
+ a640c23a62f3a-a9a69a80a24mr1036057166b.23.1729494944716; 
+ Mon, 21 Oct 2024 00:15:44 -0700 (PDT)
 Received: from [192.168.0.7] (ip-109-42-50-24.web.vodafone.de. [109.42.50.24])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-37ee0b9bd6esm3356912f8f.104.2024.10.20.23.01.28
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 20 Oct 2024 23:01:30 -0700 (PDT)
-Message-ID: <75745c15-feed-45e8-9ba4-93ab103fd832@redhat.com>
-Date: Mon, 21 Oct 2024 08:01:27 +0200
+ by smtp.gmail.com with ESMTPSA id
+ a640c23a62f3a-a9a912ee056sm169912266b.60.2024.10.21.00.15.43
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 21 Oct 2024 00:15:44 -0700 (PDT)
+Message-ID: <dcf06645-dac0-4099-8946-38ca9deaeccf@redhat.com>
+Date: Mon, 21 Oct 2024 09:15:40 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 00/17] Convert the Avocado tuxrun tests into new
- functional tests
-To: qemu-devel@nongnu.org, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
- <philmd@linaro.org>, =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-Cc: Guenter Roeck <linux@roeck-us.net>,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
- Magnus Damm <magnus.damm@gmail.com>, qemu-arm@nongnu.org
-References: <20241011131937.377223-1-thuth@redhat.com>
+Subject: Re: [PATCH 0/2] arm: Add collie and sx functional tests
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: Guenter Roeck <linux@roeck-us.net>
+References: <20241017163247.711244-1-peter.maydell@linaro.org>
 From: Thomas Huth <thuth@redhat.com>
 Autocrypt: addr=thuth@redhat.com; keydata=
  xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
@@ -138,93 +152,83 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <20241011131937.377223-1-thuth@redhat.com>
+In-Reply-To: <20241017163247.711244-1-peter.maydell@linaro.org>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-TUID: TLf5vO9ZplKI
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -42
+X-Spam_score: -4.3
+X-Spam_bar: ----
+X-Spam_report: (-4.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.527,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-1.699,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: cK3w2QWHBXMO
 
-On 11/10/2024 15.19, Thomas Huth wrote:
-> This patch series converts the tests/avocado/tuxrun_baselines.py
-> to the new functional test framework. While converting the sh4 test,
-> I noticed that the Avocado test was completely broken, so I included
-> a fix (revert) for that problem in this series, too.
+On 17/10/2024 18.32, Peter Maydell wrote:
+> This patchset adds new functional tests for the collie and sx1
+> boards, which are the only remaining ones that survived the
+> culling of the OMAP/PXA2xx/strongarm machines.
 > 
-> Thomas Huth (17):
->    tests/functional: Add a base class for the TuxRun tests
->    tests/functional: Convert the Avocado ppc64 tuxrun tests
->    tests/functional: Convert the Avocado aarch64 tuxrun tests
->    tests/functional: Convert the Avocado sparc64 tuxrun test
->    tests/functional: Convert the Avocado s390x tuxrun test
->    tests/functional: Convert the Avocado arm tuxrun tests
->    tests/functional: Convert the Avocado riscv32 tuxrun tests
->    tests/functional: Convert the Avocado riscv64 tuxrun tests
->    tests/functional: Convert the Avocado i386 tuxrun test
->    tests/functional: Convert the Avocado x86_64 tuxrun test
->    tests/functional: Convert the Avocado mips tuxrun test
->    tests/functional: Convert the Avocado mipsel tuxrun test
->    tests/functional: Convert the Avocado mips64 tuxrun test
->    tests/functional: Convert the Avocado mips64el tuxrun test
->    tests/functional: Convert the Avocado ppc32 tuxrun test
->    Revert "hw/sh4/r2d: Realize IDE controller before accessing it"
->    tests/functional: Convert the Avocado sh4 tuxrun test
+> For these tests I'm indebted to Guenter Roeck, who has kindly
+> built and made available the kernel images, rootfs, etc and
+> documented the commands needed to boot them. All I've done
+> here is wrap those up into test cases in our testcase
+> framework by cribbing from some of our existing test code.
 > 
->   MAINTAINERS                              |   4 +-
->   hw/sh4/r2d.c                             |   2 +-
->   tests/avocado/tuxrun_baselines.py        | 620 -----------------------
->   tests/functional/meson.build             |  28 +
->   tests/functional/qemu_test/tuxruntest.py | 158 ++++++
->   tests/functional/test_aarch64_tuxrun.py  |  50 ++
->   tests/functional/test_arm_tuxrun.py      |  70 +++
->   tests/functional/test_i386_tuxrun.py     |  35 ++
->   tests/functional/test_mips64_tuxrun.py   |  35 ++
->   tests/functional/test_mips64el_tuxrun.py |  35 ++
->   tests/functional/test_mips_tuxrun.py     |  36 ++
->   tests/functional/test_mipsel_tuxrun.py   |  36 ++
->   tests/functional/test_ppc64_tuxrun.py    | 110 ++++
->   tests/functional/test_ppc_tuxrun.py      |  35 ++
->   tests/functional/test_riscv32_tuxrun.py  |  38 ++
->   tests/functional/test_riscv64_tuxrun.py  |  38 ++
->   tests/functional/test_s390x_tuxrun.py    |  34 ++
->   tests/functional/test_sh4_tuxrun.py      |  57 +++
->   tests/functional/test_sparc64_tuxrun.py  |  34 ++
->   tests/functional/test_x86_64_tuxrun.py   |  36 ++
->   20 files changed, 869 insertions(+), 622 deletions(-)
->   delete mode 100644 tests/avocado/tuxrun_baselines.py
->   create mode 100644 tests/functional/qemu_test/tuxruntest.py
->   create mode 100755 tests/functional/test_aarch64_tuxrun.py
->   create mode 100755 tests/functional/test_arm_tuxrun.py
->   create mode 100755 tests/functional/test_i386_tuxrun.py
->   create mode 100755 tests/functional/test_mips64_tuxrun.py
->   create mode 100755 tests/functional/test_mips64el_tuxrun.py
->   create mode 100755 tests/functional/test_mips_tuxrun.py
->   create mode 100755 tests/functional/test_mipsel_tuxrun.py
->   create mode 100755 tests/functional/test_ppc64_tuxrun.py
->   create mode 100755 tests/functional/test_ppc_tuxrun.py
->   create mode 100755 tests/functional/test_riscv32_tuxrun.py
->   create mode 100755 tests/functional/test_riscv64_tuxrun.py
->   create mode 100755 tests/functional/test_s390x_tuxrun.py
->   create mode 100755 tests/functional/test_sh4_tuxrun.py
->   create mode 100755 tests/functional/test_sparc64_tuxrun.py
->   create mode 100755 tests/functional/test_x86_64_tuxrun.py
+> Based-on: 20241017162755.710698-1-peter.maydell@linaro.org
+> ("hw/sd/omap_mmc: Don't use sd_cmd_type_t")
+>   -- the sd card test for the sx1 board will not pass without
+>      that bugfix
+> 
+> thanks
+> -- PMM
+> 
+> Peter Maydell (2):
+>    tests/functional: Add a functional test for the collie board
+>    tests/functional: Add a functional test for the sx1 board
+> 
+>   MAINTAINERS                         |  1 +
+>   tests/functional/meson.build        |  3 ++
+>   tests/functional/test_arm_collie.py | 31 +++++++++++++
+>   tests/functional/test_arm_sx1.py    | 72 +++++++++++++++++++++++++++++
+>   4 files changed, 107 insertions(+)
+>   create mode 100755 tests/functional/test_arm_collie.py
+>   create mode 100755 tests/functional/test_arm_sx1.py
 
-Ok, if there are no objections, I'll include this patch series in my next 
-pull request, with this small fix squashed into the final patch:
+Thanks, I'll queue the patches with this little fix squashed into the second 
+patch:
 
 diff --git a/MAINTAINERS b/MAINTAINERS
 --- a/MAINTAINERS
 +++ b/MAINTAINERS
-@@ -4071,7 +4071,8 @@ F: scripts/ci/
-  F: tests/docker/
-  F: tests/vm/
-  F: tests/lcitool/
--F: tests/avocado/tuxrun_baselines.py
-+F: tests/functional/qemu_test/tuxruntest.py
-+F: tests/functional/test_*_tuxrun.py
-  F: scripts/archive-source.sh
-  F: docs/devel/testing.rst
-  W: https://gitlab.com/qemu-project/qemu/pipelines
+@@ -1948,6 +1948,7 @@ S: Maintained
+  F: hw/*/omap*
+  F: include/hw/arm/omap.h
+  F: docs/system/arm/sx1.rst
++F: tests/functional/test_arm_sx1.py
+
+  IPack
+  M: Alberto Garcia <berto@igalia.com>
 
   Thomas
+

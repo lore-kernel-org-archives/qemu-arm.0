@@ -1,115 +1,116 @@
-Received: by 2002:a17:505:18c3:b0:1be9:327d:8ee3 with SMTP id tt3csp2199865njb;
-        Mon, 21 Oct 2024 00:16:32 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWpKAfk7qxioVspDuAXViLXVaZAQLljdh2UsFvVPD4JZuBXrBM7gAGv2xlj3eB3gFtJifaJFxZX/4Ky3g==@linaro.org
-X-Google-Smtp-Source: AGHT+IH/eRIAgPL0DeuSmcXBbvGZVxIZu51nHxdGErwbxqwXL6BmspCV0V5l/zrTiZgzLaB0upC8
-X-Received: by 2002:a05:6214:310e:b0:6cb:f46:2c53 with SMTP id 6a1803df08f44-6cde18ba1a3mr163186786d6.6.1729494992619;
-        Mon, 21 Oct 2024 00:16:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1729494992; cv=none;
+Received: by 2002:a17:505:18c3:b0:1be9:327d:8ee3 with SMTP id tt3csp2215524njb;
+        Mon, 21 Oct 2024 01:02:28 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUIDMNzKa/IPtSR5xNnPt2hTKHlP3k7aAe5CeBLu5MCaDnC0UR/rfaEbdtgXEH6b+GE6x5Xs4Ukar/7Uw==@linaro.org
+X-Google-Smtp-Source: AGHT+IEqquMwQQ/K4MykCFeeW5p60kD+YS1zLLSCAqZ6LBB599xZNEZeNYUUY/BWSlvCqEx24BcO
+X-Received: by 2002:a05:6214:568b:b0:6cb:83a7:68db with SMTP id 6a1803df08f44-6cde14b80c1mr140054946d6.6.1729497748292;
+        Mon, 21 Oct 2024 01:02:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1729497748; cv=none;
         d=google.com; s=arc-20240605;
-        b=VTHhZOZwC3JZCiewQk9pwtQpuGKTO6ERK2WptBzomy/AJ1XN3B7vk7HfO0/66XbCqX
-         GyN3HB03SO8HfrcTWawnHZy2aRM/ceGnhfhGLpGnboNgj4Gx0CNSWCcQxwXyN1W2Vb74
-         s28JZrSzU81BDEiZnfhtGZbwZnDulK2jmq+wQdWGzPgt/bKPWoSNutEEMWHvu3o8cjKP
-         0p0AgPj7sBcLNoeBMgo3oYAZpKpEqitNkZN6KwxHPINb6B1r5t/BvgCPUT3R6O58Tzch
-         kZU8S8myy7C/KlyDljsdPDKXGbstXKYm+ysejHfBo/Sn5bXZT93MkQjkPod5Y7xN982a
-         FjPQ==
+        b=Mg71y/UGs3NuJWHZ8Eldg1oczdU4PaaEs9mscY6HxK0gtnSccEjcKYLT7C061qr5EE
+         XyPcWlyJO4BVJB0P6nk3eWYguEKC0w9JV07jzhNugecRXqpTAfj0nR2iTWGnc1IVqjC1
+         etG9fuMN9IOg0gKvD7igxWoBuxVf7Ue5hrxQcgi63V9R1zmSStBER7u3P+NddecXOj7E
+         JU+K8zVNOFVpSMYqgB8zImUpVBGyS8VWYel60Hs6E83IMLsrxXkgL1qXwuBt5VGP9TM6
+         Z04zzaMqSd8z3LNxpG7jxvQN3cOSNKiyZ9YkvDN0Puzjw8eVfvRG4H+0rGb/KhA5tFw7
+         r93A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:autocrypt:from:references:cc:to
+         :content-language:in-reply-to:autocrypt:references:cc:to:from
          :subject:user-agent:mime-version:date:message-id:dkim-signature;
-        bh=TVxGon3KWm9x2irZSZT3tz5+/0o7syg+4pQNIESNu2E=;
-        fh=Ni1kXroDrOSa9gQXBvUnN8bm4rMSt1i6ZtFpkufnmzE=;
-        b=Wa6iHgAOCFPbyUWARMQ4LqWiBKhlEPJKgda6I8OF/K5y7g+7ObDZrJ5E0QpQsCNSLr
-         6K/7ORVffTEbpAzob8R+NFP/xOGz8yD5yNkMxcmd4uASv0N3s+xB+g/kiF1rLjKje/uU
-         bgDIU2LYF+We1fv5h49+niNyjFhpiBG9D2X5uOQF3orGY/2nucVyYVnroM2Kyl2vyekf
-         vqr46RsfbjdOQoWqBYJaWqRLzVwz6suZBlcHaiJqw8f+xZJ+Jkr1KpsAdQNSfRMX9iUW
-         t7e8cXa6r6/mj1w+BTzj28RgP5bbluSsUirsBOtpkEwIwH0H/Iu1pN5VMfnpBvDt7CO5
-         xn9w==;
+        bh=iJFCpZvs0RBeuj4QDsPcmz8viM5V0rNnMSN2QZKot8Y=;
+        fh=urbx0NThOYwCaUvfWK5kLjYoSa7TXvXqFp+JbYn0z4Q=;
+        b=TaUWpoMFHRbcEB1Y9dJlWsTAIAUeGDrS+RQhqtMI+hCxds1i2MfgT2QTHVKHujT1Mt
+         cv36igbUAidChrFqM2rZYOvzqYG12V7hUbxRLNKzwoDJpGDf8792xmNAuSHEOY68kwmk
+         lYdDg36Z0t+ClmKgsHzNe8fYWnAadbTTV10vOTz+Tx4/XCr5vwxAjCIFvTQNfmtg1uHi
+         meSPNjXpYAddAU98j0BU7V5ImTP0cQz4t17pEhT7mWNBNzJscb0p7HQ7sQgNw0UYotMs
+         XT0vYu5QtO1YBuyscgi9QUH+/9bhRCimjIlAZVyJGMcNj3wS/Ki0z/zVEtnG7sQkcDPy
+         qg7Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DSbjeDTE;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BMqjUJI5;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6ce0089e60csi33179006d6.15.2024.10.21.00.16.32
+        by mx.google.com with ESMTPS id 6a1803df08f44-6ce009fdfe6si34759246d6.436.2024.10.21.01.02.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 21 Oct 2024 00:16:32 -0700 (PDT)
+        Mon, 21 Oct 2024 01:02:28 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DSbjeDTE;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BMqjUJI5;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1t2mdt-0008Qf-Eh; Mon, 21 Oct 2024 03:15:53 -0400
+	id 1t2nMa-0001Z4-3n; Mon, 21 Oct 2024 04:02:04 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1t2mdr-0008QG-QJ
- for qemu-arm@nongnu.org; Mon, 21 Oct 2024 03:15:51 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1t2nMQ-0001Qi-0f
+ for qemu-arm@nongnu.org; Mon, 21 Oct 2024 04:01:54 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1t2mdp-0004oL-NC
- for qemu-arm@nongnu.org; Mon, 21 Oct 2024 03:15:51 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1t2nMO-00014X-50
+ for qemu-arm@nongnu.org; Mon, 21 Oct 2024 04:01:53 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1729494948;
+ s=mimecast20190719; t=1729497710;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=TVxGon3KWm9x2irZSZT3tz5+/0o7syg+4pQNIESNu2E=;
- b=DSbjeDTE8ir/fWmNGVUvS+PLkrJaupfEjEH6Hbv7H7vfZf0gk5q3+fZo/jRb0lclM7WvpL
- qB1bcwcJBATuNHXHTUGK1yF++7xhM2RKBzC0NTAyiKEMvijBTefOUdnYTIPL/xzk7NOocq
- Lw8NckKd5Yg7j/3lB0/j4dTFOKSN5gw=
-Received: from mail-ej1-f70.google.com (mail-ej1-f70.google.com
- [209.85.218.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=iJFCpZvs0RBeuj4QDsPcmz8viM5V0rNnMSN2QZKot8Y=;
+ b=BMqjUJI5DSWB7T96DmFjm3UJFACkvXtGdABzqvybQz2VHkuzAO5MzIbIRz+uOngvCY1uIM
+ FhRRsw1OQ94+UVpb9UDFo8nBCV7tSHRN/AUtyQM7cUCllPNMWeUJVzgCELJlLQjdi/cYEd
+ a4aHJpF4sCWPIxhf1wj/4qpeVGIUiPM=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-621-yqnVgcBkOEeZWBtayaimRg-1; Mon, 21 Oct 2024 03:15:46 -0400
-X-MC-Unique: yqnVgcBkOEeZWBtayaimRg-1
-Received: by mail-ej1-f70.google.com with SMTP id
- a640c23a62f3a-a99f084683fso282260166b.3
- for <qemu-arm@nongnu.org>; Mon, 21 Oct 2024 00:15:46 -0700 (PDT)
+ us-mta-168-3ePJ4ps-MduSlmSzqKbodw-1; Mon, 21 Oct 2024 04:01:47 -0400
+X-MC-Unique: 3ePJ4ps-MduSlmSzqKbodw-1
+Received: by mail-wm1-f71.google.com with SMTP id
+ 5b1f17b1804b1-4315af466d9so28150715e9.3
+ for <qemu-arm@nongnu.org>; Mon, 21 Oct 2024 01:01:47 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1729494945; x=1730099745;
+ d=1e100.net; s=20230601; t=1729497706; x=1730102506;
  h=content-transfer-encoding:in-reply-to:autocrypt:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
+ :references:cc:to:from:subject:user-agent:mime-version:date
  :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=TVxGon3KWm9x2irZSZT3tz5+/0o7syg+4pQNIESNu2E=;
- b=DSnKOwQREavjc4fDH2Hn/stNfGc/BbExMF03TuNHc0qwhD1yVYCuG4masuEfLKbu2O
- 0TCS3AmJzPR+ZeiBehxIiqWWyhRIfJ1wxaYnZ8Ix8zeNTqjwbbY+1IcJw9KZTepxr5nE
- RrCK2FBN7e/R6mhZ95gk5QRW46kOgpXMDMBINQRvKWukTBh8XWMURHMC/xY7HEaeEu8s
- biGbk4cm9CdfJ7RSTNHhupwRvmh9G2MpMvrXMH/IFkY+kPrDz7nst5vA0hP4p0a65oDu
- GnPmuoU9OgXlWiwUEp5/Q5eGpUao636yEr/TtTIHAtGuSWE7TlcbZA6p6KJGslG4Zv83
- LrGQ==
+ bh=iJFCpZvs0RBeuj4QDsPcmz8viM5V0rNnMSN2QZKot8Y=;
+ b=pN46kvvIZ+q1pWCbUZ1qsmzEM/FhUIy4MBfFXTCve71YE4FvGmfheV0Ef5iSbKe/gU
+ sZgMWZlOb5utbi3t2so0/eLl6GIWaEo/BBy40dcSXFVfWigzhsMFqaI7RI0HTck2bczd
+ 4Ebnir6/ZlIt0jsN6epXIjFRnOv0e9i7IQFI878+Zpc2beuLflm0FVBNymztzJeVI/Xo
+ MAT3RKYbKARQqsHhK3xhbDRh3EIg4W6DfVGcJtGtrroKIQav9wXcGgmqtD48Vx7rb1Z7
+ qKuEsV4wENDnfYC0uiZy8Fsh8MIumvvQT2rb8xwytxY/lSwCaRXyUxEJV/LK3TkAzOAn
+ PycQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCX1c13sMsVjP5KdjgwIpy0b5xQRGPFsoml1U4Lp+nAOGYWLSgDj1Sv8RHQq+dMlbSIZ0xACRsuEMg==@nongnu.org
-X-Gm-Message-State: AOJu0YwjN5EN9+wVJfxlf1cXC5UXgrh0lPo5NYknHOAGyPVFySaM/A7x
- A1iNb5I1MwUEVL28Up5eHh3p+jjqnenWwPFaYhStK1NwaAcMvPZPuEuGS9Yux4Thgzhn/F00gUI
- P8pth3xqhHsx84Zgk1Q0b8s/CmlFqx8rzwK1H2idYL/lLZcJThA==
-X-Received: by 2002:a17:907:2d9e:b0:a99:ffef:aec5 with SMTP id
- a640c23a62f3a-a9a69a80a24mr1036058766b.23.1729494945135; 
- Mon, 21 Oct 2024 00:15:45 -0700 (PDT)
-X-Received: by 2002:a17:907:2d9e:b0:a99:ffef:aec5 with SMTP id
- a640c23a62f3a-a9a69a80a24mr1036057166b.23.1729494944716; 
- Mon, 21 Oct 2024 00:15:44 -0700 (PDT)
+ AJvYcCUyvIIjv2MPqMRacugLz3n7MR3fhQUbU1ZzqmnfZ2agicZreuPy5qfVqAHvwHN4YubhXO4pwMOZIw==@nongnu.org
+X-Gm-Message-State: AOJu0YwJBgf/Bz4LyHpZ04O9uyRD2mWLIlDbWMkJ3LVnfzzOzKt6uS2a
+ QWpH9HiGJf8Lg4CR/3RwV1DJGyHyDpJUgoU/WKYzrg+xJtqBKB5v+d8m9UYYhLP9gsA84/77r2X
+ tzJxIljccYDMnXgebtGs54KSdK4axVQ6ljZj92KAzOdHr/HaDyQ==
+X-Received: by 2002:a5d:6a8e:0:b0:37d:4e80:516 with SMTP id
+ ffacd0b85a97d-37ea21a215dmr6423699f8f.34.1729497706438; 
+ Mon, 21 Oct 2024 01:01:46 -0700 (PDT)
+X-Received: by 2002:a5d:6a8e:0:b0:37d:4e80:516 with SMTP id
+ ffacd0b85a97d-37ea21a215dmr6423685f8f.34.1729497706073; 
+ Mon, 21 Oct 2024 01:01:46 -0700 (PDT)
 Received: from [192.168.0.7] (ip-109-42-50-24.web.vodafone.de. [109.42.50.24])
  by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-a9a912ee056sm169912266b.60.2024.10.21.00.15.43
+ ffacd0b85a97d-37ee0b9cd48sm3625881f8f.111.2024.10.21.01.01.45
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 21 Oct 2024 00:15:44 -0700 (PDT)
-Message-ID: <dcf06645-dac0-4099-8946-38ca9deaeccf@redhat.com>
-Date: Mon, 21 Oct 2024 09:15:40 +0200
+ Mon, 21 Oct 2024 01:01:45 -0700 (PDT)
+Message-ID: <ec2cb5e8-77be-435e-8aa7-4314cf412c4d@redhat.com>
+Date: Mon, 21 Oct 2024 10:01:44 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH 0/2] arm: Add collie and sx functional tests
+From: Thomas Huth <thuth@redhat.com>
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 Cc: Guenter Roeck <linux@roeck-us.net>
 References: <20241017163247.711244-1-peter.maydell@linaro.org>
-From: Thomas Huth <thuth@redhat.com>
+ <dcf06645-dac0-4099-8946-38ca9deaeccf@redhat.com>
 Autocrypt: addr=thuth@redhat.com; keydata=
  xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
  yYkTm9+7zBUc0sW5AuPGR/dp3pSLX/yFWsA/UB4nJsHqgDvDU7BImSeiTrnpMOTXb7Arw2a2
@@ -152,22 +153,22 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <20241017163247.711244-1-peter.maydell@linaro.org>
+In-Reply-To: <dcf06645-dac0-4099-8946-38ca9deaeccf@redhat.com>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -42
-X-Spam_score: -4.3
-X-Spam_bar: ----
-X-Spam_report: (-4.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.527,
+X-Spam_score_int: -25
+X-Spam_score: -2.6
+X-Spam_bar: --
+X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.527,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-1.699,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -182,53 +183,101 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: cK3w2QWHBXMO
+X-TUID: SnEJoaKX+IHU
 
-On 17/10/2024 18.32, Peter Maydell wrote:
-> This patchset adds new functional tests for the collie and sx1
-> boards, which are the only remaining ones that survived the
-> culling of the OMAP/PXA2xx/strongarm machines.
+On 21/10/2024 09.15, Thomas Huth wrote:
+> On 17/10/2024 18.32, Peter Maydell wrote:
+>> This patchset adds new functional tests for the collie and sx1
+>> boards, which are the only remaining ones that survived the
+>> culling of the OMAP/PXA2xx/strongarm machines.
+>>
+>> For these tests I'm indebted to Guenter Roeck, who has kindly
+>> built and made available the kernel images, rootfs, etc and
+>> documented the commands needed to boot them. All I've done
+>> here is wrap those up into test cases in our testcase
+>> framework by cribbing from some of our existing test code.
+>>
+>> Based-on: 20241017162755.710698-1-peter.maydell@linaro.org
+>> ("hw/sd/omap_mmc: Don't use sd_cmd_type_t")
+>>   -- the sd card test for the sx1 board will not pass without
+>>      that bugfix
+>>
+>> thanks
+>> -- PMM
+>>
+>> Peter Maydell (2):
+>>    tests/functional: Add a functional test for the collie board
+>>    tests/functional: Add a functional test for the sx1 board
+>>
+>>   MAINTAINERS                         |  1 +
+>>   tests/functional/meson.build        |  3 ++
+>>   tests/functional/test_arm_collie.py | 31 +++++++++++++
+>>   tests/functional/test_arm_sx1.py    | 72 +++++++++++++++++++++++++++++
+>>   4 files changed, 107 insertions(+)
+>>   create mode 100755 tests/functional/test_arm_collie.py
+>>   create mode 100755 tests/functional/test_arm_sx1.py
 > 
-> For these tests I'm indebted to Guenter Roeck, who has kindly
-> built and made available the kernel images, rootfs, etc and
-> documented the commands needed to boot them. All I've done
-> here is wrap those up into test cases in our testcase
-> framework by cribbing from some of our existing test code.
-> 
-> Based-on: 20241017162755.710698-1-peter.maydell@linaro.org
-> ("hw/sd/omap_mmc: Don't use sd_cmd_type_t")
->   -- the sd card test for the sx1 board will not pass without
->      that bugfix
-> 
-> thanks
-> -- PMM
-> 
-> Peter Maydell (2):
->    tests/functional: Add a functional test for the collie board
->    tests/functional: Add a functional test for the sx1 board
-> 
->   MAINTAINERS                         |  1 +
->   tests/functional/meson.build        |  3 ++
->   tests/functional/test_arm_collie.py | 31 +++++++++++++
->   tests/functional/test_arm_sx1.py    | 72 +++++++++++++++++++++++++++++
->   4 files changed, 107 insertions(+)
->   create mode 100755 tests/functional/test_arm_collie.py
->   create mode 100755 tests/functional/test_arm_sx1.py
+> Thanks, I'll queue the patches [...]
 
-Thanks, I'll queue the patches with this little fix squashed into the second 
-patch:
+Unfortunately, the test_arm_sx1.SX1Test.test_arm_sx1_sd test is not working 
+for me, it seems to fail the shutdown of the QEMU binary:
 
-diff --git a/MAINTAINERS b/MAINTAINERS
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -1948,6 +1948,7 @@ S: Maintained
-  F: hw/*/omap*
-  F: include/hw/arm/omap.h
-  F: docs/system/arm/sx1.rst
-+F: tests/functional/test_arm_sx1.py
+ok 1 test_arm_sx1.SX1Test.test_arm_sx1_flash
+ok 2 test_arm_sx1.SX1Test.test_arm_sx1_initrd
+qemu received signal 9; command: "/home/thuth/tmp/qemu-build/qemu-system-arm 
+-display none -vga none -chardev socket,id=mon,fd=5 -mon 
+chardev=mon,mode=control -machine sx1 -chardev socket,id=console,fd=10 
+-serial chardev:console -append kunit.enable=0 root=/dev/mmcblk0 rootwait 
+console=ttyS0,115200 earlycon=uart8250,mmio32,0xfffb0000,115200n8 -no-reboot 
+-snapshot -drive 
+format=raw,if=sd,file=/home/thuth/.cache/qemu/download/c1db7f43ef92469ebc8605013728c8950e7608439f01d13678994f0ce101c3a8 
+-kernel 
+/home/thuth/.cache/qemu/download/a0271899a8dc2165f9e0adb2d0a57fc839ae3a469722ffc56c77e108a8887615"
+Traceback (most recent call last):
+   File "/home/thuth/devel/qemu/python/qemu/machine/machine.py", line 611, 
+in _do_shutdown
+     self._soft_shutdown(timeout)
+   File "/home/thuth/devel/qemu/python/qemu/machine/machine.py", line 596, 
+in _soft_shutdown
+     self._subp.wait(timeout=timeout)
+   File "/usr/lib64/python3.12/subprocess.py", line 1264, in wait
+     return self._wait(timeout=timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   File "/usr/lib64/python3.12/subprocess.py", line 2045, in _wait
+     raise TimeoutExpired(self.args, timeout)
+subprocess.TimeoutExpired: Command 
+'('/home/thuth/tmp/qemu-build/qemu-system-arm', '-display', 'none', '-vga', 
+'none', '-chardev', 'socket,id=mon,fd=5', '-mon', 
+'chardev=mon,mode=control', '-machine', 'sx1', '-chardev', 
+'socket,id=console,fd=10', '-serial', 'chardev:console', '-append', 
+'kunit.enable=0 root=/dev/mmcblk0 rootwait console=ttyS0,115200 
+earlycon=uart8250,mmio32,0xfffb0000,115200n8', '-no-reboot', '-snapshot', 
+'-drive', 
+'format=raw,if=sd,file=/home/thuth/.cache/qemu/download/c1db7f43ef92469ebc8605013728c8950e7608439f01d13678994f0ce101c3a8', 
+'-kernel', 
+'/home/thuth/.cache/qemu/download/a0271899a8dc2165f9e0adb2d0a57fc839ae3a469722ffc56c77e108a8887615')' 
+timed out after 30 seconds
 
-  IPack
-  M: Alberto Garcia <berto@igalia.com>
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+   File "/home/thuth/devel/qemu/tests/functional/test_arm_sx1.py", line 58, 
+in test_arm_sx1_sd
+     self.vm.wait()
+   File "/home/thuth/devel/qemu/python/qemu/machine/machine.py", line 666, 
+in wait
+     self.shutdown(timeout=timeout)
+   File "/home/thuth/devel/qemu/python/qemu/machine/machine.py", line 648, 
+in shutdown
+     self._do_shutdown(timeout)
+   File "/home/thuth/devel/qemu/python/qemu/machine/machine.py", line 618, 
+in _do_shutdown
+     raise AbnormalShutdown("Could not perform graceful shutdown") \
+qemu.machine.machine.AbnormalShutdown: Could not perform graceful shutdown
+
+not ok 3 test_arm_sx1.SX1Test.test_arm_sx1_sd
+
+Could you please have a look?
 
   Thomas
 

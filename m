@@ -1,233 +1,208 @@
-Received: by 2002:a17:505:18c3:b0:1be9:327d:8ee3 with SMTP id tt3csp2023137njb;
-        Sun, 20 Oct 2024 14:21:23 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVrpsS6kjWHk6ODHVxxzdVCzsJp3sIiosFcValUD5f8G6d2eo6orwkEgQtWWmUjrFiEgSjazc3QD00Stw==@linaro.org
-X-Google-Smtp-Source: AGHT+IEAhOlKBTvCvyX8GWggbu8xQFj3RSN+qtDopUlnAo6XIiofF09TBcQq8SMe0iOHroVC/XaE
-X-Received: by 2002:a05:620a:40d2:b0:7b1:44e8:f756 with SMTP id af79cd13be357-7b157b3fe33mr1165410085a.6.1729459283190;
-        Sun, 20 Oct 2024 14:21:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1729459283; cv=none;
+Received: by 2002:a17:505:18c3:b0:1be9:327d:8ee3 with SMTP id tt3csp2113315njb;
+        Sun, 20 Oct 2024 19:09:48 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCW5QEWCEpN+/oNgl3owv4nE7cvCPrXF0BbTw5JyfIEMNGYiiGq6cmkalmerXogEM7/z7GE6pxc5phblfg==@linaro.org
+X-Received: by 2002:a17:903:2302:b0:207:1675:6709 with SMTP id d9443c01a7336-20e59a97bf7mr145466765ad.0.1729476588463;
+        Sun, 20 Oct 2024 19:09:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1729476588; cv=none;
         d=google.com; s=arc-20240605;
-        b=joQ2ABDP0wj8jnve55fcobJ3NE8X4nPsEzrUVd8feoLkA+nPcWMdAqiSOr6LN9lr4a
-         8Y687sItpfcxZnlgVnvSozHQQppMUX7/77/n8NH5kzdECN+cCPvgyugJjq4gMUGSWlDw
-         nQqghzVaaEfcp/HHs6IVqHvsX/ZUnR5iSeutnjETkOCTZREffezJ7eudidiHUmSL9Ol7
-         43wue6epH+30IP3K8162NpmD/aMmMQQerAUVy/u4UV5XYXiRyU2npEHnM0bgW9fQdF1R
-         C+6z0fjpnMlFfGtZ7NK1ucX0TTmdpD4d/JZ9SppgRg75z1DzgNBtEj6BOPmpZc7Xdhh4
-         0+Kg==
+        b=ZFQSyswQUyJ2X1R2nJKJf97CCqoXexjvHql+znSIxDpB8a5Tb3B2+phzdx3WQeMKeb
+         X9m5rB97/7+7evDkjsskCyzklEr5nAU9SFrF/CBnfghOrbN5KVJklZvRDSPucd5tsWIT
+         lJ6zPQzQLe6pqVUCVi2dIZctyrLJJVx1qiOmpUytSFOabFtHwH3SnEkDMH7l22pcGNNl
+         w8CmwtIDHsEbaGdBK1Zgl0rir8OunK9Hiwev1IIJzDl0lM06p61035Cs6OcE4AaM4JvQ
+         DWoqONps8Xzg9ECi/Cu6fA7kSPSkwzPT8VeuZjZlZTy+QiGH8ADgnKLZEmQR+6LC8uEs
+         ilig==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=IAEcDPZ3CQ9oAuIMRzDL1U+GIthteurNbBFokihTWZE=;
-        fh=5siOicwbB24Y2C2As2hu7VI00ywwRbssKCkUvu7TzsE=;
-        b=kye6RfKJoUdOzovYcCbIVdNvmnRFAjokDo5JRBHPqYRsPzAOFruz3KRAnkn6IrD8R9
-         2vSiXamYWRDi5+e9A5XGXlTIPSrT1F2c5Xp6UDPetM2x9w/XGUPe4dieb3EJvlAMoABJ
-         AsHk2nmTCHEsSBm+UUMPjNgMy7b+gCGiIMuAtQLIZ339TuZ4X8OpXcZV6NHsyyp0Ts+8
-         1LnZzxUZuGAs3BS/ZdQWBQqRpmA+XL2dxL16/gDFSueXprEon2LBJv56ToG1scO0IVlb
-         5P6AT/MSJwKW6FD5CsCp6T+QtFKXXIGMggyly1cpXQZtB2J8D/AfeYX+rAjjL71n49V4
-         p1tw==;
+        bh=t+B5k0OIf9JD/kCuC10w5oEnui5YaC88U76aEr+T5BY=;
+        fh=2en/26h9G2uPYW4lzRvl0qMF47JvSDpycmzAHuAubDg=;
+        b=BaVpekT8SraH65vMZvrTCoLUCS9TftY/ZOPx3Br5UoXya7zlfYfQGK8WoZYuS6QEmH
+         q2fPdGADTlxg+bHL00KUW3JXPvtzJJH0vRrpJUxVJu54oCpq4+XpIs/GuP+mUDDWu7xe
+         g1C+jpfgODiK1d21DP4SLuuUKMJBAkCZjSUn2KgMYno6kM7d7br0sUQ0wewTLmcQwGwQ
+         lpc6BYtAoljTpU1G+NCyx9B50TgzrVEIj8SNcOYxkfVeKZHLY5Coxnc94BvW10dn9P6k
+         t4H6sSGvLOudfjN+glpP460juGARrrz/qChJFDiq6IWhoSliRK8yRVCKYgR5w700uZZJ
+         33Dw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20230601 header.b=IERlEOoD;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dara=fail header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7b165a8b74fsi250015185a.531.2024.10.20.14.21.23
+       dkim=pass header.i=@linaro.org header.s=google header.b=vRwwr4Iq;
+       spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <gustavo.romero@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d9443c01a7336-20e7f0f33dcsor13128055ad.5.2024.10.20.19.09.48
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 20 Oct 2024 14:21:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Sun, 20 Oct 2024 19:09:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20230601 header.b=IERlEOoD;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dara=fail header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1t2dMC-0000rh-27; Sun, 20 Oct 2024 17:21:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
- id 1t2dMA-0000r1-Rb; Sun, 20 Oct 2024 17:20:58 -0400
-Received: from mail-pg1-x531.google.com ([2607:f8b0:4864:20::531])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
- id 1t2dM8-0002Sq-Lk; Sun, 20 Oct 2024 17:20:58 -0400
-Received: by mail-pg1-x531.google.com with SMTP id
- 41be03b00d2f7-656d8b346d2so2453405a12.2; 
- Sun, 20 Oct 2024 14:20:54 -0700 (PDT)
+       dkim=pass header.i=@linaro.org header.s=google header.b=vRwwr4Iq;
+       spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1729459254; x=1730064054; darn=nongnu.org;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:sender:from:to:cc:subject:date:message-id
- :reply-to; bh=IAEcDPZ3CQ9oAuIMRzDL1U+GIthteurNbBFokihTWZE=;
- b=IERlEOoDck8SILRLRRHnMsvwOZtwWsv9stXiVcdk/5fUP4TRrVnoPeQ8Vv23q59uQ8
- pq5KwJXWioKlYkL5LPv2AymgB0QzipXaM6L8kPKJ17BpEJvqHjOKNTIs/wFScEXCPeaY
- YZQfc986yIE5n8NoLr0JLDRKcKkHEggQvOD0vc2irFiJH8R1Lqm/wawsyjN9jbiC31/F
- 2NN3rL9S1qRJG+GiASLLYIzUSqGavr0hR3MihT5DlnjXgJcKqFqwx2rlqQIyo7OfG/oV
- YwE27XDPK/Nop2BUm44BqgKAopdMxJW+83d9gascyo+swVct1w7xy4LY7+12G7wVZaM2
- 1LLg==
+        d=linaro.org; s=google; t=1729476588; x=1730081388; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=t+B5k0OIf9JD/kCuC10w5oEnui5YaC88U76aEr+T5BY=;
+        b=vRwwr4IqxUU349SuLWIP6J94mXCJ5w0x2yhDwn2wYsLXAnKxTeX0qlKK53F43iRlxU
+         HudNYuiz96aAPOava2iHrNEUkDPryTjF48pomi1qDvT++BpprAVXGL+HX79943Laxlxs
+         HtLCNbsfNxQfXqtFoNUhLyWy0GSaUX2J60mH2OBl6WPaj1g7eP2EOUwj7U80wnlb194z
+         8+3qWPp6jnsg86/6+yGbmq3nja1WBs2wdNf0cG78FK/oBsOeQlbmVM0K0tO2xFr2vS9N
+         6jbDr3/pJYvhxPZlIvESu/vx9D7UWPc6REa0sVsqLXiRVO24I6omygeI/31XUH5OJpnt
+         latA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1729459254; x=1730064054;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:sender:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=IAEcDPZ3CQ9oAuIMRzDL1U+GIthteurNbBFokihTWZE=;
- b=T8zcnbG0jPDK+nzS0cbTR1Yyi6L0QB+PREynyKBOI4SnlMmgWp+Y6071YQljKjzYq8
- hbEcq3xCQZz2PblscMjmSKPkLyaexB25/K7ySaql009Jvlqh8epLUyJlfs12NTepvntm
- 4xbsWBbW1U2AxXNImI78DmPPVets/pvHapxoAi5Fv0V0c3viknlxQclMF+5COxXLLs+u
- vOVxQKWsEsk+ALd7BA/r+j8WYKLINF3nmx9WDcZ9hPO5rW8OXRFqe6uzWgI7Ii4r4W9I
- rcUdZcDeQBQjztE2y+dIzEX/EFx50UbF3qdyVVf3QRtEPxiGDDRlMM3+vZTe+drVFcHx
- 2PxQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVXMFTrBiGP8v0MK/a3svaJDzh47d37kVxeVATXslkTOHyX7suXOXyHI52PaxtvCDeixT3mljtbD/s/iA==@nongnu.org,
- AJvYcCWFEBXUUJQ3m+TPRrBjfSxR1AMYzYp3aMeP0DnHd4p8LAhnetMsWPwg4OvTEKxiwSj2F1SBqh58Hw==@nongnu.org,
- AJvYcCWz5nh7TLwnI5tr3FmoV9wyTmCZDpZttUMu8mIA+F5vchPHWX91Ba8Zl5qZr3Seo/5yuV2xZmATPbUSyA==@nongnu.org
-X-Gm-Message-State: AOJu0Yy/5p4n6LgftiK7biC28jPLkw/ec1IDaZcg4AhNaLAK3Yyg77Cx
- LvXCnGeOAz710+m0BP3X3LU/t68jekV7nbVn25n/JWPMeQ3QwcGt
-X-Received: by 2002:a17:90a:e392:b0:2e2:cd5e:7eef with SMTP id
- 98e67ed59e1d1-2e5618d9edamr10877559a91.27.1729459253544; 
- Sun, 20 Oct 2024 14:20:53 -0700 (PDT)
-Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
- by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-2e5ad4ed73fsm2000148a91.44.2024.10.20.14.20.51
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 20 Oct 2024 14:20:52 -0700 (PDT)
-Date: Sun, 20 Oct 2024 14:20:50 -0700
-From: Guenter Roeck <linux@roeck-us.net>
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongu.org,
- qemu-s390x@nongnu.org, qemu-riscv@nongnu.org,
- Nicholas Piggin <npiggin@gmail.com>, BALATON Zoltan <balaton@eik.bme.hu>
-Subject: Re: [PATCH v3 06/12] target/ppc: Split out helper_dbczl for 970
-Message-ID: <2ecab2a6-649b-4c24-a287-58b74c39b412@roeck-us.net>
-References: <20240719010707.1319675-1-richard.henderson@linaro.org>
- <20240719010707.1319675-7-richard.henderson@linaro.org>
+        d=1e100.net; s=20230601; t=1729476588; x=1730081388;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=t+B5k0OIf9JD/kCuC10w5oEnui5YaC88U76aEr+T5BY=;
+        b=YqUTa0WvAtlfI2roDl7gimc0sWslhT5VWYQNy7QCJ0/u9+/ywsu/692rcL571fH4No
+         R6TXUDevR42oTr7p94eOF9sMQjYKDevvXlk3qs9Irw559McHHAs8cNOHg1T8jc/ctDyA
+         k//oPE579kQVkcL8o3DRJPNLF/un7KxkpO77C87z0L9vxUsfO+ZWNH2Q6puvQ4dMOBZM
+         wkmFtmUbhJcUQ8HCLxlKASmwYa8Cm8+OT+EfofY5MLqaCCrH7yzJC1VOuN2CBwfD2OTU
+         vT8Vypo2JWE8NW8RmEF1R6ChGbfgcK40pxa56P6yLViR2rfEHf2NpXjdShjWz3T1BeJT
+         A7Bg==
+X-Forwarded-Encrypted: i=1; AJvYcCXuD19hNnBmwvagy+5rGtDCGyMe9NQBupLhTuy/jlDAgHN5hZgW0NU32CVnLjKRlX/IYRbGyzXA0yVfxg==@linaro.org
+X-Gm-Message-State: AOJu0YxRCKJhs6XSliH0Wh3HQpSy91fSywiXMkAU3aTIlgoat+HojNwh
+	v9LqERDTz8MH7C6CG5Tu4oELh96TXzS8xC1jbfSe2VQ60NttvRBWOgUxwoNIpBEptw==
+X-Google-Smtp-Source: AGHT+IFSPN/N8NU7wAYTx1hTZ3wa3ZfNOxByIPkQJZLgNgoOOvwgKGcb7UA/LYVie5Zh5e87Xv/X/g==
+X-Received: by 2002:a17:903:40ce:b0:205:709e:1949 with SMTP id d9443c01a7336-20e5aaab6camr108995705ad.57.1729476587944;
+        Sun, 20 Oct 2024 19:09:47 -0700 (PDT)
+Return-Path: <gustavo.romero@linaro.org>
+Received: from [192.168.0.102] ([187.121.94.4])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-20e7eee622dsm15941015ad.6.2024.10.20.19.09.35
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 20 Oct 2024 19:09:47 -0700 (PDT)
+Message-ID: <700f6b4b-e609-42fe-afaf-e9ea62a049e1@linaro.org>
+Date: Sun, 20 Oct 2024 23:09:33 -0300
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20240719010707.1319675-7-richard.henderson@linaro.org>
-Received-SPF: pass client-ip=2607:f8b0:4864:20::531;
- envelope-from=groeck7@gmail.com; helo=mail-pg1-x531.google.com
-X-Spam_score_int: -15
-X-Spam_score: -1.6
-X-Spam_bar: -
-X-Spam_report: (-1.6 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_ENVFROM_END_DIGIT=0.25,
- FREEMAIL_FORGED_FROMDOMAIN=0.001, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=0.17, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: +2CjxlFx/+iM
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH V1 3/4] hw/acpi: Reflect ACPI vCPU {present,enabled}
+ states in ACPI _STA.{PRES,ENA} Bits
+To: Salil Mehta <salil.mehta@huawei.com>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, mst@redhat.com
+Cc: maz@kernel.org, jean-philippe@linaro.org, jonathan.cameron@huawei.com,
+ lpieralisi@kernel.org, peter.maydell@linaro.org,
+ richard.henderson@linaro.org, imammedo@redhat.com, andrew.jones@linux.dev,
+ david@redhat.com, philmd@linaro.org, eric.auger@redhat.com, will@kernel.org,
+ ardb@kernel.org, oliver.upton@linux.dev, pbonzini@redhat.com,
+ gshan@redhat.com, rafael@kernel.org, borntraeger@linux.ibm.com,
+ alex.bennee@linaro.org, npiggin@gmail.com, harshpb@linux.ibm.com,
+ linux@armlinux.org.uk, darren@os.amperecomputing.com,
+ ilkka@os.amperecomputing.com, vishnu@os.amperecomputing.com,
+ karl.heubaum@oracle.com, miguel.luis@oracle.com, salil.mehta@opnsrc.net,
+ zhukeqian1@huawei.com, wangxiongfeng2@huawei.com, wangyanan55@huawei.com,
+ jiakernel2@gmail.com, maobibo@loongson.cn, lixianglai@loongson.cn,
+ shahuang@redhat.com, zhao1.liu@intel.com, linuxarm@huawei.com
+References: <20241014192205.253479-1-salil.mehta@huawei.com>
+ <20241014192205.253479-4-salil.mehta@huawei.com>
+Content-Language: en-US
+From: Gustavo Romero <gustavo.romero@linaro.org>
+In-Reply-To: <20241014192205.253479-4-salil.mehta@huawei.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-TUID: MGvvaTnQnLyh
 
-Hi,
+Hi Salil,
 
-On Fri, Jul 19, 2024 at 11:07:01AM +1000, Richard Henderson wrote:
-> We can determine at translation time whether the insn is or
-> is not dbczl.  We must retain a runtime check against the
-> HID5 register, but we can move that to a separate function
-> that never affects other ppc models.
+On 10/14/24 16:22, Salil Mehta wrote:
+> Reflect the ACPI CPU hotplug `is_{present, enabled}` states in the `_STA.PRES`
+> (presence) and `_STA.ENA` (enabled) bits when the guest kernel evaluates the
+> ACPI `_STA` method during initialization, as well as when vCPUs are hot-plugged
+> or hot-unplugged. The presence of unplugged vCPUs may need to be deliberately
+> *simulated* at the ACPI level to maintain a *persistent* view of vCPUs for the
+> guest kernel.
 > 
-> Reviewed-by: Nicholas Piggin <npiggin@gmail.com>
-> Reviewed-by: BALATON Zoltan <balaton@eik.bme.hu>
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
+> ---
+>   hw/acpi/cpu.c | 26 ++++++++++++++++++++++----
+>   1 file changed, 22 insertions(+), 4 deletions(-)
+> 
+> diff --git a/hw/acpi/cpu.c b/hw/acpi/cpu.c
+> index 700aa855e9..23ea2b9c70 100644
+> --- a/hw/acpi/cpu.c
+> +++ b/hw/acpi/cpu.c
+> @@ -63,10 +63,11 @@ static uint64_t cpu_hotplug_rd(void *opaque, hwaddr addr, unsigned size)
+>       cdev = &cpu_st->devs[cpu_st->selector];
+>       switch (addr) {
+>       case ACPI_CPU_FLAGS_OFFSET_RW: /* pack and return is_* fields */
+> -        val |= cdev->cpu ? 1 : 0;
+> +        val |= cdev->is_enabled ? 1 : 0;
+>           val |= cdev->is_inserting ? 2 : 0;
+>           val |= cdev->is_removing  ? 4 : 0;
+>           val |= cdev->fw_remove  ? 16 : 0;
+> +        val |= cdev->is_present ? 32 : 0;
+>           trace_cpuhp_acpi_read_flags(cpu_st->selector, val);
+>           break;
+>       case ACPI_CPU_CMD_DATA_OFFSET_RW:
+> @@ -376,6 +377,7 @@ const VMStateDescription vmstate_cpu_hotplug = {
+>   #define CPU_REMOVE_EVENT  "CRMV"
+>   #define CPU_EJECT_EVENT   "CEJ0"
+>   #define CPU_FW_EJECT_EVENT "CEJF"
+> +#define CPU_PRESENT       "CPRS"
+>   
+>   void build_cpus_aml(Aml *table, MachineState *machine, CPUHotplugFeatures opts,
+>                       build_madt_cpu_fn build_madt_cpu, hwaddr base_addr,
+> @@ -436,7 +438,9 @@ void build_cpus_aml(Aml *table, MachineState *machine, CPUHotplugFeatures opts,
+>           aml_append(field, aml_named_field(CPU_EJECT_EVENT, 1));
+>           /* tell firmware to do device eject, write only */
+>           aml_append(field, aml_named_field(CPU_FW_EJECT_EVENT, 1));
+> -        aml_append(field, aml_reserved_field(3));
+> +        /* 1 if present, read only */
+> +        aml_append(field, aml_named_field(CPU_PRESENT, 1));
+> +        aml_append(field, aml_reserved_field(2));
+>           aml_append(field, aml_named_field(CPU_COMMAND, 8));
+>           aml_append(cpu_ctrl_dev, field);
+>   
+> @@ -466,6 +470,7 @@ void build_cpus_aml(Aml *table, MachineState *machine, CPUHotplugFeatures opts,
+>           Aml *ctrl_lock = aml_name("%s.%s", cphp_res_path, CPU_LOCK);
+>           Aml *cpu_selector = aml_name("%s.%s", cphp_res_path, CPU_SELECTOR);
+>           Aml *is_enabled = aml_name("%s.%s", cphp_res_path, CPU_ENABLED);
+> +        Aml *is_present = aml_name("%s.%s", cphp_res_path, CPU_PRESENT);
+>           Aml *cpu_cmd = aml_name("%s.%s", cphp_res_path, CPU_COMMAND);
+>           Aml *cpu_data = aml_name("%s.%s", cphp_res_path, CPU_DATA);
+>           Aml *ins_evt = aml_name("%s.%s", cphp_res_path, CPU_INSERT_EVENT);
+> @@ -494,13 +499,26 @@ void build_cpus_aml(Aml *table, MachineState *machine, CPUHotplugFeatures opts,
+>           {
+>               Aml *idx = aml_arg(0);
+>               Aml *sta = aml_local(0);
+> +            Aml *ifctx2;
+> +            Aml *else_ctx;
+>   
+>               aml_append(method, aml_acquire(ctrl_lock, 0xFFFF));
+>               aml_append(method, aml_store(idx, cpu_selector));
+>               aml_append(method, aml_store(zero, sta));
+> -            ifctx = aml_if(aml_equal(is_enabled, one));
+> +            ifctx = aml_if(aml_equal(is_present, one));
+>               {
+> -                aml_append(ifctx, aml_store(aml_int(0xF), sta));
+> +                ifctx2 = aml_if(aml_equal(is_enabled, one));
+> +                {
+> +                    /* cpu is present and enabled */
+> +                    aml_append(ifctx2, aml_store(aml_int(0xF), sta));
+> +                }
+> +                aml_append(ifctx, ifctx2);
+> +                else_ctx = aml_else();
+> +                {
+> +                    /* cpu is present but disabled */
+> +                    aml_append(else_ctx, aml_store(aml_int(0xD), sta));
 
-I see an odd failure when trying to boot ppc64 images in qemu v9.1.0 and
-v9.1.1.
+Here, the return value for _STA method is set to reflect the state of
+CPU_PRESENT and CPU_ENABLED fields. I can't see these two fields being
+mapped to AcpiCpuStatus.{is_present,is_enabled}. They look to be mapped
+to the MMIO region (base_addr), which doesn't mapped to AcpiCpuStatus
+afaics. So where CPU_PRESENT and CPU_ENABLED are set and where exactly
+they reside?
 
-Starting network: udhcpc: started, v1.36.1
-malloc(): corrupted top size
-Aborted
-/usr/share/udhcpc/default.script: line 41: can't create : nonexistent directory
 
-I bisected the problem to this patch; bisect log is attached.
-I also found that the problem has been fixed in mainline qemu. Bisect
-points to commit: f168808d7d10 ("accel/tcg: Add TCGCPUOps.tlb_fill_align")
-as the fix. I attached this bisect log as well.
+Cheers,
+Gustavo
 
-Reverting this patch isn't easy due to several follow-up commits. Applying
-commit f168808d7d10 plus several preceding commits on top of v9.1.1 seems
-to fix the problem. The commits I applied are
-
-da335fe12a5d include/exec/memop: Move get_alignment_bits from tcg.h
-c5809eee452b include/exec/memop: Rename get_alignment_bits
-e5b063e81fd2 include/exec/memop: Introduce memop_atomicity_bits
-f168808d7d10 accel/tcg: Add TCGCPUOps.tlb_fill_align
-
-Obviously I have no idea if this is even remotely correct, so please take
-this report as purely informational in case someone else observes a similar
-problem.
-
-Thanks,
-Guenter
-
----
-Bug introduced:
-
-# bad: [fd1952d814da738ed107e05583b3e02ac11e88ff] Update version for v9.1.0 release
-# good: [c25df57ae8f9fe1c72eee2dab37d76d904ac382e] Update version for 9.0.0 release
-git bisect start 'v9.1.0' 'v9.0.0'
-# good: [2529ea2d561ea9fe359fb19ebdcfeb8b6cddd219] hw/acpi/ich9: Remove dead code related to 'acpi_memory_hotplug'
-git bisect good 2529ea2d561ea9fe359fb19ebdcfeb8b6cddd219
-# good: [76e375fc3c538bd6e4232314f693b56536a50b73] docs/qapidoc: add QMP highlighting to annotated qmp-example blocks
-git bisect good 76e375fc3c538bd6e4232314f693b56536a50b73
-# bad: [60d30cff8472c0bf05a40b0f55221fb4efb768e2] target/ppc: Move SPR indirect registers into PnvCore
-git bisect bad 60d30cff8472c0bf05a40b0f55221fb4efb768e2
-# bad: [6c635326425091e164b563a7ce96408ef74ff2ec] vfio/{iommufd,container}: Remove caps::aw_bits
-git bisect bad 6c635326425091e164b563a7ce96408ef74ff2ec
-# good: [23fa74974d8c96bc95cbecc0d4e2d90f984939f6] Merge tag 'pull-target-arm-20240718' of https://git.linaro.org/people/pmaydell/qemu-arm into staging
-git bisect good 23fa74974d8c96bc95cbecc0d4e2d90f984939f6
-# good: [c135d5eaafe7aa2533da663d8e5a34a424b71eb9] tests/tcg/aarch64: Fix test-mte.py
-git bisect good c135d5eaafe7aa2533da663d8e5a34a424b71eb9
-# good: [6af69d02706c821797802cfd56acdac13a7c9422] Merge tag 'nvme-next-pull-request' of https://gitlab.com/birkelund/qemu into staging
-git bisect good 6af69d02706c821797802cfd56acdac13a7c9422
-# bad: [71bce0e1fb1a866dde4a4b6016fc18b09f317338] Merge tag 'pull-tcg-20240723' of https://gitlab.com/rth7680/qemu into staging
-git bisect bad 71bce0e1fb1a866dde4a4b6016fc18b09f317338
-# bad: [62fe57c6d23fe8136d281f0e37ec8a9fab08b60a] target/ppc: Split out helper_dbczl for 970
-git bisect bad 62fe57c6d23fe8136d281f0e37ec8a9fab08b60a
-# good: [3b9991e35c08be7fd6b84090b2114ff1bfd44d3f] target/arm: Use set/clear_helper_retaddr in SVE and SME helpers
-git bisect good 3b9991e35c08be7fd6b84090b2114ff1bfd44d3f
-# good: [521a80d895ec8ef0200dcac9b9b19e60b0cc1d1a] target/ppc: Hoist dcbz_size out of dcbz_common
-git bisect good 521a80d895ec8ef0200dcac9b9b19e60b0cc1d1a
-# first bad commit: [62fe57c6d23fe8136d281f0e37ec8a9fab08b60a] target/ppc: Split out helper_dbczl for 970
-
----
-Bug fixed:
-
-# pass: [72b0b80714066a435502b67cdb55a7868ba0487d] Merge tag 'for-upstream' of https://gitlab.com/bonzini/qemu into staging
-# fail: [fd1952d814da738ed107e05583b3e02ac11e88ff] Update version for v9.1.0 release
-git bisect start '--term-bad=pass' '--term-good=fail' 'HEAD' 'v9.1.0'
-# fail: [4ae7d11b70a840eec7aa27269093b15d04ebc84e] Merge tag 'pull-tcg-20240922' of https://gitlab.com/rth7680/qemu into staging
-git bisect fail 4ae7d11b70a840eec7aa27269093b15d04ebc84e
-# fail: [b5ab62b3c0050612c7f9b0b4baeb44ebab42775a] Merge tag 'for-upstream' of https://gitlab.com/bonzini/qemu into staging
-git bisect fail b5ab62b3c0050612c7f9b0b4baeb44ebab42775a
-# pass: [1bfb726112ea4fda07c988f08df32d1eebb9abec] ui/pixman: generalize shared_image_destroy
-git bisect pass 1bfb726112ea4fda07c988f08df32d1eebb9abec
-# fail: [7e3b6d8063f245d27eecce5aabe624b5785f2a77] Merge tag 'crypto-fixes-pull-request' of https://gitlab.com/berrange/qemu into staging
-git bisect fail 7e3b6d8063f245d27eecce5aabe624b5785f2a77
-# pass: [e530581ee06573fcf48c7f7a6c3f8ec6e5809243] target/arm: Fix alignment fault priority in get_phys_addr_lpae
-git bisect pass e530581ee06573fcf48c7f7a6c3f8ec6e5809243
-# pass: [795592fef7d5d66a67b95a7f45cc1a84883db6a8] accel/tcg: Use the alignment test in tlb_fill_align
-git bisect pass 795592fef7d5d66a67b95a7f45cc1a84883db6a8
-# fail: [9d08a70ddc08e9b6ecf870fd232531c78fe0b208] tests/tcg: Run test-proc-mappings.py on i386
-git bisect fail 9d08a70ddc08e9b6ecf870fd232531c78fe0b208
-# fail: [da335fe12a5da71a33d7afc2075a341f26213f53] include/exec/memop: Move get_alignment_bits from tcg.h
-git bisect fail da335fe12a5da71a33d7afc2075a341f26213f53
-# fail: [e5b063e81fd2b30aad1e9128238871c71b62a666] include/exec/memop: Introduce memop_atomicity_bits
-git bisect fail e5b063e81fd2b30aad1e9128238871c71b62a666
-# pass: [f168808d7d100ed96c52c4438c4ddb557bd086bf] accel/tcg: Add TCGCPUOps.tlb_fill_align
-git bisect pass f168808d7d100ed96c52c4438c4ddb557bd086bf
-# first pass commit: [f168808d7d100ed96c52c4438c4ddb557bd086bf] accel/tcg: Add TCGCPUOps.tlb_fill_align
+> +                }
+> +                aml_append(ifctx, else_ctx);
+>               }
+>               aml_append(method, ifctx);
+>               aml_append(method, aml_release(ctrl_lock));

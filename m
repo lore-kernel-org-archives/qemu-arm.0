@@ -1,202 +1,203 @@
-Received: by 2002:a17:505:c89:b0:1be9:327d:8ee3 with SMTP id hp9csp163740njb;
-        Thu, 3 Oct 2024 18:24:51 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUdNDVLcfN7cmn3PcWQIavVQgiIQLqEtPgGN8GBIKKbFdhSeG/2f2+urg6RfSlJFyYK9rZ28CI+tLeRiw==@linaro.org
-X-Google-Smtp-Source: AGHT+IG1Ke3OSZDTD9M4Mcq1DjPC85FhGNPhoBF0VdVb4NfneRaOzsw/HiPOK3JfmKPdedSanYAJ
-X-Received: by 2002:ac8:7d03:0:b0:447:f7cf:7022 with SMTP id d75a77b69052e-45d9baba01amr15641571cf.40.1728005091407;
-        Thu, 03 Oct 2024 18:24:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1728005091; cv=none;
+Received: by 2002:a17:505:18c3:b0:1be9:327d:8ee3 with SMTP id tt3csp2232474njb;
+        Mon, 21 Oct 2024 01:53:43 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCU3lovYJlkrCrfl7yD0tGOixO7ppC0dqK8WLZyT/jdJ4ssqQlXYvDOVAC/BgK6l9gnz757/D/dX7/fS8A==@linaro.org
+X-Google-Smtp-Source: AGHT+IHOmi2TndnuVlS59maik28i+H90fEV70jRBuUahnT4O2Ph/gEFiMGJVge0KZwPzELKRSNtn
+X-Received: by 2002:a05:622a:18a6:b0:460:8a9f:c4c9 with SMTP id d75a77b69052e-460aee06809mr178301631cf.45.1729500823312;
+        Mon, 21 Oct 2024 01:53:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1729500823; cv=none;
         d=google.com; s=arc-20240605;
-        b=GZaGTmNhv/xZRY0sRQp5lJajSvaytfdi7hRyE54sFdwcOYk3cUB4AYreEHCjlHbfHk
-         edkuHJY1z444OYrQ/zOfb5gK2q5fFZobcSwFzJNIxrgSeQSW7BCbdP7v6fFkvgNUNAOI
-         oFDo7yDyaZYI7r9zsHq1Qahant+kWKA2/SUUIqM29QPZC9CSJWbV4AgDbEoDwJXmyKax
-         PsN20pHUOHXm5Oycehjbi7CVpDKlf82qAVXD/I7hHHNd4A2ILKmAWEYuaohoUp/87NSB
-         eQ1FYoVKV3FRIqCnXQEu7Ns1PHzbDowi3/76e2YCOkPNM3rQ4SGgJ+RlGAXBLPJvJf8D
-         MJdw==
+        b=WOWSi9I8FNUlvmg8Q03/CpzZdwSV2sMr2ZvljEMCzlRlg1FWAghmF71dys0B49SYhZ
+         3uKISSASvR3+zqtLsVIUksnXtjgyT03dAhyIQz3Yoz5rpQY2kYlgEHqoaZ1IaNVmx0ck
+         Q9v96/xFzk1GJX6cffF/reFs9l1Ckw8Gy2gyam2d08Zf9F/ySgpmtXhootbU2vWf9c0O
+         QrY9MUdGj7Klnfy6EMbHMIhFAccTm6aMb/1WvooJbLIMyc+PzbgFyt0bcSoSDWUCJqPZ
+         3fe+2zM1moq6bhu9wRIsrQi4hpn2UKuzX/D20/Cts7cOPY4xP7ciAyn5MB7LT29u0Jhx
+         OVrw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:thread-index:thread-topic
-         :content-transfer-encoding:mime-version:subject:references
-         :in-reply-to:message-id:cc:to:from:date;
-        bh=SBAkCNv9Ot6ngw6DIzshJ9yKEyVF+/dQe3ZhfseUqM0=;
-        fh=2d9zA6Iqz1C1u1QTThiPOGdJCV/S7I7M7s/4UW6zT00=;
-        b=bJVqa/II++lQc/mqxe+3kVHSjPEFZgHP20KGskkaIUY63s1XrtahzWY1H25k1gX/tw
-         QnyFRbh1YlExM1Z9LgjuqvMYqyEerRX64iIl65MYfTe4liENSYpvMGBm3YG/Ca681gmA
-         Z//SfcpnDqxEhnjReq3cIL56k5ZZt99wJMXZ6b9oUie7MZIDau2UxT0ugR43IJ52kE3/
-         95OhGXdkPdsvGLUTpHB684c2cP/zeAAsLNGvfsgmXNYiG77RsfyEi+xynuaNdEwxtVSd
-         P3k2wXGWKC4yxZ11+7Sby6LoMVKAQeePmKYebe6shKXrAr2qmegHGuoUHTIr24wJq7OW
-         SUOQ==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id;
+        bh=glQSB6CGul5YepP14Vy0zddtJc9WhlJot3GcE4nIt8U=;
+        fh=4mlnkPeqTwuu2Qx8qreMlJHQU0w7aOUfwVS+XUkOkGE=;
+        b=Md+WEvxbXH1YibD6goxqpKlqxTUsbBOHFIP0NWxbsd+iYnshVdLVEaWof+BxGmrVUM
+         se05qjCTTdyIpmHfL3I09FS6nys1j9UPj1CsJmPJEfcdtXf8IzrfCG6Z7SXFrOC7PU4H
+         hpHgVig6OKFtWm/o7oBPV9BYxrMozk8A1xSFge+ogr8flCaUY1do4ZrfivPgXk+Kj4lc
+         zlKiKziuDMzJzHM/p8lFTHUo3bgIo7valkdoYgtpwJEJlJOxh5LNFaSpUbie4G2FK6Rz
+         IX5zNjXM4Dk41JhA92s3T3uju6FypwHLdZfQ6FZmRx2U/Fzz4HotCtgbqBgx0vk3/dZc
+         8jzQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-45d957440d2si19606141cf.789.2024.10.03.18.24.51
+        by mx.google.com with ESMTPS id d75a77b69052e-460d3d0eb60si35644411cf.409.2024.10.21.01.53.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 03 Oct 2024 18:24:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 21 Oct 2024 01:53:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1swX3V-0000tZ-TN; Thu, 03 Oct 2024 21:24:30 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1t2oAN-0006eT-H5; Mon, 21 Oct 2024 04:53:31 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sebastian.huber@embedded-brains.de>)
- id 1swX3U-0000tC-Fo; Thu, 03 Oct 2024 21:24:28 -0400
-Received: from dedi548.your-server.de ([85.10.215.148])
+ (Exim 4.90_1) (envelope-from <SRS0=cGEO=RR=kaod.org=clg@ozlabs.org>)
+ id 1t2oAH-0006dO-Uy; Mon, 21 Oct 2024 04:53:25 -0400
+Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sebastian.huber@embedded-brains.de>)
- id 1swX3S-0000BR-Hg; Thu, 03 Oct 2024 21:24:28 -0400
-Received: from sslproxy01.your-server.de ([78.46.139.224])
- by dedi548.your-server.de with esmtpsa  (TLS1.3) tls TLS_AES_256_GCM_SHA384
- (Exim 4.96.2) (envelope-from <sebastian.huber@embedded-brains.de>)
- id 1swX3N-000FUM-2A; Fri, 04 Oct 2024 03:24:21 +0200
-Received: from [82.100.198.138] (helo=mail.embedded-brains.de)
- by sslproxy01.your-server.de with esmtpsa (TLS1.3) tls TLS_AES_256_GCM_SHA384
- (Exim 4.96) (envelope-from <sebastian.huber@embedded-brains.de>)
- id 1swX3N-000CN5-1U; Fri, 04 Oct 2024 03:24:21 +0200
-Received: from localhost (localhost [127.0.0.1])
- by mail.embedded-brains.de (Postfix) with ESMTP id 01C69480024;
- Fri,  4 Oct 2024 03:24:21 +0200 (CEST)
-Received: from mail.embedded-brains.de ([127.0.0.1])
- by localhost (zimbra.eb.localhost [127.0.0.1]) (amavis, port 10032)
- with ESMTP id NutkYs6pUrXq; Fri,  4 Oct 2024 03:24:20 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
- by mail.embedded-brains.de (Postfix) with ESMTP id 91E47480175;
- Fri,  4 Oct 2024 03:24:20 +0200 (CEST)
-X-Virus-Scanned: amavis at zimbra.eb.localhost
-Received: from mail.embedded-brains.de ([127.0.0.1])
- by localhost (zimbra.eb.localhost [127.0.0.1]) (amavis, port 10026)
- with ESMTP id L8XOtu4SS9o9; Fri,  4 Oct 2024 03:24:20 +0200 (CEST)
-Received: from zimbra.eb.localhost (zimbra.eb.localhost [192.168.96.204])
- by mail.embedded-brains.de (Postfix) with ESMTP id 60C99480136;
- Fri,  4 Oct 2024 03:24:20 +0200 (CEST)
-Date: Fri, 4 Oct 2024 03:24:11 +0200 (CEST)
-From: Sebastian Huber <sebastian.huber@embedded-brains.de>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>
-Message-ID: <1809049101.17000.1728005051804.JavaMail.zimbra@embedded-brains.de>
-In-Reply-To: <CAFEAcA8Wf-PzAC-YGdma3YVETyuatLJHmvjrrb_kG2NjDSGs+Q@mail.gmail.com>
-References: <20240923035632.81304-1-sebastian.huber@embedded-brains.de>
- <20240923035632.81304-2-sebastian.huber@embedded-brains.de>
- <CAFEAcA8Wf-PzAC-YGdma3YVETyuatLJHmvjrrb_kG2NjDSGs+Q@mail.gmail.com>
-Subject: Re: [PATCH 1/2] hw/arm/boot: Use hooks if PSCI is disabled
+ (Exim 4.90_1) (envelope-from <SRS0=cGEO=RR=kaod.org=clg@ozlabs.org>)
+ id 1t2oAF-00074g-Og; Mon, 21 Oct 2024 04:53:25 -0400
+Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4XX8Gk00Q4z4x11;
+ Mon, 21 Oct 2024 19:53:18 +1100 (AEDT)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (Client did not present a certificate)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4XX8Gc4L81z4wb5;
+ Mon, 21 Oct 2024 19:53:09 +1100 (AEDT)
+Message-ID: <14c14099-440f-494f-9295-1781b60a4538@kaod.org>
+Date: Mon, 21 Oct 2024 10:53:07 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Originating-IP: [192.168.96.204]
-X-Mailer: Zimbra 9.0.0_GA_4653 (ZimbraWebClient - FF128 (Linux)/9.0.0_GA_4653)
-Thread-Topic: hw/arm/boot: Use hooks if PSCI is disabled
-Thread-Index: t7Yqbd/pJnIoutZ9d7bQpaN4HrY5JA==
-X-Authenticated-Sender: smtp-embedded@poldi-networks.de
-X-Virus-Scanned: Clear (ClamAV 1.0.5/27416/Thu Oct  3 10:37:25 2024)
-Received-SPF: pass client-ip=85.10.215.148;
- envelope-from=sebastian.huber@embedded-brains.de; helo=dedi548.your-server.de
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
+User-Agent: Mozilla Thunderbird
+Subject: Re: [SPAM] [PATCH v1 03/16] hw/block:m25p80: Support write status
+ register 2 command (0x31) for w25q01jvq
+To: Jamin Lin <jamin_lin@aspeedtech.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ Alistair Francis <alistair@alistair23.me>, Kevin Wolf <kwolf@redhat.com>,
+ Hanna Reitz <hreitz@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>,
+ "open list:Block layer core" <qemu-block@nongnu.org>
+Cc: troy_lee@aspeedtech.com, yunlin.tang@aspeedtech.com
+References: <20241018053112.1886173-1-jamin_lin@aspeedtech.com>
+ <20241018053112.1886173-4-jamin_lin@aspeedtech.com>
+Content-Language: en-US, fr
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <20241018053112.1886173-4-jamin_lin@aspeedtech.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=150.107.74.76;
+ envelope-from=SRS0=cGEO=RR=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
+X-Spam_score_int: -39
+X-Spam_score: -4.0
+X-Spam_bar: ----
+X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.17, RCVD_IN_DNSWL_MED=-2.3,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: bX4GOyZ9Irdn
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: Bry8ZgDB6AFo
 
------ Am 30. Sep 2024 um 17:16 schrieb Peter Maydell peter.maydell@linaro.o=
-rg:
+On 10/18/24 07:30, Jamin Lin wrote:
+> According to the w25q01jv datasheet at page 16, it is required to set QE bit
+> in "Status Register 2" to enable quad mode.
+> 
+> Currently, m25p80 support users utilize "Write Status Register 1(0x01)" command
+> to set QE bit in "Status Register 2" and utilize "Read Status Register 2(0x35)"
+> command to get the QE bit status.
+> 
+> However, some firmware directly utilize "Status Register 2(0x31)" command to
+> set QE bit. To fully support quad mode for w25q01jvq, adds WRSR2 command.
+> 
+> Update collecting data needed 1 byte for WRSR2 command in decode_new_cmd
+> function and verify QE bit at the first byte of collecting data bit 2 in
+> complete_collecting_data.
+> 
+> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 
-> On Mon, 23 Sept 2024 at 04:57, Sebastian Huber
-> <sebastian.huber@embedded-brains.de> wrote:
->>
->> In arm_load_kernel(), use the secondary boot hooks provided by the
->> platform if PSCI is disabled also while booting a non-Linux kernel.
->> While booting Linux with PSCI disabled, provide default hooks if needed.
->>
->> In do_cpu_reset(), use the secondary CPU reset hook provided by the
->> platform for resetting a non-Linux kernel.
->>
->> This change allows a more accurate simulation of the platform reset
->> behaviour.
->=20
-> So, the difficulty with this is that it's effectively
-> introducing an extra way of booting. At the moment we
-> have two boot approaches for Arm guests:
->=20
-> (1) Booting Linux -- the boot.c code simulates what the BIOS,
-> boot rom etc, does, both to set up the 1st CPU for the kernel
-> boot entry, and to set up the secondaries in whatever way
-> the bootrom does that the kernel expects to release them from.
->=20
-> (2) Booting bare-metal -- boot.c assumes the guest code is going
-> to do whatever the BIOS/bootrom does, so you get what you get
-> for real-hardware CPU reset. (Either the secondaries start
-> in power-off state and the primary will release them via some
-> kind of power controller device, or else all the CPUs start at
-> once at the reset vector and the bootrom is going to sort the
-> secondaries out and put them in a pen.)
->=20
-> What you want is a third thing:
->=20
-> (3) Booting not-a-kernel but not 100% bare-metal: emulate what
-> the bootrom does for primary and secondary CPUs but don't
-> boot the guest binary as if it was a Linux kernel.
->=20
-> The problem with adding that is that we don't have any
-> way to distinguish whether the user wanted that or our
-> existing type (2), because both are "user gave us a binary
-> that isn't a Linux kernel". (It also has a bit of a
-> "continuously expanding job" problem because the bootrom
-> could do arbitrarily complicated things, like boot directly
-> from SD cards, which we have historically not wanted to
-> emulate within QEMU itself.)
->=20
-> There are other platforms where the real hardware's bootrom
-> has a particular "this is what a bare-metal-under-the-bootrom
-> startup looks like" definition, notably the raspberry pi
-> boards. There too we don't currently implement that, and
-> instead effectively tell users "pick one of the two boot
-> paradigms we do support"...
 
-Ok, I understand your concerns. What I would like to do is running unmodifi=
-ed executables on Qemu so that I can test exactly the same program which wo=
-uld run on the real hardware. To properly initialize an SMP system, you hav=
-e to do certain things in a proper order. Currently, when I start the Zynq =
-machine it immediately executes the ELF entry on both cores. This conflicts=
- with the normal system start sequence which assumes that initially the sec=
-ond core waits in an idle loop. For example, the second core is normally re=
-leased after the GIC distributor is initialized.
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
 
-Changing all the existing machines to use this third way is probably a bad =
-idea, but would it be possible to make it configurable though the platform =
-info or a command line option?
+Thanks,
 
---=20
-embedded brains GmbH & Co. KG
-Herr Sebastian HUBER
-Dornierstr. 4
-82178 Puchheim
-Germany
-email: sebastian.huber@embedded-brains.de
-phone: +49-89-18 94 741 - 16
-fax:   +49-89-18 94 741 - 08
+C.
 
-Registergericht: Amtsgericht M=C3=BCnchen
-Registernummer: HRB 157899
-Vertretungsberechtigte Gesch=C3=A4ftsf=C3=BChrer: Peter Rasmussen, Thomas D=
-=C3=B6rfler
-Unsere Datenschutzerkl=C3=A4rung finden Sie hier:
-https://embedded-brains.de/datenschutzerklaerung/
+
+> ---
+>   hw/block/m25p80.c | 38 ++++++++++++++++++++++++++++++++++++++
+>   1 file changed, 38 insertions(+)
+> 
+> diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
+> index 3f55b8f385..411d810d3b 100644
+> --- a/hw/block/m25p80.c
+> +++ b/hw/block/m25p80.c
+> @@ -430,6 +430,11 @@ typedef enum {
+>       RDCR_EQIO = 0x35,
+>       RSTQIO = 0xf5,
+>   
+> +    /*
+> +     * Winbond: 0x31 - write status register 2
+> +     */
+> +    WRSR2 = 0x31,
+> +
+>       RNVCR = 0xB5,
+>       WNVCR = 0xB1,
+>   
+> @@ -821,6 +826,15 @@ static void complete_collecting_data(Flash *s)
+>               s->write_enable = false;
+>           }
+>           break;
+> +    case WRSR2:
+> +        switch (get_man(s)) {
+> +        case MAN_WINBOND:
+> +            s->quad_enable = !!(s->data[0] & 0x02);
+> +            break;
+> +        default:
+> +            break;
+> +        }
+> +        break;
+>       case BRWR:
+>       case EXTEND_ADDR_WRITE:
+>           s->ear = s->data[0];
+> @@ -1280,7 +1294,31 @@ static void decode_new_cmd(Flash *s, uint32_t value)
+>           }
+>           s->pos = 0;
+>           break;
+> +    case WRSR2:
+> +        /*
+> +         * If WP# is low and status_register_write_disabled is high,
+> +         * status register writes are disabled.
+> +         * This is also called "hardware protected mode" (HPM). All other
+> +         * combinations of the two states are called "software protected mode"
+> +         * (SPM), and status register writes are permitted.
+> +         */
+> +        if ((s->wp_level == 0 && s->status_register_write_disabled)
+> +            || !s->write_enable) {
+> +            qemu_log_mask(LOG_GUEST_ERROR,
+> +                          "M25P80: Status register 2 write is disabled!\n");
+> +            break;
+> +        }
+>   
+> +        switch (get_man(s)) {
+> +        case MAN_WINBOND:
+> +            s->needed_bytes = 1;
+> +            s->state = STATE_COLLECTING_DATA;
+> +            s->pos = 0;
+> +            break;
+> +        default:
+> +            break;
+> +        }
+> +        break;
+>       case WRDI:
+>           s->write_enable = false;
+>           if (get_man(s) == MAN_SST) {
+

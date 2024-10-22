@@ -1,139 +1,331 @@
-Received: by 2002:a17:505:18c3:b0:1be9:327d:8ee3 with SMTP id tt3csp3356873njb;
-        Tue, 22 Oct 2024 13:32:54 -0700 (PDT)
-X-Received: by 2002:a17:902:e890:b0:206:ae39:9f4 with SMTP id d9443c01a7336-20fa9e24882mr5779725ad.20.1729629174257;
-        Tue, 22 Oct 2024 13:32:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1729629174; cv=none;
+Received: by 2002:a17:505:18c3:b0:1be9:327d:8ee3 with SMTP id tt3csp3358026njb;
+        Tue, 22 Oct 2024 13:35:18 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCV4ZW3EdnucCLIPB1JyVcgS0f4yMAdDAvuBBhoEc7eZIJ9rbDQp4LLrWx9Un7CrLisRSUTE9/YOpgMHEQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IExqyf7sQf5ISIOLmW19gD39u1tu9HYA/7wIj3MPQf7RveTfXoPXpNSeRVhf1+sQS8n52C0
+X-Received: by 2002:a05:622a:420a:b0:460:8be6:9b00 with SMTP id d75a77b69052e-46114745afcmr2941061cf.50.1729629318358;
+        Tue, 22 Oct 2024 13:35:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1729629318; cv=none;
         d=google.com; s=arc-20240605;
-        b=fG/4HRsxjBcEW1NfVdTCTTNdv8s0wRpFJ9McOGAKRIz9jeYXqOcIxvFBU+QX6zguk9
-         hVI/5UMYMw/YUT4Tzv+FKFkByzlnqMid0eamJ3FHd+9RFYJYwh5M3AbXLsu33OZ4pm31
-         t/hCxbnAIwAKzx3N5HDoYRIpAGNK82ZjMeC3DC3qoB2f5qkxLFVY6PL2GQD3FRjdLptj
-         b6xNnCXxwJy/8G+UHhjhPW6GU1u2wjfrQxACF0w/uAx/6QhNtqMu9WjD1RWHryXunR97
-         DLoJfDxXw9hvb3SVHr2FglCA2PswgzqlAN/RDCp81gT8Spkkm7TaTCCEAYI0zA8fmX2I
-         T9Lg==
+        b=a/EMWc3E7deXds0PI3jQHGjKIcow9/Nyv6XyKwoYD98gHJx+XXPnVXdpc4PzzuZT/N
+         dxWdCl5RWHmNhxU9qnv7hoTeOASV1fUgvuTr557U7DLT5ZbtJlm8Tkx6E2v4MOGYJwsX
+         fTq87IZ8//Pr06zJJ5qtOfGkNcHTv3pGs+iCDE448ur9AoLGNP+AGBUw005CVK12VfEC
+         yKAymIrHcbqOsYMko+bWTpSGRBk+tnqimFfPfIjgDUWCmvHfv9XayyU6upwhdiiMDtNQ
+         gSoSK/iNMaGdGmU8KvLol9q2XFzGl2CPM2QH1rpa2fQJ+eUmXWF0uL/wvsLsdhuDWpzJ
+         4eWA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=22iDYg801c8q/L8h63/ZCoe5iOUGaky+8DT+5jhBm58=;
-        fh=X8ItXK/eP+lsZpHYO2upAce6PY3lCv88NOwH1uPYlKY=;
-        b=Aq4VI+QUroGkmFbP+moprqUfTrliaivqOlj13EG4ZKuq5oeZedyo2Vohoz4V1UWSCb
-         Ewz6MxglrTTS+PJpWhzHsXeCcswjFEph1y86bH05YFcQll4pDlk1VYqX69QKgfuuEKv0
-         D/Z2Ipp4fyjoFXx4pxIMs/ed1NMgDX6fPXEtBTbYUHZOIy2pg3vZGsSRn2LwinuELC4o
-         mSAK+N9NDT3y/Nz4NjSBKzvbtVaMWc1FcTNJxCwfndqgVJp8HzHn/YWW0/XVikfWsXAi
-         8zGPSVAVCOEnVMgEj/zSO51kEuJOVSxMJ9TsC9vvodWURA3xFYlAGLGeNSloFDqOF3yg
-         YJaA==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=mgFYeTwOWX3Ulkk9gyvLAYsCBy7vUt9OB6nUN4He6ho=;
+        fh=21d38VI4RMWqwGl2Tk7V31keeMckXjExBvjIpUIy/E8=;
+        b=g6yeI/ybQTNgZnVeDP6hpX8oiOEG+z6i1bXoAwRLUF0JpN/fK393a7jEcQlXcatAV2
+         RbSnJpSgFD7BPx1/W7/llkezb591tSDMKx4/4Zqs1Ic5NvBGgAAhR25uI9ba9Vw+QkJ1
+         NBiGZ/rXm26RMmOi29Z3Hi6/Rr8zeG+VVXq75Zb7N0NsSdjV9RcUzEw7ZSs5i23G1/fO
+         DDhk944OWCRCGsf9O/smPBFZkZK98747AbFRHKr+9nSaijDVc1lp1an0v9nUT6GpDrmo
+         OC6sv8jSQpPTHHGP/KFqwkgQXfAfo29c3ibeul4AMWSjWXW1JWH7ybWS7UnCNtbbtbhD
+         3JIg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=p5GJQtZG;
-       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <pierrick.bouvier@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d9443c01a7336-20e7f0de3cfsor43996725ad.15.2024.10.22.13.32.54
+       dkim=pass header.i=@free.fr header.s=smtp-20201208 header.b=FKTUyUU5;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=free.fr
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d75a77b69052e-460d3da5fcbsi80276921cf.745.2024.10.22.13.35.18
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 22 Oct 2024 13:32:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 22 Oct 2024 13:35:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=p5GJQtZG;
-       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1729629174; x=1730233974; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=22iDYg801c8q/L8h63/ZCoe5iOUGaky+8DT+5jhBm58=;
-        b=p5GJQtZG77JAjxXRUb5+dRG3oW+vnz9NUwBsMbPcJFpJDCvZVLolgsyM9L6tY++hOn
-         OsWred4W9IrAlJ04rcHwt3diUlWXJJBkAgC7uIoSf4z5GgYtG40f8vOZuIUxoJJ7S7T+
-         ThCuy3VLq0QsUvAyNbrJGmRHa4p8NvZm3dSTSqxPH/h0CCsvVFcc1Kd758J8wONSTr2Y
-         pcyEwfOzyqD6ZI4bYdMXsimP/pHOLGAS+krA/ssO4uA4lAORcHrWreRbjX0CT5RtgIfT
-         nsgGnj7K3dwon8jC9WYCqKwL/8bZExG/eFZ889au5jJnKGBN7/iPwBTOEUCL40JkUNHL
-         SufA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1729629174; x=1730233974;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=22iDYg801c8q/L8h63/ZCoe5iOUGaky+8DT+5jhBm58=;
-        b=VGm0dQIbmY6WcHiNEZmdA44oGtFct/BHa/YLQA1Fcp8DMVKMNxwE1TMUAWZB0cvQvp
-         ovXjt7CvWPJUkfoaprhSdJJrL/UXYaEqqT+qWayacElDbb1hVUoPjEibnUBZEhzafrsJ
-         DwdWPbsN3xbOwsAGmJglcQlB4d4oxa6WbEgg71LAnzVW+FYBOFOpG0H1XIati48TSZ65
-         P5vRxvQoYANJZJCBvYQOiSMirlPTlEmRt0uE5WkkbfnJt878r4I01UEkT51He3s6wU6N
-         THo/SO1iG7DnZyAb1CuLEyUGKZE/euYOYy2YuOvxo0k4Vm1hxiVGCWJwQu5BMxekNVWr
-         QR4A==
-X-Gm-Message-State: AOJu0YxLmCzyOfh1rcjj0lgFWSDsCwrTg7M+OIDEBzJxnfRE4z7J9T4U
-	lC9jCcV7I17ncNseD67cXxS/djg1bKJ2aalrhYoVWHefol+l6FpaKlT0LP96hF2EcTL8ZFI2h8E
-	hSr4UHJT1
-X-Google-Smtp-Source: AGHT+IFaD76bQqjYlx7C1qxfp6VbhP5GE48tnyBe+LWy7d4tLOyRp3pZwxtrqk+0RelB7tsR0TfiQA==
-X-Received: by 2002:a17:902:d2c6:b0:20b:6f04:486a with SMTP id d9443c01a7336-20fa9e785a8mr5423175ad.35.1729629173598;
-        Tue, 22 Oct 2024 13:32:53 -0700 (PDT)
-Return-Path: <pierrick.bouvier@linaro.org>
-Received: from [192.168.1.67] (216-180-64-156.dyn.novuscom.net. [216.180.64.156])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-20e7f0bd42asm46422095ad.165.2024.10.22.13.32.52
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 22 Oct 2024 13:32:53 -0700 (PDT)
-Message-ID: <fdea845b-d38a-4cd8-b87f-098dd7a7adbb@linaro.org>
-Date: Tue, 22 Oct 2024 13:32:52 -0700
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 06/20] scripts/ci: remove architecture checks for
- build-environment updates
-Content-Language: en-US
-To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org
-Cc: Beraldo Leal <bleal@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
- Wainer dos Santos Moschetta <wainersm@redhat.com>,
- Mahmoud Mandour <ma.mandourr@gmail.com>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>, Yanan Wang <wangyanan55@huawei.com>,
- Thomas Huth <thuth@redhat.com>, John Snow <jsnow@redhat.com>,
- =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- qemu-arm@nongnu.org, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
- <berrange@redhat.com>, Eduardo Habkost <eduardo@habkost.net>,
- devel@lists.libvirt.org, Cleber Rosa <crosa@redhat.com>,
- kvm@vger.kernel.org, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
- <philmd@linaro.org>, Alexandre Iooss <erdnaxe@crans.org>,
+       dkim=pass header.i=@free.fr header.s=smtp-20201208 header.b=FKTUyUU5;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=free.fr
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1t3Lao-00080s-Ng; Tue, 22 Oct 2024 16:35:03 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <castet.matthieu@free.fr>)
+ id 1t3Lag-0007qr-RX; Tue, 22 Oct 2024 16:34:54 -0400
+Received: from smtp5-g21.free.fr ([2a01:e0c:1:1599::14])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <castet.matthieu@free.fr>)
+ id 1t3Lae-0007vr-TE; Tue, 22 Oct 2024 16:34:54 -0400
+Received: from debtag.home (unknown
+ [IPv6:2a01:cb00:13da:d200:7cf5:aa34:e526:681b])
+ (Authenticated sender: castet.matthieu@free.fr)
+ by smtp5-g21.free.fr (Postfix) with ESMTPSA id B3C8960129;
+ Tue, 22 Oct 2024 22:34:45 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=free.fr;
+ s=smtp-20201208; t=1729629290;
+ bh=Y1XczkptPUaL5JqERs0e5MtTVPI+G3JTY7wWyUZHLys=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=FKTUyUU5MaO7eNWsUGyRT6W82aduS0lwe3+72YeXMJhpwGBrQr/eFGSRZM7ZN0Sql
+ +1TDfbD2lN2F/o2DsEn64iI7Jtlnix7iPLh7xj+hwINdqK197is35qMmAADj1H+WXG
+ BO/iqQLtu0+lU7ASUvtwNaH+qgu5978TRBZA9XPuI5Ff3fLSGWBZkcdUZvBvq3vUdq
+ z2Lti9BiCr0YUeP5llx3ZiQBSZzLUV5oAIflt+UnPY7ESSBT2SDNKHJwyeB3YeNX+N
+ 2X5nxbRXCYUasfq+qHwNUE/poT8Ak2LmvYD6ExXeTeq2dSB9GIZ+tB9SX4dNTmv5Zu
+ oG4KiiAGdifgQ==
+From: Matthieu Castet <castet.matthieu@free.fr>
+To: qemu-devel@nongnu.org
+Cc: Matthieu Castet <castet.matthieu@free.fr>,
  Peter Maydell <peter.maydell@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- Riku Voipio <riku.voipio@iki.fi>, Zhao Liu <zhao1.liu@intel.com>,
- Marcelo Tosatti <mtosatti@redhat.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>
-References: <20241022105614.839199-1-alex.bennee@linaro.org>
- <20241022105614.839199-7-alex.bennee@linaro.org>
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-In-Reply-To: <20241022105614.839199-7-alex.bennee@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: base64
-X-TUID: it+JWnj+69to
+ qemu-arm@nongnu.org (open list:ARM cores)
+Subject: [PATCH 1/1] target/arm: Add cortex-m0+ support
+Date: Tue, 22 Oct 2024 22:34:35 +0200
+Message-Id: <20241022203435.181452-2-castet.matthieu@free.fr>
+X-Mailer: git-send-email 2.39.5
+In-Reply-To: <20241022203435.181452-1-castet.matthieu@free.fr>
+References: <20241022203435.181452-1-castet.matthieu@free.fr>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a01:e0c:1:1599::14;
+ envelope-from=castet.matthieu@free.fr; helo=smtp5-g21.free.fr
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: KKIly59nhB8F
 
-T24gMTAvMjIvMjQgMDM6NTYsIEFsZXggQmVubsOpZSB3cm90ZToNCj4gV2Ugd2VyZSBtaXNz
-aW5nIHMzOTB4IGhlcmUuIFRoZXJlIGlzbid0IG11Y2ggcG9pbnQgdGVzdGluZyBmb3IgdGhl
-DQo+IGFyY2hpdGVjdHVyZSBoZXJlIGFzIHdlIHdpbGwgZmFpbCBhbnl3YXkgaWYgdGhlIGFw
-cHJvcHJpYXRlIHBhY2thZ2UNCj4gbGlzdCBpcyBtaXNzaW5nLg0KPiANCj4gU2lnbmVkLW9m
-Zi1ieTogQWxleCBCZW5uw6llIDxhbGV4LmJlbm5lZUBsaW5hcm8ub3JnPg0KPiAtLS0NCj4g
-ICBzY3JpcHRzL2NpL3NldHVwL3VidW50dS9idWlsZC1lbnZpcm9ubWVudC55bWwgfCAyIC0t
-DQo+ICAgMSBmaWxlIGNoYW5nZWQsIDIgZGVsZXRpb25zKC0pDQo+IA0KPiBkaWZmIC0tZ2l0
-IGEvc2NyaXB0cy9jaS9zZXR1cC91YnVudHUvYnVpbGQtZW52aXJvbm1lbnQueW1sIGIvc2Ny
-aXB0cy9jaS9zZXR1cC91YnVudHUvYnVpbGQtZW52aXJvbm1lbnQueW1sDQo+IGluZGV4IGVk
-ZjE5MDBiM2UuLjU2YjUxNjA5ZTMgMTAwNjQ0DQo+IC0tLSBhL3NjcmlwdHMvY2kvc2V0dXAv
-dWJ1bnR1L2J1aWxkLWVudmlyb25tZW50LnltbA0KPiArKysgYi9zY3JpcHRzL2NpL3NldHVw
-L3VidW50dS9idWlsZC1lbnZpcm9ubWVudC55bWwNCj4gQEAgLTM5LDcgKzM5LDYgQEANCj4g
-ICAgICAgICB3aGVuOg0KPiAgICAgICAgICAgLSBhbnNpYmxlX2ZhY3RzWydkaXN0cmlidXRp
-b24nXSA9PSAnVWJ1bnR1Jw0KPiAgICAgICAgICAgLSBhbnNpYmxlX2ZhY3RzWydkaXN0cmli
-dXRpb25fdmVyc2lvbiddID09ICcyMi4wNCcNCj4gLSAgICAgICAgLSBhbnNpYmxlX2ZhY3Rz
-WydhcmNoaXRlY3R1cmUnXSA9PSAnYWFyY2g2NCcgb3IgYW5zaWJsZV9mYWN0c1snYXJjaGl0
-ZWN0dXJlJ10gPT0gJ3g4Nl82NCcNCj4gICANCj4gICAgICAgLSBuYW1lOiBJbnN0YWxsIHBh
-Y2thZ2VzIGZvciBRRU1VIG9uIFVidW50dSAyMi4wNA0KPiAgICAgICAgIHBhY2thZ2U6DQo+
-IEBAIC00Nyw3ICs0Niw2IEBADQo+ICAgICAgICAgd2hlbjoNCj4gICAgICAgICAgIC0gYW5z
-aWJsZV9mYWN0c1snZGlzdHJpYnV0aW9uJ10gPT0gJ1VidW50dScNCj4gICAgICAgICAgIC0g
-YW5zaWJsZV9mYWN0c1snZGlzdHJpYnV0aW9uX3ZlcnNpb24nXSA9PSAnMjIuMDQnDQo+IC0g
-ICAgICAgIC0gYW5zaWJsZV9mYWN0c1snYXJjaGl0ZWN0dXJlJ10gPT0gJ2FhcmNoNjQnIG9y
-IGFuc2libGVfZmFjdHNbJ2FyY2hpdGVjdHVyZSddID09ICd4ODZfNjQnDQo+ICAgDQo+ICAg
-ICAgIC0gbmFtZTogSW5zdGFsbCBhcm1oZiBjcm9zcy1jb21waWxlIHBhY2thZ2VzIHRvIGJ1
-aWxkIFFFTVUgb24gQUFyY2g2NCBVYnVudHUgMjIuMDQNCj4gICAgICAgICBwYWNrYWdlOg0K
-DQpSZXZpZXdlZC1ieTogUGllcnJpY2sgQm91dmllciA8cGllcnJpY2suYm91dmllckBsaW5h
-cm8ub3JnPg0K
+Signed-off-by: Matthieu Castet<castet.matthieu@free.fr>
+---
+ hw/intc/armv7m_nvic.c    | 38 +++++++++++++++++++++++++++++++++-----
+ target/arm/cpu.c         |  4 ++--
+ target/arm/ptw.c         | 23 +++++++++++++++++++----
+ target/arm/tcg/cpu-v7m.c | 21 ++++++++++++++++++++-
+ 4 files changed, 74 insertions(+), 12 deletions(-)
+
+diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
+index 98f3cf59bc..ed084e9db3 100644
+--- a/hw/intc/armv7m_nvic.c
++++ b/hw/intc/armv7m_nvic.c
+@@ -1386,7 +1386,7 @@ static uint32_t nvic_readl(NVICState *s, uint32_t offset, MemTxAttrs attrs)
+         }
+         return (cpu->env.pmsav7.drbar[region] & ~0x1f) | (region & 0xf);
+     }
+-    case 0xda0: /* MPU_RASR (v7M), MPU_RLAR (v8M) */
++    case 0xda0: /* MPU_RASR (v6M/v7M), MPU_RLAR (v8M) */
+     case 0xda8: /* MPU_RASR_A1 (v7M), MPU_RLAR_A1 (v8M) */
+     case 0xdb0: /* MPU_RASR_A2 (v7M), MPU_RLAR_A2 (v8M) */
+     case 0xdb8: /* MPU_RASR_A3 (v7M), MPU_RLAR_A3 (v8M) */
+@@ -1876,6 +1876,14 @@ static void nvic_writel(NVICState *s, uint32_t offset, uint32_t value,
+             return;
+         }
+ 
++        if (!arm_feature(&s->cpu->env, ARM_FEATURE_V7)) {
++                if (offset != 0xd9c)
++                        goto bad_offset;
++
++                /* do not support size less than 256 */
++                value &= ~0xe0;
++        }
++
+         if (value & (1 << 4)) {
+             /* VALID bit means use the region number specified in this
+              * value and also update MPU_RNR.REGION with that value.
+@@ -1900,12 +1908,13 @@ static void nvic_writel(NVICState *s, uint32_t offset, uint32_t value,
+         tlb_flush(CPU(cpu));
+         break;
+     }
+-    case 0xda0: /* MPU_RASR (v7M), MPU_RLAR (v8M) */
+-    case 0xda8: /* MPU_RASR_A1 (v7M), MPU_RLAR_A1 (v8M) */
+-    case 0xdb0: /* MPU_RASR_A2 (v7M), MPU_RLAR_A2 (v8M) */
+-    case 0xdb8: /* MPU_RASR_A3 (v7M), MPU_RLAR_A3 (v8M) */
++    case 0xda0: /* MPU_RASR (v6M/v7M), MPU_RLAR (v8M) */
++    case 0xda8: /* MPU_RASR_A1 (v6M/v7M), MPU_RLAR_A1 (v8M) */
++    case 0xdb0: /* MPU_RASR_A2 (v6M/v7M), MPU_RLAR_A2 (v8M) */
++    case 0xdb8: /* MPU_RASR_A3 (v6M/v7M), MPU_RLAR_A3 (v8M) */
+     {
+         int region = cpu->env.pmsav7.rnr[attrs.secure];
++        int rsize;
+ 
+         if (arm_feature(&cpu->env, ARM_FEATURE_V8)) {
+             /* PMSAv8M handling of the aliases is different from v7M:
+@@ -1926,6 +1935,25 @@ static void nvic_writel(NVICState *s, uint32_t offset, uint32_t value,
+             return;
+         }
+ 
++        rsize = extract32(value, 1, 5);
++        if (!arm_feature(&s->cpu->env, ARM_FEATURE_V7)) {
++            if (offset != 0xda0)
++                goto bad_offset;
++            /* for armv6-m rsize >= 7 (min 256) */
++            if (rsize < 7) {
++                qemu_log_mask(LOG_GUEST_ERROR,
++                        "MPU region size too small %d\n", rsize);
++                return;
++            }
++        }
++
++        /* for armv7-m rsize >= 4 (min 32) */
++        if (rsize < 4) {
++            qemu_log_mask(LOG_GUEST_ERROR,
++                    "MPU region size too small %d\n", rsize);
++            return;
++        }
++
+         if (region >= cpu->pmsav7_dregion) {
+             return;
+         }
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 1320fd8c8f..875e3aab69 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -508,7 +508,7 @@ static void arm_cpu_reset_hold(Object *obj, ResetType type)
+                            sizeof(*env->pmsav8.rlar[M_REG_S])
+                            * cpu->pmsav7_dregion);
+                 }
+-            } else if (arm_feature(env, ARM_FEATURE_V7)) {
++            } else if (arm_feature(env, ARM_FEATURE_M)) {
+                 memset(env->pmsav7.drbar, 0,
+                        sizeof(*env->pmsav7.drbar) * cpu->pmsav7_dregion);
+                 memset(env->pmsav7.drsr, 0,
+@@ -2454,7 +2454,7 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+     }
+ 
+     if (arm_feature(env, ARM_FEATURE_PMSA) &&
+-        arm_feature(env, ARM_FEATURE_V7)) {
++        arm_feature(env, ARM_FEATURE_M)) {
+         uint32_t nr = cpu->pmsav7_dregion;
+ 
+         if (nr > 0xff) {
+diff --git a/target/arm/ptw.c b/target/arm/ptw.c
+index dd40268397..fa771907e3 100644
+--- a/target/arm/ptw.c
++++ b/target/arm/ptw.c
+@@ -2383,6 +2383,13 @@ static bool pmsav7_use_background_region(ARMCPU *cpu, ARMMMUIdx mmu_idx,
+     return regime_sctlr(env, mmu_idx) & SCTLR_BR;
+ }
+ 
++/* armv6m PMSAv6 is mostly compatible with PMSAv7,
++ * main difference :
++ * - min region size is 256 instead of 32
++ * - TEX can be only 0 (Tex not used by qemu)
++ * - no alias register
++ * - HardFault instead of MemManage
++ */
+ static bool get_phys_addr_pmsav7(CPUARMState *env,
+                                  S1Translate *ptw,
+                                  uint32_t address,
+@@ -2423,11 +2430,19 @@ static bool get_phys_addr_pmsav7(CPUARMState *env,
+                 continue;
+             }
+ 
+-            if (!rsize) {
++            /* Issue warning for invalid values
++             * for armv7-m rsize >= 4 (min 32)
++             * for armv6-m rsize >= 7 (min 256)
++             */
++            if (!rsize ||
++                (arm_feature(env, ARM_FEATURE_M) && (
++                       rsize < 7 ||
++                       (rsize < 4 && !arm_feature(env, ARM_FEATURE_V7))))) {
+                 qemu_log_mask(LOG_GUEST_ERROR,
+-                              "DRSR[%d]: Rsize field cannot be 0\n", n);
++                              "DRSR[%d]: Rsize field cannot be %d\n", n, rsize);
+                 continue;
+             }
++
+             rsize++;
+             rmask = (1ull << rsize) - 1;
+ 
+@@ -3515,8 +3530,8 @@ static bool get_phys_addr_nogpc(CPUARMState *env, S1Translate *ptw,
+             /* PMSAv8 */
+             ret = get_phys_addr_pmsav8(env, ptw, address, access_type,
+                                        result, fi);
+-        } else if (arm_feature(env, ARM_FEATURE_V7)) {
+-            /* PMSAv7 */
++        } else if (arm_feature(env, ARM_FEATURE_V7) || arm_feature(env, ARM_FEATURE_M)) {
++            /* PMSAv7 or PMSAv6 */
+             ret = get_phys_addr_pmsav7(env, ptw, address, access_type,
+                                        result, fi);
+         } else {
+diff --git a/target/arm/tcg/cpu-v7m.c b/target/arm/tcg/cpu-v7m.c
+index 58e54578d6..01bc5d4375 100644
+--- a/target/arm/tcg/cpu-v7m.c
++++ b/target/arm/tcg/cpu-v7m.c
+@@ -76,6 +76,20 @@ static void cortex_m0_initfn(Object *obj)
+     cpu->isar.id_isar6 = 0x00000000;
+ }
+ 
++static void cortex_m0p_initfn(Object *obj)
++{
++    ARMCPU *cpu = ARM_CPU(obj);
++
++    /* cortex-m0p is a cortex-m0 with
++     * vtor and mpu extension
++     */
++    cortex_m0_initfn(obj);
++
++    cpu->midr = 0x410cc601;
++    cpu->pmsav7_dregion = 8;
++}
++
++
+ static void cortex_m3_initfn(Object *obj)
+ {
+     ARMCPU *cpu = ARM_CPU(obj);
+@@ -111,6 +125,7 @@ static void cortex_m4_initfn(Object *obj)
+     set_feature(&cpu->env, ARM_FEATURE_THUMB_DSP);
+     cpu->midr = 0x410fc240; /* r0p0 */
+     cpu->pmsav7_dregion = 8;
++    /* VFPv4-SP */
+     cpu->isar.mvfr0 = 0x10110021;
+     cpu->isar.mvfr1 = 0x11000011;
+     cpu->isar.mvfr2 = 0x00000000;
+@@ -141,6 +156,7 @@ static void cortex_m7_initfn(Object *obj)
+     set_feature(&cpu->env, ARM_FEATURE_THUMB_DSP);
+     cpu->midr = 0x411fc272; /* r1p2 */
+     cpu->pmsav7_dregion = 8;
++    /* VFPv5 DP */
+     cpu->isar.mvfr0 = 0x10110221;
+     cpu->isar.mvfr1 = 0x12000011;
+     cpu->isar.mvfr2 = 0x00000040;
+@@ -173,6 +189,7 @@ static void cortex_m33_initfn(Object *obj)
+     cpu->midr = 0x410fd213; /* r0p3 */
+     cpu->pmsav7_dregion = 16;
+     cpu->sau_sregion = 8;
++    /* VFPv5 DP */
+     cpu->isar.mvfr0 = 0x10110021;
+     cpu->isar.mvfr1 = 0x11000011;
+     cpu->isar.mvfr2 = 0x00000040;
+@@ -209,7 +226,7 @@ static void cortex_m55_initfn(Object *obj)
+     cpu->revidr = 0;
+     cpu->pmsav7_dregion = 16;
+     cpu->sau_sregion = 8;
+-    /* These are the MVFR* values for the FPU + full MVE configuration */
++    /* These are the MVFR* values for the FPv5-D16-M + full MVE configuration */
+     cpu->isar.mvfr0 = 0x10110221;
+     cpu->isar.mvfr1 = 0x12100211;
+     cpu->isar.mvfr2 = 0x00000040;
+@@ -267,6 +284,8 @@ static void arm_v7m_class_init(ObjectClass *oc, void *data)
+ static const ARMCPUInfo arm_v7m_cpus[] = {
+     { .name = "cortex-m0",   .initfn = cortex_m0_initfn,
+                              .class_init = arm_v7m_class_init },
++    { .name = "cortex-m0p",  .initfn = cortex_m0p_initfn,
++                             .class_init = arm_v7m_class_init },
+     { .name = "cortex-m3",   .initfn = cortex_m3_initfn,
+                              .class_init = arm_v7m_class_init },
+     { .name = "cortex-m4",   .initfn = cortex_m4_initfn,
+-- 
+2.39.5
+

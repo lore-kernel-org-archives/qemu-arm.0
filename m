@@ -1,56 +1,56 @@
-Received: by 2002:a17:505:18c3:b0:1be9:327d:8ee3 with SMTP id tt3csp2944302njb;
-        Tue, 22 Oct 2024 02:45:53 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWkoOLdDMc8SqrB0jZqG+bPLDz1UxQ/3Oxh4+SjsM459MlkhdqIwLVgCJBjdqFF5RIgourh5mXy7+jXGw==@linaro.org
-X-Google-Smtp-Source: AGHT+IENoUp/MVrkp+TTj94rO9sALPq9Op0CMGCuQkPMOnTc/6L0Hf8IJb/ih89vSHxTErCgKMqc
-X-Received: by 2002:a05:620a:31a0:b0:7a9:aae5:331 with SMTP id af79cd13be357-7b176725b74mr218289985a.21.1729590352829;
-        Tue, 22 Oct 2024 02:45:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1729590352; cv=none;
+Received: by 2002:a17:505:18c3:b0:1be9:327d:8ee3 with SMTP id tt3csp2944391njb;
+        Tue, 22 Oct 2024 02:46:02 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCX174qgIx3aOXQBFkT/T9FlgoiGryoCneFQJWPzIrHF71AE0x2XidcKkccz8GQCyVLGVkmwG91WdYvBNw==@linaro.org
+X-Google-Smtp-Source: AGHT+IFYHuN6BITkM0tGc1OreFnr++EnuVWqpUabFsEfOlP8FI9p+nnhcZBmLGOj4uajTzdQzSIF
+X-Received: by 2002:a05:622a:114a:b0:460:a877:4c7e with SMTP id d75a77b69052e-460aed4c42cmr215879641cf.23.1729590362505;
+        Tue, 22 Oct 2024 02:46:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1729590362; cv=none;
         d=google.com; s=arc-20240605;
-        b=kn2nzdk6ZQVQTkwJgszDHAOTm3Kmcbd7yCIr7vh+Pl7HM+NwjPpOwKB39q8AcuxLHO
-         EcCBK032OD0xcIiDxHle6rqG1E/5rIUZNwYR+ZPwKpYnpgUB/wcYGSg9ciztzE8cwtAe
-         jJY9Z6EoUpLMFuUk1aQQaa3iVhuwVAmAb8KteZioC8+DG5mJsWOQ0gtkGk7OJIAC72OV
-         VbXd5l5TQnJlj78yqRpFVcxzopqab/V3FNhqUOCPsPtiESCTvxVPtGXLKTxqC1GgFbOR
-         9QgRMqAovs8QhDG9LXKwr0S1vdiWFI0G5bhOaIdx1aK2Ngtp+/GZBCllL0O/lXRxnN+A
-         bL8g==
+        b=bg+DWAbLIeflm1TDbQbOYh2Zdm35KUZcEOlG42iozvPeybP2bLfSolqm2iFZgoWTbY
+         tMDntJ82mDx2bhpUetNUFjKopiHqVJ1XTpidW4v9kuZJvFdVCH8DijSFQnKBTijL2Ard
+         Umw8lJdU2gx+lkF3cQ5tWRLP8bt6XG2N1fr69F+g0Pwp3DebNJXJuQ7rlFldcnzlrywX
+         CiGYcIM6oY+zGd+J51O8K69crwZbuUglWHkqpvwcGAG9dqeoefHs/uOfVdB665mdfwKm
+         ioOs1HeeBnVAdBj7JL+4dQwEgnLGVSCgXLosMhtvfta0roKIT8M3HQhpE0T0x1kAlXhZ
+         5djA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to;
-        bh=8wDeoNzjeRdfHT1y3G838Ul2KdVFuDdtwz4T7fUE4iY=;
+        bh=m22CdBlp/02EmEZOpAHdWMLYB2x3OIMa+vya4zbVNqE=;
         fh=tJ6TeM8XDKi6I9LERy0ves/+1WFn5YJhFzDAan5mwNk=;
-        b=KS7Qfe0lkvjiOncxQOjnC0bfDcbulCUOos1vnbkt0ptTvEApx53imuN2Sq2399u8XN
-         CCdIvXVeN6Dg5XgxA6bKjnmI08RX6AIkAdPVEANir6RLoXVKUYjX/GM5MJyA5x9lHWdl
-         dEt9qviqUdpLKXe7XCRBAZ/Ge8XCD7z8V5wF/McXb6AcmQPNEX2AsVUh0OIFtG13iHzW
-         ia48Zv6wBiBJ0GHUXw0xTwmeYFvWTxw1phiJE5o/j2mXeKbHiIgaZZTxrIQkW2S1gi2C
-         8aR/+JxJHewT/IOWuRwtQWpzWmA6C9M0WDmBFY+xE5J9y6MlZupApxQAGnY5U+EKG1M1
-         FuIw==;
+        b=Xa57qmCTHnCnYZ0Vc/UUBnmxVrdFGwegjVLwd8k1MfV1JXgg2wz704SPS5p/DwUzKM
+         rGZipHsu5kdYHA1myPHWHLLVWmsa/QMSsPCdcnird4QCHVYgQGH+jZzv5+78goRaQhNY
+         zhMghxqrKeQJdEPsEICjaRAKu1sox2XQEQSaMxzKRZFP4up+Xh20KtGr//wXPk+EldAC
+         pTxVA4xJZ3A4PPa1U9yTJD1Xo5xx2x1zuv8ByXoWHUQspPSA2S5xx5uE+1+s10+ofoQq
+         enhC6QVfcUOZ17RuM8tKncmyCBYjE0XqD2gZu+vxYD8C/9TKuKebM+ZWlCNAkC7jq5rk
+         xw1g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7b1659d0067si601393885a.153.2024.10.22.02.45.52
+        by mx.google.com with ESMTPS id 6a1803df08f44-6ce008f4862si60600596d6.189.2024.10.22.02.46.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 22 Oct 2024 02:45:52 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 22 Oct 2024 02:46:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1t3BQ3-0005qj-QJ; Tue, 22 Oct 2024 05:43:15 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1t3BPu-0004w0-FI; Tue, 22 Oct 2024 05:43:06 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1t3BPY-0004Vx-A8; Tue, 22 Oct 2024 05:42:47 -0400
+ id 1t3BPd-0004Ws-KB; Tue, 22 Oct 2024 05:42:54 -0400
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1t3BPV-00019W-4a; Tue, 22 Oct 2024 05:42:43 -0400
+ id 1t3BPc-0001CU-0y; Tue, 22 Oct 2024 05:42:49 -0400
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.12; Tue, 22 Oct
@@ -70,9 +70,9 @@ To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
 CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
  <yunlin.tang@aspeedtech.com>, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?=
  <clg@redhat.com>
-Subject: [PATCH v2 14/18] test/qtest/aspeed_smc-test: Support to test AST2600
-Date: Tue, 22 Oct 2024 17:41:06 +0800
-Message-ID: <20241022094110.1574011-15-jamin_lin@aspeedtech.com>
+Subject: [PATCH v2 15/18] test/qtest/aspeed_smc-test: Support to test AST1030
+Date: Tue, 22 Oct 2024 17:41:07 +0800
+Message-ID: <20241022094110.1574011-16-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20241022094110.1574011-1-jamin_lin@aspeedtech.com>
 References: <20241022094110.1574011-1-jamin_lin@aspeedtech.com>
@@ -88,100 +88,105 @@ X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
  SPF_HELO_FAIL=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
-From:  Jamin Lin via <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: l5Fg1C8zg08r
+From:  Jamin Lin via <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: +CuCyRtq6BsH
 
-Add test_ast2600_evb function and reused testcases for AST2600 testing.
-The spi base address, flash base address and ce index of fmc_cs0 are
-0x1E620000, 0x20000000 and 0, respectively.
-The default flash model of fmc_cs0 is "mx66u51235f" whose size is 64MB,
-so set jedec_id 0xc2253a.
+Add test_ast1030_evb function and reused testcases for AST1030 testing.
+The base address, flash base address and ce index of fmc_cs0 are
+0x7E620000, 0x80000000 and 0, respectively.
+The default flash model of fmc_cs0 is "w25q80bl" whose size is 1MB,
+so set jedec_id 0xef4014.
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
 ---
- tests/qtest/aspeed_smc-test.c | 41 +++++++++++++++++++++++++++++++++++
- 1 file changed, 41 insertions(+)
+ tests/qtest/aspeed_smc-test.c | 42 +++++++++++++++++++++++++++++++++++
+ 1 file changed, 42 insertions(+)
 
 diff --git a/tests/qtest/aspeed_smc-test.c b/tests/qtest/aspeed_smc-test.c
-index 0171ecf4ed..30f997679c 100644
+index 30f997679c..c5c38e23c5 100644
 --- a/tests/qtest/aspeed_smc-test.c
 +++ b/tests/qtest/aspeed_smc-test.c
-@@ -737,21 +737,62 @@ static void test_ast2500_evb(TestData *data)
-     qtest_add_data_func("/ast2500/smc/read_status_reg",
+@@ -774,11 +774,50 @@ static void test_ast2600_evb(TestData *data)
+     qtest_add_data_func("/ast2600/smc/read_status_reg",
                          data, test_read_status_reg);
  }
 +
-+static void test_ast2600_evb(TestData *data)
++static void test_ast1030_evb(TestData *data)
 +{
 +    int ret;
 +    int fd;
 +
-+    fd = g_file_open_tmp("qtest.m25p80.mx66u51235f.XXXXXX",
++    fd = g_file_open_tmp("qtest.m25p80.w25q80bl.XXXXXX",
 +                         &data->tmp_path, NULL);
 +    g_assert(fd >= 0);
-+    ret = ftruncate(fd, 64 * 1024 * 1024);
++    ret = ftruncate(fd, 1 * 1024 * 1024);
 +    g_assert(ret == 0);
 +    close(fd);
 +
-+    data->s = qtest_initf("-machine ast2600-evb "
++    data->s = qtest_initf("-machine ast1030-evb "
 +                          "-drive file=%s,format=raw,if=mtd",
 +                          data->tmp_path);
 +
-+    /* fmc cs0 with mx66u51235f flash */
-+    data->flash_base = 0x20000000;
-+    data->spi_base = 0x1E620000;
-+    data->jedec_id = 0xc2253a;
++    /* fmc cs0 with w25q80bl flash */
++    data->flash_base = 0x80000000;
++    data->spi_base = 0x7E620000;
++    data->jedec_id = 0xef4014;
 +    data->cs = 0;
 +    data->node = "/machine/soc/fmc/ssi.0/child[0]";
-+    /* beyond 16MB */
-+    data->page_addr = 0x14000 * FLASH_PAGE_SIZE;
++    /* beyond 512KB */
++    data->page_addr = 0x800 * FLASH_PAGE_SIZE;
 +
-+    qtest_add_data_func("/ast2600/smc/read_jedec", data, test_read_jedec);
-+    qtest_add_data_func("/ast2600/smc/erase_sector", data, test_erase_sector);
-+    qtest_add_data_func("/ast2600/smc/erase_all",  data, test_erase_all);
-+    qtest_add_data_func("/ast2600/smc/write_page", data, test_write_page);
-+    qtest_add_data_func("/ast2600/smc/read_page_mem",
++    qtest_add_data_func("/ast1030/smc/read_jedec", data, test_read_jedec);
++    qtest_add_data_func("/ast1030/smc/erase_sector", data, test_erase_sector);
++    qtest_add_data_func("/ast1030/smc/erase_all",  data, test_erase_all);
++    qtest_add_data_func("/ast1030/smc/write_page", data, test_write_page);
++    qtest_add_data_func("/ast1030/smc/read_page_mem",
 +                        data, test_read_page_mem);
-+    qtest_add_data_func("/ast2600/smc/write_page_mem",
++    qtest_add_data_func("/ast1030/smc/write_page_mem",
 +                        data, test_write_page_mem);
-+    qtest_add_data_func("/ast2600/smc/read_status_reg",
++    qtest_add_data_func("/ast1030/smc/read_status_reg",
 +                        data, test_read_status_reg);
 +}
++
  int main(int argc, char **argv)
  {
      TestData palmetto_data;
      TestData ast2500_evb_data;
-+    TestData ast2600_evb_data;
+     TestData ast2600_evb_data;
++    TestData ast1030_evb_data;
      int ret;
  
      g_test_init(&argc, &argv, NULL);
- 
+@@ -786,13 +825,16 @@ int main(int argc, char **argv)
      test_palmetto_bmc(&palmetto_data);
      test_ast2500_evb(&ast2500_evb_data);
-+    test_ast2600_evb(&ast2600_evb_data);
+     test_ast2600_evb(&ast2600_evb_data);
++    test_ast1030_evb(&ast1030_evb_data);
      ret = g_test_run();
  
      qtest_quit(palmetto_data.s);
      qtest_quit(ast2500_evb_data.s);
-+    qtest_quit(ast2600_evb_data.s);
+     qtest_quit(ast2600_evb_data.s);
++    qtest_quit(ast1030_evb_data.s);
      unlink(palmetto_data.tmp_path);
      unlink(ast2500_evb_data.tmp_path);
-+    unlink(ast2600_evb_data.tmp_path);
+     unlink(ast2600_evb_data.tmp_path);
++    unlink(ast1030_evb_data.tmp_path);
      return ret;
  }
 -- 

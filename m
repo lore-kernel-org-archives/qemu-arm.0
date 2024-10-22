@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5cb66a657bcsm3124198a12.23.2024.10.22.03.56.17
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5cb66c7255esm3123937a12.80.2024.10.22.03.56.19
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 22 Oct 2024 03:56:19 -0700 (PDT)
+        Tue, 22 Oct 2024 03:56:28 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 1AA775F925;
+	by draig.lan (Postfix) with ESMTP id ADE0A5FABE;
 	Tue, 22 Oct 2024 11:56:15 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -35,76 +35,38 @@ Cc: Beraldo Leal <bleal@redhat.com>,
 	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
 	Pierrick Bouvier <pierrick.bouvier@linaro.org>,
 	Paolo Bonzini <pbonzini@redhat.com>
-Subject: [PATCH v2 05/20] docs/devel: update tsan build documentation
-Date: Tue, 22 Oct 2024 11:55:59 +0100
-Message-Id: <20241022105614.839199-6-alex.bennee@linaro.org>
+Subject: [PATCH v2 12/20] config/targets: update aarch64_be-linux-user gdb XML list
+Date: Tue, 22 Oct 2024 11:56:06 +0100
+Message-Id: <20241022105614.839199-13-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20241022105614.839199-1-alex.bennee@linaro.org>
 References: <20241022105614.839199-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: LvU24GPEeFuR
+X-TUID: oruZ27xe8EDt
 
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Attempting to run the binary asserts when it can't find the XML entry.
+We can fix it so we don't although I suspect other stuff is broken.
 
-Mention it's now possible to build with gcc, instead of clang, and
-explain how to build a sanitized glib version.
-
-Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-Message-Id: <20240910174013.1433331-4-pierrick.bouvier@linaro.org>
+Fixes: https://gitlab.com/qemu-project/qemu/-/issues/2580
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- docs/devel/testing/main.rst | 26 ++++++++++++++++++++++----
- 1 file changed, 22 insertions(+), 4 deletions(-)
+ configs/targets/aarch64_be-linux-user.mak | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/docs/devel/testing/main.rst b/docs/devel/testing/main.rst
-index 09725e8ea9..91f4dc61fb 100644
---- a/docs/devel/testing/main.rst
-+++ b/docs/devel/testing/main.rst
-@@ -628,20 +628,38 @@ Building and Testing with TSan
- It is possible to build and test with TSan, with a few additional steps.
- These steps are normally done automatically in the docker.
- 
--There is a one time patch needed in clang-9 or clang-10 at this time:
-+TSan is supported for clang and gcc.
-+One particularity of sanitizers is that all the code, including shared objects
-+dependencies, should be built with it.
-+In the case of TSan, any synchronization primitive from glib (GMutex for
-+instance) will not be recognized, and will lead to false positives.
-+
-+To build a tsan version of glib:
- 
- .. code::
- 
--  sed -i 's/^const/static const/g' \
--      /usr/lib/llvm-10/lib/clang/10.0.0/include/sanitizer/tsan_interface.h
-+   $ git clone --depth=1 --branch=2.81.0 https://github.com/GNOME/glib.git
-+   $ cd glib
-+   $ CFLAGS="-O2 -g -fsanitize=thread" meson build
-+   $ ninja -C build
- 
- To configure the build for TSan:
- 
- .. code::
- 
--  ../configure --enable-tsan --cc=clang-10 --cxx=clang++-10 \
-+  ../configure --enable-tsan \
-                --disable-werror --extra-cflags="-O0"
- 
-+When executing qemu, don't forget to point to tsan glib:
-+
-+.. code::
-+
-+   $ glib_dir=/path/to/glib
-+   $ export LD_LIBRARY_PATH=$glib_dir/build/gio:$glib_dir/build/glib:$glib_dir/build/gmodule:$glib_dir/build/gobject:$glib_dir/build/gthread
-+   # check correct version is used
-+   $ ldd build/qemu-x86_64 | grep glib
-+   $ qemu-system-x86_64 ...
-+
- The runtime behavior of TSAN is controlled by the TSAN_OPTIONS environment
- variable.
- 
+diff --git a/configs/targets/aarch64_be-linux-user.mak b/configs/targets/aarch64_be-linux-user.mak
+index 778d22b2a9..dcef597a80 100644
+--- a/configs/targets/aarch64_be-linux-user.mak
++++ b/configs/targets/aarch64_be-linux-user.mak
+@@ -1,7 +1,7 @@
+ TARGET_ARCH=aarch64
+ TARGET_BASE_ARCH=arm
+ TARGET_BIG_ENDIAN=y
+-TARGET_XML_FILES= gdb-xml/aarch64-core.xml gdb-xml/aarch64-fpu.xml gdb-xml/aarch64-pauth.xml
++TARGET_XML_FILES= gdb-xml/aarch64-core.xml gdb-xml/aarch64-fpu.xml gdb-xml/aarch64-pauth.xml gdb-xml/aarch64-mte.xml
+ TARGET_HAS_BFLT=y
+ CONFIG_SEMIHOSTING=y
+ CONFIG_ARM_COMPATIBLE_SEMIHOSTING=y
 -- 
 2.39.5

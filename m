@@ -1,179 +1,215 @@
-Received: by 2002:a17:505:18c3:b0:1be9:327d:8ee3 with SMTP id tt3csp3037477njb;
-        Tue, 22 Oct 2024 05:32:43 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUuHwgVAOiXfNR2xMo5kqC07Rv8PS520Y/ERXSQ/2eI9pYsqefAu8/0t9hlb5VP1NrD0S2add29Rt4How==@linaro.org
-X-Received: by 2002:a17:90b:4f8c:b0:2e2:e2f8:100 with SMTP id 98e67ed59e1d1-2e561a01721mr16199816a91.38.1729600363234;
-        Tue, 22 Oct 2024 05:32:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1729600363; cv=none;
+Received: by 2002:a17:505:18c3:b0:1be9:327d:8ee3 with SMTP id tt3csp3151157njb;
+        Tue, 22 Oct 2024 08:05:09 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVJp6AkjooVspFZB8A9mEUfv2RxrMcIAydSHy+TG2N2dnXWiVOygfbp0rD54bqjMav2dcjvO9n/tegdPg==@linaro.org
+X-Google-Smtp-Source: AGHT+IHzffQgsGoPcSyNA4aTZLiyVvT5t4nr+6dLh8XrzO+LgqoHtgwN00eriHL0+OiJSi1YeLfh
+X-Received: by 2002:a05:6902:120c:b0:e28:fa09:826f with SMTP id 3f1490d57ef6-e2e27429950mr2731795276.50.1729609509088;
+        Tue, 22 Oct 2024 08:05:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1729609509; cv=none;
         d=google.com; s=arc-20240605;
-        b=B3AH5ZZu6kKMu7TcbmZf8jaD5gndYQ+OGS6+3k135GA1aF8h1QGomBu+iYmBuPoWnm
-         5jp+myH/oI0lGMBGRrls9ZBAFWpdXgu5oqiQrWh8/SuR98kd2vsfbLDxcihrJFvPgMD/
-         QNt1xbuZoDiZph4lcYxPVAmp5igH0es1WZuBN0/LkOz+gVrBvfGZDb2owbApkaY3tUWL
-         Og0XsAN3LCaiirSMNBeFzmh/Nm2nZ4z1qmJ3e8hMljN2aYmP+Q8OGnzoBra/NAzFGvCp
-         9CJny3qW0CFwbNpnCTj2DBIlqrre9pbS/iUjsdLpAcoACVqXImYvob0J88u8VNWTo7Bl
-         HiDA==
+        b=E/UdYHvwxTqjJMw+20h67PPZ4i67bxbSZMQ1p6YJOP9ftBAichpiYy9xswawiWCkcr
+         jiAL9VMAircaFZaMQiFDvUOfozH6G96xLdzRIbI5BKWYshWYGivlVnjTG7WfUXkPN2c0
+         kUKYtBkGpK7pRROH2HHW337lCiTVo3y45Mjb1F8enKLlCnqStlqcbr5K8Ddz0XI5IcB2
+         CzvW662C1226dBDrE55QkJtERkRAayhXjYL8vnbRh4vZz7tUpR2B6LMce8cvXO+mgrP0
+         yg1NIOKgO837kaBO6IBencJPo2IRB+OkjY5JXPt9l2mKNMHCewFkbRaNjIjT8c5uXnpJ
+         XLxQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=T2BBSawxJb9hvH5HcLsQ7yerA09YYQcV6F8+v48uPAM=;
-        fh=2a+gRS76a4Xdxb0BBOazRS/24aP/jca5e8/OSmYknNE=;
-        b=ZZ/3aiD/rlh5ZjzupE+rC7arl61UFPyS2+aeG91m2VWnyzdngHKgjZE4o8/CJPfC8a
-         1sMsi25AzHX0b/uXTKrBZXBR05R9BDsvb3vIKlDj9RWoWbrTvwXRYONcinWkGHM41Jus
-         p11ceAzln75oNwem1sm0iAc+cWi1Sv0qa9GXsx5wfIKwsOfl1O1LFJsBvw8GAXTOZy9v
-         GO7qlkoIa8A4DS5EURXYv70GSGEH7YZQkoPqjtrB+ujJwEOIcYLA/8MwJERTgO63jqQE
-         2pn7FvjPxRCVXrs1ap/SVXcHf34dCjqsHPRxQjg6CXjHZm1ni//NGeAevA5o0smqhEjY
-         fNtg==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:autocrypt:from:content-language:references:cc:to
+         :subject:user-agent:mime-version:date:message-id:dkim-signature;
+        bh=Z99jcYlBvG5K1K3cnnlBeDQs1qf5q/04pu8kfBLt/+U=;
+        fh=ZH2eXRUYgVWPa8ltTLL9vYdlSs/AxOFy2JS9iQFxHGE=;
+        b=KrovOiqi5o89al4cmFBNiMlCEqCsAH17Q2OEcbQWvn3Ye0dkZSHBrErtkDUvuzHffs
+         aSHH+TwENfNw4NiCoo1eJn10I52QC+8cm1u4+8a/zoGV4ogSRkA7MRJZKVqKltI6R0Gp
+         goWMmFJEBWyRhmzcBSAGIo0cC+MR4+yT3rWwRqin/+hlGDoiB2g+ImaFjjfYd/xz4WrO
+         FvKHM0BY0pD9KuXI3E4jxXkR/b/zNKuoZGurKmjwjxHY5KMk9R5ZcOro2nOJutEhwUvj
+         Zd4NFw5WMUDBeGXSPf13uGugfZso/eqHXGNE+lWJeCFmo/8vgtE1+/hIXKNtlmucUSPW
+         NHYw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=QQeWJQrc;
-       spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <gustavo.romero@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 98e67ed59e1d1-2e5ad542e11sor2316710a91.6.2024.10.22.05.32.43
+       dkim=fail header.i=@gmail.com header.s=20230601 header.b=QIHQfbhy;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dara=fail header.i=@linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 3f1490d57ef6-e2e2e436a00si875064276.72.2024.10.22.08.05.08
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 22 Oct 2024 05:32:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 22 Oct 2024 08:05:09 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=QQeWJQrc;
-       spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       dkim=fail header.i=@gmail.com header.s=20230601 header.b=QIHQfbhy;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dara=fail header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1t3GQx-00031D-CZ; Tue, 22 Oct 2024 11:04:32 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
+ id 1t3GQi-0002wP-2c; Tue, 22 Oct 2024 11:04:20 -0400
+Received: from mail-pl1-x629.google.com ([2607:f8b0:4864:20::629])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
+ id 1t3GQf-0002mq-B9; Tue, 22 Oct 2024 11:04:15 -0400
+Received: by mail-pl1-x629.google.com with SMTP id
+ d9443c01a7336-20cf3e36a76so56128245ad.0; 
+ Tue, 22 Oct 2024 08:04:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1729600363; x=1730205163; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=T2BBSawxJb9hvH5HcLsQ7yerA09YYQcV6F8+v48uPAM=;
-        b=QQeWJQrc+BbS8dDb1jRVX+EdPMbQ2amQUoiQ6tltGAQCvWWy+6wELBn+4ybzxNIHyJ
-         vgAmLtTSjJgiZhc5fBMv7+4JNjfeNvW/oILuQ5LzY4baHkKaacnFt5+BW5RGBCiJSJyh
-         rP7Gzjk+3LKiZPOJ8/89fzpwlbCL983DPyS+zbbErU0Hyr3085t1BCcPJNAdHfN21X57
-         s03GG/bFVTWE9DuYfT23C0ntoaJh0FRkEB8A3ErqC8DfNUs6Kj3yFUgNKmJABmT9iGzY
-         7n8NeIcxt6LLDq02axDf5hpoekZeu7A+nNu4N9vcVnlMECjPbPEuvoACwDIT3lQldf9K
-         A3EA==
+ d=gmail.com; s=20230601; t=1729609451; x=1730214251; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from
+ :content-language:references:cc:to:subject:user-agent:mime-version
+ :date:message-id:sender:from:to:cc:subject:date:message-id:reply-to;
+ bh=Z99jcYlBvG5K1K3cnnlBeDQs1qf5q/04pu8kfBLt/+U=;
+ b=QIHQfbhyTqfbJfm7voFUQKH6Eg5fCs23+2UyXpGc7I4KDSHu2c1DYTwt0oX6dvrWZn
+ Qbb04KmV6rW5JqlfAh82v+GvC94AWLqbSRaX2VoS3hHiKVtOcq2M48AVb2iEWs2iv5LE
+ lQxfbxNJN3/LrgnJBs/f7dzZ3UiCKajpNBKmm+I0pQaluMhgQUvLMtz7q4XPLU6lUIvZ
+ rdyAJuWBFN4ogiW4aSjbsdXZs4GF/Wy4D49yHHKH1x5XxU7JXux+iyqkwoEI/nF6CfMm
+ LQKiO5BtFZm4YZq08lGAzycabvU+tIfuwEkG+ykfbFu75tox+E4b0c5in/uvHH5T3QbT
+ r6XQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1729600363; x=1730205163;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=T2BBSawxJb9hvH5HcLsQ7yerA09YYQcV6F8+v48uPAM=;
-        b=f9DXFSZceYBPI6x/mXIUi6hXRrUauXPw+zmHRCW0WHim7PA+w3hn4po8INRLmzuWMT
-         TylmAbBxSOoCjHffCmRm1R6zqN1H0BgbC/vz3xCdUjfDT7wHnYWbnhsMIGhbd6usUSHl
-         4GRNDzKsPgIArKynT3POoca1G/r5XBpqndphw1LU8vwBE4ILZO9qGxPdbbovJq85DRSk
-         CdS17cCdsxbncpNHZ8tq64su6Nd5jE+xNVjLcZ8VyeY9ufIsaTzCsUu/pv0YHpnJYcFQ
-         I9hHoZ2chwUwlTb3LCCGlAPhlwFzI85oKRXuuxGMkHyuXuXasE4bcM74NtZ/lnK0i72N
-         Sn2w==
-X-Forwarded-Encrypted: i=1; AJvYcCVAQbfmUYKUIcZtthYHu0s3fTzz/9OzNwq/Yn6HH6YXSHO221hzLDvRq5t9fcxLjGjalj3TI+4zak8puw==@linaro.org
-X-Gm-Message-State: AOJu0Yw1LsLxjcvoSU22w1WuRNpJqF5eyYSkIOmHjr9ny9m1nJFBFAdD
-	EHsUff9eLDEWauPyc9ocQErAHi8E851YSLppliO7VTGB6NnO+B69DLBkn46eJSOI6g==
-X-Google-Smtp-Source: AGHT+IFQDi3FmXrZuTZSlpLc4z4MNYr+WYGVBJnSyKJNjp5/TrBV+I32+lXjr70S4NS7ID3HwlUv7g==
-X-Received: by 2002:a17:90a:4e06:b0:2e2:e937:7141 with SMTP id 98e67ed59e1d1-2e56172bb5cmr18409147a91.20.1729600362726;
-        Tue, 22 Oct 2024 05:32:42 -0700 (PDT)
-Return-Path: <gustavo.romero@linaro.org>
-Received: from [192.168.0.102] (200-207-104-238.dsl.telesp.net.br. [200.207.104.238])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-2e5ad25caf5sm6077581a91.8.2024.10.22.05.32.32
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 22 Oct 2024 05:32:42 -0700 (PDT)
-Message-ID: <83ed8630-3d02-43b7-a908-be49f19d3d31@linaro.org>
-Date: Tue, 22 Oct 2024 09:32:30 -0300
+ d=1e100.net; s=20230601; t=1729609451; x=1730214251;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from
+ :content-language:references:cc:to:subject:user-agent:mime-version
+ :date:message-id:sender:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=Z99jcYlBvG5K1K3cnnlBeDQs1qf5q/04pu8kfBLt/+U=;
+ b=cdDefat6E8iJxWwusRh5vYxE3o4UUuBnD0nqhTcJ2nXDeO9vGKYQOIW6NnQOD02sva
+ mbqyzEOi0akcMUn57WXR5E542aFf9Htl2RJlHoem0cHxlRI0Bc5GmA4D1tyWafQ4LTMm
+ xzwasTRzAaAz0WIQd8g0OMIuS0sh377WXumoC/8+gJbs4bc4khMMqhzfIWvL1MrD0GSa
+ 7lr993VvlOl00z/mlMQUlQEh8A/rkOxN+T+cuHnnTjdOljoCga5WTP02w0553VOjpSgK
+ hl1rCksBRkPjGrgX5dEhOIPRS4XK020jJbiIylkS86UGVDXQGdvpbXOCsG02zmunxA1Y
+ bLYA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUidJXYLuKoFnLGe7DaVQwpMlC/ZziXvhh7HGBr8QJUFc3ya1B92HsagRHS5g6DQr5KZS/OzQW8ADES@nongnu.org
+X-Gm-Message-State: AOJu0YxZ2K3dBR9sXhNCyovAy6drbdvvTPDM6gJUsVp1AYGHd0XkGo62
+ lW+jm1auEGu7v19KNm74+t2oFkifCvJoZjpRGKepb2mU98XzLOpJC830EA==
+X-Received: by 2002:a17:902:c407:b0:207:4c7c:743b with SMTP id
+ d9443c01a7336-20e982915c8mr31539495ad.0.1729609450905; 
+ Tue, 22 Oct 2024 08:04:10 -0700 (PDT)
+Received: from ?IPV6:2600:1700:e321:62f0:329c:23ff:fee3:9d7c?
+ ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
+ by smtp.gmail.com with ESMTPSA id
+ d9443c01a7336-20e7eee62c2sm44057735ad.20.2024.10.22.08.04.08
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 22 Oct 2024 08:04:09 -0700 (PDT)
+Message-ID: <d9f18091-aee1-4b32-ba72-e1028fe433c9@roeck-us.net>
+Date: Tue, 22 Oct 2024 08:04:08 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH V1 0/4] Arch agnostic ACPI changes to support vCPU Hotplug
- (on Archs like ARM)
-To: Miguel Luis <miguel.luis@oracle.com>
-Cc: Salil Mehta <salil.mehta@huawei.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "Michael S . Tsirkin" <mst@redhat.com>, Marc Zyngier <maz@kernel.org>,
- Jean-Philippe Brucker <jean-philippe@linaro.org>,
- Jonathan Cameron <jonathan.cameron@huawei.com>,
- Lorenzo Pieralisi <lpieralisi@kernel.org>,
- Peter Maydell <peter.maydell@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- Igor Mammedov <imammedo@redhat.com>,
- "andrew.jones@linux.dev" <andrew.jones@linux.dev>,
- "david@redhat.com" <david@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Eric Auger <eric.auger@redhat.com>, Will Deacon <will@kernel.org>,
- Ard Biesheuvel <ardb@kernel.org>,
- "oliver.upton@linux.dev" <oliver.upton@linux.dev>,
- "pbonzini@redhat.com" <pbonzini@redhat.com>,
- "gshan@redhat.com" <gshan@redhat.com>, "rafael@kernel.org"
- <rafael@kernel.org>, "borntraeger@linux.ibm.com"
- <borntraeger@linux.ibm.com>, "alex.bennee@linaro.org"
- <alex.bennee@linaro.org>, "npiggin@gmail.com" <npiggin@gmail.com>,
- "harshpb@linux.ibm.com" <harshpb@linux.ibm.com>,
- "linux@armlinux.org.uk" <linux@armlinux.org.uk>,
- "darren@os.amperecomputing.com" <darren@os.amperecomputing.com>,
- "ilkka@os.amperecomputing.com" <ilkka@os.amperecomputing.com>,
- "vishnu@os.amperecomputing.com" <vishnu@os.amperecomputing.com>,
- Karl Heubaum <karl.heubaum@oracle.com>,
- "salil.mehta@opnsrc.net" <salil.mehta@opnsrc.net>,
- "zhukeqian1@huawei.com" <zhukeqian1@huawei.com>,
- "wangxiongfeng2@huawei.com" <wangxiongfeng2@huawei.com>,
- "wangyanan55@huawei.com" <wangyanan55@huawei.com>,
- "jiakernel2@gmail.com" <jiakernel2@gmail.com>,
- "maobibo@loongson.cn" <maobibo@loongson.cn>,
- "lixianglai@loongson.cn" <lixianglai@loongson.cn>,
- "shahuang@redhat.com" <shahuang@redhat.com>,
- "zhao1.liu@intel.com" <zhao1.liu@intel.com>,
- "linuxarm@huawei.com" <linuxarm@huawei.com>
-References: <20241014192205.253479-1-salil.mehta@huawei.com>
- <B1CFD37B-3422-4766-A5EE-64D000FDEC2B@oracle.com>
- <b2593ab0-f5b2-46fe-8a8c-3725598a6ae1@linaro.org>
- <2033A23F-0516-4C2D-BD28-CF130AA4E086@oracle.com>
+Subject: Re: [PATCH 0/2] arm: Add collie and sx functional tests
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+References: <20241017163247.711244-1-peter.maydell@linaro.org>
+ <dcf06645-dac0-4099-8946-38ca9deaeccf@redhat.com>
+ <ec2cb5e8-77be-435e-8aa7-4314cf412c4d@redhat.com>
+ <CAFEAcA8MY8DWABNuYuzH57k-nv3J4s0eMR=FuRt1TVd8P2GU2g@mail.gmail.com>
+ <a65a224e-4f54-436d-b555-734a8926d941@roeck-us.net>
+ <aa7755a2-e6fa-4d23-bcac-a630e6da98db@linaro.org>
 Content-Language: en-US
-From: Gustavo Romero <gustavo.romero@linaro.org>
-In-Reply-To: <2033A23F-0516-4C2D-BD28-CF130AA4E086@oracle.com>
+From: Guenter Roeck <linux@roeck-us.net>
+Autocrypt: addr=linux@roeck-us.net; keydata=
+ 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
+ mDW4+i+XlNFUPUYMrIKi9joBhu18ssf5i5Q=
+In-Reply-To: <aa7755a2-e6fa-4d23-bcac-a630e6da98db@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: y2VSydph3aFu
+Received-SPF: pass client-ip=2607:f8b0:4864:20::629;
+ envelope-from=groeck7@gmail.com; helo=mail-pl1-x629.google.com
+X-Spam_score_int: -15
+X-Spam_score: -1.6
+X-Spam_bar: -
+X-Spam_report: (-1.6 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_ENVFROM_END_DIGIT=0.25,
+ FREEMAIL_FORGED_FROMDOMAIN=0.001, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.169, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: VxpAsah+3qIb
 
-Hi Miguel!
+On 10/21/24 21:09, Philippe Mathieu-Daudé wrote:
+> Hi Guenter,
+> 
+> On 21/10/24 11:02, Guenter Roeck wrote:
+> 
+>> Unrelated to this, but I found that the sd emulation in 9.1 is also broken
+>> for loongarch and sifive_u, and partially for ast2600-evb (it has two
+>> controllers, with one of them no longer working). That is too much for me
+>> to track down quickly, so this is just a heads-up.
+> 
+> Please Cc me with reproducer or assign Gitlab issues to me,
+> I'll have a look.
+> 
 
-On 10/21/24 05:04, Miguel Luis wrote:
-> Hi Gustavo,
-> 
->> On 18 Oct 2024, at 17:57, Gustavo Romero <gustavo.romero@linaro.org> wrote:
->>
->> Hi Miguel,
->>
->> On 10/15/24 15:41, Miguel Luis wrote:
->>> Hi Salil,
->>> I’ve ran the usual tests successfully of hotplug/unplug from the number of cold-booted cpus up to maxcpus and migration on ARM. Please feel free to add:
->>
->> Do you mind sharing what cpus you used for your tests?
->>
-> 
-> Not at all. I’ve used -cpu host and -cpu max. I had used RFC-v5 from [1] in order to test
-> this patchset as they are at the base of it.
+If it wasn't funny, it would be sad.
 
-ah, got it. Thanks for the clarification, that's what
-I was wondering at first :)
+hw/sd/sd.c:sd_reset() calls sd_bootpart_offset() t determine the boot partition
+offset. That function needs to have sd->ext_csd[EXT_CSD_PART_CONFIG] configured.
+However, the value is only set later in sd_reset() with the call to sc->set_csd().
+One of the parameters of that function is the previously calculated size.
 
+So in other words there is a circular dependency. The call to sd_bootpart_offset()
+returns 0 because sd->ext_csd[EXT_CSD_PART_CONFIG] isn't set, then
+the call to sc->set_csd() sets it ... too late. Subsequent calls to
+sd_bootpart_offset() will then return the expected offset.
 
->> Did you use tcg or kvm for the tests?
-> 
-> I’ve used both in the following configurations:
-> 
-> -M virt -accel kvm -cpu host
-> -M virt,gic_version=3 -accel kvm -cpu host
-> -M virt,gic_version=3 -accel tcg -cpu max
-> 
-> And
-> 
-> -M virt -accel tcg -cpu max
-> 
-> This last one presented defects in QEMU on behalf of RFC-V5 but, if you don’t
-> mind, instead of me transcribing everything here, could you please take a look
-> at [2] ?
-> 
-> I could have given more detail from start, apologies for any confusion on my part.
+I have no idea how this is supposed to work, and I don't think it works
+as implemented. I'll revert commit e32ac563b83 in my local copy of qemu.
 
-Sure, thanks for the pointers ;)
+Guenter
 
-
-Cheers,
-Gustavo

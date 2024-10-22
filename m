@@ -1,269 +1,150 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a9a91559951sm321731866b.106.2024.10.22.03.56.22
+Received: by 2002:a17:505:18c3:b0:1be9:327d:8ee3 with SMTP id tt3csp2983820njb;
+        Tue, 22 Oct 2024 04:05:10 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEn1S46qef70UqG1ya2zWfesvmMEdESkfiikKq/ucbr0tZ2q/Qy9XN+bwWWgmhYlpjPe84A
+X-Received: by 2002:a05:6214:5b89:b0:6cb:e867:7e5d with SMTP id 6a1803df08f44-6cde150c0cdmr214895036d6.16.1729595110675;
+        Tue, 22 Oct 2024 04:05:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1729595110; cv=none;
+        d=google.com; s=arc-20240605;
+        b=OrWew954gT8bxHVvhBLMafcll8FiHthbGLK/iYzCw9UGKAwpg4Kd+g69pSAktmbQE1
+         vMxuawnyhYQJIai+9Sw9WUxDbFEsGkq+lpvBskkGlBIGNWOmAZHaN5WdjJpvG/YFoFbQ
+         6cPE8iQMZAEbFOo9XQlgg7gtGEciciXPZ/eVHwlwBuEQRdhFmJKqooSCw8D50vZ/9ngS
+         VhMIQlQg+yVUvGJxPZwa4jwXnb4ODVfUe2AUIC4ZHiCsUzxZ5R31Ay6mfjs2tIIH8aXg
+         jlJim1snHMFFTF8vF1ZbjZSmMBJOm+TVQiGF45s3j/JJBADtZA7vcdwaCoz+Xt0bUAQo
+         qYrA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=user-agent:in-reply-to:content-transfer-encoding
+         :content-disposition:mime-version:references:reply-to:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=XgXOm/egpp5fSRjhAcPNhDSab7aMEhiEVg5mXUt45Zk=;
+        fh=RqJ/zhKZJZmzYLK4JmpGOOp/IsgKceU7MKSVATmiMsI=;
+        b=dRwgsS2aEm1Npdlpc3pxTJQwAoxHJ1Db5qgiXCOLRsujDiQVke5sTcJWdLKnRZ0mE8
+         j6txci+flXz+2MwcuRk4rABdLMROvduUQoppa3fBzpmupTq3SDRNA9P50I9rVnREXT0V
+         N/ACJ84zvH5qWkCotz86/L5dBiTjpnD8Z45+43UUZqIGTJvXMU1lVLGy+zGr5t9ioNfd
+         j7WJG3+c2l4UJtpvGQjG+N/x62QE6+aeNiUxTKjxGc/6+5swlxXXq4TkYySNIf3kpvOS
+         K0xiCQ73YPPF2un+qbG0+9WRezHlEpt+Gw9xPt5/UrlHeJIeCSSo0Tk91Q1kxCSCbZq0
+         cWQQ==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bkbpjvXi;
+       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <berrange@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6ce0098af7asi62304656d6.230.2024.10.22.04.05.10
+        for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 22 Oct 2024 03:56:28 -0700 (PDT)
-Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 2565B5FC34;
-	Tue, 22 Oct 2024 11:56:16 +0100 (BST)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Beraldo Leal <bleal@redhat.com>,
+        Tue, 22 Oct 2024 04:05:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bkbpjvXi;
+       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1729595110;
+	h=from:from:reply-to:reply-to:subject:subject:date:date:
+	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+	 content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=XgXOm/egpp5fSRjhAcPNhDSab7aMEhiEVg5mXUt45Zk=;
+	b=bkbpjvXigl8L8erKXOwaHESJ1VDQiDAkfsu5tWWYS1cvX++cQFx9fVIegF8wGB3zaaBSOS
+	FkwoyZ8OwXxX2qnMnTqHCOtpsuCWHCHozzZcJDeEBQkQPHEX+RySB4WdzV8p64ay7sfJnc
+	92pMpefOUZk8PZn3v9efPxrXymOfmgE=
+Received: from mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-572-1-6-f52TMw-jaPvV2hz7hg-1; Tue,
+ 22 Oct 2024 07:05:06 -0400
+X-MC-Unique: 1-6-f52TMw-jaPvV2hz7hg-1
+Received: from mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.40])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 223351955D92;
+	Tue, 22 Oct 2024 11:05:03 +0000 (UTC)
+Received: from redhat.com (unknown [10.42.28.59])
+	by mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 6D63419560AE;
+	Tue, 22 Oct 2024 11:04:53 +0000 (UTC)
+Date: Tue, 22 Oct 2024 12:04:50 +0100
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+Cc: qemu-devel@nongnu.org, Beraldo Leal <bleal@redhat.com>,
 	Laurent Vivier <laurent@vivier.eu>,
 	Wainer dos Santos Moschetta <wainersm@redhat.com>,
 	Mahmoud Mandour <ma.mandourr@gmail.com>,
 	Jiaxun Yang <jiaxun.yang@flygoat.com>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Yanan Wang <wangyanan55@huawei.com>,
-	Thomas Huth <thuth@redhat.com>,
+	Yanan Wang <wangyanan55@huawei.com>, Thomas Huth <thuth@redhat.com>,
 	John Snow <jsnow@redhat.com>,
-	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
-	qemu-arm@nongnu.org,
-	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
-	Eduardo Habkost <eduardo@habkost.net>,
-	devel@lists.libvirt.org,
-	Cleber Rosa <crosa@redhat.com>,
+	=?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
+	qemu-arm@nongnu.org, Eduardo Habkost <eduardo@habkost.net>,
+	devel@lists.libvirt.org, Cleber Rosa <crosa@redhat.com>,
 	kvm@vger.kernel.org,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
 	Alexandre Iooss <erdnaxe@crans.org>,
 	Peter Maydell <peter.maydell@linaro.org>,
 	Richard Henderson <richard.henderson@linaro.org>,
-	Riku Voipio <riku.voipio@iki.fi>,
-	Zhao Liu <zhao1.liu@intel.com>,
+	Riku Voipio <riku.voipio@iki.fi>, Zhao Liu <zhao1.liu@intel.com>,
 	Marcelo Tosatti <mtosatti@redhat.com>,
 	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
 	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
 	Pierrick Bouvier <pierrick.bouvier@linaro.org>,
 	Paolo Bonzini <pbonzini@redhat.com>
-Subject: [PATCH v2 17/20] plugins: add ability to register a GDB triggered callback
-Date: Tue, 22 Oct 2024 11:56:11 +0100
-Message-Id: <20241022105614.839199-18-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.39.5
-In-Reply-To: <20241022105614.839199-1-alex.bennee@linaro.org>
+Subject: Re: [PATCH v2 10/20] gitlab: make check-[dco|patch] a little more
+ verbose
+Message-ID: <ZxeG0rMSORBKjAVX@redhat.com>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 References: <20241022105614.839199-1-alex.bennee@linaro.org>
+ <20241022105614.839199-11-alex.bennee@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-X-TUID: 6U3FDLps1uBw
+In-Reply-To: <20241022105614.839199-11-alex.bennee@linaro.org>
+User-Agent: Mutt/2.2.12 (2023-09-09)
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.40
+X-TUID: Tomwd4XTFd4a
 
-Now gdbstub has gained the ability to extend its command tables we can
-allow it to trigger plugin callbacks. This is probably most useful for
-QEMU developers debugging plugins themselves but might be useful for
-other stuff.
+On Tue, Oct 22, 2024 at 11:56:04AM +0100, Alex Bennée wrote:
+> When git fails the rather terse backtrace only indicates it failed
+> without some useful context. Add some to make the log a little more
+> useful.
+> 
+> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> ---
+>  .gitlab-ci.d/check-dco.py   | 9 +++++----
+>  .gitlab-ci.d/check-patch.py | 9 +++++----
+>  2 files changed, 10 insertions(+), 8 deletions(-)
+> 
+> diff --git a/.gitlab-ci.d/check-dco.py b/.gitlab-ci.d/check-dco.py
+> index 632c8bcce8..d29c580d63 100755
+> --- a/.gitlab-ci.d/check-dco.py
+> +++ b/.gitlab-ci.d/check-dco.py
+> @@ -19,10 +19,11 @@
+>  reponame = os.path.basename(cwd)
+>  repourl = "https://gitlab.com/%s/%s.git" % (namespace, reponame)
+>  
+> -subprocess.check_call(["git", "remote", "add", "check-dco", repourl])
+> -subprocess.check_call(["git", "fetch", "check-dco", "master"],
+> -                      stdout=subprocess.DEVNULL,
+> -                      stderr=subprocess.DEVNULL)
+> +print(f"adding upstream git repo @ {repourl}")
+> +subprocess.run(["git", "remote", "add", "check-dco", repourl],
+> +               check=True, capture_output=True)
+> +subprocess.run(["git", "fetch", "check-dco", "master"],
+> +               check=True, capture_output=True)
 
-Trigger the callback by sending:
+This is effectively no change - 'capture_output'  means stderr/out
+are captured into a buffer which subprocess.run returns, but you're
+not using the return value so the captured output is invisible.
 
-  maintenance packet Qqemu.plugin_cb
+If we want to see errors, then just remove the stderr/stdout
+args from the check_call function, so they're no longer sent
+to /dev/null
 
-I've extended the memory plugin to report on the packet.
 
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
----
- include/qemu/plugin-event.h  |  1 +
- include/qemu/qemu-plugin.h   | 16 ++++++++++++++++
- plugins/plugin.h             |  9 +++++++++
- plugins/api.c                | 18 ++++++++++++++++++
- plugins/core.c               | 37 ++++++++++++++++++++++++++++++++++++
- tests/tcg/plugins/mem.c      | 11 +++++++++--
- plugins/qemu-plugins.symbols |  1 +
- 7 files changed, 91 insertions(+), 2 deletions(-)
-
-diff --git a/include/qemu/plugin-event.h b/include/qemu/plugin-event.h
-index 7056d8427b..d9aa56cf4f 100644
---- a/include/qemu/plugin-event.h
-+++ b/include/qemu/plugin-event.h
-@@ -20,6 +20,7 @@ enum qemu_plugin_event {
-     QEMU_PLUGIN_EV_VCPU_SYSCALL_RET,
-     QEMU_PLUGIN_EV_FLUSH,
-     QEMU_PLUGIN_EV_ATEXIT,
-+    QEMU_PLUGIN_EV_GDBSTUB,
-     QEMU_PLUGIN_EV_MAX, /* total number of plugin events we support */
- };
- 
-diff --git a/include/qemu/qemu-plugin.h b/include/qemu/qemu-plugin.h
-index 622c9a0232..99c3b365aa 100644
---- a/include/qemu/qemu-plugin.h
-+++ b/include/qemu/qemu-plugin.h
-@@ -802,6 +802,22 @@ QEMU_PLUGIN_API
- void qemu_plugin_register_atexit_cb(qemu_plugin_id_t id,
-                                     qemu_plugin_udata_cb_t cb, void *userdata);
- 
-+
-+/**
-+ * qemu_plugin_register_gdb_cb() - register a gdb callback
-+ * @id: plugin ID
-+ * @cb: callback
-+ * @userdata: user data for callback
-+ *
-+ * When using the gdbstub to debug a guest you can send a command that
-+ * will trigger the callback. This is useful if you want the plugin to
-+ * print out collected state at particular points when debugging a
-+ * program.
-+ */
-+QEMU_PLUGIN_API
-+void qemu_plugin_register_gdb_cb(qemu_plugin_id_t id,
-+                                 qemu_plugin_udata_cb_t cb, void *userdata);
-+
- /* returns how many vcpus were started at this point */
- int qemu_plugin_num_vcpus(void);
- 
-diff --git a/plugins/plugin.h b/plugins/plugin.h
-index 30e2299a54..f37667c9fb 100644
---- a/plugins/plugin.h
-+++ b/plugins/plugin.h
-@@ -118,4 +118,13 @@ struct qemu_plugin_scoreboard *plugin_scoreboard_new(size_t element_size);
- 
- void plugin_scoreboard_free(struct qemu_plugin_scoreboard *score);
- 
-+/**
-+ * plugin_register_gdbstub_commands - register gdbstub commands
-+ *
-+ * This should only be called once to register gdbstub commands so we
-+ * can trigger callbacks if needed.
-+ */
-+void plugin_register_gdbstub_commands(void);
-+
-+
- #endif /* PLUGIN_H */
-diff --git a/plugins/api.c b/plugins/api.c
-index 24ea64e2de..62141616f4 100644
---- a/plugins/api.c
-+++ b/plugins/api.c
-@@ -681,3 +681,21 @@ void qemu_plugin_update_ns(const void *handle, int64_t new_time)
-     }
- #endif
- }
-+
-+/*
-+ * gdbstub hooks
-+ */
-+
-+static bool gdbstub_callbacks;
-+
-+void qemu_plugin_register_gdb_cb(qemu_plugin_id_t id,
-+                                 qemu_plugin_udata_cb_t cb,
-+                                 void *udata)
-+{
-+    plugin_register_cb_udata(id, QEMU_PLUGIN_EV_GDBSTUB, cb, udata);
-+
-+    if (!gdbstub_callbacks) {
-+        plugin_register_gdbstub_commands();
-+        gdbstub_callbacks = true;
-+    }
-+}
-diff --git a/plugins/core.c b/plugins/core.c
-index bb105e8e68..e7fce08799 100644
---- a/plugins/core.c
-+++ b/plugins/core.c
-@@ -23,6 +23,7 @@
- #include "qemu/xxhash.h"
- #include "qemu/rcu.h"
- #include "hw/core/cpu.h"
-+#include "gdbstub/commands.h"
- 
- #include "exec/exec-all.h"
- #include "exec/tb-flush.h"
-@@ -147,6 +148,7 @@ static void plugin_cb__udata(enum qemu_plugin_event ev)
- 
-     switch (ev) {
-     case QEMU_PLUGIN_EV_ATEXIT:
-+    case QEMU_PLUGIN_EV_GDBSTUB:
-         QLIST_FOREACH_SAFE_RCU(cb, &plugin.cb_lists[ev], entry, next) {
-             qemu_plugin_udata_cb_t func = cb->f.udata;
- 
-@@ -768,3 +770,38 @@ void plugin_scoreboard_free(struct qemu_plugin_scoreboard *score)
-     g_array_free(score->data, TRUE);
-     g_free(score);
- }
-+
-+/*
-+ * gdbstub integration
-+ */
-+
-+static void handle_plugin_cb(GArray *params, void *user_ctx)
-+{
-+    plugin_cb__udata(QEMU_PLUGIN_EV_GDBSTUB);
-+    gdb_put_packet("OK");
-+}
-+
-+enum Command {
-+    PluginCallback,
-+    NUM_GDB_CMDS
-+};
-+
-+static const GdbCmdParseEntry cmd_handler_table[NUM_GDB_CMDS] = {
-+    [PluginCallback] = {
-+        .handler = handle_plugin_cb,
-+        .cmd_startswith = true,
-+        .cmd = "qemu.plugin_cb",
-+        .schema = "s?",
-+    },
-+};
-+
-+void plugin_register_gdbstub_commands(void)
-+{
-+    g_autoptr(GPtrArray) set_table = g_ptr_array_new();
-+
-+    for (int i = 0; i < NUM_GDB_CMDS; i++) {
-+        g_ptr_array_add(set_table, (gpointer) &cmd_handler_table[PluginCallback]);
-+    }
-+
-+    gdb_extend_set_table(set_table);
-+}
-diff --git a/tests/tcg/plugins/mem.c b/tests/tcg/plugins/mem.c
-index b0fa8a9f27..d416d92fc2 100644
---- a/tests/tcg/plugins/mem.c
-+++ b/tests/tcg/plugins/mem.c
-@@ -75,8 +75,7 @@ static gint addr_order(gconstpointer a, gconstpointer b)
-     return na->region_address > nb->region_address ? 1 : -1;
- }
- 
--
--static void plugin_exit(qemu_plugin_id_t id, void *p)
-+static void plugin_report(qemu_plugin_id_t id, void *p)
- {
-     g_autoptr(GString) out = g_string_new("");
- 
-@@ -90,6 +89,7 @@ static void plugin_exit(qemu_plugin_id_t id, void *p)
-     }
-     qemu_plugin_outs(out->str);
- 
-+    g_mutex_lock(&lock);
- 
-     if (do_region_summary) {
-         GList *counts = g_hash_table_get_values(regions);
-@@ -114,6 +114,12 @@ static void plugin_exit(qemu_plugin_id_t id, void *p)
-         qemu_plugin_outs(out->str);
-     }
- 
-+    g_mutex_unlock(&lock);
-+}
-+
-+static void plugin_exit(qemu_plugin_id_t id, void *p)
-+{
-+    plugin_report(id, p);
-     qemu_plugin_scoreboard_free(counts);
- }
- 
-@@ -400,6 +406,7 @@ QEMU_PLUGIN_EXPORT int qemu_plugin_install(qemu_plugin_id_t id,
-         counts, CPUCount, mem_count);
-     io_count = qemu_plugin_scoreboard_u64_in_struct(counts, CPUCount, io_count);
-     qemu_plugin_register_vcpu_tb_trans_cb(id, vcpu_tb_trans);
-+    qemu_plugin_register_gdb_cb(id, plugin_report, NULL);
-     qemu_plugin_register_atexit_cb(id, plugin_exit, NULL);
-     return 0;
- }
-diff --git a/plugins/qemu-plugins.symbols b/plugins/qemu-plugins.symbols
-index 032661f9ea..d272e8e0f3 100644
---- a/plugins/qemu-plugins.symbols
-+++ b/plugins/qemu-plugins.symbols
-@@ -25,6 +25,7 @@
-   qemu_plugin_read_register;
-   qemu_plugin_register_atexit_cb;
-   qemu_plugin_register_flush_cb;
-+  qemu_plugin_register_gdb_cb;
-   qemu_plugin_register_vcpu_exit_cb;
-   qemu_plugin_register_vcpu_idle_cb;
-   qemu_plugin_register_vcpu_init_cb;
+With regards,
+Daniel
 -- 
-2.39.5
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|

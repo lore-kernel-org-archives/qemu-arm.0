@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a9a912edc33sm321447866b.58.2024.10.22.03.56.15
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a9a91559951sm321731866b.106.2024.10.22.03.56.22
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 22 Oct 2024 03:56:15 -0700 (PDT)
+        Tue, 22 Oct 2024 03:56:28 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id A8D0D5F89C;
-	Tue, 22 Oct 2024 11:56:14 +0100 (BST)
+	by draig.lan (Postfix) with ESMTP id 2565B5FC34;
+	Tue, 22 Oct 2024 11:56:16 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Beraldo Leal <bleal@redhat.com>,
@@ -35,113 +35,235 @@ Cc: Beraldo Leal <bleal@redhat.com>,
 	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
 	Pierrick Bouvier <pierrick.bouvier@linaro.org>,
 	Paolo Bonzini <pbonzini@redhat.com>
-Subject: [PATCH v2 00/20] maintainer updates (testing, gdbstub, plugins)
-Date: Tue, 22 Oct 2024 11:55:54 +0100
-Message-Id: <20241022105614.839199-1-alex.bennee@linaro.org>
+Subject: [PATCH v2 17/20] plugins: add ability to register a GDB triggered callback
+Date: Tue, 22 Oct 2024 11:56:11 +0100
+Message-Id: <20241022105614.839199-18-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
+In-Reply-To: <20241022105614.839199-1-alex.bennee@linaro.org>
+References: <20241022105614.839199-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: CSXZR+0dhScu
+X-TUID: 6U3FDLps1uBw
 
-This is an aggregation of three of my maintainer trees which you can
-also get from their respective branches (testing/next, gdbstub/next
-and plugins/next). I didn't include the plugins on the last post as I
-hadn't had a chance to do my sweep through patches before travelling.
-I've also updated MAINTAINERS to point at my next trees.
+Now gdbstub has gained the ability to extend its command tables we can
+allow it to trigger plugin callbacks. This is probably most useful for
+QEMU developers debugging plugins themselves but might be useful for
+other stuff.
 
-For testing we have mostly tweaks and cleanups. I've included some
-tracepoints tweaks for cpu_loop_exit_atomic purely as there was no
-where else to but it. There are also some cleanups to the tsan support
-from Pierrick. The mipsel tweaks have already been applied directly to
-the tree.
+Trigger the callback by sending:
 
-For gdbstub more cleanups as well as fixing some gdbstub breakage of
-the untested aarch64-be linux-user target. I've added a very basic
-some test to prevent silly regressions in the future.
+  maintenance packet Qqemu.plugin_cb
 
-For plugins again more cleanups. The GDB trigger patch will probably
-not get merged and should be considered an experimental hack for now.
+I've extended the memory plugin to report on the packet.
 
-The following still need review:
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+---
+ include/qemu/plugin-event.h  |  1 +
+ include/qemu/qemu-plugin.h   | 16 ++++++++++++++++
+ plugins/plugin.h             |  9 +++++++++
+ plugins/api.c                | 18 ++++++++++++++++++
+ plugins/core.c               | 37 ++++++++++++++++++++++++++++++++++++
+ tests/tcg/plugins/mem.c      | 11 +++++++++--
+ plugins/qemu-plugins.symbols |  1 +
+ 7 files changed, 91 insertions(+), 2 deletions(-)
 
-  plugins: add ability to register a GDB triggered callback
-  tests/tcg: enable basic testing for aarch64_be-linux-user
-  config/targets: update aarch64_be-linux-user gdb XML list
-  MAINTAINERS: mention my gdbstub/next tree
-  gitlab: make check-[dco|patch] a little more verbose
-  scripts/ci: remove architecture checks for build-environment updates
-  MAINTAINERS: mention my testing/next tree
-  tests/docker: add NOFETCH env variable for testing
-  MAINTAINERS: mention my plugins/next tree
-
-Alex Bennée (10):
-  tests/docker: add NOFETCH env variable for testing
-  MAINTAINERS: mention my testing/next tree
-  scripts/ci: remove architecture checks for build-environment updates
-  accel/tcg: add tracepoints for cpu_loop_exit_atomic
-  gitlab: make check-[dco|patch] a little more verbose
-  MAINTAINERS: mention my gdbstub/next tree
-  config/targets: update aarch64_be-linux-user gdb XML list
-  tests/tcg: enable basic testing for aarch64_be-linux-user
-  MAINTAINERS: mention my plugins/next tree
-  plugins: add ability to register a GDB triggered callback
-
-Gustavo Romero (2):
-  tests/tcg/aarch64: Use raw strings for regexes in test-mte.py
-  testing: Enhance gdb probe script
-
-Ilya Leoshkevich (2):
-  tests/docker: Fix microblaze atomics
-  tests/tcg/x86_64: Add cross-modifying code test
-
-Pierrick Bouvier (6):
-  meson: hide tsan related warnings
-  docs/devel: update tsan build documentation
-  dockerfiles: fix default targets for debian-loongarch-cross
-  meson: build contrib/plugins with meson
-  contrib/plugins: remove Makefile for contrib/plugins
-  plugins: fix qemu_plugin_reset
-
- MAINTAINERS                                   |  3 +
- docs/devel/testing/main.rst                   | 26 +++++-
- configure                                     | 23 ++---
- Makefile                                      | 10 ---
- configs/targets/aarch64_be-linux-user.mak     |  2 +-
- meson.build                                   | 14 ++-
- include/qemu/plugin-event.h                   |  1 +
- include/qemu/qemu-plugin.h                    | 16 ++++
- plugins/plugin.h                              |  9 ++
- accel/tcg/plugin-gen.c                        |  4 +
- accel/tcg/user-exec.c                         |  2 +-
- plugins/api.c                                 | 18 ++++
- plugins/core.c                                | 37 ++++++++
- tests/tcg/aarch64_be/hello.c                  | 35 ++++++++
- tests/tcg/plugins/mem.c                       | 11 ++-
- tests/tcg/x86_64/cross-modifying-code.c       | 80 +++++++++++++++++
- accel/tcg/ldst_atomicity.c.inc                |  9 ++
- .gitlab-ci.d/check-dco.py                     |  9 +-
- .gitlab-ci.d/check-patch.py                   |  9 +-
- accel/tcg/trace-events                        | 12 +++
- contrib/plugins/Makefile                      | 87 -------------------
- contrib/plugins/meson.build                   | 23 +++++
- plugins/qemu-plugins.symbols                  |  1 +
- scripts/ci/setup/ubuntu/build-environment.yml |  2 -
- scripts/probe-gdb-support.py                  | 75 ++++++++--------
- tests/docker/Makefile.include                 |  5 +-
- .../dockerfiles/debian-loongarch-cross.docker |  4 +-
- .../build-toolchain.sh                        |  8 ++
- .../dockerfiles/debian-toolchain.docker       |  7 ++
- tests/tcg/Makefile.target                     |  7 +-
- tests/tcg/aarch64/gdbstub/test-mte.py         |  4 +-
- tests/tcg/aarch64_be/Makefile.target          | 17 ++++
- tests/tcg/x86_64/Makefile.target              |  4 +
- 33 files changed, 397 insertions(+), 177 deletions(-)
- create mode 100644 tests/tcg/aarch64_be/hello.c
- create mode 100644 tests/tcg/x86_64/cross-modifying-code.c
- delete mode 100644 contrib/plugins/Makefile
- create mode 100644 contrib/plugins/meson.build
- create mode 100644 tests/tcg/aarch64_be/Makefile.target
-
+diff --git a/include/qemu/plugin-event.h b/include/qemu/plugin-event.h
+index 7056d8427b..d9aa56cf4f 100644
+--- a/include/qemu/plugin-event.h
++++ b/include/qemu/plugin-event.h
+@@ -20,6 +20,7 @@ enum qemu_plugin_event {
+     QEMU_PLUGIN_EV_VCPU_SYSCALL_RET,
+     QEMU_PLUGIN_EV_FLUSH,
+     QEMU_PLUGIN_EV_ATEXIT,
++    QEMU_PLUGIN_EV_GDBSTUB,
+     QEMU_PLUGIN_EV_MAX, /* total number of plugin events we support */
+ };
+ 
+diff --git a/include/qemu/qemu-plugin.h b/include/qemu/qemu-plugin.h
+index 622c9a0232..99c3b365aa 100644
+--- a/include/qemu/qemu-plugin.h
++++ b/include/qemu/qemu-plugin.h
+@@ -802,6 +802,22 @@ QEMU_PLUGIN_API
+ void qemu_plugin_register_atexit_cb(qemu_plugin_id_t id,
+                                     qemu_plugin_udata_cb_t cb, void *userdata);
+ 
++
++/**
++ * qemu_plugin_register_gdb_cb() - register a gdb callback
++ * @id: plugin ID
++ * @cb: callback
++ * @userdata: user data for callback
++ *
++ * When using the gdbstub to debug a guest you can send a command that
++ * will trigger the callback. This is useful if you want the plugin to
++ * print out collected state at particular points when debugging a
++ * program.
++ */
++QEMU_PLUGIN_API
++void qemu_plugin_register_gdb_cb(qemu_plugin_id_t id,
++                                 qemu_plugin_udata_cb_t cb, void *userdata);
++
+ /* returns how many vcpus were started at this point */
+ int qemu_plugin_num_vcpus(void);
+ 
+diff --git a/plugins/plugin.h b/plugins/plugin.h
+index 30e2299a54..f37667c9fb 100644
+--- a/plugins/plugin.h
++++ b/plugins/plugin.h
+@@ -118,4 +118,13 @@ struct qemu_plugin_scoreboard *plugin_scoreboard_new(size_t element_size);
+ 
+ void plugin_scoreboard_free(struct qemu_plugin_scoreboard *score);
+ 
++/**
++ * plugin_register_gdbstub_commands - register gdbstub commands
++ *
++ * This should only be called once to register gdbstub commands so we
++ * can trigger callbacks if needed.
++ */
++void plugin_register_gdbstub_commands(void);
++
++
+ #endif /* PLUGIN_H */
+diff --git a/plugins/api.c b/plugins/api.c
+index 24ea64e2de..62141616f4 100644
+--- a/plugins/api.c
++++ b/plugins/api.c
+@@ -681,3 +681,21 @@ void qemu_plugin_update_ns(const void *handle, int64_t new_time)
+     }
+ #endif
+ }
++
++/*
++ * gdbstub hooks
++ */
++
++static bool gdbstub_callbacks;
++
++void qemu_plugin_register_gdb_cb(qemu_plugin_id_t id,
++                                 qemu_plugin_udata_cb_t cb,
++                                 void *udata)
++{
++    plugin_register_cb_udata(id, QEMU_PLUGIN_EV_GDBSTUB, cb, udata);
++
++    if (!gdbstub_callbacks) {
++        plugin_register_gdbstub_commands();
++        gdbstub_callbacks = true;
++    }
++}
+diff --git a/plugins/core.c b/plugins/core.c
+index bb105e8e68..e7fce08799 100644
+--- a/plugins/core.c
++++ b/plugins/core.c
+@@ -23,6 +23,7 @@
+ #include "qemu/xxhash.h"
+ #include "qemu/rcu.h"
+ #include "hw/core/cpu.h"
++#include "gdbstub/commands.h"
+ 
+ #include "exec/exec-all.h"
+ #include "exec/tb-flush.h"
+@@ -147,6 +148,7 @@ static void plugin_cb__udata(enum qemu_plugin_event ev)
+ 
+     switch (ev) {
+     case QEMU_PLUGIN_EV_ATEXIT:
++    case QEMU_PLUGIN_EV_GDBSTUB:
+         QLIST_FOREACH_SAFE_RCU(cb, &plugin.cb_lists[ev], entry, next) {
+             qemu_plugin_udata_cb_t func = cb->f.udata;
+ 
+@@ -768,3 +770,38 @@ void plugin_scoreboard_free(struct qemu_plugin_scoreboard *score)
+     g_array_free(score->data, TRUE);
+     g_free(score);
+ }
++
++/*
++ * gdbstub integration
++ */
++
++static void handle_plugin_cb(GArray *params, void *user_ctx)
++{
++    plugin_cb__udata(QEMU_PLUGIN_EV_GDBSTUB);
++    gdb_put_packet("OK");
++}
++
++enum Command {
++    PluginCallback,
++    NUM_GDB_CMDS
++};
++
++static const GdbCmdParseEntry cmd_handler_table[NUM_GDB_CMDS] = {
++    [PluginCallback] = {
++        .handler = handle_plugin_cb,
++        .cmd_startswith = true,
++        .cmd = "qemu.plugin_cb",
++        .schema = "s?",
++    },
++};
++
++void plugin_register_gdbstub_commands(void)
++{
++    g_autoptr(GPtrArray) set_table = g_ptr_array_new();
++
++    for (int i = 0; i < NUM_GDB_CMDS; i++) {
++        g_ptr_array_add(set_table, (gpointer) &cmd_handler_table[PluginCallback]);
++    }
++
++    gdb_extend_set_table(set_table);
++}
+diff --git a/tests/tcg/plugins/mem.c b/tests/tcg/plugins/mem.c
+index b0fa8a9f27..d416d92fc2 100644
+--- a/tests/tcg/plugins/mem.c
++++ b/tests/tcg/plugins/mem.c
+@@ -75,8 +75,7 @@ static gint addr_order(gconstpointer a, gconstpointer b)
+     return na->region_address > nb->region_address ? 1 : -1;
+ }
+ 
+-
+-static void plugin_exit(qemu_plugin_id_t id, void *p)
++static void plugin_report(qemu_plugin_id_t id, void *p)
+ {
+     g_autoptr(GString) out = g_string_new("");
+ 
+@@ -90,6 +89,7 @@ static void plugin_exit(qemu_plugin_id_t id, void *p)
+     }
+     qemu_plugin_outs(out->str);
+ 
++    g_mutex_lock(&lock);
+ 
+     if (do_region_summary) {
+         GList *counts = g_hash_table_get_values(regions);
+@@ -114,6 +114,12 @@ static void plugin_exit(qemu_plugin_id_t id, void *p)
+         qemu_plugin_outs(out->str);
+     }
+ 
++    g_mutex_unlock(&lock);
++}
++
++static void plugin_exit(qemu_plugin_id_t id, void *p)
++{
++    plugin_report(id, p);
+     qemu_plugin_scoreboard_free(counts);
+ }
+ 
+@@ -400,6 +406,7 @@ QEMU_PLUGIN_EXPORT int qemu_plugin_install(qemu_plugin_id_t id,
+         counts, CPUCount, mem_count);
+     io_count = qemu_plugin_scoreboard_u64_in_struct(counts, CPUCount, io_count);
+     qemu_plugin_register_vcpu_tb_trans_cb(id, vcpu_tb_trans);
++    qemu_plugin_register_gdb_cb(id, plugin_report, NULL);
+     qemu_plugin_register_atexit_cb(id, plugin_exit, NULL);
+     return 0;
+ }
+diff --git a/plugins/qemu-plugins.symbols b/plugins/qemu-plugins.symbols
+index 032661f9ea..d272e8e0f3 100644
+--- a/plugins/qemu-plugins.symbols
++++ b/plugins/qemu-plugins.symbols
+@@ -25,6 +25,7 @@
+   qemu_plugin_read_register;
+   qemu_plugin_register_atexit_cb;
+   qemu_plugin_register_flush_cb;
++  qemu_plugin_register_gdb_cb;
+   qemu_plugin_register_vcpu_exit_cb;
+   qemu_plugin_register_vcpu_idle_cb;
+   qemu_plugin_register_vcpu_init_cb;
 -- 
 2.39.5

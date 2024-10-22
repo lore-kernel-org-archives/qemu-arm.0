@@ -1,69 +1,69 @@
-Received: by 2002:a17:505:18c3:b0:1be9:327d:8ee3 with SMTP id tt3csp2840873njb;
-        Mon, 21 Oct 2024 22:52:06 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXNF+M2XRF6/4Sp7cmwKCXmVa90+ZglVuWhABxzOCklgqbGkN5z5lbxOF1FK2zkK482nD/qAYXVh/qVFA==@linaro.org
-X-Google-Smtp-Source: AGHT+IGleUALvrIxHjvV6N0VfEfHAxgx6gFPC1FQt28JWO95/KwTdl26toHPTy0Jnq5/rX4rDSuh
-X-Received: by 2002:a05:620a:28d5:b0:7b1:4436:cf1d with SMTP id af79cd13be357-7b157b6ad45mr1746978985a.31.1729576325815;
-        Mon, 21 Oct 2024 22:52:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1729576325; cv=none;
+Received: by 2002:a17:505:18c3:b0:1be9:327d:8ee3 with SMTP id tt3csp2841807njb;
+        Mon, 21 Oct 2024 22:55:01 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCViXBDGG/M6pR8SGmexajDyIowqoisGJT3VeDTywsX+g9xPV0map8eJG7vSV3IFZ+Fgfo4riwMcADgCig==@linaro.org
+X-Google-Smtp-Source: AGHT+IHwSB2E7A45kaLHFbWtAKAVlOUWSv3vJvsRzdG6vorlflzu0SOTQxGe5mjfO3g++A2E/wwy
+X-Received: by 2002:ac8:5815:0:b0:460:a756:72ff with SMTP id d75a77b69052e-460aedbfab0mr179182371cf.30.1729576501372;
+        Mon, 21 Oct 2024 22:55:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1729576501; cv=none;
         d=google.com; s=arc-20240605;
-        b=I9n8Q5pvXVLaRoERFhDXs5RFX7xB7uo6htXo/7d47wcPqlFMZX42SyzZvom1wVcm2z
-         cNr1i9mX5LL5APlIM68CpKKonX3/ZHCV/klUAmCIbBoZxRy+c1VNe0MUgymnzz0POI1L
-         02RKMQNVUP3JGYMfcgeXmS9eSiQwgFdlaRk0id1WkAEcV6JOWU+malgVcoglefGwO1yO
-         zXiiownstkh8zODsV2FRoHzI1MEyrd61FK9S7SRxHmhJ+bLxN42RpsT32DaEG82P1l8I
-         T23Q8zsVNPu7kv5UuZ/1Awr7EbZvaX3DHxr4XWnuiCdGKqOMpDOIdMaI/ifYGbYtMR0g
-         bvEg==
+        b=J34XLikSI8laOgsxbiYK4OZlkIl9LwcaPkYZs8DVqyQlkcYotZiD0NT7MMhGMYMoIb
+         q2dP177d/o3JlGvvNt627k2Y7mIkolUi3t6HpSHUnkXqg4OfqZrd6x/jPXB7pAoej5s3
+         DGgQ8oiZxfhBmwC7Zv8RNsiOtpM+6Bq4A/rTQDguv0vWhb9DLRPcoIH5FBntR+9k/4bH
+         hIJSn7vddtzDQN4qoE7cXZtxW+31e65AbSU2maLligirOndaYHQS3M+ppYFpOQoUpFgt
+         tPVTe0qS87nt0/HQa2C45GWvJtYwZqrx3vjurzF4yQ5Pup3c8qsGW+Nm1oRLZaoQ+M05
+         pDqA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:content-language:references:cc:to:subject
          :user-agent:mime-version:date:message-id;
-        bh=T+i48/i3Dj1fZFAHpQbk9e62WkjYzvIyWaoNeFqbpaY=;
-        fh=4mlnkPeqTwuu2Qx8qreMlJHQU0w7aOUfwVS+XUkOkGE=;
-        b=DIzlrN/vtHaSPuD5Wsg3pVuafhJ5PSXpeAVqafw6woizo7/RWUUyaMvnqiWzpIy9zT
-         cCnhXQ1sBcNW5YTDOkRwaw45t0wokJOdMs3KV+Mm+O/T9QYZ3yRl87Fkrnr+M9v9pn5U
-         xXN9N8DeuRS4Wcm9Dhq8Ds6wbh9SuNDUqk0HkztDRyaq8HeAGsXMf60T8tOXwR2hoXD3
-         4sAvuF85n1WC75H0Gb0McfvXhJTkZ3HlAgHLRP3c+sXrLf5i84jTnAjkjn7qE7Pr9PwQ
-         2KWHecha5qKIPkpMFMYtcOFQXjLo21eVXI2getgl9hnC7S1Gpb0d4Lw834IVBHm8JyqL
-         Tb1A==;
+        bh=jZtZ7hpeO7CmKnamS1Fez5zwFnr+uzJxcxmHNVhgxJE=;
+        fh=oYAkwPHFdJ9u0eDvwJfliFAiwUWbZzxx8J31NdrWVOo=;
+        b=E7BLfZqVX4Or4f5s2uAALnLE2Ozwq6yvH05XUvabKHQl5/Bk5cSIoIoH3XbolvYVBO
+         2IKY0Aruebg56MQaDLzvCAFVSXM5tDdz2I9KHBg/M8NXjFyWXgH0fM10vry97M0C82kd
+         xlme6YyZXoOjU62SAsGTDGLYIsxB8Zf5Qpc6sEY6D9mkV1AEMCyO55sJFZk5vCGGdGvi
+         Zg6bDk/tLTmrxnSJVizV29MUrSDiK7Dplr9+QxMQGcCtvyny3JQZY+MZsOIFrT11Zo7R
+         bguNd3X8I3avkjK710JKo+56Ba7XNyg7Ig9UC1+C1s5OpiKO8ZE+azTDvvYD7shPZnxt
+         yY8g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7b165a992f5si548891485a.565.2024.10.21.22.52.05
+        by mx.google.com with ESMTPS id d75a77b69052e-460d3d0eaa5si59296401cf.490.2024.10.21.22.55.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 21 Oct 2024 22:52:05 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 21 Oct 2024 22:55:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1t37o3-000088-NS; Tue, 22 Oct 2024 01:51:47 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1t37qX-0000xg-3W; Tue, 22 Oct 2024 01:54:21 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=pGrG=RS=kaod.org=clg@ozlabs.org>)
- id 1t37o0-00007k-KS; Tue, 22 Oct 2024 01:51:44 -0400
-Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
+ id 1t37qT-0000wu-8s; Tue, 22 Oct 2024 01:54:17 -0400
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=pGrG=RS=kaod.org=clg@ozlabs.org>)
- id 1t37nx-0007U8-Sx; Tue, 22 Oct 2024 01:51:44 -0400
+ id 1t37qR-0007eU-EQ; Tue, 22 Oct 2024 01:54:17 -0400
 Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4XXhBV5LtMz4wb7;
- Tue, 22 Oct 2024 16:51:30 +1100 (AEDT)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4XXhFX2Kj8z4wxf;
+ Tue, 22 Oct 2024 16:54:08 +1100 (AEDT)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits))
  (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4XXhBN54Rfz4w2H;
- Tue, 22 Oct 2024 16:51:24 +1100 (AEDT)
-Message-ID: <eb69d07f-8114-41e2-bea0-06f0d67a0d6f@kaod.org>
-Date: Tue, 22 Oct 2024 07:51:21 +0200
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4XXhFR0Jhmz4w2L;
+ Tue, 22 Oct 2024 16:54:01 +1100 (AEDT)
+Message-ID: <b162770d-c8f7-4931-a801-67d88e4a1c1f@kaod.org>
+Date: Tue, 22 Oct 2024 07:54:00 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [SPAM] [PATCH v1 01/16] aspeed/smc: Fix write incorrect data into
- flash in user mode
+Subject: Re: [SPAM] [PATCH v1 09/16] test/qtest/aspeed_smc-test: Introduce a
+ new TestData to test different BMC SOCs
 To: Jamin Lin <jamin_lin@aspeedtech.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
@@ -74,207 +74,100 @@ To: Jamin Lin <jamin_lin@aspeedtech.com>,
  "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
  "open list:All patches CC here" <qemu-devel@nongnu.org>,
  "open list:Block layer core" <qemu-block@nongnu.org>
-Cc: troy_lee@aspeedtech.com, yunlin.tang@aspeedtech.com
+Cc: Troy Lee <troy_lee@aspeedtech.com>,
+ Yunlin Tang <yunlin.tang@aspeedtech.com>
 References: <20241018053112.1886173-1-jamin_lin@aspeedtech.com>
- <20241018053112.1886173-2-jamin_lin@aspeedtech.com>
+ <20241018053112.1886173-10-jamin_lin@aspeedtech.com>
+ <c395abee-68ca-4030-953f-476b364df62f@kaod.org>
+ <SI2PR06MB50418E6553BC95BDCC71E4CAFC4C2@SI2PR06MB5041.apcprd06.prod.outlook.com>
 Content-Language: en-US, fr
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20241018053112.1886173-2-jamin_lin@aspeedtech.com>
+In-Reply-To: <SI2PR06MB50418E6553BC95BDCC71E4CAFC4C2@SI2PR06MB5041.apcprd06.prod.outlook.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=150.107.74.76;
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
  envelope-from=SRS0=pGrG=RS=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
 X-Spam_score_int: -39
 X-Spam_score: -4.0
 X-Spam_bar: ----
 X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
  HEADER_FROM_DIFFERENT_DOMAINS=0.171, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: YkdUmlHj7p0d
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: IjByzne5e56t
 
-Hello Jamin,
-
-On 10/18/24 07:30, Jamin Lin wrote:
-> According to the design of ASPEED SPI controllers user mode, users write the
-> data to flash, the SPI drivers set the Control Register(0x10) bit 0 and 1
-> enter user mode. Then, SPI drivers send flash commands for writing data.
-> Finally, SPI drivers set the Control Register (0x10) bit 2 to stop
-> active control and restore bit 0 and 1.
+On 10/22/24 03:38, Jamin Lin wrote:
+> Hi Cedric,
 > 
-> According to the design of ASPEED SMC model, firmware writes the
-> Control Register and the "aspeed_smc_flash_update_ctrl" function is called.
-> Then, this function verify Control Register(0x10) bit 0 and 1. If it set user
-> mode, the value of s->snoop_index is SNOOP_START else SNOOP_OFF.
-> If s->snoop_index is SNOOP_START, the "aspeed_smc_do_snoop" function verify
-> the first incomming data is a new flash command and writes the corresponding
-> dummy bytes if need.
+>> Subject: Re: [SPAM] [PATCH v1 09/16] test/qtest/aspeed_smc-test: Introduce a
+>> new TestData to test different BMC SOCs
+>>
+>> On 10/18/24 07:31, Jamin Lin wrote:
+>>> Currently, these test cases are only used for testing fmc_cs0 for AST2400.
+>>> To test others BMC SOCs, introduces a new TestData structure.
+>>> Users can set the spi base address, flash base address, jedesc id and
+>>> so on for different BMC SOCs and flash model testing.
+>>>
+>>> Introduce new helper functions to make the test case more readable.
+>>>
+>>> Set spi base address 0x1E620000, flash_base address 0x20000000 and
+>>> jedec id 0x20ba19 for fmc_cs0 with n25q256a flash for AST2400 SMC
+>>> model testing.
+>>>
+>>> To pass the TestData into the test case, replace qtest_add_func with
+>>> qtest_add_data_func.
+>>>
+>>> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+>>> ---
+>>>    tests/qtest/aspeed_smc-test.c | 546 +++++++++++++++++++---------------
+>>>    1 file changed, 299 insertions(+), 247 deletions(-)
+>>>
+>>>
+>>> -    fd = g_file_open_tmp("qtest.m25p80.XXXXXX", &tmp_path, NULL);
+>>> +    fd = g_file_open_tmp("qtest.m25p80.n25q256a.XXXXXX",
+>>> + &data->tmp_path, NULL);
+>>
+>> Why did you change the name ?
+>>
 > 
-> However, it did not check the current unselect status. If current unselect
-> status is "false" and firmware set the IO MODE by Control Register bit 31:28,
-> the value of s->snoop_index will be changed to SNOOP_START again and
-> "aspeed_smc_do_snoop" misunderstand that the incomming data is the new flash
-> command and it causes writing unexpected data into flash.
+> The default flash size of fmc_cs0 are difference between ASPEED SOCs.
+> For example: AST2400 default flash size of fmc_cs0 is 32MB but
+> AST1030 default flash size of fmc_cs0 is 1MB.
+> Besides, the testcases support to test jedec_id of flash.
+> We set the different default flash model of fmc_cs0 for all ASPEED SOCs
+> Ex:
+> n25q256a jedec_id is 0x20ba19.
+> w25q80bl jedec_id is 0xef4014.
+> That was why I added the name of flash model in the filename of testing image.
+> So, users easily know the testcases testing which flash model.
 > 
-> Example:
-> 1. Firmware set user mode by Control Register bit 0 and 1(0x03)
-> 2. SMC model set s->snoop SNOOP_START
-> 3. Firmware set Quad Page Program with 4-Byte Address command (0x34)
-> 4. SMC model verify this flash command and it needs 4 dummy bytes.
-> 5. Firmware send 4 bytes address.
-> 6. SMC model receives 4 bytes address
-> 7. Firmware set QPI IO MODE by Control Register bit 31. (0x80000003)
-> 8. SMC model verify new user mode by Control Register bit 0 and 1.
->     Then, set s->snoop SNOOP_START again. (It is the wrong behavior.)
-> 9. Firmware send 0xebd8c134 data and it should be written into flash.
->     However, SMC model misunderstand that the first incoming data, 0x34,
->     is the new command because the value of s->snoop is changed to SNOOP_START.
->     Finally, SMC sned the incorrect data to flash model.
+> By the way, I set the different filename of testing image for AST1030, AST2500, AST2600 and AST2700.
+> AST2500: "qtest.m25p80.mx25l25635e.XXXXXX"
+> AST2600: "qtest.m25p80.mx66u51235f.XXXXXX"
+> AST1030: “qtest.m25p80.w25q80bl.XXXXXX"
+> AST2700: “"qtest.m25p80.w25q01jvq.XXXXXX"”
 > 
-> Introduce a new unselect attribute in AspeedSMCState to save the current
-> unselect status for user mode and set it "true" by default.
-> Update "aspeed_smc_flash_update_ctrl" function to check the previous unselect
-> status. If both new unselect status and previous unselect status is different,
-> update s->snoop_index value and call "aspeed_smc_flash_do_select".
+> I am okay to set the filename of testing image back to "qtest.m25p80.XXXXXX" for AST2400.
 
-It's very difficult and time consuming to debug such issues. Thanks for the
-effort !
+No. Keep it as it is. I was wondering if this was some kind of work around.
 
-> Increase VMStateDescription version 1.
+LGTM,
 
-"Increase VMStateDescription version" is sufficient.
-
-> 
-> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-> ---
->   hw/ssi/aspeed_smc.c         | 39 +++++++++++++++++++++++++------------
->   include/hw/ssi/aspeed_smc.h |  1 +
->   2 files changed, 28 insertions(+), 12 deletions(-)
-> 
-> diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
-> index e3fdc66cb2..8a6145afe9 100644
-> --- a/hw/ssi/aspeed_smc.c
-> +++ b/hw/ssi/aspeed_smc.c
-> @@ -417,7 +417,7 @@ static void aspeed_smc_flash_do_select(AspeedSMCFlash *fl, bool unselect)
->       AspeedSMCState *s = fl->controller;
->   
->       trace_aspeed_smc_flash_select(fl->cs, unselect ? "un" : "");
-> -
-> +    s->unselect = unselect;
->       qemu_set_irq(s->cs_lines[fl->cs], unselect);
->   }
->   
-> @@ -677,22 +677,35 @@ static const MemoryRegionOps aspeed_smc_flash_ops = {
-
-I would like to add some documentation to this routine. Listing the
-different controller state changes seems important to me to understand
-how they are handled. In a future patch, no need now. Fixing the issue
-is already great !
-
-
-
->   static void aspeed_smc_flash_update_ctrl(AspeedSMCFlash *fl, uint32_t value)
->   {
->       AspeedSMCState *s = fl->controller;
-> -    bool unselect;
-> +    bool unselect = false;
-> +    uint32_t old_mode;
-> +    uint32_t new_mode;
-> +
-> +    old_mode = s->regs[s->r_ctrl0 + fl->cs] & CTRL_CMD_MODE_MASK;
-> +    new_mode = value & CTRL_CMD_MODE_MASK;
->   
-> -    /* User mode selects the CS, other modes unselect */
-> -    unselect = (value & CTRL_CMD_MODE_MASK) != CTRL_USERMODE;
-> +    if (old_mode == CTRL_USERMODE) {
-> +        if (new_mode != CTRL_USERMODE) {
-> +            unselect = true;
-> +        }
->   
-> -    /* A change of CTRL_CE_STOP_ACTIVE from 0 to 1, unselects the CS */
-> -    if (!(s->regs[s->r_ctrl0 + fl->cs] & CTRL_CE_STOP_ACTIVE) &&
-> -        value & CTRL_CE_STOP_ACTIVE) {
-> -        unselect = true;
-> +        /* A change of CTRL_CE_STOP_ACTIVE from 0 to 1, unselects the CS */
-> +        if (!(s->regs[s->r_ctrl0 + fl->cs] & CTRL_CE_STOP_ACTIVE) &&
-> +            value & CTRL_CE_STOP_ACTIVE) {
-> +            unselect = true;
-> +        }
-> +    } else {
-> +        if (new_mode != CTRL_USERMODE) {
-> +            unselect = true;
-> +        }
->       }
->   
->       s->regs[s->r_ctrl0 + fl->cs] = value;
->   
-> -    s->snoop_index = unselect ? SNOOP_OFF : SNOOP_START;
-> -
-> -    aspeed_smc_flash_do_select(fl, unselect);
-> +    if (unselect != s->unselect) {> +        s->snoop_index = unselect ? SNOOP_OFF : SNOOP_START;
-> +        aspeed_smc_flash_do_select(fl, unselect);
-> +    }
->   }
->   
->   static void aspeed_smc_reset(DeviceState *d)
-> @@ -737,6 +750,7 @@ static void aspeed_smc_reset(DeviceState *d)
->   
->       s->snoop_index = SNOOP_OFF;
->       s->snoop_dummies = 0;
-> +    s->unselect = true;
-
-Please move this assignment below the "/* Unselect all peripherals */"
-section.
-
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
 
 Thanks,
 
 C.
-
-
-
->   }
->   
->   static uint64_t aspeed_smc_read(void *opaque, hwaddr addr, unsigned int size)
-> @@ -1261,12 +1275,13 @@ static void aspeed_smc_realize(DeviceState *dev, Error **errp)
->   
->   static const VMStateDescription vmstate_aspeed_smc = {
->       .name = "aspeed.smc",
-> -    .version_id = 2,
-> +    .version_id = 3,
->       .minimum_version_id = 2,
->       .fields = (const VMStateField[]) {
->           VMSTATE_UINT32_ARRAY(regs, AspeedSMCState, ASPEED_SMC_R_MAX),
->           VMSTATE_UINT8(snoop_index, AspeedSMCState),
->           VMSTATE_UINT8(snoop_dummies, AspeedSMCState),
-> +        VMSTATE_BOOL(unselect, AspeedSMCState),
->           VMSTATE_END_OF_LIST()
->       }
->   };
-> diff --git a/include/hw/ssi/aspeed_smc.h b/include/hw/ssi/aspeed_smc.h
-> index 234dca32b0..25b95e7406 100644
-> --- a/include/hw/ssi/aspeed_smc.h
-> +++ b/include/hw/ssi/aspeed_smc.h
-> @@ -82,6 +82,7 @@ struct AspeedSMCState {
->   
->       uint8_t snoop_index;
->       uint8_t snoop_dummies;
-> +    bool unselect;
->   };
->   
->   typedef struct AspeedSegments {
-
